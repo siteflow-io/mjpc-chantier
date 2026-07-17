@@ -485,6 +485,12 @@
      Valeurs dures, charte claire (patron du chooser dbc-*). */
   body.bodyProf .overlay .gelcard button{background:#fff;color:#1a1a1a;border:1px solid #e5e3de;border-radius:8px;font-weight:600;backdrop-filter:none}
   body.bodyProf .overlay .gelcard button:hover{background:#f5f4f0;transform:none;box-shadow:none}
+  /* Doublon robuste (askConfirm pose .ovprof si bodyProf) — mêmes valeurs claires */
+  .overlay.ovprof .gelcard{background:#fff;border:1px solid #e5e3de;color:#1a1a1a}
+  .overlay.ovprof .gelcard h2,.overlay.ovprof .gelcard #confirmText{color:#1a1a1a}
+  .overlay.ovprof .gelcard button{background:#fff;color:#1a1a1a;border:1px solid #e5e3de;border-radius:8px;font-weight:600;backdrop-filter:none}
+  .overlay.ovprof .gelcard button:hover{background:#f5f4f0;transform:none;box-shadow:none}
+  .overlay.ovprof .gelcard button.primary{background:#2563eb;color:#fff;border:none;border-radius:10px}
   body.bodyProf .overlay .gelcard button.primary{background:#2563eb;color:#fff;border:none;border-radius:10px}
   body.bodyProf .overlay .gelcard button.primary:hover{background:#1e50c8}
   body.bodyProf .overlay .gelcard button.danger,body.bodyProf .overlay .gelcard button.primary.danger{background:#c53030;color:#fff;border:none}
@@ -3416,7 +3422,13 @@ function presenceBanner(){
 function askConfirm(text, action){
   confirmAction = action;
   $("confirmText").textContent = text;
-  $("confirmOverlay").classList.add("show");
+  /* Retouche 17/07 — l'ouvreur PARTAGÉ pose lui-même le durcissement clair : ovprof si
+     l'appel vient du côté prof (bodyProf), retiré sinon pour préserver un usage élève sombre.
+     Ceinture : la règle body.bodyProf .overlay .gelcard couvre déjà le cas ; ovprof est le
+     doublon robuste réclamé à l'audit (l'invariant tient même si un ouvreur oubliait bodyProf). */
+  var _ov=$("confirmOverlay");
+  _ov.classList.toggle("ovprof", document.body.classList.contains("bodyProf"));
+  _ov.classList.add("show");
 }
 function closeConfirm(){ $("confirmOverlay").classList.remove("show"); confirmAction = null; }
 

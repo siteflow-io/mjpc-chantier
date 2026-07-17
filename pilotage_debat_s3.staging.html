@@ -686,6 +686,13 @@
     #debatChooserOverlay .gelcard{max-width:94vw !important;padding:0 8px}
     .dbc-card{padding:16px 16px}
     .dbc-row,.debat-row{flex-wrap:wrap}
+    /* panneau d'aide (écran élève) — mobile. Fond sombre élève INCHANGÉ.
+       FERMÉ (pas de .show) : le ✕ est masqué (option validée par l'audit) → rien ne dépasse.
+       OUVERT (.show) : le panneau vaut 92vw, l'inner suit, le ✕ réapparaît dans l'écran. */
+    .help{transition:none}
+    .help.show{width:92vw;max-width:100vw}
+    .help .inner{width:100%;max-width:100%}
+    .help:not(.show) .hh .notipi{display:none}
   }
   #appVersion{position:fixed;left:8px;bottom:6px;z-index:5;font-size:.68rem;color:#b9b2a3;font-family:'Spline Sans',sans-serif;letter-spacing:.02em;pointer-events:none;user-select:none}
   body.bodyProf #appVersion{color:#a99e88}

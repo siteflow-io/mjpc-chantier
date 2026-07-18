@@ -155,6 +155,9 @@ textarea{resize:vertical;min-height:120px}
 .etat-dictee{display:inline-block;padding:3px 10px;border-radius:20px;font-size:.78rem;font-weight:600;white-space:nowrap}
 .etat-attente{background:var(--card2);color:var(--text-sub);border:1px solid var(--border)}
 .etat-afaire{background:var(--primary-light);color:var(--primary);border:1px solid var(--primary)}
+.etat-nonrendue{background:var(--card2);color:var(--text-sub);border:1px dashed var(--border)}
+.mesdictees-ligne.non-ouvrable{opacity:.72}
+.mesdictees-ligne.non-ouvrable:hover{border-color:var(--border)}
 .etat-terminee{background:var(--card2);color:var(--text-sub);border:1px solid var(--border);opacity:.85}
 .mesdictees-ligne:hover{border-color:var(--primary)}
 .version-pill{display:inline-block;padding:2px 9px;border-radius:20px;background:var(--card2);border:1px solid var(--border);color:var(--muted);font-size:.7rem;font-weight:600;letter-spacing:.02em;user-select:none}
@@ -5398,26 +5401,31 @@ function MaCopie(p){
 
 // M6bis — Résolution d'une classe du registre insensible à la casse et aux accents.
 // (Découverte au test réel : /classes porte "4E BANKSY", les dictées "4e Banksy".)
-function classeDuRegistre(nom){
+function classeDuRegistre(nom,source){
+  var reg=source||CLASSES||{};
   if(!nom) return undefined;
-  if(CLASSES[nom]) return CLASSES[nom];
-  var cible=sanMJPC(nom), ks=Object.keys(CLASSES||{});
-  for(var i=0;i<ks.length;i++){ if(sanMJPC(ks[i])===cible) return CLASSES[ks[i]]; }
+  if(reg[nom]) return reg[nom];
+  var cible=sanMJPC(nom), ks=Object.keys(reg);
+  for(var i=0;i<ks.length;i++){ if(sanMJPC(ks[i])===cible) return reg[ks[i]]; }
   return undefined;
 }
 
-// M6bis — État d'une dictée pour l'élève. Trois situations, dans l'ordre où il les vit :
-//   "attente"  : le professeur n'a pas encore rendu la correction de sa copie
-//   "afaire"   : la copie est corrigée, l'autocorrection reste à faire (ou est commencée)
-//   "terminee" : l'autocorrection est allée au bout
+// M6ter — État d'une dictée pour l'élève. TROIS dimensions se croisent, pas deux :
+//   ① la dictée est publiée (config.published)      — filtrée en amont
+//   ② la copie est rendue    (copyPublishedAt)      — le professeur a publié les copies
+//   ③ le travail de l'élève  (results, autocorrection)
+// Tant que ② manque, il n'y a rien à ouvrir et rien à annoncer : ni note, ni « Ouvrir ».
 function etatDicteeEleve(d,cle){
   var corr=d.results?d.results[cle]:null;
-  if(!corr) return {code:"attente",label:"Pas encore corrig\u00e9e"};
+  if(!corr) return {code:"attente",label:"Pas encore corrig\u00e9e",ouvrable:false,montrerNote:false};
+  if(!d.copyPublishedAt) return {code:"nonrendue",label:"Corrig\u00e9e, pas encore rendue",
+                                 ouvrable:false,montrerNote:false,date:corr.timestamp||null};
   var ac=(d.autocorrection||{})[cle]||null;
   var total=ac&&typeof ac.total==="number"?ac.total:null;
   var solved=ac&&typeof ac.solved==="number"?ac.solved:0;
-  if(total!==null&&total>0&&solved>=total) return {code:"terminee",label:"Termin\u00e9e",date:corr.timestamp||null};
-  return {code:"afaire",label:"\u00c0 faire",date:corr.timestamp||null,
+  if(total!==null&&total>0&&solved>=total)
+    return {code:"terminee",label:"Termin\u00e9e",ouvrable:true,montrerNote:true,date:corr.timestamp||null};
+  return {code:"afaire",label:"\u00c0 faire",ouvrable:true,montrerNote:true,date:corr.timestamp||null,
           reste:(total!==null&&total>0)?(total-solved):null};
 }
 
@@ -5464,7 +5472,11 @@ function AppEleve(p){
   },[]);
 
   // ── Dictées disponibles ──
+  // La course était le bug : les dictées se construisaient avant l'arrivée du registre,
+  // et leur roster restait vide pour toute la session. On attend classesData, et on
+  // reconstruit si le registre change.
   useEffect(function(){
+    if(!classesData)return;
     db.ref("correction_dictee").once("value",function(snap){
       var val=snap.val()||{};
       var list=Object.keys(val).map(function(id){
@@ -5473,10 +5485,11 @@ function AppEleve(p){
         // Les dictées portent le nom de classe tel qu'il a été saisi ("4e Banksy"),
         // le registre le porte tel qu'il a été importé ("4E BANKSY") : on résout sur
         // la clé canonique, jamais sur la chaîne brute.
-        var eleves=extractEleves(classeDuRegistre(classeName), cfg.eleves);
+        var eleves=extractEleves(classeDuRegistre(classeName,classesData), cfg.eleves);
         return{id:id,title:cfg.title||id,classe:classeName,niveau:cfg.niveau||"",published:cfg.published!==false,
                showNote:cfg.showNote!==false,eleves:eleves,tokens:tokenize(cfg.text||""),base:cfg.base||20,
-               results:val[id].results||{},autocorrection:val[id].autocorrection||{}};
+               results:val[id].results||{},autocorrection:val[id].autocorrection||{},
+               copyPublishedAt:val[id].copyPublishedAt||null};
       });
       setDictees(list);
       if(forcedDicteeId){
@@ -5484,7 +5497,7 @@ function AppEleve(p){
         if(found)setDicteeTitle(found.title);
       }
     });
-  },[forcedDicteeId]);
+  },[forcedDicteeId,classesData]);
 
   // ── Shunt MJPC (socle §8) : l'élève déjà connecté au site n'a rien à ressaisir ──
   useEffect(function(){
@@ -5515,7 +5528,8 @@ function AppEleve(p){
     var corr=d.results?d.results[identite.cle]:null;
     // Pas de copie corrigée : le parcours d'autocorrection se construit sur les erreurs
     // signalées par le professeur — sans elles il n'y a rien à ouvrir. Écran d'attente.
-    if(!corr){setAttente(d);setErrMsg("");setScreen("attente");return}
+    var et=etatDicteeEleve(d,identite.cle);
+    if(!et.ouvrable){setAttente(d);setErrMsg("");setScreen("attente");return}
     var nomRegistre=identite.nom;
     for(var i=0;i<d.eleves.length;i++){ if(san(d.eleves[i])===identite.cle) nomRegistre=d.eleves[i]; }
     setEleveData({eleve:nomRegistre,dictee:d,key:identite.cle,errors:toArr(corr.errors||[]),extras:toArr(corr.extras||[]),note:corr.note,base:d.base});
@@ -5577,9 +5591,10 @@ function AppEleve(p){
     }
 
     // Le nom doit exister dans un roster (le registre officiel fait foi)
+    var registre=classesData||CLASSES||{};
     var rosterComplet=[];
-    Object.keys(CLASSES||{}).forEach(function(c){
-      extractEleves(CLASSES[c],[]).forEach(function(e){ if(rosterComplet.indexOf(e)<0) rosterComplet.push(e); });
+    Object.keys(registre).forEach(function(c){
+      extractEleves(registre[c],[]).forEach(function(e){ if(rosterComplet.indexOf(e)<0) rosterComplet.push(e); });
     });
     dictees.forEach(function(d){ (d.eleves||[]).forEach(function(e){ if(rosterComplet.indexOf(e)<0) rosterComplet.push(e); }); });
     var res=resolveEleves(rosterComplet,[{nom:nom,prenom:prenom}]);
@@ -5592,9 +5607,9 @@ function AppEleve(p){
 
     setErrMsg("");
     var cls="";
-    var kc=Object.keys(CLASSES||{});
+    var kc=Object.keys(registre);
     for(var ci=0;ci<kc.length;ci++){
-      var rr=extractEleves(CLASSES[kc[ci]],[]);
+      var rr=extractEleves(registre[kc[ci]],[]);
       for(var ri=0;ri<rr.length;ri++){ if(san(rr[ri])===moi.cle){cls=kc[ci];break} }
       if(cls)break;
     }
@@ -5628,6 +5643,8 @@ function AppEleve(p){
 
   // ── « Mes dictées » : toutes les dictées de l'élève, corrigées ou non ──
   if(screen==="mesdictees"){
+    if(!classesData||!dictees.length) return h("div",{className:"container fade-up",style:{paddingTop:40,textAlign:"center"}},
+      h("p",{style:{color:"var(--muted)"}},"Chargement\u2026"));
     var liste=mesDictees();
     return h("div",{className:"container fade-up",style:{paddingTop:30}},
       h("div",{className:"card"},
@@ -5645,10 +5662,11 @@ function AppEleve(p){
           liste.map(function(d){
             var et=etatDicteeEleve(d,identite.cle);
             var c=d.results?d.results[identite.cle]:null;
-            return h("div",{key:d.id,className:"m6-mobile-col mesdictees-ligne",
+            return h("div",{key:d.id,className:"m6-mobile-col mesdictees-ligne"+(et.ouvrable?"":" non-ouvrable"),
               style:{display:"flex",alignItems:"center",justifyContent:"space-between",gap:10,padding:"11px 14px",
-                     border:"1.5px solid var(--border)",borderRadius:10,marginBottom:8,cursor:"pointer"},
-              onClick:function(){ouvrirDictee(d)}},
+                     border:"1.5px solid var(--border)",borderRadius:10,marginBottom:8,
+                     cursor:et.ouvrable?"pointer":"default"},
+              onClick:et.ouvrable?function(){ouvrirDictee(d)}:null},
               h("div",null,
                 h("div",{style:{fontWeight:600}},d.title),
                 h("div",{style:{fontSize:".85rem",color:"var(--text-sub)"}},
@@ -5658,9 +5676,9 @@ function AppEleve(p){
               ),
               h("div",{style:{display:"flex",alignItems:"center",gap:10,flexWrap:"wrap"}},
                 h("span",{className:"etat-dictee etat-"+et.code},et.label),
-                (et.code!=="attente"&&d.showNote!==false&&c&&typeof c.note!=="undefined")?
+                (et.montrerNote&&d.showNote!==false&&c&&typeof c.note!=="undefined")?
                   h("span",{style:{fontWeight:700,color:noteColor(c.note,d.base)}},c.note+"/"+d.base):null,
-                h("span",{style:{color:"var(--primary)",fontWeight:600,fontSize:".9rem"}},"Ouvrir \u2192")
+                et.ouvrable?h("span",{style:{color:"var(--primary)",fontWeight:600,fontSize:".9rem"}},"Ouvrir \u2192"):null
               )
             );
           })
@@ -5676,7 +5694,9 @@ function AppEleve(p){
         h("h1",null,attente.title),
         h("p",{className:"subtitle"},attente.classe),
         h("p",{style:{fontSize:".95rem",color:"var(--text-sub)",maxWidth:420,margin:"0 auto 18px"}},
-          "Ta copie n\u2019est pas encore corrig\u00e9e. Quand ton professeur l\u2019aura rendue, tu retrouveras ici tes erreurs \u00e0 revoir."),
+          identite&&etatDicteeEleve(attente,identite.cle).code==="nonrendue"
+            ? "Ta copie est corrig\u00e9e, mais ton professeur ne l\u2019a pas encore rendue. Reviens quand elle sera l\u00e0."
+            : "Ta copie n\u2019est pas encore corrig\u00e9e. Quand ton professeur l\u2019aura rendue, tu retrouveras ici tes erreurs \u00e0 revoir."),
         h("button",{className:"btn btn-primary",onClick:function(){setAttente(null);setScreen("mesdictees")}},"\u2190 Mes dict\u00e9es")
       )
     );

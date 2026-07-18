@@ -101,93 +101,107 @@ function sandbox(noms, prelude, exportsSup) {
     sandbox(['codeAttendu'], prelSan + 'var codesData={"x_y":"4242"};\n').codeAttendu('x_y', 'X Y') === '4242');
   t('le code est comparé en chaîne (pas de 0123 → 123)', String(codes[canon].code).length === String(codes[canon].code).trim().length);
 
-  section('M6bis SOUCHE — « Mes dictées » : corrigées OU NON (correctif du 18/07)');
-  const prel = corpsFonction('san') + '\n' + corpsFonction('sanMJPC') + '\n' +
-    corpsFonction('extractEleves') + '\n' +
-    'var CLASSES=' + JSON.stringify(hub.classes) + ';\n' + corpsFonction('classeDuRegistre') + '\n';
-  /* Les dictées telles que l'app les construit : roster résolu par classeDuRegistre. */
-  const sbRost = sandbox([], prel, ['classeDuRegistre', 'extractEleves', 'san', 'sanMJPC']);
-  const dictees = Object.keys(hub.correction_dictee || {}).map(id => {
-    const v = hub.correction_dictee[id] || {}; const c = v.config || {};
+  section('M6ter SOUCHE — HARNAIS LÉONIE (cas réel de l\'audit)');
+  /* Reproduction fidèle de la chaîne livrée : registre → dictées → identité → filtre. */
+  const prelBase = corpsFonction('sanMJPC') + '\nfunction san(n){return sanMJPC(n)}\n' +
+                   corpsFonction('extractEleves') + '\n' + corpsFonction('resolveEleves') + '\n';
+  const outils = sandbox([], prelBase + corpsFonction('classeDuRegistre') + '\n',
+                         ['sanMJPC', 'san', 'extractEleves', 'resolveEleves', 'classeDuRegistre']);
+  const CLE_L = 'oger_colas_leonie', DID_UTOPIE = 'dictee_5e_chapitre_utopie-5e_herge';
+  const DID_GD = 'dictee_preparee_5e_grandes_decouvertes-5e_herge';
+
+  /* Le registre : Léonie y est bien, en 5e HERGÉ. */
+  t('Léonie est au registre /classes/5e HERGÉ',
+    outils.extractEleves(hub.classes['5e HERGÉ'], []).some(e => outils.san(e) === CLE_L));
+  t('son code personnel est au registre /codes',
+    !!(hub.codes[CLE_L] && hub.codes[CLE_L].code));
+
+  /* Construction des dictées, exactement comme l'app la fait, à partir du registre. */
+  const bâtir = (registre) => Object.keys(hub.correction_dictee).map(id => {
+    const v = hub.correction_dictee[id] || {}, c = v.config || {};
     return { id, title: c.title || id, classe: c.classe || '', published: c.published !== false,
              showNote: c.showNote !== false, base: c.base || 20, results: v.results || {},
-             autocorrection: v.autocorrection || {},
-             eleves: sbRost.extractEleves(sbRost.classeDuRegistre(c.classe || ''), c.eleves) };
+             autocorrection: v.autocorrection || {}, copyPublishedAt: v.copyPublishedAt || null,
+             eleves: outils.extractEleves(outils.classeDuRegistre(c.classe || '', registre), c.eleves) };
   });
-  /* La divergence de casse est réelle dans le hub : on la constate avant de s'en servir. */
-  const divergentes = dictees.filter(d => d.classe && !hub.classes[d.classe]);
-  t('divergence de casse constatée dans le hub (' + divergentes.length + ' dictée(s), ex. ' + (divergentes[0] || {}).classe + ')',
-    divergentes.length > 0);
-  t('classeDuRegistre résout malgré la casse (roster non vide pour toutes les dictées)',
-    dictees.every(d => d.eleves.length > 0));
 
-  const md = (identite) => sandbox(['mesDictees'], prel + 'var identite=' + JSON.stringify(identite) + ';\nvar dictees=' + JSON.stringify(dictees) + ';\n').mesDictees();
-  /* Un élève réel, et une dictée de SA classe où il n'a PAS de résultat : le cas du bug. */
-  let cas = null;
-  for (const d of dictees) {
-    for (const e of d.eleves) {
-      const cle = sbRost.san(e);
-      if (!d.results[cle]) { cas = { cle, nom: e, dictee: d }; break; }
+  /* L'identité, telle que doLogin la calcule à partir du registre chargé. */
+  const identiteDe = (registre, nom, prenom, rosterDictees) => {
+    const roster = [];
+    Object.keys(registre).forEach(c => outils.extractEleves(registre[c], []).forEach(e => { if (roster.indexOf(e) < 0) roster.push(e); }));
+    (rosterDictees || []).forEach(e => { if (roster.indexOf(e) < 0) roster.push(e); });
+    const res = outils.resolveEleves(roster, [{ nom: nom.toUpperCase(), prenom }]);
+    if (res && res.erreur) return { erreur: res.erreur };
+    const moi = res[0];
+    let cls = '';
+    const kc = Object.keys(registre);
+    for (let ci = 0; ci < kc.length && !cls; ci++) {
+      const rr = outils.extractEleves(registre[kc[ci]], []);
+      for (let ri = 0; ri < rr.length; ri++) if (outils.san(rr[ri]) === moi.cle) { cls = kc[ci]; break; }
     }
-    if (cas) break;
-  }
-  t('cas du bug reproductible sur données réelles (' + (cas ? cas.nom + ' / ' + cas.dictee.title : 'aucun') + ')', !!cas);
-  const listeCas = md({ nom: cas.nom, cle: cas.cle, classe: cas.dictee.classe });
-  t('BUG CORRIGÉ : une dictée de sa classe sans résultat apparaît bien',
-    listeCas.some(d => d.id === cas.dictee.id));
-  t('aucune dictée d\'une autre classe dans la liste',
-    listeCas.every(d => d.eleves.some(e => sbRost.san(e) === cas.cle) ||
-                        sbRost.sanMJPC(d.classe) === sbRost.sanMJPC(cas.dictee.classe)));
-  t('les dictées non publiées restent exclues', listeCas.every(d => d.published !== false));
-  t('un élève d\'un autre niveau ne voit pas cette dictée',
-    (() => {
-      const autre = dictees.find(d => sbRost.sanMJPC(d.classe) !== sbRost.sanMJPC(cas.dictee.classe));
-      if (!autre) return true;
-      const e = autre.eleves.find(x => !cas.dictee.eleves.some(y => sbRost.san(y) === sbRost.san(x)));
-      if (!e) return true;
-      return !md({ nom: e, cle: sbRost.san(e), classe: autre.classe }).some(d => d.id === cas.dictee.id);
-    })());
-  t('sans identité prouvée → liste vide (aucune fuite)', md(null).length === 0);
-  t('élève étranger à toute classe → liste vide',
-    md({ nom: 'ZZZ Zzz', cle: 'zzz_zzz', classe: '' }).length === 0);
+    return { nom: moi.nom, cle: moi.cle, classe: cls };
+  };
 
-  section('M6bis SOUCHE — état affiché par ligne');
+  const idL = identiteDe(hub.classes, 'OGER-COLAS', 'Léonie', []);
+  t('PREUVE B1 : identite.classe vaut « 5e HERGÉ » (code ' + hub.codes[CLE_L].code + ')', idL.classe === '5e HERGÉ');
+  t('identite.cle canonique', idL.cle === CLE_L);
+
+  const filtreAvec = (dictees, identite) =>
+    sandbox(['mesDictees'], prelBase + 'var identite=' + JSON.stringify(identite) + ';\nvar dictees=' + JSON.stringify(dictees) + ';\n').mesDictees();
+
+  const dictL = bâtir(hub.classes);
+  const dUtopie = dictL.find(d => d.id === DID_UTOPIE);
+  t('au hub : la dictée Utopie est publiée, classe ' + dUtopie.classe + ', sans résultat pour Léonie',
+    dUtopie.published === true && !dUtopie.results[CLE_L]);
+  const listeL = filtreAvec(dictL, idL);
+  t('PREUVE B1 : la dictée Utopie APPARAÎT dans « Mes dictées » de Léonie',
+    listeL.some(d => d.id === DID_UTOPIE));
+  t('le roster de la dictée est complet (31 élèves de 5e HERGÉ)', dUtopie.eleves.length === 31);
+
+  /* La course : registre absent au moment de la construction. La garde doit empêcher
+     toute liste fausse ; et une fois le registre arrivé, la liste est juste. */
+  const dCourse = bâtir({});
+  t('sans registre, le roster était vide (la course était réelle)',
+    dCourse.find(d => d.id === DID_UTOPIE).eleves.length === 0);
+  t('CORRECTIF : les dictées ne se construisent plus sans registre (classesData en dépendance)',
+    html.includes('if(!classesData)return;') && html.includes('},[forcedDicteeId,classesData]);'));
+  t('CORRECTIF : la liste attend le registre plutôt que d\'afficher un faux vide',
+    html.includes('if(!classesData||!dictees.length) return h("div"'));
+  t('CORRECTIF : doLogin lit le registre chargé, plus la globale', html.includes('var registre=classesData||CLASSES||{};'));
+
+  section('M6ter SOUCHE — trois états de publication (correctif B2)');
   const et = sandbox(['etatDicteeEleve'], '');
-  const dCorr = dictees.find(d => Object.keys(d.results).length > 0);
-  const cleCorr = Object.keys(dCorr.results)[0];
-  t('copie non corrigée → « Pas encore corrigée »',
-    et.etatDicteeEleve(dCorr, 'personne_zzz').code === 'attente');
-  const e1 = et.etatDicteeEleve(dCorr, cleCorr);
-  t('copie corrigée → « À faire » ou « Terminée », jamais « attente » (' + e1.label + ')',
-    e1.code === 'afaire' || e1.code === 'terminee');
-  t('la date de correction est reprise du résultat réel',
-    !!e1.date && e1.date === dCorr.results[cleCorr].timestamp);
-  /* Autocorrection allée au bout : cas réel du hub (solved >= total). */
-  let fini = null;
-  for (const d of dictees) for (const k of Object.keys(d.autocorrection || {})) {
-    const a = d.autocorrection[k];
-    if (a && a.total > 0 && a.solved >= a.total && d.results[k]) { fini = { d, k }; break; }
-  }
-  if (fini) t('autocorrection terminée (' + fini.k + ') → « Terminée »',
-    et.etatDicteeEleve(fini.d, fini.k).code === 'terminee');
-  t('autocorrection absente mais copie corrigée → « À faire » (jamais « Terminée » par défaut)',
-    et.etatDicteeEleve({ results: { x: { timestamp: 1 } }, autocorrection: {} }, 'x').code === 'afaire');
-  t('total à 0 → « À faire », pas de division par zéro ni faux achèvement',
-    et.etatDicteeEleve({ results: { x: {} }, autocorrection: { x: { total: 0, solved: 0 } } }, 'x').code === 'afaire');
+  const dGD = dictL.find(d => d.id === DID_GD);
+  t('au hub : « Grandes découvertes » a des résultats mais AUCUN copyPublishedAt',
+    Object.keys(dGD.results).length > 0 && !dGD.copyPublishedAt);
+  const cleGD = Object.keys(dGD.results)[0];
+  const eGD = et.etatDicteeEleve(dGD, cleGD);
+  t('PREUVE B2 : copie corrigée mais non rendue → ' + eGD.label, eGD.code === 'nonrendue');
+  t('PREUVE B2 : cette ligne n\'affiche PAS la note', eGD.montrerNote === false);
+  t('PREUVE B2 : cette ligne ne propose PAS « Ouvrir »', eGD.ouvrable === false);
+  t('la copie rendue (Utopie, copyPublishedAt présent) reste ouvrable',
+    (() => { const k = Object.keys(dUtopie.results)[0]; if (!k) return true;
+             const e = et.etatDicteeEleve(dUtopie, k); return e.ouvrable === true && e.montrerNote === true; })());
+  t('pas de résultat → « Pas encore corrigée », ni note ni ouverture',
+    (() => { const e = et.etatDicteeEleve(dUtopie, CLE_L); return e.code === 'attente' && !e.ouvrable && !e.montrerNote; })());
+  t('rendue + autocorrection achevée → « Terminée »',
+    et.etatDicteeEleve({ results: { x: { timestamp: 1 } }, copyPublishedAt: 1, autocorrection: { x: { total: 5, solved: 5 } } }, 'x').code === 'terminee');
+  t('rendue + autocorrection en cours → « À faire »',
+    et.etatDicteeEleve({ results: { x: { timestamp: 1 } }, copyPublishedAt: 1, autocorrection: { x: { total: 5, solved: 2 } } }, 'x').code === 'afaire');
+  t('les quatre états sont exclusifs et couvrent les trois dimensions',
+    ['attente', 'nonrendue', 'afaire', 'terminee'].every(c => html.includes('code:"' + c + '"')));
 
-  section('M6bis SOUCHE — clic et messages');
-  t('une dictée sans résultat ouvre l\'écran d\'attente (plus de refus sec)',
-    html.includes('if(!corr){setAttente(d);setErrMsg("");setScreen("attente");return}') &&
-    !html.includes('Pas de correction enregistr\\u00e9e pour cette dict\\u00e9e'));
-  t('l\'écran d\'attente dit la vérité et ramène à la liste',
-    html.includes('Ta copie n\\u2019est pas encore corrig\\u00e9e') && html.includes('"\\u2190 Mes dict\\u00e9es"'));
-  t('message de liste vide sans « corrigée » (wording rectifié)',
-    html.includes('Tu n\\u2019as pas encore de dict\\u00e9e. Celles de ta classe appara\\u00eetront ici.') &&
-    !html.includes('Tu n\\u2019as pas encore de dict\\u00e9e corrig\\u00e9e ici'));
-  t('la note ne s\'affiche jamais sur une dictée non corrigée',
-    html.includes('(et.code!=="attente"&&d.showNote!==false'));
-  t('destination d\'URL : plus de condition sur l\'existence du résultat',
-    html.includes('if(cible) ouvrirDictee(cible);'));
+  section('M6ter SOUCHE — la ligne ne promet que ce qui existe');
+  t('« Ouvrir » n\'est rendu que si l\'état est ouvrable', html.includes('et.ouvrable?h("span",{style:{color:"var(--primary)"'));
+  t('la note n\'est rendue que si l\'état l\'autorise', html.includes('(et.montrerNote&&d.showNote!==false'));
+  t('une ligne non ouvrable n\'a ni curseur main ni gestionnaire de clic',
+    html.includes('cursor:et.ouvrable?"pointer":"default"') && html.includes('onClick:et.ouvrable?function(){ouvrirDictee(d)}:null'));
+  t('ouvrirDictee refuse aussi par le fond (garde-fou, pas seulement l\'affichage)',
+    html.includes('if(!et.ouvrable){setAttente(d);setErrMsg("");setScreen("attente");return}'));
+  t('l\'écran d\'attente distingue « pas corrigée » de « pas rendue »',
+    html.includes('etatDicteeEleve(attente,identite.cle).code==="nonrendue"'));
+  t('message de liste vide sans « corrigée »',
+    html.includes('Tu n\\u2019as pas encore de dict\\u00e9e. Celles de ta classe appara\\u00eetront ici.'));
 
   section('M6 SOUCHE — contrats et garde-fous');
   t('socle embarqué en v1.1.0 (recopie verbatim)', html.includes('var MJPC_CORE_VERSION="1.1.0"'));

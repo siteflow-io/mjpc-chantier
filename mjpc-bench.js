@@ -201,7 +201,7 @@ function sandbox(noms, prelude, exportsSup) {
   t('l\'écran d\'attente distingue les TROIS situations (absent · pas corrigée · pas rendue)',
     html.includes('var e=identite?etatDicteeEleve(attente,identite.cle):{code:"attente"};') &&
     html.includes('e.code==="absent"') && html.includes('e.code==="nonrendue"') &&
-    html.includes('Ta copie n\\u2019est pas encore corrig\\u00e9e'));
+    html.includes('Je n\\u2019ai pas encore corrig\\u00e9 ta copie'));
   t('message de liste vide sans « corrigée »',
     html.includes('Tu n\\u2019as pas encore de dict\\u00e9e. Celles de ta classe appara\\u00eetront ici.'));
 
@@ -248,8 +248,8 @@ function sandbox(noms, prelude, exportsSup) {
     !/rattrapage\.(?!$)/.test(html) && !/\.rattrapage\[/.test(html));
   t('l\'écran d\'attente réserve l\'emplacement du rattrapage sans rien coder',
     html.includes('Emplacement du RATTRAPAGE MODAL'));
-  t('l\'élève absent est orienté vers son professeur, pas laissé sans suite',
-    html.includes('Vois avec ton professeur comment la rattraper'));
+  t('l\'élève absent est orienté vers le professeur (à la 1re personne), pas laissé sans suite',
+    html.includes('Vois avec moi comment la rattraper, si c\\u2019est possible.'));
 
   section('M6ter SOUCHE — le vocabulaire de l\'élève (complément d\'audit)');
   /* Extraction des composants vus par l'élève, pour interroger leurs textes. */
@@ -268,17 +268,59 @@ function sandbox(noms, prelude, exportsSup) {
     !html.includes('Le professeur ne l\\u2019a pas encore publi\\u00e9e'));
   t('message d\'arrivée corrigé : « Ta correction n\'est pas encore consultable »',
     html.includes('Ta correction n\\u2019est pas encore consultable') &&
-    html.includes('Ton professeur ne l\\u2019a pas encore rendue. Reviens un peu plus tard.'));
-  t('vocabulaire unifié : « rendre » partout où la copie manque (liste, attente, arrivée)',
+    html.includes('Je ne l\\u2019ai pas encore rendue. Reviens un peu plus tard.'));
+  t('vocabulaire unifié : « rendre » à la 1re personne partout où la copie manque',
     html.includes('Corrig\\u00e9e, pas encore rendue') &&
-    html.includes('ton professeur ne l\\u2019a pas encore rendue') &&
-    html.includes('Ton professeur ne l\\u2019a pas encore rendue'));
+    html.includes('mais je ne l\\u2019ai pas encore rendue') &&
+    html.includes('Je ne l\\u2019ai pas encore rendue') &&
+    html.includes('Quand je te l\\u2019aurai rendue'));
   t('la logique de MaCopie est intacte (seules deux chaînes ont changé)',
     corpsDe('MaCopie').includes('if(!pubAt){') && corpsDe('MaCopie').includes('/copyPublishedAt'));
   t('les trois dimensions restent croisées (published · copyPublishedAt · results)',
     html.includes('if(!d.copyPublishedAt) return {code:"nonrendue"') &&
     html.includes('if(d.published===false)return false;') &&
     html.includes('var corr=d.results?d.results[cle]:null;'));
+
+  section('M6quinquies SOUCHE — point 28 : « l\'app, c\'est moi »');
+  const corpsDe28 = (nom) => { const i = html.indexOf('function ' + nom + '('); let d = 0;
+    for (let k = html.indexOf('{', i); k < html.length; k++) {
+      if (html[k] === '{') d++; else if (html[k] === '}') { d--; if (!d) return html.slice(i, k + 1); } } return ''; };
+  const sansCom28 = (src) => src.split('\n').filter(l => !/^\s*\/\//.test(l)).join('\n');
+  /* Les prompts destinés à l'IA sont écrits PAR le professeur, pas adressés à l'élève :
+     on les exclut par leur signature (« Tu es un professeur… », « {{JSON_DICTEE}} »). */
+  const textes28 = ['AppEleve', 'MaCopie', 'EleveCorrection', 'ExercicesEleve']
+    .map(n => sansCom28(corpsDe28(n))).join('\n')
+    .match(/"[^"]{8,}"/g)
+    .filter(x => !/[{};]|=>|h\(|JSON_DICTEE|Tu es un professeur|solid |rgba\(/.test(x));
+  t('aucun texte élève ne parle du professeur à la 3e personne',
+    !textes28.some(x => /\b(ton |le |du |au )?(professeur|prof)\b/i.test(x)));
+  t('les 5 messages d\'AppEleve sont à la première personne',
+    html.includes('Je n\\u2019ai pas encore enregistr\\u00e9 de code pour toi. Viens me le demander.') &&
+    html.includes('viens me le demander.') &&
+    html.includes('Vois avec moi comment la rattraper, si c\\u2019est possible.') &&
+    html.includes('mais je ne l\\u2019ai pas encore rendue') &&
+    html.includes('Je n\\u2019ai pas encore corrig\\u00e9 ta copie. Quand je te l\\u2019aurai rendue'));
+  t('MaCopie : « Je ne l\'ai pas encore rendue »', html.includes('Je ne l\\u2019ai pas encore rendue. Reviens un peu plus tard.'));
+  t('EleveCorrection : ses 4 mentions sont converties (vérifié dans le composant)',
+    (() => { const c = corpsDe28('EleveCorrection');
+      return c.includes('c\\u2019est moi qui la calcule sur ta copie papier') &&
+             c.includes('Clique ici quand je te le demande') &&
+             c.includes('o\\u00f9 j\\u2019ai sign\\u00e9 ta graphie') &&
+             c.includes('J\\u2019ai sign\\u00e9 ta graphie ici'); })());
+  t('Fiches (imprimées et remises aux élèves) : mention convertie',
+    corpsDe28('Fiches').includes('J\\u2019ai h\\u00e9sit\\u00e9 \\u00e0 mettre illisible'));
+  t('DÉPASSEMENT RÉPARÉ : l\'infobulle du tableau prof (Suivi) est restaurée à l\'identique',
+    corpsDe28('Suivi').includes('Note de la dict\\u00e9e (corrig\\u00e9e par le prof)') &&
+    !corpsDe28('Suivi').includes('que j\\u2019ai corrig\\u00e9e'));
+  t('ExercicesEleve : les 2 mentions sont converties',
+    html.includes('Je la corrigerai \\u00e0 la main') && html.includes(', que je corrigerai.'));
+  t('le libellé prof « Accès professeur » est conservé (ce n\'est pas un texte élève)',
+    html.includes('"Acc\\u00e8s professeur"'));
+  t('les prompts IA ne sont pas touchés (écrits par le professeur, pas lus par l\'élève)',
+    html.includes('Tu es un professeur de fran\\u00e7ais expert en didactique'));
+  t('la logique des écrans de travail reste intacte (seules des chaînes ont changé)',
+    corpsDe28('EleveCorrection').includes('totalErrorsRef') && corpsDe28('ExercicesEleve').includes('exCheckItem') !== undefined &&
+    corpsDe28('MaCopie').includes('if(!pubAt){'));
 
   section('M6 SOUCHE — contrats et garde-fous');
   t('socle embarqué en v1.1.0 (recopie verbatim)', html.includes('var MJPC_CORE_VERSION="1.1.0"'));

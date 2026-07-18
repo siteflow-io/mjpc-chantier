@@ -203,6 +203,35 @@ function sandbox(noms, prelude, exportsSup) {
   t('message de liste vide sans « corrigée »',
     html.includes('Tu n\\u2019as pas encore de dict\\u00e9e. Celles de ta classe appara\\u00eetront ici.'));
 
+  section('M6ter SOUCHE — le vocabulaire de l\'élève (complément d\'audit)');
+  /* Extraction des composants vus par l'élève, pour interroger leurs textes. */
+  const corpsDe = (nom) => { const i = html.indexOf('function ' + nom + '('); let d = 0;
+    for (let k = html.indexOf('{', i); k < html.length; k++) {
+      if (html[k] === '{') d++; else if (html[k] === '}') { d--; if (!d) return html.slice(i, k + 1); } } return ''; };
+  /* Les commentaires du code sont retirés d'abord : sans cela l'extraction enjambe
+     un commentaire et le prend pour un texte affiché (faux positif constaté). */
+  const sansCommentaires = (src) => src.split('\n').filter(l => !/^\s*\/\//.test(l)).join('\n');
+  const textesEleve = ['AppEleve', 'MaCopie', 'EleveCorrection', 'ExercicesEleve']
+    .map(n => sansCommentaires(corpsDe(n))).join('\n')
+    .match(/"[^"]{12,}"/g).filter(x => /[a-zéèêàûôç]{4,}\s/i.test(x) && !/[{};]|=>|h\(/.test(x));
+  t('aucun texte montré à l\'élève ne parle de « publier » (notion interne)',
+    !textesEleve.some(x => /publi[ée]/i.test(x)));
+  t('le message faux a disparu (« Le professeur ne l\'a pas encore publiée »)',
+    !html.includes('Le professeur ne l\\u2019a pas encore publi\\u00e9e'));
+  t('message d\'arrivée corrigé : « Ta correction n\'est pas encore consultable »',
+    html.includes('Ta correction n\\u2019est pas encore consultable') &&
+    html.includes('Ton professeur ne l\\u2019a pas encore rendue. Reviens un peu plus tard.'));
+  t('vocabulaire unifié : « rendre » partout où la copie manque (liste, attente, arrivée)',
+    html.includes('Corrig\\u00e9e, pas encore rendue') &&
+    html.includes('ton professeur ne l\\u2019a pas encore rendue') &&
+    html.includes('Ton professeur ne l\\u2019a pas encore rendue'));
+  t('la logique de MaCopie est intacte (seules deux chaînes ont changé)',
+    corpsDe('MaCopie').includes('if(!pubAt){') && corpsDe('MaCopie').includes('/copyPublishedAt'));
+  t('les trois dimensions restent croisées (published · copyPublishedAt · results)',
+    html.includes('if(!d.copyPublishedAt) return {code:"nonrendue"') &&
+    html.includes('if(d.published===false)return false;') &&
+    html.includes('var corr=d.results?d.results[cle]:null;'));
+
   section('M6 SOUCHE — contrats et garde-fous');
   t('socle embarqué en v1.1.0 (recopie verbatim)', html.includes('var MJPC_CORE_VERSION="1.1.0"'));
   t('les 12 fonctions du socle sont présentes une seule fois',

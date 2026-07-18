@@ -1957,7 +1957,7 @@ function EditeurTextes(){
   return h("div",{className:"card"},
     h("h2",null,"Ce que lisent les \u00e9l\u00e8ves"),
     h("p",{style:{fontSize:".85rem",color:"var(--text-sub)",marginTop:0}},
-      "Ces phrases s\u2019affichent \u00e0 l\u2019\u00e9cran de tes \u00e9l\u00e8ves. Modifie-les librement\u00a0: un champ laiss\u00e9 vide revient au texte d\u2019origine.",
+      h("strong",null,"\u00c9diteur des messages \u00e9l\u00e8ve."),"\u00a0Ces phrases s\u2019affichent \u00e0 l\u2019\u00e9cran de tes \u00e9l\u00e8ves. Modifie-les librement\u00a0: un champ laiss\u00e9 vide revient au texte d\u2019origine.",
       ifo("Les messages qui CONSTATENT un \u00e9tat (\u00ab\u00a0Pas encore corrig\u00e9e\u00a0\u00bb, \u00ab\u00a0Tu \u00e9tais absent(e)\u00a0\u00bb) restent fixes. Seuls les messages qui ANNONCENT quelque chose sont modifiables ici, parce qu\u2019eux d\u00e9pendent de ton organisation.",{below:true})
     ),
     TEXTES_CHAMPS.map(function(c){
@@ -4927,9 +4927,9 @@ function Copies(p){
   }
 
   function depublierCopies(){
-    if(!confirm("D\u00e9publier ? Les \u00e9l\u00e8ves ne pourront plus acc\u00e9der \u00e0 leur copie via le lien partag\u00e9."))return;
+    if(!confirm("Masquer les copies ? Les \u00e9l\u00e8ves ne pourront plus acc\u00e9der \u00e0 leur copie via le lien partag\u00e9."))return;
     db.ref("correction_dictee/"+dicteeId+"/copyPublishedAt").remove();
-    setPubMsg("\u2705 Copies retir\u00e9es");
+    setPubMsg("\u2705 Copies masqu\u00e9es");
     setTimeout(function(){setPubMsg("")},3000);
   }
 
@@ -5151,7 +5151,7 @@ function Copies(p){
           h("div",{style:{display:"flex",gap:8,flexWrap:"wrap"}},
             h("button",{className:"btn btn-primary",onClick:publierCopies,disabled:done.length===0,title:copyPublishedAt?"Rendre \u00e0 nouveau (les modifications faites depuis seront visibles)":"Rendre les copies aux \u00e9l\u00e8ves (avec les options et le bilan actuels)"},copyPublishedAt?"\ud83d\udd04 Rendre \u00e0 nouveau":"\ud83d\udce4 Rendre les copies ("+done.length+" copies)"),
             copyPublishedAt&&h("button",{className:"btn btn-ghost",onClick:copierLienPartage,title:"Copier le lien \u00e0 coller dans \u00c9cole Directe"},"\ud83d\udd17 Copier le lien"),
-            copyPublishedAt&&h("button",{className:"btn btn-ghost",onClick:depublierCopies,style:{color:"#c53030",borderColor:"rgba(197,48,48,.2)",fontSize:".82rem"},title:"Retirer les copies (les \u00e9l\u00e8ves perdront l\u2019acc\u00e8s)"},"\u2715 Retirer les copies")
+            copyPublishedAt&&h("button",{className:"btn btn-ghost",onClick:depublierCopies,style:{color:"#c53030",borderColor:"rgba(197,48,48,.2)",fontSize:".82rem"},title:"Masquer les copies (les \u00e9l\u00e8ves perdront l\u2019acc\u00e8s)"},"\ud83d\ude48 Masquer les copies")
           ),
           pubMsg&&h("div",{style:{marginTop:8,padding:"6px 10px",borderRadius:6,fontSize:".82rem",fontWeight:600,background:pubMsg.indexOf("\u274c")===0?"rgba(197,48,48,.1)":"rgba(72,160,87,.12)",color:pubMsg.indexOf("\u274c")===0?"#9f1c2d":"#1b6a30"}},pubMsg)
         ),
@@ -5789,20 +5789,6 @@ function AppEleve(p){
     if(!nom||!prenom){setErrMsg("Entre ton nom et ton pr\u00e9nom.");return}
     if(!code){setErrMsg("Entre ton code personnel (4 chiffres).");return}
 
-    // Profil de test du professeur — conservé (bac à sable, aucun code requis)
-    if(nom==="MENEY"&&prenom.toLowerCase()==="monsieur"){
-      var testDict=null;
-      for(var ti=0;ti<dictees.length;ti++){if(dictees[ti].tokens.length>0){testDict=dictees[ti];break}}
-      if(!testDict){setErrMsg("Aucune dict\u00e9e configur\u00e9e.");return}
-      var testErrors=[];var testTokens=testDict.tokens;
-      for(var tw=0;tw<testTokens.length&&testErrors.length<5;tw++){
-        if(!isPunct(testTokens[tw])&&testTokens[tw].length>2){
-          testErrors.push({idx:tw,type:testErrors.length%2===0?"G":"L",word:testTokens[tw]});
-        }
-      }
-      setEleveData({eleve:"MENEY Monsieur",dictee:testDict,key:"meney_monsieur",errors:testErrors,extras:[],note:7.5,base:testDict.base});
-      setScreen("correction");return;
-    }
 
     // Le nom doit exister dans un roster (le registre officiel fait foi)
     var registre=classesData||CLASSES||{};
@@ -7793,7 +7779,7 @@ function EleveCorrection(p){
     h("div",{style:{display:"flex",gap:8,marginTop:12,justifyContent:"center",paddingBottom:30,flexWrap:"wrap"}},
       h("button",{className:"btn btn-ghost",onClick:p.onBack},"\u2190 Retour"),
       p.onExercices&&h("button",{className:"btn btn-primary",onClick:p.onExercices,title:"Passe \u00e0 tes exercices personnalis\u00e9s"},"\ud83c\udfaf Mes exercices"),
-      d.key==="meney_monsieur"&&h("button",{className:"btn-sm btn-ghost",style:{color:"var(--coral)",borderColor:"rgba(197,48,48,.2)"},onClick:function(){
+      estClasseTest(d.dictee&&d.dictee.classe)&&h("button",{className:"btn-sm btn-ghost",style:{color:"var(--coral)",borderColor:"rgba(197,48,48,.2)"},onClick:function(){
         if(confirm("Recommencer la correction ? Ta progression sera effac\u00e9e.")){
           db.ref("correction_dictee/"+d.dictee.id+"/autocorrection/"+d.key).remove();
           setAttempts({});setResults({});setHistory({});setFinished(false);

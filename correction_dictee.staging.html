@@ -4047,7 +4047,7 @@ function Fiches(p){
       var n=1;
       errors.forEach(function(err){
         var typeLabel=err.type==="G"?"Grammaire":err.type==="L"?"Lexique":err.type==="M"?"Mot manquant":err.type==="P"?"Ponctuation manquante":err.type==="A"?"Attention \u00e0 ta graphie":"Illisible";
-        var hint=err.type==="G"?"Accords, conjugaison, homophones...":err.type==="L"?"Orthographe, accents, majuscules...":err.type==="M"?"Un mot a \u00e9t\u00e9 oubli\u00e9 dans la copie":err.type==="P"?"Un signe de ponctuation manquait (. , ; : ? !)":err.type==="A"?"Ton prof a h\u00e9sit\u00e9 \u00e0 mettre illisible. Aucun point retir\u00e9, mais soigne le trac\u00e9 \u00e0 l\u2019avenir.":"Le mot n\u2019\u00e9tait pas lisible";
+        var hint=err.type==="G"?"Accords, conjugaison, homophones...":err.type==="L"?"Orthographe, accents, majuscules...":err.type==="M"?"Un mot a \u00e9t\u00e9 oubli\u00e9 dans la copie":err.type==="P"?"Un signe de ponctuation manquait (. , ; : ? !)":err.type==="A"?"J\u2019ai h\u00e9sit\u00e9 \u00e0 mettre illisible. Aucun point retir\u00e9, mais soigne le trac\u00e9 \u00e0 l\u2019avenir.":"Le mot n\u2019\u00e9tait pas lisible";
         var numCls="err-num err-num-"+err.type.toLowerCase();
         var typeCls="err-type err-type-"+err.type.toLowerCase();
         html+='<div class="err-row">';
@@ -5338,7 +5338,7 @@ function MaCopie(p){
       h("div",{className:"card",style:{textAlign:"center",padding:30}},
         h("div",{style:{fontSize:"2rem",marginBottom:10}},"\u23f3"),
         h("h2",{style:{marginTop:0}},"Ta correction n\u2019est pas encore consultable"),
-        h("p",{style:{color:"var(--muted)"}},"Ton professeur ne l\u2019a pas encore rendue. Reviens un peu plus tard."),
+        h("p",{style:{color:"var(--muted)"}},"Je ne l\u2019ai pas encore rendue. Reviens un peu plus tard."),
         h("button",{className:"btn btn-ghost",style:{marginTop:14},onClick:p.onLogout},"\u2190 Retour")
       )
     );
@@ -5613,7 +5613,7 @@ function AppEleve(p){
     var moi=res[0];
 
     var attendu=codeAttendu(moi.cle,moi.nom);
-    if(!attendu){setErrMsg("Aucun code n\u2019est enregistr\u00e9 pour toi. Demande \u00e0 ton professeur.");return}
+    if(!attendu){setErrMsg("Je n\u2019ai pas encore enregistr\u00e9 de code pour toi. Viens me le demander.");return}
     if(String(code)!==String(attendu)){setErrMsg("Ce code ne correspond pas. V\u00e9rifie tes 4 chiffres.");return}
 
     setErrMsg("");
@@ -5646,7 +5646,7 @@ function AppEleve(p){
           h("input",{value:prenomInput,onChange:function(e){setPrenomInput(e.target.value)},placeholder:"Marie",onKeyDown:function(e){if(e.key==="Enter")doLogin()}})),
         errMsg&&h("p",{style:{color:"var(--coral)",fontSize:".88rem",marginBottom:8}},errMsg),
         h("button",{className:"btn btn-primary",style:{width:"100%"},onClick:doLogin},"Entrer"),
-        h("p",{style:{fontSize:".78rem",color:"var(--muted)",marginTop:10,marginBottom:0}},"Ton code est le m\u00eame que sur le site MJPC. Si tu l\u2019as oubli\u00e9, demande-le \u00e0 ton professeur.")
+        h("p",{style:{fontSize:".78rem",color:"var(--muted)",marginTop:10,marginBottom:0}},"Ton code est le m\u00eame que sur le site MJPC. Si tu l\u2019as oubli\u00e9, viens me le demander.")
       )
     ),
     h("button",{className:"btn-sm btn-ghost",style:{marginTop:12},onClick:p.onBack},"\u2190 Retour")
@@ -5707,10 +5707,10 @@ function AppEleve(p){
         (function(){
           var e=identite?etatDicteeEleve(attente,identite.cle):{code:"attente"};
           var txt = e.code==="absent"
-              ? "Tu n\u2019\u00e9tais pas l\u00e0 le jour de cette dict\u00e9e. Vois avec ton professeur comment la rattraper."
+              ? "Tu n\u2019\u00e9tais pas l\u00e0 le jour de cette dict\u00e9e. Vois avec moi comment la rattraper, si c\u2019est possible."
             : e.code==="nonrendue"
-              ? "Ta copie est corrig\u00e9e, mais ton professeur ne l\u2019a pas encore rendue. Reviens quand elle sera l\u00e0."
-              : "Ta copie n\u2019est pas encore corrig\u00e9e. Quand ton professeur l\u2019aura rendue, tu retrouveras ici tes erreurs \u00e0 revoir.";
+              ? "Ta copie est corrig\u00e9e, mais je ne l\u2019ai pas encore rendue. Reviens quand elle sera l\u00e0."
+              : "Je n\u2019ai pas encore corrig\u00e9 ta copie. Quand je te l\u2019aurai rendue, tu retrouveras ici tes erreurs \u00e0 revoir.";
           return h("p",{style:{fontSize:".95rem",color:"var(--text-sub)",maxWidth:420,margin:"0 auto 18px"}},txt);
         })(),
         /* Emplacement du RATTRAPAGE MODAL (chantier X) : quand e.rattrapage sera
@@ -6884,7 +6884,7 @@ function ExercicesEleve(p){
         h("div",{style:{fontSize:"2.4rem",marginBottom:8}},"\ud83c\udf89"),
         h("h2",{style:{margin:"0 0 6px",color:"#1b6a30"}},"Bravo, tu as termin\u00e9 tous tes exercices !"),
         totalAuto > 0 && h("p",{style:{fontSize:"1.05rem",margin:"8px 0",fontWeight:600}},"Score auto-corrig\u00e9 : "+totalOk+" / "+totalAuto+" bonnes r\u00e9ponses"),
-        totalSaisi > 0 && h("p",{style:{fontSize:".88rem",color:"var(--muted)",margin:"4px 0",fontStyle:"italic"}},totalSaisi+" exercice"+(totalSaisi>1?"s":"")+" de production (\u00e9criture / copie) enregistr\u00e9"+(totalSaisi>1?"s":"")+", \u00e0 corriger par le professeur."),
+        totalSaisi > 0 && h("p",{style:{fontSize:".88rem",color:"var(--muted)",margin:"4px 0",fontStyle:"italic"}},totalSaisi+" exercice"+(totalSaisi>1?"s":"")+" de production (\u00e9criture / copie) enregistr\u00e9"+(totalSaisi>1?"s":"")+", que je corrigerai."),
         p.onBack && h("button",{className:"btn btn-primary",style:{marginTop:14},onClick:p.onBack},"\u2190 Quitter")
       ),
       h("div",{className:"card",style:{textAlign:"center"}},
@@ -7068,7 +7068,7 @@ function ExercicesEleve(p){
           placeholder:"\u00c9cris ici\u2026",
           rows:nLignes,
           style:{width:"100%",minHeight:Math.max(80, nLignes*22),padding:"10px 14px",fontSize:"1rem",border:"2px solid "+(validated?(validated.ok?"var(--green)":"var(--coral)"):"var(--primary)"),borderRadius:8,background:validated?(validated.ok?"rgba(72,160,87,.06)":"rgba(197,48,48,.06)"):"var(--card)",fontFamily:"inherit",resize:"vertical",lineHeight:1.5}}),
-        validated&&validated.ok&&h("div",{style:{marginTop:10,padding:"8px 12px",background:"rgba(43,108,203,.08)",borderRadius:6,fontSize:".82rem",fontStyle:"italic",color:"var(--muted)"}},"\u270d Ta r\u00e9ponse a \u00e9t\u00e9 enregistr\u00e9e. Le professeur la corrigera \u00e0 la main.")
+        validated&&validated.ok&&h("div",{style:{marginTop:10,padding:"8px 12px",background:"rgba(43,108,203,.08)",borderRadius:6,fontSize:".82rem",fontStyle:"italic",color:"var(--muted)"}},"\u270d Ta r\u00e9ponse a \u00e9t\u00e9 enregistr\u00e9e. Je la corrigerai \u00e0 la main.")
       );
     }
     return h("div",null,"Type d'item inconnu : "+item.type);
@@ -7461,7 +7461,7 @@ function EleveCorrection(p){
         h("p",{style:{fontSize:".85rem",color:"var(--muted)",marginTop:6}},"Sois discret et respectueux. Si tu ne travailles pas s\u00e9rieusement, tu te verras sanctionn\u00e9.")
       ),
       h("div",{style:{marginTop:10,padding:"10px 14px",background:"var(--primary-light)",borderRadius:8,fontSize:".85rem",lineHeight:1.6}},
-        h("strong",null,"\u00c0 savoir : "),"ta note de dict\u00e9e est calcul\u00e9e par ton professeur sur ta copie papier. Le bonus autocorrection /5 est un suppl\u00e9ment que tu gagnes en retrouvant tes erreurs ici \u2014 il ne modifie pas la note de dict\u00e9e."
+        h("strong",null,"\u00c0 savoir : "),"ta note de dict\u00e9e, c\u2019est moi qui la calcule sur ta copie papier. Le bonus autocorrection /5 est un suppl\u00e9ment que tu gagnes en retrouvant tes erreurs ici \u2014 il ne modifie pas la note de dict\u00e9e."
       )
     ),
     // Détail de la note (si note révélée)
@@ -7652,7 +7652,7 @@ function EleveCorrection(p){
       ),
       h("div",{style:{display:"flex",flexDirection:"column",gap:4}},
         h("button",{className:"btn-sm btn-ghost",style:{fontSize:".8rem",padding:"4px 10px"},onClick:p.onBack},"\u2190"),
-        h("button",{className:"btn-sm btn-ghost",style:{fontSize:".7rem",padding:"3px 8px",color:"var(--primary)"},onClick:function(){window.location.reload()}},"\ud83d\udd04",ifo("Recharge la page. Clique ici quand le professeur te le demande.",{below:true,right:true}))
+        h("button",{className:"btn-sm btn-ghost",style:{fontSize:".7rem",padding:"3px 8px",color:"var(--primary)"},onClick:function(){window.location.reload()}},"\ud83d\udd04",ifo("Recharge la page. Clique ici quand je te le demande.",{below:true,right:true}))
       )
     ),
     // Text with masked words
@@ -7666,7 +7666,7 @@ function EleveCorrection(p){
             "\ud83d\udccc "+extras.length+" mot"+(extras.length>1?"s":"")+" en trop dans ta copie (barr\u00e9"+(extras.length>1?"s":"")+" en bleu dans le texte) \u2014 \u22120,5 pt chacun"
           ),
           nA>0&&h("div",{style:{color:"#b7791f",fontWeight:600,marginTop:extras.length>0?6:0}},
-            "\u26a0 "+nA+" mot"+(nA>1?"s":"")+" o\u00f9 ton prof a sign\u00e9 ta graphie (soulign\u00e9"+(nA>1?"s":"")+" en orange) \u2014 aucun point retir\u00e9, mais soigne le trac\u00e9"
+            "\u26a0 "+nA+" mot"+(nA>1?"s":"")+" o\u00f9 j\u2019ai sign\u00e9 ta graphie (soulign\u00e9"+(nA>1?"s":"")+" en orange) \u2014 aucun point retir\u00e9, mais soigne le trac\u00e9"
           )
         );
       })(),
@@ -7684,7 +7684,7 @@ function EleveCorrection(p){
           }
           // Type A : signalement de graphie, affiché en clair, non cliquable, ne compte pas dans la note
           if(err.type==="A"){
-            acc.push(h("span",{key:"w"+i,className:"word-btn err-a",style:{cursor:"default"},title:"Ton prof a sign\u00e9 ta graphie ici. Aucun point retir\u00e9."},w,h("sub",{style:{fontSize:8,marginLeft:2}},"\u26a0")));
+            acc.push(h("span",{key:"w"+i,className:"word-btn err-a",style:{cursor:"default"},title:"J\u2019ai sign\u00e9 ta graphie ici. Aucun point retir\u00e9."},w,h("sub",{style:{fontSize:8,marginLeft:2}},"\u26a0")));
             return acc;
           }
           var solved=results[err.errIdx];

@@ -201,7 +201,7 @@ function sandbox(noms, prelude, exportsSup) {
   t('l\'écran d\'attente distingue les TROIS situations (absent · pas corrigée · pas rendue)',
     html.includes('var e=identite?etatDicteeEleve(attente,identite.cle):{code:"attente"};') &&
     html.includes('e.code==="absent"') && html.includes('e.code==="nonrendue"') &&
-    html.includes('Je n\\u2019ai pas encore corrig\\u00e9 ta copie'));
+    html.includes('Cette dict\\u00e9e n\\u2019est pas encore corrig\\u00e9e'));
   t('message de liste vide sans « corrigée »',
     html.includes('Tu n\\u2019as pas encore de dict\\u00e9e. Celles de ta classe appara\\u00eetront ici.'));
 
@@ -268,18 +268,55 @@ function sandbox(noms, prelude, exportsSup) {
     !html.includes('Le professeur ne l\\u2019a pas encore publi\\u00e9e'));
   t('message d\'arrivée corrigé : « Ta correction n\'est pas encore consultable »',
     html.includes('Ta correction n\\u2019est pas encore consultable') &&
-    html.includes('Je ne l\\u2019ai pas encore rendue. Reviens un peu plus tard.'));
-  t('vocabulaire unifié : « rendre » à la 1re personne partout où la copie manque',
+    html.includes('Elle sera disponible apr\\u00e8s la s\\u00e9ance de correction.'));
+  t('l\'inaccompli est dit par le FLUX, jamais par le professeur (principe cardinal)',
     html.includes('Corrig\\u00e9e, pas encore rendue') &&
-    html.includes('mais je ne l\\u2019ai pas encore rendue') &&
-    html.includes('Je ne l\\u2019ai pas encore rendue') &&
-    html.includes('Quand je te l\\u2019aurai rendue'));
+    (html.split('Elle sera disponible apr\\u00e8s la s\\u00e9ance de correction.').length - 1) === 2 &&
+    html.includes('Tes erreurs \\u00e0 revoir appara\\u00eetront ici apr\\u00e8s la s\\u00e9ance de correction.'));
   t('la logique de MaCopie est intacte (seules deux chaînes ont changé)',
     corpsDe('MaCopie').includes('if(!pubAt){') && corpsDe('MaCopie').includes('/copyPublishedAt'));
   t('les trois dimensions restent croisées (published · copyPublishedAt · results)',
     html.includes('if(!d.copyPublishedAt) return {code:"nonrendue"') &&
     html.includes('if(d.published===false)return false;') &&
     html.includes('var corr=d.results?d.results[cle]:null;'));
+
+  section('M6sexies SOUCHE — PRINCIPE CARDINAL : jamais le professeur mis en cause');
+  const corpsC = (nom) => { const i = html.indexOf('function ' + nom + '('); let d = 0;
+    for (let k = html.indexOf('{', i); k < html.length; k++) {
+      if (html[k] === '{') d++; else if (html[k] === '}') { d--; if (!d) return html.slice(i, k + 1); } } return ''; };
+  const decode = (t) => t.replace(/\\u([0-9a-fA-F]{4})/g, (m, h) => {
+    const c = parseInt(h, 16); return (c >= 0xD800 && c <= 0xDFFF) ? m : String.fromCharCode(c); });
+  const textesEleveC = ['AppEleve', 'MaCopie', 'EleveCorrection', 'ExercicesEleve', 'Fiches']
+    .map(n => corpsC(n).split('\n').filter(l => !/^\s*\/\//.test(l)).join('\n')).join('\n')
+    .match(/"[^"]{10,}"/g)
+    .filter(x => !/[{};]|=>|h\(|solid |rgba\(|<div|<span|JSON_DICTEE|Tu es un professeur/.test(x))
+    .map(decode).filter(x => /[a-zéèêàûôçA-ZÉ]{4,}\s/.test(x));
+
+  t('CAS FONDATEUR : « transcription non saisie par le professeur » a disparu',
+    !html.includes('transcription non saisie'));
+  t('rien n\'est affiché à la place (pas de message de remplacement)',
+    html.includes("transcriptHtml = '';") && !/placeholder-msg">\(/.test(html));
+  t('interdit n°1 — aucun manquement imputé au professeur',
+    !textesEleveC.some(x => /(le |ton |du )?(professeur|prof)\b[^"]{0,40}(n['’]a pas|ne l['’]a pas|pas encore|n['’]est pas|en attente)/i.test(x)));
+  t('interdit n°1 bis — le professeur n\'est jamais sujet d\'une négation à la 1re personne',
+    !textesEleveC.some(x => /\b(je|j['’])\b[^"]{0,30}\b(ne |n['’])[^"]{0,30}(pas|plus|jamais)\b/i.test(x)));
+  t('interdit n°2 — aucun texte ne révèle que la machine corrige',
+    !textesEleveC.some(x => /(l['’]app|l['’]application|le syst[èe]me|automatiquement|par la machine)\b[^"]{0,40}(corrig|calcul|not[ée])/i.test(x)));
+  t('interdit n°3 — aucune donnée manquante racontée en désignant un responsable',
+    !textesEleveC.some(x => /(non saisi|non renseign|non valid|manquante?)[^"]{0,30}(par|du) (le )?(prof|professeur)/i.test(x)));
+  t('l\'ACCOMPLI reste au « je » (l\'autorité s\'affirme)',
+    html.includes('c\\u2019est moi qui la calcule sur ta copie papier') &&
+    html.includes('J\\u2019ai sign\\u00e9 ta graphie ici') &&
+    html.includes('Je la corrigerai \\u00e0 la main'));
+  t('l\'ADRESSE reste au « je »', html.includes('Vois avec moi comment la rattraper') &&
+    html.includes('Clique ici quand je te le demande'));
+  t('l\'INACCOMPLI est impersonnel dans les quatre messages d\'attente',
+    ['Ton code n\\u2019est pas encore enregistr\\u00e9',
+     'Ta copie est corrig\\u00e9e. Elle sera disponible apr\\u00e8s la s\\u00e9ance de correction.',
+     'Cette dict\\u00e9e n\\u2019est pas encore corrig\\u00e9e',
+     'Ta correction n\\u2019est pas encore consultable'].every(x => html.includes(x)));
+  t('les CONSTATS d\'état restent sans acteur (Pas encore corrigée · Tu étais absent(e))',
+    html.includes('label:"Pas encore corrig\\u00e9e"') && html.includes('label:"Tu \\u00e9tais absent(e)"'));
 
   section('M6quinquies SOUCHE — point 28 : « l\'app, c\'est moi »');
   const corpsDe28 = (nom) => { const i = html.indexOf('function ' + nom + '('); let d = 0;
@@ -294,13 +331,13 @@ function sandbox(noms, prelude, exportsSup) {
     .filter(x => !/[{};]|=>|h\(|JSON_DICTEE|Tu es un professeur|solid |rgba\(/.test(x));
   t('aucun texte élève ne parle du professeur à la 3e personne',
     !textes28.some(x => /\b(ton |le |du |au )?(professeur|prof)\b/i.test(x)));
-  t('les 5 messages d\'AppEleve sont à la première personne',
-    html.includes('Je n\\u2019ai pas encore enregistr\\u00e9 de code pour toi. Viens me le demander.') &&
+  t('AppEleve : « je » pour l\'adresse, flux impersonnel pour l\'attente',
+    html.includes('Ton code n\\u2019est pas encore enregistr\\u00e9. Viens me voir pour qu\\u2019on le mette en place.') &&
     html.includes('viens me le demander.') &&
     html.includes('Vois avec moi comment la rattraper, si c\\u2019est possible.') &&
-    html.includes('mais je ne l\\u2019ai pas encore rendue') &&
-    html.includes('Je n\\u2019ai pas encore corrig\\u00e9 ta copie. Quand je te l\\u2019aurai rendue'));
-  t('MaCopie : « Je ne l\'ai pas encore rendue »', html.includes('Je ne l\\u2019ai pas encore rendue. Reviens un peu plus tard.'));
+    html.includes('Ta copie est corrig\\u00e9e. Elle sera disponible apr\\u00e8s la s\\u00e9ance de correction.'));
+  t('MaCopie : le flux annonce, personne n\'est en défaut',
+    corpsDe28('MaCopie').includes('Elle sera disponible apr\\u00e8s la s\\u00e9ance de correction.'));
   t('EleveCorrection : ses 4 mentions sont converties (vérifié dans le composant)',
     (() => { const c = corpsDe28('EleveCorrection');
       return c.includes('c\\u2019est moi qui la calcule sur ta copie papier') &&

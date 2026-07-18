@@ -4682,7 +4682,8 @@ function buildCopieHtml(data,eleveName,eleveKey,c,ac,dicteeId,options){
         transcriptHtml = '<div class="err-trans"><span class="wrong-inline">« '+escapeHtml(disp.text)+' »</span> → <strong>'+escapeHtml(err.word)+'</strong></div>';
       }
     } else if (err.type !== "M" && err.type !== "P" && err.type !== "A") {
-      transcriptHtml = '<div class="err-trans placeholder-msg">(transcription non saisie par le professeur)</div>';
+      transcriptHtml = '';   /* Principe cardinal : un détail de saisie interne ne se
+                                raconte jamais à l'élève, et jamais en désignant quelqu'un. */
     }
     var comment = gramComment(err);
     var ptStr = POINTS[err.type] ? ' <span class="err-points">'+POINTS[err.type]+' pt</span>' : '';
@@ -5338,7 +5339,7 @@ function MaCopie(p){
       h("div",{className:"card",style:{textAlign:"center",padding:30}},
         h("div",{style:{fontSize:"2rem",marginBottom:10}},"\u23f3"),
         h("h2",{style:{marginTop:0}},"Ta correction n\u2019est pas encore consultable"),
-        h("p",{style:{color:"var(--muted)"}},"Je ne l\u2019ai pas encore rendue. Reviens un peu plus tard."),
+        h("p",{style:{color:"var(--muted)"}},"Elle sera disponible apr\u00e8s la s\u00e9ance de correction."),
         h("button",{className:"btn btn-ghost",style:{marginTop:14},onClick:p.onLogout},"\u2190 Retour")
       )
     );
@@ -5613,7 +5614,7 @@ function AppEleve(p){
     var moi=res[0];
 
     var attendu=codeAttendu(moi.cle,moi.nom);
-    if(!attendu){setErrMsg("Je n\u2019ai pas encore enregistr\u00e9 de code pour toi. Viens me le demander.");return}
+    if(!attendu){setErrMsg("Ton code n\u2019est pas encore enregistr\u00e9. Viens me voir pour qu\u2019on le mette en place.");return}
     if(String(code)!==String(attendu)){setErrMsg("Ce code ne correspond pas. V\u00e9rifie tes 4 chiffres.");return}
 
     setErrMsg("");
@@ -5709,8 +5710,8 @@ function AppEleve(p){
           var txt = e.code==="absent"
               ? "Tu n\u2019\u00e9tais pas l\u00e0 le jour de cette dict\u00e9e. Vois avec moi comment la rattraper, si c\u2019est possible."
             : e.code==="nonrendue"
-              ? "Ta copie est corrig\u00e9e, mais je ne l\u2019ai pas encore rendue. Reviens quand elle sera l\u00e0."
-              : "Je n\u2019ai pas encore corrig\u00e9 ta copie. Quand je te l\u2019aurai rendue, tu retrouveras ici tes erreurs \u00e0 revoir.";
+              ? "Ta copie est corrig\u00e9e. Elle sera disponible apr\u00e8s la s\u00e9ance de correction."
+              : "Cette dict\u00e9e n\u2019est pas encore corrig\u00e9e. Tes erreurs \u00e0 revoir appara\u00eetront ici apr\u00e8s la s\u00e9ance de correction.";
           return h("p",{style:{fontSize:".95rem",color:"var(--text-sub)",maxWidth:420,margin:"0 auto 18px"}},txt);
         })(),
         /* Emplacement du RATTRAPAGE MODAL (chantier X) : quand e.rattrapage sera

@@ -337,6 +337,32 @@ function sandbox(noms, prelude, exportsSup) {
   t('la purge annonce ce qu\'elle va supprimer (dénombrement, pas de destruction muette)',
     html.includes('Seront supprim\\u00e9s : les 2 dict\\u00e9es de test'));
 
+  section('M6-SOLDE bis — arbitrages ③ ④ ⑤');
+  t('③ l\'outil est nommé : « Éditeur des messages élève » sous le titre parlant',
+    html.includes('"Ce que lisent les \\u00e9l\\u00e8ves"') &&
+    html.includes('h("strong",null,"\\u00c9diteur des messages \\u00e9l\\u00e8ve.")'));
+  t('④ « Masquer les copies » (bouton, infobulle et confirmation alignés)',
+    html.includes('"\\ud83d\\ude48 Masquer les copies"') &&
+    html.includes('title:"Masquer les copies (les \\u00e9l\\u00e8ves perdront') &&
+    html.includes('setPubMsg("\\u2705 Copies masqu\\u00e9es")'));
+  t('④ plus aucun « Retirer » ni « Dépublier » sur le geste des copies (confirmation comprise)',
+    !html.includes('Retirer les copies') && !html.includes('D\\u00e9publier ?') &&
+    html.includes('"Masquer les copies ? Les \\u00e9l\\u00e8ves ne pourront plus'));
+  t('④ les « Retirer » sans rapport (lacune, PAP) sont intacts',
+    html.includes('Retirer la lacune sur') && html.includes('Retirer du registre PAP'));
+  t('⑤ le profil « MONSIEUR Meney » n\'existe plus (aucune trace dans le fichier)',
+    !/meney_monsieur|MENEY/.test(html));
+  t('⑤ doLogin n\'a plus de branche d\'exception : tout le monde passe par le code',
+    (() => { const i = html.indexOf('function doLogin('); const j = html.indexOf('\n  }', i);
+             const c = html.slice(i, j); return !c.includes('testErrors') && c.includes('codeAttendu('); })());
+  t('⑤ le bouton « Recommencer » n\'est pas devenu du code mort : il sert au bac à sable',
+    html.includes('estClasseTest(d.dictee&&d.dictee.classe)&&h("button",') &&
+    html.includes('Recommencer la correction ?'));
+  t('⑤ « Recommencer » reste inaccessible à un élève réel (classe non interne)',
+    (() => { const sb = sandbox(['estClasseInterne', 'estClasseTest'], '');
+             return sb.estClasseTest('_test_correction_dictee') && !sb.estClasseTest('5e HERG\u00c9')
+                 && !sb.estClasseTest('4E BANKSY'); })());
+
   section('M6-SOLDE — D4 corbeille · D6 mobile · D8 casse · D10 vocabulaire');
   t('D4 : archivage en corbeille AVANT destruction',
     html.includes('var chemin="corbeille/"+jour+"/suppression-dictee_"+hhmmss;') &&

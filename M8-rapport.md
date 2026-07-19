@@ -150,6 +150,6 @@ Les blocs non touchés sont intacts : les trois `togglePublish…Cls`, `isPubFor
 
 ## 12. Dettes ouvertes
 
-**D1** — ④ taxonomie, entier. **D2** — point 23 (bloc diagnostic) et point 17 (responsive 390 px) non vérifiés. **D3** — parcours navigateur non joué (les six livrables restent à éprouver au clic). **D4** — le manifeste doit être mis à jour à la promotion (`site/annonces`, `site/config` en `preserver`). **D5** — protocole : ajouter « API **avec le jeton** » à la consigne de récupération (§0).
+**D1** — ④ taxonomie, entier. **D2** — point 23 (bloc diagnostic) et point 17 (responsive 390 px) non vérifiés. **D3** — parcours navigateur non joué (les six livrables restent à éprouver au clic). **D4** — ~~le manifeste doit être mis à jour à la promotion~~ → **CORRIGÉ, manifeste renseigné** : `MJPC_MANIFESTE.noeuds` et `MJPC_PURGE.preserver` portent `site/annonces` et `site/config`. La dette était mal datée de ma part : `publierManifesteREST()` est appelé à **chaque `activateAdmin()`**, donc le contrat part au premier passage prof, pas à la promotion. **D5** — protocole : ajouter « API **avec le jeton** » à la consigne de récupération (§0).
 
 Je ne promeus pas.

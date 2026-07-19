@@ -1938,15 +1938,44 @@ function App(){
 
 // ─────────── App Élève ───────────
 function AppEleve(p){
-  // L'élève saisit son nom + sa classe, on cherche s'il y a une session en cours
+  // L'élève entre avec son identité MJPC ; à défaut, il choisit sa classe puis
+  // prouve son identité par son code (EleveLogin).
   var s1 = useState(null), classes = s1[0], setClasses = s1[1];
   var s2 = useState(""), classeSlug = s2[0], setClasseSlug = s2[1];
   var s3 = useState(null), eleve = s3[0], setEleve = s3[1];
+  var s4 = useState(false), shuntFait = s4[0], setShuntFait = s4[1];
+  var s5 = useState(false), voirMesEvals = s5[0], setVoirMesEvals = s5[1];
 
   useEffect(function(){
     var detacherClasses = surveillerClassesAvecSexes(setClasses);
     return function(){ detacherClasses(); };
   }, []);
+
+  // ═══ M7 — SHUNT MJPC (socle §8) ═══
+  // Placé ICI et non dans EleveLogin : une session valide porte la classe autant
+  // que l'identité. L'élève connecté au site n'a donc ni classe à choisir ni
+  // code à ressaisir. Sans session, rien ne change : le portail fait son office.
+  useEffect(function(){
+    if(shuntFait || !classes || eleve) return;
+    setShuntFait(true);
+    var sess = lireSessionMJPC();
+    if(!sess || sess.is_prof) return;
+    var cible = sanMJPC((sess.prenom||"")+" "+(sess.nom||""));
+    var cible2 = sanMJPC((sess.nom||"")+" "+(sess.prenom||""));
+    var ks = Object.keys(classes);
+    for(var i=0;i<ks.length;i++){
+      if(estClasseInterneObj(classes[ks[i]])) continue;
+      var els = classes[ks[i]].eleves || [];
+      for(var j=0;j<els.length;j++){
+        var sl = slugify(els[j].nomComplet);
+        if(sl === cible || sl === cible2){
+          setClasseSlug(ks[i]);
+          setEleve({nomComplet:els[j].nomComplet, slug:sl});
+          return;
+        }
+      }
+    }
+  }, [classes, shuntFait, eleve]);
 
   if(classes === null){
     return h("div", {className:"eleve-page"},
@@ -1979,7 +2008,86 @@ function AppEleve(p){
     return h(EleveLogin, {classe:classes[classeSlug], classeSlug:classeSlug, onLogin:setEleve, onBack:function(){setClasseSlug("")}});
   }
 
-  return h(EleveSession, {classe:classes[classeSlug], classeSlug:classeSlug, eleve:eleve, onBack:function(){setEleve(null)}});
+  if(voirMesEvals){
+    return h(MesEvaluations, {classeSlug:classeSlug, eleve:eleve, onBack:function(){setVoirMesEvals(false)}});
+  }
+
+  return h("div", null,
+    h(EleveSession, {classe:classes[classeSlug], classeSlug:classeSlug, eleve:eleve, onBack:function(){setEleve(null)}}),
+    // Point 8 — « Mes évaluations » : le lieu des travaux antérieurs de l'élève.
+    h("div", {style:{textAlign:"center", padding:"0 1rem 1.5rem"}},
+      h("button", {className:"btn btn-ghost btn-sm", onClick:function(){setVoirMesEvals(true)}}, "📊 Mes évaluations")
+    )
+  );
+}
+
+// ════════════════════════════════════════════════════════════════════
+// M7 — « MES ÉVALUATIONS » (point 8)
+// ════════════════════════════════════════════════════════════════════
+// Assemblé à partir des briques existantes : le profil longitudinal écrit par
+// archiverDansProfilsMJPC (mjpcProfils/<classe>/<élève>/sessions) est déjà le
+// modèle de tous les « Mes… » de l'écosystème. On ne le réécrit pas : on lui
+// donne un lieu. Lecture seule, aucun recalcul, aucune écriture.
+function MesEvaluations(p){
+  var s1 = useState(null), hist = s1[0], setHist = s1[1];
+  var s2 = useState(null), ouverte = s2[0], setOuverte = s2[1];
+  var classeSlug = p.classeSlug;
+  var slug = p.eleve.slug;
+
+  useEffect(function(){
+    db.ref("mjpcProfils/"+classeSlug+"/"+slug+"/sessions").once("value", function(snap){
+      var v = snap.val() || {};
+      var arr = Object.keys(v).map(function(k){ return Object.assign({sid:k}, v[k]); });
+      arr.sort(function(a,b){ return (b.date||0) - (a.date||0); });
+      setHist(arr);
+    }, function(){ setHist([]); });
+  }, [classeSlug, slug]);
+
+  if(hist === null) return h("div", {className:"eleve-page"},
+    h("div", {className:"eleve-card"}, h("h1", null, "Chargement…")));
+
+  if(ouverte){
+    // Le bilan détaillé est déjà produit à l'archivage : on le montre tel quel,
+    // sans recalculer un score (P2 : on ne recompte jamais après coup).
+    return h("div", {className:"eleve-page"},
+      h("div", {className:"eleve-card", style:{maxWidth:"860px"}},
+        h("button", {className:"btn btn-ghost btn-sm", onClick:function(){setOuverte(null)}}, "← Mes évaluations"),
+        h("h1", null, ouverte.titre || "Évaluation"),
+        h("p", {style:{opacity:.75}}, new Date(ouverte.date).toLocaleDateString("fr-FR")),
+        ouverte.bilanHTML
+          ? h("div", {dangerouslySetInnerHTML:{__html: ouverte.bilanHTML}})
+          : h("p", null, "Le détail de cette évaluation n'a pas été conservé.")
+      )
+    );
+  }
+
+  return h("div", {className:"eleve-page"},
+    ["⭐","🎯","✨","💡","🎲","🔥"].map(function(em,i){return h("span",{key:i,className:"deco"},em)}),
+    h("div", {className:"eleve-card", style:{maxWidth:"640px"}},
+      h("h1", null, "📊 Mes évaluations"),
+      h("p", {style:{opacity:.8}}, p.eleve.nomComplet),
+      hist.length === 0
+        ? h("p", {style:{opacity:.8}}, "Tu n'as pas encore d'évaluation ici. Celles de ta classe apparaîtront après la correction.")
+        : h("div", {className:"eleves-grid"},
+            hist.map(function(x){
+              var pct = (x.maxP && x.scorePondere != null) ? Math.round((x.scorePondere / x.maxP) * 100) : null;
+              return h("button", {key:x.sid, className:"eleve-btn", style:{textAlign:"left"},
+                onClick:function(){ setOuverte(x); }},
+                h("div", {style:{fontWeight:700}}, x.titre || "Évaluation",
+                  // P2 : deux versions d'une même évaluation ne se confondent pas.
+                  (x.evalVersion && x.evalVersion > 1)
+                    ? h("span", {style:{marginLeft:".4rem", fontSize:".72rem", opacity:.8}}, "v" + x.evalVersion) : null),
+                h("div", {style:{fontSize:".82rem", opacity:.75}},
+                  new Date(x.date).toLocaleDateString("fr-FR"),
+                  (pct !== null ? " · " + pct + "%" : ""))
+              );
+            })
+          ),
+      h("div", {style:{marginTop:"1.5rem"}},
+        h("button", {className:"btn btn-ghost btn-sm", onClick:p.onBack}, "← Retour")
+      )
+    )
+  );
 }
 
 // ─────────── Login élève ───────────
@@ -3314,10 +3422,18 @@ var IDX_FOURCHETTE = {rouge:1, orange:2, bleu:3, vert:4};
 function bornesFourchette(fkey, total){
   var f = FOURCHETTES_DEF.find(function(x){return x.key===fkey});
   if(!f) return {inf:0, sup:0};
-  if(fkey === "vert")  return {inf:Math.ceil(total*0.76), sup:total};
-  if(fkey === "bleu")  return {inf:Math.ceil(total*0.51), sup:Math.floor(total*0.75)};
-  if(fkey === "orange")return {inf:Math.ceil(total*0.26), sup:Math.floor(total*0.50)};
-  return {inf:0, sup:Math.floor(total*0.25)};
+  var b;
+  if(fkey === "vert")       b = {inf:Math.ceil(total*0.76), sup:total};
+  else if(fkey === "bleu")  b = {inf:Math.ceil(total*0.51), sup:Math.floor(total*0.75)};
+  else if(fkey === "orange")b = {inf:Math.ceil(total*0.26), sup:Math.floor(total*0.50)};
+  else                      b = {inf:0, sup:Math.floor(total*0.25)};
+  // D3 (#14, M7) — sur un petit total, les arrondis se croisent : total 2 donnait
+  // « entre 2 et 1 ». Une fourchette dont la borne basse dépasse la haute n'a pas
+  // de sens : on la referme sur la borne haute plutôt que d'afficher l'absurde.
+  if(b.inf > b.sup) b.inf = b.sup;
+  if(b.inf < 0) b.inf = 0;
+  if(b.sup > total) b.sup = total;
+  return b;
 }
 function libelleFourchette(fkey, total, mode){
   var b = bornesFourchette(fkey, total);
@@ -4880,13 +4996,11 @@ function VuePhone(p){
 // qcm/textes les surcharge. Un champ vide retombe TOUJOURS sur le défaut.
 var TEXTES_DEFAUT = {
   attente_session:  "L'évaluation n'a pas encore commencé. Elle s'ouvrira quand nous la lancerons ensemble.",
-  attente_question: "Attends la prochaine question.",
   attente_correction: "La correction s'ouvrira dans un instant.",
   fin_session:      "C'est terminé. Tes réponses sont enregistrées."
 };
 var TEXTES_CHAMPS = [
   ["attente_session","Avant le lancement de l'évaluation","Vu par l'élève qui ouvre l'application alors qu'aucune évaluation n'est lancée pour sa classe."],
-  ["attente_question","Entre deux questions","Vu pendant que tu prépares la question suivante."],
   ["attente_correction","Avant la correction","Vu quand la phase de réponse est close et que la correction n'est pas encore lancée."],
   ["fin_session","À la fin de l'évaluation","Vu quand tu as terminé la session. Ce texte s'affiche quel que soit le résultat : il parle du travail fait, jamais de la réussite."]
 ];
@@ -5035,10 +5149,16 @@ function AppProf(p){
   var s6 = useState({}), sessions = s6[0], setSessions = s6[1];
   var s7 = useState({}), classesData = s7[0], setClassesData = s7[1];
   var s8 = useState(false), sessionsMenuOpen = s8[0], setSessionsMenuOpen = s8[1];
+  // P2 : la clôture depuis le menu doit pouvoir figer l'énoncé → il lui faut les évals.
+  var s9 = useState({}), evalsPourCloture = s9[0], setEvalsPourCloture = s9[1];
 
   // MJPC-CORE : publication du manifeste (vue projetée — les constantes en dur
   // restent la source de vérité). Republiée à chaque ouverture prof.
   useEffect(function(){ publierManifeste(db); }, []);
+  useEffect(function(){
+    db.ref(DB_ROOT+"/evaluations").on("value", function(snap){ setEvalsPourCloture(snap.val() || {}); });
+    return function(){ db.ref(DB_ROOT+"/evaluations").off(); };
+  }, []);
   useEffect(function(){ var g = groupeDeTab(tab); if(g && g !== groupe) setGroupe(g); }, [tab]);
 
   // Migration silencieuse one-shot : qcm/classes → /classes racine + sexes legacy
@@ -5089,8 +5209,9 @@ function AppProf(p){
 
   function purgerSessionMenu(s){
     if(!confirm("Terminer la session « "+s.classeNom+" » (phase "+s.sess.phase+") ?\n\nLes élèves verront un écran de fin. Les résultats restent consultables dans l'onglet Résultats.")) return;
-    db.ref(DB_ROOT+"/sessions/"+s.sid+"/etat").set("terminee");
-    db.ref(DB_ROOT+"/sessionActive/"+s.classeSlug).remove();
+    // P2 — porte dérobée refermée (audit du 18/07) : ce bouton clôturait sans
+    // figer l'énoncé. Toute clôture passe par cloturerSession, sans exception.
+    cloturerSession(Object.assign({id:s.sid}, s.sess), evalsPourCloture[s.sess.evalId]);
   }
 
   if(testMode){
@@ -5979,10 +6100,12 @@ function OngletPilotage(){
     if(!sessionInterrompue) return;
     if(!confirm("Terminer définitivement la session ?\n\nLes réponses déjà données restent enregistrées et consultables dans Résultats. Cette action est irréversible.")) return;
     var sid = sessionInterrompue.id;
+    // P2 — porte dérobée refermée (audit du 18/07) : une session interrompue que
+    // le professeur termine EST une clôture ; ses réponses restent consultables,
+    // donc son énoncé doit être figé comme les autres.
+    cloturerSession(Object.assign({}, sessionInterrompue, {id:sid}), evals[sessionInterrompue.evalId]);
     var updates = {};
-    updates["/sessions/"+sid+"/etat"] = "terminee";
     updates["/sessions/"+sid+"/lastDisconnect"] = null;
-    updates["/sessionActive/"+classeSlug] = null; // libère la classe
     db.ref(DB_ROOT).update(updates, function(err){
       if(err){ alert("Erreur : "+err.message); return; }
       setSessionInterrompue(null);
@@ -7708,10 +7831,12 @@ function OngletSnapshot(){
     Promise.all([
       db.ref(DB_ROOT+"/sessionActive").once("value"),
       db.ref(DB_ROOT+"/sessions").once("value"),
-      db.ref("classes").once("value")
+      db.ref("classes").once("value"),
+      db.ref(DB_ROOT+"/evaluations").once("value")   // P2 : de quoi figer les sessions fermées ici
     ]).then(function(results){
       var actives = results[0].val() || {};
       var sessions = results[1].val() || {};
+      var evalsNettoyage = results[3].val() || {};
       // Normalisation : /classes a pour clés les noms complets ("5E Hergé"), or
       // les chemins internes (sessionActive, etc.) utilisent les slugs internes
       // ("5e-herge"). On normalise pour pouvoir indexer par slug ci-dessous.
@@ -7771,7 +7896,9 @@ function OngletSnapshot(){
         msg += "\n• "+rapport.sessionsAFermer.length+" session(s) à marquer comme terminée(s) (>24h, encore \"en_cours\") :\n"+
           rapport.sessionsAFermer.map(function(s){var d=new Date(s.date);var hh=String(d.getHours()).padStart(2,'0');var mm=String(d.getMinutes()).padStart(2,'0');return "    - "+s.sid+" (lancée le "+d.toLocaleDateString()+" à "+hh+":"+mm+")"}).join("\n")+"\n";
       }
-      msg += "\nLes données des sessions et leurs réponses sont CONSERVÉES. Seules les marqueurs « en cours » sont nettoyés.\n\nContinuer ?";
+      msg += "\nLes données des sessions et leurs réponses sont CONSERVÉES. Seuls les marqueurs « en cours » sont nettoyés.\n" +
+             "L'énoncé actuel de chaque évaluation sera figé sur ces sessions, pour que leurs résultats ne bougent plus jamais " +
+             "(marqué « figé au nettoyage » : ce n'est pas forcément l'énoncé du jour de la session).\n\nContinuer ?";
 
       if(!confirm(msg)) return;
 
@@ -7780,8 +7907,23 @@ function OngletSnapshot(){
       rapport.sessionActiveASupprimer.forEach(function(e){
         promesses.push(db.ref(DB_ROOT+"/sessionActive/"+e.slug).remove());
       });
+      // P2 — sessions abandonnées (>24 h, jamais clôturées par le professeur).
+      // DÉCISION : on les fige quand même, mais en DISANT ce qu'on fige.
+      // Pourquoi figer : elles portent de vraies réponses d'élèves, conservées
+      // par ce nettoyage — sans snapshot, elles restaient la dernière porte du
+      // recalcul rétroactif. Pourquoi le marquer : l'énoncé disponible est celui
+      // d'aujourd'hui, qui n'est peut-être plus celui du jour de la session.
+      // Le marqueur permet de ne jamais faire passer ce figement pour un autre.
       rapport.sessionsAFermer.forEach(function(s){
-        promesses.push(db.ref(DB_ROOT+"/sessions/"+s.sid+"/etat").set("terminee"));
+        var maj = {};
+        maj["/sessions/"+s.sid+"/etat"] = "terminee";
+        var evNet = evalsNettoyage[(sessions[s.sid]||{}).evalId];
+        var snapNet = construireEvalSnapshot(evNet);
+        if(snapNet){
+          maj["/sessions/"+s.sid+"/evalSnapshot"] = snapNet;
+          maj["/sessions/"+s.sid+"/evalSnapshotOrigine"] = "nettoyage";
+        }
+        promesses.push(db.ref(DB_ROOT).update(maj));
       });
 
       Promise.all(promesses).then(function(){

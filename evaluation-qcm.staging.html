@@ -3929,7 +3929,7 @@ function OutilsTestP2(p){
         }
         var tFige = totalPour(evFigee), tCourant = totalPour(evCourante);
         setMsg("Le jour de l'évaluation : " + tFige +
-               " · avec l'énoncé actuel : " + tCourant + ". " +
+               " — Avec l'énoncé actuel : " + tCourant + ". " +
                (tFige === tCourant
                  ? "Identiques : l'évaluation n'a pas encore été modifiée."
                  : "Différents — et c'est bien la preuve : l'application affiche " + tFige + ", la note du jour, pas " + tCourant + "."));
@@ -3968,7 +3968,9 @@ function OutilsTestP2(p){
     etat && !etat.aucune && h("div", {style:{marginTop:".5rem", fontSize:".85rem"}},
       h("div", null, "Session : ", h("strong", null, etat.etat),
         " · énoncé ", h("strong", null, etat.figee ? "conservé ✔" : "non conservé"),
-        etat.origine ? " (conservé au " + etat.origine + ")" : ""),
+        // Le libellé traduit la valeur stockée ; la donnée elle-même ne change pas.
+        etat.origine === "nettoyage" ? " (conservé au nettoyage)"
+          : (etat.origine ? " (conservé au " + etat.origine + ")" : "")),
       h("div", null, "Évaluation courante : version ", h("strong", null, String(etat.versionEval)),
         etat.versionEnonce != null ? (" · énoncé lu par l'app : version " + etat.versionEnonce) : "")
     ),
@@ -8085,8 +8087,8 @@ function OngletSnapshot(){
           rapport.sessionsAFermer.map(function(s){var d=new Date(s.date);var hh=String(d.getHours()).padStart(2,'0');var mm=String(d.getMinutes()).padStart(2,'0');return "    - "+s.sid+" (lancée le "+d.toLocaleDateString()+" à "+hh+":"+mm+")"}).join("\n")+"\n";
       }
       msg += "\nLes données des sessions et leurs réponses sont CONSERVÉES. Seuls les marqueurs « en cours » sont nettoyés.\n" +
-             "L'énoncé actuel de chaque évaluation sera figé sur ces sessions, pour que leurs résultats ne bougent plus jamais " +
-             "(marqué « figé au nettoyage » : ce n'est pas forcément l'énoncé du jour de la session).\n\nContinuer ?";
+             "L'énoncé actuel de chaque évaluation y sera conservé, pour que leurs résultats ne bougent plus jamais " +
+             "(marqué « conservé au nettoyage » : ce n'est pas forcément l'énoncé du jour de la session).\n\nContinuer ?";
 
       if(!confirm(msg)) return;
 

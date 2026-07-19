@@ -3878,7 +3878,7 @@ function OutilsTestP2(p){
       if(!sess){ setMsg("Aucune session de test à clôturer. Lance d'abord une question."); return; }
       db.ref(DB_ROOT+"/evaluations/"+TEST_EVAL_ID).once("value", function(e){
         cloturerSession(sess, e.val(), function(){
-          setMsg("Session clôturée par le chemin réel (cloturerSession). Vérifie ci-dessous que l'énoncé est figé.");
+          setMsg("Session clôturée par le chemin réel (cloturerSession). Vérifie ci-dessous que l'énoncé est conservé.");
           rafraichir();
         });
       });
@@ -3915,7 +3915,7 @@ function OutilsTestP2(p){
       db.ref(DB_ROOT+"/evaluations/"+TEST_EVAL_ID).once("value", function(e){
         var evCourante = e.val() || {};
         var evFigee = sess.evalSnapshot || null;
-        if(!evFigee){ setMsg("Cette session n'est pas figée : clôture-la d'abord."); return; }
+        if(!evFigee){ setMsg("Cette session n'est pas encore clôturée."); return; }
         function totalPour(enonce){
           var mode = modeEval(enonce), total = 0;
           (enonce.questions || []).forEach(function(q, qi){
@@ -3928,11 +3928,11 @@ function OutilsTestP2(p){
           return total;
         }
         var tFige = totalPour(evFigee), tCourant = totalPour(evCourante);
-        setMsg("Total de la classe d'après l'énoncé FIGÉ : " + tFige +
-               " · d'après l'éval COURANTE : " + tCourant + ". " +
+        setMsg("Le jour de l'évaluation : " + tFige +
+               " · avec l'énoncé actuel : " + tCourant + ". " +
                (tFige === tCourant
-                 ? "Identiques : l'éval n'a pas encore été modifiée."
-                 : "DIFFÉRENTS — et c'est la preuve que P2 protège : l'app affiche " + tFige + ", pas " + tCourant + "."));
+                 ? "Identiques : l'évaluation n'a pas encore été modifiée."
+                 : "Différents — et c'est bien la preuve : l'application affiche " + tFige + ", la note du jour, pas " + tCourant + "."));
       });
     });
   }
@@ -3960,15 +3960,15 @@ function OutilsTestP2(p){
       h("button", Object.assign({}, b, {onClick:modifierEvalApresCoup,
         title:"Change la bonne réponse de la question 1 après coup : le geste qui causait le recalcul rétroactif."}), "✏️ Modifier l'éval après coup"),
       h("button", Object.assign({}, b, {onClick:comparerLesDeuxLectures,
-        title:"Recompte les scores avec calculerScoreQuestion() d'après l'énoncé figé, puis d'après l'éval courante."}), "⚖️ Comparer figé / courant"),
+        title:"Recompte les notes de la classe telles qu'elles étaient le jour de l'évaluation, puis telles qu'elles seraient avec l'énoncé actuel."}), "⚖️ Vérifier que les notes n'ont pas bougé"),
       h("button", Object.assign({}, b, {onClick:faireExpirerLeChrono,
         title:"Repousse le départ du chrono dans le passé : peutRepondre refuse immédiatement, sans attendre."}), "⏱️ Faire expirer le chrono"),
       h("button", Object.assign({}, b, {onClick:rafraichir}), "🔄 Relire l'état")
     ),
     etat && !etat.aucune && h("div", {style:{marginTop:".5rem", fontSize:".85rem"}},
       h("div", null, "Session : ", h("strong", null, etat.etat),
-        " · énoncé ", h("strong", null, etat.figee ? "FIGÉ" : "non figé"),
-        etat.origine ? " (figé au " + etat.origine + ")" : ""),
+        " · énoncé ", h("strong", null, etat.figee ? "conservé ✔" : "non conservé"),
+        etat.origine ? " (conservé au " + etat.origine + ")" : ""),
       h("div", null, "Évaluation courante : version ", h("strong", null, String(etat.versionEval)),
         etat.versionEnonce != null ? (" · énoncé lu par l'app : version " + etat.versionEnonce) : "")
     ),

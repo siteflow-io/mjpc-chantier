@@ -147,3 +147,49 @@ Bases de travail (production, toutes promues) : souche `9145d8b8…`, QCM `8637a
 **D6** — tests M6 couplés à un état de hub mouvant. **D7** — présence à aligner (lot commun). **D10 (nouvelle)** — les trois bacs à sable ont maintenant chacun leur bloc d'outils d'épreuve, écrits séparément : quand un quatrième arrivera, la question du patron commun se posera (le plan dit « TOUJOURS » pour l'évolution du mode test — autant que ce soit un mécanisme, pas une coutume).
 
 Je ne promeus pas.
+
+---
+
+# ADDENDUM — correction du vocabulaire (18/07)
+
+*Relivraison après audit du lexique. Banc : souche **153/156** (3 échecs antérieurs, dette D6) · QCM **112/112** · débat **21/21**. Double parseur OK sur les trois.*
+
+| Fichier | md5 |
+|---|---|
+| `correction_dictee.staging.html` | `2d0d39417bcb5f7126bb24e0ba0425aa` *(inchangé — aucun terme à corriger)* |
+| `evaluation-qcm.staging.html` | `154df3f870d680e219492954f3c51cc8` |
+| `pilotage_debat_s3.staging.html` | `405d11bb461d804a93ba383262fab659` |
+
+## ① et ② — QCM, les mots disent ce qu'ils font
+
+| Avant | Après |
+|---|---|
+| ⚖️ Comparer figé / courant | **⚖️ Vérifier que les notes n'ont pas bougé** |
+| Total de la classe d'après l'énoncé FIGÉ : X · d'après l'éval COURANTE : Y | **Le jour de l'évaluation : X · avec l'énoncé actuel : Y** |
+| Cette session n'est pas figée : clôture-la d'abord | **Cette session n'est pas encore clôturée** |
+| énoncé **FIGÉ** / **non figé** | énoncé **conservé ✔** / **non conservé** |
+| DIFFÉRENTS — la preuve que P2 protège : l'app affiche X | **Différents — et c'est bien la preuve : l'application affiche X, la note du jour, pas Y** |
+
+L'infobulle du bouton a suivi : elle parle maintenant de « recompter les notes telles qu'elles étaient le jour de l'évaluation », non plus d'énoncé figé.
+
+**Précision sur ②** : le signalement « énoncé conservé / non conservé » **n'existe aujourd'hui que dans le mode test**. L'écran prof des sessions hors mode test ne l'affiche pas encore — c'est la **dette D5**, toujours ouverte. Quand elle sera traitée, le vocabulaire est prêt.
+
+## ③ — Débat, deux textes élève corrigés… et un troisième trouvé
+
+Les deux validés :
+- « Revoir toutes les évaluations que ton groupe a envoyées (figées). » → **« …que ton groupe a envoyées. »**
+- « Elles apparaîtront ici, figées, au fur et à mesure. » → **« Elles apparaîtront ici au fur et à mesure. »**
+
+**Découverte — un troisième, au même endroit** : le sous-titre de l'écran « Mes évaluations » (L1458) disait « Tout ce que ton groupe a envoyé, **figé**. » Même écran, même mot, même élève. Je l'ai traité comme les deux autres — **« Tout ce que ton groupe a envoyé. »** — plutôt que de laisser un mot orphelin sur l'écran qu'on venait de nettoyer. Si tu préfères l'arbitrer séparément, c'est une ligne à rétablir.
+
+## Balayage des trois apps — ce que je trouve, sans le changer
+
+**Un seul texte élève porte encore un mot du code**, dans le QCM (`EleveEval`) :
+
+> « ✅ Ta réponse est enregistrée — chrono terminé, elle est **figée** »
+
+C'est le message que voit l'élève quand le temps est écoulé. Le mot ne lui apprend rien : ce qu'il a besoin de savoir, c'est qu'il ne peut plus changer d'avis. **Proposition** : « ✅ Ta réponse est enregistrée — le temps est écoulé, tu ne peux plus la changer. » Je ne l'ai pas modifié : il n'était pas dans ta liste, et il touche un écran de travail en séance. À ton arbitrage.
+
+**Tout le reste est hors périmètre, vérifié** : les occurrences de `JSON`, `snapshot`, `Firebase`, `cache`, `nœud` sont **toutes** dans des écrans professeur (Sauvegarde, Préparation, prompts IA, mode expert) ou des commentaires. Aucun élève ne les lit. Je les laisse : le point 25 vise le discours adressé à l'élève, et « JSON » est le mot juste pour Paul quand il colle un JSON.
+
+**Une remarque de méthode** : mon premier balayage automatique **n'a pas attrapé** ce « figée » du QCM — la chaîne vit dans un ternaire, que mon filtre excluait comme du code. Je ne l'ai trouvé qu'en relisant les occurrences brutes de « figé ». Un filtre trop prudent rate ce qu'il cherche ; c'est le troisième faux négatif de ce genre dans le chantier (les commentaires en M6, la définition récursive en M7, celui-ci). Le grep large suivi d'un tri à la main reste plus sûr que le filtre malin.

@@ -1073,7 +1073,7 @@ body:has(.overlay.show){overflow:hidden}
     <div id="studentOthersList"></div>
   </div>
   </div><!-- /studentPilotageWrap -->
-  <button id="studentCarnetBtn" class="dbg-btn ghost" style="display:none;margin:10px auto 0" onclick="openCarnetEleve()" title="Revoir toutes les évaluations que ton groupe a envoyées (figées).">📓 Mes évaluations</button>
+  <button id="studentCarnetBtn" class="dbg-btn ghost" style="display:none;margin:10px auto 0" onclick="openCarnetEleve()" title="Revoir toutes les évaluations que ton groupe a envoyées.">📓 Mes évaluations</button>
   <div id="studentDebatView" style="display:none"></div>
   <footer>Tablette du groupe. Vos actions sont visibles en direct sur l'écran prof. Le passage à <b>« fait »</b> nécessite la validation du professeur.</footer>
 </div>
@@ -1455,7 +1455,7 @@ body:has(.overlay.show){overflow:hidden}
 <div class="overlay" id="carnetEleveOverlay">
   <div class="gelcard" style="text-align:left;max-width:580px;max-height:84vh;overflow:auto">
     <h2 style="font-size:1.15rem;margin-bottom:4px;text-align:center">📓 Mes évaluations</h2>
-    <p style="font-size:.82rem;color:var(--muted);text-align:center;margin-bottom:14px">Tout ce que ton groupe a envoyé, figé.</p>
+    <p style="font-size:.82rem;color:var(--muted);text-align:center;margin-bottom:14px">Tout ce que ton groupe a envoyé.</p>
     <div id="carnetEleveBody"></div>
     <div class="acts" style="margin-top:16px"><button class="ghost" onclick="closeCarnetEleve()" title="Fermer.">Fermer</button></div>
   </div>
@@ -6024,7 +6024,7 @@ function renderCarnetEleve(){
   h+='<div class="carnet-sec">Vos évaluations</div>';
   const donnees=Object.keys(GE).filter(function(mid){ return GE[mid] && GE[mid][myBinomeId]; })
     .sort(function(a,b){ return (GE[a][myBinomeId].at||0)-(GE[b][myBinomeId].at||0); });
-  if(donnees.length===0){ h+='<div class="carnet-empty">Tu n\'as pas encore envoyé d\'évaluation. Elles apparaîtront ici, figées, au fur et à mesure.</div>'; }
+  if(donnees.length===0){ h+='<div class="carnet-empty">Tu n\'as pas encore envoyé d\'évaluation. Elles apparaîtront ici au fur et à mesure.</div>'; }
   donnees.forEach(function(mid){ h+=carnetDonneeCard(M[mid]||{}, GE[mid][myBinomeId], num[mid], mid); });
   body.innerHTML=h;
 }

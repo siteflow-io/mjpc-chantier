@@ -619,6 +619,65 @@ function idDeLApp(src){
   t('les versions se voient côté prof (point 4 de la décision)',
     html.includes('versionEval(e) > 1 ? h("span", {className:"version-pill"'));
 
+  section('M7 QCM bis — P2 : les portes dérobées (audit du 18/07)');
+  // La preuve est un GREP, pas une intention : on compte les écritures d'état.
+  const ecrituresEtat = (html.match(/etat"\)\.set\("terminee"\)|etat"\] = "terminee"/g) || []).length;
+  t('exactement 2 écritures d\'état subsistent (cloturerSession + nettoyage), ' + ecrituresEtat + ' comptée(s)',
+    ecrituresEtat === 2);
+  t('celle de cloturerSession', /function cloturerSession[\s\S]{0,400}maj\["\/sessions\/"\+sess\.id\+"\/etat"\] = "terminee";/.test(html));
+  t('PORTE 1 refermée — purgerSessionMenu passe par cloturerSession',
+    /function purgerSessionMenu\(s\)\{[\s\S]{0,500}cloturerSession\(Object\.assign\(\{id:s\.sid\}, s\.sess\)/.test(html) &&
+    !/function purgerSessionMenu[\s\S]{0,400}etat"\)\.set\("terminee"\)/.test(html));
+  t('PORTE 2 refermée — terminerDefinitivement passe par cloturerSession',
+    /function terminerDefinitivement\(\)\{[\s\S]{0,700}cloturerSession\(Object\.assign\(\{\}, sessionInterrompue/.test(html) &&
+    !/function terminerDefinitivement[\s\S]{0,600}updates\["\/sessions\/"\+sid\+"\/etat"\] = "terminee"/.test(html));
+  t('NETTOYAGE — les sessions abandonnées sont figées ET marquées comme telles',
+    html.includes('maj["/sessions/"+s.sid+"/evalSnapshotOrigine"] = "nettoyage";') &&
+    html.includes('var snapNet = construireEvalSnapshot(evNet);'));
+  t('le nettoyage dit ce qu\'il fige (pas de figement muet)',
+    html.includes("ce n'est pas forcément l'énoncé du jour de la session"));
+  t('le nettoyage dispose des évaluations pour figer',
+    html.includes('db.ref(DB_ROOT+"/evaluations").once("value")   // P2') && html.includes('var evalsNettoyage = results[3].val() || {};'));
+
+  section('M7 QCM bis — portail élève réellement atteignable');
+  t('le shunt est au niveau AppEleve : une session donne la classe ET l\'identité',
+    /function AppEleve\(p\)\{[\s\S]{0,3000}var sess = lireSessionMJPC\(\);/.test(html) &&
+    html.includes('setClasseSlug(ks[i]);'));
+  t('sans session, le portail à code reste le seul chemin',
+    html.includes('h(EleveLogin, {classe:classes[classeSlug]') &&
+    html.includes('if(!code.trim()){ setErr("Entre ton code personnel (4 chiffres)."); return; }'));
+  t('le shunt ignore les classes internes et les sessions professeur',
+    html.includes('if(estClasseInterneObj(classes[ks[i]])) continue;') && html.includes('if(!sess || sess.is_prof) return;'));
+
+  section('M7 QCM bis — « Mes évaluations » (point 8)');
+  t('le composant existe et lit le profil longitudinal',
+    html.includes('function MesEvaluations(p)') &&
+    html.includes('db.ref("mjpcProfils/"+classeSlug+"/"+slug+"/sessions").once('));
+  t('LECTURE SEULE — aucune écriture, aucun recalcul de score',
+    (() => { const i = html.indexOf('function MesEvaluations(p)'); const j = html.indexOf('\nfunction ', i + 10);
+             const c = html.slice(i, j);
+             return !/\.set\(|\.update\(|\.remove\(/.test(c) && !/calculerScoreQuestion|scoreMaxEval/.test(c); })());
+  t('les versions ne se confondent pas dans la liste (P2 ③)',
+    html.includes('(x.evalVersion && x.evalVersion > 1)'));
+  t('liste vide : un message qui annonce, jamais un reproche',
+    html.includes("Tu n'as pas encore d'évaluation ici. Celles de ta classe apparaîtront après la correction."));
+  t('accessible depuis l\'écran élève', html.includes('"📊 Mes évaluations"') && html.includes('setVoirMesEvals(true)'));
+
+  section('M7 QCM bis — dettes traitées');
+  t('D1 (#7) médiane décimale arrondie à l\'affichage', html.includes('var medianeAff = Math.round(mediane);'));
+  t('D3 (#14) aucune fourchette invalide, quel que soit le total',
+    (() => { const sb = sandbox(['bornesFourchette'], 'var FOURCHETTES_DEF=[{key:"vert"},{key:"bleu"},{key:"orange"},{key:"rouge"}];\n');
+             for (let total = 0; total <= 40; total++)
+               for (const k of ['vert', 'bleu', 'orange', 'rouge']) {
+                 const b = sb.bornesFourchette(k, total);
+                 if (b.inf > b.sup || b.inf < 0 || b.sup > total) return false; }
+             return true; })());
+  t('ARBITRAGE — attente_question est repassé en dur (constat, pas annonce)',
+    !html.includes('attente_question:') && html.includes('"⏳ Attends la prochaine question..."'));
+  t('trois textes éditables restent, tous des annonces',
+    (() => { const m = html.match(/var TEXTES_DEFAUT = \{[\s\S]*?\n\};/)[0];
+             return (m.match(/^\s{2}\w+:/gm) || []).length === 3; })());
+
   section('M7 QCM — C1/C2/C3 : les trois constats corrigés');
   t('C1 — plus de doublon estClasseInterne (le socle n\'est plus écrasé)',
     (html.split('\nfunction estClasseInterne(').length - 1) === 1 && html.includes('function estClasseInterneObj(classe)'));
@@ -688,8 +747,8 @@ function idDeLApp(src){
 
   section('M7 QCM — textes, version, diagnostic (points 18, 23, 25, 26, 28, cardinal)');
   const dico7 = sandbox(['txt'], 'var TEXTES_SURCHARGE={};\n' + html.match(/var TEXTES_DEFAUT = \{[\s\S]*?\n\};/)[0] + '\n', ['TEXTES_DEFAUT']);
-  t('quatre textes éditables, tous des ANNONCES (critère du point 26)',
-    Object.keys(dico7.TEXTES_DEFAUT).length === 4);
+  t('trois textes éditables après arbitrage, tous des ANNONCES (point 26)',
+    Object.keys(dico7.TEXTES_DEFAUT).length === 3);
   t('txt() rend le défaut quand rien n\'est surchargé', dico7.txt('attente_session') === dico7.TEXTES_DEFAUT.attente_session);
   t('un champ vide retombe sur le défaut',
     sandbox(['txt'], 'var TEXTES_SURCHARGE={attente_session:"   "};\n' + html.match(/var TEXTES_DEFAUT = \{[\s\S]*?\n\};/)[0] + '\n')
@@ -698,7 +757,11 @@ function idDeLApp(src){
   t('PRINCIPE CARDINAL — aucun texte élève n\'impute un manquement au professeur',
     !/"[^"]*(le |ton |du )?professeur[^"]*(n['’]a pas|ne l['’]a pas|pas encore|n['’]est pas)/i.test(html));
   t('POINT 28 — plus aucune mention du professeur à la 3e personne côté élève',
-    (() => { const restes = (html.match(/"[^"]*professeur[^"]*"/g) || []).filter(x => !/Accès professeur/.test(x));
+    (() => { // Les commentaires du code sont retirés d'abord : sans cela l'extraction
+             // enjambe un commentaire et le prend pour un texte affiché (faux positif).
+             const sansCom = html.split('\n').filter(l => !/^\s*\/\//.test(l)).join('\n');
+             const restes = (sansCom.match(/"[^"]*professeur[^"]*"/g) || [])
+               .filter(x => !/Accès professeur/.test(x) && !/[{};]|=>|h\(/.test(x));
              return restes.length === 0; })());
   t('l\'ACCOMPLI est au « je » (l\'autorité s\'affirme)',
     html.includes('"⏸️ J\'ai mis le chrono en pause"') && html.includes('"⏱️ J\'ai ajouté du temps de réflexion."'));

@@ -1371,11 +1371,15 @@ var MJPC_APP = {
   contenant: "aucun"
 };
 var MJPC_MANIFESTE = {
-  noeuds: ["site","eleves_index","codes"],   // /codes rendu par le débat (14/07) : les codes personnels sont créés et gérés ICI
+  // M8 : les deux nœuds du lot 1 sont nommés explicitement. Ils vivent SOUS "site",
+  // déjà déclaré — mais un contrat qui se lit ne se devine pas par l'ancêtre.
+  noeuds: ["site","site/annonces","site/config","eleves_index","codes"],   // /codes rendu par le débat (14/07) : les codes personnels sont créés et gérés ICI
   notions: []
 };
 var MJPC_PURGE = {
-  preserver: ["site"],               // chapitres publiés par niveau : conception pure
+  // "site" couvrait déjà ses enfants par préfixe ; on nomme quand même les deux
+  // nœuds de conception ajoutés en M8, pour que la purge de rentrée les VOIE.
+  preserver: ["site","site/annonces","site/config"],   // chapitres publiés par niveau + annonces + réglages : conception pure
   purger:    ["eleves_index","codes"]   // index élèves + codes personnels : nouvelles classes → nouveaux codes à la rentrée
 };
 function publierManifesteREST(){

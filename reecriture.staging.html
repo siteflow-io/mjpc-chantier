@@ -836,7 +836,7 @@ function generateFichesReecriture(data,corrections,eleveNames){
       html+='<div style="padding:20px;text-align:center;color:#276749;font-size:11pt">\u2705 Aucune erreur. Bravo !</div>';
     }
 
-    html+='<div class="verso-consigne">Avec un camarade, compl\u00e8te chaque ligne en t\'aidant du recto. Si tu s\u00e8ches sur une, marque-la et demande au prof.</div>';
+    html+='<div class="verso-consigne">Avec un camarade, compl\u00e8te chaque ligne en t\'aidant du recto. Si tu s\u00e8ches sur une, marque-la et demande-moi.</div>';
     html+='</div>';
   });
 
@@ -3382,7 +3382,7 @@ function AppEleve(p){
           h("input",{value:codeInput,type:codeVisible?"text":"password",inputMode:"numeric",maxLength:5,onChange:function(e){setCodeInput(e.target.value)},placeholder:"Code",title:"Ton code personnel MJPC.",autoComplete:"current-password",style:{paddingRight:88},onKeyDown:function(e){if(e.key==="Enter")doLogin()}}),
           h("button",{type:"button","aria-label":codeVisible?"Masquer le code":"Afficher le code",onClick:function(){setCodeVisible(!codeVisible)},style:{position:"absolute",right:4,bottom:2,minHeight:44,minWidth:44,padding:"0 10px",background:"transparent",border:"none",color:"var(--muted)",fontStyle:"italic",cursor:"pointer"}},codeVisible?"Masquer":"Afficher")),
         errMsg&&h("p",{style:{color:"var(--coral)",fontSize:".88rem",marginBottom:8}},errMsg),
-        h("button",{className:"btn btn-primary",onClick:doLogin,title:"Acc\u00e9der \u00e0 ta r\u00e9\u00e9criture. Si ton prof a corrig\u00e9, tu pourras commencer ton autocorrection."},"Acc\u00e9der")
+        h("button",{className:"btn btn-primary",onClick:doLogin,title:"Acc\u00e9der \u00e0 ta r\u00e9\u00e9criture. Si ta copie est corrig\u00e9e, tu pourras commencer ton autocorrection."},"Acc\u00e9der")
       )
     ),
     h("button",{className:"btn-sm btn-ghost",style:{marginTop:12},title:"Revenir \u00e0 l'\u00e9cran d'accueil.",onClick:p.onBack},"\u2190 Retour")
@@ -3401,7 +3401,7 @@ function AppEleve(p){
         h("div",{style:{fontSize:"2.4rem",marginBottom:10}},"\u23f3"),
         h("h2",{style:{marginBottom:8}},"Ta copie n'est pas encore corrig\u00e9e"),
         h("p",{style:{color:"var(--muted)",marginBottom:14}},eleveData.eleve+" \u2014 "+(eleveData.reecriture.title||"")),
-        h("p",{style:{lineHeight:1.6}},"Reviens un peu plus tard, quand ton professeur aura termin\u00e9 la correction.")
+        h("p",{style:{lineHeight:1.6}},"Reviens un peu plus tard : ta copie est en cours de correction.")
       ),
       h("button",{className:"btn-sm btn-ghost",style:{marginTop:12},title:"Revenir \u00e0 l'\u00e9cran de connexion.",onClick:function(){setScreen("login");setEleveData(null)}},"\u2190 Retour")
     );
@@ -3578,7 +3578,7 @@ function EleveAutocorrReecriture(p){
       "\u26a0\ufe0f Tu es l\u00e0 ? Reprends la correction de tes erreurs. Clique ici pour continuer."),
     // Header
     h("div",{className:"card",style:{textAlign:"center"}},
-      h("h1",{style:{marginBottom:4}},allDone?"\ud83c\udf89 Bravo !":"Corrige tes erreurs"),
+      h("h1",{style:{marginBottom:4}},allDone?"\u2705 Autocorrection termin\u00e9e":"Corrige tes erreurs"),
       h("p",{className:"subtitle",style:{marginBottom:12}},d.eleve+" \u2014 "+(ree.title||"")),
       allDone?
         h("div",null,

@@ -1,0 +1,1 @@
+STUB SET manifestes/analyse_logique

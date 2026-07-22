@@ -7538,8 +7538,8 @@ function Prof(p){
     h("span",{className:"back-link",onClick:p.onBack},"← Retour"),
     h("div",{className:"card",style:{textAlign:"center"}},
       h("h2",null,"Panneau professeur"),
-      h("input",{className:"qi-input",type:"password",placeholder:"Code prof",style:{textAlign:"center",marginBottom:12},value:code,onChange:function(e){setCode(e.target.value)},onKeyDown:function(e){if(e.key==="Enter"&&PROF_CODES.indexOf(parseInt(code))>=0){setAuth(true);publierManifeste(db)}}}),
-      h("button",{title:"Accéder",className:"btn btn-primary",onClick:function(){if(PROF_CODES.indexOf(parseInt(code))>=0){setAuth(true);publierManifeste(db)}else alert("Code incorrect")}}, "Accéder")
+      h("input",{className:"qi-input",type:"password",placeholder:"Code prof",style:{textAlign:"center",marginBottom:12},value:code,onChange:function(e){setCode(e.target.value)},onKeyDown:function(e){if(e.key==="Enter"&&PROF_CODES.map(String).indexOf(String(code))>=0){setAuth(true);publierManifeste(db)}}}),
+      h("button",{title:"Accéder",className:"btn btn-primary",onClick:function(){if(PROF_CODES.map(String).indexOf(String(code))>=0){setAuth(true);publierManifeste(db)}else alert("Code incorrect")}}, "Accéder")
     )
   );
 

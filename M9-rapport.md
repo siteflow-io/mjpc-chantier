@@ -1,8 +1,8 @@
 # M9 — RAPPORT DE L'EXÉCUTANT · dictee_universelle.html
-*Signé [exécutant M9] — 22/07/2026*
+*Signé [exécutant M9] — 22/07/2026 · amendé R1 le 22/07/2026*
 
 Base : 1 928 589 o, md5 `ab51c348324b309b8947e200c55e2956`, re-téléchargée et vérifiée identique avant toute ligne.
-Livré : `dictee_universelle.staging.html` — 1956436 o, md5 `e2280055bcd39af2b346f719d6a79497`. Coutures ciblées uniquement (43 hunks, +545/−122 lignes). Je ne promeus jamais.
+Livré : `dictee_universelle.staging.html` — 1956456 o, md5 `409288baa32757c30b916f3f9aeb9af0`. Coutures ciblées uniquement (43 hunks, +545/−122 lignes). Je ne promeus jamais.
 
 ## 1. Ce qui a été fait, feu vert point par point
 
@@ -64,4 +64,9 @@ Livré : `dictee_universelle.staging.html` — 1956436 o, md5 `e2280055bcd39af2b
 - **CONSTAT** : l'atterrissage prof reste sur son onglet initial d'origine ; la famille se dérive de l'onglet, aucun état ajouté.
 - **CONSTAT (harnais)** : Playwright bloqué par l'allowlist réseau — jsdom livré en repli déclaré, contrat lecture seule renforcé.
 
-*Livraison : `dictee_universelle.staging.html` (1956436 o, md5 `e2280055bcd39af2b346f719d6a79497`) + `M9-rapport.md` au sas, signés [exécutant M9], vérifiés bit à bit local↔sas. Je ne promeus jamais.*
+
+## 5. Reprise R1 (audit conscience, seule reprise)
+
+L'accès prof aux onglets (les deux contrôles de `DicteeSelector`/`Prof`, input « Code prof ») comparait `PROF_CODES.indexOf(parseInt(code))` : avec une surcharge Firebase `cfg.profCodes` en CHAÎNES (le cas naturel en JSON), l'accès prof cassait — défaut préexistant de la base (L7147/7148), couvert par le feu vert (« TOUS les points de contrôle lisent les PROF_CODES EFFECTIFS », sous toutes leurs formes). **Corrigé** : les deux comparaisons alignées sur le patron déjà employé par le portail — `PROF_CODES.map(String).indexOf(String(code))>=0`. Zéro `parseInt` restant sur un contrôle PROF_CODES. Rien d'autre ne bouge (diff R1 = ces deux lignes). Preuves rejouées sur l'état final : node --check 8 blocs + acorn ES2020 verts, harnais 21/21 verts, et preuve dédiée du cas surcharge-en-chaînes (accès vivant dans les deux formes, chaînes et nombres).
+
+*Livraison : `dictee_universelle.staging.html` (1956456 o, md5 `409288baa32757c30b916f3f9aeb9af0`) + `M9-rapport.md` au sas, signés [exécutant M9], vérifiés bit à bit local↔sas. Je ne promeus jamais.*

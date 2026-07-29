@@ -1,0 +1,206 @@
+[
+ {
+  "page": "prof",
+  "methode": "GET",
+  "chemin": "",
+  "t": 1785319914940
+ },
+ {
+  "page": "prof",
+  "methode": "GET",
+  "chemin": "site/config/brevetDates",
+  "t": 1785319914943
+ },
+ {
+  "page": "prof",
+  "methode": "GET",
+  "chemin": "classes",
+  "t": 1785319918209
+ },
+ {
+  "page": "prof",
+  "methode": "GET",
+  "chemin": "codes",
+  "t": 1785319918233
+ },
+ {
+  "page": "prof",
+  "methode": "GET",
+  "chemin": "site/atelier/documents",
+  "t": 1785319918253
+ },
+ {
+  "page": "prof",
+  "methode": "PUT",
+  "chemin": "site/atelier/documents/feuille_1785319919665",
+  "t": 1785319919672
+ },
+ {
+  "page": "prof",
+  "methode": "PUT",
+  "chemin": "site/atelier/documents/feuille_1785319919665",
+  "t": 1785319924170
+ },
+ {
+  "page": "prof",
+  "methode": "PUT",
+  "chemin": "site/atelier/documents/feuille_1785319919665",
+  "t": 1785319928604
+ },
+ {
+  "page": "prof",
+  "methode": "PUT",
+  "chemin": "site/atelier/documents/feuille_1785319919665",
+  "t": 1785319931781
+ },
+ {
+  "page": "prof",
+  "methode": "PUT",
+  "chemin": "site/atelier/documents/feuille_1785319919665",
+  "t": 1785319932587
+ },
+ {
+  "page": "prof",
+  "methode": "PUT",
+  "chemin": "site/atelier/documents/feuille_1785319919665",
+  "t": 1785319935296
+ },
+ {
+  "page": "prof",
+  "methode": "GET",
+  "chemin": "",
+  "t": 1785319936251
+ },
+ {
+  "page": "prof",
+  "methode": "GET",
+  "chemin": "site/config/brevetDates",
+  "t": 1785319936253
+ },
+ {
+  "page": "prof",
+  "methode": "GET",
+  "chemin": "classes",
+  "t": 1785319942418
+ },
+ {
+  "page": "prof",
+  "methode": "GET",
+  "chemin": "codes",
+  "t": 1785319942430
+ },
+ {
+  "page": "prof",
+  "methode": "GET",
+  "chemin": "site/atelier/documents",
+  "t": 1785319942438
+ },
+ {
+  "page": "prof",
+  "methode": "PUT",
+  "chemin": "site/atelier/documents/feuille_1785319919665",
+  "t": 1785319944786
+ },
+ {
+  "page": "prof",
+  "methode": "PUT",
+  "chemin": "site/atelier/documents/feuille_1785319919665",
+  "t": 1785319946397
+ },
+ {
+  "page": "prof",
+  "methode": "GET",
+  "chemin": "site/atelier/documents",
+  "t": 1785319946418
+ },
+ {
+  "page": "prof",
+  "methode": "PUT",
+  "chemin": "site/atelier/documents/feuille_1785319947003",
+  "t": 1785319947005
+ },
+ {
+  "page": "prof",
+  "methode": "GET",
+  "chemin": "site/atelier/documents",
+  "t": 1785319947008
+ },
+ {
+  "page": "prof",
+  "methode": "PUT",
+  "chemin": "corbeille/2026-07-29/atelier-feuille_101228",
+  "t": 1785319948120
+ },
+ {
+  "page": "prof",
+  "methode": "DELETE",
+  "chemin": "site/atelier/documents/feuille_1785319947003",
+  "t": 1785319948123
+ },
+ {
+  "page": "prof",
+  "methode": "GET",
+  "chemin": "site/atelier/documents",
+  "t": 1785319948125
+ },
+ {
+  "page": "prof",
+  "methode": "GET",
+  "chemin": "classes",
+  "t": 1785319949731
+ },
+ {
+  "page": "prof",
+  "methode": "GET",
+  "chemin": "codes",
+  "t": 1785319949736
+ },
+ {
+  "page": "prof",
+  "methode": "GET",
+  "chemin": "site/config/brevetDates",
+  "t": 1785319954871
+ },
+ {
+  "page": "prof",
+  "methode": "GET",
+  "chemin": "classes",
+  "t": 1785319954875
+ },
+ {
+  "page": "prof",
+  "methode": "GET",
+  "chemin": "codes",
+  "t": 1785319954882
+ },
+ {
+  "page": "prof",
+  "methode": "GET",
+  "chemin": "site/atelier/documents",
+  "t": 1785319954885
+ },
+ {
+  "page": "eleve",
+  "methode": "GET",
+  "chemin": "",
+  "t": 1785319955476
+ },
+ {
+  "page": "eleve",
+  "methode": "GET",
+  "chemin": "site/config/brevetDates",
+  "t": 1785319955477
+ },
+ {
+  "page": "eleve",
+  "methode": "GET",
+  "chemin": "site/3e",
+  "t": 1785319959964
+ },
+ {
+  "page": "eleve",
+  "methode": "GET",
+  "chemin": "classes",
+  "t": 1785319959990
+ }
+]

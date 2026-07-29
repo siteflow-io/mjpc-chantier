@@ -8,7 +8,7 @@
 | Pièce | Valeur |
 |---|---|
 | Base éditée | `index.html` production, **re-téléchargée juste avant édition** : 395 148 o, md5 `dcbc4afe4d31a0b56bbd11c80cb045fb` (identique au registre du cadrage) |
-| Livraison | `index.staging.html` : **483 209 o**, md5 `317f0a1205267b07951f7c02ed81c299` |
+| Livraison | `index.staging.html` : **490 755 o**, md5 `317f0a1205267b07951f7c02ed81c299` |
 | Version | `APP_VERSION` **8.5.2 → 8.6.0**, date 2026-07-29 (pastille : incrément bloquant respecté) |
 | Périmètre | Une section nommée « ATELIER DE COMPOSITION (SITE-COURS-1) » : un bloc CSS, un bouton de panneau, un écran, une tranche JS. Rien d'autre. |
 

@@ -1,0 +1,107 @@
+[
+ {
+  "n": "B1. succès : verdict accepté → bandeau vert « Enregistré à … »",
+  "ok": true,
+  "d": "Enregistré à 08 h 46"
+ },
+ {
+  "n": "B2. succès : l’état local suit le verdict",
+  "ok": true,
+  "d": "Chapitre renommé"
+ },
+ {
+  "n": "B3. succès : le PUT est parti (journal) et le magasin porte la valeur",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "C1. refus : bandeau « refusée par la base (HTTP 401) … rien n’est enregistré »",
+  "ok": true,
+  "d": "Renommage en « Titre refusé » : écriture refusée par la base (HTTP 401) à 08 h 46 — rien n’est enregistré. Un refus n’es"
+ },
+ {
+  "n": "C2. refus : « réessayer ne changera rien » (définitif dit)",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "C3. refus : l’état local N’A PAS suivi (jamais « enregistré » avant verdict)",
+  "ok": true,
+  "d": "Chapitre renommé"
+ },
+ {
+  "n": "D1. panne : bandeau « pas de liaison … rien n’est parti » + Réessayer",
+  "ok": true,
+  "d": "Renommage en « Titre après panne » : pas de liaison à 08 h 46 — rien n’est parti. La modification reste sur ce"
+ },
+ {
+  "n": "D2. réémission ponctuelle : verdict accepté, écran et magasin suivent",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "E1. trois échecs → UN bandeau groupé « 3 enregistrements n’ont pas abouti »",
+  "ok": true,
+  "d": "3 enregistrements n’ont pas abouti depuis 08 h 46. Détail Tout réessayerRenommage en « E1 "
+ },
+ {
+  "n": "E2. le Détail (cliquable) liste les 3, chacun daté et causé",
+  "ok": true,
+  "d": "Renommage en « E1 » · 08 h 46 · refusée (HTTP 401) — définitifRenommage en « E2 » · 08 h 46 · refusé"
+ },
+ {
+  "n": "F. Tout réessayer : les 3 ré-émis (valeurs courantes), verdict vert",
+  "ok": true,
+  "d": "5 PUT title en mode ok"
+ },
+ {
+  "n": "G1. cascade : renderChapitres appelé APRÈS le dernier verdict (ordre mesuré)",
+  "ok": true,
+  "d": "1 ms après"
+ },
+ {
+  "n": "G2. cascade : l’échec est NOMMÉ (chemin publié en défaut) au bandeau",
+  "ok": true,
+  "d": "Publication — /site/3e/chapitres/1/published/3e_temoin : écriture refusée par la base (HTTP 401) à 08 h 47 — r"
+ },
+ {
+  "n": "H. LIER refusé : état local INTACT + échecs nommés (source, référence)",
+  "ok": true,
+  "d": "drive|x · 3 enregistrements n’ont pas abouti depuis 08 h 47. Détail Tout réessayerBouton L"
+ },
+ {
+  "n": "I1. élève en panne : « La connexion n’a pas abouti. Réessaie dans un instant. »",
+  "ok": true,
+  "d": "La connexion n’a pas abouti. Réessaie dans un instant."
+ },
+ {
+  "n": "I2. zéro jargon, flux impersonnel (personne en position de manque)",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "I3. réessai élève : « Bienvenue … » (le même geste aboutit)",
+  "ok": true,
+  "d": "Bienvenue, MARTIN Lucas !"
+ },
+ {
+  "n": "J. mode test : cb(true, acceptée), ZÉRO réseau, ZÉRO bandeau",
+  "ok": true,
+  "d": "{\"ok\":true,\"etat\":\"acceptee\"}"
+ },
+ {
+  "n": "K. pire cas « tout refusé » : chaque geste de la salve a reçu un message",
+  "ok": true,
+  "d": "4 gestes journalisés pour le relevé"
+ },
+ {
+  "n": "L1. mobile 390 : cibles du bandeau ≥ 44×44 (1 mesurées)",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "L2. mobile 390 : aucun débordement horizontal",
+  "ok": true,
+  "d": ""
+ }
+]

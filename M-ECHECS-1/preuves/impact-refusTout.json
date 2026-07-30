@@ -1,0 +1,22 @@
+[
+ {
+  "ecran": "Écran Architecture · renommer",
+  "message": "Renommage en « K-titre » : écriture refusée par la base (HTTP 401) à 08 h 47 — rien n’est enregistré. Un refus n’est pas une panne : réessayer ne changera rien. Cause probable : règles de sécurité ou chemin invalide. Rée",
+  "conduite": "Réessayer offert (panne) / constat (refus)"
+ },
+ {
+  "ecran": "Écran Architecture · publier",
+  "message": "3 enregistrements n’ont pas abouti depuis 08 h 47. Détail Tout réessayerDépublication — /site/3e/chapitres/1/published/3e_temoin · 08 h 47 · refusée (HTTP 401) — définitifDépublication — /site/3e/chapitres/1/seances/1/pu",
+  "conduite": "constat ferme, cause dite"
+ },
+ {
+  "ecran": "Écran Classes · archiver",
+  "message": "Archivage de la classe « 3e Témoin » : écriture refusée par la base (HTTP 401) à 08 h 47 — rien n’est enregistré. Un refus n’est pas une panne : réessayer ne changera rien. Cause probable : règles de sécurité ou chemin i",
+  "conduite": "Réessayer offert (panne) / constat (refus)"
+ },
+ {
+  "ecran": "Écran Annonces · écrire (_sitePut)",
+  "message": "Annonce aux élèves : écriture refusée par la base (HTTP 401) à 08 h 47 — rien n’est enregistré. Un refus n’est pas une panne : réessayer ne changera rien. Cause probable : règles de sécurité ou chemin invalide.",
+  "conduite": "constat ferme, cause dite"
+ }
+]

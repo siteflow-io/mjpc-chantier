@@ -1,0 +1,20 @@
+{
+ "hunks": 14,
+ "plus": 85,
+ "moins": 13,
+ "retires": [
+  "var APP_VERSION=\"8.10.0\";",
+  "if(!found.code||found.code!==code){status.textContent='';err.textContent='Ce code ne correspond pas. V\\u00e9rifie-le, ou vois avec moi en classe.';setTimeout(function(){err.textContent='';},4000);return;}",
+  "_loginEleveFound(found,status);",
+  "function _eleveCode(nom){var k=san(nom);return (codesData[k]&&codesData[k].code)||'';}",
+  "var rec={code:code,name:nom,classe:slug,createdAt:Date.now(),chiffre:res[0],sel:sel,empreinte:res[1]};",
+  "var sansCode=names.filter(function(n){return !_eleveCode(n);}).length;",
+  "names.forEach(function(nom,i){var code=_eleveCode(nom);var aff=secuCodeAffiche(nom);",
+  "html+='<div class=\"el-row\"><span class=\"el-num\">'+(i+1)+'</span><span class=\"el-name\">'+escapeHtml(nom)+'</span><span class=\"el-code\">'+codeHtml+'</span><span class=\"el-acts\"><button class=\"admin-action-btn\" title=\"R\\u00e9g\\u00e9n\\u00e9rer le code\" onclick=\"_regenCodeEleve(\\''+slug+'\\','+i+')\">\\u21bb</button><button class=\"admin-action-btn danger\" title=\"Retirer l\\u2019\\u00e9l\\u00e8ve\" onclick=\"_deleteEleveCls(\\''+slug+'\\','+i+')\">\\u2715</button></span></div>';",
+  "async function _genererCodesClasse(slug){if(!secuExigeCle())return;var names=extractEleves(classesData[slug],[]);var taken=await _allCodesTaken();for(var i=0;i<names.length;i++){var nom=names[i];if(!_eleveCode(nom)&&!(SECU.cache&&SECU.cache[san(nom)])&&!(codesData[san(nom)]&&codesData[san(nom)].chiffre)){var c=await _genCode4(taken);taken[c]=true;_putCode(nom,slug,c);}}showProfSection('eleves');}",
+  "function _printCodesClasse(slug){if(!secuExigeCle())return;/* M-SÉCU-1 : l'impression suit l'écran (Q6) */var names=extractEleves(classesData[slug],[]);var cl=classesData[slug]||{};var rows=names.map(function(nom){return '<tr><td>'+escapeHtml(nom)+'</td><td class=\"c\">'+(_eleveCode(nom)||'\\u2014')+'</td></tr>';}).join('');var w=window.open('','_blank');if(!w)return;w.document.write('<html><head><title>Codes '+escapeHtml(cl.nom||slug)+'</title><style>body{font-family:sans-serif;padding:24px;color:#111}h1{font-size:18px}table{border-collapse:collapse;width:100%;margin-top:12px}td,th{border:1px solid #bbb;padding:7px 12px;text-align:left}td.c{font:700 18px ui-monospace,monospace;letter-spacing:.1em}</style></head><body><h1>Codes \\u2014 '+escapeHtml(cl.nom||slug)+'</h1><table><thead><tr><th>\\u00c9l\\u00e8ve</th><th>Code</th></tr></thead><tbody>'+rows+'</tbody></table></body></html>');w.document.close();setTimeout(function(){try{w.print();}catch(e){}},300);}",
+  "if(!e||!e.code)return '';",
+  "if(e.chiffre&&SECU.cache[k])return SECU.cache[k];",
+  "return e.code;"
+ ]
+}

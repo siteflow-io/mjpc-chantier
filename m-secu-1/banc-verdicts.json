@@ -1,0 +1,147 @@
+[
+ {
+  "n": "01. WebCrypto disponible (Node natif)",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "02. avant toute pose : canari absent détecté",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "03. canari posé au hub (journal)",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "04. la même clé revalide contre le canari posé",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "05. fiche d’appareil écrite (nom générique, dates)",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "06. empreintes prof posées et VÉRIFIABLES (recalcul concordant)",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "07. empreintes prof idempotentes (pas de réécriture)",
+  "ok": true,
+  "d": "1 PUT"
+ },
+ {
+  "n": "08. dénombrement + compte rendu : 118 préparés, 0 refus, 0 panne, 2 vestiges",
+  "ok": true,
+  "d": "118 codes préparés, 0 refusé, 0 en panne, 2 entrées anciennes ignorées. Le clair reste en place tant que les applications en ont besoin — la protection sera effective au 3e temps du chantier sécurité."
+ },
+ {
+  "n": "09. non destructif : le clair RESTE, chiffre+sel+empreinte ajoutés",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "10. chiffre déchiffrable → le code exact · empreinte recalculée concordante",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "11. vestiges ELIO-* intacts et non touchés",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "12. idempotence : seconde exécution = 0 écriture, « 118 déjà prêts »",
+  "ok": true,
+  "d": "0 code à préparer, 118 déjà prêts, 2 entrées anciennes ignorées."
+ },
+ {
+  "n": "13. cache déchiffré : affichage = déchiffré prioritaire",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "14. sans clé : code MASQUÉ (null → ✻✻✻✻ à l’écran)",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "15. RECHARGEMENT : la clé revient de localStorage, validée SANS RESSAISIE",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "16. clé fausse : REJETÉE par le canari (clef-fausse)",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "17. oubli : secret effacé, codes masqués, oublié_le écrit",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "18. nouvelle saisie : les codes reviennent",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "19. _allCodesTaken APRÈS migration : 118 codes + 2 PROF_CODES présents",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "20. code régénéré : écrit avec ses CINQ champs, chiffre = nouveau code",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "21. sans clé : _putCode REFUSE (garde), zéro écriture, message montré",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "22. refus de migration : bilan « 0 préparé, 1 refusé » + échec signé nommé",
+  "ok": true,
+  "d": "0 code préparé, 1 refusé, 0 en panne, 2 entrées anciennes ignorées. Les échecs sont détaillés dans le bandeau — « Tout réessayer » les rejouera."
+ },
+ {
+  "n": "23. panne de migration : « 1 en panne » + signal panne",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "24. reprise : la migration rejouée répare (1 préparé)",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "25. MODE TEST : canari + patch + fiche → ZÉRO requête réseau, magasin muté",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "26. porte prof : le clair PROF_CODES continue d’ouvrir (jusqu’à M-SÉCU-3)",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "27. porte prof : LA CLÉ ouvre (validée par le canari)",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "28. crypto absente : déclarée ({raison:crypto} → message https), pas d’échec muet",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "29. LA CLÉ NE SORT JAMAIS : 134 requêtes inspectées, secret absent (clair et b64)",
+  "ok": true,
+  "d": ""
+ }
+]

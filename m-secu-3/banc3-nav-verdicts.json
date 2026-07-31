@@ -1,0 +1,52 @@
+[
+ {
+  "n": "site : la clé mémorisée est validée au chargement (canari)",
+  "ok": true,
+  "d": "{\"valide\":true,\"codes\":0}"
+ },
+ {
+  "n": "site : le bouton « Retirer les codes en clair » est rendu dans l’encart",
+  "ok": true,
+  "d": "{\"h\":0}"
+ },
+ {
+  "n": "site : la modale dénombre (4 codes, vestige annoncé) AVANT toute action",
+  "ok": true,
+  "d": "monsieurj'aipascompris\nCOURS DE FRANÇAIS — MONSIEUR MENEY\nM. Meney (prof) · PROF\nANNÉE SCOLAIRE 2026–2027\nCHOISIR SON NI"
+ },
+ {
+  "n": "site : ARCHIVE en corbeille PUIS 4 PATCH {code:null} — l’ordre réel du réseau",
+  "ok": true,
+  "d": "arch=true patchs=4"
+ },
+ {
+  "n": "site : l’archive {_meta,data} porte le clair (restauration possible)",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "site : après le geste, /codes du hub de banc SANS clair, le chiffré RESTE, vestige intact",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "app : le bandeau « clé mémorisée » est toujours là (M-SÉCU-2 conservé)",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "app : entrée SANS empreinte → le message impersonnel EXACT s’affiche",
+  "ok": true,
+  "d": "es)\nAfficher\nNom\nPrénom\n\nCe code n’ouvre pas encore cet espace. Il sera renouvelé en classe — rien à faire de ton côté.\n\nEntrer\n\nTon code MJPC habitue"
+ },
+ {
+  "n": "mobile 390 : le bouton mesuré (≥ 40 px, zéro débordement)",
+  "ok": true,
+  "d": "{\"h\":44,\"w\":306,\"deborde\":false}"
+ },
+ {
+  "n": "la clé ne sort JAMAIS (39 requêtes + 9 écritures, 4 formes)",
+  "ok": true,
+  "d": ""
+ }
+]

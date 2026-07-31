@@ -1,0 +1,672 @@
+[
+ {
+  "m": "GET",
+  "url": "https://hub.example/site/config/coffreCanari.json",
+  "body": ""
+ },
+ {
+  "m": "PUT",
+  "url": "https://hub.example/site/config/coffreCanari.json",
+  "body": "\"v1.AOaUopbqiVfxPk8t.Nr2sjRaj4BoJViK+9QsULyXhkNJi2EUsck22sRH/LDU4uFV7Zg==\""
+ },
+ {
+  "m": "GET",
+  "url": "https://hub.example/site/config/coffreCanari.json",
+  "body": ""
+ },
+ {
+  "m": "PUT",
+  "url": "https://hub.example/site/config/coffreAppareils/app-ms8mmq73-yk2a57.json",
+  "body": "{\"nom\":\"Windows · Chrome\",\"pose_le\":1785483256863,\"oublie_le\":null}"
+ },
+ {
+  "m": "GET",
+  "url": "https://hub.example/site/config/profEmpreintes.json",
+  "body": ""
+ },
+ {
+  "m": "PUT",
+  "url": "https://hub.example/site/config/profEmpreintes.json",
+  "body": "[{\"sel\":\"14c3e2b2f980aed9c741d8bbea75748f\",\"empreinte\":\"8e84c4b82c2fce84e2941e74bf529b1aa4aac11a27ffacf92b1a69f52183230b\"},{\"sel\":\"2e413ece75c620506bb4dfc45c88936f\",\"empreinte\":\"2e53bc558a8ce9338f6f49434de604f8e26df973fd7e70e33d26eb821784eda6\"}]"
+ },
+ {
+  "m": "GET",
+  "url": "https://hub.example/site/config/profEmpreintes.json",
+  "body": ""
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/bernard_emma_t_001.json",
+  "body": "{\"chiffre\":\"v1.kWBEJPoS3CUAHYIc.8rMCNKQiMFb+/PnSJI02cM7/zZY=\",\"sel\":\"551283d1fb6d474642c12e430f63586f\",\"empreinte\":\"842147871d537ab86bcf03f2b65d1dedcd97fdf3563f308294df616330025b6f\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/martin_lucas_t_004.json",
+  "body": "{\"chiffre\":\"v1.wcsBBs1j6d2pXUlr.Nr3ZhL5G6eJ8upakzDIGGI5BKv0=\",\"sel\":\"d9bd406318c85b5463648c68cf1094ba\",\"empreinte\":\"b0c15ffa738a4ee74097f8c65e5a6c55f9cee083c979af9e882b2b65e96f83e5\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/dupont_marie_t_002.json",
+  "body": "{\"chiffre\":\"v1.GjwuwTS91ad/Lftq.05XaeO/Sf5rO4+VTCPOKpeQk4EU=\",\"sel\":\"be6841e4b8378ff8b41b355b53a20682\",\"empreinte\":\"cc68c24871d671b464d94accb5a3d6d1189de23435aeb9d765d1ac15c0ae483e\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/leroy_hugo_t_003.json",
+  "body": "{\"chiffre\":\"v1.bHGmw+mNtj/44LgC.jARpo1evJjWLd9F5F4oDCHNO42U=\",\"sel\":\"9b939156841277d1617601c38e53861a\",\"empreinte\":\"a8514bee7bb88e3f2bf91ad04601144f7c69e0e50c94232a6256f54c0002fd50\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/petit_thomas_t_006.json",
+  "body": "{\"chiffre\":\"v1.k7dHdXJzchfOkt9F.iJNb+IsZH95EnU5ecuTquBa4PHI=\",\"sel\":\"3da3ccdda0bbad2518dd9a1acdf41518\",\"empreinte\":\"6ed1533aeaa5ad56641344a4745ad919893d994b7e3ad1ced783db6ac9415141\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/moreau_lea_t_005.json",
+  "body": "{\"chiffre\":\"v1.FXtK+vEjySA4aJVv.SEmKNH65jkLkValQc0IPV5zvkes=\",\"sel\":\"a095ce5d13e7a64570ae88082ba7bec5\",\"empreinte\":\"ed063b1ce59a89f1cf4a5663b098431465026288663b64114153d817cb321a09\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/bernard_emma_t_007.json",
+  "body": "{\"chiffre\":\"v1.Bcv7IXmzjR+36HDX.FwO5HilDbSS232WCH8QL7Y7QK2A=\",\"sel\":\"d23d2abbaf7f3fa6b06813ebc25365a5\",\"empreinte\":\"57ac09e2c57fd33ae091b4faac84f97bd3893af95e4722a5df20a59d0c4bca61\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/dupont_marie_t_008.json",
+  "body": "{\"chiffre\":\"v1.GiAdISAuMqd0X3LD.gzBOs6YqruCLB07OlSVLmKCQ1VE=\",\"sel\":\"130925a7d89dac50f55aa5b45d1ee4d1\",\"empreinte\":\"5b72f36ec3e66f082354600f577391f96c590caa0d51324c82fdc201f75bebbe\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/martin_lucas_t_010.json",
+  "body": "{\"chiffre\":\"v1.+2nHWdu6mlYfsEt+.Vk1gRk78ZWyDR6tV8dF0qwo/B9c=\",\"sel\":\"2a5f35cd048d3f0dfd4aac0c1558350b\",\"empreinte\":\"92c995e033c7b64d2358bbc25d53d99d783bed19d7c1cc8237638dda936b1513\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/petit_thomas_t_012.json",
+  "body": "{\"chiffre\":\"v1.bwfRrhZv+yBGOZ2D.cF+Jvglwwb4mz8uXDWaF0SZfEBI=\",\"sel\":\"b3a3c88b66cd1a32504d5687fbccc862\",\"empreinte\":\"6ed454dd89f0187775886419a901e930ac7b28c89c015f7db3413eac1ff1e5f2\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/moreau_lea_t_011.json",
+  "body": "{\"chiffre\":\"v1.S7SeWcM14TOeiCVl.ZdA5dUQSw1ymmltOGHCAj7a1/Hs=\",\"sel\":\"52e5fe620514d08fc3f33cb6841be1b4\",\"empreinte\":\"a831c77217768d1cdc435165ebe7368114f6daba3d24aaf97dea953864698b4f\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/leroy_hugo_t_009.json",
+  "body": "{\"chiffre\":\"v1.khyfx4QWlnf+qqcd.IDV5eVBI7i117eADn7KsXYhxO60=\",\"sel\":\"8a8c14073145c16ff3acf7fa6acecfed\",\"empreinte\":\"4e027aa50234b6575bf883c50e4d90f87153451ba4aafcbd2885e32c95f6afd9\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/bernard_emma_t_013.json",
+  "body": "{\"chiffre\":\"v1.H3yWKQMci4F/V2YB.OBD/aBq1IkNGkKtUpZOFsADb1WI=\",\"sel\":\"54eb9c6df006e8461eb66c295d9e8969\",\"empreinte\":\"96146d0e23615497f5136716f1ae453f8e11e11d6ac0ac624f701d4a065081d9\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/martin_lucas_t_016.json",
+  "body": "{\"chiffre\":\"v1.A2h618xyuBfPfeqh.Pv8bkWG08+SpMwcZB8YAh+FJolg=\",\"sel\":\"b649e5b03b5e6ab4ce0c7a8e991cc1b3\",\"empreinte\":\"776cd47b28fe4ebf72c49f20e3237c79a7a14e2be8d8dceb20397ef950263000\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/leroy_hugo_t_015.json",
+  "body": "{\"chiffre\":\"v1.qS/gnPigvULL4M9c.SSID2TFMQYKtA/vEzzBs/5Ru1Vo=\",\"sel\":\"d8e9baba38c12cd7ad8fd13c89b90450\",\"empreinte\":\"ac209a1dbcf73f4421d184658f786c34512e58fc5ac507b1116707357ec04dd8\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/dupont_marie_t_014.json",
+  "body": "{\"chiffre\":\"v1.r80Jxf3INGPfk9uN.we81Q0vyfuB8Gwn1576HJEu6Wv4=\",\"sel\":\"3c82efebc8898b6298d46ef62c8bdc29\",\"empreinte\":\"0e07a150fd08835c5be7bf84e62c92beefc15d3b4da09be733663594920af96e\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/moreau_lea_t_017.json",
+  "body": "{\"chiffre\":\"v1.qyHvIliQ0ywQqkZG.srJfzjNkT8cwmrQ7gTK2vrFTLaA=\",\"sel\":\"e59579a0800c30bde428e0769934f448\",\"empreinte\":\"a3b995a084f5f8d9122f9057cb9f91688975f6aee19f6ccddcefd80ec28bb618\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/dupont_marie_t_020.json",
+  "body": "{\"chiffre\":\"v1.49fsl8liAThzh48a.9PncE4zEYA7KxKh9nGQZ9DrfVa4=\",\"sel\":\"9f4857d3f197b2d932739795c3e970fa\",\"empreinte\":\"03e52d1c21d9ce967d2ef8c4de49792a2a21fe2336d45b3a82d4d487f188fdbd\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/bernard_emma_t_019.json",
+  "body": "{\"chiffre\":\"v1.dKzQtVh39PqmNY4U.LmQ4nhLv58P+oyGOrC1jRLibaf8=\",\"sel\":\"ba18b261a386edea6fdc5869cd0d3943\",\"empreinte\":\"ca101be8927ab3081638026a9cb1b8a54d72ae6ade70f02f6559189dca2ae76f\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/petit_thomas_t_018.json",
+  "body": "{\"chiffre\":\"v1.STBITCSXSYjI8YdS.87sxp1VoD3tbtvEIyYyLm6hsZFM=\",\"sel\":\"45f9dae2bac9bbc322ad6e285994d555\",\"empreinte\":\"b8812e0ac175edc9ab987cf6eacb95377c98cc9326765cb8749f48b93c508519\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/petit_thomas_t_024.json",
+  "body": "{\"chiffre\":\"v1.bDD0ryiDyaUkPcM3.9RKYO4Rm8dwJ9/OUheyBmkQbPU8=\",\"sel\":\"1e25b6943cbcc205d36c19d50efa0109\",\"empreinte\":\"f33305879305392fb2995652550562b06433f7f98bc826d3578a714bf418bbb3\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/leroy_hugo_t_021.json",
+  "body": "{\"chiffre\":\"v1.p9AmoXZ22Un/hIoM.D+PpqStzFaU2OHmgM+e5s7wP74U=\",\"sel\":\"fe018015382d6ed7d57ea2aa95b37774\",\"empreinte\":\"08d072c21eb33584ce0a918cc81190d810e4d80a8be4a6427099aa737f5fa3df\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/moreau_lea_t_023.json",
+  "body": "{\"chiffre\":\"v1.X/qVLlOJpBxtr10B.VUkXYpHceBLxSsXvlV+RrK+9tjk=\",\"sel\":\"60aa764d5f8df170b9034674088fc0ca\",\"empreinte\":\"841ad2847aec14271fe49bf095f4c8e85461a7da19ca82359dad8d1ea7c2a41e\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/martin_lucas_t_022.json",
+  "body": "{\"chiffre\":\"v1.0xLPYmjncvcZAaXF.4TwcYh8sAV6jCSHNBmlNtfhARhk=\",\"sel\":\"4945b7a2752b4e0240cb2d6e8c9039b2\",\"empreinte\":\"dc351bff18c512d2b3518355aa18e465c4715ba246f8d9bdeaad89a30eac8c13\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/bernard_emma_t_025.json",
+  "body": "{\"chiffre\":\"v1.gB2pHz4BVRfW09Z6.PMtQuT0O8kh4LqOqwcU7xJqj3O0=\",\"sel\":\"75ea5db05cc5f851de2e08d37437427a\",\"empreinte\":\"34d8216980eb692d3239a06547302ae1f3ac15f3219ccaa3be8911fee279ae54\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/martin_lucas_t_028.json",
+  "body": "{\"chiffre\":\"v1.WzOFkxycIbxBEvQk.Y/oqgL1aeZyoBMvOfyBT7okaMVE=\",\"sel\":\"dfc5f2911aede9c29f15f30d8fc9a25a\",\"empreinte\":\"57db83e25533127fc933c895d86b41aa65cb65551a437dfb9a2d9b49c5a9f41b\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/leroy_hugo_t_027.json",
+  "body": "{\"chiffre\":\"v1.BRFgtUG1ortkJ0fY.Z6EC0LGu13TUIM27q4wkBbe5SwE=\",\"sel\":\"c1f8e3b71c942f390f23c3afb69967cb\",\"empreinte\":\"4b67fdb47ba08368d5579ab12a4f6d194e0f0884d766546afa3693c9cace2e26\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/dupont_marie_t_026.json",
+  "body": "{\"chiffre\":\"v1.Uzld+9tY8YWxkpPz.zjBmZA+BSuEE/21uG3qF5UFSIRY=\",\"sel\":\"a11028ff134aa74fe9c3c37b3bc71c96\",\"empreinte\":\"8eda7bd97ae013d89cfd87f73d6d7825a53b1f00107718cfcbea3e4552b539f5\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/moreau_lea_t_029.json",
+  "body": "{\"chiffre\":\"v1.YaZbVyBXiiPVe+Gs.1adsoIpeB183kElsTGbQjnu+jFo=\",\"sel\":\"cf4408b6ce3cc727e590bd116909b748\",\"empreinte\":\"4c7132f640d8a0e837f5862c584d0a3d41813d98af5768aa7c410ba33c2a742a\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/dupont_marie_t_032.json",
+  "body": "{\"chiffre\":\"v1.UL70Yg5SDTS8+tMC.tnkwp/CIr0gVr9zvVeMESXxzSoI=\",\"sel\":\"70daf21ccb01f62c78cddd8e1cca1d64\",\"empreinte\":\"b6752ba7c249f7da4c820b448a2b30b092e193f336b26ae560c90a33d31604b6\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/petit_thomas_t_030.json",
+  "body": "{\"chiffre\":\"v1.lWCBb3mmJbZu1Z6q.cfiNgNuqxsKArh42/NuANZYhObw=\",\"sel\":\"2b06286e5a0e5242182708aaa01d2c0f\",\"empreinte\":\"cc72c0f8d3055f0f0a443ec42aa0f06a9be1849cd22b914fbb1556d2ffa5daf9\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/bernard_emma_t_031.json",
+  "body": "{\"chiffre\":\"v1.kGgSMHCnWR+hTDgW.UvWipjTLpWkPdpMPw8tT16LbjTc=\",\"sel\":\"9a2de3444ff0205bed8e16231d4baad9\",\"empreinte\":\"6ce792966879b5e6a77438f7f1aca3d0229780275f486b63cabc0236146acd6e\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/leroy_hugo_t_033.json",
+  "body": "{\"chiffre\":\"v1.h8oFYMhnFLSr5Gij.5GBAYA3ogWB+0Win0/OQ7odqXsg=\",\"sel\":\"4a4f49f9998c783b64c3ec25141da622\",\"empreinte\":\"8382544c972eafac4679d7860dfbcfea5782a3cb48d91e6e7eea824c9be24650\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/petit_thomas_t_036.json",
+  "body": "{\"chiffre\":\"v1.J0zE9aVMcMBvAI9a.wjVDQ/Wo6t8vm7lgZaMN+GFB5Ac=\",\"sel\":\"b89fd6440c2237c857da560219171984\",\"empreinte\":\"bc8f5bc776756aa51adabaa383a927c3787f7959aafbc753433d835ac151c75d\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/martin_lucas_t_034.json",
+  "body": "{\"chiffre\":\"v1.vxx0acACyTta9NOk.gb2kuQZiMtCXYh5C/4a58Qi4HPo=\",\"sel\":\"ab25cbf90236c0f06639e23c3540e3d8\",\"empreinte\":\"1317cacc8f8c5c998ffa4b4a33b22e865bd9afb2e28f8f3b6b157accaf99ed39\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/moreau_lea_t_035.json",
+  "body": "{\"chiffre\":\"v1.FPus8w5YcFCvBjtD.qC8CxljthOD63zLeogSQfDdj9Ug=\",\"sel\":\"bbe74e864a95dbcd84fc1e98c0ca3c01\",\"empreinte\":\"5388a714faa260f2440fe5a27bb1f22db43f75ea3173298957795aaa36773bfe\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/bernard_emma_t_037.json",
+  "body": "{\"chiffre\":\"v1.Y0g2fwjXjnqdI2wj.uXdQNGWiUHuqqrg5caCG6a8rczs=\",\"sel\":\"8f18e62e40ccdf06aac827404e14f333\",\"empreinte\":\"0e272eb1fc89be21ac6c3526ad227c0749bb9ce5f34a9f916a99663c0de008bf\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/leroy_hugo_t_039.json",
+  "body": "{\"chiffre\":\"v1.SYR8MQr1J9ohwIHJ.U08HrDYGadkeJvXEvLfe9hTYWvc=\",\"sel\":\"3c27ac7cd9b038912d43d07d1e1d0276\",\"empreinte\":\"c2ae63f7b2767b5a7934de54a059a593651616a8f7903570c2089604944c1c53\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/dupont_marie_t_038.json",
+  "body": "{\"chiffre\":\"v1.o7vybOmZJ5sVvk4o.Yy9SVoZt4NyokfPHigoj5nmCaKU=\",\"sel\":\"3cd15e22c11930d26c21579647caadf1\",\"empreinte\":\"c62204c23c851f7dd7f01e058b80b3bd10d6dda15c3d3ae180387feb2c972359\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/martin_lucas_t_040.json",
+  "body": "{\"chiffre\":\"v1.+tnvhcKaAoFOd/EX.OW/cpKEBD8XeXvIHyyYnKs9DpKg=\",\"sel\":\"fe51dc2a98a73c54a7dc2267eb45efe1\",\"empreinte\":\"c495f8b260d879181e77253203e250a0b58c25c4a3c6272c3b28142f4307e3c5\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/moreau_lea_t_041.json",
+  "body": "{\"chiffre\":\"v1.FzICVtl3PZeQTPpF.Z0WD9LLwkH5mTMQVBPLK4en+owc=\",\"sel\":\"b9189f78b5033dce23f326a7db1bfefe\",\"empreinte\":\"6f89e96d20cb7a39c4adced042c904ea70e7cec15e32398909ac9a8eafae6b88\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/petit_thomas_t_042.json",
+  "body": "{\"chiffre\":\"v1.QDCrVHA7wHEF5Tye.ZmZ3Tgl2UaTxB7FZa3GzMVcE3Cs=\",\"sel\":\"ed13a863a0b4cd28d52adc89dca6fe64\",\"empreinte\":\"4afbdd1267d9da7bac5462d5d1f93d2906493004a18569a275ea446267177f48\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/dupont_marie_t_044.json",
+  "body": "{\"chiffre\":\"v1.jDekKiKG8Z5wn/y3.3nllTZ2sye8h/g6N7d7i4VoB5FQ=\",\"sel\":\"7f09c703b3012f7a23047c27a0134823\",\"empreinte\":\"8e2ba9811a4894147103c2b2f0f6e22390ea40302aeac5f34ed4a5b241406b67\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/bernard_emma_t_043.json",
+  "body": "{\"chiffre\":\"v1.iLZjO5bzZZu2SneJ.L7DxfjaY5ZnKoyUzhqVbnXdtRpE=\",\"sel\":\"e983a2a13ce3fbe6e5e8afc44571169d\",\"empreinte\":\"3c9faf1d641343303e6bb6a9cec169fb031d9cafba4f85d89857517d41533017\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/leroy_hugo_t_045.json",
+  "body": "{\"chiffre\":\"v1.ldsDVUgaJ0+vk28e.IG+KIFORh0CJpAGAfulJI8Pa69Y=\",\"sel\":\"3cea5cd1ccf68b8deb15050a7a8e3661\",\"empreinte\":\"6dcb79bcd0a5ec56a1a4f5c0dfe5113a83c4ec866e1fbb7339bd5c733dfe2c37\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/petit_thomas_t_048.json",
+  "body": "{\"chiffre\":\"v1.JZhRIeDP+gNfe2LB.V1xa0OJQic8WqCTgKmAPOTyBZcs=\",\"sel\":\"41ef0762b14ecbb25e1825869e9c10f5\",\"empreinte\":\"d561fbe5ed6d1fcee4fc5995fac7f247c1a1e782058f382a271fc2bf7e543e73\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/martin_lucas_t_046.json",
+  "body": "{\"chiffre\":\"v1.23rBNhc3H53dNAmr.MQfT6pGD8iI0CdxtZt9YMxb8M9U=\",\"sel\":\"b0c5f629960c747a4023bf4c1b3ffca7\",\"empreinte\":\"ab26ee5b5be81022777cbcd2b3d9abbc0f9cc99d92cbc2bfc2625666d8731ebf\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/moreau_lea_t_047.json",
+  "body": "{\"chiffre\":\"v1.4cD1esLutjmDik1t.47SH7glwCNTjuLsj+ZhvX0sWclg=\",\"sel\":\"bad09a3b252c1c1f28c48e54e3748613\",\"empreinte\":\"859bc8e7f1df72d0820f337e3da360d3d91c0c88235894ef09df144f09ccefde\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/bernard_emma_t_049.json",
+  "body": "{\"chiffre\":\"v1.IXIWj1a+f/Li5Kzf.L50qICNdzIbMog53lvIiXDq2rVs=\",\"sel\":\"27665688505739ca1cbe2f53e52ae42b\",\"empreinte\":\"399a1747ed775ce9e2243e0cbc68e86eaa94f50a4cb83070424abf7262397fdb\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/martin_lucas_t_052.json",
+  "body": "{\"chiffre\":\"v1.PV06nQCriW7CekR/.Y5Lt4fJICML5yYFaZMitqWnI5q4=\",\"sel\":\"bf1f3ce5204136f6ef1f3b1c7e2bdae0\",\"empreinte\":\"547f53c8ed6720d0b32739af835a0a2b4758e6be7a0eb7edf3399cd1f58c4fbe\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/leroy_hugo_t_051.json",
+  "body": "{\"chiffre\":\"v1.ndkh+mC/Mgc13W0N.3tyh6jfe+OSfKzwDfmAdEZB/LdA=\",\"sel\":\"0f99bd9a77ef06129331df766c21967b\",\"empreinte\":\"3c639ba7370c04ecb59db38544ca69efb3f606f5b636af41e7aeef19b8d25d24\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/dupont_marie_t_050.json",
+  "body": "{\"chiffre\":\"v1.p/GioExvjcGYvWnv.VX3d2TL5coy22i/cmKnlUstuZdg=\",\"sel\":\"4e7498db077e91750a965dfeb3aabe38\",\"empreinte\":\"27cb6685268ba1060e7d1e8009f8ef91f8969f248806e2156b5c1418ccb9d5b5\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/petit_thomas_t_054.json",
+  "body": "{\"chiffre\":\"v1.bmnTzmMKPSmHg/+R.N2pNmdLx1EBBvNfZCzKqM0vgQCY=\",\"sel\":\"ed1ba60b4c848dcce2c02d6d8d67202f\",\"empreinte\":\"760afb788eb5674a7a1b67d73f14cd4e20c5ca47ee3254104c71d0040184830c\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/moreau_lea_t_053.json",
+  "body": "{\"chiffre\":\"v1.rg3Zxi3tYzTpoWgw.po9fBxd0aht9DxfrJrBG3ViXInI=\",\"sel\":\"300b09867602d58fe09be48c4c795bb1\",\"empreinte\":\"8b0c23ed96d492d2cfe0354b81606ce59d2635d3886ecb700c17029c0b52f11c\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/bernard_emma_t_055.json",
+  "body": "{\"chiffre\":\"v1.KE6KBubSaXkfNMnc.5S6AumoYMY2MBbpLq6sq2xG7QSk=\",\"sel\":\"3c4d588333c003c5660e7f2ab0d580f1\",\"empreinte\":\"083b523749e742674d0192a63ed5bc87edbacc96173700be911991747ebb7c14\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/dupont_marie_t_056.json",
+  "body": "{\"chiffre\":\"v1.2vAayU4zDEAw+TyG.qHaAnGrpc2ylpf7MrUhoOHRrQ0Q=\",\"sel\":\"0dc4a8a0ff77e83786846618c2a7ecc6\",\"empreinte\":\"c3a5c8cb95ee3de57e3096719e34202b39a3a783e60e38b605ef01ed0d00f2ff\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/martin_lucas_t_058.json",
+  "body": "{\"chiffre\":\"v1.TYBoxX+lcQn7A3YG.ZzT1StUf09esY/y760H3Q7t1IVE=\",\"sel\":\"1ddc5a262026776cfaf682b8df391616\",\"empreinte\":\"ed6fd7a0561544a6e77532979c3fea2bf7eb535a6f24897e650a9f75945b6b47\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/moreau_lea_t_059.json",
+  "body": "{\"chiffre\":\"v1.TZx3VczsdazNG4jB.dVK6UV7bEG6FSx8PqgCarQAjim4=\",\"sel\":\"b2183e10d54f04ed44691b75c4bd6d0f\",\"empreinte\":\"9bb314012805605fb024348ba18db244303a055dfadc43c78d49e1c0d85182de\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/leroy_hugo_t_057.json",
+  "body": "{\"chiffre\":\"v1.8np4VsYLewfNEc9u.VUNhq4X7JO2fCBrcp9ytP27Yxu4=\",\"sel\":\"5f7279e91462d70da6c4ee1fbbf96c44\",\"empreinte\":\"a64b0576ce381765bd6fa59c3e8d2997a769ba605d72d3ff810ba695dd36c7cc\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/petit_thomas_t_060.json",
+  "body": "{\"chiffre\":\"v1.7qDvLinQYT1WdL0K.tqJBLO6YhfwIyyn2UIJK594CSWI=\",\"sel\":\"4833dc7eab5f74d0839f2bc0c09a57ef\",\"empreinte\":\"819eff9f1fc3b963abf572ddc4854435e742fc6ab012230c993e045e98ebcae7\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/bernard_emma_t_061.json",
+  "body": "{\"chiffre\":\"v1.wLfVytg7R+Eg/wVc.RwuTorfX/jug/bNmlIUm11EEBlI=\",\"sel\":\"98a141b03216acb099ee6e01b0b16688\",\"empreinte\":\"f6611c821437943dde7d50bbd1db6c606653d826609ecd9a447ee7a3b72b680c\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/dupont_marie_t_062.json",
+  "body": "{\"chiffre\":\"v1.RV7g4kqCqIfzrUK6.69hZ9VE4I6sjCZUDWQwgkzFkp8s=\",\"sel\":\"613cfcfa540d88c921857910f6c0a980\",\"empreinte\":\"29478adcfaa52346bd4337c1432a41207cfe742e08172587112033ad374cbdcf\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/martin_lucas_t_064.json",
+  "body": "{\"chiffre\":\"v1.xHvG46+OTg6jRnxM.4NyRxY90MRdz+uNFUj+0ejBq+AY=\",\"sel\":\"4f276348da95b9f57819683d02fb5e38\",\"empreinte\":\"c343f2d86752bbcccb13d1366523e190d4c92f3bb8489285c174ac2e30ac7e6a\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/leroy_hugo_t_063.json",
+  "body": "{\"chiffre\":\"v1.JbUN4z1CvDvGK2M4.K3Lv1EGMVT8z+YOyuEK+CIfwxeA=\",\"sel\":\"0fabfb0ce8506c99f384a5da3791bd4d\",\"empreinte\":\"9d08720f52d7fd57708b6aa36807fe7c4f20e8332ef0463b806af73efeebc151\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/moreau_lea_t_065.json",
+  "body": "{\"chiffre\":\"v1.tJR5gNs9y/Npht1j.2e/2vkgkaITy4mdEjB2aCOcDcMU=\",\"sel\":\"ac8c91c8718809ef2e46c1aecf0c03bb\",\"empreinte\":\"44c5017c5cf94c3cbd8fa8da01f878b3852f395f9e4f72aef38b758ae59e24b4\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/bernard_emma_t_067.json",
+  "body": "{\"chiffre\":\"v1.G7c89fxdxaMdvZt7.jYCssol/FZByDDeB6UIOeF9w7rM=\",\"sel\":\"53654caeeac5db1dee2afadd02790238\",\"empreinte\":\"72ea09c4375cb9ed43c84819c5875d7d2a7149ab0b20a3fe33511f12b70607d9\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/dupont_marie_t_068.json",
+  "body": "{\"chiffre\":\"v1.OCC6RPdjvkBQVcA0.goqtV0JAhKeU16MoAdZdynVchyo=\",\"sel\":\"817ee8fa1fffcba6e21990c2dbf0a166\",\"empreinte\":\"9985a566dd71da3c9d15526620c23da77eba8ec480caa0b4f63123a05f631505\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/petit_thomas_t_066.json",
+  "body": "{\"chiffre\":\"v1.9fZjdIVF4ax93/V2.Wg7y6DI8WmvmNm8cQi8iv5FQXHs=\",\"sel\":\"ccab1cb77fd2b8d6bbbfcf3da3712bfe\",\"empreinte\":\"97fbd44d1f52178fe4f2e48beb95639a64e63831bc682546d2260e90b24b548d\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/leroy_hugo_t_069.json",
+  "body": "{\"chiffre\":\"v1.7xMW7ksHsRi2U0zc.55PH5D2lhCyJJTF0fOXD/aoLlgs=\",\"sel\":\"1df3d76b1f68e5e08d7bd84f55cdc355\",\"empreinte\":\"a7dad6b244ff13a1c045495d41021761ab70fc645163dad92cec4c6bf567aa77\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/moreau_lea_t_071.json",
+  "body": "{\"chiffre\":\"v1.xaNtTBsF8+10pa+F.xwLRtAFT7Ebr/aSMzI9p7eVU4tg=\",\"sel\":\"83f0457ab3fafea5d1a60b3ddd71ea58\",\"empreinte\":\"bc359645e5f8a77a0f1494730492928584d3b6282f2901e7444f1d00d329e19f\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/petit_thomas_t_072.json",
+  "body": "{\"chiffre\":\"v1.QaSxtSH5kkoP7P3c.h5SSjoZa4IOgruDbRL2VOPO/vqQ=\",\"sel\":\"5e0a5be8f3a9a20b31fe963a875b63f0\",\"empreinte\":\"02b0662960d957d1e154dd00db98369a0536d45490fdc6fbdabe1079d3787323\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/martin_lucas_t_070.json",
+  "body": "{\"chiffre\":\"v1.7sMQY/JC6MgOJHjW.hKhUO9OiOY7UweJ18+rjyMgdjUs=\",\"sel\":\"c1ea47c2e14d15ed1ec6558e8acbbc6f\",\"empreinte\":\"4fa379b94a870b3a327137e39e2a73eaa31a9fafafad41bf248016d5a4753ef1\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/bernard_emma_t_073.json",
+  "body": "{\"chiffre\":\"v1.0qrZWv34iABGdvm7.5JubNWFUucfObgcvhkLDDWvNugQ=\",\"sel\":\"78899461a32b9ea0dc5a837f4a39bb9f\",\"empreinte\":\"0d4ad02f70f655c3a56d865ba8640146ff65f27d7cdf9f322b89df4164cdbe29\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/martin_lucas_t_076.json",
+  "body": "{\"chiffre\":\"v1.slODnxskTtjY7MdC.l39bO4EIVfFAVcRxzlDYcjMSVBs=\",\"sel\":\"b48709f4f3b319fb415448fb4dc707f0\",\"empreinte\":\"f9b4ea5fe45887cd2e1e337cd9831e0a889d0b8ffbee413191679e35f7ad4815\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/leroy_hugo_t_075.json",
+  "body": "{\"chiffre\":\"v1.yYrKypo6l6t8X637.r0NkbjHaJomE8NJLT7VTSdGvqrM=\",\"sel\":\"e3b1089340a4c2d011c843ee0fb1bad2\",\"empreinte\":\"ee4a1c7a1f7c9feb22e6657aa1056b096751c914d922a4234a4da3273b57305f\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/dupont_marie_t_074.json",
+  "body": "{\"chiffre\":\"v1.a0TUqstXPwbdfi5b.H5z4pT5VV83M1QifnFjbhbAE1Gs=\",\"sel\":\"da93ebe04a4a195e64bca3cf222aff3f\",\"empreinte\":\"25d715a3074309c27a47301da849cf60a1f47f22f82aab6dcab5c8abfdfb5a1f\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/dupont_marie_t_080.json",
+  "body": "{\"chiffre\":\"v1.9+Yeyw0hBUe1JNpR.xqb+ilxNLlPJPfgkHmwxr5ecZDQ=\",\"sel\":\"383170566f81f09af8cc2340af219072\",\"empreinte\":\"706458963d935d857844de235ccb73226a7c216318f57b06379d4500194b47fb\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/moreau_lea_t_077.json",
+  "body": "{\"chiffre\":\"v1.v8qRE2WK8LhtlWdm.hQe89GkwgJCmryAe9CMQ8/mlXbg=\",\"sel\":\"41bcfe573c56edecabc13de6c21642fb\",\"empreinte\":\"cd3af17762ccbeaa9d8d6b29ccc58c617e9c0615c65e21956a359ec6b137ec02\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/petit_thomas_t_078.json",
+  "body": "{\"chiffre\":\"v1.DfbXhmTu+ZaYkB/6.CumiE2ShHq/FOGlbt78BBbOJQGo=\",\"sel\":\"6afae32e11ecda45408b6e06616ebc11\",\"empreinte\":\"a6885b128b4043719f196ac1a307ccc47480f9aa2c6c29bc5a656c5b7d773f9e\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/bernard_emma_t_079.json",
+  "body": "{\"chiffre\":\"v1.yoyPZexKhEUWCpI0.b8zEj4Qu4Q3GBJc05cfxv1ir/xw=\",\"sel\":\"62a58a83080e39c1fbf564062110cb99\",\"empreinte\":\"844258a2822155740bbf01a917021148671b432cb405dddd2616d68a86d9458e\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/martin_lucas_t_082.json",
+  "body": "{\"chiffre\":\"v1.6E6tK/756SWfQALx.+/j115xCcUQjctPTv+wIFHeoIz8=\",\"sel\":\"ee17a8cb2505219db8499e0088dfa7ca\",\"empreinte\":\"3c7c425df30535f9c797dc97d75eae3d6fb8a2f38afea584a952d5c27969485d\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/leroy_hugo_t_081.json",
+  "body": "{\"chiffre\":\"v1.PUaNAvD3jf72qJsx.jxbmzKGZsvdruey7o8vMigO5O54=\",\"sel\":\"66afb793f2b58ba7b9d091ac2f828353\",\"empreinte\":\"1fcf02f4f5c29f58ec451e95bcb56cea328f5c26c209064821aabc0a26139845\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/petit_thomas_t_084.json",
+  "body": "{\"chiffre\":\"v1.thNlGgH4YVIHU0BC.LUSc7qsU8fexkM3UTC4TOsgUR4A=\",\"sel\":\"0128d29305b3a1ed1cd75ae330d39112\",\"empreinte\":\"5052b32b31819b4b5b40b9840bc9d5b56196c571fe7367ed9c51610588a904a2\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/moreau_lea_t_083.json",
+  "body": "{\"chiffre\":\"v1.bQPVE4cJJ66MmUO5.80YhNdMRgnM9tRHy9kmusU5AsXk=\",\"sel\":\"89c61b750c3c5396e520e7dd92bfc9ee\",\"empreinte\":\"b0d539ae36a78690973553f066eca07d0eaf7d84a60ef2384d713fefc5da26c3\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/bernard_emma_t_085.json",
+  "body": "{\"chiffre\":\"v1.mPwZFQ52PO0X6K60.xgfcUi+vaVVS8crNud47SyIzs/c=\",\"sel\":\"d7dfdb82c6033a51a20a34daa6fa9fef\",\"empreinte\":\"2754f33e422977d268814ed8339de20b6d9e49f109a848cdb96f7a1c98df8b50\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/martin_lucas_t_088.json",
+  "body": "{\"chiffre\":\"v1.0Vyfh+pguGtNGQiY.WNmv0OS45OJCfTC3SnnzEE/0FrA=\",\"sel\":\"ae44e1c3f6e66f40b4c1c63710a86eb3\",\"empreinte\":\"0816cd56f89ba8911b9dbcd0dcab16fb44bb007dce6a039dba0e992abb710b2b\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/leroy_hugo_t_087.json",
+  "body": "{\"chiffre\":\"v1.Kmq3pQ912ej9ZMbX.YBSTPeTQxUxfr0k005s1ZNVVI2c=\",\"sel\":\"f4d0ad948df4b8a656b4a36f862cf385\",\"empreinte\":\"e333ce10283355e0891f0a4b5a767e31819abda72518736f876aeb64e368b4a7\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/dupont_marie_t_086.json",
+  "body": "{\"chiffre\":\"v1.xZrSKmqawgPAZ57k.Msut/3wSLitNeNHJKUhy6gxTe/g=\",\"sel\":\"823123b270cf2afe091b37bc873a9786\",\"empreinte\":\"3ca13153f18eead7822e8873992fa85e783d62f74eb17b4831239b75a3671d79\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/moreau_lea_t_089.json",
+  "body": "{\"chiffre\":\"v1.tHfPhjfOjN6VVskI.xj3BpMyqvqMZOVDxwyyX0T5ItnY=\",\"sel\":\"9cf8e8985a7c6cd4fd87f76082516356\",\"empreinte\":\"7c8a48e8cf335cb89ce204c268a3ea0a69004c9ee7823e70561f23759956eef0\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/dupont_marie_t_092.json",
+  "body": "{\"chiffre\":\"v1.igRKnU119Hl9m1K4.wFAzdPW0o8Di9ZOuToDikSyoSCY=\",\"sel\":\"5d78b760cd9d40e75947534e7296d26d\",\"empreinte\":\"a22c1a099252b56935fd6d1c75fd1b17cc0a4241a88b16fc7e6f51368cf1691f\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/petit_thomas_t_090.json",
+  "body": "{\"chiffre\":\"v1.SJioVmVuwUsx9Eay.R6ELFP2l0U2MuvGaI9GeDA5hpmI=\",\"sel\":\"e66c44b1defc73ddf483bf51933a6807\",\"empreinte\":\"7b18af151d194af1da286e0550d52950a9dcfa8a43bedf5ed10cca9fd92693fe\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/bernard_emma_t_091.json",
+  "body": "{\"chiffre\":\"v1.HZSXM5FRzFLvhXMI.Dz29LQ2vcII106WtyaVOU7M/ygY=\",\"sel\":\"1d77eb3213345e16594db46ab4a89e71\",\"empreinte\":\"5a894a5b2ed444d1a1bc5369353bf76e25320060c2bfca8e9af622b322231593\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/leroy_hugo_t_093.json",
+  "body": "{\"chiffre\":\"v1.Ux/BNmY/zUb9wWAz./Q2FuqowdzYI7B7F8BoTajvwtkc=\",\"sel\":\"471dff18109c64102fd64cf969745102\",\"empreinte\":\"019125c3b059647664718ba2c6f34b8a6942c4fd2c452a9931935a28c921f4e1\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/moreau_lea_t_095.json",
+  "body": "{\"chiffre\":\"v1.QGtGfOKNkxJOfe+U.+Q2jKDpMnA0wUUylRJ+5Xv4MgGc=\",\"sel\":\"956741df06dd0e08e53eab9bd2a147f7\",\"empreinte\":\"5634dc927ea4052f7bc1a09bdb0b4d3c5d9999d76706ed0d92b175f8e434a2c3\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/martin_lucas_t_094.json",
+  "body": "{\"chiffre\":\"v1.lqr5ACUtZ/nJI5K4.HbR+pQvgEbPCX0t057ADe50Kqps=\",\"sel\":\"a5fd6e8cc8dfe51dc8e934eab296ddae\",\"empreinte\":\"a8404bb8d3046d9cb559e23d8c1fbbb5c9f907b113cd67ed14301750d85ba96b\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/petit_thomas_t_096.json",
+  "body": "{\"chiffre\":\"v1.+qLro2kwa5D+ag8W.XC7+MVSWwXxbByuhzu4ByubyCks=\",\"sel\":\"b4c44cb5657e4dcb4d53cb6748cce76e\",\"empreinte\":\"56190738ad3c82d37b46ef9f694a652196be079ba008fedf968f16ff3013480e\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/bernard_emma_t_097.json",
+  "body": "{\"chiffre\":\"v1.rpkQUuenLnCf+x/3.XswA4OUpUegvsg5sy1e1q0OIZJw=\",\"sel\":\"4bcf18c791a27ae9d72da46d7b9d72a5\",\"empreinte\":\"5dcaeeab063ff31e5e62dad1e0126979341a48807d6332db5eda512f6c91b6ff\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/leroy_hugo_t_099.json",
+  "body": "{\"chiffre\":\"v1.NVIHV+7zaYknZT6K.pNeI4dHAyLbexLbxUCWl+CROI5k=\",\"sel\":\"067eb7aef4e3a1fdcd287b9d01eb44b6\",\"empreinte\":\"b5893a9af7b63d57bf17ec234e1b8a5a9d2b200c553e0f062d1ba8e12207fe9a\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/martin_lucas_t_100.json",
+  "body": "{\"chiffre\":\"v1.6ZQnVi8yznCXSsAC./XcfAk7c/js4i0kS+e6mmAfIxxk=\",\"sel\":\"c7fcaec674d30f3199b7948901e4d0c0\",\"empreinte\":\"923e247813a03c3f5b44802f08fc8c28d3b56251da54a78fe30764aae3bf466e\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/dupont_marie_t_098.json",
+  "body": "{\"chiffre\":\"v1.CUo7xrm+eQg/JD2A.aTDLIODCoNZsrU/0rfEC5070+88=\",\"sel\":\"49449e884103d34303d52c5e27d47b75\",\"empreinte\":\"4e2361f8b48662f648e6ae81d808cd4977507ce2aaa34f9d84638293ef3943e2\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/bernard_emma_t_103.json",
+  "body": "{\"chiffre\":\"v1.VLxeteJUOyURAOFP.tTMoI41qy9bBqqHGinZA1wZANM8=\",\"sel\":\"d43b37dac462cfd15321cc89c849b041\",\"empreinte\":\"e72a71b8b6e7d7f94d7326c85134d9fdd3ce32f8772929657bbf5eb91e8d3722\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/moreau_lea_t_101.json",
+  "body": "{\"chiffre\":\"v1.Z/IBhKGhx0Am9SqR.u9Bh4dv9LPTW5yGbYJ+0k6Ob+aw=\",\"sel\":\"ea0c272691580598bb70ba81a82caf27\",\"empreinte\":\"43e424e693baea2f75e8ff7eb36ade529ad823cd9b4c528528141b4e96d68b06\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/dupont_marie_t_104.json",
+  "body": "{\"chiffre\":\"v1.Aj9c3ePGd0IQ6H8c.cF53Yah8hmMBBWsK0v1AuJWiCbg=\",\"sel\":\"c3b359c0bdd7c2fff79f2c2259eec33d\",\"empreinte\":\"45f7de9a2eba9e8a1028ce008d8f48eec151b7f95a187434acdfe64c068ae331\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/petit_thomas_t_102.json",
+  "body": "{\"chiffre\":\"v1.63UN8jQu6xsGTS82.X9UEnoEDqxvGL8tDwt524HftBFo=\",\"sel\":\"3f4200dbccb7490e97b27a594f61aafd\",\"empreinte\":\"2f0e207a0d093f52ef5ce55512771376b41bf1084fbcf62403a6c381030dd69c\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/leroy_hugo_t_105.json",
+  "body": "{\"chiffre\":\"v1.fZ6HIjarGdJOJjlV.X+ALVvbJpk3w9j8wSw0QdxFGPmQ=\",\"sel\":\"2b95061ba56c22dcca0d5ccb450149d1\",\"empreinte\":\"1b0c6406d8bb27a50cb3d4b60a3949ba6fc6cf1238a2c44f8fd55c827ceddaa3\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/martin_lucas_t_106.json",
+  "body": "{\"chiffre\":\"v1.ODUOVXc/Pk+jg/jW.acvhEtuGf7Oog1HXjwt0i4sFiwM=\",\"sel\":\"a874c89e6fd8f3b2fc795659766a022f\",\"empreinte\":\"15e81e693afa138c76634895bd82d4f331d0a45d9db77588a514d09d97f93994\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/moreau_lea_t_107.json",
+  "body": "{\"chiffre\":\"v1.zCRcNbPlAV/A5CEj.IGX1Z+0nUwtDoUNr5IUK6aXAah8=\",\"sel\":\"e2ffea014124c9d1b8759bf64bc116df\",\"empreinte\":\"e82df798ac7e945fa877050d6cf53e02a58b2ec8aba138183df0193131cc9bc1\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/petit_thomas_t_108.json",
+  "body": "{\"chiffre\":\"v1.ZQ4ECv84qgbcsaFl.CAs5lqkFTB6bH/BCWyCyGa+WM9A=\",\"sel\":\"d651cfb829c70aff17352ab42b81788d\",\"empreinte\":\"277af419c898acacb3d46cb8785bc87f73f8d525507d578e6a1050d1a62ea96f\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/dupont_marie_t_110.json",
+  "body": "{\"chiffre\":\"v1.9ULyKIMdX9oN2N1y.i17802rEcjWInHc9hUAkH2lFc+0=\",\"sel\":\"b4b1a0f75ba9cd6d3206f0036efd5a22\",\"empreinte\":\"5eb1effee77aa13f8a357a1e8f60cbb52eb54bc8d7b838c3b07589b85dc2346e\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/leroy_hugo_t_111.json",
+  "body": "{\"chiffre\":\"v1.m6E1WUCOnnqItXp0.9lvx4fUNMSyqwwEacbiAwbm9x0I=\",\"sel\":\"658ca69de535087b51478313de7f794f\",\"empreinte\":\"701a2a8148c2bb806dafc7ef3c1f2f8f6e5b3cda9e5e93e919f2f161811f8502\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/martin_lucas_t_112.json",
+  "body": "{\"chiffre\":\"v1.K30dcLL8/TP7TPXm.kL1+5pJYvf1ZPzxQJlglYrwZIsQ=\",\"sel\":\"e3e97df68004e67d4e4919338ba48974\",\"empreinte\":\"53cd1a7046ae37f76786ff0abe75bddd77dff67efda9477d6281a14099944c06\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/bernard_emma_t_109.json",
+  "body": "{\"chiffre\":\"v1.5iW03F6vCwmvwHhV.oPvnGxOGyNII3fGCBt0NmNnojH8=\",\"sel\":\"a01465638207315119edf0aa35a554a7\",\"empreinte\":\"b5f33533bc6d12837a4798ccd4a9f33d4a98a610f65ca77a201d6ae0c653015e\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/dupont_marie_t_116.json",
+  "body": "{\"chiffre\":\"v1.Bx117LVqUgYg6o3v.EjyYgu2Zi6kuFrOqUUeIR7DXQ5k=\",\"sel\":\"abab2853e21fda9f2cc8f6a7daec4802\",\"empreinte\":\"cc019b70c2c8acefe83c05712c0f353373a131cf552ee6bcd79b0222b2c4e26d\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/moreau_lea_t_113.json",
+  "body": "{\"chiffre\":\"v1.Selo7b5ARo6AjyLl.VXiTp1l6CCKLwGqOHcyMcUmGefU=\",\"sel\":\"a96a61ccb60b7800dd56a87ced41b709\",\"empreinte\":\"d79d7838a289486a0456fa0454cffb80c34d312f5a57b683ee07aab229c99a80\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/bernard_emma_t_115.json",
+  "body": "{\"chiffre\":\"v1.blx3mcf3Ew1OByuh.eabQiVl1inxNrh0FykFZoS3YAus=\",\"sel\":\"5fa0047ff8da36d6ec95de859027ee6c\",\"empreinte\":\"c5075de9fbee2e5f8726596a38d4681464586f0b9216fe7d3c6c9fd508c0f50e\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/petit_thomas_t_114.json",
+  "body": "{\"chiffre\":\"v1.g8r24rrsiKmo8Wdi.4YsxE+sRc9qNbrx16ASZD2A+Q5o=\",\"sel\":\"be23f2fa18a57f7f5db3160e27468d27\",\"empreinte\":\"ce4a908a6181afc347b237faff8e6131199e753b30f500022a32f23965090901\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/martin_lucas_t_118.json",
+  "body": "{\"chiffre\":\"v1.WCMS29pxU/WINHJn.cdxl83ekTUgdbbfbhPYe8asP0I8=\",\"sel\":\"f75593e44cfbf95a6f275331efc25a4f\",\"empreinte\":\"92aac129a7963e9925548e76dc8488e8185071417588740cef675adbfb7f80b9\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/leroy_hugo_t_117.json",
+  "body": "{\"chiffre\":\"v1.tJ7nSR+sne7WWUbh.vl+jvpXGkXakenE/owU6cEiTeh4=\",\"sel\":\"9ae2f54f1fe3ce004a676cfe807272e9\",\"empreinte\":\"31614010426c5c660a48b9d36d0fbf30570ded5f86d2bf79f72accf5e3294a11\"}"
+ },
+ {
+  "m": "GET",
+  "url": "https://hub.example/site/config/coffreCanari.json",
+  "body": ""
+ },
+ {
+  "m": "GET",
+  "url": "https://hub.example/site/config/coffreCanari.json",
+  "body": ""
+ },
+ {
+  "m": "PUT",
+  "url": "https://hub.example/site/config/coffreAppareils/app-ms8mmq73-yk2a57/oublie_le.json",
+  "body": "1785483264484"
+ },
+ {
+  "m": "GET",
+  "url": "https://hub.example/site/config/coffreCanari.json",
+  "body": ""
+ },
+ {
+  "m": "PUT",
+  "url": "https://hub.example/codes/martin_lucas_t_004.json",
+  "body": "{\"code\":\"8489\",\"name\":\"MARTIN Lucas T-004\",\"classe\":\"_test_secu\",\"createdAt\":1785483264807,\"chiffre\":\"v1.nvcbCH3Fu1dsT4L1.v/1ej8KO2+vgavdLLNRwE2upZKM=\",\"sel\":\"b74cc33b3e5cb30c910c200916675014\",\"empreinte\":\"6713665b0a9db4b20be4a6bf5b975afe8f734fb9ccd5ccdc6124725b440efda4\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/bernard_emma_t_001.json",
+  "body": "{\"chiffre\":\"v1.gwGsjgDc4QDNdOkE.4EBpw2M9dCMRvKKSZ569LT3viI0=\",\"sel\":\"9c554bd9ccf6f630176d83a2ca03ca9e\",\"empreinte\":\"629bc0d763178da4ef1a8782c85f42c90c81822aee8da89ecdd7d20f390b60e1\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/bernard_emma_t_001.json",
+  "body": "{\"chiffre\":\"v1.kbHyPDCk26FHdde0.HQgbjswBxFOpbXfsNiOGW9MBi+o=\",\"sel\":\"b4c8838bf51c2aa70a07b1a12193d641\",\"empreinte\":\"e75507ad60fc0baed6688bd74139cf4d6f440c0b78e47d0d87d242802bc30412\"}"
+ },
+ {
+  "m": "PATCH",
+  "url": "https://hub.example/codes/bernard_emma_t_001.json",
+  "body": "{\"chiffre\":\"v1.auYX7R8VlvHfwYPQ.bhYd34h/NzNo2PTxyvwwjqcVJ1Y=\",\"sel\":\"61282987c96744864442c04317af2e0e\",\"empreinte\":\"a03f97e4d7ffad143273b922d12b8b3dae615cd080560dc500edb0a70762acb5\"}"
+ },
+ {
+  "m": "GET",
+  "url": "https://hub.example/site/config/coffreCanari.json",
+  "body": ""
+ }
+]

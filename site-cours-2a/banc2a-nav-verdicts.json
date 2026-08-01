@@ -1,0 +1,57 @@
+[
+ {
+  "n": "la zone « Écrire avec une IA » s’ouvre ; overlay des règles NEUTRALISÉ",
+  "ok": true,
+  "d": "{\"titre\":true,\"zone\":true,\"overlay\":false,\"boutons\":[\"Copier le prompt\",\"Modifier le prompt\",\"Vérifier\"]}"
+ },
+ {
+  "n": "refus NOMMÉ à l’écran : l’identifiant inventé ET la réservée, cités",
+  "ok": true,
+  "d": "Je ne peux pas écrire cette feuille :<ul><li>« machin_invente » (à cocher) n’existe pas dans l’atelier. Demande à l’IA de n’utiliser que les"
+ },
+ {
+  "n": "APERÇU : ce qui sera écrit, en français, avant toute écriture",
+  "ok": true,
+  "d": "Voici ce qui sera écrit. Rien n’est enregistré tant que tu n’as pas choisi.\nTitre de la feuille : Le portrait de Fantine"
+ },
+ {
+  "n": "CHOIX : deux boutons, même classe, aucun pré-choisi",
+  "ok": true,
+  "d": "[{\"t\":\"Créer une nouvelle feuille\",\"h\":44,\"cls\":\"at-btn at-btn-prim\"},{\"t\":\"Remplacer la feuille ouverte\",\"h\":44,\"cls\":\"at-btn at-btn-prim\"}]"
+ },
+ {
+  "n": "aucune écriture entre la vérification et le choix (delta du geste)",
+  "ok": true,
+  "d": "0"
+ },
+ {
+  "n": "NOUVELLE FEUILLE créée et remplie, l’éditeur revient",
+  "ok": true,
+  "d": "{\"titre\":\"Le portrait de Fantine\",\"cases\":7,\"blocs\":1,\"id\":\"feuille_1785571389006\"}"
+ },
+ {
+  "n": "la confirmation de remplacement CHIFFRE ce qui sera perdu et annonce la corbeille",
+  "ok": true,
+  "d": "Remplacer « Le portrait de Fantine » ? Tu perdras 7 case(s) cochée(s) et 1 bloc(s) de contenu. La version actuelle part d’abord à la corbeil"
+ },
+ {
+  "n": "ordre RÉSEAU : archive corbeille PUIS remplacement (0<1)",
+  "ok": true,
+  "d": "[\"/corbeille/2026-08-01/atelier-remplacement_080313\",\"/site/atelier/documents/feuille_1785571389006\"]"
+ },
+ {
+  "n": "la feuille ouverte porte la nouvelle version",
+  "ok": true,
+  "d": "Version remplacée"
+ },
+ {
+  "n": "mobile 390 : cibles ≥ 44 px en hauteur ET largeur, ⓘ comprise, zéro débordement",
+  "ok": true,
+  "d": "{\"boutons\":[{\"h\":44,\"w\":358},{\"h\":44,\"w\":358},{\"h\":44,\"w\":358}],\"zone\":358,\"info\":{\"h\":44,\"w\":44},\"deborde\":false}"
+ },
+ {
+  "n": "journal réseau : la section n’écrit QUE /site/atelier et /corbeille (9 écritures, pré-existantes écartées par preuve)",
+  "ok": true,
+  "d": "[]"
+ }
+]

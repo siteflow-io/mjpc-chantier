@@ -1,0 +1,52 @@
+{
+ "index": {
+  "hunks": 4,
+  "plus": 107,
+  "moins": 4,
+  "hors": [
+   "}"
+  ]
+ },
+ "correction_dictee": {
+  "hunks": 5,
+  "plus": 106,
+  "moins": 2,
+  "hors": []
+ },
+ "worktrack": {
+  "hunks": 5,
+  "plus": 103,
+  "moins": 3,
+  "hors": []
+ },
+ "dictee_universelle": {
+  "hunks": 5,
+  "plus": 105,
+  "moins": 2,
+  "hors": []
+ },
+ "pilotage_debat_s3": {
+  "hunks": 5,
+  "plus": 103,
+  "moins": 3,
+  "hors": []
+ },
+ "evaluation-qcm": {
+  "hunks": 5,
+  "plus": 103,
+  "moins": 3,
+  "hors": []
+ },
+ "analyse_logique": {
+  "hunks": 5,
+  "plus": 105,
+  "moins": 2,
+  "hors": []
+ },
+ "applause_meter": {
+  "hunks": 5,
+  "plus": 105,
+  "moins": 2,
+  "hors": []
+ }
+}

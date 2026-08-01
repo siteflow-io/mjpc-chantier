@@ -1,0 +1,67 @@
+[
+ {
+  "n": "PORTÉE : canon 1.4.0 dans index, pastille 8.12.0, les 19 fonctions sur window, overlay NEUTRALISÉ",
+  "ok": true,
+  "d": "{\"canon\":\"1.4.0\",\"app\":\"8.12.0\",\"overlay\":false,\"portee\":\"chOuvrir:function chRendre:function chInfo:function chVerifier:function chAfficherInventaire:function chInjecter:function "
+ },
+ {
+  "n": "l’écran chapitre s’ouvre (titre, sélecteur de niveau, zone de collage)",
+  "ok": true,
+  "d": "{\"titre\":\"📚 Construire un chapitre avec une IA\",\"zone\":true,\"niveau\":true,\"note\":\"ℹ Deux écritures d’un même nom de classe coexistent dans ce niveau "
+ },
+ {
+  "n": "les deux graphies de classe sont SIGNALÉES, sans bouton de correction",
+  "ok": true,
+  "d": "ℹ Deux écritures d’un même nom de classe coexistent dans ce niveau (« 3E Charles de Gaulle » et « 3e_charles_de_gaulle »"
+ },
+ {
+  "n": "① le prompt contient le CADRAGE IMPOSÉ, les 7 types, la TAXONOMIE générée, et demande SES DOCUMENTS",
+  "ok": true,
+  "d": "longueur 16272"
+ },
+ {
+  "n": "⑦ refus à l’écran : motifs accumulés, notion inventée NOMMÉE",
+  "ok": true,
+  "d": "Je ne peux pas utiliser cette réponse :<ul><li>« S » a un type de séance inconnu (« sardine »). Types possibles : intro_image, etude_texte, notions, d"
+ },
+ {
+  "n": "② INVENTAIRE face à face : l’existant précis, les états, les notions EN LIBELLÉ",
+  "ok": true,
+  "d": "Ce que tu as déjà — « La satire et l’argumentation »\nIntroduction et analyse d’image intro_image\n• Diaporama doc · drive\nÉtude de texte etude_texte\n• "
+ },
+ {
+  "n": "⑥ LISTE DE TRAVAIL affichée : « À lier toi-même » avec l’outil nommé",
+  "ok": true,
+  "d": "À lier toi-même (1)\nDans Étude de texte : « Dictée du chapitre » — à relier à dictee (À lier à une dictée existante).\n\nCes éléments s’écrive"
+ },
+ {
+  "n": "les TROIS voies sont proposées, cibles ≥ 44 px, aucune pré-choisie",
+  "ok": true,
+  "d": "[{\"t\":\"Compléter (ne touche à rien)\",\"h\":44},{\"t\":\"Remplacer ce chapitre\",\"h\":44},{\"t\":\"Garder à côté (proposition)\",\"h\":44}]"
+ },
+ {
+  "n": "aucune écriture avant le choix",
+  "ok": true,
+  "d": "3"
+ },
+ {
+  "n": "③ ÉCRITURE PAR INDEX au journal réseau, jamais la liste entière",
+  "ok": true,
+  "d": "[\"/site/3e/chapitres/3/seances/1/items/dictee-du-chapitre\",\"/site/3e/chapitres/3/seances/1/notions\",\"/site/3e/chapitres/3/seances/1/competences\",\"/site/3e/chapitres/3/seances/2\"]"
+ },
+ {
+  "n": "③ seuls les manques écrits : l’item déjà là n’est pas retouché, `published` jamais écrit",
+  "ok": true,
+  "d": "[\"/site/3e/chapitres/3/seances/1/items/dictee-du-chapitre\",\"/site/3e/chapitres/3/seances/1/notions\",\"/site/3e/chapitres/3/seances/1/competences\",\"/site/3e/chapitres/3/seances/2\"]"
+ },
+ {
+  "n": "mobile 390 : aucun débordement introduit (livré ≤ base), écran chapitre ouvert",
+  "ok": true,
+  "d": "{\"base\":{\"deb\":1,\"larg\":390},\"staging\":{\"deb\":0,\"larg\":390}}"
+ },
+ {
+  "n": "journal réseau : la section n’écrit QUE chapitres/corbeille (10 écritures, pré-existantes écartées par preuve)",
+  "ok": true,
+  "d": "[]"
+ }
+]

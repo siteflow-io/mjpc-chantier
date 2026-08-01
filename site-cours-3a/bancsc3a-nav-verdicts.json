@@ -1,0 +1,47 @@
+[
+ {
+  "n": "PORTÉE : pastille 8.13.0, canon 1.4.0, les 19 fonctions sur window, overlay NEUTRALISÉ",
+  "ok": true,
+  "d": "{\"canon\":\"1.4.0\",\"app\":\"8.13.0\",\"overlay\":false,\"portee\":\"diapoOuvrir:function diapoRendreEcran:function diapoInfo:function diapoVerifier:function diapoRelecture:function diapoMarquer:functi"
+ },
+ {
+  "n": "① le prompt : cadrage imposé, critère de tri (dicter/décrire), blocs générés, aucun jeton résiduel",
+  "ok": true,
+  "d": "longueur 3093"
+ },
+ {
+  "n": "② relecture à l’écran : une case par bloc, bouton FERMÉ",
+  "ok": true,
+  "d": "{\"n\":11,\"btn\":true,\"txt\":\"Relecture\\n—\\n0 bloc(s) relu(s) sur 11\\nTout marquer relu\\nDiapositive 1 — Les procédés du portrait\\nCe qu’on observe\\nSOUS-"
+ },
+ {
+  "n": "LE RENDU À 390 px : les 11 types de blocs présents, AUCUN débordement horizontal",
+  "ok": true,
+  "d": "{\"deb\":0,\"larg\":390}"
+ },
+ {
+  "n": "le TABLEAU bascule en paires libellé/valeur au téléphone (td en block, en-tête porté par ::before)",
+  "ok": true,
+  "d": "{\"d\":\"block\",\"e\":\"\\\"Procédé\\\"\"}"
+ },
+ {
+  "n": "le texte est du VRAI TEXTE, sélectionnable (ni canvas ni image de texte)",
+  "ok": true,
+  "d": "Le portrait — séance 2\n1\nLes procédés du portrait\nCe qu’on observe\n\nLe portrait "
+ },
+ {
+  "n": "IMPRESSION : règles @media print présentes, barre du viewer masquée, diapositive non coupée",
+  "ok": true,
+  "d": "{\"regles\":1,\"barre\":true,\"coupe\":true}"
+ },
+ {
+  "n": "IMPRESSION rendue : la barre disparaît, le document tient dans la page",
+  "ok": true,
+  "d": "{\"barreCachee\":true,\"deb\":0}"
+ },
+ {
+  "n": "journal réseau : aucune écriture hors diaporamas/corbeille (3 écritures, pré-existantes écartées par preuve)",
+  "ok": true,
+  "d": "[]"
+ }
+]

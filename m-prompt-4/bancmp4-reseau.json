@@ -1,0 +1,34 @@
+{
+ "requetes": 38,
+ "ecritures": [],
+ "poids": {
+  "correction_dictee": {
+   "usage": 136,
+   "brut": 749
+  },
+  "worktrack": {
+   "usage": 128,
+   "brut": 0
+  },
+  "dictee_universelle": {
+   "usage": 172,
+   "brut": 0
+  },
+  "pilotage_debat_s3": {
+   "usage": 157,
+   "brut": 0
+  },
+  "evaluation-qcm": {
+   "usage": 100,
+   "brut": 0
+  },
+  "analyse_logique": {
+   "usage": 145,
+   "brut": 1405
+  },
+  "applause_meter": {
+   "usage": 145,
+   "brut": 1819
+  }
+ }
+}

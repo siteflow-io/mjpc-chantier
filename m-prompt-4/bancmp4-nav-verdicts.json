@@ -1,0 +1,67 @@
+[
+ {
+  "n": "index : canon 1.5.0, pastille 8.14.0, fonctions sur window, outils lus du hub (7)",
+  "ok": true,
+  "d": "{\"c\":\"1.5.0\",\"a\":\"8.14.0\",\"n\":7}"
+ },
+ {
+  "n": "index : la présentation est EN TÊTE et le texte persisté est INTACT derrière",
+  "ok": true,
+  "d": "OÙ TON TRAVAIL ATTERRIT. Tu travailles pour MJPC (monsieurja"
+ },
+ {
+  "n": "index : la liste des outils vient du HUB (ce que les apps déclarent), le site écarté",
+  "ok": true,
+  "d": "ion-qcm : usage de evaluation-qcm — pas pour X\n  • pilotage_debat_s3 : usage de pilotage_debat_s3 — pas pour X\n  • worktrack : usage de worktrack — pas pour X\n\n"
+ },
+ {
+  "n": "correction_dictee : canon 1.5.0, usage déclaré dans MJPC_APP, fonctions présentes",
+  "ok": true,
+  "d": "{\"c\":\"1.5.0\",\"u\":\"À partir des erreurs relevées dans une d\"}"
+ },
+ {
+  "n": "correction_dictee : la forme BRÈVE est en tête du prompt produit",
+  "ok": true,
+  "d": "OÙ TON TRAVAIL ATTERRIT. Tu travailles pour MJPC ("
+ },
+ {
+  "n": "worktrack : canon 1.5.0, usage déclaré dans MJPC_APP, fonctions présentes",
+  "ok": true,
+  "d": "{\"c\":\"1.5.0\",\"u\":\"Un parcours de séances que l’élève suit \"}"
+ },
+ {
+  "n": "dictee_universelle : canon 1.5.0, usage déclaré dans MJPC_APP, fonctions présentes",
+  "ok": true,
+  "d": "{\"c\":\"1.5.0\",\"u\":\"Le professeur dicte, chaque élève écrit \"}"
+ },
+ {
+  "n": "pilotage_debat_s3 : canon 1.5.0, usage déclaré dans MJPC_APP, fonctions présentes",
+  "ok": true,
+  "d": "{\"c\":\"1.5.0\",\"u\":\"Un débat organisé en équipes et en manch\"}"
+ },
+ {
+  "n": "evaluation-qcm : canon 1.5.0, usage déclaré dans MJPC_APP, fonctions présentes",
+  "ok": true,
+  "d": "{\"c\":\"1.5.0\",\"u\":\"Un questionnaire à choix multiples chron\"}"
+ },
+ {
+  "n": "analyse_logique : canon 1.5.0, usage déclaré dans MJPC_APP, fonctions présentes",
+  "ok": true,
+  "d": "{\"c\":\"1.5.0\",\"u\":\"L’élève analyse une phrase à l’écran : i\"}"
+ },
+ {
+  "n": "analyse_logique : la forme BRÈVE est en tête du prompt produit",
+  "ok": true,
+  "d": "OÙ TON TRAVAIL ATTERRIT. Tu travailles pour MJPC ("
+ },
+ {
+  "n": "applause_meter : canon 1.5.0, usage déclaré dans MJPC_APP, fonctions présentes",
+  "ok": true,
+  "d": "{\"c\":\"1.5.0\",\"u\":\"Les élèves écoutent un camarade lire à v\"}"
+ },
+ {
+  "n": "applause_meter : la forme BRÈVE est en tête du prompt produit",
+  "ok": true,
+  "d": "OÙ TON TRAVAIL ATTERRIT. Tu travailles pour MJPC ("
+ }
+]

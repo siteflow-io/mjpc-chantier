@@ -1,9 +1,0 @@
-{
- "hunks": 13,
- "plus": 334,
- "moins": 33,
- "hors": [
-  "setJsonInput(\"\");setShowInject(false);",
-  "setEditMode(\"none\");"
- ]
-}

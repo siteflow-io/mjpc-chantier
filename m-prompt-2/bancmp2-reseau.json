@@ -1,0 +1,7 @@
+{
+ "requetes": 28,
+ "ecritures": [
+  "/worktrack_prompts/chapitre/directives",
+  "/dictee_universelle_prompts/analyse/directives"
+ ]
+}

@@ -1,0 +1,142 @@
+[
+ {
+  "n": "PREUVE (3e fois) : les 12 fonctions de la mécanique sont IDENTIQUES À L’OCTET",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "PREUVE : les deux produits précédents sont intacts dans le seed",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "①a vocabulaire GÉNÉRÉ : 11 blocs (10 du cadrage + paragraphe), champs typés",
+  "ok": true,
+  "d": "11"
+ },
+ {
+  "n": "①b PREUVE DE GÉNÉRATION : un bloc ajouté paraît, aucune liste retouchée",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "⑥ cinq défauts → motifs accumulés, chaque bloc CITÉ",
+  "ok": true,
+  "d": "[\"« Diapositive 1 « D1 » · bloc 1 » utilise un type inconnu (« sardine »). Types possibles : titre, sous_titre, paragraphe, puces, numeros, definition, exemple, citation, tableau, note, image.\",\"« Diapositive 1 « D1 » · "
+ },
+ {
+  "n": "PREUVE : un champ de FORME est refusé EN ÉTANT NOMMÉ",
+  "ok": true,
+  "d": "[\"« Diapositive 1 « D1 » · bloc 2 » contient un réglage de mise en forme (« style ») : la forme est décidée par le site, retire-le.\"]"
+ },
+ {
+  "n": "PREUVE : une image SANS description pour lecteur d’écran est refusée",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "un tableau à 4 colonnes est refusé (illisible au téléphone), avec la conduite à tenir",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "un diaporama valide passe",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "② le GABARIT rend chaque type de bloc",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "le tableau porte data-ent sur chaque cellule (bascule en paires au téléphone)",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "l’image sans référence annonce le dépôt à venir, avec sa description",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "aucune dépendance externe dans le rendu (hors vignette Drive d’une image déposée)",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "le texte est du VRAI TEXTE (sélectionnable) : aucun canvas, aucune image de texte",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "② relecture bloc à bloc : forme finale ET texte brut en regard, une case par bloc",
+  "ok": true,
+  "d": "<div class=\"dp-rel-tete\"><b>Relecture</b> — <span id=\"dp-compteur\">0 bloc(s) relu(s) sur 6</span> <button class=\"at-btn\""
+ },
+ {
+  "n": "②bis le bouton d’écriture est FERMÉ tant que tout n’est pas relu",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "le texte brut d’un bloc image montre l’alternative textuelle (ce que personne ne relit jamais)",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "②ter après relecture complète : le bouton s’ouvre, le compteur le dit",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "③ aucune écriture avant confirmation (une modale, zéro PUT)",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "④ écriture par verdict au bon nœud, et rien à archiver la première fois",
+  "ok": true,
+  "d": "[\"GET /site/diaporamas/portrait-seance-2\",\"PUT /site/diaporamas/portrait-seance-2\"]"
+ },
+ {
+  "n": "le message dit comment le rendre visible (le lier à une séance)",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "⑤a la confirmation ANNONCE le remplacement et la corbeille",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "⑤b archive en ÉCHEC → ABANDON, « rien n’a été remplacé », le diaporama est intact",
+  "ok": true,
+  "d": "La mise à la corbeille a échoué — <b>rien n’a été remplacé</b>. Réessaie quand la connexion est stable."
+ },
+ {
+  "n": "⑤c l’ARCHIVE part AVANT le remplacement (arch@0 < doc@1)",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "⑤d l’archive {_meta,data} porte l’ancien diaporama",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "la branche openItem existe pour kind:diaporama + source:firebase_app",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "le prompt maître de chapitre peut désigner un diaporama (CH_KINDS)",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "le format d’item n’a PAS changé (kind/source/ref inchangés, CH_SOURCES intact)",
+  "ok": true,
+  "d": ""
+ }
+]

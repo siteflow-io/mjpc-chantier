@@ -1,0 +1,137 @@
+[
+ {
+  "n": "liste générée : 114 éléments = 121 − 7 réservées (Q1 : toutes les non réservées)",
+  "ok": true,
+  "d": "114/121/7"
+ },
+ {
+  "n": "aucune réservée dans la liste (l’IA ne propose pas ce qui n’existe pas)",
+  "ok": true,
+  "d": "[]"
+ },
+ {
+  "n": "la liste porte les libellés français et les champs typés",
+  "ok": true,
+  "d": "### En-tête | - titre : Afficher le titre de la feuille → champs : texte (Titre, texte court) | - sous_titre : Afficher un sous-titre → champs : texte (Sous-titre, texte court)"
+ },
+ {
+  "n": "PREUVE DE GÉNÉRATION : une composante ajoutée au schéma paraît dans la liste, aucune liste retouchée",
+  "ok": true,
+  "d": "115"
+ },
+ {
+  "n": "une composante factice RÉSERVÉE reste exclue",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "① prompt composé : cadrage imposé, JSON libéré sur ordre, liste incorporée, seed en repli",
+  "ok": true,
+  "d": "14346 caractères"
+ },
+ {
+  "n": "⑤ identifiant inconnu → refusé EN LE NOMMANT",
+  "ok": true,
+  "d": "Je ne peux pas écrire cette feuille :<ul><li>« machin_invente » (à cocher) n’existe pas dans l’atelier. Demande à l’IA de n’utiliser que les éléments "
+ },
+ {
+  "n": "⑥ composante réservée → refusée avec sa raison",
+  "ok": true,
+  "d": "Je ne peux pas écrire cette feuille :<ul><li>« qr_code » (Ajouter un QR code) n’est pas encore disponible : cet élément est prévu mais pas encore réal"
+ },
+ {
+  "n": "⑦a JSON vide → refus clair",
+  "ok": true,
+  "d": "Je ne peux pas écrire cette feuille :<ul><li>La réponse ne contient aucun élément à écrire. Demande à l’IA de produire le résultat complet.<"
+ },
+ {
+  "n": "⑦b JSON tronqué → refus clair, dit quoi faire",
+  "ok": true,
+  "d": "Je ne peux pas lire cette réponse : elle est incomplète ou mal fermée (Expected double-quoted property name in JSON at position 27 (line 1 column 28))"
+ },
+ {
+  "n": "type list reçoit un texte → refusé, dit quoi corriger",
+  "ok": true,
+  "d": "Je ne peux pas écrire cette feuille :<ul><li>« criteres_reussite · Critères de réussite » attend une liste de lignes, pas un texte. Demande à l’IA de "
+ },
+ {
+  "n": "date mal formée → refusé avec le format attendu",
+  "ok": true,
+  "d": "Je ne peux pas écrire cette feuille :<ul><li>« date_seance · Date de la séance » doit s’écrire AAAA-MM-JJ (reçu : « le 3 septembre »).</li></ul>"
+ },
+ {
+  "n": "champ inconnu → composante ET champ cités, champs possibles donnés",
+  "ok": true,
+  "d": "Je ne peux pas écrire cette feuille :<ul><li>« objectif » (contenu) n’a pas de champ « champ_qui_nexiste_pas ». Champs possibles : texte.</li></ul>"
+ },
+ {
+  "n": "les refus S’ACCUMULENT (produit inconnu + 2 identifiants) : 3 motifs d’un coup",
+  "ok": true,
+  "d": "Je ne peux pas écrire cette feuille :<ul><li>Le type de feuille « produit_bidon » n’existe pas. Attendu : fiche_seance.</li><li>« inconnu_a » (à cocher) n’existe pas dans l’atelier"
+ },
+ {
+  "n": "②a JSON valide → APERÇU : cases nommées en français, contenus, et « rien n’est enregistré »",
+  "ok": true,
+  "d": "<div class=\"at-ia-apercu-boite\"><div class=\"at-ia-apercu-titre\">Voici ce qui sera écrit. Rien n’est enregistré tant que tu n’as pas choisi.<"
+ },
+ {
+  "n": "②b le choix : DEUX boutons de même poids, aucun pré-choisi",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "②c aucune écriture avant le choix",
+  "ok": true,
+  "d": "0"
+ },
+ {
+  "n": "②d NOUVELLE FEUILLE créée et remplie (titre, cases, valeurs typées, bloc répété)",
+  "ok": true,
+  "d": "{\"t\":\"Le portrait de Fantine\",\"c\":7,\"b\":1}"
+ },
+ {
+  "n": "③a la confirmation CHIFFRE ce qui sera perdu et dit que la version part à la corbeille",
+  "ok": true,
+  "d": "Remplacer « Le portrait de Fantine » ? Tu perdras 7 case(s) cochée(s) et 1 bloc(s) de contenu. La version actuelle part d’abord à la corbeille, tu pourras la re"
+ },
+ {
+  "n": "③b L’ARCHIVE PART AVANT le remplacement (journal : arch@0 < doc@1)",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "③c l’archive {_meta,data} porte l’ANCIENNE version, retrouvable",
+  "ok": true,
+  "d": "/corbeille/2026-08-01/atelier-remplacement_080057"
+ },
+ {
+  "n": "③d la feuille ouverte porte désormais la nouvelle version, même identifiant",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "④ archive en échec → ABANDON : « rien n’a été remplacé », la feuille est intacte",
+  "ok": true,
+  "d": "La mise à la corbeille a échoué — rien n’a été remplacé. Réessaie quand la connexion est stable."
+ },
+ {
+  "n": "⑧a le prompt modifié est écrit au hub (pas sur le poste)",
+  "ok": true,
+  "d": "Prompt enregistré. Il te suivra sur tes autres appareils."
+ },
+ {
+  "n": "⑧b après rechargement : le prompt de Paul est CONSERVÉ, la liste toujours incorporée",
+  "ok": true,
+  "d": "MON PROMPT À MOI\n### En-tête\n- titre : Afficher le titre de "
+ },
+ {
+  "n": "⑧c base muette → le seed en dur fait foi",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "journal : aucune écriture hors /site/atelier et /corbeille",
+  "ok": true,
+  "d": "[]"
+ }
+]

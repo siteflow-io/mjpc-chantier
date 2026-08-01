@@ -1,0 +1,107 @@
+[
+ {
+  "n": "règle du 01/08 : mjpcEcrireRest rend cb(issue) — lu au canon",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "les 7 apps déclarent usage ET quandPas DANS MJPC_APP (pas de structure parallèle)",
+  "ok": true,
+  "d": "[]"
+ },
+ {
+  "n": "le canon ne porte AUCUNE description d’app (elles vivent dans les apps)",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "les deux apps de COÉVALUATION le disent dans leur usage",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "les deux outils d’oral se renvoient l’un à l’autre (le défaut qui a fait proposer l’applaudimètre à tort)",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "liste GÉNÉRÉE depuis ce que les apps publient : 8 outils, le site et la taxonomie écartés",
+  "ok": true,
+  "d": "8"
+ },
+ {
+  "n": "une app SANS usage paraît quand même, en le disant",
+  "ok": true,
+  "d": "  • Réécriture — (usage à décrire : cette application existe mais personne n’a dit quand la proposer)"
+ },
+ {
+  "n": "PREUVE DE GÉNÉRATION : un outil publié paraît, aucune liste retouchée",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "hub muet → la présentation le DIT au lieu d’inventer une liste",
+  "ok": true,
+  "d": "  (la liste de mes applications n’a pas pu être lue : demande-la-moi avant de me conseille"
+ },
+ {
+  "n": "le tronc dit les QUATRE choses : où ça atterrit, les outils, ce qui commande, la consultation",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "la forme brève garde le principe cardinal et demande la liste avant de conseiller",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "mjpcPromptComposer place la présentation EN TÊTE",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "elle se retire explicitement si une app n’en veut pas (presentation:false)",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "le poids est mesuré : tronc 3373 c., brève 721 c.",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "la présentation se place DEVANT le texte persisté, sans le modifier",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "PREUVE DE NON-ÉCRASEMENT : le texte persisté est INTACT À L’OCTET dans le résultat",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "la pièce n’écrit RIEN au hub (assemblée à la volée, jamais persistée)",
+  "ok": true,
+  "d": "0"
+ },
+ {
+  "n": "index : les TROIS prompts reçoivent le TRONC (atPromptTexte)",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "les 7 apps reçoivent la forme BRÈVE à leur point de production",
+  "ok": true,
+  "d": "[]"
+ },
+ {
+  "n": "les 7 apps REMONTENT usage/quandPas au hub (publierManifeste)",
+  "ok": true,
+  "d": "[]"
+ },
+ {
+  "n": "AUCUN prompt existant n’est réécrit sur le fond (8/8 débuts identiques)",
+  "ok": true,
+  "d": "8"
+ }
+]

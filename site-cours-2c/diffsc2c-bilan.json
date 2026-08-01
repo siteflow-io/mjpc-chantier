@@ -1,0 +1,10 @@
+{
+ "hunks": 7,
+ "plus": 623,
+ "retires": [
+  "var APP_VERSION=\"8.11.0\";",
+  "var MJPC_CORE_VERSION=\"1.3.0\";",
+  "return brut.replace('@@COMPOSANTES@@',atPromptComposantes());"
+ ],
+ "hors": []
+}

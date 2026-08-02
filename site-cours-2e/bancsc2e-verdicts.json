@@ -1,0 +1,97 @@
+[
+ {
+  "n": "AVANT (base) : un item existant n’était JAMAIS retouché",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "① RÉPARATION PROUVÉE : les notions d’un item EXISTANT sont écrites au hub",
+  "ok": true,
+  "d": "[\"/site/3e/chapitres/1/entree\",\"/site/3e/chapitres/1/competencesMajeures\",\"/site/3e/chapitres/1/competencesMineures\",\"/site/3e/chapitres/1/seances/0/items/etude/notions\",\"/site/3e/chapitres/1/seances/0/notions\",\"/site/3e"
+ },
+ {
+  "n": "①bis le reste de l’item n’est PAS touché (aucune écriture sur l’item entier)",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "② la DÉCLARATION du chapitre est écrite (entrée + majeures + mineures)",
+  "ok": true,
+  "d": "[\"/site/3e/chapitres/1/entree\",\"/site/3e/chapitres/1/competencesMajeures\",\"/site/3e/chapitres/1/competencesMineures\",\"/site/3e/chapitres/1/seances/0/items/etude/notions\",\"/site/3e/chapitres/1/seances/0/notions\",\"/site/3e"
+ },
+ {
+  "n": "②bis relu au hub : les tags et la déclaration y sont",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "③ la feuille SOMMAIRE est écrite en rang 0... ou en rang neuf, et JAMAIS publiée",
+  "ok": true,
+  "d": "[\"/site/3e/chapitres/1/seances/1\"]"
+ },
+ {
+  "n": "③bis décochée : AUCUNE feuille sommaire écrite",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "④ état de l’année GÉNÉRÉ : chaque chapitre, son entrée, ses majeures EN LIBELLÉ",
+  "ok": true,
+  "d": "  • Chapitre 1 — « Chap 1 » · entrée : Récit · majeure(s) : Exploiter les principales fonctions de l'écrit"
+ },
+ {
+  "n": "④bis il SIGNALE ce qui revient (alternance) et ce qui manque",
+  "ok": true,
+  "d": "éjà majeures plusieurs fois : Exploiter les principales fonctions de l'écrit (2 fois)\n  → Entrées du programme pas encore abordées : Théâtre, Articles et essai."
+ },
+ {
+  "n": "④ter PREUVE DE GÉNÉRATION : un chapitre ajouté paraît, aucune liste retouchée",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "④quater le trou de liste (rang null) est TRAVERSÉ",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "⑤ sommaire CALCULÉ : entrée, majeures/mineures en libellé, plan, notions, problématique",
+  "ok": true,
+  "d": "{\"titre\":\"La satire\",\"entree\":\"Articles et essai\",\"majeures\":[\"Exploiter les principales fonctions de l'écrit\"],\"mineures\":[\"Contrôler sa compréhension, devenir un lecteur autonome"
+ },
+ {
+  "n": "⑤bis il SE SUFFIT À LUI-MÊME : titre, entrée, majeures, plan — sans relire les séances",
+  "ok": true,
+  "d": "{\"ok\":true,\"manque\":[]}"
+ },
+ {
+  "n": "⑤ter un sommaire incomplet le DIT, en nommant ce qui manque",
+  "ok": true,
+  "d": "[\"l’entrée du programme\",\"la ou les compétences principales\",\"le plan des séances\"]"
+ },
+ {
+  "n": "⑤quater la séance de rang 0 porte des ITEMS comme les autres, et aucun `published`",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "⑥ refus NOMMÉS et accumulés : entrée inconnue, compétence inventée, doublon majeure/mineure",
+  "ok": true,
+  "d": "[\"« entrée « bande_dessinee » » n’est pas une entrée du programme pour ce niveau. Possibles : recit, poesie, theatre, articles_essai.\",\"« compétence « c4-inventee-99 » » n’existe pas dans le référentiel du cycle 4. Repre"
+ },
+ {
+  "n": "une déclaration valide passe",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "6e/5e : la liste reste OUVERTE (pas de refus), avec son message",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "journal : aucune écriture hors /site/3e/chapitres et /corbeille",
+  "ok": true,
+  "d": ""
+ }
+]

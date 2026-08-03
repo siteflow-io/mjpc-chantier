@@ -2410,7 +2410,7 @@ function mjpcEcrireRest(url,options,cb){
    (les 3 gestes, le geste conservatoire par app, ce qui ne peut pas arriver).
    RESTAURER LA VERSION PRÉCÉDENTE : docs/MJPC6-restauration.md (convention BUG).
    ═══════════════════════════════════════════════════════════════════════════ */
-var APP_VERSION="8.17.0";
+var APP_VERSION="8.18.0";
 var APP_VERSION_DATE="2026-07-30";
 // ── 11. Coffre : dérivation, chiffrement, empreinte (v1.3.0) ──
 // (Le canon porte deux sections « 8 » — dette de numérotation connue, non corrigée
@@ -7453,7 +7453,12 @@ function openDiaporamaById(ref,titre){
       serif pour le texte long, patrons buildCopieHtml + bilansPrintHTML).
       L'aperçu et l'impression sont CE MÊME document (srcdoc → print). ══ */
 
-function atEsc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"’":'&#39;'}[c];});}
+/* M-MANIFESTE (02/08) — BUG DE PRODUCTION CORRIGÉ. La classe capturait
+   l'apostrophe DROITE (U+0027) mais la table définissait la TYPOGRAPHIQUE
+   (U+2019) : toute apostrophe droite rendait `undefined`. « Atelier d'analyse
+   logique » s'affichait « Atelier dundefinedanalyse logique ». 133 appels
+   concernés dans ce fichier. Trouvé par la capture de l'écran d'écart. */
+function atEsc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]||c;});}
 function atLignes(s){return String(s==null?'':s).split(/\n/);}
 function atMultiligne(s){return atLignes(s).map(atEsc).join('<br>');}
 function atListe(v){ /* champ kind 'list' : tableau ou texte à lignes */

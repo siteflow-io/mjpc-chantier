@@ -67,8 +67,13 @@ const SECRET='phrase banc manifeste 2026';
   const et=await page.evaluate(()=>({app:window.APP_VERSION,canon:window.MJPC_CORE_VERSION,
     overlay:!!document.getElementById('m8-regles-overlay'),
     portee:['ecartOuvrir','ecartRendre','ecartLigne','ecartDate','ecartInfo'].map(k=>k+':'+(typeof window[k])).join(' ')}));
-  ok('portée : les 5 fonctions sur window, pastille 8.17.0, overlay neutralisé',
-     !/:undefined/.test(et.portee)&&et.app==='8.17.0'&&!et.overlay,JSON.stringify(et).slice(0,170));
+  /* ⚠ index embarque encore le canon 1.5.0 : il ne porte PAS mjpcManifesteAJour.
+     C'est cohérent — il publie par publierManifesteREST, hors du périmètre de la
+     publication conditionnelle — mais l'écart de socle est SIGNALÉ au rapport. */
+  ok('portée : les 5 fonctions sur window, pastille 8.18.0, overlay neutralisé',
+     !/:undefined/.test(et.portee)&&et.app==='8.18.0'&&!et.overlay,JSON.stringify(et).slice(0,170));
+  ok('constat : index embarque le socle '+et.canon+' (les neuf apps sont en 1.6.0) \u2014 signalé',
+     et.canon==='1.5.0',et.canon);
   await page.evaluate(()=>{try{loginAsProf();}catch(e){} try{openProfPanel();}catch(e){} try{atelierOuvrir();}catch(e){} try{atNouvelleFeuille();}catch(e){} try{atIAOuvrir();}catch(e){}});
   await new Promise(x=>setTimeout(x,1200));
   const nAv=ECRITS.length;                     /* delta du GESTE seul : /manifestes/index,
@@ -92,8 +97,11 @@ const SECRET='phrase banc manifeste 2026';
   await page.goto('http://localhost:8750/index.staging.html',{waitUntil:'domcontentloaded',timeout:80000});
   await page.waitForFunction('window.SECU&&SECU.valide===true',{timeout:40000}).catch(()=>{});
   await new Promise(x=>setTimeout(x,1500));
-  await page.evaluate(()=>{try{loginAsProf();}catch(e){} try{openProfPanel();}catch(e){} try{atelierOuvrir();}catch(e){} try{atNouvelleFeuille();}catch(e){} try{atIAOuvrir();}catch(e){} try{ecartOuvrir();}catch(e){}});
-  await new Promise(x=>setTimeout(x,3000));
+  await page.evaluate(()=>{try{loginAsProf();}catch(e){} try{openProfPanel();}catch(e){} try{atelierOuvrir();}catch(e){} try{atNouvelleFeuille();}catch(e){} try{atIAOuvrir();}catch(e){}});
+  await page.waitForSelector('#at-zone',{timeout:20000}).catch(()=>{});
+  await new Promise(x=>setTimeout(x,1200));
+  await page.evaluate(()=>{ecartOuvrir();});      /* la zone existe : on appelle APRÈS */
+  await new Promise(x=>setTimeout(x,2000));
   await page.waitForSelector('.ec-tab td',{timeout:15000}).catch(()=>{});
   const mob=await page.evaluate(()=>{
     const deb=[...document.querySelectorAll('.ec-sec *')].filter(e=>{const r=e.getBoundingClientRect();return r.width>0&&r.right>391;});
@@ -101,7 +109,10 @@ const SECRET='phrase banc manifeste 2026';
     const i=document.querySelector('.ec-sec .at-i');
     return {deb:deb.length,larg:document.documentElement.scrollWidth,
       tdBlock:td?getComputedStyle(td).display:'',
-      info:i?Math.round(i.getBoundingClientRect().height):0};});
+      info:i?Math.round(i.getBoundingClientRect().height):0,
+      txt:(document.querySelector('.ec-sec')||{}).innerText||''};});
+  ok('AUCUN « undefined » dans les noms rendus (bug atEsc corrigé)',
+     !/undefined/.test(mob.txt||''),String(mob.txt||'').slice(0,140));
   ok('390 px : zéro débordement, tableau en paires libellé/valeur, ⓘ ≥ 44 px',
      mob.deb===0&&mob.larg<=392&&mob.tdBlock==='block'&&mob.info>=44,JSON.stringify(mob));
   await page.screenshot({path:'img-o02.png'});
@@ -109,6 +120,7 @@ const SECRET='phrase banc manifeste 2026';
   /* ── la publication réelle d'une app : hub périmé puis à jour ── */
   page=await page1();
   page.on('pageerror',e=>console.log('APP-ERR:',String(e).slice(0,110)));
+  HUB['/manifestes/correction_dictee']={version:'1.1.0',publie_le:J(30),app:{id:'correction_dictee',nom:'Correction de dictée'}};
   const n0=ECRITS.length;
   await page.goto('http://localhost:8750/correction_dictee.staging.html',{waitUntil:'domcontentloaded',timeout:80000});
   await new Promise(x=>setTimeout(x,4000));

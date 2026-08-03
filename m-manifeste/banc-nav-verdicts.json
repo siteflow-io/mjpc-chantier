@@ -1,8 +1,13 @@
 [
  {
-  "n": "portée : les 5 fonctions sur window, pastille 8.17.0, overlay neutralisé",
+  "n": "portée : les 5 fonctions sur window, pastille 8.18.0, overlay neutralisé",
   "ok": true,
-  "d": "{\"app\":\"8.17.0\",\"canon\":\"1.5.0\",\"overlay\":false,\"portee\":\"ecartOuvrir:function ecartRendre:function ecartLigne:function ecartDate:function ecartInfo:function\"}"
+  "d": "{\"app\":\"8.18.0\",\"canon\":\"1.5.0\",\"overlay\":false,\"portee\":\"ecartOuvrir:function ecartRendre:function ecartLigne:function ecartDate:function ecartInfo:function\"}"
+ },
+ {
+  "n": "constat : index embarque le socle 1.5.0 (les neuf apps sont en 1.6.0) — signalé",
+  "ok": true,
+  "d": "1.5.0"
  },
  {
   "n": "l’écran rend les 9 lignes, avec les dates et l’état",
@@ -25,9 +30,14 @@
   "d": "[]"
  },
  {
+  "n": "AUCUN « undefined » dans les noms rendus (bug atEsc corrigé)",
+  "ok": true,
+  "d": "📡 Ce que le hub sait de tes applications\nChaque application publie sa fiche au hub quand tu l’ouvres. Le prompt de chapitre s’en sert pour "
+ },
+ {
   "n": "390 px : zéro débordement, tableau en paires libellé/valeur, ⓘ ≥ 44 px",
-  "ok": false,
-  "d": "{\"deb\":0,\"larg\":390,\"tdBlock\":\"\",\"info\":0}"
+  "ok": true,
+  "d": "{\"deb\":0,\"larg\":390,\"tdBlock\":\"block\",\"info\":44,\"txt\":\"📡 Ce que le hub sait de tes applications\\nChaque application publie sa fiche au hub quand tu l’ouvres. Le prompt de chapitre s’en sert"
  },
  {
   "n": "PUBLICATION RÉELLE : hub périmé (1.1.0) → l’app republie, avec son `usage`",

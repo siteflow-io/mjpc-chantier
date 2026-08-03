@@ -987,6 +987,31 @@ body.at-corps-fige{overflow:hidden}
 }
 /* ═══ fin § CHAPITRE : DÉCLARATION ET SOMMAIRE ═══ */
 </style>
+<style>
+/* ═══ § MANIFESTES : L'ÉCART (M-MANIFESTE) ═══ */
+.ec-sec{padding:4px 2px 20px}
+.ec-intro{font-size:.9rem;opacity:.85;line-height:1.5;margin:6px 0 12px}
+.ec-bilan{padding:10px 12px;border-radius:10px;margin-bottom:10px;font-size:.93rem;line-height:1.5}
+.ec-ok{background:rgba(46,125,79,.10);border:1px solid rgba(46,125,79,.35)}
+.ec-ko{background:rgba(230,57,70,.10);border:1px solid rgba(230,57,70,.35)}
+.ec-socle{font-size:.85rem;opacity:.8;margin-bottom:8px}
+.ec-tab{width:100%;border-collapse:collapse;font-size:.9rem}
+.ec-tab th,.ec-tab td{border:1px solid rgba(0,0,0,.18);padding:.45rem .55rem;text-align:left}
+.ec-tab th{background:rgba(46,39,80,.08)}
+.ec-l-ko td{background:rgba(230,57,70,.06)}
+.ec-attente{padding:14px;opacity:.75}
+.ec-sec .at-i{min-width:44px;min-height:44px}
+@media (max-width:480px){
+  .ec-tab,.ec-tab thead,.ec-tab tbody,.ec-tab tr,.ec-tab td{display:block;width:100%;box-sizing:border-box}
+  .ec-tab thead{display:none}
+  .ec-tab tr{border:1px solid rgba(0,0,0,.2);border-radius:8px;margin-bottom:.5rem}
+  .ec-tab td{border:0;border-bottom:1px solid rgba(0,0,0,.1);padding:.4rem .55rem}
+  .ec-tab td:last-child{border-bottom:0}
+  .ec-tab td:before{content:attr(data-ent);display:block;font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;opacity:.65}
+}
+@media print{.ec-tab{break-inside:avoid}}
+/* ═══ fin § MANIFESTES : L'ÉCART ═══ */
+</style>
 <body>
 <div class="stars" id="stars"></div>
 <div class="shooting-star" id="shooting-star"></div>
@@ -2385,7 +2410,7 @@ function mjpcEcrireRest(url,options,cb){
    (les 3 gestes, le geste conservatoire par app, ce qui ne peut pas arriver).
    RESTAURER LA VERSION PRÉCÉDENTE : docs/MJPC6-restauration.md (convention BUG).
    ═══════════════════════════════════════════════════════════════════════════ */
-var APP_VERSION="8.16.0";
+var APP_VERSION="8.17.0";
 var APP_VERSION_DATE="2026-07-30";
 // ── 11. Coffre : dérivation, chiffrement, empreinte (v1.3.0) ──
 // (Le canon porte deux sections « 8 » — dette de numérotation connue, non corrigée
@@ -6221,6 +6246,7 @@ function atIARendre(){
     +'<div class="at-ia-sous">Discute d\u2019abord avec l\u2019IA, elle pr\u00e9pare la feuille, tu gardes la main sur tout. '
     +'<button class="at-i" onclick="atIAInfo()" aria-label="En savoir plus">\u24d8</button></div>'
     +'<div class="at-ia-actions"><button class="at-btn" onclick="chOuvrir()">\ud83d\udcda Construire un chapitre\u2026</button>'
+    +'<button class="at-btn" onclick="ecartOuvrir()">\ud83d\udce1 Fiches des applications\u2026</button>'
     +'<button class="at-btn" onclick="diapoOuvrir()">\ud83d\uddbc\ufe0f Transformer un diaporama\u2026</button></div>'
     +'<div class="at-ia-etape"><b>1.</b> Copie ce texte et colle-le dans ton IA. Elle te posera des questions avant d\u2019\u00e9crire quoi que ce soit.</div>'
     +'<div class="at-ia-actions">'
@@ -7046,6 +7072,73 @@ function chValiderDeclaration(o,taxo){
   return V;
 }
 /* ═══ fin § CHAPITRE : DÉCLARATION ET SOMMAIRE ═══ */
+/* ═══════════════════════════════════════════════════════════════════════════
+   § MANIFESTES : L'ÉCART (M-MANIFESTE) — un tableau de bord, PAS un bouton.
+   Motif mesuré le 02/08 : le hub portait des déclarations vieilles de deux
+   semaines et de quatre versions de socle (pilotage_debat_s3 : 17/07), sans que
+   rien le signale. La publication conditionnelle (canon 1.6.0) répare au premier
+   accès — elle ne SIGNALE pas. Cet écran comble cet angle mort.
+   ⚠ IL LIT, IL N'ÉCRIT RIEN. Publier depuis le site exigerait qu'il porte une
+   copie des neuf déclarations, ce que M-PROMPT-4 a refusé : la copie diverge au
+   premier changement d'app. Le site constate ; les apps publient.
+   ═══════════════════════════════════════════════════════════════════════════ */
+var ECART_APPS=['correction_dictee','worktrack','dictee_universelle','pilotage_debat_s3',
+                'evaluation-qcm','analyse_logique','applause_meter','reecriture','reecriture_bb4e'];
+function ecartDate(ts){
+  if(!ts)return 'jamais publi\u00e9';
+  var d=new Date(Number(ts));
+  if(isNaN(d.getTime()))return 'date illisible';
+  var j=Math.floor((Date.now()-Number(ts))/86400000);
+  return d.toLocaleDateString('fr-FR')+(j>0?(' \u2014 il y a '+j+' jour'+(j>1?'s':'')):' \u2014 aujourd\u2019hui');
+}
+function ecartLigne(id,entree,socleCourant){
+  var app=(entree&&entree.app)||null;
+  var v=entree?String(entree.version||''):'';
+  var aJour=!!entree&&v===String(socleCourant);
+  var usage=!!(app&&app.usage);
+  return {id:id,nom:(app&&app.nom)||id,version:v||'\u2014',date:ecartDate(entree&&entree.publie_le),
+          aJour:aJour,usage:usage,
+          etat:!entree?'jamais publi\u00e9e':(aJour?(usage?'\u00e0 jour':'\u00e0 jour, mais sans description d\u2019usage'):'en retard')};
+}
+function ecartRendre(entrees,socleCourant){
+  var lignes=ECART_APPS.map(function(id){return ecartLigne(id,entrees&&entrees[id],socleCourant);});
+  var enRetard=lignes.filter(function(l){return !l.aJour;});
+  var h='<div class="prof-sec ec-sec"><h4>\ud83d\udce1 Ce que le hub sait de tes applications</h4>';
+  h+='<div class="ec-intro">Chaque application publie sa fiche au hub quand tu l\u2019ouvres. '
+    +'Le prompt de chapitre s\u2019en sert pour savoir quoi te proposer. '
+    +'<button class="at-i" onclick="ecartInfo()" aria-label="En savoir plus">\u24d8</button></div>';
+  h+= enRetard.length
+    ? ('<div class="ec-bilan ec-ko"><b>'+enRetard.length+' application'+(enRetard.length>1?'s ont':' a')
+       +' une fiche en retard.</b> Pour chacune : <b>ouvre-la une fois</b>, elle republiera toute seule. Tu n\u2019as rien d\u2019autre \u00e0 faire.</div>')
+    : '<div class="ec-bilan ec-ok"><b>Tout est \u00e0 jour.</b> Les neuf applications ont publi\u00e9 leur fiche avec la version du socle en cours.</div>';
+  h+='<div class="ec-socle">Socle en cours : <b>'+atEsc(socleCourant)+'</b></div>';
+  h+='<table class="ec-tab"><thead><tr><th>Application</th><th>Fiche publi\u00e9e le</th><th>Socle d\u00e9clar\u00e9</th><th>\u00c9tat</th></tr></thead><tbody>';
+  lignes.forEach(function(l){
+    h+='<tr class="'+(l.aJour?'ec-l-ok':'ec-l-ko')+'">'
+      +'<td data-ent="Application">'+atEsc(l.nom)+'</td>'
+      +'<td data-ent="Fiche publi\u00e9e le">'+atEsc(l.date)+'</td>'
+      +'<td data-ent="Socle d\u00e9clar\u00e9">'+atEsc(l.version)+'</td>'
+      +'<td data-ent="\u00c9tat">'+atEsc(l.etat)+(l.aJour?'':' \u2014 <i>ouvre-la une fois</i>')+'</td></tr>';
+  });
+  return h+'</tbody></table></div>';
+}
+function ecartInfo(){
+  atModaleChoix('Quand tu ouvres une application, elle \u00e9crit au hub une fiche qui dit son nom, ce qu\u2019elle fait, et \u00e0 quel moment la proposer. '
+    +'C\u2019est cette fiche que l\u2019IA re\u00e7oit quand tu lui demandes de construire un chapitre.<br><br>'
+    +'Si une application n\u2019a pas \u00e9t\u00e9 ouverte depuis une mise \u00e0 jour, sa fiche date d\u2019avant : l\u2019IA travaille alors avec une information p\u00e9rim\u00e9e sans que rien ne le montre. '
+    +'Ce tableau te le montre.<br><br>'
+    +'<b>Cet \u00e9cran ne modifie rien</b> : il lit ce que le hub porte. Pour remettre une fiche \u00e0 jour, il suffit d\u2019ouvrir l\u2019application une fois.',
+    [{lib:'Compris',prim:true,fn:function(){}}]);
+}
+function ecartOuvrir(){
+  var z=document.getElementById('at-zone');if(!z)return;
+  z.innerHTML='<div class="ec-attente">Lecture des fiches\u2026</div>';
+  secuLire('/manifestes').then(function(m){
+    z.innerHTML=ecartRendre(m||{},(typeof MJPC_CORE_VERSION!=='undefined')?MJPC_CORE_VERSION:'?');
+  });
+}
+/* ═══ fin § MANIFESTES : L'ÉCART ═══ */
+
 
 
 /* ═══════════════════════════════════════════════════════════════════════════

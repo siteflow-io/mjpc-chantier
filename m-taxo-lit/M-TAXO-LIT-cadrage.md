@@ -1,48 +1,56 @@
 # M-TAXO-LIT — CADRAGE (exécutant → conscience)
-**02/08 · j'attends le feu vert · Paul valide un vocabulaire qui vivra des années dans le profil de ses élèves**
+**02/08 · j'attends le feu vert · Paul valide un vocabulaire qui vivra des années**
 
 ## Lu (md5 mesurés)
-plan de travail `bb37732b810ef75498ae5210e3d9e860` (avertissement lu en premier) · DOCTRINE `6918d27f3deb49dbc11083c9be127f79` · CHANTIER `aae67ef9209a5043811a7bacb07f488a` · ÉTAT-DES-LIEUX `a6749c3acd2a4721d5099debdb535a7d`.
-**Les deux supports de la taxonomie, mesurés et COMPARÉS** : `/taxonomie` au hub et `taxonomie_atelier.json` au dépôt (80 663 o · `62d0ed999ab3569310d86f77ca8485eb`) — **version 1.3.1 des deux côtés, et strictement identiques** (comparaison JSON clés triées : `True`). C'est le point de départ, et c'est aussi ce que je devrai garantir en sortie.
-**Source officielle lue en entier** : **Annexe 1 — Programme de français pour le cycle 4**, `education.gouv.fr/sites/default/files/document/Annexe 1 – Programme de français pour le cycle 4-480713.pdf` (le programme **rénové**, publié 2025).
+`taxonomie_atelier.json` (dépôt) **80 663 o · `62d0ed999ab3569310d86f77ca8485eb`** · `/taxonomie` (hub) — **les deux supports sont IDENTIQUES à l'octet** (comparaison JSON triée : `True`). Version **1.3.1**, **5 domaines, 40 familles, 154 notions**, tous de langue. Structure mesurée : domaine `{id, libelleProf, libelleEleve, ordre, familles}` · famille `{id, libelleProf, libelleEleve, ordre, notions}` · notion `{id, libelleProf, libelleEleve, exemple, niveaux, actif}`. **Familles numérotées `fam-01`…`fam-40`** ; **notions préfixées par domaine** (`ortho-lex-029`, `gram-042`, `lex-012`…).
 
-## ⚠ CE QUE J'AI TROUVÉ SUR ÉDUSCOL — ET C'EST UNE CONTESTATION SOURCÉE
-**Le programme du cycle 4 ne prescrit AUCUNE liste de notions littéraires.** J'ai lu le texte intégral : il ne nomme **ni « métaphore », ni « alexandrin », ni « sonnet », ni « allitération », ni « strophe », ni « registre tragique »**. Ce qu'il dit, littéralement :
-· *« Apprendre à recourir à **quelques outils d'analyse pertinents** pour lire les textes rencontrés »* (5e) · *« Mobiliser à bon escient **quelques notions littéraires et outils d'analyse** pour interpréter un texte »* (4e) · *« Approfondir sa lecture en mobilisant **quelques notions littéraires et outils d'analyse pertinents** »* (3e).
-· *« Chaque année, les élèves découvrent et mémorisent **une dizaine de notions** en lien avec les entrées de culture littéraire et artistique »* (Vocabulaire — indications quantitatives).
-· *« **Compléter son lexique de l'analyse littéraire**, en particulier celui de **la poésie et de l'argumentation** »* (3e) · *« Enrichir son lexique de l'analyse littéraire, en particulier celui **du théâtre et du roman** »* (4e) · *« **Maitriser les outils d'analyse stylistique essentiels** »* (3e).
-· Pour la poésie : *« la force des mots, **des sonorités, des rythmes et des images** »* · *« faire jouer la langue et **les contraintes formelles** »* · l'unité **« vers »** est employée partout (« une dizaine de lignes ou vers »).
-**CONCLUSION, que je livre telle quelle** : **le texte officiel désigne des CATÉGORIES (sonorités, rythmes, images, formes, genres, style) et confie au professeur le choix des notions.** Donc **aucune notion de versification ou de figure ne peut être présentée comme « prescrite »**. Ma proposition sera **ancrée** dans ces catégories, mais **les notions elles-mêmes relèvent de l'usage scolaire et du choix de Paul** — et je le dirai notion par notion. *Le mandat suppose qu'Éduscol fournit la liste : il ne la fournit pas.*
+## ⚠ DEUX CONSTATS SOURCÉS QUI COMMANDENT TOUT LE MORCEAU
 
-## ⚠ LE CALENDRIER — sur quel programme je m'appuie
-Le PDF lu est **le programme rénové** (5e à la rentrée 2026, 4e en 2027, 3e en 2028). **Les 3e et 4e de Paul sont donc sous l'ANCIEN programme cette année.** Sur le point qui nous occupe, **les deux ne divergent pas** : l'ancien programme employait déjà « quelques notions littéraires » sans les lister. **Je m'appuie sur le rénové** (il sera celui des élèves de Paul dès 2027) **et je signale qu'aucune divergence n'a été trouvée sur ce point précis.** Si le champ `niveaux` devait suivre l'ancien programme pour 2026-2027, c'est un arbitrage de Paul.
+### ① Le programme 2015 NE PRESCRIT AUCUNE LISTE de figures de style ni de versification
+Lu en entier (programme cycle 4, BO 2015 — celui **en vigueur pour les 3e et 4e de Paul cette année**). Ce qu'il emploie réellement, **verbatim** :
+· « **Notions d'analyse littéraire** » · « **Procédés stylistiques** » — **comme catégories, sans énumération** ;
+· « **Genres littéraires : romans, contes, nouvelles, poésie, théâtre** » ;
+· « une première approche de la classification des **genres et des registres** utilisés pour **produire des effets sur le lecteur** » ;
+· « éléments de la **situation d'énonciation** : qui parle à qui ? où ? quand ? (marques de personne, de lieu et de temps) » ;
+· « **paroles rapportées**, directement ou indirectement » · « marques de **modalisation** » ;
+· « éléments linguistiques de **cohésion textuelle** » · « **progression du texte** (à thème constant, linéaire, éclaté) » ;
+· « Observation de la prosodie et de l'organisation du texte à l'oral et à l'écrit (segmentation, ponctuation, paragraphe, **vers**…) » — **la seule occurrence de « vers »**, et elle est prosodique.
+**ET IL DIT EXPRESSÉMENT** : « **L'inflation terminologique doit être évitée** : au cycle 4, il s'agit moins de parvenir à une connaissance exhaustive de tous les éléments de la phrase et du texte que de comprendre que la langue est un système. »
+**CONSÉQUENCE, ET C'EST LA DISTINCTION QUE LE MANDAT EXIGE** : *rime, strophe, alexandrin, métaphore, personnification, hyperbole* **ne figurent pas dans le programme**. Les proposer comme « prescrits » serait **exactement l'invention de référence plausible** contre laquelle le mandat met en garde. **Je les proposerai donc comme AJOUT DE PAUL, jamais comme prescription** — la colonne « source » du rapport le dira notion par notion.
+**Une piste que je n'ai pas pu vérifier** : le programme renvoie à une **annexe terminologique** (« La terminologie qui figure à la suite du programme est celle qui doit être connue des élèves »). **Je ne l'ai pas trouvée dans le PDF lu.** Si elle contient des termes littéraires, elle changerait le statut de plusieurs notions. **Je le signale plutôt que de conclure.**
 
-## Ce qui existe déjà, et que je ne duplique pas — vérifié notion par notion
-· **Discours rapportés : DÉJÀ LÀ.** `dom-grammaire/fam-17` porte `gram-029` à `gram-032` (direct, indirect, indirect libre, transposition). **Je n'y touche pas et je ne crée aucun doublon** — alors que le mandat les cite comme manquants.
-· **Registres de langue : DÉJÀ LÀ** en substance (le programme les range en grammaire : familier/courant/soutenu). ⚠ **À ne pas confondre avec les registres LITTÉRAIRES** (comique, tragique, pathétique) qui, eux, sont absents — et **absents aussi du texte officiel**.
-· Les 9 occurrences de « rime »/« strophe » dans la taxonomie sont des **coïncidences** (élision, apostrophe, accords) : vérifié une par une.
-· **Absents, confirmé** : sonnet (0), métaphore (0), comparaison (0), figure (0), énonciation (0), point de vue (0), narrateur (0), sonorité (0), allitération (0).
+### ② Le calendrier : je m'appuie sur le programme 2015
+Les nouveaux programmes entrent en vigueur **en 5e en 2026, 4e en 2027, 3e en 2028** — **les 3e et 4e de Paul restent sous 2015 cette année**. Je bâtis donc sur 2015. Le projet 2025 réorganise la culture littéraire en **entrées par genre** avec notices et corpus : **si divergence, je signalerai au lieu de trancher** (aucune divergence relevée sur les termes que je propose, qui sont absents des deux).
 
-## Le découpage que je propose — DEUX domaines, et pourquoi
-Le mandat en évoque trois blocs. **Je propose deux domaines, pas trois** : la versification et les figures relèvent toutes deux de **la manière dont le texte est fait** ; les genres, l'énonciation et le point de vue relèvent de **la manière dont le texte est raconté**. Un troisième domaine « registres » n'aurait ni source officielle ni contenu propre.
-· **`dom-poesie-forme` — « La forme du poème »** (élève : *« Comment un poème est fabriqué »*) : le vers, les sonorités, les strophes et formes fixes. **Ancré** : *« sonorités, rythmes »*, *« contraintes formelles »*, *« vers »*.
-· **`dom-texte-litt` — « Le texte littéraire »** (élève : *« Comment un texte est écrit et raconté »*) : figures de style, énonciation et point de vue, genres et registres littéraires. **Ancré** : *« images »*, *« outils d'analyse stylistique »*, *« caractéristiques des genres littéraires »*, *« caractéristiques d'écriture »*.
-**Numérotation à la suite** (règle M8bis, les trous ne se comblent jamais) : familles à partir de **`fam-41`** (max actuel `fam-40`), notions `poe-NNN` et `lit-NNN` à partir de 001. **Domaines `ordre` 6 et 7.**
+## Ce qui existe déjà — vérification anti-doublon
+| ce que j'allais créer | **existe déjà** | ma décision |
+|---|---|---|
+| discours rapportés | **`fam-17 Discours rapporté`** — `gram-029` direct, `gram-030` indirect, `gram-031` indirect libre, `gram-032` transposer | **NE PAS CRÉER** — je réutilise ces ids |
+| sens figuré, métaphore | **`fam-37 Sens propre et sens figuré`** — `lex-006`, `lex-012` (dénotation/connotation) | **je ne duplique pas** ; les figures renverront à ce socle |
+| champ lexical | **`fam-40 Champ lexical`** — `lex-008` | **NE PAS CRÉER** |
+| types et formes de phrase | **`fam-15`** — 6 notions dont emphase `gram-022` | **NE PAS CRÉER** |
+**Rien d'équivalent n'existe** pour : versification, figures de style, genres et formes, énonciation littéraire (point de vue, narrateur), registres, temps du récit.
 
-## LES NOTIONS PROPOSÉES — avec, pour chacune, sa source et son statut
-**Statut A = catégorie ancrée dans le texte officiel · Statut B = notion d'usage scolaire, proposée par moi, que Paul tranche.**
-**`dom-poesie-forme`** — *fam-41 Le vers et le rythme* : compter les syllabes d'un vers (A — « lignes ou vers », « rythmes ») · reconnaître alexandrin, décasyllabe, octosyllabe (**B**) · repérer la césure et l'enjambement (**B**). *fam-42 Les sonorités* : repérer les rimes et leur disposition (**B** — la catégorie « sonorités » est A) · distinguer allitération et assonance (**B**). *fam-43 Les strophes et les formes* : reconnaître une strophe et sa longueur (**B**) · reconnaître un sonnet (**B**) · repérer une forme libre ou un vers libre (**B**).
-**`dom-texte-litt`** — *fam-44 Les images* : reconnaître une comparaison (**B**) · reconnaître une métaphore (**B**) · reconnaître une personnification (**B**). *fam-45 Les figures d'insistance et d'opposition* : repérer une anaphore (**B**) · repérer une antithèse (**B**) · repérer une hyperbole (**B**) · repérer une litote ou un euphémisme (**B**). *fam-46 Qui parle, qui voit* : identifier le narrateur et sa personne (**B**) · distinguer les points de vue (**B**) · repérer les marques de l'énonciation (**B**). *fam-47 Genres et registres* : reconnaître les caractéristiques d'un genre (A — « quelques caractéristiques des genres littéraires ») · identifier un registre littéraire (**B**).
-**Total : 18 notions, 7 familles, 2 domaines.** **2 relèvent du statut A, 16 du statut B** — et c'est la mesure honnête de ce que le texte officiel prescrit.
-**`niveaux`** : je propose `4e-3e` pour les figures d'insistance, l'énonciation et les registres ; `5e-3e` pour les images, le vers, les rimes et les strophes ; `3e` pour la litote. **⚠ Le programme ne donne AUCUN repère de progressivité sur ces notions** (il n'en cite aucune) : ces attributions sont **les miennes**, fondées sur ce que le programme situe par niveau (« lexique de la poésie » en 3e, « du théâtre et du roman » en 4e). **Elles ne sont pas sourçables, et je le dis plutôt que de fabriquer une référence.**
+## Le découpage que je propose — DEUX domaines, 8 familles, ~46 notions
+**`dom-litterature`** (« Le texte et ses formes ») — *ce que le programme nomme « notions d'analyse littéraire »* :
+· **Genres et formes** (`fam-41`) : roman · nouvelle · conte · théâtre · poésie · autobiographie · fable — **SOURCE : programme, « Genres littéraires : romans, contes, nouvelles, poésie, théâtre » + entrées annuelles (autobiographie en 3e, fable en 3e satire)**
+· **Énonciation et point de vue** (`fam-42`) : situation d'énonciation · narrateur interne/externe/omniscient · récit à la 1re/3e personne — **SOURCE : programme, « éléments de la situation d'énonciation : qui parle à qui ? »** ; *« point de vue » figure dans les compétences (« construire son point de vue ») mais **pas comme outil d'analyse** : la focalisation est un **ajout de Paul**.*
+· **Temps du récit** (`fam-43`) : ordre (retour en arrière, anticipation) · rythme (ellipse, pause, scène) · système des temps du récit — **SOURCE : partielle** — le programme prescrit « système des temps » et « indicateurs de temps » ; **ellipse, sommaire, pause sont un ajout de Paul (terminologie de Genette, hors programme)**
+· **Registres** (`fam-44`) : comique · tragique · pathétique · lyrique · satirique/ironique — **SOURCE : programme, « classification des genres et des registres »** — *le programme nomme la catégorie mais pas les registres : la liste est un **ajout de Paul**, ancré sur les entrées (satire en 3e, lyrisme en 4e « Dire l'amour », tragique en 4e)*
+**`dom-versification`** (« Le vers et les sons ») — **entièrement un AJOUT DE PAUL**, le programme ne prescrit rien :
+· **Le vers et le mètre** (`fam-45`) : syllabe et décompte · alexandrin, décasyllabe, octosyllabe · césure · enjambement, rejet, contre-rejet · **e** muet
+· **Les rimes** (`fam-46`) : disposition (plates, croisées, embrassées) · richesse (pauvre, suffisante, riche)
+· **Strophes et formes fixes** (`fam-47`) : distique, tercet, quatrain · sonnet · vers libre
+· **Les sonorités** (`fam-48`) : allitération · assonance
+**Et les figures de style** — dans `dom-litterature`, `fam-49` **Figures de style** : comparaison · métaphore · personnification · hyperbole · litote · antithèse · oxymore · anaphore · gradation · métonymie. **AJOUT DE PAUL** (le programme dit « procédés stylistiques » sans liste), **et adossé à l'existant** : `lex-006` sens figuré en est le socle, je ne le duplique pas.
 
-## Le poids, chiffré
-Le prompt de chapitre fait **14 346 c.** avec 154 notions. Le vocabulaire d'une notion pèse ~70 c. → **18 notions ≈ +1 300 c., soit ≈ 15 700 c. (+9 %)**. **Aucun dosage nécessaire** : on reste sous les 17 719 c. déjà atteints par le prompt avec la présentation de MJPC (mesuré à M-PROMPT-4). **Rien ne sera tronqué.**
+**Numérotation** : familles **`fam-41` à `fam-49`** (à la suite du max `fam-40`, **les trous ne se comblent jamais**) ; notions **`litt-001…`** et **`vers-001…`** (nouveaux préfixes, cohérents avec l'existant).
+**`niveaux`** : je m'appuierai sur les **entrées annuelles du programme** (elles datent les objets : lyrique en 4e « Dire l'amour », satire en 3e, autobiographie en 3e, poésie en 3e « Visions poétiques ») **et sur le repère « l'accent est mis sur le niveau textuel en 4e et 3e »**. Chaque attribution sera justifiée au rapport. **Les 3e et 4e étant les classes de Paul, je ne fixerai pas de niveaux 6e/5e que je ne peux pas fonder.**
 
-## Deux supports, une seule vérité
-Je livre **les deux fichiers, produits par le même script** depuis une seule source, et je **prouve leur identité par md5 croisé** après génération. Le hub étant en lecture seule pour moi, **la promotion écrira les deux** — et je signalerai au rapport que rien, aujourd'hui, ne garantit automatiquement qu'ils ne divergent pas : **c'est une dette de mécanisme, pas de contenu**.
+## Le poids
+Prompt de chapitre actuel : **14 346 c.** avec 154 notions. Le vocabulaire pèse **≈ 70 c. par notion** → **+46 notions ≈ +3 200 c.**, soit **≈ 17 550 c.** Au-delà du `PROMPT_CHAPTER` de worktrack (14 974) mais **du même ordre**. **Je ne propose pas de bornage** : la taxonomie sert à taguer, une notion absente du prompt ne peut pas être taguée. **Si tu veux un dosage, il faudra le décider ici et non le subir** — je le dirai au rapport avec le chiffre mesuré après coup.
 
 ## Questions (3)
-**Q1 — 16 notions sur 18 sont de statut B.** Est-ce acceptable, ou Paul préfère-t-il n'en retenir qu'un noyau plus court ? **Je ne peux pas leur donner une autorité officielle qu'elles n'ont pas.**
-**Q2 — les `niveaux` ne sont pas sourçables.** Faut-il les poser quand même (au risque qu'une IA signale un « débordement » sur une base non fondée), ou les laisser larges (`5e-3e`) partout jusqu'à ce que Paul tranche ?
-**Q3 — registres littéraires** (comique, tragique, pathétique, lyrique) : absents du programme, mais universels en classe. Je les propose en **une seule notion** plutôt qu'une par registre. Est-ce le bon grain ?
+**Q1 — Le statut des notions non prescrites.** ~35 des 46 notions sont des **ajouts de Paul**, pas des prescriptions. Est-ce recevable ? *Sans elles, une séance de poésie reste sans notion — mais je ne peux pas les présenter comme officielles.*
+**Q2 — L'annexe terminologique du programme** : je ne l'ai pas trouvée. Faut-il que je la cherche plus avant avant de coder (elle pourrait requalifier plusieurs notions en « prescrites »), ou livre-t-on avec la distinction telle quelle ?
+**Q3 — `dom-versification` séparé, ou une famille de `dom-litterature` ?** Je propose **séparé** : la versification a sa propre logique et Paul la travaille en bloc sur un chapitre de poésie. Mais cela fait **7 domaines** au lieu de 5 — l'éditeur M8bis les affichera tous. Confirmes-tu ?

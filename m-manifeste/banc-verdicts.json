@@ -1,0 +1,37 @@
+[
+ {
+  "n": "① hub périmé (socle 1.1.0, sans usage) → LE MANIFESTE EST PUBLIÉ, sans geste manuel",
+  "ok": true,
+  "d": "[\"manifestes/correction_dictee\"]"
+ },
+ {
+  "n": "② hub à jour → AUCUNE écriture (réduction du trafic prouvée)",
+  "ok": true,
+  "d": "0 écriture(s)"
+ },
+ {
+  "n": "③ un `usage` qui a changé déclenche la republication",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "④ des nœuds déclarés qui changent déclenchent la republication",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "⑤ hub vide → publication",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "⑥ RÉDUCTION MESURÉE : 10 ouvertures → 0 écriture(s) (avant : 10)",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "⑦ un `once` sans promesse retombe sur la publication directe (jamais de casse)",
+  "ok": true,
+  "d": ""
+ }
+]

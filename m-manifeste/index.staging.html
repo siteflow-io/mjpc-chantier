@@ -7458,7 +7458,7 @@ function openDiaporamaById(ref,titre){
    (U+2019) : toute apostrophe droite rendait `undefined`. « Atelier d'analyse
    logique » s'affichait « Atelier dundefinedanalyse logique ». 133 appels
    concernés dans ce fichier. Trouvé par la capture de l'écran d'écart. */
-function atEsc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]||c;});}
+function atEsc(s){return String(s==null?'':s).replace(/[&<>"'\u2019]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;','\u2019':'&#8217;'}[c]||c;});}
 function atLignes(s){return String(s==null?'':s).split(/\n/);}
 function atMultiligne(s){return atLignes(s).map(atEsc).join('<br>');}
 function atListe(v){ /* champ kind 'list' : tableau ou texte à lignes */

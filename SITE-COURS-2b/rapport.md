@@ -105,6 +105,25 @@ Toute donnée nominative visible est **fictive** (« BANC Zoé », vérifiée ab
 
 **Identités mises à jour** : LIVRÉ 749 771 o, md5 `9f13a070e024aa41530ec140dd09971d`, pastille **8.28.0** inchangée (même livraison, complétée).
 
+## 11 · Vérification du symptôme signalé par Paul (zone d'injection JSON de la feuille)
+
+**Symptôme signalé** : « la zone d'injection JSON de la FEUILLE a disparu ; celle du chapitre est encore là. » (Bug réparé le matin en 8.27.1.)
+
+**Preuve au navigateur, parcours réel au clic** (atelier → Ouvrir la feuille → « ✨ Écrire avec une IA »), sur les DEUX états, chacun rejoué **après un vrai rechargement (F5)** :
+
+| état | identité vérifiée avant capture | zone `at-ia-coller` | bouton Vérifier | après F5 | erreurs console |
+|---|---|---|---|---|---|
+| PRODUCTION 8.27.1 | 729 520 o · `1d7732e0…` (inchangée) | présente, visible, 150 px, placeholder « Colle ici la réponse de l'IA » | 1, visible | identique | aucune |
+| LIVRÉ 8.28.0 | 749 771 o · `9f13a070…` | présente, visible, 150 px, même placeholder | 1, visible | identique | aucune |
+
+**Verdict : la zone est PRÉSENTE PARTOUT.** Captures : `sympt_feuille_prod.png` · `sympt_feuille_livre.png` (l'étape 2 à l'écran ; sur la prod, les boutons flottants sont encore visibles — le correctif §10 n'y est pas, cohérent).
+
+## 12 · Captures 390 px reprises sur le livré final
+
+- `m390_cascade.png` **reprise** sur le livré final (identité vérifiée avant capture) : atelier à 390 px, cascade posée (3e → ch1 → s8), **boutons du site masqués** (mesuré : display none), « ✕ Fermer l'atelier » **dans l'écran** (y=8, atteignable).
+- `m390_modale_lier.png` **gardée telle quelle, avec explication** : elle est prise sur la page site en mode admin, **hors atelier** — contexte où le correctif §10 ne masque pas les boutons du site, à raison ; une reprise sur le livré produirait la même image. **Constat préexistant distinct, consigné** : à 390 px, ces boutons chevauchent le bord haut de la modale LIER (la première section passe partiellement dessous) — hors périmètre du complément, décision à la conscience.
+- `sup_apres_390.png` **renommée** `sup_apres_390_retour.png` (elle prouve le retour des boutons à la fermeture de l'atelier).
+
 ---
 **STOP.** Livraison au sas complète. Audit de la conscience n°5, puis « promeus » de Paul.
 *Commit signé [exécutant SITE-COURS-2b].*

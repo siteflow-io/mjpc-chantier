@@ -1,0 +1,72 @@
+[
+ {
+  "n": "① OVERLAY BLOQUANT à l’ouverture du panneau prof, avec les raisons listées",
+  "ok": true,
+  "d": "lignes 9"
+ },
+ {
+  "n": "① il dit ce que l’écart EMPÊCHE",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "① « Fermer » est DÉSACTIVÉ avant le clic",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "② LE BOUTON publie : 9 fiches écrites au hub, sans ouvrir aucune app",
+  "ok": true,
+  "d": "[\"/manifestes/correction_dictee\",\"/manifestes/pilotage_debat_s3\",\"/manifestes/evaluation-qcm\",\"/manifestes/analyse_logique\"]"
+ },
+ {
+  "n": "② compte rendu nommé app par app",
+  "ok": true,
+  "d": "Compte rendu\nCorrection de dictée : fiche republiée\nPilotage débat : fiche republiée\nÉvaluation QCM : fiche republiée\nAtelier d'analyse logi"
+ },
+ {
+  "n": "② « Fermer » est ACTIVÉ après le clic",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "② les fiches lues À LA SOURCE : les 9 fichiers téléchargés",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "③ l’écran vit dans le TABLEAU DE BORD, 9 lignes",
+  "ok": true,
+  "d": "lignes 9"
+ },
+ {
+  "n": "③ AUCUN overlay quand tout est à jour",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "③ colonnes renommées + « Toujours à jour au … »",
+  "ok": true,
+  "d": "éécriture brevet blanc 4e\tmise à jour le 28/07/2026\tconforme au socle en cours\n\nToujours à jour au 4 août 2026 à 7 h 22."
+ },
+ {
+  "n": "③ formule des dates de Paul : « mise à jour le JJ/MM/AAAA »",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "④ une app JAMAIS publiée est dite « jamais publiée », et JAMAIS « à jour »",
+  "ok": true,
+  "d": "reecriture_bb4e — date illisible · jamais publiée."
+ },
+ {
+  "n": "⑤ 390 px : overlay sans débordement, cibles ≥ 44 px",
+  "ok": true,
+  "d": "{\"ov\":true,\"deb\":0,\"larg\":390,\"mini\":44}"
+ },
+ {
+  "n": "journal réseau : aucune écriture hors /manifestes (et mécanismes pré-existants)",
+  "ok": true,
+  "d": "[]"
+ }
+]

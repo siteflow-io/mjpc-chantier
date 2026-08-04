@@ -1,0 +1,25 @@
+{
+ "hunks": 13,
+ "plus": 83,
+ "retires": [
+  "var APP_VERSION=\"8.21.0\";",
+  "if(!entree)return {aJour:false,libelle:'jamais publi\\u00e9e',declare:'\\u2014',date:'jamais'};",
+  "return {id:id,nom:(e&&e.app&&e.app.nom)||id,quand:fichesDateFr(st.date),",
+  "z.innerHTML=fichesRendre(fichesLignes(m||{},socle),socle);",
+  "var lignes=fichesLignes(m||{},socle);",
+  "var ko=lignes.filter(function(l){return !l.aJour;});",
+  "if(!ko.length)return;                       /* aucun écart → AUCUN voile */",
+  "var h='<div class=\"fi-ov-boite\"><div class=\"fi-ov-titre\">\\u26a0\\ufe0f '+ko.length+' fiche'+(ko.length>1?'s d\\u2019applications ne sont':' d\\u2019application n\\u2019est')+' pas \\u00e0 jour</div>';",
+  "h+='<p class=\"fi-ov-sous\">Voici exactement pourquoi chacune doit \\u00eatre republi\\u00e9e :</p><ul class=\"fi-ov-liste\">';",
+  "h+='<li><b>'+atEsc(l.nom)+'</b> \\u2014 '+atEsc(l.quand)+' \\u00b7 '+atEsc(l.etat)+'.<br>'",
+  "+'<span class=\"fi-ov-cons\">'+(l.usage?'Sa description est peut-\\u00eatre p\\u00e9rim\\u00e9e : ':'Le prompt de chapitre ne sait pas quand te proposer cet outil : ')",
+  "+'l\\u2019IA travaille avec une information ancienne sans que rien ne le montre.</span></li>';",
+  "});",
+  "h+='</ul><div class=\"fi-ov-actions\">'",
+  "+'<button class=\"at-btn at-btn-prim\" onclick=\"fichesOverlayMaj()\">Mettre les fiches \\u00e0 jour</button>'",
+  "+'<button class=\"at-btn\" id=\"fi-ov-fermer\" onclick=\"fichesOverlayFermer()\" disabled>Fermer</button></div>'",
+  "+'<div id=\"fiches-avance-ov\" class=\"fi-avance\"></div><div id=\"fiches-cr-ov\"></div></div>';",
+  "var b=document.getElementById('fi-ov-fermer');",
+  "if(b)b.disabled=false;                        /* fermable APRÈS le clic, même si une app échoue */"
+ ]
+}

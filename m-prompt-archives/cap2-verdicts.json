@@ -1,0 +1,57 @@
+[
+ {
+  "n": "② le champ montre le PROMPT COMPLET (18007 c.), aucun repère @@ résiduel, MJPC présent",
+  "ok": true,
+  "d": "{\"n\":18007,\"reperes\":false,\"mjpc\":true,\"enr\":true}"
+ },
+ {
+  "n": "le bouton « Enregistrer » est GRISÉ au départ",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "① écran « chapitre » : le champ est là (8040 c.), sans repère, avec les trois actions",
+  "ok": true,
+  "d": "[\"Copier le prompt\",\"Enregistrer mes modifications\",\"Retravailler le prompt…\",\"Vérifier\"]"
+ },
+ {
+  "n": "① écran « diaporama » : le champ est là (6754 c.), sans repère, avec les trois actions",
+  "ok": true,
+  "d": "[\"Copier le prompt\",\"Enregistrer mes modifications\",\"Retravailler le prompt…\",\"Vérifier\"]"
+ },
+ {
+  "n": "④ le différentiel s’affiche, signale la ZONE CRITIQUE et dit que ce n’est pas un refus",
+  "ok": true,
+  "d": "⚠ À vérifier avant d’enregistrer\nTu as retiré la consigne qui impose la discussion de cadrage.\n\nCe n’est pas un refus : tu peux enregistrer."
+ },
+ {
+  "n": "③ l’ARCHIVE part AVANT l’écriture (arch@0 < prompt@1)",
+  "ok": true,
+  "d": "[\"/site/atelier/prompts_archives/diaporama/1785848360157\",\"/site/atelier/prompts/diaporama\"]"
+ },
+ {
+  "n": "⑤ la LISTE des archives : 0 versions, avec date, aperçu, Relire et Restaurer",
+  "ok": false,
+  "d": "[]"
+ },
+ {
+  "n": "⑤ LE DIFFÉRENTIEL ENTRE DEUX ARCHIVES, avec les zones critiques nommées",
+  "ok": false,
+  "d": ""
+ },
+ {
+  "n": "⑤ RESTAURER archive d’abord (arch@-1 < prompt@-1)",
+  "ok": false,
+  "d": "[]"
+ },
+ {
+  "n": "390 px : zéro débordement, les 3 actions ≥ 44 px",
+  "ok": true,
+  "d": "{\"deb\":0,\"larg\":390,\"mini\":44,\"n\":4}"
+ },
+ {
+  "n": "journal : aucune écriture hors /site/atelier (12)",
+  "ok": true,
+  "d": "[]"
+ }
+]

@@ -1,0 +1,47 @@
+[
+ {
+  "n": "① l’écran rend les 9 lignes",
+  "ok": true,
+  "d": "lignes : 9"
+ },
+ {
+  "n": "① LES NOMS SONT INTACTS : aucun « undefined », les apostrophes courbes passent",
+  "ok": true,
+  "d": "Atelier d’analyse logique\t31/07/2026 — il y a 3 jours\t1.1.0\ten retard — ouvre-la une fois"
+ },
+ {
+  "n": "① l’écran n’écrit rien : aucune écriture hors mécanismes pré-existants (manifeste du site, présence, feuille d’atelier)",
+  "ok": true,
+  "d": "[\"/manifestes/index\",\"/presence/prof\",\"/site/atelier/documents/feuille_1785822421622\"]"
+ },
+ {
+  "n": "⑤ hub à jour → le bilan VERT « Tout est à jour » s’affiche",
+  "ok": true,
+  "d": "📡 Ce que le hub sait de tes applications\nChaque application publie sa fiche au hub quand tu l’ouvres. Le prom"
+ },
+ {
+  "n": "② 390 px : scrollWidth 390 ≤ 392, zéro débordement, ⓘ 44 px ≥ 44",
+  "ok": true,
+  "d": "{\"deb\":0,\"larg\":390,\"tdBlock\":\"block\",\"ent\":\"\\\"Application\\\"\",\"info\":44,\"lignes\":9}"
+ },
+ {
+  "n": "② le tableau bascule en paires libellé/valeur (td display:block, en-tête ::before)",
+  "ok": true,
+  "d": "{\"d\":\"block\",\"e\":\"\\\"Application\\\"\"}"
+ },
+ {
+  "n": "④ les 11 cas traversent atEsc et s’affichent INTACTS, aucun « undefined »",
+  "ok": true,
+  "d": "Jeu de caractères difficiles — traversée de atEsc\ncas\tcodepoints\trendu après atEsc\napostrophe droite U+0027\ta u j o u r d ' h u i\taujourd'hu"
+ },
+ {
+  "n": "③ hub PÉRIMÉ (1.1.0) → l’app PUBLIE, avec son usage et le socle courant",
+  "ok": false,
+  "d": "[]"
+ },
+ {
+  "n": "③ hub À JOUR → AUCUNE écriture (réduction du trafic, en navigateur réel)",
+  "ok": true,
+  "d": "[]"
+ }
+]

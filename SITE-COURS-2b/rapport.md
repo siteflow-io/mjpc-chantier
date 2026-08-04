@@ -93,6 +93,18 @@ Desktop : p1_cascade_complete_desktop · p1_chapitre_sans_seance · p2_recette_a
 Mobile 390 px : m390_cascade · m390_modale_lier.
 Toute donnée nominative visible est **fictive** (« BANC Zoé », vérifiée absente du hub).
 
+## 10 · Complément superposition (décision de Paul, 04/08 — réglé avant promotion)
+
+**La dette** : en 1440×900, « Panneau prof » et « Mes applications » (boutons flottants du site) recouvraient « ＋ Nouvelle feuille » dans l'atelier. **Mesure AVANT** (elementFromPoint sur 3 points du bouton) : coin haut-gauche → le bouton ; centre et coin bas-droit → « Mes applications ».
+
+**Flux vérifié sur pièces avant de coder** : `atelierOuvrir` appelle déjà `closeProfPanel()` (« l'atelier prend tout l'écran ») et `atelierFermer` rappelle `openProfPanel()` (« retour d'où l'on vient ») ; l'atelier porte son propre « ✕ Fermer l'atelier ». **Aucun flux n'exige les deux boutons pendant l'atelier.**
+
+**Le correctif** : UNE règle CSS sur l'**état existant** `body.at-corps-fige` (posé/retiré par atelierOuvrir/atelierFermer) — `#tprof-btn`, `#admin-tools-btn` et `#admin-tools-menu` en `display:none` tant que l'atelier est actif. Aucun JS modifié : inventaire des fonctions **inchangé** (0 supprimée, 10 modifiées identiques au §3), double parseur VERT.
+
+**Preuves APRÈS (6/6 VERTS)** : desktop — les 3 points du bouton (y=60-104) rendent le bouton lui-même ; les deux boutons masqués pendant l'atelier ; le clic réel au **centre** ouvre la feuille neuve ; à la fermeture par le ✕ réel, les boutons reviennent et l'état se retire. 390 px — « ✕ Fermer l'atelier » atteignable (44 px, dans l'écran), fermeture rejouée. **Banc complet rejoué sur le livré corrigé : 36/36 VERTS.** Captures : sup_avant_desktop · sup_apres_desktop · sup_apres_390.
+
+**Identités mises à jour** : LIVRÉ 749 771 o, md5 `9f13a070e024aa41530ec140dd09971d`, pastille **8.28.0** inchangée (même livraison, complétée).
+
 ---
 **STOP.** Livraison au sas complète. Audit de la conscience n°5, puis « promeus » de Paul.
 *Commit signé [exécutant SITE-COURS-2b].*

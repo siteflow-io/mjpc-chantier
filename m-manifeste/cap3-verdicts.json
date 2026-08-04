@@ -1,0 +1,82 @@
+[
+ {
+  "n": "① AVANT clic : AUCUN bouton « Fermer », seul « Mettre à jour »",
+  "ok": true,
+  "d": "{\"f\":false,\"m\":true,\"n\":9}"
+ },
+ {
+  "n": "③ le nom LISIBLE, jamais l’identifiant technique",
+  "ok": true,
+  "d": "Réécriture brevet blanc 4e — jamais publiée."
+ },
+ {
+  "n": "④ « jamais publiée » SEUL, aucune « date illisible »",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "⑤ la raison AFFIRME : plus de « peut-être »",
+  "ok": true,
+  "d": "Correction de dictée — mise à jour le 30/07/2026 · déclare 1.1.0, socle actuel 1.6.0."
+ },
+ {
+  "n": "② ni Échap ni la croix du panneau ne font disparaître le voile",
+  "ok": true,
+  "d": "{\"avant\":true,\"apres\":true,\"croix\":true}"
+ },
+ {
+  "n": "② APRÈS clic : « Fermer » APPARAÎT, compte rendu visible",
+  "ok": true,
+  "d": "Compte rendu\nCorrection de dictée : fiche republiée\nDictée universelle : fiche republiée\nPlan de travail : fic"
+ },
+ {
+  "n": "② le clic publie (9 fiches), sans ouvrir aucune app",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "③ l’écran vit dans le TABLEAU DE BORD, 9 lignes",
+  "ok": true,
+  "d": "lignes 9"
+ },
+ {
+  "n": "③ AUCUN overlay quand tout est à jour",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "③ colonnes renommées + « Toujours à jour au … »",
+  "ok": true,
+  "d": "éécriture brevet blanc 4e\tmise à jour le 28/07/2026\tconforme au socle en cours\n\nToujours à jour au 4 août 2026 à 7 h 44."
+ },
+ {
+  "n": "③ formule des dates de Paul : « mise à jour le JJ/MM/AAAA »",
+  "ok": true,
+  "d": ""
+ },
+ {
+  "n": "④ une app JAMAIS publiée est dite « jamais publiée », et JAMAIS « à jour »",
+  "ok": true,
+  "d": "Réécriture brevet blanc 4e — jamais publiée."
+ },
+ {
+  "n": "⑤ 390 px : la boîte tient dans l’écran (884 ≤ 900), la liste défile, LE BOUTON EST VISIBLE (44 px)",
+  "ok": true,
+  "d": "{\"vh\":900,\"boite\":884,\"corpsScroll\":true,\"piedBas\":879,\"majVisible\":true,\"majH\":44,\"deb\":0,\"n\":9}"
+ },
+ {
+  "n": "⑤ 390 px, liste défilée EN BAS : les 9 apps atteignables, boutons TOUJOURS visibles",
+  "ok": true,
+  "d": "{\"n\":9,\"dernierVisible\":true,\"majEncoreVisible\":true}"
+ },
+ {
+  "n": "⑤ 360 px : la boîte tient dans l’écran (884 ≤ 900), la liste défile, LE BOUTON EST VISIBLE (44 px)",
+  "ok": true,
+  "d": "{\"vh\":900,\"boite\":884,\"corpsScroll\":true,\"piedBas\":879,\"majVisible\":true,\"majH\":44,\"deb\":0,\"n\":9}"
+ },
+ {
+  "n": "journal réseau : aucune écriture hors /manifestes (et mécanismes pré-existants)",
+  "ok": true,
+  "d": "[]"
+ }
+]

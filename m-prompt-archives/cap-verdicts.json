@@ -1,0 +1,42 @@
+[
+ {
+  "n": "② le champ montre le PROMPT COMPLET (0 c.), aucun repère @@ résiduel, MJPC présent",
+  "ok": false,
+  "d": "{\"n\":0,\"reperes\":false,\"mjpc\":false}"
+ },
+ {
+  "n": "le bouton « Enregistrer » est GRISÉ au départ",
+  "ok": false,
+  "d": ""
+ },
+ {
+  "n": "① écran « chapitre » : le champ est là (7794 c.), sans repère, avec les trois actions",
+  "ok": true,
+  "d": "[\"Copier le prompt\",\"Enregistrer mes modifications\",\"Retravailler le prompt…\",\"Vérifier\"]"
+ },
+ {
+  "n": "① écran « diaporama » : le champ est là (6508 c.), sans repère, avec les trois actions",
+  "ok": true,
+  "d": "[\"Copier le prompt\",\"Enregistrer mes modifications\",\"Retravailler le prompt…\",\"Vérifier\"]"
+ },
+ {
+  "n": "④ le différentiel s’affiche, signale la ZONE CRITIQUE et dit que ce n’est pas un refus",
+  "ok": true,
+  "d": "⚠ À vérifier avant d’enregistrer\nTu as retiré la consigne qui impose la discussion de cadrage.\n\nCe n’est pas un refus : tu peux enregistrer."
+ },
+ {
+  "n": "③ l’ARCHIVE part AVANT l’écriture (arch@0 < prompt@1)",
+  "ok": true,
+  "d": "[\"/site/atelier/prompts_archives/diaporama/1785846169095\",\"/site/atelier/prompts/diaporama\"]"
+ },
+ {
+  "n": "390 px : zéro débordement, les 3 actions ≥ 44 px",
+  "ok": true,
+  "d": "{\"deb\":0,\"larg\":390,\"mini\":44,\"n\":4}"
+ },
+ {
+  "n": "journal : aucune écriture hors /site/atelier (8)",
+  "ok": true,
+  "d": "[]"
+ }
+]

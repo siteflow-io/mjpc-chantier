@@ -1055,6 +1055,29 @@ body.at-corps-fige{overflow:hidden}
 }
 /* ═══ fin § FICHES DES APPLICATIONS ═══ */
 </style>
+<style>
+/* ═══ § OVERLAY DES FICHES — hauteur bornée, boutons toujours atteignables (M-MANIFESTE-3) ═══
+   Défaut mesuré sur cap2-5-overlay-390.png : à 390 px, la liste des neuf apps
+   poussait « Mettre les fiches à jour » hors de l'écran. L'alerte bloquait, et le
+   bouton qui la débloque était inaccessible : l'overlay devenait un piège.
+   Remède : la BOÎTE est bornée à la hauteur visible, la LISTE défile, la TÊTE et
+   le PIED restent fixes. Les boutons ne bougent jamais. ═══ */
+.fi-ov-boite{display:flex;flex-direction:column;max-height:calc(100vh - 2rem);max-height:calc(100dvh - 2rem);overflow:hidden}
+.fi-ov-tete{flex:0 0 auto}
+.fi-ov-corps{flex:1 1 auto;overflow-y:auto;-webkit-overflow-scrolling:touch;min-height:0;padding-right:2px}
+.fi-ov-pied{flex:0 0 auto;border-top:1px solid rgba(255,255,255,.22);padding-top:10px;margin-top:10px;background:#1c1830}
+.fi-ov-pied .fi-ov-actions{margin-top:6px}
+.fi-ov-pied .at-btn{min-height:44px;min-width:44px}
+.fi-ov-pied .at-btn[disabled]{opacity:.45;cursor:not-allowed}
+@media (max-width:400px){
+  .fi-overlay{padding:.5rem;align-items:flex-start}
+  .fi-ov-boite{max-height:calc(100vh - 1rem);max-height:calc(100dvh - 1rem);padding:12px}
+  .fi-ov-actions{flex-direction:column;align-items:stretch}
+  .fi-ov-actions .at-btn{width:100%}
+  .fi-ov-liste{margin-left:14px}
+}
+/* ═══ fin § OVERLAY DES FICHES ═══ */
+</style>
 <body>
 <div class="stars" id="stars"></div>
 <div class="shooting-star" id="shooting-star"></div>
@@ -2453,7 +2476,7 @@ function mjpcEcrireRest(url,options,cb){
    (les 3 gestes, le geste conservatoire par app, ce qui ne peut pas arriver).
    RESTAURER LA VERSION PRÉCÉDENTE : docs/MJPC6-restauration.md (convention BUG).
    ═══════════════════════════════════════════════════════════════════════════ */
-var APP_VERSION="8.21.0";
+var APP_VERSION="8.22.0";
 var APP_VERSION_DATE="2026-07-30";
 // ── 11. Coffre : dérivation, chiffrement, empreinte (v1.3.0) ──
 // (Le canon porte deux sections « 8 » — dette de numérotation connue, non corrigée
@@ -7294,12 +7317,36 @@ function fichesAvancement(n,total,id){
 }
 /* ── ④ le calcul, corrigé : une fiche ABSENTE n'est jamais « à jour » ── */
 function fichesEtat(entree,socle){
-  if(!entree)return {aJour:false,libelle:'jamais publi\u00e9e',declare:'\u2014',date:'jamais'};
+  /* M-MANIFESTE-3 ④ : une app jamais publiée n'a pas de date illisible — elle n'a
+     PAS DE DATE. On ne rend donc aucune date, et l'affichage n'en cherche pas. */
+  if(!entree)return {aJour:false,libelle:'jamais publi\u00e9e',declare:'\u2014',date:null,jamais:true};
   var v=String(entree.version||'');
   var aJour=(v===String(socle));
   return {aJour:aJour,
     libelle:aJour?'conforme au socle en cours':'d\u00e9clare '+(v||'?')+', socle actuel '+socle,
     declare:v||'\u2014',date:entree.publie_le};
+}
+/* M-MANIFESTE-3 ③ : les noms lisibles, pour les apps qui n'ont AUCUNE fiche au hub.
+   Source du repli mesurée : fichesLignes lit (e && e.app && e.app.nom) — quand
+   aucune fiche n'existe, `e` est null, donc le nom l'était aussi et l'identifiant
+   servait de repli. Le nom vit dans MJPC_APP.nom du fichier de l'app : on le lit
+   à la source, comme le bouton de mise à jour le fait déjà. */
+var FICHES_NOMS_LUS={};
+function fichesLireNom(id,cb){
+  if(FICHES_NOMS_LUS[id]){cb(FICHES_NOMS_LUS[id]);return;}
+  fetch(id+'.html',{cache:'no-store'}).then(function(r){return r.ok?r.text():'';}).then(function(src){
+    var app=src?fichesExtraireObjet(src,'MJPC_APP'):null;
+    var nom=(app&&app.nom)||id;
+    FICHES_NOMS_LUS[id]=nom;cb(nom);
+  },function(){cb(id);});
+}
+function fichesCompleterNoms(lignes,cb){
+  var manque=lignes.filter(function(l){return l.nom===l.id;});
+  if(!manque.length){cb(lignes);return;}
+  var reste=manque.length;
+  manque.forEach(function(l){
+    fichesLireNom(l.id,function(nom){l.nom=nom;if(--reste===0)cb(lignes);});
+  });
 }
 function fichesDateFr(ts){
   if(!ts)return 'jamais';
@@ -7315,7 +7362,8 @@ function fichesLignes(entrees,socle){
   return FICHES_APPS.map(function(id){
     var e=entrees&&entrees[id];
     var st=fichesEtat(e,socle);
-    return {id:id,nom:(e&&e.app&&e.app.nom)||id,quand:fichesDateFr(st.date),
+    return {id:id,nom:(e&&e.app&&e.app.nom)||id,jamais:!!st.jamais,
+            quand:st.jamais?'jamais publi\u00e9e':fichesDateFr(st.date),
             etat:st.libelle,aJour:st.aJour,usage:!!(e&&e.app&&e.app.usage)};
   });
 }
@@ -7327,7 +7375,9 @@ function fichesCharger(){
   var socle=(typeof MJPC_CORE_VERSION!=='undefined')?MJPC_CORE_VERSION:'?';
   secuLire('/manifestes').then(function(m){
     var z=document.getElementById('fiches-zone');if(!z)return;
-    z.innerHTML=fichesRendre(fichesLignes(m||{},socle),socle);
+    fichesCompleterNoms(fichesLignes(m||{},socle),function(lignes){
+      var z2=document.getElementById('fiches-zone');if(z2)z2.innerHTML=fichesRendre(lignes,socle);
+    });
   });
 }
 function fichesRendre(lignes,socle){
@@ -7388,31 +7438,45 @@ function fichesCliqueMaj(){
 function fichesVerifierAlerte(){
   var socle=(typeof MJPC_CORE_VERSION!=='undefined')?MJPC_CORE_VERSION:'?';
   secuLire('/manifestes').then(function(m){
-    var lignes=fichesLignes(m||{},socle);
-    var ko=lignes.filter(function(l){return !l.aJour;});
-    if(!ko.length)return;                       /* aucun écart → AUCUN voile */
+    var lignes0=fichesLignes(m||{},socle);
+    var ko0=lignes0.filter(function(l){return !l.aJour;});
+    if(!ko0.length)return;                      /* aucun écart → AUCUN voile */
     if(document.getElementById('fi-overlay'))return;
+    fichesCompleterNoms(ko0,function(ko){       /* M-MANIFESTE-3 ③ : jamais d'identifiant technique */
+    var lignes=lignes0;
     var d=document.createElement('div');
     d.id='fi-overlay';d.className='fi-overlay';
-    var h='<div class="fi-ov-boite"><div class="fi-ov-titre">\u26a0\ufe0f '+ko.length+' fiche'+(ko.length>1?'s d\u2019applications ne sont':' d\u2019application n\u2019est')+' pas \u00e0 jour</div>';
-    h+='<p class="fi-ov-sous">Voici exactement pourquoi chacune doit \u00eatre republi\u00e9e :</p><ul class="fi-ov-liste">';
+    var h='<div class="fi-ov-boite"><div class="fi-ov-tete"><div class="fi-ov-titre">\u26a0\ufe0f '+ko.length+' fiche'+(ko.length>1?'s d\u2019applications ne sont':' d\u2019application n\u2019est')+' pas \u00e0 jour</div>';
+    h+='<p class="fi-ov-sous">Voici exactement pourquoi chacune doit \u00eatre republi\u00e9e :</p></div>'
+      +'<div class="fi-ov-corps"><ul class="fi-ov-liste">';
     ko.forEach(function(l){
-      h+='<li><b>'+atEsc(l.nom)+'</b> \u2014 '+atEsc(l.quand)+' \u00b7 '+atEsc(l.etat)+'.<br>'
-        +'<span class="fi-ov-cons">'+(l.usage?'Sa description est peut-\u00eatre p\u00e9rim\u00e9e : ':'Le prompt de chapitre ne sait pas quand te proposer cet outil : ')
-        +'l\u2019IA travaille avec une information ancienne sans que rien ne le montre.</span></li>';
+      /* M-MANIFESTE-3 ⑤ : la raison AFFIRME ce que la version mesurée établit.
+         Le « peut-être » affaiblissait une alerte que le socle déclaré tranche. */
+      var cons = l.jamais
+        ? 'Aucune fiche n\u2019existe pour cette application : le prompt de chapitre ignore qu\u2019elle existe, et ne te la proposera jamais.'
+        : 'Sa fiche date d\u2019une version ant\u00e9rieure du socle : le prompt de chapitre travaille avec cette version-l\u00e0, pas avec celle qui tourne.';
+      h+='<li><b>'+atEsc(l.nom)+'</b> \u2014 '+atEsc(l.quand)+(l.jamais?'':(' \u00b7 '+atEsc(l.etat)))+'.<br>'
+        +'<span class="fi-ov-cons">'+cons+'</span></li>';
     });
-    h+='</ul><div class="fi-ov-actions">'
-      +'<button class="at-btn at-btn-prim" onclick="fichesOverlayMaj()">Mettre les fiches \u00e0 jour</button>'
-      +'<button class="at-btn" id="fi-ov-fermer" onclick="fichesOverlayFermer()" disabled>Fermer</button></div>'
-      +'<div id="fiches-avance-ov" class="fi-avance"></div><div id="fiches-cr-ov"></div></div>';
+    h+='</ul><div id="fiches-cr-ov"></div></div>'                       /* fin du corps défilant */
+      +'<div class="fi-ov-pied">'                                        /* ancré en bas, toujours visible */
+      +'<div id="fiches-avance-ov" class="fi-avance"></div>'
+      +'<div class="fi-ov-actions">'
+      +'<button class="at-btn at-btn-prim" id="fi-ov-maj" onclick="fichesOverlayMaj()">Mettre les fiches \u00e0 jour</button>'
+      +'<span id="fi-ov-fermer-hote"></span></div></div></div>';
     d.innerHTML=h;
     document.body.appendChild(d);
+    });
   });
 }
 function fichesOverlayMaj(){
-  var b=document.getElementById('fi-ov-fermer');
+  /* M-MANIFESTE-3 ② : « Fermer » n'existe PAS avant le clic — il est créé ici, et
+     TOUJOURS, quel que soit le résultat : si une app échoue, Paul n'est pas enfermé. */
+  var h=document.getElementById('fi-ov-fermer-hote');
+  if(h&&!document.getElementById('fi-ov-fermer'))
+    h.innerHTML='<button class="at-btn" id="fi-ov-fermer" onclick="fichesOverlayFermer()">Fermer</button>';
+  var m=document.getElementById('fi-ov-maj');if(m)m.disabled=true;
   fichesCliqueMaj();
-  if(b)b.disabled=false;                        /* fermable APRÈS le clic, même si une app échoue */
 }
 function fichesOverlayFermer(){
   var e=document.getElementById('fi-overlay');if(e)e.remove();

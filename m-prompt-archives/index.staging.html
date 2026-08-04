@@ -2509,7 +2509,7 @@ function mjpcEcrireRest(url,options,cb){
    (les 3 gestes, le geste conservatoire par app, ce qui ne peut pas arriver).
    RESTAURER LA VERSION PRÉCÉDENTE : docs/MJPC6-restauration.md (convention BUG).
    ═══════════════════════════════════════════════════════════════════════════ */
-var APP_VERSION="8.26.0";
+var APP_VERSION="8.27.0";
 var APP_VERSION_DATE="2026-07-30";
 // ── 11. Coffre : dérivation, chiffrement, empreinte (v1.3.0) ──
 // (Le canon porte deux sections « 8 » — dette de numérotation connue, non corrigée
@@ -6478,7 +6478,15 @@ function atIAModifier(){
     +'<div class="at-ia-actions">'
     +'<button class="at-btn at-btn-prim" onclick="atIAEnregistrerTpl()">Enregistrer</button>'
     +'<button class="at-btn" onclick="atIARestaurerTpl()">Revenir au texte d\u2019origine</button></div>'
-    +'<div id="at-ia-msg" class="at-ia-msg" aria-live="polite"></div></div>';
+    +'<div id="at-ia-msg" class="at-ia-msg" aria-live="polite"></div>'
+    /* M-PROMPT-ARCHIVES-2 ⑤ : la zone des archives est posée ICI, dans l'écran qui
+       s'affiche. Elle était écrite dans atArchivesRendre — la fonction qui a besoin
+       qu'elle existe déjà : elle se cherchait elle-même, ne se trouvait pas, et
+       sortait. Le bloc existait, dans du code qui ne s'exécutait jamais. */
+    +'<div class="ar-bloc-arch"><h4>\ud83d\udcda Les versions pr\u00e9c\u00e9dentes</h4>'
+    +'<div id="at-arch-zone"><p class="ar-note">Lecture des archives\u2026</p></div></div>'
+    +'</div>';
+  try{atArchivesOuvrir();}catch(e){}   /* APRÈS l'écriture du HTML, jamais avant */
 }
 function atIAEnregistrerTpl(){
   var t=(document.getElementById('at-ia-tpl')||{}).value||'';
@@ -6852,10 +6860,7 @@ function atArchivesRendre(){
   h+='</div><div class="ar-actions-cmp"><button class="at-btn at-btn-prim" id="ar-cmp" onclick="atArchivesComparer()"'
     +(AT_ARCH.sel.length===2?'':' disabled')+'>Comparer les deux versions coch\u00e9es</button></div>'
     +'<div id="at-arch-vue"></div>';
-  h+='<div class="ar-bloc-arch"><h4>\ud83d\udcda Les versions pr\u00e9c\u00e9dentes</h4>'
-    +'<div id="at-arch-zone"><p class="ar-note">\u2026</p></div></div>';
   z.innerHTML=h;
-  try{atArchivesOuvrir();}catch(e){}   /* M-PROMPT-ARCHIVES-2 */
 }
 function atArchivesCocher(i,on){
   var p=AT_ARCH.sel.indexOf(i);

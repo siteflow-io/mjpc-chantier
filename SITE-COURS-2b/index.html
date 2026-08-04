@@ -698,6 +698,10 @@ body.admin-mode .admin-only { display: block; }
 #atelier-ecran{display:none;position:fixed;inset:0;z-index:7000;background:#12100d;overflow:auto;-webkit-overflow-scrolling:touch}
 #atelier-ecran.at-actif{display:block}
 body.at-corps-fige{overflow:hidden}
+/* SITE-COURS-2b · complément superposition — l'atelier prend tout l'écran : les boutons
+   flottants du site s'effacent tant qu'il est actif (atelierOuvrir ferme déjà le panneau,
+   atelierFermer le rouvre — aucun flux n'a besoin d'eux ici) et reviennent à la fermeture. */
+body.at-corps-fige #tprof-btn,body.at-corps-fige #admin-tools-btn,body.at-corps-fige #admin-tools-menu{display:none}
 .at-fermer{position:sticky;top:0;z-index:5;display:flex;justify-content:flex-end;padding:8px 12px;background:linear-gradient(#12100d 60%,transparent)}
 .at-btn{font:inherit;font-size:.86rem;background:#2a2620;color:#e8e0d0;border:1px solid #4a4438;border-radius:8px;padding:10px 14px;min-height:44px;min-width:44px;cursor:pointer}
 .at-btn:hover{background:#37322a}

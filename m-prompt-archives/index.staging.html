@@ -1098,6 +1098,19 @@ body.at-corps-fige{overflow:hidden}
 @media (max-width:480px){.ar-arch{flex-direction:column;align-items:stretch}.ar-arch .at-btn{width:100%}}
 /* ═══ fin § ARCHIVES ET DIFFÉRENTIEL ═══ */
 </style>
+<style>
+.ar-bloc-arch{margin-top:18px;border-top:1px solid rgba(0,0,0,.18);padding-top:12px}
+.ar-bloc-arch h4{margin:0 0 8px 0;font-size:1rem}
+.ar-tete{margin-bottom:8px;font-size:.92rem}
+.ar-coche{display:flex;align-items:center;gap:8px;min-height:44px}
+.ar-coche input{width:20px;height:20px}
+.ar-actions-cmp{margin:10px 0}
+.ar-actions-cmp .at-btn{min-height:44px}
+.ar-actions-cmp .at-btn[disabled]{opacity:.45;cursor:not-allowed}
+.ar-relire textarea,.ar-cmp{margin-top:8px}
+.ar-liste{max-height:46vh;overflow-y:auto;-webkit-overflow-scrolling:touch}
+@media (max-width:480px){.ar-liste{max-height:40vh}}
+</style>
 <body>
 <div class="stars" id="stars"></div>
 <div class="shooting-star" id="shooting-star"></div>
@@ -2496,7 +2509,7 @@ function mjpcEcrireRest(url,options,cb){
    (les 3 gestes, le geste conservatoire par app, ce qui ne peut pas arriver).
    RESTAURER LA VERSION PRÉCÉDENTE : docs/MJPC6-restauration.md (convention BUG).
    ═══════════════════════════════════════════════════════════════════════════ */
-var APP_VERSION="8.25.0";
+var APP_VERSION="8.26.0";
 var APP_VERSION_DATE="2026-07-30";
 // ── 11. Coffre : dérivation, chiffrement, empreinte (v1.3.0) ──
 // (Le canon porte deux sections « 8 » — dette de numérotation connue, non corrigée
@@ -6802,6 +6815,89 @@ function atConfirmerEnr(){
       if(f)f.textContent='L\u2019enregistrement n\u2019a pas abouti \u2014 l\u2019ancienne version est archiv\u00e9e, rien n\u2019est perdu.';
     }
   });
+}
+
+/* ── ⑤ L'ÉCRAN DES ARCHIVES (M-PROMPT-ARCHIVES-2) ──
+   C'est la pièce qui rend l'archive utile : Paul doit VOIR ce qu'il améliore.
+   Trois gestes : relire · restaurer (qui archive à son tour) · comparer deux
+   archives avec LE MÊME différentiel qu'à l'enregistrement — une seconde
+   implémentation aurait divergé de la première. */
+var AT_ARCH={liste:[],sel:[],ouvert:null};
+function atArchivesOuvrir(){
+  var z=document.getElementById('at-arch-zone');if(!z)return;
+  z.innerHTML='<p class="ar-note">Lecture des archives\u2026</p>';
+  atArchivesLire(AT_IA.produit,function(l){
+    AT_ARCH.liste=l;AT_ARCH.sel=[];AT_ARCH.ouvert=null;
+    atArchivesRendre();
+  });
+}
+function atArchivesRendre(){
+  var z=document.getElementById('at-arch-zone');if(!z)return;
+  var l=AT_ARCH.liste,e=atEsc;
+  if(!l.length){
+    z.innerHTML='<p class="ar-note">Aucune archive pour ce produit. La premi\u00e8re sera cr\u00e9\u00e9e \u00e0 ton prochain enregistrement.</p>';
+    return;
+  }
+  var h='<div class="ar-liste"><div class="ar-tete"><b>'+l.length+' version'+(l.length>1?'s':'')+' archiv\u00e9e'+(l.length>1?'s':'')+'</b>'
+    +'<span class="ar-note"> \u2014 coche deux versions pour voir ce qui a chang\u00e9 entre elles.</span></div>';
+  l.forEach(function(a,i){
+    var ap=String(a.texte||'').replace(/\s+/g,' ').slice(0,90);
+    h+='<div class="ar-arch">'
+      +'<label class="ar-coche"><input type="checkbox" onchange="atArchivesCocher('+i+',this.checked)"'
+      +(AT_ARCH.sel.indexOf(i)>=0?' checked':'')+'> <span class="ar-arch-date">'+e(atArchiveDate(a.ts))+'</span></label>'
+      +'<span class="ar-arch-ap">'+e(ap)+(String(a.texte||'').length>90?'\u2026':'')+' <i>('+a.taille+' c.)</i></span>'
+      +'<button class="at-btn" onclick="atArchiveRelire('+i+')">Relire</button>'
+      +'<button class="at-btn" onclick="atArchiveRestaurer('+i+')">Restaurer</button></div>';
+  });
+  h+='</div><div class="ar-actions-cmp"><button class="at-btn at-btn-prim" id="ar-cmp" onclick="atArchivesComparer()"'
+    +(AT_ARCH.sel.length===2?'':' disabled')+'>Comparer les deux versions coch\u00e9es</button></div>'
+    +'<div id="at-arch-vue"></div>';
+  h+='<div class="ar-bloc-arch"><h4>\ud83d\udcda Les versions pr\u00e9c\u00e9dentes</h4>'
+    +'<div id="at-arch-zone"><p class="ar-note">\u2026</p></div></div>';
+  z.innerHTML=h;
+  try{atArchivesOuvrir();}catch(e){}   /* M-PROMPT-ARCHIVES-2 */
+}
+function atArchivesCocher(i,on){
+  var p=AT_ARCH.sel.indexOf(i);
+  if(on&&p<0)AT_ARCH.sel.push(i);
+  if(!on&&p>=0)AT_ARCH.sel.splice(p,1);
+  if(AT_ARCH.sel.length>2)AT_ARCH.sel=AT_ARCH.sel.slice(-2);   /* deux au plus : on compare deux versions */
+  var b=document.getElementById('ar-cmp');if(b)b.disabled=(AT_ARCH.sel.length!==2);
+}
+function atArchiveRelire(i){
+  var a=AT_ARCH.liste[i];if(!a)return;
+  var v=document.getElementById('at-arch-vue');if(!v)return;
+  v.innerHTML='<div class="ar-relire"><b>Version du '+atEsc(atArchiveDate(a.ts))+'</b>'
+    +'<textarea class="at-ia-zone at-ia-zone-haute" readonly>'+atEsc(a.texte||'')+'</textarea></div>';
+}
+/* ⑤ RESTAURER : archive l'état actuel AVANT de le remplacer — on ne perd jamais
+   l'état d'avant, exactement comme à l'enregistrement. */
+function atArchiveRestaurer(i){
+  var a=AT_ARCH.liste[i];if(!a)return;
+  var v=document.getElementById('at-arch-vue');
+  var actuel=atPromptComplet();
+  if(v)v.innerHTML='<p class="ar-note">Archivage de la version actuelle, puis restauration\u2026</p>';
+  atArchiverPuisEcrire(AT_IA.produit,actuel,a.texte||'',function(ok,quoi){
+    if(ok){
+      AT_IA.tpl=a.texte||'';
+      var t=document.getElementById('at-ia-tpl-vue');if(t)t.value=AT_IA.tpl;
+      if(v)v.innerHTML='<p class="ar-note">Version du '+atEsc(atArchiveDate(a.ts))+' restaur\u00e9e. La pr\u00e9c\u00e9dente vient d\u2019\u00eatre archiv\u00e9e.</p>';
+      atArchivesOuvrir();
+    }else if(quoi==='archive'){
+      if(v)v.innerHTML='<p class="ar-note">L\u2019archive de la version actuelle n\u2019a pas abouti \u2014 <b>rien n\u2019a \u00e9t\u00e9 restaur\u00e9</b>.</p>';
+    }else{
+      if(v)v.innerHTML='<p class="ar-note">La restauration n\u2019a pas abouti \u2014 la version actuelle est archiv\u00e9e, rien n\u2019est perdu.</p>';
+    }
+  });
+}
+/* ⑤ COMPARER deux archives — le MÊME atDiffHtml qu'à l'enregistrement. */
+function atArchivesComparer(){
+  if(AT_ARCH.sel.length!==2)return;
+  var i=AT_ARCH.sel.slice().sort(function(a,b){return b-a;});   /* la plus ancienne d'abord */
+  var av=AT_ARCH.liste[i[0]],ap=AT_ARCH.liste[i[1]];
+  var v=document.getElementById('at-arch-vue');if(!v)return;
+  v.innerHTML='<div class="ar-cmp"><b>Ce qui a chang\u00e9 entre le '+atEsc(atArchiveDate(av.ts))
+    +' et le '+atEsc(atArchiveDate(ap.ts))+'</b>'+atDiffHtml(av.texte||'',ap.texte||'')+'</div>';
 }
 /* ═══ fin § PROMPT : ÉDITION, ARCHIVES ET DIFFÉRENTIEL ═══ */
 

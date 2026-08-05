@@ -95,5 +95,5 @@ VERT  · P7 · `published` : jamais écrit à true (corps) ni par chemin, sur to
 `p1_menu_niveau_conversion` · `p2_poser_niveau` (**la carte avec « Poser le niveau »**) · `p2_poser_niveau_390` · `p3_compteur_vide` / `p3_compteur_restante` / `p3_compteur_lie` (**les trois états**) · `p3_compteur_390` · `p4_chapitre_copie` · `p5_conseil_noms_courts` · `p6_lier_390_sans_flottants` (**la modale LIER 390 corrigée**).
 
 ---
-**STOP.** Livraison au sas complète : `SITE-COURS-3a-complement/index.html` + `rapport.md` + 11 captures. J'attends l'audit de la conscience n°5, puis le « promeus ».
+**STOP.** Livraison au sas complète : `SITE-COURS-3a-complement/index.html` + `rapport.md` + 10 captures. J'attends l'audit de la conscience n°5, puis le « promeus ».
 *[exécutant C5-3ac]*

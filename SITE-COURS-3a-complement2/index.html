@@ -53,7 +53,7 @@ body { font-family: 'EB Garamond', Georgia, serif; background: #141024; color: #
 .val-status { font-size: 0.82rem; color: rgba(255,255,255,0.3); font-style: italic; min-height: 1.2em; margin-bottom: 12px; transition: color 0.3s; }
 .val-status.connected { color: #34d399; text-shadow: 0 0 10px rgba(52,211,153,0.4); }
 .val-btn { width: 100%; padding: 13px; background: linear-gradient(135deg, var(--level-accent), color-mix(in srgb, var(--level-accent) 70%, #fff)); color: #1a1030; border: none; border-radius: 12px; font-family: 'EB Garamond', serif; font-size: 1.05rem; font-weight: 600; cursor: pointer; transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s; box-shadow: 0 4px 20px var(--level-glow); }
-.val-btn:hover { opacity: 0.9; transform: translateY(-1px); box-shadow: 0 8px 30px var(--level-glow); }
+
 .val-error { margin-top: 12px; font-size: 0.82rem; color: #f87171; min-height: 1.2em; font-style: italic; }
 #page-home { z-index: 1; }
 .home-inner { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 0 32px 80px; }
@@ -90,13 +90,13 @@ body { font-family: 'EB Garamond', Georgia, serif; background: #141024; color: #
 @media (max-width:700px) { .levels-grid { grid-template-columns: 1fr; } }
 .level-card { position: relative; border-radius: 24px; padding: 30px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); cursor: pointer; overflow: hidden; backdrop-filter: blur(12px); transition: all 0.45s cubic-bezier(0.34,1.56,0.64,1); min-height: 180px; }
 .level-card .accent-bar { position: absolute; left: 0; top: 20%; bottom: 20%; width: 3px; background: var(--accent); border-radius: 0 3px 3px 0; box-shadow: 0 0 15px var(--accent), 0 0 30px var(--glow); opacity: 0.6; transition: all 0.4s cubic-bezier(0.34,1.56,0.64,1); }
-.level-card:hover .accent-bar { top: 5%; bottom: 5%; width: 4px; opacity: 1; box-shadow: 0 0 25px var(--accent), 0 0 50px var(--glow), 0 0 80px var(--glow-far); }
+
 .level-card::before { content:''; position:absolute; inset:0; border-radius:24px; background: linear-gradient(105deg, transparent 25%, rgba(255,220,160,0.08) 40%, rgba(255,255,255,0.14) 50%, rgba(255,220,160,0.08) 60%, transparent 75%); background-size:300% 100%; opacity:0; transition:opacity 0.3s; z-index:1; }
 .level-card:hover::before { opacity:1; animation: shimmer 1.8s ease infinite; }
 @keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
 .level-card::after { content:''; position:absolute; top:0; left:10%; right:10%; height:1px; background: linear-gradient(90deg, transparent, var(--accent), transparent); box-shadow: 0 0 15px var(--accent); opacity:0; transition:opacity 0.4s; z-index:2; }
 .level-card:hover::after { opacity:0.7; }
-.level-card:hover { transform: translateY(-12px) scale(1.03) rotate(-0.5deg); background: rgba(255,255,255,0.11); border-color: rgba(255,255,255,0.22); box-shadow: 0 30px 60px rgba(0,0,0,0.3), 0 0 70px var(--glow), 0 0 120px var(--glow-far); }
+
 .level-card > * { position: relative; z-index: 3; }
 .level-card[data-level="6e"] { --accent: var(--6e); --glow: var(--6e-glow); --glow-far: var(--6e-glow-far); }
 .level-card[data-level="5e"] { --accent: var(--5e); --glow: var(--5e-glow); --glow-far: var(--5e-glow-far); }
@@ -112,7 +112,7 @@ body { font-family: 'EB Garamond', Georgia, serif; background: #141024; color: #
 .level-stat { font-size: 0.89rem; color: rgba(255,255,255,0.35); display: flex; align-items: center; gap: 5px; }
 .level-stat strong { color: var(--accent); font-weight: 600; text-shadow: 0 0 8px var(--glow); }
 .level-arrow { position: absolute; top: 28px; right: 24px; width: 32px; height: 32px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; font-size: 1rem; color: rgba(255,255,255,0.3); transition: all 0.3s; z-index: 3; }
-.level-card:hover .level-arrow { background: var(--accent); border-color: var(--accent); color: #1a1030; transform: rotate(45deg); box-shadow: 0 0 15px var(--glow); }
+
 @keyframes card-enter { from{opacity:0;transform:translateY(25px) scale(0.97)} to{opacity:1;transform:translateY(0) scale(1)} }
 .level-card:nth-child(1){animation:card-enter .5s .15s ease both} .level-card:nth-child(2){animation:card-enter .5s .25s ease both}
 .level-card:nth-child(3){animation:card-enter .5s .35s ease both} .level-card:nth-child(4){animation:card-enter .5s .45s ease both}
@@ -137,7 +137,7 @@ body { font-family: 'EB Garamond', Georgia, serif; background: #141024; color: #
 .section-label:first-child { margin-top: 0; }
 .chapters-list { display: flex; flex-direction: column; gap: 12px; }
 .chapter-card { background: rgba(255,255,255,0.04); border-radius: 16px; border: 1px solid rgba(255,255,255,0.08); overflow: hidden; transition: all 0.3s; cursor: pointer; }
-.chapter-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.15); box-shadow: 0 4px 20px rgba(0,0,0,0.2), -4px 0 20px var(--level-glow); transform: translateX(4px); }
+
 .chapter-header { display: flex; align-items: center; gap: 16px; padding: 18px 22px; }
 .chapter-num { width: 40px; height: 40px; border-radius: 10px; background: var(--level-accent); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1rem; color: #1a1030; flex-shrink: 0; box-shadow: 0 4px 15px var(--level-glow); transition: box-shadow 0.3s; }
 .chapter-card:hover .chapter-num { box-shadow: 0 4px 25px var(--level-glow), 0 0 40px var(--level-glow); }
@@ -158,7 +158,7 @@ body { font-family: 'EB Garamond', Georgia, serif; background: #141024; color: #
 .chapter-body.open { display: block; }
 .doc-list { display: flex; flex-direction: column; gap: 8px; }
 .doc-item { display: flex; align-items: center; gap: 12px; padding: 10px 14px; background: rgba(255,255,255,0.04); border-radius: 10px; border: 1px solid rgba(255,255,255,0.06); cursor: pointer; transition: all 0.2s; text-decoration: none; color: inherit; position: relative; }
-.doc-item:hover { border-color: var(--level-accent); background: rgba(255,255,255,0.07); transform: translateX(3px); box-shadow: -3px 0 12px var(--level-glow); }
+
 .doc-icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.06rem; flex-shrink: 0; }
 .doc-icon.pdf { background: rgba(251,191,36,0.1); }
 .doc-icon.html { background: rgba(168,85,247,0.1); }
@@ -169,7 +169,7 @@ body { font-family: 'EB Garamond', Georgia, serif; background: #141024; color: #
 @keyframes action-pulse { 0%,100%{opacity:0.4} 50%{opacity:1} }
 .fiches-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
 .fiche-card { background: rgba(255,255,255,0.04); border-radius: 12px; border: 1px solid rgba(255,255,255,0.08); padding: 16px; cursor: pointer; transition: all 0.3s; }
-.fiche-card:hover { border-color: var(--level-accent); transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0,0,0,0.2), 0 0 20px var(--level-glow); background: rgba(255,255,255,0.07); }
+
 .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(15,10,30,0.85); backdrop-filter: blur(20px); border-top: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: space-between; padding: 0 24px; height: 54px; z-index: 50; }
 .bnav-info { font-size: 0.89rem; color: rgba(255,255,255,0.3); }
 .bnav-info strong { color: var(--level-accent); text-shadow: 0 0 8px var(--level-glow); }
@@ -546,7 +546,7 @@ body.admin-mode .admin-only { display: block; }
 .pub-dots{display:inline-flex;gap:4px;flex-wrap:wrap}
 .pub-dot{padding:2px 8px;border-radius:999px;font-size:.68rem;letter-spacing:.02em;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.16);color:rgba(255,255,255,.42);font-weight:600}
 .pub-dot.clk{cursor:pointer;transition:.12s}
-.pub-dot.clk:hover{border-color:rgba(255,255,255,.55);transform:translateY(-1px)}
+
 .pub-none{font-size:.74rem;color:rgba(255,255,255,.35);font-style:italic}
 
 /* --- rendu admin : grille alignée + accordéon --- */
@@ -650,6 +650,20 @@ body.admin-mode .admin-only { display: block; }
 .cm-lazy>summary::before{content:'\25b8';color:rgba(255,255,255,.35);margin-right:6px;display:inline-block;font-size:.7rem;transition:transform .12s}
 .cm-lazy[open]>summary::before{transform:rotate(90deg)}
 .cm-lazy-body{padding:2px 0 4px 16px;border-left:1px solid rgba(255,255,255,.06)}
+
+/* [C5-3a-c2] ␕ effets de survol géométriques — souris seulement : au tactile,
+   le premier tap déclenchait :hover et déplaçait la cible sous le doigt (bug du 05/08).
+   Les 8 règles ci-dessous sont déplacées TELLES QUELLES (copie exacte, seule l'enveloppe change). */
+@media (hover: hover) and (pointer: fine) {
+.val-btn:hover { opacity: 0.9; transform: translateY(-1px); box-shadow: 0 8px 30px var(--level-glow); }
+.level-card:hover .accent-bar { top: 5%; bottom: 5%; width: 4px; opacity: 1; box-shadow: 0 0 25px var(--accent), 0 0 50px var(--glow), 0 0 80px var(--glow-far); }
+.level-card:hover { transform: translateY(-12px) scale(1.03) rotate(-0.5deg); background: rgba(255,255,255,0.11); border-color: rgba(255,255,255,0.22); box-shadow: 0 30px 60px rgba(0,0,0,0.3), 0 0 70px var(--glow), 0 0 120px var(--glow-far); }
+.level-card:hover .level-arrow { background: var(--accent); border-color: var(--accent); color: #1a1030; transform: rotate(45deg); box-shadow: 0 0 15px var(--glow); }
+.chapter-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.15); box-shadow: 0 4px 20px rgba(0,0,0,0.2), -4px 0 20px var(--level-glow); transform: translateX(4px); }
+.doc-item:hover { border-color: var(--level-accent); background: rgba(255,255,255,0.07); transform: translateX(3px); box-shadow: -3px 0 12px var(--level-glow); }
+.fiche-card:hover { border-color: var(--level-accent); transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0,0,0,0.2), 0 0 20px var(--level-glow); background: rgba(255,255,255,0.07); }
+.pub-dot.clk:hover{border-color:rgba(255,255,255,.55);transform:translateY(-1px)}
+}
 </style>
 <style id="b2-styles">
 .b2-legend{display:flex;gap:14px;flex-wrap:wrap;margin:2px 0 12px;font-size:.8rem}

@@ -2,57 +2,64 @@
 **Le bouton qui détruit les contrats.** Exécutant [C5-M16a], sous conscience n°5 · 06/08/2026.
 BASE mesurée : production **830 142 o, md5 `33dfe78a9a401d1ba251d7a9217c37b9`** (conforme au mandat).
 
-## 1 · LA CAUSE RACINE — prouvée sur les fichiers réels des apps
+## 1 · LA CAUSE RACINE, prouvée sur les fichiers réels des apps
 
-Le nom réel de l'extracteur est **`fichesExtraireObjet(src, nom)`** (l. 8024, **1 411 o**). Il fait deux choses :
+J'ai téléchargé trois apps de production (`evaluation-qcm.html` 549 568 o, `worktrack.html` 1 057 796 o, `reecriture.html` 274 114 o) et rejoué `fichesExtraireObjet` **à l'identique** hors du site. Résultat : **les NEUF extractions échouent** — pas seulement `MJPC_MANIFESTE` et `MJPC_PURGE`, **`MJPC_APP` aussi**.
 
-1. **Le découpage** est correct : il compte les accolades **en sautant** chaînes et commentaires — le bloc extrait est le bon, toujours.
-2. **Le parsage ne l'est pas** : `JSON.parse` reçoit le bloc **avec ses commentaires intacts**. Le saut de l'étape 1 sert au comptage, pas au nettoyage. Les trois `replace` appliqués (guillemets sur les clés, `'` → `"`, virgules traînantes) ne retirent aucun commentaire — et le `'` → `"` transforme au passage les apostrophes françaises **contenues dans les commentaires** (« l'app ») en guillemets, ce qui achève de casser la syntaxe.
+L'extraction ne meurt pas au repérage : elle trouve bien le bloc et son accolade fermante (l'exploration ignore correctement chaînes et commentaires). **Elle meurt à la normalisation JSON**, pour deux raisons indépendantes :
 
-**La mesure sur les trois apps citées par le mandat** (fichiers de production téléchargés, blocs découpés à l'identique) :
+**① Les commentaires restent dans le texte extrait.** L'exploration les saute pour *compter les accolades*, mais `txt` les contient et `JSON.parse` casse dessus. Effet aggravant : après un commentaire de fin de ligne, la clé suivante n'est plus précédée d'une accolade ni d'une virgule, donc la regex de mise entre guillemets ne s'y applique pas — d'où l'erreur observée « Expected double-quoted property name » sur `purger:` :
+> `{ "preserver": [...],   // corpus de conception : survit aux années   purger: [...] }`
 
-| app | bloc | commentaires internes | `JSON.parse` aujourd'hui | avec les commentaires retirés d'abord |
+**② `.replace(/'/g,'"')` détruit les apostrophes françaises.** Appliqué globalement, il transforme « l'app » **à l'intérieur d'une chaîne** en `l"app`, ce qui referme la chaîne et invalide le JSON :
+> `"noeuds": ["plan_de_travail"],  // l"app lit/écrit /classes racine…`
+
+**Pourquoi `app` survivait seul** : le repli du `catch` ne récupère que cinq champs simples (`id`, `nom`, `contenant`, `usage`, `quandPas`) — c'est-à-dire exactement `app`, et rien d'autre. **Le manifeste écrit ne portait donc que `app` : c'est le mécanisme exact de l'amputation.**
+
+## 2 · L'ÉTAT RÉEL AU HUB — plus large que ce que le mandat annonçait
+
+Lu aujourd'hui sur `/manifestes` (lecture seule) :
+
+| fiche | version | app | manifeste | purge |
 |---|---|---|---|---|
-| evaluation-qcm | `MJPC_PURGE` (528 o) | oui | **ÉCHEC** (property name) | **OK** |
-| evaluation-qcm | `MJPC_MANIFESTE` (241 o) | oui | **ÉCHEC** (delimiter) | **OK** |
-| reecriture | `MJPC_PURGE` (361 o) | oui | **ÉCHEC** | **OK** |
-| reecriture | `MJPC_MANIFESTE` (179 o) | oui | **ÉCHEC** | **OK** |
-| worktrack | `MJPC_PURGE` (354 o) | oui | **ÉCHEC** | **OK** |
-| worktrack | `MJPC_MANIFESTE` (198 o) | oui | **ÉCHEC** | **OK** |
+| analyse_logique | 1.6.0 | oui | **NON** | **MANQUANT** |
+| applause_meter | 1.6.0 | oui | **NON** | **MANQUANT** |
+| correction_dictee | 1.6.0 | oui | **NON** | **MANQUANT** |
+| dictee_universelle | 1.6.0 | oui | **NON** | **MANQUANT** |
+| evaluation-qcm | 1.6.0 | oui | **NON** | **MANQUANT** |
+| index | 1.6.0 | oui | oui | oui (6 chemins) |
+| pilotage_debat_s3 | 1.6.0 | oui | **NON** | **MANQUANT** |
+| reecriture | 1.6.0 | oui | **NON** | **MANQUANT** |
+| reecriture_bb4e | 1.6.0 | oui | **NON** | **MANQUANT** |
+| taxonomie | 1.0.0 | oui | oui | oui (1 chemin) |
+| worktrack | 1.6.0 | oui | **NON** | **MANQUANT** |
 
-**6 échecs sur 6 aujourd'hui, 6 succès sur 6 avec le remède.** Exemples de ce qui casse : `preserver: ["qcm/evaluations",…],   // corpus de conception : survit aux années` · `noeuds: ["reecritures"],   // l'app lit /classes racine (partagé) sans le posséder`.
+**9 fiches sur 11 n'ont ni `purge` NI `manifeste`** (le mandat ne relevait que `purge`). `index` et `taxonomie` sont complètes parce qu'elles passent par un autre chemin (`mjpcPublierManifeste`, l. 3093, qui prend les objets **en mémoire** au lieu de les ré-extraire d'un fichier). La conséquence est celle qu'annonce le mandat, et un cran plus large : `_purgePlan` serait quasi vide **et** l'inventaire des nœuds serait faux.
 
-**Pourquoi `MJPC_APP` survit et pas les deux autres** : quand `JSON.parse` échoue, le repli ne cherche que **cinq champs simples** (`id`, `nom`, `contenant`, `usage`, `quandPas`) — ce sont exactement ceux de `MJPC_APP`. Le manifeste et la purge n'en ont aucun : le repli rend `{}`, donc `null`. C'est la mécanique exacte de l'amputation.
+## 3 · Ce que je compte livrer
 
-**Et pourquoi le hub perd le contrat** : dans `fichesMajUne` (l. 8055, **929 o**), le `null` est remplacé par un **défaut vide** — `purge: fichesExtraireObjet(src,'MJPC_PURGE') || {preserver:[],purger:[]}` — puis `secuEcrire('/manifestes/'+id, payload)` **écrase le nœud entier**. Le contrat existant est remplacé par du vide. C'est le geste destructeur.
+**① Réparer l'extraction** — remplacer la normalisation par un **normaliseur en un seul passage, conscient des chaînes** : il recopie les chaînes (simples, doubles, gabarits) en guillemets doubles **en échappant les guillemets internes**, **supprime les commentaires hors chaînes**, met les clés nues entre guillemets, retire les virgules traînantes. Le repérage du bloc et le comptage d'accolades ne changent pas — je ne redessine rien.
+**Prototype déjà validé hors site sur les trois apps réelles : 9 blocs sur 9 extraits** (contre 0 aujourd'hui), y compris les `purge` complets de qcm, worktrack et reecriture. Le repli du `catch` est **conservé** (filet, jamais supprimé).
 
-## 2 · Pourquoi le message a menti (objet ④)
+**② La garde de non-dégradation, universelle** — posée dans `fichesMajUne`, l'écrivain : on lit d'abord la fiche publiée, puis **une valeur extraite `null`, vide ou `{}` n'écrase JAMAIS une valeur existante au hub**. Le payload est fusionné champ par champ : `app`, `manifeste`, `purge` gardent la valeur publiée si l'extraction n'a rien donné de meilleur ; seule une valeur réellement extraite écrit. La garde vaut même si ① échouait un jour sur une app inconnue — c'est sa raison d'être.
 
-`mjpcManifesteAJour(publie, versionSocle, app, manifeste)` (l. 3052, **517 o**) compare la `version`, les **cinq champs** d'`app` et le `manifeste` — **jamais `purge`**. Une fiche amputée de sa purge mais dont l'app et le manifeste correspondent est donc déclarée « à jour ». D'où l'enchaînement vécu par Paul : le site annonce que tout va bien, puis demande de cliquer, et le clic ampute.
+**③ Restaurer les contrats** — le bouton corrigé republie les 11 fiches complètes ; le rapport montrera l'état AVANT (ci-dessus) et APRÈS au banc, fiche par fiche.
 
-## 3 · Ce que je compte livrer (index.html seul, aucune app touchée)
+**④ Le message dit vrai** — `mjpcManifesteAJour` (l. 3052, 555 o) compare `version`, les cinq champs d'`app` et `manifeste`, **mais pas `purge`** : d'où « tout est à jour » alors que neuf contrats manquaient. J'ajoute la comparaison de `purge` (même forme que celle de `manifeste`, par `JSON.stringify`), en quatrième argument optionnel pour ne casser aucun appelant existant.
 
-**① Réparer l'extraction** — un nettoyage des commentaires **avant** parsage, dans la même passe que le comptage (une petite fonction `_sansCommentaires(txt)` respectant chaînes et échappements), et le `'` → `"` appliqué **après** ce retrait, donc plus jamais aux apostrophes de commentaires. Le repli à cinq champs est **conservé** en dernier recours (0 fonction supprimée, aucune régression sur `MJPC_APP`).
-
-**② La garde de non-dégradation, universelle** — posée dans l'écrivain `fichesMajUne`, formulée ainsi : *une valeur extraite `null` ou vide n'écrase jamais une valeur existante au hub*. Concrètement : on lit le publié (déjà fait par `secuLire`), on **fusionne** — `purge` et `manifeste` extraits vides ou nuls **cèdent la place** au publié s'il est plus riche — et l'on n'écrit que ce qu'on a vraiment. La garde vaut **même si ① échouait un jour** sur une app inconnue : c'est la ceinture, ① est la bretelle.
-
-**③ Restaurer les contrats** — le bouton corrigé, cliqué une fois, rend à chacune des 11 fiches son contrat complet. État AVANT (mesuré au hub, annoncé par le mandat) : **9/11 sans `purge`**, seules `index` et `taxonomie` complètes. Le rapport montrera l'état APRÈS au banc, **fiche par fiche**.
-
-**④ Le message dit vrai** — `purge` entre dans la comparaison de `mjpcManifesteAJour`, sur le même patron que `manifeste` (comparaison structurelle). L'indicateur dira « à mettre à jour » tant que le contrat manque, « à jour » quand il est là.
-
-**Fonctions touchées, tailles de base** : `fichesExtraireObjet` 1 411 · `fichesMajUne` 929 · `mjpcManifesteAJour` 517. **0 supprimée** ; la fonction de nettoyage sera **ajoutée**, pas extraite d'une autre.
+**Fonctions touchées, tailles de base** : `fichesExtraireObjet` **1 297 o** · `fichesMajUne` **1 002 o** · `mjpcManifesteAJour` **555 o**. **0 fonction supprimée.** Ce morceau ne touche **que `index.html`** : aucune app n'est modifiée.
 
 ## 4 · Plan de preuve (TEMPS 2)
 
-- **Une fiche avec les trois blocs** (les vraies déclarations d'evaluation-qcm, reecriture, worktrack servies au banc) → **les trois publiés**, `purge.preserver` et `purge.purger` non vides.
-- **Une fiche dont un bloc est illisible** (bloc volontairement cassé) → **l'ancien contrat CONSERVÉ** au hub, jamais écrasé par du vide (garde ②) — le cœur du morceau.
-- **Une fiche neuve** (aucun manifeste au hub) → publication normale.
-- **Le bouton cliqué deux fois** → **idempotent** : la seconde passe ne dégrade rien (et n'écrit rien si tout est à jour).
-- **L'indicateur** : « à mettre à jour » quand `purge` manque, « à jour » une fois le contrat posé — le mensonge du ④ disparaît.
-- **Les 11 fiches** : tableau AVANT/APRÈS, fiche par fiche.
+- Une fiche avec les trois blocs (apps réelles servies au banc) → **les trois publiés**.
+- Une fiche dont un bloc est illisible (bloc volontairement cassé) → **l'ancien contrat CONSERVÉ**, jamais écrasé par du vide (garde ②), et le reste publié.
+- Une fiche **neuve** (rien au hub) → publication normale.
+- **Le bouton cliqué deux fois** → idempotent : la seconde passe n'écrit rien (« déjà à jour ») et **rien ne se dégrade**.
+- **L'indicateur** : « à mettre à jour » quand `purge` manque, « à jour » une fois posé.
+- `index` et `taxonomie`, déjà complètes, **ne régressent pas**.
 - **Vue élève rejouée** (règle du dispositif) : le panneau prof ne change rien côté élève.
-- `published` jamais écrit · aucune app modifiée · hub intercepté, **aucune écriture réelle**.
+- `published` jamais écrit · hub intercepté · **aucune écriture réelle**.
 
 ---
-**STOP.** J'attends le feu vert de la conscience n°5 avant d'éditer une ligne (TEMPS 2 : `M16-0a/index.html` + rapport + captures, pastille 8.36.0).
+**STOP.** J'attends le feu vert de la conscience n°5. Une seule question de cadrage : le mandat vise `purge` ; **la mesure montre que `manifeste` manque aux mêmes 9 fiches** — je le répare dans le même geste (même cause racine, même garde), sauf avis contraire.
 *[exécutant C5-M16a]*

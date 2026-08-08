@@ -780,6 +780,16 @@ body:has(#tprof-overlay.visible) #tprof-btn,body:has(#tprof-overlay.visible) #ad
 /* [C5-ED1] ③ les `option` héritaient du blanc du thème sur le fond blanc du
    menu natif : illisible dans la modale LIER (et partout ailleurs). */
 select.at-sel option,select.cm-input option,#link-modal select option,select.at-sel-mini option{background:#1d1a15;color:#e8e0d0}
+/* [C5-ED1b] le fil des feuilles du chapitre, en tête de l'éditeur de feuille */
+.ed-fil{border:1px solid #4a4438;border-radius:12px;padding:10px 12px;margin-bottom:12px;background:rgba(212,160,23,.05)}
+.ed-fil-haut{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+.ed-fil-tit{color:#c9b568;font-size:.9rem}
+.ed-fil-liste{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.ed-fil-se{color:#8f8672;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;margin-left:4px}
+.ed-fil-btn{min-height:44px;display:inline-flex;flex-direction:column;align-items:flex-start;gap:2px;padding:6px 12px;font-size:.86rem}
+.ed-fil-btn.ed-fil-actif{border-color:rgba(212,160,23,.9);background:rgba(212,160,23,.16)}
+.ed-fil-prod{font-size:.72rem;color:#c9b568}
+@media (max-width:480px){.ed-fil-liste{flex-direction:column;align-items:stretch}.ed-fil-btn{width:100%}}
 .at-edch-barre{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
 .at-edch-actes{float:right;display:inline-flex;gap:6px;flex-wrap:wrap}
 .at-btn-min{min-height:44px;padding:6px 10px;font-size:.82rem}
@@ -9807,7 +9817,8 @@ var AT_SOUSGROUPES=[
 
 function atRendreEditeur(){
   var z=document.getElementById('at-zone');if(!z||!AT.doc)return;
-  var h='<div class="at-compo">';
+  var h=edBarreFil();   /* [C5-ED1b] le fil des feuilles du chapitre, s'il y a lieu */
+  h+='<div class="at-compo">';
   /* colonne gauche : composition */
   h+='<div class="at-gauche">';
   h+='<div class="at-barre-haut">'
@@ -10499,6 +10510,80 @@ function atEditerChapitre(level,chnum){
 /* \u2550\u2550\u2550 [C5-ED1] \u2014 LES GESTES DE L'\u00c9DITEUR. Aucun \u00e9crivain nouveau : on r\u00e9utilise
    ceux du site (deleteSeance et deleteItem \u2014 corbeille et gardes comprises \u2014,
    addSeance, itemCreer, _swapOrdre, openLinkModal, atProduitMenu). \u2550\u2550\u2550 */
+/* ═══ [C5-ED1b] — « exactement la même chose que mon éditeur de feuille, mais avec
+   l'ensemble des feuilles du chapitre dans l'ordre » (Paul). On NE RÉÉCRIT PAS
+   l'éditeur : `atOuvrirDoc` + `atRendreEditeur` sont invoqués tels quels — donc les
+   cases du PRODUIT à gauche, l'aperçu à droite, les accordéons, le pulse et le
+   clic-aperçu de 2d. Ce morceau n'ajoute que LE FIL : la liste ordonnée des feuilles
+   du chapitre en tête, pour passer de l'une à l'autre sans ressortir. ═══ */
+var AT_FIL=null;   /* {level, chnum, ref} quand on édite une feuille DEPUIS un chapitre */
+/* les feuilles du chapitre, dans l'ordre des séances puis des items (`ordre` fait foi) */
+function edFeuillesDuChapitre(level,chnum){
+  var ch=(chapitresData[level]||{})[chnum];
+  var out=[];
+  if(!ch)return out;
+  atSeances(ch).forEach(function(p){
+    ordPaires(p.se.items||{}).forEach(function(q){
+      var it=q.o;
+      if(!it||!it.ref)return;
+      if(!(it.kind==='atelier'||it.source==='atelier'))return;   /* seules les feuilles s'éditent */
+      var d=(typeof LINK_ATELIER_DOCS!=='undefined'&&LINK_ATELIER_DOCS)?LINK_ATELIER_DOCS[it.ref]:null;
+      out.push({seance:p.j,seanceTitre:p.se.title||('S\u00e9ance '+p.j),item:q.k,ref:it.ref,
+                titre:(d&&d.titre)||it.title||it.ref,
+                produit:(d&&d.produit)||'',
+                produitLib:((typeof ATELIER_PRODUITS!=='undefined'&&ATELIER_PRODUITS[(d&&d.produit)||''])||{}).libelle||''});
+    });
+  });
+  return out;
+}
+/* la barre de fil, posée en tête de l'éditeur de feuille quand on vient d'un chapitre */
+function edBarreFil(){
+  if(!AT_FIL)return '';
+  var l=edFeuillesDuChapitre(AT_FIL.level,AT_FIL.chnum);
+  if(!l.length)return '';
+  var ch=(chapitresData[AT_FIL.level]||{})[AT_FIL.chnum]||{};
+  var h='<div class="ed-fil"><div class="ed-fil-haut">'
+    +'<button class="at-btn" onclick="edRetourChapitre()">\u2190 Le chapitre</button>'
+    +'<span class="ed-fil-tit">'+atEsc(ch.title||'')+' \u2014 '+l.length+' feuille'+(l.length>1?'s':'')+'</span></div>'
+    +'<div class="ed-fil-liste">';
+  var seanceVue='';
+  l.forEach(function(f){
+    if(f.seance!==seanceVue){seanceVue=f.seance;h+='<span class="ed-fil-se">'+atEsc(f.seanceTitre)+'</span>';}
+    var actif=(f.ref===AT.docId);
+    h+='<button class="at-btn ed-fil-btn'+(actif?' ed-fil-actif':'')+'" onclick="edEditerFeuille(\''+f.seance+'\',\''+f.item+'\')">'
+      +atEsc(f.titre)+(f.produitLib?('<span class="ed-fil-prod">'+atEsc(f.produitLib)+'</span>'):'')
+      +'</button>';
+  });
+  return h+'</div></div>';
+}
+/* entrer dans l'éditeur de feuille depuis le fil : même éditeur, mêmes cases, même
+   aperçu — le produit de la feuille ouverte commande le panneau. */
+function edEditerFeuille(j,k){
+  var ec=AT.edChap||AT_FIL;if(!ec)return;
+  var level=ec.level,chnum=ec.chnum;
+  var it=((((chapitresData[level]||{})[chnum]||{}).seances||{})[j]||{}).items;
+  it=it?it[k]:null;
+  if(!it||!it.ref){atInfo('Cet \u00e9l\u00e9ment n\u2019est pas une feuille de l\u2019atelier.');return;}
+  AT_FIL={level:level,chnum:chnum,ref:it.ref};
+  AT.edChap=null;                       /* on quitte le fil brut : l'éditeur de feuille prend l'écran */
+  if(!AT.liste||!AT.liste[it.ref]){
+    /* la liste des feuilles n'est pas encore là : on la lit puis on ouvre
+       (atChargerListe ne prend pas de rappel — mesuré) */
+    atSiteGetDocs(function(v){
+      AT.liste=(v&&typeof v==='object')?v:{};
+      if(AT.liste[it.ref])atOuvrirDoc(it.ref);
+      else atInfo('Cette feuille n’a pas pu être lue — réessaie dans un moment.');
+    });
+    return;
+  }
+  atOuvrirDoc(it.ref);
+}
+function edRetourChapitre(){
+  var f=AT_FIL;if(!f)return;
+  AT_FIL=null;AT.doc=null;AT.docId=null;
+  AT.flux='chapitre';AT.edChap={level:f.level,chnum:f.chnum,modifie:false};
+  atEditerChapitreRendre();
+}
 function _estPublieItem(it){
   var p=it&&it.published;
   if(!p)return false;
@@ -10587,7 +10672,7 @@ function edCreerFeuilleIci(j){
       if(!r.ok){atInfo('\u26a0 La feuille n\u2019a pas pu \u00eatre cr\u00e9\u00e9e \u2014 rien n\u2019a \u00e9t\u00e9 \u00e9crit.');return;}
       if(typeof LINK_ATELIER_DOCS!=='undefined'&&LINK_ATELIER_DOCS)LINK_ATELIER_DOCS[id]=doc;
       if(typeof AT_DOCS!=='undefined'&&AT_DOCS)AT_DOCS[id]=doc;
-      if(AT&&AT.liste)AT.liste.push({id:id,titre:titre,produit:doc.produit||''});
+      if(AT&&AT.liste)AT.liste[id]=doc;   /* [C5-ED1b] AT.liste est un OBJET index\u00e9 par id (mesur\u00e9) */
       /* la confirmation ne d\u00e9pend pas du rappel de l'\u00e9crivain d'item : la feuille
          EST cr\u00e9\u00e9e, on le dit tout de suite ; l'item se pose en parall\u00e8le. */
       atModaleChoix('<b>Feuille cr\u00e9\u00e9e</b> : \u00ab '+atEsc(titre)+' \u00bb, adress\u00e9e \u00e0 \u00ab '+atEsc(se.title||('S\u00e9ance '+j))+' \u00bb \u2014 <b>pas encore ouverte aux \u00e9l\u00e8ves</b>.',
@@ -10675,6 +10760,7 @@ function atEditerChapitreRendre(){
         +'<span class="at-edch-actes">'
         +'<button class="at-btn at-btn-min" title="Monter" onclick="edDeplacerItem(\''+j+'\',\''+k+'\',-1)">\u2191</button>'
         +'<button class="at-btn at-btn-min" title="Descendre" onclick="edDeplacerItem(\''+j+'\',\''+k+'\',1)">\u2193</button>'
+        +(((it.kind==='atelier'||it.source==='atelier')&&it.ref)?('<button class="at-btn at-btn-min at-btn-prim" onclick="edEditerFeuille(\''+j+'\',\''+k+'\')">\u00c9diter</button>'):'')
         +(it.ref?('<button class="at-btn at-btn-min" onclick="edOuvrirItem(\''+j+'\',\''+k+'\')">Ouvrir</button>'):'')
         +'<button class="at-btn at-btn-min" onclick="openLinkModal(\''+ec.level+'\',\''+ec.chnum+'\',\''+j+'\',\''+k+'\')">Lier</button>'
         +'<button class="at-btn at-btn-min" onclick="edPublierItem(\''+j+'\',\''+k+'\')">Publier\u2026</button>'

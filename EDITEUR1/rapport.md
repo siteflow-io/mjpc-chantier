@@ -86,6 +86,73 @@ VERT  · P7 · 390 : l'éditeur ne déborde pas et ses gestes restent des cibles
 
 « pas encore ouverte aux élèves » / « ouverte aux élèves » · « lecture seule » · « Lier par les titres… » · « N liaisons à poser » + « N cas douteux, non proposés — à lier à la main » + « Rien n'est écrit tant que tu n'as pas confirmé. » · « **Feuille créée** : « X », adressée à « Y » — pas encore ouverte aux élèves. » · « **Diaporama créé** : « X », N diapositives — pas encore ouvert aux élèves. » · « La copie arrive en fin de première séance du chapitre choisi, non publiée. »
 
+
+## 10 · CORRECTIF AVANT PROMOTION — [C5-ED1b], 08/08
+
+Paul n'a pas promu : *« il faut ce qui était prévu »*. Il avait raison sur les deux points.
+
+### 10.1 · Identités
+
+| pièce | taille | md5 |
+|---|---|---|
+| BASE (= mon livré du sas) | 864 649 o | `827cbe82156fc1817cbf2bd92395aca3` |
+| **LIVRÉ CORRIGÉ (8.39.0 inchangée)** | **869 694 o** | **`6ccec065bad3661a8103954ae68c6829`** |
+
+Double parseur VERT · **0 fonction supprimée**.
+
+### 10.2 · ① LE PANNEAU DE CASES PAR PRODUIT — livré
+
+**L'éditeur de feuille n'est pas réécrit : il est invoqué.** `edEditerFeuille` appelle `atOuvrirDoc` → `atRendreEditeur` **tels quels** — donc les cases du produit à gauche, l'**aperçu à droite**, les accordéons de 2d, les pistons de produit, le pulse et le clic-aperçu. Ce morceau n'ajoute que **le fil** : `edBarreFil` pose en tête la liste **ordonnée** des feuilles du chapitre (groupées par séance, `ordre` faisant foi), la feuille courante marquée, et « ← Le chapitre » pour revenir. On passe d'une feuille à l'autre d'un clic ; **le panneau change avec le produit**.
+
+**Prouvé, et VU sur deux captures examinées** : `c1` (Fiche de séance — piston « Fiche de séance » actif, aperçu « Objectif / Pour la prochaine fois ») et `c2` (Fiche notion — piston « Fiche notion » actif, aperçu « Niveau 3e / Notion visée », marquage déplacé dans le fil). Le verdict mesure en plus que **les jeux de cases cochées diffèrent**.
+
+Les items non éditables gardent leur affichage « lecture seule ». **Un ajustement déclaré** : le bouton « Éditer » est réservé aux **feuilles de l'atelier** — un diaporama ne s'édite pas dans le panneau de cases, il garde « Ouvrir » (et son dépôt d'image du complément 2). Navigation au défilement et enregistrement silencieux : inchangés.
+
+### 10.3 · ② LES TROIS CAPTURES — reprises, et cette fois examinées une par une
+
+L'audit est fondé : `p3`, `p4` et `p6` étaient couvertes par l'alerte « 9 fiches d'applications ne sont pas à jour », et **mon §8.5 affirmait à tort les avoir refaites** — je n'avais repris que `p1` et `p7`. La règle est retenue : **une capture qui n'est pas examinée n'est pas une preuve.**
+
+Le banc neutralise désormais cette alerte (elle est légitime en production : c'est M16-0a qui dit vrai) et **chaque capture a été ouverte et regardée avant livraison** :
+- `c3_liaison_proposee` — la modale **visible et non couverte** (vérifié par `elementFromPoint`), nommant l'appariement « Langue › Rappel sur la versification ← Fiche notion — Rappel sur la versification » et « Rien n'est écrit tant que tu n'as pas confirmé. »
+- `c4_feuille_en_place` — « **Feuille créée** : « Feuille créée en place », adressée à « Repérage » — pas encore ouverte aux élèves », avec « Ouvrir la feuille ».
+- `c5_ouvrir_apostrophe` — le **viewer ouvert** sur « Français — Attendus de fin d'année de 3e », titre à apostrophe courbe intact.
+- `c1`, `c2` (le panneau sur deux produits), `c6` (vue élève), `c7` (390 : fil en colonne, cibles ≥ 44 px).
+
+### 10.4 · UN BUG RÉEL DE MON LIVRÉ, débusqué par ce banc
+
+`edCreerFeuilleIci` faisait `AT.liste.push(...)` — or **`AT.liste` est un objet indexé par id**, pas un tableau (mesuré : `atOuvrirDoc` lit `AT.liste[id]`, `atChargerListe` y met l'objet des documents). La `TypeError` interrompait le geste **après l'écriture** : la confirmation ne s'affichait pas et l'item n'était pas créé. C'est ce que mon verdict P6 d'hier signalait sans l'expliquer. Corrigé : `AT.liste[id]=doc`. **Sans le correctif demandé par Paul, ce défaut partait en production.**
+
+### 10.5 · Fonctions — inventaire (0 supprimée)
+
+**4 ajoutées** : `edFeuillesDuChapitre` · `edBarreFil` 968 · `edEditerFeuille` 904 · `edRetourChapitre` 204 o.
+**3 modifiées, toutes déclarées** : `atRendreEditeur` 2 662 → 2 746 (+84, le fil en tête) · `atEditerChapitreRendre` 6 657 → 6 803 (+146, bouton « Éditer ») · `edCreerFeuilleIci` 1 597 → ~1 590 (§10.4, `AT.liste[id]`).
+CSS : `.ed-fil*` (fil, marquage, 390 en colonne).
+
+### 10.6 · Banc — **BILAN : 13/13 VERTS** (run unique)
+
+```
+VERT  · P1 · le fil du chapitre : un bouton « Éditer » sur les 2 feuilles, pas sur les items figés
+VERT  · P2 · ① la feuille s'ouvre dans l'ÉDITEUR DE FEUILLE : cases à gauche, aperçu à droite
+VERT  · P2 · ① le FIL des feuilles du chapitre est en tête, la feuille courante marquée
+VERT  · P2 · ① le piston du PRODUIT de cette feuille est actif (Fiche de séance)
+VERT  · P3 · ① passage à une feuille d'un AUTRE produit : le piston actif change (Fiche notion)
+VERT  · P3 · ① LES COCHES CHANGENT avec le produit (jeux de cases différents)
+VERT  · P3 · ① la feuille courante suit dans le fil (le marquage a bougé)
+VERT  · P4 · « ← Le chapitre » ramène au fil brut du chapitre (et l'éditeur de feuille se retire)
+VERT  · P5 · ② la modale de liaison est VISIBLE et non couverte, et elle NOMME les appariements
+VERT  · P6 · ② la confirmation de création de feuille est VISIBLE et dit la séance
+VERT  · P7 · ② le viewer est OUVERT et VISIBLE sur « Français
+VERT  · P8 · vue élève : aucune écriture, l'écran ne change pas
+VERT  · P8 · 390 : le fil et l'éditeur tiennent l'écran (pas de débordement, cibles 44 px)
+=== BILAN ED1b : 13/13 VERTS ===
+```
+
+Amenées déclarées : l'alerte des fiches neutralisée (pour que les captures prouvent) · l'atelier ouvert par `atelierOuvrir()` · pour P6 seulement, l'écriture résolue et le prompt de titre court-circuités (la confirmation naît dans le rappel de l'écrivain du socle, que le banc ne sait pas satisfaire ; l'écriture elle-même est prouvée au morceau précédent — l'objet testé ici est l'affichage). `SECU.valide` non posée.
+
+### 10.7 · ③ Le rappel d'`itemCreer`
+
+Noté, et la confirmation reste indépendante comme demandé — c'était d'ailleurs indispensable, puisque le vrai coupable était le `.push` (§10.4).
+
 ---
-**STOP.** `EDITEUR1/index.html` + `rapport.md` + 6 captures au sas. J'attends l'audit de la conscience n°5, puis le « promeus ».
-*[exécutant C5-ED1]*
+**STOP (correctif).** `EDITEUR1/index.html` **REMPLACÉ** (869 694 o, `6ccec065…`) + rapport complété + 7 captures **toutes examinées**. J'attends l'audit, puis le « promeus ».
+*[exécutant C5-ED1b]*

@@ -1,0 +1,8857 @@
+{
+  "_meta": {
+    "source": "correction_dictee/dictee_brevet_blanc_4e-4e_pythagore",
+    "exportedAt": "2026-08-09T13:28:19.838Z",
+    "exportedBy": "snapshot_tool",
+    "version": 1
+  },
+  "data": {
+    "autocorrection": {
+      "alligand_louka": {
+        "attempts": [
+          1,
+          6,
+          1,
+          6,
+          6,
+          3,
+          7,
+          2,
+          5,
+          5,
+          2,
+          4,
+          5,
+          1,
+          3
+        ],
+        "errorRefs": [
+          {
+            "idx": 4,
+            "type": "G",
+            "word": "tremblant"
+          },
+          {
+            "idx": 33,
+            "type": "G",
+            "word": "approcha"
+          },
+          {
+            "idx": 44,
+            "type": "M",
+            "word": "’"
+          },
+          {
+            "idx": 50,
+            "type": "I",
+            "word": "le"
+          },
+          {
+            "idx": 58,
+            "type": "G",
+            "word": "agenouilla"
+          },
+          {
+            "idx": 85,
+            "type": "L",
+            "word": "Courir"
+          },
+          {
+            "idx": 87,
+            "type": "G",
+            "word": "Abandonner"
+          },
+          {
+            "idx": 99,
+            "type": "G",
+            "word": "pareil"
+          },
+          {
+            "idx": 108,
+            "type": "L",
+            "word": "la"
+          },
+          {
+            "idx": 109,
+            "type": "L",
+            "word": "tâche"
+          },
+          {
+            "idx": 115,
+            "type": "L",
+            "word": "chariot"
+          },
+          {
+            "idx": 127,
+            "type": "G",
+            "word": "tenter"
+          },
+          {
+            "idx": 131,
+            "type": "G",
+            "word": "arracher"
+          },
+          {
+            "idx": 155,
+            "type": "L",
+            "word": "chariot"
+          },
+          {
+            "idx": 168,
+            "type": "L",
+            "word": "montèrent"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": true,
+              "time": 1777447235708,
+              "typed": "tremblant"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777447259915,
+              "typed": "approchat"
+            },
+            {
+              "ok": false,
+              "time": 1777447284195,
+              "typed": "apprchait"
+            },
+            {
+              "ok": false,
+              "time": 1777448208099,
+              "typed": "approchat"
+            },
+            {
+              "ok": false,
+              "time": 1777448217307,
+              "typed": "approchait"
+            },
+            {
+              "ok": false,
+              "time": 1777448229875,
+              "typed": "aprochat"
+            },
+            {
+              "ok": true,
+              "time": 1777448505947,
+              "typed": "approcha"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777447333347,
+              "typed": "'"
+            },
+            {
+              "ok": false,
+              "time": 1777448095756,
+              "typed": "'"
+            },
+            {
+              "ok": false,
+              "time": 1777448416275,
+              "typed": "'"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777447351579,
+              "typed": "du"
+            },
+            {
+              "ok": false,
+              "time": 1777448247532,
+              "typed": "du"
+            },
+            {
+              "ok": false,
+              "time": 1777448804397,
+              "typed": "du"
+            },
+            {
+              "ok": false,
+              "time": 1777448805197,
+              "typed": "du"
+            },
+            {
+              "ok": false,
+              "time": 1777449178540,
+              "typed": "un"
+            },
+            {
+              "ok": true,
+              "time": 1777449183484,
+              "typed": "le"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777447394675,
+              "typed": "agenouillait"
+            },
+            {
+              "ok": false,
+              "time": 1777448124364,
+              "typed": "agenouillat"
+            },
+            {
+              "ok": false,
+              "time": 1777448134492,
+              "typed": "agenouillait"
+            },
+            {
+              "ok": false,
+              "time": 1777448458188,
+              "typed": "agenouillat"
+            },
+            {
+              "ok": false,
+              "time": 1777448467980,
+              "typed": "agenouillait"
+            },
+            {
+              "ok": true,
+              "time": 1777448479612,
+              "typed": "agenouilla"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777447497627,
+              "typed": "courrir"
+            },
+            {
+              "ok": false,
+              "time": 1777448297675,
+              "typed": "courrir"
+            },
+            {
+              "ok": true,
+              "time": 1777448305467,
+              "typed": "courir"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777447529604,
+              "typed": "abandonné"
+            },
+            {
+              "ok": false,
+              "time": 1777447742725,
+              "typed": "abandoné"
+            },
+            {
+              "ok": false,
+              "time": 1777448337691,
+              "typed": "abondonné"
+            },
+            {
+              "ok": false,
+              "time": 1777448357227,
+              "typed": "abandonnée"
+            },
+            {
+              "ok": false,
+              "time": 1777448376763,
+              "typed": "Abandonné"
+            },
+            {
+              "ok": false,
+              "time": 1777448393491,
+              "typed": "Abandoné"
+            },
+            {
+              "ok": true,
+              "time": 1777448831869,
+              "typed": "abandonner"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777447608269,
+              "typed": "pareille"
+            },
+            {
+              "ok": true,
+              "time": 1777448558316,
+              "typed": "pareil"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777447549780,
+              "typed": "l'"
+            },
+            {
+              "ok": false,
+              "time": 1777448576068,
+              "typed": "l'"
+            },
+            {
+              "ok": false,
+              "time": 1777448977692,
+              "typed": "l'"
+            },
+            {
+              "ok": false,
+              "time": 1777880183598,
+              "typed": "l'"
+            },
+            {
+              "ok": false,
+              "time": 1777880184318,
+              "typed": "l'"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777447962228,
+              "typed": "attache"
+            },
+            {
+              "ok": false,
+              "time": 1777448885044,
+              "typed": "attache"
+            },
+            {
+              "ok": false,
+              "time": 1777448943213,
+              "typed": "attaches"
+            },
+            {
+              "ok": false,
+              "time": 1777449010708,
+              "typed": "attaches"
+            },
+            {
+              "ok": false,
+              "time": 1777880211931,
+              "typed": "attache"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777447635988,
+              "typed": "charriot"
+            },
+            {
+              "ok": true,
+              "time": 1777447645621,
+              "typed": "chariot"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777447673429,
+              "typed": "tenté"
+            },
+            {
+              "ok": false,
+              "time": 1777447680421,
+              "typed": "tanté"
+            },
+            {
+              "ok": false,
+              "time": 1777448773501,
+              "typed": "tentée"
+            },
+            {
+              "ok": true,
+              "time": 1777448784445,
+              "typed": "tenter"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777447703285,
+              "typed": "arraché"
+            },
+            {
+              "ok": false,
+              "time": 1777447853429,
+              "typed": "arraché"
+            },
+            {
+              "ok": false,
+              "time": 1777447887836,
+              "typed": "arraché"
+            },
+            {
+              "ok": false,
+              "time": 1777448627764,
+              "typed": "arraché"
+            },
+            {
+              "ok": true,
+              "time": 1777448860388,
+              "typed": "arracher"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777448671710,
+              "typed": "chariot"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777448697822,
+              "typed": "monte"
+            },
+            {
+              "ok": false,
+              "time": 1777448717461,
+              "typed": "montait"
+            },
+            {
+              "ok": true,
+              "time": 1777448742229,
+              "typed": "montèrent"
+            }
+          ]
+        ],
+        "lastSeen": 1777880216896,
+        "results": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          null,
+          null,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 0,
+        "solved": 13,
+        "status": "active",
+        "timestamp": 1777880211932,
+        "total": 15
+      },
+      "barthalay_emma": {
+        "attempts": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "errorRefs": [
+          {
+            "idx": 5,
+            "type": "L",
+            "word": "hors"
+          },
+          {
+            "idx": 49,
+            "type": "G",
+            "word": "souillait"
+          },
+          {
+            "idx": 87,
+            "type": "G",
+            "word": "Abandonner"
+          },
+          {
+            "idx": 106,
+            "type": "G",
+            "word": "dur"
+          },
+          {
+            "idx": 108,
+            "type": "L",
+            "word": "la"
+          },
+          {
+            "idx": 109,
+            "type": "L",
+            "word": "tâche"
+          },
+          {
+            "idx": 134,
+            "type": "L",
+            "word": "métallique"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": true,
+              "time": 1777447229002,
+              "typed": "hors"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447273002,
+              "typed": "souillait"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447601561,
+              "typed": "abandonner"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447368425,
+              "typed": "dur"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447482681,
+              "typed": "la"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447496146,
+              "typed": "tache"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447560481,
+              "typed": "métallique"
+            }
+          ]
+        ],
+        "lastSeen": 1777447807329,
+        "results": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 5,
+        "solved": 7,
+        "status": "idle",
+        "timestamp": 1777447602764,
+        "total": 7
+      },
+      "beaufort_charlie": {
+        "attempts": [
+          1,
+          3,
+          3,
+          2,
+          1,
+          1,
+          1,
+          1,
+          6,
+          1
+        ],
+        "bilan": {
+          "b1": "beaucoup d'erreur lexical",
+          "b2": "erreur grammaire",
+          "b3": "je ne me suis pas allé relue",
+          "b4": "accorder en genre et en nombre"
+        },
+        "bilanSubmitted": true,
+        "errorRefs": [
+          {
+            "idx": 5,
+            "type": "L",
+            "word": "hors"
+          },
+          {
+            "idx": 49,
+            "type": "L",
+            "word": "souillait"
+          },
+          {
+            "idx": 79,
+            "type": "L",
+            "word": "courut"
+          },
+          {
+            "idx": 85,
+            "type": "L",
+            "word": "Courir"
+          },
+          {
+            "idx": 87,
+            "type": "G",
+            "word": "Abandonner"
+          },
+          {
+            "idx": 106,
+            "type": "G",
+            "word": "dur"
+          },
+          {
+            "idx": 122,
+            "type": "L",
+            "word": "tira"
+          },
+          {
+            "idx": 134,
+            "type": "L",
+            "word": "métallique"
+          },
+          {
+            "idx": 146,
+            "type": "L",
+            "word": "gaie"
+          },
+          {
+            "idx": 169,
+            "type": "G",
+            "word": "aux"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": true,
+              "time": 1777447237711,
+              "typed": "hors"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777447255439,
+              "typed": "souillaient"
+            },
+            {
+              "ok": false,
+              "time": 1777447433535,
+              "typed": "soullaient"
+            },
+            {
+              "ok": true,
+              "time": 1777447538510,
+              "typed": "souillait"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777447488694,
+              "typed": "courrût"
+            },
+            {
+              "ok": false,
+              "time": 1777447568910,
+              "typed": "courru"
+            },
+            {
+              "ok": true,
+              "time": 1777447646343,
+              "typed": "courut"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777447609023,
+              "typed": "courrire"
+            },
+            {
+              "ok": true,
+              "time": 1777447663695,
+              "typed": "courir"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447300543,
+              "typed": "abandonner"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447317887,
+              "typed": "dur"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447373359,
+              "typed": "tira"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447459046,
+              "typed": "métallique"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777447443567,
+              "typed": "gay"
+            },
+            {
+              "ok": false,
+              "time": 1777447584223,
+              "typed": "gai"
+            },
+            {
+              "ok": false,
+              "time": 1777447745966,
+              "typed": "gai"
+            },
+            {
+              "ok": false,
+              "time": 1777447828142,
+              "typed": "gaï"
+            },
+            {
+              "ok": false,
+              "time": 1777447928830,
+              "typed": "geai"
+            },
+            {
+              "ok": true,
+              "time": 1777447953615,
+              "typed": "gaie"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447406047,
+              "typed": "aux"
+            }
+          ]
+        ],
+        "lastSeen": 1777450627976,
+        "results": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 2.5,
+        "solved": 10,
+        "status": "idle",
+        "timestamp": 1777447954825,
+        "total": 10
+      },
+      "bretault_martin": {
+        "attempts": [
+          1,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2
+        ],
+        "errorRefs": [
+          {
+            "idx": 28,
+            "type": "L",
+            "word": "caddie"
+          },
+          {
+            "idx": 49,
+            "type": "G",
+            "word": "souillait"
+          },
+          {
+            "idx": 68,
+            "type": "I",
+            "word": "ouvrit"
+          },
+          {
+            "idx": 95,
+            "type": "G",
+            "word": "on"
+          },
+          {
+            "idx": 109,
+            "type": "L",
+            "word": "tâche"
+          },
+          {
+            "idx": 134,
+            "type": "L",
+            "word": "métallique"
+          },
+          {
+            "idx": 160,
+            "type": "G",
+            "word": "au"
+          },
+          {
+            "idx": 168,
+            "type": "G",
+            "word": "montèrent"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": true,
+              "time": 1777447460151,
+              "typed": "caddie"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777447562027,
+              "typed": "souillé"
+            },
+            {
+              "ok": true,
+              "time": 1777447582664,
+              "typed": "souillait"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447650573,
+              "typed": "ouvrit"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447622100,
+              "typed": "on"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777448045675,
+              "typed": "tâche"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777448147002,
+              "typed": "métallique"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447765819,
+              "typed": "au"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777448180762,
+              "typed": "montaire"
+            },
+            {
+              "ok": true,
+              "time": 1777448226162,
+              "typed": "montèrent"
+            }
+          ]
+        ],
+        "lastSeen": 1777905758185,
+        "results": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 4.5,
+        "solved": 8,
+        "status": "active",
+        "timestamp": 1777448227376,
+        "total": 8
+      },
+      "breuil_nathan": {
+        "attempts": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "errorRefs": [
+          {
+            "idx": 22,
+            "type": "L",
+            "word": "plastique"
+          },
+          {
+            "idx": 53,
+            "type": "L",
+            "word": "fourrure"
+          },
+          {
+            "idx": 134,
+            "type": "L",
+            "word": "métallique"
+          },
+          {
+            "idx": 139,
+            "type": "L",
+            "word": "résonna"
+          },
+          {
+            "idx": 168,
+            "type": "L",
+            "word": "montèrent"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": true,
+              "time": 1777447262047,
+              "typed": "plastique"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447301679,
+              "typed": "fourrure"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447369686,
+              "typed": "métallique"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447450406,
+              "typed": "résonna"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447400414,
+              "typed": "montèrent"
+            }
+          ]
+        ],
+        "lastSeen": 1777878928867,
+        "results": [
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 5,
+        "solved": 5,
+        "status": "offline",
+        "timestamp": 1777447451612,
+        "total": 5
+      },
+      "caillet_rosy": {
+        "attempts": [
+          4,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2,
+          1,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "errorRefs": [
+          {
+            "idx": 4,
+            "type": "G",
+            "word": "tremblant"
+          },
+          {
+            "idx": 5,
+            "type": "L",
+            "word": "hors"
+          },
+          {
+            "idx": 49,
+            "type": "G",
+            "word": "souillait"
+          },
+          {
+            "idx": 58,
+            "type": "L",
+            "word": "agenouilla"
+          },
+          {
+            "idx": 60,
+            "type": "L",
+            "word": "ramassa"
+          },
+          {
+            "idx": 65,
+            "type": "G",
+            "word": "et"
+          },
+          {
+            "idx": 68,
+            "type": "G",
+            "word": "ouvrit"
+          },
+          {
+            "idx": 69,
+            "type": "L",
+            "word": "rapidement"
+          },
+          {
+            "idx": 78,
+            "type": "G",
+            "word": "et"
+          },
+          {
+            "idx": 79,
+            "type": "G",
+            "word": "courut"
+          },
+          {
+            "idx": 81,
+            "type": "G",
+            "word": "son"
+          },
+          {
+            "idx": 85,
+            "type": "L",
+            "word": "Courir"
+          },
+          {
+            "idx": 87,
+            "type": "G",
+            "word": "Abandonner"
+          },
+          {
+            "idx": 96,
+            "type": "L",
+            "word": "faisait"
+          },
+          {
+            "idx": 104,
+            "type": "L",
+            "word": "fidèle"
+          },
+          {
+            "idx": 106,
+            "type": "G",
+            "word": "dur"
+          },
+          {
+            "idx": 109,
+            "type": "L",
+            "word": "tâche"
+          },
+          {
+            "idx": 113,
+            "type": "G",
+            "word": "été"
+          },
+          {
+            "idx": 115,
+            "type": "G",
+            "word": "chariot"
+          },
+          {
+            "idx": 127,
+            "type": "G",
+            "word": "tenter"
+          },
+          {
+            "idx": 131,
+            "type": "G",
+            "word": "arracher"
+          },
+          {
+            "idx": 133,
+            "type": "G",
+            "word": "poteau"
+          },
+          {
+            "idx": 134,
+            "type": "L",
+            "word": "métallique"
+          },
+          {
+            "idx": 136,
+            "type": "G",
+            "word": "et"
+          },
+          {
+            "idx": 139,
+            "type": "L",
+            "word": "résonna"
+          },
+          {
+            "idx": 146,
+            "type": "L",
+            "word": "gaie"
+          },
+          {
+            "idx": 151,
+            "type": "G",
+            "word": "se"
+          },
+          {
+            "idx": 154,
+            "type": "G",
+            "word": "son"
+          },
+          {
+            "idx": 158,
+            "type": "G",
+            "word": "ses"
+          },
+          {
+            "idx": 164,
+            "type": "G",
+            "word": "et"
+          },
+          {
+            "idx": 168,
+            "type": "G",
+            "word": "montèrent"
+          },
+          {
+            "idx": 169,
+            "type": "G",
+            "word": "aux"
+          },
+          {
+            "idx": 170,
+            "type": "L",
+            "word": "yeux"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": false,
+              "time": 1777448597236,
+              "typed": "tramblant"
+            },
+            {
+              "ok": false,
+              "time": 1777448611644,
+              "typed": "tramblant"
+            },
+            {
+              "ok": false,
+              "time": 1777448635452,
+              "typed": "tramblant"
+            },
+            {
+              "ok": true,
+              "time": 1777448677123,
+              "typed": "tremblant"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777448712339,
+              "typed": "hors"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777448745835,
+              "typed": "souillait"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777448773939,
+              "typed": "agenouilla"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777448782987,
+              "typed": "ramassa"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777448791379,
+              "typed": "et"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777448801907,
+              "typed": "ouvrit"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777448814618,
+              "typed": "rapidement"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777448822146,
+              "typed": "et"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777448833562,
+              "typed": "courit"
+            },
+            {
+              "ok": true,
+              "time": 1777448857466,
+              "typed": "courut"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777448865914,
+              "typed": "son"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777448878602,
+              "typed": "Courrir"
+            },
+            {
+              "ok": true,
+              "time": 1777448892514,
+              "typed": "Courir"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777448905730,
+              "typed": "Abandonner"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777448919130,
+              "typed": "faisait"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777448946650,
+              "typed": "fidèle"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777448952834,
+              "typed": "dur"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777448976322,
+              "typed": "tâche"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777448989594,
+              "typed": "été"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777449004554,
+              "typed": "chariot"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777449017667,
+              "typed": "tenter"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777449026906,
+              "typed": "arracher"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777450030721,
+              "typed": "poteau"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777450047049,
+              "typed": "métallique"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777450052561,
+              "typed": "et"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777450066240,
+              "typed": "résonna"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777450077729,
+              "typed": "gaie"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777450085968,
+              "typed": "se"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777450097376,
+              "typed": "son"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777450109872,
+              "typed": "ses"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777450120927,
+              "typed": "et"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777450138991,
+              "typed": "montèrent"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777450148639,
+              "typed": "aux"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777450158215,
+              "typed": "yeux"
+            }
+          ]
+        ],
+        "lastSeen": 1777450449786,
+        "results": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 3.75,
+        "solved": 33,
+        "status": "idle",
+        "timestamp": 1777450159429,
+        "total": 33
+      },
+      "chauvat_faustine": {
+        "attempts": [
+          2,
+          1,
+          7,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          8,
+          3,
+          1
+        ],
+        "bilan": {
+          "b1": "métallique",
+          "b2": "gaie",
+          "b3": "tâche",
+          "b4": "je vais faire attention a mes accords"
+        },
+        "bilanSubmitted": true,
+        "errorRefs": [
+          {
+            "idx": 39,
+            "type": "L",
+            "word": "pencha"
+          },
+          {
+            "idx": 45,
+            "type": "G",
+            "word": "obscurité"
+          },
+          {
+            "idx": 49,
+            "type": "G",
+            "word": "souillait"
+          },
+          {
+            "idx": 85,
+            "type": "L",
+            "word": "Courir"
+          },
+          {
+            "idx": 96,
+            "type": "L",
+            "word": "faisait"
+          },
+          {
+            "idx": 99,
+            "type": "G",
+            "word": "pareil"
+          },
+          {
+            "idx": 106,
+            "type": "G",
+            "word": "dur"
+          },
+          {
+            "idx": 108,
+            "type": "L",
+            "word": "la"
+          },
+          {
+            "idx": 109,
+            "type": "L",
+            "word": "tâche"
+          },
+          {
+            "idx": 115,
+            "type": "L",
+            "word": "chariot"
+          },
+          {
+            "idx": 134,
+            "type": "L",
+            "word": "métallique"
+          },
+          {
+            "idx": 146,
+            "type": "L",
+            "word": "gaie"
+          },
+          {
+            "idx": 155,
+            "type": "L",
+            "word": "chariot"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": false,
+              "time": 1777447288743,
+              "typed": "panchas"
+            },
+            {
+              "ok": true,
+              "time": 1777447307407,
+              "typed": "pencha"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447348495,
+              "typed": "obscurité"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777447363702,
+              "typed": "souillés"
+            },
+            {
+              "ok": false,
+              "time": 1777447388599,
+              "typed": "souillée"
+            },
+            {
+              "ok": false,
+              "time": 1777447400687,
+              "typed": "souillés"
+            },
+            {
+              "ok": false,
+              "time": 1777447475439,
+              "typed": "souillées"
+            },
+            {
+              "ok": false,
+              "time": 1777448320662,
+              "typed": "souillés"
+            },
+            {
+              "ok": false,
+              "time": 1777448335414,
+              "typed": "souillès"
+            },
+            {
+              "ok": true,
+              "time": 1777448574023,
+              "typed": "souillait"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777447513495,
+              "typed": "courrirt"
+            },
+            {
+              "ok": true,
+              "time": 1777447812384,
+              "typed": "courir"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447542535,
+              "typed": "faisait"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447990592,
+              "typed": "pareil"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447643784,
+              "typed": "dur"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447916751,
+              "typed": "la"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777448266566,
+              "typed": "tâche"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447681649,
+              "typed": "chariot"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777447854704,
+              "typed": "méthalic"
+            },
+            {
+              "ok": false,
+              "time": 1777448032223,
+              "typed": "mèthalique"
+            },
+            {
+              "ok": false,
+              "time": 1777448042191,
+              "typed": "méthalique"
+            },
+            {
+              "ok": false,
+              "time": 1777448420198,
+              "typed": "métalhique"
+            },
+            {
+              "ok": false,
+              "time": 1777448458935,
+              "typed": "méthalique"
+            },
+            {
+              "ok": false,
+              "time": 1777448547775,
+              "typed": "méthalique"
+            },
+            {
+              "ok": false,
+              "time": 1777448624647,
+              "typed": "méthallique"
+            },
+            {
+              "ok": true,
+              "time": 1777448707736,
+              "typed": "métallique"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777447597360,
+              "typed": "guai"
+            },
+            {
+              "ok": false,
+              "time": 1777447619424,
+              "typed": "gai"
+            },
+            {
+              "ok": true,
+              "time": 1777447874011,
+              "typed": "gaie"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447723824,
+              "typed": "chariot"
+            }
+          ]
+        ],
+        "lastSeen": 1777448811312,
+        "results": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 0.75,
+        "solved": 13,
+        "status": "offline",
+        "timestamp": 1777448708947,
+        "total": 13
+      },
+      "colas_nathan": {
+        "attempts": [
+          15,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          15,
+          2,
+          2,
+          1,
+          2,
+          2,
+          1,
+          1,
+          1,
+          2,
+          1,
+          2,
+          1,
+          1,
+          2
+        ],
+        "bilan": {
+          "b1": "que je doit arreter de rajouter des T partout ",
+          "b2": "faire attention aux accords",
+          "b3": "mieux ecrire",
+          "b4": "apprendre tous les temps"
+        },
+        "bilanSubmitted": true,
+        "errorRefs": [
+          {
+            "idx": 4,
+            "type": "L",
+            "word": "tremblant"
+          },
+          {
+            "idx": 12,
+            "type": "G",
+            "word": "roula"
+          },
+          {
+            "idx": 18,
+            "type": "G",
+            "word": "enfourna"
+          },
+          {
+            "idx": 22,
+            "type": "L",
+            "word": "plastique"
+          },
+          {
+            "idx": 28,
+            "type": "L",
+            "word": "caddie"
+          },
+          {
+            "idx": 33,
+            "type": "G",
+            "word": "approcha"
+          },
+          {
+            "idx": 39,
+            "type": "G",
+            "word": "pencha"
+          },
+          {
+            "idx": 49,
+            "type": "L",
+            "word": "souillait"
+          },
+          {
+            "idx": 58,
+            "type": "G",
+            "word": "agenouilla"
+          },
+          {
+            "idx": 60,
+            "type": "G",
+            "word": "ramassa"
+          },
+          {
+            "idx": 65,
+            "type": "M",
+            "word": "et"
+          },
+          {
+            "idx": 73,
+            "type": "G",
+            "word": "jeta"
+          },
+          {
+            "idx": 79,
+            "type": "L",
+            "word": "courut"
+          },
+          {
+            "idx": 82,
+            "type": "L",
+            "word": "caddie"
+          },
+          {
+            "idx": 85,
+            "type": "L",
+            "word": "Courir"
+          },
+          {
+            "idx": 109,
+            "type": "L",
+            "word": "tâche"
+          },
+          {
+            "idx": 122,
+            "type": "G",
+            "word": "tira"
+          },
+          {
+            "idx": 125,
+            "type": "L",
+            "word": "caddie"
+          },
+          {
+            "idx": 139,
+            "type": "G",
+            "word": "résonna"
+          },
+          {
+            "idx": 146,
+            "type": "L",
+            "word": "gaie"
+          },
+          {
+            "idx": 152,
+            "type": "G",
+            "word": "pencha"
+          },
+          {
+            "idx": 157,
+            "type": "G",
+            "word": "enfonça"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": false,
+              "time": 1777448597025,
+              "typed": "tramban"
+            },
+            {
+              "ok": false,
+              "time": 1777448609456,
+              "typed": "tremblan"
+            },
+            {
+              "ok": false,
+              "time": 1777448609959,
+              "typed": "tremblan"
+            },
+            {
+              "ok": false,
+              "time": 1777448610003,
+              "typed": "tremblan"
+            },
+            {
+              "ok": false,
+              "time": 1777448610022,
+              "typed": "tremblan"
+            },
+            {
+              "ok": false,
+              "time": 1777448610055,
+              "typed": "tremblan"
+            },
+            {
+              "ok": false,
+              "time": 1777448610088,
+              "typed": "tremblan"
+            },
+            {
+              "ok": false,
+              "time": 1777448610121,
+              "typed": "tremblan"
+            },
+            {
+              "ok": false,
+              "time": 1777448610155,
+              "typed": "tremblan"
+            },
+            {
+              "ok": false,
+              "time": 1777448610188,
+              "typed": "tremblan"
+            },
+            {
+              "ok": false,
+              "time": 1777448610222,
+              "typed": "tremblan"
+            },
+            {
+              "ok": false,
+              "time": 1777448610256,
+              "typed": "tremblan"
+            },
+            {
+              "ok": false,
+              "time": 1777448634704,
+              "typed": "trenblan"
+            },
+            {
+              "ok": false,
+              "time": 1777448644656,
+              "typed": "tremblan"
+            },
+            {
+              "ok": true,
+              "time": 1777448653024,
+              "typed": "tremblant"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777448666752,
+              "typed": "roula"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777448677472,
+              "typed": "enfourna"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777448686111,
+              "typed": "plastique"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777448697712,
+              "typed": "caddie"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777448714736,
+              "typed": "approcha"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777448725056,
+              "typed": "pencha"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777448785521,
+              "typed": "souilla"
+            },
+            {
+              "ok": false,
+              "time": 1777448826495,
+              "typed": "soullait"
+            },
+            {
+              "ok": false,
+              "time": 1777448833615,
+              "typed": "soulliai"
+            },
+            {
+              "ok": false,
+              "time": 1777448833887,
+              "typed": "soulliai"
+            },
+            {
+              "ok": false,
+              "time": 1777448834395,
+              "typed": "soulliai"
+            },
+            {
+              "ok": false,
+              "time": 1777448834415,
+              "typed": "soulliai"
+            },
+            {
+              "ok": false,
+              "time": 1777448863519,
+              "typed": "souillai"
+            },
+            {
+              "ok": false,
+              "time": 1777448864010,
+              "typed": "souillai"
+            },
+            {
+              "ok": false,
+              "time": 1777448864045,
+              "typed": "souillai"
+            },
+            {
+              "ok": false,
+              "time": 1777448864090,
+              "typed": "souillai"
+            },
+            {
+              "ok": false,
+              "time": 1777448864109,
+              "typed": "souillai"
+            },
+            {
+              "ok": false,
+              "time": 1777448872351,
+              "typed": "soullait"
+            },
+            {
+              "ok": false,
+              "time": 1777448880383,
+              "typed": "soulliait"
+            },
+            {
+              "ok": false,
+              "time": 1777448888783,
+              "typed": "soulliait"
+            },
+            {
+              "ok": true,
+              "time": 1777448940655,
+              "typed": "souillait"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777448958671,
+              "typed": "agenouillat"
+            },
+            {
+              "ok": true,
+              "time": 1777448966271,
+              "typed": "agenouilla"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777448981583,
+              "typed": "ramassat"
+            },
+            {
+              "ok": true,
+              "time": 1777448987583,
+              "typed": "ramassa"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777448996447,
+              "typed": "et"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777449012879,
+              "typed": "jetat"
+            },
+            {
+              "ok": true,
+              "time": 1777449017966,
+              "typed": "jeta"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777450035566,
+              "typed": "courru"
+            },
+            {
+              "ok": true,
+              "time": 1777450043022,
+              "typed": "courut"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777450048574,
+              "typed": "caddie"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777450057038,
+              "typed": "courir"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777450075166,
+              "typed": "tache"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777450084109,
+              "typed": "tirrat"
+            },
+            {
+              "ok": true,
+              "time": 1777450093678,
+              "typed": "tira"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777450112463,
+              "typed": "caddie"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777450127677,
+              "typed": "résonat"
+            },
+            {
+              "ok": true,
+              "time": 1777450132909,
+              "typed": "résonna"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777450161741,
+              "typed": "gaie"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777450173821,
+              "typed": "pencha"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777450183389,
+              "typed": "enfonssat"
+            },
+            {
+              "ok": true,
+              "time": 1777450192781,
+              "typed": "enfonça"
+            }
+          ]
+        ],
+        "lastSeen": 1777450512028,
+        "results": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 0,
+        "solved": 22,
+        "status": "offline",
+        "timestamp": 1777450193991,
+        "total": 22
+      },
+      "daunas_leonie": {
+        "attempts": [
+          3,
+          1,
+          1,
+          1,
+          1,
+          2,
+          1,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "bilan": {
+          "b1": "que je dois faire attention a la grammaire",
+          "b2": "que je dois faire attention au lexique",
+          "b3": "que je dois faire attention au accent",
+          "b4": "réfléchir avant d'écrire"
+        },
+        "bilanSubmitted": true,
+        "errorRefs": [
+          {
+            "idx": 12,
+            "type": "L",
+            "word": "roula"
+          },
+          {
+            "idx": 14,
+            "type": "L",
+            "word": "boule"
+          },
+          {
+            "idx": 28,
+            "type": "G",
+            "word": "caddie"
+          },
+          {
+            "idx": 33,
+            "type": "L",
+            "word": "approcha"
+          },
+          {
+            "idx": 48,
+            "type": "G",
+            "word": "sang"
+          },
+          {
+            "idx": 49,
+            "type": "L",
+            "word": "souillait"
+          },
+          {
+            "idx": 73,
+            "type": "L",
+            "word": "jeta"
+          },
+          {
+            "idx": 79,
+            "type": "L",
+            "word": "courut"
+          },
+          {
+            "idx": 82,
+            "type": "L",
+            "word": "caddie"
+          },
+          {
+            "idx": 85,
+            "type": "L",
+            "word": "Courir"
+          },
+          {
+            "idx": 104,
+            "type": "L",
+            "word": "fidèle"
+          },
+          {
+            "idx": 106,
+            "type": "G",
+            "word": "dur"
+          },
+          {
+            "idx": 109,
+            "type": "L",
+            "word": "tâche"
+          },
+          {
+            "idx": 114,
+            "type": "G",
+            "word": "ce"
+          },
+          {
+            "idx": 125,
+            "type": "L",
+            "word": "caddie"
+          },
+          {
+            "idx": 127,
+            "type": "L",
+            "word": "tenter"
+          },
+          {
+            "idx": 133,
+            "type": "L",
+            "word": "poteau"
+          },
+          {
+            "idx": 134,
+            "type": "L",
+            "word": "métallique"
+          },
+          {
+            "idx": 157,
+            "type": "L",
+            "word": "enfonça"
+          },
+          {
+            "idx": 168,
+            "type": "L",
+            "word": "montèrent"
+          },
+          {
+            "idx": 169,
+            "type": "G",
+            "word": "aux"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": false,
+              "time": 1777447322926,
+              "typed": "roullat"
+            },
+            {
+              "ok": false,
+              "time": 1777447370149,
+              "typed": "roulat"
+            },
+            {
+              "ok": true,
+              "time": 1777447375173,
+              "typed": "roula"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447389044,
+              "typed": "boule"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447402909,
+              "typed": "caddie"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447458825,
+              "typed": "approcha"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447471690,
+              "typed": "sang"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777447506094,
+              "typed": "soullait"
+            },
+            {
+              "ok": true,
+              "time": 1777447514879,
+              "typed": "souillait"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447621201,
+              "typed": "jeta"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777447649761,
+              "typed": "courrut"
+            },
+            {
+              "ok": true,
+              "time": 1777447681552,
+              "typed": "courut"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447692072,
+              "typed": "caddie"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447708512,
+              "typed": "Courir"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447739624,
+              "typed": "fidèle"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447746712,
+              "typed": "dur"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447764352,
+              "typed": "tâche"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447782560,
+              "typed": "ce"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447810776,
+              "typed": "caddie"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447824408,
+              "typed": "tenter"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447835992,
+              "typed": "poteau"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447879352,
+              "typed": "metallique"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447898728,
+              "typed": "enfonça"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447912880,
+              "typed": "montèrent"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447919152,
+              "typed": "aux"
+            }
+          ]
+        ],
+        "lastSeen": 1777448481676,
+        "results": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 4,
+        "solved": 21,
+        "status": "offline",
+        "timestamp": 1777447920365,
+        "total": 21
+      },
+      "derouineau_louise": {
+        "attempts": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2
+        ],
+        "errorRefs": [
+          {
+            "idx": 28,
+            "type": "L",
+            "word": "caddie"
+          },
+          {
+            "idx": 45,
+            "type": "G",
+            "word": "obscurité"
+          },
+          {
+            "idx": 60,
+            "type": "L",
+            "word": "ramassa"
+          },
+          {
+            "idx": 73,
+            "type": "L",
+            "word": "jeta"
+          },
+          {
+            "idx": 79,
+            "type": "L",
+            "word": "courut"
+          },
+          {
+            "idx": 85,
+            "type": "L",
+            "word": "Courir"
+          },
+          {
+            "idx": 87,
+            "type": "G",
+            "word": "Abandonner"
+          },
+          {
+            "idx": 96,
+            "type": "L",
+            "word": "faisait"
+          },
+          {
+            "idx": 106,
+            "type": "G",
+            "word": "dur"
+          },
+          {
+            "idx": 133,
+            "type": "L",
+            "word": "poteau"
+          },
+          {
+            "idx": 134,
+            "type": "L",
+            "word": "métallique"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": true,
+              "time": 1777447258155,
+              "typed": "CADDIE"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447313763,
+              "typed": "obscurité"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447420946,
+              "typed": "ramassa"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447469425,
+              "typed": "jeta"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447492946,
+              "typed": "courut"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447508977,
+              "typed": "Courir"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447661815,
+              "typed": "Abandonner"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447696007,
+              "typed": "faisait"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447539865,
+              "typed": "dur"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447582824,
+              "typed": "poteau"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777447601296,
+              "typed": "méthalique"
+            },
+            {
+              "ok": true,
+              "time": 1777447627496,
+              "typed": "métallique"
+            }
+          ]
+        ],
+        "lastSeen": 1777880064337,
+        "results": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 4.75,
+        "solved": 11,
+        "status": "idle",
+        "timestamp": 1777447697223,
+        "total": 11
+      },
+      "drochon_celia": {
+        "attempts": [
+          6,
+          1,
+          1,
+          1,
+          1,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "errorRefs": [
+          {
+            "idx": 48,
+            "type": "L",
+            "word": "sang"
+          },
+          {
+            "idx": 79,
+            "type": "L",
+            "word": "courut"
+          },
+          {
+            "idx": 85,
+            "type": "L",
+            "word": "Courir"
+          },
+          {
+            "idx": 96,
+            "type": "L",
+            "word": "faisait"
+          },
+          {
+            "idx": 99,
+            "type": "G",
+            "word": "pareil"
+          },
+          {
+            "idx": 108,
+            "type": "L",
+            "word": "la"
+          },
+          {
+            "idx": 109,
+            "type": "L",
+            "word": "tâche"
+          },
+          {
+            "idx": 115,
+            "type": "L",
+            "word": "chariot"
+          },
+          {
+            "idx": 133,
+            "type": "L",
+            "word": "poteau"
+          },
+          {
+            "idx": 134,
+            "type": "L",
+            "word": "métallique"
+          },
+          {
+            "idx": 139,
+            "type": "L",
+            "word": "résonna"
+          },
+          {
+            "idx": 146,
+            "type": "L",
+            "word": "gaie"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": false,
+              "time": 1777447420654,
+              "typed": "sensouillait"
+            },
+            {
+              "ok": false,
+              "time": 1777447435327,
+              "typed": "sang soullait"
+            },
+            {
+              "ok": false,
+              "time": 1777447446470,
+              "typed": "soullait"
+            },
+            {
+              "ok": false,
+              "time": 1777447472655,
+              "typed": "sang souillait"
+            },
+            {
+              "ok": false,
+              "time": 1777447509046,
+              "typed": "sans souillait"
+            },
+            {
+              "ok": true,
+              "time": 1777447533206,
+              "typed": "sang"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447593078,
+              "typed": "courut"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447613166,
+              "typed": "courir"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447672157,
+              "typed": "faisait"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447378119,
+              "typed": "pareil"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777447736333,
+              "typed": "la tâche"
+            },
+            {
+              "ok": true,
+              "time": 1777447752149,
+              "typed": "la"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447814541,
+              "typed": "tâche"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447902469,
+              "typed": "chariot"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447940149,
+              "typed": "poteau"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447963021,
+              "typed": "métallique"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447994765,
+              "typed": "résonna"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777448021509,
+              "typed": "gaie"
+            }
+          ]
+        ],
+        "lastSeen": 1777450635958,
+        "results": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 3.5,
+        "solved": 12,
+        "status": "idle",
+        "timestamp": 1777448022709,
+        "total": 12
+      },
+      "dutruel_gabin": {
+        "attempts": [
+          2,
+          1,
+          1,
+          6,
+          3,
+          2,
+          1
+        ],
+        "errorRefs": [
+          {
+            "idx": 5,
+            "type": "L",
+            "word": "hors"
+          },
+          {
+            "idx": 49,
+            "type": "G",
+            "word": "souillait"
+          },
+          {
+            "idx": 60,
+            "type": "L",
+            "word": "ramassa"
+          },
+          {
+            "idx": 79,
+            "type": "L",
+            "word": "courut"
+          },
+          {
+            "idx": 99,
+            "type": "G",
+            "word": "pareil"
+          },
+          {
+            "idx": 133,
+            "type": "L",
+            "word": "poteau"
+          },
+          {
+            "idx": 160,
+            "type": "G",
+            "word": "au"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": false,
+              "time": 1777447215219,
+              "typed": "or"
+            },
+            {
+              "ok": true,
+              "time": 1777447235763,
+              "typed": "hors"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447266506,
+              "typed": "souillait"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447297522,
+              "typed": "ramassa"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777447310531,
+              "typed": "couru"
+            },
+            {
+              "ok": false,
+              "time": 1777447316338,
+              "typed": "courus"
+            },
+            {
+              "ok": false,
+              "time": 1777447324290,
+              "typed": "courrut"
+            },
+            {
+              "ok": false,
+              "time": 1777447344922,
+              "typed": "courru"
+            },
+            {
+              "ok": false,
+              "time": 1777447353738,
+              "typed": "courrus"
+            },
+            {
+              "ok": true,
+              "time": 1777447612353,
+              "typed": "courut"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777447415600,
+              "typed": "pareille"
+            },
+            {
+              "ok": false,
+              "time": 1777447427128,
+              "typed": "parreille"
+            },
+            {
+              "ok": true,
+              "time": 1777447515011,
+              "typed": "pareil"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777447480878,
+              "typed": "potau"
+            },
+            {
+              "ok": true,
+              "time": 1777447488590,
+              "typed": "poteau"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447502030,
+              "typed": "au"
+            }
+          ]
+        ],
+        "lastSeen": 1777880067813,
+        "results": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 2.75,
+        "solved": 7,
+        "status": "offline",
+        "timestamp": 1777447613565,
+        "total": 7
+      },
+      "etchebarne_emerit_lea": {
+        "attempts": [
+          2,
+          1,
+          3,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "bilan": {
+          "b1": "il faut que je vérifie les accord sujet verbe",
+          "b2": "les terminaison de l'imparfait",
+          "b3": "faire attention au lexique",
+          "b4": "mieux me relire "
+        },
+        "bilanSubmitted": true,
+        "errorRefs": [
+          {
+            "idx": 12,
+            "type": "L",
+            "word": "roula"
+          },
+          {
+            "idx": 49,
+            "type": "G",
+            "word": "souillait"
+          },
+          {
+            "idx": 58,
+            "type": "L",
+            "word": "agenouilla"
+          },
+          {
+            "idx": 68,
+            "type": "G",
+            "word": "ouvrit"
+          },
+          {
+            "idx": 73,
+            "type": "L",
+            "word": "jeta"
+          },
+          {
+            "idx": 79,
+            "type": "G",
+            "word": "courut"
+          },
+          {
+            "idx": 90,
+            "type": "G",
+            "word": "Est"
+          },
+          {
+            "idx": 99,
+            "type": "G",
+            "word": "pareil"
+          },
+          {
+            "idx": 113,
+            "type": "G",
+            "word": "été"
+          },
+          {
+            "idx": 115,
+            "type": "L",
+            "word": "chariot"
+          },
+          {
+            "idx": 122,
+            "type": "L",
+            "word": "tira"
+          },
+          {
+            "idx": 134,
+            "type": "L",
+            "word": "métallique"
+          },
+          {
+            "idx": 146,
+            "type": "L",
+            "word": "gaie"
+          },
+          {
+            "idx": 155,
+            "type": "L",
+            "word": "chariot"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": false,
+              "time": 1777447344476,
+              "typed": "roullat"
+            },
+            {
+              "ok": true,
+              "time": 1777447379970,
+              "typed": "roula"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447501084,
+              "typed": "souillait"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777447539804,
+              "typed": "s'agenouilla"
+            },
+            {
+              "ok": false,
+              "time": 1777447554500,
+              "typed": "s'agenouilla"
+            },
+            {
+              "ok": true,
+              "time": 1777447571857,
+              "typed": "agenouilla"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447593809,
+              "typed": "ouvrit"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447616630,
+              "typed": "jeta"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447677380,
+              "typed": "courut"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447702780,
+              "typed": "est"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447718196,
+              "typed": "pareil"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447789388,
+              "typed": "été"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447814956,
+              "typed": "chariot"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447834733,
+              "typed": "tira"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447878484,
+              "typed": "métallique"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447895300,
+              "typed": "gaie"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447911676,
+              "typed": "chariot"
+            }
+          ]
+        ],
+        "lastSeen": 1779263930435,
+        "results": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 4.25,
+        "solved": 14,
+        "status": "idle",
+        "timestamp": 1777447912889,
+        "total": 14
+      },
+      "gasoyan_edouard": {
+        "attempts": [
+          2,
+          2,
+          2,
+          1,
+          5,
+          1,
+          1,
+          1,
+          1,
+          1,
+          20,
+          3
+        ],
+        "errorRefs": [
+          {
+            "idx": 28,
+            "type": "L",
+            "word": "caddie"
+          },
+          {
+            "idx": 49,
+            "type": "L",
+            "word": "souillait"
+          },
+          {
+            "idx": 58,
+            "type": "L",
+            "word": "agenouilla"
+          },
+          {
+            "idx": 73,
+            "type": "L",
+            "word": "jeta"
+          },
+          {
+            "idx": 79,
+            "type": "G",
+            "word": "courut"
+          },
+          {
+            "idx": 82,
+            "type": "L",
+            "word": "caddie"
+          },
+          {
+            "idx": 85,
+            "type": "L",
+            "word": "Courir"
+          },
+          {
+            "idx": 122,
+            "type": "L",
+            "word": "tira"
+          },
+          {
+            "idx": 125,
+            "type": "L",
+            "word": "caddie"
+          },
+          {
+            "idx": 134,
+            "type": "L",
+            "word": "métallique"
+          },
+          {
+            "idx": 146,
+            "type": "G",
+            "word": "gaie"
+          },
+          {
+            "idx": 157,
+            "type": "L",
+            "word": "enfonça"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": false,
+              "time": 1777878762220,
+              "typed": "Caddi"
+            },
+            {
+              "ok": true,
+              "time": 1777878909222,
+              "typed": "Caddie"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777878792093,
+              "typed": "Soullait"
+            },
+            {
+              "ok": true,
+              "time": 1777878985281,
+              "typed": "Souillait"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777879015963,
+              "typed": "S’agenouilla"
+            },
+            {
+              "ok": true,
+              "time": 1777879048372,
+              "typed": "agenouilla"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777879119738,
+              "typed": "Jeta"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777447787024,
+              "typed": "courrut"
+            },
+            {
+              "ok": false,
+              "time": 1777447882720,
+              "typed": "courru"
+            },
+            {
+              "ok": false,
+              "time": 1777447911407,
+              "typed": "courrue"
+            },
+            {
+              "ok": false,
+              "time": 1777448070543,
+              "typed": "couru"
+            },
+            {
+              "ok": true,
+              "time": 1777450046725,
+              "typed": "courut"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777879145083,
+              "typed": "caddie"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777879175957,
+              "typed": "Courir"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777879195536,
+              "typed": "Tira"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777879211632,
+              "typed": "Caddie"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777879233795,
+              "typed": "Métallique"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777447310023,
+              "typed": "gaï"
+            },
+            {
+              "ok": false,
+              "time": 1777447569698,
+              "typed": "courrut"
+            },
+            {
+              "ok": false,
+              "time": 1777447615825,
+              "typed": "gaî"
+            },
+            {
+              "ok": false,
+              "time": 1777447761040,
+              "typed": "gay"
+            },
+            {
+              "ok": false,
+              "time": 1777447922079,
+              "typed": "gaî"
+            },
+            {
+              "ok": false,
+              "time": 1777447947439,
+              "typed": "guaï"
+            },
+            {
+              "ok": false,
+              "time": 1777447953728,
+              "typed": "guai"
+            },
+            {
+              "ok": false,
+              "time": 1777447971472,
+              "typed": "guaï"
+            },
+            {
+              "ok": false,
+              "time": 1777447971973,
+              "typed": "guaï"
+            },
+            {
+              "ok": false,
+              "time": 1777447972009,
+              "typed": "guaï"
+            },
+            {
+              "ok": false,
+              "time": 1777447972042,
+              "typed": "guaï"
+            },
+            {
+              "ok": false,
+              "time": 1777447972076,
+              "typed": "guaï"
+            },
+            {
+              "ok": false,
+              "time": 1777447972111,
+              "typed": "guaï"
+            },
+            {
+              "ok": false,
+              "time": 1777447972143,
+              "typed": "guaï"
+            },
+            {
+              "ok": false,
+              "time": 1777447972176,
+              "typed": "guaï"
+            },
+            {
+              "ok": false,
+              "time": 1777447972210,
+              "typed": "guaï"
+            },
+            {
+              "ok": false,
+              "time": 1777447972243,
+              "typed": "guaï"
+            },
+            {
+              "ok": false,
+              "time": 1777448043999,
+              "typed": "guaï"
+            },
+            {
+              "ok": false,
+              "time": 1777448059295,
+              "typed": "guäi"
+            },
+            {
+              "ok": true,
+              "time": 1777450053973,
+              "typed": "gaie"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777878842705,
+              "typed": "Enffonça"
+            },
+            {
+              "ok": false,
+              "time": 1777879263203,
+              "typed": "Enffonca"
+            },
+            {
+              "ok": true,
+              "time": 1777879277432,
+              "typed": "Enfonça"
+            }
+          ]
+        ],
+        "lastSeen": 1777879493511,
+        "results": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 0,
+        "solved": 12,
+        "status": "offline",
+        "timestamp": 1777879278633,
+        "total": 12
+      },
+      "gaucher_julian": {
+        "attempts": [
+          1,
+          1,
+          1,
+          1,
+          2,
+          3,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2,
+          1,
+          1,
+          1,
+          2
+        ],
+        "bilan": {
+          "b1": "mes erreurs de grammaire",
+          "b2": "mes erreurs de lexique",
+          "b3": "mes mots ilisibles",
+          "b4": "soigner mon écriture et faire attention au erreurs de grammaire"
+        },
+        "bilanSubmitted": true,
+        "errorRefs": [
+          {
+            "idx": 2,
+            "type": "L",
+            "word": "tortilla"
+          },
+          {
+            "idx": 12,
+            "type": "I",
+            "word": "roula"
+          },
+          {
+            "idx": 28,
+            "type": "L",
+            "word": "caddie"
+          },
+          {
+            "idx": 49,
+            "type": "G",
+            "word": "souillait"
+          },
+          {
+            "idx": 58,
+            "type": "G",
+            "word": "agenouilla"
+          },
+          {
+            "idx": 63,
+            "type": "M",
+            "word": "à"
+          },
+          {
+            "idx": 68,
+            "type": "G",
+            "word": "ouvrit"
+          },
+          {
+            "idx": 79,
+            "type": "G",
+            "word": "courut"
+          },
+          {
+            "idx": 82,
+            "type": "L",
+            "word": "caddie"
+          },
+          {
+            "idx": 96,
+            "type": "G",
+            "word": "faisait"
+          },
+          {
+            "idx": 106,
+            "type": "G",
+            "word": "dur"
+          },
+          {
+            "idx": 114,
+            "type": "G",
+            "word": "ce"
+          },
+          {
+            "idx": 115,
+            "type": "L",
+            "word": "chariot"
+          },
+          {
+            "idx": 125,
+            "type": "L",
+            "word": "caddie"
+          },
+          {
+            "idx": 131,
+            "type": "L",
+            "word": "arracher"
+          },
+          {
+            "idx": 134,
+            "type": "L",
+            "word": "métallique"
+          },
+          {
+            "idx": 144,
+            "type": "I",
+            "word": "stupide"
+          },
+          {
+            "idx": 146,
+            "type": "L",
+            "word": "gaie"
+          },
+          {
+            "idx": 155,
+            "type": "L",
+            "word": "chariot"
+          },
+          {
+            "idx": 168,
+            "type": "G",
+            "word": "montèrent"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": true,
+              "time": 1777447277037,
+              "typed": "TORTILLA"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447301188,
+              "typed": "ROULA"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447328780,
+              "typed": "CADDIE"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447372740,
+              "typed": "SOUILLAIT"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777447423841,
+              "typed": "AGENOULLIA"
+            },
+            {
+              "ok": true,
+              "time": 1777447453947,
+              "typed": "AGENOUILLA"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777447478435,
+              "typed": "a main"
+            },
+            {
+              "ok": false,
+              "time": 1777447512007,
+              "typed": "à main"
+            },
+            {
+              "ok": true,
+              "time": 1777447548390,
+              "typed": "à"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447646124,
+              "typed": "ouvrit"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447688141,
+              "typed": "courut"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447728451,
+              "typed": "caddie"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447799236,
+              "typed": "faisait"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447831652,
+              "typed": "dur"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447870764,
+              "typed": "ce"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447884115,
+              "typed": "chariot"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447908476,
+              "typed": "caddie"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447925332,
+              "typed": "arracher"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777448083892,
+              "typed": "méthalique"
+            },
+            {
+              "ok": true,
+              "time": 1777448167524,
+              "typed": "métallique"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447999428,
+              "typed": "stupide"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447980508,
+              "typed": "gaie"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447965372,
+              "typed": "chariot"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777447603434,
+              "typed": "montrèrent"
+            },
+            {
+              "ok": true,
+              "time": 1777447631621,
+              "typed": "montèrent"
+            }
+          ]
+        ],
+        "lastSeen": 1777448330900,
+        "results": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 3.75,
+        "solved": 20,
+        "status": "offline",
+        "timestamp": 1777448168725,
+        "total": 20
+      },
+      "girard_alice": {
+        "attempts": [
+          2,
+          1,
+          1,
+          1,
+          2,
+          1,
+          1,
+          2,
+          1
+        ],
+        "errorRefs": [
+          {
+            "idx": 79,
+            "type": "G",
+            "word": "courut"
+          },
+          {
+            "idx": 85,
+            "type": "L",
+            "word": "Courir"
+          },
+          {
+            "idx": 87,
+            "type": "G",
+            "word": "Abandonner"
+          },
+          {
+            "idx": 99,
+            "type": "G",
+            "word": "pareil"
+          },
+          {
+            "idx": 113,
+            "type": "G",
+            "word": "été"
+          },
+          {
+            "idx": 122,
+            "type": "G",
+            "word": "tira"
+          },
+          {
+            "idx": 134,
+            "type": "L",
+            "word": "métallique"
+          },
+          {
+            "idx": 146,
+            "type": "L",
+            "word": "gaie"
+          },
+          {
+            "idx": 152,
+            "type": "G",
+            "word": "pencha"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": false,
+              "time": 1777878800921,
+              "typed": "Couru"
+            },
+            {
+              "ok": true,
+              "time": 1777878809784,
+              "typed": "Courut"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777878876931,
+              "typed": "Courir"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777878904677,
+              "typed": "Abandonner"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777878922999,
+              "typed": "Pareil"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777878943410,
+              "typed": "Ce"
+            },
+            {
+              "ok": true,
+              "time": 1777878980031,
+              "typed": "Été"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777878998963,
+              "typed": "Tira"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777879025241,
+              "typed": "Métallique"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777879140810,
+              "typed": "Guai"
+            },
+            {
+              "ok": true,
+              "time": 1777879163927,
+              "typed": "Gaie"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777879198909,
+              "typed": "Pencha"
+            }
+          ]
+        ],
+        "lastSeen": 1777879231113,
+        "results": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 4.25,
+        "solved": 9,
+        "status": "offline",
+        "timestamp": 1777879200110,
+        "total": 9
+      },
+      "le_lay_manon": {
+        "attempts": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "bilan": {
+          "b1": "faut bien que je relise",
+          "b2": "beaucoup d erreur de lexique ",
+          "b3": "+",
+          "b4": "regardé tout les mots un par un pour voir les faute "
+        },
+        "bilanSubmitted": true,
+        "errorRefs": [
+          {
+            "idx": 45,
+            "type": "G",
+            "word": "obscurité"
+          },
+          {
+            "idx": 87,
+            "type": "G",
+            "word": "Abandonner"
+          },
+          {
+            "idx": 109,
+            "type": "L",
+            "word": "tâche"
+          },
+          {
+            "idx": 114,
+            "type": "G",
+            "word": "ce"
+          },
+          {
+            "idx": 115,
+            "type": "L",
+            "word": "chariot"
+          },
+          {
+            "idx": 134,
+            "type": "L",
+            "word": "métallique"
+          },
+          {
+            "idx": 146,
+            "type": "L",
+            "word": "gaie"
+          },
+          {
+            "idx": 155,
+            "type": "L",
+            "word": "chariot"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": true,
+              "time": 1777447233086,
+              "typed": "obscurité"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447254854,
+              "typed": "Abandonner"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447340270,
+              "typed": "tâche"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447381005,
+              "typed": "ce"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447399996,
+              "typed": "chariot"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447421708,
+              "typed": "métallique"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447458460,
+              "typed": "gaie"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447475275,
+              "typed": "chariot"
+            }
+          ]
+        ],
+        "lastSeen": 1777447997812,
+        "results": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 5,
+        "solved": 8,
+        "status": "offline",
+        "timestamp": 1777447476489,
+        "total": 8
+      },
+      "leguay_lilou": {
+        "attempts": [
+          1,
+          1,
+          5,
+          1,
+          2,
+          1,
+          1,
+          2,
+          1,
+          1
+        ],
+        "bilan": {
+          "b1": "la plus part de mes erreurs sont du lexique ",
+          "b2": "j'ai du mal avec les terminaisons",
+          "b3": "les erreurs de grammaire qui aurait pu être facile à éviter ",
+          "b4": "prendre mon temps et bien relire à la fin de sorte à ne pas perdre de point bêtement "
+        },
+        "bilanSubmitted": true,
+        "errorRefs": [
+          {
+            "idx": 60,
+            "type": "L",
+            "word": "ramassa"
+          },
+          {
+            "idx": 73,
+            "type": "L",
+            "word": "jeta"
+          },
+          {
+            "idx": 79,
+            "type": "G",
+            "word": "courut"
+          },
+          {
+            "idx": 87,
+            "type": "G",
+            "word": "Abandonner"
+          },
+          {
+            "idx": 96,
+            "type": "G",
+            "word": "faisait"
+          },
+          {
+            "idx": 99,
+            "type": "G",
+            "word": "pareil"
+          },
+          {
+            "idx": 115,
+            "type": "L",
+            "word": "chariot"
+          },
+          {
+            "idx": 134,
+            "type": "L",
+            "word": "métallique"
+          },
+          {
+            "idx": 151,
+            "type": "G",
+            "word": "se"
+          },
+          {
+            "idx": 155,
+            "type": "L",
+            "word": "chariot"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": true,
+              "time": 1777447271819,
+              "typed": "ramassa"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447303355,
+              "typed": "jeta"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777447317627,
+              "typed": "courru"
+            },
+            {
+              "ok": false,
+              "time": 1777447359587,
+              "typed": "courrû"
+            },
+            {
+              "ok": false,
+              "time": 1777447656655,
+              "typed": "couru"
+            },
+            {
+              "ok": false,
+              "time": 1777447678406,
+              "typed": "courrut"
+            },
+            {
+              "ok": true,
+              "time": 1777447686838,
+              "typed": "courut"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447407243,
+              "typed": "Abandonner"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777447430346,
+              "typed": "faisais"
+            },
+            {
+              "ok": true,
+              "time": 1777447455138,
+              "typed": "faisait"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447472360,
+              "typed": "pareil"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447522760,
+              "typed": "chariot"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777447569668,
+              "typed": "métalique"
+            },
+            {
+              "ok": true,
+              "time": 1777447590713,
+              "typed": "métallique"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447608681,
+              "typed": "se"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447625625,
+              "typed": "chariot"
+            }
+          ]
+        ],
+        "lastSeen": 1777450635557,
+        "results": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 3.5,
+        "solved": 10,
+        "status": "idle",
+        "timestamp": 1777447688050,
+        "total": 10
+      },
+      "lucet_enzo": {
+        "attempts": [
+          1,
+          2,
+          4,
+          3,
+          2,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2,
+          1,
+          1,
+          1
+        ],
+        "bilan": {
+          "b1": "hors",
+          "b2": "tremblant",
+          "b3": "caddie",
+          "b4": "le lexique"
+        },
+        "bilanSubmitted": true,
+        "errorRefs": [
+          {
+            "idx": 4,
+            "type": "G",
+            "word": "tremblant"
+          },
+          {
+            "idx": 5,
+            "type": "L",
+            "word": "hors"
+          },
+          {
+            "idx": 28,
+            "type": "L",
+            "word": "caddie"
+          },
+          {
+            "idx": 49,
+            "type": "L",
+            "word": "souillait"
+          },
+          {
+            "idx": 53,
+            "type": "L",
+            "word": "fourrure"
+          },
+          {
+            "idx": 58,
+            "type": "L",
+            "word": "agenouilla"
+          },
+          {
+            "idx": 79,
+            "type": "G",
+            "word": "courut"
+          },
+          {
+            "idx": 82,
+            "type": "L",
+            "word": "caddie"
+          },
+          {
+            "idx": 87,
+            "type": "G",
+            "word": "Abandonner"
+          },
+          {
+            "idx": 99,
+            "type": "G",
+            "word": "pareil"
+          },
+          {
+            "idx": 104,
+            "type": "G",
+            "word": "fidèle"
+          },
+          {
+            "idx": 106,
+            "type": "G",
+            "word": "dur"
+          },
+          {
+            "idx": 109,
+            "type": "L",
+            "word": "tâche"
+          },
+          {
+            "idx": 125,
+            "type": "L",
+            "word": "caddie"
+          },
+          {
+            "idx": 139,
+            "type": "L",
+            "word": "résonna"
+          },
+          {
+            "idx": 168,
+            "type": "L",
+            "word": "montèrent"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": true,
+              "time": 1777447312352,
+              "typed": "tremblant"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777447333552,
+              "typed": "or"
+            },
+            {
+              "ok": true,
+              "time": 1777447981730,
+              "typed": "hors"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777447402672,
+              "typed": "cadi"
+            },
+            {
+              "ok": false,
+              "time": 1777447418585,
+              "typed": "cadie"
+            },
+            {
+              "ok": false,
+              "time": 1777447431560,
+              "typed": "cadis"
+            },
+            {
+              "ok": true,
+              "time": 1777447619507,
+              "typed": "caddie"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777447466408,
+              "typed": "souyai"
+            },
+            {
+              "ok": false,
+              "time": 1777447497569,
+              "typed": "souyai"
+            },
+            {
+              "ok": true,
+              "time": 1777448014610,
+              "typed": "souillait"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777447519217,
+              "typed": "fourure"
+            },
+            {
+              "ok": true,
+              "time": 1777448044106,
+              "typed": "fourrure"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777447670091,
+              "typed": "agenouyat"
+            },
+            {
+              "ok": true,
+              "time": 1777447796651,
+              "typed": "agenouilla"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447569730,
+              "typed": "courut"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447605603,
+              "typed": "caddie"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447701867,
+              "typed": "abandonner"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447745707,
+              "typed": "pareil"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447766931,
+              "typed": "fidèle"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447824179,
+              "typed": "dur"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777447853419,
+              "typed": "tach"
+            },
+            {
+              "ok": true,
+              "time": 1777447860122,
+              "typed": "tache"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447898971,
+              "typed": "caddie"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447928450,
+              "typed": "résonna"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447960866,
+              "typed": "montèrent"
+            }
+          ]
+        ],
+        "lastSeen": 1777448351180,
+        "results": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 2.75,
+        "solved": 16,
+        "status": "active",
+        "timestamp": 1777448045307,
+        "total": 16
+      },
+      "malherre_paul": {
+        "attempts": [
+          1,
+          1,
+          2,
+          1,
+          1,
+          1,
+          6,
+          1
+        ],
+        "errorRefs": [
+          {
+            "idx": 2,
+            "type": "L",
+            "word": "tortilla"
+          },
+          {
+            "idx": 53,
+            "type": "L",
+            "word": "fourrure"
+          },
+          {
+            "idx": 87,
+            "type": "G",
+            "word": "Abandonner"
+          },
+          {
+            "idx": 99,
+            "type": "G",
+            "word": "pareil"
+          },
+          {
+            "idx": 106,
+            "type": "G",
+            "word": "dur"
+          },
+          {
+            "idx": 114,
+            "type": "G",
+            "word": "ce"
+          },
+          {
+            "idx": 146,
+            "type": "G",
+            "word": "gaie"
+          },
+          {
+            "idx": 168,
+            "type": "G",
+            "word": "montèrent"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": true,
+              "time": 1777447281119,
+              "typed": "tortilla"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447313087,
+              "typed": "fourrure"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777447348799,
+              "typed": "Abandonné"
+            },
+            {
+              "ok": true,
+              "time": 1777447381790,
+              "typed": "abandonner"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447409486,
+              "typed": "pareil"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447423726,
+              "typed": "dur"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447437116,
+              "typed": "ce"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777447466572,
+              "typed": "gay"
+            },
+            {
+              "ok": false,
+              "time": 1777447505434,
+              "typed": "gaî"
+            },
+            {
+              "ok": false,
+              "time": 1777447625013,
+              "typed": "gaî"
+            },
+            {
+              "ok": false,
+              "time": 1777447629845,
+              "typed": "gai"
+            },
+            {
+              "ok": false,
+              "time": 1777447633973,
+              "typed": "gay"
+            },
+            {
+              "ok": true,
+              "time": 1777447643573,
+              "typed": "gaie"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447533945,
+              "typed": "montèrent"
+            }
+          ]
+        ],
+        "lastSeen": 1777448263290,
+        "results": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 3.5,
+        "solved": 8,
+        "status": "idle",
+        "timestamp": 1777447644776,
+        "total": 8
+      },
+      "marchand_loelie": {
+        "attempts": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "errorRefs": [
+          {
+            "idx": 58,
+            "type": "L",
+            "word": "agenouilla"
+          },
+          {
+            "idx": 79,
+            "type": "L",
+            "word": "courut"
+          },
+          {
+            "idx": 85,
+            "type": "L",
+            "word": "Courir"
+          },
+          {
+            "idx": 87,
+            "type": "G",
+            "word": "Abandonner"
+          },
+          {
+            "idx": 106,
+            "type": "G",
+            "word": "dur"
+          },
+          {
+            "idx": 108,
+            "type": "L",
+            "word": "la"
+          },
+          {
+            "idx": 109,
+            "type": "L",
+            "word": "tâche"
+          },
+          {
+            "idx": 114,
+            "type": "G",
+            "word": "ce"
+          },
+          {
+            "idx": 146,
+            "type": "L",
+            "word": "gaie"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": true,
+              "time": 1777447307985,
+              "typed": "agenouilla"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447885935,
+              "typed": "courut"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447784751,
+              "typed": "courir"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447353345,
+              "typed": "Abandonner"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447482160,
+              "typed": "dur"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447584080,
+              "typed": "la"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447601784,
+              "typed": "tache"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447257906,
+              "typed": "ce"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777448009078,
+              "typed": "gaie"
+            }
+          ]
+        ],
+        "lastSeen": 1777880250547,
+        "results": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 5,
+        "solved": 9,
+        "status": "idle",
+        "timestamp": 1777448010279,
+        "total": 9
+      },
+      "mazan_maeva": {
+        "attempts": [
+          1,
+          1,
+          1,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2,
+          1,
+          1,
+          1
+        ],
+        "errorRefs": [
+          {
+            "idx": 5,
+            "type": "L",
+            "word": "hors"
+          },
+          {
+            "idx": 14,
+            "type": "L",
+            "word": "boule"
+          },
+          {
+            "idx": 36,
+            "type": "G",
+            "word": "femme"
+          },
+          {
+            "idx": 45,
+            "type": "L",
+            "word": "obscurité"
+          },
+          {
+            "idx": 49,
+            "type": "G",
+            "word": "souillait"
+          },
+          {
+            "idx": 73,
+            "type": "L",
+            "word": "jeta"
+          },
+          {
+            "idx": 76,
+            "type": "G",
+            "word": "à"
+          },
+          {
+            "idx": 79,
+            "type": "G",
+            "word": "courut"
+          },
+          {
+            "idx": 80,
+            "type": "G",
+            "word": "à"
+          },
+          {
+            "idx": 96,
+            "type": "L",
+            "word": "faisait"
+          },
+          {
+            "idx": 100,
+            "type": "G",
+            "word": "à"
+          },
+          {
+            "idx": 102,
+            "type": "L",
+            "word": "compagnon"
+          },
+          {
+            "idx": 108,
+            "type": "L",
+            "word": "la"
+          },
+          {
+            "idx": 109,
+            "type": "L",
+            "word": "tâche"
+          },
+          {
+            "idx": 139,
+            "type": "L",
+            "word": "résonna"
+          },
+          {
+            "idx": 146,
+            "type": "L",
+            "word": "gaie"
+          },
+          {
+            "idx": 158,
+            "type": "G",
+            "word": "ses"
+          },
+          {
+            "idx": 169,
+            "type": "G",
+            "word": "aux"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": true,
+              "time": 1777447204997,
+              "typed": "hors"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447335092,
+              "typed": "boule"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447239524,
+              "typed": "femme"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777447269740,
+              "typed": "ombscuritée"
+            },
+            {
+              "ok": true,
+              "time": 1777447693684,
+              "typed": "obscurité"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447668629,
+              "typed": "souillait"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447320532,
+              "typed": "jeta"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447327220,
+              "typed": "à"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447487300,
+              "typed": "courut"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447475716,
+              "typed": "à"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447408212,
+              "typed": "faisait"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447976197,
+              "typed": "à"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447376294,
+              "typed": "compagnon"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447606196,
+              "typed": "la"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447447627,
+              "typed": "tâche"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777447554355,
+              "typed": "ressonna"
+            },
+            {
+              "ok": true,
+              "time": 1777447957813,
+              "typed": "résonna"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447991284,
+              "typed": "gaie"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447299236,
+              "typed": "ses"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447287588,
+              "typed": "aux"
+            }
+          ]
+        ],
+        "lastSeen": 1779263944571,
+        "results": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 4.5,
+        "solved": 18,
+        "status": "idle",
+        "timestamp": 1777447992490,
+        "total": 18
+      },
+      "mercier_lola": {
+        "attempts": [
+          1,
+          2,
+          2,
+          3,
+          1,
+          2,
+          2,
+          1,
+          2,
+          3,
+          2
+        ],
+        "bilan": {
+          "b1": "il y a deux \"L\" à métallique",
+          "b2": "l'orthographe du mot poteau",
+          "b3": "\" caddie \" prend deux \"D\"",
+          "b4": "faire plus attention a la relecture"
+        },
+        "bilanSubmitted": true,
+        "errorRefs": [
+          {
+            "idx": 28,
+            "type": "L",
+            "word": "caddie"
+          },
+          {
+            "idx": 60,
+            "type": "L",
+            "word": "ramassa"
+          },
+          {
+            "idx": 68,
+            "type": "G",
+            "word": "ouvrit"
+          },
+          {
+            "idx": 79,
+            "type": "G",
+            "word": "courut"
+          },
+          {
+            "idx": 87,
+            "type": "G",
+            "word": "Abandonner"
+          },
+          {
+            "idx": 108,
+            "type": "L",
+            "word": "la"
+          },
+          {
+            "idx": 109,
+            "type": "L",
+            "word": "tâche"
+          },
+          {
+            "idx": 133,
+            "type": "L",
+            "word": "poteau"
+          },
+          {
+            "idx": 134,
+            "type": "L",
+            "word": "métallique"
+          },
+          {
+            "idx": 139,
+            "type": "L",
+            "word": "résonna"
+          },
+          {
+            "idx": 146,
+            "type": "L",
+            "word": "gaie"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": true,
+              "time": 1777447318118,
+              "typed": "caddie"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777447361174,
+              "typed": "rammaça"
+            },
+            {
+              "ok": true,
+              "time": 1777447393206,
+              "typed": "ramassa"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777447424990,
+              "typed": "ouvrie"
+            },
+            {
+              "ok": true,
+              "time": 1777447473486,
+              "typed": "ouvrit"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777447532631,
+              "typed": "courrut"
+            },
+            {
+              "ok": false,
+              "time": 1777447556727,
+              "typed": "couru"
+            },
+            {
+              "ok": true,
+              "time": 1777447572878,
+              "typed": "courut"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447953870,
+              "typed": "Abandonner"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777448225989,
+              "typed": "l'"
+            },
+            {
+              "ok": true,
+              "time": 1777448628446,
+              "typed": "la"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777448374581,
+              "typed": "lattache"
+            },
+            {
+              "ok": true,
+              "time": 1777448634862,
+              "typed": "tache"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447723407,
+              "typed": "poteau"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777447759031,
+              "typed": "méthalique"
+            },
+            {
+              "ok": true,
+              "time": 1777448043574,
+              "typed": "métallique"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777447808895,
+              "typed": "raisonnat"
+            },
+            {
+              "ok": false,
+              "time": 1777448171518,
+              "typed": "raisona"
+            },
+            {
+              "ok": true,
+              "time": 1777448456509,
+              "typed": "résonna"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777447901639,
+              "typed": "gai"
+            },
+            {
+              "ok": true,
+              "time": 1777447908151,
+              "typed": "gaie"
+            }
+          ]
+        ],
+        "lastSeen": 1777450630233,
+        "results": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 2.5,
+        "solved": 11,
+        "status": "idle",
+        "timestamp": 1777448636075,
+        "total": 11
+      },
+      "mie_manec": {
+        "attempts": [
+          1,
+          2,
+          1,
+          3,
+          1,
+          1,
+          1,
+          2,
+          1,
+          1,
+          1
+        ],
+        "errorRefs": [
+          {
+            "idx": 4,
+            "type": "L",
+            "word": "tremblant"
+          },
+          {
+            "idx": 58,
+            "type": "L",
+            "word": "agenouilla"
+          },
+          {
+            "idx": 60,
+            "type": "L",
+            "word": "ramassa"
+          },
+          {
+            "idx": 79,
+            "type": "L",
+            "word": "courut"
+          },
+          {
+            "idx": 106,
+            "type": "G",
+            "word": "dur"
+          },
+          {
+            "idx": 122,
+            "type": "L",
+            "word": "tira"
+          },
+          {
+            "idx": 139,
+            "type": "L",
+            "word": "résonna"
+          },
+          {
+            "idx": 146,
+            "type": "L",
+            "word": "gaie"
+          },
+          {
+            "idx": 152,
+            "type": "L",
+            "word": "pencha"
+          },
+          {
+            "idx": 157,
+            "type": "L",
+            "word": "enfonça"
+          },
+          {
+            "idx": 169,
+            "type": "G",
+            "word": "aux"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": true,
+              "time": 1777447358030,
+              "typed": "tremblant"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777447410150,
+              "typed": "agenoilla"
+            },
+            {
+              "ok": true,
+              "time": 1777447487390,
+              "typed": "agenouilla"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447390798,
+              "typed": "ramassa"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777447719293,
+              "typed": "courru"
+            },
+            {
+              "ok": false,
+              "time": 1777447933308,
+              "typed": "courrus"
+            },
+            {
+              "ok": true,
+              "time": 1777447949860,
+              "typed": "courut"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447507726,
+              "typed": "dur"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447559158,
+              "typed": "tira"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447835757,
+              "typed": "resonna"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777447910620,
+              "typed": "gay"
+            },
+            {
+              "ok": true,
+              "time": 1777447965276,
+              "typed": "gaie"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447446278,
+              "typed": "pencha"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447636421,
+              "typed": "enfonça"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447536101,
+              "typed": "aux"
+            }
+          ]
+        ],
+        "lastSeen": 1777879341146,
+        "results": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 4,
+        "solved": 11,
+        "status": "active",
+        "timestamp": 1777447966483,
+        "total": 11
+      },
+      "romarie_charly": {
+        "attempts": [
+          2,
+          1,
+          2,
+          1,
+          1,
+          1,
+          1
+        ],
+        "errorRefs": [
+          {
+            "idx": 79,
+            "type": "G",
+            "word": "courut"
+          },
+          {
+            "idx": 85,
+            "type": "L",
+            "word": "Courir"
+          },
+          {
+            "idx": 108,
+            "type": "L",
+            "word": "la"
+          },
+          {
+            "idx": 109,
+            "type": "L",
+            "word": "tâche"
+          },
+          {
+            "idx": 139,
+            "type": "L",
+            "word": "résonna"
+          },
+          {
+            "idx": 146,
+            "type": "L",
+            "word": "gaie"
+          },
+          {
+            "idx": 168,
+            "type": "L",
+            "word": "montèrent"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": false,
+              "time": 1777447324129,
+              "typed": "courru"
+            },
+            {
+              "ok": true,
+              "time": 1777447883943,
+              "typed": "courut"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447769576,
+              "typed": "courir"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777447548384,
+              "typed": "l'"
+            },
+            {
+              "ok": true,
+              "time": 1777447589232,
+              "typed": "la"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447599647,
+              "typed": "tache"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447636408,
+              "typed": "résonna"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777448001735,
+              "typed": "gaie"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447743016,
+              "typed": "montèrent"
+            }
+          ]
+        ],
+        "lastSeen": 1777905710210,
+        "results": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 4.5,
+        "solved": 7,
+        "status": "active",
+        "timestamp": 1777448002941,
+        "total": 7
+      },
+      "saunier_coralie": {
+        "attempts": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "errorRefs": [
+          {
+            "idx": 12,
+            "type": "G",
+            "word": "roula"
+          },
+          {
+            "idx": 49,
+            "type": "G",
+            "word": "souillait"
+          },
+          {
+            "idx": 65,
+            "type": "G",
+            "word": "et"
+          },
+          {
+            "idx": 76,
+            "type": "G",
+            "word": "à"
+          },
+          {
+            "idx": 79,
+            "type": "G",
+            "word": "courut"
+          },
+          {
+            "idx": 87,
+            "type": "G",
+            "word": "Abandonner"
+          },
+          {
+            "idx": 96,
+            "type": "L",
+            "word": "faisait"
+          },
+          {
+            "idx": 100,
+            "type": "G",
+            "word": "à"
+          },
+          {
+            "idx": 109,
+            "type": "L",
+            "word": "tâche"
+          },
+          {
+            "idx": 114,
+            "type": "G",
+            "word": "ce"
+          },
+          {
+            "idx": 127,
+            "type": "G",
+            "word": "tenter"
+          },
+          {
+            "idx": 131,
+            "type": "G",
+            "word": "arracher"
+          },
+          {
+            "idx": 146,
+            "type": "L",
+            "word": "gaie"
+          },
+          {
+            "idx": 168,
+            "type": "L",
+            "word": "montèrent"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": true,
+              "time": 1777879754296,
+              "typed": "Roula"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777879764537,
+              "typed": "Souillait"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777879769690,
+              "typed": "Et"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777879779789,
+              "typed": "À"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777879785936,
+              "typed": "Courut"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777879796385,
+              "typed": "Abandonner"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777879805882,
+              "typed": "Faisait"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777879813331,
+              "typed": "Â"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777879826346,
+              "typed": "Tâche"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777879831359,
+              "typed": "Ce"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777879838509,
+              "typed": "Tenter"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777879844138,
+              "typed": "Arracher"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777879850771,
+              "typed": "Gaie"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777879862618,
+              "typed": "Montèrent"
+            }
+          ]
+        ],
+        "lastSeen": 1779865622987,
+        "results": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 5,
+        "solved": 14,
+        "status": "active",
+        "timestamp": 1777879863819,
+        "total": 14
+      },
+      "terrien_manon": {
+        "attempts": [
+          1,
+          2,
+          1,
+          1,
+          5,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2
+        ],
+        "errorRefs": [
+          {
+            "idx": 22,
+            "type": "L",
+            "word": "plastique"
+          },
+          {
+            "idx": 28,
+            "type": "L",
+            "word": "caddie"
+          },
+          {
+            "idx": 68,
+            "type": "G",
+            "word": "ouvrit"
+          },
+          {
+            "idx": 82,
+            "type": "L",
+            "word": "caddie"
+          },
+          {
+            "idx": 96,
+            "type": "G",
+            "word": "faisait"
+          },
+          {
+            "idx": 108,
+            "type": "L",
+            "word": "la"
+          },
+          {
+            "idx": 109,
+            "type": "L",
+            "word": "tâche"
+          },
+          {
+            "idx": 125,
+            "type": "L",
+            "word": "caddie"
+          },
+          {
+            "idx": 133,
+            "type": "L",
+            "word": "poteau"
+          },
+          {
+            "idx": 134,
+            "type": "L",
+            "word": "métallique"
+          },
+          {
+            "idx": 139,
+            "type": "L",
+            "word": "résonna"
+          },
+          {
+            "idx": 146,
+            "type": "L",
+            "word": "gaie"
+          },
+          {
+            "idx": 169,
+            "type": "G",
+            "word": "aux"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": true,
+              "time": 1777447202358,
+              "typed": "plastique"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777447224029,
+              "typed": "caddis"
+            },
+            {
+              "ok": true,
+              "time": 1777447232685,
+              "typed": "caddie"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447271741,
+              "typed": "ouvrit"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447286044,
+              "typed": "caddie"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777447318148,
+              "typed": "pareille"
+            },
+            {
+              "ok": false,
+              "time": 1777447355204,
+              "typed": "pareil"
+            },
+            {
+              "ok": false,
+              "time": 1777447393988,
+              "typed": "pareil"
+            },
+            {
+              "ok": false,
+              "time": 1777447714825,
+              "typed": "pareil"
+            },
+            {
+              "ok": true,
+              "time": 1777447755497,
+              "typed": "faisait"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447472499,
+              "typed": "la"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447424412,
+              "typed": "tâche"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447490203,
+              "typed": "caddie"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447554979,
+              "typed": "poteau"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447613642,
+              "typed": "métallique"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447651385,
+              "typed": "résonna"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447678658,
+              "typed": "gaie"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777447695849,
+              "typed": "au"
+            },
+            {
+              "ok": true,
+              "time": 1777447701401,
+              "typed": "aux"
+            }
+          ]
+        ],
+        "lastSeen": 1777879341670,
+        "results": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 3.5,
+        "solved": 13,
+        "status": "offline",
+        "timestamp": 1777447756706,
+        "total": 13
+      },
+      "znidi_iyad": {
+        "attempts": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          3,
+          1,
+          2,
+          1,
+          1,
+          1
+        ],
+        "errorRefs": [
+          {
+            "idx": 5,
+            "type": "L",
+            "word": "hors"
+          },
+          {
+            "idx": 73,
+            "type": "L",
+            "word": "jeta"
+          },
+          {
+            "idx": 76,
+            "type": "G",
+            "word": "à"
+          },
+          {
+            "idx": 79,
+            "type": "L",
+            "word": "courut"
+          },
+          {
+            "idx": 80,
+            "type": "G",
+            "word": "à"
+          },
+          {
+            "idx": 87,
+            "type": "G",
+            "word": "Abandonner"
+          },
+          {
+            "idx": 100,
+            "type": "G",
+            "word": "à"
+          },
+          {
+            "idx": 106,
+            "type": "G",
+            "word": "dur"
+          },
+          {
+            "idx": 107,
+            "type": "G",
+            "word": "à"
+          },
+          {
+            "idx": 113,
+            "type": "G",
+            "word": "été"
+          },
+          {
+            "idx": 116,
+            "type": "M",
+            "word": "?"
+          },
+          {
+            "idx": 139,
+            "type": "L",
+            "word": "résonna"
+          },
+          {
+            "idx": 146,
+            "type": "L",
+            "word": "gaie"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": true,
+              "time": 1777447251653,
+              "typed": "hors"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447293573,
+              "typed": "jeta"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447309269,
+              "typed": "à"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447915282,
+              "typed": "courut"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447926130,
+              "typed": "à"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447853091,
+              "typed": "Abandonner"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447988682,
+              "typed": "à"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777447538012,
+              "typed": "?"
+            },
+            {
+              "ok": false,
+              "time": 1777447716582,
+              "typed": "la"
+            },
+            {
+              "ok": true,
+              "time": 1777447751971,
+              "typed": "dur"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447767235,
+              "typed": "à"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777447442533,
+              "typed": "étais"
+            },
+            {
+              "ok": true,
+              "time": 1777447653268,
+              "typed": "été"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447955058,
+              "typed": "?"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777447888562,
+              "typed": "résonna"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777448003834,
+              "typed": "gaie"
+            }
+          ]
+        ],
+        "lastSeen": 1779866751998,
+        "results": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 4.25,
+        "solved": 13,
+        "status": "idle",
+        "timestamp": 1777448005042,
+        "total": 13
+      }
+    },
+    "config": {
+      "base": 10,
+      "classe": "4e Pythagore",
+      "competences": [
+        "D1.1 Orthographe grammaticale",
+        "D1.2 Orthographe lexicale",
+        "D1.3 Conjugaison",
+        "D1.6 Ponctuation"
+      ],
+      "eleves": [
+        "ALLIGAND Louka",
+        "BARTHALAY Emma",
+        "BEAUFORT Charlie",
+        "BRETAULT Martin",
+        "BREUIL Nathan",
+        "CAILLET Rosy",
+        "CHAUVAT Faustine",
+        "COLAS Nathan",
+        "DAUNAS Léonie",
+        "DEROUINEAU Louise",
+        "DROCHON Célia",
+        "DUTRUEL Gabin",
+        "ETCHEBARNE EMERIT Léa",
+        "GASOYAN Edouard",
+        "GAUCHER Julian",
+        "GIRARD Alice",
+        "LE LAY Manon",
+        "LEGUAY Lilou",
+        "LUCET Enzo",
+        "MALHERRE Paul",
+        "MARCHAND Loélie",
+        "MAZAN Maëva",
+        "MERCIER Lola",
+        "MIE Manec",
+        "ROMARIE Charly",
+        "SAUNIER Coralie",
+        "TERRIEN Manon",
+        "ZNIDI Iyad"
+      ],
+      "niveau": "4e",
+      "published": true,
+      "text": "Il se tortilla en tremblant hors du sac de couchage, le roula en boule et l’enfourna dans le sac plastique, sous le ventre du caddie. Il s’approcha de la femme, se pencha vers elle dans l’obscurité. Du sang souillait le manteau de fourrure (…) Il s’agenouilla, ramassa le sac à main et l’ouvrit rapidement. (…) Il jeta le sac à terre et courut à son caddie. (…) Courir ? Abandonner Martin ? Est-ce qu’on faisait un truc pareil à un compagnon aussi fidèle et dur à la tâche qu’avait été ce chariot ? (…) De rage, il tira sur le caddie pour tenter de l’arracher au poteau métallique, et la cloche résonna dans la nuit, stupide et gaie. L’homme se pencha sur son chariot, enfonça ses bras au coeur des éponges et les larmes lui montèrent aux yeux.",
+      "title": "Dictée brevet blanc 4E"
+    },
+    "results": {
+      "alligand_louka": {
+        "counts": {
+          "G": 7,
+          "I": 1,
+          "L": 6,
+          "M": 1,
+          "X": 0
+        },
+        "deduction": 12,
+        "errors": [
+          {
+            "idx": 4,
+            "type": "G",
+            "word": "tremblant"
+          },
+          {
+            "idx": 33,
+            "type": "G",
+            "word": "approcha"
+          },
+          {
+            "idx": 44,
+            "type": "M",
+            "word": "’"
+          },
+          {
+            "idx": 50,
+            "type": "I",
+            "word": "le"
+          },
+          {
+            "idx": 58,
+            "type": "G",
+            "word": "agenouilla"
+          },
+          {
+            "idx": 85,
+            "type": "L",
+            "word": "Courir"
+          },
+          {
+            "idx": 87,
+            "type": "G",
+            "word": "Abandonner"
+          },
+          {
+            "idx": 99,
+            "type": "G",
+            "word": "pareil"
+          },
+          {
+            "idx": 108,
+            "type": "L",
+            "word": "la"
+          },
+          {
+            "idx": 109,
+            "type": "L",
+            "word": "tâche"
+          },
+          {
+            "idx": 115,
+            "type": "L",
+            "word": "chariot"
+          },
+          {
+            "idx": 127,
+            "type": "G",
+            "word": "tenter"
+          },
+          {
+            "idx": 131,
+            "type": "G",
+            "word": "arracher"
+          },
+          {
+            "idx": 155,
+            "type": "L",
+            "word": "chariot"
+          },
+          {
+            "idx": 168,
+            "type": "L",
+            "word": "montèrent"
+          }
+        ],
+        "note": 0,
+        "timestamp": 1777410651871
+      },
+      "barthalay_emma": {
+        "counts": {
+          "G": 3,
+          "I": 0,
+          "L": 4,
+          "M": 0,
+          "X": 0
+        },
+        "deduction": 5,
+        "errors": [
+          {
+            "idx": 5,
+            "type": "L",
+            "word": "hors"
+          },
+          {
+            "idx": 49,
+            "type": "G",
+            "word": "souillait"
+          },
+          {
+            "idx": 87,
+            "type": "G",
+            "word": "Abandonner"
+          },
+          {
+            "idx": 106,
+            "type": "G",
+            "word": "dur"
+          },
+          {
+            "idx": 108,
+            "type": "L",
+            "word": "la"
+          },
+          {
+            "idx": 109,
+            "type": "L",
+            "word": "tâche"
+          },
+          {
+            "idx": 134,
+            "type": "L",
+            "word": "métallique"
+          }
+        ],
+        "note": 5,
+        "timestamp": 1777410082392
+      },
+      "beaufort_charlie": {
+        "counts": {
+          "G": 3,
+          "I": 0,
+          "L": 7,
+          "M": 0,
+          "X": 0
+        },
+        "deduction": 6.5,
+        "errors": [
+          {
+            "idx": 5,
+            "type": "L",
+            "word": "hors"
+          },
+          {
+            "idx": 49,
+            "type": "L",
+            "word": "souillait"
+          },
+          {
+            "idx": 79,
+            "type": "L",
+            "word": "courut"
+          },
+          {
+            "idx": 85,
+            "type": "L",
+            "word": "Courir"
+          },
+          {
+            "idx": 87,
+            "type": "G",
+            "word": "Abandonner"
+          },
+          {
+            "idx": 106,
+            "type": "G",
+            "word": "dur"
+          },
+          {
+            "idx": 122,
+            "type": "L",
+            "word": "tira"
+          },
+          {
+            "idx": 134,
+            "type": "L",
+            "word": "métallique"
+          },
+          {
+            "idx": 146,
+            "type": "L",
+            "word": "gaie"
+          },
+          {
+            "idx": 169,
+            "type": "G",
+            "word": "aux"
+          }
+        ],
+        "note": 3.5,
+        "timestamp": 1777410162039
+      },
+      "bretault_martin": {
+        "counts": {
+          "G": 4,
+          "I": 1,
+          "L": 3,
+          "M": 0,
+          "X": 0
+        },
+        "deduction": 6.5,
+        "errors": [
+          {
+            "idx": 28,
+            "type": "L",
+            "word": "caddie"
+          },
+          {
+            "idx": 49,
+            "type": "G",
+            "word": "souillait"
+          },
+          {
+            "idx": 68,
+            "type": "I",
+            "word": "ouvrit"
+          },
+          {
+            "idx": 95,
+            "type": "G",
+            "word": "on"
+          },
+          {
+            "idx": 109,
+            "type": "L",
+            "word": "tâche"
+          },
+          {
+            "idx": 134,
+            "type": "L",
+            "word": "métallique"
+          },
+          {
+            "idx": 160,
+            "type": "G",
+            "word": "au"
+          },
+          {
+            "idx": 168,
+            "type": "G",
+            "word": "montèrent"
+          }
+        ],
+        "note": 3.5,
+        "timestamp": 1777914658516
+      },
+      "breuil_nathan": {
+        "counts": {
+          "G": 0,
+          "I": 0,
+          "L": 5,
+          "M": 0,
+          "X": 0
+        },
+        "deduction": 2.5,
+        "errors": [
+          {
+            "idx": 22,
+            "type": "L",
+            "word": "plastique"
+          },
+          {
+            "idx": 53,
+            "type": "L",
+            "word": "fourrure"
+          },
+          {
+            "idx": 134,
+            "type": "L",
+            "word": "métallique"
+          },
+          {
+            "idx": 139,
+            "type": "L",
+            "word": "résonna"
+          },
+          {
+            "idx": 168,
+            "type": "L",
+            "word": "montèrent"
+          }
+        ],
+        "note": 7.5,
+        "timestamp": 1777410384590
+      },
+      "caillet_rosy": {
+        "counts": {
+          "G": 21,
+          "I": 0,
+          "L": 12,
+          "M": 0,
+          "X": 0
+        },
+        "deduction": 27,
+        "errors": [
+          {
+            "idx": 4,
+            "type": "G",
+            "word": "tremblant"
+          },
+          {
+            "idx": 5,
+            "type": "L",
+            "word": "hors"
+          },
+          {
+            "idx": 49,
+            "type": "G",
+            "word": "souillait"
+          },
+          {
+            "idx": 58,
+            "type": "L",
+            "word": "agenouilla"
+          },
+          {
+            "idx": 60,
+            "type": "L",
+            "word": "ramassa"
+          },
+          {
+            "idx": 65,
+            "type": "G",
+            "word": "et"
+          },
+          {
+            "idx": 68,
+            "type": "G",
+            "word": "ouvrit"
+          },
+          {
+            "idx": 69,
+            "type": "L",
+            "word": "rapidement"
+          },
+          {
+            "idx": 78,
+            "type": "G",
+            "word": "et"
+          },
+          {
+            "idx": 79,
+            "type": "G",
+            "word": "courut"
+          },
+          {
+            "idx": 81,
+            "type": "G",
+            "word": "son"
+          },
+          {
+            "idx": 85,
+            "type": "L",
+            "word": "Courir"
+          },
+          {
+            "idx": 87,
+            "type": "G",
+            "word": "Abandonner"
+          },
+          {
+            "idx": 96,
+            "type": "L",
+            "word": "faisait"
+          },
+          {
+            "idx": 104,
+            "type": "L",
+            "word": "fidèle"
+          },
+          {
+            "idx": 106,
+            "type": "G",
+            "word": "dur"
+          },
+          {
+            "idx": 109,
+            "type": "L",
+            "word": "tâche"
+          },
+          {
+            "idx": 113,
+            "type": "G",
+            "word": "été"
+          },
+          {
+            "idx": 115,
+            "type": "G",
+            "word": "chariot"
+          },
+          {
+            "idx": 127,
+            "type": "G",
+            "word": "tenter"
+          },
+          {
+            "idx": 131,
+            "type": "G",
+            "word": "arracher"
+          },
+          {
+            "idx": 133,
+            "type": "G",
+            "word": "poteau"
+          },
+          {
+            "idx": 134,
+            "type": "L",
+            "word": "métallique"
+          },
+          {
+            "idx": 136,
+            "type": "G",
+            "word": "et"
+          },
+          {
+            "idx": 139,
+            "type": "L",
+            "word": "résonna"
+          },
+          {
+            "idx": 146,
+            "type": "L",
+            "word": "gaie"
+          },
+          {
+            "idx": 151,
+            "type": "G",
+            "word": "se"
+          },
+          {
+            "idx": 154,
+            "type": "G",
+            "word": "son"
+          },
+          {
+            "idx": 158,
+            "type": "G",
+            "word": "ses"
+          },
+          {
+            "idx": 164,
+            "type": "G",
+            "word": "et"
+          },
+          {
+            "idx": 168,
+            "type": "G",
+            "word": "montèrent"
+          },
+          {
+            "idx": 169,
+            "type": "G",
+            "word": "aux"
+          },
+          {
+            "idx": 170,
+            "type": "L",
+            "word": "yeux"
+          }
+        ],
+        "note": 0,
+        "timestamp": 1777410547450
+      },
+      "chauvat_faustine": {
+        "counts": {
+          "G": 4,
+          "I": 0,
+          "L": 9,
+          "M": 0,
+          "X": 0
+        },
+        "deduction": 8.5,
+        "errors": [
+          {
+            "idx": 39,
+            "type": "L",
+            "word": "pencha"
+          },
+          {
+            "idx": 45,
+            "type": "G",
+            "word": "obscurité"
+          },
+          {
+            "idx": 49,
+            "type": "G",
+            "word": "souillait"
+          },
+          {
+            "idx": 85,
+            "type": "L",
+            "word": "Courir"
+          },
+          {
+            "idx": 96,
+            "type": "L",
+            "word": "faisait"
+          },
+          {
+            "idx": 99,
+            "type": "G",
+            "word": "pareil"
+          },
+          {
+            "idx": 106,
+            "type": "G",
+            "word": "dur"
+          },
+          {
+            "idx": 108,
+            "type": "L",
+            "word": "la"
+          },
+          {
+            "idx": 109,
+            "type": "L",
+            "word": "tâche"
+          },
+          {
+            "idx": 115,
+            "type": "L",
+            "word": "chariot"
+          },
+          {
+            "idx": 134,
+            "type": "L",
+            "word": "métallique"
+          },
+          {
+            "idx": 146,
+            "type": "L",
+            "word": "gaie"
+          },
+          {
+            "idx": 155,
+            "type": "L",
+            "word": "chariot"
+          }
+        ],
+        "note": 1.5,
+        "timestamp": 1777410736719
+      },
+      "colas_nathan": {
+        "counts": {
+          "G": 11,
+          "I": 0,
+          "L": 10,
+          "M": 1,
+          "X": 0
+        },
+        "deduction": 17,
+        "errors": [
+          {
+            "idx": 4,
+            "type": "L",
+            "word": "tremblant"
+          },
+          {
+            "idx": 12,
+            "type": "G",
+            "word": "roula"
+          },
+          {
+            "idx": 18,
+            "type": "G",
+            "word": "enfourna"
+          },
+          {
+            "idx": 22,
+            "type": "L",
+            "word": "plastique"
+          },
+          {
+            "idx": 28,
+            "type": "L",
+            "word": "caddie"
+          },
+          {
+            "idx": 33,
+            "type": "G",
+            "word": "approcha"
+          },
+          {
+            "idx": 39,
+            "type": "G",
+            "word": "pencha"
+          },
+          {
+            "idx": 49,
+            "type": "L",
+            "word": "souillait"
+          },
+          {
+            "idx": 58,
+            "type": "G",
+            "word": "agenouilla"
+          },
+          {
+            "idx": 60,
+            "type": "G",
+            "word": "ramassa"
+          },
+          {
+            "idx": 65,
+            "type": "M",
+            "word": "et"
+          },
+          {
+            "idx": 73,
+            "type": "G",
+            "word": "jeta"
+          },
+          {
+            "idx": 79,
+            "type": "L",
+            "word": "courut"
+          },
+          {
+            "idx": 82,
+            "type": "L",
+            "word": "caddie"
+          },
+          {
+            "idx": 85,
+            "type": "L",
+            "word": "Courir"
+          },
+          {
+            "idx": 109,
+            "type": "L",
+            "word": "tâche"
+          },
+          {
+            "idx": 122,
+            "type": "G",
+            "word": "tira"
+          },
+          {
+            "idx": 125,
+            "type": "L",
+            "word": "caddie"
+          },
+          {
+            "idx": 139,
+            "type": "G",
+            "word": "résonna"
+          },
+          {
+            "idx": 146,
+            "type": "L",
+            "word": "gaie"
+          },
+          {
+            "idx": 152,
+            "type": "G",
+            "word": "pencha"
+          },
+          {
+            "idx": 157,
+            "type": "G",
+            "word": "enfonça"
+          }
+        ],
+        "note": 0,
+        "timestamp": 1777410857072
+      },
+      "daunas_leonie": {
+        "counts": {
+          "G": 5,
+          "I": 0,
+          "L": 16,
+          "M": 0,
+          "X": 0
+        },
+        "deduction": 13,
+        "errors": [
+          {
+            "idx": 12,
+            "type": "L",
+            "word": "roula"
+          },
+          {
+            "idx": 14,
+            "type": "L",
+            "word": "boule"
+          },
+          {
+            "idx": 28,
+            "type": "G",
+            "word": "caddie"
+          },
+          {
+            "idx": 33,
+            "type": "L",
+            "word": "approcha"
+          },
+          {
+            "idx": 48,
+            "type": "G",
+            "word": "sang"
+          },
+          {
+            "idx": 49,
+            "type": "L",
+            "word": "souillait"
+          },
+          {
+            "idx": 73,
+            "type": "L",
+            "word": "jeta"
+          },
+          {
+            "idx": 79,
+            "type": "L",
+            "word": "courut"
+          },
+          {
+            "idx": 82,
+            "type": "L",
+            "word": "caddie"
+          },
+          {
+            "idx": 85,
+            "type": "L",
+            "word": "Courir"
+          },
+          {
+            "idx": 104,
+            "type": "L",
+            "word": "fidèle"
+          },
+          {
+            "idx": 106,
+            "type": "G",
+            "word": "dur"
+          },
+          {
+            "idx": 109,
+            "type": "L",
+            "word": "tâche"
+          },
+          {
+            "idx": 114,
+            "type": "G",
+            "word": "ce"
+          },
+          {
+            "idx": 125,
+            "type": "L",
+            "word": "caddie"
+          },
+          {
+            "idx": 127,
+            "type": "L",
+            "word": "tenter"
+          },
+          {
+            "idx": 133,
+            "type": "L",
+            "word": "poteau"
+          },
+          {
+            "idx": 134,
+            "type": "L",
+            "word": "métallique"
+          },
+          {
+            "idx": 157,
+            "type": "L",
+            "word": "enfonça"
+          },
+          {
+            "idx": 168,
+            "type": "L",
+            "word": "montèrent"
+          },
+          {
+            "idx": 169,
+            "type": "G",
+            "word": "aux"
+          }
+        ],
+        "note": 0,
+        "timestamp": 1777410985555
+      },
+      "derouineau_louise": {
+        "counts": {
+          "G": 3,
+          "I": 0,
+          "L": 8,
+          "M": 0,
+          "X": 0
+        },
+        "deduction": 7,
+        "errors": [
+          {
+            "idx": 28,
+            "type": "L",
+            "word": "caddie"
+          },
+          {
+            "idx": 45,
+            "type": "G",
+            "word": "obscurité"
+          },
+          {
+            "idx": 60,
+            "type": "L",
+            "word": "ramassa"
+          },
+          {
+            "idx": 73,
+            "type": "L",
+            "word": "jeta"
+          },
+          {
+            "idx": 79,
+            "type": "L",
+            "word": "courut"
+          },
+          {
+            "idx": 85,
+            "type": "L",
+            "word": "Courir"
+          },
+          {
+            "idx": 87,
+            "type": "G",
+            "word": "Abandonner"
+          },
+          {
+            "idx": 96,
+            "type": "L",
+            "word": "faisait"
+          },
+          {
+            "idx": 106,
+            "type": "G",
+            "word": "dur"
+          },
+          {
+            "idx": 133,
+            "type": "L",
+            "word": "poteau"
+          },
+          {
+            "idx": 134,
+            "type": "L",
+            "word": "métallique"
+          }
+        ],
+        "note": 3,
+        "timestamp": 1777411059989
+      },
+      "drochon_celia": {
+        "counts": {
+          "G": 1,
+          "I": 0,
+          "L": 11,
+          "M": 0,
+          "X": 0
+        },
+        "deduction": 6.5,
+        "errors": [
+          {
+            "idx": 48,
+            "type": "L",
+            "word": "sang"
+          },
+          {
+            "idx": 79,
+            "type": "L",
+            "word": "courut"
+          },
+          {
+            "idx": 85,
+            "type": "L",
+            "word": "Courir"
+          },
+          {
+            "idx": 96,
+            "type": "L",
+            "word": "faisait"
+          },
+          {
+            "idx": 99,
+            "type": "G",
+            "word": "pareil"
+          },
+          {
+            "idx": 108,
+            "type": "L",
+            "word": "la"
+          },
+          {
+            "idx": 109,
+            "type": "L",
+            "word": "tâche"
+          },
+          {
+            "idx": 115,
+            "type": "L",
+            "word": "chariot"
+          },
+          {
+            "idx": 133,
+            "type": "L",
+            "word": "poteau"
+          },
+          {
+            "idx": 134,
+            "type": "L",
+            "word": "métallique"
+          },
+          {
+            "idx": 139,
+            "type": "L",
+            "word": "résonna"
+          },
+          {
+            "idx": 146,
+            "type": "L",
+            "word": "gaie"
+          }
+        ],
+        "note": 3.5,
+        "timestamp": 1777411130929
+      },
+      "dutruel_gabin": {
+        "counts": {
+          "G": 3,
+          "I": 0,
+          "L": 4,
+          "M": 0,
+          "X": 0
+        },
+        "deduction": 5,
+        "errors": [
+          {
+            "idx": 5,
+            "type": "L",
+            "word": "hors"
+          },
+          {
+            "idx": 49,
+            "type": "G",
+            "word": "souillait"
+          },
+          {
+            "idx": 60,
+            "type": "L",
+            "word": "ramassa"
+          },
+          {
+            "idx": 79,
+            "type": "L",
+            "word": "courut"
+          },
+          {
+            "idx": 99,
+            "type": "G",
+            "word": "pareil"
+          },
+          {
+            "idx": 133,
+            "type": "L",
+            "word": "poteau"
+          },
+          {
+            "idx": 160,
+            "type": "G",
+            "word": "au"
+          }
+        ],
+        "note": 5,
+        "timestamp": 1777411198621
+      },
+      "etchebarne_emerit_lea": {
+        "counts": {
+          "G": 6,
+          "I": 0,
+          "L": 8,
+          "M": 0,
+          "X": 0
+        },
+        "deduction": 10,
+        "errors": [
+          {
+            "idx": 12,
+            "type": "L",
+            "word": "roula"
+          },
+          {
+            "idx": 49,
+            "type": "G",
+            "word": "souillait"
+          },
+          {
+            "idx": 58,
+            "type": "L",
+            "word": "agenouilla"
+          },
+          {
+            "idx": 68,
+            "type": "G",
+            "word": "ouvrit"
+          },
+          {
+            "idx": 73,
+            "type": "L",
+            "word": "jeta"
+          },
+          {
+            "idx": 79,
+            "type": "G",
+            "word": "courut"
+          },
+          {
+            "idx": 90,
+            "type": "G",
+            "word": "Est"
+          },
+          {
+            "idx": 99,
+            "type": "G",
+            "word": "pareil"
+          },
+          {
+            "idx": 113,
+            "type": "G",
+            "word": "été"
+          },
+          {
+            "idx": 115,
+            "type": "L",
+            "word": "chariot"
+          },
+          {
+            "idx": 122,
+            "type": "L",
+            "word": "tira"
+          },
+          {
+            "idx": 134,
+            "type": "L",
+            "word": "métallique"
+          },
+          {
+            "idx": 146,
+            "type": "L",
+            "word": "gaie"
+          },
+          {
+            "idx": 155,
+            "type": "L",
+            "word": "chariot"
+          }
+        ],
+        "note": 0,
+        "timestamp": 1777411302752
+      },
+      "gasoyan_edouard": {
+        "counts": {
+          "G": 2,
+          "I": 0,
+          "L": 10,
+          "M": 0,
+          "X": 0
+        },
+        "deduction": 7,
+        "errors": [
+          {
+            "idx": 28,
+            "type": "L",
+            "word": "caddie"
+          },
+          {
+            "idx": 49,
+            "type": "L",
+            "word": "souillait"
+          },
+          {
+            "idx": 58,
+            "type": "L",
+            "word": "agenouilla"
+          },
+          {
+            "idx": 73,
+            "type": "L",
+            "word": "jeta"
+          },
+          {
+            "idx": 79,
+            "type": "G",
+            "word": "courut"
+          },
+          {
+            "idx": 82,
+            "type": "L",
+            "word": "caddie"
+          },
+          {
+            "idx": 85,
+            "type": "L",
+            "word": "Courir"
+          },
+          {
+            "idx": 122,
+            "type": "L",
+            "word": "tira"
+          },
+          {
+            "idx": 125,
+            "type": "L",
+            "word": "caddie"
+          },
+          {
+            "idx": 134,
+            "type": "L",
+            "word": "métallique"
+          },
+          {
+            "idx": 146,
+            "type": "G",
+            "word": "gaie"
+          },
+          {
+            "idx": 157,
+            "type": "L",
+            "word": "enfonça"
+          }
+        ],
+        "note": 3,
+        "timestamp": 1777411375583
+      },
+      "gaucher_julian": {
+        "counts": {
+          "G": 8,
+          "I": 2,
+          "L": 9,
+          "M": 1,
+          "X": 0
+        },
+        "deduction": 15.5,
+        "errors": [
+          {
+            "idx": 2,
+            "type": "L",
+            "word": "tortilla"
+          },
+          {
+            "idx": 12,
+            "type": "I",
+            "word": "roula"
+          },
+          {
+            "idx": 28,
+            "type": "L",
+            "word": "caddie"
+          },
+          {
+            "idx": 49,
+            "type": "G",
+            "word": "souillait"
+          },
+          {
+            "idx": 58,
+            "type": "G",
+            "word": "agenouilla"
+          },
+          {
+            "idx": 63,
+            "type": "M",
+            "word": "à"
+          },
+          {
+            "idx": 68,
+            "type": "G",
+            "word": "ouvrit"
+          },
+          {
+            "idx": 79,
+            "type": "G",
+            "word": "courut"
+          },
+          {
+            "idx": 82,
+            "type": "L",
+            "word": "caddie"
+          },
+          {
+            "idx": 96,
+            "type": "G",
+            "word": "faisait"
+          },
+          {
+            "idx": 106,
+            "type": "G",
+            "word": "dur"
+          },
+          {
+            "idx": 114,
+            "type": "G",
+            "word": "ce"
+          },
+          {
+            "idx": 115,
+            "type": "L",
+            "word": "chariot"
+          },
+          {
+            "idx": 125,
+            "type": "L",
+            "word": "caddie"
+          },
+          {
+            "idx": 131,
+            "type": "L",
+            "word": "arracher"
+          },
+          {
+            "idx": 134,
+            "type": "L",
+            "word": "métallique"
+          },
+          {
+            "idx": 144,
+            "type": "I",
+            "word": "stupide"
+          },
+          {
+            "idx": 146,
+            "type": "L",
+            "word": "gaie"
+          },
+          {
+            "idx": 155,
+            "type": "L",
+            "word": "chariot"
+          },
+          {
+            "idx": 168,
+            "type": "G",
+            "word": "montèrent"
+          }
+        ],
+        "note": 0,
+        "timestamp": 1777411532379
+      },
+      "girard_alice": {
+        "counts": {
+          "G": 6,
+          "I": 0,
+          "L": 3,
+          "M": 0,
+          "X": 0
+        },
+        "deduction": 7.5,
+        "errors": [
+          {
+            "idx": 79,
+            "type": "G",
+            "word": "courut"
+          },
+          {
+            "idx": 85,
+            "type": "L",
+            "word": "Courir"
+          },
+          {
+            "idx": 87,
+            "type": "G",
+            "word": "Abandonner"
+          },
+          {
+            "idx": 99,
+            "type": "G",
+            "word": "pareil"
+          },
+          {
+            "idx": 113,
+            "type": "G",
+            "word": "été"
+          },
+          {
+            "idx": 122,
+            "type": "G",
+            "word": "tira"
+          },
+          {
+            "idx": 134,
+            "type": "L",
+            "word": "métallique"
+          },
+          {
+            "idx": 146,
+            "type": "L",
+            "word": "gaie"
+          },
+          {
+            "idx": 152,
+            "type": "G",
+            "word": "pencha"
+          }
+        ],
+        "note": 2.5,
+        "timestamp": 1777411615845
+      },
+      "le_lay_manon": {
+        "counts": {
+          "G": 3,
+          "I": 0,
+          "L": 5,
+          "M": 0,
+          "X": 0
+        },
+        "deduction": 5.5,
+        "errors": [
+          {
+            "idx": 45,
+            "type": "G",
+            "word": "obscurité"
+          },
+          {
+            "idx": 87,
+            "type": "G",
+            "word": "Abandonner"
+          },
+          {
+            "idx": 109,
+            "type": "L",
+            "word": "tâche"
+          },
+          {
+            "idx": 114,
+            "type": "G",
+            "word": "ce"
+          },
+          {
+            "idx": 115,
+            "type": "L",
+            "word": "chariot"
+          },
+          {
+            "idx": 134,
+            "type": "L",
+            "word": "métallique"
+          },
+          {
+            "idx": 146,
+            "type": "L",
+            "word": "gaie"
+          },
+          {
+            "idx": 155,
+            "type": "L",
+            "word": "chariot"
+          }
+        ],
+        "note": 4.5,
+        "timestamp": 1777411685366
+      },
+      "leguay_lilou": {
+        "counts": {
+          "G": 5,
+          "I": 0,
+          "L": 5,
+          "M": 0,
+          "X": 0
+        },
+        "deduction": 7.5,
+        "errors": [
+          {
+            "idx": 60,
+            "type": "L",
+            "word": "ramassa"
+          },
+          {
+            "idx": 73,
+            "type": "L",
+            "word": "jeta"
+          },
+          {
+            "idx": 79,
+            "type": "G",
+            "word": "courut"
+          },
+          {
+            "idx": 87,
+            "type": "G",
+            "word": "Abandonner"
+          },
+          {
+            "idx": 96,
+            "type": "G",
+            "word": "faisait"
+          },
+          {
+            "idx": 99,
+            "type": "G",
+            "word": "pareil"
+          },
+          {
+            "idx": 115,
+            "type": "L",
+            "word": "chariot"
+          },
+          {
+            "idx": 134,
+            "type": "L",
+            "word": "métallique"
+          },
+          {
+            "idx": 151,
+            "type": "G",
+            "word": "se"
+          },
+          {
+            "idx": 155,
+            "type": "L",
+            "word": "chariot"
+          }
+        ],
+        "note": 2.5,
+        "timestamp": 1777411784056
+      },
+      "lucet_enzo": {
+        "counts": {
+          "G": 6,
+          "I": 0,
+          "L": 10,
+          "M": 0,
+          "X": 0
+        },
+        "deduction": 11,
+        "errors": [
+          {
+            "idx": 4,
+            "type": "G",
+            "word": "tremblant"
+          },
+          {
+            "idx": 5,
+            "type": "L",
+            "word": "hors"
+          },
+          {
+            "idx": 28,
+            "type": "L",
+            "word": "caddie"
+          },
+          {
+            "idx": 49,
+            "type": "L",
+            "word": "souillait"
+          },
+          {
+            "idx": 53,
+            "type": "L",
+            "word": "fourrure"
+          },
+          {
+            "idx": 58,
+            "type": "L",
+            "word": "agenouilla"
+          },
+          {
+            "idx": 79,
+            "type": "G",
+            "word": "courut"
+          },
+          {
+            "idx": 82,
+            "type": "L",
+            "word": "caddie"
+          },
+          {
+            "idx": 87,
+            "type": "G",
+            "word": "Abandonner"
+          },
+          {
+            "idx": 99,
+            "type": "G",
+            "word": "pareil"
+          },
+          {
+            "idx": 104,
+            "type": "G",
+            "word": "fidèle"
+          },
+          {
+            "idx": 106,
+            "type": "G",
+            "word": "dur"
+          },
+          {
+            "idx": 109,
+            "type": "L",
+            "word": "tâche"
+          },
+          {
+            "idx": 125,
+            "type": "L",
+            "word": "caddie"
+          },
+          {
+            "idx": 139,
+            "type": "L",
+            "word": "résonna"
+          },
+          {
+            "idx": 168,
+            "type": "L",
+            "word": "montèrent"
+          }
+        ],
+        "note": 0,
+        "timestamp": 1777411874528
+      },
+      "malherre_paul": {
+        "counts": {
+          "G": 6,
+          "I": 0,
+          "L": 2,
+          "M": 0,
+          "X": 0
+        },
+        "deduction": 7,
+        "errors": [
+          {
+            "idx": 2,
+            "type": "L",
+            "word": "tortilla"
+          },
+          {
+            "idx": 53,
+            "type": "L",
+            "word": "fourrure"
+          },
+          {
+            "idx": 87,
+            "type": "G",
+            "word": "Abandonner"
+          },
+          {
+            "idx": 99,
+            "type": "G",
+            "word": "pareil"
+          },
+          {
+            "idx": 106,
+            "type": "G",
+            "word": "dur"
+          },
+          {
+            "idx": 114,
+            "type": "G",
+            "word": "ce"
+          },
+          {
+            "idx": 146,
+            "type": "G",
+            "word": "gaie"
+          },
+          {
+            "idx": 168,
+            "type": "G",
+            "word": "montèrent"
+          }
+        ],
+        "note": 3,
+        "timestamp": 1777411936931
+      },
+      "marchand_loelie": {
+        "counts": {
+          "G": 3,
+          "I": 0,
+          "L": 6,
+          "M": 0,
+          "X": 0
+        },
+        "deduction": 6,
+        "errors": [
+          {
+            "idx": 58,
+            "type": "L",
+            "word": "agenouilla"
+          },
+          {
+            "idx": 79,
+            "type": "L",
+            "word": "courut"
+          },
+          {
+            "idx": 85,
+            "type": "L",
+            "word": "Courir"
+          },
+          {
+            "idx": 87,
+            "type": "G",
+            "word": "Abandonner"
+          },
+          {
+            "idx": 106,
+            "type": "G",
+            "word": "dur"
+          },
+          {
+            "idx": 108,
+            "type": "L",
+            "word": "la"
+          },
+          {
+            "idx": 109,
+            "type": "L",
+            "word": "tâche"
+          },
+          {
+            "idx": 114,
+            "type": "G",
+            "word": "ce"
+          },
+          {
+            "idx": 146,
+            "type": "L",
+            "word": "gaie"
+          }
+        ],
+        "note": 4,
+        "timestamp": 1777412014877
+      },
+      "mazan_maeva": {
+        "counts": {
+          "G": 8,
+          "I": 0,
+          "L": 10,
+          "M": 0,
+          "X": 1
+        },
+        "deduction": 13.5,
+        "errors": [
+          {
+            "idx": 5,
+            "type": "L",
+            "word": "hors"
+          },
+          {
+            "idx": 14,
+            "type": "L",
+            "word": "boule"
+          },
+          {
+            "idx": 36,
+            "type": "G",
+            "word": "femme"
+          },
+          {
+            "idx": 45,
+            "type": "L",
+            "word": "obscurité"
+          },
+          {
+            "idx": 49,
+            "type": "G",
+            "word": "souillait"
+          },
+          {
+            "idx": 73,
+            "type": "L",
+            "word": "jeta"
+          },
+          {
+            "idx": 76,
+            "type": "G",
+            "word": "à"
+          },
+          {
+            "idx": 79,
+            "type": "G",
+            "word": "courut"
+          },
+          {
+            "idx": 80,
+            "type": "G",
+            "word": "à"
+          },
+          {
+            "idx": 96,
+            "type": "L",
+            "word": "faisait"
+          },
+          {
+            "idx": 100,
+            "type": "G",
+            "word": "à"
+          },
+          {
+            "idx": 102,
+            "type": "L",
+            "word": "compagnon"
+          },
+          {
+            "idx": 108,
+            "type": "L",
+            "word": "la"
+          },
+          {
+            "idx": 109,
+            "type": "L",
+            "word": "tâche"
+          },
+          {
+            "idx": 139,
+            "type": "L",
+            "word": "résonna"
+          },
+          {
+            "idx": 146,
+            "type": "L",
+            "word": "gaie"
+          },
+          {
+            "idx": 158,
+            "type": "G",
+            "word": "ses"
+          },
+          {
+            "idx": 169,
+            "type": "G",
+            "word": "aux"
+          }
+        ],
+        "extras": [
+          {
+            "afterIdx": -1,
+            "word": "."
+          }
+        ],
+        "note": 0,
+        "timestamp": 1777914662612
+      },
+      "mercier_lola": {
+        "counts": {
+          "G": 3,
+          "I": 0,
+          "L": 8,
+          "M": 0,
+          "X": 0
+        },
+        "deduction": 7,
+        "errors": [
+          {
+            "idx": 28,
+            "type": "L",
+            "word": "caddie"
+          },
+          {
+            "idx": 60,
+            "type": "L",
+            "word": "ramassa"
+          },
+          {
+            "idx": 68,
+            "type": "G",
+            "word": "ouvrit"
+          },
+          {
+            "idx": 79,
+            "type": "G",
+            "word": "courut"
+          },
+          {
+            "idx": 87,
+            "type": "G",
+            "word": "Abandonner"
+          },
+          {
+            "idx": 108,
+            "type": "L",
+            "word": "la"
+          },
+          {
+            "idx": 109,
+            "type": "L",
+            "word": "tâche"
+          },
+          {
+            "idx": 133,
+            "type": "L",
+            "word": "poteau"
+          },
+          {
+            "idx": 134,
+            "type": "L",
+            "word": "métallique"
+          },
+          {
+            "idx": 139,
+            "type": "L",
+            "word": "résonna"
+          },
+          {
+            "idx": 146,
+            "type": "L",
+            "word": "gaie"
+          }
+        ],
+        "note": 3,
+        "timestamp": 1777412339422
+      },
+      "mie_manec": {
+        "counts": {
+          "G": 2,
+          "I": 0,
+          "L": 9,
+          "M": 0,
+          "X": 0
+        },
+        "deduction": 6.5,
+        "errors": [
+          {
+            "idx": 4,
+            "type": "L",
+            "word": "tremblant"
+          },
+          {
+            "idx": 58,
+            "type": "L",
+            "word": "agenouilla"
+          },
+          {
+            "idx": 60,
+            "type": "L",
+            "word": "ramassa"
+          },
+          {
+            "idx": 79,
+            "type": "L",
+            "word": "courut"
+          },
+          {
+            "idx": 106,
+            "type": "G",
+            "word": "dur"
+          },
+          {
+            "idx": 122,
+            "type": "L",
+            "word": "tira"
+          },
+          {
+            "idx": 139,
+            "type": "L",
+            "word": "résonna"
+          },
+          {
+            "idx": 146,
+            "type": "L",
+            "word": "gaie"
+          },
+          {
+            "idx": 152,
+            "type": "L",
+            "word": "pencha"
+          },
+          {
+            "idx": 157,
+            "type": "L",
+            "word": "enfonça"
+          },
+          {
+            "idx": 169,
+            "type": "G",
+            "word": "aux"
+          }
+        ],
+        "note": 3.5,
+        "timestamp": 1777412422864
+      },
+      "romarie_charly": {
+        "counts": {
+          "G": 1,
+          "I": 0,
+          "L": 6,
+          "M": 0,
+          "X": 0
+        },
+        "deduction": 4,
+        "errors": [
+          {
+            "idx": 79,
+            "type": "G",
+            "word": "courut"
+          },
+          {
+            "idx": 85,
+            "type": "L",
+            "word": "Courir"
+          },
+          {
+            "idx": 108,
+            "type": "L",
+            "word": "la"
+          },
+          {
+            "idx": 109,
+            "type": "L",
+            "word": "tâche"
+          },
+          {
+            "idx": 139,
+            "type": "L",
+            "word": "résonna"
+          },
+          {
+            "idx": 146,
+            "type": "L",
+            "word": "gaie"
+          },
+          {
+            "idx": 168,
+            "type": "L",
+            "word": "montèrent"
+          }
+        ],
+        "note": 6,
+        "timestamp": 1777412499295
+      },
+      "saunier_coralie": {
+        "counts": {
+          "G": 10,
+          "I": 0,
+          "L": 4,
+          "M": 0,
+          "X": 0
+        },
+        "deduction": 12,
+        "errors": [
+          {
+            "idx": 12,
+            "type": "G",
+            "word": "roula"
+          },
+          {
+            "idx": 49,
+            "type": "G",
+            "word": "souillait"
+          },
+          {
+            "idx": 65,
+            "type": "G",
+            "word": "et"
+          },
+          {
+            "idx": 76,
+            "type": "G",
+            "word": "à"
+          },
+          {
+            "idx": 79,
+            "type": "G",
+            "word": "courut"
+          },
+          {
+            "idx": 87,
+            "type": "G",
+            "word": "Abandonner"
+          },
+          {
+            "idx": 96,
+            "type": "L",
+            "word": "faisait"
+          },
+          {
+            "idx": 100,
+            "type": "G",
+            "word": "à"
+          },
+          {
+            "idx": 109,
+            "type": "L",
+            "word": "tâche"
+          },
+          {
+            "idx": 114,
+            "type": "G",
+            "word": "ce"
+          },
+          {
+            "idx": 127,
+            "type": "G",
+            "word": "tenter"
+          },
+          {
+            "idx": 131,
+            "type": "G",
+            "word": "arracher"
+          },
+          {
+            "idx": 146,
+            "type": "L",
+            "word": "gaie"
+          },
+          {
+            "idx": 168,
+            "type": "L",
+            "word": "montèrent"
+          }
+        ],
+        "note": 0,
+        "timestamp": 1777879657264
+      },
+      "terrien_manon": {
+        "counts": {
+          "G": 3,
+          "I": 0,
+          "L": 10,
+          "M": 0,
+          "X": 0
+        },
+        "deduction": 8,
+        "errors": [
+          {
+            "idx": 22,
+            "type": "L",
+            "word": "plastique"
+          },
+          {
+            "idx": 28,
+            "type": "L",
+            "word": "caddie"
+          },
+          {
+            "idx": 68,
+            "type": "G",
+            "word": "ouvrit"
+          },
+          {
+            "idx": 82,
+            "type": "L",
+            "word": "caddie"
+          },
+          {
+            "idx": 96,
+            "type": "G",
+            "word": "faisait"
+          },
+          {
+            "idx": 108,
+            "type": "L",
+            "word": "la"
+          },
+          {
+            "idx": 109,
+            "type": "L",
+            "word": "tâche"
+          },
+          {
+            "idx": 125,
+            "type": "L",
+            "word": "caddie"
+          },
+          {
+            "idx": 133,
+            "type": "L",
+            "word": "poteau"
+          },
+          {
+            "idx": 134,
+            "type": "L",
+            "word": "métallique"
+          },
+          {
+            "idx": 139,
+            "type": "L",
+            "word": "résonna"
+          },
+          {
+            "idx": 146,
+            "type": "L",
+            "word": "gaie"
+          },
+          {
+            "idx": 169,
+            "type": "G",
+            "word": "aux"
+          }
+        ],
+        "note": 2,
+        "timestamp": 1777412714589
+      },
+      "znidi_iyad": {
+        "counts": {
+          "G": 7,
+          "I": 0,
+          "L": 5,
+          "M": 1,
+          "X": 0
+        },
+        "deduction": 10.5,
+        "errors": [
+          {
+            "idx": 5,
+            "type": "L",
+            "word": "hors"
+          },
+          {
+            "idx": 73,
+            "type": "L",
+            "word": "jeta"
+          },
+          {
+            "idx": 76,
+            "type": "G",
+            "word": "à"
+          },
+          {
+            "idx": 79,
+            "type": "L",
+            "word": "courut"
+          },
+          {
+            "idx": 80,
+            "type": "G",
+            "word": "à"
+          },
+          {
+            "idx": 87,
+            "type": "G",
+            "word": "Abandonner"
+          },
+          {
+            "idx": 100,
+            "type": "G",
+            "word": "à"
+          },
+          {
+            "idx": 106,
+            "type": "G",
+            "word": "dur"
+          },
+          {
+            "idx": 107,
+            "type": "G",
+            "word": "à"
+          },
+          {
+            "idx": 113,
+            "type": "G",
+            "word": "été"
+          },
+          {
+            "idx": 116,
+            "type": "M",
+            "word": "?"
+          },
+          {
+            "idx": 139,
+            "type": "L",
+            "word": "résonna"
+          },
+          {
+            "idx": 146,
+            "type": "L",
+            "word": "gaie"
+          }
+        ],
+        "note": 0,
+        "timestamp": 1777412807521
+      }
+    }
+  }
+}

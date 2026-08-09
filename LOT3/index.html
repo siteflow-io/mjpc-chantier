@@ -9260,7 +9260,7 @@ ATELIER_FORMES.bloc_image=function(id,c,vals){
 ATELIER_FORMES.bloc_consigne=function(id,c,vals,ctx,refs){
   var t=atTexteOuReforme(vals,refs,'texte',ctx.reformOn);
   var corps=ctx.uneParLigne?atLignes(t).filter(function(x){return x.trim();}).map(function(x){return '<div class="f-cons-l">\u25b8 '+atEsc(x)+'</div>';}).join(''):atMultiligne(t);
-  return '<div class="f-bloc f-consigne" data-c="'+id+'">'+(ctx.verbeAction?'<span class="f-verbe">'+atEsc(ctx.verbeAction)+'</span> ':'')+corps+(ctx.motsClesHtml||'')+'</div>';
+  return '<div class="f-bloc f-consigne" data-c="'+id+'">'+(ctx.verbeAction?'<span class="f-verbe" data-c="verbe_action">'+atEsc(ctx.verbeAction)+'</span> ':'')+corps+(ctx.motsClesHtml||'')+'</div>';   /* [LOT3b] le repère du verbe inline */
 };
 ATELIER_FORMES.bloc_question=function(id,c,vals,ctx,refs){
   var t=atTexteOuReforme(vals,refs,'texte',ctx.reformOn);
@@ -11532,7 +11532,16 @@ function ed2PanneauFeuille(ref){
         +'</div>';
       return;
     }
-    if(!c.champs&&!c.intitule_defaut)return;
+    if(!c.champs&&!c.intitule_defaut){
+      /* [LOT3b] la maquette fait foi : UNE CASE COCHÉE = UNE LIGNE, même sans
+         champ. Le clic de zone y atterrit ; la valeur, elle, se remplit toute
+         seule ou se règle par sa case (éditeur de feuille — cochage différé). */
+      h+='<div class="at-edch-fz" data-champ="c-'+id+'" onclick="ed2ClicChamp(\'c-'+id+'\')">'
+        +'<label class="at-edch-lib"><b>'+atEsc(c.libelle)+'</b> <span class="ch-type">'
+        +(c.nature==='rendu'?'r\u00e9glage de rendu \u2014 il porte sur toute la feuille':'se remplit tout seul')
+        +'</span></label></div>';
+      return;
+    }
     h+='<div class="at-edch-fz" data-champ="c-'+id+'" onclick="ed2ClicChamp(\'c-'+id+'\')">'
       +'<label class="at-edch-lib"><b>'+atEsc(c.libelle)+'</b></label>';
     if(c.intitule_defaut)h+=ed2ChampFHtml(ref,id,{k:'intitule',l:'Intitul\u00e9 sur la feuille',kind:'texte'},{intitule:(vals[id]&&typeof vals[id].intitule==='string')?vals[id].intitule:c.intitule_defaut});

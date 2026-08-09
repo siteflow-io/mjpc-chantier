@@ -1,0 +1,44 @@
+{
+  "fichier": "dictee_dictee_brevet_blanc_4e-4e_pythagore_2026-08-09.json",
+  "jetonsActuels": 163,
+  "avant": "21/353",
+  "candidate apostrophe-separee": "353/353",
+  "candidate apostrophe-collee": "21/353",
+  "candidate ponctuation-separee": "145/353",
+  "verdict": "ancienne tokenisation identifiée : « apostrophe-separee » (100 % des mots en place)",
+  "corrigees": 332,
+  "dejaJustes": 21,
+  "apostrophes": [],
+  "mp": [
+    {
+      "eleve": "alligand_louka",
+      "type": "M",
+      "de": 44,
+      "vers": 41
+    },
+    {
+      "eleve": "colas_nathan",
+      "type": "M",
+      "de": 65,
+      "vers": 61
+    },
+    {
+      "eleve": "gaucher_julian",
+      "type": "M",
+      "de": 63,
+      "vers": 59
+    },
+    {
+      "eleve": "znidi_iyad",
+      "type": "M",
+      "de": 116,
+      "vers": 109
+    }
+  ],
+  "nonCorrigees": [],
+  "apres": "353/353",
+  "idxModifies": 336,
+  "champsModifies": 336,
+  "champsHorsIdx": [],
+  "sortie": "corriges/dictee_dictee_brevet_blanc_4e-4e_pythagore_2026-08-09_corrige.json"
+}

@@ -1,0 +1,110 @@
+{
+  "fichier": "dictee_dictee_preparee_5e_grandes_decouvertes-5e_herge_2026-08-09_corrige.json",
+  "jetonsAvant": 93,
+  "jetonsApres": 95,
+  "idxModifies": 141,
+  "migreesVerifiees": 163,
+  "dejaJustes": 0,
+  "mp": [
+    {
+      "eleve": "bouton_amauri",
+      "type": "M",
+      "word": "d'une",
+      "de": 73,
+      "vers": 74
+    },
+    {
+      "eleve": "meunier_annabelle",
+      "type": "M",
+      "word": "ne",
+      "de": 46,
+      "vers": 47
+    }
+  ],
+  "arbitrages": [
+    {
+      "eleve": "bourdais_maxime",
+      "idx": 20,
+      "type": "L",
+      "word": "s'approchèrent",
+      "jetonsCandidats": [
+        "s",
+        "'",
+        "approchèrent"
+      ],
+      "positionCandidate": 20,
+      "note": "le jeton d'origine n'existe plus tel quel : la faute portait-elle sur l'élision ou sur le mot ?"
+    },
+    {
+      "eleve": "gasoyan_lucas",
+      "idx": 20,
+      "type": "G",
+      "word": "s'approchèrent",
+      "jetonsCandidats": [
+        "s",
+        "'",
+        "approchèrent"
+      ],
+      "positionCandidate": 20,
+      "note": "le jeton d'origine n'existe plus tel quel : la faute portait-elle sur l'élision ou sur le mot ?"
+    },
+    {
+      "eleve": "guegnard_lysandre",
+      "idx": 72,
+      "type": "L",
+      "word": "d'une",
+      "jetonsCandidats": [
+        "sont",
+        "d",
+        "'"
+      ],
+      "positionCandidate": 73,
+      "note": "le jeton d'origine n'existe plus tel quel : la faute portait-elle sur l'élision ou sur le mot ?"
+    },
+    {
+      "eleve": "oriot_lisa",
+      "idx": 20,
+      "type": "L",
+      "word": "s'approchèrent",
+      "jetonsCandidats": [
+        "s",
+        "'",
+        "approchèrent"
+      ],
+      "positionCandidate": 20,
+      "note": "le jeton d'origine n'existe plus tel quel : la faute portait-elle sur l'élision ou sur le mot ?"
+    },
+    {
+      "eleve": "reclu_philippine",
+      "idx": 20,
+      "type": "G",
+      "word": "s'approchèrent",
+      "jetonsCandidats": [
+        "s",
+        "'",
+        "approchèrent"
+      ],
+      "positionCandidate": 20,
+      "note": "le jeton d'origine n'existe plus tel quel : la faute portait-elle sur l'élision ou sur le mot ?"
+    },
+    {
+      "eleve": "zilli_marin",
+      "idx": 20,
+      "type": "L",
+      "word": "s'approchèrent",
+      "jetonsCandidats": [
+        "s",
+        "'",
+        "approchèrent"
+      ],
+      "positionCandidate": 20,
+      "note": "le jeton d'origine n'existe plus tel quel : la faute portait-elle sur l'élision ou sur le mot ?"
+    }
+  ],
+  "horsTexte": [],
+  "avant": "163/169 (sous l'ancien découpage)",
+  "apres": "163/169 (sous le nouveau découpage ; l'écart = les arbitrages)",
+  "champsModifies": 141,
+  "champsHorsIdx": [],
+  "sortie": "migres/dictee_dictee_preparee_5e_grandes_decouvertes-5e_herge_2026-08-09_migre.json"
+}

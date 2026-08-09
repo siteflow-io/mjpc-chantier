@@ -65,3 +65,41 @@ Et **`atOuvrirDoc` fait une copie profonde** (`AT.doc=JSON.parse(JSON.stringify(
 
 ## Dette observée en passant (préexistante, hors mandat, non traitée)
 Dans le panneau, cliquer le bloc d'un item **non courant** (`item-<k>`) sélectionne la ligne `item-<k>` mais le halo du papier suit `ED2.courant` (car `ed2ClicChamp` passe `ED2.courant`, pas l'item de la clé). Effet cosmétique (halo), comportement d'avant le correctif — consigné à la spec.
+
+---
+---
+
+# CORRECTIF FINAL — LA DETTE SOLDÉE (et le tour complet des dettes)
+
+**Base** : le correctif ⑦+⑧ (937 765 o, md5 `7d0960f0…37d621` — vérifié avant édition).
+**Livré** : `index.html` **940 936 o**, md5 `427b8905eb02c4776523f604dc6b4e82`, pastille **8.44.2**. Diff : 105 lignes. Dual parser vert. **829 → 830 fonctions (0 supprimée, la neuve est `ed2CleLire`).** Vue élève publiée base ↔ final : **22 264 o identiques, 0 exception**.
+
+## La dette du halo — soldée
+
+`ed2ClicChamp` passait `ED2.courant` ; la clé porte l'item. Réparation au motif d'`ed2ClicDocument` : **une lectrice unique `ed2CleLire`** (règle du mandat) lit les deux motifs (`c-<item>-<comp>-<rang>` — l'item PEUT contenir des tirets, slugs d'`itemCreer` ; la composante jamais, mesuré — et `item-<k>`), `ed2ZoneDe` est **refactorée dessus** (plus aucune seconde décomposition), et `ed2ClicChamp` fait `ed2Poser(item de la clé)` puis sélection. `ed2Poser` est léger et synchrone (halo + marque du sommaire, sort si déjà courant — **aucun re-rendu du panneau**, donc aucun focus perdu).
+
+**Écart déclaré à la lettre de la consigne** : elle disait « clé d'item `item-<k>` → garde `ED2.courant` ». Or la dette énoncée EST le cas `item-<k>` (« cliquer le **bloc d'un item** non courant ») — la lettre aurait contredit l'objet. `ed2CleLire` lit donc aussi `item-<k>` → `k`. Seul `'title'` (et toute clé étrangère) garde `ED2.courant`. À trancher à l'audit si désaccord.
+
+**Réponse à la question posée** : oui, la feuille de la ligne cliquée **devient courante** — halo, marque du sommaire, `ED2.refCourant` (donc Imprimer/Ouvrir visent la bonne feuille) ; le panneau, lui, porte déjà toutes les lignes (LOT ④-①) et ne re-rend pas. C'est le comportement juste : les trois colonnes parlent de la même chose.
+
+**Preuves (t72, gestes réels, décor taille réelle, 0 exception)** — deux feuilles éloignées, les deux sens :
+- courant **a1 (tête)** → clic ligne titre de **h2 (queue)** : courant=h2, halo=h2 **visible dans le papier**, sommaire=h2, zone `titre` rang 0 allumée, ligne `c-h2-titre-0` dorée. Capture `captures/cap_autre_feuille.png` (examinée : « Grille de critères » Ch. 1 · S. 7, halo + zone + ligne dorées).
+- courant **h2 (queue)** → clic ligne **3ᵉ définition de d1 (milieu)** : courant=d1, halo visible, sommaire=d1, zone `definition` **rang 2** allumée.
+- **le cas même de la dette** : courant e2 → clic du **bloc** `item-a1` : courant=a1, halo=a1, sommaire=a1, 0 zone (clé sans composante).
+- non-régression, ligne de la feuille courante : identique à avant. t70/t71/t60/t61 rejoués : verts (et le ⓓ de t70 rend désormais `pdocSel:"a1"` — la dette se voit soldée jusque dans l'ancien test).
+
+## Le tour des dettes des deux rapports — traitées ou motivées, rien de reporté en silence
+
+**TRAITÉES CE LOT :**
+- **D1 · `_siteGet` panne/vide** : `cb(v, err)` + `if(!r.ok)throw` — rétro-compatible (17 appelants : null sur panne, comme avant ; `err` pour qui veut distinguer). Les **deux messages qui avouaient l'ambiguïté** (« Impossible de lire… **ou** l'atelier est vide », `edPrendreFeuille` et `edProposerLiaisons`) deviennent **deux messages nets** (panne → « Le réseau n'a pas répondu… réessaie » ; vide → « L'atelier ne contient encore aucune feuille »). Banc : panne murée → `{v:null, err:true}` ; nœud vide → `{v:null, err:false}`.
+- **D2 · jumeaux de titre (`chAfficherInventaire`)** : les homonymes se comptent ; s'il y en a plusieurs, **bandeau** en tête d'inventaire (« ⚠ N chapitres portent ce titre (n° …) — l'inventaire compare au n° X. Renomme… »). On ne devine pas (le titre est l'unique lien du JSON injecté — principe de la liaison par les titres) : on prévient. Comportement de choix inchangé (le dernier), désormais **dit**. Capture `captures/cap_jumeaux.png` (examinée).
+- **D2b · découverte du banc, traitée séance tenante (règle du jour)** : `chInventaire` faisait `.forEach` sur `existant.seances` — **tableau attendu, or le hub livre l'OBJET dès qu'il y a des trous** (même mesure que `[C5-ORD]`, qui n'avait corrigé que les chapitres) : un chapitre à séance supprimée faisait tomber **l'écran d'inventaire entier** en exception. Les trois boucles passent par `atSeances`/`ordPaires` (le parcoureur canonique : deux formes, trous filtrés, ordre canonique, clé réelle `j`). Prouvé : l'inventaire complet rend sous séances en objet (même capture).
+
+**MOTIVÉES — pourquoi pas dans ce lot :**
+- *Cocher/décocher depuis le panneau* et *↩ Annuler sur champs de feuille* : **différés de MANDAT** (décisions de conception, LOT ③/②), pas des oublis. Le premier = recomposer le document (ordre des sections, valeurs typées par défaut), pas un bouton ; le second exige un second journal d'annulation réconcilié avec l'écrivain débounce (annuler pendant le timer). Chantiers propres, au registre.
+- *Hauteur = maquette écran* : **limite de méthode assumée** — mesure exacte imprimante = rendu print réel, non mesurable au banc, fragile en prod ; l'A4 écran est aux mêmes pixels (794×1123) et Paul tranche sur papier réel.
+- *Présentation persistée avec le prompt* : fonctionnalité **M-PROMPT-ARCHIVES**, chantier nommé, hors périmètre de l'éditeur de chapitre.
+- *Glisser-déposer* : **explicitement différé par le mandat LOT ②** (les flèches ↑↓ portent l'ordre).
+- *Navigation élève abrégée du banc* : dette d'**outil de test**, pas du produit (la vue élève du banc entre par l'écran publié directement au lieu du parcours menu complet) ; rien à livrer en prod, à enrichir au banc d'un prochain lot.
+
+Aucune dette des deux rapports ne reste sans traitement ni motif.

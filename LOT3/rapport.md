@@ -63,3 +63,28 @@ Même montage que LOT ② (M8 natif + filet `mjpcEcrireRest` journalisé, mur r�
 2. Différé : « ↩ Annuler » (LOT ②) ne couvre pas encore les champs de feuille du panneau.
 3. Notée : la hauteur mesurée suit la maquette écran, pas la sortie imprimante.
 4. Dettes des lots précédents inchangées : « Dupliquer » mort (select), présentation persistée avec le prompt, glisser-déposer, jumeaux de titre, _siteGet panne/vide, navigation élève abrégée du banc.
+
+
+---
+
+# CORRECTIF LOT ③b — LE POINTAGE FIN, COMME DANS LA MAQUETTE (09/08, même pastille 8.43.0)
+
+**Ce qui manquait, mesuré chez moi.** L'inventaire exhaustif au banc (doc-sonde cochant les 114 composantes non réservées) a donné l'état vrai : 97 zones rendues portaient déjà leur `data-c` (les formes de l'atelier le posent), **mais le PANNEAU n'avait de ligne que pour les cases à champs** — le clic sur `date_edition`, `marque_mjpc`, `version_document`, `case_compris`… ne trouvait AUCUNE ligne et retombait en apparence sur la feuille ; et le **verbe d'action inline** (servi dans le bloc consigne via `ctx.verbeAction`, hors de sa forme dédiée) n'avait pas de repère.
+
+**Les deux correctifs, fidèles à `corpsFeuille()` de la maquette (lue et rejouée) :**
+1. **Une case cochée = une ligne**, sans exception : `ed2PanneauFeuille` pose désormais une ligne `data-champ="c-<id>"` pour TOUTE case cochée — celles sans champ portent leur libellé et la mention « se remplit tout seul » ou « réglage de rendu — il porte sur toute la feuille » (2 076 → 2 670 o).
+2. Le span inline du verbe d'action reçoit `data-c="verbe_action"` — attribut neutre, rien d'affiché en plus, posé là où la zone se produit (forme `ATELIER_FORMES.bloc_consigne`, fragment 6 957 → 7 022 o). Le rendu partagé (aperçu, impression, feuille élève) n'affiche rien de nouveau.
+
+**LA PREUVE EXIGÉE — zone cliquée → ligne ouverte, par clics souris réels sur la feuille remplie :**
+| Zone cliquée | Ligne ouverte (data-champ · libellé) | Exacte |
+|---|---|---|
+| titre | `c-titre` · « Afficher le titre de la feuille » | ✔ |
+| objectif | `c-objectif` · « Afficher l'objectif de la séance » | ✔ |
+| notions | `c-notions` · « Afficher les notions visées » | ✔ |
+| consigne (bloc) | `c-consigne` · « Ajouter une consigne » | ✔ |
+| zone_lignee (bloc) | `c-zone_lignee` · « Ajouter une zone lignée pour écrire » | ✔ |
+| mention_conserver | `c-mention_conserver` · « Afficher la mention « à conserver » » | ✔ |
+
+Chaque fois : focus DANS la ligne ouverte. Capturé sur « Notions visées » (`cap_pointage_notions.png` : la zone soulignée à droite, LA ligne « Afficher les notions visées » dorée à gauche, curseur dans son champ — pas la première ligne).
+
+**Le balayage EXHAUSTIF (au-delà des six)** : sur le doc-sonde aux 114 cases cochées, chaque zone `[data-c]` du document a été cliquée par le même chemin que la souris (`ed2ClicPapier`) : **97 zones rendues → 97 pointages exacts, 0 faux, 0 sans ligne** ; le panneau porte 155 lignes. Les 17 composantes sans zone propre, nommées : les 16 **réglages de rendu** (`police_adaptee`, `interligne`, `contraste`, `orientation_paysage`… — ils N'ONT pas de zone à eux : ils SONT l'apparence de toute la feuille, en classes `r-*` ; leur ligne existe au panneau et se pointe depuis lui) et `numerotation_lot` (ne se rend qu'avec un rang d'élève — sa ligne existe). Vue élève republiée : 12 173 o identiques base ↔ LOT3, 0 exception. 0 fonction supprimée (835 → 848 inchangé).

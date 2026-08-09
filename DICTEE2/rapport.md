@@ -72,3 +72,37 @@ Aucune phrase nouvelle : seuls les **numéros** (dans les trous et au détail) e
 
 ## Captures livrées
 `capture-00-defaut-base.png` (BASE : le défaut) · `capture-01-banksy-ecran.png` · `capture-02-banksy-detail.png` · `capture-03-louann-mp.png` · `capture-04-sans-faute.png` · `capture-05-herge-inchange.png` · `capture-06-mixte.png` · `capture-07-modale-eleve.png` · `capture-08-export-seul.png`
+
+---
+
+## RÉVISION du 09/08 — retrait d'`alignerErreurs` (avant promotion)
+
+Sur décision de Paul (« les données martyres » : on corrige les données, pas le code),
+la fonction `alignerErreurs` et son appel sont **retirés**. La faiblesse mesurée par la
+conscience était réelle : la recherche par contenu en avançant dans le texte ne
+garantit pas la bonne occurrence d'un mot répété (« caddie » ×4 dans le brevet 4e).
+Le rendu utilise à nouveau l'`idx` tel qu'il est enregistré. Rien d'autre n'a bougé :
+trous numérotés, `data-trou`, suppression de l'« essai retenu », puces neutres,
+espace avant parenthèse — tout est conservé.
+
+**Tailles et empreintes** : livraison précédente 594 421 o, md5
+`32eddd4a4bd1100e3632ab7515dc1acf` → livraison révisée **592 783 o**, md5
+`a52eb5fc481302688391312f0a3ec98e`. Fonctions : 285, comme la production
+(`alignerErreurs`, seule ajoutée, est retirée ; `buildCopieHtml` passe de 21 778 à
+21 864 o — le commentaire de décision remplace l'appel ; `displayTranscript` 124 o et
+`tokSp` 155 o inchangés depuis DICTEE2).
+
+**Banc rejoué (mêmes gestes, mêmes données réelles)** :
+- 5e Hergé (idx justes) : copie de PINEAU Clemence **strictement identique octet pour
+  octet** à la livraison auditée ; mixte NOUTEAU Quentin : trous 1→4 identiques.
+- 4e Banksy (idx encore faux au hub) : trous au mauvais endroit et mots corrects
+  visibles — **attendu et non compensé** : ce sera juste après réinjection des
+  snapshots corrigés.
+- **Preuve de convergence** : le même banc, rejoué avec le snapshot corrigé de la 4e
+  injecté en mémoire dans le seed, redonne exactement le comportement audité —
+  Elyse 14 trous 1→14 aux bonnes places, Louann 36, aucune fuite illégitime,
+  trois contextes conformes.
+
+**Noté pour la suite (rien codé)** : l'apostrophe et les guillemets cliquables
+(famille « Apostrophes et élisions » de la taxonomie) changeront le découpage donc
+les positions ; les trous numérotés devront suivre cette migration le moment venu.

@@ -1,0 +1,182 @@
+{
+  "fichier": "dictee_dictee_brevet_blanc_3e-3e_charles_de_gaulle_2026-08-09.json",
+  "jetonsActuels": 140,
+  "avant": "33/262",
+  "candidate apostrophe-separee": "262/262",
+  "candidate apostrophe-collee": "33/262",
+  "candidate ponctuation-separee": "33/262",
+  "verdict": "ancienne tokenisation identifiée : « apostrophe-separee » (100 % des mots en place)",
+  "corrigees": 229,
+  "dejaJustes": 33,
+  "apostrophes": [],
+  "mp": [
+    {
+      "eleve": "augereau_gatien",
+      "type": "P",
+      "de": 128,
+      "vers": 125
+    },
+    {
+      "eleve": "bressin_titouan",
+      "type": "P",
+      "de": 128,
+      "vers": 125
+    },
+    {
+      "eleve": "caldeira_tiago",
+      "type": "P",
+      "de": 128,
+      "vers": 125
+    },
+    {
+      "eleve": "cesbron_lili",
+      "type": "P",
+      "de": 128,
+      "vers": 125
+    },
+    {
+      "eleve": "chalumeau_jules",
+      "type": "M",
+      "de": 52,
+      "vers": 51
+    },
+    {
+      "eleve": "chalumeau_jules",
+      "type": "P",
+      "de": 128,
+      "vers": 125
+    },
+    {
+      "eleve": "chan_aymeric",
+      "type": "P",
+      "de": 88,
+      "vers": 86
+    },
+    {
+      "eleve": "chan_aymeric",
+      "type": "P",
+      "de": 128,
+      "vers": 125
+    },
+    {
+      "eleve": "cholet_pierre",
+      "type": "P",
+      "de": 128,
+      "vers": 125
+    },
+    {
+      "eleve": "chouteau_baptistine",
+      "type": "P",
+      "de": 128,
+      "vers": 125
+    },
+    {
+      "eleve": "delacroix_romain",
+      "type": "P",
+      "de": 128,
+      "vers": 125
+    },
+    {
+      "eleve": "desbois_auriane",
+      "type": "P",
+      "de": 128,
+      "vers": 125
+    },
+    {
+      "eleve": "deslin_lucas",
+      "type": "P",
+      "de": 17,
+      "vers": 16
+    },
+    {
+      "eleve": "deslin_lucas",
+      "type": "P",
+      "de": 128,
+      "vers": 125
+    },
+    {
+      "eleve": "heinrich_clovis",
+      "type": "M",
+      "de": 52,
+      "vers": 51
+    },
+    {
+      "eleve": "heinrich_clovis",
+      "type": "M",
+      "de": 56,
+      "vers": 55
+    },
+    {
+      "eleve": "heinrich_clovis",
+      "type": "P",
+      "de": 128,
+      "vers": 125
+    },
+    {
+      "eleve": "jamin_noe",
+      "type": "P",
+      "de": 128,
+      "vers": 125
+    },
+    {
+      "eleve": "kock_elisa",
+      "type": "P",
+      "de": 128,
+      "vers": 125
+    },
+    {
+      "eleve": "laury_mael",
+      "type": "M",
+      "de": 52,
+      "vers": 51
+    },
+    {
+      "eleve": "laury_mael",
+      "type": "M",
+      "de": 93,
+      "vers": 90
+    },
+    {
+      "eleve": "laury_mael",
+      "type": "M",
+      "de": 132,
+      "vers": 128
+    },
+    {
+      "eleve": "poulain_helin_zelia",
+      "type": "P",
+      "de": 128,
+      "vers": 125
+    },
+    {
+      "eleve": "poulain_helin_zelia",
+      "type": "M",
+      "de": 132,
+      "vers": 128
+    },
+    {
+      "eleve": "revet_lucas",
+      "type": "P",
+      "de": 128,
+      "vers": 125
+    },
+    {
+      "eleve": "tenneguin_arthur",
+      "type": "M",
+      "de": 19,
+      "vers": 18
+    },
+    {
+      "eleve": "tenneguin_arthur",
+      "type": "P",
+      "de": 128,
+      "vers": 125
+    }
+  ],
+  "nonCorrigees": [],
+  "apres": "262/262",
+  "idxModifies": 256,
+  "champsModifies": 256,
+  "champsHorsIdx": [],
+  "sortie": "corriges/dictee_dictee_brevet_blanc_3e-3e_charles_de_gaulle_2026-08-09_corrige.json"
+}

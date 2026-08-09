@@ -1,0 +1,4486 @@
+{
+  "_meta": {
+    "source": "correction_dictee/dictee_preparee_5e_grandes_decouvertes-5e_herge",
+    "exportedAt": "2026-08-09T13:28:37.197Z",
+    "exportedBy": "snapshot_tool",
+    "version": 1
+  },
+  "data": {
+    "absents": {
+      "antonini_maiwen": true
+    },
+    "autocorrection": {
+      "barillet_biemon_axel": {
+        "attempts": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "errorRefs": [
+          {
+            "idx": 1,
+            "type": "L",
+            "word": "aperçut"
+          },
+          {
+            "idx": 4,
+            "type": "L",
+            "word": "immense"
+          },
+          {
+            "idx": 24,
+            "type": "G",
+            "word": "échanger"
+          },
+          {
+            "idx": 26,
+            "type": "L",
+            "word": "pelotes"
+          },
+          {
+            "idx": 28,
+            "type": "G",
+            "word": "coton"
+          },
+          {
+            "idx": 37,
+            "type": "G",
+            "word": "sagaies"
+          },
+          {
+            "idx": 41,
+            "type": "G",
+            "word": "comprit"
+          },
+          {
+            "idx": 40,
+            "type": "G",
+            "word": "il"
+          },
+          {
+            "idx": 46,
+            "type": "G",
+            "word": "représentaient"
+          },
+          {
+            "idx": 73,
+            "type": "G",
+            "word": "grande"
+          },
+          {
+            "idx": 74,
+            "type": "G",
+            "word": "bonté"
+          },
+          {
+            "idx": 78,
+            "type": "G",
+            "word": "demain"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": true,
+              "time": 1777983570992,
+              "typed": "Aperçut"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777983590553,
+              "typed": "Immense"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777983607846,
+              "typed": "Échanger"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777983625576,
+              "typed": "Pelotes"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777983658686,
+              "typed": "Coton"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777983695076,
+              "typed": "Sagaies"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777983737115,
+              "typed": "Comprit"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777983712257,
+              "typed": "Il"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777983762136,
+              "typed": "Représentaient"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777983783906,
+              "typed": "Grande"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777983804951,
+              "typed": "Bonté"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777983822914,
+              "typed": "Demain"
+            }
+          ]
+        ],
+        "lastSeen": 1784375727133,
+        "results": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 5,
+        "solved": 12,
+        "status": "idle",
+        "timestamp": 1777983824115,
+        "total": 12
+      },
+      "berthonneau_izzie": {
+        "attempts": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "errorRefs": [
+          {
+            "idx": 24,
+            "type": "G",
+            "word": "échanger"
+          },
+          {
+            "idx": 36,
+            "type": "G",
+            "word": "leurs"
+          },
+          {
+            "idx": 46,
+            "type": "G",
+            "word": "représentaient"
+          },
+          {
+            "idx": 71,
+            "type": "G",
+            "word": "sont"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": true,
+              "time": 1777982553868,
+              "typed": "Échanger"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777982568148,
+              "typed": "Leurs"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777982706165,
+              "typed": "Représentaient"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777982668391,
+              "typed": "Sont"
+            }
+          ]
+        ],
+        "lastSeen": 1777982984715,
+        "results": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 5,
+        "solved": 4,
+        "status": "offline",
+        "timestamp": 1777982707366,
+        "total": 4
+      },
+      "bossard_candice": {
+        "attempts": [
+          1,
+          1
+        ],
+        "errorRefs": [
+          {
+            "idx": 46,
+            "type": "L",
+            "word": "représentaient"
+          },
+          {
+            "idx": 28,
+            "type": "G",
+            "word": "coton"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": true,
+              "time": 1777983509680,
+              "typed": "Représentaient"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777983519273,
+              "typed": "Coton"
+            }
+          ]
+        ],
+        "lastSeen": 1777983521176,
+        "results": [
+          true,
+          true
+        ],
+        "score": 5,
+        "solved": 2,
+        "status": "active",
+        "timestamp": 1777983520475,
+        "total": 2
+      },
+      "bourdais_maxime": {
+        "attempts": [
+          1,
+          1,
+          1,
+          1,
+          2,
+          1
+        ],
+        "errorRefs": [
+          {
+            "idx": 20,
+            "type": "L",
+            "word": "s'approchèrent"
+          },
+          {
+            "idx": 23,
+            "type": "G",
+            "word": "voulaient"
+          },
+          {
+            "idx": 37,
+            "type": "L",
+            "word": "sagaies"
+          },
+          {
+            "idx": 43,
+            "type": "G",
+            "word": "ces"
+          },
+          {
+            "idx": 46,
+            "type": "G",
+            "word": "représentaient"
+          },
+          {
+            "idx": 69,
+            "type": "G",
+            "word": "Ces"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": true,
+              "time": 1777983049380,
+              "typed": "S'approcherent"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777982738897,
+              "typed": "Voulaient"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777982762029,
+              "typed": "Sagaies"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777982770162,
+              "typed": "Ces"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777982894549,
+              "typed": "Représenaient"
+            },
+            {
+              "ok": true,
+              "time": 1777983108735,
+              "typed": "Représentaient"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777982905390,
+              "typed": "Ces"
+            }
+          ]
+        ],
+        "lastSeen": 1777983481100,
+        "results": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 4.75,
+        "solved": 6,
+        "status": "idle",
+        "timestamp": 1777983109937,
+        "total": 6
+      },
+      "bouton_amauri": {
+        "attempts": [
+          1,
+          1,
+          1,
+          2,
+          1,
+          1
+        ],
+        "errorRefs": [
+          {
+            "idx": 24,
+            "type": "G",
+            "word": "échanger"
+          },
+          {
+            "idx": 48,
+            "type": "L",
+            "word": "danger"
+          },
+          {
+            "idx": 58,
+            "type": "L",
+            "word": "regagnèrent"
+          },
+          {
+            "idx": 72,
+            "type": "M",
+            "word": "d'une"
+          },
+          {
+            "idx": 73,
+            "type": "G",
+            "word": "grande"
+          },
+          {
+            "idx": 74,
+            "type": "G",
+            "word": "bonté"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": true,
+              "time": 1777982710354,
+              "typed": "échanger"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777982752913,
+              "typed": "danger"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777982843869,
+              "typed": "regagnèrent"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777982882534,
+              "typed": "d ’une"
+            },
+            {
+              "ok": true,
+              "time": 1777983082519,
+              "typed": "d’une"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777983101559,
+              "typed": "grande"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777983111977,
+              "typed": "bonté"
+            }
+          ]
+        ],
+        "lastSeen": 1777983132157,
+        "results": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 4.75,
+        "solved": 6,
+        "status": "offline",
+        "timestamp": 1777983113179,
+        "total": 6
+      },
+      "burkhard_hortense": {
+        "attempts": [
+          1,
+          1,
+          1
+        ],
+        "errorRefs": [
+          {
+            "idx": 24,
+            "type": "G",
+            "word": "échanger"
+          },
+          {
+            "idx": 46,
+            "type": "L",
+            "word": "représentaient"
+          },
+          {
+            "idx": 69,
+            "type": "G",
+            "word": "Ces"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": true,
+              "time": 1777983017256,
+              "typed": "Échanger"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777983109101,
+              "typed": "Représentaient"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777983120814,
+              "typed": "Ces"
+            }
+          ]
+        ],
+        "lastSeen": 1777983258005,
+        "results": [
+          true,
+          true,
+          true
+        ],
+        "score": 5,
+        "solved": 3,
+        "status": "idle",
+        "timestamp": 1777983122015,
+        "total": 3
+      },
+      "chasles_melinda": {
+        "attempts": [
+          1
+        ],
+        "errorRefs": [
+          {
+            "idx": 60,
+            "type": "L",
+            "word": "navire"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": true,
+              "time": 1777982502338,
+              "typed": "Navire"
+            }
+          ]
+        ],
+        "lastSeen": 1777982506684,
+        "results": [
+          true
+        ],
+        "score": 5,
+        "solved": 1,
+        "status": "offline",
+        "timestamp": 1777982503539,
+        "total": 1
+      },
+      "chesseron_enzo": {
+        "attempts": [
+          1,
+          1,
+          1
+        ],
+        "errorRefs": [
+          {
+            "idx": 34,
+            "type": "L",
+            "word": "navigateur"
+          },
+          {
+            "idx": 41,
+            "type": "G",
+            "word": "comprit"
+          },
+          {
+            "idx": 83,
+            "type": "I",
+            "word": "apporterons"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": true,
+              "time": 1777982784084,
+              "typed": "Navigateur"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777982560242,
+              "typed": "Comprit"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777983397706,
+              "typed": "Apporterons"
+            }
+          ]
+        ],
+        "lastSeen": 1777983543939,
+        "results": [
+          true,
+          true,
+          true
+        ],
+        "score": 5,
+        "solved": 3,
+        "status": "idle",
+        "timestamp": 1777983398907,
+        "total": 3
+      },
+      "clement_lylou": {
+        "attempts": [
+          2,
+          1,
+          5,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2,
+          2,
+          1,
+          1
+        ],
+        "errorRefs": [
+          {
+            "idx": 1,
+            "type": "G",
+            "word": "aperçut"
+          },
+          {
+            "idx": 9,
+            "type": "G",
+            "word": "cette"
+          },
+          {
+            "idx": 23,
+            "type": "G",
+            "word": "voulaient"
+          },
+          {
+            "idx": 24,
+            "type": "G",
+            "word": "échanger"
+          },
+          {
+            "idx": 26,
+            "type": "G",
+            "word": "pelotes"
+          },
+          {
+            "idx": 34,
+            "type": "L",
+            "word": "navigateur"
+          },
+          {
+            "idx": 39,
+            "type": "G",
+            "word": "mais"
+          },
+          {
+            "idx": 43,
+            "type": "G",
+            "word": "ces"
+          },
+          {
+            "idx": 46,
+            "type": "G",
+            "word": "représentaient"
+          },
+          {
+            "idx": 53,
+            "type": "G",
+            "word": "se"
+          },
+          {
+            "idx": 58,
+            "type": "G",
+            "word": "regagnèrent"
+          },
+          {
+            "idx": 63,
+            "type": "G",
+            "word": "écrivit"
+          },
+          {
+            "idx": 74,
+            "type": "G",
+            "word": "bonté"
+          },
+          {
+            "idx": 85,
+            "type": "L",
+            "word": "bonnets"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": false,
+              "time": 1777982582967,
+              "typed": "Apercit"
+            },
+            {
+              "ok": true,
+              "time": 1777982733715,
+              "typed": "Aperçût"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777982626259,
+              "typed": "Cette"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777982648217,
+              "typed": "Voulu"
+            },
+            {
+              "ok": false,
+              "time": 1777982773289,
+              "typed": "Voulu"
+            },
+            {
+              "ok": false,
+              "time": 1777982780652,
+              "typed": "Voulait"
+            },
+            {
+              "ok": false,
+              "time": 1777982786849,
+              "typed": "Voulait"
+            },
+            {
+              "ok": true,
+              "time": 1777983013346,
+              "typed": "Voulaient"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777983038141,
+              "typed": "Échangé"
+            },
+            {
+              "ok": true,
+              "time": 1777983292062,
+              "typed": "Échanger"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777983309809,
+              "typed": "Pelotes"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777983329720,
+              "typed": "Navigateur"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777983210232,
+              "typed": "Mais"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777982937182,
+              "typed": "Ces"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777983373210,
+              "typed": "Représentaient"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777982949394,
+              "typed": "Se"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777983159721,
+              "typed": "Reganèrent"
+            },
+            {
+              "ok": true,
+              "time": 1777983429464,
+              "typed": "Regagnèrent"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777982701772,
+              "typed": "Écris"
+            },
+            {
+              "ok": true,
+              "time": 1777982983320,
+              "typed": "Écrivit"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777983458589,
+              "typed": "Bonté"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777982804113,
+              "typed": "Bonnets"
+            }
+          ]
+        ],
+        "lastSeen": 1778479878066,
+        "results": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 3,
+        "solved": 14,
+        "status": "idle",
+        "timestamp": 1777983459790,
+        "total": 14
+      },
+      "crouy_lola": {
+        "attempts": [
+          1
+        ],
+        "errorRefs": [
+          {
+            "idx": 43,
+            "type": "G",
+            "word": "ces"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": true,
+              "time": 1777982633994,
+              "typed": "Ces"
+            }
+          ]
+        ],
+        "lastSeen": 1777982639027,
+        "results": [
+          true
+        ],
+        "score": 5,
+        "solved": 1,
+        "status": "active",
+        "timestamp": 1777982635196,
+        "total": 1
+      },
+      "davy_noemie": {
+        "attempts": [
+          2,
+          1,
+          1,
+          1,
+          1
+        ],
+        "errorRefs": [
+          {
+            "idx": 1,
+            "type": "G",
+            "word": "aperçut"
+          },
+          {
+            "idx": 28,
+            "type": "L",
+            "word": "coton"
+          },
+          {
+            "idx": 36,
+            "type": "G",
+            "word": "leurs"
+          },
+          {
+            "idx": 69,
+            "type": "G",
+            "word": "Ces"
+          },
+          {
+            "idx": 82,
+            "type": "G",
+            "word": "leur"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": false,
+              "time": 1777982813447,
+              "typed": "Aperçu"
+            },
+            {
+              "ok": true,
+              "time": 1777982823603,
+              "typed": "Aperçut"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777982831844,
+              "typed": "Coton"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777982843554,
+              "typed": "Leurs"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777982866252,
+              "typed": "ces"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777982895276,
+              "typed": "leur"
+            }
+          ]
+        ],
+        "lastSeen": 1777982921386,
+        "results": [
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 4.75,
+        "solved": 5,
+        "status": "offline",
+        "timestamp": 1777982896478,
+        "total": 5
+      },
+      "gasoyan_lucas": {
+        "attempts": [
+          1,
+          1,
+          1,
+          2,
+          1,
+          1,
+          2,
+          1,
+          2
+        ],
+        "errorRefs": [
+          {
+            "idx": 1,
+            "type": "G",
+            "word": "aperçut"
+          },
+          {
+            "idx": 4,
+            "type": "L",
+            "word": "immense"
+          },
+          {
+            "idx": 19,
+            "type": "G",
+            "word": "habitants"
+          },
+          {
+            "idx": 20,
+            "type": "G",
+            "word": "s'approchèrent"
+          },
+          {
+            "idx": 34,
+            "type": "L",
+            "word": "navigateur"
+          },
+          {
+            "idx": 36,
+            "type": "G",
+            "word": "leurs"
+          },
+          {
+            "idx": 46,
+            "type": "G",
+            "word": "représentaient"
+          },
+          {
+            "idx": 57,
+            "type": "G",
+            "word": "marins"
+          },
+          {
+            "idx": 69,
+            "type": "G",
+            "word": "Ces"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": true,
+              "time": 1777982532438,
+              "typed": "Aperçut"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777982556993,
+              "typed": "Immense"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777982640398,
+              "typed": "Habitants"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777982741124,
+              "typed": "S’approchaient"
+            },
+            {
+              "ok": true,
+              "time": 1777982781792,
+              "typed": "S’approchèrent"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777982947550,
+              "typed": "Navigateur"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777983065939,
+              "typed": "Leurs"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777983208420,
+              "typed": "Représentait"
+            },
+            {
+              "ok": true,
+              "time": 1777983224335,
+              "typed": "Représentaient"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777983120681,
+              "typed": "Marins"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777983153674,
+              "typed": "S’est"
+            },
+            {
+              "ok": true,
+              "time": 1777983282506,
+              "typed": "Ces"
+            }
+          ]
+        ],
+        "lastSeen": 1777983304054,
+        "results": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 4.25,
+        "solved": 9,
+        "status": "active",
+        "timestamp": 1777983283707,
+        "total": 9
+      },
+      "guegnard_lysandre": {
+        "attempts": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "errorRefs": [
+          {
+            "idx": 4,
+            "type": "L",
+            "word": "immense"
+          },
+          {
+            "idx": 5,
+            "type": "M",
+            "word": "et"
+          },
+          {
+            "idx": 6,
+            "type": "M",
+            "word": "il"
+          },
+          {
+            "idx": 7,
+            "type": "M",
+            "word": "pensa"
+          },
+          {
+            "idx": 22,
+            "type": "G",
+            "word": "ils"
+          },
+          {
+            "idx": 23,
+            "type": "G",
+            "word": "voulaient"
+          },
+          {
+            "idx": 26,
+            "type": "G",
+            "word": "pelotes"
+          },
+          {
+            "idx": 37,
+            "type": "G",
+            "word": "sagaies"
+          },
+          {
+            "idx": 41,
+            "type": "G",
+            "word": "comprit"
+          },
+          {
+            "idx": 43,
+            "type": "G",
+            "word": "ces"
+          },
+          {
+            "idx": 44,
+            "type": "G",
+            "word": "armes"
+          },
+          {
+            "idx": 46,
+            "type": "G",
+            "word": "représentaient"
+          },
+          {
+            "idx": 58,
+            "type": "G",
+            "word": "regagnèrent"
+          },
+          {
+            "idx": 65,
+            "type": "G",
+            "word": "son"
+          },
+          {
+            "idx": 69,
+            "type": "G",
+            "word": "Ces"
+          },
+          {
+            "idx": 72,
+            "type": "L",
+            "word": "d'une"
+          },
+          {
+            "idx": 83,
+            "type": "G",
+            "word": "apporterons"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": true,
+              "time": 1777983532048,
+              "typed": "Immense"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777983541647,
+              "typed": "Et"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777983547663,
+              "typed": "Il"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777983557565,
+              "typed": "Pensa"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777983566314,
+              "typed": "Ils"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777983577082,
+              "typed": "Voulaient"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777983589980,
+              "typed": "Pelotes"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777983599980,
+              "typed": "Sagaies"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777983609228,
+              "typed": "Comprit"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777983619576,
+              "typed": "Ces"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777983625463,
+              "typed": "Armes"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777983639113,
+              "typed": "Représentaient"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777983667507,
+              "typed": "Regagnèrent"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777983674661,
+              "typed": "Son"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777983679846,
+              "typed": "Ces"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777983688093,
+              "typed": "D’une"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777983705962,
+              "typed": "Apporterons"
+            }
+          ]
+        ],
+        "lastSeen": 1777983817157,
+        "results": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 5,
+        "solved": 17,
+        "status": "offline",
+        "timestamp": 1777983707164,
+        "total": 17
+      },
+      "le_ny_mael": {
+        "attempts": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2
+        ],
+        "errorRefs": [
+          {
+            "idx": 4,
+            "type": "L",
+            "word": "immense"
+          },
+          {
+            "idx": 24,
+            "type": "G",
+            "word": "échanger"
+          },
+          {
+            "idx": 26,
+            "type": "L",
+            "word": "pelotes"
+          },
+          {
+            "idx": 29,
+            "type": "L",
+            "word": "contre"
+          },
+          {
+            "idx": 37,
+            "type": "G",
+            "word": "sagaies"
+          },
+          {
+            "idx": 74,
+            "type": "G",
+            "word": "bonté"
+          },
+          {
+            "idx": 83,
+            "type": "G",
+            "word": "apporterons"
+          },
+          {
+            "idx": 88,
+            "type": "L",
+            "word": "perles"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": true,
+              "time": 1777982553686,
+              "typed": "Immense"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777982604796,
+              "typed": "échanger"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777982639271,
+              "typed": "pelotes"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777982675477,
+              "typed": "contre"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777982705123,
+              "typed": "sagaies"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777982735564,
+              "typed": "bonté"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777982787335,
+              "typed": "apporterons"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777982803660,
+              "typed": "perl3s"
+            },
+            {
+              "ok": true,
+              "time": 1777982819594,
+              "typed": "perles"
+            }
+          ]
+        ],
+        "lastSeen": 1777983460830,
+        "results": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 4.75,
+        "solved": 8,
+        "status": "offline",
+        "timestamp": 1777982820796,
+        "total": 8
+      },
+      "leroux_chloe": {
+        "attempts": [
+          1,
+          1
+        ],
+        "errorRefs": [
+          {
+            "idx": 28,
+            "type": "L",
+            "word": "coton"
+          },
+          {
+            "idx": 77,
+            "type": "L",
+            "word": "reviendrons"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": true,
+              "time": 1777983516810,
+              "typed": "coton"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777983554434,
+              "typed": "reviendrons"
+            }
+          ]
+        ],
+        "lastSeen": 1777983570188,
+        "results": [
+          true,
+          true
+        ],
+        "score": 5,
+        "solved": 2,
+        "status": "offline",
+        "timestamp": 1777983555634,
+        "total": 2
+      },
+      "meunier_annabelle": {
+        "attempts": [
+          3,
+          1,
+          3
+        ],
+        "errorRefs": [
+          {
+            "idx": 1,
+            "type": "L",
+            "word": "aperçut"
+          },
+          {
+            "idx": 45,
+            "type": "M",
+            "word": "ne"
+          },
+          {
+            "idx": 82,
+            "type": "L",
+            "word": "leur"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": false,
+              "time": 1777982389859,
+              "typed": "Aperçu"
+            },
+            {
+              "ok": false,
+              "time": 1777982420574,
+              "typed": "Aperçu"
+            },
+            {
+              "ok": true,
+              "time": 1777982502169,
+              "typed": "Aperçut"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777982674534,
+              "typed": "Ne"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777982527603,
+              "typed": "Leurs"
+            },
+            {
+              "ok": false,
+              "time": 1777982643819,
+              "typed": "leurs"
+            },
+            {
+              "ok": true,
+              "time": 1777982656486,
+              "typed": "Leur"
+            }
+          ]
+        ],
+        "lastSeen": 1777982813376,
+        "results": [
+          true,
+          true,
+          true
+        ],
+        "score": 4,
+        "solved": 3,
+        "status": "offline",
+        "timestamp": 1777982675735,
+        "total": 3
+      },
+      "nouteau_quentin": {
+        "attempts": [
+          1
+        ],
+        "errorRefs": [
+          {
+            "idx": 46,
+            "type": "L",
+            "word": "représentaient"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": true,
+              "time": 1777982869477,
+              "typed": "Représentaient"
+            }
+          ]
+        ],
+        "lastSeen": 1777982891086,
+        "results": [
+          true
+        ],
+        "score": 5,
+        "solved": 1,
+        "status": "offline",
+        "timestamp": 1777982870679,
+        "total": 1
+      },
+      "oger_colas_leonie": {
+        "attempts": [
+          1
+        ],
+        "errorRefs": [
+          {
+            "idx": 43,
+            "type": "G",
+            "word": "ces"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": true,
+              "time": 1777982574729,
+              "typed": "Ces"
+            }
+          ]
+        ],
+        "lastSeen": 1777982583623,
+        "results": [
+          true
+        ],
+        "score": 5,
+        "solved": 1,
+        "status": "offline",
+        "timestamp": 1777982575931,
+        "total": 1
+      },
+      "oriot_lisa": {
+        "attempts": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "errorRefs": [
+          {
+            "idx": 3,
+            "type": "L",
+            "word": "forêt"
+          },
+          {
+            "idx": 20,
+            "type": "L",
+            "word": "s'approchèrent"
+          },
+          {
+            "idx": 41,
+            "type": "G",
+            "word": "comprit"
+          },
+          {
+            "idx": 58,
+            "type": "L",
+            "word": "regagnèrent"
+          },
+          {
+            "idx": 69,
+            "type": "G",
+            "word": "Ces"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": true,
+              "time": 1777983188528,
+              "typed": "forêt"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777983236964,
+              "typed": "s’approchèrent"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777983256654,
+              "typed": "comprit"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777983308547,
+              "typed": "regagnèrent"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777983330724,
+              "typed": "Ces"
+            }
+          ]
+        ],
+        "lastSeen": 1777983444033,
+        "results": [
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 5,
+        "solved": 5,
+        "status": "active",
+        "timestamp": 1777983331924,
+        "total": 5
+      },
+      "pineau_clemence": {
+        "attempts": [
+          1
+        ],
+        "errorRefs": [
+          {
+            "idx": 46,
+            "type": "G",
+            "word": "représentaient"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": true,
+              "time": 1777982486788,
+              "typed": "représentaient"
+            }
+          ]
+        ],
+        "results": [
+          true
+        ],
+        "score": 5,
+        "solved": 1,
+        "timestamp": 1777982487989,
+        "total": 1
+      },
+      "ragueneau_jules": {
+        "attempts": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "errorRefs": [
+          {
+            "idx": 1,
+            "type": "G",
+            "word": "aperçut"
+          },
+          {
+            "idx": 24,
+            "type": "G",
+            "word": "échanger"
+          },
+          {
+            "idx": 37,
+            "type": "G",
+            "word": "sagaies"
+          },
+          {
+            "idx": 41,
+            "type": "G",
+            "word": "comprit"
+          },
+          {
+            "idx": 43,
+            "type": "G",
+            "word": "ces"
+          },
+          {
+            "idx": 46,
+            "type": "G",
+            "word": "représentaient"
+          },
+          {
+            "idx": 57,
+            "type": "L",
+            "word": "marins"
+          },
+          {
+            "idx": 69,
+            "type": "G",
+            "word": "Ces"
+          },
+          {
+            "idx": 83,
+            "type": "G",
+            "word": "apporterons"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": true,
+              "time": 1777983398086,
+              "typed": "Aperçut"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777983446671,
+              "typed": "échanger"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777983480075,
+              "typed": "Sagaies"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777983494937,
+              "typed": "Comprit"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777983512090,
+              "typed": "Ces"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777983535477,
+              "typed": "Représentaient"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777983551346,
+              "typed": "Marins"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777983562045,
+              "typed": "Ces"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777983591219,
+              "typed": "Apporterons"
+            }
+          ]
+        ],
+        "results": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 5,
+        "solved": 9,
+        "timestamp": 1777983592421,
+        "total": 9
+      },
+      "recel_alexandre": {
+        "attempts": [
+          1,
+          1
+        ],
+        "errorRefs": [
+          {
+            "idx": 1,
+            "type": "G",
+            "word": "aperçut"
+          },
+          {
+            "idx": 3,
+            "type": "L",
+            "word": "forêt"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": true,
+              "time": 1777982481634,
+              "typed": "Aperçut"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777982497276,
+              "typed": "Forêt"
+            }
+          ]
+        ],
+        "lastSeen": 1777982507046,
+        "results": [
+          true,
+          true
+        ],
+        "score": 5,
+        "solved": 2,
+        "status": "offline",
+        "timestamp": 1777982498477,
+        "total": 2
+      },
+      "reclu_philippine": {
+        "attempts": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "errorRefs": [
+          {
+            "idx": 7,
+            "type": "L",
+            "word": "pensa"
+          },
+          {
+            "idx": 20,
+            "type": "G",
+            "word": "s'approchèrent"
+          },
+          {
+            "idx": 34,
+            "type": "L",
+            "word": "navigateur"
+          },
+          {
+            "idx": 54,
+            "type": "G",
+            "word": "coucha"
+          },
+          {
+            "idx": 58,
+            "type": "G",
+            "word": "regagnèrent"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": true,
+              "time": 1777982866518,
+              "typed": "pensa"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777982916694,
+              "typed": "s’approchèrent"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777982947793,
+              "typed": "navigateur"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777982998642,
+              "typed": "coucha"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777983034690,
+              "typed": "regagnèrent"
+            }
+          ]
+        ],
+        "lastSeen": 1777983077693,
+        "results": [
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 5,
+        "solved": 5,
+        "status": "offline",
+        "timestamp": 1777983035891,
+        "total": 5
+      },
+      "rigaud_abraham_pauline": {
+        "attempts": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2
+        ],
+        "errorRefs": [
+          {
+            "idx": 11,
+            "type": "L",
+            "word": "était"
+          },
+          {
+            "idx": 22,
+            "type": "G",
+            "word": "ils"
+          },
+          {
+            "idx": 23,
+            "type": "G",
+            "word": "voulaient"
+          },
+          {
+            "idx": 24,
+            "type": "L",
+            "word": "échanger"
+          },
+          {
+            "idx": 28,
+            "type": "G",
+            "word": "coton"
+          },
+          {
+            "idx": 36,
+            "type": "G",
+            "word": "leurs"
+          },
+          {
+            "idx": 37,
+            "type": "G",
+            "word": "sagaies"
+          },
+          {
+            "idx": 46,
+            "type": "L",
+            "word": "représentaient"
+          },
+          {
+            "idx": 74,
+            "type": "G",
+            "word": "bonté"
+          },
+          {
+            "idx": 80,
+            "type": "G",
+            "word": "et"
+          },
+          {
+            "idx": 82,
+            "type": "G",
+            "word": "leur"
+          },
+          {
+            "idx": 83,
+            "type": "L",
+            "word": "apporterons"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": true,
+              "time": 1777982810921,
+              "typed": "Était"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777982823617,
+              "typed": "Ils"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777982834135,
+              "typed": "Voulaient"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777982844460,
+              "typed": "Échanger"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777982853310,
+              "typed": "Coton"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777982859875,
+              "typed": "Leurs"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777982874406,
+              "typed": "Sagaies"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777982888534,
+              "typed": "Représentaient"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777982903516,
+              "typed": "Bonté"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777982911114,
+              "typed": "Et"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777982918112,
+              "typed": "Leur"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777982936638,
+              "typed": "Apporteront"
+            },
+            {
+              "ok": true,
+              "time": 1777982952370,
+              "typed": "Apporterons"
+            }
+          ]
+        ],
+        "lastSeen": 1777983057169,
+        "results": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 4.75,
+        "solved": 12,
+        "status": "offline",
+        "timestamp": 1777982953571,
+        "total": 12
+      },
+      "rotureau_brel_diane": {
+        "attempts": [
+          1,
+          2,
+          1,
+          1
+        ],
+        "errorRefs": [
+          {
+            "idx": 1,
+            "type": "L",
+            "word": "aperçut"
+          },
+          {
+            "idx": 7,
+            "type": "L",
+            "word": "pensa"
+          },
+          {
+            "idx": 37,
+            "type": "G",
+            "word": "sagaies"
+          },
+          {
+            "idx": 69,
+            "type": "G",
+            "word": "Ces"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": true,
+              "time": 1777982531293,
+              "typed": "aperçut"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777982663814,
+              "typed": "pen"
+            },
+            {
+              "ok": true,
+              "time": 1777982682500,
+              "typed": "pensa"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777982570584,
+              "typed": "sagaies"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777982585553,
+              "typed": "Ces"
+            }
+          ]
+        ],
+        "lastSeen": 1777983238509,
+        "results": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 4.75,
+        "solved": 4,
+        "status": "offline",
+        "timestamp": 1777982683701,
+        "total": 4
+      },
+      "rouillard_margaux": {
+        "attempts": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "errorRefs": [
+          {
+            "fautif": "apperçut",
+            "idx": 1,
+            "type": "L",
+            "word": "aperçut"
+          },
+          {
+            "fautif": "immensse",
+            "idx": 4,
+            "type": "L",
+            "word": "immense"
+          },
+          {
+            "fautif": "cottons",
+            "idx": 28,
+            "type": "L",
+            "word": "coton"
+          },
+          {
+            "fautif": "remarqu'à",
+            "idx": 35,
+            "type": "L",
+            "word": "remarqua"
+          },
+          {
+            "fautif": "sagaie",
+            "idx": 37,
+            "type": "G",
+            "word": "sagaies"
+          },
+          {
+            "fautif": "compris",
+            "idx": 41,
+            "type": "G",
+            "word": "comprit"
+          },
+          {
+            "fautif": "régagnère",
+            "idx": 58,
+            "type": "G",
+            "word": "regagnèrent"
+          },
+          {
+            "fautif": "C'est",
+            "idx": 69,
+            "type": "G",
+            "word": "Ces"
+          },
+          {
+            "fautif": "reviendron",
+            "idx": 77,
+            "type": "G",
+            "word": "reviendrons"
+          },
+          {
+            "fautif": "apporteront",
+            "idx": 83,
+            "type": "G",
+            "word": "apporterons"
+          },
+          {
+            "fautif": "bonnes",
+            "idx": 85,
+            "type": "L",
+            "word": "bonnets"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": true,
+              "time": 1777987956084,
+              "typed": "aperçut"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777982895865,
+              "typed": "Immense"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777982969238,
+              "typed": "Coton"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777983007620,
+              "typed": "Remarqua"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777983106015,
+              "typed": "Sagaies"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777983138108,
+              "typed": "Comprit"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777983181498,
+              "typed": "Regagnèrent"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777983201846,
+              "typed": "Ces"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777983235316,
+              "typed": "Reviendrons"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777983222815,
+              "typed": "Apporterons"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777993255431,
+              "typed": "bonnets"
+            }
+          ]
+        ],
+        "lastSeen": 1777993309870,
+        "results": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 5,
+        "solved": 11,
+        "status": "active",
+        "timestamp": 1777993256635,
+        "total": 11
+      },
+      "versiller_inna": {
+        "attempts": [
+          2,
+          1,
+          1,
+          1,
+          1
+        ],
+        "errorRefs": [
+          {
+            "idx": 26,
+            "type": "L",
+            "word": "pelotes"
+          },
+          {
+            "idx": 28,
+            "type": "G",
+            "word": "coton"
+          },
+          {
+            "idx": 34,
+            "type": "L",
+            "word": "navigateur"
+          },
+          {
+            "idx": 83,
+            "type": "G",
+            "word": "apporterons"
+          },
+          {
+            "idx": 85,
+            "type": "L",
+            "word": "bonnets"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": false,
+              "time": 1777982672913,
+              "typed": "Pelotte"
+            },
+            {
+              "ok": true,
+              "time": 1777982685457,
+              "typed": "Pelotes"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777982629176,
+              "typed": "Coton"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777982710998,
+              "typed": "Navigateur"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777982734843,
+              "typed": "Apporterons"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777982757602,
+              "typed": "Bonnets"
+            }
+          ]
+        ],
+        "lastSeen": 1777983071528,
+        "results": [
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 4.75,
+        "solved": 5,
+        "status": "active",
+        "timestamp": 1777982758803,
+        "total": 5
+      },
+      "viau_lucie": {
+        "attempts": [
+          2,
+          1,
+          1,
+          1
+        ],
+        "errorRefs": [
+          {
+            "idx": 1,
+            "type": "L",
+            "word": "aperçut"
+          },
+          {
+            "idx": 28,
+            "type": "G",
+            "word": "coton"
+          },
+          {
+            "idx": 36,
+            "type": "G",
+            "word": "leurs"
+          },
+          {
+            "idx": 83,
+            "type": "G",
+            "word": "apporterons"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": false,
+              "time": 1777982642493,
+              "typed": "Aperçu"
+            },
+            {
+              "ok": true,
+              "time": 1777982704363,
+              "typed": "Aperçut"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777982741842,
+              "typed": "Coton"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777982756624,
+              "typed": "Leurs"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777982785643,
+              "typed": "Apporterons"
+            }
+          ]
+        ],
+        "lastSeen": 1777982824570,
+        "results": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 4.75,
+        "solved": 4,
+        "status": "offline",
+        "timestamp": 1777982786845,
+        "total": 4
+      },
+      "vincent_zelie": {
+        "attempts": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "errorRefs": [
+          {
+            "idx": 41,
+            "type": "G",
+            "word": "comprit"
+          },
+          {
+            "idx": 46,
+            "type": "G",
+            "word": "représentaient"
+          },
+          {
+            "idx": 53,
+            "type": "G",
+            "word": "se"
+          },
+          {
+            "idx": 77,
+            "type": "L",
+            "word": "reviendrons"
+          },
+          {
+            "idx": 82,
+            "type": "G",
+            "word": "leur"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": true,
+              "time": 1777982615931,
+              "typed": "Comprit"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777982701842,
+              "typed": "Représentaient"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777982729657,
+              "typed": "Se"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777982934970,
+              "typed": "Reviendrons"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777982759353,
+              "typed": "Leur"
+            }
+          ]
+        ],
+        "lastSeen": 1777982948020,
+        "results": [
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 5,
+        "solved": 5,
+        "status": "active",
+        "timestamp": 1777982936171,
+        "total": 5
+      },
+      "zilli_marin": {
+        "attempts": [
+          1,
+          2,
+          1,
+          3,
+          2,
+          3,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2,
+          1
+        ],
+        "errorRefs": [
+          {
+            "idx": 1,
+            "type": "L",
+            "word": "aperçut"
+          },
+          {
+            "idx": 7,
+            "type": "G",
+            "word": "pensa"
+          },
+          {
+            "idx": 20,
+            "type": "L",
+            "word": "s'approchèrent"
+          },
+          {
+            "idx": 24,
+            "type": "G",
+            "word": "échanger"
+          },
+          {
+            "idx": 28,
+            "type": "G",
+            "word": "coton"
+          },
+          {
+            "idx": 36,
+            "type": "G",
+            "word": "leurs"
+          },
+          {
+            "idx": 37,
+            "type": "G",
+            "word": "sagaies"
+          },
+          {
+            "idx": 43,
+            "type": "G",
+            "word": "ces"
+          },
+          {
+            "idx": 46,
+            "type": "G",
+            "word": "représentaient"
+          },
+          {
+            "idx": 65,
+            "type": "G",
+            "word": "son"
+          },
+          {
+            "idx": 69,
+            "type": "G",
+            "word": "Ces"
+          },
+          {
+            "idx": 82,
+            "type": "G",
+            "word": "leur"
+          },
+          {
+            "idx": 83,
+            "type": "G",
+            "word": "apporterons"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": true,
+              "time": 1777982454600,
+              "typed": "Aperçut"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777982471351,
+              "typed": "Penssat"
+            },
+            {
+              "ok": true,
+              "time": 1777982485196,
+              "typed": "Pensa"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777982511948,
+              "typed": "S’approchèrent"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777982526959,
+              "typed": "Voulaient"
+            },
+            {
+              "ok": false,
+              "time": 1777982556096,
+              "typed": "Échangé"
+            },
+            {
+              "ok": true,
+              "time": 1777982564496,
+              "typed": "Échanger"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777982584229,
+              "typed": "Cotons"
+            },
+            {
+              "ok": true,
+              "time": 1777982591429,
+              "typed": "Coton"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777982610760,
+              "typed": "L’heure"
+            },
+            {
+              "ok": false,
+              "time": 1777982617595,
+              "typed": "Leur"
+            },
+            {
+              "ok": true,
+              "time": 1777982637760,
+              "typed": "Leurs"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777982658795,
+              "typed": "Sagaies"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777982672477,
+              "typed": "Ces"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777982714344,
+              "typed": "Représentaient"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777982727912,
+              "typed": "Son"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777982752543,
+              "typed": "Ces"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1777982766089,
+              "typed": "Reviendrons"
+            },
+            {
+              "ok": true,
+              "time": 1777982789175,
+              "typed": "Leur"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1777982805758,
+              "typed": "Apporterons"
+            }
+          ]
+        ],
+        "lastSeen": 1777983395959,
+        "results": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 3.25,
+        "solved": 13,
+        "status": "active",
+        "timestamp": 1777982806959,
+        "total": 13
+      }
+    },
+    "config": {
+      "base": 10,
+      "classe": "5e HERGÉ",
+      "competences": [
+        "D1.1 Orthographe grammaticale",
+        "D1.2 Orthographe lexicale",
+        "D1.4 Accords (sujet-verbe, déterminant-nom-adjectif)",
+        "D1.5 Homophones grammaticaux",
+        "D1.6 Ponctuation"
+      ],
+      "niveau": "5e",
+      "published": true,
+      "text": "Colomb aperçut une forêt immense et il pensa que cette terre était la plus belle du monde. Les habitants s'approchèrent car ils voulaient échanger des pelotes de coton contre des grelots. Le navigateur remarqua leurs sagaies, mais il comprit que ces armes ne représentaient aucun danger. Quand le soleil se coucha, les marins regagnèrent le navire. Colomb écrivit dans son journal : \" Ces gens sont d'une grande bonté. Nous reviendrons demain, et nous leur apporterons des bonnets et des perles.\"",
+      "title": "Dictée préparée 5e grandes découvertes"
+    },
+    "results": {
+      "barillet_biemon_axel": {
+        "counts": {
+          "G": 9,
+          "I": 0,
+          "L": 3,
+          "M": 0,
+          "X": 0
+        },
+        "deduction": 10.5,
+        "errors": [
+          {
+            "idx": 1,
+            "type": "L",
+            "word": "aperçut"
+          },
+          {
+            "idx": 4,
+            "type": "L",
+            "word": "immense"
+          },
+          {
+            "idx": 26,
+            "type": "G",
+            "word": "échanger"
+          },
+          {
+            "idx": 28,
+            "type": "L",
+            "word": "pelotes"
+          },
+          {
+            "idx": 30,
+            "type": "G",
+            "word": "coton"
+          },
+          {
+            "idx": 39,
+            "type": "G",
+            "word": "sagaies"
+          },
+          {
+            "idx": 43,
+            "type": "G",
+            "word": "comprit"
+          },
+          {
+            "idx": 42,
+            "type": "G",
+            "word": "il"
+          },
+          {
+            "idx": 48,
+            "type": "G",
+            "word": "représentaient"
+          },
+          {
+            "idx": 77,
+            "type": "G",
+            "word": "grande"
+          },
+          {
+            "idx": 78,
+            "type": "G",
+            "word": "bonté"
+          },
+          {
+            "idx": 82,
+            "type": "G",
+            "word": "demain"
+          }
+        ],
+        "note": 0,
+        "timestamp": 1777897976081
+      },
+      "berthonneau_izzie": {
+        "counts": {
+          "G": 4,
+          "I": 0,
+          "L": 0,
+          "M": 0,
+          "X": 2
+        },
+        "deduction": 5,
+        "errors": [
+          {
+            "idx": 26,
+            "type": "G",
+            "word": "échanger"
+          },
+          {
+            "idx": 38,
+            "type": "G",
+            "word": "leurs"
+          },
+          {
+            "idx": 48,
+            "type": "G",
+            "word": "représentaient"
+          },
+          {
+            "idx": 73,
+            "type": "G",
+            "word": "sont"
+          }
+        ],
+        "extras": [
+          {
+            "afterIdx": 19,
+            "word": "."
+          },
+          {
+            "afterIdx": 27,
+            "word": "."
+          }
+        ],
+        "note": 5,
+        "timestamp": 1777898038193
+      },
+      "bossard_candice": {
+        "counts": {
+          "G": 1,
+          "I": 0,
+          "L": 1,
+          "M": 0,
+          "X": 0
+        },
+        "deduction": 1.5,
+        "errors": [
+          {
+            "idx": 48,
+            "type": "L",
+            "word": "représentaient"
+          },
+          {
+            "fautif": "cotons",
+            "idx": 30,
+            "type": "G",
+            "word": "coton"
+          }
+        ],
+        "note": 8.5,
+        "timestamp": 1777983176894
+      },
+      "bourdais_maxime": {
+        "counts": {
+          "G": 4,
+          "I": 0,
+          "L": 2,
+          "M": 0,
+          "X": 0
+        },
+        "deduction": 5,
+        "errors": [
+          {
+            "idx": 22,
+            "type": "L",
+            "word": "approchèrent"
+          },
+          {
+            "idx": 25,
+            "type": "G",
+            "word": "voulaient"
+          },
+          {
+            "idx": 39,
+            "type": "L",
+            "word": "sagaies"
+          },
+          {
+            "idx": 45,
+            "type": "G",
+            "word": "ces"
+          },
+          {
+            "idx": 48,
+            "type": "G",
+            "word": "représentaient"
+          },
+          {
+            "idx": 71,
+            "type": "G",
+            "word": "Ces"
+          }
+        ],
+        "note": 5,
+        "timestamp": 1777898127673
+      },
+      "bouton_amauri": {
+        "counts": {
+          "G": 3,
+          "I": 0,
+          "L": 2,
+          "M": 1,
+          "X": 0
+        },
+        "deduction": 5,
+        "errors": [
+          {
+            "idx": 26,
+            "type": "G",
+            "word": "échanger"
+          },
+          {
+            "idx": 50,
+            "type": "L",
+            "word": "danger"
+          },
+          {
+            "idx": 60,
+            "type": "L",
+            "word": "regagnèrent"
+          },
+          {
+            "idx": 74,
+            "type": "M",
+            "word": "d'une"
+          },
+          {
+            "idx": 77,
+            "type": "G",
+            "word": "grande"
+          },
+          {
+            "idx": 78,
+            "type": "G",
+            "word": "bonté"
+          }
+        ],
+        "note": 5,
+        "timestamp": 1777898181617
+      },
+      "burkhard_hortense": {
+        "counts": {
+          "G": 2,
+          "I": 0,
+          "L": 1,
+          "M": 0,
+          "X": 0
+        },
+        "deduction": 2.5,
+        "errors": [
+          {
+            "idx": 26,
+            "type": "G",
+            "word": "échanger"
+          },
+          {
+            "idx": 48,
+            "type": "L",
+            "word": "représentaient"
+          },
+          {
+            "idx": 71,
+            "type": "G",
+            "word": "Ces"
+          }
+        ],
+        "note": 7.5,
+        "timestamp": 1777898217477
+      },
+      "chasles_melinda": {
+        "counts": {
+          "G": 0,
+          "I": 0,
+          "L": 1,
+          "M": 0,
+          "X": 0
+        },
+        "deduction": 0.5,
+        "errors": [
+          {
+            "idx": 62,
+            "type": "L",
+            "word": "navire"
+          }
+        ],
+        "note": 9.5,
+        "timestamp": 1777898255784
+      },
+      "chesseron_enzo": {
+        "counts": {
+          "G": 1,
+          "I": 1,
+          "L": 1,
+          "M": 0,
+          "X": 0
+        },
+        "deduction": 2.5,
+        "errors": [
+          {
+            "idx": 36,
+            "type": "L",
+            "word": "navigateur"
+          },
+          {
+            "idx": 43,
+            "type": "G",
+            "word": "comprit"
+          },
+          {
+            "idx": 87,
+            "type": "I",
+            "word": "apporterons"
+          }
+        ],
+        "note": 7.5,
+        "timestamp": 1777898280377
+      },
+      "clement_lylou": {
+        "counts": {
+          "G": 12,
+          "I": 0,
+          "L": 2,
+          "M": 0,
+          "X": 1
+        },
+        "deduction": 13.5,
+        "errors": [
+          {
+            "idx": 1,
+            "type": "G",
+            "word": "aperçut"
+          },
+          {
+            "idx": 9,
+            "type": "G",
+            "word": "cette"
+          },
+          {
+            "idx": 25,
+            "type": "G",
+            "word": "voulaient"
+          },
+          {
+            "idx": 26,
+            "type": "G",
+            "word": "échanger"
+          },
+          {
+            "idx": 28,
+            "type": "G",
+            "word": "pelotes"
+          },
+          {
+            "idx": 36,
+            "type": "L",
+            "word": "navigateur"
+          },
+          {
+            "idx": 41,
+            "type": "G",
+            "word": "mais"
+          },
+          {
+            "idx": 45,
+            "type": "G",
+            "word": "ces"
+          },
+          {
+            "idx": 48,
+            "type": "G",
+            "word": "représentaient"
+          },
+          {
+            "idx": 55,
+            "type": "G",
+            "word": "se"
+          },
+          {
+            "idx": 60,
+            "type": "G",
+            "word": "regagnèrent"
+          },
+          {
+            "idx": 65,
+            "type": "G",
+            "word": "écrivit"
+          },
+          {
+            "idx": 78,
+            "type": "G",
+            "word": "bonté"
+          },
+          {
+            "idx": 89,
+            "type": "L",
+            "word": "bonnets"
+          }
+        ],
+        "extras": [
+          {
+            "afterIdx": -1,
+            "word": "."
+          }
+        ],
+        "note": 0,
+        "timestamp": 1777898348503
+      },
+      "crouy_lola": {
+        "counts": {
+          "G": 1,
+          "I": 0,
+          "L": 0,
+          "M": 0,
+          "X": 1
+        },
+        "deduction": 1.5,
+        "errors": [
+          {
+            "idx": 45,
+            "type": "G",
+            "word": "ces"
+          }
+        ],
+        "extras": [
+          {
+            "afterIdx": 22,
+            "word": "."
+          }
+        ],
+        "note": 8.5,
+        "timestamp": 1777898390206
+      },
+      "davy_noemie": {
+        "counts": {
+          "G": 4,
+          "I": 0,
+          "L": 1,
+          "M": 0,
+          "X": 3
+        },
+        "deduction": 6,
+        "errors": [
+          {
+            "idx": 1,
+            "type": "G",
+            "word": "aperçut"
+          },
+          {
+            "idx": 30,
+            "type": "L",
+            "word": "coton"
+          },
+          {
+            "idx": 38,
+            "type": "G",
+            "word": "leurs"
+          },
+          {
+            "idx": 71,
+            "type": "G",
+            "word": "Ces"
+          },
+          {
+            "idx": 86,
+            "type": "G",
+            "word": "leur"
+          }
+        ],
+        "extras": [
+          {
+            "afterIdx": -1,
+            "word": "."
+          },
+          {
+            "afterIdx": 7,
+            "word": "."
+          },
+          {
+            "afterIdx": 18,
+            "word": "."
+          }
+        ],
+        "note": 4,
+        "timestamp": 1777898466606
+      },
+      "gasoyan_lucas": {
+        "counts": {
+          "G": 7,
+          "I": 0,
+          "L": 2,
+          "M": 0,
+          "X": 1
+        },
+        "deduction": 8.5,
+        "errors": [
+          {
+            "idx": 1,
+            "type": "G",
+            "word": "aperçut"
+          },
+          {
+            "idx": 4,
+            "type": "L",
+            "word": "immense"
+          },
+          {
+            "idx": 19,
+            "type": "G",
+            "word": "habitants"
+          },
+          {
+            "idx": 22,
+            "type": "G",
+            "word": "approchèrent"
+          },
+          {
+            "idx": 36,
+            "type": "L",
+            "word": "navigateur"
+          },
+          {
+            "idx": 38,
+            "type": "G",
+            "word": "leurs"
+          },
+          {
+            "idx": 48,
+            "type": "G",
+            "word": "représentaient"
+          },
+          {
+            "idx": 59,
+            "type": "G",
+            "word": "marins"
+          },
+          {
+            "idx": 71,
+            "type": "G",
+            "word": "Ces"
+          }
+        ],
+        "extras": [
+          {
+            "afterIdx": -1,
+            "word": "."
+          }
+        ],
+        "note": 1.5,
+        "timestamp": 1777898516132
+      },
+      "guegnard_lysandre": {
+        "counts": {
+          "G": 12,
+          "I": 0,
+          "L": 2,
+          "M": 3,
+          "X": 0
+        },
+        "deduction": 16,
+        "errors": [
+          {
+            "idx": 4,
+            "type": "L",
+            "word": "immense"
+          },
+          {
+            "idx": 5,
+            "type": "M",
+            "word": "et"
+          },
+          {
+            "idx": 6,
+            "type": "M",
+            "word": "il"
+          },
+          {
+            "idx": 7,
+            "type": "M",
+            "word": "pensa"
+          },
+          {
+            "idx": 24,
+            "type": "G",
+            "word": "ils"
+          },
+          {
+            "idx": 25,
+            "type": "G",
+            "word": "voulaient"
+          },
+          {
+            "idx": 28,
+            "type": "G",
+            "word": "pelotes"
+          },
+          {
+            "idx": 39,
+            "type": "G",
+            "word": "sagaies"
+          },
+          {
+            "idx": 43,
+            "type": "G",
+            "word": "comprit"
+          },
+          {
+            "idx": 45,
+            "type": "G",
+            "word": "ces"
+          },
+          {
+            "idx": 46,
+            "type": "G",
+            "word": "armes"
+          },
+          {
+            "idx": 48,
+            "type": "G",
+            "word": "représentaient"
+          },
+          {
+            "idx": 60,
+            "type": "G",
+            "word": "regagnèrent"
+          },
+          {
+            "idx": 67,
+            "type": "G",
+            "word": "son"
+          },
+          {
+            "idx": 71,
+            "type": "G",
+            "word": "Ces"
+          },
+          {
+            "idx": 75,
+            "type": "L",
+            "word": "'"
+          },
+          {
+            "idx": 87,
+            "type": "G",
+            "word": "apporterons"
+          }
+        ],
+        "note": 0,
+        "timestamp": 1777898610382
+      },
+      "le_ny_mael": {
+        "counts": {
+          "G": 4,
+          "I": 0,
+          "L": 4,
+          "M": 0,
+          "X": 1
+        },
+        "deduction": 6.5,
+        "errors": [
+          {
+            "idx": 4,
+            "type": "L",
+            "word": "immense"
+          },
+          {
+            "idx": 26,
+            "type": "G",
+            "word": "échanger"
+          },
+          {
+            "idx": 28,
+            "type": "L",
+            "word": "pelotes"
+          },
+          {
+            "idx": 31,
+            "type": "L",
+            "word": "contre"
+          },
+          {
+            "idx": 39,
+            "type": "G",
+            "word": "sagaies"
+          },
+          {
+            "idx": 78,
+            "type": "G",
+            "word": "bonté"
+          },
+          {
+            "idx": 87,
+            "type": "G",
+            "word": "apporterons"
+          },
+          {
+            "idx": 92,
+            "type": "L",
+            "word": "perles"
+          }
+        ],
+        "extras": [
+          {
+            "afterIdx": 60,
+            "word": "point"
+          }
+        ],
+        "note": 3.5,
+        "timestamp": 1777898682161
+      },
+      "leroux_chloe": {
+        "counts": {
+          "G": 0,
+          "I": 0,
+          "L": 2,
+          "M": 0,
+          "X": 0
+        },
+        "deduction": 1,
+        "errors": [
+          {
+            "fautif": "côton",
+            "idx": 30,
+            "type": "L",
+            "word": "coton"
+          },
+          {
+            "fautif": "reveindrons",
+            "idx": 81,
+            "type": "L",
+            "word": "reviendrons"
+          }
+        ],
+        "note": 9,
+        "timestamp": 1777894655852
+      },
+      "meunier_annabelle": {
+        "counts": {
+          "G": 0,
+          "I": 0,
+          "L": 2,
+          "M": 1,
+          "X": 2
+        },
+        "deduction": 3,
+        "errors": [
+          {
+            "fautif": "apercut",
+            "idx": 1,
+            "type": "L",
+            "word": "aperçut"
+          },
+          {
+            "idx": 47,
+            "type": "M",
+            "word": "ne"
+          },
+          {
+            "idx": 86,
+            "type": "L",
+            "word": "leur"
+          }
+        ],
+        "extras": [
+          {
+            "afterIdx": 41,
+            "word": "que"
+          },
+          {
+            "afterIdx": 41,
+            "word": "ses"
+          }
+        ],
+        "note": 7,
+        "timestamp": 1777894834716
+      },
+      "nouteau_quentin": {
+        "counts": {
+          "G": 0,
+          "I": 0,
+          "L": 1,
+          "M": 0,
+          "X": 0
+        },
+        "deduction": 0.5,
+        "errors": [
+          {
+            "idx": 48,
+            "type": "L",
+            "word": "représentaient"
+          }
+        ],
+        "note": 9.5,
+        "timestamp": 1777894860944
+      },
+      "oger_colas_leonie": {
+        "counts": {
+          "G": 1,
+          "I": 0,
+          "L": 0,
+          "M": 0,
+          "X": 0
+        },
+        "deduction": 1,
+        "errors": [
+          {
+            "idx": 45,
+            "type": "G",
+            "word": "ces"
+          }
+        ],
+        "note": 9,
+        "timestamp": 1777894897509
+      },
+      "oriot_lisa": {
+        "counts": {
+          "G": 2,
+          "I": 0,
+          "L": 3,
+          "M": 0,
+          "X": 0
+        },
+        "deduction": 3.5,
+        "errors": [
+          {
+            "fautif": "fôret",
+            "idx": 3,
+            "type": "L",
+            "word": "forêt"
+          },
+          {
+            "fautif": "s'approchérent",
+            "idx": 22,
+            "type": "L",
+            "word": "approchèrent"
+          },
+          {
+            "fautif": "compris",
+            "idx": 43,
+            "type": "G",
+            "word": "comprit"
+          },
+          {
+            "fautif": "reganèrent",
+            "idx": 60,
+            "type": "L",
+            "word": "regagnèrent"
+          },
+          {
+            "fautif": "C'est",
+            "idx": 71,
+            "type": "G",
+            "word": "Ces"
+          }
+        ],
+        "note": 6.5,
+        "timestamp": 1777895053767
+      },
+      "pineau_clemence": {
+        "counts": {
+          "G": 1,
+          "I": 0,
+          "L": 0,
+          "M": 0,
+          "X": 0
+        },
+        "deduction": 1,
+        "errors": [
+          {
+            "idx": 48,
+            "type": "G",
+            "word": "représentaient"
+          }
+        ],
+        "note": 9,
+        "timestamp": 1777896686610
+      },
+      "ragueneau_jules": {
+        "counts": {
+          "G": 8,
+          "I": 0,
+          "L": 1,
+          "M": 0,
+          "X": 0
+        },
+        "deduction": 8.5,
+        "errors": [
+          {
+            "idx": 1,
+            "type": "G",
+            "word": "aperçut"
+          },
+          {
+            "idx": 26,
+            "type": "G",
+            "word": "échanger"
+          },
+          {
+            "idx": 39,
+            "type": "G",
+            "word": "sagaies"
+          },
+          {
+            "idx": 43,
+            "type": "G",
+            "word": "comprit"
+          },
+          {
+            "idx": 45,
+            "type": "G",
+            "word": "ces"
+          },
+          {
+            "idx": 48,
+            "type": "G",
+            "word": "représentaient"
+          },
+          {
+            "idx": 59,
+            "type": "L",
+            "word": "marins"
+          },
+          {
+            "idx": 71,
+            "type": "G",
+            "word": "Ces"
+          },
+          {
+            "idx": 87,
+            "type": "G",
+            "word": "apporterons"
+          }
+        ],
+        "note": 1.5,
+        "timestamp": 1777896749410
+      },
+      "recel_alexandre": {
+        "counts": {
+          "G": 1,
+          "I": 0,
+          "L": 1,
+          "M": 0,
+          "X": 0
+        },
+        "deduction": 1.5,
+        "errors": [
+          {
+            "idx": 1,
+            "type": "G",
+            "word": "aperçut"
+          },
+          {
+            "idx": 3,
+            "type": "L",
+            "word": "forêt"
+          }
+        ],
+        "note": 8.5,
+        "timestamp": 1777896780305
+      },
+      "reclu_philippine": {
+        "counts": {
+          "G": 3,
+          "I": 0,
+          "L": 2,
+          "M": 0,
+          "X": 0
+        },
+        "deduction": 4,
+        "errors": [
+          {
+            "idx": 7,
+            "type": "L",
+            "word": "pensa"
+          },
+          {
+            "idx": 22,
+            "type": "G",
+            "word": "approchèrent"
+          },
+          {
+            "idx": 36,
+            "type": "L",
+            "word": "navigateur"
+          },
+          {
+            "idx": 56,
+            "type": "G",
+            "word": "coucha"
+          },
+          {
+            "idx": 60,
+            "type": "G",
+            "word": "regagnèrent"
+          }
+        ],
+        "note": 6,
+        "timestamp": 1777896814725
+      },
+      "rigaud_abraham_pauline": {
+        "counts": {
+          "G": 8,
+          "I": 0,
+          "L": 4,
+          "M": 0,
+          "X": 0
+        },
+        "deduction": 10,
+        "errors": [
+          {
+            "idx": 11,
+            "type": "L",
+            "word": "était"
+          },
+          {
+            "idx": 24,
+            "type": "G",
+            "word": "ils"
+          },
+          {
+            "idx": 25,
+            "type": "G",
+            "word": "voulaient"
+          },
+          {
+            "idx": 26,
+            "type": "L",
+            "word": "échanger"
+          },
+          {
+            "idx": 30,
+            "type": "G",
+            "word": "coton"
+          },
+          {
+            "idx": 38,
+            "type": "G",
+            "word": "leurs"
+          },
+          {
+            "idx": 39,
+            "type": "G",
+            "word": "sagaies"
+          },
+          {
+            "idx": 48,
+            "type": "L",
+            "word": "représentaient"
+          },
+          {
+            "idx": 78,
+            "type": "G",
+            "word": "bonté"
+          },
+          {
+            "idx": 84,
+            "type": "G",
+            "word": "et"
+          },
+          {
+            "idx": 86,
+            "type": "G",
+            "word": "leur"
+          },
+          {
+            "idx": 87,
+            "type": "L",
+            "word": "apporterons"
+          }
+        ],
+        "note": 0,
+        "timestamp": 1777896890463
+      },
+      "rotureau_brel_diane": {
+        "counts": {
+          "G": 2,
+          "I": 0,
+          "L": 2,
+          "M": 0,
+          "X": 0
+        },
+        "deduction": 3,
+        "errors": [
+          {
+            "idx": 1,
+            "type": "L",
+            "word": "aperçut"
+          },
+          {
+            "idx": 7,
+            "type": "L",
+            "word": "pensa"
+          },
+          {
+            "idx": 39,
+            "type": "G",
+            "word": "sagaies"
+          },
+          {
+            "idx": 71,
+            "type": "G",
+            "word": "Ces"
+          }
+        ],
+        "note": 7,
+        "timestamp": 1777898731890
+      },
+      "rouillard_margaux": {
+        "counts": {
+          "G": 6,
+          "I": 0,
+          "L": 5,
+          "M": 0,
+          "X": 1
+        },
+        "deduction": 9,
+        "errors": [
+          {
+            "fautif": "apperçut",
+            "idx": 1,
+            "type": "L",
+            "word": "aperçut"
+          },
+          {
+            "fautif": "immensse",
+            "idx": 4,
+            "type": "L",
+            "word": "immense"
+          },
+          {
+            "fautif": "cottons",
+            "idx": 30,
+            "type": "L",
+            "word": "coton"
+          },
+          {
+            "fautif": "remarqu'à",
+            "idx": 37,
+            "type": "L",
+            "word": "remarqua"
+          },
+          {
+            "fautif": "sagaie",
+            "idx": 39,
+            "type": "G",
+            "word": "sagaies"
+          },
+          {
+            "fautif": "compris",
+            "idx": 43,
+            "type": "G",
+            "word": "comprit"
+          },
+          {
+            "fautif": "régagnère",
+            "idx": 60,
+            "type": "G",
+            "word": "regagnèrent"
+          },
+          {
+            "fautif": "C'est",
+            "idx": 71,
+            "type": "G",
+            "word": "Ces"
+          },
+          {
+            "fautif": "reviendron",
+            "idx": 81,
+            "type": "G",
+            "word": "reviendrons"
+          },
+          {
+            "fautif": "apporteront",
+            "idx": 87,
+            "type": "G",
+            "word": "apporterons"
+          },
+          {
+            "fautif": "bonnes",
+            "idx": 89,
+            "type": "L",
+            "word": "bonnets"
+          }
+        ],
+        "extras": [
+          {
+            "afterIdx": -1,
+            "word": "."
+          }
+        ],
+        "note": 1,
+        "timestamp": 1777993103302
+      },
+      "versiller_inna": {
+        "counts": {
+          "G": 2,
+          "I": 0,
+          "L": 3,
+          "M": 0,
+          "X": 1
+        },
+        "deduction": 4,
+        "errors": [
+          {
+            "idx": 28,
+            "type": "L",
+            "word": "pelotes"
+          },
+          {
+            "idx": 30,
+            "type": "G",
+            "word": "coton"
+          },
+          {
+            "idx": 36,
+            "type": "L",
+            "word": "navigateur"
+          },
+          {
+            "idx": 87,
+            "type": "G",
+            "word": "apporterons"
+          },
+          {
+            "idx": 89,
+            "type": "L",
+            "word": "bonnets"
+          }
+        ],
+        "extras": [
+          {
+            "afterIdx": -1,
+            "word": "."
+          }
+        ],
+        "note": 6,
+        "timestamp": 1777897337521
+      },
+      "viau_lucie": {
+        "counts": {
+          "G": 3,
+          "I": 0,
+          "L": 1,
+          "M": 0,
+          "X": 0
+        },
+        "deduction": 3.5,
+        "errors": [
+          {
+            "idx": 1,
+            "type": "L",
+            "word": "aperçut"
+          },
+          {
+            "idx": 30,
+            "type": "G",
+            "word": "coton"
+          },
+          {
+            "idx": 38,
+            "type": "G",
+            "word": "leurs"
+          },
+          {
+            "idx": 87,
+            "type": "G",
+            "word": "apporterons"
+          }
+        ],
+        "note": 6.5,
+        "timestamp": 1777897377963
+      },
+      "vincent_zelie": {
+        "counts": {
+          "G": 4,
+          "I": 0,
+          "L": 1,
+          "M": 0,
+          "X": 0
+        },
+        "deduction": 4.5,
+        "errors": [
+          {
+            "idx": 43,
+            "type": "G",
+            "word": "comprit"
+          },
+          {
+            "idx": 48,
+            "type": "G",
+            "word": "représentaient"
+          },
+          {
+            "idx": 55,
+            "type": "G",
+            "word": "se"
+          },
+          {
+            "idx": 81,
+            "type": "L",
+            "word": "reviendrons"
+          },
+          {
+            "idx": 86,
+            "type": "G",
+            "word": "leur"
+          }
+        ],
+        "note": 5.5,
+        "timestamp": 1777897043413
+      },
+      "zilli_marin": {
+        "counts": {
+          "G": 11,
+          "I": 0,
+          "L": 2,
+          "M": 0,
+          "X": 0
+        },
+        "deduction": 12,
+        "errors": [
+          {
+            "idx": 1,
+            "type": "L",
+            "word": "aperçut"
+          },
+          {
+            "idx": 7,
+            "type": "G",
+            "word": "pensa"
+          },
+          {
+            "idx": 22,
+            "type": "L",
+            "word": "approchèrent"
+          },
+          {
+            "idx": 26,
+            "type": "G",
+            "word": "échanger"
+          },
+          {
+            "fautif": "contons",
+            "idx": 30,
+            "type": "G",
+            "word": "coton"
+          },
+          {
+            "idx": 38,
+            "type": "G",
+            "word": "leurs"
+          },
+          {
+            "idx": 39,
+            "type": "G",
+            "word": "sagaies"
+          },
+          {
+            "idx": 45,
+            "type": "G",
+            "word": "ces"
+          },
+          {
+            "idx": 48,
+            "type": "G",
+            "word": "représentaient"
+          },
+          {
+            "idx": 67,
+            "type": "G",
+            "word": "son"
+          },
+          {
+            "idx": 71,
+            "type": "G",
+            "word": "Ces"
+          },
+          {
+            "idx": 86,
+            "type": "G",
+            "word": "leur"
+          },
+          {
+            "idx": 87,
+            "type": "G",
+            "word": "apporterons"
+          }
+        ],
+        "note": 0,
+        "timestamp": 1777897215991
+      }
+    }
+  }
+}

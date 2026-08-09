@@ -1,0 +1,87 @@
+{
+  "fichier": "dictee_dictee_preparee_5e_grandes_decouvertes-5e_herge_2026-08-09.json",
+  "jetonsActuels": 93,
+  "avant": "24/169",
+  "candidate apostrophe-separee": "24/169",
+  "candidate apostrophe-collee": "169/169",
+  "candidate ponctuation-separee": "24/169",
+  "verdict": "ancienne tokenisation identifiée : « apostrophe-collee » (100 % des mots en place)",
+  "corrigees": 139,
+  "dejaJustes": 24,
+  "apostrophes": [],
+  "mp": [
+    {
+      "eleve": "bouton_amauri",
+      "type": "M",
+      "de": 72,
+      "vers": 73
+    },
+    {
+      "eleve": "meunier_annabelle",
+      "type": "M",
+      "de": 45,
+      "vers": 46
+    }
+  ],
+  "nonCorrigees": [
+    {
+      "eleve": "bourdais_maxime",
+      "idx": 20,
+      "type": "L",
+      "attendu": "s'approchèrent",
+      "jetonTrouve": "s'",
+      "positionProposee": 20,
+      "jetonSuivant": "approchèrent"
+    },
+    {
+      "eleve": "gasoyan_lucas",
+      "idx": 20,
+      "type": "G",
+      "attendu": "s'approchèrent",
+      "jetonTrouve": "s'",
+      "positionProposee": 20,
+      "jetonSuivant": "approchèrent"
+    },
+    {
+      "eleve": "guegnard_lysandre",
+      "idx": 72,
+      "type": "L",
+      "attendu": "d'une",
+      "jetonTrouve": "d'",
+      "positionProposee": 73,
+      "jetonSuivant": "une"
+    },
+    {
+      "eleve": "oriot_lisa",
+      "idx": 20,
+      "type": "L",
+      "attendu": "s'approchèrent",
+      "jetonTrouve": "s'",
+      "positionProposee": 20,
+      "jetonSuivant": "approchèrent"
+    },
+    {
+      "eleve": "reclu_philippine",
+      "idx": 20,
+      "type": "G",
+      "attendu": "s'approchèrent",
+      "jetonTrouve": "s'",
+      "positionProposee": 20,
+      "jetonSuivant": "approchèrent"
+    },
+    {
+      "eleve": "zilli_marin",
+      "idx": 20,
+      "type": "L",
+      "attendu": "s'approchèrent",
+      "jetonTrouve": "s'",
+      "positionProposee": 20,
+      "jetonSuivant": "approchèrent"
+    }
+  ],
+  "apres": "163/169",
+  "idxModifies": 141,
+  "champsModifies": 141,
+  "champsHorsIdx": [],
+  "sortie": "corriges/dictee_dictee_preparee_5e_grandes_decouvertes-5e_herge_2026-08-09_corrige.json"
+}

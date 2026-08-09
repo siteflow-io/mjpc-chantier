@@ -1,0 +1,213 @@
+{
+  "fichier": "dictee_dictee_brevet_blanc_3e-3e_charles_de_gaulle_2026-08-09_corrige.json",
+  "jetonsAvant": 140,
+  "jetonsApres": 144,
+  "idxModifies": 255,
+  "migreesVerifiees": 262,
+  "dejaJustes": 0,
+  "mp": [
+    {
+      "eleve": "augereau_gatien",
+      "type": "P",
+      "word": "-",
+      "de": 125,
+      "vers": 128
+    },
+    {
+      "eleve": "bressin_titouan",
+      "type": "P",
+      "word": "-",
+      "de": 125,
+      "vers": 128
+    },
+    {
+      "eleve": "caldeira_tiago",
+      "type": "P",
+      "word": "-",
+      "de": 125,
+      "vers": 128
+    },
+    {
+      "eleve": "cesbron_lili",
+      "type": "P",
+      "word": "-",
+      "de": 125,
+      "vers": 128
+    },
+    {
+      "eleve": "chalumeau_jules",
+      "type": "M",
+      "word": "nous",
+      "de": 51,
+      "vers": 52
+    },
+    {
+      "eleve": "chalumeau_jules",
+      "type": "P",
+      "word": "-",
+      "de": 125,
+      "vers": 128
+    },
+    {
+      "eleve": "chan_aymeric",
+      "type": "P",
+      "word": ".",
+      "de": 86,
+      "vers": 88
+    },
+    {
+      "eleve": "chan_aymeric",
+      "type": "P",
+      "word": "-",
+      "de": 125,
+      "vers": 128
+    },
+    {
+      "eleve": "cholet_pierre",
+      "type": "P",
+      "word": "-",
+      "de": 125,
+      "vers": 128
+    },
+    {
+      "eleve": "chouteau_baptistine",
+      "type": "P",
+      "word": "-",
+      "de": 125,
+      "vers": 128
+    },
+    {
+      "eleve": "delacroix_romain",
+      "type": "P",
+      "word": "-",
+      "de": 125,
+      "vers": 128
+    },
+    {
+      "eleve": "desbois_auriane",
+      "type": "P",
+      "word": "-",
+      "de": 125,
+      "vers": 128
+    },
+    {
+      "eleve": "deslin_lucas",
+      "type": "P",
+      "word": "-",
+      "de": 125,
+      "vers": 128
+    },
+    {
+      "eleve": "heinrich_clovis",
+      "type": "M",
+      "word": "nous",
+      "de": 51,
+      "vers": 52
+    },
+    {
+      "eleve": "heinrich_clovis",
+      "type": "M",
+      "word": "pas",
+      "de": 55,
+      "vers": 56
+    },
+    {
+      "eleve": "heinrich_clovis",
+      "type": "P",
+      "word": "-",
+      "de": 125,
+      "vers": 128
+    },
+    {
+      "eleve": "jamin_noe",
+      "type": "P",
+      "word": "-",
+      "de": 125,
+      "vers": 128
+    },
+    {
+      "eleve": "kock_elisa",
+      "type": "P",
+      "word": "-",
+      "de": 125,
+      "vers": 128
+    },
+    {
+      "eleve": "laury_mael",
+      "type": "M",
+      "word": "nous",
+      "de": 51,
+      "vers": 52
+    },
+    {
+      "eleve": "laury_mael",
+      "type": "M",
+      "word": "pas",
+      "de": 90,
+      "vers": 93
+    },
+    {
+      "eleve": "laury_mael",
+      "type": "M",
+      "word": "eux",
+      "de": 128,
+      "vers": 132
+    },
+    {
+      "eleve": "poulain_helin_zelia",
+      "type": "P",
+      "word": "-",
+      "de": 125,
+      "vers": 128
+    },
+    {
+      "eleve": "poulain_helin_zelia",
+      "type": "M",
+      "word": "eux",
+      "de": 128,
+      "vers": 132
+    },
+    {
+      "eleve": "revet_lucas",
+      "type": "P",
+      "word": "-",
+      "de": 125,
+      "vers": 128
+    },
+    {
+      "eleve": "tenneguin_arthur",
+      "type": "M",
+      "word": "à",
+      "de": 18,
+      "vers": 19
+    },
+    {
+      "eleve": "tenneguin_arthur",
+      "type": "P",
+      "word": "-",
+      "de": 125,
+      "vers": 128
+    }
+  ],
+  "arbitrages": [
+    {
+      "eleve": "deslin_lucas",
+      "idx": 16,
+      "type": "P",
+      "word": "’",
+      "jetonsCandidats": [
+        "adressions",
+        "d",
+        "’"
+      ],
+      "positionCandidate": 16,
+      "note": "manquant sur apostrophe : le jeton d'arrivée n'est pas une apostrophe"
+    }
+  ],
+  "horsTexte": [],
+  "avant": "262/262 (sous l'ancien découpage)",
+  "apres": "262/262 (sous le nouveau découpage ; l'écart = les arbitrages)",
+  "champsModifies": 255,
+  "champsHorsIdx": [],
+  "sortie": "migres/dictee_dictee_brevet_blanc_3e-3e_charles_de_gaulle_2026-08-09_migre.json"
+}

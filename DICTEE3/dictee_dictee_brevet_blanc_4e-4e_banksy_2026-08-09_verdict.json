@@ -1,0 +1,58 @@
+{
+  "fichier": "dictee_dictee_brevet_blanc_4e-4e_banksy_2026-08-09_corrige.json",
+  "jetonsAvant": 164,
+  "jetonsApres": 173,
+  "idxModifies": 338,
+  "migreesVerifiees": 358,
+  "dejaJustes": 0,
+  "mp": [
+    {
+      "eleve": "grosbois_cailloneau_margaux",
+      "type": "M",
+      "word": "-",
+      "de": 86,
+      "vers": 91
+    },
+    {
+      "eleve": "montais_sacha",
+      "type": "P",
+      "word": "été",
+      "de": 106,
+      "vers": 113
+    }
+  ],
+  "arbitrages": [
+    {
+      "eleve": "cadiou_fourrier_louann",
+      "idx": 30,
+      "type": "M",
+      "word": "’",
+      "jetonsCandidats": [
+        "Il",
+        "s",
+        "’"
+      ],
+      "positionCandidate": 31,
+      "note": "manquant sur apostrophe : le jeton d'arrivée n'est pas une apostrophe"
+    },
+    {
+      "eleve": "cadiou_fourrier_louann",
+      "idx": 41,
+      "type": "M",
+      "word": "’",
+      "jetonsCandidats": [
+        "dans",
+        "l",
+        "’"
+      ],
+      "positionCandidate": 43,
+      "note": "manquant sur apostrophe : le jeton d'arrivée n'est pas une apostrophe"
+    }
+  ],
+  "horsTexte": [],
+  "avant": "357/358 (sous l'ancien découpage)",
+  "apres": "358/358 (sous le nouveau découpage ; l'écart = les arbitrages)",
+  "champsModifies": 338,
+  "champsHorsIdx": [],
+  "sortie": "migres/dictee_dictee_brevet_blanc_4e-4e_banksy_2026-08-09_migre.json"
+}

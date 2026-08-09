@@ -1052,44 +1052,6 @@ function isPunct(w){return/^[.,;:!?\u2026\u00ab\u00bb\u201c\u201d\u2018\u2019()\
 // Exception mesurée (748 c réels, une seule divergence) : une parenthèse OUVRANTE
 // prend un espace avant elle — « fourrure (…) », pas « fourrure(…) ».
 function tokSp(curW,nextW){if(!nextW)return "";if(/^\(/.test(nextW))return " ";if(isPunct(nextW))return "";if(/['\u2019]$/.test(curW))return "";return " "}
-
-// ── Alignement des erreurs sur le texte (RENDU SEULEMENT, aucune écriture) ──
-// Mesuré sur le hub : certaines dictées ont été corrigées sous une ancienne
-// indexation — leurs idx ne pointent plus les bons jetons (ex. « caddie » sur
-// le jeton « . », qui absorbait le point de la phrase). Cette fonction VÉRIFIE
-// chaque idx contre le texte : s'il pointe déjà le bon mot, rien ne bouge
-// (dictées récentes : 100 % exactes, zéro effet) ; sinon le mot est retrouvé
-// par contenu, dans l'ordre du texte. Les M/P (mot ou signe manquant, absent du
-// texte par nature) suivent le décalage local constaté. Retourne une map
-// index-du-tableau-errors → idx d'affichage ; les données restent intactes.
-function alignerErreurs(errors, tokens){
-  var sansApo = function(t){ return String(t).replace(/['\u2019]$/, ""); };
-  var ordre = [];
-  errors.forEach(function(e, i){ if (e && e.idx != null) ordre.push({e: e, i: i}); });
-  ordre.sort(function(a, b){ return a.e.idx - b.e.idx; });
-  var map = {};
-  var cur = 0, delta = 0;
-  ordre.forEach(function(o){
-    var e = o.e, i = e.idx, w = e.word || "";
-    if (e.type === "M" || e.type === "P") {
-      var j = i + delta;
-      map[o.i] = (j >= 0 && j <= tokens.length) ? j : i;
-      return;
-    }
-    if (i >= 0 && i < tokens.length && (tokens[i] === w || sansApo(tokens[i]) === sansApo(w))) {
-      map[o.i] = i; cur = Math.max(cur, i + 1); delta = 0;
-      return;
-    }
-    for (var x = cur; x < tokens.length; x++) {
-      if (tokens[x] === w || sansApo(tokens[x]) === sansApo(w)) {
-        map[o.i] = x; cur = x + 1; delta = x - i;
-        return;
-      }
-    }
-    map[o.i] = i; // dernier recours : comportement d'avant
-  });
-  return map;
-}
 function computeNote(errors,extras,base){
   errors=errors||[];extras=extras||[];base=base||20;
   var ded=0;errors.forEach(function(e){ded+=(TYPE_COST[e.type]||0)});extras.forEach(function(){ded+=TYPE_COST.X});
@@ -5219,9 +5181,10 @@ function buildCopieHtml(data,eleveName,eleveKey,c,ac,dicteeId,options){
   var extras = toArr(c.extras||[]).filter(function(e){return e!=null});
   var bilan = (bilanOverride !== undefined) ? bilanOverride : (c.bilanComment || generateBilan(c, data.base));
   var tokens = data.tokens || tokenize(data.text||"");
-  // Alignement au rendu (voir alignerErreurs) : idx vérifiés, réalignés si besoin.
-  var idxAff = alignerErreurs(errors, tokens);
-  var errMap = {}; errors.forEach(function(e, i){ if (e && e.idx != null) errMap[idxAff[i]] = {e: e, i: i}; });
+  /* L'idx enregistré fait foi tel quel : les positions des dictées anciennes
+     sont corrigées DANS LES DONNÉES (réinjection des snapshots corrigés),
+     pas compensées dans le code — décision de Paul, 09/08/2026. */
+  var errMap = {}; errors.forEach(function(e, i){ if (e && e.idx != null) errMap[e.idx] = {e: e, i: i}; });
   var extraMap = {}; extras.forEach(function(e){if(!extraMap[e.afterIdx])extraMap[e.afterIdx]=[];extraMap[e.afterIdx].push(e)});
 
   // ── Trous numérotés ──

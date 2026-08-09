@@ -1,0 +1,52 @@
+{
+  "fichier": "dictee_dictee_brevet_blanc_4e-4e_banksy_2026-08-09.json",
+  "jetonsActuels": 164,
+  "avant": "22/358",
+  "candidate apostrophe-separee": "358/358",
+  "candidate apostrophe-collee": "22/358",
+  "candidate ponctuation-separee": "133/358",
+  "verdict": "ancienne tokenisation identifiée : « apostrophe-separee » (100 % des mots en place)",
+  "corrigees": 335,
+  "dejaJustes": 22,
+  "apostrophes": [
+    {
+      "eleve": "moquet_mathis",
+      "de": 110,
+      "vers": 104,
+      "attendu": "qu",
+      "jetonActuel": "qu’"
+    }
+  ],
+  "mp": [
+    {
+      "eleve": "cadiou_fourrier_louann",
+      "type": "M",
+      "de": 32,
+      "vers": 30
+    },
+    {
+      "eleve": "cadiou_fourrier_louann",
+      "type": "M",
+      "de": 44,
+      "vers": 41
+    },
+    {
+      "eleve": "grosbois_cailloneau_margaux",
+      "type": "M",
+      "de": 91,
+      "vers": 86
+    },
+    {
+      "eleve": "montais_sacha",
+      "type": "P",
+      "de": 113,
+      "vers": 106
+    }
+  ],
+  "nonCorrigees": [],
+  "apres": "357/358",
+  "idxModifies": 340,
+  "champsModifies": 340,
+  "champsHorsIdx": [],
+  "sortie": "corriges/dictee_dictee_brevet_blanc_4e-4e_banksy_2026-08-09_corrige.json"
+}

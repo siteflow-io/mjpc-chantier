@@ -1,0 +1,251 @@
+{
+  "fichier": "dictee_dictee_5e_chapitre_utopie-5e_herge_2026-08-09_corrige.json",
+  "jetonsAvant": 150,
+  "jetonsApres": 159,
+  "idxModifies": 526,
+  "migreesVerifiees": 542,
+  "dejaJustes": 0,
+  "mp": [
+    {
+      "eleve": "antonini_maiwen",
+      "type": "P",
+      "word": "-",
+      "de": 61,
+      "vers": 65
+    },
+    {
+      "eleve": "barillet_biemon_axel",
+      "type": "P",
+      "word": "-",
+      "de": 61,
+      "vers": 65
+    },
+    {
+      "eleve": "bossard_candice",
+      "type": "P",
+      "word": "-",
+      "de": 61,
+      "vers": 65
+    },
+    {
+      "eleve": "bouton_amauri",
+      "type": "P",
+      "word": "-",
+      "de": 61,
+      "vers": 65
+    },
+    {
+      "eleve": "bouton_amauri",
+      "type": "M",
+      "word": "l'",
+      "de": 119,
+      "vers": 125
+    },
+    {
+      "eleve": "bouton_amauri",
+      "type": "M",
+      "word": "argent",
+      "de": 120,
+      "vers": 127
+    },
+    {
+      "eleve": "burkhard_hortense",
+      "type": "P",
+      "word": "-",
+      "de": 61,
+      "vers": 65
+    },
+    {
+      "eleve": "chesseron_enzo",
+      "type": "P",
+      "word": "-",
+      "de": 61,
+      "vers": 65
+    },
+    {
+      "eleve": "clement_lylou",
+      "type": "M",
+      "word": "toujours",
+      "de": 148,
+      "vers": 157
+    },
+    {
+      "eleve": "clement_lylou",
+      "type": "P",
+      "word": "-",
+      "de": 61,
+      "vers": 65
+    },
+    {
+      "eleve": "davy_noemie",
+      "type": "P",
+      "word": "-",
+      "de": 61,
+      "vers": 65
+    },
+    {
+      "eleve": "guegnard_lysandre",
+      "type": "P",
+      "word": "-",
+      "de": 61,
+      "vers": 65
+    },
+    {
+      "eleve": "guegnard_lysandre",
+      "type": "M",
+      "word": "et",
+      "de": 125,
+      "vers": 132
+    },
+    {
+      "eleve": "guegnard_lysandre",
+      "type": "M",
+      "word": "l'",
+      "de": 136,
+      "vers": 144
+    },
+    {
+      "eleve": "le_ny_mael",
+      "type": "P",
+      "word": ".",
+      "de": 133,
+      "vers": 141
+    },
+    {
+      "eleve": "le_ny_mael",
+      "type": "P",
+      "word": "-",
+      "de": 61,
+      "vers": 65
+    },
+    {
+      "eleve": "leroux_chloe",
+      "type": "P",
+      "word": "-",
+      "de": 61,
+      "vers": 65
+    },
+    {
+      "eleve": "oriot_lisa",
+      "type": "P",
+      "word": "-",
+      "de": 61,
+      "vers": 65
+    },
+    {
+      "eleve": "ragueneau_jules",
+      "type": "P",
+      "word": "-",
+      "de": 61,
+      "vers": 65
+    },
+    {
+      "eleve": "rigaud_abraham_pauline",
+      "type": "P",
+      "word": "-",
+      "de": 61,
+      "vers": 65
+    },
+    {
+      "eleve": "versiller_inna",
+      "type": "P",
+      "word": "-",
+      "de": 61,
+      "vers": 65
+    },
+    {
+      "eleve": "viau_lucie",
+      "type": "P",
+      "word": "-",
+      "de": 61,
+      "vers": 65
+    },
+    {
+      "eleve": "zilli_marin",
+      "type": "P",
+      "word": "-",
+      "de": 61,
+      "vers": 65
+    },
+    {
+      "eleve": "zilli_marin",
+      "type": "P",
+      "word": ".",
+      "de": 149,
+      "vers": 158
+    }
+  ],
+  "arbitrages": [
+    {
+      "eleve": "bouton_amauri",
+      "idx": 45,
+      "type": "L",
+      "word": "qu'",
+      "jetonsCandidats": [
+        "qu",
+        "'",
+        "ils"
+      ],
+      "positionCandidate": 47,
+      "note": "le jeton d'origine n'existe plus tel quel : la faute portait-elle sur l'élision ou sur le mot ?"
+    },
+    {
+      "eleve": "bouton_amauri",
+      "idx": 129,
+      "type": "G",
+      "word": "n'",
+      "jetonsCandidats": [
+        "n",
+        "'",
+        "a"
+      ],
+      "positionCandidate": 136,
+      "note": "le jeton d'origine n'existe plus tel quel : la faute portait-elle sur l'élision ou sur le mot ?"
+    },
+    {
+      "eleve": "guegnard_lysandre",
+      "idx": 103,
+      "type": "I",
+      "word": "qu'",
+      "jetonsCandidats": [
+        "qu",
+        "'",
+        "on"
+      ],
+      "positionCandidate": 108,
+      "note": "le jeton d'origine n'existe plus tel quel : la faute portait-elle sur l'élision ou sur le mot ?"
+    },
+    {
+      "eleve": "nouteau_quentin",
+      "idx": 129,
+      "type": "A",
+      "word": "n'",
+      "jetonsCandidats": [
+        "n",
+        "'",
+        "a"
+      ],
+      "positionCandidate": 136,
+      "note": "le jeton d'origine n'existe plus tel quel : la faute portait-elle sur l'élision ou sur le mot ?"
+    },
+    {
+      "eleve": "ragueneau_jules",
+      "idx": 129,
+      "type": "L",
+      "word": "n'",
+      "jetonsCandidats": [
+        "n",
+        "'",
+        "a"
+      ],
+      "positionCandidate": 136,
+      "note": "le jeton d'origine n'existe plus tel quel : la faute portait-elle sur l'élision ou sur le mot ?"
+    }
+  ],
+  "horsTexte": [],
+  "avant": "547/547 (sous l'ancien découpage)",
+  "apres": "542/547 (sous le nouveau découpage ; l'écart = les arbitrages)",
+  "champsModifies": 526,
+  "champsHorsIdx": [],
+  "sortie": "migres/dictee_dictee_5e_chapitre_utopie-5e_herge_2026-08-09_migre.json"
+}

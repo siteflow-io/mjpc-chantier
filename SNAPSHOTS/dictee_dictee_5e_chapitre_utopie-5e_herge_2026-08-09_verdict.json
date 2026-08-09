@@ -1,0 +1,16 @@
+{
+  "fichier": "dictee_dictee_5e_chapitre_utopie-5e_herge_2026-08-09.json",
+  "jetonsActuels": 150,
+  "avant": "547/547",
+  "verdict": "positions déjà exactes sous la tokenisation actuelle — aucune correction",
+  "corrigees": 0,
+  "dejaJustes": 547,
+  "apostrophes": [],
+  "mp": [],
+  "nonCorrigees": [],
+  "apres": "547/547",
+  "idxModifies": 0,
+  "champsModifies": 0,
+  "champsHorsIdx": [],
+  "sortie": "corriges/dictee_dictee_5e_chapitre_utopie-5e_herge_2026-08-09_corrige.json (copie À L'OCTET PRÈS du fichier d'entrée — aucune correction)"
+}

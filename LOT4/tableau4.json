@@ -1,0 +1,200 @@
+[
+ {
+  "ecran": "chapitre",
+  "geste": "Lier par les titres…",
+  "verdict": "✔",
+  "detail": "modale « Aucune feuille de l’atelier ne porte le titre d’un item non lié.Compri »"
+ },
+ {
+  "ecran": "chapitre",
+  "geste": "+ Séance",
+  "verdict": "✔",
+  "detail": "modale «  »"
+ },
+ {
+  "ecran": "chapitre",
+  "geste": "↩ Annuler (rien à annuler)",
+  "verdict": "✔",
+  "detail": "désactivé + info-bulle « Rien à annuler pour l’instant » (mesuré t20/LOT2)"
+ },
+ {
+  "ecran": "chapitre",
+  "geste": "+ Item (séance 1)",
+  "verdict": "✔",
+  "detail": "modale «  »"
+ },
+ {
+  "ecran": "chapitre",
+  "geste": "+ Feuille (séance 1)",
+  "verdict": "✔",
+  "detail": "modale «  »"
+ },
+ {
+  "ecran": "chapitre",
+  "geste": "Prendre une feuille… (séance)",
+  "verdict": "✔",
+  "detail": "modale « Prendre une feuille existante pour « Découvrir le fil » :Feuille d’ouv »"
+ },
+ {
+  "ecran": "chapitre",
+  "geste": "Lier (item)",
+  "verdict": "✔",
+  "detail": "modale « Lier : Feuille d’ouverture\n  Lie cet item à une ressource : un fichier »"
+ },
+ {
+  "ecran": "chapitre",
+  "geste": "Déplacer vers… (item)",
+  "verdict": "✔",
+  "detail": "modale « Déplacer « Feuille d’ouverture » vers :Séance 2 — Lire un tableauSéanc »"
+ },
+ {
+  "ecran": "chapitre",
+  "geste": "Publier… (item)",
+  "verdict": "✔",
+  "detail": "modale « Aucune classe n’est déclarée pour ce niveau.Compris »"
+ },
+ {
+  "ecran": "chapitre",
+  "geste": "Dupliquer vers… (item)",
+  "verdict": "✔",
+  "detail": "modale « Dupliquer « Feuille d’ouverture » vers un autre chapitre :Poésie et pe »"
+ },
+ {
+  "ecran": "chapitre",
+  "geste": "✨ Écrire avec une IA (trou)",
+  "verdict": "✔",
+  "detail": "modale « 1 liaison posée.Compris »"
+ },
+ {
+  "ecran": "chapitre",
+  "geste": "Prendre une feuille existante… (trou)",
+  "verdict": "✗ MUET",
+  "detail": ""
+ },
+ {
+  "ecran": "chapitre",
+  "geste": "+ insérer une séance ici (liseré)",
+  "verdict": "✔",
+  "detail": "modale «  »"
+ },
+ {
+  "ecran": "chapitre",
+  "geste": "Ouvrir dans un onglet (pop-up murée)",
+  "verdict": "✔",
+  "detail": "modale «  »"
+ },
+ {
+  "ecran": "chapitre",
+  "geste": "🖨 Imprimer",
+  "verdict": "✔",
+  "detail": "modale « Imprimer Feuille d’ouverture ou tout le chapitre ?Cette feuilleTout le »"
+ },
+ {
+  "ecran": "chapitre",
+  "geste": "Au plus serré / Une séance / Un document",
+  "verdict": "✔",
+  "detail": "5→12→5 pages, compteur et bouton allumé suivent, 1 rendu par clic (t62)"
+ },
+ {
+  "ecran": "chapitre",
+  "geste": "clic zone → SA ligne (10 composantes)",
+  "verdict": "✔",
+  "detail": "titre a1/e2/h2 · definition ×4 (d1) · objectif/notions/consigne/zone_lignee/mention_conserver (t61+t41)"
+ },
+ {
+  "ecran": "chapitre",
+  "geste": "frappe dans un champ de feuille",
+  "verdict": "✔",
+  "detail": "zone → « Grille de critères V2 », 0 rendu pendant frappe, écrit: /site/atelier/documents/feuille_7"
+ },
+ {
+  "ecran": "chapitre",
+  "geste": "compteur après cochage/décochage",
+  "verdict": "✔",
+  "detail": "6 feuilles à imprimer → 7 feuilles à imprimer → 6 feuilles à imprimer (repagination mesurée)"
+ },
+ {
+  "ecran": "chapitre",
+  "geste": "insérer une séance (avant S5)",
+  "verdict": "✔",
+  "detail": "1:Découvrir le · 2:Lire un tabl · 3:Étude de tex · 4:Notions du c · 5:Séance inter · 6:Dictée et ré · 7:Étude de tex · 8:Atelier d’éc · 9:Tâche finale · écrit: PUT /site/4e/chapitres/1/seances/9"
+ },
+ {
+  "ecran": "chapitre",
+  "geste": "déplacer un document (a2 S1→S8)",
+  "verdict": "✔",
+  "detail": "arrivé S8 (uid it_2) · lot: PUT /site/4e/chapitres/1/seances/8/items/a2 + DELETE /site/4e/chapitres/1/seances/1/items/a2"
+ },
+ {
+  "ecran": "chapitre",
+  "geste": "↩ annuler un champ",
+  "verdict": "✔",
+  "detail": "titre rétabli mémoire+magasin, message nomme (t20)"
+ },
+ {
+  "ecran": "feuille",
+  "geste": "← Le chapitre (présent)",
+  "verdict": "✔",
+  "detail": "modale «  »"
+ },
+ {
+  "ecran": "feuille",
+  "geste": "barre de cartes (edBarreFil)",
+  "verdict": "✔",
+  "detail": "ABSENTE — 0 élément .ed-fil (t62), fonction conservée code mort"
+ },
+ {
+  "ecran": "feuille",
+  "geste": "✨ Écrire avec une IA",
+  "verdict": "✔",
+  "detail": "modale «  »"
+ },
+ {
+  "ecran": "feuille",
+  "geste": "📤 Envoyer aux élèves",
+  "verdict": "✔",
+  "detail": "modale « La feuille n’a pas d’adresse : choisis niveau, chapitre et séance d’ab »"
+ },
+ {
+  "ecran": "feuille",
+  "geste": "🖨 Imprimer (aperçu)",
+  "verdict": "✔",
+  "detail": "modale «  »"
+ },
+ {
+  "ecran": "feuille",
+  "geste": "Ouvrir dans un onglet (pop-up murée)",
+  "verdict": "✔",
+  "detail": "modale «  »"
+ },
+ {
+  "ecran": "feuille",
+  "geste": "piston produit « Support de cours »",
+  "verdict": "✔",
+  "detail": "cases 7 → 13, aperçu re-rendu"
+ },
+ {
+  "ecran": "feuille",
+  "geste": "cocher/décocher une case (nom_eleve)",
+  "verdict": "✔",
+  "detail": "état → true, éditeur re-rendu, aperçu suit"
+ },
+ {
+  "ecran": "diaporama",
+  "geste": "affichage dans le papier",
+  "verdict": "✔",
+  "detail": "titres : La Liseuse · Soleil levant"
+ },
+ {
+  "ecran": "diaporama",
+  "geste": "bouton Ouvrir (item)",
+  "verdict": "✔",
+  "detail": "appelle openDiaporamaById(diapo_1)"
+ },
+ {
+  "ecran": "diaporama",
+  "geste": "éditeur de diaporama",
+  "verdict": "✔",
+  "detail": "porte à l’accueil de l’atelier (C5-3a), écran rendu par diapoRendreEcran — hors périmètre des défauts, aucun changement ce lot"
+ }
+]

@@ -1,0 +1,6686 @@
+{
+  "_meta": {
+    "source": "correction_dictee/dictee_brevet_blanc_3e-3e_charles_de_gaulle",
+    "exportedAt": "2026-08-09T13:28:31.184Z",
+    "exportedBy": "snapshot_tool",
+    "version": 1
+  },
+  "data": {
+    "autocorrection": {
+      "audebert_elise": {
+        "attempts": [
+          4,
+          1,
+          1,
+          1,
+          2,
+          1,
+          1,
+          2,
+          2,
+          1,
+          1
+        ],
+        "errorRefs": [
+          {
+            "idx": 2,
+            "type": "L",
+            "word": "naturellement"
+          },
+          {
+            "idx": 7,
+            "type": "L",
+            "word": "préoccupations"
+          },
+          {
+            "idx": 15,
+            "type": "L",
+            "word": "adressions"
+          },
+          {
+            "idx": 39,
+            "type": "G",
+            "word": "sont"
+          },
+          {
+            "idx": 40,
+            "type": "G",
+            "word": "atteints"
+          },
+          {
+            "idx": 42,
+            "type": "L",
+            "word": "surdité"
+          },
+          {
+            "idx": 59,
+            "type": "L",
+            "word": "voix"
+          },
+          {
+            "idx": 94,
+            "type": "G",
+            "word": "informé"
+          },
+          {
+            "idx": 126,
+            "type": "L",
+            "word": "dépêché"
+          },
+          {
+            "idx": 137,
+            "type": "L",
+            "word": "refus"
+          },
+          {
+            "idx": 142,
+            "type": "L",
+            "word": "recevoir"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": false,
+              "time": 1779456019054,
+              "typed": "Devint"
+            },
+            {
+              "ok": false,
+              "time": 1779456029754,
+              "typed": "Devint"
+            },
+            {
+              "ok": false,
+              "time": 1779456044133,
+              "typed": "Devint"
+            },
+            {
+              "ok": true,
+              "time": 1779456229673,
+              "typed": "Naturellement"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779455981132,
+              "typed": "Préoccupations"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456269662,
+              "typed": "Adréssions"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456326032,
+              "typed": "Sont"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1779456354043,
+              "typed": "Atteint"
+            },
+            {
+              "ok": true,
+              "time": 1779456365006,
+              "typed": "Atteints"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456379452,
+              "typed": "Surdité"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456427467,
+              "typed": "Voix"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1779456457900,
+              "typed": "Informer"
+            },
+            {
+              "ok": true,
+              "time": 1779456477756,
+              "typed": "Informé"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1779456522746,
+              "typed": "Dépêcher"
+            },
+            {
+              "ok": true,
+              "time": 1779456545496,
+              "typed": "Dépêché"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456582121,
+              "typed": "Refus"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456593968,
+              "typed": "Recevoir"
+            }
+          ]
+        ],
+        "lastSeen": 1779456597947,
+        "results": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 3.5,
+        "solved": 11,
+        "status": "active",
+        "timestamp": 1779456595170,
+        "total": 11
+      },
+      "augereau_gatien": {
+        "attempts": [
+          1,
+          4,
+          1,
+          3,
+          1,
+          5,
+          1,
+          1,
+          1,
+          2,
+          2
+        ],
+        "errorRefs": [
+          {
+            "idx": 1,
+            "type": "L",
+            "word": "devint"
+          },
+          {
+            "idx": 24,
+            "type": "L",
+            "word": "répétait"
+          },
+          {
+            "idx": 40,
+            "type": "G",
+            "word": "atteints"
+          },
+          {
+            "idx": 42,
+            "type": "L",
+            "word": "surdité"
+          },
+          {
+            "idx": 66,
+            "type": "G",
+            "word": "grognements"
+          },
+          {
+            "idx": 71,
+            "type": "L",
+            "word": "intégra"
+          },
+          {
+            "idx": 82,
+            "type": "G",
+            "word": "quotidiennes"
+          },
+          {
+            "idx": 83,
+            "type": "G",
+            "word": "étaient"
+          },
+          {
+            "idx": 125,
+            "type": "G",
+            "word": "fut"
+          },
+          {
+            "idx": 128,
+            "type": "P",
+            "word": "-"
+          },
+          {
+            "idx": 142,
+            "type": "G",
+            "word": "recevoir"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": true,
+              "time": 1779455657938,
+              "typed": "Devint"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1779455678837,
+              "typed": "parlé"
+            },
+            {
+              "ok": false,
+              "time": 1779455685518,
+              "typed": "parler"
+            },
+            {
+              "ok": false,
+              "time": 1779455716967,
+              "typed": "parlés"
+            },
+            {
+              "ok": true,
+              "time": 1779455752977,
+              "typed": "repetait"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779455800881,
+              "typed": "atteints"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1779455823165,
+              "typed": "sourditer"
+            },
+            {
+              "ok": false,
+              "time": 1779455830766,
+              "typed": "surditer"
+            },
+            {
+              "ok": true,
+              "time": 1779455837917,
+              "typed": "surdité"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779455869099,
+              "typed": "grognements"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1779455918228,
+              "typed": "s’integrat"
+            },
+            {
+              "ok": false,
+              "time": 1779455934085,
+              "typed": "s’intégrat"
+            },
+            {
+              "ok": false,
+              "time": 1779455954724,
+              "typed": "intégrat"
+            },
+            {
+              "ok": false,
+              "time": 1779455964927,
+              "typed": "integrat"
+            },
+            {
+              "ok": true,
+              "time": 1779456006342,
+              "typed": "Intégra"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456048276,
+              "typed": "quotidiennes"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456071378,
+              "typed": "étaient"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456090804,
+              "typed": "fut"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1779456118409,
+              "typed": ","
+            },
+            {
+              "ok": true,
+              "time": 1779456163844,
+              "typed": "-"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1779456146326,
+              "typed": "reçevoires"
+            },
+            {
+              "ok": true,
+              "time": 1779456174523,
+              "typed": "recevoir"
+            }
+          ]
+        ],
+        "lastSeen": 1779943033536,
+        "results": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 2.25,
+        "solved": 11,
+        "status": "offline",
+        "timestamp": 1779456175725,
+        "total": 11
+      },
+      "boivin_eden": {
+        "attempts": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "errorRefs": [
+          {
+            "idx": 1,
+            "type": "L",
+            "word": "devint"
+          },
+          {
+            "idx": 7,
+            "type": "L",
+            "word": "préoccupations"
+          },
+          {
+            "idx": 106,
+            "type": "G",
+            "word": "leur"
+          },
+          {
+            "idx": 126,
+            "type": "G",
+            "word": "dépêché"
+          },
+          {
+            "idx": 142,
+            "type": "G",
+            "word": "recevoir"
+          },
+          {
+            "idx": 127,
+            "type": "G",
+            "word": "au"
+          },
+          {
+            "idx": 129,
+            "type": "G",
+            "word": "devant"
+          },
+          {
+            "idx": 134,
+            "type": "G",
+            "word": "leur"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": true,
+              "time": 1779456084198,
+              "typed": "Devint"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456103697,
+              "typed": "Préoccupations"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456152004,
+              "typed": "Leur"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456172932,
+              "typed": "Dêpéché"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456227455,
+              "typed": "Recevoir"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456183282,
+              "typed": "Au"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456189964,
+              "typed": "Devant"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456201543,
+              "typed": "Leur"
+            }
+          ]
+        ],
+        "lastSeen": 1779456235619,
+        "results": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 5,
+        "solved": 8,
+        "status": "active",
+        "timestamp": 1779456228656,
+        "total": 8
+      },
+      "bourreau_celeste": {
+        "attempts": [
+          1,
+          1,
+          1,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "errorRefs": [
+          {
+            "idx": 2,
+            "type": "L",
+            "word": "naturellement"
+          },
+          {
+            "idx": 7,
+            "type": "G",
+            "word": "préoccupations"
+          },
+          {
+            "idx": 18,
+            "type": "G",
+            "word": "abord"
+          },
+          {
+            "idx": 24,
+            "type": "L",
+            "word": "répétait"
+          },
+          {
+            "idx": 40,
+            "type": "G",
+            "word": "atteints"
+          },
+          {
+            "idx": 42,
+            "type": "G",
+            "word": "surdité"
+          },
+          {
+            "idx": 81,
+            "type": "G",
+            "word": "rencontres"
+          },
+          {
+            "idx": 82,
+            "type": "G",
+            "word": "quotidiennes"
+          },
+          {
+            "idx": 94,
+            "type": "G",
+            "word": "informé"
+          },
+          {
+            "idx": 126,
+            "type": "L",
+            "word": "dépêché"
+          },
+          {
+            "idx": 142,
+            "type": "G",
+            "word": "recevoir"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": true,
+              "time": 1779455669002,
+              "typed": "Naturellement"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779455705889,
+              "typed": "Préoccupations"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779455754074,
+              "typed": "Abord"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1779455776774,
+              "typed": "Répettait"
+            },
+            {
+              "ok": true,
+              "time": 1779455797053,
+              "typed": "Répétait"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779455846669,
+              "typed": "Atteints"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779455865720,
+              "typed": "Surdité"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779455884769,
+              "typed": "Rencontres"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779455925557,
+              "typed": "Quotidiennes"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779455946384,
+              "typed": "Informé"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779455973952,
+              "typed": "Dépêché"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779455997587,
+              "typed": "Recevoir"
+            }
+          ]
+        ],
+        "lastSeen": 1779456095804,
+        "results": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 4.75,
+        "solved": 11,
+        "status": "offline",
+        "timestamp": 1779455998788,
+        "total": 11
+      },
+      "bressin_titouan": {
+        "attempts": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "errorRefs": [
+          {
+            "idx": 7,
+            "type": "G",
+            "word": "préoccupations"
+          },
+          {
+            "idx": 40,
+            "type": "G",
+            "word": "atteints"
+          },
+          {
+            "idx": 63,
+            "type": "L",
+            "word": "singulièrement"
+          },
+          {
+            "idx": 71,
+            "type": "L",
+            "word": "intégra"
+          },
+          {
+            "idx": 82,
+            "type": "G",
+            "word": "quotidiennes"
+          },
+          {
+            "idx": 126,
+            "type": "L",
+            "word": "dépêché"
+          },
+          {
+            "idx": 128,
+            "type": "P",
+            "word": "-"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": true,
+              "time": 1779456791852,
+              "typed": "Préoccupations"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456826947,
+              "typed": "Atteints"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456843400,
+              "typed": "Singulièrement"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456867944,
+              "typed": "intégra"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456879080,
+              "typed": "quotidiennes"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456927780,
+              "typed": "dépêché"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779457074846,
+              "typed": "-"
+            }
+          ]
+        ],
+        "lastSeen": 1779457128754,
+        "results": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 5,
+        "solved": 7,
+        "status": "offline",
+        "timestamp": 1779457076048,
+        "total": 7
+      },
+      "caldeira_tiago": {
+        "attempts": [
+          1,
+          3,
+          1,
+          1,
+          1,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2,
+          1,
+          2,
+          1
+        ],
+        "errorRefs": [
+          {
+            "idx": 7,
+            "type": "L",
+            "word": "préoccupations"
+          },
+          {
+            "idx": 22,
+            "type": "L",
+            "word": "qui"
+          },
+          {
+            "idx": 40,
+            "type": "G",
+            "word": "atteints"
+          },
+          {
+            "idx": 42,
+            "type": "L",
+            "word": "surdité"
+          },
+          {
+            "idx": 59,
+            "type": "L",
+            "word": "voix"
+          },
+          {
+            "idx": 62,
+            "type": "L",
+            "word": "contrastait"
+          },
+          {
+            "idx": 66,
+            "type": "G",
+            "word": "grognements"
+          },
+          {
+            "idx": 74,
+            "type": "G",
+            "word": "à"
+          },
+          {
+            "idx": 82,
+            "type": "G",
+            "word": "quotidiennes"
+          },
+          {
+            "idx": 106,
+            "type": "G",
+            "word": "leur"
+          },
+          {
+            "idx": 113,
+            "type": "G",
+            "word": "retrouver"
+          },
+          {
+            "idx": 114,
+            "type": "G",
+            "word": "sa"
+          },
+          {
+            "idx": 126,
+            "type": "G",
+            "word": "dépêché"
+          },
+          {
+            "idx": 128,
+            "type": "P",
+            "word": "-"
+          },
+          {
+            "idx": 135,
+            "type": "G",
+            "word": "signifier"
+          },
+          {
+            "idx": 142,
+            "type": "G",
+            "word": "recevoir"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": true,
+              "time": 1779456752088,
+              "typed": "Préoccupations"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1779456770684,
+              "typed": "Il"
+            },
+            {
+              "ok": false,
+              "time": 1779456790653,
+              "typed": "Pour"
+            },
+            {
+              "ok": true,
+              "time": 1779456807083,
+              "typed": "Qui"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456819069,
+              "typed": "Atteints"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456831001,
+              "typed": "Surdité"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456846601,
+              "typed": "Voix"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1779456861847,
+              "typed": "Contrastais"
+            },
+            {
+              "ok": true,
+              "time": 1779456887664,
+              "typed": "Contŕastait"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456923029,
+              "typed": "Grognements"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456929783,
+              "typed": "À"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456977980,
+              "typed": "Quotidiennes"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456987979,
+              "typed": "Leur"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779457002631,
+              "typed": "Retrouver"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779457008518,
+              "typed": "Sa"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1779457021492,
+              "typed": "Dépêcher"
+            },
+            {
+              "ok": true,
+              "time": 1779457033147,
+              "typed": "Dépêché"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779457058462,
+              "typed": "-"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1779457069226,
+              "typed": "Signifié"
+            },
+            {
+              "ok": true,
+              "time": 1779457101977,
+              "typed": "Signifier"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779457111675,
+              "typed": "Recevoir"
+            }
+          ]
+        ],
+        "lastSeen": 1779457174730,
+        "results": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 3.75,
+        "solved": 16,
+        "status": "active",
+        "timestamp": 1779457112875,
+        "total": 16
+      },
+      "cesbron_lili": {
+        "attempts": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "errorRefs": [
+          {
+            "idx": 7,
+            "type": "L",
+            "word": "préoccupations"
+          },
+          {
+            "idx": 15,
+            "type": "G",
+            "word": "adressions"
+          },
+          {
+            "idx": 94,
+            "type": "G",
+            "word": "informé"
+          },
+          {
+            "idx": 128,
+            "type": "P",
+            "word": "-"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": true,
+              "time": 1779455756883,
+              "typed": "préoccupations"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779455772114,
+              "typed": "adressions"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779455808617,
+              "typed": "informé"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779455850426,
+              "typed": "-"
+            }
+          ]
+        ],
+        "lastSeen": 1779455882034,
+        "results": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 5,
+        "solved": 4,
+        "status": "active",
+        "timestamp": 1779455851627,
+        "total": 4
+      },
+      "chalumeau_jules": {
+        "errorRefs": [
+          {
+            "idx": 1,
+            "type": "L",
+            "word": "devint"
+          },
+          {
+            "idx": 7,
+            "type": "G",
+            "word": "préoccupations"
+          },
+          {
+            "idx": 32,
+            "type": "L",
+            "word": "syllabes"
+          },
+          {
+            "idx": 40,
+            "type": "G",
+            "word": "atteints"
+          },
+          {
+            "idx": 42,
+            "type": "L",
+            "word": "surdité"
+          },
+          {
+            "idx": 52,
+            "type": "M",
+            "word": "nous"
+          },
+          {
+            "idx": 63,
+            "type": "L",
+            "word": "singulièrement"
+          },
+          {
+            "idx": 66,
+            "type": "G",
+            "word": "grognements"
+          },
+          {
+            "idx": 81,
+            "type": "G",
+            "word": "rencontres"
+          },
+          {
+            "idx": 82,
+            "type": "G",
+            "word": "quotidiennes"
+          },
+          {
+            "idx": 83,
+            "type": "G",
+            "word": "étaient"
+          },
+          {
+            "idx": 94,
+            "type": "G",
+            "word": "informé"
+          },
+          {
+            "idx": 113,
+            "type": "G",
+            "word": "retrouver"
+          },
+          {
+            "idx": 126,
+            "type": "L",
+            "word": "dépêché"
+          },
+          {
+            "idx": 128,
+            "type": "P",
+            "word": "-"
+          },
+          {
+            "idx": 135,
+            "type": "L",
+            "word": "signifier"
+          },
+          {
+            "idx": 142,
+            "type": "G",
+            "word": "recevoir"
+          }
+        ],
+        "lastSeen": 1779456743149,
+        "status": "active",
+        "total": 17
+      },
+      "chan_aymeric": {
+        "attempts": [
+          1,
+          1,
+          1,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "errorRefs": [
+          {
+            "idx": 7,
+            "type": "G",
+            "word": "préoccupations"
+          },
+          {
+            "idx": 42,
+            "type": "G",
+            "word": "surdité"
+          },
+          {
+            "idx": 63,
+            "type": "L",
+            "word": "singulièrement"
+          },
+          {
+            "idx": 66,
+            "type": "G",
+            "word": "grognements"
+          },
+          {
+            "idx": 81,
+            "type": "G",
+            "word": "rencontres"
+          },
+          {
+            "idx": 82,
+            "type": "G",
+            "word": "quotidiennes"
+          },
+          {
+            "idx": 83,
+            "type": "G",
+            "word": "étaient"
+          },
+          {
+            "idx": 88,
+            "type": "P",
+            "word": "."
+          },
+          {
+            "idx": 124,
+            "type": "L",
+            "word": "Penanster"
+          },
+          {
+            "idx": 126,
+            "type": "L",
+            "word": "dépêché"
+          },
+          {
+            "idx": 128,
+            "type": "P",
+            "word": "-"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": true,
+              "time": 1779455724132,
+              "typed": "Préoccupations"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779455753720,
+              "typed": "Surdité"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779455785547,
+              "typed": "Singulièrement"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1779455811479,
+              "typed": "Grognement"
+            },
+            {
+              "ok": true,
+              "time": 1779455822148,
+              "typed": "Grognements"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779455834462,
+              "typed": "Rencontres"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779455842076,
+              "typed": "Quotidiennes"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779455849146,
+              "typed": "Étaient"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779455864187,
+              "typed": "."
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779455889147,
+              "typed": "Penanster"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779455899411,
+              "typed": "Dépêché"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779455907295,
+              "typed": "-"
+            }
+          ]
+        ],
+        "lastSeen": 1779456547415,
+        "results": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 4.75,
+        "solved": 11,
+        "status": "active",
+        "timestamp": 1779455908496,
+        "total": 11
+      },
+      "cholet_pierre": {
+        "attempts": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "errorRefs": [
+          {
+            "idx": 1,
+            "type": "L",
+            "word": "devint"
+          },
+          {
+            "idx": 40,
+            "type": "G",
+            "word": "atteints"
+          },
+          {
+            "idx": 94,
+            "type": "G",
+            "word": "informé"
+          },
+          {
+            "idx": 128,
+            "type": "P",
+            "word": "-"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": true,
+              "time": 1779455694477,
+              "typed": "Devint"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779455708980,
+              "typed": "Atteints"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779455731544,
+              "typed": "Informé"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779455751795,
+              "typed": "-"
+            }
+          ]
+        ],
+        "lastSeen": 1779455786412,
+        "results": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 5,
+        "solved": 4,
+        "status": "offline",
+        "timestamp": 1779455752997,
+        "total": 4
+      },
+      "chouteau_baptistine": {
+        "attempts": [
+          3,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2,
+          8,
+          2,
+          1
+        ],
+        "errorRefs": [
+          {
+            "idx": 11,
+            "type": "G",
+            "word": "parler"
+          },
+          {
+            "idx": 30,
+            "type": "G",
+            "word": "décomposition"
+          },
+          {
+            "idx": 63,
+            "type": "L",
+            "word": "singulièrement"
+          },
+          {
+            "idx": 71,
+            "type": "L",
+            "word": "intégra"
+          },
+          {
+            "idx": 83,
+            "type": "L",
+            "word": "étaient"
+          },
+          {
+            "idx": 94,
+            "type": "G",
+            "word": "informé"
+          },
+          {
+            "idx": 106,
+            "type": "G",
+            "word": "leur"
+          },
+          {
+            "idx": 126,
+            "type": "G",
+            "word": "dépêché"
+          },
+          {
+            "idx": 128,
+            "type": "P",
+            "word": "-"
+          },
+          {
+            "idx": 135,
+            "type": "L",
+            "word": "signifier"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": false,
+              "time": 1779455845757,
+              "typed": "Parlé"
+            },
+            {
+              "ok": false,
+              "time": 1779455859803,
+              "typed": "Parlé"
+            },
+            {
+              "ok": true,
+              "time": 1779455864792,
+              "typed": "Parler"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779455901271,
+              "typed": "Décomposition"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779455951439,
+              "typed": "Singulièrement"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456059815,
+              "typed": "Intégra"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456086653,
+              "typed": "Étaient"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456155134,
+              "typed": "Informé"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1779456108630,
+              "typed": "Leurs"
+            },
+            {
+              "ok": true,
+              "time": 1779456113068,
+              "typed": "Leur"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1779456170534,
+              "typed": "Fu"
+            },
+            {
+              "ok": false,
+              "time": 1779456174016,
+              "typed": "Fut"
+            },
+            {
+              "ok": false,
+              "time": 1779456181380,
+              "typed": "Fût"
+            },
+            {
+              "ok": false,
+              "time": 1779456186541,
+              "typed": "Fû"
+            },
+            {
+              "ok": false,
+              "time": 1779456196351,
+              "typed": "Fút"
+            },
+            {
+              "ok": false,
+              "time": 1779456199999,
+              "typed": "Fut"
+            },
+            {
+              "ok": false,
+              "time": 1779456211949,
+              "typed": "Fût"
+            },
+            {
+              "ok": true,
+              "time": 1779456232761,
+              "typed": "Dépêché"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1779456259781,
+              "typed": "Devant"
+            },
+            {
+              "ok": true,
+              "time": 1779456292749,
+              "typed": "-"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456320178,
+              "typed": "Signifier"
+            }
+          ]
+        ],
+        "lastSeen": 1779456359795,
+        "results": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 2.25,
+        "solved": 10,
+        "status": "active",
+        "timestamp": 1779456321380,
+        "total": 10
+      },
+      "delacroix_romain": {
+        "attempts": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2,
+          1,
+          1
+        ],
+        "errorRefs": [
+          {
+            "idx": 18,
+            "type": "L",
+            "word": "abord"
+          },
+          {
+            "idx": 24,
+            "type": "L",
+            "word": "répétait"
+          },
+          {
+            "idx": 37,
+            "type": "G",
+            "word": "ceux"
+          },
+          {
+            "idx": 59,
+            "type": "L",
+            "word": "voix"
+          },
+          {
+            "idx": 75,
+            "type": "L",
+            "word": "notre"
+          },
+          {
+            "idx": 76,
+            "type": "L",
+            "word": "clan"
+          },
+          {
+            "idx": 81,
+            "type": "G",
+            "word": "rencontres"
+          },
+          {
+            "idx": 82,
+            "type": "G",
+            "word": "quotidiennes"
+          },
+          {
+            "idx": 83,
+            "type": "L",
+            "word": "étaient"
+          },
+          {
+            "idx": 86,
+            "type": "G",
+            "word": "courte"
+          },
+          {
+            "idx": 128,
+            "type": "P",
+            "word": "-"
+          },
+          {
+            "idx": 135,
+            "type": "G",
+            "word": "signifier"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": true,
+              "time": 1779455592801,
+              "typed": "Abord"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779455656815,
+              "typed": "Répétait"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779455677879,
+              "typed": "Ceux"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779455720627,
+              "typed": "Voix"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779455750045,
+              "typed": "Notre"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779455758126,
+              "typed": "Clan"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779455787019,
+              "typed": "Rencontres"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779455796365,
+              "typed": "Quotidiennes"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779455814906,
+              "typed": "Étaient"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1779455858235,
+              "typed": "Courtes"
+            },
+            {
+              "ok": true,
+              "time": 1779455865851,
+              "typed": "Courte"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456008618,
+              "typed": "-"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456036224,
+              "typed": "Signifier"
+            }
+          ]
+        ],
+        "lastSeen": 1779456053182,
+        "results": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 4.75,
+        "solved": 12,
+        "status": "offline",
+        "timestamp": 1779456037425,
+        "total": 12
+      },
+      "desbois_auriane": {
+        "attempts": [
+          1,
+          1,
+          4,
+          1,
+          1,
+          1
+        ],
+        "errorRefs": [
+          {
+            "idx": 18,
+            "type": "G",
+            "word": "abord"
+          },
+          {
+            "idx": 24,
+            "type": "L",
+            "word": "répétait"
+          },
+          {
+            "idx": 40,
+            "type": "G",
+            "word": "atteints"
+          },
+          {
+            "idx": 106,
+            "type": "G",
+            "word": "leur"
+          },
+          {
+            "idx": 121,
+            "type": "G",
+            "word": "se"
+          },
+          {
+            "idx": 128,
+            "type": "P",
+            "word": "-"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": true,
+              "time": 1779456232471,
+              "typed": "Abord"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456248471,
+              "typed": "Répétait"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1779456266603,
+              "typed": "Atteint"
+            },
+            {
+              "ok": false,
+              "time": 1779456282351,
+              "typed": "Atteind"
+            },
+            {
+              "ok": false,
+              "time": 1779456317135,
+              "typed": "Attein"
+            },
+            {
+              "ok": true,
+              "time": 1779456578632,
+              "typed": "Atteints"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456360633,
+              "typed": "Leur"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456368774,
+              "typed": "Se"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456504046,
+              "typed": "-"
+            }
+          ]
+        ],
+        "lastSeen": 1779457131698,
+        "results": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 4.25,
+        "solved": 6,
+        "status": "offline",
+        "timestamp": 1779456579833,
+        "total": 6
+      },
+      "deslin_lucas": {
+        "attempts": [
+          1,
+          2,
+          2,
+          1,
+          1,
+          1,
+          2,
+          2,
+          1,
+          1
+        ],
+        "errorRefs": [
+          {
+            "idx": 7,
+            "type": "L",
+            "word": "préoccupations"
+          },
+          {
+            "idx": 17,
+            "type": "P",
+            "word": "’"
+          },
+          {
+            "idx": 18,
+            "type": "L",
+            "word": "abord"
+          },
+          {
+            "idx": 42,
+            "type": "G",
+            "word": "surdité"
+          },
+          {
+            "idx": 59,
+            "type": "L",
+            "word": "voix"
+          },
+          {
+            "idx": 96,
+            "type": "G",
+            "word": "son"
+          },
+          {
+            "idx": 106,
+            "type": "G",
+            "word": "leur"
+          },
+          {
+            "idx": 126,
+            "type": "L",
+            "word": "dépêché"
+          },
+          {
+            "idx": 128,
+            "type": "P",
+            "word": "-"
+          },
+          {
+            "idx": 142,
+            "type": "L",
+            "word": "recevoir"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": true,
+              "time": 1779457023554,
+              "typed": "Préoccupations"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1779457074117,
+              "typed": "abord"
+            },
+            {
+              "ok": true,
+              "time": 1779457095669,
+              "typed": "’"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1779457083814,
+              "typed": "abors"
+            },
+            {
+              "ok": true,
+              "time": 1779457107907,
+              "typed": "abord"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779457131995,
+              "typed": "Surdité"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779457165513,
+              "typed": "voix"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779457216850,
+              "typed": "Son"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1779457182635,
+              "typed": "s’"
+            },
+            {
+              "ok": true,
+              "time": 1779457193420,
+              "typed": "Leur"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1779457238561,
+              "typed": "dépêcher"
+            },
+            {
+              "ok": true,
+              "time": 1779457258673,
+              "typed": "dépêché"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779457291547,
+              "typed": "-"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779457302079,
+              "typed": "recevoir"
+            }
+          ]
+        ],
+        "lastSeen": 1779715186476,
+        "results": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 4,
+        "solved": 10,
+        "status": "offline",
+        "timestamp": 1779457303281,
+        "total": 10
+      },
+      "dittiere_romane": {
+        "attempts": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          3,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2,
+          1
+        ],
+        "errorRefs": [
+          {
+            "idx": 1,
+            "type": "L",
+            "word": "devint"
+          },
+          {
+            "idx": 39,
+            "type": "G",
+            "word": "sont"
+          },
+          {
+            "idx": 40,
+            "type": "G",
+            "word": "atteints"
+          },
+          {
+            "idx": 42,
+            "type": "G",
+            "word": "surdité"
+          },
+          {
+            "idx": 55,
+            "type": "L",
+            "word": "lassions"
+          },
+          {
+            "idx": 63,
+            "type": "L",
+            "word": "singulièrement"
+          },
+          {
+            "idx": 71,
+            "type": "L",
+            "word": "intégra"
+          },
+          {
+            "idx": 76,
+            "type": "L",
+            "word": "clan"
+          },
+          {
+            "idx": 82,
+            "type": "G",
+            "word": "quotidiennes"
+          },
+          {
+            "idx": 94,
+            "type": "G",
+            "word": "informé"
+          },
+          {
+            "idx": 106,
+            "type": "G",
+            "word": "leur"
+          },
+          {
+            "idx": 125,
+            "type": "G",
+            "word": "fut"
+          },
+          {
+            "idx": 126,
+            "type": "G",
+            "word": "dépêché"
+          },
+          {
+            "idx": 137,
+            "type": "L",
+            "word": "refus"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": true,
+              "time": 1779455838573,
+              "typed": "devint"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779455861723,
+              "typed": "sont"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779455877205,
+              "typed": "atteints"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779455888871,
+              "typed": "surdité"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779455909868,
+              "typed": "lassions"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779455941302,
+              "typed": "singulièrement"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1779455978735,
+              "typed": "s’intégra"
+            },
+            {
+              "ok": false,
+              "time": 1779456184514,
+              "typed": "s’intégra"
+            },
+            {
+              "ok": true,
+              "time": 1779456251927,
+              "typed": "intégra"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456100896,
+              "typed": "clan"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456280178,
+              "typed": "quotidiennes"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456301710,
+              "typed": "informé"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456312725,
+              "typed": "leur"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456320178,
+              "typed": "fut"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1779456334162,
+              "typed": "dépêcher"
+            },
+            {
+              "ok": true,
+              "time": 1779456355910,
+              "typed": "depêché"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456368895,
+              "typed": "refus"
+            }
+          ]
+        ],
+        "lastSeen": 1779456739588,
+        "results": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 4.25,
+        "solved": 14,
+        "status": "offline",
+        "timestamp": 1779456370097,
+        "total": 14
+      },
+      "heinrich_clovis": {
+        "attempts": [
+          1,
+          3,
+          1,
+          3,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "errorRefs": [
+          {
+            "idx": 1,
+            "type": "L",
+            "word": "devint"
+          },
+          {
+            "idx": 7,
+            "type": "L",
+            "word": "préoccupations"
+          },
+          {
+            "idx": 30,
+            "type": "G",
+            "word": "décomposition"
+          },
+          {
+            "idx": 40,
+            "type": "G",
+            "word": "atteints"
+          },
+          {
+            "idx": 52,
+            "type": "M",
+            "word": "nous"
+          },
+          {
+            "idx": 56,
+            "type": "M",
+            "word": "pas"
+          },
+          {
+            "idx": 106,
+            "type": "G",
+            "word": "leur"
+          },
+          {
+            "idx": 107,
+            "type": "G",
+            "word": "écrivait"
+          },
+          {
+            "idx": 126,
+            "type": "L",
+            "word": "dépêché"
+          },
+          {
+            "idx": 128,
+            "type": "P",
+            "word": "-"
+          },
+          {
+            "idx": 142,
+            "type": "L",
+            "word": "recevoir"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": true,
+              "time": 1779455637888,
+              "typed": "devint"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1779455751783,
+              "typed": "préocupation"
+            },
+            {
+              "ok": false,
+              "time": 1779455772381,
+              "typed": "préoccupation"
+            },
+            {
+              "ok": true,
+              "time": 1779455798151,
+              "typed": "Préoccupations"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779455849057,
+              "typed": "Décomposition"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1779455883403,
+              "typed": "atteint"
+            },
+            {
+              "ok": false,
+              "time": 1779455893067,
+              "typed": "Atteient"
+            },
+            {
+              "ok": true,
+              "time": 1779455909741,
+              "typed": "Atteints"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779455938604,
+              "typed": "nous"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779455950253,
+              "typed": "pas"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779455988070,
+              "typed": "leur"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779455997875,
+              "typed": "ecrivait"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456025101,
+              "typed": "Dépêché"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456070142,
+              "typed": "-"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456087620,
+              "typed": "recevoir"
+            }
+          ]
+        ],
+        "lastSeen": 1779456113832,
+        "results": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 4,
+        "solved": 11,
+        "status": "active",
+        "timestamp": 1779456088821,
+        "total": 11
+      },
+      "jamin_noe": {
+        "attempts": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "errorRefs": [
+          {
+            "idx": 7,
+            "type": "L",
+            "word": "préoccupations"
+          },
+          {
+            "idx": 40,
+            "type": "G",
+            "word": "atteints"
+          },
+          {
+            "idx": 63,
+            "type": "L",
+            "word": "singulièrement"
+          },
+          {
+            "idx": 66,
+            "type": "G",
+            "word": "grognements"
+          },
+          {
+            "idx": 74,
+            "type": "I",
+            "word": "à"
+          },
+          {
+            "idx": 82,
+            "type": "G",
+            "word": "quotidiennes"
+          },
+          {
+            "idx": 87,
+            "type": "G",
+            "word": "durée"
+          },
+          {
+            "idx": 126,
+            "type": "G",
+            "word": "dépêché"
+          },
+          {
+            "idx": 128,
+            "type": "P",
+            "word": "-"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": true,
+              "time": 1779456105276,
+              "typed": "préoccupations"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456139750,
+              "typed": "atteints"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456160461,
+              "typed": "singulièrement"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456178158,
+              "typed": "grognements"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456256422,
+              "typed": "à"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456190988,
+              "typed": "quotidiennes"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456202580,
+              "typed": "durée"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456228813,
+              "typed": "dépêché"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456235477,
+              "typed": "-"
+            }
+          ]
+        ],
+        "lastSeen": 1779457346164,
+        "results": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 5,
+        "solved": 9,
+        "status": "active",
+        "timestamp": 1779456257623,
+        "total": 9
+      },
+      "juin_angele": {
+        "attempts": [
+          3,
+          2,
+          1,
+          1
+        ],
+        "errorRefs": [
+          {
+            "idx": 107,
+            "type": "L",
+            "word": "écrivait"
+          },
+          {
+            "idx": 125,
+            "type": "G",
+            "word": "fut"
+          },
+          {
+            "idx": 126,
+            "type": "L",
+            "word": "dépêché"
+          },
+          {
+            "idx": 127,
+            "type": "G",
+            "word": "au"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": false,
+              "time": 1779455994881,
+              "typed": "Ecri"
+            },
+            {
+              "ok": false,
+              "time": 1779456002142,
+              "typed": "Écrivais"
+            },
+            {
+              "ok": true,
+              "time": 1779456269922,
+              "typed": "Écrivait"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1779456030703,
+              "typed": "Fus"
+            },
+            {
+              "ok": true,
+              "time": 1779456280887,
+              "typed": "Fut"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456217419,
+              "typed": "Dépêché"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456247836,
+              "typed": "Au"
+            }
+          ]
+        ],
+        "lastSeen": 1779456354185,
+        "results": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 4.25,
+        "solved": 4,
+        "status": "active",
+        "timestamp": 1779456282088,
+        "total": 4
+      },
+      "kock_elisa": {
+        "attempts": [
+          1,
+          2,
+          1,
+          1,
+          1,
+          3,
+          1,
+          1,
+          3,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "errorRefs": [
+          {
+            "idx": 2,
+            "type": "L",
+            "word": "naturellement"
+          },
+          {
+            "idx": 7,
+            "type": "L",
+            "word": "préoccupations"
+          },
+          {
+            "idx": 15,
+            "type": "L",
+            "word": "adressions"
+          },
+          {
+            "idx": 18,
+            "type": "I",
+            "word": "abord"
+          },
+          {
+            "idx": 40,
+            "type": "G",
+            "word": "atteints"
+          },
+          {
+            "idx": 42,
+            "type": "L",
+            "word": "surdité"
+          },
+          {
+            "idx": 63,
+            "type": "L",
+            "word": "singulièrement"
+          },
+          {
+            "idx": 82,
+            "type": "G",
+            "word": "quotidiennes"
+          },
+          {
+            "idx": 87,
+            "type": "L",
+            "word": "durée"
+          },
+          {
+            "idx": 97,
+            "type": "G",
+            "word": "état"
+          },
+          {
+            "idx": 113,
+            "type": "G",
+            "word": "retrouver"
+          },
+          {
+            "idx": 125,
+            "type": "L",
+            "word": "fut"
+          },
+          {
+            "idx": 126,
+            "type": "L",
+            "word": "dépêché"
+          },
+          {
+            "idx": 128,
+            "type": "P",
+            "word": "-"
+          },
+          {
+            "idx": 142,
+            "type": "L",
+            "word": "recevoir"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": true,
+              "time": 1779456019372,
+              "typed": "Naturellement"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1779456038316,
+              "typed": "Préoccupation"
+            },
+            {
+              "ok": true,
+              "time": 1779456048809,
+              "typed": "Préoccupations"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456098934,
+              "typed": "Adressions"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456140515,
+              "typed": "Abord"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456184093,
+              "typed": "Atteints"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1779456202091,
+              "typed": "Sourdité"
+            },
+            {
+              "ok": false,
+              "time": 1779456221136,
+              "typed": "Sourdité"
+            },
+            {
+              "ok": true,
+              "time": 1779456231002,
+              "typed": "Surdité"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456272208,
+              "typed": "Singulièrement"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456290003,
+              "typed": "Quotidiennes"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1779456301901,
+              "typed": "Durer"
+            },
+            {
+              "ok": false,
+              "time": 1779456312265,
+              "typed": "Durées"
+            },
+            {
+              "ok": true,
+              "time": 1779456337758,
+              "typed": "Durée"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456358987,
+              "typed": "État"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456392563,
+              "typed": "Retrouver"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456409509,
+              "typed": "Fut"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456440234,
+              "typed": "Dépêché"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456454732,
+              "typed": "-"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456476460,
+              "typed": "Recevoir"
+            }
+          ]
+        ],
+        "lastSeen": 1779456623074,
+        "results": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 3.75,
+        "solved": 15,
+        "status": "active",
+        "timestamp": 1779456477662,
+        "total": 15
+      },
+      "laury_mael": {
+        "attempts": [
+          1,
+          3,
+          1,
+          2,
+          2,
+          1,
+          1,
+          1,
+          2,
+          1,
+          2,
+          1,
+          1,
+          3,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "errorRefs": [
+          {
+            "idx": 7,
+            "type": "L",
+            "word": "préoccupations"
+          },
+          {
+            "idx": 18,
+            "type": "G",
+            "word": "abord"
+          },
+          {
+            "idx": 30,
+            "type": "L",
+            "word": "décomposition"
+          },
+          {
+            "idx": 32,
+            "type": "L",
+            "word": "syllabes"
+          },
+          {
+            "idx": 40,
+            "type": "G",
+            "word": "atteints"
+          },
+          {
+            "idx": 49,
+            "type": "G",
+            "word": "fort"
+          },
+          {
+            "idx": 52,
+            "type": "M",
+            "word": "nous"
+          },
+          {
+            "idx": 60,
+            "type": "L",
+            "word": "douce"
+          },
+          {
+            "idx": 59,
+            "type": "L",
+            "word": "voix"
+          },
+          {
+            "idx": 63,
+            "type": "L",
+            "word": "singulièrement"
+          },
+          {
+            "idx": 66,
+            "type": "G",
+            "word": "grognements"
+          },
+          {
+            "idx": 71,
+            "type": "L",
+            "word": "intégra"
+          },
+          {
+            "idx": 81,
+            "type": "G",
+            "word": "rencontres"
+          },
+          {
+            "idx": 82,
+            "type": "G",
+            "word": "quotidiennes"
+          },
+          {
+            "idx": 83,
+            "type": "G",
+            "word": "étaient"
+          },
+          {
+            "idx": 86,
+            "type": "G",
+            "word": "courte"
+          },
+          {
+            "idx": 93,
+            "type": "M",
+            "word": "pas"
+          },
+          {
+            "idx": 94,
+            "type": "G",
+            "word": "informé"
+          },
+          {
+            "idx": 97,
+            "type": "L",
+            "word": "état"
+          },
+          {
+            "idx": 102,
+            "type": "G",
+            "word": "famille"
+          },
+          {
+            "idx": 113,
+            "type": "G",
+            "word": "retrouver"
+          },
+          {
+            "idx": 122,
+            "type": "G",
+            "word": "montrer"
+          },
+          {
+            "idx": 132,
+            "type": "M",
+            "word": "eux"
+          },
+          {
+            "idx": 137,
+            "type": "L",
+            "word": "refus"
+          },
+          {
+            "idx": 139,
+            "type": "L",
+            "word": "Marguerite"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": true,
+              "time": 1779456210743,
+              "typed": "Préoccupations"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1779456233364,
+              "typed": "D'abord"
+            },
+            {
+              "ok": false,
+              "time": 1779456246945,
+              "typed": "d'abord"
+            },
+            {
+              "ok": true,
+              "time": 1779456263261,
+              "typed": "abord"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456277036,
+              "typed": "Décomposition"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1779456292917,
+              "typed": "Cyclables"
+            },
+            {
+              "ok": true,
+              "time": 1779456312867,
+              "typed": "Syllabes"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1779456324347,
+              "typed": "Atteint"
+            },
+            {
+              "ok": true,
+              "time": 1779456337379,
+              "typed": "Atteints"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456369735,
+              "typed": "Fort"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456421272,
+              "typed": "nous"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456448416,
+              "typed": "Douce"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1779456435285,
+              "typed": "Cette"
+            },
+            {
+              "ok": true,
+              "time": 1779456442668,
+              "typed": "Voix"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456459183,
+              "typed": "Singulièrement"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1779456479426,
+              "typed": "Grognement"
+            },
+            {
+              "ok": true,
+              "time": 1779456500371,
+              "typed": "Grognements"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456510436,
+              "typed": "Intégra"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456522106,
+              "typed": "Rencontres"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1779456533595,
+              "typed": "Étaient"
+            },
+            {
+              "ok": false,
+              "time": 1779456545170,
+              "typed": "Étaient"
+            },
+            {
+              "ok": true,
+              "time": 1779456557166,
+              "typed": "Quotidiennes"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456562191,
+              "typed": "Étaient"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456578236,
+              "typed": "Courte"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456589764,
+              "typed": "Pas"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456604030,
+              "typed": "Informé"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456611912,
+              "typed": "État"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456619576,
+              "typed": "Famille"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456632108,
+              "typed": "Retrouver"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456647320,
+              "typed": "Montrer"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456660208,
+              "typed": "Eux"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456668715,
+              "typed": "Refus"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456690642,
+              "typed": "Marguerite"
+            }
+          ]
+        ],
+        "lastSeen": 1779456747525,
+        "results": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 3,
+        "solved": 25,
+        "status": "active",
+        "timestamp": 1779456691843,
+        "total": 25
+      },
+      "pageot_elie": {
+        "attempts": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "errorRefs": [
+          {
+            "idx": 15,
+            "type": "L",
+            "word": "adressions"
+          },
+          {
+            "idx": 47,
+            "type": "G",
+            "word": "parler"
+          },
+          {
+            "idx": 71,
+            "type": "L",
+            "word": "intégra"
+          },
+          {
+            "idx": 87,
+            "type": "G",
+            "word": "durée"
+          },
+          {
+            "idx": 102,
+            "type": "G",
+            "word": "famille"
+          },
+          {
+            "idx": 106,
+            "type": "G",
+            "word": "leur"
+          },
+          {
+            "idx": 126,
+            "type": "L",
+            "word": "dépêché"
+          },
+          {
+            "idx": 134,
+            "type": "G",
+            "word": "leur"
+          },
+          {
+            "idx": 142,
+            "type": "G",
+            "word": "recevoir"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": true,
+              "time": 1779455648100,
+              "typed": "Adressions"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779455756183,
+              "typed": "Parler"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779455776901,
+              "typed": "Intégra"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779455800863,
+              "typed": "Durée"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779455824652,
+              "typed": "Famille"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779455839520,
+              "typed": "Leur"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779455866680,
+              "typed": "Dépêché"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779455881441,
+              "typed": "Leur"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779455911069,
+              "typed": "Recevoir"
+            }
+          ]
+        ],
+        "lastSeen": 1779456522603,
+        "results": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 5,
+        "solved": 9,
+        "status": "offline",
+        "timestamp": 1779455912270,
+        "total": 9
+      },
+      "pinet_charlotte": {
+        "attempts": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "errorRefs": [
+          {
+            "idx": 24,
+            "type": "L",
+            "word": "répétait"
+          },
+          {
+            "idx": 45,
+            "type": "L",
+            "word": "redoutait"
+          },
+          {
+            "idx": 106,
+            "type": "G",
+            "word": "leur"
+          },
+          {
+            "idx": 115,
+            "type": "L",
+            "word": "trace"
+          },
+          {
+            "idx": 125,
+            "type": "G",
+            "word": "fut"
+          },
+          {
+            "idx": 134,
+            "type": "G",
+            "word": "leur"
+          },
+          {
+            "idx": 142,
+            "type": "G",
+            "word": "recevoir"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": true,
+              "time": 1779695490997,
+              "typed": "répétait"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779695515272,
+              "typed": "redoutait"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779695535285,
+              "typed": "leur"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779695554133,
+              "typed": "trace"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779695577628,
+              "typed": "fut"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779695588428,
+              "typed": "leur"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779695601709,
+              "typed": "recevoir"
+            }
+          ]
+        ],
+        "lastSeen": 1779695701416,
+        "results": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 5,
+        "solved": 7,
+        "status": "offline",
+        "timestamp": 1779695602911,
+        "total": 7
+      },
+      "poulain_helin_zelia": {
+        "attempts": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "errorRefs": [
+          {
+            "idx": 6,
+            "type": "I",
+            "word": "nos"
+          },
+          {
+            "idx": 7,
+            "type": "G",
+            "word": "préoccupations"
+          },
+          {
+            "idx": 24,
+            "type": "L",
+            "word": "répétait"
+          },
+          {
+            "idx": 40,
+            "type": "G",
+            "word": "atteints"
+          },
+          {
+            "idx": 42,
+            "type": "L",
+            "word": "surdité"
+          },
+          {
+            "idx": 63,
+            "type": "L",
+            "word": "singulièrement"
+          },
+          {
+            "idx": 66,
+            "type": "G",
+            "word": "grognements"
+          },
+          {
+            "idx": 71,
+            "type": "L",
+            "word": "intégra"
+          },
+          {
+            "idx": 76,
+            "type": "G",
+            "word": "clan"
+          },
+          {
+            "idx": 81,
+            "type": "L",
+            "word": "rencontres"
+          },
+          {
+            "idx": 82,
+            "type": "G",
+            "word": "quotidiennes"
+          },
+          {
+            "idx": 83,
+            "type": "G",
+            "word": "étaient"
+          },
+          {
+            "idx": 94,
+            "type": "G",
+            "word": "informé"
+          },
+          {
+            "idx": 97,
+            "type": "L",
+            "word": "état"
+          },
+          {
+            "idx": 106,
+            "type": "G",
+            "word": "leur"
+          },
+          {
+            "idx": 126,
+            "type": "G",
+            "word": "dépêché"
+          },
+          {
+            "idx": 128,
+            "type": "P",
+            "word": "-"
+          },
+          {
+            "idx": 132,
+            "type": "M",
+            "word": "eux"
+          },
+          {
+            "idx": 134,
+            "type": "G",
+            "word": "leur"
+          },
+          {
+            "idx": 135,
+            "type": "G",
+            "word": "signifier"
+          },
+          {
+            "idx": 137,
+            "type": "L",
+            "word": "refus"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": true,
+              "time": 1779456520063,
+              "typed": "Nos"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456529025,
+              "typed": "Préoccupations"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456561568,
+              "typed": "Répétait"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456582276,
+              "typed": "Atteints"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456605657,
+              "typed": "Surdité"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456660059,
+              "typed": "Singulièrement"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456678384,
+              "typed": "Grognements"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456703446,
+              "typed": "Intégra"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456748324,
+              "typed": "Clan"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456762300,
+              "typed": "Rencontres"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456779182,
+              "typed": "Quotidiennes"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1779456797029,
+              "typed": "Était"
+            },
+            {
+              "ok": true,
+              "time": 1779456809556,
+              "typed": "Étaient"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456835900,
+              "typed": "Informé"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456887058,
+              "typed": "État"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456950942,
+              "typed": "Leur"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456995708,
+              "typed": "Dépêché"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779457036899,
+              "typed": "-"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779457070345,
+              "typed": "Eux"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779457090449,
+              "typed": "Leur"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779457113150,
+              "typed": "Signifier"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779457137146,
+              "typed": "Refus"
+            }
+          ]
+        ],
+        "lastSeen": 1779457225154,
+        "results": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 4.75,
+        "solved": 21,
+        "status": "active",
+        "timestamp": 1779457138347,
+        "total": 21
+      },
+      "revet_lucas": {
+        "attempts": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "errorRefs": [
+          {
+            "idx": 7,
+            "type": "L",
+            "word": "préoccupations"
+          },
+          {
+            "idx": 83,
+            "type": "G",
+            "word": "étaient"
+          },
+          {
+            "idx": 94,
+            "type": "G",
+            "word": "informé"
+          },
+          {
+            "idx": 106,
+            "type": "G",
+            "word": "leur"
+          },
+          {
+            "idx": 126,
+            "type": "L",
+            "word": "dépêché"
+          },
+          {
+            "idx": 128,
+            "type": "P",
+            "word": "-"
+          },
+          {
+            "idx": 134,
+            "type": "G",
+            "word": "leur"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": true,
+              "time": 1779455768549,
+              "typed": "Préoccupations"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779455799892,
+              "typed": "Étaient"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779455829543,
+              "typed": "Informé"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779455847596,
+              "typed": "Leur"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779455875689,
+              "typed": "Dépêché"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779455942788,
+              "typed": "-"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779455956403,
+              "typed": "Leur"
+            }
+          ]
+        ],
+        "lastSeen": 1779456457665,
+        "results": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 5,
+        "solved": 7,
+        "status": "active",
+        "timestamp": 1779455957604,
+        "total": 7
+      },
+      "rolland_gabriel": {
+        "attempts": [
+          2,
+          1,
+          1,
+          2,
+          1,
+          1,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "errorRefs": [
+          {
+            "idx": 1,
+            "type": "L",
+            "word": "devint"
+          },
+          {
+            "idx": 18,
+            "type": "G",
+            "word": "abord"
+          },
+          {
+            "idx": 24,
+            "type": "L",
+            "word": "répétait"
+          },
+          {
+            "idx": 40,
+            "type": "G",
+            "word": "atteints"
+          },
+          {
+            "idx": 42,
+            "type": "L",
+            "word": "surdité"
+          },
+          {
+            "idx": 62,
+            "type": "G",
+            "word": "contrastait"
+          },
+          {
+            "idx": 71,
+            "type": "L",
+            "word": "intégra"
+          },
+          {
+            "idx": 80,
+            "type": "L",
+            "word": "nos"
+          },
+          {
+            "idx": 81,
+            "type": "G",
+            "word": "rencontres"
+          },
+          {
+            "idx": 82,
+            "type": "G",
+            "word": "quotidiennes"
+          },
+          {
+            "idx": 83,
+            "type": "G",
+            "word": "étaient"
+          },
+          {
+            "idx": 119,
+            "type": "L",
+            "word": "refusa"
+          },
+          {
+            "idx": 125,
+            "type": "L",
+            "word": "fut"
+          },
+          {
+            "idx": 126,
+            "type": "L",
+            "word": "dépêché"
+          },
+          {
+            "idx": 128,
+            "type": "L",
+            "word": "-"
+          },
+          {
+            "idx": 142,
+            "type": "G",
+            "word": "recevoir"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": false,
+              "time": 1779456274990,
+              "typed": "Devain"
+            },
+            {
+              "ok": true,
+              "time": 1779456293492,
+              "typed": "Devint"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456314272,
+              "typed": "Abord"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456336140,
+              "typed": "Répétait"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1779456350368,
+              "typed": "Atteint"
+            },
+            {
+              "ok": true,
+              "time": 1779456384688,
+              "typed": "Atteints"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456391504,
+              "typed": "Surdité"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456430354,
+              "typed": "Contrastait"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1779456456036,
+              "typed": "Integrat"
+            },
+            {
+              "ok": true,
+              "time": 1779456475318,
+              "typed": "Intégra"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456488964,
+              "typed": "Nos"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456513302,
+              "typed": "Rencontres"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456548351,
+              "typed": "Quotidiennes"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456570166,
+              "typed": "Étaient"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456582283,
+              "typed": "Refusa"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456591611,
+              "typed": "Fut"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456605258,
+              "typed": "Dépêché"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456617483,
+              "typed": "-"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456640548,
+              "typed": "Reçevoir"
+            }
+          ]
+        ],
+        "lastSeen": 1779456642053,
+        "results": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 4.25,
+        "solved": 16,
+        "status": "active",
+        "timestamp": 1779456641749,
+        "total": 16
+      },
+      "tenneguin_arthur": {
+        "attempts": [
+          1,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2,
+          2,
+          2,
+          1
+        ],
+        "errorRefs": [
+          {
+            "idx": 2,
+            "type": "L",
+            "word": "naturellement"
+          },
+          {
+            "idx": 7,
+            "type": "L",
+            "word": "préoccupations"
+          },
+          {
+            "idx": 19,
+            "type": "M",
+            "word": "à"
+          },
+          {
+            "idx": 81,
+            "type": "G",
+            "word": "rencontres"
+          },
+          {
+            "idx": 82,
+            "type": "G",
+            "word": "quotidiennes"
+          },
+          {
+            "idx": 86,
+            "type": "G",
+            "word": "courte"
+          },
+          {
+            "idx": 94,
+            "type": "G",
+            "word": "informé"
+          },
+          {
+            "idx": 113,
+            "type": "G",
+            "word": "retrouver"
+          },
+          {
+            "idx": 126,
+            "type": "L",
+            "word": "dépêché"
+          },
+          {
+            "idx": 128,
+            "type": "P",
+            "word": "-"
+          },
+          {
+            "idx": 134,
+            "type": "G",
+            "word": "leur"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": true,
+              "time": 1779456354710,
+              "typed": "Naturellement"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1779456376587,
+              "typed": "Préaucupation"
+            },
+            {
+              "ok": true,
+              "time": 1779456400029,
+              "typed": "Préoccupations"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456443317,
+              "typed": "a"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456479767,
+              "typed": "rencontres"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456494504,
+              "typed": "quotidiennes"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456532595,
+              "typed": "courte"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456510448,
+              "typed": "informé"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1779456545802,
+              "typed": "retrouvés"
+            },
+            {
+              "ok": true,
+              "time": 1779456558516,
+              "typed": "retrouver"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1779456577378,
+              "typed": "dépêcher"
+            },
+            {
+              "ok": true,
+              "time": 1779456599347,
+              "typed": "dépêché"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1779456899336,
+              "typed": ","
+            },
+            {
+              "ok": true,
+              "time": 1779456909783,
+              "typed": "-"
+            }
+          ],
+          [
+            {
+              "ok": true,
+              "time": 1779456929867,
+              "typed": "leur"
+            }
+          ]
+        ],
+        "results": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "score": 4,
+        "solved": 11,
+        "status": "offline",
+        "timestamp": 1779456931068,
+        "total": 11
+      },
+      "xavier_capucine": {
+        "attempts": [
+          3,
+          2
+        ],
+        "errorRefs": [
+          {
+            "idx": 24,
+            "type": "L",
+            "word": "répétait"
+          },
+          {
+            "idx": 47,
+            "type": "G",
+            "word": "parler"
+          }
+        ],
+        "history": [
+          [
+            {
+              "ok": false,
+              "time": 1779455753688,
+              "typed": "Répétais"
+            },
+            {
+              "ok": false,
+              "time": 1779455811305,
+              "typed": "Répété"
+            },
+            {
+              "ok": true,
+              "time": 1779455845347,
+              "typed": "Répétait"
+            }
+          ],
+          [
+            {
+              "ok": false,
+              "time": 1779455868027,
+              "typed": "Parlait"
+            },
+            {
+              "ok": true,
+              "time": 1779455875691,
+              "typed": "Parler"
+            }
+          ]
+        ],
+        "lastSeen": 1779455904265,
+        "results": [
+          true,
+          true
+        ],
+        "score": 4.25,
+        "solved": 2,
+        "status": "offline",
+        "timestamp": 1779455876892,
+        "total": 2
+      }
+    },
+    "config": {
+      "base": 10,
+      "classe": "3E Charles de Gaulle",
+      "competences": [
+        "D1.1 Orthographe grammaticale",
+        "D1.3 Conjugaison",
+        "D1.2 Orthographe lexicale",
+        "D1.4 Accords (sujet-verbe, déterminant-nom-adjectif)",
+        "D1.5 Homophones grammaticaux",
+        "D1.6 Ponctuation",
+        "D2.1 Connaître et appliquer les règles d’orthographe"
+      ],
+      "niveau": "3e",
+      "peerHelp": false,
+      "published": true,
+      "showNote": true,
+      "text": "Marguerite devint naturellement le centre de nos préoccupations. Pour lui parler, nous nous adressions d’abord à Penanster, qui lui répétait nos propos par une lente décomposition des syllabes. Comme souvent chez ceux qui sont atteints de surdité, elle redoutait de parler trop fort, et nous ne nous lassions pas de cette voix douce qui contrastait singulièrement avec nos grognements. Elle s’intégra très rapidement à notre clan, même si nos rencontres quotidiennes étaient toujours de courte durée.\nElle n’avait pas informé de son état les membres de sa famille. Elle ne leur écrivait pas. Ils finirent par retrouver sa trace, mais elle refusa de se montrer. Penanster fut dépêché au-devant d’eux pour leur signifier le refus de Marguerite de les recevoir.",
+      "title": "Dictée brevet blanc 3E"
+    },
+    "results": {
+      "audebert_elise": {
+        "counts": {
+          "G": 3,
+          "I": 0,
+          "L": 8,
+          "M": 0,
+          "X": 1
+        },
+        "deduction": 7.5,
+        "errors": [
+          {
+            "idx": 2,
+            "type": "L",
+            "word": "naturellement"
+          },
+          {
+            "idx": 7,
+            "type": "L",
+            "word": "préoccupations"
+          },
+          {
+            "idx": 15,
+            "type": "L",
+            "word": "adressions"
+          },
+          {
+            "idx": 39,
+            "type": "G",
+            "word": "sont"
+          },
+          {
+            "idx": 40,
+            "type": "G",
+            "word": "atteints"
+          },
+          {
+            "idx": 42,
+            "type": "L",
+            "word": "surdité"
+          },
+          {
+            "idx": 59,
+            "type": "L",
+            "word": "voix"
+          },
+          {
+            "idx": 94,
+            "type": "G",
+            "word": "informé"
+          },
+          {
+            "idx": 126,
+            "type": "L",
+            "word": "dépêché"
+          },
+          {
+            "idx": 137,
+            "type": "L",
+            "word": "refus"
+          },
+          {
+            "idx": 142,
+            "type": "L",
+            "word": "recevoir"
+          }
+        ],
+        "extras": [
+          {
+            "afterIdx": -1,
+            "word": "."
+          }
+        ],
+        "note": 2.5,
+        "timestamp": 1779012646676
+      },
+      "augereau_gatien": {
+        "counts": {
+          "G": 6,
+          "I": 0,
+          "L": 4,
+          "M": 0,
+          "P": 1,
+          "X": 0
+        },
+        "deduction": 8.5,
+        "errors": [
+          {
+            "idx": 1,
+            "type": "L",
+            "word": "devint"
+          },
+          {
+            "idx": 24,
+            "type": "L",
+            "word": "répétait"
+          },
+          {
+            "idx": 40,
+            "type": "G",
+            "word": "atteints"
+          },
+          {
+            "idx": 42,
+            "type": "L",
+            "word": "surdité"
+          },
+          {
+            "idx": 66,
+            "type": "G",
+            "word": "grognements"
+          },
+          {
+            "idx": 71,
+            "type": "L",
+            "word": "intégra"
+          },
+          {
+            "idx": 82,
+            "type": "G",
+            "word": "quotidiennes"
+          },
+          {
+            "idx": 83,
+            "type": "G",
+            "word": "étaient"
+          },
+          {
+            "idx": 125,
+            "type": "G",
+            "word": "fut"
+          },
+          {
+            "idx": 128,
+            "type": "P",
+            "word": "-"
+          },
+          {
+            "idx": 142,
+            "type": "G",
+            "word": "recevoir"
+          }
+        ],
+        "note": 1.5,
+        "timestamp": 1779026202215
+      },
+      "boivin_eden": {
+        "counts": {
+          "G": 6,
+          "I": 0,
+          "L": 2,
+          "M": 0,
+          "X": 0
+        },
+        "deduction": 7,
+        "errors": [
+          {
+            "idx": 1,
+            "type": "L",
+            "word": "devint"
+          },
+          {
+            "idx": 7,
+            "type": "L",
+            "word": "préoccupations"
+          },
+          {
+            "idx": 106,
+            "type": "G",
+            "word": "leur"
+          },
+          {
+            "idx": 126,
+            "type": "G",
+            "word": "dépêché"
+          },
+          {
+            "idx": 142,
+            "type": "G",
+            "word": "recevoir"
+          },
+          {
+            "idx": 127,
+            "type": "G",
+            "word": "au"
+          },
+          {
+            "idx": 129,
+            "type": "G",
+            "word": "devant"
+          },
+          {
+            "idx": 134,
+            "type": "G",
+            "word": "leur"
+          }
+        ],
+        "note": 3,
+        "timestamp": 1779012772436
+      },
+      "bourreau_celeste": {
+        "counts": {
+          "G": 8,
+          "I": 0,
+          "L": 3,
+          "M": 0,
+          "X": 0
+        },
+        "deduction": 9.5,
+        "errors": [
+          {
+            "idx": 2,
+            "type": "L",
+            "word": "naturellement"
+          },
+          {
+            "idx": 7,
+            "type": "G",
+            "word": "préoccupations"
+          },
+          {
+            "idx": 18,
+            "type": "G",
+            "word": "abord"
+          },
+          {
+            "idx": 24,
+            "type": "L",
+            "word": "répétait"
+          },
+          {
+            "idx": 40,
+            "type": "G",
+            "word": "atteints"
+          },
+          {
+            "idx": 42,
+            "type": "G",
+            "word": "surdité"
+          },
+          {
+            "idx": 81,
+            "type": "G",
+            "word": "rencontres"
+          },
+          {
+            "idx": 82,
+            "type": "G",
+            "word": "quotidiennes"
+          },
+          {
+            "idx": 94,
+            "type": "G",
+            "word": "informé"
+          },
+          {
+            "idx": 126,
+            "type": "L",
+            "word": "dépêché"
+          },
+          {
+            "idx": 142,
+            "type": "G",
+            "word": "recevoir"
+          }
+        ],
+        "note": 0.5,
+        "timestamp": 1779024436003
+      },
+      "bressin_titouan": {
+        "counts": {
+          "G": 3,
+          "I": 0,
+          "L": 3,
+          "M": 0,
+          "P": 1,
+          "X": 1
+        },
+        "deduction": 5.5,
+        "errors": [
+          {
+            "idx": 7,
+            "type": "G",
+            "word": "préoccupations"
+          },
+          {
+            "idx": 40,
+            "type": "G",
+            "word": "atteints"
+          },
+          {
+            "idx": 63,
+            "type": "L",
+            "word": "singulièrement"
+          },
+          {
+            "idx": 71,
+            "type": "L",
+            "word": "intégra"
+          },
+          {
+            "idx": 82,
+            "type": "G",
+            "word": "quotidiennes"
+          },
+          {
+            "idx": 126,
+            "type": "L",
+            "word": "dépêché"
+          },
+          {
+            "idx": 128,
+            "type": "P",
+            "word": "-"
+          }
+        ],
+        "extras": [
+          {
+            "afterIdx": -1,
+            "word": "."
+          }
+        ],
+        "note": 4.5,
+        "timestamp": 1779026897926
+      },
+      "caldeira_tiago": {
+        "counts": {
+          "G": 10,
+          "I": 0,
+          "L": 5,
+          "M": 0,
+          "P": 1,
+          "X": 0
+        },
+        "deduction": 13,
+        "errors": [
+          {
+            "idx": 7,
+            "type": "L",
+            "word": "préoccupations"
+          },
+          {
+            "idx": 22,
+            "type": "L",
+            "word": "qui"
+          },
+          {
+            "idx": 40,
+            "type": "G",
+            "word": "atteints"
+          },
+          {
+            "idx": 42,
+            "type": "L",
+            "word": "surdité"
+          },
+          {
+            "idx": 59,
+            "type": "L",
+            "word": "voix"
+          },
+          {
+            "idx": 62,
+            "type": "L",
+            "word": "contrastait"
+          },
+          {
+            "idx": 66,
+            "type": "G",
+            "word": "grognements"
+          },
+          {
+            "idx": 74,
+            "type": "G",
+            "word": "à"
+          },
+          {
+            "idx": 82,
+            "type": "G",
+            "word": "quotidiennes"
+          },
+          {
+            "idx": 106,
+            "type": "G",
+            "word": "leur"
+          },
+          {
+            "idx": 113,
+            "type": "G",
+            "word": "retrouver"
+          },
+          {
+            "idx": 114,
+            "type": "G",
+            "word": "sa"
+          },
+          {
+            "idx": 126,
+            "type": "G",
+            "word": "dépêché"
+          },
+          {
+            "idx": 128,
+            "type": "P",
+            "word": "-"
+          },
+          {
+            "idx": 135,
+            "type": "G",
+            "word": "signifier"
+          },
+          {
+            "idx": 142,
+            "type": "G",
+            "word": "recevoir"
+          }
+        ],
+        "note": 0,
+        "timestamp": 1779026596236
+      },
+      "cesbron_lili": {
+        "counts": {
+          "G": 2,
+          "I": 0,
+          "L": 1,
+          "M": 0,
+          "P": 1,
+          "X": 0
+        },
+        "deduction": 3,
+        "errors": [
+          {
+            "idx": 7,
+            "type": "L",
+            "word": "préoccupations"
+          },
+          {
+            "idx": 15,
+            "type": "G",
+            "word": "adressions"
+          },
+          {
+            "idx": 94,
+            "type": "G",
+            "word": "informé"
+          },
+          {
+            "idx": 128,
+            "type": "P",
+            "word": "-"
+          }
+        ],
+        "note": 7,
+        "timestamp": 1779026897926
+      },
+      "chalumeau_jules": {
+        "counts": {
+          "G": 9,
+          "I": 0,
+          "L": 6,
+          "M": 1,
+          "P": 1,
+          "X": 1
+        },
+        "deduction": 14,
+        "errors": [
+          {
+            "idx": 1,
+            "type": "L",
+            "word": "devint"
+          },
+          {
+            "idx": 7,
+            "type": "G",
+            "word": "préoccupations"
+          },
+          {
+            "idx": 32,
+            "type": "L",
+            "word": "syllabes"
+          },
+          {
+            "idx": 40,
+            "type": "G",
+            "word": "atteints"
+          },
+          {
+            "idx": 42,
+            "type": "L",
+            "word": "surdité"
+          },
+          {
+            "idx": 52,
+            "type": "M",
+            "word": "nous"
+          },
+          {
+            "idx": 63,
+            "type": "L",
+            "word": "singulièrement"
+          },
+          {
+            "idx": 66,
+            "type": "G",
+            "word": "grognements"
+          },
+          {
+            "idx": 81,
+            "type": "G",
+            "word": "rencontres"
+          },
+          {
+            "idx": 82,
+            "type": "G",
+            "word": "quotidiennes"
+          },
+          {
+            "idx": 83,
+            "type": "G",
+            "word": "étaient"
+          },
+          {
+            "idx": 94,
+            "type": "G",
+            "word": "informé"
+          },
+          {
+            "idx": 113,
+            "type": "G",
+            "word": "retrouver"
+          },
+          {
+            "idx": 126,
+            "type": "L",
+            "word": "dépêché"
+          },
+          {
+            "idx": 128,
+            "type": "P",
+            "word": "-"
+          },
+          {
+            "idx": 135,
+            "type": "L",
+            "word": "signifier"
+          },
+          {
+            "idx": 142,
+            "type": "G",
+            "word": "recevoir"
+          }
+        ],
+        "extras": [
+          {
+            "afterIdx": 22,
+            "word": "'"
+          }
+        ],
+        "note": 0,
+        "timestamp": 1779026897926
+      },
+      "chan_aymeric": {
+        "counts": {
+          "G": 6,
+          "I": 0,
+          "L": 3,
+          "M": 0,
+          "P": 2,
+          "X": 0
+        },
+        "deduction": 8.5,
+        "errors": [
+          {
+            "idx": 7,
+            "type": "G",
+            "word": "préoccupations"
+          },
+          {
+            "idx": 42,
+            "type": "G",
+            "word": "surdité"
+          },
+          {
+            "idx": 63,
+            "type": "L",
+            "word": "singulièrement"
+          },
+          {
+            "idx": 66,
+            "type": "G",
+            "word": "grognements"
+          },
+          {
+            "idx": 81,
+            "type": "G",
+            "word": "rencontres"
+          },
+          {
+            "idx": 82,
+            "type": "G",
+            "word": "quotidiennes"
+          },
+          {
+            "idx": 83,
+            "type": "G",
+            "word": "étaient"
+          },
+          {
+            "idx": 88,
+            "type": "P",
+            "word": "."
+          },
+          {
+            "idx": 124,
+            "type": "L",
+            "word": "Penanster"
+          },
+          {
+            "idx": 126,
+            "type": "L",
+            "word": "dépêché"
+          },
+          {
+            "idx": 128,
+            "type": "P",
+            "word": "-"
+          }
+        ],
+        "note": 1.5,
+        "timestamp": 1779026897926
+      },
+      "cholet_pierre": {
+        "counts": {
+          "G": 2,
+          "I": 0,
+          "L": 1,
+          "M": 0,
+          "P": 1,
+          "X": 0
+        },
+        "deduction": 3,
+        "errors": [
+          {
+            "idx": 1,
+            "type": "L",
+            "word": "devint"
+          },
+          {
+            "idx": 40,
+            "type": "G",
+            "word": "atteints"
+          },
+          {
+            "idx": 94,
+            "type": "G",
+            "word": "informé"
+          },
+          {
+            "idx": 128,
+            "type": "P",
+            "word": "-"
+          }
+        ],
+        "note": 7,
+        "timestamp": 1779026897927
+      },
+      "chouteau_baptistine": {
+        "counts": {
+          "G": 5,
+          "I": 0,
+          "L": 4,
+          "M": 0,
+          "P": 1,
+          "X": 0
+        },
+        "deduction": 7.5,
+        "errors": [
+          {
+            "idx": 11,
+            "type": "G",
+            "word": "parler"
+          },
+          {
+            "idx": 30,
+            "type": "G",
+            "word": "décomposition"
+          },
+          {
+            "idx": 63,
+            "type": "L",
+            "word": "singulièrement"
+          },
+          {
+            "idx": 71,
+            "type": "L",
+            "word": "intégra"
+          },
+          {
+            "idx": 83,
+            "type": "L",
+            "word": "étaient"
+          },
+          {
+            "idx": 94,
+            "type": "G",
+            "word": "informé"
+          },
+          {
+            "idx": 106,
+            "type": "G",
+            "word": "leur"
+          },
+          {
+            "idx": 126,
+            "type": "G",
+            "word": "dépêché"
+          },
+          {
+            "idx": 128,
+            "type": "P",
+            "word": "-"
+          },
+          {
+            "idx": 135,
+            "type": "L",
+            "word": "signifier"
+          }
+        ],
+        "note": 2.5,
+        "timestamp": 1779026897926
+      },
+      "delacroix_romain": {
+        "counts": {
+          "G": 5,
+          "I": 0,
+          "L": 6,
+          "M": 0,
+          "P": 1,
+          "X": 1
+        },
+        "deduction": 9,
+        "errors": [
+          {
+            "idx": 18,
+            "type": "L",
+            "word": "abord"
+          },
+          {
+            "idx": 24,
+            "type": "L",
+            "word": "répétait"
+          },
+          {
+            "idx": 37,
+            "type": "G",
+            "word": "ceux"
+          },
+          {
+            "idx": 59,
+            "type": "L",
+            "word": "voix"
+          },
+          {
+            "idx": 75,
+            "type": "L",
+            "word": "notre"
+          },
+          {
+            "idx": 76,
+            "type": "L",
+            "word": "clan"
+          },
+          {
+            "idx": 81,
+            "type": "G",
+            "word": "rencontres"
+          },
+          {
+            "idx": 82,
+            "type": "G",
+            "word": "quotidiennes"
+          },
+          {
+            "idx": 83,
+            "type": "L",
+            "word": "étaient"
+          },
+          {
+            "idx": 86,
+            "type": "G",
+            "word": "courte"
+          },
+          {
+            "idx": 128,
+            "type": "P",
+            "word": "-"
+          },
+          {
+            "idx": 135,
+            "type": "G",
+            "word": "signifier"
+          }
+        ],
+        "extras": [
+          {
+            "afterIdx": 22,
+            "word": "il"
+          }
+        ],
+        "note": 1,
+        "timestamp": 1779026824774
+      },
+      "desbois_auriane": {
+        "counts": {
+          "G": 4,
+          "I": 0,
+          "L": 1,
+          "M": 0,
+          "P": 1,
+          "X": 1
+        },
+        "deduction": 5.5,
+        "errors": [
+          {
+            "idx": 18,
+            "type": "G",
+            "word": "abord"
+          },
+          {
+            "idx": 24,
+            "type": "L",
+            "word": "répétait"
+          },
+          {
+            "idx": 40,
+            "type": "G",
+            "word": "atteints"
+          },
+          {
+            "idx": 106,
+            "type": "G",
+            "word": "leur"
+          },
+          {
+            "idx": 121,
+            "type": "G",
+            "word": "se"
+          },
+          {
+            "idx": 128,
+            "type": "P",
+            "word": "-"
+          }
+        ],
+        "extras": [
+          {
+            "afterIdx": -1,
+            "word": "."
+          }
+        ],
+        "note": 4.5,
+        "timestamp": 1779026897926
+      },
+      "deslin_lucas": {
+        "counts": {
+          "G": 3,
+          "I": 0,
+          "L": 5,
+          "M": 0,
+          "P": 2,
+          "X": 0
+        },
+        "deduction": 6.5,
+        "errors": [
+          {
+            "idx": 7,
+            "type": "L",
+            "word": "préoccupations"
+          },
+          {
+            "idx": 16,
+            "type": "P",
+            "word": "’"
+          },
+          {
+            "idx": 18,
+            "type": "L",
+            "word": "abord"
+          },
+          {
+            "idx": 42,
+            "type": "G",
+            "word": "surdité"
+          },
+          {
+            "idx": 59,
+            "type": "L",
+            "word": "voix"
+          },
+          {
+            "idx": 96,
+            "type": "G",
+            "word": "son"
+          },
+          {
+            "idx": 106,
+            "type": "G",
+            "word": "leur"
+          },
+          {
+            "idx": 126,
+            "type": "L",
+            "word": "dépêché"
+          },
+          {
+            "idx": 128,
+            "type": "P",
+            "word": "-"
+          },
+          {
+            "idx": 142,
+            "type": "L",
+            "word": "recevoir"
+          }
+        ],
+        "note": 3.5,
+        "timestamp": 1779026897926
+      },
+      "dittiere_romane": {
+        "counts": {
+          "G": 8,
+          "I": 0,
+          "L": 6,
+          "M": 0,
+          "P": 0,
+          "X": 0
+        },
+        "deduction": 11,
+        "errors": [
+          {
+            "idx": 1,
+            "type": "L",
+            "word": "devint"
+          },
+          {
+            "idx": 39,
+            "type": "G",
+            "word": "sont"
+          },
+          {
+            "idx": 40,
+            "type": "G",
+            "word": "atteints"
+          },
+          {
+            "idx": 42,
+            "type": "G",
+            "word": "surdité"
+          },
+          {
+            "idx": 55,
+            "type": "L",
+            "word": "lassions"
+          },
+          {
+            "idx": 63,
+            "type": "L",
+            "word": "singulièrement"
+          },
+          {
+            "idx": 71,
+            "type": "L",
+            "word": "intégra"
+          },
+          {
+            "idx": 76,
+            "type": "L",
+            "word": "clan"
+          },
+          {
+            "idx": 82,
+            "type": "G",
+            "word": "quotidiennes"
+          },
+          {
+            "idx": 94,
+            "type": "G",
+            "word": "informé"
+          },
+          {
+            "idx": 106,
+            "type": "G",
+            "word": "leur"
+          },
+          {
+            "idx": 125,
+            "type": "G",
+            "word": "fut"
+          },
+          {
+            "idx": 126,
+            "type": "G",
+            "word": "dépêché"
+          },
+          {
+            "idx": 137,
+            "type": "L",
+            "word": "refus"
+          }
+        ],
+        "note": 0,
+        "timestamp": 1779025762446
+      },
+      "heinrich_clovis": {
+        "counts": {
+          "G": 4,
+          "I": 0,
+          "L": 4,
+          "M": 2,
+          "P": 1,
+          "X": 1
+        },
+        "deduction": 9,
+        "errors": [
+          {
+            "idx": 1,
+            "type": "L",
+            "word": "devint"
+          },
+          {
+            "idx": 7,
+            "type": "L",
+            "word": "préoccupations"
+          },
+          {
+            "idx": 30,
+            "type": "G",
+            "word": "décomposition"
+          },
+          {
+            "idx": 40,
+            "type": "G",
+            "word": "atteints"
+          },
+          {
+            "idx": 52,
+            "type": "M",
+            "word": "nous"
+          },
+          {
+            "idx": 56,
+            "type": "M",
+            "word": "pas"
+          },
+          {
+            "idx": 106,
+            "type": "G",
+            "word": "leur"
+          },
+          {
+            "idx": 107,
+            "type": "G",
+            "word": "écrivait"
+          },
+          {
+            "idx": 126,
+            "type": "L",
+            "word": "dépêché"
+          },
+          {
+            "idx": 128,
+            "type": "P",
+            "word": "-"
+          },
+          {
+            "idx": 142,
+            "type": "L",
+            "word": "recevoir"
+          }
+        ],
+        "extras": [
+          {
+            "afterIdx": -1,
+            "word": "."
+          }
+        ],
+        "note": 1,
+        "timestamp": 1779026897926
+      },
+      "jamin_noe": {
+        "counts": {
+          "G": 5,
+          "I": 1,
+          "L": 2,
+          "M": 0,
+          "P": 1,
+          "X": 1
+        },
+        "deduction": 8,
+        "errors": [
+          {
+            "idx": 7,
+            "type": "L",
+            "word": "préoccupations"
+          },
+          {
+            "idx": 40,
+            "type": "G",
+            "word": "atteints"
+          },
+          {
+            "idx": 63,
+            "type": "L",
+            "word": "singulièrement"
+          },
+          {
+            "idx": 66,
+            "type": "G",
+            "word": "grognements"
+          },
+          {
+            "idx": 74,
+            "type": "I",
+            "word": "à"
+          },
+          {
+            "idx": 82,
+            "type": "G",
+            "word": "quotidiennes"
+          },
+          {
+            "idx": 87,
+            "type": "G",
+            "word": "durée"
+          },
+          {
+            "idx": 126,
+            "type": "G",
+            "word": "dépêché"
+          },
+          {
+            "idx": 128,
+            "type": "P",
+            "word": "-"
+          }
+        ],
+        "extras": [
+          {
+            "afterIdx": 22,
+            "word": "il"
+          }
+        ],
+        "note": 2,
+        "timestamp": 1779026358473
+      },
+      "juin_angele": {
+        "counts": {
+          "G": 2,
+          "I": 0,
+          "L": 2,
+          "M": 0,
+          "X": 2
+        },
+        "deduction": 4,
+        "errors": [
+          {
+            "idx": 107,
+            "type": "L",
+            "word": "écrivait"
+          },
+          {
+            "idx": 125,
+            "type": "G",
+            "word": "fut"
+          },
+          {
+            "idx": 126,
+            "type": "L",
+            "word": "dépêché"
+          },
+          {
+            "idx": 127,
+            "type": "G",
+            "word": "au"
+          }
+        ],
+        "extras": [
+          {
+            "afterIdx": -1,
+            "word": "."
+          },
+          {
+            "afterIdx": 22,
+            "word": "'il"
+          }
+        ],
+        "note": 6,
+        "timestamp": 1779023999079
+      },
+      "kock_elisa": {
+        "counts": {
+          "G": 4,
+          "I": 1,
+          "L": 9,
+          "M": 0,
+          "P": 1,
+          "X": 1
+        },
+        "deduction": 10.5,
+        "errors": [
+          {
+            "idx": 2,
+            "type": "L",
+            "word": "naturellement"
+          },
+          {
+            "idx": 7,
+            "type": "L",
+            "word": "préoccupations"
+          },
+          {
+            "idx": 15,
+            "type": "L",
+            "word": "adressions"
+          },
+          {
+            "idx": 18,
+            "type": "I",
+            "word": "abord"
+          },
+          {
+            "idx": 40,
+            "type": "G",
+            "word": "atteints"
+          },
+          {
+            "idx": 42,
+            "type": "L",
+            "word": "surdité"
+          },
+          {
+            "idx": 63,
+            "type": "L",
+            "word": "singulièrement"
+          },
+          {
+            "idx": 82,
+            "type": "G",
+            "word": "quotidiennes"
+          },
+          {
+            "idx": 87,
+            "type": "L",
+            "word": "durée"
+          },
+          {
+            "idx": 97,
+            "type": "G",
+            "word": "état"
+          },
+          {
+            "idx": 113,
+            "type": "G",
+            "word": "retrouver"
+          },
+          {
+            "idx": 125,
+            "type": "L",
+            "word": "fut"
+          },
+          {
+            "idx": 126,
+            "type": "L",
+            "word": "dépêché"
+          },
+          {
+            "idx": 128,
+            "type": "P",
+            "word": "-"
+          },
+          {
+            "idx": 142,
+            "type": "L",
+            "word": "recevoir"
+          }
+        ],
+        "extras": [
+          {
+            "afterIdx": 88,
+            "word": "."
+          }
+        ],
+        "note": 0,
+        "timestamp": 1779026897926
+      },
+      "laury_mael": {
+        "counts": {
+          "G": 12,
+          "I": 0,
+          "L": 10,
+          "M": 3,
+          "X": 1
+        },
+        "deduction": 20.5,
+        "errors": [
+          {
+            "idx": 7,
+            "type": "L",
+            "word": "préoccupations"
+          },
+          {
+            "idx": 18,
+            "type": "G",
+            "word": "abord"
+          },
+          {
+            "idx": 30,
+            "type": "L",
+            "word": "décomposition"
+          },
+          {
+            "idx": 32,
+            "type": "L",
+            "word": "syllabes"
+          },
+          {
+            "idx": 40,
+            "type": "G",
+            "word": "atteints"
+          },
+          {
+            "idx": 49,
+            "type": "G",
+            "word": "fort"
+          },
+          {
+            "idx": 52,
+            "type": "M",
+            "word": "nous"
+          },
+          {
+            "idx": 60,
+            "type": "L",
+            "word": "douce"
+          },
+          {
+            "idx": 59,
+            "type": "L",
+            "word": "voix"
+          },
+          {
+            "idx": 63,
+            "type": "L",
+            "word": "singulièrement"
+          },
+          {
+            "idx": 66,
+            "type": "G",
+            "word": "grognements"
+          },
+          {
+            "idx": 71,
+            "type": "L",
+            "word": "intégra"
+          },
+          {
+            "idx": 81,
+            "type": "G",
+            "word": "rencontres"
+          },
+          {
+            "idx": 82,
+            "type": "G",
+            "word": "quotidiennes"
+          },
+          {
+            "idx": 83,
+            "type": "G",
+            "word": "étaient"
+          },
+          {
+            "idx": 86,
+            "type": "G",
+            "word": "courte"
+          },
+          {
+            "idx": 93,
+            "type": "M",
+            "word": "pas"
+          },
+          {
+            "idx": 94,
+            "type": "G",
+            "word": "informé"
+          },
+          {
+            "idx": 97,
+            "type": "L",
+            "word": "état"
+          },
+          {
+            "idx": 102,
+            "type": "G",
+            "word": "famille"
+          },
+          {
+            "idx": 113,
+            "type": "G",
+            "word": "retrouver"
+          },
+          {
+            "idx": 122,
+            "type": "G",
+            "word": "montrer"
+          },
+          {
+            "idx": 132,
+            "type": "M",
+            "word": "eux"
+          },
+          {
+            "idx": 137,
+            "type": "L",
+            "word": "refus"
+          },
+          {
+            "idx": 139,
+            "type": "L",
+            "word": "Marguerite"
+          }
+        ],
+        "extras": [
+          {
+            "afterIdx": 64,
+            "word": "-"
+          }
+        ],
+        "note": 0,
+        "timestamp": 1779024292634
+      },
+      "pageot_elie": {
+        "counts": {
+          "G": 6,
+          "I": 0,
+          "L": 3,
+          "M": 0,
+          "X": 0
+        },
+        "deduction": 7.5,
+        "errors": [
+          {
+            "idx": 15,
+            "type": "L",
+            "word": "adressions"
+          },
+          {
+            "idx": 47,
+            "type": "G",
+            "word": "parler"
+          },
+          {
+            "idx": 71,
+            "type": "L",
+            "word": "intégra"
+          },
+          {
+            "idx": 87,
+            "type": "G",
+            "word": "durée"
+          },
+          {
+            "idx": 102,
+            "type": "G",
+            "word": "famille"
+          },
+          {
+            "idx": 106,
+            "type": "G",
+            "word": "leur"
+          },
+          {
+            "idx": 126,
+            "type": "L",
+            "word": "dépêché"
+          },
+          {
+            "idx": 134,
+            "type": "G",
+            "word": "leur"
+          },
+          {
+            "idx": 142,
+            "type": "G",
+            "word": "recevoir"
+          }
+        ],
+        "note": 2.5,
+        "timestamp": 1779012524268
+      },
+      "pinet_charlotte": {
+        "counts": {
+          "G": 4,
+          "I": 0,
+          "L": 3,
+          "M": 0,
+          "X": 1
+        },
+        "deduction": 6,
+        "errors": [
+          {
+            "idx": 24,
+            "type": "L",
+            "word": "répétait"
+          },
+          {
+            "idx": 45,
+            "type": "L",
+            "word": "redoutait"
+          },
+          {
+            "idx": 106,
+            "type": "G",
+            "word": "leur"
+          },
+          {
+            "idx": 115,
+            "type": "L",
+            "word": "trace"
+          },
+          {
+            "idx": 125,
+            "type": "G",
+            "word": "fut"
+          },
+          {
+            "idx": 134,
+            "type": "G",
+            "word": "leur"
+          },
+          {
+            "idx": 142,
+            "type": "G",
+            "word": "recevoir"
+          }
+        ],
+        "extras": [
+          {
+            "afterIdx": -1,
+            "word": "."
+          }
+        ],
+        "note": 4,
+        "timestamp": 1779024900092
+      },
+      "poulain_helin_zelia": {
+        "counts": {
+          "G": 11,
+          "I": 1,
+          "L": 7,
+          "M": 1,
+          "P": 1,
+          "X": 1
+        },
+        "deduction": 17.5,
+        "errors": [
+          {
+            "idx": 6,
+            "type": "I",
+            "word": "nos"
+          },
+          {
+            "idx": 7,
+            "type": "G",
+            "word": "préoccupations"
+          },
+          {
+            "idx": 24,
+            "type": "L",
+            "word": "répétait"
+          },
+          {
+            "idx": 40,
+            "type": "G",
+            "word": "atteints"
+          },
+          {
+            "idx": 42,
+            "type": "L",
+            "word": "surdité"
+          },
+          {
+            "idx": 63,
+            "type": "L",
+            "word": "singulièrement"
+          },
+          {
+            "idx": 66,
+            "type": "G",
+            "word": "grognements"
+          },
+          {
+            "idx": 71,
+            "type": "L",
+            "word": "intégra"
+          },
+          {
+            "idx": 76,
+            "type": "G",
+            "word": "clan"
+          },
+          {
+            "idx": 81,
+            "type": "L",
+            "word": "rencontres"
+          },
+          {
+            "idx": 82,
+            "type": "G",
+            "word": "quotidiennes"
+          },
+          {
+            "idx": 83,
+            "type": "G",
+            "word": "étaient"
+          },
+          {
+            "idx": 94,
+            "type": "G",
+            "word": "informé"
+          },
+          {
+            "idx": 97,
+            "type": "L",
+            "word": "état"
+          },
+          {
+            "idx": 106,
+            "type": "G",
+            "word": "leur"
+          },
+          {
+            "idx": 126,
+            "type": "G",
+            "word": "dépêché"
+          },
+          {
+            "idx": 128,
+            "type": "P",
+            "word": "-"
+          },
+          {
+            "idx": 132,
+            "type": "M",
+            "word": "eux"
+          },
+          {
+            "idx": 134,
+            "type": "G",
+            "word": "leur"
+          },
+          {
+            "idx": 135,
+            "type": "G",
+            "word": "signifier"
+          },
+          {
+            "idx": 137,
+            "type": "L",
+            "word": "refus"
+          }
+        ],
+        "extras": [
+          {
+            "afterIdx": -1,
+            "word": "."
+          }
+        ],
+        "note": 0,
+        "timestamp": 1779026093794
+      },
+      "revet_lucas": {
+        "counts": {
+          "G": 4,
+          "I": 0,
+          "L": 2,
+          "M": 0,
+          "P": 1,
+          "X": 0
+        },
+        "deduction": 5.5,
+        "errors": [
+          {
+            "idx": 7,
+            "type": "L",
+            "word": "préoccupations"
+          },
+          {
+            "idx": 83,
+            "type": "G",
+            "word": "étaient"
+          },
+          {
+            "idx": 94,
+            "type": "G",
+            "word": "informé"
+          },
+          {
+            "idx": 106,
+            "type": "G",
+            "word": "leur"
+          },
+          {
+            "idx": 126,
+            "type": "L",
+            "word": "dépêché"
+          },
+          {
+            "idx": 128,
+            "type": "P",
+            "word": "-"
+          },
+          {
+            "idx": 134,
+            "type": "G",
+            "word": "leur"
+          }
+        ],
+        "note": 4.5,
+        "timestamp": 1779025606646
+      },
+      "rolland_gabriel": {
+        "counts": {
+          "G": 7,
+          "I": 0,
+          "L": 9,
+          "M": 0,
+          "X": 2
+        },
+        "deduction": 12.5,
+        "errors": [
+          {
+            "idx": 1,
+            "type": "L",
+            "word": "devint"
+          },
+          {
+            "idx": 18,
+            "type": "G",
+            "word": "abord"
+          },
+          {
+            "idx": 24,
+            "type": "L",
+            "word": "répétait"
+          },
+          {
+            "idx": 40,
+            "type": "G",
+            "word": "atteints"
+          },
+          {
+            "idx": 42,
+            "type": "L",
+            "word": "surdité"
+          },
+          {
+            "idx": 62,
+            "type": "G",
+            "word": "contrastait"
+          },
+          {
+            "idx": 71,
+            "type": "L",
+            "word": "intégra"
+          },
+          {
+            "idx": 80,
+            "type": "L",
+            "word": "nos"
+          },
+          {
+            "idx": 81,
+            "type": "G",
+            "word": "rencontres"
+          },
+          {
+            "idx": 82,
+            "type": "G",
+            "word": "quotidiennes"
+          },
+          {
+            "idx": 83,
+            "type": "G",
+            "word": "étaient"
+          },
+          {
+            "idx": 119,
+            "type": "L",
+            "word": "refusa"
+          },
+          {
+            "idx": 125,
+            "type": "L",
+            "word": "fut"
+          },
+          {
+            "idx": 126,
+            "type": "L",
+            "word": "dépêché"
+          },
+          {
+            "idx": 128,
+            "type": "L",
+            "word": "-"
+          },
+          {
+            "idx": 142,
+            "type": "G",
+            "word": "recevoir"
+          }
+        ],
+        "extras": [
+          {
+            "afterIdx": -1,
+            "word": "."
+          },
+          {
+            "afterIdx": 88,
+            "word": "."
+          }
+        ],
+        "note": 0,
+        "timestamp": 1779012027736
+      },
+      "roulleau_candice": {
+        "counts": {
+          "G": 0,
+          "I": 0,
+          "L": 0,
+          "M": 0,
+          "X": 3
+        },
+        "deduction": 1.5,
+        "extras": [
+          {
+            "afterIdx": -1,
+            "word": "."
+          },
+          {
+            "afterIdx": 22,
+            "word": "'il"
+          },
+          {
+            "afterIdx": 88,
+            "word": "."
+          }
+        ],
+        "note": 8.5,
+        "timestamp": 1779023900836
+      },
+      "tenneguin_arthur": {
+        "counts": {
+          "G": 6,
+          "I": 0,
+          "L": 3,
+          "M": 1,
+          "P": 1,
+          "X": 0
+        },
+        "deduction": 9,
+        "errors": [
+          {
+            "idx": 2,
+            "type": "L",
+            "word": "naturellement"
+          },
+          {
+            "idx": 7,
+            "type": "L",
+            "word": "préoccupations"
+          },
+          {
+            "idx": 19,
+            "type": "M",
+            "word": "à"
+          },
+          {
+            "idx": 81,
+            "type": "G",
+            "word": "rencontres"
+          },
+          {
+            "idx": 82,
+            "type": "G",
+            "word": "quotidiennes"
+          },
+          {
+            "idx": 86,
+            "type": "G",
+            "word": "courte"
+          },
+          {
+            "idx": 94,
+            "type": "G",
+            "word": "informé"
+          },
+          {
+            "idx": 113,
+            "type": "G",
+            "word": "retrouver"
+          },
+          {
+            "idx": 126,
+            "type": "L",
+            "word": "dépêché"
+          },
+          {
+            "idx": 128,
+            "type": "P",
+            "word": "-"
+          },
+          {
+            "idx": 134,
+            "type": "G",
+            "word": "leur"
+          }
+        ],
+        "note": 1,
+        "timestamp": 1779026897926
+      },
+      "xavier_capucine": {
+        "counts": {
+          "G": 1,
+          "I": 0,
+          "L": 1,
+          "M": 0,
+          "X": 0
+        },
+        "deduction": 1.5,
+        "errors": [
+          {
+            "idx": 24,
+            "type": "L",
+            "word": "répétait"
+          },
+          {
+            "idx": 47,
+            "type": "G",
+            "word": "parler"
+          }
+        ],
+        "note": 8.5,
+        "timestamp": 1779012110557
+      }
+    }
+  }
+}

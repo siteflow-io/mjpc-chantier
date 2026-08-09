@@ -1,0 +1,52 @@
+{
+  "fichier": "dictee_dictee_brevet_blanc_4e-4e_pythagore_2026-08-09_corrige.json",
+  "jetonsAvant": 163,
+  "jetonsApres": 172,
+  "idxModifies": 335,
+  "migreesVerifiees": 353,
+  "dejaJustes": 0,
+  "mp": [
+    {
+      "eleve": "colas_nathan",
+      "type": "M",
+      "word": "et",
+      "de": 61,
+      "vers": 65
+    },
+    {
+      "eleve": "gaucher_julian",
+      "type": "M",
+      "word": "à",
+      "de": 59,
+      "vers": 63
+    },
+    {
+      "eleve": "znidi_iyad",
+      "type": "M",
+      "word": "?",
+      "de": 109,
+      "vers": 116
+    }
+  ],
+  "arbitrages": [
+    {
+      "eleve": "alligand_louka",
+      "idx": 41,
+      "type": "M",
+      "word": "’",
+      "jetonsCandidats": [
+        "dans",
+        "l",
+        "’"
+      ],
+      "positionCandidate": 43,
+      "note": "manquant sur apostrophe : le jeton d'arrivée n'est pas une apostrophe"
+    }
+  ],
+  "horsTexte": [],
+  "avant": "353/353 (sous l'ancien découpage)",
+  "apres": "353/353 (sous le nouveau découpage ; l'écart = les arbitrages)",
+  "champsModifies": 335,
+  "champsHorsIdx": [],
+  "sortie": "migres/dictee_dictee_brevet_blanc_4e-4e_pythagore_2026-08-09_migre.json"
+}

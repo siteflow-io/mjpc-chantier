@@ -59,7 +59,7 @@ Conséquences mesurées, plus larges que le seul bouton : `edAppariements` (le b
 
 ## ④ — LES BOUTONS D'INJECTION D'UNE FEUILLE
 
-Corrigé dans `atIAApercu`, en miroir du correctif chapitres du 07/08 : sans feuille ouverte (`AT.doc`/`AT.docId` absents) → **un seul bouton** ; avec feuille ouverte → deux boutons et **« Remplacer « <titre> » »** nomme la feuille, comme la modale de confirmation le faisait déjà. Captures des deux états jointes. (Mesuré au passage : l'ancien bouton était de surcroît **mort** sans feuille ouverte — `atIARemplacer` sortait en silence sur sa garde.)
+Corrigé dans `atIAApercu`, en miroir du correctif chapitres du 07/08 : sans feuille ouverte (`AT.doc`/`AT.docId` absents) → **un seul bouton** ; avec feuille ouverte → deux boutons et **« Remplacer « <titre> » »** nomme la feuille, comme la modale de confirmation le faisait déjà. Captures des états jointes — prises par les GESTES RÉELS de l’écran (atelier → feuille ou porte ✨ → JSON collé → « Vérifier »), voir la note de banc en fin de rapport. (Mesuré au passage : l'ancien bouton était de surcroît **mort** sans feuille ouverte — `atIARemplacer` sortait en silence sur sa garde.)
 
 ## ⑤ — LA DÉTECTION D'UN CHAPITRE EXISTANT
 
@@ -89,9 +89,10 @@ Bilan : **62 vertes · 0 exception**. Les 2 « muettes » sont **« Au plus serr
 | clic au sommaire → la feuille reste affichée | ✔ courant=b, halo=b, 0 rendu |
 | liaison posée → un seul rendu, bonne feuille courante | ✔ 1 rendu, courant conservé, défilement repris |
 | « Lier par les titres » à froid → correspondances sans geste préalable | ✔ |
-| injection sans feuille ouverte → un seul bouton | ✔ capture |
-| avec feuille ouverte → « Remplacer « <titre> » » | ✔ capture |
-| vue élève rejouée | ✔ HTML identique base ↔ LOT1, capturée |
+| injection, état sans feuille (garde) → un seul bouton | ✔ capture (état forcé, déclaré) · contre-preuve base : 2 boutons dont « Remplacer » MORT au clic (mesuré) |
+| feuille_1 ouverte → « Remplacer « Rappel sur la versification » » | ✔ capture, geste réel complet |
+| porte ✨ (feuille neuve) → « Remplacer « Nouvelle feuille » » | ✔ capture, geste réel complet |
+| vue élève rejouée (chapitre PUBLIÉ) | ✔ 3 591 o de HTML identiques base ↔ LOT1, 0 exception, écran capturé |
 | 390 px et desktop | ✔ captures avant/après |
 
 ## TAILLES DES FONCTIONS MODIFIÉES (octets, avant → après)
@@ -121,7 +122,15 @@ Bilan : **62 vertes · 0 exception**. Les 2 « muettes » sont **« Au plus serr
 
 ## BANC
 
-Chemin réel (`index.html` chargé en navigateur entier), **mur réseau total** (toute requête http avortée) doublé du mode test M8 (`_siteGet`/`_sitePut` sur magasin local) — **aucune écriture réelle, aucune lecture du hub**. Chaque capture a été ouverte et examinée avant livraison (c'est cet examen qui a attrapé la pastille restée en 8.40.0, corrigée puis recapturée).
+Chemin réel (`index.html` chargé en navigateur entier), **mur réseau total** (toute requête http avortée) doublé du mode test M8 (`_siteGet`/`_sitePut` sur magasin local) — **aucune écriture réelle, aucune lecture du hub**. Chaque capture a été ouverte et examinée avant livraison (cet examen a attrapé la pastille restée en 8.40.0, corrigée puis recapturée).
+
+**REPRISE DES CAPTURES ④ (après remarque de Paul).** Les deux captures d’injection de la première livraison étaient FAUSSES dans leur méthode : une zone `#at-ia-apercu` fabriquée par le banc, posée sur le portail élève (« LIEN INVALIDE » visible derrière), avec un JSON quasi vide (aperçu blanc). Elles prouvaient la logique des boutons, pas le geste — et je les avais examinées en n’y cherchant que ce que j’attendais. Reprises par les gestes réels : `atelierOuvrir` → liste → `atOuvrirDoc('feuille_1')` → clic réel sur « ✨ Écrire avec une IA » → JSON réaliste collé dans `#at-ia-coller` (fiche de séance « Le sonnet — forme fixe et chute » : objectif, notions, œuvre) → clic réel « Vérifier » → aperçu REMPLI. Trois états capturés sur LOT1 :
+- `cap_injection_avec_feuille.png` — feuille_1 ouverte : deux boutons, « Remplacer « Rappel sur la versification » » ;
+- `cap_injection_feuille_neuve.png` — la porte réelle « ✨ Nouvelle feuille » de l’accueil (`atNouvelleFeuilleIA`) : deux boutons, « Remplacer « Nouvelle feuille » » ;
+- `cap_injection_sans_feuille.png` — l’état que la garde défend (`AT.doc`/`AT.docId` absents). AUCUN enchaînement de gestes du banc ne le produit (les deux portes réelles posent toujours une feuille avant l’écran IA) : il est FORCÉ sur l’écran réel (état posé avant « Vérifier »), et je le dis. Il reste atteignable hors banc (feuille disparue sous l’écran — corbeille depuis un autre appareil, données perdues) : la garde n’est pas théorique.
+- `cap_injection_sans_feuille_base.png` — CONTRE-PREUVE sur la base, même état forcé : deux boutons, « Remplacer la feuille ouverte » anonyme, et le clic dessus mesuré : RIEN (aucune modale, aucun message) — le bouton mort du cadrage.
+
+**REPRISE DE LA PREUVE « VUE ÉLÈVE » — la première était CREUSE.** La vérification en cascade a montré que la comparaison initiale (t8) comparait deux chaînes VIDES : le chapitre du seed n’étant pas publié, `renderChapitres` ne rendait rien pour un élève, des deux côtés — « identique » était vrai et ne prouvait rien. Refaite : chapitre publié à TOUS les étages (`published:true` sur chapitre, séances, items — posé à l’identique dans les deux fichiers, en mémoire de page), session élève 4e posée par le banc (le magasin de test n’a pas d’élève — déclaré), lien réel `?n=4e` : **3 591 octets de HTML identiques base ↔ LOT1, 0 exception**. Écran capturé sur la vraie page élève (`page-level`, onglet Chapitres, chapitre déplié : « Poésie et peinture », séances 1–3) : `cap_eleve_base.png` / `cap_eleve_lot1.png`. Navigation abrégée par le banc (minuteur, enquête et `loadPublished` sautés — réseau muré) : le pied de page garde son défaut « Niveau : 3ème » dans les DEUX captures — artefact du banc, pas du code livré. Les anciennes images `base_eleve.png`/`index_eleve.png` (portail « LIEN INVALIDE » photographié) ne sont PAS livrées.
 
 ## TEXTES SOUMIS À PAUL (français sobre, à valider)
 
@@ -133,4 +142,4 @@ Pas d'annonce élèves : livraison entièrement technique.
 
 ## LIVRAISON
 
-`LOT1/index.html` (897 421 o, md5 5918eb6eafc6f6ee19b4fe5eed8ad9b7) · `LOT1/rapport.md` · `LOT1/captures/` (6 captures + `balayage.json`).
+`LOT1/index.html` (897 421 o, md5 5918eb6eafc6f6ee19b4fe5eed8ad9b7) · `LOT1/rapport.md` · `LOT1/captures/` (10 captures + `balayage.json`).

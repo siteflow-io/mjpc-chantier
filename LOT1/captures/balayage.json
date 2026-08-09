@@ -1,0 +1,450 @@
+[
+ {
+  "etat": "PLEIN — feuilles liées + 1 attendu + 1 séance vide",
+  "bouton": "← Mes chapitres",
+  "agit": true,
+  "dit": "écran mis à jour",
+  "exception": ""
+ },
+ {
+  "etat": "PLEIN — feuilles liées + 1 attendu + 1 séance vide",
+  "bouton": "Lier par les titres…",
+  "agit": true,
+  "dit": "modale",
+  "exception": ""
+ },
+ {
+  "etat": "PLEIN — feuilles liées + 1 attendu + 1 séance vide",
+  "bouton": "+ Séance",
+  "agit": true,
+  "dit": "confirmation/saisie demandée",
+  "exception": ""
+ },
+ {
+  "etat": "PLEIN — feuilles liées + 1 attendu + 1 séance vide",
+  "bouton": "↑",
+  "agit": true,
+  "dit": "désactivé (action impossible, visible)",
+  "exception": ""
+ },
+ {
+  "etat": "PLEIN — feuilles liées + 1 attendu + 1 séance vide",
+  "bouton": "↓",
+  "agit": true,
+  "dit": "écrit au hub (intercepté au banc)",
+  "exception": ""
+ },
+ {
+  "etat": "PLEIN — feuilles liées + 1 attendu + 1 séance vide",
+  "bouton": "+ Item",
+  "agit": true,
+  "dit": "confirmation/saisie demandée",
+  "exception": ""
+ },
+ {
+  "etat": "PLEIN — feuilles liées + 1 attendu + 1 séance vide",
+  "bouton": "+ Feuille",
+  "agit": true,
+  "dit": "confirmation/saisie demandée",
+  "exception": ""
+ },
+ {
+  "etat": "PLEIN — feuilles liées + 1 attendu + 1 séance vide",
+  "bouton": "✕",
+  "agit": true,
+  "dit": "confirmation/saisie demandée",
+  "exception": ""
+ },
+ {
+  "etat": "PLEIN — feuilles liées + 1 attendu + 1 séance vide",
+  "bouton": "↑",
+  "agit": true,
+  "dit": "désactivé (action impossible, visible)",
+  "exception": ""
+ },
+ {
+  "etat": "PLEIN — feuilles liées + 1 attendu + 1 séance vide",
+  "bouton": "↓",
+  "agit": true,
+  "dit": "écrit au hub (intercepté au banc) · écran mis à jour",
+  "exception": ""
+ },
+ {
+  "etat": "PLEIN — feuilles liées + 1 attendu + 1 séance vide",
+  "bouton": "Éditer",
+  "agit": true,
+  "dit": "écran mis à jour",
+  "exception": ""
+ },
+ {
+  "etat": "PLEIN — feuilles liées + 1 attendu + 1 séance vide",
+  "bouton": "Ouvrir",
+  "agit": true,
+  "dit": "écran mis à jour",
+  "exception": ""
+ },
+ {
+  "etat": "PLEIN — feuilles liées + 1 attendu + 1 séance vide",
+  "bouton": "Lier",
+  "agit": true,
+  "dit": "modale Lier · écran mis à jour",
+  "exception": ""
+ },
+ {
+  "etat": "PLEIN — feuilles liées + 1 attendu + 1 séance vide",
+  "bouton": "Publier…",
+  "agit": true,
+  "dit": "info « Aucune classe n’est déclarée pour ce niveau. » · modale · écran mis à jour",
+  "exception": ""
+ },
+ {
+  "etat": "PLEIN — feuilles liées + 1 attendu + 1 séance vide",
+  "bouton": "Dupliquer vers…",
+  "agit": true,
+  "dit": "modale · écran mis à jour",
+  "exception": ""
+ },
+ {
+  "etat": "PLEIN — feuilles liées + 1 attendu + 1 séance vide",
+  "bouton": "✕",
+  "agit": true,
+  "dit": "confirmation/saisie demandée · écran mis à jour",
+  "exception": ""
+ },
+ {
+  "etat": "PLEIN — feuilles liées + 1 attendu + 1 séance vide",
+  "bouton": "↑",
+  "agit": true,
+  "dit": "écrit au hub (intercepté au banc) · écran mis à jour",
+  "exception": ""
+ },
+ {
+  "etat": "PLEIN — feuilles liées + 1 attendu + 1 séance vide",
+  "bouton": "↓",
+  "agit": true,
+  "dit": "désactivé (action impossible, visible)",
+  "exception": ""
+ },
+ {
+  "etat": "PLEIN — feuilles liées + 1 attendu + 1 séance vide",
+  "bouton": "Éditer",
+  "agit": true,
+  "dit": "écran mis à jour",
+  "exception": ""
+ },
+ {
+  "etat": "PLEIN — feuilles liées + 1 attendu + 1 séance vide",
+  "bouton": "Ouvrir",
+  "agit": true,
+  "dit": "écran mis à jour",
+  "exception": ""
+ },
+ {
+  "etat": "PLEIN — feuilles liées + 1 attendu + 1 séance vide",
+  "bouton": "Lier",
+  "agit": true,
+  "dit": "modale Lier · écran mis à jour",
+  "exception": ""
+ },
+ {
+  "etat": "PLEIN — feuilles liées + 1 attendu + 1 séance vide",
+  "bouton": "Publier…",
+  "agit": true,
+  "dit": "info « Aucune classe n’est déclarée pour ce niveau. » · modale · écran mis à jour",
+  "exception": ""
+ },
+ {
+  "etat": "PLEIN — feuilles liées + 1 attendu + 1 séance vide",
+  "bouton": "Dupliquer vers…",
+  "agit": true,
+  "dit": "modale · écran mis à jour",
+  "exception": ""
+ },
+ {
+  "etat": "PLEIN — feuilles liées + 1 attendu + 1 séance vide",
+  "bouton": "✕",
+  "agit": true,
+  "dit": "confirmation/saisie demandée · écran mis à jour",
+  "exception": ""
+ },
+ {
+  "etat": "PLEIN — feuilles liées + 1 attendu + 1 séance vide",
+  "bouton": "↑",
+  "agit": true,
+  "dit": "écrit au hub (intercepté au banc)",
+  "exception": ""
+ },
+ {
+  "etat": "PLEIN — feuilles liées + 1 attendu + 1 séance vide",
+  "bouton": "↓",
+  "agit": true,
+  "dit": "écrit au hub (intercepté au banc)",
+  "exception": ""
+ },
+ {
+  "etat": "PLEIN — feuilles liées + 1 attendu + 1 séance vide",
+  "bouton": "+ Item",
+  "agit": true,
+  "dit": "confirmation/saisie demandée",
+  "exception": ""
+ },
+ {
+  "etat": "PLEIN — feuilles liées + 1 attendu + 1 séance vide",
+  "bouton": "+ Feuille",
+  "agit": true,
+  "dit": "confirmation/saisie demandée",
+  "exception": ""
+ },
+ {
+  "etat": "PLEIN — feuilles liées + 1 attendu + 1 séance vide",
+  "bouton": "✕",
+  "agit": true,
+  "dit": "confirmation/saisie demandée",
+  "exception": ""
+ },
+ {
+  "etat": "PLEIN — feuilles liées + 1 attendu + 1 séance vide",
+  "bouton": "↑",
+  "agit": true,
+  "dit": "désactivé (action impossible, visible)",
+  "exception": ""
+ },
+ {
+  "etat": "PLEIN — feuilles liées + 1 attendu + 1 séance vide",
+  "bouton": "↓",
+  "agit": true,
+  "dit": "écrit au hub (intercepté au banc) · écran mis à jour",
+  "exception": ""
+ },
+ {
+  "etat": "PLEIN — feuilles liées + 1 attendu + 1 séance vide",
+  "bouton": "Éditer",
+  "agit": true,
+  "dit": "écran mis à jour",
+  "exception": ""
+ },
+ {
+  "etat": "PLEIN — feuilles liées + 1 attendu + 1 séance vide",
+  "bouton": "Ouvrir",
+  "agit": true,
+  "dit": "écran mis à jour",
+  "exception": ""
+ },
+ {
+  "etat": "PLEIN — feuilles liées + 1 attendu + 1 séance vide",
+  "bouton": "Lier",
+  "agit": true,
+  "dit": "modale Lier · écran mis à jour",
+  "exception": ""
+ },
+ {
+  "etat": "PLEIN — feuilles liées + 1 attendu + 1 séance vide",
+  "bouton": "Publier…",
+  "agit": true,
+  "dit": "info « Aucune classe n’est déclarée pour ce niveau. » · modale · écran mis à jour",
+  "exception": ""
+ },
+ {
+  "etat": "PLEIN — feuilles liées + 1 attendu + 1 séance vide",
+  "bouton": "Dupliquer vers…",
+  "agit": true,
+  "dit": "modale · écran mis à jour",
+  "exception": ""
+ },
+ {
+  "etat": "PLEIN — feuilles liées + 1 attendu + 1 séance vide",
+  "bouton": "✕",
+  "agit": true,
+  "dit": "confirmation/saisie demandée · écran mis à jour",
+  "exception": ""
+ },
+ {
+  "etat": "PLEIN — feuilles liées + 1 attendu + 1 séance vide",
+  "bouton": "↑",
+  "agit": true,
+  "dit": "écrit au hub (intercepté au banc) · écran mis à jour",
+  "exception": ""
+ },
+ {
+  "etat": "PLEIN — feuilles liées + 1 attendu + 1 séance vide",
+  "bouton": "↓",
+  "agit": true,
+  "dit": "désactivé (action impossible, visible)",
+  "exception": ""
+ },
+ {
+  "etat": "PLEIN — feuilles liées + 1 attendu + 1 séance vide",
+  "bouton": "Lier",
+  "agit": true,
+  "dit": "modale Lier",
+  "exception": ""
+ },
+ {
+  "etat": "PLEIN — feuilles liées + 1 attendu + 1 séance vide",
+  "bouton": "Publier…",
+  "agit": true,
+  "dit": "info « Aucune classe n’est déclarée pour ce niveau. » · modale · écran mis à jour",
+  "exception": ""
+ },
+ {
+  "etat": "PLEIN — feuilles liées + 1 attendu + 1 séance vide",
+  "bouton": "✕",
+  "agit": true,
+  "dit": "confirmation/saisie demandée · écran mis à jour",
+  "exception": ""
+ },
+ {
+  "etat": "PLEIN — feuilles liées + 1 attendu + 1 séance vide",
+  "bouton": "↑",
+  "agit": true,
+  "dit": "écrit au hub (intercepté au banc)",
+  "exception": ""
+ },
+ {
+  "etat": "PLEIN — feuilles liées + 1 attendu + 1 séance vide",
+  "bouton": "↓",
+  "agit": true,
+  "dit": "désactivé (action impossible, visible)",
+  "exception": ""
+ },
+ {
+  "etat": "PLEIN — feuilles liées + 1 attendu + 1 séance vide",
+  "bouton": "+ Item",
+  "agit": true,
+  "dit": "confirmation/saisie demandée",
+  "exception": ""
+ },
+ {
+  "etat": "PLEIN — feuilles liées + 1 attendu + 1 séance vide",
+  "bouton": "+ Feuille",
+  "agit": true,
+  "dit": "confirmation/saisie demandée",
+  "exception": ""
+ },
+ {
+  "etat": "PLEIN — feuilles liées + 1 attendu + 1 séance vide",
+  "bouton": "✕",
+  "agit": true,
+  "dit": "confirmation/saisie demandée",
+  "exception": ""
+ },
+ {
+  "etat": "PLEIN — feuilles liées + 1 attendu + 1 séance vide",
+  "bouton": "Au plus serré 1 f.",
+  "agit": false,
+  "dit": "",
+  "exception": ""
+ },
+ {
+  "etat": "PLEIN — feuilles liées + 1 attendu + 1 séance vide",
+  "bouton": "Une séance par feuille 2 f.",
+  "agit": true,
+  "dit": "écran mis à jour",
+  "exception": ""
+ },
+ {
+  "etat": "PLEIN — feuilles liées + 1 attendu + 1 séance vide",
+  "bouton": "Un document par feuille 3 f.",
+  "agit": true,
+  "dit": "écran mis à jour",
+  "exception": ""
+ },
+ {
+  "etat": "PLEIN — feuilles liées + 1 attendu + 1 séance vide",
+  "bouton": "🖨 Imprimer",
+  "agit": true,
+  "dit": "modale",
+  "exception": ""
+ },
+ {
+  "etat": "PLEIN — feuilles liées + 1 attendu + 1 séance vide",
+  "bouton": "Ouvrir dans un onglet",
+  "agit": true,
+  "dit": "info « Autorise les fenêtres pop-up. » · modale · onglet ouvert",
+  "exception": ""
+ },
+ {
+  "etat": "PLEIN — feuilles liées + 1 attendu + 1 séance vide",
+  "bouton": "+ Feuille ici",
+  "agit": true,
+  "dit": "confirmation/saisie demandée",
+  "exception": ""
+ },
+ {
+  "etat": "PLEIN — feuilles liées + 1 attendu + 1 séance vide",
+  "bouton": "Lier…",
+  "agit": true,
+  "dit": "modale Lier",
+  "exception": ""
+ },
+ {
+  "etat": "PLEIN — feuilles liées + 1 attendu + 1 séance vide",
+  "bouton": "+ Feuille ici",
+  "agit": true,
+  "dit": "confirmation/saisie demandée",
+  "exception": ""
+ },
+ {
+  "etat": "PLEIN — feuilles liées + 1 attendu + 1 séance vide",
+  "bouton": "+ Item",
+  "agit": true,
+  "dit": "confirmation/saisie demandée",
+  "exception": ""
+ },
+ {
+  "etat": "VIDE — aucune séance",
+  "bouton": "← Mes chapitres",
+  "agit": true,
+  "dit": "écran mis à jour",
+  "exception": ""
+ },
+ {
+  "etat": "VIDE — aucune séance",
+  "bouton": "Lier par les titres…",
+  "agit": true,
+  "dit": "info « Aucune feuille de l’atelier ne porte le titre d’un item non lié. » · modale",
+  "exception": ""
+ },
+ {
+  "etat": "VIDE — aucune séance",
+  "bouton": "+ Séance",
+  "agit": true,
+  "dit": "confirmation/saisie demandée",
+  "exception": ""
+ },
+ {
+  "etat": "VIDE — aucune séance",
+  "bouton": "Au plus serré 1 f.",
+  "agit": false,
+  "dit": "",
+  "exception": ""
+ },
+ {
+  "etat": "VIDE — aucune séance",
+  "bouton": "Une séance par feuille 1 f.",
+  "agit": true,
+  "dit": "écran mis à jour",
+  "exception": ""
+ },
+ {
+  "etat": "VIDE — aucune séance",
+  "bouton": "Un document par feuille 1 f.",
+  "agit": true,
+  "dit": "écran mis à jour",
+  "exception": ""
+ },
+ {
+  "etat": "VIDE — aucune séance",
+  "bouton": "🖨 Imprimer",
+  "agit": true,
+  "dit": "info « Ouvre une feuille du chapitre pour l’imprimer. » · modale",
+  "exception": ""
+ },
+ {
+  "etat": "VIDE — aucune séance",
+  "bouton": "Ouvrir dans un onglet",
+  "agit": true,
+  "dit": "info « Ouvre une feuille du chapitre. » · modale",
+  "exception": ""
+ }
+]

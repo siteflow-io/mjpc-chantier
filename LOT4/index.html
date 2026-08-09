@@ -1042,6 +1042,7 @@ button.dp-img-btn:hover,button.dp-img-btn:focus-visible{border-color:rgba(212,16
 .ch-ligne select{min-height:44px;max-width:160px}
 .ch-inv{margin-top:14px}
 .ch-face{display:flex;gap:16px;flex-wrap:wrap}
+.ch-jumeaux{flex-basis:100%;background:rgba(212,160,23,.12);border:1px solid rgba(212,160,23,.55);border-radius:8px;padding:8px 12px;font-size:.9rem}
 .ch-col{flex:1;min-width:260px}
 .ch-col h4{margin:0 0 8px 0}
 .ch-se{border:1px solid rgba(0,0,0,.15);border-radius:10px;padding:10px;margin-bottom:8px}
@@ -1691,11 +1692,15 @@ function _editerTexteSeanceSansDoc(){
     });
 }
 function _siteGet(chemin, cb){
+  /* [LOT4d-D1] la panne ne se déguise plus en vide : cb(v, err) — err vrai sur
+     panne réseau ou refus HTTP. Rétro-compatible : les appelants historiques ne
+     lisent que v (null sur panne, comme avant) ; ceux qui veulent distinguer
+     lisent err. Au banc (M8) : jamais de panne, err absent. */
   if(m8TestOn()){ cb(M8_TEST_STORE[chemin] !== undefined ? M8_TEST_STORE[chemin] : null); return; }
   fetch(FIREBASE_BASE + chemin + '.json')
-    .then(function(r){ return r.json(); })
+    .then(function(r){ if(!r.ok)throw 0; return r.json(); })
     .then(function(v){ cb(v); })
-    .catch(function(){ cb(null); });
+    .catch(function(){ cb(null, true); });
 }
 function _sitePut(chemin, valeur, cb){
   /* M-ÉCHECS-1 : cb(ok, issue) — ok n'est vrai QUE sur verdict accepté (socle §9).
@@ -2775,7 +2780,7 @@ function mjpcEcrireRest(url,options,cb){
    (les 3 gestes, le geste conservatoire par app, ce qui ne peut pas arriver).
    RESTAURER LA VERSION PRÉCÉDENTE : docs/MJPC6-restauration.md (convention BUG).
    ═══════════════════════════════════════════════════════════════════════════ */
-var APP_VERSION="8.44.1";
+var APP_VERSION="8.44.2";
 var APP_VERSION_DATE="2026-08-05";
 // ── 11. Coffre : dérivation, chiffrement, empreinte (v1.3.0) ──
 // (Le canon porte deux sections « 8 » — dette de numérotation connue, non corrigée
@@ -7872,11 +7877,15 @@ function chInventaire(existant,propose,taxo){
   var ids=chIdsTaxo(taxo);
   var lignes=[],aLier=[];
   var parTitre={};
-  ((existant&&existant.seances)||[]).forEach(function(se,i){
-    if(!se)return;
-    parTitre[String(se.title||'').toLowerCase()]={se:se,i:i};
+  /* [LOT4d-D2b] le hub livre les séances en OBJET dès qu'il y a des trous
+     (même mesure que [C5-ORD] pour les chapitres, corrigée ici aussi : un
+     chapitre à séance supprimée faisait tomber l'écran d'inventaire entier —
+     forEach sur un objet). atSeances/ordPaires tolèrent les deux formes et
+     rendent l'ordre canonique ; la clé réelle j remplace l'index de tableau. */
+  atSeances(existant).forEach(function(p){
+    parTitre[String(p.se.title||'').toLowerCase()]={se:p.se,i:p.j};
   });
-  ((propose&&propose.seances)||[]).forEach(function(np){
+  atSeances(propose).forEach(function(np){np=np.se;
     var cle=String(np.title||'').toLowerCase();
     var m=parTitre[cle];
     var etatSe=m?'DÉJÀ LÀ':'NOUVEAU';
@@ -7899,8 +7908,8 @@ function chInventaire(existant,propose,taxo){
       aLier.push({seance:a.seance,item:a.item,titre:a.item,outil:a.outil||'?',pourquoi:a.pourquoi||''});
   });
   var exist=[];
-  ((existant&&existant.seances)||[]).forEach(function(se,i){
-    if(!se)return;
+  atSeances(existant).forEach(function(p){   /* [LOT4d-D2b] même parcoureur */
+    var se=p.se,i=p.j;
     var its=Object.keys(se.items||{}).map(function(k){
       var x=se.items[k]||{};
       return {cle:k,titre:x.title,kind:x.kind,source:x.source,
@@ -7998,19 +8007,26 @@ function chAfficherInventaire(){
     /* [C5-ORD] le hub livre les chapitres en OBJET d\u00e8s qu'il y a des trous :
        on parcourt par cl\u00e9s r\u00e9elles, jamais par forEach de tableau. */
     var _cl=Array.isArray(chaps)?chaps.map(function(_,i){return String(i);}):Object.keys(chaps);
-    var cible=null,idx=null;
+    var cible=null,idx=null,memesTitres=[];   /* [LOT4d-D2] les jumeaux se comptent */
     _cl.forEach(function(i){var c=chaps[i];
       if(!c)return;                                  /* le trou d'index 0 se traverse */
       /* [LOT1-⑤] la casse seule ne suffisait pas : accents, apostrophes droite/
          courbe et espaces multiples faisaient rater — ou trouver à tort. Même
          normalisation que la liaison par les titres : edTitreNorm, en codepoints. */
-      if(edTitreNorm(c.title)===edTitreNorm(o.chapitre.title)){cible=c;idx=i;}
+      if(edTitreNorm(c.title)===edTitreNorm(o.chapitre.title)){cible=c;idx=i;memesTitres.push(i);}
     });
     CH.chapIdx=idx;
     var inventaire=chInventaire(cible,o.chapitre,CH.taxo);
     CH.inventaire=inventaire;
     var d=document.getElementById('ch-inv');if(!d)return;
     var h='<div class="ch-face">';
+    /* [LOT4d-D2] deux chapitres au même titre : l'inventaire comparait au
+       DERNIER, en silence (mesuré). Le titre est l'unique lien du JSON injecté
+       (principe de la liaison par les titres) : on ne devine pas, on PRÉVIENT. */
+    if(memesTitres.length>1){
+      h+='<div class="ch-jumeaux">\u26a0 '+memesTitres.length+' chapitres portent ce titre (n\u00b0 '+memesTitres.map(atEsc).join(', ')
+        +') \u2014 l\u2019inventaire compare au n\u00b0 '+atEsc(String(idx))+'. Renomme l\u2019un des deux pour lever le doute avant d\u2019injecter.</div>';
+    }
     h+='<div class="ch-col"><h4>Ce que tu as d\u00e9j\u00e0'+(cible?(' \u2014 \u00ab '+atEsc(cible.title)+' \u00bb'):' \u2014 aucun chapitre \u00e0 ce titre')+'</h4>';
     if(!inventaire.existant.length)h+='<p class="ch-vide">Rien pour l\u2019instant.</p>';
     inventaire.existant.forEach(function(se){
@@ -10998,9 +11014,11 @@ function edPrendreFeuille(j,k){
   var pret=(typeof LINK_ATELIER_DOCS!=='undefined')&&LINK_ATELIER_DOCS&&Object.keys(LINK_ATELIER_DOCS).length;
   if(!pret){
     atInfo('Je relis les feuilles de l’atelier…');
-    atSiteGetDocs(function(docs){
+    atSiteGetDocs(function(docs,err){
+      /* [LOT4d-D1] panne et vide séparés : deux messages nets. */
+      if(err){atInfo('Le réseau n’a pas répondu — les feuilles n’ont pas pu être lues. Réessaie dans un moment.');return;}
       LINK_ATELIER_DOCS=docs||{};
-      if(!Object.keys(LINK_ATELIER_DOCS).length){atInfo('Impossible de lire les feuilles de l’atelier (ou l’atelier est vide).');return;}
+      if(!Object.keys(LINK_ATELIER_DOCS).length){atInfo('L’atelier ne contient encore aucune feuille.');return;}
       edPrendreFeuille(j,k);
     });
     return;
@@ -11573,23 +11591,36 @@ function ed2Selectionner(item,champ,depuis){
    même id — côté rendu, les blocs ne vivent que dans .f-contenu, dans l'ordre
    de doc.contenu : le même ordre que le panneau. */
 function ed2Cle(item,comp,rang){return 'c-'+item+'-'+comp+'-'+(rang||0);}
-/* [LOT4c-⑦] LA ZONE VISÉE PAR UNE CLÉ — le sens inverse de ed2Cle : depuis
-   'c-<item>-<comp>-<rang>', retrouver l'élément [data-c] DANS LE BON document.
-   Même règle de rang que ed2ClicPapier (les blocs multiples ne vivent que dans
-   .f-contenu, dans l'ordre de doc.contenu). Aucun id de composante ne contient
-   de tiret (mesuré : tous en snake_case) — le dernier tiret sépare le rang.
-   Clé étrangère au motif ('title', 'item-…') → null : le document entier. */
+/* [LOT4d] LA LECTURE D'UNE CLÉ — l'unique lectrice (règle du mandat : une seule
+   fonction sait lire une clé). Deux motifs :
+   · 'c-<item>-<comp>-<rang>' → {item,comp,rang} : le dernier tiret sépare le
+     rang (chiffres), l'avant-dernier la composante (snake_case, jamais de
+     tiret — mesuré) ; le reste est l'item, qui PEUT contenir des tirets
+     (slugs d'itemCreer : « feuille-nee-au-banc »).
+   · 'item-<k>' → {item:k,comp:null,rang:0} : la clé du bloc d'item.
+   Motif étranger ('title'…) → null. */
+function ed2CleLire(champ){
+  if(!champ)return null;
+  if(champ.indexOf('item-')===0&&champ.length>5)return {item:champ.slice(5),comp:null,rang:0};
+  if(champ.indexOf('c-')!==0)return null;
+  var p2=champ.lastIndexOf('-');if(p2<=2)return null;
+  var rang=champ.slice(p2+1);if(!/^[0-9]+$/.test(rang))return null;
+  var p1=champ.lastIndexOf('-',p2-1);if(p1<=2)return null;
+  return {item:champ.slice(2,p1),comp:champ.slice(p1+1,p2),rang:parseInt(rang,10)};
+}
+/* [LOT4c-⑦] LA ZONE VISÉE PAR UNE CLÉ — depuis la clé lue par ed2CleLire,
+   l'élément [data-c] DANS LE BON document. Même règle de rang que
+   ed2ClicPapier (les blocs multiples ne vivent que dans .f-contenu, dans
+   l'ordre de doc.contenu). Clé sans composante ou d'un autre item → null :
+   le document entier. */
 function ed2ZoneDe(item,champ){
+  var c=ed2CleLire(champ);
+  if(!c||!c.comp||c.item!==item)return null;
   var pd=document.querySelector('.ed2-pdoc[data-item="'+item+'"]');
-  if(!pd||!champ)return null;
-  var pref='c-'+item+'-';
-  if(champ.indexOf(pref)!==0)return null;
-  var reste=champ.slice(pref.length),p=reste.lastIndexOf('-');
-  if(p<0)return null;
-  var comp=reste.slice(0,p),rang=parseInt(reste.slice(p+1),10)||0;
-  var c=ATELIER_COMPOSANTES[comp];
-  if(c&&c.multiple){var fr=pd.querySelectorAll('.f-contenu [data-c="'+comp+'"]');return fr[rang]||null;}
-  return pd.querySelector('[data-c="'+comp+'"]');
+  if(!pd)return null;
+  var def=ATELIER_COMPOSANTES[c.comp];
+  if(def&&def.multiple){var fr=pd.querySelectorAll('.f-contenu [data-c="'+c.comp+'"]');return fr[c.rang]||null;}
+  return pd.querySelector('[data-c="'+c.comp+'"]');
 }
 /* ═══ [LOT3] LES CHAMPS DE LA FEUILLE DANS LE PANNEAU ═══
    Pour chaque item-feuille : une ligne par CASE COCHÉE qui porte des champs
@@ -11727,7 +11758,17 @@ function ed2ClicDocument(item,champ){
   ed2Selectionner(item,champ||'title','document');
 }
 function ed2ClicChamp(champ){
-  ed2Selectionner(ED2.courant,champ,'panneau');
+  /* [LOT4d] la clé porte l'item : la feuille désignée est CELLE DE LA LIGNE
+     cliquée — mesuré : le halo suivait ED2.courant même pour la ligne d'une
+     autre feuille (deux colonnes qui ne parlaient plus de la même chose).
+     Même motif qu'ed2ClicDocument : ed2Poser (halo + sommaire, sort de suite
+     si déjà courant) puis sélection. La clé 'item-<k>' porte AUSSI son item —
+     c'est le cas même de la dette (« le bloc d'un item non courant »).
+     Clé sans item ('title'…) : ED2.courant, comme avant. */
+  var c=ed2CleLire(champ);
+  var item=(c&&c.item)||ED2.courant;
+  ed2Poser(item);
+  ed2Selectionner(item,champ,'panneau');
 }
 function ed2Suivre(){
   if(!AT.edChap)return;
@@ -11931,10 +11972,12 @@ function edProposerLiaisons(level,chnum){
   var _pret=(typeof LINK_ATELIER_DOCS!=='undefined')&&LINK_ATELIER_DOCS&&Object.keys(LINK_ATELIER_DOCS).length;
   if(!_pret){
     atInfo('Je relis les feuilles de l’atelier…');
-    atSiteGetDocs(function(docs){
+    atSiteGetDocs(function(docs,err){
+      /* [LOT4d-D1] panne et vide séparés : deux messages nets. */
+      if(err){atInfo('Le réseau n’a pas répondu — les correspondances n’ont pas été cherchées. Réessaie dans un moment.');return;}
       LINK_ATELIER_DOCS=docs||{};
       if(!Object.keys(LINK_ATELIER_DOCS).length){
-        atInfo('Impossible de lire les feuilles de l’atelier (ou l’atelier est vide) — les correspondances n’ont pas été cherchées.');
+        atInfo('L’atelier ne contient encore aucune feuille — rien à faire correspondre.');
         return;
       }
       edProposerLiaisonsPrete(level,chnum);

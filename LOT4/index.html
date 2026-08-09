@@ -850,6 +850,7 @@ select.at-sel option,select.cm-input option,#link-modal select option,select.at-
 .ed2-coupe:hover .ed2-cx{opacity:1}
 @media print{.ed2-coupe{border-top:2px dashed #333}.ed2-cx{display:none}.ed2-pbarre{display:none}.ed2-trou{display:none}.ed2-inserer{display:none}.ed2-pse{display:none}}
 .ed2-sel{outline:2px solid rgba(212,160,23,.85);outline-offset:2px;background:rgba(212,160,23,.10)}
+.ed2-zsel{outline:2px solid rgba(212,160,23,.85);outline-offset:1px;background:rgba(212,160,23,.08);border-radius:6px}
 .ed-pub{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}
 .ed-pub-b{min-height:44px}
 .ed-pub-on{background:rgba(126,200,169,.2);border-color:rgba(126,200,169,.7)}
@@ -2774,7 +2775,7 @@ function mjpcEcrireRest(url,options,cb){
    (les 3 gestes, le geste conservatoire par app, ce qui ne peut pas arriver).
    RESTAURER LA VERSION PRÉCÉDENTE : docs/MJPC6-restauration.md (convention BUG).
    ═══════════════════════════════════════════════════════════════════════════ */
-var APP_VERSION="8.44.0";
+var APP_VERSION="8.44.1";
 var APP_VERSION_DATE="2026-08-05";
 // ── 11. Coffre : dérivation, chiffrement, empreinte (v1.3.0) ──
 // (Le canon porte deux sections « 8 » — dette de numérotation connue, non corrigée
@@ -9942,6 +9943,14 @@ function atEnregistrerMaintenant(suite){
       atBrouillonEffacer(AT.docId);
       atBrouillonEcrire(); /* le brouillon reflète l'état sauvé (repère de fraîcheur) */
       AT.liste[AT.docId]=JSON.parse(JSON.stringify(AT.doc));
+      /* [LOT4c-⑧] les caches du CHAPITRE suivent l'écriture : le fil (ed2Papier)
+         dessine les feuilles depuis LINK_ATELIER_DOCS — sans ces lignes,
+         « ← Le chapitre » remontrait l'ancienne version (mesuré : AT.doc est une
+         COPIE d'atOuvrirDoc, rien ne se propage par référence). Même copie
+         qu'AT.liste. Cache jamais chargé (null) : rien à poser — l'entrée du
+         chapitre le lira frais du hub, qui vient d'être écrit. */
+      if(typeof LINK_ATELIER_DOCS!=='undefined'&&LINK_ATELIER_DOCS)LINK_ATELIER_DOCS[AT.docId]=AT.liste[AT.docId];
+      if(typeof AT_DOCS!=='undefined'&&AT_DOCS)AT_DOCS[AT.docId]=AT.liste[AT.docId];
       atEtat('ok');
       /* SITE-COURS-2c · les PROPOSITIONS (jamais automatiques, une par session d'édition) :
          dépôt si l'adresse est complète et qu'aucun item ne pointe la feuille ;
@@ -10343,6 +10352,12 @@ function atDeposerFeuille(docId,doc,cb){
       atSitePut(AT_NOEUD+'/'+docId,doc,function(ok2){
         if(!ok2)atInfo('⚠ Le dépôt est fait mais la feuille n’a pas pu noter son statut — il s’affichera après un prochain enregistrement.');
         if(AT.liste&&AT.liste[docId])AT.liste[docId]=JSON.parse(JSON.stringify(doc));
+        /* [LOT4c-⑧] le fil du chapitre dessine par LINK_ATELIER_DOCS : une feuille
+           créée puis déposée depuis l'éditeur y entrait comme item (itemCreer met
+           chapitresData à jour — mesuré) mais SANS son contenu. Même copie. */
+        var _c=(AT.liste&&AT.liste[docId])||JSON.parse(JSON.stringify(doc));
+        if(typeof LINK_ATELIER_DOCS!=='undefined'&&LINK_ATELIER_DOCS)LINK_ATELIER_DOCS[docId]=_c;
+        if(typeof AT_DOCS!=='undefined'&&AT_DOCS)AT_DOCS[docId]=_c;
         if(AT.docId===docId&&AT.doc){AT.envoiDoc=envoi.doc;}
         if(cb)cb(true);
       });
@@ -11527,7 +11542,7 @@ function ed2PapierVers(el){
    curseur dedans — et la zone du document allumée. La sélection RESTE. */
 function ed2Selectionner(item,champ,depuis){
   ED2.caseSel={item:item,champ:champ};
-  document.querySelectorAll('.ed2-sel').forEach(function(x){x.classList.remove('ed2-sel');});
+  document.querySelectorAll('.ed2-sel,.ed2-zsel').forEach(function(x){x.classList.remove('ed2-sel');x.classList.remove('ed2-zsel');});
   var ligne=document.querySelector('#ed2-pan [data-champ="'+champ+'"]');
   if(ligne){
     ligne.classList.add('ed2-sel');
@@ -11540,7 +11555,14 @@ function ed2Selectionner(item,champ,depuis){
   var zone=document.querySelector('.ed2-pdoc[data-item="'+item+'"]');
   if(zone){
     zone.classList.add('ed2-sel');
-    if(depuis==='panneau')ed2PapierVers(zone);
+    if(depuis==='panneau'){
+      /* [LOT4c-⑦] la ZONE vient à l'écran et reste allumée — pas le document
+         entier (mesuré : Paul cliquait « Objectif » et arrivait sur la feuille,
+         rien d'allumé). Clé sans zone (titre d'item…) : le document, comme avant. */
+      var zc=ed2ZoneDe(item,champ);
+      if(zc)zc.classList.add('ed2-zsel');
+      ed2PapierVers(zc||zone);
+    }
   }
 }
 /* [LOT4-①] LA CLÉ DU POINTAGE — unique, calculée par UNE fonction, portée
@@ -11551,9 +11573,30 @@ function ed2Selectionner(item,champ,depuis){
    même id — côté rendu, les blocs ne vivent que dans .f-contenu, dans l'ordre
    de doc.contenu : le même ordre que le panneau. */
 function ed2Cle(item,comp,rang){return 'c-'+item+'-'+comp+'-'+(rang||0);}
+/* [LOT4c-⑦] LA ZONE VISÉE PAR UNE CLÉ — le sens inverse de ed2Cle : depuis
+   'c-<item>-<comp>-<rang>', retrouver l'élément [data-c] DANS LE BON document.
+   Même règle de rang que ed2ClicPapier (les blocs multiples ne vivent que dans
+   .f-contenu, dans l'ordre de doc.contenu). Aucun id de composante ne contient
+   de tiret (mesuré : tous en snake_case) — le dernier tiret sépare le rang.
+   Clé étrangère au motif ('title', 'item-…') → null : le document entier. */
+function ed2ZoneDe(item,champ){
+  var pd=document.querySelector('.ed2-pdoc[data-item="'+item+'"]');
+  if(!pd||!champ)return null;
+  var pref='c-'+item+'-';
+  if(champ.indexOf(pref)!==0)return null;
+  var reste=champ.slice(pref.length),p=reste.lastIndexOf('-');
+  if(p<0)return null;
+  var comp=reste.slice(0,p),rang=parseInt(reste.slice(p+1),10)||0;
+  var c=ATELIER_COMPOSANTES[comp];
+  if(c&&c.multiple){var fr=pd.querySelectorAll('.f-contenu [data-c="'+comp+'"]');return fr[rang]||null;}
+  return pd.querySelector('[data-c="'+comp+'"]');
+}
 /* ═══ [LOT3] LES CHAMPS DE LA FEUILLE DANS LE PANNEAU ═══
    Pour chaque item-feuille : une ligne par CASE COCHÉE qui porte des champs
-   (data-champ="c-<id>" — la cible du clic de zone). Les cases se cochent dans
+   (data-champ="c-<id>" — la cible du clic de zone). [LOT4c-⑦] chaque ligne
+   STOPPE la propagation : elle vit dans le bloc d'item qui porte son propre
+   onclick (item-<k>) — mesuré : le clic posait la clé fine puis l'écrasait.
+   Les cases se cochent dans
    l'éditeur de feuille (bouton Éditer) : ici on ÉDITE LES VALEURS, on ne
    compose pas. Écrire passe par le typage de l'atelier (atValeurTypee), met à
    jour LA SEULE ZONE concernée (jamais le papier entier à la frappe), et
@@ -11581,7 +11624,7 @@ function ed2PanneauFeuille(k,ref){
     if(cases[id]!==true||c.reserve||c.multiple)return;
     var cle=ed2Cle(k,id,0);   /* [LOT4-①] */
     if(c.adresse){
-      h+='<div class="at-edch-fz" data-champ="'+cle+'" onclick="ed2ClicChamp(\''+cle+'\')">'
+      h+='<div class="at-edch-fz" data-champ="'+cle+'" onclick="event.stopPropagation();ed2ClicChamp(\''+cle+'\')">'
         +'<label class="at-edch-lib">'+atEsc(c.libelle)+'</label>'
         +'<input class="at-edch-in" value="'+atEsc((typeof atAdresseAffichage==='function'?atAdresseAffichage(doc,id):'')||(vals[id]&&vals[id].texte)||'')+'" readonly title="Cette ligne suit l\u2019adresse de la feuille.">'
         +'</div>';
@@ -11591,13 +11634,13 @@ function ed2PanneauFeuille(k,ref){
       /* [LOT3b] la maquette fait foi : UNE CASE COCHÉE = UNE LIGNE, même sans
          champ. Le clic de zone y atterrit ; la valeur, elle, se remplit toute
          seule ou se règle par sa case (éditeur de feuille — cochage différé). */
-      h+='<div class="at-edch-fz" data-champ="'+cle+'" onclick="ed2ClicChamp(\''+cle+'\')">'
+      h+='<div class="at-edch-fz" data-champ="'+cle+'" onclick="event.stopPropagation();ed2ClicChamp(\''+cle+'\')">'
         +'<label class="at-edch-lib"><b>'+atEsc(c.libelle)+'</b> <span class="ch-type">'
         +(c.nature==='rendu'?'r\u00e9glage de rendu \u2014 il porte sur toute la feuille':'se remplit tout seul')
         +'</span></label></div>';
       return;
     }
-    h+='<div class="at-edch-fz" data-champ="'+cle+'" onclick="ed2ClicChamp(\''+cle+'\')">'
+    h+='<div class="at-edch-fz" data-champ="'+cle+'" onclick="event.stopPropagation();ed2ClicChamp(\''+cle+'\')">'
       +'<label class="at-edch-lib"><b>'+atEsc(c.libelle)+'</b></label>';
     if(c.intitule_defaut)h+=ed2ChampFHtml(ref,id,{k:'intitule',l:'Intitul\u00e9 sur la feuille',kind:'texte'},{intitule:(vals[id]&&typeof vals[id].intitule==='string')?vals[id].intitule:c.intitule_defaut});
     (c.champs||[]).forEach(function(ch){h+=ed2ChampFHtml(ref,id,ch,vals[id]||{});});
@@ -11609,7 +11652,7 @@ function ed2PanneauFeuille(k,ref){
     var c=ATELIER_COMPOSANTES[b.id];if(!c||c.reserve)return;
     var rang=occ[b.id]||0;occ[b.id]=rang+1;
     var champAttr=ed2Cle(k,b.id,rang);
-    h+='<div class="at-edch-fz" data-champ="'+champAttr+'" onclick="ed2ClicChamp(\''+champAttr+'\')">'
+    h+='<div class="at-edch-fz" data-champ="'+champAttr+'" onclick="event.stopPropagation();ed2ClicChamp(\''+champAttr+'\')">'
       +'<label class="at-edch-lib"><b>'+atEsc(c.libelle)+(rang?(' ('+(rang+1)+')'):'')+'</b></label>';
     (c.champs||[]).forEach(function(ch){h+=ed2ChampFHtml(ref,b.id,ch,b.valeurs||{},i);});
     h+='</div>';
@@ -11643,6 +11686,8 @@ function ed2MajZone(ref,comp){
     var z=comp?cadre.querySelector('[data-c="'+comp+'"]'):null;
     if(z){z.classList.add('ed2-zpulse');setTimeout(function(){z.classList.remove('ed2-zpulse');},1700);}
   });
+  /* [LOT4c-⑦] le re-rendu du cadre effaçait la zone allumée : elle se repose. */
+  if(ED2.caseSel){var zs=ed2ZoneDe(ED2.caseSel.item,ED2.caseSel.champ);if(zs)zs.classList.add('ed2-zsel');}
 }
 function ed2SauverFeuille(ref){
   clearTimeout(ED2_TIMERS[ref]);

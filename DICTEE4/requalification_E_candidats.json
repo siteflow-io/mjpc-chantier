@@ -1,0 +1,44 @@
+[
+  {
+    "fichier": "5e_chapitre_utopie-5e_herg",
+    "eleve": "bouton_amauri",
+    "type": "G",
+    "idx": 137,
+    "impact": "la note remonterait de 0,5 (G −1 → E −0,5)"
+  },
+  {
+    "fichier": "5e_chapitre_utopie-5e_herg",
+    "eleve": "guegnard_lysandre",
+    "type": "I",
+    "idx": 109,
+    "impact": "la note remonterait de 0,5 (I −1 → E −0,5)"
+  },
+  {
+    "fichier": "5e_chapitre_utopie-5e_herg",
+    "eleve": "nouteau_quentin",
+    "type": "A",
+    "idx": 137,
+    "impact": "la note baisserait de 0,5 (A gratuit → E −0,5)"
+  },
+  {
+    "fichier": "brevet_blanc_4e-4e_banksy_",
+    "eleve": "cadiou_fourrier_louann",
+    "type": "M",
+    "idx": 32,
+    "impact": "la note remonterait de 0,5 (M −1 → E −0,5)"
+  },
+  {
+    "fichier": "brevet_blanc_4e-4e_banksy_",
+    "eleve": "cadiou_fourrier_louann",
+    "type": "M",
+    "idx": 44,
+    "impact": "la note remonterait de 0,5 (M −1 → E −0,5)"
+  },
+  {
+    "fichier": "brevet_blanc_4e-4e_pythago",
+    "eleve": "alligand_louka",
+    "type": "M",
+    "idx": 44,
+    "impact": "la note remonterait de 0,5 (M −1 → E −0,5)"
+  }
+]

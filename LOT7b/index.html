@@ -12284,8 +12284,14 @@ function atEditerChapitreRendre(){
          signale plus fort. Le « i » dit ce que ça change et où ça se règle. */
       var _stat;
       var _estAt=(it.source==='atelier');
-      var _envAt=_estAt&&it.ref&&typeof LINK_ATELIER_DOCS!=='undefined'&&LINK_ATELIER_DOCS&&LINK_ATELIER_DOCS[it.ref]&&LINK_ATELIER_DOCS[it.ref].envoi;
+      /* [LOT7b-③b] pendant la fenêtre de chargement de LINK (atEditerChapitre le
+         charge à l'entrée puis re-rend), on ne MENT pas : libellés neutres
+         d'avant tant que la feuille n'est pas connue du cache. */
+      var _linkPret=typeof LINK_ATELIER_DOCS!=='undefined'&&LINK_ATELIER_DOCS&&LINK_ATELIER_DOCS[it.ref];
+      var _envAt=_estAt&&it.ref&&_linkPret&&LINK_ATELIER_DOCS[it.ref].envoi;
       if(!it.ref)_stat='<span class="at-st-adresse">non li\u00e9</span>';
+      else if(_estAt&&!_linkPret)_stat=(_estPublieItem(it)?'<span class="at-st-depose">ouverte aux \u00e9l\u00e8ves</span>'
+                                                          :'<span class="at-st-adresse">pas encore ouverte aux \u00e9l\u00e8ves</span>');
       else if(_estAt){
         var _p=_estPublieItem(it);
         if(_p&&_envAt)_stat='<span class="at-st-depose">ouverte et envoy\u00e9e</span>'+edEnvoiInfo('ok');

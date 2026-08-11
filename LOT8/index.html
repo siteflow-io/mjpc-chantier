@@ -282,8 +282,12 @@ body { font-family: 'EB Garamond', Georgia, serif; background: #141024; color: #
 .doc-viewer-overlay.visible { display: flex; }
 .doc-viewer-box { background: #1a1030; border-radius: 16px; overflow: hidden; width: 90vw; height: 85vh; max-width: 1100px; display: flex; flex-direction: column; border: 1px solid rgba(255,255,255,0.1); }
 .doc-viewer-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 20px; background: rgba(0,0,0,0.3); color: #fff; }
+.doc-viewer-actions { display:flex; align-items:center; gap:12px; flex:none; }
+/* [LOT8c-②] la modale n'est jamais un cul-de-sac : pour toute URL web, une issue */
+.doc-viewer-newtab { color:#ffd479; text-decoration:none; font-size:0.85rem; padding:6px 10px; min-height:44px; display:inline-flex; align-items:center; border:1px solid rgba(255,212,121,.45); border-radius:8px; }
+.doc-viewer-newtab:hover { background:rgba(255,212,121,.12); }
 .doc-viewer-title { font-size: 1rem; font-weight: 600; }
-.doc-viewer-close { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: #fff; border-radius: 8px; padding: 4px 14px; font-family: 'EB Garamond', serif; font-size: 0.9rem; cursor: pointer; }
+.doc-viewer-close { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: #fff; border-radius: 8px; padding: 4px 14px; font-family: 'EB Garamond', serif; font-size: 0.9rem; cursor: pointer; min-height: 44px; /* [LOT8c-①] cible tactile mesurée 27px au banc 390 — la règle des conteneurs bornés exige ≥44 */ }
 .doc-viewer-close:hover { background: rgba(255,255,255,0.15); }
 .doc-viewer-frame { flex: 1; border: none; width: 100%; }
 .link-modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.78); z-index: 7500; /* [LOT4-③] au-dessus de l'atelier (7000) : « Lier » s'ouvrait DERRIÈRE l'écran */ align-items: center; justify-content: center; padding: 24px; }
@@ -620,7 +624,7 @@ body.admin-mode .admin-only { display: block; }
 .cm-title{font:700 1.15rem 'EB Garamond',serif;color:#fff;padding:16px 20px;border-bottom:1px solid rgba(255,255,255,.08)}
 .cm-body{padding:16px 20px;color:rgba(255,255,255,.86);font-size:.92rem}
 .cm-actions{display:flex;gap:10px;justify-content:flex-end;padding:14px 20px;border-top:1px solid rgba(255,255,255,.08);flex-wrap:wrap}
-.cm-btn{padding:9px 16px;border-radius:9px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);color:#fff;cursor:pointer;font:600 .9rem 'EB Garamond',serif}
+.cm-btn{padding:9px 16px;border-radius:9px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);color:#fff;cursor:pointer;font:600 .9rem 'EB Garamond',serif;min-height:44px} /* [LOT8c-①] cible mesurée 37px au banc 390 — ≥44 */
 .cm-btn.primary{background:rgba(110,231,183,.16);border-color:rgba(110,231,183,.5);color:#6ee7b7}
 .cm-btn.warn{background:rgba(251,191,36,.14);border-color:rgba(251,191,36,.5);color:#fbbf24}
 .cm-btn.danger{background:rgba(248,113,113,.16);border-color:rgba(248,113,113,.55);color:#f87171}
@@ -764,6 +768,9 @@ body.at-corps-fige #tprof-btn,body.at-corps-fige #admin-tools-btn,body.at-corps-
 /* [C5-3a-c] ② la modale LIER ouverte (son état existant .visible) efface les
    flottants — pur CSS, ils reviennent d'eux-mêmes à la fermeture. */
 body:has(#link-modal.visible) #tprof-btn,body:has(#link-modal.visible) #admin-tools-btn,body:has(#link-modal.visible) #admin-tools-menu{display:none}
+/* [LOT8c-①] même patron pour la modale des documents : les flottants passaient
+   PAR-DESSUS l'en-tête (z 10000 > 9500), recouvrant « Fermer » — vu à la capture. */
+body:has(#doc-viewer.visible) #tprof-btn,body:has(#doc-viewer.visible) #admin-tools-btn,body:has(#doc-viewer.visible) #admin-tools-menu,body:has(#doc-viewer.visible) #vue-btn{display:none}
 /* [C5-3ac2b] ② le panneau prof ouvert (son état existant .visible) efface ses
    boutons d'entrée — le ✕ Fermer cesse d'être recouvert ; même patron. */
 body:has(#tprof-overlay.visible) #tprof-btn,body:has(#tprof-overlay.visible) #admin-tools-btn,body:has(#tprof-overlay.visible) #admin-tools-menu,body:has(#tprof-overlay.visible) #vue-btn{display:none}
@@ -1480,7 +1487,7 @@ button.dp-img-btn.dp-img-drop{border-color:#d4a017;background:rgba(212,160,23,.2
       <div class="section-label">Fiches</div>
       <div class="chapters-list" id="analyse-fiches-static">
         <div class="chapter-card"><div class="chapter-header" onclick="toggleChapter(this)"><div class="chapter-num" style="background:var(--level-accent);color:#1a1030;">📐</div><div class="chapter-info"><div class="chapter-title">Analyse logique</div><div class="chapter-meta"><span class="chip chip-fiche" id="count-analyse-logique">1 fiches</span></div></div></div><div class="chapter-body" data-section="analyse-logique"><div class="doc-list fiche-drop-zone" data-section="analyse-logique">
-              <div class="doc-item" data-docid="3e-analyse-logique-mmynhk1z" data-niveau="3e" data-chapitre="analyse-logique" data-seance="" data-embed="https://drive.google.com/file/d/1JWzQXIwf2Q9HHVOOp_HEmIpZJv8QzcVa/preview" onclick="openDoc('analyse-logique','Analyse logique 3e','')"><div class="doc-icon pdf">📄</div><div class="doc-label">Analyse logique 3e<small></small></div><div class="doc-action">→ Consulter</div><div class="upload-indicator"></div><div class="upload-progress"></div></div></div></div></div>
+              <!-- [LOT8c-⑨] la fiche Drive statique « Analyse logique 3e » est retirée : zone() l’écrasait à chaque rendu des rayons (mesure ☇5/☇8b) — elle revit proprement par le mécanisme ⑨ dès que Paul qualifie l’item Drive correspondant. --></div></div></div></div>
       </div>
     </div>
   </div>
@@ -1556,7 +1563,7 @@ button.dp-img-btn.dp-img-drop{border-color:#d4a017;background:rgba(212,160,23,.2
   <a href="#" onclick="openAdminTool('debat_s3');return false"><span class="atm-icon">🗣️</span> Pilotage du débat — Le triomphe simien</a>
 </div>
 <!-- [LOT7-①] l’overlay « gros fichier » retiré : son unique entrée (showBigFileGuide_, ancien circuit de dépôt) est morte — voir rapport. -->
-<div class="doc-viewer-overlay" id="doc-viewer"><div class="doc-viewer-box"><div class="doc-viewer-header"><div class="doc-viewer-title" id="doc-viewer-title">Document</div><button class="doc-viewer-close" onclick="closeViewer()">✕ Fermer</button></div><iframe class="doc-viewer-frame" id="doc-viewer-frame" src="about:blank"></iframe></div></div>
+<div class="doc-viewer-overlay" id="doc-viewer"><div class="doc-viewer-box"><div class="doc-viewer-header"><div class="doc-viewer-title" id="doc-viewer-title">Document</div><div class="doc-viewer-actions"><a class="doc-viewer-newtab" id="doc-viewer-newtab" target="_blank" rel="noopener" style="display:none">Ouvrir dans un onglet ↗</a><button class="doc-viewer-close" onclick="closeViewer()">✕ Fermer</button></div></div><iframe class="doc-viewer-frame" id="doc-viewer-frame" src="about:blank"></iframe></div></div>
 
 <div class="link-modal-overlay" id="link-modal"><div class="link-modal-box">
   <div class="link-modal-title" id="link-modal-title">Lier l'item</div>
@@ -2799,7 +2806,7 @@ function mjpcEcrireRest(url,options,cb){
    (les 3 gestes, le geste conservatoire par app, ce qui ne peut pas arriver).
    RESTAURER LA VERSION PRÉCÉDENTE : docs/MJPC6-restauration.md (convention BUG).
    ═══════════════════════════════════════════════════════════════════════════ */
-var APP_VERSION="8.50.0";
+var APP_VERSION="8.51.0";
 var APP_VERSION_DATE="2026-08-11";
 // ── 11. Coffre : dérivation, chiffrement, empreinte (v1.3.0) ──
 // (Le canon porte deux sections « 8 » — dette de numérotation connue, non corrigée
@@ -4921,10 +4928,14 @@ function collectChapterItems(level,kind,avecInvisibles){
       var items=sce.items||{};
       Object.keys(items).filter(function(k){return items[k]&&typeof items[k]==='object';}).sort(function(a,b){return (items[a].ordre||0)-(items[b].ordre||0);}).forEach(function(itemId){
         var it=items[itemId];
-        if(it.kind!==kind||!it.ref)return;
+        /* [LOT8c-\u2468] kind='@externes' : la m\u00eame collecte (m\u00eames trois \u00e9tages de
+           publication) sert les ressources externes \u2014 filtre par SOURCE au lieu du
+           kind. Aucun appel existant ne passe cette valeur : comportement inchang\u00e9. */
+        if(kind==='@externes'){ if(!((it.source==='drive'||it.source==='external')&&it.ref))return; }
+        else if(it.kind!==kind||!it.ref)return;
         var itVis=_visiblePourSession(it,level);   /* M8-IDENTIT\u00c9 (I1) */
         if(!itVis&&!avecInvisibles)return;
-        var e={chnum:chnum,chapTitle:ch.title||'',seanceTitle:sce.title||'',itemId:itemId,item:it};
+        var e={chnum:chnum,snum:snum,chapTitle:ch.title||'',seanceTitle:sce.title||'',itemId:itemId,item:it};   /* [LOT8c-\u2468] snum expos\u00e9 (le menu produit des externes en a besoin) */
         if(!(chVis&&seVis&&itVis))e.invisible=(!chVis?'chapitre':(!seVis?'seance':'ligne'));
         result.push(e);
       });
@@ -4958,6 +4969,22 @@ function collectRayons(level){
     var r=atProduitRayon(d.produit);
     if(!r){out.ancres++;out.ignores.push({cause:'ancre',ref:e.item.ref,titre:d.titre||e.item.ref,produit:d.produit});return;}
     out[r].push(e);
+  });
+  /* [LOT8c-\u2468] LA SECONDE PASSE : les ressources EXTERNES (drive/external) entrent
+     aux rayons PAR LEUR PRODUIT d\u00e9clar\u00e9 sur l'item (option A) \u2014 identit\u00e9 = uid
+     d'item, la ref reste l'id Drive/l'URL. Sans produit d\u00e9clar\u00e9, elles paraissent
+     aux ignor\u00e9es C\u00d4T\u00c9 PROF (cause sansProduitExt) avec le menu pour les ranger.
+     M\u00eame moteur, m\u00eames trois \u00e9tages de publication : rien de parall\u00e8le. */
+  collectChapterItems(level,'@externes',_prof).forEach(function(e){
+    var it=e.item;
+    if(e.invisible){out.ignores.push({cause:'nonPubliee',ref:it.ref,titre:it.title||it.ref,produit:it.produit||'',etage:e.invisible,ext:{level:level,chnum:e.chnum,snum:e.snum||'',itemId:e.itemId}});return;}
+    if(!it.produit||!ATELIER_PRODUITS[it.produit]){out.sansProduit++;out.ignores.push({cause:'sansProduitExt',ref:it.ref,titre:it.title||it.ref,produit:'',ext:{level:level,chnum:e.chnum,snum:e.snum||'',itemId:e.itemId}});return;}
+    var r2=atProduitRayon(it.produit);
+    if(!r2){out.ancres++;out.ignores.push({cause:'ancre',ref:it.ref,titre:it.title||it.ref,produit:it.produit,ext:{level:level,chnum:e.chnum,snum:e.snum||'',itemId:e.itemId}});return;}
+    e.produitLib=(ATELIER_PRODUITS[it.produit]||{}).libelle||'';
+    e.docTitre=it.title||'';
+    e.externe=true;
+    out[r2].push(e);
   });
   return out;
 }
@@ -4993,13 +5020,17 @@ function renderRayons(level){
       var CAUSES={nonPubliee:'\u00e9cart\u00e9e par la publication (chapitre, s\u00e9ance ou ligne non publi\u00e9s) \u2014 publie-la depuis le chapitre',
                   pasCache:'la feuille n\u2019a pas pu \u00eatre lue dans l\u2019atelier \u2014 recharge la page, ou v\u00e9rifie qu\u2019elle existe encore',
                   sansProduit:'aucun type de feuille d\u00e9clar\u00e9 \u2014 choisis-le ici pour la ranger',
+                  sansProduitExt:'fichier ou site d\u00e9pos\u00e9 sans type d\u00e9clar\u00e9 \u2014 choisis-le ici pour le ranger dans un onglet',
                   ancre:'son type vit dans sa s\u00e9ance, pas dans un onglet \u2014 change-le si elle doit para\u00eetre ici'};
       var hh='<div class="rayons-ignores-bloc"><div class="ri-titre">\u26a0 Non rang\u00e9es dans les onglets \u2014 visible par toi seul</div>';
       r.ignores.forEach(function(x){
+        /* [LOT8c-\u2468] une EXTERNE porte son menu d'ITEM (\u00e9crivain itemProduitPoser) ;
+           une feuille garde le menu de feuille. M\u00eame geste, deux \u00e9crivains d\u00e9clar\u00e9s. */
+        var _menu=x.ext?itemProduitMenu(x.ext.level,x.ext.chnum,x.ext.snum,x.ext.itemId,x.produit):atProduitMenu(x.ref,x.produit);
         hh+='<div class="rayons-ignore-l">'
           +'<span class="ri-t">'+escapeHtml(x.titre||'')+'</span>'
           +'<span class="ri-c">'+CAUSES[x.cause]+'</span>'
-          +(x.cause!=='pasCache'?('<button class="at-btn at-btn-min" onclick="_openAtelierFromList(\''+atEsc(x.ref)+'\')">Ouvrir</button>'+atProduitMenu(x.ref,x.produit)):'')
+          +(x.cause!=='pasCache'?('<button class="at-btn at-btn-min" onclick="_openAtelierFromList(\''+atEsc(x.ref)+'\')">Ouvrir</button>'+_menu):'')
           +'</div>';
       });
       zi.innerHTML=hh+'</div>';
@@ -5014,7 +5045,13 @@ function _openAtelierFromList(ref){
      rechargeait LE SITE ENTIER dans l'iframe de la modale \u2014 la mise en abyme
      v\u00e9cue par Paul. */
   var d=(typeof LINK_ATELIER_DOCS!=='undefined'&&LINK_ATELIER_DOCS)?LINK_ATELIER_DOCS[ref]:null;
-  openAtelierItem(ref,(d&&d.titre)||'Feuille');
+  if(d){openAtelierItem(ref,d.titre||'Feuille');return;}
+  /* [LOT8c-\u2468] une ressource EXTERNE rang\u00e9e aux rayons n'est pas une feuille :
+     elle s'ouvre par openViewer (la garde \u2460 et l'issue \u00ab Ouvrir dans un onglet \u00bb
+     s'appliquent). URL http(s) \u2192 telle quelle ; id Drive \u2192 preview. */
+  if(/^https?:\/\//i.test(ref)){openViewer('Ressource',ref);return;}
+  if(/^[A-Za-z0-9_-]{20,}$/.test(ref)){openViewer('Document','https://drive.google.com/file/d/'+ref+'/preview');return;}
+  openAtelierItem(ref,'Feuille');
 }
 function gotoFiches(level){
   var n=level||clickedLevel||currentLevel||'';
@@ -5189,12 +5226,23 @@ function openViewer(title,url){
   if(!u||u.charAt(0)==='?'||u.charAt(0)==='#'||/^(\.\/)?index\.html/i.test(u)){
     f.removeAttribute('src');
     f.srcdoc='<body style="font-family:serif;padding:24px">Ce document n\u2019est pas disponible pour l\u2019instant.</body>';
+    var _nt0=document.getElementById('doc-viewer-newtab');
+    if(_nt0){_nt0.style.display='none';_nt0.removeAttribute('href');}
     document.getElementById('doc-viewer').classList.add('visible');
     return;
   }
   if(u.indexOf('drive.google.com/file/d/')>=0){u=u.replace(/\/view(\?|$)/,'/preview$1');}
   f.removeAttribute('srcdoc');   /* un srcdoc r\u00e9siduel PRIME sur src */
   f.src=u;
+  /* [LOT8c-②] JAMAIS UN CUL-DE-SAC : un site peut refuser l'embarquement
+     (X-Frame-Options / CSP frame-ancestors) et la d\u00e9tection du refus n'est pas
+     fiable cross-origin \u2014 alors pour TOUTE URL web, l'issue est offerte
+     syst\u00e9matiquement dans l'en-t\u00eate, \u00e0 c\u00f4t\u00e9 de Fermer. */
+  var _nt=document.getElementById('doc-viewer-newtab');
+  if(_nt){
+    if(/^https?:\/\//i.test(u)){_nt.href=u;_nt.style.display='inline-flex';}
+    else{_nt.style.display='none';_nt.removeAttribute('href');}
+  }
   document.getElementById('doc-viewer').classList.add('visible');
 }
 function toggleAdminTools(){document.getElementById('admin-tools-menu').classList.toggle('visible');}
@@ -6796,7 +6844,7 @@ function openBB4E(){openViewer('Brevet Blanc 4e \u2014 R\u00e9\u00e9criture','re
 function publishBB4E(){togglePublishExtra('4e','bb4e');}
 function showEmptyTab(tabId,label){var el=document.getElementById('tab-'+tabId);hideAllTabs();el.style.display='block';var btn=document.getElementById('tab-btn-'+tabId);if(btn)btn.classList.add('active');el.innerHTML='<div style="padding:40px 20px;text-align:center"><div style="font-size:3rem;margin-bottom:16px;opacity:0.3">🔧</div><div style="color:rgba(255,255,255,0.4);font-size:1rem;line-height:1.8">'+(document.body.classList.contains('admin-mode')?'Cet outil n’est pas encore branché.<br>Il faut le brancher avant de le publier.':'Cet outil ouvrira plus tard.')+'</div></div>';}
 function openAdminTool(tool){document.getElementById('admin-tools-menu').classList.remove('visible');var level=clickedLevel||currentLevel||'';if(tool==='dictee'){window.open('dictee_universelle.html'+(level?'?n='+level:''),'_blank');}if(tool==='correction'){window.open('correction_dictee.html?mode=prof','_blank');}if(tool==='reecriture'){window.open('reecriture.html','_blank');}if(tool==='reecriture_bb4e'){window.open('reecriture_bb4e.html','_blank');}if(tool==='evaluation_qcm'){window.open('evaluation-qcm.html?mode=prof','_blank');}if(tool==='applause'){window.open('applause_meter.html'+(level?'?n='+level:''),'_blank');}if(tool==='debat_s3'){window.open('pilotage_debat_s3.html'+(level?'?n='+level:''),'_blank');}}
-function closeViewer(){document.getElementById('doc-viewer').classList.remove('visible');var f=document.getElementById('doc-viewer-frame');f.removeAttribute('srcdoc');f.src='about:blank';trackClose();}   /* [LOT8-\u2460] le srcdoc r\u00e9siduel primerait sur src */
+function closeViewer(){document.getElementById('doc-viewer').classList.remove('visible');var f=document.getElementById('doc-viewer-frame');f.removeAttribute('srcdoc');f.src='about:blank';var _nt=document.getElementById('doc-viewer-newtab');if(_nt){_nt.style.display='none';_nt.removeAttribute('href');}trackClose();}   /* [LOT8-\u2460] le srcdoc r\u00e9siduel primerait sur src */
 document.addEventListener('keydown',function(e){if(e.key==='Escape'&&document.getElementById('doc-viewer').classList.contains('visible'))closeViewer();});
 document.addEventListener('click',function(e){var menu=document.getElementById('admin-tools-menu');var btn=document.getElementById('admin-tools-btn');if(menu&&btn&&!menu.contains(e.target)&&!btn.contains(e.target))menu.classList.remove('visible');});
 
@@ -7088,12 +7136,36 @@ function atFeuilleProduitPoser(id,prod){
     if(_tf&&_tf.style.display!=='none'&&typeof renderRayons==='function')renderRayons(clickedLevel||currentLevel||'');
   });
 }
-function atProduitMenu(id,prodCourant){
-  return '<select class="at-sel at-sel-mini" onchange="atFeuilleProduitPoser(\''+id+'\',this.value)">'
+/* [LOT8c-\u2468] UNE SEULE SOURCE D'OPTIONS pour la requalification : le m\u00eame menu
+   sert les feuilles de l'atelier (\u00e9crivain atFeuilleProduitPoser) et les items
+   drive/external (\u00e9crivain itemProduitPoser) \u2014 aucun \u00e9cran neuf, le m\u00eame geste. */
+function _produitSelectHTML(onchange,prodCourant){
+  return '<select class="at-sel at-sel-mini" onchange="'+onchange+'">'
     +'<option value="">Produit\u2026</option>'
     +Object.keys(ATELIER_PRODUITS).map(function(p){
        return '<option value="'+p+'"'+(p===prodCourant?' selected':'')+'>'+atEsc(ATELIER_PRODUITS[p].libelle)+'</option>';
      }).join('')+'</select>';
+}
+function atProduitMenu(id,prodCourant){
+  return _produitSelectHTML('atFeuilleProduitPoser(\''+id+'\',this.value)',prodCourant);
+}
+function itemProduitMenu(level,chnum,snum,itemId,prodCourant){
+  return _produitSelectHTML('itemProduitPoser(\''+atEsc(level)+'\',\''+atEsc(chnum)+'\',\''+atEsc(snum)+'\',\''+atEsc(itemId)+'\',this.value)',prodCourant);
+}
+/* [LOT8c-\u2468] L'\u00c9CRIVAIN UNIQUE du produit d'un ITEM (drive/external) : le champ
+   vit SUR L'ITEM \u2014 jamais de n\u0153ud parall\u00e8le. L'identit\u00e9 du rangement est l'uid
+   de l'item ; l'id Drive reste la ref. Aucune migration : Paul qualifie \u00e0 la
+   main, item par item, par ce menu. */
+function itemProduitPoser(level,chnum,snum,itemId,prod){
+  if(!prod)return;
+  _sitePut('/site/'+level+'/chapitres/'+chnum+'/seances/'+snum+'/items/'+itemId+'/produit',prod,function(ok){
+    if(!ok){atInfo('\u26a0 Le produit n\u2019a pas pu s\u2019enregistrer.');return;}
+    var it=chapitresData[level]&&chapitresData[level][chnum]&&chapitresData[level][chnum].seances[snum]&&chapitresData[level][chnum].seances[snum].items[itemId];
+    if(it)it.produit=prod;
+    var _tf=document.getElementById('tab-fiches');
+    if(_tf&&_tf.style.display!=='none'&&typeof renderRayons==='function')renderRayons(clickedLevel||currentLevel||'');
+    if(typeof AT!=='undefined'&&AT.edChap&&typeof atEditerChapitreRendre==='function')atEditerChapitreRendre();
+  });
 }
 function atProduitRayon(prod){
   var p=ATELIER_PRODUITS[prod||''];
@@ -12449,6 +12521,12 @@ function atEditerChapitreRendre(){
       }
       else _stat=(_estPublieItem(it)?'<span class="at-st-depose">ouverte aux \u00e9l\u00e8ves</span>'
                                     :'<span class="at-st-adresse">pas encore ouverte aux \u00e9l\u00e8ves</span>');
+      /* [LOT8c-\u2468] un item drive/external li\u00e9 porte le menu de requalification AU
+         PANNEAU (le m\u00eame menu que le bloc des ignor\u00e9es \u2014 \u00e9crivain itemProduitPoser) :
+         son produit d\u00e9cide de son rayon aux onglets transversaux. */
+      if((it.source==='drive'||it.source==='external')&&it.ref){
+        _stat+=' '+itemProduitMenu(ec.level,ec.chnum,j,k,it.produit||'');
+      }
       h+='<div class="at-edch-it" data-champ="item-'+k+'" onclick="ed2ClicChamp(\'item-'+k+'\')"><div class="at-edch-itt">\u2022 '+atEsc(it.title||k)+' '+_stat
         +' <span class="ch-type">'+atEsc(it.kind||'doc')+(_edtb?'':' \u00b7 lecture seule')+'</span>'
         +'<span class="at-edch-actes">'

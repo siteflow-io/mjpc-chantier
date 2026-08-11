@@ -838,7 +838,14 @@ select.at-sel option,select.cm-input option,#link-modal select option,select.at-
 .ed2-coupe-or .ed2-cis{color:#b8860b}
 .ed2-cx{margin-left:auto;color:#8a8a8a;font-size:.78rem;padding:0 8px;opacity:0}
 .ed2-coupe:hover .ed2-cx{opacity:1}
-@media print{.ed2-coupe{border-top:2px dashed #333}.ed2-cx{display:none}.ed2-pbarre{display:none}.ed2-trou{display:none}.ed2-inserer{display:none}.ed2-pse{display:none}}
+/* [LOT8-\u2467] le cadre des ressources externes du fil */
+.ed2-xcadre{margin-top:8px;border:1px solid #cdc4ae;border-radius:8px;overflow:hidden;background:#faf8f2}
+.ed2-xbarre{display:flex;align-items:center;gap:8px;padding:7px 10px;background:#efe9da;border-bottom:1px solid #cdc4ae;cursor:pointer;font-size:.8rem;color:#4a4436}
+.ed2-xbarre:hover{background:#e6dec9}
+.ed2-xadr{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:monospace;font-size:.74rem}
+.ed2-xouvre{font-size:.72rem;color:#8a7a4a;white-space:nowrap}
+.ed2-xapercu{width:100%;height:260px;border:0;background:#fff}
+@media print{.ed2-coupe{border-top:2px dashed #333}.ed2-cx{display:none}.ed2-pbarre{display:none}.ed2-trou{display:none}.ed2-inserer{display:none}.ed2-pse{display:none}.ed2-xcadre{display:none}}
 .ed2-sel{outline:2px solid rgba(212,160,23,.85);outline-offset:2px;background:rgba(212,160,23,.10)}
 .ed2-zsel{outline:2px solid rgba(212,160,23,.85);outline-offset:1px;background:rgba(212,160,23,.08);border-radius:6px}
 /* [LOT6-②] le menu contextuel — au-dessus de tout écran (atelier 7000, Lier 7500) */
@@ -1136,6 +1143,8 @@ button.dp-img-btn.dp-img-drop{border-color:#d4a017;background:rgba(212,160,23,.2
 .rayons-ignore-l{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:6px 0;border-top:1px solid rgba(255,255,255,0.07)}
 .rayons-ignore-l .ri-t{font-weight:600;font-size:0.85rem}
 .rayons-ignore-l .ri-c{color:rgba(255,255,255,0.55);font-size:0.78rem;font-style:italic;flex:1;min-width:180px}
+/* [LOT8-\u2466] la trace du remplac\u00e9 au panneau */
+.at-edch-rempl{font-size:0.74rem;color:rgba(255,255,255,0.45);font-style:italic;margin:2px 0 6px;padding-left:14px}
 /* SITE-COURS-2c — le bandeau du message élève (écran seulement, hors iframe) */
 .atdoc-bandeau{flex:0 0 auto;background:#f6edd8;color:#4a3d20;border-bottom:2px solid #d9c896;padding:10px 14px;font-size:.95rem;line-height:1.4}
 /* les statuts des cartes de « Mes feuilles » */
@@ -2790,7 +2799,7 @@ function mjpcEcrireRest(url,options,cb){
    (les 3 gestes, le geste conservatoire par app, ce qui ne peut pas arriver).
    RESTAURER LA VERSION PRÉCÉDENTE : docs/MJPC6-restauration.md (convention BUG).
    ═══════════════════════════════════════════════════════════════════════════ */
-var APP_VERSION="8.49.0";
+var APP_VERSION="8.50.0";
 var APP_VERSION_DATE="2026-08-11";
 // ── 11. Coffre : dérivation, chiffrement, empreinte (v1.3.0) ──
 // (Le canon porte deux sections « 8 » — dette de numérotation connue, non corrigée
@@ -4049,6 +4058,10 @@ function openLinkModal(level,chnum,snum,itemId){
   } else {
     currentEl.textContent='Aucune liaison actuelle.';
   }
+  /* [LOT8-\u2466] l'historique simple : le dernier remplac\u00e9, lisible ici aussi */
+  if(item.remplace&&item.remplace.ref){
+    currentEl.textContent+=' \u00b7 Ressource pr\u00e9c\u00e9dente : '+_resLibelle(item.remplace.source,item.remplace.ref,item.remplace.kind)+' (remplac\u00e9e le '+new Date(item.remplace.le||0).toLocaleDateString('fr-FR')+')';
+  }
   document.getElementById('link-modal-url').value='';
   loadAppList('dictee');
   loadAppList('reecriture');
@@ -4180,12 +4193,40 @@ function linkModalUnlink(){
   });
 }
 
+/* [LOT8-\u2466] LE LIBELL\u00c9 LISIBLE D'UNE RESSOURCE \u2014 pour nommer l'ancienne et la
+   nouvelle dans l'avertissement, et l'historique au panneau. */
+function _resLibelle(source,ref,kind){
+  if(!ref)return '(aucune)';
+  if(source==='atelier'){var d=(typeof LINK_ATELIER_DOCS!=='undefined'&&LINK_ATELIER_DOCS)?LINK_ATELIER_DOCS[ref]:null;return 'feuille \u00ab '+((d&&d.titre)||ref)+' \u00bb';}
+  if(source==='drive')return 'fichier Drive '+ref;
+  if(source==='external')return 'site '+ref;
+  if(source==='firebase_app')return (kind||'activit\u00e9')+' '+ref;
+  return (source||'?')+' '+ref;
+}
 function applyLinkChanges(newSource,newRef,newKind){
   var ctx=LINK_MODAL_CONTEXT;if(!ctx)return;
+  var item=chapitresData[ctx.level][ctx.chnum].seances[ctx.snum].items[ctx.itemId];
+  /* [LOT8-\u2466] UN ITEM NE PORTE QU'UNE RESSOURCE, ET IL LE DIT : si l'item est
+     d\u00e9j\u00e0 li\u00e9 \u00e0 AUTRE CHOSE, le geste AVERTIT (l'ancienne et la nouvelle nomm\u00e9es)
+     et TRACE le remplac\u00e9 (champ `remplace` sur l'item, lisible au panneau et \u00e0 la
+     modale Lier). Jamais d'\u00e9crasement silencieux \u2014 le site jeromeswifteasteregg
+     de Paul a \u00e9t\u00e9 perdu ainsi. Le d\u00e9lier (newRef vide) a d\u00e9j\u00e0 sa confirmation
+     (linkModalUnlink) : il trace sans redemander. */
+  var _remplace=!!(item&&item.ref&&(item.ref!==newRef||String(item.source||'')!==String(newSource||'')));
+  var _ecrire=function(){_applyLinkEcrire(ctx,item,newSource,newRef,newKind,_remplace);};
+  if(_remplace&&newRef){
+    _modaleConfirme('Remplacer la ressource',
+      'Cet item est d\u00e9j\u00e0 li\u00e9 \u00e0 <b>'+escapeHtml(_resLibelle(item.source,item.ref,item.kind))+'</b>.<br>'
+      +'La remplacer par <b>'+escapeHtml(_resLibelle(newSource,newRef,newKind))+'</b>\u00a0? L\u2019ancienne restera not\u00e9e sur l\u2019item.',
+      _ecrire);
+    return;
+  }
+  _ecrire();
+}
+function _applyLinkEcrire(ctx,item,newSource,newRef,newKind,tracer){
   var basePath='/site/'+ctx.level+'/chapitres/'+ctx.chnum+'/seances/'+ctx.snum+'/items/'+ctx.itemId;
-  /* M-ÉCHECS-1 : trois écritures en LOT — la modale ne se ferme et l'état local
-     ne suit QUE si tous les verdicts sont acceptés (avant : aucun catch, l'écran
-     entérinait un lien que le serveur avait pu refuser). */
+  /* M-\u00c9CHECS-1 : \u00e9critures en LOT \u2014 la modale ne se ferme et l'\u00e9tat local
+     ne suit QUE si tous les verdicts sont accept\u00e9s. */
   var lot=[
     {url:FIREBASE_BASE+basePath+'/source.json',options:{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(newSource)},quoi:'source'},
     {url:FIREBASE_BASE+basePath+'/ref.json',options:{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(newRef)},quoi:'r\u00e9f\u00e9rence'}
@@ -4193,11 +4234,15 @@ function applyLinkChanges(newSource,newRef,newKind){
   if(newKind){
     lot.push({url:FIREBASE_BASE+basePath+'/kind.json',options:{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(newKind)},quoi:'type'});
   }
+  var anc=tracer?{source:item.source||'',ref:item.ref||'',kind:item.kind||'',le:Date.now()}:null;
+  if(anc){lot.push({url:FIREBASE_BASE+basePath+'/remplace.json',options:{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(anc)},quoi:'trace du remplac\u00e9'});}
   mjpcLot(lot,'Bouton LIER',function(){
-    var item=chapitresData[ctx.level][ctx.chnum].seances[ctx.snum].items[ctx.itemId];
-    item.source=newSource;item.ref=newRef;
-    if(newKind)item.kind=newKind;
+    var it2=chapitresData[ctx.level][ctx.chnum].seances[ctx.snum].items[ctx.itemId];
+    it2.source=newSource;it2.ref=newRef;
+    if(newKind)it2.kind=newKind;
+    if(anc)it2.remplace=anc;
     var lvl=ctx.level;closeLinkModal();renderChapitres(lvl);
+    if(AT.edChap)atEditerChapitreRendre();   /* [LOT8-\u2466] le panneau montre la trace sans rechargement */
   });
 }
 
@@ -11383,7 +11428,11 @@ function edPrendreFeuille(j,k){
        if(k){edLierConfirme(lvl,chn,[{seance:j,item:k,doc:id}]);return;}
        itemCreer(lvl,chn,j,(LINK_ATELIER_DOCS[id].titre||id),
          {kind:'atelier',source:'atelier',ref:id,published:false},
-         function(){atEditerChapitreRendre();});
+         function(itemId){
+           /* [LOT8-\u2469] le lien \u00e9crit le d\u00e9p\u00f4t \u2014 m\u00eame \u00e9crivain que la voie edLierConfirme */
+           if(itemId)atFeuilleDepotPoser(id,lvl,chn,j,itemId,function(){atEditerChapitreRendre();});
+           else atEditerChapitreRendre();
+         });
      }}]);
 }
 /* [LOT2-⑧] ÉCRIRE AVEC UNE IA DEPUIS UN TROU — la feuille se crée ADRESSÉE
@@ -11432,7 +11481,10 @@ function edIAdepuisTrou(j,k){
          sinon le rendu de sortie de l'écrivain écrasait l'écran IA (course
          mesurée au banc à taille réelle). */
       if(it)edLierConfirme(lvl,chn,[{seance:j,item:k,doc:id}],ouvrirIA);   /* l'écrivain existant, sortie séquencée */
-      else itemCreer(lvl,chn,j,titre,{kind:'atelier',source:'atelier',ref:id,published:false},ouvrirIA);
+      else itemCreer(lvl,chn,j,titre,{kind:'atelier',source:'atelier',ref:id,published:false},function(itemId){
+        if(itemId)atFeuilleDepotPoser(id,lvl,chn,j,itemId,function(){ouvrirIA();});   /* [LOT8-\u2469] */
+        else ouvrirIA();
+      });
       /* [LOT4-⑤] ON NE QUITTE PLUS L'ÉDITEUR : AT.edChap reste posé, l'écran IA
          EXISTANT prend l'écran (aucun troisième écran réécrit) et son retour
          revient AU CHAPITRE — à la même place : la position de la pile est
@@ -11551,7 +11603,7 @@ function ed2Documents(level,chnum){
       var it=q.o;
       var d=(typeof LINK_ATELIER_DOCS!=='undefined'&&LINK_ATELIER_DOCS&&it.ref)?LINK_ATELIER_DOCS[it.ref]:null;
       out.push({seance:p.j,seanceTitre:se.title||('S\u00e9ance '+p.j),rang:rang,teinte:ed2Teinte(rang),
-                item:q.k,uid:it.uid||'',ref:it.ref||'',kind:it.kind||'doc',
+                item:q.k,uid:it.uid||'',ref:it.ref||'',kind:it.kind||'doc',src:it.source||'',   /* [LOT8-\u2467] la source pour le cadre externe */
                 titre:(d&&d.titre)||it.title||q.k,
                 produit:(d&&d.produit)||'',
                 feuille:!!(d&&(it.kind==='atelier'||it.source==='atelier')),
@@ -12010,6 +12062,21 @@ function ed2Papier(level,chnum,docs){
         h+='<div class="ed2-pt">'+atEsc(d.titre)+'</div>'
           +'<div class="ed2-pm">'+atEsc(d.produit?(((ATELIER_PRODUITS[d.produit]||{}).libelle)||d.produit):d.kind)+'</div>'
           +(_dpH||'');
+        /* [LOT8-\u2467] LES RESSOURCES EXTERNES SE VOIENT : un document Drive ou un
+           lien web re\u00e7oit un CADRE dans le fil \u2014 barre d'adresse identifiable
+           (jamais une page blanche) + aper\u00e7u, et le clic sur la barre l'ouvre EN
+           MODALE (openViewer, le chemin \u00e9l\u00e8ve existant). Le papier imprim\u00e9 ne
+           l'imprime pas (r\u00e8gle @media print, avec les trous). */
+        if(!_dpH&&d.ref&&(d.src==='drive'||d.src==='external')){
+          var _xurl=(d.src==='drive')?('https://drive.google.com/file/d/'+d.ref+'/preview'):d.ref;
+          var _xlib=(d.src==='drive')?('Fichier Drive \u00b7 '+d.ref):d.ref;
+          h+='<div class="ed2-xcadre">'
+            +'<div class="ed2-xbarre" onclick="event.stopPropagation();openViewer(\''+atEsc((d.titre||'Document').replace(/'/g,''))+'\',\''+atEsc(_xurl)+'\')">'
+            +(d.src==='drive'?'\ud83d\udcce ':'\ud83c\udf10 ')+'<span class="ed2-xadr">'+atEsc(_xlib)+'</span>'
+            +'<span class="ed2-xouvre">Ouvrir en modale \u2192</span></div>'
+            +'<iframe class="ed2-xapercu" src="'+atEsc(_xurl)+'" title="Aper\u00e7u" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe>'
+            +'</div>';
+        }
       }
       h+='</div>';
     })(d);
@@ -12395,6 +12462,7 @@ function atEditerChapitreRendre(){
         +(_edtb&&it.ref?('<button class="at-btn at-btn-min" onclick="edDupliquerVers(\''+j+'\',\''+k+'\')">Dupliquer vers\u2026</button>'):'')
         +'<button class="at-btn at-btn-min at-btn-danger" onclick="edSupprimerItem(\''+j+'\',\''+k+'\')">\u2715</button>'
         +'</span></div>'
+        +(it.remplace&&it.remplace.ref?('<div class="at-edch-rempl">Ressource pr\u00e9c\u00e9dente : '+atEsc(_resLibelle(it.remplace.source,it.remplace.ref,it.remplace.kind))+' \u2014 remplac\u00e9e le '+new Date(it.remplace.le||0).toLocaleDateString('fr-FR')+'</div>'):'')   /* [LOT8-\u2466] l'ancien couple reste lisible */
         +'<label class="at-edch-lib">Titre</label><input class="at-edch-in" value="'+atEsc(it.title||'')+'" onchange="atChampItem('+j+',\''+k+'\',\'title\',this.value)">'
         +'<label class="at-edch-lib">Sous-titre</label><input class="at-edch-in" value="'+atEsc(it.subtitle||'')+'" onchange="atChampItem('+j+',\''+k+'\',\'subtitle\',this.value)">'
         +'<label class="at-edch-lib">Type (kind)</label><input class="at-edch-in" value="'+atEsc(it.kind||'')+'" onchange="atChampItem('+j+',\''+k+'\',\'kind\',this.value)">'
@@ -12538,27 +12606,91 @@ function edProposerLiaisonsPrete(level,chnum){
   }}]:[]));
 }
 function edLierConfirme(level,chnum,lignes,apres){
-  /* [LOT4-⑤] « apres » (optionnel) remplace le rendu de sortie : mesuré au banc,
-     le atEditerChapitreRendre de ce then ÉCRASAIT l'écran IA ouvert par
-     edIAdepuisTrou maintenant que l'éditeur reste posé. Même écrivain, mêmes
-     écritures, même message — seule la suite est séquencée par l'appelant. */
+  /* [LOT4-\u2464] \u00ab apres \u00bb (optionnel) remplace le rendu de sortie. */
+  /* [LOT8-\u2466] LA GARDE DE REMPLACEMENT : toute ligne dont l'item porte D\u00c9J\u00c0 une
+     ressource diff\u00e9rente est nomm\u00e9e (ancienne \u2192 nouvelle) AVANT d'\u00e9crire, et le
+     remplac\u00e9 est TRAC\u00c9 sur l'item (champ `remplace`). Jamais d'\u00e9crasement muet. */
+  var occupees=[];
+  lignes.forEach(function(l){
+    var it=((((chapitresData[level]||{})[chnum]||{}).seances||{})[l.seance]||{}).items;
+    it=it&&it[l.item];
+    if(it&&it.ref&&(it.ref!==l.doc||String(it.source||'')!=='atelier'))occupees.push({l:l,it:it});
+  });
+  var _ecrire=function(){_edLierEcrire(level,chnum,lignes,apres);};
+  if(occupees.length){
+    var corps=occupees.map(function(o){
+      return '\u2022 \u00ab '+escapeHtml(o.it.title||o.l.item)+' \u00bb : <b>'+escapeHtml(_resLibelle(o.it.source,o.it.ref,o.it.kind))+'</b> \u2192 <b>'+escapeHtml(_resLibelle('atelier',o.l.doc,''))+'</b>';
+    }).join('<br>');
+    _modaleConfirme('Remplacer la ressource',
+      (occupees.length>1?occupees.length+' items portent d\u00e9j\u00e0 une ressource :':'Cet item porte d\u00e9j\u00e0 une ressource :')
+      +'<br>'+corps+'<br>L\u2019ancienne restera not\u00e9e sur chaque item. Remplacer\u00a0?',
+      _ecrire);
+    return;
+  }
+  _ecrire();
+}
+function _edLierEcrire(level,chnum,lignes,apres){
   var base='/site/'+level+'/chapitres/'+chnum+'/seances/';
   var restent=lignes.length,faits=0;
   lignes.forEach(function(l){
     var chemin=base+l.seance+'/items/'+l.item;
-    Promise.all([secuEcrire(chemin+'/ref',l.doc),
-                 secuEcrire(chemin+'/source','atelier'),
-                 secuEcrire(chemin+'/kind','atelier')]).then(function(rs){
+    var itAv=((((chapitresData[level]||{})[chnum]||{}).seances||{})[l.seance]||{}).items;
+    itAv=itAv&&itAv[l.item];
+    var anc=(itAv&&itAv.ref&&(itAv.ref!==l.doc||String(itAv.source||'')!=='atelier'))
+      ?{source:itAv.source||'',ref:itAv.ref||'',kind:itAv.kind||'',le:Date.now()}:null;   /* [LOT8-\u2466] */
+    var ecrits=[secuEcrire(chemin+'/ref',l.doc),
+                secuEcrire(chemin+'/source','atelier'),
+                secuEcrire(chemin+'/kind','atelier')];
+    if(anc)ecrits.push(secuEcrire(chemin+'/remplace',anc));
+    Promise.all(ecrits).then(function(rs){
       if(rs.every(function(r){return r.ok;})){
         faits++;
         var it=(((chapitresData[level]||{})[chnum]||{}).seances||{})[l.seance];
-        if(it&&it.items&&it.items[l.item]){it.items[l.item].ref=l.doc;it.items[l.item].source='atelier';it.items[l.item].kind='atelier';}
+        if(it&&it.items&&it.items[l.item]){it.items[l.item].ref=l.doc;it.items[l.item].source='atelier';it.items[l.item].kind='atelier';if(anc)it.items[l.item].remplace=anc;}
+        /* [LOT8-\u2469] LE D\u00c9P\u00d4T S'\u00c9CRIT AU MOMENT DU LIEN \u2014 la correction \u00e0 la source
+           du \u00ab cas fant\u00f4me \u00bb (registre \u2466b) : la feuille vivante note o\u00f9 elle est
+           li\u00e9e (depot) et re\u00e7oit son adresse (rattachement) si elle n'en a pas.
+           UN SEUL \u00e9crivain de ce champ par liaison : atFeuilleDepotPoser. */
+        atFeuilleDepotPoser(l.doc,level,chnum,l.seance,l.item);
       }
       if(--restent===0){
-        atInfo(faits+' liaison'+(faits>1?'s':'')+' posée'+(faits>1?'s':'')+(faits<lignes.length?(' — '+(lignes.length-faits)+' n\u2019ont pas abouti'):'')+'.');
+        atInfo(faits+' liaison'+(faits>1?'s':'')+' pos\u00e9e'+(faits>1?'s':'')+(faits<lignes.length?(' \u2014 '+(lignes.length-faits)+' n\u2019ont pas abouti'):'')+'.');
         if(apres)apres();else atEditerChapitreRendre();
       }
     });
+  });
+}
+/* [LOT8-\u2469] L'\u00c9CRIVAIN UNIQUE du champ depot pos\u00e9 par une LIAISON : la feuille
+   vivante note {niveau, chapitre, s\u00e9ance, uids, itemId, le} \u2014 et re\u00e7oit son
+   adresse (rattachement) SEULEMENT si elle n'en a pas (une adresse divergente
+   reste dite par atStatutFeuille, jamais \u00e9cras\u00e9e). Les caches suivent. */
+function atFeuilleDepotPoser(docId,level,chnum,snum,itemId,cb){
+  var d=(typeof LINK_ATELIER_DOCS!=='undefined'&&LINK_ATELIER_DOCS)?LINK_ATELIER_DOCS[docId]:null;
+  var ch=(chapitresData[level]||{})[chnum]||{};
+  var se=(ch.seances||{})[snum]||{};
+  var depot={niveau:level,chapitre:chnum,seance:snum,
+             chapitreUid:ch.uid||'',seanceUid:se.uid||'',   /* [C5-UID] l'identit\u00e9 \u00e0 c\u00f4t\u00e9 du rang */
+             itemId:itemId,le:Date.now()};
+  var ecrits=[secuEcrire(AT_NOEUD+'/'+docId+'/depot',depot)];
+  var ratt=null;
+  var rAv=d&&d.rattachement;
+  if(!rAv||!rAv.niveau||!rAv.chapitre||!rAv.seance){
+    ratt={niveau:level,chapitre:chnum,seance:snum,
+          chapitreTitre:ch.title||'',seanceTitre:se.title||'',
+          chapitreUid:ch.uid||'',seanceUid:se.uid||''};
+    ecrits.push(secuEcrire(AT_NOEUD+'/'+docId+'/rattachement',ratt));
+  }
+  Promise.all(ecrits).then(function(rs){
+    var ok=rs.every(function(r){return r.ok;});
+    if(ok){
+      [typeof LINK_ATELIER_DOCS!=='undefined'?LINK_ATELIER_DOCS:null,
+       typeof AT_DOCS!=='undefined'?AT_DOCS:null,
+       (AT&&AT.liste)?AT.liste:null].forEach(function(cache){
+        if(cache&&cache[docId]){cache[docId].depot=depot;if(ratt)cache[docId].rattachement=ratt;}
+      });
+      if(AT.docId===docId&&AT.doc){AT.doc.depot=depot;if(ratt)AT.doc.rattachement=ratt;}
+    }
+    if(cb)cb(ok);
   });
 }
 /* [LOT2-⑩] ANNULER LA DERNIÈRE MODIFICATION — sûreté, pas confort.

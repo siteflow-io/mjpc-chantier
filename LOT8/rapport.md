@@ -105,7 +105,7 @@ cap-01 chapitres · cap-02 fiches (prof) · cap-03 bloc des ignorées · cap-04 
 
 # LOT ⑧b — LES RESSOURCES EXTERNES : le remplacement averti et tracé, le cadre dans le fil, le dépôt écrit au lien
 
-**Empilé sur ⑧a** (base = le sas `481f1482…`). **Livré** : `LOT8/index.html` **977 272 o**, md5 `6b500d482e33b68165e5c579b6e84cf5`, pastille **8.50.0**. Dual parser vert. **⑨ N'EST PAS DANS CETTE LIVRAISON** — il attend l'arbitrage d'architecture de la conscience (option A recommandée) ; il s'empilera par-dessus.
+**Empilé sur ⑧a** (base = le sas `481f1482…`). **Livré** : `LOT8/index.html` **977 758 o**, md5 `9395cf93040c1df282bd8eb5e123c47b`, pastille **8.50.0**. Dual parser vert. **⑨ N'EST PAS DANS CETTE LIVRAISON** — il attend l'arbitrage d'architecture de la conscience (option A recommandée) ; il s'empilera par-dessus.
 
 **Vue élève : AUCUN changement** — les trois points sont des écrans prof (panneau de l'éditeur, modale Lier, papier de l'éditeur) et des champs de données neutres (`remplace` sur l'item, `depot`/`rattachement` sur la feuille — aucun rendu élève ne les lit, mesuré). Banc élève 8.50 : rayons identiques, bloc des ignorées vide, 0 exception.
 
@@ -122,6 +122,8 @@ cap-01 chapitres · cap-02 fiches (prof) · cap-03 bloc des ignorées · cap-04 
 ## ⑧ Les ressources externes se voient dans le fil
 
 `ed2Documents` expose `src` ; en fin d'`ed2Papier`, un document **drive** ou **external** lié reçoit un **cadre** : barre identifiable (📎/🌐 + adresse en monospace + « Ouvrir en modale → ») **+ aperçu iframe** (lazy, sandbox). **Jamais une page blanche muette** : même si le site refuse l'embed, la barre nomme la ressource. Le clic sur la barre ouvre la ressource **en modale par `openViewer`** — le chemin élève existant (la garde ① s'applique). La règle **`@media print`** masque `.ed2-xcadre` (avec les trous — le papier imprimé reste le papier). Prouvé au banc : 2 cadres rendus dans la satire (le Drive de l'analyse logique + le site swift), clic → modale visible avec la bonne src, `display:none` à l'impression. Captures cap-23 (le cadre dans le fil), cap-24 (la modale ouverte). 0 exception.
+
+**Défaut d'écran découvert par la capture et RÉPARÉ** : la première cap-24 montrait la modale mesurée « visible » au DOM mais INVISIBLE à l'écran — `doc-viewer-overlay` était à z-index 5000, l'atelier à 7000 : depuis l'éditeur, « Ouvrir en modale » ouvrait DERRIÈRE l'écran (le défaut LOT4-③ déjà vécu sur la modale Lier, révélé ici sur un autre overlay par le premier chemin qui appelle openViewer depuis l'atelier). Réparé : `doc-viewer-overlay` passe à **9500** (au-dessus de l'atelier 7000 et de Lier 7500, SOUS le viewer de feuille 9600). Rejoué : `elementFromPoint` au centre de l'en-tête rend `doc-viewer-header` — la modale est réellement devant (cap-24 rejouée). Aucun autre chemin ne dépendait de l'ancien empilement (openViewer hors atelier était seul à l'écran ; le viewer de feuille reste au-dessus).
 
 ## ⑩ Le lien écrit le dépôt — le cas fantôme cesse à la source
 

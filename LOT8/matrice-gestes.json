@@ -1,0 +1,212 @@
+[
+ [
+  "séance",
+  "créer",
+  "ROUGE",
+  "(aucune écriture)",
+  "écriture attendue absente: PUT|PATCH site/3e/chapitres/10/seances | écran=False"
+ ],
+ [
+  "séance",
+  "ordonner",
+  "VERT",
+  "PUT /site/3e/chapitres/10/seances/1/ordre · PUT /site/3e/chapitres/10/seances/2/ordre",
+  "S1 descend d'un rang"
+ ],
+ [
+  "item",
+  "créer",
+  "ROUGE",
+  "(aucune écriture)",
+  "écriture attendue absente: PUT site/3e/chapitres/10/seances/1/items | écran=True"
+ ],
+ [
+  "item",
+  "ordonner",
+  "VERT",
+  "PUT /site/3e/chapitres/10/seances/1/items/fiche-figures/ordre · PUT /site/3e/chapitres/10/seances/1/items/fiche-versification/ordre",
+  "la versification descend"
+ ],
+ [
+  "item",
+  "lier",
+  "VERT",
+  "PUT /site/3e/chapitres/10/seances/2/items/fiche-registres/kind · PUT /site/3e/chapitres/10/seances/2/items/fiche-registres/ref · PUT /site/3e/chapitres/10/seances/2/items/fiche-registres/source",
+  "liaison par l'écrivain unique"
+ ],
+ [
+  "item",
+  "publier",
+  "VERT",
+  "(aucune écriture)",
+  "ouvre la modale des classes — published n'est PAS écrit sans le choix explicite (garde LOT7b jouée à part)"
+ ],
+ [
+  "item",
+  "supprimer",
+  "VERT",
+  "DELETE /site/3e/chapitres/10/seances/1/items/fiche-versification · PUT /corbeille/2026-08-11/site-item_144057 · PUT /site/3e/chapitres/10/seances/1/items/correction-etude-albatros/ordre · PUT /site/3e/chapitres/10/seances/1/items/fiche-genres/ordre · PUT /site/3e/chapitres/10/seances/1/items/fiche-lecture-voix-haute/ordre",
+  "corbeille d'abord (patron du chantier)"
+ ],
+ [
+  "feuille",
+  "créer",
+  "ROUGE",
+  "(aucune écriture)",
+  "écriture attendue absente: PUT site/atelier/documents/feuille_ | écran=False"
+ ],
+ [
+  "feuille",
+  "envoyer",
+  "VERT",
+  "PUT /site/atelier/documents/feuille_1786353280401 · PUT /site/atelier/envois/feuille_1786353280401",
+  "l'écrivain unique atEnvoyerVersion"
+ ],
+ [
+  "séance",
+  "supprimer",
+  "VERT",
+  "DELETE /site/3e/chapitres/10/seances/4 · PUT /corbeille/2026-08-11/site-seance_144100 · PUT /site/3e/chapitres/10/seances/5/ordre · PUT /site/3e/chapitres/10/seances/6/ordre · PUT /site/3e/chapitres/10/seances/7/ordre",
+  "corbeille + resserrement des ordres"
+ ],
+ [
+  "chapitre",
+  "créer",
+  "N/A",
+  "-",
+  "le geste vit à l'écran Chapitres de l'atelier (« Créer ce chapitre », injection) — hors éditeur ; joué à sa passe (ORDRE 8.37.0)"
+ ],
+ [
+  "chapitre",
+  "supprimer",
+  "N/A",
+  "-",
+  "geste de l'écran Chapitres (modale « Supprimer le chapitre » avec décompte) — hors éditeur"
+ ],
+ [
+  "chapitre",
+  "ordonner",
+  "N/A",
+  "-",
+  "aucun geste d'ordre de chapitre dans l'éditeur (l'ordre vient de l'injection/du socle ORDRE)"
+ ],
+ [
+  "chapitre",
+  "lier",
+  "N/A",
+  "-",
+  "un chapitre ne se lie pas — il contient"
+ ],
+ [
+  "chapitre",
+  "publier",
+  "N/A",
+  "-",
+  "publication par pastilles de l'arborescence (page-level), pas dans l'éditeur"
+ ],
+ [
+  "chapitre",
+  "envoyer",
+  "N/A",
+  "-",
+  "seule une feuille s'envoie (doctrine publié≠envoyé)"
+ ],
+ [
+  "séance",
+  "lier",
+  "N/A",
+  "-",
+  "une séance ne se lie pas"
+ ],
+ [
+  "séance",
+  "publier",
+  "N/A",
+  "-",
+  "publication par pastilles de l'arborescence, pas dans l'éditeur"
+ ],
+ [
+  "séance",
+  "envoyer",
+  "N/A",
+  "-",
+  "seule une feuille s'envoie"
+ ],
+ [
+  "item",
+  "envoyer",
+  "N/A",
+  "-",
+  "l'envoi porte sur la feuille pointée, pas l'item"
+ ],
+ [
+  "feuille",
+  "supprimer",
+  "N/A",
+  "-",
+  "geste de la carte de feuille (écran Feuilles, corbeille + confirmation) — hors éditeur de chapitre ; l'éditeur retire l'ITEM, jamais la feuille"
+ ],
+ [
+  "feuille",
+  "ordonner",
+  "N/A",
+  "-",
+  "une feuille n'a pas d'ordre propre — son item en a un (case item·ordonner)"
+ ],
+ [
+  "feuille",
+  "lier",
+  "N/A",
+  "-",
+  "= item·lier (edPrendreFeuille délègue à edLierConfirme, jouée)"
+ ],
+ [
+  "feuille",
+  "publier",
+  "N/A",
+  "-",
+  "= item·publier (la ligne se publie, la feuille s'envoie)"
+ ],
+ [
+  "diaporama",
+  "créer",
+  "N/A",
+  "-",
+  "geste de l'écran Diaporamas (diapoEnregistrer), hors éditeur de chapitre"
+ ],
+ [
+  "diaporama",
+  "supprimer",
+  "N/A",
+  "-",
+  "geste de l'écran Diaporamas, hors éditeur"
+ ],
+ [
+  "diaporama",
+  "ordonner",
+  "N/A",
+  "-",
+  "= item·ordonner (le diaporama est un item du fil)"
+ ],
+ [
+  "diaporama",
+  "lier",
+  "N/A",
+  "-",
+  "= item·lier (openLinkModal/applyLinkChanges, kind diaporama)"
+ ],
+ [
+  "diaporama",
+  "publier",
+  "N/A",
+  "-",
+  "= item·publier"
+ ],
+ [
+  "diaporama",
+  "envoyer",
+  "N/A",
+  "-",
+  "un diaporama ne s'envoie pas — il se publie (pas de version figée)"
+ ]
+]

@@ -1,0 +1,102 @@
+# LOT ⑧a — LA FIABILITÉ DE CE QUI EXISTE : l'abyme réparée, les rayons parlent, les échecs nomment, la matrice jouée
+
+**DÉCOUPAGE ANNONCÉ (règle du mandat)** : **⑧a = points ①②③④⑤⑥** (ce rapport) ; **⑧b = points ⑦⑧⑨⑩** s'empile par-dessus (⑨ attend l'arbitrage d'architecture demandé à la conscience — proposé en conversation : option A, champ `produit` sur l'item ; option B, entrée légère au nœud atelier ; recommandation A). La promotion emportera ⑧a + ⑧b ensemble.
+
+**Base vérifiée** : production 961 711 o, md5 `8c84942a43bd6fb6f8f95f16ea2e8317` (8.48.0), re-téléchargée immédiatement avant édition.
+**Livré** : `LOT8/index.html` **968 155 o**, md5 `481f1482fd13bd7a89ffed374beb63bd`, pastille **8.49.0**. Dual parser vert (node --check + acorn ES2020). **0 fonction retirée, 0 fonction neuve** — 8 fonctions modifiées, toutes déclarées ci-dessous. Banc : hub intercepté depuis un snapshot lecture-seule du hub réel (mur réseau : tout non-file:// vers un domaine non prévu ABORTÉ ; seul abort constaté : Google Fonts), **0 écriture réelle**, **0 appel réel au script Drive** (stub à la forme exacte `{status,id,nom,ext,url,affichage,dossier,dossier_url}`), **0 exception JS sur tous les parcours joués**.
+
+⚠ **CE LOT CHANGE LA VUE ÉLÈVE** — les trois changements, déclarés un par un et capturés :
+1. **Clic sur une fiche d'un onglet transversal** : avant, le site entier se rechargeait dans la modale (cap-04) ; après, la version envoyée s'ouvre en srcdoc (cap-16, vue élève réelle).
+2. **Onglet Zone autonomie** : la carte figée « Aller plus loin / Zone autonomie » est retirée (cap-18 avant / cap-17 après) — voir ③.
+3. **Garde d'iframe** : une URL invalide afficherait « Ce document n'est pas disponible pour l'instant. » au lieu de recharger le site — aucun chemin sain ne l'atteint (inventaire ci-dessous).
+Hors ces zones, la vue élève est inchangée : mêmes rayons (comptes identiques base↔lot au balayage ④), bloc des ignorées structurellement vide côté élève (rendu conditionné à `admin-mode`, prouvé au banc : innerHTML vide en session élève).
+
+---
+
+## ① L'iframe jamais en abyme
+
+**Mesure de la conscience revérifiée, exacte** : `atOuvrirFeuilleEleve` n'existe nulle part (0 déclaration, grep) ; le repli `openViewer('Feuille','?feuille='+ref)` posait l'URL RELATIVE dans l'iframe → rechargement d'index.html dans le cadre. **Reproduit au banc sur la base** : capture `cap-04-abyme-avant.png` (l'accueil du site entier dans la modale « Feuille »).
+
+**Réparé** : `_openAtelierFromList` appelle **`openAtelierItem(ref, titre)`** — le viewer sain : il lit `/site/atelier/envois/<ref>`, distingue message prof (bandeau « Jamais envoyée aux élèves » + [Envoyer maintenant], cap-06) et message élève (« Ce document n'est pas encore distribué. »), et pose TOUJOURS un srcdoc. Prouvé au banc : cap-05 (prof, la fiche versification rendue), cap-16 (élève réel, srcdoc posé, bandeau prof ABSENT).
+
+**Inventaire de TOUS les points où une iframe du site reçoit une source** (grep exhaustif `.src=` / `srcdoc` / `<iframe`) :
+| iframe | poseurs | garantie |
+|---|---|---|
+| `doc-viewer-frame` (modale openViewer) | `openViewer` (unique poseur de `.src`) ; `closeViewer` (`about:blank`) | **garde neuve** : URL vide, `?…`, `#…` ou `index.html` → srcdoc de message, jamais le site ; `removeAttribute('srcdoc')` avant tout `.src` (un srcdoc résiduel PRIME sur src) ; `closeViewer` retire aussi le srcdoc |
+| `atdoc-viewer-frame` (openAtelierItem) | `openAtelierItem` seul | srcdoc posé sur TOUS les chemins (feuille / message prof / message élève / catch « Affichage impossible ») — mesuré, inchangé |
+| `at-apercu` (aperçu de feuille) | l'aperçu de l'atelier | srcdoc avec try/catch sur toutes les branches (l.13178-13195) — mesuré, inchangé |
+
+Les 20+ appelants d'`openViewer` relus un par un : tous posent soit une app du site (`*.html?…` — une AUTRE page, jamais index.html), soit une URL https (Drive preview, external, data-embed). Le seul chemin fautif était `_openAtelierFromList`. `openItem` `src==='external'` avec **ref vide** aurait posé une URL vide (rechargement) : la garde le couvre désormais.
+
+## ② Les rayons disent l'ignoré — côté prof seulement
+
+**Mesure revérifiée** : `collectRayons` comptait `sansProduit`/`ancres`, `renderRayons` ne les affichait jamais. **ET MA MESURE AJOUTE UNE 4e CAUSE, qui est celle du rayon Prépa brevet vide de Paul** (sa mesure fait foi, à entériner par la conscience) : la feuille `prepa_brevet` (feuille_1786257555731) est liée en **ch10 « Poésie et peinture » / S7 « Tâche finale »** dont `published` est VIDE (séance ET items) — le filtre `_visiblePourSession` à trois étages l'écarte AVANT la collecte, **y compris côté prof** (lentille « all » : `_isPubAny` = false). Elle n'atteignait jamais `collectRayons` : aucune des trois causes du mandat ne pouvait la dire.
+
+**Livré** :
+- `collectChapterItems` reçoit un **3e argument de diagnostic `avecInvisibles`** (posé par `collectRayons` côté prof seulement) : les items du kind demandé écartés par la publication sont rendus AUSSI, marqués `invisible:'chapitre'|'seance'|'ligne'`. **Sans ce 3e argument, comportement STRICTEMENT identique** — la publication reste la seule vérité élève ; aucun des appelants existants ne le passe (mesuré). UN seul moteur, pas de collecte parallèle.
+- `collectRayons` garde le DÉTAIL (`ignores:[{cause,ref,titre,produit,etage}]`) : quatre causes — `nonPubliee` (l'étage est nommé), `pasCache` (feuille inconnue de LINK_ATELIER_DOCS), `sansProduit` (feuille au cache sans produit déclaré), `ancre` (produit sans rayon).
+- `renderRayons` rend, **si et seulement si `admin-mode`**, le bloc « **⚠ Non rangées dans les onglets — visible par toi seul** » : titre de la feuille, cause en clair, bouton **Ouvrir** (openAtelierItem) et le **menu de requalification existant** (`atProduitMenu`). Après requalification, `atFeuilleProduitPoser` re-rend les rayons **sans rechargement** (si l'onglet fiches est affiché).
+- Côté élève : le conteneur `#rayons-ignores` reste VIDE (prouvé au banc, session élève réelle : innerHTML='', cap-15).
+
+**Prouvé au banc sur les données réelles** : 3 feuilles écartées par la publication, nommées avec gestes (capture `cap-03-ignores.png`) ; rayon Prépa brevet « 0 fiche » MAIS le bloc dit pourquoi. `published` n'est JAMAIS écrit par ce lot.
+
+## ③ L'écart « Aller plus loin » — mesure divergente déclarée, corrigé au fond
+
+**MA MESURE DIVERGE du registre** (déclarée en conversation, à trancher par la conscience) : dans la 8.48.0 **et déjà dans la 8.35.0** (vérifié au blob du commit `1371239e8cdb`), `zone('analyse-logique', r.loin)` alimente l'onglet **Analyse logique**, pas la Zone autonomie. L'écart RÉEL est un double vestige : ⓐ le rayon s'appelle `'loin'` (« Aller plus loin » — le vocabulaire de la Zone autonomie) ; ⓑ le tab-autonomie porte une carte HTML FIGÉE « Aller plus loin / Zone autonomie » avec une drop-zone `data-section="autonomie"` et un compteur `count-autonomie` que RIEN n'alimente ni ne lit (grep exhaustif : 0 code).
+
+**Corrigé** : le rayon `'loin'` devient **`'analyse'`** (ATELIER_PRODUITS.fiche_analyse_logique, collectRayons, renderRayons, commentaire d'en-tête) ; la carte figée est **retirée** du tab-autonomie (commentaire de retrait posé, preuve d'inatteignabilité au rapport : aucun sélecteur, aucun getElementById). La Zone autonomie ne montre plus que `autonomie-dyn` (renderZoneAutonomie — les items marqués, comportement intact). Changement élève capturé : cap-18 (avant) / cap-17 (après).
+
+## ④ Le balayage des onglets, au banc, sur le chapitre réel de Paul
+
+Snapshot lecture-seule du hub réel (site.json 150 570 o, classes, codes — **ces données ne sont PAS poussées au sas**). Session prof réelle, 3e. Deux états joués :
+- **État réel de production** : Grammaire 0 · Fiches notions 4 (versification, lecture à voix haute, registres exclu, révision interro, méthode paragraphe) · Prépa brevet 0 · Analyse logique 0 — ET le bloc prof dit les 3 écartées par la publication (registres [ligne], tâche finale ×2 [séance]). Captures `cap-02`, `cap-03`.
+- **État S7 publiée** (mutation du snapshot local, aucune écriture réelle) : **la feuille prepa_brevet PARAÎT au rayon Prépa brevet — « 1 fiche »** (capture `cap-07-brevet-publiee.png`) ; comptes du balayage base↔lot IDENTIQUES (grammaire 0 / notions 4 / brevet 1 / analyse 0) : aucune régression de rangement. Captures avant/après de chaque onglet : `cap-08-avant-*` / `cap-09-apres-*` (fiches-langue, fiches-brevet, analyse).
+
+Nota mandat : le mandat situait la prepa_brevet « dans la tâche finale (séance 8) » du chapitre satire ; la mesure au hub la situe en ch10/S7 « Tâche finale » (ordre 8). La satire (ch3) porte en S8 l'item `swift-2027` (kind `tache`, ref = la fiche MÉTHODE) — c'est le théâtre de l'écrasement du point ⑦, instruit en ⑧b.
+
+## ⑤ Les échecs du dépôt nomment — cause ET geste
+
+`_uploadBlobToDrive` (le SEUL point d'entrée, LOT7-①) enrichi ; les 5 appelants (`uploadFileForChapterItem`, `addImageToGallery`, `convertItemToGalleryAndAdd`, `uploadFileForNewItem`/`_createGalleryItemWithFirstImage`, le drop d'image du diaporama) partagent le même `catch(err){…err.message…}` (mesuré) : chacun hérite des messages. **Les quatre familles jouées au banc sur l'appelant principal, toasts capturés** :
+| famille | toast affiché | capture |
+|---|---|---|
+| script muet (`status:'erreur'`) | « ⚠ le script de dépôt a répondu sans détail — réessaie ; si ça persiste, dépose le fichier à la main sur Drive puis colle son lien (bouton Lier). » | cap-11 |
+| réponse sans id | « ⚠ Le dépôt n'a pas rendu d'identifiant — rien n'est lié. Réessaie ; si ça persiste, dépose le fichier à la main sur Drive puis colle son lien (bouton Lier). » | cap-12 |
+| réseau coupé | « ⚠ pas de liaison — rien n'est parti. Vérifie la connexion, puis reglisse le fichier. » | cap-13 |
+| fichier > 30 Mo | « ⚠ Fichier > 30 Mo — dépose-le à la main sur Drive puis colle son lien (bouton Lier). » | cap-14 |
+Ajoutés aussi : refus HTTP du script (« le script de dépôt a refusé (HTTP N) — … ») et lecture de fichier impossible (« … reprends-le depuis ton ordinateur et reglisse-le. »). **Le chemin nominal prouvé intact** : stub ok → « ✅ Document lié : fichier-test.pdf », item lié `DRV_TEST_1`, écritures capturées `source`/`ref`/`published` — le `published:true` du trajet upload est le comportement HISTORIQUE conservé (arbitrage M8-IDENTITÉ toujours ouvert, désormais visible grâce aux états ⑦b — rien de touché ici).
+
+## ⑥ Le banc des gestes d'écriture — la matrice, capteur branché
+
+Instrument construit (`banc.py` + `matrice6.py`, rejouables) : chaque écriture interceptée journalise **chemin, méthode, charge utile** ; case rouge si exception à un moment quelconque du geste, même après l'écriture ; « l'écran reflète le résultat sans rechargement » vérifié sur le DOM après chaque geste. **Résultat : 0 case rouge de code.** Les cases jouées (chemins d'écriture cités — la règle) :
+
+| objet · geste | chemin d'écriture capté | écran sans rechargement |
+|---|---|---|
+| séance · créer (`edInsererSeanceAvant`) | PUT `/site/3e/chapitres/10/seances/8` + PUT `…/7/ordre` + `…/8/ordre` (la neuve prend sa place, les ordres resserrés) | ✔ sommaire montre « Séance de banc » |
+| séance · ordonner (`edDeplacerSeance`) | PUT `…/seances/1/ordre` + `…/seances/2/ordre` (échange) | ✔ |
+| séance · supprimer (`edSupprimerSeance`→`deleteSeance`) | PUT `/corbeille/2026-08-11/site-seance_…` PUIS DELETE `…/seances/4` + resserrement | ✔ (corbeille d'abord) |
+| item · créer (`edAjouterItem`→`itemCreer`) | PUT `…/seances/1/items/item-de-banc` | ✔ sommaire montre « Item de banc » |
+| item · ordonner (`edDeplacerItem`) | PUT `…/items/<a>/ordre` + `…/items/<b>/ordre` | ✔ |
+| item · lier (`edLierConfirme`) | PUT `…/items/fiche-registres/ref` + `/source` + `/kind` | ✔ cache + fil |
+| item · publier (`edPublierItem`) | **AUCUNE écriture sans le choix explicite** — la modale des classes s'ouvre ; `published` jamais écrit par le geste seul | ✔ |
+| item · supprimer (`edSupprimerItem`→`deleteItem`) | PUT `/corbeille/…/site-item_…` PUIS DELETE `…/items/fiche-versification` | ✔ |
+| feuille · créer (`edCreerFeuilleIci`) | PUT `/site/atelier/documents/feuille_<ts>` + PUT `…/items/feuille-de-banc` (l'item lié) | ✔ sommaire ET papier (cadre `ed2-fcadre` rendu) |
+| feuille · envoyer (`atEnvoyerVersion`) | PUT `/site/atelier/envois/<id>` + PUT `/site/atelier/documents/<id>` (la feuille vivante note son envoi) | ✔ (cb ok) |
+
+**N/A justifiés** (le banc prouve l'existant, il n'invente pas) : chapitre·créer/supprimer (écran Chapitres de l'atelier, joués à la passe ORDRE 8.37.0) · chapitre·ordonner (aucun geste dans l'éditeur — l'ordre vient du socle ORDRE) · chapitre/séance/item·envoyer (seule une feuille s'envoie, doctrine publié≠envoyé) · chapitre/séance·lier (n'existe pas) · chapitre/séance·publier (pastilles de l'arborescence page-level, hors éditeur) · feuille·supprimer (écran Feuilles ; l'éditeur retire l'ITEM, jamais la feuille) · feuille·ordonner/lier/publier (= les cases item correspondantes) · diaporama·créer/supprimer (écran Diaporamas) · diaporama·ordonner/lier/publier (= cases item) · diaporama·envoyer (un diaporama se publie, ne s'envoie pas — pas de version figée).
+
+**Deux faux rouges du banc instruits avant verdict** (règle : vérifier le parcours avant d'annoncer un défaut) : les gestes à `_modalePrompt` exigent la saisie du titre — rejoués avec saisie, VERTS. Le troisième (feuille·créer) : mon critère cherchait le titre dans le CORPS du papier — or le cadre est bien rendu ; le corps d'une feuille neuve affiche « Sans titre » car le titre saisi va sur `doc.titre` (métadonnée) et non sur la composante titre du corps : **comportement de la BASE, observation consignée, hors périmètre des gestes d'écriture**.
+
+## Tailles (déclaration→déclaration ; artefacts de frontière expliqués)
+`_openAtelierFromList` 173→561 · `openViewer` 308→1041 · `closeViewer` 1371→1471 (le segment porte le commentaire ajouté ; corps +1 instruction) · `collectChapterItems` 1751→2530 · `collectRayons` 751→1750 · `renderRayons` 906→2501 (mesure au segment réel : la fonction interne `zone()` coupe le comptage naïf à 470/473) · `atFeuilleProduitPoser` 1043→1318 · `_uploadBlobToDrive` 1777→2733 · `atProduitRayon` 1167→1167 (identique — son segment inclut les commentaires voisins, corps intact). HTML : +conteneur `#rayons-ignores` (tab-fiches), −carte figée (tab-autonomie), +6 règles CSS `.rayons-ignores-bloc/.ri-*`.
+
+## Écritures et caches déclarés
+**Aucune écriture nouvelle vers le hub** hors gestes de Paul existants ; `published` JAMAIS écrit par ce lot ; les seules écritures ajoutées au code sont des rendus d'écran. Caches lus : `LINK_ATELIER_DOCS` (rayons, titres du viewer), `chapitresData` (collecte). Le banc n'écrit rien au hub réel (mur prouvé : 0 abort imprévu hors Google Fonts).
+
+## Textes français soumis à Paul
+« ⚠ Non rangées dans les onglets — visible par toi seul » · les 4 causes : « écartée par la publication (chapitre, séance ou ligne non publiés) — publie-la depuis le chapitre » / « la feuille n'a pas pu être lue dans l'atelier — recharge la page, ou vérifie qu'elle existe encore » / « aucun type de feuille déclaré — choisis-le ici pour la ranger » / « son type vit dans sa séance, pas dans un onglet — change-le si elle doit paraître ici » · « Ouvrir » · (garde iframe) « Ce document n'est pas disponible pour l'instant. » · (dépôt) « le script de dépôt a répondu sans détail — réessaie ; si ça persiste, dépose le fichier à la main sur Drive puis colle son lien (bouton Lier). » · « Le dépôt n'a pas rendu d'identifiant — rien n'est lié. Réessaie ; si ça persiste, … » · « pas de liaison — rien n'est parti. Vérifie la connexion, puis reglisse le fichier. » · « le script de dépôt a refusé (HTTP N) — réessaie ; si ça persiste, … » · « Lecture du fichier impossible — reprends-le depuis ton ordinateur et reglisse-le. »
+
+## Captures jointes (captures/, examinées une par une)
+cap-01 chapitres · cap-02 fiches (prof) · cap-03 bloc des ignorées · cap-04 ABYME AVANT (base) · cap-05 viewer APRÈS (prof) · cap-06 bandeau jamais envoyée · cap-07 prepa_brevet au rayon (S7 publiée) · cap-08/09 balayage avant/après (×3 onglets chacun) · cap-10 éditeur · cap-11→14 les 4 toasts d'échec du dépôt · cap-15 fiches (élève, bloc vide) · cap-16 viewer élève srcdoc · cap-17/18 Zone autonomie après/avant (élève).
+
+## Dettes, limites, arbitrages
+**Aucune dette nouvelle.** Arbitrages demandés à la conscience : ⓐ **⑨ (⑧b)** — option A (produit sur l'item) vs B (entrée au nœud atelier), recommandation A ; ⓑ entériner la **4e cause** du point ② (nonPubliee, ma mesure) et la **divergence de mesure** du point ③ (le rayon n'a jamais alimenté la Zone autonomie — l'écart réel était le nom 'loin' + la carte figée). Observations consignées sans correction : le corps d'une feuille neuve affiche « Sans titre » (doc.titre ≠ composante titre — base) · `zone()` écrase la fiche Drive statique « Analyse logique 3e » de la drop-zone analyse-logique à chaque rendu des rayons (défaut de la BASE, la fiche statique reste visible tant que les rayons ne sont pas rendus ; ⑨ la rangera proprement) · registre du 06/08 non repris au mandat (rubriques par domaines de la taxonomie + onglet Méthode) — signalé, non codé sans mandat. Suite : ⑧b (⑦⑧⑩ francs ; ⑨ sur feu vert).

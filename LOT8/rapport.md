@@ -105,7 +105,7 @@ cap-01 chapitres · cap-02 fiches (prof) · cap-03 bloc des ignorées · cap-04 
 
 # LOT ⑧b — LES RESSOURCES EXTERNES : le remplacement averti et tracé, le cadre dans le fil, le dépôt écrit au lien
 
-**Empilé sur ⑧a** (base = le sas `481f1482…`). **Livré** : `LOT8/index.html` **977 758 o**, md5 `9395cf93040c1df282bd8eb5e123c47b`, pastille **8.50.0**. Dual parser vert. **⑨ N'EST PAS DANS CETTE LIVRAISON** — il attend l'arbitrage d'architecture de la conscience (option A recommandée) ; il s'empilera par-dessus.
+**Empilé sur ⑧a** (base = le sas `481f1482…`). **Livré** : `LOT8/index.html` **977 482 o**, md5 `9395cf93040c1df282bd8eb5e123c47b`, pastille **8.50.0**. Dual parser vert. **⑨ N'EST PAS DANS CETTE LIVRAISON** — il attend l'arbitrage d'architecture de la conscience (option A recommandée) ; il s'empilera par-dessus.
 
 **Vue élève : AUCUN changement** — les trois points sont des écrans prof (panneau de l'éditeur, modale Lier, papier de l'éditeur) et des champs de données neutres (`remplace` sur l'item, `depot`/`rattachement` sur la feuille — aucun rendu élève ne les lit, mesuré). Banc élève 8.50 : rayons identiques, bloc des ignorées vide, 0 exception.
 

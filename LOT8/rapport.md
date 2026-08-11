@@ -100,3 +100,46 @@ cap-01 chapitres · cap-02 fiches (prof) · cap-03 bloc des ignorées · cap-04 
 
 ## Dettes, limites, arbitrages
 **Aucune dette nouvelle.** Arbitrages demandés à la conscience : ⓐ **⑨ (⑧b)** — option A (produit sur l'item) vs B (entrée au nœud atelier), recommandation A ; ⓑ entériner la **4e cause** du point ② (nonPubliee, ma mesure) et la **divergence de mesure** du point ③ (le rayon n'a jamais alimenté la Zone autonomie — l'écart réel était le nom 'loin' + la carte figée). Observations consignées sans correction : le corps d'une feuille neuve affiche « Sans titre » (doc.titre ≠ composante titre — base) · `zone()` écrase la fiche Drive statique « Analyse logique 3e » de la drop-zone analyse-logique à chaque rendu des rayons (défaut de la BASE, la fiche statique reste visible tant que les rayons ne sont pas rendus ; ⑨ la rangera proprement) · registre du 06/08 non repris au mandat (rubriques par domaines de la taxonomie + onglet Méthode) — signalé, non codé sans mandat. Suite : ⑧b (⑦⑧⑩ francs ; ⑨ sur feu vert).
+
+---
+
+# LOT ⑧b — LES RESSOURCES EXTERNES : le remplacement averti et tracé, le cadre dans le fil, le dépôt écrit au lien
+
+**Empilé sur ⑧a** (base = le sas `481f1482…`). **Livré** : `LOT8/index.html` **977 272 o**, md5 `6b500d482e33b68165e5c579b6e84cf5`, pastille **8.50.0**. Dual parser vert. **⑨ N'EST PAS DANS CETTE LIVRAISON** — il attend l'arbitrage d'architecture de la conscience (option A recommandée) ; il s'empilera par-dessus.
+
+**Vue élève : AUCUN changement** — les trois points sont des écrans prof (panneau de l'éditeur, modale Lier, papier de l'éditeur) et des champs de données neutres (`remplace` sur l'item, `depot`/`rattachement` sur la feuille — aucun rendu élève ne les lit, mesuré). Banc élève 8.50 : rayons identiques, bloc des ignorées vide, 0 exception.
+
+## ⑦ Un item ne porte qu'une ressource, et il le dit
+
+**Le vécu réparé à la source** : le site `jeromeswifteasteregg` de Paul a été écrasé sans un mot par la liaison d'une feuille sur l'item `swift-2027` (satire, S8 « Tâche finale » — le théâtre confirmé par ma mesure au hub). **Les DEUX écrivains de liaison** reçoivent la même garde :
+- **`applyLinkChanges`** (modale Lier — URL, Drive, app, atelier, délier) : scindée en garde + `_applyLinkEcrire`. Si l'item porte déjà une ressource différente et que la nouvelle n'est pas vide → `_modaleConfirme` **nommant l'ancienne et la nouvelle** (« Cet item est déjà lié à … La remplacer par … ? L'ancienne restera notée sur l'item. »). Le délier garde sa confirmation existante (pas de double demande) mais TRACE aussi. L'écriture ajoute **`remplace` = {source, ref, kind, le}` (l'ancien couple)** au même lot M-ÉCHECS-1 : tout passe ou rien.
+- **`edLierConfirme`** (Prendre une feuille, IA depuis trou, Lier par les titres) : scindée en garde + `_edLierEcrire`. Les lignes « occupées » sont listées dans UNE modale (« ‹n› items portent déjà une ressource : ‹ancien› → ‹nouveau›… Remplacer ? ») ; la trace s'écrit ligne par ligne avec la liaison (`secuEcrire …/remplace`).
+
+**L'historique simple, lisible à deux endroits** : le panneau de l'éditeur (ligne discrète « Ressource précédente : site https://… — remplacée le 11/08/2026 », rendue SANS rechargement après le geste) et la modale Lier (« Liaison actuelle — … · Ressource précédente : … »). Libellés par `_resLibelle` (feuille « titre » / fichier Drive id / site url / activité ref).
+
+**Prouvé au banc — le cas swift rejoué** (l'item remis à l'état d'avant l'écrasement) : la garde nomme « site https://jeromeswifteasteregg.example → feuille « Sujet de la tâche finale… » » ; **0 écriture avant confirmation** ; après : `ref`/`source`/`kind`/`remplace` écrits (chemins captés), panneau et modale montrent la trace. Captures cap-19 (la garde), cap-20 (la trace au panneau), cap-21 (la garde de la modale Lier), cap-22 (l'historique à la réouverture). 0 exception.
+
+## ⑧ Les ressources externes se voient dans le fil
+
+`ed2Documents` expose `src` ; en fin d'`ed2Papier`, un document **drive** ou **external** lié reçoit un **cadre** : barre identifiable (📎/🌐 + adresse en monospace + « Ouvrir en modale → ») **+ aperçu iframe** (lazy, sandbox). **Jamais une page blanche muette** : même si le site refuse l'embed, la barre nomme la ressource. Le clic sur la barre ouvre la ressource **en modale par `openViewer`** — le chemin élève existant (la garde ① s'applique). La règle **`@media print`** masque `.ed2-xcadre` (avec les trous — le papier imprimé reste le papier). Prouvé au banc : 2 cadres rendus dans la satire (le Drive de l'analyse logique + le site swift), clic → modale visible avec la bonne src, `display:none` à l'impression. Captures cap-23 (le cadre dans le fil), cap-24 (la modale ouverte). 0 exception.
+
+## ⑩ Le lien écrit le dépôt — le cas fantôme cesse à la source
+
+**`atFeuilleDepotPoser(docId, level, chnum, snum, itemId, cb)`** — l'écrivain UNIQUE du champ `depot` posé par une liaison : `{niveau, chapitre, seance, chapitreUid, seanceUid, itemId, le}` (l'identité à côté du rang, C5-UID), et le **`rattachement`** (l'adresse) écrit **SEULEMENT si la feuille n'en a pas** — une adresse divergente n'est JAMAIS écrasée (atStatutFeuille continue de la dire). Les caches (`LINK_ATELIER_DOCS`, `AT_DOCS`, `AT.liste`, `AT.doc`) suivent. Appelé par les TROIS voies de liaison : `_edLierEcrire` (après chaque ligne réussie), `edPrendreFeuille` voie itemCreer, `edIAdepuisTrou` voie itemCreer (signature `itemCreer` → `cb(itemId)` vérifiée sur le code réel).
+
+**Prouvé au banc — le cas fantôme rejoué** : une feuille SANS rattachement liée par « Prendre une feuille existante » → écritures captées `…/depot` ET `…/rattachement` ; la carte dit désormais **« Déposée dans 3e › Chapitre 3 › Séance 5 · jamais envoyée aux élèves »** au lieu de « Sans adresse ». Et sur une feuille DÉJÀ adressée (la prepa_brevet) : `depot` écrit, `rattachement` NON réécrit (0 écriture — la règle). La limite « Sans adresse le temps du chargement » du registre ⑦b disparaît avec sa cause. 0 exception.
+
+## Tailles ⑧b (déclaration→déclaration ; segments réels pour les fonctions à internes)
+`applyLinkChanges` 1307→1299 **+ `_applyLinkEcrire` 1633 (neuve, la moitié écrivaine)** + `_resLibelle` 443 (neuve) — zone réelle 1225→2850 · `edLierConfirme` 1770→1380 **+ `_edLierEcrire` 2212 (neuve)** · `atFeuilleDepotPoser` 1879 (neuve, l'écrivain ⑩) · `edPrendreFeuille` 2666→2927 · `edIAdepuisTrou` 3132→3280 · `ed2Papier` segment réel 5172→6415 · `ed2Documents` 1432→1504 · `openLinkModal` 2254→2614 · `atEditerChapitreRendre` 12359→12685. **4 fonctions neuves déclarées** (les moitiés écrivaines des deux gardes + le libellé + l'écrivain du dépôt), 0 retirée. CSS : +7 règles `.ed2-x*`, +1 `.at-edch-rempl`, `.ed2-xcadre` ajouté au `@media print` existant.
+
+## Écritures déclarées (⑧b)
+Nouveaux champs de DONNÉES (jamais lus par un rendu élève) : `remplace` sur l'item (écrit par les deux écrivains de liaison, dans leur lot/Promise.all existant) ; `depot` + `rattachement` sur la feuille (par `atFeuilleDepotPoser`, primitives `secuEcrire` existantes). `published` JamAIS écrit. Aucun chemin d'écriture parallèle : `atDeposerFeuille` (le dépôt par glisser) garde son écriture de feuille entière — la COMPOSITION du champ est cohérente entre les deux flux (mêmes clés + uids).
+
+## Textes français soumis à Paul (⑧b)
+« Cet item est déjà lié à ‹ancienne›. La remplacer par ‹nouvelle› ? L'ancienne restera notée sur l'item. » · « ‹n› items portent déjà une ressource : ‹liste ancien → nouveau›. L'ancienne restera notée sur chaque item. Remplacer ? » · « Ressource précédente : ‹libellé› — remplacée le ‹date› » · libellés : « feuille « ‹titre› » » / « fichier Drive ‹id› » / « site ‹url› » / « ‹kind› ‹ref› » / « (aucune) » · barre du cadre : « Ouvrir en modale → ».
+
+## Captures ⑧b (captures/, examinées une par une)
+cap-19 la garde du remplacement (lot) · cap-20 la trace au panneau · cap-21 la garde de la modale Lier · cap-22 l'historique à la réouverture · cap-23 le cadre externe dans le fil · cap-24 le clic ouvre la modale.
+
+## Dettes, limites, arbitrages (état après ⑧b)
+Aucune dette nouvelle. **⑨ attend le feu vert de la conscience** (option A : champ `produit` sur l'item, seconde passe drive/external dans collectChapterItems, filtre atelier ADDITIONNÉ — vs option B : entrée légère `/site/atelier/externes/` ; recommandation A) — il s'empilera sur 8.50.0. À entériner aussi : la 4e cause ② (nonPubliee) et la divergence de mesure ③ (rapport ⑧a). Observations sans correction (base) : corps de feuille neuve « Sans titre » · `zone()` écrase la fiche Drive statique de la drop-zone analyse-logique (⑨ la rangera) · registre 06/08 (rubriques par domaines + onglet Méthode) signalé, non codé sans mandat.

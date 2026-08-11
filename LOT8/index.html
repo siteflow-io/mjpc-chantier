@@ -278,7 +278,7 @@ body { font-family: 'EB Garamond', Georgia, serif; background: #141024; color: #
 .admin-mode .fiche-drop-zone { min-height: 40px; border: 2px dashed rgba(255,184,108,0.3); border-radius: 10px; margin-top: 8px; transition: border-color 0.2s, background 0.2s; padding-bottom: 44px; position: relative; }
 .admin-mode .fiche-drop-zone::after { content: '📁 Glisser un fichier ici'; display: block; text-align: center; padding: 10px; color: rgba(255,184,108,0.5); font-style: italic; font-size: 0.85rem; position: absolute; bottom: 0; left: 0; right: 0; }
 .admin-mode .fiche-drop-zone.drag-over { border-color: #ffb86c !important; background: rgba(255,184,108,0.06) !important; }
-.doc-viewer-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 5000; align-items: center; justify-content: center; padding: 24px; }
+.doc-viewer-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 9500; /* [LOT8-⑧] au-dessus de l'atelier (7000) et de Lier (7500), sous le viewer de feuille (9600) : « Ouvrir en modale » depuis le fil ouvrait DERRIÈRE l'écran — le défaut LOT4-③ sur un autre overlay */ align-items: center; justify-content: center; padding: 24px; }
 .doc-viewer-overlay.visible { display: flex; }
 .doc-viewer-box { background: #1a1030; border-radius: 16px; overflow: hidden; width: 90vw; height: 85vh; max-width: 1100px; display: flex; flex-direction: column; border: 1px solid rgba(255,255,255,0.1); }
 .doc-viewer-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 20px; background: rgba(0,0,0,0.3); color: #fff; }

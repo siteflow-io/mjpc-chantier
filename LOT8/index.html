@@ -544,7 +544,7 @@ body.admin-mode .admin-only { display: block; }
 .item-unpublished { opacity: 0.5; }
 .dnd-over { outline: 2px dashed #ffb86c !important; outline-offset: -2px; background: rgba(255,184,108,0.12) !important; transition: outline 0.1s, background 0.1s; }
 .dnd-over.spring-pending { outline-style: solid; background: rgba(255,184,108,0.22) !important; }
-#mjpc-upload-toast { position: fixed; top: 20px; right: 20px; background: rgba(255,184,108,0.95); color: #1a1030; padding: 10px 18px; border-radius: 8px; font-family: 'EB Garamond', serif; font-weight: 600; font-size: 0.92rem; z-index: 9999; box-shadow: 0 4px 16px rgba(0,0,0,0.3); }
+#mjpc-upload-toast { position: fixed; top: 20px; right: 20px; background: rgba(255,184,108,0.95); color: #1a1030; padding: 10px 18px; border-radius: 8px; font-family: 'EB Garamond', serif; font-weight: 600; font-size: 0.92rem; z-index: 10500; /* [LOT8c-52①] au-dessus des boutons flottants (10000) : la fin du message passait dessous (cap-14) — un verdict d'échec se lit en entier */ box-shadow: 0 4px 16px rgba(0,0,0,0.3); max-width: min(72vw, 560px); }
 #mjpc-upload-toast.ok { background: rgba(52,211,153,0.95); }
 #mjpc-upload-toast.err { background: rgba(248,113,113,0.95); color: #fff; }
 .gallery-admin-list { margin: 4px 0 10px 60px; padding: 6px 10px; background: rgba(255,255,255,0.03); border-left: 2px solid rgba(255,184,108,0.3); border-radius: 0 6px 6px 0; }
@@ -2806,7 +2806,7 @@ function mjpcEcrireRest(url,options,cb){
    (les 3 gestes, le geste conservatoire par app, ce qui ne peut pas arriver).
    RESTAURER LA VERSION PRÉCÉDENTE : docs/MJPC6-restauration.md (convention BUG).
    ═══════════════════════════════════════════════════════════════════════════ */
-var APP_VERSION="8.51.0";
+var APP_VERSION="8.52.0";
 var APP_VERSION_DATE="2026-08-11";
 // ── 11. Coffre : dérivation, chiffrement, empreinte (v1.3.0) ──
 // (Le canon porte deux sections « 8 » — dette de numérotation connue, non corrigée
@@ -5097,7 +5097,12 @@ function renderZoneAutonomie(){
   var zone=document.getElementById('autonomie-dyn');if(!zone)return;
   var level=clickedLevel||currentLevel||'';
   var items=level?collectAutonomieItems(level):[];
-  if(items.length===0){zone.innerHTML='';return;}
+  if(items.length===0){
+    /* [LOT8c-52\u2462] le vide se DIT (constat cap-17 : page d\u00e9serte) \u2014 le texte de
+       Paul, au gabarit des messages de vide du site, \u00e9l\u00e8ve ET prof, sans condition. */
+    zone.innerHTML='<div class="chapter-card" style="padding:18px;text-align:center;color:rgba(255,255,255,0.35);font-style:italic;">Rien \u00e0 signaler ici</div>';
+    return;
+  }
   var parChap={};var ordre=[];
   items.forEach(function(x){var k=x.chnum;if(!parChap[k]){parChap[k]={titre:x.chapTitle,items:[]};ordre.push(k);}parChap[k].items.push(x);});
   var html='<div class="section-label">Rassembl\u00e9s pour toi</div>'

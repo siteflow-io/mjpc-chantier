@@ -2806,7 +2806,7 @@ function mjpcEcrireRest(url,options,cb){
    (les 3 gestes, le geste conservatoire par app, ce qui ne peut pas arriver).
    RESTAURER LA VERSION PRÉCÉDENTE : docs/MJPC6-restauration.md (convention BUG).
    ═══════════════════════════════════════════════════════════════════════════ */
-var APP_VERSION="8.53.0";
+var APP_VERSION="8.53.1";
 var APP_VERSION_DATE="2026-08-11";
 // ── 11. Coffre : dérivation, chiffrement, empreinte (v1.3.0) ──
 // (Le canon porte deux sections « 8 » — dette de numérotation connue, non corrigée
@@ -4067,7 +4067,7 @@ function openLinkModal(level,chnum,snum,itemId){
   }
   /* [LOT8-\u2466] l'historique simple : le dernier remplac\u00e9, lisible ici aussi */
   if(item.remplace&&item.remplace.ref){
-    currentEl.textContent+=' \u00b7 Ressource pr\u00e9c\u00e9dente : '+_resLibelle(item.remplace.source,item.remplace.ref,item.remplace.kind)+' (remplac\u00e9e le '+new Date(item.remplace.le||0).toLocaleDateString('fr-FR')+')';
+    currentEl.textContent+=' \u00b7 Ancien document : '+_resLibelle(item.remplace.source,item.remplace.ref,item.remplace.kind)+' \u2014 remplac\u00e9 le '+new Date(item.remplace.le||0).toLocaleDateString('fr-FR')+'.';   /* [LOT8c-53.1] le m\u00eame vocabulaire que la trace du panneau */
   }
   document.getElementById('link-modal-url').value='';
   loadAppList('dictee');

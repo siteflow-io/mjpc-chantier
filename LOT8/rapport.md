@@ -178,3 +178,31 @@ Sessions réelles prof ET élève à 390×844, captures examinées une par une :
 
 ## Dettes, limites, arbitrages (état après ⑧c)
 **Aucune dette nouvelle.** Notes de banc, déclarées : le décor publie LOCALEMENT (mutations mémoire) pour la classe réelle « 3E Charles de Gaulle » ou une classe de banc `3a` selon la session — aucune écriture réelle ; l'aperçu Drive gris sur cap-27/30-m = le mur du banc. Observations de BASE inchangées (corps « Sans titre », registre 06/08). L'arbitrage `published:true` du trajet upload (M8-IDENTITÉ) reste ouvert — et l'item `tableaux` du hub réel porte ce `published:true` historique, visible depuis les états ⑦b.
+
+
+---
+
+# RETOUCHE D'AUDIT ⑧c — 8.52.0 (constats de l'examen visuel des 43 captures)
+
+**Base vérifiée** : le sas 8.51.0 (984 104 o, `c4270bfbb5e1380e5198f3ccfc1f910a`), re-téléchargé avant édition. **Livré** : `LOT8/index.html` 984 629 o, pastille **8.52.0**, dual parser vert. **Deux changements de code seulement (① et ③, la règle ④)** : ⓐ `#mjpc-upload-toast` passe à **z-index 10500** (au-dessus des boutons flottants à 10000 — cap-14 montrait la fin du message sous « Panneau prof ») + `max-width:min(72vw,560px)` ; ⓑ `renderZoneAutonomie` : le vide se dit — « **Rien à signaler ici** » (texte arrêté par Paul), au gabarit exact des messages de vide du site, élève ET prof, sans condition. **Tailles** : `renderZoneAutonomie` 1793→2142 (AST) ; inventaire complet base→lot : **aucune autre fonction ne bouge, 0 neuve, 0 retirée**. Vue élève : le seul changement est le message de vide ③ (déclaré, capturé) ; le toast ① est un écran prof.
+
+## ② Les preuves d'écran des SIX familles d'échec du dépôt (capturées toast affiché)
+Rejouées au banc (stub du script de dépôt réglable par famille ; snapshot réel, 0 écriture réelle, 0 exception JS) — une capture par famille, texte intégral lisible, toast DEVANT les flottants :
+- **cap-34** script muet (`status:'erreur'`) : « ⚠ le script de dépôt a répondu sans détail — réessaie ; si ça persiste, dépose le fichier à la main sur Drive puis colle son lien (bouton Lier). »
+- **cap-35** réponse sans id : « ⚠ Le dépôt n'a pas rendu d'identifiant — rien n'est lié. Réessaie ; … »
+- **cap-36** réseau coupé : « ⚠ pas de liaison — rien n'est parti. Vérifie la connexion, puis reglisse le fichier. »
+- **cap-37** fichier > 30 Mo (31 Mo réels au banc, la garde coupe avant tout réseau) : « ⚠ Fichier > 30 Mo — dépose-le à la main sur Drive puis colle son lien (bouton Lier). » — **le cas même de cap-14, désormais lisible en entier**
+- **cap-38** refus HTTP : « ⚠ le script de dépôt a refusé (HTTP 500) — réessaie ; … »
+- **cap-39** lecture de fichier impossible (FileReader du banc rendu défaillant — instrument déclaré, la seule voie de provoquer `reader.onerror`) : « ⚠ Lecture du fichier impossible — reprends-le depuis ton ordinateur et reglisse-le. »
+La famille mobile : cap-28-m (8.51.0, réseau coupé à 390) reste la preuve 390 du toast ; **cap-40-m** ajoute la preuve ① à 390.
+
+## ① Le toast intégralement lisible — MESURÉ puis capturé
+Desktop (cap-34→39) : `elementFromPoint` aux trois points de la zone de texte (gauche/centre/droite) rend `mjpc-upload-toast` — rien ne le recouvre, z-index calculé 10500. **390 px (cap-40-m)** : même mesure aux trois points → `mjpc-upload-toast` partout, toast intégralement DANS l'écran (`right ≤ innerWidth`), les pastilles rondes prof derrière.
+
+## ③ Le vide de la Zone autonomie — capturé
+- **cap-41** élève desktop : l'onglet Zone autonomie affiche « Rien à signaler ici » au gabarit des vides du site (carte centrée, italique).
+- **cap-42-m** élève 390 : le même message, pastille 8.52.0 visible.
+Côté prof : même rendu (même fonction, aucune condition — conforme au mandat).
+
+## Dettes, limites (après 8.52.0)
+Aucune dette nouvelle. Le stub des familles d'échec et le FileReader défaillant sont des instruments de banc, jamais livrés. La promotion emportera ⑧a+⑧b+⑧c+retouche en un seul geste (8.52.0).

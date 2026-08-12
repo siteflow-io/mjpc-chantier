@@ -206,3 +206,31 @@ Côté prof : même rendu (même fonction, aucune condition — conforme au mand
 
 ## Dettes, limites (après 8.52.0)
 Aucune dette nouvelle. Le stub des familles d'échec et le FileReader défaillant sont des instruments de banc, jamais livrés. La promotion emportera ⑧a+⑧b+⑧c+retouche en un seul geste (8.52.0).
+
+---
+
+# RETOUCHE DE TEXTES ⑧c — 8.53.0 (constat de Paul : plus aucun jargon à l'écran)
+
+**Base vérifiée** : le sas 8.52.0 (984 629 o, `9891292bec780957bd0290da070777f1`), re-téléchargé avant édition. **Livré** : `LOT8/index.html` 985 326 o, pastille **8.53.0**, dual parser vert. **Aucun changement de logique** : seules les chaînes ci-dessous + les `console.error` (la règle, posée en commentaire à l'endroit des toasts : « la cause dans le langage de Paul à l'écran, le détail technique en console »). `published` intouché ; vue élève inchangée (tous ces écrans sont prof).
+
+## La liste exacte des chaînes remplacées (ancienne → nouvelle)
+**① Les toasts du dépôt** (`_uploadBlobToDrive` — 6 familles, 5 textes ; script muet et refus HTTP partagent le même texte, leurs causes distinctes partent en `console.error('MJPC dépôt — …', détail)`) :
+1. « le script de dépôt a répondu sans détail — réessaie ; si ça persiste, dépose le fichier à la main sur Drive puis colle son lien (bouton Lier). » (et sa variante `res.error/res.message` affichée brute) → « Le fichier n'est pas arrivé sur Drive. Réessaie ; si ça continue, dépose-le toi-même sur Drive puis colle son lien (bouton Lier…). »
+2. « le script de dépôt a refusé (HTTP N) — réessaie ; … » → **le même texte qu'en 1** ; le code HTTP part en console.
+3. « Le dépôt n'a pas rendu d'identifiant — rien n'est lié. Réessaie ; si ça persiste, … » → « Drive n'a pas confirmé le dépôt — le fichier n'est pas lié à la ligne. Réessaie ; si ça continue, dépose-le toi-même sur Drive puis colle son lien (bouton Lier…). »
+4. « pas de liaison — rien n'est parti. Vérifie la connexion, puis reglisse le fichier. » → « Pas de connexion internet — le fichier n'est pas parti sur Drive. Vérifie ta connexion, puis reglisse le fichier. »
+5. « Fichier > 30 Mo — dépose-le à la main sur Drive puis colle son lien (bouton Lier). » → « Fichier trop lourd (plus de 30 Mo) — dépose-le toi-même sur Drive puis colle son lien (bouton Lier…). »
+6. « Lecture du fichier impossible — reprends-le depuis ton ordinateur et reglisse-le. » → « Impossible de lire ce fichier — reprends-le depuis ton ordinateur et reglisse-le. »
+**② La garde de remplacement** (`applyLinkChanges` / `edLierConfirme`, libellés toujours par `_resLibelle`, inchangé) :
+- « Cet item est déjà lié à ‹ancien›. La remplacer par ‹nouveau› ? L'ancienne restera notée sur l'item. » → « Cet item porte déjà : ‹ancien›. Le remplacer par : ‹nouveau› ? Tu retrouveras l'ancienne adresse sous l'item, dans l'éditeur. »
+- (multiple) « …L'ancienne restera notée sur chaque item. Remplacer ? » → « …Remplacer ? Tu retrouveras les anciennes adresses sous chaque item, dans l'éditeur. »
+**③ La trace sous la ligne** (panneau de l'éditeur) : « Ressource précédente : ‹libellé› — remplacée le ‹date› » → « Ancien document : ‹libellé› — remplacé le ‹date›. » (La mention de la modale Lier — « Ressource précédente : … (remplacée le …) » — n'était pas au mandat : intouchée, règle ④.)
+
+## Tailles (AST, base→lot) — les quatre segments porteurs, rien d'autre
+`_uploadBlobToDrive` 2731→3392 · `applyLinkChanges` 1298→1319 · `edLierConfirme` 1379→1409 · `atEditerChapitreRendre` 12568→12553 · 0 neuve, 0 retirée · fichier 984 629→985 326.
+
+## Banc (snapshot réel, 0 écriture réelle, 0 exception JS) — captures examinées une à une
+Six familles rejouées, **cinq textes** à l'écran, six causes distinctes en console (captées au banc) : cap-43 muet · cap-44 sans identifiant · cap-45 réseau · cap-46 trop lourd (31 Mo réels) · cap-47 refus HTTP 500 (**même texte que cap-43**) · cap-48 lecture impossible — chaque texte intégral, toast devant (elementFromPoint re-mesuré, z 10500). La garde : cap-49 (simple, le texte exact) · cap-51 (multiple : « 2 items portent déjà une ressource : ‹liste ancien → nouveau› Remplacer ? Tu retrouveras les anciennes adresses sous chaque item, dans l'éditeur. ») ; la confirmation écrit `source`/`ref`/`remplace` (captées) et la trace paraît sans rechargement : cap-50 (« Ancien document : fichier Drive … — remplacé le 12/08/2026. »). La famille 390 : cap-52-m (réseau, texte neuf, toast devant, dans l'écran).
+
+## Dettes, limites (après 8.53.0)
+Aucune dette nouvelle. La promotion emportera ⑧a+⑧b+⑧c+les deux retouches en un seul geste (**8.53.0**).

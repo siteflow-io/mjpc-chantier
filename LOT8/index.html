@@ -2806,7 +2806,7 @@ function mjpcEcrireRest(url,options,cb){
    (les 3 gestes, le geste conservatoire par app, ce qui ne peut pas arriver).
    RESTAURER LA VERSION PRÉCÉDENTE : docs/MJPC6-restauration.md (convention BUG).
    ═══════════════════════════════════════════════════════════════════════════ */
-var APP_VERSION="8.52.0";
+var APP_VERSION="8.53.0";
 var APP_VERSION_DATE="2026-08-11";
 // ── 11. Coffre : dérivation, chiffrement, empreinte (v1.3.0) ──
 // (Le canon porte deux sections « 8 » — dette de numérotation connue, non corrigée
@@ -4223,8 +4223,8 @@ function applyLinkChanges(newSource,newRef,newKind){
   var _ecrire=function(){_applyLinkEcrire(ctx,item,newSource,newRef,newKind,_remplace);};
   if(_remplace&&newRef){
     _modaleConfirme('Remplacer la ressource',
-      'Cet item est d\u00e9j\u00e0 li\u00e9 \u00e0 <b>'+escapeHtml(_resLibelle(item.source,item.ref,item.kind))+'</b>.<br>'
-      +'La remplacer par <b>'+escapeHtml(_resLibelle(newSource,newRef,newKind))+'</b>\u00a0? L\u2019ancienne restera not\u00e9e sur l\u2019item.',
+      'Cet item porte d\u00e9j\u00e0 : <b>'+escapeHtml(_resLibelle(item.source,item.ref,item.kind))+'</b>.<br>'
+      +'Le remplacer par : <b>'+escapeHtml(_resLibelle(newSource,newRef,newKind))+'</b>\u00a0? Tu retrouveras l\u2019ancienne adresse sous l\u2019item, dans l\u2019\u00e9diteur.',
       _ecrire);
     return;
   }
@@ -4286,7 +4286,7 @@ function _uploadBlobToDrive(blob,fileName,level,chnum,snum){
      L'ancienne action upload_drive_only et son target_path en clés Firebase
      (« 3e/ch10/s1 », illisible au Drive) n'existent plus. */
   return new Promise(function(resolve,reject){
-    if(blob.size>30*1024*1024){reject(new Error('Fichier > 30 Mo \u2014 d\u00e9pose-le \u00e0 la main sur Drive puis colle son lien (bouton Lier).'));return;}
+    if(blob.size>30*1024*1024){console.error('MJPC d\u00e9p\u00f4t \u2014 fichier trop lourd :',blob.size,'octets');reject(new Error('Fichier trop lourd (plus de 30 Mo) \u2014 d\u00e9pose-le toi-m\u00eame sur Drive puis colle son lien (bouton Lier\u2026).'));return;}
     var reader=new FileReader();
     reader.onload=function(e){
       var b64=e.target.result.split(',')[1];
@@ -4294,17 +4294,19 @@ function _uploadBlobToDrive(blob,fileName,level,chnum,snum){
         action:'deposer',fichier:b64,nom:fileName,type:blob.type||'application/octet-stream',
         chemin:_cheminDriveLisible(level,chnum,snum)
       })}).then(function(r){return r.json();}).then(function(res){
-        if(!res||res.error||res.status==='erreur'){reject(new Error(((res&&(res.error||res.message))||'le script de d\u00e9p\u00f4t a r\u00e9pondu sans d\u00e9tail')+' \u2014 r\u00e9essaie ; si \u00e7a persiste, d\u00e9pose le fichier \u00e0 la main sur Drive puis colle son lien (bouton Lier).'));return;}
-        if(!res.id){reject(new Error('Le d\u00e9p\u00f4t n\u2019a pas rendu d\u2019identifiant \u2014 rien n\u2019est li\u00e9. R\u00e9essaie ; si \u00e7a persiste, d\u00e9pose le fichier \u00e0 la main sur Drive puis colle son lien (bouton Lier).'));return;}
+        /* [LOT8c-53\u2460] LA R\u00c8GLE : la cause dans le langage de Paul \u00e0 l'\u00e9cran,
+           le d\u00e9tail technique en console \u2014 jamais de jargon dans un toast. */
+        if(!res||res.error||res.status==='erreur'){console.error('MJPC d\u00e9p\u00f4t \u2014 script muet ou en erreur :',res);reject(new Error('Le fichier n\u2019est pas arriv\u00e9 sur Drive. R\u00e9essaie ; si \u00e7a continue, d\u00e9pose-le toi-m\u00eame sur Drive puis colle son lien (bouton Lier\u2026).'));return;}
+        if(!res.id){console.error('MJPC d\u00e9p\u00f4t \u2014 r\u00e9ponse sans identifiant :',res);reject(new Error('Drive n\u2019a pas confirm\u00e9 le d\u00e9p\u00f4t \u2014 le fichier n\u2019est pas li\u00e9 \u00e0 la ligne. R\u00e9essaie ; si \u00e7a continue, d\u00e9pose-le toi-m\u00eame sur Drive puis colle son lien (bouton Lier\u2026).'));return;}
         resolve({drive_file_id:res.id,file_name:res.nom||fileName,ext:res.ext||'',url:res.url||'',affichage:res.affichage||'',dossier:res.dossier||'',dossier_url:res.dossier_url||''});
       }).catch(function(err){
         /* [LOT8-\u2464] la cause ET le geste, pour chaque famille d'\u00e9chec */
-        if(err&&err.mjpcIssue&&err.mjpcIssue.etat===MJPC_ISSUE.PANNE){reject(new Error('pas de liaison \u2014 rien n\u2019est parti. V\u00e9rifie la connexion, puis reglisse le fichier.'));return;}
-        if(err&&err.mjpcIssue&&err.mjpcIssue.etat===MJPC_ISSUE.REFUSEE){reject(new Error('le script de d\u00e9p\u00f4t a refus\u00e9 (HTTP '+err.mjpcIssue.status+') \u2014 r\u00e9essaie ; si \u00e7a persiste, d\u00e9pose le fichier \u00e0 la main sur Drive puis colle son lien (bouton Lier).'));return;}
+        if(err&&err.mjpcIssue&&err.mjpcIssue.etat===MJPC_ISSUE.PANNE){console.error('MJPC d\u00e9p\u00f4t \u2014 panne de liaison :',err.mjpcIssue);reject(new Error('Pas de connexion internet \u2014 le fichier n\u2019est pas parti sur Drive. V\u00e9rifie ta connexion, puis reglisse le fichier.'));return;}
+        if(err&&err.mjpcIssue&&err.mjpcIssue.etat===MJPC_ISSUE.REFUSEE){console.error('MJPC d\u00e9p\u00f4t \u2014 refus HTTP '+err.mjpcIssue.status+' :',err.mjpcIssue);reject(new Error('Le fichier n\u2019est pas arriv\u00e9 sur Drive. R\u00e9essaie ; si \u00e7a continue, d\u00e9pose-le toi-m\u00eame sur Drive puis colle son lien (bouton Lier\u2026).'));return;}
         reject(err);
       });
     };
-    reader.onerror=function(){reject(new Error('Lecture du fichier impossible \u2014 reprends-le depuis ton ordinateur et reglisse-le.'));};
+    reader.onerror=function(e){console.error('MJPC d\u00e9p\u00f4t \u2014 lecture du fichier impossible :',e);reject(new Error('Impossible de lire ce fichier \u2014 reprends-le depuis ton ordinateur et reglisse-le.'));};
     reader.readAsDataURL(blob);
   });
 }
@@ -12545,7 +12547,7 @@ function atEditerChapitreRendre(){
         +(_edtb&&it.ref?('<button class="at-btn at-btn-min" onclick="edDupliquerVers(\''+j+'\',\''+k+'\')">Dupliquer vers\u2026</button>'):'')
         +'<button class="at-btn at-btn-min at-btn-danger" onclick="edSupprimerItem(\''+j+'\',\''+k+'\')">\u2715</button>'
         +'</span></div>'
-        +(it.remplace&&it.remplace.ref?('<div class="at-edch-rempl">Ressource pr\u00e9c\u00e9dente : '+atEsc(_resLibelle(it.remplace.source,it.remplace.ref,it.remplace.kind))+' \u2014 remplac\u00e9e le '+new Date(it.remplace.le||0).toLocaleDateString('fr-FR')+'</div>'):'')   /* [LOT8-\u2466] l'ancien couple reste lisible */
+        +(it.remplace&&it.remplace.ref?('<div class="at-edch-rempl">Ancien document : '+atEsc(_resLibelle(it.remplace.source,it.remplace.ref,it.remplace.kind))+' \u2014 remplac\u00e9 le '+new Date(it.remplace.le||0).toLocaleDateString('fr-FR')+'.</div>'):'')   /* [LOT8-\u2466] l'ancien couple reste lisible */
         +'<label class="at-edch-lib">Titre</label><input class="at-edch-in" value="'+atEsc(it.title||'')+'" onchange="atChampItem('+j+',\''+k+'\',\'title\',this.value)">'
         +'<label class="at-edch-lib">Sous-titre</label><input class="at-edch-in" value="'+atEsc(it.subtitle||'')+'" onchange="atChampItem('+j+',\''+k+'\',\'subtitle\',this.value)">'
         +'<label class="at-edch-lib">Type (kind)</label><input class="at-edch-in" value="'+atEsc(it.kind||'')+'" onchange="atChampItem('+j+',\''+k+'\',\'kind\',this.value)">'
@@ -12706,7 +12708,7 @@ function edLierConfirme(level,chnum,lignes,apres){
     }).join('<br>');
     _modaleConfirme('Remplacer la ressource',
       (occupees.length>1?occupees.length+' items portent d\u00e9j\u00e0 une ressource :':'Cet item porte d\u00e9j\u00e0 une ressource :')
-      +'<br>'+corps+'<br>L\u2019ancienne restera not\u00e9e sur chaque item. Remplacer\u00a0?',
+      +'<br>'+corps+'<br>Remplacer\u00a0? Tu retrouveras les anciennes adresses sous chaque item, dans l\u2019\u00e9diteur.',
       _ecrire);
     return;
   }

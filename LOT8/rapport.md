@@ -234,3 +234,9 @@ Six familles rejouées, **cinq textes** à l'écran, six causes distinctes en co
 
 ## Dettes, limites (après 8.53.0)
 Aucune dette nouvelle. La promotion emportera ⑧a+⑧b+⑧c+les deux retouches en un seul geste (**8.53.0**).
+
+---
+
+# MICRO-RETOUCHE ⑧c — 8.53.1 (unification de vocabulaire, décision de Paul)
+
+**Base vérifiée** : le sas 8.53.0 (985 326 o, `54e98975889e0482653555682b8c33aa`), re-téléchargé avant édition. **Livré** : `LOT8/index.html` 985 386 o, pastille **8.53.1**, dual parser vert. **UNE seule chaîne** (modale Lier, `openLinkModal`) : « · Ressource précédente : ‹libellé› (remplacée le ‹date›) » → « · Ancien document : ‹libellé› — remplacé le ‹date›. » — le vocabulaire de la trace du panneau, à l'accord près. `_resLibelle` et la date inchangés ; aucune fonction ne change de logique (le segment porte la chaîne + un commentaire) ; `published` intouché ; 0 écriture réelle, 0 exception. **cap-53** : la modale Lier sur l'item porteur d'une trace (le décor de cap-49) montre la mention unifiée, intégralement lisible.

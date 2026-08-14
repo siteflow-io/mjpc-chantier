@@ -854,7 +854,7 @@ select.at-sel option,select.cm-input option,#link-modal select option,select.at-
 .ed2-garde-e{color:#d8cfba;font-size:.9rem;margin-top:6px;cursor:pointer;padding:2px 4px;border-radius:6px}
 .ed2-garde-c{color:#c9b568;font-size:.82rem;margin-top:6px;cursor:pointer;padding:2px 4px;border-radius:6px}
 .ed2-garde .ed2-zsel{outline:2px solid #d4a017;outline-offset:1px}
-@media print{.ed2-coupe{border-top:2px dashed #333}.ed2-cx{display:none}.ed2-pbarre{display:none}.ed2-trou{display:none}.ed2-garde{display:none}.ed2-inserer{display:none}.ed2-pse{display:none}.ed2-pse.ed2-psein{display:block;color:#1c1c1c !important;border-color:#1c1c1c !important}.ed2-pse.ed2-pseimp{display:block;color:#1c1c1c !important;border-color:#1c1c1c !important}.ed2-xcadre{display:none}}
+@media print{.ed2-coupe{border-top:2px dashed #333}.ed2-cx{display:none}.ed2-pbarre{display:none}.ed2-trou{display:none}.ed2-garde{display:none}.ed2-inserer{display:none}.ed2-pse{display:none}.ed2-pse.ed2-psein{display:block;color:#1c1c1c !important;border-color:#1c1c1c !important}.ed2-pse.ed2-pseimp{display:block;color:#1c1c1c !important;border-color:#1c1c1c !important}.ed2-imp-solo .ed2-pse.ed2-psein,.ed2-imp-solo .ed2-pse.ed2-pseimp{display:none}.ed2-xcadre{display:none}}
 .ed2-sel{outline:2px solid rgba(212,160,23,.85);outline-offset:2px;background:rgba(212,160,23,.10)}
 .ed2-zsel{outline:2px solid rgba(212,160,23,.85);outline-offset:1px;background:rgba(212,160,23,.08);border-radius:6px}
 /* [LOT6-②] le menu contextuel — au-dessus de tout écran (atelier 7000, Lier 7500) */
@@ -2813,7 +2813,7 @@ function mjpcEcrireRest(url,options,cb){
    (les 3 gestes, le geste conservatoire par app, ce qui ne peut pas arriver).
    RESTAURER LA VERSION PRÉCÉDENTE : docs/MJPC6-restauration.md (convention BUG).
    ═══════════════════════════════════════════════════════════════════════════ */
-var APP_VERSION="8.55.0";
+var APP_VERSION="8.55.1";
 var APP_VERSION_DATE="2026-08-14";
 // ── 11. Coffre : dérivation, chiffrement, empreinte (v1.3.0) ──
 // (Le canon porte deux sections « 8 » — dette de numérotation connue, non corrigée
@@ -11073,8 +11073,20 @@ function atCtrlNonRangees(n){
     return '';
   }
   var r=collectRayons(n);
-  if(!r.ignores.length)return '';
-  var CAUSES={nonPubliee:'\u00e9cart\u00e9e par la publication (chapitre, s\u00e9ance ou ligne non publi\u00e9s) \u2014 publie-la depuis le chapitre',
+  /* [LOT9-8.55.1-\u2462] PUBLI\u00c9 MAIS JAMAIS ENVOY\u00c9 \u2014 un pi\u00e8ge, donc un TRAVAIL :
+     publier ouvre l'acc\u00e8s, envoyer fige la version que l'\u00e9l\u00e8ve lit ; publi\u00e9 sans
+     envoi = rang\u00e9, visible chez l'\u00e9l\u00e8ve, et ne s'ouvre pas. D\u00e9tection : la
+     m\u00eame lecture qu'edFeuillesJamaisEnvoyees (`d.envoi` du cache atSiteGetDocs,
+     d\u00e9j\u00e0 charg\u00e9 par le panneau) \u2014 UNE traversée m\u00e9moire au rendu, Z\u00c9RO appel
+     r\u00e9seau par ligne. Toujours DEHORS (jamais dans le pli). */
+  var jamais=[],_vus={};
+  collectChapterItems(n,'atelier',false).forEach(function(e){
+    var it=e.item;if(!it||it.source==='drive'||it.source==='external'||!it.ref)return;
+    var d=LINK_ATELIER_DOCS[it.ref];
+    if(d&&!d.envoi&&!_vus[it.ref]){_vus[it.ref]=1;jamais.push({ref:it.ref,titre:d.titre||it.title||it.ref,chnum:e.chnum,itemId:e.itemId});}
+  });
+  if(!r.ignores.length&&!jamais.length)return '';
+  var CAUSES={nonPubliee:'ce document n\u2019est pas encore ouvert aux \u00e9l\u00e8ves \u2014 il se rangera quand tu publieras sa s\u00e9ance',   /* [8.55.1-\u2461] texte de Paul */
               pasCache:'la feuille n\u2019a pas pu \u00eatre lue dans l\u2019atelier \u2014 recharge la page, ou v\u00e9rifie qu\u2019elle existe encore',
               sansProduit:'aucun type de feuille d\u00e9clar\u00e9 \u2014 choisis-le ici pour la ranger',
               sansProduitExt:'fichier ou site d\u00e9pos\u00e9 sans type d\u00e9clar\u00e9 \u2014 choisis-le ici pour le ranger dans un onglet',
@@ -11091,8 +11103,16 @@ function atCtrlNonRangees(n){
   var plies=r.ignores.filter(function(x){return x.cause==='nonPubliee';});
   var h='<div class="at-nr"><div class="at-nr-titre">\u26a0 \u00c0 classer \u2014 visible par toi seul</div>';
   travail.forEach(function(x){h+=ligne(x);});
+  jamais.forEach(function(x){
+    h+='<div class="at-nr-l">'
+      +'<span class="at-nr-t">'+escapeHtml(x.titre)+'</span>'
+      +'<span class="at-nr-c">ouvert aux \u00e9l\u00e8ves mais jamais envoy\u00e9 \u2014 ils ne peuvent pas le lire</span>'
+      +'<button class="at-btn at-btn-min" onclick="atCtrlOuvrirItem(\''+atEsc(n)+'\',\''+atEsc(x.chnum)+'\',\''+atEsc(x.itemId)+'\',\''+atEsc(x.ref)+'\')">Ouvrir</button>'
+      +'<button class="at-btn at-btn-min at-btn-prim" onclick="atCtrlEnvoyer(\''+atEsc(x.ref)+'\')">Envoyer</button>'
+      +'</div>';
+  });
   if(plies.length){
-    h+='<details class="at-nr-pli"><summary>'+plies.length+' ligne'+(plies.length>1?'s':'')+' \u00e9cart\u00e9e'+(plies.length>1?'s':'')+' par la publication</summary>';
+    h+='<details class="at-nr-pli"><summary>'+plies.length+' document'+(plies.length>1?'s':'')+' en attente de publication</summary>';   /* [8.55.1-\u2461] texte de Paul */
     plies.forEach(function(x){h+=ligne(x);});
     h+='</details>';
   }
@@ -11101,6 +11121,21 @@ function atCtrlNonRangees(n){
 }
 /* [LOT9-\u2467] ouvrir l'item DANS L'\u00c9DITEUR de son chapitre (le geste demand\u00e9 par le
    mandat) ; \u00e0 d\u00e9faut de chapitre connu, la feuille s'ouvre en modale (chemin sain). */
+/* [LOT9-8.55.1-\u2462] L'ENVOI DEPUIS LE PANNEAU \u2014 aucun geste NOUVEAU : c'est le
+   protocole d'edEnvoyerManquantes pour UNE feuille (message par d\u00e9faut, l'\u00e9crivain
+   unique atEnvoyerVersion, premier=vrai puisque jamais envoy\u00e9e). La ligne dispara\u00eet
+   au re-rendu (patron \u2467) ; en succ\u00e8s la disparition EST le retour visible. */
+function atCtrlEnvoyer(id){
+  var vivant=(AT.liste&&AT.liste[id])||(typeof LINK_ATELIER_DOCS!=='undefined'&&LINK_ATELIER_DOCS&&LINK_ATELIER_DOCS[id]);
+  if(!vivant){atInfo('\u26a0 La feuille n\u2019a pas pu \u00eatre lue dans l\u2019atelier \u2014 recharge la page, ou v\u00e9rifie qu\u2019elle existe encore.');return;}
+  atEnvoiDefautLire(function(defaut){
+    var msg=String(defaut||'').split('<date>').join(new Date().toLocaleDateString('fr-FR'));
+    atEnvoyerVersion(id,vivant,msg,true,function(ok){
+      if(!ok){atInfo('\u26a0 L\u2019envoi a \u00e9chou\u00e9 \u2014 r\u00e9essaie.');return;}
+      if(AT.onglet==='chapitres'&&!AT.edChap)atRendreListe();
+    });
+  });
+}
 function atCtrlOuvrirItem(level,chnum,itemId,ref){
   if(chnum&&itemId){
     atEditerChapitre(level,chnum);
@@ -12114,7 +12149,15 @@ function ed2Papier(level,chnum,docs){
   var mode=ed2PagModeLu(),pages=ed2Pages(docs,mode),total=pages.length;
   ED2_PAG.affichee=pages.map(function(p){return p.map(function(d){return d.item;}).join(',');}).join('|');   /* [LOT3] */
   var couts={serre:ed2CoutFeuilles(docs,'serre'),seance:ed2CoutFeuilles(docs,'seance'),document:ed2CoutFeuilles(docs,'document')};
-  var h='<div class="ed2-papier">'
+  /* [LOT9-8.55.1-\u2460] LE TITRE IMPRIM\u00c9 EST UN INTERCALAIRE : il organise une
+     LIASSE, il n'a pas de sens sur une feuille isol\u00e9e (doublon avec la ligne
+     \u00ab S\u00c9ANCE \u00bb de l'en-t\u00eate de fiche \u2014 constat de Paul). Mode \u00ab un document par
+     feuille \u00bb ou moins de deux documents r\u00e9els \u2192 il ne s'imprime pas (classe
+     ed2-imp-solo, r\u00e8gle @media print). L'\u00e9cran ne change pas : visible et
+     cliquable partout (acquis \u2489a). */
+  var _nbReels=docs.filter(function(d){return !d.attendu;}).length;
+  var _solo=(mode==='document'||_nbReels<2)?' ed2-imp-solo':'';
+  var h='<div class="ed2-papier'+_solo+'">'
     +'<div class="ed2-pbarre">'
     +'<span class="ed2-cpt"><b>'+total+'</b> feuille'+(total>1?'s':'')+' à imprimer</span>'
     +['serre','seance','document'].map(function(m){
@@ -12261,7 +12304,7 @@ function ed2ImprimerChapitre(){
        feuille de chaque s\u00e9ance, dans la recomposition aussi (la loi de Paul :
        tout finit sur la feuille). Style d\u00e9di\u00e9 ci-dessous \u2014 atelierCharteCSS n'est
        pas touch\u00e9e (charte partag\u00e9e). */
-    if(x.seance!==_seVue){_seVue=x.seance;corps+='<div class="imp-sce">'+atEsc(x.seanceTitre)+'</div>';}
+    if(docs.length>1&&x.seance!==_seVue){_seVue=x.seance;corps+='<div class="imp-sce">'+atEsc(x.seanceTitre)+'</div>';}   /* [LOT9-8.55.1-\u2460] l'intercalaire organise une liasse */
     try{corps+=atelierDocumentHTML(d,null,{});}catch(e){}
   });
   ed2ImprimerHTML('<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><title>'+atEsc((chapitresData[ec.level][ec.chnum]||{}).title||'Chapitre')+'</title>'

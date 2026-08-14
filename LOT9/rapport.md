@@ -1,0 +1,39 @@
+# LOT ⑨a — LA LOI DES TROIS COLONNES : tout se sélectionne, le titre entre dans la page
+
+**Découpage (annoncé et validé)** : ⑨a = points ①②④⑥ (ce rapport) ; ⑨b = ③⑤⑦⑧ s'empile (pastille 8.55.0). La promotion emportera les deux.
+
+**Base vérifiée** : production 985 386 o, md5 `efde88a2414cea12a1cd2e09f2451984` (8.53.1), re-téléchargée avant édition. **Livré** : `LOT9/index.html` **993 096 o, md5 `fba26f8e7430ca2a8c458a287551065b`, pastille 8.54.0**, vérifié bit à bit après push. Dual parser vert (node --check + acorn ES2020) à chaque édition. Banc à hub intercepté (snapshot réel du 14/08 : site 152 735 o, classes, codes — non poussés au sas), mur réseau, **0 écriture réelle, 0 exception JS sur tous les parcours**. Chapitre du banc : 3e ch10 (8 séances, 28 items — le plus riche).
+
+⚠ **VUE ÉLÈVE : RIEN NE CHANGE** — tous les écrans de ce lot sont l'éditeur de chapitre (prof). Preuve exigée par la règle du 05/08 : banc élève rejoué sur base ET lot — rayons identiques (langue 5 · brevet 0 · analyse 0 · ignores 2), 8 chapitres rendus, 0 exception, dans les deux fichiers.
+
+## ① Tout ce qui s'affiche est sélectionnable et correspond
+**Le système de clés étendu, pas doublé** (la règle du mandat) : `ed2CleSe(j)` fabrique la clé de séance `se-<j>` ; **`ed2CleLire` reste l'unique lectrice** (3e motif documenté : `'se-<j>' → {seance}` ; aucun conflit — les items vivent sous `item-`, les composantes sous `c-`, grep : aucun `data-champ="se-…"` préexistant). `ed2SelectionnerSeance(j,depuis)` — fonction nommée et linéaire (règle 20) : trois présences allumées (sommaire `.ed2-sce`, panneau bloc `at-edch-se` qui porte désormais `data-champ="se-<j>"`, papier `.ed2-pse`), défilement vers les correspondants, **focus posé dans le champ « Titre » de la séance** quand on ne vient pas du panneau. `ed2Selectionner` et `ed2ClicChamp` délèguent sur clé de séance.
+- **Le trou (document attendu)** : le clic RETIRÉ (`d.attendu?'':onclick` — mesure confirmée) est RENDU : au sommaire, `ed2Aller` sait désormais viser `.ed2-trou[data-item]` (le « courant » reste réservé aux documents réels — garde [C5-ED2] respectée) ; au papier, le cadre du trou porte `data-seance` + `onclick=ed2ClicTrou` (les boutons du cadre gardent leurs gestes : le clic bouton n'est pas mangé, prouvé) et **s'allume** (`ed2-sel`).
+- **Le titre de séance** : cliquable au sommaire ET au papier → sélection complète + champ Titre focalisé. Prouvé au banc : clic sommaire → 3 halos `['ed2-sce[2]','at-edch[se-2]','ed2-pse[2]']`, focus INPUT valeur « Interro de cours et analyse logique » ; clic papier → même triple présence, focus « Étude de texte accompagnée… ».
+- **La séance vide** : mesure DIVERGENTE déclarée — elle paraissait DÉJÀ au sommaire (ed2Documents la pousse comme trou nommé [C5-ED2] : ligne `ed2-sce` + entrée « Aucun document dans cette séance ») ; ce qui manquait était **le clic**, des deux côtés. Rendu : l'entrée sans item mène à sa séance (`ed2SelectionnerSeance`). Prouvé : clic → sélection `['3','se-3','3']`, focus « Dictée et réécriture ».
+
+## ② Le titre de séance entre dans la page
+- **Dans le A4** : le titre s'émet AVEC le premier document de sa séance, à l'intérieur de la page (classe `ed2-psein`), APRÈS la ligne de coupe (l'ordre du fil : la coupe sépare les documents, le titre ouvre la séance — défaut d'ordre repéré sur capture et corrigé avant livraison, preuve DOM : l'élément précédant le 2e titre est `ed2-coupe`). Mode « une séance par feuille » : le titre coiffe la page (la frontière de séance ouvre la page). Séance ouverte par un TROU : le titre paraît au fil à sa place naturelle (avant le trou, non imprimé) ET une **copie print-only** (`ed2-pseimp`) coiffe la page du premier document réel — une seule visible par média.
+- **Règle de veuve, TOUS les modes** (`ed2Pages`) : le titre est compté (`ED2_H_PSE=38`) et **si sa position dépasse la moitié de `ED2_A4.utile`, la séance bascule en tête de la feuille suivante**. Prouvé par la mesure de la pagination : **0 violation calculée dans les trois modes** (serré, séance, document). Le DOM du banc montre des dépassements APPARENTS dus à un artefact déclaré : papier à 591 px de large (viewport banc) → certains documents mesurent individuellement plus qu'une page (fiche-versification : 2 959 px) et débordent — comportement de BASE (« le papier s'arrête, toujours » ne coupe jamais un document), hors périmètre. La repagination mesurée (ED2_MESURES, signature stable) est active et vérifiée.
+- **L'impression** : ⓐ l'écran de l'éditeur — la règle `@media print` ne masque plus que les titres HORS page ; `ed2-psein`/`ed2-pseimp` s'impriment en noir. Vérifié en émulation print : titres en page visibles [4/4], titres hors page masqués, trous et boutons masqués — capture c05. ⓑ **la recomposition `ed2ImprimerChapitre`** (la voie du bouton 🖨) : un en-tête `.imp-sce` (style dédié ajouté au document recomposé — `atelierCharteCSS` non touchée, `break-after:avoid`) coiffe la première feuille de chaque séance — prouvé : 4 en-têtes captés dans le HTML recomposé, capture c06 (l'en-tête « ÉTUDE DE TEXTE ACCOMPAGNÉE : « L'ALBATROS » » au-dessus de la fiche). **Changement d'aperçu d'impression à valider par Paul de l'œil (captures c05/c06)** — rappel de mandat honoré.
+
+## ④ Le sommaire symétrique
+La ligne de séance (`ed2-sce`, qui portait déjà `data-seance` et le clic droit) reçoit le clic gauche → panneau (+ papier). Les documents attendus aussi (①). CSS : curseur pointer + halo `ed2-sel` (outline dorée) sur `ed2-sce`/`ed2-pse`.
+
+## ⑥ Insérer une séance en fin
+Le bouton « + insérer une séance ici » existe désormais **après la dernière séance**, au sommaire ET au papier — il appelle **le geste existant de fin de liste** (`edAjouterSeance` → `addSeance`, l'écrivain d'origine ; aucun geste nouveau). Compte au banc : 8 boutons par colonne (7 interstices + 1 fin).
+
+## Tailles (déclaration→déclaration ; artefacts de frontière)
+`ed2Cle` 588→74 (artefact : `ed2CleSe` s'intercale avant le commentaire du bloc — la fonction elle-même est inchangée octet pour octet) · `ed2CleLire` 775→1 055 · `ed2SelectionnerSeance` **1 303 (neuve)** · `ed2Selectionner` (segment→ed2ClicDocument) 10 805→11 901 · `ed2Sommaire` 1 105→2 027 · `ed2Aller` 2 390→2 745 · `ed2ClicTrou` **198 (neuve)** · `ed2ClicChamp` 674→792 · `ed2Pages` 600→1 221 (+`ED2_H_PSE`) · `ed2Papier` (segment) 6 415→8 367 · `ed2ImprimerChapitre` 574→1 247. **2 fonctions neuves + 1 fabrique de clé (`ed2CleSe`, 74 o), 0 retirée.** CSS : +4 règles (curseurs, halo, `ed2-pseimp`), règle print amendée.
+
+## Écritures déclarées
+**AUCUNE écriture nouvelle** : ce lot est entièrement du rendu et de la sélection. `published` intouché. Le seul geste d'écriture branché (⑥) est l'appel du bouton de fin vers `edAjouterSeance` — écrivain existant, inchangé.
+
+## Textes soumis à Paul
+Aucun texte élève. Textes prof réutilisés : « + insérer une séance ici » (même libellé pour la fin de liste). L'en-tête d'impression est le titre de séance lui-même (aucun texte nouveau).
+
+## Captures (desktop + 390, examinées une à une)
+c01 clic titre de séance au sommaire (3 halos + focus) · c02 clic titre au papier · c03 trou sélectionné depuis le sommaire (cadre allumé + ligne du panneau) · c04 séance vide cliquée · c05 aperçu d'impression de l'éditeur (titres dans les pages) · c06 recomposition d'impression (en-têtes de séance) · c07 titre en page après correction d'ordre (coupe→titre) · c08-390 sélection de séance à 390 px · c09-390 trou à 390 px.
+
+## Dettes, limites, arbitrages
+Aucune dette nouvelle. Limite déclarée : la veuve gouverne la PAGINATION (0 violation calculée) ; un document individuellement plus haut qu'une page déborde comme avant (base). ⑨b suit (③⑤⑦⑧, pastille 8.55.0) : champ nouveau `retoucheLe` (validé Q3), textes de la modale de régénération à soumettre.

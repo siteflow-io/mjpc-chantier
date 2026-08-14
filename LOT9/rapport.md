@@ -83,3 +83,29 @@ c10 panneau de contrôle (14 lignes, pli replié) · c11 menu du chapitre sur la
 - **Observation de base à instruire (conscience)** : `atRegenererSommaire`/`chSommaire` échoue en silence sur les chapitres à séances-objet (préexiste en 8.53.1, mesure comparative au banc ; l'exception meurt dans la Promise). La chaîne d'avertissement ③ de ce lot est prouvée indépendamment.
 - La garde au papier ne s'IMPRIME pas (comme les trous) — si Paul veut une page de garde imprimée, c'est une retouche à cadrer.
 - Rappel hors lot : `published:true` du trajet upload (M8-IDENTITÉ), toujours ouvert côté conscience.
+
+---
+
+# RETOUCHE 8.55.1 — dernière du LOT ⑨ (décisions de Paul sur captures)
+
+**Base vérifiée** : le sas 8.55.0 (1 000 222 o, `3d2c0d3fb38f43561042edb71790485d`). **Livré** : `LOT9/index.html` **1 003 600 o, md5 `3a34823d3c8b087186b6c747541d7bb7`, pastille 8.55.1**, vérifié bit à bit. Dual parser vert ; banc 0 écriture réelle, 0 exception ; vue élève identique base↔8.55.1.
+
+## ① L'intercalaire ne paraît qu'en impression multi-feuilles
+Le titre de séance imprimé est un intercalaire de liasse. **Écran inchangé** (visible et cliquable partout, acquis ⑨a). À l'impression : la classe `ed2-imp-solo` se pose sur le papier quand mode « un document par feuille » OU moins de deux documents réels → règle print qui masque `ed2-psein`/`ed2-pseimp`. La recomposition (`ed2ImprimerChapitre`) n'émet les `.imp-sce` que si plus d'un document. Une feuille seule (`atelierPageHTML`) n'en a jamais eu. **Prouvé** : mode serré multi → 4 intercalaires imprimés ; mode document → 4 à l'écran, **0 en print** (c21) ; recomposition chapitre → 4 (c22) ; feuille seule → 0 (c23).
+
+## ② Les textes de Paul (chaînes remplacées, ancienne → nouvelle)
+- Pli : « ‹n› ligne(s) écartée(s) par la publication » → **« ‹n› document(s) en attente de publication »**.
+- Cause `nonPubliee` : « écartée par la publication (chapitre, séance ou ligne non publiés) — publie-la depuis le chapitre » → **« ce document n'est pas encore ouvert aux élèves — il se rangera quand tu publieras sa séance »**.
+Prouvé au banc (textes lus dans le DOM).
+
+## ③ La cause « publié mais jamais envoyé » — un travail, jamais dans le pli
+**Détection** : la même lecture qu'`edFeuillesJamaisEnvoyees` — `d.envoi` du cache `atSiteGetDocs`, que le panneau charge déjà. **Coût déclaré : une traversée mémoire supplémentaire au rendu (`collectChapterItems(n,'atelier',false)`), ZÉRO appel réseau, aucun appel par ligne.** Dédoublonnage par ref. La ligne vit DEHORS avec : cause **« ouvert aux élèves mais jamais envoyé — ils ne peuvent pas le lire »**, « Ouvrir » (vers l'éditeur, comme les autres) et **« Envoyer »** → `atCtrlEnvoyer` (678 o) : **aucun geste nouveau** — le protocole exact d'`edEnvoyerManquantes` pour une feuille (message par défaut d'`atEnvoiDefautLire`, l'écrivain unique `atEnvoyerVersion`, `premier=true`, `vivant` passé direct comme dans l'éditeur). **Prouvé** : ligne présente hors pli (c19) → clic Envoyer → exactement `PUT /site/atelier/envois/<id>` + `PUT /site/atelier/documents/<id>` au capteur (les écritures d'`atEnvoyerVersion`, aucune autre, `published` intouché) → **la ligne disparaît sans rechargement** (c20). En succès, la disparition est le retour visible ; en échec : atInfo « ⚠ L'envoi a échoué — réessaie. » (micro-texte technique, soumis) ; feuille illisible du cache : le texte existant de la cause pasCache réutilisé en atInfo. 390 px : panneau dans l'écran, « Envoyer » à 44 px (c24).
+
+## Tailles (8.55.0 → 8.55.1)
+`ed2Papier` (segment) 9 702→10 345 · `ed2ImprimerChapitre` 1 247→1 326 · `atCtrlNonRangees` (bloc, fns internes) 2 539→4 631 · `atCtrlEnvoyer` **678 (neuve — un appel du geste existant, aucun chemin d'écriture nouveau)** · CSS +1 règle print (`.ed2-imp-solo`). Rien retiré.
+
+## Captures 8.55.1
+c19 panneau, trois familles (2 à qualifier · 1 jamais envoyé · pli « 12 documents en attente de publication ») · c20 après envoi (la ligne a disparu) · c21 aperçu print mode « un document par feuille » (sans intercalaire) · c22 recomposition chapitre (avec intercalaires) · c23 feuille seule (sans) · c24 les trois familles à 390 px.
+
+## Dettes (état final du LOT ⑨, inchangé par la retouche)
+Observation de base `atRegenererSommaire` (séances-objet, échec silencieux) · la garde papier ne s'imprime pas (retouche à cadrer si voulue) · `published:true` du trajet upload (M8-IDENTITÉ) · micro-texte d'échec d'envoi ci-dessus à valider.

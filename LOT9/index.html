@@ -778,15 +778,7 @@ body:has(#tprof-overlay.visible) #tprof-btn,body:has(#tprof-overlay.visible) #ad
    menu natif : illisible dans la modale LIER (et partout ailleurs). */
 select.at-sel option,select.cm-input option,#link-modal select option,select.at-sel-mini option{background:#1d1a15;color:#e8e0d0}
 /* [C5-ED1b] le fil des feuilles du chapitre, en tête de l'éditeur de feuille */
-.ed-fil{border:1px solid #4a4438;border-radius:12px;padding:10px 12px;margin-bottom:12px;background:rgba(212,160,23,.05)}
-.ed-fil-haut{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px}
-.ed-fil-tit{color:#c9b568;font-size:.9rem}
-.ed-fil-liste{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-.ed-fil-se{color:#8f8672;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;margin-left:4px}
-.ed-fil-btn{min-height:44px;display:inline-flex;flex-direction:column;align-items:flex-start;gap:2px;padding:6px 12px;font-size:.86rem}
-.ed-fil-btn.ed-fil-actif{border-color:rgba(212,160,23,.9);background:rgba(212,160,23,.16)}
-.ed-fil-prod{font-size:.72rem;color:#c9b568}
-@media (max-width:480px){.ed-fil-liste{flex-direction:column;align-items:stretch}.ed-fil-btn{width:100%}}
+/* [LOT9-\u2466] r\u00e8gles .ed-fil* retir\u00e9es avec edBarreFil (seule g\u00e9n\u00e9ratrice) */
 /* [C5-ED2] \u2014 les trois colonnes de la maquette : sommaire \u00b7 panneau \u00b7 pile */
 .ed2-grille{display:grid;grid-template-columns:230px minmax(0,1fr) minmax(0,1.05fr);gap:14px;align-items:start;margin-top:12px}
 .ed2-som{border:1px solid #4a4438;border-radius:12px;padding:12px;position:sticky;top:8px;max-height:calc(100vh - 120px);overflow:auto}
@@ -801,7 +793,6 @@ select.at-sel option,select.cm-input option,#link-modal select option,select.at-
 .ed2-p{width:8px;height:8px;border-radius:50%;background:#c9b568;flex:none}
 .ed2-p.ed2-creux{background:transparent;border:1px solid #8f8672}
 .ed2-pan{border:1px solid #4a4438;border-radius:12px;padding:12px;max-height:calc(100vh - 120px);overflow:auto}
-.ed2-pile{max-height:calc(100vh - 120px);overflow:auto;padding-right:4px}
 .ed2-sep{border-top:2px solid;margin:14px 0 8px;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em}
 .ed2-doc{border:1px solid #4a4438;border-radius:12px;padding:12px 14px;margin-bottom:10px;background:#fbf8f2;color:#1c1830;cursor:pointer}
 .ed2-doc.ed2-halo{box-shadow:0 0 0 3px rgba(212,160,23,.75);border-color:rgba(212,160,23,.9)}
@@ -857,7 +848,13 @@ select.at-sel option,select.cm-input option,#link-modal select option,select.at-
 .ed2-pse{cursor:pointer}
 .ed2-sce.ed2-sel,.ed2-pse.ed2-sel{outline:2px solid #d4a017;outline-offset:2px;border-radius:6px}
 .ed2-pseimp{display:none}
-@media print{.ed2-coupe{border-top:2px dashed #333}.ed2-cx{display:none}.ed2-pbarre{display:none}.ed2-trou{display:none}.ed2-inserer{display:none}.ed2-pse{display:none}.ed2-pse.ed2-psein{display:block;color:#1c1c1c !important;border-color:#1c1c1c !important}.ed2-pse.ed2-pseimp{display:block;color:#1c1c1c !important;border-color:#1c1c1c !important}.ed2-xcadre{display:none}}
+.ed2-garde{border:1px dashed #6a5f45;border-radius:10px;padding:14px 16px;margin:8px 0;background:rgba(212,160,23,.04)}
+.ed2-garde-q{color:#8f8672;font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px}
+.ed2-garde-t{font-weight:700;font-size:1.05rem;color:#f0e8d8;cursor:pointer;padding:2px 4px;border-radius:6px}
+.ed2-garde-e{color:#d8cfba;font-size:.9rem;margin-top:6px;cursor:pointer;padding:2px 4px;border-radius:6px}
+.ed2-garde-c{color:#c9b568;font-size:.82rem;margin-top:6px;cursor:pointer;padding:2px 4px;border-radius:6px}
+.ed2-garde .ed2-zsel{outline:2px solid #d4a017;outline-offset:1px}
+@media print{.ed2-coupe{border-top:2px dashed #333}.ed2-cx{display:none}.ed2-pbarre{display:none}.ed2-trou{display:none}.ed2-garde{display:none}.ed2-inserer{display:none}.ed2-pse{display:none}.ed2-pse.ed2-psein{display:block;color:#1c1c1c !important;border-color:#1c1c1c !important}.ed2-pse.ed2-pseimp{display:block;color:#1c1c1c !important;border-color:#1c1c1c !important}.ed2-xcadre{display:none}}
 .ed2-sel{outline:2px solid rgba(212,160,23,.85);outline-offset:2px;background:rgba(212,160,23,.10)}
 .ed2-zsel{outline:2px solid rgba(212,160,23,.85);outline-offset:1px;background:rgba(212,160,23,.08);border-radius:6px}
 /* [LOT6-②] le menu contextuel — au-dessus de tout écran (atelier 7000, Lier 7500) */
@@ -870,7 +867,7 @@ select.at-sel option,select.cm-input option,#link-modal select option,select.at-
 .ed-pub-b{min-height:44px}
 .ed-pub-on{background:rgba(126,200,169,.2);border-color:rgba(126,200,169,.7)}
 @media (max-width:900px){.ed2-grille{grid-template-columns:1fr}
-  .ed2-som,.ed2-pan,.ed2-pile{position:static;max-height:none}}
+  .ed2-som,.ed2-pan{position:static;max-height:none}}
 .at-edch-barre{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
 .at-edch-actes{float:right;display:inline-flex;gap:6px;flex-wrap:wrap}
 .at-btn-min{min-height:44px;padding:6px 10px;font-size:.82rem}
@@ -1150,11 +1147,16 @@ button.dp-img-btn.dp-img-drop{border-color:#d4a017;background:rgba(212,160,23,.2
 .atdoc-viewer-x,.atdoc-viewer-imp{min-width:44px;min-height:44px;border:0;background:transparent;color:#fff;font-size:1.1rem;cursor:pointer}
 .atdoc-viewer-frame{flex:1;width:100%;border:0;background:#fff}
 /* [LOT8-②] le bloc prof des feuilles non rangées, sous les rayons */
-.rayons-ignores-bloc{margin-top:22px;border:1px dashed rgba(255,200,80,0.55);border-radius:10px;padding:12px 14px;background:rgba(255,200,80,0.06)}
-.ri-titre{font-size:0.82rem;font-weight:600;color:#ffd77a;margin-bottom:8px}
-.rayons-ignore-l{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:6px 0;border-top:1px solid rgba(255,255,255,0.07)}
-.rayons-ignore-l .ri-t{font-weight:600;font-size:0.85rem}
-.rayons-ignore-l .ri-c{color:rgba(255,255,255,0.55);font-size:0.78rem;font-style:italic;flex:1;min-width:180px}
+/* [LOT9-\u2467] .rayons-ignores-bloc retir\u00e9 (le bloc a d\u00e9m\u00e9nag\u00e9 \u2014 voir at-nr-*) */
+/* [LOT9-\u2467] LE PANNEAU DE CONTR\u00d4LE des non-rang\u00e9es (t\u00eate de \u00ab Mes chapitres \u00bb) —
+   les r\u00e8gles de ligne reprennent l'ancien bloc, sous des classes propres. */
+.at-nr{border:1px dashed rgba(255,200,80,0.55);border-radius:10px;padding:12px 14px;margin:0 0 14px;background:rgba(255,200,80,0.06)}
+.at-nr-titre{font-size:0.82rem;font-weight:600;color:#ffd77a;margin-bottom:8px}
+.at-nr-l{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:6px 0;border-top:1px solid rgba(255,255,255,0.07)}
+.at-nr-l .at-nr-t{font-weight:600;font-size:0.85rem}
+.at-nr-l .at-nr-c{color:rgba(255,255,255,0.55);font-size:0.78rem;font-style:italic;flex:1;min-width:180px}
+.at-nr-pli{margin-top:8px}
+.at-nr-pli summary{cursor:pointer;color:rgba(255,255,255,0.55);font-size:0.8rem;min-height:44px;display:flex;align-items:center}
 /* [LOT8-\u2466] la trace du remplac\u00e9 au panneau */
 .at-edch-rempl{font-size:0.74rem;color:rgba(255,255,255,0.45);font-style:italic;margin:2px 0 6px;padding-left:14px}
 /* SITE-COURS-2c — le bandeau du message élève (écran seulement, hors iframe) */
@@ -1472,7 +1474,7 @@ button.dp-img-btn.dp-img-drop{border-color:#d4a017;background:rgba(212,160,23,.2
       <div class="chapters-list">
         <div class="chapter-card"><div class="chapter-header" onclick="toggleChapter(this)"><div class="chapter-num" style="background:var(--level-accent);color:#1a1030;">🎯</div><div class="chapter-info"><div class="chapter-title">Prépa brevet</div><div class="chapter-meta"><span class="chip chip-fiche" id="count-prepa-brevet">0 fiches</span></div></div></div><div class="chapter-body" data-section="prepa-brevet"><div class="doc-list fiche-drop-zone" data-section="prepa-brevet"></div></div></div>
       </div>
-      <div id="rayons-ignores"></div>   <!-- [LOT8-②] rempli côté prof seulement, vide côté élève -->
+      <!-- [LOT9-⑧] le bloc des non-rangées a DÉMÉNAGÉ : panneau de contrôle en tête de « Mes chapitres » (atelier) — qualifier est un acte d'édition -->
     </div>
     <div id="tab-autonomie" style="display:none;">
       <div id="autonomie-dyn"></div>
@@ -2811,7 +2813,7 @@ function mjpcEcrireRest(url,options,cb){
    (les 3 gestes, le geste conservatoire par app, ce qui ne peut pas arriver).
    RESTAURER LA VERSION PRÉCÉDENTE : docs/MJPC6-restauration.md (convention BUG).
    ═══════════════════════════════════════════════════════════════════════════ */
-var APP_VERSION="8.54.0";
+var APP_VERSION="8.55.0";
 var APP_VERSION_DATE="2026-08-14";
 // ── 11. Coffre : dérivation, chiffrement, empreinte (v1.3.0) ──
 // (Le canon porte deux sections « 8 » — dette de numérotation connue, non corrigée
@@ -4968,13 +4970,13 @@ function collectRayons(level){
   var out={langue:[],brevet:[],analyse:[],ancres:0,sansProduit:0,ignores:[]};
   tout.forEach(function(e){
     var d=(typeof LINK_ATELIER_DOCS!=='undefined'&&LINK_ATELIER_DOCS)?LINK_ATELIER_DOCS[e.item.ref]:null;
-    if(e.invisible){out.ignores.push({cause:'nonPubliee',ref:e.item.ref,titre:(d&&d.titre)||e.item.title||e.item.ref,produit:(d&&d.produit)||'',etage:e.invisible});return;}
-    if(!d){out.sansProduit++;out.ignores.push({cause:'pasCache',ref:e.item.ref,titre:e.item.title||e.item.ref,produit:''});return;}          /* feuille inconnue du cache : on ne devine pas */
+    if(e.invisible){out.ignores.push({cause:'nonPubliee',ref:e.item.ref,titre:(d&&d.titre)||e.item.title||e.item.ref,produit:(d&&d.produit)||'',etage:e.invisible,chnum:e.chnum,itemId:e.itemId});return;}
+    if(!d){out.sansProduit++;out.ignores.push({cause:'pasCache',ref:e.item.ref,titre:e.item.title||e.item.ref,produit:'',chnum:e.chnum,itemId:e.itemId});return;}          /* feuille inconnue du cache : on ne devine pas */
     e.produitLib=(ATELIER_PRODUITS[d.produit]||{}).libelle||'';
     e.docTitre=d.titre||'';
-    if(!d.produit||!ATELIER_PRODUITS[d.produit]){out.ancres++;out.ignores.push({cause:'sansProduit',ref:e.item.ref,titre:d.titre||e.item.ref,produit:''});return;}
+    if(!d.produit||!ATELIER_PRODUITS[d.produit]){out.ancres++;out.ignores.push({cause:'sansProduit',ref:e.item.ref,titre:d.titre||e.item.ref,produit:'',chnum:e.chnum,itemId:e.itemId});return;}
     var r=atProduitRayon(d.produit);
-    if(!r){out.ancres++;out.ignores.push({cause:'ancre',ref:e.item.ref,titre:d.titre||e.item.ref,produit:d.produit});return;}
+    if(!r){out.ancres++;out.ignores.push({cause:'ancre',ref:e.item.ref,titre:d.titre||e.item.ref,produit:d.produit,chnum:e.chnum,itemId:e.itemId});return;}
     out[r].push(e);
   });
   /* [LOT8c-\u2468] LA SECONDE PASSE : les ressources EXTERNES (drive/external) entrent
@@ -5021,28 +5023,10 @@ function renderRayons(level){
   /* [LOT8-\u2461] C\u00d4T\u00c9 PROF SEULEMENT : les rayons DISENT ce qu'ils \u00e9cartent, pourquoi,
      et donnent le geste (ouvrir la feuille, requalifier le produit \u2014 le menu
      existant). L'\u00e9l\u00e8ve ne voit rien : le bloc n'est rendu qu'en mode admin. */
-  var zi=document.getElementById('rayons-ignores');
-  if(zi){
-    if(document.body.classList.contains('admin-mode')&&r.ignores.length){
-      var CAUSES={nonPubliee:'\u00e9cart\u00e9e par la publication (chapitre, s\u00e9ance ou ligne non publi\u00e9s) \u2014 publie-la depuis le chapitre',
-                  pasCache:'la feuille n\u2019a pas pu \u00eatre lue dans l\u2019atelier \u2014 recharge la page, ou v\u00e9rifie qu\u2019elle existe encore',
-                  sansProduit:'aucun type de feuille d\u00e9clar\u00e9 \u2014 choisis-le ici pour la ranger',
-                  sansProduitExt:'fichier ou site d\u00e9pos\u00e9 sans type d\u00e9clar\u00e9 \u2014 choisis-le ici pour le ranger dans un onglet',
-                  ancre:'son type vit dans sa s\u00e9ance, pas dans un onglet \u2014 change-le si elle doit para\u00eetre ici'};
-      var hh='<div class="rayons-ignores-bloc"><div class="ri-titre">\u26a0 Non rang\u00e9es dans les onglets \u2014 visible par toi seul</div>';
-      r.ignores.forEach(function(x){
-        /* [LOT8c-\u2468] une EXTERNE porte son menu d'ITEM (\u00e9crivain itemProduitPoser) ;
-           une feuille garde le menu de feuille. M\u00eame geste, deux \u00e9crivains d\u00e9clar\u00e9s. */
-        var _menu=x.ext?itemProduitMenu(x.ext.level,x.ext.chnum,x.ext.snum,x.ext.itemId,x.produit):atProduitMenu(x.ref,x.produit);
-        hh+='<div class="rayons-ignore-l">'
-          +'<span class="ri-t">'+escapeHtml(x.titre||'')+'</span>'
-          +'<span class="ri-c">'+CAUSES[x.cause]+'</span>'
-          +(x.cause!=='pasCache'?('<button class="at-btn at-btn-min" onclick="_openAtelierFromList(\''+atEsc(x.ref)+'\')">Ouvrir</button>'+_menu):'')
-          +'</div>';
-      });
-      zi.innerHTML=hh+'</div>';
-    } else zi.innerHTML='';
-  }
+  /* [LOT9-\u2467] le rendu du bloc \u00ab \u26a0 Non rang\u00e9es \u00bb quitte les onglets publics :
+     il vit d\u00e9sormais en PANNEAU DE CONTR\u00d4LE en t\u00eate de \u00ab Mes chapitres \u00bb de
+     l'atelier (atCtrlNonRangees) \u2014 les onglets transversaux ne portent plus
+     aucun bloc d'administration. Causes et \u00e9crivains inchang\u00e9s. */
   return r;
 }
 function _openAtelierFromList(ref){
@@ -7177,6 +7161,8 @@ function itemProduitPoser(level,chnum,snum,itemId,prod){
     var _tf=document.getElementById('tab-fiches');
     if(_tf&&_tf.style.display!=='none'&&typeof renderRayons==='function')renderRayons(clickedLevel||currentLevel||'');
     if(typeof AT!=='undefined'&&AT.edChap&&typeof atEditerChapitreRendre==='function')atEditerChapitreRendre();
+    /* [LOT9-\u2467] le panneau de contr\u00f4le suit sans rechargement (la ligne class\u00e9e dispara\u00eet) */
+    else if(typeof AT!=='undefined'&&!AT.edChap&&AT.onglet==='chapitres'&&typeof atRendreListe==='function')atRendreListe();
   });
 }
 function atProduitRayon(prod){
@@ -11072,9 +11058,60 @@ function atChapitreLiaisons(ch){
   });
   return {total:total,sans:sans};
 }
+/* [LOT9-\u2467] LE PANNEAU DE CONTR\u00d4LE \u2014 \u00ab comme des classeurs qu'on classe, et qui ne
+   tra\u00eenent plus sur la table une fois class\u00e9s \u00bb (Paul). En t\u00eate de \u00ab Mes
+   chapitres \u00bb ; N'APPARA\u00ceT QUE s'il y a quelque chose (jamais de cadre vide) ;
+   chaque ligne dispara\u00eet d\u00e8s qu'elle est class\u00e9e, sans rechargement (les
+   \u00e9crivains re-rendent l'\u00e9cran \u2014 inchang\u00e9s par ailleurs) ; les lignes \u00e9cart\u00e9es
+   par la publication ne sont PAS un travail en attente : pli discret, repli\u00e9. */
+function atCtrlNonRangees(n){
+  if(!chapitresData[n])return '';
+  if(typeof LINK_ATELIER_DOCS==='undefined'||!LINK_ATELIER_DOCS||!Object.keys(LINK_ATELIER_DOCS).length){
+    /* le cache des feuilles n'est pas l\u00e0 : le charger puis re-rendre \u2014 sans lui,
+       toute feuille para\u00eetrait \u00ab illisible \u00bb \u00e0 tort (le pi\u00e8ge pasCache). */
+    if(typeof atSiteGetDocs==='function'&&!AT._nrCharge){AT._nrCharge=true;atSiteGetDocs(function(docs){LINK_ATELIER_DOCS=docs||{};if(AT.onglet==='chapitres'&&!AT.edChap)atRendreListe();});}
+    return '';
+  }
+  var r=collectRayons(n);
+  if(!r.ignores.length)return '';
+  var CAUSES={nonPubliee:'\u00e9cart\u00e9e par la publication (chapitre, s\u00e9ance ou ligne non publi\u00e9s) \u2014 publie-la depuis le chapitre',
+              pasCache:'la feuille n\u2019a pas pu \u00eatre lue dans l\u2019atelier \u2014 recharge la page, ou v\u00e9rifie qu\u2019elle existe encore',
+              sansProduit:'aucun type de feuille d\u00e9clar\u00e9 \u2014 choisis-le ici pour la ranger',
+              sansProduitExt:'fichier ou site d\u00e9pos\u00e9 sans type d\u00e9clar\u00e9 \u2014 choisis-le ici pour le ranger dans un onglet',
+              ancre:'son type vit dans sa s\u00e9ance, pas dans un onglet \u2014 change-le si elle doit para\u00eetre ici'};
+  function ligne(x){
+    var _menu=x.ext?itemProduitMenu(x.ext.level,x.ext.chnum,x.ext.snum,x.ext.itemId,x.produit):atProduitMenu(x.ref,x.produit);
+    return '<div class="at-nr-l">'
+      +'<span class="at-nr-t">'+escapeHtml(x.titre||'')+'</span>'
+      +'<span class="at-nr-c">'+CAUSES[x.cause]+'</span>'
+      +(x.cause!=='pasCache'?('<button class="at-btn at-btn-min" onclick="atCtrlOuvrirItem(\''+atEsc(n)+'\',\''+atEsc(x.ext?x.ext.chnum:(x.chnum||''))+'\',\''+atEsc(x.ext?x.ext.itemId:(x.itemId||''))+'\',\''+atEsc(x.ref)+'\')">Ouvrir</button>'+_menu):'')
+      +'</div>';
+  }
+  var travail=r.ignores.filter(function(x){return x.cause!=='nonPubliee';});
+  var plies=r.ignores.filter(function(x){return x.cause==='nonPubliee';});
+  var h='<div class="at-nr"><div class="at-nr-titre">\u26a0 \u00c0 classer \u2014 visible par toi seul</div>';
+  travail.forEach(function(x){h+=ligne(x);});
+  if(plies.length){
+    h+='<details class="at-nr-pli"><summary>'+plies.length+' ligne'+(plies.length>1?'s':'')+' \u00e9cart\u00e9e'+(plies.length>1?'s':'')+' par la publication</summary>';
+    plies.forEach(function(x){h+=ligne(x);});
+    h+='</details>';
+  }
+  if(!travail.length&&!plies.length)return '';
+  return h+'</div>';
+}
+/* [LOT9-\u2467] ouvrir l'item DANS L'\u00c9DITEUR de son chapitre (le geste demand\u00e9 par le
+   mandat) ; \u00e0 d\u00e9faut de chapitre connu, la feuille s'ouvre en modale (chemin sain). */
+function atCtrlOuvrirItem(level,chnum,itemId,ref){
+  if(chnum&&itemId){
+    atEditerChapitre(level,chnum);
+    setTimeout(function(){try{ed2Aller(itemId);}catch(e){}},1200);
+    return;
+  }
+  _openAtelierFromList(ref);
+}
 function atRendreChapitres(){
   var n=atTbNiveau();
-  var h='<div class="at-tb-tete">Chapitres de '+atTbSelecteur()+'</div>';
+  var h='<div class="at-tb-tete">Chapitres de '+atTbSelecteur()+'</div>'+atCtrlNonRangees(n);
   var data=chapitresData[n];
   if(!data||!Object.keys(data).length){
     return h+'<div class="at-vide">'+(AT_CHAP_ETAT[n]==='erreur'?'Les chapitres ne répondent pas pour l’instant. <button class="at-btn" onclick="atChapitresRecharger()">Réessayer</button>':'Chargement des chapitres\u2026')+'</div>';
@@ -11088,7 +11125,7 @@ function atRendreChapitres(){
     var li0=atChapitreLiaisons(ch);   /* [C5-3a-c] ⑤ */
     var liTxt=(li0.total===0)?'Aucun item pour l\u2019instant.':(li0.sans?(li0.sans+' liaison'+(li0.sans>1?'s':'')+' restante'+(li0.sans>1?'s':'')):'Tout est li\u00e9.');
     var liCls=(li0.total===0)?'at-st-flou':(li0.sans?'at-st-adresse':'at-st-depose');
-    h+='<div class="at-carte"><div class="at-carte-t">'+atEsc(ch.title||('Chapitre '+num))+'</div>'
+    h+='<div class="at-carte" data-chctx="'+atEsc(n)+'|'+atEsc(num)+'"><div class="at-carte-t">'+atEsc(ch.title||('Chapitre '+num))+'</div>'
       +'<div class="at-carte-m">'+(ch.ordre?('n\u00b0'+ch.ordre+' \u00b7 '):'')+nbSe+' s\u00e9ance'+(nbSe>1?'s':'')+' \u00b7 '+nbIt+' item'+(nbIt>1?'s':'')+' \u00b7 '+(pub?'publi\u00e9 (au moins une classe)':'non publi\u00e9')+'</div>'
       +'<div class="at-carte-st '+liCls+'">'+liTxt+'</div>'
       +'<div class="at-carte-b">'
@@ -11161,27 +11198,8 @@ function edFeuillesDuChapitre(level,chnum){
   return out;
 }
 /* la barre de fil, posée en tête de l'éditeur de feuille quand on vient d'un chapitre */
-function edBarreFil(){
-  if(!AT_FIL)return '';
-  var l=edFeuillesDuChapitre(AT_FIL.level,AT_FIL.chnum);
-  if(!l.length)return '';
-  var ch=(chapitresData[AT_FIL.level]||{})[AT_FIL.chnum]||{};
-  var h='<div class="ed-fil"><div class="ed-fil-haut">'
-    +'<button class="at-btn" onclick="edRetourChapitre()">\u2190 Le chapitre</button>'
-    +'<span class="ed-fil-tit">'+atEsc(ch.title||'')+' \u2014 '+l.length+' feuille'+(l.length>1?'s':'')+'</span></div>'
-    +'<div class="ed-fil-liste">';
-  var seanceVue='';
-  l.forEach(function(f){
-    if(f.seance!==seanceVue){seanceVue=f.seance;h+='<span class="ed-fil-se">'+atEsc(f.seanceTitre)+'</span>';}
-    var actif=(f.ref===AT.docId);
-    h+='<button class="at-btn ed-fil-btn'+(actif?' ed-fil-actif':'')+'" onclick="edEditerFeuille(\''+f.seance+'\',\''+f.item+'\')">'
-      +atEsc(f.titre)+(f.produitLib?('<span class="ed-fil-prod">'+atEsc(f.produitLib)+'</span>'):'')
-      +'</button>';
-  });
-  return h+'</div></div>';
-}
-/* entrer dans l'éditeur de feuille depuis le fil : même éditeur, mêmes cases, même
-   aperçu — le produit de la feuille ouverte commande le panneau. */
+/* [LOT9-\u2466] edBarreFil RETIR\u00c9E \u2014 barre retir\u00e9e sur d\u00e9cision de Paul (LOT4-\u2461) ;
+   preuve d'inatteignabilit\u00e9 au rapport. */
 function edEditerFeuille(j,k){
   var ec=AT.edChap||AT_FIL;if(!ec)return;
   var level=ec.level,chnum=ec.chnum;
@@ -11680,7 +11698,7 @@ function ed2Documents(level,chnum){
     if(vide){   /* [C5-ED2] une s\u00e9ance sans document est un TROU NOMM\u00c9, pas un silence */
       out.push({seance:p.j,seanceTitre:se.title||('S\u00e9ance '+p.j),rang:rang,teinte:ed2Teinte(rang),
                 item:'',uid:se.uid||'',ref:'',kind:'',titre:'Aucun document dans cette s\u00e9ance',
-                produit:'',feuille:false,attendu:true,seanceVide:true});
+                produit:'',feuille:false,attendu:true,seanceVide:true,seType:se.type||''});   /* [LOT9-\u2462] la garde se reconna\u00eet */
       return;
     }
     ordPaires(se.items||{}).forEach(function(q){
@@ -11724,40 +11742,8 @@ function ed2Sommaire(level,chnum,docs){
   h+='<button class="ed2-inserer" onclick="edAjouterSeance()">+ ins\u00e9rer une s\u00e9ance ici</button>';
   return h+'</div>';
 }
-/* la pile : les documents \u00e0 la suite, s\u00e9ance apr\u00e8s s\u00e9ance, halo dor\u00e9 sur le courant */
-function ed2Pile(level,chnum,docs){
-  var h='<div class="ed2-pile" id="ed2-pile">';
-  var seanceVue=null;
-  docs.forEach(function(d){
-    if(d.seance!==seanceVue){
-      seanceVue=d.seance;
-      h+='<div class="ed2-sep" style="border-color:'+d.teinte+'"><span style="color:'+d.teinte+'">'+atEsc(d.seanceTitre)+'</span></div>';
-    }
-    if(d.attendu){
-      h+='<div class="ed2-trou" data-item="'+d.item+'">'
-        +'<div class="ed2-trou-t">'+atEsc(d.titre)+'</div>'
-        +'<div class="ed2-trou-q">attendu \u2014 aucun document li\u00e9</div>'
-        +'<button class="at-btn at-btn-min" onclick="edCreerFeuilleIci(\''+d.seance+'\')">+ Feuille ici</button>'
-        +'<button class="at-btn at-btn-min at-btn-ia" onclick="edIAdepuisTrou(\''+d.seance+'\',\''+(d.item||'')+'\')">\u2728 \u00c9crire avec une IA</button>'
-        +'<button class="at-btn at-btn-min" onclick="edPrendreFeuille(\''+d.seance+'\',\''+(d.item||'')+'\')">Prendre une feuille existante\u2026</button>'
-        +(d.item?('<button class="at-btn at-btn-min" onclick="openLinkModal(\''+level+'\',\''+chnum+'\',\''+d.seance+'\',\''+d.item+'\')">Lier\u2026</button>'):('<button class="at-btn at-btn-min" onclick="edAjouterItem(\''+d.seance+'\')">+ Item</button>'))
-        +'</div>';
-      return;
-    }
-    h+='<div class="ed2-doc'+(ED2.courant===d.item?' ed2-halo':'')+'" data-item="'+d.item+'" data-ref="'+atEsc(d.ref)+'" onclick="ed2Poser(\''+d.item+'\')">'
-      +'<div class="ed2-doc-ref">Ch. '+atEsc(chnum)+' \u00b7 S. '+atEsc(String(d.rang+1))+'</div>'
-      +'<div class="ed2-doc-t">'+atEsc(d.titre)+'</div>'
-      +'<div class="ed2-doc-m">'+atEsc(d.produit?(((ATELIER_PRODUITS[d.produit]||{}).libelle)||d.produit):d.kind)+'</div>'
-      +'</div>';
-  });
-  return h+'</div>';
-}
-/* [LOT1-①] SÉLECTION ≠ DONNÉES : poser la feuille courante ne redessine RIEN.
-   La trace du banc a montré la boucle : clic au sommaire → rendu complet →
-   défilement posé par ed2Aller → l'écouteur → ed2Suivre posait UNE AUTRE feuille
-   → second rendu qui écrasait le choix de Paul (et remettait la pile à zéro).
-   Ici : classes basculées en place, réf courante mise à jour — seul un
-   changement de DONNÉES appelle atEditerChapitreRendre. */
+/* [LOT9-\u2466] ed2Pile RETIR\u00c9E \u2014 colonne remplac\u00e9e par le papier ; preuve
+   d'inatteignabilit\u00e9 au rapport (0 appel direct, 0 appel par cha\u00eene). */
 function ed2Poser(item){
   if(ED2.courant===item)return;
   ED2.courant=item;
@@ -11912,9 +11898,40 @@ function ctxSommaireCible(t){
   if(li&&!li.classList.contains('ed2-attendu')&&li.getAttribute('data-item'))return {type:'item',id:li.getAttribute('data-item')};
   var sc=t.closest('.ed2-som .ed2-sce');
   if(sc&&sc.getAttribute('data-seance'))return {type:'seance',id:sc.getAttribute('data-seance')};
+  /* [LOT9-\u2464] les deux cibles du CHAPITRE : la carte de \u00ab Mes chapitres \u00bb et
+     l'en-t\u00eate de l'\u00e9diteur (r\u00e8gle du miroir \u2014 un objet, deux lieux, m\u00eames gestes). */
+  var cc=t.closest('[data-chctx]');
+  if(cc)return {type:'chapitre',id:cc.getAttribute('data-chctx')};
   return null;
 }
+/* [LOT9-\u2464] LE MENU DU CHAPITRE \u2014 m\u00eame moteur (table + ctxOuvrir), AUCUN geste
+   invent\u00e9 : chaque entr\u00e9e appelle une fonction existante (r\u00e8gle du miroir). Il
+   vit sur DEUX cibles : la carte de \u00ab Mes chapitres \u00bb (atelier) et l'en-t\u00eate de
+   l'\u00e9diteur \u2014 il ne d\u00e9pend donc PAS de _edCh(). */
+function ctxEntreesChapitre(level,chnum){
+  var ch=chapitresData[level]&&chapitresData[level][chnum];if(!ch)return [];
+  var dansEditeur=!!(AT.edChap&&AT.edChap.level===level&&AT.edChap.chnum===chnum);
+  var e=[];
+  if(!dansEditeur)e.push({lib:'Ouvrir / Modifier',faire:function(){atEditerChapitre(level,chnum);}});
+  e.push({lib:'Ajouter une s\u00e9ance',faire:function(){addSeance(level,chnum);setTimeout(dansEditeur?atEditerChapitreRendre:atRendreListe,900);}});
+  e.push({lib:'R\u00e9g\u00e9n\u00e9rer la page de garde\u2026',faire:function(){atProposerSommaire(level,chnum,dansEditeur?atEditerChapitreRendre:null);}});
+  e.push({lib:'Voir dans le panneau prof',faire:function(){atVoirPanneau(level,chnum);}});
+  e.push({lib:'O\u00f9 est-ce ? (contenu)',faire:function(){
+    var ses=atSeances(ch);
+    atInfo('\u00ab '+atEsc(ch.title||('Chapitre '+chnum))+' \u00bb contient '+(ses.length?(ses.length+' s\u00e9ance'+(ses.length>1?'s':'')+' : '+ses.map(function(p){return atEsc(p.se.title||('S\u00e9ance '+p.j));}).join(' \u00b7 ')):'\u2014 aucune s\u00e9ance pour l\u2019instant.'));
+  }});
+  e.push({lib:'Dupliquer le chapitre',faire:function(){atDupliquerChapitre(level,chnum);}});
+  e.push({lib:'Supprimer\u2026',danger:true,faire:function(){atSupprimerChapitre(level,chnum);}});
+  return e;
+}
 function ctxSommaireOuvrir(x,y,cible){
+  if(cible.type==='chapitre'){
+    var pc=cible.id.split('|');
+    var chx=chapitresData[pc[0]]&&chapitresData[pc[0]][pc[1]];
+    if(!chx)return;
+    ctxOuvrir(x,y,chx.title||('Chapitre '+pc[1]),ctxEntreesChapitre(pc[0],pc[1]));
+    return;
+  }
   var c=_edCh();if(!c)return;
   if(cible.type==='item'){
     var d=ed2Documents(c.ec.level,c.ec.chnum).filter(function(q){return q.item===cible.id&&!q.attendu;})[0];
@@ -12153,6 +12170,21 @@ function ed2Papier(level,chnum,docs){
     }
     if(d.attendu){
       if(nouvelle){h+=_pse(d,'');titreDu[d.seance]='fil';}   /* s\u00e9ance ouverte par un trou : titre au fil */
+      /* [LOT9-\u2462] LA PAGE DE GARDE AU PAPIER : la s\u00e9ance de type 'sommaire' sans
+         document ne dit plus \u00ab aucun document \u00bb \u2014 elle MONTRE les champs du
+         chapitre (titre, entr\u00e9e, comp\u00e9tences), chacun cliquable vers son champ du
+         panneau (cl\u00e9s ch-*). Non imprim\u00e9e, comme les trous (r\u00e8gle @media print). */
+      if(d.seanceVide&&d.seType==='sommaire'){
+        var _ch=(chapitresData[level]||{})[chnum]||{};
+        var _comp=(_ch.competencesMajeures||[]).concat(_ch.competencesMineures||[]);
+        h+='<div class="ed2-garde" data-seance="'+atEsc(d.seance)+'">'
+          +'<div class="ed2-garde-q">page de garde \u2014 les champs du chapitre</div>'
+          +'<div class="ed2-garde-t" data-gchamp="title" onclick="ed2SelectionnerChap(\'title\',\'papier\')">'+atEsc(_ch.title||'Sans titre')+'</div>'
+          +'<div class="ed2-garde-e" data-gchamp="entree" onclick="ed2SelectionnerChap(\'entree\',\'papier\')">'+atEsc(_ch.entree||'Entr\u00e9e du chapitre \u00e0 \u00e9crire')+'</div>'
+          +'<div class="ed2-garde-c" data-gchamp="comp" onclick="ed2SelectionnerChap(\'comp\',\'papier\')">'+(_comp.length?_comp.map(function(x){return atEsc(x);}).join(' \u00b7 '):'Comp\u00e9tences \u00e0 d\u00e9clarer')+'</div>'
+          +'</div>';
+        return;
+      }
       h+=_trou(d);return;
     }
     var ip=mapPage[d.item];
@@ -12296,9 +12328,33 @@ function ed2SelectionnerSeance(j,depuis){
     if(som){ED2.gel=Date.now()+400;som.scrollTop=som.scrollTop+lig.getBoundingClientRect().top-som.getBoundingClientRect().top-24;}
   }
 }
+/* [LOT9-\u2462] LES CHAMPS DU CHAPITRE SE S\u00c9LECTIONNENT AUSSI : la ligne du panneau
+   s'allume et re\u00e7oit le focus ; au papier, la page de garde s'allume (elle est
+   leur correspondance visible). M\u00eame patron que la s\u00e9ance. */
+function ed2SelectionnerChap(champ,depuis){
+  ED2.caseSel={item:null,champ:'ch-'+champ};
+  document.querySelectorAll('.ed2-sel,.ed2-zsel').forEach(function(x){x.classList.remove('ed2-sel');x.classList.remove('ed2-zsel');});
+  var ligne=document.querySelector('#ed2-pan [data-champ="ch-'+champ+'"]');
+  if(ligne){
+    ligne.classList.add('ed2-sel');
+    if(depuis!=='panneau'){
+      ed2PanVers(ligne);
+      var chp=ligne.querySelector('input,textarea');
+      if(chp)try{chp.focus();}catch(e){}
+    }
+  }
+  var garde=document.querySelector('.ed2-papier .ed2-garde');
+  if(garde){
+    garde.classList.add('ed2-sel');
+    var zg=garde.querySelector('[data-gchamp="'+champ+'"]');
+    if(zg)zg.classList.add('ed2-zsel');
+    if(depuis!=='papier')ed2PapierVers(zg||garde);
+  }
+}
 function ed2Selectionner(item,champ,depuis){
   var _cs=ed2CleLire(champ);
   if(_cs&&_cs.seance){ed2SelectionnerSeance(_cs.seance,depuis);return;}   /* [LOT9-\u2460] */
+  if(_cs&&_cs.chap){ed2SelectionnerChap(_cs.chap,depuis);return;}         /* [LOT9-\u2462] */
   ED2.caseSel={item:item,champ:champ};
   document.querySelectorAll('.ed2-sel,.ed2-zsel').forEach(function(x){x.classList.remove('ed2-sel');x.classList.remove('ed2-zsel');});
   var ligne=document.querySelector('#ed2-pan [data-champ="'+champ+'"]');
@@ -12344,7 +12400,8 @@ function ed2CleSe(j){return 'se-'+j;}   /* [LOT9-\u2460] la cl\u00e9 d'une S\u00
 function ed2CleLire(champ){
   if(!champ)return null;
   if(champ.indexOf('item-')===0&&champ.length>5)return {item:champ.slice(5),comp:null,rang:0};
-  if(champ.indexOf('se-')===0&&champ.length>3)return {seance:champ.slice(3),item:null,comp:null,rang:0};   /* [LOT9-\u2460] 'se-<j>' \u2192 la s\u00e9ance \u2014 aucun item ne commence par 'se-' au motif des cl\u00e9s (les items vivent sous 'item-', les composantes sous 'c-') */
+  if(champ.indexOf('se-')===0&&champ.length>3)return {seance:champ.slice(3),item:null,comp:null,rang:0};
+  if(champ.indexOf('ch-')===0&&champ.length>3)return {chap:champ.slice(3),item:null,comp:null,rang:0};   /* [LOT9-\u2462] 'ch-<champ>' \u2192 un champ du CHAPITRE (title, entree, comp) */   /* [LOT9-\u2460] 'se-<j>' \u2192 la s\u00e9ance \u2014 aucun item ne commence par 'se-' au motif des cl\u00e9s (les items vivent sous 'item-', les composantes sous 'c-') */
   if(champ.indexOf('c-')!==0)return null;
   var p2=champ.lastIndexOf('-');if(p2<=2)return null;
   var rang=champ.slice(p2+1);if(!/^[0-9]+$/.test(rang))return null;
@@ -12518,6 +12575,7 @@ function ed2ClicChamp(champ){
      Clé sans item ('title'…) : ED2.courant, comme avant. */
   var c=ed2CleLire(champ);
   if(c&&c.seance){ed2SelectionnerSeance(c.seance,'panneau');return;}   /* [LOT9-\u2460] la cl\u00e9 de S\u00c9ANCE */
+  if(c&&c.chap){ed2SelectionnerChap(c.chap,'panneau');return;}         /* [LOT9-\u2462] la cl\u00e9 du CHAPITRE */
   var item=(c&&c.item)||ED2.courant;
   ed2Poser(item);
   ed2Selectionner(item,champ,'panneau');
@@ -12551,7 +12609,7 @@ function atEditerChapitreRendre(){
     ED2.courant=_pr?_pr.item:null;
   }
   var h='<div class="at-ia-haut"><button class="at-btn" onclick="atEditerChapitreSortie()">\u2190 Mes chapitres</button>'
-    +'<h3 class="at-ia-titre">'+atEsc(ch.title||'')+'<small> \u00b7 '+atEsc(ec.level)+' \u00b7 '+(_estPublieItem(ch)?'publi\u00e9':'non publi\u00e9')+'</small></h3></div>'
+    +'<h3 class="at-ia-titre" data-chctx="'+atEsc(ec.level)+'|'+atEsc(ec.chnum)+'">'+atEsc(ch.title||'')+'<small> \u00b7 '+atEsc(ec.level)+' \u00b7 '+(_estPublieItem(ch)?'publi\u00e9':'non publi\u00e9')+'</small></h3></div>'
     +'<div class="at-ia-sous">Chaque champ s\u2019enregistre d\u00e8s que tu le quittes. La publication se fait par le geste \u00ab Publier\u2026 \u00bb.</div>';
   h+='<div class="ed2-grille">'+ed2Sommaire(ec.level,ec.chnum,_docs)+'<div class="ed2-pan" id="ed2-pan">';
   /* [C5-ED1] la barre de gestes du chapitre : lier par les titres, ajouter une
@@ -12564,21 +12622,26 @@ function atEditerChapitreRendre(){
   var _manq=edFeuillesJamaisEnvoyees();
   if(_manq.length)h+='<button class="at-btn at-btn-prim" onclick="edEnvoyerManquantes()">\u2709 Envoyer les '+_manq.length+' feuille'+(_manq.length>1?'s':'')+' jamais envoy\u00e9e'+(_manq.length>1?'s':'')+'</button>';
   h+='</div>';
-  h+='<div class="at-edch"><label class="at-edch-lib">Titre du chapitre</label>'
-    +'<input class="at-edch-in" value="'+atEsc(ch.title||'')+'" onchange="atChampChapitre(\'title\',this.value)">'
-    +'<label class="at-edch-lib">Entr\u00e9e du chapitre (ce qu\u2019on va apprendre)</label>'
-    +'<textarea class="at-edch-ta" onchange="atChampChapitre(\'entree\',this.value)">'+atEsc(ch.entree||'')+'</textarea>'
-    +'<label class="at-edch-lib">Comp\u00e9tences majeures (une par ligne)</label>'
+  /* [LOT9-\u2462] les champs du chapitre portent leur CL\u00c9 (motif 'ch-<champ>', lu par
+     ed2CleLire) : la page de garde du papier m\u00e8ne \u00e0 eux \u2014 la loi des trois colonnes. */
+  h+='<div class="at-edch"><div class="at-edch-fz" data-champ="ch-title" onclick="event.stopPropagation();ed2ClicChamp(\'ch-title\')"><label class="at-edch-lib">Titre du chapitre</label>'
+    +'<input class="at-edch-in" value="'+atEsc(ch.title||'')+'" onchange="atChampChapitre(\'title\',this.value)"></div>'
+    +'<div class="at-edch-fz" data-champ="ch-entree" onclick="event.stopPropagation();ed2ClicChamp(\'ch-entree\')"><label class="at-edch-lib">Entr\u00e9e du chapitre (ce qu\u2019on va apprendre)</label>'
+    +'<textarea class="at-edch-ta" onchange="atChampChapitre(\'entree\',this.value)">'+atEsc(ch.entree||'')+'</textarea></div>'
+    +'<div class="at-edch-fz" data-champ="ch-comp" onclick="event.stopPropagation();ed2ClicChamp(\'ch-comp\')"><label class="at-edch-lib">Comp\u00e9tences majeures (une par ligne)</label>'
     +'<textarea class="at-edch-ta" onchange="atChampChapitre(\'competencesMajeures\',this.value.split(String.fromCharCode(10)).map(function(x){return x.trim();}).filter(Boolean))">'+atEsc((ch.competencesMajeures||[]).join(String.fromCharCode(10)))+'</textarea>'
     +'<label class="at-edch-lib">Comp\u00e9tences mineures (une par ligne)</label>'
-    +'<textarea class="at-edch-ta" onchange="atChampChapitre(\'competencesMineures\',this.value.split(String.fromCharCode(10)).map(function(x){return x.trim();}).filter(Boolean))">'+atEsc((ch.competencesMineures||[]).join(String.fromCharCode(10)))+'</textarea>'
+    +'<textarea class="at-edch-ta" onchange="atChampChapitre(\'competencesMineures\',this.value.split(String.fromCharCode(10)).map(function(x){return x.trim();}).filter(Boolean))">'+atEsc((ch.competencesMineures||[]).join(String.fromCharCode(10)))+'</textarea></div>'
     +'</div>';
   var _nbSe=atSeances(ch).length;   /* [LOT1-⑥] les flèches de bordure se désactivent :
      un ↑ sur la première séance (ou ↓ sur la dernière) proposait une action
      impossible, en silence — même règle que ④. */
   atSeances(ch).forEach(function(p,_rangSe){
     var se=p.se,j=p.j;
-    var somNote=(se.type==='sommaire')?' <span class="ch-type">sommaire \u2014 le contenu se r\u00e9g\u00e9n\u00e8re, il ne s\u2019\u00e9dite pas ici</span>':'';
+    /* [LOT9-\u2462] la page de garde S'\u00c9DITE comme les autres s\u00e9ances \u2014 le verrou
+       (\u00ab ne s'\u00e9dite pas ici \u00bb) dispara\u00eet ; la r\u00e9g\u00e9n\u00e9ration RESTE et avertit
+       d\u00e9sormais quand des retouches existent (retoucheLe, voir atChampSeance). */
+    var somNote=(se.type==='sommaire')?' <span class="ch-type">page de garde</span>':'';
     /* [C5-ED1] les gestes de la s\u00e9ance : monter, descendre, ajouter un item,
        supprimer (garde d'IDENTIT\u00c9S incluse : deleteSeance pr\u00e9vient qui pointe). */
     var _ordSe=ordDe(se,j);
@@ -12920,6 +12983,17 @@ function atChampSeance(j,champ,val){
   secuEcrire(chemin,val).then(function(r){
     if(!r.ok){atInfo('\u26a0 Le champ n\u2019a pas pu s\u2019enregistrer \u2014 il garde son ancienne valeur en base.');return;}
     chapitresData[ec.level][ec.chnum].seances[j][champ]=val;ec.modifie=true;
+    /* [LOT9-\u2462] LA PAGE DE GARDE RETOUCH\u00c9E SE SOUVIENT : l'\u00e9crivain d'\u00e9dition pose
+       `retoucheLe` (horodatage, champ de DONN\u00c9ES \u2014 jamais lu par un rendu \u00e9l\u00e8ve)
+       sur la s\u00e9ance de type sommaire ; la r\u00e9g\u00e9n\u00e9ration le lit pour AVERTIR avant
+       d'\u00e9craser (atProposerSommaire), et l'efface en r\u00e9g\u00e9n\u00e9rant (l'objet neuf ne
+       le porte pas). Aucun autre \u00e9crivain. */
+    if(se&&se.type==='sommaire'&&champ!=='retoucheLe'){
+      var ts=Date.now();
+      secuEcrire('/site/'+ec.level+'/chapitres/'+ec.chnum+'/seances/'+j+'/retoucheLe',ts).then(function(r2){
+        if(r2.ok)chapitresData[ec.level][ec.chnum].seances[j].retoucheLe=ts;
+      });
+    }
     edUndoPoser('le champ \u00ab '+champ+' \u00bb de la s\u00e9ance \u00ab '+((se&&se.title)||j)+' \u00bb',anc===undefined?'':anc,
       function(v){atChampSeance(j,champ,v);});
   });
@@ -12947,8 +13021,18 @@ function atEditerChapitreSortie(){
 /* le sommaire PROPOSÉ — jamais automatique */
 function atProposerSommaire(level,chnum,apres){
   var ch=chapitresData[level]&&chapitresData[level][chnum];
-  var aSom=!!ch&&atSeances(ch).some(function(p){return p.se.type==='sommaire';});
-  if(!ch||!aSom){if(apres)apres();return;}
+  var somP=ch?atSeances(ch).filter(function(p){return p.se.type==='sommaire';})[0]:null;
+  if(!ch||!somP){if(apres)apres();return;}
+  /* [LOT9-\u2462] LA R\u00c9G\u00c9N\u00c9RATION N'\u00c9CRASE JAMAIS SANS AVERTIR : si la page de garde
+     porte des retouches (retoucheLe), la modale le DIT et n'offre que deux issues.
+     Sans retouche : la proposition habituelle. */
+  if(somP.se.retoucheLe){
+    var quand=new Date(somP.se.retoucheLe).toLocaleDateString('fr-FR');
+    atModaleChoix('Le chapitre a chang\u00e9 \u2014 mais tu as retouch\u00e9 la page de garde \u00e0 la main (le '+quand+'). R\u00e9g\u00e9n\u00e9rer l\u2019\u00e9crasera : tes retouches seront perdues.',
+      [{lib:'R\u00e9g\u00e9n\u00e9rer \u2014 mes retouches sont perdues',danger:true,fn:function(){atRegenererSommaire(level,chnum,apres);}},
+       {lib:'Garder mes retouches',prim:true,fn:function(){if(apres)apres();}}]);
+    return;
+  }
   atModaleChoix('Le chapitre a chang\u00e9 \u2014 r\u00e9g\u00e9n\u00e9rer la feuille sommaire ?',
     [{lib:'R\u00e9g\u00e9n\u00e9rer',prim:true,fn:function(){atRegenererSommaire(level,chnum,apres);}},
      {lib:'Plus tard',fn:function(){if(apres)apres();}}]);

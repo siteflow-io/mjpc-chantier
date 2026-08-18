@@ -36,3 +36,36 @@ avant-01 (le clic propose le dépôt) · avant-02 (« déjà déposée », 0 éc
 
 ## Dettes
 Aucune nouvelle. ⑪b suit (③ retrait de la zone « À classer » + select ré-émetteur, ④ symétrie « envoyé mais pas encore ouvert », ⑤ vocabulaire « ligne »→« document », liste intégrale soumise).
+
+---
+
+# LOT ⑪b — la zone « À classer » disparaît, le type se décide dans l'éditeur, le vocabulaire de Paul
+
+**Base** : le sas 8.56.0 (1 006 811 o, `bd1f5bfd26417259451a627918e60317`). **Livré** : `LOT11/index.html` **1 001 241 o, md5 `770dbe3afebdf758621e08c832ba34ac`, pastille 8.56.1**, vérifié bit à bit. Dual parser vert ; banc 0 écriture réelle, 0 exception ; vue élève identique base↔8.56.1 (rayons 7·3·1·1, 7 chapitres, les deux fichiers).
+
+## ③ Le retrait — avec ses preuves d'inatteignabilité
+Retirés : **`atCtrlNonRangees`** (2 286 o, bloc avec sa fonction interne `ligne`), **`atCtrlEnvoyer`** (678 o), **`atCtrlOuvrirItem`** (221 o), l'appel dans `atRendreChapitres`, le paquet CSS **`.at-nr*`** (7 règles, 653 o), la branche `[LOT9-⑧] else if(...atRendreListe...)` d'`itemProduitPoser` (le re-rendu du panneau). **Preuves** : `atCtrlEnvoyer` et `atCtrlOuvrirItem` n'étaient appelées QUE par le HTML généré par `atCtrlNonRangees` (l.11145/11156/11157 de la base) ; `atCtrlNonRangees` n'était appelée QUE par `atRendreChapitres` (l.11195) ; après retrait, **0 occurrence** de chacun dans le fichier (grep), et plus aucune règle `.at-nr` (2 mentions restantes = commentaires d'histoire). Un commentaire de `collectRayons` qui les citait est ajusté. **CONSERVÉS, prouvés vivants** : `itemProduitPoser`/`atFeuilleProduitPoser` (écrivains), le menu de type de l'éditeur (`itemProduitMenu`, l.12782) et de la carte de feuille (`atProduitMenu`, C5-AR), le rangement par type des onglets, toutes les détections de ④. ⚠ Incident de tour déclaré : un premier ancrage de découpe avait emporté 712 Ko — attrapé AVANT tout push par le compte de fonctions du bloc, refait au cordeau depuis la base saine (le fichier livré est propre, tailles à l'appui).
+
+## ③ Le menu de type entend la re-sélection
+`_produitSelectHTML` 376→1 036 o : au **focus**, la sélection s'efface (étiquette « Produit… ») ; choisir — même le type d'avant — redevient un vrai `change` ; refermer sans choisir **restaure** l'affichage (`onblur`). Même écrivain (celui passé en paramètre), rien d'écrit si la valeur est vide. **Prouvé au banc** : re-choisir `support_cours` déjà en place → `PUT …/items/tableaux/produit` capté (capture b-02). Vaut pour les DEUX menus (éditeur + carte de feuille), même gabarit.
+
+## ④ La symétrie existait — contestation sourcée de la mesure « 0 occurrence »
+L'état « **envoyée, pas encore ouverte** » est DÉJÀ détecté et affiché sur le document dans l'éditeur (`atEditerChapitreRendre`, branche `!_p&&_envAt`, + `edEnvoiInfo('envoye-non-publie')` : « Envoyée mais pas publiée : la version est prête… ») — signalement sobre, sans action forcée, exactement la demande. **Prouvé au banc** : la fiche des registres dépubliée (mutation du snapshot, `published:{}`) affiche « envoyée, pas encore ouverte » ⓘ (capture b-03). Rien n'a été codé en doublon ; les détections « ouvert jamais envoyé » (garde `edPublierItem`, bandeau de lecture, lot `edFeuillesJamaisEnvoyees`) fonctionnent après ③ — **l'envoi en lot prouvé** : « ✉ Envoyer les 2 feuilles jamais envoyées » → exactement `PUT envois/<ref>`+`PUT documents/<ref>` ×2 par `atEnvoyerVersion` (captures b-04, b-05). Les **deux propositions automatiques** post-enregistrement rejouées : dépôt (« la déposer dans la séance ? », b-06) et envoi (« …jamais été envoyée aux élèves — ils ne peuvent pas l'ouvrir. L'envoyer ? », b-07).
+
+## ⑤ Le vocabulaire — restreint (Q2), liste intégrale ancienne → nouvelle (textes soumis à Paul)
+« publier/publication » CONSERVÉS (vocabulaire de Paul) ; « ouvert aux élèves » existant conservé ; seul l'OBJET change. Cinq chaînes, aucune autre occurrence de « ligne »-objet dans les textes d'ouverture/envoi (inventaire par balayage, faux positifs écartés : « en ligne », « un élève par ligne », formes techniques `*_ligne`) :
+1. Carte de feuille (tooltip ⚠) : « …la **ligne** s'ouvre sur rien… » → « …le **document** s'ouvre sur rien… »
+2. ⓘ publiée-sans-envoi : « la **ligne** apparaît aux élèves » → « le **document** apparaît aux élèves »
+3. ⓘ envoyée-non-publiée : « ne voient pas encore la **ligne** » → « …pas encore le **document** »
+4. ⓘ ni-ni : « la publication ouvre la **ligne** » → « la publication ouvre le **document** »
+5. Garde d'edPublierItem : « publier **sa ligne** maintenant, c'est leur montrer **un document** qui ne s'ouvre sur rien » → « publier **ce document** maintenant, c'est leur montrer **une fiche** qui ne s'ouvre sur rien »
+(⑪a avait déjà porté « L'item n'a pas pu se créer » → « Le document n'a pas pu se créer ».)
+
+## Tailles (8.56.0 → 8.56.1)
+`atCtrlNonRangees` 2 286→**retirée** · `atCtrlEnvoyer` 678→**retirée** · `atCtrlOuvrirItem` 221→**retirée** · CSS `.at-nr*` −653 o · `atRendreChapitres` 2 235→2 215 · `itemProduitPoser` 989→751 · `_produitSelectHTML` 376→1 036 · `edEnvoiInfo` 1 062→1 071 (« ligne »→« document ») · `edPublierItem` 2 769→2 770. 0 fonction neuve, 3 retirées avec preuves, `published` intouché.
+
+## Captures ⑪b (`LOT11/captures/`)
+b-01 l'atelier sans la zone (desktop) · b-02 le select qui écrit à la re-sélection · b-03 « envoyée, pas encore ouverte » · b-04/b-05 l'envoi en lot (modale, envoyé) · b-06/b-07 les deux propositions automatiques · b-08 390 px.
+
+## Dettes
+Aucune nouvelle. Textes soumis à Paul : les 5 chaînes ⑤ ci-dessus + les 3 de ⑪a. Cahier des charges post-⑪ inchangé (ex-LOT ⑩ : impression/densité, images de feuille, suppression Drive).

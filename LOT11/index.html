@@ -1150,13 +1150,7 @@ button.dp-img-btn.dp-img-drop{border-color:#d4a017;background:rgba(212,160,23,.2
 /* [LOT9-\u2467] .rayons-ignores-bloc retir\u00e9 (le bloc a d\u00e9m\u00e9nag\u00e9 \u2014 voir at-nr-*) */
 /* [LOT9-\u2467] LE PANNEAU DE CONTR\u00d4LE des non-rang\u00e9es (t\u00eate de \u00ab Mes chapitres \u00bb) —
    les r\u00e8gles de ligne reprennent l'ancien bloc, sous des classes propres. */
-.at-nr{border:1px dashed rgba(255,200,80,0.55);border-radius:10px;padding:12px 14px;margin:0 0 14px;background:rgba(255,200,80,0.06)}
-.at-nr-titre{font-size:0.82rem;font-weight:600;color:#ffd77a;margin-bottom:8px}
-.at-nr-l{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:6px 0;border-top:1px solid rgba(255,255,255,0.07)}
-.at-nr-l .at-nr-t{font-weight:600;font-size:0.85rem}
-.at-nr-l .at-nr-c{color:rgba(255,255,255,0.55);font-size:0.78rem;font-style:italic;flex:1;min-width:180px}
-.at-nr-pli{margin-top:8px}
-.at-nr-pli summary{cursor:pointer;color:rgba(255,255,255,0.55);font-size:0.8rem;min-height:44px;display:flex;align-items:center}
+/* [LOT11-\u2462] les r\u00e8gles .at-nr* de la zone \u00ab \u00c0 classer \u00bb sont retir\u00e9es avec elle */
 /* [LOT8-\u2466] la trace du remplac\u00e9 au panneau */
 .at-edch-rempl{font-size:0.74rem;color:rgba(255,255,255,0.45);font-style:italic;margin:2px 0 6px;padding-left:14px}
 /* SITE-COURS-2c — le bandeau du message élève (écran seulement, hors iframe) */
@@ -2813,7 +2807,7 @@ function mjpcEcrireRest(url,options,cb){
    (les 3 gestes, le geste conservatoire par app, ce qui ne peut pas arriver).
    RESTAURER LA VERSION PRÉCÉDENTE : docs/MJPC6-restauration.md (convention BUG).
    ═══════════════════════════════════════════════════════════════════════════ */
-var APP_VERSION="8.56.0";
+var APP_VERSION="8.56.1";
 var APP_VERSION_DATE="2026-08-14";
 // ── 11. Coffre : dérivation, chiffrement, empreinte (v1.3.0) ──
 // (Le canon porte deux sections « 8 » — dette de numérotation connue, non corrigée
@@ -3602,7 +3596,7 @@ function renderItem(level,chnum,snum,itemId,it,subNum,isAdmin){
      (le même état que l'éditeur — une seule source : LINK_ATELIER_DOCS[ref].envoi). */
   if(isAdmin&&it.source==='atelier'&&it.ref&&typeof LINK_ATELIER_DOCS!=='undefined'&&LINK_ATELIER_DOCS&&LINK_ATELIER_DOCS[it.ref]){
     var _envA=LINK_ATELIER_DOCS[it.ref].envoi;
-    if(!_envA&&pubV)actionTxt='<span class="at-st-diverge" title="Publi\u00e9e mais jamais envoy\u00e9e : la ligne s\u2019ouvre sur rien. Envoyer depuis la feuille ou l\u2019\u00e9diteur de chapitre.">\u26a0 jamais envoy\u00e9e</span> '+actionTxt;
+    if(!_envA&&pubV)actionTxt='<span class="at-st-diverge" title="Publi\u00e9e mais jamais envoy\u00e9e : le document s\u2019ouvre sur rien. Envoyer depuis la feuille ou l\u2019\u00e9diteur de chapitre.">\u26a0 jamais envoy\u00e9e</span> '+actionTxt;
     else if(!_envA)actionTxt='<span class="at-st-adresse">\u2709 jamais envoy\u00e9e</span> '+actionTxt;
   }
   var lierPulse=(!it.ref)?' at-lier-pulse':'';   /* [C5-3a] le LIER d'un item non lié respire, jusqu'à la liaison */
@@ -5025,7 +5019,7 @@ function renderRayons(level){
      existant). L'\u00e9l\u00e8ve ne voit rien : le bloc n'est rendu qu'en mode admin. */
   /* [LOT9-\u2467] le rendu du bloc \u00ab \u26a0 Non rang\u00e9es \u00bb quitte les onglets publics :
      il vit d\u00e9sormais en PANNEAU DE CONTR\u00d4LE en t\u00eate de \u00ab Mes chapitres \u00bb de
-     l'atelier (atCtrlNonRangees) \u2014 les onglets transversaux ne portent plus
+     l'atelier (zone retir\u00e9e au LOT11-\u2462 : le type se d\u00e9cide dans l'\u00e9diteur) \u2014 les onglets transversaux ne portent plus
      aucun bloc d'administration. Causes et \u00e9crivains inchang\u00e9s. */
   return r;
 }
@@ -7136,7 +7130,15 @@ function atFeuilleProduitPoser(id,prod){
    sert les feuilles de l'atelier (\u00e9crivain atFeuilleProduitPoser) et les items
    drive/external (\u00e9crivain itemProduitPoser) \u2014 aucun \u00e9cran neuf, le m\u00eame geste. */
 function _produitSelectHTML(onchange,prodCourant){
-  return '<select class="at-sel at-sel-mini" onchange="'+onchange+'">'
+  /* [LOT11-\u2462] LE GESTE EST ENTENDU M\u00caME SANS CHANGEMENT : un <select> n'\u00e9met
+     pas `change` quand on re-choisit la valeur d\u00e9j\u00e0 en place. Au focus, la
+     s\u00e9lection s'efface (\u00e9tiquette \u00ab Produit\u2026 \u00bb) : choisir \u2014 m\u00eame le type
+     d'avant \u2014 redevient un vrai `change` ; refermer sans choisir restaure
+     l'affichage. M\u00came \u00e9crivain (celui pass\u00e9 en `onchange`), rien d'\u00e9crit si vide. */
+  return '<select class="at-sel at-sel-mini"'
+    +' onfocus="this.dataset.avant=this.value;this.value=\'\'"'
+    +' onblur="if(!this.value)this.value=this.dataset.avant||\'\'"'
+    +' onchange="if(this.value){this.dataset.avant=this.value;'+onchange+'}">'
     +'<option value="">Produit\u2026</option>'
     +Object.keys(ATELIER_PRODUITS).map(function(p){
        return '<option value="'+p+'"'+(p===prodCourant?' selected':'')+'>'+atEsc(ATELIER_PRODUITS[p].libelle)+'</option>';
@@ -7161,8 +7163,7 @@ function itemProduitPoser(level,chnum,snum,itemId,prod){
     var _tf=document.getElementById('tab-fiches');
     if(_tf&&_tf.style.display!=='none'&&typeof renderRayons==='function')renderRayons(clickedLevel||currentLevel||'');
     if(typeof AT!=='undefined'&&AT.edChap&&typeof atEditerChapitreRendre==='function')atEditerChapitreRendre();
-    /* [LOT9-\u2467] le panneau de contr\u00f4le suit sans rechargement (la ligne class\u00e9e dispara\u00eet) */
-    else if(typeof AT!=='undefined'&&!AT.edChap&&AT.onglet==='chapitres'&&typeof atRendreListe==='function')atRendreListe();
+
   });
 }
 function atProduitRayon(prod){
@@ -11104,95 +11105,15 @@ function atChapitreLiaisons(ch){
   });
   return {total:total,sans:sans};
 }
-/* [LOT9-\u2467] LE PANNEAU DE CONTR\u00d4LE \u2014 \u00ab comme des classeurs qu'on classe, et qui ne
-   tra\u00eenent plus sur la table une fois class\u00e9s \u00bb (Paul). En t\u00eate de \u00ab Mes
-   chapitres \u00bb ; N'APPARA\u00ceT QUE s'il y a quelque chose (jamais de cadre vide) ;
-   chaque ligne dispara\u00eet d\u00e8s qu'elle est class\u00e9e, sans rechargement (les
-   \u00e9crivains re-rendent l'\u00e9cran \u2014 inchang\u00e9s par ailleurs) ; les lignes \u00e9cart\u00e9es
-   par la publication ne sont PAS un travail en attente : pli discret, repli\u00e9. */
-function atCtrlNonRangees(n){
-  if(!chapitresData[n])return '';
-  if(typeof LINK_ATELIER_DOCS==='undefined'||!LINK_ATELIER_DOCS||!Object.keys(LINK_ATELIER_DOCS).length){
-    /* le cache des feuilles n'est pas l\u00e0 : le charger puis re-rendre \u2014 sans lui,
-       toute feuille para\u00eetrait \u00ab illisible \u00bb \u00e0 tort (le pi\u00e8ge pasCache). */
-    if(typeof atSiteGetDocs==='function'&&!AT._nrCharge){AT._nrCharge=true;atSiteGetDocs(function(docs){LINK_ATELIER_DOCS=docs||{};if(AT.onglet==='chapitres'&&!AT.edChap)atRendreListe();});}
-    return '';
-  }
-  var r=collectRayons(n);
-  /* [LOT9-8.55.1-\u2462] PUBLI\u00c9 MAIS JAMAIS ENVOY\u00c9 \u2014 un pi\u00e8ge, donc un TRAVAIL :
-     publier ouvre l'acc\u00e8s, envoyer fige la version que l'\u00e9l\u00e8ve lit ; publi\u00e9 sans
-     envoi = rang\u00e9, visible chez l'\u00e9l\u00e8ve, et ne s'ouvre pas. D\u00e9tection : la
-     m\u00eame lecture qu'edFeuillesJamaisEnvoyees (`d.envoi` du cache atSiteGetDocs,
-     d\u00e9j\u00e0 charg\u00e9 par le panneau) \u2014 UNE traversée m\u00e9moire au rendu, Z\u00c9RO appel
-     r\u00e9seau par ligne. Toujours DEHORS (jamais dans le pli). */
-  var jamais=[],_vus={};
-  collectChapterItems(n,'atelier',false).forEach(function(e){
-    var it=e.item;if(!it||it.source==='drive'||it.source==='external'||!it.ref)return;
-    var d=LINK_ATELIER_DOCS[it.ref];
-    if(d&&!d.envoi&&!_vus[it.ref]){_vus[it.ref]=1;jamais.push({ref:it.ref,titre:d.titre||it.title||it.ref,chnum:e.chnum,itemId:e.itemId});}
-  });
-  if(!r.ignores.length&&!jamais.length)return '';
-  var CAUSES={nonPubliee:'ce document n\u2019est pas encore ouvert aux \u00e9l\u00e8ves \u2014 il se rangera quand tu publieras sa s\u00e9ance',   /* [8.55.1-\u2461] texte de Paul */
-              pasCache:'la feuille n\u2019a pas pu \u00eatre lue dans l\u2019atelier \u2014 recharge la page, ou v\u00e9rifie qu\u2019elle existe encore',
-              sansProduit:'aucun type de feuille d\u00e9clar\u00e9 \u2014 choisis-le ici pour la ranger',
-              sansProduitExt:'fichier ou site d\u00e9pos\u00e9 sans type d\u00e9clar\u00e9 \u2014 choisis-le ici pour le ranger dans un onglet',
-              ancre:'son type vit dans sa s\u00e9ance, pas dans un onglet \u2014 change-le si elle doit para\u00eetre ici'};
-  function ligne(x){
-    var _menu=x.ext?itemProduitMenu(x.ext.level,x.ext.chnum,x.ext.snum,x.ext.itemId,x.produit):atProduitMenu(x.ref,x.produit);
-    return '<div class="at-nr-l">'
-      +'<span class="at-nr-t">'+escapeHtml(x.titre||'')+'</span>'
-      +'<span class="at-nr-c">'+CAUSES[x.cause]+'</span>'
-      +(x.cause!=='pasCache'?('<button class="at-btn at-btn-min" onclick="atCtrlOuvrirItem(\''+atEsc(n)+'\',\''+atEsc(x.ext?x.ext.chnum:(x.chnum||''))+'\',\''+atEsc(x.ext?x.ext.itemId:(x.itemId||''))+'\',\''+atEsc(x.ref)+'\')">Ouvrir</button>'+_menu):'')
-      +'</div>';
-  }
-  var travail=r.ignores.filter(function(x){return x.cause!=='nonPubliee';});
-  var plies=r.ignores.filter(function(x){return x.cause==='nonPubliee';});
-  var h='<div class="at-nr"><div class="at-nr-titre">\u26a0 \u00c0 classer \u2014 visible par toi seul</div>';
-  travail.forEach(function(x){h+=ligne(x);});
-  jamais.forEach(function(x){
-    h+='<div class="at-nr-l">'
-      +'<span class="at-nr-t">'+escapeHtml(x.titre)+'</span>'
-      +'<span class="at-nr-c">ouvert aux \u00e9l\u00e8ves mais jamais envoy\u00e9 \u2014 ils ne peuvent pas le lire</span>'
-      +'<button class="at-btn at-btn-min" onclick="atCtrlOuvrirItem(\''+atEsc(n)+'\',\''+atEsc(x.chnum)+'\',\''+atEsc(x.itemId)+'\',\''+atEsc(x.ref)+'\')">Ouvrir</button>'
-      +'<button class="at-btn at-btn-min at-btn-prim" onclick="atCtrlEnvoyer(\''+atEsc(x.ref)+'\')">Envoyer</button>'
-      +'</div>';
-  });
-  if(plies.length){
-    h+='<details class="at-nr-pli"><summary>'+plies.length+' document'+(plies.length>1?'s':'')+' en attente de publication</summary>';   /* [8.55.1-\u2461] texte de Paul */
-    plies.forEach(function(x){h+=ligne(x);});
-    h+='</details>';
-  }
-  if(!travail.length&&!plies.length)return '';
-  return h+'</div>';
-}
-/* [LOT9-\u2467] ouvrir l'item DANS L'\u00c9DITEUR de son chapitre (le geste demand\u00e9 par le
-   mandat) ; \u00e0 d\u00e9faut de chapitre connu, la feuille s'ouvre en modale (chemin sain). */
-/* [LOT9-8.55.1-\u2462] L'ENVOI DEPUIS LE PANNEAU \u2014 aucun geste NOUVEAU : c'est le
-   protocole d'edEnvoyerManquantes pour UNE feuille (message par d\u00e9faut, l'\u00e9crivain
-   unique atEnvoyerVersion, premier=vrai puisque jamais envoy\u00e9e). La ligne dispara\u00eet
-   au re-rendu (patron \u2467) ; en succ\u00e8s la disparition EST le retour visible. */
-function atCtrlEnvoyer(id){
-  var vivant=(AT.liste&&AT.liste[id])||(typeof LINK_ATELIER_DOCS!=='undefined'&&LINK_ATELIER_DOCS&&LINK_ATELIER_DOCS[id]);
-  if(!vivant){atInfo('\u26a0 La feuille n\u2019a pas pu \u00eatre lue dans l\u2019atelier \u2014 recharge la page, ou v\u00e9rifie qu\u2019elle existe encore.');return;}
-  atEnvoiDefautLire(function(defaut){
-    var msg=String(defaut||'').split('<date>').join(new Date().toLocaleDateString('fr-FR'));
-    atEnvoyerVersion(id,vivant,msg,true,function(ok){
-      if(!ok){atInfo('\u26a0 L\u2019envoi a \u00e9chou\u00e9 \u2014 r\u00e9essaie.');return;}
-      if(AT.onglet==='chapitres'&&!AT.edChap)atRendreListe();
-    });
-  });
-}
-function atCtrlOuvrirItem(level,chnum,itemId,ref){
-  if(chnum&&itemId){
-    atEditerChapitre(level,chnum);
-    setTimeout(function(){try{ed2Aller(itemId);}catch(e){}},1200);
-    return;
-  }
-  _openAtelierFromList(ref);
-}
+/* [LOT11-\u2462] LA ZONE \u00ab \u00c0 CLASSER \u00bb A V\u00c9CU (LOT\u2467\u2192\u2468\u21928.55.1) : retir\u00e9e sur
+   d\u00e9cision de Paul \u2014 \u00ab le type doit \u00eatre d\u00e9cid\u00e9 dans l'\u00e9diteur, car c'est le
+   prompt de l'instance de cr\u00e9ation de chapitre qui d\u00e9termine le type des
+   documents. \u00bb Les d\u00e9tections \u00ab jamais envoy\u00e9 \u00bb vivent ailleurs et restent :
+   garde d'edPublierItem, \u00e9tat par document de l'\u00e9diteur (y compris \u00ab envoy\u00e9e,
+   pas encore ouverte \u00bb), bandeau de la modale de lecture, envoi en lot. */
 function atRendreChapitres(){
   var n=atTbNiveau();
-  var h='<div class="at-tb-tete">Chapitres de '+atTbSelecteur()+'</div>'+atCtrlNonRangees(n);
+  var h='<div class="at-tb-tete">Chapitres de '+atTbSelecteur()+'</div>';
   var data=chapitresData[n];
   if(!data||!Object.keys(data).length){
     return h+'<div class="at-vide">'+(AT_CHAP_ETAT[n]==='erreur'?'Les chapitres ne répondent pas pour l’instant. <button class="at-btn" onclick="atChapitresRecharger()">Réessayer</button>':'Chargement des chapitres\u2026')+'</div>';
@@ -11412,9 +11333,9 @@ function edOuvrirItem(j,k){
 function edEnvoiInfo(cas){
   var t={
     'ok':"Publi\u00e9e ET envoy\u00e9e : les \u00e9l\u00e8ves des classes publi\u00e9es l'ouvrent et lisent la version envoy\u00e9e.",
-    'publie-sans-envoi':"PUBLI\u00c9E mais JAMAIS ENVOY\u00c9E : la ligne appara\u00eet aux \u00e9l\u00e8ves, mais l'ouvrir ne montre RIEN (aucune version envoy\u00e9e). Envoyer se fait depuis la feuille (bouton Envoyer\u2026) ou par \u00ab Envoyer les feuilles manquantes \u00bb en haut.",
-    'envoye-non-publie':"Envoy\u00e9e mais pas publi\u00e9e : la version est pr\u00eate, les \u00e9l\u00e8ves ne voient pas encore la ligne. Publier se fait par le bouton Publier\u2026 de l'item.",
-    'rien':"Ni envoy\u00e9e ni publi\u00e9e : rien n'est visible des \u00e9l\u00e8ves. L'envoi fige la version \u00e0 lire ; la publication ouvre la ligne."
+    'publie-sans-envoi':"PUBLI\u00c9E mais JAMAIS ENVOY\u00c9E : le document appara\u00eet aux \u00e9l\u00e8ves, mais l'ouvrir ne montre RIEN (aucune version envoy\u00e9e). Envoyer se fait depuis la feuille (bouton Envoyer\u2026) ou par \u00ab Envoyer les feuilles manquantes \u00bb en haut.",
+    'envoye-non-publie':"Envoy\u00e9e mais pas publi\u00e9e : la version est pr\u00eate, les \u00e9l\u00e8ves ne voient pas encore le document. Publier se fait par le bouton Publier\u2026 de l'item.",
+    'rien':"Ni envoy\u00e9e ni publi\u00e9e : rien n'est visible des \u00e9l\u00e8ves. L'envoi fige la version \u00e0 lire ; la publication ouvre le document."
   }[cas]||'';
   return ' <span class="at-ifo" title="'+t.replace(/"/g,'&quot;')+'" onclick="event.stopPropagation();atInfo(this.getAttribute(\'title\'))">\u24d8</span>';
 }
@@ -11463,7 +11384,7 @@ function edPublierItem(j,k){
      ligne qui ne s'ouvre sur rien. On prévient AVANT le choix des classes. */
   if(it.source==='atelier'&&it.ref&&typeof LINK_ATELIER_DOCS!=='undefined'&&LINK_ATELIER_DOCS&&LINK_ATELIER_DOCS[it.ref]&&!LINK_ATELIER_DOCS[it.ref].envoi&&!it.__gardeEnvoiVue){
     it.__gardeEnvoiVue=true;   /* mémoire d'écran seulement, jamais écrite */
-    atModaleChoix('Cette feuille n\u2019a <b>jamais \u00e9t\u00e9 envoy\u00e9e</b> aux \u00e9l\u00e8ves : publier sa ligne maintenant, c\u2019est leur montrer un document qui ne s\u2019ouvre sur rien. Envoyer d\u2019abord\u00a0?',
+    atModaleChoix('Cette feuille n\u2019a <b>jamais \u00e9t\u00e9 envoy\u00e9e</b> aux \u00e9l\u00e8ves : publier ce document maintenant, c\u2019est leur montrer une fiche qui ne s\u2019ouvre sur rien. Envoyer d\u2019abord\u00a0?',
       [{lib:'Envoyer puis publier',prim:true,fn:function(){
         var vivant=(AT.liste&&AT.liste[it.ref])||LINK_ATELIER_DOCS[it.ref];
         atEnvoiDefautLire(function(defaut){

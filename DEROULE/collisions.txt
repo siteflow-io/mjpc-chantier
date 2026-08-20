@@ -1,0 +1,7 @@
+COLLISIONS AVEC index.html (production 8.56.2)
+
+FONCTIONS (2) : fin, lire
+
+VARIABLES (1) : t
+
+CLASSES CSS (3) : feuille, liste, sel

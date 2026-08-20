@@ -1071,6 +1071,76 @@ select.at-sel option,select.cm-input option,#link-modal select option,select.at-
 /* ═══ fin § PROMPT MAÎTRE DE CHAPITRE ═══ */
 </style>
 <style>
+/* ═══ [LOT12-C1] Règles VIVANTES reprises à l'identique du bloc ex-L1078-1217 de la 8.56.2
+   (la coupe 8.57.0 avait emporté des sélecteurs encore utilisés — correction C1).
+   Seules les règles dont TOUS les sélecteurs sont morts sont restées retirées. ═══ */
+/* ── l'écran de relecture ── */
+.dp-rel-tete .at-btn{min-height:44px}
+.dp-choix .cm-input{width:100%;max-width:420px;box-sizing:border-box;min-height:44px;margin:8px 0}
+.dp-choix .at-btn{min-height:44px;min-width:44px}
+.dp-choix .at-btn[disabled]{opacity:.5;cursor:not-allowed}
+/* ── le viewer élève ── */
+.atdoc-viewer{position:fixed;inset:0;z-index:9600;background:#faf7f2;display:flex;flex-direction:column}
+.atdoc-viewer-barre{display:flex;align-items:center;gap:10px;padding:8px 10px;background:#2e2750;color:#fff;flex:0 0 auto}
+.atdoc-viewer-titre{flex:1;font-weight:700;font-size:1rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.atdoc-viewer-x,.atdoc-viewer-imp{min-width:44px;min-height:44px;border:0;background:transparent;color:#fff;font-size:1.1rem;cursor:pointer}
+.atdoc-viewer-frame{flex:1;width:100%;border:0;background:#fff}
+/* [LOT8-②] le bloc prof des feuilles non rangées, sous les rayons */
+/* [LOT9-\u2467] .rayons-ignores-bloc retir\u00e9 (le bloc a d\u00e9m\u00e9nag\u00e9 \u2014 voir at-nr-*) */
+/* [LOT9-\u2467] LE PANNEAU DE CONTR\u00d4LE des non-rang\u00e9es (t\u00eate de \u00ab Mes chapitres \u00bb) —
+   les r\u00e8gles de ligne reprennent l'ancien bloc, sous des classes propres. */
+/* [LOT11-\u2462] les r\u00e8gles .at-nr* de la zone \u00ab \u00c0 classer \u00bb sont retir\u00e9es avec elle */
+/* [LOT8-\u2466] la trace du remplac\u00e9 au panneau */
+.at-edch-rempl{font-size:0.74rem;color:rgba(255,255,255,0.45);font-style:italic;margin:2px 0 6px;padding-left:14px}
+/* SITE-COURS-2c — le bandeau du message élève (écran seulement, hors iframe) */
+.atdoc-bandeau{flex:0 0 auto;background:#f6edd8;color:#4a3d20;border-bottom:2px solid #d9c896;padding:10px 14px;font-size:.95rem;line-height:1.4}
+/* les statuts des cartes de « Mes feuilles » */
+.at-carte-st{font-size:.78rem;margin:-4px 0 10px;line-height:1.35}
+.at-st-sans{color:#8a7f6a}
+.at-st-adresse{color:#c9b568}
+.at-st-depose{color:#7fae7f}
+.at-st-diverge{color:#d99a5b}
+.at-st-flou{color:#8a7f6a;font-style:italic}
+/* le rappel de séance (mode admin) */
+.seance-rappel-atelier{margin:8px 0 2px;padding:8px 10px;border:1px dashed #c9b568;border-radius:8px;color:#c9b568;font-size:.85rem;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+/* la modale d'envoi */
+.at-envoi-zone{width:100%;min-height:110px;font:inherit;font-size:.9rem;background:#241f18;color:#e8e0d0;border:1px solid #4a4438;border-radius:8px;padding:10px;margin:10px 0 6px;box-sizing:border-box}
+.at-envoi-case{display:flex;align-items:center;gap:8px;color:#b8ad93;font-size:.83rem;margin-bottom:8px;min-height:44px}
+/* SITE-COURS-2d — les sections d'éditeur en accordéons */
+.at-sec{border:1px solid #3a3428;border-radius:10px;margin:0 0 10px;background:rgba(255,255,255,.02)}
+.at-sec-t{display:flex;align-items:center;gap:8px;min-height:44px;padding:2px 12px;cursor:pointer;color:#f0e8d8;font-weight:700;font-size:.95rem;user-select:none}
+.at-sec-ch{display:inline-block;transition:transform .18s ease;color:#c9b568;font-size:1.1rem}
+.at-sec-o>.at-sec-t .at-sec-ch{transform:rotate(90deg)}
+.at-sec-c{display:none;padding:0 12px 12px}
+.at-sec-o>.at-sec-c{display:block}
+/* le halo d'atterrissage sur la case d'éditeur (même décroissance que l'aperçu) */
+.at-halo{animation:atHalo 5s ease-out forwards;border-radius:8px}
+@keyframes atHalo{0%{box-shadow:0 0 0 3px rgba(212,160,23,.85);background:rgba(212,160,23,.16)}100%{box-shadow:0 0 0 0 rgba(212,160,23,0);background:transparent}}
+/* [C5-3a] — onglets des tableaux de bord, cartes ②③, pulse du LIER, éditeur de chapitre */
+.at-onglets{display:flex;gap:8px;margin:2px 0 14px;flex-wrap:wrap}
+.at-onglet{min-height:44px;padding:8px 16px;border-radius:10px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.04);color:#d8cfba;font:inherit;font-size:.9rem;cursor:pointer}
+.at-onglet-actif{border-color:rgba(196,160,90,.6);background:rgba(196,160,90,.13);color:#f0e8d8;font-weight:700}
+.at-tb-tete{display:flex;align-items:center;gap:10px;color:#b8ad93;font-size:.9rem;margin:0 0 12px}
+.at-tb-niveau{min-height:40px}
+.at-btn-danger{border-color:rgba(210,110,90,.5);color:#d99a8a}
+.at-lier-pulse{animation:atLierPulse 1.8s ease-in-out infinite;border-color:rgba(212,160,23,.7)}
+@keyframes atLierPulse{0%,100%{box-shadow:0 0 0 0 rgba(212,160,23,0)}50%{box-shadow:0 0 0 4px rgba(212,160,23,.45)}}
+.ch-atterrissage{margin-top:8px;font-size:.86rem;line-height:1.5;color:#d8cfba;text-align:left}
+.at-edch{border:1px solid #3a3428;border-radius:10px;padding:12px;margin:0 0 12px;background:rgba(255,255,255,.02)}
+.at-edch-se{border-color:#46402f}
+.at-edch-set{font-weight:700;color:#f0e8d8;margin-bottom:6px}
+.at-edch-lib{display:block;color:#b8ad93;font-size:.78rem;margin:8px 0 3px}
+.at-edch-in{width:100%;min-height:44px;font:inherit;font-size:.9rem;background:#241f18;color:#e8e0d0;border:1px solid #4a4438;border-radius:8px;padding:8px 10px;box-sizing:border-box}
+.at-edch-ta{width:100%;min-height:64px;font:inherit;font-size:.9rem;background:#241f18;color:#e8e0d0;border:1px solid #4a4438;border-radius:8px;padding:8px 10px;box-sizing:border-box}
+.at-edch-ta-p{min-height:44px}
+.at-edch-num{max-width:110px}
+.at-edch-it{border-top:1px dashed #3a3428;margin-top:10px;padding-top:6px}
+.at-edch-itt{color:#d8cfba;font-size:.85rem}
+/* SITE-COURS-2b — la modale LIER passe au standard tactile du site (cibles 44 px) :
+   la 3e section arrive avec le composant, tout le composant monte au standard. */
+.link-modal-btn{min-height:44px}
+.link-modal-select{min-height:44px}
+.link-modal-input{min-height:44px}
 </style>
 <style>
 /* ═══ § CHAPITRE : DÉCLARATION ET SOMMAIRE (SITE-COURS-2e) ═══ */
@@ -2663,7 +2733,7 @@ function mjpcEcrireRest(url,options,cb){
    (les 3 gestes, le geste conservatoire par app, ce qui ne peut pas arriver).
    RESTAURER LA VERSION PRÉCÉDENTE : docs/MJPC6-restauration.md (convention BUG).
    ═══════════════════════════════════════════════════════════════════════════ */
-var APP_VERSION="8.57.0";
+var APP_VERSION="8.57.1";
 var APP_VERSION_DATE="2026-08-20";
 // ── 11. Coffre : dérivation, chiffrement, empreinte (v1.3.0) ──
 // (Le canon porte deux sections « 8 » — dette de numérotation connue, non corrigée

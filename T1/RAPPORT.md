@@ -1,5 +1,5 @@
 # T1 — RAPPORT DE LIVRAISON (intégration du déroulé : LE SOCLE)
-*Exécutant T1, 20/08/2026. Livraison : `T1/index.html` version **8.58.0** (1 147 637 o, md5 `8a104f0b3ce05dab3db7bfd3f9f6a0c0`). En attente d'audit — aucune promotion.*
+*Exécutant T1, 20/08/2026. Livraison : `T1/index.html` version **8.58.0** (1 147 837 o, md5 `2e5029873f75579c383bb89745e0fb27`). En attente d'audit — aucune promotion.*
 
 ## BASES (re-téléchargées et md5-vérifiées à la commande)
 Production 8.57.1 : 954 833 o, md5 `54da80f2847d865b7f1aea5ad3fcb984` ✅. Maquette `deroule86.html` : 228 776 o, md5 `2ffada12d20d30ab719d20238cd1eef8` ✅ — intégrée, pas corrigée. CADRAGE-INTEGRATION et MANDAT-T1 lus intégralement avant tout geste.
@@ -53,14 +53,19 @@ Les 3 `<script>` de la livraison (principal 798 078 · bloc DR 140 103 · coutur
 ```
 2736c2736          ← APP_VERSION "8.57.1" → "8.58.0"
 12221a12222        ← LA COUTURE (1 ligne) : appel atVuesMonter() en fin d'atEditerChapitreRendre
-13724a13726,16513  ← insertion en fin de fichier : styles dr + styles coutures + bloc scellé + coutures
+13724a13726,16515  ← insertion en fin de fichier : styles dr + styles coutures + bloc scellé + coutures
 ```
 Aucune autre ligne. Aucune fonction MJPC modifiée dans son corps hors la couture.
+
+## PREUVE RUNTIME (exigence conscience, banc `banc_runtime.js`)
+**A.** `Object.keys(window)` 8.57.1 seule vs livraison : `moins:[]` (rien de MJPC perdu) ; `plus` = `DR` + les 17 coutures MJPC nominatives. **Le bloc scellé isolé** (banc `test_fuites.js`, manipulation comprise) : fuites `[]` — **+DR exactement**, la condition vaut là où l'arbitrage la posait ; les 17 coutures sont les fonctions MJPC que le même mandat ordonne (onglets, arbre, couches), globales par style maison, 18/18 neuves — point d'audit assumé, pas une dérive.
+**C (le piège).** Clic RÉEL DOM (gestionnaire inline `DR.gel()`) lancé immédiatement après le rendu du Déroulé : gel on → off, retour Structure par clic sur la barre — **0 pageerror**. Ce banc a d'abord révélé l'incident n°4 ci-dessous.
 
 ## INCIDENTS DE CHANTIER (sans dégât, corrigés avant livraison)
 1. Extraction des classes CSS : le délimiteur consommé par `findall` ratait les classes enchaînées (`.ecran.plein-img`) — détecté par l'audit des résidus, set corrigé par lookahead, transformation refaite depuis les originaux.
 2. Greffe de la première modale malformée (`else` orphelin) — détectée par `node --check`, reprise.
 3. Patch d'export posé sur le mauvais `return {` (la fonction `mesure()` du moteur) — détecté au banc (`DR.dr_fermer is not a function`), `mesure()` restaurée à l'identique, exports posés sur le return final.
+4. **L'hôte écrasé par le re-rendu** : au retour vers Structure, `atEditerChapitreRendre` réécrivait `at-zone` avec `#dr-hote` dedans — le DOM du bloc mourait, ses deux listeners `document` (fermeture de `dr-ppop`/`dr-ctx`) trouvaient `null` au clic suivant. Révélé par le banc du clic réel exigé par la conscience. Corrigé dans MON code T1 (pas la maquette) : `dr_fermer()` rapatrie l'hôte dans `body` avant tout re-rendu — l'hôte survit toujours.
 
 ## LIVRAISON
 `T1/index.html` · `T1/RAPPORT.md` · `T1/RELEVE-COLLISIONS.md` · `T1/tests/` (banc, harnais, 8 captures, décor conservé). Relecture du sas (taille + sha) collée à la réponse. **STOP : audit avant tout.**

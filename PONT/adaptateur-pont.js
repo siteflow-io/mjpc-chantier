@@ -129,6 +129,7 @@ var DR={
     try{ W.lire(); }catch(e){}
     return JSON.parse(JSON.stringify(W.ECRANS)); },
   /* message ① — voici la trame à jouer */
+  dr_vue:function(v){ var W=drWin(); if(W&&W.ong)try{W.ong(v);}catch(e){} },
   dr_chargerTrame:function(ecrans){ var W=drWin(); if(!W)return;
     var t=JSON.parse(JSON.stringify(ecrans||[]));
     /* une séance jamais préparée arrive VIDE : le moteur ne survit pas à zéro écran
@@ -146,6 +147,7 @@ var DR={
       if(DR.__charge&&DR.__charge!==jeton)_drFlushTrame(DR.__charge);   /* l'édition des 900 dernières ms part vers SA séance */
       if(DR.__charge!==jeton){ DR.__charge=jeton; DR.dr_chargerTrame(ecrans); }
       AT_PONT.ctx=ctx||AT_PONT.ctx;
+      try{ var W0=drWin(); if(W0&&W0.ong)W0.ong('deroule'); }catch(e){}   /* la vue interne suit l'onglet MJPC */
       _drTitrerColonne(ctx);                     /* la colonne dit LA séance ouverte, pas « séance 3 » */
       _drHabiller();
       _drPontEtat();
@@ -293,6 +295,12 @@ function _drEntreesEcran(sk,n){
     };
   }
 })();
+
+/* [A7] Relecture et Papier : les vues DÉJÀ CONSTRUITES du moteur (récit, pages A4),
+   rendues par le pont — plus d'écriteaux « à venir ». */
+function atDrVueInterne(v){
+  _drQuandPret(function(){ DR.dr_vue(v); try{_drHabiller();}catch(e){} });
+}
 
 /* le boot du montage : rappeler l'onglet retenu */
 atVuesRappeler();

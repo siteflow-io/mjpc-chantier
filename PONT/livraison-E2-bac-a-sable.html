@@ -13888,7 +13888,7 @@ function secuInfo(){
 </script>
 
 <script id="pont-fusion">
-/* couture n°7 VERBATIM hors 6 adaptations + adaptateur + pont · deroule89 · BAC */
+/* couture n°7 VERBATIM hors 7 adaptations + adaptateur + pont · deroule89 · BAC */
 /* ═══════════════════════════════════════════════════════════════════════════
    COUTURES MJPC POUR LE DÉROULÉ — code écrit et ÉPROUVÉ AU BANC par la conscience n°7
    (21/08/2026), extrait du clone avant abandon de la voie « préfixage ».
@@ -13971,12 +13971,13 @@ function atVuesPoser(v){
   var h=atVuesBarreHtml()
     +'<div class="at-vues-corps">'+atSommaireNatifHtml()
     +'<div class="at-vues-zone" id="at-vues-zone">';
-  if(v==='relecture')h+='<div class="at-vide">Relecture \u2014 \u00e0 venir (le r\u00e9cit horodat\u00e9 arrive au Temps 3).</div>';
-  if(v==='papier')h+='<div class="at-vide">Papier \u2014 \u00e0 venir (le chapitre entier avec ses trous d\u00e9clar\u00e9s, au Temps 3).</div>';
+  /* [PONT-A7] Relecture et Papier : les vues du MOTEUR (récit horodaté, pages A4),
+     déjà construites — le cadre les rend, la tête temps reste propre au Déroulé. */
   if(v==='deroule')h+='<div class="at-dr-tete" id="at-dr-tete"></div><div id="at-dr-hote-zone"></div><div id="at-dr-t5"></div>';
+  if(v==='relecture'||v==='papier')h+='<div class="at-dr-tete" id="at-dr-tete" style="display:none"></div><div id="at-dr-hote-zone"></div><div id="at-dr-t5" style="display:none"></div>';
   h+='</div></div>';
   z.innerHTML='<div class="at-vues-cadre">'+h+'</div>';
-  if(v==='deroule') atDrMonter();
+  if(v==='deroule'||v==='relecture'||v==='papier'){ atDrMonter(); if(v!=='deroule') atDrVueInterne(v); }
 }
 
 
@@ -14742,6 +14743,7 @@ var DR={
     try{ W.lire(); }catch(e){}
     return JSON.parse(JSON.stringify(W.ECRANS)); },
   /* message ① — voici la trame à jouer */
+  dr_vue:function(v){ var W=drWin(); if(W&&W.ong)try{W.ong(v);}catch(e){} },
   dr_chargerTrame:function(ecrans){ var W=drWin(); if(!W)return;
     var t=JSON.parse(JSON.stringify(ecrans||[]));
     /* une séance jamais préparée arrive VIDE : le moteur ne survit pas à zéro écran
@@ -14759,6 +14761,7 @@ var DR={
       if(DR.__charge&&DR.__charge!==jeton)_drFlushTrame(DR.__charge);   /* l'édition des 900 dernières ms part vers SA séance */
       if(DR.__charge!==jeton){ DR.__charge=jeton; DR.dr_chargerTrame(ecrans); }
       AT_PONT.ctx=ctx||AT_PONT.ctx;
+      try{ var W0=drWin(); if(W0&&W0.ong)W0.ong('deroule'); }catch(e){}   /* la vue interne suit l'onglet MJPC */
       _drTitrerColonne(ctx);                     /* la colonne dit LA séance ouverte, pas « séance 3 » */
       _drHabiller();
       _drPontEtat();
@@ -14906,6 +14909,12 @@ function _drEntreesEcran(sk,n){
     };
   }
 })();
+
+/* [A7] Relecture et Papier : les vues DÉJÀ CONSTRUITES du moteur (récit, pages A4),
+   rendues par le pont — plus d'écriteaux « à venir ». */
+function atDrVueInterne(v){
+  _drQuandPret(function(){ DR.dr_vue(v); try{_drHabiller();}catch(e){} });
+}
 
 /* le boot du montage : rappeler l'onglet retenu */
 atVuesRappeler();

@@ -16317,7 +16317,9 @@ function dr_ouvrir(conteneurId, ecrans, meta){
   ong('deroule');
   return true;
 }
-function dr_fermer(){ DR_HOTE.style.display='none'; }
+function dr_fermer(){ DR_HOTE.style.display='none';
+  document.body.appendChild(DR_HOTE);   /* [T1] l'hôte SURVIT toujours : rapatrié hors de la zone avant qu'un re-rendu de Structure ne l'écrase (les listeners document du bloc gardent leur DOM) */
+}
 
 return {dr_fermer:dr_fermer, dr_ecranCourant:dr_ecranCourant, dr_getComp:dr_getComp, ajoute:ajoute, allerRep:allerRep, annuler:annuler, armeMk:armeMk, bascule:bascule, cbColle:cbColle, cbCopie:cbCopie, cbCoupe:cbCoupe, cbDup:cbDup, cbMove:cbMove, cbSup:cbSup, chrono:chrono, copierED:copierED, corrigePart:corrigePart, csDup:csDup, csMove:csMove, csSup:csSup, ctxAller:ctxAller, ctxDup:ctxDup, ctxMonte:ctxMonte, ctxReabs:ctxReabs, ctxSup:ctxSup, ctxSupSuite:ctxSupSuite, ctxVide:ctxVide, dessineEcran:dessineEcran, devoile:devoile, ferme:ferme, fermeLoupe:fermeLoupe, figeRecit:figeRecit, forme:forme, gel:gel, ligne:ligne, loupe:loupe, majPart:majPart, menuEcran:menuEcran, nouvelEcran:nouvelEcran, ong:ong, ouvrirPart:ouvrirPart, ouvrirRappel:ouvrirRappel, posePart:posePart, poseRappel:poseRappel, prendreImage:prendreImage, quiParle:quiParle, regleChrono:regleChrono, rendRecit:rendRecit, rendre:rendre, replie:replie, scrollFiche:scrollFiche, selCopie:selCopie, selCoupe:selCoupe, selEcrire:selEcrire, selSup:selSup, selVide:selVide, setDev:setDev, setForme:setForme, setLeg:setLeg, setPos:setPos, setRef:setRef, setSrc:setSrc, setSupport:setSupport, spot:spot, stylo:stylo, supMk:supMk, supPart:supPart, tableau:tableau, va:va, zoom:zoom, dr_ouvrir:dr_ouvrir, dr_chargerTrame:dr_chargerTrame, dr_exporterTrame:dr_exporterTrame, dr_setComp:dr_setComp};
 })();

@@ -1,0 +1,20 @@
+const c=require('@sparticuz/chromium'); const chromium=c.default||c;
+const puppeteer=require('puppeteer-core');
+const CH={ '10': { title:'Poésie', published:true, seances:{'1':{title:'S1', published:true, ordre:1, items:{}},'2':{title:'S2', published:true, ordre:2, items:{}}}}};
+(async()=>{
+  const browser=await puppeteer.launch({args:[...chromium.args,'--disable-web-security'],executablePath:await chromium.executablePath(),headless:'shell',defaultViewport:{width:1500,height:950}});
+  const page=await browser.newPage(); const err=[];
+  page.on('pageerror',e=>err.push((e.stack||String(e)).split('\n').slice(0,4).join(' | ')));
+  await page.setRequestInterception(true);
+  page.on('request',r=>{const u=r.url(); if(u.startsWith('file://')||u.startsWith('data:'))return r.continue(); r.abort();});
+  await page.goto('file:///home/claude/t1.html',{waitUntil:'load'}); await new Promise(r=>setTimeout(r,1000));
+  await page.evaluate((ch)=>{currentLevel='3e';TRACK.eleve={is_prof:true,nom:'T',prenom:'B',niveau:'3e'};
+    document.body.classList.add('admin-mode');chapitresData['3e']=ch;atelierOuvrir();atEditerChapitre('3e','10');},CH);
+  await new Promise(r=>setTimeout(r,400));
+  await page.evaluate(()=>atVuesAller('deroule'));
+  await page.click('#dr-bgel'); await page.click('#dr-bgel');
+  await page.click('.at-onglet[data-vue="structure"]');
+  await new Promise(r=>setTimeout(r,600));
+  console.log(JSON.stringify(err,null,1));
+  await browser.close();
+})();

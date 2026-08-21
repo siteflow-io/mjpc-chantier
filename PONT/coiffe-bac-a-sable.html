@@ -1,0 +1,90 @@
+<!-- COIFFE D'ESSAI — conscience n°7. À poser juste après <head> dans une livraison locale,
+     À RETIRER avant tout push (deux blocs <script> isolés, retrait d'une ligne).
+     · bac-a-sable : LECTURES autorisées (portail, chapitres, empreintes prof), ÉCRITURES
+       Firebase bloquées (PUT/POST/PATCH/DELETE) — PROUVÉ au banc : seuls des GET sortent.
+       Sans les lectures, l'entrée prof échoue (« aucune empreinte prof posée »).
+     · bac-decor : décor JSON PUR (22 écrans sur 5 séances du chapitre 3e/10, tiré du
+       PowerPoint réel de Paul), posé dans seances[n].deroule.ecrans — exactement là où
+       l'IA écrira au chantier des prompts. JAMAIS de contenu en dur dans le code du site.
+     Ouvrir la livraison avec ?n=3e, sinon écran de garde « Lien invalide ». -->
+<script id="bac-a-sable">
+/* BAC À SABLE (v2) — conscience n°7. LECTURES autorisées (portail, chapitres, empreintes prof),
+   ÉCRITURES bloquées : PUT / POST / PATCH / DELETE vers le hub n'atteignent jamais Firebase.
+   Le code livré n'est pas modifié en dessous. */
+(function(){
+  var HUB='firebasedatabase.app';
+  var ECRIT={PUT:1,POST:1,PATCH:1,DELETE:1};
+  var bloquees=0;
+  function annonce(m,u){
+    bloquees++;
+    try{console.warn('[BAC] écriture bloquée:',m,String(u).slice(0,100));}catch(e){}
+    var el=document.getElementById('bac-bandeau');
+    if(el) el.textContent='🔒 BAC À SABLE — '+bloquees+' écriture(s) bloquée(s) · lectures actives · rien ne part vers Firebase';
+  }
+  var vraiFetch=window.fetch;
+  window.fetch=function(url,opts){
+    var u=(typeof url==='string')?url:(url&&url.url)||'';
+    var m=((opts&&opts.method)||'GET').toUpperCase();
+    if(u.indexOf(HUB)>=0 && ECRIT[m]){
+      annonce(m,u);
+      return Promise.resolve(new Response(JSON.stringify(opts&&opts.body?JSON.parse(opts.body):null),{status:200,headers:{'Content-Type':'application/json'}}));
+    }
+    return vraiFetch.apply(this,arguments);
+  };
+  var vraiOpen=XMLHttpRequest.prototype.open;
+  XMLHttpRequest.prototype.open=function(m,u){
+    this.__bloque=(String(u).indexOf(HUB)>=0 && ECRIT[String(m).toUpperCase()]);
+    if(this.__bloque) annonce(m,u);
+    return vraiOpen.apply(this,arguments);
+  };
+  var vraiSend=XMLHttpRequest.prototype.send;
+  XMLHttpRequest.prototype.send=function(body){
+    if(this.__bloque){
+      var self=this;
+      setTimeout(function(){
+        try{
+          Object.defineProperty(self,'readyState',{value:4,configurable:true});
+          Object.defineProperty(self,'status',{value:200,configurable:true});
+          Object.defineProperty(self,'responseText',{value:body||'null',configurable:true});
+        }catch(e){}
+        if(self.onreadystatechange) self.onreadystatechange();
+        if(self.onload) self.onload();
+      },5);
+      return;
+    }
+    return vraiSend.apply(this,arguments);
+  };
+  document.addEventListener('DOMContentLoaded',function(){
+    var d=document.createElement('div');
+    d.id='bac-bandeau';
+    d.style.cssText='position:fixed;z-index:999999;left:0;right:0;bottom:0;background:#7a1f2b;color:#fff;font:13px system-ui,sans-serif;padding:7px 12px;text-align:center';
+    d.textContent='🔒 BAC À SABLE — lectures actives · toute écriture vers Firebase est bloquée';
+    document.body.appendChild(d);
+  });
+})();
+</script>
+<script id="bac-decor">
+/* DÉCOR D'ESSAI — vit dans le bac à sable, JAMAIS en production. JSON pur, posé exactement
+   là où l'IA écrira ses écrans : seances[<n>].deroule.ecrans. Tiré du PowerPoint réel. */
+(function(){
+  var DECOR={"0": [{"act": "Plan de la séance", "h": "08:00", "dur": 4, "comp": [], "blocs": [{"id": "d1", "t": "consigne", "pic": "🎯", "txt": "Aujourd'hui : introduction et analyse d'images · les auteurs du XIXe · les règles du classicisme.", "etapes": [], "vues": 0}]}, {"act": "Introduction — analyse d'images", "h": "08:04", "dur": 12, "comp": ["c4-culture-02", "c4-oral-02"], "blocs": [{"id": "d2", "t": "consigne", "pic": "🎯", "txt": "Objectif : émettre des hypothèses sur ce qu'est le Romantisme grâce à des images.", "etapes": [], "vues": 0}, {"id": "d3", "t": "consigne", "pic": "👁", "txt": "Étape 1 — j'observe les cinq tableaux en silence (5 min).", "etapes": [], "vues": 0}, {"id": "d4", "t": "question", "q": "Que remarquez-vous dans ces tableaux ?", "reps": [{"i": "", "r": "", "refo": false}, {"i": "", "r": "", "refo": false}], "vues": 0}]}, {"act": "Mise en commun", "h": "08:16", "dur": 8, "comp": ["c4-oral-02"], "blocs": [{"id": "d5", "t": "question", "q": "Quelles hypothèses proposez-vous sur le Romantisme ?", "reps": [{"i": "", "r": "", "refo": false}, {"i": "", "r": "", "refo": false}], "vues": 0}]}, {"act": "Les auteurs de poésie au XIXe", "h": "08:24", "dur": 10, "comp": ["c4-culture-02"], "blocs": [{"id": "d6", "t": "consigne", "pic": "📄", "txt": "Feuille en format paysage : la frise des siècles, du Moyen Âge au XXe.", "etapes": [], "vues": 0}]}, {"act": "Les règles du classicisme", "h": "08:34", "dur": 12, "comp": ["c4-langue-01"], "blocs": [{"id": "d7", "t": "fiche", "tt": "Fiche notion", "titre": "Rappel sur la versification", "def": "", "corps": "<p>Se remémorer les règles d'écriture d'un sonnet classique.</p><p>Deux quatrains, deux tercets. La césure. L'enjambement.</p>", "vues": 0}]}, {"act": "Plan de séquence", "h": "08:46", "dur": 4, "comp": [], "blocs": [{"id": "d8", "t": "consigne", "pic": "🗺", "txt": "S1 cours suivi · S2 lecture analytique · S3 interro et analyse logique · S4 dictée · S5 correction.", "etapes": [], "vues": 0}]}], "1": [{"act": "Entrée dans le poème", "h": "09:00", "dur": 5, "comp": ["c4-lire-04"], "blocs": [{"id": "d9", "t": "consigne", "pic": "📕", "txt": "Lecture à voix haute de « L'Albatros » de Baudelaire.", "etapes": [], "vues": 0}]}, {"act": "Première impression", "h": "09:05", "dur": 7, "comp": ["c4-oral-02"], "blocs": [{"id": "d10", "t": "question", "q": "Quel effet le poème produit-il sur vous ?", "reps": [{"i": "", "r": "", "refo": false}, {"i": "", "r": "", "refo": false}], "vues": 0}]}, {"act": "Étude accompagnée", "h": "09:12", "dur": 18, "comp": ["c4-lire-04", "c4-langue-01"], "blocs": [{"id": "d11", "t": "consigne", "pic": "✍️", "txt": "Nous relevons ensemble les images qui opposent le ciel et le pont du navire.", "etapes": [], "vues": 0}, {"id": "d12", "t": "fiche", "tt": "Fiche notion", "titre": "Les figures de style", "def": "", "corps": "<p>Comparaison, métaphore, personnification : reconnaître et nommer.</p>", "vues": 0}]}, {"act": "Mise en commun", "h": "09:30", "dur": 10, "comp": ["c4-oral-02"], "blocs": [{"id": "d13", "t": "question", "q": "À quoi le poète compare-t-il l'albatros, et pourquoi ?", "reps": [{"i": "", "r": "", "refo": false}, {"i": "", "r": "", "refo": false}, {"i": "", "r": "", "refo": false}], "vues": 0}]}, {"act": "Trace écrite", "h": "09:40", "dur": 8, "comp": ["c4-ecrire-03"], "blocs": [{"id": "d14", "t": "consigne", "pic": "✍️", "txt": "Chacun rédige trois lignes : ce que l'albatros représente.", "etapes": [], "vues": 0}]}], "2": [{"act": "Rituel d'entrée", "h": "10:07", "dur": 4, "comp": [], "blocs": [{"id": "d15", "t": "consigne", "pic": "📕", "txt": "Ouvrez le cahier à la dernière page collée. Relisez en silence.", "etapes": [], "vues": 0}]}, {"act": "Révision", "h": "10:11", "dur": 7, "comp": ["c4-langue-01"], "blocs": [{"id": "d16", "t": "consigne", "pic": "🎯", "txt": "Aujourd'hui : interro de cours, puis analyse logique.", "etapes": [], "vues": 0}, {"id": "d17", "t": "fiche", "tt": "Fiche de révision", "titre": "Réviser l'interro de cours", "def": "", "corps": "<p>Mouvements, versification, figures et registres.</p>", "vues": 0}]}, {"act": "Interro de cours", "h": "10:18", "dur": 16, "comp": ["c4-langue-01"], "blocs": [{"id": "d18", "t": "consigne", "pic": "💻", "txt": "Connectez-vous au QCM. Code MJPC, puis votre prénom.", "etapes": [], "vues": 0}, {"id": "d19", "t": "consigne", "pic": "⏱", "txt": "Chronomètre : dix minutes.", "etapes": [], "vues": 0}]}, {"act": "Mise en commun", "h": "10:34", "dur": 8, "comp": ["c4-oral-02"], "blocs": [{"id": "d20", "t": "question", "q": "Question 2 — quel effet produit l'enjambement du vers 3 ?", "reps": [{"i": "", "r": "", "refo": false}, {"i": "", "r": "", "refo": false}], "vues": 0}]}, {"act": "Notion — les figures de style", "h": "10:42", "dur": 8, "comp": ["c4-langue-01"], "blocs": [{"id": "d21", "t": "consigne", "pic": "✂️", "txt": "Collez la fiche notion après la page du cours.", "etapes": [], "vues": 0}]}, {"act": "Travail individuel", "h": "10:50", "dur": 12, "comp": ["c4-ecrire-03"], "blocs": [{"id": "d22", "t": "consigne", "pic": "✍️", "txt": "Analyse logique : exercice en autonomie.", "etapes": [], "vues": 0}]}], "3": [{"act": "Dictée préparée — consignes", "h": "11:04", "dur": 6, "comp": ["c4-langue-01"], "blocs": [{"id": "d23", "t": "consigne", "pic": "📝", "txt": "Sortez une feuille. Nous relisons d'abord les mots difficiles au tableau.", "etapes": [], "vues": 0}]}, {"act": "La dictée", "h": "11:10", "dur": 20, "comp": ["c4-langue-01"], "blocs": [{"id": "d24", "t": "consigne", "pic": "🔊", "txt": "Je lis une première fois en entier, puis phrase par phrase.", "etapes": [], "vues": 0}]}, {"act": "Réécriture", "h": "11:30", "dur": 15, "comp": ["c4-ecrire-03"], "blocs": [{"id": "d25", "t": "consigne", "pic": "✍️", "txt": "Réécrivez le passage en passant du singulier au pluriel.", "etapes": [], "vues": 0}]}], "5": [{"act": "Retour sur l'interro", "h": "13:00", "dur": 10, "comp": ["c4-langue-01"], "blocs": [{"id": "d26", "t": "consigne", "pic": "🔁", "txt": "Nous reprenons les trois questions les plus manquées.", "etapes": [], "vues": 0}]}, {"act": "Atelier au choix", "h": "13:10", "dur": 25, "comp": ["c4-langue-01", "c4-ecrire-03"], "blocs": [{"id": "d27", "t": "consigne", "pic": "🧭", "txt": "Trois ateliers : versification · figures · analyse logique. Chacun choisit le sien.", "etapes": [], "vues": 0}]}]};
+  function poser(){
+    try{
+      var ch=(window.chapitresData&&chapitresData['3e'])?chapitresData['3e']['10']:null;
+      if(!ch||!ch.seances) return false;
+      var cles=Object.keys(ch.seances), mis=0;
+      cles.forEach(function(k,rang){
+        var src=DECOR[String(rang)];
+        if(!src) return;
+        var dr=ch.seances[k].deroule;
+        if(!dr || !(dr.ecrans||[]).length){ ch.seances[k].deroule={ecrans:JSON.parse(JSON.stringify(src)), maj:Date.now()}; mis++; }
+      });
+      if(mis){ var el=document.getElementById('bac-bandeau');
+        if(el) el.textContent='🔒 BAC À SABLE — décor posé sur '+mis+' séances du chapitre 10 · aucune écriture ne part'; }
+      return mis>0;
+    }catch(e){ return false; }
+  }
+  var n=0,t=setInterval(function(){ n++; if(poser()||n>80) clearInterval(t); },500);
+  window.__poserDecor=poser;
+})();
+</script>

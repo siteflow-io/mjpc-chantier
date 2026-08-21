@@ -13888,7 +13888,7 @@ function secuInfo(){
 </script>
 
 <script id="pont-fusion">
-/* couture n°7 VERBATIM hors 9 adaptations + adaptateur (chien de garde) + pont · deroule90 · BAC */
+/* couture n°7 VERBATIM hors 9 adaptations + adaptateur (garde+marqueur) + pont · deroule90 · BAC */
 /* ═══════════════════════════════════════════════════════════════════════════
    COUTURES MJPC POUR LE DÉROULÉ — code écrit et ÉPROUVÉ AU BANC par la conscience n°7
    (21/08/2026), extrait du clone avant abandon de la voie « préfixage ».
@@ -14769,6 +14769,7 @@ var DR={
        LA forme d'écran neuf du moteur lui-même (celle de nouvelEcran). */
     if(!t.length)t=[{act:"Nouvelle activité",h:"—",dur:0,blocs:[]}];
     W.ECRANS=t;
+    W.__pontCharge=true;                       /* le marqueur de trame : tout reboot l'efface */
     W.i=0; W.ficheOuverte=null; W.rendre(); },
   /* ouverture : le cadre paraît sur la zone, la trame n'est rechargée QUE si elle change
      (retour d'onglet = reprise, jamais réinitialisation) */
@@ -14779,6 +14780,7 @@ var DR={
     _drQuandPret(function(){
       if(DR.__charge&&DR.__charge!==jeton)_drFlushTrame(DR.__charge);   /* l'édition des 900 dernières ms part vers SA séance */
       if(DR.__charge!==jeton){ DR.__charge=jeton; DR.dr_chargerTrame(ecrans); }
+      else if(!(drWin()||{}).__pontCharge){ DR.dr_chargerTrame(ecrans); }   /* [garde] cadre rebooté (marqueur effacé) : la trame revient */
       AT_PONT.ctx=ctx||AT_PONT.ctx;
       try{ var Wm=drWin(); if(Wm&&Wm.META){                     /* [n°90] le contexte réel sur les feuilles et fiches */
         var xm=AT_PONT.ctx||{}, chpm=xm.level&&chapitresData[xm.level]&&chapitresData[xm.level][xm.chnum];

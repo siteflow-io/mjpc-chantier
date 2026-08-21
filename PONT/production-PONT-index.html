@@ -13727,7 +13727,7 @@ function secuInfo(){
 </script>
 
 <script id="pont-fusion">
-/* couture n°7 VERBATIM hors 5 adaptations + adaptateur + pont · deroule89 · PRODUCTION */
+/* couture n°7 VERBATIM hors 6 adaptations + adaptateur + pont · deroule89 · PRODUCTION */
 /* ═══════════════════════════════════════════════════════════════════════════
    COUTURES MJPC POUR LE DÉROULÉ — code écrit et ÉPROUVÉ AU BANC par la conscience n°7
    (21/08/2026), extrait du clone avant abandon de la voie « préfixage ».
@@ -13851,7 +13851,7 @@ function atSomEcransHtml(seance){
   var h='<div class="at-som-ecrans">';
   ecr.forEach(function(e,n){
     var hh=(e&&e.h)||'', act=(e&&(e.act||e.titre))||('Écran '+(n+1));
-    h+='<div class="at-ecr'+(n===cour?' at-ecr-sel':'')+'" onclick="atSomAllerEcran('+n+',\''+atEsc(String(seance))+'\')">'
+    h+='<div class="at-ecr'+(n===cour?' at-ecr-sel':'')+'" data-ecr="'+n+'" data-ese="'+atEsc(String(seance))+'" onclick="atSomAllerEcran('+n+',\''+atEsc(String(seance))+'\')">'
       +'<span class="at-ecr-mini"><i class="at-ecr-t"></i><i></i><i></i><i></i></span>'
       +'<span class="at-ecr-txt">'+(hh?'<span class="at-ecr-h">'+atEsc(hh)+'</span><br>':'')
       +'<span class="at-ecr-n">'+atEsc(act)+'</span></span></div>';
@@ -14643,6 +14643,108 @@ function _drTitrerColonne(ctx){
     v.textContent='Écrans · '+titre;
   }catch(e){}
 }
+
+/* ═══ [OBJETS-DIAPO, ordre de Paul 21/08] les diapos se manipulent comme les documents :
+   MÊME mécanisme de menu contextuel (table ctxSommaireCible + ctxOuvrir du site, étendus
+   par ENVELOPPES — la base reste intacte), opérations conformes à la matrice actions×état :
+   déplacer → tout conservé · copier → identifiant neuf, dévoilement à zéro, fragment effacé.
+   En PRÉPARATION seulement : une séance jouée ne se manipule pas d'ici. ═══ */
+function _drTrameDe(sk){
+  var x=AT_PONT.ctx||{}; var chp=x.level&&x.chnum&&chapitresData[x.level]&&chapitresData[x.level][x.chnum];
+  var sce=chp&&chp.seances&&chp.seances[sk]; if(!sce)return null;
+  if(!sce.deroule)sce.deroule={ecrans:[],maj:0};
+  if(!sce.deroule.ecrans)sce.deroule.ecrans=[];
+  return sce.deroule;
+}
+function _drEcrireTrame(sk,motif){
+  var x=AT_PONT.ctx||{}; var t=_drTrameDe(sk); if(!t)return;
+  t.maj=Date.now();
+  mjpcPutJson(FIREBASE_BASE+'/site/'+x.level+'/chapitres/'+x.chnum+'/seances/'+sk+'/deroule.json',t,motif,function(){});
+}
+function _drRechargerSi(sk){
+  var x=AT_PONT.ctx||{};
+  if(String(x.snum)===String(sk)&&AT_DR_REGIME==='prep'){ DR.__charge=null; atVuesPoser&&atVuesPoser(); }
+  atSomRafraichir&&atSomRafraichir();
+}
+function atEcranEnvoyer(skSrc,n,skDst){
+  if(AT_DR_REGIME!=='prep')return;
+  var x=AT_PONT.ctx||{};
+  if(String(x.snum)===String(skSrc))try{atDrTrameEnregistrer(true);}catch(e){}
+  var A=_drTrameDe(skSrc), B=_drTrameDe(skDst); if(!A||!B||!A.ecrans[n])return;
+  var e=A.ecrans.splice(n,1)[0];
+  delete e.grp; delete e.suite;                     /* un écran envoyé seul quitte son groupe */
+  (e.blocs||[]).forEach(function(b){ delete b.frag; });
+  B.ecrans.push(e);
+  _drEcrireTrame(skSrc,'Écran envoyé (départ) — séance '+skSrc);
+  _drEcrireTrame(skDst,'Écran reçu — séance '+skDst);
+  _drRechargerSi(skSrc); _drRechargerSi(skDst);
+}
+function atEcranDupliquer(sk,n){
+  if(AT_DR_REGIME!=='prep')return;
+  var T=_drTrameDe(sk); if(!T||!T.ecrans[n])return;
+  var e=JSON.parse(JSON.stringify(T.ecrans[n]));
+  delete e.grp; delete e.suite; e.rev=0;            /* copie : dévoilement à zéro */
+  (e.blocs||[]).forEach(function(b){ b.id='x'+Math.random().toString(36).slice(2,9);   /* identifiant NEUF */
+    delete b.frag; b.vues=0; });
+  T.ecrans.splice(n+1,0,e);
+  _drEcrireTrame(sk,'Écran dupliqué — séance '+sk);
+  _drRechargerSi(sk);
+}
+function atEcranSupprimer(sk,n){
+  if(AT_DR_REGIME!=='prep')return;
+  var T=_drTrameDe(sk); if(!T||!T.ecrans[n])return;
+  T.ecrans.splice(n,1);
+  _drEcrireTrame(sk,'Écran supprimé — séance '+sk);
+  _drRechargerSi(sk);
+}
+function _drEntreesEcran(sk,n){
+  var x=AT_PONT.ctx||{}; var chp=x.level&&chapitresData[x.level]&&chapitresData[x.level][x.chnum];
+  var e=(_drTrameDe(sk)||{ecrans:[]}).ecrans[n]||{};
+  var entrees=[
+    {lib:'Ouvrir', faire:function(){ atSomAllerEcran(n,sk); }},
+    {lib:'Dupliquer ici', faire:function(){ atEcranDupliquer(sk,n); }}
+  ];
+  if(chp&&chp.seances){
+    Object.keys(chp.seances).sort(function(a,b){return (chp.seances[a].ordre||0)-(chp.seances[b].ordre||0);})
+      .forEach(function(k){ if(String(k)===String(sk))return;
+        entrees.push({lib:'Envoyer vers « '+(chp.seances[k].title||k)+' »',
+          faire:function(){ atEcranEnvoyer(sk,n,k); }}); });
+  }
+  entrees.push({lib:'Supprimer', danger:true, faire:function(){ atEcranSupprimer(sk,n); }});
+  return entrees;
+}
+(function(){
+  /* extension de la TABLE et du ROUTEUR par enveloppes — le principe du site, pas un menu maison */
+  if(typeof ctxSommaireCible==='function'&&!window.__ctxEcranEtendu){
+    window.__ctxEcranEtendu=true;
+    var vraiCible=ctxSommaireCible;
+    ctxSommaireCible=function(t){
+      if(t&&t.closest){ var m=t.closest('.at-ecr[data-ecr]');
+        if(m&&AT_DR_REGIME!=='classe')return {type:'atecran', id:m.getAttribute('data-ese')+'|'+m.getAttribute('data-ecr')}; }
+      return vraiCible(t);
+    };
+    var vraiOuvrirCtx=ctxSommaireOuvrir;
+    ctxSommaireOuvrir=function(x,y,cible){
+      if(cible&&cible.type==='atecran'){
+        var p=cible.id.split('|'), sk=p[0], n=parseInt(p[1],10);
+        var e=(_drTrameDe(sk)||{ecrans:[]}).ecrans[n]||{};
+        ctxOuvrir(x,y,(e.act||('Écran '+(n+1))),_drEntreesEcran(sk,n));
+        return;
+      }
+      return vraiOuvrirCtx(x,y,cible);
+    };
+  }
+  /* navigation : en vue DÉROULÉ, cliquer un TITRE de séance ouvre sa trame (même vierge) */
+  if(typeof ed2SelectionnerSeance==='function'&&!window.__selSeanceEtendu){
+    window.__selSeanceEtendu=true;
+    var vraiSel=ed2SelectionnerSeance;
+    ed2SelectionnerSeance=function(j,depuis){
+      var r=vraiSel.apply(this,arguments);
+      try{ if(window.ATVUES&&ATVUES.vue==='deroule'&&AT_DR_REGIME!=='classe')atSomAllerEcran(0,j); }catch(e){}
+      return r;
+    };
+  }
+})();
 
 /* le boot du montage : rappeler l'onglet retenu */
 atVuesRappeler();

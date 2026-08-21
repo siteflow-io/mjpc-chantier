@@ -33,7 +33,10 @@ function _drAssurerCadre(){
 }
 /* intégrité au boot : le texte chargé EST deroule86.html, prouvé par empreinte */
 function _drVerifier(texte){
-  var fin=function(ok,det){ AT_PONT.ecart=ok?null:det; AT_PONT.pret=true; _drPontEtat();
+  var fin=function(ok,det){ AT_PONT.ecart=ok?null:det; try{ var Wv=drWin();
+    if(Wv && !Wv.__pontCharge){ Wv.ECRANS=[{act:"Nouvelle activité",h:"—",dur:0,blocs:[]}]; Wv.i=0; Wv.rendre(); }
+  }catch(e){}                                        /* [garde] la démo embarquée ne s'affiche jamais dans le cadre */
+  AT_PONT.pret=true; _drPontEtat();
     _drEnvelopper(); var q=_drFileAttente.splice(0); q.forEach(function(fn){ try{fn();}catch(e){} }); };
   /* l'empreinte se prend sur les OCTETS du fichier (brut), pas sur la chaîne décodée */
   if(texte.length!==AT_DR_LONGUEUR)return fin(false,'longueur '+texte.length+' \u2260 '+AT_DR_LONGUEUR);
@@ -113,6 +116,7 @@ function _drEnvelopper(){
       atSomSuivreCourant();
       if(AT_DR_REGIME==='classe') atVecuEntrer(W.i);
     } }catch(e){}
+    try{ if(DR.__charge){ AT_PONT.dernierJeton=DR.__charge; AT_PONT.dernierEcran=W.i; } }catch(e){}   /* la position, pour la reconstruction */
     return r; };
   var vraiSauve=W.sauve;
   W.sauve=function(){ try{ atDrEnrAuto(); }catch(e){} return vraiSauve.apply(W,arguments); };
@@ -159,13 +163,20 @@ var DR={
   /* ouverture : le cadre paraît sur la zone, la trame n'est rechargée QUE si elle change
      (retour d'onglet = reprise, jamais réinitialisation) */
   dr_ouvrir:function(zoneId,ecrans,ctx){
-    if(!_drSain()){ _drReconstruire(); }             /* [garde] un cadre mort (détaché/vidé) se reconstruit */
+    /* [garde] cadre mort OU rebooté (la démo embarquée a repris la main : marqueur absent) :
+       reconstruction complète AVANT la file — pret retombe, le chargement rejouera après le
+       load propre, jamais à chaud pendant le boot (course prouvée au banc). */
+    if(!_drSain() || (AT_PONT.pret && !((drWin()||{}).__pontCharge))){ _drReconstruire(); }
     _drAssurerCadre(); _drAfficher(true);
     var jeton=[ctx&&ctx.level,ctx&&ctx.chnum,ctx&&ctx.snum,(ctx&&ctx.classe)||'',(ctx&&ctx.joue)?'j':''].join('|');
     _drQuandPret(function(){
       if(DR.__charge&&DR.__charge!==jeton)_drFlushTrame(DR.__charge);   /* l'édition des 900 dernières ms part vers SA séance */
-      if(DR.__charge!==jeton){ DR.__charge=jeton; DR.dr_chargerTrame(ecrans); }
-      else if(!(drWin()||{}).__pontCharge){ DR.dr_chargerTrame(ecrans); }   /* [garde] cadre rebooté (marqueur effacé) : la trame revient */
+      if(DR.__charge!==jeton){
+        var posMem=(AT_PONT.dernierJeton===jeton)?(AT_PONT.dernierEcran||0):0;   /* AVANT le chargement : son rendre écrase la mémoire */
+        DR.__charge=jeton; DR.dr_chargerTrame(ecrans);
+        if(posMem>0){   /* reconstruction : on revient où l'on était */
+          try{ var Wp=drWin(); if(Wp&&Wp.ECRANS&&posMem<Wp.ECRANS.length){ Wp.i=posMem; Wp.rendre(); } }catch(e){}
+        } }
       AT_PONT.ctx=ctx||AT_PONT.ctx;
       try{ var Wm=drWin(); if(Wm&&Wm.META){                     /* [n°90] le contexte réel sur les feuilles et fiches */
         var xm=AT_PONT.ctx||{}, chpm=xm.level&&chapitresData[xm.level]&&chapitresData[xm.level][xm.chnum];

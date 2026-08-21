@@ -1,3 +1,4 @@
+var _drSainTic=0;
 /* ═══════════ [PONT-É2] L'ADAPTATEUR DR — la prise du cadre, branchée sur le pont ═══════════
    Le cadre MJPC (couture-mjpc.js, conscience n°7) appelle DR.x(...). Ici, DR n'est plus le
    bloc transformé (jeté) : c'est un ADAPTATEUR de sept fonctions qui emballe les cinq
@@ -44,6 +45,19 @@ function _drVerifier(texte){
   }).catch(function(){ fin(true,null); });
 }
 function _drQuandPret(fn){ if(AT_PONT.pret)fn(); else _drFileAttente.push(fn); }
+/* [garde] la santé du cadre : le jeu répond et la scène existe. Une iframe détachée
+   puis rattachée par n'importe quel code du site PERD son contenu (écran noir vu par
+   Paul au retour dans l'atelier en pleine séance) : on ne devine pas la route, on répare. */
+function _drSain(){
+  try{ var f=document.getElementById('at-dr-iframe'); if(!f)return false;
+    var W=f.contentWindow; return !!(W && typeof W.rendre==='function' && W.document && W.document.getElementById('contenu')); }
+  catch(e){ return false; }
+}
+function _drReconstruire(){
+  try{ var f=document.getElementById('at-dr-iframe'); if(f)f.remove(); }catch(e){}
+  AT_PONT.pret=false; AT_PONT.ecart=null;
+  try{ DR.__charge=null; }catch(e){}
+}
 /* [É3] dans le CADRE, la barre du haut et la colonne vignettes du moteur font DOUBLON
    avec la barre MJPC et le sommaire natif : masquées AU RUNTIME (le fichier moteur reste
    entier — ouvert nu, il garde tout). La scène récupère leur place. */
@@ -74,6 +88,9 @@ function _drAfficher(on){
     f.style.visibility='hidden'; f.style.left='-99999px'; return; }
   f.style.visibility='visible'; f.style.display='block';
   var suit=function(){
+    if((_drSainTic=((_drSainTic||0)+1))%150===0 && document.getElementById('at-dr-hote-zone') && !_drSain() && AT_PONT.pret){
+      _drReconstruire(); try{ atVuesPoser&&atVuesPoser(ATVUES.vue); }catch(e){}   /* [garde] cadre mort en cours de route */
+    }
     var z=document.getElementById('at-dr-hote-zone');
     if(!z){ f.style.display='none'; return; }
     var r=z.getBoundingClientRect();
@@ -141,6 +158,7 @@ var DR={
   /* ouverture : le cadre paraît sur la zone, la trame n'est rechargée QUE si elle change
      (retour d'onglet = reprise, jamais réinitialisation) */
   dr_ouvrir:function(zoneId,ecrans,ctx){
+    if(!_drSain()){ _drReconstruire(); }             /* [garde] un cadre mort (détaché/vidé) se reconstruit */
     _drAssurerCadre(); _drAfficher(true);
     var jeton=[ctx&&ctx.level,ctx&&ctx.chnum,ctx&&ctx.snum,(ctx&&ctx.classe)||'',(ctx&&ctx.joue)?'j':''].join('|');
     _drQuandPret(function(){

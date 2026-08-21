@@ -29,3 +29,11 @@ Les deux trous déclarés (« images dans le cadre » · « glisser-déposer des
 sont COMBLÉS par l'essai réel : images VERTES (scène + tableau, adresse réelle),
 drag & drop VERT (ordre, horaires cumulés justes, scène suit, autosave à chaque dépôt),
 verdict ⚖ utilisé avec succès (graine = moteur, pas le pont).
+
+## Chantier à cadrer (Paul, 21/08 soir)
+- **Profils de classes** : les déroulés joués de chaque classe (copies + vécus,
+  deroule_joue/<classe>) devront apparaître dans les profils de classes prévus au plan.
+  À cadrer après la promotion (source de données déjà en place et prouvée).
+- **Écran noir au retour d atelier** : chien de garde posé (reconstruction du cadre mort,
+  double détente : à chaque pose de vue + filet continu). La position exacte dans la
+  séance se perd à la reconstruction (retour écran 1) — déclaré.

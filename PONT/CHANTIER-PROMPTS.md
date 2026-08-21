@@ -17,21 +17,28 @@ P1 · LECTURE COMPLÈTE (prochain livrable, aucun code avant) : worktrack,
 P2 · SCHÉMA ÉTENDU : seances[k].deroule.ecrans dans le JSON de chapitre — validation
     de forme (act/h/dur/blocs, le format du moteur), garde d'atterrissage étendue
     (« cette séance a déjà une trame : compléter/remplacer ? »).
-P2b · LES DEUX VUES JUMELLES DU CHAPITRE (précisé par Paul le 21/08 au soir) :
-    UNE FENÊTRE AUTONOME, comme le tableau de projection (window.open), rendant des
-    PAGES A4 RÉELLES (« la visionneuse est l'impression ») — à l'écran la vue
-    agglomérée, Ctrl+P le document. Deux déclinaisons du même gabarit :
-    · LA VUE PRÉVUE (depuis l'éditeur, onglet Structure — l'intention d'origine de
-      la 3e colonne) : feuille de sommaire du chapitre, fiches, séances détaillées
-      (diapos/trames, temps prévus, métas pédagogiques : notions, compétences),
-      ressources/documents, ET LES TROUS DÉCLARÉS (items à lier ref vide, séances
-      sans trame, sans compétence, notions hors niveaux). Rôle : l'état des lieux
-      face à l'apport de l'IA (l'inventaire à l'injection du plan).
-    · LA VUE VÉCUE (depuis le profil longitudinal de classe) : le même chapitre tel
-      que CETTE classe l'a traversé — bilans de séances jouées, temps réels contre
-      prévus, écrans réellement montrés, décisions T-5/fin d'heure, travail donné.
-      La symétrie prévu/vécu du déroulé, portée au niveau chapitre.
-    TOUT IMPRIMABLE par construction (A4 natif, aucune conversion).
+P2b · LES DEUX VUES JUMELLES DU CHAPITRE — RÉÉCRIT LE 22/08 APRÈS CONFRONTATION
+    À L'EXISTANT (règle de Paul : toute énonciation se confronte à l'existant avant
+    d'être consignée — l'erreur de la n°6 à ne pas refaire).
+    CE QUI EXISTE DÉJÀ, mesuré : la 3e colonne de Structure EST une visionneuse A4
+    du chapitre — ed2Papier/ed2PapierVers, pages .ed2-a4 réelles (794 px, patron
+    printView de worktrack), barre sticky, compteur de feuilles, modes, corrélation
+    aux deux autres colonnes, impression native. Le moteur du déroulé rend déjà le
+    papier d'UNE séance (#pap). La garde d'atterrissage de chInjecter est l'embryon
+    de l'inventaire. Le bilan HTML élève (23b) est un précédent de bilan.
+    ARCHITECTURE ANTI-DOUBLON :
+    · LA VUE PRÉVUE = ed2Papier ÉTENDU, pas une pièce neuve : les trames de déroulé
+      par séance y entrent (rendues au gabarit Papier du moteur), plus les métas
+      pédagogiques (notions/compétences) et les TROUS DÉCLARÉS (items à lier,
+      séances sans trame, sans compétence, notions hors niveaux).
+    · L'ONGLET/MODALE/FENÊTRE demandé par Paul = un bouton « ⧉ Ouvrir en fenêtre »
+      qui rend LE MÊME contenu dans une fenêtre autonome — le motif tableau() :
+      RÉUTILISATION du rendu, jamais un second rendu parallèle.
+    · LA VUE VÉCUE (profil de classe) = LE MÊME GABARIT nourri par
+      deroule_joue/<classe> (copies + vécus, données déjà en place et prouvées) :
+      bilans joués, temps réels vs prévus, écrans montrés, décisions T-5, travail
+      donné. À construire — mais en héritant du gabarit, pas en le recréant.
+    Tout imprimable par construction (A4 natif).
 P3 · LES TROIS PROMPTS RÉÉCRITS (chapitre · feuille · déroulé) : taxonomie DONNÉE
     (154 notions — l'IA choisit, n'invente pas) ; titres canoniques + produits
     déclarés séance par séance ; clé de rapprochement posée par l'IA ; signalement

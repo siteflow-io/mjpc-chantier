@@ -129,6 +129,7 @@ var DR={
     _drQuandPret(function(){
       if(DR.__charge&&DR.__charge!==jeton)_drFlushTrame(DR.__charge);   /* l'édition des 900 dernières ms part vers SA séance */
       if(DR.__charge!==jeton){ DR.__charge=jeton; DR.dr_chargerTrame(ecrans); }
+      _drTitrerColonne(ctx);                     /* la colonne dit LA séance ouverte, pas « séance 3 » */
       _drHabiller();
       _drPontEtat();
       try{ atDrSuiviAppliquer(); }catch(e){}   /* le cadre était passé avant que le jeu soit prêt */
@@ -158,6 +159,19 @@ function _drFlushTrame(ancienJeton){
     sce.deroule.maj=Date.now();
     mjpcPutJson(FIREBASE_BASE+'/site/'+lv+'/chapitres/'+ch+'/seances/'+sk+'/deroule.json',
       sce.deroule,'Trame (flush de bascule) — séance '+sk,function(){ try{atDrEnrConfirme(true);}catch(e){} });
+  }catch(e){}
+}
+
+/* [contextualisation] la maquette était MONO-séance : « Écrans · séance 3 » est en dur
+   dans son HTML. Le moteur reste agnostique ; le PONT écrit le vrai libellé à chaque
+   ouverture. Ouvert nu, le moteur garde son texte d'origine. */
+function _drTitrerColonne(ctx){
+  try{
+    var D=drDoc(); var v=D&&D.querySelector('.vgt'); if(!v)return;
+    var lv=ctx&&ctx.level, ch=ctx&&ctx.chnum, sk=ctx&&ctx.snum;
+    var sce=lv&&ch&&sk&&chapitresData[lv]&&chapitresData[lv][ch]&&chapitresData[lv][ch].seances&&chapitresData[lv][ch].seances[sk];
+    var titre=(sce&&(sce.title||sce.titre))||sk||'';
+    v.textContent='Écrans · '+titre;
   }catch(e){}
 }
 

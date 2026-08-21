@@ -117,6 +117,7 @@ function _drEnvelopper(){
       if(AT_DR_REGIME==='classe') atVecuEntrer(W.i);
     } }catch(e){}
     try{ if(DR.__charge){ AT_PONT.dernierJeton=DR.__charge; AT_PONT.dernierEcran=W.i; } }catch(e){}   /* la position, pour la reconstruction */
+    try{ clearTimeout(AT_PONT._syT); AT_PONT._syT=setTimeout(function(){ try{atSomRafraichir();}catch(e){} },300); }catch(e){}   /* [resync] la colonne chapitre suit chaque rendu, sans retard */
     return r; };
   var vraiSauve=W.sauve;
   W.sauve=function(){ try{ atDrEnrAuto(); }catch(e){} return vraiSauve.apply(W,arguments); };

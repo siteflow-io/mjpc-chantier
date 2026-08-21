@@ -37,3 +37,10 @@ verdict ⚖ utilisé avec succès (graine = moteur, pas le pont).
 - **Écran noir au retour d atelier** : chien de garde posé (reconstruction du cadre mort,
   double détente : à chaque pose de vue + filet continu). La position exacte dans la
   séance se perd à la reconstruction (retour écran 1) — déclaré.
+
+## Soldées le 21/08 au soir (lot 91→94)
+graine image (90) · miniature d'image (94, bande-photo prouvée) · métas papier/fiches (90,
+prouvé contexte réel) · lien d'aide (91) · resync horaires (adaptateur) · libellés T-5 (11e
+adaptation) · reboot/écran noir/clôture fantôme/position (clos, banc décisif) · boîte native
+(statuée assumée, précédent _corbeillePuis) · [LOT1-①] (couvert) · LOT ⑫ (passe site, hors pont).
+Restent : les 4 décisions de Paul + MODE TEST (reporté sur son ordre) + vérif à l'œil Ctrl+B/U.

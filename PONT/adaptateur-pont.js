@@ -261,7 +261,7 @@ function _drRechargerSi(sk){
   if(String(x.snum)===String(sk)&&AT_DR_REGIME==='prep'){ DR.__charge=null; atVuesPoser&&atVuesPoser(); }
   atSomRafraichir&&atSomRafraichir();
 }
-function atEcranEnvoyer(skSrc,n,skDst){
+function atEcranEnvoyer(skSrc,n,skDst,posDst){
   if(AT_DR_REGIME!=='prep')return;
   var x=AT_PONT.ctx||{};
   if(String(x.snum)===String(skSrc))try{atDrTrameEnregistrer(true);}catch(e){}
@@ -269,7 +269,7 @@ function atEcranEnvoyer(skSrc,n,skDst){
   var e=A.ecrans.splice(n,1)[0];
   delete e.grp; delete e.suite;                     /* un écran envoyé seul quitte son groupe */
   (e.blocs||[]).forEach(function(b){ delete b.frag; });
-  B.ecrans.push(e);
+  if(typeof posDst==='number'&&posDst>=0&&posDst<=B.ecrans.length)B.ecrans.splice(posDst,0,e); else B.ecrans.push(e);
   _drEcrireTrame(skSrc,'Écran envoyé (départ) — séance '+skSrc);
   _drEcrireTrame(skDst,'Écran reçu — séance '+skDst);
   _drRechargerSi(skSrc); _drRechargerSi(skDst);
@@ -305,9 +305,44 @@ function _drEntreesEcran(sk,n){
         entrees.push({lib:'Envoyer vers « '+(chp.seances[k].title||k)+' »',
           faire:function(){ atEcranEnvoyer(sk,n,k); }}); });
   }
-  entrees.push({lib:'Supprimer', danger:true, faire:function(){ atEcranSupprimer(sk,n); }});
+  entrees.push({lib:'Supprimer', danger:true, faire:function(){
+    var titreE=(e.act||('Écran '+(n+1)));
+    if(typeof _modaleConfirme==='function'){
+      _modaleConfirme('Supprimer cet écran',
+        '<div class="cm-sub">« '+((typeof escapeHtml==='function')?escapeHtml(titreE):titreE)+' » sera retiré de la séance. Les séances déjà jouées n’y perdent rien.</div>',
+        function(){ atEcranSupprimer(sk,n); });
+    } else { atEcranSupprimer(sk,n); }
+  }});
   return entrees;
 }
+/* [drag inter-séances, décision de Paul] les minis du sommaire se GLISSENT d'une séance
+   à l'autre — même opération que « Envoyer vers » (atEcranEnvoyer), geste souris en plus.
+   Tout se passe dans la page hôte : aucune traversée du cadre. */
+var AT_DRAG_ECR=null;
+document.addEventListener('dragstart',function(ev){
+  var m=ev.target&&ev.target.closest&&ev.target.closest('.at-ecr[data-ecr]');
+  if(!m||AT_DR_REGIME==='classe')return;
+  AT_DRAG_ECR={sk:m.getAttribute('data-ese'), n:parseInt(m.getAttribute('data-ecr'),10)};
+  try{ ev.dataTransfer.setData('text/plain','atecran'); ev.dataTransfer.effectAllowed='move'; }catch(e){}
+});
+document.addEventListener('dragover',function(ev){
+  if(!AT_DRAG_ECR)return;
+  var cible=ev.target&&ev.target.closest&&(ev.target.closest('.at-ecr[data-ecr]')||ev.target.closest('.ed2-sce[data-seance]'));
+  if(cible){ ev.preventDefault(); try{ev.dataTransfer.dropEffect='move';}catch(e){} }
+});
+document.addEventListener('drop',function(ev){
+  if(!AT_DRAG_ECR)return;
+  var d=AT_DRAG_ECR; AT_DRAG_ECR=null;
+  var mini=ev.target&&ev.target.closest&&ev.target.closest('.at-ecr[data-ecr]');
+  var sce=ev.target&&ev.target.closest&&ev.target.closest('.ed2-sce[data-seance]');
+  var skDst=mini?mini.getAttribute('data-ese'):(sce?sce.getAttribute('data-seance'):null);
+  if(!skDst)return; ev.preventDefault();
+  if(String(skDst)===String(d.sk))return;                     /* dans la même séance : le moteur a déjà son drag */
+  var pos=mini?parseInt(mini.getAttribute('data-ecr'),10):undefined;
+  atEcranEnvoyer(d.sk,d.n,skDst,pos);
+});
+document.addEventListener('dragend',function(){ AT_DRAG_ECR=null; });
+
 (function(){
   /* extension de la TABLE et du ROUTEUR par enveloppes — le principe du site, pas un menu maison */
   if(typeof ctxSommaireCible==='function'&&!window.__ctxEcranEtendu){

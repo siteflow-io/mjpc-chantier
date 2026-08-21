@@ -147,6 +147,19 @@ var DR={
       if(DR.__charge&&DR.__charge!==jeton)_drFlushTrame(DR.__charge);   /* l'édition des 900 dernières ms part vers SA séance */
       if(DR.__charge!==jeton){ DR.__charge=jeton; DR.dr_chargerTrame(ecrans); }
       AT_PONT.ctx=ctx||AT_PONT.ctx;
+      try{ var Wm=drWin(); if(Wm&&Wm.META){                     /* [n°90] le contexte réel sur les feuilles et fiches */
+        var xm=AT_PONT.ctx||{}, chpm=xm.level&&chapitresData[xm.level]&&chapitresData[xm.level][xm.chnum];
+        var scem=chpm&&chpm.seances&&chpm.seances[xm.snum];
+        var J=['dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi'],
+            M=['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'],
+            dj=new Date();
+        Wm.META.classe=(AT_DR_REGIME==='classe'&&AT_DR_COURS&&AT_DR_COURS.classe&&classesData[AT_DR_COURS.classe])?(classesData[AT_DR_COURS.classe].nom||''):'';
+        Wm.META.chapitre=(chpm&&chpm.title)||''; Wm.META.chapitreCourt=(chpm&&chpm.title)||'';
+        Wm.META.seance=(scem&&(scem.title||scem.titre))||String(xm.snum||'');
+        Wm.META.seanceCourt=Wm.META.seance;
+        Wm.META.date=J[dj.getDay()]+' '+dj.getDate()+' '+M[dj.getMonth()];
+        var h3=Wm.document.getElementById('h3part'); if(h3)h3.textContent='Participation · '+(Wm.META.classe||'—');
+      } }catch(e){}
       try{ var W0=drWin(); if(W0&&W0.ong)W0.ong('deroule'); }catch(e){}   /* la vue interne suit l'onglet MJPC */
       _drTitrerColonne(ctx);                     /* la colonne dit LA séance ouverte, pas « séance 3 » */
       _drHabiller();

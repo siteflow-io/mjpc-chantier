@@ -13888,7 +13888,7 @@ function secuInfo(){
 </script>
 
 <script id="pont-fusion">
-/* couture n°7 VERBATIM hors 7 adaptations + adaptateur + pont · MOTEUR deroule90 · BAC */
+/* couture n°7 VERBATIM hors 9 adaptations + adaptateur + pont · deroule90 · BAC */
 /* ═══════════════════════════════════════════════════════════════════════════
    COUTURES MJPC POUR LE DÉROULÉ — code écrit et ÉPROUVÉ AU BANC par la conscience n°7
    (21/08/2026), extrait du clone avant abandon de la voie « préfixage ».
@@ -14027,7 +14027,11 @@ function atSomInjecterEcrans(html){
   for(var k=1;k<parts.length;k++){
     var seg='<div class="ed2-sce'+parts[k];
     var m=seg.match(/data-seance="([^"]*)"/);
-    /* une séance repliée ne montre pas ses écrans (comme elle ne montre pas ses documents) */
+    /* [A8a] la flèche de repli, perdue à la transmission (le rendu vivait dans l'habillage
+       de la n°7, jamais transmis) : rebranchée ici sur SES fonctions, rien d'inventé. */
+    if(m){ var ouv=atSomOuverte(m[1]);
+      seg=seg.replace('><span class="ed2-n"',
+        '><span class="at-som-pli" onclick="event.stopPropagation();atSomPlier(\''+atEsc(m[1])+'\')" title="'+(ouv?'Replier':'Déplier')+' cette séance">'+(ouv?'▾':'▸')+'</span><span class="ed2-n"'); }
     var bloc=(m && atSomOuverte(m[1])) ? atSomEcransHtml(m[1]) : '';
     if(bloc){
       var pos=seg.lastIndexOf('<button class="ed2-inserer"');
@@ -14075,9 +14079,11 @@ function atSomPlier(seance){
 function atSomRafraichir(){
   var z=document.getElementById('at-arbre');
   if(z){
-    var pos=z.scrollTop;                       /* [LOT1-①] le défilement ne se perd pas */
+    var sc=z.querySelector('.ed2-som')||z;     /* [A8b] l'ascenseur unique vit dans .ed2-som désormais */
+    var pos=sc.scrollTop;                      /* [LOT1-①] le défilement ne se perd pas */
     z.outerHTML = atSommaireNatifHtml();
-    var n=document.getElementById('at-arbre'); if(n) n.scrollTop=pos;
+    var n=document.getElementById('at-arbre');
+    if(n){ var sc2=n.querySelector('.ed2-som')||n; sc2.scrollTop=pos; }
     return;
   }
   if(typeof atEditerChapitreRendre==='function' && (AT.edChap||AT_FIL)) atEditerChapitreRendre();
@@ -14990,6 +14996,7 @@ atVuesRappeler();
 .at-repr-ap{color:#a8d8b0}
 .at-vecu{font-size:.82em;color:#7fae7f;margin-left:4px}
 .at-vecu-plus{color:#ffb86c;font-weight:700}
+.at-som-pli{cursor:pointer;margin-right:6px;user-select:none;color:#c9a25a;display:inline-block;width:14px}
 </style>
 
 </html>

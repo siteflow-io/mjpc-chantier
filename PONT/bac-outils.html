@@ -1,0 +1,69 @@
+<script id="bac-outils">
+/* ═══ OUTILS DU BAC (v3, conscience n°8) — SE RETIRE AVANT TOUT PUSH, comme la coiffe ═══
+   Trois outils pour distinguer un vrai bug d'un effet du bac à sable :
+   ① chaque écriture bloquée s'annonce par un TOAST nominatif (quel nœud, quelle heure) ;
+   ② le bandeau ouvre le JOURNAL des écritures bloquées + la liste des faux-bugs ATTENDUS ;
+   ③ « ⚖ Vérifier contre l'origine » ouvre le moteur NU (même fichier bit pour bit, sans
+      pont ni coutures) : même symptôme là-bas = la maquette ; symptôme seulement ici = le pont. */
+(function(){
+  var JOURNAL=[];
+  function heure(){ var d=new Date(); return String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0')+':'+String(d.getSeconds()).padStart(2,'0'); }
+  function noeud(u){ u=String(u); var m=u.match(/firebasedatabase\.app(\/[^?]*)/); u=m?m[1]:u;
+    return u.replace(/\.json$/,'').split('/').slice(-3).join('/'); }
+  function toast(m){
+    var t=document.createElement('div');
+    t.style.cssText='position:fixed;right:14px;bottom:44px;z-index:99998;background:#2a1414;color:#f2caca;border:1px solid #8c1d1d;border-radius:9px;padding:9px 13px;font:600 13px system-ui;max-width:420px;box-shadow:0 4px 18px rgba(0,0,0,.5)';
+    t.textContent=m; document.body.appendChild(t);
+    setTimeout(function(){ t.style.transition='opacity .4s'; t.style.opacity='0'; setTimeout(function(){t.remove();},450); },4200);
+  }
+  /* on ÉCOUTE la coiffe v2 sans la modifier : mêmes points d'entrée (fetch/XHR) */
+  var HUB='firebasedatabase.app', ECRIT={PUT:1,POST:1,PATCH:1,DELETE:1};
+  var vf=window.fetch;
+  window.fetch=function(url,opts){
+    var u=(typeof url==='string')?url:(url&&url.url)||'';
+    var m=((opts&&opts.method)||'GET').toUpperCase();
+    if(u.indexOf(HUB)>=0&&ECRIT[m]){ JOURNAL.push({h:heure(),m:m,n:noeud(u)});
+      toast('\ud83d\udd12 bac \u00e0 sable \u2014 \u00e9criture bloqu\u00e9e ('+m+') \u2192 '+noeud(u)+' \u2014 ce n\u2019est PAS un bug'); }
+    return vf.apply(this,arguments);
+  };
+  var vo=XMLHttpRequest.prototype.open;
+  XMLHttpRequest.prototype.open=function(m,u){
+    if(String(u).indexOf(HUB)>=0&&ECRIT[String(m).toUpperCase()]){ JOURNAL.push({h:heure(),m:String(m).toUpperCase(),n:noeud(u)});
+      toast('\ud83d\udd12 bac \u00e0 sable \u2014 \u00e9criture bloqu\u00e9e ('+m+') \u2192 '+noeud(u)+' \u2014 ce n\u2019est PAS un bug'); }
+    return vo.apply(this,arguments);
+  };
+  /* le journal + les faux-bugs attendus + le témoin de vérité */
+  function panneau(){
+    var anc=document.getElementById('bac-panneau'); if(anc){ anc.remove(); return; }
+    var p=document.createElement('div'); p.id='bac-panneau';
+    p.style.cssText='position:fixed;right:12px;bottom:40px;z-index:99998;background:#1a1210;color:#e8e0cf;border:1px solid #8c1d1d;border-radius:11px;padding:14px;font:13px system-ui;max-width:520px;max-height:70vh;overflow:auto;box-shadow:0 6px 24px rgba(0,0,0,.6)';
+    var lignes=JOURNAL.length
+      ? JOURNAL.map(function(e){return '<div style="padding:2px 0">'+e.h+' \u00b7 '+e.m+' \u2192 <code>'+e.n+'</code></div>';}).join('')
+      : '<div style="color:#9c8f74">Aucune \u00e9criture bloqu\u00e9e pour l\u2019instant.</div>';
+    p.innerHTML='<b>Journal du bac \u00e0 sable</b> \u2014 '+JOURNAL.length+' \u00e9criture(s) bloqu\u00e9e(s)'
+      +'<div style="margin:6px 0 10px">'+lignes+'</div>'
+      +'<b>Faux-bugs ATTENDUS ici (ce n\u2019est pas moi, c\u2019est le bac)</b>'
+      +'<div style="margin:4px 0 10px;line-height:1.5">\u00b7 rien ne persiste : au rechargement, trames, copies et v\u00e9cu reviennent \u00e0 z\u00e9ro<br>'
+      +'\u00b7 les confirmations \u00ab Enregistr\u00e9\u2026 \u00bb sont simul\u00e9es (le bac r\u00e9pond \u00e0 la place du hub)<br>'
+      +'\u00b7 rien n\u2019appara\u00eet sur le hub ni sur un autre appareil<br>'
+      +'<b>Tout le reste \u2014 affichage, boutons, fondus, navigation \u2014 ne d\u00e9pend d\u2019AUCUNE \u00e9criture : si \u00e7a cloche, c\u2019est un vrai bug \u00e0 me remonter.</b></div>'
+      +'<button id="bac-temoin" style="padding:8px 12px;border-radius:8px;border:1px solid #c9a25a;background:#41371f;color:#fff;cursor:pointer;font:600 13px system-ui">\u2696 V\u00e9rifier contre l\u2019origine \u2014 ouvrir le moteur nu</button>'
+      +'<div style="color:#9c8f74;margin-top:6px">M\u00eame sympt\u00f4me dans l\u2019origine \u2192 c\u2019est la maquette. Sympt\u00f4me seulement ici \u2192 c\u2019est le pont : \u00e0 me signaler.</div>';
+    document.body.appendChild(p);
+    document.getElementById('bac-temoin').onclick=function(){
+      try{
+        var texte=decodeURIComponent(escape(atob(AT_DR_B64)));
+        var w=window.open('about:blank');
+        w.document.open(); w.document.write(texte); w.document.close();
+      }catch(e){ toast('Ouverture impossible : '+String(e).slice(0,80)); }
+    };
+  }
+  document.addEventListener('DOMContentLoaded',function(){
+    var vise=setInterval(function(){
+      var bd=document.getElementById('bac-bandeau')||[].slice.call(document.querySelectorAll('div')).filter(function(d){return /BAC \u00c0 SABLE/.test(d.textContent)&&d.childElementCount===0;})[0];
+      if(bd){ clearInterval(vise); bd.style.cursor='pointer'; bd.title='Journal du bac \u00b7 faux-bugs attendus \u00b7 v\u00e9rifier contre l\u2019origine';
+        bd.addEventListener('click',panneau); }
+    },400);
+  });
+})();
+</script>

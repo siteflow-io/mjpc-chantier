@@ -372,6 +372,7 @@
   .a4 .f-corps-recit .act-r{font-size:.52rem;letter-spacing:.09em;text-transform:uppercase;color:#8a7a5a;
                             border:1px solid #d9cdb4;border-radius:999px;padding:0 6px;margin-right:5px}
   .a4-coller{position:absolute;right:14px;top:2px;font-size:.55rem;letter-spacing:.08em;text-transform:uppercase;color:#8a7a5a}
+  button.off,button:disabled{opacity:.32;cursor:not-allowed}   /* [n°88] l'inapplicable reste visible, grisé */
 </style>
 </head>
 <body>
@@ -404,7 +405,7 @@
       <span class="sp"></span>
       <button id="bgel" onclick="gel()">❄ Gel</button>
       <button id="bspot" class="spot" onclick="spot()">✦ Mettre en lumière</button><button id="bstylo" class="stylo" onclick="stylo()" title="marquer un objet : les élèves doivent l'écrire">✍🏻 À écrire</button>
-      <button onclick="forme('bold')" title="Ctrl+B"><b>G</b></button><button onclick="forme('underline')" title="Ctrl+U"><u>S</u></button><span class="pal"><button class="c" style="background:#ffe94a" onclick="forme('hilite','#ffe94a')" title="Surligner en jaune (Ctrl+H)"></button><button class="c" style="background:#b6f0c2" onclick="forme('hilite','#b6f0c2')" title="Surligner en vert"></button><button class="c" style="background:#ffc9d6" onclick="forme('hilite','#ffc9d6')" title="Surligner en rose"></button><button class="c" style="background:#bcd9ff" onclick="forme('hilite','#bcd9ff')" title="Surligner en bleu"></button><button class="c x" onclick="forme('hilite',null)" title="Retirer le surlignage">✕</button></span><button onclick="annuler()" title="Ctrl+Z">↶ Annuler</button>
+      <button id="bgras" onclick="forme('bold')" title="Ctrl+B"><b>G</b></button><button id="bsoul" onclick="forme('underline')" title="Ctrl+U"><u>S</u></button><span class="pal"><button class="c" style="background:#ffe94a" onclick="forme('hilite','#ffe94a')" title="Surligner en jaune (Ctrl+H)"></button><button class="c" style="background:#b6f0c2" onclick="forme('hilite','#b6f0c2')" title="Surligner en vert"></button><button class="c" style="background:#ffc9d6" onclick="forme('hilite','#ffc9d6')" title="Surligner en rose"></button><button class="c" style="background:#bcd9ff" onclick="forme('hilite','#bcd9ff')" title="Surligner en bleu"></button><button class="c x" onclick="forme('hilite',null)" title="Retirer le surlignage">✕</button></span><button onclick="annuler()" title="Ctrl+Z">↶ Annuler</button>
       <span class="sp"></span>
       <span class="regl"><span id="lz">32 pt</span><input type="range" id="rz" min="0" max="4" step="1" value="1" oninput="zoom()"></span>
       <span class="sp"></span>
@@ -429,8 +430,8 @@
       <button onclick="ajoute('consigne')">+ Consigne</button>
       <button onclick="ajoute('fiche')">+ Fiche</button>
       <button onclick="ajoute('question')">+ Question</button>
-      <button onclick="ajoute('schema')">+ Schéma</button>
-      <button onclick="ajoute('image')">+ Image</button>
+      <button id="bajsch" onclick="ajoute('schema')">+ Schéma</button>
+      <button id="bajimg" onclick="ajoute('image')">+ Image</button>
     </div>
     <p class="note">Clic dans un texte pour l'écrire · <b>clic droit</b> sur un bloc : supprimer, dupliquer, déplacer ·
       <b>Entrée</b> dans une réponse ouvre la suivante · double-clic sur les initiales = verbatim / reformulé ·
@@ -696,10 +697,15 @@ function rendre(){
   (function(){ var e=ECRANS[i];
     if(!(e&&e.suite))return;
     var vide=!e.blocs.length || e.blocs.every(function(b){
-      var t=(b.txt||'')+(b.q||'')+(b.corps||'')+((b.etapes||[]).join(''))
+      var t=(b.txt||'')+(b.q||'')+(b.corps||'')+(b.src||'')+(b.ref||'')   /* [n°89] un schéma/une image pleins ne sont pas du vide */
+            +((b.etapes||[]).join(''))
             +((b.reps||[]).map(function(r){return (r.i||'')+(r.r||'');}).join(''));
       var d=document.createElement('div'); d.innerHTML=t; return !d.textContent.trim(); });
-    if(vide&&!e.demandeSup){ e.demandeSup=true;
+    /* [n°89] un bloc fraîchement ajouté (neuf) = le professeur est EN TRAIN d'y travailler :
+       on ne lui propose jamais de supprimer l'écran sous les doigts. Le filet ne joue que
+       pour une suite réellement vidée de tout. */
+    var enTravail=e.blocs.some(function(b){return b&&b.neuf;});
+    if(vide&&!enTravail&&!e.demandeSup){ e.demandeSup=true;
       setTimeout(function(){ if(confirm("Cet écran de suite est vide — le supprimer ?")) supprimeSuite(i);
                              else rendre(); },30); }
     if(!vide)delete e.demandeSup;
@@ -784,11 +790,22 @@ function rendre(){
   if(avantVu){ animeArrivees(avantVu); avantVu=null; }
 }
 function outilsDuRegime(){
-  /* les outils du déroulé n'ont pas de sens sur un écran visuel, et réciproquement */
+  /* les outils du déroulé n'ont pas de sens sur un écran visuel, et réciproquement.
+     [n°88, 21/08/2026] plus rien ne DISPARAÎT : l'inapplicable se GRISE et dit pourquoi
+     (décision de Paul — savoir ce qu'on peut faire selon le type d'écran). */
   var v=estVisuel();
+  function etat(e,off,pourquoi){ if(!e)return;
+    if(off){ if(e.dataset.t0===undefined)e.dataset.t0=e.title||'';
+      e.disabled=true; e.classList.add('off'); e.title=pourquoi; }
+    else { e.disabled=false; e.classList.remove('off');
+      if(e.dataset.t0!==undefined)e.title=e.dataset.t0; } }
   ['bspot','bstylo','bgras','bsoul'].forEach(function(id){
-    var e=document.getElementById(id); if(e)e.style.display=v?'none':'';});
-  var pal=document.querySelector('.pal'); if(pal)pal.style.display=v?'none':'';
+    etat(document.getElementById(id), v, 'Sans objet sur un écran visuel (schéma ou image)'); });
+  document.querySelectorAll('.pal button').forEach(function(e){
+    etat(e, v, 'Pas de surligneur sur un écran visuel'); });
+  /* un seul visuel par écran : la source des télescopages */
+  etat(document.getElementById('bajsch'), v, 'Un seul schéma ou image par écran — cet écran en porte déjà un');
+  etat(document.getElementById('bajimg'), v, 'Un seul schéma ou image par écran — cet écran en porte déjà un');
   document.body.classList.toggle('visuel',v);
   if(v){ if(spotOn)spot(); if(styloOn)stylo(); }
   else { if(mkOutil)armeMk(mkOutil); PRIS={}; selMk=null; }
@@ -1385,11 +1402,11 @@ function lire(){
   document.querySelectorAll('#contenu [data-p]').forEach(function(el){
     var p=el.dataset.p; if(p==='act'){ECRANS[i].act=el.textContent;return;}
     p=p.split('.'); var b=ECRANS[i].blocs[+p[0]]; if(!b)return;
-    if(p[1]==='txt'){b.txt=el.innerHTML;b.neuf=false;}
+    if(p[1]==='txt'){if(b.txt!==el.innerHTML)b.neuf=false;b.txt=el.innerHTML;}   /* [n°89] neuf ne tombe qu'à l'ÉCRITURE réelle */
     if(p[1]==='legende'){ b.legende=el.textContent.trim(); }
-    if(p[1]==='titre'){b.titre=el.innerHTML;b.neuf=false;}
-    if(p[1]==='def'){b.def=el.innerHTML;b.neuf=false;}
-    if(p[1]==='q'){b.q=el.innerHTML;b.neuf=false;}
+    if(p[1]==='titre'){if(b.titre!==el.innerHTML)b.neuf=false;b.titre=el.innerHTML;}
+    if(p[1]==='def'){if(b.def!==el.innerHTML)b.neuf=false;b.def=el.innerHTML;}
+    if(p[1]==='q'){if(b.q!==el.innerHTML)b.neuf=false;b.q=el.innerHTML;}
     if(p[1]==='et')b.etapes[+p[2]]=el.innerHTML;
     if(p[1]==='i'){var v=el.textContent.replace(/[^A-Za-zÀ-ÿ'-]/g,'').trim();
       b.reps[+p[2]].i=v.toUpperCase().slice(0,4);}
@@ -1883,14 +1900,14 @@ function scinde(e){
   var reste=null;
   if(b.t==='consigne'&&b.etapes&&b.etapes.length>1){
     var m=Math.ceil(b.etapes.length/2), vu=(b.vues||0);
-    reste={t:'consigne',pic:b.pic,txt:b.txt,etapes:b.etapes.slice(m),vues:Math.max(0,vu-m),frag:b.frag};
+    reste={neuf:b.neuf,t:'consigne',pic:b.pic,txt:b.txt,etapes:b.etapes.slice(m),vues:Math.max(0,vu-m),frag:b.frag};
     b.etapes=b.etapes.slice(0,m); b.vues=Math.min(vu,m);
   }
   else if(b.t==='question'&&b.reps&&b.reps.filter(function(r){return r.i||r.r;}).length>1){
     var pleines=b.reps.filter(function(r){return r.i||r.r;});
     var vides=b.reps.filter(function(r){return !(r.i||r.r);});
     var m2=Math.ceil(pleines.length/2), vu2=(b.vues||0);
-    reste={t:'question',q:b.q,reps:pleines.slice(m2).concat(vides),frag:b.frag,vues:Math.max(0,vu2-m2)};
+    reste={neuf:b.neuf,t:'question',q:b.q,reps:pleines.slice(m2).concat(vides),frag:b.frag,vues:Math.max(0,vu2-m2)};
     b.reps=pleines.slice(0,m2);            /* la ligne vide suit le morceau reporté */
     b.vues=Math.min(vu2,m2);
   }
@@ -1898,7 +1915,7 @@ function scinde(e){
     /* une seule réponse, mais trop longue : on coupe SON TEXTE et on la poursuit */
     var c=coupeTexte(b.reps[0].r);
     if(c){ b.reps[0].r=c[0];
-      reste={t:'question',q:b.q,frag:b.frag,vues:(b.vues||0),
+      reste={neuf:b.neuf,t:'question',q:b.q,frag:b.frag,vues:(b.vues||0),
              reps:[{i:b.reps[0].i,r:c[1],refo:b.reps[0].refo,suiteRep:true}]}; }
   }
   else if(b.t==='schema'||b.t==='image'){
@@ -1911,14 +1928,14 @@ function scinde(e){
     var parts=[].slice.call(d.children);
     if(parts.length>1){ var m3=Math.ceil(parts.length/2), a='',cc='';
       parts.forEach(function(el,k){ (k<m3? (a+=el.outerHTML) : (cc+=el.outerHTML)); });
-      b.corps=a; reste={t:'fiche',tt:b.tt,titre:b.titre,def:'',corps:cc,frag:b.frag};
+      b.corps=a; reste={neuf:b.neuf,t:'fiche',tt:b.tt,titre:b.titre,def:'',corps:cc,frag:b.frag};
     } else { var cf=coupeTexte(corpsFiche(b,0));
-      if(cf){ b.corps='<p>'+cf[0]+'</p>'; reste={t:'fiche',tt:b.tt,titre:b.titre,def:'',corps:'<p>'+cf[1]+'</p>',frag:b.frag}; } }
+      if(cf){ b.corps='<p>'+cf[0]+'</p>'; reste={neuf:b.neuf,t:'fiche',tt:b.tt,titre:b.titre,def:'',corps:'<p>'+cf[1]+'</p>',frag:b.frag}; } }
   }
   else {
     var champ=(b.t==='consigne'?'txt':'q'), c2=coupeTexte(b[champ]);
     if(c2){ b[champ]=c2[0];
-      reste={t:b.t,pic:b.pic||'↳',txt:c2[1],q:c2[1],etapes:[],vues:0,reps:[],frag:b.frag}; }
+      reste={neuf:b.neuf,t:b.t,pic:b.pic||'↳',txt:c2[1],q:c2[1],etapes:[],vues:0,reps:[],frag:b.frag}; }
   }
   if(!reste)return;
   /* une image ou un schéma ne se coupe pas : plutôt que créer une suite vide, on ne fait rien —

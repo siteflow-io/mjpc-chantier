@@ -14712,6 +14712,22 @@ function _drEnvelopper(){
     return r; };
   var vraiSauve=W.sauve;
   W.sauve=function(){ try{ atDrEnrAuto(); }catch(e){} return vraiSauve.apply(W,arguments); };
+  var vraiTableau=W.tableau;
+  W.tableau=function(){ var r=vraiTableau.apply(W,arguments);
+    setTimeout(function(){ try{
+      var win=W.win; if(!win||win.closed)return;
+      var c=win.document.querySelector('#att .c'); if(!c)return;
+      var x=(window.AT_PONT&&AT_PONT.ctx)||{}, lv=x.level, ch=x.chnum, sk=x.snum;
+      var chp=lv&&ch&&chapitresData[lv]&&chapitresData[lv][ch];
+      var sce=chp&&chp.seances&&chp.seances[sk];
+      var m=[];
+      if(AT_DR_REGIME==='classe'&&AT_DR_COURS&&AT_DR_COURS.classe&&classesData[AT_DR_COURS.classe])
+        m.push(classesData[AT_DR_COURS.classe].nom||AT_DR_COURS.classe);
+      if(chp&&chp.title)m.push(chp.title);
+      if(sce&&(sce.title||sce.titre))m.push(sce.title||sce.titre);
+      if(m.length)c.textContent=m.join(' · ');    /* le moteur nu garde son texte d'origine */
+    }catch(e){} },200);
+    return r; };
   W.__pontEnv=true;
 }
 
@@ -14742,6 +14758,7 @@ var DR={
     _drQuandPret(function(){
       if(DR.__charge&&DR.__charge!==jeton)_drFlushTrame(DR.__charge);   /* l'édition des 900 dernières ms part vers SA séance */
       if(DR.__charge!==jeton){ DR.__charge=jeton; DR.dr_chargerTrame(ecrans); }
+      AT_PONT.ctx=ctx||AT_PONT.ctx;
       _drTitrerColonne(ctx);                     /* la colonne dit LA séance ouverte, pas « séance 3 » */
       _drHabiller();
       _drPontEtat();

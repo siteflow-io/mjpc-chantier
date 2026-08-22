@@ -145,5 +145,10 @@ donner à reecriture la chaîne complète au canon des 4 chaînes (doctrine :
 « le prompt maître ne fabrique pas le résultat : il actionne ce que l app sait
 déjà faire » — detectModifs(orig,att) est la preuve). bb4e suivra le chantier
 réécriture global (passe réécriture/étude de texte/rédaction).
-Après P4-réécriture seulement : LE GESTE DE PROMOTION :
+DÉCISION FINALE (Paul, 22/08 soir) : la réécriture RESTE AU CHANTIER GLOBAL du
+plan (passe réécriture/étude de texte/rédaction) — pas de raison de la faire ici.
+Consigné : la question a été discutée LORS DU RETRAVAIL DES PROMPTS SEED (P3-P4,
+cette session) ; le chantier réécriture héritera du canon des 4 chaînes et de la
+doctrine « le prompt actionne ce que l app sait faire » (detectModifs).
+LE GESTE DE PROMOTION :
 audit anti-bac complet + promeus + prompts au hub + seed natif v2 — un seul geste.

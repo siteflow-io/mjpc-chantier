@@ -190,3 +190,12 @@ que TOUT se décide en amont (structure + déroulé injectés). À amender :
 · le champ de tête « notions » devient LA RETOUCHE D APPOINT en classe (une
   notion imprévue surgie du cours), pas le canal principal. Rétiquetage à
   décider par Paul.
+
+## PROMOTION FAITE — 22/08/2026, sur le mot de Paul
+· index.html v8.58.0 poussé en production (commit 99d72fe) — souche 8.57.1 bit à
+  bit + le pont É2 complet ; M-SÉCU 29/29 identiques ; zéro trace de bac.
+· Les trois prompts v2 écrits au hub (/site/atelier/prompts/{chapitre,fiche_seance,deroule}),
+  vérifiés par GET (200, les trois nœuds présents).
+· DETTE IMMÉDIATE assumée : le seed natif embarqué (repli hors hub) est resté v1 —
+  le site lit le hub d abord, donc le v2 sert dès maintenant ; passer le natif en
+  v2 au prochain geste de code (conversation fraîche, pas en fin de contexte).

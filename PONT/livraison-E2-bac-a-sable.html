@@ -14790,7 +14790,13 @@ function _drEnvelopper(){
       }
       n=n.parentElement;
     }
-    try{ parent.scrollBy({top:ev.deltaY}); }catch(e){}
+    try{
+      var hd=parent.document, cible=null, c2=hd.elementFromPoint?null:null;
+      var cand=[hd.getElementById('atelier-ecran'), hd.scrollingElement, hd.body];
+      for(var k=0;k<cand.length;k++){ var c=cand[k];
+        if(c&&c.scrollHeight>c.clientHeight+2){ cible=c; break; } }
+      if(cible)cible.scrollBy({top:ev.deltaY}); else parent.scrollBy({top:ev.deltaY});
+    }catch(e){}
   },{passive:true});
   W.__pontEnv=true;
 }

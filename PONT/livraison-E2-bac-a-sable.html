@@ -15096,6 +15096,95 @@ function _drCalerStructure(){
   }catch(e){}
 }
 
+/* ══════════ P2 · LE CHAPITRE PORTE SES DÉROULÉS (chantier PROMPTS) ══════════
+   Le JSON de chapitre accepte seances[].cle (clé de rapprochement, arbitrage b)
+   et seances[].deroule.ecrans (trames au format du moteur, arbitrage a).
+   Validation ADDITIVE par enveloppe (la base n'est pas touchée) ; application
+   par normalisation aux défauts exacts du moteur ; politique : COMPLÉTER par
+   défaut, REMPLACER seulement sur demande — jamais d'écrasement silencieux. */
+var AT_P2_TYPES={consigne:1,fiche:1,question:1,schema:1,image:1};
+function atP2Uid(){return 'b'+Math.random().toString(36).slice(2,9);}
+function atP2NormaliserBloc(b){
+  var t=b&&b.t;
+  if(t==='consigne')return {id:atP2Uid(),t:'consigne',pic:String(b.pic||'•'),txt:String(b.txt||''),etapes:Array.isArray(b.etapes)?b.etapes.map(String):[],vues:0};
+  if(t==='fiche')return {id:atP2Uid(),t:'fiche',tt:String(b.tt||'Fiche'),titre:String(b.titre||''),def:String(b.def||''),corps:String(b.corps||'<p>—</p>'),vues:0};
+  if(t==='question')return {id:atP2Uid(),t:'question',q:String(b.q||''),reps:(Array.isArray(b.reps)&&b.reps.length?b.reps:[{i:'',r:''}]).map(function(r){return {i:String((r&&r.i)||''),r:String((r&&r.r)||''),refo:false};}),vues:0};
+  if(t==='schema')return {id:atP2Uid(),t:'schema',forme:String(b.forme||'carte'),titre:String(b.titre||''),z:1,pos:{},src:String(b.src||''),vues:0};
+  if(t==='image')return {id:atP2Uid(),t:'image',support:true,ref:String(b.ref||''),src:'',legende:String(b.legende||''),marques:[],devoilerTout:true,vues:0};
+  return null;
+}
+function atP2ValiderDeroule(o,V){
+  var ses=(o&&o.chapitre&&o.chapitre.seances)||[]; if(!Array.isArray(ses))return;
+  var cles={};
+  ses.forEach(function(se,ix){
+    var ref=(se&&se.title)||('séance n° '+(ix+1));
+    if(se&&se.cle!==undefined){
+      if(!/^[a-z0-9][a-z0-9-]{1,23}$/.test(String(se.cle)))V.cite(ref,'a une clé invalide (« '+se.cle+' ») : minuscules, chiffres, tirets, 2 à 24 signes.');
+      else if(cles[se.cle])V.cite(ref,'réutilise la clé « '+se.cle+' » déjà prise — chaque séance a la sienne.');
+      cles[String(se.cle)]=1;
+    }
+    var dr=se&&se.deroule;
+    if(dr===undefined)return;
+    if(!dr||!Array.isArray(dr.ecrans)||!dr.ecrans.length){V.cite(ref,'déclare un déroulé sans écrans (deroule.ecrans doit être une liste non vide).');return;}
+    dr.ecrans.forEach(function(e,n){
+      var r2=ref+' · écran '+(n+1);
+      if(!e||!String(e.act||'').trim())V.cite(r2,'n’a pas de titre (« act »).');
+      if(!(+(e&&e.dur)>0))V.cite(r2,'n’a pas de durée en minutes (« dur »).');
+      (e&&Array.isArray(e.blocs)?e.blocs:[]).forEach(function(b,k){
+        if(!b||!AT_P2_TYPES[b.t]){V.cite(r2,'bloc '+(k+1)+' : type inconnu (« '+((b&&b.t)||'')+' »). Types : consigne, fiche, question, schema, image.');return;}
+        if(b.t==='question'&&!String(b.q||'').trim())V.cite(r2,'bloc '+(k+1)+' : la question est vide (« q »).');
+        if(b.t==='image'&&!String(b.ref||'').trim())V.cite(r2,'bloc '+(k+1)+' : l’image n’a pas d’adresse (« ref »).');
+      });
+    });
+  });
+  (Array.isArray(o&&o.aLier)?o.aLier:[]).forEach(function(l,ix){
+    if(l&&l.seance_cle!==undefined&&!cles[String(l.seance_cle)])
+      V.cite('aLier n° '+(ix+1),'vise une clé de séance inconnue (« '+l.seance_cle+' »).');
+  });
+}
+if(typeof chValiderChapitre==='function'&&!window.__p2ValPose){
+  window.__p2ValPose=true;
+  var _chValiderOrig=chValiderChapitre;
+  chValiderChapitre=function(o,taxo){
+    var V=_chValiderOrig(o,taxo);
+    try{atP2ValiderDeroule(o,V);}catch(e){}
+    return V;
+  };
+}
+/* L'application : rapprocher les séances (par clé d'abord, par titre sinon) et écrire
+   les trames normalisées. politique='completer' (défaut) ajoute à la suite ;
+   'remplacer' substitue. Retourne le compte-rendu — la garde d'atterrissage le montre. */
+function atP2AppliquerDeroules(level,chnum,json,politique){
+  var cr=[], ch=chapitresData[level]&&chapitresData[level][chnum];
+  if(!ch)return [{err:'chapitre introuvable'}];
+  var ses=(json&&json.chapitre&&json.chapitre.seances)||[];
+  ses.forEach(function(se){
+    if(!se||!se.deroule||!Array.isArray(se.deroule.ecrans)||!se.deroule.ecrans.length)return;
+    var sk=null,reels=ch.seances||{};
+    Object.keys(reels).forEach(function(k){
+      if(sk)return;
+      if(se.cle&&reels[k]&&String(reels[k].cle||'')===String(se.cle))sk=k;
+    });
+    if(!sk)Object.keys(reels).forEach(function(k){
+      if(sk)return;
+      if(reels[k]&&String(reels[k].title||'').trim()===String(se.title||'').trim())sk=k;
+    });
+    if(!sk){cr.push({seance:se.title||se.cle,etat:'introuvable — rien écrit'});return;}
+    var ecr=se.deroule.ecrans.map(function(e){
+      return {id:atP2Uid(),act:String(e.act||''),dur:+e.dur||5,h:'',
+        blocs:(Array.isArray(e.blocs)?e.blocs:[]).map(atP2NormaliserBloc).filter(Boolean),vues:0,rev:0};
+    });
+    var dst=reels[sk];
+    var avait=dst.deroule&&Array.isArray(dst.deroule.ecrans)?dst.deroule.ecrans.length:0;
+    if(avait&&politique!=='remplacer'){ dst.deroule.ecrans=dst.deroule.ecrans.concat(ecr); }
+    else { dst.deroule={ecrans:ecr}; }
+    if(se.cle&&!dst.cle)dst.cle=String(se.cle);
+    try{ mjpcPutJson(FB+'/chapitres/'+level+'/'+chnum+'/seances/'+sk+'/deroule.json',dst.deroule,'P2 · trames injectées'); }catch(e){}
+    cr.push({seance:dst.title||sk,etat:(avait?(politique==='remplacer'?'remplacé ('+avait+'→'+ecr.length+' écrans)':'complété ('+avait+'+'+ecr.length+' écrans)'):('créé ('+ecr.length+' écrans)'))});
+  });
+  return cr;
+}
+
 /* le boot du montage : rappeler l'onglet retenu */
 atVuesRappeler();
 /* ═══════════ fin [PONT-É2] ═══════════ */

@@ -73,3 +73,19 @@ P4 · LA PASSE SUR LES APPS COMMANDÉES, par lots.
     chapitre par chapitre, chacune contrôlée dans la vue prévue (P2b).
     Ainsi la première injection réelle naît ENTIÈREMENT selon le nouveau modèle,
     tout lié d'office — rien d'ancien à rattraper.
+
+## P2 — LIVRÉ AU BAC le 22/08 (banc vert)
+Le JSON de chapitre accepte seances[].cle (regex ^[a-z0-9][a-z0-9-]{1,23}$, unicité)
+et seances[].deroule.ecrans (act + dur exigés ; blocs typés consigne/fiche/question/
+schema/image avec leurs champs critiques : q non vide, ref d image non vide).
+aLier accepte seance_cle (les titres restent acceptés, transition douce).
+Validation ADDITIVE par enveloppe de chValiderChapitre — base intacte, motifs cités
+par séance et par écran (prouvé : 7 motifs exacts sur le martyr fautif, 0 sur le sain).
+Application atP2AppliquerDeroules(level,chnum,json,politique) : rapprochement par CLÉ
+d abord puis par titre ; normalisation aux défauts EXACTS du moteur ; politique
+completer (défaut, jamais d écrasement) / remplacer ; écriture hub par séance ;
+compte-rendu rendu à l appelant pour la garde d atterrissage.
+PROUVÉ de bout en bout : injection → trames en données → LE DÉROULÉ LES JOUE
+(2 écrans, consigne+question+image, horaires recalculés 10:07..10:13).
+RESTE P2 : brancher l appel dans le parcours chInjecter réel (lecture de chInjecter
+en entier) + la ligne de garde d atterrissage « séance X a déjà une trame ».

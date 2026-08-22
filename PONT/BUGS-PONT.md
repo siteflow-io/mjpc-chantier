@@ -21,9 +21,11 @@
 6. **Relecture/Papier perdus après la clôture** (EN COURS) : 14e/15e adaptations
    posées — la clôture mémorise la séance jouée (AT_DR_DERNIER), et Relecture/Papier
    rechargent LA COPIE JOUÉE (invalidation du jeton au changement de source, prouvé :
-   la préparation revient intacte au retour). RESTE : le gabarit du récit vécu
-   (« CV a répondu… ») exige le contexte de jeu du moteur — à brancher pour que le
-   récit complet s affiche aussi après clôture (prochain tour).
+   la préparation revient intacte au retour). CLOS (22/08 soir) : le récit filtre par REV (dévoilement) — les copies d avant
+   la copie-au-fil-de-l eau stockaient rev:0, d où le récit vide. Avec la copie
+   au fil de l eau, la chaîne entière marche SANS pièce nouvelle. PROUVÉ de bout
+   en bout : dévoiler + répondre → clore → Relecture = récit complet (« la
+   consigne était… », « ouate » cité).
 7. **Écrans dupliqués « Regard » 10:24/10:24** (INSTRUIT, correctif à faire) :
    c est scinde() — la scission au zoom (« rien n est jamais refusé : on coupe »),
    artifice de PROJECTION qui fuit dans la persistance : la copie/les minis/les

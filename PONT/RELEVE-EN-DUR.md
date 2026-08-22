@@ -4,13 +4,13 @@ Tenu à jour à CHAQUE découverte. Trois colonnes : quoi · source MJPC prévue
 
 1. PRENOMS (trombinoscope CV/TD/JR… en dur dans le moteur)
    → /classes/<slug>/eleves (extractEleves, la mutualisation du 3 juin)
-   → À BRANCHER : le pont pose W.PRENOMS depuis la classe choisie dans la tête.
+   → ✅ BRANCHÉ (22/08 soir) : W.PRENOMS depuis extractEleves(classe), initiales dérivées « NOM Prénom », collisions suffixées. Prouvé.
 2. DEBUT="10:07" (l'ancre de TOUS les horaires, constante de maquette)
    → le créneau choisi dans la tête (EDT réel)
-   → À BRANCHER : le pont pose W.DEBUT au créneau + horaires() re-court.
+   → ✅ BRANCHÉ : W.DEBUT depuis la tête (préparation) / le cours (classe), horaires re-ancrés partout (scène + colonne). Prouvé 14:30.
 3. « À relire — mardi 2 septembre » (date de relecture du papier)
    → le PROCHAIN créneau EDT de la classe
-   → À BRANCHER (avec 2).
+   → ✅ BRANCHÉ (v1 : prochain jour ouvré, moteur 97 paramètre RELIRE ; l EDT hebdo par classe affinera quand il existera dans MJPC — noté).
 4. Date du jour / classe / chapitre / séance / année scolaire
    → META contextuelle — ✅ COUVERT (moteur 90, prouvé au banc).
 5. La copie jouée par classe (relecture/papier)

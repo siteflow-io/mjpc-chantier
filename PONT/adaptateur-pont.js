@@ -192,7 +192,8 @@ var DR={
     var jeton=[ctx&&ctx.level,ctx&&ctx.chnum,ctx&&ctx.snum,(ctx&&ctx.classe)||'',(ctx&&ctx.joue)?'j':''].join('|');
     _drQuandPret(function(){
       if(DR.__charge&&DR.__charge!==jeton)_drFlushTrame(DR.__charge);   /* l'édition des 900 dernières ms part vers SA séance */
-      if(DR.__charge!==jeton){
+      try{ setTimeout(_drPoserContexteMoteur,60); }catch(e){}
+    if(DR.__charge!==jeton){
         var posMem=(AT_PONT.dernierJeton===jeton)?(AT_PONT.dernierEcran||0):0;   /* AVANT le chargement : son rendre écrase la mémoire */
         DR.__charge=jeton; DR.dr_chargerTrame(ecrans);
         if(posMem>0){   /* reconstruction : on revient où l'on était */
@@ -673,6 +674,61 @@ document.addEventListener('change',function(ev){
       var s2=document.getElementById('at-dr-classe'); if(s2&&AT_PONT.classeVue)s2.value=AT_PONT.classeVue;
     }
   }catch(e){}
+});
+
+/* [reléve-en-dur · les trois branchements] la maquette n'a plus le dernier mot :
+   PRENOMS viennent de LA CLASSE (initiales dérivées, collisions suffixées),
+   DEBUT vient du créneau réel (tête en préparation, cours en classe),
+   RELIRE vient du prochain créneau à venir. Posés à chaque chargement de trame
+   et au changement du champ de début. Les défauts maquette restent le repli. */
+function _drInitialesDe(nom){
+  var p=String(nom||'').trim().split(/\s+/).filter(Boolean);
+  if(!p.length)return '';
+  if(p.length===1)return p[0].slice(0,2).toUpperCase();
+  return (p[p.length-1][0]+p[0][0]).toUpperCase();   /* NOM Prénom → P+N ? non : prénom d'abord au moteur */
+}
+function _drPrenomsDeLaClasse(slug){
+  try{
+    var cl=classesData&&classesData[slug]; if(!cl)return null;
+    var noms=(typeof extractEleves==='function')?extractEleves(cl):[];
+    if(!noms||!noms.length)return null;
+    var map={},pris={};
+    noms.forEach(function(n){
+      var s=String(n).trim(); if(!s)return;
+      var mots=s.split(/\s+/);
+      var prenom=mots.length>1?mots[mots.length-1]:mots[0];   /* « NOM Prénom » */
+      var nomFam=mots.length>1?mots[0]:'';
+      var ini=((prenom[0]||'')+(nomFam[0]||prenom[1]||'')).toUpperCase();
+      var base=ini,k=2;
+      while(pris[ini]){ ini=base+String(k++); }
+      pris[ini]=1; map[ini]=prenom;
+    });
+    return Object.keys(map).length?map:null;
+  }catch(e){return null;}
+}
+function _drProchainCreneau(){
+  try{
+    var s=document.getElementById('at-dr-creneau');
+    var jours={0:'dimanche',1:'lundi',2:'mardi',3:'mercredi',4:'jeudi',5:'vendredi',6:'samedi'};
+    var mois=['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
+    var d=new Date(); d.setDate(d.getDate()+1);
+    while(d.getDay()===0||d.getDay()===6)d.setDate(d.getDate()+1);   /* le prochain jour ouvré, à défaut d'EDT hebdo */
+    return jours[d.getDay()]+' '+d.getDate()+' '+mois[d.getMonth()];
+  }catch(e){return '';}
+}
+function _drPoserContexteMoteur(){
+  try{
+    var W=drWin(); if(!W)return;
+    var slug=(AT_DR_COURS&&AT_DR_COURS.classeSlug)||(AT_PONT.classeVue)||((document.getElementById('at-dr-classe')||{}).value)||'';
+    var pren=slug?_drPrenomsDeLaClasse(slug):null;
+    if(pren)W.PRENOMS=pren;
+    var deb=(AT_DR_COURS&&AT_DR_COURS.debut)||((document.getElementById('at-dr-debut')||{}).value)||'';
+    if(/^\d\d:\d\d$/.test(deb)&&W.DEBUT!==deb){ W.DEBUT=deb; try{W.horaires();W.rendre();}catch(e){} }
+    var rel=_drProchainCreneau(); if(rel)W.RELIRE=rel;
+  }catch(e){}
+}
+document.addEventListener('change',function(ev){
+  try{ if(ev.target&&ev.target.id==='at-dr-debut')_drPoserContexteMoteur(); }catch(e){}
 });
 
 /* le boot du montage : rappeler l'onglet retenu */

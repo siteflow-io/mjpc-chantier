@@ -92,3 +92,9 @@ la garde d atterrissage montre les trames avant le oui (« Trames de déroulé :
 séance (2 écrans) — elles s ajouteront à la suite ») ; après confirmation,
 application avec reprise à retardement (4 essais) si les données locales
 n ont pas suivi ; compte-rendu ajouté au message d injection. P2 EST CLOS.
+
+## DÉCISION DE PROTOCOLE (Paul, 22/08 soir)
+Après le chantier PROMPTS : RETOUR AU PROTOCOLE NORMAL — GitHub, jetons,
+conscience + exécutants. Le développement direct de cette session était
+l exception du chantier déroulé. Objectif de Paul : construire ses chapitres
+et faire sa première projection en classe SANS BUGS.

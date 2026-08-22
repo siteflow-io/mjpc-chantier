@@ -152,3 +152,16 @@ cette session) ; le chantier réécriture héritera du canon des 4 chaînes et d
 doctrine « le prompt actionne ce que l app sait faire » (detectModifs).
 LE GESTE DE PROMOTION :
 audit anti-bac complet + promeus + prompts au hub + seed natif v2 — un seul geste.
+
+## AUDIT ANTI-BAC — RENDU le 22/08 soir : PROPRE
+Production (production-PONT-index.html, md5 e4e081536cb3a335ae5f4b9676594c88) :
+· 12 marqueurs de bac : 0 partout (le seul mot « coiffe » = le verbe français
+  dans un commentaire du papier — vérifié au contexte) ;
+· 9 pièces du pont présentes (couture, adaptateur, refusion, copie au fil de
+  l eau, P2 validation+application, 3 branchements, relecture par classe) ;
+· moteur embarqué = deroule97 BIT À BIT (md5 e7ceefa8… vérifié au B64 décodé) ;
+· smoke : pas de bandeau, pas de décor, pas de miroir, secuEcrire NATIF,
+  0 PUT parasite au boot, pièces du pont vivantes.
+LA PRODUCTION EST PRÊTE. Le promeus attend l ordre explicite de Paul.
+Le geste promeus emportera : la copie vers le repo prod + prompts au hub
+(ecrire-prompts-hub.sh) + seed natif v2 + annonce élèves si pédagogique.

@@ -15185,6 +15185,63 @@ function atP2AppliquerDeroules(level,chnum,json,politique){
   return cr;
 }
 
+/* [P2-fin] Le branchement au cérémonial réel de l'injection — par enveloppes, base intacte.
+   ① la garde d'atterrissage montre AUSSI les trames de déroulé avant le oui ;
+   ② après confirmation, les trames s'appliquent (rapprochement clé puis titre),
+      avec reprise à retardement si les données locales n'ont pas encore suivi. */
+if(typeof chInjecter==='function'&&!window.__p2GardePose){
+  window.__p2GardePose=true;
+  var _p2GardeOrig=chInjecter;
+  chInjecter=function(voie){
+    _p2GardeOrig(voie);
+    try{
+      var json=window.CH&&CH.json; if(!json)return;
+      var ses=((json.chapitre||{}).seances||[]).filter(function(s){return s&&s.deroule&&s.deroule.ecrans&&s.deroule.ecrans.length;});
+      if(!ses.length)return;
+      var n=0,iv=setInterval(function(){
+        n++;
+        var z=document.querySelector('.ch-atterrissage');
+        if(z&&!z.__p2){ z.__p2=true; clearInterval(iv);
+          z.innerHTML+='<br><b>Trames de déroulé</b> : '
+            +ses.map(function(s){return '« '+atEsc(String(s.title||s.cle||''))+' » ('+s.deroule.ecrans.length+' écran'+(s.deroule.ecrans.length>1?'s':'')+')';}).join(' · ')
+            +' — '+(voie==='remplacer'?'elles remplaceront l’existant.':'elles s’ajouteront à la suite si la séance en a déjà.');
+        }
+        if(n>25)clearInterval(iv);
+      },200);
+    }catch(e){}
+  };
+}
+if(typeof chInjecterConfirme==='function'&&!window.__p2InjPose){
+  window.__p2InjPose=true;
+  var _p2InjOrig=chInjecterConfirme;
+  chInjecterConfirme=function(voie){
+    var json=window.CH&&CH.json, niveau=window.CH&&CH.niveau, idx=window.CH?CH.chapIdx:null;
+    _p2InjOrig(voie);
+    try{
+      if(!json||!niveau)return;
+      var aTrames=((json.chapitre||{}).seances||[]).some(function(s){return s&&s.deroule&&s.deroule.ecrans&&s.deroule.ecrans.length;});
+      if(!aTrames)return;
+      var titreVise=String((json.chapitre||{}).title||'')+(voie==='jumeau'?' (proposition)':'');
+      var passe=function(essai){
+        var t=chapitresData[niveau]||{}; var chnum=null;
+        Object.keys(t).forEach(function(k){ if(chnum===null&&t[k]&&String(t[k].title||'')===titreVise)chnum=k; });
+        if(chnum===null&&voie!=='jumeau'&&idx!=null&&t[idx])chnum=idx;
+        if(chnum===null){ if(essai<4)setTimeout(function(){passe(essai+1);},3000); return; }
+        var cr=atP2AppliquerDeroules(niveau,chnum,json,(voie==='remplacer')?'remplacer':'completer');
+        var manque=cr.some(function(x){return /introuvable/.test(String(x.etat||''));});
+        try{
+          var msg=document.getElementById('ch-msg');
+          if(msg&&cr.length&&!msg.__p2fait){ msg.__p2fait=true;
+            msg.innerHTML+='<br>Trames de déroulé : '+cr.map(function(x){return '« '+atEsc(String(x.seance||''))+' » '+atEsc(String(x.etat||''));}).join(' · ');
+          }
+        }catch(e){}
+        if(manque&&essai<4)setTimeout(function(){passe(essai+1);},3000);
+      };
+      setTimeout(function(){passe(1);},2200);
+    }catch(e){}
+  };
+}
+
 /* le boot du montage : rappeler l'onglet retenu */
 atVuesRappeler();
 /* ═══════════ fin [PONT-É2] ═══════════ */

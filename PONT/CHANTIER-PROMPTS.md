@@ -87,5 +87,8 @@ completer (défaut, jamais d écrasement) / remplacer ; écriture hub par séanc
 compte-rendu rendu à l appelant pour la garde d atterrissage.
 PROUVÉ de bout en bout : injection → trames en données → LE DÉROULÉ LES JOUE
 (2 écrans, consigne+question+image, horaires recalculés 10:07..10:13).
-RESTE P2 : brancher l appel dans le parcours chInjecter réel (lecture de chInjecter
-en entier) + la ligne de garde d atterrissage « séance X a déjà une trame ».
+P2-FIN (22/08) : BRANCHÉ au cérémonial réel par enveloppes (base intacte) —
+la garde d atterrissage montre les trames avant le oui (« Trames de déroulé :
+séance (2 écrans) — elles s ajouteront à la suite ») ; après confirmation,
+application avec reprise à retardement (4 essais) si les données locales
+n ont pas suivi ; compte-rendu ajouté au message d injection. P2 EST CLOS.

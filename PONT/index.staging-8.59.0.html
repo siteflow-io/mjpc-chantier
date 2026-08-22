@@ -10573,7 +10573,16 @@ function atStatutFeuille(d,ref){
     }
     if(!chapitresData[n]||!Object.keys(chapitresData[n]).length)return;   /* niveau chargé et vide : vérifié, rien à dire */
     if(!ref)return;
-    edFeuilleDepots(n,ref).forEach(function(x){lieux.push(n+' \u203a '+x.replace('Ch. ',' Ch.').replace(' \u00b7 S. ',' \u203a S.').trim());});
+    /* [PONT-C2] regroupement (Paul, 22/08) : un m\u00eame niveau\u203achapitre ne se
+       r\u00e9p\u00e8te pas \u2014 \u00ab 3e \u203a Ch.1 \u203a S.2 \u203a S.5 \u203a S.7 \u00bb. */
+    var _grp={};
+    edFeuilleDepots(n,ref).forEach(function(x){
+      var _m=x.match(/Ch\. ([^\u00b7]+) \u00b7 S\. (.+)$/);
+      var _ch=_m?_m[1].trim():x, _s=_m?_m[2].trim():'';
+      var _k=n+' \u203a Ch.'+_ch;
+      (_grp[_k]=_grp[_k]||[]).push('S.'+_s);
+    });
+    Object.keys(_grp).forEach(function(_k){lieux.push(_k+' \u203a '+_grp[_k].join(' \u203a '));});
   });
   var suffixe=(d&&d.envoi&&d.dates&&d.dates.modifieLe>d.envoi.versionDoc)?' \u00b7 modifi\u00e9e depuis l\u2019envoi aux \u00e9l\u00e8ves'
              :((d&&!d.envoi)?' \u00b7 jamais envoy\u00e9e aux \u00e9l\u00e8ves':'');

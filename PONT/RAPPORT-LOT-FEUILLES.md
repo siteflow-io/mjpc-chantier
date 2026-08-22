@@ -71,3 +71,7 @@ Arbitrage Paul (question ouverte n°2) : les fiches EN ONT et EN AURONT → éte
 · Banc conscience : export les porte ✓ validation 0 erreur ✓ recréation les porte ✓
   ré-export identique à l octet ✓ interdits absents ✓ parseurs verts (2 blocs).
 Nouveau md5 du candidat scellé au commit.
+
+## COMPLÉMENT [PONT-C2] — regroupement des dépôts (Paul, 22/08)
+Un même niveau›chapitre ne se répète plus : « 3e › Ch.1 › S.2 › S.5 › S.7 · 4e › Ch.1 › S.1 ».
+Banc conscience vert (3 dépôts même chapitre regroupés, 1 seul « 3e › Ch.1 »), parseurs verts.

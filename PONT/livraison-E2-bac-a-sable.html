@@ -14914,6 +14914,7 @@ var DR={
     _drQuandPret(function(){
       if(DR.__charge&&DR.__charge!==jeton)_drFlushTrame(DR.__charge);   /* l'édition des 900 dernières ms part vers SA séance */
       try{ setTimeout(_drPoserContexteMoteur,60); }catch(e){}
+    try{ setTimeout(_drVifInstaller,140); }catch(e){}
     if(DR.__charge!==jeton){
         var posMem=(AT_PONT.dernierJeton===jeton)?(AT_PONT.dernierEcran||0):0;   /* AVANT le chargement : son rendre écrase la mémoire */
         DR.__charge=jeton; DR.dr_chargerTrame(ecrans);
@@ -15462,6 +15463,60 @@ function _drPoserContexteMoteur(){
 document.addEventListener('change',function(ev){
   try{ if(ev.target&&ev.target.id==='at-dr-debut')_drPoserContexteMoteur(); }catch(e){}
 });
+
+/* [participation au vif] la décharge cognitive du direct : un champ de frappe
+   en tête du panneau — taper les initiales (ou le début du prénom) ouvre la
+   fiche de l'élève ; les chiffres choisissent le motif ; la note se tape si le
+   temps le permet ; Entrée pose ; le champ revient, vidé, prêt pour le suivant.
+   La touche / (hors saisie) amène au champ. Tout à la souris reste possible. */
+function _drVifInstaller(){
+  try{
+    var W=drWin(); if(!W||W.__vifPose)return;
+    var part=W.document.getElementById('part'); if(!part)return;
+    W.__vifPose=true;
+    var z=W.document.createElement('input');
+    z.id='vif'; z.placeholder='⌨ initiales — puis 1/2/3, note, Entrée';
+    z.setAttribute('style','width:100%;box-sizing:border-box;margin:0 0 6px;padding:4px 8px;'
+      +'border:1px solid #4a3f33;border-radius:8px;background:#171310;color:#e8ddcf;font:inherit;font-size:13px');
+    part.parentNode.insertBefore(z,part);
+    function candidats(t){
+      t=String(t||'').trim().toUpperCase(); if(!t)return [];
+      var E=W.ELEVES||[], P=W.PRENOMS||{};
+      var exact=E.filter(function(x){return x===t;});
+      if(exact.length)return exact;
+      return E.filter(function(x){return x.indexOf(t)===0
+        ||String(P[x]||'').toUpperCase().indexOf(t)===0;});
+    }
+    z.addEventListener('input',function(){
+      var c=candidats(z.value);
+      [].slice.call(W.document.querySelectorAll('#part span')).forEach(function(s){
+        var ini=(s.textContent||'').replace(/\d+$/,'');
+        s.style.outline=(c.indexOf(ini)>=0&&z.value)?'2px solid #c99a4e':'';
+      });
+      if(c.length===1&&z.value.trim().length>=2){ W.ouvrirPart(c[0]); setTimeout(function(){var n2=W.document.getElementById('pnote');if(n2)n2.focus();},60); }
+    });
+    z.addEventListener('keydown',function(ev){
+      if(ev.key==='Enter'){ var c=candidats(z.value);
+        if(c.length){ W.ouvrirPart(c[0]); setTimeout(function(){var n2=W.document.getElementById('pnote');if(n2)n2.focus();},60); }
+        ev.preventDefault(); }
+      if(ev.key==='Escape'){ z.value=''; z.blur(); }
+    });
+    /* dans la fiche ouverte : 1..9 = motif ; Entrée dans la note = motif défaut (le 1er) avec la note */
+    W.document.addEventListener('keydown',function(ev){
+      var pop=W.document.getElementById('ppop');
+      if(!pop||!pop.classList.contains('on'))
+        { if(ev.key==='/'&&!/input|textarea/i.test((ev.target&&ev.target.tagName)||'')&&!(ev.target&&ev.target.isContentEditable)){ z.focus(); z.select(); ev.preventDefault(); } return; }
+      var bts=[].slice.call(pop.querySelectorAll('button.m'));
+      if(/^[1-9]$/.test(ev.key)&&!/input|textarea/i.test((ev.target&&ev.target.tagName)||'')){
+        var b=bts[+ev.key-1]; if(b){ b.click(); z.value=''; setTimeout(function(){z.focus();},60); ev.preventDefault(); } return;
+      }
+      if(ev.key==='Enter'&&ev.target&&ev.target.id==='pnote'){
+        var b1=bts[0]; if(b1){ b1.click(); z.value=''; setTimeout(function(){z.focus();},60); ev.preventDefault(); }
+      }
+      if(ev.key==='Escape'){ pop.classList.remove('on'); z.value=''; z.focus(); }
+    },true);
+  }catch(e){}
+}
 
 /* le boot du montage : rappeler l'onglet retenu */
 atVuesRappeler();

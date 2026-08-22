@@ -1,0 +1,14 @@
+CONTRE-AUDIT DE TON AUDIT (vérifié sur pièces : l'export réel, la taxonomie lue, les sujets officiels du DNB). Rectifie, puis nous tranchons le reste.
+
+TES POINTS FAUX — à retirer de l'audit :
+• n°1 : le « noté sur 32 » est EXACT. Les sujets officiels du DNB décomposent la partie I en « Compréhension et compétences d'interprétation : 32 points » + « Grammaire et compétences linguistiques : 18 points » (= 50). La tâche finale sur 32 reproduit fidèlement la partie compréhension. De plus, le chapitre MORCELLE volontairement l'épreuve (dictée notée à part, réécriture à part) : c'est un brevet en morceaux, assumé — le prompt que tu as reçu le dit désormais explicitement.
+• n°4 : `problematique` et `aRetenir` SONT dans l'export, à la racine du chapitre (« Poètes et peintres du XIXe siècle : comment héritent-ils… » / « Au XIXe siècle, poètes et peintres héritent… »). Relis-les.
+• n°7 et n°8 : la dictée à trous est dans la séance d'ordre 4 (chemin : seances.3.items.dictee-a-trous), source "atelier" AVEC sa ref. S1 (seances.0) n'a qu'UN item (les cinq tableaux). Aucun doublon ; litt-005 n'est pas tagué en S1.
+• n°15 (première moitié) : le titre réel est exactement « Poésie et peinture au XIXème siècle » — aucun « (proposition) ». La correction XIXème → XIXe reste bonne.
+
+TES POINTS CONFIRMÉS par contre-vérification — ils tiennent :
+n°2 (session 2027) · n°6 (litt-036/037/038 taguées en S1 sont l'ANALYSE D'IMAGE, pas les mouvements : le trou des quatre mouvements est réel) · n°9 (litt-006 à retirer de S2 : « L'Albatros » n'est pas un sonnet) · n°12 (« premiers poèmes en prose 1862 » : faux, 1855 ; la série de La Presse ouvre en 1862) · n°13 (1869 = recueil posthume) · n°17 (l'écart compétences déclarées/taguées, vérifié sur l'export) · n°10, n°14, n°16, n°18, n°22, n°15 (XIXe).
+
+RÈGLE NOUVELLE, dès maintenant : toute affirmation que tu fais sur l'export CITE son chemin JSON exact (ex. seances.3.items.dictee-a-trous.source). Quatre de tes [FAIT] étaient faux faute d'avoir travaillé sur le fichier réel : la citation de chemin rend cette erreur impossible.
+
+RESTENT À TRANCHER PAR MOI (tes avis, valides) : n°3 (ordre S5↔S7 — le prompt permet désormais le diagnostic volontaire, qui le dit à l'élève), n°5 (doublon S5/S8 ou contraste sonnet/prose assumé), n°11 (colle-moi les fiches genres et registres quand j'arrive à ce point), n°19-20 (tags fins), n°21 (le fil peinture), n°23 (barème de réécriture). Reprends ton audit rectifié en une liste courte, puis attends mes tranchages.

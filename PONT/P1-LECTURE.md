@@ -26,9 +26,16 @@ LE CANON EXISTE ET EST UNIFORME : un socle commun de SEPT fonctions `mjpcPrompt*
 (Composer · Charger · Enregistrer · Chemin · AvecPresentation · Presentation ·
 Vocabulaire · Outils) présent À L'IDENTIQUE dans les quatre apps, + DEUX adaptateurs
 locaux par app (xxChargerPrompt / xxEnregistrerPrompt). C'est le gabarit de P4 pour
-les apps restantes. Reste à lire (fin de P1) : le corps exact de mjpcPromptComposer,
-la fin du seed fiche_seance, et mjpcPromptChemin (l'écriture au nœud
-/site/atelier/prompts — vide depuis toujours : P3 le remplit).
+les apps restantes. P1-FIN (22/08) — le corps du socle, lu :
+· mjpcPromptComposer assemble des PIÈCES ordonnées : présentation (d'abord — « l'IA
+  doit savoir où elle est »), directives, cadrage commun (MJPC_PROMPT_CADRAGE),
+  format, vocabulaire ; puis substitue les {{données}}. C'est LE gabarit de tout
+  prompt MJPC — le seed deroule de P3 se coulera dedans.
+· mjpcPromptChemin : le chemin hub RÉEL est /<app>_prompts/<produit>/<pièce>
+  (pas /site/atelier/prompts comme cru) — chaque app a son nœud, et les DÉFAUTS
+  EN DUR FONT FOI si la base est muette : le nœud vide n'est pas un défaut,
+  c'est le régime nominal (la base SURCHARGE). P3 écrit donc les pièces aux
+  vrais chemins, sans rien casser si le hub reste muet.
 
 ## Plan d'attaque affiné
 P1-fin : corps du socle + chemins hub (1 lecture).
@@ -37,3 +44,5 @@ P2b : vues jumelles (ed2Papier étendu · fenêtre · A4 · docx natif) — apr�
 P3 : seed `deroule` créé + seed `chapitre` amendé ((a),(b), produits déclarés)
      + écriture des trois prompts au hub. Éprouvé au bac sur chapitres martyrs.
 P4 : le socle mjpcPrompt* posé sur les apps restantes, par lots.
+
+## P1 CLOS le 22/08 — la lecture est faite, P2 peut coder.

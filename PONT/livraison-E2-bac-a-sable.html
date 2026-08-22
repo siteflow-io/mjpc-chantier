@@ -15286,7 +15286,7 @@ if(typeof chInjecterConfirme==='function'&&!window.__p2InjPose){
         Object.keys(t).forEach(function(k){ if(chnum===null&&t[k]&&String(t[k].title||'')===titreVise)chnum=k; });
         if(chnum===null&&voie!=='jumeau'&&idx!=null&&t[idx])chnum=idx;
         if(chnum===null){ if(essai<4)setTimeout(function(){passe(essai+1);},3000); return; }
-        var cr=atP2AppliquerDeroules(niveau,chnum,json,(voie==='remplacer')?'remplacer':'completer');
+        var cr=atP2AppliquerDeroules(niveau,chnum,json,(voie==='remplacer'||voie==='jumeau')?'remplacer':'completer');   /* jumeau : la copie brute a deja pose des trames NON normalisees - remplacees par les propres */
         var manque=cr.some(function(x){return /introuvable/.test(String(x.etat||''));});
         try{
           var msg=document.getElementById('ch-msg');

@@ -127,3 +127,14 @@ Usage : Paul le colle dans LA MÊME conversation IA qui a construit le chapitre
 À LA PROMOTION, le PROMPT_SEED embarqué (chapitre) devient LUI AUSSI la v2 :
 le natif et le hub disent la même chose. Pièce du geste de promotion, avec
 l écriture au hub (ecrire-prompts-hub.sh). Plus d incohérence dormante.
+
+## P4 — CONSTAT DE COMPLÉTUDE (22/08 soir) : DÉJÀ FAIT
+État des lieux sur les neuf apps de production : le socle mjpcPromptComposer est
+présent dans worktrack, correction_dictee, dictee_universelle, evaluation-qcm,
+pilotage_debat_s3, applause_meter, analyse_logique ET index (le site) — huit sur
+neuf, généralisé lors des passes antérieures (M9, M14, M-PROMPT). La seule app
+sans socle est reecriture (et sa variante bb4e) : vérification faite, ses
+« prompt » sont un commentaire historique et un libellé de popup — AUCUN usage
+IA. Pas de socle à poser là où il n y a pas d IA.
+LE CHANTIER PROMPTS EST CLOS CÔTÉ CODE. Reste LE GESTE DE PROMOTION :
+audit anti-bac complet + promeus + prompts au hub + seed natif v2 — un seul geste.

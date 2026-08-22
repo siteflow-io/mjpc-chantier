@@ -15168,7 +15168,7 @@ function _drRefusionner(t){
 document.addEventListener('change',function(ev){
   try{
     if(ev.target&&ev.target.id==='at-dr-classe'&&(ATVUES.vue==='relecture'||ATVUES.vue==='papier')){
-      try{DR.__charge=null;}catch(e){} window.__pontRelec=false; atDrMonter();
+      try{DR.__charge=null;}catch(e){} window.__pontRelec=false; atVuesPoser(ATVUES.vue);   /* le chemin complet : la vue interne suit */
     }
   }catch(e){}
 });

@@ -62,3 +62,12 @@ Toute requête non-GET bloquée ET listée : **`ecrituresBloquees: []`** — auc
 
 ## ⑧ CE QUI RESTE CÔTÉ PAUL (règle du 02/08)
 Rien d'autre que l'audit puis, s'il vient, le « promeus » : aucun geste manuel n'est requis pour que le LOT produise son effet. Après promotion, les exports se testent en réel (les bancs stubent le téléchargement).
+
+## COMPLÉMENT D AUDIT [PONT-B2] — reformulations au round-trip (conscience, 22/08)
+Arbitrage Paul (question ouverte n°2) : les fiches EN ONT et EN AURONT → étendu.
+· atExporterDoc émet reformulations (racine par composante + par bloc, si non vides,
+  hors adresse/réservées) ; atIAAppliquer les applique aux deux étages.
+· Question n°1 : titre PDF groupé « Fiches MJPC — <date> » VALIDÉ par Paul.
+· Banc conscience : export les porte ✓ validation 0 erreur ✓ recréation les porte ✓
+  ré-export identique à l octet ✓ interdits absents ✓ parseurs verts (2 blocs).
+Nouveau md5 du candidat scellé au commit.

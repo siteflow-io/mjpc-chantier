@@ -7551,10 +7551,18 @@ function atIAAppliquer(doc,o){
     doc.valeurs[id]=doc.valeurs[id]||{};
     Object.keys(o.valeurs[id]).forEach(function(k){doc.valeurs[id][k]=atValeurTypee(id,k,Array.isArray(o.valeurs[id][k])?o.valeurs[id][k].join('\n'):o.valeurs[id][k]);});
   });
+  doc.reformulations=doc.reformulations||{};
+  Object.keys(o.reformulations||{}).forEach(function(id2){
+    var c3=ATELIER_COMPOSANTES[id2];
+    if(!c3||c3.reserve||c3.adresse)return;
+    doc.reformulations[id2]=doc.reformulations[id2]||{};
+    Object.keys(o.reformulations[id2]||{}).forEach(function(k){doc.reformulations[id2][k]=String(o.reformulations[id2][k]);});
+  });   /* [PONT-B2] */
   doc.contenu=doc.contenu||[];
   (o.blocs||[]).forEach(function(b){
     doc.cases[b.id]=true;
     var bloc={id:b.id,valeurs:{},reformulations:{}};
+    Object.keys(b.reformulations||{}).forEach(function(k){bloc.reformulations[k]=String(b.reformulations[k]);});   /* [PONT-B2] */
     Object.keys(b.valeurs||{}).forEach(function(k){bloc.valeurs[k]=atValeurTypee(b.id,k,Array.isArray(b.valeurs[k])?b.valeurs[k].join('\n'):b.valeurs[k]);});
     doc.contenu.push(bloc);
   });
@@ -9632,6 +9640,15 @@ function atChargerListe(){
 function atExporterDoc(id){
   var d=AT.liste[id];if(!d)return;
   var out={titre:String(d.titre||''),produit:d.produit||'',cases:{},valeurs:{},blocs:[]};
+  /* [PONT-B2] les consignes reformulées (différenciation) SURVIVENT au round-trip
+     — arbitrage Paul 22/08 : des fiches en ont et en auront. */
+  var _refR={};
+  Object.keys(d.reformulations||{}).forEach(function(k){
+    var c2=ATELIER_COMPOSANTES[k];
+    if(!c2||c2.reserve||c2.adresse)return;
+    if(d.reformulations[k]&&Object.keys(d.reformulations[k]).length)_refR[k]=JSON.parse(JSON.stringify(d.reformulations[k]));
+  });
+  if(Object.keys(_refR).length)out.reformulations=_refR;
   /* les cases s'\u00e9mettent dans L'ORDRE CANONIQUE DU SCH\u00c9MA (ATELIER_COMPOSANTES),
      jamais dans l'ordre de vie du document : deux feuilles identiques produisent
      le M\u00caME JSON \u2014 le round-trip se v\u00e9rifie \u00e0 l'octet. true = coch\u00e9e ;
@@ -9655,7 +9672,9 @@ function atExporterDoc(id){
     if(!b||!b.id)return;
     var c=ATELIER_COMPOSANTES[b.id];
     if(!c||c.reserve||c.adresse)return;
-    out.blocs.push({id:b.id,valeurs:JSON.parse(JSON.stringify(b.valeurs||{}))});
+    var _bl={id:b.id,valeurs:JSON.parse(JSON.stringify(b.valeurs||{}))};
+    if(b.reformulations&&Object.keys(b.reformulations).length)_bl.reformulations=JSON.parse(JSON.stringify(b.reformulations));   /* [PONT-B2] */
+    out.blocs.push(_bl);
   });
   var nom=atChSlug(d.titre)+'.json';
   _saveJSON(out,nom).then(function(fait){

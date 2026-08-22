@@ -14886,6 +14886,7 @@ function atDrVueInterne(v){
 /* [fluidité Structure, ordre de Paul 22/08] les trois colonnes se calent à la hauteur
    réellement disponible (plus de débord de page) et contiennent leur défilement
    (plus de saut de page à la butée). Doux, réactif au redimensionnement, réversible. */
+setInterval(function(){ try{_drCalerStructure();}catch(e){} },600);   /* battement propre : Structure se cale même sans cadre */
 function _drCalerStructure(){
   try{
     var g=document.querySelector('#atelier-ecran .ed2-grille'); if(!g||!g.offsetParent)return;

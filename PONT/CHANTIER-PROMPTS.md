@@ -180,3 +180,13 @@ Le geste promeus emportera : la copie vers le repo prod + prompts au hub
 ⑤ BAC : 12 marqueurs à zéro, PAS MÊME EN CODE MORT (audit précédent).
 CONCLUSION : le résultat = TON index actuel + le travail diaporama branché,
 rien retranché, rien du bac, M-SÉCU intact au bit près.
+
+## AMENDEMENT P2/P3 (débusqué par Paul, 22/08 soir) : LES NOTIONS PAR ÉCRAN
+Le schéma d injection n accepte pas ecrans[].comp — or la doctrine de Paul est
+que TOUT se décide en amont (structure + déroulé injectés). À amender :
+· P2 : ecrans[].comp accepté (liste d ids compétences/notions), validé contre
+  la taxonomie, normalisé dans la copie ;
+· P3 : le prompt chapitre et le prompt deroule déclarent le champ ;
+· le champ de tête « notions » devient LA RETOUCHE D APPOINT en classe (une
+  notion imprévue surgie du cours), pas le canal principal. Rétiquetage à
+  décider par Paul.

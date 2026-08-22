@@ -14698,7 +14698,12 @@ var DR={
     try{ if(!window.__vifBat){ window.__vifBat=setInterval(function(){ try{
       _drVifInstaller();
       var W2=drWin(), z2=W2&&W2.document.getElementById('vif');
-      if(z2)z2.style.display=(AT_DR_REGIME==='classe')?'':'none';
+      if(z2){
+        var enClasse=(AT_DR_REGIME==='classe');
+        z2.style.display=enClasse?'':'none';
+        if(enClasse&&!window.__vifFocusFait){ window.__vifFocusFait=true; try{z2.focus();}catch(e){} }
+        if(!enClasse)window.__vifFocusFait=false;
+      }
     }catch(e){} },700); } }catch(e){}
     if(DR.__charge!==jeton){
         var posMem=(AT_PONT.dernierJeton===jeton)?(AT_PONT.dernierEcran||0):0;   /* AVANT le chargement : son rendre écrase la mémoire */
@@ -15294,21 +15299,39 @@ function _drVifInstaller(){
     z.setAttribute('style','width:100%;box-sizing:border-box;margin:0 0 6px;padding:4px 8px;'
       +'border:1px solid #4a3f33;border-radius:8px;background:#171310;color:#e8ddcf;font:inherit;font-size:13px');
     part.parentNode.insertBefore(z,part);
+    part.parentNode.insertBefore(sug,part);
+    /* la r\u00e9solution CANON (redaction_dugain_v3) : comparaison d'initiales SANS
+       tenir compte de l'ordre des lettres \u2014 \u00ab TM \u00bb trouve \u00ab MT \u00bb. */
+    function _trier(s){return String(s).toUpperCase().replace(/[^A-Z]/g,'').split('').sort().join('');}
     function candidats(t){
-      t=String(t||'').trim().toUpperCase(); if(!t)return [];
-      var E=W.ELEVES||[], P=W.PRENOMS||{};
-      var exact=E.filter(function(x){return x===t;});
-      if(exact.length)return exact;
-      return E.filter(function(x){return x.indexOf(t)===0
-        ||String(P[x]||'').toUpperCase().indexOf(t)===0;});
+      t=String(t||'').trim(); if(t.length<2)return [];
+      var E=W.ELEVES||[], P=W.PRENOMS||{}, tt=_trier(t), tu=t.toUpperCase();
+      var meme=E.filter(function(x){return _trier(x)===tt;});
+      if(meme.length)return meme;
+      return E.filter(function(x){return x.indexOf(tu)===0
+        ||String(P[x]||'').toUpperCase().indexOf(tu)===0;});
     }
+    var sug=W.document.createElement('div'); sug.id='vif-sug';
+    sug.setAttribute('style','margin:2px 0 6px;font-size:12px;color:#9c8b76;min-height:14px');
     z.addEventListener('input',function(){
       var c=candidats(z.value);
       [].slice.call(W.document.querySelectorAll('#part span')).forEach(function(s){
         var ini=(s.textContent||'').replace(/\d+$/,'');
         s.style.outline=(c.indexOf(ini)>=0&&z.value)?'2px solid #c99a4e':'';
       });
-      if(c.length===1&&z.value.trim().length>=2){ W.ouvrirPart(c[0]); setTimeout(function(){var n2=W.document.getElementById('pnote');if(n2)n2.focus();},60); }
+      var P=W.PRENOMS||{};
+      if(!z.value.trim()||z.value.trim().length<2){ sug.innerHTML=''; }
+      else if(!c.length){ sug.innerHTML='<em style="color:#a23a3a">Aucun \u00e9l\u00e8ve avec ces initiales.</em>'; }
+      else if(c.length===1){
+        sug.innerHTML='\u2192 <b>'+(P[c[0]]||c[0])+'</b> (Entr\u00e9e)';
+        W.ouvrirPart(c[0]); setTimeout(function(){var n2=W.document.getElementById('pnote');if(n2)n2.focus();},60);
+      } else {
+        sug.innerHTML='Plusieurs : '+c.map(function(x){
+          return '<a href="#" data-vif-c="'+x+'" style="color:#c99a4e;margin-right:8px">'+(P[x]||x)+'</a>';}).join('');
+        [].slice.call(sug.querySelectorAll('a')).forEach(function(a){
+          a.onclick=function(ev){ ev.preventDefault(); W.ouvrirPart(a.getAttribute('data-vif-c'));
+            setTimeout(function(){var n2=W.document.getElementById('pnote');if(n2)n2.focus();},60); };});
+      }
     });
     z.addEventListener('keydown',function(ev){
       if(ev.key==='Enter'){ var c=candidats(z.value);

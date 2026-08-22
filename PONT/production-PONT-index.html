@@ -14572,7 +14572,8 @@ function _drAfficher(on){
     f.style.visibility='hidden'; f.style.left='-99999px'; return; }
   f.style.visibility='visible'; f.style.display='block';
   var suit=function(){
-    if((_drSainTic=((_drSainTic||0)+1))%150===0 && document.getElementById('at-dr-hote-zone') && !_drSain() && AT_PONT.pret){
+    if((_drSainTic=((_drSainTic||0)+1))%40===0)_drCalerStructure();   /* [fluidité] les 3 colonnes tiennent dans l'écran */
+    if(_drSainTic%150===0 && document.getElementById('at-dr-hote-zone') && !_drSain() && AT_PONT.pret){
       _drReconstruire(); try{ atVuesPoser&&atVuesPoser(ATVUES.vue); }catch(e){}   /* [garde] cadre mort en cours de route */
     }
     var z=document.getElementById('at-dr-hote-zone');
@@ -14880,6 +14881,21 @@ document.addEventListener('dragend',function(){ AT_DRAG_ECR=null; });
    rendues par le pont — plus d'écriteaux « à venir ». */
 function atDrVueInterne(v){
   _drQuandPret(function(){ DR.dr_vue(v); try{_drHabiller();}catch(e){} });
+}
+
+/* [fluidité Structure, ordre de Paul 22/08] les trois colonnes se calent à la hauteur
+   réellement disponible (plus de débord de page) et contiennent leur défilement
+   (plus de saut de page à la butée). Doux, réactif au redimensionnement, réversible. */
+function _drCalerStructure(){
+  try{
+    var g=document.querySelector('#atelier-ecran .ed2-grille'); if(!g||!g.offsetParent)return;
+    var dispo=Math.max(240, window.innerHeight - Math.round(g.getBoundingClientRect().top) - 14);
+    for(var k=0;k<g.children.length;k++){ var c=g.children[k];
+      if(c.style.maxHeight!==dispo+'px')c.style.maxHeight=dispo+'px';
+      if(c.style.overscrollBehaviorY!=='contain')c.style.overscrollBehaviorY='contain';
+      if(getComputedStyle(c).overflowY==='visible')c.style.overflowY='auto';
+    }
+  }catch(e){}
 }
 
 /* le boot du montage : rappeler l'onglet retenu */

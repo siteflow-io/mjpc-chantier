@@ -38,18 +38,19 @@ P2b · LES DEUX VUES JUMELLES DU CHAPITRE — RÉÉCRIT LE 22/08 APRÈS CONFRONT
       deroule_joue/<classe> (copies + vécus, données déjà en place et prouvées) :
       bilans joués, temps réels vs prévus, écrans montrés, décisions T-5, travail
       donné. À construire — mais en héritant du gabarit, pas en le recréant.
-    TROIS SORTIES DU MÊME RENDU (demande de Paul, 22/08 — confronté : aucun export
-    Word n'existe dans l'écosystème, pas de doublon possible) :
-    ① l'écran (la 3e colonne / la fenêtre autonome) · ② l'imprimante (Ctrl+P, A4
-    natif) · ③ UN BOUTON « WORD » : le même HTML aggloméré, téléchargé en .doc
-    (document HTML à en-têtes MS-Office — Word l'ouvre nativement, zéro dépendance,
-    zéro second rendu ; les images du hub incorporées en base64 pour l'autonomie
-    du fichier). Limites déclarées : ce n'est pas un .docx OOXML (Word convertit à
-    l'ouverture, avertissement possible selon versions) ; la mise en page est
-    fidèle mais Word recompose (pas au pixel). Si un jour le .docx natif devient
-    nécessaire : précédent SheetJS chez dictee_universelle (embarquer une lib
-    bureautique est dans les mœurs) — mais il exigerait un second rendu par API,
-    exactement ce que l'architecture évite : on n'y va que sur besoin prouvé.
+    TROIS SORTIES, UNE SEULE SOURCE (tranché par Paul le 22/08 : un .docx TOUT À
+    FAIT NORMAL, retouchable dans Word) :
+    ① l'écran (3e colonne / fenêtre autonome) · ② l'imprimante (Ctrl+P, A4 natif) ·
+    ③ UN BOUTON « WORD » produisant un VRAI .docx OOXML via la bibliothèque docx
+    (chargée à la demande au premier clic — le site reste un fichier unique léger ;
+    précédent maison : SheetJS embarqué chez dictee_universelle). Images du hub
+    incorporées au document (fetch → ArrayBuffer). Titres/styles Word réels :
+    le document se retouche normalement.
+    ARCHITECTURE ANTI-DIVERGENCE : le .docx n'est PAS une copie du HTML — c'est un
+    SECOND CONSTRUCTEUR sur LA MÊME SOURCE (les données du chapitre), les deux
+    sorties parcourant le chapitre par UNE MÊME fonction d'itération (chParcourir) :
+    une seule vérité, deux formats. Risque déclaré : deux constructeurs à maintenir
+    — borné par le parcours commun. L'export exige le réseau (message clair sinon).
     Vaut pour LES DEUX VUES : le chapitre prévu ET le chapitre vécu par classe.
 P3 · LES TROIS PROMPTS RÉÉCRITS (chapitre · feuille · déroulé) : taxonomie DONNÉE
     (154 notions — l'IA choisit, n'invente pas) ; titres canoniques + produits

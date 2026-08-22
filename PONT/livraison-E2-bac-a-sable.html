@@ -15574,8 +15574,7 @@ function _drVifInstaller(){
     /* dans la fiche ouverte : 1..9 = motif ; Entrée dans la note = motif défaut (le 1er) avec la note */
     W.document.addEventListener('keydown',function(ev){
       var pop=W.document.getElementById('ppop');
-      if(!pop||!pop.classList.contains('on'))
-        { if((ev.key==='/'&&!/input|textarea/i.test((ev.target&&ev.target.tagName)||'')&&!(ev.target&&ev.target.isContentEditable))||ev.key==='²'||ev.key==='F2'){ z.focus(); z.select(); ev.preventDefault(); } return; }
+      if(!pop||!pop.classList.contains('on'))return;   /* aucun raccourci d'accès au champ : la touche sera CELLE DE PAUL (/, ² et F2 retirés, 22/08) */
       var bts=[].slice.call(pop.querySelectorAll('button.m'));
       if(/^[1-9]$/.test(ev.key)){
         var dansNote=(ev.target&&ev.target.id==='pnote');

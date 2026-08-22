@@ -14886,14 +14886,33 @@ function atDrVueInterne(v){
 /* [fluidité Structure, ordre de Paul 22/08] les trois colonnes se calent à la hauteur
    réellement disponible (plus de débord de page) et contiennent leur défilement
    (plus de saut de page à la butée). Doux, réactif au redimensionnement, réversible. */
-setInterval(function(){ try{_drCalerStructure();}catch(e){} },600);   /* battement propre : Structure se cale même sans cadre */
+setInterval(function(){ try{_drCalerStructure();}catch(e){} },600);
+/* [fluidité · le pointeur désigne] la molette défile LA colonne survolée, immédiatement —
+   sans clic d'activation, sans verrouillage du navigateur sur la colonne précédente.
+   La correspondance des clics entre colonnes n'est pas touchée. */
+document.addEventListener('wheel',function(ev){
+  try{
+    var a=document.getElementById('atelier-ecran'); if(!a||!a.getClientRects().length)return;
+    var t=ev.target;
+    if(t&&t.closest&&t.closest('textarea,select,[contenteditable="true"]'))return;
+    var col=t&&t.closest&&t.closest('.ed2-som,.ed2-pan,.ed2-papier'); if(!col)return;
+    ev.preventDefault();
+    col.scrollTop+=ev.deltaY;
+  }catch(e){}
+},{passive:false});   /* battement propre : Structure se cale même sans cadre */
 function _drCalerStructure(){
   try{
     var g=document.querySelector('#atelier-ecran .ed2-grille'); if(!g||!g.offsetParent)return;
-    var a=document.getElementById('atelier-ecran');
-    var reste=a?Math.max(0,a.scrollHeight-a.clientHeight):0;
-    AT_PONT._calAjust=Math.min(140,(AT_PONT._calAjust||14)+(reste>2?reste:0));   /* convergence : la marge résiduelle se retranche */
-    var dispo=Math.max(240, window.innerHeight - Math.round(g.getBoundingClientRect().top) - AT_PONT._calAjust);
+    var a=document.getElementById('atelier-ecran'); if(!a)return;
+    var topRel=Math.round(g.getBoundingClientRect().top - a.getBoundingClientRect().top) + a.scrollTop;
+    var pb=(parseInt(getComputedStyle(a).paddingBottom,10)||0);
+    var dispo=Math.max(300, a.clientHeight - topRel - pb - 4);   /* le bas utile, mesuré — pas deviné */
+    for(var it=0;it<2;it++){
+      for(var q=0;q<g.children.length;q++)g.children[q].style.maxHeight=dispo+'px';
+      var reste=a.scrollHeight-a.clientHeight;
+      if(reste<=2)break;
+      dispo=Math.max(300,dispo-reste);   /* le résidu sous la grille, retranché dans la même passe */
+    }
     for(var k=0;k<g.children.length;k++){ var c=g.children[k];
       if(c.style.maxHeight!==dispo+'px')c.style.maxHeight=dispo+'px';
       if(c.style.overscrollBehaviorY!=='contain')c.style.overscrollBehaviorY='contain';

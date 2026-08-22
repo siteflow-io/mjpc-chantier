@@ -15398,9 +15398,10 @@ document.addEventListener('keydown',function(ev){
 function _drPaletteOuvrir(d){
   var W=drWin(); if(!W||AT_DR_REGIME!=='classe')return;
   d=d||W.document;
-  var mem={el:d.activeElement,s:null,e:null};
+  var mem={el:d.activeElement,s:null,e:null,dp:null};
   try{ if(mem.el&&mem.el.setSelectionRange)
     { mem.s=mem.el.selectionStart; mem.e=mem.el.selectionEnd; } }catch(e){}
+  try{ if(mem.el&&mem.el.getAttribute)mem.dp=mem.el.getAttribute('data-p'); }catch(e){}
   var ov=d.getElementById('vif-palette');
   if(!ov){
     ov=d.createElement('div'); ov.id='vif-palette';
@@ -15420,7 +15421,16 @@ function _drPaletteOuvrir(d){
     return E.filter(function(x){return x.indexOf(tu)===0||String(P[x]||'').toUpperCase().indexOf(tu)===0;});}
   function fermer(){
     ov.style.display='none';
-    if(mem.el){ try{ mem.el.focus(); if(mem.s!==null&&mem.el.setSelectionRange)mem.el.setSelectionRange(mem.s,mem.e); }catch(e){} }
+    setTimeout(function(){ try{
+      var el=mem.el;
+      /* rendre() a pu reconstruire le champ : retrouver LE MÊME par son data-p */
+      if(mem.dp!=null){ var neuf=d.querySelector('[data-p="'+mem.dp+'"]'); if(neuf)el=neuf; }
+      if(el&&el.isConnected!==false){ el.focus();
+        if(mem.s!==null&&el.setSelectionRange)el.setSelectionRange(mem.s,mem.e);
+        else if(el.isContentEditable&&d.createRange){ var r=d.createRange(); r.selectNodeContents(el); r.collapse(false);
+          var s=d.defaultView.getSelection(); s.removeAllRanges(); s.addRange(r); }
+      }
+    }catch(e){} },80);   /* après le rendre() de la pose */
   }
   inp.oninput=function(){ var c=cands(inp.value),P=W.PRENOMS||{};
     if(inp.value.trim().length<2){sg.innerHTML='';return;}

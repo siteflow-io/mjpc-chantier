@@ -15456,6 +15456,7 @@ function _drPaletteOuvrir(d){
   function trier(s){return String(s).toUpperCase().replace(/[^A-Z]/g,'').split('').sort().join('');}
   function cands(t){ t=String(t||'').trim(); if(!t.length)return [];
     var E=W.ELEVES||[],P=W.PRENOMS||{},tt=trier(t),tu=t.toUpperCase();
+    var ex=E.filter(function(x){return x===tu;}); if(ex.length)return ex;
     if(t.length>=2){ var m=E.filter(function(x){return trier(x)===tt;}); if(m.length)return m; }
     return E.filter(function(x){return x.indexOf(tu)===0||String(P[x]||'').toUpperCase().indexOf(tu)===0;});}
   function fermer(){
@@ -15471,25 +15472,27 @@ function _drPaletteOuvrir(d){
       }
     }catch(e){} },80);   /* après le rendre() de la pose */
   }
+  function designer(x){
+    var P=W.PRENOMS||{};
+    choisi=x;
+    sg.innerHTML='\u2192 <b>'+(P[x]||x)+'</b> \u2014 1/2/3, ou note puis Entr\u00e9e';
+    zm.style.display='flex';
+    zm.innerHTML=(W.MOTIFS_PART||[]).map(function(m,k2){
+      return '<button data-mc="'+m.c+'" style="flex:1;padding:7px 8px;border-radius:8px;border:1px solid #4a3f33;background:#241d15;color:#e0d4c2;cursor:pointer;font-size:13px">'+(k2+1)+' \u00b7 '+m.l+'</button>';}).join('');
+    [].slice.call(zm.querySelectorAll('button')).forEach(function(b){
+      b.onclick=function(){ poserAvec(choisi,b.getAttribute('data-mc'),zn.value.trim()); };});
+    zn.style.display='';
+  }
   inp.oninput=function(){ var c=cands(inp.value),P=W.PRENOMS||{};
     if(!inp.value.trim().length){sg.innerHTML='';zm.style.display='none';zn.style.display='none';return;}
     if(!c.length){ sg.innerHTML='<em style="color:#a23a3a">Aucun \u00e9l\u00e8ve avec ces initiales.</em>'; zm.style.display='none'; zn.style.display='none'; }
-    else if(c.length===1){
-      sg.innerHTML='\u2192 <b>'+(P[c[0]]||c[0])+'</b> \u2014 1/2/3, ou note puis Entr\u00e9e';
-      choisi=c[0];
-      zm.style.display='flex';
-      zm.innerHTML=(W.MOTIFS_PART||[]).map(function(m,k){
-        return '<button data-mc="'+m.c+'" style="flex:1;padding:7px 8px;border-radius:8px;border:1px solid #4a3f33;background:#241d15;color:#e0d4c2;cursor:pointer;font-size:13px">'+(k+1)+' \u00b7 '+m.l+'</button>';}).join('');
-      [].slice.call(zm.querySelectorAll('button')).forEach(function(b){
-        b.onclick=function(){ poserAvec(choisi,b.getAttribute('data-mc'),zn.value.trim()); };});
-      zn.style.display='';
-    } else {
+    else if(c.length===1){ designer(c[0]); }
+    else {
       sg.innerHTML=c.slice(0,10).map(function(x){
         return '<a href="#" data-vif-c="'+x+'" style="color:#c99a4e;margin-right:10px;text-decoration:none"><b>'+(P[x]||x)+'</b> <span style="color:#7d6f5d">'+x+'</span></a>';}).join('')
         +(c.length>10?(' … +'+(c.length-10)):'');
       [].slice.call(sg.querySelectorAll('a[data-vif-c]')).forEach(function(a){
-        a.onclick=function(ev){ ev.preventDefault(); inp.value=a.getAttribute('data-vif-c');
-          inp.dispatchEvent(new Event('input',{bubbles:true})); };});
+        a.onclick=function(ev){ ev.preventDefault(); designer(a.getAttribute('data-vif-c')); };});
       zm.style.display='none'; zn.style.display='none';
     }};
   function clavier(ev){

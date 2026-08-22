@@ -112,7 +112,7 @@ prompt v2 produit des JSON à trames que seule la production promue sait jouer.
 
 ## P3ter — L EXPORT JSON DE VÉRIFICATION (acté le 22/08 soir, demande de Paul)
 Principe : la rétro-ingénierie appliquée aux ajouts de PAUL. Un bouton dans
-l éditeur de chapitre : « Exporter pour l IA (.json) » — le chapitre TEL QU IL
+l éditeur de chapitre : « Exporter chapitre pour relecture et cohérence finale » (libellé arrêté par Paul le 22/08) — le chapitre TEL QU IL
 EST dans MJPC (séances, clés, trames deroule, items, liaisons reconstituées en
 aLier), au FORMAT MÊME du prompt chapitre, précédé d une courte mission :
 « Voici le chapitre tel qu il vit dans MJPC après mes modifications. Compare-le

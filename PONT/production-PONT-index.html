@@ -13887,7 +13887,11 @@ function atSomInjecterEcrans(html){
 function atSomAllerEcran(n,seance){
   if(seance!==undefined && String(seance)!==String(ATVUES.snum)){
     ATVUES.snum=String(seance); AT_SOM_ETAT[String(seance)]=true;   /* on change de séance jouée */
-    if(ATVUES.vue==='deroule'){ atVuesPoser('deroule'); return; }
+    if(ATVUES.vue==='deroule'){
+      var scB=document.querySelector('#at-arbre .ed2-som'), posB=scB?scB.scrollTop:0;   /* [13e] la colonne ne remonte plus */
+      atVuesPoser('deroule');
+      var scA=document.querySelector('#at-arbre .ed2-som'); if(scA)scA.scrollTop=posB;
+      return; }
   }
   try{ if(window.DR&&DR.va) DR.va(n); }catch(e){}
   /* [LOT1-①] SÉLECTION SEULE — on déplace le halo, on ne reconstruit RIEN :

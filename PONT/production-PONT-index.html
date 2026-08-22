@@ -14370,7 +14370,7 @@ function atDrMonter(){
   if(tete){
     var cls=_lvlClasses(ec.level)||[];
     var _comp='<label class="at-dr-lib" for="at-dr-comp">Comp\u00e9tences de l\u2019\u00e9cran courant :</label>'
-      +'<input id="at-dr-comp" class="at-edch-in at-dr-comp" list="at-dr-taxo" placeholder="notions, s\u00e9par\u00e9es par des virgules" onchange="atDrCompChange(this.value)">'
+      +'<input id="at-dr-comp" class="at-edch-in at-dr-comp" list="at-dr-taxo" placeholder="appoint \u2014 une notion impr\u00e9vue surgie du cours" onchange="atDrCompChange(this.value)">'
       +'<datalist id="at-dr-taxo">'+atDrTaxoOptions()+'</datalist>'
       +'<span id="at-dr-etat" class="at-dr-etat"></span>';
     if(AT_DR_REGIME==='prep'){
@@ -15325,9 +15325,9 @@ function _drVifInstaller(){
        tenir compte de l'ordre des lettres \u2014 \u00ab TM \u00bb trouve \u00ab MT \u00bb. */
     function _trier(s){return String(s).toUpperCase().replace(/[^A-Z]/g,'').split('').sort().join('');}
     function candidats(t){
-      t=String(t||'').trim(); if(t.length<2)return [];
+      t=String(t||'').trim(); if(!t.length)return [];
       var E=W.ELEVES||[], P=W.PRENOMS||{}, tt=_trier(t), tu=t.toUpperCase();
-      var meme=E.filter(function(x){return _trier(x)===tt;});
+      var meme=(t.length>=2)?E.filter(function(x){return _trier(x)===tt;}):[];
       if(meme.length)return meme;
       return E.filter(function(x){return x.indexOf(tu)===0
         ||String(P[x]||'').toUpperCase().indexOf(tu)===0;});
@@ -15340,14 +15340,15 @@ function _drVifInstaller(){
         s.style.outline=(c.indexOf(ini)>=0&&z.value)?'2px solid #c99a4e':'';
       });
       var P=W.PRENOMS||{};
-      if(!z.value.trim()||z.value.trim().length<2){ sug.innerHTML=''; }
+      if(!z.value.trim()){ sug.innerHTML=''; }
       else if(!c.length){ sug.innerHTML='<em style="color:#a23a3a">Aucun \u00e9l\u00e8ve avec ces initiales.</em>'; }
       else if(c.length===1){
         sug.innerHTML='\u2192 <b>'+(P[c[0]]||c[0])+'</b> (Entr\u00e9e)';
         W.ouvrirPart(c[0]); setTimeout(function(){var n2=W.document.getElementById('pnote');if(n2)n2.focus();},60);
       } else {
-        sug.innerHTML='Plusieurs : '+c.map(function(x){
-          return '<a href="#" data-vif-c="'+x+'" style="color:#c99a4e;margin-right:8px">'+(P[x]||x)+'</a>';}).join('');
+        sug.innerHTML=c.slice(0,8).map(function(x){
+          return '<a href="#" data-vif-c="'+x+'" style="color:#c99a4e;margin-right:8px;text-decoration:none"><b>'+(P[x]||x)+'</b> <span style="color:#7d6f5d">'+x+'</span></a>';}).join('')
+          +(c.length>8?(' … +'+(c.length-8)):'');
         [].slice.call(sug.querySelectorAll('a')).forEach(function(a){
           a.onclick=function(ev){ ev.preventDefault(); W.ouvrirPart(a.getAttribute('data-vif-c'));
             setTimeout(function(){var n2=W.document.getElementById('pnote');if(n2)n2.focus();},60); };});
@@ -15453,9 +15454,9 @@ function _drPaletteOuvrir(d){
   }
   histoRendre();
   function trier(s){return String(s).toUpperCase().replace(/[^A-Z]/g,'').split('').sort().join('');}
-  function cands(t){ t=String(t||'').trim(); if(t.length<2)return [];
+  function cands(t){ t=String(t||'').trim(); if(!t.length)return [];
     var E=W.ELEVES||[],P=W.PRENOMS||{},tt=trier(t),tu=t.toUpperCase();
-    var m=E.filter(function(x){return trier(x)===tt;}); if(m.length)return m;
+    if(t.length>=2){ var m=E.filter(function(x){return trier(x)===tt;}); if(m.length)return m; }
     return E.filter(function(x){return x.indexOf(tu)===0||String(P[x]||'').toUpperCase().indexOf(tu)===0;});}
   function fermer(){
     ov.style.display='none';
@@ -15471,7 +15472,7 @@ function _drPaletteOuvrir(d){
     }catch(e){} },80);   /* après le rendre() de la pose */
   }
   inp.oninput=function(){ var c=cands(inp.value),P=W.PRENOMS||{};
-    if(inp.value.trim().length<2){sg.innerHTML='';zm.style.display='none';zn.style.display='none';return;}
+    if(!inp.value.trim().length){sg.innerHTML='';zm.style.display='none';zn.style.display='none';return;}
     if(!c.length){ sg.innerHTML='<em style="color:#a23a3a">Aucun \u00e9l\u00e8ve avec ces initiales.</em>'; zm.style.display='none'; zn.style.display='none'; }
     else if(c.length===1){
       sg.innerHTML='\u2192 <b>'+(P[c[0]]||c[0])+'</b> \u2014 1/2/3, ou note puis Entr\u00e9e';
@@ -15483,7 +15484,12 @@ function _drPaletteOuvrir(d){
         b.onclick=function(){ poserAvec(choisi,b.getAttribute('data-mc'),zn.value.trim()); };});
       zn.style.display='';
     } else {
-      sg.innerHTML='Plusieurs : '+c.map(function(x){return P[x]||x;}).join(' \u00b7 ')+' \u2014 pr\u00e9cise d\u2019une lettre';
+      sg.innerHTML=c.slice(0,10).map(function(x){
+        return '<a href="#" data-vif-c="'+x+'" style="color:#c99a4e;margin-right:10px;text-decoration:none"><b>'+(P[x]||x)+'</b> <span style="color:#7d6f5d">'+x+'</span></a>';}).join('')
+        +(c.length>10?(' … +'+(c.length-10)):'');
+      [].slice.call(sg.querySelectorAll('a[data-vif-c]')).forEach(function(a){
+        a.onclick=function(ev){ ev.preventDefault(); inp.value=a.getAttribute('data-vif-c');
+          inp.dispatchEvent(new Event('input',{bubbles:true})); };});
       zm.style.display='none'; zn.style.display='none';
     }};
   function clavier(ev){

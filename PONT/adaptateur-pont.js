@@ -832,8 +832,14 @@ function _drVifInstaller(){
       if(!pop||!pop.classList.contains('on'))
         { if(ev.key==='/'&&!/input|textarea/i.test((ev.target&&ev.target.tagName)||'')&&!(ev.target&&ev.target.isContentEditable)){ z.focus(); z.select(); ev.preventDefault(); } return; }
       var bts=[].slice.call(pop.querySelectorAll('button.m'));
-      if(/^[1-9]$/.test(ev.key)&&!/input|textarea/i.test((ev.target&&ev.target.tagName)||'')){
-        var b=bts[+ev.key-1]; if(b){ b.click(); z.value=''; setTimeout(function(){z.focus();},60); ev.preventDefault(); } return;
+      if(/^[1-9]$/.test(ev.key)){
+        var dansNote=(ev.target&&ev.target.id==='pnote');
+        var horsSaisie=!/input|textarea/i.test((ev.target&&ev.target.tagName)||'');
+        /* dans la note VIDE, les chiffres choisissent le motif ; d\u00e8s qu'un texte est
+           commenc\u00e9, ils redeviennent des caract\u00e8res (\u00ab 2 propositions \u00bb reste \u00e9crivable) */
+        if(horsSaisie||(dansNote&&!ev.target.value)){
+          var b=bts[+ev.key-1]; if(b){ b.click(); z.value=''; setTimeout(function(){z.focus();},60); ev.preventDefault(); } return;
+        }
       }
       if(ev.key==='Enter'&&ev.target&&ev.target.id==='pnote'){
         var b1=bts[0]; if(b1){ b1.click(); z.value=''; setTimeout(function(){z.focus();},60); ev.preventDefault(); }

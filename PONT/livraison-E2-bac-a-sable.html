@@ -14915,6 +14915,11 @@ var DR={
       if(DR.__charge&&DR.__charge!==jeton)_drFlushTrame(DR.__charge);   /* l'édition des 900 dernières ms part vers SA séance */
       try{ setTimeout(_drPoserContexteMoteur,60); }catch(e){}
     try{ setTimeout(_drVifInstaller,140); }catch(e){}
+    try{ if(!window.__vifBat){ window.__vifBat=setInterval(function(){ try{
+      _drVifInstaller();
+      var W2=drWin(), z2=W2&&W2.document.getElementById('vif');
+      if(z2)z2.style.display=(AT_DR_REGIME==='classe')?'':'none';
+    }catch(e){} },700); } }catch(e){}
     if(DR.__charge!==jeton){
         var posMem=(AT_PONT.dernierJeton===jeton)?(AT_PONT.dernierEcran||0):0;   /* AVANT le chargement : son rendre écrase la mémoire */
         DR.__charge=jeton; DR.dr_chargerTrame(ecrans);
@@ -15474,6 +15479,36 @@ function _drVifInstaller(){
     var W=drWin(); if(!W||W.__vifPose)return;
     var part=W.document.getElementById('part'); if(!part)return;
     W.__vifPose=true;
+    if(!W.__partPrecis&&typeof W.partAjoute==='function'){
+      W.__partPrecis=true;
+      var _pa=W.partAjoute;
+      W.partAjoute=function(ini,type,note){
+        var r=_pa.apply(W,arguments);
+        try{
+          var e=W.ECRANS[W.i], rv=(e.rev===undefined?0:e.rev);
+          var b=e.blocs[Math.max(0,Math.min(e.blocs.length-1,rv-2))];
+          var precis=b?(b.t==='question'?('question \u00ab '+String(b.q||'').slice(0,40)+' \u00bb')
+                      :b.t==='fiche'?('fiche \u00ab '+String(b.titre||'').slice(0,40)+' \u00bb')
+                      :b.t):null;
+          var l=(W.PARTICIPATION[ini]||[]); var d=l[l.length-1];
+          if(d&&precis&&d.ou)d.ou=d.ou+' \u00b7 '+precis;
+          var v=W.document.getElementById('vif');
+          if(v&&d){
+            var t=W.document.getElementById('vif-dernier');
+            if(!t){ t=W.document.createElement('div'); t.id='vif-dernier';
+              t.setAttribute('style','margin:4px 0 6px;font-size:12px;color:#9c8b76;display:flex;gap:6px;align-items:center');
+              v.parentNode.insertBefore(t,v.nextSibling); }
+            t.innerHTML='pos\u00e9 : <b>'+ini+'</b> <span id="vif-x" style="cursor:pointer;color:#e8484c">\u2715 (Ctrl+Z)</span>';
+            var did=d.id;
+            var annule=function(){ try{ W.partRetire(ini,did); W.rendre(); t.innerHTML='annul\u00e9.'; setTimeout(function(){t.innerHTML='';},1500); W.__vifAnnule=null; }catch(e){} };
+            W.document.getElementById('vif-x').onclick=annule;
+            W.__vifAnnule=annule;
+            clearTimeout(W.__vifDT); W.__vifDT=setTimeout(function(){ t.innerHTML=''; W.__vifAnnule=null; },6000);
+          }
+        }catch(e){}
+        return r;
+      };
+    }
     var z=W.document.createElement('input');
     z.id='vif'; z.placeholder='⌨ initiales — puis 1/2/3, note, Entrée';
     z.setAttribute('style','width:100%;box-sizing:border-box;margin:0 0 6px;padding:4px 8px;'
@@ -15500,7 +15535,18 @@ function _drVifInstaller(){
         if(c.length){ W.ouvrirPart(c[0]); setTimeout(function(){var n2=W.document.getElementById('pnote');if(n2)n2.focus();},60); }
         ev.preventDefault(); }
       if(ev.key==='Escape'){ z.value=''; z.blur(); }
+      if((ev.ctrlKey||ev.metaKey)&&String(ev.key).toLowerCase()==='z'){ if(W.__vifAnnule){W.__vifAnnule();ev.preventDefault();} }
     });
+    if(!W.__vifTri){ W.__vifTri=setInterval(function(){ try{
+      if(AT_DR_REGIME!=='classe')return;
+      var pt=W.document.getElementById('part'); if(!pt||!pt.children.length)return;
+      var sp=[].slice.call(pt.children);
+      var muets=sp.filter(function(s){return !s.querySelector('.pastoral');});
+      var voulu=muets.concat(sp.filter(function(s){return s.querySelector('.pastoral');}));
+      var change=voulu.some(function(s,k){return pt.children[k]!==s;});
+      if(change)voulu.forEach(function(s){pt.appendChild(s);});
+      sp.forEach(function(s){ s.style.color=s.querySelector('.pastoral')?'':'#e0a84e'; });
+    }catch(e){} },900); }
     /* dans la fiche ouverte : 1..9 = motif ; Entrée dans la note = motif défaut (le 1er) avec la note */
     W.document.addEventListener('keydown',function(ev){
       var pop=W.document.getElementById('ppop');

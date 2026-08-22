@@ -28,5 +28,7 @@
    c est scinde() — la scission au zoom (« rien n est jamais refusé : on coupe »),
    artifice de PROJECTION qui fuit dans la persistance : la copie/les minis/les
    heures montrent les fragments (frag), la refusion n advient qu au dézoom.
-   Correctif prévu : refusionner les fragments À L EXPORT (dr_exporterTrame) —
-   la projection garde ses morceaux, la donnée redevient entière (moteur 96).
+   CORRIGÉ (22/08 soir) : refusion à l export, CÔTÉ PONT (dr_exporterTrame de l adaptateur,
+   aucun moteur 96 nécessaire). Prouvé sur scission réelle du moteur : la projection
+   garde ses 2 morceaux (12+0 min), l export rend 1 écran (dur 12, réponses recombinées,
+   résidus grp/suite/frag nettoyés), la colonne MJPC montre UNE mini.

@@ -14663,7 +14663,7 @@ var DR={
      lire() d'abord : les champs en cours d'édition rejoignent les données. */
   dr_exporterTrame:function(){ var W=drWin(); if(!W||!W.ECRANS)return [];
     try{ W.lire(); }catch(e){}
-    return JSON.parse(JSON.stringify(W.ECRANS)); },
+    return _drRefusionner(JSON.parse(JSON.stringify(W.ECRANS))); },
   /* message ① — voici la trame à jouer */
   dr_vue:function(v){ var W=drWin(); if(W&&W.ong)try{W.ong(v);}catch(e){} },
   dr_chargerTrame:function(ecrans){ var W=drWin(); if(!W)return;
@@ -15112,6 +15112,49 @@ function _drCopieAuto(){
         'Séance en classe — copie au fil de l’eau ('+AT_DR_COURS.classeNom+')');
     }catch(e){}
   },900);
+}
+
+/* [refusion à l'export] scinde() coupe pour la PROJECTION (« rien n'est jamais
+   refusé ») : écran-fragment grp+suite, dur:0, blocs frag. L'artifice ne doit pas
+   fuir dans la donnée : à l'export, les groupes se RECOLLENT — étapes concaténées,
+   réponses recombinées (y compris un texte coupé, suiteRep), fiches réunies,
+   durées rendues au père. La colonne, la copie et le récit voient l'écran ENTIER. */
+function _drRefusionner(t){
+  var out=[];
+  for(var k=0;k<t.length;k++){
+    var e=t[k];
+    if(e&&e.suite&&out.length){
+      var p=out[out.length-1];
+      if(p.grp&&p.grp===e.grp){
+        (e.blocs||[]).forEach(function(b){
+          var d=p.blocs[p.blocs.length-1];
+          if(d&&b&&d.frag&&d.frag===b.frag&&d.t===b.t){
+            if(b.t==='consigne'){
+              if(b.etapes&&b.etapes.length){ d.etapes=(d.etapes||[]).concat(b.etapes); }
+              else if(b.txt&&b.txt!==d.txt){ d.txt=(d.txt||'')+' '+b.txt; }
+              d.vues=(d.vues||0)+(b.vues||0);
+            } else if(b.t==='question'){
+              if(b.reps&&b.reps.length&&b.reps[0].suiteRep&&d.reps&&d.reps.length){
+                var dr=d.reps[d.reps.length-1]; dr.r=(dr.r||'')+(b.reps[0].r||'');
+                d.reps=d.reps.concat(b.reps.slice(1));
+              } else {
+                var pleines=(d.reps||[]).filter(function(r){return r&&(r.i||r.r);});
+                d.reps=pleines.concat(b.reps||[]);
+              }
+              d.vues=(d.vues||0)+(b.vues||0);
+            } else if(b.t==='fiche'){ d.corps=(d.corps||'')+(b.corps||''); d.vues=Math.max(d.vues||0,b.vues||0); }
+            else { d.txt=((d.txt||'')+' '+(b.txt||b.q||'')).trim(); }
+          } else p.blocs.push(b);
+        });
+        p.dur=(+p.dur||0)+(+e.dur||0);
+        continue;
+      }
+    }
+    out.push(e);
+  }
+  out.forEach(function(e){ delete e.grp; delete e.suite;
+    (e.blocs||[]).forEach(function(b){ delete b.frag; delete b.suiteRep; }); });
+  return out;
 }
 
 /* le boot du montage : rappeler l'onglet retenu */

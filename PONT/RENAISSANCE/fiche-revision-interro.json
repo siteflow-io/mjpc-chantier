@@ -1,0 +1,157 @@
+{
+ "titre": "Fiche de révision : réviser l'interro de cours",
+ "produit": "fiche_notion",
+ "cases": {
+  "titre": true,
+  "sous_titre": true,
+  "classe": true,
+  "niveau": true,
+  "date_seance": true,
+  "date_edition": true,
+  "annee_scolaire": true,
+  "periode": true,
+  "objectif": true,
+  "competences": true,
+  "notions": true,
+  "genre": true,
+  "definition": true,
+  "a_retenir": true,
+  "attention_piege": true,
+  "methode": true,
+  "tableau": true,
+  "colonnes_comp": true,
+  "criteres_je": true,
+  "renvoi_app": true,
+  "travail_a_faire": true,
+  "mention_conserver": true
+ },
+ "valeurs": {
+  "competences": {
+   "items": [
+    "Mémoriser",
+    "Construire les notions permettant l'analyse et l'élaboration des textes et des discours"
+   ]
+  },
+  "criteres_je": {
+   "items": [
+    "Je sais nommer les quatre mouvements et situer Baudelaire",
+    "Je sais réciter la composition du sonnet",
+    "Je sais dire quand le e muet compte",
+    "Je sais distinguer césure et enjambement",
+    "Je sais distinguer allitération et assonance",
+    "Je sais distinguer comparaison, métaphore et personnification",
+    "Je connais le registre lyrique"
+   ]
+  },
+  "genre": {
+   "texte": "Poésie"
+  },
+  "notions": {
+   "items": [
+    "Les mouvements littéraires du XIXe siècle",
+    "Le sonnet et la versification",
+    "L'allitération et l'assonance",
+    "La comparaison, la métaphore, la personnification",
+    "Le registre lyrique"
+   ]
+  },
+  "objectif": {
+   "texte": "À la fin de ta révision, tu sauras répondre de mémoire aux questions du chapitre : mouvements, versification, figures et registre."
+  },
+  "periode": {
+   "texte": "1er semestre"
+  },
+  "renvoi_app": {
+   "texte": "l'application Entraînement : pour s'exercer sur ses notions fragiles avant l'interro"
+  },
+  "sous_titre": {
+   "texte": "Mouvements, versification, figures et registre : tout ce qu'il faut savoir de mémoire"
+  },
+  "titre": {
+   "texte": "Fiche de révision : réviser l'interro de cours"
+  },
+  "travail_a_faire": {
+   "texte": "Révise avec cette fiche pour l'interro de cours. Relis les trois fiches notions, apprends les tableaux, puis cache la fiche et vérifie chaque ligne de la liste « Je sais »."
+  }
+ },
+ "blocs": [
+  {
+   "id": "methode",
+   "valeurs": {
+    "items": [
+     "Relis les fiches notions : versification, figures de style, registres.",
+     "Apprends les tableaux de cette fiche.",
+     "Cache la fiche. Vérifie chaque ligne de la liste « Je sais » en bas de la page."
+    ],
+    "titre": "Réviser en trois temps"
+   }
+  },
+  {
+   "id": "tableau",
+   "valeurs": {
+    "lignes": [
+     "Mouvement | Ce qu'il faut retenir",
+     "Le romantisme | Les sentiments personnels, la nature sauvage",
+     "Le classicisme | Les règles strictes héritées",
+     "Le Parnasse | La forme parfaite, l'art pour l'art",
+     "Le symbolisme | Suggérer par des images et des sonorités",
+     "Baudelaire | Inclassable : il traverse les mouvements"
+    ]
+   }
+  },
+  {
+   "id": "a_retenir",
+   "valeurs": {
+    "texte": "Le sonnet classique : deux quatrains + deux tercets, en alexandrins (vers de 12 syllabes). Rimes régulières : plates (AABB), croisées (ABAB), embrassées (ABBA)."
+   }
+  },
+  {
+   "id": "a_retenir",
+   "valeurs": {
+    "texte": "Le e muet : en fin de vers, il ne compte jamais. En milieu de vers, il compte comme une syllabe si le mot suivant commence par une consonne : na-vi-re-glis-sant."
+   }
+  },
+  {
+   "id": "colonnes_comp",
+   "valeurs": {
+    "texte_d": "La phrase commencée dans un vers continue dans le vers suivant.",
+    "texte_g": "La pause au milieu de l'alexandrin, après la 6e syllabe. Elle coupe le vers en deux moitiés égales.",
+    "titre_d": "L'enjambement",
+    "titre_g": "La césure"
+   }
+  },
+  {
+   "id": "colonnes_comp",
+   "valeurs": {
+    "texte_d": "Un son de voyelle répété. « Prennent des albatros, vastes oiseaux » : le son [a] revient.",
+    "texte_g": "Un son de consonne répété. « Souvent, pour s'amuser » : le son [s] revient.",
+    "titre_d": "L'assonance",
+    "titre_g": "L'allitération"
+   }
+  },
+  {
+   "id": "attention_piege",
+   "valeurs": {
+    "texte": "Une sonorité s'entend, elle ne se voit pas : on repère un son, pas une lettre. Lis le vers à voix haute pour vérifier."
+   }
+  },
+  {
+   "id": "tableau",
+   "valeurs": {
+    "lignes": [
+     "Figure | Comment la reconnaître | Exemple",
+     "La comparaison | Avec un outil (comme, tel que, pareil à) | La mer brille comme un miroir.",
+     "La métaphore | Sans outil de comparaison | La mer, ce grand miroir, brille de mille feux.",
+     "La personnification | Une chose agit ou ressent comme un humain | La voix de l'océan"
+    ]
+   }
+  },
+  {
+   "id": "definition",
+   "valeurs": {
+    "terme": "Registre lyrique",
+    "texte": "Qui exprime des sentiments personnels au moyen de rythmes et d'images propres à communiquer au lecteur l'émotion de l'auteur. Ce mot vient de lyre et désignait autrefois une poésie chantée."
+   }
+  }
+ ]
+}

@@ -1,0 +1,126 @@
+{
+ "titre": "Fiche notion : Lire un poème à voix haute",
+ "produit": "fiche_notion",
+ "cases": {
+  "titre": true,
+  "sous_titre": true,
+  "classe": true,
+  "niveau": true,
+  "date_seance": true,
+  "date_edition": true,
+  "annee_scolaire": true,
+  "objectif": true,
+  "competences": true,
+  "notions": true,
+  "oeuvre": true,
+  "auteur": true,
+  "definition": true,
+  "a_retenir": true,
+  "attention_piege": true,
+  "methode": true,
+  "exemple": true,
+  "contre_exemple": true,
+  "image_drive": true,
+  "criteres_je": true,
+  "renvoi_app": true,
+  "travail_a_faire": true,
+  "mention_conserver": true
+ },
+ "valeurs": {
+  "auteur": {
+   "texte": "Charles Baudelaire"
+  },
+  "competences": {
+   "items": [
+    "Exploiter les ressources expressives et créatives de la parole"
+   ]
+  },
+  "criteres_je": {
+   "items": [
+    "Je me fais bien entendre",
+    "J'articule chaque mot",
+    "Je respecte le rythme et les pauses",
+    "Je rends ma lecture vivante"
+   ]
+  },
+  "notions": {
+   "items": [
+    "La lecture expressive",
+    "Le e muet",
+    "L'enjambement",
+    "Les liaisons"
+   ]
+  },
+  "objectif": {
+   "texte": "À la fin de ta préparation, tu sauras lire un poème à voix haute de façon claire et vivante."
+  },
+  "oeuvre": {
+   "texte": "« L'Albatros », Les Fleurs du mal"
+  },
+  "renvoi_app": {
+   "texte": "l'Applaudimètre : la classe écoutera chaque lecture et votera sur les quatre critères de cette fiche"
+  },
+  "sous_titre": {
+   "texte": "À retrouver toute l'année au rayon Fiches notions"
+  },
+  "titre": {
+   "texte": "Fiche notion : Lire un poème à voix haute"
+  },
+  "travail_a_faire": {
+   "texte": "Prépare la lecture à voix haute de « L'Albatros » en entier. Entraîne-toi avec la méthode de cette fiche. Les lectures auront lieu en ouverture de la séance 7 et seront écoutées par la classe."
+  }
+ },
+ "blocs": [
+  {
+   "id": "definition",
+   "valeurs": {
+    "terme": "Lecture expressive",
+    "texte": "Une lecture à voix haute qui fait entendre le sens du poème : la voix est claire, le rythme est respecté, le ton donne envie d'écouter."
+   }
+  },
+  {
+   "id": "methode",
+   "valeurs": {
+    "items": [
+     "Lis le poème en silence. Vérifie que tu comprends chaque mot.",
+     "Marque au crayon les endroits où tu respires : à la ponctuation, jamais automatiquement en fin de vers.",
+     "Repère les e muets qui se prononcent. Compte les syllabes pour les trouver.",
+     "Marque les liaisons à faire.",
+     "Entraîne-toi à voix haute plusieurs fois. Change de ton quand le poème change.",
+     "Chronomètre-toi. Vise une lecture calme, sans précipitation."
+    ],
+    "titre": "Préparer sa lecture"
+   }
+  },
+  {
+   "id": "exemple",
+   "valeurs": {
+    "texte": "« Le navire glissant sur les gouffres amers » : le e de « navire » se prononce — na-vi-re-glis-sant. Compte les syllabes : le vers fait bien 12 syllabes."
+   }
+  },
+  {
+   "id": "contre_exemple",
+   "valeurs": {
+    "texte": "Lu « le navir' glissant », le vers n'a plus que 11 syllabes : l'alexandrin boite."
+   }
+  },
+  {
+   "id": "attention_piege",
+   "valeurs": {
+    "texte": "Ne t'arrête pas à chaque fin de vers. Quand la phrase continue au vers suivant (c'est l'enjambement de ta fiche de versification), la voix continue aussi."
+   }
+  },
+  {
+   "id": "a_retenir",
+   "valeurs": {
+    "texte": "Une bonne lecture se prépare. On entend chaque mot. La voix suit les phrases, pas les fins de vers."
+   }
+  },
+  {
+   "id": "a_retenir",
+   "valeurs": {
+    "texte": "Pour t'entraîner à la maison :\n– Entraîne-toi 10 minutes par jour, pendant 4 ou 5 jours. Pas une heure la veille.\n– Lis debout, les deux pieds au sol, la feuille tenue à hauteur de la poitrine — pas devant ton visage.\n– Avant de commencer, respire un grand coup par le nez. Souffle lentement par la bouche. Fais-le deux fois.\n– Lecture 1 : lis lentement, en exagérant. Articule trop. Ouvre grand la bouche. C'est un échauffement, personne ne te regarde.\n– Lecture 2 : enregistre-toi avec ton téléphone. Écoute. Pose-toi trois questions : est-ce qu'on entend chaque mot ? est-ce que je vais trop vite ? est-ce que je respire au bon endroit ? Coche ce qui va, entoure ce qui ne va pas.\n– Lecture 3 : recommence en corrigeant UNE seule chose, celle que tu as entourée. Pas tout à la fois.\n– Devant le miroir : lève les yeux de ta feuille une fois par phrase, une seconde. Le jour du passage, tu feras pareil vers la classe.\n– Le dernier jour : lis une fois devant quelqu'un de ta famille. Demande-lui : « quel est le mot que tu as le moins bien entendu ? » Retravaille ce passage.\n– Si tu bafouilles sur un mot, répète ce mot seul, 5 fois de suite, lentement. Puis relis le vers entier."
+   }
+  }
+ ]
+}

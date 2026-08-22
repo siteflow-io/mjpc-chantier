@@ -1,0 +1,199 @@
+{
+ "titre": "Fiche notion : Les différents registres",
+ "produit": "fiche_notion",
+ "cases": {
+  "titre": true,
+  "sous_titre": true,
+  "classe": true,
+  "niveau": true,
+  "date_seance": true,
+  "date_edition": true,
+  "annee_scolaire": true,
+  "version_document": true,
+  "objectif": true,
+  "competences": true,
+  "notions": true,
+  "domaine_socle": true,
+  "texte_libre": true,
+  "definition": true,
+  "mention_conserver": true
+ },
+ "valeurs": {
+  "competences": {
+   "items": [
+    "Construire les notions permettant l'analyse et l'élaboration des textes et des discours"
+   ]
+  },
+  "domaine_socle": {
+   "texte": "Domaine 1 — Les langages pour penser et communiquer"
+  },
+  "notions": {
+   "items": [
+    "Les registres littéraires"
+   ]
+  },
+  "objectif": {
+   "texte": "À la fin de cette leçon, tu sauras nommer le registre d'un texte et expliquer l'effet qu'il produit sur le lecteur."
+  },
+  "sous_titre": {
+   "texte": "À retrouver toute l'année au rayon Fiches notions"
+  },
+  "titre": {
+   "texte": "Fiche notion : Les différents registres"
+  }
+ },
+ "blocs": [
+  {
+   "id": "texte_libre",
+   "valeurs": {
+    "texte": "Rappel de définition : le terme registre désigne l'ambiance générale d'une œuvre ou d'un texte, l'ensemble des caractéristiques d'un texte qui ont pour effet de faire naître un certain état d'esprit chez le lecteur."
+   }
+  },
+  {
+   "id": "texte_libre",
+   "valeurs": {
+    "texte": "Les principaux registres"
+   }
+  },
+  {
+   "id": "definition",
+   "valeurs": {
+    "terme": "Burlesque",
+    "texte": "Qui consiste en l'explication des choses les plus sérieuses par des expressions ridicules. Dans le burlesque, les héros parlent comme des gens du peuple."
+   }
+  },
+  {
+   "id": "definition",
+   "valeurs": {
+    "terme": "Comique",
+    "texte": "Qui vise à faire rire. Ce registre ne se rencontre pas seulement dans la comédie."
+   }
+  },
+  {
+   "id": "definition",
+   "valeurs": {
+    "terme": "Épidictique",
+    "texte": "Registre dans lequel l'auteur porte un jugement sur le sujet qu'il traite."
+   }
+  },
+  {
+   "id": "definition",
+   "valeurs": {
+    "terme": "Épique",
+    "texte": "Qui donne aux êtres et aux faits une grandeur hors du commun. Ce registre peut se rencontrer en dehors de l'épopée."
+   }
+  },
+  {
+   "id": "definition",
+   "valeurs": {
+    "terme": "Fantastique",
+    "texte": "Registre dans lequel des éléments surnaturels se mêlent à la vie normale, et créent une certaine angoisse, voire la peur chez le lecteur."
+   }
+  },
+  {
+   "id": "definition",
+   "valeurs": {
+    "terme": "Héroï-comique",
+    "texte": "Registre inverse du burlesque : les gens du peuple ou les bourgeois parlent et agissent comme des héros."
+   }
+  },
+  {
+   "id": "definition",
+   "valeurs": {
+    "terme": "Humoristique",
+    "texte": "Ce registre consiste à reprendre des éléments quotidiens graves ou sérieux pour en extraire du ridicule, ou au moins de quoi sourire."
+   }
+  },
+  {
+   "id": "definition",
+   "valeurs": {
+    "terme": "Ironique",
+    "texte": "Qui vise à dénoncer quelque chose en le ridiculisant."
+   }
+  },
+  {
+   "id": "definition",
+   "valeurs": {
+    "terme": "Lyrique",
+    "texte": "Qui exprime des sentiments personnels au moyen de rythmes et d'images propres à communiquer au lecteur l'émotion de l'auteur. Ce mot vient de lyre et désignait autrefois une poésie chantée."
+   }
+  },
+  {
+   "id": "definition",
+   "valeurs": {
+    "terme": "Merveilleux",
+    "texte": "Registre dans lequel les puissances divines et surnaturelles se manifestent mais sont acceptées naturellement par le lecteur."
+   }
+  },
+  {
+   "id": "definition",
+   "valeurs": {
+    "terme": "Oratoire",
+    "texte": "Caractéristique des discours."
+   }
+  },
+  {
+   "id": "definition",
+   "valeurs": {
+    "terme": "Parodique",
+    "texte": "Qui imite de manière comique une œuvre célèbre, sérieuse, ou qui imite une situation réelle que l'auteur veut dénoncer. Ce registre est souvent lié au registre ironique."
+   }
+  },
+  {
+   "id": "definition",
+   "valeurs": {
+    "terme": "Pathétique",
+    "texte": "Qui vise à provoquer un attendrissement en portant à l'extrême l'expression des sentiments."
+   }
+  },
+  {
+   "id": "definition",
+   "valeurs": {
+    "terme": "Picaresque",
+    "texte": "Registre dans lequel de petites aventures successives et indépendantes surviennent à un héros qui en constitue le seul point commun."
+   }
+  },
+  {
+   "id": "definition",
+   "valeurs": {
+    "terme": "Polémique",
+    "texte": "Qui attaque une idée, une personne ou une institution de manière vive, agressive."
+   }
+  },
+  {
+   "id": "definition",
+   "valeurs": {
+    "terme": "Réaliste",
+    "texte": "Se dit d'un texte littéraire caractérisé par la volonté de représenter la réalité telle qu'elle est ; parfois également par la tendance à exagérer le caractère déplaisant de cette réalité."
+   }
+  },
+  {
+   "id": "definition",
+   "valeurs": {
+    "terme": "Romanesque",
+    "texte": "Registre caractérisé par les éléments suivants : sentimentalité, rêverie et toute sorte d'aventures extraordinaires."
+   }
+  },
+  {
+   "id": "definition",
+   "valeurs": {
+    "terme": "Satirique",
+    "texte": "Qui se moque de quelque chose de manière agressive, dénonce avec ironie."
+   }
+  },
+  {
+   "id": "definition",
+   "valeurs": {
+    "terme": "Science-fiction",
+    "texte": "Imagination scientifique dont l'action est censée se passer dans le futur."
+   }
+  },
+  {
+   "id": "definition",
+   "valeurs": {
+    "terme": "Tragique",
+    "texte": "L'émotion y naît de la conviction intime que l'homme affronte des forces qui le dépassent (le destin) et qu'il sera finalement vaincu. L'utilisation de ce registre n'est pas réservée à la tragédie."
+   }
+  }
+ ]
+}

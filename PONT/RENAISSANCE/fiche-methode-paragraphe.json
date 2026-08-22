@@ -1,0 +1,150 @@
+{
+ "titre": "Fiche méthode : le paragraphe citation-justification",
+ "produit": "fiche_methode",
+ "cases": {
+  "titre": true,
+  "sous_titre": true,
+  "classe": true,
+  "niveau": true,
+  "date_seance": true,
+  "date_edition": true,
+  "annee_scolaire": true,
+  "periode": true,
+  "objectif": true,
+  "competences": true,
+  "notions": true,
+  "domaine_socle": true,
+  "oeuvre": true,
+  "auteur": true,
+  "siecle_courant": true,
+  "genre": true,
+  "definition": true,
+  "a_retenir": true,
+  "attention_piege": true,
+  "methode": true,
+  "exemple": true,
+  "contre_exemple": true,
+  "citation": true,
+  "support_rappel": true,
+  "criteres_je": true,
+  "renvoi_app": true,
+  "travail_a_faire": true,
+  "mention_conserver": true
+ },
+ "valeurs": {
+  "auteur": {
+   "texte": "Charles Baudelaire"
+  },
+  "competences": {
+   "items": [
+    "Adopter des stratégies et des procédures d'écriture efficaces",
+    "Exploiter des lectures pour enrichir son écrit"
+   ]
+  },
+  "criteres_je": {
+   "items": [
+    "J'ai écrit une affirmation claire",
+    "J'ai recopié ma citation sans erreur, entre guillemets",
+    "Ma citation est intégrée dans une phrase",
+    "J'ai expliqué ce que la citation montre"
+   ]
+  },
+  "domaine_socle": {
+   "texte": "Domaine 1 — Les langages pour penser et communiquer"
+  },
+  "genre": {
+   "texte": "Poésie"
+  },
+  "notions": {
+   "items": [
+    "Le paragraphe d'analyse : affirmation, citation, explication",
+    "Citer un vers"
+   ]
+  },
+  "objectif": {
+   "texte": "À la fin de cette leçon, tu sauras rédiger un paragraphe qui prouve une idée avec une citation du texte."
+  },
+  "oeuvre": {
+   "texte": "« L'Homme et la mer », Les Fleurs du mal (1857)"
+  },
+  "periode": {
+   "texte": "1er semestre"
+  },
+  "renvoi_app": {
+   "texte": "l'application Rédaction : le paragraphe est rédigé sur papier, puis rendu avec un bilan critère par critère"
+  },
+  "siecle_courant": {
+   "texte": "XIXe siècle"
+  },
+  "sous_titre": {
+   "texte": "À retrouver toute l'année au rayon Fiches notions"
+  },
+  "support_rappel": {
+   "texte": "Des phrases pour démarrer :\n\nPour affirmer : Dans ce poème, … / Le poète montre que… / Ce texte présente…\n\nPour introduire la citation : comme le montre le vers… / Le poète l'affirme : … / on le voit en effet quand il écrit…\n\nPour expliquer : Cette métaphore montre que… / Ce choix de mots suggère que… / Le poète fait ainsi comprendre que…"
+  },
+  "titre": {
+   "texte": "Fiche méthode : le paragraphe citation-justification"
+  },
+  "travail_a_faire": {
+   "texte": "Entraîne-toi à rédiger un paragraphe sur « L'Homme et la mer » : montre que la mer est le reflet de l'homme. Utilise les quatre étapes de cette fiche."
+  }
+ },
+ "blocs": [
+  {
+   "id": "definition",
+   "valeurs": {
+    "terme": "Le paragraphe citation-justification",
+    "texte": "Un paragraphe qui affirme une idée sur le texte, la prouve avec une citation exacte, puis explique ce que cette citation montre."
+   }
+  },
+  {
+   "id": "methode",
+   "valeurs": {
+    "items": [
+     "Écris ton affirmation : ton idée sur le texte, en une phrase.",
+     "Choisis la citation qui prouve ton idée. Recopie-la exactement, entre guillemets.",
+     "Intègre la citation dans une phrase. Elle ne reste jamais seule.",
+     "Explique ce que la citation montre. Emploie les mots des fiches notions : métaphore, vers, allitération…"
+    ],
+    "titre": "Construire le paragraphe en quatre étapes"
+   }
+  },
+  {
+   "id": "citation",
+   "valeurs": {
+    "ref": "Charles Baudelaire, « L'Homme et la mer », Les Fleurs du mal, 1857",
+    "texte": "Homme libre, toujours tu chériras la mer !\nLa mer est ton miroir ; tu contemples ton âme\nDans le déroulement infini de sa lame,\nEt ton esprit n'est pas un gouffre moins amer.\n\nTu te plais à plonger au sein de ton image ;\nTu l'embrasses des yeux et des bras, et ton cœur\nSe distrait quelquefois de sa propre rumeur\nAu bruit de cette plainte indomptable et sauvage.\n\nVous êtes tous les deux ténébreux et discrets :\nHomme, nul n'a sondé le fond de tes abîmes ;\nÔ mer, nul ne connaît tes richesses intimes,\nTant vous êtes jaloux de garder vos secrets !\n\nEt cependant voilà des siècles innombrables\nQue vous vous combattez sans pitié ni remords,\nTellement vous aimez le carnage et la mort,\nÔ lutteurs éternels, ô frères implacables !"
+   }
+  },
+  {
+   "id": "exemple",
+   "valeurs": {
+    "texte": "Un paragraphe réussi :\n\nPour Baudelaire, la mer reflète l'âme humaine. Le poète l'affirme dès le deuxième vers : « La mer est ton miroir ». Cette métaphore — la mer rapprochée du miroir sans outil de comparaison — montre que l'homme, en regardant la mer, se regarde lui-même."
+   }
+  },
+  {
+   "id": "contre_exemple",
+   "valeurs": {
+    "texte": "Un paragraphe raté :\n\nLa mer reflète l'homme. « La mer est ton miroir ».\n\nPourquoi c'est raté : la citation est posée toute seule, sans phrase autour et sans explication. Une citation ne prouve rien tant qu'on n'a pas dit ce qu'elle montre."
+   }
+  },
+  {
+   "id": "a_retenir",
+   "valeurs": {
+    "texte": "Citer un vers :\n– Mets la citation entre guillemets : « La mer est ton miroir ».\n– Si ta citation passe d'un vers à l'autre, marque le changement de vers par une barre oblique : « tu contemples ton âme / Dans le déroulement infini de sa lame ».\n– Garde la majuscule du début de chaque vers.\n– Si la citation est trop longue, coupe le milieu et remplace-le par trois points entre crochets : « Vous êtes tous les deux ténébreux […] / Tant vous êtes jaloux de garder vos secrets »."
+   }
+  },
+  {
+   "id": "attention_piege",
+   "valeurs": {
+    "texte": "Recopie la citation exactement, mot pour mot. Un seul mot changé, et ce n'est plus une citation."
+   }
+  },
+  {
+   "id": "a_retenir",
+   "valeurs": {
+    "texte": "Trois temps, toujours, dans cet ordre : une affirmation, une citation intégrée entre guillemets, une explication."
+   }
+  }
+ ]
+}

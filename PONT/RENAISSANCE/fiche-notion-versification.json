@@ -1,0 +1,207 @@
+{
+ "titre": "Fiche notion : Rappel sur la versification",
+ "produit": "fiche_notion",
+ "cases": {
+  "titre": true,
+  "sous_titre": true,
+  "classe": true,
+  "niveau": true,
+  "date_seance": true,
+  "date_edition": true,
+  "annee_scolaire": true,
+  "periode": true,
+  "version_document": true,
+  "objectif": true,
+  "competences": true,
+  "notions": true,
+  "domaine_socle": true,
+  "prerequis": true,
+  "siecle_courant": true,
+  "genre": true,
+  "texte_libre": true,
+  "liste_numerotee": true,
+  "definition": true,
+  "a_retenir": true,
+  "attention_piege": true,
+  "methode": true,
+  "exemple": true,
+  "note_bas_page": true,
+  "mention_conserver": true
+ },
+ "valeurs": {
+  "competences": {
+   "items": [
+    "Construire les notions permettant l'analyse et l'élaboration des textes et des discours"
+   ]
+  },
+  "domaine_socle": {
+   "texte": "Domaine 1 — Les langages pour penser et communiquer"
+  },
+  "genre": {
+   "texte": "Poésie"
+  },
+  "notions": {
+   "items": [
+    "Le sonnet",
+    "Le décompte des syllabes",
+    "Le e muet",
+    "La césure",
+    "L'enjambement, le rejet et le contre-rejet",
+    "La disposition des rimes",
+    "L'allitération",
+    "L'assonance"
+   ]
+  },
+  "objectif": {
+   "texte": "À la fin de cette leçon, tu sauras reconnaître la forme d'un poème, compter ses syllabes et repérer ses sonorités."
+  },
+  "periode": {
+   "texte": "1er semestre"
+  },
+  "prerequis": {
+   "items": [
+    "Le décompte des syllabes (vu en 5e)",
+    "La strophe : distique, tercet, quatrain (vu en 5e)",
+    "L'alexandrin (vu en 5e)"
+   ]
+  },
+  "siecle_courant": {
+   "texte": "XIXe siècle"
+  },
+  "sous_titre": {
+   "texte": "À garder sous les yeux pour chaque poème, et à retrouver toute l'année au rayon Fiches notions"
+  },
+  "titre": {
+   "texte": "Fiche notion : Rappel sur la versification"
+  }
+ },
+ "blocs": [
+  {
+   "id": "definition",
+   "valeurs": {
+    "terme": "Sonnet",
+    "texte": "On appelle « sonnet » un poème écrit selon des règles bien précises de versification."
+   }
+  },
+  {
+   "id": "definition",
+   "valeurs": {
+    "terme": "Forme",
+    "texte": "On désigne par « forme » toutes les caractéristiques qui permettent d'identifier un sonnet."
+   }
+  },
+  {
+   "id": "note_bas_page",
+   "valeurs": {
+    "texte": "Versification : ensemble de techniques qui permettent à un poète d'écrire des vers réguliers."
+   }
+  },
+  {
+   "id": "texte_libre",
+   "valeurs": {
+    "texte": "Dans un sonnet, on respecte certaines règles de versification :"
+   }
+  },
+  {
+   "id": "liste_numerotee",
+   "valeurs": {
+    "items": [
+     "En fin de vers : le [e] ne compte jamais comme une syllabe.",
+     "En milieu de vers : le [e] compte comme une syllabe, seulement s'il est suivi d'un mot commençant par une consonne.",
+     "La césure : la pause au milieu de l'alexandrin, après la 6e syllabe. Elle coupe le vers en deux moitiés égales.",
+     "L'enjambement : une phrase commencée dans un vers peut se terminer dans un autre."
+    ]
+   }
+  },
+  {
+   "id": "exemple",
+   "valeurs": {
+    "texte": "Le [e] : « La rue assourdissante autour de moi hurlait : » ; « Et d'étranges fleurs sur des étagères »."
+   }
+  },
+  {
+   "id": "exemple",
+   "valeurs": {
+    "texte": "La césure : « Le navire glissant // sur les gouffres amers »."
+   }
+  },
+  {
+   "id": "texte_libre",
+   "valeurs": {
+    "texte": "L'enjambement avec rejet : c'est un mot ou un groupe de mots brefs placé au début d'un vers et qui appartient à la phrase commencée au vers précédent.\nL'enjambement avec contre-rejet : c'est un mot ou groupe de mots brefs placé en fin de vers, qui appartient à la phrase du vers suivant.\nLe rejet et le contre-rejet mettent tous deux un mot ou un groupe de mots en valeur."
+   }
+  },
+  {
+   "id": "texte_libre",
+   "valeurs": {
+    "texte": "Un sonnet est généralement composé de :"
+   }
+  },
+  {
+   "id": "liste_numerotee",
+   "valeurs": {
+    "items": [
+     "Deux quatrains et deux tercets.",
+     "D'alexandrins (vers de 12 syllabes).",
+     "De rimes : plates, ou suivies → schéma AABB ; croisées → ABAB ; embrassées → ABBA ; mêlées → succession libre."
+    ]
+   }
+  },
+  {
+   "id": "texte_libre",
+   "valeurs": {
+    "texte": "Les sonorités du poème"
+   }
+  },
+  {
+   "id": "definition",
+   "valeurs": {
+    "terme": "Allitération",
+    "texte": "La répétition d'un même son de consonne dans un vers ou une phrase."
+   }
+  },
+  {
+   "id": "definition",
+   "valeurs": {
+    "terme": "Assonance",
+    "texte": "La répétition d'un même son de voyelle dans un vers ou une phrase."
+   }
+  },
+  {
+   "id": "methode",
+   "valeurs": {
+    "items": [
+     "Lis le vers à voix haute.",
+     "Cherche le son qui revient — un son, pas une lettre.",
+     "Si c'est une consonne, c'est une allitération. Si c'est une voyelle, c'est une assonance.",
+     "Demande-toi ce que ce son fait entendre."
+    ],
+    "titre": "Repérer une sonorité"
+   }
+  },
+  {
+   "id": "exemple",
+   "valeurs": {
+    "texte": "Allitération : « Souvent, pour s'amuser, les hommes d'équipage » — le son [s] revient : on entend le glissement du navire sur l'eau."
+   }
+  },
+  {
+   "id": "exemple",
+   "valeurs": {
+    "texte": "Assonance : « Prennent des albatros, vastes oiseaux des mers » — le son [a] revient dans « albatros » et « vastes » : la bouche s'ouvre en grand, on entend l'immensité."
+   }
+  },
+  {
+   "id": "attention_piege",
+   "valeurs": {
+    "texte": "On repère un son, pas une lettre. Dans « cygne » et « chant », la lettre c ne fait pas le même son. Dans « si » et « ce », deux lettres différentes font le même son [s]. Lis à voix haute pour vérifier."
+   }
+  },
+  {
+   "id": "a_retenir",
+   "valeurs": {
+    "texte": "Allitération = un son de consonne répété. Assonance = un son de voyelle répété. Une sonorité s'entend, elle ne se voit pas."
+   }
+  }
+ ]
+}

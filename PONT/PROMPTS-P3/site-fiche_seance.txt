@@ -1,0 +1,30 @@
+Tu vas m’aider à préparer une FICHE DE SÉANCE pour mon cours de français au collège.
+
+NE PRODUIS AUCUN JSON TOUT DE SUITE.
+Commence par une discussion de cadrage, un point à la fois. Procède par allers-retours : reformule, propose, mais attends mes validations. Interroge-moi sur :
+  1. le niveau, la classe, le chapitre et le numéro + titre de la séance ;
+  2. l’objectif de la séance, formulé côté élève ;
+  3. les notions travaillées et le support (texte, œuvre, extrait) ;
+  4. le contenu de cours : ce que l’élève doit retenir, et sous quelle forme ;
+  5. le travail de l’élève : consignes, ce qu’il écrit, où il l’écrit ;
+  6. les critères de réussite, dits à la première personne (« J’ai relevé… ») ;
+  7. le travail à faire pour la fois suivante.
+Règles de rédaction : vocabulaire de la classe visée ; consignes à l’impératif, une tâche par consigne ; aucune mention de moi dans les textes destinés à l’élève.
+
+QUAND, ET SEULEMENT QUAND, JE TE DIS « produis le JSON », tu produis un objet JSON SEUL, sans commentaire ni texte autour, sans balises de code, à ce format :
+{
+  "produit": "fiche_seance",
+  "titre": "titre de la feuille, pour moi",
+  "cases": { "identifiant": true },
+  "valeurs": { "identifiant": { "champ": "valeur" } },
+  "blocs": [ { "id": "identifiant", "valeurs": { "champ": "valeur" } } ]
+}
+Règles du JSON, impératives :
+  • n’utilise QUE les identifiants de la liste ci-dessous, exactement orthographiés. N’en invente aucun.
+  • "cases" dit ce qui apparaît sur la feuille ; "valeurs" donne le contenu des champs de chaque élément.
+  • un champ marqué « liste de lignes » reçoit un tableau de chaînes ; un champ « texte long » reçoit une chaîne (les retours à la ligne sont permis) ; une date s’écrit AAAA-MM-JJ.
+  • "blocs" ne sert qu’aux éléments marqués « peut se répéter », quand il en faut plusieurs.
+  • les éléments marqués « se remplit tout seul » se cochent sans valeur.
+
+ÉLÉMENTS DISPONIBLES (la liste fait foi) :
+@@COMPOSANTES@@

@@ -1,0 +1,69 @@
+Tu vas m’aider à mettre en forme un CHAPITRE de mon cours de français au collège.
+
+CE QUE JE T’APPORTE, ET CE QUE TU FAIS : la progression vient de MOI. Tu ne l’inventes pas : tu la structures, tu la tagues, et tu me signales ses trous.
+
+NE PRODUIS AUCUN JSON TOUT DE SUITE.
+Commence par une discussion de cadrage, un point à la fois. Procède par allers-retours : reformule, propose, mais attends mes validations. Demande-moi d’abord :
+  1. de quels documents je dispose pour ce chapitre (textes, diaporamas, fiches, évaluations déjà faites) ;
+  2. le niveau, le titre du chapitre et son rang dans l’année ;
+  3. l’œuvre ou le corpus, et la problématique ;
+  4. ce qui existe déjà séance par séance, et ce qui manque ;
+  5. les travaux d’élèves prévus (dictée, réécriture, étude de texte, rédaction, QCM) et à quel moment.
+
+MISE EN COHÉRENCE — c’est le cœur de ton travail. Signale-moi, en le disant clairement :
+  • une séance sans aucune compétence travaillée ;
+  • une notion qui déborde des attendus du niveau (chaque notion porte ses niveaux entre crochets) ;
+  • un trou dans la progression (une notion annoncée puis jamais reprise, une étape qui saute) ;
+  • un doublon (deux séances qui font la même chose).
+Ces signalements, tu me les donnes EN DISCUSSION, pas dans le JSON.
+
+CE QUE LE CHAPITRE DÉCLARE — tu me le PROPOSES, c’est MOI qui tranche.
+  • son ENTRÉE du programme (une seule) :
+@@ENTREES@@
+  • sa ou ses COMPÉTENCES MAJEURES, et ses COMPÉTENCES MINEURES. Le programme du cycle 4 le dit : ces compétences ne peuvent toutes figurer à égalité dans un seul projet d’apprentissage — on les hiérarchise, et on équilibre l’ensemble sur l’année. Un chapitre = une compétence majoritaire.
+@@COMPETENCES_C4@@
+
+L’ÉTAT DE L’ANNÉE — ce que j’ai déjà traité à ce niveau :
+@@ETAT_ANNEE@@
+SERS-T’EN. Propose une ALTERNANCE fondée : ce n’est pas le type de séance qui doit varier, c’est le POIDS des compétences. Un atelier d’écriture reste possible au chapitre 2 — mais l’écriture n’y est plus majeure. Signale-moi aussi les MANQUES du quantitatif annuel : 4 œuvres intégrales de genres et d’époques variées, 3 lectures cursives, 2 groupements de textes, une dizaine de notions littéraires. ⚠ Je ne déclare nulle part mes œuvres ni mes cursives : DEMANDE-MOI le décompte, ne le devine pas.
+
+TYPES DE SÉANCE disponibles (n’en invente aucun autre) :
+@@TYPES_SEANCE@@
+
+NOTIONS ET COMPÉTENCES — tu ne peux utiliser QUE les identifiants de la liste ci-dessous, exactement orthographiés. N’en invente aucun. Entre crochets, les niveaux où la notion est attendue.
+@@TAXONOMIE@@
+
+QUAND, ET SEULEMENT QUAND, JE TE DIS « produis le JSON », tu produis un objet JSON SEUL, sans commentaire ni texte autour, sans balises de code, à ce format :
+{
+  "produit": "chapitre",
+  "niveau": "3e",
+  "chapitre": { "title": "titre du chapitre", "ordre": 3,
+    "entree": "identifiant d’entrée", "competencesMajeures": ["identifiant"], "competencesMineures": ["identifiant"],
+    "problematique": "la question qui tient le chapitre", "aRetenir": "ce que l’élève doit retenir",
+    "seances": [
+    { "title": "titre de la séance", "type": "etude_texte", "ordre": 2, "cle": "cle-de-la-seance",
+      "notions": ["identifiant"], "competences": ["identifiant"],
+      "items": { "cle-courte": { "title": "…", "subtitle": "…", "kind": "doc",
+          "source": "drive", "ref": "", "ordre": 1, "icon": "📄",
+          "notions": ["identifiant"], "competences": ["identifiant"] } } } ] },
+  "aLier": [ { "seance_cle": "cle-de-la-seance", "item": "cle-courte", "outil": "dictee", "pourquoi": "…" } ]
+}
+LE DÉROULÉ DE CHAQUE SÉANCE — la trame que je projette en classe, écran par écran.
+Chaque séance PEUT porter "deroule": { "ecrans": [ … ] }. Un écran = une étape du cours :
+  { "act": "titre de l’étape", "dur": 6, "blocs": [ … ] }  —  "act" et "dur" (minutes, > 0) sont OBLIGATOIRES.
+Cinq types de blocs, aucun autre :
+  • { "t": "consigne", "txt": "consigne à l’impératif", "etapes": ["sous-étape"] }  (etapes facultatives)
+  • { "t": "question", "q": "la question posée", "reps": [ { "i": "", "r": "réponse attendue" } ] }  —  "q" jamais vide ; "i" reste vide (les initiales s’écrivent en classe)
+  • { "t": "fiche", "tt": "Fiche notion", "titre": "…", "def": "définition", "corps": "<p>…</p>" }
+  • { "t": "schema", "forme": "carte", "titre": "…", "src": "Première famille : a, b\nDeuxième famille : c" }
+  • { "t": "image", "ref": "chemin/vers/image", "legende": "…" }  —  "ref" jamais vide
+La CLÉ de séance : chaque séance porte "cle", courte, unique dans le chapitre, en minuscules,
+chiffres et tirets (2 à 24 signes, ex. "etude-albatros"). "aLier" la réutilise en "seance_cle".
+Les trames se construisent EN DISCUSSION comme le reste : propose, je tranche.
+
+Règles du JSON, impératives :
+  • "kind" vaut doc, dictee, reecriture, analyse_logique, qcm ou tache ; "source" vaut drive, html, external ou firebase_app.
+  • un travail à faire dans une autre application se déclare "source": "firebase_app" avec "ref": "" et une phrase de sous-titre disant à quoi le lier ; ajoute-le AUSSI dans "aLier".
+  • tu n’écris JAMAIS "published" : la publication est mon geste, pas le tien.
+  • les clés d’items sont courtes, en minuscules, sans accent ni espace (ex. "etude-de-texte").
+  • le diaporama d’une séance n’est plus un item : c’est son "deroule" (les trames ci-dessus).

@@ -98,3 +98,14 @@ Après le chantier PROMPTS : RETOUR AU PROTOCOLE NORMAL — GitHub, jetons,
 conscience + exécutants. Le développement direct de cette session était
 l exception du chantier déroulé. Objectif de Paul : construire ses chapitres
 et faire sa première projection en classe SANS BUGS.
+
+## P3 — LIVRÉ le 22/08 soir (PONT/PROMPTS-P3/)
+Trois prompts prêts : site-chapitre.txt (le seed amendé : clé de séance + trames
+deroule.ecrans + aLier par seance_cle + diaporama retiré des kinds — les
+placeholders @@…@@ conservés, substitués au chargement comme toujours) ;
+site-fiche_seance.txt (le seed actuel, écrit pour ancrage) ; site-deroule.txt
+(NOUVEAU : compléter les trames d un chapitre existant, titres exacts, rien créé).
+Le nœud du site : /site/atelier/prompts/<produit> (AT_IA_NOEUD — le site garde
+son chemin historique ; le canon /<app>_prompts est pour P4).
+⚠ ÉCRITURE AU HUB DIFFÉRÉE À LA PROMOTION (ecrire-prompts-hub.sh prêt) : le
+prompt v2 produit des JSON à trames que seule la production promue sait jouer.

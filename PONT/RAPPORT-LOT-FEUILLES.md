@@ -75,3 +75,8 @@ Nouveau md5 du candidat scellé au commit.
 ## COMPLÉMENT [PONT-C2] — regroupement des dépôts (Paul, 22/08)
 Un même niveau›chapitre ne se répète plus : « 3e › Ch.1 › S.2 › S.5 › S.7 · 4e › Ch.1 › S.1 ».
 Banc conscience vert (3 dépôts même chapitre regroupés, 1 seul « 3e › Ch.1 »), parseurs verts.
+
+## PROMU — 22/08, promeus explicite de Paul (« promeus 8.59.0 »)
+Base de prod vérifiée avant copie (8.58.1 attendue) · poussé · VÉRIFIÉ BIT À BIT.
+Note : aucune fiche existante n est stratifiée (dit par Paul) — la renaissance É2-É3
+n attend pas les strates, place réservée au schéma.

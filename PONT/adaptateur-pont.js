@@ -137,6 +137,19 @@ function _drEnvelopper(){
       if(m.length)c.textContent=m.join(' · ');    /* le moteur nu garde son texte d'origine */
     }catch(e){} },200);
     return r; };
+  /* [molette] l'iframe avale la roulette : quand rien ne défile à l'intérieur,
+     le geste passe à la page — un défileur interne encore capable d'absorber garde la main. */
+  W.document.addEventListener('wheel',function(ev){
+    var n=ev.target;
+    while(n&&n!==W.document.body&&n!==W.document.documentElement){
+      if(n.scrollHeight>n.clientHeight+2){
+        var haut=n.scrollTop>0, bas=n.scrollTop+n.clientHeight<n.scrollHeight-1;
+        if((ev.deltaY<0&&haut)||(ev.deltaY>0&&bas))return;
+      }
+      n=n.parentElement;
+    }
+    try{ parent.scrollBy({top:ev.deltaY}); }catch(e){}
+  },{passive:true});
   W.__pontEnv=true;
 }
 

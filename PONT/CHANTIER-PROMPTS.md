@@ -199,3 +199,7 @@ que TOUT se décide en amont (structure + déroulé injectés). À amender :
 · DETTE IMMÉDIATE assumée : le seed natif embarqué (repli hors hub) est resté v1 —
   le site lit le hub d abord, donc le v2 sert dès maintenant ; passer le natif en
   v2 au prochain geste de code (conversation fraîche, pas en fin de contexte).
+
+## MICRO 8.58.1 PROMU — 22/08, sur promeus explicite
+Clic à côté de la palette = annuler (focus restitué, rien posé). Diff 6 lignes,
+double parseur, harnais vert, capture au sas. Poussé et vérifié bit à bit.

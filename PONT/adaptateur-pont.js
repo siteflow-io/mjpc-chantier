@@ -409,7 +409,10 @@ setInterval(function(){ try{_drCalerStructure();}catch(e){} },600);   /* batteme
 function _drCalerStructure(){
   try{
     var g=document.querySelector('#atelier-ecran .ed2-grille'); if(!g||!g.offsetParent)return;
-    var dispo=Math.max(240, window.innerHeight - Math.round(g.getBoundingClientRect().top) - 14);
+    var a=document.getElementById('atelier-ecran');
+    var reste=a?Math.max(0,a.scrollHeight-a.clientHeight):0;
+    AT_PONT._calAjust=Math.min(140,(AT_PONT._calAjust||14)+(reste>2?reste:0));   /* convergence : la marge résiduelle se retranche */
+    var dispo=Math.max(240, window.innerHeight - Math.round(g.getBoundingClientRect().top) - AT_PONT._calAjust);
     for(var k=0;k<g.children.length;k++){ var c=g.children[k];
       if(c.style.maxHeight!==dispo+'px')c.style.maxHeight=dispo+'px';
       if(c.style.overscrollBehaviorY!=='contain')c.style.overscrollBehaviorY='contain';

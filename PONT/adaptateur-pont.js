@@ -770,7 +770,7 @@ function _drVifInstaller(){
                       :b.t==='fiche'?('fiche \u00ab '+String(b.titre||'').slice(0,40)+' \u00bb')
                       :b.t):null;
           var l=(W.PARTICIPATION[ini]||[]); var d=l[l.length-1];
-          if(d&&precis&&d.ou)d.ou=d.ou+' \u00b7 '+precis;
+          if(d&&precis&&d.ou&&d.ou.indexOf(String((b&&(b.q||b.titre))||'\u2400').slice(0,25))<0)d.ou=d.ou+' \u00b7 '+precis;   /* pas de doublon si l'endroit porte deja l'element */
           var v=W.document.getElementById('vif');
           if(v&&d){
             var t=W.document.getElementById('vif-dernier');

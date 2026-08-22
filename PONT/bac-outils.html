@@ -61,6 +61,37 @@
   document.addEventListener('DOMContentLoaded',function(){
     var vise=setInterval(function(){
       var bd=document.getElementById('bac-bandeau')||[].slice.call(document.querySelectorAll('div')).filter(function(d){return /BAC \u00c0 SABLE/.test(d.textContent)&&d.childElementCount===0;})[0];
+      /* [clé du coffre] la coiffe loggue le professeur sans le parcours de connexion :
+         l'encart de clé n'apparaît jamais. Cet outil rejoue EXACTEMENT le geste du site. */
+      try{
+        if(bd&&!document.getElementById('bac-cle')){
+          var zc=document.createElement('span'); zc.id='bac-cle'; zc.style.cssText='margin-left:14px;display:inline-flex;gap:6px;align-items:center';
+          function bacCleEtat(){
+            zc.innerHTML = (window.SECU&&SECU.valide)
+              ? '<span style="color:#9fd89f">\ud83d\udd11 cl\u00e9 pos\u00e9e \u2014 codes g\u00e9n\u00e9rables</span>'
+              : '<input id="bac-cle-in" type="password" placeholder="cl\u00e9 du coffre" style="width:130px;padding:2px 6px;border-radius:6px;border:1px solid #a66;background:#2a1216;color:#eee">'
+               +'<button id="bac-cle-ok" style="padding:2px 8px;border-radius:6px;border:1px solid #a66;background:#3a181e;color:#eee;cursor:pointer">Poser</button>'
+               +'<span id="bac-cle-msg" style="color:#f2b8b8"></span>';
+            var b2=document.getElementById('bac-cle-ok');
+            if(b2)b2.onclick=function(){
+              var v=(document.getElementById('bac-cle-in')||{}).value||'';
+              var m=document.getElementById('bac-cle-msg');
+              if(v.length<8){ if(m)m.textContent='8 signes minimum'; return; }
+              if(m)m.textContent='v\u00e9rification\u2026';
+              secuValiderSecret(v).then(function(r){
+                if(r.ok||r.raison==='canari-absent'){
+                  try{secuLS('mjpc_coffre_secret',v);}catch(e){}
+                  SECU.cle=r.cle;SECU.valide=true;SECU.secretPresent=true;SECU.raison='';
+                  bacCleEtat();
+                } else if(m)m.textContent=(r.raison==='crypto')?'crypto indisponible (https requis)':'cl\u00e9 fausse';
+              },function(){ if(m)m.textContent='v\u00e9rification impossible'; });
+            };
+          }
+          bd.appendChild(zc);
+          bacCleEtat();
+          setInterval(function(){ try{ if(window.SECU&&SECU.valide&&document.getElementById('bac-cle-in'))bacCleEtat(); }catch(e){} },1500);
+        }
+      }catch(e){}
       if(bd){ clearInterval(vise); bd.style.cursor='pointer'; bd.title='Journal du bac \u00b7 faux-bugs attendus \u00b7 v\u00e9rifier contre l\u2019origine';
         bd.addEventListener('click',panneau); }
     },400);

@@ -80,3 +80,9 @@ Banc conscience vert (3 dépôts même chapitre regroupés, 1 seul « 3e › Ch.
 Base de prod vérifiée avant copie (8.58.1 attendue) · poussé · VÉRIFIÉ BIT À BIT.
 Note : aucune fiche existante n est stratifiée (dit par Paul) — la renaissance É2-É3
 n attend pas les strates, place réservée au schéma.
+
+## MICROS POST-LOT — 22/08 soir
+· 8.59.1 PROMUE : boucle du niveau vide (573 fetch/5s -> 0, la 4e atteignable apres purge).
+· 8.59.2 PROMUE : porte IA sans ecriture (zero carcasse, bug vecu par Paul reproduit chemin
+  B et solde) + scroll de l apercu conserve (re-render + reconstruction, pulse preserve) —
+  le clic feuille->editeur utilisable. Verifiee bit a bit au commit.

@@ -15068,6 +15068,20 @@ function _drCalerStructure(){
     var topRel=Math.round(g.getBoundingClientRect().top - a.getBoundingClientRect().top) + a.scrollTop;
     var pb=(parseInt(getComputedStyle(a).paddingBottom,10)||0);
     var dispo=Math.max(300, a.clientHeight - topRel - pb - 4);   /* le bas utile, mesuré — pas deviné */
+    /* [barre d'impression] extraite du flux : calée dans la zone noire au-dessus de SA colonne
+       (demande de Paul — les trois colonnes deviennent égalitaires en hauteur). */
+    try{
+      var pap=document.querySelector('#atelier-ecran .ed2-papier');
+      var barre=pap&&pap.querySelector('.ed2-pbarre');
+      if(barre){
+        var rp=pap.getBoundingClientRect();
+        barre.style.position='fixed';
+        barre.style.left=Math.round(rp.left)+'px';
+        barre.style.width=Math.round(rp.width)+'px';
+        barre.style.top=Math.max(54, Math.round(g.getBoundingClientRect().top)-barre.offsetHeight-8)+'px';
+        barre.style.zIndex='7500'; barre.style.margin='0';
+      }
+    }catch(e){}
     for(var it=0;it<2;it++){
       for(var q=0;q<g.children.length;q++)g.children[q].style.maxHeight=dispo+'px';
       var reste=a.scrollHeight-a.clientHeight;

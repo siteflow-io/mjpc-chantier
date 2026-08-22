@@ -15418,14 +15418,35 @@ function _drPaletteOuvrir(d){
   if(!ov){
     ov=d.createElement('div'); ov.id='vif-palette';
     ov.setAttribute('style','position:fixed;inset:0;background:rgba(10,8,6,.74);z-index:99000;display:flex;align-items:center;justify-content:center');
-    ov.innerHTML='<div style="background:#1d1712;border:1px solid #6b5230;border-radius:14px;padding:22px 26px;min-width:430px;box-shadow:0 18px 60px rgba(0,0,0,.55)">'
+    ov.innerHTML='<div style="background:#1d1712;border:1px solid #6b5230;border-radius:14px;padding:22px 26px;min-width:460px;box-shadow:0 18px 60px rgba(0,0,0,.55)">'
       +'<input id="vif-pal-in" placeholder="initiales de l\u2019\u00e9l\u00e8ve\u2026" autocomplete="off" style="width:100%;box-sizing:border-box;font-size:30px;padding:10px 14px;background:#12100c;border:1px solid #4a3f33;border-radius:10px;color:#e8ddcf">'
-      +'<div id="vif-pal-sug" style="margin-top:10px;font-size:15px;color:#9c8b76;min-height:18px"></div></div>';
+      +'<div id="vif-pal-sug" style="margin-top:10px;font-size:15px;color:#9c8b76;min-height:18px"></div>'
+      +'<div id="vif-pal-motifs" style="margin-top:10px;display:none;gap:8px"></div>'
+      +'<input id="vif-pal-note" placeholder="pourquoi (facultatif \u2014 pour toi seul)" autocomplete="off" style="display:none;width:100%;box-sizing:border-box;margin-top:10px;font-size:15px;padding:8px 12px;background:#12100c;border:1px solid #3a322a;border-radius:8px;color:#cfc4b4">'
+      +'<div id="vif-pal-hist" style="margin-top:14px;font-size:13px;color:#8d7f6d"></div></div>';
     d.body.appendChild(ov);
   }
   ov.style.display='flex';
   var inp=d.getElementById('vif-pal-in'), sg=d.getElementById('vif-pal-sug');
-  inp.value=''; sg.innerHTML='';
+  var zm=d.getElementById('vif-pal-motifs'), zn=d.getElementById('vif-pal-note'), zh=d.getElementById('vif-pal-hist');
+  inp.value=''; sg.innerHTML=''; zm.style.display='none'; zm.innerHTML=''; zn.style.display='none'; zn.value='';
+  var choisi=null;
+  function poserAvec(ini,mc,note){ try{ W.partAjoute(ini,mc,note||''); W.rendre(); }catch(e){} fermer(); }
+  function histoRendre(){
+    try{
+      var tout=[];
+      Object.keys(W.PARTICIPATION||{}).forEach(function(k){ (W.PARTICIPATION[k]||[]).forEach(function(o){ if(o&&o.genre!=='r\u00e9ponse')tout.push({ini:k,id:o.id,h:o.h,type:o.type}); }); });
+      tout.sort(function(a,b){ return String(a.h).localeCompare(String(b.h)); });
+      var der=tout.slice(-5).reverse();
+      zh.innerHTML=!der.length?'':'derni\u00e8res : '+der.map(function(x){
+        return '<span style="margin-right:10px">'+x.ini+' \u00b7 '+String(x.type)+' \u00b7 '+String(x.h)
+          +' <a href="#" data-ann="'+x.ini+'|'+x.id+'" style="color:#e8484c;text-decoration:none">\u2715</a></span>';}).join('');
+      [].slice.call(zh.querySelectorAll('a[data-ann]')).forEach(function(a){
+        a.onclick=function(ev){ ev.preventDefault(); var p=a.getAttribute('data-ann').split('|');
+          try{ W.partRetire(p[0],p[1]); W.rendre(); }catch(e){} histoRendre(); };});
+    }catch(e){}
+  }
+  histoRendre();
   function trier(s){return String(s).toUpperCase().replace(/[^A-Z]/g,'').split('').sort().join('');}
   function cands(t){ t=String(t||'').trim(); if(t.length<2)return [];
     var E=W.ELEVES||[],P=W.PRENOMS||{},tt=trier(t),tu=t.toUpperCase();
@@ -15445,24 +15466,39 @@ function _drPaletteOuvrir(d){
     }catch(e){} },80);   /* après le rendre() de la pose */
   }
   inp.oninput=function(){ var c=cands(inp.value),P=W.PRENOMS||{};
-    if(inp.value.trim().length<2){sg.innerHTML='';return;}
-    sg.innerHTML=!c.length?'<em style="color:#a23a3a">Aucun \u00e9l\u00e8ve avec ces initiales.</em>'
-      :(c.length===1?('\u2192 <b>'+(P[c[0]]||c[0])+'</b> \u2014 1/2/3 ou Entr\u00e9e')
-      :('Plusieurs : '+c.map(function(x){return P[x]||x;}).join(' \u00b7 ')+' \u2014 pr\u00e9cise d\u2019une lettre'));};
-  inp.onkeydown=function(ev){
+    if(inp.value.trim().length<2){sg.innerHTML='';zm.style.display='none';zn.style.display='none';return;}
+    if(!c.length){ sg.innerHTML='<em style="color:#a23a3a">Aucun \u00e9l\u00e8ve avec ces initiales.</em>'; zm.style.display='none'; zn.style.display='none'; }
+    else if(c.length===1){
+      sg.innerHTML='\u2192 <b>'+(P[c[0]]||c[0])+'</b> \u2014 1/2/3, ou note puis Entr\u00e9e';
+      choisi=c[0];
+      zm.style.display='flex';
+      zm.innerHTML=(W.MOTIFS_PART||[]).map(function(m,k){
+        return '<button data-mc="'+m.c+'" style="flex:1;padding:7px 8px;border-radius:8px;border:1px solid #4a3f33;background:#241d15;color:#e0d4c2;cursor:pointer;font-size:13px">'+(k+1)+' \u00b7 '+m.l+'</button>';}).join('');
+      [].slice.call(zm.querySelectorAll('button')).forEach(function(b){
+        b.onclick=function(){ poserAvec(choisi,b.getAttribute('data-mc'),zn.value.trim()); };});
+      zn.style.display='';
+    } else {
+      sg.innerHTML='Plusieurs : '+c.map(function(x){return P[x]||x;}).join(' \u00b7 ')+' \u2014 pr\u00e9cise d\u2019une lettre';
+      zm.style.display='none'; zn.style.display='none';
+    }};
+  function clavier(ev){
     var c=cands(inp.value);
-    if(/^[1-3]$/.test(ev.key)&&c.length===1){
+    var cible=(c.length===1)?c[0]:choisi;
+    var noteVide=!zn.value.trim();
+    if(/^[1-3]$/.test(ev.key)&&cible&&(ev.target!==zn||noteVide)){
       var m=(W.MOTIFS_PART||[])[+ev.key-1];
-      if(m){ W.partAjoute(c[0],m.c,''); W.rendre(); fermer(); }
+      if(m)poserAvec(cible,m.c,zn.value.trim());
       ev.preventDefault(); return;
     }
-    if(ev.key==='Enter'&&c.length===1){
+    if(ev.key==='Enter'&&cible){
       var m0=(W.MOTIFS_PART||[])[0];
-      if(m0){ W.partAjoute(c[0],m0.c,''); W.rendre(); }
-      fermer(); ev.preventDefault(); return;
+      if(m0)poserAvec(cible,m0.c,zn.value.trim());
+      ev.preventDefault(); return;
     }
+    if(ev.key==='Tab'&&cible&&zn.style.display!=='none'){ zn.focus(); ev.preventDefault(); return; }
     if(ev.key==='Escape'){ fermer(); ev.preventDefault(); }
-  };
+  }
+  inp.onkeydown=clavier; zn.onkeydown=clavier;
   setTimeout(function(){ try{inp.focus();}catch(e){} },30);
 }
 function _drPaletteBrancher(d){

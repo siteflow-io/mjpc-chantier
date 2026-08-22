@@ -1,0 +1,140 @@
+{
+ "titre": "Dictée à trous",
+ "produit": "fiche_seance",
+ "cases": {
+  "titre": true,
+  "sous_titre": true,
+  "niveau": true,
+  "date_seance": false,
+  "date_edition": false,
+  "annee_scolaire": true,
+  "periode": true,
+  "objectif": true,
+  "competences": true,
+  "notions": true,
+  "domaine_socle": true,
+  "duree_prevue": true,
+  "oeuvre": true,
+  "auteur": true,
+  "siecle_courant": true,
+  "genre": true,
+  "lexique_seance": true,
+  "attention_piege": true,
+  "consigne": true,
+  "note_bas_page": true,
+  "texte_a_trous": true,
+  "materiel": true,
+  "modalite": true,
+  "note_sur": true,
+  "si_je_bloque": true,
+  "police_adaptee": true,
+  "interligne": true,
+  "contraste": true,
+  "sans_italique": true,
+  "mention_conserver": true
+ },
+ "valeurs": {
+  "auteur": {
+   "texte": "Charles Baudelaire"
+  },
+  "bareme": {
+   "items": [
+    "dictée sur= 10"
+   ]
+  },
+  "competences": {
+   "items": [
+    "Consolider l'orthographe lexicale et grammaticale"
+   ]
+  },
+  "domaine_socle": {
+   "texte": "Domaine 1 — Les langages pour penser et communiquer"
+  },
+  "duree_prevue": {
+   "texte": "50 minutes"
+  },
+  "genre": {
+   "texte": "Poésie"
+  },
+  "lexique_seance": {
+   "items": [
+    "Môle : longue digue de pierre qui protège l'entrée d'un port",
+    "Belvédère : petite construction d'où l'on a une belle vue"
+   ]
+  },
+  "materiel": {
+   "items": [
+    "Copie",
+    "Stylo bleu"
+   ]
+  },
+  "modalite": {
+   "texte": "Seul, sur cette feuille"
+  },
+  "note_sur": {
+   "total": "10"
+  },
+  "notions": {
+   "items": [
+    "L'accord du verbe avec son sujet",
+    "L'accord de l'adjectif",
+    "L'accord du participe passé",
+    "Les homophones grammaticaux",
+    "Le poème en prose"
+   ]
+  },
+  "objectif": {
+   "texte": "À la fin de cette séance, tu auras écrit les mots et les accords les plus importants de la dictée."
+  },
+  "oeuvre": {
+   "texte": "« Le port », Petits Poèmes en prose"
+  },
+  "periode": {
+   "texte": "1er semestre"
+  },
+  "si_je_bloque": {
+   "texte": "Passe le trou et continue. Reviens à la fin. Relis la phrase entière à voix basse pour entendre le mot qui manque."
+  },
+  "siecle_courant": {
+   "texte": "XIXe siècle"
+  },
+  "sous_titre": {
+   "texte": " version aménagée"
+  },
+  "support_rappel": {
+   "texte": ""
+  },
+  "temps_majore": {
+   "texte": "tiers-temps"
+  },
+  "titre": {
+   "texte": "Dictée 1"
+  }
+ },
+ "blocs": [
+  {
+   "id": "consigne",
+   "valeurs": {
+    "texte": "Écoute la dictée. Complète les mots qui manquent sur cette feuille."
+   }
+  },
+  {
+   "id": "texte_a_trous",
+   "valeurs": {
+    "texte": "Un port est un séjour charmant pour une âme fatiguée des luttes de la vie. L'ampleur du ciel, l'architecture mobile des nuages, les [colorations] [changeantes] de la mer, le [scintillement] des phares, sont un prisme [merveilleusement] propre à amuser les yeux sans jamais les [lasser]. Les formes [élancées] des navires […] servent à entretenir dans l'âme le goût du [rythme] et la beauté.\n\nEt puis, surtout, il y a une sorte de plaisir mystérieux et [aristocratique] pour celui qui n'a plus ni curiosité ni ambition, à contempler, couché dans le belvédère ou accoudé sur le môle, tous [ces] mouvements de [ceux] qui partent et de ceux qui reviennent, de ceux qui ont [encore] la force de vouloir, le désir de voyager ou de s'enrichir."
+   }
+  },
+  {
+   "id": "note_bas_page",
+   "valeurs": {
+    "texte": "Charles Baudelaire, « Le port », Petits Poèmes en prose"
+   }
+  },
+  {
+   "id": "attention_piege",
+   "valeurs": {
+    "texte": "Relis chaque mot que tu as écrit et vérifie s'il doit prendre un s."
+   }
+  }
+ ]
+}

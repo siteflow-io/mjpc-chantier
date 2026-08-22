@@ -1,0 +1,245 @@
+{
+ "titre": "Sujet de la tâche finale : « L'Étranger »",
+ "produit": "prepa_brevet",
+ "cases": {
+  "titre": true,
+  "sous_titre": true,
+  "classe": true,
+  "niveau": true,
+  "date_seance": true,
+  "date_edition": true,
+  "annee_scolaire": true,
+  "periode": true,
+  "objectif": true,
+  "competences": true,
+  "notions": true,
+  "domaine_socle": true,
+  "attendu_cycle": true,
+  "evalue": true,
+  "duree_prevue": true,
+  "oeuvre": true,
+  "auteur": true,
+  "siecle_courant": true,
+  "genre": true,
+  "repere_chrono": true,
+  "extrait_numerote": true,
+  "consigne": true,
+  "question": true,
+  "materiel": true,
+  "modalite": true,
+  "bareme": true,
+  "note_sur": true,
+  "lexique_marge": true,
+  "criteres_je": true,
+  "renvoi_app": true,
+  "mention_conserver": true
+ },
+ "valeurs": {
+  "attendu_cycle": {
+   "texte": "Il prend appui sur l'analyse du texte pour en proposer une interprétation cohérente."
+  },
+  "auteur": {
+   "texte": "Charles Baudelaire"
+  },
+  "bareme": {
+   "items": [
+    "A. Le type du poème = 5",
+    "B. Les règles classiques = 5",
+    "C. Les marques du dialogue = 3",
+    "D. Les deux voix = 4",
+    "E. Le lien avec un poème du chapitre = 5",
+    "F. Les nuages = 4",
+    "G. Le paragraphe rédigé = 6"
+   ]
+  },
+  "competences": {
+   "items": [
+    "Élaborer une interprétation de textes littéraires",
+    "Adopter des stratégies et des procédures d'écriture efficaces"
+   ]
+  },
+  "criteres_je": {
+   "items": [
+    "J'ai indiqué le type du poème",
+    "J'ai justifié mes réponses en citant le texte",
+    "J'ai fait le lien avec un poème du chapitre",
+    "J'ai écrit un paragraphe avec une citation",
+    "J'ai relu mon orthographe"
+   ]
+  },
+  "domaine_socle": {
+   "texte": "Domaine 1 — Les langages pour penser et communiquer"
+  },
+  "duree_prevue": {
+   "texte": "1 heure"
+  },
+  "evalue": {
+   "texte": "L'étude complète d'un poème jamais vu en classe, notée sur 32 comme la partie compréhension du brevet."
+  },
+  "genre": {
+   "texte": "Poésie"
+  },
+  "lexique_marge": {
+   "items": [
+    "énigmatique = mystérieux, difficile à comprendre",
+    "Vous vous servez là d'une parole = vous employez un mot",
+    "latitude = position d'un lieu sur la Terre",
+    "haïr = détester"
+   ]
+  },
+  "materiel": {
+   "items": [
+    "Feuille double grand carreaux",
+    "Stylo bleu ou noir",
+    "Surligneurs"
+   ]
+  },
+  "modalite": {
+   "texte": "Seul, à l'écrit"
+  },
+  "note_sur": {
+   "total": "32"
+  },
+  "notions": {
+   "items": [
+    "Le poème en prose",
+    "La versification et ses règles",
+    "Le paragraphe avec citation"
+   ]
+  },
+  "objectif": {
+   "texte": "À la fin de cette séance, tu auras mené seul l'étude complète d'un poème inconnu, comme au brevet."
+  },
+  "oeuvre": {
+   "texte": "« L'Étranger », Petits Poèmes en prose (Le Spleen de Paris)"
+  },
+  "periode": {
+   "texte": "1er semestre"
+  },
+  "renvoi_app": {
+   "texte": "l'application Étude de texte : les réponses corrigées et annotées y seront rendues"
+  },
+  "repere_chrono": {
+   "texte": "1862 : Baudelaire publie ses premiers petits poèmes en prose dans la presse"
+  },
+  "siecle_courant": {
+   "texte": "XIXe siècle"
+  },
+  "sous_titre": {
+   "texte": "Tout ce qui est nécessaire a déjà été travaillé dans le chapitre."
+  },
+  "titre": {
+   "texte": "Sujet de la tâche finale : « L'Étranger »"
+  }
+ },
+ "blocs": [
+  {
+   "id": "consigne",
+   "valeurs": {
+    "texte": "Lis le poème en entier. Réponds sur ta feuille double, en rédigeant des phrases complètes. Note la lettre de chaque question avant chaque réponse. Tu n'écris rien sur ce sujet."
+   }
+  },
+  {
+   "id": "extrait_numerote",
+   "valeurs": {
+    "texte": "— Qui aimes-tu le mieux, homme énigmatique, dis ? ton père, ta mère, ta sœur ou ton frère ?\n— Je n'ai ni père, ni mère, ni sœur, ni frère.\n— Tes amis ?\n— Vous vous servez là d'une parole dont le sens m'est resté jusqu'à ce jour inconnu.\n— Ta patrie ?\n— J'ignore sous quelle latitude elle est située.\n— La beauté ?\n— Je l'aimerais volontiers, déesse et immortelle.\n— L'or ?\n— Je le hais comme vous haïssez Dieu.\n— Eh ! qu'aimes-tu donc, extraordinaire étranger ?\n— J'aime les nuages… les nuages qui passent… là-bas… là-bas… les merveilleux nuages !"
+   }
+  },
+  {
+   "id": "question",
+   "valeurs": {
+    "texte": "A. Observe comment le texte est disposé sur la page. Indique le type de ce poème. Justifie ta réponse en citant deux indices du texte. (5 points)"
+   }
+  },
+  {
+   "id": "question",
+   "valeurs": {
+    "texte": "B. Explique pourquoi ce poème ne respecte pas les règles classiques de la poésie. Rappelle-toi de la fiche de versification. (5 points)"
+   }
+  },
+  {
+   "id": "question",
+   "valeurs": {
+    "texte": "C. Relève les signes de ponctuation qui montrent que ce poème est un dialogue. (3 points)"
+   }
+  },
+  {
+   "id": "question",
+   "valeurs": {
+    "texte": "D. Deux voix parlent dans ce poème. Indique qui elles sont. Explique ce que la première cherche à savoir. (4 points)"
+   }
+  },
+  {
+   "id": "question",
+   "valeurs": {
+    "texte": "E. Quel poème étudié dans ce chapitre montre aussi un poète différent des autres hommes ? Nomme-le. Explique en une ou deux phrases ce qui rapproche les deux poèmes. (5 points)"
+   }
+  },
+  {
+   "id": "question",
+   "valeurs": {
+    "texte": "F. D'après toi, que représentent les nuages pour l'étranger ? Explique ta réponse. (4 points)"
+   }
+  },
+  {
+   "id": "question",
+   "valeurs": {
+    "texte": "G. Rédige un paragraphe complet (affirmation, citation, explication) pour montrer que l'étranger est différent des autres hommes. Rappelle-toi de la méthode vue en atelier d'écriture. (6 points)"
+   }
+  },
+  {
+   "id": "consigne",
+   "valeurs": {
+    "texte": "Lis le poème en entier. Réponds sur ta feuille double, en rédigeant des phrases complètes. Note la lettre de chaque question avant chaque réponse. Tu n'écris rien sur ce sujet."
+   }
+  },
+  {
+   "id": "extrait_numerote",
+   "valeurs": {
+    "texte": "— Qui aimes-tu le mieux, homme énigmatique, dis ? ton père, ta mère, ta sœur ou ton frère ?\n— Je n'ai ni père, ni mère, ni sœur, ni frère.\n— Tes amis ?\n— Vous vous servez là d'une parole dont le sens m'est resté jusqu'à ce jour inconnu.\n— Ta patrie ?\n— J'ignore sous quelle latitude elle est située.\n— La beauté ?\n— Je l'aimerais volontiers, déesse et immortelle.\n— L'or ?\n— Je le hais comme vous haïssez Dieu.\n— Eh ! qu'aimes-tu donc, extraordinaire étranger ?\n— J'aime les nuages… les nuages qui passent… là-bas… là-bas… les merveilleux nuages !"
+   }
+  },
+  {
+   "id": "question",
+   "valeurs": {
+    "texte": "A. Observe comment le texte est disposé sur la page. Indique le type de ce poème. Justifie ta réponse en citant deux indices du texte. (5 points)"
+   }
+  },
+  {
+   "id": "question",
+   "valeurs": {
+    "texte": "B. Explique pourquoi ce poème ne respecte pas les règles classiques de la poésie. Rappelle-toi de la fiche de versification. (5 points)"
+   }
+  },
+  {
+   "id": "question",
+   "valeurs": {
+    "texte": "C. Relève les signes de ponctuation qui montrent que ce poème est un dialogue. (3 points)"
+   }
+  },
+  {
+   "id": "question",
+   "valeurs": {
+    "texte": "D. Deux voix parlent dans ce poème. Indique qui elles sont. Explique ce que la première cherche à savoir. (4 points)"
+   }
+  },
+  {
+   "id": "question",
+   "valeurs": {
+    "texte": "E. Quel poème étudié dans ce chapitre montre aussi un poète différent des autres hommes ? Nomme-le. Explique en une ou deux phrases ce qui rapproche les deux poèmes. (5 points)"
+   }
+  },
+  {
+   "id": "question",
+   "valeurs": {
+    "texte": "F. D'après toi, que représentent les nuages pour l'étranger ? Explique ta réponse. (4 points)"
+   }
+  },
+  {
+   "id": "question",
+   "valeurs": {
+    "texte": "G. Rédige un paragraphe complet (affirmation, citation, explication) pour montrer que l'étranger est différent des autres hommes. Rappelle-toi de la méthode vue en atelier d'écriture. (6 points)"
+   }
+  }
+ ]
+}

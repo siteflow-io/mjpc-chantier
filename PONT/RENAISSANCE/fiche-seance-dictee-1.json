@@ -1,0 +1,209 @@
+{
+ "titre": "Dictée 1",
+ "produit": "fiche_seance",
+ "cases": {
+  "titre": true,
+  "sous_titre": true,
+  "classe": true,
+  "niveau": true,
+  "date_seance": true,
+  "date_edition": false,
+  "annee_scolaire": true,
+  "periode": true,
+  "objectif": true,
+  "competences": true,
+  "notions": true,
+  "domaine_socle": true,
+  "attendu_cycle": true,
+  "evalue": true,
+  "duree_prevue": true,
+  "oeuvre": true,
+  "auteur": true,
+  "siecle_courant": true,
+  "genre": true,
+  "lexique_seance": true,
+  "a_retenir": true,
+  "attention_piege": true,
+  "methode": true,
+  "consigne": true,
+  "zone_lignee": true,
+  "materiel": true,
+  "modalite": true,
+  "bareme": true,
+  "note_sur": true,
+  "points_bonus": true,
+  "criteres_je": true,
+  "case_compris": true,
+  "numerotation_lignes": true,
+  "renvoi_app": true,
+  "saut_de_page": true,
+  "mention_conserver": true
+ },
+ "valeurs": {
+  "attendu_cycle": {
+   "texte": "Il maîtrise l'accord dans tout groupe nominal complexe et l'accord du verbe dans les cas complexes."
+  },
+  "auteur": {
+   "texte": "Charles Baudelaire"
+  },
+  "bareme": {
+   "items": [
+    "G — grammaire (accords, conjugaison, homophones) = 1 point",
+    "M — un mot a été oublié = 1 point",
+    "I — le mot est illisible = 1 point",
+    "L — lexique (orthographe du mot, accents, majuscules) = 0,5 point",
+    "P — un signe de ponctuation manquait = 0,5 point",
+    "X — un mot a été ajouté = 0,5 point",
+    "A — attention à ta graphie = 0 point (ce n'est pas une erreur, c'est un rappel)",
+    "La note ne descend jamais en dessous de zéro"
+   ]
+  },
+  "competences": {
+   "items": [
+    "Consolider l'orthographe lexicale et grammaticale",
+    "Réaliser un travail avec rigueur et soin"
+   ]
+  },
+  "criteres_je": {
+   "items": [
+    "J'ai écrit toutes les phrases, sans en sauter",
+    "J'ai vérifié le sujet de chaque verbe",
+    "J'ai vérifié l'accord de chaque adjectif et de chaque participe passé",
+    "J'ai relu les mots préparés en classe",
+    "J'ai mis la ponctuation dictée",
+    "Mon écriture est lisible"
+   ]
+  },
+  "domaine_socle": {
+   "texte": "Domaine 1 — Les langages pour penser et communiquer"
+  },
+  "duree_prevue": {
+   "texte": "30 minutes"
+  },
+  "evalue": {
+   "texte": "Cette dictée est notée sur 10. Elle fait partie d'une évaluation plus large."
+  },
+  "genre": {
+   "texte": "Poésie"
+  },
+  "lexique_seance": {
+   "items": [
+    "Môle : longue digue de pierre qui protège l'entrée d'un port",
+    "Belvédère : petite construction d'où l'on a une belle vue",
+    "Prisme : objet de verre qui décompose la lumière en couleurs"
+   ]
+  },
+  "materiel": {
+   "items": [
+    "Stylo bleu",
+    "Crayon à papier",
+    "Règle"
+   ]
+  },
+  "modalite": {
+   "texte": "Seul, sur cette feuille"
+  },
+  "note_sur": {
+   "total": "10"
+  },
+  "notions": {
+   "items": [
+    "L'accord du verbe avec son sujet",
+    "L'accord du verbe avec plusieurs sujets coordonnés",
+    "L'accord de l'adjectif",
+    "L'accord du participe passé employé avec être",
+    "Les homophones grammaticaux",
+    "Le poème en prose"
+   ]
+  },
+  "objectif": {
+   "texte": "À la fin de cette séance, tu auras écrit sous la dictée un texte préparé en respectant les accords et l'orthographe des mots appris."
+  },
+  "oeuvre": {
+   "texte": "« Le port », Petits Poèmes en prose"
+  },
+  "periode": {
+   "texte": "1er semestre"
+  },
+  "points_bonus": {
+   "texte": "autocorrection sur 5, notée séparément"
+  },
+  "renvoi_app": {
+   "texte": "l'application Correction de dictée : les exercices de reprise seront donnés à partir des erreurs relevées"
+  },
+  "siecle_courant": {
+   "texte": "XIXe siècle"
+  },
+  "sous_titre": {
+   "texte": "Dictée préparée, au format du brevet — première dictée de l'année"
+  },
+  "titre": {
+   "texte": "Dictée 1"
+  }
+ },
+ "blocs": [
+  {
+   "id": "consigne",
+   "valeurs": {
+    "texte": "Écris la dictée au stylo bleu, sur les lignes de cette feuille. Une ligne sur deux : tu auras la place de corriger."
+   }
+  },
+  {
+   "id": "methode",
+   "valeurs": {
+    "items": [
+     "Première lecture : écoute sans écrire. Repère de quoi parle le texte et combien il y a de phrases.",
+     "Pendant la dictée : écris au rythme donné. Si tu hésites sur un mot, laisse un blanc au crayon et continue.",
+     "Deuxième lecture : complète les blancs et vérifie la ponctuation.",
+     "Relecture seul : relis trois fois, une règle à la fois."
+    ],
+    "titre": "Pendant la dictée"
+   }
+  },
+  {
+   "id": "methode",
+   "valeurs": {
+    "items": [
+     "Relecture 1 — les verbes : entoure chaque verbe au crayon, cherche son sujet, vérifie la terminaison.",
+     "Relecture 2 — les groupes nominaux : pour chaque nom au pluriel, vérifie que son déterminant et ses adjectifs prennent aussi la marque du pluriel.",
+     "Relecture 3 — les mots préparés : relis la liste apprise et cherche ces mots dans ta copie."
+    ],
+    "titre": "Les trois relectures"
+   }
+  },
+  {
+   "id": "a_retenir",
+   "valeurs": {
+    "texte": "Le sujet n'est pas toujours devant le verbe, et il n'est pas toujours à côté. Pour le trouver, pose la question « qui est-ce qui… ? » avant le verbe."
+   }
+  },
+  {
+   "id": "a_retenir",
+   "valeurs": {
+    "texte": "Les sept codes de correction, écrits sous chaque erreur : ils disent quoi retravailler.\nG = grammaire · L = lexique · M = mot oublié · I = illisible · P = ponctuation · X = mot en trop · A = attention à ta graphie."
+   }
+  },
+  {
+   "id": "attention_piege",
+   "valeurs": {
+    "texte": "Ne relis pas ta dictée d'un seul coup en cherchant tout à la fois. Une relecture, une règle : c'est ainsi qu'on trouve ses erreurs."
+   }
+  },
+  {
+   "id": "zone_lignee",
+   "valeurs": {
+    "lignes": "18"
+   }
+  },
+  {
+   "id": "saut_de_page",
+   "valeurs": {}
+  },
+  {
+   "id": "zone_lignee",
+   "valeurs": {
+    "lignes": "24"
+   }
+  }
+ ]
+}

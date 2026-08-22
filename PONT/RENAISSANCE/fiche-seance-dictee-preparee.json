@@ -1,0 +1,175 @@
+{
+ "titre": "Dictée préparée",
+ "produit": "prepa_brevet",
+ "cases": {
+  "titre": true,
+  "sous_titre": true,
+  "classe": true,
+  "niveau": true,
+  "date_seance": true,
+  "date_edition": false,
+  "annee_scolaire": true,
+  "periode": true,
+  "objectif": true,
+  "competences": true,
+  "notions": true,
+  "domaine_socle": true,
+  "duree_prevue": true,
+  "oeuvre": true,
+  "auteur": true,
+  "siecle_courant": true,
+  "genre": true,
+  "lexique_seance": true,
+  "a_retenir": true,
+  "attention_piege": true,
+  "methode": true,
+  "citation": true,
+  "consigne": true,
+  "note_bas_page": true,
+  "texte_a_trous": true,
+  "materiel": true,
+  "modalite": true,
+  "criteres_je": true,
+  "travail_a_faire": true,
+  "mention_conserver": true
+ },
+ "valeurs": {
+  "auteur": {
+   "texte": "Charles Baudelaire"
+  },
+  "competences": {
+   "items": [
+    "Consolider l'orthographe lexicale et grammaticale"
+   ]
+  },
+  "criteres_je": {
+   "items": [
+    "Je connais le sens de tous les mots du texte",
+    "Je sais trouver le sujet de chaque verbe, même quand il est placé après",
+    "Je sais dire avec quel mot chaque adjectif s'accorde",
+    "Je sais choisir entre \"ce\", \"ce qu'on\" et \"ceux\""
+   ]
+  },
+  "domaine_socle": {
+   "texte": "Domaine 1 — Les langages pour penser et communiquer"
+  },
+  "duree_prevue": {
+   "texte": "30 minutes"
+  },
+  "genre": {
+   "texte": "Poésie"
+  },
+  "lexique_seance": {
+   "items": [
+    "Fécond : qui produit beaucoup",
+    "Ténébreux : très sombre",
+    "Éblouissant : si lumineux qu'on ne peut pas le regarder",
+    "Une chandelle : une bougie",
+    "Une vitre : le verre d'une fenêtre"
+   ]
+  },
+  "materiel": {
+   "items": [
+    "Cahier",
+    "Stylo",
+    "Crayon à papier"
+   ]
+  },
+  "modalite": {
+   "texte": "Seul, puis mise en commun"
+  },
+  "notions": {
+   "items": [
+    "L'accord de l'adjectif",
+    "L'accord du verbe avec un sujet inversé",
+    "Les homophones grammaticaux",
+    "Le poème en prose"
+   ]
+  },
+  "objectif": {
+   "texte": "À la fin de cette préparation, tu sauras repérer les accords et les homophones qui seront évalués dans la dictée notée."
+  },
+  "oeuvre": {
+   "texte": "« Les Fenêtres », Petits Poèmes en prose (1869)"
+  },
+  "periode": {
+   "texte": "1er semestre"
+  },
+  "siecle_courant": {
+   "texte": "XIXe siècle"
+  },
+  "sous_titre": {
+   "texte": "Un autre texte pour s'entraîner avant la dictée notée"
+  },
+  "titre": {
+   "texte": "Dictée préparée"
+  },
+  "travail_a_faire": {
+   "texte": "Apprends l'orthographe des mots de la liste. Réécris trois fois ceux que tu n'as pas su écrire. Revois les accords repérés en classe : ce sont les mêmes qui seront évalués dans la dictée notée."
+  }
+ },
+ "blocs": [
+  {
+   "id": "citation",
+   "valeurs": {
+    "ref": "Charles Baudelaire, « Les Fenêtres », Petits Poèmes en prose, 1869",
+    "texte": "Celui qui regarde du dehors à travers une fenêtre ouverte, ne voit jamais autant de choses que celui qui regarde une fenêtre fermée. Il n'est pas d'objet plus profond, plus mystérieux, plus fécond, plus ténébreux, plus éblouissant qu'une fenêtre éclairée d'une chandelle. Ce qu'on peut voir au soleil est toujours moins intéressant que ce qui se passe derrière une vitre. Dans ce trou noir ou lumineux vit la vie, rêve la vie, souffre la vie."
+   }
+  },
+  {
+   "id": "note_bas_page",
+   "valeurs": {
+    "texte": "Ce texte est un poème en prose : un poème sans vers et sans rimes."
+   }
+  },
+  {
+   "id": "consigne",
+   "valeurs": {
+    "texte": "Lis le texte à voix basse. Souligne les mots dont tu ne connais pas le sens."
+   }
+  },
+  {
+   "id": "consigne",
+   "valeurs": {
+    "texte": "Entoure chaque verbe conjugué. Relie-le à son sujet par une flèche."
+   }
+  },
+  {
+   "id": "consigne",
+   "valeurs": {
+    "texte": "Souligne les cinq adjectifs de la deuxième phrase. Écris au-dessus le nom qu'ils accompagnent."
+   }
+  },
+  {
+   "id": "methode",
+   "valeurs": {
+    "items": [
+     "La série d'adjectifs : « plus profond, plus mystérieux, plus fécond, plus ténébreux, plus éblouissant » — tous s'accordent avec « objet », masculin singulier. Aucun ne prend de s.",
+     "Le sujet placé après le verbe : « vit la vie, rêve la vie, souffre la vie » — le sujet est « la vie », placé après. Le verbe reste au singulier.",
+     "Les homophones : ce / ceux / ce qu'on, à / a, ou / où.",
+     "Les accents : fenêtre, ténébreux, éclairée, intéressant.",
+     "Les mots invariables : jamais, toujours, moins, derrière, dehors."
+    ],
+    "titre": "Les pièges à travailler"
+   }
+  },
+  {
+   "id": "attention_piege",
+   "valeurs": {
+    "texte": "« Celui qui regarde » et « ceux qui regardent » ne s'écrivent pas pareil. Cherche d'abord si le mot désigne une personne ou plusieurs."
+   }
+  },
+  {
+   "id": "texte_a_trous",
+   "valeurs": {
+    "texte": "Complète de mémoire : Il n'est pas d'objet plus [profond], plus [mystérieux], plus [fécond], plus [ténébreux], plus [éblouissant] qu'une fenêtre [éclairée] d'une chandelle."
+   }
+  },
+  {
+   "id": "a_retenir",
+   "valeurs": {
+    "texte": "Ce texte n'est pas celui de la dictée notée. Ce sont les mêmes règles qui seront évaluées : les accords des adjectifs, le sujet placé après le verbe, et les homophones."
+   }
+  }
+ ]
+}

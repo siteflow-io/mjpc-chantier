@@ -1,0 +1,173 @@
+{
+ "titre": "Réécriture 1",
+ "produit": "fiche_seance",
+ "cases": {
+  "titre": true,
+  "sous_titre": true,
+  "classe": true,
+  "niveau": true,
+  "date_seance": true,
+  "date_edition": false,
+  "annee_scolaire": true,
+  "periode": true,
+  "objectif": true,
+  "competences": true,
+  "notions": true,
+  "domaine_socle": true,
+  "evalue": true,
+  "duree_prevue": true,
+  "oeuvre": true,
+  "auteur": true,
+  "siecle_courant": true,
+  "a_retenir": true,
+  "attention_piege": true,
+  "methode": true,
+  "exemple": true,
+  "contre_exemple": true,
+  "extrait_numerote": true,
+  "consigne_transfo": true,
+  "materiel": true,
+  "modalite": true,
+  "bareme": true,
+  "criteres_je": true,
+  "renvoi_app": true,
+  "mention_conserver": true
+ },
+ "valeurs": {
+  "auteur": {
+   "texte": "Jules Barbey d'Aurevilly"
+  },
+  "bareme": {
+   "items": [
+    "Erreur de modification = -1",
+    "Erreur de copie = -1"
+   ]
+  },
+  "competences": {
+   "items": [
+    "Consolider l'orthographe lexicale et grammaticale"
+   ]
+  },
+  "criteres_je": {
+   "items": [
+    "J'ai mis tous les verbes au futur",
+    "J'ai remplacé « quatre hommes » par la deuxième personne du pluriel partout",
+    "J'ai accordé tous les mots qui dépendent de ce changement",
+    "J'ai souligné chaque modification",
+    "J'ai recopié le reste du texte sans erreur"
+   ]
+  },
+  "domaine_socle": {
+   "texte": "Domaine 1 — Les langages pour penser et communiquer"
+  },
+  "duree_prevue": {
+   "texte": "30 minutes"
+  },
+  "evalue": {
+   "texte": "Cette réécriture est notée. Elle fait partie d'une évaluation plus large."
+  },
+  "materiel": {
+   "items": [
+    "Copie",
+    "Stylo bleu ou noir",
+    "Règle"
+   ]
+  },
+  "modalite": {
+   "texte": "Seul, à l'écrit"
+  },
+  "notions": {
+   "items": [
+    "Le futur simple",
+    "Les radicaux irréguliers du futur",
+    "L'accord du verbe avec son sujet",
+    "L'accord du participe passé"
+   ]
+  },
+  "objectif": {
+   "texte": "Pour réussir cette réécriture, tu sais transposer un texte au futur et changer sa personne sans faire d'erreur."
+  },
+  "oeuvre": {
+   "texte": "Les Diaboliques"
+  },
+  "periode": {
+   "texte": "1er semestre"
+  },
+  "renvoi_app": {
+   "texte": "l'application Réécriture : la copie corrigée et les erreurs à reprendre y seront rendues"
+  },
+  "siecle_courant": {
+   "texte": "XIXe siècle"
+  },
+  "sous_titre": {
+   "texte": "À faire à la suite de la dictée"
+  },
+  "titre": {
+   "texte": "Réécriture 1"
+  }
+ },
+ "blocs": [
+  {
+   "id": "consigne_transfo",
+   "valeurs": {
+    "texte": "À la suite de ta dictée, réécris le texte suivant en faisant toutes les modifications nécessaires :\n1. Au futur.\n2. En remplaçant « quatre hommes » par la deuxième personne du pluriel.\n3. Tu souligneras chaque modification."
+   }
+  },
+  {
+   "id": "extrait_numerote",
+   "valeurs": {
+    "texte": "Dans un boudoir d'hommes, c'est-à-dire dans un fumoir attenant à un élégant tripot, quatre hommes fumaient et buvaient. Ils n'étaient précisément ni jeunes ni vieux, ni beaux ni laids ; mais vieux ou jeunes, ils portaient cette distinction non méconnaissable des vétérans de la joie, cet indescriptible je ne sais quoi, cette tristesse froide et railleuse qui dit clairement : « Nous qui avons fortement vécu, nous cherchons ce que nous pourrions aimer et estimer. »"
+   }
+  },
+  {
+   "id": "methode",
+   "valeurs": {
+    "items": [
+     "Lis la consigne deux fois. Souligne ce qui change : le temps, la personne, le genre, le nombre.",
+     "Relis le texte et entoure tout ce que le changement touche : les verbes d'abord, puis les pronoms, les déterminants, les adjectifs et les participes passés.",
+     "Réécris phrase par phrase. Ne saute jamais une phrase.",
+     "Recopie sans rien changer tout ce qui n'est pas concerné : chaque mot mal recopié coûte un point.",
+     "Souligne chaque modification à la règle.",
+     "Relis une dernière fois en ne regardant que tes mots soulignés : demande-toi pour chacun s'il s'accorde avec le reste."
+    ],
+    "titre": "Réussir une réécriture"
+   }
+  },
+  {
+   "id": "a_retenir",
+   "valeurs": {
+    "texte": "Un changement en entraîne d'autres. Quand tu changes la personne, ce n'est pas seulement le pronom qui bouge : le verbe, le déterminant possessif et parfois l'adjectif ou le participe passé changent aussi. C'est ce que le correcteur regarde en premier."
+   }
+  },
+  {
+   "id": "exemple",
+   "valeurs": {
+    "texte": "Changer le temps — du passé au futur :\n« Ils portaient cette distinction. » → « Ils porteront cette distinction. »\nAttention aux futurs irréguliers : ils étaient → ils seront ; ils avaient → ils auront ; ils faisaient → ils feront ; ils pouvaient → ils pourront."
+   }
+  },
+  {
+   "id": "exemple",
+   "valeurs": {
+    "texte": "Changer la personne — de la 3e personne du pluriel à la 2e personne du pluriel :\n« Ils fumaient et buvaient leur vin. » → « Vous fumerez et boirez votre vin. »\nLe pronom change (ils → vous), le verbe change (‑aient → ‑erez), et le déterminant possessif change aussi (leur → votre)."
+   }
+  },
+  {
+   "id": "exemple",
+   "valeurs": {
+    "texte": "Changer le nombre — du singulier au pluriel :\n« Le vétéran fatigué est revenu. » → « Les vétérans fatigués sont revenus. »\nLe déterminant, le nom, l'adjectif, l'auxiliaire et le participe passé s'accordent tous."
+   }
+  },
+  {
+   "id": "contre_exemple",
+   "valeurs": {
+    "texte": "À ne pas faire :\n« Ils n'étaient ni jeunes ni vieux. » → « Vous ne serez ni jeune ni vieux. »\nL'erreur : les adjectifs se rapportent maintenant à « vous », qui est un pluriel. Il faut écrire « ni jeunes ni vieux »."
+   }
+  },
+  {
+   "id": "attention_piege",
+   "valeurs": {
+    "texte": "Une erreur de copie coûte autant qu'une erreur de modification. Relis ton texte mot à mot avant de rendre : un mot oublié, un accent manquant ou une virgule déplacée comptent comme une erreur."
+   }
+  }
+ ]
+}

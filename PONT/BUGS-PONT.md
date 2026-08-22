@@ -34,3 +34,12 @@
    aucun moteur 96 nécessaire). Prouvé sur scission réelle du moteur : la projection
    garde ses 2 morceaux (12+0 min), l export rend 1 écran (dur 12, réponses recombinées,
    résidus grp/suite/frag nettoyés), la colonne MJPC montre UNE mini.
+
+## BUG onglets noirs en classe (22/08, capture Paul) — CORRIGÉ
+Séquence : jouer EN CLASSE → Structure → retour Déroulé → NOIR (idem Relecture/Papier).
+Cause (PRÉEXISTANTE, LOT contextualisation — pas un patch du jour) : Structure appelle
+DR.dr_fermer() ; au retour, la branche classe testait __pontCharge sur la VIEILLE
+iframe cachée et croyait la copie encore ouverte → return sec, zone vide.
+Fix : la condition de réouverture regarde si l iframe est EN PLACE dans la zone
+visible (at-dr-hote-zone contient #at-dr-iframe) ; sinon la séance jouée est rouverte.
+Banc : les quatre onglets vivent en classe, aller-retour compris.

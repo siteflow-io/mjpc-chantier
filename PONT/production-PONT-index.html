@@ -14401,7 +14401,7 @@ function atDrMonter(){
   if(AT_DR_REGIME==='prep'){ var _d=document.getElementById('at-dr-debut'); if(_d&&!_d.value){ _d.value=atDebutPropose(); } atDrMajUtile(); }
   if(AT_DR_REGIME==='classe'){
     try{
-      if(window.DR && AT_DR_COURS && !((typeof drWin==='function'&&drWin())||{}).__pontCharge){
+      if(window.DR && AT_DR_COURS && !(document.getElementById('at-dr-hote-zone')&&document.getElementById('at-dr-hote-zone').querySelector('#at-dr-iframe'))){
         var chR=chapitresData[ec.level][ec.chnum], sceR=chR&&chR.seances&&chR.seances[sk];
         var copR=sceR&&sceR.deroule_joue&&sceR.deroule_joue[AT_DR_COURS.classeSlug];
         if(copR) DR.dr_ouvrir('at-dr-hote-zone', copR.ecrans, {level:ec.level,chnum:ec.chnum,snum:sk,classe:AT_DR_COURS.classeSlug,joue:true});

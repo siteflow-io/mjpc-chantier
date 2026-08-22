@@ -1,0 +1,25 @@
+Micro correctif sur les cinq fiches que tu viens de relivrer. Un contre-audit sur pièces a vérifié ton audit : la plupart de tes constats sont confirmés, deux sont corrigés ci-dessous. Applique ce qui suit, puis relivre les JSON corrigés.
+
+CORRECTIONS DE TON PROPRE AUDIT (vérifiées sources primaires) :
+• « Et d'étranges fleurs sur des étagères » est AUTHENTIQUE : Baudelaire, « La Mort des amants », Les Fleurs du mal — un sonnet en DÉCASYLLABES. Ton décompte (10) était juste, ta suspicion de source non. Ne remplace pas ce vers : NOMME-le (œuvre, recueil), écris sa scansion, et ajoute une ligne qui en fait une force : le sonnet n'est pas toujours en alexandrins — ce qui justifie le « généralement » de la fiche.
+• `fiche_methode` est DÉJÀ dans le prompt et le JSON admis (mis à jour aujourd'hui) : tu peux l'employer.
+• « fiche de révision » n'existe pas comme produit du site : la fiche de révision reste `fiche_notion`.
+• SÉANCE et PÉRIODE vides : l'en-tête se remplit désormais du CONTEXTE de dépôt (mécanique du site livrée aujourd'hui) — n'y touche pas, ce n'est pas un défaut des fiches.
+• Taxonomie (lue, pas de mémoire) : « liaison », « mémoriser », « e muet », « enjambement », « registre » existent ; « citer un vers » et « lecture expressive » N'EXISTENT PAS. Ne les invente pas et n'invente rien à la place : signale ces deux libellés en tête de ta livraison, le professeur tranchera (enrichir la taxonomie ou reformuler).
+
+CORRECTIONS FACTUELLES À APPLIQUER D'OFFICE (bloc A — confirmées) :
+1. La règle du e muet, corrigée À L'IDENTIQUE dans les TROIS fiches qui la portent (Versification, Révision, Lecture à voix haute) : « En milieu de vers, le e compte devant une consonne. Il compte aussi, toujours, quand il est suivi d'un s ou de -nt. Il ne compte pas devant une voyelle ou un h muet. » Et écris la scansion des exemples (na-vi-re-glis-sant ; gouf-fres-a-mers).
+2. Le tableau des mouvements : « Le classicisme » requalifié « Le classicisme (XVIIe — l'héritage contre lequel le siècle se définit) » — et propose en une ligne l'alternative (le remplacer par réalisme/naturalisme) pour que le professeur tranche.
+3. Fiche méthode : « quatre étapes » / « trois temps, toujours » alignés (choisis une formulation cohérente et dis laquelle).
+4. Versification : les deux définitions circulaires remplacées — « Sonnet : poème à forme fixe de quatorze vers : deux quatrains et deux tercets » ; les règles du e muet / césure / enjambement rangées sous « Versification » (elles valent pour tout vers régulier, pas pour le seul sonnet) ; « Versification » passé en vrai bloc DÉFINITION ; « Siècle et courant : XIXe » retiré de cette fiche générale.
+5. Révision : l'exemple de personnification remplacé par un exemple du poème où la chose agit ou ressent (« ô frères implacables » ou « cette plainte indomptable et sauvage ») ; « sonnet classique en alexandrins » harmonisé avec le « généralement » ; le critère « Je connais le registre lyrique » → « Je sais définir le registre lyrique en une phrase ».
+6. Fiche méthode, travail pour la prochaine fois : une AUTRE thèse que celle du paragraphe modèle (« montre que l'homme et la mer sont des ennemis », 4e strophe) — le modèle ne doit pas être recopiable.
+
+ARBITRAGES À SOUMETTRE AU PROFESSEUR, UN PAR UN, avant de les appliquer (ton devoir de conseil : propose, fonde, attends sa décision) :
+a. La refonte de la fiche Registres : 8 à 10 registres travaillés (comique, tragique, lyrique, épique, pathétique, fantastique, merveilleux, ironique/satirique, polémique, didactique), une ligne d'exemple chacun, la méthode en trois gestes (« quel effet sur moi ? quels mots le produisent ? quel nom ? »), les autres définitions conservées en annexe « Pour aller plus loin ». Fonde le tri genre/registre sur sa propre définition d'en-tête.
+b. Trois lignes sur les liaisons en diction poétique dans la fiche Lecture à voix haute (l'étape 4 les demande sans les enseigner).
+c. La nuance de fin de vers (« marque une très légère suspension, sans baisser la voix ») — c'est un choix de diction qui lui appartient.
+d. « Lire un poème à voix haute » basculée en produit `fiche_methode` (c'est structurellement une méthode).
+e. Une passe d'émojis mesurée sur les cinq fiches (propose-la, il décide).
+
+RÈGLES DE LIVRAISON (inchangées, impératives) : format d'injection strict — `titre`, `produit`, `cases`, `valeurs`, `blocs` (avec `reformulations` par bloc si besoin) ; identifiants de la liste seulement ; JAMAIS de champ `niveau` ni `rattachement` (refusés par le site) ; la marque MJPC et le nom de l'élève restent NON cochés ; « à conserver » et l'année scolaire cochés. Un JSON par fiche, chacun seul dans son bloc, sans commentaire autour. Termine par la liste de ce que tu as modifié, fiche par fiche.

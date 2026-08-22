@@ -15235,6 +15235,10 @@ function atP2ValiderDeroule(o,V){
       var r2=ref+' · écran '+(n+1);
       if(!e||!String(e.act||'').trim())V.cite(r2,'n’a pas de titre (« act »).');
       if(!(+(e&&e.dur)>0))V.cite(r2,'n’a pas de durée en minutes (« dur »).');
+      if(e&&e.comp!==undefined){
+        if(!Array.isArray(e.comp)||e.comp.some(function(x){return !String(x||'').trim();}))
+          V.cite(r2,'« comp » doit être une liste d’identifiants non vides (notions/compétences travaillées).');
+      }
       (e&&Array.isArray(e.blocs)?e.blocs:[]).forEach(function(b,k){
         if(!b||!AT_P2_TYPES[b.t]){V.cite(r2,'bloc '+(k+1)+' : type inconnu (« '+((b&&b.t)||'')+' »). Types : consigne, fiche, question, schema, image.');return;}
         if(b.t==='question'&&!String(b.q||'').trim())V.cite(r2,'bloc '+(k+1)+' : la question est vide (« q »).');
@@ -15277,6 +15281,7 @@ function atP2AppliquerDeroules(level,chnum,json,politique){
     if(!sk){cr.push({seance:se.title||se.cle,etat:'introuvable — rien écrit'});return;}
     var ecr=se.deroule.ecrans.map(function(e){
       return {id:atP2Uid(),act:String(e.act||''),dur:+e.dur||5,h:'',
+        comp:(Array.isArray(e.comp)?e.comp.map(String).filter(Boolean):[]),   /* les notions de l'écran, décidées en AMONT */
         blocs:(Array.isArray(e.blocs)?e.blocs:[]).map(atP2NormaliserBloc).filter(Boolean),vues:0,rev:0};
     });
     var dst=reels[sk];

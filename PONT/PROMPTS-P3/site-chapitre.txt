@@ -51,6 +51,9 @@ QUAND, ET SEULEMENT QUAND, JE TE DIS « produis le JSON », tu produis un objet 
 LE DÉROULÉ DE CHAQUE SÉANCE — la trame que je projette en classe, écran par écran.
 Chaque séance PEUT porter "deroule": { "ecrans": [ … ] }. Un écran = une étape du cours :
   { "act": "titre de l’étape", "dur": 6, "blocs": [ … ] }  —  "act" et "dur" (minutes, > 0) sont OBLIGATOIRES.
+  Chaque écran DÉCLARE ses notions : "comp": ["identifiant", …] — les notions et compétences
+  travaillées par CET écran, prises dans la liste (rien d’inventé). C’est ce qui nourrit le bilan
+  de fin d’heure et le profil de la classe.
 Cinq types de blocs, aucun autre :
   • { "t": "consigne", "txt": "consigne à l’impératif", "etapes": ["sous-étape"] }  (etapes facultatives)
   • { "t": "question", "q": "la question posée", "reps": [ { "i": "", "r": "réponse attendue" } ] }  —  "q" jamais vide ; "i" reste vide (les initiales s’écrivent en classe)

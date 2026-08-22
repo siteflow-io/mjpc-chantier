@@ -918,6 +918,7 @@ function _drPaletteOuvrir(d){
       +'<input id="vif-pal-note" placeholder="pourquoi (facultatif \u2014 pour toi seul)" autocomplete="off" style="display:none;width:100%;box-sizing:border-box;margin-top:10px;font-size:15px;padding:8px 12px;background:#12100c;border:1px solid #3a322a;border-radius:8px;color:#cfc4b4">'
       +'<div id="vif-pal-hist" style="margin-top:14px;font-size:13px;color:#8d7f6d"></div></div>';
     d.body.appendChild(ov);
+    ov.addEventListener('click',function(ev){ if(ev.target===ov&&ov.__fermer)ov.__fermer(); });
   }
   ov.style.display='flex';
   var inp=d.getElementById('vif-pal-in'), sg=d.getElementById('vif-pal-sug');
@@ -959,6 +960,7 @@ function _drPaletteOuvrir(d){
       }
     }catch(e){} },80);   /* après le rendre() de la pose */
   }
+  ov.__fermer=fermer;
   function designer(x){
     var P=W.PRENOMS||{};
     choisi=x;

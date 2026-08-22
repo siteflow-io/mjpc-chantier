@@ -13814,7 +13814,7 @@ function atVuesPoser(v){
   if(v==='relecture'||v==='papier')h+='<div class="at-dr-tete" id="at-dr-tete" style="display:none"></div><div id="at-dr-hote-zone"></div><div id="at-dr-t5" style="display:none"></div>';
   h+='</div></div>';
   z.innerHTML='<div class="at-vues-cadre">'+h+'</div>';
-  if(v==='deroule'||v==='relecture'||v==='papier'){ atDrMonter(); if(v!=='deroule') atDrVueInterne(v); }
+  if(v==='deroule'||v==='relecture'||v==='papier'){ atDrMonter(); atDrVueInterne(v==='deroule'?'deroule':v); }
 }
 
 

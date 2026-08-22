@@ -10012,6 +10012,10 @@ var AT_SOUSGROUPES=[
 
 function atRendreEditeur(){
   var z=document.getElementById('at-zone');if(!z||!AT.doc)return;
+  /* [8.59.2] la reconstruction détruit l'iframe d'aperçu : sa position se
+     mémorise ICI, avant, et atRendreApercu la restaurera. */
+  try{var _fap=document.getElementById('at-apercu');
+      if(_fap&&_fap.contentWindow)AT._apScyMemo=_fap.contentWindow.scrollY||0;}catch(e){}
   var h='';   /* [LOT4-②] la barre de cartes (edBarreFil) est RETIRÉE — décision de
      Paul (« un bordel sans nom »). Le retour au chapitre passe par le bouton
      « ← Le chapitre » existant. La fonction reste (0 suppression), code mort. */
@@ -13172,6 +13176,19 @@ function atRendreApercu(){
   var fr=document.getElementById('at-apercu');if(!fr||!AT.doc)return;
   /* SITE-COURS-2d : la zone touchée pulse une fois, puis se consomme */
   var opAp={apercu:true,pulse:AT.pulseComp||''};AT.pulseComp=null;
+  /* [8.59.2] LA FEUILLE NE REMONTE PLUS : chaque re-render rechargeait l'iframe
+     et la remettait en haut (la frappe faisait sauter l'aperçu ; le clic
+     feuille→éditeur détruisait sa propre cible sous les yeux de Paul). Le
+     scroll courant se mémorise et se restaure au chargement — SAUF quand un
+     pulse demande justement d'aller à une zone (geste éditeur→feuille). */
+  var _scy=0;try{_scy=(fr.contentWindow&&fr.contentWindow.scrollY)||0;}catch(e){}
+  if(!_scy&&AT._apScyMemo){_scy=AT._apScyMemo;}
+  AT._apScyMemo=0;   /* la mémoire se consomme */
+  var _garder=!opAp.pulse;
+  fr.addEventListener('load',function _rsc(){
+    fr.removeEventListener('load',_rsc);
+    if(_garder){try{fr.contentWindow.scrollTo(0,_scy);}catch(e){}}
+  });
   var lot=atLotContextes();
   var nav=document.getElementById('at-ap-nav');
   if(lot.length>1){

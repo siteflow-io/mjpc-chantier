@@ -14917,6 +14917,8 @@ var DR={
     try{ setTimeout(_drVifInstaller,140); }catch(e){}
     try{ if(!window.__vifBat){ window.__vifBat=setInterval(function(){ try{
       _drVifInstaller();
+      _drPaletteBrancher(document);
+      try{ var Wp=drWin(); if(Wp)_drPaletteBrancher(Wp.document); }catch(e){}
       var W2=drWin(), z2=W2&&W2.document.getElementById('vif');
       if(z2){
         var enClasse=(AT_DR_REGIME==='classe');
@@ -15607,6 +15609,70 @@ function _drVifAller(ev){
 document.addEventListener('keydown',function(ev){
   if(ev.key==='²'||ev.key==='F2')_drVifAller(ev);
 },true);
+
+/* [palette Maj+Espace — la touche de Paul] d'où que vienne le geste (champ de
+   consigne, réponse au tableau, nulle part), Maj+Espace fait surgir la palette
+   en surimpression : initiales en grand, 1/2/3 ou Entrée, et le focus REVIENT
+   à l'endroit exact (curseur compris). Préemptée en capture : aucun dévoilement
+   ne part. N'existe qu'EN CLASSE. */
+function _drPaletteOuvrir(d){
+  var W=drWin(); if(!W||AT_DR_REGIME!=='classe')return;
+  d=d||W.document;
+  var mem={el:d.activeElement,s:null,e:null};
+  try{ if(mem.el&&mem.el.setSelectionRange)
+    { mem.s=mem.el.selectionStart; mem.e=mem.el.selectionEnd; } }catch(e){}
+  var ov=d.getElementById('vif-palette');
+  if(!ov){
+    ov=d.createElement('div'); ov.id='vif-palette';
+    ov.setAttribute('style','position:fixed;inset:0;background:rgba(10,8,6,.74);z-index:99000;display:flex;align-items:center;justify-content:center');
+    ov.innerHTML='<div style="background:#1d1712;border:1px solid #6b5230;border-radius:14px;padding:22px 26px;min-width:430px;box-shadow:0 18px 60px rgba(0,0,0,.55)">'
+      +'<input id="vif-pal-in" placeholder="initiales de l\u2019\u00e9l\u00e8ve\u2026" autocomplete="off" style="width:100%;box-sizing:border-box;font-size:30px;padding:10px 14px;background:#12100c;border:1px solid #4a3f33;border-radius:10px;color:#e8ddcf">'
+      +'<div id="vif-pal-sug" style="margin-top:10px;font-size:15px;color:#9c8b76;min-height:18px"></div></div>';
+    d.body.appendChild(ov);
+  }
+  ov.style.display='flex';
+  var inp=d.getElementById('vif-pal-in'), sg=d.getElementById('vif-pal-sug');
+  inp.value=''; sg.innerHTML='';
+  function trier(s){return String(s).toUpperCase().replace(/[^A-Z]/g,'').split('').sort().join('');}
+  function cands(t){ t=String(t||'').trim(); if(t.length<2)return [];
+    var E=W.ELEVES||[],P=W.PRENOMS||{},tt=trier(t),tu=t.toUpperCase();
+    var m=E.filter(function(x){return trier(x)===tt;}); if(m.length)return m;
+    return E.filter(function(x){return x.indexOf(tu)===0||String(P[x]||'').toUpperCase().indexOf(tu)===0;});}
+  function fermer(){
+    ov.style.display='none';
+    if(mem.el){ try{ mem.el.focus(); if(mem.s!==null&&mem.el.setSelectionRange)mem.el.setSelectionRange(mem.s,mem.e); }catch(e){} }
+  }
+  inp.oninput=function(){ var c=cands(inp.value),P=W.PRENOMS||{};
+    if(inp.value.trim().length<2){sg.innerHTML='';return;}
+    sg.innerHTML=!c.length?'<em style="color:#a23a3a">Aucun \u00e9l\u00e8ve avec ces initiales.</em>'
+      :(c.length===1?('\u2192 <b>'+(P[c[0]]||c[0])+'</b> \u2014 1/2/3 ou Entr\u00e9e')
+      :('Plusieurs : '+c.map(function(x){return P[x]||x;}).join(' \u00b7 ')+' \u2014 pr\u00e9cise d\u2019une lettre'));};
+  inp.onkeydown=function(ev){
+    var c=cands(inp.value);
+    if(/^[1-3]$/.test(ev.key)&&c.length===1){
+      var m=(W.MOTIFS_PART||[])[+ev.key-1];
+      if(m){ W.partAjoute(c[0],m.c,''); W.rendre(); fermer(); }
+      ev.preventDefault(); return;
+    }
+    if(ev.key==='Enter'&&c.length===1){
+      var m0=(W.MOTIFS_PART||[])[0];
+      if(m0){ W.partAjoute(c[0],m0.c,''); W.rendre(); }
+      fermer(); ev.preventDefault(); return;
+    }
+    if(ev.key==='Escape'){ fermer(); ev.preventDefault(); }
+  };
+  setTimeout(function(){ try{inp.focus();}catch(e){} },30);
+}
+function _drPaletteBrancher(d){
+  try{
+    if(!d||d.__palB)return; d.__palB=true;
+    d.addEventListener('keydown',function(ev){
+      if(ev.key===' '&&ev.shiftKey&&AT_DR_REGIME==='classe'){
+        ev.preventDefault(); ev.stopPropagation(); _drPaletteOuvrir(d);
+      }
+    },true);
+  }catch(e){}
+}
 
 /* le boot du montage : rappeler l'onglet retenu */
 atVuesRappeler();

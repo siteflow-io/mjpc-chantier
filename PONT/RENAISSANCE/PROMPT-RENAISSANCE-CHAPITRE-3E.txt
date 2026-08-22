@@ -1,22 +1,27 @@
 [À COLLER JUSTE APRÈS LE PROMPT CHAPITRE COPIÉ DEPUIS LE SITE, PUIS JOINDRE LE FICHIER chapitre-3e-poesie-et-peinture-au-xixeme-siecle.json]
 
-CONTEXTE PARTICULIER DE CETTE SESSION : LA RENAISSANCE D'UN CHAPITRE EXISTANT.
+CONTEXTE PARTICULIER DE CETTE SESSION : LA RENAISSANCE D'UN CHAPITRE EXISTANT — QUI COMMENCE PAR SON AUDIT.
 
-Le fichier JSON joint est l'export de mon chapitre 3e « Poésie et peinture au XIXème siècle », tel qu'il existait. Sa progression est le fruit d'une longue discussion et de MES décisions : tu ne la réinventes pas. Ton travail : le faire RENAÎTRE complet — même progression, mais avec ce qui lui manquait : les trames de déroulé de chaque séance.
+Le fichier JSON joint est l'export de mon chapitre 3e « Poésie et peinture au XIXème siècle », tel qu'il existait. Sa progression vient de mes décisions. MAIS : un audit récent de mes fiches y a trouvé des erreurs factuelles réelles (une règle de versification fausse, des confusions genre/registre, un anachronisme). Le chapitre peut en porter aussi. DONC :
+
+PHASE 0 — L'AUDIT DU CHAPITRE. RIEN D'AUTRE NE COMMENCE AVANT.
+Audite l'export à fond, par ordre de gravité, en marquant [FAIT] ce qui est vérifiable et [AVIS] ce qui relève de ton jugement, chaque constat FONDÉ (programmes, Éduscol, la taxonomie fournie, l'histoire littéraire, la didactique) — une référence dont tu n'es pas sûr se marque [à vérifier], jamais affirmée. Passe au crible :
+  • l'EXACTITUDE FACTUELLE de tout le texte porté par le chapitre : titres de séances, sous-titres d'items, problématique, « à retenir » — dates, attributions, notions littéraires, formulations ;
+  • la COHÉRENCE DES ÉTIQUETTES : chaque notion et compétence taguée (séances ET items) correspond-elle vraiment au contenu qu'elle étiquette ? Les niveaux entre crochets de la taxonomie sont-ils respectés ? Une séance sans compétence, une notion annoncée puis jamais reprise, un doublon ?
+  • la PROGRESSION : l'ordre des 8 séances tient-il pédagogiquement (ce que chaque séance suppose acquis l'est-il avant elle) ? L'aboutissement (tâche finale) est-il réellement préparé par ce qui précède ?
+  • la COHÉRENCE D'ÉPREUVE : mes 3e passent le DNB SESSION 2027 (programme de la classe de 3e, plus le cycle 4) — signale tout ce qui se réfère à un cadre antérieur, et tout écart entre ce que le chapitre promet (brevet blanc, tâche finale sur 32) et le format réel de l'épreuve ;
+  • les COMPÉTENCES déclarées : une majeure dominante, des mineures cohérentes avec le contenu réel.
+Livre cet audit EN DISCUSSION, classé par gravité, en terminant par la liste de ce que tu as vérifié sans rien trouver. PUIS ATTENDS : je tranche chaque point, un par un. Les corrections actées s'intègrent à la renaissance ; rien ne se corrige sans mon accord.
+
+PHASE 1 — LES TRAMES, seulement après l'audit tranché.
+L'export ne contient aucune trame de déroulé : chaque séance recevra son `deroule` (écrans `act`/`dur`/`blocs`/`comp` au format du prompt ci-dessus), construit EN DISCUSSION, séance par séance, dans l'ordre, sur la progression éventuellement corrigée. Je fournis les contenus (textes, fiches) quand tu en as besoin ; tu ne reproduis JAMAIS un texte littéraire de mémoire : je te le colle, tu le reprends tel quel. Chaque écran déclare ses `comp` (identifiants de la liste, rien d'inventé).
+
+PHASE 2 — LE JSON, sur mon ordre « produis le JSON » seulement : le chapitre complet en un seul objet.
 
 COMMENT LIRE L'EXPORT :
-• La structure fait foi : le titre, l'entrée, la problématique, l'« à retenir », les compétences majeures/mineures, les 8 séances dans leur ordre, leurs notions et compétences (déjà en identifiants de la taxonomie), leurs items.
-• IGNORE entièrement : les champs `deroule_joue` (résidus d'essais techniques), `published` (tu n'écris jamais la publication), les `uid` et dates.
-• Les items `source: "drive"` : CONSERVE leurs `ref` telles quelles — ces documents existent.
-• Les items `source: "atelier"` et `source: "firebase_app"` : mets `ref: ""` et déclare-les AUSSI dans `aLier` avec un `pourquoi` qui reprend le TITRE exact (ex. « lier la feuille : Fiche notion : Rappel sur la versification ») — mes feuilles ont été recréées avec de nouveaux identifiants et mes applications se lient par mes menus, pas par d'anciens identifiants.
+  • La structure fait foi (sous réserve des corrections d'audit actées) : titre, entrée, problématique, « à retenir », compétences, les 8 séances dans leur ordre, leurs notions/compétences (déjà en identifiants), leurs items.
+  • IGNORE entièrement : `deroule_joue` (résidus d'essais techniques), `published` (tu n'écris jamais la publication), les `uid` et dates.
+  • Items `source: "drive"` : CONSERVE leurs `ref` telles quelles — ces documents existent.
+  • Items `source: "atelier"` et `source: "firebase_app"` : mets `ref: ""` et déclare-les AUSSI dans `aLier` avec un `pourquoi` reprenant le TITRE exact — mes feuilles ont été recréées avec de nouveaux identifiants, et mes applications se lient par mes menus.
 
-LE CŒUR DE TON TRAVAIL : LES TRAMES DE DÉROULÉ. L'export n'en contient aucune. Chaque séance recevra son `deroule` (écrans `act`/`dur`/`blocs`/`comp`, au format du prompt ci-dessus), construit EN DISCUSSION, séance par séance, dans l'ordre. Pour chaque séance : propose-moi une trame fondée sur sa nature (son `type`), ses notions, ses items — je fournis les contenus (textes, fiches) quand tu en as besoin ; tu ne reproduis JAMAIS un texte littéraire de mémoire : je te le colle, tu le reprends tel quel. Chaque écran déclare ses `comp` (identifiants de la liste, rien d'inventé).
-
-DÉROULEMENT DE LA SESSION, pour ne pas perdre de temps :
-1. Lis l'export, reformule-moi en dix lignes ce que tu comprends du chapitre (progression, logique, aboutissement), et signale — en discussion, pas dans le JSON — ce que la mise en cohérence t'inspire : trous, doublons, notions hors niveaux. Je tranche.
-2. Puis les trames : séance 1 → je valide → séance 2 → … jusqu'à la 8.
-3. Puis, sur mon ordre « produis le JSON » seulement, le chapitre COMPLET en un seul objet.
-
-RAPPELS QUI PRIMENT :
-• Mes 3e passent le DNB SESSION 2027, qui se réfère au programme de la classe de 3e : signale-moi toute exigence que tu tiendrais d'un cadre antérieur.
-• Ton devoir de conseil : à chaque étape tu proposes et tu signales, FONDÉ sur le réel (programmes, Éduscol, la taxonomie, la didactique) ; tu distingues le fondé de ton opinion ; une référence dont tu n'es pas sûr se marque [à vérifier]. Mais c'est moi qui tranche, et la progression ne bouge pas sans mon accord explicite.
+TON DEVOIR DE CONSEIL, à toutes les phases : tu proposes et tu signales, fondé ; tu distingues le fondé de ton opinion ; c'est moi qui tranche, et la progression ne bouge pas sans mon accord explicite.

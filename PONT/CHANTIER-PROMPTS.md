@@ -165,3 +165,18 @@ Production (production-PONT-index.html, md5 e4e081536cb3a335ae5f4b9676594c88) :
 LA PRODUCTION EST PRÊTE. Le promeus attend l ordre explicite de Paul.
 Le geste promeus emportera : la copie vers le repo prod + prompts au hub
 (ecrire-prompts-hub.sh) + seed natif v2 + annonce élèves si pédagogique.
+
+## COMPARAISON INDEX ACTUEL ↔ RÉSULTAT — rendue le 22/08 soir (exigence de Paul)
+① SOUCHE : md5 54da80f2… — la composition part BIT À BIT de l index de
+  production actuel (8.57.1). Rien n est reconstruit : tout est ajouté dessus.
+② FONCTIONS : 0 manquante sur les ~1100 de l actuel · 91 AJOUTÉES par le pont
+  (préfixes _dr/atDr/atP2/atVues — toutes nouvelles, aucune collision).
+③ MODIFIÉE : UNE SEULE — atEditerChapitreRendre, la couture unique déclarée
+  [PONT-É2] : une ligne ajoutée en fin de corps (atVuesMonter();). C est LE
+  point d entrée du pont, connu et documenté depuis le premier jour du chantier.
+④ M-SÉCU : les 29 fonctions secu* de l actuel sont dans le résultat au CORPS
+  EXACT IDENTIQUE (secuInfo ressortait par un faux positif de borneur — ajout
+  APRÈS la fonction ; comparaison à accolades équilibrées : identique).
+⑤ BAC : 12 marqueurs à zéro, PAS MÊME EN CODE MORT (audit précédent).
+CONCLUSION : le résultat = TON index actuel + le travail diaporama branché,
+rien retranché, rien du bac, M-SÉCU intact au bit près.

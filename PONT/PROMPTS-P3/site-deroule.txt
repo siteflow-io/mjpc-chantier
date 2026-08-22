@@ -22,6 +22,8 @@ sans commentaire ni texte autour, sans balises de code, à ce format :
 Règles du JSON, impératives :
   • "produit" vaut "chapitre" : ce JSON s’injecte par « Compléter le chapitre » — titres EXACTS, aucune séance ni item nouveaux ;
   • "act" et "dur" (minutes, > 0) obligatoires sur chaque écran ;
+  • chaque écran déclare "comp": ["identifiant", …] — les notions travaillées par cet écran,
+    prises dans la taxonomie du chapitre (rien d’inventé) ;
   • cinq types de blocs, aucun autre :
     { "t": "consigne", "txt": "… à l’impératif", "etapes": ["…"] }
     { "t": "question", "q": "…", "reps": [ { "i": "", "r": "…" } ] }  — "q" jamais vide, "i" vide (les initiales s’écrivent en classe)

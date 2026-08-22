@@ -1,14 +1,27 @@
-CONTRE-AUDIT DE TON AUDIT (vérifié sur pièces : l'export réel, la taxonomie lue, les sujets officiels du DNB). Rectifie, puis nous tranchons le reste.
+CONTRE-AUDIT DE TON AUDIT + MES PREMIERS TRANCHAGES (vérifiés sur pièces : l'export réel, la taxonomie lue, les sujets officiels du DNB). Rectifie, applique, puis pose-moi tes questions UNE PAR UNE.
 
-TES POINTS FAUX — à retirer de l'audit :
-• n°1 : le « noté sur 32 » est EXACT. Les sujets officiels du DNB décomposent la partie I en « Compréhension et compétences d'interprétation : 32 points » + « Grammaire et compétences linguistiques : 18 points » (= 50). La tâche finale sur 32 reproduit fidèlement la partie compréhension. De plus, le chapitre MORCELLE volontairement l'épreuve (dictée notée à part, réécriture à part) : c'est un brevet en morceaux, assumé — le prompt que tu as reçu le dit désormais explicitement.
-• n°4 : `problematique` et `aRetenir` SONT dans l'export, à la racine du chapitre (« Poètes et peintres du XIXe siècle : comment héritent-ils… » / « Au XIXe siècle, poètes et peintres héritent… »). Relis-les.
-• n°7 et n°8 : la dictée à trous est dans la séance d'ordre 4 (chemin : seances.3.items.dictee-a-trous), source "atelier" AVEC sa ref. S1 (seances.0) n'a qu'UN item (les cinq tableaux). Aucun doublon ; litt-005 n'est pas tagué en S1.
-• n°15 (première moitié) : le titre réel est exactement « Poésie et peinture au XIXème siècle » — aucun « (proposition) ». La correction XIXème → XIXe reste bonne.
+① TES POINTS FAUX — à retirer de ton audit :
+• n°1 : le « noté sur 32 » est EXACT. Les sujets officiels du DNB décomposent la partie I en « Compréhension et compétences d'interprétation : 32 points » + « Grammaire et compétences linguistiques : 18 points » (= 50). La tâche finale sur 32 reproduit fidèlement la partie compréhension. Le chapitre MORCELLE volontairement l'épreuve (dictée à part, réécriture à part) : c'est un brevet en morceaux, assumé — ton prompt le dit désormais.
+• n°4 : `problematique` et `aRetenir` SONT dans l'export, à la racine du chapitre. Relis-les.
+• n°7 et n°8 : la dictée à trous est en séance d'ordre 4 (chemin : seances.3.items.dictee-a-trous), source "atelier" AVEC sa ref. S1 (seances.0) n'a qu'UN item. Aucun doublon ; litt-005 n'est pas tagué en S1.
+• n°15 (première moitié) : le titre réel est « Poésie et peinture au XIXème siècle » — aucun « (proposition) ». La correction XIXème → XIXe reste bonne.
 
-TES POINTS CONFIRMÉS par contre-vérification — ils tiennent :
-n°2 (session 2027) · n°6 (litt-036/037/038 taguées en S1 sont l'ANALYSE D'IMAGE, pas les mouvements : le trou des quatre mouvements est réel) · n°9 (litt-006 à retirer de S2 : « L'Albatros » n'est pas un sonnet) · n°12 (« premiers poèmes en prose 1862 » : faux, 1855 ; la série de La Presse ouvre en 1862) · n°13 (1869 = recueil posthume) · n°17 (l'écart compétences déclarées/taguées, vérifié sur l'export) · n°10, n°14, n°16, n°18, n°22, n°15 (XIXe).
+② TES POINTS CONFIRMÉS — ils tiennent, applique-les à la renaissance :
+n°2 (session 2027) · n°6 (litt-036/037/038 = analyse d'image : le trou des quatre mouvements est réel — il se comblera en trames de S1) · n°9 (litt-006 à retirer de S2 : « L'Albatros » n'est pas un sonnet) · n°12 (« premiers » faux : 1855 ; la série de La Presse ouvre en 1862) · n°13 (1869 = recueil posthume, harmoniser) · n°17 (réaligner compétences déclarées/taguées selon ta proposition, que je valide) · n°18 (ajouter c4-langue-01 à S6) · n°10, n°16, n°22, n°15 (XIXe).
 
-RÈGLE NOUVELLE, dès maintenant : toute affirmation que tu fais sur l'export CITE son chemin JSON exact (ex. seances.3.items.dictee-a-trous.source). Quatre de tes [FAIT] étaient faux faute d'avoir travaillé sur le fichier réel : la citation de chemin rend cette erreur impossible.
+③ MES TRANCHAGES — actés, applique-les sans me redemander :
+• n°3 : c'était une ERREUR de progression. INVERSE : l'atelier d'écriture (paragraphe citation-justification) passe AVANT le brevet blanc. Nouvel ordre : S5 = atelier d'écriture, S6 = brevet blanc, S7 = remédiation (vérifie la cohérence de la remédiation avec ce nouvel ordre et signale-moi tout effet de bord).
+• n°5 : les DEUX épreuves restent. Le contraste est assumé et doit être NOMMÉ : du sonnet en vers (« Parfum exotique ») au poème en prose (« L'Étranger ») — fais-le porter par les titres des deux séances et par la problématique.
 
-RESTENT À TRANCHER PAR MOI (tes avis, valides) : n°3 (ordre S5↔S7 — le prompt permet désormais le diagnostic volontaire, qui le dit à l'élève), n°5 (doublon S5/S8 ou contraste sonnet/prose assumé), n°11 (colle-moi les fiches genres et registres quand j'arrive à ce point), n°19-20 (tags fins), n°21 (le fil peinture), n°23 (barème de réécriture). Reprends ton audit rectifié en une liste courte, puis attends mes tranchages.
+④ RÈGLES DE MÉTHODE, dès maintenant :
+• Toute affirmation sur l'export CITE son chemin JSON exact (ex. seances.3.items.dictee-a-trous.source). Quatre de tes [FAIT] étaient faux faute d'avoir travaillé sur le fichier réel.
+• Tu me poses des QUESTIONS DIRECTES, un point à la fois, avec des options concrètes — comme la discussion de cadrage de ton prompt. Jamais de « à vous de voir » : une question, ses options, tu attends ma réponse, tu passes à la suivante.
+
+⑤ LES POINTS RESTANTS — transforme-les en questions directes, dans cet ordre :
+1. n°14 : demande-moi la liste des cinq tableaux de S1 (pour lever « K. Friedrich / C. D. Friedrich »).
+2. n°11 : demande-moi de te coller les fiches « genres littéraires » et « registres » avant les trames de S2-S3.
+3. n°19 : propose-moi, tags par tags, les ajouts que le contenu réel des feuilles justifie (sujet inversé, sujets coordonnés, futur/conditionnel, marques du dialogue, les deux voix) — une séance à la fois.
+4. n°20 : litt-021 en S1 et litt-026 en S2 — pose-moi la question avec ton argument.
+5. n°21 : le fil « peinture » après S1 — propose-moi UNE option concrète (un écran de rappel dans une séance précise) et demande oui/non.
+6. n°23 : le barème de réécriture (−1 / −0,5) — question directe.
+7. Tes deux demandes initiales : le décompte annuel (œuvres, cursives, groupements — et si ce chapitre est un groupement de textes) et le rang du chapitre — pose-les-moi maintenant.

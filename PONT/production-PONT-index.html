@@ -14023,6 +14023,7 @@ function atDrClore(){
 
 
 function atDrCloreFin(){
+  try{ if(AT_DR_COURS&&ATVUES)window.AT_DR_DERNIER={level:(AT.edChap||{}).level,chnum:(AT.edChap||{}).chnum,snum:ATVUES.snum,classe:AT_DR_COURS.classeSlug,ts:Date.now()}; }catch(e){}
   try{ atVecuEcrire(); }catch(e){}
   AT_DR_REGIME='prep'; AT_DR_VECU=null; AT_DR_COURS=null; AT_T5_CHOIX={}; atT5Veille(false); atDrMonter();
 }
@@ -14407,8 +14408,20 @@ function atDrMonter(){
       }
     }catch(e){}
     setTimeout(function(){ atDrSuiviAppliquer(); atT5Veille(true); atSomRafraichir(); atDrBrancherSuivi(); },0); return; }
+  var srcRel=null;
+  try{   /* [14e] après la clôture, Relecture et Papier lisent LA SÉANCE JOUÉE, pas la préparation */
+    var D=window.AT_DR_DERNIER;
+    if(D&&String(D.level)===String(ec.level)&&String(D.chnum)===String(ec.chnum)&&String(D.snum)===String(sk)
+       &&(Date.now()-D.ts)<10800000&&(ATVUES.vue==='relecture'||ATVUES.vue==='papier')){
+      var chD=chapitresData[ec.level][ec.chnum], seD=chD&&chD.seances&&chD.seances[sk];
+      var copD=seD&&seD.deroule_joue&&seD.deroule_joue[D.classe];
+      if(copD&&copD.ecrans)srcRel=JSON.parse(JSON.stringify(copD.ecrans));
+    }
+  }catch(e){}
   var tr=atDrTrame(sk);
-  DR.dr_ouvrir('at-dr-hote-zone', JSON.parse(JSON.stringify(tr.ecrans)), {level:ec.level,chnum:ec.chnum,snum:sk});
+  if((srcRel?1:0)!==(window.__pontRelec?1:0)){ try{DR.__charge=null;}catch(e){} }   /* la source change (vécu↔préparation) : recharger */
+  window.__pontRelec=!!srcRel;
+  DR.dr_ouvrir('at-dr-hote-zone', srcRel||JSON.parse(JSON.stringify(tr.ecrans)), {level:ec.level,chnum:ec.chnum,snum:sk});
   setTimeout(function(){ atDrSuiviAppliquer(); atT5Veille(false); atSomRafraichir(); atDrBrancherSuivi(); },0);
 }
 
@@ -14602,7 +14615,7 @@ function _drEnvelopper(){
     try{ clearTimeout(AT_PONT._syT); AT_PONT._syT=setTimeout(function(){ try{atSomRafraichir();}catch(e){} },300); }catch(e){}   /* [resync] la colonne chapitre suit chaque rendu, sans retard */
     return r; };
   var vraiSauve=W.sauve;
-  W.sauve=function(){ try{ atDrEnrAuto(); }catch(e){} return vraiSauve.apply(W,arguments); };
+  W.sauve=function(){ try{ atDrEnrAuto(); }catch(e){} try{ _drCopieAuto(); }catch(e){} return vraiSauve.apply(W,arguments); };
   var vraiTableau=W.tableau;
   W.tableau=function(){ var r=vraiTableau.apply(W,arguments);
     setTimeout(function(){ try{
@@ -15079,6 +15092,26 @@ if(typeof chInjecterConfirme==='function'&&!window.__p2InjPose){
       setTimeout(function(){passe(1);},2200);
     }catch(e){}
   };
+}
+
+/* [classe · copie au fil de l'eau] atDrEnrAuto protège la préparation (« en classe,
+   rien ne remonte ») — mais LA COPIE de la classe doit, elle, suivre chaque geste :
+   les réponses écrites en cours appartiennent au vécu de cette classe. Sans cela,
+   la relecture après clôture et la future vue vécue seraient vides. */
+function _drCopieAuto(){
+  if(AT_DR_REGIME!=='classe'||!AT_DR_COURS)return;
+  clearTimeout(AT_PONT._copT);
+  AT_PONT._copT=setTimeout(function(){
+    try{
+      var ec=AT.edChap, sk=ATVUES.snum; if(!ec||!sk)return;
+      var ch=chapitresData[ec.level][ec.chnum], sce=ch&&ch.seances&&ch.seances[sk];
+      var cop=sce&&sce.deroule_joue&&sce.deroule_joue[AT_DR_COURS.classeSlug]; if(!cop)return;
+      cop.ecrans=DR.dr_exporterTrame();
+      mjpcPutJson(FIREBASE_BASE+'/site/'+ec.level+'/chapitres/'+ec.chnum+'/seances/'+sk
+        +'/deroule_joue/'+AT_DR_COURS.classeSlug+'/ecrans.json', cop.ecrans,
+        'Séance en classe — copie au fil de l’eau ('+AT_DR_COURS.classeNom+')');
+    }catch(e){}
+  },900);
 }
 
 /* le boot du montage : rappeler l'onglet retenu */

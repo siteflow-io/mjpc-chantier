@@ -121,7 +121,7 @@ function _drEnvelopper(){
     try{ clearTimeout(AT_PONT._syT); AT_PONT._syT=setTimeout(function(){ try{atSomRafraichir();}catch(e){} },300); }catch(e){}   /* [resync] la colonne chapitre suit chaque rendu, sans retard */
     return r; };
   var vraiSauve=W.sauve;
-  W.sauve=function(){ try{ atDrEnrAuto(); }catch(e){} return vraiSauve.apply(W,arguments); };
+  W.sauve=function(){ try{ atDrEnrAuto(); }catch(e){} try{ _drCopieAuto(); }catch(e){} return vraiSauve.apply(W,arguments); };
   var vraiTableau=W.tableau;
   W.tableau=function(){ var r=vraiTableau.apply(W,arguments);
     setTimeout(function(){ try{
@@ -598,6 +598,26 @@ if(typeof chInjecterConfirme==='function'&&!window.__p2InjPose){
       setTimeout(function(){passe(1);},2200);
     }catch(e){}
   };
+}
+
+/* [classe · copie au fil de l'eau] atDrEnrAuto protège la préparation (« en classe,
+   rien ne remonte ») — mais LA COPIE de la classe doit, elle, suivre chaque geste :
+   les réponses écrites en cours appartiennent au vécu de cette classe. Sans cela,
+   la relecture après clôture et la future vue vécue seraient vides. */
+function _drCopieAuto(){
+  if(AT_DR_REGIME!=='classe'||!AT_DR_COURS)return;
+  clearTimeout(AT_PONT._copT);
+  AT_PONT._copT=setTimeout(function(){
+    try{
+      var ec=AT.edChap, sk=ATVUES.snum; if(!ec||!sk)return;
+      var ch=chapitresData[ec.level][ec.chnum], sce=ch&&ch.seances&&ch.seances[sk];
+      var cop=sce&&sce.deroule_joue&&sce.deroule_joue[AT_DR_COURS.classeSlug]; if(!cop)return;
+      cop.ecrans=DR.dr_exporterTrame();
+      mjpcPutJson(FIREBASE_BASE+'/site/'+ec.level+'/chapitres/'+ec.chnum+'/seances/'+sk
+        +'/deroule_joue/'+AT_DR_COURS.classeSlug+'/ecrans.json', cop.ecrans,
+        'Séance en classe — copie au fil de l’eau ('+AT_DR_COURS.classeNom+')');
+    }catch(e){}
+  },900);
 }
 
 /* le boot du montage : rappeler l'onglet retenu */

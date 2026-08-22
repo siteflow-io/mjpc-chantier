@@ -136,5 +136,14 @@ neuf, généralisé lors des passes antérieures (M9, M14, M-PROMPT). La seule a
 sans socle est reecriture (et sa variante bb4e) : vérification faite, ses
 « prompt » sont un commentaire historique et un libellé de popup — AUCUN usage
 IA. Pas de socle à poser là où il n y a pas d IA.
-LE CHANTIER PROMPTS EST CLOS CÔTÉ CODE. Reste LE GESTE DE PROMOTION :
+CORRECTION (Paul, même soir) : le constat comptait le SOCLE, pas la CHAÎNE.
+Le plan (MJPC6-ETAT-DES-LIEUX, journal) fait foi : « il ne reste que reecriture
+et reecriture_bb4e » — la zone prompt CANONIQUE (prompt maître + copier +
+collage + validation + injection) leur MANQUE : reecriture n a qu un JSON.parse
+et une validation, bb4e rien. P4-RÉÉCRITURE À FAIRE avant la promotion :
+donner à reecriture la chaîne complète au canon des 4 chaînes (doctrine :
+« le prompt maître ne fabrique pas le résultat : il actionne ce que l app sait
+déjà faire » — detectModifs(orig,att) est la preuve). bb4e suivra le chantier
+réécriture global (passe réécriture/étude de texte/rédaction).
+Après P4-réécriture seulement : LE GESTE DE PROMOTION :
 audit anti-bac complet + promeus + prompts au hub + seed natif v2 — un seul geste.

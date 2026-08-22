@@ -14009,8 +14009,11 @@ function atSomEcransHtml(seance){
   var active=(String(seance)===String(ATVUES.snum));
   var cour=-1; if(active){ try{ cour=(DR.dr_ecranCourant&&DR.dr_ecranCourant())||0; }catch(e){ cour=0; } }
   var h='<div class="at-som-ecrans">';
+  var cumul=0;
   ecr.forEach(function(e,n){
-    var hh=(e&&e.h)||'', act=(e&&(e.act||e.titre))||('Écran '+(n+1));
+    var hh=active?((e&&e.h)||''):('+'+cumul+'′');   /* [12e] le relatif hors séance ouverte */
+    cumul+=(+((e&&e.dur))||0);
+    var act=(e&&(e.act||e.titre))||('Écran '+(n+1));
     h+='<div class="at-ecr'+(n===cour?' at-ecr-sel':'')+'" draggable="true" data-ecr="'+n+'" data-ese="'+atEsc(String(seance))+'" onclick="atSomAllerEcran('+n+',\''+atEsc(String(seance))+'\')">'
       +'<span class="at-ecr-mini"><i class="at-ecr-t"></i><i></i><i></i><i></i></span>'
       +'<span class="at-ecr-txt">'+(hh?'<span class="at-ecr-h">'+atEsc(hh)+'</span><br>':'')

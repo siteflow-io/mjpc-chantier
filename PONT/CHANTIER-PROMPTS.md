@@ -109,3 +109,21 @@ Le nœud du site : /site/atelier/prompts/<produit> (AT_IA_NOEUD — le site gard
 son chemin historique ; le canon /<app>_prompts est pour P4).
 ⚠ ÉCRITURE AU HUB DIFFÉRÉE À LA PROMOTION (ecrire-prompts-hub.sh prêt) : le
 prompt v2 produit des JSON à trames que seule la production promue sait jouer.
+
+## P3ter — L EXPORT JSON DE VÉRIFICATION (acté le 22/08 soir, demande de Paul)
+Principe : la rétro-ingénierie appliquée aux ajouts de PAUL. Un bouton dans
+l éditeur de chapitre : « Exporter pour l IA (.json) » — le chapitre TEL QU IL
+EST dans MJPC (séances, clés, trames deroule, items, liaisons reconstituées en
+aLier), au FORMAT MÊME du prompt chapitre, précédé d une courte mission :
+« Voici le chapitre tel qu il vit dans MJPC après mes modifications. Compare-le
+à ce que nous avions préparé ensemble ; signale-moi les écarts, les trous et
+les incohérences — sans que j aie à te réexpliquer le projet. »
+Usage : Paul le colle dans LA MÊME conversation IA qui a construit le chapitre
+(l instance a le contexte) → vérification de cohérence finale gratuite.
+À livrer avec P2b (même parcours chParcourir, une seule vérité, trois sorties :
+écran, Word, JSON-retour).
+
+## SEED NATIF — décision du 22/08 soir
+À LA PROMOTION, le PROMPT_SEED embarqué (chapitre) devient LUI AUSSI la v2 :
+le natif et le hub disent la même chose. Pièce du geste de promotion, avec
+l écriture au hub (ecrire-prompts-hub.sh). Plus d incohérence dormante.

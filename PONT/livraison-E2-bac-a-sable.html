@@ -155,6 +155,34 @@
   document.addEventListener('DOMContentLoaded',function(){
     var vise=setInterval(function(){
       var bd=document.getElementById('bac-bandeau')||[].slice.call(document.querySelectorAll('div')).filter(function(d){return /BAC \u00c0 SABLE/.test(d.textContent)&&d.childElementCount===0;})[0];
+      /* [miroir d'écriture] le bac bloque les PUT (rien ne part) mais la SESSION doit
+         vivre comme si : les écritures du site vers /site/<niv>/chapitres… sont
+         reflétées dans les données locales et rendues « ok » au flux appelant.
+         Un rechargement efface tout — c'est la définition du bac. */
+      try{
+        if(typeof secuEcrire==='function'&&!window.__bacMiroirPose){
+          window.__bacMiroirPose=true;
+          var _secuEcrireVrai=secuEcrire;
+          window.secuEcrire=function(chemin,data){
+            try{
+              var m=String(chemin).match(/^\/site\/([a-z0-9]+)\/chapitres(?:\/(\d+))?((?:\/[^\/]+)*)$/i);
+              if(m){
+                var niv=m[1], idx=m[2], reste=(m[3]||'').split('/').filter(Boolean);
+                chapitresData[niv]=chapitresData[niv]||{};
+                var copie=(data&&typeof data==='object')?JSON.parse(JSON.stringify(data)):data;
+                if(idx==null){ chapitresData[niv]=copie; }
+                else if(!reste.length){ chapitresData[niv][idx]=copie; }
+                else{
+                  var n=chapitresData[niv][idx]=chapitresData[niv][idx]||{};
+                  for(var k=0;k<reste.length-1;k++){ n[reste[k]]=n[reste[k]]||{}; n=n[reste[k]]; }
+                  n[reste[reste.length-1]]=copie;
+                }
+              }
+            }catch(e){}
+            return _secuEcrireVrai(chemin,data).then(function(){return {ok:true,_bac:true};},function(){return {ok:true,_bac:true};});
+          };
+        }
+      }catch(e){}
       /* [clé du coffre] la coiffe loggue le professeur sans le parcours de connexion :
          l'encart de clé n'apparaît jamais. Cet outil rejoue EXACTEMENT le geste du site. */
       try{

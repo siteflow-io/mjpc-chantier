@@ -798,6 +798,8 @@ function _drVifInstaller(){
     z.setAttribute('style','width:100%;box-sizing:border-box;margin:0 0 6px;padding:4px 8px;'
       +'border:1px solid #4a3f33;border-radius:8px;background:#171310;color:#e8ddcf;font:inherit;font-size:13px');
     part.parentNode.insertBefore(z,part);
+    sug=W.document.createElement('div'); sug.id='vif-sug';
+    sug.setAttribute('style','margin:2px 0 6px;font-size:12px;color:#9c8b76;min-height:14px');
     part.parentNode.insertBefore(sug,part);
     /* la r\u00e9solution CANON (redaction_dugain_v3) : comparaison d'initiales SANS
        tenir compte de l'ordre des lettres \u2014 \u00ab TM \u00bb trouve \u00ab MT \u00bb. */
@@ -810,8 +812,7 @@ function _drVifInstaller(){
       return E.filter(function(x){return x.indexOf(tu)===0
         ||String(P[x]||'').toUpperCase().indexOf(tu)===0;});
     }
-    var sug=W.document.createElement('div'); sug.id='vif-sug';
-    sug.setAttribute('style','margin:2px 0 6px;font-size:12px;color:#9c8b76;min-height:14px');
+    var sug;
     z.addEventListener('input',function(){
       var c=candidats(z.value);
       [].slice.call(W.document.querySelectorAll('#part span')).forEach(function(s){

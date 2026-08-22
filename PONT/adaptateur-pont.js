@@ -720,11 +720,22 @@ function _drPoserContexteMoteur(){
   try{
     var W=drWin(); if(!W)return;
     var slug=(AT_DR_COURS&&AT_DR_COURS.classeSlug)||(AT_PONT.classeVue)||((document.getElementById('at-dr-classe')||{}).value)||'';
-    var pren=slug?_drPrenomsDeLaClasse(slug):null;
-    if(pren)W.PRENOMS=pren;
+    var chg=false;
+    if(slug){
+      var pren=_drPrenomsDeLaClasse(slug);
+      /* une classe CHOISIE sans élèves extraits → panneau VIDE (honnête),
+         jamais le trombinoscope de maquette pour une classe réelle */
+      var neuf=pren||{};
+      if(JSON.stringify(W.PRENOMS||{})!==JSON.stringify(neuf)){
+        W.PRENOMS=neuf;
+        W.ELEVES=Object.keys(neuf);   /* la PARTICIPATION lit son propre tableau ELEVES (en dur lui aussi) */
+        chg=true;
+      }
+    }
     var deb=(AT_DR_COURS&&AT_DR_COURS.debut)||((document.getElementById('at-dr-debut')||{}).value)||'';
-    if(/^\d\d:\d\d$/.test(deb)&&W.DEBUT!==deb){ W.DEBUT=deb; try{W.horaires();W.rendre();}catch(e){} }
-    var rel=_drProchainCreneau(); if(rel)W.RELIRE=rel;
+    if(/^\d\d:\d\d$/.test(deb)&&W.DEBUT!==deb){ W.DEBUT=deb; chg=true; try{W.horaires();}catch(e){} }
+    var rel=_drProchainCreneau(); if(rel&&W.RELIRE!==rel){ W.RELIRE=rel; chg=true; }
+    if(chg){ try{W.rendre();}catch(e){} try{W.majVues();}catch(e){} }   /* le pilote se re-rend : les boutons suivent */
   }catch(e){}
 }
 document.addEventListener('change',function(ev){

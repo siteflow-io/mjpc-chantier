@@ -20,3 +20,10 @@ Tenu à jour à CHAQUE découverte. Trois colonnes : quoi · source MJPC prévue
 
 Règle : toute nouvelle constante découverte dans le moteur qui représente une donnée
 MJPC (élève, classe, créneau, date, chapitre) ENTRE dans ce relevé le jour même.
+
+7. Tableau ELEVES=[GA,MX,…] (la PARTICIPATION du pilote — un SECOND en-dur,
+   distinct de PRENOMS, documenté par le moteur lui-même : « données simulées »)
+   → même source que PRENOMS (les initiales de la classe)
+   → ✅ BRANCHÉ (22/08, découvert par Paul sur captures De Gaulle/Test) :
+   W.ELEVES=Object.keys(PRENOMS de la classe) + re-rendu du pilote forcé ;
+   classe sans élèves → panneau VIDE (honnête), jamais la maquette.

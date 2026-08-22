@@ -830,7 +830,7 @@ function _drVifInstaller(){
     W.document.addEventListener('keydown',function(ev){
       var pop=W.document.getElementById('ppop');
       if(!pop||!pop.classList.contains('on'))
-        { if(ev.key==='/'&&!/input|textarea/i.test((ev.target&&ev.target.tagName)||'')&&!(ev.target&&ev.target.isContentEditable)){ z.focus(); z.select(); ev.preventDefault(); } return; }
+        { if((ev.key==='/'&&!/input|textarea/i.test((ev.target&&ev.target.tagName)||'')&&!(ev.target&&ev.target.isContentEditable))||ev.key==='²'||ev.key==='F2'){ z.focus(); z.select(); ev.preventDefault(); } return; }
       var bts=[].slice.call(pop.querySelectorAll('button.m'));
       if(/^[1-9]$/.test(ev.key)){
         var dansNote=(ev.target&&ev.target.id==='pnote');
@@ -848,6 +848,21 @@ function _drVifInstaller(){
     },true);
   }catch(e){}
 }
+
+/* [vif · accès d'un seul appui] ² ou F2, DEPUIS N'IMPORTE OÙ (page ou cadre),
+   amène le curseur dans le champ des initiales — zéro clic, zéro visée. */
+function _drVifAller(ev){
+  try{
+    if(AT_DR_REGIME!=='classe')return;
+    var W=drWin(), z=W&&W.document.getElementById('vif');
+    if(!z||z.style.display==='none')return;
+    z.focus(); z.select();
+    if(ev)ev.preventDefault();
+  }catch(e){}
+}
+document.addEventListener('keydown',function(ev){
+  if(ev.key==='²'||ev.key==='F2')_drVifAller(ev);
+},true);
 
 /* le boot du montage : rappeler l'onglet retenu */
 atVuesRappeler();

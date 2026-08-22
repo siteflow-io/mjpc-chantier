@@ -14486,11 +14486,23 @@ function atArbrePremiereSeance(){
 
 /* [11e adaptation · 支] le libellé d'une notion depuis la même source que la datalist */
 function atTaxoLibelle(code){
+  /* l'intitulé ENTIER, l'étiquette entre parenthèses — un code ne parle à personne,
+     ni au professeur ni à l'inspecteur (règle de Paul, 22/08). */
   try{
+    code=String(code||'').trim(); if(!code)return code;
+    /* ① les COMPÉTENCES du cycle 4 (c4-…), via la taxonomie chargée */
+    try{
+      if(typeof chCompetencesC4==='function'&&window.CH&&CH.taxo){
+        var cc=chCompetencesC4(CH.taxo)||{};
+        if(cc[code]&&cc[code].libelle)return cc[code].libelle+' ('+code+')';
+      }
+    }catch(e){}
+    /* ② les NOTIONS grammaticales, via le cache existant */
     if(TAXO_CACHE&&typeof TAXO_CACHE==='object'){
       var ks=Object.keys(TAXO_CACHE);
       for(var a=0;a<ks.length;a++){ var f=TAXO_CACHE[ks[a]];
-        if(f&&f.notions&&f.notions[code]){ var n=f.notions[code]; return (n.libelleProf||n.libelle||code); } }
+        if(f&&f.notions&&f.notions[code]){ var n=f.notions[code];
+          var l=(n.libelleProf||n.libelle); if(l)return l+' ('+code+')'; } }
     }
   }catch(e){}
   return code;

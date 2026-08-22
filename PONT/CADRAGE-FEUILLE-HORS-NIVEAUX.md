@@ -44,3 +44,18 @@ a) La strate est-elle un EMPLACEMENT unique (place_strates : des blocs marqués
 b) Le tronc commun : qu est-ce qui est par nature indifférent au niveau
    (définition ?) et qu est-ce qui remonte/descend ?
 c) Le prompt fiche_seance : extension de schéma pour produire les strates.
+
+## ARBITRAGES DE PAUL — 22/08 soir (l ordre du plan INVERSÉ)
+· PAS de duplication de fiches — jamais (la règle d hygiène transitoire est morte-née).
+· Repart à neuf : toutes les fiches actuelles seront SUPPRIMÉES par Paul.
+· Le flux de renaissance : EXTRACTION des fiches actuelles → données à une
+  instance → RECRÉATION à l identique SANS référence de niveau → puis les
+  chapitres se créent et s y réfèrent proprement.
+· ORDRE : le LOT feuille-hors-niveaux passe AVANT la création des chapitres
+  (argument : les chapitres appellent des fiches dans leur progression — sans
+  le LOT, des trous dans les chapitres neufs).
+## LIVRABLE AJOUTÉ AU LOT (le flux de Paul l exige)
+④ EXPORT DE FEUILLE POUR L IA : un geste « exporter cette feuille » (JSON du
+  document, symétrique du P3ter des chapitres) pour donner les fiches actuelles
+  à l instance de recréation — l import repasse par le prompt fiche (liste
+  fermée + garde ③ : le niveau ne peut pas renaître).

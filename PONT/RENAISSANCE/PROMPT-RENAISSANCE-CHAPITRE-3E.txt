@@ -1,0 +1,22 @@
+[À COLLER JUSTE APRÈS LE PROMPT CHAPITRE COPIÉ DEPUIS LE SITE, PUIS JOINDRE LE FICHIER chapitre-3e-poesie-et-peinture-au-xixeme-siecle.json]
+
+CONTEXTE PARTICULIER DE CETTE SESSION : LA RENAISSANCE D'UN CHAPITRE EXISTANT.
+
+Le fichier JSON joint est l'export de mon chapitre 3e « Poésie et peinture au XIXème siècle », tel qu'il existait. Sa progression est le fruit d'une longue discussion et de MES décisions : tu ne la réinventes pas. Ton travail : le faire RENAÎTRE complet — même progression, mais avec ce qui lui manquait : les trames de déroulé de chaque séance.
+
+COMMENT LIRE L'EXPORT :
+• La structure fait foi : le titre, l'entrée, la problématique, l'« à retenir », les compétences majeures/mineures, les 8 séances dans leur ordre, leurs notions et compétences (déjà en identifiants de la taxonomie), leurs items.
+• IGNORE entièrement : les champs `deroule_joue` (résidus d'essais techniques), `published` (tu n'écris jamais la publication), les `uid` et dates.
+• Les items `source: "drive"` : CONSERVE leurs `ref` telles quelles — ces documents existent.
+• Les items `source: "atelier"` et `source: "firebase_app"` : mets `ref: ""` et déclare-les AUSSI dans `aLier` avec un `pourquoi` qui reprend le TITRE exact (ex. « lier la feuille : Fiche notion : Rappel sur la versification ») — mes feuilles ont été recréées avec de nouveaux identifiants et mes applications se lient par mes menus, pas par d'anciens identifiants.
+
+LE CŒUR DE TON TRAVAIL : LES TRAMES DE DÉROULÉ. L'export n'en contient aucune. Chaque séance recevra son `deroule` (écrans `act`/`dur`/`blocs`/`comp`, au format du prompt ci-dessus), construit EN DISCUSSION, séance par séance, dans l'ordre. Pour chaque séance : propose-moi une trame fondée sur sa nature (son `type`), ses notions, ses items — je fournis les contenus (textes, fiches) quand tu en as besoin ; tu ne reproduis JAMAIS un texte littéraire de mémoire : je te le colle, tu le reprends tel quel. Chaque écran déclare ses `comp` (identifiants de la liste, rien d'inventé).
+
+DÉROULEMENT DE LA SESSION, pour ne pas perdre de temps :
+1. Lis l'export, reformule-moi en dix lignes ce que tu comprends du chapitre (progression, logique, aboutissement), et signale — en discussion, pas dans le JSON — ce que la mise en cohérence t'inspire : trous, doublons, notions hors niveaux. Je tranche.
+2. Puis les trames : séance 1 → je valide → séance 2 → … jusqu'à la 8.
+3. Puis, sur mon ordre « produis le JSON » seulement, le chapitre COMPLET en un seul objet.
+
+RAPPELS QUI PRIMENT :
+• Mes 3e passent le DNB SESSION 2027, qui se réfère au programme de la classe de 3e : signale-moi toute exigence que tu tiendrais d'un cadre antérieur.
+• Ton devoir de conseil : à chaque étape tu proposes et tu signales, FONDÉ sur le réel (programmes, Éduscol, la taxonomie, la didactique) ; tu distingues le fondé de ton opinion ; une référence dont tu n'es pas sûr se marque [à vérifier]. Mais c'est moi qui tranche, et la progression ne bouge pas sans mon accord explicite.

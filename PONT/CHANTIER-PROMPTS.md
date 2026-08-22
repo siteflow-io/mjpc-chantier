@@ -38,7 +38,19 @@ P2b · LES DEUX VUES JUMELLES DU CHAPITRE — RÉÉCRIT LE 22/08 APRÈS CONFRONT
       deroule_joue/<classe> (copies + vécus, données déjà en place et prouvées) :
       bilans joués, temps réels vs prévus, écrans montrés, décisions T-5, travail
       donné. À construire — mais en héritant du gabarit, pas en le recréant.
-    Tout imprimable par construction (A4 natif).
+    TROIS SORTIES DU MÊME RENDU (demande de Paul, 22/08 — confronté : aucun export
+    Word n'existe dans l'écosystème, pas de doublon possible) :
+    ① l'écran (la 3e colonne / la fenêtre autonome) · ② l'imprimante (Ctrl+P, A4
+    natif) · ③ UN BOUTON « WORD » : le même HTML aggloméré, téléchargé en .doc
+    (document HTML à en-têtes MS-Office — Word l'ouvre nativement, zéro dépendance,
+    zéro second rendu ; les images du hub incorporées en base64 pour l'autonomie
+    du fichier). Limites déclarées : ce n'est pas un .docx OOXML (Word convertit à
+    l'ouverture, avertissement possible selon versions) ; la mise en page est
+    fidèle mais Word recompose (pas au pixel). Si un jour le .docx natif devient
+    nécessaire : précédent SheetJS chez dictee_universelle (embarquer une lib
+    bureautique est dans les mœurs) — mais il exigerait un second rendu par API,
+    exactement ce que l'architecture évite : on n'y va que sur besoin prouvé.
+    Vaut pour LES DEUX VUES : le chapitre prévu ET le chapitre vécu par classe.
 P3 · LES TROIS PROMPTS RÉÉCRITS (chapitre · feuille · déroulé) : taxonomie DONNÉE
     (154 notions — l'IA choisit, n'invente pas) ; titres canoniques + produits
     déclarés séance par séance ; clé de rapprochement posée par l'IA ; signalement

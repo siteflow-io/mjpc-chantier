@@ -663,6 +663,16 @@ function _drRefusionner(t){
   return out;
 }
 
+/* [relecture par classe] changer la classe dans la tête recharge Relecture/Papier
+   sur LA COPIE DE CETTE CLASSE — les vues ne restent plus figées. */
+document.addEventListener('change',function(ev){
+  try{
+    if(ev.target&&ev.target.id==='at-dr-classe'&&(ATVUES.vue==='relecture'||ATVUES.vue==='papier')){
+      try{DR.__charge=null;}catch(e){} window.__pontRelec=false; atDrMonter();
+    }
+  }catch(e){}
+});
+
 /* le boot du montage : rappeler l'onglet retenu */
 atVuesRappeler();
 /* ═══════════ fin [PONT-É2] ═══════════ */

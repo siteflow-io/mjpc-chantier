@@ -668,7 +668,9 @@ function _drRefusionner(t){
 document.addEventListener('change',function(ev){
   try{
     if(ev.target&&ev.target.id==='at-dr-classe'&&(ATVUES.vue==='relecture'||ATVUES.vue==='papier')){
-      try{DR.__charge=null;}catch(e){} window.__pontRelec=false; atVuesPoser(ATVUES.vue);   /* le chemin complet : la vue interne suit */
+      AT_PONT.classeVue=ev.target.value;                       /* la reconstruction recrée le sélecteur : la valeur survit ici */
+      try{DR.__charge=null;}catch(e){} window.__pontRelec=false; atVuesPoser(ATVUES.vue);
+      var s2=document.getElementById('at-dr-classe'); if(s2&&AT_PONT.classeVue)s2.value=AT_PONT.classeVue;
     }
   }catch(e){}
 });

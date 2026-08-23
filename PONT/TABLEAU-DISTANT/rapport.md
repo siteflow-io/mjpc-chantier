@@ -60,3 +60,15 @@ Trois défauts réels trouvés PAR le banc et corrigés : ① l'annonce de trame
 1. PORTABLE : lancer la séance (comme P-1), puis « Ouvrir le tableau » (le bouton existant). Attendu : la fenêtre tableau LOCALE s'ouvre et se comporte EXACTEMENT comme avant (dévoilement, gel, qui, chrono) — rien n'a changé.
 2. Projeter cette fenêtre en Windows+K. Vérifier : gel, « qui a participé », chrono au tableau. Attendu : identiques à la version précédente.
 3. (Optionnel) Le téléphone peut rejoindre par QR même en scénario K : les gestes du téléphone se reflètent dans la fenêtre locale via le moteur partagé du portable.
+
+## AUDIT DE CONSCIENCE (n8, 23/08) — VERDICT : PROMOTION POSSIBLE
+Vérifié indépendamment sur pièces : le moteur AT_DR_B64 intouché à l octet · 29 secu* intactes ·
+published 97→97 · les 3 coutures TOUTES protégées par try (le déroulé local survit si [SESSION] casse) ·
+sesPut appelé UNIQUEMENT par les fonctions pilote + le handshake QR du téléphone — AUCUNE fonction
+sesTab* (la vue) n écrit : la garde est STRUCTURELLE, pas un drapeau · le cloisonnement de la vue passe
+par la fenêtre existante en iframe et W.envoie() — le contrat du gel (« on ne repeint rien ») respecté,
+zéro réinvention · parseurs verts après correctif. ANOMALIE CORRIGÉE au même geste : le libellé
+« PARTICIPATION AU VIF » → « PARTICIPATION » (décision du professeur, la maquette PNG datait d avant).
+Limite déclarée : le banc de l exécutant n a pas été rejoué ici (harnais non portable dans ce dossier) —
+ses chiffres et captures examinés, et mes vérifications structurelles indépendantes concordent.
+Nouveau md5 après correctif : voir promotion.

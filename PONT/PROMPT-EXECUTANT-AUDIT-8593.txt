@@ -1,0 +1,34 @@
+# PROMPT EXÉCUTANT-AUDITEUR — CONTRE-VÉRIFICATION DU CANDIDAT v8.59.3 (site MJPC)
+
+Tu es AUDITEUR INDÉPENDANT. Tu ne codes rien, tu ne corriges rien, tu ne pousses rien en production : tu VÉRIFIES un candidat préparé par un autre agent, et tu rends un verdict. Le « promeus » appartient au professeur seul.
+
+## ⓪ LECTURES OBLIGATOIRES
+Dépôt de production `siteflow-io/monsieurjaipascompris`, dossier `docs/` : `MJPC6-1-DISPOSITIF.md` et `MJPC6-2-DOCTRINE.md` (les règles de la maison : zéro fonction supprimée, `published` jamais écrit, refus déclarés plutôt qu'ignorances silencieuses).
+
+## ① JETON ET MATIÈRE
+- Jeton du sas `siteflow-io/mjpc-chantier`, en DEUX MOITIÉS à concaténer sans espace :
+  `github_pat_11B7IGAKA0ZeuBZz0LOpos_cuhU5vVEPO` ⊕ `jcxiFfdUdVHciewRjiRS107u68ajjr3rI77BANLU3jLmtZeFP`
+- LA PRODUCTION (référence) : `https://raw.githubusercontent.com/siteflow-io/monsieurjaipascompris/main/index.html` — md5 attendu `7058c286bcd7e4a4e195dbd59c058201` (v8.59.2). S'il diffère : STOP, signale-le.
+- LE CANDIDAT : au sas, `PONT/index-8593-candidat.html` — md5 attendu `9ce948ca247b996fc3a6893a1acb8ecc`. S'il diffère : STOP.
+
+## ② LE PÉRIMÈTRE ANNONCÉ PAR L'AUTEUR (c'est ce que tu contre-vérifies)
+Trois objets de code + un bloc de données, rien d'autre :
+A. `atIACopier` : le bouton « Copier le prompt » ne double plus le préambule ; si le champ a été modifié, on copie CE QUI EST À L'ÉCRAN tel quel.
+B. `atBlocEdition` : tant que le prompt du hub n'est pas chargé (`AT_IA.charge` faux), le champ affiche un message de chargement au lieu d'un texte qui ne partira pas.
+C. `atImprimerSelection` (+ une fonction neuve `atImprimerSelection2`) : « Imprimer la sélection » RE-LIT les feuilles au hub avant de composer la liasse (fin des liasses tirées d'une mémoire d'onglet périmée) ; hub injoignable → refus déclaré ; et le rendu d'une feuille qui échoue produit un ENCART VISIBLE dans la liasse (fin du `catch` silencieux).
+D. Données : `ATELIER_PROMPT_SEED` passe des textes v1 aux textes v3 du hub (texte pur, aucun code).
+
+## ③ TES VÉRIFICATIONS (toutes, dans l'ordre)
+1. **Le diff réel = le périmètre annoncé, rien de plus.** Compare fonction par fonction (délimitation par accolades appariées, pas par regex naïve — les insertions voisines créent des faux positifs de borne). Attendu : 4 modifiées (`atIACopier`, `atBlocEdition`, `atImprimerSelection`, et une 4e qui peut être un artefact de borne à élucider), 1 neuve (`atImprimerSelection2`), 0 supprimée, les 29 fonctions `secu*` intactes à l'octet, aucune occurrence nouvelle d'écriture de `published`, `APP_VERSION` = 8.59.3. Tout écart au périmètre = ANOMALIE à citer (nom de fonction + lignes).
+2. **Les deux parseurs** : chaque bloc `<script>` passe `node --check` ET acorn ES2020.
+3. **Tes propres bancs** (navigateur headless, harnais en LECTURE SEULE STRICTE : toute requête non-GET vers le hub est bloquée et comptée — le compte doit rester à zéro) :
+   a. Zone prompts, hub disponible : ouvre la porte « Nouvelle feuille » IA, attends le chargement, copie → LE TEXTE COPIÉ EST IDENTIQUE À L'OCTET au contenu du champ, et contient UNE seule occurrence du préambule (« TON TRAVAIL ATTERRIT »).
+   b. Champ modifié : ajoute une ligne au champ, copie → le copié = le champ modifié, tel quel, toujours un seul préambule.
+   c. Hub muet (bloque les réponses des prompts) : le champ affiche le message de chargement, jamais un vieux texte.
+   d. Liasse : pose en mémoire une `AT.liste` PÉRIMÉE (une fiche « ancienne version » + une fiche supprimée du hub simulé), coche tout, imprime → la liasse contient LA VERSION DU HUB, ni l'ancienne ni la fantôme.
+   e. Hub injoignable au moment d'imprimer → l'impression est ANNULÉE avec un message visible, aucune liasse ne part.
+   f. Non-régression : l'impression UNIQUE d'une feuille fonctionne, et `document.title` prend le titre de la fiche pendant l'impression (puis se restaure).
+4. **Chasse aux effets de bord** : liste tous les APPELANTS des fonctions modifiées (qui appelle `atIACopier`, `atBlocEdition`, `atImprimerSelection` ?) et vérifie que chacun reste cohérent avec les nouvelles signatures/comportements. Vérifie la signature réelle de `atSiteGetDocs(cb)` et ce que son callback reçoit en échec.
+
+## ④ TON LIVRABLE
+Au sas, `PONT/RAPPORT-AUDIT-8593.md` : verdict PAR OBJET (A, B, C, D) — conforme / anomalie (avec citation de code et numéros de lignes) ; le résultat de chacun de tes bancs (les chiffres, pas des impressions) ; la liste de ce que tu as vérifié sans rien trouver ; et ta PRÉCONISATION FINALE : « promotion possible » ou « corrections requises : … ». Commit + push au sas, puis tu t'arrêtes. Tu ne modifies PAS le candidat, tu ne pousses RIEN vers la production, et tu n'anticipes aucun promeus.

@@ -1,0 +1,29 @@
+# PROMPT EXÉCUTANT — LA VUE TABLEAU DU DÉROULÉ PILOTÉE ENTRE DEUX APPAREILS
+
+Tu es EXÉCUTANT MJPC. Tu codes, tu livres au sas, tu ne promeus JAMAIS (le « promeus » appartient au professeur seul, après audit de la conscience). Français partout. STOP après livraison.
+
+## ⓪ LECTURES OBLIGATOIRES (avant toute ligne)
+Dépôt prod `siteflow-io/monsieurjaipascompris`, dossier `docs/` : `MJPC6-1-DISPOSITIF.md` + `MJPC6-2-DOCTRINE.md`. Puis au sas : `PONT/DETTE-VUE-TABLEAU-DISTANTE.md` (le besoin, dans les mots du professeur).
+
+## ① JETON ET MATIÈRE
+- Jeton sas `siteflow-io/mjpc-chantier`, DEUX MOITIÉS à concaténer sans espace ni retour :
+  `github_pat_11B7IGAKA0ZeuBZz0LOpos_cuhU5vVEPO` ⊕ `jcxiFfdUdVHciewRjiRS107u68ajjr3rI77BANLU3jLmtZeFP`
+- Production : `https://raw.githubusercontent.com/siteflow-io/monsieurjaipascompris/main/index.html` — LECTURE SEULE, télécharge, note taille+md5, et DEMANDE à la conscience la version attendue si le doute existe (base actuelle : v8.59.4, md5 `0b4ad1c5752b3188190269a62ee0b064` — STOP si différent).
+- Hub `mjpc-hub-default-rtdb.europe-west1.firebasedatabase.app` : LECTURE SEULE dans tes bancs (toute écriture interceptée et comptée, le compte reste à zéro). Le nœud `deroule_joue` existe déjà (écrit par le pilotage en classe).
+
+## ② LE BESOIN (les deux scénarios du professeur)
+En classe : (K) son portable seul, projeté sans fil Windows+K → la fenêtre tableau LOCALE actuelle suffit ; (P) son portable PILOTE, et l'ORDI DE CLASSE branché au vidéoprojecteur affiche LA VUE TABLEAU — deux machines, deux sessions navigateur : la vue tableau doit SUIVRE le pilotage à distance, en lisant l'état joué AU HUB. Critère d'acceptation final : le banc réel du professeur — portable + ordi de bureau côte à côte, URL de production, le déroulé avance sur l'un, le tableau suit sur l'autre.
+
+## ③ PHASE 0 — L'INSTRUCTION SUR PIÈCES, AVANT TOUTE LIGNE DE CODE
+Détermine et RAPPORTE (citations de code, numéros de lignes) :
+1. Comment la fenêtre tableau actuelle est ouverte et synchronisée (window.open ? postMessage ? même onglet ?) — est-elle STRICTEMENT locale ?
+2. Ce que `deroule_joue` contient exactement quand le professeur joue (structure, fréquence d'écriture, par classe ?) — lis un exemplaire réel au hub s'il en reste, sinon fais-le produire au banc.
+3. Ce qui MANQUE pour qu'une page distante reconstitue la scène tableau depuis ce nœud seul (l'écran courant, l'état de dévoilement, le gel, la participation projetée « Qui a participé »).
+4. Les invariants du cloisonnement à préserver : ce qui est grisé côté professeur est ABSENT de la vue tableau, et réciproquement ; rien de nominatif ne fuit hors du geste volontaire.
+LIVRE ce rapport de phase 0 au sas et ATTENDS l'arbitrage de la conscience sur l'architecture (URL dédiée ?paramètre ? lecture seule par polling ou par listener ? verrou de classe ?) AVANT la phase 1.
+
+## ④ PHASE 1 — LE CODE (après arbitrage seulement)
+Principes non négociables : la vue distante est en LECTURE SEULE du hub (elle n'écrit jamais rien) · elle dégrade proprement (hub muet → elle le DIT à l'écran, jamais un état périmé silencieux) · aucune fonction supprimée · `published` jamais écrit · le pilotage local existant ne change pas de comportement (la fenêtre locale K continue de marcher à l'identique) · latence cible < 2 s entre le geste du pilote et la vue distante · double parseur (node --check + acorn ES2020) · banc Puppeteer à DEUX pages simultanées (l'une pilote, l'autre lit) prouvant : l'avancée suit, le gel suit, le repli suit, la participation projetée suit quand le professeur l'active et JAMAIS sinon, et zéro écriture depuis la page distante.
+
+## ⑤ LIVRABLE
+Sas `PONT/TABLEAU-DISTANT/` : le rapport de phase 0, puis (après arbitrage) `index.html` candidat + `rapport.md` (fonctions modifiées avec tailles avant/après, bancs chiffrés, captures des deux écrans côte à côte, md5+taille) + la SÉQUENCE DE TEST MANUELLE pour le professeur (geste par geste, les deux machines, résultat attendu à chaque étape). STOP.

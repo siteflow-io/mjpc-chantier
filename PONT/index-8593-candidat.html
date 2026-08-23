@@ -9622,15 +9622,38 @@ function atImpBarreMaj(){
   if(t){var tot=Object.keys(AT.liste).length;t.checked=!!tot&&n===tot;}
 }
 function atImprimerSelection(){
+  /* [8.59.3] LA LIASSE DIT L'ÉTAT DU HUB, PAS CELUI D'UN ONGLET. AT.liste se
+     charge à l'ouverture et ne se resynchronise pas : une session ouverte
+     pendant la fenêtre anciennes+nouvelles a imprimé à Paul une liasse en
+     DOUBLON avec les vieux contenus. Désormais : re-lecture du hub juste
+     avant de composer — et en échec, REFUS DÉCLARÉ, jamais une liasse
+     périmée silencieuse. */
+  atSiteGetDocs(function(frais){
+    var _n=document.getElementById('at-imp-note');
+    if(!frais){
+      if(_n)_n.textContent='Impossible de vérifier les feuilles au hub — impression annulée (jamais de liasse périmée).';
+      else alert('Impossible de vérifier les feuilles au hub — impression annulée.');
+      return;
+    }
+    AT.liste=frais;atImprimerSelection2();
+  });
+}
+function atImprimerSelection2(){
   var ids=Object.keys(AT.liste).filter(function(k){return AT_IMP_SEL[k];})
     .sort(function(a,b){return ((AT.liste[b].dates||{}).modifieLe||0)-((AT.liste[a].dates||{}).modifieLe||0);});
-  if(!ids.length)return;
+  if(!ids.length){var _n=document.getElementById('at-imp-note');if(_n)_n.textContent='Les feuilles cochées n’existent plus au hub — la liste vient d’être rafraîchie.';atRendreListe();return;}
   var unique=(ids.length===1);
   var titre=unique?String((AT.liste[ids[0]]||{}).titre||'Feuille')
                   :('Fiches MJPC \u2014 '+new Date().toLocaleDateString('fr-FR'));
   var corps='';
   ids.forEach(function(id){
-    try{corps+=atelierDocumentHTML(AT.liste[id],null,{});}catch(e){}
+    try{corps+=atelierDocumentHTML(AT.liste[id],null,{});}
+    catch(e){
+      /* [8.59.3] fin du catch silencieux (doctrine : jamais d'ignorance muette) */
+      corps+='<div class="at-page"><p style="color:#a33">⚠ Cette feuille n’a pas pu être rendue : '
+        +atEsc((AT.liste[id]&&AT.liste[id].titre)||id)+'. Ouvre-la dans l’éditeur pour voir ce qui bloque.</p></div>';
+      try{console.warn('[liasse] rendu impossible',id,e);}catch(_e){}
+    }
   });
   var html='<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><title>'+atEsc(titre)+'</title>'
     +'<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">'

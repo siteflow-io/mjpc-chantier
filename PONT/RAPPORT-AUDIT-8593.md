@@ -61,3 +61,8 @@ Fonctions supprimées (0) · `secu*` (29/29 intactes) · écritures `published` 
 
 ## ⑧ PRÉCONISATION FINALE
 **Promotion possible.** L'anomalie ⑤ n'est pas bloquante (sécurité tenue, dégradation d'un message seulement) ; je recommande le micro-correctif d'une ligne (`at-imp-note` dans la barre, ou replis en `atInfo`) — à la promotion suivante ou en micro, au choix de la conscience.
+
+## SUITE DONNÉE (conscience, 23/08)
+Préconisation suivie : correctif at-imp-note intégré au 8.59.4 (banc vert : le refus
+se déclare dans la barre, sans alert). PROMOTIONS : v8.59.3 puis v8.59.4, chacune
+vérifiée bit à bit au commit. La chaîne micro est en production.

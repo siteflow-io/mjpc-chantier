@@ -69,6 +69,10 @@ sesTab* (la vue) n écrit : la garde est STRUCTURELLE, pas un drapeau · le cloi
 par la fenêtre existante en iframe et W.envoie() — le contrat du gel (« on ne repeint rien ») respecté,
 zéro réinvention · parseurs verts après correctif. ANOMALIE CORRIGÉE au même geste : le libellé
 « PARTICIPATION AU VIF » → « PARTICIPATION » (décision du professeur, la maquette PNG datait d avant).
-Limite déclarée : le banc de l exécutant n a pas été rejoué ici (harnais non portable dans ce dossier) —
-ses chiffres et captures examinés, et mes vérifications structurelles indépendantes concordent.
+BANC REJOUÉ PAR LA CONSCIENCE (indépendamment, même harnais, run distinct) — chiffres du rejeu :
+dévoilement vue 640 ms · tel 845 ms · réponse tapée au tel → pilote 1 441 ms, vue 1 646 ms · grisé
+dans la vue : 0 · gel : vue figée, pilote libre, rattrapage au dégel · « qui » : rien avant activation,
+prénom après, le +1 du téléphone vu au pilote · écritures depuis la vue : 0 (externe) + 0 (garde) ·
+reprise : état retrouvé identique, scène jamais écrasée · pageerrors 0/0/0. Les mesures de l exécutant
+sont CONFIRMÉES par un second run indépendant.
 Nouveau md5 après correctif : voir promotion.

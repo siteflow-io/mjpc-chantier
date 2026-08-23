@@ -1,0 +1,24 @@
+# PHASE 1 — LA SESSION DE COURS MULTI-APPAREILS (vue tableau distante + pilotes synchrones + téléphone)
+
+Tu es LE MÊME EXÉCUTANT que la phase 0 (ton rapport est validé, salué, et fonde tout ce qui suit). Tu codes maintenant. Tu livres au sas, tu ne promeus jamais, STOP après livraison.
+
+## ⓪ BASE ET ARBITRAGES RENDUS (par la conscience et le professeur)
+- BASE : la production a avancé depuis ta phase 0 : télécharge `main/index.html`, attendu **v8.59.5, md5 `29d07d7456a8b2c8c07e5ded3c37ff8f`** (le moteur AT_DR_B64 n'a pas changé ; le .5 = un type de séance). STOP si autre.
+- (a) **Canal de scène : tes compteurs, adoptés** — la vue et les pilotes lisent `ecrans` de la copie jouée + un nœud `scene` léger {ecran, rev, gel, fiche?, chrono{on,fin,visible}, quiOn} + les blocs `reps`/textes édités passent par la copie jouée (source unique, jamais de trame dupliquée).
+- (b) **Synchronisation : POLLING 800-1000 ms** (pas de SSE : les réseaux d'établissement coupent les streams). Latence geste→reflet < 2 s exigée partout.
+- (c) **La session** : un nœud `cours_actif/<classe?>` (pointeur : niveau, chapitre, séance, classe, ts) écrit au lancement du cours. **N PILOTES SYNCHRONES** : tout appareil rejoint la session en VUE (lecture seule stricte) ou en PILOTE (lecture + gestes) ; deux pilotes montrent le même état ; chaque geste d'un pilote se reflète sur les autres et sur la vue en < 2 s.
+- (d) **Adressage par appareil** : ordi de classe = **favori fixe** `?vue=tableau` (la page trouve le cours via `cours_actif`, affiche « aucun cours en cours » sinon, en français sobre) · **téléphone = QR** : RÉUTILISE LE PATTERN D'`evaluation-qcm.html` À L'IDENTIQUE (lis-le : `OverlayQRPhone` — nonce `qr_<ts>_<aléa>`, URL `#…&qr=<nonce>`, image api.qrserver.com, écoute `qrScans/<nonce>`, fermeture auto de la modale au scan) · portable = bouton « Reprendre le cours en cours ».
+
+## ① LE TÉLÉPHONE (maquettes validées par le professeur : les 2 PNG de ce dossier — respecte-les)
+- **Le prompteur** : l'écran courant en vue PILOTE (le dévoilé net + le à-venir GRISÉ marqué « À VENIR » — c'est `html(n,false)`) + la ligne « Écran suivant → "…" ». Le professeur voit ce qui va arriver AVANT d'appuyer.
+- **La palette** (64 px de haut, appuyable sans regarder) : ◀ replier · ▶ dévoiler (plus large, tous deux sombres) · écran préc. · écran suiv. — puis gel · stylo · chrono · qui a participé — puis la barre or « ＋ PARTICIPATION » qui ouvre la liste de la classe (un appui sur un nom = +1, le mécanisme existant de la palette Maj+Espace).
+- **L'ÉDITION AU DOIGT** : les zones `contentEditable` du moteur (notamment les `reps` des blocs question : initiales + texte, la réponse vide sentinelle « appuyer pour taper ») fonctionnent au téléphone ; la frappe part par la session (le `sauve()` existant routé) et s'affiche au tableau et sur les autres pilotes. Pendant la saisie, la palette se réduit (◀ ▶ · écrans · Participation) pour laisser le clavier. RIEN À INVENTER : tu routes l'existant.
+
+## ② INVARIANTS ABSOLUS
+Le grisé (à-venir) n'apparaît JAMAIS dans la vue tableau (`html(n,true)` seul côté classe — prouve-le au banc) · les prénoms ne transitent vers la vue QUE si `quiOn` · le gel passe par l'équivalent d'`envoie()` (l'image gelée au tableau pendant que les pilotes naviguent librement) · la fenêtre tableau LOCALE (scénario Win+K) reste STRICTEMENT inchangée · la vue distante n'écrit JAMAIS rien (harnais : compteur d'écritures à zéro depuis la vue) · `published` jamais écrit · 0 fonction supprimée · double parseur (node --check + acorn ES2020) · français sobre partout.
+
+## ③ PREUVES EXIGÉES (bancs chiffrés)
+Banc à TROIS pages simultanées (pilote-ordi, pilote-téléphone 390×844, vue-tableau) : le dévoilement suit partout < 2 s · le gel fige la vue et pas les pilotes · une réponse tapée sur le téléphone apparaît au tableau et sur l'autre pilote · le grisé absent de la vue (recherche du marqueur dans le DOM de la vue : zéro) · « qui a participé » n'affiche les prénoms côté vue que si activé · zéro écriture depuis la vue · le handshake QR (`qrScans/<nonce>` écrit au montage, la modale se ferme) · la reprise : un pilote fermé-rouvert retrouve l'état courant.
+
+## ④ LIVRABLE
+`PONT/TABLEAU-DISTANT/` : le candidat `index.html` + `rapport.md` (fonctions modifiées/neuves avec tailles avant/après, bancs chiffrés, captures des trois écrans côte à côte, md5+taille) + **la séquence de test manuelle du professeur** : geste par geste, ses trois appareils réels (ordi de bureau + portable + téléphone), résultat attendu à chaque étape, scénarios K et P tous deux couverts. STOP après.

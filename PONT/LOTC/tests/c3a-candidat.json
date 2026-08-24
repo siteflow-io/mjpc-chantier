@@ -1,0 +1,132 @@
+{
+  "etiquette": "candidat",
+  "fichier": "c3a-index.html",
+  "cadrePret": true,
+  "ecransCharges": 4,
+  "monteErr": "TypeError: W.rendre is not a function",
+  "cle": {
+    "cle": "2026-08-24_10h07-11h02_c3a",
+    "creneau": "10:07-11:02",
+    "memeCleParLesDeuxChemins": true
+  },
+  "dup": {
+    "nAvant": 4,
+    "nApres": 5,
+    "identites": 5,
+    "doublons": 0,
+    "originalGardeLaSienne": true,
+    "copiePorteUneIdentiteNEUVE": true,
+    "copieDevoilementAZero": true,
+    "copieFragmentEfface": true,
+    "copieIdsDeBlocsDistincts": true
+  },
+  "resize": {
+    "grandAvant": {
+      "total": 5,
+      "suites": 1,
+      "i": 2
+    },
+    "reduit": {
+      "total": 6,
+      "suites": 2,
+      "i": 3
+    },
+    "reGrandApres": {
+      "total": 5,
+      "suites": 1,
+      "i": 2
+    },
+    "filsNesDeLaReduction": 1,
+    "filsSurvivantApresRetour": 0
+  },
+  "quatre": {
+    "totalPilote": 6,
+    "iFils": 2,
+    "morceauEmis": 1,
+    "eidEmis": "emt7e5b1p3plfx",
+    "eidDuPere": "emt7e5b1p3plfx",
+    "memeIdentite": true,
+    "revEmis": 2,
+    "revDuFilsBrut": 2,
+    "blocsDuPereTronque": 1,
+    "blocsDuPereEntier": 2,
+    "revSiOnAvaitEmisToutLEcran": 3,
+    "neDevoilePasToutLEcran": true,
+    "vuesEmises": {
+      "0": 6,
+      "1": 0
+    },
+    "photo": {
+      "ecran": 2,
+      "eid": "emt7e5b1p3plfx",
+      "morceau": 1,
+      "rev": 2,
+      "vues": {
+        "0": 6,
+        "1": 0
+      },
+      "gele": false,
+      "fiche": null,
+      "ficheEid": null,
+      "chrono": {
+        "visible": false,
+        "txt": "07:00"
+      },
+      "quiOn": false,
+      "qui": null,
+      "trameMaj": 0,
+      "origine": "ap_mt7e52s8_g71o4",
+      "ts": 1787585324977
+    }
+  },
+  "vue_tableau": {
+    "vue": "tableau",
+    "cadre": true,
+    "ecrans": 4,
+    "i": 1,
+    "rev": 2,
+    "eidLocal": "emt7e5b1p3plfx",
+    "suites": 0,
+    "ecrituresSorties": 0,
+    "tabErr": null,
+    "texteProjete": "MISE EN COMMUN 🎯 On met en commun les réponses de l'interro de cours, une par une, en justifiant à chaque fois par une citation précise du texte étudié la semaine dernière. Première réponse : la nature du mot souligné, et sa fonction dans la phrase. Deuxième réponse : l'effet produit par l'enjambement du vers trois sur la lecture. Troisième réponse : le registre dominant, et les deux marques qui le signalent. Quatrième réponse : la figure de style de la dernière strophe, nommée et expliquée. Cinquième réponse : ce que le poème dit du regard du poète sur la ville moderne. Sixième réponse : la relation entre le titre du recueil et ce poème en particulier."
+  },
+  "vue_tel": {
+    "vue": "tel",
+    "cadre": true,
+    "ecrans": 4,
+    "i": 1,
+    "rev": 2,
+    "eidLocal": "emt7e5b1p3plfx",
+    "suites": 0,
+    "ecrituresSorties": 0,
+    "tabErr": null,
+    "texteProjete": null
+  },
+  "enchainement": {
+    "pointeurApresLancement1": true,
+    "classe1": "c3a",
+    "cle1": "2026-08-24_10h07-11h02_c3a",
+    "trace1Close": true,
+    "pointeurEfface": true,
+    "pointeurApresLancement2": "c3b",
+    "banniereAvant": true,
+    "reprisePossible": false,
+    "banniereApresTentative": false,
+    "classeCouranteApres": "c3b",
+    "veilleVoitClose": true,
+    "banniereAvantVeille": true,
+    "banniereApresVeille": false
+  },
+  "clotureVolontaire": {
+    "pointeurAvant": true,
+    "classeDesignee": "c3b",
+    "pointeurApres": false,
+    "veilleTrouveUnCours": false
+  },
+  "ecritures": {
+    "nonGETsimulees": 15,
+    "sortiesReelles": 0
+  },
+  "pageerrors": []
+}

@@ -1,0 +1,254 @@
+{
+  "etiquette": "candidat",
+  "fichier": "te-index.html",
+  "pilote": {
+    "ecrans": 4,
+    "i": 1,
+    "cran": 1,
+    "murJoignable": true
+  },
+  "murAvantFrappe": {
+    "monte": true,
+    "texte": "",
+    "html": 0,
+    "i": 0,
+    "ecrans": 1,
+    "pulseSur": null,
+    "ecrituresSorties": 0,
+    "diag": {
+      "win": true,
+      "winClosed": false,
+      "gele": false,
+      "tDansWin": true,
+      "memeT": true,
+      "rev": 0,
+      "tabErr": null
+    }
+  },
+  "frappe1": {
+    "ok": true,
+    "cran": 1
+  },
+  "murApresLorem": {
+    "monte": true,
+    "texte": "MISE EN COMMUN Question 2 — Quel effet produit l'enjambement du vers 3 ? EB Ça met en valeur le mot rejeté.lorem ipsum dolor sit amet consectetur",
+    "html": 360,
+    "i": 1,
+    "ecrans": 4,
+    "pulseSur": "consectetur",
+    "ecrituresSorties": 0,
+    "diag": {
+      "win": true,
+      "winClosed": false,
+      "gele": false,
+      "tDansWin": true,
+      "memeT": true,
+      "rev": 2,
+      "tabErr": null
+    }
+  },
+  "frappe2": {
+    "ok": true,
+    "cran": 1
+  },
+  "murApresRemplacement": {
+    "monte": true,
+    "texte": "MISE EN COMMUN Question 2 — Quel effet produit l'enjambement du vers 3 ? EB Ça met en valeur le mot rejeté. La passante disparait aussitot dans la foule",
+    "html": 367,
+    "i": 1,
+    "ecrans": 4,
+    "pulseSur": "foule",
+    "ecrituresSorties": 0,
+    "diag": {
+      "win": true,
+      "winClosed": false,
+      "gele": false,
+      "tDansWin": true,
+      "memeT": true,
+      "rev": 2,
+      "tabErr": null
+    }
+  },
+  "un": {
+    "murPorteLorem": true,
+    "murPorteLaSuite": true,
+    "murGardeEncoreLorem": false
+  },
+  "pulsation": {
+    "surLeMurApresFrappe": "foule",
+    "apresReprise": "durablement",
+    "aSaute": true,
+    "uneSeuleMarque": 1
+  },
+  "zoom": {
+    "departManuel": 3,
+    "pendantLaFrappe": [
+      {
+        "cran": 2,
+        "suites": 1
+      },
+      {
+        "cran": 1,
+        "suites": 0
+      },
+      {
+        "cran": 1,
+        "suites": 0
+      },
+      {
+        "cran": 1,
+        "suites": 0
+      },
+      {
+        "cran": 1,
+        "suites": 0
+      },
+      {
+        "cran": 1,
+        "suites": 0
+      }
+    ],
+    "cranApresDebordement": 1,
+    "jamaisSousLePlancher": true,
+    "suitesCreees": 0,
+    "pendantLEffacement": [
+      {
+        "cran": 1,
+        "reste": 993
+      },
+      {
+        "cran": 1,
+        "reste": 923
+      },
+      {
+        "cran": 1,
+        "reste": 853
+      },
+      {
+        "cran": 1,
+        "reste": 783
+      },
+      {
+        "cran": 1,
+        "reste": 713
+      },
+      {
+        "cran": 1,
+        "reste": 643
+      },
+      {
+        "cran": 1,
+        "reste": 573
+      },
+      {
+        "cran": 1,
+        "reste": 503
+      },
+      {
+        "cran": 1,
+        "reste": 433
+      },
+      {
+        "cran": 1,
+        "reste": 363
+      },
+      {
+        "cran": 2,
+        "reste": 293
+      },
+      {
+        "cran": 3,
+        "reste": 223
+      },
+      {
+        "cran": 3,
+        "reste": 153
+      },
+      {
+        "cran": 3,
+        "reste": 83
+      },
+      {
+        "cran": 3,
+        "reste": 13
+      },
+      {
+        "cran": 3,
+        "reste": 0
+      }
+    ],
+    "cranApresEffacement": 3,
+    "plafondRespecte": true,
+    "apresZoomManuelA52": {
+      "cran": 3,
+      "plafond": 4,
+      "suites": 0
+    }
+  },
+  "coupure": {
+    "reponse": {
+      "suites": 2,
+      "libelle": "suite 1",
+      "cran": 1,
+      "typeDuMorceau": "question",
+      "initialeConservee": "EB",
+      "suiteRep": true,
+      "fragmentPose": true,
+      "pereGardeSonIdentite": true,
+      "filsSansIdentite": true,
+      "devoilementDuMorceau": 1
+    },
+    "consigne": {
+      "suites": 2,
+      "libelle": "suite 1",
+      "cran": 1,
+      "typeDuMorceau": "consigne",
+      "initialeConservee": null,
+      "suiteRep": false,
+      "fragmentPose": true,
+      "pereGardeSonIdentite": true,
+      "filsSansIdentite": true,
+      "devoilementDuMorceau": 0
+    },
+    "fiche": {
+      "suites": 2,
+      "libelle": "suite 1",
+      "cran": 1,
+      "typeDuMorceau": "fiche",
+      "initialeConservee": null,
+      "suiteRep": false,
+      "fragmentPose": true,
+      "pereGardeSonIdentite": true,
+      "filsSansIdentite": true,
+      "devoilementDuMorceau": 0
+    }
+  },
+  "matriceZoom": {
+    "avant": {
+      "total": 6,
+      "suites": 2,
+      "vues": 1,
+      "etapes": 1,
+      "eidDuPere": "emt7imuigbb2ah"
+    },
+    "apres": {
+      "total": 4,
+      "suites": 0,
+      "vues": 1,
+      "etapes": 1,
+      "pereRetrouve": true,
+      "fragmentsEffaces": true
+    },
+    "devoilementRecolle": true,
+    "morceauxRecolles": true
+  },
+  "ecritures": {
+    "nonGETinterceptees": 21,
+    "sortiesReelles": 0
+  },
+  "hubPorteLaTrame": {
+    "present": true,
+    "texteDuChamp": "Ça met en valeur le mot rejeté."
+  },
+  "pageerrors": []
+}

@@ -123,3 +123,15 @@ depuis des mois en websocket. L'ARBITRAGE EST À REPRENDRE par la n9 : soit adop
 pour la session (comme eval-qcm : réactivité native, clôture instantanée), soit conserver le REST
 et corriger le polling (re-vérifier cours_actif à chaque cycle). Trancher SUR PIÈCES ET SUR LE
 TERRAIN DE PAUL, pas sur un risque supposé.
+
+## TRANCHÉ PAR PAUL (23/08) + UN BUG D'ALIGNEMENT AU PILOTAGE
+DÉCISION DE PAUL sur l'arbitrage rouvert : « je veux le fonctionnement le plus instantané, voilà
+tout. et éval qcm fonctionnait très bien. » → LA SESSION PASSE AU TEMPS RÉEL type SDK Firebase
+(websockets, comme eval-qcm), le polling est abandonné. La n9 instruit l'intégration (le site est
+en REST pur : embarquer le SDK pour la session seule, ou un listener SSE natif RTDB — trancher sur
+pièces, avec le critère unique de Paul : l'instantané).
+BUG D'ALIGNEMENT (capture de Paul, mode préparation du déroulé) : la sélection de la LISTE des
+écrans (colonne gauche : « 10:59 Avant de se quitter » en surbrillance) est DÉSYNCHRONISÉE de la
+miniature encadrée et de l'éditeur (qui affichent « 10:49 Les sonorités », écran 7/13) — un écran
+d'écart. À instruire : off-by-one de l'index, ou la « resynchronisation différée de la colonne »
+déjà en dette (DETTES-VIVANTES du 21/08) qui refait surface en prod. Sur pièces avant tout code.

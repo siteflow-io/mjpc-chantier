@@ -96,3 +96,16 @@ BUG DE CLÔTURE : à la clôture avec CLASSE TEST, le bilan annonce « Tu as mod
 Trois hypothèses de Paul à instruire sur pièces : (a) un reste de la maquette passé à l audit ;
 (b) une friction des clics entre téléphone/tableau/pilotage ; (c) autre chose. PREMIÈRE ACTION du
 correctif : reproduire au banc 3 pages et tracer QUI écrit cette modification fantôme.
+## RAPPORT DE TEST RÉEL DE PAUL (23/08, 3 appareils) — LA 8.60.0 EST DÉFAILLANTE AU TÉLÉPHONE
+LA RÈGLE QU'IL FIXE : « le téléphone doit faire EXACTEMENT ce que font les fonctions du pilotage
+sur ordi. Rien de plus, rien de moins. »
+Constats : les flèches de dévoilement NE FONCTIONNENT PAS (hypothèse de Paul : lié au dévoilement
+lui-même et au statut non grisé des éléments sur le téléphone) · les 4 boutons de navigation KO ·
+impossible d'ajouter une réponse d'élève sur un écran · le bouton stylo : fonction inconnue de Paul ·
+le chrono KO · la participation FONCTIONNE mais présente les élèves en CARTES (praticable à 5,
+impossible à 30 — il faut une liste dense) · la vue tableau et le pilotage ordi : à re-tester après.
+BUG DE CLÔTURE (classe test) : la modale « Clore la séance » annonce « Tu as modifié 1 chose »
+(« Les hypothèses de la classe → Question-bilan ») alors que Paul N'A RIEN MODIFIÉ. Trois pistes à
+instruire sur pièces : un reste de maquette/seed laissé passer · une friction des clics entre
+téléphone/tableau/pilotage (un écho multi-pilotes qui écrit un act) · autre chose. NE PAS CONCLURE
+SANS PIÈCES. Le chantier TÉLÉPHONE-CONFORME est prioritaire dans la reprise de ce dossier.

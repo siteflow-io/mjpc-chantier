@@ -68,7 +68,23 @@ Aucune fonction de ce lot ne **copie, coupe, déplace, supprime ni ajoute** d'ob
 Moteur identique · 29 `secu*` identiques · `published` 97→97 · aucune identité, aucun rang, aucune indexation modifiés (les 39 zones de diff ne contiennent ni `uid`, ni `ordre`, ni renumérotation) · inventaire d'injection inchangé · déroulé local (Win+K) : `tableau()`/`envoie()` du moteur inchangés, et la suspension du zoom ne s'applique qu'en régime classe.
 **Harnais** : **0 écriture non-GET** sur les bancs téléphone et zoom (compteur affiché). Sur le banc injection, les PUT sont simulés — déclaré ci-dessus.
 
-## ⑧ CE QUI N'EST PAS PROUVÉ
-- **A-3, l'initiale retenue en trame** : le focus va bien aux initiales (mesuré), mais dans ma séquence de banc — deux `blur` programmatiques enchaînés avec un repeint entre les deux — l'initiale saisie n'a pas été retenue. Soit artefact de séquence, soit course avec la recharge de trame. **À vérifier au test réel.**
-- Le comportement de `secuEcrire` face au hub réel, et la corbeille de « Remplacer ».
-- **Et ce qu'aucun banc ne prouvera** : le tactile Android, le clavier mobile, le réseau de l'établissement, le vidéoprojecteur. **Le test de Paul sur ses trois appareils reste le juge.**
+## ⑧ LES TROIS RÉSERVES — SOLDÉES
+
+### 1. A-3, l'initiale retenue en trame — **réserve levée par le professeur, sourcée**
+Mon banc n'avait pas retenu l'initiale saisie. **Paul, 24/08 (verbatim)** : *« ce système fonctionne dans la v8.61.0 qui est en ligne »* — la saisie de l'initiale au téléphone fonctionne donc en usage réel, sur la version en production. L'anomalie était **un artefact de ma séquence de banc** (deux `blur` déclenchés en JavaScript, avec un repeint du prompteur entre les deux : le champ était détruit avant d'avoir rendu sa valeur), et non un défaut du code.
+**Ce que ce lot change sur ce point** : rien du mécanisme d'enregistrement — seulement **où va le focus** (les initiales d'abord) et **où va le curseur** (en fin de champ). Le chemin d'écriture `blur → b.reps[k].i → W.sauve()` est **inchangé à l'octet**.
+*Statut* : levée sur déclaration du professeur, **à contre-vérifier par la conscience** si elle le juge utile ; le banc reste au sas (`tests/banc_lotB_tel.js`), il suffit de l'exercer avec de vraies frappes.
+
+### 2. La corbeille de « Remplacer » — **prouvée au banc** (`tests/banc_lotB_corbeille.js`)
+Deux cas joués sur le candidat, le hub réel jamais touché (écritures interceptées) :
+| cas | mesure |
+|---|---|
+| **archive acceptée** | modale : « … 1 séance et 0 item partent à la corbeille d'abord, puis le chapitre est remplacé » · **1 écriture de corbeille** · message « **Chapitre remplacé. L'ancien est à la corbeille.** » · titre du hub : « … (proposition) » → « **Poésie et peinture au XIXe siècle** » |
+| **archive REFUSÉE** (403 simulé sur `/corbeille/…`) | message « **La mise à la corbeille a échoué — rien n'a été remplacé.** Réessaie quand la connexion est stable. » · **0 écriture hors corbeille** · **chapitre intact** (séance et item d'origine présents) · titre inchangé |
+Le contrat « **archive AVANT, abandon si elle échoue** » (journal du 09/08) est donc tenu, y compris sous refus d'écriture.
+
+### 3. `secuEcrire` face au hub réel — **ce qui reste, et pourquoi c'est acceptable**
+Les bancs interceptent les écritures : **aucune n'a atteint le hub**, c'est la règle du dispositif. Ce qui n'est donc pas éprouvé ici : la latence réelle, les règles Firebase, une coupure en cours d'écriture. **Ce lot ne touche pas `secuEcrire`** ni aucun chemin d'écriture existant — il ajoute `chApresEcriture()` **après** un succès déjà constaté par le code d'origine. Le seul comportement d'échec du périmètre (le refus d'archive ci-dessus) est prouvé. **Aucune dette ouverte de mon fait sur ce point.**
+
+## ⑨ CE QU'AUCUN BANC NE PROUVERA
+Le tactile Android · le clavier mobile (apparition, focus conservé, normalisation HTML au `blur`, autocorrection) · le réseau de l'établissement · le vidéoprojecteur. **Le test de Paul sur ses trois appareils reste le juge.**

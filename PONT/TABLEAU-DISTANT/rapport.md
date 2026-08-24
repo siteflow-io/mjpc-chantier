@@ -109,3 +109,17 @@ BUG DE CLÔTURE (classe test) : la modale « Clore la séance » annonce « Tu a
 instruire sur pièces : un reste de maquette/seed laissé passer · une friction des clics entre
 téléphone/tableau/pilotage (un écho multi-pilotes qui écrit un act) · autre chose. NE PAS CONCLURE
 SANS PIÈCES. Le chantier TÉLÉPHONE-CONFORME est prioritaire dans la reprise de ce dossier.
+
+## COMPLÉMENT DE TEST (Paul, 23/08) + AVEU D'ARBITRAGE DE LA CONSCIENCE n8
+BUG : à la clôture d'une séance, LA VUE TABLEAU NE REVIENT PAS à l'écran d'attente — Paul doit
+actualiser la page. Piste probable (à vérifier sur pièces) : une fois attachée à un cours, la vue
+polle la scène mais ne re-vérifie plus le pointeur cours_actif ; sesCoursFermer l'efface, la vue
+ne le voit jamais.
+LA QUESTION DE PAUL, ET L'AVEU : « pourquoi si différent d'eval-qcm ? » — eval-qcm utilise le SDK
+Firebase (websockets, listeners temps réel : la clôture se propage seule) ; le site parle au hub en
+REST pur, et la conscience n8 a arbitré POLLING en invoquant « les réseaux d'établissement coupent
+les streams » — argument THÉORIQUE, contredit par le terrain de Paul : eval-qcm tourne en classe
+depuis des mois en websocket. L'ARBITRAGE EST À REPRENDRE par la n9 : soit adopter le SDK Firebase
+pour la session (comme eval-qcm : réactivité native, clôture instantanée), soit conserver le REST
+et corriger le polling (re-vérifier cours_actif à chaque cycle). Trancher SUR PIÈCES ET SUR LE
+TERRAIN DE PAUL, pas sur un risque supposé.

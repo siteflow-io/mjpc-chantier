@@ -58,3 +58,38 @@ Le tactile et le clavier Android · le comportement de l'onglet mobile en arriè
 
 ## ⑦ EFFET SUR LE DÉCOUPAGE PROPOSÉ
 Le LOT 1 s'ouvre désormais sur **la normalisation (⑤-1 et ⑤-2)** : sans elle, aucun autre correctif du téléphone ne peut être vu à l'œuvre en classe. Ordre proposé, inchangé pour le reste : **LOT 1** = normalisation + ceinture + A-0 + A-3 + A-4 + A-5 + A-6 + C (**~175 lignes**), **LOT 2** = l'instantané (EventSource, ~125 lignes, latences mesurées 104-128 ms). Les points **B** et **E** se ferment avec le LOT 1 : ils n'avaient pas de cause propre.
+
+---
+# COMPLÉMENT 2 — L'ÉCART 13 / 15 : INSTRUIT ET REPRODUIT (24/08, même jour)
+Le dernier point resté ouvert. **Deux mécanismes composés, chacun prouvé au code et au banc** (`tests/banc_ecart.js`, `banc_ecart2.js`). Toujours aucun correctif codé.
+
+## ① Ce qui n'explique PAS l'écart (écarté sur pièces)
+- **La refusion des fragments** : lecture GET de la trame réelle — `3e ch0 s0`, 15 écrans, **0 écran `suite`, 0 `grp`**. `_drRefusionner` ne réduit donc rien : 15 restent 15.
+- **La bascule de séance** : mesurée au banc (S4 de 13 écrans → S2 de 15) — le moteur recharge correctement (13 → 15, `act0` conforme). Pas de fuite d'une séance à l'autre.
+
+## ② Mécanisme A — la copie jouée n'est **jamais** rafraîchie
+`atDrJouer` (prod L~14570) : `if(!sce.deroule_joue[classeSlug]){ …création… }` puis `return sce.deroule_joue[classeSlug];` — **si une copie existe déjà pour cette classe (cours antérieur), c'est elle qui est rejouée**, et `atDrJouerClic` la passe telle quelle à `dr_ouvrir(…, copie.ecrans, …)`.
+**Reproduit** : copie jouée préexistante de 13 écrans, préparation différente → moteur à **13 écrans**, badge **« écran 1 / 13 »** — le badge même de la capture 1.
+
+## ③ Mécanisme B — le jeton de rechargement ignore le CONTENU
+`dr_ouvrir` (L14933+) : `var jeton=[level, chnum, snum, classe, joué].join('|')` puis `if(DR.__charge!==jeton){ … dr_chargerTrame(ecrans) }`. **Le jeton ne porte rien de la trame.** Trame changée à jeton identique ⇒ jamais rechargée.
+**Reproduit, chiffres du banc** :
+| étape | trame de vérité (mémoire + hub) | moteur | badge |
+|---|---|---|---|
+| séance lancée | 15 écrans | 15 (`S0-écran 0`) | « écran 1 / 15 » |
+| la trame change ailleurs (13 écrans, `NEUF-0`) | **13** | **15** (`S0-écran 0`) | « écran 1 / 15 » |
+| retour à l'onglet Déroulé | 13 | **15** | « écran 1 / 15 » |
+| aller-retour S4 → S2 (jeton reconstitué à l'identique) | 13 | **15** | « écran 1 / 15 » |
+Le moteur peut donc rester **indéfiniment** sur une trame périmée. Rien, dans l'interface, ne le signale.
+
+## ④ Pourquoi cela vise la session multi-appareils en particulier
+Le téléphone et la vue tableau relisent `ecrans.json` **au montage** (L16056, L16173) et à chaque `trameMaj` (L15903) : ils ont la version fraîche. Le pilote, lui, garde la sienne. **Les indices cessent alors de désigner les mêmes écrans** : `sesAppliquer` pose `rev`/`vues` sur un autre écran que celui que le geste visait, et `lire()` écrase — c'est le second moteur des modifications fantômes de la capture 3, en plus de l'exception de rendu du complément 1.
+
+## ⑤ Correctifs proposés (non codés)
+1. **Le jeton porte le contenu** : y ajouter une empreinte de trame (longueur + `maj`, ou une empreinte courte des `act`) — `dr_ouvrir` recharge dès que la trame change réellement, sans rien recharger inutilement. **~6 lignes**, `dr_ouvrir` seul.
+2. **Le lancement déclare la copie préexistante** — *arbitrage requis*. Le principe gravé (« une trame modifiée ne touche JAMAIS une séance déjà jouée ») **interdit** de rafraîchir la copie en silence. Proposition : au lancement, si une copie existe pour cette classe et que la préparation a changé depuis `demarreLe`, **le dire au professeur** et lui laisser le choix — « reprendre la copie du <heure> » / « repartir de ma préparation ». Jamais d'écrasement muet, dans un sens ni dans l'autre. **~25 lignes**, `atDrJouer` + `atDrJouerClic` + une modale.
+3. **Le pilote se resynchronise comme les autres** : hors session, rien ne le fait ; en session, `sesPollPilote` le fait déjà sur `trameMaj`. Le correctif ① suffit si la trame de vérité est relue à l'ouverture de l'onglet.
+
+## ⑥ Effet sur le découpage
+Ces deux mécanismes rejoignent le **LOT 1** : ils produisent les mêmes symptômes que l'exception de rendu et se corrigent au même endroit (le chargement de trame). LOT 1 révisé : normalisation des blocs + ceinture + **jeton de contenu** + **déclaration de la copie préexistante** + A-0 + A-3 + A-4 + A-5 + A-6 + C — **~205 lignes**. LOT 2 (l'instantané) inchangé.
+**Plus aucun point du mandat de reprise n'est en suspens.**

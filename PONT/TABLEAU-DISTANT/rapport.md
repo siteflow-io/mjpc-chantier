@@ -79,3 +79,7 @@ Nouveau md5 après correctif : voir promotion.
 ## DETTE (23/08, mot de Paul) : LA SÉQUENCE DE TEST 3 APPAREILS EST EN ATTENTE
 À ressortir à Paul une fois réglé un point non abouti du PROCESSUS DE CRÉATION DE CHAPITRE
 (nécessaire pour tester : il faut un chapitre). La séquence complète est au §tests de ce rapport.
+## DETTE (23/08, mot de Paul) : LA SÉQUENCE DE TEST 3 APPAREILS EST EN ATTENTE.
+À ressortir à Paul une fois réglé le point non abouti du PROCESSUS DE CRÉATION DE CHAPITRE
+(prérequis du test : il faut un chapitre pour jouer une séance). La séquence complète vit
+dans ce rapport, section « séquence de test manuelle ».

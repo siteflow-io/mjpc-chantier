@@ -83,3 +83,16 @@ Nouveau md5 après correctif : voir promotion.
 À ressortir à Paul une fois réglé le point non abouti du PROCESSUS DE CRÉATION DE CHAPITRE
 (prérequis du test : il faut un chapitre pour jouer une séance). La séquence complète vit
 dans ce rapport, section « séquence de test manuelle ».
+## TEST RÉEL DE PAUL (23/08, 3 appareils, CLASSE TEST) — CONSTATS À CORRIGER (8.60.x)
+DOCTRINE CLARIFIÉE PAR PAUL : « le téléphone doit faire EXACTEMENT ce que font les fonctions du
+pilotage sur ordi. RIEN DE PLUS, RIEN DE MOINS. »
+KO constatés au téléphone : les flèches de dévoilement (diagnostic de Paul : lié au dévoilement
+lui-même et au statut non grisé des éléments côté téléphone) · les 4 boutons de navigation ·
+l ajout d une réponse d élève sur un écran · le chrono · le stylo (fonction illisible pour Paul).
+FONCTIONNE MAIS À AMÉLIORER : la participation — les élèves en CARTES : simple à 5 (classe test),
+IMPOSSIBLE à 30. Prévoir une liste dense.
+BUG DE CLÔTURE : à la clôture avec CLASSE TEST, le bilan annonce « Tu as modifié 1 chose »
+(Question-bilan : « Les hypothèses de la classe → Question-bilan ») alors que Paul n a RIEN modifié.
+Trois hypothèses de Paul à instruire sur pièces : (a) un reste de la maquette passé à l audit ;
+(b) une friction des clics entre téléphone/tableau/pilotage ; (c) autre chose. PREMIÈRE ACTION du
+correctif : reproduire au banc 3 pages et tracer QUI écrit cette modification fantôme.

@@ -76,3 +76,6 @@ prénom après, le +1 du téléphone vu au pilote · écritures depuis la vue : 
 reprise : état retrouvé identique, scène jamais écrasée · pageerrors 0/0/0. Les mesures de l exécutant
 sont CONFIRMÉES par un second run indépendant.
 Nouveau md5 après correctif : voir promotion.
+## DETTE (23/08, mot de Paul) : LA SÉQUENCE DE TEST 3 APPAREILS EST EN ATTENTE
+À ressortir à Paul une fois réglé un point non abouti du PROCESSUS DE CRÉATION DE CHAPITRE
+(nécessaire pour tester : il faut un chapitre). La séquence complète est au §tests de ce rapport.

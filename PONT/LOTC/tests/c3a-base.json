@@ -1,0 +1,122 @@
+{
+  "etiquette": "base",
+  "fichier": "prod/index.html",
+  "cadrePret": true,
+  "ecransCharges": 4,
+  "monteErr": "TypeError: W.rendre is not a function",
+  "cle": {
+    "err": "ReferenceError: _drCleHeureDe is not defined"
+  },
+  "dup": {
+    "nAvant": 4,
+    "nApres": 5,
+    "identites": 5,
+    "doublons": 1,
+    "originalGardeLaSienne": true,
+    "copiePorteUneIdentiteNEUVE": false,
+    "copieDevoilementAZero": true,
+    "copieFragmentEfface": true,
+    "copieIdsDeBlocsDistincts": true
+  },
+  "resize": {
+    "grandAvant": {
+      "total": 5,
+      "suites": 1,
+      "i": 2
+    },
+    "reduit": {
+      "total": 6,
+      "suites": 2,
+      "i": 3
+    },
+    "reGrandApres": {
+      "total": 6,
+      "suites": 2,
+      "i": 3
+    },
+    "filsNesDeLaReduction": 1,
+    "filsSurvivantApresRetour": 1
+  },
+  "quatre": {
+    "totalPilote": 6,
+    "iFils": 2,
+    "morceauEmis": 1,
+    "eidEmis": "emt7e8zplyso8d",
+    "eidDuPere": "emt7e8zplyso8d",
+    "memeIdentite": true,
+    "revEmis": 2,
+    "revDuFilsBrut": 2,
+    "blocsDuPereTronque": 1,
+    "blocsDuPereEntier": 2,
+    "revSiOnAvaitEmisToutLEcran": 3,
+    "neDevoilePasToutLEcran": true,
+    "vuesEmises": {
+      "0": 0
+    },
+    "photo": {
+      "ecran": 2,
+      "eid": "emt7e8zplyso8d",
+      "morceau": 1,
+      "rev": 2,
+      "vues": {
+        "0": 0
+      },
+      "gele": false,
+      "fiche": null,
+      "ficheEid": null,
+      "chrono": {
+        "visible": false,
+        "txt": "07:00"
+      },
+      "quiOn": false,
+      "qui": null,
+      "trameMaj": 0,
+      "origine": "ap_mt7e8rdq_hvfwl",
+      "ts": 1787585496929
+    }
+  },
+  "vue_tableau": {
+    "vue": "tableau",
+    "cadre": true,
+    "ecrans": 4,
+    "i": 1,
+    "rev": 2,
+    "eidLocal": "emt7e8zplyso8d",
+    "suites": 0,
+    "ecrituresSorties": 0,
+    "tabErr": null,
+    "texteProjete": "MISE EN COMMUN 🎯 On met en commun les réponses de l'interro de cours, une par une, en justifiant à chaque fois par une citation précise du texte étudié la semaine dernière."
+  },
+  "vue_tel": {
+    "vue": "tel",
+    "cadre": true,
+    "ecrans": 4,
+    "i": 1,
+    "rev": 2,
+    "eidLocal": "emt7e8zplyso8d",
+    "suites": 0,
+    "ecrituresSorties": 0,
+    "tabErr": null,
+    "texteProjete": null
+  },
+  "enchainement": {
+    "pointeurApresLancement1": true,
+    "classe1": "c3a",
+    "cle1": "2026-08-24_10h07-11h02_c3a",
+    "trace1Close": true,
+    "pointeurEfface": false,
+    "pointeurApresLancement2": "c3b",
+    "err": "ReferenceError: sesReprisePeindre is not defined"
+  },
+  "clotureVolontaire": {
+    "pointeurAvant": true,
+    "classeDesignee": "c3b",
+    "pointeurApres": false,
+    "veilleTrouveUnCours": false
+  },
+  "ecritures": {
+    "nonGETsimulees": 14,
+    "sortiesReelles": 0
+  },
+  "pageerrors": []
+}

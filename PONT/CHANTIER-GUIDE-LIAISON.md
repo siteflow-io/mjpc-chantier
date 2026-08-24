@@ -15,3 +15,19 @@ LA CIBLE (à valider par Paul avant code) :
 4. L élément cesse de clignoter une fois lié (existant, conservé).
 PREMIÈRE ACTION : vérifier sur pièces ce que le JSON injecté porte réellement par item (ref ? note ?
 type source ?) et ce que le clic du clignotant fait aujourd hui, avant tout code.
+
+## INSTRUCTION SUR PIÈCES (conscience n8, fondée sur le code prod L8057-8100, L8233)
+LE MÉCANISME RÉEL : un item est « à lier » quand source==='firebase_app' && !ref (L8079).
+LA LIAISON = ÉCRIRE DANS ref L IDENTIFIANT INTERNE de l objet cible (l ID d une dictée de
+correction_dictee, d un QCM, d une feuille de l atelier) — JAMAIS une liaison par titre (rappel
+de Paul : les objets ont des identifiants internes ; le titre n est qu un affichage).
+CE QUI EST DÉJÀ PERSISTÉ dans l item injecté : title, subtitle (= le « pourquoi » de la détection),
+kind (= l outil attendu : doc, dictee, qcm, reecriture, tache). Le JSON v3 porte en plus un bloc
+aLier {seance_cle, item, outil, pourquoi}. L INFORMATION N EST DONC PAS PERDUE DANS LES DONNÉES —
+elle est perdue À L INTERFACE : le clignotant de l arborescence n affiche ni le pourquoi ni l outil,
+et le sélecteur ne filtre pas par kind.
+LA CIBLE RECTIFIÉE : au clic du clignotant → panneau qui affiche kind + subtitle (le guide), et la
+liste des objets candidats DE LA BONNE APP identifiés par leurs IDs internes ; la liaison écrit l ID
+dans ref. Un tri d affichage par similarité de titre est permis comme confort, JAMAIS comme mécanisme.
+PREMIÈRE ACTION D EXÉCUTION : visualiser le panneau de liaison ACTUEL au banc (ce que le clic fait
+aujourd hui — non encore visualisé par la conscience, budget de session épuisé) avant tout code.

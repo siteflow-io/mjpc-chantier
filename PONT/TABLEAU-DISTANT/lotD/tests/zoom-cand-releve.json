@@ -1,0 +1,87 @@
+[
+ {
+  "cran": 1,
+  "pilote": {
+   "iz": 0,
+   "pt": 24,
+   "px": 14.931,
+   "boite": 356
+  },
+  "tableau": {
+   "iz": 1,
+   "pt": 32,
+   "pxToile": 43.008,
+   "pxConsigne": 45.1584,
+   "hauteurToile": 768
+  },
+  "ecransPilote": 14
+ },
+ {
+  "cran": 2,
+  "pilote": {
+   "iz": 1,
+   "pt": 32,
+   "px": 19.908,
+   "boite": 356
+  },
+  "tableau": {
+   "iz": 1,
+   "pt": 32,
+   "pxToile": 43.008,
+   "pxConsigne": 45.1584,
+   "hauteurToile": 768
+  },
+  "ecransPilote": 14
+ },
+ {
+  "cran": 3,
+  "pilote": {
+   "iz": 2,
+   "pt": 38,
+   "px": 23.6408,
+   "boite": 356
+  },
+  "tableau": {
+   "iz": 1,
+   "pt": 32,
+   "pxToile": 43.008,
+   "pxConsigne": 45.1584,
+   "hauteurToile": 768
+  },
+  "ecransPilote": 15
+ },
+ {
+  "cran": 4,
+  "pilote": {
+   "iz": 3,
+   "pt": 44,
+   "px": 27.3735,
+   "boite": 356
+  },
+  "tableau": {
+   "iz": 1,
+   "pt": 32,
+   "pxToile": 43.008,
+   "pxConsigne": 45.1584,
+   "hauteurToile": 768
+  },
+  "ecransPilote": 16
+ },
+ {
+  "cran": 5,
+  "pilote": {
+   "iz": 4,
+   "pt": 52,
+   "px": 32.3505,
+   "boite": 356
+  },
+  "tableau": {
+   "iz": 1,
+   "pt": 32,
+   "pxToile": 43.008,
+   "pxConsigne": 45.1584,
+   "hauteurToile": 768
+  },
+  "ecransPilote": 16
+ }
+]

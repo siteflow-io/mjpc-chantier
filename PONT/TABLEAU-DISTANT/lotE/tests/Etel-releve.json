@@ -3,7 +3,7 @@
   "cran": 5,
   "mur": {
    "px": 69.615,
-   "signes": 136,
+   "signes": 204,
    "iz": 4
   },
   "telIntact": true,
@@ -13,7 +13,7 @@
   "cran": 1,
   "mur": {
    "px": 32.13,
-   "signes": 523,
+   "signes": 311,
    "iz": 0
   },
   "telIntact": true,
@@ -23,7 +23,7 @@
   "cran": 4,
   "mur": {
    "px": 58.905,
-   "signes": 306,
+   "signes": 311,
    "iz": 3
   },
   "telIntact": true,
@@ -32,6 +32,6 @@
  {
   "pas": "téléphone seul",
   "rogne": false,
-  "signes": 136
+  "signes": 204
  }
 ]

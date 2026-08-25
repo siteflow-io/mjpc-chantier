@@ -1,0 +1,26 @@
+— LE DERNIER GESTE GAGNE, D'OÙ QU'IL VIENNE —
+  ① — PC pose le cran 5 :
+    MUR      iz=4 · 69.6 px ✔
+    RÉGLETTE PC  = cran 5 («52 pt») · moteur iz=4
+    RÉGLETTE TÉL = cran 5 («52 pt») · moteur du tél iz=1 (inchangé)
+    10 cycles de sondage : [4,4,4,4,4,4,4,4,4,4] → AUCUNE OSCILLATION ✔
+    les deux réglettes au cran courant : ✔
+  ② — TÉL pose le cran 2 :
+    MUR      iz=1 · 42.8 px ✔
+    RÉGLETTE PC  = cran 2 («32 pt») · moteur iz=1
+    RÉGLETTE TÉL = cran 2 («32 pt») · moteur du tél iz=1 (inchangé)
+    10 cycles de sondage : [1,1,1,1,1,1,1,1,1,1] → AUCUNE OSCILLATION ✔
+    les deux réglettes au cran courant : ✔
+  ③ — PC pose le cran 4 :
+    MUR      iz=3 · 58.9 px ✔
+    RÉGLETTE PC  = cran 4 («44 pt») · moteur iz=3
+    RÉGLETTE TÉL = cran 4 («44 pt») · moteur du tél iz=1 (inchangé)
+    10 cycles de sondage : [3,3,3,3,3,3,3,3,3,3] → AUCUNE OSCILLATION ✔
+    les deux réglettes au cran courant : ✔
+
+  moteur du téléphone : iz=1 au départ → iz=1 à la fin   ✔ son affichage n'a jamais bougé
+  suite des crans au mur : 5 → 2 → 4 (attendu 5 → 2 → 4)
+
+═══ COMPTES ═══
+  épreuves : 3 · en échec : 0
+  écritures sorties : 0 (interceptées : 11) · pageerrors : 0

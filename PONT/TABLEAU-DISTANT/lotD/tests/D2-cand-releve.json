@@ -1,0 +1,141 @@
+{
+ "lignes": [
+  {
+   "pas": "zoomé, écran 1",
+   "pilote": {
+    "i": 0,
+    "act": "Heure 1 · Analyse d'images : la routine",
+    "suite": 0,
+    "rev": 0,
+    "nb": 15,
+    "gele": false
+   },
+   "tableau": {
+    "i": 0,
+    "act": "Heure 1 · Analyse d'images : la routine",
+    "nb": 14
+   },
+   "projete": 92,
+   "accord": true
+  },
+  {
+   "pas": "dévoilé ×8 (morceau 2 ou 3)",
+   "pilote": {
+    "i": 2,
+    "act": "Heure 1 · Analyse d'images : la routine",
+    "suite": 2,
+    "rev": 2,
+    "nb": 18,
+    "gele": false
+   },
+   "tableau": {
+    "i": 0,
+    "act": "Heure 1 · Analyse d'images : la routine",
+    "nb": 14
+   },
+   "projete": 463,
+   "accord": true
+  },
+  {
+   "pas": "replié ×3",
+   "pilote": {
+    "i": 1,
+    "act": "Heure 1 · Analyse d'images : la routine",
+    "suite": 1,
+    "rev": 2,
+    "nb": 18,
+    "gele": false
+   },
+   "tableau": {
+    "i": 0,
+    "act": "Heure 1 · Analyse d'images : la routine",
+    "nb": 14
+   },
+   "projete": 293,
+   "accord": true
+  },
+  {
+   "pas": "replié ×6",
+   "pilote": {
+    "i": 0,
+    "act": "Heure 1 · Analyse d'images : la routine",
+    "suite": 0,
+    "rev": 2,
+    "nb": 18,
+    "gele": false
+   },
+   "tableau": {
+    "i": 0,
+    "act": "Heure 1 · Analyse d'images : la routine",
+    "nb": 14
+   },
+   "projete": 186,
+   "accord": true
+  },
+  {
+   "pas": "dézoomé au cran 2",
+   "pilote": {
+    "i": 0,
+    "act": "Heure 1 · Analyse d'images : la routine",
+    "suite": 0,
+    "rev": 2,
+    "nb": 14,
+    "gele": false
+   },
+   "tableau": {
+    "i": 0,
+    "act": "Heure 1 · Analyse d'images : la routine",
+    "nb": 14
+   },
+   "projete": 186,
+   "accord": true
+  },
+  {
+   "pas": "dégelé — rattrapage",
+   "pilote": {
+    "i": 4,
+    "act": "Heure 1 · Analyse d'images : la routine",
+    "suite": 4,
+    "rev": 2,
+    "nb": 18,
+    "gele": false
+   },
+   "tableau": {
+    "i": 0,
+    "act": "Heure 1 · Analyse d'images : la routine",
+    "nb": 14
+   },
+   "projete": 615,
+   "accord": true
+  },
+  {
+   "pas": "page tableau rouverte",
+   "pilote": {
+    "i": 4,
+    "act": "Heure 1 · Analyse d'images : la routine",
+    "suite": 4,
+    "rev": 2,
+    "nb": 18,
+    "gele": false
+   },
+   "tableau": {
+    "i": 0,
+    "act": "Heure 1 · Analyse d'images : la routine",
+    "nb": 14
+   },
+   "projete": 615,
+   "accord": true
+  }
+ ],
+ "ctx": {
+  "niveau": "3e",
+  "chapitre": "0",
+  "seance": "0",
+  "classeSlug": "3E Charles de Gaulle",
+  "classeNom": "3E Charles de Gaulle",
+  "debut": "10:07",
+  "fin": "11:02",
+  "ts": 1787658767584
+ },
+ "erreurs": []
+}

@@ -1,0 +1,11 @@
+fenêtre tableau LOCALE ouverte : Tableau — MJPC
+— la fenêtre tableau LOCALE, cran par cran —
+  cran 1 (24 pt) : tableau LOCAL → 25.2 px · consigne 26.5 px (fenêtre 600 px) | écrans pilote : 14
+  cran 2 (32 pt) : tableau LOCAL → 33.6 px · consigne 35.3 px (fenêtre 600 px) | écrans pilote : 14
+  cran 3 (38 pt) : tableau LOCAL → 39.9 px · consigne 41.9 px (fenêtre 600 px) | écrans pilote : 15
+  cran 4 (44 pt) : tableau LOCAL → 46.2 px · consigne 48.5 px (fenêtre 600 px) | écrans pilote : 16
+  cran 5 (52 pt) : tableau LOCAL → 54.6 px · consigne 57.3 px (fenêtre 600 px) | écrans pilote : 16
+
+═══ VERDICT ═══
+  tailles de police au tableau LOCAL : [25.2,33.6,39.9,46.2,54.6]
+  → LE TABLEAU LOCAL SUIT LA RÉGLETTE (5 tailles distinctes).

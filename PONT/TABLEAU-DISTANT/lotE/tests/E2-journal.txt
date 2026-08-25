@@ -1,0 +1,24 @@
+— ① UN ÉCRAN CHARGÉ, DÉVOILÉ À FOND, AU CRAN 1 —
+  pilote i=0/14 suite=0 rev=2
+  mur au cran 1 : 43.0 px · 523 signes · contenu 601 px / boîte 768 px  ✔ tient
+  fin de ce que la classe lit : «…n, 5 lignes).Étape 6 : J'expose mon hypothèse à l'oral.»
+
+— ② VOIE (i) : le mur reçoit le cran et se compose seul, MÊME contenu dévoilé —
+  cran 2 (32 pt) : 43.0 px · écrans 14→14 · contenu 601 px / boîte 768 px   ✔ tient · 3 éléments dont 3 visibles
+  cran 3 (38 pt) : 51.1 px · écrans 14→14 · contenu 778 px / boîte 768 px   ⚠ ROGNÉ de 10 px — 0 bloc(s) hors champ · 3 éléments dont 3 visibles
+  cran 4 (44 pt) : 59.1 px · écrans 14→14 · contenu 1171 px / boîte 768 px   ⚠ ROGNÉ de 403 px — 0 bloc(s) hors champ · 3 éléments dont 3 visibles
+  cran 5 (52 pt) : 69.9 px · écrans 14→14 · contenu 1434 px / boîte 768 px   ⚠ ROGNÉ de 666 px — 0 bloc(s) hors champ · 3 éléments dont 3 visibles
+
+— ③ VOIE (ii) : au cran 5, le PILOTE scinde. Son morceau tient-il au mur ? —
+  pilote au cran 5 : i=0/15 · le groupe compte 2 morceaux
+    morceau 0 : 1 bloc(s), 272 signes de matière
+    morceau 1 : 1 bloc(s), 267 signes de matière
+  → le pilote compose avec TOUT son contenu (dévoilé + grisé) ; le mur ne peint que le dévoilé.
+    Le morceau du pilote est donc TOUJOURS ≤ ce que le mur peut afficher au même cran, à boîte homothétique.
+
+— ④ LE TÉLÉPHONE (?vue=tel) —
+  cadre moteur du téléphone : {"w":0,"h":0,"display":"none"}
+  iz=1 · écrans=14 · i=0
+  palette (9 boutons) : ["◀replier","▶dévoiler","⏮écran préc.","⏭écran suiv.","❄gel","✍️à écrire","⏱chrono","📺au tableau","🙋qui a participé"]
+  → un cadre de hauteur 0 px : le moteur du téléphone NE PEUT PAS mesurer un débordement,
+    donc il NE SCINDE JAMAIS. Quand le téléphone pilote, la scène porte toujours morceau=0.

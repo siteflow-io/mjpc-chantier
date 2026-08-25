@@ -15454,6 +15454,49 @@ function _drEnvelopper(){
       return r;
     };
   }
+  /* ═══ [LOT E · COMPLÉMENT] LE FILET DE LA FENÊTRE TABLEAU LOCALE (Windows+K) ═══
+     À QUOI ÇA SERT EN CLASSE : la fenêtre projetée ne doit JAMAIS couper une étape.
+     Le mur distant a ce filet depuis ce lot ; la fenêtre locale ne l'avait pas, et
+     c'était une dette déclarée — Paul ne promeut pas avec une dette.
+     DEUX CAUSES, DEUX PARADES, ni l'une ni l'autre dans le moteur :
+     ① la fenêtre n'est pas en 16/9 (glissée, pas en plein écran, écran 16/10) : le
+        gabarit `.e` a une hauteur ET une largeur imposées, il se DÉFORME, le texte
+        se recompose sur moins de largeur et déborde. On le CONTIENT au format de
+        l'écran de contrôle — des bandes, comme un diaporama, jamais de déformation.
+        Sur une fenêtre déjà 16/9, cette règle ne change rien : mesuré.
+     ② la cascade de `degorge` ne vérifie que l'écran courant (la garde ci-dessous le
+        ramène au père à chaque tour) : un morceau suivant peut déborder. On MESURE
+        CE QUI EST PEINT dans la fenêtre — pas ce que compose le cadre, qui rend
+        l'écran entier, grisé compris — et on ne recoupe que si la classe perdrait
+        vraiment quelque chose. Le professeur ne bouge pas : la garde restaure son
+        rang. La vue distante est exclue : elle a déjà son propre filet. ═══════════ */
+  if(!W.__filetTableau && typeof W.envoie==='function' && SES.mode!=='tableau'){
+    W.__filetTableau=true;
+    var _envoieNu2=W.envoie;
+    W.envoie=function(){
+      var r=_envoieNu2.apply(W,arguments);
+      try{
+        var _wi=W.win;
+        if(_wi && !_wi.closed && !W.gele){
+          var _D=_wi.document, _t=_D&&_D.getElementById('t');
+          if(_t){
+            if(!_D.getElementById('mjpc-contenir')){
+              var _st=_D.createElement('style'); _st.id='mjpc-contenir';
+              _st.textContent='.e{height:auto;width:min(100vw,calc(100vh*16/9));max-width:100vw;max-height:100vh}';
+              (_D.head||_D.body).appendChild(_st);
+            }
+            var _bas=0, _en=_t.children;
+            for(var _k=0;_k<_en.length;_k++){ var _b=_en[_k].offsetTop+_en[_k].offsetHeight; if(_b>_bas)_bas=_b; }
+            if(_bas>_t.clientHeight+4 && !W.__filetEnCours && (W.__filetTours|0)<8){
+              W.__filetEnCours=true; W.__filetTours=(W.__filetTours|0)+1;
+              setTimeout(function(){ try{ W.degorge(true); }catch(e1){} W.__filetEnCours=false; },0);
+            } else if(_bas<=_t.clientHeight+4){ W.__filetTours=0; }
+          }
+        }
+      }catch(e2){}
+      return r;
+    };
+  }
   if(!W.__scissionGarde && typeof W.degorge==='function'){
     W.__scissionGarde=true;
     var _vraiDegorge=W.degorge;
@@ -16655,16 +16698,31 @@ function _sesRangLocal(o,W){
 }
 function sesAppliquer(o){
   var W=drWin(); if(!W)return;
-  /* [LOT E] on ADOPTE le cran et les proportions reçus — on ne les applique PAS à
-     son propre rendu : au PC la réglette reste où le professeur l'a mise, au
-     téléphone l'affichage ne bouge pas. C'est ce qui empêche deux pilotes de se
-     voler le zoom du mur à chaque geste. */
+  SES.applique=true;
+  /* ═══ [LOT E · COMPLÉMENT] LA RÈGLE DU ZOOM ENTRE PLUSIEURS PILOTES ═══
+     LE DERNIER GESTE GAGNE, D'OÙ QU'IL VIENNE : toute surface adopte le cran reçu
+     et le montre sur sa réglette, personne ne réimpose le sien.
+     Ce que ça change en classe : Paul est au fond de la salle, il pousse la réglette
+     du téléphone ; le mur grossit ET la réglette du PC resté sur le bureau affiche
+     le même cran — son écran de contrôle ne ment jamais sur ce que voit la classe.
+     Le PC applique donc le cran adopté à son propre rendu (par sa réglette, comme si
+     la main l'avait poussée) : c'est « ce que je vois dans mon écran de contrôle est
+     ce qui est au tableau, tel quel ». Le TÉLÉPHONE, lui, ne bouge que son étiquette :
+     son prompteur n'est pas un tableau. Pas d'oscillation possible : chaque surface
+     ADOPTE au lieu de réimposer, donc la valeur reçue est celle qu'elle réémettra. */
   try{
-    if(o&&o.iz!==undefined&&o.iz!==null){ SES.cran=o.iz|0;
-      if(SES.mode==='tel')sesTelMajCran(); }
+    if(o&&o.iz!==undefined&&o.iz!==null){
+      SES.cran=o.iz|0;
+      if(SES.mode==='tel')sesTelMajCran();
+      else if((W.iz|0)!==(SES.cran|0)){
+        var _rz=W.document.getElementById('rz');
+        SES.izVu=SES.cran|0;                      /* adopté, pas un geste local : la réglette ne « re-gagne » pas */
+        if(_rz){ _rz.value=String(SES.cran|0); try{ W.zoom(); }catch(e0){} }
+        else { W.iz=SES.cran|0; }
+      }
+    }
     if(o&&o.ratio)SES.ratio=o.ratio;
   }catch(eZ){}
-  SES.applique=true;
   try{
     var _n=_sesRangLocal(o,W);   /* [LOT C2 \u2462.5] */
     var e=W.ECRANS&&W.ECRANS[_n];

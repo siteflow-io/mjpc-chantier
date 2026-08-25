@@ -1,0 +1,22 @@
+— ① ZOOM MAXIMAL, puis DÉVOILER jusque dans le 2e morceau —
+  [zoomé, écran 1] pilote i=0/15 «Heure 1 · Analyse d'images : la routine» suite=0 | tableau i=0/14 «Heure 1 · Analyse d'images : la routine» | projeté 92 signes   ✔
+  [dévoilé ×8 (morceau 2 ou 3)] pilote i=2/18 «Heure 1 · Analyse d'images : la routine» suite=2 | tableau i=0/14 «Heure 1 · Analyse d'images : la routine» | projeté 463 signes   ✔
+— ② REPLIER : le sens inverse, exigé par le mandat —
+  [replié ×3] pilote i=1/18 «Heure 1 · Analyse d'images : la routine» suite=1 | tableau i=0/14 «Heure 1 · Analyse d'images : la routine» | projeté 293 signes   ✔
+  [replié ×6] pilote i=0/18 «Heure 1 · Analyse d'images : la routine» suite=0 | tableau i=0/14 «Heure 1 · Analyse d'images : la routine» | projeté 186 signes   ✔
+— ③ DÉZOOM : les fils meurent, le tableau ne doit pas bouger —
+  [dézoomé au cran 2] pilote i=0/14 «Heure 1 · Analyse d'images : la routine» suite=0 | tableau i=0/14 «Heure 1 · Analyse d'images : la routine» | projeté 186 signes   ✔
+  tableau avant dézoom : 186 signes · après : 186   ✔ INCHANGÉ
+— ④ GEL : le tableau garde son image, le pilote navigue —
+  [avant gel] pilote i=2/18 «Heure 1 · Analyse d'images : la routine» suite=2 | tableau i=0/14 «Heure 1 · Analyse d'images : la routine» | projeté 463 signes   ✔
+  [gelé, pilote avancé] pilote i=4/18 «Heure 1 · Analyse d'images : la routine» suite=4 | tableau i=0/14 «Heure 1 · Analyse d'images : la routine» | projeté 463 signes   ✔
+  image sous gel : 463 → 463   ✔ FIGÉE
+  [dégelé — rattrapage] pilote i=4/18 «Heure 1 · Analyse d'images : la routine» suite=4 | tableau i=0/14 «Heure 1 · Analyse d'images : la routine» | projeté 615 signes   ✔
+— ⑤ REPRISE À FROID de la page tableau, en pleine séance —
+  [page tableau rouverte] pilote i=4/18 «Heure 1 · Analyse d'images : la routine» suite=4 | tableau i=0/14 «Heure 1 · Analyse d'images : la routine» | projeté 615 signes   ✔
+  le pilote était sur i=4 («Heure 1 · Analyse d'images : la routine») ; la page rouverte montre «Heure 1 · Analyse d'images : la routine»   ✔ BON ÉCRAN RETROUVÉ
+
+═══ COMPTES ═══
+  pas relevés       : 7 · en décalage : 0
+  écritures sorties : 0 (interceptées : 17)
+  pageerrors        : 0 []

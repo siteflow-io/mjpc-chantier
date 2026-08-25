@@ -83,7 +83,9 @@ Empreinte du prompteur et des cartes **identique** à chaque geste ; `W.zoom()` 
 Mesuré sur la page en fonctionnement : `opacity: 0` · `pointer-events: none` · `left: -30000px` · `z-index: -1` · `tabindex: -1` · `aria-hidden: true`. Il ne sert qu'à mesurer un débordement ; il n'est jamais montré, jamais cliquable, jamais focusable.
 
 ### Le pilotage PC et le tableau local : inchangés
-Fenêtre locale, production **et** candidat : **30,2 · 40,3 · 47,9 · 55,4 · 65,5 px** aux cinq crans — identiques. Aucune fonction du pilotage n'est touchée (tailles au §①). Capture des trois surfaces : `E-trois-surfaces-16-9.png`.
+Fenêtre locale, production **et** candidat : **30,2 · 40,3 · 47,9 · 55,4 · 65,5 px** aux cinq crans — identiques. Aucune fonction du pilotage n'est touchée (tailles au §①). Capture côte à côte : `E-local-contre-distant.png` (cran 5 : 65,5 px / 201 signes contre 69,6 px / 201 signes, même texte).
+
+**Une capture écartée, et pourquoi** : le montage à trois surfaces que j'avais produit montrait, côté pilote, la **modale de fin d'heure (T-5)** ouverte par le banc — l'écran de contrôle était masqué. Je l'ai regardée avant de livrer (addendum du 20/08 ⑥) et je l'ai retirée plutôt que de la laisser au sas : une capture qu'on ne peut pas comparer n'est pas une preuve. La comparaison décisive est local contre distant, et elle est lisible.
 
 ## ⑤ MATRICE ACTIONS × ÉTAT (`PASSATION §⑦`) — ligne à ligne
 | ligne | ce que ce lot y change | état mesuré |

@@ -1,0 +1,6 @@
+# MICRO 8.70.1 — « CRÉER UN DOUBLE » : LE NOUVEAU CHAPITRE APPARAÎT SANS RECHARGER (conscience n°10, 26/08/2026)
+Pour la classe (Paul, 25/08) : « quand je clique sur garder en doublon, j'ai exactement le même comportement qu'avant : il faut que je recharge la page pour que le nouveau chapitre apparaisse. »
+Base : 8.70.0 md5 2cbd75cd4d0a6262a71adf1d9106c975. Candidat : md5 f9f9d75a1819eaef9de527fbf0b6fd81, 1 522 774 o, 7 lignes de diff (une ligne exécutable + commentaire + version). Moteur intact, secu 29, published 97, node --check vert.
+Cause (sur pièces) : la garde de 8.59.1 dans atChargerChapitres (« un niveau chargé ne se recharge jamais tout seul ») rendait muette l'invalidation de chApresEcriture (LOT B ⓓ, 8.62.0) dès que le niveau avait un chapitre en mémoire. Correctif : chApresEcriture vide chapitresData[niv] avant de recharger — une lecture, puis la garde reprend son rôle.
+Preuves (banc à faux hub en arbre, parcours par clics, voie « créer un double ») : 8.70.0 → 1 carte avant, 1 après sans recharger, 2 après rechargement ; 8.70.1 → 1 avant, **2 sans recharger**, 2 après. Non-régression boucle : niveau 5e, trois chApresEcriture consécutives → exactement 3 lectures puis silence sur 12 s (aucune boucle).
+Point de retour : 8.70.0.

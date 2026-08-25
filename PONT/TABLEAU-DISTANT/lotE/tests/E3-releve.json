@@ -1,0 +1,200 @@
+[
+ {
+  "cran": 1,
+  "pilote": {
+   "iz": 0,
+   "pt": 24,
+   "nb": 14,
+   "i": 0,
+   "morceaux": 1,
+   "boite": "632×356",
+   "ratio": 1.778,
+   "police": 14.931,
+   "decoupe": [
+    {
+     "suite": 0,
+     "blocs": 1,
+     "etapes": 6
+    }
+   ]
+  },
+  "vue": {
+   "iz": 0,
+   "nb": 14,
+   "i": 0,
+   "morceaux": 1,
+   "boite": "700×394",
+   "ratio": 1.778,
+   "police": 16.5375,
+   "decoupe": [
+    {
+     "suite": 0,
+     "blocs": 1,
+     "etapes": 6
+    }
+   ]
+  },
+  "memeDecoupe": true
+ },
+ {
+  "cran": 3,
+  "pilote": {
+   "iz": 2,
+   "pt": 38,
+   "nb": 15,
+   "i": 0,
+   "morceaux": 2,
+   "boite": "632×356",
+   "ratio": 1.778,
+   "police": 23.6408,
+   "decoupe": [
+    {
+     "suite": 0,
+     "blocs": 1,
+     "etapes": 3
+    },
+    {
+     "suite": 1,
+     "blocs": 1,
+     "etapes": 3
+    }
+   ]
+  },
+  "vue": {
+   "iz": 2,
+   "nb": 15,
+   "i": 0,
+   "morceaux": 2,
+   "boite": "700×394",
+   "ratio": 1.778,
+   "police": 26.1844,
+   "decoupe": [
+    {
+     "suite": 0,
+     "blocs": 1,
+     "etapes": 3
+    },
+    {
+     "suite": 1,
+     "blocs": 1,
+     "etapes": 3
+    }
+   ]
+  },
+  "memeDecoupe": true
+ },
+ {
+  "cran": 4,
+  "pilote": {
+   "iz": 3,
+   "pt": 44,
+   "nb": 16,
+   "i": 0,
+   "morceaux": 3,
+   "boite": "632×356",
+   "ratio": 1.778,
+   "police": 27.3735,
+   "decoupe": [
+    {
+     "suite": 0,
+     "blocs": 1,
+     "etapes": 2
+    },
+    {
+     "suite": 1,
+     "blocs": 1,
+     "etapes": 1
+    },
+    {
+     "suite": 2,
+     "blocs": 1,
+     "etapes": 3
+    }
+   ]
+  },
+  "vue": {
+   "iz": 3,
+   "nb": 16,
+   "i": 0,
+   "morceaux": 3,
+   "boite": "700×394",
+   "ratio": 1.778,
+   "police": 30.3188,
+   "decoupe": [
+    {
+     "suite": 0,
+     "blocs": 1,
+     "etapes": 2
+    },
+    {
+     "suite": 1,
+     "blocs": 1,
+     "etapes": 1
+    },
+    {
+     "suite": 2,
+     "blocs": 1,
+     "etapes": 3
+    }
+   ]
+  },
+  "memeDecoupe": true
+ },
+ {
+  "cran": 5,
+  "pilote": {
+   "iz": 4,
+   "pt": 52,
+   "nb": 16,
+   "i": 0,
+   "morceaux": 3,
+   "boite": "632×356",
+   "ratio": 1.778,
+   "police": 32.3505,
+   "decoupe": [
+    {
+     "suite": 0,
+     "blocs": 1,
+     "etapes": 2
+    },
+    {
+     "suite": 1,
+     "blocs": 1,
+     "etapes": 1
+    },
+    {
+     "suite": 2,
+     "blocs": 1,
+     "etapes": 3
+    }
+   ]
+  },
+  "vue": {
+   "iz": 4,
+   "nb": 16,
+   "i": 0,
+   "morceaux": 3,
+   "boite": "700×394",
+   "ratio": 1.778,
+   "police": 35.8312,
+   "decoupe": [
+    {
+     "suite": 0,
+     "blocs": 1,
+     "etapes": 2
+    },
+    {
+     "suite": 1,
+     "blocs": 1,
+     "etapes": 1
+    },
+    {
+     "suite": 2,
+     "blocs": 1,
+     "etapes": 3
+    }
+   ]
+  },
+  "memeDecoupe": true
+ }
+]

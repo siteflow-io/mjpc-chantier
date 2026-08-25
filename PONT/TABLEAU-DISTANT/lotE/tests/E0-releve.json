@@ -1,0 +1,211 @@
+{
+ "boitePilote": {
+  "w": 632,
+  "h": 356,
+  "ratio": 1.778,
+  "contenuW": 585,
+  "contenuH": 313
+ },
+ "boiteLocal": {
+  "w": 800,
+  "h": 600,
+  "ratio": 1.333
+ },
+ "boiteDistant": {
+  "w": 1360,
+  "h": 768,
+  "ratio": 1.771
+ },
+ "crans": [
+  {
+   "cran": 1,
+   "pilote": {
+    "iz": 0,
+    "pt": 24,
+    "px": 14.931,
+    "i": 0,
+    "nb": 14,
+    "suite": 0,
+    "act": "Heure 1 · Analyse d'images : la ro",
+    "txt": 523,
+    "deborde": {
+     "bas": 225,
+     "boite": 313,
+     "deborde": false
+    }
+   },
+   "local": {
+    "px": 25.2,
+    "pxCons": 26.46,
+    "act": "Heure 1 · Analyse d'images : la ro",
+    "signes": 144,
+    "extrait": "omantisme.Étape 1 : J'observe les images en silence (5 min).",
+    "h": 600,
+    "bas": 123,
+    "rogne": false
+   },
+   "distant": {
+    "px": 43.008,
+    "pxCons": 45.1584,
+    "act": "Heure 1 · Analyse d'images : la ro",
+    "signes": 144,
+    "extrait": "omantisme.Étape 1 : J'observe les images en silence (5 min).",
+    "h": 768,
+    "bas": 206,
+    "rogne": false
+   }
+  },
+  {
+   "cran": 2,
+   "pilote": {
+    "iz": 1,
+    "pt": 32,
+    "px": 19.908,
+    "i": 0,
+    "nb": 14,
+    "suite": 0,
+    "act": "Heure 1 · Analyse d'images : la ro",
+    "txt": 523,
+    "deborde": {
+     "bas": 290,
+     "boite": 313,
+     "deborde": false
+    }
+   },
+   "local": {
+    "px": 33.6,
+    "pxCons": 35.28,
+    "act": "Heure 1 · Analyse d'images : la ro",
+    "signes": 144,
+    "extrait": "omantisme.Étape 1 : J'observe les images en silence (5 min).",
+    "h": 600,
+    "bas": 199,
+    "rogne": false
+   },
+   "distant": {
+    "px": 43.008,
+    "pxCons": 45.1584,
+    "act": "Heure 1 · Analyse d'images : la ro",
+    "signes": 144,
+    "extrait": "omantisme.Étape 1 : J'observe les images en silence (5 min).",
+    "h": 768,
+    "bas": 206,
+    "rogne": false
+   }
+  },
+  {
+   "cran": 3,
+   "pilote": {
+    "iz": 2,
+    "pt": 38,
+    "px": 23.6408,
+    "i": 0,
+    "nb": 15,
+    "suite": 0,
+    "act": "Heure 1 · Analyse d'images : la ro",
+    "txt": 311,
+    "deborde": {
+     "bas": 241,
+     "boite": 313,
+     "deborde": false
+    }
+   },
+   "local": {
+    "px": 39.9,
+    "pxCons": 41.895,
+    "act": "Heure 1 · Analyse d'images : la ro",
+    "signes": 144,
+    "extrait": "omantisme.Étape 1 : J'observe les images en silence (5 min).",
+    "h": 600,
+    "bas": 278,
+    "rogne": false
+   },
+   "distant": {
+    "px": 43.008,
+    "pxCons": 45.1584,
+    "act": "Heure 1 · Analyse d'images : la ro",
+    "signes": 144,
+    "extrait": "omantisme.Étape 1 : J'observe les images en silence (5 min).",
+    "h": 768,
+    "bas": 206,
+    "rogne": false
+   }
+  },
+  {
+   "cran": 4,
+   "pilote": {
+    "iz": 3,
+    "pt": 44,
+    "px": 27.3735,
+    "i": 0,
+    "nb": 16,
+    "suite": 0,
+    "act": "Heure 1 · Analyse d'images : la ro",
+    "txt": 201,
+    "deborde": {
+     "bas": 234,
+     "boite": 313,
+     "deborde": false
+    }
+   },
+   "local": {
+    "px": 46.2,
+    "pxCons": 48.51,
+    "act": "Heure 1 · Analyse d'images : la ro",
+    "signes": 144,
+    "extrait": "omantisme.Étape 1 : J'observe les images en silence (5 min).",
+    "h": 600,
+    "bas": 311,
+    "rogne": false
+   },
+   "distant": {
+    "px": 43.008,
+    "pxCons": 45.1584,
+    "act": "Heure 1 · Analyse d'images : la ro",
+    "signes": 144,
+    "extrait": "omantisme.Étape 1 : J'observe les images en silence (5 min).",
+    "h": 768,
+    "bas": 206,
+    "rogne": false
+   }
+  },
+  {
+   "cran": 5,
+   "pilote": {
+    "iz": 4,
+    "pt": 52,
+    "px": 32.3505,
+    "i": 0,
+    "nb": 16,
+    "suite": 0,
+    "act": "Heure 1 · Analyse d'images : la ro",
+    "txt": 201,
+    "deborde": {
+     "bas": 310,
+     "boite": 313,
+     "deborde": false
+    }
+   },
+   "local": {
+    "px": 54.6,
+    "pxCons": 57.33,
+    "act": "Heure 1 · Analyse d'images : la ro",
+    "signes": 144,
+    "extrait": "omantisme.Étape 1 : J'observe les images en silence (5 min).",
+    "h": 600,
+    "bas": 361,
+    "rogne": false
+   },
+   "distant": {
+    "px": 43.008,
+    "pxCons": 45.1584,
+    "act": "Heure 1 · Analyse d'images : la ro",
+    "signes": 144,
+    "extrait": "omantisme.Étape 1 : J'observe les images en silence (5 min).",
+    "h": 768,
+    "bas": 206,
+    "rogne": false
+   }
+  }
+ ]
+}

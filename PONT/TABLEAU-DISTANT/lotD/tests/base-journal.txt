@@ -1,0 +1,36 @@
+— chaîne de clics du professeur —
+  Panneau prof   : #tprof-btn
+  Atelier        : 🛠Atelier
+  Mes chapitres  : Mes chapitres
+  Modifier       : Modifier
+  Déroulé        : Déroulé
+  classes offertes : ["3E Charles de Gaulle","CLASSE TEST"] · régime prep
+  Lancer la séance: ▶ Lancer la séance
+  cours_actif au hub : {"niveau":"3e","chapitre":"0","seance":"0","classeSlug":"3E Charles de Gaulle","classeNom":"3E Charles de Gaulle","debut":"10:07","fin":"11:02","ts":1787658537428}
+— la vue tableau distante est montée —
+  eid dans la copie jouée au hub : ["AUCUN","AUCUN","AUCUN","AUCUN","AUCUN","AUCUN","AUCUN","AUCUN","AUCUN","AUCUN","AUCUN","AUCUN","AUCUN","AUCUN"]
+— zoom au cran maximal sur le pilote (PT = 24·32·38·44·52) —
+  avant zoom :  14 écrans · i=0 · Heure 1 · Analyse d'images : la routine
+  après zoom  :  15 écrans · i=0 · suite=0 · grp=g1 · Heure 1 · Analyse d'images : la routine
+  identités du pilote : ["emt8lqjfgzm8ac","suite1","emt8lqjfg7pt6c","emt8lqjfg2i1qy","emt8lqjfgzm8rf","emt8lqjfgdx00f","emt8lqjfgo21eg","emt8lqjfg1wx8b","emt8lqjfg2hr1a","emt8lqjfgt8b42","emt8lqjfg20sin","emt8lqjfgmix1n","emt8lqjfgdgq4o","emt8l
+— avance fil par fil —
+  [état initial] pilote i=0 «Heure 1 · Analyse d'images : la routine» suite=0 rev=0 | scène eid=emt8lqjfgzm8ac ecran=0 | tableau i=0 «Heure 1 · Analyse d'images : la routine» | projeté 92 signes   ✔ MÊME ÉCRAN
+  [dévoilement 1] pilote i=0 «Heure 1 · Analyse d'images : la routine» suite=0 rev=1 | scène eid=emt8lqjfgzm8ac ecran=0 | tableau i=0 «Heure 1 · Analyse d'images : la routine» | projeté 131 signes   ✔ MÊME ÉCRAN
+  [dévoilement 2] pilote i=0 «Heure 1 · Analyse d'images : la routine» suite=0 rev=2 | scène eid=emt8lqjfgzm8ac ecran=0 | tableau i=0 «Heure 1 · Analyse d'images : la routine» | projeté 186 signes   ✔ MÊME ÉCRAN
+  [dévoilement 3] pilote i=0 «Heure 1 · Analyse d'images : la routine» suite=0 rev=2 | scène eid=emt8lqjfgzm8ac ecran=0 | tableau i=0 «Heure 1 · Analyse d'images : la routine» | projeté 236 signes   ✔ MÊME ÉCRAN
+  [dévoilement 4] pilote i=0 «Heure 1 · Analyse d'images : la routine» suite=0 rev=2 | scène eid=emt8lqjfgzm8ac ecran=0 | tableau i=0 «Heure 1 · Analyse d'images : la routine» | projeté 293 signes   ✔ MÊME ÉCRAN
+  [dévoilement 5] pilote i=1 «Heure 1 · Analyse d'images : la routine» suite=1 rev=2 | scène eid=emt8lqjfgzm8ac ecran=1 | tableau i=1 «Heure 1 · Tableau 1» | projeté 205 signes   ✖ DÉCALAGE
+  [dévoilement 6] pilote i=1 «Heure 1 · Analyse d'images : la routine» suite=1 rev=2 | scène eid=emt8lqjfgzm8ac ecran=1 | tableau i=1 «Heure 1 · Tableau 1» | projeté 205 signes   ✖ DÉCALAGE
+  [dévoilement 7] pilote i=2 «Heure 1 · Analyse d'images : la routine» suite=2 rev=2 | scène eid=emt8lqjfgzm8ac ecran=2 | tableau i=2 «Heure 1 · Tableau 2» | projeté 181 signes   ✖ DÉCALAGE
+  [dévoilement 8] pilote i=2 «Heure 1 · Analyse d'images : la routine» suite=2 rev=2 | scène eid=emt8lqjfgzm8ac ecran=2 | tableau i=2 «Heure 1 · Tableau 2» | projeté 181 signes   ✖ DÉCALAGE
+  [dévoilement 9] pilote i=3 «Heure 1 · Analyse d'images : la routine» suite=3 rev=2 | scène eid=emt8lqjfgzm8ac ecran=3 | tableau i=3 «Heure 1 · Tableau 3» | projeté 164 signes   ✖ DÉCALAGE
+  [dévoilement 10] pilote i=3 «Heure 1 · Analyse d'images : la routine» suite=3 rev=2 | scène eid=emt8lqjfgzm8ac ecran=3 | tableau i=3 «Heure 1 · Tableau 3» | projeté 164 signes   ✖ DÉCALAGE
+  identités fabriquées par la VUE : ["emt8lqpoi32jnv","emt8lqpoitj5lz","emt8lqpoiejz9c","emt8lqpoiupsdg","emt8lqpois1ni4","emt8lqpoi63418","emt8lqpoiz46t9","emt8lqpois0h74","emt8lqpoiezupe","emt8lqpoi3gz3l","emt8lqpoixy4y6","emt8lqpoia1ket","emt8lqpoil2nie
+  identités COMMUNES pilote/vue : 0 sur 14
+
+═══ COMPTES ═══
+  pas relevés            : 11
+  pas en DÉCALAGE        : 6 / 11
+  écritures sorties      : 0 (interceptées : 18, jamais transmises)
+  GET servis en mémoire  : 151
+  pageerrors             : 0 []

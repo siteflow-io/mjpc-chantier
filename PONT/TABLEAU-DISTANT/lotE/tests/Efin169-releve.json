@@ -1,0 +1,221 @@
+[
+ {
+  "cran": 1,
+  "pt": 24,
+  "pilote": {
+   "iz": 0,
+   "pt": 24,
+   "i": 0,
+   "nb": 14,
+   "suite": 0
+  },
+  "local": {
+   "px": 30.24,
+   "h": 720,
+   "w": 1280,
+   "txt": "Heure 1 · Analyse d'images : la routineObserve, discute, fais une hypothèse sur le Romantisme.Étape 1 : J'observe les images en silence (5 min).Étape 2 : Je discute en groupe de ce que je vois (5 min).Étape 3 : Au brouillon, je liste les éléments importants : couleurs, sujet de l'image, auteur, titre (10 min).Étape 4 : Je choisis de quel élément je vais parler (2 min).Étape 5 : À partir de cet élément, je fais une hypothèse sur ce que peut être le Romantisme (5 min, 5 lignes).Étape 6 : J'expose mon hypothèse à l'oral.",
+   "bas": 442,
+   "rogne": false
+  },
+  "distant": {
+   "px": 32.13,
+   "h": 765,
+   "w": 1360,
+   "txt": "Heure 1 · Analyse d'images : la routineObserve, discute, fais une hypothèse sur le Romantisme.Étape 1 : J'observe les images en silence (5 min).Étape 2 : Je discute en groupe de ce que je vois (5 min).Étape 3 : Au brouillon, je liste les éléments importants : couleurs, sujet de l'image, auteur, titre (10 min).Étape 4 : Je choisis de quel élément je vais parler (2 min).Étape 5 : À partir de cet élément, je fais une hypothèse sur ce que peut être le Romantisme (5 min, 5 lignes).Étape 6 : J'expose mon hypothèse à l'oral.",
+   "bas": 468,
+   "rogne": false,
+   "toile": "1360×765",
+   "cadre": {
+    "w": 1360,
+    "h": 765,
+    "opacite": "0",
+    "doigt": "none",
+    "gauche": "-30000px",
+    "z": "-1",
+    "tab": "-1"
+   },
+   "iz": 0
+  },
+  "memeTexte": true,
+  "memeProp": true
+ },
+ {
+  "cran": 2,
+  "pt": 32,
+  "pilote": {
+   "iz": 1,
+   "pt": 32,
+   "i": 0,
+   "nb": 14,
+   "suite": 0
+  },
+  "local": {
+   "px": 40.32,
+   "h": 720,
+   "w": 1280,
+   "txt": "Heure 1 · Analyse d'images : la routineObserve, discute, fais une hypothèse sur le Romantisme.Étape 1 : J'observe les images en silence (5 min).Étape 2 : Je discute en groupe de ce que je vois (5 min).Étape 3 : Au brouillon, je liste les éléments importants : couleurs, sujet de l'image, auteur, titre (10 min).Étape 4 : Je choisis de quel élément je vais parler (2 min).Étape 5 : À partir de cet élément, je fais une hypothèse sur ce que peut être le Romantisme (5 min, 5 lignes).Étape 6 : J'expose mon hypothèse à l'oral.",
+   "bas": 573,
+   "rogne": false
+  },
+  "distant": {
+   "px": 42.84,
+   "h": 765,
+   "w": 1360,
+   "txt": "Heure 1 · Analyse d'images : la routineObserve, discute, fais une hypothèse sur le Romantisme.Étape 1 : J'observe les images en silence (5 min).Étape 2 : Je discute en groupe de ce que je vois (5 min).Étape 3 : Au brouillon, je liste les éléments importants : couleurs, sujet de l'image, auteur, titre (10 min).Étape 4 : Je choisis de quel élément je vais parler (2 min).Étape 5 : À partir de cet élément, je fais une hypothèse sur ce que peut être le Romantisme (5 min, 5 lignes).Étape 6 : J'expose mon hypothèse à l'oral.",
+   "bas": 601,
+   "rogne": false,
+   "toile": "1360×765",
+   "cadre": {
+    "w": 1360,
+    "h": 765,
+    "opacite": "0",
+    "doigt": "none",
+    "gauche": "-30000px",
+    "z": "-1",
+    "tab": "-1"
+   },
+   "iz": 1
+  },
+  "memeTexte": true,
+  "memeProp": true
+ },
+ {
+  "cran": 3,
+  "pt": 38,
+  "pilote": {
+   "iz": 2,
+   "pt": 38,
+   "i": 0,
+   "nb": 15,
+   "suite": 0
+  },
+  "local": {
+   "px": 47.88,
+   "h": 720,
+   "w": 1280,
+   "txt": "Heure 1 · Analyse d'images : la routineObserve, discute, fais une hypothèse sur le Romantisme.Étape 1 : J'observe les images en silence (5 min).Étape 2 : Je discute en groupe de ce que je vois (5 min).Étape 3 : Au brouillon, je liste les éléments importants : couleurs, sujet de l'image, auteur, titre (10 min).",
+   "bas": 471,
+   "rogne": false
+  },
+  "distant": {
+   "px": 50.8725,
+   "h": 765,
+   "w": 1360,
+   "txt": "Heure 1 · Analyse d'images : la routineObserve, discute, fais une hypothèse sur le Romantisme.Étape 1 : J'observe les images en silence (5 min).Étape 2 : Je discute en groupe de ce que je vois (5 min).Étape 3 : Au brouillon, je liste les éléments importants : couleurs, sujet de l'image, auteur, titre (10 min).",
+   "bas": 500,
+   "rogne": false,
+   "toile": "1360×765",
+   "cadre": {
+    "w": 1360,
+    "h": 765,
+    "opacite": "0",
+    "doigt": "none",
+    "gauche": "-30000px",
+    "z": "-1",
+    "tab": "-1"
+   },
+   "iz": 2
+  },
+  "memeTexte": true,
+  "memeProp": true
+ },
+ {
+  "cran": 4,
+  "pt": 44,
+  "pilote": {
+   "iz": 3,
+   "pt": 44,
+   "i": 0,
+   "nb": 16,
+   "suite": 0
+  },
+  "local": {
+   "px": 55.44,
+   "h": 720,
+   "w": 1280,
+   "txt": "Heure 1 · Analyse d'images : la routineObserve, discute, fais une hypothèse sur le Romantisme.Étape 1 : J'observe les images en silence (5 min).Étape 2 : Je discute en groupe de ce que je vois (5 min).",
+   "bas": 459,
+   "rogne": false
+  },
+  "distant": {
+   "px": 58.905,
+   "h": 765,
+   "w": 1360,
+   "txt": "Heure 1 · Analyse d'images : la routineObserve, discute, fais une hypothèse sur le Romantisme.Étape 1 : J'observe les images en silence (5 min).Étape 2 : Je discute en groupe de ce que je vois (5 min).",
+   "bas": 489,
+   "rogne": false,
+   "toile": "1360×765",
+   "cadre": {
+    "w": 1360,
+    "h": 765,
+    "opacite": "0",
+    "doigt": "none",
+    "gauche": "-30000px",
+    "z": "-1",
+    "tab": "-1"
+   },
+   "iz": 3
+  },
+  "memeTexte": true,
+  "memeProp": true
+ },
+ {
+  "cran": 5,
+  "pt": 52,
+  "pilote": {
+   "iz": 4,
+   "pt": 52,
+   "i": 0,
+   "nb": 16,
+   "suite": 0
+  },
+  "local": {
+   "px": 65.52,
+   "h": 720,
+   "w": 1280,
+   "txt": "Heure 1 · Analyse d'images : la routineObserve, discute, fais une hypothèse sur le Romantisme.Étape 1 : J'observe les images en silence (5 min).Étape 2 : Je discute en groupe de ce que je vois (5 min).",
+   "bas": 607,
+   "rogne": false
+  },
+  "distant": {
+   "px": 69.615,
+   "h": 765,
+   "w": 1360,
+   "txt": "Heure 1 · Analyse d'images : la routineObserve, discute, fais une hypothèse sur le Romantisme.Étape 1 : J'observe les images en silence (5 min).Étape 2 : Je discute en groupe de ce que je vois (5 min).",
+   "bas": 645,
+   "rogne": false,
+   "toile": "1360×765",
+   "cadre": {
+    "w": 1360,
+    "h": 765,
+    "opacite": "0",
+    "doigt": "none",
+    "gauche": "-30000px",
+    "z": "-1",
+    "tab": "-1"
+   },
+   "iz": 4
+  },
+  "memeTexte": true,
+  "memeProp": true
+ },
+ {
+  "pas": "replier×3",
+  "memeTexte": true,
+  "l": 39,
+  "d": 39
+ },
+ {
+  "pas": "gel",
+  "fige": true
+ },
+ {
+  "pas": "dégel",
+  "memeTexte": true
+ },
+ {
+  "pas": "reprise à froid",
+  "ok": true,
+  "memeTexte": true
+ }
+]

@@ -51,3 +51,27 @@ Si un pas cloche, donne-moi **son numéro et ce que tu as vu** — pas une impre
 
 ## Un point resté ouvert
 Si le PC et le téléphone sont tous les deux allumés et que tu bouges les **deux** réglettes, **le dernier geste gagne**. Ça ne clignote pas (mesuré), mais je n'ai pas arbitré si le PC doit cesser d'imposer son cran quand un téléphone est connecté. Dis-moi si ça te gêne à l'usage.
+
+---
+
+# COMPLÉMENT — DEUX TESTS DE PLUS (version 8.69.0 corrigée)
+
+### A. Les deux réglettes — « le dernier geste gagne »
+À faire avec **le PC et le téléphone allumés en même temps**, le portable au vidéoprojecteur.
+
+A1. **PC** : réglette au **cran 5**. Attendu : le mur grossit · **et la réglette du téléphone affiche « 52 pt »**.
+A2. **TÉLÉPHONE** : réglette au **cran 2**. Attendu : le mur redescend · **la réglette du PC descend aussi au cran 2 et son écran de contrôle suit** · le prompteur du téléphone, lui, **ne change pas**.
+A3. **PC** : réglette au **cran 4**. Attendu : le mur suit · les deux réglettes affichent « 44 pt ».
+A4. **Laisse tout tranquille dix secondes.** Attendu : **rien ne clignote, rien ne repart en arrière.** Si tu vois le mur osciller entre deux tailles, dis-le tout de suite : c'est le seul défaut que ce mécanisme pourrait avoir.
+
+**La règle, en une phrase** : celui qui touche une réglette en dernier décide, et tous les autres écrans se mettent à sa valeur — ton écran de contrôle ne te ment jamais sur ce que voit la classe.
+
+### B. La fenêtre Windows+K ne coupe plus
+B1. **PC** : lance la séance, ouvre la fenêtre tableau (« ⧉ Ouvrir le tableau »), projette en **Windows+K**, **plein écran (F11)**. Pousse la réglette au cran 5. Attendu : comme avant, **rien ne change** — c'est voulu.
+B2. **Sors du plein écran** et redimensionne la fenêtre tableau **en la rendant plus haute que large** (ou pose-la sur un écran 16/10). Pousse la réglette au cran 5.
+   **Attendu** : **des bandes noires** en haut et en bas, le texte **entier** dedans, à la **même taille relative que le mur distant**.
+   *(Avant, la fenêtre se déformait : le texte se recomposait sur moins de largeur et la fin sortait du cadre.)*
+B3. Compare les deux surfaces côte à côte : la fenêtre Win+K et le portable en `?vue=tableau` doivent montrer **la même chose**.
+
+## Une limite que je te signale, et qui n'est pas de ce lot
+Si tu écris **une étape de plus de 450 signes d'un seul tenant**, le moteur ne sait pas la couper : elle déborde. Tu le verras **d'abord sur ton propre écran de contrôle** (mesuré : 428 px de contenu dans une boîte de 313 px), pas seulement au mur. Ce n'est pas réparable sans toucher au moteur, ce que ce lot n'a pas le droit de faire. **En pratique : coupe tes étapes longues en deux.** Si ça te gêne à l'usage, dis-le et ce sera un lot à part.

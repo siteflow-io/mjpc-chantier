@@ -1,0 +1,20 @@
+— LE MÊME CONTENU, LE MÊME CRAN, DEUX BOÎTES HOMOTHÉTIQUES —
+  cran 1 (24 pt) :
+    PILOTE  boîte 632×356 (r 1.778) · police 14.9 px · 1 morceau(x) · [{"suite":0,"blocs":1,"etapes":6}]
+    VUE     boîte 700×394 (r 1.778) · police 16.5 px · 1 morceau(x) · [{"suite":0,"blocs":1,"etapes":6}]
+    → découpe IDENTIQUE ✔ · rapport police/hauteur : pilote 0.0419 · vue 0.0420
+  cran 3 (38 pt) :
+    PILOTE  boîte 632×356 (r 1.778) · police 23.6 px · 2 morceau(x) · [{"suite":0,"blocs":1,"etapes":3},{"suite":1,"blocs":1,"etapes":3}]
+    VUE     boîte 700×394 (r 1.778) · police 26.2 px · 2 morceau(x) · [{"suite":0,"blocs":1,"etapes":3},{"suite":1,"blocs":1,"etapes":3}]
+    → découpe IDENTIQUE ✔ · rapport police/hauteur : pilote 0.0664 · vue 0.0665
+  cran 4 (44 pt) :
+    PILOTE  boîte 632×356 (r 1.778) · police 27.4 px · 3 morceau(x) · [{"suite":0,"blocs":1,"etapes":2},{"suite":1,"blocs":1,"etapes":1},{"suite":2,"blocs":1,"etapes":3}]
+    VUE     boîte 700×394 (r 1.778) · police 30.3 px · 3 morceau(x) · [{"suite":0,"blocs":1,"etapes":2},{"suite":1,"blocs":1,"etapes":1},{"suite":2,"blocs":1,"etapes":3}]
+    → découpe IDENTIQUE ✔ · rapport police/hauteur : pilote 0.0769 · vue 0.0770
+  cran 5 (52 pt) :
+    PILOTE  boîte 632×356 (r 1.778) · police 32.4 px · 3 morceau(x) · [{"suite":0,"blocs":1,"etapes":2},{"suite":1,"blocs":1,"etapes":1},{"suite":2,"blocs":1,"etapes":3}]
+    VUE     boîte 700×394 (r 1.778) · police 35.8 px · 3 morceau(x) · [{"suite":0,"blocs":1,"etapes":2},{"suite":1,"blocs":1,"etapes":1},{"suite":2,"blocs":1,"etapes":3}]
+    → découpe IDENTIQUE ✔ · rapport police/hauteur : pilote 0.0909 · vue 0.0909
+
+═══ VERDICT ═══
+  À boîte homothétique et cran égal, LA VUE DÉCOUPE EXACTEMENT COMME LE PILOTE.

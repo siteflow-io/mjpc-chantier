@@ -15454,6 +15454,84 @@ function _drEnvelopper(){
       return r;
     };
   }
+  /* ═══ [LOT E · COMPLÉMENT 2] AUCUN BLOC NE DÉBORDE — L'ÉTAPE SEULE SE COUPE AUSSI ═══
+     À QUOI ÇA SERT EN CLASSE : une consigne dont l'unique étape est longue ne doit
+     jamais sortir de l'écran — ni au mur, ni sur l'écran de contrôle du professeur.
+     « Rien n'est jamais refusé : on coupe » vaut aussi pour une étape seule.
+     LE TROU, SUR PIÈCES (moteur, `scinde`) : la cascade coupe les étapes par moitié
+     SI ELLES SONT PLUS D'UNE, les réponses, le texte d'une réponse unique, les blocs
+     d'une fiche, le `txt` d'une consigne sans étapes. Une consigne à UNE étape longue
+     tombe dans le dernier `else`, qui coupe le `txt` — court, donc `coupeTexte` rend
+     `null` — et rien ne se passe. Mesuré : 115 px hors de l'écran du professeur.
+     LA PARADE, SANS TOUCHER AU MOTEUR : on coupe l'étape en deux AVANT d'appeler
+     `scinde`, ce qui la fait tomber dans sa propre branche « plus d'une étape » —
+     le moteur fait alors tout le reste (frag, groupe, rang de suite) comme pour les
+     autres cas. Le fragment reçoit `suiteEt`, du même patron que `suiteRep`, et se
+     recolle au dézoom et à l'export : l'artifice ne fuit jamais dans la donnée. ═══ */
+  if(!W.__scindeEtape && typeof W.scinde==='function'){
+    W.__scindeEtape=true;
+    var _scindeNu=W.scinde;
+    W.scinde=function(e){
+      var _marque=null, _q=null;
+      try{
+        var _b=e&&e.blocs&&e.blocs[0];
+        /* MÊME TROU, MÊME PATRON : une question dont l'énoncé est long et qui n'a
+           qu'UNE réponse (ou aucune). La branche « plus d'une réponse » ne prend pas ;
+           celle de la réponse unique coupe le TEXTE DE LA RÉPONSE, qui est court, donc
+           elle échoue — et le `else if` empêche de retomber sur la coupe de `q`.
+           Mesuré : 91 px hors de l'écran du professeur.
+           On retire donc les réponses le temps de l'appel : le moteur tombe alors dans
+           sa propre branche `else`, coupe `q`, et fabrique le fragment. Les réponses
+           suivent le morceau reporté — exactement ce que le moteur fait déjà de la
+           ligne vide quand il coupe des réponses. */
+        if(_b&&_b.t==='question'&&_b.q&&typeof W.coupeTexte==='function'){
+          var _pl=(_b.reps||[]).filter(function(r){return r&&(r.i||r.r);});
+          if(_pl.length<=1 && W.coupeTexte(_b.q)
+             && (_pl.length===0 || !W.coupeTexte(_pl[0].r))){
+            _q={reps:_b.reps, vues:(_b.vues|0)};
+            _b.reps=[]; _b.vues=0;
+          }
+        }
+        if(_b&&_b.t==='consigne'&&_b.etapes&&_b.etapes.length===1&&_b.etapes[0]
+           &&typeof W.coupeTexte==='function'){
+          var _c=W.coupeTexte(_b.etapes[0]);
+          if(_c){
+            _marque={vu:(_b.vues|0)};
+            _b.etapes=[_c[0],_c[1]];
+            /* DÉVOILEMENT : une étape montrée reste montrée des deux côtés de la coupe.
+               `2` ici donne, par la formule du moteur, 1 au père et 1 au fragment. */
+            _b.vues=(_marque.vu>=1)?2:0;
+          }
+        }
+      }catch(x1){}
+      var _r=_scindeNu.apply(W,arguments);
+      try{
+        if(_marque){
+          var _f=W.ECRANS[W.i], _fb=_f&&_f.blocs&&_f.blocs[0];
+          if(_fb&&_fb.t==='consigne'&&_fb.etapes&&_fb.etapes.length===1)_fb.suiteEt=true;
+        }
+        if(_q){
+          var _f2=W.ECRANS[W.i], _fb2=_f2&&_f2.blocs&&_f2.blocs[0];
+          if(_fb2&&_fb2.t==='question'){ _fb2.reps=_q.reps; _fb2.vues=_q.vues; _fb2.suiteQ=true; }
+          else if(_b){ _b.reps=_q.reps; _b.vues=_q.vues; }   /* rien n'a été coupé : on rend ce qu'on a pris */
+        }
+      }catch(x2){ if(_q&&e&&e.blocs&&e.blocs[0]){ e.blocs[0].reps=_q.reps; e.blocs[0].vues=_q.vues; } }
+      return _r;
+    };
+  }
+  /* LE RECOLLEMENT — au dézoom. Une étape coupée redevient UNE étape, jamais deux.
+     Les `vues` ne s'additionnent pas : deux fragments d'une même étape ne font pas
+     deux étapes dévoilées, sinon le mur (« dévoilement cumulé → morceau ») et la
+     reprise à froid se tromperaient d'un cran. On prend le MAX, borné au nombre
+     réel d'étapes. */
+  if(!W.__reabsEtape && typeof W.reabsorbe==='function'){
+    W.__reabsEtape=true;
+    var _reabsNu=W.reabsorbe;
+    W.reabsorbe=function(){
+      try{ _drRecollerEtapes(W.ECRANS); }catch(x3){}
+      return _reabsNu.apply(W,arguments);
+    };
+  }
   /* ═══ [LOT E · COMPLÉMENT] LE FILET DE LA FENÊTRE TABLEAU LOCALE (Windows+K) ═══
      À QUOI ÇA SERT EN CLASSE : la fenêtre projetée ne doit JAMAIS couper une étape.
      Le mur distant a ce filet depuis ce lot ; la fenêtre locale ne l'avait pas, et
@@ -16085,6 +16163,10 @@ function _drCopieAuto(){
    réponses recombinées (y compris un texte coupé, suiteRep), fiches réunies,
    durées rendues au père. La colonne, la copie et le récit voient l'écran ENTIER. */
 function _drRefusionner(t){
+  /* [LOT E · COMPLÉMENT 2] les fragments d'étape se recollent AVANT la refusion :
+     l'export, la copie au hub, la relecture et le récit ne doivent jamais voir
+     deux moitiés là où le professeur a écrit une étape. */
+  try{ _drRecollerEtapes(t); }catch(eE){}
   var out=[];
   for(var k=0;k<t.length;k++){
     var e=t[k];
@@ -16098,6 +16180,10 @@ function _drRefusionner(t){
               if(b.etapes&&b.etapes.length){ d.etapes=(d.etapes||[]).concat(b.etapes); }
               else if(b.txt&&b.txt!==d.txt){ d.txt=(d.txt||'')+' '+b.txt; }
               d.vues=(d.vues||0)+(b.vues||0);
+              /* [LOT E · COMPLÉMENT 2] le compte ne dépasse jamais le nombre réel
+                 d'étapes : sans cette borne, une étape recollée en compterait deux
+                 et le mur se tromperait d'un cran. */
+              if(d.etapes&&d.etapes.length)d.vues=Math.min(d.vues,d.etapes.length);
             } else if(b.t==='question'){
               if(b.reps&&b.reps.length&&b.reps[0].suiteRep&&d.reps&&d.reps.length){
                 var dr=d.reps[d.reps.length-1]; dr.r=(dr.r||'')+(b.reps[0].r||'');
@@ -16572,6 +16658,51 @@ function sesBrancherPilote(reprise){
 /* [LOT E] Les proportions de l'écran de contrôle du pilote. Mesurées, jamais
    supposées : au téléphone le cadre est en display:none, donc la mesure est nulle
    et la fonction rend `null` — c'est exactement le signal dont le mur a besoin. */
+/* [LOT E · COMPLÉMENT 2] recolle les fragments d'étape (`suiteEt`) dans la trame,
+   du dernier vers le premier — une étape coupée en trois se recolle de proche en
+   proche. Utilisée au dézoom (enveloppe de `reabsorbe`) et à l'export
+   (`_drRefusionner`). Rien n'est ajouté : on concatène et on efface la marque. */
+function _drRecollerEtapes(t){
+  if(!Array.isArray(t))return t;
+  for(var k=t.length-1;k>=1;k--){
+    var e=t[k]; if(!(e&&e.suite&&e.grp))continue;
+    var fb=e.blocs&&e.blocs[0];
+    if(!fb||!fb.suiteEt||!fb.etapes||!fb.etapes.length)continue;
+    var pr=t[k-1]; if(!pr||pr.grp!==e.grp)continue;      /* le morceau précédent du MÊME groupe */
+    var pb=null, j;
+    for(j=(pr.blocs||[]).length-1;j>=0;j--){
+      if(pr.blocs[j]&&pr.blocs[j].t==='consigne'
+         &&(!fb.frag||pr.blocs[j].frag===fb.frag)
+         &&pr.blocs[j].etapes&&pr.blocs[j].etapes.length){ pb=pr.blocs[j]; break; }
+    }
+    if(!pb)continue;
+    var vuP=(pb.vues|0), vuF=(fb.vues|0);
+    pb.etapes[pb.etapes.length-1]=String(pb.etapes[pb.etapes.length-1]||'')+' '+String(fb.etapes[0]||'');
+    fb.etapes=fb.etapes.slice(1);
+    delete fb.suiteEt;
+    pb.vues=Math.min(Math.max(vuP,vuF), pb.etapes.length);   /* MAX, pas somme */
+  }
+  /* et l'énoncé de question coupé (`suiteQ`) : il se recolle de la même façon, et
+     les réponses, parties avec le morceau reporté, reviennent à leur question. */
+  for(var k2=t.length-1;k2>=1;k2--){
+    var e2=t[k2]; if(!(e2&&e2.suite&&e2.grp))continue;
+    var fq=e2.blocs&&e2.blocs[0];
+    if(!fq||!fq.suiteQ)continue;
+    var pr2=t[k2-1]; if(!pr2||pr2.grp!==e2.grp)continue;
+    var pq=null, j2;
+    for(j2=(pr2.blocs||[]).length-1;j2>=0;j2--){
+      if(pr2.blocs[j2]&&pr2.blocs[j2].t==='question'
+         &&(!fq.frag||pr2.blocs[j2].frag===fq.frag)){ pq=pr2.blocs[j2]; break; }
+    }
+    if(!pq)continue;
+    pq.q=String(pq.q||'')+' '+String(fq.q||'');
+    var plq=(pq.reps||[]).filter(function(r){return r&&(r.i||r.r);});
+    pq.reps=plq.concat(fq.reps||[]);
+    pq.vues=Math.max(pq.vues|0, fq.vues|0);
+    fq.reps=[]; fq.q=''; delete fq.suiteQ;
+  }
+  return t;
+}
 function _drRatioEcran(W){
   try{ var b=W.document.getElementById('ecran').getBoundingClientRect();
     if(b.height>40&&b.width>40)return +(b.width/b.height).toFixed(4); }catch(e){}

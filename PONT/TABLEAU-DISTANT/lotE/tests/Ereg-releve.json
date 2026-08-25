@@ -1,0 +1,110 @@
+[
+ {
+  "pas": "①",
+  "qui": "PC",
+  "cran": 5,
+  "mur": {
+   "iz": 4,
+   "px": 69.615
+  },
+  "pc": {
+   "iz": 4,
+   "reglette": 4,
+   "etiquette": "52 pt",
+   "cran": 4
+  },
+  "tel": {
+   "reglette": 4,
+   "etiquette": "52 pt",
+   "cran": 4,
+   "izMoteur": 1
+  },
+  "stable": true,
+  "bonMur": true,
+  "bonnesReglettes": true,
+  "suite": [
+   4,
+   4,
+   4,
+   4,
+   4,
+   4,
+   4,
+   4,
+   4,
+   4
+  ]
+ },
+ {
+  "pas": "②",
+  "qui": "TÉL",
+  "cran": 2,
+  "mur": {
+   "iz": 1,
+   "px": 42.84
+  },
+  "pc": {
+   "iz": 1,
+   "reglette": 1,
+   "etiquette": "32 pt",
+   "cran": 1
+  },
+  "tel": {
+   "reglette": 1,
+   "etiquette": "32 pt",
+   "cran": 1,
+   "izMoteur": 1
+  },
+  "stable": true,
+  "bonMur": true,
+  "bonnesReglettes": true,
+  "suite": [
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1
+  ]
+ },
+ {
+  "pas": "③",
+  "qui": "PC",
+  "cran": 4,
+  "mur": {
+   "iz": 3,
+   "px": 58.905
+  },
+  "pc": {
+   "iz": 3,
+   "reglette": 3,
+   "etiquette": "44 pt",
+   "cran": 3
+  },
+  "tel": {
+   "reglette": 3,
+   "etiquette": "44 pt",
+   "cran": 3,
+   "izMoteur": 1
+  },
+  "stable": true,
+  "bonMur": true,
+  "bonnesReglettes": true,
+  "suite": [
+   3,
+   3,
+   3,
+   3,
+   3,
+   3,
+   3,
+   3,
+   3,
+   3
+  ]
+ }
+]

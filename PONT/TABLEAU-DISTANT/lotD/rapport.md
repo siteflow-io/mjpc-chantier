@@ -98,3 +98,32 @@ Le hub réel (latence, règles Firebase, coupure en cours d'écriture) · le ré
 
 ---
 *Livré au sas, non promu. Le point de retour est la production 8.67.1, md5 `d93207f7d49fbd673955a9567a010bfe`.*
+
+---
+
+## ⑨ AJOUT DU 25/08 — LA QUESTION DE PAUL : « le zoom zoome-t-il sur l'écran distant ? »
+**Non. Je ne l'avais pas vérifié, et le rapport ci-dessus ne le disait pas. Mesuré depuis :**
+`tests/banc-zoom.mjs` et `tests/banc-zoom-local.mjs`, candidat 8.68.0, cran par cran.
+
+| cran de la réglette | pilote | tableau **LOCAL** (Win+K) | tableau **DISTANT** (`?vue=tableau`) |
+|---|---|---|---|
+| 1 — 24 pt | 14,9 px | **25,2 px** | 43,0 px |
+| 2 — 32 pt | 19,9 px | **33,6 px** | 43,0 px |
+| 3 — 38 pt | 23,6 px | **39,9 px** | 43,0 px |
+| 4 — 44 pt | 27,4 px | **46,2 px** | 43,0 px |
+| 5 — 52 pt | 32,4 px | **54,6 px** | 43,0 px |
+
+**Le tableau local suit la réglette (5 tailles distinctes). Le tableau distant ne bouge pas d'un pixel : `iz` y reste à 1 (32 pt) aux cinq crans.**
+
+**La cause, lue puis mesurée** : `cale(t)` du moteur (L2620) calcule `H*0.056*(PT[iz]/32)` avec **le `iz` de la fenêtre qui peint**. En Win+K, c'est le moteur du pilote : le `iz` de Paul. En distant, c'est le moteur embarqué de la vue, dont le `iz` n'a jamais changé — et **la photo de scène ne transporte pas `iz`** (`sesPhoto`, L16545 : `ecran, eid, morceau, rev, vues, gele, fiche, ficheEid, chrono, quiOn, qui, trameMaj, origine, ts` — pas de cran de zoom).
+
+**Ce lot ne change rien à cela** : le correctif ne touche que `atDrJouer`. Le tableau distant reste calibré sur **sa propre** boîte (32 pt = 5,6 % de sa hauteur), ce qui donne 43 px sur un écran de 768 px — lisible du fond de la classe. **Ce que ce lot garantit, c'est le BON ÉCRAN au BON DÉVOILEMENT ; pas la taille du texte.**
+
+### CE QUE JE N'AI PAS TRANCHÉ, ET POURQUOI
+Deux lectures s'opposent, et **elles n'ont pas la même conséquence** :
+- **(a) c'est le comportement juste** — la réglette sert à *recomposer le texte de Paul dans sa fenêtre étroite* ; le tableau projeté, lui, est calibré pour la salle et n'a aucune raison de rétrécir parce que Paul a dézoomé son éditeur. Les deux scénarios divergent alors *à dessein*.
+- **(b) c'est une incohérence** — en Win+K la classe voit la police changer, en distant non : **le même geste ne produit pas le même effet selon la machine branchée au vidéoprojecteur**, ce que la dette du 22/08 voulait précisément faire disparaître.
+
+**Le risque, si l'on transmettait `iz` :** au cran 5, le texte du tableau distant passerait de 43 à ~70 px ; son propre moteur déborderait et **appellerait `degorge` sur SA trame** — la vue distante se scinderait à son tour et **projetterait des fils à la classe**, ce que la doctrine interdit (`OU-TROUVER-QUOI` : *les fils meurent au dézoom et n'ont jamais d'identité*). Transmettre le zoom exigerait donc **en même temps** de suspendre la scission côté vue. Ce n'est pas une ligne, et cela sort du périmètre de ce lot.
+
+**Je ne tranche pas seul : la conscience arbitre, et Paul dit ce qu'il veut voir au mur.** En attendant, l'état est nommé, mesuré et borné.

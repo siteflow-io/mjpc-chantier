@@ -1,0 +1,40 @@
+— ① LE TÉLÉPHONE DÉVOILE TOUT (comme Paul) —
+  [tout dévoilé au téléphone]
+    scène   : morceau=0 rev=2 vues={"0":6} iz=1 ratio=1.7778
+    PILOTE  : iz=1 i=0/14 morceau=0 · découpe [6] vues [6] · TOTAL vues=6/6
+    MUR     : iz=1 i=0/14 morceau=0 · découpe [6] vues [6] · TOTAL vues=6/6
+    TÉL     : cadre 0×0 iz=1 i=0/14 vues=[6]
+    AU MUR  : étapes visibles [1,2,3,4,5,6] (523 signes)
+
+— ② ZOOM AU CRAN 5 DEPUIS LE TÉLÉPHONE —
+  [cran 5 (source téléphone)]
+    scène   : morceau=0 rev=2 vues={"0":6} iz=4 ratio=1.7778
+    PILOTE  : iz=4 i=0/15 morceau=0 · découpe [3,3] vues [3,3] · TOTAL vues=6/6
+    MUR     : iz=4 i=0/15 morceau=0 · découpe [3,3] vues [3,3] · TOTAL vues=6/6
+    TÉL     : cadre 0×0 iz=1 i=0/14 vues=[6]
+    AU MUR  : étapes visibles [1,2,3] (311 signes)
+
+— ③ ON REBOUGE LE ZOOM (cran 3), puis ON DÉZOOME (cran 1) —
+  [cran 3]
+    scène   : morceau=0 rev=2 vues={"0":6} iz=2 ratio=1.7778
+    PILOTE  : iz=2 i=0/15 morceau=0 · découpe [3,3] vues [3,3] · TOTAL vues=6/6
+    MUR     : iz=2 i=0/15 morceau=0 · découpe [3,3] vues [3,3] · TOTAL vues=6/6
+    TÉL     : cadre 0×0 iz=1 i=0/14 vues=[6]
+    AU MUR  : étapes visibles [1,2,3] (311 signes)
+  [cran 1 — dézoom complet]
+    scène   : morceau=0 rev=2 vues={"0":6} iz=0 ratio=1.7778
+    PILOTE  : iz=0 i=0/14 morceau=0 · découpe [6] vues [6] · TOTAL vues=6/6
+    MUR     : iz=0 i=0/14 morceau=0 · découpe [6] vues [6] · TOTAL vues=6/6
+    TÉL     : cadre 0×0 iz=1 i=0/14 vues=[6]
+    AU MUR  : étapes visibles [1,2,3,4,5,6] (523 signes)
+
+═══ CONSTATS ═══
+  ① le mur montre-t-il le morceau du PC ?
+     [cran 5 (source téléphone)] PC sur morceau 0 · MUR sur morceau 0 · au mur : étapes [1,2,3]   ✔ même morceau
+     [cran 3] PC sur morceau 0 · MUR sur morceau 0 · au mur : étapes [1,2,3]   ✔ même morceau
+  ③ le dévoilement se perd-il ?
+     départ : PC 6/6 · MUR 6/6 · scène vues {"0":6}
+     après zoom/dézoom : PC 6/6 · MUR 6/6 · scène vues {"0":6}
+     → RIEN N'EST REVOILÉ
+
+  écritures sorties : 0 (interceptées : 27) · pageerrors : 0

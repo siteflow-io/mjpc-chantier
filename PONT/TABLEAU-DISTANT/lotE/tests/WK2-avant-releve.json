@@ -1,0 +1,77 @@
+[
+ {
+  "cran": 1,
+  "pt": 24,
+  "local": {
+   "px": 32.256,
+   "w": 1024,
+   "h": 768,
+   "bas": 346,
+   "debord": 0,
+   "rogne": false,
+   "signes": 452,
+   "fin": "ur la mise en commun de la fin de l'heure."
+  },
+  "ecrans": 14
+ },
+ {
+  "cran": 2,
+  "pt": 32,
+  "local": {
+   "px": 43.008,
+   "w": 1024,
+   "h": 768,
+   "bas": 539,
+   "debord": 0,
+   "rogne": false,
+   "signes": 452,
+   "fin": "ur la mise en commun de la fin de l'heure."
+  },
+  "ecrans": 14
+ },
+ {
+  "cran": 3,
+  "pt": 38,
+  "local": {
+   "px": 51.072,
+   "w": 1024,
+   "h": 768,
+   "bas": 755,
+   "debord": 0,
+   "rogne": false,
+   "signes": 452,
+   "fin": "ur la mise en commun de la fin de l'heure."
+  },
+  "ecrans": 14
+ },
+ {
+  "cran": 4,
+  "pt": 44,
+  "local": {
+   "px": 59.136,
+   "w": 1024,
+   "h": 768,
+   "bas": 1010,
+   "debord": 242,
+   "rogne": true,
+   "signes": 452,
+   "fin": "ur la mise en commun de la fin de l'heure."
+  },
+  "ecrans": 14
+ },
+ {
+  "cran": 5,
+  "pt": 52,
+  "local": {
+   "px": 69.888,
+   "w": 1024,
+   "h": 768,
+   "bas": 1326,
+   "debord": 558,
+   "rogne": true,
+   "signes": 452,
+   "fin": "ur la mise en commun de la fin de l'heure."
+  },
+  "ecrans": 14
+ }
+]

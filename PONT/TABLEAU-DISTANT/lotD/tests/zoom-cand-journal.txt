@@ -1,0 +1,11 @@
+  cran 1 (24 pt) : PILOTE iz=0 → 14.9 px (boîte 356) | TABLEAU iz=1 (32 pt) → toile 43.0 px · consigne 45.2 px | écrans pilote : 14
+  cran 2 (32 pt) : PILOTE iz=1 → 19.9 px (boîte 356) | TABLEAU iz=1 (32 pt) → toile 43.0 px · consigne 45.2 px | écrans pilote : 14
+  cran 3 (38 pt) : PILOTE iz=2 → 23.6 px (boîte 356) | TABLEAU iz=1 (32 pt) → toile 43.0 px · consigne 45.2 px | écrans pilote : 15
+  cran 4 (44 pt) : PILOTE iz=3 → 27.4 px (boîte 356) | TABLEAU iz=1 (32 pt) → toile 43.0 px · consigne 45.2 px | écrans pilote : 16
+  cran 5 (52 pt) : PILOTE iz=4 → 32.4 px (boîte 356) | TABLEAU iz=1 (32 pt) → toile 43.0 px · consigne 45.2 px | écrans pilote : 16
+
+═══ VERDICT ═══
+  crans de zoom joués au pilote : 5 (24 · 32 · 38 · 44 · 52 pt)
+  iz observés dans la vue distante : [1]
+  tailles de police observées au tableau distant : [43.008]
+  → LE ZOOM DU PILOTE N'ATTEINT PAS LE TABLEAU DISTANT : il reste au cran 2.

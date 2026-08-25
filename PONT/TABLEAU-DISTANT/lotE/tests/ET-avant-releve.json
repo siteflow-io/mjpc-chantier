@@ -1,0 +1,175 @@
+{
+ "lignes": [
+  {
+   "cran": 1,
+   "pilote": {
+    "bas": 157,
+    "boite": 313,
+    "debord": 0,
+    "ecrans": 14,
+    "i": 0,
+    "suite": 0,
+    "etapes": 1,
+    "vues": 1,
+    "suiteEt": false
+   },
+   "local": {
+    "bas": 346,
+    "boite": 768,
+    "debord": 0,
+    "signes": 452
+   },
+   "mur": {
+    "bas": 206,
+    "boite": 768,
+    "debord": 0,
+    "signes": 144
+   },
+   "ok": true
+  },
+  {
+   "cran": 2,
+   "pilote": {
+    "bas": 220,
+    "boite": 313,
+    "debord": 0,
+    "ecrans": 14,
+    "i": 0,
+    "suite": 0,
+    "etapes": 1,
+    "vues": 1,
+    "suiteEt": false
+   },
+   "local": {
+    "bas": 539,
+    "boite": 768,
+    "debord": 0,
+    "signes": 452
+   },
+   "mur": {
+    "bas": 206,
+    "boite": 768,
+    "debord": 0,
+    "signes": 144
+   },
+   "ok": true
+  },
+  {
+   "cran": 3,
+   "pilote": {
+    "bas": 280,
+    "boite": 313,
+    "debord": 0,
+    "ecrans": 14,
+    "i": 0,
+    "suite": 0,
+    "etapes": 1,
+    "vues": 1,
+    "suiteEt": false
+   },
+   "local": {
+    "bas": 755,
+    "boite": 768,
+    "debord": 0,
+    "signes": 452
+   },
+   "mur": {
+    "bas": 206,
+    "boite": 768,
+    "debord": 0,
+    "signes": 144
+   },
+   "ok": true
+  },
+  {
+   "cran": 4,
+   "pilote": {
+    "bas": 377,
+    "boite": 313,
+    "debord": 64,
+    "ecrans": 14,
+    "i": 0,
+    "suite": 0,
+    "etapes": 1,
+    "vues": 1,
+    "suiteEt": false
+   },
+   "local": {
+    "bas": 1010,
+    "boite": 768,
+    "debord": 242,
+    "signes": 452
+   },
+   "mur": {
+    "bas": 206,
+    "boite": 768,
+    "debord": 0,
+    "signes": 144
+   },
+   "ok": false
+  },
+  {
+   "cran": 5,
+   "pilote": {
+    "bas": 481,
+    "boite": 313,
+    "debord": 168,
+    "ecrans": 14,
+    "i": 0,
+    "suite": 0,
+    "etapes": 1,
+    "vues": 1,
+    "suiteEt": false
+   },
+   "local": {
+    "bas": 1326,
+    "boite": 768,
+    "debord": 558,
+    "signes": 452
+   },
+   "mur": {
+    "bas": 206,
+    "boite": 768,
+    "debord": 0,
+    "signes": 144
+   },
+   "ok": false
+  }
+ ],
+ "apresDezoom": {
+  "ecrans": 14,
+  "etapes": 1,
+  "vues": 1,
+  "texte": "Étape unique : tu observes le tableau en silence, tu notes au brouillon tout ce que tu vois — les couleurs, la lumière, les personnages, le décor, ce qui bouge et ce qui ne bouge pas, ce qui est net et ce qui est flou, puis tu écris en cinq lignes complètes l'hypothèse que tu proposes à la classe sur ce que peut être le Romantisme, et tu gardes ton brouillon pour la mise en commun de la fin de l'heure.",
+  "identique": true,
+  "longueur": 405,
+  "attendu": 405,
+  "marques": 0
+ },
+ "exportE": {
+  "ecrans": 14,
+  "etapes": 1,
+  "vues": 1,
+  "identique": true,
+  "recitContient": true,
+  "recitDoublon": 1,
+  "marques": 0
+ },
+ "env": {
+  "e1": {
+   "scinde": false,
+   "reabs": false,
+   "garde": true
+  },
+  "e2": {
+   "scinde": false,
+   "reabs": false,
+   "garde": true
+  },
+  "e3": {
+   "scinde": false,
+   "reabs": false,
+   "garde": true
+  }
+ }
+}

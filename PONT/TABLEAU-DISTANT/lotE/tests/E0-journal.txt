@@ -1,0 +1,39 @@
+trois surfaces montées : Tableau — MJPC
+
+— ① GÉOMÉTRIE DES BOÎTES —
+  PILOTE  : 632×356 (ratio 1.778) · #contenu 585×313
+  LOCAL   : 800×600 (ratio 1.333)
+  DISTANT : 1360×768 (ratio 1.771)
+  → boîtes NON homothétiques
+
+— ② LES TROIS SURFACES, CRAN PAR CRAN (base prodE.html) —
+  cran 1 (24 pt) :
+    PILOTE  14.9 px · i=0/14 suite=0 · «Heure 1 · Analyse d'images : la ro» · 523 signes
+    LOCAL   25.2 px · «Heure 1 · Analyse d'images : la ro» · 144 signes
+    DISTANT 43.0 px · «Heure 1 · Analyse d'images : la ro» · 144 signes
+    accord LOCAL/DISTANT : ✔ même image
+  cran 2 (32 pt) :
+    PILOTE  19.9 px · i=0/14 suite=0 · «Heure 1 · Analyse d'images : la ro» · 523 signes
+    LOCAL   33.6 px · «Heure 1 · Analyse d'images : la ro» · 144 signes
+    DISTANT 43.0 px · «Heure 1 · Analyse d'images : la ro» · 144 signes
+    accord LOCAL/DISTANT : ✔ même image
+  cran 3 (38 pt) :
+    PILOTE  23.6 px · i=0/15 suite=0 · «Heure 1 · Analyse d'images : la ro» · 311 signes
+    LOCAL   39.9 px · «Heure 1 · Analyse d'images : la ro» · 144 signes
+    DISTANT 43.0 px · «Heure 1 · Analyse d'images : la ro» · 144 signes
+    accord LOCAL/DISTANT : ✔ même image
+  cran 4 (44 pt) :
+    PILOTE  27.4 px · i=0/16 suite=0 · «Heure 1 · Analyse d'images : la ro» · 201 signes
+    LOCAL   46.2 px · «Heure 1 · Analyse d'images : la ro» · 144 signes
+    DISTANT 43.0 px · «Heure 1 · Analyse d'images : la ro» · 144 signes
+    accord LOCAL/DISTANT : ✔ même image
+  cran 5 (52 pt) :
+    PILOTE  32.4 px · i=0/16 suite=0 · «Heure 1 · Analyse d'images : la ro» · 201 signes
+    LOCAL   54.6 px · «Heure 1 · Analyse d'images : la ro» · 144 signes
+    DISTANT 43.0 px · «Heure 1 · Analyse d'images : la ro» · 144 signes
+    accord LOCAL/DISTANT : ✔ même image
+
+— ③ VOIE (i) SIMULÉE : la vue distante reçoit le cran et se compose elle-même —
+  cran 2 posé dans la vue : police 43.0 px · écrans 14 → 14 · i=0 · 144 signes · contenu 206 px dans une boîte de 768 px   ✔ tient | cadre moteur de la vue : 0 px de haut
+  cran 4 posé dans la vue : police 59.1 px · écrans 14 → 14 · i=0 · 144 signes · contenu 341 px dans une boîte de 768 px   ✔ tient | cadre moteur de la vue : 0 px de haut
+  cran 5 posé dans la vue : police 69.9 px · écrans 14 → 14 · i=0 · 144 signes · contenu 470 px dans une boîte de 768 px   ✔ tient | cadre moteur de la vue : 0 px de haut

@@ -126,4 +126,13 @@ Deux lectures s'opposent, et **elles n'ont pas la même conséquence** :
 
 **Le risque, si l'on transmettait `iz` :** au cran 5, le texte du tableau distant passerait de 43 à ~70 px ; son propre moteur déborderait et **appellerait `degorge` sur SA trame** — la vue distante se scinderait à son tour et **projetterait des fils à la classe**, ce que la doctrine interdit (`OU-TROUVER-QUOI` : *les fils meurent au dézoom et n'ont jamais d'identité*). Transmettre le zoom exigerait donc **en même temps** de suspendre la scission côté vue. Ce n'est pas une ligne, et cela sort du périmètre de ce lot.
 
-**Je ne tranche pas seul : la conscience arbitre, et Paul dit ce qu'il veut voir au mur.** En attendant, l'état est nommé, mesuré et borné.
+### TRANCHÉ PAR PAUL, 25/08 — ET L'HYPOTHÈSE (a) ÉTAIT UN CONTRESENS
+**Verbatim** : « *le zoom sert pour la classe, pas pour moi. je m'en fiche d'avoir un zoom sur mon pilotage, je suis le nez sur mon écran. les élèves eux, ont besoin qu'on puisse zoomer ce qu'ils voient au tableau mur. le zoom doit se transmettre. sinon il ne sert à rien.* »
+
+**La réglette n'a jamais servi au pilotage. Elle n'a qu'un usage : grossir ce que la classe lit au mur.** L'hypothèse (a) ci-dessus n'était pas une lecture recevable ; je l'ai fabriquée faute de connaître la finalité du mécanisme, et je la retire.
+
+**Conséquence sur la cible, qui n'est PAS « ajouter `iz` à la photo »** : si le zoom traverse, le texte du tableau distant ne tient plus dans sa boîte, et **son moteur doit alors scinder** — ce que le mandat du LOT D écrivait déjà sans que je l'entende comme une intention : « *le tableau se scinde selon SON PROPRE écran* ». Les fils du pilote ne traversent pas ; le tableau fabrique **les siens**, à sa géométrie. C'est la raison d'être des fils : en grossissant, le contenu coule sur l'écran projeté suivant.
+
+**Réserve que je pose sur mon propre lot** : il reste **nécessaire** (sans identité stable, le tableau ne sait pas de quelle activité on parle), mais la phrase « le tableau suit le pilote » est **trop large** : il suit sa *position*, pas sa *composition*. À corriger avant qu'elle ne se propage.
+
+**Suite** : `MESSAGE-A-LA-CONSCIENCE.md`, dans ce dossier — ce que cette erreur dit du dispositif, et les cinq points à instruire pour le lot E.

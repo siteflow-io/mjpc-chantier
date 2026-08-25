@@ -1,0 +1,461 @@
+{
+ "pas": [
+  {
+   "pas": "état initial",
+   "pilote": {
+    "i": 0,
+    "act": "Heure 1 · Analyse d'images : la routine",
+    "suite": 0,
+    "rev": 0,
+    "vues": [
+     0
+    ]
+   },
+   "scene": {
+    "ecran": 0,
+    "eid": "emt8lqjfgzm8ac",
+    "morceau": 0,
+    "rev": 0
+   },
+   "tableau": {
+    "i": 0,
+    "act": "Heure 1 · Analyse d'images : la routine",
+    "rev": 0,
+    "nbEcrans": 14
+   },
+   "projete": {
+    "act": null,
+    "signes": 92
+   },
+   "accord": true
+  },
+  {
+   "pas": "dévoilement 1",
+   "pilote": {
+    "i": 0,
+    "act": "Heure 1 · Analyse d'images : la routine",
+    "suite": 0,
+    "rev": 1,
+    "vues": [
+     0
+    ]
+   },
+   "scene": {
+    "ecran": 0,
+    "eid": "emt8lqjfgzm8ac",
+    "morceau": 0,
+    "rev": 1
+   },
+   "tableau": {
+    "i": 0,
+    "act": "Heure 1 · Analyse d'images : la routine",
+    "rev": 1,
+    "nbEcrans": 14
+   },
+   "projete": {
+    "act": "Heure 1 · Analyse d'images : la routine",
+    "signes": 131
+   },
+   "accord": true
+  },
+  {
+   "pas": "dévoilement 2",
+   "pilote": {
+    "i": 0,
+    "act": "Heure 1 · Analyse d'images : la routine",
+    "suite": 0,
+    "rev": 2,
+    "vues": [
+     0
+    ]
+   },
+   "scene": {
+    "ecran": 0,
+    "eid": "emt8lqjfgzm8ac",
+    "morceau": 0,
+    "rev": 2
+   },
+   "tableau": {
+    "i": 0,
+    "act": "Heure 1 · Analyse d'images : la routine",
+    "rev": 2,
+    "nbEcrans": 14
+   },
+   "projete": {
+    "act": "Heure 1 · Analyse d'images : la routine",
+    "signes": 186
+   },
+   "accord": true
+  },
+  {
+   "pas": "dévoilement 3",
+   "pilote": {
+    "i": 0,
+    "act": "Heure 1 · Analyse d'images : la routine",
+    "suite": 0,
+    "rev": 2,
+    "vues": [
+     1
+    ]
+   },
+   "scene": {
+    "ecran": 0,
+    "eid": "emt8lqjfgzm8ac",
+    "morceau": 0,
+    "rev": 2
+   },
+   "tableau": {
+    "i": 0,
+    "act": "Heure 1 · Analyse d'images : la routine",
+    "rev": 2,
+    "nbEcrans": 14
+   },
+   "projete": {
+    "act": "Heure 1 · Analyse d'images : la routine",
+    "signes": 236
+   },
+   "accord": true
+  },
+  {
+   "pas": "dévoilement 4",
+   "pilote": {
+    "i": 0,
+    "act": "Heure 1 · Analyse d'images : la routine",
+    "suite": 0,
+    "rev": 2,
+    "vues": [
+     2
+    ]
+   },
+   "scene": {
+    "ecran": 0,
+    "eid": "emt8lqjfgzm8ac",
+    "morceau": 0,
+    "rev": 2
+   },
+   "tableau": {
+    "i": 0,
+    "act": "Heure 1 · Analyse d'images : la routine",
+    "rev": 2,
+    "nbEcrans": 14
+   },
+   "projete": {
+    "act": "Heure 1 · Analyse d'images : la routine",
+    "signes": 293
+   },
+   "accord": true
+  },
+  {
+   "pas": "dévoilement 5",
+   "pilote": {
+    "i": 1,
+    "act": "Heure 1 · Analyse d'images : la routine",
+    "suite": 1,
+    "rev": 2,
+    "vues": [
+     0
+    ]
+   },
+   "scene": {
+    "ecran": 1,
+    "eid": "emt8lqjfgzm8ac",
+    "morceau": 1,
+    "rev": 2
+   },
+   "tableau": {
+    "i": 1,
+    "act": "Heure 1 · Tableau 1",
+    "rev": 2,
+    "nbEcrans": 14
+   },
+   "projete": {
+    "act": "Heure 1 · Tableau 1",
+    "signes": 205
+   },
+   "accord": false
+  },
+  {
+   "pas": "dévoilement 6",
+   "pilote": {
+    "i": 1,
+    "act": "Heure 1 · Analyse d'images : la routine",
+    "suite": 1,
+    "rev": 2,
+    "vues": [
+     1
+    ]
+   },
+   "scene": {
+    "ecran": 1,
+    "eid": "emt8lqjfgzm8ac",
+    "morceau": 1,
+    "rev": 2
+   },
+   "tableau": {
+    "i": 1,
+    "act": "Heure 1 · Tableau 1",
+    "rev": 2,
+    "nbEcrans": 14
+   },
+   "projete": {
+    "act": "Heure 1 · Tableau 1",
+    "signes": 205
+   },
+   "accord": false
+  },
+  {
+   "pas": "dévoilement 7",
+   "pilote": {
+    "i": 2,
+    "act": "Heure 1 · Analyse d'images : la routine",
+    "suite": 2,
+    "rev": 2,
+    "vues": [
+     0
+    ]
+   },
+   "scene": {
+    "ecran": 2,
+    "eid": "emt8lqjfgzm8ac",
+    "morceau": 2,
+    "rev": 2
+   },
+   "tableau": {
+    "i": 2,
+    "act": "Heure 1 · Tableau 2",
+    "rev": 2,
+    "nbEcrans": 14
+   },
+   "projete": {
+    "act": "Heure 1 · Tableau 2",
+    "signes": 181
+   },
+   "accord": false
+  },
+  {
+   "pas": "dévoilement 8",
+   "pilote": {
+    "i": 2,
+    "act": "Heure 1 · Analyse d'images : la routine",
+    "suite": 2,
+    "rev": 2,
+    "vues": [
+     1
+    ]
+   },
+   "scene": {
+    "ecran": 2,
+    "eid": "emt8lqjfgzm8ac",
+    "morceau": 2,
+    "rev": 2
+   },
+   "tableau": {
+    "i": 2,
+    "act": "Heure 1 · Tableau 2",
+    "rev": 2,
+    "nbEcrans": 14
+   },
+   "projete": {
+    "act": "Heure 1 · Tableau 2",
+    "signes": 181
+   },
+   "accord": false
+  },
+  {
+   "pas": "dévoilement 9",
+   "pilote": {
+    "i": 3,
+    "act": "Heure 1 · Analyse d'images : la routine",
+    "suite": 3,
+    "rev": 2,
+    "vues": [
+     0
+    ]
+   },
+   "scene": {
+    "ecran": 3,
+    "eid": "emt8lqjfgzm8ac",
+    "morceau": 3,
+    "rev": 2
+   },
+   "tableau": {
+    "i": 3,
+    "act": "Heure 1 · Tableau 3",
+    "rev": 2,
+    "nbEcrans": 14
+   },
+   "projete": {
+    "act": "Heure 1 · Tableau 3",
+    "signes": 164
+   },
+   "accord": false
+  },
+  {
+   "pas": "dévoilement 10",
+   "pilote": {
+    "i": 3,
+    "act": "Heure 1 · Analyse d'images : la routine",
+    "suite": 3,
+    "rev": 2,
+    "vues": [
+     1
+    ]
+   },
+   "scene": {
+    "ecran": 3,
+    "eid": "emt8lqjfgzm8ac",
+    "morceau": 3,
+    "rev": 2
+   },
+   "tableau": {
+    "i": 3,
+    "act": "Heure 1 · Tableau 3",
+    "rev": 2,
+    "nbEcrans": 14
+   },
+   "projete": {
+    "act": "Heure 1 · Tableau 3",
+    "signes": 164
+   },
+   "accord": false
+  }
+ ],
+ "eidsHub": [
+  "AUCUN",
+  "AUCUN",
+  "AUCUN",
+  "AUCUN",
+  "AUCUN",
+  "AUCUN",
+  "AUCUN",
+  "AUCUN",
+  "AUCUN",
+  "AUCUN",
+  "AUCUN",
+  "AUCUN",
+  "AUCUN",
+  "AUCUN"
+ ],
+ "coursActif": {
+  "niveau": "3e",
+  "chapitre": "0",
+  "seance": "0",
+  "classeSlug": "3E Charles de Gaulle",
+  "classeNom": "3E Charles de Gaulle",
+  "debut": "10:07",
+  "fin": "11:02",
+  "ts": 1787658537428
+ },
+ "compteur": 18,
+ "journalEcritures": [
+  {
+   "de": "pilote",
+   "methode": "PUT",
+   "chemin": "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/ecrans",
+   "taille": 5085
+  },
+  {
+   "de": "pilote",
+   "methode": "PUT",
+   "chemin": "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/demarreLe",
+   "taille": 13
+  },
+  {
+   "de": "pilote",
+   "methode": "PUT",
+   "chemin": "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/classe",
+   "taille": 22
+  },
+  {
+   "de": "pilote",
+   "methode": "PUT",
+   "chemin": "/site/cours_actif",
+   "taille": 163
+  },
+  {
+   "de": "pilote",
+   "methode": "PUT",
+   "chemin": "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/scene",
+   "taille": 190
+  },
+  {
+   "de": "pilote",
+   "methode": "PUT",
+   "chemin": "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/scene",
+   "taille": 246
+  },
+  {
+   "de": "pilote",
+   "methode": "PUT",
+   "chemin": "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/heures/2026-08-25_10h07-11h02_3E_Charles_de_Gaulle",
+   "taille": 1699
+  },
+  {
+   "de": "pilote",
+   "methode": "PUT",
+   "chemin": "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/scene",
+   "taille": 251
+  },
+  {
+   "de": "pilote",
+   "methode": "PUT",
+   "chemin": "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/scene",
+   "taille": 251
+  },
+  {
+   "de": "pilote",
+   "methode": "PUT",
+   "chemin": "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/scene",
+   "taille": 251
+  },
+  {
+   "de": "pilote",
+   "methode": "PUT",
+   "chemin": "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/scene",
+   "taille": 251
+  },
+  {
+   "de": "pilote",
+   "methode": "PUT",
+   "chemin": "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/scene",
+   "taille": 251
+  },
+  {
+   "de": "pilote",
+   "methode": "PUT",
+   "chemin": "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/scene",
+   "taille": 251
+  },
+  {
+   "de": "pilote",
+   "methode": "PUT",
+   "chemin": "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/scene",
+   "taille": 251
+  },
+  {
+   "de": "pilote",
+   "methode": "PUT",
+   "chemin": "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/scene",
+   "taille": 251
+  },
+  {
+   "de": "pilote",
+   "methode": "PUT",
+   "chemin": "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/scene",
+   "taille": 251
+  },
+  {
+   "de": "pilote",
+   "methode": "PUT",
+   "chemin": "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/scene",
+   "taille": 251
+  },
+  {
+   "de": "pilote",
+   "methode": "PUT",
+   "chemin": "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/scene",
+   "taille": 251
+  }
+ ],
+ "erreurs": []
+}

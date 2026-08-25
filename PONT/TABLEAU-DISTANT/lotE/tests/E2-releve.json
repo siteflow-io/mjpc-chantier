@@ -1,0 +1,116 @@
+{
+ "voieI": [
+  {
+   "cran": 2,
+   "pt": 32,
+   "px": 43.008,
+   "ecrans": "14→14",
+   "i": 0,
+   "h": 768,
+   "bas": 601,
+   "rogne": false,
+   "debord": -167,
+   "signes": 523,
+   "visible": 3,
+   "enfants": 3
+  },
+  {
+   "cran": 3,
+   "pt": 38,
+   "px": 51.072,
+   "ecrans": "14→14",
+   "i": 0,
+   "h": 768,
+   "bas": 778,
+   "rogne": true,
+   "debord": 10,
+   "signes": 523,
+   "visible": 3,
+   "enfants": 3
+  },
+  {
+   "cran": 4,
+   "pt": 44,
+   "px": 59.136,
+   "ecrans": "14→14",
+   "i": 0,
+   "h": 768,
+   "bas": 1171,
+   "rogne": true,
+   "debord": 403,
+   "signes": 523,
+   "visible": 3,
+   "enfants": 3
+  },
+  {
+   "cran": 5,
+   "pt": 52,
+   "px": 69.888,
+   "ecrans": "14→14",
+   "i": 0,
+   "h": 768,
+   "bas": 1434,
+   "rogne": true,
+   "debord": 666,
+   "signes": 523,
+   "visible": 3,
+   "enfants": 3
+  }
+ ],
+ "morceaux": [
+  {
+   "rang": 0,
+   "suite": 0,
+   "blocs": 1,
+   "signes": 272
+  },
+  {
+   "rang": 1,
+   "suite": 1,
+   "blocs": 1,
+   "signes": 267
+  }
+ ],
+ "infoTel": {
+  "cadre": {
+   "w": 0,
+   "h": 0,
+   "display": "none"
+  },
+  "iz": 1,
+  "ecrans": 14,
+  "i": 0,
+  "palette": [
+   "◀replier",
+   "▶dévoiler",
+   "⏮écran préc.",
+   "⏭écran suiv.",
+   "❄gel",
+   "✍️à écrire",
+   "⏱chrono",
+   "📺au tableau",
+   "🙋qui a participé"
+  ],
+  "nbPalette": 9,
+  "titre": "3E Charles de Gaulle · S0"
+ },
+ "premierEtat": {
+  "P": {
+   "iz": 4,
+   "pt": 52,
+   "i": 0,
+   "nb": 15,
+   "suite": 0,
+   "rev": 2
+  },
+  "T": {
+   "px": 43.008,
+   "h": 768,
+   "bas": 601,
+   "rogne": false,
+   "debord": -167,
+   "signes": 523,
+   "fin": "n, 5 lignes).Étape 6 : J'expose mon hypothèse à l'oral."
+  }
+ }
+}

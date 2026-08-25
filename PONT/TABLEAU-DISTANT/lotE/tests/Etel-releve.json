@@ -1,0 +1,37 @@
+[
+ {
+  "cran": 5,
+  "mur": {
+   "px": 69.615,
+   "signes": 136,
+   "iz": 4
+  },
+  "telIntact": true,
+  "etiquette": "52 pt"
+ },
+ {
+  "cran": 1,
+  "mur": {
+   "px": 32.13,
+   "signes": 523,
+   "iz": 0
+  },
+  "telIntact": true,
+  "etiquette": "24 pt"
+ },
+ {
+  "cran": 4,
+  "mur": {
+   "px": 58.905,
+   "signes": 306,
+   "iz": 3
+  },
+  "telIntact": true,
+  "etiquette": "44 pt"
+ },
+ {
+  "pas": "téléphone seul",
+  "rogne": false,
+  "signes": 136
+ }
+]

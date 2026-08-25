@@ -1,0 +1,13 @@
+— ① LA TÉLÉCOMMANDE : le mur grossit, le téléphone ne bouge pas —
+  départ : mur 42.8 px (iz=1) · téléphone : réglette=1 étiquette «32 pt» · empreinte 19a25c14660e
+  cran 5 au téléphone : mur 69.6 px (iz=4) · 136 signes | téléphone : «52 pt» · affichage INCHANGÉ ✔ (empreinte 7a6c1dbf52aa)
+  cran 1 au téléphone : mur 32.1 px (iz=0) · 523 signes | téléphone : «24 pt» · affichage INCHANGÉ ✔ (empreinte 972f6cf15f98)
+  cran 4 au téléphone : mur 58.9 px (iz=3) · 306 signes | téléphone : «44 pt» · affichage INCHANGÉ ✔ (empreinte 8db9d7a59dfb)
+
+— ② LE TÉLÉPHONE SEUL : on ferme le PC, il pilote du fond de la classe —
+  PC fermé, cran 5 depuis le téléphone : mur 69.6 px · 136 signes
+  boîte du mur : 1360×765 (sa boîte réelle, aucun ratio reçu) · contenu 389 px / 765 px   ✔ RIEN D'AMPUTÉ · 16 écrans dans sa trame
+
+═══ COMPTES ═══
+  épreuves : 4 · en échec : 0
+  écritures sorties : 0 (interceptées : 12) · pageerrors : 0

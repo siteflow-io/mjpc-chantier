@@ -1,0 +1,40 @@
+### base candE.html · mur 1024×768 (4/3)
+
+— ① LA MÊME IMAGE, CRAN PAR CRAN : vue distante contre fenêtre locale —
+  cran 1 (24 pt) · pilote i=0/14 suite=0
+    LOCAL   1280×720 · 30.2 px (prop 0.042) · 523 signes
+    DISTANT 1024×576 · 24.2 px (prop 0.042) · 523 signes · toile 1024×576 · iz=0
+    → texte IDENTIQUE ✔ · police à l'échelle IDENTIQUE ✔
+  cran 2 (32 pt) · pilote i=0/14 suite=0
+    LOCAL   1280×720 · 40.3 px (prop 0.056) · 523 signes
+    DISTANT 1024×576 · 32.3 px (prop 0.056) · 523 signes · toile 1024×576 · iz=1
+    → texte IDENTIQUE ✔ · police à l'échelle IDENTIQUE ✔
+  cran 3 (38 pt) · pilote i=0/15 suite=0
+    LOCAL   1280×720 · 47.9 px (prop 0.0665) · 311 signes
+    DISTANT 1024×576 · 38.3 px (prop 0.0665) · 311 signes · toile 1024×576 · iz=2
+    → texte IDENTIQUE ✔ · police à l'échelle IDENTIQUE ✔
+  cran 4 (44 pt) · pilote i=0/16 suite=0
+    LOCAL   1280×720 · 55.4 px (prop 0.077) · 201 signes
+    DISTANT 1024×576 · 44.4 px (prop 0.077) · 201 signes · toile 1024×576 · iz=3
+    → texte IDENTIQUE ✔ · police à l'échelle IDENTIQUE ✔
+  cran 5 (52 pt) · pilote i=0/16 suite=0
+    LOCAL   1280×720 · 65.5 px (prop 0.091) · 201 signes
+    DISTANT 1024×576 · 52.4 px (prop 0.091) · 201 signes · toile 1024×576 · iz=4
+    → texte IDENTIQUE ✔ · police à l'échelle IDENTIQUE ✔
+  cadre de découpe du mur : {"w":1024,"h":576,"opacite":"0","doigt":"none","gauche":"-30000px","z":"-1","tab":"-1"}
+
+— ② REPLIER au cran 5 —
+  après ×3 : pilote i=0 suite=0 | local 39 signes · distant 39 signes · IDENTIQUE ✔
+
+— ③ GEL : le cran change, le mur ne bouge pas —
+  sous gel : 52.4 px / 39 signes → 52.4 px / 39 signes   ✔ FIGÉ
+  au dégel : local 30.2 px / 39 signes · distant 24.2 px / 39 signes · RATTRAPÉ ✔
+
+— ④ REPRISE À FROID de la page mur, en pleine séance —
+  avant F5 : 52.4 px / 39 signes
+  après F5 : distant 52.4 px / 201 signes · local 65.5 px / 201 signes
+  → cran retrouvé : ✔ · même image que la fenêtre locale : ✔
+
+═══ COMPTES ═══
+  épreuves : 9 · en échec : 0
+  écritures sorties : 0 (interceptées : 20) · pageerrors : 0 []

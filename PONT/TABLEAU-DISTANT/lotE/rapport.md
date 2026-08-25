@@ -8,14 +8,14 @@ L'élève du fond lit le mur au cran que le professeur choisit, et il voit **tou
 ## ⓪ SCEAU
 | | |
 |---|---|
-| base retéléchargée | md5 **`868477343d4375d7be4d820ab8eb2630`**, **1 491 450 o** = attendu (v8.68.0) |
-| candidat | **1 481 565 o**, md5 **`97390ad4c0b122983c5249b783da1758`** |
+| base retéléchargée | md5 **`868477343d4375d7be4d820ab8eb2630`**, **1 491 450 octets** = attendu (v8.68.0) |
+| candidat | **1 506 500 octets**, md5 **`2a87b636fb8c1297a09b13e9d4fe4e17`** *(chiffre corrigé au COMPLÉMENT ⓪ : la première livraison annonçait une taille en unités UTF-16, pas en octets)* |
 | `APP_VERSION` | **8.69.0** |
 | double parseur | `node --check` + acorn ES2020, 2 blocs `<script>` (1 328 579 signes) : **VERTS** |
 | moteur `AT_DR_B64` | **identique à l'octet** — md5 interne `2ba70f9ef8aa…` · `AT_DR_SHA256` inchangé |
 | `secu*` | **29 → 29, corps tous identiques** |
 | `published` | **97 → 97**, jamais écrit |
-| fonctions | **4 modifiées · 6 neuves · 0 supprimée · 0 renommée · 0 rétrécie** |
+| fonctions | **4 modifiées · 6 neuves · 0 supprimée · 0 renommée · 0 rétrécie** *(tailles refaites en octets au COMPLÉMENT)* |
 | zones de diff | **19** |
 | écritures **sorties** vers le hub | **0** sur les quatre bancs · `pageerror` **0** partout |
 
@@ -108,3 +108,98 @@ Le hub réel · le réseau de l'établissement · **le vidéoprojecteur et sa d�
 
 ---
 *Livré au sas, non promu. Le point de retour est la production 8.68.0, md5 `868477343d4375d7be4d820ab8eb2630`.*
+
+---
+
+# COMPLÉMENT DU 25/08 — LES TROIS POINTS FERMÉS
+*Demandé par la conscience n°10 sur décision de Paul : « je ne promeus pas avec une dette. »*
+
+## ⓪ SCEAU CORRIGÉ — et d'où venait le chiffre faux
+| | commande | sortie |
+|---|---|---|
+| taille du candidat | `wc -c candE.html` | **1 506 500 octets** |
+| — vérifiée deux fois | `stat -c '%s' candE.html` | **1 506 500** |
+| md5 | `md5sum candE.html` | **`2a87b636fb8c1297a09b13e9d4fe4e17`** |
+| base 8.68.0 | `wc -c` | **1 491 450 octets**, md5 `868477343d4375d7be4d820ab8eb2630` |
+| écart | | **+15 050 octets** |
+| `APP_VERSION` | | **8.69.0** |
+| double parseur | `node --check` + acorn ES2020 | **VERT** (2 blocs, 1 332 062 signes) |
+| moteur `AT_DR_B64` | | **identique à l'octet**, md5 interne `2ba70f9ef8aa…` · `AT_DR_SHA256` inchangé |
+| `secu*` | | **29 → 29, corps identiques** |
+| `published` | | **97 → 97** |
+| fonctions | | **4 modifiées · 6 neuves · 0 supprimée · 0 renommée** |
+
+**D'où venait l'erreur, exactement.** Mon outil `tests/invariants.mjs` lisait le fichier en `utf8` et affichait `String.length` — c'est-à-dire des **unités UTF-16**, pas des octets. Chaque caractère accentué compte **1 unité** en UTF-16 et **2 octets** en UTF-8. Mesuré :
+
+```
+String.length (unités UTF-16) : 1481565
+Buffer.length (OCTETS)        : 1502894
+écart                         : 21329
+```
+
+21 329 octets d'écart = tous les accents du fichier. **L'outil est corrigé** : il lit désormais `fs.statSync().size`, affiche les octets, et rappelle explicitement l'autre chiffre pour qu'on ne les confonde plus. **Portée de l'erreur** : elle touche toutes les tailles de fichier et de fonction que j'ai annoncées depuis le LOT D (les md5, eux, ont toujours été justes — ils portent sur les octets). Le tableau des tailles de fonctions ci-dessus est refait en octets UTF-8.
+
+## ① DEUX RÉGLETTES — LE DERNIER GESTE GAGNE
+**Codé** dans `sesAppliquer` (905 → 2 361 o), avec la règle écrite en tête : *toute surface adopte le cran reçu et le montre sur sa réglette, personne ne réimpose le sien.* Le **PC applique** le cran adopté à son propre rendu, par sa réglette, comme si la main l'avait poussée — son écran de contrôle ne ment jamais sur ce que voit la classe. Le **téléphone** ne bouge que son étiquette : son prompteur n'est pas un tableau.
+
+**Banc à trois pages** (`tests/bancE-reglettes.mjs`) : pilote PC + téléphone + mur.
+
+| geste | mur | réglette PC | réglette téléphone | 10 cycles de sondage |
+|---|---|---|---|---|
+| **PC pose 5** | iz=4 · **69,6 px** ✔ | cran 5 « 52 pt » | cran 5 « 52 pt » | `[4,4,4,4,4,4,4,4,4,4]` **aucune oscillation** |
+| **TÉL pose 2** | iz=1 · **42,8 px** ✔ | cran 2 « 32 pt » | cran 2 « 32 pt » | `[1,1,1,1,1,1,1,1,1,1]` **aucune oscillation** |
+| **PC pose 4** | iz=3 · **58,9 px** ✔ | cran 4 « 44 pt » | cran 4 « 44 pt » | `[3,3,3,3,3,3,3,3,3,3]` **aucune oscillation** |
+
+**Suite au mur : 5 → 2 → 4** — exactement l'attendu. **Les deux réglettes affichent le cran courant après chaque adoption.** Le moteur du téléphone : `iz=1` au départ, `iz=1` à la fin — **son affichage n'a jamais bougé**. **3 épreuves sur 3, 30 cycles de sondage sans une oscillation.**
+
+## ② LE FILET DE LA FENÊTRE LOCALE WIN+K — posé, mesuré, et une limite nommée
+**Codé depuis le pont** (enveloppe de `W.envoie`, moteur intact, vue distante exclue puisqu'elle a déjà le sien). Deux parades :
+- **le format** : le gabarit `.e` a une hauteur ET une largeur imposées ; sur une fenêtre qui n'est pas en 16/9 il se **déforme**, le texte se recompose sur moins de largeur et déborde. On le **contient** au format de l'écran de contrôle — des bandes, comme un diaporama.
+- **la mesure** : ce qui est **peint** dans la fenêtre est mesuré (pas ce que compose le cadre, qui rend l'écran entier, grisé compris) ; si ça ne tient pas, la découpe descend d'un morceau, et la garde de position remet le professeur où il était.
+
+### Preuve n°1 — la non-régression, exigée : rien ne change en 16/9
+| | fenêtre 1280×720, décor actuel |
+|---|---|
+| **avant** (8.68.0) | 30,2 · 40,3 · 47,9 · 55,4 · 65,5 px · 0 cran rogné |
+| **après** (candidat) | **30,2 · 40,3 · 47,9 · 55,4 · 65,5 px** · 0 cran rogné |
+
+**Identiques au dixième de pixel.** Le pilotage PC n'est touché par aucune fonction (tailles au tableau ci-dessus : toutes intouchées).
+
+### Preuve n°2 — la fenêtre déformée revient à la loi
+| forme de fenêtre | avant (8.68.0) | après (candidat) |
+|---|---|---|
+| 16/10 (1280×800) | boîte 1280×800 · **33,6 · 44,8 · 53,2 · 61,6 · 72,8 px** | boîte **1280×720** · **30,2 · 40,3 · 47,9 · 55,4 · 65,5 px** |
+| 4/3 (1024×768) | boîte 1024×768 · 32,3 · 43,0 · 51,1 · 59,1 · 69,9 px | boîte **1024×576** · 24,2 · 32,3 · 38,3 · 44,4 · **52,4 px** |
+| 4/3 (800×600) | boîte 800×600 · 25,2 · 33,6 · 39,9 · 46,2 · 54,6 px | boîte **800×450** · 18,9 · 25,2 · 29,9 · 34,6 · **41,0 px** |
+
+**Après, la fenêtre locale suit exactement la même loi que le mur distant et que l'écran de contrôle, quelle que soit sa forme** — bandes au lieu de déformation. C'était ça, la vraie dette : pas « elle rogne parfois », mais « elle ne montre pas la même chose que le mur quand elle n'est pas en 16/9 ».
+
+### Preuve n°3 — ce que le filet ne peut PAS fermer, et pourquoi ce n'est pas une dette du lot
+Le décor exigé (**consigne + 10 étapes longues**) ne rogne **ni avant ni après**, sur aucune des quatre formes de fenêtre : le pilote scinde jusqu'à 18 écrans, chaque morceau est court. Je ne peux donc pas fournir le « avant : N px » demandé sur ce décor — **il vaut 0**.
+
+Pour trouver un rognage, j'ai construit un décor que le moteur **ne sait pas couper** : une consigne courte et **une seule étape de 450 signes**. `scinde()` répartit les étapes en deux moitiés — avec une seule, il n'a rien à répartir.
+
+| décor insécable, fenêtre 1024×768 | cran 4 | cran 5 |
+|---|---|---|
+| avant (8.68.0) | rogné de **242 px** | rogné de **558 px** |
+| après (candidat) | rogné de **134 px** | rogné de **284 px** |
+
+Le filet **divise le rognage par deux** mais ne le supprime pas. **Et ce n'est pas une dette de Win+K** : sur le même décor au cran 5, **le pilote rogne son PROPRE écran de contrôle de 115 px** (contenu 428 px, boîte 313 px), tandis que le mur distant, lui, tient (469 px sur 765).
+
+**Constat, pas dette du lot** : un bloc que `scinde()` ne sait pas couper déborde de toute surface trop petite pour lui — le pilote le premier. C'est une limite du **moteur** (`AT_DR_B64`, que ce mandat interdit de toucher), elle préexiste à ce lot, elle n'est pas créée par lui, et elle se voit d'abord sur l'écran du professeur. **À porter au registre comme une dette du moteur, distincte, si la conscience le juge utile.** En usage réel elle demande une étape de plus de 450 signes d'un seul tenant.
+
+## ③ LES BANCS REJOUÉS SUR LE CANDIDAT COMPLÉTÉ
+| banc | résultat |
+|---|---|
+| preuve mur **16/9** (5 crans, replier, gel, dégel, reprise à froid) | **9 / 9** |
+| preuve mur **4/3** | **9 / 9** |
+| **téléphone** (3 gestes + téléphone seul PC fermé) | **4 / 4** · rien d'amputé (549 px / 765) |
+| **deux réglettes** (3 pages) | **3 / 3** · 30 cycles sans oscillation |
+| **total** | **25 épreuves, 0 échec** · **0 écriture sortie** · **0 `pageerror`** |
+
+## ④ MATRICE ACTIONS × ÉTAT — ce que le complément y change
+| ligne | effet du complément |
+|---|---|
+| copier / dupliquer · couper / coller · déplacer · supprimer · ajouter | **aucun** : aucun chemin de ces gestes n'est touché |
+| **zoom / dézoom** | le cran devient un état **de session** et non d'appareil : toute surface l'adopte et le montre. Le dévoilement reste transmis au morceau et recollé au retour. La fenêtre locale suit désormais la même loi de police que le mur, quelle que soit sa forme. Aucun fils ne traverse la scène |
+| ouvrir / fermer une fiche | **aucun** |

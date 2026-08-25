@@ -9,7 +9,7 @@ L'élève du fond lit le mur au cran que le professeur choisit, et il voit **tou
 | | |
 |---|---|
 | base retéléchargée | md5 **`868477343d4375d7be4d820ab8eb2630`**, **1 491 450 octets** = attendu (v8.68.0) |
-| candidat | **1 506 500 octets**, md5 **`2a87b636fb8c1297a09b13e9d4fe4e17`** *(chiffre corrigé au COMPLÉMENT ⓪ : la première livraison annonçait une taille en unités UTF-16, pas en octets)* |
+| candidat | **1 513 609 octets**, md5 **`3b945b55daee272a1809a638ed170531`** *(chiffre corrigé au COMPLÉMENT ⓪ : la première livraison annonçait une taille en unités UTF-16, pas en octets)* |
 | `APP_VERSION` | **8.69.0** |
 | double parseur | `node --check` + acorn ES2020, 2 blocs `<script>` (1 328 579 signes) : **VERTS** |
 | moteur `AT_DR_B64` | **identique à l'octet** — md5 interne `2ba70f9ef8aa…` · `AT_DR_SHA256` inchangé |
@@ -117,11 +117,11 @@ Le hub réel · le réseau de l'établissement · **le vidéoprojecteur et sa d�
 ## ⓪ SCEAU CORRIGÉ — et d'où venait le chiffre faux
 | | commande | sortie |
 |---|---|---|
-| taille du candidat | `wc -c candE.html` | **1 506 500 octets** |
-| — vérifiée deux fois | `stat -c '%s' candE.html` | **1 506 500** |
-| md5 | `md5sum candE.html` | **`2a87b636fb8c1297a09b13e9d4fe4e17`** |
+| taille du candidat | `wc -c candE.html` | **1 513 609 octets** *(complément 2 inclus)* |
+| — vérifiée deux fois | `stat -c '%s' candE.html` | **1 513 609** |
+| md5 | `md5sum candE.html` | **`3b945b55daee272a1809a638ed170531`** |
 | base 8.68.0 | `wc -c` | **1 491 450 octets**, md5 `868477343d4375d7be4d820ab8eb2630` |
-| écart | | **+15 050 octets** |
+| écart | | **+22 159 octets** |
 | `APP_VERSION` | | **8.69.0** |
 | double parseur | `node --check` + acorn ES2020 | **VERT** (2 blocs, 1 332 062 signes) |
 | moteur `AT_DR_B64` | | **identique à l'octet**, md5 interne `2ba70f9ef8aa…` · `AT_DR_SHA256` inchangé |
@@ -203,3 +203,94 @@ Le filet **divise le rognage par deux** mais ne le supprime pas. **Et ce n'est p
 | copier / dupliquer · couper / coller · déplacer · supprimer · ajouter | **aucun** : aucun chemin de ces gestes n'est touché |
 | **zoom / dézoom** | le cran devient un état **de session** et non d'appareil : toute surface l'adopte et le montre. Le dévoilement reste transmis au morceau et recollé au retour. La fenêtre locale suit désormais la même loi de police que le mur, quelle que soit sa forme. Aucun fils ne traverse la scène |
 | ouvrir / fermer une fiche | **aucun** |
+
+---
+
+# COMPLÉMENT 2 DU 25/08 — AUCUN BLOC NE DÉBORDE. LA DETTE EST SOLDÉE.
+*Paul : « cette dette du moteur doit être réglée maintenant. je ne promeus pas sur dette. »*
+**Je ne déclare plus aucune dette dans cette livraison.**
+
+## CE QUE ÇA CHANGE POUR LA CLASSE
+Une consigne dont l'unique étape est longue ne sort plus de l'écran — ni au mur, ni sur l'écran de contrôle. Elle continue sur l'écran suivant et se recolle au dézoom, exactement comme une réponse longue le fait déjà. Même chose pour une question dont l'énoncé est long.
+
+## ⓪ SCEAU
+| | commande | sortie |
+|---|---|---|
+| taille | `wc -c` puis `stat -c '%s'` | **1 513 609 octets** (deux fois) |
+| md5 | `md5sum` | **`3b945b55daee272a1809a638ed170531`** |
+| base 8.68.0 | | 1 491 450 octets · **+22 159 octets** |
+| double parseur | | **VERT** · moteur `AT_DR_B64` **identique à l'octet** · `AT_DR_SHA256` inchangé |
+| `secu*` **29 → 29** · `published` **97 → 97** · fonctions perdues **0** | | |
+
+## ① LE TROU, ET POURQUOI IL EXISTAIT
+`scinde()` coupe, dans l'ordre : les étapes **si elles sont plus d'une** · les réponses · le texte d'une réponse unique · les blocs d'une fiche · le `txt` d'une consigne sans étapes. **Une consigne à UNE étape longue tombe dans le dernier `else`**, qui coupe le `txt` — court, donc `coupeTexte` rend `null` — et rien ne se passe.
+
+**Mesuré sur la production 8.68.0**, décor « consigne + une étape de 405 signes » :
+
+| cran | PILOTE (écran de contrôle) | WIN+K (1024×768) |
+|---|---|---|
+| 4 — 44 pt | **déborde de 64 px** | **déborde de 242 px** |
+| 5 — 52 pt | **déborde de 168 px** | **déborde de 558 px** |
+
+## ② LA PARADE — moteur intact, depuis le pont
+**On ne duplique pas `scinde` : on rend son propre cas applicable.** L'enveloppe coupe l'étape en deux **avant** l'appel, ce qui la fait tomber dans la branche « plus d'une étape » du moteur ; celui-ci fait alors tout le reste — `frag`, groupe, rang de suite — comme pour les autres cas. Le fragment reçoit `suiteEt`, du même patron que `suiteRep`.
+
+**Le dévoilement** : poser `vues = 2` avant l'appel donne, par la formule du moteur (`min(vu,m)` / `max(0,vu−m)`), **1 au père et 1 au fragment** — une étape montrée reste montrée des deux côtés de la coupe.
+
+**Le recollement** (`_drRecollerEtapes`, neuve, 1 fonction) est branché sur **le dézoom** (enveloppe de `reabsorbe`) et sur **l'export** (`_drRefusionner`, en tête) : une étape coupée redevient **une** étape. **Les `vues` ne s'additionnent pas** — c'est le point que le mandat pointait : deux fragments d'une même étape ne font pas deux étapes dévoilées. On prend le **max**, borné au nombre réel d'étapes ; la refusion borne aussi `d.vues` à `d.etapes.length`. Sans cela, le mur (« dévoilement cumulé → morceau ») et la reprise à froid se trompaient d'un cran.
+
+## ③ LES PREUVES — décor insécable, deux fenêtres
+| cran | PILOTE | WIN+K 1024×768 | WIN+K 1280×720 | MUR distant |
+|---|---|---|---|---|
+| 1 | 157/313 ✔ | 336/576 ✔ | 300/720 ✔ | 171/765 ✔ |
+| 2 | 220/313 ✔ | 437/576 ✔ | 431/720 ✔ | 206/765 ✔ |
+| 3 | 280/313 ✔ | 535/576 ✔ | 549/720 ✔ | 301/765 ✔ |
+| **4** | **222/313 ✔** *(était −64)* | **450/576 ✔** *(était −242)* | 433/720 ✔ | 339/765 ✔ |
+| **5** | **296/313 ✔** *(était −168)* | **560/576 ✔** *(était −558)* | 579/720 ✔ | 469/765 ✔ |
+
+**Zéro pixel hors champ, aux cinq crans, sur les trois surfaces, sur les deux fenêtres.**
+
+| épreuve | mesure |
+|---|---|
+| **dézoom** | 14 écrans · **1 étape** · `vues` 1 · **0 marque `suiteEt` restante** · étape recollée **405 signes = l'original à l'identique** |
+| **export / copie au hub** (`dr_exporterTrame`) | 14 écrans · **1 étape** · `vues` 1 · **0 marque** |
+| **récit** | l'étape y figure **une seule fois** |
+| **l'enveloppe sur les trois cadres** | pilote ✔ · **mur** ✔ · **téléphone** ✔ (`__scindeEtape` et `__reabsEtape` vrais partout — `_drEnvelopper` est appelée au boot de chaque cadre par `_drVerifier`) |
+
+## ④ LES DEUX TROUS VOISINS — mesurés, un corrigé, un innocenté
+Le mandat demandait de les mesurer et de ne corriger que si le patron était le même.
+
+| cas | production 8.68.0 | candidat |
+|---|---|---|
+| **question à une seule réponse, énoncé long** | **déborde de 91 px** | **199/313 px ✔ tient** |
+| **fiche à un seul enfant insécable** | 177/313 px ✔ tient | 177/313 px ✔ tient |
+
+**La question : même patron, donc corrigé.** La branche « plus d'une réponse » ne prend pas ; celle de la réponse unique coupe le **texte de la réponse**, qui est court, donc elle échoue — et le `else if` empêche de retomber sur la coupe de `q`. On retire donc les réponses le temps de l'appel : le moteur tombe dans sa branche `else`, coupe `q`, fabrique le fragment ; les réponses **suivent le morceau reporté**, exactement ce que le moteur fait déjà de la ligne vide. Marque `suiteQ`, recollée par la même fonction (énoncé concaténé, réponses rendues à leur question, `vues` au max).
+
+**La fiche : pas le même patron, et pas de trou.** Elle tient (177 px sur 313) parce qu'elle est bornée par sa mise en page. **Rien codé.**
+
+## ⑤ TOUS LES BANCS REJOUÉS SUR LE CANDIDAT FINAL
+| banc | résultat |
+|---|---|
+| étape seule, fenêtre 4/3 | **8 / 8** |
+| étape seule, fenêtre 16/9 | **8 / 8** |
+| preuve mur **16/9** | **9 / 9** |
+| preuve mur **4/3** | **9 / 9** |
+| **téléphone** (3 gestes + téléphone seul) | **4 / 4** |
+| **deux réglettes** (3 pages) | **3 / 3** |
+| Win+K non-régression 16/9 | 30,2 · 40,3 · 47,9 · 55,4 · 65,5 px · **0 rogné** |
+| identités du LOT D (banc de phase 0) | **0 décalage / 11 pas** |
+| **total** | **41 épreuves, 0 échec · 0 écriture sortie · 0 `pageerror`** |
+
+## ⑥ MATRICE ACTIONS × ÉTAT — ce que le complément 2 y change
+| ligne | effet |
+|---|---|
+| copier / dupliquer · couper / coller · déplacer · supprimer · ajouter | **aucun** : aucun chemin de ces gestes n'est touché ; `neuf_`, `purgeMarques`, `ctxDup` intouchées |
+| **zoom / dézoom** | **une étape trop longue est coupée en fragment, recollée au retour** — comme une réponse longue l'était déjà. Le fragment porte `suiteEt` (ou `suiteQ` pour un énoncé), n'a **jamais d'identité propre**, et **ne fuit jamais dans la donnée** : export, copie au hub, relecture et récit voient une étape entière, une fois. Les `vues` prennent le **max**, jamais la somme : une étape coupée reste **une** étape dévoilée |
+| ouvrir / fermer une fiche | **aucun** — mesuré : la fiche à un seul enfant ne déborde pas |
+
+## ⑦ CE QU'AUCUN BANC NE PROUVERA
+Le hub réel · le réseau de l'établissement · **le vidéoprojecteur** · deux machines physiques · le tactile · **et si un élève du fond lit vraiment**. Le seul juge est Paul, debout au fond de sa salle.
+
+---
+*Livré au sas, non promu, **sans dette déclarée**. Point de retour : production 8.68.0, md5 `868477343d4375d7be4d820ab8eb2630`.*

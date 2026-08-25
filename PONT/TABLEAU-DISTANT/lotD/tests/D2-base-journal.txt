@@ -1,0 +1,22 @@
+— ① ZOOM MAXIMAL, puis DÉVOILER jusque dans le 2e morceau —
+  [zoomé, écran 1] pilote i=0/15 «Heure 1 · Analyse d'images : la routine» suite=0 | tableau i=0/14 «Heure 1 · Analyse d'images : la routine» | projeté 92 signes   ✔
+  [dévoilé ×8 (morceau 2 ou 3)] pilote i=2/18 «Heure 1 · Analyse d'images : la routine» suite=2 | tableau i=2/14 «Heure 1 · Tableau 2» | projeté 181 signes   ✖ DÉCALAGE
+— ② REPLIER : le sens inverse, exigé par le mandat —
+  [replié ×3] pilote i=1/18 «Heure 1 · Analyse d'images : la routine» suite=1 | tableau i=1/14 «Heure 1 · Tableau 1» | projeté 205 signes   ✖ DÉCALAGE
+  [replié ×6] pilote i=0/18 «Heure 1 · Analyse d'images : la routine» suite=0 | tableau i=0/14 «Heure 1 · Analyse d'images : la routine» | projeté 186 signes   ✔
+— ③ DÉZOOM : les fils meurent, le tableau ne doit pas bouger —
+  [dézoomé au cran 2] pilote i=0/14 «Heure 1 · Analyse d'images : la routine» suite=0 | tableau i=0/14 «Heure 1 · Analyse d'images : la routine» | projeté 186 signes   ✔
+  tableau avant dézoom : 186 signes · après : 186   ✔ INCHANGÉ
+— ④ GEL : le tableau garde son image, le pilote navigue —
+  [avant gel] pilote i=2/18 «Heure 1 · Analyse d'images : la routine» suite=2 | tableau i=2/14 «Heure 1 · Tableau 2» | projeté 181 signes   ✖ DÉCALAGE
+  [gelé, pilote avancé] pilote i=4/18 «Heure 1 · Analyse d'images : la routine» suite=4 | tableau i=2/14 «Heure 1 · Tableau 2» | projeté 181 signes   ✖ DÉCALAGE
+  image sous gel : 181 → 181   ✔ FIGÉE
+  [dégelé — rattrapage] pilote i=4/18 «Heure 1 · Analyse d'images : la routine» suite=4 | tableau i=4/14 «Heure 1 · Tableau 4» | projeté 178 signes   ✖ DÉCALAGE
+— ⑤ REPRISE À FROID de la page tableau, en pleine séance —
+  [page tableau rouverte] pilote i=4/18 «Heure 1 · Analyse d'images : la routine» suite=4 | tableau i=4/14 «Heure 1 · Tableau 4» | projeté 178 signes   ✖ DÉCALAGE
+  le pilote était sur i=4 («Heure 1 · Analyse d'images : la routine») ; la page rouverte montre «Heure 1 · Tableau 4»   ✖ MAUVAIS ÉCRAN
+
+═══ COMPTES ═══
+  pas relevés       : 7 · en décalage : 4
+  écritures sorties : 0 (interceptées : 17)
+  pageerrors        : 0 []

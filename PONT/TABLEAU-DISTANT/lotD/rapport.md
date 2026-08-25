@@ -135,4 +135,4 @@ Deux lectures s'opposent, et **elles n'ont pas la même conséquence** :
 
 **Réserve que je pose sur mon propre lot** : il reste **nécessaire** (sans identité stable, le tableau ne sait pas de quelle activité on parle), mais la phrase « le tableau suit le pilote » est **trop large** : il suit sa *position*, pas sa *composition*. À corriger avant qu'elle ne se propage.
 
-**Suite** : `MESSAGE-A-LA-CONSCIENCE.md`, dans ce dossier — ce que cette erreur dit du dispositif, et les cinq points à instruire pour le lot E.
+**Suite** : le message à la conscience sur ce que cette erreur dit du dispositif — et les cinq points à instruire pour le lot E — a été **remis à Paul en texte**, à sa demande. Il n'est pas au sas.

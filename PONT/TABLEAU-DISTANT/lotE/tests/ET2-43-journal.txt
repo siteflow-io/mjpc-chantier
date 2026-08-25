@@ -1,0 +1,25 @@
+### ET2-43 · fenêtre Win+K 1024×768
+
+— ① AUX CINQ CRANS : plus rien ne déborde —
+  cran 1 : PILOTE 157/313 px ✔ | WIN+K 336/576 px ✔ | MUR 171/765 px ✔ · 14 écrans · morceau 0
+  cran 2 : PILOTE 220/313 px ✔ | WIN+K 437/576 px ✔ | MUR 206/765 px ✔ · 14 écrans · morceau 0
+  cran 3 : PILOTE 280/313 px ✔ | WIN+K 535/576 px ✔ | MUR 301/765 px ✔ · 14 écrans · morceau 0
+  cran 4 : PILOTE 222/313 px ✔ | WIN+K 450/576 px ✔ | MUR 339/765 px ✔ · 15 écrans · morceau 0
+  cran 5 : PILOTE 296/313 px ✔ | WIN+K 560/576 px ✔ | MUR 469/765 px ✔ · 15 écrans · morceau 0
+
+— ② DÉZOOM : une seule étape, entière —
+  écrans : 14 · étapes de la consigne : 1 · vues : 1 · marques `suiteEt` restantes : 0
+  étape recollée : 405 signes (attendu 405)   ✔ IDENTIQUE À L'ORIGINE
+
+— ③ EXPORT, COPIE AU HUB, RÉCIT —
+  export : 14 écrans · 1 étape(s) · vues 1 · marque `suiteEt` : 0 ✔
+  récit : l'étape y figure 1 fois ✔ une seule fois
+
+— ④ L'ENVELOPPE EST-ELLE SUR LES TROIS CADRES ? —
+  pilote     : scinde enveloppée=true · reabsorbe enveloppée=true ✔
+  mur        : scinde enveloppée=true · reabsorbe enveloppée=true ✔
+  téléphone  : scinde enveloppée=true · reabsorbe enveloppée=true ✔
+
+═══ COMPTES ═══
+  épreuves : 8 · en échec : 0
+  écritures sorties : 0 (interceptées : 15) · pageerrors : 0 []

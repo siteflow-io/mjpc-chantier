@@ -1,0 +1,1072 @@
+{
+  "etiquette": "candidat",
+  "fichier": "cascade-index.html",
+  "viewport": "900x600",
+  "parcours": [
+    {
+      "clic": "Panneau prof",
+      "trouve": "Panneau prof ~ 🛠 panneau prof"
+    },
+    {
+      "clic": "Atelier",
+      "trouve": "Atelier ~ 🛠atelier"
+    },
+    {
+      "clic": "Mes chapitres",
+      "trouve": "Mes chapitres = mes chapitres"
+    },
+    {
+      "clic": "Chapitre 1",
+      "trouve": "Séance ~ 📚 nouveau chapitre\ntu app"
+    },
+    {
+      "clic": "Modifier",
+      "trouve": "Modifier = modifier"
+    },
+    {
+      "clic": "Séance 1",
+      "trouve": "Séance ~ séance 0"
+    },
+    {
+      "clic": "Déroulé",
+      "trouve": "Déroulé = déroulé"
+    }
+  ],
+  "libellesDisponibles": null,
+  "cadreParClics": true,
+  "chargementBrut": {
+    "ecrans": 17,
+    "titres": [
+      "Heure 1 · Analyse d'images : la routine",
+      "Heure 1 · Analyse d'images : la routine",
+      "Heure 1 · Analyse d'images : la routine",
+      "Heure 1 · Analyse d'images : la routine",
+      "Heure 1 · Tableau 1",
+      "Heure 1 · Tableau 2",
+      "Heure 1 · Tableau 3",
+      "Heure 1 · Tableau 4",
+      "Heure 1 · Tableau 5",
+      "Heure 1 · Les hypothèses de la classe",
+      "Heure 2 · Question-bilan",
+      "Heure 2 · Où en sommes-nous ?",
+      "Heure 2 · La frise à construire",
+      "Heure 2 · Les mouvements du siècle",
+      "Heure 2 · Les règles héritées",
+      "Heure 2 · Un poète spécial…",
+      "Heure 2 · Question-bilan et travail à faire"
+    ],
+    "durees": [
+      3,
+      0,
+      0,
+      0,
+      6,
+      5,
+      5,
+      5,
+      6,
+      22,
+      3,
+      3,
+      12,
+      12,
+      10,
+      12,
+      6
+    ],
+    "blocs": [
+      "consigne",
+      "consigne",
+      "consigne",
+      "consigne",
+      "image",
+      "image",
+      "image",
+      "image",
+      "image",
+      "consigne",
+      "question",
+      "question",
+      "consigne,schema",
+      "fiche",
+      "fiche",
+      "question,fiche",
+      "question,consigne"
+    ],
+    "etapesTotal": 7,
+    "identites": [
+      "emt8fl29s5r21p",
+      null,
+      null,
+      null,
+      "emt8fl29sotjwv",
+      "emt8fl29srhgn2",
+      "emt8fl29sy931r",
+      "emt8fl29szz6f2",
+      "emt8fl29sqdz9h",
+      "emt8fl29sgh1km",
+      "emt8fl29smvrf5",
+      "emt8fl29sdasmq",
+      "emt8fl29sxhcc1",
+      "emt8fl29siat3f",
+      "emt8fl29slceql",
+      "emt8fl29s68qxh",
+      "emt8fl29spaem3"
+    ],
+    "vignettes": 0,
+    "titreColonne": null,
+    "badge": null,
+    "libelles": [
+      "10:07 · Heure 1 · Analyse d'images : la routine",
+      "suite 1",
+      "suite 2",
+      "suite 3",
+      "10:10 · Heure 1 · Tableau 1",
+      "10:16 · Heure 1 · Tableau 2",
+      "10:21 · Heure 1 · Tableau 3",
+      "10:26 · Heure 1 · Tableau 4",
+      "10:31 · Heure 1 · Tableau 5",
+      "10:37 · Heure 1 · Les hypothèses de la classe",
+      "10:59 · Heure 2 · Question-bilan",
+      "11:02 · Heure 2 · Où en sommes-nous ?",
+      "11:05 · Heure 2 · La frise à construire",
+      "11:17 · Heure 2 · Les mouvements du siècle",
+      "11:29 · Heure 2 · Les règles héritées",
+      "11:39 · Heure 2 · Un poète spécial…",
+      "11:51 · Heure 2 · Question-bilan et travail à faire"
+    ]
+  },
+  "numerotation": {
+    "marquees": 6,
+    "total": 7
+  },
+  "chargement": {
+    "ecrans": 15,
+    "titres": [
+      "Heure 1 · Analyse d'images : la routine",
+      "Heure 1 · Analyse d'images : la routine",
+      "Heure 1 · Tableau 1",
+      "Heure 1 · Tableau 2",
+      "Heure 1 · Tableau 3",
+      "Heure 1 · Tableau 4",
+      "Heure 1 · Tableau 5",
+      "Heure 1 · Les hypothèses de la classe",
+      "Heure 2 · Question-bilan",
+      "Heure 2 · Où en sommes-nous ?",
+      "Heure 2 · La frise à construire",
+      "Heure 2 · Les mouvements du siècle",
+      "Heure 2 · Les règles héritées",
+      "Heure 2 · Un poète spécial…",
+      "Heure 2 · Question-bilan et travail à faire"
+    ],
+    "durees": [
+      3,
+      0,
+      6,
+      5,
+      5,
+      5,
+      6,
+      22,
+      3,
+      3,
+      12,
+      12,
+      10,
+      12,
+      6
+    ],
+    "blocs": [
+      "consigne",
+      "consigne",
+      "image",
+      "image",
+      "image",
+      "image",
+      "image",
+      "consigne",
+      "question",
+      "question",
+      "consigne,schema",
+      "fiche",
+      "fiche",
+      "question,fiche",
+      "question,consigne"
+    ],
+    "etapesTotal": 7,
+    "identites": [
+      "emt8fl29s5r21p",
+      null,
+      "emt8fl29sotjwv",
+      "emt8fl29srhgn2",
+      "emt8fl29sy931r",
+      "emt8fl29szz6f2",
+      "emt8fl29sqdz9h",
+      "emt8fl29sgh1km",
+      "emt8fl29smvrf5",
+      "emt8fl29sdasmq",
+      "emt8fl29sxhcc1",
+      "emt8fl29siat3f",
+      "emt8fl29slceql",
+      "emt8fl29s68qxh",
+      "emt8fl29spaem3"
+    ],
+    "vignettes": 0,
+    "titreColonne": null,
+    "badge": null,
+    "libelles": [
+      "10:07 · Heure 1 · Analyse d'images : la routine",
+      "suite 1",
+      "10:10 · Heure 1 · Tableau 1",
+      "10:16 · Heure 1 · Tableau 2",
+      "10:21 · Heure 1 · Tableau 3",
+      "10:26 · Heure 1 · Tableau 4",
+      "10:31 · Heure 1 · Tableau 5",
+      "10:37 · Heure 1 · Les hypothèses de la classe",
+      "10:59 · Heure 2 · Question-bilan",
+      "11:02 · Heure 2 · Où en sommes-nous ?",
+      "11:05 · Heure 2 · La frise à construire",
+      "11:17 · Heure 2 · Les mouvements du siècle",
+      "11:29 · Heure 2 · Les règles héritées",
+      "11:39 · Heure 2 · Un poète spécial…",
+      "11:51 · Heure 2 · Question-bilan et travail à faire"
+    ]
+  },
+  "positionAvant": {
+    "i": 0,
+    "eid": "emt8fl29s5r21p",
+    "act": "Heure 1 · Analyse d'images : la routine"
+  },
+  "montee": [
+    {
+      "cran": 1,
+      "total": 16,
+      "ordre": [
+        "PÈRE",
+        "suite 1",
+        "suite 2"
+      ],
+      "rangs": [
+        0,
+        1,
+        2
+      ],
+      "etapesDuGroupe": 6,
+      "blocsDuGroupe": [
+        "consigne/2",
+        "consigne/1",
+        "consigne/3"
+      ],
+      "libellesBande": [
+        "10:07 · Heure 1 · Analyse d'images : la routine",
+        "suite 1",
+        "suite 2",
+        "10:10 · Heure 1 · Tableau 1",
+        "10:16 · Heure 1 · Tableau 2",
+        "10:21 · Heure 1 · Tableau 3",
+        "10:26 · Heure 1 · Tableau 4",
+        "10:31 · Heure 1 · Tableau 5",
+        "10:37 · Heure 1 · Les hypothèses de la classe",
+        "10:59 · Heure 2 · Question-bilan"
+      ],
+      "titresVisibles": [
+        "Observe, discute, fais une hypothèse sur"
+      ],
+      "identitesDuGroupe": [
+        "emt8fl29s5r21p",
+        null,
+        null
+      ],
+      "contenu": [
+        [
+          "E1",
+          "E2"
+        ],
+        [
+          "E3"
+        ],
+        [
+          "E4",
+          "E5",
+          "E6"
+        ]
+      ],
+      "contenuAPlat": [
+        "E1",
+        "E2",
+        "E3",
+        "E4",
+        "E5",
+        "E6"
+      ],
+      "debordeEncore": true,
+      "pereDeborde": true,
+      "etapesDuPere": 2,
+      "i": 0
+    },
+    {
+      "cran": 2,
+      "total": 18,
+      "ordre": [
+        "PÈRE",
+        "suite 1",
+        "suite 2",
+        "suite 3",
+        "suite 4"
+      ],
+      "rangs": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "etapesDuGroupe": 6,
+      "blocsDuGroupe": [
+        "consigne/1",
+        "consigne/0",
+        "consigne/1",
+        "consigne/1",
+        "consigne/3"
+      ],
+      "libellesBande": [
+        "10:07 · Heure 1 · Analyse d'images : la routine",
+        "suite 1",
+        "suite 2",
+        "suite 3",
+        "suite 4",
+        "10:10 · Heure 1 · Tableau 1",
+        "10:16 · Heure 1 · Tableau 2",
+        "10:21 · Heure 1 · Tableau 3",
+        "10:26 · Heure 1 · Tableau 4",
+        "10:31 · Heure 1 · Tableau 5"
+      ],
+      "titresVisibles": [
+        "Observe, discute, fais une"
+      ],
+      "identitesDuGroupe": [
+        "emt8fl29s5r21p",
+        null,
+        null,
+        null,
+        null
+      ],
+      "contenu": [
+        [
+          "E1"
+        ],
+        [],
+        [
+          "E2"
+        ],
+        [
+          "E3"
+        ],
+        [
+          "E4",
+          "E5",
+          "E6"
+        ]
+      ],
+      "contenuAPlat": [
+        "E1",
+        "E2",
+        "E3",
+        "E4",
+        "E5",
+        "E6"
+      ],
+      "debordeEncore": true,
+      "pereDeborde": true,
+      "etapesDuPere": 1,
+      "i": 0
+    },
+    {
+      "cran": 3,
+      "total": 18,
+      "ordre": [
+        "PÈRE",
+        "suite 1",
+        "suite 2",
+        "suite 3",
+        "suite 4"
+      ],
+      "rangs": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "etapesDuGroupe": 6,
+      "blocsDuGroupe": [
+        "consigne/1",
+        "consigne/0",
+        "consigne/1",
+        "consigne/1",
+        "consigne/3"
+      ],
+      "libellesBande": [
+        "10:07 · Heure 1 · Analyse d'images : la routine",
+        "suite 1",
+        "suite 2",
+        "suite 3",
+        "suite 4",
+        "10:10 · Heure 1 · Tableau 1",
+        "10:16 · Heure 1 · Tableau 2",
+        "10:21 · Heure 1 · Tableau 3",
+        "10:26 · Heure 1 · Tableau 4",
+        "10:31 · Heure 1 · Tableau 5"
+      ],
+      "titresVisibles": [
+        "Observe, discute, fais une"
+      ],
+      "identitesDuGroupe": [
+        "emt8fl29s5r21p",
+        null,
+        null,
+        null,
+        null
+      ],
+      "contenu": [
+        [
+          "E1"
+        ],
+        [],
+        [
+          "E2"
+        ],
+        [
+          "E3"
+        ],
+        [
+          "E4",
+          "E5",
+          "E6"
+        ]
+      ],
+      "contenuAPlat": [
+        "E1",
+        "E2",
+        "E3",
+        "E4",
+        "E5",
+        "E6"
+      ],
+      "debordeEncore": true,
+      "pereDeborde": true,
+      "etapesDuPere": 1,
+      "i": 0
+    },
+    {
+      "cran": 4,
+      "total": 18,
+      "ordre": [
+        "PÈRE",
+        "suite 1",
+        "suite 2",
+        "suite 3",
+        "suite 4"
+      ],
+      "rangs": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "etapesDuGroupe": 6,
+      "blocsDuGroupe": [
+        "consigne/1",
+        "consigne/0",
+        "consigne/1",
+        "consigne/1",
+        "consigne/3"
+      ],
+      "libellesBande": [
+        "10:07 · Heure 1 · Analyse d'images : la routine",
+        "suite 1",
+        "suite 2",
+        "suite 3",
+        "suite 4",
+        "10:10 · Heure 1 · Tableau 1",
+        "10:16 · Heure 1 · Tableau 2",
+        "10:21 · Heure 1 · Tableau 3",
+        "10:26 · Heure 1 · Tableau 4",
+        "10:31 · Heure 1 · Tableau 5"
+      ],
+      "titresVisibles": [
+        "Observe, discute, fais une"
+      ],
+      "identitesDuGroupe": [
+        "emt8fl29s5r21p",
+        null,
+        null,
+        null,
+        null
+      ],
+      "contenu": [
+        [
+          "E1"
+        ],
+        [],
+        [
+          "E2"
+        ],
+        [
+          "E3"
+        ],
+        [
+          "E4",
+          "E5",
+          "E6"
+        ]
+      ],
+      "contenuAPlat": [
+        "E1",
+        "E2",
+        "E3",
+        "E4",
+        "E5",
+        "E6"
+      ],
+      "debordeEncore": true,
+      "pereDeborde": true,
+      "etapesDuPere": 1,
+      "i": 0
+    }
+  ],
+  "apresMontee": {
+    "cran": 4,
+    "total": 18,
+    "ordre": [
+      "PÈRE",
+      "suite 1",
+      "suite 2",
+      "suite 3",
+      "suite 4"
+    ],
+    "rangs": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "etapesDuGroupe": 6,
+    "blocsDuGroupe": [
+      "consigne/1",
+      "consigne/0",
+      "consigne/1",
+      "consigne/1",
+      "consigne/3"
+    ],
+    "libellesBande": [
+      "10:07 · Heure 1 · Analyse d'images : la routine",
+      "suite 1",
+      "suite 2",
+      "suite 3",
+      "suite 4",
+      "10:10 · Heure 1 · Tableau 1",
+      "10:16 · Heure 1 · Tableau 2",
+      "10:21 · Heure 1 · Tableau 3",
+      "10:26 · Heure 1 · Tableau 4",
+      "10:31 · Heure 1 · Tableau 5"
+    ],
+    "titresVisibles": [
+      "Observe, discute, fais une"
+    ],
+    "identitesDuGroupe": [
+      "emt8fl29s5r21p",
+      null,
+      null,
+      null,
+      null
+    ],
+    "contenu": [
+      [
+        "E1"
+      ],
+      [],
+      [
+        "E2"
+      ],
+      [
+        "E3"
+      ],
+      [
+        "E4",
+        "E5",
+        "E6"
+      ]
+    ],
+    "contenuAPlat": [
+      "E1",
+      "E2",
+      "E3",
+      "E4",
+      "E5",
+      "E6"
+    ],
+    "debordeEncore": true,
+    "pereDeborde": true,
+    "etapesDuPere": 1,
+    "i": 0
+  },
+  "positionApres": {
+    "i": 0,
+    "eid": "emt8fl29s5r21p",
+    "act": "Heure 1 · Analyse d'images : la routine",
+    "surUnFils": false
+  },
+  "positionTenue": true,
+  "contenu": {
+    "lecture": "E1 E2 E3 E4 E5 E6",
+    "parEcran": "E1 |  | E2 | E3 | E4 E5 E6",
+    "dansLOrdre": true,
+    "etapesPresentes": 6,
+    "aucuneManquante": true
+  },
+  "un": {
+    "morceaux": 4,
+    "ordreObserve": "PÈRE | suite 1 | suite 2 | suite 3 | suite 4",
+    "rangsCroissants": true,
+    "pereEnTete": true,
+    "libellePereDansLaBande": "10:07 · Heure 1 · Analyse d'images : la routine",
+    "titresEnDouble": 0
+  },
+  "captureVignettes": "tests/cascade-candidat-groupe.png",
+  "mesureChevauchement": {
+    "etiquette": "Heure 1 · Analyse d'images : la routine · sur plusieurs écrans",
+    "libelle": "10:07 · Heure 1 · Analyse d'images : la routine",
+    "basEtiquette": 32,
+    "hautLibelle": 34,
+    "seChevauchent": false,
+    "position": "static"
+  },
+  "descente": [
+    {
+      "cran": 3,
+      "total": 15,
+      "ordre": [
+        "PÈRE",
+        "suite 1"
+      ],
+      "rangs": [
+        0,
+        1
+      ],
+      "etapesDuGroupe": 6,
+      "blocsDuGroupe": [
+        "consigne/3",
+        "consigne/3"
+      ],
+      "libellesBande": [
+        "10:07 · Heure 1 · Analyse d'images : la routine",
+        "suite 1",
+        "10:10 · Heure 1 · Tableau 1",
+        "10:16 · Heure 1 · Tableau 2",
+        "10:21 · Heure 1 · Tableau 3",
+        "10:26 · Heure 1 · Tableau 4",
+        "10:31 · Heure 1 · Tableau 5",
+        "10:37 · Heure 1 · Les hypothèses de la classe",
+        "10:59 · Heure 2 · Question-bilan",
+        "11:02 · Heure 2 · Où en sommes-nous ?"
+      ],
+      "titresVisibles": [
+        "Observe, discute, fais une"
+      ],
+      "identitesDuGroupe": [
+        "emt8fl29s5r21p",
+        null
+      ],
+      "contenu": [
+        [
+          "E1",
+          "E2",
+          "E3"
+        ],
+        [
+          "E4",
+          "E5",
+          "E6"
+        ]
+      ],
+      "contenuAPlat": [
+        "E1",
+        "E2",
+        "E3",
+        "E4",
+        "E5",
+        "E6"
+      ],
+      "debordeEncore": true,
+      "pereDeborde": true,
+      "etapesDuPere": 3,
+      "i": 0
+    },
+    {
+      "cran": 2,
+      "total": 15,
+      "ordre": [
+        "PÈRE",
+        "suite 1"
+      ],
+      "rangs": [
+        0,
+        1
+      ],
+      "etapesDuGroupe": 6,
+      "blocsDuGroupe": [
+        "consigne/3",
+        "consigne/3"
+      ],
+      "libellesBande": [
+        "10:07 · Heure 1 · Analyse d'images : la routine",
+        "suite 1",
+        "10:10 · Heure 1 · Tableau 1",
+        "10:16 · Heure 1 · Tableau 2",
+        "10:21 · Heure 1 · Tableau 3",
+        "10:26 · Heure 1 · Tableau 4",
+        "10:31 · Heure 1 · Tableau 5",
+        "10:37 · Heure 1 · Les hypothèses de la classe",
+        "10:59 · Heure 2 · Question-bilan",
+        "11:02 · Heure 2 · Où en sommes-nous ?"
+      ],
+      "titresVisibles": [
+        "Observe, discute, fais une"
+      ],
+      "identitesDuGroupe": [
+        "emt8fl29s5r21p",
+        null
+      ],
+      "contenu": [
+        [
+          "E1",
+          "E2",
+          "E3"
+        ],
+        [
+          "E4",
+          "E5",
+          "E6"
+        ]
+      ],
+      "contenuAPlat": [
+        "E1",
+        "E2",
+        "E3",
+        "E4",
+        "E5",
+        "E6"
+      ],
+      "debordeEncore": true,
+      "pereDeborde": true,
+      "etapesDuPere": 3,
+      "i": 0
+    },
+    {
+      "cran": 1,
+      "total": 15,
+      "ordre": [
+        "PÈRE",
+        "suite 1"
+      ],
+      "rangs": [
+        0,
+        1
+      ],
+      "etapesDuGroupe": 6,
+      "blocsDuGroupe": [
+        "consigne/3",
+        "consigne/3"
+      ],
+      "libellesBande": [
+        "10:07 · Heure 1 · Analyse d'images : la routine",
+        "suite 1",
+        "10:10 · Heure 1 · Tableau 1",
+        "10:16 · Heure 1 · Tableau 2",
+        "10:21 · Heure 1 · Tableau 3",
+        "10:26 · Heure 1 · Tableau 4",
+        "10:31 · Heure 1 · Tableau 5",
+        "10:37 · Heure 1 · Les hypothèses de la classe",
+        "10:59 · Heure 2 · Question-bilan",
+        "11:02 · Heure 2 · Où en sommes-nous ?"
+      ],
+      "titresVisibles": [
+        "Observe, discute, fais une"
+      ],
+      "identitesDuGroupe": [
+        "emt8fl29s5r21p",
+        null
+      ],
+      "contenu": [
+        [
+          "E1",
+          "E2",
+          "E3"
+        ],
+        [
+          "E4",
+          "E5",
+          "E6"
+        ]
+      ],
+      "contenuAPlat": [
+        "E1",
+        "E2",
+        "E3",
+        "E4",
+        "E5",
+        "E6"
+      ],
+      "debordeEncore": true,
+      "pereDeborde": true,
+      "etapesDuPere": 3,
+      "i": 0
+    },
+    {
+      "cran": 0,
+      "total": 15,
+      "ordre": [
+        "PÈRE",
+        "suite 1"
+      ],
+      "rangs": [
+        0,
+        1
+      ],
+      "etapesDuGroupe": 6,
+      "blocsDuGroupe": [
+        "consigne/3",
+        "consigne/3"
+      ],
+      "libellesBande": [
+        "10:07 · Heure 1 · Analyse d'images : la routine",
+        "suite 1",
+        "10:10 · Heure 1 · Tableau 1",
+        "10:16 · Heure 1 · Tableau 2",
+        "10:21 · Heure 1 · Tableau 3",
+        "10:26 · Heure 1 · Tableau 4",
+        "10:31 · Heure 1 · Tableau 5",
+        "10:37 · Heure 1 · Les hypothèses de la classe",
+        "10:59 · Heure 2 · Question-bilan",
+        "11:02 · Heure 2 · Où en sommes-nous ?"
+      ],
+      "titresVisibles": [
+        "Observe, discute, fais une"
+      ],
+      "identitesDuGroupe": [
+        "emt8fl29s5r21p",
+        null
+      ],
+      "contenu": [
+        [
+          "E1",
+          "E2",
+          "E3"
+        ],
+        [
+          "E4",
+          "E5",
+          "E6"
+        ]
+      ],
+      "contenuAPlat": [
+        "E1",
+        "E2",
+        "E3",
+        "E4",
+        "E5",
+        "E6"
+      ],
+      "debordeEncore": true,
+      "pereDeborde": true,
+      "etapesDuPere": 3,
+      "i": 0
+    }
+  ],
+  "contenuAuBas": {
+    "lecture": "E1 E2 E3 E4 E5 E6",
+    "dansLOrdre": true,
+    "etapes": 6
+  },
+  "deux": {
+    "cranFinal": 0,
+    "ecransDuGroupeAuBas": 2,
+    "etapesAuBas": 6,
+    "etapesAuDepart": 7,
+    "aucunePerte": true,
+    "etapesTotalesTrame": 7,
+    "totalEcrans": 15
+  },
+  "devoilement": [
+    {
+      "n": 0,
+      "rev": 0,
+      "vues": "0"
+    },
+    {
+      "n": 0,
+      "apresRecul": 0,
+      "vues": "0"
+    },
+    {
+      "n": 1,
+      "rev": 0,
+      "vues": "0"
+    },
+    {
+      "n": 1,
+      "apresRecul": 0,
+      "vues": "0"
+    },
+    {
+      "n": 2,
+      "rev": 0,
+      "vues": "0"
+    },
+    {
+      "n": 2,
+      "apresRecul": 0,
+      "vues": "0"
+    },
+    {
+      "n": 3,
+      "rev": 0,
+      "vues": "0"
+    },
+    {
+      "n": 3,
+      "apresRecul": 0,
+      "vues": "0"
+    },
+    {
+      "n": 4,
+      "rev": 0,
+      "vues": "0"
+    },
+    {
+      "n": 4,
+      "apresRecul": 0,
+      "vues": "0"
+    }
+  ],
+  "matrice": {
+    "dupliquer": {
+      "identifiantNeuf": true,
+      "originalGarde": true,
+      "devoilementAZero": true,
+      "fragmentEfface": true,
+      "doublons": 0
+    },
+    "deplacer": {
+      "retrouve": true,
+      "memeTitre": true,
+      "memeNombreDeBlocs": true,
+      "total": 14
+    },
+    "supprimer": {
+      "retire": true,
+      "total": 13,
+      "attendu": 13,
+      "marquesPurgees": true
+    },
+    "ajouter": {
+      "cree": true,
+      "aZero": true
+    },
+    "fiche": {
+      "vuesConservees": true,
+      "ouverte": true
+    }
+  },
+  "enregistrement": {
+    "ecritures": 2,
+    "empreinte": [
+      "PUT site/3e/chapitres/0/seances/0/deroule.json",
+      "PUT site/3e/chapitres/0/seances/0/deroule.json"
+    ]
+  },
+  "trameQuiPartirait": 5919,
+  "session": {
+    "photos": [
+      {
+        "n": 0,
+        "ecran": 0,
+        "eid": "emt8flhl72pvgb",
+        "rev": 2,
+        "morceau": 0,
+        "vues": "{\"0\":0}"
+      },
+      {
+        "n": 1,
+        "ecran": 1,
+        "eid": "emt8flhl72pvgb",
+        "rev": 2,
+        "morceau": 1,
+        "vues": "{\"0\":0}"
+      },
+      {
+        "n": 2,
+        "ecran": 2,
+        "eid": "emt8flhl7mvko0",
+        "rev": 2,
+        "morceau": 0,
+        "vues": "{}"
+      },
+      {
+        "n": 3,
+        "ecran": 3,
+        "eid": "emt8flhl7fiu38",
+        "rev": 2,
+        "morceau": 0,
+        "vues": "{}"
+      },
+      {
+        "n": 4,
+        "ecran": 4,
+        "eid": "emt8flhl7j60m3",
+        "rev": 2,
+        "morceau": 0,
+        "vues": "{}"
+      }
+    ],
+    "tableau": {
+      "cadre": true,
+      "ecrans": 14,
+      "i": 0,
+      "eidDesigne": "emt8flhl72pvgb",
+      "rev": 2,
+      "projete": "HEURE 1 · ANALYSE D'IMAGES : LA ROUTINE Observe, discute, fais une hypothèse sur le Romantisme."
+    },
+    "tel": {
+      "cadre": true,
+      "ecrans": 14,
+      "i": 3,
+      "eidDesigne": "emt8flhl7j60m3",
+      "rev": 2,
+      "projete": null
+    }
+  },
+  "clotureSansModif": {
+    "nbModifs": 0,
+    "message": "La séance de 3e Aretha Franklin se ferme. Tu n’as rien modifié pendant le cours : ta préparation reste telle quelle.",
+    "rienModifie": true
+  },
+  "cloture": {
+    "messages": [
+      "Clore la séance :: La séance de 3e Aretha Franklin se ferme. Tu n’as rien modifié pendant le cours : ta préparation reste telle quelle."
+    ],
+    "rienModifie": true,
+    "nbModifs": 0
+  },
+  "clotureEcritures": 1,
+  "ecritures": {
+    "nonGETinterceptees": 1,
+    "sortiesReelles": 0
+  },
+  "pageerrors": [
+    "TypeError: (chaps || []).forEach is not a function"
+  ]
+}

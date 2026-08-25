@@ -75,3 +75,29 @@ B3. Compare les deux surfaces côte à côte : la fenêtre Win+K et le portable 
 
 ## Une limite que je te signale, et qui n'est pas de ce lot
 Si tu écris **une étape de plus de 450 signes d'un seul tenant**, le moteur ne sait pas la couper : elle déborde. Tu le verras **d'abord sur ton propre écran de contrôle** (mesuré : 428 px de contenu dans une boîte de 313 px), pas seulement au mur. Ce n'est pas réparable sans toucher au moteur, ce que ce lot n'a pas le droit de faire. **En pratique : coupe tes étapes longues en deux.** Si ça te gêne à l'usage, dis-le et ce sera un lot à part.
+
+---
+
+# COMPLÉMENT 2 — UNE ÉTAPE LONGUE NE SORT PLUS DE L'ÉCRAN
+
+### C. L'étape unique et longue
+C1. **PC** : dans une consigne, écris **une seule étape très longue** — quatre ou cinq lignes d'un trait, sans la couper.
+C2. Dévoile-la, puis pousse la réglette **au cran 5**.
+   **Attendu, sur les TROIS surfaces** :
+   - **ton écran de contrôle** : rien ne sort du cadre — l'étape continue sur un écran de suite ;
+   - **Windows+K** : idem, rien de coupé ;
+   - **le mur distant** : idem.
+   *(Avant, ça débordait de 168 px sur ton propre écran et de 558 px en Win+K : la fin de l'étape était simplement invisible.)*
+C3. **PC** : ramène la réglette **au cran 1**. **Attendu** : **une seule étape**, entière, exactement le texte que tu as écrit — pas deux moitiés, pas de doublon, aucune marque de suite.
+C4. Va en **Relecture** : l'étape doit apparaître **une seule fois**, entière, dans le récit.
+
+### D. La question à énoncé long
+D1. **PC** : écris une question dont **l'énoncé** fait quatre ou cinq lignes, avec **une seule réponse d'élève** courte.
+D2. Cran 5. **Attendu** : rien ne sort du cadre ; l'énoncé continue sur l'écran de suite et **la réponse suit avec lui**.
+D3. Cran 1 : **un seul énoncé**, entier, sa réponse à sa place.
+
+## Ce que je te demande de me rapporter
+Pour **C2** et **D2** : est-ce que quelque chose sort du cadre, sur l'une des trois surfaces ? Si oui, dis laquelle et à quel cran.
+Pour **C3** et **D3** : le texte est-il **exactement** celui que tu avais écrit ?
+
+**Cette livraison ne déclare plus aucune dette.** Si tu en trouves une à l'usage, c'est qu'un banc m'a manqué — dis-le-moi telle quelle.

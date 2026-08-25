@@ -1,0 +1,77 @@
+[
+ {
+  "cran": 1,
+  "pt": 24,
+  "local": {
+   "px": 30.24,
+   "w": 1280,
+   "h": 720,
+   "bas": 442,
+   "debord": 0,
+   "rogne": false,
+   "signes": 523,
+   "fin": "Étape 6 : J'expose mon hypothèse à l'oral."
+  },
+  "ecrans": 14
+ },
+ {
+  "cran": 2,
+  "pt": 32,
+  "local": {
+   "px": 40.32,
+   "w": 1280,
+   "h": 720,
+   "bas": 573,
+   "debord": 0,
+   "rogne": false,
+   "signes": 523,
+   "fin": "Étape 6 : J'expose mon hypothèse à l'oral."
+  },
+  "ecrans": 14
+ },
+ {
+  "cran": 3,
+  "pt": 38,
+  "local": {
+   "px": 47.88,
+   "w": 1280,
+   "h": 720,
+   "bas": 471,
+   "debord": 0,
+   "rogne": false,
+   "signes": 311,
+   "fin": " sujet de l'image, auteur, titre (10 min)."
+  },
+  "ecrans": 15
+ },
+ {
+  "cran": 4,
+  "pt": 44,
+  "local": {
+   "px": 55.44,
+   "w": 1280,
+   "h": 720,
+   "bas": 459,
+   "debord": 0,
+   "rogne": false,
+   "signes": 201,
+   "fin": "scute en groupe de ce que je vois (5 min)."
+  },
+  "ecrans": 16
+ },
+ {
+  "cran": 5,
+  "pt": 52,
+  "local": {
+   "px": 65.52,
+   "w": 1280,
+   "h": 720,
+   "bas": 607,
+   "debord": 0,
+   "rogne": false,
+   "signes": 201,
+   "fin": "scute en groupe de ce que je vois (5 min)."
+  },
+  "ecrans": 16
+ }
+]

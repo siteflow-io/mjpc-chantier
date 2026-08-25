@@ -1,0 +1,52 @@
+[
+ {
+  "cran": 1,
+  "pt": 24,
+  "local": {
+   "px": 25.2,
+   "pxConsigne": 26.46,
+   "h": 600
+  },
+  "ecrans": 14
+ },
+ {
+  "cran": 2,
+  "pt": 32,
+  "local": {
+   "px": 33.6,
+   "pxConsigne": 35.28,
+   "h": 600
+  },
+  "ecrans": 14
+ },
+ {
+  "cran": 3,
+  "pt": 38,
+  "local": {
+   "px": 39.9,
+   "pxConsigne": 41.895,
+   "h": 600
+  },
+  "ecrans": 15
+ },
+ {
+  "cran": 4,
+  "pt": 44,
+  "local": {
+   "px": 46.2,
+   "pxConsigne": 48.51,
+   "h": 600
+  },
+  "ecrans": 16
+ },
+ {
+  "cran": 5,
+  "pt": 52,
+  "local": {
+   "px": 54.6,
+   "pxConsigne": 57.33,
+   "h": 600
+  },
+  "ecrans": 16
+ }
+]

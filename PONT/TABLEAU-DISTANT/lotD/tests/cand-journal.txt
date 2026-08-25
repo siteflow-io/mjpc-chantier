@@ -1,0 +1,36 @@
+— chaîne de clics du professeur —
+  Panneau prof   : #tprof-btn
+  Atelier        : 🛠Atelier
+  Mes chapitres  : Mes chapitres
+  Modifier       : Modifier
+  Déroulé        : Déroulé
+  classes offertes : ["3E Charles de Gaulle","CLASSE TEST"] · régime prep
+  Lancer la séance: ▶ Lancer la séance
+  cours_actif au hub : {"niveau":"3e","chapitre":"0","seance":"0","classeSlug":"3E Charles de Gaulle","classeNom":"3E Charles de Gaulle","debut":"10:07","fin":"11:02","ts":1787658678807}
+— la vue tableau distante est montée —
+  eid dans la copie jouée au hub : ["emt8ltki3lc5te","emt8ltki3fwzli","emt8ltki3qvi2o","emt8ltki3cdr5k","emt8ltki3hnfw0","emt8ltki3h0z5i","emt8ltki3arsak","emt8ltki3fmqe3","emt8ltki3jru4s","emt8ltki3gvk55","emt8ltki3dbsvm","emt8ltki3g8
+— zoom au cran maximal sur le pilote (PT = 24·32·38·44·52) —
+  avant zoom :  14 écrans · i=0 · Heure 1 · Analyse d'images : la routine
+  après zoom  :  15 écrans · i=0 · suite=0 · grp=g1 · Heure 1 · Analyse d'images : la routine
+  identités du pilote : ["emt8ltki3lc5te","suite1","emt8ltki3fwzli","emt8ltki3qvi2o","emt8ltki3cdr5k","emt8ltki3hnfw0","emt8ltki3h0z5i","emt8ltki3arsak","emt8ltki3fmqe3","emt8ltki3jru4s","emt8ltki3gvk55","emt8ltki3dbsvm","emt8ltki3g8n2a","emt8l
+— avance fil par fil —
+  [état initial] pilote i=0 «Heure 1 · Analyse d'images : la routine» suite=0 rev=0 | scène eid=emt8ltki3lc5te ecran=0 | tableau i=0 «Heure 1 · Analyse d'images : la routine» | projeté 92 signes   ✔ MÊME ÉCRAN
+  [dévoilement 1] pilote i=0 «Heure 1 · Analyse d'images : la routine» suite=0 rev=1 | scène eid=emt8ltki3lc5te ecran=0 | tableau i=0 «Heure 1 · Analyse d'images : la routine» | projeté 131 signes   ✔ MÊME ÉCRAN
+  [dévoilement 2] pilote i=0 «Heure 1 · Analyse d'images : la routine» suite=0 rev=2 | scène eid=emt8ltki3lc5te ecran=0 | tableau i=0 «Heure 1 · Analyse d'images : la routine» | projeté 186 signes   ✔ MÊME ÉCRAN
+  [dévoilement 3] pilote i=0 «Heure 1 · Analyse d'images : la routine» suite=0 rev=2 | scène eid=emt8ltki3lc5te ecran=0 | tableau i=0 «Heure 1 · Analyse d'images : la routine» | projeté 236 signes   ✔ MÊME ÉCRAN
+  [dévoilement 4] pilote i=0 «Heure 1 · Analyse d'images : la routine» suite=0 rev=2 | scène eid=emt8ltki3lc5te ecran=0 | tableau i=0 «Heure 1 · Analyse d'images : la routine» | projeté 293 signes   ✔ MÊME ÉCRAN
+  [dévoilement 5] pilote i=1 «Heure 1 · Analyse d'images : la routine» suite=1 rev=2 | scène eid=emt8ltki3lc5te ecran=1 | tableau i=0 «Heure 1 · Analyse d'images : la routine» | projeté 293 signes   ✔ MÊME ÉCRAN
+  [dévoilement 6] pilote i=1 «Heure 1 · Analyse d'images : la routine» suite=1 rev=2 | scène eid=emt8ltki3lc5te ecran=1 | tableau i=0 «Heure 1 · Analyse d'images : la routine» | projeté 403 signes   ✔ MÊME ÉCRAN
+  [dévoilement 7] pilote i=2 «Heure 1 · Analyse d'images : la routine» suite=2 rev=2 | scène eid=emt8ltki3lc5te ecran=2 | tableau i=0 «Heure 1 · Analyse d'images : la routine» | projeté 403 signes   ✔ MÊME ÉCRAN
+  [dévoilement 8] pilote i=2 «Heure 1 · Analyse d'images : la routine» suite=2 rev=2 | scène eid=emt8ltki3lc5te ecran=2 | tableau i=0 «Heure 1 · Analyse d'images : la routine» | projeté 463 signes   ✔ MÊME ÉCRAN
+  [dévoilement 9] pilote i=3 «Heure 1 · Analyse d'images : la routine» suite=3 rev=2 | scène eid=emt8ltki3lc5te ecran=3 | tableau i=0 «Heure 1 · Analyse d'images : la routine» | projeté 463 signes   ✔ MÊME ÉCRAN
+  [dévoilement 10] pilote i=3 «Heure 1 · Analyse d'images : la routine» suite=3 rev=2 | scène eid=emt8ltki3lc5te ecran=3 | tableau i=0 «Heure 1 · Analyse d'images : la routine» | projeté 573 signes   ✔ MÊME ÉCRAN
+  identités fabriquées par la VUE : ["emt8ltki3lc5te","emt8ltki3fwzli","emt8ltki3qvi2o","emt8ltki3cdr5k","emt8ltki3hnfw0","emt8ltki3h0z5i","emt8ltki3arsak","emt8ltki3fmqe3","emt8ltki3jru4s","emt8ltki3gvk55","emt8ltki3dbsvm","emt8ltki3g8n2a","emt8ltki3m7kcn
+  identités COMMUNES pilote/vue : 14 sur 14
+
+═══ COMPTES ═══
+  pas relevés            : 11
+  pas en DÉCALAGE        : 0 / 11
+  écritures sorties      : 0 (interceptées : 18, jamais transmises)
+  GET servis en mémoire  : 151
+  pageerrors             : 0 []

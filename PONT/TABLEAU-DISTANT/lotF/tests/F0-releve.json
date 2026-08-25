@@ -1,0 +1,316 @@
+[
+ {
+  "pas": "tout dévoilé au téléphone",
+  "pilote": {
+   "iz": 1,
+   "i": 0,
+   "nb": 14,
+   "suite": 0,
+   "rev": 2,
+   "vuesEcran": [
+    6
+   ],
+   "morceaux": [
+    {
+     "rang": 0,
+     "suite": 0,
+     "etapes": 6,
+     "vues": 6
+    }
+   ],
+   "totalVues": 6,
+   "totalEtapes": 6
+  },
+  "mur": {
+   "iz": 1,
+   "i": 0,
+   "nb": 14,
+   "suite": 0,
+   "rev": 2,
+   "vuesEcran": [
+    6
+   ],
+   "morceaux": [
+    {
+     "rang": 0,
+     "suite": 0,
+     "etapes": 6,
+     "vues": 6
+    }
+   ],
+   "totalVues": 6,
+   "totalEtapes": 6
+  },
+  "tel": {
+   "cadre": "0×0",
+   "iz": 1,
+   "i": 0,
+   "nb": 14,
+   "vues": [
+    6
+   ]
+  },
+  "murProjete": {
+   "signes": 523,
+   "etapesVisibles": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+   ]
+  },
+  "scene": {
+   "ecran": 0,
+   "morceau": 0,
+   "rev": 2,
+   "vues": {
+    "0": 6
+   },
+   "iz": 1,
+   "ratio": 1.7778,
+   "origine": "ap_mt8z6yr1_behh3"
+  }
+ },
+ {
+  "pas": "cran 5 (source téléphone)",
+  "pilote": {
+   "iz": 4,
+   "i": 0,
+   "nb": 15,
+   "suite": 0,
+   "rev": 2,
+   "vuesEcran": [
+    3
+   ],
+   "morceaux": [
+    {
+     "rang": 0,
+     "suite": 0,
+     "etapes": 3,
+     "vues": 3
+    },
+    {
+     "rang": 1,
+     "suite": 1,
+     "etapes": 3,
+     "vues": 3
+    }
+   ],
+   "totalVues": 6,
+   "totalEtapes": 6
+  },
+  "mur": {
+   "iz": 4,
+   "i": 0,
+   "nb": 15,
+   "suite": 0,
+   "rev": 2,
+   "vuesEcran": [
+    3
+   ],
+   "morceaux": [
+    {
+     "rang": 0,
+     "suite": 0,
+     "etapes": 3,
+     "vues": 3
+    },
+    {
+     "rang": 1,
+     "suite": 1,
+     "etapes": 3,
+     "vues": 3
+    }
+   ],
+   "totalVues": 6,
+   "totalEtapes": 6
+  },
+  "tel": {
+   "cadre": "0×0",
+   "iz": 1,
+   "i": 0,
+   "nb": 14,
+   "vues": [
+    6
+   ]
+  },
+  "murProjete": {
+   "signes": 311,
+   "etapesVisibles": [
+    1,
+    2,
+    3
+   ]
+  },
+  "scene": {
+   "ecran": 0,
+   "morceau": 0,
+   "rev": 2,
+   "vues": {
+    "0": 6
+   },
+   "iz": 4,
+   "ratio": 1.7778,
+   "origine": "ap_mt8z6hpg_5t7d3"
+  }
+ },
+ {
+  "pas": "cran 3",
+  "pilote": {
+   "iz": 2,
+   "i": 0,
+   "nb": 15,
+   "suite": 0,
+   "rev": 2,
+   "vuesEcran": [
+    3
+   ],
+   "morceaux": [
+    {
+     "rang": 0,
+     "suite": 0,
+     "etapes": 3,
+     "vues": 3
+    },
+    {
+     "rang": 1,
+     "suite": 1,
+     "etapes": 3,
+     "vues": 3
+    }
+   ],
+   "totalVues": 6,
+   "totalEtapes": 6
+  },
+  "mur": {
+   "iz": 2,
+   "i": 0,
+   "nb": 15,
+   "suite": 0,
+   "rev": 2,
+   "vuesEcran": [
+    3
+   ],
+   "morceaux": [
+    {
+     "rang": 0,
+     "suite": 0,
+     "etapes": 3,
+     "vues": 3
+    },
+    {
+     "rang": 1,
+     "suite": 1,
+     "etapes": 3,
+     "vues": 3
+    }
+   ],
+   "totalVues": 6,
+   "totalEtapes": 6
+  },
+  "tel": {
+   "cadre": "0×0",
+   "iz": 1,
+   "i": 0,
+   "nb": 14,
+   "vues": [
+    6
+   ]
+  },
+  "murProjete": {
+   "signes": 311,
+   "etapesVisibles": [
+    1,
+    2,
+    3
+   ]
+  },
+  "scene": {
+   "ecran": 0,
+   "morceau": 0,
+   "rev": 2,
+   "vues": {
+    "0": 6
+   },
+   "iz": 2,
+   "ratio": 1.7778,
+   "origine": "ap_mt8z6hpg_5t7d3"
+  }
+ },
+ {
+  "pas": "cran 1 — dézoom complet",
+  "pilote": {
+   "iz": 0,
+   "i": 0,
+   "nb": 14,
+   "suite": 0,
+   "rev": 2,
+   "vuesEcran": [
+    6
+   ],
+   "morceaux": [
+    {
+     "rang": 0,
+     "suite": 0,
+     "etapes": 6,
+     "vues": 6
+    }
+   ],
+   "totalVues": 6,
+   "totalEtapes": 6
+  },
+  "mur": {
+   "iz": 0,
+   "i": 0,
+   "nb": 14,
+   "suite": 0,
+   "rev": 2,
+   "vuesEcran": [
+    6
+   ],
+   "morceaux": [
+    {
+     "rang": 0,
+     "suite": 0,
+     "etapes": 6,
+     "vues": 6
+    }
+   ],
+   "totalVues": 6,
+   "totalEtapes": 6
+  },
+  "tel": {
+   "cadre": "0×0",
+   "iz": 1,
+   "i": 0,
+   "nb": 14,
+   "vues": [
+    6
+   ]
+  },
+  "murProjete": {
+   "signes": 523,
+   "etapesVisibles": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+   ]
+  },
+  "scene": {
+   "ecran": 0,
+   "morceau": 0,
+   "rev": 2,
+   "vues": {
+    "0": 6
+   },
+   "iz": 0,
+   "ratio": 1.7778,
+   "origine": "ap_mt8z6yr1_behh3"
+  }
+ }
+]

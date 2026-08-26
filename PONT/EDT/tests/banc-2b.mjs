@@ -706,18 +706,34 @@ const releve = { get:0, ecritures:0, sorties:0, erreursConsole:[] };
   /* la matrice actions × état */
   const matrice = await page.evaluate(() => {
     EDT.decisions = {};            /* matrice sur une ardoise propre */
-    const etats = ['prevu','jouee','sansSeance','nonImportee','horsMjpc','rienDePret'];
+    const etats = ['prevu','jouee','sansSeance','nonImportee','horsMjpc','rienDePret','ajoutee'];
     const faux = {iso:'2026-09-08', creneau:'15:07-16:02', classe:'X', classeMjpc:'3E Charles de Gaulle'};
     return etats.map(n => {
       EDT_VUE.cellules = EDT_VUE.cellules || {};
       const k = '__test__';
-      EDT_VUE.cellules[k] = Object.assign({}, faux, {nature:n, titre:'T', heure:1, sur:2, activites:2, reportees:0, categorie:'Gestion de classe'});
+      const nat = (n === 'ajoutee') ? 'prevu' : n;
+      EDT_VUE.cellules[k] = Object.assign({}, faux, {nature:nat, ajoutee:(n==='ajoutee'),
+        titre:'T', heure:1, sur:2, activites:2, reportees:0, categorie:'Gestion de classe'});
       EDT_MOD.cle = k; edtPeindreModale();
       const m = document.getElementById('edt-modale');
       const b = m ? Array.from(m.querySelectorAll('button')).map(x => x.textContent.trim().replace(/\s+/g,' ')) : [];
       const sel = m ? m.querySelectorAll('select').length : 0;
-      edtModaleFermer(); delete EDT_VUE.cellules[k];
-      return n + ' → ' + JSON.stringify(b) + ' · ' + sel + ' liste(s)';
+      edtModaleFermer();
+      /* le glissé : cette case se saisit-elle ? est-elle une cible valable ? */
+      const c = EDT_VUE.cellules[k];
+      /* on INTERROGE le code, on ne recalcule pas la règle : le banc appelle
+         edtGlisserDebut et regarde si la saisie a été acceptée. */
+      EDT_GLISSE = null;
+      try{ edtGlisserDebut({clientX:0, clientY:0, preventDefault:function(){}}, k); }catch(e){}
+      const saisissable = !!EDT_GLISSE;
+      EDT_GLISSE = null;
+      const commeCible = edtRefusDepot(
+        {iso:'2026-09-08',creneau:'15:07-16:02',classe:'3 FRANKLIN Aretha',classeMjpc:'3E Charles de Gaulle'},
+        {iso:c.iso, creneau:c.creneau});
+      delete EDT_VUE.cellules[k];
+      return n + ' → ' + JSON.stringify(b) + ' · ' + sel + ' liste(s) · glissé : '
+        + (saisissable ? 'saisissable' : 'non saisissable')
+        + ' · cible : ' + (commeCible ? ('refusée — ' + commeCible.slice(0,44)) : 'acceptée');
     });
   });
   journal.push('MATRICE actions × état :\n  ' + matrice.join('\n  '));

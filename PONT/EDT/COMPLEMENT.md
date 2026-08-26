@@ -42,6 +42,16 @@ Paul a répondu **oui** aux trois : au-delà de 21 jours, sur un trou de son emp
 - **Sur un trou** : la liste propose aussi les **créneaux libres de l'emploi du temps de Paul** (un créneau de la grille où il n'a aucune classe, ou un créneau horaire vide ce jour-là), marqués « créneau libre — heure ajoutée ». Poser une heure là n'est pas un déplacement : **c'est une heure ajoutée** ; elle est épinglée, dite comme telle dans la modale et au journal, et compte dans la prévision horaire de la classe.
 - **Refus nommés** : jamais sur un créneau où Paul a déjà une autre classe (sauf échange explicite), jamais un jour sans cours, jamais dans le passé.
 
+## ④bis LA VUE ANNÉE — elle n'est pas cassée, elle est illisible : à refaire
+Paul, en voyant la capture `5-2-annee` : « je ne sais pas ce que montre la capture mais ça a l'air cassé. » Mesuré par la conscience sur ta propre capture : **98,8 % de l'écran est vide** sous l'en-tête. Le code ne lève aucune erreur — l'écran est vide **par construction**, et c'est le défaut : il ne dit rien de ce qu'il montre ni de ce qu'il ne montre pas.
+**Ce qui manque, et qui est exigé :**
+- **Une échelle de temps lisible** : les mois (septembre → juillet) en colonnes nommées, les vacances en bandes avec leur nom, les jalons repérables au survol **et** au clic, un trait « aujourd'hui » identifié. Aujourd'hui la frise du haut est une suite de traits gris sans un seul mot : impossible de savoir où l'on est.
+- **Dire ce qui n'est pas là** : quand une classe de la grille n'a pas de classe MJPC appariée, ou qu'un niveau n'a aucun chapitre publié, **l'écran l'écrit** (« 3 DYLAN Bob — classe non encore importée », « aucun chapitre publié à cette classe »), au lieu de ne rien afficher. Une ligne par classe de la grille, toujours, même vide.
+- **Une légende** : ce que sont la barre pleine (le réel, première à dernière heure jouée), la barre claire (le prévu projeté), les paliers de divergence, la mention « expérimentale ».
+- **Occuper la hauteur** : les lignes de classes se répartissent dans l'écran ; s'il n'y a qu'une classe, la ligne est haute et lisible, pas un filet de 8 pixels perdu en haut d'une page noire.
+- **Sans scroll**, comme les autres vues, aux deux tailles.
+**Preuve exigée** : capture de la vue Année dans l'état réel du hub d'aujourd'hui (une seule classe appariée, un chapitre) — elle doit être **compréhensible sans explication** ; puis une seconde capture avec quatre classes appariées et deux chapitres, pour montrer qu'elle tient quand elle se remplit. Mesure à donner : le pourcentage de la surface utile occupé, avant et après.
+
 ## ⑤ CE QUE ÇA NE DOIT PAS CASSER
 Rien de ce qui est déjà prouvé ne doit changer de comportement : la porte du pilotage (six champs), le prévu, les décisions horaires et ↶ Annuler, les photos, la divergence, la classe expérimentale, l'absence, les périodes, le sans-scroll, les trois portes, les trois exceptions. **Le contrat ne s'élargit pas** : si un appel nouveau est nécessaire, il entre dans `verif_edt.py` avec sa raison, jamais en silence.
 
@@ -58,7 +68,7 @@ Rien de ce qui est déjà prouvé ne doit changer de comportement : la porte du 
 10. **Sans scroll** toujours vrai (1366×768 et 1920×1080, `scrollY` 0 après tentative à 4000 px) · **garde VERTE** et **rouge sur les trois contrôles négatifs** · **moteur intact** · `secu*` 29 · `published` 97 · double parseur vert · **matrice actions × état** refaite, glissé compris.
 
 ## ⑦ MÉTHODE
-Livraisons courtes, chacune poussée au sas et close par un arrêt ; Paul relance par « continuer ». Découpe proposée : **①** versions datées + compatibilité + écran des versions · **②** glisser-déposer et la question du dépôt · **③** déplacement lointain, trou, refus nommés · **④** bancs complets, garde, matrice, rapport de complément.
+Livraisons courtes, chacune poussée au sas et close par un arrêt ; Paul relance par « continuer ». Découpe proposée : **①** versions datées + compatibilité + écran des versions · **②** glisser-déposer et la question du dépôt · **③** déplacement lointain, trou, refus nommés · **④** la vue Année refaite · **⑤** bancs complets, garde, matrice, rapport de complément.
 **Aucune dette à la livraison finale.** Rapport écrit pour une conscience qui n'a pas vu la conversation.
 **La `SEQUENCE-TEST-PAUL.md` est à mettre à jour** (glissé, changement d'emploi du temps, heure ajoutée) : Paul la jouera **après** la promotion, comme d'habitude — ne la lui donne pas maintenant.
 Livrable : `PONT/EDT/` — `index.html` (8.72.0), `rapport-complement.md`, `tests/` mis à jour, `SEQUENCE-TEST-PAUL.md` à jour, `outils/verif_edt.py` à jour. **STOP après chaque livraison. Ne promeus jamais.**

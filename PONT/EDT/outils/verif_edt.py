@@ -26,7 +26,9 @@ CONTRAT = {
     # lecture / écriture du hub
     'secuLire', '_siteGet', 'mjpcPutJson',
     # affichage du site
-    'escapeHtml', 'atInfo', 'showProfSection', 'openProfPanel',
+    'escapeHtml', 'atInfo', 'atModaleChoix', 'showProfSection', 'openProfPanel',
+    # l'ouverture de l'atelier (contrat §③ : « l'ouverture d'un chapitre dans l'atelier »)
+    'atelierOuvrir',
     # publication
     'isPubFor',
     # le pilotage (voie A — posé avec l'écran, autorisé dès maintenant)

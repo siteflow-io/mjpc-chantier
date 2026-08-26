@@ -1,0 +1,24 @@
+pendant le glissé : {"source":1,"possibles":23,"impossibles":16}
+
+question posée : {"ouverte":true,"boutons":["✕","Changer l’emploi du temps à partir de cette date","Déplacer cette heure seulement"]}
+
+④ après glissé « déplacer cette heure » :
+  décisions : {"2026-09-09_10h07-11h02_3E_Charles_de_Gaulle":{"epingle":true,"venantDe":"2026-09-08|15:07-16:02","pose":1787751886589}}
+  versions de grille écrites : 0
+
+   le même geste par la liste :
+  {"2026-09-09_10h07-11h02_3E_Charles_de_Gaulle":{"epingle":true,"venantDe":"2026-09-08|15:07-16:02","pose":1787751893103}}
+  → mêmes clés écrites que par le glissé : true
+
+   diagnostic du geste : {"question":"ouverte","avant":"[\"annee\",\"source\",\"creneauxDuSite\",\"note\",\"creneaux\",\"creneauxFictifs\",\"periodes\",\"jours\",\"sansApresMidi\"]","cellule":true}
+
+⑤ après glissé « changement d’emploi du temps » (effet 14/09) : {"formeAuHub":["annee","source","creneauxDuSite","note","creneauxFictifs","periodes","jours","sansApresMidi","versions","journalEdt"],"versions":["2026-08-01","2026-09-14"],"decisionsEcrites":0,"journal":["3E Charles de Gaulle : mardi 15:07-16:02 → mercredi 10:07-11:02"],"mardiRetire":true,"mercrediAjoute":true}
+
+   la trace du 7 septembre : {"creneau":"08:57-09:52","clos":true,"activites":3}
+
+⑥ refus nommés : {
+ "passe": "on ne pose pas une heure dans le passé (le 2026-08-20 est déjà passé).",
+ "vacances": "le 2026-10-20 est sans cours — de la Toussaint.",
+ "mercrediApresMidi": "le mercredi n’a pas cours à partir de 12:00.",
+ "autreClasse": "ce créneau est déjà pris par 3 DYLAN Bob — je ne l’écrase pas à ta place."
+}

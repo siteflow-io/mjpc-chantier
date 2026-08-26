@@ -1,0 +1,114 @@
+{
+ "produit": "fiche_methode",
+ "titre": "Fiche méthode : décrire une image — version aménagée",
+ "cases": {
+  "titre": true,
+  "sous_titre": true,
+  "annee_scolaire": true,
+  "date_edition": true,
+  "version_document": true,
+  "objectif": true,
+  "competences": true,
+  "notions": true,
+  "domaine_socle": true,
+  "mention_conserver": true,
+  "travail_a_faire": true,
+  "criteres_je": true,
+  "methode": true,
+  "exemple": true,
+  "contre_exemple": true,
+  "attention_piege": true,
+  "a_retenir": true,
+  "texte_libre": true,
+  "police_adaptee": true,
+  "consignes_reformulees": true,
+  "interligne": true
+ },
+ "valeurs": {
+  "titre": {
+   "texte": "Fiche méthode : décrire une image — version aménagée"
+  },
+  "sous_titre": {
+   "texte": "Les plans, le cadrage, le point de vue : la routine d'analyse d'image. À retrouver toute l'année au rayon Fiches méthode. Consignes reformulées."
+  },
+  "objectif": {
+   "texte": "À la fin de cette leçon, tu sauras décrire un tableau ou une image avec les bons mots, avant de l'interpréter."
+  },
+  "competences": {
+   "items": [
+    "Lire des textes non littéraires, des images et des documents composites (y compris numériques)"
+   ]
+  },
+  "notions": {
+   "items": [
+    "Décrire une image fixe ou mobile",
+    "Les plans et le cadrage",
+    "Le point de vue dans l'image",
+    "Le hors champ"
+   ]
+  },
+  "domaine_socle": {
+   "texte": "Domaine 1 — Les langages pour penser et communiquer"
+  },
+  "criteres_je": {
+   "items": [
+    "je décris avant d'interpréter",
+    "je nomme les plans",
+    "je nomme le cadrage",
+    "je nomme le point de vue",
+    "je cherche le hors champ",
+    "je formule une hypothèse sur l'effet produit"
+   ]
+  },
+  "travail_a_faire": {
+   "texte": "Choisis un tableau du chapitre. Décris-le dans ton cahier en suivant les six étapes, dans l'ordre."
+  }
+ },
+ "blocs": [
+  {
+   "id": "texte_libre",
+   "valeurs": {
+    "texte": "Décrire, c'est dire ce qu'on voit avant de dire ce qu'on comprend. Cette routine est celle du travail en groupes : elle vaut pour toute image — tableau, photographie ou plan de film."
+   }
+  },
+  {
+   "id": "methode",
+   "valeurs": {
+    "titre": "👀 La routine d'analyse",
+    "items": [
+     "J'observe l'image en silence.",
+     "Je nomme les plans : premier plan, second plan, arrière-plan.",
+     "Je nomme le cadrage : plan large (un paysage), plan moyen (des personnages entiers), gros plan (un visage, un détail).",
+     "Je nomme le point de vue : d'où regarde-t-on ? en plongée (d'en haut), en contre-plongée (d'en bas), à hauteur d'homme.",
+     "Je décris les couleurs et la lumière : ce qui domine, ce qui contraste.",
+     "Je cherche le hors champ : ce qu'on ne voit pas mais que l'image fait deviner — hors du cadre, derrière, avant, après.",
+     "Je formule une hypothèse : qu'est-ce que cette image veut faire ressentir ?"
+    ]
+   }
+  },
+  {
+   "id": "exemple",
+   "valeurs": {
+    "texte": "Le Radeau de la Méduse (Géricault) : au premier plan, des corps ; au centre, une pyramide de survivants ; à l'arrière-plan, un navire minuscule à l'horizon. Plan large, à hauteur des naufragés : le regard monte des morts vers l'espoir."
+   }
+  },
+  {
+   "id": "contre_exemple",
+   "valeurs": {
+    "texte": "« C'est un tableau triste avec des gens sur un radeau. » — l'interprétation arrive avant la description : on ne sait ni ce qu'on voit, ni d'où on le voit, ni pourquoi c'est triste."
+   }
+  },
+  {
+   "id": "attention_piege",
+   "valeurs": {
+    "texte": "Décris d'abord, interprète ensuite : une hypothèse sans description ne s'appuie sur rien. Et n'oublie pas le cartel : titre, peintre, date — c'est le paratexte de l'image."
+   }
+  },
+  {
+   "id": "a_retenir",
+   "valeurs": {
+    "texte": "Plans, cadrage, point de vue, couleurs et lumière, puis le hors champ — et seulement ensuite l'hypothèse. Décrire avant d'interpréter."
+   }
+  }
+ ]
+}

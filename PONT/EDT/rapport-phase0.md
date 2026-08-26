@@ -186,12 +186,62 @@ La semaine du 7 septembre est en **B**. Conséquence sur la 3E Charles de Gaulle
 
 ---
 
-## ⑥ ÉTAT DE LA LIVRAISON
+## ⑥ LIVRAISON ②a — LES DONNÉES CORRIGÉES ET L'OBJET DES CRÉNEAUX
 
-**Fait (①a)** : contrôle d'entrée · la porte du pilotage, sa chaîne exacte, ses deux voies · les schémas réels des cinq données lues, avec exemples pris au hub · la publication par classe · le calcul du prévu en dix lignes et son cas chiffré · six inconnues déclarées.
-**Fait (①b)** : les deux prompts, les deux JSON, la règle A/B mesurée, les contrôles de la grille, les trous pour la classe expérimentale.
-**Ce qui vient (②)** : les objets du hub sous `/site/edt/`, les deux entrées dans la zone d'injection du panneau prof, la modification à la main après injection.
+Quatre réponses de Paul intégrées. Ce qui suit est mesuré sur la pièce, pas déduit.
 
-**Aucune dette ouverte.** Restent deux décisions de Paul, portées ci-dessus, qui n'empêchent aucune ligne de code : les trois corrections à la main du calendrier (§⑤b) et la date du DNB (§⑤e).
+### a. Les vacances étaient dans le fichier — je ne les avais pas lues
+Paul : les jours de vacances portent un **fond gris**. Vrai, et je lisais les valeurs de cellules, pas les remplissages. Relecture des fonds, jour par jour :
+
+| Fond | Ce qu'il marque | Jours |
+|---|---|---|
+| `A6A6A6` | vacances et fériés | 105 |
+| `B7B7B7` | dimanche pendant les vacances | 16 |
+| `76D6FF` | semaine **A** | 89 |
+| `FCD203` | semaine **B** | 89 |
+| `D9D9D9` | week-end ordinaire | 66 |
+
+**Les vacances, lues et non plus déduites** — mes cinq dates de fin étaient toutes fausses d'un jour :
+
+| Période | Mesuré | Ce que j'avais déduit |
+|---|---|---|
+| été (avant la rentrée) | 01/08 → 26/08/2026 | — |
+| Toussaint | 17/10 → **31/10**/2026 | 01/11 ✗ |
+| Noël | 19/12/2026 → **02/01**/2027 | 03/01 ✗ |
+| Hiver | 20/02 → **06/03**/2027 | 07/03 ✗ |
+| Printemps | 17/04 → **01/05**/2027 | 02/05 ✗ |
+| pont de l'Ascension | 06/05 → 08/05/2027 (`type: "pont"`) | manquait |
+| été | 03/07 → 31/07/2027 | 31/08 ✗ |
+
+Plus aucun `finAConfirmer` dans le JSON. Trois jours gris **isolés** en semaine sont des fériés, pas des vacances : Armistice (11/11), lundi de Pâques (29/03), Pentecôte (17/05).
+
+**Contrôle croisé que le fond permet, et qui vaut preuve : la couleur de semaine contre la table des marqueurs — 178 concordants, 0 discordant.** Deux sources indépendantes du fichier disent la même chose sur A/B. Le prompt demande désormais cette vérification à l'IA.
+
+### b. Le périmètre : 3e et 4e seulement
+Les événements de classe passent de 23 à **15**. Sortis : les trois entrées du séjour St Malo (6e, en plusieurs vagues), la Semaine de l'engagement 6e, les sorties 5e Angers et Nantes, la compétition 5e. La soirée « Présentation options 3e / séjour Pays-Bas parents 4e » du 7 janvier passe en événement d'établissement (soirée, `prendLeCreneau: false`), où elle a sa place.
+Les 15 retenus : séjour Verdun 3e (14-16/10) · stages 3e (16-19/11 et 13-15/01) · visite des lycées 3e (23/11) · tribunaux 4e (17/09, 05/11, 19/11) · forums et orientation 4e (12/02, 18/02, 19/02) · stage 4e (24-26/03) · séjour Pays-Bas 4e (12-17/04).
+
+### c. Le DNB — et la première exception au contrat
+Le calendrier fait foi : DNB les **25, 28 et 29 juin 2027**. Le JSON porte donc `brevet.3e = "2027-06-25T08:00:00"` — le premier jour, comme demandé.
+**L'injection du calendrier écrira `/site/config/brevetDates/3e`.** C'est la **première écriture de l'EDT hors de `/site/edt/`** : elle entre au contrat §③ comme exception nommée, et `verif_edt.py` la connaîtra, chemin exact, écriture unique. Toute autre écriture hors `/site/edt/` reste interdite.
+
+### d. Les créneaux deviennent un objet — et la seconde exception
+Nouveau fichier `json/creneaux-2026-2027.json` : `/site/edt/creneaux/<annee>`, liste ordonnée de huit `{rang, debut, fin}`, plus la pause méridienne et la règle du temps utile.
+**Au chargement, l'EDT alimente la variable `AT_EDT` du site depuis cet objet**, avec repli sur sa valeur en dur (L14094) si l'objet est absent. C'est la **seconde exception au contrat** : une variable, pas un nœud. Elle est nommée parce que `AT_EDT` sert au déroulé et au T-5 — l'EDT devient la source des créneaux pour tout le site.
+**Règle gravée : un créneau modifié en cours d'année ne réécrit jamais les traces d'heures déjà jouées.** Leur clé porte le créneau d'alors (`2026-08-26_08h00-08h55_CLASSE_TEST`) et reste lisible telle quelle. Le prompt de la grille lit désormais les créneaux **sur la grille** au lieu de les supposer.
+
+### e. Ce qui est déposé
+`prompts/calendrier.md` (corrigé : fonds gris, contrôle croisé des couleurs, périmètre 3e/4e, `brevet`) · `prompts/grille.md` (corrigé : créneaux lus sur la grille) · `json/calendrier-2026-2027.json` (vacances mesurées, 15 événements de classe, `brevet`) · `json/creneaux-2026-2027.json` (nouveau) · `json/grille-2026-2027.json` (créneaux en objets ordonnés ; les 30 entrées ne bougent pas).
+
+---
+
+## ⑦ ÉTAT DE LA LIVRAISON
+
+**Fait (①a)** : contrôle d'entrée · la porte du pilotage · les schémas réels du hub · la publication par classe · le calcul du prévu et son cas · les inconnues.
+**Fait (①b)** : les deux prompts, les deux JSON, la règle A/B, les contrôles de la grille, les trous pour la classe expérimentale.
+**Fait (②a)** : les vacances lues sur les fonds, le périmètre 3e/4e, le DNB et l'objet des créneaux, les deux exceptions au contrat nommées.
+**Ce qui vient (②b)** : le code — le bloc `EDT` délimité, la lecture des six objets sous `/site/edt/`, l'alimentation de `AT_EDT`, les trois entrées d'injection dans le panneau prof (calendrier, grille, créneaux) sur le flow `atIA*`, la modification à la main après injection ; candidat 8.71.0, double parseur, invariants, captures de l'injection.
+
+**Aucune dette ouverte.**
 
 *Mot à attendre : **continuer**.*

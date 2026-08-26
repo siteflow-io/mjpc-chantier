@@ -629,3 +629,16 @@ Il porte le **plan de séquence en sept séances**, défini pour l'élève : cou
 - quantitatif **3/3/3 confirmé** : « au moins trois œuvres complètes en lecture intégrale ; au moins trois œuvres complètes en lecture cursive ; au moins trois groupements de textes » ;
 - « Agir dans la cité » demande **une lecture intégrale** portant un regard sur l'histoire du siècle, en lien avec le thème d'histoire « L'Europe, un théâtre majeur des guerres totales » — un groupement de lettres n'y suffit pas seul ;
 - le programme suggère explicitement, en croisement avec l'histoire : « 3e : Les deux guerres mondiales et la littérature : poésie engagée, résistance, fabrication d'une anthologie poétique, mise en voix et mise en scène. »
+
+### Le panier de livres 2026-2027 — arrêté (26/08)
+
+**La contrainte, en propre** : 20 € pour l'ensemble OI + LC, après remise de 9 % ; **pas de prêt, pas d'écran, pas d'impression** (écologie). Tout doit être un livre acheté. C'est cette contrainte qui explique les zéro lecture cursive de l'an dernier — les trois œuvres consommaient le budget.
+
+**Le panier retenu, 19,66 € remisé** : *Paroles de poilus* (Librio, 3 €) · *Poil de Carotte* (Librio, 2 €) · *La Planète des singes* (Pocket, 5,70 €) en intégrales ; *Le Dernier jour d'un condamné* (Librio, 2 €) · *Le Joueur d'échecs* (Étonnants Classiques, 3 €) · *La Marraine de guerre* (LdP Jeunesse, 5,90 €) en cursives.
+**Le 3/3/3 du programme est atteint pour la première fois.** Détail complet, sources et ISBN dans `PANIER-2026-2027.md`.
+
+**Le déblocage est venu du retrait de *La Vague*** (6,80 €), décidé par Paul. Guéno revient au panier — non plus cité mais acheté, ce qui éteint la question des droits qui avait fait écarter le recueil le matin même.
+
+**Une leçon de méthode** : cinq recherches successives n'ont pas rendu le catalogue Librio (le site de l'éditeur bloque les requêtes automatisées) ; ce sont les pages « série » indexées par le moteur qui ont donné les prix, puis les fiches de libraires indépendants. **Un prix ne s'annonce jamais de mémoire** — chacun des six est sourcé.
+
+**Piège relevé** : une édition ancienne trouvée moins chère en ligne (ISBN 2266118285 à 4,24 € contre 9782266283021) est une occasion ou un fond de stock. Pour 27 exemplaires neufs, seule compte la référence en cours ; et la pagination doit être la même pour toute la classe.

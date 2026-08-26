@@ -15,8 +15,8 @@
 | **3** | L'autobiographie | Se chercher, se construire | Se raconter, se représenter | *Poil de Carotte*, Renard | **OI** |
 | **4** | La satire | Vivre en société | Dénoncer les travers de la société | Swift, *Modeste proposition* + caricatures (Voutch, Asaf Hanuka) + Chaplin | **GT** |
 | **5** | **Le pamphlet avance-t-il désormais masqué ?** | Vivre en société | Dénoncer les travers *(2ᵉ passage)* | Paul-Louis Courier, Zola « J'accuse… ! », deux tribunes contemporaines opposées, fil de réseau **reconstitué** | **GT** |
-| **6** | L'emprise et le pouvoir | Agir sur le monde | Agir dans la cité *(2ᵉ passage)* | Orwell (extraits de *La Ferme des animaux*, *1984*), propagande authentique, résistance par les mots | **GT** |
-| **7** | Progrès et rêves scientifiques | Questionnement complémentaire | Progrès et rêves scientifiques | *La Planète des singes*, Boulle | **OI** |
+| **6** | Progrès et rêves scientifiques | Questionnement complémentaire | Progrès et rêves scientifiques | *La Planète des singes*, Boulle | **OI** |
+| **7** | L'emprise et le pouvoir | Agir sur le monde | Agir dans la cité *(2ᵉ passage)* | Orwell (extraits de *La Ferme des animaux*, *1984*), propagande authentique, résistance par les mots | **GT** |
 
 **Le compte : 3 œuvres intégrales · 3 lectures cursives · 4 groupements de textes.**
 Le programme exige « au moins trois » de chaque (BO spécial n° 11 du 26/11/2015) : le minimum est atteint, et dépassé sur les groupements. Les **quatre entrées obligatoires** sont couvertes, plus un questionnement complémentaire. Deux thèmes reviennent une seconde fois — le programme l'autorise expressément : « chaque questionnement peut être abordé à plusieurs reprises, à des moments différents de l'année scolaire ».
@@ -29,8 +29,8 @@ Le programme exige « au moins trois » de chaque (BO spécial n° 11 du 26/11/2
 | *La Marraine de guerre*, Cuenca | **LC** | 1 |
 | *Poil de Carotte*, Renard | **OI** | 3 |
 | *Le Dernier jour d'un condamné*, Hugo | **LC** | 5 |
-| *Le Joueur d'échecs*, Zweig | **LC** | 6 |
-| *La Planète des singes*, Boulle | **OI** | 7 |
+| *La Planète des singes*, Boulle | **OI** | 6 |
+| *Le Joueur d'échecs*, Zweig | **LC** | 7 |
 
 Détail des prix, ISBN et sources dans `PANIER-2026-2027.md`.
 
@@ -59,9 +59,12 @@ Détail des prix, ISBN et sources dans `PANIER-2026-2027.md`.
 - **Un fil de réseau social reconstitué**, écrit par Paul — jamais un fil authentique, pour garder la main sur les contenus.
 - **Tâche finale : un débat**, sur l'application **pilotage de débat**.
 
-**Le chapitre 6 accueille *Le Joueur d'échecs* en cursive**, non en œuvre étudiée : le groupement porte l'emprise mentale — la novlangue, la propagande, la réécriture du langage — et la cursive en donne la version romanesque, vue de l'intérieur.
+**Le chapitre 7 accueille *Le Joueur d'échecs* en cursive**, non en œuvre étudiée : le groupement porte l'emprise mentale — la novlangue, la propagande, la réécriture du langage — et la cursive en donne la version romanesque, vue de l'intérieur.
 
 ---
+
+**L'ordre évite trois groupements d'affilée.** Décision de Paul : *La Planète des singes* remonte en position 6 — « sinon ça enchaîne trop de GT ». La suite devient OI-GT-OI-GT-GT-OI-GT : la plus longue série de groupements tombe de trois à deux.
+**Conséquence à surveiller** : l'année se termine sur « L'emprise et le pouvoir », en juin, période où l'on perd des heures. C'est le seul chapitre qui accueille *Le Joueur d'échecs* en cursive — lui garantir sa place, ou déplacer la cursive plus tôt. *Paul : « tant pis ».*
 
 ## Ce qui reste à trancher
 

@@ -18066,9 +18066,10 @@ function edtApparier(index,nomClasse){
   mjpcPutJson(FIREBASE_BASE+edtChemin('grille')+'.json',o,'Grille — appariement des classes',function(){ EDT.grille=o; edtPeindrePanneau(); });
 }
 function edtClassesDuHub(){
+  var t=EDT_CLASSES;
+  if(!t){ try{ t=classesData; }catch(e){ t=null; } }
   var l=[];
-  try{ if(typeof classesData==='object'&&classesData) Object.keys(classesData).forEach(function(k){
-    var c=classesData[k]; if(c&&!c.archivee)l.push(c.nom||k); }); }catch(e){}
+  Object.keys(t||{}).forEach(function(k){ var c=t[k]; if(c&&!c.archivee)l.push(c.nom||k); });
   return l.sort();
 }
 function edtNomsDeGrille(){
@@ -18079,7 +18080,7 @@ function edtNomsDeGrille(){
 
 /* ── LA PORTE ② : LE PANNEAU PROF ───────────────────────────────────────── */
 function edtSectionPanneau(){
-  setTimeout(function(){ if(EDT.charge)edtPeindrePanneau(); else edtCharger(edtPeindrePanneau); },0);
+  setTimeout(function(){ edtChargerClasses(function(){ if(EDT.charge)edtPeindrePanneau(); else edtCharger(edtPeindrePanneau); }); },0);
   return '<h2>\ud83d\udcc5 Emploi du temps</h2><div id="edt-panneau" class="edt-panneau">Lecture des objets de l\u2019année\u2026</div>';
 }
 function edtEtatLigne(nom,objet,compte){
@@ -18102,6 +18103,10 @@ function edtPeindrePanneau(){
     +'</div>';
 
   /* les trois portes d'injection */
+  h+='<div class="edt-actions edt-haut"><button class="edt-btn edt-btn-prim" onclick="edtOuvrir()">\ud83d\uddd3 Ouvrir l\u2019emploi du temps</button>'
+    +EDT_OBJETS.filter(function(o){return !!EDT[o];}).map(function(o){
+      return '<button class="edt-btn" onclick="edtSortirJson(\''+o+'\')" title="copier le JSON tel qu\u2019il est au hub">\u2913 Sortir le JSON \u2014 '+o+'</button>';
+    }).join('')+'</div>';
   h+='<div class="edt-bloc"><div class="edt-titre">\u2728 Injecter un objet</div>'
     +'<div class="edt-voies">'
     +Object.keys(EDT_VOIES).map(function(k){
@@ -18241,9 +18246,402 @@ function edtPoserCss(){
    +'.edt-per .edt-nom{width:76px;font-weight:700;color:#e0b978}'
    +'.edt-mini{font:inherit;font-size:.8rem;background:rgba(255,255,255,.06);color:#c9bfa4;border:1px solid rgba(255,255,255,.16);border-radius:6px;padding:2px 7px;cursor:pointer}'
    +'.edt-mini[disabled]{opacity:.35;cursor:default}'
-   +'.edt-per input,.edt-cr input,.edt-ap select{font:inherit;font-size:.86rem;background:rgba(0,0,0,.3);color:#e8e0cf;border:1px solid rgba(255,255,255,.16);border-radius:7px;padding:4px 7px}';
+   +'.edt-per input,.edt-cr input,.edt-ap select{font:inherit;font-size:.86rem;background:rgba(0,0,0,.3);color:#e8e0cf;border:1px solid rgba(255,255,255,.16);border-radius:7px;padding:4px 7px}'
+   /* ── l'écran de la semaine : il TIENT sur la page, sans scroll ── */
+   +'.edt-fige{overflow:hidden!important}'
+   +'#edt-ecran{position:fixed;top:0;left:0;right:0;bottom:0;z-index:8000;display:none;flex-direction:column;overflow:hidden;background:#14100c;color:#e8e0cf;font-family:inherit}'
+   +'.edt-tete{display:flex;align-items:center;gap:7px;padding:7px 12px;border-bottom:1px solid rgba(255,255,255,.1);font-size:.92rem;flex:0 0 auto}'
+   +'.edt-or{color:#e0b978}.edt-sep{width:14px}.edt-souple{flex:1}'
+   +'.edt-bandeau{display:flex;gap:5px;flex-wrap:nowrap;overflow:hidden;padding:4px 12px;flex:0 0 auto;align-items:center}'
+   +'.edt-t{font-size:.7rem;border:1px solid rgba(255,255,255,.16);border-radius:20px;padding:1px 8px;white-space:nowrap;color:#c9bfa4}'
+   +'.edt-t-off{border-color:rgba(155,155,155,.4);color:#9c8f74}.edt-t-jalon{border-color:rgba(224,185,120,.5);color:#e0b978}'
+   +'.edt-t-cl{border-color:rgba(120,160,224,.5);color:#9db8e0}.edt-t-per{border-color:rgba(224,185,120,.7);color:#e0b978;font-weight:700}'
+   +'.edt-mini-t{font-size:.7rem;color:#7a7060}'
+   +'.edt-sem{flex:1 1 auto;min-height:0;display:grid;grid-template-columns:46px repeat(5,1fr);grid-template-rows:18px repeat(8,minmax(0,1fr));gap:3px;padding:0 12px}'
+   +'.edt-coin{font-size:.66rem;color:#9c8f74;display:flex;align-items:center}'
+   +'.edt-jour{font-size:.72rem;color:#c9bfa4;text-align:center;font-weight:700}'
+   +'.edt-jour-auj{color:#e0b978}'
+   +'.edt-h{font-size:.64rem;color:#7a7060;display:flex;align-items:flex-start;justify-content:flex-end;padding-right:4px}'
+   +'.edt-case{min-height:0;overflow:hidden;display:flex;flex-direction:column;gap:2px;border-radius:7px;background:rgba(255,255,255,.02);padding:2px}'
+   +'.edt-case-now{outline:2px solid #e0b978;outline-offset:-2px}'
+   +'.edt-b{flex:1 1 0;min-height:0;overflow:hidden;border-radius:5px;padding:2px 5px;font-size:.68rem;line-height:1.2;border-left:3px solid rgba(255,255,255,.18);background:rgba(255,255,255,.03)}'
+   +'.edt-b b{display:block;font-size:.7rem;color:#e8e0cf;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}'
+   +'.edt-b u{display:block;text-decoration:none;color:#c9bfa4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}'
+   +'.edt-b i{display:block;font-style:normal;font-size:.63rem;color:#9c8f74;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}'
+   +'.edt-b-prevu{border-left-color:rgba(155,155,155,.5)}'
+   +'.edt-b-fil{border-left-color:rgba(160,140,224,.75)}'
+   +'.edt-b-joue{border-left-color:#34d399;background:rgba(52,211,153,.07)}'
+   +'.edt-b-sans{border-left-color:#e0b978;background:rgba(224,185,120,.07)}'
+   +'.edt-b-hors{border-left-color:rgba(120,120,120,.4);color:#7a7060;font-size:.64rem}'
+   +'.edt-b-off{border-left-color:rgba(120,120,120,.3);color:#7a7060;font-size:.64rem;display:flex;align-items:center}'
+   +'.edt-b-gris,.edt-b-vide{border-left-color:rgba(200,120,120,.5)}'
+   +'.edt-cartes{flex:0 0 auto;display:flex;gap:7px;padding:6px 12px 8px;overflow:hidden;align-items:stretch}'
+   +'.edt-carte{flex:1 1 0;min-width:0;border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:4px 8px;font-size:.72rem;cursor:pointer;overflow:hidden}'
+   +'.edt-carte b{display:block;color:#e0b978;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}'
+   +'.edt-carte em{display:block;font-style:normal;font-size:.65rem;color:#9c8f74;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}'
+   +'.edt-fil{color:#a08ce0}'
+   +'.edt-barre{display:block;height:4px;border-radius:3px;background:rgba(255,255,255,.1);margin:3px 0}'
+   +'.edt-barre i{display:block;height:100%;border-radius:3px;background:#34d399}';
   document.head.appendChild(s);
 }
+
+/* ═══ LE PRÉVU — calculé à chaque affichage, écrit nulle part ═══════════════
+   Dix lignes, en français, et le code qui les suit :
+   ① une classe, une date → la grille en vigueur (période, semaine A/B) ;
+   ② les créneaux à venir, dans l'ordre du temps, moins ce que le calendrier occupe ;
+   ③ les créneaux « X Français » s'affichent et ne comptent jamais ;
+   ④ le chapitre en cours = le chapitre publié à cette classe, de plus petit
+      ordre, qui a encore une séance non jouée ; sinon « aucune séance prête » ;
+   ⑤ ses séances non jouées, dans l'ordre de leur `ordre` ;
+   ⑥ le nombre d'heures d'une séance = somme des `dur` ÷ temps utile, arrondi
+      au SUPÉRIEUR, au minimum une ;
+   ⑦ la séance se pose sur les créneaux successifs jusqu'à avoir ses heures ;
+   ⑧ une heure déplacée est épinglée ;
+   ⑨ une heure « sans séance » est vide et décale la suite ;
+   ⑩ rien n'est écrit : seules les photos le sont.
+   Le fil « langue » suit le même chemin sur son propre chapitre. ══════════ */
+
+var EDT_CHAP={};          /* niveau → chapitres lus au hub */
+var EDT_CLASSES=null;     /* /classes, lu par l'EDT lui-même : il ne dépend d'aucun
+                             chargement fait ailleurs dans le site (mesuré au banc :
+                             `classesData` peut être vide quand l'EDT s'ouvre). */
+function edtChargerClasses(apres){
+  _siteGet('/classes',function(v){ EDT_CLASSES=v||{}; if(apres)apres(); });
+}
+var EDT_VUE={ancre:null, mode:'semaine'};
+
+function edtListe(x){
+  if(!x)return [];
+  if(Array.isArray(x))return x.filter(function(v){return !!v;});
+  return Object.keys(x).map(function(k){return x[k];}).filter(function(v){return !!v;});
+}
+function edtNiveauDe(nomClasse){
+  var t=EDT_CLASSES;
+  if(!t){ try{ t=classesData; }catch(e){ t=null; } }
+  var c=t&&t[nomClasse];
+  return (c&&c.niveau)||null;
+}
+function edtChargerChapitres(niveaux,apres){
+  var reste=niveaux.length; if(!reste){ if(apres)apres(); return; }
+  niveaux.forEach(function(n){
+    _siteGet('/site/'+n+'/chapitres',function(v){
+      EDT_CHAP[n]=edtListe(v).sort(function(a,b){return (Number(a.ordre)||0)-(Number(b.ordre)||0);});
+      if(--reste===0&&apres)apres();
+    });
+  });
+}
+/* la clé d'une heure jouée : date + créneau + classe (l'identifiant du site) */
+function edtCleHeure(iso,creneau,nomClasse){
+  return iso+'_'+String(creneau).replace(/:/g,'h')+'_'+String(nomClasse).replace(/\s/g,'_');
+}
+function edtTraceDe(seance,nomClasse,iso,creneau){
+  var d=(seance&&seance.deroule_joue)||{},k=edtCleHeure(iso,creneau,nomClasse);
+  var res=null;
+  Object.keys(d).forEach(function(sl){
+    var b=d[sl]; if(!b||(b.classe&&b.classe!==nomClasse))return;
+    var h=b.heures||{}; if(h[k])res=h[k];
+  });
+  return res;
+}
+function edtSeanceJouee(seance,nomClasse){
+  var d=(seance&&seance.deroule_joue)||{},n=0;
+  Object.keys(d).forEach(function(sl){
+    var b=d[sl]; if(!b||(b.classe&&b.classe!==nomClasse))return;
+    n+=Object.keys(b.heures||{}).length;
+  });
+  return n;
+}
+function edtHeuresPour(seance,creneau){
+  var ec=((seance&&seance.deroule)||{}).ecrans||[],somme=0;
+  ec.forEach(function(e){ somme+=(Number(e&&e.dur)||0); });
+  var utile=edtTempsUtile(creneau)||50;
+  if(!somme)return 1;
+  return Math.max(1,Math.ceil(somme/utile));
+}
+/* le chapitre en cours d'une classe, pour un fil donné */
+function edtChapitreEnCours(nomClasse,fil){
+  var niv=edtNiveauDe(nomClasse); if(!niv)return null;
+  var l=EDT_CHAP[niv]||[];
+  for(var i=0;i<l.length;i++){
+    var ch=l[i]; if(!ch)continue;
+    var sonFil=ch.fil||null;
+    if((fil||null)!==sonFil)continue;
+    var pub=false; try{ pub=isPubFor(ch,nomClasse); }catch(e){ pub=false; }
+    if(!pub)continue;
+    var se=edtListe(ch.seances).slice().sort(function(a,b){return (Number(a.ordre)||0)-(Number(b.ordre)||0);});
+    for(var k=0;k<se.length;k++){ if(!edtSeanceJouee(se[k],nomClasse))return {ch:ch,seances:se}; }
+  }
+  return null;
+}
+/* la trace d'une heure jouée, cherchée dans TOUS les chapitres du niveau */
+function edtChercherTrace(nomClasse,iso,creneau){
+  var niv=edtNiveauDe(nomClasse); if(!niv)return null;
+  var l=EDT_CHAP[niv]||[],res=null;
+  for(var i=0;i<l.length&&!res;i++){
+    var se=edtListe(l[i]&&l[i].seances);
+    for(var k=0;k<se.length&&!res;k++) res=edtTraceDe(se[k],nomClasse,iso,creneau);
+  }
+  return res;
+}
+/* la file des séances qui attendent, pour une classe et un fil */
+function edtFileDAttente(nomClasse,fil){
+  var c=edtChapitreEnCours(nomClasse,fil); if(!c)return null;
+  var att=[];
+  c.seances.forEach(function(s){ if(!edtSeanceJouee(s,nomClasse))att.push(s); });
+  return {chapitre:c.ch, seances:att, i:0, faites:0};
+}
+
+/* ── LA GRILLE, JOUR PAR JOUR ─────────────────────────────────────────────── */
+var EDT_JOURS=['lundi','mardi','mercredi','jeudi','vendredi','samedi','dimanche'];
+function edtNomDuJour(iso){ var d=new Date(iso+'T12:00:00'); return isNaN(d)?null:EDT_JOURS[(d.getDay()+6)%7]; }
+function edtCasesDuJour(iso){
+  var jour=edtNomDuJour(iso), lettre=edtSemaineLettre(iso), per=edtPeriodeA(iso);
+  var l=((EDT.grille&&EDT.grille.creneaux)||[]).filter(function(c){
+    if(!c||c.jour!==jour)return false;
+    var s=String(c.semaine||'AB');
+    if(lettre&&s!=='AB'&&s!==lettre)return false;
+    var p=c.periodes;
+    if(per&&Array.isArray(p)&&p.length&&p.indexOf(per)<0)return false;
+    return true;
+  });
+  /* périodes non saisies : deux cases se disputent le créneau — on prend celle
+     qui cite la première période déclarée, et on le dit. */
+  if(!per){
+    var prem=(edtPeriodes()[0]||{}).nom||null, vus={}, gardees=[];
+    l.forEach(function(c){
+      var k=c.creneau+'|'+String(c.semaine||'AB');
+      if(!vus[k]){ vus[k]=c; gardees.push(c); return; }
+      var a=vus[k], ap=Array.isArray(a.periodes)&&a.periodes.length, cp=Array.isArray(c.periodes)&&c.periodes.length;
+      if(ap&&prem&&a.periodes.indexOf(prem)<0&&cp&&c.periodes.indexOf(prem)>=0){
+        gardees[gardees.indexOf(a)]=c; vus[k]=c;
+      }
+      c.__dispute=true; a.__dispute=true;
+    });
+    l=gardees;
+  }
+  return l.sort(function(a,b){return String(a.creneau).localeCompare(String(b.creneau));});
+}
+function edtPlusJour(iso,n){
+  var d=new Date(iso+'T12:00:00'); d.setDate(d.getDate()+n);
+  return d.toISOString().slice(0,10);
+}
+function edtLundiCourant(){ return edtLundiDe(EDT_VUE.ancre||edtAujourdhui()); }
+function edtAujourdhui(){ return new Date(Date.now()-new Date().getTimezoneOffset()*60000).toISOString().slice(0,10); }
+
+/* ── LA PROJECTION ────────────────────────────────────────────────────────── */
+function edtDecisionPour(nomClasse,iso,creneau){
+  var d=((EDT.decisions&&EDT.decisions[nomClasse])||{}).heures||{};
+  return d[edtCleHeure(iso,creneau,nomClasse)]||null;
+}
+function edtProjeter(isoDebut,nbJours){
+  var files={}, cellules={};
+  for(var j=0;j<nbJours;j++){
+    var iso=edtPlusJour(isoDebut,j);
+    var off=edtJourSansCours(iso);
+    var cases=edtCasesDuJour(iso);
+    for(var k=0;k<cases.length;k++){
+      var c=cases[k], cle=iso+'|'+c.creneau+'|'+(c.classe||'');
+      var cel={iso:iso,creneau:c.creneau,classe:c.classe,classeMjpc:c.classeMjpc||'',
+               salle:c.salle||'',fil:c.fil||null,dispute:!!c.__dispute,nature:'prevu'};
+      if(off){ cel.nature='horsTemps'; cel.libelle=off.libelle||off.motif; cellules[cle]=cel; continue; }
+      if(c.mjpc===false){ cel.nature='horsMjpc'; cellules[cle]=cel; continue; }
+      if(!cel.classeMjpc){ cel.nature='nonImportee'; cellules[cle]=cel; continue; }
+      var nom=cel.classeMjpc;
+      var dec=edtDecisionPour(nom,iso,c.creneau);
+      if(dec&&dec.sansSeance){ cel.nature='sansSeance'; cel.categorie=dec.categorie||''; cel.precision=dec.precision||''; cellules[cle]=cel; continue; }
+      /* le réel : une heure déjà jouée colore la case */
+      var fileCle=nom+'|'+(c.fil||'');
+      if(files[fileCle]===undefined)files[fileCle]=edtFileDAttente(nom,c.fil||null);
+      var f=files[fileCle];
+      /* le réel ne dépend JAMAIS de ce qui attend : une heure jouée colore sa case
+         même quand le chapitre est fini, dépublié ou supprimé de la file. */
+      var trouvee=edtChercherTrace(nom,iso,c.creneau);
+      if(trouvee){
+        cel.nature='jouee'; cel.activites=(trouvee.activites||[]).length;
+        cel.reportees=(trouvee.activites||[]).filter(function(a){return a&&a.reel===0;}).length;
+        cel.clos=!!trouvee.clos; cellules[cle]=cel; continue;
+      }
+      if(!f||!f.seances.length){ cel.nature='rienDePret'; cellules[cle]=cel; continue; }
+      var s=f.seances[f.i];
+      if(!s){ cel.nature='rienDePret'; cellules[cle]=cel; continue; }
+      var total=edtHeuresPour(s,c.creneau);
+      cel.titre=s.title||('Séance '+(f.i+1));
+      cel.heure=f.faites+1; cel.sur=total;
+      cel.chapitre=f.chapitre&&f.chapitre.title||'';
+      cel.epingle=!!(dec&&dec.epingle);
+      cellules[cle]=cel;
+      f.faites++;
+      if(f.faites>=total){ f.i++; f.faites=0; }
+    }
+  }
+  return cellules;
+}
+
+/* ── L'ÉCRAN DE LA SEMAINE ────────────────────────────────────────────────── */
+function edtOuvrir(){
+  edtPoserCss();
+  var e=document.getElementById('edt-ecran');
+  if(!e){ e=document.createElement('div'); e.id='edt-ecran'; document.body.appendChild(e); }
+  e.style.display='flex';
+  document.documentElement.classList.add('edt-fige'); document.body.classList.add('edt-fige');
+  e.innerHTML='<div class="edt-tete">Lecture de la semaine\u2026</div>';
+  var lancerPeinture=function(){
+    edtChargerClasses(function(){
+      var noms={}; ((EDT.grille&&EDT.grille.creneaux)||[]).forEach(function(c){
+        if(c&&c.classeMjpc){ var n=edtNiveauDe(c.classeMjpc); if(n)noms[n]=true; } });
+      edtChargerChapitres(Object.keys(noms),edtPeindreSemaine);
+    });
+  };
+  if(EDT.charge)lancerPeinture(); else edtCharger(lancerPeinture);
+}
+function edtFermer(){
+  var e=document.getElementById('edt-ecran'); if(e)e.style.display='none';
+  document.documentElement.classList.remove('edt-fige'); document.body.classList.remove('edt-fige');
+}
+function edtAller(n){ EDT_VUE.ancre=edtPlusJour(edtLundiCourant(),n*7); edtPeindreSemaine(); }
+function edtAujourdhuiAller(){ EDT_VUE.ancre=null; edtPeindreSemaine(); }
+
+function edtHeureCourante(){
+  var d=new Date();
+  return ('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2);
+}
+function edtCreneauMaintenant(){
+  var h=edtHeureCourante(),l=(typeof AT_EDT!=='undefined')?AT_EDT:[];
+  for(var i=0;i<l.length;i++){ var p=l[i].split('-'); if(h>=p[0]&&h<=p[1])return l[i]; }
+  return null;
+}
+function edtPeindreSemaine(){
+  var e=document.getElementById('edt-ecran'); if(!e)return;
+  var lundi=edtLundiCourant(), auj=edtAujourdhui(), maintenant=edtCreneauMaintenant();
+  var cel=edtProjeter(lundi,5);
+  var creneaux=(typeof AT_EDT!=='undefined')?AT_EDT:[];
+  var lettre=edtSemaineLettre(lundi);
+
+  /* l'en-tête : où je suis, et ce qui m'attend là, maintenant */
+  var ici=null;
+  if(maintenant){
+    Object.keys(cel).forEach(function(k){ var c=cel[k]; if(c.iso===auj&&c.creneau===maintenant&&c.nature!=='horsMjpc')ici=c; });
+  }
+  var h='<div class="edt-tete">'
+   +'<b>'+escapeHtml(edtDateLisible(auj))+'</b>'
+   +(maintenant?(' \u00b7 '+escapeHtml(maintenant)):'')
+   +(ici?(' \u2192 <b class="edt-or">'+escapeHtml(ici.classeMjpc||ici.classe)+'</b>'):' \u00b7 aucun cours')
+   +' \u00b7 il est '+escapeHtml(edtHeureCourante())
+   +'<span class="edt-sep"></span>'
+   +'<button class="edt-btn edt-btn-actif">Semaine</button>'
+   +'<button class="edt-btn" onclick="edtAller(-1)">\u2039</button>'
+   +'<button class="edt-btn" onclick="edtAujourdhuiAller()">Aujourd\u2019hui</button>'
+   +'<button class="edt-btn" onclick="edtAller(1)">\u203a</button>'
+   +'<button class="edt-btn" onclick="edtPhoto()">\ud83d\udcf7 Photo du prévu</button>'
+   +'<span class="edt-souple"></span>'
+   +'<button class="edt-btn" onclick="edtFermer()">\u2715 Fermer l\u2019emploi du temps</button>'
+   +'</div>';
+
+  /* le bandeau des temps de l'année */
+  h+='<div class="edt-bandeau">'+edtBandeauHtml(lundi,lettre)+'</div>';
+
+  /* la grille : une colonne d'heures, cinq jours */
+  h+='<div class="edt-sem">';
+  h+='<div class="edt-coin">'+(lettre?('sem. '+escapeHtml(lettre)):'sem. ?')+'</div>';
+  for(var j=0;j<5;j++){
+    var iso=edtPlusJour(lundi,j);
+    h+='<div class="edt-jour'+(iso===auj?' edt-jour-auj':'')+'">'+escapeHtml(edtDateCourte(iso))+'</div>';
+  }
+  for(var r=0;r<creneaux.length;r++){
+    h+='<div class="edt-h">'+escapeHtml(creneaux[r].split('-')[0])+'</div>';
+    for(var j2=0;j2<5;j2++){
+      var iso2=edtPlusJour(lundi,j2), dedans=[];
+      Object.keys(cel).forEach(function(k){ var c=cel[k]; if(c.iso===iso2&&c.creneau===creneaux[r])dedans.push(c); });
+      var estMaintenant=(iso2===auj&&creneaux[r]===maintenant);
+      h+='<div class="edt-case'+(estMaintenant?' edt-case-now':'')+'">'
+         +dedans.map(edtCelluleHtml).join('')+'</div>';
+    }
+  }
+  h+='</div>';
+  h+='<div class="edt-cartes">'+edtCartesHtml(lundi)+'</div>';
+  e.innerHTML=h;
+}
+function edtCelluleHtml(c){
+  if(c.nature==='horsMjpc')return '<div class="edt-b edt-b-hors" title="hors français, jamais compté">'
+    +escapeHtml(c.classe)+'<i>hors MJPC</i></div>';
+  if(c.nature==='horsTemps')return '<div class="edt-b edt-b-off">'+escapeHtml(c.libelle||'')+'</div>';
+  if(c.nature==='nonImportee')return '<div class="edt-b edt-b-gris"><b>'+escapeHtml(c.classe)+'</b><i>classe non encore importée</i></div>';
+  if(c.nature==='sansSeance')return '<div class="edt-b edt-b-sans"><b>'+escapeHtml(c.classeMjpc)+'</b><i>'
+    +escapeHtml(c.categorie||'sans séance')+(c.precision?(' \u2014 '+escapeHtml(c.precision)):'')+'</i></div>';
+  if(c.nature==='jouee')return '<div class="edt-b edt-b-joue"><b>'+escapeHtml(c.classeMjpc)+'</b><i>'
+    +c.activites+' activité'+(c.activites>1?'s':'')+(c.reportees?(' \u00b7 '+c.reportees+' reportée'+(c.reportees>1?'s':'')):'')+'</i></div>';
+  if(c.nature==='rienDePret')return '<div class="edt-b edt-b-vide"><b>'+escapeHtml(c.classeMjpc)+'</b><i>aucune séance prête</i></div>';
+  return '<div class="edt-b edt-b-prevu'+(c.fil?' edt-b-fil':'')+'">'
+    +(c.epingle?'\ud83d\udccc ':'')+'<b>'+escapeHtml(c.classeMjpc)+'</b>'
+    +'<u>'+escapeHtml(c.titre||'')+'</u>'
+    +'<i>'+(c.fil?('fil '+escapeHtml(c.fil)+' \u00b7 '):'')+'heure '+c.heure+'/'+c.sur
+    +(c.dispute?' \u00b7 périodes non saisies':'')+'</i></div>';
+}
+function edtDateLisible(iso){
+  var J=['lundi','mardi','mercredi','jeudi','vendredi','samedi','dimanche'];
+  var M=['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
+  var d=new Date(iso+'T12:00:00'); if(isNaN(d))return iso;
+  return J[(d.getDay()+6)%7]+' '+d.getDate()+' '+M[d.getMonth()];
+}
+function edtDateCourte(iso){
+  var J=['lun','mar','mer','jeu','ven','sam','dim'];
+  var d=new Date(iso+'T12:00:00'); if(isNaN(d))return iso;
+  return J[(d.getDay()+6)%7]+' '+d.getDate()+'/'+(d.getMonth()+1);
+}
+function edtBandeauHtml(lundi,lettre){
+  var cal=EDT.calendrier; if(!cal)return '<span class="edt-mini-t">calendrier non injecté</span>';
+  var t=[],fin=edtPlusJour(lundi,6);
+  (cal.vacances||[]).forEach(function(v){ if(v.debut<=fin&&v.fin>=lundi)t.push('<span class="edt-t edt-t-off">'+escapeHtml(v.nom)+'</span>'); });
+  (cal.feries||[]).forEach(function(f){ if(f.date>=lundi&&f.date<=fin)t.push('<span class="edt-t edt-t-off">'+escapeHtml(f.libelle)+'</span>'); });
+  (cal.jalons||[]).forEach(function(j){ if(j.date>=lundi&&j.date<=fin)t.push('<span class="edt-t edt-t-jalon">'+escapeHtml(j.libelle.slice(0,42))+'</span>'); });
+  (cal.evenementsClasse||[]).forEach(function(e){ if(e.debut<=fin&&e.fin>=lundi)t.push('<span class="edt-t edt-t-cl">'+escapeHtml(e.libelle.slice(0,42))+'</span>'); });
+  (cal.etablissement||[]).forEach(function(e){ if(e.date>=lundi&&e.date<=fin&&e.prendLeCreneau)t.push('<span class="edt-t">'+escapeHtml(e.libelle.slice(0,42))+'</span>'); });
+  var per=edtPeriodeA(lundi);
+  return (per?'<span class="edt-t edt-t-per">'+escapeHtml(per)+'</span>':'')
+    +(t.length?t.join(''):'<span class="edt-mini-t">rien cette semaine</span>');
+}
+function edtCartesHtml(lundi){
+  var vues={},cartes=[];
+  ((EDT.grille&&EDT.grille.creneaux)||[]).forEach(function(c){
+    if(!c||c.mjpc===false||!c.classeMjpc||vues[c.classeMjpc])return;
+    vues[c.classeMjpc]=true;
+    var f=edtFileDAttente(c.classeMjpc,null);
+    var total=f?edtListe(f.chapitre.seances).length:0, reste=f?f.seances.length:0;
+    var pct=total?Math.round((total-reste)/total*100):0;
+    var fl=edtFileDAttente(c.classeMjpc,'langue');
+    cartes.push('<div class="edt-carte" onclick="edtCarteClic('+JSON.stringify(c.classeMjpc).replace(/"/g,'&quot;')+')">'
+      +'<b>'+escapeHtml(c.classeMjpc)+'</b>'
+      +'<span class="edt-barre"><i style="width:'+pct+'%"></i></span>'
+      +'<em>'+(f?escapeHtml(String(f.chapitre.title||'').slice(0,30))+' \u00b7 '+(total-reste)+'/'+total:'aucun chapitre publié')+'</em>'
+      +(fl?'<em class="edt-fil">langue : '+(edtListe(fl.chapitre.seances).length-fl.seances.length)+' jouée(s)</em>':'')
+      +'</div>');
+  });
+  return cartes.length?cartes.join(''):'<span class="edt-mini-t">aucune classe appariée</span>';
+}
+function edtCarteClic(nom){
+  if(typeof atInfo==='function')atInfo('Profil de la classe '+nom+' \u2014 il arrive au lot suivant.');
+}
+/* la photo du prévu — jamais le mot « figer » : on ne fige pas un prévu */
+function edtPhoto(){
+  var lundi=edtLundiCourant(), cel=edtProjeter(lundi,5);
+  var o=EDT.photos&&typeof EDT.photos==='object'?EDT.photos:{annee:EDT_ANNEE,photos:[]};
+  if(!Array.isArray(o.photos))o.photos=[];
+  o.photos.push({prise:edtAujourdhui(),depuis:lundi,cellules:cel});
+  mjpcPutJson(FIREBASE_BASE+edtChemin('photos')+'.json',o,'Photo du prévu',function(){
+    EDT.photos=o; if(typeof atInfo==='function')atInfo('Photo du prévu prise \u2014 '+Object.keys(cel).length+' cases.');
+  });
+}
+/* sortir l'état réel d'un objet, pour relire, archiver, ou le donner à une IA */
+function edtSortirJson(objet){
+  var o=EDT[objet];
+  if(!o){ if(typeof atInfo==='function')atInfo('Rien à sortir : aucun objet « '+objet+' » au hub.'); return ''; }
+  var t=JSON.stringify(o,null,1);
+  try{ navigator.clipboard.writeText(t); }
+  catch(e){ try{ var z=document.createElement('textarea'); z.value=t; document.body.appendChild(z); z.select(); document.execCommand('copy'); z.remove(); }catch(e2){} }
+  if(typeof atInfo==='function')atInfo('JSON de « '+objet+' » copié \u2014 '+t.length+' caractères.');
+  return t;
+}
+
 /* ═══════════════════════════════════════════════════════════════════════════
    EDT — fin
    ═══════════════════════════════════════════════════════════════════════════ */

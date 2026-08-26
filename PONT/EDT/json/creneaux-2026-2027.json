@@ -1,17 +1,67 @@
 {
  "annee": "2026-2027",
  "source": "créneaux du site (AT_EDT, index.html L14094) confirmés sur la grille papier 2026-2027 (pièce T85)",
- "note": "Liste ordonnée. C'est la seule source des créneaux : au chargement, l'EDT alimente la variable AT_EDT du site depuis cet objet (seconde écriture hors /site/edt/, nommée au contrat), avec repli sur la valeur en dur si l'objet est absent. Un créneau modifié en cours d'année ne réécrit jamais les traces d'heures déjà jouées : leur clé porte le créneau d'alors.",
+ "note": "Liste ordonnée. C'est la seule source des créneaux : au chargement, l'EDT alimente la variable AT_EDT du site depuis cet objet (seconde écriture hors /site/edt/, nommée au contrat), avec repli sur la valeur en dur si l'objet est absent. Un créneau modifié en cours d'année ne réécrit jamais les traces d'heures déjà jouées : leur clé porte le créneau d'alors. Les jours ouvrés et les demi-journées sans cours vivent ici aussi : le code n'en écrit aucun.",
  "creneaux": [
-  { "rang": 1, "debut": "08:00", "fin": "08:55" },
-  { "rang": 2, "debut": "08:57", "fin": "09:52" },
-  { "rang": 3, "debut": "10:07", "fin": "11:02" },
-  { "rang": 4, "debut": "11:04", "fin": "11:59" },
-  { "rang": 5, "debut": "13:00", "fin": "13:55" },
-  { "rang": 6, "debut": "13:57", "fin": "14:52" },
-  { "rang": 7, "debut": "15:07", "fin": "16:02" },
-  { "rang": 8, "debut": "16:04", "fin": "16:59" }
+  {
+   "rang": 1,
+   "debut": "08:00",
+   "fin": "08:55"
+  },
+  {
+   "rang": 2,
+   "debut": "08:57",
+   "fin": "09:52"
+  },
+  {
+   "rang": 3,
+   "debut": "10:07",
+   "fin": "11:02"
+  },
+  {
+   "rang": 4,
+   "debut": "11:04",
+   "fin": "11:59"
+  },
+  {
+   "rang": 5,
+   "debut": "13:00",
+   "fin": "13:55"
+  },
+  {
+   "rang": 6,
+   "debut": "13:57",
+   "fin": "14:52"
+  },
+  {
+   "rang": 7,
+   "debut": "15:07",
+   "fin": "16:02"
+  },
+  {
+   "rang": 8,
+   "debut": "16:04",
+   "fin": "16:59"
+  }
  ],
- "pauseMeridienne": { "de": "11:59", "a": "13:00", "note": "aucun créneau entre les deux" },
- "tempsUtile": { "regle": "fin − début − 5 minutes", "exemple": "10:07-11:02 → 50 minutes utiles", "verifie": "la trace d'heure du hub porte tempsUtilePrevu = 108 pour un lancement à 07:02 avec fin à 08:55 : 113 − 5 = 108" }
+ "pauseMeridienne": {
+  "de": "11:59",
+  "a": "13:00",
+  "note": "aucun créneau entre les deux"
+ },
+ "tempsUtile": {
+  "regle": "fin − début − 5 minutes",
+  "exemple": "10:07-11:02 → 50 minutes utiles",
+  "verifie": "la trace d'heure du hub porte tempsUtilePrevu = 108 pour un lancement à 07:02 avec fin à 08:55 : 113 − 5 = 108"
+ },
+ "jours": [
+  "lundi",
+  "mardi",
+  "mercredi",
+  "jeudi",
+  "vendredi"
+ ],
+ "sansApresMidi": {
+  "mercredi": "12:00"
+ }
 }

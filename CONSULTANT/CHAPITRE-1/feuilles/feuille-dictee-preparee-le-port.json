@@ -1,0 +1,119 @@
+{
+ "produit": "fiche_seance",
+ "titre": "La dictée préparée : « Le port »",
+ "cases": {
+  "titre": true,
+  "sous_titre": true,
+  "annee_scolaire": true,
+  "date_edition": true,
+  "version_document": true,
+  "objectif": true,
+  "competences": true,
+  "notions": true,
+  "domaine_socle": true,
+  "mention_conserver": true,
+  "oeuvre": true,
+  "auteur": true,
+  "genre": true,
+  "lexique_seance": true,
+  "consigne": true,
+  "extrait_numerote": true,
+  "numerotation_lignes": true,
+  "brouillon": true,
+  "criteres_je": true,
+  "travail_a_faire": true,
+  "evalue": true,
+  "modalite": true
+ },
+ "valeurs": {
+  "titre": {
+   "texte": "La dictée préparée : « Le port »"
+  },
+  "sous_titre": {
+   "texte": "Repérer les difficultés du texte avant de l'écrire sous la dictée."
+  },
+  "objectif": {
+   "texte": "Repérer dans un texte les difficultés orthographiques et grammaticales, puis s'y entraîner avant la dictée."
+  },
+  "competences": {
+   "items": [
+    "Consolider l'orthographe lexicale et grammaticale"
+   ]
+  },
+  "notions": {
+   "items": [
+    "Le poème en prose",
+    "Les accords dans le groupe nominal, y compris avec une proposition relative",
+    "L'accord du verbe avec un sujet inversé ou éloigné",
+    "L'accord du participe passé employé avec être",
+    "L'accord de l'adjectif ou du participe en apposition",
+    "ce / se"
+   ]
+  },
+  "domaine_socle": {
+   "texte": "Domaine 1 — Les langages pour penser et communiquer"
+  },
+  "oeuvre": {
+   "texte": "Petits Poèmes en prose (Le Spleen de Paris)"
+  },
+  "auteur": {
+   "texte": "Charles Baudelaire (1821-1867)"
+  },
+  "genre": {
+   "texte": "Poésie — poème en prose"
+  },
+  "lexique_seance": {
+   "items": [
+    "le môle = construction en pierre ou en béton qui protège l'entrée d'un port",
+    "un belvédère = point de vue d'où le panorama est beau",
+    "un prisme = objet de verre qui décompose la lumière en couleurs",
+    "l'ampleur = la grandeur, l'étendue",
+    "aristocratique = digne d'un noble, raffiné"
+   ]
+  },
+  "evalue": {
+   "texte": "La dictée elle-même sera notée sur 10, comme la partie dictée de l'épreuve du brevet."
+  },
+  "modalite": {
+   "texte": "Seul, puis en binôme pour comparer les listes."
+  },
+  "criteres_je": {
+   "items": [
+    "j'ai listé les homophones du texte",
+    "j'ai listé les accords sujet-verbe",
+    "j'ai repéré les groupes nominaux complétés par une relative",
+    "j'ai repéré les mots en apposition",
+    "je me suis entraîné au brouillon sur chaque difficulté"
+   ]
+  },
+  "travail_a_faire": {
+   "texte": "✍️ Relis tes listes avant la séance de dictée, et réécris au brouillon les cinq mots qui te posent le plus de problème."
+  }
+ },
+ "blocs": [
+  {
+   "id": "consigne",
+   "valeurs": {
+    "texte": "Prépare la dictée en cinq phases.\n• Phase 1 : je prends connaissance du paratexte (titre, auteur, œuvre) — environ 1 minute.\n• Phase 2 : je lis le texte en le comprenant — environ 7 minutes.\n• Phase 3 : je souligne et je liste les homophones.\n• Phase 4 : je souligne et je liste les accords sujet-verbe.\n• Phase 5 : je souligne et je liste les mots compliqués."
+   }
+  },
+  {
+   "id": "extrait_numerote",
+   "valeurs": {
+    "texte": "Un port est un séjour charmant pour une âme fatiguée des luttes de la vie. L'ampleur du ciel, l'architecture mobile des nuages, les colorations changeantes de la mer, le scintillement des phares, sont un prisme merveilleusement propre à amuser les yeux sans jamais les lasser. Les formes élancées des navires […] servent à entretenir dans l'âme le goût du rythme et la beauté.\n\nEt puis, surtout, il y a une sorte de plaisir mystérieux et aristocratique pour celui qui n'a plus ni curiosité ni ambition, à contempler, couché dans le belvédère ou accoudé sur le môle, tous ces mouvements de ceux qui partent et de ceux qui reviennent, de ceux qui ont encore la force de vouloir, le désir de voyager ou de s'enrichir."
+   }
+  },
+  {
+   "id": "brouillon",
+   "valeurs": {
+    "hauteur": "10"
+   }
+  },
+  {
+   "id": "consigne",
+   "valeurs": {
+    "texte": "Entraîne-toi au brouillon sur les pièges du texte.\n• Les accords dans le groupe nominal : « les colorations changeantes », « les formes élancées ».\n• Un groupe nominal complété par une proposition relative : « ceux qui partent », « ceux qui ont encore la force de vouloir » — le verbe de la relative s'accorde avec l'antécédent.\n• Un adjectif ou un participe en apposition, détaché par une virgule : « couché dans le belvédère ou accoudé sur le môle » — il s'accorde avec le mot qu'il qualifie.\n• L'accord du verbe quand le sujet est long ou éloigné : qui est le sujet de « sont un prisme » ?\n• Le participe passé avec être : « une âme fatiguée ».\n• ce / ceux : je remplace par « celui-là » pour vérifier."
+   }
+  }
+ ]
+}

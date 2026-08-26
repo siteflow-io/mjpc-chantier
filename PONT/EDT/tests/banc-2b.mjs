@@ -92,7 +92,10 @@ const releve = { get:0, ecritures:0, sorties:0, erreursConsole:[] };
      ce sont des retours de geste, pas l'écran qu'on veut prouver. */
   const fermerModales = () => page.evaluate(() => {
     let n=0;
-    document.querySelectorAll('button').forEach(b => { if(/^\s*Compris\s*$/.test(b.textContent)){ b.click(); n++; } });
+    document.querySelectorAll('button').forEach(b => {
+      if(b.closest('#edt-modale') || b.closest('#edt-ecran')) return;   /* jamais nos propres boutons */
+      if(/^\s*(Compris|Annuler)\s*$/.test(b.textContent)){ b.click(); n++; }
+    });
     return n;
   });
   const capture = async (nom) => { await ecarterAlerteFiches(); await fermerModales(); await new Promise(r=>setTimeout(r,180));
@@ -533,6 +536,91 @@ const releve = { get:0, ecritures:0, sorties:0, erreursConsole:[] };
   journal.push('COMPARAISON champ à champ : ' + (ecarts.length ? ('ÉCARTS sur ' + ecarts.join(', ')) : 'les six champs sont identiques \u2713'));
   await page2.screenshot({path:path.join(SORTIE,'4-6-pilotage-chemin-du-site.png')});
   await page2.close();
+
+  /* ══════════ ⑤ — MOIS, ANNÉE, DIVERGENCE, EXPÉRIMENTALE, ABSENCE ══════════ */
+  await page.evaluate(() => { EDT_VUE.ancre='2026-09-07'; edtOuvrir(); });
+  await new Promise(r => setTimeout(r, 1800));
+
+  for(const [mode, nom] of [['mois','5-1-mois'],['annee','5-2-annee'],['calendrier','5-3-calendrier']]){
+    await page.evaluate((m) => { EDT_VUE.mode=m; edtPeindre(); }, mode);
+    await new Promise(r => setTimeout(r, 700));
+    const m = await page.evaluate(() => {
+      window.scrollTo(0,4000);
+      return {scrollY:window.scrollY, ecranHaut:document.getElementById('edt-ecran').scrollHeight,
+              fenetre:window.innerHeight, texte:document.getElementById('edt-ecran').innerText.slice(0,150).replace(/\n/g,' | ')};
+    });
+    journal.push('vue ' + mode + ' : ' + JSON.stringify(m));
+    await capture(nom);
+  }
+  await page.evaluate(() => { EDT_VUE.mode='semaine'; EDT_VUE.ancre='2026-09-07'; edtPeindre(); });
+  await new Promise(r => setTimeout(r, 600));
+
+  /* la classe expérimentale : présente partout, étiquetée, jamais masquée */
+  const exp = await page.evaluate(() => ({
+    marquee: edtEstExperimentale('3E Charles de Gaulle'),
+    surLaCarte: (document.querySelector('#edt-ecran .edt-carte')||{}).innerText||'',
+    mention: (document.querySelector('#edt-ecran .edt-exp')||{}).title||'',
+    interrupteur: !!document.querySelector('#edt-ecran input[type=checkbox]')
+  }));
+  journal.push('classe expérimentale : ' + JSON.stringify(exp));
+
+  /* la divergence, et l'écart justifié */
+  const dv1 = await page.evaluate(() => edtDivergence('3E Charles de Gaulle'));
+  journal.push('divergence avant justification : ' + JSON.stringify(dv1));
+  await page.evaluate((txt) => { EDT.calendrier = JSON.parse(txt); }, fs.readFileSync(path.join(RACINE,'tests/calendrier-justifie.json'),'utf8'));
+  const dv2 = await page.evaluate(() => { edtPeindre(); return edtDivergence('3E Charles de Gaulle'); });
+  journal.push('divergence après « justifié » sur le séjour Verdun : ' + JSON.stringify(dv2));
+  const paliers = await page.evaluate(() => [0,1,2,3,5].map(n => {
+    const t = n<=1?'dans les temps':(n===2?'léger':(n===3?'marqué':'critique')); return n+' → '+t; }));
+  journal.push('paliers : ' + JSON.stringify(paliers));
+
+  /* une seconde classe, moins avancée : le palier se lève pour de vrai */
+  const deuxClasses = await page.evaluate(() => {
+    EDT.grille.creneaux.forEach(c => { if(c.classe === '3 DYLAN Bob') c.classeMjpc = 'CLASSE TEST'; });
+    edtPeindre();
+    return {cdg: edtDivergence('3E Charles de Gaulle'), test: edtDivergence('CLASSE TEST')};
+  });
+  journal.push('deux classes du même niveau, avances différentes :\n  3E CDG  : ' + JSON.stringify(deuxClasses.cdg)
+    + '\n  CLASSE TEST : ' + JSON.stringify(deuxClasses.test));
+  /* un événement qui touche les DEUX classes ne justifie rien entre elles ;
+     une décision posée sur UNE seule classe, si. */
+  const justePourUne = await page.evaluate(() => {
+    EDT.decisions = EDT.decisions || {};
+    EDT.decisions['CLASSE TEST'] = {heures:{
+      'a':{sansSeance:true},'b':{sansSeance:true}}, journal:[]};
+    edtPeindre();
+    return {test: edtDivergence('CLASSE TEST')};
+  });
+  journal.push('CLASSE TEST après deux heures sorties de la prévision (elle seule) : ' + JSON.stringify(justePourUne.test));
+  const cartesDiv = await page.evaluate(() => Array.from(document.querySelectorAll('#edt-ecran .edt-carte')).map(c => c.innerText.replace(/\n/g,' | ')));
+  journal.push('cartes avec paliers : ' + JSON.stringify(cartesDiv));
+  await capture('5-5-divergence-deux-classes');
+  await page.evaluate(() => { EDT.grille.creneaux.forEach(c => { if(c.classe === '3 DYLAN Bob') c.classeMjpc = ''; }); edtPeindre(); });
+  await new Promise(r => setTimeout(r, 400));
+
+  /* l'absence : le geste réversible du QCM, dans la trace de l'heure */
+  const caseJouee = '2026-09-07|08:57-09:52|3 FRANKLIN Aretha';
+  await page.evaluate((k) => edtCaseClic(k), caseJouee);
+  await new Promise(r => setTimeout(r, 500));
+  const av = await page.evaluate(() => { const e=document.querySelectorAll('#edt-modale .edt-el');
+    return {eleves:e.length, titre:(document.querySelector('#edt-modale .edt-lab')||{}).textContent||''}; });
+  journal.push('modale d\u2019une heure jouée : ' + JSON.stringify(av));
+  await page.evaluate(() => { const e=document.querySelectorAll('#edt-modale .edt-el'); e[0].click(); });
+  await new Promise(r => setTimeout(r, 900));
+  await page.evaluate(() => { const e=document.querySelectorAll('#edt-modale .edt-el'); e[2].click(); });
+  await new Promise(r => setTimeout(r, 900));
+  const abs1 = await page.evaluate(() => { try{
+    return window.__HUB.site['3e'].chapitres[0].seances[0].deroule_joue['3e_charles_de_gaulle']
+      .heures['2026-09-07_08h57-09h52_3E_Charles_de_Gaulle'].absents; }catch(e){ return 'introuvable'; } });
+  journal.push('absents au hub : ' + JSON.stringify(abs1));
+  await capture('5-4-absents');
+  await page.evaluate(() => { const e=document.querySelectorAll('#edt-modale .edt-el'); e[0].click(); });
+  await new Promise(r => setTimeout(r, 900));
+  const abs2 = await page.evaluate(() => { try{
+    return window.__HUB.site['3e'].chapitres[0].seances[0].deroule_joue['3e_charles_de_gaulle']
+      .heures['2026-09-07_08h57-09h52_3E_Charles_de_Gaulle'].absents; }catch(e){ return 'introuvable'; } });
+  journal.push('après le geste inverse : ' + JSON.stringify(abs2) + '  (réversible)');
+  await page.evaluate(() => edtModaleFermer());
 
   const jrn = await page.evaluate(() => window.__JOURNAL);
   releve.get = jrn.filter(x=>x.m==='GET').length;

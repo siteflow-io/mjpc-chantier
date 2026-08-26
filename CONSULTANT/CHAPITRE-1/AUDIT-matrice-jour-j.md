@@ -2,7 +2,8 @@
 
 *Consultant, 26/08/2026. Audit du chapitre existant de Paul contre le prompt de chapitre MJPC (`/site/atelier/prompts/chapitre`, relu à la source). Rien n'est produit : le prompt l'exige — « ces signalements, tu me les donnes EN DISCUSSION, pas dans le JSON ».*
 
-**Décision actée** : le recueil de Jean-Pierre Guéno est écarté comme source (droits, indisponibilité). Le chapitre sera un **groupement de textes** libres de droits, ce qui est la catégorie Éduscol exacte pour une anthologie de lettres — et non un pis-aller. La structure du recueil (six saisons : premier été, automnes, hivers, printemps, étés, dernier automne) reste utilisable : une architecture ne se protège pas.
+**Décision actée** *(corrigée le 26/08 en fin de journée)* : le recueil de Jean-Pierre Guéno, écarté le matin pour indisponibilité et droits, **est acheté** — le retrait de *La Vague* a libéré le budget, et *Paroles de poilus* entre au panier à 2,73 €. Les élèves ont le texte en main : rien à reproduire, la question des droits est éteinte.
+**Le chapitre est donc une œuvre intégrale**, non un groupement — ce que le programme réclame pour « Agir dans la cité », et ce que la règle d'alternance impose (un chapitre est soit l'un soit l'autre). Ses six saisons — premier été, automnes, hivers, printemps, étés, dernier automne — sont la structure de l'œuvre étudiée.
 
 ---
 
@@ -49,14 +50,14 @@ Le prompt impose la **session 2027** pour les 3e actuels. Toute exigence hérit�
 ### ⑤ Une séance sans compétence déclarée
 « Séance décrochée sur le Struthof » — devenue « les Tsiganes » dans une autre version du même diaporama. Elle change de sujet d'une version à l'autre, sans objectif ni compétence annoncés. Signalement exact demandé par le prompt : « une séance sans aucune compétence travaillée ».
 
-### ⑥ Le quantitatif annuel n'est pas déclaré
-Le prompt l'interdit formellement : « ⚠ Je ne déclare nulle part mes œuvres ni mes cursives : DEMANDE-MOI le décompte, ne le devine pas. » **À demander à Paul lors de la progression annuelle.**
+### ⑥ ~~Le quantitatif annuel n'est pas déclaré~~ — **CLOS le 26/08**
+Le prompt l'interdisait formellement : « ⚠ Je ne déclare nulle part mes œuvres ni mes cursives : DEMANDE-MOI le décompte, ne le devine pas. » Il a été demandé, et Paul l'a arrêté : **3 œuvres intégrales · 3 lectures cursives · 4 groupements de textes**, sur sept chapitres. Voir `PROGRESSION-ANNUELLE-3e.md`. L'écart valait pour la matrice de l'an dernier, pas pour l'année en cours.
 
 **Le quantitatif officiel, relu à la source** (BO spécial n°11 du 26/11/2015, annexe 3) : « Chaque année du cycle, l'élève lit : au moins trois œuvres complètes en lecture intégrale ; au moins trois œuvres complètes en lecture cursive ; au moins trois groupements de textes. » **3/3/3 confirmé** — le prompt, qui annonce 4 œuvres / 3 cursives / 2 groupements, se trompe sur deux nombres, et demande **moins** de groupements que le texte officiel.
 
-### ⑦ « Agir dans la cité » exige une lecture intégrale
+### ⑦ ~~« Agir dans la cité » exige une lecture intégrale~~ — **CLOS le 26/08**
 Le texte officiel, pour ce thème de 3e : « en lien avec la programmation annuelle en histoire (thème 1 "L'Europe, un théâtre majeur des guerres totales"), une œuvre ou une partie significative d'une œuvre portant un regard sur l'histoire du siècle — guerres mondiales, société de l'entre-deux-guerres, régimes fascistes et totalitaires (**lecture intégrale**). »
-**Un groupement de lettres n'y répond pas seul.** Soit une œuvre intégrale s'adjoint au chapitre, soit la lecture intégrale de cette entrée se fait ailleurs dans l'année. **À trancher par Paul.**
+**Un groupement de lettres n'y répond pas seul** — c'est ce qui a fait revenir Guéno au panier. *Paroles de poilus* étant acheté et lu intégralement, l'exigence est satisfaite **dans le chapitre**, sans qu'il faille la reporter ailleurs dans l'année. L'écart valait pour la matrice de l'an dernier, dont le chapitre 5 était un groupement.
 *Le programme suggère par ailleurs, en croisement avec l'histoire : « 3e : Les deux guerres mondiales et la littérature : poésie engagée, résistance, fabrication d'une anthologie poétique, mise en voix et mise en scène. » — c'est exactement le chantier en cours.*
 
 ---
@@ -80,9 +81,9 @@ Le texte officiel, pour ce thème de 3e : « en lien avec la programmation annue
 
 **Q3. Reconnaître / produire une phrase complexe** : les deux séances de langue du mercredi (16 et 30 septembre, semaine A, les deux classes le même jour) sont-elles le bon endroit pour combler l'écart du point ③ ?
 
-**Q4. Le quantitatif annuel** : combien d'œuvres intégrales, de lectures cursives, de groupements Paul a-t-il déjà prévus pour l'année ? *À demander, jamais à deviner.*
+**Q4. ~~Le quantitatif annuel~~ — RÉPONDU le 26/08** : 3 œuvres intégrales, 3 lectures cursives, 4 groupements, sur sept chapitres. Voir `PROGRESSION-ANNUELLE-3e.md`.
 
-**Q5. Le corpus** : quels textes libres de droits, et selon quelle architecture — les six saisons de Guéno, ou un autre ordre ?
+**Q5. Le corpus** : quelles lettres retenir dans le recueil, quels textes d'appui autour, et selon quelle architecture — les six saisons de Guéno, ou un autre ordre ? *La question a changé de nature depuis l'achat du recueil : il ne s'agit plus de reconstituer une anthologie, mais de choisir dans celle qu'on a.*
 
 *Mot de Paul, 26/08 : « le fait de travailler sur la prog annuelle va te donner certaines réponses ».*
 
@@ -117,4 +118,4 @@ entrée du programme · thème · problématique · objectifs **littéraires** /
 
 ## 6. Dettes vivantes du chapitre (rappel)
 
-① disciplines de l'EPI au-delà de l'histoire-géo et du français · ② production commune de l'EPI · ③ ~~recueil de Guéno~~ **tranché : écarté** · ④ ce que le chapitre attend des deux séances de langue · ⑤ le chapitre couvre-t-il les trois temps du voyage.
+① disciplines de l'EPI au-delà de l'histoire-géo et du français · ② production commune de l'EPI · ③ ~~recueil de Guéno~~ **clos : acheté, le chapitre est une œuvre intégrale** · ④ ce que le chapitre attend des deux séances de langue · ⑤ le chapitre couvre-t-il les trois temps du voyage.

@@ -17820,18 +17820,35 @@ function edtJourSansCours(iso){
   return null;
 }
 
-/* ── LES PÉRIODES — vides = une seule période toute l'année ─────────────── */
+/* ── LES PÉRIODES — un objet, comme les créneaux ─────────────────────────
+   AUCUN NOM DE PÉRIODE N'EST ÉCRIT ICI. Le découpage d'une année est déclaré,
+   pas déduit : il arrive par l'injection de la grille (les noms tels qu'ils
+   sont écrits sur la feuille), puis Paul l'édite. Objet absent ou vide =
+   une seule période toute l'année, et l'écran le dit. */
+function edtPeriodes(){
+  var p=(EDT.periodes&&EDT.periodes.periodes)||[];
+  return p.slice().sort(function(a,b){return (a.rang||0)-(b.rang||0);});
+}
 function edtPeriodeA(iso){
-  var p=(EDT.periodes&&EDT.periodes.periodes)||null;
-  if(!p||!p.length)return null;                         /* rien saisi : aucune période ne filtre */
+  var p=edtPeriodes().filter(function(x){return x&&x.debut;});
+  if(!p.length)return null;                         /* rien saisi : aucune période ne filtre */
   var choisie=null;
-  p.slice().sort(function(a,b){return String(a.debut||'').localeCompare(String(b.debut||''));})
-   .forEach(function(x){ if(x&&x.debut&&iso>=x.debut)choisie=x.nom||null; });
+  p.sort(function(a,b){return String(a.debut).localeCompare(String(b.debut));})
+   .forEach(function(x){ if(iso>=x.debut && (!x.fin||iso<=x.fin))choisie=x.nom||null; });
   return choisie;
 }
 function edtPeriodesSaisies(){
-  var p=(EDT.periodes&&EDT.periodes.periodes)||[];
-  return p.filter(function(x){return x&&x.debut;}).length;
+  return edtPeriodes().filter(function(x){return x&&x.debut;}).length;
+}
+/* les étiquettes que la grille cite, et que les périodes ne déclarent pas */
+function edtEtiquettesOrphelines(){
+  var connues={}; edtPeriodes().forEach(function(p){ if(p&&p.nom)connues[p.nom]=true; });
+  if(!edtPeriodes().length)return [];
+  var vues={},orphelines=[];
+  ((EDT.grille&&EDT.grille.creneaux)||[]).forEach(function(c){
+    (c&&c.periodes||[]).forEach(function(n){ if(!connues[n]&&!vues[n]){vues[n]=true;orphelines.push(n);} });
+  });
+  return orphelines;
 }
 
 /* ── LES VALIDATEURS — un refus est toujours NOMMÉ, jamais silencieux ───── */
@@ -17868,16 +17885,22 @@ function edtValiderGrille(o){
   if(!o||typeof o!=='object'||Array.isArray(o))return ['Le texte collé n\u2019est pas un objet.'];
   var l=o.creneaux;
   if(!Array.isArray(l)||!l.length)return ['Il manque « creneaux » : la liste des cases de la grille.'];
-  var JOURS=['lundi','mardi','mercredi','jeudi','vendredi'], vus={};
+  /* les jours ouvrés et les demi-journées sans cours sont DÉCLARÉS dans l'objet
+     des créneaux, jamais écrits ici : ils changent d'un établissement à l'autre
+     et d'une année à l'autre. Repli : la semaine scolaire ordinaire. */
+  var kr=EDT.creneaux||{};
+  var JOURS=(Array.isArray(kr.jours)&&kr.jours.length)?kr.jours:['lundi','mardi','mercredi','jeudi','vendredi'];
+  var SANS=(kr.sansApresMidi&&typeof kr.sansApresMidi==='object')?kr.sansApresMidi:null;
+  var vus={};
   var horaires=(typeof AT_EDT!=='undefined')?AT_EDT.slice():[];
   l.forEach(function(c,i){
     var ou='Case '+(i+1)+(c&&c.classe?' ('+c.classe+')':'')+' : ';
-    if(!c||JOURS.indexOf(String(c.jour))<0){e.push(ou+'« jour » doit être lundi, mardi, mercredi, jeudi ou vendredi.');return;}
+    if(!c||JOURS.indexOf(String(c.jour))<0){e.push(ou+'« jour » doit être l\u2019un des jours ouvrés déclarés : '+JOURS.join(', ')+'.');return;}
     if(horaires.length&&horaires.indexOf(String(c.creneau))<0){e.push(ou+'le créneau « '+String(c.creneau)+' » n\u2019existe pas dans les créneaux de l\u2019année.');return;}
     var s=String(c.semaine||'AB');
     if(['A','B','AB'].indexOf(s)<0){e.push(ou+'« semaine » doit être A, B ou AB.');return;}
     if(!String(c.classe||'').trim()){e.push(ou+'« classe » est vide.');return;}
-    if(c.jour==='mercredi'&&String(c.creneau)>'12:00'){e.push(ou+'le mercredi n\u2019a pas cours après 11h59.');return;}
+    if(SANS&&SANS[c.jour]&&String(c.creneau)>=String(SANS[c.jour])){e.push(ou+'le '+c.jour+' n\u2019a pas cours à partir de '+SANS[c.jour]+' (déclaré dans les créneaux de l\u2019année).');return;}
     (s==='AB'?['A','B']:[s]).forEach(function(x){
       var k=c.jour+'|'+c.creneau+'|'+x;
       if(vus[k])e.push(ou+'deux cours à la même heure ('+c.jour+' '+c.creneau+', semaine '+x+') — je ne choisis pas à ta place.');
@@ -17886,14 +17909,53 @@ function edtValiderGrille(o){
   });
   return e;
 }
+function edtValiderPeriodes(l,ou){
+  var e=[];
+  if(!Array.isArray(l))return [(ou||'periodes')+' doit être une liste d\u2019objets { rang, nom, debut, fin }.'];
+  var noms={};
+  l.forEach(function(p,i){
+    var d='Période '+(i+1)+(p&&p.nom?' ('+p.nom+')':'')+' : ';
+    if(!p||!String(p.nom||'').trim()){e.push(d+'le nom est vide.');return;}
+    if(noms[p.nom])e.push(d+'ce nom est déjà pris \u2014 deux périodes ne peuvent pas s\u2019appeler pareil.');
+    noms[p.nom]=true;
+    if(p.debut&&!/^\d{4}-\d{2}-\d{2}$/.test(String(p.debut)))e.push(d+'« debut » mal daté (attendu AAAA-MM-JJ).');
+    if(p.fin&&!/^\d{4}-\d{2}-\d{2}$/.test(String(p.fin)))e.push(d+'« fin » mal datée (attendu AAAA-MM-JJ).');
+    if(p.debut&&p.fin&&p.fin<p.debut)e.push(d+'la fin précède le début.');
+  });
+  var pleines=l.filter(function(p){return p&&p.debut&&p.fin;})
+               .sort(function(a,b){return String(a.debut).localeCompare(String(b.debut));});
+  for(var i=1;i<pleines.length;i++){
+    if(pleines[i].debut<=pleines[i-1].fin)
+      e.push('« '+pleines[i-1].nom+' » et « '+pleines[i].nom+' » se chevauchent ('+pleines[i-1].fin+' / '+pleines[i].debut+').');
+  }
+  return e;
+}
 var EDT_VOIES={
   calendrier:{titre:'Calendrier de l\u2019année',objet:'calendrier',valider:edtValiderCalendrier,
     aide:'Les temps de l\u2019année : semaines A/B, vacances, fériés, jalons communs, événements de classe.'},
-  grille:{titre:'Grille de l\u2019emploi du temps',objet:'grille',valider:edtValiderGrille,
-    aide:'Tes cases : jour, créneau, semaine, classe, salle, périodes, fil.'},
+  grille:{titre:'Grille de l\u2019emploi du temps',objet:'grille',valider:edtValiderGrilleComplete,
+    aide:'Trois objets d\u2019un coup, lus sur ta feuille : tes cases, les horaires de l\u2019année, et le découpage en périodes.'},
   creneaux:{titre:'Créneaux horaires',objet:'creneaux',valider:edtValiderCreneaux,
     aide:'Les horaires eux-mêmes. Ils changent d\u2019une année sur l\u2019autre : ils ne sont plus en dur.'}
 };
+
+/* la grille apporte TROIS objets : les cases, les horaires, les périodes */
+function edtValiderGrilleComplete(o){
+  var e=edtValiderGrille(o);
+  if(o&&o.creneauxDuSite!==undefined)e=e.concat(edtValiderCreneaux({creneaux:o.creneauxDuSite}));
+  if(o&&o.periodes!==undefined)e=e.concat(edtValiderPeriodes(o.periodes,'« periodes »'));
+  return e;
+}
+/* Réinjecter la grille ne perd JAMAIS les dates déjà saisies : une période dont
+   le nom existe déjà garde les siennes. */
+function edtFusionnerPeriodes(neuves){
+  var vieilles={}; edtPeriodes().forEach(function(p){ if(p&&p.nom)vieilles[p.nom]=p; });
+  return (neuves||[]).map(function(p,i){
+    var a=vieilles[p.nom]||{};
+    return {rang:(p.rang||i+1),nom:p.nom,
+            debut:(p.debut||a.debut||''),fin:(p.fin||a.fin||'')};
+  });
+}
 
 /* ── L'INJECTION — même flow que partout : coller, vérifier, voir, injecter ─ */
 function edtInjOuvrir(voie){ EDT_INJ={voie:voie,objet:null,messages:[]}; edtPeindrePanneau(); }
@@ -17914,10 +17976,25 @@ function edtInjInjecter(voie){
     EDT[v.objet]=o;
     if(v.objet==='creneaux'){ try{edtAppliquerCreneaux();}catch(e){} }
     if(v.objet==='calendrier')edtEcrireBrevet(o);
+    if(v.objet==='grille')edtInjecterAvecLaGrille(o);
     EDT_INJ={voie:null,objet:null,messages:[]};
     edtPeindrePanneau();
   });
 }
+/* les deux autres nœuds que la grille apporte, écrits dans la foulée */
+function edtInjecterAvecLaGrille(o){
+  if(Array.isArray(o.creneauxDuSite)&&o.creneauxDuSite.length){
+    var k={annee:(o.annee||EDT_ANNEE),creneaux:o.creneauxDuSite};
+    mjpcPutJson(FIREBASE_BASE+edtChemin('creneaux')+'.json',k,'Créneaux horaires de l\u2019année',function(){
+      EDT.creneaux=k; try{edtAppliquerCreneaux();}catch(e){} edtPeindrePanneau(); });
+  }
+  if(Array.isArray(o.periodes)){
+    var p={annee:(o.annee||EDT_ANNEE),periodes:edtFusionnerPeriodes(o.periodes)};
+    mjpcPutJson(FIREBASE_BASE+edtChemin('periodes')+'.json',p,'Découpage en périodes',function(){
+      EDT.periodes=p; edtPeindrePanneau(); });
+  }
+}
+
 /* EXCEPTION ① — la seule écriture de l'EDT hors de /site/edt/ : le jour du DNB.
    Le calendrier de l'établissement fait foi ; on garde le PREMIER jour. */
 function edtEcrireBrevet(cal){
@@ -17937,6 +18014,38 @@ function edtPeriodePoser(nom,date){
   if(!t){ t={nom:nom,debut:''}; o.periodes.push(t); }
   t.debut=String(date||'');
   mjpcPutJson(FIREBASE_BASE+edtChemin('periodes')+'.json',o,'Dates des périodes',function(){ EDT.periodes=o; edtPeindrePanneau(); });
+}
+function edtPeriodesEcrire(liste,libelle,apres){
+  var e=edtValiderPeriodes(liste);
+  if(e.length){ if(typeof atInfo==='function')atInfo(e[0]); edtPeindrePanneau(); return; }
+  var o={annee:EDT_ANNEE,periodes:liste.map(function(p,i){return {rang:i+1,nom:p.nom,debut:p.debut||'',fin:p.fin||''};})};
+  mjpcPutJson(FIREBASE_BASE+edtChemin('periodes')+'.json',o,libelle||'Découpage en périodes',function(){
+    EDT.periodes=o; edtPeindrePanneau(); if(apres)apres(); });
+}
+function edtPeriodePoser(rang,champ,valeur){
+  var l=edtPeriodes(); var t=null;
+  l.forEach(function(p){ if(Number(p.rang)===Number(rang))t=p; });
+  if(!t)return;
+  t[champ]=String(valeur||'');
+  edtPeriodesEcrire(l,'Périodes — '+champ);
+}
+function edtPeriodeAjouter(nom){
+  var l=edtPeriodes();
+  var n=String(nom||'').trim();
+  if(!n){ var i=l.length+1; n='P'+i; while(l.some(function(p){return p.nom===n;})){ i++; n='P'+i; } }
+  l.push({rang:l.length+1,nom:n,debut:'',fin:''});
+  edtPeriodesEcrire(l,'Périodes — ajout');
+}
+function edtPeriodeSupprimer(rang){
+  edtPeriodesEcrire(edtPeriodes().filter(function(p){return Number(p.rang)!==Number(rang);}),'Périodes — retrait');
+}
+function edtPeriodeDeplacer(rang,sens){
+  var l=edtPeriodes(), i=-1;
+  l.forEach(function(p,k){ if(Number(p.rang)===Number(rang))i=k; });
+  var j=i+(sens<0?-1:1);
+  if(i<0||j<0||j>=l.length)return;
+  var t=l[i]; l[i]=l[j]; l[j]=t;
+  edtPeriodesEcrire(l,'Périodes — ordre');
 }
 function edtCreneauPoser(rang,champ,valeur){
   var o=EDT.creneaux; if(!o||!Array.isArray(o.creneaux))return;
@@ -18010,14 +18119,28 @@ function edtPeindrePanneau(){
   }
   h+='</div>';
 
-  /* les périodes, saisies à la main le jour de la rentrée */
-  h+='<div class="edt-bloc"><div class="edt-titre">\ud83d\udcc6 Dates des périodes</div>'
-    +'<p class="edt-p">Tant qu\u2019aucune date n\u2019est saisie, l\u2019année compte <b>une seule période</b> et les cases étiquetées P1\u2026PFIN valent partout. Saisis les dates quand tu les as : la grille se recale seule.</p>'
-    +'<div class="edt-periodes">'
-    +['P1','P2','P3','P4','PFIN'].map(function(n){
-      var d=''; ((EDT.periodes&&EDT.periodes.periodes)||[]).forEach(function(p){ if(p&&p.nom===n)d=p.debut||''; });
-      return '<label class="edt-per"><span>'+n+'</span><input type="date" value="'+escapeHtml(d)+'" onchange="edtPeriodePoser(\''+n+'\',this.value)"></label>';
-    }).join('')+'</div></div>';
+  /* les périodes : déclarées par la grille, éditables ici, jamais écrites dans le code */
+  var per=edtPeriodes();
+  h+='<div class="edt-bloc"><div class="edt-titre">\ud83d\udcc6 Périodes de l\u2019année</div>';
+  if(!per.length){
+    h+='<p class="edt-p">Aucune période déclarée : l\u2019année compte <b>une seule période</b>, et les cases étiquetées valent partout. Le découpage arrive avec la grille, ou tu l\u2019ajoutes ici.</p>';
+  } else {
+    h+='<p class="edt-p">Le découpage vient de ta feuille. Les dates arrivent à la rentrée : saisis-les quand tu les as, la grille se recale seule. Tant qu\u2019une période n\u2019a pas de dates, elle vaut partout.</p>';
+    var orph=edtEtiquettesOrphelines();
+    if(orph.length)h+='<div class="edt-alerte">La grille cite '+escapeHtml(orph.join(', '))+' \u2014 non déclarée'+(orph.length>1?'s':'')+' dans les périodes.</div>';
+  }
+  h+='<div class="edt-periodes">'
+    +per.map(function(p,i){
+      return '<div class="edt-per">'
+        +'<input class="edt-nom" value="'+escapeHtml(p.nom||'')+'" onchange="edtPeriodePoser('+Number(p.rang)+',\'nom\',this.value)" aria-label="nom de la période">'
+        +'<input type="date" value="'+escapeHtml(p.debut||'')+'" onchange="edtPeriodePoser('+Number(p.rang)+',\'debut\',this.value)" aria-label="début">'
+        +'<input type="date" value="'+escapeHtml(p.fin||'')+'" onchange="edtPeriodePoser('+Number(p.rang)+',\'fin\',this.value)" aria-label="fin">'
+        +'<button class="edt-mini" onclick="edtPeriodeDeplacer('+Number(p.rang)+',-1)" title="monter"'+(i===0?' disabled':'')+'>\u2191</button>'
+        +'<button class="edt-mini" onclick="edtPeriodeDeplacer('+Number(p.rang)+',1)" title="descendre"'+(i===per.length-1?' disabled':'')+'>\u2193</button>'
+        +'<button class="edt-mini" onclick="edtPeriodeSupprimer('+Number(p.rang)+')" title="retirer">\u2715</button>'
+        +'</div>';
+    }).join('')
+    +'</div><div class="edt-actions"><button class="edt-btn" onclick="edtPeriodeAjouter()">+ Ajouter une période</button></div></div>';
 
   /* les créneaux horaires, modifiables à la main */
   if(cr&&Array.isArray(cr.creneaux)){
@@ -18054,10 +18177,38 @@ function edtApparierNom(nomGrille,nomHub){
   o.creneaux.forEach(function(c){ if(c&&c.classe===nomGrille)c.classeMjpc=String(nomHub||''); });
   mjpcPutJson(FIREBASE_BASE+edtChemin('grille')+'.json',o,'Grille — appariement des classes',function(){ EDT.grille=o; edtPeindrePanneau(); });
 }
+/* Ce que la réinjection ferait aux périodes — DIT AVANT le geste, jamais après.
+   Le site ne perd rien en silence : « tu vois exactement ce qui sera écrit ». */
+function edtDiffPeriodes(neuves){
+  var av={}; edtPeriodes().forEach(function(p){ if(p&&p.nom)av[p.nom]=p; });
+  var ap={}; (neuves||[]).forEach(function(p){ if(p&&p.nom)ap[p.nom]=p; });
+  var gardees=[],datees=[],ajoutees=[],retirees=[];
+  Object.keys(ap).forEach(function(n){
+    if(av[n]){ gardees.push(n); if(av[n].debut||av[n].fin)datees.push(n); }
+    else ajoutees.push(n);
+  });
+  Object.keys(av).forEach(function(n){ if(!ap[n])retirees.push(n); });
+  return {gardees:gardees,datees:datees,ajoutees:ajoutees,retirees:retirees};
+}
+function edtPhraseDiffPeriodes(neuves){
+  if(!Array.isArray(neuves))return '';
+  var d=edtDiffPeriodes(neuves), t=[];
+  if(!edtPeriodes().length)return ' Périodes : '+neuves.length+' déclarée'+(neuves.length>1?'s':'')+' ('+neuves.map(function(p){return p.nom;}).join(', ')+'), sans dates.';
+  if(d.datees.length)t.push(d.datees.length>1
+    ? (d.datees.length+' gardent leurs dates ('+d.datees.join(', ')+')')
+    : (d.datees[0]+' garde ses dates'));
+  if(d.ajoutees.length)t.push(d.ajoutees.join(', ')+' arrive'+(d.ajoutees.length>1?'nt':''));
+  if(d.retirees.length)t.push('\u26a0 '+d.retirees.join(', ')+(d.retirees.length>1
+    ? ' seraient RETIRÉES \u2014 si tu les as ajoutées ou renommées à la main, elles disparaîtront'
+    : ' serait RETIRÉE \u2014 si tu l\u2019as ajoutée ou renommée à la main, elle disparaîtra'));
+  return t.length?(' Périodes : '+t.join(' \u00b7 ')+'.'):'';
+}
 function edtApercu(voie,o){
   if(voie==='calendrier')return (o.semaines||[]).length+' semaines, '+(o.vacances||[]).length+' périodes sans cours, '
     +(o.evenementsClasse||[]).length+' événements de classe'+(o.brevet?', et la date du brevet' :'')+'.';
-  if(voie==='grille')return (o.creneaux||[]).length+' cases lues, sans doublon.';
+  if(voie==='grille')return (o.creneaux||[]).length+' cases lues, sans doublon.'
+    +(Array.isArray(o.creneauxDuSite)?' '+o.creneauxDuSite.length+' horaires.':'')
+    +edtPhraseDiffPeriodes(o.periodes);
   return (o.creneaux||[]).length+' créneaux.';
 }
 
@@ -18086,6 +18237,10 @@ function edtPoserCss(){
    +'.edt-periodes,.edt-creneaux,.edt-appar{display:flex;flex-wrap:wrap;gap:9px}'
    +'.edt-per,.edt-cr,.edt-ap{display:flex;align-items:center;gap:6px;background:rgba(0,0,0,.2);border:1px solid rgba(255,255,255,.12);border-radius:9px;padding:6px 9px;font-size:.88rem}'
    +'.edt-cr em{color:#9c8f74;font-style:normal;font-size:.82rem}'
+   +'.edt-periodes{flex-direction:column}'
+   +'.edt-per .edt-nom{width:76px;font-weight:700;color:#e0b978}'
+   +'.edt-mini{font:inherit;font-size:.8rem;background:rgba(255,255,255,.06);color:#c9bfa4;border:1px solid rgba(255,255,255,.16);border-radius:6px;padding:2px 7px;cursor:pointer}'
+   +'.edt-mini[disabled]{opacity:.35;cursor:default}'
    +'.edt-per input,.edt-cr input,.edt-ap select{font:inherit;font-size:.86rem;background:rgba(0,0,0,.3);color:#e8e0cf;border:1px solid rgba(255,255,255,.16);border-radius:7px;padding:4px 7px}';
   document.head.appendChild(s);
 }

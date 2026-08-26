@@ -1,49 +1,354 @@
 {
  "annee": "2026-2027",
  "source": "grille papier de Paul, 2026-2027 (pièce T85), lue case par case",
- "creneauxDuSite": ["08:00-08:55","08:57-09:52","10:07-11:02","11:04-11:59","13:00-13:55","13:57-14:52","15:07-16:02","16:04-16:59"],
- "etiquettesPeriodes": ["P1","P2","P3","P4","PFIN"],
- "note": "Aucun créneau le mercredi après 11h59 : l'établissement n'a pas cours (déclaré par Paul le 26/08). Un créneau sans « periodes » vaut en toutes périodes. Un créneau sans « fil » porte le chapitre principal de la classe.",
+ "creneauxDuSite": [
+  {
+   "rang": 1,
+   "debut": "08:00",
+   "fin": "08:55"
+  },
+  {
+   "rang": 2,
+   "debut": "08:57",
+   "fin": "09:52"
+  },
+  {
+   "rang": 3,
+   "debut": "10:07",
+   "fin": "11:02"
+  },
+  {
+   "rang": 4,
+   "debut": "11:04",
+   "fin": "11:59"
+  },
+  {
+   "rang": 5,
+   "debut": "13:00",
+   "fin": "13:55"
+  },
+  {
+   "rang": 6,
+   "debut": "13:57",
+   "fin": "14:52"
+  },
+  {
+   "rang": 7,
+   "debut": "15:07",
+   "fin": "16:02"
+  },
+  {
+   "rang": 8,
+   "debut": "16:04",
+   "fin": "16:59"
+  }
+ ],
+ "etiquettesPeriodes": [
+  "P1",
+  "P2",
+  "P3",
+  "P4",
+  "PFIN"
+ ],
+ "note": "Aucun créneau le mercredi après 11h59 : l'établissement n'a pas cours (déclaré par Paul le 26/08). Un créneau sans « periodes » vaut en toutes périodes. Un créneau sans « fil » porte le chapitre principal de la classe. Les créneaux horaires eux-mêmes vivent dans l'objet /site/edt/creneaux/<annee> (fichier creneaux-2026-2027.json) : ils sont éditables et peuvent changer d'une année sur l'autre.",
  "creneaux": [
-
-  { "jour":"lundi", "creneau":"08:57-09:52", "semaine":"AB", "classe":"3 FRANKLIN Aretha", "salle":"9", "mjpc":true, "classeMjpc":"" },
-  { "jour":"lundi", "creneau":"10:07-11:02", "semaine":"A",  "classe":"X Français X. — 4 HUGO", "salle":"20 / 9", "mjpc":false, "motif":"groupe partagé — hors français, ne compte jamais dans la progression" },
-  { "jour":"lundi", "creneau":"10:07-11:02", "semaine":"B",  "classe":"X Français X. — 4 TURING", "salle":"9", "mjpc":false, "motif":"groupe partagé — hors français, ne compte jamais dans la progression" },
-  { "jour":"lundi", "creneau":"11:04-11:59", "semaine":"B",  "classe":"4 HUGO", "salle":"9", "mjpc":true, "classeMjpc":"" },
-  { "jour":"lundi", "creneau":"15:07-16:02", "semaine":"A",  "classe":"3 DYLAN Bob", "salle":"9", "mjpc":true, "classeMjpc":"" },
-  { "jour":"lundi", "creneau":"16:04-16:59", "semaine":"A",  "classe":"4 TURING", "salle":"9", "mjpc":true, "classeMjpc":"" },
-
-  { "jour":"mardi", "creneau":"08:57-09:52", "semaine":"B",  "classe":"4 TURING", "salle":"9", "mjpc":true, "classeMjpc":"" },
-  { "jour":"mardi", "creneau":"10:07-11:02", "semaine":"AB", "classe":"3 DYLAN Bob", "salle":"9", "mjpc":true, "classeMjpc":"" },
-  { "jour":"mardi", "creneau":"11:04-11:59", "semaine":"B",  "classe":"X Français X. — 4 BANKSY", "salle":"20 / 9", "mjpc":false, "motif":"groupe partagé — hors français, ne compte jamais dans la progression" },
-  { "jour":"mardi", "creneau":"13:00-13:55", "semaine":"A",  "classe":"4 HUGO", "salle":"9", "mjpc":true, "classeMjpc":"" },
-  { "jour":"mardi", "creneau":"13:00-13:55", "semaine":"B",  "classe":"4 HUGO", "salle":"9", "mjpc":true, "classeMjpc":"" },
-  { "jour":"mardi", "creneau":"13:57-14:52", "semaine":"A",  "classe":"4 TURING", "salle":"9", "mjpc":true, "classeMjpc":"" },
-  { "jour":"mardi", "creneau":"15:07-16:02", "semaine":"A",  "classe":"3 FRANKLIN Aretha", "salle":"9", "mjpc":true, "classeMjpc":"", "periodes":["P3","P4","PFIN"] },
-  { "jour":"mardi", "creneau":"15:07-16:02", "semaine":"B",  "classe":"3 FRANKLIN Aretha", "salle":"9", "mjpc":true, "classeMjpc":"", "periodes":["P1","P2"] },
-  { "jour":"mardi", "creneau":"16:04-16:59", "semaine":"B",  "classe":"3 DYLAN Bob", "salle":"9", "mjpc":true, "classeMjpc":"" },
-
-  { "jour":"mercredi", "creneau":"08:00-08:55", "semaine":"AB", "classe":"4 HUGO", "salle":"9", "mjpc":true, "classeMjpc":"", "fil":"langue", "cadence":"chaque semaine" },
-  { "jour":"mercredi", "creneau":"08:57-09:52", "semaine":"AB", "classe":"4 TURING", "salle":"9", "mjpc":true, "classeMjpc":"", "fil":"langue", "cadence":"chaque semaine" },
-  { "jour":"mercredi", "creneau":"10:07-11:02", "semaine":"A",  "classe":"3 FRANKLIN Aretha", "salle":"9", "mjpc":true, "classeMjpc":"", "fil":"langue", "cadence":"semaine A" },
-  { "jour":"mercredi", "creneau":"10:07-11:02", "semaine":"B",  "classe":"3 FRANKLIN Aretha", "salle":"9", "mjpc":true, "classeMjpc":"" },
-  { "jour":"mercredi", "creneau":"11:04-11:59", "semaine":"A",  "classe":"3 DYLAN Bob", "salle":"9", "mjpc":true, "classeMjpc":"", "fil":"langue", "cadence":"semaine A" },
-  { "jour":"mercredi", "creneau":"11:04-11:59", "semaine":"B",  "classe":"X Français X. — 4 PYTHAGORE", "salle":"20 / 9", "mjpc":false, "motif":"groupe partagé — hors français, ne compte jamais dans la progression" },
-
-  { "jour":"jeudi", "creneau":"11:04-11:59", "semaine":"B",  "classe":"4 TURING", "salle":"9", "mjpc":true, "classeMjpc":"" },
-  { "jour":"jeudi", "creneau":"15:07-16:02", "semaine":"A",  "classe":"3 DYLAN Bob", "salle":"9", "mjpc":true, "classeMjpc":"" },
-  { "jour":"jeudi", "creneau":"15:07-16:02", "semaine":"B",  "classe":"4 HUGO", "salle":"9", "mjpc":true, "classeMjpc":"" },
-  { "jour":"jeudi", "creneau":"16:04-16:59", "semaine":"A",  "classe":"Concertation", "salle":"", "mjpc":false, "motif":"réunion d'équipe — pas un cours" },
-  { "jour":"jeudi", "creneau":"16:04-16:59", "semaine":"B",  "classe":"3 FRANKLIN Aretha", "salle":"9", "mjpc":true, "classeMjpc":"" },
-
-  { "jour":"vendredi", "creneau":"08:00-08:55", "semaine":"AB", "classe":"4 TURING", "salle":"9", "mjpc":true, "classeMjpc":"" },
-  { "jour":"vendredi", "creneau":"08:57-09:52", "semaine":"AB", "classe":"4 HUGO", "salle":"9", "mjpc":true, "classeMjpc":"" },
-  { "jour":"vendredi", "creneau":"10:07-11:02", "semaine":"AB", "classe":"3 FRANKLIN Aretha", "salle":"9", "mjpc":true, "classeMjpc":"" },
-  { "jour":"vendredi", "creneau":"11:04-11:59", "semaine":"AB", "classe":"3 DYLAN Bob", "salle":"9", "mjpc":true, "classeMjpc":"" }
-
+  {
+   "jour": "lundi",
+   "creneau": "08:57-09:52",
+   "semaine": "AB",
+   "classe": "3 FRANKLIN Aretha",
+   "salle": "9",
+   "mjpc": true,
+   "classeMjpc": ""
+  },
+  {
+   "jour": "lundi",
+   "creneau": "10:07-11:02",
+   "semaine": "A",
+   "classe": "X Français X. — 4 HUGO",
+   "salle": "20 / 9",
+   "mjpc": false,
+   "motif": "groupe partagé — hors français, ne compte jamais dans la progression"
+  },
+  {
+   "jour": "lundi",
+   "creneau": "10:07-11:02",
+   "semaine": "B",
+   "classe": "X Français X. — 4 TURING",
+   "salle": "9",
+   "mjpc": false,
+   "motif": "groupe partagé — hors français, ne compte jamais dans la progression"
+  },
+  {
+   "jour": "lundi",
+   "creneau": "11:04-11:59",
+   "semaine": "B",
+   "classe": "4 HUGO",
+   "salle": "9",
+   "mjpc": true,
+   "classeMjpc": ""
+  },
+  {
+   "jour": "lundi",
+   "creneau": "15:07-16:02",
+   "semaine": "A",
+   "classe": "3 DYLAN Bob",
+   "salle": "9",
+   "mjpc": true,
+   "classeMjpc": ""
+  },
+  {
+   "jour": "lundi",
+   "creneau": "16:04-16:59",
+   "semaine": "A",
+   "classe": "4 TURING",
+   "salle": "9",
+   "mjpc": true,
+   "classeMjpc": ""
+  },
+  {
+   "jour": "mardi",
+   "creneau": "08:57-09:52",
+   "semaine": "B",
+   "classe": "4 TURING",
+   "salle": "9",
+   "mjpc": true,
+   "classeMjpc": ""
+  },
+  {
+   "jour": "mardi",
+   "creneau": "10:07-11:02",
+   "semaine": "AB",
+   "classe": "3 DYLAN Bob",
+   "salle": "9",
+   "mjpc": true,
+   "classeMjpc": ""
+  },
+  {
+   "jour": "mardi",
+   "creneau": "11:04-11:59",
+   "semaine": "B",
+   "classe": "X Français X. — 4 BANKSY",
+   "salle": "20 / 9",
+   "mjpc": false,
+   "motif": "groupe partagé — hors français, ne compte jamais dans la progression"
+  },
+  {
+   "jour": "mardi",
+   "creneau": "13:00-13:55",
+   "semaine": "A",
+   "classe": "4 HUGO",
+   "salle": "9",
+   "mjpc": true,
+   "classeMjpc": ""
+  },
+  {
+   "jour": "mardi",
+   "creneau": "13:00-13:55",
+   "semaine": "B",
+   "classe": "4 HUGO",
+   "salle": "9",
+   "mjpc": true,
+   "classeMjpc": ""
+  },
+  {
+   "jour": "mardi",
+   "creneau": "13:57-14:52",
+   "semaine": "A",
+   "classe": "4 TURING",
+   "salle": "9",
+   "mjpc": true,
+   "classeMjpc": ""
+  },
+  {
+   "jour": "mardi",
+   "creneau": "15:07-16:02",
+   "semaine": "A",
+   "classe": "3 FRANKLIN Aretha",
+   "salle": "9",
+   "mjpc": true,
+   "classeMjpc": "",
+   "periodes": [
+    "P3",
+    "P4",
+    "PFIN"
+   ]
+  },
+  {
+   "jour": "mardi",
+   "creneau": "15:07-16:02",
+   "semaine": "B",
+   "classe": "3 FRANKLIN Aretha",
+   "salle": "9",
+   "mjpc": true,
+   "classeMjpc": "",
+   "periodes": [
+    "P1",
+    "P2"
+   ]
+  },
+  {
+   "jour": "mardi",
+   "creneau": "16:04-16:59",
+   "semaine": "B",
+   "classe": "3 DYLAN Bob",
+   "salle": "9",
+   "mjpc": true,
+   "classeMjpc": ""
+  },
+  {
+   "jour": "mercredi",
+   "creneau": "08:00-08:55",
+   "semaine": "AB",
+   "classe": "4 HUGO",
+   "salle": "9",
+   "mjpc": true,
+   "classeMjpc": "",
+   "fil": "langue",
+   "cadence": "chaque semaine"
+  },
+  {
+   "jour": "mercredi",
+   "creneau": "08:57-09:52",
+   "semaine": "AB",
+   "classe": "4 TURING",
+   "salle": "9",
+   "mjpc": true,
+   "classeMjpc": "",
+   "fil": "langue",
+   "cadence": "chaque semaine"
+  },
+  {
+   "jour": "mercredi",
+   "creneau": "10:07-11:02",
+   "semaine": "A",
+   "classe": "3 FRANKLIN Aretha",
+   "salle": "9",
+   "mjpc": true,
+   "classeMjpc": "",
+   "fil": "langue",
+   "cadence": "semaine A"
+  },
+  {
+   "jour": "mercredi",
+   "creneau": "10:07-11:02",
+   "semaine": "B",
+   "classe": "3 FRANKLIN Aretha",
+   "salle": "9",
+   "mjpc": true,
+   "classeMjpc": ""
+  },
+  {
+   "jour": "mercredi",
+   "creneau": "11:04-11:59",
+   "semaine": "A",
+   "classe": "3 DYLAN Bob",
+   "salle": "9",
+   "mjpc": true,
+   "classeMjpc": "",
+   "fil": "langue",
+   "cadence": "semaine A"
+  },
+  {
+   "jour": "mercredi",
+   "creneau": "11:04-11:59",
+   "semaine": "B",
+   "classe": "X Français X. — 4 PYTHAGORE",
+   "salle": "20 / 9",
+   "mjpc": false,
+   "motif": "groupe partagé — hors français, ne compte jamais dans la progression"
+  },
+  {
+   "jour": "jeudi",
+   "creneau": "11:04-11:59",
+   "semaine": "B",
+   "classe": "4 TURING",
+   "salle": "9",
+   "mjpc": true,
+   "classeMjpc": ""
+  },
+  {
+   "jour": "jeudi",
+   "creneau": "15:07-16:02",
+   "semaine": "A",
+   "classe": "3 DYLAN Bob",
+   "salle": "9",
+   "mjpc": true,
+   "classeMjpc": ""
+  },
+  {
+   "jour": "jeudi",
+   "creneau": "15:07-16:02",
+   "semaine": "B",
+   "classe": "4 HUGO",
+   "salle": "9",
+   "mjpc": true,
+   "classeMjpc": ""
+  },
+  {
+   "jour": "jeudi",
+   "creneau": "16:04-16:59",
+   "semaine": "A",
+   "classe": "Concertation",
+   "salle": "",
+   "mjpc": false,
+   "motif": "réunion d'équipe — pas un cours"
+  },
+  {
+   "jour": "jeudi",
+   "creneau": "16:04-16:59",
+   "semaine": "B",
+   "classe": "3 FRANKLIN Aretha",
+   "salle": "9",
+   "mjpc": true,
+   "classeMjpc": ""
+  },
+  {
+   "jour": "vendredi",
+   "creneau": "08:00-08:55",
+   "semaine": "AB",
+   "classe": "4 TURING",
+   "salle": "9",
+   "mjpc": true,
+   "classeMjpc": ""
+  },
+  {
+   "jour": "vendredi",
+   "creneau": "08:57-09:52",
+   "semaine": "AB",
+   "classe": "4 HUGO",
+   "salle": "9",
+   "mjpc": true,
+   "classeMjpc": ""
+  },
+  {
+   "jour": "vendredi",
+   "creneau": "10:07-11:02",
+   "semaine": "AB",
+   "classe": "3 FRANKLIN Aretha",
+   "salle": "9",
+   "mjpc": true,
+   "classeMjpc": ""
+  },
+  {
+   "jour": "vendredi",
+   "creneau": "11:04-11:59",
+   "semaine": "AB",
+   "classe": "3 DYLAN Bob",
+   "salle": "9",
+   "mjpc": true,
+   "classeMjpc": ""
+  }
  ],
  "creneauxFictifs": [
-  { "jour":"", "creneau":"", "semaine":"AB", "classe":"", "classeMjpc":"3E Charles de Gaulle", "fictif":true,
-    "note":"À poser par Paul (§⑥bis) : la classe expérimentale reçoit ses créneaux sur des trous réels de la grille. Trous disponibles, mesurés : lundi 08:00 · lundi 13:00 · lundi 13:57 · lundi 11:04 (A) · mardi 08:00 · mardi 08:57 (A) · mardi 11:04 (A) · mardi 13:57 (B) · mardi 16:04 (A) · jeudi 08:00 · jeudi 08:57 · jeudi 10:07 · jeudi 11:04 (A) · jeudi 13:00 · jeudi 13:57 · vendredi 13:00 · vendredi 13:57 · vendredi 15:07 · vendredi 16:04. Jamais le mercredi après 11h59 : pas cours." }
+  {
+   "jour": "",
+   "creneau": "",
+   "semaine": "AB",
+   "classe": "",
+   "classeMjpc": "3E Charles de Gaulle",
+   "fictif": true,
+   "note": "À poser par Paul (§⑥bis) : la classe expérimentale reçoit ses créneaux sur des trous réels de la grille. Trous disponibles, mesurés : lundi 08:00 · lundi 13:00 · lundi 13:57 · lundi 11:04 (A) · mardi 08:00 · mardi 08:57 (A) · mardi 11:04 (A) · mardi 13:57 (B) · mardi 16:04 (A) · jeudi 08:00 · jeudi 08:57 · jeudi 10:07 · jeudi 11:04 (A) · jeudi 13:00 · jeudi 13:57 · vendredi 13:00 · vendredi 13:57 · vendredi 15:07 · vendredi 16:04. Jamais le mercredi après 11h59 : pas cours."
+  }
  ]
 }

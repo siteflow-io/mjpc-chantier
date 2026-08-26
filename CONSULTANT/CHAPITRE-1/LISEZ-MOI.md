@@ -10,7 +10,7 @@ Ce dossier contient ce que la conversation a produit et qui a une valeur pour la
 | Fichier | Ce qu'il contient | À quoi il sert |
 |---|---|---|
 | `registre-chapitre-3e.md` | 558 lignes. Le journal complet du chantier : chaque décision de Paul, chaque protocole établi, chaque faute commise et corrigée, les dettes du site (25 à 30), l'audit Éduscol, le bilan des dix tours d'échec sur un schéma. | C'est le document principal. Tout ce qui suit en est extrait ou complémentaire. |
-| `retro-ingenierie-prompt-chapitre.md` | 76 règles numérotées, chacune tirée d'une faute réelle, avec la formulation à ajouter au prompt. | C'est le livrable destiné à corriger le prompt MJPC. |
+| `retro-ingenierie-prompt-chapitre.md` | 97 règles numérotées, chacune tirée d'une faute réelle, avec la formulation à ajouter au prompt. | C'est le livrable destiné à corriger le prompt MJPC. |
 | `LIVRAISON.md` | Le manifeste : état de chaque livrable, ce qui est validé, ce qui attend le site, ce qui attend Paul. | Pour savoir où en est le chapitre sans relire le registre. |
 | `AMENDEMENT-trous-du-prompt.md` | **Ce que le prompt de chapitre ne dit pas** : les cinq formes de schéma et leur format, les outils de marquage, l'adresse relative des médias, la distinction fiche/item/écran ; et ce que l'ignorance de l'EDT a coûté au chapitre 1 — décompte de créneaux jamais fait, fil langue ignoré, heures consécutives supposées à tort. | **À lire avant le registre.** C'est le livrable le plus utile à la correction du prompt. |
 | `PROGRESSION-ANNUELLE-3e.md` | Les sept chapitres de l'année : entrée du programme, thème, support, nature (OI ou GT), avec la raison de chaque décision et ce qui reste à trancher. | **Le document de cadrage de l'année.** À lire avant de bâtir un chapitre. |
@@ -24,7 +24,7 @@ Ce dossier contient ce que la conversation a produit et qui a une valeur pour la
 
 | Fichier | Contenu |
 |---|---|
-| `chapitre-3e-poesie-peinture-final.json` | Le chapitre complet : 9 séances, 82 écrans, 108 blocs, 31 items, 31 liaisons. **Non importé au hub** (voir §6). |
+| `chapitre-3e-poesie-peinture-final.json` | Le chapitre complet : 9 séances, 95 écrans, 108 blocs, 35 items, 34 liaisons — chiffres recomptés sur le fichier le 26/08 (les précédents, 82/31/31, étaient faux). **Non importé au hub** (voir §6). |
 | `consignation-trames-s1-s9.json` | Les trames des neuf séances avec leurs notes de validation, et un journal de notes en fin de fichier. |
 | `qcm-interro-de-cours.json` | 12 questions, format vérifié contre `qcmValiderEvaluation`. |
 | `applaudimetre-criteres-recitation.json` | 4 critères de récitation, format vérifié contre `amValiderCriteres`. |
@@ -32,7 +32,7 @@ Ce dossier contient ce que la conversation a produit et qui a une valeur pour la
 
 ## 3. Les feuilles — dossier `feuilles/`
 
-36 fichiers : 18 feuilles et leurs versions aménagées, en JSON d'import.
+37 fichiers : 19 feuilles et 18 versions aménagées, en JSON d'import. **Il manque une aménagée** — celle de `feuille-methode-analyse-logique`, suspendue avec la bascule HTML du schéma.
 Fiches notion (figures, genres, mouvements, registres, versification, propositions) · fiches méthode (image, paragraphe, réciter, analyse logique) · fiches textes (Albatros, Fenêtres, Passante) · évaluations (brevet blanc, dictée préparée, dictée à trous, réécriture, tâche finale) · fiche de révision.
 Les versions `-amenagee` portent `police_adaptee`, `consignes_reformulees`, `interligne`, et les reformulations dans le champ `reformulations` des blocs.
 

@@ -3,11 +3,11 @@ pendant le glissé : {"source":1,"possibles":23,"impossibles":16}
 question posée : {"ouverte":true,"boutons":["✕","Changer l’emploi du temps à partir de cette date","Déplacer cette heure seulement"]}
 
 ④ après glissé « déplacer cette heure » :
-  décisions : {"2026-09-09_10h07-11h02_3E_Charles_de_Gaulle":{"epingle":true,"venantDe":"2026-09-08|15:07-16:02","pose":1787751886589}}
+  décisions : {"2026-09-09_10h07-11h02_3E_Charles_de_Gaulle":{"epingle":true,"venantDe":"2026-09-08|15:07-16:02","pose":1787753185689}}
   versions de grille écrites : 0
 
    le même geste par la liste :
-  {"2026-09-09_10h07-11h02_3E_Charles_de_Gaulle":{"epingle":true,"venantDe":"2026-09-08|15:07-16:02","pose":1787751893103}}
+  {"2026-09-09_10h07-11h02_3E_Charles_de_Gaulle":{"epingle":true,"venantDe":"2026-09-08|15:07-16:02","pose":1787753192251}}
   → mêmes clés écrites que par le glissé : true
 
    diagnostic du geste : {"question":"ouverte","avant":"[\"annee\",\"source\",\"creneauxDuSite\",\"note\",\"creneaux\",\"creneauxFictifs\",\"periodes\",\"jours\",\"sansApresMidi\"]","cellule":true}

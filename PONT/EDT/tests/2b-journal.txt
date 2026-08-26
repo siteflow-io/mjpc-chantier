@@ -8,12 +8,11 @@ Année 2026-2027. Les objets vivent au hub sous /site/edt/. Rien n’est obligat
 Calendrier de l’année — aucun objet injecté
 Grille de l’emploi du temps — aucun objet injecté
 Créneaux horaires — aucun objet injecté
-🗓 Ouvrir l’emploi du temps
+📅 Ouvrir l’emploi du temps
+arriver sur l’emploi du temps en me connectant
 ✨ Injecter un objet
 Calendrier de l’année
-Grille de l’emploi du temps
-Créneaux horaires
-📆 Périodes de 
+Grille de l’em
 
 capture 2b-2-section-vide
 
@@ -184,7 +183,7 @@ après « ne plus compter cette séance » :
    2026-09-10 16:04-16:59 3E Charles de Gaulle → prevu heure 2/3
    2026-09-11 10:07-11:02 3E Charles de Gaulle → prevu heure 3/3
 
-au hub : {"3E Charles de Gaulle":{"heures":{"2026-09-08_15h07-16h02_3E_Charles_de_Gaulle":{"sansSeance":true,"categorie":"Gestion de classe","precision":"retour sur le conseil de classe","pose":1787746517543}},"journal":[{"quand":1787746517543,"heure":"2026-09-08_15h07-16h02_3E_Charles_de_Gaulle","quoi":"ne plus compter cette séance dans la prévision horaire","avant":null,"apres":{"sansSeance":true,"categorie":"Gestion de cla
+au hub : {"3E Charles de Gaulle":{"heures":{"2026-09-08_15h07-16h02_3E_Charles_de_Gaulle":{"sansSeance":true,"categorie":"Gestion de classe","precision":"retour sur le conseil de classe","pose":1787747437424}},"journal":[{"quand":1787747437424,"heure":"2026-09-08_15h07-16h02_3E_Charles_de_Gaulle","quoi":"ne plus compter cette séance dans la prévision horaire","avant":null,"apres":{"sansSeance":true,"categorie":"Gestion de cla
 
 capture 4-3-sans-seance-et-glissement
 
@@ -196,7 +195,7 @@ créneaux proposés pour le déplacement : ["— choisir —","mer 9/9 · 10:07-
 
 après déplacement :
   2026-09-08_15h07-16h02_3E_Charles_de_Gaulle → {"sansSeance":true,"categorie":"Reprise ou rattrapage","precision":"heure déplacée vers le 2026-09-09 10:07-11:02","depl
-  2026-09-09_10h07-11h02_3E_Charles_de_Gaulle → {"epingle":true,"venantDe":"2026-09-08|15:07-16:02","pose":1787746520477}
+  2026-09-09_10h07-11h02_3E_Charles_de_Gaulle → {"epingle":true,"venantDe":"2026-09-08|15:07-16:02","pose":1787747440331}
 
 capture 4-4-heure-deplacee
 
@@ -255,3 +254,31 @@ absents au hub : ["audebert_elise","boivin_eden"]
 capture 5-4-absents
 
 après le geste inverse : ["boivin_eden"]  (réversible)
+
+porte ① (arrivée du prof, réglage par défaut) : {"rendu":true,"ecran":"flex","accueilPresent":true,"accueilTaille":3690,"parDessus":"fixed"}
+
+capture 6-1-porte1-arrivee
+
+après « ✕ Fermer » : {"ecran":"none","accueilTaille":3690,"figeHtml":false,"scrollPossible":false}
+
+capture 6-2-accueil-intact
+
+réglage à « non » : {"ecran":"none","auHub":"{\"2026-2027\":{\"annee\":\"2026-2027\",\"arriverSurEdt\":false}}"}
+
+élève (pas admin-mode) : {"rendu":false,"ecran":"none"}
+
+téléphone-pilote / vue tableau : {"tel":false,"tableau":false}  (false = ne s’ouvre pas)
+
+porte ③ (bandeau du déroulé) : {"present":true,"libelle":"📅 Emploi du temps"}
+
+téléphone 390×844 : {"affiche":"flex","cases":20,"defileInterne":false,"erreurJs":false}  (il s’affiche et défile là — la règle « sans scroll » vaut pour l’ordinateur)
+
+capture 6-3-telephone
+
+MATRICE actions × état :
+  prevu → ["✕","▶ Ouvrir le pilotage et lancer","Enregistrer"] · 2 liste(s)
+  jouee → ["✕"] · 0 liste(s)
+  sansSeance → ["✕","Enregistrer"] · 2 liste(s)
+  nonImportee → ["✕"] · 0 liste(s)
+  horsMjpc → ["✕"] · 0 liste(s)
+  rienDePret → ["✕","Ouvrir Mes chapitres…","▶ Ouvrir le pilotage et lancer","Enregistrer"] · 2 liste(s)

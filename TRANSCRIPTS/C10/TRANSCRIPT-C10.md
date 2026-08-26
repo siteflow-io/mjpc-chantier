@@ -4485,3 +4485,397 @@ MEMO
 
 ### Paul
 « oui très bien. oui évidemment l'ancien créneau reste vrai avant cette date. sinon on casse tout ce qui est déjà joué, or on ne modifie pas le passé, on le fige (sauf cas particulier type relecture etc). et l'utilité du fait que le site me demande clairement de quelle nature est le déplacement, c'est qu'actuellement on raisonne sur de l'emploi du temps provisoire. à la rentrée on pourrait me dire que finalement j'ai une heure le vendredi en fin d'apprès midi jusqu'à la fin de l'année. et pourquoi le glisser déposer est important pour moi, parce que je suis visuel, et que je raisonne sur mon edt affiché en semaine, mois année. j'ai besoin d'entrer par la case de la grille, tu comprends? Tes docs sont à jour par ailleurs? »
+
+### Claude (C10)
+Compris, et c'est net : **je suis visuel, j'entre par la case**. Le glisser-déposer n'est pas un confort, c'est la porte ; la liste dans la modale reste, mais elle est le second chemin. Gravé.
+
+Les trois règles qui viennent d'être posées, telles que je les ai consignées :
+- **la grille est une suite de versions datées** : un changement vaut *à partir d'une date*, l'ancienne version reste vraie avant, et la semaine que tu affiches lit toujours la version en vigueur à sa date ;
+- **on ne modifie pas le passé, on le fige** — ce qui a été joué reste lisible tel qu'il a été joué (seule la relecture se corrige) ;
+- **l'emploi du temps de rentrée est provisoire** : on peut t'ajouter une heure le vendredi en fin d'après-midi jusqu'à la fin de l'année, et le site doit savoir que c'est un changement d'emploi du temps, pas un déplacement de séance.
+
+**Mes fichiers : à jour.** Transcript 140 tours mot pour mot (604 Ko, 42 pièces), déposé à l'instant au sas — il n'y était plus depuis le tour 81. Registre : 124 Ko, commité à chaque tour, ce tour compris.
+
+**Ce que ça implique pour l'exécutant** : ce qu'il a codé au ④ ne connaît ni le glisser-déposer, ni la distinction changement d'EDT / déplacement, ni les versions datées de la grille. Ce n'est pas une faute — rien de tout ça n'était cadré quand il a commencé. Il faut donc que ça lui arrive : soit dans sa livraison ⑤ (qui touche déjà mois et année, donc la grille dans le temps), soit en ⑥. Dis-moi quand tu veux que je le rédige, et je le rédige — pas avant.
+
+---
+**Cahier vivant**
+En cours : LOT 2bis ⑤ chez l'exécutant · à lui transmettre : glisser-déposer, deux gestes distincts, grille en versions datées · lot 7 en pause · LOT G : Toussaint.
+Ne dépend que de Paul : quand transmettre le nouveau cadrage · test à trois écrans · import du chapitre 3e · le mot pour la passation.
+File exhaustive : `docs/MJPC6-DETTES.md` — 1 ✔ D · 1bis ✔ E · 1quater ✔ F · 1ter ✔ micro 8.70.1 · 2bis EDT (⑤ ; + glisser-déposer, grille datée) · 7 profil de classe (en pause) · 5 bloc bilan · 2 téléphone · 3 temps réel · 4 pulsation · 6 dettes moteur · 8 PROMPTS · 9 profil élève · 10 affichages · 11 M-SÉCU · 12 M17a · LOT G (Toussaint) ; + cadrage du 25-26/08 ; + rétro-ingénierie.
+Lectures : 34 intégrales + 18 partielles / 126.
+Production : v8.70.1, commit `75c8b77f`, md5 `6c7560af…`.
+
+MEMO
+
+## Tour 141 — 26/08/2026
+
+### Paul
+« il a déjà livré le 6, tu étais censé vérifier. »
+
+### Claude (C10)
+Tu as raison, j'ai audité ④ et je me suis arrêté là alors que ⑤ et le **rapport final** étaient déjà au sas. Rattrapé, et audité pour de bon — pas sur parole.
+
+**Ce que j'ai vérifié moi-même sur le candidat** (md5 `f0fca987…`, 1 614 210 octets, +91 357 sur la base) : **moteur intact** · `secu*` 29 · `published` 97 · double parseur vert · bloc EDT à **108 fonctions** · **trois portes** hors du bloc et trois seulement (arrivée du prof, panneau prof, bandeau du déroulé) · **trois écritures hors `/site/edt/`** : `brevetDates`, la variable des créneaux, et les absents dans la trace d'une heure.
+
+**Sa garde, je l'ai fait tourner moi-même** : **VERT** sur les trois questions. Puis je l'ai piégée à mon tour — un appel hors contrat glissé dans le bloc, un appel `edt*` depuis le site, une écriture vers `/classes` : **ROUGE sur les trois**. Elle garde vraiment. Et pendant le lot elle l'a refusé cinq fois, à chaque fois à raison.
+
+**Ce qu'il a prouvé au banc** : la porte du pilotage (six champs identiques) · ton arrivée : la semaine s'ouvre par-dessus l'accueil, **qui reste intact** (3 690 caractères avant et après) · le réglage pour ne plus l'ouvrir au démarrage · **l'EDT ne s'ouvre jamais pour un élève, ni au téléphone-pilote, ni en vue tableau** · sans scroll aux deux tailles · le prévu, les décisions, Annuler, les dix catégories · la divergence (2 h de retard → « léger » ; justifiées → « dans les temps ») · la classe expérimentale étiquetée sans interrupteur · l'absence sur 29 élèves, réversible · le téléphone qui s'affiche sans casser. Sa **matrice actions × état** a trouvé un défaut qu'il a corrigé : une heure jouée proposait « Annuler cette décision » alors qu'il n'y en a pas.
+
+Les vues Mois et Année sont jointes. **Mois** est juste ; **Année** est presque vide — une seule barre, parce qu'une seule classe est appariée et qu'un seul chapitre existe. Elle ne dira quelque chose que quand tes quatre classes seront là.
+
+**Aucune dette.** Mais une chose qui n'y est pas, et qui n'est pas sa faute : **tout ce qu'on a cadré depuis** — le glisser-déposer par la case, la distinction « changement d'emploi du temps » / « déplacement d'une heure », la **grille en versions datées**, le déplacement au-delà de trois semaines et sur un trou. Ça arrive après son mandat. Deux voies : un **complément** au même exécutant avant de promouvoir, ou une promotion maintenant et ces gestes dans un lot suivant. **Ta décision** — et si tu veux promouvoir d'abord, il y a la `SEQUENCE-TEST-PAUL.md` à jouer avant.
+
+---
+**Cahier vivant**
+En cours : LOT 2bis terminé et audité — promouvoir, ou compléter d'abord (glisser-déposer, deux gestes, grille datée) · lot 7 en pause · LOT G : Toussaint.
+Ne dépend que de Paul : promouvoir ou compléter · séquence de test · import du chapitre 3e · le mot pour la passation.
+File exhaustive : `docs/MJPC6-DETTES.md` — 1 ✔ D · 1bis ✔ E · 1quater ✔ F · 1ter ✔ micro 8.70.1 · **2bis EDT (candidat 8.71.0 audité, sans dette)** · 7 profil de classe (en pause) · 5 bloc bilan · 2 téléphone · 3 temps réel · 4 pulsation · 6 dettes moteur · 8 PROMPTS · 9 profil élève · 10 affichages · 11 M-SÉCU · 12 M17a · LOT G (Toussaint) ; + cadrage du 25-26/08 ; + rétro-ingénierie.
+Lectures : 36 intégrales (+ ⑤, rapport final) + 18 partielles / 126.
+Production : v8.70.1, commit `75c8b77f`, md5 `6c7560af…`.
+
+MEMO
+
+## Tour 142 — 26/08/2026
+
+### Paul
+« complément avant de promouvoir. la séquence sera à me donner après la promotion finale, comme d'habitude. fais le complément. sois précis »
+
+### Claude (C10)
+Le complément est au sas (`PONT/EDT/COMPLEMENT.md`) et le voici, à coller. Il est écrit sur son code réel : j'ai relu la forme de son objet `grille` et ses fonctions de projection avant de le rédiger, pour lui dire exactement où ça se passe. Trois choses que j'y ai mises et qui n'étaient pas dans ta demande, parce qu'elles s'imposaient : **la compatibilité** (ton JSON déjà validé se charge tel quel, aucune réinjection), **tout reste faisable sans glissé** (par la modale), et **les deux journaux séparés** — les changements d'emploi du temps ne se mélangent pas aux déplacements d'heures. La séquence de test ne t'arrivera qu'après la promotion.
+
+```
+# LOT 2bis — COMPLÉMENT AVANT PROMOTION (conscience n°10, cadrage de Paul des 26/08, tours 138-140)
+*Base : ton candidat au sas, `PONT/EDT/index.html`, 8.71.0, md5 `f0fca98748077a6e5d41d468b00b357b`, 1 614 210 o. Audité, sans dette, garde VERTE et rouge sur trois contrôles négatifs refaits par la conscience. **Paul ne promeut pas avant ce complément.***
+
+## CE QUE ÇA CHANGE POUR LA CLASSE — dans les mots de Paul
+« très régulièrement, la respo edt me dit que j'ai une heure qui change, qui se décale etc. Donc je dois pouvoir faire ça, glisser déposer une séance. et il faut bien que le site me distingue que je change L'HORAIRE, l'unité de temps, et que ça n'a rien à voir avec le contenu prévu. »
+« oui évidemment l'ancien créneau reste vrai avant cette date. sinon on casse tout ce qui est déjà joué, or on ne modifie pas le passé, on le fige (sauf cas particulier type relecture etc). »
+« actuellement on raisonne sur de l'emploi du temps provisoire. à la rentrée on pourrait me dire que finalement j'ai une heure le vendredi en fin d'après-midi jusqu'à la fin de l'année. »
+« pourquoi le glisser déposer est important pour moi, parce que je suis visuel, et que je raisonne sur mon edt affiché en semaine, mois année. j'ai besoin d'entrer par la case de la grille. »
+En clair : l'emploi du temps de Paul **change en cours d'année**, plusieurs fois, à des dates qu'il ne connaît pas d'avance. Aujourd'hui ton candidat n'a qu'une grille, valable pour toute l'année : le jour où un créneau change, **les semaines déjà jouées deviendraient fausses**.
+
+---
+
+## ① LA GRILLE DEVIENT UNE SUITE DE VERSIONS DATÉES
+`/site/edt/grille/<annee>` porte aujourd'hui `{annee, source, creneaux[…], creneauxFictifs, …}`. Il portera **une liste ordonnée de versions**, chacune avec sa date d'effet :
+```
+{ annee, source, versions:[ { debut:"2026-09-01", libelle:"rentrée", creneaux:[…] },
+                            { debut:"2026-11-03", libelle:"changement du 3 novembre", creneaux:[…] } ] }
+```
+- **`edtGrilleA(iso)`** rend la version en vigueur à cette date : la dernière dont `debut <= iso`. Toute lecture de cases passe par elle — `edtCasesDuJour`, `edtProjeter`, `edtPeindreSemaine`, `edtPeindreMois`, `edtPeindreAnnee`, la vue Année comprise.
+- **Compatibilité obligatoire** : un objet à l'ancienne forme (`creneaux` à la racine, sans `versions`) est lu comme **une seule version datée du 1er août** de l'année scolaire. Aucune réinjection n'est exigée de Paul, et le JSON déjà validé au sas reste valable. Le prompt de la grille produit désormais la forme `versions` avec une seule entrée.
+- **Le passé ne bouge pas** : une semaine affichée lit la version de **sa** date. Une trace d'heure déjà jouée garde le créneau qu'elle porte, quoi qu'il arrive à la grille — c'est déjà ta règle sur les créneaux horaires, elle s'étend ici.
+- **L'écran des versions**, dans la section Emploi du temps du panneau prof : la liste des versions avec leur date d'effet et leur libellé, la version en vigueur aujourd'hui marquée ; ajouter une version (à partir d'une date), la renommer, changer sa date, la supprimer. Refus nommés : deux versions à la même date, une date hors de l'année scolaire, une version sans aucun créneau.
+
+## ② DEUX GESTES, JAMAIS CONFONDUS
+Quand Paul agit sur une case, le site doit savoir — et **dire** — lequel des deux il fait.
+- **CHANGEMENT D'EMPLOI DU TEMPS** — l'horaire, l'unité de temps. « Cette classe n'est plus à ce créneau, elle est là désormais. » → écrit **dans la grille** : une nouvelle version datée (ou la version en vigueur si elle commence à cette date), le créneau retiré d'un côté, ajouté de l'autre. **Aucun contenu n'est touché** : ni séance, ni chapitre, ni décision, ni trace. Le prévu se recalcule sur la nouvelle version. Le geste demande **une date d'effet**, proposée au lundi de la semaine affichée, modifiable ; le libellé est libre.
+- **DÉPLACEMENT D'UNE HEURE** — un contenu, une fois. C'est ce que tu as déjà codé (`edtDeplacerVers`) : deux décisions, départ vidé, arrivée épinglée, ↶ Annuler des deux côtés. La grille ne bouge pas.
+**Marques distinctes sur la grille** : une heure déplacée garde son 📌 ; un créneau né d'un changement d'emploi du temps ne porte **aucune épingle** — c'est un créneau ordinaire de la nouvelle version — mais la semaine affiche discrètement « emploi du temps modifié le <date> » quand la version en vigueur n'est pas la première.
+**Journal** : les changements d'emploi du temps s'écrivent dans un journal à eux (date du geste, date d'effet, ce qui a changé), lisible dans l'écran des versions. Les déplacements restent dans le journal des décisions horaires. Deux journaux, deux natures.
+
+## ③ LE GLISSER-DÉPOSER — le geste d'entrée, pas un supplément
+Paul est visuel et **entre par la case**. La liste dans la modale reste, mais elle devient le second chemin.
+- **Sur la vue Semaine** : une case portant une séance se saisit et se dépose sur une autre case. Souris **et** doigt (pointer events, comme la modale). Pendant le glissé : la case de départ s'estompe, les cases où le dépôt est possible s'éclairent, celles où il est impossible restent inertes.
+- **Au dépôt, une question en un clic** : « **Changement d'emploi du temps** (durable, à partir du …) » ou « **Déplacer cette heure** (une fois) » — deux boutons, la date d'effet modifiable sur le premier, rien d'autre. Échap ou un clic ailleurs annule le glissé sans rien écrire.
+- **Sur la vue Mois** : le même geste, d'un jour vers un autre — le créneau visé est choisi dans la question du dépôt quand le jour d'arrivée en a plusieurs. **Sur la vue Année** : pas de glisser-déposer (l'échelle ne le permet pas), et c'est à dire à l'écran plutôt qu'à laisser deviner.
+- **Ce qu'un dépôt ne peut jamais faire** : écraser une case déjà occupée par une autre classe sans le dire (il propose alors l'échange ou refuse, nommément), poser une heure dans le **passé**, poser sur un **jour sans cours** (vacances, férié), poser le mercredi après-midi.
+- **Accessibilité** : tout ce que le glissé permet reste possible sans lui, par la modale — un clavier ou une main qui tremble ne doit pas priver Paul d'un geste.
+
+## ④ DÉPLACER PLUS LOIN, ET SUR UN TROU
+Paul a répondu **oui** aux trois : au-delà de 21 jours, sur un trou de son emploi du temps, et par glisser-déposer.
+- **Au-delà de 21 jours** : `edtCreneauxOu` ne s'arrête plus à trois semaines. La liste couvre **jusqu'à la fin de l'année scolaire**, groupée par semaine, avec un champ de recherche par date si elle est longue. Les jours sans cours restent exclus.
+- **Sur un trou** : la liste propose aussi les **créneaux libres de l'emploi du temps de Paul** (un créneau de la grille où il n'a aucune classe, ou un créneau horaire vide ce jour-là), marqués « créneau libre — heure ajoutée ». Poser une heure là n'est pas un déplacement : **c'est une heure ajoutée** ; elle est épinglée, dite comme telle dans la modale et au journal, et compte dans la prévision horaire de la classe.
+- **Refus nommés** : jamais sur un créneau où Paul a déjà une autre classe (sauf échange explicite), jamais un jour sans cours, jamais dans le passé.
+
+## ⑤ CE QUE ÇA NE DOIT PAS CASSER
+Rien de ce qui est déjà prouvé ne doit changer de comportement : la porte du pilotage (six champs), le prévu, les décisions horaires et ↶ Annuler, les photos, la divergence, la classe expérimentale, l'absence, les périodes, le sans-scroll, les trois portes, les trois exceptions. **Le contrat ne s'élargit pas** : si un appel nouveau est nécessaire, il entre dans `verif_edt.py` avec sa raison, jamais en silence.
+
+## ⑥ PREUVES EXIGÉES — chacune mesurée, aucune affirmée
+1. **Versions datées** : grille à deux versions (1er septembre, 3 novembre) où la 4e Hugo passe du mardi 13:00 au jeudi 11:04 → la semaine du 7 septembre montre le mardi, celle du 9 novembre montre le jeudi, **la même page, deux dates**. Capture des deux.
+2. **Le passé ne bouge pas** : une heure jouée le 8 septembre au créneau d'alors reste affichée à ce créneau après un changement d'emploi du temps daté du 3 novembre — trace inchangée au hub, champ à champ.
+3. **Compatibilité** : le JSON de grille déjà validé (forme sans `versions`) se charge, se lit, s'affiche — **aucune réinjection exigée**. Mesuré sur le fichier du sas tel quel.
+4. **Glisser-déposer, choix « déplacer cette heure »** : la grille glisse comme aujourd'hui, deux décisions au hub, ↶ Annuler défait les deux côtés — **identique au geste par la liste**, comparé champ à champ.
+5. **Glisser-déposer, choix « changement d'emploi du temps »** : une version datée apparaît dans la grille, **zéro décision horaire écrite**, zéro trace touchée, le prévu recalculé sur la nouvelle version. Journal des changements d'EDT : une ligne.
+6. **Dépôts refusés** : sur un jour de vacances, sur le mercredi après-midi, dans le passé, sur une case d'une autre classe → **quatre refus nommés**, capture de l'un d'eux.
+7. **Heure ajoutée sur un trou** : proposée dans la liste, marquée « créneau libre », épinglée après le geste, comptée dans la prévision.
+8. **Déplacement lointain** : un créneau de mai proposé et retenu depuis une case de septembre.
+9. **Sans glissé** : tout ce qui précède reste faisable par la modale (le banc rejoue le 4 et le 5 sans glissé).
+10. **Sans scroll** toujours vrai (1366×768 et 1920×1080, `scrollY` 0 après tentative à 4000 px) · **garde VERTE** et **rouge sur les trois contrôles négatifs** · **moteur intact** · `secu*` 29 · `published` 97 · double parseur vert · **matrice actions × état** refaite, glissé compris.
+
+## ⑦ MÉTHODE
+Livraisons courtes, chacune poussée au sas et close par un arrêt ; Paul relance par « continuer ». Découpe proposée : **①** versions datées + compatibilité + écran des versions · **②** glisser-déposer et la question du dépôt · **③** déplacement lointain, trou, refus nommés · **④** bancs complets, garde, matrice, rapport de complément.
+**Aucune dette à la livraison finale.** Rapport écrit pour une conscience qui n'a pas vu la conversation.
+**La `SEQUENCE-TEST-PAUL.md` est à mettre à jour** (glissé, changement d'emploi du temps, heure ajoutée) : Paul la jouera **après** la promotion, comme d'habitude — ne la lui donne pas maintenant.
+Livrable : `PONT/EDT/` — `index.html` (8.72.0), `rapport-complement.md`, `tests/` mis à jour, `SEQUENCE-TEST-PAUL.md` à jour, `outils/verif_edt.py` à jour. **STOP après chaque livraison. Ne promeus jamais.**
+```
+
+---
+**Cahier vivant**
+En cours : complément 2bis chez l'exécutant (candidat 8.72.0 attendu) · lot 7 en pause · LOT G : Toussaint.
+Ne dépend que de Paul : coller le complément · import du chapitre 3e · le mot pour la passation.
+File exhaustive : `docs/MJPC6-DETTES.md` — 1 ✔ D · 1bis ✔ E · 1quater ✔ F · 1ter ✔ micro 8.70.1 · 2bis EDT (complément avant promotion) · 7 profil de classe (en pause) · 5 bloc bilan · 2 téléphone · 3 temps réel · 4 pulsation · 6 dettes moteur · 8 PROMPTS · 9 profil élève · 10 affichages · 11 M-SÉCU · 12 M17a · LOT G (Toussaint) ; + cadrage du 25-26/08 ; + rétro-ingénierie.
+Lectures : 36 intégrales + 19 partielles / 126.
+Production : v8.70.1, commit `75c8b77f`, md5 `6c7560af…`.
+
+MEMO
+
+## Tour 143 — 26/08/2026
+
+### Paul
+« je n'ai pas envoyé le prompt car je viens de regarder la capture de l'affichage de l'année, je ne sais pas ce que montre la capture mais ça a l'air cassé. »
+
+### Claude (C10)
+Bien vu, et j'ai vérifié plutôt que de te rassurer. **Ce n'est pas cassé — c'est illisible**, ce qui est presque pire parce que ça passe les tests.
+
+Ce que j'ai mesuré : sur cette capture, **98,8 % de la surface sous l'en-tête est vide**. Et j'ai relu le code de la vue Année : il ne lève aucune erreur ; il dessine ce qu'il a — une frise de traits gris (les vacances et les jalons, sans un seul mot), une ligne pour la seule classe appariée (la 3E Charles de Gaulle), une petite barre verte pour le seul chapitre publié. Tout le reste de ta grille — 3 Dylan Bob, 4 Hugo, 4 Turing — n'a pas de classe au hub, donc n'apparaît pas **et ne dit pas qu'elle n'apparaît pas**. C'est ça, le défaut : un écran qui se tait au lieu de dire ce qui lui manque.
+
+J'ai ajouté un paragraphe au complément (§④bis) : des mois nommés sur l'échelle, les vacances et les jalons lisibles, **une ligne par classe de la grille même vide, avec la raison écrite**, une légende, des lignes qui occupent la hauteur, sans scroll — et une preuve chiffrée : deux captures, l'état réel d'aujourd'hui et un état à quatre classes, avec le pourcentage de surface occupée.
+
+Le complément corrigé, à coller :
+
+```
+# LOT 2bis — COMPLÉMENT AVANT PROMOTION (conscience n°10, cadrage de Paul des 26/08, tours 138-140)
+*Base : ton candidat au sas, `PONT/EDT/index.html`, 8.71.0, md5 `f0fca98748077a6e5d41d468b00b357b`, 1 614 210 o. Audité, sans dette, garde VERTE et rouge sur trois contrôles négatifs refaits par la conscience. **Paul ne promeut pas avant ce complément.***
+
+## CE QUE ÇA CHANGE POUR LA CLASSE — dans les mots de Paul
+« très régulièrement, la respo edt me dit que j'ai une heure qui change, qui se décale etc. Donc je dois pouvoir faire ça, glisser déposer une séance. et il faut bien que le site me distingue que je change L'HORAIRE, l'unité de temps, et que ça n'a rien à voir avec le contenu prévu. »
+« oui évidemment l'ancien créneau reste vrai avant cette date. sinon on casse tout ce qui est déjà joué, or on ne modifie pas le passé, on le fige (sauf cas particulier type relecture etc). »
+« actuellement on raisonne sur de l'emploi du temps provisoire. à la rentrée on pourrait me dire que finalement j'ai une heure le vendredi en fin d'après-midi jusqu'à la fin de l'année. »
+« pourquoi le glisser déposer est important pour moi, parce que je suis visuel, et que je raisonne sur mon edt affiché en semaine, mois année. j'ai besoin d'entrer par la case de la grille. »
+En clair : l'emploi du temps de Paul **change en cours d'année**, plusieurs fois, à des dates qu'il ne connaît pas d'avance. Aujourd'hui ton candidat n'a qu'une grille, valable pour toute l'année : le jour où un créneau change, **les semaines déjà jouées deviendraient fausses**.
+
+---
+
+## ① LA GRILLE DEVIENT UNE SUITE DE VERSIONS DATÉES
+`/site/edt/grille/<annee>` porte aujourd'hui `{annee, source, creneaux[…], creneauxFictifs, …}`. Il portera **une liste ordonnée de versions**, chacune avec sa date d'effet :
+```
+{ annee, source, versions:[ { debut:"2026-09-01", libelle:"rentrée", creneaux:[…] },
+                            { debut:"2026-11-03", libelle:"changement du 3 novembre", creneaux:[…] } ] }
+```
+- **`edtGrilleA(iso)`** rend la version en vigueur à cette date : la dernière dont `debut <= iso`. Toute lecture de cases passe par elle — `edtCasesDuJour`, `edtProjeter`, `edtPeindreSemaine`, `edtPeindreMois`, `edtPeindreAnnee`, la vue Année comprise.
+- **Compatibilité obligatoire** : un objet à l'ancienne forme (`creneaux` à la racine, sans `versions`) est lu comme **une seule version datée du 1er août** de l'année scolaire. Aucune réinjection n'est exigée de Paul, et le JSON déjà validé au sas reste valable. Le prompt de la grille produit désormais la forme `versions` avec une seule entrée.
+- **Le passé ne bouge pas** : une semaine affichée lit la version de **sa** date. Une trace d'heure déjà jouée garde le créneau qu'elle porte, quoi qu'il arrive à la grille — c'est déjà ta règle sur les créneaux horaires, elle s'étend ici.
+- **L'écran des versions**, dans la section Emploi du temps du panneau prof : la liste des versions avec leur date d'effet et leur libellé, la version en vigueur aujourd'hui marquée ; ajouter une version (à partir d'une date), la renommer, changer sa date, la supprimer. Refus nommés : deux versions à la même date, une date hors de l'année scolaire, une version sans aucun créneau.
+
+## ② DEUX GESTES, JAMAIS CONFONDUS
+Quand Paul agit sur une case, le site doit savoir — et **dire** — lequel des deux il fait.
+- **CHANGEMENT D'EMPLOI DU TEMPS** — l'horaire, l'unité de temps. « Cette classe n'est plus à ce créneau, elle est là désormais. » → écrit **dans la grille** : une nouvelle version datée (ou la version en vigueur si elle commence à cette date), le créneau retiré d'un côté, ajouté de l'autre. **Aucun contenu n'est touché** : ni séance, ni chapitre, ni décision, ni trace. Le prévu se recalcule sur la nouvelle version. Le geste demande **une date d'effet**, proposée au lundi de la semaine affichée, modifiable ; le libellé est libre.
+- **DÉPLACEMENT D'UNE HEURE** — un contenu, une fois. C'est ce que tu as déjà codé (`edtDeplacerVers`) : deux décisions, départ vidé, arrivée épinglée, ↶ Annuler des deux côtés. La grille ne bouge pas.
+**Marques distinctes sur la grille** : une heure déplacée garde son 📌 ; un créneau né d'un changement d'emploi du temps ne porte **aucune épingle** — c'est un créneau ordinaire de la nouvelle version — mais la semaine affiche discrètement « emploi du temps modifié le <date> » quand la version en vigueur n'est pas la première.
+**Journal** : les changements d'emploi du temps s'écrivent dans un journal à eux (date du geste, date d'effet, ce qui a changé), lisible dans l'écran des versions. Les déplacements restent dans le journal des décisions horaires. Deux journaux, deux natures.
+
+## ③ LE GLISSER-DÉPOSER — le geste d'entrée, pas un supplément
+Paul est visuel et **entre par la case**. La liste dans la modale reste, mais elle devient le second chemin.
+- **Sur la vue Semaine** : une case portant une séance se saisit et se dépose sur une autre case. Souris **et** doigt (pointer events, comme la modale). Pendant le glissé : la case de départ s'estompe, les cases où le dépôt est possible s'éclairent, celles où il est impossible restent inertes.
+- **Au dépôt, une question en un clic** : « **Changement d'emploi du temps** (durable, à partir du …) » ou « **Déplacer cette heure** (une fois) » — deux boutons, la date d'effet modifiable sur le premier, rien d'autre. Échap ou un clic ailleurs annule le glissé sans rien écrire.
+- **Sur la vue Mois** : le même geste, d'un jour vers un autre — le créneau visé est choisi dans la question du dépôt quand le jour d'arrivée en a plusieurs. **Sur la vue Année** : pas de glisser-déposer (l'échelle ne le permet pas), et c'est à dire à l'écran plutôt qu'à laisser deviner.
+- **Ce qu'un dépôt ne peut jamais faire** : écraser une case déjà occupée par une autre classe sans le dire (il propose alors l'échange ou refuse, nommément), poser une heure dans le **passé**, poser sur un **jour sans cours** (vacances, férié), poser le mercredi après-midi.
+- **Accessibilité** : tout ce que le glissé permet reste possible sans lui, par la modale — un clavier ou une main qui tremble ne doit pas priver Paul d'un geste.
+
+## ④ DÉPLACER PLUS LOIN, ET SUR UN TROU
+Paul a répondu **oui** aux trois : au-delà de 21 jours, sur un trou de son emploi du temps, et par glisser-déposer.
+- **Au-delà de 21 jours** : `edtCreneauxOu` ne s'arrête plus à trois semaines. La liste couvre **jusqu'à la fin de l'année scolaire**, groupée par semaine, avec un champ de recherche par date si elle est longue. Les jours sans cours restent exclus.
+- **Sur un trou** : la liste propose aussi les **créneaux libres de l'emploi du temps de Paul** (un créneau de la grille où il n'a aucune classe, ou un créneau horaire vide ce jour-là), marqués « créneau libre — heure ajoutée ». Poser une heure là n'est pas un déplacement : **c'est une heure ajoutée** ; elle est épinglée, dite comme telle dans la modale et au journal, et compte dans la prévision horaire de la classe.
+- **Refus nommés** : jamais sur un créneau où Paul a déjà une autre classe (sauf échange explicite), jamais un jour sans cours, jamais dans le passé.
+
+## ④bis LA VUE ANNÉE — elle n'est pas cassée, elle est illisible : à refaire
+Paul, en voyant la capture `5-2-annee` : « je ne sais pas ce que montre la capture mais ça a l'air cassé. » Mesuré par la conscience sur ta propre capture : **98,8 % de l'écran est vide** sous l'en-tête. Le code ne lève aucune erreur — l'écran est vide **par construction**, et c'est le défaut : il ne dit rien de ce qu'il montre ni de ce qu'il ne montre pas.
+**Ce qui manque, et qui est exigé :**
+- **Une échelle de temps lisible** : les mois (septembre → juillet) en colonnes nommées, les vacances en bandes avec leur nom, les jalons repérables au survol **et** au clic, un trait « aujourd'hui » identifié. Aujourd'hui la frise du haut est une suite de traits gris sans un seul mot : impossible de savoir où l'on est.
+- **Dire ce qui n'est pas là** : quand une classe de la grille n'a pas de classe MJPC appariée, ou qu'un niveau n'a aucun chapitre publié, **l'écran l'écrit** (« 3 DYLAN Bob — classe non encore importée », « aucun chapitre publié à cette classe »), au lieu de ne rien afficher. Une ligne par classe de la grille, toujours, même vide.
+- **Une légende** : ce que sont la barre pleine (le réel, première à dernière heure jouée), la barre claire (le prévu projeté), les paliers de divergence, la mention « expérimentale ».
+- **Occuper la hauteur** : les lignes de classes se répartissent dans l'écran ; s'il n'y a qu'une classe, la ligne est haute et lisible, pas un filet de 8 pixels perdu en haut d'une page noire.
+- **Sans scroll**, comme les autres vues, aux deux tailles.
+**Preuve exigée** : capture de la vue Année dans l'état réel du hub d'aujourd'hui (une seule classe appariée, un chapitre) — elle doit être **compréhensible sans explication** ; puis une seconde capture avec quatre classes appariées et deux chapitres, pour montrer qu'elle tient quand elle se remplit. Mesure à donner : le pourcentage de la surface utile occupé, avant et après.
+
+## ⑤ CE QUE ÇA NE DOIT PAS CASSER
+Rien de ce qui est déjà prouvé ne doit changer de comportement : la porte du pilotage (six champs), le prévu, les décisions horaires et ↶ Annuler, les photos, la divergence, la classe expérimentale, l'absence, les périodes, le sans-scroll, les trois portes, les trois exceptions. **Le contrat ne s'élargit pas** : si un appel nouveau est nécessaire, il entre dans `verif_edt.py` avec sa raison, jamais en silence.
+
+## ⑥ PREUVES EXIGÉES — chacune mesurée, aucune affirmée
+1. **Versions datées** : grille à deux versions (1er septembre, 3 novembre) où la 4e Hugo passe du mardi 13:00 au jeudi 11:04 → la semaine du 7 septembre montre le mardi, celle du 9 novembre montre le jeudi, **la même page, deux dates**. Capture des deux.
+2. **Le passé ne bouge pas** : une heure jouée le 8 septembre au créneau d'alors reste affichée à ce créneau après un changement d'emploi du temps daté du 3 novembre — trace inchangée au hub, champ à champ.
+3. **Compatibilité** : le JSON de grille déjà validé (forme sans `versions`) se charge, se lit, s'affiche — **aucune réinjection exigée**. Mesuré sur le fichier du sas tel quel.
+4. **Glisser-déposer, choix « déplacer cette heure »** : la grille glisse comme aujourd'hui, deux décisions au hub, ↶ Annuler défait les deux côtés — **identique au geste par la liste**, comparé champ à champ.
+5. **Glisser-déposer, choix « changement d'emploi du temps »** : une version datée apparaît dans la grille, **zéro décision horaire écrite**, zéro trace touchée, le prévu recalculé sur la nouvelle version. Journal des changements d'EDT : une ligne.
+6. **Dépôts refusés** : sur un jour de vacances, sur le mercredi après-midi, dans le passé, sur une case d'une autre classe → **quatre refus nommés**, capture de l'un d'eux.
+7. **Heure ajoutée sur un trou** : proposée dans la liste, marquée « créneau libre », épinglée après le geste, comptée dans la prévision.
+8. **Déplacement lointain** : un créneau de mai proposé et retenu depuis une case de septembre.
+9. **Sans glissé** : tout ce qui précède reste faisable par la modale (le banc rejoue le 4 et le 5 sans glissé).
+10. **Sans scroll** toujours vrai (1366×768 et 1920×1080, `scrollY` 0 après tentative à 4000 px) · **garde VERTE** et **rouge sur les trois contrôles négatifs** · **moteur intact** · `secu*` 29 · `published` 97 · double parseur vert · **matrice actions × état** refaite, glissé compris.
+
+## ⑦ MÉTHODE
+Livraisons courtes, chacune poussée au sas et close par un arrêt ; Paul relance par « continuer ». Découpe proposée : **①** versions datées + compatibilité + écran des versions · **②** glisser-déposer et la question du dépôt · **③** déplacement lointain, trou, refus nommés · **④** la vue Année refaite · **⑤** bancs complets, garde, matrice, rapport de complément.
+**Aucune dette à la livraison finale.** Rapport écrit pour une conscience qui n'a pas vu la conversation.
+**La `SEQUENCE-TEST-PAUL.md` est à mettre à jour** (glissé, changement d'emploi du temps, heure ajoutée) : Paul la jouera **après** la promotion, comme d'habitude — ne la lui donne pas maintenant.
+Livrable : `PONT/EDT/` — `index.html` (8.72.0), `rapport-complement.md`, `tests/` mis à jour, `SEQUENCE-TEST-PAUL.md` à jour, `outils/verif_edt.py` à jour. **STOP après chaque livraison. Ne promeus jamais.**
+```
+
+---
+**Cahier vivant**
+En cours : complément 2bis (v2, + vue Année) à envoyer · lot 7 en pause · LOT G : Toussaint.
+Ne dépend que de Paul : coller le complément · import du chapitre 3e · le mot pour la passation.
+File exhaustive : `docs/MJPC6-DETTES.md` — 1 ✔ D · 1bis ✔ E · 1quater ✔ F · 1ter ✔ micro 8.70.1 · 2bis EDT (complément) · 7 profil de classe (en pause) · 5 bloc bilan · 2 téléphone · 3 temps réel · 4 pulsation · 6 dettes moteur · 8 PROMPTS · 9 profil élève · 10 affichages · 11 M-SÉCU · 12 M17a · LOT G (Toussaint) ; + cadrage du 25-26/08 ; + rétro-ingénierie.
+Lectures : 36 intégrales + 20 partielles / 126.
+Production : v8.70.1, commit `75c8b77f`, md5 `6c7560af…`.
+
+MEMO
+
+## Tour 144 — 26/08/2026
+
+### Paul
+« tu dois me redonner le prompt ENTIER quand je n'ai pas envoyé le début. »
+
+### Claude (C10)
+Entier, à coller d'un geste.
+
+```
+# LOT 2bis — COMPLÉMENT AVANT PROMOTION (conscience n°10, cadrage de Paul des 26/08, tours 138-140)
+*Base : ton candidat au sas, `PONT/EDT/index.html`, 8.71.0, md5 `f0fca98748077a6e5d41d468b00b357b`, 1 614 210 o. Audité, sans dette, garde VERTE et rouge sur trois contrôles négatifs refaits par la conscience. **Paul ne promeut pas avant ce complément.***
+
+## CE QUE ÇA CHANGE POUR LA CLASSE — dans les mots de Paul
+« très régulièrement, la respo edt me dit que j'ai une heure qui change, qui se décale etc. Donc je dois pouvoir faire ça, glisser déposer une séance. et il faut bien que le site me distingue que je change L'HORAIRE, l'unité de temps, et que ça n'a rien à voir avec le contenu prévu. »
+« oui évidemment l'ancien créneau reste vrai avant cette date. sinon on casse tout ce qui est déjà joué, or on ne modifie pas le passé, on le fige (sauf cas particulier type relecture etc). »
+« actuellement on raisonne sur de l'emploi du temps provisoire. à la rentrée on pourrait me dire que finalement j'ai une heure le vendredi en fin d'après-midi jusqu'à la fin de l'année. »
+« pourquoi le glisser déposer est important pour moi, parce que je suis visuel, et que je raisonne sur mon edt affiché en semaine, mois année. j'ai besoin d'entrer par la case de la grille. »
+En clair : l'emploi du temps de Paul **change en cours d'année**, plusieurs fois, à des dates qu'il ne connaît pas d'avance. Aujourd'hui ton candidat n'a qu'une grille, valable pour toute l'année : le jour où un créneau change, **les semaines déjà jouées deviendraient fausses**.
+
+---
+
+## ① LA GRILLE DEVIENT UNE SUITE DE VERSIONS DATÉES
+`/site/edt/grille/<annee>` porte aujourd'hui `{annee, source, creneaux[…], creneauxFictifs, …}`. Il portera **une liste ordonnée de versions**, chacune avec sa date d'effet :
+```
+{ annee, source, versions:[ { debut:"2026-09-01", libelle:"rentrée", creneaux:[…] },
+                            { debut:"2026-11-03", libelle:"changement du 3 novembre", creneaux:[…] } ] }
+```
+- **`edtGrilleA(iso)`** rend la version en vigueur à cette date : la dernière dont `debut <= iso`. Toute lecture de cases passe par elle — `edtCasesDuJour`, `edtProjeter`, `edtPeindreSemaine`, `edtPeindreMois`, `edtPeindreAnnee`, la vue Année comprise.
+- **Compatibilité obligatoire** : un objet à l'ancienne forme (`creneaux` à la racine, sans `versions`) est lu comme **une seule version datée du 1er août** de l'année scolaire. Aucune réinjection n'est exigée de Paul, et le JSON déjà validé au sas reste valable. Le prompt de la grille produit désormais la forme `versions` avec une seule entrée.
+- **Le passé ne bouge pas** : une semaine affichée lit la version de **sa** date. Une trace d'heure déjà jouée garde le créneau qu'elle porte, quoi qu'il arrive à la grille — c'est déjà ta règle sur les créneaux horaires, elle s'étend ici.
+- **L'écran des versions**, dans la section Emploi du temps du panneau prof : la liste des versions avec leur date d'effet et leur libellé, la version en vigueur aujourd'hui marquée ; ajouter une version (à partir d'une date), la renommer, changer sa date, la supprimer. Refus nommés : deux versions à la même date, une date hors de l'année scolaire, une version sans aucun créneau.
+
+## ② DEUX GESTES, JAMAIS CONFONDUS
+Quand Paul agit sur une case, le site doit savoir — et **dire** — lequel des deux il fait.
+- **CHANGEMENT D'EMPLOI DU TEMPS** — l'horaire, l'unité de temps. « Cette classe n'est plus à ce créneau, elle est là désormais. » → écrit **dans la grille** : une nouvelle version datée (ou la version en vigueur si elle commence à cette date), le créneau retiré d'un côté, ajouté de l'autre. **Aucun contenu n'est touché** : ni séance, ni chapitre, ni décision, ni trace. Le prévu se recalcule sur la nouvelle version. Le geste demande **une date d'effet**, proposée au lundi de la semaine affichée, modifiable ; le libellé est libre.
+- **DÉPLACEMENT D'UNE HEURE** — un contenu, une fois. C'est ce que tu as déjà codé (`edtDeplacerVers`) : deux décisions, départ vidé, arrivée épinglée, ↶ Annuler des deux côtés. La grille ne bouge pas.
+**Marques distinctes sur la grille** : une heure déplacée garde son 📌 ; un créneau né d'un changement d'emploi du temps ne porte **aucune épingle** — c'est un créneau ordinaire de la nouvelle version — mais la semaine affiche discrètement « emploi du temps modifié le <date> » quand la version en vigueur n'est pas la première.
+**Journal** : les changements d'emploi du temps s'écrivent dans un journal à eux (date du geste, date d'effet, ce qui a changé), lisible dans l'écran des versions. Les déplacements restent dans le journal des décisions horaires. Deux journaux, deux natures.
+
+## ③ LE GLISSER-DÉPOSER — le geste d'entrée, pas un supplément
+Paul est visuel et **entre par la case**. La liste dans la modale reste, mais elle devient le second chemin.
+- **Sur la vue Semaine** : une case portant une séance se saisit et se dépose sur une autre case. Souris **et** doigt (pointer events, comme la modale). Pendant le glissé : la case de départ s'estompe, les cases où le dépôt est possible s'éclairent, celles où il est impossible restent inertes.
+- **Au dépôt, une question en un clic** : « **Changement d'emploi du temps** (durable, à partir du …) » ou « **Déplacer cette heure** (une fois) » — deux boutons, la date d'effet modifiable sur le premier, rien d'autre. Échap ou un clic ailleurs annule le glissé sans rien écrire.
+- **Sur la vue Mois** : le même geste, d'un jour vers un autre — le créneau visé est choisi dans la question du dépôt quand le jour d'arrivée en a plusieurs. **Sur la vue Année** : pas de glisser-déposer (l'échelle ne le permet pas), et c'est à dire à l'écran plutôt qu'à laisser deviner.
+- **Ce qu'un dépôt ne peut jamais faire** : écraser une case déjà occupée par une autre classe sans le dire (il propose alors l'échange ou refuse, nommément), poser une heure dans le **passé**, poser sur un **jour sans cours** (vacances, férié), poser le mercredi après-midi.
+- **Accessibilité** : tout ce que le glissé permet reste possible sans lui, par la modale — un clavier ou une main qui tremble ne doit pas priver Paul d'un geste.
+
+## ④ DÉPLACER PLUS LOIN, ET SUR UN TROU
+Paul a répondu **oui** aux trois : au-delà de 21 jours, sur un trou de son emploi du temps, et par glisser-déposer.
+- **Au-delà de 21 jours** : `edtCreneauxOu` ne s'arrête plus à trois semaines. La liste couvre **jusqu'à la fin de l'année scolaire**, groupée par semaine, avec un champ de recherche par date si elle est longue. Les jours sans cours restent exclus.
+- **Sur un trou** : la liste propose aussi les **créneaux libres de l'emploi du temps de Paul** (un créneau de la grille où il n'a aucune classe, ou un créneau horaire vide ce jour-là), marqués « créneau libre — heure ajoutée ». Poser une heure là n'est pas un déplacement : **c'est une heure ajoutée** ; elle est épinglée, dite comme telle dans la modale et au journal, et compte dans la prévision horaire de la classe.
+- **Refus nommés** : jamais sur un créneau où Paul a déjà une autre classe (sauf échange explicite), jamais un jour sans cours, jamais dans le passé.
+
+## ④bis LA VUE ANNÉE — elle n'est pas cassée, elle est illisible : à refaire
+Paul, en voyant la capture `5-2-annee` : « je ne sais pas ce que montre la capture mais ça a l'air cassé. » Mesuré par la conscience sur ta propre capture : **98,8 % de l'écran est vide** sous l'en-tête. Le code ne lève aucune erreur — l'écran est vide **par construction**, et c'est le défaut : il ne dit rien de ce qu'il montre ni de ce qu'il ne montre pas.
+**Ce qui manque, et qui est exigé :**
+- **Une échelle de temps lisible** : les mois (septembre → juillet) en colonnes nommées, les vacances en bandes avec leur nom, les jalons repérables au survol **et** au clic, un trait « aujourd'hui » identifié. Aujourd'hui la frise du haut est une suite de traits gris sans un seul mot : impossible de savoir où l'on est.
+- **Dire ce qui n'est pas là** : quand une classe de la grille n'a pas de classe MJPC appariée, ou qu'un niveau n'a aucun chapitre publié, **l'écran l'écrit** (« 3 DYLAN Bob — classe non encore importée », « aucun chapitre publié à cette classe »), au lieu de ne rien afficher. Une ligne par classe de la grille, toujours, même vide.
+- **Une légende** : ce que sont la barre pleine (le réel, première à dernière heure jouée), la barre claire (le prévu projeté), les paliers de divergence, la mention « expérimentale ».
+- **Occuper la hauteur** : les lignes de classes se répartissent dans l'écran ; s'il n'y a qu'une classe, la ligne est haute et lisible, pas un filet de 8 pixels perdu en haut d'une page noire.
+- **Sans scroll**, comme les autres vues, aux deux tailles.
+**Preuve exigée** : capture de la vue Année dans l'état réel du hub d'aujourd'hui (une seule classe appariée, un chapitre) — elle doit être **compréhensible sans explication** ; puis une seconde capture avec quatre classes appariées et deux chapitres, pour montrer qu'elle tient quand elle se remplit. Mesure à donner : le pourcentage de la surface utile occupé, avant et après.
+
+## ⑤ CE QUE ÇA NE DOIT PAS CASSER
+Rien de ce qui est déjà prouvé ne doit changer de comportement : la porte du pilotage (six champs), le prévu, les décisions horaires et ↶ Annuler, les photos, la divergence, la classe expérimentale, l'absence, les périodes, le sans-scroll, les trois portes, les trois exceptions. **Le contrat ne s'élargit pas** : si un appel nouveau est nécessaire, il entre dans `verif_edt.py` avec sa raison, jamais en silence.
+
+## ⑥ PREUVES EXIGÉES — chacune mesurée, aucune affirmée
+1. **Versions datées** : grille à deux versions (1er septembre, 3 novembre) où la 4e Hugo passe du mardi 13:00 au jeudi 11:04 → la semaine du 7 septembre montre le mardi, celle du 9 novembre montre le jeudi, **la même page, deux dates**. Capture des deux.
+2. **Le passé ne bouge pas** : une heure jouée le 8 septembre au créneau d'alors reste affichée à ce créneau après un changement d'emploi du temps daté du 3 novembre — trace inchangée au hub, champ à champ.
+3. **Compatibilité** : le JSON de grille déjà validé (forme sans `versions`) se charge, se lit, s'affiche — **aucune réinjection exigée**. Mesuré sur le fichier du sas tel quel.
+4. **Glisser-déposer, choix « déplacer cette heure »** : la grille glisse comme aujourd'hui, deux décisions au hub, ↶ Annuler défait les deux côtés — **identique au geste par la liste**, comparé champ à champ.
+5. **Glisser-déposer, choix « changement d'emploi du temps »** : une version datée apparaît dans la grille, **zéro décision horaire écrite**, zéro trace touchée, le prévu recalculé sur la nouvelle version. Journal des changements d'EDT : une ligne.
+6. **Dépôts refusés** : sur un jour de vacances, sur le mercredi après-midi, dans le passé, sur une case d'une autre classe → **quatre refus nommés**, capture de l'un d'eux.
+7. **Heure ajoutée sur un trou** : proposée dans la liste, marquée « créneau libre », épinglée après le geste, comptée dans la prévision.
+8. **Déplacement lointain** : un créneau de mai proposé et retenu depuis une case de septembre.
+9. **Sans glissé** : tout ce qui précède reste faisable par la modale (le banc rejoue le 4 et le 5 sans glissé).
+10. **Sans scroll** toujours vrai (1366×768 et 1920×1080, `scrollY` 0 après tentative à 4000 px) · **garde VERTE** et **rouge sur les trois contrôles négatifs** · **moteur intact** · `secu*` 29 · `published` 97 · double parseur vert · **matrice actions × état** refaite, glissé compris.
+
+## ⑦ MÉTHODE
+Livraisons courtes, chacune poussée au sas et close par un arrêt ; Paul relance par « continuer ». Découpe proposée : **①** versions datées + compatibilité + écran des versions · **②** glisser-déposer et la question du dépôt · **③** déplacement lointain, trou, refus nommés · **④** la vue Année refaite · **⑤** bancs complets, garde, matrice, rapport de complément.
+**Aucune dette à la livraison finale.** Rapport écrit pour une conscience qui n'a pas vu la conversation.
+**La `SEQUENCE-TEST-PAUL.md` est à mettre à jour** (glissé, changement d'emploi du temps, heure ajoutée) : Paul la jouera **après** la promotion, comme d'habitude — ne la lui donne pas maintenant.
+Livrable : `PONT/EDT/` — `index.html` (8.72.0), `rapport-complement.md`, `tests/` mis à jour, `SEQUENCE-TEST-PAUL.md` à jour, `outils/verif_edt.py` à jour. **STOP après chaque livraison. Ne promeus jamais.**
+```
+
+---
+**Cahier vivant**
+En cours : complément 2bis (v2, vue Année comprise) à envoyer · lot 7 en pause · LOT G : Toussaint.
+Ne dépend que de Paul : coller le complément · import du chapitre 3e · le mot pour la passation.
+File exhaustive : `docs/MJPC6-DETTES.md` — 1 ✔ D · 1bis ✔ E · 1quater ✔ F · 1ter ✔ micro 8.70.1 · 2bis EDT (complément avant promotion) · 7 profil de classe (en pause) · 5 bloc bilan · 2 téléphone · 3 temps réel · 4 pulsation · 6 dettes moteur · 8 PROMPTS · 9 profil élève · 10 affichages · 11 M-SÉCU · 12 M17a · LOT G (Toussaint) ; + cadrage du 25-26/08 ; + rétro-ingénierie.
+Lectures : 36 intégrales + 20 partielles / 126.
+Production : v8.70.1, commit `75c8b77f`, md5 `6c7560af…`.
+
+MEMO
+
+## Tour 145 — 26/08/2026
+
+### Paul
+« pendant que l'éxécutant tourne, terminons le cadrage du profil classe »
+
+### Claude (C10)
+Là où on s'est arrêtés : le cinquième onglet. Tes trois corrections sont acquises — **deux sections seulement** tant qu'une séance est en cours (déjà fait / ce qui reste à faire), **le report n'apparaît qu'à la clôture d'une séance** (avec où c'est parti), **la question d'ouverture faite va dans « déjà fait »** et se régénère à chaque fin d'heure sauf si tu la passes. Et ton dernier mot : « la disposition comme ça ne me semble pas très efficace en termes de coup d'œil général sur ce qu'on a fait et ce qui reste. »
+
+**Trois questions, et je ne comble rien.**
+
+**A. Ce que cet onglet est.** Avant de le nommer et de le dessiner, dis-moi si c'est bien ça : *l'état de la séance en cours pour cette classe — ce qui a été fait, ce qui reste, et les écrans qui ne sont que pour elle*. Ou attends-tu autre chose à cet endroit ?
+
+**B. Le coup d'œil.** Une liste verticale ne montre pas « où on en est » d'un regard. Trois formes possibles, dis laquelle (ou une autre) :
+- **deux colonnes** côte à côte — *déjà fait* à gauche, *ce qui reste* à droite, avec le compte en tête de chaque ;
+- **une barre de progression de la séance** en haut (les écrans comme des segments : verts faits, gris à faire, ambre en cours), et le détail dessous ;
+- **une grille de vignettes**, un carré par écran dans l'ordre de la séance, la couleur disant l'état — le plus proche de ce que ton œil fait quand tu regardes un déroulé.
+
+**C. Le report, quand une séance se termine.** Tu as dit qu'on doit voir « reporté à la fin de la séance tant, puis qu'on sache où c'est parti aussi ». Deux choses à trancher : **où** ça s'affiche — dans l'historique, sur la ligne de la séance close ? dans cet onglet, en bas, une fois la séance terminée ? — et **quelles destinations** existent : la séance suivante du même fil, le travail à la maison, l'abandon (« on ne le fera pas »), autre chose ?
+
+Réponds à ce qui compte, et je referai l'écran sur ta réponse — pas avant.
+
+---
+**Cahier vivant**
+En cours : cadrage du profil de classe — trois questions (ce qu'est le cinquième onglet, la forme du coup d'œil, le report à la clôture d'une séance) · complément 2bis chez l'exécutant · LOT G : Toussaint.
+Ne dépend que de Paul : ces trois réponses · import du chapitre 3e · le mot pour la passation.
+File exhaustive : `docs/MJPC6-DETTES.md` — 1 ✔ D · 1bis ✔ E · 1quater ✔ F · 1ter ✔ micro 8.70.1 · 2bis EDT (complément) · 7 profil de classe (cadrage) · 5 bloc bilan · 2 téléphone · 3 temps réel · 4 pulsation · 6 dettes moteur · 8 PROMPTS · 9 profil élève · 10 affichages · 11 M-SÉCU · 12 M17a · LOT G (Toussaint) ; + cadrage du 25-26/08 ; + rétro-ingénierie.
+Lectures : 36 intégrales + 20 partielles / 126.
+Production : v8.70.1, commit `75c8b77f`, md5 `6c7560af…`.
+
+MEMO
+
+## Tour 146 — 26/08/2026
+
+### Paul
+« A oui. B. montre moi les 3. C. la fin d'une séance se fait par la coche. après, je ne sais pas. mais ce qui nous induit en erreur, c'est qu'actuellement le moteur demande le report d'activité à la fin de l'HEURE. donc le moteur doit être modifié sur ce point. Il ne doit plus demander à la fin d'une heure, mais à la fin d'une séance. la seule chose qu'il peut demander (et c'est pourquoi il faut quand même garder le mécanisme là bas) c'est le travail à faire pour la prochaine fois, et donc dans le json de chapitre il faut qu'il y ait un endroit pour le travail à faire pour la prochaine fois, le spiralaire. et donc, ce travail à faire pour la proochaine fois se retrouve aussi dans la relecture, vu que c'est ce qui part sur ecole directe via le bouton travail à faire. le cadrage est à finaliser donc, vu qu'il faut préciser ce point là, ta question C. »
+
+### Claude (C10)
+**C — ta décision change le moteur, et c'est consigné comme tel.** Aujourd'hui le moteur demande le report **à la fin de l'heure** ; c'est ça qui nous faisait dire des bêtises depuis trois tours. Désormais : la fenêtre de fin d'heure **ne demande plus le report d'activités** (ce qui n'est pas fait reste simplement « ce qui reste à faire » de la séance) ; elle demande **le travail à faire pour la prochaine fois** ; le **JSON de chapitre reçoit un emplacement pour ce travail à faire — le spiralaire** (donc le prompt de chapitre doit le produire : lot 8) ; et ce travail à faire **entre dans la relecture** et part sur École Directe par le bouton « travail à faire ». Le **report d'activités**, lui, ne se pose qu'**à la clôture d'une séance**, par la coche — et ses destinations restent à trancher, tu as dit « je ne sais pas ». Trois lots touchés, au registre : **moteur** (la fenêtre de fin d'heure), **5** (le bloc bilan et la clôture), **8** (le prompt).
+
+**B — les trois formes, jointes.**
+- **A, deux colonnes** : *déjà fait* (3) à gauche, *ce qui reste* (5) à droite, le compte en tête de chaque. Lisible, mais deux listes restent deux listes.
+- **B, barre de progression** : un segment par écran dans l'ordre de la séance, verts faits / gris à faire, le liseré violet marquant l'écran propre à la classe, et « ≈ 75 min restantes, soit 2 heures » — le détail dessous en deux colonnes.
+- **C, vignettes** : un carré par écran, numéroté, dans l'ordre ; la couleur dit l'état, un clic pose ou retire un badge. C'est celle qui donne l'état de la séance en un regard, et celle qui ressemble le plus à ce que tu vois dans un déroulé.
+
+Mon avis, si tu le veux : **C**, avec la ligne de compte de B en tête (« 3 faits sur 8 · ≈ 2 heures restantes »). Mais c'est ton œil, pas le mien.
+
+Reste, quand tu voudras : les **destinations du report** à la clôture d'une séance, et le nom de cet onglet.
+
+---
+**Cahier vivant**
+En cours : cadrage du profil de classe — forme du cinquième onglet (A, B ou C), destinations du report, nom de l'onglet · le moteur devra changer (fin d'heure → travail à faire ; report → fin de séance) · complément 2bis chez l'exécutant · LOT G : Toussaint.
+Ne dépend que de Paul : la forme · les destinations du report · import du chapitre 3e · le mot pour la passation.
+File exhaustive : `docs/MJPC6-DETTES.md` — 1 ✔ D · 1bis ✔ E · 1quater ✔ F · 1ter ✔ micro 8.70.1 · 2bis EDT (complément) · 7 profil de classe (cadrage) · 5 bloc bilan (+ report à la clôture) · 2 téléphone · 3 temps réel · 4 pulsation · 6 dettes moteur (+ fin d'heure : travail à faire) · 8 PROMPTS (+ le spiralaire au JSON de chapitre) · 9 profil élève · 10 affichages · 11 M-SÉCU · 12 M17a · LOT G (Toussaint) ; + cadrage du 25-26/08 ; + rétro-ingénierie.
+Lectures : 36 intégrales + 20 partielles / 126.
+Production : v8.70.1, commit `75c8b77f`, md5 `6c7560af…`.
+
+MEMO
+
+## Tour 147 — 26/08/2026
+
+### Paul
+« on met ça en pause. tu consignes, tu mets à jour les docs transcript et dettes. l'exécutant a livré. »

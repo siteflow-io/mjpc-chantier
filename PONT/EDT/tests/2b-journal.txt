@@ -140,7 +140,7 @@ LE PRÉVU, semaine du 7 septembre (semaine B) :
   2026-09-11 10:07-11:02 3E Charles de Gaulle → prevu « Interro de cours et analyse logiqu » heure 1/3
   2026-09-11 11:04-11:59 3 DYLAN Bob → nonImportee
 
-cartes de classe : ["3E Charles de Gaulle | Poésie et peinture au XIXe siè · 1/9"]
+cartes de classe : ["3E Charles de Gaulle expérimentale | dans les temps | Poésie et peinture au XIXe siè · 1/9"]
 
 photo du prévu : {"nombre":1,"prise":"2026-08-26","depuis":"2026-09-07","cases":20}
 
@@ -184,7 +184,7 @@ après « ne plus compter cette séance » :
    2026-09-10 16:04-16:59 3E Charles de Gaulle → prevu heure 2/3
    2026-09-11 10:07-11:02 3E Charles de Gaulle → prevu heure 3/3
 
-au hub : {"3E Charles de Gaulle":{"heures":{"2026-09-08_15h07-16h02_3E_Charles_de_Gaulle":{"sansSeance":true,"categorie":"Gestion de classe","precision":"retour sur le conseil de classe","pose":1787744663470}},"journal":[{"quand":1787744663470,"heure":"2026-09-08_15h07-16h02_3E_Charles_de_Gaulle","quoi":"ne plus compter cette séance dans la prévision horaire","avant":null,"apres":{"sansSeance":true,"categorie":"Gestion de cla
+au hub : {"3E Charles de Gaulle":{"heures":{"2026-09-08_15h07-16h02_3E_Charles_de_Gaulle":{"sansSeance":true,"categorie":"Gestion de classe","precision":"retour sur le conseil de classe","pose":1787746517543}},"journal":[{"quand":1787746517543,"heure":"2026-09-08_15h07-16h02_3E_Charles_de_Gaulle","quoi":"ne plus compter cette séance dans la prévision horaire","avant":null,"apres":{"sansSeance":true,"categorie":"Gestion de cla
 
 capture 4-3-sans-seance-et-glissement
 
@@ -196,7 +196,7 @@ créneaux proposés pour le déplacement : ["— choisir —","mer 9/9 · 10:07-
 
 après déplacement :
   2026-09-08_15h07-16h02_3E_Charles_de_Gaulle → {"sansSeance":true,"categorie":"Reprise ou rattrapage","precision":"heure déplacée vers le 2026-09-09 10:07-11:02","depl
-  2026-09-09_10h07-11h02_3E_Charles_de_Gaulle → {"epingle":true,"venantDe":"2026-09-08|15:07-16:02","pose":1787744666391}
+  2026-09-09_10h07-11h02_3E_Charles_de_Gaulle → {"epingle":true,"venantDe":"2026-09-08|15:07-16:02","pose":1787746520477}
 
 capture 4-4-heure-deplacee
 
@@ -217,3 +217,41 @@ capture 4-5-pilotage-lance-depuis-edt
   {"chapitre":"3e/0","seance":"1","vue":"deroule","regime":"classe","cours":"3E Charles de Gaulle 10:07-11:02","copieJouee":"3E Charles de Gaulle"}
 
 COMPARAISON champ à champ : les six champs sont identiques ✓
+
+vue mois : {"scrollY":0,"ecranHaut":768,"fenetre":768,"texte":"septembre 2026 | Semaine | Mois | Année | Calendrier de l’année… | ‹ | Aujourd’hui | › | ✕ Fermer l’emploi du temps | lun | mar | mer | jeu | ven | 31 | 3E Charles de | X Français X."}
+
+capture 5-1-mois
+
+vue annee : {"scrollY":0,"ecranHaut":768,"fenetre":768,"texte":"année 2026-2027 | Semaine | Mois | Année | Calendrier de l’année… | ‹ | Aujourd’hui | › | ✕ Fermer l’emploi du temps | 3E Charles de Gaulle | expérimentale | dans les temps"}
+
+capture 5-2-annee
+
+vue calendrier : {"scrollY":0,"ecranHaut":768,"fenetre":768,"texte":"calendrier de l’année | Semaine | Mois | Année | Calendrier de l’année… | ‹ | Aujourd’hui | › | ✕ Fermer l’emploi du temps | Événements de classe |  | Coche « justifié » qu"}
+
+capture 5-3-calendrier
+
+classe expérimentale : {"marquee":true,"surLaCarte":"3E Charles de Gaulle expérimentale\ndans les temps\nPoésie et peinture au XIXe siè · 2/9","mention":"classe expérimentale — si cette classe était réelle, voilà ce que ça donnerait","interrupteur":false}
+
+divergence avant justification : {"ecart":0,"brut":0,"justifie":1,"justifieEcart":0,"reference":"3E Charles de Gaulle","palier":"dans les temps","avance":{"chapitre":"Poésie et peinture au XIXe siècle (proposition)","faites":2,"total":9}}
+
+divergence après « justifié » sur le séjour Verdun : {"ecart":0,"brut":0,"justifie":3,"justifieEcart":0,"reference":"3E Charles de Gaulle","palier":"dans les temps","avance":{"chapitre":"Poésie et peinture au XIXe siècle (proposition)","faites":2,"total":9}}
+
+paliers : ["0 → dans les temps","1 → dans les temps","2 → léger","3 → marqué","5 → critique"]
+
+deux classes du même niveau, avances différentes :
+  3E CDG  : {"ecart":0,"brut":0,"justifie":3,"justifieEcart":0,"reference":"3E Charles de Gaulle","palier":"dans les temps","avance":{"chapitre":"Poésie et peinture au XIXe siècle (proposition)","faites":2,"total":9}}
+  CLASSE TEST : {"ecart":2,"brut":2,"justifie":3,"justifieEcart":0,"reference":"3E Charles de Gaulle","palier":"léger","avance":{"chapitre":"Poésie et peinture au XIXe siècle (proposition)","faites":0,"total":9}}
+
+CLASSE TEST après deux heures sorties de la prévision (elle seule) : {"ecart":0,"brut":2,"justifie":5,"justifieEcart":2,"reference":"3E Charles de Gaulle","palier":"dans les temps","avance":{"chapitre":"Poésie et peinture au XIXe siècle (proposition)","faites":0,"total":9}}
+
+cartes avec paliers : ["3E Charles de Gaulle expérimentale | dans les temps | Poésie et peinture au XIXe siè · 2/9","CLASSE TEST | dans les temps · 2 h de retard dont 2 justifiées | Poésie et peinture au XIXe siè · 0/9"]
+
+capture 5-5-divergence-deux-classes
+
+modale d’une heure jouée : {"eleves":29,"titre":"Absents de cette heure (0 sur 29)"}
+
+absents au hub : ["audebert_elise","boivin_eden"]
+
+capture 5-4-absents
+
+après le geste inverse : ["boivin_eden"]  (réversible)

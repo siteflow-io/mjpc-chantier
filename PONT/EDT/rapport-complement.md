@@ -226,11 +226,58 @@ Porte du pilotage : **six champs identiques** · sans scroll aux deux tailles ·
 
 Banc : `tests/banc-loin.mjs`. Captures : `9-1-liste-jusqua-juillet`, `9-2-heure-ajoutee`.
 
-## ⑱ CE QUI RESTE DU MANDAT DE COMPLÉMENT
+---
+
+# LIVRAISON ⑤ — BANCS, MATRICE, SÉQUENCE DE TEST · LE COMPLÉMENT EST CLOS
+
+*Candidat 8.72.0, 1 642 840 octets. 138 fonctions `edt*`.*
+
+## ⑱ LA MATRICE ACTIONS × ÉTAT, GLISSÉ COMPRIS
+
+| état de la case | la modale propose | se saisit ? | accepte un dépôt ? |
+|---|---|---|---|
+| **prévu** | ✕ · ▶ lancer · déplacer/ajouter · ne plus compter | **oui** | oui |
+| **heure ajoutée** | ✕ · ▶ lancer · déplacer/ajouter · ne plus compter | **oui** | oui |
+| **jouée** | ✕ · les absents | non | oui |
+| **sans séance** | ✕ · ↶ Annuler *(si la décision existe)* | non | oui |
+| **classe non importée** | ✕ | non | oui |
+| **hors MJPC** | ✕ | non | oui |
+| **aucune séance prête** | ✕ · Ouvrir Mes chapitres… · ▶ lancer | non | oui |
+
+**Seule une case qui porte une séance à venir se saisit.** Une heure déjà jouée a eu lieu : on ne la déplace pas.
+
+**Deux défauts trouvés par cette matrice, et le second est un défaut de méthode :**
+1. Une heure **jouée** se laissait glisser. `edtGlisserDebut` n'acceptait que par exclusion (« ni hors MJPC, ni hors temps, ni non importée ») ; il accepte désormais par inclusion — `nature === 'prevu'`, un point c'est tout.
+2. **Le banc recalculait la règle au lieu de l'interroger** : il refaisait le test d'exclusion dans son propre code, et affichait donc « saisissable » même après la correction. Une preuve qui réimplémente ce qu'elle vérifie ne prouve rien. Le banc appelle maintenant `edtGlisserDebut` pour de vrai et regarde si la saisie a été acceptée.
+
+## ⑲ LES BANCS
+
+Cinq bancs, tous rejoués sans erreur sur le candidat final :
+
+| Banc | Ce qu'il tient |
+|---|---|
+| `banc-2b.mjs` | le tout : injection, prévu, semaine, modale, décisions, pilotage, portes, divergence, absence, matrice |
+| `banc-versions.mjs` | compatibilité de la forme ancienne · deux versions · le passé immobile · les trois refus |
+| `banc-glisse.mjs` | le glissé, la question du dépôt, l'équivalence avec la liste, les quatre refus |
+| `banc-loin.mjs` | 804 destinations sur 35 semaines · un créneau de mai · l'heure ajoutée qui compte |
+| `banc-annee.mjs` | la vue Année dans trois états, avec le pourcentage de surface occupé |
+
+**Invariants du candidat final** : moteur `AT_DR_B64` **intact** · `published` **97** · `secu*` **141** · double parseur **vert** · garde **VERTE** et **rouge sur les trois contrôles négatifs** · trois portes et trois exceptions, inchangées · porte du pilotage : **six champs identiques** · sans scroll à 1366×768 et 1920×1080.
+
+## ⑳ LA SÉQUENCE DE TEST
+
+`SEQUENCE-TEST-PAUL.md` est à jour, avec quatre sections neuves : **D bis** le glissé (saisie, cases éclairées, la question, les quatre refus, mois et année), **D ter** l'heure ajoutée sur un trou, **D quater** les versions de l'emploi du temps et leur journal. Elle n'est pas à jouer maintenant : Paul la joue après la promotion.
+
+## ㉑ AUCUNE DETTE
+
+Tout ce que ce mandat de complément demandait est fait et prouvé. Deux questions restent **ouvertes chez Paul**, aucune n'est une dette :
+1. sur une case déjà occupée par une autre classe — refus sec (l'actuel) ou proposition d'échange ;
+2. la liste des destinations compte 804 entrées sur 35 semaines — la borner par défaut au trimestre, avec un « voir toute l'année » ?
+
+## ㉒ CE QUI RESTE HORS DE CE MANDAT
 
 Non commencé, dans la découpe proposée par la conscience :
 
-- **⑤** bancs complets, matrice refaite avec le glissé, mise à jour de `SEQUENCE-TEST-PAUL.md`.
 
 Le candidat est passé en **8.72.0** avec cette livraison ①.
 

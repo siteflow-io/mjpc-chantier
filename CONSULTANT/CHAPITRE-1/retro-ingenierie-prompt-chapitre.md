@@ -258,3 +258,13 @@ Destinataire : Paul, pour affiner le prompt initial. Chaque entrée : l'erreur o
 87. **Le plan de séquence de Paul est un canon antérieur au site**, défini pour les élèves : cours suivi qui se complète au fil du chapitre · LA accompagnée · point de langue relié au texte · **analyse logique sans rapport obligé avec la séquence** · dictée-réécriture · LA en autonomie (formative) · approfondissement personnalisé à trois voies · atelier. Le prompt devrait le connaître.
 
 88. **Le fil langue n'est pas né de l'emploi du temps 2026-2027** : il figure dès 2023 dans le document de rentrée de Paul. Une pratique ancienne que ni le site ni le prompt ne portent (voir `PREUVE-fil-langue-manque-au-site.md`).
+
+89. **UN DOMAINE QUI A UNE SOURCE OFFICIELLE NE SE TRAITE JAMAIS DE MÉMOIRE.** Ni pour une affirmation, ni pour une correction, ni pour une phrase incidente. Le programme, les épreuves, les dates, les citations : on va lire.
+    → Mot de Paul : « si Éduscol est sorti de ta mémoire, va refetcher au lieu de t'embourber ».
+
+90. **Quand une erreur est signalée sur un point sourçable, le premier geste n'est pas de corriger — c'est d'aller chercher.** Corrigée de mémoire, « Dire l'amour en 3e » est devenue « Dire l'amour en 5e » : deux fautes au lieu d'une. C'est un thème de 4e.
+
+91. **Une consignation n'est pas une source.** L'instance a réutilisé un chiffre tiré de sa propre règle 39 sans le revérifier. Les règles viennent du terrain ; la mémoire des règles n'est pas le terrain.
+
+92. **La dérive s'installe quand le contexte devient riche.** Plus la session accumule de documents et de décisions, plus l'instance répond depuis son contexte au lieu d'aller à la source — avec l'aplomb que donne un travail jusque-là juste. **Le risque croît avec la durée de la session.**
+    → « Avant toute affirmation portant sur une source externe, se demander : est-ce que je viens de la lire, ou est-ce que je m'en souviens ? »

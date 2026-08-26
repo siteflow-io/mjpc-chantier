@@ -19559,7 +19559,11 @@ var EDT_GLISSE=null;   /* {cle, x0, y0, actif} */
 
 function edtGlisserDebut(ev,cle){
   var c=edtCellule(cle);
-  if(!c||c.nature==='horsMjpc'||c.nature==='horsTemps'||c.nature==='nonImportee')return;
+  /* SEULE une case qui porte une séance À VENIR se saisit. Une heure déjà
+     jouée a eu lieu : on ne la déplace pas (mesuré à la matrice actions ×
+     état, où elle se laissait glisser). Une heure sortie de la prévision, une
+     classe non importée, un groupe partagé ne portent aucune séance. */
+  if(!c||c.nature!=='prevu')return;
   EDT_GLISSE={cle:cle,x0:ev.clientX,y0:ev.clientY,actif:false};
   var bouge=function(e2){
     if(!EDT_GLISSE)return;

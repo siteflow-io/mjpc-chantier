@@ -278,3 +278,6 @@ Destinataire : Paul, pour affiner le prompt initial. Chaque entrée : l'erreur o
 96. **La tâche finale se propose, elle ne se décrète pas.** Le prompt : « ce que le chapitre déclare — tu me le PROPOSES, c'est MOI qui tranche ». L'instance a écrit « la tâche finale est un débat sur l'Applaudimètre » comme un fait acquis.
 
 97. **Une lecture cursive est un RÉCIT.** Un recueil poétique ne se lit pas seul de bout en bout, et le programme attend qu'on « rende compte de sa lecture ». Écarter d'emblée poésie et anthologies pour ce poste.
+
+98. **Une décision annulée le jour même doit être répercutée partout où elle a été écrite.** Le recueil de Guéno a été écarté le matin (droits), puis racheté l'après-midi (le retrait d'un autre titre ayant libéré le budget). Le registre et la progression ont enregistré le second état ; le cadrage du chapitre et l'audit de la matrice sont restés sur le premier — c'est-à-dire que **l'état périmé a survécu exactement là où le travail devait reprendre**, et il annonçait une nature de chapitre fausse (groupement au lieu d'œuvre intégrale).
+    → « Quand une décision est renversée, lister les documents qui la portent AVANT de passer à la suite, et les corriger dans le même mouvement. Un document d'état se corrige ; un journal daté ne se réécrit pas, il reçoit une entrée nouvelle. »

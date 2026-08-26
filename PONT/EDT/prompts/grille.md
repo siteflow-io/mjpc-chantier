@@ -37,7 +37,9 @@ Recopie le nom de la classe **exactement comme il est écrit sur la grille** dan
 
 ## La forme exacte de ta réponse
 
-Un seul objet JSON, rien avant, rien après, pas de commentaires, pas de balises de code. **Il porte trois choses d'un coup** : mes cases (`creneaux`), les horaires de l'année (`creneauxDuSite`), et le découpage en périodes (`periodes`). Ajoute aussi `jours`, la liste des jours ouvrés, et `sansApresMidi`, les demi-journées où l'établissement n'a pas cours.
+Un seul objet JSON, rien avant, rien après, pas de commentaires, pas de balises de code. **Il porte trois choses d'un coup** : mes cases, les horaires de l'année (`creneauxDuSite`), et le découpage en périodes (`periodes`).
+
+**Mes cases vivent dans `versions`**, une liste de versions datées de l'emploi du temps. Un emploi du temps change parfois en cours d'année ; chaque version a sa date d'effet, et une semaine affichée lit la version de sa date. **Tu ne m'en donnes qu'UNE SEULE**, celle de la feuille que je te joins, avec `debut` au jour de la rentrée et un `libelle` court. Je créerai les suivantes moi-même, dans le site, quand l'emploi du temps changera. Ajoute aussi `jours`, la liste des jours ouvrés, et `sansApresMidi`, les demi-journées où l'établissement n'a pas cours.
 
 ```
 {
@@ -53,11 +55,17 @@ Un seul objet JSON, rien avant, rien après, pas de commentaires, pas de balises
  ],
  "jours": ["lundi","mardi","mercredi","jeudi","vendredi"],
  "sansApresMidi": {"mercredi":"12:00"},
- "creneaux": [
-  {"jour":"lundi","creneau":"08:57-09:52","semaine":"AB","classe":"3 FRANKLIN Aretha","salle":"9","mjpc":true,"classeMjpc":""},
+ "versions": [
+  {
+   "debut": "2026-09-01",
+   "libelle": "grille de la rentrée",
+   "creneaux": [
+    {"jour":"lundi","creneau":"08:57-09:52","semaine":"AB","classe":"3 FRANKLIN Aretha","salle":"9","mjpc":true,"classeMjpc":""},
   {"jour":"mardi","creneau":"15:07-16:02","semaine":"B","classe":"3 FRANKLIN Aretha","salle":"9","mjpc":true,"classeMjpc":"","periodes":["P1","P2"]},
   {"jour":"mercredi","creneau":"08:00-08:55","semaine":"AB","classe":"4 HUGO","salle":"9","mjpc":true,"classeMjpc":"","fil":"langue","cadence":"chaque semaine"},
-  {"jour":"lundi","creneau":"10:07-11:02","semaine":"A","classe":"X Français X. — 4 HUGO","salle":"20 / 9","mjpc":false,"motif":"groupe partagé — hors français, ne compte jamais dans la progression"}
+    {"jour":"lundi","creneau":"10:07-11:02","semaine":"A","classe":"X Français X. — 4 HUGO","salle":"20 / 9","mjpc":false,"motif":"groupe partagé — hors français, ne compte jamais dans la progression"}
+   ]
+  }
  ]
 }
 ```
@@ -66,6 +74,7 @@ Les jours s'écrivent en toutes lettres et en minuscules : `lundi`, `mardi`, `me
 
 ## Avant de me répondre, vérifie toi-même
 
+- `versions` contient exactement une entrée, avec une date `debut` et une liste `creneaux` non vide.
 - Chaque `creneau` d'une case correspond à une ligne de `creneauxDuSite`, au caractère près.
 - Aucune case n'a deux cours à la même `semaine` : un `jour` + `creneau` + `semaine` n'apparaît qu'une fois. Si tu trouves un doublon, ne choisis pas — signale-le.
 - Aucune case `AB` ne coexiste avec une case `A` ou `B` sur le même jour et le même créneau.

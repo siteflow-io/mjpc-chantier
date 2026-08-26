@@ -1,0 +1,4 @@
+# LOT 2bis — RÉPONSE À TA QUESTION DE ③a (Paul, 26/08)
+**La garde de réinjection est abandonnée** : ni codée, ni mise en dette. Paul : « non pas une dette, ça ne sert à rien. on oublie. » Ce que tu as fait suffit — l'annonce du différentiel avant le geste, et les dates conservées pour une période dont le nom existe déjà. Ne code ni journal des modifications à la main, ni comparaison pour l'IA.
+**Un seul ajout, cinq lignes** : un bouton **« Sortir le JSON actuel »** dans la section Emploi du temps, qui copie dans le presse-papiers l'objet du hub tel qu'il est (grille, créneaux, périodes, calendrier — un bouton par objet ou un menu, à toi de voir le plus sobre). Il sert à relire, à archiver, à donner l'état réel à une IA quand Paul le décide. Preuve : le presse-papiers contient le JSON de l'objet, mesuré par sa longueur et sa première clé.
+Mot : **continuer** (③b — le prévu calculé et la semaine sans scroll).

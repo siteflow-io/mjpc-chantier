@@ -18293,7 +18293,34 @@ function edtPoserCss(){
    +'.edt-large{width:100%;margin-top:7px}'
    +'.edt-jrn{list-style:none;margin:0;padding:0;font-size:.74rem;color:#c9bfa4}'
    +'.edt-jrn li{padding:3px 0;border-bottom:1px solid rgba(255,255,255,.06)}'
-   +'.edt-jrn i{display:block;font-style:normal;font-size:.68rem;color:#7a7060}';
+   +'.edt-jrn i{display:block;font-style:normal;font-size:.68rem;color:#7a7060}'
+   +'.edt-eleves{display:flex;flex-wrap:wrap;gap:4px;max-height:170px;overflow:auto}'
+   +'.edt-el{font:inherit;font-size:.72rem;background:rgba(255,255,255,.05);color:#c9bfa4;border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:2px 9px;cursor:pointer}'
+   +'.edt-el-abs{background:#3f3f46;color:#fff;border-color:#3f3f46;text-decoration:line-through;opacity:.85}'
+   +'.edt-exp{font-style:normal;font-size:.6rem;color:#a08ce0;border:1px solid rgba(160,140,224,.5);border-radius:20px;padding:0 6px;margin-left:5px}'
+   +'.edt-pal{font-style:normal;font-size:.63rem}'
+   +'.edt-pal-dans{color:#34d399}.edt-pal-léger{color:#c9bfa4}.edt-pal-marqué{color:#e0b978}.edt-pal-critique{color:#f08a8a}'
+   +'.edt-mois{flex:1 1 auto;min-height:0;display:grid;grid-template-columns:repeat(5,1fr);grid-template-rows:18px repeat(6,minmax(0,1fr));gap:3px;padding:0 12px}'
+   +'.edt-mcase{min-height:0;overflow:hidden;border-radius:6px;background:rgba(255,255,255,.02);padding:2px 4px;display:flex;flex-direction:column;gap:1px}'
+   +'.edt-mcase-off{background:rgba(255,255,255,.008)}'
+   +'.edt-mnum{font-size:.62rem;color:#7a7060}'
+   +'.edt-m{font-size:.6rem;border-left:2px solid rgba(255,255,255,.2);padding:0 4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#c9bfa4}'
+   +'.edt-m-joue{border-left-color:#34d399}.edt-m-sans{border-left-color:#e0b978}.edt-m-prevu{border-left-color:rgba(155,155,155,.6)}.edt-m-autre{border-left-color:rgba(120,120,120,.3);color:#7a7060}'
+   +'.edt-annee{flex:1 1 auto;min-height:0;overflow:hidden;padding:6px 12px;display:flex;flex-direction:column;gap:5px}'
+   +'.edt-an-jalons{position:relative;height:16px;border-bottom:1px solid rgba(255,255,255,.12);flex:0 0 auto;margin-left:150px}'
+   +'.edt-an-jalon{position:absolute;top:3px;width:2px;height:10px;background:#e0b978}'
+   +'.edt-an-vac{position:absolute;top:5px;height:7px;background:rgba(255,255,255,.1);border-radius:2px}'
+   +'.edt-an-auj{position:absolute;top:0;width:2px;height:16px;background:#f08a8a}'
+   +'.edt-an-ligne{display:flex;align-items:center;gap:6px;flex:0 0 auto}'
+   +'.edt-an-nom{width:144px;flex:0 0 144px;font-size:.72rem;color:#e8e0cf;overflow:hidden}'
+   +'.edt-an-nom i{display:block}'
+   +'.edt-an-piste{position:relative;flex:1;height:20px;background:rgba(255,255,255,.03);border-radius:4px}'
+   +'.edt-an-reel{position:absolute;top:4px;height:12px;background:#34d399;border-radius:3px;opacity:.75}'
+   +'.edt-an-prevu{position:absolute;top:4px;height:12px;background:rgba(155,155,155,.45);border-radius:3px}'
+   +'.edt-cal{flex:1 1 auto;min-height:0;overflow:hidden;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:6px 12px}'
+   +'.edt-cal-col{overflow:auto;min-height:0}'
+   +'.edt-cal-l{display:block;font-size:.72rem;color:#c9bfa4;padding:2px 0;border-bottom:1px solid rgba(255,255,255,.05)}'
+   +'.edt-cal-l input{margin-right:6px}';
   document.head.appendChild(s);
 }
 
@@ -18511,7 +18538,7 @@ function edtOuvrir(){
     edtChargerClasses(function(){
       var noms={}; ((EDT.grille&&EDT.grille.creneaux)||[]).forEach(function(c){
         if(c&&c.classeMjpc){ var n=edtNiveauDe(c.classeMjpc); if(n)noms[n]=true; } });
-      edtChargerChapitres(Object.keys(noms),edtPeindreSemaine);
+      edtChargerChapitres(Object.keys(noms),edtPeindre);
     });
   };
   if(EDT.charge)lancerPeinture(); else edtCharger(lancerPeinture);
@@ -18526,8 +18553,12 @@ function edtFermer(){
   var e=document.getElementById('edt-ecran'); if(e)e.style.display='none';
   document.documentElement.classList.remove('edt-fige'); document.body.classList.remove('edt-fige');
 }
-function edtAller(n){ EDT_VUE.ancre=edtPlusJour(edtLundiCourant(),n*7); edtPeindreSemaine(); }
-function edtAujourdhuiAller(){ EDT_VUE.ancre=null; edtPeindreSemaine(); }
+function edtAller(n){
+  var pas=(EDT_VUE.mode==='mois')?28:(EDT_VUE.mode==='annee'?0:7);
+  if(!pas)return;
+  EDT_VUE.ancre=edtPlusJour(EDT_VUE.ancre||edtAujourdhui(),n*pas); edtPeindre();
+}
+function edtAujourdhuiAller(){ EDT_VUE.ancre=null; edtPeindre(); }
 
 function edtHeureCourante(){
   var d=new Date();
@@ -18551,21 +18582,7 @@ function edtPeindreSemaine(){
   if(maintenant){
     Object.keys(cel).forEach(function(k){ var c=cel[k]; if(c.iso===auj&&c.creneau===maintenant&&c.nature!=='horsMjpc')ici=c; });
   }
-  var h='<div class="edt-tete">'
-   +'<b>'+escapeHtml(edtDateLisible(auj))+'</b>'
-   +(maintenant?(' \u00b7 '+escapeHtml(maintenant)):'')
-   +(ici?(' \u2192 <b class="edt-or">'+escapeHtml(ici.classeMjpc||ici.classe)+'</b>'):' \u00b7 aucun cours')
-   +' \u00b7 il est '+escapeHtml(edtHeureCourante())
-   +'<span class="edt-sep"></span>'
-   +'<button class="edt-btn edt-btn-actif">Semaine</button>'
-   +'<button class="edt-btn" onclick="edtAller(-1)">\u2039</button>'
-   +'<button class="edt-btn" onclick="edtAujourdhuiAller()">Aujourd\u2019hui</button>'
-   +'<button class="edt-btn" onclick="edtAller(1)">\u203a</button>'
-   +'<button class="edt-btn" onclick="edtPhoto()">\ud83d\udcf7 Photo du prévu</button>'
-   +'<span class="edt-souple"></span>'
-   +'<button class="edt-btn" onclick="edtFermer()">\u2715 Fermer l\u2019emploi du temps</button>'
-   +'</div>';
-
+  var h=edtTeteHtml('semaine',edtDateLisible(auj)+(ici?(' \u2192 '+(ici.classeMjpc||ici.classe)):'')+' \u00b7 il est '+edtHeureCourante());
   /* le bandeau des temps de l'année */
   h+='<div class="edt-bandeau">'+edtBandeauHtml(lundi,lettre)+'</div>';
 
@@ -18642,8 +18659,13 @@ function edtCartesHtml(lundi){
     var total=f?edtListe(f.chapitre.seances).length:0, reste=f?f.seances.length:0;
     var pct=total?Math.round((total-reste)/total*100):0;
     var fl=edtFileDAttente(c.classeMjpc,'langue');
+    var dv=edtDivergence(c.classeMjpc);
     cartes.push('<div class="edt-carte" onclick="edtCarteClic('+JSON.stringify(c.classeMjpc).replace(/"/g,'&quot;')+')">'
-      +'<b>'+escapeHtml(c.classeMjpc)+'</b>'
+      +'<b>'+escapeHtml(c.classeMjpc)
+      +(edtEstExperimentale(c.classeMjpc)?' <i class="edt-exp" title="'+EDT_MENTION_EXP+'">expérimentale</i>':'')+'</b>'
+      +(dv?('<em class="edt-pal edt-pal-'+dv.palier.split(' ')[0]+'">'+escapeHtml(dv.palier)
+        +(dv.brut?(' \u00b7 '+dv.brut+' h de retard'):'')
+        +(dv.justifieEcart?(' dont '+dv.justifieEcart+' justifiée'+(dv.justifieEcart>1?'s':'')):'')+'</em>'):'')
       +'<span class="edt-barre"><i style="width:'+pct+'%"></i></span>'
       +'<em>'+(f?escapeHtml(String(f.chapitre.title||'').slice(0,30))+' \u00b7 '+(total-reste)+'/'+total:'aucun chapitre publié')+'</em>'
       +(fl?'<em class="edt-fil">langue : '+(edtListe(fl.chapitre.seances).length-fl.seances.length)+' jouée(s)</em>':'')
@@ -18706,7 +18728,7 @@ function edtEcrireDecision(nomClasse,cleHeure,valeur,quoi){
   else d[nomClasse].heures[cleHeure]=valeur;
   d[nomClasse].journal.push({quand:Date.now(),heure:cleHeure,quoi:quoi,avant:avant,apres:valeur});
   mjpcPutJson(FIREBASE_BASE+edtChemin('decisions')+'.json',d,'Décisions horaires — '+nomClasse,function(){
-    EDT.decisions=d; edtPeindreSemaine(); edtPeindreModale();
+    EDT.decisions=d; edtPeindre(); edtPeindreModale();
   });
 }
 function edtSansSeance(cle){
@@ -18844,7 +18866,8 @@ function edtPeindreModale(){
       h+='<p class="edt-p">Heure jouée \u2014 '+c.activites+' activité'+(c.activites>1?'s':'')
         +(c.reportees?(', '+c.reportees+' reportée'+(c.reportees>1?'s':'')):'')+'.'
         +(c.clos?' Close.':' Pas encore close.')+'</p>'
-        +'<p class="edt-p edt-mini-t">La relecture de cette heure arrive avec le profil de classe.</p>';
+        +'<p class="edt-p edt-mini-t">La relecture de cette heure arrive avec le profil de classe.</p>'
+        +edtAbsencesHtml(cle,c);
     } else if(c.nature==='sansSeance'){
       h+='<p class="edt-p">Cette heure ne compte pas dans la prévision horaire.<br><b>'+escapeHtml(c.categorie||'')+'</b>'
         +(c.precision?('<br>'+escapeHtml(c.precision)):'')+'</p>';
@@ -18905,6 +18928,255 @@ function edtModaleSaisir(ev){
   var lache=function(){ EDT_MOD.drag=null;
     window.removeEventListener('pointermove',bouge); window.removeEventListener('pointerup',lache); };
   window.addEventListener('pointermove',bouge); window.addEventListener('pointerup',lache);
+}
+
+
+/* ═══ LE MOIS, L'ANNÉE, LA DIVERGENCE, L'ABSENCE ════════════════════════════
+   La divergence n'est jamais un blocage : elle alerte, progressivement, et un
+   écart que Paul déclare justifié sort du calcul et le dit. ══════════════ */
+
+/* ── LA TRACE D'UNE HEURE, ET SON CHEMIN (pour y écrire les absents) ─────── */
+function edtCheminTrace(nomClasse,iso,creneau){
+  var niv=edtNiveauDe(nomClasse); if(!niv)return null;
+  var l=EDT_CHAP[niv]||[];
+  for(var i=0;i<l.length;i++){
+    var se=edtListe(l[i]&&l[i].seances);
+    for(var k=0;k<se.length;k++){
+      var d=(se[k]&&se[k].deroule_joue)||{},cle=edtCleHeure(iso,creneau,nomClasse);
+      var trouve=null;
+      Object.keys(d).forEach(function(sl){
+        var b=d[sl]; if(!b||(b.classe&&b.classe!==nomClasse))return;
+        if((b.heures||{})[cle])trouve={slug:sl,trace:b.heures[cle]};
+      });
+      if(trouve)return {chemin:'/site/'+niv+'/chapitres/'+l[i].__cle+'/seances/'+se[k].__i
+                        +'/deroule_joue/'+trouve.slug+'/heures/'+cle,trace:trouve.trace};
+    }
+  }
+  return null;
+}
+function edtElevesDe(nomClasse){
+  var t=EDT_CLASSES||{},c=t[nomClasse];
+  return (c&&Array.isArray(c.eleves))?c.eleves.slice().sort(function(a,b){return String(a).localeCompare(String(b),'fr');}):[];
+}
+function edtSlugEleve(nom){
+  try{ return sanMJPC(nom); }catch(e){}
+  return String(nom||'').toLowerCase().replace(/[^a-z0-9]+/g,'_').replace(/^_|_$/g,'');
+}
+/* le geste du QCM, repris tel quel : un clic marque, un clic défait */
+function edtAbsence(cle,nomEleve){
+  var c=edtCellule(cle); if(!c||!c.classeMjpc)return;
+  var t=edtCheminTrace(c.classeMjpc,c.iso,c.creneau); if(!t)return;
+  var slug=edtSlugEleve(nomEleve);
+  var l=(t.trace.absents||[]).slice(),i=l.indexOf(slug);
+  if(i<0)l.push(slug); else l.splice(i,1);
+  t.trace.absents=l;
+  mjpcPutJson(FIREBASE_BASE+t.chemin+'/absents.json',l.length?l:null,
+    'Absents \u2014 '+c.classeMjpc+' '+c.iso+' '+c.creneau,function(){ edtPeindreModale(); });
+}
+function edtAbsencesHtml(cle,c){
+  var t=edtCheminTrace(c.classeMjpc,c.iso,c.creneau); if(!t)return '';
+  var abs=t.trace.absents||[],el=edtElevesDe(c.classeMjpc);
+  if(!el.length)return '<div class="edt-mo-bloc edt-mini-t">Aucun élève dans cette classe.</div>';
+  return '<div class="edt-mo-bloc"><label class="edt-lab">Absents de cette heure ('+abs.length+' sur '+el.length+')</label>'
+    +'<p class="edt-mini-t">Un clic marque, un clic défait. Jamais montré à la classe.</p>'
+    +'<div class="edt-eleves">'+el.map(function(n){
+      var s=edtSlugEleve(n),a=abs.indexOf(s)>=0;
+      return '<button class="edt-el'+(a?' edt-el-abs':'')+'" onclick="edtAbsence('
+        +JSON.stringify(cle).replace(/"/g,'&quot;')+','+JSON.stringify(n).replace(/"/g,'&quot;')+')">'
+        +escapeHtml(n)+'</button>';
+    }).join('')+'</div></div>';
+}
+
+/* ── LA DIVERGENCE — alerte progressive, jamais un blocage ───────────────── */
+function edtHeuresJustifiees(nomClasse){
+  var niv=edtNiveauDe(nomClasse),cal=EDT.calendrier,n=0;
+  if(!niv||!cal)return 0;
+  (cal.evenementsClasse||[]).forEach(function(e){
+    if(!e||!e.justifie||e.niveau!==niv)return;
+    var d=e.debut;
+    while(d<=e.fin){
+      edtCasesDuJour(d).forEach(function(x){ if(x&&x.mjpc!==false&&x.classeMjpc===nomClasse)n++; });
+      d=edtPlusJour(d,1);
+    }
+  });
+  /* une heure que Paul a sortie de la prévision compte aussi comme justifiée */
+  var h=((edtDecisions()[nomClasse]||{}).heures)||{};
+  Object.keys(h).forEach(function(k){ if(h[k]&&h[k].sansSeance)n++; });
+  return n;
+}
+function edtAvancement(nomClasse){
+  var f=edtFileDAttente(nomClasse,null);
+  if(!f)return null;
+  var total=edtListe(f.chapitre.seances).length;
+  return {chapitre:f.chapitre.title||'',faites:total-f.seances.length,total:total};
+}
+function edtDivergence(nomClasse){
+  var niv=edtNiveauDe(nomClasse),a=edtAvancement(nomClasse);
+  if(!a)return null;
+  var meilleur=a.faites, ref=nomClasse;
+  ((EDT.grille&&EDT.grille.creneaux)||[]).forEach(function(x){
+    if(!x||x.mjpc===false||!x.classeMjpc)return;
+    if(edtNiveauDe(x.classeMjpc)!==niv)return;
+    var b=edtAvancement(x.classeMjpc); if(b&&b.faites>meilleur){meilleur=b.faites;ref=x.classeMjpc;}
+  });
+  /* Ce qui justifie un écart, c'est ce que CETTE classe a perdu et pas l'autre.
+     Un événement qui prend les heures des deux (un jour férié, un voyage de
+     tout le niveau) ne justifie rien entre elles : Paul parle du « voyage
+     scolaire que fait une classe et pas l'autre ». On compare donc les heures
+     justifiées à celles de la classe de référence, et on ne garde que l'écart. */
+  var brut=meilleur-a.faites;
+  var just=edtHeuresJustifiees(nomClasse), justRef=(ref===nomClasse)?just:edtHeuresJustifiees(ref);
+  var justeEcart=Math.max(0,just-justRef);
+  var net=Math.max(0,brut-justeEcart);
+  var palier= net<=1?'dans les temps' : (net===2?'léger' : (net===3?'marqué':'critique'));
+  return {ecart:net,brut:brut,justifie:just,justifieEcart:justeEcart,reference:ref,palier:palier,avance:a};
+}
+function edtEstExperimentale(nomClasse){
+  var t=EDT_CLASSES||{},c=t[nomClasse];
+  return !!(c&&c.experimentale);
+}
+var EDT_MENTION_EXP='classe expérimentale \u2014 si cette classe était réelle, voilà ce que ça donnerait';
+
+/* ── LE MOIS ─────────────────────────────────────────────────────────────── */
+function edtPeindreMois(){
+  var e=document.getElementById('edt-ecran'); if(!e)return;
+  var auj=edtAujourdhui(), ancre=EDT_VUE.ancre||auj;
+  var d=new Date(ancre+'T12:00:00'), premier=new Date(d.getFullYear(),d.getMonth(),1);
+  var lundi=edtLundiDe(new Date(premier.getTime()-premier.getTimezoneOffset()*60000).toISOString().slice(0,10));
+  var cel=edtProjeter(lundi,42); EDT_VUE.cellules=cel;
+  var M=['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
+  var h=edtTeteHtml('mois',M[d.getMonth()]+' '+d.getFullYear());
+  h+='<div class="edt-mois">';
+  ['lun','mar','mer','jeu','ven'].forEach(function(j){ h+='<div class="edt-jour">'+j+'</div>'; });
+  for(var s=0;s<6;s++){
+    for(var j2=0;j2<5;j2++){
+      var iso=edtPlusJour(lundi,s*7+j2);
+      var off=edtJourSansCours(iso);
+      var dedans=[];
+      Object.keys(cel).forEach(function(k){ if(cel[k].iso===iso)dedans.push(cel[k]); });
+      dedans.sort(function(a,b){return String(a.creneau).localeCompare(String(b.creneau));});
+      h+='<div class="edt-mcase'+(iso===auj?' edt-case-now':'')+(off?' edt-mcase-off':'')+'">'
+        +'<span class="edt-mnum">'+Number(iso.slice(8))+'</span>'
+        +(off?('<i class="edt-mini-t">'+escapeHtml(off.libelle||off.motif)+'</i>')
+             :dedans.map(function(x){
+                var cl=x.nature==='jouee'?'edt-m-joue':(x.nature==='sansSeance'?'edt-m-sans':(x.nature==='prevu'?'edt-m-prevu':'edt-m-autre'));
+                return '<span class="edt-m '+cl+'" title="'+escapeHtml(x.creneau+' '+(x.classeMjpc||x.classe))+'">'
+                  +escapeHtml((x.classeMjpc||x.classe).slice(0,14))+'</span>';
+              }).join(''))
+        +'</div>';
+    }
+  }
+  h+='</div>'+'<div class="edt-cartes">'+edtCartesHtml(lundi)+'</div>';
+  e.innerHTML=h;
+}
+
+/* ── L'ANNÉE — une barre par chapitre et par classe, les jalons en lignes ── */
+function edtPeindreAnnee(){
+  var e=document.getElementById('edt-ecran'); if(!e)return;
+  var cal=EDT.calendrier||{},sem=(cal.semaines||[]);
+  var debut=sem.length?sem[0].lundi:edtAujourdhui(), fin=sem.length?edtPlusJour(sem[sem.length-1].lundi,6):edtPlusJour(debut,300);
+  var jours=Math.max(1,Math.round((new Date(fin)-new Date(debut))/86400000));
+  var pos=function(iso){ return Math.max(0,Math.min(100,(new Date(iso)-new Date(debut))/86400000/jours*100)); };
+  var h=edtTeteHtml('annee','année '+escapeHtml(EDT_ANNEE));
+  h+='<div class="edt-annee"><div class="edt-an-jalons">';
+  (cal.jalons||[]).forEach(function(j){ if(j.date<debut||j.date>fin)return;
+    h+='<span class="edt-an-jalon" style="left:'+pos(j.date).toFixed(2)+'%" title="'+escapeHtml(j.date+' \u2014 '+j.libelle)+'"></span>'; });
+  (cal.vacances||[]).forEach(function(v){ if(v.fin<debut||v.debut>fin)return;
+    h+='<span class="edt-an-vac" style="left:'+pos(v.debut).toFixed(2)+'%;width:'+(pos(v.fin)-pos(v.debut)).toFixed(2)+'%" title="'+escapeHtml(v.nom)+'"></span>'; });
+  h+='<span class="edt-an-auj" style="left:'+pos(edtAujourdhui()).toFixed(2)+'%"></span></div>';
+
+  var vues={};
+  ((EDT.grille&&EDT.grille.creneaux)||[]).forEach(function(c){
+    if(!c||c.mjpc===false||!c.classeMjpc||vues[c.classeMjpc])return;
+    vues[c.classeMjpc]=true;
+    var nom=c.classeMjpc, niv=edtNiveauDe(nom), l=EDT_CHAP[niv]||[];
+    var dv=edtDivergence(nom), exp=edtEstExperimentale(nom);
+    h+='<div class="edt-an-ligne"><div class="edt-an-nom">'+escapeHtml(nom)
+      +(exp?'<i class="edt-exp" title="'+EDT_MENTION_EXP+'">expérimentale</i>':'')
+      +(dv?('<i class="edt-pal edt-pal-'+dv.palier.split(' ')[0]+'">'+escapeHtml(dv.palier)
+          +(dv.brut?(' \u00b7 '+dv.brut+' h de retard'):'')
+          +(dv.justifieEcart?(' dont '+dv.justifieEcart+' justifiée'+(dv.justifieEcart>1?'s':'')):'')+'</i>'):'')
+      +'</div><div class="edt-an-piste">';
+    l.forEach(function(ch){
+      var pub=false; try{ pub=isPubFor(ch,nom); }catch(er){}
+      if(!pub)return;
+      var dates=[];
+      edtListe(ch.seances).forEach(function(s){
+        var dj=(s&&s.deroule_joue)||{};
+        Object.keys(dj).forEach(function(sl){ var b=dj[sl]; if(!b||(b.classe&&b.classe!==nom))return;
+          Object.keys(b.heures||{}).forEach(function(k){ dates.push(String(k).slice(0,10)); }); });
+      });
+      dates.sort();
+      if(dates.length){
+        h+='<span class="edt-an-reel" style="left:'+pos(dates[0]).toFixed(2)+'%;width:'
+          +Math.max(0.6,pos(dates[dates.length-1])-pos(dates[0])).toFixed(2)+'%" title="'
+          +escapeHtml((ch.title||'')+' \u2014 réel : '+dates[0]+' \u2192 '+dates[dates.length-1])+'"></span>';
+      } else {
+        h+='<span class="edt-an-prevu" style="left:'+pos(edtAujourdhui()).toFixed(2)+'%;width:8%" title="'
+          +escapeHtml((ch.title||'')+' \u2014 prévu, pas encore joué')+'"></span>';
+      }
+    });
+    h+='</div></div>';
+  });
+  h+='</div>';
+  e.innerHTML=h;
+}
+
+/* ── LE CALENDRIER DE L'ANNÉE — lisible, et les écarts se déclarent ───────── */
+function edtPeindreCalendrier(){
+  var e=document.getElementById('edt-ecran'); if(!e)return;
+  var cal=EDT.calendrier;
+  var h=edtTeteHtml('calendrier','calendrier de l\u2019année');
+  if(!cal){ e.innerHTML=h+'<div class="edt-cal"><p class="edt-p">Aucun calendrier injecté.</p></div>'; return; }
+  h+='<div class="edt-cal"><div class="edt-cal-col"><div class="edt-titre">Événements de classe</div>'
+    +'<p class="edt-mini-t">Coche « justifié » quand l\u2019écart de progression ne dépend pas de toi : ses heures sortent du calcul.</p>'
+    +(cal.evenementsClasse||[]).map(function(x,i){
+      return '<label class="edt-cal-l"><input type="checkbox"'+(x.justifie?' checked':'')
+        +' onchange="edtJustifier('+i+',this.checked)"><b>'+escapeHtml(x.niveau||'')+'</b> '
+        +escapeHtml(x.debut)+(x.fin!==x.debut?(' \u2192 '+escapeHtml(x.fin)):'')+' \u00b7 '
+        +escapeHtml(String(x.libelle||'').slice(0,60))+'</label>';
+    }).join('')+'</div>'
+    +'<div class="edt-cal-col"><div class="edt-titre">Jalons communs</div>'
+    +(cal.jalons||[]).map(function(x){ return '<div class="edt-cal-l">'+escapeHtml(x.date)+' \u00b7 '+escapeHtml(String(x.libelle||'').slice(0,60))+'</div>'; }).join('')
+    +'</div><div class="edt-cal-col"><div class="edt-titre">Sans cours</div>'
+    +(cal.vacances||[]).map(function(x){ return '<div class="edt-cal-l">'+escapeHtml(x.nom)+' \u00b7 '+escapeHtml(x.debut)+' \u2192 '+escapeHtml(x.fin)+'</div>'; }).join('')
+    +(cal.feries||[]).map(function(x){ return '<div class="edt-cal-l edt-mini-t">'+escapeHtml(x.date)+' \u00b7 '+escapeHtml(x.libelle)+'</div>'; }).join('')
+    +'</div></div>';
+  e.innerHTML=h;
+}
+function edtJustifier(i,valeur){
+  var cal=EDT.calendrier; if(!cal||!cal.evenementsClasse||!cal.evenementsClasse[i])return;
+  cal.evenementsClasse[i].justifie=!!valeur;
+  mjpcPutJson(FIREBASE_BASE+edtChemin('calendrier')+'.json',cal,'Écart justifié',function(){
+    EDT.calendrier=cal; edtPeindreCalendrier();
+  });
+}
+
+/* ── LA TÊTE, COMMUNE AUX QUATRE VUES ────────────────────────────────────── */
+function edtTeteHtml(mode,titre){
+  var auj=edtAujourdhui(), maintenant=edtCreneauMaintenant();
+  return '<div class="edt-tete">'
+   +'<b>'+escapeHtml(titre||edtDateLisible(auj))+'</b>'
+   +(mode==='semaine'&&maintenant?(' \u00b7 '+escapeHtml(maintenant)):'')
+   +'<span class="edt-sep"></span>'
+   +['semaine','mois','annee'].map(function(m){
+      return '<button class="edt-btn'+(mode===m?' edt-btn-actif':'')+'" onclick="edtVue(\''+m+'\')">'
+        +(m==='semaine'?'Semaine':(m==='mois'?'Mois':'Année'))+'</button>'; }).join('')
+   +'<button class="edt-btn'+(mode==='calendrier'?' edt-btn-actif':'')+'" onclick="edtVue(\'calendrier\')">Calendrier de l\u2019année\u2026</button>'
+   +'<button class="edt-btn" onclick="edtAller(-1)">\u2039</button>'
+   +'<button class="edt-btn" onclick="edtAujourdhuiAller()">Aujourd\u2019hui</button>'
+   +'<button class="edt-btn" onclick="edtAller(1)">\u203a</button>'
+   +(mode==='semaine'?'<button class="edt-btn" onclick="edtPhoto()">\ud83d\udcf7 Photo du prévu</button>':'')
+   +'<span class="edt-souple"></span>'
+   +'<button class="edt-btn" onclick="edtFermer()">\u2715 Fermer l\u2019emploi du temps</button>'
+   +'</div>';
+}
+function edtVue(mode){ EDT_VUE.mode=mode; edtPeindre(); }
+function edtPeindre(){
+  if(EDT_VUE.mode==='mois')return edtPeindreMois();
+  if(EDT_VUE.mode==='annee')return edtPeindreAnnee();
+  if(EDT_VUE.mode==='calendrier')return edtPeindreCalendrier();
+  return edtPeindreSemaine();
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════

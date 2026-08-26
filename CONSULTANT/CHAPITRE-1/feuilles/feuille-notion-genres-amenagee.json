@@ -1,0 +1,120 @@
+{
+ "produit": "fiche_notion",
+ "titre": "Fiche notion : Les genres littéraires — version aménagée",
+ "cases": {
+  "titre": true,
+  "sous_titre": true,
+  "annee_scolaire": true,
+  "date_edition": true,
+  "version_document": true,
+  "objectif": true,
+  "competences": true,
+  "notions": true,
+  "domaine_socle": true,
+  "mention_conserver": true,
+  "travail_a_faire": true,
+  "criteres_je": true,
+  "texte_libre": true,
+  "colonnes_comp": true,
+  "tableau": true,
+  "attention_piege": true,
+  "a_retenir": true,
+  "police_adaptee": true,
+  "consignes_reformulees": true,
+  "interligne": true
+ },
+ "valeurs": {
+  "titre": {
+   "texte": "Fiche notion : Les genres littéraires — version aménagée"
+  },
+  "sous_titre": {
+   "texte": "Les quatre genres, leurs formes et leurs sous-genres. À retrouver toute l'année au rayon Fiches notions. Consignes reformulées."
+  },
+  "objectif": {
+   "texte": "À la fin de cette leçon, tu sauras nommer le genre d'un texte, décrire sa forme et citer ses sous-genres."
+  },
+  "competences": {
+   "items": [
+    "Construire les notions permettant l'analyse et l'élaboration des textes et des discours"
+   ]
+  },
+  "notions": {
+   "items": [
+    "Les caractéristiques des genres littéraires"
+   ]
+  },
+  "domaine_socle": {
+   "texte": "Domaine 1 — Les langages pour penser et communiquer"
+  },
+  "criteres_je": {
+   "items": [
+    "je sais nommer les quatre genres",
+    "je sais décrire la forme de chaque genre",
+    "je sais citer des sous-genres et un exemple d'œuvre",
+    "je sais dire si un poème est en vers ou en prose",
+    "je sais distinguer le genre et le registre"
+   ]
+  },
+  "travail_a_faire": {
+   "texte": "Fais quatre colonnes dans ton cahier : narratif, poétique, théâtral, argumentatif. Range dedans les textes lus depuis le début de l'année."
+  }
+ },
+ "blocs": [
+  {
+   "id": "texte_libre",
+   "valeurs": {
+    "texte": "Un genre littéraire est une grande catégorie de textes qui présentent des caractéristiques communes, en termes de forme ou de thème. On distingue quatre grandes catégories :"
+   }
+  },
+  {
+   "id": "colonnes_comp",
+   "valeurs": {
+    "titre_g": "Le texte narratif",
+    "texte_g": "Il raconte une histoire réelle ou imaginaire. Forme :\n- présence d'un narrateur, soit interne (« je »), soit externe (« il/elle ») ;\n- présence d'un système de temps au présent (présent, passé composé, futur) ou au passé (passé simple, imparfait, plus-que-parfait, conditionnel) ;\n- présence d'un cadre spatio-temporel ;\n- présence de personnages.",
+    "titre_d": "Le texte poétique",
+    "texte_d": "Il se définit par un usage différent de la langue. Forme :\n- en vers (alexandrin, décasyllabe) ou en prose ;\n- jeu sur les sonorités (assonances, allitérations) ;\n- travail sur le rythme ;\n- présence possible de formes fixes, telles le sonnet, la ballade… ;\n- présence possible de rimes."
+   }
+  },
+  {
+   "id": "colonnes_comp",
+   "valeurs": {
+    "titre_g": "Le texte théâtral",
+    "texte_g": "Il représente l'action au lieu de la raconter : ce sont les paroles échangées sur scène par les personnages qui construisent l'action dramatique. Forme :\n- présence de didascalies ;\n- noms des personnages devant chaque réplique ;\n- double énonciation : les personnages dialoguent entre eux mais s'adressent en même temps au public ;\n- la pièce est divisée en actes et en scènes.",
+    "titre_d": "Le texte argumentatif",
+    "texte_d": "Il se définit par une visée argumentative : il s'agit de convaincre ou de persuader le lecteur. Forme :\n- présence d'une thèse (opinion de l'auteur) ;\n- présence d'arguments (historique, économique…) ;\n- présence d'exemples ;\n- possibilité de connecteurs logiques ;\n- présence d'un raisonnement (inductif, déductif…)."
+   }
+  },
+  {
+   "id": "texte_libre",
+   "valeurs": {
+    "texte": "📚 Les sous-genres"
+   }
+  },
+  {
+   "id": "tableau",
+   "valeurs": {
+    "lignes": [
+     "Genre narratif | Genre poétique | Genre théâtral | Genre argumentatif",
+     "le roman : long récit en prose ; personnages fictifs. Ex : Les Misérables (Hugo) | l'épopée : long poème qui raconte les exploits d'un héros ou d'un peuple. Ex : L'Odyssée (Homère) | la comédie : pièce de théâtre qui met en scène des personnages de milieu social modeste ou bourgeois. Le dénouement est heureux. Ex : L'Avare (Molière) | l'essai : réflexion personnelle de l'auteur sur un thème. Ex : Les Essais (Montaigne)",
+     "la nouvelle : court récit en prose ; personnages fictifs. Suit en général un schéma narratif. Ex : La Parure (Maupassant) | la fable : court récit généralement en vers, qui vise à plaire au lecteur et à l'instruire. Met souvent en scène des animaux ou des plantes. Ex : La Laitière et le Pot au lait (La Fontaine) | la tragédie : pièce de théâtre qui met en scène des personnages de milieu social noble. Le dénouement est souvent marqué par la mort d'un personnage. Ex : Phèdre (Racine) | le discours : texte didactique proche de l'essai. Ex : Discours sur la misère (Hugo)",
+     "l'autobiographie ou le roman autobiographique : récit dans lequel l'auteur raconte sa vie ; personnages non fictifs. Ex : Les Confessions (Rousseau) | | le drame romantique : rejet des règles classiques, mélange de sublime et de grotesque. Ex : Hernani (Hugo) | le traité : texte didactique à valeur démonstrative. Ex : Traité sur la tolérance (Voltaire)",
+     "le conte : court récit en prose ; personnages fictifs. Fait intervenir le surnaturel, accepté sans peur : le merveilleux. Ex : Cendrillon (Perrault) | | | le dialogue : échange d'idées à valeur délibérative. Ex : Supplément au Voyage de Bougainville (Diderot)",
+     " | | | le pamphlet : court écrit à visée critique ou satirique, qui attaque une personne, une institution ou une idée. Ex : Napoléon le Petit (Hugo)",
+     " | | | le sermon : texte religieux à valeur morale. Ex : Sermon sur la mort (Bossuet)"
+    ]
+   }
+  },
+  {
+   "id": "attention_piege",
+   "valeurs": {
+    "texte": "Ne confonds pas le genre et le registre : le genre est la forme (poème, roman, pièce), le registre est l'effet produit (comique, tragique, lyrique). Et un poème n'est pas toujours en vers : « Le port » et « Les Fenêtres » sont des poèmes en prose."
+   }
+  },
+  {
+   "id": "a_retenir",
+   "valeurs": {
+    "texte": "Quatre genres : narratif, poétique, théâtral, argumentatif. Chacun a sa forme et ses sous-genres. Le texte poétique peut être en vers ou en prose."
+   }
+  }
+ ]
+}

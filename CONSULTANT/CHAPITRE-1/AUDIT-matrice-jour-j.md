@@ -51,7 +51,13 @@ Le prompt impose la **session 2027** pour les 3e actuels. Toute exigence hérit�
 
 ### ⑥ Le quantitatif annuel n'est pas déclaré
 Le prompt l'interdit formellement : « ⚠ Je ne déclare nulle part mes œuvres ni mes cursives : DEMANDE-MOI le décompte, ne le devine pas. » **À demander à Paul lors de la progression annuelle.**
-*Écart déjà consigné (registre, règle 39)* : le prompt annonce 4 œuvres / 3 cursives / 2 groupements ; Éduscol dit **3 / 3 / 3** pour la 3e.
+
+**Le quantitatif officiel, relu à la source** (BO spécial n°11 du 26/11/2015, annexe 3) : « Chaque année du cycle, l'élève lit : au moins trois œuvres complètes en lecture intégrale ; au moins trois œuvres complètes en lecture cursive ; au moins trois groupements de textes. » **3/3/3 confirmé** — le prompt, qui annonce 4 œuvres / 3 cursives / 2 groupements, se trompe sur deux nombres, et demande **moins** de groupements que le texte officiel.
+
+### ⑦ « Agir dans la cité » exige une lecture intégrale
+Le texte officiel, pour ce thème de 3e : « en lien avec la programmation annuelle en histoire (thème 1 "L'Europe, un théâtre majeur des guerres totales"), une œuvre ou une partie significative d'une œuvre portant un regard sur l'histoire du siècle — guerres mondiales, société de l'entre-deux-guerres, régimes fascistes et totalitaires (**lecture intégrale**). »
+**Un groupement de lettres n'y répond pas seul.** Soit une œuvre intégrale s'adjoint au chapitre, soit la lecture intégrale de cette entrée se fait ailleurs dans l'année. **À trancher par Paul.**
+*Le programme suggère par ailleurs, en croisement avec l'histoire : « 3e : Les deux guerres mondiales et la littérature : poésie engagée, résistance, fabrication d'une anthologie poétique, mise en voix et mise en scène. » — c'est exactement le chantier en cours.*
 
 ---
 

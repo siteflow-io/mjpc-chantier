@@ -1,0 +1,195 @@
+{
+ "produit": "prepa_brevet",
+ "titre": "Tâche finale : « L'Étranger » — version aménagée",
+ "cases": {
+  "titre": true,
+  "sous_titre": true,
+  "classe": true,
+  "annee_scolaire": true,
+  "date_edition": true,
+  "version_document": true,
+  "objectif": true,
+  "competences": true,
+  "notions": true,
+  "domaine_socle": true,
+  "evalue": true,
+  "duree_prevue": true,
+  "oeuvre": true,
+  "auteur": true,
+  "siecle_courant": true,
+  "genre": true,
+  "lexique_seance": true,
+  "repere_chrono": true,
+  "extrait_numerote": true,
+  "numerotation_lignes": true,
+  "note_bas_page": true,
+  "consigne": true,
+  "question": true,
+  "bareme": true,
+  "note_sur": true,
+  "materiel": true,
+  "modalite": true,
+  "mention_conserver": true,
+  "police_adaptee": true,
+  "consignes_reformulees": true,
+  "interligne": true
+ },
+ "valeurs": {
+  "titre": {
+   "texte": "Tâche finale : « L'Étranger » — version aménagée"
+  },
+  "sous_titre": {
+   "texte": "Partie « Compréhension et compétences d'interprétation » de l'épreuve — un poème jamais vu en classe. Consignes reformulées."
+  },
+  "objectif": {
+   "texte": "Interpréter seul un poème en prose inconnu et prendre position sur la question du chapitre, preuves à l'appui."
+  },
+  "competences": {
+   "items": [
+    "Élaborer une interprétation de textes littéraires",
+    "Adopter des stratégies et des procédures d'écriture efficaces",
+    "Mobiliser des références culturelles pour interpréter les textes et les créations artistiques et littéraires et pour enrichir son expression personnelle"
+   ]
+  },
+  "notions": {
+   "items": [
+    "Le poème en prose",
+    "La situation d'énonciation",
+    "Le discours direct",
+    "Thèse, arguments et exemples"
+   ]
+  },
+  "domaine_socle": {
+   "texte": "Domaine 1 — Les langages pour penser et communiquer"
+  },
+  "evalue": {
+   "texte": "La compréhension du poème, l'interprétation justifiée par des citations, et la capacité à répondre seul à la question du chapitre."
+  },
+  "duree_prevue": {
+   "texte": "50 minutes en classe."
+  },
+  "oeuvre": {
+   "texte": "Petits Poèmes en prose (Le Spleen de Paris), poème I"
+  },
+  "auteur": {
+   "texte": "Charles Baudelaire (1821-1867)"
+  },
+  "siecle_courant": {
+   "texte": "XIXe siècle"
+  },
+  "genre": {
+   "texte": "Poésie — poème en prose"
+  },
+  "repere_chrono": {
+   "texte": "1857 : Les Fleurs du mal, des poèmes en vers — 1862 : « L'Étranger » paraît dans le journal La Presse — 1869 : le recueil paraît après la mort du poète"
+  },
+  "lexique_seance": {
+   "items": [
+    "énigmatique = mystérieux, difficile à comprendre",
+    "une latitude = la position d'un lieu sur la Terre, du nord au sud",
+    "volontiers = avec plaisir",
+    "immortelle = qui ne meurt jamais",
+    "haïr = détester"
+   ]
+  },
+  "materiel": {
+   "items": [
+    "une copie double",
+    "le sujet, à glisser dans la copie"
+   ]
+  },
+  "modalite": {
+   "texte": "Seul, sans documents."
+  },
+  "note_sur": {
+   "total": "32"
+  },
+  "bareme": {
+   "items": [
+    "Genre et forme du texte, justifiés = 4",
+    "Les marques du dialogue = 4",
+    "Les deux voix et ce qui les oppose = 5",
+    "Ce que l'étranger refuse = 5",
+    "La dernière réplique : les nuages = 6",
+    "La question du chapitre, tranchée et prouvée = 8"
+   ]
+  }
+ },
+ "blocs": [
+  {
+   "id": "extrait_numerote",
+   "valeurs": {
+    "texte": "— Qui aimes-tu le mieux, homme énigmatique, dis ? ton père, ta mère, ta sœur ou ton frère ?\n— Je n'ai ni père, ni mère, ni sœur, ni frère.\n— Tes amis ?\n— Vous vous servez là d'une parole dont le sens m'est resté jusqu'à ce jour inconnu.\n— Ta patrie ?\n— J'ignore sous quelle latitude elle est située.\n— La beauté ?\n— Je l'aimerais volontiers, déesse et immortelle.\n— L'or ?\n— Je le hais comme vous haïssez Dieu.\n— Eh ! qu'aimes-tu donc, extraordinaire étranger ?\n— J'aime les nuages… les nuages qui passent… là-bas… là-bas… les merveilleux nuages !"
+   }
+  },
+  {
+   "id": "note_bas_page",
+   "valeurs": {
+    "texte": "Charles Baudelaire, « L'Étranger », Petits Poèmes en prose (Le Spleen de Paris), 1869. Ce poème paraît d'abord dans le journal La Presse, en 1862 ; il ouvre le recueil publié après la mort du poète."
+   }
+  },
+  {
+   "id": "consigne",
+   "valeurs": {
+    "texte": "Réponds aux questions sur ta copie double, en respectant ces cinq règles.\n• Ligne le texte.\n• Reprends les termes de la question dans ta réponse.\n• Sois précis.\n• Développe ta réponse.\n• N'oublie pas la ponctuation."
+   },
+   "reformulations": {
+    "texte": "Réponds sur ta copie double.\n• Numérote les lignes du texte.\n• Recommence la phrase de la question dans ta réponse.\n• Écris une réponse complète.\n• Mets les points et les majuscules."
+   }
+  },
+  {
+   "id": "question",
+   "valeurs": {
+    "texte": "À quel genre et à quelle forme ce texte appartient-il ? Justifie en t'appuyant sur des éléments précis du texte. (4 points)"
+   },
+   "reformulations": {
+    "texte": "Ce texte est-il un poème ? Est-il écrit en vers ou en prose ? Recopie un passage du texte qui le prouve. (4 points)"
+   }
+  },
+  {
+   "id": "question",
+   "valeurs": {
+    "texte": "Relève les marques du dialogue dans ce texte. Quel type de discours reconnais-tu ? (4 points)"
+   },
+   "reformulations": {
+    "texte": "Recopie les signes qui montrent que des personnes se parlent (les tirets, les questions). Comment appelle-t-on des paroles rapportées telles quelles ? (4 points)"
+   }
+  },
+  {
+   "id": "question",
+   "valeurs": {
+    "texte": "Combien de voix entend-on ? Explique ce qui les oppose, en citant le texte. (5 points)"
+   },
+   "reformulations": {
+    "texte": "Combien de personnes parlent ? Que veut la première ? Que répond la seconde ? Recopie une phrase de chacune. (5 points)"
+   }
+  },
+  {
+   "id": "question",
+   "valeurs": {
+    "texte": "Relève tout ce que l'étranger refuse. Que reste-t-il, à la fin, de tout ce qu'on lui a proposé ? (5 points)"
+   },
+   "reformulations": {
+    "texte": "Fais la liste de tout ce que l'étranger dit ne pas aimer. À la fin, qu'est-ce qu'il aime ? (5 points)"
+   }
+  },
+  {
+   "id": "question",
+   "valeurs": {
+    "texte": "Observe la dernière réplique : la ponctuation, les répétitions, l'adjectif. Explique ce que les nuages représentent pour l'étranger. (6 points)"
+   },
+   "reformulations": {
+    "texte": "Regarde la dernière phrase. Quels mots sont répétés ? Quels signes de ponctuation vois-tu ? D'après toi, pourquoi l'étranger aime-t-il les nuages ? (6 points)"
+   }
+  },
+  {
+   "id": "question",
+   "valeurs": {
+    "texte": "La question du chapitre : de quelles règles ce poème se libère-t-il, et que garde-t-il de la poésie ? Rédige un paragraphe organisé, en citant le texte et en t'appuyant sur ce que tu as appris depuis le début du chapitre. (8 points)"
+   },
+   "reformulations": {
+    "texte": "Ce poème n'a ni vers ni rimes : quelles règles de la poésie abandonne-t-il ? Qu'est-ce qui fait qu'on l'appelle quand même un poème ? Écris un paragraphe et recopie un passage du texte pour le prouver. (8 points)"
+   }
+  }
+ ]
+}

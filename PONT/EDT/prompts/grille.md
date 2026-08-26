@@ -10,9 +10,7 @@ Tu lis ce qui est écrit. Tu n'inventes aucun créneau, aucune classe, aucune sa
 
 ## Ce que tu dois savoir pour lire la grille
 
-1. **Les huit créneaux sont fixes** et tu ne dois utiliser que ceux-là, écrits exactement ainsi :
-   `08:00-08:55` · `08:57-09:52` · `10:07-11:02` · `11:04-11:59` · `13:00-13:55` · `13:57-14:52` · `15:07-16:02` · `16:04-16:59`.
-   Il n'y a pas de créneau entre 11:59 et 13:00.
+1. **Les créneaux se lisent sur la grille elle-même**, dans la colonne des heures, à gauche. Ils peuvent changer d'une année sur l'autre : ne les suppose jamais, recopie-les. Relève-les dans l'ordre et donne-les-moi dans un tableau `creneaux` séparé (voir plus bas), puis **n'utilise que ceux-là** dans les cases, écrits `HH:MM-HH:MM`. Sur ma grille de 2026-2027 ce sont : `08:00-08:55` · `08:57-09:52` · `10:07-11:02` · `11:04-11:59` · `13:00-13:55` · `13:57-14:52` · `15:07-16:02` · `16:04-16:59`, et il n'y a rien entre 11:59 et 13:00.
 2. **La lettre dans un petit carré, en bas à droite d'une case, est la semaine** : `A` ou `B`. Une case **qui occupe toute la largeur du jour et ne porte pas de lettre a lieu chaque semaine** : écris `"semaine":"AB"`. Une case étroite avec sa lettre n'a lieu qu'en A ou qu'en B.
 3. **Deux cases côte à côte sur la même ligne, le même jour**, ce sont deux semaines différentes : la gauche en A, la droite en B. Ce ne sont jamais deux cours simultanés.
 4. **Les créneaux « X Français X. »** sont des groupes partagés avec un collègue. Ils vont dans le JSON — je veux les voir sur ma semaine — mais avec `"mjpc": false` : **ils ne comptent jamais dans ma progression**, ils ne portent jamais de séance.
@@ -44,7 +42,10 @@ Un seul objet JSON, rien avant, rien après, pas de commentaires, pas de balises
 {
  "annee": "2026-2027",
  "source": "<le nom du fichier que je t'ai joint>",
- "creneauxDuSite": ["08:00-08:55","08:57-09:52","10:07-11:02","11:04-11:59","13:00-13:55","13:57-14:52","15:07-16:02","16:04-16:59"],
+ "creneauxDuSite": [
+  {"rang":1,"debut":"08:00","fin":"08:55"},
+  {"rang":2,"debut":"08:57","fin":"09:52"}
+ ],
  "etiquettesPeriodes": ["P1","P2","P3","P4","PFIN"],
  "creneaux": [
   {"jour":"lundi","creneau":"08:57-09:52","semaine":"AB","classe":"3 FRANKLIN Aretha","salle":"9","mjpc":true,"classeMjpc":""},
@@ -59,7 +60,7 @@ Les jours s'écrivent en toutes lettres et en minuscules : `lundi`, `mardi`, `me
 
 ## Avant de me répondre, vérifie toi-même
 
-- Chaque `creneau` est l'un des huit, au caractère près.
+- Chaque `creneau` d'une case correspond à une ligne de `creneauxDuSite`, au caractère près.
 - Aucune case n'a deux cours à la même `semaine` : un `jour` + `creneau` + `semaine` n'apparaît qu'une fois. Si tu trouves un doublon, ne choisis pas — signale-le.
 - Aucune case `AB` ne coexiste avec une case `A` ou `B` sur le même jour et le même créneau.
 - Le mercredi n'a aucun créneau après 11:59 : l'établissement n'a pas cours.

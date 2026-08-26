@@ -1,0 +1,77 @@
+entrée « Emploi du temps » dans le panneau prof : true
+
+capture 2b-1-panneau-prof
+
+état à vide :
+Année 2026-2027. Les objets vivent au hub sous /site/edt/. Rien n’est obligatoire : ce qui manque manque, le site marche comme avant.
+
+Calendrier de l’année — aucun objet injecté
+Grille de l’emploi du temps — aucun objet injecté
+Créneaux horaires — aucun objet injecté
+✨ Injecter un objet
+Calendrier de l’année
+Grille de l’emploi du temps
+Créneaux horaires
+📆 Dates des périodes
+
+Tant qu’aucune date 
+
+capture 2b-2-section-vide
+
+AT_EDT avant injection (repli en dur) : 08:00-08:55 · 08:57-09:52 · 10:07-11:02 · 11:04-11:59 · 13:00-13:55 · 13:57-14:52 · 15:07-16:02 · 16:04-16:59
+
+refus nommés :
+Ce texte n’a pas été accepté :
+Case 2 (4 HUGO) : deux cours à la même heure (lundi 08:57-09:52, semaine A) — je ne choisis pas à ta place.
+Case 3 (4 TURING) : le mercredi n’a pas cours après 11h59.
+Case 4 (4 HUGO) : « jour » doit être lundi, mardi, mercredi, jeudi ou vendredi.
+
+capture 2b-3-refus-nomme
+
+vérification creneaux : acceptée
+
+vérification calendrier : acceptée
+
+vérification grille : acceptée
+
+capture 2b-4-apres-injection
+
+AT_EDT après injection des créneaux de l’année : 08:00-08:55 · 08:57-09:52 · 10:07-11:02 · 11:04-11:59 · 13:00-13:55 · 13:57-14:52 · 15:07-16:02 · 16:04-16:59
+  (identique au repli : c’est normal, la grille 2026-2027 garde les mêmes horaires — la preuve suit)
+
+AT_EDT après injection d’horaires DIFFÉRENTS : 08:10-09:05 · 09:10-10:05 · 10:20-11:15
+  → l’objet commande bien la variable du site (le déroulé et le T-5 la lisent).
+
+AT_EDT quand l’objet est absent (repli sur la valeur en dur) : 08:00-08:55 · 08:57-09:52 · 10:07-11:02 · 11:04-11:59 · 13:00-13:55 · 13:57-14:52 · 15:07-16:02 · 16:04-16:59
+
+écritures au hub (les seules qui comptent) :
+  PUT /site/edt/creneaux/2026-2027
+  PUT /site/edt/calendrier/2026-2027
+  PUT /site/config/brevetDates/3e
+  PUT /site/edt/grille/2026-2027
+  PUT /site/edt/creneaux/2026-2027
+  PUT /site/edt/creneaux/2026-2027
+
+écritures hors /site/edt/ : PUT /site/config/brevetDates/3e  — attendu : la seule exception ① (brevetDates)
+
+requêtes hors hub captées (chargement des pages sœurs du site, aucune sortie réseau) : 18 — correction_dictee.html, worktrack.html, dictee_universelle.html, pilotage_debat_s3.html, evaluation-qcm.html, analyse_logique.html, applause_meter.html, reecriture.html, reecriture_bb4e.html
+
+brevetDates au faux hub : {"3e":"2027-06-25T08:00:00","4e":"2028-06-25T08:00:00","5e":"2029-06-23T08:00:00","6e":"2030-06-22T08:00:00"}
+
+périodes après saisie à la main : {"2026-2027":{"annee":"2026-2027","periodes":[{"nom":"P1","debut":"2026-09-01"}]}}
+
+capture 2b-5-periodes-et-appariement
+
+appariement 3 FRANKLIN Aretha → ["3E Charles de Gaulle","3E Charles de Gaulle","3E Charles de Gaulle","3E Charles de Gaulle","3E Charles de Gaulle","3E Charles de Gaulle","3E Charles de Gaulle"]
+
+lectures : {
+ "semaine7sept": "B",
+ "semaine16sept": "A",
+ "toussaint": {
+  "motif": "vacances",
+  "libelle": "de la Toussaint"
+ },
+ "unLundiOrdinaire": null,
+ "tempsUtile": 50,
+ "periodeAuPremierSeptembre": "P1"
+}

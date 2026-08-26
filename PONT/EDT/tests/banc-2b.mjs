@@ -193,6 +193,67 @@ const releve = { get:0, ecritures:0, sorties:0, erreursConsole:[] };
   journal.push('périodes après saisie à la main : ' + per);
   await capture('2b-5-periodes-et-appariement');
 
+  /* ══════════ ③a — LES PÉRIODES, OBJET ÉDITABLE ══════════ */
+  const lesPeriodes = async () => page.evaluate(() => edtPeriodes().map(p => p.rang+':'+p.nom+'['+(p.debut||'')+'→'+(p.fin||'')+']'));
+
+  journal.push('① livrées par la grille, telles qu\u2019écrites sur la feuille : ' + JSON.stringify(await lesPeriodes()));
+  await capture('3a-1-periodes-livrees');
+
+  /* ② renommer PFIN en P5 : la grille et l'écran suivent, sans redéploiement */
+  await page.evaluate(() => { const p = edtPeriodes().filter(x=>x.nom==='PFIN')[0]; edtPeriodePoser(p.rang,'nom','P5'); });
+  await new Promise(r => setTimeout(r, 600));
+  journal.push('② après renommage PFIN → P5 : ' + JSON.stringify(await lesPeriodes()));
+  const orph = await page.evaluate(() => edtEtiquettesOrphelines());
+  journal.push('   étiquettes citées par la grille et non déclarées : ' + JSON.stringify(orph) + '  (PFIN est cité par le mardi 15:07 — signalé, jamais bloquant)');
+  const vuEcran = await page.evaluate(() => { const a=document.querySelector('.edt-alerte'); return a?a.innerText:'(aucune alerte)'; });
+  journal.push('   ce que l\u2019écran affiche : ' + vuEcran);
+  await capture('3a-2-renommee-et-orpheline');
+
+  /* ③ ajouter une sixième période */
+  await page.evaluate(() => edtPeriodeAjouter());
+  await new Promise(r => setTimeout(r, 600));
+  journal.push('③ après ajout : ' + JSON.stringify(await lesPeriodes()));
+
+  /* ④ deux périodes qui se chevauchent : refus nommé */
+  const refusPer = await page.evaluate(() => {
+    const l = edtPeriodes();
+    l[0].debut='2026-09-01'; l[0].fin='2026-11-30';
+    l[1].debut='2026-11-15'; l[1].fin='2027-01-08';
+    return edtValiderPeriodes(l);
+  });
+  journal.push('④ chevauchement : ' + JSON.stringify(refusPer));
+  const refusNom = await page.evaluate(() => edtValiderPeriodes([{nom:'P1'},{nom:'P1'},{nom:'P3',debut:'2027-03-01',fin:'2027-01-01'}]));
+  journal.push('   nom en double et fin avant début : ' + JSON.stringify(refusNom));
+
+  /* dates saisies, puis réinjection de la grille : les dates survivent */
+  await page.evaluate(() => { const l=edtPeriodes(); edtPeriodePoser(l[0].rang,'debut','2026-09-01'); });
+  await new Promise(r => setTimeout(r, 500));
+  await page.evaluate(() => { const l=edtPeriodes(); edtPeriodePoser(l[0].rang,'fin','2026-11-06'); });
+  await new Promise(r => setTimeout(r, 500));
+  journal.push('   dates saisies à la main : ' + JSON.stringify(await lesPeriodes()));
+  const annonce = await page.evaluate((txt) => { edtInjOuvrir('grille');
+    document.getElementById('edt-inj-coller').value=txt; edtInjVerifier('grille');
+    const a=document.querySelector('.edt-apercu'); return a?a.innerText:'(pas d\u2019aperçu)'; }, lire('grille-2026-2027.json'));
+  journal.push('   ce que l\u2019écran ANNONCE avant le geste : ' + annonce);
+  await capture('3a-4-annonce-avant-reinjection');
+  await page.evaluate(() => edtInjInjecter('grille'));
+  await new Promise(r => setTimeout(r, 1200));
+  journal.push('   après RÉINJECTION de la grille (les dates ne doivent pas être perdues) : ' + JSON.stringify(await lesPeriodes()));
+
+  /* la période en vigueur à une date */
+  const enVigueur = await page.evaluate(() => ({ septembre: edtPeriodeA('2026-09-07'), decembre: edtPeriodeA('2026-12-01') }));
+  journal.push('   période en vigueur : ' + JSON.stringify(enVigueur));
+
+  /* ⑤ objet vidé : repli sur une seule période */
+  await page.evaluate(() => { EDT.periodes = null; edtPeindrePanneau(); });
+  await new Promise(r => setTimeout(r, 400));
+  const repliPer = await page.evaluate(() => ({ liste: edtPeriodes().length, periodeA: edtPeriodeA('2026-12-01'),
+    ecran: document.querySelector('.edt-panneau').innerText.indexOf('une seule période') >= 0 }));
+  journal.push('⑤ objet vidé : ' + JSON.stringify(repliPer));
+  await capture('3a-3-repli-une-seule-periode');
+  await page.evaluate(() => edtCharger(function(){}));
+  await new Promise(r => setTimeout(r, 700));
+
   /* ── ⑨ l'appariement d'une classe de grille ────────────────────────── */
   await page.evaluate(() => edtApparierNom('3 FRANKLIN Aretha','3E Charles de Gaulle'));
   await new Promise(r => setTimeout(r, 600));

@@ -1,0 +1,142 @@
+{
+ "produit": "fiche_notion",
+ "titre": "Fiche notion : les propositions — version aménagée",
+ "cases": {
+  "titre": true,
+  "sous_titre": true,
+  "annee_scolaire": true,
+  "date_edition": true,
+  "version_document": true,
+  "objectif": true,
+  "competences": true,
+  "notions": true,
+  "domaine_socle": true,
+  "prerequis": true,
+  "definition": true,
+  "tableau": true,
+  "attention_piege": true,
+  "a_retenir": true,
+  "criteres_je": true,
+  "travail_a_faire": true,
+  "mention_conserver": true,
+  "schema_html": true,
+  "police_adaptee": true,
+  "consignes_reformulees": true,
+  "interligne": true
+ },
+ "valeurs": {
+  "titre": {
+   "texte": "Fiche notion : les propositions — version aménagée"
+  },
+  "sous_titre": {
+   "texte": "L'arborescence, les définitions et le protocole pour trouver l'antécédent. Consignes reformulées."
+  },
+  "objectif": {
+   "texte": "À la fin de cette leçon, tu sauras nommer chaque proposition et retrouver l'antécédent d'un pronom relatif."
+  },
+  "competences": {
+   "items": [
+    "Construire les notions permettant l'analyse et l'élaboration des textes et des discours"
+   ]
+  },
+  "notions": {
+   "items": [
+    "Phrase simple et phrase complexe",
+    "Juxtaposition et coordination",
+    "La proposition subordonnée relative",
+    "La proposition subordonnée conjonctive",
+    "La proposition subordonnée circonstancielle"
+   ]
+  },
+  "domaine_socle": {
+   "texte": "Domaine 1 — Les langages pour penser et communiquer"
+  },
+  "prerequis": {
+   "items": [
+    "reconnaître un verbe conjugué",
+    "distinguer phrase simple et phrase complexe",
+    "reconnaître un pronom relatif et une conjonction de subordination"
+   ]
+  },
+  "criteres_je": {
+   "items": [
+    "je sais nommer chaque proposition",
+    "je sais retrouver l'antécédent avec la bonne question",
+    "je sais décider ce qu'est « que »",
+    "je sais que le pronom relatif a une fonction dans sa proposition"
+   ]
+  },
+  "travail_a_faire": {
+   "texte": "Garde cette fiche sous les yeux pendant les exercices d'analyse logique. Tu n'as pas à l'apprendre par cœur : elle sert à vérifier."
+  }
+ },
+ "blocs": [
+  {
+   "id": "schema_html",
+   "valeurs": {
+    "html": "<!-- L'arborescence des propositions — HTML/CSS, entièrement modifiable.\n     Destiné à la composante « schema_html » de l'Atelier (rendu non échappé). -->\n<div class=\"mjpc-arbo\">\n<style>\n.mjpc-arbo{position:relative;width:100%;max-width:760px;aspect-ratio:760/430;margin:.4em auto;\n  font-family:Garamond,'EB Garamond',Georgia,serif;color:#1C1C1C;container-type:inline-size}\n.mjpc-arbo *{box-sizing:border-box}\n.mjpc-arbo .n{position:absolute;border:1.5px solid #1C1C1C;background:#fff;\n  padding:.5cqw .8cqw;text-align:center;line-height:1.3}\n.mjpc-arbo .t{font-size:2.5cqw;font-weight:700}\n.mjpc-arbo .s{font-size:2.1cqw}\n.mjpc-arbo .sous{position:absolute;font-size:1.9cqw;width:31%;font-style:italic;color:#555;text-align:center}\n.mjpc-arbo .haut{left:26%;top:2%;width:48%;border-color:#8A7A5A;background:#FAF8F2}\n.mjpc-arbo .indep{left:1%;top:24%;width:31%}\n.mjpc-arbo .princ{left:52%;top:24%;width:31%;border-color:#2E6B3E;color:#2E6B3E}\n.mjpc-arbo .sub{left:46%;top:53%;width:37%;border-color:#B3261E;color:#B3261E}\n.mjpc-arbo .f{border-color:#B3261E;color:#B3261E;top:80%;width:30%}\n.mjpc-arbo .f1{left:1%}.mjpc-arbo .f2{left:34%}.mjpc-arbo .f3{left:67%}\n.mjpc-arbo svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}\n@media print{.mjpc-arbo{break-inside:avoid}}\n</style>\n\n<svg viewBox=\"0 0 760 430\" preserveAspectRatio=\"none\" aria-hidden=\"true\">\n  <g stroke=\"#8A7A5A\" stroke-width=\"1.6\" fill=\"none\">\n    <path d=\"M380 62 C300 78 220 92 128 112\"/>\n    <path d=\"M380 62 C460 78 540 92 632 112\"/>\n  </g>\n  <path d=\"M512 168 L512 228\" stroke=\"#2E6B3E\" stroke-width=\"1.6\" fill=\"none\"/>\n  <g stroke=\"#B3261E\" stroke-width=\"1.6\" fill=\"none\">\n    <path d=\"M560 280 C440 300 300 316 128 344\"/>\n    <path d=\"M540 280 C500 302 460 322 383 344\"/>\n    <path d=\"M600 280 C614 304 626 326 634 344\"/>\n  </g>\n</svg>\n\n<div class=\"n haut\"><span class=\"t\">LA PROPOSITION</span><br><span class=\"s\">un verbe conjugué = une proposition</span></div>\n\n<div class=\"n indep\"><span class=\"t\">La proposition INDÉPENDANTE</span></div>\n<div class=\"sous\" style=\"left:1%;top:38.5%\">juxtaposée ou coordonnée</div>\n\n<div class=\"n princ\"><span class=\"t\">La proposition PRINCIPALE</span></div>\n<div class=\"sous\" style=\"left:52%;top:38.5%\">elle régit une subordonnée</div>\n\n<div class=\"n sub\"><span class=\"t\">La proposition SUBORDONNÉE</span></div>\n\n<div class=\"n f f1\"><span class=\"t\">RELATIVE</span><br><span class=\"s\">introduite par un pronom relatif</span></div>\n<div class=\"n f f2\"><span class=\"t\">CONJONCTIVE</span><br><span class=\"s\">complétive</span></div>\n<div class=\"n f f3\"><span class=\"t\">CONJONCTIVE</span><br><span class=\"s\">circonstancielle</span></div>\n</div>\n",
+    "legende": "L'arborescence des propositions."
+   }
+  },
+  {
+   "id": "definition",
+   "valeurs": {
+    "terme": "La proposition indépendante (P.I)",
+    "texte": "La phrase simple : sujet, verbe conjugué, complément. Elle se suffit à elle-même. Elle peut être coordonnée (mais, ou, et, or, ni, car) ou juxtaposée (virgule, point-virgule, deux-points). Vérification : je mets un point à la fin — si la proposition garde du sens, c'est une P.I."
+   }
+  },
+  {
+   "id": "definition",
+   "valeurs": {
+    "terme": "La proposition principale (P.P)",
+    "texte": "La locomotive de la phrase complexe : une ex-P.I, transformée par l'ajout d'une subordonnée. Elle a besoin de ses subordonnées pour avoir un sens complet. L'articulation, c'est le point d'attache : antécédent + pronom relatif, ou verbe complété + conjonction."
+   }
+  },
+  {
+   "id": "definition",
+   "valeurs": {
+    "terme": "La subordonnée relative (PSR)",
+    "texte": "Une extension du nom : ce nom est l'antécédent (un nom, un pronom ou un groupe nominal). Structure : antécédent + pronom relatif + [subordonnée relative]. Exemple : le chien [dont je parle]."
+   }
+  },
+  {
+   "id": "definition",
+   "valeurs": {
+    "terme": "La subordonnée conjonctive complétive (PSCc)",
+    "texte": "Introduite par « que » conjonction de subordination : elle complète le verbe conjugué de la proposition précédente — ce verbe est le VCP, le Verbe ComPlété. Exemple : Elle pensa [qu'il fallait s'enfuir]."
+   }
+  },
+  {
+   "id": "definition",
+   "valeurs": {
+    "terme": "La subordonnée conjonctive circonstancielle (PSCci)",
+    "texte": "Introduite par une conjonction de subordination qui exprime une circonstance : temps, but, cause, conséquence, condition, opposition, concession, comparaison. On nomme toujours sa circonstance : PSCci de temps, de cause… Exemple : [Bien qu'il soit malade], il travaille."
+   }
+  },
+  {
+   "id": "tableau",
+   "valeurs": {
+    "lignes": [
+     "Pronom relatif | La question à poser | Exemple",
+     "QUI (sujet) | Qui est-ce qui + verbe de la relative ? | L'homme qui travaille est fatigué → qui est-ce qui travaille ? → l'homme",
+     "QUE (COD) | Qu'est-ce que + sujet + verbe ? | Le livre que je lis → qu'est-ce que je lis ? → le livre",
+     "DONT | De qui, de quoi + reste de la relative ? | La maison dont je rêve → de quoi je rêve ? → la maison",
+     "OÙ | Où, quand + action ? | La ville où je vis ; le jour où tu es né",
+     "LEQUEL (après préposition) | Préposition + qui + reste ? | L'ami avec lequel je voyage → avec qui je voyage ? → l'ami"
+    ]
+   }
+  },
+  {
+   "id": "attention_piege",
+   "valeurs": {
+    "texte": "« Que » peut être pronom relatif ou conjonction de subordination. À l'étape 2, j'écris seulement « M.S » sous « que ». À l'étape 4, une fois trouvé l'antécédent ou le verbe complété, je tranche : PR ou CDS. L'antécédent est juste avant le pronom, hors de la relative — et il peut être un pronom (celui, ceux, ce). Attention : trouver l'antécédent ne suffira bientôt plus. Il faudra aussi dire à quoi sert le pronom relatif dans sa proposition — « qui » est sujet, « que » est complément d'objet direct, « dont » complète un nom ou un verbe."
+   }
+  },
+  {
+   "id": "a_retenir",
+   "valeurs": {
+    "texte": "Autant de propositions que de verbes conjugués. La P.I se suffit à elle-même ; la P.P a besoin de ses subordonnées. Le protocole de la bonne question retrouve l'antécédent à coup sûr."
+   }
+  }
+ ]
+}

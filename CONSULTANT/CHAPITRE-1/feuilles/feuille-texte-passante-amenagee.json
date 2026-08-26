@@ -1,0 +1,106 @@
+{
+ "produit": "fiche_seance",
+ "titre": "Fiche texte : « À une passante » — version aménagée",
+ "cases": {
+  "titre": true,
+  "sous_titre": true,
+  "annee_scolaire": true,
+  "date_edition": true,
+  "version_document": true,
+  "objectif": true,
+  "competences": true,
+  "notions": true,
+  "domaine_socle": true,
+  "oeuvre": true,
+  "auteur": true,
+  "siecle_courant": true,
+  "genre": true,
+  "lexique_seance": true,
+  "repere_chrono": true,
+  "extrait_numerote": true,
+  "note_bas_page": true,
+  "numerotation_lignes": true,
+  "criteres_je": true,
+  "travail_a_faire": true,
+  "mention_conserver": true,
+  "police_adaptee": true,
+  "consignes_reformulees": true,
+  "interligne": true
+ },
+ "valeurs": {
+  "titre": {
+   "texte": "Fiche texte : « À une passante » — version aménagée"
+  },
+  "sous_titre": {
+   "texte": "Le sonnet du chapitre — à étudier, puis à apprendre par cœur pour la récitation. Consignes reformulées."
+  },
+  "objectif": {
+   "texte": "À la fin de cette séance, tu sauras reconnaître un sonnet sur pièces — et tu commenceras à l'apprendre par cœur."
+  },
+  "competences": {
+   "items": [
+    "Lire des œuvres littéraires et fréquenter des œuvres d'art",
+    "Exploiter les ressources expressives et créatives de la parole"
+   ]
+  },
+  "notions": {
+   "items": [
+    "Le sonnet",
+    "La disposition des rimes"
+   ]
+  },
+  "domaine_socle": {
+   "texte": "Domaine 1 — Les langages pour penser et communiquer"
+  },
+  "oeuvre": {
+   "texte": "Les Fleurs du mal, section « Tableaux parisiens » (édition de 1861)"
+  },
+  "auteur": {
+   "texte": "Charles Baudelaire (1821-1867)"
+  },
+  "siecle_courant": {
+   "texte": "XIXe siècle — la ville moderne entre en poésie"
+  },
+  "genre": {
+   "texte": "Poésie — sonnet en alexandrins"
+  },
+  "lexique_seance": {
+   "items": [
+    "en grand deuil = tout en noir, comme après la mort d'un proche",
+    "fastueuse = somptueuse, pleine d'élégance",
+    "le feston et l'ourlet = les bords brodés de la robe",
+    "un extravagant = un fou",
+    "livide = très pâle, blême",
+    "que j'eusse aimée = que j'aurais aimée"
+   ]
+  },
+  "repere_chrono": {
+   "texte": "1855 : le poème paraît dans la revue L'Artiste — 1861 : il entre dans les « Tableaux parisiens »"
+  },
+  "criteres_je": {
+   "items": [
+    "je sais le texte sans erreur",
+    "je fais entendre chaque mot",
+    "je respecte le rythme du vers (e muets, enjambements)",
+    "je rends la récitation vivante"
+   ]
+  },
+  "travail_a_faire": {
+   "texte": "Apprends ce sonnet par cœur pour le réciter devant la classe. Voici comment faire : 1. Lis une strophe trois fois. 2. Cache-la. 3. Récite-la. 4. Passe à la strophe suivante. Travaille un peu chaque jour : c'est plus efficace que tout apprendre la veille."
+  }
+ },
+ "blocs": [
+  {
+   "id": "extrait_numerote",
+   "valeurs": {
+    "texte": "La rue assourdissante autour de moi hurlait.\nLongue, mince, en grand deuil, douleur majestueuse,\nUne femme passa, d'une main fastueuse\nSoulevant, balançant le feston et l'ourlet ;\n\nAgile et noble, avec sa jambe de statue.\nMoi, je buvais, crispé comme un extravagant,\nDans son œil, ciel livide où germe l'ouragan,\nLa douceur qui fascine et le plaisir qui tue.\n\nUn éclair… puis la nuit ! — Fugitive beauté\nDont le regard m'a fait soudainement renaître,\nNe te verrai-je plus que dans l'éternité ?\n\nAilleurs, bien loin d'ici ! trop tard ! jamais peut-être !\nCar j'ignore où tu fuis, tu ne sais où je vais,\nÔ toi que j'eusse aimée, ô toi qui le savais !"
+   }
+  },
+  {
+   "id": "note_bas_page",
+   "valeurs": {
+    "texte": "Les critères « J'ai réussi si… » de cette fiche sont ceux du vote de la classe le jour de la récitation."
+   }
+  }
+ ]
+}

@@ -268,3 +268,13 @@ Destinataire : Paul, pour affiner le prompt initial. Chaque entrée : l'erreur o
 
 92. **La dérive s'installe quand le contexte devient riche.** Plus la session accumule de documents et de décisions, plus l'instance répond depuis son contexte au lieu d'aller à la source — avec l'aplomb que donne un travail jusque-là juste. **Le risque croît avec la durée de la session.**
     → « Avant toute affirmation portant sur une source externe, se demander : est-ce que je viens de la lire, ou est-ce que je m'en souviens ? »
+
+93. **Un chapitre est soit une œuvre intégrale, soit un groupement de textes — jamais les deux.** L'alternance s'équilibre sur l'année. Le prompt devrait le dire : l'instance a écrit « OI + GT » pour un même chapitre.
+
+94. **Un tableau récapitulatif se VÉRIFIE PAR CALCUL avant d'être écrit.** L'instance a numéroté « OI 4 » et « OI 5 » alors que le panier n'en comptait que trois. Compter les objets, vérifier que chaque ligne a une nature, et n'écrire qu'ensuite.
+
+95. **Ne jamais confondre deux applications du site.** L'Applaudimètre vote sur une prestation ; un débat relève du pilotage de débat. Avant de nommer un outil, vérifier lequel fait quoi — comme on l'a fait pour la dictée et le QCM.
+
+96. **La tâche finale se propose, elle ne se décrète pas.** Le prompt : « ce que le chapitre déclare — tu me le PROPOSES, c'est MOI qui tranche ». L'instance a écrit « la tâche finale est un débat sur l'Applaudimètre » comme un fait acquis.
+
+97. **Une lecture cursive est un RÉCIT.** Un recueil poétique ne se lit pas seul de bout en bout, et le programme attend qu'on « rende compte de sa lecture ». Écarter d'emblée poésie et anthologies pour ce poste.

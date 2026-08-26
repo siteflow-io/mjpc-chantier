@@ -247,3 +247,8 @@ Destinataire : Paul, pour affiner le prompt initial. Chaque entrée : l'erreur o
 82. **Le temps utile n'est pas la durée du créneau** : fin − lancement − 5 minutes d'agenda. Un créneau de 55 minutes vaut 50 minutes utiles. À rappeler au moment du découpage.
 
 83. **Les contraintes extérieures se demandent avant le découpage** : voyage, brevet blanc, stage, EPI. Celle du chapitre 2 — un voyage à Verdun du 14 au 16 octobre — n'a surgi qu'au moment de bâtir ce chapitre.
+
+84. **Un décompte de séances s'annonce vérifié, jamais estimé.** Premier compte annoncé pour le chapitre 2 : « 20 séances contre 13 ». Recompte après question de Paul : 20 contre 17. Deux erreurs cumulées — départ au 1er septembre au lieu du 2 (rentrée des 3e), et jours d'événement non isolés.
+    → « Compter en partant de la date de rentrée du NIVEAU concerné · isoler les jours où un événement ampute un créneau, sans les retirer d'office · annoncer le chiffre avec sa source et sa période. »
+
+85. **Le chapitre se dimensionne sur la classe la MOINS dotée.** Deux classes du même niveau n'ont pas le même nombre d'heures : 20 contre 17 ici. Le contenu obligatoire tient dans le plus petit nombre ; l'écart devient de la respiration pour l'autre classe, jamais du contenu en plus.

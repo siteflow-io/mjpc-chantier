@@ -4,7 +4,7 @@
 ## 1. Le chapitre
 | Fichier | État |
 |---|---|
-| `chapitre-3e-poesie-peinture-final.json` | **Validé.** 9 séances, trames complètes, 30 items, 30 liaisons. **Import conditionné à la promotion du type `oral`** (candidat 8.59.5). |
+| `chapitre-3e-poesie-peinture-final.json` | **Validé.** 9 séances, 95 écrans, 108 blocs, 35 items, 34 liaisons — recomptés sur le fichier le 26/08. **Import conditionné à la promotion du type `oral`** (candidat 8.59.5). |
 | `consignation-trames-s1-s9.json` | Trames consignées, avec leurs notes de validation. Document de travail. |
 
 ## 2. Les diaporamas (le chapitre hors du site)

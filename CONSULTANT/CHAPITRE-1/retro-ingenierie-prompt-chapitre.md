@@ -239,9 +239,10 @@ Destinataire : Paul, pour affiner le prompt initial. Chaque entrée : l'erreur o
 
 79. **UN CHAPITRE COMMENCE PAR UN DÉCOMPTE DE CRÉNEAUX.** Le chapitre 1 a été découpé en neuf séances de deux heures sans qu'on sache combien d'heures existaient. Le prompt doit faire lire le calendrier et la grille, compter les créneaux réellement disponibles entre deux jalons, et ne découper qu'ensuite.
 
-80. **Les fils parallèles se déclarent.** Un fil « langue » existe le mercredi en semaine A ; la séance 3 du chapitre 1 était entièrement une séance de langue et occupait pourtant le fil principal. Le prompt doit faire dire ce qui revient à chaque fil.
+80. **LE FIL LANGUE SE TIENT À TROIS ÉCHELLES.** Mot de Paul : « ça demande une progression annuelle, mais qui traverse les chapitres chaque semaine […] c'est là où l'IA a une importance capitale pour le prof, parce qu'elle permet de relier la langue à l'échelle annuelle, à l'échelle du chapitre, et à l'échelle hebdomadaire. »
+    → Le JSON de chapitre doit permettre : qu'une séance appartienne au fil langue et non au fil principal · qu'elle porte son rang dans la progression annuelle de langue, distinct de son rang dans le chapitre · que le chapitre déclare ce qu'il attend du fil langue et quand. Aucune de ces trois choses n'existe aujourd'hui.
 
-81. **Ne jamais supposer des heures consécutives.** Les deux classes de 3e n'ont que des créneaux isolés, répartis sur cinq jours, avec des semaines A et B différentes. Un découpage « heure 1 / heure 2 » ne correspond à aucun emploi du temps réel.
+81. **Ne rien supposer de la forme des créneaux — ni consécutifs, ni isolés.** Le chapitre 1 a été découpé en séances de deux heures alors que les créneaux sont isolés. Mais Paul précise : « c'est la configuration actuelle : rien ne dit que ça ne bougera pas l'an prochain. » Le découpage se fait d'après la grille de l'année en cours, jamais d'après une habitude.
 
 82. **Le temps utile n'est pas la durée du créneau** : fin − lancement − 5 minutes d'agenda. Un créneau de 55 minutes vaut 50 minutes utiles. À rappeler au moment du découpage.
 

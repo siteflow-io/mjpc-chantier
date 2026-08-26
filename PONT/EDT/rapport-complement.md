@@ -77,16 +77,68 @@ Rejoué en entier après la modification :
 | garde `verif_edt.py` | **VERT**, rouge sur les trois contrôles négatifs |
 | contrat | **inchangé** — `edtDireJalon` n'appelle que `atInfo`, déjà déclaré |
 
-## ⑥ CE QUI RESTE DU MANDAT DE COMPLÉMENT
+---
+
+# LIVRAISON ① — LES VERSIONS DATÉES DE LA GRILLE
+
+*Candidat **8.72.0**, 1 628 778 octets.*
+
+## ⑦ LE MODÈLE
+
+La grille porte des **versions**, chacune avec sa date d'effet : `{debut, libelle, creneaux[]}`. `edtGrilleA(iso)` rend la dernière dont `debut <= iso`. **Toute lecture de cases passe par elle** : `edtCasesDuJour` (donc `edtProjeter`, donc les quatre vues) lit la version de **sa** date ; ce qui n'est pas daté — appariement, cartes, divergence, vue Année — lit la version en vigueur aujourd'hui (`edtCasesCourantes`) ou toutes les versions (`edtToutesLesCases`) quand c'est la classe qui compte et non la date.
+
+**Compatibilité, mesurée sur le fichier du sas tel quel** : forme ancienne au hub (`creneaux` à la racine), **1 version lue**, datée du `2026-08-01`, marquée « ancienne », **30 cases**. Aucune réinjection exigée. La bascule vers la forme datée se fait au premier geste sur les versions (`edtNormaliserGrille`), pas avant.
+
+## ⑧ LES PREUVES
+
+**Deux versions, la même page, deux dates.** Une version au 3 novembre où la 4 HUGO passe du mardi 13:00 au jeudi 11:04 :
+
+| Semaine affichée | Ce que la 4 HUGO occupe |
+|---|---|
+| 7 septembre, **avant** le changement | mar 8/9 **13:00-13:55** · mer · jeu 15:07 · ven |
+| 7 septembre, **après** le changement | **identique, au caractère près** |
+| 9 novembre | plus de mardi 13:00 · **jeu 12/11 11:04-11:59** |
+
+**Le passé ne bouge pas** : la trace du 7 septembre au hub, champ à champ après le changement — `creneau: 08:57-09:52`, `clos: true`, `fin: 09:52`, 3 activités. Inchangée.
+
+**La marque sur la semaine** : « emploi du temps modifié le 2026-11-03 », affichée dans le bandeau dès que la version en vigueur n'est plus la première. Discrète, et seulement là.
+
+**Trois refus nommés** :
+- deux versions au même jour → « une autre version commence déjà le 2026-09-01 — deux versions ne peuvent pas prendre effet le même jour » ;
+- date hors année scolaire → « cette date est hors de l'année scolaire (2026-08-01 → 2027-07-31) » ;
+- version sans créneau → « aucun créneau : une version vide effacerait ta semaine ».
+Et la dernière version ne peut pas être retirée.
+
+**L'écran des versions**, dans la section Emploi du temps : 2 lignes, date et libellé modifiables, nombre de cases, la version en vigueur marquée **en vigueur**, un bouton de retrait, « + Nouvelle version à partir d'une date » (qui recopie la version en vigueur), et le **journal des changements d'emploi du temps** — séparé du journal des décisions horaires, comme le mandat l'exige. Mesuré : `["4 HUGO : mardi 13:00 → jeudi 11:04 / effet le 2026-11-03", "version créée — changement de novembre / effet le 2026-11-03"]`.
+
+**Le prompt de la grille** produit désormais la forme `versions` avec **une seule entrée**, datée du jour de la rentrée. Le JSON déjà validé au sas reste valable et n'est pas touché.
+
+## ⑨ NON-RÉGRESSION
+
+| | |
+|---|---|
+| porte du pilotage | **six champs identiques** |
+| sans scroll | 1366×768 et 1920×1080, `scrollY` 0 |
+| décisions horaires, ↶ Annuler | inchangés |
+| divergence, écarts justifiés | inchangés |
+| portes ① et ③ | présentes |
+| moteur `AT_DR_B64` | **intact** |
+| `published` | **97** · `secu*` **141** |
+| double parseur | vert |
+| garde | **VERT**, rouge sur les trois contrôles négatifs |
+| contrat | **inchangé** |
+
+Banc dédié : `tests/banc-versions.mjs`. Captures : `7-1-semaine-version1`, `7-2-semaine-version2`, `7-3-ecran-versions`.
+
+## ⑩ CE QUI RESTE DU MANDAT DE COMPLÉMENT
 
 Non commencé, dans la découpe proposée par la conscience :
 
-- **①** les versions datées de la grille (`edtGrilleA(iso)`), la compatibilité avec la forme actuelle, l'écran des versions ;
 - **②** le glisser-déposer et la question du dépôt (changement d'emploi du temps / déplacement d'une heure) ;
 - **③** le déplacement au-delà de 21 jours, sur un trou (« heure ajoutée »), et les refus nommés ;
 - **⑤** bancs complets, matrice refaite avec le glissé, mise à jour de `SEQUENCE-TEST-PAUL.md`.
 
-Le candidat reste en **8.71.0** : le passage en 8.72.0 accompagnera la première livraison de ce mandat, qui touche la forme de la grille.
+Le candidat est passé en **8.72.0** avec cette livraison ①.
 
 **Fichiers touchés** : `index.html` · `tests/banc-annee.mjs` (trois états mesurés) · `tests/5-2-annee.png`, `tests/5-2b-annee-vide.png`, `tests/5-2c-annee-remplie.png`.
 

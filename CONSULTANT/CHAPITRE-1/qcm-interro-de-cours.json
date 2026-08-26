@@ -1,0 +1,167 @@
+{
+  "titre": "Chapitre : Poésie et peinture au XIXe siècle · Interro de cours (séance 3)",
+  "questions": [
+    {
+      "bonnes": [
+        0
+      ],
+      "choix": [
+        "Le romantisme",
+        "Le classicisme",
+        "Le Parnasse",
+        "Le symbolisme"
+      ],
+      "enonce": "Quel mouvement du XIXe siècle met en avant les sentiments personnels et la nature sauvage ?",
+      "explication": "Le romantisme met en avant les sentiments du poète et les paysages qui les reflètent, comme dans les tableaux étudiés en début de chapitre.",
+      "niveau": "facile"
+    },
+    {
+      "bonnes": [
+        0,
+        1,
+        3
+      ],
+      "choix": [
+        "Deux quatrains",
+        "Deux tercets",
+        "Trois quintils",
+        "D'alexandrins",
+        "De vers libres"
+      ],
+      "enonce": "De quoi un sonnet classique est-il composé ?",
+      "explication": "Le sonnet classique compte deux quatrains puis deux tercets, écrits en alexandrins (vers de 12 syllabes). Le vers libre, lui, ne suit aucune règle fixe.",
+      "niveau": "standard"
+    },
+    {
+      "bonnes": [
+        1
+      ],
+      "choix": [
+        "Le registre tragique",
+        "Le registre lyrique",
+        "Le registre comique",
+        "Le registre satirique"
+      ],
+      "enonce": "Quel registre exprime les sentiments personnels du poète au moyen de rythmes et d'images ?",
+      "explication": "Le registre lyrique vient du mot « lyre », l'instrument qui accompagnait autrefois la poésie chantée. Il communique au lecteur l'émotion de l'auteur.",
+      "niveau": "standard"
+    },
+    {
+      "bonnes": [
+        3
+      ],
+      "choix": [
+        "Une anaphore",
+        "Une assonance en [a]",
+        "Une allitération en [m]",
+        "Une allitération en [s]"
+      ],
+      "enonce": "Dans le vers « Souvent, pour s'amuser, les hommes d'équipage », quelle figure sonore entend-on ?",
+      "explication": "Le son [s] revient dans « souvent », « s'amuser » et « équipage » : c'est une allitération, la répétition d'un son de consonne. L'assonance répète un son de voyelle.",
+      "niveau": "approfondi"
+    },
+    {
+      "bonnes": [
+        2
+      ],
+      "choix": [
+        "Non, car il est en fin de vers",
+        "Oui, car le mot suivant commence par une voyelle",
+        "Oui, car le mot suivant commence par une consonne",
+        "Non, car le mot suivant commence par une consonne"
+      ],
+      "enonce": "Dans le vers « Le navire glissant sur les gouffres amers », le e final de « navire » se prononce-t-il, et pourquoi ?",
+      "explication": "En milieu de vers, le e compte comme une syllabe quand le mot suivant commence par une consonne : na-vi-re-glis-sant. C'est ce qui donne les 12 syllabes de l'alexandrin.",
+      "niveau": "approfondi"
+    },
+    {
+      "bonnes": [
+        2
+      ],
+      "choix": [
+        "Une comparaison",
+        "Une personnification",
+        "Une métaphore",
+        "Une périphrase"
+      ],
+      "enonce": "« La mer, ce grand miroir, brille de mille feux » : quelle figure de style rapproche ici la mer et le miroir ?",
+      "explication": "La mer est rapprochée du miroir sans outil de comparaison (« comme », « tel que ») : c'est une métaphore. Avec un outil, ce serait une comparaison.",
+      "niveau": "approfondi"
+    },
+    {
+      "bonnes": [
+        0,
+        2
+      ],
+      "choix": [
+        "Il emprunte au romantisme et au Parnasse sans appartenir à un seul mouvement",
+        "Il refuse d'écrire des sonnets",
+        "Il écrit aussi bien en vers réguliers qu'en poèmes en prose",
+        "Il n'écrit que des vers libres"
+      ],
+      "enonce": "Pourquoi dit-on que Baudelaire est un poète inclassable ?",
+      "explication": "Baudelaire hérite des règles (il écrit des sonnets) et s'en libère (il invente le poème en prose) : il traverse les mouvements sans se laisser enfermer dans un seul.",
+      "niveau": "approfondi"
+    },
+    {
+      "bonnes": [
+        1,
+        2,
+        4
+      ],
+      "choix": [
+        "Rimes parallèles",
+        "Rimes croisées",
+        "Rimes plates",
+        "Rimes circulaires",
+        "Rimes embrassées"
+      ],
+      "enonce": "Quelles sont les dispositions régulières des rimes dans la poésie classique ?",
+      "explication": "Les trois dispositions régulières sont les rimes plates (AABB), croisées (ABAB) et embrassées (ABBA). « Parallèles » et « circulaires » n'existent pas.",
+      "niveau": "standard"
+    },
+    {
+      "bonnes": [
+        1
+      ],
+      "choix": [
+        "Une césure",
+        "Un enjambement",
+        "Une assonance",
+        "Une gradation"
+      ],
+      "enonce": "Dans les vers « Laissent piteusement leurs grandes ailes blanches / Comme des avirons traîner à côté d'eux », la phrase continue d'un vers à l'autre. Comment s'appelle ce procédé ?",
+      "explication": "Quand une phrase commencée dans un vers se termine dans le suivant, c'est un enjambement. La césure, elle, est la pause au milieu de l'alexandrin.",
+      "niveau": "approfondi"
+    },
+    {
+      "bonnes": [
+        1,
+        3
+      ],
+      "choix": [
+        "C'est un sonnet irrégulier",
+        "C'est un poème en prose",
+        "Ce texte n'est pas de la poésie",
+        "La poésie peut exister sans les règles de la versification"
+      ],
+      "enonce": "BONUS — Un poème de Baudelaire ne comporte ni vers ni rimes. Quel est le type de ce poème, et que montre-t-il sur les règles de la poésie ?",
+      "explication": "Sans vers ni rimes, la poésie reste possible : rythme, images et sonorités suffisent. C'est le poème en prose, la grande liberté prise par Baudelaire avec les règles classiques.",
+      "niveau": "expert"
+    },
+    {
+      "enonce": "BONUS — Dans « L'Albatros », on relève les mots : maladroits, honteux, piteusement, gauche, comique, laid. Comment appelle-t-on cet ensemble de mots qui renvoient à une même idée ?",
+      "choix": [
+        "Un champ lexical",
+        "Une famille de mots",
+        "Un registre",
+        "Une figure de style"
+      ],
+      "bonnes": [
+        0
+      ],
+      "niveau": "expert",
+      "explication": "Un champ lexical est un ensemble de mots qui renvoient à une même idée — ici, la moquerie et la maladresse. Une famille de mots partage un radical (marche, marcher, démarche), ce qui n'est pas le cas ici. Le registre, lui, désigne l'effet produit sur le lecteur."
+    }
+  ]
+}

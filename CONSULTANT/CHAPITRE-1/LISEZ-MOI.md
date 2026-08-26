@@ -12,7 +12,7 @@ Ce dossier contient ce que la conversation a produit et qui a une valeur pour la
 | `registre-chapitre-3e.md` | 558 lignes. Le journal complet du chantier : chaque décision de Paul, chaque protocole établi, chaque faute commise et corrigée, les dettes du site (25 à 30), l'audit Éduscol, le bilan des dix tours d'échec sur un schéma. | C'est le document principal. Tout ce qui suit en est extrait ou complémentaire. |
 | `retro-ingenierie-prompt-chapitre.md` | 76 règles numérotées, chacune tirée d'une faute réelle, avec la formulation à ajouter au prompt. | C'est le livrable destiné à corriger le prompt MJPC. |
 | `LIVRAISON.md` | Le manifeste : état de chaque livrable, ce qui est validé, ce qui attend le site, ce qui attend Paul. | Pour savoir où en est le chapitre sans relire le registre. |
-| `AMENDEMENT-formes-schema.md` | Ce que la lecture tardive du moteur du déroulé corrige : les cinq formes de schéma, les neuf écrans convertis à tort, le vrai périmètre de la dette 29. | **À lire avant le registre** sur tout ce qui touche aux schémas. |
+| `AMENDEMENT-trous-du-prompt.md` | **Ce que le prompt de chapitre ne dit pas** : les cinq formes de schéma et leur format, les outils de marquage, l'adresse relative des médias, la distinction fiche/item/écran ; et ce que l'ignorance de l'EDT a coûté au chapitre 1 — décompte de créneaux jamais fait, fil langue ignoré, heures consécutives supposées à tort. | **À lire avant le registre.** C'est le livrable le plus utile à la correction du prompt. |
 | `GUIDE-SAISIE-APPS.md` | Comment créer la dictée, les critères de l'Applaudimètre et le QCM dans les applications, établi en lisant `cd.html`, `qcm.html`, `app.html`. | Les formats attendus par les apps, et leurs pièges (indices à partir de 0, crochets interdits dans le texte de dictée). |
 
 ## 2. Le chapitre et ses annexes
@@ -36,7 +36,7 @@ Les versions `-amenagee` portent `police_adaptee`, `consignes_reformulees`, `int
 | Fichier | Contenu |
 |---|---|
 | `schema-methode-analyse-logique.html` | La méthode d'analyse logique en quatre étapes, reproduction fidèle d'une diapositive de Paul. Flèches en courbes de Bézier. |
-| `schema-arborescence-propositions.html` | L'arborescence des propositions. **Amendement** : la forme `arbre` du déroulé fait cela nativement, par indentation — ce support HTML n'était peut-être pas nécessaire. |
+| `schema-arborescence-propositions.html` | L'arborescence des propositions. **Amendement** : la forme `arbre` du déroulé fait cela nativement, par indentation — ce support HTML n'avait pas lieu d'être. |
 
 Ces deux fichiers **attendent une composante de feuille qui n'échappe pas le texte** (voir §5). Un troisième support, `frise-xixe.html`, n'est pas ici : il est déjà en ligne sur `siteflow-io/mjpc-medias`, dossier `poesie-peinture-xixe/`.
 
@@ -62,7 +62,7 @@ Ces deux fichiers **attendent une composante de feuille qui n'échappe pas le te
 
 ### b) L'éditeur du site — les gestes empêchés
 
-**⚠ AMENDÉ le 26/08 — voir `AMENDEMENT-formes-schema.md`.** Ce qui suit a été écrit sans le moteur du déroulé, que je n'avais pas ; il est dans ce dépôt (`DEROULE/deroule97.html`). **Le bloc `schema` accepte cinq formes** — carte, frise, arbre, cycle, tableau — et non une seule. La dette 29 est donc bien plus étroite que je ne l'ai écrite, et onze écrans ont été convertis en `consigne` à tort.
+**⚠ AMENDÉ le 26/08 — voir `AMENDEMENT-trous-du-prompt.md`.** Ce qui suit a été écrit sans le moteur du déroulé, que je n'avais pas ; il est dans ce dépôt (`DEROULE/deroule97.html`). **Le bloc `schema` accepte cinq formes** — carte, frise, arbre, cycle, tableau — et non une seule. La dette 29 est donc bien plus étroite que je ne l'ai écrite, et onze écrans ont été convertis en `consigne` à tort.
 
 **Le déroulé n'a que cinq blocs** : `consigne`, `question`, `fiche`, `schema`, `image`.
 - **Geste tenté** : afficher un contenu exposé qui n'est ni une fiche du site ni une liste au format « étiquette : contenu ». **Ce qui s'est produit** : aucun bloc ne convient. Le bloc `consigne` a été employé par défaut, sur décision de Paul — « c'est un trou du site. pour ce chapitre, on prend le format consigne, tant pis ». Onze écrans sont dans ce cas. *(Dette 29 au registre.)*

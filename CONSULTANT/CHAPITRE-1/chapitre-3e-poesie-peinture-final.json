@@ -1,0 +1,3086 @@
+{
+ "produit": "chapitre",
+ "niveau": "3e",
+ "chapitre": {
+  "title": "Poésie et peinture au XIXe siècle",
+  "entree": "poesie",
+  "competencesMajeures": [
+   "c4-lire-04"
+  ],
+  "competencesMineures": [
+   "c4-lire-01",
+   "c4-lire-02",
+   "c4-lire-03",
+   "c4-culture-01",
+   "c4-culture-02",
+   "c4-langue-01",
+   "c4-langue-04",
+   "c4-ecrire-02",
+   "c4-ecrire-03",
+   "c4-oral-02",
+   "c4-oral-04"
+  ],
+  "problematique": "Du sonnet au poème en prose : comment les poètes et les peintres du XIXe siècle héritent-ils des règles classiques, et comment s'en libèrent-ils ?",
+  "aRetenir": "Au XIXe siècle, poètes et peintres héritent de règles strictes — le sonnet, l'alexandrin, la versification — et s'en libèrent peu à peu, jusqu'au poème en prose. Baudelaire écrit les deux : des sonnets réguliers dans Les Fleurs du mal, des poèmes sans vers dans Le Spleen de Paris. Identifier la forme d'un poème, le rattacher à un mouvement et justifier son analyse par une citation : c'est l'exercice de l'étude de texte, celui du brevet.",
+  "seances": [
+   {
+    "title": "Poésie et peinture : le Romantisme en question",
+    "type": "intro_image",
+    "ordre": 1,
+    "cle": "intro-peinture",
+    "notions": [
+     "litt-036",
+     "litt-037",
+     "litt-038"
+    ],
+    "competences": [
+     "c4-lire-02",
+     "c4-culture-01",
+     "c4-culture-02",
+     "c4-oral-02"
+    ],
+    "deroule": {
+     "ecrans": [
+      {
+       "act": "Analyse d'images : la routine",
+       "dur": 3,
+       "comp": [
+        "litt-036",
+        "c4-lire-02"
+       ],
+       "blocs": [
+        {
+         "t": "consigne",
+         "txt": "Observe, discute, fais une hypothèse sur le Romantisme.",
+         "etapes": [
+          "Étape 1 : J'observe les images en silence (5 min).",
+          "Étape 2 : Je discute en groupe de ce que je vois (5 min).",
+          "Étape 3 : Au brouillon, dans un tableau à trois colonnes — ce que je vois, ce que je ressens, ce que je me demande. Au moins trois lignes par colonne (10 min).",
+          "Étape 4 : Je choisis de quel élément je vais parler (2 min).",
+          "Étape 5 : À partir de cet élément, je fais une hypothèse sur ce que peut être le Romantisme (5 min, 5 lignes).",
+          "Étape 6 : J'expose mon hypothèse à l'oral."
+         ]
+        }
+       ]
+      },
+      {
+       "act": "Tableau 1",
+       "dur": 6,
+       "comp": [
+        "litt-036",
+        "litt-037",
+        "litt-038",
+        "c4-lire-02",
+        "tr-personne-02"
+       ],
+       "blocs": [
+        {
+         "t": "image",
+         "ref": "poesie-peinture-xixe/tableau-5-friedrich-voyageur.webp",
+         "legende": "Le Voyageur contemplant une mer de nuages, Caspar David Friedrich, vers 1818"
+        }
+       ]
+      },
+      {
+       "act": "Tableau 2",
+       "dur": 5,
+       "comp": [
+        "litt-036",
+        "litt-037",
+        "litt-038",
+        "c4-lire-02",
+        "tr-personne-02"
+       ],
+       "blocs": [
+        {
+         "t": "image",
+         "ref": "poesie-peinture-xixe/tableau-3-turner-pecheurs.webp",
+         "legende": "Pêcheurs en mer, Joseph Mallord William Turner, 1796"
+        }
+       ]
+      },
+      {
+       "act": "Tableau 3",
+       "dur": 5,
+       "comp": [
+        "litt-036",
+        "litt-037",
+        "litt-038",
+        "c4-lire-02",
+        "tr-personne-02"
+       ],
+       "blocs": [
+        {
+         "t": "image",
+         "ref": "poesie-peinture-xixe/tableau-1-gericault-radeau.webp",
+         "legende": "Le Radeau de la Méduse, Théodore Géricault, 1818-1819"
+        }
+       ]
+      },
+      {
+       "act": "Tableau 4",
+       "dur": 5,
+       "comp": [
+        "litt-036",
+        "litt-037",
+        "litt-038",
+        "c4-lire-02",
+        "tr-personne-02"
+       ],
+       "blocs": [
+        {
+         "t": "image",
+         "ref": "poesie-peinture-xixe/tableau-4-schinkel-ville.webp",
+         "legende": "Ville médiévale au bord d'un fleuve, Karl Friedrich Schinkel, 1815"
+        }
+       ]
+      },
+      {
+       "act": "Tableau 5",
+       "dur": 6,
+       "comp": [
+        "litt-036",
+        "litt-037",
+        "litt-038",
+        "c4-lire-02",
+        "tr-personne-02"
+       ],
+       "blocs": [
+        {
+         "t": "image",
+         "ref": "poesie-peinture-xixe/tableau-2-bierstadt-lac.webp",
+         "legende": "Le Lac de Whyte, Estes Park, Colorado, Albert Bierstadt, 1877"
+        }
+       ]
+      },
+      {
+       "act": "Les hypothèses de la classe",
+       "dur": 22,
+       "comp": [
+        "c4-oral-02",
+        "litt-038",
+        "c4-lire-02"
+       ],
+       "blocs": [
+        {
+         "t": "consigne",
+         "pic": "🗣️",
+         "txt": "Chaque groupe présente son tableau et son hypothèse en quatre minutes. Pendant ce temps, la classe prend des notes.",
+         "etapes": [
+          "Je note pour chaque tableau : le titre et le peintre, ce que le groupe a vu, l'hypothèse qu'il en tire.",
+          "Je note à ma façon, sans recopier mot à mot : des mots, des flèches, des abréviations.",
+          "À la fin, j'ai cinq blocs de notes — un par tableau."
+         ]
+        }
+       ]
+      },
+      {
+       "act": "Question-bilan",
+       "dur": 3,
+       "comp": [
+        "c4-lire-02"
+       ],
+       "blocs": [
+        {
+         "t": "question",
+         "q": "Qu'ont en commun ces cinq tableaux ? La réponse validée est recopiée dans le cahier, partie cours.",
+         "reps": [
+          {
+           "i": "",
+           "r": "Une nature immense face à un homme petit ; l'émotion avant la règle."
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "act": "Où en sommes-nous ?",
+       "dur": 3,
+       "comp": [
+        "c4-culture-01"
+       ],
+       "blocs": [
+        {
+         "t": "question",
+         "q": "Quel mot-bilan avons-nous écrit sur les cinq tableaux ?",
+         "reps": [
+          {
+           "i": "",
+           "r": "Le Romantisme : l'émotion, la nature, l'homme petit."
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "act": "Les règles héritées",
+       "dur": 10,
+       "comp": [
+        "c4-culture-01"
+       ],
+       "blocs": [
+        {
+         "t": "consigne",
+         "pic": "•",
+         "txt": "Au XVIIe siècle, écrire un poème, c'est suivre des règles strictes, héritées du sonnet de la Renaissance.",
+         "etapes": [
+          "Une forme fixe : le sonnet.",
+          "Un vers régulier : l'alexandrin, 12 syllabes.",
+          "Des rimes disposées selon des schémas précis."
+         ]
+        }
+       ]
+      },
+      {
+       "act": "La frise du siècle",
+       "dur": 5,
+       "comp": [
+        "c4-culture-01",
+        "tr-personne-02"
+       ],
+       "blocs": [
+        {
+         "t": "consigne",
+         "pic": "🗺️",
+         "txt": "La frise est projetée : elle se remplit devant vous, l'Histoire d'abord, puis les poètes, puis les inventions.",
+         "etapes": [
+          "Je recopie la ligne du temps sur une double page de mon cahier, en format paysage : de 1790 à 1900.",
+          "Je laisse trois bandes : les poètes au-dessus, l'Histoire et les inventions en dessous."
+         ]
+        }
+       ]
+      },
+      {
+       "act": "Placer les poètes",
+       "dur": 9,
+       "comp": [
+        "c4-culture-01",
+        "tr-personne-02"
+       ],
+       "blocs": [
+        {
+         "t": "consigne",
+         "pic": "✍",
+         "txt": "À chaque apparition, je reporte sur ma frise ce qui vient de s'afficher.",
+         "etapes": [
+          "Une période de l'Histoire : je la reporte sous ma ligne.",
+          "Un poète : son nom et ses dates au-dessus de ma ligne, à la bonne place.",
+          "Sa citation : une ligne sous son nom, avec ce qu'elle montre.",
+          "Bleu : le poète fait entendre son cœur, c'est le romantisme. Violet : il travaille la forme, c'est le Parnasse."
+         ]
+        }
+       ]
+      },
+      {
+       "act": "Le siècle des inventions",
+       "dur": 4,
+       "comp": [
+        "c4-culture-01",
+        "tr-personne-02"
+       ],
+       "blocs": [
+        {
+         "t": "consigne",
+         "pic": "⚙",
+         "txt": "Regarde la troisième bande de la frise : la photographie en 1816, le télégraphe en 1832, le téléphone en 1876.",
+         "etapes": [
+          "Presque tout ce que tu utilises aujourd'hui a été inventé pendant que ces poètes écrivaient.",
+          "Le monde change plus vite qu'il n'a jamais changé.",
+          "C'est là que naît la question du chapitre : quand tout change, l'art doit-il garder ses règles anciennes ?"
+         ]
+        }
+       ]
+      },
+      {
+       "act": "Les mouvements du siècle",
+       "dur": 8,
+       "comp": [
+        "c4-culture-01",
+        "c4-culture-02"
+       ],
+       "blocs": [
+        {
+         "t": "consigne",
+         "pic": "•",
+         "txt": "Un mouvement, c'est une manière partagée de voir l'art à une époque donnée.",
+         "etapes": [
+          "Le classicisme (XVIIe siècle) : les règles strictes héritées.",
+          "Le romantisme : les sentiments personnels, la nature sauvage.",
+          "Le Parnasse : la forme parfaite, l'art pour l'art.",
+          "Le symbolisme : suggérer par des images et des sonorités."
+         ]
+        }
+       ]
+      },
+      {
+       "act": "Trois mots pour la frise",
+       "dur": 2,
+       "comp": [
+        "c4-culture-01",
+        "c4-culture-02"
+       ],
+       "blocs": [
+        {
+         "t": "consigne",
+         "pic": "📖",
+         "txt": "Trois mots à retenir, à écrire dans la partie cours du cahier.",
+         "etapes": [
+          "Un mouvement : une manière de voir l'art que plusieurs artistes partagent à la même époque.",
+          "Le romantisme : le poète met ses sentiments au centre du poème. Le « je » y est partout.",
+          "Le Parnasse : le poète refuse de parler de lui. Il travaille la forme, comme un sculpteur travaille la pierre."
+         ]
+        }
+       ]
+      },
+      {
+       "act": "Un poète spécial…",
+       "dur": 4,
+       "comp": [
+        "c4-culture-01"
+       ],
+       "blocs": [
+        {
+         "t": "question",
+         "q": "Où avons-nous placé Baudelaire sur la frise ? À quel mouvement appartient-il ?",
+         "reps": [
+          {
+           "i": "",
+           "r": "Inclassable : il traverse le romantisme, le Parnasse, et ouvre le symbolisme."
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "act": "Baudelaire, 1821-1867",
+       "dur": 4,
+       "comp": [
+        "c4-culture-01"
+       ],
+       "blocs": [
+        {
+         "t": "consigne",
+         "pic": "•",
+         "txt": "« Chaque jour vers l'enfer nous descendons d'un pas. » (« Au Lecteur », Les Fleurs du mal)",
+         "etapes": [
+          "1857 : première édition des Fleurs du mal. Le livre fait scandale : procès, six poèmes condamnés.",
+          "1861 : deuxième édition, augmentée de trente-deux poèmes — dont « L'Albatros »."
+         ]
+        }
+       ]
+      },
+      {
+       "act": "Question-bilan et travail à faire",
+       "dur": 6,
+       "comp": [
+        "c4-culture-01",
+        "tr-langages-03"
+       ],
+       "blocs": [
+        {
+         "t": "question",
+         "q": "Qu'est-ce que le Romantisme ? La réponse validée est recopiée dans le cahier, partie cours.",
+         "reps": [
+          {
+           "i": "",
+           "r": ""
+          }
+         ]
+        },
+        {
+         "t": "consigne",
+         "txt": "Pour la prochaine fois : lis « L'Albatros » deux fois.",
+         "etapes": []
+        }
+       ]
+      }
+     ]
+    },
+    "items": {
+     "tableaux": {
+      "title": "Les cinq tableaux à analyser",
+      "subtitle": "Les cinq reproductions, avec leur titre, leur auteur et leur date.",
+      "kind": "doc",
+      "source": "drive",
+      "ref": "1NJgOv-C6AqMDKTuOd9yNO5I_pq3n4mhc",
+      "ordre": 1,
+      "icon": "🖼️",
+      "notions": [
+       "litt-036",
+       "litt-037",
+       "litt-038"
+      ],
+      "competences": [
+       "c4-lire-02",
+       "c4-oral-02"
+      ]
+     },
+     "fiche-methode-image": {
+      "title": "Fiche méthode : décrire une image",
+      "subtitle": "Les plans, le cadrage, le point de vue : la routine d'analyse d'image, à retrouver toute l'année au rayon Fiches méthode.",
+      "kind": "doc",
+      "source": "firebase_app",
+      "ref": "",
+      "ordre": 2,
+      "icon": "📌",
+      "notions": [
+       "litt-036",
+       "litt-037",
+       "litt-038"
+      ],
+      "competences": [
+       "c4-lire-02"
+      ]
+     },
+     "fiche-notion-mouvements": {
+      "title": "Fiche notion : les mouvements du XIXe siècle",
+      "subtitle": "Les quatre mouvements du siècle, les repères, et Baudelaire l'inclassable.",
+      "kind": "doc",
+      "source": "firebase_app",
+      "ref": "",
+      "ordre": 3,
+      "icon": "📌",
+      "notions": [
+       "litt-030"
+      ],
+      "competences": [
+       "c4-culture-01"
+      ]
+     },
+     "frise-xixe": {
+      "title": "La frise du XIXe siècle",
+      "subtitle": "L'Histoire, les poètes, les inventions — se pilote aux flèches du clavier.",
+      "kind": "doc",
+      "source": "html",
+      "ref": "https://siteflow-io.github.io/mjpc-medias/poesie-peinture-xixe/frise-xixe.html",
+      "ordre": 2,
+      "icon": "🗺️",
+      "notions": [
+       "litt-030"
+      ],
+      "competences": [
+       "c4-culture-01"
+      ]
+     }
+    }
+   },
+   {
+    "title": "Étude de texte accompagnée : « L'Albatros »",
+    "type": "etude_texte",
+    "ordre": 2,
+    "cle": "etude-albatros",
+    "notions": [
+     "litt-001",
+     "vers-001",
+     "vers-003",
+     "vers-006",
+     "vers-007",
+     "vers-008",
+     "vers-009",
+     "vers-010",
+     "vers-011",
+     "vers-013",
+     "vers-015",
+     "vers-016",
+     "vers-017",
+     "litt-018",
+     "litt-020",
+     "litt-021",
+     "litt-026",
+     "lex-008"
+    ],
+    "competences": [
+     "c4-lire-03",
+     "c4-lire-04",
+     "c4-langue-04",
+     "c4-culture-02",
+     "tr-langages-03"
+    ],
+    "deroule": {
+     "ecrans": [
+      {
+       "act": "De la toile au poème",
+       "dur": 5,
+       "comp": [
+        "litt-036",
+        "c4-culture-02"
+       ],
+       "blocs": [
+        {
+         "t": "image",
+         "ref": "poesie-peinture-xixe/tableau-3-turner-pecheurs.webp",
+         "legende": "Pêcheurs en mer, J. M. W. Turner, 1796"
+        },
+        {
+         "t": "question",
+         "q": "Parmi les cinq tableaux de la dernière fois, lequel pourrait illustrer « L'Albatros » ? Pourquoi ?",
+         "reps": [
+          {
+           "i": "",
+           "r": "Turner : le navire sur la mer, la nuit, la tempête — le décor des deux premières strophes."
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "act": "Écoute et premières impressions",
+       "dur": 7,
+       "comp": [
+        "litt-001",
+        "vers-013",
+        "c4-lire-03"
+       ],
+       "blocs": [
+        {
+         "t": "consigne",
+         "txt": "Écoute la lecture, texte sous les yeux. Note, pour chaque strophe, une image qui te frappe et le sentiment qu'elle produit.",
+         "etapes": []
+        },
+        {
+         "t": "question",
+         "q": "Quelle est la forme de ce poème : combien de strophes, combien de vers, quelle longueur ?",
+         "reps": [
+          {
+           "i": "",
+           "r": "Quatre quatrains d'alexandrins. Ce n'est pas un sonnet : pas de tercets."
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "act": "Le e muet dans le vers",
+       "dur": 5,
+       "comp": [
+        "vers-001",
+        "vers-003",
+        "vers-006",
+        "vers-007",
+        "c4-langue-04"
+       ],
+       "blocs": [
+        {
+         "t": "consigne",
+         "pic": "•",
+         "txt": "Tu as compté douze syllabes… ou quatorze. La différence tient à une seule lettre : le e. Le e muet compte ou ne compte pas selon sa place.",
+         "etapes": [
+          "En fin de vers : il ne compte jamais.",
+          "En milieu de vers : il compte devant une consonne, et aussi devant -s et -nt ; il ne compte pas devant une voyelle ou un h muet.",
+          "La césure : la pause après la 6e syllabe de l'alexandrin."
+         ]
+        }
+       ]
+      },
+      {
+       "act": "Compter les syllabes : le e muet",
+       "dur": 7,
+       "comp": [
+        "vers-001",
+        "vers-003",
+        "vers-006",
+        "vers-007",
+        "c4-langue-04"
+       ],
+       "blocs": [
+        {
+         "t": "consigne",
+         "txt": "Compte les syllabes du vers « Le navire glissant sur les gouffres amers » et place la césure.",
+         "etapes": [
+          "Le-na-vi-re-glis-sant // sur-les-gouf-fres-a-mers",
+          "12 syllabes : le e de « navire » compte, celui de « gouffres » aussi."
+         ]
+        }
+       ]
+      },
+      {
+       "act": "Les rimes",
+       "dur": 8,
+       "comp": [
+        "vers-010",
+        "vers-011"
+       ],
+       "blocs": [
+        {
+         "t": "question",
+         "q": "Relève les mots à la rime de la première strophe. Quelle est la disposition ?",
+         "reps": [
+          {
+           "i": "",
+           "r": "équipage / mers / voyage / amers : rimes croisées (ABAB), dans les quatre strophes."
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "act": "L'enjambement",
+       "dur": 10,
+       "comp": [
+        "vers-008",
+        "vers-009"
+       ],
+       "blocs": [
+        {
+         "t": "question",
+         "q": "Dans la deuxième strophe, où la phrase déborde-t-elle du vers ?",
+         "reps": [
+          {
+           "i": "",
+           "r": "« Laissent piteusement leurs grandes ailes blanches / Comme des avirons traîner à côté d'eux » : la phrase continue, la voix aussi. La comparaison arrive au vers suivant : l'enjambement la met en valeur."
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "act": "Les sonorités",
+       "dur": 10,
+       "comp": [
+        "vers-015",
+        "vers-016",
+        "vers-017"
+       ],
+       "blocs": [
+        {
+         "t": "question",
+         "q": "Quel son revient dans « Souvent, pour s'amuser, les hommes d'équipage » ? Et dans « Prennent des albatros, vastes oiseaux des mers » ?",
+         "reps": [
+          {
+           "i": "",
+           "r": "Le [s] : une allitération — le glissement du navire. Le [a] : une assonance — la bouche s'ouvre, on entend l'immensité."
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "act": "Avant de se quitter",
+       "dur": 3,
+       "comp": [
+        "c4-lire-01"
+       ],
+       "blocs": [
+        {
+         "t": "consigne",
+         "txt": "Relis la dernière strophe pour la prochaine heure. Une question t'attend : qui est vraiment l'albatros ?",
+         "etapes": []
+        }
+       ]
+      },
+      {
+       "act": "Où en sommes-nous ?",
+       "dur": 3,
+       "comp": [
+        "vers-013"
+       ],
+       "blocs": [
+        {
+         "t": "question",
+         "q": "Quelle est la forme du poème ?",
+         "reps": [
+          {
+           "i": "",
+           "r": "Quatre quatrains d'alexandrins, rimes croisées."
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "act": "Le portrait de l'oiseau",
+       "dur": 10,
+       "comp": [
+        "litt-026",
+        "c4-lire-04"
+       ],
+       "blocs": [
+        {
+         "t": "question",
+         "q": "Comment l'albatros passe-t-il du ciel au pont du navire ? Relève, dans tout le poème, les mots qui le font ressembler à un homme.",
+         "reps": [
+          {
+           "i": "",
+           "r": "La personnification traverse tout le texte : « compagnons de voyage », « rois de l'azur », « maladroits et honteux », « ce voyageur ailé », « prince des nuées »."
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "act": "Le champ lexical",
+       "dur": 3,
+       "comp": [
+        "lex-008"
+       ],
+       "blocs": [
+        {
+         "t": "consigne",
+         "pic": "•",
+         "txt": "Un champ lexical, c'est un ensemble de mots qui renvoient à une même idée.",
+         "etapes": [
+          "Pour le trouver : quel thème revient ? quels mots le portent ?"
+         ]
+        }
+       ]
+      },
+      {
+       "act": "Le champ lexical de la moquerie",
+       "dur": 3,
+       "comp": [
+        "lex-008"
+       ],
+       "blocs": [
+        {
+         "t": "question",
+         "q": "Relève dans les strophes 2 et 3 les mots de la moquerie et de la maladresse.",
+         "reps": [
+          {
+           "i": "",
+           "r": "Maladroits, honteux, piteusement, gauche, veule, comique, laid, agace, mime, en boitant — puis « huées » : le champ lexical descend avec l'oiseau."
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "act": "La famille des images",
+       "dur": 5,
+       "comp": [
+        "litt-020",
+        "litt-021",
+        "litt-026",
+        "c4-langue-04"
+       ],
+       "blocs": [
+        {
+         "t": "question",
+         "q": "Le champ lexical rassemblait des mots. Les figures, elles, rapprochent des idées. « Le Poète est semblable au prince des nuées » : quelle figure ? Dans quelle famille de la carte la ranges-tu ?",
+         "reps": [
+          {
+           "i": "",
+           "r": "Une comparaison (« semblable ») : famille des figures d'analogie, avec la métaphore et la personnification."
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "act": "Les figures de style",
+       "dur": 5,
+       "comp": [
+        "litt-020",
+        "litt-021",
+        "litt-026",
+        "c4-langue-04"
+       ],
+       "blocs": [
+        {
+         "t": "schema",
+         "forme": "carte",
+         "titre": "Les figures de style",
+         "src": "Figures d'analogie : personnification, comparaison, métaphore, allégorie\nFigures d'opposition : antithèse, oxymore, antiphrase\nFigures de substitution : métonymie, synecdoque, périphrase, ironie\nFigures d'insistance : anaphore, répétition, pléonasme\nFigures d'amplification : hyperbole, accumulation, gradation\nFigures d'atténuation : euphémisme, litote\nFigures syntaxiques : parallélisme, chiasme, ellipse\nProcédés sonores : allitération, assonance, onomatopée, homophone"
+        }
+       ]
+      },
+      {
+       "act": "Le registre du poème",
+       "dur": 8,
+       "comp": [
+        "litt-018"
+       ],
+       "blocs": [
+        {
+         "t": "fiche",
+         "tt": "Fiche notion",
+         "titre": "Le registre lyrique",
+         "def": "Le registre d'un texte, c'est l'effet qu'il produit sur le lecteur.",
+         "corps": "<p>Le lyrique exprime des sentiments personnels par des rythmes et des images. Le mot vient de la lyre : autrefois, une poésie chantée.</p>"
+        },
+        {
+         "t": "question",
+         "q": "Quel sentiment ce poème te fait-il éprouver pour l'albatros — et pour le poète ?",
+         "reps": [
+          {
+           "i": "",
+           "r": "La pitié, la tristesse : Baudelaire dit sa propre condition — registre lyrique."
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "act": "Que dit ce poème du poète ?",
+       "dur": 10,
+       "comp": [
+        "litt-020",
+        "c4-lire-04"
+       ],
+       "blocs": [
+        {
+         "t": "question",
+         "q": "Dernier vers : « Ses ailes de géant l'empêchent de marcher. » Que comprends-tu ?",
+         "reps": [
+          {
+           "i": "",
+           "r": "Ce qui fait sa grandeur là-haut fait sa maladresse ici-bas : le poète est un exilé parmi les hommes."
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "act": "Question-bilan et travail à faire",
+       "dur": 8,
+       "comp": [
+        "c4-lire-04",
+        "tr-langages-03"
+       ],
+       "blocs": [
+        {
+         "t": "question",
+         "q": "En trois lignes : pourquoi Baudelaire a-t-il choisi un albatros pour parler du poète ? La réponse validée est recopiée dans le cahier, partie cours.",
+         "reps": [
+          {
+           "i": "",
+           "r": ""
+          }
+         ]
+        },
+        {
+         "t": "consigne",
+         "txt": "Pour la prochaine fois, révise avec la fiche de révision : l'interro portera sur les mouvements, la versification, les figures et le registre lyrique.",
+         "etapes": []
+        }
+       ]
+      }
+     ]
+    },
+    "items": {
+     "fiche-texte-albatros": {
+      "title": "Fiche texte : « L'Albatros »",
+      "subtitle": "Le texte de référence, avec son lexique et ses vers numérotés.",
+      "kind": "doc",
+      "source": "firebase_app",
+      "ref": "",
+      "ordre": 1,
+      "icon": "📄",
+      "notions": [
+       "litt-001"
+      ],
+      "competences": [
+       "c4-lire-03"
+      ]
+     },
+     "fiche-versification": {
+      "title": "Fiche notion : Rappel sur la versification",
+      "subtitle": "Sonnet, décasyllabe, e muet, césure, enjambement, rimes, sonorités. À retrouver toute l'année au rayon Fiches notions.",
+      "kind": "doc",
+      "source": "firebase_app",
+      "ref": "",
+      "ordre": 2,
+      "icon": "📌",
+      "notions": [
+       "vers-001",
+       "vers-003",
+       "vers-005",
+       "vers-006",
+       "vers-007",
+       "vers-008",
+       "vers-009",
+       "vers-011",
+       "vers-013",
+       "vers-016",
+       "vers-017",
+       "litt-006"
+      ],
+      "competences": [
+       "c4-langue-04"
+      ]
+     },
+     "fiche-figures": {
+      "title": "Fiche notion : Les figures de style",
+      "subtitle": "Le répertoire des figures et la carte des huit familles. À retrouver toute l'année au rayon Fiches notions.",
+      "kind": "doc",
+      "source": "firebase_app",
+      "ref": "",
+      "ordre": 3,
+      "icon": "📌",
+      "notions": [
+       "litt-020",
+       "litt-021",
+       "litt-026"
+      ],
+      "competences": [
+       "c4-langue-04"
+      ]
+     },
+     "fiche-genres": {
+      "title": "Fiche notion : Les genres littéraires",
+      "subtitle": "Les quatre genres et leurs sous-genres, dont le texte poétique en vers ou en prose. À retrouver toute l'année au rayon Fiches notions.",
+      "kind": "doc",
+      "source": "firebase_app",
+      "ref": "",
+      "ordre": 4,
+      "icon": "📌",
+      "notions": [
+       "litt-001"
+      ],
+      "competences": [
+       "c4-langue-04"
+      ]
+     },
+     "fiche-registres": {
+      "title": "Fiche notion : Les registres littéraires",
+      "subtitle": "Le registre lyrique en tête pour la poésie du XIXe. À retrouver toute l'année au rayon Fiches notions.",
+      "kind": "doc",
+      "source": "firebase_app",
+      "ref": "",
+      "ordre": 5,
+      "icon": "📌",
+      "notions": [
+       "litt-018"
+      ],
+      "competences": [
+       "c4-langue-04"
+      ]
+     }
+    }
+   },
+   {
+    "title": "Interro de cours et analyse logique — les bases (1)",
+    "type": "notions",
+    "ordre": 3,
+    "cle": "interro-analyse",
+    "notions": [
+     "gram-023",
+     "gram-024",
+     "gram-025",
+     "gram-026",
+     "gram-027",
+     "litt-018",
+     "lex-008",
+     "vers-003",
+     "vers-006",
+     "vers-013",
+     "vers-016",
+     "vers-017",
+     "litt-020",
+     "litt-021",
+     "litt-026"
+    ],
+    "competences": [
+     "c4-langue-04",
+     "c4-culture-01",
+     "tr-methodes-01",
+     "tr-personne-03"
+    ],
+    "items": {
+     "fiche-revision-interro": {
+      "title": "Fiche de révision : réviser l'interro de cours",
+      "subtitle": "Mouvements, versification, figures et registre : tout ce qu'il faut savoir de mémoire, avec la liste « Je sais » pour se vérifier.",
+      "kind": "doc",
+      "source": "firebase_app",
+      "ref": "",
+      "ordre": 1,
+      "icon": "📚",
+      "notions": [
+       "litt-018",
+       "vers-003",
+       "vers-006",
+       "vers-013",
+       "vers-016",
+       "vers-017",
+       "litt-020",
+       "litt-021",
+       "litt-026"
+      ],
+      "competences": [
+       "tr-methodes-01",
+       "c4-culture-01"
+      ]
+     },
+     "interro-de-cours": {
+      "title": "Interro de cours",
+      "subtitle": "Deux séances ont installé les mouvements, la versification et les figures : l'interro porte exactement là-dessus.",
+      "kind": "qcm",
+      "source": "firebase_app",
+      "ref": "",
+      "ordre": 2,
+      "icon": "❓",
+      "notions": [
+       "litt-018",
+       "lex-008",
+       "vers-003",
+       "vers-006",
+       "vers-013",
+       "vers-016",
+       "vers-017",
+       "litt-020",
+       "litt-021",
+       "litt-026"
+      ],
+      "competences": [
+       "tr-methodes-01",
+       "c4-culture-01"
+      ]
+     },
+     "fiche-methode-analyse": {
+      "title": "Fiche méthode : l'analyse logique en 4 étapes",
+      "subtitle": "Les quatre étapes, à apprendre par cœur.",
+      "kind": "doc",
+      "source": "firebase_app",
+      "ref": "",
+      "ordre": 3,
+      "icon": "📌",
+      "notions": [
+       "gram-023",
+       "gram-024",
+       "gram-025",
+       "gram-026",
+       "gram-027"
+      ],
+      "competences": [
+       "c4-langue-04"
+      ]
+     },
+     "exo-autonomie": {
+      "title": "Analyse logique : exercice en autonomie",
+      "subtitle": "Le texte « Le romantisme au XIXe siècle », à analyser seul sur le cahier.",
+      "kind": "doc",
+      "source": "firebase_app",
+      "ref": "",
+      "ordre": 5,
+      "icon": "🧩",
+      "notions": [
+       "gram-023",
+       "gram-024",
+       "gram-025",
+       "gram-026",
+       "gram-027"
+      ],
+      "competences": [
+       "c4-langue-04",
+       "tr-personne-03"
+      ]
+     },
+     "exo-autonomie-corrige": {
+      "title": "Analyse logique : le corrigé de l'exercice",
+      "subtitle": "Le corrigé complet, pour se vérifier après avoir terminé — c'est l'élément précédent qu'il corrige.",
+      "kind": "doc",
+      "source": "firebase_app",
+      "ref": "",
+      "ordre": 6,
+      "icon": "✅",
+      "notions": [
+       "gram-023",
+       "gram-024",
+       "gram-025",
+       "gram-026",
+       "gram-027"
+      ],
+      "competences": [
+       "tr-personne-03"
+      ]
+     },
+     "fiche-notion-propositions": {
+      "title": "Fiche notion : les propositions",
+      "subtitle": "L'arborescence, les définitions et le protocole pour trouver l'antécédent — à consulter pendant les exercices.",
+      "kind": "doc",
+      "source": "firebase_app",
+      "ref": "",
+      "ordre": 4,
+      "icon": "📌",
+      "notions": [
+       "gram-023",
+       "gram-024",
+       "gram-025",
+       "gram-026",
+       "gram-027"
+      ],
+      "competences": [
+       "c4-langue-04"
+      ]
+     }
+    },
+    "deroule": {
+     "ecrans": [
+      {
+       "act": "Interro de cours",
+       "dur": 15,
+       "comp": [
+        "tr-methodes-01",
+        "c4-culture-01",
+        "litt-018",
+        "lex-008",
+        "vers-003",
+        "vers-006",
+        "vers-013",
+        "vers-016",
+        "vers-017",
+        "litt-020",
+        "litt-021",
+        "litt-026"
+       ],
+       "blocs": [
+        {
+         "t": "consigne",
+         "txt": "Ouvre l'interro, code affiché au tableau. Quinze minutes, sans fiche.",
+         "etapes": [
+          "Mouvements et dates.",
+          "Versification : sonnet, e muet, césure, enjambement, sonorités.",
+          "Figures et registre lyrique.",
+          "Question bonus : le champ lexical."
+         ]
+        }
+       ]
+      },
+      {
+       "act": "La méthode d'analyse logique, par cœur",
+       "dur": 8,
+       "comp": [
+        "gram-023",
+        "c4-langue-04"
+       ],
+       "blocs": [
+        {
+         "t": "consigne",
+         "pic": "•",
+         "txt": "On quitte la poésie pour une heure : pour expliquer un poème, il faudra savoir découper une phrase. Il y a autant de propositions que de verbes conjugués.",
+         "etapes": [
+          "Étape 1 : Je souligne en noir les verbes conjugués.",
+          "Étape 2 : J'entoure en bleu les mots subordonnants (pronoms relatifs si PSR, conjonctions de subordination si PSCc ou PSCci).",
+          "Étape 3 : Je mets entre crochets — rouges les P.S, verts la P.P, noirs les P.I.",
+          "Étape 4 : J'encadre en vert les antécédents (PSR) ou les verbes complétés (PSCc), et j'indique par une flèche leur relation avec le mot subordonnant."
+         ]
+        }
+       ]
+      },
+      {
+       "act": "Entraînement 1 : trois phrases simples… ou pas",
+       "dur": 10,
+       "comp": [
+        "gram-023",
+        "gram-024",
+        "c4-langue-04"
+       ],
+       "blocs": [
+        {
+         "t": "consigne",
+         "txt": "Sur ton cahier, analyse ces trois phrases avec les étapes 1 à 3.",
+         "etapes": [
+          "Je marche seul.",
+          "Je marche seul et je chante.",
+          "Je marche seul : je chante.",
+          "Correction au tableau : un élève vient poser les crochets, la classe valide ou corrige."
+         ]
+        },
+        {
+         "t": "question",
+         "q": "Qu'est-ce qui distingue les phrases 2 et 3 ?",
+         "reps": [
+          {
+           "i": "",
+           "r": "Deux P.I dans les deux cas : coordonnées par « et » dans la 2, juxtaposées par les deux-points dans la 3."
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "act": "La locomotive : la proposition principale",
+       "dur": 6,
+       "comp": [
+        "gram-023",
+        "gram-025"
+       ],
+       "blocs": [
+        {
+         "t": "fiche",
+         "tt": "Fiche notion",
+         "titre": "P.I et P.P",
+         "def": "La P.I se suffit à elle-même ; la P.P a besoin de ses subordonnées.",
+         "corps": "<p>La phrase complexe est un train : la P.P est la locomotive, les subordonnées sont ses wagons.</p><p>L'articulation, c'est le point d'attache : antécédent + pronom relatif, ou verbe complété + conjonction.</p><p>Vérification : je mets un point — si la proposition garde du sens, c'est une P.I.</p><p>Exemple : [Je marche seul avec mon chien] [qui me précède.]</p>"
+        }
+       ]
+      },
+      {
+       "act": "Entraînement 2 : le test du point",
+       "dur": 8,
+       "comp": [
+        "gram-023",
+        "gram-025",
+        "c4-langue-04"
+       ],
+       "blocs": [
+        {
+         "t": "consigne",
+         "txt": "Sur ton cahier : dans la phrase suivante, remplace « car » puis « que » par un point, et dis ce qui garde du sens.",
+         "etapes": [
+          "Je me sentais léger car le sentiment procuré par l'avion était semblable à la liberté que vivent les oiseaux au-dessus des nuages.",
+          "Correction au tableau : un élève vient poser les crochets, la classe valide ou corrige."
+         ]
+        },
+        {
+         "t": "question",
+         "q": "Que reste-t-il après chaque point ?",
+         "reps": [
+          {
+           "i": "",
+           "r": "« Je me sentais léger. » garde du sens : P.I. La suite perd son sens coupée : une P.P et sa subordonnée."
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "act": "Question-bilan",
+       "dur": 5,
+       "comp": [
+        "gram-023",
+        "gram-024"
+       ],
+       "blocs": [
+        {
+         "t": "question",
+         "q": "Combien de propositions dans une phrase ? À quoi reconnaît-on une P.I ? La réponse validée est recopiée dans le cahier, partie cours.",
+         "reps": [
+          {
+           "i": "",
+           "r": "Autant que de verbes conjugués ; la P.I garde son sens avec un point final."
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "act": "Avant de se quitter",
+       "dur": 3,
+       "comp": [
+        "tr-methodes-01"
+       ],
+       "blocs": [
+        {
+         "t": "consigne",
+         "txt": "Récite dans ta tête les 4 étapes de la méthode. La prochaine heure : les subordonnées.",
+         "etapes": []
+        }
+       ]
+      },
+      {
+       "act": "Où en sommes-nous ?",
+       "dur": 3,
+       "comp": [
+        "gram-023"
+       ],
+       "blocs": [
+        {
+         "t": "question",
+         "q": "Combien de propositions dans une phrase ?",
+         "reps": [
+          {
+           "i": "",
+           "r": "Autant que de verbes conjugués."
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "act": "La subordonnée relative et son antécédent",
+       "dur": 10,
+       "comp": [
+        "gram-025",
+        "gram-004"
+       ],
+       "blocs": [
+        {
+         "t": "fiche",
+         "tt": "Fiche notion",
+         "titre": "La PSR",
+         "def": "Une extension du nom : ce nom est l'antécédent.",
+         "corps": "<p>L'antécédent peut être un nom, un pronom ou un groupe nominal. La PSR, comme toutes les P.S, ne peut pas fonctionner seule.</p><p>Structure : antécédent + pronom relatif + [subordonnée relative]. Exemple : le chien [dont je parle].</p><p><b>Le protocole selon le pronom</b> : QUI (sujet) : qui est-ce qui… ? — QUE (COD) : qu'est-ce que… ? — DONT : de qui, de quoi… ? — OÙ : où, quand… ? — LEQUEL après préposition : préposition + qui… ? La réponse est l'antécédent, juste avant le pronom, hors de la PSR.</p>"
+        }
+       ]
+      },
+      {
+       "act": "Entraînement 3 : trouver l'antécédent",
+       "dur": 10,
+       "comp": [
+        "gram-023",
+        "gram-025",
+        "c4-langue-04",
+        "tr-personne-03"
+       ],
+       "blocs": [
+        {
+         "t": "consigne",
+         "txt": "Sur ton cahier, analyse ces trois phrases avec les 4 étapes, et rédige le protocole de chaque antécédent.",
+         "etapes": [
+          "Jean-Mich a vu la sœur de son ami qui jouait du piano.",
+          "J'ai salué le voisin de ma cousine dont la voiture est en panne et auquel j'ai brisé le tibia.",
+          "Le professeur a rappelé la règle d'analyse logique que beaucoup d'élèves oubliaient.",
+          "Correction au tableau : un élève vient poser les crochets, la classe valide ou corrige."
+         ]
+        }
+       ]
+      },
+      {
+       "act": "Le point d'attention : « que »",
+       "dur": 7,
+       "comp": [
+        "gram-025",
+        "gram-026"
+       ],
+       "blocs": [
+        {
+         "t": "fiche",
+         "tt": "Fiche notion",
+         "titre": "« Que » et la PSCc",
+         "def": "« Que » peut être pronom relatif ou conjonction de subordination.",
+         "corps": "<p>À l'étape 2, j'écris seulement « M.S » sous « que ». À l'étape 3, je nomme seulement « P.S ». À l'étape 4, une fois trouvé l'antécédent ou le verbe complété, je précise : PR ou CDS.</p><p>La PSCc est introduite par « que » conjonction : elle complète le VC de la proposition précédente — ce verbe est le VCP, le Verbe ComPlété. Exemple : Elle pensa [qu'il fallait s'enfuir].</p>"
+        }
+       ]
+      },
+      {
+       "act": "Entraînement 4 : relative ou complétive ?",
+       "dur": 8,
+       "comp": [
+        "gram-025",
+        "gram-026",
+        "c4-langue-04"
+       ],
+       "blocs": [
+        {
+         "t": "consigne",
+         "txt": "Sur ton cahier, analyse ces deux phrases et dis pour chacune ce qu'est « que ».",
+         "etapes": [
+          "Le livre que tu m'as prêté est passionnant.",
+          "Je crois que tu as raison.",
+          "Correction au tableau : un élève vient poser les crochets, la classe valide ou corrige."
+         ]
+        },
+        {
+         "t": "question",
+         "q": "Comment as-tu tranché ?",
+         "reps": [
+          {
+           "i": "",
+           "r": "Phrase 1 : antécédent « le livre » → PR, relative. Phrase 2 : « que » complète « crois » → CDS, complétive."
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "act": "La subordonnée circonstancielle",
+       "dur": 5,
+       "comp": [
+        "gram-027"
+       ],
+       "blocs": [
+        {
+         "t": "fiche",
+         "tt": "Fiche notion",
+         "titre": "La PSCci",
+         "def": "Introduite par une conjonction de subordination qui exprime une circonstance.",
+         "corps": "<p>Temps, but, cause, conséquence, condition, opposition, concession, comparaison. Comme la PSCc, elle complète un VCP. À l'étape 3, on nomme toujours sa circonstance : PSCci de temps, de cause…</p><p>Exemple : [Bien qu'il soit malade], il travaille.</p>"
+        }
+       ]
+      },
+      {
+       "act": "Entraînement 5 : tout mélangé",
+       "dur": 9,
+       "comp": [
+        "gram-023",
+        "gram-025",
+        "gram-026",
+        "gram-027",
+        "c4-langue-04"
+       ],
+       "blocs": [
+        {
+         "t": "consigne",
+         "txt": "Sur ton cahier, analyse ces trois phrases en entier — attention, l'une d'elles cache un piège, et la dernière est de Baudelaire.",
+         "etapes": [
+          "L'enfant a pris un livre de la bibliothèque qu'il aime particulièrement et qu'il a déjà lu de nombreuses fois.",
+          "Tu pourras te reposer pendant ces vacances et tu pourras enfin finir ta série préférée.",
+          "Il y a une sorte de plaisir mystérieux et aristocratique pour celui qui n'a plus ni curiosité ni ambition, à contempler […] tous ces mouvements de ceux qui partent et de ceux qui reviennent.",
+          "Correction au tableau : un élève vient poser les crochets, la classe valide ou corrige."
+         ]
+        }
+       ]
+      },
+      {
+       "act": "Travail en autonomie",
+       "dur": 3,
+       "comp": [
+        "tr-personne-03"
+       ],
+       "blocs": [
+        {
+         "t": "consigne",
+         "txt": "Prends la feuille d'exercice en autonomie « Le romantisme au XIXe siècle » ; son corrigé sera publié pour que tu te vérifies.",
+         "etapes": [
+          "Moins de 7 erreurs : tu es prêt pour l'analyse notée.",
+          "7 erreurs ou plus : on reprend ensemble."
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   },
+   {
+    "title": "Le poème sans vers : dictée et réécriture",
+    "type": "dictee_reecriture",
+    "ordre": 4,
+    "cle": "dictee-reecriture",
+    "notions": [
+     "litt-005",
+     "litt-007",
+     "gram-029",
+     "litt-021",
+     "lex-008",
+     "vers-015",
+     "ortho-gram-002",
+     "ortho-gram-007",
+     "ortho-gram-008",
+     "ortho-gram-009",
+     "ortho-gram-014",
+     "ortho-gram-030",
+     "conj-015",
+     "conj-016",
+     "conj-027",
+     "gram-023",
+     "gram-025",
+     "gram-026",
+     "gram-027"
+    ],
+    "competences": [
+     "c4-lire-03",
+     "c4-lire-04",
+     "c4-langue-01",
+     "c4-langue-04"
+    ],
+    "items": {
+     "fiche-texte-fenetres": {
+      "title": "Fiche texte : « Les Fenêtres »",
+      "subtitle": "Le poème en prose étudié — le texte de la réécriture en vient.",
+      "kind": "doc",
+      "source": "firebase_app",
+      "ref": "",
+      "ordre": 1,
+      "icon": "📄",
+      "notions": [
+       "litt-005",
+       "litt-007"
+      ],
+      "competences": [
+       "c4-lire-03"
+      ]
+     },
+     "dictee-preparation": {
+      "title": "La dictée préparée",
+      "subtitle": "Paratexte, repérage des difficultés, entraînement au brouillon.",
+      "kind": "doc",
+      "source": "firebase_app",
+      "ref": "",
+      "ordre": 2,
+      "icon": "📄",
+      "notions": [
+       "litt-005",
+       "ortho-gram-008",
+       "ortho-gram-030"
+      ],
+      "competences": [
+       "c4-langue-01"
+      ]
+     },
+     "dictee-1": {
+      "title": "Dictée 1 : « Le port »",
+      "subtitle": "Partie dictée de l'épreuve, notée sur 10. La note ne descend jamais en dessous de zéro.",
+      "kind": "dictee",
+      "source": "firebase_app",
+      "ref": "",
+      "ordre": 3,
+      "icon": "📝",
+      "notions": [
+       "ortho-gram-002",
+       "ortho-gram-007",
+       "ortho-gram-009",
+       "ortho-gram-014"
+      ],
+      "competences": [
+       "c4-langue-01"
+      ]
+     },
+     "dictee-a-trous": {
+      "title": "Dictée à trous : « Le port »",
+      "subtitle": "La même dictée, en version aménagée.",
+      "kind": "dictee",
+      "source": "firebase_app",
+      "ref": "",
+      "ordre": 4,
+      "icon": "📝",
+      "notions": [
+       "ortho-gram-002",
+       "ortho-gram-007",
+       "ortho-gram-014"
+      ],
+      "competences": [
+       "c4-langue-01"
+      ]
+     },
+     "reecriture-fenetres": {
+      "title": "Réécriture notée : « Les Fenêtres »",
+      "subtitle": "Exercice de réécriture de l'épreuve, sur 10 : « je » devient « nous », les verbes passent au futur, modifications soulignées. Dix formes à modifier.",
+      "kind": "reecriture",
+      "source": "firebase_app",
+      "ref": "",
+      "ordre": 5,
+      "icon": "🔁",
+      "notions": [
+       "conj-015",
+       "conj-016",
+       "conj-027",
+       "ortho-gram-002"
+      ],
+      "competences": [
+       "c4-langue-01"
+      ]
+     }
+    },
+    "deroule": {
+     "ecrans": [
+      {
+       "act": "Où en sommes-nous ?",
+       "dur": 3,
+       "comp": [
+        "litt-001"
+       ],
+       "blocs": [
+        {
+         "t": "question",
+         "q": "Depuis le début du chapitre, tous les poèmes lus avaient quelle forme ?",
+         "reps": [
+          {
+           "i": "",
+           "r": "Des vers : quatrains d'alexandrins. Aujourd'hui, un poème sans vers."
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "act": "Lecture : « Les Fenêtres »",
+       "dur": 5,
+       "comp": [
+        "c4-lire-03",
+        "litt-005"
+       ],
+       "blocs": [
+        {
+         "t": "consigne",
+         "txt": "Écoute la lecture, texte sous les yeux. Souligne ce qui te semble être de la poésie, malgré l'absence de vers.",
+         "etapes": []
+        }
+       ]
+      },
+      {
+       "act": "Le poème en prose",
+       "dur": 4,
+       "comp": [
+        "litt-005",
+        "litt-001"
+       ],
+       "blocs": [
+        {
+         "t": "consigne",
+         "pic": "•",
+         "txt": "Un poème sans vers ni rimes : la poésie tient aux images, au rythme des phrases, aux sonorités.",
+         "etapes": [
+          "Baudelaire publie ses poèmes en prose dans les journaux à partir de 1855 ; le recueil, Petits Poèmes en prose (ou Le Spleen de Paris), paraît après sa mort, en 1869."
+         ]
+        }
+       ]
+      },
+      {
+       "act": "Un poème, sans vers ?",
+       "dur": 4,
+       "comp": [
+        "litt-005",
+        "litt-001"
+       ],
+       "blocs": [
+        {
+         "t": "question",
+         "q": "Première phrase : quelle idée surprenante ?",
+         "reps": [
+          {
+           "i": "",
+           "r": "On voit plus dans une fenêtre fermée que dans une fenêtre ouverte : le poète préfère imaginer que voir."
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "act": "Qui parle, à qui ?",
+       "dur": 10,
+       "comp": [
+        "litt-007",
+        "gram-029"
+       ],
+       "blocs": [
+        {
+         "t": "question",
+         "q": "Dans la dernière partie du texte, qui prend la parole, et comment le voit-on ?",
+         "reps": [
+          {
+           "i": "",
+           "r": "« Peut-être me direz-vous… » : une deuxième voix entre dans le texte ; les guillemets marquent le discours direct. Le poème devient un dialogue entre le poète et son lecteur."
+          }
+         ]
+        },
+        {
+         "t": "question",
+         "q": "Que répond le poète ?",
+         "reps": [
+          {
+           "i": "",
+           "r": "Peu importe la réalité, si l'histoire inventée l'a « aidé à vivre »."
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "act": "Le rythme et les images",
+       "dur": 9,
+       "comp": [
+        "litt-021",
+        "vers-015",
+        "lex-008"
+       ],
+       "blocs": [
+        {
+         "t": "question",
+         "q": "Relève une répétition qui fait rythme et une image.",
+         "reps": [
+          {
+           "i": "",
+           "r": "« Vit la vie, rêve la vie, souffre la vie » : trois fois le même mouvement, comme un refrain. « Des vagues de toits » : les toits deviennent une mer — une métaphore."
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "act": "La dictée se prépare : le paratexte",
+       "dur": 8,
+       "comp": [
+        "litt-005",
+        "c4-langue-01"
+       ],
+       "blocs": [
+        {
+         "t": "consigne",
+         "txt": "Même auteur, autre texte : « Le port » est un poème en prose comme « Les Fenêtres ». Tu vas l'écrire sous la dictée. Voici le paratexte de la dictée : « Le port », Charles Baudelaire, Petits Poèmes en prose.",
+         "etapes": [
+          "J'observe le titre, l'auteur, l'œuvre.",
+          "Je fais des hypothèses : de quoi le texte va-t-il parler ?",
+          "Je me rappelle ce qu'est un poème en prose."
+         ]
+        }
+       ]
+      },
+      {
+       "act": "La dictée se prépare : les pièges",
+       "dur": 9,
+       "comp": [
+        "ortho-gram-002",
+        "ortho-gram-007",
+        "ortho-gram-008",
+        "ortho-gram-014",
+        "ortho-gram-030",
+        "c4-langue-01"
+       ],
+       "blocs": [
+        {
+         "t": "consigne",
+         "txt": "Au brouillon, entraîne-toi sur les difficultés repérées.",
+         "etapes": [
+          "Les accords dans le groupe nominal.",
+          "L'accord du verbe quand le sujet est loin ou inversé.",
+          "Le participe passé avec être.",
+          "ce / ceux : je remplace par « celui-là » pour vérifier.",
+          "Le lexique du texte : le môle, le belvédère, le prisme."
+         ]
+        }
+       ]
+      },
+      {
+       "act": "Avant de se quitter",
+       "dur": 3,
+       "comp": [
+        "c4-langue-01"
+       ],
+       "blocs": [
+        {
+         "t": "consigne",
+         "txt": "Relis tes notes de préparation. La dictée a lieu à la prochaine heure ; elle compte sur 10, comme la partie dictée du brevet.",
+         "etapes": []
+        }
+       ]
+      },
+      {
+       "act": "Dictée",
+       "dur": 20,
+       "comp": [
+        "ortho-gram-002",
+        "ortho-gram-007",
+        "ortho-gram-008",
+        "ortho-gram-009",
+        "ortho-gram-014",
+        "ortho-gram-030",
+        "c4-langue-01"
+       ],
+       "blocs": [
+        {
+         "t": "consigne",
+         "txt": "Stylo bleu, sur ta copie. Écoute la lecture entière, écris sous la dictée, puis garde le silence jusqu'à la relecture.",
+         "etapes": [
+          "Partie dictée de l'épreuve du brevet : sur 10.",
+          "Une version aménagée est distribuée à ceux qui en bénéficient."
+         ]
+        }
+       ]
+      },
+      {
+       "act": "Relecture guidée",
+       "dur": 5,
+       "comp": [
+        "ortho-gram-007",
+        "ortho-gram-014",
+        "c4-langue-01"
+       ],
+       "blocs": [
+        {
+         "t": "consigne",
+         "txt": "Relis trois fois, une mission par lecture.",
+         "etapes": [
+          "Lecture 1 : je cherche chaque sujet et je vérifie son verbe.",
+          "Lecture 2 : je vérifie les participes passés avec être.",
+          "Lecture 3 : les homophones (ce/ceux, son/sont, ou/où)."
+         ]
+        }
+       ]
+      },
+      {
+       "act": "Réécriture",
+       "dur": 15,
+       "comp": [
+        "conj-015",
+        "conj-016",
+        "conj-027",
+        "ortho-gram-002",
+        "c4-langue-01"
+       ],
+       "blocs": [
+        {
+         "t": "consigne",
+         "txt": "Sur la feuille distribuée : réécris le passage indiqué des « Fenêtres » en remplaçant « je » par « nous » et en conjuguant les verbes au futur. Souligne toutes tes modifications.",
+         "etapes": [
+          "Exercice de réécriture de l'épreuve : sur 10.",
+          "Le texte est celui que nous venons d'étudier.",
+          "Attention aux mots qui ne changent pas."
+         ]
+        }
+       ]
+      },
+      {
+       "act": "Analyse logique notée",
+       "dur": 12,
+       "comp": [
+        "gram-023",
+        "gram-025",
+        "gram-026",
+        "c4-langue-04"
+       ],
+       "blocs": [
+        {
+         "t": "consigne",
+         "txt": "Sur ta copie, fais l'analyse logique complète de cette phrase : « Nous qui avons fortement vécu, nous cherchons ce que nous pourrions aimer et estimer. »",
+         "etapes": [
+          "Les 4 étapes de la méthode, dans l'ordre.",
+          "Un point par étape : soulignement et remarque, mots subordonnants, crochets nommés avec leurs couleurs, protocole de l'antécédent."
+         ]
+        }
+       ]
+      },
+      {
+       "act": "Avant de se quitter",
+       "dur": 3,
+       "comp": [
+        "tr-methodes-03"
+       ],
+       "blocs": [
+        {
+         "t": "consigne",
+         "txt": "Les copies reviendront corrigées ; chacun y lira ses points d'appui et ses fragilités, puis les retravaillera en séance de remédiation.",
+         "etapes": []
+        }
+       ]
+      }
+     ]
+    }
+   },
+   {
+    "title": "Atelier d'écriture : le sonnet et le paragraphe",
+    "type": "atelier_ecriture",
+    "ordre": 5,
+    "cle": "atelier-paragraphe",
+    "notions": [
+     "litt-006",
+     "vers-007",
+     "vers-010",
+     "vers-011",
+     "vers-013",
+     "litt-018",
+     "litt-021",
+     "litt-034"
+    ],
+    "competences": [
+     "c4-lire-03",
+     "c4-lire-04",
+     "c4-ecrire-02",
+     "c4-ecrire-03",
+     "c4-oral-04",
+     "tr-methodes-02",
+     "c4-culture-01"
+    ],
+    "items": {
+     "fiche-texte-passante": {
+      "title": "Fiche texte : « À une passante »",
+      "subtitle": "Le sonnet du chapitre, avec les critères de la récitation.",
+      "kind": "doc",
+      "source": "firebase_app",
+      "ref": "",
+      "ordre": 1,
+      "icon": "📄",
+      "notions": [
+       "litt-006",
+       "vers-011"
+      ],
+      "competences": [
+       "c4-lire-03",
+       "c4-oral-04"
+      ]
+     },
+     "fiche-methode-reciter": {
+      "title": "Fiche méthode : lire et réciter un poème à voix haute",
+      "subtitle": "E muet, enjambements, liaisons : comment préparer sa voix — et sa mémoire.",
+      "kind": "doc",
+      "source": "firebase_app",
+      "ref": "",
+      "ordre": 2,
+      "icon": "🎙️",
+      "notions": [
+       "vers-006",
+       "vers-008",
+       "vers-015"
+      ],
+      "competences": [
+       "c4-oral-04",
+       "tr-methodes-02"
+      ]
+     },
+     "fiche-methode-paragraphe": {
+      "title": "Fiche méthode : le paragraphe citation-justification",
+      "subtitle": "Affirmation, citation intégrée, explication — avec « L'Homme et la mer » de Baudelaire en texte modèle.",
+      "kind": "doc",
+      "source": "firebase_app",
+      "ref": "",
+      "ordre": 3,
+      "icon": "📌",
+      "notions": [
+       "litt-034",
+       "litt-021"
+      ],
+      "competences": [
+       "c4-ecrire-02"
+      ]
+     },
+     "paragraphe-entrainement": {
+      "title": "Ton paragraphe corrigé",
+      "subtitle": "Rédaction sur papier ; le bilan critère par critère sera rendu ici.",
+      "kind": "tache",
+      "source": "firebase_app",
+      "ref": "",
+      "ordre": 4,
+      "icon": "✅",
+      "notions": [
+       "litt-034"
+      ],
+      "competences": [
+       "c4-ecrire-02",
+       "c4-ecrire-03"
+      ]
+     },
+     "fiche-versification": {
+      "title": "Fiche notion : rappel sur la versification",
+      "subtitle": "Le sonnet, l'alexandrin, la césure, les rimes — la fiche du chapitre, à ressortir pour l'étude du sonnet.",
+      "kind": "doc",
+      "source": "firebase_app",
+      "ref": "",
+      "ordre": 5,
+      "icon": "📌",
+      "notions": [
+       "vers-001",
+       "vers-005",
+       "vers-009"
+      ],
+      "competences": [
+       "c4-langue-04"
+      ]
+     }
+    },
+    "deroule": {
+     "ecrans": [
+      {
+       "act": "Où en sommes-nous ?",
+       "dur": 3,
+       "comp": [
+        "litt-005"
+       ],
+       "blocs": [
+        {
+         "t": "question",
+         "q": "Quelles formes de poème connaissons-nous maintenant ?",
+         "reps": [
+          {
+           "i": "",
+           "r": "Les quatrains d'alexandrins, le poème en prose. Aujourd'hui : la forme reine, le sonnet."
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "act": "Lecture : « À une passante »",
+       "dur": 5,
+       "comp": [
+        "c4-lire-03"
+       ],
+       "blocs": [
+        {
+         "t": "consigne",
+         "txt": "Écoute la lecture, texte sous les yeux. Note ce que tu vois : où sommes-nous, qui passe ?",
+         "etapes": []
+        }
+       ]
+      },
+      {
+       "act": "La forme du sonnet",
+       "dur": 10,
+       "comp": [
+        "litt-006",
+        "vers-007",
+        "vers-010",
+        "vers-011",
+        "vers-013"
+       ],
+       "blocs": [
+        {
+         "t": "fiche",
+         "tt": "Fiche notion",
+         "titre": "Le sonnet",
+         "def": "Quatorze vers : deux quatrains puis deux tercets.",
+         "corps": "<p>Ici, des alexandrins — la césure après la 6e syllabe — et des rimes embrassées (ABBA) dans les quatrains.</p>"
+        },
+        {
+         "t": "question",
+         "q": "Vérifie sur le poème : strophes, longueur des vers, mots à la rime et leur disposition.",
+         "reps": [
+          {
+           "i": "",
+           "r": "2 quatrains + 2 tercets ; alexandrins ; hurlait / majestueuse / fastueuse / ourlet : rimes embrassées."
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "act": "La bascule du sonnet",
+       "dur": 14,
+       "comp": [
+        "litt-006",
+        "c4-lire-04"
+       ],
+       "blocs": [
+        {
+         "t": "question",
+         "q": "Que se passe-t-il entre les quatrains et les tercets ?",
+         "reps": [
+          {
+           "i": "",
+           "r": "Quatrains : elle passe, il la regarde. Tercets : « Un éclair… puis la nuit ! » — elle a disparu, il ne reste que le regret. Le sonnet bascule à sa charnière."
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "act": "Le dernier vers",
+       "dur": 8,
+       "comp": [
+        "litt-018",
+        "c4-lire-04"
+       ],
+       "blocs": [
+        {
+         "t": "question",
+         "q": "« Ô toi que j'eusse aimée, ô toi qui le savais ! » : quel sentiment, quel registre ?",
+         "reps": [
+          {
+           "i": "",
+           "r": "Le regret d'un amour qui n'a pas eu lieu : registre lyrique."
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "act": "Trois questions à ne pas confondre",
+       "dur": 2,
+       "comp": [
+        "litt-006",
+        "litt-018",
+        "c4-culture-01",
+        "c4-langue-04"
+       ],
+       "blocs": [
+        {
+         "t": "consigne",
+         "pic": "•",
+         "txt": "La forme se compte, le registre se ressent, le mouvement se date.",
+         "etapes": [
+          "Quelle forme ? Elle se compte : strophes, vers, syllabes, rimes — sonnet, quatrain, poème en prose.",
+          "Quel registre ? Il se ressent : l'effet produit sur le lecteur — lyrique, tragique, comique…",
+          "Quel mouvement ? Il se date, et se justifie par ce que le poème montre — romantisme, Parnasse, symbolisme."
+         ]
+        }
+       ]
+      },
+      {
+       "act": "Forme, registre, mouvement : ne pas confondre",
+       "dur": 2,
+       "comp": [
+        "litt-006",
+        "litt-018",
+        "c4-culture-01",
+        "c4-langue-04"
+       ],
+       "blocs": [
+        {
+         "t": "question",
+         "q": "« À une passante » est un sonnet, forme née au XVIe siècle. Peut-on en déduire que Baudelaire est un poète classique ?",
+         "reps": [
+          {
+           "i": "",
+           "r": "Non. La forme est héritée, le poème est du XIXe siècle : Baudelaire reprend les règles anciennes pour dire la ville moderne. La forme ne dit pas l'époque."
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "act": "La récitation se prépare",
+       "dur": 8,
+       "comp": [
+        "c4-oral-04",
+        "vers-006",
+        "tr-methodes-01",
+        "tr-methodes-02"
+       ],
+       "blocs": [
+        {
+         "t": "consigne",
+         "txt": "Ce sonnet est à apprendre par cœur : récitation devant la classe en séance 7, avec vote sur quatre critères.",
+         "etapes": [
+          "Le texte est su.",
+          "On entend chaque mot.",
+          "Le rythme du vers est respecté (e muets, enjambements).",
+          "La récitation est vivante.",
+          "Commence maintenant : lis trois fois le premier quatrain, cache-le, récite-le."
+         ]
+        }
+       ]
+      },
+      {
+       "act": "Avant de se quitter",
+       "dur": 5,
+       "comp": [
+        "c4-lire-01"
+       ],
+       "blocs": [
+        {
+         "t": "consigne",
+         "txt": "Pour la prochaine heure, relis « L'Homme et la mer », distribué avec la fiche méthode.",
+         "etapes": []
+        }
+       ]
+      },
+      {
+       "act": "Un vers, une idée",
+       "dur": 8,
+       "comp": [
+        "litt-021",
+        "litt-018"
+       ],
+       "blocs": [
+        {
+         "t": "question",
+         "q": "Voici un troisième poème de Baudelaire, « L'Homme et la mer » : il servira de terrain d'entraînement au paragraphe. « La mer est ton miroir » : quelle figure, et que montre-t-elle ?",
+         "reps": [
+          {
+           "i": "",
+           "r": "Une métaphore : en regardant la mer, l'homme se regarde lui-même."
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "act": "La méthode en quatre étapes",
+       "dur": 10,
+       "comp": [
+        "litt-034",
+        "c4-ecrire-02"
+       ],
+       "blocs": [
+        {
+         "t": "consigne",
+         "pic": "•",
+         "txt": "Un paragraphe qui affirme une idée, la prouve par une citation exacte, puis explique ce que la citation montre.",
+         "etapes": [
+          "1. L'affirmation : mon idée sur le texte, en une phrase.",
+          "2. La citation : exacte, entre guillemets ; une barre oblique marque le changement de vers.",
+          "3. L'intégration : la citation ne reste jamais seule, elle est prise dans ma phrase.",
+          "4. L'explication : ce que la citation montre, avec les mots des fiches notions."
+         ]
+        }
+       ]
+      },
+      {
+       "act": "Le contre-exemple",
+       "dur": 7,
+       "comp": [
+        "litt-034"
+       ],
+       "blocs": [
+        {
+         "t": "question",
+         "q": "Pourquoi « La mer reflète l'homme. \"La mer est ton miroir\". » est-il un paragraphe raté ?",
+         "reps": [
+          {
+           "i": "",
+           "r": "La citation est posée seule, sans phrase autour ni explication : elle ne prouve rien."
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "act": "À toi d'écrire",
+       "dur": 20,
+       "comp": [
+        "litt-034",
+        "c4-ecrire-02",
+        "c4-ecrire-03",
+        "tr-langages-03"
+       ],
+       "blocs": [
+        {
+         "t": "consigne",
+         "txt": "Sur ta copie, rédige un paragraphe citation-justification : le poète est un exilé dans « L'Albatros ».",
+         "etapes": [
+          "Un paragraphe de huit à douze lignes.",
+          "Affirmation.",
+          "Citation exacte, vers marqués par une barre.",
+          "Citation intégrée à ta phrase.",
+          "Explication avec un mot de la carte des figures.",
+          "Les quatre étapes restent affichées au tableau pendant l'écriture.",
+          "Dix minutes avant la fin : j'échange ma copie avec mon voisin, il vérifie les quatre étapes, je vérifie les siennes."
+         ]
+        }
+       ]
+      },
+      {
+       "act": "Je me relis, et je fais travailler ma mémoire",
+       "dur": 8,
+       "comp": [
+        "c4-ecrire-02",
+        "lex-008",
+        "litt-020",
+        "litt-021",
+        "tr-methodes-01"
+       ],
+       "blocs": [
+        {
+         "t": "consigne",
+         "txt": "Vérifie ton paragraphe avec les quatre étapes de la fiche : chacune y est-elle ?",
+         "etapes": []
+        },
+        {
+         "t": "question",
+         "q": "Trois questions de mémoire, sans la fiche — ton cerveau retient ce qu'il va rechercher lui-même : 1. Cite les trois figures de la famille de l'analogie. 2. Quelle différence entre comparaison et métaphore ? 3. Invente une personnification.",
+         "reps": [
+          {
+           "i": "",
+           "r": "Comparaison, métaphore, personnification (et l'allégorie). L'outil de comparaison. Réponses d'élèves saisies en direct."
+          }
+         ]
+        },
+        {
+         "t": "consigne",
+         "txt": "La prochaine séance est le brevet blanc : un sonnet inconnu, des réponses justifiées — exactement ce que tu viens de faire. Continue le par-cœur d'« À une passante ».",
+         "etapes": []
+        }
+       ]
+      }
+     ]
+    }
+   },
+   {
+    "title": "Brevet blanc n°1 : un sonnet, « Parfum exotique »",
+    "type": "etude_texte",
+    "ordre": 6,
+    "cle": "brevet-blanc",
+    "notions": [
+     "litt-006",
+     "vers-011",
+     "vers-008",
+     "vers-016",
+     "litt-034",
+     "gram-010",
+     "gram-011",
+     "gram-025"
+    ],
+    "competences": [
+     "c4-lire-04",
+     "c4-ecrire-02",
+     "c4-langue-01",
+     "c4-langue-04",
+     "tr-methodes-03"
+    ],
+    "items": {
+     "sujet-brevet-blanc": {
+      "title": "Le sujet du brevet blanc",
+      "subtitle": "Compréhension et interprétation sur 32, en classe ; grammaire sur 8, dans un second temps. Avec la dictée et la réécriture déjà notées : 60 points de l'épreuve.",
+      "kind": "doc",
+      "source": "firebase_app",
+      "ref": "",
+      "ordre": 1,
+      "icon": "📄",
+      "notions": [
+       "litt-006",
+       "vers-011",
+       "vers-008",
+       "vers-016",
+       "gram-010",
+       "gram-011",
+       "gram-025"
+      ],
+      "competences": [
+       "c4-lire-04",
+       "c4-langue-01",
+       "c4-langue-04"
+      ]
+     },
+     "correction-brevet-blanc": {
+      "title": "Ta copie corrigée",
+      "subtitle": "Les copies reviendront corrigées ; chacun y lira ses points d'appui et ses fragilités.",
+      "kind": "tache",
+      "source": "firebase_app",
+      "ref": "",
+      "ordre": 2,
+      "icon": "✅",
+      "notions": [
+       "litt-006",
+       "vers-011",
+       "gram-025"
+      ],
+      "competences": [
+       "c4-lire-04"
+      ]
+     }
+    },
+    "deroule": {
+     "ecrans": [
+      {
+       "act": "Le cadre de l'épreuve",
+       "dur": 5,
+       "comp": [
+        "tr-methodes-03"
+       ],
+       "blocs": [
+        {
+         "t": "consigne",
+         "pic": "✍",
+         "txt": "Aujourd'hui, tu composes sur la partie « Compréhension et compétences d'interprétation » de l'épreuve du brevet.",
+         "etapes": [
+          "Compréhension et interprétation : 32 points, en classe.",
+          "Grammaire : 8 points, dans un second temps.",
+          "Avec la dictée et la réécriture déjà notées, tu auras composé sur presque toute l'épreuve.",
+          "Chaque réponse justifiée par une citation : le paragraphe de la séance 5."
+         ]
+        }
+       ]
+      },
+      {
+       "act": "Lecture du sonnet",
+       "dur": 5,
+       "comp": [
+        "litt-006",
+        "vers-013",
+        "c4-lire-03"
+       ],
+       "blocs": [
+        {
+         "t": "consigne",
+         "txt": "Lis le poème deux fois en silence. Avant toute réponse : compte les strophes, repère la disposition des rimes.",
+         "etapes": []
+        }
+       ]
+      },
+      {
+       "act": "Compréhension et interprétation (sur 32)",
+       "dur": 45,
+       "comp": [
+        "litt-006",
+        "vers-011",
+        "vers-008",
+        "vers-016",
+        "litt-034",
+        "c4-lire-04",
+        "c4-ecrire-02"
+       ],
+       "blocs": [
+        {
+         "t": "consigne",
+         "txt": "Réponds sur ta copie, dans l'ordre des questions. Une citation intégrée et expliquée par réponse.",
+         "etapes": [
+          "La forme et les rimes.",
+          "Le parfum et le voyage : les images.",
+          "Les sonorités.",
+          "Le sens du dernier tercet.",
+          "Je garde dix minutes pour me relire."
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   },
+   {
+    "title": "Récitation : « À une passante »",
+    "type": "oral",
+    "ordre": 7,
+    "cle": "recitation",
+    "notions": [
+     "vers-006",
+     "vers-008",
+     "vers-015"
+    ],
+    "competences": [
+     "c4-oral-04",
+     "tr-methodes-02",
+     "tr-personne-01",
+     "tr-personne-02"
+    ],
+    "items": {
+     "recitation-passante": {
+      "title": "Récitation : « À une passante »",
+      "subtitle": "Passages devant la classe : chacun récite, la classe vote sur les quatre critères de la fiche.",
+      "kind": "doc",
+      "source": "firebase_app",
+      "ref": "",
+      "ordre": 1,
+      "icon": "🎙️",
+      "notions": [
+       "vers-006",
+       "vers-015"
+      ],
+      "competences": [
+       "c4-oral-04",
+       "tr-personne-02"
+      ]
+     },
+     "fiche-methode-reciter": {
+      "title": "Fiche méthode : lire et réciter un poème à voix haute",
+      "subtitle": "Préparer sa voix, puis sa mémoire — la fiche à relire avant de passer.",
+      "kind": "doc",
+      "source": "firebase_app",
+      "ref": "",
+      "ordre": 2,
+      "icon": "🗣️",
+      "notions": [
+       "vers-005"
+      ],
+      "competences": [
+       "c4-oral-04"
+      ]
+     }
+    },
+    "deroule": {
+     "ecrans": [
+      {
+       "act": "Ce que la classe évalue",
+       "dur": 4,
+       "comp": [
+        "c4-oral-04",
+        "tr-personne-01"
+       ],
+       "blocs": [
+        {
+         "t": "consigne",
+         "pic": "•",
+         "txt": "On ne juge pas un camarade : on évalue une récitation, critère par critère.",
+         "etapes": [
+          "Le texte est su.",
+          "On entend chaque mot.",
+          "Le rythme du vers est respecté.",
+          "La récitation est vivante."
+         ]
+        }
+       ]
+      },
+      {
+       "act": "Les quatre critères",
+       "dur": 4,
+       "comp": [
+        "c4-oral-04",
+        "tr-personne-01"
+       ],
+       "blocs": [
+        {
+         "t": "consigne",
+         "txt": "Pendant chaque passage : silence complet. Le vote s'ouvre après le dernier vers.",
+         "etapes": []
+        }
+       ]
+      },
+      {
+       "act": "Les passages",
+       "dur": 45,
+       "comp": [
+        "c4-oral-04",
+        "vers-006",
+        "vers-015",
+        "tr-methodes-02",
+        "tr-personne-01",
+        "tr-personne-02"
+       ],
+       "blocs": [
+        {
+         "t": "consigne",
+         "txt": "L'ordre de passage est tiré au sort et affiché : chacun sait quand il passe.",
+         "etapes": [
+          "Deux minutes par passage ; chacun récite une fois.",
+          "Ceux qui attendent relisent en silence ; ceux qui sont passés votent.",
+          "Je vote honnêtement, critère par critère.",
+          "L'auteur du passage voit son bilan."
+         ]
+        }
+       ]
+      },
+      {
+       "act": "Avant de se quitter",
+       "dur": 2,
+       "comp": [
+        "tr-methodes-02"
+       ],
+       "blocs": [
+        {
+         "t": "consigne",
+         "txt": "Les passages continuent la prochaine heure ; ceux qui ne sont pas passés révisent une dernière fois.",
+         "etapes": []
+        }
+       ]
+      },
+      {
+       "act": "Reprise des passages",
+       "dur": 50,
+       "comp": [
+        "c4-oral-04",
+        "vers-006",
+        "vers-015",
+        "tr-methodes-02",
+        "tr-personne-01",
+        "tr-personne-02"
+       ],
+       "blocs": [
+        {
+         "t": "consigne",
+         "txt": "Mêmes règles : silence, vote après le dernier vers, chacun passe une fois.",
+         "etapes": [
+          "L'ordre des passages s'organise au fil de l'heure ; les derniers passages peuvent ouvrir la séance suivante."
+         ]
+        }
+       ]
+      },
+      {
+       "act": "Question-bilan",
+       "dur": 5,
+       "comp": [
+        "c4-oral-04"
+       ],
+       "blocs": [
+        {
+         "t": "question",
+         "q": "Qu'est-ce qui distingue une récitation vivante d'une récitation seulement sue ? La réponse validée est recopiée dans le cahier, partie cours.",
+         "reps": [
+          {
+           "i": "",
+           "r": ""
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   },
+   {
+    "title": "Remédiation",
+    "type": "remediation",
+    "ordre": 8,
+    "cle": "remediation",
+    "notions": [
+     "ortho-gram-007",
+     "ortho-gram-014",
+     "conj-015",
+     "conj-016",
+     "ortho-gram-002",
+     "gram-025",
+     "vers-011",
+     "litt-034"
+    ],
+    "competences": [
+     "c4-langue-01",
+     "c4-ecrire-02",
+     "tr-methodes-03",
+     "tr-personne-03"
+    ],
+    "items": {
+     "correction-dictee": {
+      "title": "Correction de la dictée",
+      "subtitle": "La copie corrigée se consulte ici ; chacun s'autocorrige en réfléchissant, puis reçoit des exercices personnalisés à partir des erreurs relevées.",
+      "kind": "dictee",
+      "source": "firebase_app",
+      "ref": "",
+      "ordre": 1,
+      "icon": "🩹",
+      "notions": [
+       "ortho-gram-007",
+       "ortho-gram-014"
+      ],
+      "competences": [
+       "c4-langue-01",
+       "tr-personne-03"
+      ]
+     },
+     "reprise-reecriture": {
+      "title": "Reprise de la réécriture",
+      "subtitle": "Autocorrection des erreurs de la réécriture, fiche à l'appui.",
+      "kind": "reecriture",
+      "source": "firebase_app",
+      "ref": "",
+      "ordre": 2,
+      "icon": "🔁",
+      "notions": [
+       "conj-015",
+       "ortho-gram-007",
+       "ortho-gram-014"
+      ],
+      "competences": [
+       "c4-langue-01",
+       "tr-personne-03"
+      ]
+     },
+     "entrainement-personnalise": {
+      "title": "Entraînement sur mes points faibles",
+      "subtitle": "Chacun choisit la notion qu'il maîtrise le moins bien et s'y entraîne.",
+      "kind": "doc",
+      "source": "firebase_app",
+      "ref": "",
+      "ordre": 3,
+      "icon": "🏋️",
+      "notions": [
+       "gram-025",
+       "vers-011",
+       "litt-034"
+      ],
+      "competences": [
+       "tr-personne-03"
+      ]
+     }
+    },
+    "deroule": {
+     "ecrans": [
+      {
+       "act": "Retour sur le brevet blanc",
+       "dur": 12,
+       "comp": [
+        "litt-034",
+        "c4-ecrire-02",
+        "c4-lire-04"
+       ],
+       "blocs": [
+        {
+         "t": "question",
+         "q": "Cette séance reprend, dans l'ordre, chacun des travaux notés du chapitre. Dans les copies, quelle étape du paragraphe manque le plus souvent ?",
+         "reps": [
+          {
+           "i": "",
+           "r": "L'explication : la citation est posée, mais on ne dit pas ce qu'elle montre."
+          }
+         ]
+        },
+        {
+         "t": "consigne",
+         "txt": "Reprends une de tes réponses du brevet blanc et réécris-la avec les quatre étapes.",
+         "etapes": []
+        }
+       ]
+      },
+      {
+       "act": "Ma dictée, mes erreurs",
+       "dur": 25,
+       "comp": [
+        "ortho-gram-007",
+        "ortho-gram-014",
+        "c4-langue-01",
+        "tr-personne-03"
+       ],
+       "blocs": [
+        {
+         "t": "consigne",
+         "txt": "Consulte ta copie corrigée à l'écran, puis autocorrige chaque erreur en réfléchissant.",
+         "etapes": [
+          "Pour chaque erreur : j'écris la règle avec mes mots, je corrige, puis j'invente un exemple à moi.",
+          "Accord sujet-verbe : je retrouve le sujet, même inversé.",
+          "Participe passé avec être : j'accorde avec le sujet."
+         ]
+        }
+       ]
+      },
+      {
+       "act": "Ma réécriture, mes erreurs",
+       "dur": 15,
+       "comp": [
+        "conj-015",
+        "conj-016",
+        "ortho-gram-002",
+        "c4-langue-01",
+        "tr-personne-03"
+       ],
+       "blocs": [
+        {
+         "t": "consigne",
+         "txt": "Reprends ta réécriture corrigée, fiche sous les yeux, et corrige tes erreurs une à une.",
+         "etapes": []
+        }
+       ]
+      },
+      {
+       "act": "Je m'entraîne sur mes points faibles",
+       "dur": 30,
+       "comp": [
+        "gram-025",
+        "vers-011",
+        "litt-034",
+        "tr-personne-03"
+       ],
+       "blocs": [
+        {
+         "t": "consigne",
+         "txt": "Choisis la notion que tu maîtrises le moins bien et prends la feuille d'entraînement correspondante.",
+         "etapes": [
+          "Les relatives : la paire d'exercices d'analyse logique.",
+          "La versification : la fiche notion et ses exemples à compter.",
+          "Les accords : la préparation de dictée, à refaire au brouillon.",
+          "Le paragraphe : la fiche méthode et son modèle.",
+          "Quand j'ai terminé, j'aide un camarade sur ce que je sais faire."
+         ]
+        }
+       ]
+      },
+      {
+       "act": "Avant de se quitter",
+       "dur": 3,
+       "comp": [
+        "tr-methodes-03"
+       ],
+       "blocs": [
+        {
+         "t": "consigne",
+         "txt": "Prochaine séance : la tâche finale. Un poème inconnu, la question du chapitre à trancher seul, preuves à l'appui.",
+         "etapes": []
+        }
+       ]
+      }
+     ]
+    }
+   },
+   {
+    "title": "Tâche finale : un poème en prose inconnu, « L'Étranger »",
+    "type": "tache_finale",
+    "ordre": 9,
+    "cle": "tache-finale",
+    "notions": [
+     "litt-005",
+     "litt-007",
+     "gram-029",
+     "litt-034"
+    ],
+    "competences": [
+     "c4-lire-01",
+     "c4-lire-04",
+     "c4-ecrire-02",
+     "c4-culture-01"
+    ],
+    "items": {
+     "sujet-tache-finale": {
+      "title": "Sujet de la tâche finale : « L'Étranger »",
+      "subtitle": "Partie compréhension et interprétation de l'épreuve, sur 32. Un texte inconnu, et la question du chapitre à trancher seul, preuves à l'appui.",
+      "kind": "tache",
+      "source": "firebase_app",
+      "ref": "",
+      "ordre": 1,
+      "icon": "📝",
+      "notions": [
+       "litt-005",
+       "litt-007",
+       "gram-029",
+       "litt-034"
+      ],
+      "competences": [
+       "c4-lire-04",
+       "c4-ecrire-02"
+      ]
+     },
+     "sujet-tache-finale-amenage": {
+      "title": "Sujet de la tâche finale : « L'Étranger » — version aménagée",
+      "subtitle": "Le même sujet, en version aménagée.",
+      "kind": "tache",
+      "source": "firebase_app",
+      "ref": "",
+      "ordre": 2,
+      "icon": "📝",
+      "notions": [
+       "litt-005",
+       "litt-007",
+       "gram-029",
+       "litt-034"
+      ],
+      "competences": [
+       "c4-lire-04",
+       "c4-ecrire-02"
+      ]
+     },
+     "correction-tache-finale": {
+      "title": "Ta copie corrigée",
+      "subtitle": "Fin du chapitre : les réponses annotées seront rendues ici.",
+      "kind": "tache",
+      "source": "firebase_app",
+      "ref": "",
+      "ordre": 3,
+      "icon": "✅",
+      "notions": [
+       "litt-005",
+       "litt-034"
+      ],
+      "competences": [
+       "c4-lire-04"
+      ]
+     }
+    },
+    "deroule": {
+     "ecrans": [
+      {
+       "act": "Les repères avant de lire",
+       "dur": 5,
+       "comp": [
+        "c4-culture-01",
+        "litt-005"
+       ],
+       "blocs": [
+        {
+         "t": "consigne",
+         "pic": "•",
+         "txt": "Un poème en prose de Baudelaire, ouverture du Spleen de Paris.",
+         "etapes": [
+          "1857 : Les Fleurs du mal, des poèmes en vers.",
+          "1862 : « L'Étranger » ouvre la série des poèmes en prose publiés dans le journal La Presse.",
+          "1869 : le recueil Petits Poèmes en prose (Le Spleen de Paris) paraît après la mort du poète.",
+          "Épreuve : compréhension et interprétation, 32 points."
+         ]
+        }
+       ]
+      },
+      {
+       "act": "Lecture silencieuse",
+       "dur": 5,
+       "comp": [
+        "c4-lire-01",
+        "litt-005"
+       ],
+       "blocs": [
+        {
+         "t": "consigne",
+         "txt": "Lis deux fois. À la seconde lecture, crayon en main : souligne les répliques, entoure les mots répétés. Repère qui parle : combien de voix ? à quoi les reconnaît-on ?",
+         "etapes": []
+        }
+       ]
+      },
+      {
+       "act": "Étude du texte (sur 32)",
+       "dur": 45,
+       "comp": [
+        "litt-005",
+        "litt-007",
+        "gram-029",
+        "litt-034",
+        "c4-lire-04",
+        "c4-ecrire-02"
+       ],
+       "blocs": [
+        {
+         "t": "consigne",
+         "txt": "Depuis la première séance, la question est la même : de quelles règles la poésie se libère-t-elle ? Aujourd'hui, tu y réponds seul. Réponds sur ta copie, une citation intégrée par réponse. La dernière question est celle du chapitre : de quelles règles ce poème se libère-t-il, et que garde-t-il de la poésie ?",
+         "etapes": [
+          "Le genre et la forme : pourquoi un poème, sans vers ?",
+          "Les marques du dialogue.",
+          "Les deux voix et ce qu'elles opposent.",
+          "Les nuages : la dernière réplique.",
+          "Je garde dix minutes pour me relire.",
+          "Une version aménagée est distribuée à ceux qui en bénéficient."
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   }
+  ]
+ },
+ "aLier": [
+  {
+   "seance_cle": "intro-peinture",
+   "item": "fiche-methode-image",
+   "outil": "atelier",
+   "pourquoi": "Fiche méthode : décrire une image"
+  },
+  {
+   "seance_cle": "etude-albatros",
+   "item": "fiche-texte-albatros",
+   "outil": "atelier",
+   "pourquoi": "Fiche texte : « L'Albatros »"
+  },
+  {
+   "seance_cle": "etude-albatros",
+   "item": "fiche-versification",
+   "outil": "atelier",
+   "pourquoi": "Fiche notion : Rappel sur la versification"
+  },
+  {
+   "seance_cle": "etude-albatros",
+   "item": "fiche-figures",
+   "outil": "atelier",
+   "pourquoi": "Fiche notion : Les figures de style"
+  },
+  {
+   "seance_cle": "etude-albatros",
+   "item": "fiche-genres",
+   "outil": "atelier",
+   "pourquoi": "Fiche notion : Les genres littéraires"
+  },
+  {
+   "seance_cle": "etude-albatros",
+   "item": "fiche-registres",
+   "outil": "atelier",
+   "pourquoi": "Fiche notion : Les registres littéraires"
+  },
+  {
+   "seance_cle": "interro-analyse",
+   "item": "fiche-revision-interro",
+   "outil": "atelier",
+   "pourquoi": "Fiche de révision : réviser l'interro de cours"
+  },
+  {
+   "seance_cle": "interro-analyse",
+   "item": "interro-de-cours",
+   "outil": "qcm",
+   "pourquoi": "Interro de cours — reprise de l'évaluation du 05/08, titre corrigé, question bonus champ lexical"
+  },
+  {
+   "seance_cle": "interro-analyse",
+   "item": "fiche-methode-analyse",
+   "outil": "atelier",
+   "pourquoi": "Fiche méthode : l'analyse logique en 4 étapes"
+  },
+  {
+   "seance_cle": "interro-analyse",
+   "item": "exo-autonomie",
+   "outil": "atelier",
+   "pourquoi": "Analyse logique : exercice en autonomie (« Le romantisme au XIXe siècle »)"
+  },
+  {
+   "seance_cle": "interro-analyse",
+   "item": "exo-autonomie-corrige",
+   "outil": "atelier",
+   "pourquoi": "Analyse logique : le corrigé de l'exercice — à publier après le texte"
+  },
+  {
+   "seance_cle": "dictee-reecriture",
+   "item": "fiche-texte-fenetres",
+   "outil": "atelier",
+   "pourquoi": "Fiche texte : « Les Fenêtres »"
+  },
+  {
+   "seance_cle": "dictee-reecriture",
+   "item": "dictee-preparation",
+   "outil": "atelier",
+   "pourquoi": "La dictée préparée"
+  },
+  {
+   "seance_cle": "dictee-reecriture",
+   "item": "dictee-1",
+   "outil": "correction_dictee",
+   "pourquoi": "Dictée 1 : « Le port » — base 10, G=1, L=0,5 (dette : à créer dans Correction de dictée)"
+  },
+  {
+   "seance_cle": "dictee-reecriture",
+   "item": "dictee-a-trous",
+   "outil": "atelier",
+   "pourquoi": "Dictée à trous : « Le port » — version aménagée"
+  },
+  {
+   "seance_cle": "dictee-reecriture",
+   "item": "reecriture-fenetres",
+   "outil": "reecriture",
+   "pourquoi": "Réécriture notée : « Les Fenêtres » — 11 formes, plafonné sur 10 (dette : à créer dans Réécriture)"
+  },
+  {
+   "seance_cle": "atelier-paragraphe",
+   "item": "fiche-texte-passante",
+   "outil": "atelier",
+   "pourquoi": "Fiche texte : « À une passante »"
+  },
+  {
+   "seance_cle": "atelier-paragraphe",
+   "item": "fiche-methode-reciter",
+   "outil": "atelier",
+   "pourquoi": "Fiche méthode : lire et réciter un poème à voix haute"
+  },
+  {
+   "seance_cle": "atelier-paragraphe",
+   "item": "fiche-methode-paragraphe",
+   "outil": "atelier",
+   "pourquoi": "Fiche méthode : le paragraphe citation-justification"
+  },
+  {
+   "seance_cle": "atelier-paragraphe",
+   "item": "paragraphe-entrainement",
+   "outil": "redaction",
+   "pourquoi": "Ton paragraphe corrigé (application Rédaction, à venir)"
+  },
+  {
+   "seance_cle": "brevet-blanc",
+   "item": "sujet-brevet-blanc",
+   "outil": "atelier",
+   "pourquoi": "Le sujet du brevet blanc — prepa_brevet 32 + 8, en-tête 1857"
+  },
+  {
+   "seance_cle": "brevet-blanc",
+   "item": "correction-brevet-blanc",
+   "outil": "etude_texte",
+   "pourquoi": "Ta copie corrigée — brevet blanc (application Étude de texte, à venir)"
+  },
+  {
+   "seance_cle": "recitation",
+   "item": "recitation-passante",
+   "outil": "applaudimetre",
+   "pourquoi": "Récitation « À une passante » — texte au tableau désactivé, ~120 s, 4 critères de la fiche"
+  },
+  {
+   "seance_cle": "remediation",
+   "item": "correction-dictee",
+   "outil": "correction_dictee",
+   "pourquoi": "Correction de la dictée — Dictée 1"
+  },
+  {
+   "seance_cle": "remediation",
+   "item": "reprise-reecriture",
+   "outil": "reecriture",
+   "pourquoi": "Reprise de la réécriture — autocorrection"
+  },
+  {
+   "seance_cle": "remediation",
+   "item": "entrainement-personnalise",
+   "outil": "entrainement",
+   "pourquoi": "Entraînement sur les points faibles (application Entraînement, à venir)"
+  },
+  {
+   "seance_cle": "tache-finale",
+   "item": "sujet-tache-finale",
+   "outil": "atelier",
+   "pourquoi": "Sujet de la tâche finale : « L'Étranger » — sur 32"
+  },
+  {
+   "seance_cle": "tache-finale",
+   "item": "sujet-tache-finale-amenage",
+   "outil": "atelier",
+   "pourquoi": "Sujet de la tâche finale : « L'Étranger » — version aménagée"
+  },
+  {
+   "seance_cle": "tache-finale",
+   "item": "correction-tache-finale",
+   "outil": "etude_texte",
+   "pourquoi": "Ta copie corrigée — tâche finale (application Étude de texte, à venir)"
+  },
+  {
+   "seance_cle": "interro-analyse",
+   "item": "fiche-notion-propositions",
+   "outil": "atelier",
+   "pourquoi": "Fiche notion : les propositions"
+  },
+  {
+   "seance_cle": "intro-peinture",
+   "item": "fiche-notion-mouvements",
+   "outil": "atelier",
+   "pourquoi": "Fiche notion : les mouvements du XIXe siècle"
+  },
+  {
+   "seance_cle": "atelier-paragraphe",
+   "item": "fiche-versification",
+   "outil": "atelier",
+   "pourquoi": "Fiche notion : versification — le sonnet est étudié en séance 5"
+  },
+  {
+   "seance_cle": "recitation",
+   "item": "fiche-methode-reciter",
+   "outil": "atelier",
+   "pourquoi": "Fiche méthode : lire et réciter — la récitation a lieu en séance 7"
+  },
+  {
+   "seance_cle": "intro-peinture",
+   "item": "frise-xixe",
+   "outil": "externe",
+   "pourquoi": "La frise du XIXe siècle, projetée pendant l'activité"
+  }
+ ]
+}

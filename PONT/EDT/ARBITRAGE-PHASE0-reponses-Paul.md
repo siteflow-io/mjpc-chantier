@@ -1,0 +1,5 @@
+# LOT 2bis — RÉPONSES DE PAUL À L'ARBITRAGE (26/08), à intégrer dès ①b
+- **Mercredi après-midi : pas cours du tout.** Sur la grille, le mercredi n'a pas de créneau après 11:59 ; l'EDT ne propose jamais un créneau fictif ni un déplacement vers mercredi 13:00-16:59.
+- **Fil langue (le mercredi)** : 4e Hugo mer 08:00-08:55 et 4e Turing mer 08:57-09:52 **chaque semaine** ; 3e Franklin mer 10:07-11:02 et 3e Dylan mer 11:04-11:59 **en semaine A seulement** (Paul : « comme ça je fais la séance le même jour dans deux classes différentes, idéal pour mesurer l'écart » — la carte de divergence pourra comparer les deux 3e sur le fil langue). Ces quatre créneaux portent `fil:"langue"` dans le JSON de la grille ; la semaine B du mercredi 10:07 (3e Franklin) reste un créneau du chapitre principal ; le mercredi 11:04 en B est « X Français 4 Pythagore », hors MJPC.
+- **Le chapitre 3e n°1 est maintenant publié à la 3E Charles de Gaulle** (mesuré par la conscience : `published` = {"3e_charles_de_gaulle": true}) : le cas de la phase 0 tourne désormais sur des données réelles.
+Mot : **continuer** (①b).

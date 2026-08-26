@@ -658,3 +658,37 @@ Sept chapitres, **3 OI · 3 LC · 4 GT**, les quatre entrées couvertes plus le 
 4. **Ne pas confondre les applications** : l'Applaudimètre sert au vote sur une prestation ; un débat relève du **pilotage de débat**. Et surtout — mot de Paul : « tu n'es plus aligné sur le prompt » — la tâche finale se **propose**, elle ne se décrète pas.
 
 **Une dérive de numérotation** : l'instance a écrit « OI 4 » et « OI 5 » alors que le panier ne compte que trois œuvres intégrales. Paul : « relis ton message, tu dérives complètement. OI 3 ??? » **Depuis, tout tableau est vérifié par calcul avant d'être écrit** — comptage des OI, LC, GT et couverture des sept chapitres.
+
+## REPRISE DU 26/08 (soir) — remise en cohérence des documents
+
+Nouvelle conversation ouverte par Paul, la précédente saturant. Lecture du dépôt, puis de la conversation précédente pour retrouver ses décisions à la source plutôt que dans mes propres consignations. **Aucune production ; six documents corrigés, ce registre compris.**
+
+### Ce que la relecture a trouvé
+
+**Un état périmé, exactement là où le travail reprend.** Le recueil de Guéno, écarté le matin du 26 pour indisponibilité et droits, est revenu au panier l'après-midi : le retrait de *La Vague* a libéré le budget, l'achat éteint la question des droits. Ce registre et `PROGRESSION-ANNUELLE-3e.md` portaient le second état ; `CADRAGE-chapitre-poilus.md` et `AUDIT-matrice-jour-j.md` étaient restés sur le premier, et **annonçaient une nature de chapitre fausse** — groupement de textes au lieu d'œuvre intégrale. Les deux seuls documents qui décrivent le chapitre en cours de construction disaient donc le contraire du programme et de la règle d'alternance. **Corrigé.** *(Règle 98.)*
+
+**Une question refermée sans arbitrage.** *Le Dernier jour d'un condamné* : la conversation avait posé « reste à décider si Hugo y est cursive ou texte étudié », Paul avait enchaîné sur le corpus du pamphlet sans répondre, et la question s'était refermée seule — au chapitre 5 dans la progression, « cursive du chapitre satirique » (le 4) dans le panier. **Tranché par Paul le 26/08 au soir : chapitre 5**, en validant le tableau des livres. Le panier est corrigé, la progression était juste.
+
+**Un tableau consulté hors dépôt.** Paul a présenté une table des livres portant *Le Joueur d'échecs* au chapitre 6 et *La Planète des singes* au 7 — l'appariement d'avant son dernier déplacement. Le fichier déposé, lui, avait bien suivi (Planète 6, Joueur 7). Point de vigilance : une copie antérieure peut resservir après un changement d'ordre.
+
+### Les corrections appliquées
+
+| Fichier | Correction |
+|---|---|
+| `CADRAGE-chapitre-poilus.md` | Dette ③ close : recueil acheté, chapitre en **œuvre intégrale**, corpus redéfini comme un choix de lettres **dans** le recueil plus des textes d'appui · titre désambiguïsé (chapitre 1 de l'année, 2ᵉ du chantier) · nature et cursive ajoutées aux acquis |
+| `AUDIT-matrice-jour-j.md` | Chapeau corrigé · écarts ⑥ (quantitatif) et ⑦ (lecture intégrale) **clos** · Q4 répondue · Q5 reformulée · dette ③ close |
+| `PANIER-2026-2027.md` | Hugo rattaché au **chapitre 5** · groupements de textes portés de 3 à **4** dans le tableau de comparaison annuelle |
+| `LISEZ-MOI.md` | Chiffres du chapitre recomptés · « 76 règles » → **97** · `feuilles/` : 37 fichiers, 19 feuilles et 18 aménagées, celle de la fiche méthode d'analyse logique manquante |
+| `LIVRAISON.md` | Chiffres du chapitre recomptés |
+| `retro-ingenierie-prompt-chapitre.md` | **Règle 98** ajoutée |
+
+### Chiffres du chapitre — recomptés sur le fichier
+
+**9 séances · 95 écrans · 108 blocs · 35 items · 34 liaisons · 855 minutes déclarées (14 h 15).**
+Aucun document ne les donnait juste : `LISEZ-MOI` annonçait 82 écrans, 31 items, 31 liaisons ; `LIVRAISON` 30 et 30 ; ce registre 94 écrans. Les 108 blocs se répartissent en 59 `consigne`, 36 `question`, 6 `fiche`, 6 `image` et **1 seul `schema`** — trace directe de la conversion fautive des onze écrans (amendement du 26/08).
+
+**Défaut confirmé sur pièce** : dans la séance 1, `fiche-methode-image` et `frise-xixe` portent tous deux l'ordre **2**. Toujours ouvert.
+
+### Restent ouvertes
+
+Le calendrier des chapitres 2 à 7 · le fil langue à ses trois échelles · la place des évaluations et des deux brevets blancs · le corpus du chapitre 1 · les questions Q1, Q2, Q3 et Q5 de l'audit de la matrice · les deux dettes d'EPI, après la réunion de lundi.

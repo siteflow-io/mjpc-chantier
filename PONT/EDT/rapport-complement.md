@@ -130,11 +130,67 @@ Et la dernière version ne peut pas être retirée.
 
 Banc dédié : `tests/banc-versions.mjs`. Captures : `7-1-semaine-version1`, `7-2-semaine-version2`, `7-3-ecran-versions`.
 
-## ⑩ CE QUI RESTE DU MANDAT DE COMPLÉMENT
+---
+
+# LIVRAISON ② — LE GLISSER-DÉPOSER ET LA QUESTION DU DÉPÔT
+
+*Candidat 8.72.0, 1 638 640 octets.*
+
+## ⑩ LE GESTE
+
+Sur la **Semaine** et sur le **Mois**, une case qui porte une séance se saisit et se dépose. Pointer events : souris **et** doigt (`touch-action: none` sur les cases). Un seuil de 6 px sépare le clic du glissé — un clic ouvre toujours la modale, comme avant.
+
+**Pendant le glissé**, mesuré : la case de départ s'estompe (1), **23 cases s'éclairent** comme dépôts possibles, **16 restent inertes**. Échap annule sans rien écrire.
+
+**Au dépôt, la question — deux boutons, et des mots** :
+
+> **Changement d'emploi du temps — durable.** « Cette classe n'est plus à ce créneau, elle est là désormais. Rien du contenu n'est touché. » + une date d'effet, proposée au lundi de la semaine affichée, modifiable.
+> **Déplacer cette heure — une fois.** « L'emploi du temps ne bouge pas ; seule cette heure-là change de place. »
+
+Sur le **Mois**, le jour d'arrivée n'a pas de créneau : la question propose la liste des créneaux libres ce jour-là pour cette classe.
+Sur l'**Année**, pas de glisser-déposer, et **l'écran le dit** dans sa légende : « l'échelle ne le permet pas — passe par Semaine ou Mois ».
+
+## ⑪ LES DEUX GESTES, JAMAIS CONFONDUS — mesuré
+
+**« Déplacer cette heure », par glissé** : une décision au hub, l'arrivée épinglée avec son `venantDe`, **zéro version de grille écrite**.
+**Le même geste par la liste de la modale** : les **mêmes clés** écrites au hub — comparé, `true`. Le glissé n'est qu'un second chemin vers le geste déjà prouvé.
+
+**« Changement d'emploi du temps », par glissé**, date d'effet posée au 14/09 :
+
+| | |
+|---|---|
+| versions de la grille | `["2026-08-01", "2026-09-14"]` |
+| le mardi 15:07 dans la nouvelle version | **retiré** |
+| le mercredi 10:07 dans la nouvelle version | **ajouté** |
+| **décisions horaires écrites** | **0** |
+| journal des changements d'EDT | une ligne : « 3E Charles de Gaulle : mardi 15:07-16:02 → mercredi 10:07-11:02 » |
+| trace du 7 septembre au hub | `creneau: 08:57-09:52`, `clos: true`, 3 activités — **inchangée** |
+
+## ⑫ LES QUATRE REFUS, NOMMÉS
+
+```
+passé              → on ne pose pas une heure dans le passé (le 2026-08-20 est déjà passé).
+jour sans cours    → le 2026-10-20 est sans cours — de la Toussaint.
+mercredi après-midi→ le mercredi n'a pas cours à partir de 12:00.
+case occupée       → ce créneau est déjà pris par 3 DYLAN Bob — je ne l'écrase pas à ta place.
+```
+
+Le dernier refuse plutôt que de proposer l'échange : écraser la case d'une autre classe est un geste trop lourd pour un glissé. Il reste faisable en deux temps, par la modale.
+
+## ⑬ UN BUG TROUVÉ PAR LA PREUVE
+
+`edtValiderDepot` fermait la question **puis** cherchait la date d'effet dans un élément déjà retiré du DOM : la date choisie par Paul était silencieusement remplacée par celle du dépôt. Mesuré : version écrite au 09/09 alors que le 14/09 avait été posé. Les deux valeurs sont désormais lues avant la fermeture. Sans la preuve exigée par le mandat, ce bug partait en production : il ne lève aucune erreur, il obéit juste à autre chose que ce qu'on lui demande.
+
+## ⑭ NON-RÉGRESSION
+
+Porte du pilotage : **six champs identiques** · sans scroll aux deux tailles · matrice actions × état inchangée · compatibilité de la grille ancienne toujours vraie · trace du passé intacte · moteur **intact** · `published` **97** · `secu*` **141** · double parseur vert · garde **VERTE** et rouge sur les trois contrôles négatifs · contrat **inchangé**.
+
+Banc : `tests/banc-glisse.mjs`. Captures : `8-1-question-du-depot`, `8-2-apres-changement-edt`, `8-3-refus-nomme`.
+
+## ⑮ CE QUI RESTE DU MANDAT DE COMPLÉMENT
 
 Non commencé, dans la découpe proposée par la conscience :
 
-- **②** le glisser-déposer et la question du dépôt (changement d'emploi du temps / déplacement d'une heure) ;
 - **③** le déplacement au-delà de 21 jours, sur un trou (« heure ajoutée »), et les refus nommés ;
 - **⑤** bancs complets, matrice refaite avec le glissé, mise à jour de `SEQUENCE-TEST-PAUL.md`.
 

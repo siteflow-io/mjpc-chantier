@@ -265,39 +265,60 @@
  ],
  "vacances": [
   {
+   "nom": "d'été (avant la rentrée)",
+   "type": "vacances",
+   "debut": "2026-08-01",
+   "fin": "2026-08-26",
+   "jours": 26,
+   "lu": "fond gris du calendrier, jour par jour"
+  },
+  {
    "nom": "de la Toussaint",
+   "type": "vacances",
    "debut": "2026-10-17",
-   "fin": "2026-11-01",
-   "finAConfirmer": true,
-   "joursMarques": 1
+   "fin": "2026-10-31",
+   "jours": 15,
+   "lu": "fond gris du calendrier, jour par jour"
   },
   {
    "nom": "de Noël",
+   "type": "vacances",
    "debut": "2026-12-19",
-   "fin": "2027-01-03",
-   "finAConfirmer": true,
-   "joursMarques": 1
+   "fin": "2027-01-02",
+   "jours": 15,
+   "lu": "fond gris du calendrier, jour par jour"
   },
   {
    "nom": "d’Hiver",
+   "type": "vacances",
    "debut": "2027-02-20",
-   "fin": "2027-03-07",
-   "finAConfirmer": true,
-   "joursMarques": 2
+   "fin": "2027-03-06",
+   "jours": 15,
+   "lu": "fond gris du calendrier, jour par jour"
   },
   {
    "nom": "de Printemps",
+   "type": "vacances",
    "debut": "2027-04-17",
-   "fin": "2027-05-02",
-   "finAConfirmer": true,
-   "joursMarques": 1
+   "fin": "2027-05-01",
+   "jours": 15,
+   "lu": "fond gris du calendrier, jour par jour"
+  },
+  {
+   "nom": "pont de l'Ascension",
+   "type": "pont",
+   "debut": "2027-05-06",
+   "fin": "2027-05-08",
+   "jours": 3,
+   "lu": "fond gris du calendrier, jour par jour"
   },
   {
    "nom": "d’été",
+   "type": "vacances",
    "debut": "2027-07-03",
-   "fin": "2027-08-31",
-   "finAConfirmer": true,
-   "joursMarques": 24
+   "fin": "2027-07-31",
+   "jours": 29,
+   "lu": "fond gris du calendrier, jour par jour"
   }
  ],
  "feries": [
@@ -690,6 +711,12 @@
    "prendLeCreneau": true
   },
   {
+   "date": "2027-01-07",
+   "libelle": "18h30 Présentation options 3e/ séjour aux Pays-Bas parents 4e",
+   "heure": "18:30",
+   "prendLeCreneau": false
+  },
+  {
    "date": "2027-01-19",
    "libelle": "14h30 Alerte incendie",
    "heure": "14:30",
@@ -800,60 +827,12 @@
    "fin": "2026-09-17"
   },
   {
-   "libelle": "Semaine de l'engagement (5, 4, 3)",
-   "niveau": "5e",
-   "classes": [],
-   "justifie": false,
-   "debut": "2026-09-20",
-   "fin": "2026-09-20"
-  },
-  {
-   "libelle": "Séjour St Malo 6es Brocéliande et Armor",
-   "niveau": "6e",
-   "classes": [],
-   "justifie": false,
-   "debut": "2026-10-05",
-   "fin": "2026-10-09"
-  },
-  {
-   "libelle": "Séjour St Malo 6e Brocéliande et Arrmor",
-   "niveau": "6e",
-   "classes": [],
-   "justifie": false,
-   "debut": "2026-10-06",
-   "fin": "2026-10-06"
-  },
-  {
-   "libelle": "Séjour St Malo des quatre classes de 6e",
-   "niveau": "6e",
-   "classes": [],
-   "justifie": false,
-   "debut": "2026-10-07",
-   "fin": "2026-10-07"
-  },
-  {
    "libelle": "Séjour Verdun 3e",
    "niveau": "3e",
    "classes": [],
    "justifie": false,
    "debut": "2026-10-14",
    "fin": "2026-10-16"
-  },
-  {
-   "libelle": "Semaine de l'engagement 6",
-   "niveau": "6e",
-   "classes": [],
-   "justifie": false,
-   "debut": "2026-11-01",
-   "fin": "2026-11-01"
-  },
-  {
-   "libelle": "Sortie 5e Angers",
-   "niveau": "5e",
-   "classes": [],
-   "justifie": false,
-   "debut": "2026-11-02",
-   "fin": "2026-11-02"
   },
   {
    "libelle": "Tribunal Saumur 4e (après-midi)",
@@ -903,15 +882,6 @@
    "justifie": false,
    "debut": "2026-11-23",
    "fin": "2026-11-23"
-  },
-  {
-   "libelle": "18h30 Présentation options 3e/ séjour aux Pays-Bas parents 4e",
-   "heure": "18:30",
-   "niveau": "3e",
-   "classes": [],
-   "justifie": false,
-   "debut": "2027-01-07",
-   "fin": "2027-01-07"
   },
   {
    "libelle": "Stages 3e horizon Pro",
@@ -969,14 +939,10 @@
    "justifie": false,
    "debut": "2027-04-12",
    "fin": "2027-04-17"
-  },
-  {
-   "libelle": "Sortie Nantes niveau 5e ?",
-   "niveau": "5e",
-   "classes": [],
-   "justifie": false,
-   "debut": "2027-05-10",
-   "fin": "2027-05-10"
   }
- ]
+ ],
+ "brevet": {
+  "3e": "2027-06-25T08:00:00",
+  "note": "premier jour du DNB au calendrier de l'établissement ; l'injection écrit /site/config/brevetDates/3e (seule écriture de l'EDT hors /site/edt/, exception nommée au contrat)"
+ }
 }

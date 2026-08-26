@@ -2,11 +2,11 @@ la liste des destinations : {"total":804,"semaines":35,"premiere":"mer 9/9 · 10
 
 ⑧ créneau de mai retenu : 2027-05-03|08:57-09:52
 
-   au hub après le déplacement lointain : ["2027-05-03_08h57-09h52_3E_Charles_de_Gaulle → {\"epingle\":true,\"venantDe\":\"2026-09-08|15:07-16:02\",\"pose\":1787752487914}"]
+   au hub après le déplacement lointain : ["2027-05-03_08h57-09h52_3E_Charles_de_Gaulle → {\"epingle\":true,\"venantDe\":\"2026-09-08|15:07-16:02\",\"pose\":1787753208363}"]
 
 ⑦ créneau libre proposé : {"v":"2026-09-10|08:00-08:55|+","lib":"jeu 10/9 · 08:00-08:55  — créneau libre, heure ajoutée"}
 
-   décision écrite : {"ajoutee":true,"epingle":true,"pose":1787752489882}
+   décision écrite : {"ajoutee":true,"epingle":true,"pose":1787753210312}
 
    la case apparaît dans la semaine : {"nature":"prevu","ajoutee":true,"titre":"Étude de texte accompagnée : «","heure":"3/3"}
 

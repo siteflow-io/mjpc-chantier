@@ -1,0 +1,65 @@
+{
+ "texte_de_depart": "Avec son visage, avec son vêtement, avec son geste, avec presque rien, j'ai refait l'histoire de cette femme, ou plutôt sa légende, et quelquefois je me la raconte à moi-même en pleurant. […] Et je me couche, fier d'avoir vécu et souffert dans d'autres que moi-même.",
+ "texte_attendu": "Avec son visage, avec son vêtement, avec son geste, avec presque rien, nous aurons refait l'histoire de cette femme, ou plutôt sa légende, et quelquefois nous nous la raconterons à nous-mêmes en pleurant. […] Et nous nous coucherons, fiers d'avoir vécu et souffert dans d'autres que nous-mêmes.",
+ "consigne": "Remplacer « je » par « nous » et conjuguer les verbes au futur.",
+ "note_sur": 10,
+ "formes_attendues": [
+  {
+   "depart": "j'ai refait",
+   "arrivee": "nous aurons refait",
+   "point": "futur antérieur ; le participe passé ne change pas"
+  },
+  {
+   "depart": "je",
+   "arrivee": "nous",
+   "point": "pronom sujet (raconte)"
+  },
+  {
+   "depart": "me",
+   "arrivee": "nous",
+   "point": "pronom réfléchi"
+  },
+  {
+   "depart": "raconte",
+   "arrivee": "raconterons",
+   "point": "futur, 1re personne du pluriel"
+  },
+  {
+   "depart": "à moi-même",
+   "arrivee": "à nous-mêmes",
+   "point": "pronom tonique"
+  },
+  {
+   "depart": "je",
+   "arrivee": "nous",
+   "point": "pronom sujet (couche)"
+  },
+  {
+   "depart": "me",
+   "arrivee": "nous",
+   "point": "pronom réfléchi"
+  },
+  {
+   "depart": "couche",
+   "arrivee": "coucherons",
+   "point": "futur, 1re personne du pluriel"
+  },
+  {
+   "depart": "fier",
+   "arrivee": "fiers",
+   "point": "accord de l'adjectif avec le nouveau sujet — le piège du passage"
+  },
+  {
+   "depart": "que moi-même",
+   "arrivee": "que nous-mêmes",
+   "point": "pronom tonique"
+  }
+ ],
+ "invariants": [
+  "son visage",
+  "son vêtement",
+  "son geste",
+  "sa légende",
+  "d'avoir vécu et souffert"
+ ]
+}

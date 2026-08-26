@@ -73,8 +73,10 @@ await p.close();
 p=await ouvrir();
 await p.evaluate((s)=>{edtCaseClic(s);},SRC);
 await new Promise(r=>setTimeout(r,400));
-await p.evaluate(()=>{const sel=document.querySelectorAll('#edt-modale select')[0];
-  for(let i=0;i<sel.options.length;i++){ if(sel.options[i].textContent.indexOf('mer 9/9')>=0)sel.selectedIndex=i; }
+await p.evaluate(()=>{const sel=document.getElementById('edt-ou');
+  /* la MÊME destination que par le glissé : mer 9/9 10:07, et non un créneau libre */
+  for(let i=0;i<sel.options.length;i++){
+    if(sel.options[i].value==='2026-09-09|10:07-11:02'){ sel.selectedIndex=i; break; } }
   sel.dispatchEvent(new Event('change'));});
 await new Promise(r=>setTimeout(r,1200));
 const parListe=await p.evaluate(()=>window.__HUB.site.edt.decisions['2026-2027']['3E Charles de Gaulle'].heures);

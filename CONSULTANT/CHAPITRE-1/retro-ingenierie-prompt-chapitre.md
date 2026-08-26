@@ -252,3 +252,9 @@ Destinataire : Paul, pour affiner le prompt initial. Chaque entrée : l'erreur o
     → « Compter en partant de la date de rentrée du NIVEAU concerné · isoler les jours où un événement ampute un créneau, sans les retirer d'office · annoncer le chiffre avec sa source et sa période. »
 
 85. **Le chapitre se dimensionne sur la classe la MOINS dotée.** Deux classes du même niveau n'ont pas le même nombre d'heures : 20 contre 17 ici. Le contenu obligatoire tient dans le plus petit nombre ; l'écart devient de la respiration pour l'autre classe, jamais du contenu en plus.
+
+86. **Un document versé n'est pas un objet à refaire.** L'instance a proposé de refondre le support de rentrée de Paul, qui n'est qu'un support d'usage actualisé chaque année. Demander à quoi sert un document avant d'en proposer quoi que ce soit.
+
+87. **Le plan de séquence de Paul est un canon antérieur au site**, défini pour les élèves : cours suivi qui se complète au fil du chapitre · LA accompagnée · point de langue relié au texte · **analyse logique sans rapport obligé avec la séquence** · dictée-réécriture · LA en autonomie (formative) · approfondissement personnalisé à trois voies · atelier. Le prompt devrait le connaître.
+
+88. **Le fil langue n'est pas né de l'emploi du temps 2026-2027** : il figure dès 2023 dans le document de rentrée de Paul. Une pratique ancienne que ni le site ni le prompt ne portent (voir `PREUVE-fil-langue-manque-au-site.md`).

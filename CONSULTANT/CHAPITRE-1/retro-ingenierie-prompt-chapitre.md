@@ -234,3 +234,15 @@ Destinataire : Paul, pour affiner le prompt initial. Chaque entrée : l'erreur o
 
 77. **Une capacité qu'on n'a pas pu vérifier ne se déclare pas absente.** L'instance a signalé son incertitude sur les formes du bloc `schema` — c'était juste — puis a agi comme si l'absence était établie, et a fait décider le professeur là-dessus. Onze écrans ont été appauvris.
     → « Quand un fichier manque pour trancher, on ne conclut pas : on demande le fichier. »
+
+78. **LE PROMPT DOIT PERMETTRE DE CRÉER SANS LIRE LE CODE.** Mot de Paul : « la question c'est que le prompt permette à l'instance de créer sans avoir besoin d'avoir deroule.html sous les yeux ». Doivent y figurer : les cinq formes de schéma (carte, frise, arbre, cycle, tableau) **avec le format de `src` de chacune** · les outils de marquage (point, étiquette, flèche, cadre, légende) · ce qui n'existe pas (bloc texte suivi, bloc page) · l'adresse des médias, relative à mjpc-medias · la distinction fiche (produit) / item (document de séance) / écran (diapositive), et le fait que rien ne circule entre item et écran.
+
+79. **UN CHAPITRE COMMENCE PAR UN DÉCOMPTE DE CRÉNEAUX.** Le chapitre 1 a été découpé en neuf séances de deux heures sans qu'on sache combien d'heures existaient. Le prompt doit faire lire le calendrier et la grille, compter les créneaux réellement disponibles entre deux jalons, et ne découper qu'ensuite.
+
+80. **Les fils parallèles se déclarent.** Un fil « langue » existe le mercredi en semaine A ; la séance 3 du chapitre 1 était entièrement une séance de langue et occupait pourtant le fil principal. Le prompt doit faire dire ce qui revient à chaque fil.
+
+81. **Ne jamais supposer des heures consécutives.** Les deux classes de 3e n'ont que des créneaux isolés, répartis sur cinq jours, avec des semaines A et B différentes. Un découpage « heure 1 / heure 2 » ne correspond à aucun emploi du temps réel.
+
+82. **Le temps utile n'est pas la durée du créneau** : fin − lancement − 5 minutes d'agenda. Un créneau de 55 minutes vaut 50 minutes utiles. À rappeler au moment du découpage.
+
+83. **Les contraintes extérieures se demandent avant le découpage** : voyage, brevet blanc, stage, EPI. Celle du chapitre 2 — un voyage à Verdun du 14 au 16 octobre — n'a surgi qu'au moment de bâtir ce chapitre.

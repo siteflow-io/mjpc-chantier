@@ -18448,7 +18448,12 @@ function edtPoserCss(){
    +'.edt-fil{color:#a08ce0}'
    +'.edt-barre{display:block;height:4px;border-radius:3px;background:rgba(255,255,255,.1);margin:3px 0}'
    +'.edt-barre i{display:block;height:100%;border-radius:3px;background:#34d399}'
-   +'.edt-clic{flex:1 1 0;min-height:0;display:flex;cursor:pointer}'
+   +'.edt-clic{flex:1 1 0;min-height:0;display:flex;cursor:pointer;touch-action:none}'
+   +'.edt-source{opacity:.35}'
+   +'.edt-cible-ok{outline:1px dashed rgba(52,211,153,.65);outline-offset:-2px;background:rgba(52,211,153,.05)}'
+   +'.edt-cible-non{opacity:.4}'
+   +'.edt-question{width:340px}'
+   +'.edt-m{cursor:pointer;touch-action:none}'
    +'.edt-clic>.edt-b{flex:1 1 auto}'
    +'.edt-modale{position:fixed;width:380px;max-height:70vh;overflow:auto;z-index:8600;background:#1c1710;border:1px solid rgba(224,185,120,.4);border-radius:11px;box-shadow:0 12px 40px rgba(0,0,0,.55)}'
    +'.edt-mo-tete{display:flex;align-items:center;gap:6px;padding:7px 10px;border-bottom:1px solid rgba(255,255,255,.1);cursor:grab;touch-action:none;font-size:.86rem}'
@@ -18734,6 +18739,8 @@ function edtOuvrir(){
 }
 function edtToucheEchap(ev){
   if(ev.key!=='Escape')return;
+  if(document.getElementById('edt-question')){ edtFermerQuestion(); return; }
+  if(EDT_GLISSE){ edtGlisserNettoyer(); EDT_GLISSE=null; return; }
   if(EDT_MOD.cle){ edtModaleFermer(); return; }
   if((document.getElementById('edt-ecran')||{}).style&&document.getElementById('edt-ecran').style.display!=='none')edtFermer();
 }
@@ -18788,10 +18795,11 @@ function edtPeindreSemaine(){
       var iso2=edtPlusJour(lundi,j2), dedans=[];
       Object.keys(cel).forEach(function(k){ var c=cel[k]; if(c.iso===iso2&&c.creneau===creneaux[r])dedans.push(c); });
       var estMaintenant=(iso2===auj&&creneaux[r]===maintenant);
-      h+='<div class="edt-case'+(estMaintenant?' edt-case-now':'')+'">'
+      h+='<div class="edt-case'+(estMaintenant?' edt-case-now':'')+'" data-iso="'+iso2+'" data-creneau="'+escapeHtml(creneaux[r])+'">'
          +dedans.map(function(x){
              var k=x.iso+'|'+x.creneau+'|'+(x.classe||'');
-             return '<div class="edt-clic" onclick="edtCaseClic('+JSON.stringify(k).replace(/"/g,'&quot;')+')">'
+             var ks=JSON.stringify(k).replace(/"/g,'&quot;');
+             return '<div class="edt-clic" onclick="edtCaseClic('+ks+')" onpointerdown="edtGlisserDebut(event,'+ks+')">'
                +edtCelluleHtml(x)+'</div>';
            }).join('')+'</div>';
     }
@@ -19250,12 +19258,14 @@ function edtPeindreMois(){
       var dedans=[];
       Object.keys(cel).forEach(function(k){ if(cel[k].iso===iso)dedans.push(cel[k]); });
       dedans.sort(function(a,b){return String(a.creneau).localeCompare(String(b.creneau));});
-      h+='<div class="edt-mcase'+(iso===auj?' edt-case-now':'')+(off?' edt-mcase-off':'')+'">'
+      h+='<div class="edt-mcase'+(iso===auj?' edt-case-now':'')+(off?' edt-mcase-off':'')+'" data-iso="'+iso+'">'
         +'<span class="edt-mnum">'+Number(iso.slice(8))+'</span>'
         +(off?('<i class="edt-mini-t">'+escapeHtml(off.libelle||off.motif)+'</i>')
              :dedans.map(function(x){
                 var cl=x.nature==='jouee'?'edt-m-joue':(x.nature==='sansSeance'?'edt-m-sans':(x.nature==='prevu'?'edt-m-prevu':'edt-m-autre'));
-                return '<span class="edt-m '+cl+'" title="'+escapeHtml(x.creneau+' '+(x.classeMjpc||x.classe))+'">'
+                var ks=JSON.stringify(x.iso+'|'+x.creneau+'|'+(x.classe||'')).replace(/"/g,'&quot;');
+                return '<span class="edt-m '+cl+'" title="'+escapeHtml(x.creneau+' '+(x.classeMjpc||x.classe))+'"'
+                  +' onclick="edtCaseClic('+ks+')" onpointerdown="edtGlisserDebut(event,'+ks+')">'
                   +escapeHtml((x.classeMjpc||x.classe).slice(0,14))+'</span>';
               }).join(''))
         +'</div>';
@@ -19388,7 +19398,7 @@ function edtPeindreAnnee(){
     +'<span class="edt-lg edt-lg-vac"></span>sans cours'
     +'<span class="edt-lg edt-lg-jalon"></span>jalon commun (cliquable)'
     +'<span class="edt-lg edt-lg-auj"></span>aujourd\u2019hui'
-    +'<span class="edt-lg-t">sous chaque nom : le palier de divergence \u00b7 « expérimentale » = ses chiffres comptent mais se déclarent</span>'
+    +'<span class="edt-lg-t">sous chaque nom : le palier de divergence \u00b7 « expérimentale » = ses chiffres comptent mais se déclarent \u00b7 <b>pas de glisser-déposer sur cette vue : l\u2019échelle ne le permet pas \u2014 passe par Semaine ou Mois</b></span>'
     +'</div>';
   h+='</div>';
   e.innerHTML=h;
@@ -19450,6 +19460,164 @@ function edtPeindre(){
   if(EDT_VUE.mode==='annee')return edtPeindreAnnee();
   if(EDT_VUE.mode==='calendrier')return edtPeindreCalendrier();
   return edtPeindreSemaine();
+}
+
+
+/* ═══ LE GLISSER-DÉPOSER — le geste d'entrée ════════════════════════════════
+   Paul entre par la case. On saisit une case qui porte une séance, on la
+   dépose ailleurs, et le site DEMANDE lequel des deux gestes on fait :
+
+   ① CHANGEMENT D'EMPLOI DU TEMPS — durable. « Cette classe n'est plus à ce
+      créneau, elle est là désormais. » Écrit dans la GRILLE, en version datée.
+      Aucun contenu touché : ni séance, ni chapitre, ni décision, ni trace.
+   ② DÉPLACEMENT D'UNE HEURE — une fois. Écrit dans les DÉCISIONS : départ
+      vidé, arrivée épinglée. La grille ne bouge pas.
+
+   Les deux ne se confondent jamais, et le site le dit avec des mots, pas avec
+   une icône. Tout ce que le glissé permet reste faisable par la modale : un
+   clavier, une main qui tremble, un écran tactile capricieux ne doivent
+   priver de rien. ══════════════════════════════════════════════════════ */
+
+var EDT_GLISSE=null;   /* {cle, x0, y0, actif} */
+
+function edtGlisserDebut(ev,cle){
+  var c=edtCellule(cle);
+  if(!c||c.nature==='horsMjpc'||c.nature==='horsTemps'||c.nature==='nonImportee')return;
+  EDT_GLISSE={cle:cle,x0:ev.clientX,y0:ev.clientY,actif:false};
+  var bouge=function(e2){
+    if(!EDT_GLISSE)return;
+    if(!EDT_GLISSE.actif){
+      if(Math.abs(e2.clientX-EDT_GLISSE.x0)+Math.abs(e2.clientY-EDT_GLISSE.y0)<6)return;
+      EDT_GLISSE.actif=true; edtGlisserMarquer(cle);
+    }
+    e2.preventDefault();
+  };
+  var lache=function(e2){
+    window.removeEventListener('pointermove',bouge);
+    window.removeEventListener('pointerup',lache);
+    if(EDT_GLISSE&&EDT_GLISSE.actif){
+      var dst=edtCibleSous(e2.clientX,e2.clientY);
+      edtGlisserNettoyer();
+      var src=EDT_GLISSE.cle; EDT_GLISSE=null;
+      if(dst)edtDepot(src,dst);
+      return;
+    }
+    EDT_GLISSE=null;      /* pas bougé : c'est un clic, la modale s'ouvre seule */
+  };
+  window.addEventListener('pointermove',bouge,{passive:false});
+  window.addEventListener('pointerup',lache);
+}
+function edtCibleSous(x,y){
+  var el=document.elementFromPoint(x,y); if(!el)return null;
+  var case_=el.closest?el.closest('[data-iso]'):null;
+  if(!case_)return null;
+  return {iso:case_.getAttribute('data-iso'),creneau:case_.getAttribute('data-creneau')||''};
+}
+function edtGlisserMarquer(cle){
+  var c=edtCellule(cle); if(!c)return;
+  document.querySelectorAll('#edt-ecran [data-iso]').forEach(function(n){
+    var dst={iso:n.getAttribute('data-iso'),creneau:n.getAttribute('data-creneau')||''};
+    if(dst.iso===c.iso&&dst.creneau===c.creneau){ n.classList.add('edt-source'); return; }
+    n.classList.add(edtRefusDepot(c,dst)?'edt-cible-non':'edt-cible-ok');
+  });
+}
+function edtGlisserNettoyer(){
+  document.querySelectorAll('#edt-ecran .edt-source,#edt-ecran .edt-cible-ok,#edt-ecran .edt-cible-non')
+    .forEach(function(n){ n.classList.remove('edt-source','edt-cible-ok','edt-cible-non'); });
+}
+/* ce qu'un dépôt ne peut jamais faire — dit avec des mots */
+function edtRefusDepot(c,dst){
+  if(!dst||!dst.iso)return 'cette case n\u2019est pas une destination.';
+  if(dst.iso<edtAujourdhui())return 'on ne pose pas une heure dans le passé (le '+dst.iso+' est déjà passé).';
+  var off=edtJourSansCours(dst.iso);
+  if(off)return 'le '+dst.iso+' est sans cours \u2014 '+(off.libelle||off.motif)+'.';
+  var kr=EDT.creneaux||{},sans=(kr.sansApresMidi&&typeof kr.sansApresMidi==='object')?kr.sansApresMidi:null;
+  var jour=edtNomDuJour(dst.iso);
+  if(dst.creneau&&sans&&sans[jour]&&String(dst.creneau)>=String(sans[jour]))
+    return 'le '+jour+' n\u2019a pas cours à partir de '+sans[jour]+'.';
+  if(dst.creneau){
+    var occupe=null;
+    edtCasesDuJour(dst.iso).forEach(function(x){
+      if(x&&x.creneau===dst.creneau&&x.mjpc!==false&&(x.classeMjpc||x.classe)!==(c.classeMjpc||c.classe))
+        occupe=(x.classeMjpc||x.classe);
+    });
+    if(occupe)return 'ce créneau est déjà pris par '+occupe+' \u2014 je ne l\u2019écrase pas à ta place.';
+  }
+  return null;
+}
+
+/* ── LA QUESTION DU DÉPÔT — deux boutons, rien d'autre ───────────────────── */
+function edtDepot(cleSource,dst){
+  var c=edtCellule(cleSource); if(!c)return;
+  var refus=edtRefusDepot(c,dst);
+  if(refus){ if(typeof atInfo==='function')atInfo('Dépôt refusé : '+refus); return; }
+  var creneaux=dst.creneau?[dst.creneau]:edtCreneauxLibresLe(dst.iso,c);
+  if(!creneaux.length){ if(typeof atInfo==='function')atInfo('Aucun créneau libre le '+dst.iso+'.'); return; }
+  edtPoserQuestionDepot(cleSource,dst.iso,creneaux);
+}
+function edtCreneauxLibresLe(iso,c){
+  var pris={},libres=[];
+  edtCasesDuJour(iso).forEach(function(x){ if(x&&x.mjpc!==false&&(x.classeMjpc||x.classe)!==(c.classeMjpc||c.classe))pris[x.creneau]=true; });
+  ((typeof AT_EDT!=='undefined')?AT_EDT:[]).forEach(function(k){
+    if(!pris[k]&&!edtRefusDepot(c,{iso:iso,creneau:k}))libres.push(k);
+  });
+  return libres;
+}
+function edtPoserQuestionDepot(cleSource,iso,creneaux){
+  edtFermerQuestion();
+  var c=edtCellule(cleSource);
+  var q=document.createElement('div'); q.id='edt-question'; q.className='edt-modale edt-question';
+  (document.getElementById('edt-ecran')||document.body).appendChild(q);
+  var lundi=edtLundiDe(iso)||iso;
+  q.innerHTML='<div class="edt-mo-tete"><b>'+escapeHtml(c.classeMjpc||c.classe)+' \u2192 '+escapeHtml(edtDateCourte(iso))+'</b>'
+    +'<span class="edt-souple"></span><button class="edt-mini" onclick="edtFermerQuestion()">\u2715</button></div>'
+    +'<div class="edt-mo-corps">'
+    +(creneaux.length>1?('<div class="edt-mo-bloc"><label class="edt-lab">Sur quel créneau ?</label>'
+        +'<select class="edt-sel" id="edt-q-creneau">'+creneaux.map(function(k){return '<option>'+escapeHtml(k)+'</option>';}).join('')+'</select></div>')
+      :('<input type="hidden" id="edt-q-creneau" value="'+escapeHtml(creneaux[0])+'">'))
+    +'<div class="edt-mo-bloc"><label class="edt-lab">Changement d\u2019emploi du temps \u2014 durable</label>'
+    +'<p class="edt-mini-t">Cette classe n\u2019est plus à ce créneau, elle est là désormais. Rien du contenu n\u2019est touché.</p>'
+    +'<input type="date" class="edt-sel" id="edt-q-effet" value="'+escapeHtml(lundi)+'">'
+    +'<button class="edt-btn edt-large" onclick="edtValiderDepot(\'edt\','+JSON.stringify(cleSource).replace(/"/g,'&quot;')+','+JSON.stringify(iso).replace(/"/g,'&quot;')+')">Changer l\u2019emploi du temps à partir de cette date</button></div>'
+    +'<div class="edt-mo-bloc"><label class="edt-lab">Déplacer cette heure \u2014 une fois</label>'
+    +'<p class="edt-mini-t">L\u2019emploi du temps ne bouge pas ; seule cette heure-là change de place.</p>'
+    +'<button class="edt-btn edt-large" onclick="edtValiderDepot(\'heure\','+JSON.stringify(cleSource).replace(/"/g,'&quot;')+','+JSON.stringify(iso).replace(/"/g,'&quot;')+')">Déplacer cette heure seulement</button></div>'
+    +'</div>';
+}
+function edtFermerQuestion(){ var q=document.getElementById('edt-question'); if(q)q.remove(); }
+function edtValiderDepot(quoi,cleSource,iso){
+  /* On lit TOUT avant de fermer : la première version fermait la question puis
+     cherchait la date d'effet dans un élément déjà retiré — la date choisie
+     était silencieusement remplacée par celle du dépôt (mesuré au banc :
+     version écrite au 09/09 alors que Paul avait posé le 14/09). */
+  var k=(document.getElementById('edt-q-creneau')||{}).value||'';
+  var effet=(document.getElementById('edt-q-effet')||{}).value||iso;
+  edtFermerQuestion();
+  if(quoi==='heure')return edtDeplacerVers(cleSource,iso+'|'+k);
+  edtChangerEmploiDuTemps(cleSource,iso,k,effet);
+}
+/* ① le geste durable : une version datée, et RIEN d'autre */
+function edtChangerEmploiDuTemps(cleSource,iso,creneau,effet){
+  var c=edtCellule(cleSource); if(!c)return;
+  var o=edtNormaliserGrille(); if(!o)return;
+  var v=null; o.versions.forEach(function(x){ if(x.debut===effet)v=x; });
+  if(!v){
+    var source=edtGrilleA(effet)||o.versions[0];
+    v={debut:String(effet),libelle:'changement du '+effet,
+       creneaux:JSON.parse(JSON.stringify(source.creneaux||[]))};
+    o.versions.push(v);
+  }
+  var jourSrc=edtNomDuJour(c.iso), jourDst=edtNomDuJour(iso), retire=null;
+  v.creneaux=v.creneaux.filter(function(x){
+    if(x&&x.jour===jourSrc&&x.creneau===c.creneau&&(x.classeMjpc||x.classe)===(c.classeMjpc||c.classe)){ retire=x; return false; }
+    return true;
+  });
+  var neuf=retire?JSON.parse(JSON.stringify(retire)):{classe:c.classe,classeMjpc:c.classeMjpc,mjpc:true,semaine:'AB'};
+  neuf.jour=jourDst; neuf.creneau=creneau;
+  v.creneaux.push(neuf);
+  edtEcrireGrille(o,{quand:Date.now(),effet:String(effet),
+    quoi:(c.classeMjpc||c.classe)+' : '+jourSrc+' '+c.creneau+' \u2192 '+jourDst+' '+creneau},
+    function(){ edtPeindre(); });
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════

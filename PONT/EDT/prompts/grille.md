@@ -1,0 +1,70 @@
+# PROMPT IA — « GRILLE DE L'EMPLOI DU TEMPS » (à coller dans une IA avec l'image ou l'export de ma grille)
+
+*Ce prompt produit le JSON que la zone d'injection du panneau prof attend pour `/site/edt/grille/<année>`. Il est écrit pour être collé tel quel. Le JSON obtenu se relit et se corrige à la main dans l'EDT après injection.*
+
+---
+
+Tu vas convertir en JSON ma grille d'emploi du temps, que je te joins. C'est le tableau papier de mon établissement : les jours en colonnes, les heures en lignes, une case par cours.
+
+Tu lis ce qui est écrit. Tu n'inventes aucun créneau, aucune classe, aucune salle. Si une case est illisible ou ambiguë, tu la mets quand même avec les champs que tu as pu lire, et tu la signales à la fin.
+
+## Ce que tu dois savoir pour lire la grille
+
+1. **Les huit créneaux sont fixes** et tu ne dois utiliser que ceux-là, écrits exactement ainsi :
+   `08:00-08:55` · `08:57-09:52` · `10:07-11:02` · `11:04-11:59` · `13:00-13:55` · `13:57-14:52` · `15:07-16:02` · `16:04-16:59`.
+   Il n'y a pas de créneau entre 11:59 et 13:00.
+2. **La lettre dans un petit carré, en bas à droite d'une case, est la semaine** : `A` ou `B`. Une case **qui occupe toute la largeur du jour et ne porte pas de lettre a lieu chaque semaine** : écris `"semaine":"AB"`. Une case étroite avec sa lettre n'a lieu qu'en A ou qu'en B.
+3. **Deux cases côte à côte sur la même ligne, le même jour**, ce sont deux semaines différentes : la gauche en A, la droite en B. Ce ne sont jamais deux cours simultanés.
+4. **Les créneaux « X Français X. »** sont des groupes partagés avec un collègue. Ils vont dans le JSON — je veux les voir sur ma semaine — mais avec `"mjpc": false` : **ils ne comptent jamais dans ma progression**, ils ne portent jamais de séance.
+5. **Une case qui n'est pas un cours** (une concertation, une liste de noms d'enseignants) va elle aussi dans le JSON avec `"mjpc": false` et un `motif`.
+6. **Les étiquettes de période** — de petits libellés du genre « EDT P1 EDT P2 » ou « EDT P3 EDT P4 EDT PFIN » collés à une case — disent que ce créneau ne vaut que pendant ces périodes. Recopie-les dans `periodes`, sous la forme `["P1","P2"]`. **Une case sans étiquette vaut en toutes périodes : laisse `periodes` absent.** Ne cherche aucune date : les dates des périodes sont saisies ailleurs, à la rentrée.
+
+## Le fil « langue » — ce que tu ne peux pas lire sur la grille et que je te dis
+
+J'ai une heure de langue ritualisée : une notion, une séance, des exercices. Elle ne suit pas la progression du chapitre en cours, c'est une progression décrochée. Elle est **toujours le mercredi**. Sur les créneaux que je te liste ci-dessous, ajoute `"fil":"langue"` et la `cadence` :
+
+- 4 HUGO, mercredi 08:00-08:55 — `"cadence":"chaque semaine"`
+- 4 TURING, mercredi 08:57-09:52 — `"cadence":"chaque semaine"`
+- 3 FRANKLIN Aretha, mercredi 10:07-11:02 — **semaine A seulement**, `"cadence":"semaine A"`
+- 3 DYLAN Bob, mercredi 11:04-11:59 — **semaine A seulement**, `"cadence":"semaine A"`
+
+Attention au troisième : sur la grille, le mercredi 10:07 de 3 FRANKLIN Aretha occupe toute la largeur (chaque semaine). Tu dois donc en faire **deux entrées** : une en semaine A avec le fil langue, une en semaine B **sans fil** — celle-là porte le chapitre principal. Les autres créneaux du mercredi n'ont pas ce cas.
+
+Tout créneau sans `fil` porte le chapitre principal de la classe.
+
+## Le nom de la classe
+
+Recopie le nom de la classe **exactement comme il est écrit sur la grille** dans `classe`. Laisse `classeMjpc` vide (`""`) : c'est le nom de la classe dans mon site, et je ferai l'appariement moi-même, plus tard.
+
+## La forme exacte de ta réponse
+
+Un seul objet JSON, rien avant, rien après, pas de commentaires, pas de balises de code.
+
+```
+{
+ "annee": "2026-2027",
+ "source": "<le nom du fichier que je t'ai joint>",
+ "creneauxDuSite": ["08:00-08:55","08:57-09:52","10:07-11:02","11:04-11:59","13:00-13:55","13:57-14:52","15:07-16:02","16:04-16:59"],
+ "etiquettesPeriodes": ["P1","P2","P3","P4","PFIN"],
+ "creneaux": [
+  {"jour":"lundi","creneau":"08:57-09:52","semaine":"AB","classe":"3 FRANKLIN Aretha","salle":"9","mjpc":true,"classeMjpc":""},
+  {"jour":"mardi","creneau":"15:07-16:02","semaine":"B","classe":"3 FRANKLIN Aretha","salle":"9","mjpc":true,"classeMjpc":"","periodes":["P1","P2"]},
+  {"jour":"mercredi","creneau":"08:00-08:55","semaine":"AB","classe":"4 HUGO","salle":"9","mjpc":true,"classeMjpc":"","fil":"langue","cadence":"chaque semaine"},
+  {"jour":"lundi","creneau":"10:07-11:02","semaine":"A","classe":"X Français X. — 4 HUGO","salle":"20 / 9","mjpc":false,"motif":"groupe partagé — hors français, ne compte jamais dans la progression"}
+ ]
+}
+```
+
+Les jours s'écrivent en toutes lettres et en minuscules : `lundi`, `mardi`, `mercredi`, `jeudi`, `vendredi`.
+
+## Avant de me répondre, vérifie toi-même
+
+- Chaque `creneau` est l'un des huit, au caractère près.
+- Aucune case n'a deux cours à la même `semaine` : un `jour` + `creneau` + `semaine` n'apparaît qu'une fois. Si tu trouves un doublon, ne choisis pas — signale-le.
+- Aucune case `AB` ne coexiste avec une case `A` ou `B` sur le même jour et le même créneau.
+- Le mercredi n'a aucun créneau après 11:59 : l'établissement n'a pas cours.
+- Compte le nombre d'heures par classe en semaine A et en semaine B, et donne-moi ces deux chiffres. C'est comme ça que je vois d'un coup d'œil si tu as mal lu une case.
+
+## Après le JSON
+
+Écris, en dehors du JSON, la liste des cases que tu as lues avec un doute, et les deux comptes d'heures par classe.

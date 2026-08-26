@@ -9,7 +9,7 @@ const require = createRequire(import.meta.url);
 const puppeteer = require('/home/claude/.npm-global/lib/node_modules/@mermaid-js/mermaid-cli/node_modules/puppeteer');
 
 const RACINE = '/home/claude';
-const CAND = path.join(RACINE, 'candidat-8.71.0.html');
+const CAND = path.join(RACINE, 'candidat-8.72.0.html');
 const SORTIE = path.join(RACINE, 'tests');
 
 function creerHub(dossier){
@@ -267,7 +267,7 @@ const releve = { get:0, ecritures:0, sorties:0, erreursConsole:[] };
   /* ── ⑨ l'appariement d'une classe de grille ────────────────────────── */
   await page.evaluate(() => edtApparierNom('3 FRANKLIN Aretha','3E Charles de Gaulle'));
   await new Promise(r => setTimeout(r, 600));
-  const app = await page.evaluate(() => window.__HUB.site.edt.grille['2026-2027'].creneaux.filter(c=>c.classe==='3 FRANKLIN Aretha').map(c=>c.classeMjpc));
+  const app = await page.evaluate(() => (edtVersions()[0].creneaux).filter(c=>c.classe==='3 FRANKLIN Aretha').map(c=>c.classeMjpc));
   journal.push('appariement 3 FRANKLIN Aretha → ' + JSON.stringify(app));
 
   /* ── ⑩ lectures de base du calendrier ──────────────────────────────── */
@@ -576,7 +576,7 @@ const releve = { get:0, ecritures:0, sorties:0, erreursConsole:[] };
 
   /* une seconde classe, moins avancée : le palier se lève pour de vrai */
   const deuxClasses = await page.evaluate(() => {
-    EDT.grille.creneaux.forEach(c => { if(c.classe === '3 DYLAN Bob') c.classeMjpc = 'CLASSE TEST'; });
+    edtToutesLesCases().forEach(c => { if(c.classe === '3 DYLAN Bob') c.classeMjpc = 'CLASSE TEST'; });
     edtPeindre();
     return {cdg: edtDivergence('3E Charles de Gaulle'), test: edtDivergence('CLASSE TEST')};
   });
@@ -595,7 +595,7 @@ const releve = { get:0, ecritures:0, sorties:0, erreursConsole:[] };
   const cartesDiv = await page.evaluate(() => Array.from(document.querySelectorAll('#edt-ecran .edt-carte')).map(c => c.innerText.replace(/\n/g,' | ')));
   journal.push('cartes avec paliers : ' + JSON.stringify(cartesDiv));
   await capture('5-5-divergence-deux-classes');
-  await page.evaluate(() => { EDT.grille.creneaux.forEach(c => { if(c.classe === '3 DYLAN Bob') c.classeMjpc = ''; }); edtPeindre(); });
+  await page.evaluate(() => { edtToutesLesCases().forEach(c => { if(c.classe === '3 DYLAN Bob') c.classeMjpc = ''; }); edtPeindre(); });
   await new Promise(r => setTimeout(r, 400));
 
   /* l'absence : le geste réversible du QCM, dans la trace de l'heure */

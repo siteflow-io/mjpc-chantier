@@ -586,3 +586,13 @@ Ouvert le 26/08. Le cadrage complet est dans `CADRAGE-chapitre-poilus.md` ; ce q
 **Le voyage impose trois temps** : dix-sept séances avant, dont seulement deux la semaine du départ ; le voyage lui-même, avec le carnet d'Angélique ; et **aucune séance entre le retour et les vacances** — la reprise est le 2 novembre.
 
 **Cinq dettes vivantes** attendent Paul : disciplines de l'EPI au-delà de l'histoire-géo et du français · production commune · disponibilité du recueil de Guéno (droits) · ce que le chapitre attend des deux séances de langue · le chapitre couvre-t-il les trois temps.
+
+### Guéno écarté, matrice adoptée, audit fait (26/08)
+
+**Le recueil de Guéno est écarté** : Paul ne le retrouve pas, et les lettres publiées sont sous droits. Le chapitre devient un **groupement de textes** libres — catégorie Éduscol exacte pour une anthologie de lettres, non un pis-aller. La structure du recueil (six saisons, du premier été au dernier automne) reste utilisable : une architecture ne se protège pas.
+
+**La matrice est le chapitre 5 de l'an dernier, « Paroles du Jour J »**, déposé par Paul. On en reprend l'architecture, la problématique, les notions — épistolaire, fragmentaire avec le phénomène d'iceberg, l'histoire et l'Histoire, la forme de la lettre —, le dispositif d'entrée par l'émotion puis la définition de « faire mémoire » par les élèves, le barème de dictée L/G, et le principe de la rédaction (écrire la suite d'une lettre authentique).
+
+**Six écarts au canon MJPC sont signalés** dans `AUDIT-matrice-jour-j.md` : aucune évaluation ne nomme sa partie d'épreuve ni son barème réel · la réécriture au plus-que-parfait est évaluée avant d'être enseignée · la tâche finale exige de PRODUIRE quinze phrases complexes quand le cours n'enseigne qu'à les RECONNAÎTRE · le cadre d'épreuve est celui de l'an dernier, non la session 2027 · la séance décrochée n'a ni objectif ni compétence et change de sujet d'une version à l'autre · le quantitatif annuel n'est pas déclaré — et le prompt interdit de le deviner.
+
+**Cinq questions restent ouvertes**, et Paul les renvoie à la progression annuelle : le plus-que-parfait (enseigné ou diagnostic) · la séance décrochée (Verdun la remplace-t-elle) · l'écart reconnaître/produire (les séances de langue du mercredi ?) · le quantitatif annuel · le corpus et son architecture.

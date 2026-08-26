@@ -52,6 +52,9 @@ Condition commune : que les feuilles acceptent les objets graphiques (dette site
 
 ---
 
+## Chantier en cours au 26/08 — chapitre « Paroles de poilus »
+EPI Verdun, voyage du 14 au 16 octobre. Décompte fait avant tout découpage : **17 séances utiles** (celles de Dylan, la classe la moins dotée), 2 séances de langue, aucune séance entre le retour et les vacances. Cadrage complet et dettes vivantes dans `CADRAGE-chapitre-poilus.md`.
+
 ## État au 26/08 — chantier « Poésie et peinture » suspendu
 Le chapitre est complet et projetable. Restent, non traités : renumérotation des items de la séance 1, adresse de la frise à déplacer sur le bon item côté site, dettes 29 et 30 (blocs « diapo simple » et « page » du déroulé).
 

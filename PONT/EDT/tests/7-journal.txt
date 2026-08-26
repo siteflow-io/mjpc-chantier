@@ -1,0 +1,29 @@
+① compatibilité, fichier du sas TEL QUEL : {"formeAuHub":"ancienne (creneaux a la racine)","versionsLues":1,"dateDeLaVersion":"2026-08-01","marqueeAncienne":true,"casesLues":30}
+
+② la 4 HUGO, semaine du 7 septembre (version d’origine) :
+  2026-09-07 11:04-11:59
+  2026-09-08 13:00-13:55
+  2026-09-09 08:00-08:55
+  2026-09-10 15:07-16:02
+  2026-09-11 08:57-09:52
+
+   après la version du 3 novembre — semaine du 7 septembre (le PASSÉ) :
+  2026-09-07 11:04-11:59
+  2026-09-08 13:00-13:55
+  2026-09-09 08:00-08:55
+  2026-09-10 15:07-16:02
+  2026-09-11 08:57-09:52
+
+   semaine du 9 novembre (la NOUVELLE version) :
+  2026-11-09 10:07-11:02
+  2026-11-11 08:00-08:55
+  2026-11-12 11:04-11:59
+  2026-11-13 08:57-09:52
+
+   marque sur la semaine du 9 novembre : "emploi du temps modifié le 2026-11-03"
+
+③ la trace du 7 septembre au hub : {"creneau":"08:57-09:52","clos":true,"fin":"09:52","activites":3}
+
+refus : {"memeDate":["Version 2 : une autre version commence déjà le 2026-09-01 — deux versions ne peuvent pas prendre effet le même jour."],"horsAnnee":["Version 1 : cette date est hors de l’année scolaire (2026-08-01 → 2027-07-31)."],"sansCreneau":["Version 1 (vide) : aucun créneau : une version vide effacerait ta semaine."]}
+
+écran des versions : {"lignes":2,"enVigueur":"en vigueur","journal":["26/08 — 4 HUGO : mardi 13:00 → jeudi 11:04 / effet le 2026-11-03","26/08 — version créée — changement de novembre / effet le 2026-11-03"]}

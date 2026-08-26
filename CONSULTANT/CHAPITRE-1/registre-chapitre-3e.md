@@ -596,3 +596,15 @@ Ouvert le 26/08. Le cadrage complet est dans `CADRAGE-chapitre-poilus.md` ; ce q
 **Six écarts au canon MJPC sont signalés** dans `AUDIT-matrice-jour-j.md` : aucune évaluation ne nomme sa partie d'épreuve ni son barème réel · la réécriture au plus-que-parfait est évaluée avant d'être enseignée · la tâche finale exige de PRODUIRE quinze phrases complexes quand le cours n'enseigne qu'à les RECONNAÎTRE · le cadre d'épreuve est celui de l'an dernier, non la session 2027 · la séance décrochée n'a ni objectif ni compétence et change de sujet d'une version à l'autre · le quantitatif annuel n'est pas déclaré — et le prompt interdit de le deviner.
 
 **Cinq questions restent ouvertes**, et Paul les renvoie à la progression annuelle : le plus-que-parfait (enseigné ou diagnostic) · la séance décrochée (Verdun la remplace-t-elle) · l'écart reconnaître/produire (les séances de langue du mercredi ?) · le quantitatif annuel · le corpus et son architecture.
+
+### Les deux documents d'année versés par Paul (26/08)
+
+**`Progression_annuelle_originale_3ème.docx`** — de 2020-2021, remanié par copier-coller (incohérences assumées par Paul). **Matrice de structure, jamais de contenu.** On en retient la grille de déclaration d'une séquence — entrée, thème, problématique, objectifs littéraires / méthodologiques / linguistiques / lexicaux, supports, évaluations, exercices de langue avec leur modalité, tâche finale et ses critères, lecture cursive — et le tableau des cinq entrées du cycle 4.
+**Non fiable** : dates, volumes horaires, mentions de voyage. Mot de Paul : « le volume horaire n'est pas fiable, il faut s'en tenir à ce qu'on fait sur MJPC aujourd'hui ».
+
+**`1_Présentation_année_et_déroulé_type_de_séquence_3e.pdf`** — **le support de rentrée de Paul**, actualisé chaque année, qui montre aux élèves la progression et la façon dont se constitue un chapitre. **Ce n'est pas un objet à refaire** : l'instance l'avait pris pour tel et Paul l'a corrigée.
+Il porte le **plan de séquence en sept séances**, défini pour l'élève : cours suivi (S1, qu'on complète au fil du chapitre) · lecture analytique accompagnée (S2) · point de langue relié à un texte de l'œuvre (S3.1) · **analyse logique, qui n'a pas forcément de rapport avec la séquence en cours** (S3.2) · dictée et réécriture (S4) · lecture analytique en autonomie, évaluation formative (S5) · approfondissement personnalisé avec ses trois voies (S6) · atelier (S7).
+
+**Découverte importante** : le **fil langue existait déjà en 2023** dans ce document, formulé pour les élèves — « une séance qui n'a pas forcément de rapport avec la séquence en cours ». Ce n'est donc pas une nouveauté de l'emploi du temps 2026-2027, mais une pratique ancienne que ni le site ni le prompt ne portent.
+
+**Les signets sont abandonnés** (dix signets par chapitre, page 2 du document) — signalé par Paul, à ne pas reprendre.

@@ -187,11 +187,49 @@ Porte du pilotage : **six champs identiques** · sans scroll aux deux tailles ·
 
 Banc : `tests/banc-glisse.mjs`. Captures : `8-1-question-du-depot`, `8-2-apres-changement-edt`, `8-3-refus-nomme`.
 
-## ⑮ CE QUI RESTE DU MANDAT DE COMPLÉMENT
+---
+
+# LIVRAISON ③ — DÉPLACER PLUS LOIN, ET SUR UN TROU
+
+*Candidat 8.72.0, 1 642 576 octets.*
+
+## ⑮ LA LISTE VA JUSQU'À LA FIN DE L'ANNÉE
+
+`edtCreneauxOu` ne s'arrête plus à trois semaines. Mesuré depuis une case du 8 septembre : **804 destinations, groupées en 35 semaines** (`<optgroup>`), de « mer 9/9 · 10:07-11:02 » à « ven 2/7 · 16:04-16:59 ». Les jours sans cours, les week-ends, le passé et les créneaux d'une autre classe en sont exclus d'office. Un champ de filtre par date est posé au-dessus quand la liste est longue.
+
+**Preuve ⑧ — le déplacement lointain** : un créneau de **mai** retenu depuis une case de septembre → `2027-05-03_08h57-09h52_3E_Charles_de_Gaulle : {epingle: true, venantDe: "2026-09-08|15:07-16:02"}`.
+
+## ⑯ LES TROUS — et une heure ajoutée n'est pas un déplacement
+
+La liste propose aussi les créneaux où Paul n'a **aucune** classe : **653 sur les 804**, marqués en toutes lettres « — créneau libre, heure ajoutée ».
+
+Poser une heure là n'est pas un déplacement. Aucune heure n'est retirée ailleurs : c'est une heure **de plus**. Elle vit dans les décisions (`{ajoutee: true, epingle: true}`), n'existe dans aucune version de la grille, et le prévu la fait apparaître comme une case ordinaire — épinglée, marquée « heure ajoutée », d'un liseré bleu.
+
+**Preuve ⑦**, sur le jeudi 10 septembre 08:00 (un trou réel de la grille de Paul) :
+
+```
+décision écrite  : {"ajoutee":true,"epingle":true}
+la case apparaît : nature prevu, ajoutee true
+elle COMPTE      : 10/09 08:00 → prevu [AJOUTÉE] heure 1/3
+                   10/09 16:04 → prevu heure 2/3
+                   11/09 10:07 → prevu heure 3/3
+                   14/09 08:57 → prevu heure 1/3   (la séance suivante)
+```
+
+L'heure ajoutée prend la tête et **décale tout le reste** : elle est bien comptée dans la prévision horaire de la classe, comme le mandat l'exige.
+
+## ⑰ NON-RÉGRESSION
+
+Porte du pilotage : **six champs identiques** · sans scroll aux deux tailles · glissé « déplacer cette heure » toujours **équivalent au geste par la liste** (mêmes clés au hub) · changement d'emploi du temps toujours sans décision écrite · moteur **intact** · `published` **97** · `secu*` **141** · double parseur vert · garde **VERTE**, rouge sur les trois contrôles négatifs · contrat **inchangé**.
+
+*Le banc du glissé visait sa destination par le libellé affiché ; avec 804 entrées, deux options commencent désormais par « mer 9/9 » et il attrapait la mauvaise. Il vise maintenant la valeur exacte. Défaut du banc, pas du code — mais un banc qui vise mal ne prouve rien.*
+
+Banc : `tests/banc-loin.mjs`. Captures : `9-1-liste-jusqua-juillet`, `9-2-heure-ajoutee`.
+
+## ⑱ CE QUI RESTE DU MANDAT DE COMPLÉMENT
 
 Non commencé, dans la découpe proposée par la conscience :
 
-- **③** le déplacement au-delà de 21 jours, sur un trou (« heure ajoutée »), et les refus nommés ;
 - **⑤** bancs complets, matrice refaite avec le glissé, mise à jour de `SEQUENCE-TEST-PAUL.md`.
 
 Le candidat est passé en **8.72.0** avec cette livraison ①.

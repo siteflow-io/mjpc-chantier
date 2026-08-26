@@ -1,0 +1,24 @@
+{
+  "criteres": [
+    {
+      "emoji": "🧠",
+      "label": "Le texte est su",
+      "questionVotant": "A-t-il dit le poème sans hésiter ni se tromper ?"
+    },
+    {
+      "emoji": "🔊",
+      "label": "On entend chaque mot",
+      "questionVotant": "Est-ce qu'on entendait bien chaque mot, jusqu'au fond de la salle ?"
+    },
+    {
+      "emoji": "〰",
+      "label": "Le rythme du vers est respecté",
+      "questionVotant": "A-t-il respecté le rythme des vers, les e muets et les pauses ?"
+    },
+    {
+      "emoji": "✦",
+      "label": "La récitation est vivante",
+      "questionVotant": "Sa récitation faisait-elle entendre le sens du poème ?"
+    }
+  ]
+}

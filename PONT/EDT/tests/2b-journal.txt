@@ -12,9 +12,9 @@ Créneaux horaires — aucun objet injecté
 Calendrier de l’année
 Grille de l’emploi du temps
 Créneaux horaires
-📆 Dates des périodes
+📆 Périodes de l’année
 
-Tant qu’aucune date 
+Aucune période décl
 
 capture 2b-2-section-vide
 
@@ -23,8 +23,7 @@ AT_EDT avant injection (repli en dur) : 08:00-08:55 · 08:57-09:52 · 10:07-11:0
 refus nommés :
 Ce texte n’a pas été accepté :
 Case 2 (4 HUGO) : deux cours à la même heure (lundi 08:57-09:52, semaine A) — je ne choisis pas à ta place.
-Case 3 (4 TURING) : le mercredi n’a pas cours après 11h59.
-Case 4 (4 HUGO) : « jour » doit être lundi, mardi, mercredi, jeudi ou vendredi.
+Case 4 (4 HUGO) : « jour » doit être l’un des jours ouvrés déclarés : lundi, mardi, mercredi, jeudi, vendredi.
 
 capture 2b-3-refus-nomme
 
@@ -50,6 +49,8 @@ AT_EDT quand l’objet est absent (repli sur la valeur en dur) : 08:00-08:55 · 
   PUT /site/config/brevetDates/3e
   PUT /site/edt/grille/2026-2027
   PUT /site/edt/creneaux/2026-2027
+  PUT /site/edt/periodes/2026-2027
+  PUT /site/edt/creneaux/2026-2027
   PUT /site/edt/creneaux/2026-2027
 
 écritures hors /site/edt/ : PUT /site/config/brevetDates/3e  — attendu : la seule exception ① (brevetDates)
@@ -58,9 +59,41 @@ requêtes hors hub captées (chargement des pages sœurs du site, aucune sortie 
 
 brevetDates au faux hub : {"3e":"2027-06-25T08:00:00","4e":"2028-06-25T08:00:00","5e":"2029-06-23T08:00:00","6e":"2030-06-22T08:00:00"}
 
-périodes après saisie à la main : {"2026-2027":{"annee":"2026-2027","periodes":[{"nom":"P1","debut":"2026-09-01"}]}}
+périodes après saisie à la main : {"2026-2027":{"annee":"2026-2027","periodes":[{"rang":1,"nom":"P1","debut":"","fin":""},{"rang":2,"nom":"P2","debut":"","fin":""},{"rang":3,"nom":"P3","debut":"","fin":""},{"rang":4,"nom":"P4","debut":"","fin":""},{"rang":5,"nom":"PFIN","debut":"","fin":""}]}}
 
 capture 2b-5-periodes-et-appariement
+
+① livrées par la grille, telles qu’écrites sur la feuille : ["1:P1[→]","2:P2[→]","3:P3[→]","4:P4[→]","5:PFIN[→]"]
+
+capture 3a-1-periodes-livrees
+
+② après renommage PFIN → P5 : ["1:P1[→]","2:P2[→]","3:P3[→]","4:P4[→]","5:P5[→]"]
+
+   étiquettes citées par la grille et non déclarées : ["PFIN"]  (PFIN est cité par le mardi 15:07 — signalé, jamais bloquant)
+
+   ce que l’écran affiche : La grille cite PFIN — non déclarée dans les périodes.
+
+capture 3a-2-renommee-et-orpheline
+
+③ après ajout : ["1:P1[→]","2:P2[→]","3:P3[→]","4:P4[→]","5:P5[→]","6:P6[→]"]
+
+④ chevauchement : ["« P1 » et « P2 » se chevauchent (2026-11-30 / 2026-11-15)."]
+
+   nom en double et fin avant début : ["Période 2 (P1) : ce nom est déjà pris — deux périodes ne peuvent pas s’appeler pareil.","Période 3 (P3) : la fin précède le début."]
+
+   dates saisies à la main : ["1:P1[2026-09-01→2026-11-06]","2:P2[2026-11-15→2027-01-08]","3:P3[→]","4:P4[→]","5:P5[→]","6:P6[→]"]
+
+   ce que l’écran ANNONCE avant le geste : Lu sans erreur. 30 cases lues, sans doublon. 8 horaires. Périodes : 2 gardent leurs dates (P1, P2) · PFIN arrive · ⚠ P5, P6 seraient RETIRÉES — si tu les as ajoutées ou renommées à la main, elles disparaîtront.
+
+capture 3a-4-annonce-avant-reinjection
+
+   après RÉINJECTION de la grille (les dates ne doivent pas être perdues) : ["1:P1[2026-09-01→2026-11-06]","2:P2[2026-11-15→2027-01-08]","3:P3[→]","4:P4[→]","5:PFIN[→]"]
+
+   période en vigueur : {"septembre":"P1","decembre":"P2"}
+
+⑤ objet vidé : {"liste":0,"periodeA":null,"ecran":true}
+
+capture 3a-3-repli-une-seule-periode
 
 appariement 3 FRANKLIN Aretha → ["3E Charles de Gaulle","3E Charles de Gaulle","3E Charles de Gaulle","3E Charles de Gaulle","3E Charles de Gaulle","3E Charles de Gaulle","3E Charles de Gaulle"]
 

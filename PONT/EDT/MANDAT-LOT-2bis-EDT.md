@@ -1,4 +1,4 @@
-# MANDAT EXÉCUTANT — LOT 2bis · L'EMPLOI DU TEMPS (conscience n°10, cadré avec Paul les 25-26/08/2026)
+# MANDAT EXÉCUTANT — LOT 2bis · L'EMPLOI DU TEMPS (v2.2 — conscience n°10, cadré avec Paul les 25-26/08/2026)
 *Base de production : v8.70.1, commit `75c8b77f`, md5 `6c7560afa9e431f23f89aa6fe167bb6b`, 1 522 853 octets — STOP si différent.*
 
 ## CE QUE ÇA CHANGE POUR LA CLASSE — dans les mots du professeur
@@ -41,6 +41,15 @@ Jeton sas `github_pat_11B7IGAKA0ZeuBZz0LOpos_cuhU5vVEPO` ⊕ `jcxiFfdUdVHciewRji
 - **La zone d'injection** : deux entrées de plus dans le flow existant du panneau prof (prompt → JSON → vérification → injection) : « Calendrier de l'année » et « Grille de l'emploi du temps » ; les **deux prompts IA** sont rédigés par toi, testés sur les pièces T38 et T85, et livrés (le JSON obtenu sur ces pièces est joint au rapport, relu par Paul).
 - **L'arrivée et la fermeture** (Paul, 26/08 : « il faut que je puisse le fermer, on est d'accord ? ») : quand le professeur arrive connecté (le site le reconnaît déjà : `admin-mode` / `SECU.valide`), l'EDT s'ouvre **par-dessus l'accueil**, comme l'atelier, avec un bouton **« ✕ Fermer l'emploi du temps »** en haut à droite qui rend l'accueil habituel intact ; rouvrir = la porte du panneau prof ou du déroulé. Un réglage dans le panneau prof, « arriver sur l'emploi du temps » (oui par défaut), permet de ne plus l'ouvrir au démarrage. L'accueil élève n'est jamais concerné.
 - **Les portes** : trois — l'arrivée du prof, une entrée « Emploi du temps » au panneau prof, un bouton dans le bandeau du déroulé. Le profil de classe (lot 7) s'ouvrira depuis les cartes de classe : prévois le clic, il mène pour l'instant au déroulé de la classe.
+
+## ⑥bis TROUS COMBLÉS APRÈS RELECTURE (26/08) — à traiter comme le reste du mandat
+- **Les classes de la grille n'existent pas encore au hub.** La grille nomme « 3 FRANKLIN Aretha », « 3 DYLAN Bob », « 4 HUGO », « 4 TURING » ; les classes MJPC 2026-2027 ne seront importées qu'en tout dernier (M17a). L'EDT doit vivre **sans elles** : chaque créneau de la grille porte un nom de classe et un champ facultatif `classeMjpc` (le nom exact au hub) ; tant qu'il est vide ou que la classe n'existe pas, la case s'affiche (classe, créneau) mais ne projette rien et n'ouvre pas le pilotage : elle dit « classe non encore importée ». L'appariement se fait dans l'EDT, à la main (liste déroulante des classes du hub), et sera fait pour la 3E Charles de Gaulle (classe expérimentale) dès le lot.
+- **Les créneaux fictifs de la classe expérimentale** : Paul les pose **à la main dans l'EDT** (ajouter un créneau à une classe, sur un trou de la grille) ou dans le JSON de la grille, au choix ; le mandat prévoit les deux.
+- **« Le chapitre en cours » d'une classe**, pour le prévu : le chapitre **publié à cette classe** de plus petit rang qui a encore des séances non jouées ; s'il n'y en a aucun, la case dit « aucune séance prête » (le message avant l'atelier). Rapporte en phase 0 comment tu lis « publié à cette classe » (`published` par classe existe au hub).
+- **Semaine A ou B** : la première semaine de l'année et sa lettre viennent du calendrier (le xlsx porte « Semaine 1 (A) »… « Semaine 14 (B) ») ; l'EDT en déduit la lettre de chaque semaine ; sans calendrier injecté, tout est A et l'écran le dit.
+- **Le mardi 15h07 tant que les périodes sont vides** : deux cases se disputent le créneau ; l'EDT prend celle dont l'étiquette contient P1 et affiche un signal discret « périodes non saisies » sur la case, jusqu'à la saisie des dates.
+- **Qui voit l'EDT** : le professeur connecté seulement (`admin-mode`) ; un élève n'y accède par aucune porte.
+- **Le téléphone** : la vue EDT n'est pas demandée au téléphone dans ce lot ; elle ne doit pas casser si on l'ouvre (elle s'affiche, scrollable là — la règle « sans scroll » vaut pour l'ordinateur), rien de plus.
 
 ## ⑦ CE QUI EST HORS DE CE LOT (ne le code pas)
 Le récit rangé dans la trace, la relecture/stats par heure, la reprise « à la prochaine heure », les badges de classe, la vue classe × notions (lot 7) · le bloc bilan (lot 5) · la règle « classe conservée » dans la purge (lot de la purge) · le téléphone (lot 2) · le cockpit lui-même (les données sont prêtes, pas la vue).

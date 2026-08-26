@@ -72,7 +72,10 @@ def bloc(src):
 
 
 def appels(txt):
-    return set(re.findall(r'\b([A-Za-z_][A-Za-z0-9_]*)\s*\(', txt))
+    # `(?<![.\w$])` : un appel précédé d'un point est une MÉTHODE (`classList.add(`),
+    # jamais une fonction globale du site. Sans ce garde-fou, la garde confond
+    # `.add(` avec une éventuelle `function add(` déclarée ailleurs.
+    return set(re.findall(r'(?<![.\w$])([A-Za-z_][A-Za-z0-9_]*)\s*\(', txt))
 
 
 def fonctions_du_site(txt):

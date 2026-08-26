@@ -572,3 +572,17 @@ Chacune a son format de `src` : la frise attend « année : événement » · l'
 **Ce n'est pas une faute d'exécution, c'est un trou du prompt.** Mot de Paul : « la question c'est que le prompt permette à l'instance de créer sans avoir besoin d'avoir deroule.html sous les yeux ». Les cinq formes, les outils de marquage, l'adresse relative des médias, la distinction fiche/item/écran devraient être dans le prompt.
 
 **Second trou, du même ordre** : le chapitre a été bâti sans le calendrier ni la grille — qui étaient dans le dépôt du chantier. Conséquences : aucun décompte de créneaux, le fil langue du mercredi ignoré alors que la séance 3 lui revenait entièrement, et un découpage en « heures consécutives » qui ne correspond à aucun des deux emplois du temps. Détail dans `AMENDEMENT-trous-du-prompt.md`, partie B.
+
+---
+
+# CHAPITRE SUIVANT — « Paroles de poilus » (EPI Verdun)
+
+Ouvert le 26/08. Le cadrage complet est dans `CADRAGE-chapitre-poilus.md` ; ce qui suit n'en retient que ce qui fait règle pour le chantier.
+
+**Le décompte a été fait AVANT tout découpage** — c'est la leçon du chapitre 1. Du 2 septembre au 13 octobre : 20 séances de chapitre pour Franklin, 17 pour Dylan, 2 séances de langue chacune. **Le chapitre tiendra dans 17 séances**, les trois de Franklin en plus étant de la respiration.
+
+**Un chiffre faux a été corrigé en cours de route** : j'avais annoncé « 20 contre 13 », en partant du 1er septembre au lieu du 2 (rentrée des 3e) et sans isoler les jours amputés par un événement. Paul a demandé : « tu es sûr de tes affirmations sur le compte des séances ? » — le recompte a donné 20 contre 17. **Un décompte s'annonce vérifié, jamais estimé.**
+
+**Le voyage impose trois temps** : dix-sept séances avant, dont seulement deux la semaine du départ ; le voyage lui-même, avec le carnet d'Angélique ; et **aucune séance entre le retour et les vacances** — la reprise est le 2 novembre.
+
+**Cinq dettes vivantes** attendent Paul : disciplines de l'EPI au-delà de l'histoire-géo et du français · production commune · disponibilité du recueil de Guéno (droits) · ce que le chapitre attend des deux séances de langue · le chapitre couvre-t-il les trois temps.

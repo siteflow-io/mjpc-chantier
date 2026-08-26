@@ -1,0 +1,167 @@
+{
+ "produit": "fiche_notion",
+ "titre": "Fiche de révision : réviser l'interro de cours",
+ "cases": {
+  "titre": true,
+  "sous_titre": true,
+  "annee_scolaire": true,
+  "date_edition": true,
+  "version_document": true,
+  "objectif": true,
+  "competences": true,
+  "notions": true,
+  "domaine_socle": true,
+  "mention_conserver": true,
+  "travail_a_faire": true,
+  "criteres_je": true,
+  "renvoi_app": true,
+  "methode": true,
+  "tableau": true,
+  "a_retenir": true,
+  "colonnes_comp": true,
+  "attention_piege": true,
+  "definition": true
+ },
+ "valeurs": {
+  "titre": {
+   "texte": "Fiche de révision : réviser l'interro de cours"
+  },
+  "sous_titre": {
+   "texte": "Mouvements, versification, figures et registre : tout ce qu'il faut savoir de mémoire"
+  },
+  "objectif": {
+   "texte": "À la fin de ta révision, tu sauras répondre de mémoire aux questions du chapitre : mouvements, versification, figures et registre."
+  },
+  "competences": {
+   "items": [
+    "Mémoriser",
+    "Construire les notions permettant l'analyse et l'élaboration des textes et des discours"
+   ]
+  },
+  "notions": {
+   "items": [
+    "Les mouvements littéraires du XIXe siècle",
+    "Le sonnet et la versification",
+    "L'allitération et l'assonance",
+    "La comparaison, la métaphore, la personnification",
+    "Le registre lyrique",
+    "Le champ lexical"
+   ]
+  },
+  "domaine_socle": {
+   "texte": "Domaine 1 — Les langages pour penser et communiquer"
+  },
+  "criteres_je": {
+   "items": [
+    "je sais nommer les quatre mouvements et situer Baudelaire",
+    "je sais réciter la composition du sonnet",
+    "je sais dire quand le e muet compte",
+    "je sais distinguer césure et enjambement",
+    "je sais distinguer allitération et assonance",
+    "je sais distinguer comparaison, métaphore et personnification",
+    "je sais définir le registre lyrique en une phrase",
+    "je sais reconnaître un champ lexical (question bonus)",
+    "je sais distinguer la forme, le registre et le mouvement d'un poème"
+   ]
+  },
+  "travail_a_faire": {
+   "texte": "🧠 Révise avec cette fiche pour l'interro de cours. Relis les fiches notions, apprends les tableaux, puis cache la fiche et vérifie chaque ligne de la liste « Je sais »."
+  },
+  "renvoi_app": {
+   "texte": "l'interro de cours du chapitre, pour vérifier ses connaissances le jour venu"
+  }
+ },
+ "blocs": [
+  {
+   "id": "methode",
+   "valeurs": {
+    "titre": "📚 Réviser en trois temps",
+    "items": [
+     "Relis les fiches notions : versification, figures de style, registres, mouvements.",
+     "Apprends les tableaux de cette fiche.",
+     "Cache la fiche. Vérifie chaque ligne de la liste « Je sais » en bas de la page."
+    ]
+   }
+  },
+  {
+   "id": "tableau",
+   "valeurs": {
+    "lignes": [
+     "Mouvement | Ce qu'il faut retenir",
+     "Le classicisme (XVIIe siècle) | Les règles strictes héritées",
+     "Le romantisme | Les sentiments personnels, la nature sauvage",
+     "Le Parnasse | La forme parfaite, l'art pour l'art",
+     "Le symbolisme | Suggérer par des images et des sonorités",
+     "Baudelaire | Inclassable : il traverse les mouvements"
+    ]
+   }
+  },
+  {
+   "id": "a_retenir",
+   "valeurs": {
+    "texte": "Le sonnet : deux quatrains + deux tercets, généralement en alexandrins (vers de 12 syllabes). Rimes régulières : plates (AABB), croisées (ABAB), embrassées (ABBA)."
+   }
+  },
+  {
+   "id": "a_retenir",
+   "valeurs": {
+    "texte": "Le e muet : en fin de vers, il ne compte jamais. En milieu de vers, il compte devant une consonne, et aussi devant -s et -nt. Il ne compte pas devant une voyelle ou un h muet. Exemples : na-vi-re-glis-sant ; gouf-fres-a-mers."
+   }
+  },
+  {
+   "id": "colonnes_comp",
+   "valeurs": {
+    "titre_g": "La césure",
+    "texte_g": "La pause au milieu de l'alexandrin, après la 6e syllabe. Elle coupe le vers en deux moitiés égales.",
+    "titre_d": "L'enjambement",
+    "texte_d": "La phrase commencée dans un vers continue dans le vers suivant."
+   }
+  },
+  {
+   "id": "colonnes_comp",
+   "valeurs": {
+    "titre_g": "L'allitération",
+    "texte_g": "Un son de consonne répété. « Souvent, pour s'amuser » : le son [s] revient.",
+    "titre_d": "L'assonance",
+    "texte_d": "Un son de voyelle répété. « Prennent des albatros, vastes oiseaux » : le son [a] revient."
+   }
+  },
+  {
+   "id": "attention_piege",
+   "valeurs": {
+    "texte": "Une sonorité s'entend, elle ne se voit pas : on repère un son, pas une lettre. Lis le vers à voix haute pour vérifier."
+   }
+  },
+  {
+   "id": "tableau",
+   "valeurs": {
+    "lignes": [
+     "Figure | Comment la reconnaître | Exemple",
+     "La comparaison | Avec un outil (comme, tel que, pareil à) | La mer brille comme un miroir.",
+     "La métaphore | Sans outil de comparaison | La mer, ce grand miroir, brille de mille feux.",
+     "La personnification | Une chose agit ou ressent comme un humain | « Ô lutteurs éternels, ô frères implacables ! » : la mer devient un lutteur, un frère."
+    ]
+   }
+  },
+  {
+   "id": "definition",
+   "valeurs": {
+    "terme": "Registre lyrique",
+    "texte": "Qui exprime des sentiments personnels au moyen de rythmes et d'images propres à communiquer au lecteur l'émotion de l'auteur. Ce mot vient de lyre et désignait autrefois une poésie chantée."
+   }
+  },
+  {
+   "id": "definition",
+   "valeurs": {
+    "terme": "Champ lexical (question bonus)",
+    "texte": "Un ensemble de mots qui renvoient à une même idée. Dans « L'Albatros » : maladroits, honteux, gauche, comique, laid… — le champ lexical de la moquerie."
+   }
+  },
+  {
+   "id": "a_retenir",
+   "valeurs": {
+    "texte": "Trois questions à ne pas confondre. Quelle FORME ? Elle se compte : strophes, vers, syllabes, rimes → sonnet, quatrain, poème en prose. Quel REGISTRE ? Il se ressent : quel effet le texte produit sur le lecteur → lyrique, tragique, comique… Quel MOUVEMENT ? Il se date, et se justifie par ce que le poème montre → romantisme, Parnasse, symbolisme. Une forme peut être plus vieille que le poème : le sonnet a trois siècles quand Baudelaire l'écrit. La forme ne dit pas le mouvement."
+   }
+  }
+ ]
+}

@@ -556,3 +556,17 @@ Avec la dette 29 (bloc « diapo simple »), ce sont deux manques du même ordre.
 - Les **items** vivent dans la Structure, les **écrans** dans le Déroulé. Un contenu posé sur le mauvais item s'affiche sous le titre de cet item — c'est ce qui est arrivé à la frise, attachée à « Fiche notion : les mouvements ».
 
 **Reste ouvert sur ce chapitre** (non traité, chantier suspendu) : renuméroter les items de la séance 1 (la fiche méthode et la frise portent toutes deux l'ordre 2) ; déplacer l'adresse de la frise sur le bon item côté site ; enrichir le `pourquoi` de la liaison de la frise.
+
+## ⚠ AMENDEMENT DU 26/08 — la dette 29 est à réexaminer
+
+Après dépôt au sas, lecture de `DEROULE/deroule97.html` — le moteur du déroulé, qui était dans le dépôt du chantier et que je n'avais pas demandé.
+
+**Le bloc `schema` accepte CINQ formes**, déclarées en une ligne du moteur :
+`carte` (carte mentale) · `frise` · `arbre` · `cycle` · `tableau`.
+Chacune a son format de `src` : la frise attend « année : événement » · l'arbre se structure par l'**indentation** (deux espaces = un niveau) · le tableau sépare ses colonnes par `|` · la carte attend « Étiquette : a, b, c » · le cycle une ligne par étape.
+
+**Conséquence** : les onze écrans convertis de `schema` en `consigne` l'ont été sur un rapport faux. Neuf d'entre eux devraient redevenir des schémas — trois frises (Baudelaire, les inventions, les repères de « L'Étranger »), un cycle (les quatre étapes du paragraphe), cinq cartes. Le détail écran par écran est dans `AMENDEMENT-formes-schema.md`.
+
+**Ce qui reste vrai** : la dette 30 (aucun bloc n'affiche une page HTML) est confirmée sur les versions 86 et 97. Et il n'existe pas de bloc « texte suivi » — c'est le vrai périmètre, étroit, de la dette 29.
+
+**La règle qui manquait** : quand un fichier manque pour trancher, on ne conclut pas — on demande le fichier. Il était disponible depuis le début.

@@ -642,3 +642,19 @@ Il porte le **plan de séquence en sept séances**, défini pour l'élève : cou
 **Une leçon de méthode** : cinq recherches successives n'ont pas rendu le catalogue Librio (le site de l'éditeur bloque les requêtes automatisées) ; ce sont les pages « série » indexées par le moteur qui ont donné les prix, puis les fiches de libraires indépendants. **Un prix ne s'annonce jamais de mémoire** — chacun des six est sourcé.
 
 **Piège relevé** : une édition ancienne trouvée moins chère en ligne (ISBN 2266118285 à 4,24 € contre 9782266283021) est une occasion ou un fond de stock. Pour 27 exemplaires neufs, seule compte la référence en cours ; et la pagination doit être la même pour toute la classe.
+
+## LA PROGRESSION ANNUELLE — arrêtée le 26/08
+
+Sept chapitres, **3 OI · 3 LC · 4 GT**, les quatre entrées couvertes plus le complémentaire. Détail dans `PROGRESSION-ANNUELLE-3e.md`.
+
+**Deux chapitres neufs sont nés de cette séance :**
+- **le chapitre 5, « Le pamphlet avance-t-il désormais masqué ? »** — Courier (le *Pamphlet des pamphlets* est un pamphlet sur le pamphlet), Zola, deux tribunes contemporaines **opposées** pour montrer que le procédé est transversal, et un fil de réseau **reconstitué par Paul**. Tâche finale : un débat, sur l'application de pilotage de débat.
+- **le chapitre 6, « L'emprise et le pouvoir »** — groupement sur la prise de possession des esprits, avec *Le Joueur d'échecs* en cursive.
+
+**Quatre corrections de Paul, à consigner comme règles :**
+1. **« OI + GT » dans un même chapitre est une invention** : c'est l'un ou l'autre, en alternance sur l'année.
+2. **Pas de poésie en lecture cursive** : un recueil ne se lit pas seul de bout en bout.
+3. **Pas deux chapitres de poésie** : « les élèves vont vomir ».
+4. **Ne pas confondre les applications** : l'Applaudimètre sert au vote sur une prestation ; un débat relève du **pilotage de débat**. Et surtout — mot de Paul : « tu n'es plus aligné sur le prompt » — la tâche finale se **propose**, elle ne se décrète pas.
+
+**Une dérive de numérotation** : l'instance a écrit « OI 4 » et « OI 5 » alors que le panier ne compte que trois œuvres intégrales. Paul : « relis ton message, tu dérives complètement. OI 3 ??? » **Depuis, tout tableau est vérifié par calcul avant d'être écrit** — comptage des OI, LC, GT et couverture des sept chapitres.

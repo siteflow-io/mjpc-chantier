@@ -140,12 +140,58 @@ La zone d'injection, patron à réutiliser tel quel : `atIARendre` L7317 (l'écr
 
 ---
 
-## ⑤ ÉTAT DE LA LIVRAISON
+## ⑤ LIVRAISON ①b — LES DEUX PROMPTS ET LEURS JSON
 
-**Fait (①a)** : contrôle d'entrée · la porte du pilotage, sa chaîne exacte, ses deux voies · les schémas réels des cinq données lues, avec exemples pris au hub · la publication par classe (réponse au §⑥bis) · le calcul du prévu en dix lignes et son cas chiffré · six inconnues déclarées.
-**Ce qui vient (①b)** : le prompt IA « Calendrier de l'année » et le prompt IA « Grille de l'emploi du temps », rédigés, passés sur les pièces T38 (xlsx) et T85 (image), et les deux JSON obtenus, déposés en `PONT/EDT/json/` pour relecture par Paul.
-**Ensuite (②)** : les objets du hub, la zone d'injection, la modification à la main.
+Arbitrage reçu et intégré : **voie A** pour la porte (les cinq identifiants d'éléments entrent au contrat comme dépendance nommée, avec message « pilotage indisponible, ouvrir l'atelier » et jamais de crash ; `isPubFor` entre au contrat) · **arrondi au supérieur** · **mercredi après-midi : pas cours du tout** · une heure « sans séance » **décale** une séance à moitié jouée, ne la clôt jamais · **fil langue** amendé au mandat.
 
-**Aucune dette ouverte à ce stade** : les six points du §④ sont des questions posées, pas des trous laissés ; aucun n'appelle de code avant réponse.
+Livrés : `prompts/calendrier.md`, `prompts/grille.md`, `json/calendrier-2026-2027.json`, `json/grille-2026-2027.json`.
+*Les deux JSON ont été produits en appliquant les prompts aux pièces, par lecture systématique du fichier (calendrier) et de l'image (grille), et non à la main : ce qui suit est mesuré, pas estimé.*
+
+### a. La semaine A / B — réponse à l'inconnue n°5, et un piège
+Le calendrier porte **52 marqueurs** « Semaine NN (A|B) ». Ils sont tous posés sur un **dimanche**.
+**Mesuré, 52 fois sur 52 : le numéro du marqueur est celui de la semaine ISO du LUNDI SUIVANT, jamais celui du dimanche qui le porte.** Un marqueur annonce donc la semaine à venir.
+L'alternance A/B est régulière : **zéro rupture** sur les 52.
+**Le piège :** le numéro repart à 1 au 1er janvier, et 2026 compte 53 semaines ISO. La suite réelle est … 52 (A), 53 (B), 1 (A), 2 (B) … : la parité du numéro s'inverse au passage de l'année. **L'EDT ne doit jamais déduire la lettre d'une parité — il lit la table.** Le prompt le dit à l'IA, le JSON porte les 52 lignes.
+➜ **La semaine du lundi 7 septembre 2026 est la semaine 37, lettre B.** Le premier lundi de l'année scolaire (31 août, semaine 36) est en A.
+
+### b. Le calendrier converti — chiffres
+365 jours lus, du 01/08/2026 au 31/07/2027. **Contrôle : zéro discordance** entre l'initiale du jour écrite dans le fichier et le jour réel de la date — le fichier est cohérent, et la lecture aussi.
+Rangés : **52** semaines · **5** vacances · **11** fériés · **30** jalons · **58** événements d'établissement · **23** événements de classe.
+Jalons de semestre trouvés : **arrêt des notes du 1er semestre le jeudi 7 janvier 2027 au soir**, conseils du 1er semestre du 11 au 19 janvier — c'est la vraie fin du 1er semestre, pas une approximation « mi-janvier ». DNB blancs : 12-14 mai 2027. Oraux DNB : 2 juin 2027. DNB : **25, 28 et 29 juin 2027**.
+**Limites, à relire par Paul (elles sont dans le fichier, marquées) :** les **cinq dates de fin de vacances sont déduites**, pas écrites (`finAConfirmer: true`) — le fichier ne marque que le premier jour · le séjour St Malo produit trois entrées au lieu d'une (le libellé change chaque jour) · une réunion de parents du 7 janvier est rangée en événement de classe alors que c'est une soirée. Trois corrections à la main, l'injection les permet.
+
+### c. La grille convertie — chiffres et contrôles
+**30 entrées.** Contrôles passés : **zéro créneau hors des huit** du site · **zéro collision** (un `jour` + `creneau` + `semaine` n'apparaît jamais deux fois) · **zéro case `AB` coexistant avec une case `A` ou `B`** · **zéro créneau le mercredi après 11:59**.
+Volume hebdomadaire MJPC, hors groupes partagés :
+
+| Classe | semaine A | semaine B | moyenne | fil langue |
+|---|---|---|---|---|
+| 3 FRANKLIN Aretha | 4 h | 5 h | 4,5 h | mer 10:07, semaine A |
+| 3 DYLAN Bob | 5 h | 3 h | 4,0 h | mer 11:04, semaine A |
+| 4 HUGO | 3 h | 5 h | 4,0 h | mer 08:00, chaque semaine |
+| 4 TURING | 4 h | 4 h | 4,0 h | mer 08:57, chaque semaine |
+
+*Lecture : pour 3 FRANKLIN Aretha les deux colonnes comptent chacune l'une des deux versions du mardi 15:07 (P3/P4/PFIN en A, P1/P2 en B) — en P1 la semaine A fait donc 3 h, pas 4. Avec les groupes « X Français », 4 HUGO et 4 TURING remontent à 4,5 h.*
+Hors MJPC, présents et muets : 4 groupes « X Français X. » (4 HUGO lun 10:07 A · 4 TURING lun 10:07 B · 4 BANKSY mar 11:04 B · 4 PYTHAGORE mer 11:04 B) et la **concertation** du jeudi 16:04 en A.
+Le fil langue est en place sur les quatre créneaux du mercredi. **Le mercredi 10:07 de 3 FRANKLIN Aretha est scindé en deux entrées** — semaine A avec `fil:"langue"`, semaine B sans fil, qui porte le chapitre principal — exactement comme demandé.
+
+### d. Les trous réels, pour les créneaux fictifs de la classe expérimentale
+Mesurés sur la grille, sans collision possible avec une vraie classe : lundi 08:00 · 11:04 (A) · 13:00 · 13:57 — mardi 08:00 · 08:57 (A) · 11:04 (A) · 13:57 (B) · 16:04 (A) — jeudi 08:00 · 08:57 · 10:07 · 11:04 (A) · 13:00 · 13:57 — vendredi 13:00 · 13:57 · 15:07 · 16:04. **Jamais le mercredi après 11:59.** La liste est dans le JSON de la grille ; Paul choisit, l'EDT refuse le doublon.
+
+### e. Une divergence à trancher — le DNB
+Le hub dit `/site/config/brevetDates` → 3e : **2027-06-26T08:00**. Le calendrier de l'établissement dit DNB les **25, 28 et 29 juin 2027**. Les deux ne peuvent pas être vrais ensemble. L'EDT lira l'un des deux : je propose le calendrier de l'établissement (c'est lui qui fait foi pour les jalons) et je laisse `brevetDates` intact. **Décision de Paul.**
+
+### f. Le cas du §③, rejoué avec la vraie lettre de semaine
+La semaine du 7 septembre est en **B**. Conséquence sur la 3E Charles de Gaulle : rien ne change au tableau du §③ (ses créneaux sont fictifs et à poser), mais pour les vraies classes, le mercredi 10:07 de 3 FRANKLIN Aretha cette semaine-là porte **le chapitre principal**, pas l'heure de langue. Le premier mercredi de langue des deux 3e est donc le **16 septembre** (semaine 38, A).
+
+---
+
+## ⑥ ÉTAT DE LA LIVRAISON
+
+**Fait (①a)** : contrôle d'entrée · la porte du pilotage, sa chaîne exacte, ses deux voies · les schémas réels des cinq données lues, avec exemples pris au hub · la publication par classe · le calcul du prévu en dix lignes et son cas chiffré · six inconnues déclarées.
+**Fait (①b)** : les deux prompts, les deux JSON, la règle A/B mesurée, les contrôles de la grille, les trous pour la classe expérimentale.
+**Ce qui vient (②)** : les objets du hub sous `/site/edt/`, les deux entrées dans la zone d'injection du panneau prof, la modification à la main après injection.
+
+**Aucune dette ouverte.** Restent deux décisions de Paul, portées ci-dessus, qui n'empêchent aucune ligne de code : les trois corrections à la main du calendrier (§⑤b) et la date du DNB (§⑤e).
 
 *Mot à attendre : **continuer**.*

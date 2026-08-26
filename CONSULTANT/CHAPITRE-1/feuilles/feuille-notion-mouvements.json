@@ -1,0 +1,118 @@
+{
+ "produit": "fiche_notion",
+ "titre": "Fiche notion : Les mouvements du XIXe siècle",
+ "cases": {
+  "titre": true,
+  "sous_titre": true,
+  "annee_scolaire": true,
+  "date_edition": true,
+  "version_document": true,
+  "objectif": true,
+  "competences": true,
+  "notions": true,
+  "domaine_socle": true,
+  "mention_conserver": true,
+  "travail_a_faire": true,
+  "criteres_je": true,
+  "definition": true,
+  "tableau": true,
+  "texte_libre": true,
+  "attention_piege": true,
+  "a_retenir": true
+ },
+ "valeurs": {
+  "titre": {
+   "texte": "Fiche notion : Les mouvements du XIXe siècle"
+  },
+  "sous_titre": {
+   "texte": "Quatre manières de voir l'art, et un poète inclassable. À retrouver toute l'année au rayon Fiches notions."
+  },
+  "objectif": {
+   "texte": "À la fin de cette leçon, tu sauras nommer les quatre mouvements du chapitre et situer Baudelaire parmi eux."
+  },
+  "competences": {
+   "items": [
+    "Mobiliser des références culturelles pour interpréter les textes et les créations artistiques et littéraires et pour enrichir son expression personnelle"
+   ]
+  },
+  "notions": {
+   "items": [
+    "Les mouvements littéraires du XIXe siècle"
+   ]
+  },
+  "domaine_socle": {
+   "texte": "Domaine 5 — Les représentations du monde et l'activité humaine"
+  },
+  "criteres_je": {
+   "items": [
+    "je sais nommer les quatre mouvements",
+    "je sais dire une phrase sur chacun",
+    "je sais situer Baudelaire"
+   ]
+  },
+  "travail_a_faire": {
+   "texte": "🧠 Cache la fiche et récite les quatre mouvements avec leur phrase. Puis vérifie."
+  }
+ },
+ "blocs": [
+  {
+   "id": "definition",
+   "valeurs": {
+    "terme": "Mouvement",
+    "texte": "Un mouvement, c'est une manière partagée de voir l'art à une époque donnée. Un mouvement a des précurseurs et des héritiers : ce n'est pas une date, c'est une manière de voir."
+   }
+  },
+  {
+   "id": "tableau",
+   "valeurs": {
+    "lignes": [
+     "Mouvement | Ce qu'il faut retenir",
+     "Le classicisme (XVIIe siècle) | Les règles strictes héritées : forme fixe, alexandrin, rimes régulières",
+     "Le romantisme | Les sentiments personnels, la nature sauvage, l'homme face à l'immense",
+     "Le Parnasse | La forme parfaite, l'art pour l'art",
+     "Le symbolisme | Suggérer par des images et des sonorités"
+    ]
+   }
+  },
+  {
+   "id": "texte_libre",
+   "valeurs": {
+    "texte": "🕰️ Les repères du siècle"
+   }
+  },
+  {
+   "id": "tableau",
+   "valeurs": {
+    "lignes": [
+     "Date | Événement",
+     "1789 | Révolution française",
+     "1820 | Lamartine publie les Méditations poétiques : le romantisme s'impose en poésie",
+     "1821 | naissance de Charles Baudelaire",
+     "1857 | première édition des Fleurs du mal : procès, six poèmes condamnés",
+     "1861 | deuxième édition, augmentée de trente-deux poèmes — dont « L'Albatros »",
+     "1866 | Le Parnasse contemporain : le recueil qui donne son nom au mouvement",
+     "1867 | mort de Baudelaire ; ses Petits Poèmes en prose paraissent en 1869",
+     "1886 | le manifeste du symbolisme paraît dans la presse"
+    ]
+   }
+  },
+  {
+   "id": "texte_libre",
+   "valeurs": {
+    "texte": "Et Baudelaire ? Inclassable. Il hérite du romantisme, fréquente le Parnasse, et ouvre la voie au symbolisme : il traverse les mouvements. C'est pour cela que le chapitre commence par lui."
+   }
+  },
+  {
+   "id": "attention_piege",
+   "valeurs": {
+    "texte": "Un peintre ou un poète peut être romantique avant ou après les dates du mouvement : Turner peint des tempêtes dès 1796, Bierstadt peint encore des montagnes immenses en 1877. Le mot vient après la manière de voir."
+   }
+  },
+  {
+   "id": "a_retenir",
+   "valeurs": {
+    "texte": "Quatre mouvements : classicisme (l'héritage), romantisme (les sentiments et la nature), Parnasse (la forme parfaite), symbolisme (la suggestion). Baudelaire les traverse tous."
+   }
+  }
+ ]
+}

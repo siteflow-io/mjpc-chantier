@@ -1,0 +1,190 @@
+{
+ "produit": "fiche_notion",
+ "titre": "Fiche notion : Les registres littéraires — version aménagée",
+ "cases": {
+  "titre": true,
+  "sous_titre": true,
+  "annee_scolaire": true,
+  "date_edition": true,
+  "version_document": true,
+  "objectif": true,
+  "competences": true,
+  "notions": true,
+  "domaine_socle": true,
+  "mention_conserver": true,
+  "travail_a_faire": true,
+  "criteres_je": true,
+  "texte_libre": true,
+  "definition": true,
+  "methode": true,
+  "exemple": true,
+  "attention_piege": true,
+  "a_retenir": true,
+  "police_adaptee": true,
+  "consignes_reformulees": true,
+  "interligne": true
+ },
+ "valeurs": {
+  "titre": {
+   "texte": "Fiche notion : Les registres littéraires — version aménagée"
+  },
+  "sous_titre": {
+   "texte": "À retrouver toute l'année au rayon Fiches notions Consignes reformulées."
+  },
+  "objectif": {
+   "texte": "À la fin de cette leçon, tu sauras nommer le registre d'un texte et expliquer l'effet qu'il produit sur le lecteur."
+  },
+  "competences": {
+   "items": [
+    "Construire les notions permettant l'analyse et l'élaboration des textes et des discours"
+   ]
+  },
+  "notions": {
+   "items": [
+    "Les registres littéraires",
+    "Le registre lyrique"
+   ]
+  },
+  "domaine_socle": {
+   "texte": "Domaine 1 — Les langages pour penser et communiquer"
+  },
+  "criteres_je": {
+   "items": [
+    "je sais dire quel effet un texte produit sur moi",
+    "je sais nommer le registre d'un texte",
+    "je sais justifier le registre par une citation",
+    "je sais distinguer le registre et le genre"
+   ]
+  },
+  "travail_a_faire": {
+   "texte": "Pour chaque texte lu dans le chapitre, écris dans ton cahier une ligne : le nom du registre, puis une phrase du texte qui le prouve."
+  }
+ },
+ "blocs": [
+  {
+   "id": "texte_libre",
+   "valeurs": {
+    "texte": "Rappel de définition : le registre d'un texte, c'est l'effet qu'il cherche à produire sur le lecteur (rire, peur, émotion, admiration, indignation…) et l'ensemble des moyens qui produisent cet effet. Un même texte peut mêler plusieurs registres : on cherche le registre dominant."
+   }
+  },
+  {
+   "id": "texte_libre",
+   "valeurs": {
+    "texte": "🎭 Les onze registres à connaître"
+   }
+  },
+  {
+   "id": "definition",
+   "valeurs": {
+    "terme": "Comique",
+    "texte": "Qui vise à faire rire. Ce registre ne se rencontre pas seulement dans la comédie. Exemple : un personnage caché sous la table pour écouter une conversation."
+   }
+  },
+  {
+   "id": "definition",
+   "valeurs": {
+    "terme": "Tragique",
+    "texte": "L'émotion y naît de la conviction intime que l'homme affronte des forces qui le dépassent (le destin) et qu'il sera finalement vaincu. Ce registre n'est pas réservé à la tragédie. Exemple : un héros qui sait sa mort écrite et l'affronte quand même."
+   }
+  },
+  {
+   "id": "definition",
+   "valeurs": {
+    "terme": "Lyrique",
+    "texte": "Qui exprime des sentiments personnels au moyen de rythmes et d'images propres à communiquer au lecteur l'émotion de l'auteur. Ce mot vient de lyre et désignait autrefois une poésie chantée. Exemple : un poème où le poète dit sa tristesse devant la mer."
+   }
+  },
+  {
+   "id": "definition",
+   "valeurs": {
+    "terme": "Épique",
+    "texte": "Qui donne aux êtres et aux faits une grandeur hors du commun : combats, foules, exploits. Ce registre peut se rencontrer en dehors de l'épopée. Exemple : une bataille racontée comme un choc de géants."
+   }
+  },
+  {
+   "id": "definition",
+   "valeurs": {
+    "terme": "Pathétique",
+    "texte": "Qui vise à provoquer la pitié et l'attendrissement en portant à l'extrême l'expression de la souffrance. Exemple : un enfant abandonné qui pleure sous la pluie."
+   }
+  },
+  {
+   "id": "definition",
+   "valeurs": {
+    "terme": "Fantastique",
+    "texte": "Registre dans lequel des éléments surnaturels se mêlent à la vie normale et créent le doute, l'angoisse, voire la peur chez le lecteur. Exemple : un portrait dont les yeux semblent bouger — rêve ou réalité ?"
+   }
+  },
+  {
+   "id": "definition",
+   "valeurs": {
+    "terme": "Merveilleux",
+    "texte": "Registre dans lequel les puissances divines et surnaturelles se manifestent mais sont acceptées naturellement par le lecteur, sans angoisse. Exemple : la fée qui transforme la citrouille en carrosse."
+   }
+  },
+  {
+   "id": "definition",
+   "valeurs": {
+    "terme": "Ironique",
+    "texte": "Qui dit le contraire de ce qu'il pense, pour que le lecteur comprenne la critique. Exemple : « Quel courage ! » dit d'un soldat qui s'enfuit."
+   }
+  },
+  {
+   "id": "definition",
+   "valeurs": {
+    "terme": "Satirique",
+    "texte": "Qui se moque d'une personne, d'un groupe ou d'une société pour dénoncer ses défauts. La satire se sert souvent de l'ironie et de l'exagération. Exemple : un riche décrit comme un coq qui se pavane."
+   }
+  },
+  {
+   "id": "definition",
+   "valeurs": {
+    "terme": "Polémique",
+    "texte": "Qui attaque une idée, une personne ou une institution de manière vive, directe, agressive. Exemple : un texte qui accuse les juges d'avoir condamné un innocent."
+   }
+  },
+  {
+   "id": "definition",
+   "valeurs": {
+    "terme": "Didactique",
+    "texte": "Qui cherche à instruire le lecteur, à lui donner une leçon. Exemple : la morale à la fin d'une fable."
+   }
+  },
+  {
+   "id": "methode",
+   "valeurs": {
+    "titre": "🔎 Nommer le registre d'un texte",
+    "items": [
+     "Lis le texte et note l'effet qu'il produit sur toi : je ris, j'ai peur, je suis ému, j'admire, je suis révolté.",
+     "Relève les mots ou les procédés qui produisent cet effet : exagérations, images, vocabulaire des sentiments, rythme.",
+     "Nomme le registre dans la liste.",
+     "Justifie par une citation : « Le registre est … comme le montre … »."
+    ]
+   }
+  },
+  {
+   "id": "exemple",
+   "valeurs": {
+    "texte": "Dans « L'Homme et la mer », Baudelaire parle de l'âme de l'homme avec des images (« La mer est ton miroir ») : le registre est lyrique. Dans la dernière strophe, le combat « sans pitié ni remords » donne à l'homme et à la mer une grandeur de « lutteurs éternels » : on entend aussi le registre épique."
+   }
+  },
+  {
+   "id": "attention_piege",
+   "valeurs": {
+    "texte": "Ne confonds pas le registre et le genre. Le genre, c'est la forme du texte : roman, poème, pièce de théâtre, fable. Le registre, c'est l'effet sur le lecteur. Un roman peut être tragique ; un poème peut être comique ; une pièce de théâtre peut être pathétique."
+   }
+  },
+  {
+   "id": "a_retenir",
+   "valeurs": {
+    "texte": "Registre = effet produit sur le lecteur. Pour le nommer, trois gestes : quel effet sur moi ? quels mots le produisent ? quel nom ?"
+   }
+  },
+  {
+   "id": "texte_libre",
+   "valeurs": {
+    "texte": "Pour aller plus loin — des mots voisins, qui désignent plutôt un genre, un style ou une manière d'écrire : burlesque (un sujet noble raconté en style familier) ; héroï-comique (l'inverse : un sujet banal raconté en style noble) ; parodique (qui imite une œuvre connue pour s'en moquer) ; humoristique (qui fait sourire sans méchanceté) ; réaliste (qui veut montrer la réalité telle qu'elle est) ; romanesque (sentiments, rêverie, aventures extraordinaires) ; picaresque (un héros pauvre va d'aventure en aventure) ; oratoire (propre aux discours) ; épidictique (discours qui loue ou blâme) ; science-fiction (genre : une histoire fondée sur une science imaginaire, souvent dans le futur)."
+   }
+  }
+ ]
+}

@@ -1,0 +1,70 @@
+{
+ "produit": "fiche_methode",
+ "titre": "Fiche méthode : l'analyse logique en 4 étapes",
+ "cases": {
+  "titre": true,
+  "sous_titre": true,
+  "annee_scolaire": true,
+  "date_edition": true,
+  "version_document": true,
+  "objectif": true,
+  "competences": true,
+  "notions": true,
+  "domaine_socle": true,
+  "mention_conserver": true,
+  "travail_a_faire": true,
+  "criteres_je": true,
+  "texte_libre": true,
+  "explicitation_but": true,
+  "orientation_paysage": true,
+  "schema_html": true
+ },
+ "valeurs": {
+  "titre": {
+   "texte": "Fiche méthode : l'analyse logique en 4 étapes"
+  },
+  "sous_titre": {
+   "texte": "Les quatre étapes, à apprendre par cœur."
+  },
+  "objectif": {
+   "texte": "À la fin de cette leçon, tu sauras appliquer les quatre étapes de l'analyse logique sur une phrase."
+  },
+  "competences": {
+   "items": [
+    "Construire les notions permettant l'analyse et l'élaboration des textes et des discours"
+   ]
+  },
+  "notions": {
+   "items": [
+    "Phrase simple et phrase complexe",
+    "La proposition subordonnée relative",
+    "La proposition subordonnée conjonctive"
+   ]
+  },
+  "domaine_socle": {
+   "texte": "Domaine 1 — Les langages pour penser et communiquer"
+  },
+  "criteres_je": {
+   "items": [
+    "je sais réciter les quatre étapes dans l'ordre",
+    "je sais souligner tous les verbes conjugués",
+    "je sais poser les crochets et nommer chaque proposition",
+    "je sais relier le mot subordonnant à son antécédent"
+   ]
+  },
+  "travail_a_faire": {
+   "texte": "Apprends les quatre étapes par cœur, puis analyse une phrase de ton choix dans un texte du chapitre."
+  },
+  "explicitation_but": {
+   "texte": "Les quatre étapes s'apprennent par cœur et s'appliquent toujours dans cet ordre. Une cinquième étape s'ajoutera plus tard dans l'année : dire quelle fonction le pronom relatif occupe dans sa proposition, et quelle fonction la subordonnée occupe dans la phrase."
+  }
+ },
+ "blocs": [
+  {
+   "id": "schema_html",
+   "valeurs": {
+    "html": "<!-- Schéma « La méthode d'analyse logique » — reproduction de la diapositive de Paul.\n     HTML + CSS uniquement : chaque cadre, chaque mot se modifie dans le fichier.\n     Destiné à la composante « schema_html » de l'Atelier (rendu non échappé). -->\n<div class=\"mjpc-schema-al\">\n<style>\n.mjpc-schema-al{position:relative;width:100%;max-width:1000px;aspect-ratio:1734/975;\n  background:#FBEAE0;font-family:Garamond,'EB Garamond',Georgia,serif;color:#1C1C1C;\n  container-type:inline-size;overflow:hidden}\n.mjpc-schema-al *{box-sizing:border-box}\n.mjpc-schema-al .b{position:absolute}                     /* tout est positionné en % */\n.mjpc-schema-al .fleche{left:1%;top:2%;width:95%;height:61%;z-index:0}\n.mjpc-schema-al .fleche svg{width:100%;height:100%;display:block}\n.mjpc-schema-al .etiq{left:1%;top:1.5%;width:20%;height:12%;border-radius:14px;\n  background:linear-gradient(#9CCB5A,#6FA22E);border:1px solid #6FA22E;\n  display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.85cqw}\n.mjpc-schema-al .titre{left:27%;top:1%;width:31%;height:13.5%;background:#B4551A;color:#fff;\n  padding:.6% 1.2%;font-size:2.25cqw;line-height:1.25}\n.mjpc-schema-al .remarque{left:2%;top:16%;width:31%;height:19%;border:3px solid #E8117F;\n  background:#FBEAE0;padding:1.4% 1.6%;font-size:1.72cqw;line-height:1.8}\n.mjpc-schema-al .note{left:34.5%;top:18.5%;width:12.5%;height:21%;border:2px solid #29ABE2;\n  background:#FBEAE0;padding:1.2% .6%;font-size:1.3cqw;color:#29ABE2;text-align:center;line-height:1.45}\n.mjpc-schema-al .e1{left:1%;top:44%;width:22%;height:36%;border:2px solid #000;\n  background:#FBEAE0;padding:1.4%;font-size:1.72cqw;line-height:1.8}\n.mjpc-schema-al .e2{left:26.5%;top:40%;width:25%;height:54%;border:3px solid #29ABE2;\n  border-radius:50%;background:#FBEAE0;padding:7% 3%;font-size:1.5cqw;color:#29ABE2;\n  text-align:center;line-height:1.45}\n.mjpc-schema-al .e3{left:55.5%;top:22%;width:21%;height:40%;border:2px solid #000;\n  background:#FBEAE0;padding:1.2%;font-size:1.72cqw;line-height:1.55}\n.mjpc-schema-al .e4{left:77%;top:12%;width:22%;height:48%;border:2px solid #17A35B;\n  background:#FBEAE0;padding:1.2%;font-size:1.72cqw;color:#17A35B;line-height:1.5}\n.mjpc-schema-al .pastille{border-radius:50%}\n.mjpc-schema-al .ex{left:40%;font-size:1.5cqw;white-space:nowrap}\n.mjpc-schema-al .lien{position:relative;display:inline-block}\n.mjpc-schema-al .lien svg{position:absolute;left:-5.2em;bottom:.5em;width:6.0em;height:1.5em;overflow:visible}\n.mjpc-schema-al .jaune{background:#FFFF00}\n.mjpc-schema-al .sou{text-decoration:underline}\n.mjpc-schema-al .rouge{color:#E8112D}.mjpc-schema-al .vert{color:#17A35B}\n.mjpc-schema-al .bleu{color:#29ABE2}.mjpc-schema-al .rose{color:#E8117F}\n.mjpc-schema-al .brun{color:#8B4513}\n.mjpc-schema-al .cadrevert{border:1.5px solid #17A35B;padding:0 .2em}\n.mjpc-schema-al .rondbleu{border:1.5px solid #29ABE2;border-radius:50%;padding:.05em .4em;display:inline-block}\n@media print{.mjpc-schema-al{background:#fff;break-inside:avoid}\n  .mjpc-schema-al .remarque,.mjpc-schema-al .note,.mjpc-schema-al .e1,\n  .mjpc-schema-al .e2,.mjpc-schema-al .e3,.mjpc-schema-al .e4{background:#fff}}\n</style>\n\n<div class=\"b fleche\"><svg viewBox=\"0 0 1000 500\" preserveAspectRatio=\"none\" aria-hidden=\"true\">\n  <path fill=\"#D6E0F0\" d=\"M0,410 C230,340 470,230 700,138 L700,52 L1000,205 L700,358 L700,272 C470,352 230,442 0,500 Z\"/>\n</svg></div>\n\n<div class=\"b etiq\">Fiche -grammaire</div>\n<div class=\"b titre\">La méthode d’analyse logique<br>(à apprendre par cœur)</div>\n\n<div class=\"b remarque\"><b>Remarque:</b> Il y a autant de <span class=\"jaune\">propositions</span>\nque de <span class=\"jaune\">verbes</span> <span class=\"jaune sou\">conjugués.</span></div>\n\n<div class=\"b note\">+ Signes de ponctuation si juxtaposition<br>+ CDC si coordination</div>\n\n<div class=\"b e1\">Etape 1: Je <span class=\"sou\">souligne</span> en noir les verbes conjugués<b>.</b>\n<div class=\"b pastille\" style=\"left:42%;top:44%;width:4.5%;aspect-ratio:1;background:#000\"></div>\n<div style=\"margin-top:1.2em\"><b>Je me fais la</b> <b class=\"rose\">Remarque</b>.</div></div>\n\n<div class=\"b e2\">Etape 2: j’entoure en bleu les mots subordonnants (pronoms relatifs\nsi <span class=\"rouge\">PSR</span>, conjonctions de subordination si <span class=\"rouge\">PSCc ou PSCci</span>)</div>\n<div class=\"b pastille\" style=\"left:36.8%;top:37.5%;width:3.2%;aspect-ratio:1;background:#29ABE2\"></div>\n\n<div class=\"b pastille\" style=\"left:56.5%;top:15.5%;width:4.6%;aspect-ratio:1;background:#E8112D\"></div>\n<div class=\"b pastille\" style=\"left:62.5%;top:15.5%;width:4.6%;aspect-ratio:1;background:#17A35B\"></div>\n<div class=\"b pastille\" style=\"left:68.5%;top:15.5%;width:4.6%;aspect-ratio:1;background:#000\"></div>\n\n<div class=\"b e3\"><span class=\"brun\">Etape 3: Je mets entre crochets:</span><br>\n<span class=\"rouge\">–&nbsp; [ Rouges <b>→</b> les P.S]</span><br>\n<span class=\"vert\">–&nbsp; [Verts <b>→</b> la P.P]</span><br>\n–&nbsp; [Noirs <b>→</b> les P.I,<br>\n<span style=\"font-size:.82em\">&nbsp;&nbsp;&nbsp;&nbsp;coordonnées,<br>&nbsp;&nbsp;&nbsp;&nbsp;juxtaposées ou seules ]</span></div>\n\n<div class=\"b e4\">Etape 4:<br><br>J’encadre en vert les\nantécédents(<span class=\"rouge\">PS</span><span style=\"color:#1F4E9C\">R</span>)\nou les verbes complétés (<span class=\"rouge\">PS</span><span style=\"color:#1F4E9C\">Cc</span>)\net j’indique par <span class=\"bleu\">une flèche</span> leur relation\navec <span class=\"bleu\">le mot subordonnant qui introduit</span> la <span class=\"rouge\">P.S.</span></div>\n<div class=\"b pastille\" style=\"left:91%;top:9%;width:5.5%;aspect-ratio:1;background:#17A35B\"></div>\n\n<div class=\"b ex\" style=\"top:80%\">Exemple 1: <span class=\"vert\">[</span> Le\n<span class=\"cadrevert\">chat</span> <span class=\"vert\">]</span>,<span class=\"rouge\">[</span><span\nclass=\"rondbleu\">qui</span><span class=\"lien\"><svg viewBox=\"0 0 100 34\" fill=\"none\"><path d=\"M96 28 C88 -6 34 -8 12 16\" stroke=\"#29ABE2\" stroke-width=\"3.2\" fill=\"none\" stroke-linecap=\"round\"/><polygon points=\"10,19 13.4,5.6 22.6,13.2\" fill=\"#29ABE2\"/></svg></span> <span class=\"sou\">mange</span> la souris <span class=\"rouge\">]</span> ,\n<span class=\"vert\">[</span> <span class=\"sou\">est</span> gros et gris. <span class=\"vert\">]</span></div>\n\n<div class=\"b ex\" style=\"top:89%\">Exemple 2: <span class=\"vert\">[</span> Je\n<span class=\"cadrevert sou\">pense</span> <span class=\"vert\">]</span> <span class=\"rouge\">[</span><span\nclass=\"rondbleu\">que</span><span class=\"lien\"><svg viewBox=\"0 0 100 34\" fill=\"none\"><path d=\"M96 28 C88 -6 34 -8 12 16\" stroke=\"#29ABE2\" stroke-width=\"3.2\" fill=\"none\" stroke-linecap=\"round\"/><polygon points=\"10,19 13.4,5.6 22.6,13.2\" fill=\"#29ABE2\"/></svg></span> <span class=\"sou\">j’ai compris</span> le cours. <span class=\"rouge\">]</span></div>\n\n</div>\n"
+   }
+  }
+ ]
+}

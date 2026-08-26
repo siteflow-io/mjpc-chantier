@@ -1,0 +1,108 @@
+{
+ "produit": "fiche_seance",
+ "titre": "Dictée à trous : « Le port »",
+ "cases": {
+  "titre": true,
+  "sous_titre": true,
+  "annee_scolaire": true,
+  "date_edition": true,
+  "version_document": true,
+  "objectif": true,
+  "competences": true,
+  "notions": true,
+  "domaine_socle": true,
+  "mention_conserver": true,
+  "oeuvre": true,
+  "auteur": true,
+  "genre": true,
+  "lexique_seance": true,
+  "consigne": true,
+  "texte_a_trous": true,
+  "evalue": true,
+  "modalite": true,
+  "materiel": true,
+  "note_sur": true,
+  "bareme": true,
+  "police_adaptee": true
+ },
+ "valeurs": {
+  "titre": {
+   "texte": "Dictée à trous : « Le port »"
+  },
+  "sous_titre": {
+   "texte": "La dictée du chapitre, en version aménagée : seuls les mots à écrire sont laissés en blanc."
+  },
+  "objectif": {
+   "texte": "Écrire sous la dictée les mots et les accords travaillés en préparation."
+  },
+  "competences": {
+   "items": [
+    "Consolider l'orthographe lexicale et grammaticale"
+   ]
+  },
+  "notions": {
+   "items": [
+    "Les accords dans le groupe nominal, y compris avec une proposition relative",
+    "L'accord du verbe avec un sujet inversé ou éloigné",
+    "L'accord du participe passé employé avec être",
+    "ce / se"
+   ]
+  },
+  "domaine_socle": {
+   "texte": "Domaine 1 — Les langages pour penser et communiquer"
+  },
+  "oeuvre": {
+   "texte": "Petits Poèmes en prose (Le Spleen de Paris)"
+  },
+  "auteur": {
+   "texte": "Charles Baudelaire (1821-1867)"
+  },
+  "genre": {
+   "texte": "Poésie — poème en prose"
+  },
+  "lexique_seance": {
+   "items": [
+    "le môle = construction en pierre ou en béton qui protège l'entrée d'un port",
+    "un belvédère = point de vue d'où le panorama est beau",
+    "un prisme = objet de verre qui décompose la lumière en couleurs",
+    "l'ampleur = la grandeur, l'étendue",
+    "aristocratique = digne d'un noble, raffiné"
+   ]
+  },
+  "evalue": {
+   "texte": "Partie dictée de l'épreuve du brevet, notée sur 10."
+  },
+  "modalite": {
+   "texte": "Seul, sous la dictée."
+  },
+  "materiel": {
+   "items": [
+    "un stylo bleu"
+   ]
+  },
+  "note_sur": {
+   "total": "10"
+  },
+  "bareme": {
+   "items": [
+    "Erreur de grammaire (accord, conjugaison, homophone) = 1",
+    "Erreur de lexique (orthographe du mot) = 0,5",
+    "La note ne descend jamais en dessous de zéro = 0"
+   ]
+  }
+ },
+ "blocs": [
+  {
+   "id": "consigne",
+   "valeurs": {
+    "texte": "Écoute la dictée et complète les blancs au stylo bleu. Le reste du texte est déjà écrit : concentre-toi sur les mots à trouver."
+   }
+  },
+  {
+   "id": "texte_a_trous",
+   "valeurs": {
+    "texte": "Un port est un séjour charmant pour une âme fatiguée des luttes de la vie. L'ampleur du ciel, l'architecture mobile des nuages, les [colorations] changeantes de la mer, le [scintillement] des phares, sont un prisme [merveilleusement] propre à amuser les yeux sans jamais les [lasser]. Les formes [élancées] des navires (…) servent à entretenir dans l'âme le goût du [rythme] et la beauté.\n\nEt puis, surtout, il y a une sorte de plaisir mystérieux et [aristocratique] pour celui qui n'a plus ni curiosité ni ambition, à contempler, couché dans le belvédère ou accoudé sur le môle, tous [ces] mouvements de [ceux] qui partent et de ceux qui reviennent, de ceux qui ont [encore] la force de vouloir, le désir de voyager ou de s'enrichir."
+   }
+  }
+ ]
+}

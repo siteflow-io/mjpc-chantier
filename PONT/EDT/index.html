@@ -4767,6 +4767,7 @@ function loginAsProf(){
   initHome();
   verifierAlerteRegles();   /* M8-IDENTITÉ : l'alerte J+29 vivait dans activateAdmin, disparu — elle vit à la connexion prof */
   if(ADMIN_MODE)_initOutilsProf();
+  try{ edtArriveeProf(); }catch(e){}   /* [EDT] porte n°1 — l'arrivée du professeur, par-dessus l'accueil */
 }
 
 function ensureEleveUuid(eleve){
@@ -14932,7 +14933,8 @@ function atDrMonter(){
   var tete=document.getElementById('at-dr-tete');
   if(tete){
     var cls=_lvlClasses(ec.level)||[];
-    var _comp='<label class="at-dr-lib" for="at-dr-comp">Comp\u00e9tences de l\u2019\u00e9cran courant :</label>'
+    var _comp='<button class="at-btn" onclick="edtOuvrir()" title="revenir \u00e0 ma semaine">\ud83d\udcc5 Emploi du temps</button>'   /* [EDT] porte n\u00b03 \u2014 le bandeau du d\u00e9roul\u00e9 */
+      +'<label class="at-dr-lib" for="at-dr-comp">Comp\u00e9tences de l\u2019\u00e9cran courant :</label>'
       +'<input id="at-dr-comp" class="at-edch-in at-dr-comp" list="at-dr-taxo" placeholder="appoint \u2014 une notion impr\u00e9vue surgie du cours" onchange="atDrCompChange(this.value)">'
       +'<datalist id="at-dr-taxo">'+atDrTaxoOptions()+'</datalist>'
       +'<span id="at-dr-etat" class="at-dr-etat"></span>';
@@ -17756,7 +17758,7 @@ function sesTelPlus1(ini){
    ═══════════════════════════════════════════════════════════════════════════ */
 
 var EDT_ANNEE=(function(){var d=new Date(),a=d.getFullYear();return (d.getMonth()>=7)?(a+'-'+(a+1)):((a-1)+'-'+a);})();
-var EDT_OBJETS=['calendrier','grille','creneaux','periodes','decisions','photos'];
+var EDT_OBJETS=['calendrier','grille','creneaux','periodes','decisions','photos','reglages'];
 var EDT={calendrier:null,grille:null,creneaux:null,periodes:null,decisions:null,photos:null,
          charge:false,pannes:[],creneauxRepli:null};
 var EDT_INJ={voie:null,objet:null,messages:[]};
@@ -18078,6 +18080,32 @@ function edtNomsDeGrille(){
   return l;
 }
 
+/* ── LA PORTE ① : L'ARRIVÉE DU PROFESSEUR ────────────────────────────────
+   « j'arrive en classe, je me connecte sur le site, et là, je dois aller vite. »
+   L'EDT s'ouvre PAR-DESSUS l'accueil, jamais à la place : « ✕ Fermer » rend
+   l'accueil intact. Un réglage permet de ne plus l'ouvrir au démarrage.
+   Trois cas où il ne s'ouvre JAMAIS : l'élève, le téléphone-pilote et la vue
+   tableau (la page y joue un autre rôle), et le réglage à « non ». */
+function edtArriveeProf(){
+  try{
+    if(!document.body.classList.contains('admin-mode'))return false;   /* jamais côté élève */
+    if(typeof SES==='object'&&SES&&(SES.mode==='tel'||SES.mode==='tableau'))return false;
+  }catch(e){ return false; }
+  edtCharger(function(){
+    var r=EDT.reglages||{};
+    if(r.arriverSurEdt===false)return;                                  /* oui par défaut */
+    edtOuvrir();
+  });
+  return true;
+}
+function edtReglagePoser(nom,valeur){
+  var r=(EDT.reglages&&typeof EDT.reglages==='object')?EDT.reglages:{annee:EDT_ANNEE};
+  r[nom]=valeur;
+  mjpcPutJson(FIREBASE_BASE+edtChemin('reglages')+'.json',r,'Réglages de l\u2019emploi du temps',function(){
+    EDT.reglages=r; edtPeindrePanneau();
+  });
+}
+
 /* ── LA PORTE ② : LE PANNEAU PROF ───────────────────────────────────────── */
 function edtSectionPanneau(){
   setTimeout(function(){ edtChargerClasses(function(){ if(EDT.charge)edtPeindrePanneau(); else edtCharger(edtPeindrePanneau); }); },0);
@@ -18103,7 +18131,10 @@ function edtPeindrePanneau(){
     +'</div>';
 
   /* les trois portes d'injection */
-  h+='<div class="edt-actions edt-haut"><button class="edt-btn edt-btn-prim" onclick="edtOuvrir()">\ud83d\uddd3 Ouvrir l\u2019emploi du temps</button>'
+  var arrive=!(EDT.reglages&&EDT.reglages.arriverSurEdt===false);
+  h+='<div class="edt-actions edt-haut"><button class="edt-btn edt-btn-prim" onclick="edtOuvrir()">\ud83d\udcc5 Ouvrir l\u2019emploi du temps</button>'
+    +'<label class="edt-regl"><input type="checkbox"'+(arrive?' checked':'')
+    +' onchange="edtReglagePoser(\'arriverSurEdt\',this.checked)"> arriver sur l\u2019emploi du temps en me connectant</label>'
     +EDT_OBJETS.filter(function(o){return !!EDT[o];}).map(function(o){
       return '<button class="edt-btn" onclick="edtSortirJson(\''+o+'\')" title="copier le JSON tel qu\u2019il est au hub">\u2913 Sortir le JSON \u2014 '+o+'</button>';
     }).join('')+'</div>';
@@ -18320,7 +18351,9 @@ function edtPoserCss(){
    +'.edt-cal{flex:1 1 auto;min-height:0;overflow:hidden;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:6px 12px}'
    +'.edt-cal-col{overflow:auto;min-height:0}'
    +'.edt-cal-l{display:block;font-size:.72rem;color:#c9bfa4;padding:2px 0;border-bottom:1px solid rgba(255,255,255,.05)}'
-   +'.edt-cal-l input{margin-right:6px}';
+   +'.edt-cal-l input{margin-right:6px}'
+   +'.edt-regl{display:inline-flex;align-items:center;gap:6px;font-size:.78rem;color:#c9bfa4;margin-left:6px}'
+   +'@media(max-width:820px){#edt-ecran{overflow:auto}.edt-sem{grid-template-columns:40px repeat(5,minmax(90px,1fr));min-width:560px}.edt-tete{flex-wrap:wrap}}';
   document.head.appendChild(s);
 }
 
@@ -18881,9 +18914,12 @@ function edtPeindreModale(){
     if(c.nature==='prevu'||c.nature==='rienDePret'){
       h+='<button class="edt-btn edt-btn-prim edt-large" onclick="edtLancer('+JSON.stringify(cle).replace(/"/g,'&quot;')+')">\u25b6 Ouvrir le pilotage et lancer</button>';
     }
-    if(dec){
+    /* une heure JOUÉE ne se décide plus : elle a eu lieu. On y gère les absents,
+       rien d'autre — mesuré à la matrice actions × état, où « Annuler » y
+       apparaissait à tort. */
+    if(dec&&c.nature!=='jouee'){
       h+='<button class="edt-btn edt-large" onclick="edtAnnulerDecision('+JSON.stringify(cle).replace(/"/g,'&quot;')+')">\u21b6 Annuler cette décision</button>';
-    } else if(c.nature!=='jouee'){
+    } else if(c.nature!=='jouee'&&!dec){
       var ou=edtCreneauxOu(c,21);
       h+='<div class="edt-mo-bloc"><label class="edt-lab">Déplacer cette heure vers un autre créneau\u2026</label>'
         +'<select class="edt-sel" onchange="if(this.value)edtDeplacerVers('+JSON.stringify(cle).replace(/"/g,'&quot;')+',this.value)">'

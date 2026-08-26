@@ -89,11 +89,23 @@ Rentrée des élèves : **1er septembre 2026** (prérentrée les 27, 28 et 31 ao
 
 **Le décompte n'a jamais été fait.** Du 1er septembre au 13 octobre : **25 créneaux de chapitre pour Franklin, 22 pour Dylan**, plus **3 séances de langue** chacune. Le chapitre a été bâti en **neuf séances de deux heures** — dix-huit créneaux — sans qu'aucun décompte ne soit posé. Que le compte tombe juste relève de la chance, pas de la construction.
 
-**La séance 3 aurait dû aller au fil langue.** « Interro de cours et analyse logique » est **entièrement** une séance de langue : les propositions, les subordonnées, les cinq entraînements. Elle occupe deux heures du fil principal alors qu'un fil dédié existe, à raison d'une heure par semaine A. Le chapitre et le fil langue ont été pensés l'un sans l'autre.
+**Le fil langue n'est pas une séance à déplacer : c'est une progression parallèle.** J'avais d'abord écrit que la séance 3 — « Interro de cours et analyse logique » — « aurait dû aller au fil langue ». Paul a corrigé, et sa formulation change la nature du problème :
 
-**La comparaison entre les deux classes n'est portée nulle part.** C'est pourtant un objectif déclaré de Paul. Aucune séance n'est marquée comme devant être jouée le même jour dans les deux classes, aucun point de mesure n'est prévu.
+> « La question de la séance du mercredi est différente que tu ne le crois : en fait, ça demande une progression annuelle, mais qui traverse les chapitres chaque semaine. Donc la construction de tous les JSON des chapitres doit permettre d'intégrer ça, et c'est là où l'IA a une importance capitale pour le prof, parce qu'elle permet de relier la langue à l'échelle annuelle, à l'échelle du chapitre, et à l'échelle hebdomadaire. »
 
-**Le découpage « heure 1 / heure 2 » n'avait aucune réalité.** Les deux classes n'ont que des heures **isolées**, réparties sur cinq jours, avec des semaines A et B différentes. Aucune des deux n'a deux heures consécutives. J'ai découpé neuf séances de deux heures en supposant un bloc continu ; Paul a fait retirer les mentions d'heures — la raison de fond était plus profonde que la lourdeur des titres.
+Il ne s'agit donc pas de déplacer une séance d'un fil à l'autre, mais de **tenir trois échelles à la fois** :
+- **l'année** — une progression de langue qui a sa propre logique, du premier au dernier chapitre ;
+- **le chapitre** — ce que la langue doit servir ici : l'analyse logique sert le brevet blanc et le paragraphe du chapitre 1 ;
+- **la semaine** — une heure, le mercredi, qui avance d'un cran quel que soit le chapitre en cours.
+
+**Ce que le JSON de chapitre doit donc permettre**, et ne permet pas aujourd'hui : qu'une séance déclare son appartenance au fil langue plutôt qu'au fil principal ; qu'elle porte son rang dans la progression annuelle de langue, indépendamment de son rang dans le chapitre ; et que le chapitre dise ce qu'il attend du fil langue au moment où il en a besoin. Le chapitre 1 ne porte aucune de ces trois choses : sa séance 3 est une séance de langue enfermée dans le fil principal, sans lien ni vers l'amont ni vers l'aval.
+
+**C'est le point où l'IA est la plus utile au professeur** — mot de Paul — parce que relier ces trois échelles à la main, chapitre après chapitre, est précisément ce qu'un professeur n'a pas le temps de faire.
+
+**La comparaison entre les deux classes n'est portée nulle part.** Le fil langue place les deux classes de 3e le même jour, en semaine A — « comme ça je fais la séance le même jour dans deux classes différentes, idéal pour mesurer l'écart ». Aucune séance du chapitre 1 n'est marquée comme devant être jouée en parallèle, aucun point de mesure n'est prévu.
+
+**Le découpage « heure 1 / heure 2 » ne correspond pas à la configuration actuelle.** Les deux classes n'ont aujourd'hui que des heures **isolées**, réparties sur cinq jours, en semaines A et B différentes. J'ai découpé neuf séances de deux heures en supposant un bloc continu.
+**Précision de Paul, qui interdit d'en faire une règle** : « pour les heures isolées, oui, mais attention, c'est la configuration actuelle : rien ne dit que ça ne bougera pas l'an prochain. » Un chapitre ne doit donc **ni supposer des heures consécutives, ni supposer des heures isolées** : il doit se découper d'après la grille de l'année en cours, quelle qu'elle soit.
 
 **Le temps utile réel est plus court que ce que j'ai compté.** Le déroulé calcule fin − lancement − 5 minutes d'agenda : un créneau de 55 minutes vaut **50 minutes utiles**. Mes séances additionnent 110 minutes d'écrans là où deux créneaux en offrent 100. *Point à confirmer : je n'avais pas `DEROULE/CADRAGE-TEMPS.md` sous les yeux au moment du découpage — il est dans ce dépôt.*
 
@@ -108,8 +120,8 @@ Rentrée des élèves : **1er septembre 2026** (prérentrée les 27, 28 et 31 ao
 3. **Dire que l'adresse d'un média est relative** à mjpc-medias.
 4. **Distinguer fiche / item / écran** dès l'ouverture, et dire que rien ne circule entre item et écran.
 5. **Faire commencer tout chapitre par un décompte de créneaux** : lire le calendrier et la grille, compter les heures réellement disponibles entre deux jalons, et ne découper qu'ensuite. Aujourd'hui le prompt fait produire des séances sans jamais demander combien d'heures existent.
-6. **Faire déclarer les fils parallèles** : si un fil « langue » existe, le chapitre doit dire ce qui lui revient et ce qui reste au fil principal.
-7. **Interdire de supposer des heures consécutives** : une séance se découpe en créneaux réels, tels que la grille les donne.
+6. **Porter le fil langue aux trois échelles.** Le JSON de chapitre doit permettre qu'une séance appartienne au fil langue, qu'elle porte son rang dans la progression annuelle de langue en plus de son rang dans le chapitre, et que le chapitre déclare ce qu'il attend de ce fil. Une progression de langue annuelle traverse les chapitres semaine après semaine ; le prompt doit la faire exister.
+7. **Ne rien supposer de la forme des créneaux** : ni consécutifs, ni isolés. Le découpage se fait d'après la grille de l'année en cours, qui peut changer d'une année sur l'autre.
 8. **Rappeler le temps utile** (fin − début − 5 minutes) au moment du découpage, et non après.
 9. **Demander les contraintes extérieures** — voyage, brevet blanc, stage, EPI — avant le découpage.
 

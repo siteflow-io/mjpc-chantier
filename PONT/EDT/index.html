@@ -18281,7 +18281,19 @@ function edtPoserCss(){
    +'.edt-carte em{display:block;font-style:normal;font-size:.65rem;color:#9c8f74;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}'
    +'.edt-fil{color:#a08ce0}'
    +'.edt-barre{display:block;height:4px;border-radius:3px;background:rgba(255,255,255,.1);margin:3px 0}'
-   +'.edt-barre i{display:block;height:100%;border-radius:3px;background:#34d399}';
+   +'.edt-barre i{display:block;height:100%;border-radius:3px;background:#34d399}'
+   +'.edt-clic{flex:1 1 0;min-height:0;display:flex;cursor:pointer}'
+   +'.edt-clic>.edt-b{flex:1 1 auto}'
+   +'.edt-modale{position:fixed;width:380px;max-height:70vh;overflow:auto;z-index:8600;background:#1c1710;border:1px solid rgba(224,185,120,.4);border-radius:11px;box-shadow:0 12px 40px rgba(0,0,0,.55)}'
+   +'.edt-mo-tete{display:flex;align-items:center;gap:6px;padding:7px 10px;border-bottom:1px solid rgba(255,255,255,.1);cursor:grab;touch-action:none;font-size:.86rem}'
+   +'.edt-mo-corps{padding:9px 12px 12px}'
+   +'.edt-mo-bloc{margin-top:9px;padding-top:8px;border-top:1px solid rgba(255,255,255,.08)}'
+   +'.edt-lab{display:block;font-size:.74rem;color:#c9bfa4;margin-bottom:4px}'
+   +'.edt-sel{width:100%;font:inherit;font-size:.82rem;background:rgba(0,0,0,.3);color:#e8e0cf;border:1px solid rgba(255,255,255,.16);border-radius:7px;padding:5px 7px;margin-bottom:5px}'
+   +'.edt-large{width:100%;margin-top:7px}'
+   +'.edt-jrn{list-style:none;margin:0;padding:0;font-size:.74rem;color:#c9bfa4}'
+   +'.edt-jrn li{padding:3px 0;border-bottom:1px solid rgba(255,255,255,.06)}'
+   +'.edt-jrn i{display:block;font-style:normal;font-size:.68rem;color:#7a7060}';
   document.head.appendChild(s);
 }
 
@@ -18325,7 +18337,16 @@ function edtChargerChapitres(niveaux,apres){
   var reste=niveaux.length; if(!reste){ if(apres)apres(); return; }
   niveaux.forEach(function(n){
     _siteGet('/site/'+n+'/chapitres',function(v){
-      EDT_CHAP[n]=edtListe(v).sort(function(a,b){return (Number(a.ordre)||0)-(Number(b.ordre)||0);});
+      /* on garde les CLÉS : `AT.edChap.chnum` et `ATVUES.snum` sont des clés
+         d'index, pas des objets — la porte du pilotage les exige telles quelles. */
+      var brut=v||{},cles=Array.isArray(brut)?brut.map(function(x,i){return String(i);}):Object.keys(brut);
+      var l=[];
+      cles.forEach(function(k){ var ch=brut[k]; if(!ch||typeof ch!=='object')return;
+        ch.__cle=String(k);
+        var sb=ch.seances||{},sk=Array.isArray(sb)?sb.map(function(x,i){return String(i);}):Object.keys(sb);
+        sk.forEach(function(z){ if(sb[z]&&typeof sb[z]==='object')sb[z].__i=String(z); });
+        l.push(ch); });
+      EDT_CHAP[n]=l.sort(function(a,b){return (Number(a.ordre)||0)-(Number(b.ordre)||0);});
       if(--reste===0&&apres)apres();
     });
   });
@@ -18484,6 +18505,7 @@ function edtOuvrir(){
   if(!e){ e=document.createElement('div'); e.id='edt-ecran'; document.body.appendChild(e); }
   e.style.display='flex';
   document.documentElement.classList.add('edt-fige'); document.body.classList.add('edt-fige');
+  window.removeEventListener('keydown',edtToucheEchap); window.addEventListener('keydown',edtToucheEchap);
   e.innerHTML='<div class="edt-tete">Lecture de la semaine\u2026</div>';
   var lancerPeinture=function(){
     edtChargerClasses(function(){
@@ -18494,7 +18516,13 @@ function edtOuvrir(){
   };
   if(EDT.charge)lancerPeinture(); else edtCharger(lancerPeinture);
 }
+function edtToucheEchap(ev){
+  if(ev.key!=='Escape')return;
+  if(EDT_MOD.cle){ edtModaleFermer(); return; }
+  if((document.getElementById('edt-ecran')||{}).style&&document.getElementById('edt-ecran').style.display!=='none')edtFermer();
+}
 function edtFermer(){
+  edtModaleFermer();
   var e=document.getElementById('edt-ecran'); if(e)e.style.display='none';
   document.documentElement.classList.remove('edt-fige'); document.body.classList.remove('edt-fige');
 }
@@ -18514,6 +18542,7 @@ function edtPeindreSemaine(){
   var e=document.getElementById('edt-ecran'); if(!e)return;
   var lundi=edtLundiCourant(), auj=edtAujourdhui(), maintenant=edtCreneauMaintenant();
   var cel=edtProjeter(lundi,5);
+  EDT_VUE.cellules=cel;
   var creneaux=(typeof AT_EDT!=='undefined')?AT_EDT:[];
   var lettre=edtSemaineLettre(lundi);
 
@@ -18554,7 +18583,11 @@ function edtPeindreSemaine(){
       Object.keys(cel).forEach(function(k){ var c=cel[k]; if(c.iso===iso2&&c.creneau===creneaux[r])dedans.push(c); });
       var estMaintenant=(iso2===auj&&creneaux[r]===maintenant);
       h+='<div class="edt-case'+(estMaintenant?' edt-case-now':'')+'">'
-         +dedans.map(edtCelluleHtml).join('')+'</div>';
+         +dedans.map(function(x){
+             var k=x.iso+'|'+x.creneau+'|'+(x.classe||'');
+             return '<div class="edt-clic" onclick="edtCaseClic('+JSON.stringify(k).replace(/"/g,'&quot;')+')">'
+               +edtCelluleHtml(x)+'</div>';
+           }).join('')+'</div>';
     }
   }
   h+='</div>';
@@ -18640,6 +18673,238 @@ function edtSortirJson(objet){
   catch(e){ try{ var z=document.createElement('textarea'); z.value=t; document.body.appendChild(z); z.select(); document.execCommand('copy'); z.remove(); }catch(e2){} }
   if(typeof atInfo==='function')atInfo('JSON de « '+objet+' » copié \u2014 '+t.length+' caractères.');
   return t;
+}
+
+
+/* ═══ LA MODALE D'UNE CASE — décider de l'horaire, et lancer ════════════════
+   Déplaçable, sans voile : la grille reste lisible derrière et se recalcule à
+   chaque choix. Toute décision est réversible, et le journal la garde.
+   Le mot « annuler un créneau » n'existe pas ici : une heure qu'on ne compte
+   plus n'est pas annulée, elle sort de la prévision horaire, avec son motif. */
+
+var EDT_CATEGORIES=['Événement d\u2019établissement','Évaluation hors séance','Sortie, voyage, projet',
+  'Orientation et vie de classe','Gestion de classe','Absence du professeur','Absence massive d\u2019élèves',
+  'Reprise ou rattrapage','Temps libre choisi','Autre'];
+var EDT_MOD={cle:null,x:null,y:null,drag:null};
+
+function edtCaseClic(cle){ EDT_MOD.cle=cle; edtPeindreModale(); }
+function edtModaleFermer(){
+  EDT_MOD.cle=null;
+  var m=document.getElementById('edt-modale'); if(m)m.remove();
+}
+function edtCellule(cle){ return (EDT_VUE.cellules||{})[cle]||null; }
+
+/* ── les décisions au hub ────────────────────────────────────────────────── */
+function edtDecisions(){ return (EDT.decisions&&typeof EDT.decisions==='object')?EDT.decisions:{}; }
+function edtEcrireDecision(nomClasse,cleHeure,valeur,quoi){
+  var d=edtDecisions();
+  if(!d[nomClasse])d[nomClasse]={heures:{},journal:[]};
+  if(!d[nomClasse].heures)d[nomClasse].heures={};
+  if(!Array.isArray(d[nomClasse].journal))d[nomClasse].journal=[];
+  var avant=d[nomClasse].heures[cleHeure]||null;
+  if(valeur===null)delete d[nomClasse].heures[cleHeure];
+  else d[nomClasse].heures[cleHeure]=valeur;
+  d[nomClasse].journal.push({quand:Date.now(),heure:cleHeure,quoi:quoi,avant:avant,apres:valeur});
+  mjpcPutJson(FIREBASE_BASE+edtChemin('decisions')+'.json',d,'Décisions horaires — '+nomClasse,function(){
+    EDT.decisions=d; edtPeindreSemaine(); edtPeindreModale();
+  });
+}
+function edtSansSeance(cle){
+  var c=edtCellule(cle); if(!c||!c.classeMjpc)return;
+  var s=document.getElementById('edt-cat'), p=document.getElementById('edt-prec');
+  edtEcrireDecision(c.classeMjpc,edtCleHeure(c.iso,c.creneau,c.classeMjpc),
+    {sansSeance:true,categorie:(s&&s.value)||EDT_CATEGORIES[0],precision:(p&&p.value)||'',pose:Date.now()},
+    'ne plus compter cette séance dans la prévision horaire');
+}
+function edtDeplacerVers(cle,cible){
+  var c=edtCellule(cle); if(!c||!c.classeMjpc||!cible)return;
+  var p=String(cible).split('|');   /* date|creneau */
+  edtEcrireDecision(c.classeMjpc,edtCleHeure(c.iso,c.creneau,c.classeMjpc),
+    {sansSeance:true,categorie:'Reprise ou rattrapage',precision:'heure déplacée vers le '+p[0]+' '+p[1],
+     deplaceeVers:p[0]+'|'+p[1],pose:Date.now()},'heure déplacée (départ)');
+  edtEcrireDecision(c.classeMjpc,edtCleHeure(p[0],p[1],c.classeMjpc),
+    {epingle:true,venantDe:c.iso+'|'+c.creneau,pose:Date.now()},'heure déplacée (arrivée, épinglée)');
+}
+function edtAnnulerDecision(cle){
+  var c=edtCellule(cle); if(!c||!c.classeMjpc)return;
+  var k=edtCleHeure(c.iso,c.creneau,c.classeMjpc);
+  var d=edtDecisions()[c.classeMjpc], av=d&&d.heures&&d.heures[k];
+  edtEcrireDecision(c.classeMjpc,k,null,'retour arrière');
+  /* une heure déplacée se défait des deux côtés */
+  if(av&&av.deplaceeVers){ var p=String(av.deplaceeVers).split('|');
+    edtEcrireDecision(c.classeMjpc,edtCleHeure(p[0],p[1],c.classeMjpc),null,'retour arrière (arrivée)'); }
+  if(av&&av.venantDe){ var q=String(av.venantDe).split('|');
+    edtEcrireDecision(c.classeMjpc,edtCleHeure(q[0],q[1],c.classeMjpc),null,'retour arrière (départ)'); }
+}
+
+/* ── LA PORTE DU PILOTAGE (voie A) ───────────────────────────────────────────
+   L'EDT ne réinvente rien : il amène le site dans l'état où le bouton
+   « ▶ Lancer la séance » existe, exactement comme le fait déjà le téléphone
+   pilote, puis il appuie dessus. Le moteur n'est pas touché.
+   Si un seul des éléments attendus manque, on le DIT — jamais de crash. */
+var EDT_PILOTAGE_ELEMENTS=['at-dr-classe','at-dr-creneau','at-dr-debut','at-dr-tete','at-zone'];
+function edtLancer(cle){
+  var c=edtCellule(cle); if(!c||!c.classeMjpc)return;
+  var niv=edtNiveauDe(c.classeMjpc), l=EDT_CHAP[niv]||[];
+  var vise=null;
+  for(var i=0;i<l.length&&!vise;i++){
+    if((l[i].fil||null)!==(c.fil||null))continue;
+    var pub=false; try{ pub=isPubFor(l[i],c.classeMjpc); }catch(e){}
+    if(!pub)continue;
+    var se=edtListe(l[i].seances);
+    for(var k=0;k<se.length&&!vise;k++){
+      if(!edtSeanceJouee(se[k],c.classeMjpc))vise={ch:l[i],snum:String(se[k].__i)};
+    }
+  }
+  if(!vise){ edtRienDePret(c); return; }
+  edtFermer(); edtModaleFermer();
+  /* Le site doit avoir SES classes et SES chapitres avant que le bandeau du
+     déroulé se monte : sinon son menu de classes sort vide et le lancement ne
+     prend pas — mesuré au banc : `optionsClasse: []`, régime resté « prep ».
+     C'est exactement le chemin du téléphone pilote, repris à l'identique. */
+  try{
+    loadClasses(function(){
+      atChargerChapitres(niv,function(){
+        try{
+          atEditerChapitre(niv,vise.ch.__cle);
+          ATVUES.snum=vise.snum;
+          atVuesAller('deroule');
+        }catch(e){ if(typeof atInfo==='function')atInfo('Le pilotage ne s\u2019ouvre pas : '+e.message+' \u2014 ouvre l\u2019atelier.'); return; }
+        /* On n'attend pas « un peu » : on attend que le bandeau ET le moteur
+           soient là. Un délai fixe marche au banc et rate en classe. */
+        edtQuandPilotagePret(function(manque){
+          if(manque){ if(typeof atInfo==='function')atInfo('Pilotage indisponible \u2014 ouvre l\u2019atelier. (manque : '+manque+')'); return; }
+          var sel=document.getElementById('at-dr-classe');
+          for(var i=0;i<sel.options.length;i++){ if(sel.options[i].text===c.classeMjpc)sel.selectedIndex=i; }
+          var cr=document.getElementById('at-dr-creneau');
+          for(var j=0;j<cr.options.length;j++){ if(cr.options[j].text===c.creneau)cr.selectedIndex=j; }
+          document.getElementById('at-dr-debut').value=c.creneau.split('-')[0];
+          try{ atDrJouerClic(); }catch(e2){ if(typeof atInfo==='function')atInfo('Le lancement a échoué : '+e2.message); }
+        });
+      });
+    });
+  }catch(e0){ if(typeof atInfo==='function')atInfo('Le pilotage ne s\u2019ouvre pas : '+e0.message+' \u2014 ouvre l\u2019atelier.'); }
+}
+/* sonde bornée : le bandeau du déroulé, ses trois champs, et le moteur monté */
+function edtQuandPilotagePret(apres,essai){
+  essai=essai||0;
+  var manque=EDT_PILOTAGE_ELEMENTS.filter(function(id){return !document.getElementById(id);});
+  var moteur=false; try{ moteur=!!window.DR; }catch(e){}
+  if(!manque.length&&moteur){ apres(null); return; }
+  if(essai>=30){ apres((manque.join(', ')||'le moteur du déroulé')); return; }
+  setTimeout(function(){ edtQuandPilotagePret(apres,essai+1); },150);
+}
+function edtRienDePret(c){
+  if(typeof atModaleChoix!=='function'){ if(typeof atInfo==='function')atInfo('Aucune séance prête pour la '+c.classeMjpc+'.'); return; }
+  atModaleChoix('Aucune séance prête pour la '+c.classeMjpc+' \u2014 ouvrir l\u2019atelier pour en préparer une ?',
+    [{lib:'Rester ici',fn:function(){}},
+     {lib:'Ouvrir Mes chapitres',prim:true,fn:function(){ edtFermer(); edtModaleFermer();
+       try{ atelierOuvrir(); }catch(e){} }}]);
+}
+
+/* ── LES CRÉNEAUX OÙ DÉPLACER — les prochains de cette classe ─────────────── */
+function edtCreneauxOu(c,jours){
+  var out=[],depart=edtPlusJour(c.iso,1);
+  for(var j=0;j<(jours||21);j++){
+    var iso=edtPlusJour(depart,j);
+    if(edtJourSansCours(iso))continue;
+    edtCasesDuJour(iso).forEach(function(x){
+      if(!x||x.mjpc===false)return;
+      if((x.classeMjpc||'')!==c.classeMjpc)return;
+      out.push({v:iso+'|'+x.creneau,lib:edtDateCourte(iso)+' \u00b7 '+x.creneau});
+    });
+  }
+  return out;
+}
+
+/* ── LE RENDU DE LA MODALE ───────────────────────────────────────────────── */
+function edtPeindreModale(){
+  var cle=EDT_MOD.cle; if(!cle){ edtModaleFermer(); return; }
+  var c=edtCellule(cle); if(!c){ edtModaleFermer(); return; }
+  var m=document.getElementById('edt-modale');
+  if(!m){ m=document.createElement('div'); m.id='edt-modale'; m.className='edt-modale';
+    (document.getElementById('edt-ecran')||document.body).appendChild(m);
+    if(EDT_MOD.x===null){ EDT_MOD.x=Math.round(window.innerWidth/2-190); EDT_MOD.y=90; }
+  }
+  m.style.left=EDT_MOD.x+'px'; m.style.top=EDT_MOD.y+'px';
+  var k=c.classeMjpc?edtCleHeure(c.iso,c.creneau,c.classeMjpc):'';
+  var dec=c.classeMjpc?((edtDecisions()[c.classeMjpc]||{}).heures||{})[k]:null;
+
+  var h='<div class="edt-mo-tete" onpointerdown="edtModaleSaisir(event)">'
+    +'<b>'+escapeHtml(edtDateLisible(c.iso))+' \u00b7 '+escapeHtml(c.creneau)+'</b>'
+    +'<span class="edt-souple"></span><button class="edt-mini" onclick="edtModaleFermer()">\u2715</button></div>'
+    +'<div class="edt-mo-corps">';
+
+  if(c.nature==='horsMjpc'){ h+='<p class="edt-p">'+escapeHtml(c.classe)+' \u2014 groupe partagé, hors français. Cette heure ne compte jamais dans la progression.</p>'; }
+  else if(c.nature==='nonImportee'){ h+='<p class="edt-p"><b>'+escapeHtml(c.classe)+'</b> n\u2019est pas encore une classe du site. Apparie-la dans le panneau prof pour qu\u2019elle projette ses séances.</p>'; }
+  else if(c.nature==='horsTemps'){ h+='<p class="edt-p">'+escapeHtml(c.libelle||'')+' \u2014 pas cours.</p>'; }
+  else {
+    h+='<p class="edt-p"><b class="edt-or">'+escapeHtml(c.classeMjpc)+'</b></p>';
+    if(c.nature==='jouee'){
+      h+='<p class="edt-p">Heure jouée \u2014 '+c.activites+' activité'+(c.activites>1?'s':'')
+        +(c.reportees?(', '+c.reportees+' reportée'+(c.reportees>1?'s':'')):'')+'.'
+        +(c.clos?' Close.':' Pas encore close.')+'</p>'
+        +'<p class="edt-p edt-mini-t">La relecture de cette heure arrive avec le profil de classe.</p>';
+    } else if(c.nature==='sansSeance'){
+      h+='<p class="edt-p">Cette heure ne compte pas dans la prévision horaire.<br><b>'+escapeHtml(c.categorie||'')+'</b>'
+        +(c.precision?('<br>'+escapeHtml(c.precision)):'')+'</p>';
+    } else if(c.nature==='rienDePret'){
+      h+='<p class="edt-p">Aucune séance prête pour cette classe.</p>'
+        +'<button class="edt-btn" onclick="edtRienDePret(edtCellule('+JSON.stringify(cle).replace(/"/g,'&quot;')+'))">Ouvrir Mes chapitres\u2026</button>';
+    } else {
+      h+='<p class="edt-p"><u>'+escapeHtml(c.titre||'')+'</u><br>heure '+c.heure+' sur '+c.sur
+        +(c.fil?(' \u00b7 fil '+escapeHtml(c.fil)):'')+(c.epingle?' \u00b7 \ud83d\udccc épinglée':'')+'</p>';
+    }
+    if(c.nature==='prevu'||c.nature==='rienDePret'){
+      h+='<button class="edt-btn edt-btn-prim edt-large" onclick="edtLancer('+JSON.stringify(cle).replace(/"/g,'&quot;')+')">\u25b6 Ouvrir le pilotage et lancer</button>';
+    }
+    if(dec){
+      h+='<button class="edt-btn edt-large" onclick="edtAnnulerDecision('+JSON.stringify(cle).replace(/"/g,'&quot;')+')">\u21b6 Annuler cette décision</button>';
+    } else if(c.nature!=='jouee'){
+      var ou=edtCreneauxOu(c,21);
+      h+='<div class="edt-mo-bloc"><label class="edt-lab">Déplacer cette heure vers un autre créneau\u2026</label>'
+        +'<select class="edt-sel" onchange="if(this.value)edtDeplacerVers('+JSON.stringify(cle).replace(/"/g,'&quot;')+',this.value)">'
+        +'<option value="">\u2014 choisir \u2014</option>'
+        +ou.map(function(x){return '<option value="'+escapeHtml(x.v)+'">'+escapeHtml(x.lib)+'</option>';}).join('')
+        +'</select></div>'
+        +'<div class="edt-mo-bloc"><label class="edt-lab">Ne plus compter cette séance dans la prévision horaire</label>'
+        +'<select class="edt-sel" id="edt-cat">'
+        +EDT_CATEGORIES.map(function(x){return '<option>'+escapeHtml(x)+'</option>';}).join('')+'</select>'
+        +'<input class="edt-sel" id="edt-prec" placeholder="préciser la raison (enregistrée)">'
+        +'<button class="edt-btn" onclick="edtSansSeance('+JSON.stringify(cle).replace(/"/g,'&quot;')+')">Enregistrer</button></div>';
+    }
+    h+=edtJournalHtml(c.classeMjpc);
+  }
+  h+='</div>';
+  m.innerHTML=h;
+}
+function edtJournalHtml(nomClasse){
+  var j=((edtDecisions()[nomClasse]||{}).journal)||[];
+  if(!j.length)return '<div class="edt-mo-bloc edt-mini-t">Aucune modification horaire pour cette classe.</div>';
+  var derniers=j.slice(-6).reverse();
+  return '<div class="edt-mo-bloc"><label class="edt-lab">Modifications horaires</label><ul class="edt-jrn">'
+    +derniers.map(function(x){
+      var d=new Date(x.quand);
+      return '<li>'+escapeHtml(('0'+d.getDate()).slice(-2)+'/'+('0'+(d.getMonth()+1)).slice(-2)+' '
+        +('0'+d.getHours()).slice(-2)+'h'+('0'+d.getMinutes()).slice(-2))+' \u2014 '+escapeHtml(x.quoi||'')
+        +'<i>'+escapeHtml(String(x.heure||'').replace(/_/g,' '))+'</i></li>';
+    }).join('')+'</ul></div>';
+}
+/* déplaçable : poignée, pointer events, contenue dans la zone */
+function edtModaleSaisir(ev){
+  var m=document.getElementById('edt-modale'); if(!m)return;
+  EDT_MOD.drag={dx:ev.clientX-EDT_MOD.x,dy:ev.clientY-EDT_MOD.y};
+  try{ ev.target.setPointerCapture(ev.pointerId); }catch(e){}
+  var bouge=function(e2){
+    if(!EDT_MOD.drag)return;
+    var x=e2.clientX-EDT_MOD.drag.dx, y=e2.clientY-EDT_MOD.drag.dy;
+    EDT_MOD.x=Math.max(4,Math.min(window.innerWidth-m.offsetWidth-4,x));
+    EDT_MOD.y=Math.max(4,Math.min(Math.round(window.innerHeight*0.72),y));
+    m.style.left=EDT_MOD.x+'px'; m.style.top=EDT_MOD.y+'px';
+  };
+  var lache=function(){ EDT_MOD.drag=null;
+    window.removeEventListener('pointermove',bouge); window.removeEventListener('pointerup',lache); };
+  window.addEventListener('pointermove',bouge); window.addEventListener('pointerup',lache);
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════

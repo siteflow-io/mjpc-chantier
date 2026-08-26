@@ -1,0 +1,200 @@
+{
+ "produit": "fiche_notion",
+ "titre": "Fiche notion : Rappel sur la versification",
+ "cases": {
+  "titre": true,
+  "sous_titre": true,
+  "annee_scolaire": true,
+  "date_edition": true,
+  "version_document": true,
+  "objectif": true,
+  "competences": true,
+  "notions": true,
+  "domaine_socle": true,
+  "mention_conserver": true,
+  "travail_a_faire": true,
+  "criteres_je": true,
+  "definition": true,
+  "texte_libre": true,
+  "liste_numerotee": true,
+  "exemple": true,
+  "methode": true,
+  "attention_piege": true,
+  "a_retenir": true
+ },
+ "valeurs": {
+  "titre": {
+   "texte": "Fiche notion : Rappel sur la versification"
+  },
+  "sous_titre": {
+   "texte": "Sonnet, alexandrin et décasyllabe, e muet, césure, enjambement, rimes, sonorités. À retrouver toute l'année au rayon Fiches notions."
+  },
+  "objectif": {
+   "texte": "À la fin de cette leçon, tu sauras compter les syllabes d'un vers, nommer sa forme et repérer ses sonorités."
+  },
+  "competences": {
+   "items": [
+    "Construire les notions permettant l'analyse et l'élaboration des textes et des discours"
+   ]
+  },
+  "notions": {
+   "items": [
+    "Le sonnet",
+    "Le décompte des syllabes",
+    "L'alexandrin",
+    "Le décasyllabe",
+    "Le e muet",
+    "La césure",
+    "L'enjambement",
+    "Le rejet et le contre-rejet",
+    "La disposition des rimes",
+    "L'allitération",
+    "L'assonance"
+   ]
+  },
+  "domaine_socle": {
+   "texte": "Domaine 1 — Les langages pour penser et communiquer"
+  },
+  "criteres_je": {
+   "items": [
+    "je sais réciter la composition du sonnet",
+    "je sais dire quand le e muet compte",
+    "je sais placer la césure d'un alexandrin",
+    "je sais nommer la disposition des rimes",
+    "je sais distinguer allitération et assonance"
+   ]
+  },
+  "travail_a_faire": {
+   "texte": "✍️ Compte les syllabes du premier vers de « L'Albatros » dans ton cahier, puis vérifie avec la règle du e muet."
+  }
+ },
+ "blocs": [
+  {
+   "id": "definition",
+   "valeurs": {
+    "terme": "Versification",
+    "texte": "L'ensemble des règles qui permettent au poète d'écrire des vers réguliers : compter les syllabes, placer la césure, disposer les rimes."
+   }
+  },
+  {
+   "id": "definition",
+   "valeurs": {
+    "terme": "Sonnet",
+    "texte": "Un poème à forme fixe de quatorze vers : deux quatrains et deux tercets."
+   }
+  },
+  {
+   "id": "texte_libre",
+   "valeurs": {
+    "texte": "Les règles de la versification, valables pour tout vers régulier :"
+   }
+  },
+  {
+   "id": "liste_numerotee",
+   "valeurs": {
+    "items": [
+     "En fin de vers : le e ne compte jamais comme une syllabe.",
+     "En milieu de vers : le e compte devant une consonne, et il compte aussi devant -s et -nt. Il ne compte pas devant une voyelle ou un h muet.",
+     "La césure : la pause au milieu de l'alexandrin, après la 6e syllabe. Elle coupe le vers en deux moitiés égales.",
+     "L'enjambement : une phrase commencée dans un vers peut se terminer dans un autre."
+    ]
+   }
+  },
+  {
+   "id": "exemple",
+   "valeurs": {
+    "texte": "Le e : « Le navire glissant sur les gouffres amers » (« L'Albatros ») — le e de « navire » compte, celui de « gouffres » aussi car il est suivi d'un s : Le-na-vi-re-glis-sant / sur-les-gouf-fres-a-mers, 12 syllabes. « La rue assourdissante autour de moi hurlait » (« À une passante ») — le e de « rue » et celui de « assourdissante » tombent devant une voyelle : La-ru(e)-as-sour-dis-sant(e)-au-tour-de-moi-hur-lait, 12 syllabes."
+   }
+  },
+  {
+   "id": "exemple",
+   "valeurs": {
+    "texte": "Un vers plus court : « Et d'étranges fleurs sur des étagères » (« La Mort des amants », Les Fleurs du mal) — Et-d'é-tran-ges-fleurs / sur-des-é-ta-gères, 10 syllabes : c'est un décasyllabe. Ce sonnet de Baudelaire n'est pas en alexandrins."
+   }
+  },
+  {
+   "id": "exemple",
+   "valeurs": {
+    "texte": "La césure : « Le navire glissant // sur les gouffres amers »."
+   }
+  },
+  {
+   "id": "texte_libre",
+   "valeurs": {
+    "texte": "L'enjambement avec rejet : un mot ou un groupe de mots brefs placé au début d'un vers, qui appartient à la phrase commencée au vers précédent.\nL'enjambement avec contre-rejet : un mot ou un groupe de mots brefs placé en fin de vers, qui appartient à la phrase du vers suivant.\nLe rejet et le contre-rejet mettent tous deux un mot ou un groupe de mots en valeur."
+   }
+  },
+  {
+   "id": "texte_libre",
+   "valeurs": {
+    "texte": "Un sonnet est généralement composé de :"
+   }
+  },
+  {
+   "id": "liste_numerotee",
+   "valeurs": {
+    "items": [
+     "Deux quatrains et deux tercets.",
+     "D'alexandrins (vers de 12 syllabes), le plus souvent — mais « La Mort des amants » est en décasyllabes.",
+     "De rimes : plates, ou suivies → schéma AABB ; croisées → ABAB ; embrassées → ABBA ; mêlées → succession libre."
+    ]
+   }
+  },
+  {
+   "id": "texte_libre",
+   "valeurs": {
+    "texte": "🎵 Les sonorités du poème"
+   }
+  },
+  {
+   "id": "definition",
+   "valeurs": {
+    "terme": "Allitération",
+    "texte": "La répétition d'un même son de consonne dans un vers ou une phrase."
+   }
+  },
+  {
+   "id": "definition",
+   "valeurs": {
+    "terme": "Assonance",
+    "texte": "La répétition d'un même son de voyelle dans un vers ou une phrase."
+   }
+  },
+  {
+   "id": "methode",
+   "valeurs": {
+    "titre": "🔎 Repérer une sonorité",
+    "items": [
+     "Lis le vers à voix haute.",
+     "Cherche le son qui revient — un son, pas une lettre.",
+     "Si c'est une consonne, c'est une allitération. Si c'est une voyelle, c'est une assonance.",
+     "Demande-toi ce que ce son fait entendre."
+    ]
+   }
+  },
+  {
+   "id": "exemple",
+   "valeurs": {
+    "texte": "Allitération : « Souvent, pour s'amuser, les hommes d'équipage » — le son [s] revient : on entend le glissement du navire sur l'eau."
+   }
+  },
+  {
+   "id": "exemple",
+   "valeurs": {
+    "texte": "Assonance : « Prennent des albatros, vastes oiseaux des mers » — le son [a] revient dans « albatros » et « vastes » : la bouche s'ouvre en grand, on entend l'immensité."
+   }
+  },
+  {
+   "id": "attention_piege",
+   "valeurs": {
+    "texte": "On repère un son, pas une lettre. Dans « cygne » et « chant », la lettre c ne fait pas le même son. Dans « si » et « ce », deux lettres différentes font le même son [s]. Lis à voix haute pour vérifier."
+   }
+  },
+  {
+   "id": "a_retenir",
+   "valeurs": {
+    "texte": "Allitération = un son de consonne répété. Assonance = un son de voyelle répété. Une sonorité s'entend, elle ne se voit pas."
+   }
+  }
+ ]
+}

@@ -31,6 +31,8 @@ CONTRAT = {
     'atelierOuvrir',
     # publication
     'isPubFor',
+    # la clé-élève canonique du socle (l'absence reprend le modèle du QCM)
+    'sanMJPC',
     # le pilotage (voie A — posé avec l'écran, autorisé dès maintenant)
     'atEditerChapitre', 'atVuesAller', 'atDrMonter', 'atDrJouerClic',
     'atChargerChapitres', 'loadClasses',
@@ -45,8 +47,13 @@ PORTES = {
     'edtOuvrir',           # porte ① — l'arrivée du professeur   (à venir, lot ③)
     'edtDepuisDeroule',    # porte ③ — le bandeau du déroulé      (à venir, lot ③)
 }
-# ── ③ les deux exceptions nommées, hors de /site/edt/ ──────────────────────
-EXCEPTIONS = {'/site/config/brevetDates/'}
+# ── ③ les exceptions nommées, hors de /site/edt/ ───────────────────────────
+#  ① le jour du DNB, écrit à l'injection du calendrier (décision de Paul, 26/08) ;
+#  ② les absents d'une heure JOUÉE, écrits dans la trace de cette heure
+#     (mandat §⑥ : « écrite dans la trace de l'heure (absents[]) »). Le chemin
+#     n'est jamais fabriqué à la main : il vient de `edtCheminTrace`, qui le
+#     retrouve à partir de la classe, de la date et du créneau.
+EXCEPTIONS = {'/site/config/brevetDates/', "t.chemin+'/absents.json'"}
 
 
 def bloc(src):

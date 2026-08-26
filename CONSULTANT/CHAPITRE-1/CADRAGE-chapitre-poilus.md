@@ -1,4 +1,5 @@
-# CADRAGE — chapitre 2 · « Paroles de poilus » (3e, EPI Verdun)
+# CADRAGE — « Paroles de poilus » (3e, EPI Verdun)
+*Chapitre **1 de l'année**, deuxième chapitre construit sur le chantier. Le titre portait « chapitre 2 », qui désignait le rang de construction : ambiguïté levée le 26/08.*
 
 *Ouvert le 26/08/2026. Rien n'est produit : ce document sert à ne rien décider sans les chiffres.*
 
@@ -64,8 +65,10 @@ Dix pages, déjà construites : avant le départ (repères, carte, frise de la b
 
 **② La production commune de l'EPI.** Non arrêtée. Elle pèse sur la tâche finale du chapitre : un EPI aboutit normalement à une réalisation. *Réunion EPI lundi.*
 
-**③ ~~Le recueil de Jean-Pierre Guéno~~ — TRANCHÉ le 26/08 : écarté.** Paul ne le retrouve pas ; les lettres publiées sont sous droits. Le chapitre sera un **groupement de textes** libres de droits — catégorie Éduscol exacte pour une anthologie de lettres, et non un pis-aller. La structure du recueil reste utilisable (six saisons : premier été, automnes, hivers, printemps, étés, dernier automne) : une architecture ne se protège pas.
-**Reste à faire** : arrêter le corpus. Textes libres disponibles : carnets de Louis Barthas, lettres des martyrs de Vingré, correspondances numérisées par les archives départementales, Apollinaire, le discours du 11 novembre déjà cité par le carnet d'Angélique.
+**③ ~~Le recueil de Jean-Pierre Guéno~~ — CLOS le 26/08 : le recueil est acheté.** Écarté le matin (Paul ne le retrouvait pas, les lettres publiées sont sous droits), il est revenu au panier l'après-midi : le retrait de *La Vague* a libéré le budget, et *Paroles de poilus* (Librio n° 245, 3 € — 2,73 € remisé) entre dans la commande. **L'achat éteint la question des droits** : les élèves ont le texte en main, il n'y a rien à reproduire.
+**Conséquence de nature** : le chapitre est une **œuvre intégrale**, non un groupement. C'est ce que le programme réclame pour « Agir dans la cité » — « une œuvre ou une partie significative d'une œuvre portant un regard sur l'histoire du siècle (lecture intégrale) » — et un chapitre est soit l'un soit l'autre, jamais les deux (mot de Paul : « c'est soit l'un soit l'autre, et en alternance »).
+La structure du recueil (six saisons : premier été, automnes, hivers, printemps, étés, dernier automne) est celle de l'œuvre étudiée, et non plus une architecture empruntée.
+**Reste à faire** : arrêter le corpus, c'est-à-dire **les lettres retenues dans le recueil**, et les textes qui viennent en appui — les extraits libres de droits que le programme autorise « aussi » : carnets de Louis Barthas, lettres des martyrs de Vingré, correspondances numérisées par les archives départementales, Genevoix, Apollinaire, le discours du 11 novembre déjà cité par le carnet d'Angélique. Ces appuis ne changent pas la nature du chapitre : ils l'accompagnent.
 
 **④ Le fil langue.** Deux séances de langue avant le départ (mercredis 16 et 30 septembre, semaine A, les deux classes le même jour). Ce que le chapitre attend d'elles n'est pas décidé — et le JSON ne sait pas encore le porter (voir `PREUVE-fil-langue-manque-au-site.md`).
 
@@ -74,10 +77,12 @@ Dix pages, déjà construites : avant le départ (repères, carte, frise de la b
 ## 6. La matrice : « Paroles du Jour J »
 
 Paul a déposé son chapitre 5 de l'an dernier, bâti sur des lettres du Débarquement. **Il sert de matrice** : architecture, progression, notions, dispositifs, barèmes. Le contenu change, la démarche reste.
-L'audit complet — ce qui se reprend, les six écarts au canon MJPC, les cinq questions ouvertes — est dans **`AUDIT-matrice-jour-j.md`**.
+L'audit complet est dans **`AUDIT-matrice-jour-j.md`** : ce qui se reprend, **sept écarts au canon MJPC — dont deux clos le 26/08** (quantitatif annuel, exigence de lecture intégrale) —, et **cinq questions, dont une répondue** le même jour (le quantitatif). Restent donc **cinq écarts** et **quatre questions**.
 
 ## 7. Ce qui est acté
 
 - Le chapitre « Paroles de poilus » devient le **chapitre 1 de l'année**, contrainte de calendrier oblige ; « Poésie et peinture » passe après.
+- **Nature : œuvre intégrale** — *Paroles de poilus*, Guéno, acheté. Entrée « Agir sur le monde », thème « Agir dans la cité : individu et pouvoir ».
+- **Lecture cursive du chapitre : *La Marraine de guerre*, Cuenca** — roman épistolaire, 89 pages, un poilu près de Verdun en 1916 ; lue à la Toussaint, ou dans le car.
 - Diaporama classique d'abord, **JSON ensuite** (mot de Paul, 26/08).
 - Aucun JSON ne sera produit sans demande explicite.

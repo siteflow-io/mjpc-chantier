@@ -29,7 +29,11 @@ Paliers progressifs, jamais un blocage : **0-1 h → dans les temps · 2 → lé
 
 Puis, deux heures sorties de la prévision **pour CLASSE TEST seule** : `2 h de retard dont 2 justifiées` → retour à **dans les temps**.
 
-**L'erreur trouvée.** Mon premier calcul retirait du retard **toutes** les heures justifiées de la classe. Le banc l'a montré : le séjour Verdun, qui prend les heures des **deux** 3e, effaçait un écart de 2 h qui n'avait rien à voir avec lui. Or Paul parle du « voyage scolaire que fait une classe **et pas l'autre** ». La justification porte donc désormais sur le **différentiel** : on compare les heures perdues par cette classe à celles de la classe de référence, et on ne retient que l'écart. Un événement qui touche tout le niveau ne justifie plus rien entre deux classes du niveau — vérifié : `justifieEcart: 0` malgré 3 heures justifiées de chaque côté.
+**L'erreur trouvée.** Mon premier calcul retirait du retard **toutes** les heures justifiées de la classe. Le banc l'a montré : un séjour qui prend les heures des **deux** classes du même niveau effaçait un écart de 2 h qui n'avait rien à voir avec lui.
+
+*Correction d'attribution (Paul, 26/08).* J'avais présenté cet exemple comme s'il illustrait une phrase de Paul sur les 3e. Vérifié au transcript C10, tour 71, et au registre `MJPC6-DETTES.md` L195 : sa phrase — « un retard de progression dû à un voyage scolaire que fait une classe et pas l'autre » — **ne nomme aucun niveau**, et son tour entier n'en nomme aucun. L'exemple des 3e vient du banc, pas de lui. La règle qu'il énonce est générale : *une classe et pas l'autre*.
+
+La justification porte donc désormais sur le **différentiel** : on compare les heures perdues par cette classe à celles de la classe de référence, et on ne retient que l'écart. Un événement qui touche tout le niveau ne justifie plus rien entre deux classes du niveau — vérifié : `justifieEcart: 0` malgré 3 heures justifiées de chaque côté.
 
 La carte dit maintenant ce qu'elle compte : « léger · 2 h de retard dont 2 justifiées ».
 

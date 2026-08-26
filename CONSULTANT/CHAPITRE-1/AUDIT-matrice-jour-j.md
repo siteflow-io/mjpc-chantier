@@ -82,6 +82,33 @@ Le prompt l'interdit formellement : « ⚠ Je ne déclare nulle part mes œuvres
 
 ---
 
-## 5. Dettes vivantes du chapitre (rappel)
+## 5. Les deux documents d'année de Paul, versés le 26/08
+
+### `Progression_annuelle_originale_3ème.docx` (2020-2021)
+**Statut : matrice de STRUCTURE, jamais de contenu.** Le document a été remanié par copier-coller — Paul le confirme : « les incohérences c'est normal, c'est du copié-collé ». La séquence 1 sur la poésie porte les supports d'*Un Secret*, la séquence 5 sur les *Paroles du Jour J* porte la tâche finale de la satire, les numéros de séquence se répètent. **Aucun contenu de cellule ne sera repris sans validation.**
+
+**Ce qui vaut, et ne vieillit pas** — la grille de déclaration d'une séquence :
+entrée du programme · thème · problématique · objectifs **littéraires** / **méthodologiques** / **linguistiques** / **lexicaux** · supports · évaluations · exercices de langue **avec leur modalité** (classe entière · au choix · vidéo en autonomie) · tâche finale avec ses critères · lecture cursive.
+
+**Et le tableau des cinq entrées du cycle 4**, où Paul répartit son année : Se chercher se construire · Vivre en société · Regarder le monde · Agir sur le monde · un questionnement complémentaire. C'est la charpente réglementaire.
+
+**Non fiable** : les dates · les volumes horaires — *mot de Paul : « le volume horaire n'est pas fiable, il faut s'en tenir à ce qu'on fait sur MJPC aujourd'hui »* · les mentions de voyage.
+
+### `1_Présentation_année_et_déroulé_type_de_séquence_3e.pdf`
+**Statut : support de rentrée de Paul**, qu'il actualise chaque année pour montrer aux élèves sa progression et la façon dont se constitue un chapitre. **Ce n'est pas un objet à refaire** — l'instance l'avait pris pour tel, à tort.
+
+**Ce qu'il apporte au canon** — le plan de séquence en sept séances, défini **pour l'élève** :
+- **S1 cours suivi** — « toujours la séance 1 […] qu'on complète au fur et à mesure qu'on avance dans les autres séances et qui sert à faire des bilans réguliers ». Peut se faire en vidéo. **Son contenu est à retenir.** *Le chapitre 1 n'a pas repris ce principe d'une séance qui se complète.*
+- **S2 lecture analytique accompagnée** — la première (LA1), en groupe, avec coups de pouce ; elle fait résonner une notion avec la S1.
+- **S3.1 point de langue** — « relié à un texte extrait de l'œuvre étudiée […] faire le lien entre la grammaire et le sens du texte ».
+- **S3.2 analyse logique** — « une séance qui **n'a pas forcément de rapport avec la séquence en cours**, mais qui sert à s'améliorer à l'écrit et à progresser dans la réflexion logique ». **Le fil langue de Paul existait donc déjà en 2023, formulé pour les élèves.**
+- **S4 dictée + réécriture** — deux exercices de type brevet ; corrections en vidéo, en classe ou en binômes, le plus souvent numériques.
+- **S5 lecture analytique en autonomie** (LA2) — exercice de type brevet, **évaluation formative**, faite seul.
+- **S6 approfondissement personnalisé** — remédiation de la LA2, avec trois voies : exercices personnalisés si le niveau est fragile · LA3 si la LA2 est réussie · proposition de l'élève sinon.
+- **S7 atelier** — critique littéraire, débat, anthologie, écrit d'invention, exposé, oral face caméra.
+
+**Les signets sont abandonnés** (page 2 du document, marqués « facultatif ») — signalé par Paul. À ne pas reprendre.
+
+## 6. Dettes vivantes du chapitre (rappel)
 
 ① disciplines de l'EPI au-delà de l'histoire-géo et du français · ② production commune de l'EPI · ③ ~~recueil de Guéno~~ **tranché : écarté** · ④ ce que le chapitre attend des deux séances de langue · ⑤ le chapitre couvre-t-il les trois temps du voyage.

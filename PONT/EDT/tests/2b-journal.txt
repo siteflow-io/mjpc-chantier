@@ -146,7 +146,7 @@ photo du prévu : {"nombre":1,"prise":"2026-08-26","depuis":"2026-09-07","cases"
 modale ouverte sur une case prévue : {
  "ouverte": true,
  "voile": false,
- "texte": "mardi 8 septembre · 15:07-16:02\n✕\n\n3E Charles de Gaulle\n\nÉtude de texte accompagnée : « L'Albatros »\nheure 1 sur 3\n\n▶ Ouvrir le pilotage et lancer\nDéplacer cette heure vers un autre créneau…\n— choisir —\nmer 9/9 · 10:07-11:02\njeu 10/9 · 16:0",
+ "texte": "mardi 8 septembre · 15:07-16:02\n✕\n\n3E Charles de Gaulle\n\nÉtude de texte accompagnée : « L'Albatros »\nheure 1 sur 3\n\n▶ Ouvrir le pilotage et lancer\nDéplacer cette heure, ou en ajouter une…\n\nJusqu’à la fin de l’année. Un « créneau libre » n’e",
  "boutons": [
   "✕",
   "▶ Ouvrir le pilotage et lancer",
@@ -183,7 +183,7 @@ après « ne plus compter cette séance » :
    2026-09-10 16:04-16:59 3E Charles de Gaulle → prevu heure 2/3
    2026-09-11 10:07-11:02 3E Charles de Gaulle → prevu heure 3/3
 
-au hub : {"3E Charles de Gaulle":{"heures":{"2026-09-08_15h07-16h02_3E_Charles_de_Gaulle":{"sansSeance":true,"categorie":"Gestion de classe","precision":"retour sur le conseil de classe","pose":1787751938729}},"journal":[{"quand":1787751938729,"heure":"2026-09-08_15h07-16h02_3E_Charles_de_Gaulle","quoi":"ne plus compter cette séance dans la prévision horaire","avant":null,"apres":{"sansSeance":true,"categorie":"Gestion de cla
+au hub : {"3E Charles de Gaulle":{"heures":{"2026-09-08_15h07-16h02_3E_Charles_de_Gaulle":{"sansSeance":true,"categorie":"Gestion de classe","precision":"retour sur le conseil de classe","pose":1787752535198}},"journal":[{"quand":1787752535198,"heure":"2026-09-08_15h07-16h02_3E_Charles_de_Gaulle","quoi":"ne plus compter cette séance dans la prévision horaire","avant":null,"apres":{"sansSeance":true,"categorie":"Gestion de cla
 
 capture 4-3-sans-seance-et-glissement
 
@@ -191,11 +191,11 @@ après ↶ Annuler : {"nature":"prevu","titre":"Étude de texte accompagnée : �
 
 journal des modifications horaires : ["ne plus compter cette séance dans la prévision horaire","retour arrière"]
 
-créneaux proposés pour le déplacement : ["— choisir —","mer 9/9 · 10:07-11:02","jeu 10/9 · 16:04-16:59","ven 11/9 · 10:07-11:02"]
+créneaux proposés pour le déplacement : ["— choisir parmi 940 créneaux —","mer 9/9 · 10:07-11:02","mer 9/9 · 11:04-11:59  — créneau libre, heure ajoutée","mer 9/9 · 13:00-13:55  — créneau libre, heure ajoutée"]
 
 après déplacement :
   2026-09-08_15h07-16h02_3E_Charles_de_Gaulle → {"sansSeance":true,"categorie":"Reprise ou rattrapage","precision":"heure déplacée vers le 2026-09-09 10:07-11:02","depl
-  2026-09-09_10h07-11h02_3E_Charles_de_Gaulle → {"epingle":true,"venantDe":"2026-09-08|15:07-16:02","pose":1787751941636}
+  2026-09-09_10h07-11h02_3E_Charles_de_Gaulle → {"epingle":true,"venantDe":"2026-09-08|15:07-16:02","pose":1787752538187}
 
 capture 4-4-heure-deplacee
 

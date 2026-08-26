@@ -20,17 +20,17 @@ Jeton sas : **celui que tu as déjà** (il ne sera plus réécrit dans les manda
 
 **La règle, et elle est stricte : l'`id` est une AMORCE, pas une formule vivante.**
 - Au **premier chargement**, chaque élément sans `id` en reçoit un, calculé de façon **déterministe** (donc identique sur tous les appareils de Paul) à partir de ce qu'il porte à cet instant. La formule ne sert **qu'à cela**.
-- Cet `id` est **écrit au hub à la première écriture qui suit**, et **plus jamais recalculé, ni comparé, ni reconstruit** — même si la date, le libellé, le jour, le créneau ou la classe changent ensuite.
+- Cet `id` est **écrit au hub par UNE écriture unique au premier chargement** — un **ajout pur**, sans archivage, **déclarée au contrat dans `verif_edt.py`** comme la seule écriture spontanée autorisée du bloc. (Sans elle, les `id` d'un chargement sans geste ne seraient jamais au hub, et la preuve ⑬.1 se mesurerait en mémoire au lieu du hub.) Il n'est **plus jamais recalculé, ni comparé, ni reconstruit** — même si la date, le libellé, le jour, le créneau ou la classe changent ensuite.
 - **Conséquence à tenir** : un `id` ne dit rien du contenu de l'élément. Il ne sert qu'à le désigner. Toute fonction qui tenterait de retrouver un élément **en recalculant son `id`** est une faute : on cherche par `id` stocké, jamais par formule.
 - **Un `id` ne contient donc jamais une position** : `crn:<jour>:<creneau>:<semaine>:<classe>` et `hor:<debut>-<fin>` sont des **amorces**, pas des adresses. Jour, créneau, semaine, classe, début et fin restent des **attributs** de l'élément, modifiables sans que l'`id` bouge — sans quoi « déplacer une heure » ou « modifier un horaire à la main » recréerait exactement le bug du §②.
-- Forme des amorces (lisibles pour le débogage, sans valeur sémantique) : `evc:` événement de classe · `jal:` jalon · `eta:` établissement · `fer:` férié · `vac:` période sans cours · `crn:` créneau de grille · `hor:` créneau horaire · `per:` période · `pho:` photo, suivies d'un condensé du contenu au moment de la pose, **suffixé par la classe quand l'élément en dépend** (décision de Paul).
-- **Collision au premier chargement** : deux éléments produisant la même amorce → le second reçoit `#2`. **Ce suffixe dépend de l'ordre de parcours** : il n'est acceptable que parce qu'il n'a lieu **qu'une fois**, à la pose. Le parcours doit donc être **déterministe** (ordre du tableau tel qu'il est au hub), et le fait est **dit à l'écran** (« deux événements identiques le 14/11 — le second a reçu un identifiant distinct »).
+- Forme des amorces (lisibles pour le débogage, sans valeur sémantique) : `evc:` événement de classe · `jal:` jalon · `eta:` établissement · `fer:` férié · `vac:` période sans cours · `crn:` créneau de grille · `hor:` créneau horaire · `per:` période · `pho:` photo (**horodatage complet**, jamais la seule date : l'automatique de début de période et une photo à la main le même jour doivent différer), suivies d'un condensé du contenu au moment de la pose, **suffixé par la classe quand l'élément en dépend** (décision de Paul).
+- **Collision au premier chargement** : deux éléments produisant la même amorce → le second reçoit `#2`. **Ce suffixe dépend de l'ordre de parcours** : il n'est acceptable que parce qu'il n'a lieu **qu'une fois**, à la pose. **`#2` ne s'applique JAMAIS à un objet créé après la pose initiale** — un objet neuf naît avec son `id` propre. Le parcours doit être **déterministe** (ordre du tableau tel qu'il est au hub), et le fait est **dit à l'écran** (« deux événements identiques le 14/11 — le second a reçu un identifiant distinct »).
 
 **L'APPARIEMENT À LA RÉINJECTION — gradué et biunivoque, jamais une simple conjonction.**
 Un JSON qui arrive peut ne pas porter les `id` en service (première version, JSON venu d'ailleurs, IA qui ne les a pas reconduits). L'appariement se fait donc en quatre temps, dans cet ordre :
 1. **L'entrant porte un `id` connu** → il fait foi, rien d'autre à faire.
 2. Sinon, **appariement FORT** = **tous** les critères de la famille concordent → même élément, `id` conservé, **silencieux**.
-3. Sinon, **appariement FAIBLE** = **tous les critères sauf un** concordent, et le candidat est **unique** → **proposé à Paul, jamais appliqué seul**. C'est le cas douteux, et il couvre **aussi bien le libellé retouché que la date déplacée** — un événement déplacé du 16/11 au 17/11 est un appariement faible, pas une suppression suivie d'un ajout.
+3. Sinon, **appariement FAIBLE** = **tous les critères sauf un** concordent, **avec au moins un critère qui concorde**, et le candidat est **unique** → **proposé à Paul, jamais appliqué seul**. **Les familles à critère unique (férié, période) n'ont donc PAS d'appariement faible** : « tous sauf un » y vaudrait zéro critère, et un férié renommé s'apparierait à n'importe quel férié encore libre. C'est le cas douteux, et il couvre **aussi bien le libellé retouché que la date déplacée** — un événement déplacé du 16/11 au 17/11 est un appariement faible, pas une suppression suivie d'un ajout.
 4. **Biunivocité obligatoire** : **un entrant ne s'apparie qu'à un seul existant, et un existant qu'à un seul entrant.** Sans cette contrainte, quatre « Conseil de classe » identiques s'apparient au hasard et **les coches de Paul permutent**. Un candidat déjà pris n'est plus candidat ; s'il reste une ambiguïté, on ne devine pas : on propose.
 
 **LES CRITÈRES, FAMILLE PAR FAMILLE** — « niveau + date + libellé » ne veut rien dire pour un créneau ou une photo. Une règle nommée pour chacune des neuf familles, sans quoi tu devineras — et c'est la grille qu'on réinjecte le plus souvent :
@@ -41,9 +41,9 @@ Un JSON qui arrive peut ne pas porter les `id` en service (première version, JS
 | férié | date |
 | période sans cours (vacances) | date de début · date de fin |
 | **créneau de grille** | jour · créneau · semaine (A/B/AB) · classe de la grille |
-| **créneau horaire** | rang **ou** début-fin (l'un des deux suffit : un horaire modifié à la main garde son rang) |
+| **créneau horaire** | **début-fin d'abord** ; le **rang seulement en second recours**, et **seulement si le nombre de créneaux est inchangé** — jamais le rang seul : si Paul insère un créneau, tous les rangs décalent d'un cran et les décisions permuteraient en silence |
 | **période** | nom normalisé |
-| **photo** | date de prise · lundi photographié |
+| **photo** | horodatage complet de la prise (à la seconde) · lundi photographié |
 Libellé normalisé = minuscules, accents retirés, espaces réduits, ponctuation ôtée. **La classe appariée (`classeMjpc`), les créneaux fictifs et les horaires modifiés à la main sont des DÉCISIONS de Paul portées par l'élément : ils suivent l'`id`, jamais la position.**
 
 ## ② PLUS RIEN PAR INDICE NI PAR RANG
@@ -70,12 +70,35 @@ L'entrée « Calendrier de l'année… » devient **« Heures perdues »**. Elle
 - Chaque événement dit **le coût puis l'effet** : « Séjour Verdun 3e · 14-16 octobre · **la 3e Franklin perd 3 heures, les autres classes zéro** → cocher : ces 3 heures ne compteront pas dans son retard. »
 - **Le site propose la coche dès qu'un événement coûte au moins une heure à au moins une classe** (décision de Paul, tour 175). **Un événement qui ne coûte aucune heure n'a pas de case** : rien à décider. *Mesure qui fonde la règle : aucun des 15 événements de classe du calendrier de Paul ne nomme de classe — ils portent tous un niveau (9 en 4e, 6 en 3e) ; une règle « seule classe à perdre » n'aurait presque jamais proposé de case.*
 - **Un événement qui nomme un NIVEAU et pas une classe** (« Stages 3e ») — c'est le cas de **15 événements sur 15** chez Paul, donc le cas normal, pas l'exception. **Le site calcule et montre d'abord, Paul coche ensuite** (décision de Paul, tour 178) :
-  > **Les stages de 3e commencent — voici tes heures du jour.**
+  > **Les stages de 3e — voici tes heures des 16, 17 et 18 novembre.**
   > ☐ 3e Franklin · lundi 16 novembre, 10:07 → 1 heure
   > ☐ 3e Dylan · lundi 16 novembre, 15:07 → 1 heure
-  **Les cases sont VIDES au départ** : c'est Paul qui coche les classes réellement parties, le site ne coche jamais à sa place. Tant que rien n'est coché, **aucune heure n'est retirée**. Les libellés restent au conditionnel avant confirmation (« perdrait », jamais « perd »). Une phrase claire et concrète, pas de vocabulaire d'ingénieur : le site dit ce qui se passe ce jour-là, puis montre les heures concernées.
+  > ☐ 3e Franklin · mardi 17 novembre, 08:57 → 1 heure
+  **UN écran par ÉVÉNEMENT**, pas un par jour : un stage de trois jours donne **une seule fiche** listant les heures de ses trois jours, **une case par heure**. Sinon Paul coche trois fois la même chose.
+  **Les cases sont VIDES au départ** : c'est Paul qui coche les heures réellement perdues, le site ne coche jamais à sa place. Tant que rien n'est coché, **aucune heure n'est retirée**. Les libellés restent au conditionnel avant confirmation (« perdrait », jamais « perd »). Une phrase claire et concrète, pas de vocabulaire d'ingénieur.
+  **UNE SEULE CASE, et son sens est : « cette heure a bien été perdue ».** Un événement du calendrier de l'établissement est **subi** : cocher vaut donc **perte ET justification** en un seul geste. Il n'y a pas de seconde case « justifiée » pour ces événements ; le total « dont Y justifiées » se calcule parce que les **autres** sources d'heures perdues, elles, ne sont pas justifiées (§⑤bis).
 - En tête : le total, par classe — « cette année, X heures perdues, dont Y déclarées justifiées ».
 - **Y entrent aussi** : les heures « sans séance » déclarées par Paul, les heures prises par une autre classe (§⑦), et **les heures à replacer jamais replacées** (§⑦).
+
+## ⑤bis BANALISER UNE HEURE — le mot juste, et ce que ça coûte
+Paul : « banaliser cette heure. » Le geste existe déjà dans ton candidat, mais **son libellé est faux** : il dit « ne plus compter cette **séance** dans la prévision horaire » alors que Paul banalise **une heure** — la séance, elle, continue ailleurs. Après tout ce qu'on a démêlé sur heure/séance, c'est une confusion à supprimer.
+**Le libellé devient « Banaliser cette heure »**, partout : bouton, modale, journal, infobulle. Les dix catégories et la précision libre ne changent pas.
+**Ce qui est NOUVEAU : une heure banalisée entre — ou non — dans les heures perdues, selon sa catégorie.** Règle de Paul : *« tout ce qui concerne le pédagogique et le cours d'une façon ou d'une autre (le français) est du temps de classe »* ; le reste est une **heure perdue sèche**.
+| Catégorie | Classement par défaut |
+|---|---|
+| Évaluation hors séance | **temps de classe** (c'est du français) |
+| Reprise ou rattrapage | **temps de classe** |
+| Gestion de classe | **temps de classe** |
+| Événement d'établissement | heure perdue · **justifiée** |
+| Sortie, voyage, projet | heure perdue · **justifiée** |
+| Orientation et vie de classe | heure perdue · **justifiée** |
+| Absence du professeur | heure perdue · **justifiée** |
+| Absence massive d'élèves | heure perdue · **justifiée** |
+| Temps libre choisi | heure perdue · **non justifiée** (c'est un choix de Paul) |
+| Autre | heure perdue · **non justifiée** par défaut |
+**Le classement est une PROPOSITION, pas une loi** : sur chaque heure banalisée, Paul peut basculer d'un clic entre « temps de classe » et « heure perdue », et entre « justifiée » et « non justifiée » — le site propose selon la catégorie, Paul tranche. Une sortie qui était en réalité une sortie de français se rebascule en temps de classe sans changer de catégorie.
+**Le classement retenu est écrit dans la décision** (pas recalculé depuis la catégorie à chaque affichage) : si Paul l'a basculé, son choix survit.
+**Preuve** : dix heures banalisées, une par catégorie → le classement par défaut est celui du tableau ; deux basculées à la main → leur bascule est au hub et survit à un rechargement ; le total de l'écran « Heures perdues » compte **les heures perdues des trois sources** (événements de calendrier confirmés, heures banalisées classées perdues, heures prises par une autre classe et heures à replacer non replacées) et **le sous-total justifié** est juste.
 
 ## ⑥ L'ALERTE MENSUELLE — aveugle, sans réseau
 Le nœud `calendrier` porte la date de sa dernière injection. **Un calendrier déjà au hub qui n'en porte pas reçoit la date du PREMIER CHARGEMENT** (jamais d'alerte immédiate). **Un mois après**, l'EDT affiche une ligne discrète, non bloquante : « Le calendrier de l'année a été injecté il y a un mois — pense à le réinjecter s'il a bougé », avec « Réinjecter maintenant… » et « Plus tard » (repousse de 30 jours). **Le site ne lit rien à l'extérieur** : il compte les jours, rien de plus. La date de dernière injection est affichée pour chaque objet dans la section.
@@ -147,8 +170,8 @@ Les 133 autres fonctions · le prévu calculé (jamais stocké) · les quatre vu
 10. **Télescopages** : `edtVerifierCoherence` appelée après chacun des six gestes → **zéro télescopage**, chiffre au rapport. Une classe non appariée : aucun geste possible, message affiché.
 11. **Vue Année** : sur le calendrier réel — les 12 mois, les jours numérotés, **les 15 événements de classe et les 59 d'établissement présents et comptés** (aucun perdu en silence), les 30 jalons, les vacances en fond, les pastilles par classe, les jours sans cours aplatis, **aucun trait traversant**, la légende ; **dézoomé : tout sur une page** ; **zoomé : défilement horizontal, libellés entiers** ; capture des deux états et **pourcentage de surface utile occupé : au moins 55 % dézoomé** sur le calendrier réel (seuil chiffré ; en dessous, l'écran est vide). **La méthode de mesure est la MÊME que celle du rapport où 58,9 % a été mesuré**, et elle est **nommée dans le rapport** — sinon le chiffre ne veut rien dire.
 12. **Photos** : identifiant sur chaque photo ; **prise automatique à la rentrée et au début d'une période** (dates forcées au banc) ; deux photos le même jour cohabitent sans s'écraser.
-13. **Appariement biunivoque** : un calendrier contenant **quatre événements homonymes le même mois** (« Conseil de classe ») → chacun garde **sa** coche, aucune permutation, mesuré nommément.
-14. **Une règle par famille** : réinjection de la **grille** avec un créneau déplacé et un horaire modifié à la main → l'appariement de classe (`classeMjpc`), les créneaux fictifs et l'horaire modifié **survivent**, chacun relu au hub.
+13. **Appariement biunivoque** : un calendrier contenant **quatre événements homonymes à DATES DIFFÉRENTES, dont deux permutées** → chacun garde **sa** coche, aucune permutation, mesuré nommément ; **plus un cinquième cas strictement identique à un autre** (même date, même libellé) → **l'ambiguïté est nommée et RIEN n'est appliqué**.
+14. **Une règle par famille** : réinjection de la **grille** avec un créneau déplacé et un horaire modifié à la main. Le créneau déplacé est un appariement **faible** : le banc **joue la confirmation de Paul**, et l'attendu le dit. Après confirmation, l'appariement de classe (`classeMjpc`), les créneaux fictifs et l'horaire modifié **survivent**, chacun relu au hub. Sans confirmation : rien n'est conservé silencieusement.
 15. **`EDT_ANNEE`** : `debutAnnee` posé au 1er septembre → l'année en cours, la liste des destinations et la bascule des heures à replacer s'y conforment ; champ absent → repli sur le calcul actuel, sans erreur.
 16. **Non-régression** : la liste complète du §⑫, chiffrée.
 

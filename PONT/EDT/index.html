@@ -18478,38 +18478,43 @@ function edtPoserCss(){
    +'.edt-mnum{font-size:.62rem;color:#7a7060}'
    +'.edt-m{font-size:.6rem;border-left:2px solid rgba(255,255,255,.2);padding:0 4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#c9bfa4}'
    +'.edt-m-joue{border-left-color:#34d399}.edt-m-sans{border-left-color:#e0b978}.edt-m-prevu{border-left-color:rgba(155,155,155,.6)}.edt-m-autre{border-left-color:rgba(120,120,120,.3);color:#7a7060}'
-   +'.edt-annee{flex:1 1 auto;min-height:0;overflow:hidden;padding:6px 12px 0;display:grid;grid-template-columns:158px 1fr;grid-template-rows:18px 1fr 20px;gap:0 8px}'
-   +'.edt-an-tete{display:contents}'
-   +'.edt-an-tete>.edt-an-nom{grid-column:1;grid-row:1}'
-   +'.edt-an-echelle{grid-column:2;grid-row:1;position:relative;border-bottom:1px solid rgba(255,255,255,.14)}'
+   +'.edt-annee{flex:1 1 auto;min-height:0;overflow:hidden;padding:6px 12px 0;display:grid;grid-template-columns:158px 1fr;grid-template-rows:18px 34px 1fr 20px;gap:0 8px}'
+   +'.edt-an-echelle{position:relative;border-bottom:1px solid rgba(255,255,255,.14)}'
    +'.edt-an-mois{position:absolute;bottom:1px;font-size:.66rem;color:#9c8f74;transform:translateX(2px)}'
-   +'.edt-an-corps{display:contents}'
-   +'.edt-an-corps>.edt-an-nom{display:none}'
-   +'.edt-an-noms{grid-column:1;grid-row:2;display:flex;flex-direction:column;justify-content:center;gap:8px;padding:6px 0 8px;min-height:0;overflow:hidden}'
-   +'.edt-an-scene{grid-column:2;grid-row:2;position:relative;display:flex;flex-direction:column;justify-content:center;gap:8px;padding:6px 0 8px;min-height:0;overflow:hidden}'
-   +'.edt-an-fond{position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none}'
-   +'.edt-an-trait{position:absolute;top:0;bottom:0;width:1px;background:rgba(255,255,255,.07)}'
-   +'.edt-an-vac{position:absolute;top:0;bottom:0;background:rgba(255,255,255,.045)}'
-   +'.edt-an-jalon{position:absolute;top:0;bottom:0;width:1px;background:rgba(224,185,120,.45)}'
+   +'.edt-an-lib-bande{font-size:.64rem;color:#7a7060;display:flex;align-items:center}'
+   +'.edt-an-bande{position:relative;border-bottom:1px solid rgba(255,255,255,.1);overflow:hidden}'
+   +'.edt-an-vac{position:absolute;top:0;bottom:0;background:rgba(255,255,255,.06);border-radius:2px}'
+   +'.edt-an-vac i{display:block;font-style:normal;font-size:.58rem;color:#8a8172;padding:2px 3px;white-space:nowrap;overflow:hidden}'
+   +'.edt-an-rep{position:absolute;top:2px;bottom:2px;width:2px;background:rgba(155,165,190,.75);cursor:pointer}'
+   +'.edt-an-rep-jalon{background:#e0b978;width:3px}'
+   +'.edt-an-rep i{position:absolute;left:4px;top:0;font-style:normal;font-size:.55rem;color:#9c8f74;white-space:nowrap;max-width:78px;overflow:hidden;text-overflow:ellipsis;pointer-events:none}'
+   +'.edt-an-rep:hover i{color:#e8e0cf;background:#1c1710;z-index:3;max-width:none;padding-right:3px}'
+   +'.edt-an-rep-jalon i{color:#c9a25a}'
    +'.edt-an-auj{position:absolute;top:0;bottom:0;width:2px;background:#f08a8a}'
+   +'.edt-an-noms{grid-column:1;grid-row:3;display:flex;flex-direction:column;justify-content:center;gap:8px;padding:6px 0 8px;min-height:0;overflow:hidden}'
+   +'.edt-an-scene{grid-column:2;grid-row:3;position:relative;display:flex;flex-direction:column;justify-content:center;gap:8px;padding:6px 0 8px;min-height:0;overflow:hidden}'
+   +'.edt-an-fond{position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none}'
+   +'.edt-an-trait{position:absolute;top:0;bottom:0;width:1px;background:rgba(255,255,255,.05)}'
    +'.edt-an-etiq{flex:1 1 0;min-height:34px;max-height:96px;font-size:.74rem;color:#e8e0cf;overflow:hidden;line-height:1.25;display:flex;flex-direction:column;justify-content:center;align-items:flex-start}'
    +'.edt-an-etiq b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:600}'
    +'.edt-an-etiq i{font-style:normal;font-size:.6rem;margin-right:5px}'
    +'.edt-an-piste{position:relative;flex:1 1 0;min-height:34px;max-height:96px;background:rgba(255,255,255,.03);border-radius:4px;display:flex;align-items:center}'
    +'.edt-an-motif{position:absolute;left:8px;font-size:.66rem;color:#7a7060;font-style:italic}'
-   +'.edt-an-vac i{display:block;font-style:normal;font-size:.58rem;color:#6d6455;padding:2px 3px;white-space:nowrap;overflow:hidden}'
-   +'.edt-an-jalon{cursor:pointer}'
-   +'.edt-lg-t{margin-left:14px;color:#6d6455}'
+   +'.edt-an-evt{position:absolute;top:2px;bottom:2px;background:rgba(120,160,224,.16);border:1px solid rgba(120,160,224,.5);border-radius:3px}'
+   +'.edt-an-evt-just{background:rgba(224,185,120,.16);border-color:rgba(224,185,120,.6)}'
+   +'.edt-an-evt i{display:block;font-style:normal;font-size:.55rem;color:#9db8e0;padding:1px 3px;white-space:nowrap;overflow:hidden}'
    +'.edt-an-reel,.edt-an-prevu{position:absolute;top:50%;transform:translateY(-50%);height:22px;border-radius:4px;overflow:hidden}'
    +'.edt-an-reel{background:rgba(52,211,153,.5);border:1px solid rgba(52,211,153,.8)}'
    +'.edt-an-prevu{background:rgba(155,155,155,.22);border:1px dashed rgba(200,200,200,.45)}'
    +'.edt-an-reel i,.edt-an-prevu i{display:block;font-style:normal;font-size:.62rem;line-height:20px;padding:0 5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#e8e0cf}'
    +'.edt-an-vide{position:relative;margin-top:26px;text-align:center;font-size:.86rem;color:#c9bfa4}'
-   +'.edt-an-legende{grid-column:1/-1;grid-row:3;display:flex;align-items:center;gap:5px;font-size:.64rem;color:#7a7060;padding-bottom:4px}'
+   +'.edt-an-legende{grid-column:1/-1;grid-row:4;display:flex;align-items:center;gap:5px;font-size:.64rem;color:#7a7060;padding-bottom:4px}'
    +'.edt-lg{display:inline-block;width:16px;height:8px;border-radius:2px;margin-left:10px}'
    +'.edt-lg-reel{background:rgba(52,211,153,.6)}.edt-lg-prevu{background:rgba(155,155,155,.35)}'
-   +'.edt-lg-vac{background:rgba(255,255,255,.09)}.edt-lg-jalon{width:2px;background:rgba(224,185,120,.7)}'
+   +'.edt-lg-evt{background:rgba(120,160,224,.4)}'
+   +'.edt-lg-vac{background:rgba(255,255,255,.09)}.edt-lg-jalon{width:3px;background:#e0b978}'
    +'.edt-lg-auj{width:2px;background:#f08a8a}'
+   +'.edt-lg-t{margin-left:14px;color:#6d6455}'
    +'.edt-cal{flex:1 1 auto;min-height:0;overflow:hidden;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:6px 12px}'
    +'.edt-cal-col{overflow:auto;min-height:0}'
    +'.edt-cal-l{display:block;font-size:.72rem;color:#c9bfa4;padding:2px 0;border-bottom:1px solid rgba(255,255,255,.05)}'
@@ -19352,13 +19357,18 @@ function edtPeindreMois(){
   e.innerHTML=h;
 }
 
-/* ── L'ANNÉE — une barre par chapitre et par classe ───────────────────────
-   Première version : une règle de jalons et des lignes de 20 px collées en
-   haut, sans échelle de temps. Paul, 26/08 : « ça a l'air cassé, on ne voit
-   même pas l'année vide. » Il avait raison — sans les mois écrits et sans
-   repères sur toute la hauteur, on ne lit rien. Refaite : douze mois nommés,
-   les vacances et les jalons traversant tout l'écran, aujourd'hui en trait
-   rouge, et les lignes réparties dans la hauteur disponible. */
+/* ── L'ANNÉE ──────────────────────────────────────────────────────────────
+   Paul, 26/08, devant la capture : « pourquoi y a-t-il des grandes barres
+   jaunes verticales ? et où sont tous les événements prévus ? »
+   Les barres étaient les jalons : des traits de 1 px allant du haut au bas de
+   l'écran, qui coupaient chaque piste et formaient des barreaux là où ils se
+   pressaient. Et les 59 événements d'établissement comme les 15 événements de
+   classe n'étaient dessinés NULLE PART — or ce sont eux qui décalent une classe.
+
+   Désormais : une BANDE DES TEMPS en haut, hors des pistes, où vivent les
+   vacances nommées, les jalons et les événements d'établissement, regroupés
+   quand ils se touchent. Les pistes ne portent plus que des graduations de
+   mois, discrètes — et les événements de LEUR classe, en segments. */
 function edtPeindreAnnee(){
   var e=document.getElementById('edt-ecran'); if(!e)return;
   var cal=EDT.calendrier||{},sem=(cal.semaines||[]);
@@ -19366,9 +19376,12 @@ function edtPeindreAnnee(){
   var fin=sem.length?edtPlusJour(sem[sem.length-1].lundi,6):edtPlusJour(debut,364);
   var jours=Math.max(1,Math.round((new Date(fin)-new Date(debut))/86400000));
   var pos=function(iso){ return Math.max(0,Math.min(100,(new Date(iso)-new Date(debut))/86400000/jours*100)); };
+  var dansAnnee=function(a,b){ return !(String(b||a)<debut||String(a)>fin); };
+  var compte={jalons:0,etablissement:0,classe:0,segments:0,vacances:0};
+  var vusClasse={};   /* les événements de classe effectivement dessinés, sans doublon */
   var h=edtTeteHtml('annee','année '+escapeHtml(EDT_ANNEE));
 
-  /* l'échelle : les mois, nommés */
+  /* ── l'échelle des mois ── */
   var M=['janv','févr','mars','avril','mai','juin','juil','août','sept','oct','nov','déc'];
   var mois=[],d=new Date(debut+'T12:00:00'); d.setDate(1);
   for(var k=0;k<14;k++){
@@ -19377,44 +19390,62 @@ function edtPeindreAnnee(){
     if(iso>=debut)mois.push({iso:iso,lib:M[d.getMonth()]});
     d.setMonth(d.getMonth()+1);
   }
-  h+='<div class="edt-annee"><div class="edt-an-tete"><span class="edt-an-nom"></span>'
+  h+='<div class="edt-annee"><span class="edt-an-nom"></span>'
     +'<span class="edt-an-echelle">'
     +mois.map(function(m){ return '<span class="edt-an-mois" style="left:'+pos(m.iso).toFixed(2)+'%">'+m.lib+'</span>'; }).join('')
-    +'</span></div>';
+    +'</span>';
 
-  /* le corps : le fond traverse toute la hauteur, les lignes se posent dessus */
-  h+='<div class="edt-an-corps"><span class="edt-an-nom"></span><div class="edt-an-scene">';
-  h+='<div class="edt-an-fond">'
-    +mois.map(function(m){ return '<span class="edt-an-trait" style="left:'+pos(m.iso).toFixed(2)+'%"></span>'; }).join('')
-    +(cal.vacances||[]).map(function(v){
-        if(v.fin<debut||v.debut>fin)return '';
-        var larg=Math.max(0.3,pos(v.fin)-pos(v.debut));
-        return '<span class="edt-an-vac" style="left:'+pos(v.debut).toFixed(2)+'%;width:'
-          +larg.toFixed(2)+'%" title="'+escapeHtml(v.nom+' \u00b7 '+v.debut+' \u2192 '+v.fin)+'">'
-          +(larg>2.2?('<i>'+escapeHtml(String(v.nom).replace(/^(de la |de |d\u2019|pont de l\u2019)/,'').slice(0,12))+'</i>'):'')
-          +'</span>'; }).join('')
-    +(cal.jalons||[]).map(function(j2){
-        if(j2.date<debut||j2.date>fin)return '';
-        return '<span class="edt-an-jalon" style="left:'+pos(j2.date).toFixed(2)+'%" title="'
-          +escapeHtml(j2.date+' \u2014 '+j2.libelle)+'" onclick="edtDireJalon('
-          +JSON.stringify(j2.date+' \u2014 '+j2.libelle).replace(/"/g,'&quot;')+')"></span>'; }).join('')
-    +'<span class="edt-an-auj" style="left:'+pos(edtAujourdhui()).toFixed(2)+'%" title="aujourd\u2019hui"></span>'
-    +'</div>';
+  /* ── LA BANDE DES TEMPS DE L'ANNÉE, hors des pistes ── */
+  var reperes=[];
+  (cal.jalons||[]).forEach(function(x){ if(!dansAnnee(x.date))return; compte.jalons++;
+    reperes.push({date:x.date,lib:x.libelle||'',type:'jalon'}); });
+  (cal.etablissement||[]).forEach(function(x){ if(!dansAnnee(x.date))return; compte.etablissement++;
+    reperes.push({date:x.date,lib:x.libelle||'',type:'etab'}); });
+  reperes.sort(function(a,b){ return String(a.date).localeCompare(String(b.date)); });
+  /* deux repères qui se touchent se regroupent : « 3 le 14/11 » */
+  var paquets=[];
+  reperes.forEach(function(r){
+    var p=paquets[paquets.length-1];
+    if(p&&Math.abs(pos(r.date)-p.x)<0.9){ p.items.push(r); if(r.type==='jalon')p.jalon=true; return; }
+    paquets.push({x:pos(r.date),date:r.date,items:[r],jalon:(r.type==='jalon')});
+  });
+  h+='<span class="edt-an-nom edt-an-lib-bande">temps de l\u2019année</span><div class="edt-an-bande">';
+  (cal.vacances||[]).forEach(function(v){
+    if(!dansAnnee(v.debut,v.fin))return; compte.vacances++;
+    var larg=Math.max(0.3,pos(v.fin)-pos(v.debut));
+    h+='<span class="edt-an-vac" style="left:'+pos(v.debut).toFixed(2)+'%;width:'+larg.toFixed(2)+'%" title="'
+      +escapeHtml(v.nom+' \u00b7 '+v.debut+' \u2192 '+v.fin)+'">'
+      +(larg>2.2?('<i>'+escapeHtml(String(v.nom).replace(/^(de la |de |d\u2019|pont de l\u2019)/,'').slice(0,12))+'</i>'):'')+'</span>';
+  });
+  /* le libellé ne s'écrit QUE s'il a la place : sinon les mots se chevauchent
+     et la bande devient illisible (vu sur la capture du 26/08). Sans place,
+     le repère reste un trait — son texte vit au survol et au clic. */
+  paquets.forEach(function(p,i){
+    var texte=p.items.map(function(r){ return r.date+' \u2014 '+r.lib; }).join('\n');
+    var suivant=paquets[i+1]?paquets[i+1].x:101;
+    var place=(suivant-p.x);
+    var lib='';
+    if(place>3.2){
+      lib=(p.items.length>1)?(p.items.length+' le '+p.date.slice(8)+'/'+p.date.slice(5,7))
+                            :String(p.items[0].lib).slice(0,Math.round(place*2.2));
+    } else if(p.items.length>1&&place>1.6){
+      lib=String(p.items.length);
+    }
+    h+='<span class="edt-an-rep'+(p.jalon?' edt-an-rep-jalon':'')+'" style="left:'+p.x.toFixed(2)+'%" title="'
+      +escapeHtml(texte)+'" onclick="edtDireJalon('+JSON.stringify(texte).replace(/"/g,'&quot;')+')">'
+      +(lib?('<i>'+escapeHtml(lib)+'</i>'):'')+'</span>';
+  });
+  h+='<span class="edt-an-auj" style="left:'+pos(edtAujourdhui()).toFixed(2)+'%" title="aujourd\u2019hui"></span></div>';
 
-  /* UNE LIGNE PAR CLASSE DE LA GRILLE, toujours — appariée ou non, publiée ou
-     non. Une ligne absente ne dit rien ; une ligne qui écrit pourquoi elle est
-     vide dit tout. */
+  /* ── LES PISTES ── */
   var vues={},lignes=[];
   edtToutesLesCases().forEach(function(c){
     if(!c||c.mjpc===false)return;
     var cleLigne=c.classeMjpc||('grille:'+c.classe);
     if(vues[cleLigne])return;
     vues[cleLigne]=true;
-    if(!c.classeMjpc){
-      lignes.push({nom:c.classe,exp:false,dv:null,barres:'',
-                   vide:'classe non encore importée \u2014 à apparier dans le panneau prof'});
-      return;
-    }
+    if(!c.classeMjpc){ lignes.push({nom:c.classe,exp:false,dv:null,barres:'',evts:'',
+      vide:'classe non encore importée \u2014 à apparier dans le panneau prof'}); return; }
     var nom=c.classeMjpc, niv=edtNiveauDe(nom), l=EDT_CHAP[niv]||[];
     var dv=edtDivergence(nom), exp=edtEstExperimentale(nom), barres='', publie=0;
     var curseur=pos(edtAujourdhui());
@@ -19435,31 +19466,28 @@ function edtPeindreAnnee(){
           +escapeHtml((ch.title||'')+' \u2014 joué du '+dates[0]+' au '+dates[dates.length-1])+'">'
           +'<i>'+escapeHtml(String(ch.title||'').slice(0,26))+'</i></span>';
       } else {
-        /* deux chapitres non joués se posaient au MÊME endroit et se
-           recouvraient, illisibles (mesuré sur la capture « année remplie »).
-           Ils se suivent désormais, dans l'ordre du chapitre. */
         barres+='<span class="edt-an-prevu" style="left:'+curseur.toFixed(2)+'%;width:9%" title="'
           +escapeHtml((ch.title||'')+' \u2014 prévu, pas encore joué')+'">'
           +'<i>'+escapeHtml(String(ch.title||'').slice(0,26))+'</i></span>';
         curseur+=9.6;
       }
     });
-    lignes.push({nom:nom,exp:exp,dv:dv,barres:barres,
+    /* CE QUI DÉCALE CETTE CLASSE : ses événements, sur SA piste */
+    var evts='';
+    (cal.evenementsClasse||[]).forEach(function(ev){
+      if(!ev||ev.niveau!==niv)return;
+      if(!dansAnnee(ev.debut,ev.fin))return;
+      compte.segments++; vusClasse[ev.debut+'|'+(ev.libelle||'')]=true;
+      var larg=Math.max(0.45,pos(ev.fin||ev.debut)-pos(ev.debut));
+      evts+='<span class="edt-an-evt'+(ev.justifie?' edt-an-evt-just':'')+'" style="left:'+pos(ev.debut).toFixed(2)
+        +'%;width:'+larg.toFixed(2)+'%" title="'+escapeHtml(ev.debut+(ev.fin!==ev.debut?(' \u2192 '+ev.fin):'')
+        +' \u2014 '+(ev.libelle||'')+(ev.justifie?' \u2014 écart justifié':''))+'">'
+        +(larg>2?('<i>'+escapeHtml(String(ev.libelle||'').slice(0,20))+'</i>'):'')+'</span>';
+    });
+    lignes.push({nom:nom,exp:exp,dv:dv,barres:barres,evts:evts,
                  vide:publie?'':'aucun chapitre publié à cette classe'});
   });
 
-  if(!lignes.length){
-    h+='<div class="edt-an-vide">Aucune classe appariée : l\u2019année est vide.<br>'
-      +'<span class="edt-mini-t">Panneau prof \u2192 Emploi du temps \u2192 apparie tes classes de grille aux classes du site.</span></div>';
-  } else {
-    h+=lignes.map(function(x){
-      return '<div class="edt-an-piste">'+x.barres
-        +(x.vide?('<span class="edt-an-motif">'+escapeHtml(x.vide)+'</span>'):'')+'</div>';
-    }).join('');
-  }
-  h+='</div></div>';   /* fin scène, fin corps */
-
-  /* la colonne des noms, en regard des pistes */
   h+='<div class="edt-an-noms">'+lignes.map(function(x){
     return '<div class="edt-an-etiq"><b>'+escapeHtml(x.nom)+'</b>'
       +(x.exp?'<i class="edt-exp" title="'+EDT_MENTION_EXP+'">expérimentale</i>':'')
@@ -19469,13 +19497,37 @@ function edtPeindreAnnee(){
       +'</div>';
   }).join('')+'</div>';
 
+  h+='<div class="edt-an-scene">'
+    +'<div class="edt-an-fond">'
+    +mois.map(function(m){ return '<span class="edt-an-trait" style="left:'+pos(m.iso).toFixed(2)+'%"></span>'; }).join('')
+    +'</div>';
+  if(!lignes.length){
+    h+='<div class="edt-an-vide">Aucune classe appariée : l\u2019année est vide.<br>'
+      +'<span class="edt-mini-t">Panneau prof \u2192 Emploi du temps \u2192 apparie tes classes de grille aux classes du site.</span></div>';
+  } else {
+    h+=lignes.map(function(x){
+      return '<div class="edt-an-piste">'+x.evts+x.barres
+        +(x.vide?('<span class="edt-an-motif">'+escapeHtml(x.vide)+'</span>'):'')+'</div>';
+    }).join('');
+  }
+  h+='</div>';
+
   h+='<div class="edt-an-legende">'
-    +'<span class="edt-lg edt-lg-reel"></span>joué (première \u2192 dernière heure)'
-    +'<span class="edt-lg edt-lg-prevu"></span>prévu, pas encore joué'
+    +'<span class="edt-lg edt-lg-reel"></span>joué'
+    +'<span class="edt-lg edt-lg-prevu"></span>prévu'
+    +'<span class="edt-lg edt-lg-evt"></span>événement de la classe'
     +'<span class="edt-lg edt-lg-vac"></span>sans cours'
-    +'<span class="edt-lg edt-lg-jalon"></span>jalon commun (cliquable)'
+    +'<span class="edt-lg edt-lg-jalon"></span>jalon commun'
     +'<span class="edt-lg edt-lg-auj"></span>aujourd\u2019hui'
-    +'<span class="edt-lg-t">sous chaque nom : le palier de divergence \u00b7 « expérimentale » = ses chiffres comptent mais se déclarent \u00b7 <b>pas de glisser-déposer sur cette vue : l\u2019échelle ne le permet pas \u2014 passe par Semaine ou Mois</b></span>'
+    +(function(){
+       var total=(cal.evenementsClasse||[]).filter(function(x){return x&&dansAnnee(x.debut,x.fin);}).length;
+       var vus=Object.keys(vusClasse).length;
+       return '<span class="edt-lg-t">représentés : '+compte.jalons+' jalons \u00b7 '+compte.etablissement
+        +' événements d\u2019établissement \u00b7 <b>'+vus+' des '+total+' événements de classe</b> ('+compte.segments
+        +' segments, un par classe concernée)'
+        +(vus<total?(' \u2014 les '+(total-vus)+' autres concernent un niveau dont aucune classe n\u2019est appariée'):'')
+        +' \u00b7 '+compte.vacances+' périodes sans cours \u2014 pas de glisser-déposer ici</span>';
+     })()
     +'</div>';
   h+='</div>';
   e.innerHTML=h;

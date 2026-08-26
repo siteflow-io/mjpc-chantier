@@ -1,0 +1,148 @@
+{
+ "produit": "fiche_notion",
+ "titre": "Fiche notion : Les figures de style",
+ "cases": {
+  "titre": true,
+  "sous_titre": true,
+  "annee_scolaire": true,
+  "date_edition": true,
+  "version_document": true,
+  "objectif": true,
+  "competences": true,
+  "notions": true,
+  "domaine_socle": true,
+  "texte_libre": true,
+  "tableau": true,
+  "attention_piege": true,
+  "a_retenir": true,
+  "criteres_je": true,
+  "travail_a_faire": true,
+  "mention_conserver": true
+ },
+ "valeurs": {
+  "titre": {
+   "texte": "Fiche notion : Les figures de style"
+  },
+  "sous_titre": {
+   "texte": "Le répertoire des figures et la carte des huit familles. À retrouver toute l'année au rayon Fiches notions."
+  },
+  "objectif": {
+   "texte": "À la fin de cette leçon, tu sauras nommer la figure d'une phrase, la ranger dans sa famille, et la prouver par une citation."
+  },
+  "competences": {
+   "items": [
+    "Construire les notions permettant l'analyse et l'élaboration des textes et des discours"
+   ]
+  },
+  "notions": {
+   "items": [
+    "La comparaison",
+    "La métaphore",
+    "La personnification",
+    "Les figures d'opposition",
+    "L'hyperbole",
+    "La litote",
+    "L'anaphore",
+    "La gradation",
+    "La métonymie"
+   ]
+  },
+  "domaine_socle": {
+   "texte": "Domaine 1 — Les langages pour penser et communiquer"
+  },
+  "criteres_je": {
+   "items": [
+    "je sais nommer la figure d'une phrase",
+    "je sais ranger une figure dans sa famille",
+    "je sais prouver la figure par une citation",
+    "je sais distinguer comparaison et métaphore"
+   ]
+  },
+  "travail_a_faire": {
+   "texte": "✍️ Choisis trois figures de la carte, une par famille différente, et invente un exemple pour chacune dans ton cahier."
+  }
+ },
+ "blocs": [
+  {
+   "id": "texte_libre",
+   "valeurs": {
+    "texte": "Rappel de définition : les figures de style (ou procédés d'écriture) sont les moyens par lesquels l'auteur vise à produire un effet sur un destinataire. Elles rendent un texte ou un discours plus poétique, plus émouvant ou plus convaincant : finalement, plus littéraire et mieux écrit."
+   }
+  },
+  {
+   "id": "texte_libre",
+   "valeurs": {
+    "texte": "🗺️ La carte des huit familles"
+   }
+  },
+  {
+   "id": "tableau",
+   "valeurs": {
+    "lignes": [
+     "Famille | Les figures qu'elle contient",
+     "Figures d'analogie | personnification, comparaison, métaphore, allégorie",
+     "Figures d'opposition | antithèse, oxymore, antiphrase",
+     "Figures de substitution | métonymie, synecdoque, périphrase, ironie",
+     "Figures d'insistance | anaphore, répétition, pléonasme",
+     "Figures d'amplification | hyperbole, accumulation, gradation",
+     "Figures d'atténuation | euphémisme, litote",
+     "Figures syntaxiques | parallélisme, chiasme, ellipse",
+     "Procédés sonores | allitération, assonance, onomatopée, homophone"
+    ]
+   }
+  },
+  {
+   "id": "texte_libre",
+   "valeurs": {
+    "texte": "📖 Le répertoire : toutes les figures de la carte, avec leur définition et un exemple"
+   }
+  },
+  {
+   "id": "tableau",
+   "valeurs": {
+    "lignes": [
+     "Figure (voir aussi…) | Définition | Exemple",
+     "Accumulation (voir énumération et gradation) | une longue liste de mots qui donne une impression de grande quantité | Adieu veau, vache, cochon, couvée. (La Fontaine)",
+     "Allégorie (voir métaphore) | une idée (la mort, la liberté, la poésie…) est représentée par quelque chose qu'on peut voir ou toucher — un personnage, un animal, un objet — et qu'on suit tout au long du texte | L'albatros représente le poète pendant tout le poème.",
+     "Allitération | la répétition d'un même son de consonne dans un vers ou une phrase | Souvent, pour s'amuser, les hommes d'équipage — le son [s] revient.",
+     "Anaphore (voir répétition et parallélisme) | répétition d'un mot ou d'un groupe de mots en début de vers ou de phrase | Il pleut sur les longs toits de tuile, / Il pleut sur les fleurs du pommier. (M. Carême)",
+     "Antiphrase | fait de dire le contraire de ce que l'on pense, mais en le faisant comprendre (ironie) | Venir au collège après les vacances : un vrai bonheur, non ?",
+     "Antithèse (voir oxymore) | opposition de deux mots ou deux expressions de sens contraires | Je vis, je meurs, je me brûle et me noie. (L. Labé)",
+     "Assonance | la répétition d'un même son de voyelle dans un vers ou une phrase | Prennent des albatros, vastes oiseaux des mers — le son [a] revient.",
+     "Chiasme (voir parallélisme) | deux expressions qui se répondent en miroir : A-B puis B-A | Il faut manger pour vivre et non pas vivre pour manger. (Molière)",
+     "Comparaison (voir métaphore) | fait de dire qu'une chose (le comparé) ressemble à une autre (le comparant) à l'aide d'un outil de comparaison (comme, tel que, pareil à…) | La mer brille comme un miroir.",
+     "Ellipse | des mots sont supprimés, mais on comprend quand même la phrase | Heureux les uns, tristes les autres. (= les uns sont heureux, les autres sont tristes)",
+     "Énumération (voir gradation et accumulation) | une suite de mots ou d'expressions, séparés par des virgules | Les souffles de la mort nous poussent, nous soulèvent, nous balancent. (H. Barbusse)",
+     "Euphémisme (voir litote) | fait d'atténuer la réalité pour ne pas choquer | Il s'est éteint sans souffrir.",
+     "Gradation (voir énumération) | énumération de termes de plus en plus forts | Il gémit, il cria, il hurla.",
+     "Homophone (voir allitération et assonance) | des mots qui se prononcent pareil mais ne veulent pas dire la même chose | vers / vert / verre",
+     "Hyperbole | exagération d'une réalité pour insister | Lancelot fait voler le chevalier contre lequel il lutte par-dessus la croupe de son cheval.",
+     "Ironie (voir antiphrase) | on se moque en disant le contraire de ce qu'on pense, et le lecteur le comprend | « Quel courage ! » dit d'un soldat qui s'enfuit.",
+     "Litote (voir euphémisme) | fait d'atténuer la réalité mais en suggérant davantage | C'est peu brillant ! (= c'est mauvais)",
+     "Métaphore (voir comparaison) | comparaison (comparé et comparant) sans outil de comparaison ; une métaphore est dite filée quand elle se poursuit sur plusieurs lignes | La mer, ce grand miroir, brille de mille feux.",
+     "Métonymie | remplacement d'un terme par un autre qui lui est logiquement associé (contenu/contenant ; partie/tout…) | Je bois un verre.",
+     "Onomatopée | un mot qui imite un bruit | Boum ! Crac !",
+     "Oxymore (voir antithèse) | opposition de deux termes dans un même groupe | Ces vieillards de vingt ans. (J. Rouaud) — Le soleil noir.",
+     "Parallélisme (voir répétition et anaphore) | répétition d'une même structure de phrase | Jamais on ne s'arrête et jamais on ne joue. (V. Hugo)",
+     "Périphrase | remplacement d'un mot par une expression plus développée | Le lion = le roi des animaux. (La Fontaine)",
+     "Personnification | une chose, un animal ou une idée agit ou ressent comme un être humain | La voix de l'océan. (J. Supervielle)",
+     "Pléonasme | répéter dans une même expression deux informations de même sens | Monter en haut, descendre en bas.",
+     "Répétition (voir anaphore et parallélisme) | le même mot revient plusieurs fois pour insister | L'eau, toujours l'eau nue, l'eau perdue, l'eau noire. (M. Butor)",
+     "Synecdoque (voir métonymie) | on nomme une partie d'une chose pour désigner la chose entière | Une voile à l'horizon. (= un bateau tout entier)"
+    ]
+   }
+  },
+  {
+   "id": "attention_piege",
+   "valeurs": {
+    "texte": "Une figure se prouve toujours par une citation : nommer la figure ne suffit pas, il faut montrer les mots qui la font. Et pour distinguer comparaison et métaphore, cherche l'outil de comparaison : s'il y en a un, c'est une comparaison ; s'il n'y en a pas, c'est une métaphore."
+   }
+  },
+  {
+   "id": "a_retenir",
+   "valeurs": {
+    "texte": "Huit familles de figures. Pour analyser : je nomme la figure, je la range dans sa famille, je cite les mots qui la font, je dis l'effet produit."
+   }
+  }
+ ]
+}

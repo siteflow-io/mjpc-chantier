@@ -8,13 +8,12 @@ Année 2026-2027. Les objets vivent au hub sous /site/edt/. Rien n’est obligat
 Calendrier de l’année — aucun objet injecté
 Grille de l’emploi du temps — aucun objet injecté
 Créneaux horaires — aucun objet injecté
+🗓 Ouvrir l’emploi du temps
 ✨ Injecter un objet
 Calendrier de l’année
 Grille de l’emploi du temps
 Créneaux horaires
-📆 Périodes de l’année
-
-Aucune période décl
+📆 Périodes de 
 
 capture 2b-2-section-vide
 
@@ -108,3 +107,41 @@ lectures : {
  "tempsUtile": 50,
  "periodeAuPremierSeptembre": "P1"
 }
+
+« Sortir le JSON actuel » (grille) : {"longueur":7770,"premiereCle":"annee","objetPresent":true}
+
+sans scroll à 1366×768 : {"ecranHaut":768,"ecranVu":768,"fenetre":768,"scrollYaprestentative":0,"casesQuiDebordent":0,"zonesQuiDefilent":0,"documentScrollHeight":768}  ✓
+
+capture 3b-semaine-1366x768
+
+sans scroll à 1920×1080 : {"ecranHaut":1080,"ecranVu":1080,"fenetre":1080,"scrollYaprestentative":0,"casesQuiDebordent":0,"zonesQuiDefilent":0,"documentScrollHeight":1080}  ✓
+
+capture 3b-semaine-1920x1080
+
+LE PRÉVU, semaine du 7 septembre (semaine B) :
+  2026-09-07 08:57-09:52 3E Charles de Gaulle → jouee 3 activités, 1 reportée(s)
+  2026-09-07 10:07-11:02 X Français X. — 4 TURING → horsMjpc
+  2026-09-07 11:04-11:59 4 HUGO → nonImportee
+  2026-09-08 08:57-09:52 4 TURING → nonImportee
+  2026-09-08 10:07-11:02 3 DYLAN Bob → nonImportee
+  2026-09-08 11:04-11:59 X Français X. — 4 BANKSY → horsMjpc
+  2026-09-08 13:00-13:55 4 HUGO → nonImportee
+  2026-09-08 15:07-16:02 3E Charles de Gaulle → prevu « Étude de texte accompagnée : « L'A » heure 1/3
+  2026-09-08 16:04-16:59 3 DYLAN Bob → nonImportee
+  2026-09-09 08:00-08:55 4 HUGO → nonImportee [fil langue]
+  2026-09-09 08:57-09:52 4 TURING → nonImportee [fil langue]
+  2026-09-09 10:07-11:02 3E Charles de Gaulle → prevu « Étude de texte accompagnée : « L'A » heure 2/3
+  2026-09-09 11:04-11:59 X Français X. — 4 PYTHAGORE → horsMjpc
+  2026-09-10 11:04-11:59 4 TURING → nonImportee
+  2026-09-10 15:07-16:02 4 HUGO → nonImportee
+  2026-09-10 16:04-16:59 3E Charles de Gaulle → prevu « Étude de texte accompagnée : « L'A » heure 3/3
+  2026-09-11 08:00-08:55 4 TURING → nonImportee
+  2026-09-11 08:57-09:52 4 HUGO → nonImportee
+  2026-09-11 10:07-11:02 3E Charles de Gaulle → prevu « Interro de cours et analyse logiqu » heure 1/3
+  2026-09-11 11:04-11:59 3 DYLAN Bob → nonImportee
+
+cartes de classe : ["3E Charles de Gaulle | Poésie et peinture au XIXe siè · 1/9"]
+
+photo du prévu : {"nombre":1,"prise":"2026-08-26","depuis":"2026-09-07","cases":20}
+
+après « Fermer l’emploi du temps » : display=none (l’accueil est intact derrière)

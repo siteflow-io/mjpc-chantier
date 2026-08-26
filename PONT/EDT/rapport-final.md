@@ -1,6 +1,6 @@
 # LOT 2bis — EMPLOI DU TEMPS · RAPPORT FINAL
 
-*Candidat `8.71.0` déposé au sas : `PONT/EDT/index.html`, 1 614 210 octets.*
+*Candidat `8.71.0` déposé au sas : `PONT/EDT/index.html`, 1 618 964 octets.*
 *Base : 8.70.1, md5 `6c7560afa9e431f23f89aa6fe167bb6b`. Aucune promotion. Aucune écriture au vrai hub.*
 
 ---
@@ -60,7 +60,7 @@ Elle refuse, vérifié à chaque livraison sur des copies du candidat : un appel
 | moteur `AT_DR_B64` | 309 812 car., md5 `2ba70f9ef8aacb6f` | **identique** |
 | `published` | 97 | **97** |
 | double parseur (`new Function` + acorn ES2020) | — | **vert**, 2 scripts |
-| taille | 1 522 853 o | 1 614 210 o (+91 357) |
+| taille | 1 522 853 o | 1 618 964 o (+96 111) |
 | appels `edt*` hors du bloc | — | `edtArriveeProf`, `edtSectionPanneau`, `edtOuvrir` — les trois portes |
 
 ## ⑥ LES PREUVES — banc `tests/banc-2b.mjs`
@@ -88,6 +88,9 @@ Faux hub en mémoire amorcé par instantané réel, chaque écriture captée et 
 | A/B | table lue ligne à ligne ; 178 concordances, 0 discordance entre les marqueurs et les couleurs du calendrier |
 | téléphone 390×844 | s'affiche, 20 cases, aucune erreur — il ne casse pas |
 | matrice actions × état | voir ci-dessous |
+
+**La vue année, refaite après relecture de Paul (26/08).** Première version : une règle de jalons et des lignes de 20 px collées en haut, sans échelle de temps — « ça a l'air cassé, on ne voit même pas l'année vide. » Il avait raison : sans les mois écrits, rien ne se lit. Refaite avec **douze mois nommés**, les vacances en bandes et les jalons en traits fins limités à la hauteur des pistes, aujourd'hui en trait rouge, une légende en bas, et un message explicite quand aucune classe n'est appariée : « Aucune classe appariée : l'année est vide. » Mesuré : 12 mois · 2 pistes · 1 barre réelle · 1 barre prévue · 7 périodes sans cours · 30 jalons · sans scroll. Banc dédié : `tests/banc-annee.mjs`.
+*Au passage :* les boutons flottants du site (Panneau prof, Mes applications) passaient **par-dessus** l'écran. Ils sont effacés le temps de l'affichage, au même patron que `at-corps-fige`, et reviennent à la fermeture.
 
 **Matrice actions × état**, sur une ardoise propre :
 

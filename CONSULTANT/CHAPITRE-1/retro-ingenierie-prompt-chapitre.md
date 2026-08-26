@@ -231,3 +231,6 @@ Destinataire : Paul, pour affiner le prompt initial. Chaque entrée : l'erreur o
 75. **Ne jamais généraliser une capacité constatée.** Avoir vérifié qu'un ITEM peut être une page HTML ne prouve rien sur les blocs du DÉROULÉ. Dire ce qu'on a vérifié, et seulement cela.
 
 76. **Deux items d'une même séance ne partagent pas un numéro d'ordre.** À vérifier systématiquement avant livraison.
+
+77. **Une capacité qu'on n'a pas pu vérifier ne se déclare pas absente.** L'instance a signalé son incertitude sur les formes du bloc `schema` — c'était juste — puis a agi comme si l'absence était établie, et a fait décider le professeur là-dessus. Onze écrans ont été appauvris.
+    → « Quand un fichier manque pour trancher, on ne conclut pas : on demande le fichier. »

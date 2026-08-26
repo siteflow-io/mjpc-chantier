@@ -183,7 +183,7 @@ après « ne plus compter cette séance » :
    2026-09-10 16:04-16:59 3E Charles de Gaulle → prevu heure 2/3
    2026-09-11 10:07-11:02 3E Charles de Gaulle → prevu heure 3/3
 
-au hub : {"3E Charles de Gaulle":{"heures":{"2026-09-08_15h07-16h02_3E_Charles_de_Gaulle":{"sansSeance":true,"categorie":"Gestion de classe","precision":"retour sur le conseil de classe","pose":1787750385522}},"journal":[{"quand":1787750385522,"heure":"2026-09-08_15h07-16h02_3E_Charles_de_Gaulle","quoi":"ne plus compter cette séance dans la prévision horaire","avant":null,"apres":{"sansSeance":true,"categorie":"Gestion de cla
+au hub : {"3E Charles de Gaulle":{"heures":{"2026-09-08_15h07-16h02_3E_Charles_de_Gaulle":{"sansSeance":true,"categorie":"Gestion de classe","precision":"retour sur le conseil de classe","pose":1787751007661}},"journal":[{"quand":1787751007661,"heure":"2026-09-08_15h07-16h02_3E_Charles_de_Gaulle","quoi":"ne plus compter cette séance dans la prévision horaire","avant":null,"apres":{"sansSeance":true,"categorie":"Gestion de cla
 
 capture 4-3-sans-seance-et-glissement
 
@@ -195,7 +195,7 @@ créneaux proposés pour le déplacement : ["— choisir —","mer 9/9 · 10:07-
 
 après déplacement :
   2026-09-08_15h07-16h02_3E_Charles_de_Gaulle → {"sansSeance":true,"categorie":"Reprise ou rattrapage","precision":"heure déplacée vers le 2026-09-09 10:07-11:02","depl
-  2026-09-09_10h07-11h02_3E_Charles_de_Gaulle → {"epingle":true,"venantDe":"2026-09-08|15:07-16:02","pose":1787750388430}
+  2026-09-09_10h07-11h02_3E_Charles_de_Gaulle → {"epingle":true,"venantDe":"2026-09-08|15:07-16:02","pose":1787751010559}
 
 capture 4-4-heure-deplacee
 

@@ -1,0 +1,128 @@
+{
+ "produit": "prepa_brevet",
+ "titre": "Réécriture : « Les Fenêtres »",
+ "cases": {
+  "titre": true,
+  "sous_titre": true,
+  "classe": true,
+  "annee_scolaire": true,
+  "date_edition": true,
+  "version_document": true,
+  "objectif": true,
+  "competences": true,
+  "notions": true,
+  "domaine_socle": true,
+  "evalue": true,
+  "duree_prevue": true,
+  "oeuvre": true,
+  "auteur": true,
+  "genre": true,
+  "consigne_transfo": true,
+  "extrait_numerote": true,
+  "numerotation_lignes": true,
+  "zone_lignee": true,
+  "attention_piege": true,
+  "bareme": true,
+  "note_sur": true,
+  "materiel": true,
+  "modalite": true,
+  "criteres_je": true,
+  "mention_conserver": true
+ },
+ "valeurs": {
+  "titre": {
+   "texte": "Réécriture : « Les Fenêtres »"
+  },
+  "sous_titre": {
+   "texte": "Exercice de réécriture de l'épreuve de français du brevet."
+  },
+  "objectif": {
+   "texte": "Transformer un passage selon une consigne, en accordant tout ce que le changement entraîne."
+  },
+  "competences": {
+   "items": [
+    "Consolider l'orthographe lexicale et grammaticale"
+   ]
+  },
+  "notions": {
+   "items": [
+    "Le futur simple",
+    "Le futur antérieur",
+    "Les pronoms personnels",
+    "L'accord de l'adjectif attribut"
+   ]
+  },
+  "domaine_socle": {
+   "texte": "Domaine 1 — Les langages pour penser et communiquer"
+  },
+  "evalue": {
+   "texte": "Les formes que la consigne oblige à modifier, et l'exactitude de la copie du reste du texte."
+  },
+  "duree_prevue": {
+   "texte": "15 minutes."
+  },
+  "oeuvre": {
+   "texte": "Petits Poèmes en prose (Le Spleen de Paris), XXXV"
+  },
+  "auteur": {
+   "texte": "Charles Baudelaire (1821-1867)"
+  },
+  "genre": {
+   "texte": "Poésie — poème en prose"
+  },
+  "materiel": {
+   "items": [
+    "ta copie",
+    "un stylo bleu"
+   ]
+  },
+  "modalite": {
+   "texte": "Seul, sans documents."
+  },
+  "note_sur": {
+   "total": "10"
+  },
+  "bareme": {
+   "items": [
+    "Chaque forme correctement modifiée = 1",
+    "Erreur de transformation répétée : 1 puis 0,5 puis 0,25",
+    "Erreur de simple copie = 0,25",
+    "Dix formes sont à modifier"
+   ]
+  },
+  "criteres_je": {
+   "items": [
+    "j'ai souligné toutes mes modifications",
+    "j'ai mis tous les verbes au futur",
+    "j'ai accordé ce que le changement de sujet entraîne",
+    "j'ai recopié le reste du texte sans erreur"
+   ]
+  }
+ },
+ "blocs": [
+  {
+   "id": "consigne_transfo",
+   "valeurs": {
+    "texte": "Réécris ce passage en remplaçant « je » par « nous » et en conjuguant les verbes au futur. Souligne toutes tes modifications."
+   }
+  },
+  {
+   "id": "extrait_numerote",
+   "valeurs": {
+    "texte": "Avec son visage, avec son vêtement, avec son geste, avec presque rien, j'ai refait l'histoire de cette femme, ou plutôt sa légende, et quelquefois je me la raconte à moi-même en pleurant. […] Et je me couche, fier d'avoir vécu et souffert dans d'autres que moi-même."
+   }
+  },
+  {
+   "id": "attention_piege",
+   "valeurs": {
+    "texte": "Tout ne change pas : « son visage », « son vêtement », « sa légende » renvoient à la femme, pas à celui qui parle — ces mots restent tels quels. En revanche, un adjectif qui se rapporte au nouveau sujet doit s'accorder avec lui."
+   }
+  },
+  {
+   "id": "zone_lignee",
+   "valeurs": {
+    "lignes": "10"
+   }
+  }
+ ]
+}

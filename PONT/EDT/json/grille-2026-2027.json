@@ -43,14 +43,7 @@
    "fin": "16:59"
   }
  ],
- "etiquettesPeriodes": [
-  "P1",
-  "P2",
-  "P3",
-  "P4",
-  "PFIN"
- ],
- "note": "Aucun créneau le mercredi après 11h59 : l'établissement n'a pas cours (déclaré par Paul le 26/08). Un créneau sans « periodes » vaut en toutes périodes. Un créneau sans « fil » porte le chapitre principal de la classe. Les créneaux horaires eux-mêmes vivent dans l'objet /site/edt/creneaux/<annee> (fichier creneaux-2026-2027.json) : ils sont éditables et peuvent changer d'une année sur l'autre.",
+ "note": "Une seule injection écrit trois nœuds : les cases (grille), les horaires (creneaux) et le découpage (periodes). Les périodes arrivent avec leurs noms tels qu'ils sont écrits sur la feuille, dates vides ; elles sont ensuite éditables dans l'EDT, et une réinjection ne perd jamais les dates déjà saisies. Les jours ouvrés et les demi-journées sans cours sont déclarés ici, jamais dans le code.",
  "creneaux": [
   {
    "jour": "lundi",
@@ -350,5 +343,47 @@
    "fictif": true,
    "note": "À poser par Paul (§⑥bis) : la classe expérimentale reçoit ses créneaux sur des trous réels de la grille. Trous disponibles, mesurés : lundi 08:00 · lundi 13:00 · lundi 13:57 · lundi 11:04 (A) · mardi 08:00 · mardi 08:57 (A) · mardi 11:04 (A) · mardi 13:57 (B) · mardi 16:04 (A) · jeudi 08:00 · jeudi 08:57 · jeudi 10:07 · jeudi 11:04 (A) · jeudi 13:00 · jeudi 13:57 · vendredi 13:00 · vendredi 13:57 · vendredi 15:07 · vendredi 16:04. Jamais le mercredi après 11h59 : pas cours."
   }
- ]
+ ],
+ "periodes": [
+  {
+   "rang": 1,
+   "nom": "P1",
+   "debut": "",
+   "fin": ""
+  },
+  {
+   "rang": 2,
+   "nom": "P2",
+   "debut": "",
+   "fin": ""
+  },
+  {
+   "rang": 3,
+   "nom": "P3",
+   "debut": "",
+   "fin": ""
+  },
+  {
+   "rang": 4,
+   "nom": "P4",
+   "debut": "",
+   "fin": ""
+  },
+  {
+   "rang": 5,
+   "nom": "PFIN",
+   "debut": "",
+   "fin": ""
+  }
+ ],
+ "jours": [
+  "lundi",
+  "mardi",
+  "mercredi",
+  "jeudi",
+  "vendredi"
+ ],
+ "sansApresMidi": {
+  "mercredi": "12:00"
+ }
 }

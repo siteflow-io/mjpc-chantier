@@ -64,13 +64,19 @@ Dix pages, déjà construites : avant le départ (repères, carte, frise de la b
 
 **② La production commune de l'EPI.** Non arrêtée. Elle pèse sur la tâche finale du chapitre : un EPI aboutit normalement à une réalisation. *Réunion EPI lundi.*
 
-**③ Le recueil de Jean-Pierre Guéno.** À trancher : Paul en dispose-t-il ? Les lettres publiées sont **sous droits** — référençables, non reproductibles dans les feuilles. Les carnets de Louis Barthas et de nombreuses lettres de poilus sont libres.
+**③ ~~Le recueil de Jean-Pierre Guéno~~ — TRANCHÉ le 26/08 : écarté.** Paul ne le retrouve pas ; les lettres publiées sont sous droits. Le chapitre sera un **groupement de textes** libres de droits — catégorie Éduscol exacte pour une anthologie de lettres, et non un pis-aller. La structure du recueil reste utilisable (six saisons : premier été, automnes, hivers, printemps, étés, dernier automne) : une architecture ne se protège pas.
+**Reste à faire** : arrêter le corpus. Textes libres disponibles : carnets de Louis Barthas, lettres des martyrs de Vingré, correspondances numérisées par les archives départementales, Apollinaire, le discours du 11 novembre déjà cité par le carnet d'Angélique.
 
 **④ Le fil langue.** Deux séances de langue avant le départ (mercredis 16 et 30 septembre, semaine A, les deux classes le même jour). Ce que le chapitre attend d'elles n'est pas décidé — et le JSON ne sait pas encore le porter (voir `PREUVE-fil-langue-manque-au-site.md`).
 
 **⑤ Le chapitre couvre-t-il les trois temps** ou s'arrête-t-il au départ, le retour devenant un chapitre distinct ?
 
-## 6. Ce qui est acté
+## 6. La matrice : « Paroles du Jour J »
+
+Paul a déposé son chapitre 5 de l'an dernier, bâti sur des lettres du Débarquement. **Il sert de matrice** : architecture, progression, notions, dispositifs, barèmes. Le contenu change, la démarche reste.
+L'audit complet — ce qui se reprend, les six écarts au canon MJPC, les cinq questions ouvertes — est dans **`AUDIT-matrice-jour-j.md`**.
+
+## 7. Ce qui est acté
 
 - Le chapitre « Paroles de poilus » devient le **chapitre 1 de l'année**, contrainte de calendrier oblige ; « Poésie et peinture » passe après.
 - Diaporama classique d'abord, **JSON ensuite** (mot de Paul, 26/08).

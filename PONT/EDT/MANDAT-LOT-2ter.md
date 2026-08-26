@@ -26,7 +26,25 @@ Jeton sas : **celui que tu as déjà** (il ne sera plus réécrit dans les manda
 - Forme des amorces (lisibles pour le débogage, sans valeur sémantique) : `evc:` événement de classe · `jal:` jalon · `eta:` établissement · `fer:` férié · `vac:` période sans cours · `crn:` créneau de grille · `hor:` créneau horaire · `per:` période · `pho:` photo, suivies d'un condensé du contenu au moment de la pose, **suffixé par la classe quand l'élément en dépend** (décision de Paul).
 - **Collision au premier chargement** : deux éléments produisant la même amorce → le second reçoit `#2`. **Ce suffixe dépend de l'ordre de parcours** : il n'est acceptable que parce qu'il n'a lieu **qu'une fois**, à la pose. Le parcours doit donc être **déterministe** (ordre du tableau tel qu'il est au hub), et le fait est **dit à l'écran** (« deux événements identiques le 14/11 — le second a reçu un identifiant distinct »).
 
-**L'appariement à la réinjection ne se fait PAS par égalité d'`id`.** Un JSON qui arrive peut ne pas porter les `id` en service (première version, JSON venu d'ailleurs, IA qui ne les a pas reconduits). L'appariement se fait donc **par comparaison** : même **niveau** + même **date de début** + même **libellé normalisé** (minuscules, accents retirés, espaces réduits, ponctuation ôtée) → c'est le même élément, il **garde son `id`** et les décisions de Paul qui y sont attachées. Quand l'entrant **porte** un `id` déjà connu, il fait foi et dispense de la comparaison.
+**L'APPARIEMENT À LA RÉINJECTION — gradué et biunivoque, jamais une simple conjonction.**
+Un JSON qui arrive peut ne pas porter les `id` en service (première version, JSON venu d'ailleurs, IA qui ne les a pas reconduits). L'appariement se fait donc en quatre temps, dans cet ordre :
+1. **L'entrant porte un `id` connu** → il fait foi, rien d'autre à faire.
+2. Sinon, **appariement FORT** = **tous** les critères de la famille concordent → même élément, `id` conservé, **silencieux**.
+3. Sinon, **appariement FAIBLE** = **tous les critères sauf un** concordent, et le candidat est **unique** → **proposé à Paul, jamais appliqué seul**. C'est le cas douteux, et il couvre **aussi bien le libellé retouché que la date déplacée** — un événement déplacé du 16/11 au 17/11 est un appariement faible, pas une suppression suivie d'un ajout.
+4. **Biunivocité obligatoire** : **un entrant ne s'apparie qu'à un seul existant, et un existant qu'à un seul entrant.** Sans cette contrainte, quatre « Conseil de classe » identiques s'apparient au hasard et **les coches de Paul permutent**. Un candidat déjà pris n'est plus candidat ; s'il reste une ambiguïté, on ne devine pas : on propose.
+
+**LES CRITÈRES, FAMILLE PAR FAMILLE** — « niveau + date + libellé » ne veut rien dire pour un créneau ou une photo. Une règle nommée pour chacune des neuf familles, sans quoi tu devineras — et c'est la grille qu'on réinjecte le plus souvent :
+| Famille | Critères de l'appariement fort |
+|---|---|
+| événement de classe | niveau · date de début · libellé normalisé |
+| jalon · établissement | date · libellé normalisé |
+| férié | date |
+| période sans cours (vacances) | date de début · date de fin |
+| **créneau de grille** | jour · créneau · semaine (A/B/AB) · classe de la grille |
+| **créneau horaire** | rang **ou** début-fin (l'un des deux suffit : un horaire modifié à la main garde son rang) |
+| **période** | nom normalisé |
+| **photo** | date de prise · lundi photographié |
+Libellé normalisé = minuscules, accents retirés, espaces réduits, ponctuation ôtée. **La classe appariée (`classeMjpc`), les créneaux fictifs et les horaires modifiés à la main sont des DÉCISIONS de Paul portées par l'élément : ils suivent l'`id`, jamais la position.**
 
 ## ② PLUS RIEN PAR INDICE NI PAR RANG
 Cinq fonctions désignent aujourd'hui un élément par sa position ; elles passent **par l'`id`** : `edtJustifier` (par indice), `edtCreneauPoser`, `edtPeriodePoser`, `edtPeriodeSupprimer`, `edtPeriodeDeplacer` (par rang). Le `rang` reste un **ordre d'affichage**, jamais une identité.
@@ -36,7 +54,7 @@ Cinq fonctions désignent aujourd'hui un élément par sa position ; elles passe
 **Aucune écriture n'écrase plus en silence**, sur aucun objet (14 écritures recensées dans ton bloc). Trois règles :
 1. **Ce que Paul a posé à la main survit** à toute réinjection, par appariement d'`id` : coches « heures perdues », appariements de classes (`classeMjpc`), créneaux fictifs, horaires modifiés, dates de périodes, décisions horaires, photos.
 2. **Archivage avant écrasement** — le modèle existe dans le site, copie-le : `chInjecterConfirme` en mode « remplacer » **archive à la corbeille AVANT d'écrire et ABANDONNE si l'archivage échoue** (« rien n'a été remplacé »). Même règle pour tout objet de l'EDT.
-3. **Le différentiel est nominatif**, avant le geste, dans l'écran de vérification : **ce qui arrive** (id inconnu) · **ce qui est seulement déplacé** (même id, date changée : « Stages 3e : 16/11 → 17/11 ») · **ce qui disparaît** (id absent) · **ce qui est conservé** de ses décisions. Un événement qui disparaît **et qui portait une coche** est nommé à part.
+3. **Le différentiel est nominatif**, avant le geste, dans l'écran de vérification : **ce qui arrive** (id inconnu) · **ce qui est seulement déplacé** (apparié fort ou faible, date changée : « Stages 3e : 16/11 → 17/11 ») · **ce qui disparaît** (id absent) · **ce qui est conservé** de ses décisions. Un événement qui disparaît **et qui portait une coche** est nommé à part.
 **Le cas douteux** (défini par la conscience avec Paul) : un `id` disparaît **et** un `id` nouveau apparaît avec **la même date de début et le même niveau** → très probablement le même événement, libellé corrigé. Le site **ne décide pas** : il le signale — « Séjour Verdun 3e (14/10) semble être devenu "Séjour à Verdun 3e" — reconduire ta coche ? » — et Paul confirme.
 
 ## ④ LES PROMPTS D'INJECTION — un seul collage
@@ -48,7 +66,11 @@ Paul : « le prompt, quand je clique sur le bouton copier, doit contenir le json
 L'entrée « Calendrier de l'année… » devient **« Heures perdues »**. Elle ne règle pas le calendrier : elle dit **ce qu'il coûte**.
 - Chaque événement dit **le coût puis l'effet** : « Séjour Verdun 3e · 14-16 octobre · **la 3e Franklin perd 3 heures, les autres classes zéro** → cocher : ces 3 heures ne compteront pas dans son retard. »
 - **Le site propose la coche dès qu'un événement coûte au moins une heure à au moins une classe** (décision de Paul, tour 175). **Un événement qui ne coûte aucune heure n'a pas de case** : rien à décider. *Mesure qui fonde la règle : aucun des 15 événements de classe du calendrier de Paul ne nomme de classe — ils portent tous un niveau (9 en 4e, 6 en 3e) ; une règle « seule classe à perdre » n'aurait presque jamais proposé de case.*
-- **Un événement qui nomme un NIVEAU et pas une classe** (« Stages 3e ») : **le site détecte, propose, Paul confirme, heure par heure** (décision de Paul) — jamais d'application automatique à toutes les classes du niveau.
+- **Un événement qui nomme un NIVEAU et pas une classe** (« Stages 3e ») — c'est le cas de **15 événements sur 15** chez Paul, donc le cas normal, pas l'exception. **Le site calcule et montre d'abord, Paul coche ensuite** (décision de Paul, tour 178) :
+  > **Les stages de 3e commencent — voici tes heures du jour.**
+  > ☐ 3e Franklin · lundi 16 novembre, 10:07 → 1 heure
+  > ☐ 3e Dylan · lundi 16 novembre, 15:07 → 1 heure
+  **Les cases sont VIDES au départ** : c'est Paul qui coche les classes réellement parties, le site ne coche jamais à sa place. Tant que rien n'est coché, **aucune heure n'est retirée**. Les libellés restent au conditionnel avant confirmation (« perdrait », jamais « perd »). Une phrase claire et concrète, pas de vocabulaire d'ingénieur : le site dit ce qui se passe ce jour-là, puis montre les heures concernées.
 - En tête : le total, par classe — « cette année, X heures perdues, dont Y déclarées justifiées ».
 - **Y entrent aussi** : les heures « sans séance » déclarées par Paul, les heures prises par une autre classe (§⑦), et **les heures à replacer jamais replacées** (§⑦).
 
@@ -73,7 +95,7 @@ Elle reste **entière, jusqu'à la fin de l'année scolaire** (804 entrées mesu
 
 ## ⑨ AUCUN TÉLESCOPAGE — vérifié, pas supposé
 Exigence de Paul : « vérifier que le déplacement ne crée pas de télescopages. »
-Après **tout** geste (déplacement, échange, écrasement, heure ajoutée, heure replacée, changement d'emploi du temps), l'état doit satisfaire : **jamais deux classes au même créneau le même jour** · **jamais deux fois la même classe au même créneau** · **jamais une heure sur un jour sans cours, le mercredi après-midi, ou dans le passé**. Écris une fonction de contrôle (`edtVerifierCoherence`) qui rend la liste des télescopages trouvés, **appelée par le banc après chaque geste**, et dont le résultat figure au rapport.
+Après **tout** geste (déplacement, échange, écrasement, heure ajoutée, heure replacée, changement d'emploi du temps), l'état doit satisfaire : **jamais deux classes au même créneau le même jour** · **jamais deux fois la même classe au même créneau** · **jamais une heure sur un jour sans cours, le mercredi après-midi, ou dans le passé** — où **« dans le passé » veut dire un JOUR antérieur à aujourd'hui, jamais une heure antérieure à maintenant** (comme le fait déjà `edtRefusDepot`), sinon le geste que Paul vient d'autoriser au §⑦ (« une heure du matin part l'après-midi ») serait refusé par le contrôle lui-même. Écris une fonction de contrôle (`edtVerifierCoherence`) qui rend la liste des télescopages trouvés, **appelée par le banc après chaque geste**, et dont le résultat figure au rapport.
 **Une classe non appariée ne reçoit aucune décision** (décision de Paul) : les cases « classe non encore importée » ne se saisissent pas et n'ouvrent pas de geste ; message clair (« cette classe n'est pas encore importée — apparie-la d'abord dans le panneau prof »).
 
 ## ⑩ LA VUE ANNÉE — le principe de l'agenda, la forme du calendrier de l'établissement
@@ -96,8 +118,10 @@ Cadrage retrouvé (tours 74-76, validé par Paul) : **photo automatique à la re
 Paul : « je te parle de deux autres champs à créer, dans la partie dates du brevet dans le panneau de contrôle (on peut remplacer par DATES DE L'ANNÉE). et ces champs seront injectés pareil par le json… et si besoin, je remodifierai les dates à la main après, et tout doit se recaler en fonction. »
 **Rien à réinventer** : tu écris déjà `/site/config/brevetDates` à l'injection du calendrier (exception ① du contrat). **Deux champs de plus au même endroit et par le même chemin** : `debutAnnee` et `finAnnee`.
 - **Produits par le prompt du calendrier** (Paul déclare ces dates à l'IA de toute façon), **injectés avec lui**, **modifiables à la main** dans la zone du panneau prof aujourd'hui intitulée « Dates du brevet » — **renommée « Dates de l'année »**, avec les mêmes champs date que `ecrireBrevetDate`.
-- **Tout se recale dessus** : la fin de la liste des destinations, la bascule des heures à replacer (§⑦), l'appartenance d'une date à l'année scolaire. **Et `EDT_ANNEE` cesse d'être deviné** : il est aujourd'hui calculé en dur (`getMonth()>=7`) — il lit désormais `debutAnnee`, avec repli sur le calcul actuel si le champ est absent.
-- **Refus nommés** : fin avant début · écart supérieur à treize mois · date manifestement hors de l'année du calendrier injecté.
+- **Le nœud NE CHANGE PAS DE NOM** : `/site/config/brevetDates` reste `/site/config/brevetDates` (c'est l'exception ① de ton contrat, et `ecrireBrevetDate` s'appuie dessus) ; **seule l'étiquette à l'écran** devient « Dates de l'année ». Les deux champs y sont ajoutés à côté des quatre niveaux.
+- **Tout se recale dessus** : la fin de la liste des destinations, la bascule des heures à replacer (§⑦), l'appartenance d'une date à l'année scolaire. **Et `EDT_ANNEE` cesse d'être deviné** : il est aujourd'hui **calculé au chargement du script** (`getMonth()>=7`) — donc `debutAnnee`, qui arrive **après** la lecture du hub, ne servirait à rien tel quel. `EDT_ANNEE` devient une valeur **recalculée après la lecture des objets**, avec repli sur le calcul actuel si le champ est absent, et **ses treize dépendances dans le bloc sont recensées dans `verif_edt.py`** (aucune ne doit lire une valeur figée avant la lecture).
+- **Refus nommés, chiffrés** : fin avant début · écart supérieur à treize mois · date **en dehors des bornes du calendrier injecté élargies d'un mois** (première et dernière date connues du calendrier ± 1 mois).
+- **Si Paul AVANCE `finAnnee` à la main**, les heures à replacer déjà posées au-delà **ne disparaissent pas** : elles **redeviennent des heures à replacer en attente**, nommément signalées — « 2 heures posées après la nouvelle fin d'année : à replacer avant le 26 juin, ou perdues ? ». Rien ne s'efface sans être dit.
 - *Repère de réalité (Paul) : la fin d'année tombe souvent vers le 25-26 juin, avant le brevet blanc — donc **pas** au début des vacances d'été. Aucune déduction depuis les vacances.*
 - **Preuve** : dates injectées puis modifiées à la main d'une semaine → la liste des destinations, la bascule des heures à replacer et l'année en cours **se recalent**, mesuré avant/après.
 
@@ -107,7 +131,10 @@ Les 133 autres fonctions · le prévu calculé (jamais stocké) · les quatre vu
 ## ⑬ PREUVES EXIGÉES — mesurées, aucune affirmée
 1. **Identité** : tous les objets du hub reçoivent leur `id` au chargement, **sans réinjection** — compté par objet, avant/après ; un `id` existant n'est jamais recalculé ; deux éléments identiques → suffixe `#2` et mention à l'écran.
 2. **La coche ne se trompe plus** : coche sur le 5e événement, insertion d'un événement en tête, relecture → même événement, nommément (c'est le bug latent d'aujourd'hui).
-3. **Différentiel — la preuve porte sur un calendrier RÉELLEMENT modifié**, pas sur une réinjection à l'identique (qui ne prouverait rien) : **trois libellés retouchés** (fautes de frappe corrigées), **un événement déplacé** d'un jour, **un supprimé**, **un ajouté**, cinq coches posées avant. Attendu : les coches des trois retouchés et du déplacé **conservées** ; le supprimé **nommé avant le geste** ; l'ajouté annoncé comme nouveau ; **aucune coche perdue en silence**. Chaque cas relu au hub après injection.
+3. **Différentiel — DEUX BANCS, aux attendus OPPOSÉS.** Le calendrier entrant est **réellement modifié** dans les deux cas (une réinjection à l'identique ne prouverait rien) : **trois libellés retouchés**, **un événement déplacé** d'un jour, **un supprimé**, **un ajouté**, cinq coches posées avant.
+   **(a) Entrant AVEC les `id`** (voie normale, prompt réécrit) → conservation **silencieuse** des coches ; le supprimé nommé ; l'ajouté annoncé.
+   **(b) Entrant SANS les `id`** (première version, JSON venu d'ailleurs, IA qui ne les a pas reconduits — cas explicitement prévu au §①) → le déplacé et les trois retouchés sont **signalés comme candidats** (appariement faible), Paul confirme, **aucune conservation silencieuse** ; le supprimé nommé ; l'ajouté annoncé.
+   Sans le banc (b), le mécanisme d'appariement n'est jamais éprouvé : il suffirait de lire les `id` pour passer au vert.
 4. **Archivage** : une injection qui écrase archive d'abord ; **archivage simulé en échec → rien n'est écrit**, message « rien n'a été remplacé ».
 5. **Prompt en un collage** : le presse-papiers contient consigne **+** JSON en service (longueur et première clé mesurées) ; sans objet au hub, la mention « première injection ».
 6. **Heures perdues** : le coût par classe affiché pour chaque événement du calendrier réel ; cases proposées **partout où au moins une heure est perdue par au moins une classe**, aucune case là où rien n'est perdu ; un événement de niveau → proposition heure par heure, jamais d'application automatique ; total en tête.
@@ -115,9 +142,12 @@ Les 133 autres fonctions · le prévu calculé (jamais stocké) · les quatre vu
 8. **Trois issues** : refus confirmé → rien écrit · échange → les deux classes permutent, **zéro heure perdue**, aucune trace touchée · écrasement → heure à replacer créée, rappelée, et posée plus tard → épinglée ; laissée jusqu'à la fin de l'année → entre aux heures perdues. **Une heure déjà lancée : refusée.** Une heure déjà déplacée rechangée : annoncée puis appliquée.
 9. **Liste** : les créneaux occupés apparaissent, nommés, et ouvrent les trois issues ; recherche par mois, par numéro de semaine, par type A/B ; les 653 créneaux libres toujours proposés.
 10. **Télescopages** : `edtVerifierCoherence` appelée après chacun des six gestes → **zéro télescopage**, chiffre au rapport. Une classe non appariée : aucun geste possible, message affiché.
-11. **Vue Année** : sur le calendrier réel — les 12 mois, les jours numérotés, **les 15 événements de classe et les 59 d'établissement présents et comptés** (aucun perdu en silence), les 30 jalons, les vacances en fond, les pastilles par classe, les jours sans cours aplatis, **aucun trait traversant**, la légende ; **dézoomé : tout sur une page** ; **zoomé : défilement horizontal, libellés entiers** ; capture des deux états et **pourcentage de surface utile occupé : au moins 55 % dézoomé** sur le calendrier réel (seuil chiffré ; en dessous, l'écran est vide — la version précédente mesurait 58,9 %).
+11. **Vue Année** : sur le calendrier réel — les 12 mois, les jours numérotés, **les 15 événements de classe et les 59 d'établissement présents et comptés** (aucun perdu en silence), les 30 jalons, les vacances en fond, les pastilles par classe, les jours sans cours aplatis, **aucun trait traversant**, la légende ; **dézoomé : tout sur une page** ; **zoomé : défilement horizontal, libellés entiers** ; capture des deux états et **pourcentage de surface utile occupé : au moins 55 % dézoomé** sur le calendrier réel (seuil chiffré ; en dessous, l'écran est vide). **La méthode de mesure est la MÊME que celle du rapport où 58,9 % a été mesuré**, et elle est **nommée dans le rapport** — sinon le chiffre ne veut rien dire.
 12. **Photos** : identifiant sur chaque photo ; **prise automatique à la rentrée et au début d'une période** (dates forcées au banc) ; deux photos le même jour cohabitent sans s'écraser.
-13. **Non-régression** : la liste complète du §⑫, chiffrée.
+13. **Appariement biunivoque** : un calendrier contenant **quatre événements homonymes le même mois** (« Conseil de classe ») → chacun garde **sa** coche, aucune permutation, mesuré nommément.
+14. **Une règle par famille** : réinjection de la **grille** avec un créneau déplacé et un horaire modifié à la main → l'appariement de classe (`classeMjpc`), les créneaux fictifs et l'horaire modifié **survivent**, chacun relu au hub.
+15. **`EDT_ANNEE`** : `debutAnnee` posé au 1er septembre → l'année en cours, la liste des destinations et la bascule des heures à replacer s'y conforment ; champ absent → repli sur le calcul actuel, sans erreur.
+16. **Non-régression** : la liste complète du §⑫, chiffrée.
 
 ## ⑭ MÉTHODE
 **Découpe en livraisons courtes**, chacune poussée au sas et close par un arrêt ; Paul relance par « continuer » (le « continuer » natif plante une fois sur deux). Découpe proposée : **①** identité des objets + les cinq fonctions par `id` · **②** différentiel, archivage avant écrasement, cas douteux · **③** prompts en un collage + JSON régénérés · **④** heures perdues + alerte mensuelle · **⑤** trois issues, heure à replacer, liste, télescopages · **⑥** vue Année · **⑦** photos + bancs complets, garde, matrice, séquence de test, rapport final.

@@ -16,6 +16,7 @@ Tu lis ce qui est écrit. Tu n'inventes aucun créneau, aucune classe, aucune sa
 4. **Les créneaux « X Français X. »** sont des groupes partagés avec un collègue. Ils vont dans le JSON — je veux les voir sur ma semaine — mais avec `"mjpc": false` : **ils ne comptent jamais dans ma progression**, ils ne portent jamais de séance.
 5. **Une case qui n'est pas un cours** (une concertation, une liste de noms d'enseignants) va elle aussi dans le JSON avec `"mjpc": false` et un `motif`.
 6. **Les étiquettes de période** — de petits libellés du genre « EDT P1 EDT P2 » ou « EDT P3 EDT P4 EDT PFIN » collés à une case — disent que ce créneau ne vaut que pendant ces périodes. Recopie-les dans `periodes`, sous la forme `["P1","P2"]`. **Une case sans étiquette vaut en toutes périodes : laisse `periodes` absent.** Ne cherche aucune date : les dates des périodes sont saisies ailleurs, à la rentrée.
+7. **Le découpage de l'année se déclare, il ne se devine pas.** Relève **tous** les noms de période que tu vois sur la feuille, dans leur ordre d'apparition, et donne-les-moi dans un tableau `periodes` séparé, avec des dates **vides**. Ne complète jamais la liste, n'en retire aucune, n'invente aucun nom : si ma feuille en cite cinq, tu m'en rends cinq.
 
 ## Le fil « langue » — ce que tu ne peux pas lire sur la grille et que je te dis
 
@@ -36,7 +37,7 @@ Recopie le nom de la classe **exactement comme il est écrit sur la grille** dan
 
 ## La forme exacte de ta réponse
 
-Un seul objet JSON, rien avant, rien après, pas de commentaires, pas de balises de code.
+Un seul objet JSON, rien avant, rien après, pas de commentaires, pas de balises de code. **Il porte trois choses d'un coup** : mes cases (`creneaux`), les horaires de l'année (`creneauxDuSite`), et le découpage en périodes (`periodes`). Ajoute aussi `jours`, la liste des jours ouvrés, et `sansApresMidi`, les demi-journées où l'établissement n'a pas cours.
 
 ```
 {
@@ -46,7 +47,12 @@ Un seul objet JSON, rien avant, rien après, pas de commentaires, pas de balises
   {"rang":1,"debut":"08:00","fin":"08:55"},
   {"rang":2,"debut":"08:57","fin":"09:52"}
  ],
- "etiquettesPeriodes": ["P1","P2","P3","P4","PFIN"],
+ "periodes": [
+  {"rang":1,"nom":"P1","debut":"","fin":""},
+  {"rang":2,"nom":"P2","debut":"","fin":""}
+ ],
+ "jours": ["lundi","mardi","mercredi","jeudi","vendredi"],
+ "sansApresMidi": {"mercredi":"12:00"},
  "creneaux": [
   {"jour":"lundi","creneau":"08:57-09:52","semaine":"AB","classe":"3 FRANKLIN Aretha","salle":"9","mjpc":true,"classeMjpc":""},
   {"jour":"mardi","creneau":"15:07-16:02","semaine":"B","classe":"3 FRANKLIN Aretha","salle":"9","mjpc":true,"classeMjpc":"","periodes":["P1","P2"]},
@@ -63,9 +69,10 @@ Les jours s'écrivent en toutes lettres et en minuscules : `lundi`, `mardi`, `me
 - Chaque `creneau` d'une case correspond à une ligne de `creneauxDuSite`, au caractère près.
 - Aucune case n'a deux cours à la même `semaine` : un `jour` + `creneau` + `semaine` n'apparaît qu'une fois. Si tu trouves un doublon, ne choisis pas — signale-le.
 - Aucune case `AB` ne coexiste avec une case `A` ou `B` sur le même jour et le même créneau.
-- Le mercredi n'a aucun créneau après 11:59 : l'établissement n'a pas cours.
+- Aucune case ne tombe dans une demi-journée que tu as déclarée dans `sansApresMidi`.
+- Chaque nom cité dans le `periodes` d'une case existe dans le tableau `periodes`.
 - Compte le nombre d'heures par classe en semaine A et en semaine B, et donne-moi ces deux chiffres. C'est comme ça que je vois d'un coup d'œil si tu as mal lu une case.
 
 ## Après le JSON
 
-Écris, en dehors du JSON, la liste des cases que tu as lues avec un doute, et les deux comptes d'heures par classe.
+Écris, en dehors du JSON, la liste des cases que tu as lues avec un doute, les deux comptes d'heures par classe, et les noms de période que tu as relevés.

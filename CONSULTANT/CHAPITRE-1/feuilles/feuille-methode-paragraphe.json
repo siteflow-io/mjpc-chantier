@@ -1,0 +1,106 @@
+{
+ "produit": "fiche_methode",
+ "titre": "Fiche méthode : le paragraphe citation-justification",
+ "cases": {
+  "titre": true,
+  "sous_titre": true,
+  "annee_scolaire": true,
+  "date_edition": true,
+  "version_document": true,
+  "objectif": true,
+  "competences": true,
+  "notions": true,
+  "domaine_socle": true,
+  "mention_conserver": true,
+  "travail_a_faire": true,
+  "criteres_je": true,
+  "methode": true,
+  "exemple": true,
+  "contre_exemple": true,
+  "attention_piege": true,
+  "a_retenir": true,
+  "citation": true
+ },
+ "valeurs": {
+  "titre": {
+   "texte": "Fiche méthode : le paragraphe citation-justification"
+  },
+  "sous_titre": {
+   "texte": "Affirmation, citation intégrée, explication — la réponse type de l'étude de texte. À retrouver toute l'année au rayon Fiches méthode."
+  },
+  "objectif": {
+   "texte": "À la fin de cette leçon, tu sauras rédiger une réponse qui affirme une idée et la prouve par une citation expliquée."
+  },
+  "competences": {
+   "items": [
+    "Adopter des stratégies et des procédures d'écriture efficaces",
+    "Exploiter des lectures pour enrichir son écrit"
+   ]
+  },
+  "notions": {
+   "items": [
+    "Thèse, arguments et exemples",
+    "La métaphore"
+   ]
+  },
+  "domaine_socle": {
+   "texte": "Domaine 1 — Les langages pour penser et communiquer"
+  },
+  "criteres_je": {
+   "items": [
+    "j'affirme mon idée en une phrase",
+    "je cite le texte avec exactitude, entre guillemets",
+    "j'intègre la citation dans ma phrase",
+    "j'explique ce que la citation montre"
+   ]
+  },
+  "travail_a_faire": {
+   "texte": "✍️ Rédige dans ton cahier un paragraphe citation-justification sur un poème du chapitre, puis vérifie-le avec la liste « J'ai réussi si… »."
+  }
+ },
+ "blocs": [
+  {
+   "id": "methode",
+   "valeurs": {
+    "titre": "✍️ Les quatre étapes",
+    "items": [
+     "L'affirmation : mon idée sur le texte, en une phrase.",
+     "La citation : exacte, entre guillemets ; une barre oblique marque le changement de vers.",
+     "L'intégration : la citation ne reste jamais seule, elle est prise dans ma phrase.",
+     "L'explication : ce que la citation montre, avec les mots des fiches notions."
+    ]
+   }
+  },
+  {
+   "id": "citation",
+   "valeurs": {
+    "ref": "Charles Baudelaire, « L'Homme et la mer », Les Fleurs du mal, 1857 — le texte modèle",
+    "texte": "Homme libre, toujours tu chériras la mer !\nLa mer est ton miroir ; tu contemples ton âme\nDans le déroulement infini de sa lame,\nEt ton esprit n'est pas un gouffre moins amer."
+   }
+  },
+  {
+   "id": "exemple",
+   "valeurs": {
+    "texte": "Un paragraphe réussi, pas à pas — Étape 1, l'affirmation : Baudelaire montre que l'homme se reconnaît dans la mer. Étapes 2 et 3, la citation intégrée : le poète l'affirme dès le deuxième vers, par une métaphore : « La mer est ton miroir ». Étape 4, l'explication : en regardant la mer, l'homme se regarde lui-même — la mer ne reflète pas son visage, mais son âme."
+   }
+  },
+  {
+   "id": "contre_exemple",
+   "valeurs": {
+    "texte": "« La mer reflète l'homme. \"La mer est ton miroir\". » — la citation est posée seule, sans phrase autour ni explication : elle ne prouve rien. Il manque l'intégration et l'explication."
+   }
+  },
+  {
+   "id": "attention_piege",
+   "valeurs": {
+    "texte": "Cite avec exactitude : un mot changé, et la citation ne vaut plus rien. Recopie depuis le texte, jamais de mémoire — et vérifie les guillemets."
+   }
+  },
+  {
+   "id": "a_retenir",
+   "valeurs": {
+    "texte": "Affirmer, citer, intégrer, expliquer : quatre étapes, toujours dans cet ordre. Une citation sans explication ne prouve rien."
+   }
+  }
+ ]
+}

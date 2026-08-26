@@ -183,7 +183,7 @@ après « ne plus compter cette séance » :
    2026-09-10 16:04-16:59 3E Charles de Gaulle → prevu heure 2/3
    2026-09-11 10:07-11:02 3E Charles de Gaulle → prevu heure 3/3
 
-au hub : {"3E Charles de Gaulle":{"heures":{"2026-09-08_15h07-16h02_3E_Charles_de_Gaulle":{"sansSeance":true,"categorie":"Gestion de classe","precision":"retour sur le conseil de classe","pose":1787752535198}},"journal":[{"quand":1787752535198,"heure":"2026-09-08_15h07-16h02_3E_Charles_de_Gaulle","quoi":"ne plus compter cette séance dans la prévision horaire","avant":null,"apres":{"sansSeance":true,"categorie":"Gestion de cla
+au hub : {"3E Charles de Gaulle":{"heures":{"2026-09-08_15h07-16h02_3E_Charles_de_Gaulle":{"sansSeance":true,"categorie":"Gestion de classe","precision":"retour sur le conseil de classe","pose":1787753102689}},"journal":[{"quand":1787753102689,"heure":"2026-09-08_15h07-16h02_3E_Charles_de_Gaulle","quoi":"ne plus compter cette séance dans la prévision horaire","avant":null,"apres":{"sansSeance":true,"categorie":"Gestion de cla
 
 capture 4-3-sans-seance-et-glissement
 
@@ -195,7 +195,7 @@ créneaux proposés pour le déplacement : ["— choisir parmi 940 créneaux —
 
 après déplacement :
   2026-09-08_15h07-16h02_3E_Charles_de_Gaulle → {"sansSeance":true,"categorie":"Reprise ou rattrapage","precision":"heure déplacée vers le 2026-09-09 10:07-11:02","depl
-  2026-09-09_10h07-11h02_3E_Charles_de_Gaulle → {"epingle":true,"venantDe":"2026-09-08|15:07-16:02","pose":1787752538187}
+  2026-09-09_10h07-11h02_3E_Charles_de_Gaulle → {"epingle":true,"venantDe":"2026-09-08|15:07-16:02","pose":1787753105660}
 
 capture 4-4-heure-deplacee
 
@@ -276,9 +276,10 @@ téléphone 390×844 : {"affiche":"flex","cases":20,"defileInterne":false,"erreu
 capture 6-3-telephone
 
 MATRICE actions × état :
-  prevu → ["✕","▶ Ouvrir le pilotage et lancer","Enregistrer"] · 2 liste(s)
-  jouee → ["✕"] · 0 liste(s)
-  sansSeance → ["✕","Enregistrer"] · 2 liste(s)
-  nonImportee → ["✕"] · 0 liste(s)
-  horsMjpc → ["✕"] · 0 liste(s)
-  rienDePret → ["✕","Ouvrir Mes chapitres…","▶ Ouvrir le pilotage et lancer","Enregistrer"] · 2 liste(s)
+  prevu → ["✕","▶ Ouvrir le pilotage et lancer","Enregistrer"] · 2 liste(s) · glissé : saisissable · cible : acceptée
+  jouee → ["✕"] · 0 liste(s) · glissé : non saisissable · cible : acceptée
+  sansSeance → ["✕","Enregistrer"] · 2 liste(s) · glissé : non saisissable · cible : acceptée
+  nonImportee → ["✕"] · 0 liste(s) · glissé : non saisissable · cible : acceptée
+  horsMjpc → ["✕"] · 0 liste(s) · glissé : non saisissable · cible : acceptée
+  rienDePret → ["✕","Ouvrir Mes chapitres…","▶ Ouvrir le pilotage et lancer","Enregistrer"] · 2 liste(s) · glissé : non saisissable · cible : acceptée
+  ajoutee → ["✕","▶ Ouvrir le pilotage et lancer","Enregistrer"] · 2 liste(s) · glissé : saisissable · cible : acceptée

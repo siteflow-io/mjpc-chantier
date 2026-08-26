@@ -37,6 +37,33 @@
 19. **Dans le bandeau du déroulé, tu cliques « 📅 Emploi du temps ».** → Ta semaine revient.
 20. **Tu cliques une case d'une classe sans chapitre publié.** → Un message : « Aucune séance prête pour la … — ouvrir l'atelier pour en préparer une ? », avec le choix de rester. **Jamais de saut sans prévenir.**
 
+## D bis · LE GESTE À LA MAIN — glisser une case
+
+*Tout ce qui suit reste faisable sans glissé, par la modale : les étapes 14 à 17 et la liste « Déplacer cette heure, ou en ajouter une… ».*
+
+17a. **Tu prends une case qui porte une séance et tu la fais glisser** (souris ou doigt). → La case de départ s'estompe, **les cases où tu peux déposer s'éclairent**, les autres restent éteintes. Échap annule sans rien écrire.
+17b. **Tu essaies de saisir une heure déjà jouée, une heure sortie de la prévision, un « X Français ».** → Elles ne se saisissent pas : elles ne portent aucune séance à venir.
+17c. **Tu déposes sur une case libre.** → Une question, deux boutons : « **Changement d'emploi du temps — durable** » avec sa date d'effet, ou « **Déplacer cette heure — une fois** ». Rien d'autre.
+17d. **Tu choisis « Déplacer cette heure ».** → Exactement le même résultat que par la liste : départ vidé, arrivée 📌, ↶ Annuler défait les deux côtés.
+17e. **Tu recommences et tu choisis « Changement d'emploi du temps »**, en laissant la date proposée. → **L'emploi du temps change à partir de cette date.** Aucune décision horaire n'est écrite, aucune heure jouée n'est touchée. Le bandeau de la semaine affiche « emploi du temps modifié le … ».
+17f. **Tu reviens sur une semaine antérieure à la date d'effet.** → L'ancien emploi du temps est là, intact. Le passé ne bouge jamais.
+17g. **Tu essaies de déposer** dans le passé · un jour de vacances · le mercredi après-midi · sur une case d'une autre classe. → **Quatre refus, chacun avec sa phrase.** Rien n'est écrit.
+17h. **Sur la vue Mois**, le même geste d'un jour à l'autre : la question te demande alors **sur quel créneau**.
+17i. **Sur la vue Année**, pas de glissé — la légende le dit.
+
+## D ter · UNE HEURE EN PLUS, SUR UN TROU
+
+17j. **Tu ouvres une case et tu déroules « Déplacer cette heure, ou en ajouter une… ».** → La liste va **jusqu'à la fin de l'année scolaire**, groupée par semaine. Un champ au-dessus filtre par date (tape `12/05`).
+17k. **Tu repères une ligne marquée « — créneau libre, heure ajoutée ».** C'est un créneau où tu n'as aucune classe.
+17l. **Tu la choisis.** → Ce n'est **pas** un déplacement : aucune heure n'est retirée ailleurs. Une case bleue apparaît, épinglée, marquée « heure ajoutée », et **elle compte** : la séance suivante décale d'un cran.
+
+## D quater · LES VERSIONS DE L'EMPLOI DU TEMPS
+
+17m. **Panneau prof → Emploi du temps → « Versions de l'emploi du temps ».** → La liste des versions, chacune avec sa date d'effet, son libellé, son nombre de cases, et **« en vigueur »** sur celle d'aujourd'hui.
+17n. **Tu cliques « + Nouvelle version à partir d'une date ».** → Elle recopie l'emploi du temps en vigueur : tu n'as pas à tout ressaisir.
+17o. **Tu essaies de poser deux versions au même jour, une date hors de l'année, ou de retirer la dernière version.** → **Trois refus nommés.**
+17p. **Tu lis le journal en bas du bloc.** → Les changements d'emploi du temps y sont, **séparés** du journal des modifications horaires de la modale. Deux journaux, deux natures.
+
 ## E · LES ABSENTS
 
 21. **Tu cliques sur une heure déjà jouée.** → La liste de tes élèves, avec « Absents de cette heure (0 sur 29) ».

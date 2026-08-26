@@ -88,7 +88,14 @@ const releve = { get:0, ecritures:0, sorties:0, erreursConsole:[] };
   const ecarterAlerteFiches = () => page.evaluate(() => {
     const o = document.getElementById('fi-overlay'); if(o) o.remove(); return !!o;
   });
-  const capture = async (nom) => { await ecarterAlerteFiches(); await new Promise(r=>setTimeout(r,120));
+  /* les modales d'information du site (« Compris ») sont refermées avant capture :
+     ce sont des retours de geste, pas l'écran qu'on veut prouver. */
+  const fermerModales = () => page.evaluate(() => {
+    let n=0;
+    document.querySelectorAll('button').forEach(b => { if(/^\s*Compris\s*$/.test(b.textContent)){ b.click(); n++; } });
+    return n;
+  });
+  const capture = async (nom) => { await ecarterAlerteFiches(); await fermerModales(); await new Promise(r=>setTimeout(r,180));
     await page.screenshot({path:path.join(SORTIE,nom+'.png'), fullPage:false}); journal.push('capture '+nom); };
 
   /* ── ① l'entrée existe dans le panneau prof ─────────────────────────── */
@@ -270,6 +277,80 @@ const releve = { get:0, ecritures:0, sorties:0, erreursConsole:[] };
     periodeAuPremierSeptembre: edtPeriodeA('2026-09-07')
   }));
   journal.push('lectures : ' + JSON.stringify(lect, null, 1));
+
+  /* ══════════ ③b — LE PRÉVU ET LA SEMAINE ══════════ */
+  await page.evaluate((txt) => { edtInjOuvrir('grille'); document.getElementById('edt-inj-coller').value=txt;
+    edtInjVerifier('grille'); edtInjInjecter('grille'); }, fs.readFileSync(path.join(RACINE,'tests/grille-appariee.json'),'utf8'));
+  await new Promise(r => setTimeout(r, 1200));
+
+  /* le bouton « Sortir le JSON actuel » : ce qui atterrit dans le presse-papiers */
+  await page.evaluate(() => { window.__PRESSE='';
+    Object.defineProperty(navigator, 'clipboard', {configurable:true,
+      value: {writeText:(t)=>{window.__PRESSE=t;return Promise.resolve();}}}); });
+  const presse = await page.evaluate(() => { edtSortirJson('grille');
+    return {longueur: window.__PRESSE.length,
+            premiereCle: window.__PRESSE ? Object.keys(JSON.parse(window.__PRESSE))[0] : '(vide)',
+            objetPresent: !!EDT.grille}; });
+  journal.push('« Sortir le JSON actuel » (grille) : ' + JSON.stringify(presse));
+
+  /* l'écran s'ouvre sur la semaine du 7 septembre 2026 */
+  await page.evaluate(() => { EDT_VUE.ancre = '2026-09-07'; edtOuvrir(); });
+  await new Promise(r => setTimeout(r, 1800));
+  await page.evaluate(() => { EDT_VUE.ancre = '2026-09-07'; edtPeindreSemaine(); });
+  await new Promise(r => setTimeout(r, 700));
+
+  for(const [l, h] of [[1366,768],[1920,1080]]){
+    await page.setViewport({width:l, height:h});
+    await new Promise(r => setTimeout(r, 500));
+    await page.evaluate(() => edtPeindreSemaine());
+    await new Promise(r => setTimeout(r, 400));
+    const m = await page.evaluate(() => {
+      const e = document.getElementById('edt-ecran');
+      const debordent = Array.from(document.querySelectorAll('#edt-ecran .edt-case'))
+        .filter(c => c.scrollHeight > c.clientHeight + 1).length;
+      window.scrollTo(0, 4000);                       /* on ESSAIE de faire défiler */
+      const apresEssai = window.scrollY;
+      const interne = Array.from(document.querySelectorAll('#edt-ecran *'))
+        .filter(x => x.scrollHeight > x.clientHeight + 1 && getComputedStyle(x).overflowY === 'auto').length;
+      return {ecranHaut: e.scrollHeight, ecranVu: e.clientHeight, fenetre: window.innerHeight,
+              scrollYaprestentative: apresEssai, casesQuiDebordent: debordent, zonesQuiDefilent: interne,
+              documentScrollHeight: document.documentElement.scrollHeight};
+    });
+    const vert = (m.ecranHaut <= m.ecranVu) && (m.ecranVu === m.fenetre)
+              && (m.scrollYaprestentative === 0) && (m.casesQuiDebordent === 0) && (m.zonesQuiDefilent === 0);
+    journal.push('sans scroll à '+l+'×'+h+' : ' + JSON.stringify(m) + (vert ? '  \u2713' : '  \u2717'));
+    await capture('3b-semaine-'+l+'x'+h);
+  }
+  await page.setViewport({width:1366, height:768});
+  await new Promise(r => setTimeout(r, 400));
+  await page.evaluate(() => edtPeindreSemaine());
+  await new Promise(r => setTimeout(r, 400));
+
+  /* ce que le prévu a posé, case par case */
+  const proj = await page.evaluate(() => {
+    const c = edtProjeter('2026-09-07', 5);
+    return Object.keys(c).sort().map(k => { const x=c[k];
+      return x.iso+' '+x.creneau+' '+(x.classeMjpc||x.classe)+' → '+x.nature
+        + (x.titre ? (' « '+x.titre.slice(0,34)+' » heure '+x.heure+'/'+x.sur) : '')
+        + (x.fil ? (' [fil '+x.fil+']') : '')
+        + (x.activites!==undefined ? (' '+x.activites+' activités, '+x.reportees+' reportée(s)') : ''); });
+  });
+  journal.push('LE PRÉVU, semaine du 7 septembre (semaine B) :\n  ' + proj.join('\n  '));
+
+  const cartes = await page.evaluate(() => Array.from(document.querySelectorAll('#edt-ecran .edt-carte')).map(c => c.innerText.replace(/\n/g,' | ')));
+  journal.push('cartes de classe : ' + JSON.stringify(cartes));
+
+  /* la photo du prévu */
+  await page.evaluate(() => edtPhoto());
+  await new Promise(r => setTimeout(r, 800));
+  const photo = await page.evaluate(() => { const p = window.__HUB.site.edt.photos['2026-2027'];
+    return {nombre: p.photos.length, prise: p.photos[0].prise, depuis: p.photos[0].depuis, cases: Object.keys(p.photos[0].cellules).length}; });
+  journal.push('photo du prévu : ' + JSON.stringify(photo));
+
+  await page.evaluate(() => edtFermer());
+  await new Promise(r => setTimeout(r, 300));
+  const ferme = await page.evaluate(() => document.getElementById('edt-ecran').style.display);
+  journal.push('après « Fermer l\u2019emploi du temps » : display=' + ferme + ' (l\u2019accueil est intact derrière)');
 
   const jrn = await page.evaluate(() => window.__JOURNAL);
   releve.get = jrn.filter(x=>x.m==='GET').length;

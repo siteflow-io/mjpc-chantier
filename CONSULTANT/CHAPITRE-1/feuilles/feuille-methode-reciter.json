@@ -1,0 +1,112 @@
+{
+ "produit": "fiche_methode",
+ "titre": "Fiche méthode : lire et réciter un poème à voix haute",
+ "cases": {
+  "titre": true,
+  "sous_titre": true,
+  "annee_scolaire": true,
+  "date_edition": true,
+  "version_document": true,
+  "objectif": true,
+  "competences": true,
+  "notions": true,
+  "domaine_socle": true,
+  "mention_conserver": true,
+  "travail_a_faire": true,
+  "criteres_je": true,
+  "methode": true,
+  "exemple": true,
+  "contre_exemple": true,
+  "attention_piege": true,
+  "a_retenir": true
+ },
+ "valeurs": {
+  "titre": {
+   "texte": "Fiche méthode : lire et réciter un poème à voix haute"
+  },
+  "sous_titre": {
+   "texte": "Préparer sa voix, puis sa mémoire. À retrouver toute l'année au rayon Fiches méthode."
+  },
+  "objectif": {
+   "texte": "À la fin de cette leçon, tu sauras préparer une lecture à voix haute, puis une récitation, en respectant le rythme du vers."
+  },
+  "competences": {
+   "items": [
+    "Exploiter les ressources expressives et créatives de la parole"
+   ]
+  },
+  "notions": {
+   "items": [
+    "Le e muet",
+    "L'enjambement",
+    "Les sonorités du poème"
+   ]
+  },
+  "domaine_socle": {
+   "texte": "Domaine 1 — Les langages pour penser et communiquer"
+  },
+  "criteres_je": {
+   "items": [
+    "je sais le texte sans erreur",
+    "je fais entendre chaque mot",
+    "je respecte le rythme du vers (e muets, enjambements)",
+    "je rends la récitation vivante"
+   ]
+  },
+  "travail_a_faire": {
+   "texte": "🎙️ Prépare ta récitation avec les étapes de cette fiche : un peu chaque jour vaut mieux que tout la veille."
+  }
+ },
+ "blocs": [
+  {
+   "id": "methode",
+   "valeurs": {
+    "titre": "🔊 Préparer la voix",
+    "items": [
+     "Lis le poème en entier, en silence, pour le comprendre : on ne fait pas entendre ce qu'on ne comprend pas.",
+     "Repère les e muets qui comptent : ils se prononcent (na-vi-re-glis-sant), les autres s'effacent.",
+     "Repère les enjambements : la voix suit la phrase, pas le vers — ne t'arrête pas au bout de la ligne si la phrase continue.",
+     "Repère les liaisons et les sonorités : elles se font entendre.",
+     "Choisis où respirer : à la ponctuation, jamais au milieu d'un groupe de mots.",
+     "Lis à voix haute deux fois, en articulant chaque mot, sans te presser."
+    ]
+   }
+  },
+  {
+   "id": "methode",
+   "valeurs": {
+    "titre": "🧠 Préparer la mémoire",
+    "items": [
+     "Apprends strophe par strophe : lis trois fois la strophe, cache-la, récite-la.",
+     "Enchaîne : récite la strophe apprise + la nouvelle, depuis le début.",
+     "Récite le poème entier à quelqu'un, ou enregistre-toi et écoute-toi.",
+     "Le jour venu : respire, regarde la classe, et pense au sens de ce que tu dis."
+    ]
+   }
+  },
+  {
+   "id": "exemple",
+   "valeurs": {
+    "texte": "« La rue assourdissante autour de moi hurlait. » — le e de « rue » et celui de « assourdissante » s'effacent devant la voyelle : La-ru(e)-as-sour-dis-sant(e)-au-tour-de-moi-hur-lait. Douze syllabes à faire entendre, pas quatorze."
+   }
+  },
+  {
+   "id": "contre_exemple",
+   "valeurs": {
+    "texte": "Réciter d'une traite, sans respirer ni regarder personne, en avalant les fins de vers : le texte est su, mais rien ne s'entend — deux critères sur quatre sont perdus."
+   }
+  },
+  {
+   "id": "attention_piege",
+   "valeurs": {
+    "texte": "Ne confonds pas vitesse et fluidité : une récitation vivante est souvent plus lente qu'une lecture ordinaire. C'est le sens qui commande le rythme."
+   }
+  },
+  {
+   "id": "a_retenir",
+   "valeurs": {
+    "texte": "Comprendre, puis faire entendre : les e muets qui comptent, les enjambements que la voix suit, les respirations à la ponctuation. La mémoire s'apprend strophe par strophe."
+   }
+  }
+ ]
+}

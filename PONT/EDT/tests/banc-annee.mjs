@@ -27,7 +27,7 @@ await p.evaluateOnNewDocument((s)=>{window.__HUB=JSON.parse(JSON.stringify(s));
    return Promise.resolve(new Response(JSON.stringify(bd),{status:200}));}
   return Promise.resolve(new Response('null',{status:200}));};},store);
 
-await p.goto('file://'+R+'/candidat-8.71.0.html',{waitUntil:'networkidle0'});
+await p.goto('file://'+R+'/candidat-8.72.0.html',{waitUntil:'networkidle0'});
 await new Promise(r=>setTimeout(r,1500));
 await p.evaluate(()=>{document.body.classList.add('admin-mode');edtOuvrir();});
 await new Promise(r=>setTimeout(r,2200));
@@ -40,7 +40,7 @@ const surface=()=>p.evaluate(()=>{
   const e=document.getElementById('edt-ecran');
   const utile=e.clientHeight-e.querySelector('.edt-tete').getBoundingClientRect().height;
   let porte=0;
-  e.querySelectorAll('.edt-an-echelle,.edt-an-piste,.edt-an-legende,.edt-an-vide').forEach(x=>{
+  e.querySelectorAll('.edt-an-echelle,.edt-an-bande,.edt-an-piste,.edt-an-legende,.edt-an-vide').forEach(x=>{
     porte+=x.getBoundingClientRect().height; });
   return {utileEnPx:Math.round(utile), porteurEnPx:Math.round(porte),
           pourcent:Math.round(porte/utile*1000)/10,
@@ -48,7 +48,12 @@ const surface=()=>p.evaluate(()=>{
           motifsEcrits:Array.from(e.querySelectorAll('.edt-an-motif')).map(x=>x.textContent),
           mois:e.querySelectorAll('.edt-an-mois').length,
           vacancesNommees:Array.from(e.querySelectorAll('.edt-an-vac i')).map(x=>x.textContent),
-          jalonsCliquables:e.querySelectorAll('.edt-an-jalon[onclick]').length,
+          reperesDansLaBande:e.querySelectorAll('.edt-an-bande .edt-an-rep').length,
+          reperesRegroupes:Array.from(e.querySelectorAll('.edt-an-rep i')).filter(x=>/^\d+ le /.test(x.textContent)).length,
+          traitsQuiTraversentLesPistes:e.querySelectorAll('.edt-an-scene .edt-an-rep, .edt-an-scene .edt-an-jalon').length,
+          evenementsDeClasseSurLesPistes:e.querySelectorAll('.edt-an-piste .edt-an-evt').length,
+          justifiesMarques:e.querySelectorAll('.edt-an-evt-just').length,
+          comptesAffiches:(e.querySelector('.edt-lg-t')||{}).textContent||'',
           scrollY:(window.scrollTo(0,4000),window.scrollY)};});
 
 await p.evaluate(()=>{EDT_VUE.mode='annee';edtPeindre();});

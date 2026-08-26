@@ -1,0 +1,6 @@
+# LOT 2bis — RÉPONSES DE PAUL À ①b (26/08), à intégrer dès ②
+1. **Fins de vacances : elles SONT dans le xlsx** — chaque jour de vacances porte un fond gris (`A6A6A6`) dans la colonne du mois ; tu as lu les valeurs des cellules, pas leurs remplissages. Corrige le prompt calendrier (« lire le fond gris jour par jour ; les vacances vont du premier au dernier jour gris ») et le JSON : plus aucun `finAConfirmer`.
+2. **Événements de classe** : ne garder que ceux des niveaux de Paul (3e, 4e). Le séjour St Malo est un voyage de 6e (en plusieurs vagues) : hors périmètre, il disparaît du JSON. La réunion de parents du 7 janvier : événement d'établissement (soirée), pas de classe.
+3. **DNB** : le calendrier fait foi ; **l'injection du calendrier écrit `/site/config/brevetDates` (3e) = le premier jour du DNB** (25 juin 2027 — « on garde le premier jour du dnb comme jour du dnb »). C'est la seule écriture de l'EDT hors `/site/edt/` : elle entre au contrat comme exception nommée, et `verif_edt.py` la connaît.
+4. Rien n'est en dur : grille et calendrier sont des objets du hub injectés et modifiables ; les huit créneaux `AT_EDT` restent la seule constante du site, préexistante.
+Mot : **continuer** (②).

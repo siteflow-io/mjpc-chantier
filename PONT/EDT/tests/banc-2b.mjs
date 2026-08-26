@@ -347,10 +347,192 @@ const releve = { get:0, ecritures:0, sorties:0, erreursConsole:[] };
     return {nombre: p.photos.length, prise: p.photos[0].prise, depuis: p.photos[0].depuis, cases: Object.keys(p.photos[0].cellules).length}; });
   journal.push('photo du prévu : ' + JSON.stringify(photo));
 
+  /* ══════════ ④ — LA MODALE, LES DÉCISIONS, ANNULER, LE JOURNAL ══════════ */
+  const casePrevue = '2026-09-08|15:07-16:02|3 FRANKLIN Aretha';
+  await page.evaluate((k) => edtCaseClic(k), casePrevue);
+  await new Promise(r => setTimeout(r, 400));
+  const mo = await page.evaluate(() => { const m=document.getElementById('edt-modale');
+    return m ? {ouverte:true, voile:!!document.querySelector('.edt-voile'), texte:m.innerText.slice(0,240),
+                boutons:Array.from(m.querySelectorAll('button')).map(b=>b.textContent.trim()),
+                categories:Array.from(m.querySelectorAll('#edt-cat option')).map(o=>o.textContent)} : {ouverte:false}; });
+  journal.push('modale ouverte sur une case prévue : ' + JSON.stringify(mo, null, 1));
+  await capture('4-1-modale-ouverte');
+
+  /* déplaçable, contenue dans la zone, descend aux deux tiers */
+  const bouge = await page.evaluate(() => {
+    const m=document.getElementById('edt-modale'), t=m.querySelector('.edt-mo-tete');
+    const av={x:EDT_MOD.x,y:EDT_MOD.y};
+    t.dispatchEvent(new PointerEvent('pointerdown',{clientX:av.x+40,clientY:av.y+10,bubbles:true}));
+    window.dispatchEvent(new PointerEvent('pointermove',{clientX:av.x+300,clientY:av.y+400,bubbles:true}));
+    const pendant={x:EDT_MOD.x,y:EDT_MOD.y};
+    window.dispatchEvent(new PointerEvent('pointermove',{clientX:9999,clientY:9999,bubbles:true}));
+    const pousse={x:EDT_MOD.x,y:EDT_MOD.y,limiteX:window.innerWidth-m.offsetWidth-4,limiteY:Math.round(window.innerHeight*0.72)};
+    window.dispatchEvent(new PointerEvent('pointerup',{bubbles:true}));
+    return {avant:av, apresDeplacement:pendant, poussee:pousse};
+  });
+  journal.push('modale déplaçable et contenue : ' + JSON.stringify(bouge));
+  await capture('4-2-modale-deplacee');
+
+  /* « ne plus compter cette séance » : catégorie + précision, la grille se recalcule */
+  const avantDecision = await page.evaluate((k) => { const c=edtCellule(k); return c.nature+' '+(c.titre||''); }, casePrevue);
+  await page.evaluate(() => { document.getElementById('edt-cat').selectedIndex = 4;   /* Gestion de classe */
+    document.getElementById('edt-prec').value = 'retour sur le conseil de classe';
+    document.querySelector('.edt-mo-bloc button').click(); });
+  await new Promise(r => setTimeout(r, 1000));
+  const apresDecision = await page.evaluate((k) => {
+    const c = EDT_VUE.cellules[k];
+    const suite = Object.keys(EDT_VUE.cellules).sort().map(z => { const x=EDT_VUE.cellules[z];
+      return x.iso+' '+x.creneau+' '+(x.classeMjpc||x.classe)+' → '+x.nature+(x.titre?(' heure '+x.heure+'/'+x.sur):''); })
+      .filter(l => l.indexOf('3E Charles') >= 0);
+    return {case:c.nature+' / '+(c.categorie||'')+' / '+(c.precision||''), grille:suite};
+  }, casePrevue);
+  journal.push('avant décision : ' + avantDecision);
+  journal.push('après « ne plus compter cette séance » :\n  ' + apresDecision.case + '\n  la grille glisse :\n   ' + apresDecision.grille.join('\n   '));
+  const auHub = await page.evaluate(() => JSON.stringify(window.__HUB.site.edt.decisions['2026-2027']));
+  journal.push('au hub : ' + auHub.slice(0, 420));
+  await capture('4-3-sans-seance-et-glissement');
+
+  /* ↶ Annuler : la décision est retirée, la grille revient */
+  await page.evaluate((k) => edtCaseClic(k), casePrevue);
+  await new Promise(r => setTimeout(r, 300));
+  await page.evaluate(() => { const b=Array.from(document.querySelectorAll('#edt-modale button'))
+    .filter(x => x.textContent.indexOf('Annuler') >= 0)[0]; if(b) b.click(); });
+  await new Promise(r => setTimeout(r, 1000));
+  const apresAnnul = await page.evaluate((k) => { const c=EDT_VUE.cellules[k];
+    return {nature:c.nature, titre:c.titre||'', heure:(c.heure||'')+'/'+(c.sur||''),
+            decisionRestante: !!((window.__HUB.site.edt.decisions['2026-2027']['3E Charles de Gaulle'].heures||{})['2026-09-08_15h07-16h02_3E_Charles_de_Gaulle'])}; }, casePrevue);
+  journal.push('après ↶ Annuler : ' + JSON.stringify(apresAnnul));
+
+  /* le journal garde les deux gestes */
+  const jrnClasse = await page.evaluate(() => (window.__HUB.site.edt.decisions['2026-2027']['3E Charles de Gaulle'].journal||[]).map(x => x.quoi));
+  journal.push('journal des modifications horaires : ' + JSON.stringify(jrnClasse));
+
+  /* déplacer une heure vers un autre créneau : départ vidé, arrivée épinglée */
+  await page.evaluate((k) => edtCaseClic(k), casePrevue);
+  await new Promise(r => setTimeout(r, 300));
+  const cibles = await page.evaluate(() => { const s=document.querySelectorAll('#edt-modale select')[0];
+    return Array.from(s.options).slice(0,4).map(o => o.textContent); });
+  journal.push('créneaux proposés pour le déplacement : ' + JSON.stringify(cibles));
+  await page.evaluate(() => { const s=document.querySelectorAll('#edt-modale select')[0];
+    s.selectedIndex = 1; s.dispatchEvent(new Event('change')); });
+  await new Promise(r => setTimeout(r, 1200));
+  const apresDep = await page.evaluate(() => {
+    const h = window.__HUB.site.edt.decisions['2026-2027']['3E Charles de Gaulle'].heures;
+    return Object.keys(h).map(k => k + ' → ' + JSON.stringify(h[k]).slice(0,120));
+  });
+  journal.push('après déplacement :\n  ' + apresDep.join('\n  '));
+  await capture('4-4-heure-deplacee');
+
+  /* Échap ferme la modale, puis l'écran */
+  await page.evaluate(() => window.dispatchEvent(new KeyboardEvent('keydown',{key:'Escape'})));
+  await new Promise(r => setTimeout(r, 300));
+  const apEchap1 = await page.evaluate(() => ({modale:!!document.getElementById('edt-modale'),
+    ecran:document.getElementById('edt-ecran').style.display}));
+  await page.evaluate(() => window.dispatchEvent(new KeyboardEvent('keydown',{key:'Escape'})));
+  await new Promise(r => setTimeout(r, 300));
+  const apEchap2 = await page.evaluate(() => ({ecran:document.getElementById('edt-ecran').style.display,
+    figeHtml:document.documentElement.classList.contains('edt-fige')}));
+  journal.push('Échap une fois : ' + JSON.stringify(apEchap1) + ' | Échap deux fois : ' + JSON.stringify(apEchap2));
+
   await page.evaluate(() => edtFermer());
   await new Promise(r => setTimeout(r, 300));
   const ferme = await page.evaluate(() => document.getElementById('edt-ecran').style.display);
   journal.push('après « Fermer l\u2019emploi du temps » : display=' + ferme + ' (l\u2019accueil est intact derrière)');
+
+  /* ══════════ ④ bis — LA PORTE DU PILOTAGE, COMPARÉE CHAMP À CHAMP ══════════
+     À gauche : le clic « ▶ Ouvrir le pilotage et lancer » depuis une case de l'EDT.
+     À droite : le chemin d'aujourd'hui — ouvrir le chapitre, la vue Déroulé,
+     choisir la classe et le créneau, appuyer sur « ▶ Lancer la séance ».
+     Les deux états du site doivent être identiques. */
+  const releveEtat = () => page.evaluate(() => ({
+    chapitre: AT.edChap ? (AT.edChap.level + '/' + AT.edChap.chnum) : null,
+    seance: ATVUES.snum,
+    vue: ATVUES.vue,
+    regime: AT_DR_REGIME,
+    cours: AT_DR_COURS ? (AT_DR_COURS.classeNom + ' ' + AT_DR_COURS.debut + '-' + AT_DR_COURS.fin) : null,
+    copieJouee: (function(){ try{ const c=window.__HUB.site['3e'].chapitres[0].seances[1].deroule_joue;
+      return c ? Object.keys(c).join(',') : null; }catch(e){ return 'n/a'; } })()
+  }));
+
+  await page.evaluate(() => { EDT_VUE.ancre='2026-09-07'; edtOuvrir(); });
+  await new Promise(r => setTimeout(r, 1600));
+  await page.evaluate(() => { EDT_VUE.ancre='2026-09-07'; edtPeindreSemaine(); });
+  await new Promise(r => setTimeout(r, 600));
+  const casePourLancer = '2026-09-11|10:07-11:02|3 FRANKLIN Aretha';
+  await page.evaluate((k) => edtCaseClic(k), casePourLancer);
+  await new Promise(r => setTimeout(r, 400));
+  const boutonVu = await page.evaluate(() => { const b=Array.from(document.querySelectorAll('#edt-modale button'))
+    .filter(x => x.textContent.indexOf('Ouvrir le pilotage') >= 0)[0];
+    if(!b) return document.getElementById('edt-modale').innerText.slice(0,160);
+    b.click(); return 'cliqué'; });
+  journal.push('bouton de pilotage : ' + boutonVu);
+  await new Promise(r => setTimeout(r, 2500));
+  const diag = await page.evaluate(() => ({
+    elements: ['at-dr-classe','at-dr-creneau','at-dr-debut','at-dr-tete','at-zone'].map(i => i+':'+(!!document.getElementById(i))),
+    moteur: !!window.DR, vue: ATVUES.vue, regime: AT_DR_REGIME,
+    classeChoisie: (document.getElementById('at-dr-classe')||{}).value,
+    optionsClasse: document.getElementById('at-dr-classe') ? Array.from(document.getElementById('at-dr-classe').options).map(o=>o.text) : null,
+    creneauChoisi: (document.getElementById('at-dr-creneau')||{}).value,
+    debut: (document.getElementById('at-dr-debut')||{}).value
+  }));
+  journal.push('DIAGNOSTIC du lancement : ' + JSON.stringify(diag));
+  await new Promise(r => setTimeout(r, 2600));
+  const parEDT = await releveEtat();
+  journal.push('état du site après « ▶ Ouvrir le pilotage et lancer » (depuis l\u2019EDT) :\n  ' + JSON.stringify(parEDT));
+  await capture('4-5-pilotage-lance-depuis-edt');
+
+  /* le même geste, par le chemin d'aujourd'hui, sur une page neuve */
+  const page2 = await navigateur.newPage();
+  await page2.setViewport({width:1366,height:768});
+  await page2.evaluateOnNewDocument((storeInit) => {
+    window.__HUB = JSON.parse(JSON.stringify(storeInit));
+    const lire = (c) => { const p=String(c).split('/').filter(Boolean); let n=window.__HUB;
+      for(const k of p){ if(n===null||typeof n!=='object'||!(k in n)) return null; n=n[k]; } return n===undefined?null:n; };
+    const poser = (c,v) => { const p=String(c).split('/').filter(Boolean); let n=window.__HUB;
+      for(let k=0;k<p.length-1;k++){ if(typeof n[p[k]]!=='object'||n[p[k]]===null) n[p[k]]={}; n=n[p[k]]; }
+      if(v===null) delete n[p[p.length-1]]; else n[p[p.length-1]]=v; };
+    window.fetch = function(u, o){ const s2=String(u);
+      if(s2.indexOf('firebasedatabase.app') >= 0){ const c=s2.split('firebasedatabase.app')[1].split('?')[0].replace(/\.json$/,'');
+        const m=((o&&o.method)||'GET').toUpperCase();
+        if(m==='GET') return Promise.resolve(new Response(JSON.stringify(lire(c)),{status:200}));
+        let b=null; try{ b=JSON.parse((o&&o.body)||'null'); }catch(e){}
+        if(m==='DELETE') poser(c,null); else poser(c,b);
+        return Promise.resolve(new Response(JSON.stringify(b),{status:200})); }
+      return Promise.resolve(new Response('null',{status:200})); };
+  }, store);
+  await page2.goto('file://'+CAND, {waitUntil:'networkidle0'});
+  await new Promise(r => setTimeout(r, 1600));
+  const parLeSite = await page2.evaluate(() => new Promise((res) => {
+    document.body.classList.add('admin-mode');
+    loadClasses(function(){
+      atChargerChapitres('3e', function(){
+        atEditerChapitre('3e','0');
+        ATVUES.snum='1';
+        atVuesAller('deroule');
+        setTimeout(function(){
+          const sel=document.getElementById('at-dr-classe');
+          for(let i=0;i<sel.options.length;i++){ if(sel.options[i].text==='3E Charles de Gaulle') sel.selectedIndex=i; }
+          const cr=document.getElementById('at-dr-creneau');
+          for(let j=0;j<cr.options.length;j++){ if(cr.options[j].text==='10:07-11:02') cr.selectedIndex=j; }
+          document.getElementById('at-dr-debut').value='10:07';
+          document.querySelector('.at-dr-lancer').click();
+          setTimeout(function(){ res({
+            chapitre: AT.edChap ? (AT.edChap.level+'/'+AT.edChap.chnum) : null,
+            seance: ATVUES.snum, vue: ATVUES.vue, regime: AT_DR_REGIME,
+            cours: AT_DR_COURS ? (AT_DR_COURS.classeNom+' '+AT_DR_COURS.debut+'-'+AT_DR_COURS.fin) : null,
+            copieJouee: (function(){ try{ const c=window.__HUB.site['3e'].chapitres[0].seances[1].deroule_joue;
+              return c ? Object.keys(c).join(',') : null; }catch(e){ return 'n/a'; } })()
+          }); }, 1400);
+        }, 900);
+      });
+    });
+  }));
+  journal.push('état du site après « ▶ Lancer la séance » (chemin d\u2019aujourd\u2019hui) :\n  ' + JSON.stringify(parLeSite));
+  const champs = ['chapitre','seance','vue','regime','cours','copieJouee'];
+  const ecarts = champs.filter(c => JSON.stringify(parEDT[c]) !== JSON.stringify(parLeSite[c]));
+  journal.push('COMPARAISON champ à champ : ' + (ecarts.length ? ('ÉCARTS sur ' + ecarts.join(', ')) : 'les six champs sont identiques \u2713'));
+  await page2.screenshot({path:path.join(SORTIE,'4-6-pilotage-chemin-du-site.png')});
+  await page2.close();
 
   const jrn = await page.evaluate(() => window.__JOURNAL);
   releve.get = jrn.filter(x=>x.m==='GET').length;

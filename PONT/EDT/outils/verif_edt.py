@@ -43,9 +43,9 @@ CONTRAT = {
 # concernés. C'est la question du contrat, posée exactement.
 # ── ② les portes : les seuls appels `edt*` autorisés hors du bloc ───────────
 PORTES = {
+    'edtArriveeProf',      # porte ① — l'arrivée du professeur (fin de loginAsProf)
     'edtSectionPanneau',   # porte ② — le panneau prof
-    'edtOuvrir',           # porte ① — l'arrivée du professeur   (à venir, lot ③)
-    'edtDepuisDeroule',    # porte ③ — le bandeau du déroulé      (à venir, lot ③)
+    'edtOuvrir',           # porte ③ — le bouton du bandeau du déroulé
 }
 # ── ③ les exceptions nommées, hors de /site/edt/ ───────────────────────────
 #  ① le jour du DNB, écrit à l'injection du calendrier (décision de Paul, 26/08) ;

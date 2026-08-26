@@ -18436,6 +18436,7 @@ function edtPoserCss(){
    +'.edt-b i{display:block;font-style:normal;font-size:.63rem;color:#9c8f74;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}'
    +'.edt-b-prevu{border-left-color:rgba(155,155,155,.5)}'
    +'.edt-b-fil{border-left-color:rgba(160,140,224,.75)}'
+   +'.edt-b-ajout{border-left-color:#7fb0e0;background:rgba(127,176,224,.06)}'
    +'.edt-b-joue{border-left-color:#34d399;background:rgba(52,211,153,.07)}'
    +'.edt-b-sans{border-left-color:#e0b978;background:rgba(224,185,120,.07)}'
    +'.edt-b-hors{border-left-color:rgba(120,120,120,.4);color:#7a7060;font-size:.64rem}'
@@ -18671,6 +18672,24 @@ function edtLundiCourant(){ return edtLundiDe(EDT_VUE.ancre||edtAujourdhui()); }
 function edtAujourdhui(){ return new Date(Date.now()-new Date().getTimezoneOffset()*60000).toISOString().slice(0,10); }
 
 /* ── LA PROJECTION ────────────────────────────────────────────────────────── */
+/* Une HEURE AJOUTÉE n'est pas un déplacement : c'est une heure de plus, posée
+   sur un trou de l'emploi du temps. Elle n'existe dans aucune version de la
+   grille — elle vit dans les décisions, et le prévu la fait apparaître comme
+   une case ordinaire, épinglée. Elle COMPTE dans la prévision horaire. */
+function edtHeuresAjoutees(iso){
+  var out=[],d=edtDecisions();
+  Object.keys(d).forEach(function(classe){
+    var h=(d[classe]||{}).heures||{};
+    Object.keys(h).forEach(function(k){
+      if(!h[k]||!h[k].ajoutee)return;
+      if(String(k).slice(0,10)!==iso)return;
+      var m=/^\d{4}-\d{2}-\d{2}_(\d{2})h(\d{2})-(\d{2})h(\d{2})_/.exec(k);
+      if(!m)return;
+      out.push({classe:classe,creneau:m[1]+':'+m[2]+'-'+m[3]+':'+m[4]});
+    });
+  });
+  return out;
+}
 function edtDecisionPour(nomClasse,iso,creneau){
   var d=((EDT.decisions&&EDT.decisions[nomClasse])||{}).heures||{};
   return d[edtCleHeure(iso,creneau,nomClasse)]||null;
@@ -18680,16 +18699,24 @@ function edtProjeter(isoDebut,nbJours){
   for(var j=0;j<nbJours;j++){
     var iso=edtPlusJour(isoDebut,j);
     var off=edtJourSansCours(iso);
-    var cases=edtCasesDuJour(iso);
+    var cases=edtCasesDuJour(iso).slice();
+    edtHeuresAjoutees(iso).forEach(function(a){
+      var deja=false;
+      cases.forEach(function(x){ if(x&&x.creneau===a.creneau&&x.classeMjpc===a.classe)deja=true; });
+      if(!deja)cases.push({jour:edtNomDuJour(iso),creneau:a.creneau,semaine:'AB',
+                           classe:a.classe,classeMjpc:a.classe,mjpc:true,ajoutee:true});
+    });
+    cases.sort(function(a,b){return String(a.creneau).localeCompare(String(b.creneau));});
     for(var k=0;k<cases.length;k++){
       var c=cases[k], cle=iso+'|'+c.creneau+'|'+(c.classe||'');
       var cel={iso:iso,creneau:c.creneau,classe:c.classe,classeMjpc:c.classeMjpc||'',
-               salle:c.salle||'',fil:c.fil||null,dispute:!!c.__dispute,nature:'prevu'};
+               salle:c.salle||'',fil:c.fil||null,dispute:!!c.__dispute,ajoutee:!!c.ajoutee,nature:'prevu'};
       if(off){ cel.nature='horsTemps'; cel.libelle=off.libelle||off.motif; cellules[cle]=cel; continue; }
       if(c.mjpc===false){ cel.nature='horsMjpc'; cellules[cle]=cel; continue; }
       if(!cel.classeMjpc){ cel.nature='nonImportee'; cellules[cle]=cel; continue; }
       var nom=cel.classeMjpc;
       var dec=edtDecisionPour(nom,iso,c.creneau);
+      if(dec&&dec.ajoutee)cel.ajoutee=true;
       if(dec&&dec.sansSeance){ cel.nature='sansSeance'; cel.categorie=dec.categorie||''; cel.precision=dec.precision||''; cellules[cle]=cel; continue; }
       /* le réel : une heure déjà jouée colore la case */
       var fileCle=nom+'|'+(c.fil||'');
@@ -18818,10 +18845,10 @@ function edtCelluleHtml(c){
   if(c.nature==='jouee')return '<div class="edt-b edt-b-joue"><b>'+escapeHtml(c.classeMjpc)+'</b><i>'
     +c.activites+' activité'+(c.activites>1?'s':'')+(c.reportees?(' \u00b7 '+c.reportees+' reportée'+(c.reportees>1?'s':'')):'')+'</i></div>';
   if(c.nature==='rienDePret')return '<div class="edt-b edt-b-vide"><b>'+escapeHtml(c.classeMjpc)+'</b><i>aucune séance prête</i></div>';
-  return '<div class="edt-b edt-b-prevu'+(c.fil?' edt-b-fil':'')+'">'
-    +(c.epingle?'\ud83d\udccc ':'')+'<b>'+escapeHtml(c.classeMjpc)+'</b>'
+  return '<div class="edt-b edt-b-prevu'+(c.fil?' edt-b-fil':'')+(c.ajoutee?' edt-b-ajout':'')+'">'
+    +(c.epingle||c.ajoutee?'\ud83d\udccc ':'')+'<b>'+escapeHtml(c.classeMjpc)+'</b>'
     +'<u>'+escapeHtml(c.titre||'')+'</u>'
-    +'<i>'+(c.fil?('fil '+escapeHtml(c.fil)+' \u00b7 '):'')+'heure '+c.heure+'/'+c.sur
+    +'<i>'+(c.ajoutee?'heure ajoutée \u00b7 ':'')+(c.fil?('fil '+escapeHtml(c.fil)+' \u00b7 '):'')+'heure '+c.heure+'/'+c.sur
     +(c.dispute?' \u00b7 périodes non saisies':'')+'</i></div>';
 }
 function edtDateLisible(iso){
@@ -19025,18 +19052,48 @@ function edtRienDePret(c){
 }
 
 /* ── LES CRÉNEAUX OÙ DÉPLACER — les prochains de cette classe ─────────────── */
+/* Toutes les destinations possibles, jusqu'à la FIN DE L'ANNÉE SCOLAIRE :
+   ses propres créneaux (un déplacement), et les trous de son emploi du temps
+   (une heure ajoutée). Groupées par semaine. Les jours sans cours sont exclus. */
 function edtCreneauxOu(c,jours){
   var out=[],depart=edtPlusJour(c.iso,1);
-  for(var j=0;j<(jours||21);j++){
+  var fin=String(EDT_ANNEE).split('-')[1]+'-07-31';
+  var max=(jours||400);
+  for(var j=0;j<max;j++){
     var iso=edtPlusJour(depart,j);
+    if(iso>fin)break;
     if(edtJourSansCours(iso))continue;
+    var jour=edtNomDuJour(iso);
+    if(!jour||jour==='samedi'||jour==='dimanche')continue;
+    var pris={},sien={};
     edtCasesDuJour(iso).forEach(function(x){
       if(!x||x.mjpc===false)return;
-      if((x.classeMjpc||'')!==c.classeMjpc)return;
-      out.push({v:iso+'|'+x.creneau,lib:edtDateCourte(iso)+' \u00b7 '+x.creneau});
+      if((x.classeMjpc||'')===c.classeMjpc)sien[x.creneau]=true; else pris[x.creneau]=true;
+    });
+    var sem='sem. du '+edtDateCourte(edtLundiDe(iso)||iso);
+    ((typeof AT_EDT!=='undefined')?AT_EDT:[]).forEach(function(k){
+      if(edtRefusDepot(c,{iso:iso,creneau:k}))return;
+      if(sien[k])out.push({v:iso+'|'+k,sem:sem,lib:edtDateCourte(iso)+' \u00b7 '+k});
+      else if(!pris[k])out.push({v:iso+'|'+k,sem:sem,ajout:true,
+                                 lib:edtDateCourte(iso)+' \u00b7 '+k+'  \u2014 créneau libre, heure ajoutée'});
     });
   }
   return out;
+}
+function edtOptionsOu(l){
+  var h='',sem=null;
+  l.forEach(function(x){
+    if(x.sem!==sem){ if(sem)h+='</optgroup>'; h+='<optgroup label="'+escapeHtml(x.sem)+'">'; sem=x.sem; }
+    h+='<option value="'+escapeHtml(x.v)+(x.ajout?'|+':'')+'">'+escapeHtml(x.lib)+'</option>';
+  });
+  return h+(sem?'</optgroup>':'');
+}
+function edtAjouterHeure(cle,cible){
+  var c=edtCellule(cle); if(!c||!c.classeMjpc||!cible)return;
+  var p=String(cible).split('|');
+  edtEcrireDecision(c.classeMjpc,edtCleHeure(p[0],p[1],c.classeMjpc),
+    {ajoutee:true,epingle:true,pose:Date.now()},
+    'heure ajoutée sur un créneau libre \u2014 '+p[0]+' '+p[1]);
 }
 
 /* ── LE RENDU DE LA MODALE ───────────────────────────────────────────────── */
@@ -19087,11 +19144,13 @@ function edtPeindreModale(){
     if(dec&&c.nature!=='jouee'){
       h+='<button class="edt-btn edt-large" onclick="edtAnnulerDecision('+JSON.stringify(cle).replace(/"/g,'&quot;')+')">\u21b6 Annuler cette décision</button>';
     } else if(c.nature!=='jouee'&&!dec){
-      var ou=edtCreneauxOu(c,21);
-      h+='<div class="edt-mo-bloc"><label class="edt-lab">Déplacer cette heure vers un autre créneau\u2026</label>'
-        +'<select class="edt-sel" onchange="if(this.value)edtDeplacerVers('+JSON.stringify(cle).replace(/"/g,'&quot;')+',this.value)">'
-        +'<option value="">\u2014 choisir \u2014</option>'
-        +ou.map(function(x){return '<option value="'+escapeHtml(x.v)+'">'+escapeHtml(x.lib)+'</option>';}).join('')
+      var ou=edtCreneauxOu(c);
+      h+='<div class="edt-mo-bloc"><label class="edt-lab">Déplacer cette heure, ou en ajouter une\u2026</label>'
+        +'<p class="edt-mini-t">Jusqu\u2019à la fin de l\u2019année. Un « créneau libre » n\u2019est pas un déplacement : c\u2019est une heure de plus, épinglée, qui compte dans la prévision.</p>'
+        +'<input class="edt-sel" id="edt-ou-filtre" placeholder="filtrer par date (ex. 12/05)" oninput="edtFiltrerOu(this.value)">'
+        +'<select class="edt-sel" id="edt-ou" onchange="if(this.value)edtChoisirOu('+JSON.stringify(cle).replace(/"/g,'&quot;')+',this.value)">'
+        +'<option value="">\u2014 choisir parmi '+ou.length+' créneaux \u2014</option>'
+        +edtOptionsOu(ou)
         +'</select></div>'
         +'<div class="edt-mo-bloc"><label class="edt-lab">Ne plus compter cette séance dans la prévision horaire</label>'
         +'<select class="edt-sel" id="edt-cat">'
@@ -19103,6 +19162,24 @@ function edtPeindreModale(){
   }
   h+='</div>';
   m.innerHTML=h;
+}
+function edtChoisirOu(cle,valeur){
+  var p=String(valeur).split('|');
+  if(p[2]==='+')return edtAjouterHeure(cle,p[0]+'|'+p[1]);
+  return edtDeplacerVers(cle,p[0]+'|'+p[1]);
+}
+function edtFiltrerOu(txt){
+  var sel=document.getElementById('edt-ou'); if(!sel)return;
+  var t=String(txt||'').trim().toLowerCase();
+  Array.prototype.forEach.call(sel.querySelectorAll('option'),function(o){
+    if(!o.value)return;
+    o.hidden=!!(t&&o.textContent.toLowerCase().indexOf(t)<0);
+  });
+  Array.prototype.forEach.call(sel.querySelectorAll('optgroup'),function(g){
+    var vu=false;
+    Array.prototype.forEach.call(g.querySelectorAll('option'),function(o){ if(!o.hidden)vu=true; });
+    g.hidden=!vu;
+  });
 }
 function edtJournalHtml(nomClasse){
   var j=((edtDecisions()[nomClasse]||{}).journal)||[];

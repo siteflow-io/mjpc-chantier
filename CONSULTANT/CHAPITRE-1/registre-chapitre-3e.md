@@ -565,8 +565,10 @@ Après dépôt au sas, lecture de `DEROULE/deroule97.html` — le moteur du dér
 `carte` (carte mentale) · `frise` · `arbre` · `cycle` · `tableau`.
 Chacune a son format de `src` : la frise attend « année : événement » · l'arbre se structure par l'**indentation** (deux espaces = un niveau) · le tableau sépare ses colonnes par `|` · la carte attend « Étiquette : a, b, c » · le cycle une ligne par étape.
 
-**Conséquence** : les onze écrans convertis de `schema` en `consigne` l'ont été sur un rapport faux. Neuf d'entre eux devraient redevenir des schémas — trois frises (Baudelaire, les inventions, les repères de « L'Étranger »), un cycle (les quatre étapes du paragraphe), cinq cartes. Le détail écran par écran est dans `AMENDEMENT-formes-schema.md`.
+**Conséquence** : les onze écrans convertis de `schema` en `consigne` l'ont été sur un rapport faux. Neuf d'entre eux devraient redevenir des schémas — trois frises (Baudelaire, les inventions, les repères de « L'Étranger »), un cycle (les quatre étapes du paragraphe), cinq cartes. Le détail écran par écran est dans `AMENDEMENT-trous-du-prompt.md`.
 
 **Ce qui reste vrai** : la dette 30 (aucun bloc n'affiche une page HTML) est confirmée sur les versions 86 et 97. Et il n'existe pas de bloc « texte suivi » — c'est le vrai périmètre, étroit, de la dette 29.
 
-**La règle qui manquait** : quand un fichier manque pour trancher, on ne conclut pas — on demande le fichier. Il était disponible depuis le début.
+**Ce n'est pas une faute d'exécution, c'est un trou du prompt.** Mot de Paul : « la question c'est que le prompt permette à l'instance de créer sans avoir besoin d'avoir deroule.html sous les yeux ». Les cinq formes, les outils de marquage, l'adresse relative des médias, la distinction fiche/item/écran devraient être dans le prompt.
+
+**Second trou, du même ordre** : le chapitre a été bâti sans le calendrier ni la grille — qui étaient dans le dépôt du chantier. Conséquences : aucun décompte de créneaux, le fil langue du mercredi ignoré alors que la séance 3 lui revenait entièrement, et un découpage en « heures consécutives » qui ne correspond à aucun des deux emplois du temps. Détail dans `AMENDEMENT-trous-du-prompt.md`, partie B.

@@ -622,6 +622,106 @@ const releve = { get:0, ecritures:0, sorties:0, erreursConsole:[] };
   journal.push('après le geste inverse : ' + JSON.stringify(abs2) + '  (réversible)');
   await page.evaluate(() => edtModaleFermer());
 
+  /* ══════════ ⑥ — LES TROIS PORTES, LE RÉGLAGE, LE TÉLÉPHONE ══════════ */
+  await page.evaluate(() => { edtFermer(); edtModaleFermer(); });
+  await new Promise(r => setTimeout(r, 300));
+
+  /* porte ① — l'arrivée du professeur, réglage par défaut */
+  const p1 = await page.evaluate(() => new Promise(res => {
+    document.body.classList.add('admin-mode');
+    EDT.reglages = null;
+    const parti = edtArriveeProf();
+    setTimeout(() => res({rendu: parti, ecran: document.getElementById('edt-ecran').style.display,
+      accueilPresent: !!document.getElementById('page-home'),
+      accueilTaille: (document.getElementById('page-home')||{innerHTML:''}).innerHTML.length,
+      parDessus: getComputedStyle(document.getElementById('edt-ecran')).position}), 2200);
+  }));
+  journal.push('porte ① (arrivée du prof, réglage par défaut) : ' + JSON.stringify(p1));
+  await capture('6-1-porte1-arrivee');
+
+  /* « ✕ Fermer » rend l'accueil intact */
+  await page.evaluate(() => edtFermer());
+  await new Promise(r => setTimeout(r, 400));
+  const apresFermeture = await page.evaluate(() => ({ecran: document.getElementById('edt-ecran').style.display,
+    accueilTaille: (document.getElementById('page-home')||{innerHTML:''}).innerHTML.length,
+    figeHtml: document.documentElement.classList.contains('edt-fige'),
+    scrollPossible: (window.scrollTo(0,300), window.scrollY > 0)}));
+  journal.push('après « ✕ Fermer » : ' + JSON.stringify(apresFermeture));
+  await page.evaluate(() => window.scrollTo(0,0));
+  await capture('6-2-accueil-intact');
+
+  /* le réglage à « non » : l'EDT ne s'ouvre plus au démarrage */
+  const p1b = await page.evaluate(() => new Promise(res => {
+    edtReglagePoser('arriverSurEdt', false);
+    setTimeout(() => { EDT.reglages = {arriverSurEdt:false};
+      edtArriveeProf();
+      setTimeout(() => res({ecran: document.getElementById('edt-ecran').style.display,
+        auHub: JSON.stringify(window.__HUB.site.edt.reglages)}), 1600); }, 800);
+  }));
+  journal.push('réglage à « non » : ' + JSON.stringify(p1b));
+  await page.evaluate(() => { EDT.reglages = {arriverSurEdt:true}; });
+
+  /* un élève : aucune porte ne s'ouvre */
+  const eleve = await page.evaluate(() => new Promise(res => {
+    document.body.classList.remove('admin-mode');
+    const parti = edtArriveeProf();
+    setTimeout(() => res({rendu: parti, ecran: document.getElementById('edt-ecran').style.display}), 700);
+  }));
+  journal.push('élève (pas admin-mode) : ' + JSON.stringify(eleve));
+  await page.evaluate(() => document.body.classList.add('admin-mode'));
+
+  /* le téléphone-pilote et la vue tableau : l'EDT ne s'ouvre jamais */
+  const roles = await page.evaluate(() => new Promise(res => {
+    const av = (typeof SES === 'object' && SES) ? SES.mode : null;
+    const out = {};
+    ['tel','tableau'].forEach(m => { try{ SES.mode = m; }catch(e){} out[m] = edtArriveeProf(); });
+    try{ SES.mode = av; }catch(e){}
+    setTimeout(() => res(out), 400);
+  }));
+  journal.push('téléphone-pilote / vue tableau : ' + JSON.stringify(roles) + '  (false = ne s\u2019ouvre pas)');
+
+  /* porte ③ — le bouton dans le bandeau du déroulé */
+  const p3 = await page.evaluate(() => {
+    const b = Array.from(document.querySelectorAll('#at-dr-tete button'))
+      .filter(x => x.textContent.indexOf('Emploi du temps') >= 0);
+    return {present: b.length > 0, libelle: b.length ? b[0].textContent.trim() : null};
+  });
+  journal.push('porte ③ (bandeau du déroulé) : ' + JSON.stringify(p3));
+
+  /* le téléphone : l'écran ne casse pas, il défile */
+  await page.setViewport({width:390, height:844});
+  await page.evaluate(() => { EDT_VUE.mode='semaine'; EDT_VUE.ancre='2026-09-07'; edtOuvrir(); });
+  await new Promise(r => setTimeout(r, 1800));
+  const tel = await page.evaluate(() => {
+    const e = document.getElementById('edt-ecran');
+    return {affiche: e.style.display, cases: document.querySelectorAll('#edt-ecran .edt-b').length,
+            defileInterne: e.scrollHeight > e.clientHeight, erreurJs: false};
+  });
+  journal.push('téléphone 390×844 : ' + JSON.stringify(tel) + '  (il s\u2019affiche et défile là — la règle « sans scroll » vaut pour l\u2019ordinateur)');
+  await capture('6-3-telephone');
+  await page.setViewport({width:1366, height:768});
+  await page.evaluate(() => edtFermer());
+  await new Promise(r => setTimeout(r, 400));
+
+  /* la matrice actions × état */
+  const matrice = await page.evaluate(() => {
+    EDT.decisions = {};            /* matrice sur une ardoise propre */
+    const etats = ['prevu','jouee','sansSeance','nonImportee','horsMjpc','rienDePret'];
+    const faux = {iso:'2026-09-08', creneau:'15:07-16:02', classe:'X', classeMjpc:'3E Charles de Gaulle'};
+    return etats.map(n => {
+      EDT_VUE.cellules = EDT_VUE.cellules || {};
+      const k = '__test__';
+      EDT_VUE.cellules[k] = Object.assign({}, faux, {nature:n, titre:'T', heure:1, sur:2, activites:2, reportees:0, categorie:'Gestion de classe'});
+      EDT_MOD.cle = k; edtPeindreModale();
+      const m = document.getElementById('edt-modale');
+      const b = m ? Array.from(m.querySelectorAll('button')).map(x => x.textContent.trim().replace(/\s+/g,' ')) : [];
+      const sel = m ? m.querySelectorAll('select').length : 0;
+      edtModaleFermer(); delete EDT_VUE.cellules[k];
+      return n + ' → ' + JSON.stringify(b) + ' · ' + sel + ' liste(s)';
+    });
+  });
+  journal.push('MATRICE actions × état :\n  ' + matrice.join('\n  '));
+
   const jrn = await page.evaluate(() => window.__JOURNAL);
   releve.get = jrn.filter(x=>x.m==='GET').length;
   releve.ecritures = jrn.filter(x=>x.m!=='GET'&&x.m!=='SORTIE').length;

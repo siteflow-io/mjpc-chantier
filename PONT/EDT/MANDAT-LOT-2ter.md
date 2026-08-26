@@ -55,7 +55,10 @@ Cinq fonctions désignent aujourd'hui un élément par sa position ; elles passe
 1. **Ce que Paul a posé à la main survit** à toute réinjection, par appariement d'`id` : coches « heures perdues », appariements de classes (`classeMjpc`), créneaux fictifs, horaires modifiés, dates de périodes, décisions horaires, photos.
 2. **Archivage avant écrasement** — le modèle existe dans le site, copie-le : `chInjecterConfirme` en mode « remplacer » **archive à la corbeille AVANT d'écrire et ABANDONNE si l'archivage échoue** (« rien n'a été remplacé »). Même règle pour tout objet de l'EDT.
 3. **Le différentiel est nominatif**, avant le geste, dans l'écran de vérification : **ce qui arrive** (id inconnu) · **ce qui est seulement déplacé** (apparié fort ou faible, date changée : « Stages 3e : 16/11 → 17/11 ») · **ce qui disparaît** (id absent) · **ce qui est conservé** de ses décisions. Un événement qui disparaît **et qui portait une coche** est nommé à part.
-**Le cas douteux** (défini par la conscience avec Paul) : un `id` disparaît **et** un `id` nouveau apparaît avec **la même date de début et le même niveau** → très probablement le même événement, libellé corrigé. Le site **ne décide pas** : il le signale — « Séjour Verdun 3e (14/10) semble être devenu "Séjour à Verdun 3e" — reconduire ta coche ? » — et Paul confirme.
+**Le cas douteux, c'est l'appariement FAIBLE du §①** — tous les critères de la famille sauf un, candidat unique. Il couvre donc **le libellé retouché ET la date déplacée**. Le site **ne décide jamais** : il signale et Paul confirme —
+- « Séjour Verdun 3e (14/10) semble être devenu « Séjour à Verdun 3e » — reconduire ta coche ? »
+- « Stages 3e semble avoir été déplacé du 16/11 au 17/11 — reconduire ta coche ? »
+**Aucune conservation silencieuse sur un appariement faible**, et **aucune proposition quand le candidat n'est pas unique** : on nomme l'ambiguïté au lieu de la trancher.
 
 ## ④ LES PROMPTS D'INJECTION — un seul collage
 Paul : « le prompt, quand je clique sur le bouton copier, doit contenir le json directement. comme ça pas besoin de faire deux copier coller. »

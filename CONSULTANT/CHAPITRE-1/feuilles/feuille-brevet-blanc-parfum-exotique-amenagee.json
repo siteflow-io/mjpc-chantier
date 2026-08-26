@@ -1,0 +1,280 @@
+{
+ "produit": "prepa_brevet",
+ "titre": "Brevet blanc n°1 : « Parfum exotique » — version aménagée",
+ "cases": {
+  "titre": true,
+  "sous_titre": true,
+  "nom_eleve": false,
+  "classe": true,
+  "annee_scolaire": true,
+  "date_edition": true,
+  "version_document": true,
+  "objectif": true,
+  "competences": true,
+  "notions": true,
+  "domaine_socle": true,
+  "evalue": true,
+  "duree_prevue": true,
+  "oeuvre": true,
+  "auteur": true,
+  "siecle_courant": true,
+  "genre": true,
+  "lexique_seance": true,
+  "extrait_numerote": true,
+  "numerotation_lignes": true,
+  "note_bas_page": true,
+  "consigne": true,
+  "question": true,
+  "tableau_completer": true,
+  "saut_de_page": true,
+  "bareme": true,
+  "note_sur": true,
+  "materiel": true,
+  "modalite": true,
+  "mention_conserver": true,
+  "police_adaptee": true,
+  "consignes_reformulees": true,
+  "interligne": true,
+  "explicitation_but": true
+ },
+ "valeurs": {
+  "titre": {
+   "texte": "Brevet blanc n°1 : « Parfum exotique » — version aménagée"
+  },
+  "sous_titre": {
+   "texte": "Entraînement : la partie « Compréhension et compétences d'interprétation » de l'épreuve de français du brevet. Consignes reformulées."
+  },
+  "objectif": {
+   "texte": "Interpréter un sonnet inconnu et justifier chaque réponse par des éléments précis du texte."
+  },
+  "competences": {
+   "items": [
+    "Élaborer une interprétation de textes littéraires",
+    "Adopter des stratégies et des procédures d'écriture efficaces",
+    "Consolider l'orthographe lexicale et grammaticale"
+   ]
+  },
+  "notions": {
+   "items": [
+    "Le sonnet",
+    "La disposition des rimes",
+    "L'enjambement",
+    "L'allitération",
+    "La situation d'énonciation",
+    "Les propositions"
+   ]
+  },
+  "domaine_socle": {
+   "texte": "Domaine 1 — Les langages pour penser et communiquer"
+  },
+  "evalue": {
+   "texte": "La compréhension du poème, l'interprétation justifiée par des citations, et la maîtrise de la langue dans les réponses."
+  },
+  "duree_prevue": {
+   "texte": "Compréhension : 50 minutes en classe. Grammaire : dans un second temps."
+  },
+  "oeuvre": {
+   "texte": "Les Fleurs du mal, section « Spleen et Idéal », 1857"
+  },
+  "auteur": {
+   "texte": "Charles Baudelaire (1821-1867)"
+  },
+  "siecle_courant": {
+   "texte": "XIXe siècle"
+  },
+  "genre": {
+   "texte": "Poésie"
+  },
+  "lexique_seance": {
+   "items": [
+    "monotone = toujours identique, sur le même ton, sans variation",
+    "Encor = orthographe poétique de l'adverbe « encore »",
+    "les tamariniers = arbres tropicaux de grande taille, dont les fruits servent à faire bonbons et sirops",
+    "une occurrence = chaque fois qu'un élément apparaît dans un texte. Exemple : dans un texte sur le cochon, on relève « truie », « porc », « côtelette »…"
+   ]
+  },
+  "materiel": {
+   "items": [
+    "une copie double",
+    "le sujet, à glisser dans la copie"
+   ]
+  },
+  "modalite": {
+   "texte": "Seul, sans documents."
+  },
+  "bareme": {
+   "items": [
+    "Type de poème, justifié = 4",
+    "Mouvement, justifié = 4",
+    "Schéma des rimes = 3",
+    "Enjambement et mise en valeur = 4",
+    "Occurrences de la 2e personne = 4",
+    "Destinataire et vision intérieure = 6",
+    "Sens du texte, avec citations = 7",
+    "Grammaire, dans un second temps (5 questions) = 8"
+   ]
+  },
+  "note_sur": {
+   "total": "32"
+  },
+  "explicitation_but": {
+   "texte": "Ce devoir est un entraînement. Il ne reprend qu'une partie de l'épreuve du brevet : les questions sur le texte, que tu fais en classe, et les questions de grammaire, que tu feras plus tard. On s'entraîne sur ce que tu sais déjà faire depuis la quatrième. Les autres parties de l'épreuve — la dictée, la réécriture, la rédaction — sont travaillées à part, et tu les feras toutes ensemble plus tard dans l'année, au brevet blanc."
+  }
+ },
+ "blocs": [
+  {
+   "id": "extrait_numerote",
+   "valeurs": {
+    "texte": "Quand, les deux yeux fermés, en un soir chaud d'automne,\nJe respire l'odeur de ton sein chaleureux,\nJe vois se dérouler des rivages heureux\nQu'éblouissent les feux d'un soleil monotone ;\n\nUne île paresseuse où la nature donne\nDes arbres singuliers et des fruits savoureux ;\nDes hommes dont le corps est mince et vigoureux,\nEt des femmes dont l'œil par sa franchise étonne.\n\nGuidé par ton odeur vers de charmants climats,\nJe vois un port rempli de voiles et de mâts\nEncor tout fatigués par la vague marine,\n\nPendant que le parfum des verts tamariniers,\nQui circule dans l'air et m'enfle la narine,\nSe mêle dans mon âme au chant des mariniers."
+   }
+  },
+  {
+   "id": "note_bas_page",
+   "valeurs": {
+    "texte": "Charles Baudelaire, « Parfum exotique », Les Fleurs du mal, section « Spleen et Idéal », 1857. Ce poème aurait été inspiré à l'auteur par son voyage aux Mascareignes (îles proches de La Réunion) et par sa liaison avec Jeanne Duval, rencontrée en 1842 : c'est à elle qu'il s'adresse ici pour la première fois dans un poème."
+   }
+  },
+  {
+   "id": "consigne",
+   "valeurs": {
+    "texte": "Réponds aux questions sur ta copie double, en respectant ces cinq règles.\n• Ligne le texte.\n• Reprends les termes de la question dans ta réponse.\n• Sois précis.\n• Développe ta réponse.\n• N'oublie pas la ponctuation."
+   },
+   "reformulations": {
+    "texte": "Réponds sur ta copie double.\n• Numérote les lignes du texte.\n• Recommence la phrase de la question dans ta réponse.\n• Écris une réponse complète.\n• Mets les points et les majuscules."
+   }
+  },
+  {
+   "id": "question",
+   "valeurs": {
+    "texte": "À quel type de poème as-tu affaire ? Justifie en t'appuyant sur des éléments précis du texte. (4 points)"
+   },
+   "reformulations": {
+    "texte": "Ce poème a-t-il une forme particulière ? Compte les strophes et les vers, puis donne le nom de cette forme. Recopie ce qui le prouve. (4 points)"
+   }
+  },
+  {
+   "id": "question",
+   "valeurs": {
+    "texte": "À quel mouvement peux-tu rattacher ce poème ? Justifie en t'appuyant sur des éléments précis du texte et sur ce que tu sais de son époque. (4 points)"
+   },
+   "reformulations": {
+    "texte": "À quel mouvement ce poème appartient-il ? Aide-toi de la date et de ce que le poème raconte. Recopie un passage qui le montre. (4 points)"
+   }
+  },
+  {
+   "id": "question",
+   "valeurs": {
+    "texte": "Mets en évidence le schéma des rimes du poème, en complétant le tableau ci-dessous. (3 points)"
+   },
+   "reformulations": {
+    "texte": "Complète le tableau : pour chaque strophe, recopie les mots de la fin des vers, puis écris le schéma des rimes (AABB, ABAB ou ABBA). (3 points)"
+   }
+  },
+  {
+   "id": "tableau_completer",
+   "valeurs": {
+    "lignes": [
+     "Strophe | Mots à la rime | Schéma",
+     "Premier quatrain | | ",
+     "Second quatrain | | ",
+     "Premier tercet | | ",
+     "Second tercet | | "
+    ]
+   }
+  },
+  {
+   "id": "question",
+   "valeurs": {
+    "texte": "Cite l'enjambement présent dans la première strophe. Indique quel mot ou groupe de mots il met en valeur. (4 points)"
+   },
+   "reformulations": {
+    "texte": "Dans la première strophe, une phrase continue sur le vers suivant : recopie ce passage. Quel mot est ainsi mis en valeur ? (4 points)"
+   }
+  },
+  {
+   "id": "question",
+   "valeurs": {
+    "texte": "Relève et cite toutes les occurrences de la deuxième personne du singulier. (4 points)"
+   },
+   "reformulations": {
+    "texte": "Recopie tous les mots du poème qui désignent « tu » ou « ton » (deuxième personne du singulier). (4 points)"
+   }
+  },
+  {
+   "id": "question",
+   "valeurs": {
+    "texte": "En lien avec la question précédente, explique qui est le destinataire de ce poème, puis explique pourquoi on pourrait parler de « vision intérieure ». (6 points)"
+   },
+   "reformulations": {
+    "texte": "À qui le poète parle-t-il dans ce poème ? Explique. Ensuite, explique pourquoi on peut dire qu'il voit ce paysage dans sa tête, et non avec ses yeux. (6 points)"
+   }
+  },
+  {
+   "id": "question",
+   "valeurs": {
+    "texte": "Repères-tu un sens particulier dans tout le texte ? Explique-le avec tes propres mots, en faisant des phrases simples, et cite le texte pour appuyer ton propos. (7 points)"
+   },
+   "reformulations": {
+    "texte": "Que raconte ce poème, selon toi ? Explique avec tes mots, en phrases simples, et recopie des passages du texte pour le prouver. (7 points)"
+   }
+  },
+  {
+   "id": "saut_de_page",
+   "valeurs": {}
+  },
+  {
+   "id": "consigne",
+   "valeurs": {
+    "texte": "Partie « Grammaire et compétences linguistiques », sur 8 points. Réponds sur la même copie double, avec les mêmes règles."
+   },
+   "reformulations": {
+    "texte": "Partie grammaire, sur 8 points. Réponds sur la même copie double, avec les mêmes règles."
+   }
+  },
+  {
+   "id": "question",
+   "valeurs": {
+    "texte": "Au vers 4, quel est le sujet du verbe « éblouir » ? (1 point)"
+   },
+   "reformulations": {
+    "texte": "Au vers 4, cherche le verbe « éblouir ». Qui fait l'action ? Recopie le sujet. (1 point)"
+   }
+  },
+  {
+   "id": "question",
+   "valeurs": {
+    "texte": "Fais l'analyse logique des vers 3 à 8, avec les quatre étapes de la méthode. (3 points)"
+   },
+   "reformulations": {
+    "texte": "Fais l'analyse logique des vers 3 à 8. Applique les quatre étapes de la fiche méthode, dans l'ordre. (3 points)"
+   }
+  },
+  {
+   "id": "question",
+   "valeurs": {
+    "texte": "Quels mots sont qualifiés par l'adjectif « fatigués », au vers 11 ? (1 point)"
+   },
+   "reformulations": {
+    "texte": "Au vers 11, cherche l'adjectif « fatigués ». Quels mots décrit-il ? Recopie-les. (1 point)"
+   }
+  },
+  {
+   "id": "question",
+   "valeurs": {
+    "texte": "Au dernier vers, quelle figure de style sonore repères-tu ? Cite-la en mettant ses éléments en évidence, puis explique à quoi elle sert. (2 points)"
+   },
+   "reformulations": {
+    "texte": "Au dernier vers, un même son revient plusieurs fois. Recopie le vers et souligne ce son. Comment s'appelle cette figure ? À quoi sert-elle ici ? (2 points)"
+   }
+  },
+  {
+   "id": "question",
+   "valeurs": {
+    "texte": "Relève et cite tous les compléments d'objet direct du texte. (1 point)"
+   },
+   "reformulations": {
+    "texte": "Recopie tous les compléments d'objet direct du texte. Pour les trouver : pose la question « qui ? » ou « quoi ? » après le verbe. (1 point)"
+   }
+  }
+ ]
+}

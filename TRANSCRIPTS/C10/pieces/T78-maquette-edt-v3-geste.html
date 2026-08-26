@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MJPC — Emploi du temps (maquette v3 : modale déplaçable, grille en temps réel, annuler, journal)</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+/* ── palette du site (fond noir chaud, ambre, cartes à bord fin) ── */
+:root{
+  --fond:#120f0b; --carte:#1c1712; --carte2:#241d16; --bord:#3a2f24; --bord2:#5a4a37;
+  --texte:#efe6d8; --texte2:#b8a894; --sourd:#7d6f5e;
+  --or:#e0b25a; --orfonce:#8a6a2e;
+  --joue:#5c9e6e;        /* réel : heure jouée */
+  --prevu:#3a3128;       /* prévu : grisé */
+  --sans:#8a6a2e;        /* heure sans séance (motif) */
+  --alerte1:#c9a04a; --alerte2:#d9783a; --alerte3:#c9443a;
+  --evt:#3b4a6b;         /* événement d'établissement / de classe */
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--fond);color:var(--texte);font-family:'EB Garamond',Georgia,serif;font-size:16px;line-height:1.35}
+.page{max-width:1320px;margin:0 auto;padding:18px 22px 40px}
+
+/* en-tête : c'est l'écran d'arrivée du prof */
+.tete{display:flex;align-items:baseline;gap:18px;flex-wrap:wrap;margin-bottom:10px}
+.tete h1{font-size:1.55rem;font-weight:600;margin:0}
+.tete .maintenant{color:var(--or);font-style:italic}
+.tete .droite{margin-left:auto;display:flex;gap:8px;align-items:center}
+.btn{background:var(--carte);border:1px solid var(--bord2);color:var(--texte);padding:7px 13px;border-radius:9px;font:inherit;cursor:pointer}
+.btn.on{background:var(--carte2);border-color:var(--or);color:var(--or)}
+.btn.or{background:var(--or);color:#1a1409;border-color:var(--or);font-weight:600}
+.nav{display:flex;gap:6px;align-items:center;margin:6px 0 14px}
+.nav .sem{font-size:1.15rem;margin:0 10px}
+.nav .ab{color:var(--texte2);font-size:.95rem}
+
+/* bandeau des événements de l'année — AU-DESSUS des jours, jamais dans les cases */
+.evenements{display:grid;grid-template-columns:110px repeat(5,1fr);gap:6px;margin-bottom:6px}
+.evenements .lib{color:var(--sourd);font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;align-self:center}
+.evt{background:var(--evt);border:1px solid #4e5f86;border-radius:8px;padding:5px 9px;font-size:.9rem;color:#dfe6f7}
+.evt.vide{background:transparent;border:1px dashed var(--bord);color:var(--sourd);font-style:italic}
+.evt.classe{background:#4a3b6b;border-color:#6b5a8c}
+.evt small{display:block;color:#aab6d6;font-size:.8rem}
+
+/* la grille : jours × créneaux (les huit créneaux réels du site) */
+.grille{display:grid;grid-template-columns:110px repeat(5,1fr);gap:6px}
+.jour{text-align:center;color:var(--texte2);font-size:.95rem;padding:4px 0;border-bottom:1px solid var(--bord)}
+.jour b{color:var(--texte);font-weight:600}
+.jour.auj b{color:var(--or)}
+.creneau{color:var(--sourd);font-size:.85rem;padding-top:8px;text-align:right;padding-right:8px}
+.case{min-height:64px;border:1px solid var(--bord);border-radius:9px;background:var(--carte);padding:6px 8px;position:relative;display:flex;flex-direction:column;gap:2px}
+.case.vide{background:transparent;border-style:dashed;opacity:.5}
+.case .classe{font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--texte2)}
+.case .seance{font-size:.98rem;line-height:1.2}
+.case .etat{font-size:.8rem;color:var(--sourd);font-style:italic}
+/* les trois natures d'une case */
+.case.prevu{background:var(--prevu);border-color:var(--bord)}
+.case.prevu .seance{color:var(--texte2)}
+.case.joue{border-left:4px solid var(--joue)}
+.case.joue .etat{color:var(--joue);font-style:normal}
+.case.sans{border-left:4px solid var(--sans);background:#231b12}
+.case.sans .seance{color:var(--or)}
+.case.encours{border-color:var(--or);box-shadow:0 0 0 1px var(--or) inset}
+.case.encours .etat{color:var(--or);font-style:normal;font-weight:600}
+.epingle{position:absolute;top:5px;right:7px;font-size:.8rem;color:var(--or)}
+.hors{color:var(--sourd);font-size:.85rem;font-style:italic;padding:6px 8px}
+
+/* chevauchement : deux choses au même créneau s'EMPILENT dans la case, jamais l'une sur l'autre */
+.pile{display:flex;flex-direction:column;gap:4px}
+.pile .sous{border:1px solid var(--bord2);border-radius:6px;padding:3px 6px;background:var(--carte2);font-size:.9rem}
+.pile .sous.evt{background:var(--evt);border-color:#4e5f86}
+
+/* alerte de divergence — progressive, par palier */
+.divergence{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:14px 0 6px}
+.div{border:1px solid var(--bord);border-radius:9px;padding:8px 10px;background:var(--carte);font-size:.92rem}
+.div .cl{font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--texte2)}
+.div .barre{height:6px;border-radius:3px;background:var(--bord);margin:6px 0 4px;overflow:hidden}
+.div .barre i{display:block;height:100%}
+.div.ok i{background:var(--joue)} .div.l1 i{background:var(--alerte1)} .div.l2 i{background:var(--alerte2)} .div.l3 i{background:var(--alerte3)}
+.div .mot{color:var(--texte2);font-size:.85rem}
+.div.justifie .mot{color:#aab6d6}
+
+/* panneau latéral : ce qui s'ouvre au clic sur une case */
+.duo{display:grid;grid-template-columns:1fr 360px;gap:18px;align-items:start}
+.panneau{border:1px solid var(--bord2);border-radius:12px;background:var(--carte);padding:14px 16px;position:sticky;top:12px}
+.panneau h2{font-size:1.15rem;margin:0 0 2px;font-weight:600}
+.panneau .sous-titre{color:var(--texte2);font-size:.92rem;margin-bottom:10px}
+.panneau .bloc{border-top:1px solid var(--bord);padding:10px 0}
+.panneau .bloc h3{font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;color:var(--sourd);margin:0 0 6px;font-weight:600}
+.panneau .btn{width:100%;text-align:left;margin:4px 0;display:block}
+.panneau select,.panneau input,.panneau textarea{width:100%;background:#15100c;border:1px solid var(--bord2);color:var(--texte);border-radius:8px;padding:7px 9px;font:inherit;font-size:.95rem}
+.panneau textarea{min-height:56px;resize:vertical}
+.legende{display:flex;gap:16px;flex-wrap:wrap;color:var(--texte2);font-size:.88rem;margin-top:14px}
+.legende span::before{content:'';display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px;border:1px solid var(--bord2)}
+.legende .lp::before{background:var(--prevu)} .legende .lj::before{background:var(--joue)} .legende .ls::before{background:var(--sans)} .legende .le::before{background:var(--evt)} .legende .lc::before{background:#4a3b6b}
+.note{color:var(--sourd);font-size:.85rem;font-style:italic;margin-top:10px}
+
+html,body{height:100%;overflow:hidden}
+.page{height:100vh;max-width:none;padding:10px 14px;display:flex;flex-direction:column;gap:6px}
+.tete{margin:0}
+.tete h1{font-size:1.25rem}
+.nav{margin:0}
+.nav .sem{font-size:1rem}
+.duo{flex:1;min-height:0;display:grid;grid-template-columns:1fr;gap:10px;align-items:stretch;position:relative}
+.duo>div:first-child{display:flex;flex-direction:column;min-height:0;gap:4px}
+.evenements{gap:4px;margin:0}
+.evt{padding:2px 7px;font-size:.82rem;line-height:1.2}
+.evt small{display:inline;margin-left:4px;font-size:.78rem}
+.grille{flex:1;min-height:0;display:grid;grid-template-columns:78px repeat(5,1fr);grid-template-rows:auto repeat(8,1fr);gap:4px}
+.jour{padding:2px 0;font-size:.9rem}
+.creneau{font-size:.78rem;padding-top:4px;padding-right:6px}
+.case{min-height:0;padding:3px 6px;border-radius:7px;gap:0;overflow:hidden;cursor:pointer}
+.case.vide{cursor:default}
+.case.choisie{outline:2px solid var(--or);outline-offset:-2px}
+.case .classe{font-size:.7rem;letter-spacing:.05em}
+.case .seance{font-size:.88rem;line-height:1.15;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.case .etat{font-size:.74rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pile{gap:2px}.pile .sous{padding:1px 5px;font-size:.8rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hors{font-size:.78rem;padding:3px 6px}
+.divergence{margin:0;gap:6px}
+.div{padding:4px 8px;font-size:.82rem;display:grid;grid-template-columns:auto 70px 1fr;gap:8px;align-items:center}
+.div .cl{font-size:.72rem}
+.div .barre{margin:0}
+.div .mot{font-size:.78rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.legende{margin:0;gap:12px;font-size:.78rem}
+.note{display:none}
+.panneau{display:none;position:absolute;right:10px;top:34px;width:330px;max-height:calc(100% - 44px);overflow-y:auto;padding:10px 12px;font-size:.92rem;box-shadow:0 12px 40px rgba(0,0,0,.55);background:rgba(28,23,18,.96);border-color:var(--or);cursor:default}
+.panneau .poignee{cursor:move;display:flex;align-items:center;gap:8px;color:var(--sourd);font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;margin:-4px 0 6px}
+.panneau .poignee b{flex:1;height:1px;background:var(--bord2);display:block}
+.panneau .fermer{color:var(--texte2);cursor:pointer}
+.annul{border-top:1px solid var(--bord);padding-top:6px;display:flex;gap:8px;align-items:center;font-size:.85rem;color:var(--texte2)}
+.annul .btn{padding:3px 9px;font-size:.85rem}
+.journal{font-size:.76rem;color:var(--sourd);line-height:1.3;max-height:34px;overflow:hidden}
+.journal b{color:var(--texte2);font-weight:600}
+.flash{outline:2px solid var(--or);outline-offset:-2px}
+.panneau h2{font-size:1.05rem}
+.panneau .sous-titre{font-size:.85rem;margin-bottom:6px}
+.panneau .bloc{padding:5px 0}
+.panneau .bloc h3{font-size:.75rem;margin-bottom:4px}
+.panneau .btn{padding:5px 10px;font-size:.9rem;margin:3px 0}
+.panneau textarea{min-height:34px}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="tete">
+    <h1>Emploi du temps</h1>
+    <span class="maintenant">mardi 8 septembre · 10 h 07 → 3E Charles de Gaulle, il est 10 h 04</span>
+    <div class="droite">
+      <button class="btn on">Semaine</button><button class="btn">Mois</button><button class="btn">Année</button>
+      <button class="btn">Calendrier de l'année…</button><button class="btn">Photo du prévu</button>
+    </div>
+  </div>
+
+  <div class="nav">
+    <button class="btn">‹</button><span class="sem">Semaine du 7 au 11 septembre 2026</span><span class="ab">semaine 2 · B</span><button class="btn">›</button>
+    <button class="btn" style="margin-left:10px">Aujourd'hui</button><span style="margin-left:auto"></span><div class="legende" style="margin-left:auto">
+      <span class="lp">prévu (calculé, glisse)</span><span class="lj">jouée (réel)</span><span class="ls">sans séance (motif)</span><span class="le">événement d'établissement</span><span class="lc">événement de classe (écart justifié)</span><span>📌 déplacée à la main</span>
+    </div>
+  </div>
+
+  <div class="duo">
+  <div>
+    <!-- bandeau des temps de l'année : injecté depuis le calendrier annuel, modifiable -->
+    <div class="evenements">
+      <div class="lib">L'année</div>
+      <div class="evt vide">—</div>
+      <div class="evt">Photo des classes <small>13 h · établissement</small></div>
+      <div class="evt vide">—</div>
+      <div class="evt classe">Voyage scolaire 4e Hugo <small>jeu → ven · écart justifié</small></div>
+      <div class="evt classe">Voyage scolaire 4e Hugo <small>· écart justifié</small></div>
+    </div>
+
+    <div class="grille">
+      <div></div>
+      <div class="jour"><b>lun 7</b></div><div class="jour auj"><b>mar 8</b></div><div class="jour"><b>mer 9</b></div><div class="jour"><b>jeu 10</b></div><div class="jour"><b>ven 11</b></div>
+
+      <div class="creneau">08:00–08:55</div>
+      <div class="case joue"><div class="classe">4e Turing</div><div class="seance">S1 · Le monstre au cinéma</div><div class="etat">jouée · 6 activités sur 8</div></div>
+      <div class="case vide"></div>
+      <div class="case prevu"><div class="classe">3e Bob Dylan</div><div class="seance">S2 · Cinq tableaux à analyser</div><div class="etat">prévu</div></div>
+      <div class="case prevu flash"><div class="classe">4e Turing</div><div class="seance">S2 · Fiche méthode : décrire</div><div class="etat">prévu · vient d'arriver ici</div></div>
+      <div class="case vide"></div>
+
+      <div class="creneau">08:57–09:52</div>
+      <div class="case vide"></div>
+      <div class="case joue"><div class="classe">4e Hugo</div><div class="seance">S1 · Le monstre au cinéma</div><div class="etat">jouée · 8 / 8 · 2 reportées</div></div>
+      <div class="case vide"></div>
+      <div class="case"><div class="pile">
+        <div class="sous evt">Voyage scolaire 4e Hugo</div>
+        <div class="sous">4e Hugo · S2 <i style="color:var(--sourd)">— ne compte pas cette semaine</i></div>
+      </div></div>
+      <div class="case vide"></div>
+
+      <div class="creneau">10:07–11:02</div>
+      <div class="case joue"><div class="classe">3e Charles de Gaulle</div><div class="seance">S1 · Analyse d'images : la routine</div><div class="etat">jouée · 5 / 11 · reportées → prochaine heure</div></div>
+      <div class="case encours"><div class="classe">3e Charles de Gaulle</div><div class="seance">S1 · Analyse d'images (suite)</div><div class="etat">▶ dans 3 min — ouvrir le pilotage</div></div>
+      <div class="case vide"></div>
+      <div class="case prevu"><div class="classe">3e Charles de Gaulle</div><div class="seance">S2 · Cinq tableaux à analyser</div><div class="etat">prévu</div></div>
+      <div class="case vide"></div>
+
+      <div class="creneau">11:04–11:59</div>
+      <div class="case prevu"><div class="classe">3e Bob Dylan</div><div class="seance">S1 · Analyse d'images : la routine</div><div class="etat">prévu</div><span class="epingle" title="déplacée à la main : ne glisse plus">📌</span></div>
+      <div class="case vide"></div>
+      <div class="case sans"><div class="classe">4e Turing</div><div class="seance">Sans séance</div><div class="etat">gestion de classe · « reprise en main après l'alerte incendie »</div></div>
+      <div class="case vide"></div>
+      <div class="case prevu"><div class="classe">3e Bob Dylan</div><div class="seance">S2 · Cinq tableaux à analyser</div><div class="etat">prévu</div></div>
+
+      <div class="creneau">13:00–13:55</div>
+      <div class="case vide"></div>
+      <div class="case"><div class="pile">
+        <div class="sous evt">Photo des classes — 13 h</div>
+        <div class="sous">4e Turing · S2 <i style="color:var(--sourd)">— glisse à jeudi 08:00</i></div>
+      </div></div>
+      <div class="hors">X Français<br>hors MJPC</div>
+      <div class="case vide"></div>
+      <div class="case prevu"><div class="classe">4e Hugo</div><div class="seance">S2 · Fiche méthode : décrire</div><div class="etat">prévu · après le voyage</div></div>
+
+      <div class="creneau">13:57–14:52</div>
+      <div class="case vide"></div><div class="case vide"></div>
+      <div class="hors">X Français<br>hors MJPC</div>
+      <div class="case vide"></div><div class="case vide"></div>
+
+      <div class="creneau">15:07–16:02</div>
+      <div class="case prevu"><div class="classe">4e Hugo</div><div class="seance">S1 · Le monstre au cinéma (suite)</div><div class="etat">prévu · 2 reportées en tête</div></div>
+      <div class="case vide"></div><div class="case vide"></div>
+      <div class="case vide"></div><div class="case vide"></div>
+
+      <div class="creneau">16:04–16:59</div>
+      <div class="case vide"></div>
+      <div class="case prevu"><div class="classe">4e Turing</div><div class="seance">S2 · Fiche méthode : décrire</div><div class="etat">prévu</div></div>
+      <div class="case vide"></div><div class="case vide"></div><div class="case vide"></div>
+    </div>
+
+    <!-- la divergence entre classes face aux jalons communs : progressive, jamais un blocage -->
+    <div class="divergence">
+      <div class="div ok"><div class="cl">3e Charles de Gaulle</div><div class="barre"><i style="width:38%"></i></div><div class="mot">chapitre 1 · 3 h jouées / 8 prévues · dans les temps pour le conseil du 19/11</div></div>
+      <div class="div l1"><div class="cl">3e Bob Dylan</div><div class="barre"><i style="width:22%"></i></div><div class="mot">chapitre 1 · 1 h de retard sur la 3e CDG · léger</div></div>
+      <div class="div ok justifie"><div class="cl">4e Hugo</div><div class="barre"><i style="width:30%"></i></div><div class="mot">chapitre 1 · 2 h de moins — voyage scolaire (justifié)</div></div>
+      <div class="div l2"><div class="cl">4e Turing</div><div class="barre"><i style="width:18%"></i></div><div class="mot">chapitre 1 · 3 h de retard sur la 4e Hugo · marqué — 1 h sans séance</div></div>
+    </div>
+
+    
+    <div class="note">Une case = un créneau d'une classe. Les temps de l'année sont un bandeau au-dessus des jours ; quand un événement prend un créneau, il s'empile dans la case avec ce qu'il déplace. Rien ne se recouvre.</div>
+  </div>
+
+  <!-- ce qui s'ouvre au clic sur une case : ici, celle de maintenant -->
+  <div class="panneau">
+    <div class="poignee">⠿ modale — glisser pour déplacer<b></b><span class="fermer">✕</span></div>
+    <h2>3e Charles de Gaulle</h2>
+    <div class="sous-titre">mardi 8 septembre · 10:07–11:02 · dans 3 minutes</div>
+    <div class="bloc">
+      <h3>Ce qui est prévu</h3>
+      <div>S1 · Analyse d'images : la routine — <b>reprise</b> (1 h jouée, 6 activités reportées en tête)</div>
+      <button class="btn or">▶ Ouvrir le pilotage et lancer</button>
+      <button class="btn">Jouer une autre séance…</button>
+    </div>
+    <div class="bloc">
+      <h3>Modifier l'horaire</h3>
+      <button class="btn">Déplacer cette heure vers un autre créneau…</button>
+      <button class="btn">Ne plus compter cette séance dans la prévision horaire</button>
+      <div style="margin-top:8px">
+        <select><option>Catégorie du motif…</option><option>Événement d'établissement</option><option>Évaluation hors séance</option><option>Sortie, voyage, projet</option><option>Orientation et vie de classe</option><option>Gestion de classe</option><option>Absence du professeur</option><option>Absence massive d'élèves</option><option>Reprise ou rattrapage</option><option>Temps libre choisi</option><option>Autre</option></select>
+        <textarea placeholder="Préciser la raison (enregistrée, lue à l'analyse de fin d'année)"></textarea>
+      </div>
+    </div>
+    <div class="annul"><button class="btn">↶ Annuler</button><span>dernière action : « déplacer 4e Turing · S2 → jeu 08:00 » — la grille derrière est déjà à jour</span></div>
+    <div class="bloc">
+      <h3>Journal des modifications horaires</h3>
+      <div class="journal"><b>mar 8 · 10 h 02</b> — 4e Turing · S2 déplacée de mar 13:00 vers jeu 08:00 (photo des classes)<br><b>lun 7 · 18 h 40</b> — 3e Bob Dylan · S1 épinglée lun 11:04<br><b>lun 7 · 18 h 38</b> — 4e Turing · mer 11:04 : sans séance · gestion de classe · « reprise en main après l'alerte incendie »<br><b>ven 4 · 17 h 10</b> — photo du prévu (rentrée)</div>
+    </div>
+    <div class="bloc" style="font-size:.85rem;color:var(--texte2)">La dernière fois : lun 7 · 10:07 — 5 activités sur 11, 6 reportées · <a href="#" style="color:var(--or)">Relecture · Stats · Copier ED</a></div>
+  </div>
+  </div>
+
+</div>
+
+<script>
+/* ── le geste, et rien d'autre : clic sur une séance → la modale s'ouvre · poignée → elle se déplace · croix → elle se ferme ── */
+(function(){
+  var modale=document.querySelector('.panneau'), poignee=modale.querySelector('.poignee'), fermer=modale.querySelector('.fermer');
+  var titre=modale.querySelector('h2'), sousTitre=modale.querySelector('.sous-titre');
+  var jours=['lun 7','mar 8','mer 9','jeu 10','ven 11'];
+  /* 1. clic sur une case non vide : la modale s'ouvre, remplie depuis la case, à côté d'elle */
+  document.querySelectorAll('.grille .case').forEach(function(c){
+    if(c.classList.contains('vide'))return;
+    c.addEventListener('click',function(){
+      document.querySelectorAll('.case.choisie').forEach(function(x){x.classList.remove('choisie');});
+      c.classList.add('choisie');
+      var classe=c.querySelector('.classe'), seance=c.querySelector('.seance');
+      var cellules=[].slice.call(document.querySelectorAll('.grille > *')), i=cellules.indexOf(c);
+      var col=i%6, ligne=Math.floor(i/6);  /* 6 colonnes : l'heure + 5 jours ; ligne 0 = les jours */
+      var creneau=(cellules[ligne*6]||{}).textContent||'';
+      titre.textContent=classe?classe.textContent:(seance?seance.textContent:'');
+      sousTitre.textContent=(jours[col-1]||'')+' septembre · '+creneau+(seance?' · '+seance.textContent:'');
+      /* position : à droite de la case si la place existe, sinon à gauche ; jamais hors de la zone */
+      modale.style.display='block';   /* d'abord visible, sinon pas de géométrie */
+      var zone=modale.offsetParent.getBoundingClientRect(), r=c.getBoundingClientRect();
+      var x=r.right-zone.left+8, y=r.top-zone.top;
+      if(x+modale.offsetWidth>zone.width) x=Math.max(0,r.left-zone.left-modale.offsetWidth-8);
+      modale.style.right='auto'; modale.style.left=x+'px';
+      y=Math.min(y,Math.max(0,zone.height-modale.offsetHeight-6));
+      modale.style.top=y+'px';
+    });
+  });
+  /* 2. la poignée : glisser pour déplacer (souris et doigt) */
+  var prise=null;
+  poignee.addEventListener('pointerdown',function(e){
+    if(e.target===fermer)return;
+    prise={dx:e.clientX-modale.offsetLeft, dy:e.clientY-modale.offsetTop}; poignee.setPointerCapture(e.pointerId); e.preventDefault();
+  });
+  poignee.addEventListener('pointermove',function(e){
+    if(!prise)return; var zone=modale.offsetParent;
+    var x=Math.max(0,Math.min(zone.clientWidth-modale.offsetWidth,e.clientX-prise.dx));
+    var y=Math.max(0,Math.min(zone.clientHeight-Math.min(modale.offsetHeight,zone.clientHeight*0.35),e.clientY-prise.dy));   /* elle peut sortir par le bas jusqu'aux deux tiers, jamais disparaître */
+    modale.style.right='auto'; modale.style.left=x+'px'; modale.style.top=y+'px';
+  });
+  poignee.addEventListener('pointerup',function(){prise=null;});
+  poignee.addEventListener('pointercancel',function(){prise=null;});
+  /* 3. la croix : la modale se ferme, la case reste marquée jusqu'au prochain clic ailleurs */
+  fermer.addEventListener('click',function(){ modale.style.display='none'; document.querySelectorAll('.case.choisie').forEach(function(x){x.classList.remove('choisie');}); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape')fermer.click(); });
+})();
+</script>
+</body>
+</html>

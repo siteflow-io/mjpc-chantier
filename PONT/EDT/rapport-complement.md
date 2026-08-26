@@ -274,7 +274,58 @@ Tout ce que ce mandat de complément demandait est fait et prouvé. Deux questio
 1. sur une case déjà occupée par une autre classe — refus sec (l'actuel) ou proposition d'échange ;
 2. la liste des destinations compte 804 entrées sur 35 semaines — la borner par défaut au trimestre, avec un « voir toute l'année » ?
 
-## ㉒ CE QUI RESTE HORS DE CE MANDAT
+---
+
+# CORRECTIF ④ter — LA VUE ANNÉE : LES BARRES JAUNES ET LES ÉVÉNEMENTS ABSENTS
+
+*Candidat 8.72.0, 1 646 417 octets.*
+
+## ㉒ LES DEUX DÉFAUTS, CONFIRMÉS
+
+1. **Les barres jaunes étaient les jalons.** `.edt-an-jalon` allait de `top:0` à `bottom:0` : trente traits ambre traversaient **toute la hauteur**, coupaient chaque piste, et formaient des barreaux là où ils se pressaient. Mesuré sur l'ancien code : **30 traits traversant les pistes**.
+2. **Les événements n'étaient nulle part.** Ni les 59 événements d'établissement, ni les 15 de classe n'apparaissaient une seule fois. Or ce sont eux qui décalent une classe.
+
+## ㉓ CE QUI EST FAIT
+
+**Une bande des temps de l'année, en haut, hors des pistes** — comme la semaine a la sienne. Elle porte les vacances nommées, les jalons (trait ambre) et les événements d'établissement (trait gris-bleu), plus le trait rouge d'aujourd'hui. **Aucun trait ne traverse plus les pistes** : mesuré, **0**. Les pistes ne gardent qu'une graduation de mois, à 5 % d'opacité.
+
+**Les repères se regroupent quand ils se touchent** : à moins de 0,9 % d'écart ils fusionnent en un point qui dit « 3 le 14/11 », et le survol comme le clic donnent la liste complète, date par date. Mesuré : **36 repères pour 89 événements, dont 24 regroupés**.
+
+**Le libellé ne s'écrit que s'il a la place.** La première version les écrivait tous : ils se chevauchaient et la bande devenait illisible. Un repère dont le voisin est à moins de 3,2 % reste un trait ; son texte vit au survol et au clic.
+
+**Les événements de classe sont sur la piste de LEUR classe** : un séjour, un stage, un tribunal est un segment bleu sur la ligne de la 3e ou de la 4e concernée, avec son libellé quand la largeur le permet, au survol sinon. Un événement **justifié** est ambre plutôt que bleu — on voit d'un coup d'œil ce qui explique un retard.
+
+## ㉔ LES COMPTES — AUCUN PERDU EN SILENCE
+
+La légende dit ce qui est représenté, et ce qui ne l'est pas :
+
+> représentés : 30 jalons · 59 événements d'établissement · **15 des 15 événements de classe** (30 segments, un par classe concernée) · 7 périodes sans cours
+
+Et dans l'état réel du hub, où seule une classe de 3e est appariée :
+
+> **6 des 15 événements de classe** (6 segments) — **les 9 autres concernent un niveau dont aucune classe n'est appariée**
+
+Un événement de 3e est dessiné sur chaque piste de 3e : d'où 30 segments pour 15 événements. Le compte distingue les deux, et nomme la raison quand un événement n'est pas montré. Rien ne disparaît sans le dire.
+
+## ㉕ MESURES
+
+| | état réel (1 classe) | état rempli (4 classes) |
+|---|---|---|
+| mois nommés | 12 | 12 |
+| repères dans la bande | 36 (24 regroupés) | 36 |
+| traits traversant les pistes | **0** | **0** |
+| événements de classe sur les pistes | 6 segments / 15 événements | **30 segments / 15 événements** |
+| périodes sans cours nommées | 6 sur 7 | 6 sur 7 |
+| surface utile occupée | **63,6 %** | 63,6 % |
+| sans scroll | oui | oui |
+
+*Le pont de l'Ascension (3 jours) reste en infobulle : sa bande est trop étroite pour un nom.*
+
+**Non-régression** : porte du pilotage **six champs identiques** · sans scroll aux deux tailles · moteur **intact** · `published` **97** · `secu*` **141** · double parseur vert · garde **VERTE** et rouge sur les trois contrôles négatifs · contrat **inchangé**.
+
+Banc : `tests/banc-annee.mjs`, étendu aux nouvelles mesures. Captures : `5-2-annee`, `5-2b-annee-vide`, `5-2c-annee-remplie`.
+
+## ㉖ CE QUI RESTE HORS DE CE MANDAT
 
 Non commencé, dans la découpe proposée par la conscience :
 

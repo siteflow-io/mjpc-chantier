@@ -1,9 +1,8 @@
 {
- "get": 63,
- "ecritures": 28,
+ "get": 130,
+ "ecritures": 32,
  "sorties": 18,
  "erreursConsole": [
-  "Failed to load resource: the server responded with a status of 403 ()",
   "Failed to load resource: the server responded with a status of 403 ()",
   "Failed to load resource: the server responded with a status of 403 ()",
   "Failed to load resource: the server responded with a status of 403 ()"
@@ -13,7 +12,6 @@
   "échec https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap",
   "échec https://drive.google.com/file/d/1NJgOv-C6AqMDKTuOd9yNO5I_pq3n4mhc/preview",
   "échec https://siteflow-io.github.io/mjpc-medias/poesie-peinture-xixe/frise-xixe.html",
-  "403 https://siteflow-io.github.io/mjpc-medias/poesie-peinture-xixe/tableau-3-turner-pecheurs.webp",
   "403 https://siteflow-io.github.io/mjpc-medias/poesie-peinture-xixe/tableau-3-turner-pecheurs.webp",
   "403 https://siteflow-io.github.io/mjpc-medias/poesie-peinture-xixe/tableau-3-turner-pecheurs.webp"
  ]

@@ -1,0 +1,96 @@
+{
+ "produit": "fiche_seance",
+ "titre": "Fiche texte : « L'Albatros »",
+ "cases": {
+  "titre": true,
+  "sous_titre": true,
+  "annee_scolaire": true,
+  "date_edition": true,
+  "version_document": true,
+  "objectif": true,
+  "competences": true,
+  "notions": true,
+  "domaine_socle": true,
+  "oeuvre": true,
+  "auteur": true,
+  "siecle_courant": true,
+  "genre": true,
+  "lexique_seance": true,
+  "repere_chrono": true,
+  "extrait_numerote": true,
+  "note_bas_page": true,
+  "numerotation_lignes": true,
+  "travail_a_faire": true,
+  "mention_conserver": true
+ },
+ "valeurs": {
+  "titre": {
+   "texte": "Fiche texte : « L'Albatros »"
+  },
+  "sous_titre": {
+   "texte": "Le texte de référence du chapitre, à garder sous les yeux pendant l'étude."
+  },
+  "objectif": {
+   "texte": "À la fin de cette séance, tu sauras t'appuyer sur le texte exact pour citer les vers dans tes réponses."
+  },
+  "competences": {
+   "items": [
+    "Lire des œuvres littéraires et fréquenter des œuvres d'art",
+    "Élaborer une interprétation de textes littéraires"
+   ]
+  },
+  "notions": {
+   "items": [
+    "Le poème en vers",
+    "La versification"
+   ]
+  },
+  "domaine_socle": {
+   "texte": "Domaine 1 — Les langages pour penser et communiquer"
+  },
+  "oeuvre": {
+   "texte": "Les Fleurs du mal (édition de 1861)"
+  },
+  "auteur": {
+   "texte": "Charles Baudelaire (1821-1867)"
+  },
+  "siecle_courant": {
+   "texte": "XIXe siècle — un poète inclassable, entre romantisme, Parnasse et symbolisme"
+  },
+  "genre": {
+   "texte": "Poésie — poème en vers : quatre quatrains d'alexandrins"
+  },
+  "lexique_seance": {
+   "items": [
+    "indolents = nonchalants, sans énergie",
+    "les gouffres amers = la mer profonde et salée",
+    "l'azur = le bleu du ciel",
+    "veule = mou, sans volonté",
+    "naguère = il y a peu de temps",
+    "un brûle-gueule = une pipe courte",
+    "les nuées = les nuages",
+    "les huées = les cris de moquerie"
+   ]
+  },
+  "repere_chrono": {
+   "texte": "1859 : le poème paraît en revue — 1861 : il entre dans la deuxième édition des Fleurs du mal"
+  },
+  "travail_a_faire": {
+   "texte": "✍️ Lis le poème deux fois avant la séance d'étude. Au crayon, entoure les mots que tu ne comprends pas, puis vérifie-les dans le lexique de cette fiche."
+  }
+ },
+ "blocs": [
+  {
+   "id": "extrait_numerote",
+   "valeurs": {
+    "texte": "Souvent, pour s'amuser, les hommes d'équipage\nPrennent des albatros, vastes oiseaux des mers,\nQui suivent, indolents compagnons de voyage,\nLe navire glissant sur les gouffres amers.\n\nÀ peine les ont-ils déposés sur les planches,\nQue ces rois de l'azur, maladroits et honteux,\nLaissent piteusement leurs grandes ailes blanches\nComme des avirons traîner à côté d'eux.\n\nCe voyageur ailé, comme il est gauche et veule !\nLui, naguère si beau, qu'il est comique et laid !\nL'un agace son bec avec un brûle-gueule,\nL'autre mime, en boitant, l'infirme qui volait !\n\nLe Poète est semblable au prince des nuées\nQui hante la tempête et se rit de l'archer ;\nExilé sur le sol au milieu des huées,\nSes ailes de géant l'empêchent de marcher."
+   }
+  },
+  {
+   "id": "note_bas_page",
+   "valeurs": {
+    "texte": "L'édition d'origine écrit « Poëte » avec un tréma : cette fiche adopte l'orthographe moderne, « Poète »."
+   }
+  }
+ ]
+}

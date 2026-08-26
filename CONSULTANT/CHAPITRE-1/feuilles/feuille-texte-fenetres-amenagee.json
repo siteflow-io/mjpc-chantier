@@ -1,0 +1,96 @@
+{
+ "produit": "fiche_seance",
+ "titre": "Fiche texte : « Les Fenêtres » — version aménagée",
+ "cases": {
+  "titre": true,
+  "sous_titre": true,
+  "annee_scolaire": true,
+  "date_edition": true,
+  "version_document": true,
+  "objectif": true,
+  "competences": true,
+  "notions": true,
+  "domaine_socle": true,
+  "oeuvre": true,
+  "auteur": true,
+  "siecle_courant": true,
+  "genre": true,
+  "lexique_seance": true,
+  "repere_chrono": true,
+  "extrait_numerote": true,
+  "note_bas_page": true,
+  "numerotation_lignes": true,
+  "travail_a_faire": true,
+  "mention_conserver": true,
+  "police_adaptee": true,
+  "consignes_reformulees": true,
+  "interligne": true
+ },
+ "valeurs": {
+  "titre": {
+   "texte": "Fiche texte : « Les Fenêtres » — version aménagée"
+  },
+  "sous_titre": {
+   "texte": "Un poème sans vers : le texte étudié avant la dictée et la réécriture. Consignes reformulées."
+  },
+  "objectif": {
+   "texte": "À la fin de cette séance, tu sauras montrer, texte en main, ce qui fait d'un texte sans vers un poème."
+  },
+  "competences": {
+   "items": [
+    "Lire des œuvres littéraires et fréquenter des œuvres d'art",
+    "Élaborer une interprétation de textes littéraires"
+   ]
+  },
+  "notions": {
+   "items": [
+    "Le poème en prose",
+    "La situation d'énonciation"
+   ]
+  },
+  "domaine_socle": {
+   "texte": "Domaine 1 — Les langages pour penser et communiquer"
+  },
+  "oeuvre": {
+   "texte": "Petits Poèmes en prose (Le Spleen de Paris), XXXV"
+  },
+  "auteur": {
+   "texte": "Charles Baudelaire (1821-1867)"
+  },
+  "siecle_courant": {
+   "texte": "XIXe siècle — l'invention du poème en prose"
+  },
+  "genre": {
+   "texte": "Poésie — poème en prose"
+  },
+  "lexique_seance": {
+   "items": [
+    "fécond = qui produit beaucoup",
+    "ténébreux = sombre, plein d'ombre",
+    "des vagues de toits = les toits de la ville, vus comme une mer",
+    "sa légende = ici, l'histoire que le poète invente sur elle",
+    "si c'eût été = si cela avait été"
+   ]
+  },
+  "repere_chrono": {
+   "texte": "Publié en revue du vivant de Baudelaire — 1869 : le recueil paraît après sa mort"
+  },
+  "travail_a_faire": {
+   "texte": "Après la séance, souligne dans le texte : une image (une comparaison ou une métaphore) et un mot répété. Ce sont eux qui font de ce texte un poème, même sans vers."
+  }
+ },
+ "blocs": [
+  {
+   "id": "extrait_numerote",
+   "valeurs": {
+    "texte": "Celui qui regarde du dehors à travers une fenêtre ouverte, ne voit jamais autant de choses que celui qui regarde une fenêtre fermée. Il n'est pas d'objet plus profond, plus mystérieux, plus fécond, plus ténébreux, plus éblouissant qu'une fenêtre éclairée d'une chandelle. Ce qu'on peut voir au soleil est toujours moins intéressant que ce qui se passe derrière une vitre. Dans ce trou noir ou lumineux vit la vie, rêve la vie, souffre la vie.\n\nPar delà des vagues de toits, j'aperçois une femme mûre, ridée déjà, pauvre, toujours penchée sur quelque chose, et qui ne sort jamais. Avec son visage, avec son vêtement, avec son geste, avec presque rien, j'ai refait l'histoire de cette femme, ou plutôt sa légende, et quelquefois je me la raconte à moi-même en pleurant.\n\nSi c'eût été un pauvre vieux homme, j'aurais refait la sienne tout aussi aisément.\n\nEt je me couche, fier d'avoir vécu et souffert dans d'autres que moi-même.\n\nPeut-être me direz-vous : « Es-tu sûr que cette légende soit la vraie ? » Qu'importe ce que peut être la réalité placée hors de moi, si elle m'a aidé à vivre, à sentir que je suis et ce que je suis ?"
+   }
+  },
+  {
+   "id": "note_bas_page",
+   "valeurs": {
+    "texte": "Baudelaire publie ses poèmes en prose dans les journaux de son vivant ; le recueil complet, Petits Poèmes en prose (aussi appelé Le Spleen de Paris), paraît après sa mort, en 1869."
+   }
+  }
+ ]
+}

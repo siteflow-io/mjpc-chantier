@@ -1,6 +1,6 @@
 {
- "get": 26,
- "ecritures": 15,
+ "get": 31,
+ "ecritures": 19,
  "sorties": 18,
  "erreursConsole": [
   "Failed to load resource: the server responded with a status of 403 ()"

@@ -2839,7 +2839,7 @@ function mjpcEcrireRest(url,options,cb){
    (les 3 gestes, le geste conservatoire par app, ce qui ne peut pas arriver).
    RESTAURER LA VERSION PRÉCÉDENTE : docs/MJPC6-restauration.md (convention BUG).
    ═══════════════════════════════════════════════════════════════════════════ */
-var APP_VERSION="8.71.0";
+var APP_VERSION="8.72.0";
 var APP_VERSION_DATE="2026-08-25";
 // ── 11. Coffre : dérivation, chiffrement, empreinte (v1.3.0) ──
 // (Le canon porte deux sections « 8 » — dette de numérotation connue, non corrigée
@@ -17765,6 +17765,41 @@ var EDT_INJ={voie:null,objet:null,messages:[]};
 
 function edtChemin(objet,annee){return '/site/edt/'+objet+'/'+(annee||EDT_ANNEE);}
 
+/* ═══ LA GRILLE EST DATÉE ═══════════════════════════════════════════════════
+   Un emploi du temps change en cours d'année. La grille porte donc des
+   VERSIONS, chacune avec sa date d'effet. Une semaine affichée lit la version
+   de SA date : le passé garde son emploi du temps, et une heure déjà jouée
+   garde le créneau qu'elle porte, quoi qu'il arrive à la grille ensuite.
+
+   COMPATIBILITÉ — un objet à l'ancienne forme (`creneaux` à la racine, sans
+   `versions`) est lu comme UNE SEULE version datée du 1er août de l'année
+   scolaire. Aucune réinjection n'est exigée : le JSON déjà validé reste bon. */
+function edtDebutAnnee(){ return String(EDT_ANNEE).split('-')[0]+'-08-01'; }
+function edtVersions(){
+  var g=EDT.grille; if(!g)return [];
+  if(Array.isArray(g.versions)&&g.versions.length){
+    return g.versions.slice().filter(function(v){return v&&Array.isArray(v.creneaux);})
+      .sort(function(a,b){return String(a.debut||'').localeCompare(String(b.debut||''));});
+  }
+  if(Array.isArray(g.creneaux)&&g.creneaux.length){          /* l'ancienne forme */
+    return [{debut:edtDebutAnnee(),libelle:'grille de l\u2019année',creneaux:g.creneaux,ancienne:true}];
+  }
+  return [];
+}
+/* la version en vigueur à cette date : la dernière dont `debut <= iso` */
+function edtGrilleA(iso){
+  var l=edtVersions(); if(!l.length)return null;
+  var v=l[0];
+  for(var i=0;i<l.length;i++){ if(String(l[i].debut||'')<=String(iso))v=l[i]; }
+  return v;
+}
+function edtCasesA(iso){ var v=edtGrilleA(iso); return (v&&v.creneaux)||[]; }
+function edtCasesCourantes(){ return edtCasesA(edtAujourdhui()); }
+function edtToutesLesCases(){
+  var out=[]; edtVersions().forEach(function(v){ out=out.concat(v.creneaux||[]); });
+  return out;
+}
+
 /* ── LE CHARGEMENT — six lectures, aucune obligatoire ───────────────────── */
 function edtCharger(apres){
   var reste=EDT_OBJETS.length; EDT.pannes=[];
@@ -17847,7 +17882,7 @@ function edtEtiquettesOrphelines(){
   var connues={}; edtPeriodes().forEach(function(p){ if(p&&p.nom)connues[p.nom]=true; });
   if(!edtPeriodes().length)return [];
   var vues={},orphelines=[];
-  ((EDT.grille&&EDT.grille.creneaux)||[]).forEach(function(c){
+  edtToutesLesCases().forEach(function(c){
     (c&&c.periodes||[]).forEach(function(n){ if(!connues[n]&&!vues[n]){vues[n]=true;orphelines.push(n);} });
   });
   return orphelines;
@@ -18061,12 +18096,6 @@ function edtCreneauPoser(rang,champ,valeur){
 /* L'APPARIEMENT — la grille nomme « 3 FRANKLIN Aretha », le hub ne la connaît
    pas encore (les classes n'arrivent qu'en tout dernier). Tant que le champ est
    vide, la case s'affiche mais ne projette rien : « classe non encore importée ». */
-function edtApparier(index,nomClasse){
-  var o=EDT.grille; if(!o||!Array.isArray(o.creneaux))return;
-  var c=o.creneaux[index]; if(!c)return;
-  c.classeMjpc=String(nomClasse||'');
-  mjpcPutJson(FIREBASE_BASE+edtChemin('grille')+'.json',o,'Grille — appariement des classes',function(){ EDT.grille=o; edtPeindrePanneau(); });
-}
 function edtClassesDuHub(){
   var t=EDT_CLASSES;
   if(!t){ try{ t=classesData; }catch(e){ t=null; } }
@@ -18075,9 +18104,66 @@ function edtClassesDuHub(){
   return l.sort();
 }
 function edtNomsDeGrille(){
-  var o=EDT.grille,l=[],vu={};
-  ((o&&o.creneaux)||[]).forEach(function(c){ if(c&&c.mjpc!==false&&c.classe&&!vu[c.classe]){vu[c.classe]=true;l.push(c.classe);} });
+  var l=[],vu={};
+  edtToutesLesCases().forEach(function(c){ if(c&&c.mjpc!==false&&c.classe&&!vu[c.classe]){vu[c.classe]=true;l.push(c.classe);} });
   return l;
+}
+
+/* ── LES VERSIONS : écrire, valider, journaliser ─────────────────────────── */
+function edtValiderVersions(l){
+  var e=[],vues={},an=String(EDT_ANNEE).split('-');
+  var borneBasse=an[0]+'-08-01', borneHaute=an[1]+'-07-31';
+  if(!Array.isArray(l)||!l.length)return ['Il faut au moins une version de l\u2019emploi du temps.'];
+  l.forEach(function(v,i){
+    var d='Version '+(i+1)+(v&&v.libelle?' ('+v.libelle+')':'')+' : ';
+    if(!v||!/^\d{4}-\d{2}-\d{2}$/.test(String(v.debut||''))){e.push(d+'la date d\u2019effet est absente ou mal écrite (attendu AAAA-MM-JJ).');return;}
+    if(v.debut<borneBasse||v.debut>borneHaute)e.push(d+'cette date est hors de l\u2019année scolaire ('+borneBasse+' \u2192 '+borneHaute+').');
+    if(vues[v.debut])e.push(d+'une autre version commence déjà le '+v.debut+' \u2014 deux versions ne peuvent pas prendre effet le même jour.');
+    vues[v.debut]=true;
+    if(!Array.isArray(v.creneaux)||!v.creneaux.length)e.push(d+'aucun créneau : une version vide effacerait ta semaine.');
+  });
+  return e;
+}
+function edtEcrireGrille(o,quoi,apres){
+  var e=edtValiderVersions(o.versions||[]);
+  if(e.length){ if(typeof atInfo==='function')atInfo(e[0]); return; }
+  if(!Array.isArray(o.journalEdt))o.journalEdt=[];
+  if(quoi)o.journalEdt.push(quoi);
+  mjpcPutJson(FIREBASE_BASE+edtChemin('grille')+'.json',o,'Emploi du temps \u2014 versions',function(){
+    EDT.grille=o; edtPeindrePanneau(); if(apres)apres();
+  });
+}
+/* passer à la forme datée sans rien demander à Paul : la grille actuelle
+   devient la première version, à la date du 1er août. */
+function edtNormaliserGrille(){
+  var o=EDT.grille; if(!o)return null;
+  if(!Array.isArray(o.versions)||!o.versions.length){
+    o.versions=[{debut:edtDebutAnnee(),libelle:'grille de l\u2019année',creneaux:(o.creneaux||[]).slice()}];
+    delete o.creneaux;
+  }
+  return o;
+}
+function edtVersionAjouter(debut,libelle){
+  var o=edtNormaliserGrille(); if(!o)return;
+  var source=edtGrilleA(debut)||o.versions[0];
+  o.versions.push({debut:String(debut),libelle:String(libelle||'nouvelle version'),
+                   creneaux:JSON.parse(JSON.stringify(source.creneaux||[]))});
+  edtEcrireGrille(o,{quand:Date.now(),effet:String(debut),quoi:'version créée \u2014 '+(libelle||''),
+                     copieDe:source.debut});
+}
+function edtVersionPoser(debut,champ,valeur){
+  var o=edtNormaliserGrille(); if(!o)return;
+  var v=null; o.versions.forEach(function(x){ if(x.debut===debut)v=x; });
+  if(!v)return;
+  var avant=v[champ];
+  v[champ]=String(valeur||'');
+  edtEcrireGrille(o,{quand:Date.now(),effet:v.debut,quoi:champ+' : « '+avant+' » \u2192 « '+v[champ]+' »'});
+}
+function edtVersionSupprimer(debut){
+  var o=edtNormaliserGrille(); if(!o)return;
+  if(o.versions.length<=1){ if(typeof atInfo==='function')atInfo('C\u2019est la seule version : la retirer effacerait ta semaine.'); return; }
+  o.versions=o.versions.filter(function(x){return x.debut!==debut;});
+  edtEcrireGrille(o,{quand:Date.now(),effet:debut,quoi:'version retirée'});
 }
 
 /* ── LA PORTE ① : L'ARRIVÉE DU PROFESSEUR ────────────────────────────────
@@ -18155,6 +18241,28 @@ function edtPeindrePanneau(){
   }
   h+='</div>';
 
+  /* les versions de l'emploi du temps */
+  var vs=edtVersions();
+  if(vs.length){
+    var enVigueur=edtGrilleA(edtAujourdhui());
+    h+='<div class="edt-bloc"><div class="edt-titre">\ud83d\uddd3 Versions de l\u2019emploi du temps</div>'
+      +'<p class="edt-p">Un emploi du temps change en cours d\u2019année. Chaque version a sa date d\u2019effet ; une semaine affichée lit la version de <b>sa</b> date, et les heures déjà jouées ne bougent jamais.</p>'
+      +(vs[0].ancienne?'<p class="edt-mini-t">Grille à l\u2019ancienne forme : lue comme une seule version, datée du '+escapeHtml(vs[0].debut)+'. Rien à réinjecter.</p>':'')
+      +'<div class="edt-periodes">'
+      +vs.map(function(v){
+        var ici=(enVigueur&&enVigueur.debut===v.debut);
+        return '<div class="edt-per'+(ici?' edt-per-ici':'')+'">'
+          +'<input type="date" value="'+escapeHtml(v.debut)+'" onchange="edtVersionPoser('+JSON.stringify(v.debut).replace(/"/g,'&quot;')+',\'debut\',this.value)">'
+          +'<input class="edt-nom-l" value="'+escapeHtml(v.libelle||'')+'" onchange="edtVersionPoser('+JSON.stringify(v.debut).replace(/"/g,'&quot;')+',\'libelle\',this.value)">'
+          +'<span class="edt-mini-t">'+(v.creneaux||[]).length+' cases</span>'
+          +(ici?'<b class="edt-or">en vigueur</b>':'')
+          +'<button class="edt-mini" onclick="edtVersionSupprimer('+JSON.stringify(v.debut).replace(/"/g,'&quot;')+')" title="retirer">\u2715</button>'
+          +'</div>';
+      }).join('')
+      +'</div><div class="edt-actions"><button class="edt-btn" onclick="edtVersionAjouterGeste()">+ Nouvelle version à partir d\u2019une date</button></div>'
+      +edtJournalEdtHtml()+'</div>';
+  }
+
   /* les périodes : déclarées par la grille, éditables ici, jamais écrites dans le code */
   var per=edtPeriodes();
   h+='<div class="edt-bloc"><div class="edt-titre">\ud83d\udcc6 Périodes de l\u2019année</div>';
@@ -18209,8 +18317,10 @@ function edtPeindrePanneau(){
 }
 /* apparier toutes les cases qui portent le même nom de grille, d'un seul geste */
 function edtApparierNom(nomGrille,nomHub){
-  var o=EDT.grille; if(!o||!Array.isArray(o.creneaux))return;
-  o.creneaux.forEach(function(c){ if(c&&c.classe===nomGrille)c.classeMjpc=String(nomHub||''); });
+  var o=EDT.grille; if(!o)return;
+  /* l'appariement vaut pour TOUTES les versions : une classe reste la même
+     quand l'emploi du temps change. */
+  edtToutesLesCases().forEach(function(c){ if(c&&c.classe===nomGrille)c.classeMjpc=String(nomHub||''); });
   mjpcPutJson(FIREBASE_BASE+edtChemin('grille')+'.json',o,'Grille — appariement des classes',function(){ EDT.grille=o; edtPeindrePanneau(); });
 }
 /* Ce que la réinjection ferait aux périodes — DIT AVANT le geste, jamais après.
@@ -18238,6 +18348,24 @@ function edtPhraseDiffPeriodes(neuves){
     ? ' seraient RETIRÉES \u2014 si tu les as ajoutées ou renommées à la main, elles disparaîtront'
     : ' serait RETIRÉE \u2014 si tu l\u2019as ajoutée ou renommée à la main, elle disparaîtra'));
   return t.length?(' Périodes : '+t.join(' \u00b7 ')+'.'):'';
+}
+function edtVersionAjouterGeste(){
+  var d=edtAujourdhui();
+  if(typeof atModaleChoix==='function'){
+    atModaleChoix('Une nouvelle version reprend l\u2019emploi du temps en vigueur, à partir de la date que tu poses. Tu la modifies ensuite ; le passé ne bouge pas.',
+      [{lib:'Annuler',fn:function(){}},
+       {lib:'Créer à partir d\u2019aujourd\u2019hui',prim:true,fn:function(){ edtVersionAjouter(d,'à partir du '+d); }}]);
+  } else edtVersionAjouter(d,'à partir du '+d);
+}
+function edtJournalEdtHtml(){
+  var j=((EDT.grille&&EDT.grille.journalEdt))||[];
+  if(!j.length)return '<div class="edt-mini-t">Aucun changement d\u2019emploi du temps cette année.</div>';
+  return '<div class="edt-mo-bloc"><label class="edt-lab">Changements d\u2019emploi du temps</label><ul class="edt-jrn">'
+    +j.slice(-6).reverse().map(function(x){
+      var d=new Date(x.quand);
+      return '<li>'+escapeHtml(('0'+d.getDate()).slice(-2)+'/'+('0'+(d.getMonth()+1)).slice(-2))+' \u2014 '
+        +escapeHtml(x.quoi||'')+'<i>effet le '+escapeHtml(x.effet||'')+'</i></li>';
+    }).join('')+'</ul></div>';
 }
 function edtApercu(voie,o){
   if(voie==='calendrier')return (o.semaines||[]).length+' semaines, '+(o.vacances||[]).length+' périodes sans cours, '
@@ -18275,6 +18403,9 @@ function edtPoserCss(){
    +'.edt-cr em{color:#9c8f74;font-style:normal;font-size:.82rem}'
    +'.edt-periodes{flex-direction:column}'
    +'.edt-per .edt-nom{width:76px;font-weight:700;color:#e0b978}'
+   +'.edt-per .edt-nom-l{width:180px}'
+   +'.edt-per-ici{border-color:rgba(224,185,120,.6)}'
+   +'.edt-t-chg{border-color:rgba(160,140,224,.6);color:#a08ce0}'
    +'.edt-mini{font:inherit;font-size:.8rem;background:rgba(255,255,255,.06);color:#c9bfa4;border:1px solid rgba(255,255,255,.16);border-radius:6px;padding:2px 7px;cursor:pointer}'
    +'.edt-mini[disabled]{opacity:.35;cursor:default}'
    +'.edt-per input,.edt-cr input,.edt-ap select{font:inherit;font-size:.86rem;background:rgba(0,0,0,.3);color:#e8e0cf;border:1px solid rgba(255,255,255,.16);border-radius:7px;padding:4px 7px}'
@@ -18502,7 +18633,7 @@ var EDT_JOURS=['lundi','mardi','mercredi','jeudi','vendredi','samedi','dimanche'
 function edtNomDuJour(iso){ var d=new Date(iso+'T12:00:00'); return isNaN(d)?null:EDT_JOURS[(d.getDay()+6)%7]; }
 function edtCasesDuJour(iso){
   var jour=edtNomDuJour(iso), lettre=edtSemaineLettre(iso), per=edtPeriodeA(iso);
-  var l=((EDT.grille&&EDT.grille.creneaux)||[]).filter(function(c){
+  var l=edtCasesA(iso).filter(function(c){
     if(!c||c.jour!==jour)return false;
     var s=String(c.semaine||'AB');
     if(lettre&&s!=='AB'&&s!==lettre)return false;
@@ -18594,7 +18725,7 @@ function edtOuvrir(){
   e.innerHTML='<div class="edt-tete">Lecture de la semaine\u2026</div>';
   var lancerPeinture=function(){
     edtChargerClasses(function(){
-      var noms={}; ((EDT.grille&&EDT.grille.creneaux)||[]).forEach(function(c){
+      var noms={}; edtToutesLesCases().forEach(function(c){
         if(c&&c.classeMjpc){ var n=edtNiveauDe(c.classeMjpc); if(n)noms[n]=true; } });
       edtChargerChapitres(Object.keys(noms),edtPeindre);
     });
@@ -18705,12 +18836,15 @@ function edtBandeauHtml(lundi,lettre){
   (cal.evenementsClasse||[]).forEach(function(e){ if(e.debut<=fin&&e.fin>=lundi)t.push('<span class="edt-t edt-t-cl">'+escapeHtml(e.libelle.slice(0,42))+'</span>'); });
   (cal.etablissement||[]).forEach(function(e){ if(e.date>=lundi&&e.date<=fin&&e.prendLeCreneau)t.push('<span class="edt-t">'+escapeHtml(e.libelle.slice(0,42))+'</span>'); });
   var per=edtPeriodeA(lundi);
-  return (per?'<span class="edt-t edt-t-per">'+escapeHtml(per)+'</span>':'')
+  var vs=edtVersions(), v=edtGrilleA(lundi);
+  var chg=(vs.length>1&&v&&v.debut!==vs[0].debut)
+    ?('<span class="edt-t edt-t-chg" title="'+escapeHtml(v.libelle||'')+'">emploi du temps modifié le '+escapeHtml(v.debut)+'</span>'):'';
+  return (per?'<span class="edt-t edt-t-per">'+escapeHtml(per)+'</span>':'')+chg
     +(t.length?t.join(''):'<span class="edt-mini-t">rien cette semaine</span>');
 }
 function edtCartesHtml(lundi){
   var vues={},cartes=[];
-  ((EDT.grille&&EDT.grille.creneaux)||[]).forEach(function(c){
+  edtCasesCourantes().forEach(function(c){
     if(!c||c.mjpc===false||!c.classeMjpc||vues[c.classeMjpc])return;
     vues[c.classeMjpc]=true;
     var f=edtFileDAttente(c.classeMjpc,null);
@@ -19075,7 +19209,7 @@ function edtDivergence(nomClasse){
   var niv=edtNiveauDe(nomClasse),a=edtAvancement(nomClasse);
   if(!a)return null;
   var meilleur=a.faites, ref=nomClasse;
-  ((EDT.grille&&EDT.grille.creneaux)||[]).forEach(function(x){
+  edtCasesCourantes().forEach(function(x){
     if(!x||x.mjpc===false||!x.classeMjpc)return;
     if(edtNiveauDe(x.classeMjpc)!==niv)return;
     var b=edtAvancement(x.classeMjpc); if(b&&b.faites>meilleur){meilleur=b.faites;ref=x.classeMjpc;}
@@ -19184,7 +19318,7 @@ function edtPeindreAnnee(){
      non. Une ligne absente ne dit rien ; une ligne qui écrit pourquoi elle est
      vide dit tout. */
   var vues={},lignes=[];
-  ((EDT.grille&&EDT.grille.creneaux)||[]).forEach(function(c){
+  edtToutesLesCases().forEach(function(c){
     if(!c||c.mjpc===false)return;
     var cleLigne=c.classeMjpc||('grille:'+c.classe);
     if(vues[cleLigne])return;

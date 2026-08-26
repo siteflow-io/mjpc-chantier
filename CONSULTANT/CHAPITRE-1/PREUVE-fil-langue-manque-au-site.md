@@ -1,6 +1,16 @@
 # PREUVE — le fil langue n'existe pas dans le modèle du site
 
-*Consultant, 26/08/2026. Relevés dans `index.html` (production 8.57.1, lecture seule), `DEROULE/deroule97.html`, `PONT/EDT/json/grille-2026-2027.json`. Aucune écriture.*
+*Consultant, 26/08/2026. Aucune écriture.*
+
+**⚠ Trois sources distinctes, à ne jamais confondre** — rappel de Paul : « tout l'onglet agenda est en cours de codage. donc quand tu parles du site, attention à distinguer la production et le clone de l'exécutant ».
+
+| Source | Ce que c'est | État |
+|---|---|---|
+| `index.html` (mon environnement) | la **production** 8.57.1, en ligne | figée, rien n'y est promu |
+| `PONT/EDT/index.html` | le **clone de l'exécutant**, onglet Agenda | **en cours de codage** — ce qui suit peut être faux demain |
+| `PONT/EDT/json/grille-2026-2027.json` | les **données** de l'EDT | livrées au sas |
+
+Les relevés ci-dessous disent, pour chacun, où il vaut.
 
 **Ce que Paul demande de vérifier :**
 
@@ -22,17 +32,23 @@
 et la note du même fichier : « Un créneau sans `fil` porte le chapitre principal de la classe. »
 **Le fil est donc déclaré au niveau du créneau.**
 
-## Relevé 2 — Rien ne lit ce champ, ni dans le site, ni dans le déroulé
+## Relevé 2 — Personne ne lit ce champ : ni la production, ni le clone, ni le déroulé
 
-- `index.html` : le mot `fil` n'y apparaît que comme métaphore d'interface — « le fil des feuilles du chapitre », `AT_FIL` (mémoire du dernier chapitre travaillé), « au fil qu'il déroule ». **Aucune occurrence ne désigne un fil disciplinaire.**
-- `deroule97.html` : une seule occurrence du mot, sans rapport.
-- **`AT_EDT` est une liste de créneaux horaires en dur** dans `index.html` :
-  ```js
-  var AT_EDT=['08:00-08:55','08:57-09:52','10:07-11:02', … ];
-  ```
-  Huit chaînes, sans jour, sans semaine, sans classe, sans fil. Le site ne connaît de l'emploi du temps que les heures.
+**En production** (`index.html` 8.57.1) : le mot `fil` n'apparaît que comme métaphore d'interface — « le fil des feuilles du chapitre », `AT_FIL` (mémoire du dernier chapitre travaillé), « au fil qu'il déroule ». **Aucune occurrence ne désigne un fil disciplinaire.** Et `AT_EDT` y est une liste en dur :
+```js
+var AT_EDT=['08:00-08:55','08:57-09:52','10:07-11:02', … ];
+```
+Huit chaînes, sans jour, sans semaine, sans classe, sans fil.
 
-**Conséquence** : un créneau peut porter `fil:"langue"` dans le JSON de l'EDT ; **aucun écran du site ne s'en sert.**
+**Dans le clone de l'exécutant** — et c'est un vrai progrès à porter à son crédit — l'EDT devient une source de données : quarante-trois fonctions `edt*`, et `AT_EDT` n'est plus en dur mais alimenté depuis `/site/edt/creneaux/<annee>`, avec repli sur l'ancienne valeur. Le clone sait donc lire les créneaux, les périodes, le calendrier.
+
+**Mais le champ `fil` n'y est pas lu davantage.** Son propre validateur de grille ne contrôle que quatre champs :
+```js
+champs de créneau lus par edtValiderGrille : ['classe', 'creneau', 'jour', 'semaine']
+```
+Zéro occurrence de `.fil` dans tout le clone. Un créneau peut porter `fil:"langue"` dans le JSON livré ; **il traverse la validation sans que personne le regarde.**
+
+*Réserve : le clone est en cours de codage. Ce relevé date du 26/08 à la mi-journée et peut être caduc demain.*
 
 ## Relevé 3 — Une séance ne peut pas déclarer son fil
 
@@ -49,7 +65,9 @@ atelier_ecriture · remediation · tache_finale
 
 ## Relevé 4 — La « progression annuelle » n'existe que comme ligne imprimée
 
-Une seule occurrence dans tout le site, et c'est une composante de **feuille** :
+*Vrai en production **et** dans le clone : dix-huit occurrences de part et d'autre, les mêmes.*
+
+Une seule occurrence utile, et c'est une composante de **feuille** :
 
 ```js
 place_progression: AC('B','structure','ancrage',
@@ -89,6 +107,8 @@ Le site sait tenir **une** échelle : le chapitre. L'EDT sait désormais tenir l
 
 La séance 3 — propositions, subordonnées, cinq entraînements — est une séance de langue enfermée dans le fil principal, sans lien vers l'amont ni vers l'aval. Elle occupe deux créneaux du chapitre alors qu'un fil hebdomadaire existe. Et rien, dans le JSON produit, ne permettrait à une instance suivante de savoir où elle se situe dans une progression de langue : **l'information n'a pas de place où être écrite.**
 
-## Un point que je ne peux pas vérifier
+## Deux points que je ne peux pas vérifier
 
-Le nœud `/3e` du hub n'est pas lisible sans authentification depuis mon environnement (`null` en lecture anonyme). Je n'ai donc pas pu vérifier si un chapitre **déjà publié** porte des champs absents du code de l'éditeur. Les relevés ci-dessus portent sur le code, pas sur les données. *À confirmer par la conscience, qui a l'accès.*
+**Le hub.** Le nœud `/3e` n'est pas lisible sans authentification depuis mon environnement (`null` en lecture anonyme). Je n'ai donc pas pu vérifier si un chapitre **déjà publié** porte des champs absents du code de l'éditeur. Les relevés portent sur le code, pas sur les données. *À confirmer par la conscience, qui a l'accès.*
+
+**Le clone en mouvement.** L'onglet Agenda est en cours de codage : ce que j'ai relevé dans `PONT/EDT/index.html` vaut pour la version déposée au 26/08 à la mi-journée. **Si l'exécutant ajoute la lecture du `fil` dans les heures qui suivent, le relevé 2 devient faux pour le clone** — il resterait vrai pour la production, qui est figée. La distinction est à refaire à chaque lecture.

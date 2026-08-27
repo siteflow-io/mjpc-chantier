@@ -1,6 +1,8 @@
 # PROGRESSION ANNUELLE 3e — 2026-2027
 
-*Arrêtée avec Paul le 26/08/2026. Les cases marquées **?** restent à trancher.*
+*Arrêtée avec Paul le 26/08/2026, ordre et durées révisés le 26/08 au soir. Les cases marquées **?** restent à trancher.*
+
+> Le nouveau programme de cycle 4 (BO du 5 mars 2026) ne concerne les 3e qu'à la rentrée 2028. Le DNB 2027 relève encore du texte de 2015 ajusté en 2018.
 
 **Rentrée des 3e : mercredi 2 septembre** · **Voyage à Verdun : 14-16 octobre** · **Toussaint : 17 au 31 octobre**
 
@@ -8,18 +10,24 @@
 
 ## Les sept chapitres
 
-| | Chapitre | Entrée du programme | Thème | Support | Nature |
-|---|---|---|---|---|---|
-| **1** | Paroles de poilus — **EPI Verdun** | Agir sur le monde | Agir dans la cité : individu et pouvoir | *Paroles de poilus*, Guéno | **OI** |
-| **2** | Poésie et peinture au XIXe siècle | Regarder le monde, inventer des mondes | Visions poétiques du monde | Baudelaire + cinq tableaux | **GT** — *déjà construit* |
-| **3** | L'autobiographie | Se chercher, se construire | Se raconter, se représenter | *Poil de Carotte*, Renard | **OI** |
-| **4** | La satire | Vivre en société | Dénoncer les travers de la société | Swift, *Modeste proposition* + caricatures (Voutch, Asaf Hanuka) + Chaplin | **GT** |
-| **5** | **Le pamphlet avance-t-il désormais masqué ?** | Vivre en société | Dénoncer les travers *(2ᵉ passage)* | Paul-Louis Courier, Zola « J'accuse… ! », deux tribunes contemporaines opposées, fil de réseau **reconstitué** | **GT** |
-| **6** | Progrès et rêves scientifiques | Questionnement complémentaire | Progrès et rêves scientifiques | *La Planète des singes*, Boulle | **OI** |
-| **7** | L'emprise et le pouvoir | Agir sur le monde | Agir dans la cité *(2ᵉ passage)* | Orwell (extraits de *La Ferme des animaux*, *1984*), propagande authentique, résistance par les mots | **GT** |
+| | Chapitre | Questionnement du programme | Entrée site | Majeure | Nature | Créneaux (Dylan) |
+|---|---|---|---|---|---|---|
+| **1** | Paroles de poilus — **EPI Verdun** | Agir dans la cité : individu et pouvoir | `recit` ? | c4-ecrire-03 | **OI** — *Paroles de poilus*, Guéno | 16 · 2 sept → 13 oct |
+| **2** | Poésie et peinture au XIXe siècle | Visions poétiques du monde | `poesie` | c4-lire-04 | **GT** — Baudelaire + cinq tableaux | 7 · 2 nov → 13 nov |
+| **3** | **Le pamphlet avance-t-il désormais masqué ?** | Dénoncer les travers de la société | `articles_essai` | c4-ecrire-04 | **GT** — Courier, Zola, deux tribunes opposées, fil reconstitué | 11 · 16 nov → 18 déc |
+| **4** | L'autobiographie | Se raconter, se représenter | `recit` | c4-lire-03 | **OI** — *Poil de Carotte*, Renard | 23 · 4 janv → 19 févr |
+| **5** | La satire | Dénoncer les travers *(2ᵉ passage)* | `articles_essai` | c4-lire-02 | **GT** — Swift + caricatures (Voutch, Asaf Hanuka) + Chaplin | 19 · 8 mars → 16 avril |
+| **6** | Progrès et rêves scientifiques | Progrès et rêves scientifiques *(complémentaire)* | `recit` | c4-culture-01 | **OI** — *La Planète des singes*, Boulle | 11 · 3 mai → 28 mai |
+| **7** | L'emprise et le pouvoir | Agir dans la cité *(2ᵉ passage)* | `recit` ? | c4-oral-02 | **GT** — Orwell, propagande, résistance par les mots | 10 · 31 mai → 18 juin |
+
+*Ordre arrêté le 26/08 au soir : le pamphlet remonte en 3, l'autobiographie et la satire descendent d'un rang. Raison de Paul : « je l'aborderai comme forme ultime de l'argumentation, et pas en soi. Donc en réalité le chapitre sera surtout centré sur l'argumentation, et la satire reprendra cette base. » L'alternance OI/GT tient : une seule paire de groupements à la suite.*
+
+*Les chapitres sont bornés **par dates**, non par nombre de créneaux, pour que les deux classes ne se désynchronisent pas. Franklin fait 116 créneaux dans l'année contre 101 à Dylan ; son surplus — trois à quatre par chapitre — va au **S6, approfondissement personnalisé**, différencié par construction. Il ne va pas plus loin dans le chapitre, il y creuse.*
+
+*Le chapitre 7 se ferme le 18 juin, avant le DNB des 25, 28 et 29. Les quatre créneaux qui suivent l'épreuve ne portent rien.*
 
 **Le compte : 3 œuvres intégrales · 3 lectures cursives · 4 groupements de textes.**
-Le programme exige « au moins trois » de chaque (BO spécial n° 11 du 26/11/2015) : le minimum est atteint, et dépassé sur les groupements. Les **quatre entrées obligatoires** sont couvertes, plus un questionnement complémentaire. Deux thèmes reviennent une seconde fois — le programme l'autorise expressément : « chaque questionnement peut être abordé à plusieurs reprises, à des moments différents de l'année scolaire ».
+Le programme en vigueur — arrêté du 9 novembre 2015 **modifié par l'arrêté du 17 juillet 2018**, BO n° 30 du 26/07/2018 — exige « au moins trois » de chaque : le minimum est atteint, et dépassé sur les groupements. Les **quatre entrées obligatoires** sont couvertes, plus un questionnement complémentaire. Deux thèmes reviennent une seconde fois — le programme l'autorise expressément : « chaque questionnement peut être abordé à plusieurs reprises, à des moments différents de l'année scolaire ».
 
 ## Les livres — 19,66 € après remise
 

@@ -692,3 +692,74 @@ Aucun document ne les donnait juste : `LISEZ-MOI` annonçait 82 écrans, 31 item
 ### Restent ouvertes
 
 Le calendrier des chapitres 2 à 7 · le fil langue à ses trois échelles · la place des évaluations et des deux brevets blancs · le corpus du chapitre 1 · les questions Q1, Q2, Q3 et Q5 de l'audit de la matrice · les deux dettes d'EPI, après la réunion de lundi.
+
+---
+
+## SÉANCE DU 26/08 (soir, suite) — le fil langue, le calendrier, l'ordre des chapitres
+
+### Le fil langue passe au vendredi matin en période 1
+
+Paul : « et si on déplace la langue le vendredi matin ? j'ai mes 4 classes d'affilée ». Vérifié sur la grille : vendredi 8h00 4e Turing · 8h57 4e Hugo · 10h07 3e Franklin · 11h04 3e Dylan, **toutes semaines**. C'est le seul bloc de quatre classes consécutives de la semaine, et c'est la configuration qui rend praticable une progression d'analyse logique **tous niveaux**.
+
+Le fil n'étant qu'une étiquette posée sur ses propres heures, le basculement ne touche pas l'emploi du temps. **Six vendredis pleins avant la Toussaint** : 4, 11, 18, 25 septembre, 2 et 9 octobre. Le transfert est net : **la langue passe de 2 à 6 heures, le chapitre de 20 à 16 (Franklin) et de 17 à 13 (Dylan)** — quatre heures échangées, rien de perdu. Les mercredis de semaine A du 16 et du 30 septembre reviennent au chapitre.
+
+**Au retour de la Toussaint, retour au mercredi de semaine A** — tranché par Paul. Les 3e retombent à une heure par quinzaine ; à noter que **les 4e ont déjà leur langue chaque semaine** (mercredi 8h00 et 8h57, semaine AB) : l'asymétrie est dans la grille, pas dans la décision.
+
+### Repérage et construction — ce que les documents de Paul disent vraiment
+
+Deux erreurs du consultant, corrigées par Paul, sur la même question.
+
+**Première erreur** : j'avais proposé que la production migre dans la tâche finale du chapitre, via les connecteurs logiques de l'argumentation. Faux. Le **déroulé type de séquence** définit S3.2 : « L'analyse logique sert à travailler la construction des textes. C'est une séance qui n'a pas forcément de rapport avec la séquence en cours. » Elle est **décrochée par construction**.
+
+**Seconde erreur** : j'en avais conclu que la construction vivait elle aussi sur le mercredi. Faux également. Le **chapitre 5, la matrice**, porte une séance entière : *Construction par l'analyse logique — réinvestir l'A.L. pour préparer la tâche finale*. Trente minutes, **cinq structures imposées**, contexte imposé, l'A.L. au brouillon comme vérification, et la consigne annonce : *ces 5 structures seront exigées dans la tâche finale*. Bilan chiffré : chacune au moins une fois, **quinze phrases complexes minimum sur trente lignes**.
+
+Les cinq structures : ① PP + PSCCi de temps + PSR de lieu · ② DPP + PSCCi de condition + FPP · ③ deux PI coordonnées · ④ une PI, puis PP + PSR · ⑤ PSCCi + PP. Chacune avec son piège. Elles se transposent telles quelles à 1914-18.
+
+Et le **carnet élève** pose la doctrine : l'analyse logique a deux fonctions, repérage et construction, « nous **alternerons** ces deux fonctions ».
+
+**Le partage est donc** : le fil porte le repérage, le chapitre porte la construction, le devoir commun évalue les deux.
+
+**Calibre confirmé par Paul** : quinze phrases complexes sur trente lignes, quelles que soient les contraintes du carnet de voyage — « au pire ils colleront en volet ». Le carnet suit, il ne commande pas.
+
+### Le calendrier de langue arrêté
+
+| Quand | Quoi |
+|---|---|
+| 4, 11, 18, 25 septembre | repérage, quatre heures |
+| 2 octobre | entraînement noté *(la même date que l'an dernier)* |
+| 9 octobre | réserve |
+| chapitre 1, S3 | construction par l'analyse logique, cinq structures |
+| 25 novembre puis quinzaine | alternance des deux fonctions |
+| 7-10 décembre | devoirs communs : repérage en grammaire, construction en rédaction |
+
+### Le brevet blanc du chapitre 2 devient un entraînement
+
+Tranché par Paul : le brevet blanc interne du chapitre de poésie n'est plus évalué, il devient un entraînement. **Le brevet blanc réellement noté est le devoir commun du 7 au 10 décembre**, qui portera probablement sur *Paroles de poilus* — fait en septembre-octobre — et non sur la poésie.
+
+### Les chapitres se bornent par dates, non par créneaux
+
+Le calcul avait montré que deux classes de volumes différents se **désynchronisent de trois semaines sur un seul chapitre** — Franklin finissant le chapitre 2 le 16 décembre, Dylan le 7 janvier. Paul : « il ne faut pas que les deux classes se désynchronisent. »
+
+D'où la règle : **les bornes sont des dates**, identiques pour les deux classes. Le surplus de Franklin — 116 créneaux contre 101, soit trois à quatre par chapitre — va au **S6, approfondissement personnalisé**, que le déroulé type prévoit déjà comme différencié.
+
+**Recomptage** : le « net » du matin était trop sévère, il retirait tout jour portant un événement, y compris une alerte à 11h45 qui ne touche pas l'heure de 15h. En ne retirant que les **journées entières réellement perdues**, l'année remonte à **101 créneaux pour Dylan, 116 pour Franklin**.
+
+### L'ordre des chapitres change : le pamphlet remonte en 3
+
+Paul : « deux chapitres avant décembre, c'est trop peu. Il faut au moins 3 chapitres avant décembre, ce qui permet de desserrer ensuite. » Trente-quatre créneaux pour Dylan avant Noël, dont seize bordés par le voyage : il fallait deux chapitres courts en novembre-décembre.
+
+Revue de compressibilité : autobiographie et Progrès sont des œuvres intégrales, la lecture ne se comprime pas · la satire est grosse et son corpus composite · l'emprise porte l'oral, qui a sa place en juin. **Seul le pamphlet est bâti sur des textes courts sans œuvre à étudier en classe, avec un débat pour tâche finale.**
+
+Paul a validé, et pour une raison qui n'était pas la mienne : « je l'aborderai comme forme ultime de l'argumentation, et pas en soi. Donc en réalité le chapitre sera surtout centré sur l'argumentation, et la satire reprendra cette base. » **Ce recadrage remet la compétence majeure à l'endroit** : c4-ecrire-04, l'argumentation, arrive avant la satire qui la réinvestit, là où le tableau du consultant la plaçait après.
+
+**Bascule de novembre : vendredi 13.** Sept créneaux à la poésie — celle que Paul refond de toute façon —, onze au pamphlet.
+
+*Renvoi* : les entrées antérieures de ce registre parlent du pamphlet comme du « chapitre 5 » et rattachent Hugo au chapitre 5. C'était juste à leur date. **Depuis le 26/08 au soir, lire « chapitre 3 ».** Un journal ne se réécrit pas ; les documents d'état, eux, ont été corrigés.
+
+### Erreur du consultant, signalée par Paul
+
+J'avais écrit que le chapitre 3 prendrait les textes et le chapitre 5 les images, et qu'aucun des deux ne serait conforme seul à l'obligation de corpus de « Dénoncer les travers ». **Inventé.** Paul : « les deux chapitres mélangeront également de l'image et des textes ; d'ailleurs ma structure de chapitre canonique commence systématiquement par une analyse d'image. » Vérifiable dans ses fichiers : la séance 1 du chapitre construit est de type `intro_image`, son premier écran s'intitule « Analyse d'images : la routine », et le site porte ce type de séance en propre. Le point de conformité n'existait pas.
+
+### Reste ouvert
+
+Le corpus du chapitre 1 · le dimensionnement interne des chapitres 4 à 7 · les deux dettes d'EPI, après la réunion de lundi · l'amendement du hub pour la compétence manquante « Analyser le fonctionnement de la phrase simple et de la phrase complexe » · le fichier `Progression d'analyse logique tous niveaux.pptx`, absent du projet, qui tient la progression spiralaire.

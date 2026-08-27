@@ -2839,8 +2839,8 @@ function mjpcEcrireRest(url,options,cb){
    (les 3 gestes, le geste conservatoire par app, ce qui ne peut pas arriver).
    RESTAURER LA VERSION PRÉCÉDENTE : docs/MJPC6-restauration.md (convention BUG).
    ═══════════════════════════════════════════════════════════════════════════ */
-var APP_VERSION="8.72.0";
-var APP_VERSION_DATE="2026-08-25";
+var APP_VERSION="8.73.0-①";
+var APP_VERSION_DATE="2026-08-27";
 // ── 11. Coffre : dérivation, chiffrement, empreinte (v1.3.0) ──
 // (Le canon porte deux sections « 8 » — dette de numérotation connue, non corrigée
 //  ici pour ne pas toucher l'existant ; cette section est la 11.)
@@ -17801,13 +17801,223 @@ function edtToutesLesCases(){
 }
 
 /* ── LE CHARGEMENT — six lectures, aucune obligatoire ───────────────────── */
+
+/* ══ ① IDENTITÉ DES OBJETS ═══════════════════════════════════════════════ */
+
+var EDT_FAMILLES={
+  evenementsClasse:{prefixe:'evc:',forts:['niveau','debut','_lib'],classe:false},
+  jalons:          {prefixe:'jal:',forts:['date','_lib'],          classe:false},
+  etablissement:   {prefixe:'eta:',forts:['date','_lib'],          classe:false},
+  feries:          {prefixe:'fer:',forts:['date'],                 classe:false,critereUnique:true},
+  vacances:        {prefixe:'vac:',forts:['debut','fin'],          classe:false},
+  creneauxGrille:  {prefixe:'crn:',forts:['jour','creneau','semaine','classe'],classe:true},
+  creneauxHoraires:{prefixe:'hor:',forts:['debut','fin'],          classe:false},
+  periodes:        {prefixe:'per:',forts:['_nom'],                 classe:false,critereUnique:true},
+  photos:          {prefixe:'pho:',forts:[],                       classe:false,sansAppariement:true}
+};
+
+/* libellé normalisé : minuscules, accents retirés, espaces réduits, ponctuation ôtée */
+function edtNormaliser(t){
+  return String(t==null?'':t).toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+    .replace(/[^a-z0-9 ]+/g,' ').replace(/\s+/g,' ').trim();
+}
+/* condensé déterministe (FNV-1a 32 bits, base 36) — identique sur tous les
+   appareils de Paul. Il ne sert QU'À LA POSE. */
+function edtCondense(txt){
+  var h=0x811c9dc5,s=String(txt);
+  for(var i=0;i<s.length;i++){ h^=s.charCodeAt(i); h=(h*0x01000193)>>>0; }
+  return h.toString(36);
+}
+function edtValeurCritere(el,champ){
+  if(champ==='_lib')return edtNormaliser(el&&(el.libelle||el.nom||el.titre));
+  if(champ==='_nom')return edtNormaliser(el&&el.nom);
+  return String((el&&el[champ])==null?'':el[champ]);
+}
+/* L'AMORCE — préfixe + condensé du contenu au moment de la pose,
+   suffixé par la classe quand l'élément en dépend. */
+function edtAmorce(famille,el,classe){
+  var f=EDT_FAMILLES[famille]; if(!f)return null;
+  if(famille==='photos')return f.prefixe+edtHorodatage(el);
+  var base=f.forts.map(function(c){return edtValeurCritere(el,c);}).join('|');
+  var a=f.prefixe+edtCondense(base);
+  if(f.classe&&classe)a+=':'+edtNormaliser(classe);
+  return a;
+}
+/* photo : horodatage complet à la seconde, jamais la seule date */
+function edtHorodatage(el){
+  var t=(el&&(el.quand||el.pose))||Date.now();
+  return new Date(t).toISOString().replace(/[-:T]/g,'').slice(0,14);
+}
+
+/* POSE — un élément sans id en reçoit un à sa PREMIÈRE RENCONTRE.
+   Un id existant n'est JAMAIS recalculé. Collision → #2, à la pose seulement.
+   Rend {poses:n, collisions:[…]} ; ne touche à rien d'autre. */
+function edtPoserIds(liste,famille,classe,dejaPris){
+  var pris=dejaPris||{},poses=0,collisions=[];
+  (liste||[]).forEach(function(el){
+    if(!el||typeof el!=='object')return;
+    if(el.id){ pris[el.id]=true; return; }
+    var a=edtAmorce(famille,el,classe),id=a,n=1;
+    while(pris[id]){ n++; id=a+'#'+n; }
+    if(n>1)collisions.push({id:id,libelle:el.libelle||el.nom||'',rang:n});
+    el.id=id; pris[id]=true; poses++;
+  });
+  return {poses:poses,collisions:collisions,pris:pris};
+}
+
+/* APPARIEMENT — quatre temps, dans cet ordre, et biunivoque.
+   Rend {fort:[…], faible:[…], arrivent:[…], disparaissent:[…], ambigus:[…]}
+   Le FAIBLE n'est jamais appliqué : il est PROPOSÉ. */
+function edtApparier(entrants,existants,famille,classe){
+  var f=EDT_FAMILLES[famille]||{forts:[]};
+  var r={fort:[],faible:[],arrivent:[],disparaissent:[],ambigus:[]};
+  if(f.sansAppariement){ r.arrivent=(entrants||[]).slice(); return r; }
+  var libres=(existants||[]).slice(), pris=[];
+  var parId={}; libres.forEach(function(e){ if(e&&e.id)parId[e.id]=e; });
+  var reste=[];
+  /* ① l'entrant porte un id connu → il fait foi */
+  (entrants||[]).forEach(function(n){
+    if(n&&n.id&&parId[n.id]&&pris.indexOf(parId[n.id])<0){
+      r.fort.push({entrant:n,existant:parId[n.id],par:'id'}); pris.push(parId[n.id]);
+    } else reste.push(n);
+  });
+  var dispo=function(){ return libres.filter(function(e){return pris.indexOf(e)<0;}); };
+  var score=function(a,b){
+    var n=0; f.forts.forEach(function(c){
+      if(edtValeurCritere(a,c)===edtValeurCritere(b,c))n++; });
+    return n;
+  };
+  /* ② FORT : tous les critères concordent, candidat unique */
+  var apresFort=[];
+  reste.forEach(function(n){
+    var c=dispo().filter(function(e){return score(n,e)===f.forts.length;});
+    if(c.length===1){ r.fort.push({entrant:n,existant:c[0],par:'fort'}); pris.push(c[0]); }
+    else if(c.length>1){ r.ambigus.push({entrant:n,candidats:c.length,par:'fort'}); }
+    else apresFort.push(n);
+  });
+  /* ③ FAIBLE : tous sauf un, au moins un qui concorde, candidat unique.
+     Familles à critère unique : pas d'appariement faible. */
+  apresFort.forEach(function(n){
+    if(f.critereUnique||f.forts.length<2){ r.arrivent.push(n); return; }
+    var c=dispo().filter(function(e){var s=score(n,e);return s===f.forts.length-1&&s>=1;});
+    if(c.length===1){ r.faible.push({entrant:n,existant:c[0],par:'faible'}); pris.push(c[0]); }
+    else if(c.length>1){ r.ambigus.push({entrant:n,candidats:c.length,par:'faible'}); }
+    else r.arrivent.push(n);
+  });
+  r.disparaissent=dispo();
+  return r;
+}
+
+/* POSE SUR UN OBJET ENTIER — le chemin réel de la rentrée est la PREMIÈRE
+   INJECTION (le hub est vide) : les id naissent là, avant la première écriture. */
+function edtPoserIdsObjet(nom,o){
+  if(!o||typeof o!=='object')return 0;
+  var n=0;
+  if(nom==='calendrier'){
+    [['evenementsClasse','evenementsClasse'],['jalons','jalons'],['etablissement','etablissement'],
+     ['feries','feries'],['vacances','vacances']].forEach(function(p){
+      if(Array.isArray(o[p[0]]))n+=edtPoserIds(o[p[0]],p[1],null).poses; });
+  }
+  else if(nom==='grille'&&Array.isArray(o.creneaux))       n+=edtPoserIds(o.creneaux,'creneauxGrille',null).poses;
+  else if(nom==='creneaux'&&Array.isArray(o.creneaux))     n+=edtPoserIds(o.creneaux,'creneauxHoraires',null).poses;
+  else if(nom==='periodes'&&Array.isArray(o.periodes))     n+=edtPoserIds(o.periodes,'periodes',null).poses;
+  else if(nom==='photos'){ var l=Array.isArray(o)?o:(Array.isArray(o.photos)?o.photos:null);
+                           if(l)n+=edtPoserIds(l,'photos',null).poses; }
+  return n;
+}
+
+/* ARCHIVAGE — le modèle du site (chInjecterConfirme) : on archive AVANT, et on
+   ABANDONNE si l'archivage échoue. Il n'y a pas d'exception « ajout pur ». */
+function edtArchiver(motif,chemin,data){
+  return secuEcrire(atCorbeilleCle('edt-'+motif),
+    {_meta:{motif:'edt-'+motif,chemin:chemin,app:'site',ts:Date.now()},data:(data===undefined?null:data)});
+}
+
+/* LES CHARGES DE LA MISE À NIVEAU — écrites pour QUATRE dès maintenant.
+   ① les id manquants (livraison ①) · ② la date d'injection de repli (§⑨)
+   ③ le classement de repli des heures banalisées (§⑧) · ④ la reprise des
+   justifie:true dans decisions et le retrait du champ (§②).
+   Chaque charge rend {objets:{nom:valeurModifiee}, dit:[…]} ou null. */
+var EDT_CHARGES=[];
+function edtChargeInscrire(nom,fn){ EDT_CHARGES.push({nom:nom,fn:fn}); }
+
+edtChargeInscrire('identite',function(){
+  var touche={},dit=[];
+  var cal=EDT.calendrier;
+  if(cal&&typeof cal==='object'){
+    var n=0,col=[];
+    [['evenementsClasse','evenementsClasse'],['jalons','jalons'],
+     ['etablissement','etablissement'],['feries','feries'],['vacances','vacances']]
+    .forEach(function(p){
+      if(!Array.isArray(cal[p[0]]))return;
+      var r=edtPoserIds(cal[p[0]],p[1],null);
+      n+=r.poses; col=col.concat(r.collisions);
+    });
+    if(n){ touche.calendrier=cal; dit.push(n+' identifiants posés au calendrier'); }
+    col.forEach(function(c){ dit.push('deux éléments identiques — « '+(c.libelle||'')+' » a reçu un identifiant distinct'); });
+  }
+  var gr=EDT.grille;
+  if(gr&&Array.isArray(gr.creneaux)){
+    var rg=edtPoserIds(gr.creneaux,'creneauxGrille',null);
+    if(rg.poses){ touche.grille=gr; dit.push(rg.poses+' identifiants posés à la grille'); }
+  }
+  var cr=EDT.creneaux;
+  if(cr&&Array.isArray(cr.creneaux)){
+    var rc=edtPoserIds(cr.creneaux,'creneauxHoraires',null);
+    if(rc.poses){ touche.creneaux=cr; dit.push(rc.poses+' identifiants posés aux créneaux horaires'); }
+  }
+  var pe=EDT.periodes;
+  if(pe&&Array.isArray(pe.periodes)){
+    var rp=edtPoserIds(pe.periodes,'periodes',null);
+    if(rp.poses){ touche.periodes=pe; dit.push(rp.poses+' identifiants posés aux périodes'); }
+  }
+  var ph=EDT.photos;
+  if(ph&&typeof ph==='object'){
+    var l=Array.isArray(ph)?ph:(Array.isArray(ph.photos)?ph.photos:null);
+    if(l){ var rh=edtPoserIds(l,'photos',null);
+      if(rh.poses){ touche.photos=ph; dit.push(rh.poses+' identifiants posés aux photos'); } }
+  }
+  return {objets:touche,dit:dit};
+});
+
+/* L'ÉCRITURE UNIQUE DE MISE À NIVEAU — une seule, quelles que soient les charges.
+   Elle ARCHIVE avant d'écrire. Si l'archivage OU l'écriture échoue, RIEN n'est
+   écrit : le site continue en lecture avec les valeurs calculées en mémoire,
+   et il le dit. Jamais en deux temps. */
+function edtMettreANiveau(apres){
+  var objets={},dit=[];
+  EDT_CHARGES.forEach(function(c){
+    var r=null; try{ r=c.fn(); }catch(e){ dit.push('charge « '+c.nom+' » impossible'); }
+    if(!r)return;
+    Object.keys(r.objets||{}).forEach(function(k){ objets[k]=r.objets[k]; });
+    (r.dit||[]).forEach(function(t){ dit.push(t); });
+  });
+  var noms=Object.keys(objets);
+  EDT.miseANiveauDit=dit;
+  if(!noms.length){ if(apres)apres(true); return; }
+  var reste=noms.length,echec=false;
+  var edtFinir=function(){ if(--reste===0){
+      if(echec&&typeof atInfo==='function')
+        atInfo('La mise à niveau n\u2019a pas été enregistrée — rien n\u2019a été écrit. Le site fonctionne en lecture.');
+      if(apres)apres(!echec); } };
+  noms.forEach(function(nom){
+    edtArchiver('mise-a-niveau-'+nom,edtChemin(nom),EDT[nom]).then(function(a){
+      if(!a||!a.ok){ echec=true; edtFinir(); return; }   /* ABANDON : rien n'est écrit */
+      mjpcPutJson(FIREBASE_BASE+edtChemin(nom)+'.json',objets[nom],'Mise à niveau — '+nom,function(){ edtFinir(); });
+    });
+  });
+}
+
 function edtCharger(apres){
   var reste=EDT_OBJETS.length; EDT.pannes=[];
   EDT_OBJETS.forEach(function(o){
     _siteGet(edtChemin(o),function(v,err){
       EDT[o]=v||null;
       if(err)EDT.pannes.push(o);
-      if(--reste===0){ EDT.charge=true; try{edtAppliquerCreneaux();}catch(e){} if(apres)apres(); }
+      if(--reste===0){ EDT.charge=true; try{edtAppliquerCreneaux();}catch(e){}
+        try{ EDT_CHARGES.forEach(function(c){ c.fn(); }); }catch(e){}   /* id en mémoire : rien ne s'affiche sans identité */
+        if(apres)apres(); }
     });
   });
 }
@@ -18009,6 +18219,7 @@ function edtInjVerifier(voie){
 function edtInjInjecter(voie){
   var v=EDT_VOIES[voie], o=EDT_INJ.objet;
   if(!v||!o){ if(typeof atInfo==='function')atInfo('Rien à injecter : vérifie d\u2019abord le texte collé.'); return; }
+  try{ edtPoserIdsObjet(v.objet,o); }catch(e){}   /* ① les id naissent AVANT la première écriture */
   mjpcPutJson(FIREBASE_BASE+edtChemin(v.objet)+'.json',o,'Emploi du temps — '+v.titre,function(){
     EDT[v.objet]=o;
     if(v.objet==='creneaux'){ try{edtAppliquerCreneaux();}catch(e){} }
@@ -18022,11 +18233,13 @@ function edtInjInjecter(voie){
 function edtInjecterAvecLaGrille(o){
   if(Array.isArray(o.creneauxDuSite)&&o.creneauxDuSite.length){
     var k={annee:(o.annee||EDT_ANNEE),creneaux:o.creneauxDuSite};
+    try{ edtPoserIdsObjet('creneaux',k); }catch(e){}
     mjpcPutJson(FIREBASE_BASE+edtChemin('creneaux')+'.json',k,'Créneaux horaires de l\u2019année',function(){
       EDT.creneaux=k; try{edtAppliquerCreneaux();}catch(e){} edtPeindrePanneau(); });
   }
   if(Array.isArray(o.periodes)){
     var p={annee:(o.annee||EDT_ANNEE),periodes:edtFusionnerPeriodes(o.periodes)};
+    try{ edtPoserIdsObjet('periodes',p); }catch(e){}
     mjpcPutJson(FIREBASE_BASE+edtChemin('periodes')+'.json',p,'Découpage en périodes',function(){
       EDT.periodes=p; edtPeindrePanneau(); });
   }
@@ -18044,24 +18257,16 @@ function edtEcrireBrevet(cal){
 }
 
 /* ── LA MODIFICATION À LA MAIN — après l'injection, tout reste modifiable ── */
-function edtPeriodePoser(nom,date){
-  var o=EDT.periodes&&typeof EDT.periodes==='object'?EDT.periodes:{annee:EDT_ANNEE,periodes:[]};
-  if(!Array.isArray(o.periodes))o.periodes=[];
-  var t=null; o.periodes.forEach(function(p){ if(p&&p.nom===nom)t=p; });
-  if(!t){ t={nom:nom,debut:''}; o.periodes.push(t); }
-  t.debut=String(date||'');
-  mjpcPutJson(FIREBASE_BASE+edtChemin('periodes')+'.json',o,'Dates des périodes',function(){ EDT.periodes=o; edtPeindrePanneau(); });
-}
 function edtPeriodesEcrire(liste,libelle,apres){
   var e=edtValiderPeriodes(liste);
   if(e.length){ if(typeof atInfo==='function')atInfo(e[0]); edtPeindrePanneau(); return; }
-  var o={annee:EDT_ANNEE,periodes:liste.map(function(p,i){return {rang:i+1,nom:p.nom,debut:p.debut||'',fin:p.fin||''};})};
+  var o={annee:EDT_ANNEE,periodes:liste.map(function(p,i){return {id:p.id,rang:i+1,nom:p.nom,debut:p.debut||'',fin:p.fin||''};})};
   mjpcPutJson(FIREBASE_BASE+edtChemin('periodes')+'.json',o,libelle||'Découpage en périodes',function(){
     EDT.periodes=o; edtPeindrePanneau(); if(apres)apres(); });
 }
-function edtPeriodePoser(rang,champ,valeur){
+function edtPeriodePoser(id,champ,valeur){
   var l=edtPeriodes(); var t=null;
-  l.forEach(function(p){ if(Number(p.rang)===Number(rang))t=p; });
+  l.forEach(function(p){ if(p&&p.id===id)t=p; });
   if(!t)return;
   t[champ]=String(valeur||'');
   edtPeriodesEcrire(l,'Périodes — '+champ);
@@ -18073,20 +18278,20 @@ function edtPeriodeAjouter(nom){
   l.push({rang:l.length+1,nom:n,debut:'',fin:''});
   edtPeriodesEcrire(l,'Périodes — ajout');
 }
-function edtPeriodeSupprimer(rang){
-  edtPeriodesEcrire(edtPeriodes().filter(function(p){return Number(p.rang)!==Number(rang);}),'Périodes — retrait');
+function edtPeriodeSupprimer(id){
+  edtPeriodesEcrire(edtPeriodes().filter(function(p){return !p||p.id!==id;}),'Périodes — retrait');
 }
-function edtPeriodeDeplacer(rang,sens){
+function edtPeriodeDeplacer(id,sens){
   var l=edtPeriodes(), i=-1;
-  l.forEach(function(p,k){ if(Number(p.rang)===Number(rang))i=k; });
+  l.forEach(function(p,k){ if(p&&p.id===id)i=k; });
   var j=i+(sens<0?-1:1);
   if(i<0||j<0||j>=l.length)return;
   var t=l[i]; l[i]=l[j]; l[j]=t;
   edtPeriodesEcrire(l,'Périodes — ordre');
 }
-function edtCreneauPoser(rang,champ,valeur){
+function edtCreneauPoser(id,champ,valeur){
   var o=EDT.creneaux; if(!o||!Array.isArray(o.creneaux))return;
-  var t=null; o.creneaux.forEach(function(c){ if(c&&Number(c.rang)===Number(rang))t=c; });
+  var t=null; o.creneaux.forEach(function(c){ if(c&&c.id===id)t=c; });
   if(!t)return;
   t[champ]=String(valeur||'');
   mjpcPutJson(FIREBASE_BASE+edtChemin('creneaux')+'.json',o,'Créneaux horaires de l\u2019année',function(){
@@ -18276,12 +18481,12 @@ function edtPeindrePanneau(){
   h+='<div class="edt-periodes">'
     +per.map(function(p,i){
       return '<div class="edt-per">'
-        +'<input class="edt-nom" value="'+escapeHtml(p.nom||'')+'" onchange="edtPeriodePoser('+Number(p.rang)+',\'nom\',this.value)" aria-label="nom de la période">'
-        +'<input type="date" value="'+escapeHtml(p.debut||'')+'" onchange="edtPeriodePoser('+Number(p.rang)+',\'debut\',this.value)" aria-label="début">'
-        +'<input type="date" value="'+escapeHtml(p.fin||'')+'" onchange="edtPeriodePoser('+Number(p.rang)+',\'fin\',this.value)" aria-label="fin">'
-        +'<button class="edt-mini" onclick="edtPeriodeDeplacer('+Number(p.rang)+',-1)" title="monter"'+(i===0?' disabled':'')+'>\u2191</button>'
-        +'<button class="edt-mini" onclick="edtPeriodeDeplacer('+Number(p.rang)+',1)" title="descendre"'+(i===per.length-1?' disabled':'')+'>\u2193</button>'
-        +'<button class="edt-mini" onclick="edtPeriodeSupprimer('+Number(p.rang)+')" title="retirer">\u2715</button>'
+        +'<input class="edt-nom" value="'+escapeHtml(p.nom||'')+'" onchange="edtPeriodePoser(\''+String(p.id||'')+'\',\'nom\',this.value)" aria-label="nom de la période">'
+        +'<input type="date" value="'+escapeHtml(p.debut||'')+'" onchange="edtPeriodePoser(\''+String(p.id||'')+'\',\'debut\',this.value)" aria-label="début">'
+        +'<input type="date" value="'+escapeHtml(p.fin||'')+'" onchange="edtPeriodePoser(\''+String(p.id||'')+'\',\'fin\',this.value)" aria-label="fin">'
+        +'<button class="edt-mini" onclick="edtPeriodeDeplacer(\''+String(p.id||'')+'\',-1)" title="monter"'+(i===0?' disabled':'')+'>\u2191</button>'
+        +'<button class="edt-mini" onclick="edtPeriodeDeplacer(\''+String(p.id||'')+'\',1)" title="descendre"'+(i===per.length-1?' disabled':'')+'>\u2193</button>'
+        +'<button class="edt-mini" onclick="edtPeriodeSupprimer(\''+String(p.id||'')+'\')" title="retirer">\u2715</button>'
         +'</div>';
     }).join('')
     +'</div><div class="edt-actions"><button class="edt-btn" onclick="edtPeriodeAjouter()">+ Ajouter une période</button></div></div>';
@@ -18292,8 +18497,8 @@ function edtPeindrePanneau(){
       +'<p class="edt-p">Modifier un créneau ne touche jamais aux heures déjà jouées : leur trace porte le créneau d\u2019alors.</p><div class="edt-creneaux">'
       +cr.creneaux.slice().sort(function(a,b){return (a.rang||0)-(b.rang||0);}).map(function(c){
         return '<div class="edt-cr"><span>'+escapeHtml(String(c.rang))+'</span>'
-          +'<input type="time" value="'+escapeHtml(String(c.debut||''))+'" onchange="edtCreneauPoser('+Number(c.rang)+',\'debut\',this.value)">'
-          +'<input type="time" value="'+escapeHtml(String(c.fin||''))+'" onchange="edtCreneauPoser('+Number(c.rang)+',\'fin\',this.value)">'
+          +'<input type="time" value="'+escapeHtml(String(c.debut||''))+'" onchange="edtCreneauPoser(\''+String(c.id||'')+'\',\'debut\',this.value)">'
+          +'<input type="time" value="'+escapeHtml(String(c.fin||''))+'" onchange="edtCreneauPoser(\''+String(c.id||'')+'\',\'fin\',this.value)">'
           +'<em>'+escapeHtml(String(edtTempsUtile(String(c.debut)+'-'+String(c.fin))))+' min utiles</em></div>';
       }).join('')+'</div></div>';
   }
@@ -19543,7 +19748,7 @@ function edtPeindreCalendrier(){
     +'<p class="edt-mini-t">Coche « justifié » quand l\u2019écart de progression ne dépend pas de toi : ses heures sortent du calcul.</p>'
     +(cal.evenementsClasse||[]).map(function(x,i){
       return '<label class="edt-cal-l"><input type="checkbox"'+(x.justifie?' checked':'')
-        +' onchange="edtJustifier('+i+',this.checked)"><b>'+escapeHtml(x.niveau||'')+'</b> '
+        +' onchange="edtJustifier(\''+String(x.id||'')+'\',this.checked)"><b>'+escapeHtml(x.niveau||'')+'</b> '
         +escapeHtml(x.debut)+(x.fin!==x.debut?(' \u2192 '+escapeHtml(x.fin)):'')+' \u00b7 '
         +escapeHtml(String(x.libelle||'').slice(0,60))+'</label>';
     }).join('')+'</div>'
@@ -19555,9 +19760,11 @@ function edtPeindreCalendrier(){
     +'</div></div>';
   e.innerHTML=h;
 }
-function edtJustifier(i,valeur){
-  var cal=EDT.calendrier; if(!cal||!cal.evenementsClasse||!cal.evenementsClasse[i])return;
-  cal.evenementsClasse[i].justifie=!!valeur;
+function edtJustifier(id,valeur){
+  var cal=EDT.calendrier; if(!cal||!Array.isArray(cal.evenementsClasse))return;
+  var t=null; cal.evenementsClasse.forEach(function(e){ if(e&&e.id===id)t=e; });
+  if(!t)return;                       /* par id STOCKÉ, jamais par indice ni par formule */
+  t.justifie=!!valeur;
   mjpcPutJson(FIREBASE_BASE+edtChemin('calendrier')+'.json',cal,'Écart justifié',function(){
     EDT.calendrier=cal; edtPeindreCalendrier();
   });

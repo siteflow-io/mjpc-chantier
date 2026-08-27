@@ -763,3 +763,21 @@ J'avais écrit que le chapitre 3 prendrait les textes et le chapitre 5 les image
 ### Reste ouvert
 
 Le corpus du chapitre 1 · le dimensionnement interne des chapitres 4 à 7 · les deux dettes d'EPI, après la réunion de lundi · l'amendement du hub pour la compétence manquante « Analyser le fonctionnement de la phrase simple et de la phrase complexe » · le fichier `Progression d'analyse logique tous niveaux.pptx`, absent du projet, qui tient la progression spiralaire.
+
+### Relecture des documents à l'aune du nouvel ordre — demande de Paul
+
+> « ne citer que des décisions qui n'ont pas été révoquées ou amendées par mon propre cheminement mental. Relis tous les docs à cette aune. »
+
+Point de départ : la progression portait encore « **Le chapitre 5 sort de la satire pour entrer dans le pamphlet** », justifié par une intention de Paul — apprendre à argumenter pamphlétairement une fois l'ironie comprise. Cette intention **suppose la satire avant le pamphlet**. Depuis la remontée du pamphlet en 3, elle est caduque, et la citation la faisait vivre.
+
+Quatre autres passages étaient dans le même cas, tous corrigés :
+
+| Document | Ce qui était périmé |
+|---|---|
+| `PROGRESSION` | l'intention pamphlétaire, remplacée par celle du 26/08 au soir · le chapitre 1 à 17 séances → 16 créneaux · la séquence OI-GT-OI-GT-GT-OI-GT → OI-GT-GT-OI-GT-OI-GT · la citation de 2015 « poésie lyrique », la version de 2018 ayant supprimé *lyrique* · « l'ordre et le calendrier restent à trancher », alors qu'ils sont arrêtés |
+| `CADRAGE` | décompte 20/17 et 2 heures de langue → 20/16 et 6 heures · « le chapitre doit tenir dans dix-sept séances » → seize créneaux, bornés par dates · dette ④ close · la grille annotée : vendredi = langue jusqu'à la Toussaint |
+| `AUDIT` | le renvoi au décompte · **Q3 répondue** : le repérage au fil, la construction au chapitre |
+| `AMENDEMENT` | chiffres du décompte marqués périmés, avec renvoi — la démonstration reste valable, ses chiffres non |
+| `LISEZ-MOI` | description de la progression : elle porte désormais questionnement, entrée site, majeure, fenêtre et créneaux |
+
+**Règle qui en sort, et qui manquait :** une citation du professeur n'est pas une preuve, c'est une décision datée. Quand sa décision change, la citation ne devient pas fausse — elle devient **caduque**, et la laisser dans un document d'état fait vivre un raisonnement abandonné. *Ne citer que des décisions non révoquées ; dans un document d'état, une citation périmée se remplace, elle ne se conserve pas par respect de l'histoire — c'est le rôle du journal.*

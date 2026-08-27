@@ -83,11 +83,13 @@ Rentrée des élèves : **1er septembre 2026** (prérentrée les 27, 28 et 31 ao
 | vendredi | 10:07-11:02 | AB | Franklin | chapitre |
 | vendredi | 11:04-11:59 | AB | Dylan | chapitre |
 
-**Le fil « langue » du mercredi en semaine A** est un objet que le chapitre ignore complètement. Mot de Paul, consigné par l'exécutant : « comme ça je fais la séance le même jour dans deux classes différentes, idéal pour mesurer l'écart ».
+**Le fil « langue »** — du mercredi en semaine A à l'origine, passé au vendredi matin pour la période 1 le 26/08 au soir — est un objet que le chapitre ignore complètement. Mot de Paul, consigné par l'exécutant : « comme ça je fais la séance le même jour dans deux classes différentes, idéal pour mesurer l'écart ».
 
 ### B3. Ce que cela aurait changé au chapitre 1
 
-**Le décompte n'a jamais été fait.** Du 2 septembre (rentrée des 3e) au 13 octobre : **20 séances de chapitre pour Franklin, 17 pour Dylan**, plus **2 séances de langue** chacune, et 5 jours où un événement d'établissement ampute un créneau. Le chapitre a été bâti en **neuf séances de deux heures** — dix-huit créneaux — sans qu'aucun décompte ne soit posé. Que le compte tombe juste relève de la chance, pas de la construction.
+**Le décompte n'a jamais été fait.** Du 2 septembre (rentrée des 3e) au 13 octobre : **20 séances de chapitre pour Franklin, 17 pour Dylan**, plus **2 séances de langue** chacune, et 5 jours où un événement d'établissement ampute un créneau.
+
+> **Chiffres périmés le 26/08 au soir.** Le fil langue a été déplacé au vendredi matin pour la période 1, et le décompte ne retire plus que les journées entières réellement perdues. Le chapitre 1 dispose de **20 créneaux pour Franklin, 16 pour Dylan, et 6 heures de langue** chacune. Voir `PROGRESSION-ANNUELLE-3e.md` et le registre. La démonstration ci-dessous reste valable ; ses chiffres ne le sont plus. Le chapitre a été bâti en **neuf séances de deux heures** — dix-huit créneaux — sans qu'aucun décompte ne soit posé. Que le compte tombe juste relève de la chance, pas de la construction.
 
 **Le fil langue n'est pas une séance à déplacer : c'est une progression parallèle.** J'avais d'abord écrit que la séance 3 — « Interro de cours et analyse logique » — « aurait dû aller au fil langue ». Paul a corrigé, et sa formulation change la nature du problème :
 

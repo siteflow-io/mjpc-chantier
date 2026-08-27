@@ -25,6 +25,10 @@ FIN   = 'EDT — fin'
 CONTRAT = {
     # lecture / écriture du hub
     'secuLire', '_siteGet', 'mjpcPutJson',
+    # [LOT 2ter ①] l'archivage AVANT écrasement : la mise à niveau et toute
+    # écriture destructive du bloc archivent d'abord (§①, §④.2). Le modèle est
+    # celui de chInjecterConfirme ; ces deux appels en sont la mécanique.
+    'secuEcrire', 'atCorbeilleCle',
     # affichage du site
     'escapeHtml', 'atInfo', 'atModaleChoix', 'showProfSection', 'openProfPanel',
     # l'ouverture de l'atelier (contrat §③ : « l'ouverture d'un chapitre dans l'atelier »)
@@ -53,7 +57,11 @@ PORTES = {
 #     (mandat §⑥ : « écrite dans la trace de l'heure (absents[]) »). Le chemin
 #     n'est jamais fabriqué à la main : il vient de `edtCheminTrace`, qui le
 #     retrouve à partir de la classe, de la date et du créneau.
-EXCEPTIONS = {'/site/config/brevetDates/', "t.chemin+'/absents.json'"}
+#  ③ [LOT 2ter ①] l'ARCHIVE à la corbeille commune du site, écrite AVANT toute
+#     écriture destructive du bloc (§①, §④.2). Ce n'est pas un nœud de l'EDT :
+#     c'est le filet du site, déjà utilisé par chInjecterConfirme. Le chemin
+#     vient de `atCorbeilleCle`, jamais fabriqué à la main.
+EXCEPTIONS = {'/site/config/brevetDates/', "t.chemin+'/absents.json'", "atCorbeilleCle("}
 
 
 def bloc(src):

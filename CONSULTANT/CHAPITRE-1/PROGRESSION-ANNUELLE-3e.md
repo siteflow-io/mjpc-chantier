@@ -46,7 +46,7 @@ Détail des prix, ISBN et sources dans `PANIER-2026-2027.md`.
 
 ## Les décisions et leurs raisons
 
-**Le chapitre 1 est un EPI et commande le calendrier.** Le voyage tombe du 14 au 16 octobre, dernière semaine avant la Toussaint ; 17 séances utiles le précèdent (classe la moins dotée) ; **aucune séance entre le retour et les vacances**.
+**Le chapitre 1 est un EPI et commande le calendrier.** Le voyage tombe du 14 au 16 octobre, dernière semaine avant la Toussaint ; **16 créneaux utiles le précèdent** pour Dylan, 20 pour Franklin — le fil langue occupant les vendredis matins de la période 1 ; **aucune séance entre le retour et les vacances**, le chapitre se ferme donc au départ, tâche finale comprise.
 
 **« Agir dans la cité » exige une lecture intégrale** — le texte officiel dit « une œuvre ou une partie significative d'une œuvre portant un regard sur l'histoire du siècle (lecture intégrale) », en lien avec le thème d'histoire « L'Europe, un théâtre majeur des guerres totales ». *Paroles de poilus*, acheté, la porte.
 
@@ -56,11 +56,12 @@ Détail des prix, ISBN et sources dans `PANIER-2026-2027.md`.
 
 **Pas de poésie en lecture cursive** — décision de Paul : un recueil ne se lit pas seul de bout en bout, et le programme demande de « rendre compte de sa lecture ».
 
-**Deux chapitres de poésie sont exclus** — « les élèves vont vomir ». Le chapitre 2 couvre le romantisme, Baudelaire et les paysages peints : le programme range explicitement le romantisme dans « Visions poétiques du monde » (« la poésie lyrique du romantisme à nos jours »), et autorise l'intégration de « paysages en peinture ».
+**Deux chapitres de poésie sont exclus** — « les élèves vont vomir ». Le chapitre 2 couvre le romantisme, Baudelaire et les paysages peints : le programme range explicitement le romantisme dans « Visions poétiques du monde » — « des œuvres et des textes relevant principalement de la poésie, du romantisme à nos jours » dans la version de 2018, qui a laissé tomber le mot *lyrique* de 2015 — et autorise l'intégration de « paysages en peinture ».
 
 **Aucune œuvre théâtrale n'est imposée en 3e** — vérifié à la source. Les points de passage obligés sur le théâtre existent en 5e (comédie du XVIIe) et en 4e (tragédie du XVIIe ou comédie du XVIIIe), **pas en 3e**. Reste l'attendu de fin de cycle en oral : « dire de mémoire un texte littéraire ; s'engager dans un jeu théâtral ».
 
-**Le chapitre 5 sort de la satire pour entrer dans le pamphlet.** Intention de Paul : « les élèves ont compris l'ironie mordante, l'idée est de leur apprendre à argumenter pamphlétairement (et les dangers évidemment, comme pour l'ironie) ».
+**Le chapitre 3 traite l'argumentation, le pamphlet n'en étant que la forme extrême.** Intention de Paul, 26/08 au soir : « je l'aborderai comme forme ultime de l'argumentation, et pas en soi. Donc en réalité le chapitre sera surtout centré sur l'argumentation, et la satire reprendra cette base. » C'est pourquoi il passe **avant** la satire, qui le réinvestit — et pourquoi sa compétence majeure est `c4-ecrire-04`.
+*Une intention antérieure disait l'inverse — apprendre à argumenter pamphlétairement une fois l'ironie comprise, donc après la satire. Elle est caduque depuis le changement d'ordre.*
 - **Paul-Louis Courier** (mort en 1825, libre de droits) : le *Pamphlet des pamphlets* est un pamphlet **sur** le pamphlet — il théorise le genre au moment de s'en servir ; la *Pétition pour des villageois que l'on empêche de danser* offre une cible consensuelle, sans charge partisane.
 - **Zola, « J'accuse… ! »** (*L'Aurore*, 13 janvier 1898) : la signature, le risque assumé, le procès qui suit.
 - **Deux tribunes contemporaines opposées**, une de chaque bord, sur le même sujet : les élèves comparent des **procédés**, non des opinions. Exigence de Paul : « pas orienté ni à gauche ni à droite ».
@@ -71,18 +72,19 @@ Détail des prix, ISBN et sources dans `PANIER-2026-2027.md`.
 
 ---
 
-**L'ordre évite trois groupements d'affilée.** Décision de Paul : *La Planète des singes* remonte en position 6 — « sinon ça enchaîne trop de GT ». La suite devient OI-GT-OI-GT-GT-OI-GT : la plus longue série de groupements tombe de trois à deux.
+**L'ordre évite trois groupements d'affilée.** Décision de Paul : *La Planète des singes* remonte en position 6 — « sinon ça enchaîne trop de GT ». Après la remontée du pamphlet en 3, la suite est **OI-GT-GT-OI-GT-OI-GT** : la plus longue série de groupements reste de deux, la règle tient.
 **Conséquence à surveiller** : l'année se termine sur « L'emprise et le pouvoir », en juin, période où l'on perd des heures. C'est le seul chapitre qui accueille *Le Joueur d'échecs* en cursive — lui garantir sa place, ou déplacer la cursive plus tôt. *Paul : « tant pis ».*
 
 ## Ce qui reste à trancher
 
-**L'ordre et le calendrier** des chapitres 2 à 7 — seul le chapitre 1 est daté (2 septembre → 16 octobre).
+**Le corpus du chapitre 1** — quelles lettres retenir dans le recueil, et quels textes d'appui autour.
 
-**Le fil langue** — mercredi, semaine A, **les deux classes le même jour** (« idéal pour mesurer l'écart »). Seule la première séance est fixée : analyse logique, propositions indépendantes et principales. Restent à définir les notions, leur ordre annuel, et le chapitre que chacune sert.
-*Rappel : ni le site ni le JSON de chapitre ne savent porter ce fil — voir `PREUVE-fil-langue-manque-au-site.md`.*
+**Le dimensionnement interne des chapitres 4 à 7** — leurs fenêtres sont fixées, leur découpage en séances non.
 
-**Les évaluations** — où placer dictée (/10), réécriture (part des /18), étude de texte (/32), rédaction (/40), et **les deux brevets blancs**, dont le second est promis complet aux élèves dans le texte du chapitre 1.
+**L'entrée site des chapitres 1 et 7** — un recueil de lettres et un groupement Orwell : `recit` ou `articles_essai` ?
 
-**Le corpus détaillé du chapitre 5** — extraits de Courier, choix des deux tribunes : différé par Paul, « on verra en temps et en heure ».
+**Le corpus détaillé du chapitre 3** — extraits de Courier, choix des deux tribunes : différé par Paul, « on verra en temps et en heure ».
+
+**Le fil langue au-delà du repérage** — les sept notions vraiment neuves en 3e ont été relevées sur les repères annuels d'Éduscol ; leur ordre annuel et le chapitre que chacune sert restent à arrêter.
 
 **Les deux dettes d'EPI** — disciplines au-delà de l'histoire-géographie et du français, production commune. Réunion EPI lundi.

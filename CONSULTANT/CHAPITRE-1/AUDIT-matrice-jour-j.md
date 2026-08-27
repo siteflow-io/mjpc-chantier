@@ -66,7 +66,7 @@ Le texte officiel, pour ce thème de 3e : « en lien avec la programmation annue
 
 - **Aucune notion sans identifiant vérifié** dans la taxonomie. « Épistolaire » et « fragmentaire » sont à apparier avant tout JSON ; si les identifiants n'existent pas, c'est une **dette déclarée**, pas une invention.
 - **Les cinq formes de schéma existent** (carte, frise, arbre, cycle, tableau) : la forme de la lettre, les cinq structures de phrase complexe, les nationalités du corpus sont des schémas, pas des consignes. *Voir `AMENDEMENT-trous-du-prompt.md`.*
-- **Le décompte des créneaux précède le découpage** : 17 séances utiles (classe la moins dotée), 2 séances de langue, aucune séance entre le retour de Verdun et les vacances. *Voir `CADRAGE-chapitre-poilus.md`.*
+- **Le décompte des créneaux précède le découpage** : **16 créneaux utiles** (Dylan, la classe la moins dotée), **6 heures de langue** le vendredi matin, aucune séance entre le retour de Verdun et les vacances. *Voir `CADRAGE-chapitre-poilus.md`.*
 - **Aucune citation, aucune date sans source.** Leçon des citations de Banville et de Leconte de Lisle, fausses et corrigées.
 - **Aucune consigne ne met le professeur en scène.**
 - **Aucun JSON sans demande explicite de Paul.**
@@ -79,7 +79,7 @@ Le texte officiel, pour ce thème de 3e : « en lien avec la programmation annue
 
 **Q2. La séance décrochée** : le voyage à Verdun la remplace-t-il, ou un lieu de mémoire distinct subsiste-t-il ?
 
-**Q3. Reconnaître / produire une phrase complexe** : les deux séances de langue du mercredi (16 et 30 septembre, semaine A, les deux classes le même jour) sont-elles le bon endroit pour combler l'écart du point ③ ?
+**Q3. ~~Reconnaître / produire une phrase complexe~~ — RÉPONDU le 26/08 au soir** : oui, mais pas au mercredi. Le fil du **vendredi matin** installe le repérage en six heures avant le départ ; la **construction** est portée par le chapitre lui-même, à son S3, sur le modèle de la matrice — cinq structures imposées, exigées dans la tâche finale.
 
 **Q4. ~~Le quantitatif annuel~~ — RÉPONDU le 26/08** : 3 œuvres intégrales, 3 lectures cursives, 4 groupements, sur sept chapitres. Voir `PROGRESSION-ANNUELLE-3e.md`.
 
@@ -118,4 +118,4 @@ entrée du programme · thème · problématique · objectifs **littéraires** /
 
 ## 6. Dettes vivantes du chapitre (rappel)
 
-① disciplines de l'EPI au-delà de l'histoire-géo et du français · ② production commune de l'EPI · ③ ~~recueil de Guéno~~ **clos : acheté, le chapitre est une œuvre intégrale** · ④ ce que le chapitre attend des deux séances de langue · ⑤ le chapitre couvre-t-il les trois temps du voyage.
+① disciplines de l'EPI au-delà de l'histoire-géo et du français · ② production commune de l'EPI · ③ ~~recueil de Guéno~~ **clos : acheté, le chapitre est une œuvre intégrale** · ④ ~~ce que le chapitre attend du fil langue~~ **clos : repérage au fil, construction au chapitre** · ⑤ le chapitre couvre-t-il les trois temps du voyage.

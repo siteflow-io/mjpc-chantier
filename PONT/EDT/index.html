@@ -2779,6 +2779,21 @@ function mjpcEcrireRest(url,options,cb){
      Le second argument de `.then` ne capture QUE le rejet du fetch, jamais le premier
      handler. Si cb l\u00e8ve, l'erreur reste visible en console et ne falsifie plus rien. */
   var quand=Date.now();
+  /* [LOT 2ter — dette ③] LE MODE TEST COUVRE AUSSI CE TRANSPORT.
+     Mesuré le 27/08 : `_siteGet`, `_sitePut` et `_siteDelete` honoraient déjà
+     `m8TestOn()`, mais PAS `mjpcEcrireRest` — or le bloc EDT n'écrit QUE par ici
+     (15 appels à `mjpcPutJson`, zéro à `_sitePut`). Conséquence : mode test
+     activé, les gestes de l'emploi du temps partaient quand même au vrai hub.
+     Le mode test doit valoir pour tout le transport, sinon il ment. */
+  if(typeof m8TestOn==='function' && m8TestOn() && options && options.method && options.method!=='GET'){
+    var cheminM8=String(url).replace(/^https?:\/\/[^/]+/,'').replace(/\.json.*$/,'');
+    try{
+      if(options.method==='DELETE') delete M8_TEST_STORE[cheminM8];
+      else M8_TEST_STORE[cheminM8]=JSON.parse(options.body||'null');
+    }catch(e){}
+    if(cb)cb({etat:MJPC_ISSUE.ACCEPTEE,status:0,url:url,quand:quand,test:true});
+    return;
+  }
   fetch(url,options).then(function(r){
     return {etat:r.ok?MJPC_ISSUE.ACCEPTEE:MJPC_ISSUE.REFUSEE,status:r.status,url:url,quand:quand};
   },function(){

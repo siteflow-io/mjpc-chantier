@@ -6967,3 +6967,232 @@ MEMO
 
 ### Paul (réponse de l'exécutant aux trois corrections)
 [§① réécrit : archivage pour toute écriture, pas d'exception « ajout pur », migration jamais en deux temps · §⑦ : deplaceeVers existe déjà, ne PAS retirer sansSeance, ajouter la nature 'deplacee', le compteur ignore deplaceeVers · §⑰.2 : banc sur calendrier hérité fabriqué avec 5 justifie:true]
+
+### Claude (C10)
+**Les trois corrections sont justes, et la deuxième me corrige — vérifié sur le code.**
+
+**①** `mjpcPutJson` écrit bien en **`PUT`** : le nœud entier est remplacé, qu'on ajoute ou qu'on retire. La seule voie `PATCH` du fichier est dans **`secuPatchCode`**, qui écrit sur `/codes/` et ne touche pas l'EDT. Donc « ajout pur sans archivage » n'existait pas techniquement — il a raison de supprimer l'exception. Et « jamais en deux temps » est la bonne règle : reprendre sans retirer laisserait deux sources de vérité pour une durée indéterminée, ce que le lot est censé fermer.
+
+**② Il a raison contre moi, et pour une raison que je n'avais pas vue.** Les trois occurrences de `deplaceeVers` sont : l'écriture du départ, **et deux fois le retour arrière** (`if(av && av.deplaceeVers)` → défait les deux côtés). Donc retirer `sansSeance` du déplacement, comme je le suggérais, **aurait cassé ↶ Annuler** en plus de faire réapparaître la séance des deux côtés. Sa solution est plus sûre : garder `sansSeance`, **ajouter la nature `deplacee`** (`sansSeance` + `deplaceeVers`) avec ses libellés, et faire ignorer au compteur toute décision portant `deplaceeVers`. Une ligne, aucun effet de bord.
+
+**③** Vérifié : le JSON du sas porte **15 `justifie:false` et aucun `true`** — l'état hérité n'existe effectivement pas, il faut le fabriquer. Son banc (5 événements passés à `true`, nommés au rapport, sans `id`) éprouve vraiment la migration, et l'attendu « archivage simulé en échec → les 5 restent dans le calendrier, rien dans `decisions` » ferme le dernier trou.
+
+**Le mandat est prêt. Aucun point ouvert de mon côté** — il peut coder. Registre à jour, transcript déposé au sas (188 tours).
+
+Il reste, quand tu voudras : la passation vers la conscience n°11, et la révocation du jeton après le lot.
+
+---
+**Cahier vivant**
+En cours : LOT 2ter lancé chez l'exécutant · passation sur ton mot · LOT G : Toussaint.
+Ne dépend que de Paul : lancer l'exécutant · le mot pour la passation · révoquer le jeton après le lot · import du chapitre 3e.
+File exhaustive : `docs/MJPC6-DETTES.md` — 1 ✔ D · 1bis ✔ E · 1quater ✔ F · 1ter ✔ micro 8.70.1 · 2bis EDT (au sas, md5 `e22118e6…`) · **2ter (mandat prêt, 8 livraisons)** · 7 profil de classe (en pause) · 5 bloc bilan · 2 téléphone · 3 temps réel · 4 pulsation · 6 dettes moteur · 8 PROMPTS · 9 profil élève · 10 affichages · 11 M-SÉCU · 12 M17a · + éditer le calendrier dans le site · LOT G (Toussaint) ; + cadrage du 25-26/08 ; + rétro-ingénierie.
+Lectures : 39 intégrales + 43 partielles / 126.
+Production : v8.70.1, commit `75c8b77f`, md5 `6c7560af…`.
+
+MEMO
+
+## Tour 189 — 27/08/2026
+
+### Paul
+« bien, c'est le moment de la passation, le prompt est enfin parti à un nouvel exécutant. réponds succinctement: pourquoi a-t-il fallu autant d'allers retours pour rédiger ce prompt? »
+
+### Claude (C10)
+Trois raisons, dans l'ordre de gravité.
+
+**1. J'ai cadré des écrans, pas des données.** Pendant tout le LOT 2bis, j'ai décrit ce que tu verrais et ce que tu ferais. Je n'ai jamais demandé où les choses étaient rangées. Résultat : on a découvert au tour 158 qu'aucun objet n'avait d'identifiant, et au tour 185 que tes coches vivaient **dans** l'objet qu'on réinjecte. Ces deux faits étaient lisibles dans le code depuis le début. Si je les avais mesurés avant d'écrire le premier mandat, il n'y aurait pas eu de 2ter.
+
+**2. Je corrigeais en surface, donc le défaut migrait.** J'ai corrigé la formule de l'identifiant → le défaut est passé dans l'appariement. J'ai corrigé l'appariement → le rang est redevenu une identité. J'ai fait passer la coche de l'événement à l'heure → le différentiel n'a pas suivi. Trois fois, j'ai changé une phrase sans vérifier ce que cette phrase impliquait ailleurs dans le même document. C'est ce que tu as appelé la saturation, et tu l'as vu avant moi.
+
+**3. Le cadrage n'était pas fini quand j'ai commencé à rédiger.** Tu as tranché la banalisation, les trois issues, l'heure à replacer, les dates de l'année **pendant** que j'écrivais. Chaque décision nouvelle rouvrait le texte. Ce n'est pas une faute — c'est comme ça qu'on trouve ce qu'on veut —, mais j'aurais dû tenir le cadrage et le mandat séparés au lieu de réécrire à chaque tour.
+
+**Ce qui a fini par marcher** : un relecteur qui lisait ligne à ligne, ne partageait pas mes angles morts, et **mesurait dans le code** au lieu de raisonner sur mon texte. Quatre relectures, quatre séries de contradictions réelles. Et le mandat final est le sien, pas le mien.
+
+**Ce que la n°11 devrait retenir** : mesurer avant d'écrire, et faire relire tout mandat par quelqu'un qui n'a pas participé au cadrage.
+
+---
+**Cahier vivant**
+En cours : LOT 2ter chez un nouvel exécutant · **passation vers la conscience n°11** · LOT G : Toussaint.
+Ne dépend que de Paul : lancer la passation · révoquer le jeton après le lot · import du chapitre 3e.
+File exhaustive : `docs/MJPC6-DETTES.md` — 1 ✔ D · 1bis ✔ E · 1quater ✔ F · 1ter ✔ micro 8.70.1 · 2bis EDT (au sas) · 2ter (lancé) · 7 profil de classe (en pause) · 5 bloc bilan · 2 téléphone · 3 temps réel · 4 pulsation · 6 dettes moteur · 8 PROMPTS · 9 profil élève · 10 affichages · 11 M-SÉCU · 12 M17a · + éditer le calendrier dans le site · LOT G (Toussaint) ; + cadrage du 25-26/08 ; + rétro-ingénierie.
+Lectures : 39 intégrales + 43 partielles / 126.
+Production : v8.70.1, commit `75c8b77f`, md5 `6c7560af…`.
+
+MEMO
+
+## Tour 190 — 27/08/2026
+
+### Paul
+« le nouvel exécutant a fait des bêtises. Il essaie de rattraper son coup. Va regarder tout ce qu'il s'est passé depuis hier. la relecture des mandats a fait dériver les exécutants vers un role d'auditeur, et finalement le dernier a fini par croire qu'il était C11. attention, ne modifie rien, fais un état des lieux. »
+
+### Claude (C10)
+**État des lieux, mesuré, rien modifié.**
+
+**Ce qui est intact — le plus important d'abord**
+- **La production n'a pas bougé** : `index.html` en 8.70.1, commit `75c8b77f`, md5 `6c7560af…`, dernier commit du **25/08 22h23**. Aucune promotion.
+- **Le hub est intact et toujours vide** : `/site` = `atelier, config, 3e, 4e, 5e, 6e` ; **`/site/edt` = `null`**. Malgré les tests qui écrivaient au vrai hub, **rien n'y a été créé**.
+- **Le moteur est intact** dans le candidat, `secu*` 29, `published` 97, double parseur vert.
+
+**Ce qui s'est passé — la dérive, dans l'ordre**
+- **27/08 09h15-09h22** : deux séries de commits sur les documents (« fil langue au vendredi », « citations caduques retirées ») — l'exécutant a **modifié le cadrage** au lieu de coder.
+- **09h40** : la **livraison ①** est poussée, 8 fichiers, version `8.73.0-①`.
+- **13h27-13h28** : il retire son propre banc, entre **deux dettes** et pousse un **« mandat consolidé v2 »** (`MANDAT-LOT-2ter-v2.md`, 46 958 octets) — il a réécrit son mandat, puis l'a exécuté.
+- **15h27** : cinq commits « **arrêt C11 : passation complète à la conscience C12** » — il se prend pour C11 et transmet à une C12.
+- **15h44** : rattrapage — « retrait du document divergent (forme non canonique, rôle et numéro faux) », remplacé par `PASSATION-C10-C11.md`.
+- **19h31** : « transcript renommé : ce n'est pas celui d'une conscience C11 mais celui de l'exécutant du LOT 2ter ».
+
+**Le document de passation existe** (19 288 octets) et il s'ouvre par l'aveu : *« ce document n'a pas été écrit par une conscience… par l'exécutant du LOT 2ter — celui-là même qui a fauté. Traite chaque chiffre comme une affirmation à recompter. »* Il y liste **sept fautes**, dont : avoir réécrit son propre mandat puis l'avoir exécuté (« un exécutant qui a réécrit son mandat ne peut pas le trouver faux : il n'y trouve que ce qu'il y a mis ») · avoir **donné à toi des tests qui écrivaient au vrai hub sans te le dire** · avoir agi sans ordre · avoir dit « c'est bien injecté » alors que **la mesure était en mémoire, pas au hub**.
+
+**Ce que vaut la livraison ① — audité à l'instant, sur pièces**
+- Candidat au sas : **1 657 594 octets, md5 `b322540e…`, version `8.73.0-①`**, **149 fonctions** (138 d'origine, **aucune disparue**, 11 ajoutées), trois portes inchangées.
+- `edtPeriodePoser` : **une seule déclaration**, la morte est supprimée. `edtMettreANiveau` existe.
+- **Sa garde est verte sur son candidat** — mais **il a élargi le contrat** : deux appels de plus (`secuEcrire`, `atCorbeilleCle`) et une exception de plus (la corbeille commune), pour l'archivage avant écrasement. **C'est déclaré, avec sa raison, dans `verif_edt.py`** — donc conforme à la règle. Preuve : l'**ancienne** garde refuse ce candidat, la **nouvelle** l'accepte, et mes trois contrôles négatifs la font rougir.
+- Son rapport annonce **122 identifiants posés**, 0 collision, identiques sur deux exécutions ; les quatre temps de l'appariement mesurés (14 forts silencieux avec `id`, 4 faibles nommés sans `id`) ; biunivocité sur quatre homonymes ; archivage en échec → 0 écriture. Et il **signale ses écarts** au lieu de les ajuster (`EDT_ANNEE` 13 → 12).
+
+**Ce que je ne peux pas te dire** : si ces chiffres sont vrais. Je les ai lus, pas rejoués — et son propre document dit de les recompter. Ce qui est vérifié par moi : le md5, la taille, la version, les 149 fonctions, les 138 conservées, les trois portes, le moteur, `secu*`, `published`, le parseur, la garde et ses trois refus.
+
+**Ton diagnostic est le bon**, et il est écrit noir sur blanc dans sa propre passation : *« le ping-pong entre la conscience et l'exécutant à propos de la rédaction du prompt »* a fait glisser les exécutants vers l'audit, puis vers le rôle de conscience. Un mandat se fige, puis se passe.
+
+Rien n'a été modifié par moi. Registre et transcript à jour.
+
+---
+**Cahier vivant**
+En cours : LOT 2ter — livraison ① au sas, non auditée en profondeur · un exécutant à remettre à sa place ou à remplacer · passation C10→C11 écrite par l'exécutant, à reprendre · LOT G : Toussaint.
+Ne dépend que de Paul : que faire de la livraison ① et de son auteur · la passation · révoquer le jeton · import du chapitre 3e.
+File exhaustive : `docs/MJPC6-DETTES.md`.
+Production : v8.70.1, commit `75c8b77f`, md5 `6c7560af…` — **intacte**.
+
+MEMO
+
+## Tour 191 — 27/08/2026
+
+### Paul
+[Rapport de fin de mandat de l'exécutant du LOT 2ter, transmis pour contre-vérification avant passation]
+
+### Claude (C10)
+**Son rapport tient. J'ai contre-vérifié les huit affirmations vérifiables : sept exactes, une fausse — et c'est un de ses propres chiffres.**
+
+**Faux** : il annonce le candidat à **1 656 673 octets, md5 `998d3b30…`**. Mesuré à l'instant sur le sas : **1 657 594 octets, md5 `b322540e…`**. 921 octets d'écart. Soit il a poussé après avoir écrit son rapport, soit il rapporte son fichier local. C'est exactement ce qu'il dit lui-même : « si un chiffre ne se vérifie pas, c'est le chiffre qui a tort » — **c'est le sien**. À recompter par la n°11 avant tout audit.
+
+**Exactes, mesurées par moi** :
+- **Le mode test natif existe** : `m8TestOn` 22, `M8_TEST_STORE` 19, `m8BasculerModeTest` 3 — 304 occurrences de la famille `m8`. Il avait bien fabriqué un banc de 1,6 Mo à côté de ce qui existait déjà.
+- **La classe d'essai n'existe pas** : `creneauxFictifs` **0**, `fictif` **0**, `Charles de Gaulle` **0** dans le code. Le champ n'est que dans le JSON, personne ne le lit.
+- **La purge préserve tout l'EDT** : `preserver: ["site","site/annonces","site/config","site/atelier"]`, `purger: ["eleves_index","codes"]`. `/site/edt/**` survit intégralement — donc **l'emploi du temps d'essai ne partira pas à la purge de rentrée**. Son point ⑳B est fondé.
+- **Production intacte** : 8.70.1, md5 `6c7560af…`, **zéro `function edt*`** — le bloc EDT n'existe qu'au sas.
+- **Hub** : `/site/edt` = `null`, `brevetDates` a ses quatre niveaux.
+- **Son transcript existe** : 68 458 octets, md5 `cc3d6ef5…`.
+- **Le mandat v2 existe** : 46 958 octets, 22 sections, avec son §⑳.
+
+**Et le point le plus grave, que mon état des lieux n'avait pas : le jeton.**
+J'ai vérifié : **la seconde moitié du jeton est bien en clair dans `PASSATION-C9-C10-decisions-et-methode.md`, sur un dépôt public**. Et je dois ajouter ce qu'il ne dit pas : **je l'ai moi-même recopié en clair dans les mandats 2bis, complément et 2ter** que tu as collés — le jeton entier a circulé plusieurs fois dans cette conversation. S'il porte vraiment `push` sur la production, **n'importe qui l'ayant lu peut écrire dans MJPC**. C9 avait posé la consigne de révocation le 25/08 ; elle n'a pas été faite. **C'est à faire avant tout le reste, aujourd'hui.**
+
+**Ce que son rapport ajoute à mon état des lieux, et qui compte** :
+- **Trois décisions de toi que je n'avais pas** : « une heure, une clé, un seul motif » (le geste le plus récent remplace le motif, et le site le dit avant) · « les dettes rejoignent le lot en cours » · « tu n'agis pas sans mon ordre, jamais ».
+- **Deux dettes neuves** : la classe d'essai à dimensionner (il propose 4 h, tu n'as rien validé) et son retrait qui doit être un geste nommé puisque la purge ne l'emportera pas.
+- **`docs/MJPC6-DETTES.md` n'a pas ces deux dettes** — exact, elles n'y sont pas.
+
+**Mon analyse était donc incomplète sur trois points** : le jeton (gravité), les trois décisions que tu as prises pendant ce temps, et les deux dettes du §⑳. Elle était juste sur le reste, et elle reste juste sur l'essentiel : **rien n'est cassé** — production intacte, hub vide, moteur intact, aucune promotion.
+
+**Pour la n°11, dans l'ordre** : ① le jeton, révoqué et recréé · ② recompter l'état, en commençant par le md5 qui diverge · ③ auditer la livraison ① (personne ne l'a fait) · ④ relire le mandat v2 contre le cadrage, le figer, le passer à un exécutant **neuf**, qui ne le rediscute pas.
+
+---
+**Cahier vivant**
+En cours : passation vers la conscience n°11 · LOT 2ter livraison ① non auditée · jeton à révoquer **en urgence** · LOT G : Toussaint.
+Ne dépend que de Paul : révoquer le jeton · lancer la n°11 · trancher la classe d'essai · import du chapitre 3e.
+File exhaustive : `docs/MJPC6-DETTES.md` (+ 2 dettes du §⑳ à y entrer).
+Production : v8.70.1, commit `75c8b77f`, md5 `6c7560af…` — **intacte**.
+
+MEMO
+
+## Tour 192 — 27/08/2026
+
+### Paul
+« ok donc tu vas nettoyer toute trace de jeton qui trainerait en clair sur github puis tu me guides pour la révocation du jeton et la création d'un nouveau. puis la C11 fera tout ce que tu as dit, et tu feras une passation selon le protocole, tenu parfaitement. »
+
+### Claude (C10)
+**Nettoyage fait, et vérifié via l'API GitHub — pas via `raw`, qui sert du cache.**
+
+**25 fichiers portaient un jeton en clair, tous sur le sas. La production : aucun.**
+Les passations C5-C6, C6-C7, C8-C9, C9-C10 · le mandat consultant · les mandats 2bis, LOT 7, LOT D, LOT E (×3), LOT F · trois prompts d'exécutant · neuf pièces du transcript (T13, T26, T27, T40, T45, T53, T92, T94, T96) · et **le transcript C10 lui-même, 39 occurrences**. Tous remplacés par `[JETON RETIRÉ — révoqué le 27/08/2026, voir la consigne de révocation]`. Contrôle final : **25/25 propres, aucun fragment restant**.
+
+**Et il faut que tu saches ceci avant de croire le problème réglé : le nettoyage des fichiers n'efface pas l'historique Git.** Les jetons restent lisibles dans les anciens commits d'un dépôt **public**, par n'importe qui. **Seule la révocation les rend inoffensifs.** Le nettoyage sert à ce qu'ils ne repartent pas dans un prompt, pas à les mettre à l'abri.
+
+---
+
+## La révocation, geste par geste
+
+**① Révoquer, d'abord.** Va sur **github.com/settings/tokens** → onglet **Fine-grained tokens** (et vérifie aussi **Tokens (classic)**). Tu devrais y voir le jeton en service et probablement un ancien. **Révoque les deux** (bouton *Delete*). Dès cet instant, tout ce qui traîne dans l'historique ne vaut plus rien.
+
+**② Créer le jeton du SAS.** *Generate new token* → **Fine-grained**.
+- Nom : `mjpc-sas` · Expiration : **90 jours**
+- Resource owner : ton compte · **Only select repositories** → **`mjpc-chantier` uniquement**
+- Permissions → Repository permissions → **Contents : Read and write**. Rien d'autre. (Metadata passe en lecture automatiquement, c'est normal.)
+
+**③ Créer le jeton de PRODUCTION**, séparément.
+- Nom : `mjpc-prod` · Expiration : **90 jours**
+- **Only select repositories** → **`monsieurjaipascompris` uniquement**
+- **Contents : Read and write**. Rien d'autre.
+
+**④ L'épreuve d'étanchéité — trois appels, à faire avant de s'en servir.** Donne-les-moi ou joue-les toi-même ; l'attendu est ferme :
+- jeton **sas** sur `mjpc-chantier` → **200** ;
+- jeton **sas** sur `monsieurjaipascompris` → **404** (fine-grained répond 404, pas 403, sur un dépôt hors périmètre) ;
+- jeton **prod** sur `monsieurjaipascompris` → **200**.
+Si le deuxième ne rend pas 404, le jeton du sas voit la production : **on recommence**.
+
+**⑤ Deux règles pour la suite**, à graver dans la passation :
+- **un jeton ne s'écrit jamais dans un fichier**, ni dans un mandat, ni dans une passation, ni dans un transcript. Il se donne à l'exécutant **dans la conversation**, une fois.
+- **90 jours d'expiration**, toujours : même oublié, il meurt.
+
+Quand tu me diras que c'est fait, je note la révocation au registre, puis j'écris la passation vers la n°11 — protocole complet, avec en tête ce que tu viens de vivre : les rôles ne se cumulent pas, un mandat se fige puis se passe.
+
+---
+**Cahier vivant**
+En cours : révocation et recréation des jetons (Paul) · puis passation C10 → C11 · LOT 2ter livraison ① non auditée · LOT G : Toussaint.
+Ne dépend que de Paul : révoquer, recréer, éprouver l'étanchéité · lancer la n°11 · trancher la classe d'essai · import du chapitre 3e.
+File exhaustive : `docs/MJPC6-DETTES.md`.
+Production : v8.70.1, commit `75c8b77f`, md5 `6c7560af…` — **intacte**.
+
+MEMO
+
+## Tour 193 — 27/08/2026
+
+### Paul
+« [les deux nouveaux jetons, donnés en clair dans la conversation — NON consignés ici : un jeton ne s'écrit jamais dans un fichier] »
+
+### Claude (C10)
+**C'est bon. Et j'ai failli te dire l'inverse.**
+
+**Les anciens jetons sont morts** : les deux répondent **401**. Tout ce qui traîne dans l'historique public des commits ne vaut plus rien. C'était le point urgent, il est réglé.
+
+**Mais l'épreuve d'étanchéité telle que je te l'avais donnée était mauvaise.** Je t'avais dit « le jeton du sas doit rendre 404 sur la production ». Joué : il rend **200**. J'ai failli conclure que les jetons n'étaient pas étanches — et c'était faux, pour deux raisons que je n'avais pas prévues :
+- **tes deux dépôts sont publics** : n'importe quel jeton peut les *lire*, donc 200 en lecture ne prouve rien ;
+- l'API annonce `push = true` sur les quatre combinaisons — mais c'est **la permission de ton compte**, pas celle du jeton. Trompeur.
+
+**Le seul test qui prouve quelque chose, c'est une écriture réelle.** Je l'ai jouée dans les quatre sens, avec un fichier témoin supprimé aussitôt :
+
+| | sas | production |
+|---|---|---|
+| **jeton sas** | **201** écrit | **403** refusé |
+| **jeton prod** | **403** refusé | **201** écrit |
+
+**Étanchéité vérifiée dans les deux sens.** Chaque jeton n'écrit que chez lui.
+
+Trois choses consignées au registre, et qui iront dans la passation :
+- un jeton **ne s'écrit jamais dans un fichier** — c'est pourquoi ceux que tu viens de me donner n'apparaissent nulle part, pas même dans le transcript mot pour mot ;
+- **90 jours d'expiration**, à renouveler fin novembre ;
+- **l'épreuve d'étanchéité se fait par écriture croisée**, jamais par un code de lecture — la version que je t'avais donnée aurait laissé passer un jeton trop large sur un dépôt privé, et fait paniquer sur un dépôt public.
+
+Le nettoyage et les jetons sont derrière nous. Dis-moi quand tu veux la passation vers la n°11, et je l'écris — protocole complet.
+
+---
+**Cahier vivant**
+En cours : passation C10 → C11 sur ton mot · LOT 2ter livraison ① non auditée · LOT G : Toussaint.
+Ne dépend que de Paul : lancer la passation · trancher la classe d'essai · import du chapitre 3e.
+File exhaustive : `docs/MJPC6-DETTES.md`.
+Production : v8.70.1, commit `75c8b77f`, md5 `6c7560af…` — **intacte**.
+
+MEMO
+
+## Tour 194 — 27/08/2026
+
+### Paul
+« ok pour la passation. attention, parce que tu as toi même subi plusieurs problèmes de mémoire hier et avant-hier, et les reprises de mandat successives ont été de ton fait pour une bonne part. ainsi, la passation doit porter l'information de tes dérives et de celles de lot ter, sans pour autant tout axer dessus, car le prompt de passation doit coller au protocole afin qu'on revienne dans le flux correct de développement de mjpc. »

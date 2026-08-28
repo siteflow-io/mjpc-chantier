@@ -5,7 +5,7 @@ Tu as construit avec Paul son premier chapitre sous le prompt MJPC. Cette conver
 
 ## CE QU'IL FAUT FAIRE
 **Dépose au sas les documents que tu as déjà** — tels quels, sans les refaire, sans les résumer : rapports, notes, journaux, prompts intermédiaires, JSON produits, listes de problèmes, tout ce que ta conversation a produit et qui a une valeur pour la suite. Garde tes noms de fichiers.
-Dépôt : `siteflow-io/mjpc-chantier`, dossier **`CONSULTANT/CHAPITRE-1/`**, par l'API GitHub (PUT `contents/<chemin>`), jeton `github_pat_11B7IGAKA0ZeuBZz0LOpos_cuhU5vVEPO` ⊕ `jcxiFfdUdVHciewRjiRS107u68ajjr3rI77BANLU3jLmtZeFP` (concatène les deux moitiés). Vérifie chaque dépôt (code 201/200) et donne à Paul l'URL du commit.
+Dépôt : `siteflow-io/mjpc-chantier`, dossier **`CONSULTANT/CHAPITRE-1/`**, par l'API GitHub (PUT `contents/<chemin>`), jeton `[JETON RETIRÉ — révoqué le 27/08/2026, voir la consigne de révocation]0ZeuBZz0LOpos_cuhU5vVEPO` ⊕ `jcxiFfdUdVHciewRjiRS107u[JETON RETIRÉ — révoqué le 27/08/2026, voir la consigne de révocation]` (concatène les deux moitiés). Vérifie chaque dépôt (code 201/200) et donne à Paul l'URL du commit.
 
 **Puis un seul document à écrire, s'il n'existe pas déjà : `LISEZ-MOI.md`** — la liste de ce que tu as déposé, une ligne par fichier disant ce qu'il contient et à quoi il sert ; et, en fin de document, ce qui n'est écrit nulle part ailleurs et qui se perdrait avec cette conversation :
 - ce que le **prompt de chapitre** t'a laissé deviner ou t'a mal guidé (avec la citation du prompt quand tu l'as) ;

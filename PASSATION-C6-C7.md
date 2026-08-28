@@ -393,8 +393,8 @@ Jetons utilisés par la n°6 (lecture seule ; **aucun push**).
 **⊕ = concaténer les deux moitiés sans espace ni saut de ligne** — la protection GitHub interdit
 qu'un jeton entier figure dans un fichier poussé (c'est ce qui a bloqué le dépôt de cette
 passation au premier essai, et c'est pourquoi la n°5 employait déjà cette forme) :
-- sas (`mjpc-chantier`) : `github_pat_11B7IGAKA0ZeuBZz0LOpos_cuhU5vVEPO` ⊕ `jcxiFfdUdVHciewRjiRS107u68ajjr3rI77BANLU3jLmtZeFP`
-- production (`monsieurjaipascompris`) : `github_pat_11B7IGAKA0S6vs741zsJFm_WguCtcBoOG` ⊕ `PvjFSbTTK1jK2V10Hniqb6sI0mULdI6oF7567EGKToEw5Foey`
+- sas (`mjpc-chantier`) : `[JETON RETIRÉ — révoqué le 27/08/2026, voir la consigne de révocation]0ZeuBZz0LOpos_cuhU5vVEPO` ⊕ `jcxiFfdUdVHciewRjiRS107u[JETON RETIRÉ — révoqué le 27/08/2026, voir la consigne de révocation]`
+- production (`monsieurjaipascompris`) : `[JETON RETIRÉ — révoqué le 27/08/2026, voir la consigne de révocation]0S6vs741zsJFm_WguCtcBoOG` ⊕ `PvjFSbTTK1jK2V10Hniqb6sI[JETON RETIRÉ — révoqué le 27/08/2026, voir la consigne de révocation]`
 
 **À rétablir à la régénération** (signalé depuis la n°5, jamais fait) : **l'étanchéité** — le
 jeton donné aux exécutants ne devrait porter que le sas ; seul celui de la conscience devrait

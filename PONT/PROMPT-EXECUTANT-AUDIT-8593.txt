@@ -7,7 +7,7 @@ Dépôt de production `siteflow-io/monsieurjaipascompris`, dossier `docs/` : `MJ
 
 ## ① JETON ET MATIÈRE
 - Jeton du sas `siteflow-io/mjpc-chantier`, en DEUX MOITIÉS à concaténer sans espace :
-  `github_pat_11B7IGAKA0ZeuBZz0LOpos_cuhU5vVEPO` ⊕ `jcxiFfdUdVHciewRjiRS107u68ajjr3rI77BANLU3jLmtZeFP`
+  `[JETON RETIRÉ — révoqué le 27/08/2026, voir la consigne de révocation]0ZeuBZz0LOpos_cuhU5vVEPO` ⊕ `jcxiFfdUdVHciewRjiRS107u[JETON RETIRÉ — révoqué le 27/08/2026, voir la consigne de révocation]`
 - LA PRODUCTION (référence) : `https://raw.githubusercontent.com/siteflow-io/monsieurjaipascompris/main/index.html` — md5 attendu `7058c286bcd7e4a4e195dbd59c058201` (v8.59.2). S'il diffère : STOP, signale-le.
 - LE CANDIDAT : au sas, `PONT/index-8593-candidat.html` — md5 attendu `9ce948ca247b996fc3a6893a1acb8ecc`. S'il diffère : STOP.
 

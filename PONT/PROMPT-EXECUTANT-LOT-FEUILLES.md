@@ -8,7 +8,7 @@ Tu es l'EXÉCUTANT de ce LOT pour le site MJPC (monsieurjaipascompris). Tu trava
 
 ## ① JETON ET DÉPÔTS
 - Jeton du sas (`mjpc-chantier`), en DEUX MOITIÉS à concaténer sans espace (la protection GitHub interdit un jeton entier dans un fichier) :
-  `github_pat_11B7IGAKA0ZeuBZz0LOpos_cuhU5vVEPO` ⊕ `jcxiFfdUdVHciewRjiRS107u68ajjr3rI77BANLU3jLmtZeFP`
+  `[JETON RETIRÉ — révoqué le 27/08/2026, voir la consigne de révocation]0ZeuBZz0LOpos_cuhU5vVEPO` ⊕ `jcxiFfdUdVHciewRjiRS107u[JETON RETIRÉ — révoqué le 27/08/2026, voir la consigne de révocation]`
 - Tu clones le sas avec ce jeton. Tu NE disposes d'aucun jeton de production : lecture de la prod par `https://raw.githubusercontent.com/siteflow-io/monsieurjaipascompris/main/…` uniquement.
 
 ## ② LA BASE (règle gravée — incident du 22/07)

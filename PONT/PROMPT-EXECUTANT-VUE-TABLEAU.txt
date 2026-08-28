@@ -7,7 +7,7 @@ Dépôt prod `siteflow-io/monsieurjaipascompris`, dossier `docs/` : `MJPC6-1-DIS
 
 ## ① JETON ET MATIÈRE
 - Jeton sas `siteflow-io/mjpc-chantier`, DEUX MOITIÉS à concaténer sans espace ni retour :
-  `github_pat_11B7IGAKA0ZeuBZz0LOpos_cuhU5vVEPO` ⊕ `jcxiFfdUdVHciewRjiRS107u68ajjr3rI77BANLU3jLmtZeFP`
+  `[JETON RETIRÉ — révoqué le 27/08/2026, voir la consigne de révocation]0ZeuBZz0LOpos_cuhU5vVEPO` ⊕ `jcxiFfdUdVHciewRjiRS107u[JETON RETIRÉ — révoqué le 27/08/2026, voir la consigne de révocation]`
 - Production : `https://raw.githubusercontent.com/siteflow-io/monsieurjaipascompris/main/index.html` — LECTURE SEULE, télécharge, note taille+md5, et DEMANDE à la conscience la version attendue si le doute existe (base actuelle : v8.59.4, md5 `0b4ad1c5752b3188190269a62ee0b064` — STOP si différent).
 - Hub `mjpc-hub-default-rtdb.europe-west1.firebasedatabase.app` : LECTURE SEULE dans tes bancs (toute écriture interceptée et comptée, le compte reste à zéro). Le nœud `deroule_joue` existe déjà (écrit par le pilotage en classe).
 

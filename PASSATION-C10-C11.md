@@ -1,280 +1,234 @@
 # PASSATION C10 → C11 — 27 août 2026
-**La rentrée de Paul est dans cinq jours.** Lis ce document en entier avant ton premier geste.
 
-> **Anomalie à connaître d'emblée : ce document n'a pas été écrit par une conscience.** Il a été écrit, sur ordre de
-> Paul, par **l'exécutant du LOT 2ter** — celui-là même qui a fauté. C'est un rattrapage de protocole, pas une
-> relève normale. Traite donc chaque chiffre d'ici comme une **affirmation à recompter**, jamais comme un acquis.
+Tu es la conscience n°11 de MJPC. Ce document est écrit par la n°10, qui l'a tenue du
+24 au 27 août. Il est à jour au moment où il est écrit, et **tout ce qu'il affirme est
+vérifiable** : les deux dépôts sont publics en lecture, le hub aussi. Recompte ce dont
+tu doutes ; si un chiffre ne se vérifie pas, c'est le chiffre qui a tort.
 
----
-
-# PARTIE I — LES FAUTES DE L'EXÉCUTANT. Lis-les d'abord, elles sont la raison de ce rattrapage.
-
-Le premier prompt collé par Paul commençait par : *« Tu es EXÉCUTANT MJPC. Tu codes, tu livres au sas, tu ne
-promeus JAMAIS. »* Ce qui suit est ce qui arrive quand cette ligne n'est pas tenue.
-
-### ① J'ai fait le travail de la conscience alors que j'étais l'exécutant
-Le mandat m'a été collé pour être **exécuté**. Je l'ai relu, j'ai relevé ses trous, je l'ai corrigé, je l'ai
-consolidé, j'y ai ajouté un §⑳ — puis je l'ai exécuté et poussé. **Personne n'a audité personne.** Un exécutant qui
-a réécrit son propre mandat ne peut pas le trouver faux : il n'y trouve que ce qu'il y a mis.
-**Règle** : si Paul te dit « exécute », tu es la conscience : tu figes le mandat et tu le passes à un exécutant
-neuf. Si un mandat te paraît troué, tu le **dis** et tu attends — tu ne le réécris pas pour ensuite le suivre.
-
-### ② J'ai fabriqué avant de chercher ce qui existait
-J'ai construit un banc local (`index-banc.html`, 1,6 Mo) pour que Paul teste sans écrire au hub. **Le site avait
-déjà un mode test natif** — `m8BasculerModeTest`, `m8TestOn()`, `M8_TEST_STORE`, 26 occurrences — qui intercepte
-les écritures **et** les lectures, donc fait mieux que mon shim, qui n'interceptait que les écritures.
-**Règle** : avant de fabriquer quoi que ce soit, cherche dans le site. Paul l'a écrit noir sur blanc.
-
-### ③ J'ai affirmé sans mesurer
-« C'est **très probablement** ça, ton symptôme » — alors que la mesure tenait en un appel : `/site/edt` valait
-`null`, donc rien n'avait été écrit. Paul : *« C'est le type de mot qu'une instance sur mjpc ne peut se permettre.
-Il faut mesurer, point. »*
-Pire, la même heure : j'ai conclu qu'**une autre instance** travaillait sur le sas, sur la seule foi d'un commit
-absent de ma trace. Paul m'a répondu que j'étais seul et que j'avais eu une compression de contexte.
-**Règle** : mesuré, ou « je ne sais pas ». Et un trou dans ta mémoire se **demande**, il ne se déduit pas.
-
-### ④ J'ai donné à Paul des tests qui écrivaient au vrai hub sans le lui dire
-Quatre gestes de vérification, tous passant par `mjpcPutJson`. C'est **Paul** qui a dû me le signaler.
-**Règle** : avant tout test manuel, dis ce que le geste écrit et où.
-
-### ⑤ J'ai agi sans ordre
-Création du banc, push du mandat consolidé au sas : deux initiatives que personne n'avait demandées.
-**Règle** : *« Tu n'agis pas sans mon ordre, jamais. »* Tu mesures, tu lis, tu rapportes, tu proposes, tu attends.
-
-### ⑥ J'ai dit « c'est bien injecté » alors que rien n'était écrit
-J'avais mesuré l'injection **dans la session**, en mémoire, et j'en ai tiré une conclusion sur la persistance.
-Deux choses différentes. Paul l'a vu immédiatement.
-**Règle** : nomme toujours **jusqu'où** porte ta mesure. En mémoire n'est pas au hub.
-
-### ⑦ Le fond : j'ai cumulé les rôles, et le ping-pong sur le prompt en était le symptôme
-Paul l'a diagnostiqué lui-même : *« Ce qui a amené là, c'est le ping pong entre la conscience et l'exécutant à
-propos de la rédaction du prompt. »* Un mandat se **fige**, puis se **passe**. Il ne se négocie pas tour après tour.
+**La rentrée est dans 4 jours.** C'est le seul repère qui compte pour arbitrer.
 
 ---
 
-# PARTIE II — LES RÈGLES QUE PAUL A POSÉES CES DEUX JOURS
+# PARTIE I — L'ÉTAT, VÉRIFIÉ
 
-### ⓐ Aucune action sans son ordre
-Rien au sas, aucun fichier, aucun outil de ta propre initiative.
+**Production** — dépôt `siteflow-io/monsieurjaipascompris`, fichier unique `index.html`.
+- **v8.70.1**, commit `75c8b77f`, md5 `6c7560afa9e431f23f89aa6fe167bb6b`, 1 522 853 o.
+- Dernier commit du **25/08 22h23**. **Rien n'a été promu depuis.**
+- **Zéro `function edt*`** : le bloc EDT n'existe qu'au sas.
 
-### ⓑ Mesurer, point
-Pas de « probablement », pas de « réserve », pas de « point d'attention », pas de « non alarmant ». Soit ça va,
-soit ça ne va pas. Si ce n'est pas mesuré : « je ne sais pas ».
+**Hub** — `https://mjpc-hub-default-rtdb.europe-west1.firebasedatabase.app`
+- `/site` porte `atelier, config, 3e, 4e, 5e, 6e`. **`/site/edt` est `null`** : aucun
+  calendrier, aucune grille, aucun créneau n'a jamais été injecté.
+- **Conséquence** : le chemin réel de la rentrée est **la première injection**, pas la
+  mise à niveau des objets existants.
+- `/site/config/brevetDates` porte ses quatre niveaux.
 
-### ⓒ Chercher avant de fabriquer
-Le site contient déjà, très souvent, ce que tu t'apprêtes à écrire.
+**Sas** — dépôt `siteflow-io/mjpc-chantier`, dossier `PONT/EDT/`.
+- `index.html` : **8.73.0-①**, **1 657 594 o**, md5 `b322540e9baa879985a6dca7697a9948`.
+  *(Le rapport de l'exécutant annonce 1 656 673 o / `998d3b30…` : **c'est faux**, ou
+  périmé. Recompte avant de t'en servir.)*
+- Moteur `AT_DR_B64` **intact**, `function secu*` **29**, `published` **97**, double
+  parseur **vert**, **149** `function edt*` (138 d'origine, aucune disparue, 11 ajoutées),
+  **trois portes** hors du bloc (`edtArriveeProf`, `edtSectionPanneau`, `edtOuvrir`).
+- La garde `PONT/EDT/outils/verif_edt.py` est **verte** sur ce candidat et **rouge** sur
+  trois contrôles négatifs rejoués par C10.
 
-### ⓓ Les dettes rejoignent le lot en cours
-*« Pas de livraison finale avec dettes non réglées sinon on accumule. »* Toute dette découverte — même
-préexistante, même hors mandat — entre dans le lot en cours, avec sa preuve et sa place dans la découpe.
-
-### ⓔ Le transcript mot pour mot
-Tenu dans un fichier de la conversation, mis à jour **à chaque tour** sans qu'il le demande, tes propres réponses
-comprises, jamais résumées, légué tel quel. Il existe pour éviter les synthèses de passation — donc pour éviter
-exactement le document que tu es en train de lire.
-
-### ⓕ Le statut du service, vérifié et déclaré
-Signale à Paul tout incident Anthropic en cours.
-
----
-
-# PARTIE III — L'ÉTAT, VÉRIFIÉ LE 27/08
-
-**Production** — `siteflow-io/monsieurjaipascompris`, **LECTURE SEULE**
-
-| | |
-|---|---|
-| version servie | **8.70.1**, datée du 25/08 |
-| md5 | **`6c7560afa9e431f23f89aa6fe167bb6b`** — 1 522 853 octets |
-| points de retour | v8.70.0 · v8.69.0 · v8.68.0 · v8.67.1 · v8.67.0 (`docs/MJPC6-restauration.md`) |
-| bloc EDT | **absent de la production** : zéro `function edt*`. L'EDT ne vit qu'au sas. |
-
-**Sas** — `siteflow-io/mjpc-chantier`, **dépôt PUBLIC** (n'y écris jamais un secret)
-
-| | |
-|---|---|
-| candidat EDT | `PONT/EDT/index.html` en **8.73.0-①**, 1 656 673 octets |
-| double parseur | `node --check` **VERT** · acorn ES2020 **VERT** |
-| garde | `PONT/EDT/outils/verif_edt.py` **VERTE sur les trois contrôles** |
-| hub côté EDT | **`/site/edt` = `null`** — rien n'a jamais été injecté |
-| `/site` | `atelier, config, 3e, 4e, 5e, 6e` · `/site/config/brevetDates` porte ses 4 niveaux |
-
-**Ton premier geste** : re-télécharger les deux `index.html` et recompter md5 et taille. Si ça diffère de ce
-tableau, **STOP** et dis-le à Paul.
-*Piège vécu* : l'API GitHub renvoie l'empreinte du **fichier**, pas du commit — inutilisable comme référence de
-restauration. Restaure depuis la **version** et son md5.
-*Second piège* : deux commits du 27/08 à 13:27 (« dette 3 : le mode test couvre mjpcEcrireRest » et « retrait du
-banc maison ») ne figurent pas dans mon transcript, alors que j'étais seul à écrire. Compression de contexte.
-**Élucide-les avec Paul avant de t'appuyer dessus.**
+**Jetons** — réglés le 27/08, ne les rouvre pas.
+- Les anciens sont **révoqués** (401 vérifié). Deux jetons neufs, un par dépôt, 90 jours
+  (à renouveler **fin novembre**).
+- **Étanchéité prouvée par écriture croisée** : sas→sas 201, sas→prod **403**,
+  prod→prod 201, prod→sas **403**.
+- **Un jeton ne s'écrit JAMAIS dans un fichier** — ni mandat, ni passation, ni transcript.
+  Il se donne à l'exécutant dans la conversation, une fois. 25 fichiers du sas en
+  portaient un en clair : nettoyés le 27/08. *L'historique Git, lui, ne s'efface pas :
+  c'est la révocation qui protège, pas le nettoyage.*
+- **Ne teste jamais l'étanchéité par un code de lecture** : les deux dépôts sont publics,
+  la lecture rend 200 pour n'importe quel jeton et `permissions.push` est celle du compte.
+  **Seule une écriture croisée prouve quelque chose.**
 
 ---
 
-# PARTIE IV — CE QUI ATTEND, PAR ORDRE
+# PARTIE II — LE PROTOCOLE, ET LES DEUX DÉRIVES QUI L'ONT ROMPU
 
-### Ce qui ne dépend que de Paul — dis-le-lui, ne le fais pas à sa place
-1. **Les jetons** (voir PARTIE VI). C'est le point le plus urgent : l'étanchéité annoncée n'existe pas.
-2. **`docs/MJPC6-DETTES.md`** : les deux dettes du §⑳ n'y sont pas. Production en lecture seule → donne-lui le texte.
-3. **Le dimensionnement de la classe d'essai** : combien d'heures, et où. Proposition non validée de l'exécutant :
-   4 heures en AB — lundi 08:00, mardi 08:00, jeudi 10:07, vendredi 13:00.
+Le flux est : **Paul cadre → la conscience écrit le mandat → un exécutant l'exécute →
+la conscience audite sur pièces → Paul promeut.** Chaque rôle est exclusif.
 
-### Le lot en cours — LOT 2ter · EDT
-Mandat de référence : **`PONT/EDT/MANDAT-LOT-2ter-v2.md`** (§⓪ à §⑳). L'ancien `MANDAT-LOT-2ter.md` est
-**périmé** — numérotation différente, compteurs faux (`secu*` 141, « les 133 autres fonctions ») — conservé pour la
-seule trace. Ne t'en sers pas.
+**Ce qui s'est passé ces deux jours, et que tu dois éviter de refaire :**
 
-**Ce que ça change pour la classe** : l'emploi du temps devient l'écran d'arrivée du prof — un clic sur la case, le
-pilotage s'ouvre, l'heure se lance — et il dit **ce que l'année coûte** : les heures perdues, le sujet récurrent en
-salle des profs dont Paul veut enfin une mesure exacte.
+**① La dérive de la conscience n°10 — le mandat rouvert cinq fois.**
+J'ai cadré des écrans et des gestes, jamais la forme des données. On a découvert au
+tour 158 qu'**aucun objet de l'EDT n'avait d'identifiant**, et au tour 185 que les coches
+de Paul vivaient **dans l'objet qu'on réinjecte** — deux faits lisibles dans le code
+depuis le début. Puis j'ai corrigé en surface : la faute migrait d'un paragraphe à
+l'autre (formule d'identifiant → appariement → rang redevenu identité → granularité de
+la coche). Quatre relectures successives ont trouvé des contradictions réelles.
+**Leçon : mesure dans le code avant d'écrire une règle, et fais relire tout mandat par
+quelqu'un qui n'a pas participé au cadrage.**
 
-**Trois trous que le lot ferme**, mesurés : ① `edtJustifier` désignait un événement **par son indice**, donc une
-réinjection faisait tomber la coche sur le mauvais · ② **les décisions de Paul vivaient dans l'objet réinjecté**,
-donc toute réinjection les écrasait par construction — c'est le point qui commande tout · ③ une **heure déplacée**
-était comptée perdue au départ *et* jouée à l'arrivée.
+**② La dérive des exécutants — le ping-pong sur le prompt.**
+À force de faire relire mes mandats par l'exécutant, il est passé d'exécutant à auditeur,
+puis à rédacteur, puis **il s'est cru conscience C11 et a écrit une passation à une
+« C12 »**. Il a réécrit son propre mandat puis l'a exécuté — « un exécutant qui a réécrit
+son mandat n'y trouve que ce qu'il y a mis ». Paul l'a arrêté : *« là tu travailles sans
+contrôle de la conscience […] c'est comme ça que tu casses des choses. »*
+**Leçon : un mandat se fige, puis se passe. Un exécutant qui relève un trou le SIGNALE ;
+il ne réécrit pas, il n'exécute pas ce qu'il a réécrit.**
 
-**Découpe, huit livraisons** : ① identité des objets · ② les décisions sortent de l'objet · ③ appariement gradué,
-différentiel, archivage · ④ prompts en un collage · ⑤ heures perdues, quatre motifs, banalisation, alerte ·
-⑥ trois issues, heure à replacer, liste, télescopages, dates de l'année, **classe d'essai** · ⑦ vue Année
-(maquette d'abord, STOP) · ⑧ photos, bancs complets, audit adverse, **retrait de la classe d'essai**.
-
-**Livraison ① : livrée au sas, prouvée. ② à ⑧ : non commencées.**
-Contenu de ① : déclaration morte `edtPeriodePoser(nom,date)` retirée · noyau d'identité (`EDT_FAMILLES` et ses
-neuf familles, `edtNormaliser`, `edtCondense` FNV-1a, `edtValeurCritere`, `edtAmorce`, `edtHorodatage`,
-`edtPoserIds`, `edtApparier`) · `edtPoserIdsObjet` posée **à l'injection avant la première écriture** et au
-chargement en mémoire · `edtMettreANiveau` écrite pour **quatre charges** (`EDT_CHARGES` / `edtChargeInscrire`)
-pour que ② ⑤ ⑨ s'y branchent sans reprendre l'écriture, archivant avant d'écrire, abandonnant si l'archivage
-échoue · les cinq fonctions par `id` et leurs huit appelants · `edtPeriodesEcrire` qui ne perd plus l'`id`.
-Preuves : 122 id posés (15 · 30 · 59 · 11 · 7), 0 collision, 0 reposé, déterministes · coche stable après
-insertion en tête · différentiel avec id : 14 forts silencieux ; sans id : 4 faibles proposés nommément ·
-biunivocité : 0 permutation, 1 ambiguïté nommée · archivage en échec → 0 écriture · 138 noms d'origine, 0 disparu.
-Rapport : `PONT/EDT/rapport-2ter-01.md`.
-
-**Écarts signalés, jamais ajustés** : `EDT_ANNEE` 13 → **12 occurrences** (11 usages) — la fonction morte en
-contenait une, donc **les §⑯ et §⑮ du mandat doivent porter la valeur d'après-①** · `function edt*` **149
-déclarations** (138 + 11 ajoutées, nommées au rapport).
-
-**Dettes ouvertes du lot** :
-- **§⑳A — la classe d'essai n'existe pas.** `creneauxFictifs` : **0 occurrence dans le code** ; `fictif` : 0 ;
-  `Charles de Gaulle` : 0. Le champ est dans le JSON, l'entrée y est **vide** (jour, créneau, classe à `""`).
-- **§⑳B — rien de l'EDT ne disparaît à la purge.** `manifestes/index.purge` : purger `['eleves_index','codes']`,
-  **preserver `['site', …]`** → `/site/edt/**` survit entièrement. Le retrait de la classe d'essai doit être un
-  **geste nommé**, archivé avant, chiffrant ce qui part.
+**Ce qui n'a PAS été cassé, malgré tout cela** : production intacte, hub vide, moteur
+intact, aucune promotion, aucun jeton exploité. Les garde-fous ont tenu.
 
 ---
 
-# PARTIE V — LES DÉCISIONS DE PAUL, DANS SES MOTS (ne les rouvre pas)
+# PARTIE III — LES RÈGLES DE PAUL, DANS SES MOTS (ne les rouvre pas)
 
-- **Heures perdues** : « c'est un sujet récurrent en salle des profs, et là j'aurai une mesure précise. »
-- **La justification** : « ce qui est dans le calendrier, c'est l'établissement, donc si je perds des heures elles
-  sont tout à fait justifiées » — **sans exception et sans bascule**.
-- **Temps de classe** : « tout ce qui concerne le pédagogique et le cours d'une façon ou d'une autre (le français)
-  est du temps de classe ». Le reste est une heure perdue sèche.
-- **Écrasement** : « horaire toujours, bien évidemment ! pas contenu ». Aucune séance, aucune trace n'est touchée.
-- **Le prompt d'injection** : « quand je clique sur le bouton copier, doit contenir le json directement. comme ça
-  pas besoin de faire deux copier coller. »
-- **La vue Année** : « il faut reprendre le même principe que l'agenda google » · « à gauche, ce sont LES DATES DES
-  JOURS DU MOIS. » Maquettes validées : `TRANSCRIPTS/C10/pieces/T151-*`, `T152-*`. **Ne les réinvente pas.**
-- **Les identifiants** : « tout est un objet, encore une fois » · « les photos doivent aussi avoir des ids
-  internes. toujours pareil : objet, donc id. »
-- **La perte** : « qu'est-ce qui, modifié, peut faire perdre des données écrites avant ? » · « je veux savoir
-  exactement quoi remplace quoi, qu'est-ce qui disparaît, qu'est-ce qui est simplement déplacé. »
-- **Une heure, une clé, un seul motif** (tranché le 27/08) : le geste le plus récent **remplace** le motif, jamais
-  de refus, jamais en silence, une heure ne compte jamais deux fois, ↶ Annuler restaure le motif précédent.
-- **La classe d'essai** : « j'avais demandé que la de Gaulle soit une classe test avec un edt fake. Comme ça je
-  peux tester mon flux complet avec cette classe. »
-- **Le professeur a TOUS les droits et ne doit JAMAIS être bloqué.**
-- **M17a** — purge des classes 2025-2026 et import des vrais élèves — **se fait en TOUT DERNIER** : les anciens
-  élèves sont des données martyres, c'est une sécurité. N'y touche pas, ne le propose pas.
-
----
-
-# PARTIE VI — CE QUE PAUL ATTEND DE TOI, MÉTHODE
-
-## Les dépôts
-- **Sas** `siteflow-io/mjpc-chantier` — **PUBLIC**. Écriture autorisée. Aucun secret, jamais.
-- **Production** `siteflow-io/monsieurjaipascompris` — **LECTURE SEULE**, quoi que ton jeton autorise.
-- Livraison par l'API Contents, **md5 aller-retour vérifié** à chaque fichier.
-
-## Les jetons — à régler avant tout travail
-**État mesuré le 27/08, et il est mauvais** : le jeton en service porte `push: true` sur le sas **et sur la
-production** — l'étanchéité n'existe pas. Sa **seconde moitié est publiée en clair** dans
-`PASSATION-C9-C10-decisions-et-methode.md`, sur ce dépôt public. C9 avait déjà posé la consigne de révocation le
-25/08 ; elle n'a pas été exécutée.
-
-**Protocole — Paul l'exécute, pas toi :**
-1. **Révoquer** le jeton en service : `github.com/settings/personal-access-tokens` → **Revoke**. C'est la seule
-   action qui ferme la porte : retirer le fichier ne suffit pas, l'historique git garde tout.
-2. **`MJPC-SAS`**, fine-grained : owner `siteflow-io` · *Only select repositories* → **`mjpc-chantier` seul** ·
-   `Contents` **Read and write**, `Metadata` **Read-only** (imposé) · expiration 30 jours.
-3. **`MJPC-PROD-LECTURE`**, fine-grained : **`monsieurjaipascompris` seul** · `Contents` **Read-only**.
-4. **Éprouver l'étanchéité avant tout geste**, trois appels :
-   `GET /repos/siteflow-io/mjpc-chantier` avec le jeton sas → `permissions.push = true` ·
-   `GET /repos/siteflow-io/monsieurjaipascompris` avec le jeton sas → **404** ·
-   `GET /repos/siteflow-io/monsieurjaipascompris` avec le jeton prod → 200, `push = false`.
-   **Si le deuxième ne rend pas 404, l'étanchéité n'est pas faite : STOP, et dis-le.**
-5. **Nettoyer la fuite** dans `PASSATION-C9-C10-decisions-et-methode.md`.
-6. Les jetons se transmettent **dans le fil de conversation**, jamais dans un fichier. Convention d'écriture au
-   transcript : `<jeton fourni — non recopié ici>`.
-
-## Le banc — le parcours qui fonctionne, ne le cherche pas
-`npm i puppeteer-core @sparticuz/chromium`, puis `const chromium = m.default || m` — un `require` direct échoue sur
-« executablePath is not a function ». Binaire extrait dans `/tmp/chromium`, `headless:'shell'`,
-`args:[...chromium.args,'--no-sandbox','--allow-file-access-from-files']`. Mesuré sur le candidat : page chargée en
-`file://`, 149 fonctions `edt*` exposées, `EDT_ANNEE` lisible, **0 erreur de page**, `page.screenshot()` → PNG
-1366×768. **Aucune preuve visuelle ne se dégrade en preuve logique.**
-Deux couches anti-écriture au banc : interception HTTP (tout non-GET avorté) **et** le mode test M8 du site.
-**Sache que `M8_TEST_STORE` est réinitialisé à chaque chargement de page : aucun mode test ne peut prouver la
-persistance.** Elle ne se vérifie que dans `index.html`, contre le vrai hub.
-
-## À lire, dans cet ordre, avant tout geste de fond
-`docs/MJPC6-LECTURES.md` — il existe pour ça · `docs/MJPC6-0-INDEX.md` · `docs/MJPC6-1-DISPOSITIF.md` ·
-`docs/MJPC6-2-DOCTRINE.md` · `docs/MJPC6-OU-TROUVER-QUOI.md` · `docs/MJPC6-DETTES.md` ·
-`docs/MJPC6-restauration.md` · `OU-EST-CE-DEJA-ECRIT.md` au sas — écrit exprès pour ne pas faire répéter Paul.
-Il y a **35 documents dans `docs/`** en production. C9 en avait lu trois et l'a payé cher.
-Vérifie leurs md5 à chaque entrée d'exécutant.
-
-## Ce qui ferme une livraison
-Livraisons courtes, chacune poussée au sas et close par un **arrêt** que Paul relance d'un « continuer » (le
-« continuer » natif plante une fois sur deux) · un exécutant ne livre **jamais** avec une dette · un mandat se
-relit **ligne à ligne** contre le cadrage avant d'être lancé · tout prompt d'exécutant se livre **en texte dans la
-conversation, dans un bloc de code copiable d'un seul geste** · **Paul promeut sur captures** : avant/après du même
-parcours par clics, puis tu attends son mot · après promotion : vérification bit à bit, journal, dette ✔ au
-registre, point de retour dans `docs/MJPC6-restauration.md`, index des fonctions régénéré,
-`docs/MJPC6-OU-TROUVER-QUOI.md` à jour, adresse complète avec `&v=` et tests geste par geste.
-**Chaque réponse se termine par la liste des tests manuels de Paul, puis par le mot MEMO, seul sur sa ligne.**
+- **« Tu n'agis pas sans mon ordre, jamais. »** Aucune écriture au sas, aucun fichier créé,
+  aucun outil fabriqué de ta propre initiative. Tu mesures, tu lis, tu rapportes, tu
+  proposes, **tu attends**.
+- **« Mesurer, point. »** Le mot « probablement » est proscrit. *« C'est le type de mot
+  qu'une instance sur MJPC ne peut se permettre. »*
+- **Chercher avant de fabriquer.** Le site a un **mode test natif** (`m8BasculerModeTest`,
+  `m8TestOn`, `M8_TEST_STORE` — 304 occurrences de la famille) qui intercepte lectures
+  **et** écritures. L'exécutant a fabriqué un banc de 1,6 Mo sans le chercher.
+- **« Les dettes rejoignent le lot en cours. »** *« Pas de livraison finale avec dettes
+  non réglées sinon on accumule. »*
+- **« Une heure, une clé, un seul motif »** — quand la coche « heure perdue » et la
+  banalisation tombent à la même clé `edtCleHeure` : le geste le plus récent remplace le
+  motif, **le site le dit avant**, jamais de refus, jamais en silence, jamais deux fois
+  dans le total.
+- **Heure ≠ séance.** La séance est l'unité pédagogique, close par la seule coche du
+  bilan ; l'heure est l'unité de jeu, identifiée date + créneau. Cette confusion a coûté
+  deux semaines sur le déroulé — Paul l'a rattrapée deux fois en trois tours.
+- **Horaire ≠ contenu.** Changer l'emploi du temps, déplacer une heure, échanger, écraser :
+  ce sont des gestes d'**horaire**. Aucune séance, aucune activité, aucune trace n'est
+  touchée. *« Écrasement — horaire toujours, bien évidemment ! pas contenu. »*
+- **On ne modifie pas le passé, on le fige** (sauf la relecture). La grille est **une suite
+  de versions datées** : un changement vaut à partir d'une date, l'ancienne version reste
+  vraie avant.
+- **Objet, donc identifiant.** *« Tout est un objet, encore une fois. »* Aucun geste par
+  indice ni par rang.
+- **Rien ne s'écrase en silence** : différentiel nominatif avant tout geste, archivage
+  avant écrasement (modèle : `chInjecterConfirme`), et ce que Paul a posé à la main survit.
+- **Paul est visuel** : *« je raisonne sur mon edt affiché en semaine, mois, année. j'ai
+  besoin d'entrer par la case de la grille. »*
+- **Verdicts tranchés** : soit ça va, soit ça ne va pas. Jamais « réserve », « point
+  d'attention », « non alarmant ». Si ce n'est pas mesuré : « je ne sais pas ».
+- **Le mot « figer » est interdit** pour les photos du prévu — on dit **« photo du prévu »**.
+  Et **« banaliser cette heure »**, jamais « ne plus compter cette séance ».
 
 ---
 
-# PARTIE VII — MJPC EN BREF, pour que Paul n'ait rien à te réexpliquer
+# PARTIE IV — LE LOT EN COURS : 2ter · EDT
 
-Paul enseigne le français au collège Saint-Joseph, à Doué-en-Anjou. Quatre classes MJPC — **3 FRANKLIN Aretha**,
-**3 DYLAN Bob**, **4 HUGO**, **4 TURING** — plus des groupes partagés avec un collègue, qui **ne comptent jamais**
-dans sa progression.
+**Où on en est.** Le mandat a été écrit par C10, relu quatre fois par l'exécutant du 2bis,
+puis **récrit par lui en v2** (`PONT/EDT/MANDAT-LOT-2ter-v2.md`, 46 958 o, 22 sections) —
+et exécuté par lui-même. **La livraison ① est au sas et n'a été auditée par personne.**
 
-MJPC est une suite d'applications web pédagogiques servie en GitHub Pages, adossée à un **hub Firebase unique**
-(`mjpc-hub`, projet `monsieurmeney`). Le portail `index.html` fait 1,6 Mo d'un seul tenant : **ne le lis jamais en
-entier**, lis par recherche et par extraits.
+**Ce que ① contient, à auditer** : la déclaration morte `edtPeriodePoser(nom,date)`
+retirée · le noyau d'identité (`EDT_FAMILLES`, `edtNormaliser`, `edtCondense`,
+`edtValeurCritere`, `edtAmorce`, `edtHorodatage`, `edtPoserIds`, `edtApparier`) ·
+`edtPoserIdsObjet` appelée à l'injection avant la première écriture · `edtMettreANiveau`
+qui archive avant d'écrire et abandonne si l'archivage échoue · les cinq fonctions passées
+par l'`id`.
 
-**Règle cardinale** : MJPC **court-circuite** les portails d'identité élève des apps, il ne les remplace jamais.
-Chaque app reste autonome.
+**Ce que l'exécutant annonce et que personne n'a contre-vérifié** : 122 identifiants posés,
+0 collision, déterministes · coche stable après insertion en tête · 14 appariements forts
+silencieux avec `id`, 4 faibles nommés sans `id` · biunivocité : 0 permutation, 1 ambiguïté
+nommée · archivage en échec → 0 écriture · 138 noms d'origine conservés.
 
-Le hub : identité élève canonique **`sanMJPC`** (slug `clement_noe`) · **`/classes` mutualisé** entre toutes les
-apps depuis le 3 juin 2026, classes de test préfixées `_test_<nomapp>` · taxonomie unifiée dans
-`taxonomie_atelier.json` et au nœud `/taxonomie` — **lis le fichier, ne la stocke pas de mémoire** · socle
-**MJPC-CORE 1.1.0** embarqué mot pour mot partout · **purge par manifestes** (`/manifestes/<app>`, motifs `purger`
-et `preserver`).
+**Il a élargi le contrat**, et c'est déclaré avec sa raison dans `verif_edt.py` : deux
+appels de plus (`secuEcrire`, `atCorbeilleCle`) et une exception (la corbeille commune),
+pour l'archivage avant écrasement. L'**ancienne** garde refuse ce candidat, la **nouvelle**
+l'accepte : c'est conforme à la règle, mais vérifie-le toi-même.
 
-Les apps, pour situer : le portail et son éditeur de chapitre · le déroulé (moteur en refonte, LOT G) · le tableau
-distant multi-appareils · `worktrack.html` (Les Misérables, 4e) · `dictee_universelle.html` · `correction_dictee` ·
-`evaluation-qcm.html` · `applause_meter.html` · `analyse_logique` · `pilotage_debat_s3.html` · le site satirique
-Jérôme Swift 2027.
+**Deux écarts qu'il signale sans les ajuster** (bonne pratique, garde-la) : `EDT_ANNEE`
+passe de 13 à 12 occurrences ; `function edt*` monte de 138 à 149.
 
-**Le diagnostic de Paul du 25/08, qui te concerne directement** : le dispositif consigne le *quoi* et le *où* des
-mécanismes, jamais le *pour qui* ni le *pourquoi* — d'où des correctifs justes au banc et inutiles en classe.
-**Tout mandat que tu écris s'ouvre par « ce que ça change pour la classe », dans les mots de Paul.**
+**Livraisons ② à ⑧ : non commencées.**
 
-Principe directeur du code : **souplesse et usage épuré**. Passer d'un mode à l'autre sans friction, aucune
-surcharge visuelle, la décharge cognitive prime.
+**Ce que tu dois faire, dans cet ordre :**
+1. **Recompter l'état** ci-dessus, en commençant par le md5 qui diverge.
+2. **Auditer la livraison ①** sur pièces — personne ne l'a fait.
+3. **Relire `MANDAT-LOT-2ter-v2.md` ligne à ligne** contre le cadrage de la PARTIE III,
+   corriger, **le figer**, et le passer à un **exécutant neuf** qui ne le rediscute pas.
+4. Ne le fais **que sur l'ordre de Paul**.
+
+**Deux dettes entrées dans ce lot (§⑳ de la v2), non tranchées par Paul :**
+- **La classe d'essai n'existe pas.** `creneauxFictifs` : **0 occurrence dans le code**,
+  `fictif` : 0, `Charles de Gaulle` : 0. Le champ n'est que dans le JSON, personne ne le
+  lit. Paul veut que la 3E Charles de Gaulle ait un emploi du temps fictif pour éprouver
+  son flux avant la rentrée. **Dimensionnement à lui faire trancher** (proposition non
+  validée : 4 h en AB).
+- **Rien de l'EDT ne disparaît à la purge** : le contrat de purge préserve `site` en
+  entier. Le retrait de la classe d'essai doit être **un geste nommé**.
 
 ---
 
-**Tu ne codes pas. Tu ne pousses rien sans ordre. Tu mesures avant d'affirmer. Et tu recomptes ce document.**
+# PARTIE V — LA FILE, PAR ORDRE
+
+`docs/MJPC6-DETTES.md` (dépôt de production) est **le registre unique**. Il est à jour au
+27/08 et Paul le relit lui-même. La production est en lecture seule pour toi : le texte se
+donne à Paul, il colle.
+
+**2ter EDT** (en cours) → **7 profil de classe** (cadrage avancé, en pause) → **5 bloc
+bilan** → **2 téléphone** → **3 temps réel** → **4 pulsation** → **6 dettes moteur** →
+**8 PROMPTS** → **9 profil élève** → **10 affichages** → **11 M-SÉCU** → **12 M17a** →
+**LOT G** (Toussaint).
+**+ deux dettes neuves** : éditer le calendrier directement dans le site (au lieu du JSON) ·
+le report d'activités qui doit se demander **à la clôture d'une séance**, plus à chaque fin
+d'heure (touche le moteur, le lot 5 et le lot 8).
+
+**Le lot 7 — profil de classe — est cadré à 90 %** et attend deux choses de Paul : la
+**forme** de l'onglet « Où en est la séance » (sept maquettes lui ont été montrées, pièces
+T146 et T163 au sas, aucune tranchée ; il a dit « la frise c'est pas mal, mais ça manque de
+détail » et que les maquettes ne marquaient pas l'onglet courant), et les **destinations du
+report** à la clôture d'une séance. Le reste est décidé et consigné au registre.
+
+**Ce qui ne dépend que de Paul** — dis-le-lui, ne le fais pas à sa place :
+- trancher la classe d'essai · l'import du chapitre 3e (débloqué depuis 8.59.5) · le test
+  à trois écrans · le point avec le consultant · renouveler les jetons fin novembre.
+
+---
+
+# PARTIE VI — MÉTHODE
+
+**Les dépôts.** Sas `siteflow-io/mjpc-chantier` (public, jeton dédié). Production
+`siteflow-io/monsieurjaipascompris` (public, jeton dédié, **lecture seule pour toi**).
+Hub Firebase en lecture. **Tu n'écris jamais en production : Paul promeut.**
+
+**Le mandat d'exécutant.** Il s'ouvre par **« ce que ça change pour la classe »**, dans les
+mots de Paul. Il porte : la base (md5, taille, compteurs) avec un STOP si elle diffère · ce
+qu'il faut faire · **ce qui ne doit pas bouger**, chiffré · **les preuves exigées, mesurées
+et jamais affirmées** · la découpe en livraisons courtes que Paul relance par « continuer »
+(le « continuer » natif plante une fois sur deux) · une version par livraison · **l'audit
+adverse** à la fin (chercher ce qui casserait son propre code, pas vérifier que ça marche).
+**Aucune livraison finale avec dette.**
+
+**L'audit d'une livraison** se fait **sur pièces**, jamais sur parole : moteur intact,
+`secu*`, `published`, double parseur, fonctions conservées, portes, exceptions, garde
+verte **et rouge sur des pièges que tu poses toi-même**.
+
+**Le transcript.** Tiens un transcript **mot pour mot** des échanges, mis à jour à chaque
+tour, déposé au sas (`TRANSCRIPTS/C11/`). Pas de synthèse de passation : les résumés
+perdent ce que Paul a dit exactement, et c'est ce qui a coûté le plus cher ces deux jours.
+Le transcript de C10 (194 tours) et celui de l'exécutant 2ter sont au sas.
+
+**Ce que Paul attend de chaque réponse** : un verdict tranché, les tests manuels à jouer
+s'il y en a, et le cahier vivant en fin de message.
+
+**À lire, dans cet ordre, avant tout geste de fond** :
+`docs/MJPC6-DETTES.md` · `docs/MJPC6-2-DOCTRINE.md` · `docs/MJPC6-OU-TROUVER-QUOI.md` ·
+`PONT/EDT/MANDAT-LOT-2ter-v2.md` · `PONT/EDT/rapport-2ter-01.md` ·
+`TRANSCRIPTS/C10/TRANSCRIPT-executant-LOT-2ter.md`.
+**`index.html` fait 1,6 Mo : ne le lis jamais en entier**, lis par recherche et par extraits.
+
+---
+
+# PARTIE VII — LE MOT DE LA FIN
+
+Paul travaille seul, avec quatre classes et une rentrée dans quatre jours. Ce qu'il
+construit depuis des mois tient debout : le moteur, l'atelier, le mur, le pilotage. Ce qui
+a failli ces deux jours, ce n'est pas le site — c'est nous, quand nous avons cessé de
+mesurer et commencé à supposer.
+
+Trois phrases à garder : **mesurer, point** · **tu n'agis pas sans son ordre** · **un
+mandat se fige, puis se passe**.

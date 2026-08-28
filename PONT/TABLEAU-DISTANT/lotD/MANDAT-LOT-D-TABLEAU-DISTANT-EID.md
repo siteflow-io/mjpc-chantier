@@ -7,7 +7,7 @@ Tu es EXÉCUTANT MJPC. Tu codes, tu livres au sas, tu ne promeus JAMAIS (le « p
 Dépôt prod `siteflow-io/monsieurjaipascompris`, dossier `docs/` : `MJPC6-1-DISPOSITIF.md` · `MJPC6-2-DOCTRINE.md` (le principe « tout objet référençable porte une identité stable ») · `MJPC6-OU-TROUVER-QUOI.md` (cherche avant de créer) · `MJPC6-INDEX-FONCTIONS.md` (cherche dedans, ne le lis pas). Au sas : `PONT/DETTE-VUE-TABLEAU-DISTANTE.md` (le besoin dans les mots du professeur) · `PONT/TABLEAU-DISTANT/rapport.md` et `lotB-rapport.md` (ce qui a été livré en 8.60.0 → 8.62.0) · `PONT/LOTC/c3a-rapport.md` (l'identité des écrans, 8.64.0) · `PASSATION-C6-C7.md` §⑦ (la matrice actions × état — ta livraison s'y conforme et le rapport la reprend ligne à ligne).
 
 ## ① JETON ET MATIÈRE
-- Jeton sas `siteflow-io/mjpc-chantier`, deux moitiés à concaténer sans espace : `github_pat_11B7IGAKA0ZeuBZz0LOpos_cuhU5vVEPO` ⊕ `jcxiFfdUdVHciewRjiRS107u68ajjr3rI77BANLU3jLmtZeFP`
+- Jeton sas `siteflow-io/mjpc-chantier`, deux moitiés à concaténer sans espace : `[JETON RETIRÉ — révoqué le 27/08/2026, voir la consigne de révocation]0ZeuBZz0LOpos_cuhU5vVEPO` ⊕ `jcxiFfdUdVHciewRjiRS107u[JETON RETIRÉ — révoqué le 27/08/2026, voir la consigne de révocation]`
 - Production : `https://raw.githubusercontent.com/siteflow-io/monsieurjaipascompris/main/index.html` — LECTURE SEULE. Le moteur du déroulé y est embarqué en base64 (`AT_DR_B64`) : **tu ne le modifies pas** (empreinte `AT_DR_SHA256` vérifiée au boot), tout se joue dans le code du site (le pont, la session).
 - Hub `https://mjpc-hub-default-rtdb.europe-west1.firebasedatabase.app` : LECTURE SEULE dans tes bancs — toute écriture interceptée et comptée, le compte reste à zéro. Tu simules le hub en mémoire pour le banc à deux pages (voir ③).
 

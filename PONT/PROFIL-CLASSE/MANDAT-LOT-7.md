@@ -11,7 +11,7 @@ Tu es EXÉCUTANT MJPC. Tu codes, tu livres au sas, tu ne promeus JAMAIS. França
 Prod `docs/` : `MJPC6-1-DISPOSITIF.md` · `MJPC6-2-DOCTRINE.md` · `MJPC6-OU-TROUVER-QUOI.md` · **`MJPC6-DETTES.md`** (le cadrage des 25-26/08 est là, dans les mots de Paul : tours 34-43, 98-113) · `MJPC6-INDEX-FONCTIONS.md`. Sas : `PONT/EDT/` (le bloc EDT que tu as écrit — c'est ton point d'appui) · `TRANSCRIPTS/C10/pieces/T78-maquette-edt-v3-geste.html`. **`index.html` fait 1,5 Mo : tu ne le lis jamais en entier**, tu lis par recherche et par extraits.
 
 ## ① JETON
-Sas `github_pat_11B7IGAKA0ZeuBZz0LOpos_cuhU5vVEPO` ⊕ `jcxiFfdUdVHciewRjiRS107u68ajjr3rI77BANLU3jLmtZeFP` · production en LECTURE SEULE · hub en lecture seule dans tes bancs (faux hub, zéro écriture sortie).
+Sas `[JETON RETIRÉ — révoqué le 27/08/2026, voir la consigne de révocation]0ZeuBZz0LOpos_cuhU5vVEPO` ⊕ `jcxiFfdUdVHciewRjiRS107u[JETON RETIRÉ — révoqué le 27/08/2026, voir la consigne de révocation]` · production en LECTURE SEULE · hub en lecture seule dans tes bancs (faux hub, zéro écriture sortie).
 
 ## ② ARCHITECTURE — la même que l'EDT
 Un second bloc délimité `/* ═══ PROFIL DE CLASSE — début ═══ */ … fin ═══ */`, fonctions préfixées `pcl`, styles `.pcl-`, nœuds sous `/site/edt/` (les traces d'heures existent déjà ailleurs : tu les lis, tu ne les déplaces pas). Contrat écrit dans le code, comme celui de l'EDT. **La garde `verif_edt.py` est étendue au bloc `pcl`** (mêmes trois questions, mêmes contrôles négatifs qui doivent rougir).

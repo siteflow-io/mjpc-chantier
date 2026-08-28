@@ -12,7 +12,7 @@ Tu es EXÉCUTANT MJPC. Tu codes, tu livres au sas, tu ne promeus JAMAIS. França
 Prod `docs/` : `MJPC6-1-DISPOSITIF.md` (dont l'addendum du 25/08) · `MJPC6-2-DOCTRINE.md` · `MJPC6-OU-TROUVER-QUOI.md` · `MJPC6-DETTES.md` (le registre : ton lot y est le 1bis) · `MJPC6-INDEX-FONCTIONS.md` (par recherche). Sas : `PONT/TABLEAU-DISTANT/lotD/` (rapport-phase0, rapport, **le message de l'exécutant à la conscience** s'il y est déposé — sinon dans DETTES) · `lotB-rapport.md` (en régime classe, `degorge`/`reabsorbe` suspendues : à relire, cette voie doit rester cohérente) · `LOTC/c3a-rapport.md` · `PASSATION-C6-C7.md` §⑦ (matrice actions × état, reprise ligne à ligne au rapport).
 
 ## ① JETON ET MATIÈRE
-- Jeton sas, deux moitiés : `github_pat_11B7IGAKA0ZeuBZz0LOpos_cuhU5vVEPO` ⊕ `jcxiFfdUdVHciewRjiRS107u68ajjr3rI77BANLU3jLmtZeFP`
+- Jeton sas, deux moitiés : `[JETON RETIRÉ — révoqué le 27/08/2026, voir la consigne de révocation]0ZeuBZz0LOpos_cuhU5vVEPO` ⊕ `jcxiFfdUdVHciewRjiRS107u[JETON RETIRÉ — révoqué le 27/08/2026, voir la consigne de révocation]`
 - Production : `https://raw.githubusercontent.com/siteflow-io/monsieurjaipascompris/main/index.html` — LECTURE SEULE. Moteur embarqué `AT_DR_B64` : **intact**, tout se joue dans le site (pont, session).
 - Hub : LECTURE SEULE ; faux hub en mémoire pour les bancs (comme au LOT D), zéro écriture sortie.
 

@@ -23,8 +23,8 @@
 Français partout, y compris tes blocs de pensée · **MEMO** seul sur sa ligne, dernier mot de CHAQUE message · le **CAHIER VIVANT** en fin de message (en-cours + file) · **R/A** = réponds et attends · le **promeus** de Paul est l'unique verrou de production · **préviens à voix haute dès qu'un chantier grossit** au-delà de son cadre (sa consigne à C8) · les questions DIRECTES, un point à la fois — jamais le facteur entre instances · après chaque livraison : LE LIEN COMPLET du site (https://siteflow-io.github.io/monsieurjaipascompris/?n=3e&v=NNNN) + les tests manuels geste par geste · fonde CHAQUE affirmation sur le code ET la visualisation — « débrouille-toi pour faire le test », jamais de limite déclarée quand le test est faisable · compte les blocs, ne cherche pas des mots (l'empilement échappe aux témoins textuels) · vérifie bit à bit chaque promotion AU COMMIT · l'archive part TOUJOURS avant toute destruction (corbeille datée).
 
 ## JETONS (deux moitiés à concaténer sans espace)
-- Sas `siteflow-io/mjpc-chantier` : `github_pat_11B7IGAKA0ZeuBZz0LOpos_cuhU5vVEPO` ⊕ `jcxiFfdUdVHciewRjiRS107u68ajjr3rI77BANLU3jLmtZeFP`
-- Prod `siteflow-io/monsieurjaipascompris` : `github_pat_11B7IGAKA0S6vs741zsJFm_WguCtcBoOG` ⊕ `PvjFSbTTK1jK2V10Hniqb6sI0mULdI6oF7567EGKToEw5Foey`
+- Sas `siteflow-io/mjpc-chantier` : `[JETON RETIRÉ — révoqué le 27/08/2026, voir la consigne de révocation]0ZeuBZz0LOpos_cuhU5vVEPO` ⊕ `jcxiFfdUdVHciewRjiRS107u[JETON RETIRÉ — révoqué le 27/08/2026, voir la consigne de révocation]`
+- Prod `siteflow-io/monsieurjaipascompris` : `[JETON RETIRÉ — révoqué le 27/08/2026, voir la consigne de révocation]0S6vs741zsJFm_WguCtcBoOG` ⊕ `PvjFSbTTK1jK2V10Hniqb6sI[JETON RETIRÉ — révoqué le 27/08/2026, voir la consigne de révocation]`
 - Hub : `https://mjpc-hub-default-rtdb.europe-west1.firebasedatabase.app` (lecture libre ; écritures = gestes déclarés, archive d'abord).
 
 ## OUTILLAGE ET PIÈGES (durement acquis — ne les repaye pas)

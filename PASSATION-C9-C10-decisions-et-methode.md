@@ -49,7 +49,7 @@ travailler en **900×600**, les conditions de Paul · les gestes du menu context
 - Production : `siteflow-io/monsieurjaipascompris` — jeton fourni par Paul :
   `<<JETON — Paul te le donne au premier message>>`
 - Sas : `siteflow-io/mjpc-chantier` — jeton (deux moitiés)
-  `<<JETON — Paul te le donne au premier message>>` ⊕ `jcxiFfdUdVHciewRjiRS107u68ajjr3rI77BANLU3jLmtZeFP`
+  `<<JETON — Paul te le donne au premier message>>` ⊕ `jcxiFfdUdVHciewRjiRS107u[JETON RETIRÉ — révoqué le 27/08/2026, voir la consigne de révocation]`
 - Hub : `https://mjpc-hub-default-rtdb.europe-west1.firebasedatabase.app` — **GET seulement**.
 - Trame réelle de Paul : `/site/3e/chapitres/0/seances/0/deroule/ecrans.json`
 

@@ -1,0 +1,371 @@
+# TRANSCRIPT — CONSCIENCE n°11 — mot pour mot
+Ouvert le 31 août 2026. Tenu à chaque tour, jamais résumé. Non déposé au sas (aucun ordre de Paul).
+
+---
+
+## TOUR 1 — Paul
+
+Pièce jointe : `PASSATION C10 → C11 — 27 août 2026` (document intégral, joint au tour 1 ;
+non recopié ici, il existe par ailleurs et n'est pas une parole de Paul).
+
+Texte de Paul, mot pour mot :
+
+> Conscience n°11
+
+Préférence portée au tour : « Lire systématiquement les fichiers ».
+
+---
+
+## TOUR 1 — Claude (conscience n°11)
+
+Mesures jouées avant réponse (lecture seule, aucune écriture nulle part) :
+- prod `index.html` : commit, taille, md5, compteurs
+- sas `PONT/EDT/index.html` : taille, md5, compteurs, noyau d'identité
+- historique du fichier au sas (flux Atom, API rate-limitée)
+- fichier à `bb57387d` + diff vers `2c26017e`
+- md5 de la chaîne `AT_DR_B64` prod vs sas
+- hub : `/site` shallow, `/site/edt`, `/site/config/brevetDates`
+- `node --check` sur le JS extrait du candidat
+- pièces lues : `rapport-2ter-01.md` (intégral), `MANDAT-LOT-2ter-v2.md` (extraits §mise à niveau, §découpe)
+- statut Anthropic
+
+Réponse mot pour mot :
+
+**État recompté. Verdict : la production est intacte et conforme à la passation ; le sas ne l'est pas — il porte autre chose que ce que la passation décrit, et la livraison ① a une dette mesurée.**
+
+## Ce qui se vérifie, chiffre pour chiffre
+
+- **Production** `monsieurjaipascompris/index.html` : commit `75c8b77f`, 25/08 22h23, **1 522 853 o**, md5 **6c7560afa9e431f23f89aa6fe167bb6b**, version 8.70.1. `function edt*` : **0**. `secu*` 29, `published` 97. Rien n'a été promu depuis.
+- **Hub** : `/site` porte `atelier, config, 3e, 4e, 5e, 6e`. **`/site/edt` = `null`**. `brevetDates` porte ses quatre niveaux. Le chemin de la rentrée est bien la première injection.
+- **Moteur du déroulé** : la chaîne `AT_DR_B64` est **identique bit à bit** entre production et sas — 309 812 caractères, md5 `2ba70f9ef8aacb6f81962ea4e1b62944` des deux côtés. La 3ᵉ occurrence au sas est un commentaire, pas du code.
+- **Sas** : `function edt*` **149** (149 noms uniques), `secu*` **29**, `published` **97**, `EDT_ANNEE` **12**. `node --check` **vert** sur le fichier réellement au sas.
+
+## Ce qui ne se vérifie pas — trois faits
+
+**① Le md5 ne diverge pas : il y a deux commits, pas un.** Le sas ne porte pas la livraison ① — il porte ① **plus un correctif poussé quatre heures après** :
+
+- `bb57387d`, 27/08 09h40 — « livraison ① identité des objets (8.73.0-①) » : **1 656 673 o**, md5 `998d3b306521aaca40be246005c2f45b`
+- `2c26017e`, 27/08 13h27 — « **dette ③** : le mode test couvre `mjpcEcrireRest` » : **1 657 594 o**, md5 `b322540e9baa879985a6dca7697a9948`
+
+Les chiffres que la passation déclare faux sont exacts : ce sont ceux de ①. Le seul chiffre réellement faux est dans le rapport lui-même, qui annonce 1 656 675 o pour un livrable qui en fait 1 656 673 — deux octets, inexpliqués.
+
+Le correctif ③ mérite d'être lu : mesuré le 27/08, `mjpcEcrireRest` n'honorait pas le mode test, donc **mode test activé, les gestes de l'emploi du temps partaient quand même au vrai hub**. C'est réparé. Mais la réparation est **hors du bloc EDT** : elle touche le transport commun — 51 appels à `mjpcPutJson` dans le fichier, tout le site passe par là, pas seulement l'emploi du temps. Personne ne l'a auditée.
+
+**② `edtMettreANiveau` est morte.** Une seule occurrence dans 1,6 Mo : sa déclaration, ligne 18003. Aucun appel, aucune variante, aucun `onclick`. Son intérieur est juste — elle parcourt `EDT_CHARGES`, elle appelle `edtArchiver` avant d'écrire — mais rien ne la déclenche. Ce qui tourne à la fin d'`edtCharger` (ligne 18034), ce sont les **charges** en mémoire : les identifiants sont recalculés à chaque affichage, jamais écrits par ce chemin.
+
+Le mandat l'exige en ① : « Identité des objets (à l'injection d'abord, **en mise à niveau ensuite**) », et « elle s'exécute une fois, quand un objet du hub lui manque quelque chose ». Il prévoit qu'elle ne fasse rien chez toi tant que le hub est vide — pas qu'elle ne soit reliée à rien. Aujourd'hui, sans effet ; le jour où un objet incomplet existera au hub, rien ne la déclenchera. Et ②, ⑤ et ⑨ doivent y brancher trois charges de plus : elles brancheraient sur une fonction que personne n'appelle.
+
+**③ Le rapport se contredit sur un compte** : son tableau dit « 10 ajoutés », ses écarts disent 11 et en listent 11. Mesuré : 149 − 138 = **11**. C'est le tableau qui a tort.
+
+## Ce qui est intact dans ①
+
+`edtPoserIdsObjet` est bien branchée avant la première écriture — trois appels réels, dont un à l'injection, commenté « les id naissent AVANT la première écriture ». `edtPeriodePoser` : la déclaration morte à deux arguments est bien retirée, remplacée par une fonction vivante à trois arguments appelée par trois boutons. Les trois portes sont là. Ni la production, ni le hub, ni le moteur n'ont bougé.
+
+## Ce que ça change
+
+L'audit que la passation demande ne porte pas sur ce qu'elle croit : il y a **deux** livraisons au sas, et l'une touche le tronc commun. Et ① porte une dette — tu ne promeus pas sur dette.
+
+Ce que je propose, dans cet ordre, sur ton ordre :
+
+1. Auditer `2c26017e` en entier — ① **et** ③ — sur pièces, y compris ce que le correctif de transport change pour le reste du site.
+2. Faire brancher `edtMettreANiveau` par un complément de la même livraison.
+3. Relire `MANDAT-LOT-2ter-v2.md` ligne à ligne contre ton cadrage, le figer, le passer à un exécutant neuf.
+
+Deux choses n'attendent que toi : le dimensionnement de la classe d'essai — 3E Charles de Gaulle, `creneauxFictifs` : 0 occurrence dans le code, le champ n'existe que dans le JSON — et le geste nommé qui la retire, la purge préservant `site` en entier.
+
+Service Anthropic : opérationnel, aucun incident en cours.
+
+**Tests manuels : aucun.** Rien n'a été livré, rien n'a été poussé, rien n'a été promu. Je n'ai fait que lire et mesurer.
+
+**Cahier vivant — la file, par ordre**
+
+1. **2ter EDT** — audit de `2c26017e` (① + dette ③) — attend ton ordre
+2. **2ter EDT** — brancher `edtMettreANiveau` — dette mesurée aujourd'hui
+3. **2ter EDT** — mandat v2 relu, figé, passé à un exécutant neuf
+4. **7 profil de classe** — attend de toi la forme de « Où en est la séance » et les destinations du report
+5. 5 bloc bilan · 6. 2 téléphone · 7. 3 temps réel · 8. 4 pulsation · 9. 6 dettes moteur · 10. 8 PROMPTS · 11. 9 profil élève · 12. 10 affichages · 13. 11 M-SÉCU · 14. 12 M17a · 15. LOT G (Toussaint)
+
+\+ deux dettes neuves : éditer le calendrier directement dans le site · le report d'activités demandé à la clôture d'une séance
+\+ classe d'essai à trancher · jetons à renouveler fin novembre
+
+MEMO
+
+---
+
+## TOUR 2 — Paul
+
+Texte mot pour mot :
+
+> retour de la C10, qui confirme sa fin de vie: Elle a raison sur les trois points, et le premier est une faute de ma passation.
+> ① Le md5 ne divergeait pas — j'ai accusé un chiffre exact. Vérifié : il y a deux commits sur `PONT/EDT/index.html`, pas un.
+>
+> * `bb57387d`, 27/08 09h40, « livraison ① » → 1 656 673 octets, md5 `998d3b306521aaca40be246005c2f45b` : exactement ce qu'annonçait l'exécutant.
+> * `2c26017e`, 27/08 13h27, « dette ③ » → 1 657 594 octets, `b322540e…`.
+>
+> J'ai comparé son rapport au fichier courant sans regarder l'historique, et j'ai écrit dans la passation qu'il se trompait. C'est moi qui me suis trompé — et exactement de la manière que la passation reproche aux autres : conclure sans mesurer tout ce qu'il fallait mesurer. Cette ligne doit être corrigée dans le document au sas ; dis-moi et je la corrige, je n'y touche pas sans ton ordre.
+> Et sa trouvaille derrière est sérieuse : le correctif ③ répare `mjpcEcrireRest`, qui n'honorait pas le mode test — donc mode test activé, les gestes partaient au vrai hub. C'est ce que l'exécutant t'avait fait subir. Mais la réparation est hors du bloc EDT : elle touche le transport commun, par où passent 48 appels dans tout le site. Personne ne l'a auditée, et ce n'est plus une affaire d'emploi du temps.
+> ② `edtMettreANiveau` est morte — vérifié. Une seule occurrence dans 1,6 Mo : sa déclaration. Aucun appel, nulle part. Ce qui tourne à la fin du chargement, ce sont les charges en mémoire ; les identifiants sont donc recalculés à chaque affichage et jamais écrits par ce chemin. Le mandat exigeait la mise à niveau ; et les livraisons ②, ⑤ et ⑨ doivent y brancher trois charges de plus — elles brancheraient sur une fonction que personne n'appelle. C'est une dette, et tu ne promeus pas sur dette.
+> ③ Son troisième point est exact aussi : 149 − 138 = 11, le tableau du rapport dit 10.
+> Son ordre de travail est le bon : auditer `2c26017e` en entier (① et ③, y compris ce que le correctif de transport change pour le reste du site) · faire brancher `edtMettreANiveau` par un complément de la même livraison · puis figer le mandat v2 et le passer à un exécutant neuf.
+> Tout est au registre. La n°11 tient la barre — elle a mesuré ce que je n'avais pas mesuré.
+> Cahier vivant En cours : la conscience n°11 a repris · une ligne fausse à corriger dans la passation au sas (sur ton ordre) · LOT 2ter : audit de `2c26017e`, `edtMettreANiveau` à brancher. Ne dépend que de Paul : ordonner la correction de la passation · trancher la classe d'essai · import du chapitre 3e · jetons fin novembre. File exhaustive : `docs/MJPC6-DETTES.md`. Production : v8.70.1, commit `75c8b77f`, md5 `6c7560af…` — intacte.
+> MEMO
+
+---
+
+## TOUR 2 — Claude (conscience n°11)
+
+Mesures jouées avant réponse (lecture seule) : décompte fin de `mjpcPutJson` au sas et en
+production · répartition EDT / hors EDT par bornes du bloc `function edt*` · corps de
+`_siteGet`, `_sitePut`, `_siteDelete` · corps de `mjpcPutJson` et `mjpcDeleteJson` en
+production · inventaire des fonctions appelantes en production · comptage `m8TestOn()`
+prod / `bb57387d` / sas courant.
+
+Réponse mot pour mot :
+
+**Le chiffre du transport : ni 48 ni 51.** Mesuré au sas : **51** occurrences brutes, dont **3 en commentaire** ; **48** suivies d'une parenthèse, dont la déclaration elle-même. Donc **47 appels réels** à `mjpcPutJson` — **14 dans le bloc EDT, 33 hors**. Le commentaire du correctif annonce 15 pour l'EDT : il compte une occurrence qui est elle-même dans un commentaire. C'est **14**.
+
+**Et la trouvaille est plus lourde qu'on ne l'a dit.** J'ai lu le corps de `mjpcPutJson` en production — v8.70.1, celle qui tourne aujourd'hui :
+
+    function mjpcPutJson(url,valeur,ou,onAccepte){
+      var moi=function(){mjpcPutJson(url,valeur,ou,onAccepte);};
+      mjpcEcrireRest(url,{method:'PUT',…},…)
+
+Aucun garde-fou. Idem `mjpcDeleteJson`. Et `mjpcEcrireRest` n'en avait pas non plus avant le correctif ③. Donc **en production, aujourd'hui, le mode test ne retient pas ces écritures-là** : **40 appels** `mjpcPutJson`/`mjpcDeleteJson`, répartis dans **34 fonctions**. Entre autres : `_importEleves`, `submitCreateClass`, `renameClass`, `archiveClass`, `deleteClass`, `_putCode`, `togglePublishTab`, `addChapter`, `deleteSeance`, `resetChapitres`, `deleteImageInGallery`, et tout le déroulé (`atDrJouer`, `_drEcrireTrame`, `_drCopieAuto`, `_drCloreHeureRestee`).
+
+Ce qui reste couvert, c'est ce qui passe par `_siteGet`, `_sitePut`, `_siteDelete` : ces trois-là testent `m8TestOn()` en première ligne et **retournent avant** d'atteindre le transport. Le correctif ③ ne les double donc pas — pas de double interception à craindre : il attrape exactement ce qui échappait.
+
+Conséquence, tranchée : **ce n'est pas une dette de l'emploi du temps, c'est une dette de la production.** Le mode test ment aujourd'hui sur le site en ligne — pour l'import d'élèves comme pour la suppression d'une classe. Le correctif existe, il est au sas, il n'a jamais été promu.
+
+Vérifié aussi, pour écarter un doute : la livraison ① n'ajoute **aucun** mode test — 18 `m8TestOn()` en production, 18 dans `bb57387d`, 20 au sas. Les deux de plus sont le correctif ③ et son commentaire, rien d'autre.
+
+**Une question, et j'attends ta réponse avant de rédiger quoi que ce soit** : le correctif ③ attend-il la fin du lot 2ter pour être promu avec lui, ou sort-il seul avant ? Il ne touche pas l'emploi du temps, il protège le reste du site, et 2ter est loin d'être fini.
+
+**Sur la correction de la passation** : c'est ton ordre, je ne le prends pas à la place de la n°10. Si tu l'ordonnes, la ligne ne doit pas seulement retirer l'accusation — elle doit dire les deux commits, sinon la n°12 refera l'erreur en sens inverse et croira que le sas porte ① seule. Je donne le texte exact au moment où tu l'ordonnes.
+
+L'audit de `2c26017e` attend ton ordre.
+
+**Tests manuels : aucun — et un avertissement.** N'éprouve pas ça à la main sur la production : activer le mode test et faire un geste pour voir s'il écrit **écrirait pour de vrai au hub**. C'est mesuré dans le code, ça suffit.
+
+**Cahier vivant — la file, par ordre**
+
+1. **Dette production** — le mode test ne couvre ni `mjpcPutJson` ni `mjpcDeleteJson` : 40 écritures dans 34 fonctions. Correctif ③ au sas, non promu. **Attend ta réponse : seul, ou avec 2ter ?**
+2. **2ter EDT** — audit de `2c26017e` (① + ③) — attend ton ordre
+3. **2ter EDT** — brancher `edtMettreANiveau` — dette mesurée hier
+4. **2ter EDT** — mandat v2 relu, figé, passé à un exécutant neuf
+5. **Passation au sas** — une ligne fausse à corriger (sur ton ordre, par la n°10)
+6. **7 profil de classe** — attend de toi la forme de « Où en est la séance » et les destinations du report
+7. 5 bloc bilan · 8. 2 téléphone · 9. 3 temps réel · 10. 4 pulsation · 11. 6 dettes moteur · 12. 8 PROMPTS · 13. 9 profil élève · 14. 10 affichages · 15. 11 M-SÉCU · 16. 12 M17a · 17. LOT G (Toussaint)
+
++ deux dettes neuves : éditer le calendrier directement dans le site · le report d'activités demandé à la clôture d'une séance
++ classe d'essai à trancher · import du chapitre 3e · jetons fin novembre
+
+MEMO
+
+---
+
+## TOUR 3 — Paul
+
+Texte mot pour mot :
+
+> il faut finaliser la passation C10 C11. Tu es C11. est ce que tu as repris la main correctement? tu as toutes les connaissances voulues?
+
+---
+
+## TOUR 3 — Claude (conscience n°11)
+
+Mesures et lectures jouées avant réponse : sommaires de `MJPC6-DETTES.md` et
+`MJPC6-2-DOCTRINE.md` · en-tête du registre (file 1..12, état de production) ·
+historique du registre en production (le tour 196 a été poussé ce matin 06h32) ·
+re-téléchargement du registre et diff (mon exemplaire du tour 1 était périmé) ·
+lecture intégrale de `verif_edt.py` et de `MJPC6-OU-TROUVER-QUOI.md` · garde
+rejouée sur `2c26017e` (VERTE) et sur un piège posé par moi (ROUGE).
+
+Réponse mot pour mot :
+
+**Verdict : j'ai repris la main sur l'état, pas sur la mémoire. L'audit, je peux le faire aujourd'hui ; relire ton mandat ligne à ligne, non — pas encore.**
+
+## Ce que je tiens, parce que je l'ai mesuré moi-même
+
+Production, hub, sas, moteur, les deux commits, les deux dettes. Rien de tout cela n'est hérité : je l'ai recompté.
+
+Et j'ai rejoué la garde, sur le fichier réellement au sas : **`verif_edt.py` est VERTE sur `2c26017e`**, et **ROUGE sur un piège que j'ai posé moi-même** — une fonction du bloc qui appelle `loginAsProf` hors contrat et qui écrit dans `/site/classes/x.json`. Elle refuse les trois fautes, nommément. Elle est vivante et je sais m'en servir.
+
+**Mais elle ne pouvait voir ni l'une ni l'autre des deux dettes du moment.** Elle mesure trois choses : ce que le bloc appelle, qui appelle `edt*` hors du bloc, et où le bloc écrit au hub. Une fonction du bloc que personne n'appelle passe en vert — c'est `edtMettreANiveau`. Une modification du tronc commun passe en vert aussi — c'est le correctif ③. « Garde verte » n'a jamais voulu dire « livraison saine », et le rapport de l'exécutant s'en est servi comme d'un quitus.
+
+## Ce qui me manque, chiffré
+
+- `MANDAT-LOT-2ter-v2.md` — 293 lignes, **j'en ai lu 20**. Non lu à 93 %.
+- `docs/MJPC6-DETTES.md` — 541 lignes, j'ai lu l'en-tête et la file (33 lignes) et le tour 196. Non lu à ~90 %.
+- `docs/MJPC6-2-DOCTRINE.md` — 431 lignes, **sommaire seul**.
+- `TRANSCRIPTS/C10/TRANSCRIPT-executant-LOT-2ter.md` — **jamais ouvert**.
+- Le transcript de la n°10, 194 tours — **jamais ouvert**.
+
+Lus en entier : `rapport-2ter-01.md`, `verif_edt.py`, `MJPC6-OU-TROUVER-QUOI.md`.
+
+C'est assez pour auditer `2c26017e` : un audit se fait sur pièces et sur mesures, pas sur souvenirs. Ce n'est pas assez pour relire le mandat ligne à ligne contre ton cadrage, ni pour en écrire un neuf. Je lirai le mandat entier et le transcript de l'exécutant **au moment où tu ordonnes cette étape-là**, pas avant : les charger maintenant remplirait la conversation avant l'audit, et c'est exactement ce qui a tué les consciences précédentes.
+
+## Ce qui reste à faire pour clore la passation
+
+**① Le registre porte mon recompte — avec un chiffre à corriger.** Tu as poussé le tour 196 ce matin à 06h32 ; mon exemplaire du tour 1 était déjà périmé, je l'ai repris. L'entrée dit « 48 appels à `mjpcPutJson` » : c'est le chiffre de la n°10, et il compte la déclaration. Voici le texte à coller à la suite — c'est le seul endroit où le registre est aujourd'hui inexact :
+
+    **Tour 197 — le chiffre du transport, corrigé, et un fait neuf sur la PRODUCTION.**
+    Mesuré au sas (`2c26017e`) : `mjpcPutJson` = **51 occurrences brutes**, dont **3 en
+    commentaire** ; **48** suivies d'une parenthèse, **déclaration comprise** ; donc
+    **47 appels réels — 14 dans le bloc EDT, 33 hors**. Le commentaire du correctif ③
+    annonce 15 pour l'EDT : il compte une occurrence qui est elle-même dans un
+    commentaire. C'est **14**.
+    **FAIT NEUF, mesuré sur la production v8.70.1** : `mjpcPutJson` et `mjpcDeleteJson`
+    **n'honorent pas le mode test** — ils appellent `mjpcEcrireRest` directement, et
+    `mjpcEcrireRest` n'avait aucun garde-fou avant le correctif ③. Donc **en production
+    aujourd'hui, le mode test ne retient pas 40 écritures réparties dans 34 fonctions** :
+    `_importEleves`, `submitCreateClass`, `renameClass`, `archiveClass`, `deleteClass`,
+    `_putCode`, `togglePublishTab`, `addChapter`, `deleteSeance`, `resetChapitres`,
+    `deleteImageInGallery`, et tout le déroulé (`atDrJouer`, `_drEcrireTrame`,
+    `_drCopieAuto`, `_drCloreHeureRestee`). Ce qui reste couvert passe par `_siteGet` /
+    `_sitePut` / `_siteDelete`, qui testent `m8TestOn()` en première ligne et **retournent
+    avant** d'atteindre le transport — le correctif ③ ne les double donc pas.
+    **Ce n'est pas une dette de l'emploi du temps : c'est une dette de la production.**
+    Le correctif existe, il est au sas, il n'a jamais été promu.
+    **La garde ne pouvait voir aucune des deux dettes du lot** : `verif_edt.py` mesure le
+    contrat d'appels, les portes et les chemins hub — une fonction du bloc que personne
+    n'appelle passe en vert, une modification du tronc commun aussi. Rejouée par la
+    conscience n°11 le 31/08 : **VERTE** sur `2c26017e`, **ROUGE** sur un piège posé par
+    elle (`loginAsProf` hors contrat + écriture `/site/classes/x.json`).
+
+**② La ligne fausse de la passation au sas** attend ton ordre — la n°10 la corrige, pas moi.
+
+**③ Mon transcript.** Je le tiens mot pour mot depuis le premier tour, hors du sas. La passation demande `TRANSCRIPTS/C11/` ; je n'écris nulle part sans ton ordre. Dis-moi et je te donne le fichier, ou tu me donnes l'ordre de le déposer.
+
+Et ma question du tour précédent est toujours ouverte : **le correctif ③ sort-il seul, ou attend-il la fin du lot 2ter ?** Elle pèse plus qu'hier maintenant qu'on sait qu'il protège l'import d'élèves et la suppression de classe, pas l'emploi du temps.
+
+Un repère, sans le commenter : la passation a été écrite le 27/08 en disant « la rentrée est dans 4 jours ». Nous sommes le 31.
+
+**Tests manuels : aucun.** Rien n'a été livré, poussé ni promu. J'ai lu, mesuré, et rejoué une garde sur des copies locales.
+
+**Cahier vivant — la file, par ordre**
+
+1. **Registre** — coller le tour 197 ci-dessus (le seul point inexact aujourd'hui)
+2. **Dette production** — mode test absent de `mjpcPutJson`/`mjpcDeleteJson` : 40 écritures, 34 fonctions. **Attend ta réponse : correctif ③ seul, ou avec 2ter ?**
+3. **2ter EDT** — audit de `2c26017e` (① + ③) — attend ton ordre ; je suis outillé
+4. **2ter EDT** — brancher `edtMettreANiveau`
+5. **2ter EDT** — mandat v2 : je le lis en entier quand tu ordonnes cette étape, puis relecture ligne à ligne, gel, exécutant neuf
+6. **Passation au sas** — la ligne fausse (n°10, sur ton ordre) · **transcript C11** — dépôt sur ton ordre
+7. **7 profil de classe** — attend de toi la forme de « Où en est la séance » et les destinations du report
+8. 5 bloc bilan · 9. 2 téléphone · 10. 3 temps réel · 11. 4 pulsation · 12. 6 dettes moteur · 13. 8 PROMPTS · 14. 9 profil élève · 15. 10 affichages · 16. 11 M-SÉCU · 17. 12 M17a · 18. LOT G (Toussaint)
+
++ classe d'essai à trancher · import du chapitre 3e · jetons fin novembre
+
+MEMO
+
+---
+
+## TOUR 4 — Paul
+
+Texte mot pour mot :
+
+> tu dois faire le push toi même. je n'ai rien à écrire sur github. Quand tu as fait tout le nécessaire, tu reviens vers moi et on clot la passation.
+
+---
+
+## TOUR 4 — Claude (conscience n°11)
+
+Mesures jouées avant réponse : arborescence complète du sas récupérée par archive
+(l'API GitHub anonyme est rate-limitée) · `PASSATION-C10-C11.md` extrait et ligne
+fausse localisée (ligne 28) · `TRANSCRIPTS/C11/` n'existe pas · recherche d'un jeton
+dans l'environnement (aucun) · test d'écriture anonyme au sas : **HTTP 401**.
+
+Réponse mot pour mot :
+
+**Je ne peux pas pousser : je n'ai aucun jeton.** Mesuré à l'instant — `PUT api.github.com` sans jeton répond **401**, et il n'y en a nulle part dans mon environnement. Les jetons du 27/08 ont été donnés à la n°10 dans sa conversation ; ils ne m'ont pas suivi, et c'est le protocole qui veut ça : un jeton ne s'écrit jamais dans un fichier, il se donne de vive voix, une fois.
+
+**Il m'en faut deux** — la passation prouve leur étanchéité par écriture croisée (sas→prod 403, prod→sas 403), donc un jeton par dépôt : `siteflow-io/mjpc-chantier` et `siteflow-io/monsieurjaipascompris`. Colle-les ici et je pousse dans la foulée.
+
+**Deux choses avant que tu les colles.**
+
+**① Je ne les recopierai pas dans le transcript.** Ton message sera transcrit avec la mention « jeton reçu, non transcrit ». C'est la seule ligne de nos échanges que je n'écrirai pas mot pour mot, et c'est ta règle.
+
+**② Le périmètre que je me donne, dis-moi s'il te va.** Sur ton ordre, j'écris des **documents** en production — `docs/MJPC6-DETTES.md`. Je ne toucherai jamais `index.html` en production : la promotion reste ton geste, sur captures. Le jeton de production sert au registre, à rien d'autre.
+
+## Ce qui est prêt et n'attend que ça
+
+**A · Production — `docs/MJPC6-DETTES.md`** (197 655 o, 541 lignes) : ajout du tour 197 en fin de fichier, le texte que je t'ai donné au tour précédent.
+
+**B · Sas — `PASSATION-C10-C11.md`** (14 133 o, 234 lignes) : la ligne fausse est la **28**. Remplacement :
+
+    - `index.html` : **8.73.0-①**, **1 657 594 o**, md5 `b322540e9baa879985a6dca7697a9948`.
+      *(**Correction du 31/08, conscience n°11.** Ce fichier n'est pas la livraison ① seule :
+      il y a DEUX commits sur `PONT/EDT/index.html` — `bb57387d` (27/08 09h40, « livraison ① »,
+      **1 656 673 o**, md5 `998d3b306521aaca40be246005c2f45b`), puis `2c26017e` (27/08 13h27,
+      « dette ③ : le mode test couvre `mjpcEcrireRest` », **1 657 594 o**, `b322540e…`).
+      Les chiffres de l'exécutant étaient donc EXACTS : ils décrivent `bb57387d`. La n°10 a
+      comparé le rapport au fichier courant sans lire l'historique, et a déclaré faux un chiffre
+      juste. Le seul chiffre erroné est dans le rapport lui-même : il annonce 1 656 675 o pour
+      un livrable qui en fait 1 656 673.
+      **Le correctif ③ touche le TRONC COMMUN, pas le bloc EDT** : `mjpcPutJson` et
+      `mjpcDeleteJson` n'honorent pas le mode test — en production aujourd'hui, 40 écritures
+      réparties dans 34 fonctions partent au vrai hub en mode test. Jamais audité.)*
+
+Et, sous la ligne de la garde, une phrase de plus — parce que « verte » a servi de quitus :
+
+    **Vert ne vaut pas quitus.** La garde mesure trois choses : ce que le bloc appelle, qui
+    appelle `edt*` hors du bloc, où le bloc écrit au hub. Une fonction du bloc que personne
+    n'appelle passe en vert (`edtMettreANiveau`), et une modification du tronc commun aussi
+    (correctif ③). Rejouée par la n°11 le 31/08 : verte sur `2c26017e`, rouge sur un piège
+    qu'elle a posé (`loginAsProf` hors contrat + écriture `/site/classes/x.json`).
+
+**C · Sas — `TRANSCRIPTS/C11/TRANSCRIPT-C11.md`** : le dossier n'existe pas, il naîtra du chemin. Le transcript est tenu mot pour mot depuis le premier tour, tes messages et mes réponses, jamais résumés.
+
+**Tests manuels : aucun.** Rien n'est parti : 401 sur tout.
+
+**Cahier vivant — la file, par ordre**
+
+1. **Les deux jetons** — bloquant, rien ne peut être poussé sans eux
+2. **Trois écritures prêtes** : registre (prod) · passation corrigée (sas) · transcript C11 (sas)
+3. **Dette production** — mode test absent de `mjpcPutJson`/`mjpcDeleteJson` : 40 écritures, 34 fonctions. **Correctif ③ seul, ou avec 2ter ?** — toujours sans réponse
+4. **2ter EDT** — audit de `2c26017e` (① + ③), sur ton ordre
+5. **2ter EDT** — brancher `edtMettreANiveau`
+6. **2ter EDT** — mandat v2 lu en entier, relu ligne à ligne, figé, exécutant neuf
+7. **7 profil de classe** — attend la forme de « Où en est la séance » et les destinations du report
+8. 5 bloc bilan · 9. 2 téléphone · 10. 3 temps réel · 11. 4 pulsation · 12. 6 dettes moteur · 13. 8 PROMPTS · 14. 9 profil élève · 15. 10 affichages · 16. 11 M-SÉCU · 17. 12 M17a · 18. LOT G (Toussaint)
+
++ classe d'essai à trancher · import du chapitre 3e · jetons à renouveler fin novembre
+
+MEMO
+
+---
+
+## TOUR 5 — Paul
+
+Texte mot pour mot :
+
+> [deux jetons reçus — un pour `mjpc-chantier`, un pour `monsieurjaipascompris`.
+> **Non transcrits** : un jeton ne s'écrit jamais dans un fichier. Règle de Paul,
+> passation C10→C11, PARTIE I.]
+
+---
+
+## TOUR 5 — Claude (conscience n°11)
+
+Actes posés dans ce tour, dans l'ordre, tous mesurés :
+
+**0 · Étanchéité, prouvée par écriture croisée** (jamais par un code de lecture : les deux
+dépôts sont publics, la lecture rend 200 pour n'importe quel jeton) :
+- jeton **sas** → dépôt **production** : **HTTP 403** — refusé
+- jeton **production** → dépôt **sas** : **HTTP 403** — refusé
+
+**A · `docs/MJPC6-DETTES.md` (production)** — lu 197 655 o, tour 197 ajouté, écrit
+**HTTP 200**, commit **`53a98437`**. Relu et comparé : **identique bit à bit**, 199 865 o.
+
+**B · `PASSATION-C10-C11.md` (sas)** — lu 14 133 o / 235 lignes. La ligne fausse était la
+**28** ; les deux lignes du parenthétique remplacées par onze lignes qui disent les deux
+commits, disculpent l'exécutant et nomment la portée du correctif ③. La phrase **« Vert ne
+vaut pas quitus »** insérée après la ligne 43, sous celle de la garde. Écrit **HTTP 200**,
+commit **`52969970`**. Relu et comparé : **identique bit à bit**, 15 389 o / 249 lignes.
+
+**C · `TRANSCRIPTS/C11/TRANSCRIPT-C11.md` (sas)** — ce fichier même, déposé au sas au
+terme de ce tour. Le dossier `TRANSCRIPTS/C11/` naît de ce chemin.
+
+Réponse à Paul : donnée dans la conversation, avec l'état des trois écritures, les deux
+questions encore ouvertes (le correctif ③ sort-il seul ; l'audit de `2c26017e` est-il
+ordonné) et la clôture de la passation.

@@ -1,0 +1,948 @@
+{
+ "annee": "2026-2027",
+ "source": "calendrier d'établissement 2026-2027 (pièce T38), lu cellule par cellule",
+ "semaines": [
+  {
+   "lundi": "2026-08-03",
+   "num": 32,
+   "lettre": "A"
+  },
+  {
+   "lundi": "2026-08-10",
+   "num": 33,
+   "lettre": "B"
+  },
+  {
+   "lundi": "2026-08-17",
+   "num": 34,
+   "lettre": "A"
+  },
+  {
+   "lundi": "2026-08-24",
+   "num": 35,
+   "lettre": "B"
+  },
+  {
+   "lundi": "2026-08-31",
+   "num": 36,
+   "lettre": "A"
+  },
+  {
+   "lundi": "2026-09-07",
+   "num": 37,
+   "lettre": "B"
+  },
+  {
+   "lundi": "2026-09-14",
+   "num": 38,
+   "lettre": "A"
+  },
+  {
+   "lundi": "2026-09-21",
+   "num": 39,
+   "lettre": "B"
+  },
+  {
+   "lundi": "2026-09-28",
+   "num": 40,
+   "lettre": "A"
+  },
+  {
+   "lundi": "2026-10-05",
+   "num": 41,
+   "lettre": "B"
+  },
+  {
+   "lundi": "2026-10-12",
+   "num": 42,
+   "lettre": "A"
+  },
+  {
+   "lundi": "2026-10-19",
+   "num": 43,
+   "lettre": "B"
+  },
+  {
+   "lundi": "2026-10-26",
+   "num": 44,
+   "lettre": "A"
+  },
+  {
+   "lundi": "2026-11-02",
+   "num": 45,
+   "lettre": "B"
+  },
+  {
+   "lundi": "2026-11-09",
+   "num": 46,
+   "lettre": "A"
+  },
+  {
+   "lundi": "2026-11-16",
+   "num": 47,
+   "lettre": "B"
+  },
+  {
+   "lundi": "2026-11-23",
+   "num": 48,
+   "lettre": "A"
+  },
+  {
+   "lundi": "2026-11-30",
+   "num": 49,
+   "lettre": "B"
+  },
+  {
+   "lundi": "2026-12-07",
+   "num": 50,
+   "lettre": "A"
+  },
+  {
+   "lundi": "2026-12-14",
+   "num": 51,
+   "lettre": "B"
+  },
+  {
+   "lundi": "2026-12-21",
+   "num": 52,
+   "lettre": "A"
+  },
+  {
+   "lundi": "2026-12-28",
+   "num": 53,
+   "lettre": "B"
+  },
+  {
+   "lundi": "2027-01-04",
+   "num": 1,
+   "lettre": "A"
+  },
+  {
+   "lundi": "2027-01-11",
+   "num": 2,
+   "lettre": "B"
+  },
+  {
+   "lundi": "2027-01-18",
+   "num": 3,
+   "lettre": "A"
+  },
+  {
+   "lundi": "2027-01-25",
+   "num": 4,
+   "lettre": "B"
+  },
+  {
+   "lundi": "2027-02-01",
+   "num": 5,
+   "lettre": "A"
+  },
+  {
+   "lundi": "2027-02-08",
+   "num": 6,
+   "lettre": "B"
+  },
+  {
+   "lundi": "2027-02-15",
+   "num": 7,
+   "lettre": "A"
+  },
+  {
+   "lundi": "2027-02-22",
+   "num": 8,
+   "lettre": "B"
+  },
+  {
+   "lundi": "2027-03-01",
+   "num": 9,
+   "lettre": "A"
+  },
+  {
+   "lundi": "2027-03-08",
+   "num": 10,
+   "lettre": "B"
+  },
+  {
+   "lundi": "2027-03-15",
+   "num": 11,
+   "lettre": "A"
+  },
+  {
+   "lundi": "2027-03-22",
+   "num": 12,
+   "lettre": "B"
+  },
+  {
+   "lundi": "2027-03-29",
+   "num": 13,
+   "lettre": "A"
+  },
+  {
+   "lundi": "2027-04-05",
+   "num": 14,
+   "lettre": "B"
+  },
+  {
+   "lundi": "2027-04-12",
+   "num": 15,
+   "lettre": "A"
+  },
+  {
+   "lundi": "2027-04-19",
+   "num": 16,
+   "lettre": "B"
+  },
+  {
+   "lundi": "2027-04-26",
+   "num": 17,
+   "lettre": "A"
+  },
+  {
+   "lundi": "2027-05-03",
+   "num": 18,
+   "lettre": "B"
+  },
+  {
+   "lundi": "2027-05-10",
+   "num": 19,
+   "lettre": "A"
+  },
+  {
+   "lundi": "2027-05-17",
+   "num": 20,
+   "lettre": "B"
+  },
+  {
+   "lundi": "2027-05-24",
+   "num": 21,
+   "lettre": "A"
+  },
+  {
+   "lundi": "2027-05-31",
+   "num": 22,
+   "lettre": "B"
+  },
+  {
+   "lundi": "2027-06-07",
+   "num": 23,
+   "lettre": "A"
+  },
+  {
+   "lundi": "2027-06-14",
+   "num": 24,
+   "lettre": "B"
+  },
+  {
+   "lundi": "2027-06-21",
+   "num": 25,
+   "lettre": "A"
+  },
+  {
+   "lundi": "2027-06-28",
+   "num": 26,
+   "lettre": "B"
+  },
+  {
+   "lundi": "2027-07-05",
+   "num": 27,
+   "lettre": "A"
+  },
+  {
+   "lundi": "2027-07-12",
+   "num": 28,
+   "lettre": "B"
+  },
+  {
+   "lundi": "2027-07-19",
+   "num": 29,
+   "lettre": "A"
+  },
+  {
+   "lundi": "2027-07-26",
+   "num": 30,
+   "lettre": "B"
+  }
+ ],
+ "vacances": [
+  {
+   "nom": "d'été (avant la rentrée)",
+   "type": "vacances",
+   "debut": "2026-08-01",
+   "fin": "2026-08-26",
+   "jours": 26,
+   "lu": "fond gris du calendrier, jour par jour"
+  },
+  {
+   "nom": "de la Toussaint",
+   "type": "vacances",
+   "debut": "2026-10-17",
+   "fin": "2026-10-31",
+   "jours": 15,
+   "lu": "fond gris du calendrier, jour par jour"
+  },
+  {
+   "nom": "de Noël",
+   "type": "vacances",
+   "debut": "2026-12-19",
+   "fin": "2027-01-02",
+   "jours": 15,
+   "lu": "fond gris du calendrier, jour par jour"
+  },
+  {
+   "nom": "d’Hiver",
+   "type": "vacances",
+   "debut": "2027-02-20",
+   "fin": "2027-03-06",
+   "jours": 15,
+   "lu": "fond gris du calendrier, jour par jour"
+  },
+  {
+   "nom": "de Printemps",
+   "type": "vacances",
+   "debut": "2027-04-17",
+   "fin": "2027-05-01",
+   "jours": 15,
+   "lu": "fond gris du calendrier, jour par jour"
+  },
+  {
+   "nom": "pont de l'Ascension",
+   "type": "pont",
+   "debut": "2027-05-06",
+   "fin": "2027-05-08",
+   "jours": 3,
+   "lu": "fond gris du calendrier, jour par jour"
+  },
+  {
+   "nom": "d’été",
+   "type": "vacances",
+   "debut": "2027-07-03",
+   "fin": "2027-07-31",
+   "jours": 29,
+   "lu": "fond gris du calendrier, jour par jour"
+  }
+ ],
+ "feries": [
+  {
+   "date": "2026-08-15",
+   "libelle": "Assomption"
+  },
+  {
+   "date": "2026-11-01",
+   "libelle": "Toussaint"
+  },
+  {
+   "date": "2026-11-11",
+   "libelle": "Armistice"
+  },
+  {
+   "date": "2026-12-25",
+   "libelle": "Noël"
+  },
+  {
+   "date": "2027-01-01",
+   "libelle": "Jour de l’An"
+  },
+  {
+   "date": "2027-03-29",
+   "libelle": "Pâques"
+  },
+  {
+   "date": "2027-05-01",
+   "libelle": "Fête du Travail"
+  },
+  {
+   "date": "2027-05-06",
+   "libelle": "Ascension"
+  },
+  {
+   "date": "2027-05-07",
+   "libelle": "Pont de l’Ascension"
+  },
+  {
+   "date": "2027-05-08",
+   "libelle": "Victoire 1945"
+  },
+  {
+   "date": "2027-05-17",
+   "libelle": "Pentecôte"
+  }
+ ],
+ "jalons": [
+  {
+   "date": "2026-11-03",
+   "libelle": "Conseils intermédiaires 3e"
+  },
+  {
+   "date": "2026-11-09",
+   "libelle": "Conseils intermédiaires 6e"
+  },
+  {
+   "date": "2026-11-12",
+   "libelle": "Conseils intermédiaires 4e"
+  },
+  {
+   "date": "2026-11-14",
+   "libelle": "11h remise des diplômes du DNB",
+   "heure": "11:00"
+  },
+  {
+   "date": "2026-11-16",
+   "libelle": "Conseils intermédiaires 5e"
+  },
+  {
+   "date": "2027-01-04",
+   "libelle": "Journée pédagogique"
+  },
+  {
+   "date": "2027-01-07",
+   "libelle": "Soir arrêt des notes"
+  },
+  {
+   "date": "2027-01-11",
+   "libelle": "Conseils 1er semestre 17h 3e J.Lennon 4e V.Hugo 18h 3e N.Simone 4e Turing",
+   "heure": "17:00"
+  },
+  {
+   "date": "2027-01-12",
+   "libelle": "Conseils 1er semestre : 17h 5e Malala 6e Brocéliande 18h 5e J.Verne",
+   "heure": "17:00"
+  },
+  {
+   "date": "2027-01-14",
+   "libelle": "Conseils 1er semestre 16h 3e B.Dylan 4e Banksy 17h 3e A.Franklin 4e Pythagore",
+   "heure": "16:00"
+  },
+  {
+   "date": "2027-01-18",
+   "libelle": "Conseils 1er semestre : 17h 5e M.Curie 18h 5e T.Pesquet 6e St-Malo",
+   "heure": "17:00"
+  },
+  {
+   "date": "2027-01-19",
+   "libelle": "Conseils 1er semestre 17h 6e Armor 18h 6e St-Michel",
+   "heure": "17:00"
+  },
+  {
+   "date": "2027-03-12",
+   "libelle": "Journée pédagogique"
+  },
+  {
+   "date": "2027-03-16",
+   "libelle": "Conseils intermédiaires 3e"
+  },
+  {
+   "date": "2027-03-22",
+   "libelle": "Conseils intermédiaires 5e"
+  },
+  {
+   "date": "2027-03-25",
+   "libelle": "Conseils intermédiaires 6e"
+  },
+  {
+   "date": "2027-04-05",
+   "libelle": "Randonnée solidaire Conseils intermédiaires 4e"
+  },
+  {
+   "date": "2027-05-12",
+   "libelle": "DNB Blanc 3"
+  },
+  {
+   "date": "2027-05-13",
+   "libelle": "DNB Blanc 3"
+  },
+  {
+   "date": "2027-05-14",
+   "libelle": "DNB Blanc 3"
+  },
+  {
+   "date": "2027-05-20",
+   "libelle": "16h-17h Oraux blancs",
+   "heure": "16:00"
+  },
+  {
+   "date": "2027-05-31",
+   "libelle": "Conseils d'orientation 3e"
+  },
+  {
+   "date": "2027-06-02",
+   "libelle": "Oraux DNB"
+  },
+  {
+   "date": "2027-06-03",
+   "libelle": "Conseils d'orientation 4e"
+  },
+  {
+   "date": "2027-06-07",
+   "libelle": "Conseils d'orientation 6e"
+  },
+  {
+   "date": "2027-06-08",
+   "libelle": "Conseils d'orientation 5e"
+  },
+  {
+   "date": "2027-06-25",
+   "libelle": "DNB"
+  },
+  {
+   "date": "2027-06-25",
+   "libelle": "14h journée pédagogique",
+   "heure": "14:00"
+  },
+  {
+   "date": "2027-06-28",
+   "libelle": "DNB"
+  },
+  {
+   "date": "2027-06-29",
+   "libelle": "DNB"
+  }
+ ],
+ "etablissement": [
+  {
+   "date": "2026-08-27",
+   "libelle": "9h30 CODIR",
+   "heure": "09:30",
+   "prendLeCreneau": false
+  },
+  {
+   "date": "2026-08-27",
+   "libelle": "12h déjeuner de l'équipe",
+   "heure": "12:00",
+   "prendLeCreneau": false
+  },
+  {
+   "date": "2026-08-27",
+   "libelle": "13h45 photo 14h30-18h pré-rentrée",
+   "heure": "13:45",
+   "prendLeCreneau": true
+  },
+  {
+   "date": "2026-08-28",
+   "libelle": "8h30-17h pré-rentrée",
+   "heure": "08:30",
+   "prendLeCreneau": true
+  },
+  {
+   "date": "2026-08-31",
+   "libelle": "préparation rentrée",
+   "prendLeCreneau": true
+  },
+  {
+   "date": "2026-09-01",
+   "libelle": "Rentrée scolaire des élèves de 6e",
+   "prendLeCreneau": true
+  },
+  {
+   "date": "2026-09-01",
+   "libelle": "après-midi jeux cohésion",
+   "prendLeCreneau": false
+  },
+  {
+   "date": "2026-09-02",
+   "libelle": "Rentrée scolaire des élèves de 5e, 4 et 3e",
+   "prendLeCreneau": true
+  },
+  {
+   "date": "2026-09-03",
+   "libelle": "matin, temps de cohésion",
+   "prendLeCreneau": true
+  },
+  {
+   "date": "2026-09-03",
+   "libelle": "5e, 4 et 3e",
+   "prendLeCreneau": false
+  },
+  {
+   "date": "2026-09-08",
+   "libelle": "17h Equipes éducatives 3e",
+   "heure": "17:00",
+   "prendLeCreneau": false
+  },
+  {
+   "date": "2026-09-08",
+   "libelle": "18h30 Parents 3e",
+   "heure": "18:30",
+   "prendLeCreneau": false
+  },
+  {
+   "date": "2026-09-10",
+   "libelle": "13h Photo des classes",
+   "heure": "13:00",
+   "prendLeCreneau": true
+  },
+  {
+   "date": "2026-09-10",
+   "libelle": "16h Célébration de rentrée 17h Equipes éduc. 6e 18h30 Parents 6e",
+   "heure": "16:00",
+   "prendLeCreneau": true
+  },
+  {
+   "date": "2026-09-14",
+   "libelle": "16h Equipe éduc. N.Laury 17h Equipes éducatives 5e",
+   "heure": "16:00",
+   "prendLeCreneau": false
+  },
+  {
+   "date": "2026-09-14",
+   "libelle": "18h30 Parents 5e",
+   "heure": "18:30",
+   "prendLeCreneau": false
+  },
+  {
+   "date": "2026-09-15",
+   "libelle": "17h Equipes éducatives 4e 18h30 Parents 4e",
+   "heure": "17:00",
+   "prendLeCreneau": false
+  },
+  {
+   "date": "2026-09-24",
+   "libelle": "9h40 Alerte incendie",
+   "heure": "09:40",
+   "prendLeCreneau": true
+  },
+  {
+   "date": "2026-09-28",
+   "libelle": "Cross",
+   "prendLeCreneau": true
+  },
+  {
+   "date": "2026-10-06",
+   "libelle": "matin, sortie EMS Classe Défense",
+   "prendLeCreneau": true
+  },
+  {
+   "date": "2026-11-05",
+   "libelle": "16h prépa portes ouvertes",
+   "heure": "16:00",
+   "prendLeCreneau": false
+  },
+  {
+   "date": "2026-11-09",
+   "libelle": "11h Commémoration du 11 11",
+   "heure": "11:00",
+   "prendLeCreneau": true
+  },
+  {
+   "date": "2026-11-13",
+   "libelle": "Portes ouvertes (soir)",
+   "prendLeCreneau": false
+  },
+  {
+   "date": "2026-11-14",
+   "libelle": "Portes ouvertes (matin)",
+   "prendLeCreneau": false
+  },
+  {
+   "date": "2026-11-18",
+   "libelle": "Formation IA réseau (matin)",
+   "prendLeCreneau": false
+  },
+  {
+   "date": "2026-11-20",
+   "libelle": "Journée orientation",
+   "prendLeCreneau": false
+  },
+  {
+   "date": "2026-11-20",
+   "libelle": "4e et 3e",
+   "prendLeCreneau": false
+  },
+  {
+   "date": "2026-11-24",
+   "libelle": "18h30 : réunion parents 3e et CE lycées Saumur ?",
+   "heure": "18:30",
+   "prendLeCreneau": false
+  },
+  {
+   "date": "2026-11-26",
+   "libelle": "Rencontre de parents 6e",
+   "prendLeCreneau": false
+  },
+  {
+   "date": "2026-11-30",
+   "libelle": "11h45 Alerte confinement",
+   "heure": "11:45",
+   "prendLeCreneau": true
+  },
+  {
+   "date": "2026-11-30",
+   "libelle": "Rencontre des parents 3e",
+   "prendLeCreneau": false
+  },
+  {
+   "date": "2026-12-01",
+   "libelle": "Matin, visite du Prytanée (classe Défense)",
+   "prendLeCreneau": true
+  },
+  {
+   "date": "2026-12-03",
+   "libelle": "Rencontres de parents 4",
+   "prendLeCreneau": false
+  },
+  {
+   "date": "2026-12-07",
+   "libelle": "Devoirs communs 3e Rencontre de parents 5",
+   "prendLeCreneau": true
+  },
+  {
+   "date": "2026-12-08",
+   "libelle": "Devoirs communs 3e",
+   "prendLeCreneau": true
+  },
+  {
+   "date": "2026-12-09",
+   "libelle": "Devoirs communs 3e",
+   "prendLeCreneau": true
+  },
+  {
+   "date": "2026-12-10",
+   "libelle": "Devoirs communs 3e",
+   "prendLeCreneau": true
+  },
+  {
+   "date": "2026-12-18",
+   "libelle": "13h",
+   "heure": "13:00",
+   "prendLeCreneau": false
+  },
+  {
+   "date": "2026-12-18",
+   "libelle": "Célébration et temps fort de Noël",
+   "prendLeCreneau": true
+  },
+  {
+   "date": "2027-01-07",
+   "libelle": "18h30 Présentation options 3e/ séjour aux Pays-Bas parents 4e",
+   "heure": "18:30",
+   "prendLeCreneau": false
+  },
+  {
+   "date": "2027-01-19",
+   "libelle": "14h30 Alerte incendie",
+   "heure": "14:30",
+   "prendLeCreneau": true
+  },
+  {
+   "date": "2027-02-01",
+   "libelle": "AG",
+   "prendLeCreneau": false
+  },
+  {
+   "date": "2027-02-08",
+   "libelle": "18h30 Conseil d'établissement",
+   "heure": "18:30",
+   "prendLeCreneau": false
+  },
+  {
+   "date": "2027-02-16",
+   "libelle": "Accueil des CM2",
+   "prendLeCreneau": true
+  },
+  {
+   "date": "2027-03-11",
+   "libelle": "18h30 présentation LV2/latin parents 6e et présentation immersion pro' parents 5e",
+   "heure": "18:30",
+   "prendLeCreneau": false
+  },
+  {
+   "date": "2027-03-19",
+   "libelle": "Bol de riz",
+   "prendLeCreneau": true
+  },
+  {
+   "date": "2027-03-19",
+   "libelle": "Fête de la Saint-Joseph",
+   "prendLeCreneau": false
+  },
+  {
+   "date": "2027-03-22",
+   "libelle": "Devoirs communs 4",
+   "prendLeCreneau": true
+  },
+  {
+   "date": "2027-03-23",
+   "libelle": "Devoirs communs 4",
+   "prendLeCreneau": true
+  },
+  {
+   "date": "2027-05-03",
+   "libelle": "AG",
+   "prendLeCreneau": false
+  },
+  {
+   "date": "2027-05-26",
+   "libelle": "Répétition comédie musicale ?",
+   "prendLeCreneau": true
+  },
+  {
+   "date": "2027-06-09",
+   "libelle": "Répétition comédie musicale ?",
+   "prendLeCreneau": true
+  },
+  {
+   "date": "2027-06-10",
+   "libelle": "Comédie musicale",
+   "prendLeCreneau": true
+  },
+  {
+   "date": "2027-06-11",
+   "libelle": "Comédie musicale",
+   "prendLeCreneau": true
+  },
+  {
+   "date": "2027-06-12",
+   "libelle": "Comédie musicale",
+   "prendLeCreneau": true
+  },
+  {
+   "date": "2027-06-17",
+   "libelle": "RoboTec ?",
+   "prendLeCreneau": false
+  },
+  {
+   "date": "2027-06-18",
+   "libelle": "Cocktail les Ardilliers",
+   "prendLeCreneau": false
+  },
+  {
+   "date": "2027-06-28",
+   "libelle": "14h30 temps de travail d'équipe",
+   "heure": "14:30",
+   "prendLeCreneau": false
+  },
+  {
+   "date": "2027-07-14",
+   "libelle": "Fête Nationale",
+   "prendLeCreneau": false
+  }
+ ],
+ "evenementsClasse": [
+  {
+   "libelle": "Tribunal Saumur 4e (après-midi) ? 17h AG",
+   "heure": "17:00",
+   "niveau": "4e",
+   "classes": [],
+   "justifie": false,
+   "debut": "2026-09-17",
+   "fin": "2026-09-17"
+  },
+  {
+   "libelle": "Séjour Verdun 3e",
+   "niveau": "3e",
+   "classes": [],
+   "justifie": false,
+   "debut": "2026-10-14",
+   "fin": "2026-10-16"
+  },
+  {
+   "libelle": "Tribunal Saumur 4e (après-midi)",
+   "niveau": "4e",
+   "classes": [],
+   "justifie": false,
+   "debut": "2026-11-05",
+   "fin": "2026-11-05"
+  },
+  {
+   "libelle": "Stages 3e (uniquement 3e Horizon pro)",
+   "niveau": "3e",
+   "classes": [],
+   "justifie": false,
+   "debut": "2026-11-16",
+   "fin": "2026-11-16"
+  },
+  {
+   "libelle": "Stages 3e",
+   "niveau": "3e",
+   "classes": [],
+   "justifie": false,
+   "debut": "2026-11-17",
+   "fin": "2026-11-18"
+  },
+  {
+   "libelle": "3e rapport de stage (matin) Forum métiers Saumur (13h30 15h)",
+   "heure": "13:30",
+   "niveau": "3e",
+   "classes": [],
+   "justifie": false,
+   "debut": "2026-11-19",
+   "fin": "2026-11-19"
+  },
+  {
+   "libelle": "Tribunal 4e Soirée orientation 4e",
+   "niveau": "4e",
+   "classes": [],
+   "justifie": false,
+   "debut": "2026-11-19",
+   "fin": "2026-11-19"
+  },
+  {
+   "libelle": "Visite des lycées St-Louis / les Ardilliers 3e",
+   "niveau": "3e",
+   "classes": [],
+   "justifie": false,
+   "debut": "2026-11-23",
+   "fin": "2026-11-23"
+  },
+  {
+   "libelle": "Stages 3e horizon Pro",
+   "niveau": "3e",
+   "classes": [],
+   "justifie": false,
+   "debut": "2027-01-13",
+   "fin": "2027-01-15"
+  },
+  {
+   "libelle": "Compétition des métiers WorldSkills niveau 4e ?",
+   "niveau": "4e",
+   "classes": [],
+   "justifie": false,
+   "debut": "2027-02-12",
+   "fin": "2027-02-12"
+  },
+  {
+   "libelle": "Orientibus niveau 4e",
+   "niveau": "4e",
+   "classes": [],
+   "justifie": false,
+   "debut": "2027-02-18",
+   "fin": "2027-02-18"
+  },
+  {
+   "libelle": "Forum métiers Doué niveau 4e (après-midi)",
+   "niveau": "4e",
+   "classes": [],
+   "justifie": false,
+   "debut": "2027-02-19",
+   "fin": "2027-02-19"
+  },
+  {
+   "libelle": "Stage 4",
+   "niveau": "4e",
+   "classes": [],
+   "justifie": false,
+   "debut": "2027-03-24",
+   "fin": "2027-03-25"
+  },
+  {
+   "libelle": "Stage 4 13h Chemin de Croix",
+   "heure": "13:00",
+   "niveau": "4e",
+   "classes": [],
+   "justifie": false,
+   "debut": "2027-03-26",
+   "fin": "2027-03-26"
+  },
+  {
+   "libelle": "Séjour Pays-Bas 4e (soir)",
+   "niveau": "4e",
+   "classes": [],
+   "justifie": false,
+   "debut": "2027-04-12",
+   "fin": "2027-04-17"
+  }
+ ],
+ "brevet": {
+  "3e": "2027-06-25T08:00:00",
+  "note": "premier jour du DNB au calendrier de l'établissement ; l'injection écrit /site/config/brevetDates/3e (seule écriture de l'EDT hors /site/edt/, exception nommée au contrat)"
+ }
+}

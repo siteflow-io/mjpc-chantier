@@ -2854,7 +2854,7 @@ function mjpcEcrireRest(url,options,cb){
    (les 3 gestes, le geste conservatoire par app, ce qui ne peut pas arriver).
    RESTAURER LA VERSION PRÉCÉDENTE : docs/MJPC6-restauration.md (convention BUG).
    ═══════════════════════════════════════════════════════════════════════════ */
-var APP_VERSION="8.73.0-①ter";
+var APP_VERSION="8.73.0-②a";
 var APP_VERSION_DATE="2026-08-27";
 // ── 11. Coffre : dérivation, chiffrement, empreinte (v1.3.0) ──
 // (Le canon porte deux sections « 8 » — dette de numérotation connue, non corrigée
@@ -17972,7 +17972,7 @@ function edtArchiver(motif,chemin,data){
 /* LES CHARGES DE LA MISE À NIVEAU — écrites pour QUATRE dès maintenant.
    ① les id manquants (livraison ①) · ② la date d'injection de repli (§⑨)
    ③ le classement de repli des heures banalisées (§⑧) · ④ la reprise des
-   justifie:true dans decisions et le retrait du champ (§②).
+   la reprise des coches héritées dans decisions et le retrait du champ (§②).
    Chaque charge rend {objets:{nom:valeurModifiee}, dit:[…]} ou null. */
 var EDT_CHARGES=[];
 function edtChargeInscrire(nom,fn){ EDT_CHARGES.push({nom:nom,fn:fn}); }
@@ -19260,9 +19260,22 @@ function edtEcrireDecision(nomClasse,cleHeure,valeur,quoi){
 function edtSansSeance(cle){
   var c=edtCellule(cle); if(!c||!c.classeMjpc)return;
   var s=document.getElementById('edt-cat'), p=document.getElementById('edt-prec');
-  edtEcrireDecision(c.classeMjpc,edtCleHeure(c.iso,c.creneau,c.classeMjpc),
-    {sansSeance:true,categorie:(s&&s.value)||EDT_CATEGORIES[0],precision:(p&&p.value)||'',pose:Date.now()},
-    'ne plus compter cette séance dans la prévision horaire');
+  var k=edtCleHeure(c.iso,c.creneau,c.classeMjpc);
+  var edtAppliquer=function(){
+    edtEcrireDecision(c.classeMjpc,k,
+      {sansSeance:true,categorie:(s&&s.value)||EDT_CATEGORIES[0],precision:(p&&p.value)||'',pose:Date.now()},
+      'ne plus compter cette séance dans la prévision horaire');
+  };
+  /* [②a] une heure, une clé, un seul motif : le motif remplacé se DIT avant */
+  var avant=edtDecisionPour(c.classeMjpc,c.iso,c.creneau);
+  if(avant&&avant.ecartJustifie&&typeof atModaleChoix==='function'){
+    atModaleChoix('Cette heure est déjà marquée « écart justifié »'
+      +(avant.libelle?(' — '+escapeHtml(String(avant.libelle))):'')
+      +'.<br>La sortir de la prévision remplace ce motif. L’heure ne sera comptée qu’une fois.',
+      [{lib:'Annuler'},{lib:'Remplacer le motif',prim:true,fn:edtAppliquer}]);
+    return;
+  }
+  edtAppliquer();
 }
 function edtDeplacerVers(cle,cible){
   var c=edtCellule(cle); if(!c||!c.classeMjpc||!cible)return;
@@ -19568,19 +19581,11 @@ function edtAbsencesHtml(cle,c){
 
 /* ── LA DIVERGENCE — alerte progressive, jamais un blocage ───────────────── */
 function edtHeuresJustifiees(nomClasse){
-  var niv=edtNiveauDe(nomClasse),cal=EDT.calendrier,n=0;
-  if(!niv||!cal)return 0;
-  (cal.evenementsClasse||[]).forEach(function(e){
-    if(!e||!e.justifie||e.niveau!==niv)return;
-    var d=e.debut;
-    while(d<=e.fin){
-      edtCasesDuJour(d).forEach(function(x){ if(x&&x.mjpc!==false&&x.classeMjpc===nomClasse)n++; });
-      d=edtPlusJour(d,1);
-    }
-  });
-  /* une heure que Paul a sortie de la prévision compte aussi comme justifiée */
-  var h=((edtDecisions()[nomClasse]||{}).heures)||{};
-  Object.keys(h).forEach(function(k){ if(h[k]&&h[k].sansSeance)n++; });
+  /* [②a] UNE HEURE, UNE CLÉ, UN SEUL MOTIF. Le compte se lit dans le magasin :
+     un écart justifié et une séance sortie de la prévision tombent à la même
+     clé et se remplacent, donc une heure ne peut plus être comptée deux fois. */
+  var h=((edtDecisions()[nomClasse]||{}).heures)||{},n=0;
+  Object.keys(h).forEach(function(k){ var v=h[k]; if(v&&(v.sansSeance||v.ecartJustifie))n++; });
   return n;
 }
 function edtAvancement(nomClasse){
@@ -19608,7 +19613,7 @@ function edtDivergence(nomClasse){
   var justeEcart=Math.max(0,just-justRef);
   var net=Math.max(0,brut-justeEcart);
   var palier= net<=1?'dans les temps' : (net===2?'léger' : (net===3?'marqué':'critique'));
-  return {ecart:net,brut:brut,justifie:just,justifieEcart:justeEcart,reference:ref,palier:palier,avance:a};
+  return {ecart:net,brut:brut,heuresJustifiees:just,justifieEcart:justeEcart,reference:ref,palier:palier,avance:a};
 }
 function edtEstExperimentale(nomClasse){
   var t=EDT_CLASSES||{},c=t[nomClasse];
@@ -19773,9 +19778,10 @@ function edtPeindreAnnee(){
       if(!dansAnnee(ev.debut,ev.fin))return;
       compte.segments++; vusClasse[ev.debut+'|'+(ev.libelle||'')]=true;
       var larg=Math.max(0.45,pos(ev.fin||ev.debut)-pos(ev.debut));
-      evts+='<span class="edt-an-evt'+(ev.justifie?' edt-an-evt-just':'')+'" style="left:'+pos(ev.debut).toFixed(2)
+      var evJust=edtEvenementJustifie(ev);   /* [②a] lu au magasin, plus dans l'objet */
+    evts+='<span class="edt-an-evt'+(evJust?' edt-an-evt-just':'')+'" style="left:'+pos(ev.debut).toFixed(2)
         +'%;width:'+larg.toFixed(2)+'%" title="'+escapeHtml(ev.debut+(ev.fin!==ev.debut?(' \u2192 '+ev.fin):'')
-        +' \u2014 '+(ev.libelle||'')+(ev.justifie?' \u2014 écart justifié':''))+'">'
+        +' \u2014 '+(ev.libelle||'')+(evJust?' \u2014 écart justifié':''))+'">'
         +(larg>2?('<i>'+escapeHtml(String(ev.libelle||'').slice(0,20))+'</i>'):'')+'</span>';
     });
     lignes.push({nom:nom,exp:exp,dv:dv,barres:barres,evts:evts,
@@ -19836,7 +19842,7 @@ function edtPeindreCalendrier(){
   h+='<div class="edt-cal"><div class="edt-cal-col"><div class="edt-titre">Événements de classe</div>'
     +'<p class="edt-mini-t">Coche « justifié » quand l\u2019écart de progression ne dépend pas de toi : ses heures sortent du calcul.</p>'
     +(cal.evenementsClasse||[]).map(function(x,i){
-      return '<label class="edt-cal-l"><input type="checkbox"'+(x.justifie?' checked':'')
+      return '<label class="edt-cal-l"><input type="checkbox"'+(edtEvenementJustifie(x)?' checked':'')
         +' onchange="edtJustifier(\''+String(x.id||'')+'\',this.checked)"><b>'+escapeHtml(x.niveau||'')+'</b> '
         +escapeHtml(x.debut)+(x.fin!==x.debut?(' \u2192 '+escapeHtml(x.fin)):'')+' \u00b7 '
         +escapeHtml(String(x.libelle||'').slice(0,60))+'</label>';
@@ -19849,14 +19855,96 @@ function edtPeindreCalendrier(){
     +'</div></div>';
   e.innerHTML=h;
 }
+/* [②a] LES HEURES QU'UN ÉVÉNEMENT RECOUVRE. Une décision est une décision
+   D'HEURE, pas d'événement : l'événement dit seulement QUI l'a causée. */
+function edtHeuresDeLEvenement(ev){
+  var out=[]; if(!ev||!ev.debut)return out;
+  var d=ev.debut, fin=ev.fin||ev.debut, garde=0;
+  while(d<=fin&&garde++<400){
+    edtCasesDuJour(d).forEach(function(x){
+      if(!x||x.mjpc===false||!x.classeMjpc)return;
+      if(ev.niveau&&edtNiveauDe(x.classeMjpc)!==ev.niveau)return;
+      out.push({classe:x.classeMjpc,iso:d,creneau:x.creneau,cle:edtCleHeure(d,x.creneau,x.classeMjpc)});
+    });
+    d=edtPlusJour(d,1);
+  }
+  return out;
+}
+/* [②a] L'ÉVÉNEMENT EST-IL MARQUÉ ? La réponse ne vient plus de l'objet injecté
+   — où elle disparaissait à chaque réinjection — mais du magasin des décisions. */
+function edtEvenementJustifie(ev){
+  if(!ev||!ev.id)return false;
+  var d=edtDecisions(),trouve=false;
+  Object.keys(d).forEach(function(c){
+    var h=(d[c]||{}).heures||{};
+    Object.keys(h).forEach(function(k){
+      if(h[k]&&h[k].ecartJustifie&&h[k].evenement===ev.id)trouve=true; });
+  });
+  return trouve;
+}
+/* [②a] PLUSIEURS HEURES, UNE SEULE ÉCRITURE. Un événement couvre souvent
+   plusieurs heures : les poser une par une ferait autant d'écritures du même
+   nœud. Le journal reçoit une ligne par heure, avec l'avant et l'après. */
+function edtEcrireDecisionsGroupe(entrees,quoi,libelle){
+  if(!entrees||!entrees.length)return;
+  var d=edtDecisions();
+  entrees.forEach(function(e){
+    if(!d[e.classe])d[e.classe]={heures:{},journal:[]};
+    if(!d[e.classe].heures)d[e.classe].heures={};
+    if(!Array.isArray(d[e.classe].journal))d[e.classe].journal=[];
+    var avant=d[e.classe].heures[e.cle]||null;
+    if(e.valeur===null)delete d[e.classe].heures[e.cle];
+    else d[e.classe].heures[e.cle]=e.valeur;
+    d[e.classe].journal.push({quand:Date.now(),heure:e.cle,quoi:quoi,avant:avant,apres:(e.valeur===null?null:e.valeur)});
+  });
+  mjpcPutJson(FIREBASE_BASE+edtChemin('decisions')+'.json',d,libelle||'Décisions horaires',function(){
+    EDT.decisions=d; edtPeindre(); edtPeindreModale(); edtPeindreCalendrier();
+  });
+}
 function edtJustifier(id,valeur){
   var cal=EDT.calendrier; if(!cal||!Array.isArray(cal.evenementsClasse))return;
   var t=null; cal.evenementsClasse.forEach(function(e){ if(e&&e.id===id)t=e; });
   if(!t)return;                       /* par id STOCKÉ, jamais par indice ni par formule */
-  t.justifie=!!valeur;
-  mjpcPutJson(FIREBASE_BASE+edtChemin('calendrier')+'.json',cal,'Écart justifié',function(){
-    EDT.calendrier=cal; edtPeindreCalendrier();
+  /* [②a] UNE DÉCISION DE PAUL NE VIT JAMAIS DANS UN OBJET INJECTÉ. La coche ne
+     s'écrit plus dans le calendrier — qui est remplacé à chaque réinjection et
+     emportait les coches avec lui — mais dans le magasin des décisions, à la
+     clé de chaque heure concernée, avec l'id de l'événement qui l'a causée. */
+  var heures=edtHeuresDeLEvenement(t);
+  if(!heures.length){
+    if(typeof atInfo==='function')atInfo('Aucune heure de cours sur ces dates : rien à marquer.');
+    edtPeindreCalendrier(); return;
+  }
+  if(!valeur){
+    var retrait=[];
+    heures.forEach(function(h){
+      var v=edtDecisionPour(h.classe,h.iso,h.creneau);
+      if(v&&v.ecartJustifie&&v.evenement===t.id)retrait.push({classe:h.classe,cle:h.cle,valeur:null});
+    });
+    if(!retrait.length){ edtPeindreCalendrier(); return; }
+    edtEcrireDecisionsGroupe(retrait,'écart justifié retiré — '+(t.libelle||''),'Écart justifié');
+    return;
+  }
+  var quand=Date.now();
+  var entrees=heures.map(function(h){
+    return {classe:h.classe,cle:h.cle,valeur:{ecartJustifie:true,evenement:t.id,
+      libelle:String(t.libelle||''),pose:quand}};
   });
+  var edtAppliquer=function(){ edtEcrireDecisionsGroupe(entrees,'écart justifié — '+(t.libelle||''),'Écart justifié'); };
+  /* une heure, une clé, un seul motif : ce qui est remplacé se DIT avant */
+  var remplaces=[];
+  heures.forEach(function(h){
+    var v=edtDecisionPour(h.classe,h.iso,h.creneau);
+    if(v&&!(v.ecartJustifie&&v.evenement===t.id))remplaces.push(h);
+  });
+  if(remplaces.length&&typeof atModaleChoix==='function'){
+    atModaleChoix(escapeHtml(String(remplaces.length))+' heure(s) portent déjà un autre motif — '
+      +escapeHtml(remplaces.slice(0,4).map(function(h){ return h.iso+' '+h.creneau+' '+h.classe; }).join(', '))
+      +(remplaces.length>4?'…':'')+'.<br>Marquer cet écart justifié remplace leur motif. '
+      +'Chaque heure ne sera comptée qu’une fois.',
+      [{lib:'Annuler'},{lib:'Remplacer le motif',prim:true,fn:edtAppliquer}]);
+    return;
+  }
+  edtAppliquer();
 }
 
 /* ── LA TÊTE, COMMUNE AUX QUATRE VUES ────────────────────────────────────── */

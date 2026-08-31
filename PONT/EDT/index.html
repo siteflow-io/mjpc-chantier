@@ -2854,7 +2854,7 @@ function mjpcEcrireRest(url,options,cb){
    (les 3 gestes, le geste conservatoire par app, ce qui ne peut pas arriver).
    RESTAURER LA VERSION PRÉCÉDENTE : docs/MJPC6-restauration.md (convention BUG).
    ═══════════════════════════════════════════════════════════════════════════ */
-var APP_VERSION="8.73.0-②a";
+var APP_VERSION="8.73.0-②b";
 var APP_VERSION_DATE="2026-08-27";
 // ── 11. Coffre : dérivation, chiffrement, empreinte (v1.3.0) ──
 // (Le canon porte deux sections « 8 » — dette de numérotation connue, non corrigée
@@ -18018,6 +18018,61 @@ edtChargeInscrire('identite',function(){
   return {objets:touche,dit:dit};
 });
 
+/* [②b] LA REPRISE DES COCHES HÉRITÉES — en DEUX TEMPS, dans cet ordre, jamais
+   l'inverse. Les deux nœuds ne peuvent pas s'écrire d'un seul geste (`mjpcPutJson`
+   écrit UN nœud ; le seul PATCH du site est hors du bloc et hors contrat) : ce qui
+   garantit qu'aucune coche ne se perd, c'est l'ORDRE.
+     temps 1 — les coches entrent dans le magasin sûr ;
+     temps 2 — le champ sort de l'objet, SEULEMENT quand elles y sont déjà.
+   Si le temps 2 n'aboutit pas, la coche existe en double : dans le magasin ET dans
+   l'objet. Rien n'est perdu, et le chargement suivant termine. L'inverse perdrait
+   des coches : il est interdit. Chaque temps est UNE écriture de la mise à niveau,
+   avec son archivage et son abandon global — rien n'est redéfini ici. */
+edtChargeInscrire('coches',function(){
+  var cal=EDT.calendrier;
+  if(!cal||!Array.isArray(cal.evenementsClasse))return null;
+  /* [②b] sans les classes, on ne sait pas quel niveau tient quelle heure : on ne
+     reprend rien et on ne retire rien — le chargement suivant le fera. Mesuré au
+     banc : edtCharger peut tourner avant edtChargerClasses selon la porte. */
+  if(!EDT_CLASSES)return {objets:{},dit:['les classes ne sont pas encore lues : la reprise des coches attend']};
+  var touche={},dit=[],d=edtDecisions(),poses=0,quand=Date.now();
+  var reprises={};
+  cal.evenementsClasse.forEach(function(e){
+    if(!e||!e.justifie||!e.id)return;
+    var heures=edtHeuresDeLEvenement(e), faites=0;
+    heures.forEach(function(h){
+      if(!d[h.classe])d[h.classe]={heures:{},journal:[]};
+      if(!d[h.classe].heures)d[h.classe].heures={};
+      if(!Array.isArray(d[h.classe].journal))d[h.classe].journal=[];
+      if(d[h.classe].heures[h.cle]){ faites++; return; }   /* déjà décidé : on ne repose RIEN */
+      d[h.classe].heures[h.cle]={ecartJustifie:true,evenement:e.id,
+        libelle:String(e.libelle||''),pose:quand,reprise:true};
+      d[h.classe].journal.push({quand:quand,heure:h.cle,
+        quoi:'reprise de la coche héritée — '+(e.libelle||''),avant:null,
+        apres:d[h.classe].heures[h.cle]});
+      poses++; faites++;
+    });
+    /* une coche sans aucune heure ne peut pas être reprise : on GARDE le champ
+       et on le dit, plutôt que de l'effacer en silence. */
+    reprises[e.id]=(heures.length>0&&faites===heures.length);
+  });
+  if(poses){
+    EDT.decisions=d; touche.decisions=d;
+    dit.push(poses+' coche(s) héritée(s) reprises dans les décisions');
+    EDT.miseANiveauSuite=true;          /* le temps 2 suit, une fois celui-ci écrit */
+    return {objets:touche,dit:dit};
+  }
+  var ote=0,gardes=0;
+  cal.evenementsClasse.forEach(function(e){
+    if(!e||typeof e!=='object'||!('justifie' in e))return;
+    if(e.justifie&&!reprises[e.id]){ gardes++; return; }
+    delete e.justifie; ote++;
+  });
+  if(gardes)dit.push(gardes+' coche(s) sans heure de cours : le champ reste, rien n\u2019est effacé en silence');
+  if(ote){ touche.calendrier=cal; dit.push('champ « justifie » retiré de '+ote+' événement(s)'); return {objets:touche,dit:dit}; }
+  return null;
+});
+
 /* L'ÉCRITURE UNIQUE DE MISE À NIVEAU — une seule, quelles que soient les charges.
    Elle ARCHIVE avant d'écrire. Si l'archivage OU l'écriture échoue, RIEN n'est
    écrit : le site continue en lecture avec les valeurs calculées en mémoire,
@@ -18089,7 +18144,11 @@ function edtCharger(apres){
            s'affiche sans identité), puis n'écrit QUE s'il y a quelque chose à
            mettre à niveau — hub vide ou hub déjà complet : aucune écriture.
            Elle n'attend pas le réseau : l'affichage continue avec ce qu'il a. */
-        try{ edtMettreANiveau(); }
+        try{ edtMettreANiveau(function(ok){
+          /* [②b] le temps 2 de la reprise ne part QUE si le temps 1 a été accepté */
+          if(ok&&EDT.miseANiveauSuite){ EDT.miseANiveauSuite=false;
+            try{ edtMettreANiveau(); }catch(e){} }
+        }); }
         catch(e){ try{ EDT_CHARGES.forEach(function(c){ c.fn(); }); }catch(e2){} }   /* repli : l'identité en mémoire avant tout */
         if(apres)apres(); }
     });

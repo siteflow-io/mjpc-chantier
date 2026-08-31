@@ -975,3 +975,35 @@ Les captures sont au sas, dans `PONT/EDT/tests/`, préfixes `AVANT-01bis-clic-` 
 **Cahier vivant** — ton arbitrage sur le promeus. Puis, selon ta réponse : soit la promotion et son protocole, soit la livraison ② (les décisions sortent de l'objet), qui demande d'abord que le mandat v2 soit relu ligne à ligne et figé. En attente par ailleurs : la classe De Gaulle à dimensionner · `CLAUDE.md` périmé · `usage`/`quandPas` du site · la bascule de mode test dans quatre apps · les quatre fichiers hors socle · l'unicité entre familles, à trancher si tu le juges utile.
 
 MEMO
+
+---
+
+## TOUR 17 — Paul
+
+Texte mot pour mot :
+
+> Continue le lot. Je promeus à la fin
+
+---
+
+## TOUR 17 — Claude (conscience n°11)
+
+Travail joué : **relecture ligne à ligne du mandat v2** (293 lignes, 22 sections) contre le
+cadrage et contre le code d'aujourd'hui · §② et §④ lus en entier · magasin des décisions
+mesuré dans le candidat (`edtDecisions`, `edtEcrireDecision`, `edtCleHeure`, `journal[]`) ·
+`justifie` compté partout (18 code / 15 JSON / 2 prompts / 0 grille) · `edtJustifier` relue ·
+capacité d'écriture atomique cherchée (seul `PATCH` du site : L13576, hors bloc EDT).
+Mandat déposé : `PONT/EDT/MANDAT-LOT-2ter-02.md`, commit `1738fd38`, 13 432 o, vérifié bit à
+bit, aucun jeton dedans. Registre : tour 205, commit `976e4f7e`.
+
+Réponse mot pour mot : chapeau (les deux trouvailles de la relecture, ce que le magasin
+contient déjà), puis le mandat entier dans un bloc copiable, puis :
+
+**Tests manuels : aucun.** Rien n'a bougé, rien n'est en ligne.
+
+**Cahier vivant** — livraison ② en trois temps, chacun clos par un arrêt ; puis ③ à ⑧ ;
+puis ton promeus à la fin, sur captures. En attente de toi : la classe De Gaulle à
+dimensionner · `CLAUDE.md` périmé · `usage`/`quandPas` du site · la bascule de mode test dans
+quatre apps · les quatre fichiers hors socle · l'unicité entre familles.
+
+MEMO

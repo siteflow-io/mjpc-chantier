@@ -547,3 +547,30 @@ arrêt ; puis réaudit par la conscience ; puis captures ; puis promeus de Paul.
 mandat v2 relu ligne à ligne et figé, et la classe De Gaulle à dimensionner avec Paul.
 
 MEMO
+
+---
+
+## TOUR 9 — Paul
+
+Texte mot pour mot :
+
+> c'est quoi le jeton du sas déjà?
+
+---
+
+## TOUR 9 — Claude (conscience n°11)
+
+Réponse : le jeton du sas lui a été redonné **dans la conversation**, tel qu'il me l'avait
+transmis au tour 5. **Non transcrit** — un jeton ne s'écrit jamais dans un fichier.
+
+Rappelé avec : il est déjà visible plus haut dans notre échange · il se donne à l'exécutant
+dans son **premier message**, jamais collé dans le mandat ni dans un fichier du dépôt ·
+étanchéité prouvée le 31/08 par écriture croisée (sas→prod 403, prod→sas 403) · à renouveler
+fin novembre.
+
+**Tests manuels : aucun.**
+
+**Cahier vivant** — inchangé : le mandat `01bis` part à un exécutant neuf, deux livraisons
+courtes ; puis réaudit ; puis captures ; puis promeus.
+
+MEMO

@@ -919,3 +919,59 @@ Tout est au registre, tour 203.
 **Cahier vivant** — ①ter (captures), mon audit, puis ton promeus. Ensuite : le mandat v2 relu et figé pour la livraison ②, la classe De Gaulle à dimensionner. En attente par ailleurs : `CLAUDE.md` périmé · `usage`/`quandPas` du site · la bascule de mode test dans quatre apps · les quatre fichiers hors socle.
 
 MEMO
+
+---
+
+## TOUR 16 — Paul
+
+Texte mot pour mot :
+
+> Livré
+
+---
+
+## TOUR 16 — Claude (conscience n°11)
+
+Audit joué : candidat mesuré (1 662 507 o / `cb20546e…`) · diff = un seul bloc, la version ·
+fichiers comparés version neutralisée → **identiques bit à bit** à ①ter-a · non-régression
+remesurée · garde + trois nouveaux pièges · **les 16 captures listées et téléchargées** ·
+journal de clics lu ligne à ligne · md5 des captures comparés · son écart n°1 vérifié sur banc.
+Registre : tour 204, commit `581f0031`.
+
+Réponse mot pour mot :
+
+**Verdict : ça va. Le mandat est fini, aucune dette. Mais le lot, lui, en est à sa première livraison sur huit — et c'est là que ton arbitrage est attendu.**
+
+## Les captures sont réelles, et le journal prouve l'essentiel
+
+J'ai téléchargé les captures et lu le journal des clics geste par geste. Le point qui compte y est noir sur blanc :
+
+Ta 3e Franklin du lundi 8h57 est glissée au lundi 8h00, par un vrai mouvement de souris. Après le geste :
+- dans la version du **1er août** — celle du passé — elle est toujours **lundi 8h57**, identifiant `crn:1a22nwk` ;
+- dans la version du **31 août** — celle qui commence — elle est **lundi 8h00**, identifiant `crn:1a22nwk`.
+
+**Le passé n'a pas bougé, le changement vaut à partir de la date, et l'identifiant a suivi l'objet.** C'est ta règle, prouvée par des clics.
+
+Et une chose qu'il n'a pas relevée et que j'ai trouvée dans son journal : ce parcours a déclenché la mise à niveau au chargement pour de vrai — trois archives, **puis** trois écritures, dans cet ordre. Le mécanisme branché hier fonctionne dans un vrai parcours, pas seulement au banc.
+
+## Ce que je relève
+
+Il annonce huit écrans. **Les captures 7 et 8 sont le même fichier**, octet pour octet — le retour sur la grille n'a rien changé à l'écran. Il y a donc sept écrans distincts. Ce n'est pas une preuve truquée, l'état du ⑧ est bien relu au hub, mais son tableau présente une étape de plus qu'il n'y a d'images.
+
+À son crédit : **il déclare lui-même que son avant/après ne prouve pas le correctif**, seulement la non-régression — dans ce parcours, toutes les cases reçoivent leur identifiant au chargement avant qu'une version existe, donc le défaut ne s'y montre pas. Il a raison, et peu d'exécutants disent ça. Les vraies preuves du correctif sont celles d'hier, que j'ai rejouées moi-même.
+
+## Ce sur quoi tu dois trancher maintenant
+
+Le mandat est clos. **Mais le lot 2ter compte huit livraisons et seule la première est faite.** Promouvoir aujourd'hui mettrait en production tout le bloc emploi du temps — 149 fonctions absentes de ton site actuel — avec les identités posées, mais sans les décisions sorties de l'objet, sans l'appariement, sans le bloc bilan ni la vue Année.
+
+**En face, il y a la dette de production** : le mode test qui n'arrête ni `mjpcPutJson` ni `mjpcDeleteJson`, quarante écritures dans trente-quatre fonctions — import d'élèves et suppression de classe compris. Elle n'est réparée **qu'au moment où tu promeus ce candidat**. Tu avais dit « avec le reste, et à faire en premier » : le correctif est dedans, il attend le promeus.
+
+Donc : promouvoir maintenant, et être protégé tout de suite avec un emploi du temps partiel en ligne — ou attendre la fin du lot, et rester exposé jusque-là. C'est ton arbitrage, je ne le prends pas à ta place.
+
+Les captures sont au sas, dans `PONT/EDT/tests/`, préfixes `AVANT-01bis-clic-` et `APRES-01ter-clic-`. Tout est au registre, tour 204.
+
+**Tests manuels : aucun tant que rien n'est en ligne.** `/site/edt` au vrai hub est toujours vide, la production n'a pas bougé.
+
+**Cahier vivant** — ton arbitrage sur le promeus. Puis, selon ta réponse : soit la promotion et son protocole, soit la livraison ② (les décisions sortent de l'objet), qui demande d'abord que le mandat v2 soit relu ligne à ligne et figé. En attente par ailleurs : la classe De Gaulle à dimensionner · `CLAUDE.md` périmé · `usage`/`quandPas` du site · la bascule de mode test dans quatre apps · les quatre fichiers hors socle · l'unicité entre familles, à trancher si tu le juges utile.
+
+MEMO

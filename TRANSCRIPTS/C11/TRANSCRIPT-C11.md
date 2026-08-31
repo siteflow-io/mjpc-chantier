@@ -697,3 +697,57 @@ Tout est au registre, tour 200.
 **Cahier vivant** — ①bis-b, puis mon audit, puis les captures par clics, puis ton promeus. Ensuite : le mandat v2 relu et figé, la classe De Gaulle à dimensionner. En attente de toi par ailleurs : `CLAUDE.md` périmé · `usage`/`quandPas` du site · la bascule de mode test dans quatre apps · les quatre fichiers hors socle.
 
 MEMO
+
+---
+
+## TOUR 12 — Paul
+
+Texte mot pour mot :
+
+> livré
+
+---
+
+## TOUR 12 — Claude (conscience n°11)
+
+Audit joué : candidat mesuré (1 660 869 o / `e6e8836f…`) · rapport final lu en entier · diff
+intégral (3 modifications) · non-régression remesurée · moteur et correctif ③ bit à bit ·
+double parseur · garde + **mes** trois pièges · **banc indépendant** reconstruit pour rejouer
+sept scénarios de conservation d'identité · les deux trous signalés vérifiés par moi, dont le
+trou de la grille datée rejoué et chiffré. Registre : tour 201, commit `7fbb4eac`.
+
+Réponse mot pour mot :
+
+**Verdict : ça va. Le mandat ①bis est fini, sans dette dans son périmètre. Il reste une décision qui n'appartient qu'à toi, et les captures.**
+
+## Ce que j'ai rejoué moi-même
+
+J'ai refait mon banc, avec son code mais pas son test, et j'ai posé au hub trois périodes portant des identifiants volontairement différents de ce que leur contenu produirait — sinon on ne verrait rien, l'identifiant recalculé retomberait sur le même.
+
+**Réinjection sans identifiants, mêmes noms** : 3 sur 3 conservés. **Avec identifiants, noms retouchés** : 3 sur 3, l'entrant fait foi. **Dates déplacées** : 3 sur 3. **Deux périodes portant le même nom** : la première garde l'ancien identifiant, la seconde en reçoit un neuf — pas de collision. **Le même identifiant écrit deux fois dans le fichier entrant** : le premier le garde, le second en reçoit un autre. **Première injection sur hub vide** : inchangé.
+
+Et le cas qu'il a trouvé tout seul en faisant sa revue : **une période que tu ajoutes à la main partait au hub sans identité**. Ça compte, parce que les cinq fonctions livrées en ① désignent une période par son identifiant — sur une période qui n'en a pas, elles pouvaient viser la mauvaise. C'est corrigé : 4 périodes, 4 identifiants. Bonne prise de sa part, il l'a déclarée au lieu de la cacher.
+
+Rien n'a bougé de ce qui ne devait pas bouger. Trois modifications en tout, pas une de plus.
+
+## Les deux choses qu'il signale sans y toucher — j'ai vérifié, il dit vrai
+
+**La première demande ta décision.** Quand tu crées une deuxième version de ton emploi du temps — au 2e trimestre, par exemple — le site recopie les créneaux de la version précédente. Et les copies gardent **le même identifiant** que les originaux. Je l'ai rejoué : 2 versions, 4 créneaux, **2 identifiants seulement**, chacun porté par deux créneaux. En plus, dès que la grille passe en forme datée, la pose d'identifiants ne fonctionne plus du tout sur elle.
+
+Ce n'est pas une faute de code à réparer mécaniquement, c'est une question à laquelle toi seul peux répondre : **le lundi 8h du trimestre 1 et le lundi 8h du trimestre 2, est-ce le même créneau ou deux créneaux différents ?** Selon ta réponse, la réparation n'est pas la même.
+
+Une précision que j'ai mesurée et qu'il ne dit pas : ce basculement en forme datée ne se produit **pas au chargement**, seulement quand tu ajoutes ou modifies une version, ou que tu changes l'emploi du temps. Le problème est donc en sommeil tant que tu n'as pas fait un de ces gestes.
+
+**La seconde est un simple report** : les photos du prévu naissent sans identifiant. C'est vrai, et c'est rangé dans les livraisons ⑤ à ⑧. Rien à faire maintenant.
+
+## Ce qui bloque encore ton promeus
+
+Toujours les captures. Son banc ouvre l'écran de l'emploi du temps **par appel de fonction**, pas par des clics, faute de session professeur. Les identifiants sont prouvés par le relevé du hub avant/après, ce qui est solide — mais ta règle est que tu promeus sur captures d'un vrai parcours par clics. Toi seul peux débloquer ça.
+
+Tout est au registre, tour 201.
+
+**Tests manuels : aucun tant que rien n'est en ligne.** J'ai revérifié : `/site/edt` au vrai hub est toujours vide, la production n'a pas bougé.
+
+**Cahier vivant** — à trancher par toi, dans l'ordre : les captures par clics · le créneau à travers les versions (même objet ou deux ?) · la classe De Gaulle · puis ton promeus. Ensuite le mandat v2 relu et figé pour la livraison ②. En attente par ailleurs : `CLAUDE.md` périmé · `usage`/`quandPas` du site · la bascule de mode test dans quatre apps · les quatre fichiers hors socle.
+
+MEMO

@@ -1,0 +1,22 @@
+version affichée : V8.73.0-①TER
+① clic « 🛠 Panneau prof » → panneau ouvert : 14 sections
+② clic « 📅 Emploi du temps » → état de la grille au hub : [{"debut":"(forme simple)","n":30,"sansId":0,"distincts":30}]
+③ clic « + Nouvelle version à partir d'une date » → modale : ["Annuler","Créer à partir d’aujourd’hui"]
+④ clic « Créer à partir d'aujourd'hui » → versions au hub : [{"debut":"2026-08-01","n":30,"sansId":0,"distincts":30},{"debut":"2026-08-31","n":30,"sansId":0,"distincts":30}]
+   semaine null : {"prevu":3,"horsMjpc":2,"nonImportee":12,"rienDePret":1}
+   natures présentes : {"natures":{"prevu":3,"horsMjpc":2,"nonImportee":12,"rienDePret":1},"exemple":["2026-08-31|08:57-09:52|3 FRANKLIN Aretha","2026-08-31|10:07-11:02|X Français X. — 4 HUGO","2026-08-31|15:07-16:02|3 DYLAN Bob"],"classes":8}
+   navigation par clics sur « › » : 0 semaine(s) avancée(s) — semaine affichée : null
+⑤ clic « 📅 Ouvrir l'emploi du temps » → 18 cases occupées à l'écran, 3 de nature « prévu » (saisissables), 22 cases libres
+⑥ glisser : 2026-08-31 08:57-09:52 (« 3E Charles de Gaulle Étude de  ») → 2026-08-31 08:00-08:55
+   créneaux de cet horaire AVANT : [{"id":"crn:1a22nwk","jour":"lundi","creneau":"08:57-09:52","classe":"3 FRANKLIN Aretha"},{"id":"crn:5iel49","jour":"mardi","creneau":"08:57-09:52","classe":"4 TURING"},{"id":"crn:ksjgkg","jour":"mercredi","creneau":"08:57-09:52","classe":"4 TURING"},{"id":"crn:17xu7k","jour":"vendredi","creneau":"08:57-09:52","classe":"4 HUGO"}]
+   sous le pointeur, source : {"tag":"I","cls":"","clic":true,"onpd":true}
+   sous le pointeur, cible : {"tag":"DIV","cls":"edt-case","case":true}
+   edtDepot appelée : [{"src":"2026-08-31|08:57-09:52|3 FRANKLIN Aretha","dst":{"iso":"2026-08-31","creneau":"08:00-08:55"},"refus":null}]
+   modales à l'écran : ["3E Charles de Gaulle → lun 31/8\n✕\nChangement d’emploi du temps — durable\n\nCette classe n’est plus à ce créneau, elle est là désormais. Rien du contenu n’est tou"]
+   question du dépôt : ["✕","Changer l’emploi du temps à partir de ce","Déplacer cette heure seulement"]
+   date d'effet proposée : 2026-08-31 · créneau visé : 08:00-08:55
+   clic sur le geste durable : fait
+   créneaux de cet horaire APRÈS, version par version : [{"debut":"2026-08-01","creneaux":[{"id":"crn:1a22nwk","jour":"lundi","creneau":"08:57-09:52","classe":"3 FRANKLIN Aretha"},{"id":"crn:5iel49","jour":"mardi","creneau":"08:57-09:52","classe":"4 TURING"},{"id":"crn:ksjgkg","jour":"mercredi","creneau":"08:57-09:52","classe":"4 TURING"},{"id":"crn:17xu7k","jour":"vendredi","creneau":"08:57-09:52","classe":"4 HUGO"}]},{"debut":"2026-08-31","creneaux":[{"id":"crn:5iel49","jour":"mardi","creneau":"08:57-09:52","classe":"4 TURING"},{"id":"crn:ksjgkg","jour":"mercredi","creneau":"08:57-09:52","classe":"4 TURING"},{"id":"crn:17xu7k","jour":"vendredi","creneau":"08:57-09:52","classe":"4 HUGO"}]}]
+   LE CRÉNEAU DÉPLACÉ, suivi par son identifiant : [{"version":"2026-08-01","trouve":{"id":"crn:1a22nwk","jour":"lundi","creneau":"08:57-09:52","classe":"3 FRANKLIN Aretha"},"sansId":0,"distincts":30,"n":30},{"version":"2026-08-31","trouve":{"id":"crn:1a22nwk","jour":"lundi","creneau":"08:00-08:55","classe":"3 FRANKLIN Aretha"},"sansId":0,"distincts":30,"n":30}]
+⑦ état final de la grille au hub : [{"debut":"2026-08-01","n":30,"sansId":0,"distincts":30},{"debut":"2026-08-31","n":30,"sansId":0,"distincts":30}]
+écritures hub du parcours : ["/corbeille/2026-08-31/edt-mise-a-niveau-calendrier_140529","/corbeille/2026-08-31/edt-mise-a-niveau-grille_140529","/corbeille/2026-08-31/edt-mise-a-niveau-creneaux_140529","/site/edt/calendrier/2026-2027","/site/edt/grille/2026-2027","/site/edt/creneaux/2026-2027","/site/edt/grille/2026-2027","/site/edt/grille/2026-2027"]

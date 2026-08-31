@@ -2854,7 +2854,7 @@ function mjpcEcrireRest(url,options,cb){
    (les 3 gestes, le geste conservatoire par app, ce qui ne peut pas arriver).
    RESTAURER LA VERSION PRÉCÉDENTE : docs/MJPC6-restauration.md (convention BUG).
    ═══════════════════════════════════════════════════════════════════════════ */
-var APP_VERSION="8.73.0-①bis-a";
+var APP_VERSION="8.73.0-①bis";
 var APP_VERSION_DATE="2026-08-27";
 // ── 11. Coffre : dérivation, chiffrement, empreinte (v1.3.0) ──
 // (Le canon porte deux sections « 8 » — dette de numérotation connue, non corrigée
@@ -18249,10 +18249,21 @@ function edtValiderGrilleComplete(o){
    le nom existe déjà garde les siennes. */
 function edtFusionnerPeriodes(neuves){
   var vieilles={}; edtPeriodes().forEach(function(p){ if(p&&p.nom)vieilles[p.nom]=p; });
+  var pris={};
   return (neuves||[]).map(function(p,i){
     var a=vieilles[p.nom]||{};
-    return {rang:(p.rang||i+1),nom:p.nom,
-            debut:(p.debut||a.debut||''),fin:(p.fin||a.fin||'')};
+    var f={rang:(p.rang||i+1),nom:p.nom,
+           debut:(p.debut||a.debut||''),fin:(p.fin||a.fin||'')};
+    /* [①bis-b] L'IDENTITÉ NE SE PERD PAS À LA RÉINJECTION. Trois temps, dans cet
+       ordre : l'entrant porte un id → il fait foi ; sinon la période retrouvée par
+       son nom — celle que cette fonction a déjà sous la main — transmet le sien ;
+       sinon seulement, edtPoserIdsObjet en pose un neuf juste après.
+       Aucun appariement nouveau n'est fabriqué ici (c'est la livraison ③) : on
+       conserve ce qui est là. Un id déjà retenu dans ce passage n'est jamais
+       redonné à un second objet — un id désigne UN objet. */
+    var id=p.id||a.id;
+    if(id&&!pris[id]){ f.id=id; pris[id]=true; }
+    return f;
   });
 }
 
@@ -18313,6 +18324,10 @@ function edtPeriodesEcrire(liste,libelle,apres){
   var e=edtValiderPeriodes(liste);
   if(e.length){ if(typeof atInfo==='function')atInfo(e[0]); edtPeindrePanneau(); return; }
   var o={annee:EDT_ANNEE,periodes:liste.map(function(p,i){return {id:p.id,rang:i+1,nom:p.nom,debut:p.debut||'',fin:p.fin||''};})};
+  /* [①bis-b] UN OBJET NÉ APRÈS LA POSE NAÎT AVEC SON ID. Mesuré avant correctif :
+     une période ajoutée à la main partait au hub SANS id, et les cinq fonctions qui
+     désignent une période par son id ne pouvaient plus la viser. */
+  try{ edtPoserIdsObjet('periodes',o); }catch(e){}
   mjpcPutJson(FIREBASE_BASE+edtChemin('periodes')+'.json',o,libelle||'Découpage en périodes',function(){
     EDT.periodes=o; edtPeindrePanneau(); if(apres)apres(); });
 }

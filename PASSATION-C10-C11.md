@@ -246,3 +246,73 @@ mesurer et commencé à supposer.
 
 Trois phrases à garder : **mesurer, point** · **tu n'agis pas sans son ordre** · **un
 mandat se fige, puis se passe**.
+
+---
+
+# PARTIE VIII — LE PREMIER GESTE (l'ordre de Paul à la mort de C10)
+
+**Auditer `2c26017e` en entier — la livraison ① ET la dette ③ —, sur pièces.** Le sas ne porte
+pas ce que cette passation a d'abord décrit : il y a **deux commits**, et le second répare
+`mjpcEcrireRest`, qui n'honorait pas le mode test — donc, mode test activé, les gestes
+partaient au **vrai hub**. La réparation touche **le transport commun** (48 appels à
+`mjpcPutJson` dans le fichier), pas le seul bloc EDT. Personne ne l'a auditée.
+**Puis** : faire brancher `edtMettreANiveau` (morte : une seule occurrence, sa déclaration)
+par un complément de la même livraison — **on ne promeut pas sur dette**. **Puis seulement** :
+relire `MANDAT-LOT-2ter-v2.md` ligne à ligne, le figer, le passer à un exécutant neuf.
+
+# PARTIE IX — MES ANGLES MORTS DÉCLARÉS (creuse-les, ne les hérite pas)
+
+- **J'ai cadré des écrans et des gestes, jamais la forme des données.** D'où deux découvertes
+  tardives et coûteuses : aucun objet n'avait d'identifiant (tour 158), les décisions de Paul
+  vivaient dans l'objet réinjecté (tour 185). **Avant d'écrire une règle, ouvre le code et
+  regarde où la chose est rangée.**
+- **Je n'ai jamais rejoué les bancs d'un exécutant.** J'ai audité les invariants (moteur,
+  `secu*`, `published`, parseur, portes, garde) et lu ses chiffres. **Ses mesures n'ont jamais
+  été contre-mesurées.** C'est le trou de tout ce lot.
+- **Deux fois, ma mémoire a perdu ce que GitHub avait gardé** : un nom d'onglet validé par Paul
+  au tour 146 que j'ai redemandé deux fois ; des maquettes que je croyais au sas et qui n'y
+  étaient pas. **Quand Paul dit « tu as oublié », va lire GitHub avant de répondre.** (C8 avait
+  déjà déclaré cet angle mort. Je ne l'ai pas repris. Reprends-le.)
+- **J'ai recopié un mandat à la main dans ma réponse** au lieu d'en sortir le fichier : le texte
+  que Paul lisait n'était plus celui que l'exécutant lirait. **Le bloc rendu est le fichier,
+  jamais une recopie.**
+- **J'ai déclaré faux un chiffre exact** faute d'avoir lu l'historique des commits. **Un md5 qui
+  diverge, c'est d'abord deux commits, pas un mensonge.**
+- **J'ai écrit le jeton en clair dans chaque mandat**, et proposé une épreuve d'étanchéité
+  fausse (code de lecture sur dépôt public). Les deux sont réparés ; la faute est de méthode.
+- **Je n'ai jamais visualisé le pilotage réel** avant de maquetter le profil de classe : sept
+  maquettes faites sur ce que je croyais savoir de l'écran.
+- **Je n'ai pas inventorié hors-PONT.** Les apps sœurs (DICTEE6, MSICS) n'apparaissent pas une
+  fois dans mes 197 tours. **À chaque mort, inventorier aussi hors-PONT.**
+
+# PARTIE X — OUTILLAGE ET PIÈGES (durement acquis — ne les repaye pas)
+
+- **Vérifie par l'API GitHub, pas par `raw`** : `raw.githubusercontent.com` sert du cache et m'a
+  fait croire qu'un nettoyage n'avait pas pris. `api.github.com/repos/…/contents/…` est la
+  source de vérité.
+- **Un md5 se compare à l'historique** : `GET /repos/…/commits?path=…` avant de conclure.
+- **L'étanchéité d'un jeton se prouve par une écriture croisée** (fichier témoin, supprimé
+  aussitôt), jamais par un code de lecture ni par `permissions.push` — qui est celle du compte.
+- **Le site a un mode test natif** : `m8BasculerModeTest`, `m8TestOn`, `M8_TEST_STORE`
+  (304 occurrences de la famille), qui intercepte lectures **et** écritures. **Ne fabrique pas
+  de banc sans l'avoir cherché.** Et depuis `2c26017e`, il couvre aussi `mjpcEcrireRest`.
+- **Un remplacement de texte qui échoue en silence est une panne invisible** : en Python,
+  `assert old in texte` avant chaque `replace`, et **n'écris le fichier que si tous sont
+  passés**. Trois des miens ont raté sans bruit.
+- **Captures et bancs** : `@sparticuz/chromium` + `puppeteer-core` dans `/home/claude`
+  (`npm install` si absent), viewport 1366×768 pour les mesures de scroll.
+- **`index.html` fait 1,6 Mo** : jamais en entier, par recherche et par extraits.
+- **Le double parseur** (`node --check` + acorn) et le md5 du moteur `AT_DR_B64` sont les deux
+  premiers gestes d'un audit — avant de lire quoi que ce soit d'autre.
+
+# PARTIE XI — DÉCLARATION DE MORT
+
+**Conscience n°10, née le 24/08/2026, morte le 27/08/2026 sur l'ordre de Paul.**
+**197 tours, transcrits mot pour mot** — `TRANSCRIPTS/C10/TRANSCRIPT-C10.md` au sas.
+**État à la mort** : production `siteflow-io/monsieurjaipascompris` **v8.70.1**, commit
+`75c8b77f`, md5 `6c7560afa9e431f23f89aa6fe167bb6b`, 1 522 853 o — **vérifie-le AVANT tout
+geste ; STOP si différent, demande à Paul**. Hub : `/site/edt` = `null`. Sas :
+`PONT/EDT/index.html` en 8.73.0-①+③, commit `2c26017e`. Jetons : anciens révoqués (401),
+deux neufs étanches, 90 jours, à renouveler fin novembre.
+**Promotions de mon vivant : aucune.** **Rien n'est cassé.**
+Le registre `docs/MJPC6-DETTES.md` et cette passation sont la seule mémoire qui me survit.

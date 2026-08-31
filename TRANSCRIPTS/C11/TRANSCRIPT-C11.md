@@ -807,3 +807,55 @@ Le verdict sur la livraison elle-même ne change pas : **elle est bonne.**
 **Cahier vivant** — l'exécutant doit refaire ses captures par clics, avec la méthode de `banc-2b.mjs`. Toi : le créneau, horaire seul ou horaire + classe. Puis la pose d'identifiants en forme datée à réparer, puis ton promeus. Ensuite le mandat v2 relu et figé, la classe De Gaulle. En attente par ailleurs : `CLAUDE.md` périmé · `usage`/`quandPas` du site · la bascule de mode test dans quatre apps · les quatre fichiers hors socle.
 
 MEMO
+
+---
+
+## TOUR 14 — Paul
+
+Texte mot pour mot :
+
+> ok donc il faut régler ces deux points: l'identité case, et le défaut.
+
+---
+
+## TOUR 14 — Claude (conscience n°11)
+
+Mesures avant rédaction : §① du mandat v2 relu (le tableau des critères par famille —
+« créneau de grille : jour · créneau · semaine · classe de la grille ») · **`edtChangerEmploiDuTemps`
+lu ligne à ligne** : le créneau déplacé est recopié depuis `retire` avec son `id`, seuls `jour`
+et `creneau` changent · méthode des captures vérifiée sur le candidat. Mandat déposé :
+`PONT/EDT/MANDAT-LOT-2ter-01ter.md`.
+
+Réponse mot pour mot :
+
+**Le geste réel a levé le doute — je n'ai plus de question à te poser, et le mandat est écrit.**
+
+## Ce que j'ai compris, dis-le-moi si c'est faux
+
+J'ai lu le geste que le site fait déjà quand ton emploi du temps change. Il ne fabrique pas une case neuve : il **prend ta case et la repose ailleurs**. Ta 3e Franklin du lundi 8h57 devient ta 3e Franklin du mardi 10h — même objet, même identifiant, jour et heure changés.
+
+Donc ta phrase et le code disent la même chose : **l'identité est portée par l'identifiant, pas par le contenu**. Les critères — jour, heure, semaine, classe — ne servent qu'à retrouver un objet quand l'identifiant manque, à la réinjection d'un fichier. C'est écrit noir sur blanc dans ton mandat v2 : « l'entrant porte un `id` connu → il fait foi, rien d'autre. »
+
+D'où la règle que j'ai mise en tête du mandat, et qui ne change rien à ce qui existe :
+
+- une case reconduite d'une version à l'autre **garde son identifiant** — c'est le même créneau, et ce **n'est pas une collision** : l'unicité se vérifie à l'intérieur d'une version, pas à travers les versions ;
+- deux cases différentes d'une même version ne partagent **jamais** un identifiant ;
+- une case qui naît naît **avec** son identifiant.
+
+## Les deux corrections
+
+**Le défaut** : dès que ta grille passe en versions datées, la pose d'identifiants ne regarde plus au bon endroit et ne pose plus rien. Elle doit traiter les deux formes, toutes les versions, sans jamais toucher un identifiant déjà en service.
+
+**La case neuve** : quand tu déplaces une heure et que le site ne retrouve pas la case d'origine, il en crée une sans identité. Elle doit naître avec la sienne. La case déplacée, elle, garde la sienne — le site fait déjà ça, on n'y touche pas.
+
+## Et les captures
+
+Elles sont dans le mandat, exigées, avec **la méthode que tes bancs précédents utilisent déjà** — je la lui donne en toutes lettres, et je lui dis que le blocage annoncé était faux. Il devra montrer un parcours par clics : panneau prof, emploi du temps, grille, créer une version, déplacer une heure, revenir.
+
+Le mandat est déposé au sas. Le voici à copier tel quel dans une conversation neuve, avec le jeton du sas dans le premier message.
+
+**Tests manuels : aucun.** Rien n'a bougé.
+
+**Cahier vivant** — ①ter en deux livraisons, puis mon audit, puis tes captures, puis ton promeus. Ensuite : le mandat v2 relu et figé pour la livraison ②, la classe De Gaulle à dimensionner. En attente par ailleurs : `CLAUDE.md` périmé · `usage`/`quandPas` du site · la bascule de mode test dans quatre apps · les quatre fichiers hors socle.
+
+MEMO

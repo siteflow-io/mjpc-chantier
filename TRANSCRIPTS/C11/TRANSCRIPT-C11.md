@@ -574,3 +574,68 @@ fin novembre.
 courtes ; puis réaudit ; puis captures ; puis promeus.
 
 MEMO
+
+---
+
+## TOUR 10 — Paul
+
+Texte mot pour mot :
+
+> Bien, pendant que l'exécutant code, tu vas te renseigner sur l'ensemble du projet en allant lire les documents relatifs au projet. tu vas lire également le code de mjpc, ainsi que celui des apps (notamment les sections déclaratives).
+
+---
+
+## TOUR 10 — Claude (conscience n°11)
+
+Travail joué : dépôt de production récupéré en entier (54 fichiers, 11 045 387 o) et inventorié ·
+`CLAUDE.md` lu et confronté au code · 35 documents de `docs/` listés et pesés · sections
+déclaratives des 13 apps extraites, puis **relues** après une erreur de méthode · deux mécanismes
+de test distingués · hub `/manifestes` interrogé. Registre : tour 199, commit `2d3fce55`, vérifié.
+
+Réponse mot pour mot :
+
+**J'ai fait l'inventaire complet et lu les sections déclaratives. Quatre constats, et une erreur de méthode que je te déclare.**
+
+## Ce que j'ai couvert
+
+Tout le dépôt de production : **13 applications** (11 Mo de code) et **35 documents**. J'ai lu `CLAUDE.md`, la carte « où trouver quoi », la garde de l'EDT, l'addendum du 25/08 sur la vision du commandeur, le protocole du 25/08, et les dix déclarations d'app.
+
+**Ce qu'il me reste** : les cinq gros documents — le journal (234 Ko), le registre (205 Ko), la restauration (201 Ko), le chantier (201 Ko), l'index des fonctions (178 Ko) — la doctrine, la doctrine du site, la spécification de l'atelier, et le corps des apps au-delà de leurs déclarations. Je ne peux pas tout charger d'un coup sans me vider la mémoire de travail en cours de route ; dis-moi par quoi tu veux que je continue.
+
+## ① Le fichier `CLAUDE.md` est périmé, et il trompe
+
+C'est le premier fichier que lit n'importe quel Claude qui ouvre ton dépôt. Il dit que le site compte **cinq** applications : il y en a treize. Il donne l'ancienne base Firebase `dictee-5e-ch4` : **zéro occurrence** dans le code, tout est sur le hub. Il donne des codes prof `[3141,1312]` : **zéro occurrence**. Il annonce le contournement `MENEY`/`MONSIEUR` : il ne subsiste que dans `reecriture.html` et `reecriture_bb4e.html`. Et il donne des numéros de lignes de `index.html` qui ne valent plus rien.
+
+Un exécutant qui s'y fie part sur une carte fausse. C'est une dette, et elle est à ta porte.
+
+## ② Tes déclarations d'app sont bonnes — sauf une
+
+Les dix apps unifiées déclarent chacune ce qu'elles sont : un identifiant, un **usage** écrit du point de vue de l'élève, et un **quandPas** qui dit à quoi elles ne servent pas. C'est déjà la « colonne pour la classe » que ton addendum réclame, et c'est du bon travail.
+
+**`index.html` est la seule à ne porter ni `usage` ni `quandPas`** — juste son identifiant et son nom. Choix délibéré parce que le site n'est pas une app d'élève, ou oubli ?
+
+## ③ Le mode test n'est pas la même chose partout
+
+Il y a deux mécanismes différents, et on les confond depuis le début.
+
+**L'isolation par classe de test** — la classe au slug `_test_`, la purge — existe dans **toutes** les apps unifiées.
+
+**La bascule qui empêche vraiment d'écrire** n'existe que dans **trois** : le site, la correction de dictée, le QCM. Ailleurs, on trouve des formes partielles sous d'autres noms. Et **il n'y en a aucune dans la dictée universelle, worktrack, réécriture et réécriture 4e** — dont deux apps majeures que tu utilises en classe.
+
+Ton dispositif dit pourtant, point 16 : le mode test est obligatoire dans chaque app.
+
+## ④ Quatre fichiers sont hors du socle
+
+`Console_ateliers_revisions`, `etude_dugain`, `redaction_dugain_v3`, `deploy-monitor` : pas de déclaration d'app, pas de hub, pas d'identité élève. 1,1 Mo de code hors de l'unification. Volontaire, ou restés en arrière ?
+
+## ⑤ Mon erreur, déclarée
+
+Ma première passe a **compté des motifs au lieu de lire**. J'ai conclu que la déclaration d'app était un gabarit vide dans les dix apps — ma recherche prenait la première occurrence, celle du commentaire d'exemple, pas la vraie déclaration. Le signal était sous mes yeux : dix apps annonçant toutes le même identifiant. Ta règle du 01/08 le dit en toutes lettres, « une uniformité parfaite est une mesure suspecte », et l'autre aussi, « un inventaire se fait en lisant le corps des fonctions ». J'ai corrigé en lisant, avant de t'écrire : aucune fausse alerte ne t'est parvenue.
+
+Tout est au registre, tour 199.
+
+**Tests manuels : aucun.** J'ai lu, rien touché.
+
+**Cahier vivant** — chez l'exécutant : le complément `①bis`, deux livraisons. Chez moi : la suite de la lecture, dans l'ordre que tu diras. À trancher par toi : `CLAUDE.md` à refaire · `usage`/`quandPas` du site · la bascule de mode test dans les quatre apps qui n'en ont pas · les quatre fichiers hors socle · la classe De Gaulle.
+
+MEMO

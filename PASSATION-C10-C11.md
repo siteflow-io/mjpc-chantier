@@ -25,13 +25,27 @@ tu doutes ; si un chiffre ne se vérifie pas, c'est le chiffre qui a tort.
 
 **Sas** — dépôt `siteflow-io/mjpc-chantier`, dossier `PONT/EDT/`.
 - `index.html` : **8.73.0-①**, **1 657 594 o**, md5 `b322540e9baa879985a6dca7697a9948`.
-  *(Le rapport de l'exécutant annonce 1 656 673 o / `998d3b30…` : **c'est faux**, ou
-  périmé. Recompte avant de t'en servir.)*
+  *(**Correction du 31/08, conscience n°11.** Ce fichier n'est pas la livraison ① seule :
+  il y a DEUX commits sur `PONT/EDT/index.html` — `bb57387d` (27/08 09h40, « livraison ① »,
+  **1 656 673 o**, md5 `998d3b306521aaca40be246005c2f45b`), puis `2c26017e` (27/08 13h27,
+  « dette ③ : le mode test couvre `mjpcEcrireRest` », **1 657 594 o**, `b322540e…`).
+  **Les chiffres de l'exécutant étaient donc EXACTS** : ils décrivent `bb57387d`. La n°10 a
+  comparé le rapport au fichier courant sans lire l'historique, et a déclaré faux un chiffre
+  juste. Le seul chiffre erroné est dans le rapport lui-même : il annonce 1 656 675 o pour
+  un livrable qui en fait 1 656 673.
+  **Le correctif ③ touche le TRONC COMMUN, pas le bloc EDT** : `mjpcPutJson` et
+  `mjpcDeleteJson` n'honorent pas le mode test — en production aujourd'hui, 40 écritures
+  réparties dans 34 fonctions partent au vrai hub en mode test. Jamais audité.)*
 - Moteur `AT_DR_B64` **intact**, `function secu*` **29**, `published` **97**, double
   parseur **vert**, **149** `function edt*` (138 d'origine, aucune disparue, 11 ajoutées),
   **trois portes** hors du bloc (`edtArriveeProf`, `edtSectionPanneau`, `edtOuvrir`).
 - La garde `PONT/EDT/outils/verif_edt.py` est **verte** sur ce candidat et **rouge** sur
   trois contrôles négatifs rejoués par C10.
+  **Vert ne vaut pas quitus** : la garde mesure ce que le bloc appelle, qui appelle `edt*`
+  hors du bloc, et où le bloc écrit au hub. Une fonction du bloc que personne n'appelle passe
+  en vert (`edtMettreANiveau`), et une modification du tronc commun aussi (correctif ③).
+  Rejouée par la n°11 le 31/08 : verte sur `2c26017e`, rouge sur un piège qu'elle a posé
+  (`loginAsProf` hors contrat + écriture `/site/classes/x.json`).
 
 **Jetons** — réglés le 27/08, ne les rouvre pas.
 - Les anciens sont **révoqués** (401 vérifié). Deux jetons neufs, un par dépôt, 90 jours

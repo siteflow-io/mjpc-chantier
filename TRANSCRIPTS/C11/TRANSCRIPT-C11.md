@@ -1007,3 +1007,58 @@ dimensionner · `CLAUDE.md` périmé · `usage`/`quandPas` du site · la bascule
 quatre apps · les quatre fichiers hors socle · l'unicité entre familles.
 
 MEMO
+
+---
+
+## TOUR 18 — Paul
+
+Texte mot pour mot :
+
+> Livré
+
+---
+
+## TOUR 18 — Claude (conscience n°11)
+
+Audit joué : candidat mesuré (1 667 148 o / `64908545…`) · rapport lu · diff 10 blocs ·
+`justifie` recompté base et candidat · `edtJustifier` relue · non-régression · moteur et
+correctif bit à bit · double parseur · garde + trois pièges dont **un invalide, refait** ·
+banc indépendant sur `edtEcrireDecisionsGroupe`. Registre : tour 206, commit `23731ae4`.
+
+Réponse mot pour mot :
+
+**Verdict : ça va. Aucune dette. Ta coche ne vit plus dans le fichier que tu réinjectes.**
+
+## Ce que j'ai vérifié moi-même
+
+J'ai rejoué le geste avec mon propre banc : cocher un écart qui couvre deux heures produit **une seule écriture**, vers le magasin des décisions, **et jamais vers le calendrier**. La décision porte les deux choses que je lui demandais — la clé de l'heure et l'identifiant de l'événement qui l'a causée. Le journal garde une ligne par heure, avec l'avant et l'après. Décocher retire proprement.
+
+Le champ `justifie` a disparu partout : du code, du fichier JSON, et des prompts, où il est remplacé par l'interdiction de le produire.
+
+Rien n'a régressé : le moteur est identique au caractère près, la réparation du mode test intacte, aucune fonction perdue, trois ajoutées et nommées.
+
+## Deux erreurs — les miennes
+
+**Dans le mandat, j'ai écrit « huit lectures » du champ. Il y en avait quatre.** J'avais compté des commentaires et une variable qui porte un nom voisin. Il l'a mesuré et corrigé, il a raison.
+
+**Et un de mes trois pièges de garde était invalide** : j'ai fait appeler `openProfPanel` depuis le bloc, la garde a accepté — normal, cette fonction **est** au contrat. Refait avec une vraie fonction interdite : rouge, comme il faut. Ma faute, pas la sienne.
+
+## Sa trouvaille, à garder
+
+La garde a refusé sa première version parce qu'une variable locale s'appelait `poser`, et qu'une fonction `poser` existe ailleurs dans le site — la garde ne peut pas distinguer les deux. Il l'a renommée et l'a déclaré. **Un nom de variable dans le bloc emploi du temps ne doit jamais coïncider avec une fonction du site** : c'est un piège qui resservira.
+
+## Ce qu'il signale honnêtement
+
+Ton calendrier de référence portait quinze `justifie` — mais tous à **false**, aucun à true. La preuve de migration que je demandais réclamait donc une pièce qui n'existait pas ; il l'a fabriquée pour ②b.
+
+Et décocher un événement ne retire que ce que **cet** événement avait posé : si tu as depuis remplacé le motif d'une heure, elle reste. C'est la conséquence de ta règle « une heure, une clé, un seul motif ». Il le dit au lieu de le taire.
+
+Tout est au registre, tour 206.
+
+**Tests manuels : aucun.** Rien en ligne, `/site/edt` toujours vide.
+
+**Ce qu'il attend de toi : « continuer ».** La suite est ②b, la migration.
+
+**Cahier vivant** — ②b puis ② (règles de déplacement, captures, audit adverse), puis ③ à ⑧, puis ton promeus. En attente de toi : la classe De Gaulle · `CLAUDE.md` périmé · `usage`/`quandPas` du site · la bascule de mode test dans quatre apps · les quatre fichiers hors socle · l'unicité entre familles.
+
+MEMO

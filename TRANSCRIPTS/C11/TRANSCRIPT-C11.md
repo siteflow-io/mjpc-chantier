@@ -859,3 +859,63 @@ Le mandat est déposé au sas. Le voici à copier tel quel dans une conversation
 **Cahier vivant** — ①ter en deux livraisons, puis mon audit, puis tes captures, puis ton promeus. Ensuite : le mandat v2 relu et figé pour la livraison ②, la classe De Gaulle à dimensionner. En attente par ailleurs : `CLAUDE.md` périmé · `usage`/`quandPas` du site · la bascule de mode test dans quatre apps · les quatre fichiers hors socle.
 
 MEMO
+
+---
+
+## TOUR 15 — Paul
+
+Texte mot pour mot :
+
+> livré
+
+---
+
+## TOUR 15 — Claude (conscience n°11)
+
+Audit joué : candidat mesuré (1 662 509 o / `a6d2469c…`) · rapport lu · diff intégral des
+4 blocs · pose vérifiée avant l'écriture · non-régression remesurée · moteur et correctif ③
+bit à bit · double parseur · garde + **mes** trois pièges · **banc indépendant** avec
+`edtChangerEmploiDuTemps` extrait : 7 scénarios · sa modification non demandée éprouvée
+séparément · acquis de ①bis rejoués. Registre : tour 203, commit `e20e1c71`.
+
+Réponse mot pour mot :
+
+**Verdict : ça va. Aucune dette. Il ne reste que les captures.**
+
+## Ce que j'ai rejoué moi-même
+
+J'ai repris son code, pas son test, et j'ai posé les cas moi-même.
+
+**La grille en une seule version** : 30 cases, 30 identifiants. **En deux versions** : 30 distincts dans chacune, aucun doublon marqué. **En retirant trois identifiants dans chaque version** : six reposés, plus une seule case sans identité — et les six reviennent **à l'identique**, parce que le calcul est déterministe. C'est d'ailleurs pour ça que la perte était invisible tant que rien ne bougeait.
+
+**La reconduction d'une version à l'autre** : listes identiques, aucun identifiant marqué comme doublon. C'est ce que tu voulais : le même créneau reste le même créneau.
+
+**Le même identifiant écrit deux fois dans une même version** : le premier le garde, le second reprend une identité propre. Trente identifiants distincts.
+
+**Et le geste réel, celui que tu fais en classe** : ta 3e Franklin du lundi 8h57 déplacée au jeudi — **elle garde son identifiant**. Quand le site ne retrouve pas la case d'origine et en crée une neuve, celle-là **naît maintenant avec le sien** : trente et une cases, trente et un identifiants, aucune sans identité.
+
+Une honnêteté : au premier passage, mon test m'a affiché « identifiant neuf » sur la case déplacée. C'était **mon test qui visait la mauvaise case** — trois cours partagent l'horaire d'arrivée. Remesuré en ciblant la classe : identifiant conservé, exactement ce qu'il annonce.
+
+## Ce qu'il a ajouté de lui-même, et qui compte
+
+Le mandat lui demandait deux corrections. Il en a fait une troisième, non demandée, et il a eu raison : **la mise à niveau au chargement ne regardait pas non plus au bon endroit**. Sans ça, ta grille aurait reçu ses identifiants à l'injection mais jamais au chargement.
+
+Je l'ai éprouvée à part : grille datée sans identifiants au chargement → archive, puis écriture, **30 sur 30 posés**, et le site te le dit. Grille déjà complète → **rien ne s'écrit**. C'est juste.
+
+## Rien n'a régressé
+
+J'ai rejoué tous les acquis des livraisons précédentes sur ce candidat : hub vide, hub complet, archive avant écriture, abandon en cas d'échec, périodes conservées, période ajoutée à la main. Tout tient. Le moteur du déroulé est identique au caractère près, la réparation du mode test est intacte.
+
+## Ce qui reste
+
+La dernière livraison : **les captures par clics**. C'est la seule chose qui te sépare du promeus.
+
+Tout est au registre, tour 203.
+
+**Tests manuels : aucun.** Rien en ligne, `/site/edt` toujours vide au vrai hub.
+
+**Ce qu'il attend de toi : « continuer ».**
+
+**Cahier vivant** — ①ter (captures), mon audit, puis ton promeus. Ensuite : le mandat v2 relu et figé pour la livraison ②, la classe De Gaulle à dimensionner. En attente par ailleurs : `CLAUDE.md` périmé · `usage`/`quandPas` du site · la bascule de mode test dans quatre apps · les quatre fichiers hors socle.
+
+MEMO

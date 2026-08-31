@@ -639,3 +639,61 @@ Tout est au registre, tour 199.
 **Cahier vivant** — chez l'exécutant : le complément `①bis`, deux livraisons. Chez moi : la suite de la lecture, dans l'ordre que tu diras. À trancher par toi : `CLAUDE.md` à refaire · `usage`/`quandPas` du site · la bascule de mode test dans les quatre apps qui n'en ont pas · les quatre fichiers hors socle · la classe De Gaulle.
 
 MEMO
+
+---
+
+## TOUR 11 — Paul
+
+Texte mot pour mot :
+
+> livraison faite
+
+---
+
+## TOUR 11 — Claude (conscience n°11)
+
+Audit joué sur pièces, sans rien croire sur parole : historique du sas · candidat mesuré
+(1 659 907 o / `ae243de3…`) · rapport lu en entier · diff complet des 6 blocs · compteurs de
+non-régression · moteur bit à bit · correctif ③ bit à bit · double parseur · garde rejouée
+avec **mes** trois pièges · **banc indépendant** reconstruit à partir du candidat pour rejouer
+les quatre preuves · deux tests d'audit adverse sur les dettes qu'il déclare fermées · chaîne
+`edtArchiver → secuEcrire → _sitePut → mjpcEcrireRest` remontée. Registre : tour 200, commit
+`e8c49b7f`.
+
+Réponse mot pour mot :
+
+**Verdict : ça va. La livraison ①bis-a est bonne, sans dette. Un seul point à régler avant que tu promeuves, et il vient de lui, pas de moi.**
+
+## Ce que j'ai vérifié moi-même
+
+Je n'ai pas repris ses chiffres : **j'ai refait un banc à part**, avec son code mais pas son test, et j'ai rejoué les quatre situations.
+
+**Hub vide** — rien ne s'écrit. **Hub déjà complet** — rien ne s'écrit. C'est ce qu'on voulait : un chargement ne republie jamais ce qui est déjà juste.
+
+**Hub sans identifiants** — une archive, **puis** une écriture, dans cet ordre. Et le point qui compte : **l'archive contient 0 identifiant** pendant que ce qui s'écrit en porte 122. C'est-à-dire que l'archive sauve bien l'état **d'avant**. Il avait trouvé ce défaut tout seul en mesurant, et il l'a fermé.
+
+**Archivage en échec** — zéro écriture, le message s'affiche, et les identifiants restent en mémoire : le site continue en lecture. Exactement la règle.
+
+J'ai aussi éprouvé le cas qu'il dit avoir corrigé : trois objets, l'archivage tombe sur un seul. Avant sa correction, deux écritures partaient quand même pendant que le site annonçait « rien n'a été écrit ». Maintenant : **zéro écriture, abandon global**. Et sur trois objets sains, on voit bien les trois archives d'abord, les trois écritures ensuite — jamais mélangées.
+
+Rien n'a bougé de ce qui ne devait pas bouger : le moteur du déroulé est identique au caractère près, la réparation du mode test est intacte, les compteurs sont les mêmes, la fonction de comparaison reste débranchée comme prévu. Les deux vérificateurs de syntaxe sont verts. La garde est verte, et rouge sur les trois pièges que **j'ai** posés.
+
+## Mon audit adverse
+
+J'ai cherché à casser le verrou qu'il a ajouté : si la promesse d'archivage ne répondait jamais, le verrou resterait posé et le site ne dirait rien. J'ai remonté toute la chaîne. Le transport rappelle bien son verdict dans tous les cas, panne comprise — c'est une correction de juillet — et une erreur immédiate est rattrapée par le `catch` qu'il a ajouté. **Le verrou ne peut pas rester bloqué.** Rien à signaler.
+
+## Le seul point à régler avant ton promeus
+
+Ses captures sont celles du **chargement**, pas d'un **parcours par clics dans l'écran emploi du temps**. Il le dit lui-même dans son rapport, et il a raison de le dire : son banc ouvre le fichier sans session professeur, et il n'a pas le code d'accès.
+
+Ta règle, c'est que tu promeus sur captures avant/après du même parcours **par clics**. Ce n'est pas bloquant maintenant — il reste ①bis-b — mais ça le sera au moment de promouvoir. Deux façons : tu lui donnes de quoi entrer en session prof au banc, ou tu joues le parcours toi-même quand on en sera aux captures.
+
+Tout est au registre, tour 200.
+
+**Tests manuels : aucun pour toi aujourd'hui.** Rien n'est en production, rien n'est allé au vrai hub — j'ai vérifié, `/site/edt` est toujours vide.
+
+**Ce qu'il attend de toi : « continuer ».** La suite est ①bis-b : les périodes qui perdent leur identifiant, et la revue de toutes les reconstructions d'objet.
+
+**Cahier vivant** — ①bis-b, puis mon audit, puis les captures par clics, puis ton promeus. Ensuite : le mandat v2 relu et figé, la classe De Gaulle à dimensionner. En attente de toi par ailleurs : `CLAUDE.md` périmé · `usage`/`quandPas` du site · la bascule de mode test dans quatre apps · les quatre fichiers hors socle.
+
+MEMO

@@ -2854,7 +2854,7 @@ function mjpcEcrireRest(url,options,cb){
    (les 3 gestes, le geste conservatoire par app, ce qui ne peut pas arriver).
    RESTAURER LA VERSION PRÉCÉDENTE : docs/MJPC6-restauration.md (convention BUG).
    ═══════════════════════════════════════════════════════════════════════════ */
-var APP_VERSION="8.73.0-②b";
+var APP_VERSION="8.73.0-②";
 var APP_VERSION_DATE="2026-08-27";
 // ── 11. Coffre : dérivation, chiffrement, empreinte (v1.3.0) ──
 // (Le canon porte deux sections « 8 » — dette de numérotation connue, non corrigée
@@ -18364,6 +18364,30 @@ function edtInjInjecter(voie){
   var v=EDT_VOIES[voie], o=EDT_INJ.objet;
   if(!v||!o){ if(typeof atInfo==='function')atInfo('Rien à injecter : vérifie d\u2019abord le texte collé.'); return; }
   try{ edtPoserIdsObjet(v.objet,o); }catch(e){}   /* ① les id naissent AVANT la première écriture */
+  /* [②] UN ÉVÉNEMENT QUI DISPARAÎT EMPORTE DES COCHES : elles sont NOMMÉES avant
+     le geste, jamais supprimées en silence. Elles restent au magasin quoi qu'il
+     arrive — ce que Paul a posé à la main survit à l'objet qui l'a causé. */
+  if(v.objet==='calendrier'&&!EDT_INJ.confirme){
+    var vivants={};
+    (o.evenementsClasse||[]).forEach(function(e){ if(e&&e.id)vivants[e.id]=true; });
+    var perdues=[],vus={};
+    (((EDT.calendrier||{}).evenementsClasse)||[]).forEach(function(e){
+      if(!e||!e.id||vivants[e.id]||vus[e.id])return;
+      vus[e.id]=true;
+      var c=edtCochesDeLEvenement(e.id);
+      if(c.length)perdues.push({libelle:String(e.libelle||e.id),n:c.length});
+    });
+    if(perdues.length&&typeof atModaleChoix==='function'){
+      atModaleChoix('Ce calendrier ne contient plus '+perdues.length+' événement'+(perdues.length>1?'s':'')
+        +' que tu avais coché'+(perdues.length>1?'s':'')+' :<br>'
+        +perdues.map(function(p){ return '• '+escapeHtml(p.libelle)+' — '+p.n+' heure'+(p.n>1?'s':''); }).join('<br>')
+        +'<br><br>Leurs heures restent marquées et comptent toujours : rien n’est effacé. '
+        +'Tu pourras les décocher une par une dans la semaine.',
+        [{lib:'Annuler'},{lib:'Injecter quand même',prim:true,fn:function(){
+          EDT_INJ.confirme=true; edtInjInjecter(voie); }}]);
+      return;
+    }
+  }
   mjpcPutJson(FIREBASE_BASE+edtChemin(v.objet)+'.json',o,'Emploi du temps — '+v.titre,function(){
     EDT[v.objet]=o;
     if(v.objet==='creneaux'){ try{edtAppliquerCreneaux();}catch(e){} }
@@ -19901,10 +19925,15 @@ function edtPeindreCalendrier(){
   h+='<div class="edt-cal"><div class="edt-cal-col"><div class="edt-titre">Événements de classe</div>'
     +'<p class="edt-mini-t">Coche « justifié » quand l\u2019écart de progression ne dépend pas de toi : ses heures sortent du calcul.</p>'
     +(cal.evenementsClasse||[]).map(function(x,i){
+      /* [②] l'événement a bougé : la case revient vide, et le site dit ce que Paul
+         avait coché avant — à lui de recocher, le site ne décide pas à sa place. */
+      var dep=edtCochesDeplacees(x);
       return '<label class="edt-cal-l"><input type="checkbox"'+(edtEvenementJustifie(x)?' checked':'')
         +' onchange="edtJustifier(\''+String(x.id||'')+'\',this.checked)"><b>'+escapeHtml(x.niveau||'')+'</b> '
         +escapeHtml(x.debut)+(x.fin!==x.debut?(' \u2192 '+escapeHtml(x.fin)):'')+' \u00b7 '
-        +escapeHtml(String(x.libelle||'').slice(0,60))+'</label>';
+        +escapeHtml(String(x.libelle||'').slice(0,60))
+        +(dep.length?(' <em class="edt-mini-t">tu avais coché '+dep.length+' heure'+(dep.length>1?'s':'')
+          +' sur les dates précédentes</em>'):'')+'</label>';
     }).join('')+'</div>'
     +'<div class="edt-cal-col"><div class="edt-titre">Jalons communs</div>'
     +(cal.jalons||[]).map(function(x){ return '<div class="edt-cal-l">'+escapeHtml(x.date)+' \u00b7 '+escapeHtml(String(x.libelle||'').slice(0,60))+'</div>'; }).join('')
@@ -19930,16 +19959,40 @@ function edtHeuresDeLEvenement(ev){
   return out;
 }
 /* [②a] L'ÉVÉNEMENT EST-IL MARQUÉ ? La réponse ne vient plus de l'objet injecté
-   — où elle disparaissait à chaque réinjection — mais du magasin des décisions. */
+   — où elle disparaissait à chaque réinjection — mais du magasin des décisions.
+   [②] Et elle ne regarde que les heures que l'événement recouvre AUJOURD'HUI :
+   s'il a changé de date, ou si la grille a changé sous lui, ce sont d'autres
+   heures — la case revient VIDE, rien n'est reporté à la place de Paul. */
 function edtEvenementJustifie(ev){
   if(!ev||!ev.id)return false;
-  var d=edtDecisions(),trouve=false;
+  var marque=false;
+  edtHeuresDeLEvenement(ev).forEach(function(h){
+    var v=edtDecisionPour(h.classe,h.iso,h.creneau);
+    if(v&&v.ecartJustifie&&v.evenement===ev.id)marque=true;
+  });
+  return marque;
+}
+/* [②] TOUTES LES COCHES POSÉES PAR UN ÉVÉNEMENT, où qu'elles soient, même si
+   l'événement ne recouvre plus ces heures-là. Rien n'est jamais supprimé en
+   silence : ce qui n'est plus à sa place est NOMMÉ. */
+function edtCochesDeLEvenement(id){
+  var d=edtDecisions(),out=[];
+  if(!id)return out;
   Object.keys(d).forEach(function(c){
     var h=(d[c]||{}).heures||{};
     Object.keys(h).forEach(function(k){
-      if(h[k]&&h[k].ecartJustifie&&h[k].evenement===ev.id)trouve=true; });
+      if(h[k]&&h[k].ecartJustifie&&h[k].evenement===id)out.push({classe:c,cle:k,valeur:h[k]});
+    });
   });
-  return trouve;
+  return out;
+}
+/* [②] LES COCHES QUI NE SONT PLUS SOUS L'ÉVÉNEMENT : il a bougé, ou la grille a
+   changé sous lui. Elles restent au magasin, et le site les compte à voix haute. */
+function edtCochesDeplacees(ev){
+  if(!ev||!ev.id)return [];
+  var vivantes={};
+  edtHeuresDeLEvenement(ev).forEach(function(h){ vivantes[h.classe+'\u0000'+h.cle]=true; });
+  return edtCochesDeLEvenement(ev.id).filter(function(x){ return !vivantes[x.classe+'\u0000'+x.cle]; });
 }
 /* [②a] PLUSIEURS HEURES, UNE SEULE ÉCRITURE. Un événement couvre souvent
    plusieurs heures : les poser une par une ferait autant d'écritures du même

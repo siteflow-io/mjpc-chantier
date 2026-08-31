@@ -402,3 +402,44 @@ Les jetons : reçus, utilisés, écrits nulle part. À renouveler fin novembre.
 + classe d'essai à trancher · import du chapitre 3e · jetons fin novembre
 
 MEMO
+
+---
+
+## TOUR 6 — Paul
+
+Texte mot pour mot :
+
+> dans tes règles, tu dois formuler simplement tes communications à mon endroit. je ne comprends pas tes questions 1 et 2
+
+---
+
+## TOUR 6 — Claude (conscience n°11)
+
+Réponse mot pour mot :
+
+Tu as raison, je les ai posées dans mon vocabulaire, pas dans le tien. Je recommence.
+
+## Question 1 — aujourd'hui, sur ton site, le mode test ne protège pas tout
+
+Quand tu actives le mode test, tu t'attends à ce que rien ne parte pour de vrai. C'est vrai pour une partie du site seulement. Pour l'autre partie, **ça écrit vraiment dans tes données** : créer, renommer, archiver ou supprimer une classe · importer des élèves · changer le code prof · publier un onglet · créer ou supprimer une séance, un chapitre · supprimer une image · et tout ce que le déroulé enregistre pendant une heure de cours.
+
+La réparation existe déjà. Elle a été écrite le 27 août, elle est au sas, elle n'a jamais été mise en ligne.
+
+**Ma question : je te la prépare seule, tout de suite, pour que tu la mettes en ligne dans la semaine ? Ou elle attend que tout le chantier emploi du temps soit fini ?**
+
+- **Seule** : tu es protégé tout de suite, et ça ne touche pas l'emploi du temps.
+- **Avec le reste** : une manipulation de moins, mais tu restes exposé jusque-là.
+
+## Question 2 — personne n'a vérifié le travail livré au sas
+
+L'exécutant a livré son travail sur l'emploi du temps, et il a écrit un rapport qui dit que tout va bien. **Personne n'a vérifié ce rapport.** C'est mon travail, et je ne le commence pas sans ton ordre.
+
+**Ma question : je le vérifie maintenant ?**
+
+C'est de la lecture et de la mesure, rien ne part en ligne. Je te rends un verdict : ça va, ou ça ne va pas, avec ce qui cloche et où.
+
+**Tests manuels : aucun.** Rien n'a bougé depuis ma dernière réponse.
+
+**Cahier vivant** — deux choses attendent ton mot : la réparation du mode test (seule ou avec le reste), et l'ordre de vérifier le travail livré. Ensuite : brancher la fonction morte, puis relire le mandat et le confier à un exécutant neuf. Le reste de la file est au registre.
+
+MEMO

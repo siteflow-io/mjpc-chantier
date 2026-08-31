@@ -366,6 +366,39 @@ commit **`52969970`**. Relu et comparé : **identique bit à bit**, 15 389 o / 2
 **C · `TRANSCRIPTS/C11/TRANSCRIPT-C11.md` (sas)** — ce fichier même, déposé au sas au
 terme de ce tour. Le dossier `TRANSCRIPTS/C11/` naît de ce chemin.
 
-Réponse à Paul : donnée dans la conversation, avec l'état des trois écritures, les deux
-questions encore ouvertes (le correctif ③ sort-il seul ; l'audit de `2c26017e` est-il
-ordonné) et la clôture de la passation.
+Réponse mot pour mot :
+
+**Les trois écritures sont faites et vérifiées. La passation peut être close.**
+
+**Étanchéité, prouvée avant d'écrire quoi que ce soit** — par écriture croisée, jamais par une lecture : jeton sas → dépôt production, **403** ; jeton production → dépôt sas, **403**. Les deux sondes ont été refusées, et rien n'est resté derrière : 404 des deux côtés, vérifié après coup.
+
+**A · Le registre, en production** — `docs/MJPC6-DETTES.md`, commit **`53a98437`**, 197 655 → 199 865 o, relu et comparé : **identique bit à bit**. Le tour 197 y porte le chiffre corrigé (47 appels réels, 14 dans l'EDT, 33 hors), le fait neuf sur la production (40 écritures dans 34 fonctions hors du mode test), la question à trancher, et « garde verte ne vaut pas quitus ».
+
+**B · La passation, au sas** — `PASSATION-C10-C11.md`, commit **`52969970`**, 14 133 → 15 389 o, 235 → 249 lignes, **identique bit à bit**. La ligne 28 ne dit plus que l'exécutant s'est trompé : elle dit les deux commits, elle le disculpe nommément, elle nomme la portée réelle du correctif ③. Et sous la garde, la phrase « Vert ne vaut pas quitus » — pour que la n°12 ne prenne pas un vert pour un quitus, comme nous l'avons fait.
+
+**C · Le transcript, au sas** — `TRANSCRIPTS/C11/TRANSCRIPT-C11.md`, commit **`bac0eaa9`**, création, 28 359 o, md5 `fa456a3c48408fb34ed9ed5a79ae96f7`, **identique bit à bit**. Tes messages et mes réponses depuis le premier tour, mot pour mot. Vérifié : aucun jeton dedans.
+
+**Ce que je n'ai pas fait, et pourquoi.** Ce ne sont pas des promotions : trois documents, pas une ligne de site. Donc pas de version, pas de `&v=`, pas de point de retour dans `MJPC6-restauration.md`, pas d'index des fonctions régénéré — le protocole d'après-promeus ne s'applique pas ici, et je ne vais pas l'imiter pour faire nombre. Vérifié après coup : `index.html` en production est toujours `6c7560afa9e431f23f89aa6fe167bb6b` / 1 522 853 o, et le candidat au sas toujours `b322540e9baa879985a6dca7697a9948` / 1 657 594 o. Rien n'a bougé de ce qui ne devait pas bouger.
+
+**Pour clore, il me manque deux mots de toi.**
+
+**① Le correctif ③ sort-il seul, ou attend-il la fin du lot 2ter ?** C'est la seule question de la passation restée sans réponse, et elle a grossi depuis hier : ce correctif protège l'import d'élèves et la suppression de classe, pas l'emploi du temps.
+
+**② L'audit de `2c26017e` est-il ordonné ?** Je suis outillé : la garde tourne chez moi, verte sur le candidat, rouge sur les pièges que je lui pose.
+
+Les jetons : reçus, utilisés, écrits nulle part. À renouveler fin novembre.
+
+**Tests manuels : aucun.** Trois documents, aucune ligne de code.
+
+**Cahier vivant — la file, par ordre**
+
+1. **Dette production** — le mode test ne couvre ni `mjpcPutJson` ni `mjpcDeleteJson` : 40 écritures, 34 fonctions. Correctif au sas, jamais promu. **Seul ou avec 2ter ?**
+2. **2ter EDT** — audit de `2c26017e` (① + ③), sur ton ordre
+3. **2ter EDT** — brancher `edtMettreANiveau`, par un complément de la même livraison
+4. **2ter EDT** — mandat v2 lu en entier, relu ligne à ligne contre ton cadrage, figé, passé à un exécutant neuf
+5. **7 profil de classe** — attend de toi la forme de « Où en est la séance » et les destinations du report
+6. 5 bloc bilan · 7. 2 téléphone · 8. 3 temps réel · 9. 4 pulsation · 10. 6 dettes moteur · 11. 8 PROMPTS · 12. 9 profil élève · 13. 10 affichages · 14. 11 M-SÉCU · 15. 12 M17a · 16. LOT G (Toussaint)
+
++ classe d'essai à trancher · import du chapitre 3e · jetons fin novembre
+
+MEMO

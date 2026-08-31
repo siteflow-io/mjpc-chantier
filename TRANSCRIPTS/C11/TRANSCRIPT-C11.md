@@ -498,3 +498,52 @@ Tout est au registre (tour 198). Tes trois décisions d'aujourd'hui y sont aussi
 **Cahier vivant** — en cours : le complément à la livraison ① (deux réparations), puis réaudit, puis ton promeus. Ensuite : le mandat v2 relu ligne à ligne, figé, confié à un exécutant neuf ; la classe De Gaulle à dimensionner avec toi. Le reste de la file est au registre.
 
 MEMO
+
+---
+
+## TOUR 8 — Paul
+
+Texte mot pour mot :
+
+> rédige le prompt, il doit être canonique (vérifie le protocole).
+
+---
+
+## TOUR 8 — Claude (conscience n°11)
+
+Protocole vérifié avant rédaction : `docs/MJPC6-1-DISPOSITIF.md` — **ADDENDUM DU 25/08**
+(« la vision du commandeur avant tout prompt » : aucun mandat rédigé sans pouvoir dire, dans
+les mots de Paul, pour qui le mécanisme existe et quel geste de classe il sert ; tout mandat
+s'ouvre par « CE QUE ÇA CHANGE POUR LA CLASSE », cité de ses mots) · `PROTOCOLE-AJOUTS-25-08.md`
+au sas (transcript mot pour mot ; statut du service) · la PARTIE VI de la passation (base avec
+STOP, ce qu'il faut faire, ce qui ne doit pas bouger chiffré, preuves mesurées jamais affirmées,
+découpe en livraisons courtes relancées par « continuer », audit adverse, aucune livraison
+finale avec dette) · la forme des 22 sections de `MANDAT-LOT-2ter-v2.md`, mandat canonique le
+plus récent.
+
+**Relecture ligne à ligne contre le cadrage avant de lancer — deux trous trouvés et bouchés :**
+1. Le mandat v2 décrit l'archivage de la mise à niveau au §① **et** liste « l'archivage avant
+   écrasement » en livraison ③. Sans précision, l'exécutant étendrait l'archivage à tout le
+   bloc. Le mandat dit désormais explicitement qu'il ne rend atteignable que celui de la mise
+   à niveau, déjà écrit, et n'étend rien.
+2. Rien ne disait ce qui est **hors** périmètre. Une section ⓪bis nomme ce qu'il ne doit pas
+   anticiper : l'appariement gradué (③), les décisions hors de l'objet (②), la vue Année et les
+   heures perdues (⑤ à ⑧), et **la classe d'essai De Gaulle** — entrée dans le lot par décision
+   de Paul le 31/08, mais **dimensionnement non tranché**, donc pas une ligne.
+
+Mandat déposé au sas : `PONT/EDT/MANDAT-LOT-2ter-01bis.md`, commit `7cce0fe2`, **12 953 o**,
+vérifié bit à bit, aucun jeton dedans. Il est reproduit **intégralement et à l'identique** dans
+la conversation, dans un bloc copiable d'un seul geste — le fichier au sas et le texte donné à
+Paul sont le même contenu, octet pour octet ; le transcript le référence par son chemin et son
+commit plutôt que de le recopier une troisième fois.
+
+Réponse mot pour mot : chapeau (protocole vérifié, les deux trous de la relecture, où le mandat
+est déposé), puis le mandat en entier dans un bloc de code, puis :
+
+**Tests manuels : aucun.** Le mandat est écrit et déposé, aucun code n'a bougé.
+
+**Cahier vivant** — le mandat part à un exécutant neuf, en deux livraisons courtes closes par un
+arrêt ; puis réaudit par la conscience ; puis captures ; puis promeus de Paul. Ensuite : le
+mandat v2 relu ligne à ligne et figé, et la classe De Gaulle à dimensionner avec Paul.
+
+MEMO

@@ -2854,7 +2854,7 @@ function mjpcEcrireRest(url,options,cb){
    (les 3 gestes, le geste conservatoire par app, ce qui ne peut pas arriver).
    RESTAURER LA VERSION PRÉCÉDENTE : docs/MJPC6-restauration.md (convention BUG).
    ═══════════════════════════════════════════════════════════════════════════ */
-var APP_VERSION="8.73.0-①";
+var APP_VERSION="8.73.0-①bis-a";
 var APP_VERSION_DATE="2026-08-27";
 // ── 11. Coffre : dérivation, chiffrement, empreinte (v1.3.0) ──
 // (Le canon porte deux sections « 8 » — dette de numérotation connue, non corrigée
@@ -18001,7 +18001,15 @@ edtChargeInscrire('identite',function(){
    écrit : le site continue en lecture avec les valeurs calculées en mémoire,
    et il le dit. Jamais en deux temps. */
 function edtMettreANiveau(apres){
-  var objets={},dit=[];
+  var objets={},dit=[],avant={};
+  /* [①bis-a] L'ARCHIVE PORTE L'ÉTAT D'AVANT. Les charges MUTENT les objets en
+     place (edtPoserIds pose l'id dans l'objet lui-même) : la photo se prend ICI,
+     avant elles — sinon l'archive contiendrait déjà ce qu'elle est censée sauver,
+     et « ce que Paul a posé à la main » ne serait récupérable nulle part. */
+  EDT_OBJETS.forEach(function(o){
+    if(EDT[o]===null||EDT[o]===undefined)return;
+    try{ avant[o]=JSON.parse(JSON.stringify(EDT[o])); }catch(e){ avant[o]=EDT[o]; }
+  });
   EDT_CHARGES.forEach(function(c){
     var r=null; try{ r=c.fn(); }catch(e){ dit.push('charge « '+c.nom+' » impossible'); }
     if(!r)return;
@@ -18010,17 +18018,40 @@ function edtMettreANiveau(apres){
   });
   var noms=Object.keys(objets);
   EDT.miseANiveauDit=dit;
-  if(!noms.length){ if(apres)apres(true); return; }
-  var reste=noms.length,echec=false;
-  var edtFinir=function(){ if(--reste===0){
-      if(echec&&typeof atInfo==='function')
-        atInfo('La mise à niveau n\u2019a pas été enregistrée — rien n\u2019a été écrit. Le site fonctionne en lecture.');
-      if(apres)apres(!echec); } };
-  noms.forEach(function(nom){
-    edtArchiver('mise-a-niveau-'+nom,edtChemin(nom),EDT[nom]).then(function(a){
-      if(!a||!a.ok){ echec=true; edtFinir(); return; }   /* ABANDON : rien n'est écrit */
-      mjpcPutJson(FIREBASE_BASE+edtChemin(nom)+'.json',objets[nom],'Mise à niveau — '+nom,function(){ edtFinir(); });
+  if(!noms.length){ if(apres)apres(true); return; }   /* rien à mettre à niveau : AUCUNE écriture */
+  /* [①bis-a] UNE SEULE ÉCRITURE À LA FOIS. edtCharger est appelé par trois chemins :
+     deux chargements concurrents archiveraient et écriraient deux fois la même chose.
+     Le verrou n'arrête QUE l'écriture — les charges viennent de tourner, donc
+     l'identité est en mémoire dans tous les cas : rien ne s'affiche sans identité.
+     Il se lève dès que toutes les archives ont répondu. */
+  if(EDT.miseANiveauEnCours){ if(apres)apres(true); return; }
+  EDT.miseANiveauEnCours=true;
+  /* [①bis-a] DEUX TEMPS, JAMAIS ENTREMÊLÉS : on archive TOUT, puis on écrit — et
+     seulement si TOUTES les archives ont abouti. Mesuré avant correction : quand
+     l'archivage tombait sur un seul objet, les deux autres s'écrivaient quand même
+     pendant que le site annonçait « rien n'a été écrit ». L'abandon est GLOBAL. */
+  var restantes=noms.length,echec=false;
+  var edtEcrireTout=function(){
+    var reste=noms.length;
+    noms.forEach(function(nom){
+      mjpcPutJson(FIREBASE_BASE+edtChemin(nom)+'.json',objets[nom],'Mise à niveau — '+nom,function(){
+        if(--reste===0&&apres)apres(true); });
     });
+  };
+  var edtBilanArchives=function(){
+    if(--restantes>0)return;
+    EDT.miseANiveauEnCours=false;
+    if(echec){                                            /* ABANDON : rien n'est écrit */
+      if(typeof atInfo==='function')
+        atInfo('La mise à niveau n\u2019a pas été enregistrée — rien n\u2019a été écrit. Le site fonctionne en lecture.');
+      if(apres)apres(false); return;
+    }
+    edtEcrireTout();
+  };
+  noms.forEach(function(nom){
+    edtArchiver('mise-a-niveau-'+nom,edtChemin(nom),(avant[nom]!==undefined?avant[nom]:EDT[nom]))
+      .then(function(a){ if(!a||!a.ok)echec=true; edtBilanArchives(); })
+      .catch(function(){ echec=true; edtBilanArchives(); });   /* [①bis-a] un archivage qui LÈVE est un archivage échoué */
   });
 }
 
@@ -18031,7 +18062,13 @@ function edtCharger(apres){
       EDT[o]=v||null;
       if(err)EDT.pannes.push(o);
       if(--reste===0){ EDT.charge=true; try{edtAppliquerCreneaux();}catch(e){}
-        try{ EDT_CHARGES.forEach(function(c){ c.fn(); }); }catch(e){}   /* id en mémoire : rien ne s'affiche sans identité */
+        /* [①bis-a] LA MISE À NIVEAU EST BRANCHÉE ICI, et nulle part ailleurs.
+           Elle fait tourner les charges elle-même (id en mémoire : rien ne
+           s'affiche sans identité), puis n'écrit QUE s'il y a quelque chose à
+           mettre à niveau — hub vide ou hub déjà complet : aucune écriture.
+           Elle n'attend pas le réseau : l'affichage continue avec ce qu'il a. */
+        try{ edtMettreANiveau(); }
+        catch(e){ try{ EDT_CHARGES.forEach(function(c){ c.fn(); }); }catch(e2){} }   /* repli : l'identité en mémoire avant tout */
         if(apres)apres(); }
     });
   });

@@ -2854,7 +2854,7 @@ function mjpcEcrireRest(url,options,cb){
    (les 3 gestes, le geste conservatoire par app, ce qui ne peut pas arriver).
    RESTAURER LA VERSION PRÉCÉDENTE : docs/MJPC6-restauration.md (convention BUG).
    ═══════════════════════════════════════════════════════════════════════════ */
-var APP_VERSION="8.73.0-①bis";
+var APP_VERSION="8.73.0-①ter-a";
 var APP_VERSION_DATE="2026-08-27";
 // ── 11. Coffre : dérivation, chiffrement, empreinte (v1.3.0) ──
 // (Le canon porte deux sections « 8 » — dette de numérotation connue, non corrigée
@@ -17934,7 +17934,27 @@ function edtPoserIdsObjet(nom,o){
      ['feries','feries'],['vacances','vacances']].forEach(function(p){
       if(Array.isArray(o[p[0]]))n+=edtPoserIds(o[p[0]],p[1],null).poses; });
   }
-  else if(nom==='grille'&&Array.isArray(o.creneaux))       n+=edtPoserIds(o.creneaux,'creneauxGrille',null).poses;
+  else if(nom==='grille'){
+    /* [①ter] LA GRILLE A DEUX FORMES : simple (`creneaux` à la racine) et DATÉE
+       (`versions[].creneaux`, après edtNormaliserGrille qui supprime la racine).
+       Mesuré avant correctif : en forme datée la pose rendait 0, et un créneau neuf
+       n'avait jamais d'identité. L'unicité s'apprécie VERSION PAR VERSION : un
+       créneau reconduit d'une version à l'autre est LE MÊME créneau — la version
+       neuve est une copie de la précédente, et une heure déplacée garde son id —
+       il ne reçoit donc ni #2 ni rien d'autre. Deux créneaux DIFFÉRENTS d'une même
+       version, eux, ne partagent jamais un id : le second en reçoit un neuf. */
+    if(Array.isArray(o.creneaux)) n+=edtPoserIds(o.creneaux,'creneauxGrille',null).poses;
+    if(Array.isArray(o.versions)) o.versions.forEach(function(v){
+      if(!v||!Array.isArray(v.creneaux))return;
+      var vus={};
+      v.creneaux.forEach(function(c){
+        if(!c||typeof c!=='object'||!c.id)return;
+        if(vus[c.id]){ delete c.id; return; }   /* même id deux fois DANS la version : le second reprend une identité neuve */
+        vus[c.id]=true;
+      });
+      n+=edtPoserIds(v.creneaux,'creneauxGrille',null).poses;
+    });
+  }
   else if(nom==='creneaux'&&Array.isArray(o.creneaux))     n+=edtPoserIds(o.creneaux,'creneauxHoraires',null).poses;
   else if(nom==='periodes'&&Array.isArray(o.periodes))     n+=edtPoserIds(o.periodes,'periodes',null).poses;
   else if(nom==='photos'){ var l=Array.isArray(o)?o:(Array.isArray(o.photos)?o.photos:null);
@@ -17973,9 +17993,11 @@ edtChargeInscrire('identite',function(){
     col.forEach(function(c){ dit.push('deux éléments identiques — « '+(c.libelle||'')+' » a reçu un identifiant distinct'); });
   }
   var gr=EDT.grille;
-  if(gr&&Array.isArray(gr.creneaux)){
-    var rg=edtPoserIds(gr.creneaux,'creneauxGrille',null);
-    if(rg.poses){ touche.grille=gr; dit.push(rg.poses+' identifiants posés à la grille'); }
+  if(gr&&typeof gr==='object'){
+    /* [①ter] par edtPoserIdsObjet, pour que la mise à niveau voie AUSSI la forme
+       datée : la charge ne lisait que `gr.creneaux`, absent dès qu'une version existe. */
+    var ng=edtPoserIdsObjet('grille',gr);
+    if(ng){ touche.grille=gr; dit.push(ng+' identifiants posés à la grille'); }
   }
   var cr=EDT.creneaux;
   if(cr&&Array.isArray(cr.creneaux)){
@@ -20022,6 +20044,11 @@ function edtChangerEmploiDuTemps(cleSource,iso,creneau,effet){
   var neuf=retire?JSON.parse(JSON.stringify(retire)):{classe:c.classe,classeMjpc:c.classeMjpc,mjpc:true,semaine:'AB'};
   neuf.jour=jourDst; neuf.creneau=creneau;
   v.creneaux.push(neuf);
+  /* [①ter] UN CRÉNEAU QUI NAÎT NAÎT AVEC SON IDENTITÉ. Le créneau DÉPLACÉ garde la
+     sienne (il est recopié depuis `retire` : c'est la même heure de cours) ; celui
+     qui naît faute de source retrouvée partait sans id, et échappait à tous les
+     gestes qui désignent par id. */
+  try{ edtPoserIdsObjet('grille',o); }catch(e){}
   edtEcrireGrille(o,{quand:Date.now(),effet:String(effet),
     quoi:(c.classeMjpc||c.classe)+' : '+jourSrc+' '+c.creneau+' \u2192 '+jourDst+' '+creneau},
     function(){ edtPeindre(); });

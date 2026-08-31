@@ -1062,3 +1062,61 @@ Tout est au registre, tour 206.
 **Cahier vivant** — ②b puis ② (règles de déplacement, captures, audit adverse), puis ③ à ⑧, puis ton promeus. En attente de toi : la classe De Gaulle · `CLAUDE.md` périmé · `usage`/`quandPas` du site · la bascule de mode test dans quatre apps · les quatre fichiers hors socle · l'unicité entre familles.
 
 MEMO
+
+---
+
+## TOUR 19 — Paul
+
+Texte mot pour mot :
+
+> Livré
+
+---
+
+## TOUR 19 — Claude (conscience n°11)
+
+Audit joué : candidat mesuré (1 670 478 o / `4af687cf…`) · rapport lu · non-régression ·
+moteur et correctif bit à bit · double parseur · garde · **la relance lue ligne à ligne pour
+vérifier qu'elle ne peut pas boucler** · son banc lu avant d'être cru (il mesure le faux hub,
+jamais la mémoire) · **banc indépendant monté trois fois avant d'aboutir**, puis les quatre
+scénarios de migration rejoués. Registre : tour 207, commit `f1a58cef`.
+
+Réponse mot pour mot :
+
+**Verdict : ça va. Aucune dette. Tu peux réinjecter ton calendrier sans perdre tes coches.**
+
+## Ce que j'ai rejoué moi-même
+
+Quatre situations, avec mon propre banc :
+
+**Premier chargement, coches héritées** — les archives d'abord, puis le magasin des décisions, **puis seulement** le calendrier amputé du champ. Six décisions posées, six lignes de journal, plus un seul champ dans l'objet.
+
+**Deuxième chargement** — aucune écriture. Rien ne se republie.
+
+**Le hub refuse le calendrier au milieu** — les décisions sont écrites quand même, le champ reste dans l'objet : **la coche existe en double, aucune n'est perdue**. C'est exactement l'état dégradé que je lui avais imposé.
+
+**Chargement suivant, hub rétabli** — une seule écriture, aucune décision reposée, champ à zéro. La migration aboutit toute seule.
+
+L'ordre que je lui avais imposé est tenu : le magasin d'abord, le calendrier ensuite.
+
+## L'écart qu'il déclare, et pourquoi je l'accepte
+
+Mon mandat disait de laisser la mise à niveau à un seul appel. Il en a fait deux, et il le dit. Le second est **dans le rappel de succès du premier** : c'est ce qui garantit « le calendrier seulement si le magasin a été accepté ». J'ai vérifié qu'il ne peut pas boucler — le second appel ne porte pas de rappel, et le drapeau est éteint avant. Sans lui, l'ordre était intenable. **Il a eu raison, et il l'a signalé au lieu de le cacher dans un chiffre.**
+
+## Ma part
+
+J'ai dû monter mon banc **trois fois** avant qu'il reproduise sa migration : il me manquait les classes, puis un stub correct, puis une fonction entière que mon extrait ne contenait pas. À chaque fois le résultat était « rien ne se passe » — et à chaque fois c'était mon montage, pas son code. **Je n'ai rien conclu tant que le banc n'était pas juste.**
+
+Une chose relevée au passage : quand une charge de mise à niveau plante, le site l'avale sans rien dire. Ça protège l'affichage, mais un échec reste muet. C'est mineur, je le note sans l'ouvrir.
+
+Et j'ai lu son banc avant de le croire : il mesure le faux hub, jamais la mémoire de la page. La méthode est honnête.
+
+Tout est au registre, tour 207.
+
+**Tests manuels : aucun.** Rien en ligne, `/site/edt` toujours vide.
+
+**Ce qu'il attend de toi : « continuer ».** Dernière étape de ② : ce que devient une coche quand un événement se déplace ou disparaît, les captures, l'audit adverse.
+
+**Cahier vivant** — ②, puis ③ à ⑧, puis ton promeus. En attente de toi : la classe De Gaulle · `CLAUDE.md` périmé · `usage`/`quandPas` du site · la bascule de mode test dans quatre apps · les quatre fichiers hors socle · l'unicité entre familles.
+
+MEMO

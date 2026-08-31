@@ -24,7 +24,7 @@ Tu ne réorganises rien, tu ne complètes rien, tu ne devines aucune date. Tu li
 - **`feries`** — les jours fériés et les ponts : `date`, `libelle`. Assomption, Toussaint, Armistice, Noël, Jour de l'An, Pâques, Fête du Travail, Ascension, pont de l'Ascension, Victoire 1945, Pentecôte.
 - **`jalons`** — ce qui fait échéance pour tout le monde et sert à mesurer si une classe est en retard : les conseils de classe (intermédiaires, de semestre, d'orientation), l'arrêt des notes, les journées pédagogiques, le DNB, les DNB blancs, les oraux. Champs : `date`, `libelle`, `heure` si elle est écrite.
 - **`etablissement`** — tout le reste : réunions, rencontres de parents, portes ouvertes, alertes, célébrations, spectacles. Champs : `date`, `libelle`, `heure`, et **`prendLeCreneau`** : `true` si l'événement occupe une heure de cours (journée pédagogique, devoirs communs, cross, photo des classes, célébration en journée), `false` si c'est une réunion du soir ou un événement qui ne prend aucune heure de classe. Dans le doute, mets `false` et signale-le à la fin : c'est moi qui tranche.
-- **`evenementsClasse`** — les événements qui ne touchent qu'un niveau ou une classe et qui expliquent qu'elle prenne du retard : séjours, stages, sorties, voyages, forums d'orientation. Champs : `debut`, `fin`, `libelle`, `niveau`, `classes` (laisse `[]` : c'est moi qui nomme mes classes) et **`justifie`** (laisse `false` : c'est moi qui décide si l'écart de progression est justifié).
+- **`evenementsClasse`** — les événements qui ne touchent qu'un niveau ou une classe et qui expliquent qu'elle prenne du retard : séjours, stages, sorties, voyages, forums d'orientation. Champs : `debut`, `fin`, `libelle`, `niveau`, `classes` (laisse `[]` : c'est moi qui nomme mes classes). **Ne produis JAMAIS de champ `justifie`** : ce que je coche moi-même ne vit pas dans le fichier que tu écris — il serait effacé à la prochaine injection.
   **Je n'enseigne qu'en 3e et en 4e : ne garde que les événements de ces deux niveaux.** Tout ce qui ne concerne que les 5e ou les 6e sort du fichier — pas dans `etablissement`, pas ailleurs : il disparaît.
   Une **réunion de parents en soirée** n'est pas un événement de classe, même si elle nomme un niveau : c'est un événement d'établissement.
 
@@ -41,7 +41,7 @@ Un seul objet JSON, rien avant, rien après, pas de commentaires, pas de balises
  "feries": [ {"date":"2026-11-11","libelle":"Armistice"} ],
  "jalons": [ {"date":"2027-01-07","libelle":"Soir arrêt des notes","heure":"18:30"} ],
  "etablissement": [ {"date":"2026-09-28","libelle":"Cross","prendLeCreneau":true} ],
- "evenementsClasse": [ {"debut":"2026-10-14","fin":"2026-10-16","libelle":"Séjour Verdun","niveau":"3e","classes":[],"justifie":false} ],
+ "evenementsClasse": [ {"debut":"2026-10-14","fin":"2026-10-16","libelle":"Séjour Verdun","niveau":"3e","classes":[]} ],
  "brevet": {"3e":"2027-06-25T08:00:00"}
 }
 ```

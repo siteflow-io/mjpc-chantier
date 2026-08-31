@@ -822,7 +822,6 @@
    "heure": "17:00",
    "niveau": "4e",
    "classes": [],
-   "justifie": false,
    "debut": "2026-09-17",
    "fin": "2026-09-17"
   },
@@ -830,7 +829,6 @@
    "libelle": "Séjour Verdun 3e",
    "niveau": "3e",
    "classes": [],
-   "justifie": false,
    "debut": "2026-10-14",
    "fin": "2026-10-16"
   },
@@ -838,7 +836,6 @@
    "libelle": "Tribunal Saumur 4e (après-midi)",
    "niveau": "4e",
    "classes": [],
-   "justifie": false,
    "debut": "2026-11-05",
    "fin": "2026-11-05"
   },
@@ -846,7 +843,6 @@
    "libelle": "Stages 3e (uniquement 3e Horizon pro)",
    "niveau": "3e",
    "classes": [],
-   "justifie": false,
    "debut": "2026-11-16",
    "fin": "2026-11-16"
   },
@@ -854,7 +850,6 @@
    "libelle": "Stages 3e",
    "niveau": "3e",
    "classes": [],
-   "justifie": false,
    "debut": "2026-11-17",
    "fin": "2026-11-18"
   },
@@ -863,7 +858,6 @@
    "heure": "13:30",
    "niveau": "3e",
    "classes": [],
-   "justifie": false,
    "debut": "2026-11-19",
    "fin": "2026-11-19"
   },
@@ -871,7 +865,6 @@
    "libelle": "Tribunal 4e Soirée orientation 4e",
    "niveau": "4e",
    "classes": [],
-   "justifie": false,
    "debut": "2026-11-19",
    "fin": "2026-11-19"
   },
@@ -879,7 +872,6 @@
    "libelle": "Visite des lycées St-Louis / les Ardilliers 3e",
    "niveau": "3e",
    "classes": [],
-   "justifie": false,
    "debut": "2026-11-23",
    "fin": "2026-11-23"
   },
@@ -887,7 +879,6 @@
    "libelle": "Stages 3e horizon Pro",
    "niveau": "3e",
    "classes": [],
-   "justifie": false,
    "debut": "2027-01-13",
    "fin": "2027-01-15"
   },
@@ -895,7 +886,6 @@
    "libelle": "Compétition des métiers WorldSkills niveau 4e ?",
    "niveau": "4e",
    "classes": [],
-   "justifie": false,
    "debut": "2027-02-12",
    "fin": "2027-02-12"
   },
@@ -903,7 +893,6 @@
    "libelle": "Orientibus niveau 4e",
    "niveau": "4e",
    "classes": [],
-   "justifie": false,
    "debut": "2027-02-18",
    "fin": "2027-02-18"
   },
@@ -911,7 +900,6 @@
    "libelle": "Forum métiers Doué niveau 4e (après-midi)",
    "niveau": "4e",
    "classes": [],
-   "justifie": false,
    "debut": "2027-02-19",
    "fin": "2027-02-19"
   },
@@ -919,7 +907,6 @@
    "libelle": "Stage 4",
    "niveau": "4e",
    "classes": [],
-   "justifie": false,
    "debut": "2027-03-24",
    "fin": "2027-03-25"
   },
@@ -928,7 +915,6 @@
    "heure": "13:00",
    "niveau": "4e",
    "classes": [],
-   "justifie": false,
    "debut": "2027-03-26",
    "fin": "2027-03-26"
   },
@@ -936,7 +922,6 @@
    "libelle": "Séjour Pays-Bas 4e (soir)",
    "niveau": "4e",
    "classes": [],
-   "justifie": false,
    "debut": "2027-04-12",
    "fin": "2027-04-17"
   }

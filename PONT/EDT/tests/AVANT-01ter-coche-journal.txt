@@ -1,0 +1,8 @@
+version : V8.73.0-①TER
+① clics : panneau prof → Emploi du temps
+② clic « Ouvrir l'emploi du temps »
+③ vue Calendrier — « 3e 2026-10-14 → 2026-10-16 · Séjour Verdun 3e » · case : false · magasin : 0 décision(s) · heures justifiées : 0
+④ CLIC sur la case « Séjour Verdun 3e » → écritures : ["/site/edt/calendrier/2026-2027"]
+   case : true · magasin : 0 décision(s) [] · heures justifiées : 2
+   champ « justifie » dans l'objet calendrier : 1
+⑤ retour vue Semaine sur 2026-10-12 (la semaine du séjour)

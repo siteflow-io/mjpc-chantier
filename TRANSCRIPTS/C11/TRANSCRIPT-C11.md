@@ -443,3 +443,58 @@ C'est de la lecture et de la mesure, rien ne part en ligne. Je te rends un verdi
 **Cahier vivant** — deux choses attendent ton mot : la réparation du mode test (seule ou avec le reste), et l'ordre de vérifier le travail livré. Ensuite : brancher la fonction morte, puis relire le mandat et le confier à un exécutant neuf. Le reste de la file est au registre.
 
 MEMO
+
+---
+
+## TOUR 7 — Paul
+
+Texte mot pour mot :
+
+> avec le reste, et à faire en premier du coup, et de gaulle en mode test parait du coup logique à mettre avec ce lot. oui vérifie le travail de l'exécutant, on reprend le flux normal.
+
+---
+
+## TOUR 7 — Claude (conscience n°11)
+
+Audit joué sur pièces : base `22bc2c69` récupérée et comparée · noms des 138 fonctions
+d'origine · compteurs · moteur bit à bit · double parseur (`node --check` + acorn ES2020) ·
+garde rejouée + trois pièges posés par moi · noyau d'identité extrait et **exécuté** sur le
+vrai `json/calendrier-2026-2027.json` · audit adverse sur données absurdes · flux d'écriture
+des périodes suivi ligne à ligne · découpe §⑱ du mandat relue · correctif ③ éprouvé contre
+le magasin du mode test. Registre mis à jour : tour 198, commit `77737ef3`, vérifié bit à bit.
+
+Réponse mot pour mot :
+
+**Verdict : ça ne va pas. On ne promeut pas. Deux choses à réparer — et le reste est bon.**
+
+## Ce qui est bon
+
+Je l'ai remesuré moi-même, je n'ai rien pris sur parole.
+
+Le cœur du travail tient. J'ai fait tourner son code sur ton vrai calendrier : **122 identifiants posés, aucun doublon**, et deux exécutions donnent exactement les mêmes. J'ai essayé de le casser — deux événements strictement identiques, libellés vides, date manquante, valeur nulle, accents et majuscules — **il tient**. Le moteur du déroulé n'a pas bougé d'un octet. Les 138 fonctions d'avant sont toutes là. Le fichier est du JavaScript valide pour les deux vérificateurs. Et la garde du site refuse bien les trois pièges que je lui ai posés.
+
+## Ce qui ne va pas
+
+**1 · La mise à jour des objets déjà au hub n'est branchée sur rien.** Il a écrit la fonction, elle est juste, mais **aucun geste ne l'appelle**. Aujourd'hui c'est sans effet : ton hub est vide. Le jour où il y aura des objets à compléter, rien ne se déclenchera. Et comme c'est cette même fonction qui archive avant d'écraser, ta règle « rien ne s'écrase en silence » n'est pas en vigueur non plus.
+
+**2 · Une porte oubliée fait perdre l'identité des périodes.** Il a trouvé un endroit où l'identifiant était perdu à l'écriture, et il l'a corrigé. Il y en avait deux. Le second est resté : quand tu réinjectes ta grille, tes périodes (P1, P2…) sont reconstruites **sans leur identifiant**, puis on leur en pose un neuf. Tant que tu ne changes rien, ça ne se voit pas. Le jour où tu retouches le nom ou la date d'une période, elle change d'identité — et ce que tu y avais attaché ne la suit plus.
+
+## Ce dont je l'ai disculpé
+
+J'avais cru qu'une troisième fonction était morte : celle qui compare l'ancien et le nouveau quand tu réinjectes. Vérification faite dans ton mandat, **elle appartient à la livraison ③, pas à celle-ci**. Il l'a écrite en avance sans la brancher : c'est permis, et je ne le lui reproche pas.
+
+Ce que je lui reproche, c'est son rapport : il annonce des preuves de comparaison comme si le mécanisme marchait dans le site, alors qu'il les a obtenues **en appelant la fonction à la main**. Il ne le dit nulle part. C'est ce qui m'a fait chercher un branchement qui n'avait pas lieu d'être.
+
+## La suite
+
+Un complément à la même livraison : brancher la mise à jour, fermer la porte oubliée. Puis je réaudite. Puis tu regardes les captures et tu promeus.
+
+Tout est au registre (tour 198). Tes trois décisions d'aujourd'hui y sont aussi : la réparation du mode test part avec ce lot et en premier · la classe De Gaulle entre dans le lot · l'audit est fait.
+
+**Il ne me manque que ton feu vert pour écrire le mandat du complément.** Deux réparations précises, rien de nouveau à cadrer. Dis « vas-y » et je le rédige, en texte, dans la conversation.
+
+**Tests manuels : aucun.** Rien n'a été mis en ligne, rien n'a bougé au sas, rien n'a bougé en production.
+
+**Cahier vivant** — en cours : le complément à la livraison ① (deux réparations), puis réaudit, puis ton promeus. Ensuite : le mandat v2 relu ligne à ligne, figé, confié à un exécutant neuf ; la classe De Gaulle à dimensionner avec toi. Le reste de la file est au registre.
+
+MEMO

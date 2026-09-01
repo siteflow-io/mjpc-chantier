@@ -2490,3 +2490,38 @@ Et si tu veux, **le banc unique** peut être demandé dès maintenant plutôt qu
 **Cahier vivant** — ⑤ finale, puis ⑥ à ⑧, puis ton promeus, puis l'injection de chapitre.
 
 MEMO
+
+---
+
+## TOUR 48 — Paul
+
+Texte mot pour mot :
+
+> ok on continue du coup
+
+---
+
+## TOUR 48 — Claude (conscience n°11)
+
+Mesure : rien de neuf au sas — dernier commit `e81effda` (⑤c-ter), `rapport-2ter-05.md`
+absent (404). La livraison finale n'est pas partie.
+
+Réponse mot pour mot :
+
+Rien de neuf au sas : il attend ton « continuer » dans sa conversation.
+
+**Colle-lui ceci en même temps**, pour que le banc unique entre dans cette livraison plutôt qu'au ⑥ :
+
+> **Une exigence de plus pour la livraison ⑤ finale, décidée par Paul le 01/09.** Écris `tests/banc-tout.mjs` : un banc unique qui **enchaîne tous les bancs du lot d'une seule commande** et **échoue si un seul échoue**. Il n'invente aucun test : il rejoue ceux qui existent, dans l'ordre, et rend un compte-rendu d'une ligne par banc.
+>
+> **Et deux règles qui valent pour lui et pour tous les bancs à venir :**
+> **1. Un banc passe par le geste, jamais par la fonction.** Ce qui n'est pas atteignable par un clic n'est pas prouvé — et se déclare comme tel. Mesuré : `banc-archivage-03` fait **zéro clic**, il appelait `edtEcrireObjet` directement — c'est par là qu'une dette est passée.
+> **2. Une preuve dit ce qu'elle contient, pas seulement qu'elle existe.** « Une archive est partie » ne prouve rien : donne **ce qu'il y a dedans**, compté, dans les conditions réelles.
+>
+> Rejoue `banc-tout.mjs` avant de livrer, et donne son compte-rendu complet dans ton rapport.
+
+**Tests manuels : aucun.**
+
+**Cahier vivant** — ⑤ finale (alerte mensuelle, cinquième question de la garde, banc unique, captures, audit adverse), puis ⑥ à ⑧, puis ton promeus, puis l'injection de chapitre.
+
+MEMO

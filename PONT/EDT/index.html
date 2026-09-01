@@ -2854,7 +2854,7 @@ function mjpcEcrireRest(url,options,cb){
    (les 3 gestes, le geste conservatoire par app, ce qui ne peut pas arriver).
    RESTAURER LA VERSION PRÉCÉDENTE : docs/MJPC6-restauration.md (convention BUG).
    ═══════════════════════════════════════════════════════════════════════════ */
-var APP_VERSION="8.73.0-⑤b";
+var APP_VERSION="8.73.0-⑤c";
 var APP_VERSION_DATE="2026-08-27";
 // ── 11. Coffre : dérivation, chiffrement, empreinte (v1.3.0) ──
 // (Le canon porte deux sections « 8 » — dette de numérotation connue, non corrigée
@@ -19420,7 +19420,15 @@ function edtProjeter(isoDebut,nbJours){
       var nom=cel.classeMjpc;
       var dec=edtDecisionPour(nom,iso,c.creneau);
       if(dec&&dec.ajoutee)cel.ajoutee=true;
-      if(dec&&dec.sansSeance){ cel.nature='sansSeance'; cel.categorie=dec.categorie||''; cel.precision=dec.precision||''; cellules[cle]=cel; continue; }
+      if(dec&&dec.sansSeance){
+        /* [⑤c] une heure DÉPLACÉE n'est pas une heure perdue : elle a sa nature
+           propre, son libellé, et le compteur l'ignore. `sansSeance` reste posé —
+           le retirer ferait réapparaître la séance des deux côtés. */
+        cel.nature=dec.deplaceeVers?'deplacee':'sansSeance';
+        cel.categorie=dec.categorie||''; cel.precision=dec.precision||'';
+        if(dec.deplaceeVers)cel.deplaceeVers=dec.deplaceeVers;
+        cellules[cle]=cel; continue; }
+      if(dec&&dec.venantDe)cel.venantDe=dec.venantDe;
       /* le réel : une heure déjà jouée colore la case */
       var fileCle=nom+'|'+(c.fil||'');
       if(files[fileCle]===undefined)files[fileCle]=edtFileDAttente(nom,c.fil||null);
@@ -19543,8 +19551,13 @@ function edtCelluleHtml(c){
     +escapeHtml(c.classe)+'<i>hors MJPC</i></div>';
   if(c.nature==='horsTemps')return '<div class="edt-b edt-b-off">'+escapeHtml(c.libelle||'')+'</div>';
   if(c.nature==='nonImportee')return '<div class="edt-b edt-b-gris"><b>'+escapeHtml(c.classe)+'</b><i>classe non encore importée</i></div>';
+  if(c.nature==='deplacee'){
+    var edtP=String(c.deplaceeVers||'').split('|');
+    return '<div class="edt-b edt-b-sans"><b>'+escapeHtml(c.classeMjpc)+'</b><i>heure déplacée vers le '
+      +escapeHtml(edtJourEnClair(edtP[0]))+' '+escapeHtml(edtP[1]||'')+'</i></div>';
+  }
   if(c.nature==='sansSeance')return '<div class="edt-b edt-b-sans"><b>'+escapeHtml(c.classeMjpc)+'</b><i>'
-    +escapeHtml(c.categorie||'sans séance')+(c.precision?(' \u2014 '+escapeHtml(c.precision)):'')+'</i></div>';
+    +escapeHtml('heure banalisée — '+(c.categorie||''))+(c.precision?(' \u2014 '+escapeHtml(c.precision)):'')+'</i></div>';
   if(c.nature==='jouee')return '<div class="edt-b edt-b-joue"><b>'+escapeHtml(c.classeMjpc)+'</b><i>'
     +c.activites+' activité'+(c.activites>1?'s':'')+(c.reportees?(' \u00b7 '+c.reportees+' reportée'+(c.reportees>1?'s':'')):'')+'</i></div>';
   if(c.nature==='rienDePret')return '<div class="edt-b edt-b-vide"><b>'+escapeHtml(c.classeMjpc)+'</b><i>aucune séance prête</i></div>';
@@ -19698,6 +19711,48 @@ function edtCellule(cle){ return (EDT_VUE.cellules||{})[cle]||null; }
 
 /* ── les décisions au hub ────────────────────────────────────────────────── */
 function edtDecisions(){ return (EDT.decisions&&typeof EDT.decisions==='object')?EDT.decisions:{}; }
+/* [⑤c] CE QU'UNE HEURE BANALISÉE COÛTE, selon sa catégorie. Tout ce qui touche
+   au cours — évaluer, reprendre, tenir la classe — reste du TEMPS DE CLASSE :
+   ces heures-là ne sont pas perdues. Le reste est une heure perdue, justifiée ou
+   non. Ce n'est qu'une PROPOSITION : Paul bascule d'un clic, et c'est son choix
+   qui est écrit dans la décision — jamais recalculé depuis la catégorie. */
+var EDT_CLASSEMENT={
+  'Évaluation hors séance':      {tempsDeClasse:true},
+  'Reprise ou rattrapage':      {tempsDeClasse:true},
+  'Gestion de classe':          {tempsDeClasse:true},
+  'Événement d’établissement':   {tempsDeClasse:false,justifiee:true},
+  'Sortie, voyage, projet':     {tempsDeClasse:false,justifiee:true},
+  'Orientation et vie de classe':{tempsDeClasse:false,justifiee:true},
+  'Absence du professeur':      {tempsDeClasse:false,justifiee:true},
+  'Absence massive d’élèves':    {tempsDeClasse:false,justifiee:true},
+  'Temps libre choisi':         {tempsDeClasse:false,justifiee:false},
+  'Autre':                      {tempsDeClasse:false,justifiee:false}
+};
+function edtClassementDe(categorie){
+  var edtC=EDT_CLASSEMENT[categorie];
+  if(!edtC)return {tempsDeClasse:false,justifiee:false};   /* catégorie inconnue : perdue, non justifiée, et Paul tranche */
+  return {tempsDeClasse:!!edtC.tempsDeClasse,justifiee:edtC.tempsDeClasse?true:!!edtC.justifiee};
+}
+/* [⑤c] LES DEUX BASCULES. Le choix de Paul est ÉCRIT : il survit à tout, et
+   il ne se rediscute pas au chargement suivant. */
+function edtBasculerClassement(cle){
+  var edtC=edtCellule(cle); if(!edtC||!edtC.classeMjpc)return;
+  var edtV=edtDecisionPour(edtC.classeMjpc,edtC.iso,edtC.creneau);
+  if(!edtV||!edtBasculable(edtV))return;
+  var edtN=JSON.parse(JSON.stringify(edtV));
+  edtN.tempsDeClasse=!edtN.tempsDeClasse;
+  edtEcrireDecision(edtC.classeMjpc,edtCleHeure(edtC.iso,edtC.creneau,edtC.classeMjpc),edtN,
+    edtN.tempsDeClasse?'classée temps de classe':'classée heure perdue');
+}
+function edtBasculerStatut(cle){
+  var edtC=edtCellule(cle); if(!edtC||!edtC.classeMjpc)return;
+  var edtV=edtDecisionPour(edtC.classeMjpc,edtC.iso,edtC.creneau);
+  if(!edtV||!edtBasculable(edtV))return;
+  var edtN=JSON.parse(JSON.stringify(edtV));
+  edtN.justifiee=(edtN.justifiee===false);
+  edtEcrireDecision(edtC.classeMjpc,edtCleHeure(edtC.iso,edtC.creneau,edtC.classeMjpc),edtN,
+    edtN.justifiee?'déclarée justifiée':'déclarée non justifiée');
+}
 /* [⑤b] QUATRE MOTIFS, ET LE STATUT QUI EN DÉCOULE. Le statut ne se saisit pas :
    il vient du motif. Il est ensuite ÉCRIT dans la décision (`justifiee`), jamais
    recalculé à l'affichage — une bascule de Paul survit à tout. */
@@ -19747,9 +19802,11 @@ function edtSansSeance(cle){
   var s=document.getElementById('edt-cat'), p=document.getElementById('edt-prec');
   var k=edtCleHeure(c.iso,c.creneau,c.classeMjpc);
   var edtAppliquer=function(){
+    var edtCat=(s&&s.value)||EDT_CATEGORIES[0];
+    var edtCl=edtClassementDe(edtCat);
     edtEcrireDecision(c.classeMjpc,k,
-      {sansSeance:true,motif:'banalisee',justifiee:EDT_MOTIFS.banalisee.justifiee,
-       categorie:(s&&s.value)||EDT_CATEGORIES[0],precision:(p&&p.value)||'',pose:Date.now()},
+      {sansSeance:true,motif:'banalisee',tempsDeClasse:edtCl.tempsDeClasse,justifiee:edtCl.justifiee,
+       categorie:edtCat,precision:(p&&p.value)||'',pose:Date.now()},
       'heure banalisée');
   };
   /* [②a] une heure, une clé, un seul motif : le motif remplacé se DIT avant.
@@ -19935,9 +19992,21 @@ function edtPeindreModale(){
         +(c.clos?' Close.':' Pas encore close.')+'</p>'
         +'<p class="edt-p edt-mini-t">La relecture de cette heure arrive avec le profil de classe.</p>'
         +edtAbsencesHtml(cle,c);
+    } else if(c.nature==='deplacee'){
+      var edtQ=String(c.deplaceeVers||'').split('|');
+      h+='<p class="edt-p">Heure déplacée vers le <b>'+escapeHtml(edtJourEnClair(edtQ[0]))+' '+escapeHtml(edtQ[1]||'')
+        +'</b>.<br>Elle n\u2019est pas perdue : elle a lieu ailleurs, et elle ne compte pas dans tes heures perdues.</p>';
     } else if(c.nature==='sansSeance'){
-      h+='<p class="edt-p">Cette heure ne compte pas dans la prévision horaire.<br><b>'+escapeHtml(c.categorie||'')+'</b>'
-        +(c.precision?('<br>'+escapeHtml(c.precision)):'')+'</p>';
+      var edtVd=dec||{};
+      h+='<p class="edt-p">Heure banalisée — <b>'+escapeHtml(c.categorie||'')+'</b>'
+        +(c.precision?('<br>'+escapeHtml(c.precision)):'')+'</p>'
+        +'<p class="edt-p">'+(edtVd.tempsDeClasse
+          ?'Classée <b>temps de classe</b> : elle ne compte pas dans tes heures perdues.'
+          :('Classée <b>heure perdue</b>, '+(edtVd.justifiee===false?'<b>non justifiée</b>':'<b>justifiée</b>')+'.'))+'</p>'
+        +'<div class="edt-actions"><button class="edt-btn" onclick="edtBasculerClassement('+JSON.stringify(cle).replace(/"/g,'&quot;')+')">'
+        +(edtVd.tempsDeClasse?'La compter comme heure perdue':'La compter comme temps de classe')+'</button>'
+        +(edtVd.tempsDeClasse?'':('<button class="edt-btn" onclick="edtBasculerStatut('+JSON.stringify(cle).replace(/"/g,'&quot;')+')">'
+          +(edtVd.justifiee===false?'La déclarer justifiée':'La déclarer non justifiée')+'</button>'))+'</div>';
     } else if(c.nature==='rienDePret'){
       h+='<p class="edt-p">Aucune séance prête pour cette classe.</p>'
         +'<button class="edt-btn" onclick="edtRienDePret(edtCellule('+JSON.stringify(cle).replace(/"/g,'&quot;')+'))">Ouvrir Mes chapitres\u2026</button>';
@@ -19962,11 +20031,12 @@ function edtPeindreModale(){
         +'<option value="">\u2014 choisir parmi '+ou.length+' créneaux \u2014</option>'
         +edtOptionsOu(ou)
         +'</select></div>'
-        +'<div class="edt-mo-bloc"><label class="edt-lab">Ne plus compter cette séance dans la prévision horaire</label>'
+        +'<div class="edt-mo-bloc"><label class="edt-lab">Banaliser cette heure</label>'
+        +'<p class="edt-mini-t">La séance continue ailleurs : c\u2019est l\u2019heure qui est banalisée.</p>'
         +'<select class="edt-sel" id="edt-cat">'
         +EDT_CATEGORIES.map(function(x){return '<option>'+escapeHtml(x)+'</option>';}).join('')+'</select>'
         +'<input class="edt-sel" id="edt-prec" placeholder="préciser la raison (enregistrée)">'
-        +'<button class="edt-btn" onclick="edtSansSeance('+JSON.stringify(cle).replace(/"/g,'&quot;')+')">Enregistrer</button></div>';
+        +'<button class="edt-btn" onclick="edtSansSeance('+JSON.stringify(cle).replace(/"/g,'&quot;')+')">Banaliser cette heure</button></div>';
     }
     h+=edtJournalHtml(c.classeMjpc);
   }
@@ -20085,7 +20155,11 @@ function edtHeuresJustifiees(nomClasse){
      un écart justifié et une séance sortie de la prévision tombent à la même
      clé et se remplacent, donc une heure ne peut plus être comptée deux fois. */
   var h=((edtDecisions()[nomClasse]||{}).heures)||{},n=0;
-  Object.keys(h).forEach(function(k){ var v=h[k]; if(v&&(v.sansSeance||v.ecartJustifie))n++; });
+  /* [⑤c] une heure DÉPLACÉE n'est pas perdue, une heure classée TEMPS DE CLASSE
+     non plus : ni l'une ni l'autre n'entre dans le compte. */
+  Object.keys(h).forEach(function(k){ var v=h[k];
+    if(!v||v.deplaceeVers||v.tempsDeClasse)return;
+    if(v.sansSeance||v.ecartJustifie)n++; });
   return n;
 }
 function edtAvancement(nomClasse){
@@ -20369,7 +20443,7 @@ function edtTotauxPerdues(){
   Object.keys(edtD).forEach(function(c){
     var edtH=(edtD[c]||{}).heures||{},edtN=0,edtJ=0;
     Object.keys(edtH).forEach(function(k){
-      var v=edtH[k]; if(!v||v.deplaceeVers)return;
+      var v=edtH[k]; if(!v||v.deplaceeVers||v.tempsDeClasse)return;
       if(!(v.ecartJustifie||v.sansSeance))return;
       edtN++; if(v.justifiee!==false)edtJ++;
     });

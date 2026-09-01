@@ -1599,3 +1599,29 @@ Je l'appelle **③bis**, pas ④ : ④ est déjà pris par les prompts, dans ta 
 **Cahier vivant** — ton choix des quatre heures, puis le mandat ③bis, puis ④ à ⑧, puis ton promeus.
 
 MEMO
+
+---
+
+## TOUR 30 — Paul
+
+Texte mot pour mot :
+
+> ok c'est bon.
+
+---
+
+## TOUR 30 — Claude (conscience n°11)
+
+Mesures avant rédaction : forme exacte d'un créneau de grille (`{jour, creneau, semaine,
+classe, salle, mjpc, classeMjpc}`) · `m8TestOn()` lue · contrat de la garde relu ligne à ligne ·
+`creneauxFictifs` confirmé non lu par le code. Mandat déposé :
+`PONT/EDT/MANDAT-LOT-2ter-03bis.md`.
+
+Réponse mot pour mot : chapeau (les quatre heures validées, ce que la livraison fait tenir
+tout seul), puis le mandat entier dans un bloc copiable, puis :
+
+**Tests manuels : aucun.** Rien n'a bougé.
+
+**Cahier vivant** — ③bis en trois temps, puis ④ à ⑧, puis ton promeus.
+
+MEMO

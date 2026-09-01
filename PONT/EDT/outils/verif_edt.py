@@ -141,6 +141,42 @@ def verifier(chemin):
             continue
         fautes.append("③ écriture hub hors de /site/edt/ et hors exception : " + expr.strip()[:90])
 
+    # ④ [LOT 2ter ③bis] LE CHEMIN DE L'ÉCRITURE CENTRALE, VÉRIFIÉ PAR LA GARDE
+    #    ELLE-MÊME. Depuis la livraison ③, toutes les écritures qui remplacent un
+    #    état passent par `edtEcrireArchive(motif, chemin, avant, valeur, …)`, et
+    #    l'exception "chemin+'.json'" empêchait de voir OÙ elles écrivent. La garde
+    #    contrôle donc le DEUXIÈME argument de chaque appel : il doit être fabriqué
+    #    par le site — `edtChemin(...)`, `edtCheminTrace(...)`, ou la trace d'une
+    #    heure jouée (`t.chemin+'/absents'`, où `t` vient de `edtCheminTrace`).
+    #    Une adresse écrite à la main est refusée, nommément.
+    for m in re.finditer(r'edtEcrireArchive\s*\(', dedans):
+        if dedans[max(0, m.start() - 9):m.start()] == 'function ':
+            continue                              # la déclaration, pas un appel
+        i, prof, args, cour = m.end(), 1, [], ''
+        while i < len(dedans) and prof:
+            c = dedans[i]
+            if c in '([{':
+                prof += 1
+            elif c in ')]}':
+                prof -= 1
+                if not prof:
+                    break
+            if prof == 1 and c == ',':
+                args.append(cour); cour = ''
+            else:
+                cour += c
+            i += 1
+        args.append(cour)
+        if len(args) < 2:
+            fautes.append("④ edtEcrireArchive appelée sans chemin")
+            continue
+        chemin = args[1].strip()
+        if chemin.startswith('edtChemin(') or chemin.startswith('edtCheminTrace('):
+            continue
+        if chemin == "t.chemin+'/absents'":     # la trace d'une heure jouée, déclarée
+            continue
+        fautes.append("④ edtEcrireArchive : chemin qui n'est pas fabriqué par le site : " + chemin[:70])
+
     # les nœuds nommés en dur dans le bloc
     for m in re.finditer(r"'(/site/[^']+)'", dedans):
         chem = m.group(1)
@@ -165,4 +201,5 @@ if __name__ == '__main__':
     print('VERT — ① le bloc EDT n\u2019appelle que le contrat')
     print('       ② rien hors du bloc n\u2019appelle edt* sauf les portes déclarées')
     print('       ③ tous ses nœuds sont sous /site/edt/, hors les exceptions nommées')
+    print('       ④ l\u2019écriture centrale n\u2019écrit que là où le site l\u2019envoie')
     sys.exit(0)

@@ -2854,7 +2854,7 @@ function mjpcEcrireRest(url,options,cb){
    (les 3 gestes, le geste conservatoire par app, ce qui ne peut pas arriver).
    RESTAURER LA VERSION PRÉCÉDENTE : docs/MJPC6-restauration.md (convention BUG).
    ═══════════════════════════════════════════════════════════════════════════ */
-var APP_VERSION="8.73.0-⑤c-bis";
+var APP_VERSION="8.73.0-⑤c-ter";
 var APP_VERSION_DATE="2026-08-27";
 // ── 11. Coffre : dérivation, chiffrement, empreinte (v1.3.0) ──
 // (Le canon porte deux sections « 8 » — dette de numérotation connue, non corrigée
@@ -18664,7 +18664,9 @@ function edtEcrireBrevet(cal){
 }
 
 /* ── LA MODIFICATION À LA MAIN — après l'injection, tout reste modifiable ── */
-function edtPeriodesEcrire(liste,libelle,apres){
+/* [⑤c-ter] même raison que pour la grille : `edtPeriodes()` rend la liste VIVANTE,
+   et trois gestes la mutent avant d'appeler ici. La photo vient de l'appelant. */
+function edtPeriodesEcrire(liste,libelle,apres,avant){
   var e=edtValiderPeriodes(liste);
   if(e.length){ if(typeof atInfo==='function')atInfo(e[0]); edtPeindrePanneau(); return; }
   var o={annee:EDT_ANNEE,periodes:liste.map(function(p,i){return {id:p.id,rang:i+1,nom:p.nom,debut:p.debut||'',fin:p.fin||''};})};
@@ -18672,40 +18674,45 @@ function edtPeriodesEcrire(liste,libelle,apres){
      une période ajoutée à la main partait au hub SANS id, et les cinq fonctions qui
      désignent une période par son id ne pouvaient plus la viser. */
   try{ edtPoserIdsObjet('periodes',o); }catch(e){}
-  edtEcrireObjet('periodes',o,libelle||'Découpage en périodes',function(){
+  edtEcrireArchive('periodes',edtChemin('periodes'),(avant===undefined?EDT.periodes:avant),o,
+    libelle||'Découpage en périodes',function(){
     EDT.periodes=o; edtPeindrePanneau(); if(apres)apres(); });
 }
 function edtPeriodePoser(id,champ,valeur){
+  var edtAvant=edtPhotoDe('periodes');   /* [⑤c-ter] avant de muter la période */
   var l=edtPeriodes(); var t=null;
   l.forEach(function(p){ if(p&&p.id===id)t=p; });
   if(!t)return;
   t[champ]=String(valeur||'');
-  edtPeriodesEcrire(l,'Périodes — '+champ);
+  edtPeriodesEcrire(l,'Périodes — '+champ,null,edtAvant);
 }
 function edtPeriodeAjouter(nom){
+  var edtAvant=edtPhotoDe('periodes');   /* [⑤c-ter] avant le push dans la liste vivante */
   var l=edtPeriodes();
   var n=String(nom||'').trim();
   if(!n){ var i=l.length+1; n='P'+i; while(l.some(function(p){return p.nom===n;})){ i++; n='P'+i; } }
   l.push({rang:l.length+1,nom:n,debut:'',fin:''});
-  edtPeriodesEcrire(l,'Périodes — ajout');
+  edtPeriodesEcrire(l,'Périodes — ajout',null,edtAvant);
 }
 function edtPeriodeSupprimer(id){
   edtPeriodesEcrire(edtPeriodes().filter(function(p){return !p||p.id!==id;}),'Périodes — retrait');
 }
 function edtPeriodeDeplacer(id,sens){
+  var edtAvant=edtPhotoDe('periodes');   /* [⑤c-ter] avant la permutation dans la liste vivante */
   var l=edtPeriodes(), i=-1;
   l.forEach(function(p,k){ if(p&&p.id===id)i=k; });
   var j=i+(sens<0?-1:1);
   if(i<0||j<0||j>=l.length)return;
   var t=l[i]; l[i]=l[j]; l[j]=t;
-  edtPeriodesEcrire(l,'Périodes — ordre');
+  edtPeriodesEcrire(l,'Périodes — ordre',null,edtAvant);
 }
 function edtCreneauPoser(id,champ,valeur){
+  var edtAvant=edtPhotoDe('creneaux');   /* [⑤c-bis] l'état d'avant, avant toute mutation */
   var o=EDT.creneaux; if(!o||!Array.isArray(o.creneaux))return;
   var t=null; o.creneaux.forEach(function(c){ if(c&&c.id===id)t=c; });
   if(!t)return;
   t[champ]=String(valeur||'');
-  edtEcrireObjet('creneaux',o,'Créneaux horaires de l\u2019année',function(){
+  edtEcrireArchive('creneaux',edtChemin('creneaux'),edtAvant,o,'Créneaux horaires de l\u2019année',function(){
     EDT.creneaux=o; try{edtAppliquerCreneaux();}catch(e){} edtPeindrePanneau();
   });
 }
@@ -18740,12 +18747,15 @@ function edtValiderVersions(l){
   });
   return e;
 }
-function edtEcrireGrille(o,quoi,apres){
+/* [⑤c-bis] `edtNormaliserGrille` rend la référence VIVANTE, déjà mutée : la photo
+   ne peut pas se prendre ici, elle vient de l'appelant, avant qu'il ne touche à quoi
+   que ce soit. Sans photo reçue, on retombe sur l'ancien comportement. */
+function edtEcrireGrille(o,quoi,apres,avant){
   var e=edtValiderVersions(o.versions||[]);
   if(e.length){ if(typeof atInfo==='function')atInfo(e[0]); return; }
   if(!Array.isArray(o.journalEdt))o.journalEdt=[];
   if(quoi)o.journalEdt.push(quoi);
-  edtEcrireObjet('grille',o,'Emploi du temps \u2014 versions',function(){
+  edtEcrireArchive('grille',edtChemin('grille'),(avant===undefined?EDT.grille:avant),o,'Emploi du temps \u2014 versions',function(){
     EDT.grille=o; edtPeindrePanneau(); if(apres)apres();
   });
 }
@@ -18760,26 +18770,29 @@ function edtNormaliserGrille(){
   return o;
 }
 function edtVersionAjouter(debut,libelle){
+  var edtAvant=edtPhotoDe('grille');     /* [⑤c-bis] avant edtNormaliserGrille, qui mute */
   var o=edtNormaliserGrille(); if(!o)return;
   var source=edtGrilleA(debut)||o.versions[0];
   o.versions.push({debut:String(debut),libelle:String(libelle||'nouvelle version'),
                    creneaux:JSON.parse(JSON.stringify(source.creneaux||[]))});
   edtEcrireGrille(o,{quand:Date.now(),effet:String(debut),quoi:'version créée \u2014 '+(libelle||''),
-                     copieDe:source.debut});
+                     copieDe:source.debut},null,edtAvant);
 }
 function edtVersionPoser(debut,champ,valeur){
+  var edtAvant=edtPhotoDe('grille');     /* [⑤c-bis] avant edtNormaliserGrille, qui mute */
   var o=edtNormaliserGrille(); if(!o)return;
   var v=null; o.versions.forEach(function(x){ if(x.debut===debut)v=x; });
   if(!v)return;
   var avant=v[champ];
   v[champ]=String(valeur||'');
-  edtEcrireGrille(o,{quand:Date.now(),effet:v.debut,quoi:champ+' : « '+avant+' » \u2192 « '+v[champ]+' »'});
+  edtEcrireGrille(o,{quand:Date.now(),effet:v.debut,quoi:champ+' : « '+avant+' » \u2192 « '+v[champ]+' »'},null,edtAvant);
 }
 function edtVersionSupprimer(debut){
+  var edtAvant=edtPhotoDe('grille');     /* [⑤c-bis] avant edtNormaliserGrille, qui mute */
   var o=edtNormaliserGrille(); if(!o)return;
   if(o.versions.length<=1){ if(typeof atInfo==='function')atInfo('C\u2019est la seule version : la retirer effacerait ta semaine.'); return; }
   o.versions=o.versions.filter(function(x){return x.debut!==debut;});
-  edtEcrireGrille(o,{quand:Date.now(),effet:debut,quoi:'version retirée'});
+  edtEcrireGrille(o,{quand:Date.now(),effet:debut,quoi:'version retirée'},null,edtAvant);
 }
 
 /* ── LA PORTE ① : L'ARRIVÉE DU PROFESSEUR ────────────────────────────────
@@ -18801,9 +18814,10 @@ function edtArriveeProf(){
   return true;
 }
 function edtReglagePoser(nom,valeur){
+  var edtAvant=edtPhotoDe('reglages');   /* [⑤c-bis] l'état d'avant, avant toute mutation */
   var r=(EDT.reglages&&typeof EDT.reglages==='object')?EDT.reglages:{annee:EDT_ANNEE};
   r[nom]=valeur;
-  edtEcrireObjet('reglages',r,'Réglages de l\u2019emploi du temps',function(){
+  edtEcrireArchive('reglages',edtChemin('reglages'),edtAvant,r,'Réglages de l\u2019emploi du temps',function(){
     EDT.reglages=r; edtPeindrePanneau();
   });
 }
@@ -18962,11 +18976,12 @@ function edtPeindrePanneau(){
 }
 /* apparier toutes les cases qui portent le même nom de grille, d'un seul geste */
 function edtApparierNom(nomGrille,nomHub){
+  var edtAvant=edtPhotoDe('grille');     /* [⑤c-bis] l'état d'avant, avant toute mutation */
   var o=EDT.grille; if(!o)return;
   /* l'appariement vaut pour TOUTES les versions : une classe reste la même
      quand l'emploi du temps change. */
   edtToutesLesCases().forEach(function(c){ if(c&&c.classe===nomGrille)c.classeMjpc=String(nomHub||''); });
-  edtEcrireObjet('grille',o,'Grille — appariement des classes',function(){ EDT.grille=o; edtPeindrePanneau(); });
+  edtEcrireArchive('grille',edtChemin('grille'),edtAvant,o,'Grille — appariement des classes',function(){ EDT.grille=o; edtPeindrePanneau(); });
 }
 /* Ce que la réinjection ferait aux périodes — DIT AVANT le geste, jamais après.
    Le site ne perd rien en silence : « tu vois exactement ce qui sera écrit ». */
@@ -19622,11 +19637,12 @@ function edtCarteClic(nom){
 }
 /* la photo du prévu — jamais le mot « figer » : on ne fige pas un prévu */
 function edtPhoto(){
+  var edtAvant=edtPhotoDe('photos');     /* [⑤c-bis] l'état d'avant, avant toute mutation */
   var lundi=edtLundiCourant(), cel=edtProjeter(lundi,5);
   var o=EDT.photos&&typeof EDT.photos==='object'?EDT.photos:{annee:EDT_ANNEE,photos:[]};
   if(!Array.isArray(o.photos))o.photos=[];
   o.photos.push({prise:edtAujourdhui(),depuis:lundi,cellules:cel});
-  edtEcrireObjet('photos',o,'Photo du prévu',function(){
+  edtEcrireArchive('photos',edtChemin('photos'),edtAvant,o,'Photo du prévu',function(){
     EDT.photos=o; if(typeof atInfo==='function')atInfo('Photo du prévu prise \u2014 '+Object.keys(cel).length+' cases.');
   });
 }
@@ -19712,12 +19728,16 @@ function edtCellule(cle){ return (EDT_VUE.cellules||{})[cle]||null; }
 
 /* ── les décisions au hub ────────────────────────────────────────────────── */
 function edtDecisions(){ return (EDT.decisions&&typeof EDT.decisions==='object')?EDT.decisions:{}; }
-/* [⑤c-bis] la photo du magasin AVANT qu'un geste le mute. Hub vide : rien à
-   archiver, on rend null et l'écriture part directement. */
-function edtPhotoDecisions(){
-  if(!EDT.decisions||typeof EDT.decisions!=='object')return null;
-  try{ return JSON.parse(JSON.stringify(EDT.decisions)); }catch(e){ return EDT.decisions; }
+/* [⑤c-bis] LA PHOTO D'UN OBJET AVANT QU'UN GESTE LE MUTE. `EDT[nom]` est la
+   référence vivante : muter d'abord et archiver ensuite, c'est archiver l'état
+   d'après. Objet absent au hub : rien à remplacer, on rend null et l'écriture part
+   directement. Étendu à tous les objets le 01/09, sur signalement de Paul. */
+function edtPhotoDe(nom){
+  var edtO=EDT[nom];
+  if(!edtO||typeof edtO!=='object')return null;
+  try{ return JSON.parse(JSON.stringify(edtO)); }catch(e){ return edtO; }
 }
+function edtPhotoDecisions(){ return edtPhotoDe('decisions'); }
 /* [⑤c] CE QU'UNE HEURE BANALISÉE COÛTE, selon sa catégorie. Tout ce qui touche
    au cours — évaluer, reprendre, tenir la classe — reste du TEMPS DE CLASSE :
    ces heures-là ne sont pas perdues. Le reste est une heure perdue, justifiée ou
@@ -20844,6 +20864,7 @@ function edtValiderDepot(quoi,cleSource,iso){
 /* ① le geste durable : une version datée, et RIEN d'autre */
 function edtChangerEmploiDuTemps(cleSource,iso,creneau,effet){
   var c=edtCellule(cleSource); if(!c)return;
+  var edtAvant=edtPhotoDe('grille');     /* [⑤c-bis] avant edtNormaliserGrille, qui mute */
   var o=edtNormaliserGrille(); if(!o)return;
   var v=null; o.versions.forEach(function(x){ if(x.debut===effet)v=x; });
   if(!v){
@@ -20867,7 +20888,7 @@ function edtChangerEmploiDuTemps(cleSource,iso,creneau,effet){
   try{ edtPoserIdsObjet('grille',o); }catch(e){}
   edtEcrireGrille(o,{quand:Date.now(),effet:String(effet),
     quoi:(c.classeMjpc||c.classe)+' : '+jourSrc+' '+c.creneau+' \u2192 '+jourDst+' '+creneau},
-    function(){ edtPeindre(); });
+    function(){ edtPeindre(); },edtAvant);
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════

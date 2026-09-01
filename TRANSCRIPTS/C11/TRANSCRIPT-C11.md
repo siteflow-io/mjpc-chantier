@@ -2673,3 +2673,37 @@ C'est au registre, `n°11 · 34`, avec la leçon de méthode : quand une décisi
 **Cahier vivant** — ⑤ finale chez l'exécutant, puis ⑥ à ⑧, puis ton promeus.
 
 MEMO
+
+---
+
+## TOUR 52 — Paul
+
+Texte mot pour mot :
+
+> ok continuons
+
+---
+
+## TOUR 52 — Claude (conscience n°11)
+
+Mesure : les trois derniers commits du sas sont **les miens** (dépôts du transcript) ·
+`index.html` toujours `885ae067…` (⑤c-ter) · `rapport-2ter-05.md` absent.
+
+Réponse mot pour mot :
+
+Rien n'est arrivé de son côté : les trois derniers commits du sas sont les miens, le candidat est toujours celui de ⑤c-ter. **Il attend ton « continuer » dans sa conversation** — et la phrase du banc unique, s'il ne l'a pas déjà reçue.
+
+Ce qui lui reste pour clore ⑤ : **l'alerte mensuelle** et **la cinquième question de la garde** (comparer les consignes du site à celles du dépôt), plus les captures et l'audit adverse.
+
+Pendant qu'il travaille, je peux avancer sur ce qui ne dépend pas de lui. Deux choses utiles, dis-moi si l'une t'intéresse :
+
+- **la confrontation des dettes au code** — ta règle du tour précédent : reprendre le registre dette par dette, mesurer chacune dans le code d'aujourd'hui, rayer ce qui est fait avec la preuve, garder ce qui reste. C'est ce qui rendra ta passation propre ;
+- **la relecture des preuves des audits ① à ⑤**, pour chercher d'autres cas où j'ai prouvé l'existence au lieu du contenu.
+
+Sinon j'attends sa livraison.
+
+**Tests manuels : aucun.**
+
+**Cahier vivant** — ⑤ finale chez l'exécutant, puis ⑥ à ⑧, puis ton promeus, puis l'injection de chapitre.
+
+MEMO

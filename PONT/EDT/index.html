@@ -2854,7 +2854,7 @@ function mjpcEcrireRest(url,options,cb){
    (les 3 gestes, le geste conservatoire par app, ce qui ne peut pas arriver).
    RESTAURER LA VERSION PRÉCÉDENTE : docs/MJPC6-restauration.md (convention BUG).
    ═══════════════════════════════════════════════════════════════════════════ */
-var APP_VERSION="8.73.0-⑥b";
+var APP_VERSION="8.73.0-⑥c";
 var APP_VERSION_DATE="2026-08-27";
 // ── 11. Coffre : dérivation, chiffrement, empreinte (v1.3.0) ──
 // (Le canon porte deux sections « 8 » — dette de numérotation connue, non corrigée
@@ -19999,6 +19999,16 @@ function edtRienDePret(c){
 /* Toutes les destinations possibles, jusqu'à la FIN DE L'ANNÉE SCOLAIRE :
    ses propres créneaux (un déplacement), et les trous de son emploi du temps
    (une heure ajoutée). Groupées par semaine. Les jours sans cours sont exclus. */
+/* [⑥c] qui occupe ce créneau, si c'est une classe appariée autre que la sienne */
+function edtQuiEstEn(iso,creneau,c){
+  var edtN=null;
+  edtCasesDuJour(iso).forEach(function(x){
+    if(!x||x.creneau!==creneau||x.mjpc===false||!x.classeMjpc)return;
+    if(x.classeMjpc===(c&&c.classeMjpc))return;
+    edtN=x.classeMjpc;
+  });
+  return edtN;
+}
 function edtCreneauxOu(c,jours){
   var out=[],depart=edtPlusJour(c.iso,1);
   var fin=String(EDT_ANNEE).split('-')[1]+'-07-31';
@@ -20020,6 +20030,12 @@ function edtCreneauxOu(c,jours){
       if(sien[k])out.push({v:iso+'|'+k,sem:sem,lib:edtDateCourte(iso)+' \u00b7 '+k});
       else if(!pris[k])out.push({v:iso+'|'+k,sem:sem,ajout:true,
                                  lib:edtDateCourte(iso)+' \u00b7 '+k+'  \u2014 créneau libre, heure ajoutée'});
+      /* [⑥c] les créneaux PRIS par une autre classe sont proposés aussi : c'est le
+         geste que Paul fait tout le temps, et les trois issues s'ouvrent dessus.
+         Sans ça, « tu fais les 4C à la place des 4D vendredi » reste impossible. */
+      else if(pris[k]&&edtQuiEstEn(iso,k,c))
+        out.push({v:iso+'|'+k,sem:sem,pris:true,
+                  lib:edtDateCourte(iso)+' \u00b7 '+k+'  \u2014 pris par '+edtQuiEstEn(iso,k,c)});
     });
   }
   return out;
@@ -20028,7 +20044,7 @@ function edtOptionsOu(l){
   var h='',sem=null;
   l.forEach(function(x){
     if(x.sem!==sem){ if(sem)h+='</optgroup>'; h+='<optgroup label="'+escapeHtml(x.sem)+'">'; sem=x.sem; }
-    h+='<option value="'+escapeHtml(x.v)+(x.ajout?'|+':'')+'">'+escapeHtml(x.lib)+'</option>';
+    h+='<option value="'+escapeHtml(x.v)+(x.ajout?'|+':(x.pris?'|=':''))+'">'+escapeHtml(x.lib)+'</option>';
   });
   return h+(sem?'</optgroup>':'');
 }
@@ -20124,7 +20140,79 @@ function edtPeindreModale(){
 function edtChoisirOu(cle,valeur){
   var p=String(valeur).split('|');
   if(p[2]==='+')return edtAjouterHeure(cle,p[0]+'|'+p[1]);
+  /* [⑥c] un créneau pris ouvre les trois issues, jamais un refus */
+  if(p[2]==='=')return edtTroisIssues(cle,{iso:p[0],creneau:p[1]});
   return edtDeplacerVers(cle,p[0]+'|'+p[1]);
+}
+/* [⑥c] REPLACER POUR DE BON. L'heure à replacer est POSÉE sur une destination :
+   elle est ajoutée là-bas, et elle cesse de compter comme heure perdue ici — pas
+   seulement de figurer au rappel. */
+function edtDestinationsPour(nomClasse,iso,creneau){
+  return edtCreneauxOu({classeMjpc:nomClasse,classe:nomClasse,iso:iso,creneau:creneau},120);
+}
+function edtReplacerHeure(nomClasse,cle,cible){
+  var edtV=((edtDecisions()[nomClasse]||{}).heures||{})[cle]; if(!edtV||!cible)return;
+  var edtP=String(cible).split('|');
+  var edtN=JSON.parse(JSON.stringify(edtV));
+  edtN.replacee=true; edtN.aReplacer=false; edtN.deplaceeVers=edtP[0]+'|'+edtP[1];
+  edtEcrireDecisionsGroupe([
+    {classe:nomClasse,cle:cle,valeur:edtN},
+    {classe:nomClasse,cle:edtCleHeure(edtP[0],edtP[1],nomClasse),
+     valeur:{ajoutee:true,epingle:true,venantDe:String(cle),pose:Date.now()}}],
+    'heure replacée le '+edtP[0]+' '+edtP[1],'Heure replacée');
+}
+/* [⑥④] AUCUN TÉLESCOPAGE — vérifié, jamais supposé. Rend la LISTE des
+   télescopages trouvés sur une période : jamais deux classes au même créneau le
+   même jour, jamais deux fois la même classe, jamais une heure à la fois au
+   départ et à l'arrivée. */
+function edtVerifierCoherence(depuis,jours){
+  var edtOut=[],edtD=edtDepart=depuis||edtAujourdhui();
+  for(var edtJ=0;edtJ<(jours||30);edtJ++){
+    var edtIso=edtPlusJour(edtDepart,edtJ);
+    if(edtJourSansCours(edtIso))continue;
+    var edtVus={},edtClasses={};
+    edtProjeterJour(edtIso).forEach(function(x){
+      if(!x||!x.classeMjpc)return;
+      var edtK=x.creneau+'|'+x.classeMjpc;
+      if(edtClasses[edtK])edtOut.push(edtIso+' '+x.creneau+' : '+x.classeMjpc+' deux fois');
+      edtClasses[edtK]=true;
+      if(edtVus[x.creneau]&&edtVus[x.creneau]!==x.classeMjpc)
+        edtOut.push(edtIso+' '+x.creneau+' : '+edtVus[x.creneau]+' et '+x.classeMjpc+' au même créneau');
+      edtVus[x.creneau]=x.classeMjpc;
+    });
+  }
+  /* une heure ne peut pas être à la fois partie et arrivée */
+  var edtDec=edtDecisions();
+  Object.keys(edtDec).forEach(function(c){
+    var edtH=(edtDec[c]||{}).heures||{};
+    Object.keys(edtH).forEach(function(k){
+      var v=edtH[k];
+      if(v&&v.deplaceeVers&&(v.epingle||v.ajoutee))
+        edtOut.push(c+' '+k+' : à la fois partie et arrivée');
+    });
+  });
+  return edtOut;
+}
+function edtProjeterJour(iso){
+  var edtOut=[];
+  edtCasesDuJour(iso).forEach(function(x){
+    if(!x||x.mjpc===false||!x.classeMjpc)return;
+    var v=edtDecisionPour(x.classeMjpc,iso,x.creneau);
+    if(v&&v.deplaceeVers)return;                 /* partie ailleurs : elle n'est plus là */
+    edtOut.push(x);
+  });
+  /* les heures venues d'ailleurs comptent à leur arrivée */
+  var edtDec=edtDecisions();
+  Object.keys(edtDec).forEach(function(c){
+    var edtH=(edtDec[c]||{}).heures||{};
+    Object.keys(edtH).forEach(function(k){
+      var v=edtH[k]; if(!v||!(v.epingle||v.ajoutee)||v.deplaceeVers)return;
+      var m=String(k).match(/^(\d{4}-\d{2}-\d{2})_(\d{2}h\d{2}-\d{2}h\d{2})_/);
+      if(!m||m[1]!==iso)return;
+      edtOut.push({classeMjpc:c,creneau:m[2].replace(/h/g,':'),venue:true});
+    });
+  });
+  return edtOut;
 }
 function edtFiltrerOu(txt){
   var sel=document.getElementById('edt-ou'); if(!sel)return;
@@ -20768,8 +20856,12 @@ function edtRappelAReplacerHtml(nomClasse){
     +edtL.slice(0,6).map(function(u){
       return '<div class="edt-cal-l">'+escapeHtml(u.classe)+' · '+escapeHtml(edtJourEnClair(u.iso))
         +' '+escapeHtml(u.creneau)+(u.prisePar?(' · prise par '+escapeHtml(u.prisePar)):'')
+        +' <select class="edt-sel edt-mini" onchange="if(this.value)edtReplacerHeure('
+        +JSON.stringify(u.classe).replace(/"/g,'&quot;')+','+JSON.stringify(u.cle).replace(/"/g,'&quot;')
+        +',this.value)"><option value="">\u2014 la replacer\u2026 \u2014</option>'
+        +edtOptionsOu(edtDestinationsPour(u.classe,u.iso,u.creneau).slice(0,60))+'</select>'
         +' <button class="edt-mini" onclick="edtHeureReplacee('+JSON.stringify(u.classe).replace(/"/g,'&quot;')
-        +','+JSON.stringify(u.cle).replace(/"/g,'&quot;')+')">je l\u2019ai replacée</button>'
+        +','+JSON.stringify(u.cle).replace(/"/g,'&quot;')+')">déjà replacée ailleurs</button>'
         +' <button class="edt-mini" onclick="edtPerteSeche('+JSON.stringify(u.classe).replace(/"/g,'&quot;')
         +','+JSON.stringify(u.cle).replace(/"/g,'&quot;')+')">elle ne sera pas rendue</button></div>';
     }).join('')

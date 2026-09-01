@@ -50,6 +50,20 @@ Les dates sont toujours `AAAA-MM-JJ`. Les heures toujours `HH:MM`. Aucun champ i
 
 **`brevet`** : le DNB dure plusieurs jours. Mets dans `brevet.3e` le **premier jour** du DNB écrit au calendrier, au format `AAAA-MM-JJTHH:MM:SS` avec l'heure `08:00:00`. C'est cette date que mon site retiendra comme jour du DNB.
 
+## LES IDENTIFIANTS — c'est ma mémoire, ne la casse pas
+
+Avec ce prompt, je te donne **ce qui est déjà en service dans mon site** : tu le trouveras plus bas, sous « CE QUI EST EN SERVICE AUJOURD'HUI ». Chaque élément y porte un `id`. Cet `id` est ce qui relie l'élément à tout ce que j'ai posé à la main dessus — mes coches, mes décisions, mes heures marquées. Si tu le perds, je perds mon travail.
+
+1. **Reconduis l'`id` de tout ce que tu reconnais.** Même si le libellé a été retouché, même si la date a bougé d'un jour : c'est le même événement, il garde son `id`. Recopie-le tel quel dans ta sortie.
+2. **N'en invente aucun.** Un élément vraiment nouveau sort **sans `id`** — pas de champ `id` du tout. C'est mon site qui lui en donnera un.
+3. **Ne reformule jamais un libellé.** Je reconnais mes sorties à leur nom. Une reformulation, pour moi, c'est un objet perdu. Recopie ce qui est écrit, même maladroit.
+4. **Ne renumérote rien** : ni les rangs, ni l'ordre des éléments, ni les périodes.
+5. **Ne produis aucun champ `justifie`.** Il n'existe plus dans mon site.
+6. **Les préfixes disent la famille**, et tu n'en changes jamais : `evc:` un événement de classe · `jal:` un jalon · `eta:` un événement d'établissement · `fer:` un férié · `vac:` des vacances · `crn:` une heure de ma grille · `hor:` un horaire · `per:` une période. **Ne mets jamais un préfixe sur un objet d'une autre famille** — mon site refuse ces `id` et l'objet repart à zéro.
+7. **Dis-moi ce que tu as fait.** À la fin, en dehors du JSON, une liste courte : ce que tu as **ajouté**, ce que tu as **déplacé** (avec l'ancien et le nouveau), ce que tu as **supprimé**, et ce dont tu **n'étais pas sûr**. C'est ce que je lis avant d'injecter.
+
+Si rien ne t'est donné sous « CE QUI EST EN SERVICE AUJOURD'HUI », c'est ma première injection : aucun élément n'a d'`id`, et tu n'en mets aucun.
+
 ## Après le JSON
 
 Écris, en dehors du JSON, une courte liste : ce que tu n'as pas su classer, les libellés ambigus, les cases que tu as lues avec un doute, et le résultat de ta vérification croisée entre les couleurs de fond et les marqueurs de semaine. C'est cette liste que je relis en premier.

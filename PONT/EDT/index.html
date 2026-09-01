@@ -2854,7 +2854,7 @@ function mjpcEcrireRest(url,options,cb){
    (les 3 gestes, le geste conservatoire par app, ce qui ne peut pas arriver).
    RESTAURER LA VERSION PRÉCÉDENTE : docs/MJPC6-restauration.md (convention BUG).
    ═══════════════════════════════════════════════════════════════════════════ */
-var APP_VERSION="8.73.0-③";
+var APP_VERSION="8.73.0-③bis-a";
 var APP_VERSION_DATE="2026-08-27";
 // ── 11. Coffre : dérivation, chiffrement, empreinte (v1.3.0) ──
 // (Le canon porte deux sections « 8 » — dette de numérotation connue, non corrigée
@@ -17808,7 +17808,22 @@ function edtGrilleA(iso){
   for(var i=0;i<l.length;i++){ if(String(l[i].debut||'')<=String(iso))v=l[i]; }
   return v;
 }
-function edtCasesA(iso){ var v=edtGrilleA(iso); return (v&&v.creneaux)||[]; }
+/* [③bis-a] LE MODE TEST, VU DU BLOC EDT — une lecture, jamais une écriture. */
+function edtEnEssai(){
+  try{ return (typeof m8TestOn==='function')&&m8TestOn()===true; }catch(e){ return false; }
+}
+function edtCasesA(iso){
+  var v=edtGrilleA(iso),l=(v&&v.creneaux)||[];
+  /* [③bis-a] LA CLASSE D'ESSAI n'existe QUE le temps du mode test. Elle se lit
+     dans `creneauxFictifs`, jamais recopiée dans les créneaux réels : éteindre le
+     mode test suffit à la faire disparaître. Rien à nettoyer, rien à retenir.
+     Hors mode test, cette fonction rend exactement ce qu'elle rendait avant. */
+  if(edtEnEssai()){
+    var edtFictifs=((EDT.grille||{}).creneauxFictifs)||[];
+    if(edtFictifs.length)l=l.concat(edtFictifs.filter(function(c){ return c&&c.jour&&c.creneau; }));
+  }
+  return l;
+}
 function edtCasesCourantes(){ return edtCasesA(edtAujourdhui()); }
 function edtToutesLesCases(){
   var out=[]; edtVersions().forEach(function(v){ out=out.concat(v.creneaux||[]); });
@@ -18074,6 +18089,10 @@ function edtPoserIdsObjet(nom,o){
        il ne reçoit donc ni #2 ni rien d'autre. Deux créneaux DIFFÉRENTS d'une même
        version, eux, ne partagent jamais un id : le second en reçoit un neuf. */
     if(Array.isArray(o.creneaux)) n+=edtPoserIds(o.creneaux,'creneauxGrille',null).poses;
+    /* [③bis-a] la classe d'essai porte une identité comme les autres : posée par
+       le même mécanisme, jamais à la main, et posée même hors mode test — une
+       identité ne dépend pas de l'écran qui la regarde. */
+    if(Array.isArray(o.creneauxFictifs)) n+=edtPoserIds(o.creneauxFictifs,'creneauxGrille',null).poses;
     if(Array.isArray(o.versions)) o.versions.forEach(function(v){
       if(!v||!Array.isArray(v.creneaux))return;
       var vus={};

@@ -2854,7 +2854,7 @@ function mjpcEcrireRest(url,options,cb){
    (les 3 gestes, le geste conservatoire par app, ce qui ne peut pas arriver).
    RESTAURER LA VERSION PRÉCÉDENTE : docs/MJPC6-restauration.md (convention BUG).
    ═══════════════════════════════════════════════════════════════════════════ */
-var APP_VERSION="8.73.0-②";
+var APP_VERSION="8.73.0-③a";
 var APP_VERSION_DATE="2026-08-27";
 // ── 11. Coffre : dérivation, chiffrement, empreinte (v1.3.0) ──
 // (Le canon porte deux sections « 8 » — dette de numérotation connue, non corrigée
@@ -17924,6 +17924,84 @@ function edtApparier(entrants,existants,famille,classe){
   return r;
 }
 
+/* [③a] LES LISTES D'UNE FAMILLE DANS UN OBJET. L'entrant vient toujours en forme
+   simple ; l'existant peut être en forme datée — on compare alors la version la
+   plus récente, celle que la réinjection remplace. */
+function edtListesFamilles(nom,o){
+  var out={};
+  if(!o||typeof o!=='object')return out;
+  if(nom==='calendrier'){
+    ['evenementsClasse','jalons','etablissement','feries','vacances'].forEach(function(f){
+      if(Array.isArray(o[f]))out[f]=o[f]; });
+  }
+  else if(nom==='grille'){
+    if(Array.isArray(o.creneaux))out.creneauxGrille=o.creneaux;
+    else if(Array.isArray(o.versions)&&o.versions.length){
+      var v=o.versions[o.versions.length-1];
+      if(v&&Array.isArray(v.creneaux))out.creneauxGrille=v.creneaux;
+    }
+  }
+  else if(nom==='creneaux'){ if(Array.isArray(o.creneaux))out.creneauxHoraires=o.creneaux; }
+  else if(nom==='periodes'){ if(Array.isArray(o.periodes))out.periodes=o.periodes; }
+  return out;
+}
+function edtNomCritere(c){ return c==='_lib'?'libellé':(c==='_nom'?'nom':c); }
+function edtEtiquette(el){
+  if(!el)return '?';
+  var t=String(el.libelle||el.nom||el.titre||'');
+  var d=el.debut||el.date||'';
+  return t+(d?(' ('+d+')'):'');
+}
+/* [③a] LA PHRASE D'UNE QUESTION DIT CE QUI CHANGE, nommément — jamais un compteur. */
+function edtPhraseFaible(q){
+  var f=EDT_FAMILLES[q.famille]||{forts:[]},quoi=[];
+  var brut=function(el,c){
+    if(c==='_lib')return String((el&&(el.libelle||el.nom||el.titre))||'');
+    if(c==='_nom')return String((el&&el.nom)||'');
+    return String((el&&el[c])==null?'':el[c]);
+  };
+  f.forts.forEach(function(c){
+    /* la comparaison se fait sur la valeur normalisée, mais Paul lit SON texte */
+    if(edtValeurCritere(q.existant,c)===edtValeurCritere(q.entrant,c))return;
+    quoi.push(edtNomCritere(c)+' : '+(brut(q.existant,c)||'—')+' → '+(brut(q.entrant,c)||'—'));
+  });
+  return escapeHtml(edtEtiquette(q.existant))+' semble être devenu « '
+    +escapeHtml(edtEtiquette(q.entrant))+' ».<br>'+escapeHtml(quoi.join(' · '))
+    +'<br><br>C’est bien le même ?';
+}
+/* [③a] LA RECONDUCTION DES IDENTITÉS À LA RÉINJECTION — avant toute écriture.
+   Les FORTS sont appliqués sans un mot : même objet, même identité. Les FAIBLES
+   ne sont JAMAIS appliqués ici : ils sont rendus pour être posés en question.
+   Une ambiguïté ne se devine pas : l'entrant arrive comme neuf, et c'est dit. */
+function edtReconduire(nom,entrant){
+  var res={familles:{},faibles:[],ambigus:[],forts:0,arrivent:0,disparaissent:0};
+  var av=edtListesFamilles(nom,EDT[nom]||null),ap=edtListesFamilles(nom,entrant);
+  Object.keys(ap).forEach(function(f){
+    var r=edtApparier(ap[f],av[f]||[],f,null);
+    r.fort.forEach(function(x){ if(x.existant&&x.existant.id&&x.entrant)x.entrant.id=x.existant.id; });
+    r.faible.forEach(function(x){ res.faibles.push({famille:f,entrant:x.entrant,existant:x.existant}); });
+    r.ambigus.forEach(function(a){ res.ambigus.push({famille:f,entrant:a.entrant,candidats:a.candidats,par:a.par}); });
+    res.familles[f]=r; res.forts+=r.fort.length;
+    res.arrivent+=r.arrivent.length; res.disparaissent+=r.disparaissent.length;
+  });
+  return res;
+}
+/* [③a] LES FAIBLES SE POSENT EN QUESTION, UNE PAR UNE. Rien ne s'écrit tant que
+   Paul n'a pas répondu ; « non » laisse l'entrant arriver comme un objet neuf. */
+function edtQuestionsFaibles(liste,apres){
+  var i=0;
+  var edtSuite=function(){
+    if(i>=liste.length){ if(apres)apres(); return; }
+    var q=liste[i++];
+    if(typeof atModaleChoix!=='function'){ edtSuite(); return; }
+    atModaleChoix(edtPhraseFaible(q),
+      [{lib:'Non, c’est autre chose',fn:edtSuite},
+       {lib:'Oui, c’est le même',prim:true,fn:function(){
+         if(q.existant&&q.existant.id&&q.entrant)q.entrant.id=q.existant.id; edtSuite(); }}]);
+  };
+  edtSuite();
+}
+
 /* POSE SUR UN OBJET ENTIER — le chemin réel de la rentrée est la PREMIÈRE
    INJECTION (le hub est vide) : les id naissent là, avant la première écriture. */
 function edtPoserIdsObjet(nom,o){
@@ -18363,6 +18441,16 @@ function edtInjVerifier(voie){
 function edtInjInjecter(voie){
   var v=EDT_VOIES[voie], o=EDT_INJ.objet;
   if(!v||!o){ if(typeof atInfo==='function')atInfo('Rien à injecter : vérifie d\u2019abord le texte collé.'); return; }
+  /* [③a] RECONDUIRE LES IDENTITÉS AVANT TOUTE ÉCRITURE. Les forts en silence, les
+     faibles en question : rien ne s'écrit tant que Paul n'a pas répondu. Sans ça,
+     un calendrier réinjecté sans id traitait tout comme neuf et les décisions de
+     Paul ne retrouvaient plus leur objet. */
+  if(!EDT_INJ.apparie){
+    EDT_INJ.apparie=true;
+    var rec=null; try{ rec=edtReconduire(v.objet,o); }catch(e){ rec=null; }
+    EDT_INJ.diff=rec; EDT.diffInjection=rec;   /* lisible après coup : l'écran s'en sert */
+    if(rec&&rec.faibles.length){ edtQuestionsFaibles(rec.faibles,function(){ edtInjInjecter(voie); }); return; }
+  }
   try{ edtPoserIdsObjet(v.objet,o); }catch(e){}   /* ① les id naissent AVANT la première écriture */
   /* [②] UN ÉVÉNEMENT QUI DISPARAÎT EMPORTE DES COCHES : elles sont NOMMÉES avant
      le geste, jamais supprimées en silence. Elles restent au magasin quoi qu'il
@@ -18401,6 +18489,10 @@ function edtInjInjecter(voie){
 function edtInjecterAvecLaGrille(o){
   if(Array.isArray(o.creneauxDuSite)&&o.creneauxDuSite.length){
     var k={annee:(o.annee||EDT_ANNEE),creneaux:o.creneauxDuSite};
+    /* [③a] les horaires reconduisent leurs identités par appariement FORT (début
+       et fin concordants). Les faibles ne sont pas appliqués ici : ils arrivent
+       comme neufs — jamais de conservation silencieuse sur un faible. */
+    try{ edtReconduire('creneaux',k); }catch(e){}
     try{ edtPoserIdsObjet('creneaux',k); }catch(e){}
     mjpcPutJson(FIREBASE_BASE+edtChemin('creneaux')+'.json',k,'Créneaux horaires de l\u2019année',function(){
       EDT.creneaux=k; try{edtAppliquerCreneaux();}catch(e){} edtPeindrePanneau(); });

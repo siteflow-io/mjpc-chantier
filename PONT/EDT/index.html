@@ -2854,7 +2854,7 @@ function mjpcEcrireRest(url,options,cb){
    (les 3 gestes, le geste conservatoire par app, ce qui ne peut pas arriver).
    RESTAURER LA VERSION PRÉCÉDENTE : docs/MJPC6-restauration.md (convention BUG).
    ═══════════════════════════════════════════════════════════════════════════ */
-var APP_VERSION="8.73.0-⑤c-ter";
+var APP_VERSION="8.73.0-⑤";
 var APP_VERSION_DATE="2026-08-27";
 // ── 11. Coffre : dérivation, chiffrement, empreinte (v1.3.0) ──
 // (Le canon porte deux sections « 8 » — dette de numérotation connue, non corrigée
@@ -18288,6 +18288,22 @@ edtChargeInscrire('coches',function(){
   return null;
 });
 
+/* [⑤] LA DATE D'INJECTION DE REPLI. Un objet déjà au hub qui ne porte pas sa date
+   la reçoit au PREMIER chargement : le site compte les jours à partir de là, et ne
+   crie donc jamais le jour où Paul ouvre le site pour la première fois. */
+edtChargeInscrire('dateInjection',function(){
+  var edtT={},edtDit=[],edtN=0;
+  EDT_OBJETS.forEach(function(o){
+    var edtO=EDT[o];
+    if(!edtO||typeof edtO!=='object'||Array.isArray(edtO))return;
+    if(edtO.injecteLe)return;
+    edtO.injecteLe=edtAujourdhui(); edtT[o]=edtO; edtN++;
+  });
+  if(!edtN)return null;
+  edtDit.push(edtN+' objet(s) sans date d\u2019injection : la date du jour leur est posée');
+  return {objets:edtT,dit:edtDit};
+});
+
 /* L'ÉCRITURE UNIQUE DE MISE À NIVEAU — une seule, quelles que soient les charges.
    Elle ARCHIVE avant d'écrire. Si l'archivage OU l'écriture échoue, RIEN n'est
    écrit : le site continue en lecture avec les valeurs calculées en mémoire,
@@ -18599,6 +18615,7 @@ function edtInjInjecter(voie){
     edtQuestionsFaibles(EDT_INJ.diff.faibles,function(){ edtInjInjecter(voie); }); return;
   }
   try{ edtPoserIdsObjet(v.objet,o); }catch(e){}   /* ① les id naissent AVANT la première écriture */
+  o.injecteLe=edtAujourdhui();   /* [⑤] l'objet porte la date de sa dernière injection */
   /* [②] UN ÉVÉNEMENT QUI DISPARAÎT EMPORTE DES COCHES : elles sont NOMMÉES avant
      le geste, jamais supprimées en silence. Elles restent au magasin quoi qu'il
      arrive — ce que Paul a posé à la main survit à l'objet qui l'a causé. */
@@ -18832,6 +18849,26 @@ function edtEtatLigne(nom,objet,compte){
   return '<div class="edt-etat'+(ok?' edt-ok':'')+'"><b>'+escapeHtml(nom)+'</b> \u2014 '
     +(ok?escapeHtml(compte):'aucun objet injecté')+'</div>';
 }
+/* [⑤] L'ALERTE MENSUELLE — AVEUGLE, SANS RÉSEAU. Le site ne va rien lire dehors :
+   il compte les jours depuis la dernière injection. Un mois, et il le dit une fois,
+   sans bloquer. « Plus tard » repousse de trente jours. */
+function edtJoursDepuis(iso){
+  if(!iso)return null;
+  var edtA=new Date(String(iso)+'T00:00:00'),edtB=new Date(edtAujourdhui()+'T00:00:00');
+  if(isNaN(edtA.getTime()))return null;
+  return Math.floor((edtB-edtA)/86400000);
+}
+function edtAlerteInjection(){
+  var edtCal=EDT.calendrier; if(!edtCal||typeof edtCal!=='object')return null;
+  var edtJ=edtJoursDepuis(edtCal.injecteLe);
+  if(edtJ===null||edtJ<30)return null;
+  var edtR=(EDT.reglages&&EDT.reglages.rappelCalendrierLe)||null;
+  if(edtR&&edtAujourdhui()<edtR)return null;            /* « Plus tard » : on se tait */
+  return {jours:edtJ,depuis:edtCal.injecteLe};
+}
+function edtRappelPlusTard(){
+  edtReglagePoser('rappelCalendrierLe',edtPlusJour(edtAujourdhui(),30));
+}
 function edtPeindrePanneau(){
   var el=document.getElementById('edt-panneau'); if(!el)return;
   edtPoserCss();
@@ -18852,12 +18889,20 @@ function edtPeindrePanneau(){
     +'<label class="edt-regl"><input type="checkbox"'+(arrive?' checked':'')
     +' onchange="edtReglagePoser(\'arriverSurEdt\',this.checked)"> arriver sur l\u2019emploi du temps en me connectant</label>'
     +EDT_OBJETS.filter(function(o){return !!EDT[o];}).map(function(o){
-      return '<button class="edt-btn" onclick="edtSortirJson(\''+o+'\')" title="copier le JSON tel qu\u2019il est au hub">\u2913 Sortir le JSON \u2014 '+o+'</button>';
+      var edtD=(EDT[o]&&EDT[o].injecteLe)?(' — injecté le '+edtJourEnClair(EDT[o].injecteLe)):'';
+      return '<button class="edt-btn" onclick="edtSortirJson(\''+o+'\')" title="copier le JSON tel qu\u2019il est au hub'+escapeHtml(edtD)+'">\u2913 Sortir le JSON \u2014 '+o+escapeHtml(edtD)+'</button>';
     }).join('')
     /* [④a] un bouton par voie : la consigne ET le JSON en service, d'un seul geste */
     +Object.keys(EDT_PROMPTS).map(function(k){
       return '<button class="edt-btn" onclick="edtCopierPrompt(\''+k+'\')" title="la consigne pour l\u2019IA et le JSON en service, en un seul bloc">\ud83d\udccb Copier le prompt \u2014 '+k+'</button>';
     }).join('')+'</div>';
+  var edtAl=null; try{ edtAl=edtAlerteInjection(); }catch(e){}
+  if(edtAl)
+    h+='<div class="edt-bloc edt-rappel"><p class="edt-p">Le calendrier de l\u2019année a été injecté '
+      +'il y a '+(edtAl.jours<60?'un mois':(Math.floor(edtAl.jours/30)+' mois'))
+      +' — pense à le réinjecter s\u2019il a bougé.</p>'
+      +'<div class="edt-actions"><button class="edt-btn edt-btn-prim" onclick="edtInjOuvrir(\'calendrier\')">Réinjecter maintenant\u2026</button>'
+      +'<button class="edt-btn" onclick="edtRappelPlusTard()">Plus tard</button></div></div>';
   h+='<div class="edt-bloc"><div class="edt-titre">\u2728 Injecter un objet</div>'
     +'<div class="edt-voies">'
     +Object.keys(EDT_VOIES).map(function(k){

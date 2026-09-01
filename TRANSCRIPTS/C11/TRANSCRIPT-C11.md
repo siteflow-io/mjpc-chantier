@@ -2307,3 +2307,57 @@ C'est au registre, tour 226.
 **Cahier vivant** — ⑤ finale, puis ⑥ à ⑧. Et, avant ton promeus : la confrontation dettes ↔ code, et la relecture des preuves.
 
 MEMO
+
+---
+
+## TOUR 45 — Paul
+
+Texte mot pour mot :
+
+> donc en fait le banc doit être élargi. il doit tout tester, c'est tout.
+
+---
+
+## TOUR 45 — Claude (conscience n°11)
+
+Mesure : **34 bancs** au sas, tous en vrai navigateur · nombre de clics réels par banc ·
+**aucun banc qui rejoue tout** (`banc-tous`, `-complet`, `-regression`, `-suite` : 404).
+Registre : tour 227.
+
+Réponse mot pour mot :
+
+**Tu as raison. Et la mesure dit exactement où le banc a manqué.**
+
+## Ce que j'ai trouvé en regardant les bancs
+
+Il y en a **34** au sas, et **tous tournent dans un vrai navigateur** — ce ne sont pas des reconstructions. Le problème est ailleurs : **ils ne passent pas tous par tes gestes**.
+
+Celui par où la dette est passée, `banc-archivage-03`, fait **zéro clic**. Il appelait la fonction directement, avec des objets fabriqués pour l'occasion — donc deux objets différents, là où ton vrai geste passe **le même objet déjà modifié**. Il prouvait que la porte marche, pas que ton geste est protégé.
+
+Les livraisons récentes, elles, cliquent : quatre clics réels dans celui des motifs. **La pratique s'est corrigée d'elle-même — mais la règle n'était écrite nulle part.**
+
+## Ce qui manque vraiment
+
+**Il n'existe aucun banc qui rejoue tout.** J'ai cherché : rien. **34 bancs séparés, relancés à la main** à chaque livraison. Un exécutant qui en oublie un ne le voit pas, et moi non plus.
+
+C'est ça, ton « il doit tout tester » : pas un banc qui grossit, **un seul point d'entrée qui ne laisse rien de côté**.
+
+## Ce que je grave dans tous les mandats à partir de maintenant
+
+**Un banc passe par le geste, jamais par la fonction.** Ce qui n'est pas atteignable par un clic n'est pas prouvé — et se déclare comme tel.
+
+**Une preuve dit ce qu'elle contient, pas seulement qu'elle existe.** « Une archive est partie » ne prouve rien ; il faut ce qu'il y a dedans, compté, dans les conditions réelles.
+
+## Ce que je propose
+
+**Un banc unique — `banc-tout.mjs` — qui enchaîne les 34 d'une seule commande et échoue si un seul échoue.** À exiger dans chaque mandat à partir du ⑥, et à rejouer avant chaque promeus.
+
+Un mot et je le mets dans le mandat ⑥.
+
+C'est au registre, tour 227.
+
+**Tests manuels : aucun.**
+
+**Cahier vivant** — ⑤ finale chez l'exécutant, puis ⑥ (avec le banc unique, si tu le veux), puis ⑦ et ⑧, puis ton promeus.
+
+MEMO

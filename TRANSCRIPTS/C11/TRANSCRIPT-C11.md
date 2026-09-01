@@ -2836,3 +2836,59 @@ Tout est au registre, `n°11 · 36`.
 **Cahier vivant** — ⑥b, ⑥c, ⑥, puis ⑦ et ⑧, puis ton promeus, puis l'injection de chapitre.
 
 MEMO
+
+---
+
+## TOUR 56 — Paul
+
+Texte mot pour mot :
+
+> livré
+
+---
+
+## TOUR 56 — Claude (conscience n°11)
+
+Audit joué : candidat mesuré (1 737 659 o / `aeb8a9d7…`) · non-régression · `edtEcraserHeure`,
+`edtHeuresAReplacer` et `edtPerteSeche` lues · **banc indépendant sur le cycle complet, monté
+deux fois** (le premier ne portait pas le champ que le code écrit). Registre : `n°11 · 37`.
+
+Réponse mot pour mot :
+
+**Verdict : ça va. Et un point que je porte à la livraison suivante.**
+
+## Le cycle d'une heure prise, rejoué par moi
+
+**Après un écrasement** : l'heure de la 4E est listée « à replacer », avec le nom de la classe qui l'a prise. Elle compte **1 heure perdue, 0 justifiée**.
+
+**Quand tu la replaces** : elle **sort du rappel**.
+
+**Quand tu déclares la perte sèche** : le motif devient « prise par une autre classe », **justifiée** — c'est ta règle, et le rappel se vide.
+
+## Une erreur de banc, la mienne — la troisième
+
+Mon premier essai posait la décision **à la main**, sans le champ que le vrai code écrit. Il m'a donné « 1 perdue / **1** justifiée » au lieu de « 1 / **0** ». **Le code était juste, mon banc était infidèle.**
+
+C'est exactement la faute que tu as fait graver ce matin. Je l'ai corrigée en lisant le code avant de conclure — mais je te la dis, parce que c'est la troisième fois aujourd'hui.
+
+## Le point que je porte à ⑥c
+
+Quand tu déclares « je l'ai replacée », l'heure **sort du rappel mais reste comptée comme perdue**.
+
+Il le déclare honnêtement : « je l'ai replacée » est une **déclaration**, pas une **pose** — poser vraiment l'heure sur un créneau, c'est la liste des destinations, donc ⑥c.
+
+**Mais si ça reste comme ça, ton total de juin sera faux.** Je l'exige dans la prochaine livraison : **quand l'heure est réellement posée, elle cesse de compter comme perdue.**
+
+Il signale aussi que la bascule de fin d'année attend `finAnnee`, qui arrive à la livraison finale. C'est juste.
+
+Tout est au registre, `n°11 · 37`.
+
+**Tests manuels : aucun.** Rien en ligne.
+
+**Ce qu'il attend de toi : « continuer »**, et cette phrase :
+
+> En ⑥c, une heure réellement posée depuis la liste des destinations **cesse de compter comme heure perdue** — pas seulement de figurer au rappel. Prouve-le : total avant, total après.
+
+**Cahier vivant** — ⑥c, ⑥, puis ⑦ et ⑧, puis ton promeus, puis l'injection de chapitre.
+
+MEMO

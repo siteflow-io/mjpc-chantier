@@ -335,13 +335,44 @@
  ],
  "creneauxFictifs": [
   {
-   "jour": "",
-   "creneau": "",
+   "jour": "lundi",
+   "creneau": "08:00-08:55",
    "semaine": "AB",
-   "classe": "",
+   "classe": "3E Charles de Gaulle (classe d'essai)",
+   "salle": "",
+   "mjpc": true,
    "classeMjpc": "3E Charles de Gaulle",
-   "fictif": true,
-   "note": "À poser par Paul (§⑥bis) : la classe expérimentale reçoit ses créneaux sur des trous réels de la grille. Trous disponibles, mesurés : lundi 08:00 · lundi 13:00 · lundi 13:57 · lundi 11:04 (A) · mardi 08:00 · mardi 08:57 (A) · mardi 11:04 (A) · mardi 13:57 (B) · mardi 16:04 (A) · jeudi 08:00 · jeudi 08:57 · jeudi 10:07 · jeudi 11:04 (A) · jeudi 13:00 · jeudi 13:57 · vendredi 13:00 · vendredi 13:57 · vendredi 15:07 · vendredi 16:04. Jamais le mercredi après 11h59 : pas cours."
+   "fictif": true
+  },
+  {
+   "jour": "mardi",
+   "creneau": "08:00-08:55",
+   "semaine": "AB",
+   "classe": "3E Charles de Gaulle (classe d'essai)",
+   "salle": "",
+   "mjpc": true,
+   "classeMjpc": "3E Charles de Gaulle",
+   "fictif": true
+  },
+  {
+   "jour": "jeudi",
+   "creneau": "10:07-11:02",
+   "semaine": "AB",
+   "classe": "3E Charles de Gaulle (classe d'essai)",
+   "salle": "",
+   "mjpc": true,
+   "classeMjpc": "3E Charles de Gaulle",
+   "fictif": true
+  },
+  {
+   "jour": "vendredi",
+   "creneau": "13:00-13:55",
+   "semaine": "AB",
+   "classe": "3E Charles de Gaulle (classe d'essai)",
+   "salle": "",
+   "mjpc": true,
+   "classeMjpc": "3E Charles de Gaulle",
+   "fictif": true
   }
  ],
  "periodes": [
@@ -385,5 +416,6 @@
  ],
  "sansApresMidi": {
   "mercredi": "12:00"
- }
+ },
+ "noteFictifs": "Quatre heures d'essai posées le 01/09 par décision de Paul (lundi 08:00, mardi 08:00, jeudi 10:07, vendredi 13:00, semaine AB). Elles ne sont lues QUE si le mode test du site est allumé : éteint, elles n'existent pas et ne comptent nulle part. Rien à nettoyer."
 }

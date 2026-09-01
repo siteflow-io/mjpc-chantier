@@ -2247,3 +2247,63 @@ Tout est au registre, tour 225.
 **Cahier vivant** — ⑤ finale (alerte mensuelle, cinquième question de la garde, les quatre photos manquantes), puis ⑥ à ⑧, puis ton promeus, puis l'injection de chapitre.
 
 MEMO
+
+---
+
+## TOUR 44 — Paul
+
+Texte mot pour mot :
+
+> tu es en train de me dire que des dettes sont passées malgré vos affirmations de zéro dettes?
+
+---
+
+## TOUR 44 — Claude (conscience n°11)
+
+Mesure : recherche du motif fautif sur tout le bloc EDT — **2 fonctions trouvées
+automatiquement contre 4 trouvées par la lecture**, l'écart s'expliquant par les mutations
+indirectes. Registre : tour 226.
+
+Réponse mot pour mot :
+
+**Oui. Une dette est passée, et elle est passée par moi. Voici comment, précisément.**
+
+## Ce que j'ai vérifié, et ce que je n'ai pas vérifié
+
+À la livraison ③, j'ai mesuré trois choses sur mon banc : l'archive part **avant** l'écriture · si l'archivage échoue, **rien ne s'écrit** · s'il n'y a rien à remplacer, pas d'archive inutile.
+
+**Ces trois preuves sont vraies. Aucune ne prouvait ce qu'il fallait.**
+
+Dans mon banc, je passais **deux objets différents** : l'ancien d'un côté, le nouveau de l'autre. Le vrai code passe **le même objet, déjà modifié**. J'ai donc vérifié **qu'une archive partait** — jamais **ce qu'elle contenait dans les conditions réelles**.
+
+Mon banc était trop propre. Une preuve d'existence n'est pas une preuve de contenu.
+
+## Ce que ça a coûté
+
+**Rien au hub.** Les écritures sont justes, tes données sont bonnes. C'est le **filet** qui ne retenait rien : la corbeille et ↶ Annuler.
+
+## Combien, et ce que je ne peux pas te garantir
+
+Une faute, **cinq endroits connus** : les trois écritures de tes décisions, corrigées, et les quatre que j'ai trouvées hier.
+
+**Et je ne peux pas te garantir que c'est tout.** Je viens de chercher le motif automatiquement sur tout le bloc : il n'en trouve que **deux sur les quatre** que j'avais trouvés en lisant. Parce que la modification peut passer par une variable dérivée ou par une fonction intermédiaire. **Seule la lecture, fonction par fonction, est fiable** — et c'est ce que j'ai fait pour les neuf écritures.
+
+## Ce que je change, à partir de maintenant
+
+**Je n'écrirai plus « aucune dette ».** J'écrirai « aucune dette trouvée par ces mesures », avec la liste. Un verdict tranché doit porter sur ce que j'ai éprouvé, pas au-delà. « Ça va » veut dire « ce que j'ai éprouvé tient » — pas « il n'y a rien ».
+
+**Et un banc doit reproduire le motif réel.** Quand le vrai code passe une référence, mon banc passe une référence.
+
+## Ce que ça confirme
+
+Ta dette sur la dette. La confrontation du code au registre n'est pas un rangement : **c'est le seul moyen de rattraper ce qui est passé.**
+
+Je propose d'y ajouter la même chose pour les preuves : **avant ton promeus, relire chaque preuve des audits ① à ⑤ et se demander, pour chacune, ce qu'elle prouve vraiment.** C'est ton geste, appliqué aux preuves au lieu des dettes.
+
+C'est au registre, tour 226.
+
+**Tests manuels : aucun.**
+
+**Cahier vivant** — ⑤ finale, puis ⑥ à ⑧. Et, avant ton promeus : la confrontation dettes ↔ code, et la relecture des preuves.
+
+MEMO

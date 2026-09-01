@@ -2078,3 +2078,61 @@ Tout est au registre, tour 222.
 **Cahier vivant** — ⑤b, ⑤c, ⑤, puis ⑥ à ⑧, puis ton promeus, puis l'injection de chapitre.
 
 MEMO
+
+---
+
+## TOUR 41 — Paul
+
+Texte mot pour mot :
+
+> livré
+
+---
+
+## TOUR 41 — Claude (conscience n°11)
+
+Audit joué : candidat mesuré (1 719 497 o / `f871fb05…`) · non-régression · dix catégories
+comparées · rapport lu · **banc indépendant sur `edtTotauxPerdues`, sept cas posés par moi** ·
+présence du `delete` redondant revérifiée. Registre : tour 223.
+
+Réponse mot pour mot :
+
+**Verdict : ça va. Aucune dette. Et la faute la plus coûteuse du lot est fermée.**
+
+## La preuve, rejouée par moi
+
+C'est celle qui protège ton bilan de juin. J'ai posé les cas moi-même :
+
+**Une heure cochée à cause d'un événement** → 1 heure perdue, 1 justifiée, et **non basculable** : ce qui vient de l'établissement ne se discute pas.
+
+**La même heure, dont le motif est remplacé par une banalisation** → **toujours 1 heure perdue**, jamais deux. Et elle est devenue **basculable** : le motif qui gagne apporte ses règles.
+
+**Une heure déplacée** → **zéro**. Elle n'est pas perdue, elle est ailleurs.
+
+**Une décision posée avant cette livraison**, qui n'a pas de motif écrit → le site en déduit « événement du calendrier » et la compte quand même. Rien de ce que tu as déjà coché n'est perdu.
+
+**Une décision bancale**, ni coche ni banalisation → **zéro**. Rien n'est compté par erreur.
+
+## Ce que le site te dit maintenant, avant d'écrire
+
+> Cette heure est déjà comptée perdue — événement du calendrier — Séjour Verdun 3e. La banaliser remplacera ce motif. **L'heure ne sera comptée qu'une fois**, et son statut deviendra modifiable.
+
+Et l'inverse, symétrique. **Rien n'est écrit avant que tu répondes**, j'ai vérifié : le journal des écritures est vide tant que la question est posée.
+
+↶ Annuler rend le motif d'origine, relu au hub.
+
+## Une faute — la mienne
+
+Le `delete` inutile que je t'ai signalé au tour précédent **est toujours là**. Ce n'est pas de sa faute : je l'ai écrit au registre et je te l'ai dit, **mais je ne l'ai pas mis dans son mandat** — celui-ci était déjà déposé. Il ne pouvait pas le savoir.
+
+Je le porte explicitement dans le mandat suivant.
+
+Tout est au registre, tour 223.
+
+**Tests manuels : aucun.** Rien en ligne.
+
+**Ce qu'il attend de toi : « continuer ».** La suite est ⑤c — « Banaliser cette heure », les dix catégories et leur classement.
+
+**Cahier vivant** — ⑤c, ⑤, puis ⑥ à ⑧, puis ton promeus, puis l'injection de chapitre.
+
+MEMO

@@ -2854,7 +2854,7 @@ function mjpcEcrireRest(url,options,cb){
    (les 3 gestes, le geste conservatoire par app, ce qui ne peut pas arriver).
    RESTAURER LA VERSION PRÉCÉDENTE : docs/MJPC6-restauration.md (convention BUG).
    ═══════════════════════════════════════════════════════════════════════════ */
-var APP_VERSION="8.73.0-⑤c";
+var APP_VERSION="8.73.0-⑤c-bis";
 var APP_VERSION_DATE="2026-08-27";
 // ── 11. Coffre : dérivation, chiffrement, empreinte (v1.3.0) ──
 // (Le canon porte deux sections « 8 » — dette de numérotation connue, non corrigée
@@ -19241,6 +19241,7 @@ function edtDecisionsOrphelines(){
   return out;
 }
 function edtRattacherDecisions(ancien,nouveau){
+  var edtPhoto=edtPhotoDecisions();   /* [⑤c-bis] l'état d'avant, avant toute mutation */
   var d=edtDecisions(),src=d[ancien];
   if(!src||!src.heures)return;
   if(!d[nouveau])d[nouveau]={heures:{},journal:[]};
@@ -19258,7 +19259,7 @@ function edtRattacherDecisions(ancien,nouveau){
     delete src.heures[k]; n++;
   });
   if(!Object.keys(src.heures).length)delete d[ancien];
-  edtEcrireObjet('decisions',d,'Décisions rattachées à « '+nouveau+' »',function(){
+  edtEcrireArchive('decisions',edtChemin('decisions'),edtPhoto,d,'Décisions rattachées à « '+nouveau+' »',function(){
     EDT.decisions=d;
     if(typeof atInfo==='function')
       atInfo(n+' heure'+(n>1?'s':'')+' rattachée'+(n>1?'s':'')+' à « '+nouveau+' »'
@@ -19711,6 +19712,12 @@ function edtCellule(cle){ return (EDT_VUE.cellules||{})[cle]||null; }
 
 /* ── les décisions au hub ────────────────────────────────────────────────── */
 function edtDecisions(){ return (EDT.decisions&&typeof EDT.decisions==='object')?EDT.decisions:{}; }
+/* [⑤c-bis] la photo du magasin AVANT qu'un geste le mute. Hub vide : rien à
+   archiver, on rend null et l'écriture part directement. */
+function edtPhotoDecisions(){
+  if(!EDT.decisions||typeof EDT.decisions!=='object')return null;
+  try{ return JSON.parse(JSON.stringify(EDT.decisions)); }catch(e){ return EDT.decisions; }
+}
 /* [⑤c] CE QU'UNE HEURE BANALISÉE COÛTE, selon sa catégorie. Tout ce qui touche
    au cours — évaluer, reprendre, tenir la classe — reste du TEMPS DE CLASSE :
    ces heures-là ne sont pas perdues. Le reste est une heure perdue, justifiée ou
@@ -19785,6 +19792,11 @@ function edtDatePose(v){
   return d.getDate()+' '+(EDT_MOIS[d.getMonth()]||'');
 }
 function edtEcrireDecision(nomClasse,cleHeure,valeur,quoi){
+  /* [⑤c-bis] L'ARCHIVE PORTE L'ÉTAT D'AVANT. `edtDecisions()` rend la référence
+     vivante : muter d'abord et archiver ensuite, c'est archiver l'état d'après.
+     Même faute que celle fermée en ①bis-a pour la mise à niveau, jamais portée
+     ici. La photo se prend AVANT toute écriture. */
+  var edtPhoto=edtPhotoDecisions();
   var d=edtDecisions();
   if(!d[nomClasse])d[nomClasse]={heures:{},journal:[]};
   if(!d[nomClasse].heures)d[nomClasse].heures={};
@@ -19793,7 +19805,7 @@ function edtEcrireDecision(nomClasse,cleHeure,valeur,quoi){
   if(valeur===null)delete d[nomClasse].heures[cleHeure];
   else d[nomClasse].heures[cleHeure]=valeur;
   d[nomClasse].journal.push({quand:Date.now(),heure:cleHeure,quoi:quoi,avant:avant,apres:valeur});
-  edtEcrireObjet('decisions',d,'Décisions horaires — '+nomClasse,function(){
+  edtEcrireArchive('decisions',edtChemin('decisions'),edtPhoto,d,'Décisions horaires — '+nomClasse,function(){
     EDT.decisions=d; edtPeindre(); edtPeindreModale();
   });
 }
@@ -20474,8 +20486,10 @@ function edtHeurePerdue(rang,coche){
     }
     edtPoser();
   } else {
-    var edtD=edtDecisions();
-    if(edtD[edtF.classe]&&edtD[edtF.classe].heures)delete edtD[edtF.classe].heures[edtF.cle];
+    /* [⑤c-bis] AUCUNE MUTATION ICI. `edtEcrireDecisionsGroupe` fait le retrait
+       lui-même ; le faire d'avance vidait la mémoire avant l'archivage, et le
+       journal enregistrait alors un « avant » vide — ↶ Annuler n'avait plus rien
+       à rendre. Signalé par Paul le 01/09. */
     edtEcrireDecisionsGroupe([{classe:edtF.classe,cle:edtF.cle,valeur:null}],
       'heure perdue retir\u00e9e \u2014 '+edtF.libelle,'Heures perdues');
   }
@@ -20600,6 +20614,7 @@ function edtCochesDeplacees(ev){
    nœud. Le journal reçoit une ligne par heure, avec l'avant et l'après. */
 function edtEcrireDecisionsGroupe(entrees,quoi,libelle){
   if(!entrees||!entrees.length)return;
+  var edtPhoto=edtPhotoDecisions();   /* [⑤c-bis] l'état d'avant, avant toute mutation */
   var d=edtDecisions();
   entrees.forEach(function(e){
     if(!d[e.classe])d[e.classe]={heures:{},journal:[]};
@@ -20610,7 +20625,7 @@ function edtEcrireDecisionsGroupe(entrees,quoi,libelle){
     else d[e.classe].heures[e.cle]=e.valeur;
     d[e.classe].journal.push({quand:Date.now(),heure:e.cle,quoi:quoi,avant:avant,apres:(e.valeur===null?null:e.valeur)});
   });
-  edtEcrireObjet('decisions',d,libelle||'Décisions horaires',function(){
+  edtEcrireArchive('decisions',edtChemin('decisions'),edtPhoto,d,libelle||'Décisions horaires',function(){
     EDT.decisions=d; edtPeindre(); edtPeindreModale(); edtPeindreCalendrier();
   });
 }

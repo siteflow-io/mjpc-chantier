@@ -53,15 +53,20 @@ PORTES = {
 }
 # ── ③ les exceptions nommées, hors de /site/edt/ ───────────────────────────
 #  ① le jour du DNB, écrit à l'injection du calendrier (décision de Paul, 26/08) ;
-#  ② les absents d'une heure JOUÉE, écrits dans la trace de cette heure
-#     (mandat §⑥ : « écrite dans la trace de l'heure (absents[]) »). Le chemin
-#     n'est jamais fabriqué à la main : il vient de `edtCheminTrace`, qui le
-#     retrouve à partir de la classe, de la date et du créneau.
+#  ② [LOT 2ter ③] l'ÉCRITURE CENTRALE `edtEcrireArchive(motif, chemin, avant,
+#     valeur, …)`, par où passent désormais toutes les écritures du bloc qui
+#     remplacent un état existant : elle archive d'abord et abandonne si
+#     l'archivage échoue (§③ du mandat ③). Son paramètre `chemin` n'est JAMAIS
+#     fabriqué à la main — il vient de `edtChemin(nom)` (via `edtEcrireObjet`)
+#     ou de `edtCheminTrace` pour les absents d'une heure jouée, qui garde son
+#     exception d'origine (mandat §⑥ : « écrite dans la trace de l'heure »).
+#     La forme exacte `chemin+'.json'` n'apparaît qu'UNE fois dans le fichier :
+#     dans cette fonction. Élargissement minimal, déclaré ici avec sa raison.
 #  ③ [LOT 2ter ①] l'ARCHIVE à la corbeille commune du site, écrite AVANT toute
 #     écriture destructive du bloc (§①, §④.2). Ce n'est pas un nœud de l'EDT :
 #     c'est le filet du site, déjà utilisé par chInjecterConfirme. Le chemin
 #     vient de `atCorbeilleCle`, jamais fabriqué à la main.
-EXCEPTIONS = {'/site/config/brevetDates/', "t.chemin+'/absents.json'", "atCorbeilleCle("}
+EXCEPTIONS = {'/site/config/brevetDates/', "chemin+'.json'", "atCorbeilleCle("}
 
 
 def bloc(src):

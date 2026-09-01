@@ -1846,3 +1846,58 @@ C'est ton document, tu le relis toi-même — **je ne touche pas à sa structure
 **Cahier vivant** — ③bis finale chez l'exécutant. Et, si tu le veux, la liste des dettes ouvertes en tête du registre.
 
 MEMO
+
+---
+
+## TOUR 36 — Paul
+
+Texte mot pour mot :
+
+> livré. pour les dettes, ce sera à l'ia de confronter le code à la liste des dettes et de vérifier ce qui a été fait, ce qui  peut être rayé, et ce qui est à garder.
+
+---
+
+## TOUR 36 — Claude (conscience n°11)
+
+Audit joué : candidat mesuré (1 690 354 o / `a04a8e58…`) · non-régression · diff de la garde
+lu ligne à ligne · **quatre pièges posés par moi, dont deux sur le nouveau contrôle** ·
+écarts du rapport lus. Registre : tours 217 et 218.
+
+Réponse mot pour mot :
+
+**Verdict : ça va. Le mandat ③bis est fini, sans dette. Et le cran perdu hier est repris.**
+
+## Ce que j'ai éprouvé moi-même
+
+La garde a maintenant **quatre questions** au lieu de trois. La quatrième est exactement celle qui manquait : elle regarde **où la porte d'écriture unique écrit**, en analysant chaque appel.
+
+Je lui ai posé deux pièges de mon cru :
+
+- une adresse écrite à la main — `'/site/classes/y'` → **refusée**, nommément ;
+- une adresse fabriquée en collant deux morceaux — `'/site/' + 'edt/x'` → **refusée aussi**, alors même que la cible serait légitime. Elle est plus stricte que nécessaire, et c'est très bien.
+
+Les trois anciens contrôles tiennent toujours.
+
+**Donc, la réponse à ta question d'hier — « qu'est-ce qui fera la surveillance plus tard ? » : plus rien ne repose sur ma mémoire.** La garde le fait elle-même, à chaque livraison, pour toujours.
+
+Le code, lui, n'a bougé que de 491 octets : aucune fonction ajoutée, aucune supprimée. Tout le travail est dans la garde.
+
+## Une chose qu'il signale et qui te revient
+
+**Un créneau d'essai et une vraie classe peuvent occuper le même créneau** si tu remplis plus tard un des quatre trous que tu as choisis. Les deux cohabitent, rien n'est masqué ni écrasé. Si ça te gêne, c'est un autre trou à choisir — pas une correction.
+
+## Sur les dettes : ta règle est meilleure que ma proposition
+
+J'allais te tenir une liste en tête du registre. **Tu as raison de l'écarter** : une liste tenue à la main se désynchronise du code — c'est exactement le défaut qu'elle prétendait corriger.
+
+Ce que tu poses, et que je consigne comme règle : **la liste se vérifie contre le code, jamais contre le souvenir.** Chaque dette est mesurée dans le code du jour, puis rayée avec la mesure qui le prouve, gardée, ou rayée parce qu'elle n'a plus d'objet. **Aucune ne disparaît sur parole.**
+
+Et je la fais tourner **à chaque promotion et à chaque passation** — c'est aussi ce qui rend une passation sûre : la conscience suivante hérite d'une liste vérifiée, pas recopiée.
+
+Dis-moi quand tu veux que je fasse cette confrontation. Elle est à faire : le registre a 985 lignes et sa file de tête date du 25 août.
+
+**Tests manuels : aucun.** Rien en ligne.
+
+**Cahier vivant** — livraison ④, puis ⑤ à ⑧, puis ton promeus. Et la confrontation dettes ↔ code, quand tu diras.
+
+MEMO

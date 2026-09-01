@@ -1274,3 +1274,59 @@ toi : la classe De Gaulle · `CLAUDE.md` périmé · `usage`/`quandPas` du site 
 mode test dans quatre apps · les quatre fichiers hors socle · l'unicité entre familles.
 
 MEMO
+
+---
+
+## TOUR 24 — Paul
+
+Texte mot pour mot :
+
+> Livré
+
+---
+
+## TOUR 24 — Claude (conscience n°11)
+
+Audit joué : candidat mesuré (1 678 220 o / `afb31fc8…`) · rapport lu · non-régression ·
+**corps de `edtApparier` comparé bit à bit à la base — non réécrite** · critères de
+`creneauxHoraires` relus · double parseur · garde · **banc indépendant** sur la biunivocité,
+le critère unique et un cas adverse posé par moi (deux entrants portant le même identifiant).
+Registre : tour 210, commit `42c351ad`.
+
+Réponse mot pour mot :
+
+**Verdict : ça va. Aucune dette. L'appariement tourne avant que quoi que ce soit s'écrive.**
+
+## La preuve qui compte, rejouée par moi
+
+C'est celle qui protège tes coches. J'ai posé quatre « Sortie jumelle 3e » identiques — même libellé, même date — et je les ai réinjectées sans identifiants.
+
+**Aucune ne s'apparie.** Le site n'en choisit pas une au hasard : il déclare quatre ambiguïtés, nommément, et n'écrit rien tout seul. C'est exactement ce qu'il fallait, parce que si deux de ces sorties portaient des coches, un appariement au hasard les aurait fait permuter.
+
+J'ai aussi vérifié qu'un identifiant connu l'emporte sur tout le reste, et j'ai posé un cas tordu de mon cru : **deux événements entrants portant le même identifiant**. Un seul est retenu, l'autre est déclaré ambigu — un objet existant ne sert jamais deux fois.
+
+Et un férié renommé **et** déplacé ne déclenche aucune proposition : il arrive et l'ancien disparaît, comme ta règle le veut pour les familles qui n'ont qu'un seul critère.
+
+**Il n'a pas réécrit l'appariement** : j'ai comparé le code, il est identique au caractère près. Il l'a branché, c'est tout ce qu'on lui demandait.
+
+## Un point où il refuse d'inventer — et il a raison
+
+Ton mandat v2 prévoyait, pour les créneaux horaires, un rattrapage par le rang quand rien d'autre ne concorde. **Ce rattrapage n'existe pas dans le code** : la comparaison se fait sur l'heure de début et de fin, point.
+
+Il le signale et refuse de l'ajouter tout seul. **Mon avis : garde-le comme ça.** Sans rang, aucune permutation n'est possible. Avec, un décalage de rang pourrait rattacher une décision au mauvais horaire — ce que tu voulais justement éviter. Le prix : un créneau dont l'horaire change entièrement est traité comme un nouveau. Mais un créneau qui change entièrement d'horaire, c'est un autre créneau.
+
+Dis-moi si tu vois les choses autrement.
+
+## Une faute qui revient
+
+Pour la deuxième fois en deux livraisons, la garde a refusé une première version parce qu'une variable portait le nom d'une fonction du site — `poser` la dernière fois, `suite` cette fois. Je l'inscris dans les mandats suivants : **tout nom de variable du bloc emploi du temps commence par `edt`**.
+
+Tout est au registre, tour 210.
+
+**Tests manuels : aucun.** Rien en ligne.
+
+**Ce qu'il attend de toi : « continuer ».** La suite est ③b : le différentiel que tu verras avant d'appuyer, et la classe renommée.
+
+**Cahier vivant** — ③b, puis ③ (archivage généralisé, captures, audit adverse), puis ④ à ⑧, puis ton promeus. En attente de toi : le rattrapage par rang ci-dessus · la classe De Gaulle · `CLAUDE.md` périmé · `usage`/`quandPas` du site · la bascule de mode test dans quatre apps · les quatre fichiers hors socle · l'unicité entre familles.
+
+MEMO

@@ -2854,7 +2854,7 @@ function mjpcEcrireRest(url,options,cb){
    (les 3 gestes, le geste conservatoire par app, ce qui ne peut pas arriver).
    RESTAURER LA VERSION PRÉCÉDENTE : docs/MJPC6-restauration.md (convention BUG).
    ═══════════════════════════════════════════════════════════════════════════ */
-var APP_VERSION="8.73.0-③b";
+var APP_VERSION="8.73.0-③";
 var APP_VERSION_DATE="2026-08-27";
 // ── 11. Coffre : dérivation, chiffrement, empreinte (v1.3.0) ──
 // (Le canon porte deux sections « 8 » — dette de numérotation connue, non corrigée
@@ -18099,6 +18099,30 @@ function edtArchiver(motif,chemin,data){
     {_meta:{motif:'edt-'+motif,chemin:chemin,app:'site',ts:Date.now()},data:(data===undefined?null:data)});
 }
 
+/* [③] ARCHIVER AVANT D'ÉCRASER — pour TOUTE écriture qui remplace un état
+   existant. Le modèle est celui de la mise à niveau : on archive, et si
+   l'archivage échoue on n'écrit RIEN et on le dit. Une écriture qui ne remplace
+   rien — le nœud est vide — n'a rien à archiver : elle part directement.
+   Mesuré avant cette livraison : une seule des seize écritures du bloc archivait. */
+function edtEcrireArchive(motif,chemin,avant,valeur,libelle,apres){
+  var edtEcrire=function(){
+    mjpcPutJson(FIREBASE_BASE+chemin+'.json',valeur,libelle,function(){ if(apres)apres(); });
+  };
+  if(avant===null||avant===undefined){ edtEcrire(); return; }   /* rien à remplacer */
+  var photo=null; try{ photo=JSON.parse(JSON.stringify(avant)); }catch(e){ photo=avant; }
+  var perdu=function(){
+    if(typeof atInfo==='function')
+      atInfo('Impossible de mettre l\u2019état d\u2019avant à l\u2019abri — rien n\u2019a été écrit. Le site continue en lecture.');
+  };
+  edtArchiver(motif,chemin,photo).then(function(a){
+    if(!a||!a.ok){ perdu(); return; }   /* ABANDON : rien n'est écrit */
+    edtEcrire();
+  }).catch(perdu);                      /* un archivage qui LÈVE est un archivage échoué */
+}
+function edtEcrireObjet(nom,valeur,libelle,apres){
+  edtEcrireArchive(nom,edtChemin(nom),EDT[nom],valeur,libelle,apres);
+}
+
 /* LES CHARGES DE LA MISE À NIVEAU — écrites pour QUATRE dès maintenant.
    ① les id manquants (livraison ①) · ② la date d'injection de repli (§⑨)
    ③ le classement de repli des heures banalisées (§⑧) · ④ la reprise des
@@ -18538,7 +18562,7 @@ function edtInjInjecter(voie){
       return;
     }
   }
-  mjpcPutJson(FIREBASE_BASE+edtChemin(v.objet)+'.json',o,'Emploi du temps — '+v.titre,function(){
+  edtEcrireObjet(v.objet,o,'Emploi du temps — '+v.titre,function(){
     EDT[v.objet]=o;
     if(v.objet==='creneaux'){ try{edtAppliquerCreneaux();}catch(e){} }
     if(v.objet==='calendrier')edtEcrireBrevet(o);
@@ -18556,13 +18580,13 @@ function edtInjecterAvecLaGrille(o){
        comme neufs — jamais de conservation silencieuse sur un faible. */
     try{ edtReconduire('creneaux',k); }catch(e){}
     try{ edtPoserIdsObjet('creneaux',k); }catch(e){}
-    mjpcPutJson(FIREBASE_BASE+edtChemin('creneaux')+'.json',k,'Créneaux horaires de l\u2019année',function(){
+    edtEcrireObjet('creneaux',k,'Créneaux horaires de l\u2019année',function(){
       EDT.creneaux=k; try{edtAppliquerCreneaux();}catch(e){} edtPeindrePanneau(); });
   }
   if(Array.isArray(o.periodes)){
     var p={annee:(o.annee||EDT_ANNEE),periodes:edtFusionnerPeriodes(o.periodes)};
     try{ edtPoserIdsObjet('periodes',p); }catch(e){}
-    mjpcPutJson(FIREBASE_BASE+edtChemin('periodes')+'.json',p,'Découpage en périodes',function(){
+    edtEcrireObjet('periodes',p,'Découpage en périodes',function(){
       EDT.periodes=p; edtPeindrePanneau(); });
   }
 }
@@ -18587,7 +18611,7 @@ function edtPeriodesEcrire(liste,libelle,apres){
      une période ajoutée à la main partait au hub SANS id, et les cinq fonctions qui
      désignent une période par son id ne pouvaient plus la viser. */
   try{ edtPoserIdsObjet('periodes',o); }catch(e){}
-  mjpcPutJson(FIREBASE_BASE+edtChemin('periodes')+'.json',o,libelle||'Découpage en périodes',function(){
+  edtEcrireObjet('periodes',o,libelle||'Découpage en périodes',function(){
     EDT.periodes=o; edtPeindrePanneau(); if(apres)apres(); });
 }
 function edtPeriodePoser(id,champ,valeur){
@@ -18620,7 +18644,7 @@ function edtCreneauPoser(id,champ,valeur){
   var t=null; o.creneaux.forEach(function(c){ if(c&&c.id===id)t=c; });
   if(!t)return;
   t[champ]=String(valeur||'');
-  mjpcPutJson(FIREBASE_BASE+edtChemin('creneaux')+'.json',o,'Créneaux horaires de l\u2019année',function(){
+  edtEcrireObjet('creneaux',o,'Créneaux horaires de l\u2019année',function(){
     EDT.creneaux=o; try{edtAppliquerCreneaux();}catch(e){} edtPeindrePanneau();
   });
 }
@@ -18660,7 +18684,7 @@ function edtEcrireGrille(o,quoi,apres){
   if(e.length){ if(typeof atInfo==='function')atInfo(e[0]); return; }
   if(!Array.isArray(o.journalEdt))o.journalEdt=[];
   if(quoi)o.journalEdt.push(quoi);
-  mjpcPutJson(FIREBASE_BASE+edtChemin('grille')+'.json',o,'Emploi du temps \u2014 versions',function(){
+  edtEcrireObjet('grille',o,'Emploi du temps \u2014 versions',function(){
     EDT.grille=o; edtPeindrePanneau(); if(apres)apres();
   });
 }
@@ -18718,7 +18742,7 @@ function edtArriveeProf(){
 function edtReglagePoser(nom,valeur){
   var r=(EDT.reglages&&typeof EDT.reglages==='object')?EDT.reglages:{annee:EDT_ANNEE};
   r[nom]=valeur;
-  mjpcPutJson(FIREBASE_BASE+edtChemin('reglages')+'.json',r,'Réglages de l\u2019emploi du temps',function(){
+  edtEcrireObjet('reglages',r,'Réglages de l\u2019emploi du temps',function(){
     EDT.reglages=r; edtPeindrePanneau();
   });
 }
@@ -18872,7 +18896,7 @@ function edtApparierNom(nomGrille,nomHub){
   /* l'appariement vaut pour TOUTES les versions : une classe reste la même
      quand l'emploi du temps change. */
   edtToutesLesCases().forEach(function(c){ if(c&&c.classe===nomGrille)c.classeMjpc=String(nomHub||''); });
-  mjpcPutJson(FIREBASE_BASE+edtChemin('grille')+'.json',o,'Grille — appariement des classes',function(){ EDT.grille=o; edtPeindrePanneau(); });
+  edtEcrireObjet('grille',o,'Grille — appariement des classes',function(){ EDT.grille=o; edtPeindrePanneau(); });
 }
 /* Ce que la réinjection ferait aux périodes — DIT AVANT le geste, jamais après.
    Le site ne perd rien en silence : « tu vois exactement ce qui sera écrit ». */
@@ -19164,7 +19188,7 @@ function edtRattacherDecisions(ancien,nouveau){
     delete src.heures[k]; n++;
   });
   if(!Object.keys(src.heures).length)delete d[ancien];
-  mjpcPutJson(FIREBASE_BASE+edtChemin('decisions')+'.json',d,'Décisions rattachées à « '+nouveau+' »',function(){
+  edtEcrireObjet('decisions',d,'Décisions rattachées à « '+nouveau+' »',function(){
     EDT.decisions=d;
     if(typeof atInfo==='function')
       atInfo(n+' heure'+(n>1?'s':'')+' rattachée'+(n>1?'s':'')+' à « '+nouveau+' »'
@@ -19518,7 +19542,7 @@ function edtPhoto(){
   var o=EDT.photos&&typeof EDT.photos==='object'?EDT.photos:{annee:EDT_ANNEE,photos:[]};
   if(!Array.isArray(o.photos))o.photos=[];
   o.photos.push({prise:edtAujourdhui(),depuis:lundi,cellules:cel});
-  mjpcPutJson(FIREBASE_BASE+edtChemin('photos')+'.json',o,'Photo du prévu',function(){
+  edtEcrireObjet('photos',o,'Photo du prévu',function(){
     EDT.photos=o; if(typeof atInfo==='function')atInfo('Photo du prévu prise \u2014 '+Object.keys(cel).length+' cases.');
   });
 }
@@ -19563,7 +19587,7 @@ function edtEcrireDecision(nomClasse,cleHeure,valeur,quoi){
   if(valeur===null)delete d[nomClasse].heures[cleHeure];
   else d[nomClasse].heures[cleHeure]=valeur;
   d[nomClasse].journal.push({quand:Date.now(),heure:cleHeure,quoi:quoi,avant:avant,apres:valeur});
-  mjpcPutJson(FIREBASE_BASE+edtChemin('decisions')+'.json',d,'Décisions horaires — '+nomClasse,function(){
+  edtEcrireObjet('decisions',d,'Décisions horaires — '+nomClasse,function(){
     EDT.decisions=d; edtPeindre(); edtPeindreModale();
   });
 }
@@ -19869,10 +19893,12 @@ function edtAbsence(cle,nomEleve){
   var c=edtCellule(cle); if(!c||!c.classeMjpc)return;
   var t=edtCheminTrace(c.classeMjpc,c.iso,c.creneau); if(!t)return;
   var slug=edtSlugEleve(nomEleve);
+  var avant=t.trace.absents||null;
   var l=(t.trace.absents||[]).slice(),i=l.indexOf(slug);
   if(i<0)l.push(slug); else l.splice(i,1);
   t.trace.absents=l;
-  mjpcPutJson(FIREBASE_BASE+t.chemin+'/absents.json',l.length?l:null,
+  /* [③] la liste d'avant part à la corbeille avant d'être remplacée */
+  edtEcrireArchive('absents-'+c.classeMjpc+'-'+c.iso,t.chemin+'/absents',avant,(l.length?l:null),
     'Absents \u2014 '+c.classeMjpc+' '+c.iso+' '+c.creneau,function(){ edtPeindreModale(); });
 }
 function edtAbsencesHtml(cle,c){
@@ -20236,7 +20262,7 @@ function edtEcrireDecisionsGroupe(entrees,quoi,libelle){
     else d[e.classe].heures[e.cle]=e.valeur;
     d[e.classe].journal.push({quand:Date.now(),heure:e.cle,quoi:quoi,avant:avant,apres:(e.valeur===null?null:e.valeur)});
   });
-  mjpcPutJson(FIREBASE_BASE+edtChemin('decisions')+'.json',d,libelle||'Décisions horaires',function(){
+  edtEcrireObjet('decisions',d,libelle||'Décisions horaires',function(){
     EDT.decisions=d; edtPeindre(); edtPeindreModale(); edtPeindreCalendrier();
   });
 }

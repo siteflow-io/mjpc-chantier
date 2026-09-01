@@ -2136,3 +2136,56 @@ Tout est au registre, tour 223.
 **Cahier vivant** — ⑤c, ⑤, puis ⑥ à ⑧, puis ton promeus, puis l'injection de chapitre.
 
 MEMO
+
+---
+
+## TOUR 42 — Paul
+
+Texte mot pour mot :
+
+> livré
+
+---
+
+## TOUR 42 — Claude (conscience n°11)
+
+Audit joué : candidat mesuré (1 724 157 o / `c1c997e5…`) · non-régression · **les dix
+catégories rejouées une par une sur banc indépendant contre le tableau du mandat** · les deux
+bascules lues ligne à ligne · libellé fautif recompté · `delete` redondant revérifié.
+Registre : tour 224.
+
+Réponse mot pour mot :
+
+**Verdict : ça va. Aucune dette.**
+
+## Les dix catégories, rejouées une par une
+
+J'ai extrait le tableau du site et je l'ai comparé au tien, catégorie par catégorie. **Dix sur dix conformes.**
+
+Évaluation hors séance, reprise ou rattrapage, gestion de classe → **temps de classe**. Événement d'établissement, sortie, orientation, absence du professeur, absence massive d'élèves → **heure perdue, justifiée**. Temps libre choisi, Autre → **heure perdue, non justifiée**.
+
+Et une catégorie inconnue tombe en « perdue, non justifiée » — le choix prudent : le site ne se justifie pas tout seul, c'est toi qui tranches.
+
+## Ta bascule survit — vérifié dans le code
+
+Quand tu bascules « temps de classe » ou « justifiée », le site **écrit ton choix dans la décision** : il ne le recalcule jamais depuis la catégorie. Donc ton choix tient, même si la catégorie dit autre chose.
+
+Et les deux bascules **refusent** sur une heure non basculable : ce qui vient du calendrier de l'établissement reste justifié, sans discussion. C'est ta règle.
+
+**« ne plus compter cette séance » a disparu** — zéro occurrence. C'est « Banaliser cette heure » partout.
+
+## Une chose à lui transmettre
+
+Le `delete` inutile est toujours là, et c'est ma faute de transmission. **Colle-lui ceci dans sa conversation** pour la dernière livraison :
+
+> Dans `edtHeurePerdue`, branche « décoche » : retire le `delete edtD[edtF.classe].heures[edtF.cle]`. Il est redondant — `edtEcrireDecisionsGroupe` avec `valeur:null` fait déjà le retrait — et il modifie la mémoire **avant** que l'archivage ait réussi.
+
+Tout est au registre, tour 224.
+
+**Tests manuels : aucun.** Rien en ligne.
+
+**Ce qu'il attend de toi : « continuer »**, plus la phrase ci-dessus.
+
+**Cahier vivant** — ⑤ finale, puis ⑥ à ⑧, puis ton promeus, puis l'injection de chapitre.
+
+MEMO

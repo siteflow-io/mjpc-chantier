@@ -1487,3 +1487,60 @@ Tout est au registre, avec les chiffres.
 **Cahier vivant** — livraison ④, puis ⑤ à ⑧, puis ton promeus. Les décisions ci-dessus t'attendent quand tu veux.
 
 MEMO
+
+---
+
+## TOUR 28 — Paul
+
+Texte mot pour mot :
+
+> non pas d'archive dates brevet. rattrapage par rang à laisser come ça. le dimensionnement de gaulle, c'est à dire? id dans familles différentes c'est à dire? la chose à surveiller va partir dans la promotion? et si oui, qu'est ce qui fera la surveillance plus tard?
+
+---
+
+## TOUR 28 — Claude (conscience n°11)
+
+Mesures : grille réelle — **0 créneau** pour la 3E Charles de Gaulle · `creneauxFictifs`
+**1 occurrence dans le JSON, 0 dans le code** · le champ porte déjà un créneau vide et la
+liste des trous mesurés · les neuf préfixes de famille lus dans `EDT_FAMILLES` ·
+`verif_edt.py` : **0 occurrence dans `index.html`**.
+
+Réponse mot pour mot :
+
+**Tes deux décisions sont prises et consignées** : pas d'archive pour les dates du brevet, rattrapage par rang laissé tel quel.
+
+## Le dimensionnement de De Gaulle
+
+J'ai regardé ta grille : **la 3E Charles de Gaulle n'a aucune heure**. Zéro créneau. Elle n'existe que comme nom.
+
+Le fichier de ta grille lui a déjà réservé une place, vide, avec cette note : « À poser par Paul : la classe expérimentale reçoit ses créneaux sur des trous réels de la grille. » Et la liste des trous a été mesurée :
+
+> lundi 8h00 · lundi 13h00 · lundi 13h57 · lundi 11h04 (A) · mardi 8h00 · mardi 8h57 (A) · mardi 11h04 (A) · mardi 13h57 (B) · mardi 16h04 (A) · jeudi 8h00 · jeudi 8h57 · jeudi 10h07 · jeudi 11h04 (A) · jeudi 13h00 · jeudi 13h57 · vendredi 13h00 · vendredi 13h57 · vendredi 15h07 · vendredi 16h04. Jamais le mercredi après midi.
+
+**Le dimensionnement, c'est donc : combien d'heures tu lui donnes, et dans quels trous.** La proposition qui traînait était 4 heures en semaine AB, jamais validée par toi.
+
+**Et une chose à savoir avant de choisir** : même rempli, ce champ ne ferait rien aujourd'hui — **aucune ligne de code ne le lit**. Il faudra une livraison qui le lise. Donc ta réponse ouvre deux choses : le choix des heures, et le travail pour les faire vivre.
+
+## L'identifiant dans deux familles
+
+Chaque famille a son préfixe : `evc:` pour un événement de classe, `crn:` pour une heure de ta grille, `per:` pour une période, `hor:` pour un horaire, et ainsi de suite. **L'identifiant dit donc déjà à quelle famille il appartient.**
+
+Ce que j'ai mesuré : **le site ne vérifie jamais que le préfixe correspond**. Un identifiant déjà en service n'est jamais recalculé — c'est la règle, et elle est bonne. Mais si un fichier injecté à la main portait `per:xxx` sur une heure de grille, le site le garderait tel quel : un identifiant qui ment sur sa famille.
+
+En pratique, ça ne peut pas t'arriver aujourd'hui : chaque famille vit dans un endroit différent du hub. **C'est un garde-fou bon marché, pas une urgence.** Un mot de toi et je le mets dans une livraison.
+
+## La garde et la promotion — non, elle ne part pas
+
+**La garde n'est pas dans ton site.** Zéro occurrence dans `index.html` : c'est un fichier séparé du sas, un outil qu'on lance sur le candidat avant de te le proposer. La promotion n'emporte que `index.html`.
+
+Donc elle continuera de tourner à chaque livraison. **Mais** elle ne regarde plus le chemin de la porte d'écriture unique — c'est ça, le cran perdu.
+
+**Qui surveille plus tard ? Aujourd'hui : moi, à la main, à chaque audit. Et c'est fragile — une conscience change, la suivante ne saura pas.**
+
+**Mon avis tranché : il faut le remettre dans la garde.** C'est mécanique — vérifier que la porte n'est jamais appelée qu'avec un chemin fabriqué par le site lui-même — et ça ne dépend plus de la mémoire de personne. Je le mets dans le mandat ④ si tu me le dis.
+
+**Tests manuels : aucun.**
+
+**Cahier vivant** — livraison ④ (avec la garde à renforcer, si tu le veux), puis ⑤ à ⑧, puis ton promeus. En attente de toi : les heures de De Gaulle · le garde-fou des préfixes · le reste des dettes hors lot.
+
+MEMO

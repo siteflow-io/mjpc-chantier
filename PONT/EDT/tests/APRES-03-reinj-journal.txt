@@ -1,0 +1,25 @@
+version : V8.73.0-③
+préparation : 3 heures cochées
+① clics : panneau prof → Emploi du temps
+② clic « Calendrier de l'année » : la zone de collage s'ouvre
+③ texte collé : 13143 caractères (libellé retouché, date déplacée, un événement retiré, un neuf)
+④ CLIC « Vérifier » → écritures : []
+   différentiel affiché :
+     Ce que cette injection va changer
+     Ce qui arrive (1)
+     Sortie théâtre 3e (2027-05-12)
+     Ce qui a seulement bougé (2)
+     Séjour Verdun 3e (2026-10-14) — libellé : Séjour Verdun 3e → Séjour à Verdun 3e
+     Stages 3e (uniquement 3e Horizon pro) (2026-11-16) — debut : 2026-11-16 → 2026-11-17
+     Ce qui disparaît EN EMPORTANT DES COCHES (1)
+     Visite des lycées St-Louis / les Ardilliers 3e (2026-11-23) — 1 heure cochée
+     Ce qui garde ses décisions (1)
+     Séjour Verdun 3e (2026-10-14) — 2 heures conservées
+     À te demander avant d’écrire (2)
+     Séjour Verdun 3e (2026-10-14) → Séjour à Verdun 3e (2026-10-14)
+     Stages 3e (uniquement 3e Horizon pro) (2026-11-16) → Stages 3e (uniquement 3e Horizon pro) (2026-11-17)
+⑤ CLIC « Injecter » → question posée : "Séjour Verdun 3e (2026-10-14) semble être devenu « Séjour à Verdun 3e (2026-10-14) ». | libellé : Séjour Verdun 3e → Séjour à Verdun 3e | C’est bien le même ? | Non, c’est autre chose | Oui, c’est le même"
+   écritures AVANT la réponse : []
+⑥ CLICS « Oui, c'est le même » ×2 → avertissement : "Ce calendrier ne contient plus 1 événement que tu avais coché : | • Visite des lycées St-Louis / les Ardilliers 3e — 1 heure | Leurs heures restent marquées et comptent toujours : rien n’est effacé. Tu pourras les décoch"
+   (l'écran s'est rafraîchi après l'injection : capture 7 non prise)
+⑦ après injection : "(page rafraîchie — état relu au banc suivant)"

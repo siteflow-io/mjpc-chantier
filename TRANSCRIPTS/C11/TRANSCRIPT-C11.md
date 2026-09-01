@@ -2029,3 +2029,52 @@ la cinquième question de la garde), puis le mandat entier dans un bloc copiable
 chapitre.
 
 MEMO
+
+---
+
+## TOUR 40 — Paul
+
+Texte mot pour mot :
+
+> livré
+
+---
+
+## TOUR 40 — Claude (conscience n°11)
+
+Audit joué : candidat mesuré (1 716 493 o / `20dc0ca1…`) · non-régression · **les dix
+catégories comparées caractère par caractère** · contrat de la garde inchangé · rapport lu ·
+**banc indépendant sur le calcul du coût**, quatre cas posés par moi · `edtHeurePerdue` lue
+ligne à ligne. Registre : tour 222.
+
+Réponse mot pour mot :
+
+**Verdict : ça va. Aucune dette. Une observation à porter dans la livraison suivante.**
+
+## Ce que ça donne
+
+**Six fiches, une par événement.** Ton stage de trois jours ne fait plus trois écrans : **une seule fiche**, avec une case par heure. **Dix cases, aucune cochée au départ, aucune heure retirée.** Et le conditionnel est bien là : « perdraient », pas « perd ».
+
+**Neuf de tes événements ne tombent sur aucune de tes heures** : ils n'ont pas de fiche du tout. C'est ce que tu voulais — pas de case pour ce qui ne coûte rien.
+
+Et les en-têtes parlent **en niveaux**, jamais en noms de classe : « tes 3e perdraient 2 heures ». Aucun nom de classe inventé, j'ai vérifié.
+
+## Ce que j'ai rejoué moi-même
+
+Le calcul du coût, sur quatre cas de mon cru : un événement de 3e couvrant trois heures → trois heures pour les 3e, zéro ailleurs. Un événement d'un niveau que tes classes ne couvrent pas → il compte quand même, rien n'est perdu. Un événement **sans niveau** → il ne compte rien, et surtout **il n'invente rien**.
+
+## Une observation, mineure
+
+Quand tu **décoches** une heure, le code efface la décision **de la mémoire avant d'écrire**, puis appelle la fonction d'écriture — qui fait déjà cet effacement. C'est donc redondant, et si l'archivage échouait, l'écran aurait oublié la décision alors que le hub l'a encore.
+
+**Tes données ne risquent rien** : le hub reste juste, un rechargement remet l'écran d'aplomb. Mais c'est une ligne à retirer, et je la porte à la livraison suivante.
+
+Tout est au registre, tour 222.
+
+**Tests manuels : aucun.** Rien en ligne.
+
+**Ce qu'il attend de toi : « continuer ».** La suite est ⑤b — les quatre motifs, et surtout : **une heure ne compte jamais deux fois**.
+
+**Cahier vivant** — ⑤b, ⑤c, ⑤, puis ⑥ à ⑧, puis ton promeus, puis l'injection de chapitre.
+
+MEMO

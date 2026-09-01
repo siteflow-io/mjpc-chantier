@@ -16,6 +16,8 @@ Sortie :  VERT si les trois passent, ROUGE sinon (code de retour 1).
 À côté de `docs/outils/index_fonctions.py`, dont il reprend l'analyse
 « qui appelle qui » : un balayage du texte, sans exécuter le site.
 """
+import json
+import os
 import re, sys
 
 DEBUT = 'EDT — début'
@@ -189,10 +191,45 @@ def verifier(chemin):
     return fautes
 
 
+def prompts_concordent(chemin_index):
+    """⑤ [LOT 2ter ⑤] LA CINQUIÈME QUESTION — décidée par Paul le 01/09.
+    Les consignes données à l'IA vivent en DEUX exemplaires : les fichiers
+    `prompts/*.md` que Paul relit, et la copie embarquée `EDT_PROMPTS` que le
+    bouton « Copier le prompt » envoie. Identiques aujourd'hui ; rien ne le
+    garantit demain. La main qui corrigerait l'un sans l'autre créerait une
+    divergence muette, et Paul lirait un prompt qui n'est pas celui qu'il colle.
+    La garde lit le fichier tel que le navigateur lit la chaîne, et refuse si un
+    seul caractère diffère — en disant où."""
+    src = open(chemin_index, encoding='utf-8').read()
+    base = os.path.dirname(os.path.abspath(chemin_index))
+    fautes = []
+    for voie in ('calendrier', 'grille'):
+        m = re.search(r'\n  ' + voie + r':("(?:[^"\\]|\\.)*")', src)
+        if not m:
+            fautes.append('\u2464 EDT_PROMPTS ne contient pas la consigne « %s »' % voie)
+            continue
+        embarque = json.loads(m.group(1))
+        chemin = os.path.join(base, 'prompts', voie + '.md')
+        if not os.path.exists(chemin):
+            fautes.append('\u2464 prompts/%s.md introuvable : impossible de comparer' % voie)
+            continue
+        fichier = open(chemin, encoding='utf-8').read()
+        if embarque != fichier:
+            n = min(len(embarque), len(fichier))
+            i = next((k for k in range(n) if embarque[k] != fichier[k]), n)
+            fautes.append('\u2464 la consigne « %s » diff\u00e8re : prompts/%s.md fait %d caract\u00e8res, '
+                          'EDT_PROMPTS en fait %d \u2014 premier \u00e9cart au caract\u00e8re %d : '
+                          'fichier « %s », site « %s »'
+                          % (voie, voie, len(fichier), len(embarque), i,
+                             fichier[i:i + 18].replace('\n', '\u23ce'),
+                             embarque[i:i + 18].replace('\n', '\u23ce')))
+    return fautes
+
+
 if __name__ == '__main__':
     if len(sys.argv) < 2:
         print('usage : python3 verif_edt.py <index.html>'); sys.exit(2)
-    f = verifier(sys.argv[1])
+    f = verifier(sys.argv[1]) + prompts_concordent(sys.argv[1])
     if f:
         print('ROUGE — la garde du bloc EDT refuse :')
         for x in f:
@@ -202,4 +239,5 @@ if __name__ == '__main__':
     print('       ② rien hors du bloc n\u2019appelle edt* sauf les portes déclarées')
     print('       ③ tous ses nœuds sont sous /site/edt/, hors les exceptions nommées')
     print('       ④ l\u2019écriture centrale n\u2019écrit que là où le site l\u2019envoie')
+    print('       ⑤ les consignes du site et les fichiers prompts/ disent la même chose')
     sys.exit(0)

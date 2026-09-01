@@ -2854,7 +2854,7 @@ function mjpcEcrireRest(url,options,cb){
    (les 3 gestes, le geste conservatoire par app, ce qui ne peut pas arriver).
    RESTAURER LA VERSION PRÉCÉDENTE : docs/MJPC6-restauration.md (convention BUG).
    ═══════════════════════════════════════════════════════════════════════════ */
-var APP_VERSION="8.73.0-③a";
+var APP_VERSION="8.73.0-③b";
 var APP_VERSION_DATE="2026-08-27";
 // ── 11. Coffre : dérivation, chiffrement, empreinte (v1.3.0) ──
 // (Le canon porte deux sections « 8 » — dette de numérotation connue, non corrigée
@@ -17953,21 +17953,73 @@ function edtEtiquette(el){
   return t+(d?(' ('+d+')'):'');
 }
 /* [③a] LA PHRASE D'UNE QUESTION DIT CE QUI CHANGE, nommément — jamais un compteur. */
-function edtPhraseFaible(q){
-  var f=EDT_FAMILLES[q.famille]||{forts:[]},quoi=[];
+/* [③b] CE QUI CHANGE ENTRE DEUX OBJETS APPARIÉS, nommément. La comparaison se
+   fait sur la valeur normalisée, mais Paul lit SON texte, pas le normalisé. */
+function edtChangementsDe(existant,entrant,famille){
+  var f=EDT_FAMILLES[famille]||{forts:[]},quoi=[];
   var brut=function(el,c){
     if(c==='_lib')return String((el&&(el.libelle||el.nom||el.titre))||'');
     if(c==='_nom')return String((el&&el.nom)||'');
     return String((el&&el[c])==null?'':el[c]);
   };
   f.forts.forEach(function(c){
-    /* la comparaison se fait sur la valeur normalisée, mais Paul lit SON texte */
-    if(edtValeurCritere(q.existant,c)===edtValeurCritere(q.entrant,c))return;
-    quoi.push(edtNomCritere(c)+' : '+(brut(q.existant,c)||'—')+' → '+(brut(q.entrant,c)||'—'));
+    if(edtValeurCritere(existant,c)===edtValeurCritere(entrant,c))return;
+    quoi.push(edtNomCritere(c)+' : '+(brut(existant,c)||'—')+' → '+(brut(entrant,c)||'—'));
   });
+  return quoi;
+}
+function edtPhraseFaible(q){
   return escapeHtml(edtEtiquette(q.existant))+' semble être devenu « '
-    +escapeHtml(edtEtiquette(q.entrant))+' ».<br>'+escapeHtml(quoi.join(' · '))
+    +escapeHtml(edtEtiquette(q.entrant))+' ».<br>'
+    +escapeHtml(edtChangementsDe(q.existant,q.entrant,q.famille).join(' · '))
     +'<br><br>C’est bien le même ?';
+}
+/* [③b] LE DIFFÉRENTIEL NOMINATIF — Paul voit AVANT d'appuyer : ce qui arrive, ce
+   qui a seulement bougé, ce qui disparaît (et ce que ça emporte de coches), et ce
+   qui garde ses décisions. Jamais des compteurs seuls : des noms. */
+function edtDifferentielHtml(diff){
+  if(!diff)return '';
+  var arrivent=[],bouges=[],partent=[],partentCoches=[],gardent=[],questions=[];
+  Object.keys(diff.familles||{}).forEach(function(f){
+    var r=diff.familles[f];
+    (r.arrivent||[]).forEach(function(e){ arrivent.push(edtEtiquette(e)); });
+    (r.fort||[]).concat(r.faible||[]).forEach(function(x){
+      var ch=edtChangementsDe(x.existant,x.entrant,f);
+      if(ch.length)bouges.push(edtEtiquette(x.existant)+' — '+ch.join(' · '));
+      var n=(x.existant&&x.existant.id)?edtCochesDeLEvenement(x.existant.id).length:0;
+      if(n)gardent.push(edtEtiquette(x.existant)+' — '+n+' heure'+(n>1?'s':'')+' conservée'+(n>1?'s':''));
+    });
+    (r.disparaissent||[]).forEach(function(e){
+      var n=(e&&e.id)?edtCochesDeLEvenement(e.id).length:0;
+      if(n)partentCoches.push(edtEtiquette(e)+' — '+n+' heure'+(n>1?'s':'')+' cochée'+(n>1?'s':''));
+      else partent.push(edtEtiquette(e));
+    });
+  });
+  (diff.faibles||[]).forEach(function(q){
+    questions.push(edtEtiquette(q.existant)+' → '+edtEtiquette(q.entrant));
+  });
+  var liste=function(titre,l,cls){
+    if(!l.length)return '';
+    return '<div class="edt-diff-l'+(cls?(' '+cls):'')+'"><b>'+escapeHtml(titre)+' ('+l.length+')</b><ul><li>'
+      +l.slice(0,25).map(escapeHtml).join('</li><li>')+'</li></ul>'
+      +(l.length>25?('<span class="edt-mini-t">… et '+(l.length-25)+' de plus</span>'):'')+'</div>';
+  };
+  var h='<div class="edt-diff"><b>Ce que cette injection va changer</b>'
+    +liste('Ce qui arrive',arrivent)
+    +liste('Ce qui a seulement bougé',bouges)
+    +liste('Ce qui disparaît EN EMPORTANT DES COCHES',partentCoches,'edt-diff-alerte')
+    +liste('Ce qui disparaît',partent)
+    +liste('Ce qui garde ses décisions',gardent)
+    +liste('À te demander avant d’écrire',questions);
+  if(diff.ambigus&&diff.ambigus.length)
+    h+='<div class="edt-diff-l"><b>Impossible de trancher ('+diff.ambigus.length+')</b>'
+      +'<ul><li>'+diff.ambigus.slice(0,10).map(function(a){
+        return escapeHtml(edtEtiquette(a.entrant)+' — '+a.candidats+' candidats identiques : traité comme un objet neuf');
+      }).join('</li><li>')+'</li></ul></div>';
+  if(!arrivent.length&&!bouges.length&&!partent.length&&!partentCoches.length&&!questions.length)
+    h+='<p class="edt-mini-t">Rien ne change : tout se retrouve à l’identique.</p>';
+  h+='</div>';
+  return h;
 }
 /* [③a] LA RECONDUCTION DES IDENTITÉS À LA RÉINJECTION — avant toute écriture.
    Les FORTS sont appliqués sans un mot : même objet, même identité. Les FAIBLES
@@ -18436,6 +18488,13 @@ function edtInjVerifier(voie){
   catch(err){ EDT_INJ={voie:voie,objet:null,messages:['Le texte collé n\u2019est pas du JSON lisible : '+err.message]}; edtPeindrePanneau(); return; }
   var e=v.valider(o);
   EDT_INJ={voie:voie,objet:(e.length?null:o),messages:e};
+  /* [③b] L'APPARIEMENT TOURNE ICI, à la vérification : Paul voit le différentiel
+     AVANT d'appuyer sur Injecter. Les forts sont appliqués, les faibles seront
+     posés en question au moment du geste — jamais appliqués tout seuls. */
+  if(!e.length&&o){
+    var rec=null; try{ rec=edtReconduire(v.objet,o); }catch(err2){ rec=null; }
+    EDT_INJ.diff=rec; EDT_INJ.apparie=true; EDT.diffInjection=rec;
+  }
   edtPeindrePanneau();
 }
 function edtInjInjecter(voie){
@@ -18449,7 +18508,10 @@ function edtInjInjecter(voie){
     EDT_INJ.apparie=true;
     var rec=null; try{ rec=edtReconduire(v.objet,o); }catch(e){ rec=null; }
     EDT_INJ.diff=rec; EDT.diffInjection=rec;   /* lisible après coup : l'écran s'en sert */
-    if(rec&&rec.faibles.length){ edtQuestionsFaibles(rec.faibles,function(){ edtInjInjecter(voie); }); return; }
+  }
+  if(EDT_INJ.diff&&EDT_INJ.diff.faibles&&EDT_INJ.diff.faibles.length&&!EDT_INJ.faiblesPoses){
+    EDT_INJ.faiblesPoses=true;
+    edtQuestionsFaibles(EDT_INJ.diff.faibles,function(){ edtInjInjecter(voie); }); return;
   }
   try{ edtPoserIdsObjet(v.objet,o); }catch(e){}   /* ① les id naissent AVANT la première écriture */
   /* [②] UN ÉVÉNEMENT QUI DISPARAÎT EMPORTE DES COCHES : elles sont NOMMÉES avant
@@ -18706,9 +18768,29 @@ function edtPeindrePanneau(){
       +(EDT_INJ.objet?'<button class="edt-btn edt-btn-prim" onclick="edtInjInjecter(\''+EDT_INJ.voie+'\')">Injecter</button>':'')
       +'</div>';
     if(EDT_INJ.messages.length)h+='<div class="edt-refus"><b>Ce texte n\u2019a pas été accepté :</b><ul><li>'+EDT_INJ.messages.map(escapeHtml).join('</li><li>')+'</li></ul></div>';
-    else if(EDT_INJ.objet)h+='<div class="edt-apercu">Lu sans erreur. '+escapeHtml(edtApercu(EDT_INJ.voie,EDT_INJ.objet))+'</div>';
+    else if(EDT_INJ.objet){
+      h+='<div class="edt-apercu">Lu sans erreur. '+escapeHtml(edtApercu(EDT_INJ.voie,EDT_INJ.objet))+'</div>';
+      h+=edtDifferentielHtml(EDT_INJ.diff);   /* [③b] ce que le geste va changer, nommément */
+    }
   }
   h+='</div>';
+
+  /* [③b] les décisions restées sous un nom de classe qui n'existe plus */
+  var orph=[]; try{ orph=edtDecisionsOrphelines(); }catch(e){ orph=[]; }
+  if(orph.length){
+    h+='<div class="edt-bloc"><div class="edt-titre">⚠ Des décisions sous un nom de classe qui n\u2019existe plus</div>';
+    orph.forEach(function(o){
+      h+='<p class="edt-p"><b>'+escapeHtml(o.ancien)+'</b> — '+o.heures+' heure'+(o.heures>1?'s':'')
+        +' décidée'+(o.heures>1?'s':'')+'. Elles comptent toujours, là où elles sont.</p>';
+      if(!o.candidates.length)
+        h+='<p class="edt-mini-t">Aucune classe libre à proposer : je ne devine pas.</p>';
+      else h+='<div class="edt-actions">'+o.candidates.map(function(c){
+        return '<button class="edt-btn" onclick="edtRattacherGeste('+JSON.stringify(o.ancien).replace(/"/g,'&quot;')
+          +','+JSON.stringify(c).replace(/"/g,'&quot;')+')">Rattacher à '+escapeHtml(c)+'</button>';
+      }).join('')+'</div>';
+    });
+    h+='</div>';
+  }
 
   /* les versions de l'emploi du temps */
   var vs=edtVersions();
@@ -19048,6 +19130,59 @@ function edtChargerChapitres(niveaux,apres){
   });
 }
 /* la clé d'une heure jouée : date + créneau + classe (l'identifiant du site) */
+/* [③b] LA CLASSE RENOMMÉE. Mesuré en ② : la clé d'une décision porte le nom de
+   la classe ; si Paul renomme, ses décisions restent lisibles sous l'ancien nom et
+   la nouvelle en compte zéro. Rien n'est perdu, mais rien ne suit. Le rattachement
+   est un APPARIEMENT : il se propose NOMMÉMENT, il ne se fait jamais tout seul. */
+function edtDecisionsOrphelines(){
+  var d=edtDecisions(),connues=EDT_CLASSES||{},out=[],enGrille={};
+  try{ edtCasesA(edtAujourdhui()).forEach(function(c){ if(c&&c.classeMjpc)enGrille[c.classeMjpc]=true; }); }catch(e){}
+  var libres=Object.keys(enGrille).filter(function(n){
+    return !Object.keys(((d[n]||{}).heures)||{}).length; });
+  Object.keys(d).forEach(function(n){
+    var h=Object.keys(((d[n]||{}).heures)||{});
+    if(!h.length||connues[n])return;            /* la classe existe toujours : rien à dire */
+    out.push({ancien:n,heures:h.length,candidates:libres});
+  });
+  return out;
+}
+function edtRattacherDecisions(ancien,nouveau){
+  var d=edtDecisions(),src=d[ancien];
+  if(!src||!src.heures)return;
+  if(!d[nouveau])d[nouveau]={heures:{},journal:[]};
+  if(!d[nouveau].heures)d[nouveau].heures={};
+  if(!Array.isArray(d[nouveau].journal))d[nouveau].journal=[];
+  var quand=Date.now(),n=0,restees=0;
+  Object.keys(src.heures).forEach(function(k){
+    var m=k.match(/^(\d{4}-\d{2}-\d{2})_(\d{2}h\d{2}-\d{2}h\d{2})_(.+)$/);
+    if(!m){ restees++; return; }
+    var cle=edtCleHeure(m[1],m[2].replace(/h/g,':'),nouveau);
+    if(d[nouveau].heures[cle]){ restees++; return; }   /* on n'écrase jamais une décision déjà là */
+    d[nouveau].heures[cle]=src.heures[k];
+    d[nouveau].journal.push({quand:quand,heure:cle,
+      quoi:'rattachée depuis « '+ancien+' »',avant:null,apres:src.heures[k]});
+    delete src.heures[k]; n++;
+  });
+  if(!Object.keys(src.heures).length)delete d[ancien];
+  mjpcPutJson(FIREBASE_BASE+edtChemin('decisions')+'.json',d,'Décisions rattachées à « '+nouveau+' »',function(){
+    EDT.decisions=d;
+    if(typeof atInfo==='function')
+      atInfo(n+' heure'+(n>1?'s':'')+' rattachée'+(n>1?'s':'')+' à « '+nouveau+' »'
+        +(restees?(' — '+restees+' est restée sous « '+ancien+' », je ne l’ai pas déplacée'):'')+'.');
+    edtPeindrePanneau(); edtPeindre();
+  });
+}
+function edtRattacherGeste(ancien,nouveau){
+  var n=Object.keys(((edtDecisions()[ancien]||{}).heures)||{}).length;
+  if(typeof atModaleChoix!=='function'){ edtRattacherDecisions(ancien,nouveau); return; }
+  atModaleChoix('Rattacher à « '+escapeHtml(nouveau)+' » les '+n+' heure'+(n>1?'s':'')
+    +' décidée'+(n>1?'s':'')+' sous « '+escapeHtml(ancien)+' » ?<br>'
+    +'Les motifs et le journal suivent. Rien n’est effacé : si tu refuses, elles restent où elles sont.',
+    [{lib:'Laisser comme ça',fn:function(){
+       if(typeof atInfo==='function')atInfo('Rien n’a bougé : les '+n+' heure'+(n>1?'s':'')
+         +' rest'+(n>1?'ent':'e')+' sous « '+ancien+' ».'); }},
+     {lib:'Rattacher',prim:true,fn:function(){ edtRattacherDecisions(ancien,nouveau); }}]);
+}
 function edtCleHeure(iso,creneau,nomClasse){
   return iso+'_'+String(creneau).replace(/:/g,'h')+'_'+String(nomClasse).replace(/\s/g,'_');
 }

@@ -2398,3 +2398,51 @@ Comme ça, dans trois mois, on ouvre le registre et on sait où commence C11, ce
 **Cahier vivant** — ⑤ finale chez l'exécutant, puis ⑥ (avec le banc unique si tu le veux), ⑦, ⑧, puis ton promeus.
 
 MEMO
+
+---
+
+## TOUR 46 — Paul
+
+Texte mot pour mot :
+
+> Ok en revanche le registre, tour 227. Normalement le registre est tenu conscience par conscience parce que sinon ça devient inexploitable pour personne.
+
+---
+
+## TOUR 46 — Claude (conscience n°11)
+
+Mesure : registre **1 221 lignes** · les consciences précédentes ont **leurs sections nommées**
+(« E · Constats de la conscience n°10 (25/08) ») · **mes 28 entrées n'ont aucune section**,
+elles sont collées à la suite du fichier, de la ligne 550 à la ligne 1221 · et elles portent
+une numérotation — « Tour 197 » à « Tour 227 » — qui **continue celle de la n°10**, laquelle
+s'arrêtait au tour 196.
+
+Réponse mot pour mot :
+
+**Tu as raison, et l'écart est double.**
+
+## Ce que j'ai mal fait, mesuré
+
+**Aucune section à mon nom.** Les consciences d'avant ont la leur — « E · Constats de la conscience n°10 ». Mes **28 entrées** sont simplement collées à la fin du fichier, de la ligne 550 à la ligne 1221. Elles occupent plus de la moitié du registre et rien ne dit qui les a écrites ni quand.
+
+**Et j'ai continué la numérotation de la n°10.** Ses tours s'arrêtaient à 196, j'ai commencé à 197. Sauf que « tour 197 » ne correspond à rien : dans notre conversation, c'était mon premier tour. Un lecteur qui voudrait remonter à la source ne trouverait rien.
+
+Résultat exactement ce que tu dis : **inexploitable**. Dans trois mois, personne ne saura qui a écrit quoi, ni dans quel ordre.
+
+## Ce que je propose, deux gestes
+
+**Le premier, additif et sans risque** : insérer un en-tête avant ma première entrée —
+
+> `## F · CONSCIENCE n°11 — 31/08 au 01/09/2026 · LOT 2ter, livraisons ① à ⑤`
+
+**Le second, qui touche 28 titres** : renuméroter mes entrées en **« n°11 · tour 1 »** à **« n°11 · tour 30 »**, c'est-à-dire mes vrais tours de conversation, pour qu'on puisse remonter au transcript déposé au sas.
+
+Le premier seul répond déjà à ta règle. Le second rend le registre vraiment traçable.
+
+**C'est ton document, tu le relis toi-même — je ne touche pas à sa structure sans que tu me le dises.** Dis-moi : le premier seul, les deux, ou autre chose.
+
+**Tests manuels : aucun.**
+
+**Cahier vivant** — inchangé : ⑤ finale chez l'exécutant. Et cette remise en ordre du registre, sur ton mot.
+
+MEMO

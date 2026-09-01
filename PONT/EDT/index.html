@@ -2854,7 +2854,7 @@ function mjpcEcrireRest(url,options,cb){
    (les 3 gestes, le geste conservatoire par app, ce qui ne peut pas arriver).
    RESTAURER LA VERSION PRÉCÉDENTE : docs/MJPC6-restauration.md (convention BUG).
    ═══════════════════════════════════════════════════════════════════════════ */
-var APP_VERSION="8.73.0-⑤";
+var APP_VERSION="8.73.0-⑥a";
 var APP_VERSION_DATE="2026-08-27";
 // ── 11. Coffre : dérivation, chiffrement, empreinte (v1.3.0) ──
 // (Le canon porte deux sections « 8 » — dette de numérotation connue, non corrigée
@@ -20851,14 +20851,89 @@ function edtRefusDepot(c,dst){
       if(x&&x.creneau===dst.creneau&&x.mjpc!==false&&(x.classeMjpc||x.classe)!==(c.classeMjpc||c.classe))
         occupe=(x.classeMjpc||x.classe);
     });
-    if(occupe)return 'ce créneau est déjà pris par '+occupe+' \u2014 je ne l\u2019écrase pas à ta place.';
+    /* [⑥a] plus de refus sec ici : `edtDepot` ouvre les TROIS ISSUES. Ce refus
+       ne reste que pour une classe dont on ne sait rien (non appariée). */
+    if(occupe&&!edtOccupantDe(c,dst))
+      return 'ce créneau est pris par '+occupe+', une classe que le site ne connaît pas encore — apparie-la d\u2019abord.';
   }
   return null;
 }
 
 /* ── LA QUESTION DU DÉPÔT — deux boutons, rien d'autre ───────────────────── */
+/* [⑥a] QUI OCCUPE LA CASE VISÉE ? Une classe appariée, et une autre que la
+   sienne : c'est le cas où le site proposait un refus sec, et où il propose
+   maintenant trois sorties. Une classe non appariée ne reçoit aucun geste. */
+function edtOccupantDe(c,dst){
+  if(!c||!dst||!dst.creneau)return null;
+  var edtO=null;
+  edtCasesDuJour(dst.iso).forEach(function(x){
+    if(!x||x.creneau!==dst.creneau||x.mjpc===false)return;
+    if(!x.classeMjpc)return;                       /* classe non appariée : on n'y touche pas */
+    if((x.classeMjpc||x.classe)===(c.classeMjpc||c.classe))return;
+    edtO=x;
+  });
+  return edtO;
+}
+/* [⑥a] LES TROIS ISSUES. Paul ne reçoit plus un refus : il reçoit le prix, puis
+   il choisit. Échanger ne coûte rien à personne ; écraser coûte une heure à la
+   classe évincée, et cette heure-là est à replacer, jamais perdue en silence. */
+function edtTroisIssues(cleSource,dst){
+  var c=edtCellule(cleSource); if(!c)return;
+  var edtOcc=edtOccupantDe(c,dst); if(!edtOcc)return;
+  var edtB=edtOcc.classeMjpc;
+  if(typeof atModaleChoix!=='function')return;
+  atModaleChoix(
+    escapeHtml(edtJourEnClair(dst.iso))+' à '+escapeHtml(dst.creneau)+', c\u2019est <b>'+escapeHtml(edtB)+'</b>.<br>'
+    +'<b>Échanger</b> : '+escapeHtml(c.classeMjpc||c.classe)+' et '+escapeHtml(edtB)
+    +' permutent leurs deux heures — personne ne perd rien.<br>'
+    +'<b>Prendre le créneau</b> : '+escapeHtml(edtB)+' perd son heure du '
+    +escapeHtml(edtJourEnClair(dst.iso))+' — elle devient une heure à replacer, et le site te la rappellera.',
+    [{lib:'Ne rien faire'},
+     {lib:'Échanger les deux heures',fn:function(){ edtEchangerHeures(cleSource,dst); }},
+     {lib:'Prendre le créneau',prim:true,fn:function(){ edtEcraserHeure(cleSource,dst); }}]);
+}
+/* [⑥a] L'ÉCHANGE — quatre décisions, UNE seule écriture, archive avant. Les deux
+   départs portent `deplaceeVers` : ni l'une ni l'autre classe ne perd d'heure. */
+function edtEchangerHeures(cleSource,dst){
+  var c=edtCellule(cleSource); if(!c||!c.classeMjpc)return;
+  var edtOcc=edtOccupantDe(c,dst); if(!edtOcc)return;
+  var edtB=edtOcc.classeMjpc,edtQ=Date.now();
+  edtEcrireDecisionsGroupe([
+    {classe:c.classeMjpc,cle:edtCleHeure(c.iso,c.creneau,c.classeMjpc),
+     valeur:{sansSeance:true,motif:'banalisee',categorie:'Reprise ou rattrapage',
+       precision:'heure échangée avec '+edtB,deplaceeVers:dst.iso+'|'+dst.creneau,pose:edtQ}},
+    {classe:c.classeMjpc,cle:edtCleHeure(dst.iso,dst.creneau,c.classeMjpc),
+     valeur:{epingle:true,venantDe:c.iso+'|'+c.creneau,pose:edtQ}},
+    {classe:edtB,cle:edtCleHeure(dst.iso,dst.creneau,edtB),
+     valeur:{sansSeance:true,motif:'banalisee',categorie:'Reprise ou rattrapage',
+       precision:'heure échangée avec '+(c.classeMjpc||''),deplaceeVers:c.iso+'|'+c.creneau,pose:edtQ}},
+    {classe:edtB,cle:edtCleHeure(c.iso,c.creneau,edtB),
+     valeur:{epingle:true,venantDe:dst.iso+'|'+dst.creneau,pose:edtQ}}],
+    'échange d\u2019heures — '+(c.classeMjpc||'')+' ⇄ '+edtB,'Échange d\u2019heures');
+}
+/* [⑥a] L'ÉCRASEMENT — Paul prend le créneau, et l'heure évincée devient une heure
+   À REPLACER : motif déclaré en ⑤b, statut non justifié, basculable. Elle n'est pas
+   perdue : le rappel arrive en ⑥b. */
+function edtEcraserHeure(cleSource,dst){
+  var c=edtCellule(cleSource); if(!c||!c.classeMjpc)return;
+  var edtOcc=edtOccupantDe(c,dst); if(!edtOcc)return;
+  var edtB=edtOcc.classeMjpc,edtQ=Date.now();
+  edtEcrireDecisionsGroupe([
+    {classe:c.classeMjpc,cle:edtCleHeure(c.iso,c.creneau,c.classeMjpc),
+     valeur:{sansSeance:true,motif:'banalisee',categorie:'Reprise ou rattrapage',
+       precision:'heure déplacée vers le '+dst.iso+' '+dst.creneau,
+       deplaceeVers:dst.iso+'|'+dst.creneau,pose:edtQ}},
+    {classe:c.classeMjpc,cle:edtCleHeure(dst.iso,dst.creneau,c.classeMjpc),
+     valeur:{epingle:true,venantDe:c.iso+'|'+c.creneau,pose:edtQ}},
+    {classe:edtB,cle:edtCleHeure(dst.iso,dst.creneau,edtB),
+     valeur:{sansSeance:true,motif:'aReplacer',justifiee:EDT_MOTIFS.aReplacer.justifiee,
+       aReplacer:true,prisePar:(c.classeMjpc||''),categorie:'Autre',
+       precision:'heure prise par '+(c.classeMjpc||'')+' — à replacer',pose:edtQ}}],
+    'créneau pris à '+edtB+' — son heure est à replacer','Créneau pris');
+}
 function edtDepot(cleSource,dst){
   var c=edtCellule(cleSource); if(!c)return;
+  if(edtOccupantDe(c,dst))return edtTroisIssues(cleSource,dst);   /* jamais un refus sec */
   var refus=edtRefusDepot(c,dst);
   if(refus){ if(typeof atInfo==='function')atInfo('Dépôt refusé : '+refus); return; }
   var creneaux=dst.creneau?[dst.creneau]:edtCreneauxLibresLe(dst.iso,c);

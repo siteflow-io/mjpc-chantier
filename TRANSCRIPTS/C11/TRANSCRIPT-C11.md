@@ -1120,3 +1120,58 @@ Tout est au registre, tour 207.
 **Cahier vivant** — ②, puis ③ à ⑧, puis ton promeus. En attente de toi : la classe De Gaulle · `CLAUDE.md` périmé · `usage`/`quandPas` du site · la bascule de mode test dans quatre apps · les quatre fichiers hors socle · l'unicité entre familles.
 
 MEMO
+
+---
+
+## TOUR 20 — Paul
+
+Texte mot pour mot :
+
+> Livré
+
+---
+
+## TOUR 20 — Claude (conscience n°11)
+
+Audit joué : candidat mesuré (1 673 446 o / `92880802…`) · rapport lu · diff 7 blocs ·
+non-régression · moteur et correctif bit à bit · double parseur · garde · **banc indépendant
+sur les quatre cas du §④**, décisions posées à la main sur des clés que le contenu ne
+reproduirait pas. Registre : tour 208, commit `39aa393d`.
+
+Réponse mot pour mot :
+
+**Verdict : ça va. Le mandat ② est fini, sans dette. Il reste une question, et elle est pour toi.**
+
+## Ce que j'ai rejoué moi-même
+
+**L'événement ne bouge pas** : la case reste cochée, rien n'est dit. **Il se déplace** : la case redevient **vide**, les deux coches restent au magasin, et le site dit que tu avais coché deux heures sur les dates précédentes. Rien n'est reporté à ta place. **Il ne recouvre plus aucune heure** : case vide aussi.
+
+C'est ta règle, appliquée.
+
+## La question qui te revient
+
+J'avais écrit dans le mandat « cases vides » sans distinguer un cas : **quand seulement une partie des heures a bougé**. Mesuré : dans ce cas-là, la case **reste cochée** et le message ne compte que les heures sorties.
+
+Son argument, et je le trouve juste : vider la case alors qu'une heure reste vraiment marquée effacerait une information vraie.
+
+**À toi de trancher : quand la moitié des heures d'un événement a bougé, tu veux la case cochée avec le décompte de ce qui est sorti, ou vide comme dans le cas total ?** Tant que tu n'as pas répondu, le comportement actuel reste.
+
+## Ce qu'il signale et qui part en livraison ③
+
+**Si tu renommes une classe, ses coches restent lisibles sous l'ancien nom** et la nouvelle compte zéro. Rien n'est perdu, mais rien ne suit. Il a eu raison de ne pas y toucher : rattacher des décisions à un nouveau nom, c'est de l'appariement, donc la livraison ③. Je le porte au mandat suivant.
+
+## Son audit adverse
+
+Sept situations cherchées, aucune casse. Notamment : deux événements cochés sur la même heure → **deux heures comptées, pas quatre**, avec l'avertissement avant. Et une décision dont l'événement a disparu **reste** et compte toujours.
+
+## Les captures
+
+Même parcours joué deux fois, avant et après. Le clic écrivait dans ton calendrier, il écrit maintenant dans le magasin des décisions. Le champ passe de 1 à 0, et le compte d'heures ne change pas.
+
+Tout est au registre, tour 208.
+
+**Tests manuels : aucun.** Rien en ligne, `/site/edt` toujours vide.
+
+**Cahier vivant** — livraison ③ : appariement, différentiel, archivage généralisé, plus la classe renommée. Puis ④ à ⑧, puis ton promeus. En attente de toi : le cas partiel ci-dessus · la classe De Gaulle · `CLAUDE.md` périmé · `usage`/`quandPas` du site · la bascule de mode test dans quatre apps · les quatre fichiers hors socle · l'unicité entre familles.
+
+MEMO

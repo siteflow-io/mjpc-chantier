@@ -2707,3 +2707,54 @@ Sinon j'attends sa livraison.
 **Cahier vivant** — ⑤ finale chez l'exécutant, puis ⑥ à ⑧, puis ton promeus, puis l'injection de chapitre.
 
 MEMO
+
+---
+
+## TOUR 53 — Paul
+
+Texte mot pour mot :
+
+> livré
+
+---
+
+## TOUR 53 — Claude (conscience n°11)
+
+Audit joué : candidat mesuré (1 729 825 o / `b0be8f4d…`) · non-régression · **garde rejouée
+sans puis avec les fichiers `prompts/`, plus un piège posé par moi (un caractère changé)** ·
+**banc indépendant sur l'alerte, neuf cas** · absence de requête sortante vérifiée.
+Registre : `n°11 · 35`.
+
+Réponse mot pour mot :
+
+**Verdict : ça va. Le mandat ⑤ est fini.**
+
+## Ta cinquième garde mord
+
+Je l'ai d'abord vue **rouge** — et c'était mon environnement : je n'avais pas les fichiers de consignes à côté. Elle a dit exactement pourquoi : « prompts/calendrier.md introuvable : impossible de comparer ». **Elle refuse plutôt que de passer en silence.** C'est ce qu'on lui demande.
+
+Avec les fichiers : verte sur ses cinq questions.
+
+**Puis je lui ai posé mon piège** : j'ai changé **un seul caractère** dans le fichier du dépôt — « Reconduis » en « Reconduit ». Elle est devenue rouge, et elle n'a pas seulement dit « ils diffèrent » : **elle a nommé l'écart au caractère près**, avec le texte des deux côtés. J'ai remis le fichier : verte.
+
+C'est exactement la protection que tu voulais : plus personne n'aura à se souvenir que les consignes existent en deux exemplaires.
+
+## L'alerte, rejouée par moi sur neuf cas
+
+**Pas de date d'injection → aucune alerte.** Cinq jours, vingt-neuf jours → rien. **Trente jours → l'alerte apparaît.** Tu cliques « Plus tard » → silence ; le délai passé → elle revient.
+
+Pas de calendrier, date absurde → rien, et rien ne plante.
+
+Et surtout : **le site ne lit rien à l'extérieur.** Zéro requête dans toute la zone de l'alerte. Il compte les jours, c'est tout.
+
+## Où on en est
+
+**Six livraisons closes** : ①, ②, ③, ③bis, ④, ⑤. **Il reste ⑥, ⑦ et ⑧** avant ton promeus.
+
+Tout est au registre, `n°11 · 35`.
+
+**Tests manuels : aucun.** Rien en ligne.
+
+**Cahier vivant** — mandat ⑥ à écrire (les trois issues, l'heure à replacer, les télescopages, les dates de l'année), puis ⑦ et ⑧, puis ton promeus, puis l'injection de chapitre.
+
+MEMO

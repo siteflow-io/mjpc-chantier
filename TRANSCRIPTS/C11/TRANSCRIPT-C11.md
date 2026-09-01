@@ -1544,3 +1544,58 @@ Donc elle continuera de tourner à chaque livraison. **Mais** elle ne regarde pl
 **Cahier vivant** — livraison ④ (avec la garde à renforcer, si tu le veux), puis ⑤ à ⑧, puis ton promeus. En attente de toi : les heures de De Gaulle · le garde-fou des préfixes · le reste des dettes hors lot.
 
 MEMO
+
+---
+
+## TOUR 29 — Paul
+
+Texte mot pour mot :
+
+> 4h en semaine A et B, très bien. en revanche qui n'apparaissent qu'en mode test, c'est faisable? Il faut la livraison. l'id à consolider alors, le système doit être solide et ne pas me bloquer dans 3 mois quand je ne saurai même plus cette histoire d'identifiants. remets la garde du coup. tout cela constitue une livraison, non?
+
+---
+
+## TOUR 29 — Claude (conscience n°11)
+
+Mesures : découpe §⑱ du v2 relue — **④ = les prompts en un collage**, donc ce que Paul demande
+n'est pas ④ · `m8TestOn` : **22 occurrences dans le fichier, 0 dans le bloc EDT**, et
+**absent du contrat** de `verif_edt.py` · les 19 trous de la note triés : **13 sans marque**
+(libres en A **et** en B), 6 marqués A ou B.
+
+Réponse mot pour mot :
+
+**Oui, c'est faisable. Oui, ça fait une livraison. Et tu as raison sur le fond : le système doit tenir sans que tu te souviennes de rien.**
+
+## Les heures qui n'apparaissent qu'en mode test
+
+Faisable, et c'est la bonne façon de faire : la classe d'essai ne pollue jamais tes vrais comptes, et elle disparaît d'elle-même quand tu quittes le mode test — pas de « geste nommé » à ne pas oublier.
+
+Une seule contrainte technique, que je te dis avant : **le bloc emploi du temps ne sait pas aujourd'hui si le mode test est allumé** — il ne le demande jamais. Il faudra l'y autoriser, donc élargir la garde une deuxième fois. Mais c'est un élargissement **de lecture** : il demande « suis-je en mode test ? », il n'écrit rien. C'est sans danger, contrairement au précédent.
+
+## Une question, une seule : lesquels ?
+
+Tu dis 4 heures en A et B. Sur les 19 trous de ta grille, **13 sont libres en semaine A comme en B** :
+
+> lundi 8h00 · lundi 13h00 · lundi 13h57 · mardi 8h00 · jeudi 8h00 · jeudi 8h57 · jeudi 10h07 · jeudi 13h00 · jeudi 13h57 · vendredi 13h00 · vendredi 13h57 · vendredi 15h07 · vendredi 16h04
+
+**Je te propose ces quatre** — répartis sur quatre jours, comme un vrai emploi du temps de 3e :
+
+> **lundi 8h00 · mardi 8h00 · jeudi 10h07 · vendredi 13h00**
+
+Dis oui, ou donne-moi les tiens, et le mandat part.
+
+## Ce que la livraison contiendra
+
+Je l'appelle **③bis**, pas ④ : ④ est déjà pris par les prompts, dans ta découpe.
+
+**Un titre : que le système tienne tout seul.** Trois choses qui servent la même chose.
+
+1. **La classe d'essai** — 4 heures en A et B, sur des trous réels, **visibles seulement en mode test**, jamais dans tes comptes.
+2. **L'identifiant qui dit sa famille, et que le site vérifie.** Aujourd'hui un identifiant menteur passerait sans un mot. Dans trois mois tu ne te souviendras pas de cette histoire — et c'est exactement pour ça qu'il faut que ce soit le site qui s'en souvienne, pas toi.
+3. **La garde qui reprend la surveillance** du chemin d'écriture. Aujourd'hui c'est moi qui la fais à la main ; demain ce sera une autre conscience qui ne le saura pas. Une garde ne perd pas la mémoire.
+
+**Tests manuels : aucun.**
+
+**Cahier vivant** — ton choix des quatre heures, puis le mandat ③bis, puis ④ à ⑧, puis ton promeus.
+
+MEMO

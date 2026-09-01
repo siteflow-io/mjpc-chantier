@@ -1211,3 +1211,36 @@ Quand **tout** a bougé, la case est vide dans les deux cas — ça, c'est déj�
 **Cahier vivant** — inchangé : ta réponse sur ce point, puis la livraison ③.
 
 MEMO
+
+---
+
+## TOUR 22 — Paul
+
+Texte mot pour mot :
+
+> C'est quoi le plus logique ? Par ailleurs c'est un cas vraiment hypothétique...
+
+---
+
+## TOUR 22 — Claude (conscience n°11)
+
+Mesure : `json/calendrier-2026-2027.json` — 15 événements de classe, dont **5 sur plusieurs
+jours** (Séjour Verdun 3e, Stages 3e, Stages 3e horizon Pro, Stage 4, Séjour Pays-Bas 4e).
+
+Réponse mot pour mot :
+
+**Le plus logique, c'est de garder ce que le site fait : la case reste cochée.**
+
+La case répond à une question simple — « ce voyage a-t-il des heures marquées ? ». S'il en a encore deux, la réponse est oui. La vider dirait quelque chose de faux. Et ça t'obligerait à recocher des heures **déjà cochées** : le site te sortirait alors un avertissement « cette heure porte déjà un motif », pour rien.
+
+La règle tient en une phrase : **la case est cochée tant qu'au moins une heure de ce voyage est marquée**, et le message te dit combien d'heures sont sorties. Quand plus aucune ne tient, la case se vide.
+
+**Sur « hypothétique » : moins que tu ne le penses.** J'ai regardé ton calendrier : sur tes 15 événements de classe, **5 durent plusieurs jours** — Séjour Verdun, les deux stages 3e, Stage 4e, et le séjour Pays-Bas qui court sur six jours. Il suffit qu'un de ceux-là soit décalé d'un jour, ou qu'une seule de tes heures change de jour, pour que la moitié tienne et l'autre non. Ça n'arrivera pas souvent, mais ça peut arriver, et c'est justement sur le Pays-Bas — six jours — que ce serait le plus visible.
+
+Donc : rien à changer, et la règle est écrite. Je la porte au registre et on passe à la livraison ③.
+
+**Tests manuels : aucun.**
+
+**Cahier vivant** — livraison ③ : appariement, différentiel, archivage généralisé, plus la classe renommée. Puis ④ à ⑧, puis ton promeus. En attente de toi : la classe De Gaulle · `CLAUDE.md` périmé · `usage`/`quandPas` du site · la bascule de mode test dans quatre apps · les quatre fichiers hors socle · l'unicité entre familles.
+
+MEMO

@@ -1808,3 +1808,41 @@ C'est au registre, tour 216.
 **Cahier vivant** — ③bis finale chez l'exécutant, puis ④ à ⑧, puis ton promeus. Et cette passe de simplification, quand tu diras.
 
 MEMO
+
+---
+
+## TOUR 35 — Paul
+
+Texte mot pour mot :
+
+> c'est évidemment les textes affichés dont on parle. à mettre en dette pour l'instant. d'ailleurs, tu actualises le fichier des dettes, pour ne pas en perdre?
+
+---
+
+## TOUR 35 — Claude (conscience n°11)
+
+Mesure : registre **270 029 o, 983 lignes** · **17 entrées** de la conscience n°11 (tours 197
+à 216) · elles commencent **ligne 590** et finissent ligne 960 · la file ordonnée de tête date
+du **25/08** et n'a pas bougé.
+
+Réponse mot pour mot :
+
+**Oui, à chaque tour, depuis le premier.** Dix-sept entrées aujourd'hui, des tours 197 à 216 — chaque audit, chaque décision que tu prends, chaque dette. La dernière, celle des textes affichés, y est.
+
+**Mais ta question tombe juste, et il y a un vrai défaut que je dois te dire.**
+
+Le registre fait maintenant **983 lignes**. Mes entrées s'empilent **à la fin**, de la ligne 590 à la ligne 960. Et la file ordonnée qui est **en tête** date du 25 août : elle n'a pas bougé de la journée.
+
+Donc dans trois mois, tu ouvres le fichier, tu lis la tête — et tu rates tout ce qu'on a fait depuis. **Les dettes ne sont pas perdues, elles sont noyées.** C'est exactement ce que tu crains.
+
+**Ce que je propose** : une seule section, **en tête du registre**, qui liste **les dettes ouvertes et rien d'autre** — une ligne chacune, dans l'ordre, avec un renvoi vers l'entrée détaillée plus bas. Je la tiens à jour à chaque tour, comme le reste. Tu ouvres, tu lis vingt lignes, tu sais où tu en es.
+
+Aujourd'hui elle contiendrait : le mode test absent de la production (la plus lourde) · les textes affichés à simplifier · `CLAUDE.md` périmé · le site sans `usage` ni `quandPas` · la bascule de mode test dans quatre apps · les quatre fichiers hors socle · le rafraîchissement après injection · et tes décisions en attente.
+
+C'est ton document, tu le relis toi-même — **je ne touche pas à sa structure sans que tu me le dises.** Un mot et je le fais.
+
+**Tests manuels : aucun.**
+
+**Cahier vivant** — ③bis finale chez l'exécutant. Et, si tu le veux, la liste des dettes ouvertes en tête du registre.
+
+MEMO

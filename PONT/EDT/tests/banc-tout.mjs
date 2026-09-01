@@ -67,6 +67,8 @@ const BANCS = [
     ['"idsDistincts":15,"total":15', '"memeId":false']],
   ['audit-adverse-03bis.mjs', 'audit adverse ③bis · la classe d\'essai',
     ['"distincts":5,"total":5', '"fictifsLus":4']],
+  ['banc-alerte-05.mjs', '⑤ · l\'alerte mensuelle',
+    ['alerte : "(aucune ligne)"', 'injecté il y a un mois', '"rappelLe":"']],
   ['verif122.mjs', 'le calendrier réel · 122 identifiants',
     ['poses: 122', "evc: 15, jal: 30, eta: 59, fer: 11, vac: 7", 'collisions: 0']]
 ];

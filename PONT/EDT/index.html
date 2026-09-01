@@ -2854,7 +2854,7 @@ function mjpcEcrireRest(url,options,cb){
    (les 3 gestes, le geste conservatoire par app, ce qui ne peut pas arriver).
    RESTAURER LA VERSION PRÉCÉDENTE : docs/MJPC6-restauration.md (convention BUG).
    ═══════════════════════════════════════════════════════════════════════════ */
-var APP_VERSION="8.73.0-⑥a";
+var APP_VERSION="8.73.0-⑥b";
 var APP_VERSION_DATE="2026-08-27";
 // ── 11. Coffre : dérivation, chiffrement, empreinte (v1.3.0) ──
 // (Le canon porte deux sections « 8 » — dette de numérotation connue, non corrigée
@@ -20115,6 +20115,7 @@ function edtPeindreModale(){
         +'<input class="edt-sel" id="edt-prec" placeholder="préciser la raison (enregistrée)">'
         +'<button class="edt-btn" onclick="edtSansSeance('+JSON.stringify(cle).replace(/"/g,'&quot;')+')">Banaliser cette heure</button></div>';
     }
+    h+=edtRappelAReplacerHtml(c.classeMjpc);   /* [⑥b] rappelé dans la vue de la classe */
     h+=edtJournalHtml(c.classeMjpc);
   }
   h+='</div>';
@@ -20741,6 +20742,56 @@ function edtJustifier(id,valeur){
 }
 
 /* ── LA TÊTE, COMMUNE AUX QUATRE VUES ────────────────────────────────────── */
+/* [⑥b] LES HEURES À REPLACER — celles qu'une autre classe a prises. Tant que Paul
+   ne les a pas reposées, ou déclarées perdues, le site les lui rappelle : dans la
+   vue de la classe, et au bandeau. Jusqu'à ce qu'elles soient posées. */
+function edtHeuresAReplacer(nomClasse){
+  var edtD=edtDecisions(),edtOut=[];
+  Object.keys(edtD).forEach(function(c){
+    if(nomClasse&&c!==nomClasse)return;
+    var edtH=(edtD[c]||{}).heures||{};
+    Object.keys(edtH).forEach(function(k){
+      var v=edtH[k];
+      if(!v||!v.aReplacer||v.replacee)return;
+      var m=String(k).match(/^(\d{4}-\d{2}-\d{2})_(\d{2}h\d{2}-\d{2}h\d{2})_/);
+      edtOut.push({classe:c,cle:k,iso:m?m[1]:'',creneau:m?m[2].replace(/h/g,':'):'',
+        prisePar:v.prisePar||''});
+    });
+  });
+  return edtOut.sort(function(a,b){ return String(a.iso).localeCompare(String(b.iso)); });
+}
+function edtRappelAReplacerHtml(nomClasse){
+  var edtL=edtHeuresAReplacer(nomClasse||null);
+  if(!edtL.length)return '';
+  return '<div class="edt-rappel edt-mo-bloc"><b>'+edtL.length+' heure'+(edtL.length>1?'s':'')
+    +' à replacer</b>'
+    +edtL.slice(0,6).map(function(u){
+      return '<div class="edt-cal-l">'+escapeHtml(u.classe)+' · '+escapeHtml(edtJourEnClair(u.iso))
+        +' '+escapeHtml(u.creneau)+(u.prisePar?(' · prise par '+escapeHtml(u.prisePar)):'')
+        +' <button class="edt-mini" onclick="edtHeureReplacee('+JSON.stringify(u.classe).replace(/"/g,'&quot;')
+        +','+JSON.stringify(u.cle).replace(/"/g,'&quot;')+')">je l\u2019ai replacée</button>'
+        +' <button class="edt-mini" onclick="edtPerteSeche('+JSON.stringify(u.classe).replace(/"/g,'&quot;')
+        +','+JSON.stringify(u.cle).replace(/"/g,'&quot;')+')">elle ne sera pas rendue</button></div>';
+    }).join('')
+    +(edtL.length>6?('<p class="edt-mini-t">… et '+(edtL.length-6)+' de plus</p>'):'')+'</div>';
+}
+/* [⑥b] Paul l'a reposée : elle sort du rappel et des heures perdues. */
+function edtHeureReplacee(nomClasse,cle){
+  var edtV=((edtDecisions()[nomClasse]||{}).heures||{})[cle]; if(!edtV)return;
+  var edtN=JSON.parse(JSON.stringify(edtV));
+  edtN.replacee=true; edtN.deplaceeVers=edtN.deplaceeVers||'replacée à la main';
+  edtEcrireDecision(nomClasse,cle,edtN,'heure replacée');
+}
+/* [⑥b] PERTE SÈCHE : Paul déclare que l'heure ne sera pas rendue. Elle entre dans
+   les heures perdues, motif « heure prise par une autre classe », justifiée, et
+   basculable — les règles de ⑤b, pas des règles neuves. */
+function edtPerteSeche(nomClasse,cle){
+  var edtV=((edtDecisions()[nomClasse]||{}).heures||{})[cle]; if(!edtV)return;
+  var edtN=JSON.parse(JSON.stringify(edtV));
+  edtN.motif='priseAutreClasse'; edtN.justifiee=EDT_MOTIFS.priseAutreClasse.justifiee;
+  edtN.aReplacer=false;
+  edtEcrireDecision(nomClasse,cle,edtN,'heure perdue sèche — prise par '+(edtV.prisePar||'une autre classe'));
+}
 function edtTeteHtml(mode,titre){
   var auj=edtAujourdhui(), maintenant=edtCreneauMaintenant();
   return '<div class="edt-tete">'
@@ -20751,6 +20802,10 @@ function edtTeteHtml(mode,titre){
       return '<button class="edt-btn'+(mode===m?' edt-btn-actif':'')+'" onclick="edtVue(\''+m+'\')">'
         +(m==='semaine'?'Semaine':(m==='mois'?'Mois':'Année'))+'</button>'; }).join('')
    +'<button class="edt-btn'+(mode==='calendrier'?' edt-btn-actif':'')+'" onclick="edtVue(\'calendrier\')">Heures perdues\u2026</button>'
+   +(edtHeuresAReplacer(null).length
+     ? ('<span class="edt-mini-t">\u23f3 '+edtHeuresAReplacer(null).length+' heure'
+        +(edtHeuresAReplacer(null).length>1?'s':'')+' à replacer</span>')
+     : '')
    +'<button class="edt-btn" onclick="edtAller(-1)">\u2039</button>'
    +'<button class="edt-btn" onclick="edtAujourdhuiAller()">Aujourd\u2019hui</button>'
    +'<button class="edt-btn" onclick="edtAller(1)">\u203a</button>'

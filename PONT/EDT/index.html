@@ -2854,7 +2854,7 @@ function mjpcEcrireRest(url,options,cb){
    (les 3 gestes, le geste conservatoire par app, ce qui ne peut pas arriver).
    RESTAURER LA VERSION PRÉCÉDENTE : docs/MJPC6-restauration.md (convention BUG).
    ═══════════════════════════════════════════════════════════════════════════ */
-var APP_VERSION="8.73.0-④";
+var APP_VERSION="8.73.0-⑤a";
 var APP_VERSION_DATE="2026-08-27";
 // ── 11. Coffre : dérivation, chiffrement, empreinte (v1.3.0) ──
 // (Le canon porte deux sections « 8 » — dette de numérotation connue, non corrigée
@@ -20290,31 +20290,125 @@ function edtPeindreAnnee(){
 }
 
 /* ── LE CALENDRIER DE L'ANNÉE — lisible, et les écarts se déclarent ───────── */
+/* [⑤a] CE QUE L'ANNÉE COÛTE — l'écran ne règle plus le calendrier, il dit ce
+   qu'il coûte. Une fiche par ÉVÉNEMENT (pas par jour), une case par heure, et
+   rien n'est retiré tant que Paul n'a pas coché : avant sa coche, on écrit
+   « perdrait », jamais « perd ». */
+var EDT_FICHES=[];         /* index des heures affichées : la case passe son numéro */
+
+/* le coût d'un événement, NIVEAU par NIVEAU. Les événements portent un niveau et
+   `classes: []` : nommer une classe ici serait inventer une donnée. */
+function edtNiveauxConnus(){
+  var edtVus={};
+  edtCasesCourantes().forEach(function(c){
+    if(!c||!c.classeMjpc)return;
+    var n=edtNiveauDe(c.classeMjpc); if(n)edtVus[n]=true;
+  });
+  return Object.keys(edtVus).sort();
+}
+function edtCoutParNiveau(ev){
+  var edtOut={},edtN=edtHeuresDeLEvenement(ev).length;
+  edtNiveauxConnus().forEach(function(n){ edtOut[n]=(ev&&ev.niveau===n)?edtN:0; });
+  if(ev&&ev.niveau&&edtOut[ev.niveau]===undefined)edtOut[ev.niveau]=edtN;
+  return edtOut;
+}
+function edtPhraseCout(ev){
+  var edtC=edtCoutParNiveau(ev),edtBouts=[];
+  Object.keys(edtC).forEach(function(n){
+    edtBouts.push('tes '+n+' '+(edtC[n]?('perdraient '+edtC[n]+' heure'+(edtC[n]>1?'s':'')):'z\u00e9ro'));
+  });
+  return edtBouts.join(' ; ');
+}
+/* le total, par classe : ce que l'année a coûté jusqu'ici */
+function edtTotauxPerdues(){
+  var edtD=edtDecisions(),edtOut=[];
+  Object.keys(edtD).forEach(function(c){
+    var edtH=(edtD[c]||{}).heures||{},edtN=0,edtJ=0;
+    Object.keys(edtH).forEach(function(k){
+      var v=edtH[k]; if(!v||v.deplaceeVers)return;
+      if(!(v.ecartJustifie||v.sansSeance))return;
+      edtN++; if(v.justifiee!==false)edtJ++;
+    });
+    if(edtN)edtOut.push({classe:c,perdues:edtN,justifiees:edtJ});
+  });
+  return edtOut.sort(function(a,b){ return String(a.classe).localeCompare(String(b.classe),'fr'); });
+}
+/* [⑤a] UNE HEURE, UNE CASE. Cochée : cette heure a bien été perdue — et une heure
+   perdue à cause du calendrier est justifiée, sans bascule, c'est la règle de Paul. */
+function edtHeurePerdue(rang,coche){
+  var edtF=EDT_FICHES[rang]; if(!edtF)return;
+  if(coche){
+    edtEcrireDecision(edtF.classe,edtF.cle,
+      {ecartJustifie:true,motif:'calendrier',justifiee:true,evenement:edtF.ev,
+       libelle:edtF.libelle,pose:Date.now()},
+      'heure perdue \u2014 '+edtF.libelle);
+  } else {
+    var edtD=edtDecisions();
+    if(edtD[edtF.classe]&&edtD[edtF.classe].heures)delete edtD[edtF.classe].heures[edtF.cle];
+    edtEcrireDecisionsGroupe([{classe:edtF.classe,cle:edtF.cle,valeur:null}],
+      'heure perdue retir\u00e9e \u2014 '+edtF.libelle,'Heures perdues');
+  }
+}
 function edtPeindreCalendrier(){
   var e=document.getElementById('edt-ecran'); if(!e)return;
   var cal=EDT.calendrier;
-  var h=edtTeteHtml('calendrier','calendrier de l\u2019année');
+  var h=edtTeteHtml('calendrier','heures perdues');
   if(!cal){ e.innerHTML=h+'<div class="edt-cal"><p class="edt-p">Aucun calendrier injecté.</p></div>'; return; }
-  h+='<div class="edt-cal"><div class="edt-cal-col"><div class="edt-titre">Événements de classe</div>'
-    +'<p class="edt-mini-t">Coche « justifié » quand l\u2019écart de progression ne dépend pas de toi : ses heures sortent du calcul.</p>'
-    +(cal.evenementsClasse||[]).map(function(x,i){
-      /* [②] l'événement a bougé : la case revient vide, et le site dit ce que Paul
-         avait coché avant — à lui de recocher, le site ne décide pas à sa place. */
-      var dep=edtCochesDeplacees(x);
-      return '<label class="edt-cal-l"><input type="checkbox"'+(edtEvenementJustifie(x)?' checked':'')
-        +' onchange="edtJustifier(\''+String(x.id||'')+'\',this.checked)"><b>'+escapeHtml(x.niveau||'')+'</b> '
-        +escapeHtml(x.debut)+(x.fin!==x.debut?(' \u2192 '+escapeHtml(x.fin)):'')+' \u00b7 '
-        +escapeHtml(String(x.libelle||'').slice(0,60))
-        +(dep.length?(' <em class="edt-mini-t">tu avais coché '+dep.length+' heure'+(dep.length>1?'s':'')
-          +' sur les dates précédentes</em>'):'')+'</label>';
-    }).join('')+'</div>'
-    +'<div class="edt-cal-col"><div class="edt-titre">Jalons communs</div>'
+  EDT_FICHES=[];
+  var edtT=edtTotauxPerdues();
+  h+='<div class="edt-cal"><div class="edt-cal-col">'
+    +'<div class="edt-titre">Ce que l\u2019année t\u2019a coûté</div>'
+    +(edtT.length
+      ? edtT.map(function(t){ return '<div class="edt-cal-l"><b>'+escapeHtml(t.classe)+'</b> \u00b7 cette année, '
+          +t.perdues+' heure'+(t.perdues>1?'s':'')+' perdue'+(t.perdues>1?'s':'')
+          +', dont '+t.justifiees+' déclarée'+(t.justifiees>1?'s':'')+' justifiée'+(t.justifiees>1?'s':'')+'.</div>'; }).join('')
+      : '<p class="edt-mini-t">Aucune heure perdue pour l\u2019instant.</p>')
+    +'<p class="edt-mini-t">Coche une heure quand elle a bien été perdue. Tant que tu n\u2019as rien coché, rien n\u2019est retiré de tes comptes.</p>';
+  var edtFiches=0;
+  (cal.evenementsClasse||[]).forEach(function(x){
+    var edtHeures=edtHeuresDeLEvenement(x);
+    if(!edtHeures.length)return;              /* un événement qui ne coûte rien n'a pas de case */
+    edtFiches++;
+    var edtDep=edtCochesDeplacees(x);
+    h+='<div class="edt-fiche"><div class="edt-cal-l"><b>'+escapeHtml(String(x.libelle||''))+'</b> \u00b7 '
+      +escapeHtml(edtDatesEnClair(x.debut,x.fin))+' \u00b7 '+escapeHtml(edtPhraseCout(x))+'.'
+      +(edtDep.length?(' <em class="edt-mini-t">tu avais coché '+edtDep.length+' heure'+(edtDep.length>1?'s':'')
+        +' sur les dates précédentes</em>'):'')+'</div>';
+    edtHeures.forEach(function(u){
+      var edtV=edtDecisionPour(u.classe,u.iso,u.creneau);
+      var edtCoche=!!(edtV&&edtV.ecartJustifie&&edtV.evenement===x.id);
+      var edtRang=EDT_FICHES.length;
+      EDT_FICHES.push({ev:String(x.id||''),libelle:String(x.libelle||''),
+        classe:u.classe,iso:u.iso,creneau:u.creneau,cle:u.cle});
+      h+='<label class="edt-cal-l"><input type="checkbox"'+(edtCoche?' checked':'')
+        +' onchange="edtHeurePerdue('+edtRang+',this.checked)"> '
+        +escapeHtml(u.classe)+' \u00b7 '+escapeHtml(edtJourEnClair(u.iso))+', '+escapeHtml(u.creneau)
+        +' \u2192 1 heure'
+        +((edtV&&edtV.sansSeance)?' <em class="edt-mini-t">banalisée</em>':'')+'</label>';
+    });
+    h+='</div>';
+  });
+  if(!edtFiches)h+='<p class="edt-mini-t">Aucun événement de l\u2019année ne tombe sur une de tes heures.</p>';
+  h+='</div><div class="edt-cal-col"><div class="edt-titre">Jalons communs</div>'
     +(cal.jalons||[]).map(function(x){ return '<div class="edt-cal-l">'+escapeHtml(x.date)+' \u00b7 '+escapeHtml(String(x.libelle||'').slice(0,60))+'</div>'; }).join('')
     +'</div><div class="edt-cal-col"><div class="edt-titre">Sans cours</div>'
     +(cal.vacances||[]).map(function(x){ return '<div class="edt-cal-l">'+escapeHtml(x.nom)+' \u00b7 '+escapeHtml(x.debut)+' \u2192 '+escapeHtml(x.fin)+'</div>'; }).join('')
     +(cal.feries||[]).map(function(x){ return '<div class="edt-cal-l edt-mini-t">'+escapeHtml(x.date)+' \u00b7 '+escapeHtml(x.libelle)+'</div>'; }).join('')
     +'</div></div>';
   e.innerHTML=h;
+}
+/* les dates dans les mots de Paul, jamais en ISO à l'écran */
+var EDT_MOIS=['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
+function edtJourEnClair(iso){
+  var edtP=String(iso||'').split('-'); if(edtP.length!==3)return String(iso||'');
+  var edtJ=edtNomDuJour(iso)||'';
+  return edtJ+' '+Number(edtP[2])+' '+(EDT_MOIS[Number(edtP[1])-1]||'');
+}
+function edtDatesEnClair(debut,fin){
+  if(!fin||fin===debut)return edtJourEnClair(debut);
+  var a=String(debut).split('-'),b=String(fin).split('-');
+  if(a[1]===b[1])return Number(a[2])+'-'+Number(b[2])+' '+(EDT_MOIS[Number(a[1])-1]||'');
+  return edtJourEnClair(debut)+' \u2192 '+edtJourEnClair(fin);
 }
 /* [②a] LES HEURES QU'UN ÉVÉNEMENT RECOUVRE. Une décision est une décision
    D'HEURE, pas d'événement : l'événement dit seulement QUI l'a causée. */
@@ -20442,7 +20536,7 @@ function edtTeteHtml(mode,titre){
    +['semaine','mois','annee'].map(function(m){
       return '<button class="edt-btn'+(mode===m?' edt-btn-actif':'')+'" onclick="edtVue(\''+m+'\')">'
         +(m==='semaine'?'Semaine':(m==='mois'?'Mois':'Année'))+'</button>'; }).join('')
-   +'<button class="edt-btn'+(mode==='calendrier'?' edt-btn-actif':'')+'" onclick="edtVue(\'calendrier\')">Calendrier de l\u2019année\u2026</button>'
+   +'<button class="edt-btn'+(mode==='calendrier'?' edt-btn-actif':'')+'" onclick="edtVue(\'calendrier\')">Heures perdues\u2026</button>'
    +'<button class="edt-btn" onclick="edtAller(-1)">\u2039</button>'
    +'<button class="edt-btn" onclick="edtAujourdhuiAller()">Aujourd\u2019hui</button>'
    +'<button class="edt-btn" onclick="edtAller(1)">\u203a</button>'

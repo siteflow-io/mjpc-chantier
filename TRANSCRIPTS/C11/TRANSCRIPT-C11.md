@@ -2525,3 +2525,59 @@ Rien de neuf au sas : il attend ton « continuer » dans sa conversation.
 **Cahier vivant** — ⑤ finale (alerte mensuelle, cinquième question de la garde, banc unique, captures, audit adverse), puis ⑥ à ⑧, puis ton promeus, puis l'injection de chapitre.
 
 MEMO
+
+---
+
+## TOUR 49 — Paul
+
+Texte mot pour mot :
+
+> livré
+
+---
+
+## TOUR 49 — Claude (conscience n°11)
+
+Audit joué : `index.html` **inchangé** (`e81effda`), vérifié — non-régression complète ·
+`banc-tout.mjs` lu (111 lignes, 22 bancs, sortie ≠ 0 si un seul échoue) · **clics recomptés
+banc par banc** (`banc-archivage-03` : 0 → 8) · rapport ⑤d lu · `edtEvenementJustifie`
+recherchée dans le code. Registre : `n°11 · 33` (la première relecture était en cache,
+re-vérifiée : 307 996 o, 1 285 lignes).
+
+Réponse mot pour mot :
+
+**Verdict : ça va. Et ton banc unique a trouvé un banc mort du premier coup.**
+
+## Ce qu'il a livré
+
+**Rien dans le site** — j'ai vérifié, `index.html` n'a pas bougé d'un octet. Cette livraison ne porte que sur les bancs, ce qui est juste.
+
+**`banc-tout.mjs`** : 22 bancs enchaînés, une ligne par banc, **il échoue si un seul échoue**, et il refuse de tourner si un banc manque. Compte-rendu : **22 bancs, 62 repères, tous verts**, treize minutes.
+
+## Ce que ton idée a rapporté immédiatement
+
+**Un banc était mort sans que personne le sache.** Celui des coches qui bougent cherchait la case unique d'un événement — **supprimée en ⑤a** au profit d'une case par heure. Il ne trouvait rien et **passait quand même**. Un banc vert qui ne testait rien.
+
+C'est exactement ce que tu cherchais.
+
+## Les deux règles sont appliquées
+
+Le banc de l'archivage, celui par où la dette est passée, est passé de **zéro à huit clics** : ses gestes passent maintenant par la case et le bouton, **cliqués**. Celui de la mise à niveau reste à zéro clic — mais c'est légitime : elle se déclenche au chargement, aucun clic ne l'atteint, et il le déclare.
+
+Et il ne dit plus « une archive est partie » : il **relit l'archive** et publie son contenu à côté de celui du hub. On y voit `arriverSurEdt:false` dans l'archive et `true` au hub — la preuve qu'elle porte bien l'état d'avant.
+
+## Une décision à toi qui est devenue sans objet
+
+Le 31 août, tu as tranché : « la case d'un événement reste cochée tant qu'au moins une de ses heures est marquée ».
+
+**Depuis ⑤a, il n'y a plus de case unique par événement — il y a une case par heure.** J'ai vérifié : la fonction qui portait cette règle n'a plus qu'un seul usage, dans la **vue Année**.
+
+**À toi de dire** : la règle vaut-elle encore pour la pastille de la vue Année, ou tombe-t-elle avec la case ?
+
+Tout est au registre, `n°11 · 33`.
+
+**Tests manuels : aucun.** Rien en ligne.
+
+**Cahier vivant** — ⑤ finale (alerte mensuelle, cinquième question de la garde, captures, audit adverse), puis ⑥ à ⑧, puis ton promeus.
+
+MEMO

@@ -1901,3 +1901,53 @@ Dis-moi quand tu veux que je fasse cette confrontation. Elle est à faire : le r
 **Cahier vivant** — livraison ④, puis ⑤ à ⑧, puis ton promeus. Et la confrontation dettes ↔ code, quand tu diras.
 
 MEMO
+
+---
+
+## TOUR 37 — Paul
+
+Texte mot pour mot :
+
+> livré
+
+---
+
+## TOUR 37 — Claude (conscience n°11)
+
+Audit joué : candidat mesuré (1 708 032 o / `9ac8e8a8…`) · non-régression · contrat de la garde
+comparé (inchangé) · les 7 lignes de `navigator.clipboard` situées une à une · `edtCopierPrompt`
+lue · **banc indépendant sur `edtPromptComplet`**, hub vide et hub garni. Registre : tour 220.
+
+Réponse mot pour mot :
+
+**Verdict : ça va. Aucune dette.**
+
+## Ce que j'ai éprouvé moi-même
+
+**Hub vide — ton état d'aujourd'hui** : le prompt dit « aucun calendrier en service — c'est une première injection ». Pas un blanc, pas un `null`.
+
+**Hub garni** : 17 616 caractères en **un seul bloc**. J'ai vérifié que **le JSON qu'il colle est exactement celui du hub** — je l'ai retrouvé tel quel dans le texte copié. Et le texte dit à l'IA, en toutes lettres : « Reconduis les identifiants de tout ce que tu reconnais ; n'en invente aucun. »
+
+Un seul bouton, un seul collage. C'est ce que tu demandais.
+
+**Et son repli est meilleur que ce que j'avais écrit** : si le presse-papier refuse, le texte **s'ouvre dans le panneau** et le site te dit de le sélectionner à la main. Jamais un bouton qui ne fait rien.
+
+## Une erreur, la mienne
+
+Dans le mandat, j'avais écrit que la copie n'existait qu'à un seul endroit du fichier. **C'était faux** : il y en avait cinq lignes, dont une déjà dans ton emploi du temps. Ma commande de mesure avait dédoublonné les lignes identiques et je n'en avais gardé qu'une.
+
+Sans conséquence — il est allé lire le patron quand même — mais je te le dis.
+
+## Un choix qu'il a fait et que je valide
+
+Il n'a **pas** élargi la garde. Réutiliser la fonction de copie de l'atelier aurait obligé à lui ouvrir une porte de plus ; il a préféré écrire la sienne dans le bloc, sur la même structure que celle qui y était déjà. Le contrat est inchangé, j'ai comparé ligne à ligne.
+
+Tout est au registre, tour 220.
+
+**Tests manuels : aucun.** Rien en ligne.
+
+**Ce qu'il attend de toi : « continuer ».** Dernière étape de ④ : les deux prompts réécrits, et l'épreuve qui compte — ton calendrier réel passé par le prompt puis réinjecté, tous les identifiants reconduits.
+
+**Cahier vivant** — ④ finale, puis ⑤ à ⑧, puis ton promeus, puis l'injection de chapitre.
+
+MEMO

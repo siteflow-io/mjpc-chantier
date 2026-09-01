@@ -2189,3 +2189,61 @@ Tout est au registre, tour 224.
 **Cahier vivant** — ⑤ finale, puis ⑥ à ⑧, puis ton promeus, puis l'injection de chapitre.
 
 MEMO
+
+---
+
+## TOUR 43 — Paul
+
+Texte mot pour mot :
+
+> livré
+
+---
+
+## TOUR 43 — Claude (conscience n°11)
+
+Audit joué : candidat mesuré (1 725 303 o / `a397e48a…`) · non-régression · `delete` retiré,
+vérifié · `edtEcrireDecision` de la version précédente relue pour confirmer la faute ·
+`edtPhotoDecisions` et les trois écritures du magasin vérifiées · **audit adverse : les neuf
+appelants de `edtEcrireObjet` lus un par un**. Registre : tour 225.
+
+Réponse mot pour mot :
+
+**Verdict : son correctif est juste, et il va bien plus loin que ce que je lui avais signalé. Mais mon audit adverse trouve la même faute à quatre autres endroits.**
+
+## Ce qu'il a trouvé — et c'était gros
+
+Mon signalement était une ligne inutile. En la vérifiant, il a remonté ceci : **depuis la livraison ③, l'archivage de tes décisions ne protégeait rien.**
+
+La raison, que j'ai relue moi-même dans le code d'avant : le site prenait tes décisions, **les modifiait**, puis demandait d'archiver « l'état d'avant » — mais l'état d'avant était **déjà modifié**. La corbeille recevait donc l'état d'après.
+
+Sa preuve, avant/après : **les heures dans l'archive passent de 0 à 1**, et le journal, qui notait `null`, porte maintenant la décision entière — c'est ce que ↶ Annuler relit pour restaurer.
+
+Il a corrigé aux trois endroits qui écrivent tes décisions. C'est propre.
+
+## Ce que j'ai trouvé en cherchant plus loin
+
+J'ai lu les neuf endroits du site qui écrivent un objet de l'emploi du temps. **Quatre ont exactement le même défaut** :
+
+- quand tu **modifies un créneau horaire**,
+- quand tu **apparies une classe de la grille**,
+- quand tu **changes un réglage**,
+- quand tu **prends une photo du prévu**.
+
+Pour ces quatre gestes, **la corbeille ne contient pas ce qu'il faudrait pour revenir en arrière**. Tes données au hub sont justes — l'écriture est bonne — mais **le filet ne retient rien**.
+
+Trois autres sont saines : les périodes et les deux injections construisent des objets neufs.
+
+**C'est une dette de la livraison ③**, révélée par celle-ci. Le remède existe déjà et il est écrit : prendre la photo **avant** de modifier. Quatre endroits, le même geste.
+
+**Colle-lui ceci pour la dernière livraison** :
+
+> Le correctif de ⑤c-bis vaut aussi ailleurs. Quatre écritures passent à `edtEcrireObjet` une **référence vivante** de `EDT[...]` déjà mutée, donc archivent l'état d'après : `edtCreneauPoser` (creneaux), `edtApparierNom` (grille), `edtReglagePoser` (reglages), `edtPhoto` (photos). Même remède que `edtPhotoDecisions` : prendre la photo **avant toute mutation**. Vérifie aussi `edtEcrireGrille` selon ses appelants. Prouve-le comme tu as prouvé les décisions : heures/objets dans l'archive, avant et après.
+
+Tout est au registre, tour 225.
+
+**Tests manuels : aucun.** Rien en ligne.
+
+**Cahier vivant** — ⑤ finale (alerte mensuelle, cinquième question de la garde, les quatre photos manquantes), puis ⑥ à ⑧, puis ton promeus, puis l'injection de chapitre.
+
+MEMO

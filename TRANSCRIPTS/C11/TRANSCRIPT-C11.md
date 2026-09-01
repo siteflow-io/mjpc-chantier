@@ -2758,3 +2758,32 @@ Tout est au registre, `n°11 · 35`.
 **Cahier vivant** — mandat ⑥ à écrire (les trois issues, l'heure à replacer, les télescopages, les dates de l'année), puis ⑦ et ⑧, puis ton promeus, puis l'injection de chapitre.
 
 MEMO
+
+---
+
+## TOUR 54 — Paul
+
+Texte mot pour mot :
+
+> ok on continue
+
+---
+
+## TOUR 54 — Claude (conscience n°11)
+
+Mesures avant rédaction : §⑩, §⑪, §⑫, §⑮ du mandat v2 lus en entier · `edtDeplacerVers`
+(L19901) lue — elle écrit **déjà les deux côtés** · la liste des destinations repérée
+(`edtCreneauxLibresLe` L20868, `edtCibleSous` L20820, `edtPoserQuestionDepot` L20876) ·
+`aReplacer` et `priseAutreClasse` **déjà déclarés** dans `EDT_MOTIFS` · `edtVerifierCoherence`,
+`edtEchanger`, `edtEcraser` : **0 occurrence** · `brevetDates` : **28**.
+Mandat déposé : `PONT/EDT/MANDAT-LOT-2ter-06.md`.
+
+Réponse mot pour mot : chapeau (le geste impossible aujourd'hui, ce que la livraison ouvre),
+puis le mandat entier dans un bloc copiable, puis :
+
+**Tests manuels : aucun.** Rien n'a bougé.
+
+**Cahier vivant** — ⑥ en quatre temps, puis ⑦ et ⑧, puis ton promeus, puis l'injection de
+chapitre.
+
+MEMO

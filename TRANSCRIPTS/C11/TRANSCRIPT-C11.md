@@ -2361,3 +2361,40 @@ C'est au registre, tour 227.
 **Cahier vivant** — ⑤ finale chez l'exécutant, puis ⑥ (avec le banc unique, si tu le veux), puis ⑦ et ⑧, puis ton promeus.
 
 MEMO
+
+---
+
+## TOUR 46 — Paul
+
+Texte mot pour mot :
+
+> Ok en revanche le registre, tour 227. Normalement le registre est tenu conscience par conscience parce que sinon ça devient inexploitable pour personne.
+
+---
+
+## TOUR 46 — Claude (conscience n°11)
+
+Mesure : structure du registre lue — il est organisé **par sections nommées**
+(`## A · Registre historique`, `## E · Constats de la conscience n°10`, `## CADRAGE DU 25/08`,
+`## ✔ LOT F promu`…), **jamais par tour**. Mes 31 entrées « Tour 197 » à « Tour 227 » étaient
+empilées **sans section de tête**. Corrigé : `## F · CONSCIENCE n°11 — 31/08 au 01/09/2026`
+inséré avant le tour 197, commit `1230b9a2`, vérifié. Puis deux chiffres faux de cet en-tête
+corrigés, commit `b472870b`, vérifié.
+
+Réponse mot pour mot :
+
+**Tu as raison, et je ne l'avais pas fait. C'est corrigé.**
+
+J'ai regardé comment le registre est tenu : par **sections nommées** — le registre historique, les constats de la conscience n°10, les cadrages, les lots promus. **Jamais par tour.** Mes trente et une entrées s'empilaient sans rien pour dire où commence la conscience n°11 ni ce qu'elle a produit.
+
+J'ai inséré une section de tête, `## F · CONSCIENCE n°11`, juste avant ma première entrée. Elle dit en quelques lignes : ma prise de fonction, ce que j'ai fait, **ce que j'ai manqué** — la dette passée à travers l'audit ③ — et **mes erreurs de méthode**, avec les numéros de tour où elles sont détaillées.
+
+Comme ça, dans trois mois, on ouvre le registre et on sait où commence C11, ce qu'elle a produit, et où elle s'est trompée.
+
+**Et j'y ai laissé deux chiffres faux** : j'avais écrit « quinze livraisons auditées » et « six mandats » — c'est **vingt** et **sept**. Corrigé et revérifié dans la foulée. Je te le dis parce qu'un registre qui porte un chiffre faux ne vaut pas mieux qu'un souvenir.
+
+**Tests manuels : aucun.**
+
+**Cahier vivant** — ⑤ finale chez l'exécutant, puis ⑥ (avec le banc unique si tu le veux), ⑦, ⑧, puis ton promeus.
+
+MEMO

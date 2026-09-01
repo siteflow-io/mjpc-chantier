@@ -1175,3 +1175,39 @@ Tout est au registre, tour 208.
 **Cahier vivant** — livraison ③ : appariement, différentiel, archivage généralisé, plus la classe renommée. Puis ④ à ⑧, puis ton promeus. En attente de toi : le cas partiel ci-dessus · la classe De Gaulle · `CLAUDE.md` périmé · `usage`/`quandPas` du site · la bascule de mode test dans quatre apps · les quatre fichiers hors socle · l'unicité entre familles.
 
 MEMO
+
+---
+
+## TOUR 21 — Paul
+
+Texte mot pour mot :
+
+> Je n'ai pas compris ta question
+
+---
+
+## TOUR 21 — Claude (conscience n°11)
+
+Réponse mot pour mot :
+
+Je la reprends avec un cas concret.
+
+**La situation.** Un voyage avec tes 3e te prend 4 heures de cours : mardi, mercredi, jeudi, vendredi. Tu coches les 4 comme écart justifié.
+
+Plus tard, quelque chose bouge — le voyage est décalé d'un jour, ou ton emploi du temps change. Résultat : **2 de ces 4 heures ne tombent plus pendant le voyage. Les 2 autres, si.**
+
+**Dans les deux cas, rien n'est perdu** : tes 4 coches restent enregistrées et comptent toujours dans ton total d'heures justifiées. La question ne porte que sur **ce que la case du voyage affiche** dans ton calendrier.
+
+**Ce que le site fait aujourd'hui** : la case reste **cochée**, parce que 2 heures sont encore marquées sous ce voyage. Et le site te dit : « tu avais coché 2 heures sur les dates précédentes. »
+
+**L'autre possibilité** : la case redevient **vide**, comme quand les 4 heures ont bougé, avec le même message — et tu recoches ce que tu veux.
+
+**Donc : case cochée, ou case vide, quand une partie seulement a bougé ?**
+
+Quand **tout** a bougé, la case est vide dans les deux cas — ça, c'est déjà tranché par toi et c'est fait.
+
+**Tests manuels : aucun.**
+
+**Cahier vivant** — inchangé : ta réponse sur ce point, puis la livraison ③.
+
+MEMO

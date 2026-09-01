@@ -2446,3 +2446,47 @@ Le premier seul répond déjà à ta règle. Le second rend le registre vraiment
 **Cahier vivant** — inchangé : ⑤ finale chez l'exécutant. Et cette remise en ordre du registre, sur ton mot.
 
 MEMO
+
+---
+
+## TOUR 47 — Paul
+
+Texte mot pour mot :
+
+> oui insérer un entete et renuméroter. l'exécutant a livré.
+
+---
+
+## TOUR 47 — Claude (conscience n°11)
+
+Registre remis en ordre : section **F · CONSCIENCE n°11**, **31 entrées renumérotées
+`n°11 · 01` à `n°11 · 31`**, les **94 entrées des consciences précédentes intactes**, commit
+`5028eae7`, vérifié bit à bit (302 649 o, 1 240 lignes).
+Audit joué : candidat `e81effda` mesuré (1 727 359 o / `885ae067…`) · non-régression · **les
+quatre photos vérifiées une par une en lisant le code** · garde. Registre : `n°11 · 32`.
+
+Réponse mot pour mot :
+
+**Le registre est en ordre.** Section **F · CONSCIENCE n°11**, mes trente et une entrées renumérotées `n°11 · 01` à `n°11 · 31`, avec un renvoi vers le transcript au sas. Les quatre-vingt-quatorze entrées des consciences d'avant n'ont pas bougé — je l'ai vérifié. Et ta règle est écrite en tête de la section, pour la n°12.
+
+## La livraison : ça va
+
+Ce n'est pas encore la finale — c'est **⑤c-ter**, le correctif des quatre archives que je t'avais signalées hier soir.
+
+**Les quatre sont fermées.** Je les ai lues une par une : la photo de l'état d'avant est prise **en première ligne**, avant toute modification. Pour le créneau horaire, pour l'appariement d'une classe, pour un réglage, pour une photo du prévu.
+
+Et il a fait ce qu'il fallait : **une seule fonction générique** qui prend la copie, utilisée aux cinq endroits. Celle des décisions n'est plus qu'un appel à celle-là. Même idée que la porte d'écriture unique — un seul endroit à surveiller.
+
+Rien n'a régressé : le moteur est identique, aucune fonction perdue, la garde est verte.
+
+## Ce qui reste pour clore ⑤
+
+L'alerte mensuelle, la cinquième question de la garde, les captures, l'audit adverse.
+
+Et si tu veux, **le banc unique** peut être demandé dès maintenant plutôt qu'au ⑥ : c'est le bon moment, puisque la livraison finale rejoue déjà tous les bancs.
+
+**Tests manuels : aucun.** Rien en ligne.
+
+**Cahier vivant** — ⑤ finale, puis ⑥ à ⑧, puis ton promeus, puis l'injection de chapitre.
+
+MEMO

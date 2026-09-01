@@ -70,6 +70,8 @@ const BANCS = [
   ['banc-trois-issues-06a.mjs', '⑥a · les trois issues au dépôt',
     ['sorties proposées : ["Ne rien faire","Échanger les deux heures","Prendre le créneau"]',
      'identique : true', '"aReplacer":true']],
+  ['banc-a-replacer-06b.mjs', '⑥b · l\'heure à replacer et la perte sèche',
+    ['au bandeau : "1 heure à replacer"', 'identiques : true', '"motif":"priseAutreClasse"']],
   ['banc-alerte-05.mjs', '⑤ · l\'alerte mensuelle',
     ['alerte : "(aucune ligne)"', 'injecté il y a un mois', '"rappelLe":"']],
   ['verif122.mjs', 'le calendrier réel · 122 identifiants',

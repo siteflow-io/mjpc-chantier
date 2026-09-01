@@ -2002,3 +2002,30 @@ Tout est au registre, tour 221.
 **Cahier vivant** — livraison ⑤, puis ⑥ à ⑧, puis ton promeus, puis l'injection de chapitre. En attente de toi : la cinquième question de la garde · la passe de simplification des textes · la confrontation dettes ↔ code · les dettes hors lot.
 
 MEMO
+
+---
+
+## TOUR 39 — Paul
+
+Texte mot pour mot :
+
+> ok mets dans le mandat 5. on passe à la suite
+
+---
+
+## TOUR 39 — Claude (conscience n°11)
+
+Mesures avant rédaction : §⑥, §⑦, §⑧, §⑨ du mandat v2 lus en entier · `EDT_CATEGORIES`
+(les dix, mot pour mot) · `edtDeplacerVers` et `deplaceeVers` (L19739, L19749) · le libellé
+fautif localisé à **une seule ligne, L19721** · `edtSansSeance`, `edtHeuresJustifiees`,
+l'entrée « Calendrier de l'année… ». Mandat déposé : `PONT/EDT/MANDAT-LOT-2ter-05.md`.
+
+Réponse mot pour mot : chapeau (ce que la livraison donne à Paul, la faute qu'elle ferme,
+la cinquième question de la garde), puis le mandat entier dans un bloc copiable, puis :
+
+**Tests manuels : aucun.** Rien n'a bougé.
+
+**Cahier vivant** — ⑤ en quatre temps, puis ⑥ à ⑧, puis ton promeus, puis l'injection de
+chapitre.
+
+MEMO

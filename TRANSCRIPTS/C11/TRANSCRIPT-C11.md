@@ -1434,3 +1434,56 @@ Tout est au registre, tour 212.
 **Cahier vivant** — livraison ④, puis ⑤ à ⑧, puis ton promeus. En attente de toi : l'archive des dates du brevet · le rattrapage par rang · la classe De Gaulle · `CLAUDE.md` périmé · `usage`/`quandPas` du site · la bascule de mode test dans quatre apps · les quatre fichiers hors socle · l'unicité entre familles · le rafraîchissement après injection.
 
 MEMO
+
+---
+
+## TOUR 27 — Paul
+
+Texte mot pour mot :
+
+> il y a donc des dettes?
+
+---
+
+## TOUR 27 — Claude (conscience n°11)
+
+Mesure avant réponse : production revérifiée — 1 522 853 o / `6c7560af…`, inchangée depuis le
+25/08 ; **40 appels** `mjpcPutJson`/`mjpcDeleteJson` toujours hors du mode test en production.
+
+Réponse mot pour mot :
+
+**Oui. Mais aucune dans ce qu'on est en train de faire.** Trois choses différentes, qu'il ne faut pas mélanger.
+
+## 1. Le lot emploi du temps : rien à réparer
+
+Les six livraisons faites aujourd'hui — ①, ①bis, ①ter, ②a, ②b, ②, ③a, ③b, ③ — sont toutes closes **sans dette dans leur périmètre**. C'est ta règle, et je l'ai vérifiée à chaque fois avec mes propres bancs. Ce qui a été trouvé en route a été réparé dans la même livraison.
+
+## 2. Ce qui attend une décision de toi — ce ne sont pas des dettes
+
+- l'archive des dates du brevet : faut-il en garder une ?
+- le rattrapage par rang pour les créneaux horaires (mon avis : laisse comme ça)
+- le dimensionnement de la classe De Gaulle
+- un identifiant qui peut servir dans deux familles différentes
+
+Tant que tu n'as pas tranché, le site marche ; ce sont des choix, pas des manques.
+
+## 3. Les vraies dettes — toutes hors du lot
+
+**La seule qui te touche aujourd'hui, en classe : ton site en production.** Je viens de le revérifier — il n'a pas bougé depuis le 25 août, et **quarante écritures y échappent toujours au mode test** : créer, renommer, archiver ou supprimer une classe, importer des élèves, changer ton code prof, publier un onglet, créer ou supprimer une séance ou un chapitre, et tout ce que le déroulé enregistre pendant une heure. La réparation est au sas depuis le 27 août. **Elle attend ton promeus, que tu as décidé de faire à la fin du lot.** C'est un choix que tu as posé en connaissance de cause — je te le rappelle, je ne le rouvre pas.
+
+**Les autres, moins urgentes :**
+- `CLAUDE.md` est périmé et trompe tout Claude qui ouvre ton dépôt
+- le site est la seule de tes onze apps sans `usage` ni `quandPas`
+- quatre apps n'ont aucune bascule de mode test, dont la dictée universelle et worktrack
+- quatre fichiers, 1,1 Mo, sont restés hors du socle
+- après une injection de calendrier, la page se détache sans qu'on sache pourquoi — antérieur au lot
+
+**Et une chose à surveiller plutôt qu'une dette** : depuis ce matin, la garde ne contrôle plus le chemin de la porte d'écriture unique. Je le vérifie à chaque livraison à sa place.
+
+Tout est au registre, avec les chiffres.
+
+**Tests manuels : aucun.**
+
+**Cahier vivant** — livraison ④, puis ⑤ à ⑧, puis ton promeus. Les décisions ci-dessus t'attendent quand tu veux.
+
+MEMO

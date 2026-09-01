@@ -2854,7 +2854,7 @@ function mjpcEcrireRest(url,options,cb){
    (les 3 gestes, le geste conservatoire par app, ce qui ne peut pas arriver).
    RESTAURER LA VERSION PRÉCÉDENTE : docs/MJPC6-restauration.md (convention BUG).
    ═══════════════════════════════════════════════════════════════════════════ */
-var APP_VERSION="8.73.0-⑤a";
+var APP_VERSION="8.73.0-⑤b";
 var APP_VERSION_DATE="2026-08-27";
 // ── 11. Coffre : dérivation, chiffrement, empreinte (v1.3.0) ──
 // (Le canon porte deux sections « 8 » — dette de numérotation connue, non corrigée
@@ -19698,6 +19698,37 @@ function edtCellule(cle){ return (EDT_VUE.cellules||{})[cle]||null; }
 
 /* ── les décisions au hub ────────────────────────────────────────────────── */
 function edtDecisions(){ return (EDT.decisions&&typeof EDT.decisions==='object')?EDT.decisions:{}; }
+/* [⑤b] QUATRE MOTIFS, ET LE STATUT QUI EN DÉCOULE. Le statut ne se saisit pas :
+   il vient du motif. Il est ensuite ÉCRIT dans la décision (`justifiee`), jamais
+   recalculé à l'affichage — une bascule de Paul survit à tout. */
+var EDT_MOTIFS={
+  calendrier:       {libelle:'événement du calendrier',            justifiee:true, basculable:false},
+  banalisee:        {libelle:'heure banalisée',                    justifiee:true, basculable:true},
+  priseAutreClasse: {libelle:'heure prise par une autre classe',  justifiee:true, basculable:true},
+  aReplacer:        {libelle:'heure à replacer jamais replacée',   justifiee:false,basculable:true}
+};
+function edtMotifDe(v){
+  if(!v)return null;
+  if(v.motif&&EDT_MOTIFS[v.motif])return v.motif;
+  if(v.ecartJustifie)return 'calendrier';     /* décisions posées avant cette livraison */
+  if(v.sansSeance)return 'banalisee';
+  return null;
+}
+function edtMotifEnClair(v){
+  var m=edtMotifDe(v); if(!m)return '';
+  var t=EDT_MOTIFS[m].libelle;
+  if(m==='calendrier'&&v.libelle)t+=' — '+v.libelle;
+  if(m==='banalisee'&&v.categorie)t+=' ('+v.categorie+')';
+  return t;
+}
+function edtBasculable(v){
+  var m=edtMotifDe(v); return !!(m&&EDT_MOTIFS[m].basculable);
+}
+function edtDatePose(v){
+  if(!v||!v.pose)return '';
+  var d=new Date(v.pose);
+  return d.getDate()+' '+(EDT_MOIS[d.getMonth()]||'');
+}
 function edtEcrireDecision(nomClasse,cleHeure,valeur,quoi){
   var d=edtDecisions();
   if(!d[nomClasse])d[nomClasse]={heures:{},journal:[]};
@@ -19717,15 +19748,17 @@ function edtSansSeance(cle){
   var k=edtCleHeure(c.iso,c.creneau,c.classeMjpc);
   var edtAppliquer=function(){
     edtEcrireDecision(c.classeMjpc,k,
-      {sansSeance:true,categorie:(s&&s.value)||EDT_CATEGORIES[0],precision:(p&&p.value)||'',pose:Date.now()},
-      'ne plus compter cette séance dans la prévision horaire');
+      {sansSeance:true,motif:'banalisee',justifiee:EDT_MOTIFS.banalisee.justifiee,
+       categorie:(s&&s.value)||EDT_CATEGORIES[0],precision:(p&&p.value)||'',pose:Date.now()},
+      'heure banalisée');
   };
-  /* [②a] une heure, une clé, un seul motif : le motif remplacé se DIT avant */
+  /* [②a] une heure, une clé, un seul motif : le motif remplacé se DIT avant.
+     [⑤b] et il se dit par son nom, quel qu'il soit — symétrique de l'autre côté. */
   var avant=edtDecisionPour(c.classeMjpc,c.iso,c.creneau);
-  if(avant&&avant.ecartJustifie&&typeof atModaleChoix==='function'){
-    atModaleChoix('Cette heure est déjà marquée « écart justifié »'
-      +(avant.libelle?(' — '+escapeHtml(String(avant.libelle))):'')
-      +'.<br>La sortir de la prévision remplace ce motif. L’heure ne sera comptée qu’une fois.',
+  if(avant&&edtMotifDe(avant)&&edtMotifDe(avant)!=='banalisee'&&typeof atModaleChoix==='function'){
+    atModaleChoix('Cette heure est déjà comptée perdue — '+escapeHtml(edtMotifEnClair(avant))
+      +'.<br>La banaliser remplacera ce motif. L’heure ne sera comptée qu’une fois, '
+      +'et son statut deviendra modifiable.',
       [{lib:'Annuler'},{lib:'Remplacer le motif',prim:true,fn:edtAppliquer}]);
     return;
   }
@@ -19744,7 +19777,18 @@ function edtAnnulerDecision(cle){
   var c=edtCellule(cle); if(!c||!c.classeMjpc)return;
   var k=edtCleHeure(c.iso,c.creneau,c.classeMjpc);
   var d=edtDecisions()[c.classeMjpc], av=d&&d.heures&&d.heures[k];
-  edtEcrireDecision(c.classeMjpc,k,null,'retour arrière');
+  /* [⑤b] LE MOTIF PRÉCÉDENT REVIENT. Le journal garde l'état d'avant chaque geste :
+     si le dernier geste sur cette heure a REMPLACÉ un motif, annuler rend celui-là,
+     pas le vide. Une heure déplacée se défait toujours des deux côtés. */
+  var edtRendu=null;
+  if(!(av&&(av.deplaceeVers||av.venantDe))&&d&&Array.isArray(d.journal)){
+    for(var edtI=d.journal.length-1;edtI>=0;edtI--){
+      var edtL=d.journal[edtI];
+      if(edtL&&edtL.heure===k){ edtRendu=edtL.avant||null; break; }
+    }
+  }
+  edtEcrireDecision(c.classeMjpc,k,edtRendu,
+    edtRendu?('retour arrière — '+edtMotifEnClair(edtRendu)+' revient'):'retour arrière');
   /* une heure déplacée se défait des deux côtés */
   if(av&&av.deplaceeVers){ var p=String(av.deplaceeVers).split('|');
     edtEcrireDecision(c.classeMjpc,edtCleHeure(p[0],p[1],c.classeMjpc),null,'retour arrière (arrivée)'); }
@@ -20338,10 +20382,23 @@ function edtTotauxPerdues(){
 function edtHeurePerdue(rang,coche){
   var edtF=EDT_FICHES[rang]; if(!edtF)return;
   if(coche){
-    edtEcrireDecision(edtF.classe,edtF.cle,
-      {ecartJustifie:true,motif:'calendrier',justifiee:true,evenement:edtF.ev,
-       libelle:edtF.libelle,pose:Date.now()},
-      'heure perdue \u2014 '+edtF.libelle);
+    var edtPoser=function(){
+      edtEcrireDecision(edtF.classe,edtF.cle,
+        {ecartJustifie:true,motif:'calendrier',justifiee:true,evenement:edtF.ev,
+         libelle:edtF.libelle,pose:Date.now()},
+        'heure perdue \u2014 '+edtF.libelle);
+    };
+    /* [⑤b] symétrique : si l'heure porte déjà un autre motif, on le DIT avant. */
+    var edtAvant=edtDecisionPour(edtF.classe,edtF.iso,edtF.creneau);
+    if(edtAvant&&edtMotifDe(edtAvant)&&edtMotifDe(edtAvant)!=='calendrier'&&typeof atModaleChoix==='function'){
+      atModaleChoix('Cette heure est déjà comptée perdue — '+escapeHtml(edtMotifEnClair(edtAvant))
+        +'.<br>La compter perdue à cause de « '+escapeHtml(edtF.libelle)+' » remplacera ce motif. '
+        +'L’heure ne sera comptée qu’une fois, et son statut ne sera plus modifiable.',
+        [{lib:'Annuler',fn:function(){ edtPeindreCalendrier(); }},
+         {lib:'Remplacer le motif',prim:true,fn:edtPoser}]);
+      return;
+    }
+    edtPoser();
   } else {
     var edtD=edtDecisions();
     if(edtD[edtF.classe]&&edtD[edtF.classe].heures)delete edtD[edtF.classe].heures[edtF.cle];
@@ -20384,7 +20441,10 @@ function edtPeindreCalendrier(){
         +' onchange="edtHeurePerdue('+edtRang+',this.checked)"> '
         +escapeHtml(u.classe)+' \u00b7 '+escapeHtml(edtJourEnClair(u.iso))+', '+escapeHtml(u.creneau)
         +' \u2192 1 heure'
-        +((edtV&&edtV.sansSeance)?' <em class="edt-mini-t">banalisée</em>':'')+'</label>';
+        +((edtV&&!edtCoche&&edtMotifDe(edtV))
+          ? (' <em class="edt-mini-t">'+escapeHtml(edtMotifEnClair(edtV))
+             +(edtDatePose(edtV)?(' le '+edtDatePose(edtV)):'')+'</em>')
+          : '')+'</label>';
     });
     h+='</div>';
   });

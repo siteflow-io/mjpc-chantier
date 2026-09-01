@@ -25,6 +25,9 @@ FIN   = 'EDT — fin'
 CONTRAT = {
     # lecture / écriture du hub
     'secuLire', '_siteGet', 'mjpcPutJson',
+    # [LOT 2ter ③bis] LECTURE SEULE : le bloc demande « suis-je en mode test ? »
+    # pour n'afficher la classe d'essai que là. Il n'écrit rien par ce biais.
+    'm8TestOn',
     # [LOT 2ter ①] l'archivage AVANT écrasement : la mise à niveau et toute
     # écriture destructive du bloc archivent d'abord (§①, §④.2). Le modèle est
     # celui de chInjecterConfirme ; ces deux appels en sont la mécanique.

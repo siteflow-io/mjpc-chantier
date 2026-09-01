@@ -1625,3 +1625,54 @@ tout seul), puis le mandat entier dans un bloc copiable, puis :
 **Cahier vivant** — ③bis en trois temps, puis ④ à ⑧, puis ton promeus.
 
 MEMO
+
+---
+
+## TOUR 31 — Paul
+
+Texte mot pour mot :
+
+> livré
+
+---
+
+## TOUR 31 — Claude (conscience n°11)
+
+Audit joué : candidat mesuré (1 687 952 o / `cc353ace…`) · rapport lu · grille du sas vérifiée
+(4 créneaux fictifs, 30 réels intacts) · non-régression · diff du contrat de la garde ·
+`edtEnEssai` lue · **banc indépendant : `edtCasesA` extraite des DEUX versions et comparée sur
+la grille réelle**, monté trois fois avant d'aboutir. Registre : tour 214.
+
+Réponse mot pour mot :
+
+**Verdict : ça va. Aucune dette.**
+
+## La preuve qui compte, rejouée par moi
+
+J'ai pris la fonction qui lit ta grille dans les **deux** versions — avant et après — et je les ai fait tourner côte à côte sur ta vraie grille, semaine du 16 novembre.
+
+**Mode test éteint : 30 créneaux avant, 30 après.** Et les comptes par classe sont identiques ligne à ligne : 3 DYLAN 6, 3 FRANKLIN 7, 4 HUGO 6, 4 TURING 6, Concertation 1, et tes quatre groupes de français. **Rien n'a bougé.**
+
+**Mode test allumé : 34 créneaux, dont tes 4 heures d'essai** — lundi 8h, mardi 8h, jeudi 10h07, vendredi 13h — et **les vraies classes gardent exactement les mêmes comptes**.
+
+Tu éteins, elles disparaissent. Rien à nettoyer, rien à oublier.
+
+## Deux choses bien faites
+
+Il a branché la lecture dans **le seul endroit par où passent toutes les lectures de ta grille** — une branche à ajouter, une à surveiller. Même idée que la porte d'écriture unique d'hier.
+
+Et il a décidé que les heures d'essai reçoivent leur identifiant **même hors mode test**, avec cette raison : « une identité ne dépend pas de l'écran qui la regarde. » Il a raison.
+
+## La garde
+
+Elle a gagné **une seule entrée** : le droit de demander « suis-je en mode test ? ». En lecture, avec sa raison écrite à côté. J'ai comparé le fichier ligne à ligne : rien d'autre n'a bougé. Elle est verte.
+
+Tout est au registre, tour 214.
+
+**Tests manuels : aucun.** Rien en ligne.
+
+**Ce qu'il attend de toi : « continuer ».** La suite est ③bis-b : l'identifiant qui dit sa famille.
+
+**Cahier vivant** — ③bis-b, ③bis (la garde), puis ④ à ⑧, puis ton promeus.
+
+MEMO

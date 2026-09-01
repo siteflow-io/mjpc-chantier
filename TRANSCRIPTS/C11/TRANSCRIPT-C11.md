@@ -1244,3 +1244,33 @@ Donc : rien à changer, et la règle est écrite. Je la porte au registre et on 
 **Cahier vivant** — livraison ③ : appariement, différentiel, archivage généralisé, plus la classe renommée. Puis ④ à ⑧, puis ton promeus. En attente de toi : la classe De Gaulle · `CLAUDE.md` périmé · `usage`/`quandPas` du site · la bascule de mode test dans quatre apps · les quatre fichiers hors socle · l'unicité entre familles.
 
 MEMO
+
+---
+
+## TOUR 23 — Paul
+
+Texte mot pour mot :
+
+> Ok continue
+
+---
+
+## TOUR 23 — Claude (conscience n°11)
+
+Mesures avant rédaction : §① et §④ du mandat v2 relus en entier (l'appariement gradué, le
+tableau des critères par famille, le différentiel) · `edtApparier` lue dans le candidat —
+**écrite, complète, 0 appel** · l'écran d'injection repéré (`edtInjOuvrir`, `edtInjVerifier`,
+`edtInjInjecter`, `edtInjecterAvecLaGrille`) · **les 14 écritures du bloc EDT recensées une à
+une, dans 13 fonctions** · une seule archive aujourd'hui (`edtMettreANiveau`).
+Mandat déposé : `PONT/EDT/MANDAT-LOT-2ter-03.md`.
+
+Réponse mot pour mot : chapeau (ce que la livraison ③ change pour Paul, ce qui existe déjà et
+n'est pas à réécrire), puis le mandat entier dans un bloc copiable, puis :
+
+**Tests manuels : aucun.** Rien n'a bougé.
+
+**Cahier vivant** — livraison ③ en trois temps ; puis ④ à ⑧ ; puis ton promeus. En attente de
+toi : la classe De Gaulle · `CLAUDE.md` périmé · `usage`/`quandPas` du site · la bascule de
+mode test dans quatre apps · les quatre fichiers hors socle · l'unicité entre familles.
+
+MEMO

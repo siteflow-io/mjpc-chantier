@@ -1951,3 +1951,54 @@ Tout est au registre, tour 220.
 **Cahier vivant** — ④ finale, puis ⑤ à ⑧, puis ton promeus, puis l'injection de chapitre.
 
 MEMO
+
+---
+
+## TOUR 38 — Paul
+
+Texte mot pour mot :
+
+> livré
+
+---
+
+## TOUR 38 — Claude (conscience n°11)
+
+Audit joué : candidat mesuré (1 711 939 o / `8736d113…`) · non-régression · contrat de la garde
+comparé (inchangé) · **les sept consignes des prompts lues une par une** après que quatre de mes
+motifs de recherche ont rendu 0 à tort · **les deux copies des consignes extraites comme le
+navigateur les lit et comparées par md5**. Registre : tour 221.
+
+Réponse mot pour mot :
+
+**Verdict : ça va. Le mandat ④ est fini, sans dette. Mais une dette neuve est née, et il l'a déclarée lui-même.**
+
+## Les prompts, lus
+
+Les sept consignes y sont, écrites à ta place, à la première personne. Le titre de la section dit tout : **« LES IDENTIFIANTS — c'est ma mémoire, ne la casse pas. »**
+
+Et celle qui compte le plus : « Ne reformule jamais un libellé. Je reconnais mes sorties à leur nom. **Une reformulation, pour moi, c'est un objet perdu.** Recopie ce qui est écrit, même maladroit. »
+
+Le cas d'aujourd'hui est prévu : si rien n'est en service, l'IA sait que c'est ta première injection et ne met aucun identifiant.
+
+Une honnêteté : quatre de mes recherches m'ont rendu « absent » sur des consignes **pourtant présentes** — une faute de syntaxe dans ma commande. J'ai lu le fichier avant de conclure. Ça fait la énième fois aujourd'hui que compter des motifs me trompe et que la lecture rattrape.
+
+## La dette neuve — et elle est sérieuse
+
+**Tes consignes existent maintenant en deux exemplaires** : le fichier `prompts/calendrier.md` du dépôt, et une copie **à l'intérieur du site**. C'est le prix du collage unique : le site ne peut pas lire un fichier du dépôt.
+
+Je les ai comparées moi-même, extraites comme le navigateur les lit : **identiques, au caractère près, md5 à l'appui**, pour les deux voies.
+
+**Le danger n'est pas aujourd'hui, il est dans trois mois** : la prochaine main qui corrige l'un sans l'autre crée une divergence **silencieuse**. Tu lirais un prompt qui n'est pas celui que le bouton copie.
+
+**Ce que je propose** : une **cinquième question à la garde** — comparer les deux copies et refuser si elles diffèrent. C'est deux md5, c'est mécanique, et ça ne dépend de la mémoire de personne. Exactement ce que tu demandais ce matin.
+
+Un mot et je le mets dans le mandat ⑤.
+
+Tout est au registre, tour 221.
+
+**Tests manuels : aucun.** Rien en ligne.
+
+**Cahier vivant** — livraison ⑤, puis ⑥ à ⑧, puis ton promeus, puis l'injection de chapitre. En attente de toi : la cinquième question de la garde · la passe de simplification des textes · la confrontation dettes ↔ code · les dettes hors lot.
+
+MEMO

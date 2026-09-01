@@ -2581,3 +2581,43 @@ Tout est au registre, `n°11 · 33`.
 **Cahier vivant** — ⑤ finale (alerte mensuelle, cinquième question de la garde, captures, audit adverse), puis ⑥ à ⑧, puis ton promeus.
 
 MEMO
+
+---
+
+## TOUR 50 — Paul
+
+Texte mot pour mot :
+
+> pas compris ta question
+
+---
+
+## TOUR 50 — Claude (conscience n°11)
+
+Réponse mot pour mot :
+
+Je reprends, avec ton voyage.
+
+**Le 31 août, tu as tranché ceci** : ton voyage aux Pays-Bas te prend 4 heures, tu les coches, puis 2 heures bougent. Question posée : la **case du voyage** reste-t-elle cochée ? Tu as dit oui, tant qu'au moins une heure est encore marquée.
+
+**Ce qui a changé depuis.** À la livraison ⑤a, l'écran a été refait comme tu le voulais : **il n'y a plus une case pour le voyage, il y a une case par heure.**
+
+> ☐ 3e Franklin · lundi 16 novembre, 10:07
+> ☐ 3e Dylan · lundi 16 novembre, 15:07
+
+Donc dans cet écran, la question « la case du voyage est-elle cochée ? » **ne se pose plus** : il n'y a plus de case du voyage.
+
+**Où elle se pose encore.** Il reste **un seul endroit** dans le code qui demande « est-ce que ce voyage a des heures marquées ? » : la **vue Année** — le grand calendrier annuel, qui n'est pas encore construit (c'est la livraison ⑦). L'idée était d'y mettre une **pastille** sur le voyage pour signaler qu'il t'a coûté des heures.
+
+**Ma question, en clair : dans ta vue Année, tu veux cette pastille sur les événements qui t'ont coûté des heures ?**
+
+- **Oui** → alors ta règle du 31 août sert encore, et je la garde pour elle : la pastille apparaît dès qu'**une** heure est marquée.
+- **Non** → alors la règle tombe avec la case, et je la raye du registre.
+
+Tu peux aussi répondre « on verra au ⑦ » : je note et je reposerai la question à ce moment-là.
+
+**Tests manuels : aucun.**
+
+**Cahier vivant** — ⑤ finale chez l'exécutant. Et cette réponse, quand tu veux.
+
+MEMO

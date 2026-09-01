@@ -1724,3 +1724,32 @@ Tout est au registre, tour 215.
 **Cahier vivant** — ③bis finale, puis ④ à ⑧, puis ton promeus.
 
 MEMO
+
+---
+
+## TOUR 33 — Paul
+
+Texte mot pour mot :
+
+> continuer
+
+---
+
+## TOUR 33 — Claude (conscience n°11)
+
+Mesure : rien de neuf au sas — dernier commit `eeaf4579` (③bis-b), `rapport-2ter-03bis.md`
+absent (HTTP 404). La livraison finale n'est pas partie.
+
+Réponse mot pour mot :
+
+Ce « continuer » va à l'exécutant, dans **sa** conversation — c'est lui qui attend le mot pour lancer la dernière livraison. Rien n'a bougé au sas depuis ③bis-b.
+
+De mon côté je n'ai rien en cours : j'attends son candidat pour l'auditer.
+
+Si tu veux que je fasse quelque chose pendant ce temps, il reste la lecture que tu m'avais lancée hier et que je n'ai pas finie — le journal, le chantier, la restauration, l'index des fonctions, la doctrine. Dis-moi par quoi commencer, ou laisse, et j'attends la livraison.
+
+**Tests manuels : aucun.**
+
+**Cahier vivant** — ③bis finale chez l'exécutant, puis ④ à ⑧, puis ton promeus.
+
+MEMO

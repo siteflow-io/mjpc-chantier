@@ -1,0 +1,8 @@
+version : V8.73.0-③BIS
+① clics : panneau prof → Emploi du temps
+② mode test false : 30 créneaux lus, 20 cases · {"3 FRANKLIN Aretha":5,"X Français X. — 4 TURING":1,"4 HUGO":5,"4 TURING":4,"3 DYLAN Bob":3,"X Français X. — 4 BANKSY":1,"X Français X. — 4 PYTHAGORE":1}
+③ CLIC sur la pastille « mode test » → true : 34 créneaux lus, 24 cases · {"3E Charles de Gaulle":4,"3 FRANKLIN Aretha":5,"X Français X. — 4 TURING":1,"4 HUGO":5,"4 TURING":4,"3 DYLAN Bob":3,"X Français X. — 4 BANKSY":1,"X Français X. — 4 PYTHAGORE":1}
+   écritures de la bascule : []
+④ CLIC à nouveau → false : 30 créneaux lus, 20 cases
+   identique à l'état de départ : true
+   écritures des deux bascules : []

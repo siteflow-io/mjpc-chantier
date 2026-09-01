@@ -2621,3 +2621,55 @@ Tu peux aussi répondre « on verra au ⑦ » : je note et je reposerai la quest
 **Cahier vivant** — ⑤ finale chez l'exécutant. Et cette réponse, quand tu veux.
 
 MEMO
+
+---
+
+## TOUR 51 — Paul
+
+Texte mot pour mot :
+
+> j'avais motivé ma règle du 31. vérifie.
+
+---
+
+## TOUR 51 — Claude (conscience n°11)
+
+Vérification faite au transcript (tours 20 à 23) et au registre (`n°11 · 13`).
+Registre : `n°11 · 34`.
+
+Réponse mot pour mot :
+
+**J'ai vérifié, et il faut que je te dise deux choses.**
+
+## Ce que le transcript porte
+
+Sur ce sujet, tes mots exacts, dans l'ordre : « Livré » · « Je n'ai pas compris ta question » · « **C'est quoi le plus logique ? Par ailleurs c'est un cas vraiment hypothétique...** » · « Ok continue ».
+
+**La motivation était la mienne, pas la tienne.** Tu m'as demandé un avis, je l'ai donné, tu as dit « ok continue ». C'est d'ailleurs ce que j'avais écrit au registre ce jour-là : « il a demandé l'avis de la conscience et n'a pas imposé de réponse ».
+
+## Mais ta consigne est juste, et elle tranche la question
+
+**Une règle motivée se tranche par sa motivation, pas par une nouvelle question.** J'aurais dû faire ça au lieu de te redemander.
+
+La motivation du 31 août avait **deux jambes** :
+
+1. La case répond à « cet événement a-t-il des heures marquées ? » — la vider quand deux le sont encore **dirait quelque chose de faux**.
+2. Et ça t'obligerait à **recocher des heures déjà cochées**, avec un avertissement pour rien.
+
+**La deuxième est tombée** : il n'y a plus de case unique, donc plus rien à recocher. Sans objet.
+
+**La première tient, et elle suffit.** La pastille de la vue Année pose exactement la même question. La vider quand une heure est encore marquée dirait toujours quelque chose de faux.
+
+## Donc je tranche, et tu n'as rien à faire
+
+**La règle survit, portée par la pastille de la vue Année** : elle s'allume dès qu'**une** heure de l'événement est marquée, s'éteint quand plus aucune ne l'est. Elle sera appliquée telle quelle en livraison ⑦.
+
+Tu corriges si tu n'es pas d'accord — mais le travail continue sans que tu aies à trancher.
+
+C'est au registre, `n°11 · 34`, avec la leçon de méthode : quand une décision est motivée, la motivation se confronte au code et tranche seule les cas nouveaux.
+
+**Tests manuels : aucun.**
+
+**Cahier vivant** — ⑤ finale chez l'exécutant, puis ⑥ à ⑧, puis ton promeus.
+
+MEMO

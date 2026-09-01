@@ -1676,3 +1676,51 @@ Tout est au registre, tour 214.
 **Cahier vivant** — ③bis-b, ③bis (la garde), puis ④ à ⑧, puis ton promeus.
 
 MEMO
+
+---
+
+## TOUR 32 — Paul
+
+Texte mot pour mot :
+
+> livré
+
+---
+
+## TOUR 32 — Claude (conscience n°11)
+
+Audit joué : candidat mesuré (1 689 863 o / `d8f66035…`) · non-régression · contrat de la garde
+comparé (inchangé) · `edtIdMenteur` lue · **banc indépendant** avec deux identifiants menteurs
+posés par moi · affichage du différentiel vérifié dans le code. Registre : tour 215.
+
+Réponse mot pour mot :
+
+**Verdict : ça va. Aucune dette. Et il a fait mieux que ce que je demandais.**
+
+## Ce que j'ai éprouvé moi-même
+
+J'ai posé deux identifiants menteurs dans un calendrier entrant : un événement portant un identifiant de période, un autre portant un identifiant de créneau.
+
+**Les deux sont détectés et nommés.** L'identifiant correct du troisième événement n'est pas touché — aucun recalcul, ta règle tient.
+
+**Et voici le point que je n'avais pas prévu** : l'événement dont l'identifiant mentait a été **rattaché à son vrai objet** par le contenu. Il ne reçoit pas un identifiant neuf : il **retrouve le sien**, celui qu'il avait au hub. On enlève le menteur, et l'appariement normal fait le reste. C'est mieux que ce que j'avais écrit dans le mandat.
+
+Celui qui n'existait nulle part devient simplement un nouvel événement, avec un identifiant correct.
+
+## Tu es prévenu avant, nommément
+
+Dans l'écran de vérification, une liste à part, en alerte : **« Identifiants d'une autre famille, refusés »**. Chaque ligne dit quoi, lequel, et surtout **combien d'heures cochées ne suivront pas**. Rien en silence.
+
+## La garde
+
+**Contrat inchangé** cette fois — je l'ai comparé ligne à ligne, il n'a rien élargi. Elle est verte.
+
+Tout est au registre, tour 215.
+
+**Tests manuels : aucun.** Rien en ligne.
+
+**Ce qu'il attend de toi : « continuer ».** Dernière étape : la garde reprend la surveillance du chemin d'écriture — celle qui te protégera dans trois mois.
+
+**Cahier vivant** — ③bis finale, puis ④ à ⑧, puis ton promeus.
+
+MEMO

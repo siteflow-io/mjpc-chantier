@@ -1,0 +1,5 @@
+version : V8.73.0-④
+① clics : panneau prof → Emploi du temps · boutons présents : ["⤓ Sortir le JSON — calendrier","⤓ Sortir le JSON — grille","⤓ Sortir le JSON — creneaux","📋 Copier le prompt — calendrier","📋 Copier le prompt — grille"]
+② CLIC « Copier le prompt — calendrier » → 28410 caractères copiés
+   le site dit : "Prompt copié — 28410 caractères, consigne et JSON ensemble. Un seul collage suffit."
+③ presse-papier refusé, CLIC à nouveau → {"presse":0,"zone":true,"longueur":28410,"message":"La copie automatique a échoué — le texte est ouvert dessous, sélectionne-le et copie-le à la main."}

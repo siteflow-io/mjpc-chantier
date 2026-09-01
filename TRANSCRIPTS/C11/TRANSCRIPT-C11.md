@@ -2892,3 +2892,56 @@ Tout est au registre, `n°11 · 37`.
 **Cahier vivant** — ⑥c, ⑥, puis ⑦ et ⑧, puis ton promeus, puis l'injection de chapitre.
 
 MEMO
+
+---
+
+## TOUR 57 — Paul
+
+Texte mot pour mot :
+
+> livré
+
+---
+
+## TOUR 57 — Claude (conscience n°11)
+
+Audit joué : candidat mesuré (1 742 164 o / `8977a8a5…`) · non-régression · `edtReplacerHeure`
+et `edtVerifierCoherence` lues · **banc indépendant sur le point de vigilance** · **fuite de
+variable globale mesurée** (`edtDepart` : 0 déclaration, pas de `'use strict'` dans le
+fichier). Registre : `n°11 · 38`.
+
+Réponse mot pour mot :
+
+**Verdict : ça va. Le point que je portais est traité. Et j'ai trouvé une ligne à corriger.**
+
+## Le point de vigilance est réglé
+
+J'ai rejoué le cycle : après un écrasement, l'heure de la 4E compte **1 perdue, 0 justifiée**. Quand tu la **poses réellement** sur un créneau — pas seulement « je l'ai replacée » — elle disparaît du rappel **et cesse de compter comme perdue**. Zéro.
+
+**Ton total de juin sera juste.** Et tout part en une seule écriture, donc archivée et journalisée.
+
+## Une ligne à corriger
+
+Dans la fonction qui vérifie qu'aucune classe ne se télescope, il y a une faute de frappe :
+
+```
+var edtOut=[],edtD=edtDepart=depuis||edtAujourdhui();
+```
+
+**`edtDepart` n'est déclaré nulle part** — j'ai cherché, zéro déclaration. Chaque appel crée donc une variable globale de plus dans ton site. Et `edtD`, lui, est déclaré mais jamais relu : c'est bien une faute de frappe, il voulait écrire `var edtDepart=...`.
+
+**Aucun effet mesurable aujourd'hui.** Mais c'est le genre de chose que tu ne pourras pas diagnostiquer dans trois mois, et la correction tient en une ligne.
+
+**Colle-lui ceci pour la livraison finale** :
+
+> `edtVerifierCoherence`, L20169 : `var edtOut=[],edtD=edtDepart=depuis||edtAujourdhui();` — **`edtDepart` n'est pas déclaré** (fuite globale, le fichier n'a pas de `'use strict'`) et `edtD` n'est jamais relu. Écris `var edtOut=[],edtDepart=depuis||edtAujourdhui();`.
+
+Pour le reste, la vérification des télescopages fait ce qu'on lui demande : elle projette chaque jour et rend la liste des collisions, en sautant les jours sans cours.
+
+Tout est au registre, `n°11 · 38`.
+
+**Tests manuels : aucun.** Rien en ligne.
+
+**Cahier vivant** — ⑥ finale (les dates de l'année, les captures, l'audit adverse, le banc complet, plus cette ligne), puis ⑦ et ⑧, puis ton promeus.
+
+MEMO

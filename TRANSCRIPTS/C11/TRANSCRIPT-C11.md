@@ -1753,3 +1753,58 @@ Si tu veux que je fasse quelque chose pendant ce temps, il reste la lecture que 
 **Cahier vivant** — ③bis finale chez l'exécutant, puis ④ à ⑧, puis ton promeus.
 
 MEMO
+
+---
+
+## TOUR 34 — Paul
+
+Texte mot pour mot :
+
+> il faudra faire une immense passe de simplification des termes techniques. SInon dans 3 mois je lirai famille et je ne saurai pas ce que ça veut dire.
+
+---
+
+## TOUR 34 — Claude (conscience n°11)
+
+Mesure : **258 phrases visibles** relevées dans le bloc EDT du candidat, **23 portent un mot
+technique** (dédoublonnées) — plancher, pas total. Registre : tour 216, commit `b7221be0`.
+
+Réponse mot pour mot :
+
+**Tu as raison, et j'ai mesuré l'ampleur avant de te répondre.**
+
+Dans l'écran de l'emploi du temps, j'ai relevé **258 phrases** que le site t'adresse. **Vingt-trois** portent un mot que tu ne reconnaîtras pas dans trois mois :
+
+- **« identifiant »** — huit fois : « Identifiants d'une autre famille, refusés », « 122 identifiants posés au calendrier »…
+- **« décision »** — cinq fois : « Ce qui garde ses décisions », « Décisions rattachées à… »
+- **« apparié »** — cinq fois : « Tant qu'une classe de la grille n'est pas appariée, sa case s'affiche mais ne projette rien »
+- **« famille »**, **« candidats identiques »**, **« la mise à niveau n'a pas été enregistrée »**
+
+Et **c'est un plancher** : je n'ai regardé que le bloc emploi du temps, et seulement les phrases écrites d'un seul tenant. Le vrai chiffre est plus élevé.
+
+## Deux choses à ne pas confondre
+
+**Ce que le site te dit à l'écran** — c'est ça, ta vraie dette. C'est ce que tu liras en classe, seul, dans trois mois.
+
+**Le vocabulaire du code** — les noms de fonctions, les mandats. Tu ne les lis pas en classe. Renommer 167 fonctions serait un gros chantier risqué pour zéro bénéfice devant tes élèves. **Je ne mélangerais pas les deux.**
+
+## Ce que je propose
+
+Une livraison qui ne touche **que les textes affichés**. Aucun renommage, aucun changement de comportement — donc un risque très faible et une preuve simple : le site fait exactement la même chose, il le dit autrement.
+
+Par exemple :
+
+- « Identifiants d'une autre famille, refusés » → **« Ces lignes portaient une étiquette qui n'est pas la leur : je les prends comme nouvelles »**
+- « Ce qui garde ses décisions » → **« Ce que tu avais coché et qui reste »**
+- « Tant qu'une classe de la grille n'est pas appariée… » → **« Tant que tu n'as pas dit à quelle classe correspond cette case… »**
+- « … candidats identiques : traité comme un objet neuf » → **« Il y a plusieurs lignes identiques : je ne devine pas laquelle est laquelle, je les prends comme nouvelles »**
+
+**Deux choses à me dire quand tu voudras** : quand — avant ton promeus, ou après ? — et jusqu'où : le seul emploi du temps, ou tout le site.
+
+C'est au registre, tour 216.
+
+**Tests manuels : aucun.**
+
+**Cahier vivant** — ③bis finale chez l'exécutant, puis ④ à ⑧, puis ton promeus. Et cette passe de simplification, quand tu diras.
+
+MEMO

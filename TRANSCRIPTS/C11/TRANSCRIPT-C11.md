@@ -1379,3 +1379,58 @@ Tout est au registre, tour 211.
 **Cahier vivant** — ③ finale, puis ④ à ⑧, puis ton promeus. En attente de toi : le rattrapage par rang · la classe De Gaulle · `CLAUDE.md` périmé · `usage`/`quandPas` du site · la bascule de mode test dans quatre apps · les quatre fichiers hors socle · l'unicité entre familles.
 
 MEMO
+
+---
+
+## TOUR 26 — Paul
+
+Texte mot pour mot :
+
+> livré
+
+---
+
+## TOUR 26 — Claude (conscience n°11)
+
+Audit joué : candidat mesuré (1 686 881 o / `efb57889…`) · écritures recomptées **sur les
+bornes réelles du bloc** · point de passage unique lu · **ancienne garde ROUGE, nouvelle garde
+VERTE**, contrat élargi lu ligne à ligne, trois pièges de la conscience refusés · appelants de
+`edtEcrireArchive` vérifiés un à un · `chemin+'.json'` recompté dans tout le fichier · **banc
+indépendant monté deux fois** (le premier stub n'était pas fidèle) · non-régression · double
+parseur. Registre : tour 212, commit `5c0ccd11`.
+
+Réponse mot pour mot :
+
+**Verdict : ça va. Le mandat ③ est fini, sans dette. Trois livraisons sur huit sont closes.**
+
+## Il a fait mieux que ce que je demandais
+
+Je lui demandais d'ajouter l'archivage à quinze écritures, une par une. Il a fait l'inverse : **une seule porte par où tout passe**. Treize fonctions y entrent maintenant. Il ne reste que trois écritures directes — la porte elle-même, celle des dates du brevet (qui écrit ailleurs que dans l'emploi du temps), et la mise à niveau, qui archivait déjà.
+
+C'est plus simple, plus sûr, et ça se surveille d'un coup d'œil.
+
+**Je l'ai éprouvée moi-même** : archivage réussi → l'état d'avant est mis de côté, **puis** on écrit. Archivage raté, ou qui plante → **rien n'est écrit**, et le site te le dit. Rien à remplacer → on écrit directement, sans archive inutile.
+
+Mon premier banc n'était pas fidèle et faisait remonter une erreur qui ne peut pas se produire dans le vrai site. Je l'ai refait avant de conclure.
+
+## Un point que tu dois connaître
+
+Pour que ça marche, il a fallu **élargir la garde** — celle qui vérifie que le bloc emploi du temps n'écrit nulle part ailleurs. Avant, elle contrôlait la forme exacte du chemin. Maintenant, elle laisse passer la porte unique sans regarder où elle écrit.
+
+C'est justifié, et il l'a déclaré. Mais **c'est un cran de protection en moins** : la garde ne peut plus voir si quelqu'un fait écrire cette porte au mauvais endroit. J'ai vérifié les deux seuls chemins possibles aujourd'hui, ils sont sûrs. **Je l'inscris dans tous les mandats suivants : relire les appelants de cette porte à chaque livraison, parce que la garde ne le fera plus.**
+
+Et une imprécision de son rapport, mesurée : il écrit que la forme de chemin en cause n'apparaît qu'une fois dans le fichier. Il y en a trois — une seule dans le bloc emploi du temps, ce que la garde examine. Vrai pour la garde, faux pour le fichier.
+
+## Ce qu'il signale et qui te revient
+
+**Les dates du brevet n'archivent pas.** Elles s'écrivent hors de l'emploi du temps, leur état d'avant n'est jamais chargé, et leur valeur vient du calendrier — qui, lui, est archivé au même moment. Il refuse de trancher seul. À toi de dire si tu veux une archive là aussi.
+
+**Et une chose qu'il a trouvée sans la corriger** : après une injection de calendrier, la page se détache — sa septième capture n'a pas pu être prise. Il n'y a aucun rechargement volontaire dans le code, la cause n'est pas identifiée, et **c'est antérieur à ce lot**. Rien n'est perdu, l'état écrit est vérifié par ailleurs. Je le note comme dette à part.
+
+Tout est au registre, tour 212.
+
+**Tests manuels : aucun.** Rien en ligne, `/site/edt` toujours vide.
+
+**Cahier vivant** — livraison ④, puis ⑤ à ⑧, puis ton promeus. En attente de toi : l'archive des dates du brevet · le rattrapage par rang · la classe De Gaulle · `CLAUDE.md` périmé · `usage`/`quandPas` du site · la bascule de mode test dans quatre apps · les quatre fichiers hors socle · l'unicité entre familles · le rafraîchissement après injection.
+
+MEMO

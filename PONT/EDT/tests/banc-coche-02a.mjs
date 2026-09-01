@@ -85,17 +85,21 @@ console.log('  heures justifiées de ' + CLASSE + ' : ' + depart.heuresJustifiee
 await page.evaluate(() => { edtVue('calendrier'); });
 await pause(700); await nettoyer();
 await page.evaluate(() => { window.__ECR.length = 0; });
+/* [⑤a] l'écran a changé : une case par HEURE, dans la fiche de l'événement.
+   On coche donc toutes les heures de sa fiche — deux clics au lieu d'un. */
 const cible = await page.evaluate(lib => {
-  const l = Array.from(document.querySelectorAll('#edt-ecran label.edt-cal-l'))
+  const f = Array.from(document.querySelectorAll('#edt-ecran .edt-fiche'))
     .filter(x => (x.innerText || '').indexOf(lib) >= 0)[0];
-  if (!l) return null;
-  const b = l.querySelector('input[type=checkbox]');
-  const r = b.getBoundingClientRect();
-  return { texte: (l.innerText || '').trim().slice(0, 70), coche: b.checked, x: r.x + r.width / 2, y: r.y + r.height / 2 };
+  if (!f) return null;
+  const cases = Array.from(f.querySelectorAll('label input[type=checkbox]'));
+  return { texte: (f.innerText || '').trim().replace(/\n/g, ' | ').slice(0, 90),
+    coche: cases.every(b => b.checked), cases: cases.length,
+    points: cases.map(b => { const r = b.getBoundingClientRect();
+      return { x: r.x + r.width / 2, y: r.y + r.height / 2 }; }) };
 }, EVT);
 console.log('\n══ ⑥.2 · COCHER « ' + EVT +' » (clic réel sur la case) ══');
 console.log('  case trouvée : ' + JSON.stringify(cible));
-if (cible) { await page.mouse.click(cible.x, cible.y); await pause(900); }
+if (cible) { for (const p of cible.points) { await page.mouse.click(p.x, p.y); await pause(700); } }
 
 const apres = await mesure();
 console.log('  écritures du geste : ' + JSON.stringify(apres.ecritures));
@@ -106,9 +110,11 @@ console.log('  contenu d\'une décision : ' + JSON.stringify(await page.evaluate
   return k ? { cle: k, valeur: h[k] } : null; }, CLASSE)));
 console.log('  calendrier au hub : ' + apres.justifieDansCalendrier + ' champ, ' + apres.cochesDansCalendrier + ' coché(s)');
 console.log('  case cochée à l\'écran après le clic : ' + await page.evaluate(lib => {
-  const l = Array.from(document.querySelectorAll('#edt-ecran label.edt-cal-l'))
+  const f = Array.from(document.querySelectorAll('#edt-ecran .edt-fiche'))
     .filter(x => (x.innerText || '').indexOf(lib) >= 0)[0];
-  return l ? l.querySelector('input').checked : '(label introuvable)'; }, EVT));
+  if (!f) return '(fiche introuvable)';
+  const c = Array.from(f.querySelectorAll('label input')); 
+  return c.length ? c.every(b => b.checked) : '(aucune case)'; }, EVT));
 console.log('  heures justifiées : ' + depart.heuresJustifiees + ' → ' + apres.heuresJustifiees
   + ' · écart : ' + JSON.stringify(apres.ecart));
 console.log('  journal du magasin : ' + JSON.stringify(await page.evaluate(c => {

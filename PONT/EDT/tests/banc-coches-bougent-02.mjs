@@ -56,12 +56,22 @@ async function depart() {
   await page.evaluate(() => { edtOuvrir(); edtVue('calendrier'); });
   await pause(800);
   await page.evaluate(() => { const o = document.getElementById('fi-overlay'); if (o) o.remove(); });
-  /* on coche l'événement PAR CLIC sur sa case */
+  /* [⑤a] l'écran donne une case par HEURE, dans la fiche de l'événement : on coche
+     toutes les heures de sa fiche, par clics réels, une par une. */
   const ok = await page.evaluate(lib => {
-    const l = Array.from(document.querySelectorAll('#edt-ecran label.edt-cal-l'))
+    const f = Array.from(document.querySelectorAll('#edt-ecran .edt-fiche'))
       .filter(x => (x.innerText || '').indexOf(lib) >= 0)[0];
-    if (!l) return false; l.querySelector('input').click(); return true; }, EVT);
-  await pause(900);
+    if (!f) return 0;
+    const c = Array.from(f.querySelectorAll('label input[type=checkbox]'));
+    return c.length; }, EVT);
+  for (let i = 0; i < ok; i++) {
+    await page.evaluate((lib, n) => {
+      const f = Array.from(document.querySelectorAll('#edt-ecran .edt-fiche'))
+        .filter(x => (x.innerText || '').indexOf(lib) >= 0)[0];
+      const c = Array.from(f.querySelectorAll('label input[type=checkbox]'));
+      if (c[n] && !c[n].checked) c[n].click(); }, EVT, i);
+    await pause(800);
+  }
   return { page, ok };
 }
 
@@ -69,11 +79,13 @@ const lire = (page, titre) => page.evaluate((c, lib) => {
   const cal = window.__HUB.site.edt.calendrier['2026-2027'] || {};
   const e = (cal.evenementsClasse || []).filter(x => (x.libelle || '').indexOf(lib) >= 0)[0] || null;
   const dec = ((window.__HUB.site.edt.decisions || {})['2026-2027'] || {})[c] || {};
-  const l = Array.from(document.querySelectorAll('#edt-ecran label.edt-cal-l'))
+  const f = Array.from(document.querySelectorAll('#edt-ecran .edt-fiche'))
     .filter(x => (x.innerText || '').indexOf(lib) >= 0)[0];
+  const cases = f ? Array.from(f.querySelectorAll('label input[type=checkbox]')) : [];
+  const titre = f ? f.querySelector('div.edt-cal-l') : null;
   return { evenement: e ? { id: e.id, debut: e.debut, fin: e.fin } : null,
-    caseCochee: l ? l.querySelector('input').checked : '(ligne absente)',
-    ligne: l ? (l.innerText || '').replace(/\n/g, ' ').trim().slice(0, 120) : '(ligne absente)',
+    caseCochee: cases.length ? cases.every(b => b.checked) : '(fiche absente)',
+    ligne: titre ? (titre.innerText || '').replace(/\n/g, ' ').trim().slice(0, 150) : '(fiche absente)',
     decisions: Object.keys(dec.heures || {}),
     heuresJustifiees: edtHeuresJustifiees(c),
     deplacees: e ? edtCochesDeplacees(e).length : (typeof edtCochesDeLEvenement === 'function' ? -1 : -2) }; }, CLASSE, EVT)

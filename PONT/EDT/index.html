@@ -2854,7 +2854,7 @@ function mjpcEcrireRest(url,options,cb){
    (les 3 gestes, le geste conservatoire par app, ce qui ne peut pas arriver).
    RESTAURER LA VERSION PRÉCÉDENTE : docs/MJPC6-restauration.md (convention BUG).
    ═══════════════════════════════════════════════════════════════════════════ */
-var APP_VERSION="8.73.0-③bis-a";
+var APP_VERSION="8.73.0-③bis-b";
 var APP_VERSION_DATE="2026-08-27";
 // ── 11. Coffre : dérivation, chiffrement, empreinte (v1.3.0) ──
 // (Le canon porte deux sections « 8 » — dette de numérotation connue, non corrigée
@@ -18013,6 +18013,10 @@ function edtDifferentielHtml(diff){
   (diff.faibles||[]).forEach(function(q){
     questions.push(edtEtiquette(q.existant)+' → '+edtEtiquette(q.entrant));
   });
+  var menteurs=(diff.menteurs||[]).map(function(m){
+    return m.etiquette+' — identifiant « '+m.id+' » d\u2019une autre famille, refusé'
+      +(m.coches?(' · '+m.coches+' heure'+(m.coches>1?'s':'')+' cochée'+(m.coches>1?'s':'')+' ne le suivr'+(m.coches>1?'ont':'a')+' pas'):'');
+  });
   var liste=function(titre,l,cls){
     if(!l.length)return '';
     return '<div class="edt-diff-l'+(cls?(' '+cls):'')+'"><b>'+escapeHtml(titre)+' ('+l.length+')</b><ul><li>'
@@ -18024,6 +18028,7 @@ function edtDifferentielHtml(diff){
     +liste('Ce qui a seulement bougé',bouges)
     +liste('Ce qui disparaît EN EMPORTANT DES COCHES',partentCoches,'edt-diff-alerte')
     +liste('Ce qui disparaît',partent)
+    +liste('Identifiants d\u2019une autre famille, refusés',menteurs,'edt-diff-alerte')
     +liste('Ce qui garde ses décisions',gardent)
     +liste('À te demander avant d’écrire',questions);
   if(diff.ambigus&&diff.ambigus.length)
@@ -18031,19 +18036,45 @@ function edtDifferentielHtml(diff){
       +'<ul><li>'+diff.ambigus.slice(0,10).map(function(a){
         return escapeHtml(edtEtiquette(a.entrant)+' — '+a.candidats+' candidats identiques : traité comme un objet neuf');
       }).join('</li><li>')+'</li></ul></div>';
-  if(!arrivent.length&&!bouges.length&&!partent.length&&!partentCoches.length&&!questions.length)
+  if(menteurs.length)
+    h+='<p class="edt-mini-t">'+menteurs.length+' objet'+(menteurs.length>1?'s':'')
+      +' portai'+(menteurs.length>1?'ent':'t')+' un identifiant d\u2019une autre famille : '
+      +(menteurs.length>1?'ils sont traités':'il est traité')+' comme neuf'+(menteurs.length>1?'s':'')+'.</p>';
+  if(!arrivent.length&&!bouges.length&&!partent.length&&!partentCoches.length&&!questions.length&&!menteurs.length)
     h+='<p class="edt-mini-t">Rien ne change : tout se retrouve à l’identique.</p>';
   h+='</div>';
   return h;
 }
+/* [③bis-b] UN IDENTIFIANT DIT SA FAMILLE. La règle de ① ne change pas : un
+   identifiant en service n'est JAMAIS recalculé. Mais un identifiant dont le
+   préfixe ne correspond pas à sa famille ment — `per:` sur un créneau de grille,
+   `crn:` sur un événement. Il est refusé : l'objet garde tout son contenu, arrive
+   comme neuf et reçoit un identifiant correct. Jamais en silence : c'est nommé
+   dans le différentiel, avant le geste. */
+function edtIdMenteur(el,famille){
+  var f=EDT_FAMILLES[famille];
+  if(!el||!el.id||!f||!f.prefixe)return false;
+  return String(el.id).indexOf(f.prefixe)!==0;
+}
+
 /* [③a] LA RECONDUCTION DES IDENTITÉS À LA RÉINJECTION — avant toute écriture.
    Les FORTS sont appliqués sans un mot : même objet, même identité. Les FAIBLES
    ne sont JAMAIS appliqués ici : ils sont rendus pour être posés en question.
    Une ambiguïté ne se devine pas : l'entrant arrive comme neuf, et c'est dit. */
 function edtReconduire(nom,entrant){
-  var res={familles:{},faibles:[],ambigus:[],forts:0,arrivent:0,disparaissent:0};
+  var res={familles:{},faibles:[],ambigus:[],menteurs:[],forts:0,arrivent:0,disparaissent:0};
   var av=edtListesFamilles(nom,EDT[nom]||null),ap=edtListesFamilles(nom,entrant);
   Object.keys(ap).forEach(function(f){
+    /* [③bis-b] les identifiants qui mentent sur leur famille sont refusés ICI,
+       avant tout appariement : l'objet arrivera comme neuf. Ce qui était attaché
+       à l'ancien identifiant ne le suit pas — et c'est compté, pour le dire. */
+    (ap[f]||[]).forEach(function(el){
+      if(!edtIdMenteur(el,f))return;
+      var edtVieux=String(el.id),edtN=0;
+      try{ edtN=edtCochesDeLEvenement(edtVieux).length; }catch(e){ edtN=0; }
+      res.menteurs.push({famille:f,etiquette:edtEtiquette(el),id:edtVieux,coches:edtN});
+      delete el.id;
+    });
     var r=edtApparier(ap[f],av[f]||[],f,null);
     r.fort.forEach(function(x){ if(x.existant&&x.existant.id&&x.entrant)x.entrant.id=x.existant.id; });
     r.faible.forEach(function(x){ res.faibles.push({famille:f,entrant:x.entrant,existant:x.existant}); });

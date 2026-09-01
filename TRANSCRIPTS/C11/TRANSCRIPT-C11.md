@@ -2787,3 +2787,52 @@ puis le mandat entier dans un bloc copiable, puis :
 chapitre.
 
 MEMO
+
+---
+
+## TOUR 55 — Paul
+
+Texte mot pour mot :
+
+> livré
+
+---
+
+## TOUR 55 — Claude (conscience n°11)
+
+Audit joué : candidat mesuré (1 734 473 o / `bc02c791…`) · non-régression · catégories et
+motifs comparés · **`edtEchangerHeures` et `edtEcraserHeure` lues ligne à ligne** ·
+**banc indépendant : qui perd une heure ?** Registre : `n°11 · 36`.
+
+Réponse mot pour mot :
+
+**Verdict : ça va. Le geste que tu ne pouvais pas faire est ouvert.**
+
+## Ce que tu verras quand tu déposeras une heure sur une case prise
+
+> lundi 31 août à 15:07-16:02, c'est **4E BANKSY**.
+> **Échanger** : 3E Charles de Gaulle et 4E BANKSY permutent leurs deux heures — personne ne perd rien.
+> **Prendre le créneau** : 4E BANKSY perd son heure du lundi 31 août — elle devient une heure à replacer, et le site te la rappellera.
+
+Trois boutons : ne rien faire, échanger, prendre le créneau. **Et rien ne s'écrit avant que tu répondes** — le journal des écritures est vide tant que la question est posée.
+
+Le refus sec reste là où il doit : pour une classe que le site ne connaît pas encore.
+
+## Ce que j'ai vérifié moi-même
+
+**« Horaire toujours, pas contenu »** — je l'ai lu dans le code, ligne à ligne. Les deux gestes n'écrivent **que dans le magasin des décisions**. Aucune touche à tes séances, à tes activités, à tes traces.
+
+**Et j'ai posé la question qui compte : qui perd une heure ?**
+
+- **Après un échange** : **aucune heure perdue**, ni pour l'une ni pour l'autre. Les deux départs sont marqués comme déplacés, les deux arrivées épinglées. Personne ne perd rien — c'est ce que tu demandais.
+- **Après un écrasement** : la classe évincée compte **une heure perdue, non justifiée**, avec le motif « à replacer ». **Elle ne la perd pas en silence.**
+
+Tout est au registre, `n°11 · 36`.
+
+**Tests manuels : aucun.** Rien en ligne.
+
+**Ce qu'il attend de toi : « continuer ».** La suite est ⑥b — l'heure à replacer, son rappel jusqu'à ce que tu la poses.
+
+**Cahier vivant** — ⑥b, ⑥c, ⑥, puis ⑦ et ⑧, puis ton promeus, puis l'injection de chapitre.
+
+MEMO

@@ -52,55 +52,80 @@ await pause(900);
 await page.evaluate(() => document.body.classList.add('admin-mode'));
 await page.evaluate(() => new Promise(r => edtChargerClasses(() => edtCharger(r))));
 await pause(1500);
-await page.evaluate(() => { edtOuvrir(); const o = document.getElementById('fi-overlay'); if (o) o.remove(); });
-await pause(500);
+/* [⑤d] RÈGLE DE PAUL : un banc passe par le GESTE. On ouvre le panneau prof par
+   clic, et chaque écriture est déclenchée en cliquant ce que Paul cliquerait. */
+await page.evaluate(() => { document.getElementById('tprof-btn').click(); });
+await pause(700);
+await page.evaluate(() => { const b = Array.from(document.querySelectorAll('.tprof-section-btn'))
+  .filter(x => (x.getAttribute('onclick') || '').indexOf("'edt'") >= 0)[0]; if (b) b.click(); });
+await pause(1200);
+await page.evaluate(() => { const o = document.getElementById('fi-overlay'); if (o) o.remove(); });
 
-const geste = async (titre, code, refus) => {
-  const r = await page.evaluate((c, ref) => new Promise(res => {
+
+/* un geste, décrit par le CLIC qui le déclenche. `refus` fait tomber la corbeille. */
+const geste = async (titre, clic, lire, attendu, refus) => {
+  const r = await page.evaluate((c, l, ref) => new Promise(res => {
     window.__ECR.length = 0; window.__REFUS = ref;
-    eval('(' + c + ')()');
+    const fait = eval('(' + c + ')()');            /* LE CLIC */
     setTimeout(() => {
       window.__REFUS = null;
       const t = document.querySelector('.at-modale-m, .at-toast');
-      res({ journal: window.__ECR.slice(), dit: t ? t.innerText.slice(0, 120) : null });
-    }, 1100); }), code.toString(), refus || null);
-  const arch = r.journal.filter(x => x.indexOf('/corbeille/') >= 0 && x.indexOf('REFUSÉ') < 0).length;
+      res({ clique: fait !== false, journal: window.__ECR.slice(),
+        dit: t ? t.innerText.slice(0, 110) : null,
+        contenu: eval('(' + l + ')')() });          /* CE QUE L'ARCHIVE CONTIENT */
+    }, 1200); }), clic.toString(), lire.toString(), refus || null);
+  const arch = r.journal.filter(x => x.indexOf('/corbeille/') >= 0 && x.indexOf('REFUSÉ') !== 0).length;
   const refuses = r.journal.filter(x => x.indexOf('REFUSÉ') === 0).length;
-  const ecr = r.journal.filter(x => x.indexOf('/corbeille/') < 0 && x.indexOf('REFUSÉ') < 0);
+  const ecr = r.journal.filter(x => x.indexOf('/corbeille/') < 0 && x.indexOf('REFUSÉ') !== 0);
   console.log('\n■ ' + titre);
-  console.log('   ordre : ' + JSON.stringify(r.journal.map(x => x.replace('/2026-2027', '').replace(/\/corbeille\/[^/]+\//, 'corbeille/'))));
+  console.log('   attendu : ' + attendu);
+  console.log('   clic passé : ' + r.clique + ' · ordre : '
+    + JSON.stringify(r.journal.map(x => x.replace('/2026-2027', '').replace(/\/corbeille\/[^/]+\//, 'corbeille/'))));
   console.log('   archives : ' + arch + (refuses ? (' (refusées : ' + refuses + ')') : '') + ' · écritures : ' + ecr.length);
+  console.log('   CE QUE L\'ARCHIVE CONTIENT : ' + JSON.stringify(r.contenu));
   if (r.dit) console.log('   le site dit : ' + JSON.stringify(r.dit));
-  return { arch, ecr, refuses };
 };
+/* la dernière archive écrite pour un objet, et ce qu'elle porte */
+const dedans = nom => `(() => { let a = null;
+  Object.keys(window.__HUB.corbeille || {}).forEach(j => Object.keys(window.__HUB.corbeille[j]).forEach(k => {
+    const x = window.__HUB.corbeille[j][k];
+    if (x && x._meta && String(x._meta.chemin).indexOf('/${nom}/') >= 0) a = x; }));
+  const d = a ? a.data : null;
+  const hub = (window.__HUB.site.edt['${nom}'] || {})['2026-2027'] || null;
+  return { archive: d ? ${nom === 'periodes' ? "(d.periodes || []).map(p => p.nom)"
+    : nom === 'reglages' ? "JSON.stringify(d).slice(0, 90)"
+    : "Object.keys(d).length + ' entrées'"} : '(aucune archive)',
+    auHub: hub ? ${nom === 'periodes' ? "(hub.periodes || []).map(p => p.nom)"
+    : nom === 'reglages' ? "JSON.stringify(hub).slice(0, 90)"
+    : "Object.keys(hub).length + ' entrées'"} : '(rien)' }; })`;
 
-console.log('══════ ⑥.9 · TROIS ÉCRITURES, ARCHIVE PUIS ÉCRITURE ══════');
-await geste('edtReglagePoser — un réglage changé', () => { edtReglagePoser('semaineA', 'B'); });
-await geste('edtEcrireDecision — une heure sortie de la prévision',
-  () => { const c = Object.keys(EDT_VUE.cellules || {})[0] || null;
-    EDT_VUE.mode = 'semaine'; EDT_VUE.ancre = '2026-11-16'; edtPeindre();
-    const k = Object.keys(EDT_VUE.cellules || {}).filter(x => (EDT_VUE.cellules[x] || {}).nature === 'prevu')[0];
-    if (k) edtSansSeance(k); });
-await geste('edtPeriodesEcrire — une période ajoutée', () => { edtPeriodeAjouter('Stage'); });
+console.log('══════ ⑥.9 · PREMIER GESTE : rien à remplacer, donc rien à archiver ══════');
+await geste('la case « arriver sur l\'emploi du temps » — clic réel',
+  () => { const b = document.querySelector('#edt-panneau input[onchange*="arriverSurEdt"]'); if (!b) return false; b.click(); return true; },
+  dedans('reglages'), '0 archive, 1 écriture : le nœud reglages est vide au hub');
+await geste('« + Ajouter une période » — clic réel',
+  () => { const b = Array.from(document.querySelectorAll('#edt-panneau button'))
+    .filter(x => (x.getAttribute('onclick') || '').indexOf('edtPeriodeAjouter') >= 0)[0];
+    if (!b) return false; b.click(); return true; },
+  dedans('periodes'), '0 archive, 1 écriture : le nœud periodes est vide au hub');
 
-console.log('\n══════ ⑥.9 (suite) · LES MÊMES GESTES UNE SECONDE FOIS — il y a désormais un état à remplacer ══════');
-await geste('edtReglagePoser — second passage', () => { edtReglagePoser('semaineA', 'A'); });
-await geste('edtPeriodesEcrire — second passage', () => { edtPeriodeAjouter('Stage bis'); });
-await geste('edtEcrireDecisionsGroupe — un écart justifié coché',
-  () => { const e = (EDT.calendrier.evenementsClasse || []).filter(x => (x.libelle || '').indexOf('Verdun') >= 0)[0];
-    edtJustifier(e.id, true); });
+console.log('\n══════ ⑥.9 · SECOND GESTE : il y a désormais un état à remplacer ══════');
+await geste('la même case, recliquée — clic réel',
+  () => { const b = document.querySelector('#edt-panneau input[onchange*="arriverSurEdt"]'); if (!b) return false; b.click(); return true; },
+  dedans('reglages'), '1 archive PUIS 1 écriture, et l\'archive porte l\'état d\'avant');
+await geste('« + Ajouter une période », une seconde fois — clic réel',
+  () => { const b = Array.from(document.querySelectorAll('#edt-panneau button'))
+    .filter(x => (x.getAttribute('onclick') || '').indexOf('edtPeriodeAjouter') >= 0)[0];
+    if (!b) return false; b.click(); return true; },
+  dedans('periodes'), '1 archive PUIS 1 écriture, et l\'archive ne porte QUE la première période');
 
-console.log('\n══════ ⑥.9 (suite) · LES MÊMES, ARCHIVAGE EN PANNE ══════');
-await geste('edtReglagePoser — la corbeille refuse', () => { edtReglagePoser('semaineA', 'A'); }, '/corbeille/');
-await geste('edtPeriodesEcrire — la corbeille refuse', () => { edtPeriodeAjouter('Stage 2'); }, '/corbeille/');
-await geste('edtEcrireDecisionsGroupe — la corbeille refuse',
-  () => { const e = (EDT.calendrier.evenementsClasse || []).filter(x => (x.libelle || '').indexOf('Verdun') >= 0)[0];
-    edtJustifier(e.id, true); }, '/corbeille/');
-
-console.log('\n══════ état du hub après les pannes ══════');
-console.log('   ' + JSON.stringify(await page.evaluate(() => {
-  const e = window.__HUB.site.edt;
-  return { reglages: (e.reglages || {})['2026-2027'] || null,
-    periodes: (((e.periodes || {})['2026-2027'] || {}).periodes || []).map(p => p.nom),
-    decisions: Object.keys((((e.decisions || {})['2026-2027'] || {})['3E Charles de Gaulle'] || {}).heures || {}).length }; })));
+console.log('\n══════ ⑥.9 · LA CORBEILLE REFUSE : rien ne s\'écrit ══════');
+await geste('la case, corbeille en panne — clic réel',
+  () => { const b = document.querySelector('#edt-panneau input[onchange*="arriverSurEdt"]'); if (!b) return false; b.click(); return true; },
+  dedans('reglages'), '0 écriture, le site le dit, le hub garde son état', '/corbeille/');
+await geste('« + Ajouter une période », corbeille en panne — clic réel',
+  () => { const b = Array.from(document.querySelectorAll('#edt-panneau button'))
+    .filter(x => (x.getAttribute('onclick') || '').indexOf('edtPeriodeAjouter') >= 0)[0];
+    if (!b) return false; b.click(); return true; },
+  dedans('periodes'), '0 écriture, et la liste au hub n\'a pas bougé', '/corbeille/');
 await nav.close();

@@ -1330,3 +1330,52 @@ Tout est au registre, tour 210.
 **Cahier vivant** — ③b, puis ③ (archivage généralisé, captures, audit adverse), puis ④ à ⑧, puis ton promeus. En attente de toi : le rattrapage par rang ci-dessus · la classe De Gaulle · `CLAUDE.md` périmé · `usage`/`quandPas` du site · la bascule de mode test dans quatre apps · les quatre fichiers hors socle · l'unicité entre familles.
 
 MEMO
+
+---
+
+## TOUR 25 — Paul
+
+Texte mot pour mot :
+
+> livré
+
+---
+
+## TOUR 25 — Claude (conscience n°11)
+
+Audit joué : candidat mesuré (1 685 752 o / `0ba3822f…`) · rapport lu · non-régression ·
+`edtApparier` toujours identique bit à bit · double parseur · garde · **banc indépendant sur
+le rattachement**, monté deux fois (le premier essai ne testait pas la vraie collision) ·
+**écritures du bloc recomptées : 14 → 15**. Registre : tour 211, commit ci-dessus.
+
+Réponse mot pour mot :
+
+**Verdict : ça va. Aucune dette.**
+
+## Ce que j'ai éprouvé moi-même
+
+Le geste qui pouvait te coûter des décisions, c'est le rattachement d'une classe renommée. Je l'ai poussé sur le cas le plus dangereux : **une heure déjà décidée sous le nouveau nom**.
+
+Résultat : rien n'est perdu, **la décision déjà en place n'est pas écrasée**, et celle qui ne peut pas suivre reste sous l'ancien nom — avec le site qui te le dit : « 1 est restée sous « 3E Charles de Gaulle », je ne l'ai pas déplacée. »
+
+J'ai aussi mis une clé d'une forme inattendue : elle reste où elle est, elle n'est pas jetée.
+
+Mon premier essai ne testait pas vraiment la collision — j'avais fabriqué une clé qui n'avait pas la bonne forme. Je l'ai mesurée, refait l'essai, et seulement après conclu.
+
+## Ce que tu verras avant d'appuyer
+
+L'appariement tourne maintenant **quand tu appuies sur « Vérifier »**, et rien ne s'écrit à ce moment-là. Tu lis quatre listes avec des noms : ce qui arrive, ce qui a seulement bougé (avec le détail — « 16/11 → 17/11 »), **ce qui disparaît en emportant des coches, à part, avec le nombre d'heures**, et ce qui garde ses décisions.
+
+## Une chose que je porte au mandat suivant
+
+Ta livraison ③b a créé une écriture de plus. Le bloc emploi du temps en compte maintenant **quinze**, pas quatorze — et la nouvelle, celle du rattachement, écrit sans archiver l'état d'avant. Ce n'est pas une dette : l'archivage généralisé **est** le travail de la dernière livraison. Mais le tableau qu'il doit produire comptera quinze lignes.
+
+Tout est au registre, tour 211.
+
+**Tests manuels : aucun.** Rien en ligne.
+
+**Ce qu'il attend de toi : « continuer ».** Dernière livraison de ③ : l'archivage avant écrasement sur les quinze écritures, les captures de bout en bout, l'audit adverse.
+
+**Cahier vivant** — ③ finale, puis ④ à ⑧, puis ton promeus. En attente de toi : le rattrapage par rang · la classe De Gaulle · `CLAUDE.md` périmé · `usage`/`quandPas` du site · la bascule de mode test dans quatre apps · les quatre fichiers hors socle · l'unicité entre familles.
+
+MEMO

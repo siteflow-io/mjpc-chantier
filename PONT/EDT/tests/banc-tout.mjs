@@ -59,8 +59,14 @@ const BANCS = [
       '"natureDepart":"deplacee"']],
   ['banc-archive-decisions-05cbis.mjs', '⑤c-bis · l\'archive des décisions',
     ["heures DANS L'ARCHIVE : 1", 'avant : ["ecartJustifie"']],
+  /* [⑧a] `"dansLArchive":1` est devenu `2`, et le chiffre du rapport ⑤c-ter n'est
+     pas démenti : le hub de ce banc part avec UNE photo, et depuis la livraison ⑧a
+     la photo du prévu se prend toute seule à l'ouverture. Avant le geste il y en a
+     donc deux, l'archive en porte deux et le hub trois. Ce que le banc prouve est
+     inchangé — l'archive porte l'état d'AVANT. Mesuré le 02/09 sur la base ⑦
+     (1 · 2) et sur le candidat ⑧a (2 · 3). Chiffre relevé, jamais ajusté en silence. */
   ['banc-archives-objets-05cter.mjs', '⑤c-ter · les archives des autres objets',
-    ['"dansLArchive":"A"', '"dansLArchive":1', '"dansLArchive":"Trimestre 1"']],
+    ['"dansLArchive":"A"', '"dansLArchive":2', '"dansLArchive":"Trimestre 1"']],
   ['audit-adverse-02.mjs', 'audit adverse ② · les coches',
     ['Aucune heure de cours sur ces dates', '"clesSousAncienNom":1']],
   ['audit-adverse-03.mjs', 'audit adverse ③ · l\'appariement',
@@ -85,7 +91,10 @@ const BANCS = [
   ['banc-alerte-05.mjs', '⑤ · l\'alerte mensuelle',
     ['alerte : "(aucune ligne)"', 'injecté il y a un mois', '"rappelLe":"']],
   ['verif122.mjs', 'le calendrier réel · 122 identifiants',
-    ['poses: 122', "evc: 15, jal: 30, eta: 59, fer: 11, vac: 7", 'collisions: 0']]
+    ['poses: 122', "evc: 15, jal: 30, eta: 59, fer: 11, vac: 7", 'collisions: 0']],
+  /* [⑧a] la photo du prévu — elle se prend toute seule, une fois par échéance */
+  ['banc-photo-auto-08a.mjs', '⑧a · la photo du prévu se prend toute seule',
+    ['TOUT PASSE — 15 repères', '"echeance":"per:UN"', 'écritures photos : []']]
 ];
 
 /* un banc à la fois, avec sa limite de temps ; et on ne laisse jamais un

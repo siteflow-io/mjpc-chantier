@@ -2885,7 +2885,7 @@ function mjpcEcrireRest(url,options,cb){
    (les 3 gestes, le geste conservatoire par app, ce qui ne peut pas arriver).
    RESTAURER LA VERSION PRÉCÉDENTE : docs/MJPC6-restauration.md (convention BUG).
    ═══════════════════════════════════════════════════════════════════════════ */
-var APP_VERSION="8.73.0-⑦";
+var APP_VERSION="8.73.0-⑧a";
 var APP_VERSION_DATE="2026-08-27";
 // ── 11. Coffre : dérivation, chiffrement, empreinte (v1.3.0) ──
 // (Le canon porte deux sections « 8 » — dette de numérotation connue, non corrigée
@@ -17820,7 +17820,10 @@ function edtChemin(objet,annee){return '/site/edt/'+objet+'/'+(annee||EDT_ANNEE)
    COMPATIBILITÉ — un objet à l'ancienne forme (`creneaux` à la racine, sans
    `versions`) est lu comme UNE SEULE version datée du 1er août de l'année
    scolaire. Aucune réinjection n'est exigée : le JSON déjà validé reste bon. */
-function edtDebutAnnee(){ return String(EDT_ANNEE).split('-')[0]+'-08-01'; }
+/* [⑧a] la déclaration de `edtDebutAnnee` qui se trouvait ici était MORTE : une
+   seconde, en L18734, l'écrasait au chargement. Elle disait « le 1er août »,
+   quand la vivante lit d'abord la date déclarée par Paul. Retirée le 02/09 —
+   217 déclarations pour 216 noms avant, 216 pour 216 après, aucune perdue. */
 function edtVersions(){
   var g=EDT.grille; if(!g)return [];
   if(Array.isArray(g.versions)&&g.versions.length){
@@ -17907,7 +17910,7 @@ function edtAmorce(famille,el,classe){
 }
 /* photo : horodatage complet à la seconde, jamais la seule date */
 function edtHorodatage(el){
-  var t=(el&&(el.quand||el.pose))||Date.now();
+  var t=(el&&(el.quand||el.pose||el.prise))||Date.now();   /* [⑧a] une photo ancienne porte au moins sa date de prise */
   return new Date(t).toISOString().replace(/[-:T]/g,'').slice(0,14);
 }
 
@@ -19669,7 +19672,9 @@ function edtOuvrir(){
     edtChargerClasses(function(){
       var noms={}; edtToutesLesCases().forEach(function(c){
         if(c&&c.classeMjpc){ var n=edtNiveauDe(c.classeMjpc); if(n)noms[n]=true; } });
-      edtChargerChapitres(Object.keys(noms),edtPeindre);
+      /* [⑧a] la photo automatique se prend ICI : tout est lu — grille, classes,
+         chapitres — donc `edtProjeter` rend le prévu entier, pas une coquille. */
+      edtChargerChapitres(Object.keys(noms),function(){ edtPeindre(); try{ edtPhotoAuto(); }catch(e){} });
     });
   };
   if(EDT.charge)lancerPeinture(); else edtCharger(lancerPeinture);
@@ -19819,14 +19824,73 @@ function edtCarteClic(nom){
   if(typeof atInfo==='function')atInfo('Profil de la classe '+nom+' \u2014 il arrive au lot suivant.');
 }
 /* la photo du prévu — jamais le mot « figer » : on ne fige pas un prévu */
-function edtPhoto(){
+
+/* [⑧a] LE GESTE COMMUN — à la main ou toute seule, c'est la même photo : l'état
+   du prévu de la semaine en cours, nommé, identifié, archivé avant d'écrire.
+   Plusieurs photos le même jour sont normales : rien n'écrase rien, la liste
+   grandit et chaque photo porte son identifiant horodaté. */
+function edtPhotoPrendre(edtNom,edtEcheance,edtApres){
   var edtAvant=edtPhotoDe('photos');     /* [⑤c-bis] l'état d'avant, avant toute mutation */
-  var lundi=edtLundiCourant(), cel=edtProjeter(lundi,5);
-  var o=EDT.photos&&typeof EDT.photos==='object'?EDT.photos:{annee:EDT_ANNEE,photos:[]};
-  if(!Array.isArray(o.photos))o.photos=[];
-  o.photos.push({prise:edtAujourdhui(),depuis:lundi,cellules:cel});
-  edtEcrireArchive('photos',edtChemin('photos'),edtAvant,o,'Photo du prévu',function(){
-    EDT.photos=o; if(typeof atInfo==='function')atInfo('Photo du prévu prise \u2014 '+Object.keys(cel).length+' cases.');
+  var edtLundi=edtLundiCourant(), edtCel=edtProjeter(edtLundi,5);
+  var edtO=EDT.photos&&typeof EDT.photos==='object'?EDT.photos:{annee:EDT_ANNEE,photos:[]};
+  if(!Array.isArray(edtO.photos))edtO.photos=[];
+  var edtP={prise:edtAujourdhui(),depuis:edtLundi,cellules:edtCel,
+            nom:String(edtNom||''),quand:Date.now()};
+  if(edtEcheance)edtP.echeance=String(edtEcheance);
+  edtO.photos.push(edtP);
+  edtPoserIdsObjet('photos',edtO);       /* [⑧a] objet, donc id — famille `pho:` */
+  edtEcrireArchive('photos',edtChemin('photos'),edtAvant,edtO,'Photo du prévu \u2014 '+edtP.nom,function(){
+    EDT.photos=edtO; if(edtApres)edtApres(edtP);
+  });
+  return edtP;
+}
+/* la photo à la main : elle porte sa date, et le bouton ne bouge pas */
+function edtPhoto(){
+  edtPhotoPrendre(edtJourEnClair(edtAujourdhui()),null,function(edtP){
+    if(typeof atInfo==='function')
+      atInfo('Photo du prévu prise \u2014 '+Object.keys(edtP.cellules||{}).length+' cases.');
+  });
+}
+/* [⑧a] LES ÉCHÉANCES — la rentrée, puis chaque début de période. Elles sont
+   DÉCLARÉES, jamais déduites : la date de l'année d'un côté, le magasin des
+   périodes de l'autre. Aucune période saisie : il reste la rentrée. */
+function edtEcheancesPhoto(){
+  var edtL=[],edtDeb=edtDebutAnnee();
+  if(edtDeb)edtL.push({cle:'annee:'+EDT_ANNEE,nom:'Rentr\u00e9e',date:String(edtDeb)});
+  edtPeriodes().forEach(function(edtPer){
+    if(!edtPer||!edtPer.debut)return;
+    var edtCle=String(edtPer.id||('per:'+edtNormaliser(edtPer.nom||'')));
+    edtL.push({cle:edtCle,nom:String(edtPer.nom||'p\u00e9riode'),date:String(edtPer.debut)});
+  });
+  return edtL.sort(function(a,b){ return String(a.date).localeCompare(String(b.date)); });
+}
+/* LA SEULE ÉCHÉANCE QUI COMPTE : la dernière échue. On ne rattrape pas le passé —
+   ouvrir le site en janvier ne fabrique pas après coup la photo de la rentrée. */
+function edtEcheanceDue(){
+  var edtJour=edtAujourdhui(),edtDue=null;
+  edtEcheancesPhoto().forEach(function(e){ if(String(e.date)<=edtJour)edtDue=e; });
+  return edtDue;
+}
+/* le site sait laquelle il a déjà prise : la photo porte son échéance */
+function edtPhotoFaite(edtCle){
+  var edtL=((EDT.photos||{}).photos)||[];
+  for(var i=0;i<edtL.length;i++){ if(edtL[i]&&edtL[i].echeance===edtCle)return true; }
+  return false;
+}
+/* [⑧a] LA PHOTO SE PREND TOUTE SEULE — au passage d'une échéance, UNE fois.
+   Deux chargements le même jour ne font pas deux photos. Le mode test n'écrit
+   jamais au hub : la classe d'essai n'a rien à faire dans une photo de l'année. */
+function edtPhotoAuto(){
+  if(edtEnEssai())return null;
+  var edtDue=edtEcheanceDue();
+  if(!edtDue)return null;
+  if(edtPhotoFaite(edtDue.cle))return null;
+  if(EDT.photoAutoEmise===edtDue.cle)return null;   /* déjà partie dans cette session */
+  EDT.photoAutoEmise=edtDue.cle;
+  return edtPhotoPrendre(edtDue.nom,edtDue.cle,function(edtP){
+    if(typeof atInfo==='function')
+      atInfo('Photo du pr\u00e9vu prise toute seule \u2014 '+edtP.nom+', '
+        +Object.keys(edtP.cellules||{}).length+' cases.');
   });
 }
 /* [④a] LES CONSIGNES DONNÉES À L'IA, embarquées dans le site comme le fait

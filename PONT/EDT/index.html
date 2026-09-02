@@ -2885,7 +2885,7 @@ function mjpcEcrireRest(url,options,cb){
    (les 3 gestes, le geste conservatoire par app, ce qui ne peut pas arriver).
    RESTAURER LA VERSION PRÉCÉDENTE : docs/MJPC6-restauration.md (convention BUG).
    ═══════════════════════════════════════════════════════════════════════════ */
-var APP_VERSION="8.73.0-⑨a";
+var APP_VERSION="8.73.0-⑨b";
 var APP_VERSION_DATE="2026-08-27";
 // ── 11. Coffre : dérivation, chiffrement, empreinte (v1.3.0) ──
 // (Le canon porte deux sections « 8 » — dette de numérotation connue, non corrigée
@@ -19522,6 +19522,11 @@ function edtChapitreEnCours(nomClasse,fil){
   return null;
 }
 /* la trace d'une heure jouée, cherchée dans TOUS les chapitres du niveau */
+/* [⑨b] LA TRACE D'UNE HEURE — le seul critère qui interdit de la déplacer.
+   Relue à chaque appel : une trace supprimée rend l'heure déplaçable aussitôt. */
+function edtTraceExiste(nomClasse,iso,creneau){
+  return !!edtChercherTrace(nomClasse,iso,creneau);
+}
 function edtChercherTrace(nomClasse,iso,creneau){
   var niv=edtNiveauDe(nomClasse); if(!niv)return null;
   var l=EDT_CHAP[niv]||[],res=null;
@@ -20242,11 +20247,25 @@ function edtCreneauxOu(c,jours){
   }
   return out;
 }
+/* [⑨b] CE QUE CHAQUE DESTINATION PORTE POUR ÊTRE CHERCHÉE : son mois, son numéro
+   de semaine et sa lettre A/B. Le numéro et la lettre sont LUS dans le calendrier
+   injecté (`semaines`), jamais déduits d'une parité — c'est la règle du prompt. */
+function edtSemaineDe(iso){
+  var edtL=(EDT.calendrier&&EDT.calendrier.semaines)||[],edtLu=edtLundiDe(iso);
+  for(var i=0;i<edtL.length;i++) if(edtL[i]&&edtL[i].lundi===edtLu)return edtL[i];
+  return null;
+}
 function edtOptionsOu(l){
   var h='',sem=null;
   l.forEach(function(x){
     if(x.sem!==sem){ if(sem)h+='</optgroup>'; h+='<optgroup label="'+escapeHtml(x.sem)+'">'; sem=x.sem; }
-    h+='<option value="'+escapeHtml(x.v)+(x.ajout?'|+':(x.pris?'|=':''))+'">'+escapeHtml(x.lib)+'</option>';
+    var edtIso=String(x.v).split('|')[0];
+    var edtS=edtSemaineDe(edtIso);
+    var edtMois=EDT_MOIS[Number(String(edtIso).slice(5,7))-1]||'';
+    h+='<option value="'+escapeHtml(x.v)+(x.ajout?'|+':(x.pris?'|=':''))+'"'
+      +' data-mois="'+escapeHtml(edtMois)+'"'
+      +' data-sem="'+(edtS?edtS.num:'')+'"'
+      +' data-ab="'+(edtS?edtS.lettre:'')+'">'+escapeHtml(x.lib)+'</option>';
   });
   return h+(sem?'</optgroup>':'');
 }
@@ -20293,6 +20312,8 @@ function edtPeindreModale(){
   else {
     h+='<p class="edt-p"><b class="edt-or">'+escapeHtml(c.classeMjpc)+'</b></p>';
     if(c.nature==='jouee'){
+      /* [⑨b] le refus est DIT, jamais sec : la case ne se déplace pas, et Paul sait pourquoi */
+      h+='<p class="edt-p edt-mini-t">Elle a laissé sa trace : elle ne se déplace plus.</p>';
       h+='<p class="edt-p">Heure jouée \u2014 '+c.activites+' activité'+(c.activites>1?'s':'')
         +(c.reportees?(', '+c.reportees+' reportée'+(c.reportees>1?'s':'')):'')+'.'
         +(c.clos?' Close.':' Pas encore close.')+'</p>'
@@ -20344,7 +20365,7 @@ function edtPeindreModale(){
       var ou=edtCreneauxOu(c);
       h+='<div class="edt-mo-bloc"><label class="edt-lab">Déplacer cette heure, ou en ajouter une\u2026</label>'
         +'<p class="edt-mini-t">Jusqu\u2019à la fin de l\u2019année. Un « créneau libre » n\u2019est pas un déplacement : c\u2019est une heure de plus, épinglée, qui compte dans la prévision.</p>'
-        +'<input class="edt-sel" id="edt-ou-filtre" placeholder="filtrer par date (ex. 12/05)" oninput="edtFiltrerOu(this.value)">'
+        +'<input class="edt-sel" id="edt-ou-filtre" placeholder="filtrer : 12/5 \u00b7 mai \u00b7 37 \u00b7 A ou B" oninput="edtFiltrerOu(this.value)">'
         +'<select class="edt-sel" id="edt-ou" onchange="if(this.value)edtChoisirOu('+JSON.stringify(cle).replace(/"/g,'&quot;')+',this.value)">'
         +'<option value="">\u2014 choisir parmi '+ou.length+' créneaux \u2014</option>'
         +edtOptionsOu(ou)
@@ -20368,7 +20389,11 @@ function edtChoisirOu(cle,valeur){
    elle est ajoutée là-bas, et elle cesse de compter comme heure perdue ici — pas
    seulement de figurer au rappel. */
 function edtDestinationsPour(nomClasse,iso,creneau){
-  return edtCreneauxOu({classeMjpc:nomClasse,classe:nomClasse,iso:iso,creneau:creneau},120);
+  /* [⑨b] LE PLAFOND DE 120 JOURS EST TOMBÉ. `edtCreneauxOu` s'arrête d'elle-même
+     à `edtFinAnnee()` : le plafond ne servait qu'à couper la liste avant la fin de
+     l'année, ce que le mandat ⑥ §③.1 interdisait. Mesuré avant : la liste du rappel
+     s'arrêtait 120 jours après l'heure perdue. */
+  return edtCreneauxOu({classeMjpc:nomClasse,classe:nomClasse,iso:iso,creneau:creneau});
 }
 function edtReplacerHeure(nomClasse,cle,cible){
   var edtV=((edtDecisions()[nomClasse]||{}).heures||{})[cle]; if(!edtV||!cible)return;
@@ -20451,12 +20476,34 @@ function edtProjeterJour(iso){
   });
   return edtOut;
 }
+/* [⑨b] UN SEUL CHAMP, QUATRE RECHERCHES. Le mandat ⑥ §③.1 demandait le mois, le
+   numéro de semaine et le type A/B ; le filtre par date existait déjà. Quatre champs
+   auraient encombré la modale : un seul les fait tous, et il devine lequel.
+     « 12/05 » ou « 12/5 »  → une date, comme avant
+     « mai », « juin »      → un mois
+     « 37 »                 → le numéro de semaine 37
+     « A » ou « B »         → le type de semaine
+   Tout le reste retombe sur la recherche dans le texte, à l'identique. */
+function edtQuoiChercher(t){
+  if(!t)return null;
+  if(t.indexOf('/')>=0)return {quoi:'texte',v:t};
+  if(/^[ab]$/.test(t))return {quoi:'ab',v:t.toUpperCase()};
+  if(/^s?\d{1,2}$/.test(t))return {quoi:'sem',v:String(t.replace(/^s/,''))};
+  for(var i=0;i<EDT_MOIS.length;i++)
+    if(EDT_MOIS[i]&&EDT_MOIS[i].toLowerCase().indexOf(t)===0)return {quoi:'mois',v:EDT_MOIS[i]};
+  return {quoi:'texte',v:t};
+}
 function edtFiltrerOu(txt){
   var sel=document.getElementById('edt-ou'); if(!sel)return;
   var t=String(txt||'').trim().toLowerCase();
+  var edtQ=edtQuoiChercher(t);
   Array.prototype.forEach.call(sel.querySelectorAll('option'),function(o){
     if(!o.value)return;
-    o.hidden=!!(t&&o.textContent.toLowerCase().indexOf(t)<0);
+    if(!edtQ){ o.hidden=false; return; }
+    if(edtQ.quoi==='ab')        o.hidden=(o.getAttribute('data-ab')!==edtQ.v);
+    else if(edtQ.quoi==='sem')  o.hidden=(o.getAttribute('data-sem')!==edtQ.v);
+    else if(edtQ.quoi==='mois') o.hidden=(o.getAttribute('data-mois')!==edtQ.v);
+    else                        o.hidden=(o.textContent.toLowerCase().indexOf(edtQ.v)<0);
   });
   Array.prototype.forEach.call(sel.querySelectorAll('optgroup'),function(g){
     var vu=false;
@@ -21055,7 +21102,7 @@ function edtRappelAReplacerHtml(nomClasse){
         +' <select class="edt-sel edt-mini" onchange="if(this.value)edtReplacerHeure('
         +JSON.stringify(u.classe).replace(/"/g,'&quot;')+','+JSON.stringify(u.cle).replace(/"/g,'&quot;')
         +',this.value)"><option value="">\u2014 la replacer\u2026 \u2014</option>'
-        +edtOptionsOu(edtDestinationsPour(u.classe,u.iso,u.creneau).slice(0,60))+'</select>'
+        +edtOptionsOu(edtDestinationsPour(u.classe,u.iso,u.creneau))+'</select>'   /* [⑨b] la coupe à 60 entrées est tombée */
         +' <button class="edt-mini" onclick="edtHeureReplacee('+JSON.stringify(u.classe).replace(/"/g,'&quot;')
         +','+JSON.stringify(u.cle).replace(/"/g,'&quot;')+')">déjà replacée ailleurs</button>'
         +' <button class="edt-mini" onclick="edtPerteSeche('+JSON.stringify(u.classe).replace(/"/g,'&quot;')
@@ -21145,6 +21192,17 @@ function edtGlisserDebut(ev,cle){
      jouée a eu lieu : on ne la déplace pas (mesuré à la matrice actions ×
      état, où elle se laissait glisser). Une heure sortie de la prévision, une
      classe non importée, un groupe partagé ne portent aucune séance. */
+  /* [⑨b] LE REFUS PORTE SUR LA TRACE, ET IL EST NOMMÉ. Une heure du jour NON
+     ENCORE LANCÉE se déplace comme les autres ; c'est la trace qui arrête le
+     geste, jamais la date. Et une trace vide supprimée la rend déplaçable :
+     `edtTraceExiste` relit la trace à chaque fois, elle ne retient rien. */
+  if(c&&c.classeMjpc&&edtTraceExiste(c.classeMjpc,c.iso,c.creneau)){
+    if(typeof atInfo==='function')
+      atInfo('Cette heure a été lancée le '+edtJourEnClair(c.iso)+' \u2014 elle a laissé sa trace, '
+        +'et on ne déplace pas une heure qui a eu lieu. Les heures de cette journée qui '
+        +'n\u2019ont pas encore été lancées, elles, se déplacent.');
+    return;
+  }
   if(!c||c.nature!=='prevu')return;
   EDT_GLISSE={cle:cle,x0:ev.clientX,y0:ev.clientY,actif:false};
   var bouge=function(e2){

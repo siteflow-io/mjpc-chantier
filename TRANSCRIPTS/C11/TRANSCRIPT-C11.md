@@ -3652,3 +3652,61 @@ Et il a raison sur les deux sections qui n'avaient pas suivi ma correction préc
 **Cahier vivant** — ⑨ en trois temps, puis ton promeus.
 
 MEMO
+
+---
+
+## TOUR 73 — Paul
+
+Texte mot pour mot :
+
+> ça fait quand même deux relectures d'un mandat fait par une conscience, qui était censé être correct dès le départ.
+
+---
+
+## TOUR 73 — Claude (conscience n°11)
+
+Registre : `n°11 · 51`.
+
+Réponse mot pour mot :
+
+**Tu as raison. J'ai classé les onze corrections par cause — il y en a deux, et une aggravante.**
+
+## Cause A : j'ai cherché des noms au lieu de lire — sept des onze
+
+« `filtreMois` à zéro, donc aucune recherche » : elle existait sous un autre nom. « `jamaisReplacee` à zéro, donc rien ne pose le motif » : deux endroits le posaient. « La liste s'arrête à 120 » : sans regarder **qui appelle** la fonction, donc sans voir qu'il y en avait deux et que l'une allait déjà bien. « figer, 24 occurrences » : sans regarder que c'étaient les classes de ton plein écran.
+
+**Une mesure à zéro ne prouve pas une absence.** C'est ta règle du 1er août — « un inventaire se fait en lisant le corps des fonctions, jamais en comptant des motifs » — et je l'ai violée **dans un document fait pour être exécuté**.
+
+## Cause B : je n'ai pas relu le mandat contre lui-même — quatre des onze
+
+La contradiction sur les libellés, le paragraphe resté à un drapeau, le mauvais « avant », les chiffres non repris : **toutes nées après une correction**. J'ai corrigé un passage sans propager aux autres. **Un mandat n'est pas une liste de points, c'est un document qui doit tenir ensemble.**
+
+## L'aggravante, et c'est la pire
+
+**La règle existait déjà** : un mandat se relit ligne à ligne avant d'être lancé.
+
+**Je l'ai fait pour le mandat ①bis** — et j'y avais trouvé deux trous que j'ai bouchés moi-même, dont un qui aurait fait déborder l'exécutant sur une autre livraison. Je te l'avais dit à l'époque.
+
+**Puis j'ai abandonné cette passe.** La règle n'a pas manqué : c'est son application qui a manqué.
+
+## Ce que je change, et qui ne se délègue pas
+
+**Aucune affirmation chiffrée dans un mandat sans une lecture.** Une recherche sert à trouver où lire, jamais à conclure. Toute phrase « X est absent » exige d'avoir lu la fonction et nommé ses appelants.
+
+**Relecture du mandat contre lui-même avant dépôt** : chaque exigence confrontée à « ce qui ne doit pas bouger », chaque correction propagée partout où elle porte.
+
+**Ces deux passes précèdent le dépôt. Elles ne se remplacent pas par l'épreuve de l'exécutant.**
+
+## Sur l'épreuve par l'exécutant
+
+Elle reste utile — il a le code sous les yeux, et elle a évité deux casses et un blocage. **Mais un filet n'est pas une méthode. Il aurait dû n'avoir rien à trouver.**
+
+Le coût réel, sans le minimiser : **deux allers-retours pour toi, et un mandat déposé trois fois au lieu d'une.**
+
+C'est au registre, `n°11 · 51`.
+
+**Tests manuels : aucun.**
+
+**Cahier vivant** — ⑨-a chez l'exécutant, puis ⑨-b, ⑨, puis ton promeus.
+
+MEMO

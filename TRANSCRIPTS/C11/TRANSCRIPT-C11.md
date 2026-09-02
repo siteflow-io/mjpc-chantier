@@ -3772,3 +3772,59 @@ Tu corriges si tu n'es pas d'accord. Sinon le travail continue.
 **Cahier vivant** — ⑨-a, ⑨-b, ⑨, puis ton promeus.
 
 MEMO
+
+---
+
+## TOUR 75 — Paul
+
+Texte mot pour mot :
+
+> livré
+
+---
+
+## TOUR 75 — Claude (conscience n°11)
+
+Audit joué : candidat 1 754 915 o / `2134aab3…` · non-régression (222/222) · **les neuf captures
+présentes** · **deux d'entre elles téléchargées et REGARDÉES par la conscience** · `rapport-2ter-09a.md`
+**en 404**. Registre : `n°11 · 53`.
+
+Réponse mot pour mot :
+
+**Verdict : ça va sur ce que j'ai pu voir — et cette fois j'ai regardé les écrans moi-même au lieu de croire un rapport.**
+
+## Le trou est fermé, je l'ai vu
+
+J'ai téléchargé la capture et je l'ai ouverte. Sur une case **qui porte déjà une décision** — on voit « ↶ Annuler cette décision » — **« Banaliser cette heure » est bien là**, et l'annonce s'affiche :
+
+> **Cette heure est déjà comptée perdue — événement du calendrier — Séjour Verdun 3e.**
+> **La banaliser remplacera ce motif. L'heure ne sera comptée qu'une fois, et son statut deviendra modifiable.**
+> [ Annuler ] [ **Remplacer le motif** ]
+
+C'est exactement le texte que le banc prouvait « par appel de fonction ». **Il est maintenant atteignable par le clic.**
+
+J'ai aussi regardé celle des trois issues : elles y sont, avec le prix dit avant — « Échanger : personne ne perd rien » / « Prendre le créneau : 4E BANKSY perd son heure, elle devient une heure à replacer ».
+
+**Tes neuf captures manquantes sont là.** ⑤ passe de 0 à 4, ⑥ de 0 à 5.
+
+## Une décision qu'il a prise seul, et qui est juste
+
+Il a factorisé le bloc, et il **refuse la banalisation sur une heure prise dans un déplacement**, avec sa raison écrite : ça effacerait le lien avec son autre bout et laisserait une heure épinglée orpheline à l'autre extrémité.
+
+**Je n'y avais pas pensé. Son raisonnement tient.**
+
+## Ce qui manque
+
+**Son rapport n'est pas au sas** — `rapport-2ter-09a.md` est en 404. Il a poussé le code et les captures, pas le rapport.
+
+Je ne peux donc pas vérifier **l'audit adverse du lot ⑥** que le mandat exige, ni ses autres mesures. **Mon verdict ne porte que sur ce qui est visible.**
+
+**Ce que tu lui colles :**
+
+> Ton rapport `rapport-2ter-09a.md` **n'est pas au sas** (404). Le code et les neuf captures y sont, et je les ai regardées : le geste est atteignable, l'annonce s'affiche. **Pousse ton rapport**, avec l'audit adverse du lot ⑥ (§①.2, les sept cas) et le journal des clics. Puis STOP.
+
+**Tests manuels : aucun.** Rien en production.
+
+**Cahier vivant** — le rapport ⑨-a, puis ⑨-b, ⑨, puis ton promeus.
+
+MEMO

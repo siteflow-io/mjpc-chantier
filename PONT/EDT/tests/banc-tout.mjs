@@ -112,6 +112,41 @@ const jouer = (fichier) => new Promise(res => {
     menage.on('error', () => res({ code, sortie, ms: Date.now() - t0 })); });
 });
 
+/* [⑧] LE PLAN DE TRAVAIL — « les bancs rejouables d'une commande ».
+   Mesuré le 02/09 : aucun banc ne tournait depuis le dépôt. Ils lisent leurs
+   données sous des noms plats (`hub-classes.json`, `calendrier-2026-2027.json`)
+   qui n'existent nulle part au sas, où les vrais fichiers sont rangés en
+   `tests/hub/` et `json/` ; et plusieurs écrivent leurs captures dans `tests/…`
+   alors qu'ils sont lancés DEPUIS `tests/`. Il fallait un plan de travail monté
+   à la main, que personne n'avait écrit. Il se monte ici, tout seul, et il DIT
+   ce qu'il fait — rien n'est copié en silence. Aucun fichier du dépôt n'est
+   déplacé ni renommé : on ne fait que poser les noms que les bancs demandent. */
+const PLAN = [
+  ['hub/classes.json', 'hub-classes.json'],
+  ['hub/site_3e.json', 'hub-site3e.json'],
+  ['hub/site_config.json', 'hub-siteconfig.json'],
+  ['../json/calendrier-2026-2027.json', 'calendrier-2026-2027.json'],
+  ['../json/creneaux-2026-2027.json', 'creneaux-2026-2027.json'],
+  ['../json/grille-2026-2027.json', 'grille-2026-2027.json']
+];
+const preparer = () => {
+  const dits = [];
+  for (const [source, nom] of PLAN) {
+    if (fs.existsSync(path.resolve(nom))) continue;
+    if (!fs.existsSync(path.resolve(source))) { dits.push('MANQUE : ' + source); continue; }
+    fs.copyFileSync(path.resolve(source), path.resolve(nom));
+    dits.push(nom + ' \u2190 ' + source);
+  }
+  /* les captures : un banc lancé depuis `tests/` qui écrit dans `tests/x.png`
+     a besoin que `tests/tests` mène ici. Un lien, jamais une copie. */
+  if (!fs.existsSync(path.resolve('tests'))) {
+    try { fs.symlinkSync('.', path.resolve('tests'), 'dir'); dits.push('tests/ \u2192 . (pour les captures)'); }
+    catch (e) { dits.push('lien tests/ impossible : ' + e.message); }
+  }
+  if (dits.length) console.log('plan de travail : ' + dits.join(' \u00b7 ') + '\n');
+};
+preparer();
+
 const absents = BANCS.filter(b => !fs.existsSync(path.resolve(b[0]))).map(b => b[0]);
 if (absents.length) { console.log('BANCS INTROUVABLES : ' + absents.join(', ')); process.exit(1); }
 

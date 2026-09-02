@@ -19879,7 +19879,11 @@ function edtPhotoFaite(edtCle){
 }
 /* [⑧a] LA PHOTO SE PREND TOUTE SEULE — au passage d'une échéance, UNE fois.
    Deux chargements le même jour ne font pas deux photos. Le mode test n'écrit
-   jamais au hub : la classe d'essai n'a rien à faire dans une photo de l'année. */
+   jamais au hub : la classe d'essai n'a rien à faire dans une photo de l'année.
+   ELLE EST SILENCIEUSE : `atInfo` n'est pas un bandeau, c'est une MODALE avec un
+   bouton « Compris ». Mesuré au banc ②a : elle recouvrait l'emploi du temps à
+   l'ouverture et mangeait le premier clic de Paul. Une photo qu'il n'a pas
+   demandée ne lui coupe pas la parole ; celle qu'il prend à la main, si. */
 function edtPhotoAuto(){
   if(edtEnEssai())return null;
   var edtDue=edtEcheanceDue();
@@ -19887,11 +19891,7 @@ function edtPhotoAuto(){
   if(edtPhotoFaite(edtDue.cle))return null;
   if(EDT.photoAutoEmise===edtDue.cle)return null;   /* déjà partie dans cette session */
   EDT.photoAutoEmise=edtDue.cle;
-  return edtPhotoPrendre(edtDue.nom,edtDue.cle,function(edtP){
-    if(typeof atInfo==='function')
-      atInfo('Photo du pr\u00e9vu prise toute seule \u2014 '+edtP.nom+', '
-        +Object.keys(edtP.cellules||{}).length+' cases.');
-  });
+  return edtPhotoPrendre(edtDue.nom,edtDue.cle,null);
 }
 /* [④a] LES CONSIGNES DONNÉES À L'IA, embarquées dans le site comme le fait
    déjà l'atelier (ATELIER_PROMPT_SEED) : elles doivent partir AVEC le JSON en

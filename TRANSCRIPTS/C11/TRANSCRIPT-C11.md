@@ -3286,3 +3286,63 @@ derrière elle), puis le mandat entier dans un bloc copiable, puis :
 de chapitre.
 
 MEMO
+
+---
+
+## TOUR 66 — Paul
+
+Texte mot pour mot :
+
+> j'ai lancé un nouvel exécutant pour limiter la dérive. VOilà sa réponse à ton mandat: [rapport de prise de poste de l'exécutant ⑧ — service vert, candidat conforme au mandat, deux trous signalés dans le mandat de la conscience (`edtDebutAnnee` déclarée deux fois ; « figer à zéro » qui enverrait renommer des classes CSS), `banc-tout.mjs` et `verif_edt.py` introuvables faute de jeton, et une question sur son rôle]
+
+---
+
+## TOUR 66 — Claude (conscience n°11)
+
+Mesures : **`edtDebutAnnee` déclarée deux fois confirmée** (L17823 morte, L18734 vivante, aucune
+balise `<script>` entre elles ; **217 déclarations pour 216 noms distincts**) · **les 24
+occurrences de `fig*` relevées une par une : aucune dans un texte affiché de l'EDT** — classes
+CSS `edt-fige`/`at-corps-fige`, commentaires, et une phrase du canal d'annonces. Mandat corrigé
+et redéposé (9 836 → 12 222 o, commit `017493a3`). Registre : `n°11 · 44`.
+
+Réponse mot pour mot :
+
+**Il a raison sur les deux points. J'ai vérifié moi-même, et j'ai corrigé le mandat.**
+
+## Son premier trou : il est réel, et il est piégeux
+
+`edtDebutAnnee` **est déclarée deux fois** — lignes 17823 et 18734, sans balise de script entre les deux. **La seconde écrase la première.** La morte dit « l'année commence le 1er août », la vivante lit d'abord la date que tu as déclarée.
+
+Et il voit plus loin que moi : **mon compte de contrôle « 217 fonctions » comptait deux fois le même nom.** Il y a **217 déclarations pour 216 noms**. Un exécutant qui nettoie le doublon serait tombé à 216 et aurait cru avoir cassé quelque chose.
+
+**Leçon pour moi, et je l'ai écrite au registre** : je répète « 217 fonctions » à chaque audit depuis le début du lot **sans avoir jamais vérifié que les noms étaient distincts**. Un compteur d'occurrences peut cacher un doublon pendant tout un lot.
+
+## Son second trou : il m'a évité de casser ton plein écran
+
+J'ai écrit « figer : zéro occurrence, compte avant, compte après ». **Les 24 occurrences sont toutes légitimes** — je les ai relues une par une : ce sont les classes `edt-fige` et `at-corps-fige`, **celles qui masquent tes boutons quand l'emploi du temps prend tout l'écran**, des commentaires, et une phrase du canal d'annonces.
+
+Ta règle est **déjà tenue** : le code porte même le commentaire « la photo du prévu — jamais le mot "figer" : on ne fige pas un prévu ».
+
+Écrit comme je l'avais fait, **il serait allé renommer ces classes et casser ton plein écran.** Corrigé : il ne renomme rien.
+
+## Sa question
+
+Il est l'**exécutant**. Un mandat se corrige par la conscience, pas par lui — c'est fait, et c'est ce qui protège du mélange. Il n'a rien à me livrer : il exécute.
+
+## Ce que tu lui colles
+
+> **Le mandat ⑧ est corrigé et redéposé au sas** — `PONT/EDT/MANDAT-LOT-2ter-08.md`, 12 222 o, commit `017493a3`. **Relis-le : trois passages ont changé.**
+>
+> **1. Une section ⓪ter neuve** : `edtDebutAnnee` est déclarée deux fois (L17823 morte, L18734 vivante). **Retire la morte** et publie les deux comptes : **217 déclarations / 216 noms avant, 216 / 216 après — aucune fonction perdue.** Et attention : ta photo automatique se déclenche sur les dates de début, c'est la version **vivante** qui fait foi.
+>
+> **2. « figer »** : tu ne renommes **rien**. Les 24 occurrences sont des classes CSS et des commentaires, et `edt-fige` porte le plein écran. Ta seule obligation : ne pas introduire le mot dans un texte neuf.
+>
+> **3. Les outils que tu ne trouvais pas** : `PONT/EDT/tests/banc-tout.mjs` et `PONT/EDT/outils/verif_edt.py`. En brut : `https://raw.githubusercontent.com/siteflow-io/mjpc-chantier/main/PONT/EDT/tests/banc-tout.mjs` et `…/PONT/EDT/outils/verif_edt.py`. Sans jeton, l'API te refusera la liste des fichiers après quelques appels — passe par ces chemins directs.
+>
+> Le reste du mandat est inchangé. Tu peux commencer ⑧-a.
+
+**Tests manuels : aucun.** Rien n'a bougé, ni au sas ni en production.
+
+**Cahier vivant** — ⑧-a puis ⑧, **et c'est la fin du lot** ; puis ton promeus.
+
+MEMO

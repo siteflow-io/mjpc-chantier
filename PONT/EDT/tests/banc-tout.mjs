@@ -74,6 +74,8 @@ const BANCS = [
     ['au bandeau : "1 heure à replacer"', 'identiques : true', '"motif":"priseAutreClasse"']],
   ['banc-destinations-06c.mjs', '⑥c · la liste élargie et le replacement réel',
     ['— pris par 4E BANKSY', 'TOTAL HEURES PERDUES 4E BANKSY : 1 → 0', 'télescopages après la pose : []', 'mettrait deux classes au même moment']],
+  ['banc-dates-06.mjs', "⑥ · les dates de l'année",
+    ['plus de treize mois', 'un mois de marge', '"heuresAuDela":2']],
   ['banc-alerte-05.mjs', '⑤ · l\'alerte mensuelle',
     ['alerte : "(aucune ligne)"', 'injecté il y a un mois', '"rappelLe":"']],
   ['verif122.mjs', 'le calendrier réel · 122 identifiants',

@@ -3048,3 +3048,31 @@ Tout est au registre, `n°11 · 40`.
 **Cahier vivant** — mandat ⑦ à écrire, puis ⑧, puis ton promeus, puis l'injection de chapitre.
 
 MEMO
+
+---
+
+## TOUR 60 — Paul
+
+Texte mot pour mot :
+
+> on continue
+
+---
+
+## TOUR 60 — Claude (conscience n°11)
+
+Mesures avant rédaction : §⑬ du mandat v2 lu en entier · **les quatre maquettes validées
+vérifiées présentes au sas** (HTTP 200 chacune) · `edtPeindreAnnee` existe déjà et
+`edtEvenementJustifie` n'a qu'elle pour appelant · `edtJourSansCours` (6 occurrences) ·
+le calendrier réel compté : **52 semaines, 7 vacances, 11 fériés, 30 jalons, 59 événements
+d'établissement, 15 de classe**. Mandat déposé : `PONT/EDT/MANDAT-LOT-2ter-07.md`.
+
+Réponse mot pour mot : chapeau (la méthode imposée, maquette avant code), puis le mandat
+entier dans un bloc copiable, puis :
+
+**Tests manuels : aucun.** Rien n'a bougé.
+
+**Cahier vivant** — ⑦-a le rendu statique puis **arrêt pour que tu compares**, ⑦-b la vue,
+⑦ les pastilles ; puis ⑧, puis ton promeus, puis l'injection de chapitre.
+
+MEMO

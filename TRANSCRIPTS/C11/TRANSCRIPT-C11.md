@@ -3130,3 +3130,49 @@ Tout est au registre, `n°11 · 41`.
 **Cahier vivant** — ton avis sur le rendu, puis ⑦-b la vue dans le site, puis ⑦, puis ⑧, puis ton promeus.
 
 MEMO
+
+---
+
+## TOUR 62 — Paul
+
+Texte mot pour mot :
+
+> T-7a-annee.html donne moi l'adresse url directe. pareil pour les captures
+
+---
+
+## TOUR 62 — Claude (conscience n°11)
+
+Mesure avant réponse : `raw.githubusercontent` sert le `.html` en **`text/plain`** (Chrome
+afficherait le code, pas la page) et les `.png` en **`image/png`** (ils s'affichent) · le sas
+**n'est pas publié en GitHub Pages** (403).
+
+Réponse mot pour mot :
+
+**Les captures — elles s'ouvrent directement, j'ai vérifié le type renvoyé :**
+
+https://raw.githubusercontent.com/siteflow-io/mjpc-chantier/main/PONT/EDT/tests/T-7a-annee-dezoome.png
+
+https://raw.githubusercontent.com/siteflow-io/mjpc-chantier/main/PONT/EDT/tests/T-7a-annee-zoome.png
+
+https://raw.githubusercontent.com/siteflow-io/mjpc-chantier/main/PONT/EDT/tests/T-7a-annee-a-cheval.png
+
+**Le HTML, en revanche, ne s'ouvre pas comme une page.** J'ai mesuré : GitHub le renvoie en `text/plain`, donc Chrome t'afficherait **le code source**, pas la vue. Et le sas n'est pas publié en Pages — j'ai essayé, 403.
+
+**La voie sûre, en deux clics :**
+
+https://github.com/siteflow-io/mjpc-chantier/blob/main/PONT/EDT/T-7a-annee.html
+
+Sur cette page, bouton **« Download raw file »** (l'icône de téléchargement, en haut à droite du fichier). Puis tu ouvres le fichier téléchargé dans Chrome — il est autonome, ton calendrier est dedans, le Ctrl+molette marchera.
+
+**Si tu veux essayer sans télécharger**, ce lien passe par un service tiers qui force le rendu :
+
+https://htmlpreview.github.io/?https://raw.githubusercontent.com/siteflow-io/mjpc-chantier/main/PONT/EDT/T-7a-annee.html
+
+Je ne l'ai pas testé — je n'ai pas accès à ce domaine — donc je ne te garantis pas qu'il marche. Le téléchargement, lui, est sûr.
+
+**Tests manuels : les trois captures ci-dessus, et le fichier téléchargé dans Chrome.**
+
+**Cahier vivant** — ton avis sur le rendu, puis ⑦-b, ⑦, ⑧, puis ton promeus.
+
+MEMO

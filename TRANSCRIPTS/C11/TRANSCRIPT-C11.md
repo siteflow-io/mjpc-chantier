@@ -3076,3 +3076,57 @@ entier dans un bloc copiable, puis :
 ⑦ les pastilles ; puis ⑧, puis ton promeus, puis l'injection de chapitre.
 
 MEMO
+
+---
+
+## TOUR 61 — Paul
+
+Texte mot pour mot :
+
+> livré
+
+---
+
+## TOUR 61 — Claude (conscience n°11)
+
+Audit joué : **`index.html` vérifié inchangé** (md5 `966eaafd…`) · livrables listés au sas ·
+rapport lu · comptes du JSON vérifiés (59/15/30/11/7) · **tentative de compter les bandeaux
+dans le fichier source : 0, parce que le rendu se construit en JavaScript — déclaré**.
+Registre : `n°11 · 41`.
+
+Réponse mot pour mot :
+
+**La méthode a été tenue à la lettre, et maintenant c'est à toi de regarder.**
+
+## Ce que j'ai vérifié
+
+**`index.html` n'a pas bougé d'un octet.** C'était la condition, elle est respectée : il n'a écrit aucune ligne dans ton site avant que tu voies le rendu.
+
+Les chiffres qu'il annonce à l'écran correspondent à ton vrai calendrier : 59 événements d'établissement, 15 de classe, 30 jalons, 11 fériés, 7 périodes de vacances — je les ai recomptés dans le JSON.
+
+**Ce que je n'ai pas pu vérifier, et je te le dis** : les bandeaux n'existent pas dans le fichier — la page se construit au chargement. Pour les compter, il faudrait l'ouvrir dans un navigateur, ce que je ne peux pas faire ici. **Les 104 bandeaux annoncés reposent sur sa mesure, pas sur la mienne.**
+
+## Une honnêteté de sa part qui mérite d'être dite
+
+Il a mesuré que **ton calendrier ne contient aucun événement à cheval sur deux mois** — zéro sur cent quatre. Plutôt que d'affirmer que ce cas fonctionne, il a fabriqué un événement de démonstration du 29 octobre au 3 novembre et l'a capturé. **Il ne prouve pas sur une donnée qui n'existe pas.**
+
+## À toi de comparer
+
+Trois captures et le rendu, au sas :
+
+- `PONT/EDT/tests/T-7a-annee-dezoome.png` — l'année entière sur une page
+- `PONT/EDT/tests/T-7a-annee-zoome.png` — les libellés lisibles
+- `PONT/EDT/tests/T-7a-annee-a-cheval.png` — le cas de démonstration
+- `PONT/EDT/T-7a-annee.html` — **le mieux : télécharge-le et ouvre-le dans Chrome.** Il est autonome, avec ton vrai calendrier dedans. Tu pourras zoomer au Ctrl+molette et survoler les bandeaux.
+
+Compare aux quatre maquettes que tu avais validées, et dis-lui « continuer » — ou ce qui ne va pas.
+
+**Ce qu'il déclare comme écarts**, pour que tu regardes avec ça en tête : les hauteurs de bandeau sont calculées après peinture, pas posées en dur ; les pastilles affichent des états **fictifs** (un fichier statique n'a pas de hub) ; les vacances colorent aussi les week-ends ; et le zoom a **deux états**, pas un réglage continu.
+
+Tout est au registre, `n°11 · 41`.
+
+**Tests manuels : celui-ci est pour toi** — ouvrir `T-7a-annee.html` dans Chrome, comparer aux quatre maquettes, zoomer au Ctrl+molette.
+
+**Cahier vivant** — ton avis sur le rendu, puis ⑦-b la vue dans le site, puis ⑦, puis ⑧, puis ton promeus.
+
+MEMO

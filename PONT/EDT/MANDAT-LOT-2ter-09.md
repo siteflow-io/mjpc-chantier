@@ -30,6 +30,18 @@
 **⑥ LA PHOTO AUTOMATIQUE N'EST PAS RETENTÉE APRÈS UN ÉCHEC — ET LE REMÈDE DEMANDE DEUX DRAPEAUX.** Mesuré, L19892-19893 : `EDT.photoAutoEmise` est posé **avant** l'écriture ; un échec perd l'échéance pour la session.
 **Correction après épreuve du mandat — le remède n'est pas de déplacer une ligne.** Mesuré : **`edtEcrireArchive` n'a aucun rappel d'échec** — son `apres` n'est appelé que dans le succès, et un archivage raté n'appelle que `perdu()`. On ne peut donc poser le drapeau **que dans `apres`**. **Mais alors, entre l'émission et le retour du hub, deux ouvertures rapprochées feraient partir DEUX photos.** Il faut **deux drapeaux** : un « **en cours** », posé à l'émission et levé au retour, qui empêche le doublon ; un « **faite** », posé **seulement au succès**, qui empêche la reprise inutile. **Un échec laisse l'échéance due.**
 
+## ⓪quater UNE SEPTIÈME CHOSE, TROUVÉE PAR L'AUDIT ADVERSE DE ⑨-a — elle bloque aussi
+
+**Ton propre audit adverse du lot ⑥ l'a trouvée et tu l'as déclarée** : **deux gestes concurrents sur la même case donnent 2 écritures, 0 archive, et le journal ne garde que le second.**
+
+**Pourquoi ça bloque** : l'archive et le journal sont **le filet de Paul** — c'est ce que ↶ Annuler relit pour restaurer. Deux gestes concurrents les font sauter tous les deux. Un double-clic un peu rapide, deux onglets ouverts, et **le geste précédent devient irrécupérable**. Paul a tranché : *« pas de promotion avec dettes »*.
+
+**Ce qu'on attend** : **un verrou par clé** — un geste en cours sur une heure empêche le second de partir, ou le fait attendre. **Le patron existe déjà dans le site** : `EDT.miseANiveauEnCours`, posé en livraison ①bis pour empêcher un double chargement. Reprends-le, ne l'invente pas.
+
+**Preuve** : deux gestes lancés sur la même case → **une seule écriture, une archive, et le journal porte l'état d'avant du premier**. Et le second, s'il est refusé, **le dit à Paul** — jamais en silence.
+
+**Et ce que tu n'as pas pu mesurer, dis-le à nouveau** : le comportement **sur un magasin déjà rempli, en conditions réelles de réseau**. Si tu ne peux pas le reproduire, déclare-le — ne l'affirme pas.
+
 ## ⓪bis CE QUI NE BLOQUE PAS — ne le traite pas
 
 - **La passe de simplification des textes affichés** : **Paul l'a lui-même mise en livraison à part** le 01/09. Hors de ce mandat.

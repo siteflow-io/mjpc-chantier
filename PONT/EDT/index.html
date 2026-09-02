@@ -2885,7 +2885,7 @@ function mjpcEcrireRest(url,options,cb){
    (les 3 gestes, le geste conservatoire par app, ce qui ne peut pas arriver).
    RESTAURER LA VERSION PRÉCÉDENTE : docs/MJPC6-restauration.md (convention BUG).
    ═══════════════════════════════════════════════════════════════════════════ */
-var APP_VERSION="8.73.0-⑦b";
+var APP_VERSION="8.73.0-⑦";
 var APP_VERSION_DATE="2026-08-27";
 // ── 11. Coffre : dérivation, chiffrement, empreinte (v1.3.0) ──
 // (Le canon porte deux sections « 8 » — dette de numérotation connue, non corrigée
@@ -20646,8 +20646,15 @@ function edtPeindreAnnee(){
     }
     h+='</div></div>';
   });
+  /* [⑦] une classe non appariée n'a pas de pastille — et le site le DIT */
+  var edtSansNom={};
+  edtCasesCourantes().forEach(function(c){ if(c&&c.mjpc!==false&&!c.classeMjpc&&c.classe)edtSansNom[c.classe]=true; });
+  var edtNb=Object.keys(edtSansNom).length;
   h+='</div><div class="edt-mini-t">'+edtCompte.etab+' événements d\u2019établissement · '
-    +edtCompte.classe+' de classe · '+edtCompte.jalon+' jalons · Ctrl + molette pour zoomer</div>';
+    +edtCompte.classe+' de classe · '+edtCompte.jalon+' jalons · Ctrl + molette pour zoomer'
+    +(edtNb?(' · '+edtNb+' classe'+(edtNb>1?'s':'')+' de ta grille '+(edtNb>1?'ne sont':'n\u2019est')
+      +' pas encore appariée'+(edtNb>1?'s':'')+' : '+escapeHtml(Object.keys(edtSansNom).join(', '))
+      +' — pas de pastille pour '+(edtNb>1?'elles':'elle')):'')+'</div>';
   e.innerHTML=h;
   edtAnneeHauteurs();
 }

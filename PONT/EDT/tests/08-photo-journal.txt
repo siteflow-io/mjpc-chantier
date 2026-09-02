@@ -1,0 +1,24 @@
+══ PARCOURS A — l'échéance « Trimestre 1 » a déjà sa photo ══
+   AVANT — le hub porte 1 photo :
+      · pho:20260901083000 — « Trimestre 1 » — échéance per:UN — prise le 2026-09-01, semaine du 2026-08-31, 0 cases
+   APRÈS l'arrivée par clics — le hub porte 1 photo :
+      · pho:20260901083000 — « Trimestre 1 » — échéance per:UN — prise le 2026-09-01, semaine du 2026-08-31, 0 cases
+   écritures photos pendant l'arrivée : ["/site/edt/photos/2026-2027"]
+
+══ PARCOURS B — même parcours, l'échéance n'a pas sa photo ══
+   AVANT — le hub porte 0 photo.
+   APRÈS l'arrivée par clics — le hub porte 1 photo :
+      · pho:20260902110740 — « Trimestre 1 » — échéance per:UN — prise le 2026-09-02, semaine du 2026-08-31, 26 cases
+   modale ouverte par-dessus l'écran : null
+
+══ LE BOUTON « 📷 Photo du prévu » — clic réel ══
+   bouton trouvé : {"texte":"📷 Photo du prévu","x":1071,"y":25}
+   ce que le site dit : "Photo du prévu prise — 26 cases. | Compris"
+   APRÈS deux clics — le hub porte 3 photos :
+      · pho:20260902110740 — « Trimestre 1 » — échéance per:UN — prise le 2026-09-02, semaine du 2026-08-31, 26 cases
+      · pho:20260902110745 — « mercredi 2 septembre » — à la main — prise le 2026-09-02, semaine du 2026-08-31, 26 cases
+      · pho:20260902110749 — « mercredi 2 septembre » — à la main — prise le 2026-09-02, semaine du 2026-08-31, 26 cases
+   identifiants tous distincts : true
+
+══ L'ARCHIVE ÉCRITE AVANT LA DERNIÈRE PHOTO ══
+   {"chemin":"/site/edt/photos/2026-2027","photos":[{"id":"pho:20260902110740","nom":"Trimestre 1"},{"id":"pho:20260902110745","nom":"mercredi 2 septembre"}]}

@@ -3258,3 +3258,31 @@ Tout est au registre, `n°11 · 43`.
 **Cahier vivant** — mandat ⑧ à écrire, puis ton promeus, puis l'injection de chapitre.
 
 MEMO
+
+---
+
+## TOUR 65 — Paul
+
+Texte mot pour mot :
+
+> on continue
+
+---
+
+## TOUR 65 — Claude (conscience n°11)
+
+Mesures avant rédaction : §⑭ et la découpe §⑱ du mandat v2 lus · **`edtPhoto` lue : elle est
+déjà propre (photo de l'avant, archive) mais n'a QU'UN SEUL appelant — le bouton de la vue
+semaine (L21018)** · la matrice mentionnée trois fois dans le code (L15857, L20252, L21063) ·
+**`SEQUENCE-TEST-PAUL.md` existe au sas** (HTTP 200) · famille `pho:` déjà déclarée.
+Mandat déposé : `PONT/EDT/MANDAT-LOT-2ter-08.md`.
+
+Réponse mot pour mot : chapeau (le manque mesuré, ce que la dernière livraison doit laisser
+derrière elle), puis le mandat entier dans un bloc copiable, puis :
+
+**Tests manuels : aucun.** Rien n'a bougé.
+
+**Cahier vivant** — ⑧-a puis ⑧, **et c'est la fin du lot** ; puis ton promeus, puis l'injection
+de chapitre.
+
+MEMO

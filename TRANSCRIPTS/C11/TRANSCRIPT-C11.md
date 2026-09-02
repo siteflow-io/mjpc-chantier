@@ -3597,3 +3597,58 @@ C'est **moi** qui corrige, pas lui — un mandat se corrige par la conscience. C
 **Cahier vivant** — ⑨ en trois temps, puis ton promeus.
 
 MEMO
+
+---
+
+## TOUR 72 — Paul
+
+Texte mot pour mot :
+
+> LA CONSCIENCE N'A PAS DÉRIVÉ. Le mandat corrigé tient. [seconde épreuve de l'exécutant : une contradiction interne §⓪⑤ / §② sur `EDT_MOTIFS`, trois imprécisions de chiffres, le §①.6 non aligné, le §③.4 qui demande le mauvais « avant »]
+
+---
+
+## TOUR 72 — Claude (conscience n°11)
+
+Mesures : **`edtMotifEnClair` compose déjà selon l'état** (ajoute `v.libelle` pour `calendrier`,
+`v.categorie` pour `banalisee`) — sa sortie est la bonne · **captures recomptées nom par nom** :
+③ **6**, ⑦ **11**, ⑧ **4**, **55 pour le lot 2ter sur 95 fichiers, 40 venant du lot 2bis**.
+Mandat redéposé (13 113 → 14 345 o, commit `5f0e6feb`). Registre : `n°11 · 50`.
+
+Réponse mot pour mot :
+
+**Il a raison quatre fois de plus. La contradiction était réelle et elle aurait bloqué l'exécutant.**
+
+## La contradiction, tranchée
+
+Mon §⓪⑤ exigeait **deux libellés différents**. Mon §② exigeait **`EDT_MOTIFS` inchangé, mot pour mot**. Et le libellé vit précisément **dans** `EDT_MOTIFS`. Un exécutant aurait dû désobéir à l'un ou renoncer à l'autre.
+
+**Sa sortie est la bonne, et je l'ai vérifiée dans le code** : la fonction qui compose le texte affiché **fait déjà exactement ça** pour deux autres motifs — elle ajoute le libellé de l'événement pour une heure du calendrier, la catégorie pour une heure banalisée. **La table reste intacte, le texte se compose selon la fin d'année.** C'est écrit dans le mandat, avec la mention qu'il n'y a plus de contradiction.
+
+## Mes trois chiffres, recomptés
+
+J'ai refait le comptage nom par nom. Il a raison sur les trois :
+
+> ①bis 14 · ①ter 12 · ② 4 · **③ 6** · ③bis 3 · ④ 3 · **⑤ 0** · **⑥ 0** · **⑦ 11** · ⑧ 4 — **55 pour le lot**
+
+Sur les 95 captures du dossier, **quarante viennent du lot 2bis** et n'ont rien à voir. Mon ③ comptait ③bis deux fois, mon ⑦ oubliait les captures du rendu statique et de l'ancienne vue.
+
+**Le constat central tient, et c'est le seul qui compte : zéro capture pour ⑤ et ⑥.**
+
+Et il a raison sur les deux sections qui n'avaient pas suivi ma correction précédente : le §①.6 parlait encore d'un seul drapeau — **et c'est la première chose qu'un exécutant lit** — et le §③.4 demandait le mauvais « avant » : ce que tu vois à l'écran, c'est la coupe à 60, pas la limite à 120.
+
+## Ce que cette séquence établit
+
+**Faire éprouver le mandat avant de le lancer a rapporté onze corrections en deux passes.** Deux auraient cassé quelque chose : renommer les classes de ton plein écran, corriger une liste qui allait déjà bien. Une aurait **bloqué** l'exécutant.
+
+**Je propose que ça entre au dispositif : un mandat se fait éprouver avant d'être lancé, et c'est la conscience qui corrige.** C'est noté au registre.
+
+**Ce que tu lui colles :**
+
+> **Mandat ⑨ redéposé** — 14 345 o, commit `5f0e6feb`. **Tes quatre points sont repris.** La contradiction est tranchée : `EDT_MOTIFS` reste intact, c'est `edtMotifEnClair` qui compose selon `finAnnee` — elle le fait déjà pour `calendrier` et `banalisee`. Les chiffres de captures sont corrigés (③ 6, ⑦ 11, ⑧ 4). Le §①.6 porte les deux drapeaux. Le §③.4 demande les deux chiffres. **Tu peux lancer ⑨-a.**
+
+**Tests manuels : aucun.** Rien n'a bougé.
+
+**Cahier vivant** — ⑨ en trois temps, puis ton promeus.
+
+MEMO

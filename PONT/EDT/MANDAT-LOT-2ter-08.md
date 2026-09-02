@@ -29,7 +29,20 @@
 - **`edtPhoto` existe et elle est déjà propre** : elle prend la photo de l'état d'avant (`edtPhotoDe('photos')`), pousse `{prise, depuis, cellules}` et passe par `edtEcrireArchive`. **Elle a UN SEUL appelant : le bouton « 📷 Photo » de la vue semaine** (L21018). C'est là qu'est le manque.
 - **`edtPeriodes` et le magasin des périodes** portent les dates de début de période : c'est ce qui déclenche la photo automatique.
 - **`SEQUENCE-TEST-PAUL.md` est au sas** et **doit être mis à jour**. **Paul la joue APRÈS la promotion — ne la lui donne pas maintenant.**
-- **`tests/banc-tout.mjs`** enchaîne tous les bancs du lot : **c'est lui qui doit être vert en entier à la fin.**
+- **`tests/banc-tout.mjs`** enchaîne tous les bancs du lot : **c'est lui qui doit être vert en entier à la fin.** **Chemins exacts, vérifiés par la conscience** : `PONT/EDT/tests/banc-tout.mjs` et `PONT/EDT/outils/verif_edt.py`. En brut : `https://raw.githubusercontent.com/siteflow-io/mjpc-chantier/main/PONT/EDT/tests/banc-tout.mjs` et `…/PONT/EDT/outils/verif_edt.py`. **Sans jeton, l'API GitHub te refusera la liste des fichiers après quelques appels — passe par ces chemins directs.**
+
+## ⓪ter DEUX MESURES DE LA CONSCIENCE, À LIRE AVANT DE CODER
+
+**① `edtDebutAnnee` EST DÉCLARÉE DEUX FOIS — et c'est piégeux pour TA livraison.**
+Mesuré : **L17823** et **L18734**, les deux en colonne 0, **aucune balise `<script>` entre elles**. En JavaScript, **la seconde écrase la première** : c'est elle qui vaut partout, la première est **du code mort**.
+- La **morte** dit : « l'année commence le 1er août » — `String(EDT_ANNEE).split('-')[0]+'-08-01'`.
+- La **vivante** dit : « d'abord la date que Paul a déclarée » — `EDT_DATES.debutAnnee||(…'-08-01')`.
+
+**Pourquoi ça te concerne** : ta photo automatique se déclenche **sur les dates de début**. Un exécutant qui lit la première version se tromperait de règle.
+
+**Ce qu'on attend** : **retire la déclaration morte de L17823** et dis-le. Le compte passe alors à **216 déclarations pour 216 noms** — **aucune fonction n'est perdue**, c'est un doublon qui disparaît. **Publie les deux chiffres, avant et après.**
+
+**② Le mot « figer » : voir §①.6 — c'est déjà réglé, et y toucher casserait le plein écran.**
 
 ## ① LA PHOTO SE PREND TOUTE SEULE — c'est le manque mesuré
 
@@ -38,7 +51,7 @@
 3. **La photo à la main reste** : le bouton « 📷 Photo » ne bouge pas, et **plusieurs photos le même jour sont normales — rien n'écrase rien**.
 4. **Chaque photo porte un identifiant**, comme tout objet du lot — c'est le manque relevé au §⑭. `edtPoserIdsObjet` sait le faire, la famille `pho:` existe déjà dans `EDT_FAMILLES`.
 5. **Elle est nommée** : Paul doit pouvoir dire « la photo de la rentrée », « la photo du 2e trimestre ». Une photo automatique porte le nom de son échéance ; une photo à la main porte sa date.
-6. **Le mot « figer » n'apparaît nulle part** : on dit **« photo du prévu »**, partout — bouton, message, journal, infobulle. **Vérifie-le à zéro occurrence.**
+6. **Le mot « figer » n'apparaît dans AUCUN TEXTE AFFICHÉ** : on dit **« photo du prévu »** — bouton, message, journal, infobulle. **C'EST DÉJÀ LE CAS, ne touche à rien.** Mesuré par la conscience : les **24** occurrences de `fig*` dans le fichier sont **toutes** des noms de classes CSS (`edt-fige`, `at-corps-fige` — ce sont elles qui masquent les boutons quand l'emploi du temps prend tout l'écran), des commentaires, et **une** phrase du canal d'annonces (« l'envoi fige la version à lire ») qui n'est pas l'EDT. **Tu ne renommes RIEN : renommer `edt-fige` casserait le plein écran.** Ta seule obligation : **ne pas introduire le mot dans un texte neuf.**
 
 ## ② LA MATRICE ACTIONS × ÉTAT
 
@@ -70,7 +83,7 @@ Si l'un de ces sujets te paraît nécessaire, **signale et attends**.
 ## ⑤ CE QUI NE DOIT PAS BOUGER — chiffré, à remesurer et publier
 
 - **Moteur** : `AT_DR_B64`, **309 812 caractères**, md5 **`2ba70f9ef8aacb6f81962ea4e1b62944`**, identique bit à bit.
-- **`function secu*` 29** · **`published` 97** · **`function edt*` 217**, aucune disparue ; toute fonction ajoutée est nommée.
+- **`function secu*` 29** · **`published` 97** · **`function edt*` : 217 déclarations pour 216 NOMS DISTINCTS** — voir §⓪ter, `edtDebutAnnee` est déclarée deux fois. **Après nettoyage : 216 déclarations, 216 noms, aucune fonction perdue.** Toute fonction ajoutée est nommée.
 - **Trois portes** : `edtArriveeProf`, `edtSectionPanneau`, `edtOuvrir`, et pas une de plus.
 - **Correctif du mode test intact** · **`edtApparier` 1 appel** · **`edtMettreANiveau` 2 appels**.
 - **`EDT_CATEGORIES` et `EDT_MOTIFS` inchangés**, mot pour mot.
@@ -85,7 +98,7 @@ Si l'un de ces sujets te paraît nécessaire, **signale et attends**.
 2. **Elle ne se prend qu'une fois** : deux chargements le même jour → **1 seule photo**, pas deux. Trois chargements → toujours une.
 3. **La photo à la main marche toujours**, et **deux photos le même jour ne s'écrasent pas** : compte avant, compte après.
 4. **Chaque photo porte un identifiant** de la famille `pho:`, **tous distincts**. Donne-les.
-5. **`figer` : ZÉRO occurrence** dans les textes affichés. Compte avant, compte après.
+5. **`figer` dans les TEXTES AFFICHÉS : zéro avant, zéro après.** Ne compte pas les classes CSS ni les commentaires — 24 occurrences légitimes existent et **ne doivent pas bouger**. Prouve que tu n'as introduit aucun texte neuf portant ce mot, et que `edt-fige` et `at-corps-fige` sont **intactes**.
 6. **Archive avant écriture** : une photo écrite sur un nœud existant archive l'état d'avant — **donne le contenu de l'archive**, pas seulement son existence.
 7. **La matrice actions × état**, publiée en clair dans le rapport.
 8. **`SEQUENCE-TEST-PAUL.md` à jour** : dis ce que tu y as ajouté, sans en donner le contenu à Paul.

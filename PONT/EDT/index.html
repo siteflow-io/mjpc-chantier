@@ -2885,7 +2885,7 @@ function mjpcEcrireRest(url,options,cb){
    (les 3 gestes, le geste conservatoire par app, ce qui ne peut pas arriver).
    RESTAURER LA VERSION PRÉCÉDENTE : docs/MJPC6-restauration.md (convention BUG).
    ═══════════════════════════════════════════════════════════════════════════ */
-var APP_VERSION="8.73.0-⑨b";
+var APP_VERSION="8.73.0-⑨";
 var APP_VERSION_DATE="2026-08-27";
 // ── 11. Coffre : dérivation, chiffrement, empreinte (v1.3.0) ──
 // (Le canon porte deux sections « 8 » — dette de numérotation connue, non corrigée
@@ -18325,6 +18325,39 @@ edtChargeInscrire('coches',function(){
 /* [⑤] LA DATE D'INJECTION DE REPLI. Un objet déjà au hub qui ne porte pas sa date
    la reçoit au PREMIER chargement : le site compte les jours à partir de là, et ne
    crie donc jamais le jour où Paul ouvre le site pour la première fois. */
+/* [⑨] LA BASCULE DE FIN D'ANNÉE. Passé la fin de l'année déclarée, une heure
+   restée « à replacer » ne le sera plus jamais : elle prend son motif définitif,
+   non justifiée, basculable — Paul reste maître de la rebasculer.
+   ELLE N'ÉCRASE AUCUNE DÉCISION DE PAUL : une heure qu'il a déjà tranchée — replacée,
+   perdue sèche, banalisée, ou dont il a lui-même changé le statut — reste comme il
+   l'a laissée. Le seul cas touché est `aReplacer:true` encore en attente. */
+function edtHeuresJamaisReplacees(){
+  var edtFin=edtFinAnnee(),edtL=[];
+  if(!edtFin||edtAujourdhui()<=edtFin)return edtL;
+  var edtD=edtDecisions();
+  Object.keys(edtD).forEach(function(edtC){
+    var edtH=(edtD[edtC]&&edtD[edtC].heures)||{};
+    Object.keys(edtH).forEach(function(edtK){
+      var edtV=edtH[edtK];
+      if(edtV&&edtV.aReplacer===true&&!edtV.jamaisReplacee&&!edtV.replacee)
+        edtL.push({classe:edtC,cle:edtK,valeur:edtV});
+    });
+  });
+  return edtL;
+}
+edtChargeInscrire('finAnnee',function(){
+  var edtL=edtHeuresJamaisReplacees();
+  if(!edtL.length)return null;
+  var edtD=edtDecisions();
+  edtL.forEach(function(edtX){
+    edtX.valeur.jamaisReplacee=true;
+    edtX.valeur.justifiee=false;
+    edtX.valeur.basculeFinAnnee=edtAujourdhui();
+  });
+  return {objets:{decisions:edtD},
+    dit:[edtL.length+' heure(s) jamais replacée(s) au '+edtFinAnnee()+' : '
+      +edtL.map(function(x){return x.classe+' '+x.cle;}).join(', ')]};
+});
 edtChargeInscrire('dateInjection',function(){
   var edtT={},edtDit=[],edtN=0;
   EDT_OBJETS.forEach(function(o){
@@ -19894,9 +19927,16 @@ function edtPhotoAuto(){
   var edtDue=edtEcheanceDue();
   if(!edtDue)return null;
   if(edtPhotoFaite(edtDue.cle))return null;
-  if(EDT.photoAutoEmise===edtDue.cle)return null;   /* déjà partie dans cette session */
-  EDT.photoAutoEmise=edtDue.cle;
-  return edtPhotoPrendre(edtDue.nom,edtDue.cle,null);
+  /* [⑨] DEUX DRAPEAUX, PAS UN. « en cours » empêche deux photos pendant que le hub
+     répond ; « faite » ne se pose QU'APRÈS une écriture réussie. Un hub qui refuse
+     ne fait plus perdre l'échéance : le chargement suivant la reprend.
+     Dette ouverte par ⑧, fermée ici. */
+  if(EDT.photoAutoEmise===edtDue.cle)return null;   /* déjà réussie dans cette session */
+  if(EDT.photoAutoEnCours===edtDue.cle)return null; /* partie, le hub n'a pas répondu */
+  EDT.photoAutoEnCours=edtDue.cle;
+  return edtPhotoPrendre(edtDue.nom,edtDue.cle,function(){
+    EDT.photoAutoEmise=edtDue.cle; EDT.photoAutoEnCours=null;
+  });
 }
 /* [④a] LES CONSIGNES DONNÉES À L'IA, embarquées dans le site comme le fait
    déjà l'atelier (ATELIER_PROMPT_SEED) : elles doivent partir AVEC le JSON en
@@ -20053,6 +20093,11 @@ function edtMotifEnClair(v){
   var t=EDT_MOTIFS[m].libelle;
   if(m==='calendrier'&&v.libelle)t+=' — '+v.libelle;
   if(m==='banalisee'&&v.categorie)t+=' ('+v.categorie+')';
+  /* [⑨] DEUX ÉTATS, DEUX LIBELLÉS. `EDT_MOTIFS` n'est pas touché : c'est ici que
+     le texte se compose, comme il le fait déjà pour `calendrier` et `banalisee`.
+     Une heure prise ce matin n'est pas « jamais replacée » — elle peut l'être
+     demain. Elle ne le devient qu'une fois l'année finie. */
+  if(m==='aReplacer'&&!v.jamaisReplacee)t='heure \u00e0 replacer, en attente de replacement';
   return t;
 }
 function edtBasculable(v){
@@ -20064,6 +20109,24 @@ function edtDatePose(v){
   return d.getDate()+' '+(EDT_MOIS[d.getMonth()]||'');
 }
 function edtEcrireDecision(nomClasse,cleHeure,valeur,quoi){
+  /* [⑨] UN VERROU PAR CLÉ — sur le patron de `EDT.miseANiveauEnCours` (①bis).
+     Trouvé par l'audit adverse de ⑨-a : deux gestes lancés coup sur coup sur la
+     même heure donnaient 2 écritures, 0 archive, et un journal réduit au second.
+     L'archive et le journal sont le filet de Paul : c'est ce que « ↶ Annuler »
+     relit. Les faire sauter tous les deux rend le geste précédent irrécupérable.
+     Le verrou porte sur LA CLÉ, pas sur le site : deux heures différentes
+     s'écrivent toujours en même temps. Le second geste ne part pas, et il le DIT. */
+  if(!EDT.decisionsEnCours||typeof EDT.decisionsEnCours!=='object')EDT.decisionsEnCours={};
+  var edtVerrou=String(nomClasse)+'|'+String(cleHeure);
+  if(EDT.decisionsEnCours[edtVerrou]){
+    if(typeof atInfo==='function')
+      atInfo('Un geste est d\u00e9j\u00e0 en cours sur cette heure. Attends qu\u2019il soit '
+        +'enregistr\u00e9 avant d\u2019en faire un autre \u2014 sinon le premier serait perdu.');
+    return;
+  }
+  EDT.decisionsEnCours[edtVerrou]=true;
+  /* filet : si le hub ne répond jamais, le verrou ne reste pas posé pour la vie */
+  var edtDelais=setTimeout(function(){ delete EDT.decisionsEnCours[edtVerrou]; },8000);
   /* [⑤c-bis] L'ARCHIVE PORTE L'ÉTAT D'AVANT. `edtDecisions()` rend la référence
      vivante : muter d'abord et archiver ensuite, c'est archiver l'état d'après.
      Même faute que celle fermée en ①bis-a pour la mise à niveau, jamais portée
@@ -20078,6 +20141,7 @@ function edtEcrireDecision(nomClasse,cleHeure,valeur,quoi){
   else d[nomClasse].heures[cleHeure]=valeur;
   d[nomClasse].journal.push({quand:Date.now(),heure:cleHeure,quoi:quoi,avant:avant,apres:valeur});
   edtEcrireArchive('decisions',edtChemin('decisions'),edtPhoto,d,'Décisions horaires — '+nomClasse,function(){
+    clearTimeout(edtDelais); delete EDT.decisionsEnCours[edtVerrou];
     EDT.decisions=d; edtPeindre(); edtPeindreModale();
   });
 }

@@ -3935,3 +3935,72 @@ Si c'est ça, **le déblocage est le même** : le jeton, dans sa conversation, u
 **Cahier vivant** — ⑨ finale, puis ton promeus.
 
 MEMO
+
+---
+
+## TOUR 78 — Paul
+
+Texte mot pour mot :
+
+> livré
+
+---
+
+## TOUR 78 — Claude (conscience n°11)
+
+Audit joué : candidat **1 762 154 o / `45337e4f…` / 8.73.0-⑨** · non-régression 226/226 ·
+**les trois mécanismes lus ligne à ligne** (verrou avec délai de sécurité, bascule qui ne peut
+pas se déclencher avant la fin d'année, deux libellés sans toucher `EDT_MOTIFS`, photo à deux
+drapeaux) · rapport final lu. Registre : `n°11 · 56`.
+
+Réponse mot pour mot :
+
+**Verdict : ça va. Les sept points qui bloquaient ton promeus sont fermés. Le lot est complet.**
+
+## Les trois mécanismes, lus
+
+**Le verrou** est posé par heure, levé après l'écriture, **avec un délai de sécurité de huit secondes** qui le libère si le hub ne répond jamais. Le second geste est refusé, pas perdu.
+
+**La bascule de fin d'année** ne peut pas se déclencher avant la fin de l'année — c'est écrit dans sa première ligne. Et les **deux libellés** sont là : « en attente de replacement » tant que l'année court, « jamais replacée » après. Avec ta raison en commentaire : *une heure prise ce matin n'est pas jamais replacée, elle peut l'être demain.*
+
+**Et `EDT_MOTIFS` n'a pas été touché** — la sortie que j'avais tranchée a été suivie.
+
+**La photo** a bien ses deux drapeaux. Hub qui refuse : zéro photo, l'échéance reste due.
+
+**`banc-tout` : 32 bancs, 93 repères, tous verts.**
+
+## Les sept points
+
+Captures de ⑤ et de ⑥ · l'audit adverse · **ta liste montre 967 créneaux au lieu de 60**, avec la recherche par mois, semaine et A/B · le refus sur une heure déjà lancée · la bascule · la photo · les gestes concurrents. **Tous fermés.**
+
+## Ce qu'il déclare, et que je te dis sans farder
+
+**Le verrou n'a pas été éprouvé sous une vraie latence réseau.** Il le déclare au lieu de l'affirmer, comme le mandat l'exigeait.
+
+**Le refus sur une heure réellement jouée n'est pas prouvé par le clic** : il n'y avait aucune heure jouée dans la semaine de son banc. Il tient par le code.
+
+**Et le plus important : personne n'a jamais joué ton site réel.** Le sas n'est pas publié, tout le lot a été éprouvé sur un faux hub. **C'est exactement l'objet de `SEQUENCE-TEST-PAUL.md`, qui se joue après la promotion.**
+
+## Le point jamais tranché — je le tranche
+
+Banaliser une heure prise dans un déplacement **effacerait le lien avec son autre bout et laisserait une heure épinglée orpheline** à l'autre extrémité. Ta règle « rien ne s'écrase en silence » soutient l'exclusion.
+
+**Décision : l'exclusion reste.** Ce n'est pas une dette, et ça ne bloque pas ton promeus. Tu corriges si tu n'es pas d'accord.
+
+## Où on en est
+
+**Le lot 2ter est complet** : dix livraisons, closes et auditées.
+
+**Candidat final : 1 762 154 octets, `45337e4f5722d6fb118e918bcd792be2`, version 8.73.0-⑨.**
+
+**Ta production n'a pas bougé depuis le 25 août** — `6c7560af…`, version 8.70.1. Rien n'est jamais parti en ligne.
+
+**Le prochain geste est le tien.** Et il en emporte deux : le lot, **et la réparation du mode test** qui attend au sas depuis le 27 août.
+
+Tout est au registre, `n°11 · 56`.
+
+**Tests manuels : ceux de `SEQUENCE-TEST-PAUL.md`, après ta promotion.**
+
+**Cahier vivant** — ton promeus, puis le protocole d'après-promotion, puis l'injection de chapitre. En attente : la simplification des textes · la confrontation dettes ↔ code · les dettes hors lot.
+
+MEMO

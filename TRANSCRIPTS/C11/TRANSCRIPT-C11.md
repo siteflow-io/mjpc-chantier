@@ -3516,3 +3516,30 @@ Tout est au registre, `n°11 · 47`.
 **Cahier vivant** — ta décision sur les captures manquantes, puis ton promeus, puis l'injection de chapitre. Et, en attente : la confrontation dettes ↔ code, la simplification des textes, les dettes hors lot.
 
 MEMO
+
+---
+
+## TOUR 70 — Paul
+
+Texte mot pour mot :
+
+> il faut finaliser. pas de promotion avec dettes et non complétion du mandat.
+
+---
+
+## TOUR 70 — Claude (conscience n°11)
+
+Mesures avant rédaction, dans le code du candidat : **`edtDestinationsPour` → `edtCreneauxOu(…,120)`**,
+et `filtreMois`/`typeSemaine`/`rechercheDest` → **0** · `edtTraceExiste`/`traceExiste`/`dejaLancee`
+→ **0** · `jamaisReplacee`/`edtBasculeFinAnnee` → **0** · `EDT.photoAutoEmise` posé **avant**
+l'écriture (L19892-19893) · captures comptées : ⑤ **0**, ⑥ **0**.
+Mandat déposé : `PONT/EDT/MANDAT-LOT-2ter-09.md`. Registre : `n°11 · 48`.
+
+Réponse mot pour mot : le tri (six points bloquent, trois non), puis le mandat entier dans un
+bloc copiable, puis :
+
+**Tests manuels : aucun.** Rien n'a bougé.
+
+**Cahier vivant** — ⑨ en trois temps, puis ton promeus.
+
+MEMO

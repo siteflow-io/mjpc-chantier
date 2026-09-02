@@ -2996,3 +2996,55 @@ Tout est au registre, `n°11 · 39`.
 **Cahier vivant** — ⑥ finale, puis ⑦ et ⑧, puis ton promeus, puis l'injection de chapitre.
 
 MEMO
+
+---
+
+## TOUR 59 — Paul
+
+Texte mot pour mot :
+
+> livré
+
+---
+
+## TOUR 59 — Claude (conscience n°11)
+
+Audit joué : candidat mesuré (1 748 712 o / `966eaafd…`) · non-régression · **les trois refus
+rejoués sur ton vrai calendrier** · **le recalage des heures au-delà** · **`EDT_ANNEE`
+recalculé, trois cas** · garde. Registre : `n°11 · 40`.
+
+Réponse mot pour mot :
+
+**Verdict : ça va. Le mandat ⑥ est fini.**
+
+## Les dates de l'année
+
+Deux champs de plus, **au même endroit** — le nœud n'a pas changé de nom, seule l'étiquette à l'écran devient « Dates de l'année ». C'est ce que tu voulais.
+
+**J'ai rejoué les trois refus sur ton vrai calendrier.**
+
+**01/09/2026 → 26/06/2027** — ton repère réel, celui d'avant le brevet blanc : **accepté**.
+
+Fin avant le début → refusé, avec les deux dates en clair. Une année de plus de treize mois → refusé, **chiffré** : « l'année ferait 455 jours ». Une date très en dehors de ton calendrier → refusée, **avec les bornes affichées** : « hors du calendrier injecté (2026-08-01 → 2027-07-31, un mois de marge) ».
+
+## Ce qui se recale quand tu avances la fin
+
+J'ai posé cinq heures après le 26 juin et avancé la fin de l'année à cette date. **Deux heures sont retrouvées** — celles que tu avais réellement posées — nommées avec leur classe et leur créneau. **Aucune ne disparaît.**
+
+Et les heures banalisées ou déplacées au-delà sont écartées : normal, elles ne sont pas des heures posées.
+
+## L'année ne se devine plus
+
+Début au 1er septembre 2026 → 2026-2027. Début au 5 janvier 2027 → **toujours 2026-2027**, parce que janvier appartient à l'année commencée en septembre. Et sans dates, les valeurs de repli tiennent.
+
+## Où on en est
+
+**Sept livraisons closes** : ①, ②, ③, ③bis, ④, ⑤, ⑥. **Il reste ⑦ — la vue Année — et ⑧ — les photos du prévu.** Puis ton promeus.
+
+Tout est au registre, `n°11 · 40`.
+
+**Tests manuels : aucun.** Rien en ligne.
+
+**Cahier vivant** — mandat ⑦ à écrire, puis ⑧, puis ton promeus, puis l'injection de chapitre.
+
+MEMO

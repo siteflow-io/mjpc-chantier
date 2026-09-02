@@ -3886,3 +3886,52 @@ Sur une modale qui s'ouvrait par appel de fonction, il a écrit : « **Plutôt q
 **Cahier vivant** — ⑨ finale, puis ton promeus.
 
 MEMO
+
+---
+
+## TOUR 77 — Paul
+
+Texte mot pour mot :
+
+> livré
+
+---
+
+## TOUR 77 — Claude (conscience n°11)
+
+Mesure : `index.html` au sas **toujours `9393639e…` (8.73.0-⑨b)**, dernier commit le touchant
+`55f88e79` à 16h27 · `rapport-2ter-09.md` **404** · `jamaisReplacee` **0**, `edtBasculeFinAnnee`
+**0**, aucun verrou, `photoAutoEnCours` **0** · **aucune fonction ajoutée ni disparue depuis
+⑨-b**. Registre : `n°11 · 55`.
+
+Réponse mot pour mot :
+
+**Rien n'est au sas. Le candidat ⑨ n'existe pas — j'ai vérifié avant de te répondre.**
+
+Le fichier est toujours celui de ⑨-b, celui que j'ai audité au tour précédent : même taille, même empreinte, **aucune fonction ajoutée ni supprimée**. Son rapport final est en 404.
+
+Et les trois points de la livraison sont **absents du code** : pas de bascule de fin d'année, pas de verrou, pas de second drapeau pour la photo.
+
+Les cinq derniers dépôts du sas sont **trois poussées de ⑨-b à 16h27**, puis **deux des miennes** — le mandat complété et le transcript. **Rien de lui depuis.**
+
+**Donc je ne rends aucun verdict** : il n'y a rien de neuf à auditer.
+
+## C'est la deuxième fois dans ce lot
+
+Même situation qu'avec ⑧-a : il avait tout fait, **mais sans le jeton du sas**, et il t'avait livré les fichiers dans sa conversation.
+
+**Vérifie ça d'abord** : a-t-il encore le jeton ? T'a-t-il livré dans sa fenêtre plutôt qu'au sas ?
+
+Si c'est ça, **le déblocage est le même** : le jeton, dans sa conversation, une fois.
+
+**Ce que tu lui colles :**
+
+> **Rien n'est arrivé au sas** : `index.html` est toujours en 8.73.0-⑨b (`9393639e…`), et `rapport-2ter-09.md` est en 404. Les trois points de ⑨ sont absents du code : bascule de fin d'année, verrou par clé, second drapeau de la photo.
+>
+> **Pousse au sas, relis le md5 après poussée, publie-le.** Tant qu'un candidat n'est pas au sas, il n'existe pas pour l'audit — quel que soit le contenu du rapport. Si le jeton te manque, dis-le à Paul en une ligne.
+
+**Tests manuels : aucun.** Rien en production, rien de neuf au sas.
+
+**Cahier vivant** — ⑨ finale, puis ton promeus.
+
+MEMO

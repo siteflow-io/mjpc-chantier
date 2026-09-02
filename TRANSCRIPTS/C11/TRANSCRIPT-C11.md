@@ -3828,3 +3828,61 @@ Je ne peux donc pas vérifier **l'audit adverse du lot ⑥** que le mandat exige
 **Cahier vivant** — le rapport ⑨-a, puis ⑨-b, ⑨, puis ton promeus.
 
 MEMO
+
+---
+
+## TOUR 76 — Paul
+
+Texte mot pour mot :
+
+> livré
+
+---
+
+## TOUR 76 — Claude (conscience n°11)
+
+Audit joué : rapport ⑨-a présent (12 795 o) · **⑨-b livrée aussi, sans arrêt entre** — écart
+mesuré de ⑨a à ⑨b · candidat 1 758 505 o / `9393639e…` · 225/225 sans doublon · **les deux
+coupes tombées, les 4 `slice(0,60)` restants situés ailleurs** · `edtQuoiChercher` et
+`edtTraceExiste` lues · dette des gestes concurrents portée au mandat ⑨ (15 702 o, commit
+`850c8a1d`). Registre : `n°11 · 54`.
+
+Réponse mot pour mot :
+
+**Verdict : ça va. Et son audit a trouvé une dette que je porte à la livraison finale.**
+
+Deux livraisons d'un coup, au passage — ⑨-b est arrivée sans arrêt après ⑨-a. J'ai donc audité l'écart complet.
+
+## Ce qui est fermé
+
+**Les deux coupes de ta liste sont tombées** : elle va maintenant jusqu'à ta fin d'année, aux deux endroits. J'ai vérifié que les quatre coupes à 60 qui restent dans le fichier sont **ailleurs** — un slug de chapitre, un message d'erreur, un libellé de jalon. Aucune sur la liste.
+
+**La recherche est là** : tu peux taper **A** ou **B**, un **numéro de semaine**, un **mois**, ou une date. Elle complète le filtre qui existait déjà.
+
+**Le refus « heure déjà lancée » aussi**, et au bon endroit : il tombe **au moment où tu commences à glisser**, avant tout geste.
+
+## La dette que son audit a trouvée
+
+**Deux gestes concurrents sur la même case donnent deux écritures, zéro archive, et le journal ne garde que le second.**
+
+C'est **ton filet qui saute** : l'archive et le journal sont exactement ce que « ↶ Annuler » relit pour restaurer. Un double-clic un peu rapide, deux onglets ouverts, et **le geste précédent devient irrécupérable**.
+
+Tu as dit : pas de promotion avec dettes. **Je l'ai portée au mandat de la livraison finale**, avec le remède : un verrou par heure, sur le modèle de celui qui empêche déjà un double chargement.
+
+## Ce que je porte à son crédit
+
+Sur une modale qui s'ouvrait par appel de fonction, il a écrit : « **Plutôt que de l'écrire "déclaré" et de passer, j'ai vérifié si le geste était atteignable : il l'est — 18 cases à l'écran, 18 éléments cliquables. C'est mon sélecteur qui rate, pas le site.** »
+
+**C'est exactement ce que je n'avais pas fait sur le banc de ⑤b.** La règle a pris.
+
+**Ce que tu lui colles :**
+
+> **Le mandat ⑨ est complété** — 15 702 o, commit `850c8a1d`, une section **⓪quater** neuve. **La dette que ton audit a trouvée bloque le promeus** : deux gestes concurrents = 2 écritures, 0 archive, journal perdu. Ferme-la dans ⑨ : **un verrou par clé**, sur le patron de `EDT.miseANiveauEnCours` qui existe depuis ①bis. Preuve attendue : deux gestes sur la même case → **une écriture, une archive, le journal porte l'état d'avant du premier**, et le second le dit s'il est refusé.
+>
+> Le reste de ⑨ est inchangé : la bascule de fin d'année, la photo retentée, `banc-tout` en entier, le rapport final.
+
+**Tests manuels : aucun.** Rien en production.
+
+**Cahier vivant** — ⑨ finale, puis ton promeus.
+
+MEMO

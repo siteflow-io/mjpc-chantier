@@ -1,6 +1,6 @@
 # SÉQUENCE DE TEST — L'EMPLOI DU TEMPS (lot 2bis), geste par geste
 
-*Candidat `8.71.0` au sas. À jouer sur le site déployé, en tant que professeur.*
+*Candidat `8.73.0-⑧` au sas. À jouer sur le site déployé, en tant que professeur.*
 *Chaque étape dit ce que tu fais et ce que tu dois voir. Si ce que tu vois ne correspond pas, note le numéro : c'est tout ce dont j'ai besoin.*
 
 ---
@@ -76,7 +76,7 @@
 25. **Tu cliques « Année ».** → Une ligne par classe. Le **vert** est ce qui a été joué (première → dernière heure), le **gris** ce qui est prévu. En haut, les jalons en traits ambre, les vacances en blocs, aujourd'hui en trait rouge.
 26. **Tu cliques « Calendrier de l'année… ».** → Trois colonnes : tes événements de classe avec la case **« justifié »**, les jalons communs, les jours sans cours.
 27. **Tu coches « justifié » sur un séjour.** → Sur la carte de la classe concernée, le retard affiche « n h de retard dont m justifiées ». *Attention : un événement qui prend les heures des deux classes d'un même niveau ne justifie rien entre elles — c'est voulu.*
-28. **Tu cliques « 📷 Photo du prévu ».** → Un message confirme le nombre de cases photographiées. La photo est datée ; le prévu, lui, n'est jamais figé.
+28. **Tu cliques « 📷 Photo du prévu ».** → Un message confirme le nombre de cases photographiées. La photo porte sa date en clair — « mercredi 2 septembre ». Voir la section **N** : elle se prend aussi toute seule.
 
 ## G · LES OBJETS, DANS LE PANNEAU PROF
 
@@ -89,8 +89,59 @@
 35. **Tu modifies un créneau horaire** (par exemple 08:00 → 08:10). → Le site entier prend le nouvel horaire. **Les heures déjà jouées ne bougent pas** : leur trace porte le créneau d'alors.
 36. **Tu apparies une classe de la grille à une classe du site.** → Toutes ses cases suivent d'un geste, et elles projettent enfin leurs séances.
 
+## H · LES HEURES PERDUES, ET LEURS MOTIFS
+
+37. **Panneau prof → Emploi du temps → « Heures perdues ».** → Une fiche par classe : le compte de l'année, ce qui est déclaré justifié, et le détail heure par heure.
+38. **Tu ouvres une case prévue et tu la banalises** en choisissant une catégorie. → La case passe en ambre. La modale dit si l'heure est **temps de classe** (elle ne compte pas comme perdue) ou **heure perdue**, justifiée ou non.
+39. **Tu cliques « La compter comme heure perdue » puis « La déclarer non justifiée ».** → Les deux bascules sont à toi : le site propose, il ne décide pas. Le compte de la fiche suit aussitôt.
+40. **Tu banalises une heure déjà comptée perdue pour un autre motif.** → Le site te prévient **avant** : « Cette heure est déjà comptée perdue — … La banaliser remplacera ce motif. » Deux boutons. **Une heure ne compte jamais deux fois.**
+41. **Tu cliques « ↶ Annuler cette décision » sur cette heure.** → **Le motif précédent revient**, pas le vide.
+
+## I · LES TROIS ISSUES, QUAND LE CRÉNEAU EST PRIS
+
+42. **Tu fais glisser une heure sur un créneau où se trouve une AUTRE de tes classes.** → Plus de refus sec : le site dit qui est là et propose **trois sorties** — « Ne rien faire », « Échanger les deux heures », « Prendre le créneau ».
+43. **Tu choisis « Échanger les deux heures ».** → Les deux classes permutent. **Personne ne perd rien** : les deux départs disent « heure échangée avec … », les deux arrivées portent 📌.
+44. **Tu recommences et tu choisis « Prendre le créneau ».** → Ta classe s'installe, et l'heure de l'autre devient **une heure à replacer** — pas une heure perdue en silence.
+45. **Tu fais glisser sur une classe que le site ne connaît pas encore** (non appariée). → Refus nommé : apparie-la d'abord.
+
+## J · L'HEURE À REPLACER
+
+46. **Tu regardes le bandeau de la semaine.** → « 1 heure à replacer » s'y affiche tant qu'elle n'est pas posée.
+47. **Tu ouvres l'écran des heures perdues et tu choisis un créneau pour la replacer.** → La liste va jusqu'à la fin de l'année.
+48. **Tu choisis un créneau déjà pris par une autre classe.** → Le site ne refuse pas : il dit le prix — « y poser l'heure mettrait **deux classes au même moment** » — et tu tranches. **Jamais un télescopage en silence.**
+49. **Tu la déclares perdue sèche** (« prise par une autre classe »). → Elle sort des heures à replacer et entre au compte des heures perdues, avec son motif.
+
+## K · LES DATES DE L'ANNÉE
+
+50. **Panneau prof → « Dates de l'année ».** → Les mêmes champs que le jour du brevet, plus **début** et **fin d'année**.
+51. **Tu poses une fin d'année antérieure au début**, ou un écart de plus de treize mois, ou une date très loin du calendrier injecté. → **Trois refus nommés, chiffrés.**
+52. **Tu avances la fin d'année à la main alors que des heures sont posées au-delà.** → Elles **ne disparaissent pas** : le site les nomme et te dit combien sont à replacer avant la nouvelle fin.
+
+## L · LA VUE ANNÉE
+
+53. **Tu cliques « Année ».** → Douze colonnes de mois, une ligne par jour, les bandeaux d'événements posés dessus. Le pied compte les événements d'établissement, de classe et les jalons.
+54. **Tu survoles un bandeau, puis tu cliques dessus.** → L'infobulle donne le libellé et les dates ; le clic ouvre la fiche.
+55. **Tu regardes un événement dont tu as marqué au moins une heure.** → Il porte **✓**. Tu décoches toutes ses heures : le ✓ s'éteint.
+56. **Tu fais Ctrl + molette.** → La vue zoome et dézoome. Rien n'y est écrit : cette vue **affiche**, elle ne recalcule rien.
+57. **Si une classe de ta grille n'est pas appariée**, le pied te le dit par son nom — pas de pastille pour elle.
+
+## M · LA CLASSE D'ESSAI, EN MODE TEST
+
+58. **Panneau prof → pastille « 🧪 Mode test ».** → Elle s'allume et annonce que rien n'est enregistré.
+59. **Tu ouvres l'emploi du temps.** → La **classe d'essai** apparaît dans la grille, en plus de tes classes réelles.
+60. **Tu éteins le mode test et tu rouvres.** → Elle a disparu, **sans rien laisser derrière** : tes comptes par classe sont exactement ceux d'avant.
+
+## N · LA PHOTO DU PRÉVU, QUI SE PREND TOUTE SEULE
+
+61. **À la rentrée, ou le premier jour d'une période, tu ouvres ton emploi du temps.** → **Une photo du prévu est prise toute seule.** Le site ne t'affiche rien, ne te demande rien : tu ne dois pas t'en occuper.
+62. **Tu rouvres l'emploi du temps le même jour, deux ou trois fois.** → **Une seule photo**, pas une par ouverture. Le site sait laquelle il a déjà prise.
+63. **Tu cliques « 📷 Photo du prévu » deux fois dans la même journée.** → **Deux photos de plus**, et rien n'écrase rien. Celles-là portent leur date ; celle de la rentrée porte le nom de son échéance.
+64. **Tu n'as déclaré aucune période.** → Il reste **la photo de la rentrée**, prise sur ta date de début d'année.
+65. **Tu ouvres le site pour la première fois longtemps après le début d'une période.** → Le site prend la photo de **l'échéance en cours**, datée d'aujourd'hui. Il ne fabrique pas après coup les photos des périodes passées : **on ne rattrape pas le passé.**
+66. **Tu allumes le mode test et tu rouvres l'emploi du temps.** → **Aucune photo ne part** : la classe d'essai n'a rien à faire dans une photo de ton année.
+
 ---
 
 ## Ce qui n'est PAS dans ce lot, et qu'il ne faut pas chercher
 
-« La dernière fois » (le lien vers la relecture d'une heure) — lot 7 · le profil de classe derrière les cartes — lot 7 · le bloc bilan — lot 5 · la vue téléphone soignée — lot 2 (ici elle s'affiche et défile, elle ne casse pas) · la règle « classe conservée » dans la purge — lot de la purge · le cockpit prof lui-même (ses données sont prêtes, pas sa vue).
+« La dernière fois » (le lien vers la relecture d'une heure) — lot 7 · le profil de classe derrière les cartes — lot 7 · le bloc bilan — lot 5 · la vue téléphone soignée — lot 2 (ici elle s'affiche et défile, elle ne casse pas) · la règle « classe conservée » dans la purge — lot de la purge · **le cockpit qui compare le réel à la photo** : il existe, mais c'est le lot suivant qui l'ouvre — ici on lui fabrique ses photos.

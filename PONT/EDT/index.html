@@ -2854,7 +2854,7 @@ function mjpcEcrireRest(url,options,cb){
    (les 3 gestes, le geste conservatoire par app, ce qui ne peut pas arriver).
    RESTAURER LA VERSION PRÉCÉDENTE : docs/MJPC6-restauration.md (convention BUG).
    ═══════════════════════════════════════════════════════════════════════════ */
-var APP_VERSION="8.73.0-⑥c";
+var APP_VERSION="8.73.0-⑥c-bis";
 var APP_VERSION_DATE="2026-08-27";
 // ── 11. Coffre : dérivation, chiffrement, empreinte (v1.3.0) ──
 // (Le canon porte deux sections « 8 » — dette de numérotation connue, non corrigée
@@ -20153,6 +20153,23 @@ function edtDestinationsPour(nomClasse,iso,creneau){
 function edtReplacerHeure(nomClasse,cle,cible){
   var edtV=((edtDecisions()[nomClasse]||{}).heures||{})[cle]; if(!edtV||!cible)return;
   var edtP=String(cible).split('|');
+  /* [⑥c-bis] LA LISTE PROPOSE AUSSI LES CRÉNEAUX PRIS (⑥c) : y poser une heure
+     mettrait deux classes au même moment. Trouvé par edtVerifierCoherence après
+     le correctif de Paul du 01/09. On ne refuse pas — on dit le prix, et Paul
+     tranche. Jamais un télescopage en silence. */
+  var edtQui=edtQuiEstEn(edtP[0],edtP[1],{classeMjpc:nomClasse});
+  if(edtQui&&!edtV.__confirme&&typeof atModaleChoix==='function'){
+    atModaleChoix(escapeHtml(edtJourEnClair(edtP[0]))+' à '+escapeHtml(edtP[1])
+      +', c\u2019est <b>'+escapeHtml(edtQui)+'</b>.<br>Y poser l\u2019heure de '
+      +escapeHtml(nomClasse)+' mettrait <b>deux classes au même moment</b>.',
+      [{lib:'Choisir un autre créneau'},
+       {lib:'La poser quand même',prim:true,fn:function(){
+         var edtW=((edtDecisions()[nomClasse]||{}).heures||{})[cle];
+         if(edtW)edtW.__confirme=true;
+         edtReplacerHeure(nomClasse,cle,cible); }}]);
+    return;
+  }
+  if(edtV.__confirme)delete edtV.__confirme;
   var edtN=JSON.parse(JSON.stringify(edtV));
   edtN.replacee=true; edtN.aReplacer=false; edtN.deplaceeVers=edtP[0]+'|'+edtP[1];
   edtEcrireDecisionsGroupe([
@@ -20166,7 +20183,7 @@ function edtReplacerHeure(nomClasse,cle,cible){
    même jour, jamais deux fois la même classe, jamais une heure à la fois au
    départ et à l'arrivée. */
 function edtVerifierCoherence(depuis,jours){
-  var edtOut=[],edtD=edtDepart=depuis||edtAujourdhui();
+  var edtOut=[],edtDepart=depuis||edtAujourdhui();
   for(var edtJ=0;edtJ<(jours||30);edtJ++){
     var edtIso=edtPlusJour(edtDepart,edtJ);
     if(edtJourSansCours(edtIso))continue;

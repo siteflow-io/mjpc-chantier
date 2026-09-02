@@ -3403,3 +3403,58 @@ Le reste — les comptes de fonctions, les 14 repères, les 21 identifiants dist
 **Cahier vivant** — ⑧-a à pousser puis auditer, puis ⑧, **et c'est la fin du lot** ; puis ton promeus.
 
 MEMO
+
+---
+
+## TOUR 68 — Paul
+
+Texte mot pour mot :
+
+> livré
+
+---
+
+## TOUR 68 — Claude (conscience n°11)
+
+Audit joué sur pièces : candidat au sas mesuré **1 753 662 o / `84e2e5f5…`** — **différent de
+celui qu'il annonçait avant poussée** · historique : **deux commits** · rapport lu, il déclare
+les deux · **noms de fonctions recomptés : 221/221, aucun doublon** · `edtPhotoAuto`,
+`edtEcheanceDue`, `edtPhotoFaite` lues · `edt-fige` recomptée. Registre : `n°11 · 46`.
+
+Réponse mot pour mot :
+
+**Verdict : ça va. Et il a trouvé tout seul un défaut qui t'aurait agacé tous les trimestres.**
+
+## Ce que j'ai vu en arrivant
+
+Le candidat au sas **n'est pas celui qu'il t'avait annoncé** : 1 753 662 octets au lieu de 1 753 527. J'ai regardé l'historique — **deux poussées**, la seconde une heure après.
+
+**Et c'est propre** : son rapport porte le bon md5, relu après poussée, et dit du premier en toutes lettres : « il portait la modale bloquante décrite plus bas, **il ne doit pas être audité** ». C'est exactement ce qui manquait le 27 août, quand un rapport décrivait un état et le sas en portait un autre.
+
+## Ce qu'il a corrigé entre les deux
+
+`atInfo` n'est pas un bandeau discret : **c'est une modale avec un bouton « Compris »**. Sa photo automatique en ouvrait une **à chaque rentrée et à chaque début de période** — elle recouvrait ton emploi du temps et **te mangeait le premier clic**.
+
+Il l'a rendue silencieuse. J'ai vérifié dans le code : la photo automatique n'ouvre plus rien. Celle que tu prends à la main garde son message.
+
+## Le doublon est réglé
+
+**221 déclarations pour 221 noms distincts.** Aucun nom en double, aucune fonction perdue, cinq ajoutées et nommées. Le compte de contrôle du lot est enfin juste — il l'était faux depuis le début.
+
+Et **il n'a rien renommé** : `edt-fige` est toujours à neuf occurrences, ton plein écran est intact. La correction du mandat a fait son effet.
+
+## Le mécanisme, lu
+
+La photo automatique **refuse en mode test**, ne fait rien s'il n'y a pas d'échéance, et **ne se refait pas** si elle a déjà été prise — parce qu'elle cherche l'échéance **dans les photos elles-mêmes**, pas dans un drapeau à part. Donc ça tient après rechargement.
+
+Ce que je n'ai pas pu contre-mesurer moi-même : ses chiffres de banc (les 26 cases, les 21 identifiants, le contrôle négatif du mode test). Je ne peux pas exécuter la page. Ils sont notés au registre.
+
+Tout est au registre, `n°11 · 46`.
+
+**Tests manuels : aucun.** Rien en production.
+
+**Ce qu'il attend de toi : « continuer ».** Dernière livraison du lot : la matrice, la séquence de test, le banc complet, et le rapport final.
+
+**Cahier vivant** — ⑧, **et c'est fini** ; puis ton promeus.
+
+MEMO

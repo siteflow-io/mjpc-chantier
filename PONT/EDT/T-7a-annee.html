@@ -1,0 +1,173 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8">
+<title>MJPC — vue Année (rendu ⑦-a, calendrier réel 2026-2027)</title>
+<style>
+:root{--fond:#120f0b;--carte:#1c1712;--carte2:#241d16;--bord:#3a2f24;--bord2:#5a4a37;--texte:#efe6d8;--texte2:#b8a894;--sourd:#7d6f5e;--or:#e0b25a}
+*{box-sizing:border-box}html,body{height:100%;overflow:hidden}
+body{margin:0;background:var(--fond);color:var(--texte);font-family:'EB Garamond',Georgia,serif;font-size:15px}
+.page{height:100vh;padding:8px 12px;display:flex;flex-direction:column;gap:6px}
+.tete{display:flex;align-items:center;gap:9px}.tete h1{font-size:1.15rem;margin:0;font-weight:600}
+.btn{background:var(--carte);border:1px solid var(--bord2);color:var(--texte);padding:4px 11px;border-radius:9px;font:inherit;font-size:.9rem;cursor:pointer}
+.btn.on{border-color:var(--or);color:var(--or);background:var(--carte2);font-weight:600}
+.droite{margin-left:auto;display:flex;gap:7px;align-items:center}
+.zoomind{color:var(--sourd);font-size:.82rem;margin-left:8px}
+.leg{display:flex;gap:14px;font-size:.78rem;color:var(--texte2);flex-wrap:wrap;align-items:center}
+.leg span::before{content:'';display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+.leg .a::before{background:#4a3b6b}.leg .b2::before{background:#2f3f5c}.leg .c::before{background:#5c4a20}
+.leg .d::before{background:rgba(255,255,255,.05);border:1px solid var(--bord)}
+.leg .fr::before{background:rgba(201,68,58,.12);border:1px solid #7a3b34}
+.leg .e::before{background:#5c9e6e}.leg .f::before{background:#4a4038}.leg .g::before{background:#8a6a2e}
+.an{flex:1;min-height:0;display:grid;grid-template-columns:repeat(12,1fr);gap:5px;overflow:hidden}
+.mois{display:flex;flex-direction:column;min-height:0;border:1px solid var(--bord);border-radius:8px;background:var(--carte);overflow:hidden}
+.mois>h2{margin:0;padding:3px 6px;text-align:center;color:var(--or);background:var(--carte2);border-bottom:1px solid var(--bord);font-weight:600;font-size:.78rem}
+.jours{flex:1;min-height:0;display:flex;flex-direction:column}
+.j{display:grid;grid-template-columns:15px 15px 1fr;align-items:stretch;border-bottom:1px solid rgba(58,47,36,.45);position:relative;flex:1 1 0;font-size:.66rem}
+.j .n{color:var(--sourd);text-align:right;padding-right:3px;line-height:1.5}
+.j .d{color:var(--texte2);text-align:center;line-height:1.5}
+.j.vac{background:rgba(255,255,255,.05)}.j.fer{background:rgba(201,68,58,.12)}
+.j.plat{flex:0 0 9px;font-size:.52rem;background:rgba(255,255,255,.025)}
+.j.plat .n,.j.plat .d{line-height:9px;color:#5d5348}
+.j .z{position:relative}
+.b{position:absolute;left:0;border-radius:3px;padding:0 3px;white-space:nowrap;overflow:hidden;color:#efe6d8;cursor:pointer;height:10px;font-size:.58rem;line-height:10px}
+.b.classe{background:#4a3b6b;border:1px solid #6b5a8c}.b.etab{background:#2f3f5c;border:1px solid #46587a}.b.jalon{background:#5c4a20;border:1px solid var(--or)}
+.b .ok{color:#9fd0b0}
+.pas{position:absolute;right:2px;top:3px;display:flex;gap:1px}.pas i{border-radius:1px;display:block;width:6px;height:6px}
+.pj{background:#5c9e6e}.pp{background:#4a4038}.ps{background:#8a6a2e}
+/* zoomé : les libellés se lisent, et c'est le seul écran où l'on défile de côté */
+body.zoom .an{overflow-x:auto;grid-template-columns:repeat(12,minmax(330px,1fr))}
+body.zoom .j{grid-template-columns:22px 20px 1fr;font-size:.86rem}
+body.zoom .j.plat{flex:0 0 13px}
+body.zoom .b{height:15px;font-size:.8rem;line-height:15px}
+body.zoom .pas i{width:8px;height:8px}
+.detail{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);background:var(--carte2);border:1px solid var(--or);border-radius:10px;padding:14px 18px;max-width:520px;display:none;z-index:9}
+.detail.on{display:block}.detail b{color:var(--or)}
+</style></head><body>
+<div class="page">
+  <div class="tete"><h1>Mon année — 2026-2027</h1>
+    <span class="zoomind" id="zi">dézoomé — Ctrl + molette pour zoomer</span>
+    <span class="droite"><button class="btn" onclick="zoomer(false)">Dézoomer</button><button class="btn" onclick="zoomer(true)">Zoomer</button></span></div>
+  <div class="leg">
+    <span class="b2">événement d’établissement</span><span class="a">événement de classe</span><span class="c">jalon</span>
+    <span class="d">vacances</span><span class="fr">férié</span>
+    <span class="e">heure jouée</span><span class="f">heure prévue</span><span class="g">sans séance</span>
+    <span>· jours aplatis : week-ends, vacances et fériés — numéro et initiale restent lisibles</span>
+  </div>
+  <div class="an" id="an"></div>
+</div>
+<div class="detail" id="det" onclick="this.classList.remove('on')"></div>
+<script>
+var CAL={"annee": "2026-2027", "source": "calendrier d'établissement 2026-2027 (pièce T38), lu cellule par cellule", "semaines": [{"lundi": "2026-08-03", "num": 32, "lettre": "A"}, {"lundi": "2026-08-10", "num": 33, "lettre": "B"}, {"lundi": "2026-08-17", "num": 34, "lettre": "A"}, {"lundi": "2026-08-24", "num": 35, "lettre": "B"}, {"lundi": "2026-08-31", "num": 36, "lettre": "A"}, {"lundi": "2026-09-07", "num": 37, "lettre": "B"}, {"lundi": "2026-09-14", "num": 38, "lettre": "A"}, {"lundi": "2026-09-21", "num": 39, "lettre": "B"}, {"lundi": "2026-09-28", "num": 40, "lettre": "A"}, {"lundi": "2026-10-05", "num": 41, "lettre": "B"}, {"lundi": "2026-10-12", "num": 42, "lettre": "A"}, {"lundi": "2026-10-19", "num": 43, "lettre": "B"}, {"lundi": "2026-10-26", "num": 44, "lettre": "A"}, {"lundi": "2026-11-02", "num": 45, "lettre": "B"}, {"lundi": "2026-11-09", "num": 46, "lettre": "A"}, {"lundi": "2026-11-16", "num": 47, "lettre": "B"}, {"lundi": "2026-11-23", "num": 48, "lettre": "A"}, {"lundi": "2026-11-30", "num": 49, "lettre": "B"}, {"lundi": "2026-12-07", "num": 50, "lettre": "A"}, {"lundi": "2026-12-14", "num": 51, "lettre": "B"}, {"lundi": "2026-12-21", "num": 52, "lettre": "A"}, {"lundi": "2026-12-28", "num": 53, "lettre": "B"}, {"lundi": "2027-01-04", "num": 1, "lettre": "A"}, {"lundi": "2027-01-11", "num": 2, "lettre": "B"}, {"lundi": "2027-01-18", "num": 3, "lettre": "A"}, {"lundi": "2027-01-25", "num": 4, "lettre": "B"}, {"lundi": "2027-02-01", "num": 5, "lettre": "A"}, {"lundi": "2027-02-08", "num": 6, "lettre": "B"}, {"lundi": "2027-02-15", "num": 7, "lettre": "A"}, {"lundi": "2027-02-22", "num": 8, "lettre": "B"}, {"lundi": "2027-03-01", "num": 9, "lettre": "A"}, {"lundi": "2027-03-08", "num": 10, "lettre": "B"}, {"lundi": "2027-03-15", "num": 11, "lettre": "A"}, {"lundi": "2027-03-22", "num": 12, "lettre": "B"}, {"lundi": "2027-03-29", "num": 13, "lettre": "A"}, {"lundi": "2027-04-05", "num": 14, "lettre": "B"}, {"lundi": "2027-04-12", "num": 15, "lettre": "A"}, {"lundi": "2027-04-19", "num": 16, "lettre": "B"}, {"lundi": "2027-04-26", "num": 17, "lettre": "A"}, {"lundi": "2027-05-03", "num": 18, "lettre": "B"}, {"lundi": "2027-05-10", "num": 19, "lettre": "A"}, {"lundi": "2027-05-17", "num": 20, "lettre": "B"}, {"lundi": "2027-05-24", "num": 21, "lettre": "A"}, {"lundi": "2027-05-31", "num": 22, "lettre": "B"}, {"lundi": "2027-06-07", "num": 23, "lettre": "A"}, {"lundi": "2027-06-14", "num": 24, "lettre": "B"}, {"lundi": "2027-06-21", "num": 25, "lettre": "A"}, {"lundi": "2027-06-28", "num": 26, "lettre": "B"}, {"lundi": "2027-07-05", "num": 27, "lettre": "A"}, {"lundi": "2027-07-12", "num": 28, "lettre": "B"}, {"lundi": "2027-07-19", "num": 29, "lettre": "A"}, {"lundi": "2027-07-26", "num": 30, "lettre": "B"}], "vacances": [{"nom": "d'été (avant la rentrée)", "type": "vacances", "debut": "2026-08-01", "fin": "2026-08-26", "jours": 26, "lu": "fond gris du calendrier, jour par jour"}, {"nom": "de la Toussaint", "type": "vacances", "debut": "2026-10-17", "fin": "2026-10-31", "jours": 15, "lu": "fond gris du calendrier, jour par jour"}, {"nom": "de Noël", "type": "vacances", "debut": "2026-12-19", "fin": "2027-01-02", "jours": 15, "lu": "fond gris du calendrier, jour par jour"}, {"nom": "d’Hiver", "type": "vacances", "debut": "2027-02-20", "fin": "2027-03-06", "jours": 15, "lu": "fond gris du calendrier, jour par jour"}, {"nom": "de Printemps", "type": "vacances", "debut": "2027-04-17", "fin": "2027-05-01", "jours": 15, "lu": "fond gris du calendrier, jour par jour"}, {"nom": "pont de l'Ascension", "type": "pont", "debut": "2027-05-06", "fin": "2027-05-08", "jours": 3, "lu": "fond gris du calendrier, jour par jour"}, {"nom": "d’été", "type": "vacances", "debut": "2027-07-03", "fin": "2027-07-31", "jours": 29, "lu": "fond gris du calendrier, jour par jour"}], "feries": [{"date": "2026-08-15", "libelle": "Assomption"}, {"date": "2026-11-01", "libelle": "Toussaint"}, {"date": "2026-11-11", "libelle": "Armistice"}, {"date": "2026-12-25", "libelle": "Noël"}, {"date": "2027-01-01", "libelle": "Jour de l’An"}, {"date": "2027-03-29", "libelle": "Pâques"}, {"date": "2027-05-01", "libelle": "Fête du Travail"}, {"date": "2027-05-06", "libelle": "Ascension"}, {"date": "2027-05-07", "libelle": "Pont de l’Ascension"}, {"date": "2027-05-08", "libelle": "Victoire 1945"}, {"date": "2027-05-17", "libelle": "Pentecôte"}], "jalons": [{"date": "2026-11-03", "libelle": "Conseils intermédiaires 3e"}, {"date": "2026-11-09", "libelle": "Conseils intermédiaires 6e"}, {"date": "2026-11-12", "libelle": "Conseils intermédiaires 4e"}, {"date": "2026-11-14", "libelle": "11h remise des diplômes du DNB", "heure": "11:00"}, {"date": "2026-11-16", "libelle": "Conseils intermédiaires 5e"}, {"date": "2027-01-04", "libelle": "Journée pédagogique"}, {"date": "2027-01-07", "libelle": "Soir arrêt des notes"}, {"date": "2027-01-11", "libelle": "Conseils 1er semestre 17h 3e J.Lennon 4e V.Hugo 18h 3e N.Simone 4e Turing", "heure": "17:00"}, {"date": "2027-01-12", "libelle": "Conseils 1er semestre : 17h 5e Malala 6e Brocéliande 18h 5e J.Verne", "heure": "17:00"}, {"date": "2027-01-14", "libelle": "Conseils 1er semestre 16h 3e B.Dylan 4e Banksy 17h 3e A.Franklin 4e Pythagore", "heure": "16:00"}, {"date": "2027-01-18", "libelle": "Conseils 1er semestre : 17h 5e M.Curie 18h 5e T.Pesquet 6e St-Malo", "heure": "17:00"}, {"date": "2027-01-19", "libelle": "Conseils 1er semestre 17h 6e Armor 18h 6e St-Michel", "heure": "17:00"}, {"date": "2027-03-12", "libelle": "Journée pédagogique"}, {"date": "2027-03-16", "libelle": "Conseils intermédiaires 3e"}, {"date": "2027-03-22", "libelle": "Conseils intermédiaires 5e"}, {"date": "2027-03-25", "libelle": "Conseils intermédiaires 6e"}, {"date": "2027-04-05", "libelle": "Randonnée solidaire Conseils intermédiaires 4e"}, {"date": "2027-05-12", "libelle": "DNB Blanc 3"}, {"date": "2027-05-13", "libelle": "DNB Blanc 3"}, {"date": "2027-05-14", "libelle": "DNB Blanc 3"}, {"date": "2027-05-20", "libelle": "16h-17h Oraux blancs", "heure": "16:00"}, {"date": "2027-05-31", "libelle": "Conseils d'orientation 3e"}, {"date": "2027-06-02", "libelle": "Oraux DNB"}, {"date": "2027-06-03", "libelle": "Conseils d'orientation 4e"}, {"date": "2027-06-07", "libelle": "Conseils d'orientation 6e"}, {"date": "2027-06-08", "libelle": "Conseils d'orientation 5e"}, {"date": "2027-06-25", "libelle": "DNB"}, {"date": "2027-06-25", "libelle": "14h journée pédagogique", "heure": "14:00"}, {"date": "2027-06-28", "libelle": "DNB"}, {"date": "2027-06-29", "libelle": "DNB"}], "etablissement": [{"date": "2026-08-27", "libelle": "9h30 CODIR", "heure": "09:30", "prendLeCreneau": false}, {"date": "2026-08-27", "libelle": "12h déjeuner de l'équipe", "heure": "12:00", "prendLeCreneau": false}, {"date": "2026-08-27", "libelle": "13h45 photo 14h30-18h pré-rentrée", "heure": "13:45", "prendLeCreneau": true}, {"date": "2026-08-28", "libelle": "8h30-17h pré-rentrée", "heure": "08:30", "prendLeCreneau": true}, {"date": "2026-08-31", "libelle": "préparation rentrée", "prendLeCreneau": true}, {"date": "2026-09-01", "libelle": "Rentrée scolaire des élèves de 6e", "prendLeCreneau": true}, {"date": "2026-09-01", "libelle": "après-midi jeux cohésion", "prendLeCreneau": false}, {"date": "2026-09-02", "libelle": "Rentrée scolaire des élèves de 5e, 4 et 3e", "prendLeCreneau": true}, {"date": "2026-09-03", "libelle": "matin, temps de cohésion", "prendLeCreneau": true}, {"date": "2026-09-03", "libelle": "5e, 4 et 3e", "prendLeCreneau": false}, {"date": "2026-09-08", "libelle": "17h Equipes éducatives 3e", "heure": "17:00", "prendLeCreneau": false}, {"date": "2026-09-08", "libelle": "18h30 Parents 3e", "heure": "18:30", "prendLeCreneau": false}, {"date": "2026-09-10", "libelle": "13h Photo des classes", "heure": "13:00", "prendLeCreneau": true}, {"date": "2026-09-10", "libelle": "16h Célébration de rentrée 17h Equipes éduc. 6e 18h30 Parents 6e", "heure": "16:00", "prendLeCreneau": true}, {"date": "2026-09-14", "libelle": "16h Equipe éduc. N.Laury 17h Equipes éducatives 5e", "heure": "16:00", "prendLeCreneau": false}, {"date": "2026-09-14", "libelle": "18h30 Parents 5e", "heure": "18:30", "prendLeCreneau": false}, {"date": "2026-09-15", "libelle": "17h Equipes éducatives 4e 18h30 Parents 4e", "heure": "17:00", "prendLeCreneau": false}, {"date": "2026-09-24", "libelle": "9h40 Alerte incendie", "heure": "09:40", "prendLeCreneau": true}, {"date": "2026-09-28", "libelle": "Cross", "prendLeCreneau": true}, {"date": "2026-10-06", "libelle": "matin, sortie EMS Classe Défense", "prendLeCreneau": true}, {"date": "2026-11-05", "libelle": "16h prépa portes ouvertes", "heure": "16:00", "prendLeCreneau": false}, {"date": "2026-11-09", "libelle": "11h Commémoration du 11 11", "heure": "11:00", "prendLeCreneau": true}, {"date": "2026-11-13", "libelle": "Portes ouvertes (soir)", "prendLeCreneau": false}, {"date": "2026-11-14", "libelle": "Portes ouvertes (matin)", "prendLeCreneau": false}, {"date": "2026-11-18", "libelle": "Formation IA réseau (matin)", "prendLeCreneau": false}, {"date": "2026-11-20", "libelle": "Journée orientation", "prendLeCreneau": false}, {"date": "2026-11-20", "libelle": "4e et 3e", "prendLeCreneau": false}, {"date": "2026-11-24", "libelle": "18h30 : réunion parents 3e et CE lycées Saumur ?", "heure": "18:30", "prendLeCreneau": false}, {"date": "2026-11-26", "libelle": "Rencontre de parents 6e", "prendLeCreneau": false}, {"date": "2026-11-30", "libelle": "11h45 Alerte confinement", "heure": "11:45", "prendLeCreneau": true}, {"date": "2026-11-30", "libelle": "Rencontre des parents 3e", "prendLeCreneau": false}, {"date": "2026-12-01", "libelle": "Matin, visite du Prytanée (classe Défense)", "prendLeCreneau": true}, {"date": "2026-12-03", "libelle": "Rencontres de parents 4", "prendLeCreneau": false}, {"date": "2026-12-07", "libelle": "Devoirs communs 3e Rencontre de parents 5", "prendLeCreneau": true}, {"date": "2026-12-08", "libelle": "Devoirs communs 3e", "prendLeCreneau": true}, {"date": "2026-12-09", "libelle": "Devoirs communs 3e", "prendLeCreneau": true}, {"date": "2026-12-10", "libelle": "Devoirs communs 3e", "prendLeCreneau": true}, {"date": "2026-12-18", "libelle": "13h", "heure": "13:00", "prendLeCreneau": false}, {"date": "2026-12-18", "libelle": "Célébration et temps fort de Noël", "prendLeCreneau": true}, {"date": "2027-01-07", "libelle": "18h30 Présentation options 3e/ séjour aux Pays-Bas parents 4e", "heure": "18:30", "prendLeCreneau": false}, {"date": "2027-01-19", "libelle": "14h30 Alerte incendie", "heure": "14:30", "prendLeCreneau": true}, {"date": "2027-02-01", "libelle": "AG", "prendLeCreneau": false}, {"date": "2027-02-08", "libelle": "18h30 Conseil d'établissement", "heure": "18:30", "prendLeCreneau": false}, {"date": "2027-02-16", "libelle": "Accueil des CM2", "prendLeCreneau": true}, {"date": "2027-03-11", "libelle": "18h30 présentation LV2/latin parents 6e et présentation immersion pro' parents 5e", "heure": "18:30", "prendLeCreneau": false}, {"date": "2027-03-19", "libelle": "Bol de riz", "prendLeCreneau": true}, {"date": "2027-03-19", "libelle": "Fête de la Saint-Joseph", "prendLeCreneau": false}, {"date": "2027-03-22", "libelle": "Devoirs communs 4", "prendLeCreneau": true}, {"date": "2027-03-23", "libelle": "Devoirs communs 4", "prendLeCreneau": true}, {"date": "2027-05-03", "libelle": "AG", "prendLeCreneau": false}, {"date": "2027-05-26", "libelle": "Répétition comédie musicale ?", "prendLeCreneau": true}, {"date": "2027-06-09", "libelle": "Répétition comédie musicale ?", "prendLeCreneau": true}, {"date": "2027-06-10", "libelle": "Comédie musicale", "prendLeCreneau": true}, {"date": "2027-06-11", "libelle": "Comédie musicale", "prendLeCreneau": true}, {"date": "2027-06-12", "libelle": "Comédie musicale", "prendLeCreneau": true}, {"date": "2027-06-17", "libelle": "RoboTec ?", "prendLeCreneau": false}, {"date": "2027-06-18", "libelle": "Cocktail les Ardilliers", "prendLeCreneau": false}, {"date": "2027-06-28", "libelle": "14h30 temps de travail d'équipe", "heure": "14:30", "prendLeCreneau": false}, {"date": "2027-07-14", "libelle": "Fête Nationale", "prendLeCreneau": false}], "evenementsClasse": [{"libelle": "Tribunal Saumur 4e (après-midi) ? 17h AG", "heure": "17:00", "niveau": "4e", "classes": [], "debut": "2026-09-17", "fin": "2026-09-17"}, {"libelle": "Séjour Verdun 3e", "niveau": "3e", "classes": [], "debut": "2026-10-14", "fin": "2026-10-16"}, {"libelle": "Tribunal Saumur 4e (après-midi)", "niveau": "4e", "classes": [], "debut": "2026-11-05", "fin": "2026-11-05"}, {"libelle": "Stages 3e (uniquement 3e Horizon pro)", "niveau": "3e", "classes": [], "debut": "2026-11-16", "fin": "2026-11-16"}, {"libelle": "Stages 3e", "niveau": "3e", "classes": [], "debut": "2026-11-17", "fin": "2026-11-18"}, {"libelle": "3e rapport de stage (matin) Forum métiers Saumur (13h30 15h)", "heure": "13:30", "niveau": "3e", "classes": [], "debut": "2026-11-19", "fin": "2026-11-19"}, {"libelle": "Tribunal 4e Soirée orientation 4e", "niveau": "4e", "classes": [], "debut": "2026-11-19", "fin": "2026-11-19"}, {"libelle": "Visite des lycées St-Louis / les Ardilliers 3e", "niveau": "3e", "classes": [], "debut": "2026-11-23", "fin": "2026-11-23"}, {"libelle": "Stages 3e horizon Pro", "niveau": "3e", "classes": [], "debut": "2027-01-13", "fin": "2027-01-15"}, {"libelle": "Compétition des métiers WorldSkills niveau 4e ?", "niveau": "4e", "classes": [], "debut": "2027-02-12", "fin": "2027-02-12"}, {"libelle": "Orientibus niveau 4e", "niveau": "4e", "classes": [], "debut": "2027-02-18", "fin": "2027-02-18"}, {"libelle": "Forum métiers Doué niveau 4e (après-midi)", "niveau": "4e", "classes": [], "debut": "2027-02-19", "fin": "2027-02-19"}, {"libelle": "Stage 4", "niveau": "4e", "classes": [], "debut": "2027-03-24", "fin": "2027-03-25"}, {"libelle": "Stage 4 13h Chemin de Croix", "heure": "13:00", "niveau": "4e", "classes": [], "debut": "2027-03-26", "fin": "2027-03-26"}, {"libelle": "Séjour Pays-Bas 4e (soir)", "niveau": "4e", "classes": [], "debut": "2027-04-12", "fin": "2027-04-17"}], "brevet": {"3e": "2027-06-25T08:00:00", "note": "premier jour du DNB au calendrier de l'établissement ; l'injection écrit /site/config/brevetDates/3e (seule écriture de l'EDT hors /site/edt/, exception nommée au contrat)"}}, GRILLE={"annee": "2026-2027", "source": "grille papier de Paul, 2026-2027 (pièce T85), lue case par case", "creneauxDuSite": [{"rang": 1, "debut": "08:00", "fin": "08:55"}, {"rang": 2, "debut": "08:57", "fin": "09:52"}, {"rang": 3, "debut": "10:07", "fin": "11:02"}, {"rang": 4, "debut": "11:04", "fin": "11:59"}, {"rang": 5, "debut": "13:00", "fin": "13:55"}, {"rang": 6, "debut": "13:57", "fin": "14:52"}, {"rang": 7, "debut": "15:07", "fin": "16:02"}, {"rang": 8, "debut": "16:04", "fin": "16:59"}], "note": "Une seule injection écrit trois nœuds : les cases (grille), les horaires (creneaux) et le découpage (periodes). Les périodes arrivent avec leurs noms tels qu'ils sont écrits sur la feuille, dates vides ; elles sont ensuite éditables dans l'EDT, et une réinjection ne perd jamais les dates déjà saisies. Les jours ouvrés et les demi-journées sans cours sont déclarés ici, jamais dans le code.", "creneaux": [{"jour": "lundi", "creneau": "08:57-09:52", "semaine": "AB", "classe": "3 FRANKLIN Aretha", "salle": "9", "mjpc": true, "classeMjpc": ""}, {"jour": "lundi", "creneau": "10:07-11:02", "semaine": "A", "classe": "X Français X. — 4 HUGO", "salle": "20 / 9", "mjpc": false, "motif": "groupe partagé — hors français, ne compte jamais dans la progression"}, {"jour": "lundi", "creneau": "10:07-11:02", "semaine": "B", "classe": "X Français X. — 4 TURING", "salle": "9", "mjpc": false, "motif": "groupe partagé — hors français, ne compte jamais dans la progression"}, {"jour": "lundi", "creneau": "11:04-11:59", "semaine": "B", "classe": "4 HUGO", "salle": "9", "mjpc": true, "classeMjpc": ""}, {"jour": "lundi", "creneau": "15:07-16:02", "semaine": "A", "classe": "3 DYLAN Bob", "salle": "9", "mjpc": true, "classeMjpc": ""}, {"jour": "lundi", "creneau": "16:04-16:59", "semaine": "A", "classe": "4 TURING", "salle": "9", "mjpc": true, "classeMjpc": ""}, {"jour": "mardi", "creneau": "08:57-09:52", "semaine": "B", "classe": "4 TURING", "salle": "9", "mjpc": true, "classeMjpc": ""}, {"jour": "mardi", "creneau": "10:07-11:02", "semaine": "AB", "classe": "3 DYLAN Bob", "salle": "9", "mjpc": true, "classeMjpc": ""}, {"jour": "mardi", "creneau": "11:04-11:59", "semaine": "B", "classe": "X Français X. — 4 BANKSY", "salle": "20 / 9", "mjpc": false, "motif": "groupe partagé — hors français, ne compte jamais dans la progression"}, {"jour": "mardi", "creneau": "13:00-13:55", "semaine": "A", "classe": "4 HUGO", "salle": "9", "mjpc": true, "classeMjpc": ""}, {"jour": "mardi", "creneau": "13:00-13:55", "semaine": "B", "classe": "4 HUGO", "salle": "9", "mjpc": true, "classeMjpc": ""}, {"jour": "mardi", "creneau": "13:57-14:52", "semaine": "A", "classe": "4 TURING", "salle": "9", "mjpc": true, "classeMjpc": ""}, {"jour": "mardi", "creneau": "15:07-16:02", "semaine": "A", "classe": "3 FRANKLIN Aretha", "salle": "9", "mjpc": true, "classeMjpc": "", "periodes": ["P3", "P4", "PFIN"]}, {"jour": "mardi", "creneau": "15:07-16:02", "semaine": "B", "classe": "3 FRANKLIN Aretha", "salle": "9", "mjpc": true, "classeMjpc": "", "periodes": ["P1", "P2"]}, {"jour": "mardi", "creneau": "16:04-16:59", "semaine": "B", "classe": "3 DYLAN Bob", "salle": "9", "mjpc": true, "classeMjpc": ""}, {"jour": "mercredi", "creneau": "08:00-08:55", "semaine": "AB", "classe": "4 HUGO", "salle": "9", "mjpc": true, "classeMjpc": "", "fil": "langue", "cadence": "chaque semaine"}, {"jour": "mercredi", "creneau": "08:57-09:52", "semaine": "AB", "classe": "4 TURING", "salle": "9", "mjpc": true, "classeMjpc": "", "fil": "langue", "cadence": "chaque semaine"}, {"jour": "mercredi", "creneau": "10:07-11:02", "semaine": "A", "classe": "3 FRANKLIN Aretha", "salle": "9", "mjpc": true, "classeMjpc": "", "fil": "langue", "cadence": "semaine A"}, {"jour": "mercredi", "creneau": "10:07-11:02", "semaine": "B", "classe": "3 FRANKLIN Aretha", "salle": "9", "mjpc": true, "classeMjpc": ""}, {"jour": "mercredi", "creneau": "11:04-11:59", "semaine": "A", "classe": "3 DYLAN Bob", "salle": "9", "mjpc": true, "classeMjpc": "", "fil": "langue", "cadence": "semaine A"}, {"jour": "mercredi", "creneau": "11:04-11:59", "semaine": "B", "classe": "X Français X. — 4 PYTHAGORE", "salle": "20 / 9", "mjpc": false, "motif": "groupe partagé — hors français, ne compte jamais dans la progression"}, {"jour": "jeudi", "creneau": "11:04-11:59", "semaine": "B", "classe": "4 TURING", "salle": "9", "mjpc": true, "classeMjpc": ""}, {"jour": "jeudi", "creneau": "15:07-16:02", "semaine": "A", "classe": "3 DYLAN Bob", "salle": "9", "mjpc": true, "classeMjpc": ""}, {"jour": "jeudi", "creneau": "15:07-16:02", "semaine": "B", "classe": "4 HUGO", "salle": "9", "mjpc": true, "classeMjpc": ""}, {"jour": "jeudi", "creneau": "16:04-16:59", "semaine": "A", "classe": "Concertation", "salle": "", "mjpc": false, "motif": "réunion d'équipe — pas un cours"}, {"jour": "jeudi", "creneau": "16:04-16:59", "semaine": "B", "classe": "3 FRANKLIN Aretha", "salle": "9", "mjpc": true, "classeMjpc": ""}, {"jour": "vendredi", "creneau": "08:00-08:55", "semaine": "AB", "classe": "4 TURING", "salle": "9", "mjpc": true, "classeMjpc": ""}, {"jour": "vendredi", "creneau": "08:57-09:52", "semaine": "AB", "classe": "4 HUGO", "salle": "9", "mjpc": true, "classeMjpc": ""}, {"jour": "vendredi", "creneau": "10:07-11:02", "semaine": "AB", "classe": "3 FRANKLIN Aretha", "salle": "9", "mjpc": true, "classeMjpc": ""}, {"jour": "vendredi", "creneau": "11:04-11:59", "semaine": "AB", "classe": "3 DYLAN Bob", "salle": "9", "mjpc": true, "classeMjpc": ""}], "creneauxFictifs": [{"jour": "lundi", "creneau": "08:00-08:55", "semaine": "AB", "classe": "3E Charles de Gaulle (classe d'essai)", "salle": "", "mjpc": true, "classeMjpc": "3E Charles de Gaulle", "fictif": true}, {"jour": "mardi", "creneau": "08:00-08:55", "semaine": "AB", "classe": "3E Charles de Gaulle (classe d'essai)", "salle": "", "mjpc": true, "classeMjpc": "3E Charles de Gaulle", "fictif": true}, {"jour": "jeudi", "creneau": "10:07-11:02", "semaine": "AB", "classe": "3E Charles de Gaulle (classe d'essai)", "salle": "", "mjpc": true, "classeMjpc": "3E Charles de Gaulle", "fictif": true}, {"jour": "vendredi", "creneau": "13:00-13:55", "semaine": "AB", "classe": "3E Charles de Gaulle (classe d'essai)", "salle": "", "mjpc": true, "classeMjpc": "3E Charles de Gaulle", "fictif": true}], "periodes": [{"rang": 1, "nom": "P1", "debut": "", "fin": ""}, {"rang": 2, "nom": "P2", "debut": "", "fin": ""}, {"rang": 3, "nom": "P3", "debut": "", "fin": ""}, {"rang": 4, "nom": "P4", "debut": "", "fin": ""}, {"rang": 5, "nom": "PFIN", "debut": "", "fin": ""}], "jours": ["lundi", "mardi", "mercredi", "jeudi", "vendredi"], "sansApresMidi": {"mercredi": "12:00"}, "noteFictifs": "Quatre heures d'essai posées le 01/09 par décision de Paul (lundi 08:00, mardi 08:00, jeudi 10:07, vendredi 13:00, semaine AB). Elles ne sont lues QUE si le mode test du site est allumé : éteint, elles n'existent pas et ne comptent nulle part. Rien à nettoyer."};
+/* décisions FICTIVES, posées dans ce rendu statique pour montrer les trois
+   couleurs de pastille et la pastille d'événement — déclaré au rapport. */
+var DECISIONS={'2026-11-16':{'3E Charles de Gaulle':'jouee'},'2026-11-17':{'3E Charles de Gaulle':'sans'},
+  '2026-10-14':{'3E Charles de Gaulle':'jouee'}};
+var MOIS=['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
+var INI=['D','L','M','M','J','V','S'];
+var ORDRE=[[2026,7],[2026,8],[2026,9],[2026,10],[2026,11],[2027,0],[2027,1],[2027,2],[2027,3],[2027,4],[2027,5],[2027,6]];
+function iso(a,m,j){return a+'-'+String(m+1).padStart(2,'0')+'-'+String(j).padStart(2,'0');}
+function dansPeriode(d,a,b){return d>=a&&d<=(b||a);}
+function vacanceDe(d){var r=null;(CAL.vacances||[]).forEach(function(v){if(dansPeriode(d,v.debut,v.fin))r=v;});return r;}
+function ferieDe(d){var r=null;(CAL.feries||[]).forEach(function(f){if(f.date===d)r=f;});return r;}
+/* les événements, avec leur nature */
+var EVTS=[];
+(CAL.etablissement||[]).forEach(function(e){EVTS.push({n:'etab',t:e.libelle||e.nom||'',d:e.debut||e.date,f:e.fin||e.debut||e.date});});
+(CAL.evenementsClasse||[]).forEach(function(e){EVTS.push({n:'classe',t:e.libelle||'',d:e.debut,f:e.fin||e.debut,niveau:e.niveau,id:e.id});});
+(CAL.jalons||[]).forEach(function(e){EVTS.push({n:'jalon',t:e.libelle||e.nom||'',d:e.date||e.debut,f:e.date||e.fin||e.debut});});
+EVTS=EVTS.filter(function(e){return !!e.d;});
+/* [⑦-a] LE CAS « À CHEVAL » N'EXISTE PAS DANS LE CALENDRIER RÉEL (mesuré : 0 sur
+   104 événements). Pour le montrer, ce rendu accepte ?demo=cheval, qui ajoute UN
+   événement de démonstration du 29 octobre au 3 novembre. Déclaré au rapport. */
+if(location.search.indexOf('demo=cheval')>=0)
+  EVTS.push({n:'etab',t:'Semaine des langues (démonstration à cheval)',d:'2026-10-29',f:'2026-11-03'});
+/* les classes de la grille, pour les pastilles */
+function classesDu(d){
+  var jour=INI[new Date(d+'T00:00:00').getDay()],noms={};
+  var nomJour=['dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi'][new Date(d+'T00:00:00').getDay()];
+  (GRILLE.creneaux||[]).forEach(function(c){
+    if(c.jour!==nomJour||c.mjpc===false)return;
+    var n=c.classeMjpc||c.classe; if(!n)return; noms[n]=true;
+  });
+  return Object.keys(noms).slice(0,4);
+}
+function peindre(){
+  var an=document.getElementById('an'); an.innerHTML='';
+  ORDRE.forEach(function(am){
+    var a=am[0],m=am[1];
+    var col=document.createElement('div'); col.className='mois';
+    col.innerHTML='<h2>'+MOIS[m]+'</h2>';
+    var jr=document.createElement('div'); jr.className='jours';
+    var nb=new Date(a,m+1,0).getDate();
+    for(var j=1;j<=31;j++){
+      var li=document.createElement('div'); li.className='j';
+      if(j>nb){ li.style.visibility='hidden'; jr.appendChild(li); continue; }
+      var d=iso(a,m,j),dt=new Date(d+'T00:00:00'),jsem=dt.getDay();
+      var vac=vacanceDe(d),fer=ferieDe(d),we=(jsem===0||jsem===6);
+      if(vac)li.className+=' vac';
+      if(fer)li.className+=' fer';
+      if(we||vac||fer)li.className+=' plat';
+      li.innerHTML='<span class="n">'+j+'</span><span class="d">'+INI[jsem]+'</span><span class="z"></span>';
+      var z=li.querySelector('.z');
+      /* les bandeaux : un par événement, coupé aux bornes du mois */
+      var rang=0;
+      EVTS.forEach(function(e){
+        if(!dansPeriode(d,e.d,e.f))return;
+        var premierDuBandeau=(d===e.d)||(j===1);
+        if(!premierDuBandeau)return;
+        var finMois=iso(a,m,nb), finReelle=(e.f<finMois)?e.f:finMois;
+        var jours=Math.round((new Date(finReelle+'T00:00:00')-dt)/86400000)+1;
+        var b=document.createElement('div'); b.className='b '+e.n;
+        var avant=(e.d<d)?'← ':'', apres=(e.f>finReelle)?' →':'';
+        b.textContent=avant+e.t+apres;
+        b.title=e.t+' — du '+e.d+' au '+e.f;
+        b.style.top=(rang*11+1)+'px';
+        b.style.right='2px';
+        b.style.height=(jours*100)+'%';   /* remplacé plus bas par le calcul exact */
+        b.dataset.jours=jours; b.dataset.t=e.t; b.dataset.d=e.d; b.dataset.f=e.f;
+        b.onclick=function(ev){ ev.stopPropagation();
+          var dd=document.getElementById('det');
+          dd.innerHTML='<b>'+this.dataset.t+'</b><br>du '+this.dataset.d+' au '+this.dataset.f
+            +'<br>'+this.dataset.jours+' jour(s) dans ce mois';
+          dd.classList.add('on'); };
+        z.appendChild(b); rang++;
+      });
+      /* les pastilles : une par classe, quatre au maximum */
+      if(!we&&!vac&&!fer){
+        var cl=classesDu(d);
+        if(cl.length){
+          var p=document.createElement('span'); p.className='pas';
+          cl.forEach(function(n){
+            var et=(DECISIONS[d]||{})[n]||'prevue';
+            var i=document.createElement('i');
+            i.className=(et==='jouee')?'pj':((et==='sans')?'ps':'pp');
+            i.title=n+' — '+(et==='jouee'?'heure jouée':(et==='sans'?'sans séance':'heure prévue'));
+            p.appendChild(i);
+          });
+          z.appendChild(p);
+        }
+      }
+      jr.appendChild(li);
+    }
+    col.appendChild(jr); an.appendChild(col);
+  });
+  /* hauteur réelle des bandeaux : n jours × la hauteur d'une ligne de cours */
+  document.querySelectorAll('.mois').forEach(function(col){
+    var lignes=col.querySelectorAll('.j');
+    col.querySelectorAll('.b').forEach(function(b){
+      var li=b.closest('.j'), n=Number(b.dataset.jours||1), h=0, vu=false;
+      for(var i=0;i<lignes.length;i++){
+        if(lignes[i]===li)vu=true;
+        if(vu){ h+=lignes[i].getBoundingClientRect().height; n--; if(n<=0)break; }
+      }
+      b.style.height=Math.max(10,h-2)+'px';
+    });
+  });
+}
+function zoomer(on){
+  document.body.classList.toggle('zoom',!!on);
+  document.getElementById('zi').textContent=on?'zoomé — défilement horizontal autorisé':'dézoomé — Ctrl + molette pour zoomer';
+  peindre();
+}
+addEventListener('wheel',function(e){ if(!e.ctrlKey)return; e.preventDefault();
+  zoomer(e.deltaY<0); },{passive:false});
+peindre();
+addEventListener('resize',peindre);
+</script></body></html>

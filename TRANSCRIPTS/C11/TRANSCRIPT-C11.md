@@ -3543,3 +3543,57 @@ bloc copiable, puis :
 **Cahier vivant** — ⑨ en trois temps, puis ton promeus.
 
 MEMO
+
+---
+
+## TOUR 71 — Paul
+
+Texte mot pour mot :
+
+> j'ai fait éprouver ton mandat par l'exécutant. voici son rapport: [cinq trous + deux détails de chiffres + un point non outillé — et sa question : je corrige et te livre, ou tu reprends ?]
+
+---
+
+## TOUR 71 — Claude (conscience n°11)
+
+Mesures, point par point : `edtCreneauxOu` appelée **deux fois** (L20321 sans plafond, L20353
+avec 120) · **`.slice(0,60)` L21040** · `edtFiltrerOu` **2**, « filtrer par date » **1** ·
+`aReplacer` posé **L18797 et L21265** · libellé `'heure à replacer jamais replacée'` ·
+`edtEcrireArchive` **sans rappel d'échec** · captures ⑧ = **4** · **95 png dont beaucoup du
+lot 2bis**. Mandat corrigé et redéposé (10 687 → 13 113 o). Registre : `n°11 · 49`.
+
+Réponse mot pour mot :
+
+**Sept points, sept fois raison. J'ai tout vérifié moi-même et j'ai corrigé le mandat.**
+
+## Ce qu'il a trouvé
+
+**Il y a deux listes, pas une.** Celle de la modale **va déjà jusqu'à ta fin d'année** — mon mandat aurait envoyé corriger un écran qui va bien. C'est celle du **rappel des heures à replacer** qui est coupée. **Et elle l'est deux fois** : 120 jours, **plus une coupe à 60 entrées** que je n'avais pas vue. Un exécutant aurait corrigé la première et cru avoir fini.
+
+**« Aucune recherche » était inexact** : un filtre par date existe déjà dans la modale. Ce qui manque, c'est mois, semaine et type A/B — et mon mandat ne disait pas **où** les poser.
+
+**« Rien ne pose le motif » était faux** : deux endroits le posent. Mais surtout — **et c'est mieux que mon point** : le libellé dit **« heure à replacer jamais replacée » dès l'écrasement**. Une heure prise ce matin t'annonce déjà qu'elle ne sera jamais replacée, alors que tu peux la poser demain. Poser la bascule sans traiter ça rendrait les deux états impossibles à distinguer — **or c'est exactement ce que la bascule sert à distinguer**.
+
+**Et le remède de la photo n'est pas une ligne à déplacer** : la fonction d'écriture **n'a aucun rappel d'échec**. Le drapeau ne peut se poser qu'au succès — mais alors deux ouvertures rapprochées feraient partir deux photos. **Il en faut deux : un « en cours », un « faite ».**
+
+Deux de mes chiffres étaient faux : ⑧ a **4** captures, pas 5, et mon comptage attrapait des captures du **lot 2bis**. Le constat central tient : **aucune capture du lot 2ter pour ⑤ et ⑥**.
+
+Et il a raison sur un point que je n'avais pas outillé : la bascule ne se déclenche qu'en juin 2027. Pour la prouver aujourd'hui, il faut **déclarer une fin d'année dans le passé**. C'est écrit dans le mandat.
+
+## Ma leçon, la seconde en deux mandats
+
+**Une mesure à zéro ne prouve pas une absence — elle prouve que le nom que j'ai cherché n'est pas là.** `filtreMois` à zéro ne voulait pas dire « aucune recherche » : elle existait sous un autre nom. **Chercher un nom, c'est supposer le nom.**
+
+## Sa question
+
+C'est **moi** qui corrige, pas lui — un mandat se corrige par la conscience. C'est fait.
+
+**Ce que tu lui colles :**
+
+> **Le mandat ⑨ est corrigé et redéposé** — `PONT/EDT/MANDAT-LOT-2ter-09.md`, 13 113 o, commit `6aad7ed2`. **Tes sept points sont tous repris.** Relis-le : les §⓪③, §⓪⑤, §⓪⑥, le comptage des captures et la preuve ③.7 ont changé. Tu peux commencer ⑨-a.
+
+**Tests manuels : aucun.** Rien n'a bougé.
+
+**Cahier vivant** — ⑨ en trois temps, puis ton promeus.
+
+MEMO

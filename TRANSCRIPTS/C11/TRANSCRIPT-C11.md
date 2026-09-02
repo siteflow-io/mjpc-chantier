@@ -3710,3 +3710,65 @@ C'est au registre, `n°11 · 51`.
 **Cahier vivant** — ⑨-a chez l'exécutant, puis ⑨-b, ⑨, puis ton promeus.
 
 MEMO
+
+---
+
+## TOUR 74 — Paul
+
+Texte mot pour mot :
+
+> ⑨-a — JE M'ARRÊTE SUR UN TROU, COMME LE MANDAT LE DEMANDE. [le bouton « Banaliser cette heure » disparaît dès qu'une case porte une décision ; l'annonce du remplacement n'est atteignable par aucun clic ; le banc ⑤b la prouvait « par appel de fonction : déclaré »]
+
+---
+
+## TOUR 74 — Claude (conscience n°11)
+
+Mesures : `edtSansSeance` a **un seul appelant**, le bouton L20334, dans une branche qui ne
+s'ouvre **que sans décision**. Registre : `n°11 · 52`.
+
+Réponse mot pour mot :
+
+**Il a raison, j'ai vérifié dans le code — et c'est ma faute la plus coûteuse de la journée.**
+
+## Ce qu'il a trouvé
+
+Le bouton « Banaliser cette heure » n'a **qu'un seul point d'entrée**, et il vit dans une branche qui ne s'ouvre **que si la case ne porte aucune décision**. Dès que tu coches, il disparaît.
+
+**Donc l'annonce « cette heure est déjà comptée perdue — la banaliser remplacera ce motif » n'est atteignable par aucun clic.** Le code est juste. **Toi, tu ne peux pas le faire.**
+
+## Ma faute
+
+Le banc de ⑤b prouvait cette annonce **en appelant la fonction directement**, et l'exécutant de l'époque **l'avait écrit noir sur blanc : « appel de fonction : déclaré »**. Je l'ai lu et je n'ai pas relevé ce que ça voulait dire.
+
+**Pire : mon propre banc faisait la même chose** — je posais les décisions à la main. **Ni lui ni moi n'avons prouvé le geste.**
+
+**La règle que je grave** : « appel de fonction : déclaré » dans un banc est **une alerte, pas une formalité**. Quand un exécutant l'écrit, il dit : *ce geste n'est peut-être atteignable par aucun clic*. Ça se vérifie immédiatement.
+
+## Je tranche, et tu n'as rien à faire
+
+Il te demande de décider. **Mais la réponse est déjà dans ton mandat ⑤, que tu as tranché le 1er septembre** :
+
+> « Jamais de refus : Paul n'est jamais bloqué sur un geste de classe. »
+> « Le geste le plus récent remplace le motif, et le site le dit avant. »
+
+Et le §⑧.5 décrivait **ce geste précis comme le tien** : « coche une heure depuis la fiche d'un événement, **puis banalise la même heure** ».
+
+**Ce n'est donc pas une décision nouvelle : c'est ta règle non appliquée jusqu'au bout.**
+
+**Décision : le bouton doit être proposé sur une case qui porte déjà une décision**, avec l'annonce qui existe et qui fonctionne. **Le passage par « ↶ Annuler » n'est pas le bon geste** — il fait repasser ton compte par zéro, exactement ce que ta règle interdit.
+
+Tu corriges si tu n'es pas d'accord. Sinon le travail continue.
+
+**Ce que tu lui colles :**
+
+> **Tranché — et ce n'est pas une décision neuve, c'est le §② du mandat ⑤ non appliqué jusqu'au bout.** « Banaliser cette heure » **doit être proposé sur une case qui porte déjà une décision**, avec l'annonce de remplacement qui existe déjà et que le banc ⑤b prouve. Le passage par « ↶ Annuler » n'est pas le bon geste : il fait repasser le compte de Paul par zéro, ce que le §② interdit.
+>
+> **⑨-a devient une livraison de code** : la ligne dans la modale, la troisième capture, version **8.73.0-⑨a**. Et **prouve l'annonce PAR LE CLIC**, cette fois — c'est tout l'objet.
+>
+> Au passage : quand tu écris « appel de fonction : déclaré » dans un banc, **c'est une alerte**. Vérifie tout de suite si le geste est atteignable, et dis-le.
+
+**Tests manuels : aucun.** Rien n'a bougé.
+
+**Cahier vivant** — ⑨-a, ⑨-b, ⑨, puis ton promeus.
+
+MEMO

@@ -74,13 +74,17 @@ console.log('version : ' + await page.evaluate(() => APP_VERSION));
 const c1 = await page.evaluate(() => {
   const cel = EDT_VUE.cellules || {};
   const source = Object.keys(cel).filter(k => cel[k].classeMjpc)[0];
-  const nonApp = Object.keys(cel).filter(k => cel[k].nature === 'nonImportee')[0];
+  /* la case visée doit être DANS L'AVENIR : au premier essai j'ai visé une case
+     passée et le site a répondu le refus du passé — juste, mais pas celui qu'on
+     met à l'épreuve ici. */
+  const nonApp = Object.keys(cel).filter(k => cel[k].nature === 'nonImportee'
+    && cel[k].iso > edtAujourdhui())[0];
   if (!source || !nonApp) return { impossible: 'aucune case non appariée dans la vue' };
   const d = cel[nonApp];
   window.__ECR.length = 0;
   const refus = edtRefusDepot(cel[source], { iso: d.iso, creneau: d.creneau });
   const occupant = edtOccupantDe(cel[source], { iso: d.iso, creneau: d.creneau });
-  return { classeVisee: d.classe, refus: refus, troisIssuesOuvertes: !!occupant,
+  return { classeVisee: d.classe, jour: d.iso, refus: refus, troisIssuesOuvertes: !!occupant,
     ecritures: window.__ECR.slice() }; });
 cas('échange avec une classe NON APPARIÉE', 'appel de fonction (le refus se lit avant tout clic) — le geste équivalent est le dépôt, atteignable',
   c1);

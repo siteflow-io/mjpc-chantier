@@ -3346,3 +3346,60 @@ Il est l'**exécutant**. Un mandat se corrige par la conscience, pas par lui —
 **Cahier vivant** — ⑧-a puis ⑧, **et c'est la fin du lot** ; puis ton promeus.
 
 MEMO
+
+---
+
+## TOUR 67 — Paul
+
+Texte mot pour mot :
+
+> [rapport ⑧-a de l'exécutant : la dette du faux vert levée par le geste, le contrôle négatif obtenu, les comptes de fonctions publiés, le banc à 14 repères verts — mais **rien n'est au sas faute de jeton**, et cinq jeux de données restent introuvables]
+> Et il m'a livré les fichiers directement vu qu'il ne pouvait livrer au sas je pense.
+
+---
+
+## TOUR 67 — Claude (conscience n°11)
+
+Mesures : `index.html` au sas **toujours `47cb5add…` (⑦)** · banc et rapport ⑧-a **404** ·
+**arbre complet du dépôt listé avec le jeton** : les cinq jeux de données existent, sous
+d'autres noms. Registre : `n°11 · 45`.
+
+Réponse mot pour mot :
+
+**Confirmé : rien n'est au sas.** `index.html` est toujours celui de ⑦, son banc et son rapport sont introuvables. Le candidat qu'il annonce n'existe que dans votre conversation.
+
+**Donc je ne peux pas l'auditer.** Un audit se fait sur pièces, et je n'ai pas les pièces. Son rapport a beau être bon, il ne remplace pas le fichier — et le md5 relu après poussée, qui est ce qui prouve qu'on audite bien ce qui sera promu, n'existe pas. **Je ne rends aucun verdict sur ⑧-a tant que ce n'est pas au sas.**
+
+**Le déblocage est simple : donne-lui le jeton du sas**, dans sa conversation, une fois. C'est le même que le mien.
+
+## Et j'ai trouvé ses cinq fichiers
+
+Il cherchait les mauvais noms. Ils existent tous :
+
+| il cherchait | le vrai chemin |
+|---|---|
+| `hub-classes.json` | `PONT/EDT/tests/hub/classes.json` |
+| `hub-site3e.json` | `PONT/EDT/tests/hub/site_3e.json` |
+| `hub-siteconfig.json` | `PONT/EDT/tests/hub/site_config.json` |
+| `calendrier-2026-2027.json` | `PONT/EDT/json/calendrier-2026-2027.json` |
+| `creneaux-2026-2027.json` | `PONT/EDT/json/creneaux-2026-2027.json` |
+
+Les trois premiers sont dans un sous-dossier `hub/`, avec des tirets bas. Ses sept 404 viennent de là, pas d'une absence.
+
+## Ce que j'ai noté de son rapport, à vérifier dès que ce sera poussé
+
+Il a trouvé que **sa propre mesure était un faux vert** et l'a refaite par le geste. Et il a obtenu le contrôle qui compte : **pastille non basculée, la même manœuvre fait partir une photo au hub.** Donc ce n'est pas l'absence de chemin qui te protège, **c'est bien le garde-fou**. C'est exactement la façon de prouver que tu as fait graver.
+
+Le reste — les comptes de fonctions, les 14 repères, les 21 identifiants distincts — est noté au registre, en attente de vérification.
+
+**Ce que tu lui colles, avec le jeton :**
+
+> Tes cinq jeux de données existent, tu cherchais les mauvais noms : `PONT/EDT/tests/hub/classes.json`, `.../hub/site_3e.json`, `.../hub/site_config.json`, `PONT/EDT/json/calendrier-2026-2027.json`, `PONT/EDT/json/creneaux-2026-2027.json`.
+>
+> Pousse `index.html`, ton banc et ton rapport au sas, **relis le md5 après poussée et publie-le**, puis STOP. Un exécutant livre au sas, pas dans la conversation : le sas fait foi, et c'est le md5 relu qui prouve qu'on audite le fichier qui sera promu.
+
+**Tests manuels : aucun.** Rien n'a bougé, ni au sas ni en production.
+
+**Cahier vivant** — ⑧-a à pousser puis auditer, puis ⑧, **et c'est la fin du lot** ; puis ton promeus.
+
+MEMO

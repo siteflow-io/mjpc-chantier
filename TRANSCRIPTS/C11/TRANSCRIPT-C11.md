@@ -3209,3 +3209,52 @@ Une chose à lui rappeler en même temps, parce qu'elle vient de ta décision du
 **Cahier vivant** — ⑦-b la vue dans le site, ⑦ les pastilles, puis ⑧, puis ton promeus, puis l'injection de chapitre.
 
 MEMO
+
+---
+
+## TOUR 64 — Paul
+
+Texte mot pour mot :
+
+> livré
+
+---
+
+## TOUR 64 — Claude (conscience n°11)
+
+Audit joué : **deux livraisons d'un coup** (⑦b à 06h15, ⑦ à 06h39, sans arrêt entre) — l'écart
+mesuré de ⑥ à ⑦ · candidat 1 750 002 o / `47cb5add…` · non-régression complète · **les huit
+fonctions de la vue lues une par une : zéro écriture** · `edtEvenementJustifie` : un seul
+appelant. Registre : `n°11 · 43`.
+
+Réponse mot pour mot :
+
+**Verdict : ça va. Le mandat ⑦ est fini.**
+
+D'abord une remarque de méthode : **⑦b et ⑦ sont arrivées d'un coup**, sans arrêt d'audit entre les deux. Tu l'as relancé directement, c'est ton droit — j'ai donc audité l'écart complet, de ⑥ à ⑦. Aucune conséquence ici, mais je te le dis parce que le mandat prévoyait deux arrêts.
+
+## Ce que j'ai vérifié moi-même
+
+**La vue affiche, elle ne recalcule rien.** J'ai lu les huit fonctions de l'écran, une par une — cent quinze lignes en tout. **Zéro écriture.** Aucune ne touche à tes décisions, à ton calendrier, à ta grille. Elle lit et elle peint.
+
+C'était l'exigence que j'avais posée, et elle est tenue au sens strict.
+
+**Et ta règle du 31 août est bien portée par cette vue** : la fonction qui décide de la pastille n'a plus qu'un seul usage, dans le dessin de l'année. Il l'a éprouvée **par clics réels** : aucune heure marquée → bandeau éteint ; **une seule** heure sur deux → **allumé** ; décochée → éteint.
+
+## Ce qu'il apporte comme preuves
+
+Cinq captures avec le journal des clics, le parcours entièrement cliqué depuis le panneau prof. Un audit adverse qui tient : mars à 31 lignes, février à 28, **104 bandeaux, aucun débordement de colonne**, aucune casse.
+
+Et il a capturé **l'ancienne vue avant de la remplacer**, comme tu l'avais demandé.
+
+## Où on en est
+
+**Huit livraisons closes** : ①, ②, ③, ③bis, ④, ⑤, ⑥, ⑦. **Il ne reste que ⑧** — les photos du prévu et la matrice. Puis ton promeus.
+
+Tout est au registre, `n°11 · 43`.
+
+**Tests manuels : aucun.** Rien en ligne.
+
+**Cahier vivant** — mandat ⑧ à écrire, puis ton promeus, puis l'injection de chapitre.
+
+MEMO

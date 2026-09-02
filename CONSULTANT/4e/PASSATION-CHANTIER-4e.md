@@ -49,7 +49,51 @@ Paul Meney, professeur de français au collège Saint-Joseph de Doué-la-Fontain
 
 ---
 
-# 1. LE PROJET MJPC
+# 0bis. PROVENANCE — LIRE AVANT D'UTILISER QUOI QUE CE SOIT DE CE DOCUMENT
+
+Ce document mélange quatre statuts de fiabilité. Les confondre, c'est affirmer sans avoir lu. Chaque section porte désormais une étiquette.
+
+| Étiquette | Ce que cela veut dire |
+|---|---|
+| **[SOURCE]** | Vérifié sur pièce primaire par la session du 1er-2 septembre 2026 : texte officiel fetché, ou mesure faite dans le fichier binaire lui-même. |
+| **[FICHIER]** | Lu dans un fichier du dépôt, mais ce fichier est lui-même dérivé d'une pièce que je n'ai pas vue. |
+| **[HÉRITÉ]** | Recopié d'une passation antérieure, **non vérifié**. |
+| **[DÉCIDÉ]** | Ni fait ni vérifiable : arbitrage de Paul ou proposition retenue par lui. Arrêté, non établi. |
+
+## Répartition
+
+**[SOURCE]** — Section 2 en entier : arrêtés de 2015, 2018 et 2020 fetchés, enjeux relevés mot à mot, dates d'application, attendus de fin d'année de 4e, ressources éduscol. Section 8.2 et 8.4 : polices, palette, cotes, deux dispositions de recto, diapositive masquée, coefficients des deux frises — mesurés dans le fichier livré par Paul. Le modèle temporel `2834640 + 29078 × jours` est ajusté sur vingt-deux coordonnées indépendantes du fichier de 3e. Effectifs des classes. Volumes horaires de la section 4.5, recalculés.
+
+**[FICHIER]** — Section 4.1, les créneaux : lus dans `grille-2026-2027.json` **et recoupés** contre les images de l'emploi du temps, page de M. Meney et page de Mme Rey. C'est le seul point de cet étage qui soit doublement établi.
+
+Section 4.3 et 4.4, vacances et jalons — **y compris les devoirs communs des 22-23 mars, le stage, le séjour aux Pays-Bas et les fériés** : tout vient de `calendrier-2026-2027.json`, construit par une session antérieure à partir d'un document d'établissement que je n'ai jamais vu. Aucune pièce sous les yeux.
+
+Section 3, la 3e : `PROGRESSION-ANNUELLE-3e.md`, rédigé par une session antérieure, et dont une incohérence interne est déjà relevée — le tableau des livres n'a pas suivi la remontée du pamphlet.
+
+**[HÉRITÉ]** — Section 7 en entier, le chapitre *La Parure* : les huit séances, les traces écrites, les trente passages calibrés, les dix modifications de la réécriture, les critères de l'applaudimètre, les trois versions rejetées. Le travail d'origine n'a pas été vu ; seul son résumé l'a été.
+
+Section 4.2, la convention de rentrée — deux demi-journées banalisées, première heure le vendredi 4 septembre. **Les 132 créneaux en dépendent.** Mon calcul retombe exactement sur celui de la passation antérieure, mais deux calculs partant de la même hypothèse fausse concordent tout aussi bien.
+
+Section 1.6, les identifiants de compétences et de notions. Section 9, les types de séance, de blocs, d'items et de sources du prompt canonique. Section 1.2, les formules de doctrine. La taxonomie n'a pas été ouverte.
+
+**[DÉCIDÉ]** — Section 5 en entier : les sept fenêtres, les corpus, les tâches finales, les majeures, le fil rouge, les titres, les problématiques. Ce sont des arbitrages, pas des constats.
+
+## Fiabilité de la source héritée
+
+La passation antérieure s'est révélée fausse **sur trois des rares points qu'il a été possible de contrôler** : elle annonçait quatorze diapositives au diaporama de 3e, qui en compte vingt-huit ; elle donnait l'arrêté de 2018 comme texte applicable, alors que c'est celui de 2020 ; elle plaçait le fil langue le vendredi jusqu'à la Toussaint, alors qu'il est le mercredi toute l'année. Trois erreurs sur trois vérifications. Tout ce qui porte **[HÉRITÉ]** doit être traité comme non fiable jusqu'à contrôle.
+
+## À recontrôler sur pièce avant usage
+
+1. **Le calendrier d'établissement** — vacances, jalons, devoirs communs, stage, séjour, fériés. Demander à Paul la pièce d'origine et la confronter au JSON.
+2. **La convention de rentrée** — les deux demi-journées banalisées et la première heure du vendredi 4 septembre. Tout le volume horaire en dépend.
+3. **Le chapitre *La Parure*** — retrouver les supports d'origine avant de réutiliser une trace écrite, un passage calibré ou une consigne. Le passage de la réécriture doit de toute façon être vérifié mot à mot dans une édition fiable avant fabrication du support.
+4. **La taxonomie du hub** — vérifier les identifiants avant d'en taguer un, et ne jamais en inventer.
+5. **Les éditions et les prix** des sept livres, pour le bon de commande.
+6. **La tirade du « non, merci »** — acte et scène, sur l'édition retenue.
+
+---
+
+# 1. LE PROJET MJPC  ·  [FICHIER] et [HÉRITÉ]
 
 ## 1.1 Ce que c'est
 
@@ -107,7 +151,7 @@ Littérature : `dom-litterature-001` genres · `003` merveilleux/réalisme/fanta
 
 ---
 
-# 2. LE CADRE OFFICIEL — VÉRIFIÉ À LA SOURCE
+# 2. LE CADRE OFFICIEL  ·  [SOURCE]
 
 ## 2.1 Quel texte s'applique
 
@@ -191,7 +235,7 @@ Points retenus, qui commandent des décisions du chantier :
 
 ---
 
-# 3. LA 3e — CE QUI SERT DE RÉFÉRENCE
+# 3. LA 3e — CE QUI SERT DE RÉFÉRENCE  ·  [FICHIER]
 
 La 4e n'est pas indépendante : le diaporama, la charte, les conventions et le vocabulaire viennent de la 3e, faite en premier. Ce qui suit sert de modèle, et de vérification quand un doute survient.
 
@@ -241,7 +285,7 @@ Majeures de 3e : 1 Écrire d'après ses lectures · 2 Interpréter · 3 Lire seu
 
 ---
 
-# 4. EMPLOI DU TEMPS ET CALENDRIER 2026-2027
+# 4. EMPLOI DU TEMPS ET CALENDRIER 2026-2027  ·  [FICHIER], sauf 4.2 [HÉRITÉ] et 4.5 [SOURCE]
 
 Sources : `PONT/EDT/json/grille-2026-2027.json`, `calendrier-2026-2027.json`, `creneaux-2026-2027.json`.
 
@@ -306,7 +350,7 @@ Cinq blocs entre coupures : **18 · 22 · 20 · 16-14 · 20-21**. Sept chapitres
 
 ---
 
-# 5. LA PROGRESSION DE 4e — ARRÊTÉE
+# 5. LA PROGRESSION DE 4e — ARRÊTÉE  ·  [DÉCIDÉ]
 
 **Fil rouge** : que fait la littérature du monde réel — le montrer, le déformer, le juger, le changer ?
 
@@ -422,7 +466,7 @@ Pour *Le Cid*, une édition annotée de collège est nécessaire. Éditions et p
 
 ---
 
-# 6. LE FIL LANGUE
+# 6. LE FIL LANGUE  ·  [DÉCIDÉ] pour la cadence, [HÉRITÉ] pour la méthode et les paliers
 
 **Mercredi, chaque semaine, toute l'année.** 4e Hugo 8h00-8h55, 4e Turing 8h57-9h52. **Trente-trois rendez-vous**, du 9 septembre au 23 juin — le mercredi 2 septembre est banalisé.
 
@@ -461,7 +505,7 @@ La progression de 4e reste à écrire, **à partir du document de 3e** — `Anal
 
 ---
 
-# 7. LE CHAPITRE LA PARURE — DÉJÀ CONSTRUIT
+# 7. LE CHAPITRE LA PARURE — DÉJÀ CONSTRUIT  ·  [HÉRITÉ] — non vérifié
 
 Un chapitre complet existe, hérité d'une session antérieure. Il est destiné au chapitre 4 de la progression. Ce qui suit est arrêté.
 
@@ -494,7 +538,7 @@ Pas de séance 9 : la tâche finale appartient à la séance 8 comme item `tache
 
 ---
 
-# 8. LE DIAPORAMA ANNUEL DE 4e — FABRIQUÉ, LIVRÉ
+# 8. LE DIAPORAMA ANNUEL DE 4e — FABRIQUÉ, LIVRÉ  ·  [SOURCE]
 
 ## 8.1 Ce qui a été fait
 
@@ -536,7 +580,7 @@ Fichier source : `Presentation-annee-3e-2026-2027-v3.pptx`, 13,9 Mo, 28 diaposit
 
 ---
 
-# 9. CE QUI EST DANS LE DÉPÔT
+# 9. CE QUI EST DANS LE DÉPÔT  ·  [FICHIER], modèle de chapitre [HÉRITÉ]
 
 ## Écrit pendant cette session
 

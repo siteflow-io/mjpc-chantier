@@ -94,7 +94,13 @@ const BANCS = [
     ['poses: 122', "evc: 15, jal: 30, eta: 59, fer: 11, vac: 7", 'collisions: 0']],
   /* [⑧a] la photo du prévu — elle se prend toute seule, une fois par échéance */
   ['banc-photo-auto-08a.mjs', '⑧a · la photo du prévu se prend toute seule',
-    ['TOUT PASSE — 15 repères', '"echeance":"per:UN"', 'écritures photos : []']]
+    ['TOUT PASSE — 15 repères', '"echeance":"per:UN"', 'écritures photos : []']],
+  /* [⑨b] la liste entière, sa recherche, et le refus qui porte sur la trace */
+  ['banc-liste-trace-09b.mjs', '⑨b · la liste entière, la recherche, la trace',
+    ['TOUT PASSE — 4 repères', '"apres_calcule":967', '"semaine_37":27']],
+  /* [⑨] le verrou par clé, la bascule de fin d'année, la photo retentée */
+  ['banc-verrou-bascule-09.mjs', '⑨ · le verrou, la bascule, la photo retentée',
+    ['TOUT PASSE — 5 repères', '"ecrituresDecisions":1', '"jamaisReplacee":true']]
 ];
 
 /* un banc à la fois, avec sa limite de temps ; et on ne laisse jamais un

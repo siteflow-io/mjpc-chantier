@@ -2945,3 +2945,54 @@ Tout est au registre, `n°11 · 38`.
 **Cahier vivant** — ⑥ finale (les dates de l'année, les captures, l'audit adverse, le banc complet, plus cette ligne), puis ⑦ et ⑧, puis ton promeus.
 
 MEMO
+
+---
+
+## TOUR 58 — Paul
+
+Texte mot pour mot :
+
+> livré
+
+---
+
+## TOUR 58 — Claude (conscience n°11)
+
+Audit joué : candidat mesuré (1 743 164 o / `3bbc12e6…`) · **diff intégral : trois
+modifications** · fuite vérifiée corrigée · **`edtReplacerHeure` relue pour vérifier que le
+marqueur de confirmation ne part pas au hub** · non-régression · garde. Registre : `n°11 · 39`.
+
+Réponse mot pour mot :
+
+**Verdict : ça va. Et il s'est passé quelque chose qui vaut d'être dit.**
+
+## La ligne est corrigée
+
+La fuite a disparu : un seul `var` déclare bien les deux variables.
+
+## Ton exigence de vérification a trouvé un trou toute seule
+
+La livraison ⑥c faisait deux choses : elle **ouvrait la liste des destinations aux créneaux déjà pris**, et elle écrivait la **vérification des télescopages**.
+
+En jouant la seconde sur la première, il a vu que **replacer une heure sur un créneau pris mettait deux classes au même moment** — un trou que sa propre livraison venait d'ouvrir. **L'outil que tu as exigé a trouvé le défaut de la livraison qui l'a créé.**
+
+Et le remède suit ta règle — on ne refuse pas, on dit le prix :
+
+> lundi 7 septembre à 10:07-11:02, c'est **4E BANKSY**. Y poser l'heure de 3E Charles de Gaulle mettrait **deux classes au même moment**.
+> « Choisir un autre créneau » · « La poser quand même »
+
+J'ai vérifié une chose qui aurait pu salir tes données : le marqueur qui retient ta confirmation **est effacé avant l'écriture**. Il ne part jamais au hub.
+
+## Une rectification
+
+Son commentaire dit « le correctif de Paul du 01/09 ». **C'est moi qui ai trouvé cette fuite**, tu l'as transmise. Sans importance pour le code, mais je corrige au registre : il faut qu'on sache qui a mesuré quoi.
+
+Tout est au registre, `n°11 · 39`.
+
+**Tests manuels : aucun.** Rien en ligne.
+
+**Ce qu'il attend de toi : « continuer ».** Il reste, pour clore ⑥ : **les dates de l'année** — j'ai vérifié, elles ne sont pas encore là — les captures, l'audit adverse et le banc complet.
+
+**Cahier vivant** — ⑥ finale, puis ⑦ et ⑧, puis ton promeus, puis l'injection de chapitre.
+
+MEMO

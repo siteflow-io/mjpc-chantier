@@ -144,7 +144,9 @@ const pose = await page.evaluate(() => new Promise(res => {
     if (!sel) { res({ erreur: 'pas de liste dans le rappel' }); return; }
     const avant = edtHeuresJustifiees('4E BANKSY');
     const options = Array.from(sel.options).map(o => o.text).slice(1, 4);
-    const choix = Array.from(sel.options).filter(o => o.value)[0];
+    /* on pose sur un créneau LIBRE ; le cas « créneau pris » est mesuré juste après */
+    const choix = Array.from(sel.options).filter(o => o.value && /heure ajoutée/.test(o.text))[0]
+      || Array.from(sel.options).filter(o => o.value)[0];
     sel.value = choix.value;                                   /* on choisit dans la liste */
     sel.dispatchEvent(new Event('change'));                    /* comme un vrai choix */
     setTimeout(() => {
@@ -162,5 +164,24 @@ console.log('     TOTAL HEURES PERDUES 4E BANKSY : ' + pose.totalAvant + ' → '
 console.log('     heures à replacer restantes : ' + pose.aReplacerApres);
 console.log('     décisions : ' + JSON.stringify(pose.cles));
 console.log('     ⑦.9 télescopages après la pose : ' + JSON.stringify(pose.coherence));
+
+/* [⑥c-bis] et si Paul choisit un créneau DÉJÀ PRIS : le site dit le prix avant */
+const occupe = await page.evaluate(() => new Promise(res => {
+  const cel = EDT_VUE.cellules || {};
+  const k = Object.keys(cel).filter(x => (cel[x] || {}).nature === 'prevu')[0];
+  const c = edtCellule(k);
+  const pris = edtCreneauxOu(c, 40).filter(x => x.pris)[0];
+  if (!pris) { res({ erreur: 'aucun créneau pris dans la liste' }); return; }
+  const cleFausse = edtCleHeure(c.iso, c.creneau, c.classeMjpc);
+  edtEcrireDecision(c.classeMjpc, cleFausse,
+    { sansSeance: true, motif: 'aReplacer', aReplacer: true, prisePar: 'test', pose: Date.now() }, 'banc');
+  setTimeout(() => {
+    window.__ECR.length = 0;
+    edtReplacerHeure(c.classeMjpc, cleFausse, pris.v);
+    setTimeout(() => {
+      const m = document.getElementById('at-modale');
+      res({ cible: pris.lib, annonce: m ? m.innerText.replace(/\n+/g, ' | ').slice(0, 200) : '(aucune)',
+        ecrituresAvantReponse: window.__ECR.slice() }); }, 600); }, 900); }));
+console.log('\n   ⑥c-bis · poser sur un créneau PRIS : ' + JSON.stringify(occupe));
 await page.close();
 await nav.close();

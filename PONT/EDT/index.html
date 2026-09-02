@@ -1549,7 +1549,7 @@ select.at-sel option,select.cm-input option,#link-modal select option,select.at-
         <button class="tprof-section-btn" data-section="archives" onclick="showProfSection('archives')"><span class="tps-icon">📦</span>Archives</button>
         <button class="tprof-section-btn" data-section="corbeille" onclick="showProfSection('corbeille')"><span class="tps-icon">🗑</span>Corbeille</button>
         <button class="tprof-section-btn" data-section="annonces" onclick="showProfSection('annonces')"><span class="tps-icon">📢</span>Annonces aux élèves</button>
-        <button class="tprof-section-btn" data-section="brevet" onclick="showProfSection('brevet')"><span class="tps-icon">🎓</span>Dates du brevet</button>
+        <button class="tprof-section-btn" data-section="brevet" onclick="showProfSection('brevet')"><span class="tps-icon">🎓</span>Dates de l’année</button>
         <button class="tprof-section-btn" data-section="taxo" onclick="showProfSection('taxo')"><span class="tps-icon">📚</span>Taxonomie</button>
         <button class="tprof-section-btn" data-section="edt" onclick="showProfSection('edt')"><span class="tps-icon">📅</span>Emploi du temps</button>
         <button class="tprof-section-btn" onclick="atelierOuvrir()"><span class="tps-icon">🛠</span>Atelier</button>
@@ -1972,7 +1972,7 @@ function _profSectionAnnonces(){
     '<button class="m8-btn" onclick="_editerTexteSeanceSansDoc()">Modifier ce texte</button></div>';
 }
 function _profSectionBrevet(){
-  return '<h2>\ud83c\udf93 Dates du brevet</h2><div id="m8-console"></div>';
+  return '<h2>\ud83c\udf93 Dates de l’année</h2><div id="m8-console"></div>';
 }
 function _profSectionTaxo(){
   return '<h2>\ud83d\udcda Taxonomie \u2014 le r\u00e9f\u00e9rentiel des notions</h2><div id="m8-console"></div>';
@@ -2854,7 +2854,7 @@ function mjpcEcrireRest(url,options,cb){
    (les 3 gestes, le geste conservatoire par app, ce qui ne peut pas arriver).
    RESTAURER LA VERSION PRÉCÉDENTE : docs/MJPC6-restauration.md (convention BUG).
    ═══════════════════════════════════════════════════════════════════════════ */
-var APP_VERSION="8.73.0-⑥c-bis";
+var APP_VERSION="8.73.0-⑥";
 var APP_VERSION_DATE="2026-08-27";
 // ── 11. Coffre : dérivation, chiffrement, empreinte (v1.3.0) ──
 // (Le canon porte deux sections « 8 » — dette de numérotation connue, non corrigée
@@ -18364,6 +18364,7 @@ function edtMettreANiveau(apres){
 }
 
 function edtCharger(apres){
+  try{ edtChargerDatesAnnee(null); }catch(e){}   /* [⑥] les dates de l'année, au même moment */
   var reste=EDT_OBJETS.length; EDT.pannes=[];
   EDT_OBJETS.forEach(function(o){
     _siteGet(edtChemin(o),function(v,err){
@@ -18671,10 +18672,116 @@ function edtInjecterAvecLaGrille(o){
 
 /* EXCEPTION ① — la seule écriture de l'EDT hors de /site/edt/ : le jour du DNB.
    Le calendrier de l'établissement fait foi ; on garde le PREMIER jour. */
+/* [⑥] LES DATES DE L'ANNÉE — même nœud, deux champs de plus. Le nœud ne change
+   pas de nom (`/site/config/brevetDates`, exception ① du contrat) : seule
+   l'étiquette à l'écran devient « Dates de l'année ». */
+var EDT_DATES={debutAnnee:null,finAnnee:null};
+function edtChargerDatesAnnee(apres){
+  /* deux lectures ciblées : le chemin porte le slash de l'exception ① du contrat,
+     et la garde n'a pas besoin d'être élargie d'un iota. */
+  var edtReste=2,edtFini=function(){ if(--edtReste===0){ edtRecalerAnnee(); if(apres)apres(); } };
+  _siteGet('/site/config/brevetDates/debutAnnee',function(v){
+    if(/^\d{4}-\d{2}-\d{2}/.test(String(v||'')))EDT_DATES.debutAnnee=String(v).slice(0,10);
+    edtFini();
+  });
+  _siteGet('/site/config/brevetDates/finAnnee',function(v){
+    if(/^\d{4}-\d{2}-\d{2}/.test(String(v||'')))EDT_DATES.finAnnee=String(v).slice(0,10);
+    edtFini();
+  });
+}
+/* [⑥] EDT_ANNEE cesse d'être deviné : quand la date de début est connue, il en
+   découle. Tant qu'elle ne l'est pas, la déduction d'avant reste. */
+function edtRecalerAnnee(){
+  var edtD=EDT_DATES.debutAnnee; if(!edtD)return EDT_ANNEE;
+  var edtA=Number(String(edtD).slice(0,4)),edtM=Number(String(edtD).slice(5,7));
+  EDT_ANNEE=(edtM>=8)?(edtA+'-'+(edtA+1)):((edtA-1)+'-'+edtA);
+  return EDT_ANNEE;
+}
+function edtFinAnnee(){
+  return EDT_DATES.finAnnee||(String(EDT_ANNEE).split('-')[1]+'-07-31');
+}
+function edtDebutAnnee(){
+  return EDT_DATES.debutAnnee||(String(EDT_ANNEE).split('-')[0]+'-08-01');
+}
+/* [⑥] LES TROIS REFUS, nommés et chiffrés. */
+function edtValiderDatesAnnee(debut,fin){
+  var edtF=[];
+  if(!debut||!fin)return edtF;
+  if(fin<debut)edtF.push('la fin de l\u2019année ('+edtJourEnClair(fin)+') tombe avant son début ('+edtJourEnClair(debut)+')');
+  var edtJ=Math.round((new Date(fin+'T00:00:00')-new Date(debut+'T00:00:00'))/86400000);
+  if(edtJ>396)edtF.push('l\u2019année ferait '+edtJ+' jours, soit plus de treize mois');
+  var edtC=EDT.calendrier,edtMin=null,edtMax=null;
+  if(edtC){
+    ['vacances','feries','jalons','etablissement','evenementsClasse'].forEach(function(f){
+      (edtC[f]||[]).forEach(function(x){
+        var edtDte=x.debut||x.date; if(!edtDte)return;
+        if(!edtMin||edtDte<edtMin)edtMin=edtDte;
+        var edtFin2=x.fin||edtDte; if(!edtMax||edtFin2>edtMax)edtMax=edtFin2;
+      });
+    });
+  }
+  if(edtMin&&edtMax){
+    var edtBas=edtPlusJour(edtMin,-31),edtHaut=edtPlusJour(edtMax,31);
+    if(debut<edtBas||debut>edtHaut)
+      edtF.push('le début, '+edtJourEnClair(debut)+', est hors du calendrier injecté ('+edtJourEnClair(edtMin)+' → '+edtJourEnClair(edtMax)+', un mois de marge)');
+    if(fin<edtBas||fin>edtHaut)
+      edtF.push('la fin, '+edtJourEnClair(fin)+', est hors du calendrier injecté ('+edtJourEnClair(edtMin)+' → '+edtJourEnClair(edtMax)+', un mois de marge)');
+  }
+  return edtF;
+}
+/* [⑥] LES HEURES POSÉES AU-DELÀ DE LA NOUVELLE FIN : elles ne disparaissent pas,
+   elles redeviennent des heures à replacer, et elles sont NOMMÉES. */
+function edtHeuresApres(fin){
+  var edtD=edtDecisions(),edtOut=[];
+  Object.keys(edtD).forEach(function(c){
+    var edtH=(edtD[c]||{}).heures||{};
+    Object.keys(edtH).forEach(function(k){
+      var v=edtH[k]; if(!v||!(v.ajoutee||v.epingle)||v.deplaceeVers)return;
+      var m=String(k).match(/^(\d{4}-\d{2}-\d{2})_(\d{2}h\d{2}-\d{2}h\d{2})_/);
+      if(!m||m[1]<=fin)return;
+      edtOut.push({classe:c,cle:k,iso:m[1],creneau:m[2].replace(/h/g,':')});
+    });
+  });
+  return edtOut;
+}
+function edtPoserDateAnnee(champ,valeur){
+  var edtD=(champ==='debutAnnee')?valeur:EDT_DATES.debutAnnee;
+  var edtF=(champ==='finAnnee')?valeur:EDT_DATES.finAnnee;
+  var edtRefus=edtValiderDatesAnnee(edtD,edtF);
+  if(edtRefus.length){
+    if(typeof atInfo==='function')atInfo('Date refusée — '+edtRefus.join(' ; ')+'.');
+    return edtRefus;
+  }
+  var edtAu=(champ==='finAnnee'&&valeur)?edtHeuresApres(valeur):[];
+  mjpcPutJson(FIREBASE_BASE+'/site/config/brevetDates/'+champ+'.json',valeur,
+    'Dates de l\u2019année — '+champ,function(){
+      EDT_DATES[champ]=valeur; edtRecalerAnnee();
+      if(edtAu.length){
+        edtEcrireDecisionsGroupe(edtAu.map(function(u){
+          return {classe:u.classe,cle:u.cle,
+            valeur:{sansSeance:true,motif:'aReplacer',justifiee:EDT_MOTIFS.aReplacer.justifiee,
+              aReplacer:true,precision:'posée après la nouvelle fin d\u2019année',pose:Date.now()}};
+        }),'heures posées après la fin d\u2019année — à replacer','Fin d\u2019année avancée');
+        if(typeof atInfo==='function')
+          atInfo(edtAu.length+' heure'+(edtAu.length>1?'s':'')+' posée'+(edtAu.length>1?'s':'')
+            +' après la nouvelle fin d\u2019année : à replacer — '
+            +edtAu.map(function(u){ return u.classe+' '+edtJourEnClair(u.iso)+' '+u.creneau; }).join(', ')+'.');
+      }
+      edtPeindrePanneau();
+    });
+  return [];
+}
 function edtEcrireBrevet(cal){
   var b=cal&&cal.brevet; if(!b||typeof b!=='object')return;
+  /* [⑥] le prompt du calendrier peut produire les deux dates : même chemin */
+  ['debutAnnee','finAnnee'].forEach(function(edtCh){
+    var edtV=String(b[edtCh]||cal[edtCh]||'');
+    if(!/^\d{4}-\d{2}-\d{2}/.test(edtV))return;
+    mjpcPutJson(FIREBASE_BASE+'/site/config/brevetDates/'+edtCh+'.json',edtV.slice(0,10),
+      'Dates de l\u2019année — '+edtCh,function(){ EDT_DATES[edtCh]=edtV.slice(0,10); edtRecalerAnnee(); });
+  });
   Object.keys(b).forEach(function(niv){
-    if(niv==='note')return;
+    if(niv==='note'||niv==='debutAnnee'||niv==='finAnnee')return;
     var d=String(b[niv]||''); if(!/^\d{4}-\d{2}-\d{2}T/.test(d))return;
     mjpcPutJson(FIREBASE_BASE+'/site/config/brevetDates/'+niv+'.json',d,'Date du brevet '+niv+' (calendrier de l\u2019année)',null);
   });
@@ -20011,7 +20118,7 @@ function edtQuiEstEn(iso,creneau,c){
 }
 function edtCreneauxOu(c,jours){
   var out=[],depart=edtPlusJour(c.iso,1);
-  var fin=String(EDT_ANNEE).split('-')[1]+'-07-31';
+  var fin=edtFinAnnee();   /* [⑥] la liste s'arrête à la fin d'année déclarée */
   var max=(jours||400);
   for(var j=0;j<max;j++){
     var iso=edtPlusJour(depart,j);

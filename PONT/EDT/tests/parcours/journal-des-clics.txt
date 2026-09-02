@@ -1,0 +1,156 @@
+① LA PRODUCTION TELLE QU'ELLE EST AUJOURD'HUI (8.70.1) — chargement séparé : autre fichier
+   ✔ CLIC « 🛠 Panneau prof »
+   sections en production : 🏠
+Tableau de bord · 🏫
+Classes · 👥
+Élèves & codes · 🧪
+Profil test · 📂
+Architecture · 📦
+Archives · 🗑
+Corbeille · 📢
+Annonces aux élèves · 🎓
+Dates du brevet · 📚
+Taxonomie · 🛠
+Atelier · ⚙
+Configuration & Firebase · 📡
+Présence live
+   « Emploi du temps » en production : false
+   ▸ tests/parcours/p01-production-8.70.1-panneau-prof-sans-emploi-du-temps.png
+
+② L'ENTRÉE — candidat 8.73.0-⑨, UN SEUL CHARGEMENT pour tout ce qui suit
+   version affichée : V8.73.0-⑨
+   ✔ CLIC « 🛠 Panneau prof »
+   ▸ tests/parcours/p02-candidat-panneau-prof.png
+   ✔ CLIC « 📅 Emploi du temps »
+   ▸ tests/parcours/p03-section-emploi-du-temps.png
+   ✔ CLIC « 📅 Ouvrir l’emploi du temps »
+   ▸ tests/parcours/p04-ecran-emploi-du-temps-ouvert.png
+
+③ LA SEMAINE
+   {"vue":"semaine","ancre":null,"natures":{"prevu":3,"horsMjpc":2,"rienDePret":6,"nonImportee":7}}
+   ▸ tests/parcours/p05-la-semaine-ordinaire-avec-ses-classes.png
+
+④ UNE CASE OUVERTE — la modale complète
+   ✔ CLIC souris sur la case 2026-08-31|08:57-09:52|3 FRANKLIN Aretha
+   la modale porte : lundi 31 août · 08:57-09:52 | ✕ | 3E Charles de Gaulle | Étude de texte accompagnée : « L'Albatros » | heure 1 sur 3 | ▶ Ouvrir le pilotage et lancer | Déplacer cette heure, ou en ajouter une… | Jusqu’à la fin de l’année. Un « créneau libre » n’est pas un déplacement : c’est une heure de plus, épinglée, qui compte dans la prévision. | — choisir parmi 967 créneaux — | mer 2/9 · 10:07-11:02 | mer 2/9 · 11:04-11:59 — pr
+   ▸ tests/parcours/p06-une-case-ouverte-pilotage-deplacer-banaliser.png
+
+⑤ LE DÉPÔT SUR UNE CASE OCCUPÉE — les trois issues, le prix dit avant
+   ✔ CLIC pour fermer la fenêtre (« ✕ »)
+   je saisis 2026-08-31|08:57-09:52|3 FRANKLIN Aretha (3E Charles de Gaulle) et je le pose sur 2026-08-31|15:07-16:02|3 DYLAN Bob (4E BANKSY)
+   ce que le site dit AVANT de trancher : lundi 31 août à 15:07-16:02, c’est 4E BANKSY. | Échanger : 3E Charles de Gaulle et 4E BANKSY permutent leurs deux heures — personne ne perd rien. | Prendre le créneau : 4E BANKSY perd son heure du lundi 31 août — elle devient une heure à replacer, et le site te la rappellera. | Ne rien faire | Échanger les deux heures | Prendre le créneau
+   ▸ tests/parcours/p07-depot-sur-case-occupee-les-trois-issues.png
+
+⑥ APRÈS UN ÉCHANGE, PUIS APRÈS UN ÉCRASEMENT
+   ✔ CLIC « Échanger les deux heures »
+   décisions : ["3E Charles de Gaulle · 2026-08-31_08h57-09h52_3E_Charles_de_Gaulle → part vers 2026-08-31|15:07-16:02","3E Charles de Gaulle · 2026-08-31_15h07-16h02_3E_Charles_de_Gaulle → arrive de 2026-08-31|08:57-09:52","4E BANKSY · 2026-08-31_15h07-16h02_4E_BANKSY → part vers 2026-08-31|08:57-09:52","4E BANKSY · 2026-08-31_08h57-09h52_4E_BANKSY → arrive de 2026-08-31|15:07-16:02"]
+   ▸ tests/parcours/p08-apres-un-echange.png
+   1 clic(s) sur « › » pour trouver un couple — semaine 2026-09-09
+   second dépôt : 2026-09-08|15:07-16:02|3 FRANKLIN Aretha (3E Charles de Gaulle) sur 2026-09-08|10:07-11:02|3 DYLAN Bob (4E BANKSY)
+   ✔ CLIC « Prendre le créneau »
+   décisions : ["3E Charles de Gaulle · 2026-08-31_08h57-09h52_3E_Charles_de_Gaulle → part vers 2026-08-31|15:07-16:02","3E Charles de Gaulle · 2026-08-31_15h07-16h02_3E_Charles_de_Gaulle → arrive de 2026-08-31|08:57-09:52","3E Charles de Gaulle · 2026-09-08_15h07-16h02_3E_Charles_de_Gaulle → part vers 2026-09-08|10:07-11:02","3E Charles de Gaulle · 2026-09-08_10h07-11h02_3E_Charles_de_Gaulle → arrive de 2026-09-08|15:07-16:02","4E BANKSY · 2026-08-31_15h07-16h02_4E_BANKSY → part vers 2026-08-31|08:57-09:52","4E BANKSY · 2026-08-31_08h57-09h52_4E_BANKSY → arrive de 2026-08-31|15:07-16:02","4E BANKSY · 2026-09-08_10h07-11h02_4E_BANKSY → À REPLACER (aReplacer, prise par 3E Charles de Gaulle)"]
+   ▸ tests/parcours/p09-apres-un-ecrasement.png
+
+⑦ L'HEURE À REPLACER — le bandeau, puis la vue de la classe
+   bandeau : heures perdues | Semaine | Mois | Année | Heures perdues… | ⏳ 1 heure à replacer | ‹ | Aujourd’hui | › | ✕ Fermer l’emploi du temps
+   ▸ tests/parcours/p10-le-rappel-dans-le-bandeau.png
+   classe qui a perdu une heure : 4E BANKSY
+   1 clic(s) sur « › » pour trouver une case de 4E BANKSY
+   ✔ CLIC souris sur une case de 4E BANKSY
+   le rappel dit : 1 heure à replacer | 4E BANKSY · mardi 8 septembre 10:07-11:02 · prise par 3E Charles de Gaulle  | — la replacer… — | mer 9/9 · 10:07-11:02 — pris par 3E Charles de Gaulle | mer 9/9 · 11:04-11:59 — créneau libre, heure ajoutée | jeu 10/9 · 08:00-08:55 — créneau libre, heure ajoutée | jeu 10/9 · 08:5
+   ▸ tests/parcours/p11-le-rappel-dans-la-vue-de-la-classe.png
+
+⑧ LA LISTE DES DESTINATIONS, puis filtrée par mois, par semaine, par A/B
+   la liste : {"options":912,"visibles":911,"semaines":"38,39,40,41,42,45,46,47,48,49,50,51","titre":"","intitule":"Déplacer cette heure, ou en ajouter une…"}
+   ▸ tests/parcours/p12-la-liste-des-destinations-ouverte.png
+   ✔ FRAPPE « octobre » — le champ porte « octobre » → {"options":912,"visibles":70,"semaines":"38,39,40,41,42,45,46,47,48,49,50,51","titre":"","intitule":"Déplacer cette heure, ou en ajouter une…"}
+   ▸ tests/parcours/p13-la-liste-filtree-par-mois.png
+   ✔ FRAPPE « 38 » — le champ porte « 38 » → {"options":912,"visibles":16,"semaines":"38,39,40,41,42,45,46,47,48,49,50,51","titre":"","intitule":"Déplacer cette heure, ou en ajouter une…"}
+   ▸ tests/parcours/p14-la-liste-filtree-par-semaine.png
+   ✔ FRAPPE « A » — le champ porte « A » → {"options":912,"visibles":471,"semaines":"38,39,40,41,42,45,46,47,48,49,50,51","titre":"","intitule":"Déplacer cette heure, ou en ajouter une…"}
+   ▸ tests/parcours/p15-la-liste-filtree-par-semaine-A-ou-B.png
+
+⑨ HEURES PERDUES — l'écran, une coche, la banalisation par-dessus, le total
+   ✔ CLIC pour fermer la fenêtre (« ✕ »)
+   ✔ CLIC « Heures perdues… »
+   en tête : Ce que l’année t’a coûté | 4E BANKSY · cette année, 1 heure perdue, dont 0 déclarée justifiée. | 
+   ▸ tests/parcours/p16-heures-perdues-ecran.png
+   ✔ CLIC souris sur la case à cocher « 4E BANKSY · jeudi 17 septembre, 15:07-16:02 → 1 heure » (Tribunal Saumur 4e (après-midi) ? 17h AG · jeudi 17 septembr)
+   décisions : ["3E Charles de Gaulle · 2026-08-31_08h57-09h52_3E_Charles_de_Gaulle → part vers 2026-08-31|15:07-16:02","3E Charles de Gaulle · 2026-08-31_15h07-16h02_3E_Charles_de_Gaulle → arrive de 2026-08-31|08:57-09:52","3E Charles de Gaulle · 2026-09-08_15h07-16h02_3E_Charles_de_Gaulle → part vers 2026-09-08|10:07-11:02","3E Charles de Gaulle · 2026-09-08_10h07-11h02_3E_Charles_de_Gaulle → arrive de 2026-09-08|15:07-16:02","4E BANKSY · 2026-08-31_15h07-16h02_4E_BANKSY → part vers 2026-08-31|08:57-09:52","4E BANKSY · 2026-08-31_08h57-09h52_4E_BANKSY → arrive de 2026-08-31|15:07-16:02","4E BANKSY · 2026-09-08_10h07-11h02_4E_BANKSY → À REPLACER (aReplacer, prise par 3E Charles de Gaulle)","4E BANKSY · 2026-09-17_15h07-16h02_4E_BANKSY → calendrier"]
+   en tête : Ce que l’année t’a coûté | 4E BANKSY · cette année, 2 heures perdues, dont 1 déclarée justifiée. | 
+   ▸ tests/parcours/p17-heures-perdues-une-coche.png
+   heure comptée perdue : 4E BANKSY · 2026-09-17_15h07-16h02_4E_BANKSY
+   ✔ CLIC « Semaine »
+   0 clic(s) sur les flèches de semaine → semaine 2026-09-16
+   ✔ CLIC souris sur la case déjà comptée perdue : 2026-09-17|15:07-16:02|3 DYLAN Bob
+   ✔ CLIC « Banaliser cette heure »
+   l'annonce dit : Cette heure est déjà comptée perdue — événement du calendrier — Tribunal Saumur 4e (après-midi) ? 17h AG. | La banaliser remplacera ce motif. L’heure ne sera comptée qu’une fois, et son statut deviendra modifiable. | Annuler | Remplacer le motif
+   ▸ tests/parcours/p18-banalisation-par-dessus-son-annonce.png
+   ✔ CLIC « Remplacer le motif »
+   décisions : ["3E Charles de Gaulle · 2026-08-31_08h57-09h52_3E_Charles_de_Gaulle → part vers 2026-08-31|15:07-16:02","3E Charles de Gaulle · 2026-08-31_15h07-16h02_3E_Charles_de_Gaulle → arrive de 2026-08-31|08:57-09:52","3E Charles de Gaulle · 2026-09-08_15h07-16h02_3E_Charles_de_Gaulle → part vers 2026-09-08|10:07-11:02","3E Charles de Gaulle · 2026-09-08_10h07-11h02_3E_Charles_de_Gaulle → arrive de 2026-09-08|15:07-16:02","4E BANKSY · 2026-08-31_15h07-16h02_4E_BANKSY → part vers 2026-08-31|08:57-09:52","4E BANKSY · 2026-08-31_08h57-09h52_4E_BANKSY → arrive de 2026-08-31|15:07-16:02","4E BANKSY · 2026-09-08_10h07-11h02_4E_BANKSY → À REPLACER (aReplacer, prise par 3E Charles de Gaulle)","4E BANKSY · 2026-09-17_15h07-16h02_4E_BANKSY → banalisee"]
+   ✔ CLIC « Heures perdues… »
+   en tête après remplacement : Ce que l’année t’a coûté | 4E BANKSY · cette année, 2 heures perdues, dont 1 déclarée justifiée. | 
+   ▸ tests/parcours/p19-heures-perdues-total-en-tete-apres-remplacement.png
+
+⑩ LE MOIS
+   ✔ CLIC « Mois »
+   {"vue":"mois","ancre":"2026-09-16","natures":{"deplacee":3,"horsMjpc":15,"nonImportee":48,"rienDePret":24,"prevu":21,"jouee":1,"sansSeance":2}}
+   ▸ tests/parcours/p20-la-vue-du-mois.png
+
+⑪ L'ANNÉE — dézoomée, zoomée, un événement cliqué
+   ✔ CLIC « Année »
+   pied de l'année : (pas de pied)
+   ▸ tests/parcours/p21-annee-dezoomee.png
+   ✔ Ctrl + molette vers le haut → zoom : true
+   ▸ tests/parcours/p22-annee-zoomee.png
+   ✔ CLIC souris sur l'événement « 9h30 CODIR » → 13h45 photo 14h30-18h pré-rentrée | du jeudi 27 août au jeudi 27 août | Fermer
+   ▸ tests/parcours/p23-annee-un-evenement-clique.png
+
+⑫ LES DATES DE L'ANNÉE, et un refus
+   ✔ CLIC pour fermer la fenêtre (« Fermer »)
+   ✔ CLIC « ✕ Fermer l’emploi du temps »
+   ✔ CLIC « 🎓 Dates de l’année »
+   l'écran porte : 🎓 Dates de l’année | Le compte à rebours de l’accueil part de ces dates. Modifie celle qui a été dépassée et il repart aussitôt. | 3ᵉ | 4ᵉ | 5ᵉ | 6ᵉ | Revenir aux dates par défaut
+   ▸ tests/parcours/p24-dates-de-lannee-ecran.png
+   ✔ CLIC « 📅 Emploi du temps »
+   champs de date du panneau : [{"k":0,"val":"2026-08-01","oc":"edtVersionPoser(\"2026-08-01\",'debut',this.value)"}]
+   ✔ CLIC « + Ajouter une période »
+   ⚠ la saisie d'une date au clavier ne prend pas dans un champ « date » du banc sans tête :
+     champ trouvé et cliqué, huit touches frappées, la valeur reste vide — limite du BANC, à ne pas mettre au compte du site.
+   je prends donc l'autre refus atteignable par le geste : un calendrier collé dont la fin précède le début.
+   ✔ CLIC « Calendrier de l’année »
+   ✔ CLIC « Vérifier »
+   le site répond : Année 2026-2027. Les objets vivent au hub sous /site/edt/. Rien n’est obligatoire : ce qui manque manque, le site marche comme avant. | Calendrier de l’année — 52 semaines · 7 périodes sans cours · 11 fériés · 30 jalons · 15 événements de classe | Grille de l’emploi du temps — 30 cases · 4 classes nommées | Créneaux horaires — 8 créneaux — 08:00-08:55 · 08:57-09:52 · 10:07-11:02 · 11:04-11:59 · 13
+   ▸ tests/parcours/p25-un-refus-avec-son-message.png
+
+⑬ LA PHOTO DU PRÉVU
+   ✔ CLIC « 📅 Ouvrir l’emploi du temps »
+   ✔ CLIC « Semaine »
+   ✔ CLIC « 📷 Photo du prévu »
+   ce que le site répond : Photo du prévu prise — 18 cases. | Compris
+   ▸ tests/parcours/p26-photo-du-prevu-ce-que-le-site-repond.png
+
+⑭ LE MODE TEST — la grille éteint, puis allumé, et la classe d'essai
+   ✔ CLIC « Compris » (annonce refermée)
+   ✔ CLIC « Semaine »
+   éteint : {"cases":18,"natures":{"prevu":3,"horsMjpc":2,"rienDePret":5,"nonImportee":7,"sansSeance":1},"essai":[],"creneauxLus":30,"modeTest":false}
+   ▸ tests/parcours/p27-mode-test-eteint-la-grille.png
+   ✔ CLIC « ✕ Fermer l’emploi du temps »
+   ✔ CLIC « 🧪 Mode test »
+   mode test : true
+   ✔ CLIC « 📅 Emploi du temps »
+   ✔ CLIC « 📅 Ouvrir l’emploi du temps »
+   ✔ CLIC « Semaine »
+   allumé : {"cases":22,"natures":{"rienDePret":12,"horsMjpc":2,"nonImportee":7,"sansSeance":1},"essai":["3E Charles de Gaulle (classe d'essai)"],"creneauxLus":34,"modeTest":true}
+   LA CLASSE D'ESSAI EST À L'ÉCRAN : 3E Charles de Gaulle (classe d'essai)
+   ▸ tests/parcours/p28-mode-test-allume-la-grille.png
+
+⑮ LE PROMPT
+   ✔ CLIC « ✕ Fermer l’emploi du temps »
+   ✔ CLIC « 📅 Emploi du temps »
+   ✔ CLIC « 📋 Copier le prompt — grille »
+   ce que le site répond : Prompt copié — 18452 caractères, consigne et JSON ensemble. Un seul collage suffit. | Compris
+   ▸ tests/parcours/p29-le-prompt-copie-ce-que-le-site-repond.png
+
+écritures parties vers le faux hub (aucune vers le vrai) : 17
+captures produites : 29

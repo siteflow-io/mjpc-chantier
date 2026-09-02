@@ -200,6 +200,18 @@ dire(apresMainTest.length === avantMainTest && ecrMainTest.length === 0,
   'photos au hub avant : ' + avantMainTest + ' · après : ' + apresMainTest.length
   + ' · écritures photos : ' + JSON.stringify(ecrMainTest) + ' · le site dit : ' + JSON.stringify(ditTest));
 
+/* ⑮ LA PHOTO AUTOMATIQUE NE COUPE PAS LA PAROLE — `atInfo` est une modale avec
+   un bouton « Compris » : à l'ouverture, elle recouvrirait l'emploi du temps et
+   mangerait le premier clic de Paul. Mesuré au banc ②a. */
+await arriver(hub());
+const modale = await page.evaluate(() => {
+  const m = document.getElementById('at-modale');
+  return { modale: m ? m.innerText.replace(/\n+/g, ' | ').slice(0, 80) : null,
+    photos: (((window.__photos() || {}).photos) || []).length }; });
+dire(modale.modale === null && modale.photos === 1,
+  '⑮ la photo automatique est prise et n\'ouvre aucune modale par-dessus l\'écran',
+  JSON.stringify(modale));
+
 /* ⑦ aucune période déclarée : il reste la rentrée */
 await arriver(hub({ sansPeriodes: true }));
 const pSansPer = await photos();
@@ -260,5 +272,5 @@ dire(figer.occurrences === 0 && figer.figeIntacte,
   JSON.stringify(figer));
 
 await nav.close();
-console.log('\n' + (rates ? ('ÉCHEC — ' + rates + ' repère(s)') : 'TOUT PASSE — 14 repères'));
+console.log('\n' + (rates ? ('ÉCHEC — ' + rates + ' repère(s)') : 'TOUT PASSE — 15 repères'));
 process.exit(rates ? 1 : 0);

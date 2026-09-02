@@ -1,0 +1,9 @@
+① clics : panneau prof → Emploi du temps → Ouvrir l'emploi du temps
+   version : 8.73.0-⑨a
+② CLIC sur « Heures perdues… » → {"tete":"Ce que l’année t’a coûté |  | Aucune heure perdue pour l’instant.","fiches":6,"cases":10,"cochees":0,"heuresJustifiees":0,"totaux":[]}
+③ CLIC sur la case d'un événement → {"evenement":"Séjour Verdun 3e · 14-16 octobre · tes 3e perdraient 2 heures.","ecritures":["/site/edt/decisions/2026-2027"],"decisions":1,"cle":"2026-10-14_10h07-11h02_3E_Charles_de_Gaulle","motif":"calendrier","heuresJustifiees":1,"totaux":[{"classe":"3E Charles de Gaulle","perdues":1,"justifiees":1}],"tete":"Ce que l’année t’a coûté | 3E Charles de Gaulle · cette année, 1 heure perdue, dont 1 déclarée justifiée. | "}
+④ semaine du 2026-10-14 — CLIC sur la case cochée : {"vise":"2026-10-14 10:07-11:02","trouve":"3E Charles de Gaulle | aucune séance prête"}
+⑤ CLIC « Banaliser cette heure » → l'annonce s'affiche : {"categorie":"Événement d’établissement","annonce":"Cette heure est déjà comptée perdue — événement du calendrier — Séjour Verdun 3e. | La banaliser remplacera ce motif. L’heure ne sera comptée qu’une fois, et son statut deviendra modifiable. | Annuler | Remplacer le motif"}
+⑥ CLIC « Remplacer le motif » → {"ecritures":["/corbeille/2026-09-02/edt-decisions_132201","/site/edt/decisions/2026-2027"],"decisions":1,"motif":"banalisee","categorie":"Événement d’établissement","justifiee":true,"heuresJustifiees":1,"totaux":[{"classe":"3E Charles de Gaulle","perdues":1,"justifiees":1}]}
+   le total en tête dit : "Ce que l’année t’a coûté | 3E Charles de Gaulle · cette année, 1 heure perdue, dont 1 déclarée justifiée. |  | Coche une heure quand elle a bien été perdue. Tant que tu n’as rien coché, rien n’est retiré de tes comptes."
+   UNE HEURE NE COMPTE QU'UNE FOIS : décisions 1 → 1 · heures justifiées 1 → 1

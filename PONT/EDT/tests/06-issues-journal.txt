@@ -1,0 +1,16 @@
+① clics : panneau prof → Emploi du temps → Ouvrir l'emploi du temps
+   version : 8.73.0-⑨a
+② CLIC sur une case, la liste « Déplacer cette heure, ou en ajouter une… » : {"classe":"3E Charles de Gaulle","ouverteParClic":true,"entrees":968,"creneauxPrisProposes":139,"cible":"mer 2/9 · 11:04-11:59 — pris par 4E BANKSY"}
+③ CHOIX d'un créneau « pris par… » → les trois issues :
+      mercredi 2 septembre à 11:04-11:59, c’est 4E BANKSY. | Échanger : 3E Charles de Gaulle et 4E BANKSY permutent leurs deux heures — personne ne perd rien. | Prendre le créneau : 4E BANKSY perd son heure du mercredi 2 septembre — elle devient une heure à replacer, et le site te la rappellera. | Ne rien faire | Échanger les deux heures | Prendre le créneau
+      boutons : ["Ne rien faire","Échanger les deux heures","Prendre le créneau"]
+④ CLIC « Échanger les deux heures » → 4 décisions, ["/site/edt/decisions/2026-2027"]
+      3E Charles de Gaulle · 2026-08-31_08h57-09h52_3E_Charles_de_Gaulle → part vers 2026-09-02|11:04-11:59
+      3E Charles de Gaulle · 2026-09-02_11h04-11h59_3E_Charles_de_Gaulle → arrive de 2026-08-31|08:57-09:52
+      4E BANKSY · 2026-09-02_11h04-11h59_4E_BANKSY → part vers 2026-08-31|08:57-09:52
+      4E BANKSY · 2026-08-31_08h57-09h52_4E_BANKSY → arrive de 2026-09-02|11:04-11:59
+⑤ CLIC « Prendre le créneau » → ["/site/edt/decisions/2026-2027"]
+      3E Charles de Gaulle · 2026-08-31_08h57-09h52_3E_Charles_de_Gaulle → part vers 2026-09-02|11:04-11:59
+      3E Charles de Gaulle · 2026-09-02_11h04-11h59_3E_Charles_de_Gaulle → arrive de 2026-08-31|08:57-09:52
+      4E BANKSY · 2026-09-02_11h04-11h59_4E_BANKSY → À REPLACER, motif aReplacer, justifiée false, prise par 3E Charles de Gaulle
+⑥ le rappel de l'heure à replacer : {"classeQuiAPerdu":"4E BANKSY","caseOuverte":"4E BANKSY","ouverteParClic":false,"heuresAReplacer":1,"rappel":"1 heure à replacer | 4E BANKSY · mercredi 2 septembre 11:04-11:59 · prise par 3E Charles de Gaulle  | — la replacer… — | jeu 3/9 · 08:00-08:55 — créneau libre, heure ajoutée | jeu 3/9 · 08:57-09:52 — créneau libre, heure"}

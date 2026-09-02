@@ -1,0 +1,8 @@
+① clics : panneau prof → Emploi du temps
+② clic « Ouvrir l'emploi du temps » puis clic « Année » — 104 bandeaux, 12 colonnes
+   le pied dit : "59 événements d’établissement · 15 de classe · 30 jalons · Ctrl + molette pour zoomer · 2 classes de ta grille ne sont pas encore appariées : 4 HUGO, 4 TURING — pas de pastille pour elles"
+③ survol d'un bandeau — infobulle : "Séjour Verdun 3e — du 2026-10-14 au 2026-10-16"
+④ CLIC sur le bandeau → "Séjour Verdun 3e | du mercredi 14 octobre au vendredi 16 octobre | Fermer"
+⑤ Ctrl + molette (zoom) → zoomé
+⑥ Ctrl + molette (dézoom) → dézoomé
+⑦ calendrier réinjecté pendant que la vue est ouverte : {"avant":104,"apres":104,"vueEncoreLa":true}

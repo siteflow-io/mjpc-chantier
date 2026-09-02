@@ -3176,3 +3176,36 @@ Je ne l'ai pas testé — je n'ai pas accès à ce domaine — donc je ne te gar
 **Cahier vivant** — ton avis sur le rendu, puis ⑦-b, ⑦, ⑧, puis ton promeus.
 
 MEMO
+
+---
+
+## TOUR 63 — Paul
+
+Texte mot pour mot :
+
+> ok ça m'a l'air pas mal. on continue
+
+---
+
+## TOUR 63 — Claude (conscience n°11)
+
+Mesure : `index.html` au sas toujours `966eaafd…` (8.73.0-⑥), `rapport-2ter-07b.md` absent —
+rien n'est parti de son côté. Registre : `n°11 · 42`.
+
+Réponse mot pour mot :
+
+C'est noté au registre : **ton rendu est validé, il devient la référence de l'écran** à côté de tes quatre maquettes. La livraison ⑦-b portera cet écran dans le site — elle ne le redessinera pas.
+
+Et j'ai consigné que tes quatre écarts sont validés de fait : les hauteurs calculées après peinture, les pastilles qui deviendront réelles, le fond de vacances qui couvre les week-ends, et le zoom à deux états.
+
+Rien n'a bougé de son côté : **il attend ton « continuer » dans sa conversation.**
+
+Une chose à lui rappeler en même temps, parce qu'elle vient de ta décision du 31 août :
+
+> En ⑦-b, la pastille d'un événement s'allume **dès qu'une seule** des heures qu'il recouvre est marquée, et s'éteint quand plus aucune ne l'est.
+
+**Tests manuels : aucun.** Rien n'est en ligne.
+
+**Cahier vivant** — ⑦-b la vue dans le site, ⑦ les pastilles, puis ⑧, puis ton promeus, puis l'injection de chapitre.
+
+MEMO

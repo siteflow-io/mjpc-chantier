@@ -2885,7 +2885,7 @@ function mjpcEcrireRest(url,options,cb){
    (les 3 gestes, le geste conservatoire par app, ce qui ne peut pas arriver).
    RESTAURER LA VERSION PRÉCÉDENTE : docs/MJPC6-restauration.md (convention BUG).
    ═══════════════════════════════════════════════════════════════════════════ */
-var APP_VERSION="8.73.0-⑧";
+var APP_VERSION="8.73.0-⑨a";
 var APP_VERSION_DATE="2026-08-27";
 // ── 11. Coffre : dérivation, chiffrement, empreinte (v1.3.0) ──
 // (Le canon porte deux sections « 8 » — dette de numérotation connue, non corrigée
@@ -20259,6 +20259,17 @@ function edtAjouterHeure(cle,cible){
 }
 
 /* ── LE RENDU DE LA MODALE ───────────────────────────────────────────────── */
+/* [⑨a] LE BLOC « BANALISER », SORTI DE LA MODALE POUR SERVIR DEUX FOIS : sur une
+   case vierge, et sur une case qui porte déjà une décision. Même texte, même
+   catégories, même bouton — rien n'a changé de ce que Paul lisait. */
+function edtBlocBanaliser(cle){
+  return '<div class="edt-mo-bloc"><label class="edt-lab">Banaliser cette heure</label>'
+    +'<p class="edt-mini-t">La séance continue ailleurs : c\u2019est l\u2019heure qui est banalisée.</p>'
+    +'<select class="edt-sel" id="edt-cat">'
+    +EDT_CATEGORIES.map(function(x){return '<option>'+escapeHtml(x)+'</option>';}).join('')+'</select>'
+    +'<input class="edt-sel" id="edt-prec" placeholder="préciser la raison (enregistrée)">'
+    +'<button class="edt-btn" onclick="edtSansSeance('+JSON.stringify(cle).replace(/"/g,'&quot;')+')">Banaliser cette heure</button></div>';
+}
 function edtPeindreModale(){
   var cle=EDT_MOD.cle; if(!cle){ edtModaleFermer(); return; }
   var c=edtCellule(cle); if(!c){ edtModaleFermer(); return; }
@@ -20317,6 +20328,18 @@ function edtPeindreModale(){
        apparaissait à tort. */
     if(dec&&c.nature!=='jouee'){
       h+='<button class="edt-btn edt-large" onclick="edtAnnulerDecision('+JSON.stringify(cle).replace(/"/g,'&quot;')+')">\u21b6 Annuler cette décision</button>';
+      /* [\u2468a] BANALISER PAR-DESSUS UNE DÉCISION — tranché par Paul le 02/09.
+         L'annonce « cette heure est déjà comptée perdue » existe depuis ⑤ et
+         personne ne pouvait la voir : le bouton n'apparaissait que sur une case
+         vierge. Passer par « \u21b6 Annuler » ferait repasser le compte par zéro,
+         ce que le §② du mandat ⑤ interdit — une heure ne compte qu'une fois, et
+         elle ne cesse pas de compter le temps d'un aller-retour.
+         DEUX ÉTATS RESTENT EXCLUS, et c'est mesuré : une heure JOUÉE ne se décide
+         plus (elle a eu lieu), et une heure prise dans un DÉPLACEMENT — elle porte
+         `deplaceeVers` au départ ou `venantDe` à l'arrivée — ne se banalise pas :
+         l'écrire effacerait le lien avec son autre bout et laisserait une heure
+         épinglée orpheline à l'autre extrémité. */
+      if(!(dec.deplaceeVers||dec.venantDe))h+=edtBlocBanaliser(cle);
     } else if(c.nature!=='jouee'&&!dec){
       var ou=edtCreneauxOu(c);
       h+='<div class="edt-mo-bloc"><label class="edt-lab">Déplacer cette heure, ou en ajouter une\u2026</label>'
@@ -20326,12 +20349,7 @@ function edtPeindreModale(){
         +'<option value="">\u2014 choisir parmi '+ou.length+' créneaux \u2014</option>'
         +edtOptionsOu(ou)
         +'</select></div>'
-        +'<div class="edt-mo-bloc"><label class="edt-lab">Banaliser cette heure</label>'
-        +'<p class="edt-mini-t">La séance continue ailleurs : c\u2019est l\u2019heure qui est banalisée.</p>'
-        +'<select class="edt-sel" id="edt-cat">'
-        +EDT_CATEGORIES.map(function(x){return '<option>'+escapeHtml(x)+'</option>';}).join('')+'</select>'
-        +'<input class="edt-sel" id="edt-prec" placeholder="préciser la raison (enregistrée)">'
-        +'<button class="edt-btn" onclick="edtSansSeance('+JSON.stringify(cle).replace(/"/g,'&quot;')+')">Banaliser cette heure</button></div>';
+        +edtBlocBanaliser(cle);
     }
     h+=edtRappelAReplacerHtml(c.classeMjpc);   /* [⑥b] rappelé dans la vue de la classe */
     h+=edtJournalHtml(c.classeMjpc);

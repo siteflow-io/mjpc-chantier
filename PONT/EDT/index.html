@@ -801,6 +801,37 @@ body.admin-mode .admin-only { display: block; }
 .ses-pmot-l{display:flex;justify-content:space-between;gap:8px;align-items:center}
 .ses-pmot-l button{background:none;border:0;color:#e08a7a;font-size:.82rem;min-height:34px}
 .ses-chr-pause{opacity:.65}
+
+/* [⑦b] la vue Année — reprise du rendu ⑦-a validé par Paul */
+.edt-an-leg{display:flex;gap:14px;font-size:.78rem;color:#b8a894;flex-wrap:wrap;align-items:center;padding:2px 4px}
+.edt-an-leg span::before{content:'';display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+.edt-an-leg .an-classe::before{background:#4a3b6b}.edt-an-leg .an-etab::before{background:#2f3f5c}
+.edt-an-leg .an-jalon::before{background:#5c4a20}.edt-an-leg .an-vac::before{background:rgba(255,255,255,.05);border:1px solid #3a2f24}
+.edt-an-leg .an-fer::before{background:rgba(201,68,58,.12);border:1px solid #7a3b34}
+.edt-an-leg .an-pj::before{background:#5c9e6e}.edt-an-leg .an-pp::before{background:#4a4038}.edt-an-leg .an-ps::before{background:#8a6a2e}
+.edt-an-leg .edt-mini-t::before{display:none}
+.edt-an{flex:1;min-height:0;display:grid;grid-template-columns:repeat(12,1fr);gap:5px;overflow:hidden}
+.edt-an-col{display:flex;flex-direction:column;min-height:0;border:1px solid #3a2f24;border-radius:8px;background:#1c1712;overflow:hidden}
+.edt-an-col>h2{margin:0;padding:3px 6px;text-align:center;color:#e0b25a;background:#241d16;border-bottom:1px solid #3a2f24;font-weight:600;font-size:.78rem}
+.edt-an-jours{flex:1;min-height:0;display:flex;flex-direction:column}
+.edt-an-j{display:grid;grid-template-columns:15px 15px 1fr;align-items:stretch;border-bottom:1px solid rgba(58,47,36,.45);position:relative;flex:1 1 0;font-size:.66rem}
+.edt-an-j .n{color:#7d6f5e;text-align:right;padding-right:3px;line-height:1.5}
+.edt-an-j .d{color:#b8a894;text-align:center;line-height:1.5}
+.edt-an-j.vac{background:rgba(255,255,255,.05)}.edt-an-j.fer{background:rgba(201,68,58,.12)}
+.edt-an-j.plat{flex:0 0 9px;font-size:.52rem;background:rgba(255,255,255,.025)}
+.edt-an-j.plat .n,.edt-an-j.plat .d{line-height:9px;color:#5d5348}
+.edt-an-j .z{position:relative}
+.edt-an-b{position:absolute;left:0;right:2px;border-radius:3px;padding:0 3px;white-space:nowrap;overflow:hidden;color:#efe6d8;cursor:pointer;height:10px;font-size:.58rem;line-height:10px}
+.edt-an-b.classe{background:#4a3b6b;border:1px solid #6b5a8c}.edt-an-b.etab{background:#2f3f5c;border:1px solid #46587a}
+.edt-an-b.jalon{background:#5c4a20;border:1px solid #e0b25a}.edt-an-b .ok{color:#9fd0b0}
+.edt-an-pas{position:absolute;right:2px;top:3px;display:flex;gap:1px}
+.edt-an-pas i{border-radius:1px;display:block;width:6px;height:6px}
+.edt-an-pas .pj{background:#5c9e6e}.edt-an-pas .pp{background:#4a4038}.edt-an-pas .ps{background:#8a6a2e}
+.edt-an-zoom .edt-an{overflow-x:auto;grid-template-columns:repeat(12,minmax(330px,1fr))}
+.edt-an-zoom .edt-an-j{grid-template-columns:22px 20px 1fr;font-size:.86rem}
+.edt-an-zoom .edt-an-j.plat{flex:0 0 13px}
+.edt-an-zoom .edt-an-b{height:15px;font-size:.8rem;line-height:15px}
+.edt-an-zoom .edt-an-pas i{width:8px;height:8px}
 </style>
 <style id="b2-styles">
 .b2-legend{display:flex;gap:14px;flex-wrap:wrap;margin:2px 0 12px;font-size:.8rem}
@@ -2854,7 +2885,7 @@ function mjpcEcrireRest(url,options,cb){
    (les 3 gestes, le geste conservatoire par app, ce qui ne peut pas arriver).
    RESTAURER LA VERSION PRÉCÉDENTE : docs/MJPC6-restauration.md (convention BUG).
    ═══════════════════════════════════════════════════════════════════════════ */
-var APP_VERSION="8.73.0-⑥";
+var APP_VERSION="8.73.0-⑦b";
 var APP_VERSION_DATE="2026-08-27";
 // ── 11. Coffre : dérivation, chiffrement, empreinte (v1.3.0) ──
 // (Le canon porte deux sections « 8 » — dette de numérotation connue, non corrigée
@@ -20532,169 +20563,121 @@ function edtPeindreMois(){
    vacances nommées, les jalons et les événements d'établissement, regroupés
    quand ils se touchent. Les pistes ne portent plus que des graduations de
    mois, discrètes — et les événements de LEUR classe, en segments. */
+/* [⑦b] LA VUE ANNÉE — douze mois en colonnes, les jours en lignes, comme l'agenda
+   que Paul connaît. Reprise du rendu ⑦-a qu'il a validé : mêmes couleurs, mêmes
+   proportions, mêmes règles. La frise par classe est abandonnée, et AUCUN TRAIT
+   ne traverse les pistes. Cette vue AFFICHE : elle ne recalcule aucun compte. */
+var EDT_AN_MOIS=['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
+var EDT_AN_INI=['D','L','M','M','J','V','S'];
+function edtAnneeColonnes(){
+  var edtA=Number(String(EDT_ANNEE).split('-')[0]),edtB=Number(String(EDT_ANNEE).split('-')[1]);
+  var edtOut=[];
+  for(var edtM=7;edtM<=11;edtM++)edtOut.push([edtA,edtM]);
+  for(var edtN=0;edtN<=6;edtN++)edtOut.push([edtB,edtN]);
+  return edtOut;
+}
+function edtAnneeEvenements(){
+  var edtC=EDT.calendrier||{},edtOut=[];
+  (edtC.etablissement||[]).forEach(function(x){ edtOut.push({n:'etab',t:String(x.libelle||x.nom||''),d:x.debut||x.date,f:x.fin||x.debut||x.date,id:x.id}); });
+  (edtC.evenementsClasse||[]).forEach(function(x){ edtOut.push({n:'classe',t:String(x.libelle||''),d:x.debut,f:x.fin||x.debut,id:x.id,ev:x}); });
+  (edtC.jalons||[]).forEach(function(x){ edtOut.push({n:'jalon',t:String(x.libelle||x.nom||''),d:x.date||x.debut,f:x.date||x.fin||x.debut,id:x.id}); });
+  return edtOut.filter(function(x){ return !!x.d; });
+}
+function edtAnneeVacance(iso){
+  var edtR=null;
+  ((EDT.calendrier||{}).vacances||[]).forEach(function(v){ if(iso>=v.debut&&iso<=v.fin)edtR=v; });
+  return edtR;
+}
+function edtAnneeFerie(iso){
+  var edtR=null;
+  ((EDT.calendrier||{}).feries||[]).forEach(function(f){ if(f.date===iso)edtR=f; });
+  return edtR;
+}
 function edtPeindreAnnee(){
   var e=document.getElementById('edt-ecran'); if(!e)return;
-  var cal=EDT.calendrier||{},sem=(cal.semaines||[]);
-  var debut=sem.length?sem[0].lundi:edtAujourdhui();
-  var fin=sem.length?edtPlusJour(sem[sem.length-1].lundi,6):edtPlusJour(debut,364);
-  var jours=Math.max(1,Math.round((new Date(fin)-new Date(debut))/86400000));
-  var pos=function(iso){ return Math.max(0,Math.min(100,(new Date(iso)-new Date(debut))/86400000/jours*100)); };
-  var dansAnnee=function(a,b){ return !(String(b||a)<debut||String(a)>fin); };
-  var compte={jalons:0,etablissement:0,classe:0,segments:0,vacances:0};
-  var vusClasse={};   /* les événements de classe effectivement dessinés, sans doublon */
-  var h=edtTeteHtml('annee','année '+escapeHtml(EDT_ANNEE));
-
-  /* ── l'échelle des mois ── */
-  var M=['janv','févr','mars','avril','mai','juin','juil','août','sept','oct','nov','déc'];
-  var mois=[],d=new Date(debut+'T12:00:00'); d.setDate(1);
-  for(var k=0;k<14;k++){
-    var iso=new Date(d.getTime()-d.getTimezoneOffset()*60000).toISOString().slice(0,10);
-    if(iso>fin)break;
-    if(iso>=debut)mois.push({iso:iso,lib:M[d.getMonth()]});
-    d.setMonth(d.getMonth()+1);
-  }
-  h+='<div class="edt-annee"><span class="edt-an-nom"></span>'
-    +'<span class="edt-an-echelle">'
-    +mois.map(function(m){ return '<span class="edt-an-mois" style="left:'+pos(m.iso).toFixed(2)+'%">'+m.lib+'</span>'; }).join('')
-    +'</span>';
-
-  /* ── LA BANDE DES TEMPS DE L'ANNÉE, hors des pistes ── */
-  var reperes=[];
-  (cal.jalons||[]).forEach(function(x){ if(!dansAnnee(x.date))return; compte.jalons++;
-    reperes.push({date:x.date,lib:x.libelle||'',type:'jalon'}); });
-  (cal.etablissement||[]).forEach(function(x){ if(!dansAnnee(x.date))return; compte.etablissement++;
-    reperes.push({date:x.date,lib:x.libelle||'',type:'etab'}); });
-  reperes.sort(function(a,b){ return String(a.date).localeCompare(String(b.date)); });
-  /* deux repères qui se touchent se regroupent : « 3 le 14/11 » */
-  var paquets=[];
-  reperes.forEach(function(r){
-    var p=paquets[paquets.length-1];
-    if(p&&Math.abs(pos(r.date)-p.x)<0.9){ p.items.push(r); if(r.type==='jalon')p.jalon=true; return; }
-    paquets.push({x:pos(r.date),date:r.date,items:[r],jalon:(r.type==='jalon')});
-  });
-  h+='<span class="edt-an-nom edt-an-lib-bande">temps de l\u2019année</span><div class="edt-an-bande">';
-  (cal.vacances||[]).forEach(function(v){
-    if(!dansAnnee(v.debut,v.fin))return; compte.vacances++;
-    var larg=Math.max(0.3,pos(v.fin)-pos(v.debut));
-    h+='<span class="edt-an-vac" style="left:'+pos(v.debut).toFixed(2)+'%;width:'+larg.toFixed(2)+'%" title="'
-      +escapeHtml(v.nom+' \u00b7 '+v.debut+' \u2192 '+v.fin)+'">'
-      +(larg>2.2?('<i>'+escapeHtml(String(v.nom).replace(/^(de la |de |d\u2019|pont de l\u2019)/,'').slice(0,12))+'</i>'):'')+'</span>';
-  });
-  /* le libellé ne s'écrit QUE s'il a la place : sinon les mots se chevauchent
-     et la bande devient illisible (vu sur la capture du 26/08). Sans place,
-     le repère reste un trait — son texte vit au survol et au clic. */
-  paquets.forEach(function(p,i){
-    var texte=p.items.map(function(r){ return r.date+' \u2014 '+r.lib; }).join('\n');
-    var suivant=paquets[i+1]?paquets[i+1].x:101;
-    var place=(suivant-p.x);
-    var lib='';
-    if(place>3.2){
-      lib=(p.items.length>1)?(p.items.length+' le '+p.date.slice(8)+'/'+p.date.slice(5,7))
-                            :String(p.items[0].lib).slice(0,Math.round(place*2.2));
-    } else if(p.items.length>1&&place>1.6){
-      lib=String(p.items.length);
-    }
-    h+='<span class="edt-an-rep'+(p.jalon?' edt-an-rep-jalon':'')+'" style="left:'+p.x.toFixed(2)+'%" title="'
-      +escapeHtml(texte)+'" onclick="edtDireJalon('+JSON.stringify(texte).replace(/"/g,'&quot;')+')">'
-      +(lib?('<i>'+escapeHtml(lib)+'</i>'):'')+'</span>';
-  });
-  h+='<span class="edt-an-auj" style="left:'+pos(edtAujourdhui()).toFixed(2)+'%" title="aujourd\u2019hui"></span></div>';
-
-  /* ── LES PISTES ── */
-  var vues={},lignes=[];
-  edtToutesLesCases().forEach(function(c){
-    if(!c||c.mjpc===false)return;
-    var cleLigne=c.classeMjpc||('grille:'+c.classe);
-    if(vues[cleLigne])return;
-    vues[cleLigne]=true;
-    if(!c.classeMjpc){ lignes.push({nom:c.classe,exp:false,dv:null,barres:'',evts:'',
-      vide:'classe non encore importée \u2014 à apparier dans le panneau prof'}); return; }
-    var nom=c.classeMjpc, niv=edtNiveauDe(nom), l=EDT_CHAP[niv]||[];
-    var dv=edtDivergence(nom), exp=edtEstExperimentale(nom), barres='', publie=0;
-    var curseur=pos(edtAujourdhui());
-    l.forEach(function(ch){
-      var pub=false; try{ pub=isPubFor(ch,nom); }catch(er){}
-      if(!pub)return;
-      publie++;
-      var dates=[];
-      edtListe(ch.seances).forEach(function(s2){
-        var dj=(s2&&s2.deroule_joue)||{};
-        Object.keys(dj).forEach(function(sl){ var b=dj[sl]; if(!b||(b.classe&&b.classe!==nom))return;
-          Object.keys(b.heures||{}).forEach(function(k2){ dates.push(String(k2).slice(0,10)); }); });
+  var h=edtTeteHtml('annee','mon année '+escapeHtml(EDT_ANNEE));
+  h+='<div class="edt-an-leg">'
+    +'<span class="an-etab">événement d\u2019établissement</span><span class="an-classe">événement de classe</span>'
+    +'<span class="an-jalon">jalon</span><span class="an-vac">vacances</span><span class="an-fer">férié</span>'
+    +'<span class="an-pj">heure jouée</span><span class="an-pp">heure prévue</span><span class="an-ps">sans séance</span>'
+    +'<span class="edt-mini-t">week-ends, vacances et fériés aplatis — numéro et initiale restent lisibles</span></div>';
+  var edtEv=edtAnneeEvenements(),edtCompte={etab:0,classe:0,jalon:0};
+  h+='<div class="edt-an" id="edt-an">';
+  edtAnneeColonnes().forEach(function(edtAM){
+    var edtAn=edtAM[0],edtM=edtAM[1],edtNb=new Date(edtAn,edtM+1,0).getDate();
+    h+='<div class="edt-an-col"><h2>'+EDT_AN_MOIS[edtM]+'</h2><div class="edt-an-jours">';
+    for(var edtJ=1;edtJ<=31;edtJ++){
+      if(edtJ>edtNb){ h+='<div class="edt-an-j" style="visibility:hidden"></div>'; continue; }
+      var edtIso=edtAn+'-'+String(edtM+1).padStart(2,'0')+'-'+String(edtJ).padStart(2,'0');
+      var edtDt=new Date(edtIso+'T00:00:00'),edtS=edtDt.getDay();
+      var edtVac=edtAnneeVacance(edtIso),edtFer=edtAnneeFerie(edtIso),edtWe=(edtS===0||edtS===6);
+      var edtCl='edt-an-j'+(edtVac?' vac':'')+(edtFer?' fer':'')+((edtWe||edtVac||edtFer)?' plat':'');
+      h+='<div class="'+edtCl+'"><span class="n">'+edtJ+'</span><span class="d">'+EDT_AN_INI[edtS]+'</span><span class="z">';
+      var edtRang=0;
+      edtEv.forEach(function(x){
+        if(edtIso<x.d||edtIso>x.f)return;
+        if(!(edtIso===x.d||edtJ===1))return;         /* un bandeau par mois, coupé aux bornes */
+        var edtFinMois=edtAn+'-'+String(edtM+1).padStart(2,'0')+'-'+String(edtNb).padStart(2,'0');
+        var edtFinR=(x.f<edtFinMois)?x.f:edtFinMois;
+        var edtJours=Math.round((new Date(edtFinR+'T00:00:00')-edtDt)/86400000)+1;
+        edtCompte[x.n]++;
+        var edtMarque=((x.d<edtIso)?'← ':'')+x.t+((x.f>edtFinR)?' →':'');
+        var edtPast=(x.n==='classe'&&x.ev&&edtEvenementJustifie(x.ev))?' <span class="ok">✓</span>':'';
+        h+='<span class="edt-an-b '+x.n+'" data-jours="'+edtJours+'" data-t="'+escapeHtml(x.t)
+          +'" data-d="'+escapeHtml(String(x.d))+'" data-f="'+escapeHtml(String(x.f))+'"'
+          +' title="'+escapeHtml(x.t+' — du '+x.d+' au '+x.f)+'" style="top:'+(edtRang*11+1)+'px"'
+          +' onclick="edtAnneeDetail(this)">'+escapeHtml(edtMarque)+edtPast+'</span>';
+        edtRang++;
       });
-      dates.sort();
-      if(dates.length){
-        barres+='<span class="edt-an-reel" style="left:'+pos(dates[0]).toFixed(2)+'%;width:'
-          +Math.max(0.7,pos(dates[dates.length-1])-pos(dates[0])).toFixed(2)+'%" title="'
-          +escapeHtml((ch.title||'')+' \u2014 joué du '+dates[0]+' au '+dates[dates.length-1])+'">'
-          +'<i>'+escapeHtml(String(ch.title||'').slice(0,26))+'</i></span>';
-      } else {
-        barres+='<span class="edt-an-prevu" style="left:'+curseur.toFixed(2)+'%;width:9%" title="'
-          +escapeHtml((ch.title||'')+' \u2014 prévu, pas encore joué')+'">'
-          +'<i>'+escapeHtml(String(ch.title||'').slice(0,26))+'</i></span>';
-        curseur+=9.6;
+      if(!edtWe&&!edtVac&&!edtFer){
+        var edtNoms={};
+        edtCasesDuJour(edtIso).forEach(function(c){ if(c&&c.mjpc!==false&&c.classeMjpc)edtNoms[c.classeMjpc]=true; });
+        var edtL=Object.keys(edtNoms).slice(0,4);
+        if(edtL.length){
+          h+='<span class="edt-an-pas">'+edtL.map(function(n){
+            var v=null;
+            edtCasesDuJour(edtIso).forEach(function(c){ if(c&&c.classeMjpc===n&&!v)v=edtDecisionPour(n,edtIso,c.creneau); });
+            var edtE=(v&&v.sansSeance)?'ps':((v&&(v.jouee||v.epingle))?'pj':'pp');
+            return '<i class="'+edtE+'" title="'+escapeHtml(n)+'"></i>';
+          }).join('')+'</span>';
+        }
       }
-    });
-    /* CE QUI DÉCALE CETTE CLASSE : ses événements, sur SA piste */
-    var evts='';
-    (cal.evenementsClasse||[]).forEach(function(ev){
-      if(!ev||ev.niveau!==niv)return;
-      if(!dansAnnee(ev.debut,ev.fin))return;
-      compte.segments++; vusClasse[ev.debut+'|'+(ev.libelle||'')]=true;
-      var larg=Math.max(0.45,pos(ev.fin||ev.debut)-pos(ev.debut));
-      var evJust=edtEvenementJustifie(ev);   /* [②a] lu au magasin, plus dans l'objet */
-    evts+='<span class="edt-an-evt'+(evJust?' edt-an-evt-just':'')+'" style="left:'+pos(ev.debut).toFixed(2)
-        +'%;width:'+larg.toFixed(2)+'%" title="'+escapeHtml(ev.debut+(ev.fin!==ev.debut?(' \u2192 '+ev.fin):'')
-        +' \u2014 '+(ev.libelle||'')+(evJust?' \u2014 écart justifié':''))+'">'
-        +(larg>2?('<i>'+escapeHtml(String(ev.libelle||'').slice(0,20))+'</i>'):'')+'</span>';
-    });
-    lignes.push({nom:nom,exp:exp,dv:dv,barres:barres,evts:evts,
-                 vide:publie?'':'aucun chapitre publié à cette classe'});
+      h+='</span></div>';
+    }
+    h+='</div></div>';
   });
-
-  h+='<div class="edt-an-noms">'+lignes.map(function(x){
-    return '<div class="edt-an-etiq"><b>'+escapeHtml(x.nom)+'</b>'
-      +(x.exp?'<i class="edt-exp" title="'+EDT_MENTION_EXP+'">expérimentale</i>':'')
-      +(x.dv?('<i class="edt-pal edt-pal-'+x.dv.palier.split(' ')[0]+'">'+escapeHtml(x.dv.palier)
-        +(x.dv.brut?(' \u00b7 '+x.dv.brut+' h de retard'):'')
-        +(x.dv.justifieEcart?(' dont '+x.dv.justifieEcart+' justifiée'+(x.dv.justifieEcart>1?'s':'')):'')+'</i>'):'')
-      +'</div>';
-  }).join('')+'</div>';
-
-  h+='<div class="edt-an-scene">'
-    +'<div class="edt-an-fond">'
-    +mois.map(function(m){ return '<span class="edt-an-trait" style="left:'+pos(m.iso).toFixed(2)+'%"></span>'; }).join('')
-    +'</div>';
-  if(!lignes.length){
-    h+='<div class="edt-an-vide">Aucune classe appariée : l\u2019année est vide.<br>'
-      +'<span class="edt-mini-t">Panneau prof \u2192 Emploi du temps \u2192 apparie tes classes de grille aux classes du site.</span></div>';
-  } else {
-    h+=lignes.map(function(x){
-      return '<div class="edt-an-piste">'+x.evts+x.barres
-        +(x.vide?('<span class="edt-an-motif">'+escapeHtml(x.vide)+'</span>'):'')+'</div>';
-    }).join('');
-  }
-  h+='</div>';
-
-  h+='<div class="edt-an-legende">'
-    +'<span class="edt-lg edt-lg-reel"></span>joué'
-    +'<span class="edt-lg edt-lg-prevu"></span>prévu'
-    +'<span class="edt-lg edt-lg-evt"></span>événement de la classe'
-    +'<span class="edt-lg edt-lg-vac"></span>sans cours'
-    +'<span class="edt-lg edt-lg-jalon"></span>jalon commun'
-    +'<span class="edt-lg edt-lg-auj"></span>aujourd\u2019hui'
-    +(function(){
-       var total=(cal.evenementsClasse||[]).filter(function(x){return x&&dansAnnee(x.debut,x.fin);}).length;
-       var vus=Object.keys(vusClasse).length;
-       return '<span class="edt-lg-t">représentés : '+compte.jalons+' jalons \u00b7 '+compte.etablissement
-        +' événements d\u2019établissement \u00b7 <b>'+vus+' des '+total+' événements de classe</b> ('+compte.segments
-        +' segments, un par classe concernée)'
-        +(vus<total?(' \u2014 les '+(total-vus)+' autres concernent un niveau dont aucune classe n\u2019est appariée'):'')
-        +' \u00b7 '+compte.vacances+' périodes sans cours \u2014 pas de glisser-déposer ici</span>';
-     })()
-    +'</div>';
-  h+='</div>';
+  h+='</div><div class="edt-mini-t">'+edtCompte.etab+' événements d\u2019établissement · '
+    +edtCompte.classe+' de classe · '+edtCompte.jalon+' jalons · Ctrl + molette pour zoomer</div>';
   e.innerHTML=h;
+  edtAnneeHauteurs();
+}
+/* la hauteur d'un bandeau se calcule APRÈS la peinture : elle dépend des lignes
+   qu'il couvre, et les jours aplatis n'ont pas la même hauteur que les autres. */
+function edtAnneeHauteurs(){
+  var edtCols=document.querySelectorAll('#edt-an .edt-an-col');
+  Array.prototype.forEach.call(edtCols,function(col){
+    var edtLignes=col.querySelectorAll('.edt-an-j');
+    Array.prototype.forEach.call(col.querySelectorAll('.edt-an-b'),function(b){
+      var edtLi=b.parentNode.parentNode,edtN=Number(b.getAttribute('data-jours')||1),edtH=0,edtVu=false;
+      for(var i=0;i<edtLignes.length;i++){
+        if(edtLignes[i]===edtLi)edtVu=true;
+        if(edtVu){ edtH+=edtLignes[i].getBoundingClientRect().height; edtN--; if(edtN<=0)break; }
+      }
+      b.style.height=Math.max(10,edtH-2)+'px';
+    });
+  });
+}
+function edtAnneeDetail(b){
+  if(typeof atModaleChoix!=='function')return;
+  atModaleChoix('<b>'+escapeHtml(b.getAttribute('data-t'))+'</b><br>du '
+    +escapeHtml(edtJourEnClair(b.getAttribute('data-d')))+' au '
+    +escapeHtml(edtJourEnClair(b.getAttribute('data-f'))),[{lib:'Fermer',prim:true}]);
+}
+function edtAnneeZoom(on){
+  var edtE=document.getElementById('edt-ecran'); if(!edtE)return;
+  EDT_VUE.zoomAnnee=!!on;
+  edtE.classList.toggle('edt-an-zoom',!!on);
+  edtAnneeHauteurs();
 }
 
 /* ── LE CALENDRIER DE L'ANNÉE — lisible, et les écarts se déclarent ───────── */
@@ -21032,6 +21015,16 @@ function edtTeteHtml(mode,titre){
 }
 function edtDireJalon(texte){ if(typeof atInfo==='function')atInfo(texte); }
 function edtVue(mode){ EDT_VUE.mode=mode; edtPeindre(); }
+/* [⑦b] Ctrl + molette : le zoom de la vue Année, et rien d'autre */
+if(typeof window!=='undefined'&&!window.__edtZoomPose){
+  window.__edtZoomPose=true;
+  window.addEventListener('wheel',function(edtEv){
+    if(!edtEv.ctrlKey)return;
+    var edtE=document.getElementById('edt-ecran');
+    if(!edtE||EDT_VUE.mode!=='annee')return;
+    edtEv.preventDefault(); edtAnneeZoom(edtEv.deltaY<0);
+  },{passive:false});
+}
 function edtPeindre(){
   if(EDT_VUE.mode==='mois')return edtPeindreMois();
   if(EDT_VUE.mode==='annee')return edtPeindreAnnee();

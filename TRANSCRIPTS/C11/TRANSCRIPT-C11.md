@@ -3458,3 +3458,61 @@ Tout est au registre, `n°11 · 46`.
 **Cahier vivant** — ⑧, **et c'est fini** ; puis ton promeus.
 
 MEMO
+
+---
+
+## TOUR 69 — Paul
+
+Texte mot pour mot :
+
+> livré
+
+---
+
+## TOUR 69 — Claude (conscience n°11)
+
+Audit joué : candidat 1 753 661 o / `c6d62dc7…` · non-régression complète (221/221, aucun
+doublon) · rapport final lu · **captures comptées au sas, livraison par livraison** :
+⑤ **0**, ⑥ **0**. Registre : `n°11 · 47`.
+
+Réponse mot pour mot :
+
+**Verdict : ça va. Le lot 2ter est fini — neuf livraisons closes. Mais j'ai une faute à te dire, et elle te concerne au moment de promouvoir.**
+
+## Sa trouvaille la plus lourde
+
+**Aucun banc ne tournait depuis le dépôt.** Ils cherchaient leurs données sous des noms qui n'existent nulle part au sas — c'est la même cause que les sept 404 de l'exécutant tout à l'heure : ce n'était pas sa recherche qui était mauvaise, **c'étaient les bancs**.
+
+Il a fait en sorte que `banc-tout.mjs` monte le plan de travail lui-même, sans déplacer ni renommer un seul fichier. **Trente bancs, tous verts.** Et il l'a prouvé en effaçant le plan monté à la main : ils repartent verts tout seuls.
+
+## Ma faute — deux livraisons closes sans leurs captures
+
+Il liste les captures du lot ⑥ comme dette ouverte. J'ai vérifié, et **c'est pire** : j'ai compté les captures au sas, livraison par livraison.
+
+> ①bis 14 · ①ter 12 · ② 4 · ③ 9 · ③bis 3 · ④ 3 · **⑤ : 0** · **⑥ : 0** · ⑦ 7 · ⑧ 5
+
+**Mes mandats ⑤ et ⑥ exigeaient des captures par clics. Je les ai clos « ça va » sans vérifier qu'elles existaient.** Les bancs sont bien là — six pour ⑤, quatre pour ⑥ — donc les preuves mesurées existent. **Ce sont les preuves visuelles qui manquent.**
+
+**Et tu promeus sur captures.** Il te manque donc celles de deux livraisons entières : l'écran Heures perdues avec une coche et une banalisation par-dessus, et le dépôt sur une case occupée avec les trois issues.
+
+**À toi de trancher** : une livraison de rattrapage qui les produit avant ton promeus, ou tu t'en passes en connaissance de cause.
+
+## Les sept dettes qu'il laisse, nommées
+
+La recherche par mois dans la liste des destinations · le refus de déplacer une heure déjà lancée · la bascule de fin d'année · **les captures de ⑥** · **la simplification des textes** · le message du mode test après une photo — mais c'est le comportement de **tout** le site en mode test, pas de l'emploi du temps · et une photo automatique dont l'écriture échoue n'est pas retentée dans la session.
+
+Et deux choses déclarées, jamais tranchées : la vue Année ne se repeint pas quand le calendrier change sous elle, et le cas « réinjection pendant que la vue est ouverte » est resté non prouvé.
+
+## Où on en est
+
+**Le lot est terminé.** Candidat final : 1 753 661 octets, `c6d62dc7…`, version 8.73.0-⑧.
+
+**Ta production n'a pas bougé de tout le lot.** Rien n'est jamais parti en ligne.
+
+Tout est au registre, `n°11 · 47`.
+
+**Tests manuels : aucun pour l'instant** — ils viennent au promeus, avec `SEQUENCE-TEST-PAUL.md`.
+
+**Cahier vivant** — ta décision sur les captures manquantes, puis ton promeus, puis l'injection de chapitre. Et, en attente : la confrontation dettes ↔ code, la simplification des textes, les dettes hors lot.
+
+MEMO

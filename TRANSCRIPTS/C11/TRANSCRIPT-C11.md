@@ -4950,3 +4950,54 @@ Borner **neuf fonctions** avec **une exception sur le passé posé**, plus les p
 **Tests manuels : aucun.**
 
 MEMO
+
+---
+
+## TOUR 98 — Paul
+
+Texte mot pour mot :
+
+> Quel est le plus logique?
+
+---
+
+## TOUR 98 — Claude (conscience n°11)
+
+Mesure : la photo automatique au hub porte **`depuis: "2026-08-31"`** — sa référence part
+d'avant sa rentrée. Registre : `n°11 · 80`.
+
+Réponse mot pour mot :
+
+**La borne partout. Trois raisons, dont une que je viens de mesurer dans ton hub.**
+
+## Tes propres mots
+
+« Je déclare mon début d'année et **le reste se cale**, c'est tout. »
+
+**Pas « l'affichage se cale ». Le reste.** Une borne qui ne borne que ce qu'on voit n'est pas une borne — c'est un décor.
+
+## Ce que j'ai trouvé dans ton hub
+
+Ta photo automatique de ce matin porte : nom **« Rentrée »**, prise le **3 septembre**… **et `depuis : 2026-08-31`.**
+
+**Ta photo de référence part du 31 août.** C'est elle que le cockpit comparera au réel en juin.
+
+**Si la borne ne va que sur l'affichage, ta référence reste fausse — et tu ne le verras pas**, parce que ta grille, elle, aura l'air juste.
+
+## Et sans ça, tes écrans se contrediraient
+
+Les heures perdues, la liste des destinations, la vue Année et la photo lisent **la même source** — dix appels dans neuf fonctions.
+
+Borner à un seul endroit ferait dire à ta grille « avant ta rentrée » pendant que **ton compte dirait autre chose**. C'est exactement le genre de contradiction qui te bloquera dans trois mois — et c'est ce que tu voulais éviter.
+
+## Ce que ça coûte, et je ne le masque pas
+
+**Neuf fonctions à examiner, pas une.** Ton exécutant a raison : **ce n'est pas une micro, c'est un mandat en règle.** Plus long, mais c'est ce que ta règle demande.
+
+**Deux choses ne changent pas, quelle que soit l'étendue** : une case qui porte une décision ou une heure jouée **n'est jamais bornée** — le passé ne se réécrit pas ; et l'ordre : vacances, puis hors MJPC, puis hors année.
+
+**Je n'ai rien rédigé.** Tu me dis, et j'écris — en te le soumettant avant de le déposer.
+
+**Tests manuels : aucun.**
+
+MEMO

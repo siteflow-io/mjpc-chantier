@@ -4896,3 +4896,57 @@ Il te donne quatre tests à faire de ta main pour voir le défaut toi-même. **J
 **Tests manuels : les quatre qu'il te propose.**
 
 MEMO
+
+---
+
+## TOUR 98 — Paul
+
+Texte mot pour mot :
+
+> Quel est le plus logique?
+
+---
+
+## TOUR 98 — Claude (conscience n°11)
+
+Registre : `n°11 · 80`.
+
+Réponse mot pour mot :
+
+**La réponse est dans ta propre phrase : « je déclare mon début d'année, et le reste se cale ».**
+
+**« Le reste », c'est tout** — l'affichage, **les comptes**, **les propositions**. Une borne qui ne porterait que sur l'affichage serait un mensonge d'un autre genre : ta grille dirait « avant ta rentrée » pendant que **ton bilan de juin compterait ces heures**.
+
+## Mon avis, en une phrase
+
+> **Ton calendrier d'établissement s'affiche toujours. Tes cours, eux, n'existent qu'entre tes deux dates.**
+
+## Ce que ça donne concrètement
+
+**La semaine, le mois, l'année** : la case reste, grisée, sans séance.
+
+**La photo du prévu et les heures perdues** — **c'est là que ça compte le plus.** Sans la borne, des heures d'avant ta rentrée entreraient dans « ce que l'année t'a coûté ». **Ton bilan de juin serait faux.**
+
+**La liste des destinations** : proposer de replacer une heure **avant ta rentrée** n'a aucun sens.
+
+Les quatre autres fonctions suivent — ce sont des dérivés.
+
+## L'exception, et elle est intangible
+
+**Une case qui porte une décision à toi, ou une heure réellement jouée, n'est jamais bornée.**
+
+Ton code le dit déjà pour le réel : « une heure jouée colore sa case même quand le chapitre est fini, dépublié ou supprimé ». **Le passé ne se réécrit pas.** Si tu as lancé une séance le 1er septembre et que tu déclares ensuite le 3, cette heure reste avec sa trace.
+
+## Et ce que la borne ne touche jamais
+
+**Ton calendrier.** Le CODIR du 27, les pré-rentrées, la rentrée des élèves : tout reste affiché. C'est le pendant que tu as nommé toi-même — « il peut aussi y avoir des choses après le dernier jour ».
+
+## Pourquoi ce n'est pas un micro
+
+Borner **neuf fonctions** avec **une exception sur le passé posé**, plus les preuves sur les trois vues **et** sur les comptes : **c'est un mandat d'exécutant en règle.** Il l'avait dit avant moi.
+
+**Je n'ai rien rédigé.** Dis-moi si tu veux le mandat, et je te le soumets avant de le déposer.
+
+**Tests manuels : aucun.**
+
+MEMO

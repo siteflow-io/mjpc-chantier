@@ -4570,3 +4570,56 @@ Réponse mot pour mot : les horaires vérifiés, la photo automatique, l'avertis
 JSON, et les trois adresses.
 
 MEMO
+
+---
+
+## TOUR 92 — Paul
+
+Texte mot pour mot :
+
+> ok va vérifier l'injection. par ailleurs j'ai mes séances qui apparaissent depuis le 27 aout, or c'est faux. mes premières séances sont aujourd'hui. j'ai changé les dates de l'année en pensant que ça allait effacer les séances en trop depuis le 27 aout, mais ça n'a pas fonctionné. sinon pour le reste ça a l'air d'aller.
+
+---
+
+## TOUR 92 — Claude (conscience n°11)
+
+Mesures : hub `/site/edt` **six nœuds, 24 635 o**, injection complète · `debutAnnee 2026-09-03`
+et `finAnnee 2027-06-26` bien écrites · **vacances d'été 2026-08-01 → 2026-08-26**, donc le
+27/08 est le premier jour « avec cours » · **`edtDebutAnnee` n'a que trois appelants, aucun
+dans le prévu** ; ce qui borne, c'est `edtJourSansCours`. Registre : `n°11 · 74`.
+
+Réponse mot pour mot :
+
+**L'injection est complète, et j'ai trouvé la cause du 27 août. Ce n'est pas une panne, c'est un manque — et il est de mon fait.**
+
+## L'injection
+
+Ton hub porte maintenant **six nœuds, 24 635 octets** : le calendrier entier (59 événements d'établissement, 15 de classe, 11 fériés, 30 jalons, 52 semaines, 7 vacances), les créneaux, la grille (**30 créneaux réels et tes 4 fictifs**), les 5 périodes, la photo et les réglages.
+
+**Et tes dates sont bien enregistrées** : `debutAnnee 2026-09-03`, `finAnnee 2027-06-26`. Le mécanisme a marché — tu as saisi, ça s'est écrit.
+
+## Le 27 août
+
+**D'où il vient** : ton calendrier dit « d'été (avant la rentrée) : 1er août → **26 août** ». Le 26 est le dernier jour sans cours, donc **le 27 est le premier jour où le site s'autorise à poser une séance**.
+
+**Pourquoi changer tes dates n'a rien fait** : j'ai cherché qui utilise `debutAnnee`. **Trois endroits — et aucun dans le calcul du prévu.** Ce qui borne le prévu, c'est uniquement la liste des vacances et des fériés.
+
+**`debutAnnee` ne borne pas le prévu. Il ne l'a jamais borné.**
+
+Donc entre le 27 août et le 2 septembre, le site pose des séances sur des jours qui ne sont ni vacances ni fériés, **mais qui sont avant ta rentrée**. Tes séances sont décalées d'une semaine.
+
+## C'est ma faute, pas celle de l'exécutant
+
+Mon mandat ⑥ disait : « tout se recale dessus — fin de la liste, bascule des heures à replacer, appartenance d'une date à l'année scolaire ».
+
+**Il ne disait pas « le prévu ne commence pas avant `debutAnnee` ».** L'exécutant a fait ce qui était écrit. **Le trou est dans mon mandat.**
+
+## Ce que ça demande, en une phrase
+
+**Le prévu ne pose aucune séance avant `debutAnnee` ni après `finAnnee`** — et le geste par clics doit le prouver, pas un appel de fonction.
+
+**Je n'écris rien de plus et j'attends ton mot** : tu m'as repris tout à l'heure pour avoir rédigé des mandats sans toi. Dis-moi si tu veux ce correctif, et sous quelle forme.
+
+**Tests manuels : aucun tant que tu n'as pas tranché.**
+
+MEMO

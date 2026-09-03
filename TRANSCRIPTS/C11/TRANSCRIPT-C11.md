@@ -4623,3 +4623,49 @@ Mon mandat ⑥ disait : « tout se recale dessus — fin de la liste, bascule de
 **Tests manuels : aucun tant que tu n'as pas tranché.**
 
 MEMO
+
+---
+
+## TOUR 93 — Paul
+
+Texte mot pour mot :
+
+> et pourquoi ne pas modifier le json d'injection?
+
+---
+
+## TOUR 93 — Claude (conscience n°11)
+
+Mesure : **huit événements d'établissement** entre le 27/08 et le 02/09 — CODIR, déjeuner
+d'équipe, photo, deux jours de pré-rentrée, préparation rentrée, **rentrée des 6e**, **rentrée
+des 5e-4e-3e**. Registre : `n°11 · 75`.
+
+Réponse mot pour mot :
+
+**Ça marcherait. Et ça ferait mentir ton calendrier sur sept journées où tu es à l'établissement.**
+
+J'ai regardé ce que ces jours portent chez toi :
+
+| | |
+|---|---|
+| **27/08** | 9h30 CODIR · 12h déjeuner de l'équipe · 13h45 photo, 14h30-18h pré-rentrée |
+| **28/08** | 8h30-17h pré-rentrée |
+| **31/08** | préparation rentrée |
+| **01/09** | **Rentrée scolaire des élèves de 6e** · après-midi jeux cohésion |
+| **02/09** | **Rentrée scolaire des élèves de 5e, 4e et 3e** |
+
+**Huit événements.** Ces jours-là tu travailles. Les déclarer « vacances d'été » les peindrait en gris dans ta vue Année, et **huit choses réelles tomberaient sur des jours dits sans cours**.
+
+**Et le fond resterait entier** : `debutAnnee` continuerait à ne servir à rien. L'an prochain, même bricolage — et **dans trois mois tu ne te souviendrais pas pourquoi tes vacances d'été vont jusqu'au 2 septembre**.
+
+## Ce que je réponds, et rien de plus
+
+**C'est un dépannage qui marche ce soir**, et il est réversible. Si tu le veux pour ce soir, c'est ton droit.
+
+**Mais ce n'est pas le correctif** : ça rendrait faux un calendrier qui est juste, pour compenser un champ qui ne fait pas son travail.
+
+**Je n'ai rien rédigé et rien modifié.** Dis-moi ce que tu veux : le dépannage, le correctif, ou les deux dans cet ordre.
+
+**Tests manuels : aucun.**
+
+MEMO

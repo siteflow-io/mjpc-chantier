@@ -97,8 +97,19 @@ const BANCS = [
     ['TOUT PASSE — 15 repères', '"echeance":"per:UN"', 'écritures photos : []']],
   /* [⑨b] la liste entière, sa recherche, et le refus qui porte sur la trace */
   ['banc-liste-trace-09b.mjs', '⑨b · la liste entière, la recherche, la trace',
-    ['TOUT PASSE — 4 repères', '"apres_calcule":967', '"semaine_37":27']],
+    /* [2ter ⑪a] le repère « "apres_calcule":967 » PÉRIMAIT : la liste va d'AUJOURD'HUI
+       à la fin de l'année, donc elle raccourcit d'un cran chaque jour (967 le 01/09,
+       965 le 03/09). Un repère qui dépend du jour rend le banc rouge sans qu'aucun
+       code n'ait bougé — mesuré sur le candidat ⑨ comme sur le candidat ⑧a. On
+       vérifie donc que le nombre EXISTE et qu'il est du bon ordre, pas sa valeur du
+       jour ; « semaine_37 » et le compte des repères, eux, ne bougent pas. */
+    ['TOUT PASSE — 4 repères', /"apres_calcule":9\d\d/, '"semaine_37":27']],
   /* [⑨] le verrou par clé, la bascule de fin d'année, la photo retentée */
+  /* [2ter ⑪a] le banc de la livraison ⑧a, ajouté au lot : les deux dates de
+     l'année, leurs trois refus et la fin avancée, tous passés par le geste. */
+  ['banc-dates-annee-11a.mjs', '⑪a · les deux dates de l\'année, saisissables',
+    ['VERT — les quatre points', 'les deux dates sont au hub', 'tombe avant son début',
+     'plus de treize mois', 'hors du calendrier injecté']],
   ['banc-verrou-bascule-09.mjs', '⑨ · le verrou, la bascule, la photo retentée',
     ['TOUT PASSE — 5 repères', '"ecrituresDecisions":1', '"jamaisReplacee":true']]
 ];

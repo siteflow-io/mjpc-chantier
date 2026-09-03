@@ -1,0 +1,65 @@
+① L'ÉCRAN « Dates de l'année » PORTE LE DÉBUT ET LA FIN
+   version : 8.73.0-⑪ᵃ
+   ✔ CLIC « 🛠 Panneau prof »
+   ✔ CLIC « 🎓 Dates de l’année »
+   ✔ les deux champs sont à l'écran (avec les 4 dates du brevet)
+   au hub avant toute saisie : {"3e":"2027-06-26T08:00:00","4e":"2028-06-25T08:00:00","5e":"2029-06-23T08:00:00","6e":"2030-06-22T08:00:00"}
+   ▸ tests/11a/a01-ecran-avec-debut-et-fin-de-lannee.png
+
+② LES DEUX DATES SE SAISISSENT, ET PARTENT AU HUB
+     (EDT_DATES : {"debutAnnee":"2026-08-24","finAnnee":null} · focus : BODY)
+   ✔ FRAPPE de 24/08/2026 dans « début de l'année » (ordre du champ : month-day-year, huit chiffres « 08242026 ») → le champ porte "2026-08-24"
+     (EDT_DATES : {"debutAnnee":"2026-08-24","finAnnee":"2027-07-03"} · focus : BODY)
+   ✔ FRAPPE de 03/07/2027 dans « fin de l'année » (ordre du champ : month-day-year, huit chiffres « 07032027 ») → le champ porte "2027-07-03"
+   au hub après les deux saisies : {"3e":"2027-06-26T08:00:00","4e":"2028-06-25T08:00:00","5e":"2029-06-23T08:00:00","6e":"2030-06-22T08:00:00","debutAnnee":"2026-08-24","finAnnee":"2027-07-03"}
+   écritures : [{"chemin":"/site/config/brevetDates/debutAnnee","valeur":"2026-08-24"},{"chemin":"/site/config/brevetDates/finAnnee","valeur":"2027-07-03"}]
+   ✔ les deux champs portent ce qui a été frappé
+   ✔ les deux dates sont au hub, sous /site/config/brevetDates
+   ▸ tests/11a/a02-les-deux-dates-saisies-et-au-hub.png
+
+③ LES TROIS REFUS, À L'ÉCRAN
+     (EDT_DATES : {"debutAnnee":"2026-08-24","finAnnee":"2027-07-03"} · focus : BODY)
+   ✔ FRAPPE de 01/06/2026 dans « fin de l'année » (ordre du champ : month-day-year, huit chiffres « 06012026 ») → le champ porte "2027-07-03"
+   le site répond : Date refusée — la fin de l’année (lundi 1 juin) tombe avant son début (lundi 24 août) ; la fin, lundi 1 juin, est hors du calendrier injecté (samedi 1 août → samedi 31 juillet, un mois de marge). | Compris
+   ✔ refus nommé : « tombe avant son début »
+   ✔ rien n'est parti au hub
+   ▸ tests/11a/a03-refus-1-la-fin-avant-le-debut.png
+     (EDT_DATES : {"debutAnnee":"2026-08-24","finAnnee":"2027-07-03"} · focus : BODY)
+   le champ est revenu à "2027-07-03"
+     (EDT_DATES : {"debutAnnee":"2026-08-24","finAnnee":"2027-07-03"} · focus : BODY)
+   ✔ FRAPPE de 31/12/2027 dans « fin de l'année » (ordre du champ : month-day-year, huit chiffres « 12312027 ») → le champ porte "2027-07-03"
+   le site répond : Date refusée — l’année ferait 494 jours, soit plus de treize mois ; la fin, vendredi 31 décembre, est hors du calendrier injecté (samedi 1 août → samedi 31 juillet, un mois de marge). | Compris
+   ✔ refus nommé : « plus de treize mois »
+   ✔ rien n'est parti au hub
+   ▸ tests/11a/a04-refus-2-plus-de-treize-mois.png
+     (EDT_DATES : {"debutAnnee":"2026-08-24","finAnnee":"2027-07-03"} · focus : BODY)
+   le champ est revenu à "2027-07-03"
+     (EDT_DATES : {"debutAnnee":"2026-08-24","finAnnee":"2027-07-03"} · focus : BODY)
+   ✔ FRAPPE de 01/01/2025 dans « début de l'année » (ordre du champ : month-day-year, huit chiffres « 01012025 ») → le champ porte "2026-08-24"
+   le site répond : Date refusée — l’année ferait 913 jours, soit plus de treize mois ; le début, mercredi 1 janvier, est hors du calendrier injecté (samedi 1 août → samedi 31 juillet, un mois de marge). | Compris
+   ✔ refus nommé : « hors du calendrier injecté »
+   ✔ rien n'est parti au hub
+   ▸ tests/11a/a05-refus-3-hors-du-calendrier.png
+     (EDT_DATES : {"debutAnnee":"2026-08-24","finAnnee":"2027-07-03"} · focus : BODY)
+   le champ est revenu à "2026-08-24"
+   au hub après les trois refus : {"3e":"2027-06-26T08:00:00","4e":"2028-06-25T08:00:00","5e":"2029-06-23T08:00:00","6e":"2030-06-22T08:00:00","debutAnnee":"2026-08-24","finAnnee":"2027-07-03"}
+
+④ AVANCER LA FIN → LES HEURES POSÉES AU-DELÀ REDEVIENNENT DES HEURES À REPLACER
+   ✔ CLIC « 📅 Emploi du temps »
+   ✔ CLIC « 📅 Ouvrir l’emploi du temps »
+   ✔ CLIC sur la case 2026-08-31|08:57-09:52|3 FRANKLIN Aretha
+   ✔ CHOIX dans la liste : « ven 2/7 · 16:04-16:59 — créneau libre, heure ajoutée »
+   heures posées après le 31/12/2026 : [{"classe":"3E Charles de Gaulle","cle":"2027-07-02_16h04-16h59_3E_Charles_de_Gaulle","iso":"2027-07-02","creneau":"16:04-16:59"}]
+   ✔ une heure est posée loin dans l'année, par le geste
+   ▸ tests/11a/a06-une-heure-posee-loin-dans-lannee.png
+   ✔ CLIC « ✕ Fermer l’emploi du temps »
+   ✔ CLIC « 🎓 Dates de l’année »
+     (EDT_DATES : {"debutAnnee":"2026-08-24","finAnnee":"2026-12-20"} · focus : BODY)
+   ✔ FRAPPE de 20/12/2026 dans « fin de l'année » (ordre du champ : month-day-year, huit chiffres « 12202026 ») → le champ porte "2026-12-20"
+   le site répond : 1 heure posée après la nouvelle fin d’année : à replacer — 3E Charles de Gaulle vendredi 2 juillet 16:04-16:59. | Compris
+   ✔ les heures au-delà sont nommées et renvoyées aux heures à replacer
+   ▸ tests/11a/a07-fin-avancee-les-heures-au-dela-a-replacer.png
+   écritures : ["/site/config/brevetDates/finAnnee","/corbeille/2026-09-03/edt-decisions_054449","/site/edt/decisions/2026-2027"]
+   au hub : {"3e":"2027-06-26T08:00:00","4e":"2028-06-25T08:00:00","5e":"2029-06-23T08:00:00","6e":"2030-06-22T08:00:00","debutAnnee":"2026-08-24","finAnnee":"2026-12-20"}
+
+VERT — les quatre points du §① sont prouvés par le geste

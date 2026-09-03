@@ -2092,6 +2092,9 @@ function _blocBrevet(){
       + '<input type="date" class="m8-input m8-date-in" value="'+_isoJour(d)+'" onchange="ecrireBrevetDate(\''+k+'\', this.value)">'
       + (passee ? '<span class="m8-alerte">date pass\u00e9e</span>' : '') + '</div>';
   }
+  /* [2ter ⑪a] les deux dates de l’année scolaire, rendues par le bloc EDT via
+     la porte n°2. Seule ligne de cette livraison hors du bloc. */
+  h += (typeof edtSectionPanneau==='function' ? edtSectionPanneau('datesAnnee') : '');
   return h + '<button class="m8-btn m8-btn-min" onclick="reinitialiserBrevetDates()">Revenir aux dates par d\u00e9faut</button></div>';
 }
 function _blocRegles(ctrl){
@@ -2885,7 +2888,7 @@ function mjpcEcrireRest(url,options,cb){
    (les 3 gestes, le geste conservatoire par app, ce qui ne peut pas arriver).
    RESTAURER LA VERSION PRÉCÉDENTE : docs/MJPC6-restauration.md (convention BUG).
    ═══════════════════════════════════════════════════════════════════════════ */
-var APP_VERSION="8.73.0-⑨";
+var APP_VERSION="8.73.0-⑪ᵃ";
 var APP_VERSION_DATE="2026-08-27";
 // ── 11. Coffre : dérivation, chiffrement, empreinte (v1.3.0) ──
 // (Le canon porte deux sections « 8 » — dette de numérotation connue, non corrigée
@@ -18838,6 +18841,57 @@ function edtPoserDateAnnee(champ,valeur){
     });
   return [];
 }
+/* [2ter ⑪a] LES DEUX DATES DE L’ANNÉE, SAISISSABLES À LA MAIN.
+   Le mandat ⑥ §⑤.2 les voulait « produites par le prompt, injectées avec lui,
+   MODIFIABLES À LA MAIN » : les deux premières étaient faites, la troisième
+   n’existait pas — `edtPoserDateAnnee` n’avait AUCUN appelant (mesuré au
+   parcours ⑩). Rien n’est réécrit ici : les deux champs BRANCHENT la fonction
+   qui existe, avec ses trois refus et son rappel des heures posées au-delà de
+   la nouvelle fin. Le HTML naît DANS le bloc et arrive à l’écran par la porte
+   n°2, déjà déclarée : aucune porte nouvelle, la garde ne bouge pas. */
+var EDT_DATES_LUES=false;
+function edtBlocDatesAnnee(){
+  /* l’écran des dates peut s’ouvrir sans que l’emploi du temps ait été ouvert :
+     on lit les deux dates une fois, puis on redemande l’écran par la fonction
+     du contrat. Une lecture, jamais une écriture. */
+  if(!EDT_DATES_LUES){
+    EDT_DATES_LUES=true;
+    try{ edtChargerDatesAnnee(function(){
+      if(document.getElementById('edt-date-debut'))showProfSection('brevet');
+    }); }catch(e){}
+    /* le troisième refus tient aux bornes du calendrier injecté : on le lit SEUL,
+       sans mise à niveau et sans la moindre écriture, s’il n’est pas déjà là —
+       sinon l’écran des dates refuserait moins quand on y vient sans avoir ouvert
+       l’emploi du temps, et ce serait une dette. */
+    if(!EDT.calendrier){ try{ _siteGet(edtChemin('calendrier'),function(v){
+      if(v&&!EDT.calendrier)EDT.calendrier=v; }); }catch(e){} }
+  }
+  var edtD=EDT_DATES.debutAnnee||'',edtF=EDT_DATES.finAnnee||'';
+  return '<div class="m8-titre">\ud83d\udcc5 L\u2019ann\u00e9e scolaire</div>'
+    +'<p class="m8-p">Le d\u00e9but et la fin de l\u2019ann\u00e9e scolaire. Ils arrivent avec le calendrier '
+    +'inject\u00e9 ; ici, tu les corriges \u00e0 la main. Avancer la fin renvoie les heures pos\u00e9es '
+    +'au-del\u00e0 dans les heures \u00e0 replacer, et te les nomme.</p>'
+    +'<div class="m8-ligne"><label class="m8-lab">d\u00e9but de l\u2019ann\u00e9e</label>'
+    +'<input type="date" class="m8-input m8-date-in" id="edt-date-debut" value="'+escapeHtml(edtD)+'"'
+    +' onblur="edtSaisirDateAnnee(&quot;debutAnnee&quot;,this.value,this)"></div>'
+    +'<div class="m8-ligne"><label class="m8-lab">fin de l\u2019ann\u00e9e</label>'
+    +'<input type="date" class="m8-input m8-date-in" id="edt-date-fin" value="'+escapeHtml(edtF)+'"'
+    +' onblur="edtSaisirDateAnnee(&quot;finAnnee&quot;,this.value,this)"></div>';
+}
+function edtSaisirDateAnnee(edtChamp,edtValeur,edtInput){
+  var edtV=String(edtValeur||''),edtRefus=[];
+  /* LA POSE SE FAIT QUAND LE CHAMP EST QUITTÉ, PAS À CHAQUE CHIFFRE. Mesuré au
+     banc : une date frappée au clavier passe par des états entiers mais absurdes
+     (l’année se remplit chiffre à chiffre : 0008, 0082, 0824…) et chacun partait
+     au hub. On ne pose donc qu’une date complète, et seulement si elle diffère
+     de celle qui est déjà posée : une saisie = une écriture. */
+  if(!/^\d{4}-\d{2}-\d{2}$/.test(edtV))return edtRefus;
+  if(edtV===(EDT_DATES[edtChamp]||''))return edtRefus;
+  try{ edtRefus=edtPoserDateAnnee(edtChamp,edtV)||[]; }catch(e){ edtRefus=[]; }
+  /* refusée : le champ reprend la valeur d’avant — aucun écran ne ment. */
+  if(edtRefus.length&&edtInput)edtInput.value=EDT_DATES[edtChamp]||'';
+  return edtRefus;
+}
 function edtEcrireBrevet(cal){
   var b=cal&&cal.brevet; if(!b||typeof b!=='object')return;
   /* [⑥] le prompt du calendrier peut produire les deux dates : même chemin */
@@ -19014,7 +19068,10 @@ function edtReglagePoser(nom,valeur){
 }
 
 /* ── LA PORTE ② : LE PANNEAU PROF ───────────────────────────────────────── */
-function edtSectionPanneau(){
+function edtSectionPanneau(edtQuoi){
+  /* [2ter ⑪a] la même porte sert l’écran « Dates de l’année » : aucun
+     élargissement du contrat, aucune porte de plus. */
+  if(edtQuoi==='datesAnnee')return edtBlocDatesAnnee();
   setTimeout(function(){ edtChargerClasses(function(){ if(EDT.charge)edtPeindrePanneau(); else edtCharger(edtPeindrePanneau); }); },0);
   return '<h2>\ud83d\udcc5 Emploi du temps</h2><div id="edt-panneau" class="edt-panneau">Lecture des objets de l\u2019année\u2026</div>';
 }

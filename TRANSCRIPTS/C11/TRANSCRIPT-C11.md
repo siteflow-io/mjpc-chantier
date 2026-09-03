@@ -4526,3 +4526,25 @@ Ce promeus emporte **le lot emploi du temps entier** et **la réparation du mode
 **Tests manuels : aucun avant ta réponse.**
 
 MEMO
+
+---
+
+## TOUR 90 — Paul
+
+Texte mot pour mot :
+
+> oui promeus.
+
+---
+
+## TOUR 90 — Claude (conscience n°11)
+
+Promotion **`c5e893bbc208`**, vérifiée **par le blob du commit** : 1 769 457 o /
+`8837063de4466afb71622e89181ae44a`, identique au candidat audité. Protocole d'après-promotion
+joué en entier : journal (`46d8a6a9`), point de retour (`1e747e9f`), registre (`f6ca808a`),
+index des fonctions (`b0385ccf`), OÙ-TROUVER-QUOI (`2a90e26d`). Registre : `n°11 · 72`.
+
+Réponse mot pour mot : le compte rendu de promotion, l'adresse avec `&v=`, et les tests
+geste par geste.
+
+MEMO

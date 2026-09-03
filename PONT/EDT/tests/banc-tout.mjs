@@ -115,6 +115,12 @@ const BANCS = [
   ['banc-classe-essai-couleur-11b.mjs', '⑪b · la classe d\'essai en couleur',
     ['VERT — la classe d\'essai est en couleur', 'case(s) en couleur dans la semaine',
      'pastille(s) en couleur dans le mois', 'la couleur a disparu']],
+  /* [2ter ⑪] le mode test qui ne vide plus, l'absence d'écriture au vrai hub,
+     le retour aux vraies données sans rechargement, et l'audit adverse. */
+  ['banc-mode-test-11.mjs', '⑪ · le mode test ne vide plus l\'écran',
+    ['VERT — le mode test ne vide plus', 'zéro écriture au vrai hub',
+     'identique, octet pour octet', 'la grille est exactement celle d\'avant',
+     'ni le vide ni la panne n\'ont été mis en cache']],
   ['banc-verrou-bascule-09.mjs', '⑨ · le verrou, la bascule, la photo retentée',
     ['TOUT PASSE — 5 repères', '"ecrituresDecisions":1', '"jamaisReplacee":true']]
 ];

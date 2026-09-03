@@ -1,0 +1,92 @@
+① HORS MODE TEST — ce que la grille montre normalement
+   version : 8.73.0-⑪
+   ✔ CLIC « 🛠 Panneau prof »
+   ✔ CLIC « 📅 Emploi du temps »
+   ✔ CLIC « 📅 Ouvrir l’emploi du temps »
+   ✔ CLIC « Semaine »
+   {"cases":18,"natures":{"prevu":3,"horsMjpc":2,"rienDePret":6,"nonImportee":7},"casesAvecSeance":3,"modeTest":false,"cartes":["3E Charles de Gaulle expérimentale · dans les temps · Poésie","4E BANKSY · aucun chapitre publié"],"chapitresEnCache":"3e:1,4e:0"}
+   ▸ tests/11/c01-hors-mode-test-la-grille-garnie.png
+
+② MODE TEST ALLUMÉ — la grille garde ses séances et ses chapitres
+   ✔ CLIC « ✕ Fermer l’emploi du temps »
+   ✔ CLIC « 🧪 Mode test »
+   mode test : true
+   ✔ CLIC « 📅 Emploi du temps »
+   ✔ CLIC « 📅 Ouvrir l’emploi du temps »
+   ✔ CLIC « Semaine »
+   {"cases":22,"natures":{"prevu":7,"horsMjpc":2,"rienDePret":6,"nonImportee":7},"casesAvecSeance":7,"modeTest":true,"cartes":["3E Charles de Gaulle expérimentale · dans les temps · Poésie","4E BANKSY · aucun chapitre publié"],"chapitresEnCache":"3e:1,4e:0"}
+   ✔ le mode test est bien allumé
+   ✔ les 3 séances réelles sont là, plus les 4 de la classe d'essai (avant le correctif : 0 séance, tout à « aucune séance prête »)
+   ✔ les chapitres sont lus pareil : 3e:1,4e:0
+   ▸ tests/11/c02-mode-test-allume-la-grille-reste-garnie.png
+
+③ EN MODE TEST, AUCUNE ÉCRITURE N'ATTEINT LE VRAI HUB
+   ✔ CLIC sur la case 2026-08-31|08:00-08:55|3E Charles de Gaulle (classe d'essai)
+   ✔ CLIC « Banaliser cette heure »
+   écritures qui ont atteint le vrai hub : []
+   empreinte du hub avant : 112610|dbc2e17d · après : 112610|dbc2e17d
+   ✔ zéro écriture au vrai hub
+   ✔ le contenu du vrai hub est identique, octet pour octet
+   ▸ tests/11/c03-mode-test-un-geste-qui-ecrit-rien-ne-sort.png
+
+④ EN SORTANT DU MODE TEST — les vraies données reviennent, SANS rechargement
+   pendant le test : {"sansSeance":1,"prevu":6,"horsMjpc":2,"rienDePret":6,"nonImportee":7}
+   ✔ CLIC « ✕ Fermer l’emploi du temps »
+   ✔ CLIC « Mode test actif — rien n’est enregistré »
+   mode test : false
+   ✔ CLIC « 📅 Emploi du temps »
+   ✔ CLIC « 📅 Ouvrir l’emploi du temps »
+   ✔ CLIC « Semaine »
+   après extinction : {"cases":18,"natures":{"prevu":3,"horsMjpc":2,"rienDePret":6,"nonImportee":7},"casesAvecSeance":3,"modeTest":false,"cartes":["3E Charles de Gaulle expérimentale · dans les temps · Poésie","4E BANKSY · aucun chapitre publié"],"chapitresEnCache":"3e:1,4e:0"}
+   ✔ la grille est exactement celle d'avant le mode test
+   ✔ les séances réelles sont revenues : 3
+   la page n'a pas été rechargée : 1 navigation(s)
+   ▸ tests/11/c04-apres-extinction-les-vraies-donnees-sans-rechargement.png
+
+⑤ AUDIT ADVERSE
+   ⓐ le vrai hub injoignable pendant le mode test
+   ✔ CLIC « ✕ Fermer l’emploi du temps »
+   ✔ CLIC « 🧪 Mode test »
+   ✔ CLIC « 📅 Emploi du temps »
+   ✔ CLIC « 📅 Ouvrir l’emploi du temps »
+   ✔ CLIC « Semaine »
+      {"cases":0,"natures":{},"casesAvecSeance":0,"modeTest":true,"cartes":["aucune classe appariée"],"chapitresEnCache":"3e:1,4e:0"}
+   ✔ l'écran tient debout, hub injoignable
+   ✔ rien n'a été écrit pendant la panne
+   ▸ tests/11/c05-audit-hub-injoignable-en-mode-test.png
+   ⓑ la panne n'est pas mise en cache : le hub revient, les données aussi
+   ✔ CLIC « ✕ Fermer l’emploi du temps »
+   ✔ CLIC « 📅 Emploi du temps »
+   ✔ CLIC « 📅 Ouvrir l’emploi du temps »
+   ✔ CLIC « Semaine »
+      {"prevu":7,"horsMjpc":2,"rienDePret":6,"nonImportee":7} · séances : 7
+   ✔ les séances sont revenues après la panne (3 réelles + 4 d'essai) — ni le vide ni la panne n'ont été mis en cache
+   ⓒ une injection pendant le mode test n'atteint pas le vrai hub
+   ✔ CLIC « ✕ Fermer l’emploi du temps »
+   ✔ CLIC « 📅 Emploi du temps »
+   ✔ CLIC « Créneaux horaires »
+   ✔ CLIC « Vérifier »
+      ✔ CLIC « Injecter »
+      écritures au vrai hub : []
+   ✔ une injection en mode test ne touche pas le vrai hub
+   ▸ tests/11/c06-audit-injection-en-mode-test.png
+   ⓓ la classe d'essai un jour sans cours (vacances, férié)
+   ✔ CLIC « 📅 Ouvrir l’emploi du temps »
+   ✔ CLIC « Mois »
+      1 clic(s) sur « › » → {"mois":"2026-10-01","joursSansCours":10,"essaiSurCesJours":0,"essaiAilleurs":16}
+   ✔ 10 jour(s) sans cours atteints par les flèches : AUCUNE case d'essai ne s'y pose (et 16 ailleurs dans le mois)
+   ▸ tests/11/c07-audit-classe-essai-un-jour-sans-cours.png
+   ⓔ une date d'année saisie puis effacée, et une fin saisie avant tout début
+   ✔ CLIC « ✕ Fermer l’emploi du temps »
+   ✔ CLIC « Mode test actif — rien n’est enregistré »
+   ✔ CLIC « 🎓 Dates de l’année »
+      au hub avant : {"3e":"2027-06-26T08:00:00","4e":"2028-06-25T08:00:00","5e":"2029-06-23T08:00:00","6e":"2030-06-22T08:00:00"}
+      fin saisie sans début : le champ porte "2027-07-03" · écritures [{"chemin":"/site/config/brevetDates/finAnnee","methode":"PUT"}] · hub {"3e":"2027-06-26T08:00:00","4e":"2028-06-25T08:00:00","5e":"2029-06-23T08:00:00","6e":"2030-06-22T08:00:00","finAnnee":"2027-07-03"}
+   ✔ une fin peut se poser seule : `edtValiderDatesAnnee` ne compare rien tant qu'il manque une date — comportement d'origine, mesuré, non modifié
+      après effacement : le champ porte "" · écritures [] · hub {"3e":"2027-06-26T08:00:00","4e":"2028-06-25T08:00:00","5e":"2029-06-23T08:00:00","6e":"2030-06-22T08:00:00","finAnnee":"2027-07-03"}
+   ✔ un champ vidé n'écrit rien : le hub garde la dernière date entière
+   ▸ tests/11/c08-audit-date-saisie-puis-effacee.png
+
+lectures du vrai hub pendant toute la session : 78
+écritures au vrai hub sur toute la session en mode test : []
+VERT — le mode test ne vide plus, et rien n'en sort

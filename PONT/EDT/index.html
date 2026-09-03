@@ -1786,7 +1786,25 @@ function _siteGet(chemin, cb){
      panne réseau ou refus HTTP. Rétro-compatible : les appelants historiques ne
      lisent que v (null sur panne, comme avant) ; ceux qui veulent distinguer
      lisent err. Au banc (M8) : jamais de panne, err absent. */
-  if(m8TestOn()){ cb(M8_TEST_STORE[chemin] !== undefined ? M8_TEST_STORE[chemin] : null); return; }
+  /* [LOT 2ter ⑪] LIRE LE VRAI, ÉCRIRE DANS LE FAUX — le patron de `taxoCharger`,
+     appliqué à toutes les lectures du site. AVANT : une clé absente du magasin
+     rendait `null`, et comme le magasin part vide, LE MODE TEST VIDAIT L'ÉCRAN
+     (mesuré au parcours ⑩ : toutes les cases à « aucune séance prête », les cartes
+     de classe sans chapitre). MAINTENANT : la première lecture d'une clé va la
+     chercher au hub en LECTURE PURE (un GET, rien d'autre), la dépose au magasin,
+     et tout ce qui suit vient du magasin — on édite donc une COPIE, qui s'évapore
+     à l'extinction. AUCUNE ÉCRITURE NE PART : `_sitePut`, `_siteDel` et
+     `mjpcEcrireRest` ne bougent pas d'une ligne.
+     La panne ne se met PAS en cache : elle rendrait le vide définitif alors que
+     le réseau peut revenir — elle rend `cb(null, true)`, comme hors mode test. */
+  if(m8TestOn()){
+    if(M8_TEST_STORE[chemin] !== undefined){ cb(M8_TEST_STORE[chemin]); return; }
+    fetch(FIREBASE_BASE + chemin + '.json')
+      .then(function(r){ if(!r.ok)throw 0; return r.json(); })
+      .then(function(v){ M8_TEST_STORE[chemin] = v; cb(v); })
+      .catch(function(){ cb(null, true); });
+    return;
+  }
   fetch(FIREBASE_BASE + chemin + '.json')
     .then(function(r){ if(!r.ok)throw 0; return r.json(); })
     .then(function(v){ cb(v); })
@@ -2888,7 +2906,7 @@ function mjpcEcrireRest(url,options,cb){
    (les 3 gestes, le geste conservatoire par app, ce qui ne peut pas arriver).
    RESTAURER LA VERSION PRÉCÉDENTE : docs/MJPC6-restauration.md (convention BUG).
    ═══════════════════════════════════════════════════════════════════════════ */
-var APP_VERSION="8.73.0-⑪ᵇ";
+var APP_VERSION="8.73.0-⑪";
 var APP_VERSION_DATE="2026-08-27";
 // ── 11. Coffre : dérivation, chiffrement, empreinte (v1.3.0) ──
 // (Le canon porte deux sections « 8 » — dette de numérotation connue, non corrigée
@@ -18440,7 +18458,8 @@ function edtCharger(apres){
     _siteGet(edtChemin(o),function(v,err){
       EDT[o]=v||null;
       if(err)EDT.pannes.push(o);
-      if(--reste===0){ EDT.charge=true; try{edtAppliquerCreneaux();}catch(e){}
+      if(--reste===0){ EDT.charge=true; EDT.enEssai=edtEnEssai();   /* [2ter ⑪] dans quel monde on a lu */
+        try{edtAppliquerCreneaux();}catch(e){}
         /* [①bis-a] LA MISE À NIVEAU EST BRANCHÉE ICI, et nulle part ailleurs.
            Elle fait tourner les charges elle-même (id en mémoire : rien ne
            s'affiche sans identité), puis n'écrit QUE s'il y a quelque chose à
@@ -19072,7 +19091,9 @@ function edtSectionPanneau(edtQuoi){
   /* [2ter ⑪a] la même porte sert l’écran « Dates de l’année » : aucun
      élargissement du contrat, aucune porte de plus. */
   if(edtQuoi==='datesAnnee')return edtBlocDatesAnnee();
-  setTimeout(function(){ edtChargerClasses(function(){ if(EDT.charge)edtPeindrePanneau(); else edtCharger(edtPeindrePanneau); }); },0);
+  setTimeout(function(){ edtChargerClasses(function(){
+    if(EDT.charge&&(EDT.enEssai!==edtEnEssai()||(EDT.pannes&&EDT.pannes.length)))EDT.charge=false;   /* [2ter ⑪] idem au panneau */
+    if(EDT.charge)edtPeindrePanneau(); else edtCharger(edtPeindrePanneau); }); },0);
   return '<h2>\ud83d\udcc5 Emploi du temps</h2><div id="edt-panneau" class="edt-panneau">Lecture des objets de l\u2019année\u2026</div>';
 }
 function edtEtatLigne(nom,objet,compte){
@@ -19783,6 +19804,14 @@ function edtOuvrir(){
       edtChargerChapitres(Object.keys(noms),function(){ edtPeindre(); try{ edtPhotoAuto(); }catch(e){} });
     });
   };
+  /* [2ter ⑪] LA BASCULE DU MODE TEST CHANGE LA SOURCE DES DONNÉES : ce qui est
+     en mémoire vient de l'autre monde. On le jette et on relit — Paul retrouve
+     ses vraies séances en sortant du mode test, SANS recharger la page. */
+  /* [2ter ⑪] et une LECTURE EN PANNE ne se fige pas non plus : si le hub n'a pas
+     répondu au dernier chargement, on relit à la prochaine ouverture au lieu de
+     garder un écran vide (mesuré à l'audit adverse : hub coupé puis revenu, la
+     grille restait vide jusqu'au rechargement de la page). */
+  if(EDT.charge&&(EDT.enEssai!==edtEnEssai()||(EDT.pannes&&EDT.pannes.length)))EDT.charge=false;
   if(EDT.charge)lancerPeinture(); else edtCharger(lancerPeinture);
 }
 function edtToucheEchap(ev){

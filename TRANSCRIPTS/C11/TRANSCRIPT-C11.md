@@ -4754,3 +4754,24 @@ Mais c'est toi qui tranches.
 **Tests manuels : aucun.**
 
 MEMO
+
+---
+
+## TOUR 96 — Paul
+
+Texte mot pour mot :
+
+> oui la seconde. comme ça l'injection respecte bien le calendrier fourni, et je peux quand même poser librement mon premier jour de cours et mon dernier jour (sachant qu'il peut aussi y avoir des choses après le dernier jour, c'est le pendant inverse).
+
+---
+
+## TOUR 96 — Claude (conscience n°11)
+
+Registre : `n°11 · 78`. **Le prompt micro est écrit et SOUMIS dans la conversation — il n'est
+pas déposé au sas.**
+
+Réponse mot pour mot : ce que sa phrase sépare, puis le prompt micro soumis, puis :
+
+**Tests manuels : aucun tant que tu n'as pas dit oui.**
+
+MEMO

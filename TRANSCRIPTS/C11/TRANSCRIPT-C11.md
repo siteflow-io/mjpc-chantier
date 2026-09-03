@@ -4135,3 +4135,54 @@ Réponse mot pour mot : le mandat entier dans un bloc copiable, précédé du ra
 **Cahier vivant** — le parcours rejoué, puis ton promeus.
 
 MEMO
+
+---
+
+## TOUR 82 — Paul
+
+Texte mot pour mot :
+
+> livré
+
+---
+
+## TOUR 82 — Claude (conscience n°11)
+
+Audit joué : **code vérifié inchangé** (1 769 457 o / `8837063d…`) · 31 captures + journal ·
+**`q29` et `q26` téléchargées et REGARDÉES** · rapport lu. Registre : `n°11 · 64`.
+
+Réponse mot pour mot :
+
+**Le code n'a pas bougé, aucun défaut n'est déclaré, et j'ai vu les deux écrans qui manquaient. Tu peux promouvoir.**
+
+## Ce que j'ai vu
+
+**`q29` porte les deux points à la fois.** Mode test allumé : ta grille est **garnie** — « Étude de texte accompagnée : L'Albatros », heures 1/3, 2/3, 3/3, « Interro de cours et analyse logique », « Le poème sans vers » — **et les quatre cases de la classe d'essai sont en violet**, détachées du brun de tes vraies classes. La carte du bas porte « 3E Charles de Gaulle · expérimentale ».
+
+À comparer avec la même capture du premier parcours, où **toutes** les cases disaient « aucune séance prête » et où rien n'était coloré.
+
+**`q26` montre un refus des dates**, en clair : « la fin de l'année (lundi 1 juin) tombe avant son début (lundi 24 août) ; la fin est hors du calendrier injecté (samedi 1 août → samedi 31 juillet, un mois de marge) ». **Deux motifs à la fois, avec tes vraies bornes.**
+
+## Ce qu'il déclare
+
+**Aucun défaut.** Son rapport dit : « Rien de ce que le mandat demande » n'est resté hors de portée d'un clic.
+
+Deux limites de banc, honnêtes : une liste déroulante déployée **ne se capture pas** (le système la dessine hors de la page), et le format d'affichage des dates est celui de sa machine — chez toi, Chrome en français montrera `24/08/2026`.
+
+**Et il corrige une de ses propres déclarations** : la saisie d'une date au clavier, qu'il avait dite impossible au premier parcours, **l'était bel et bien** — son clic tombait sur l'icône du calendrier.
+
+## Où on en est
+
+**Douze livraisons closes.** Le candidat que tu promouvrais — `8837063de4466afb71622e89181ae44a` — est celui qui vient d'être **parcouru de bout en bout, par clics, d'un seul chargement**.
+
+**Ta production n'a jamais bougé** de tout le lot.
+
+**Le parcours entier** : https://github.com/siteflow-io/mjpc-chantier/tree/main/PONT/EDT/tests/parcours-2
+
+**Ce que je n'ai pas vérifié moi-même** : 29 des 31 captures. J'en ai regardé deux — celles que je n'avais jamais pu voir. Le reste repose sur son rapport et son journal des clics.
+
+**Tests manuels : ouvrir le dossier ci-dessus, et regarder `q29` en particulier.**
+
+**Cahier vivant** — ton promeus. Il emporte le lot **et** la réparation du mode test qui attend depuis le 27 août. Ensuite : le protocole d'après-promotion, puis l'injection de chapitre.
+
+MEMO

@@ -4058,3 +4058,56 @@ Six captures : mode test éteint (aucune couleur), allumé (semaine, mois, anné
 **Cahier vivant** — ⑪ finale, puis le parcours refait, puis ton promeus.
 
 MEMO
+
+---
+
+## TOUR 80 — Paul
+
+Texte mot pour mot :
+
+> livré
+
+---
+
+## TOUR 80 — Claude (conscience n°11)
+
+Audit joué : candidat 1 769 457 o / `8837063d…` · **correctif du mode test vérifié EN PREMIER :
+`668cda2757a5`, intact** · `_siteGet` lu ligne à ligne (GET pur, panne non mise en cache) ·
+`_sitePut`/`_siteDelete` toujours isolés · non-régression 229/229, **aucune fonction ajoutée
+dans le bloc EDT** · **capture `c02` téléchargée et REGARDÉE**. Registre : `n°11 · 62`.
+
+Réponse mot pour mot :
+
+**Verdict : ça va. Tes trois demandes sont exécutées de bout en bout.**
+
+## J'ai vérifié le point dangereux en premier
+
+Cette livraison touche au socle de ton site. **Le correctif qui empêche le mode test d'écrire au vrai hub est intact**, à l'empreinte près. Les deux fonctions d'écriture restent isolées. **Aucune écriture ne peut partir.**
+
+Et la lecture, que j'ai lue ligne à ligne : en mode test, elle va chercher au vrai hub **par un GET pur, sans aucune option** — donc rien ne peut s'écrire — puis met en cache.
+
+**Et il a ajouté une précaution que je n'avais pas demandée** : si le hub ne répond pas, **il ne met pas l'échec en cache**. Sa raison, écrite : « elle rendrait le vide définitif ».
+
+## Ce que j'ai vu
+
+J'ai ouvert la capture du mode test allumé. **Ta grille est garnie** : « Étude de texte accompagnée : L'Albatros · heure 1/3 », « Interro de cours et analyse logique · heure 2/3 », « Le poème sans vers · heure 1/3 ». Les quatre cases d'essai sont **en violet**, et la carte du bas porte **« 3E Charles de Gaulle · expérimentale »** avec sa barre d'avancement.
+
+À comparer avec `p28` du parcours, où **toutes** les cases disaient « aucune séance prête ». **Le problème est fermé.**
+
+Et la modification est bien **hors du bloc emploi du temps** : aucune fonction ajoutée là-dedans, garde verte sur ses cinq questions.
+
+## Une chose avant que tu appuies
+
+**Le parcours complet a été joué sur le candidat `45337e4f…`. Ce n'est plus celui-là.** Le fichier a reçu trois livraisons depuis — les dates, la couleur, le mode test.
+
+**Les 29 captures du parcours ne montrent plus le fichier que tu promouvrais.**
+
+À toi de trancher : **rejouer le parcours** sur le candidat actuel, ou promouvoir sur les captures ciblées de ⑪ — celles des trois points que tu as demandés, que j'ai regardées.
+
+Mon avis : tu as exigé de promouvoir sur captures et de tout finir de bout en bout. **Rejouer le parcours est cohérent avec les deux**, et c'est une livraison courte : aucune ligne de code.
+
+**Tests manuels : aucun.** Rien en production.
+
+**Cahier vivant** — ta décision sur le parcours, puis ton promeus.
+
+MEMO

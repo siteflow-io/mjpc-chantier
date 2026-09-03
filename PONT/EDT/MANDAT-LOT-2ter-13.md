@@ -9,16 +9,17 @@
 
 **Le destinataire, tranché par Paul le 03/09 : « oui elles sont pour moi. »** Elles sont donc pour **Paul dans trois mois** — quelqu'un qui connaît son métier et son site, mais qui a oublié le détail. **Ni télégraphique, ni manuel pour un inconnu.** Une phrase qui dit **ce que le geste fait et ce qu'il coûte**, dans ses mots.
 
-## ⓪ CE QUE PAUL A DÉJÀ PAYÉ SUR CE CHANTIER — lis-le avant d'écrire une seule bulle
+## ⓪ CE QUE LA CONSCIENCE A TROUVÉ DANS SON JOURNAL — et ce qu'elle en a d'abord tiré à tort
 
-**La conscience est allée chercher dans son journal, à sa demande. Il a déjà fait ce chantier, et il en a payé le prix.**
+**Paul a demandé qu'on aille lire ce qu'il avait déjà dit. La conscience a cherché : le registre ne portait rien, mais `MJPC6-journal.md` porte deux choses. Elle en avait d'abord tiré une troisième, fausse — Paul l'a relevé, et voici la correction.**
 
-**LE BUG DU SURVOL TACTILE — journal du 05-06/08.** Paul signale : *« les clics des boutons de l'atelier ne fonctionnent plus »*, puis affine : *« je dois appuyer plusieurs fois sur Ouvrir »*, *« quand je clique sur Publier je suis obligé d'aller cliquer plus haut dans le vide »*. **Diagnostic** : **au tactile, le premier tap déclenche `:hover`**, et huit règles de survol déplaçaient la cible sous son doigt. **Résolution, encore dans le code aujourd'hui** — mesuré : **une seule occurrence** de
-`@media (hover: hover) and (pointer: fine) { … }`
-qui réserve les effets de survol aux appareils à souris.
+**CE QUI EST FAUX, ET QUI A ÉTÉ RETIRÉ DE CE MANDAT.** La conscience avait bâti ce paragraphe sur **le bug du survol tactile** (journal du 05-06/08 : *« je dois appuyer plusieurs fois sur Ouvrir »*), en concluant qu'une infobulle pouvait recréer ce bug. **C'est faux.** Mesuré dans le code : ce bug venait de **règles CSS qui déplacent la cible** — `.level-card:hover { transform: translateY(-12px) … }`, le bouton Publier de 1 px. **Un attribut `title` n'ajoute aucune règle CSS, ne déplace rien, et ne peut pas faire rater un clic.** Les deux sujets n'ont **pas** de rapport. **N'en tiens aucun compte.**
 
-**CE QUE ÇA COMMANDE POUR TOI, ET C'EST LE CŒUR DE CE MANDAT** : **Paul travaille au téléphone** — journal du 06/08, « la passe tactile du site » : il testait la vue élève **au téléphone**, et la vue prof comptait **192 cibles dont 166 sous la norme**. **Une infobulle mal posée est un piège tactile** : sur son téléphone, le premier tap peut l'afficher au lieu de déclencher le bouton. **Tu ne dois pas recréer le bug que Paul a déjà payé.**
-**Donc : aucune infobulle ne doit changer le comportement d'un clic, ni au doigt, ni à la souris. Tu le prouves.**
+**CE QUI EST VRAI ET QUI CHANGE VRAIMENT TON TRAVAIL — journal du 06/08, « la passe tactile du site » : PAUL TRAVAILLE AU TÉLÉPHONE.** Il testait la vue élève **au téléphone** ; la vue prof comptait alors **192 cibles dont 166 sous la norme**. Ce n'est pas une hypothèse, c'est son usage.
+
+**ET VOICI LA QUESTION QUE ÇA POSE, ET QUE TU NE TRANCHES PAS SEUL** : **un attribut `title` ne s'affiche PAS au tactile.** Il n'y a pas de survol sur un téléphone. **Donc 94 infobulles posées en `title` ne serviront à rien à Paul quand il est sur son téléphone.**
+**Trois voies, et c'est Paul qui choisit** : ⑴ `title` seul — utile au bureau, invisible au doigt ; ⑵ `title` **plus** `aria-label`, ce qui sert les lecteurs d'écran mais toujours pas l'affichage tactile ; ⑶ **un dispositif maison** — une bulle affichée sur appui long ou sur un « ? », visible partout, mais c'est **du code, pas un attribut**, et ça sort du cadre « renommages et attributs ».
+**MESURE À FAIRE AVANT DE PROPOSER** : compte, dans le site, ce qui existe déjà comme dispositif de bulle maison. **S'il en existe un, dis-le : on ne réinvente pas.** Puis **pose la question à Paul en une ligne et attends** — tu n'écris pas 94 bulles avant de savoir dans quoi.
 
 **UNE PREUVE QUE SON JOURNAL DEMANDE DE GÉNÉRALISER, et qui va parfaitement ici** — 06/08 : *« la conscience a isolé le bloc ajouté et vérifié que **le livré privé de ce seul bloc redevient exactement la base**. C'est la preuve la plus forte possible d'un ajout non invasif : à généraliser chaque fois qu'un morceau se présente comme un ajout isolé. »* **Une passe d'infobulles est exactement ce cas. Tu la fournis.**
 
@@ -47,7 +48,7 @@ qui réserve les effets de survol aux appareils à souris.
 **Ce qu'on attend :**
 1. **Chaque élément cliquable visible porte son infobulle**, dans les mots de Paul : **ce que le geste fait, et ce qu'il coûte.** Exemple de ton : « prend le créneau — la classe qui l'occupait perd son heure, et le site te la rappellera ».
 2. **Les six qui existent restent** si elles sont justes — « copier le JSON tel qu'il est au hub » l'est.
-3. **Aucune ne change le comportement d'un clic.** Voir §⓪.
+3. **Aucune ne change le comportement d'un clic** — vérifie-le, mais sans en faire un chantier : un `title` n'a aucun effet géométrique.
 4. **Les deux dernières livraisons sont visées en premier** : « début de l'année », « fin de l'année », et la couleur de la classe d'essai **n'en ont aucune** — l'exécutant précédent l'a déclaré contre lui-même.
 
 ## ③ LE BANC QUI EMPÊCHE LA DETTE DE REVENIR
@@ -63,7 +64,7 @@ qui réserve les effets de survol aux appareils à souris.
 - **`function secu*` 29** · **`published` 97** · **`edt*` 229 déclarations / 229 noms**, aucune disparue, **aucun doublon**.
 - **Trois portes** · **`edtApparier` 1 appel** · **`edtMettreANiveau` 2 appels** · **`edt-fige` 9**.
 - **`EDT_CATEGORIES` et `EDT_MOTIFS` inchangés**, mot pour mot.
-- **`@media (hover: hover) and (pointer: fine)` : toujours présent, une occurrence.**
+- **`@media (hover: hover) and (pointer: fine)` : toujours présent, une occurrence** — c'est la parade du bug d'août, sans rapport avec ce mandat, mais elle ne doit pas disparaître.
 - **Les comptes ne changent pas** : hors mode test, 30 créneaux, mêmes comptes par classe, mêmes heures perdues. **Cette livraison change des mots, pas des chiffres.**
 - **`banc-tout.mjs` VERT EN ENTIER** · **double parseur vert** · **garde verte sur ses cinq questions**.
 
@@ -72,7 +73,8 @@ qui réserve les effets de survol aux appareils à souris.
 1. **Les sept points de vocabulaire**, un par un : le texte avant, le texte après, **et la capture de l'écran où Paul le lira**.
 2. **Le compte des infobulles** : 6 avant → combien après, écran par écran, **relevé par clics comme l'audit initial**.
 3. **`banc-infobulles.mjs` ÉCHOUE quand tu retires une bulle** — retire-en une, montre le rouge, remets-la. **Sinon le banc ne prouve rien.**
-4. **AUCUNE INFOBULLE NE MANGE UN CLIC** : sur au moins cinq boutons, **le clic déclenche l'action du premier coup**. **Et dis comment tu l'as éprouvé** — si ton banc ne sait pas simuler un doigt, **déclare-le** : c'est alors un test que Paul devra faire au téléphone.
+4. **AUCUNE INFOBULLE NE MANGE UN CLIC** : sur au moins cinq boutons, le clic déclenche l'action du premier coup. **Contrôle simple, pas un chantier.**
+   **ET LA MESURE QUI COMPTE VRAIMENT : ce que Paul voit AU TÉLÉPHONE.** Dis, écran par écran, **combien de tes bulles y sont visibles**. Si la réponse est zéro, écris-le en toutes lettres.
 5. **L'ajout est non invasif** : **le livré privé des infobulles redevient exactement la base**, aux octets près. C'est la preuve que son journal demande de généraliser.
 6. **Les chiffres n'ont pas bougé** : comptes par classe et heures perdues, avant et après.
 7. **Non-régression** : la liste chiffrée du §④, **`banc-tout` en entier**.

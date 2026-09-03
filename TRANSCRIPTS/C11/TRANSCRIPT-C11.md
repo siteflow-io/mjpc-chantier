@@ -4293,3 +4293,55 @@ Ce que ça te coûte, concrètement : **cinq créneaux** sont dans ce cas, dont 
 **Cahier vivant** — tes réponses sur la réassignation, le mandat ⑬ (les mots, puis les infobulles), puis cette livraison. Et ton promeus, quand tu voudras : le candidat est prêt et parcouru.
 
 MEMO
+
+---
+
+## TOUR 85 — Paul
+
+Texte mot pour mot :
+
+> en fait il faut juste que je puisse déclarer que ces heures sont comptabilisées comme faisant partie de mon edt. C'est tout. ainsi, ça crée une heure de français, au même titre que si on me donnait une heure autre part dans l'edt, sur un de mes trous par exemple. vérifie.
+
+---
+
+## TOUR 85 — Claude (conscience n°11)
+
+Mesures : `edtCreneauxOu` **ignore les cases `mjpc===false`** quand elle calcule ce qui est
+pris → elles sont proposées « créneau libre, heure ajoutée » · `edtRefusDepot` filtre
+**`x.mjpc!==false`** → elle n'est jamais vue comme occupée. Registre : `n°11 · 67`.
+
+Réponse mot pour mot :
+
+**Vérifié. Tu avais raison : ça existe déjà, et je m'étais trompé.**
+
+## Ce que j'ai mesuré
+
+La fonction qui construit ta liste de destinations **ignore délibérément les cases hors MJPC** quand elle regarde ce qui est occupé. Elles ne comptent donc **ni comme prises, ni comme tiennes** — et elles ressortent dans la liste avec le libellé **« créneau libre, heure ajoutée »**.
+
+Et le refus de dépôt ne les bloque pas non plus : il ne cherche un occupant que parmi les cases qui ne sont **pas** hors MJPC.
+
+**Donc le geste que tu décris fonctionne déjà** : tu ouvres une case de ta classe, « Déplacer cette heure, ou en ajouter une… », tu choisis le créneau du lundi 10h07 — et l'heure est **ajoutée, épinglée, comptée dans ta prévision**. Exactement « au même titre que sur un de tes trous », comme tu l'as dit.
+
+## Mon erreur
+
+Au tour précédent je t'ai répondu « non, c'est impossible ». **Je n'avais regardé qu'un seul endroit** : la fenêtre de la case hors MJPC, qui effectivement n'offre aucun bouton. **Je n'avais pas regardé le chemin par lequel tu y arrives vraiment.**
+
+C'est la même faute que j'ai déjà faite deux fois aujourd'hui : conclure depuis un seul endroit du code.
+
+## Ce qui reste vrai, et c'est plus petit
+
+**Le chemin est indirect.** Pour poser une heure sur ton créneau du lundi 10h07, tu dois **partir d'une autre case** et passer par la liste. Tu ne peux pas **cliquer la case hors MJPC elle-même** — sa fenêtre ne propose rien.
+
+**Ce n'est pas une impossibilité, c'est un détour.** À toi de dire : ça te suffit, ou tu veux un bouton **sur la case elle-même** ?
+
+## Et un point de vocabulaire qui devient plus important
+
+L'infobulle dit « hors français, jamais compté », et la fenêtre répète « groupe partagé, hors français. Cette heure ne compte jamais dans la progression. »
+
+**C'est faux deux fois** : c'est du français, et **elle peut compter** dès que tu y ajoutes une heure. **À corriger dans la passe de vocabulaire.**
+
+**Tests manuels : celui-ci est pour toi, si tu veux le voir tout de suite après ton promeus** — ouvre une case de 4 HUGO, « Déplacer cette heure, ou en ajouter une… », cherche le lundi 10:07, et regarde s'il est proposé.
+
+**Cahier vivant** — ta réponse sur le détour, puis le mandat ⑬ (les mots, puis les infobulles), puis ton promeus.
+
+MEMO

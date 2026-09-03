@@ -375,7 +375,7 @@ Alternance : GT · OI · GT · OI · GT · GT · OI. Une seule paire de groupeme
 - **Corpus** : des extraits de Hugo, Balzac et Zola, des poèmes de Baudelaire, et des photographies de Paris au XIXe siècle
 - **Production** : décrire un lieu de la ville d'après une photographie, une fois pour le rendre attirant, une fois pour le rendre inquiétant
 - **Majeure** : lire des textes non littéraires, des images et des documents composites (`c4-lire-02`)
-- **Cursive** : *Je suis une légende* — Toussaint
+- **Cursive** : *Les Misérables* — Toussaint
 - **Titre abrégé sur le calendrier** : « 1 · Paris »
 
 ## Chapitre 2 — Le Horla
@@ -452,13 +452,15 @@ Alternance : GT · OI · GT · OI · GT · GT · OI. Une seule paire de groupeme
 
 | Livre | Statut | À avoir lu pour |
 |---|---|---|
-| *Je suis une légende*, Matheson | cursive | Toussaint |
+| *Les Misérables*, Hugo — **collection Déclic** | cursive | Toussaint |
 | *Le Horla*, Maupassant | intégrale | novembre |
 | *Le Fantôme de Canterville*, Wilde | cursive | vacances de Noël |
 | *La Parure*, Maupassant | intégrale | janvier |
 | *Le Petit Chose*, Daudet | cursive | vacances d'hiver |
 | *Le Cid*, Corneille | intégrale | vacances de printemps |
-| *Les Misérables*, Hugo — **collection Déclic** | extraits, mais acheté | — |
+
+
+**Décision du 2 septembre** : *Je suis une légende* est retiré du panier. *Les Misérables* prend sa place à la Toussaint : le chapitre 3, conduit en plan de travail, repose sur une comparaison entre un corpus et l'œuvre Déclic, ce qui suppose qu'elle ait été lue. Le livre devient ainsi le pont entre le chapitre 1, sur la ville, et le chapitre 3.
 
 *La Vénus d'Ille* avait été proposée pour la cursive de Noël ; écartée par Paul, jugée trop difficile. *Le Fantôme de Canterville* la remplace : il répond au *Horla* en retournant le fantastique en farce, ce qui se prête à un compte rendu comparé.
 
@@ -625,7 +627,7 @@ Signaler systématiquement : séance sans compétence, notion hors niveau, trou,
 
 Dans l'ordre où Paul l'a posé.
 
-**Le chapitre 1 — Paris.** C'est la commande en cours. Il a annoncé déposer des documents. Point de départ connu : dix-huit créneaux du 7 septembre au 16 octobre, groupement de textes, questionnement complémentaire, majeure « lire des textes non littéraires, des images et des documents composites », *Je suis une légende* en cursive pour la Toussaint, tâche finale arrêtée. Le fil langue tourne en parallèle et ne compte pas dans les dix-huit.
+**Le chapitre 1 — Paris.** C'est la commande en cours. Il a annoncé déposer des documents. Point de départ connu : dix-huit créneaux du 7 septembre au 16 octobre, groupement de textes, questionnement complémentaire, majeure « lire des textes non littéraires, des images et des documents composites », *Les Misérables* en cursive pour la Toussaint, tâche finale arrêtée. Le fil langue tourne en parallèle et ne compte pas dans les dix-huit.
 
 Puis, sans ordre imposé : le bon de commande · les paliers du fil langue de 4e · la fiche élève langue et notions version 4e · les images du diaporama.
 

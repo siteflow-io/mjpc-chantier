@@ -4244,3 +4244,52 @@ Le reste des sept points est net : la plomberie affichée (`/site/edt/`), « cla
 **Cahier vivant** — ta réponse sur ce mot, puis le mandat ⑬ en deux temps : les mots, puis les infobulles avec un banc qui échoue si un bouton n'en porte pas.
 
 MEMO
+
+---
+
+## TOUR 84 — Paul
+
+Texte mot pour mot :
+
+> oui elles sont pour moi. pour la case dont tu parles, hors mjpc c'est bien. c'est bien des heures que je fais, mais non fléchées dans l'edt mjpc. en revanche, existe-t-il une possibilité de les réassigner comme du français? en effet, la respo edt peut très bien me dire que ça devient une heure de français, si ma collègue en coanimation est absente par exemple, ou tout autre raison.
+
+---
+
+## TOUR 84 — Claude (conscience n°11)
+
+Mesures : la nature vient de **`c.mjpc === false`** (L19747), champ du créneau posé à
+l'injection · la modale `horsMjpc` (L20479) n'affiche **qu'une phrase, aucun bouton** ·
+**5 créneaux concernés**, dont **4 de français en coanimation**. Registre : `n°11 · 66`.
+
+Réponse mot pour mot :
+
+**J'avais tort, et ta correction m'apprend quelque chose.**
+
+« Hors MJPC » est le bon mot : il dit exactement ce que c'est — **une heure que tu fais, non fléchée dans ton site**. J'ai contesté un mot sans savoir ce qu'il désignait.
+
+**C'est l'infobulle qui ment**, pas la case. Elle dit « hors français, jamais compté » — et la modale répète la même erreur : « groupe partagé, **hors français** ». Or j'ai regardé tes cinq créneaux : quatre s'appellent « X Français X. — 4 HUGO », « — 4 TURING », « — 4 BANKSY », « — 4 PYTHAGORE ». **C'est bien du français.** Seule « Concertation » n'en est pas.
+
+**À corriger dans la passe de vocabulaire : l'infobulle et la phrase de la modale. Pas le libellé.**
+
+## Ta question : non, c'est impossible aujourd'hui
+
+J'ai mesuré. La case est « hors MJPC » parce que le créneau porte un champ posé **à l'injection de la grille**. Et la fenêtre de cette case **n'offre aucun bouton** — seulement une phrase. Ni déplacer, ni banaliser, ni rien.
+
+**Le seul moyen de changer ça aujourd'hui est de réinjecter ta grille entière.**
+
+Ce que ça te coûte, concrètement : **cinq créneaux** sont dans ce cas, dont **quatre de français en coanimation**. Si ta collègue est absente et que l'heure te revient, **tu ne peux pas la faire entrer dans ta progression**. Une heure de cours réelle, perdue pour le suivi.
+
+## Quatre choses à me dire avant que j'écrive quoi que ce soit
+
+- Le geste est-il **réversible** — elle redevient hors MJPC quand ta collègue revient — ou définitif ?
+- **À quelle classe** l'heure se rattache-t-elle ? « X Français X. — 4 HUGO » nomme une classe, mais elle n'est pas appariée dans ton site.
+- L'heure **compte-t-elle dans la progression** dès que tu la réassignes, ou seulement une fois jouée ?
+- Et **« Concertation »** : elle n'est pas du français du tout. Doit-elle rester non réassignable ?
+
+**Où je le place** : ce n'est ni du vocabulaire ni une infobulle, c'est **un mécanisme neuf**. Il ne rentre pas dans le mandat ⑬. **Livraison à part, après.**
+
+**Tests manuels : aucun.**
+
+**Cahier vivant** — tes réponses sur la réassignation, le mandat ⑬ (les mots, puis les infobulles), puis cette livraison. Et ton promeus, quand tu voudras : le candidat est prêt et parcouru.
+
+MEMO

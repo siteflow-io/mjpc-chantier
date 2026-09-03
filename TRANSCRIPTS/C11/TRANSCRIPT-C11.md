@@ -4703,3 +4703,54 @@ Ce qui reste tient en une phrase : **le prévu ne pose aucune séance avant `deb
 **Tests manuels : aucun.**
 
 MEMO
+
+---
+
+## TOUR 95 — Paul
+
+Texte mot pour mot :
+
+> ça passe en micro ou pas?
+
+---
+
+## TOUR 95 — Claude (conscience n°11)
+
+Mesure : `edtProjeter` est bâtie sur **des gardes en cascade**, deux existent (`horsTemps`,
+`horsMjpc`) ; la borne demandée est **une troisième du même patron**, et son rendu existe au
+même patron dans `edtCelluleCorps`. Registre : `n°11 · 77`.
+
+Réponse mot pour mot :
+
+**Oui, c'est un calibre micro — mais à trois conditions, et il me manque une décision de toi.**
+
+## Pourquoi c'est micro
+
+J'ai regardé la fonction qui fabrique toutes tes cases. Elle est bâtie sur **des gardes en cascade**, et il y en a déjà deux : une pour les jours sans cours, une pour les heures hors MJPC.
+
+**Ce que tu demandes est une troisième garde du même patron**, au même endroit. Et l'affichage existe déjà pareil, pour les vacances.
+
+**Taille réelle : une garde, plus une ligne d'affichage.**
+
+## Mes trois conditions
+
+**L'endroit est le plus sensible de ton emploi du temps.** Cette fonction produit **toutes** les cases — semaine, mois, année. Une garde mal placée fait disparaître des cases entières. Il faut les comptes **avant/après, sur les trois vues**.
+
+**Tu promeus sur captures, et ceci change ce que tu vois.** Une micro ne dispense pas des captures.
+
+**Et le banc complet rejoué** — les 32 bancs. Cette borne touche ce qu'ils mesurent tous.
+
+## La décision qui manque, et je ne la prends pas
+
+**Que veux-tu voir sur tes cases du 27 août au 2 septembre ?**
+
+- **Rien** — la case disparaît, comme si le jour n'existait pas ;
+- **ou la case reste, grisée, avec un mot** — « avant ta rentrée » — exactement comme tes vacances aujourd'hui.
+
+**Mon avis** : la seconde. Le 27 août porte ton CODIR, ton déjeuner d'équipe, ta pré-rentrée ; le 1er et le 2, la rentrée des élèves. **Les faire disparaître serait mentir dans l'autre sens.**
+
+Mais c'est toi qui tranches.
+
+**Tests manuels : aucun.**
+
+MEMO

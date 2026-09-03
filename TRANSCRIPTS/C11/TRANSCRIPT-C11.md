@@ -4421,3 +4421,62 @@ Réponse mot pour mot : ce que j'ai trouvé dans son journal, puis le mandat ent
 **Cahier vivant** — ⑬a les mots, ⑬ les infobulles, puis ton promeus.
 
 MEMO
+
+---
+
+## TOUR 88 — Paul
+
+Texte mot pour mot :
+
+> tu as fait le lien avec un problème qui n'avait pas grand chose à voir, si?
+
+---
+
+## TOUR 88 — Claude (conscience n°11)
+
+Vérification : le bug d'août venait de `.level-card:hover { transform: translateY(-12px) … }` —
+**des règles qui déplacent la cible**. Un `title` n'en ajoute aucune. **Faux lien confirmé.**
+Mesure de suite : **aucun dispositif de bulle maison dans le site** (`data-tip`, `tooltip`,
+`popover` : 0). Mandat corrigé (10 158 → 11 237 o). Registre : `n°11 · 70`.
+
+Réponse mot pour mot :
+
+**Non, ça n'avait pas de rapport. J'ai vérifié au lieu de défendre, et tu as raison.**
+
+Le bug d'août venait de **règles qui déplacent la cible** : ta carte de niveau bondissait de 12 pixels au survol, le bouton Publier d'un pixel. Le doigt tapait, la cible bougeait, le clic ratait.
+
+**Un `title` n'ajoute aucune règle, ne déplace rien.** Les deux sujets sont sans rapport.
+
+**Comment je me suis trompé** : j'ai vu « survol » + « tactile » + « Paul a payé » et j'ai bâti une thèse dessus. **Alors que le diagnostic était écrit en toutes lettres dans ton journal** — « huit règles de survol **déplacent la cible** sous le doigt ». Je ne l'ai pas lu jusqu'au bout.
+
+C'est la quatrième fois aujourd'hui que je conclus d'un rapprochement au lieu de lire.
+
+## Mais ma recherche a trouvé autre chose, et c'est plus grave
+
+**Tu travailles au téléphone** — ça, c'est établi par ton journal.
+
+**Et un `title` ne s'affiche pas au tactile.** Il n'y a pas de survol sur un téléphone.
+
+**Donc quatre-vingt-quatorze infobulles posées comme ça ne te serviront à rien quand tu es sur ton téléphone.**
+
+J'ai vérifié : **ton site n'a aucun dispositif de bulle maison** — rien. Tout repose sur `title`.
+
+## Ce que j'ai corrigé dans le mandat
+
+Le faux lien est **retiré et nommé comme faux** : « n'en tiens aucun compte ».
+
+Et j'ai mis la vraie question, à te poser **avant** qu'il écrive 94 bulles :
+
+- **`title` seul** — utile au bureau, invisible au doigt ;
+- **`title` + `aria-label`** — sert les lecteurs d'écran, toujours rien à l'affichage ;
+- **un dispositif maison** — une bulle sur appui long ou sur un « ? », visible partout, mais c'est **du code**, pas un attribut.
+
+Et le mandat demande désormais, comme preuve : **« ce que Paul voit au téléphone, écran par écran — si la réponse est zéro, écris-le en toutes lettres ».**
+
+**À toi de dire laquelle des trois voies.**
+
+**Tests manuels : aucun.**
+
+**Cahier vivant** — ta réponse sur la voie, puis ⑬a les mots, ⑬ les infobulles, puis ton promeus.
+
+MEMO

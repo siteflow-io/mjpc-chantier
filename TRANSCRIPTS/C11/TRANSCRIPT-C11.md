@@ -4775,3 +4775,61 @@ Réponse mot pour mot : ce que sa phrase sépare, puis le prompt micro soumis, p
 **Tests manuels : aucun tant que tu n'as pas dit oui.**
 
 MEMO
+
+---
+
+## TOUR 97 — Paul
+
+Texte mot pour mot :
+
+> [audit de l'exécutant sur le prompt micro : quatre défauts, dont la garde qui ne bornerait que la semaine et le mois ; sa conclusion — ce n'est pas un micro]
+
+---
+
+## TOUR 97 — Claude (conscience n°11)
+
+Vérifications : **`edtCasesDuJour` a bien DIX appelants**, `edtProjeter` n'en est qu'un ·
+dans `edtProjeter`, **`jouee` se pose à +45, après les gardes de +22/+23/+24** · **`banc-tout`
+liste 35 bancs, pas 32**. Registre : `n°11 · 79`. **Le prompt micro est retiré.**
+
+Réponse mot pour mot :
+
+**Il a raison sur les quatre points. J'ai tout vérifié dans le code, et le plus grave est pire que ce qu'il dit.**
+
+## Ma borne aurait été un décor
+
+`edtCasesDuJour` a **dix appelants**. Ma garde n'en touchait **qu'un**.
+
+Les autres sont : **la vue Année**, **la liste des destinations** (deux fonctions), **et `edtHeuresDeLEvenement`**.
+
+**Et c'est cette dernière qui rend le défaut pire qu'il ne le dit** : elle sert aussi aux **heures perdues**. Un événement du 27 août aurait continué à **te coûter des heures perdues** sur des journées qui ne sont pas dans ton année — pendant que ta grille t'aurait affiché « avant ta rentrée ».
+
+## Et j'aurais effacé une heure que tu as faite
+
+Dans cette fonction, les natures se posent dans un ordre : les gardes en premier, et **« jouée » seulement vingt lignes plus bas**, après la recherche de la trace.
+
+**Ma garde serait passée avant.** Si tu déclares le 3 septembre alors que tu as lancé une séance le 1er, **la trace de ton heure réelle disparaissait.**
+
+Le code porte pourtant ce commentaire : *« le réel ne dépend JAMAIS de ce qui attend »*. **J'aurais fait mentir ton passé.**
+
+## Deux autres
+
+**L'ordre des gardes** n'était pas dit — un jour de vacances aurait pu afficher « avant ta rentrée » au lieu de « vacances d'été ».
+
+**Et j'ai écrit « 32 bancs ».** Il y en a **35**. Le 32 venait du rapport ⑧ et je ne l'ai pas remesuré depuis. Un exécutant qui en joue 32 et écrit « entier » livre une preuve fausse.
+
+**Il relève aussi que j'ai oublié les infobulles** — la règle que tu as posée ce matin même — alors que ce correctif **ajoute une nature de case nouvelle.**
+
+## Sa conclusion, que je retiens
+
+**Ce n'est pas un micro.** Une borne qui doit tenir dans dix appelants, respecter le passé joué, s'ordonner avec trois autres natures et porter ses infobulles, **c'est un mandat en règle**.
+
+**J'ai jugé sur la taille du geste — « une garde, une ligne » — au lieu de juger sur sa portée.**
+
+**Le prompt micro est retiré.** Je n'ai rien déposé.
+
+**Il te pose une question, et elle est bonne** : une heure **déjà jouée** avant ta date de rentrée — elle reste telle quelle, ou elle est bornée comme les autres ?
+
+**Tests manuels : les quatre qu'il te propose, si tu veux voir le défaut de tes yeux.**
+
+MEMO

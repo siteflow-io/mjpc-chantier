@@ -2888,7 +2888,7 @@ function mjpcEcrireRest(url,options,cb){
    (les 3 gestes, le geste conservatoire par app, ce qui ne peut pas arriver).
    RESTAURER LA VERSION PRÉCÉDENTE : docs/MJPC6-restauration.md (convention BUG).
    ═══════════════════════════════════════════════════════════════════════════ */
-var APP_VERSION="8.73.0-⑪ᵃ";
+var APP_VERSION="8.73.0-⑪ᵇ";
 var APP_VERSION_DATE="2026-08-27";
 // ── 11. Coffre : dérivation, chiffrement, empreinte (v1.3.0) ──
 // (Le canon porte deux sections « 8 » — dette de numérotation connue, non corrigée
@@ -19371,6 +19371,12 @@ function edtPoserCss(){
    +'.edt-b u{display:block;text-decoration:none;color:#c9bfa4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}'
    +'.edt-b i{display:block;font-style:normal;font-size:.63rem;color:#9c8f74;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}'
    +'.edt-b-prevu{border-left-color:rgba(155,155,155,.5)}'
+   /* [2ter ⑪b] LA COULEUR DE LA CLASSE D'ESSAI — violet franc, tenu à l'écart des
+      couleurs déjà prises : gris (prévu), vert (joué), ambre (banalisé), rouge
+      (alerte). Elle passe par-dessus la couleur de nature, pour qu'une heure
+      d'essai ne se confonde avec aucune heure réelle. */
+   +'.edt-b-essai{border-left-color:#a78bfa !important;background:rgba(167,139,250,.16)}'
+   +'.edt-m-essai{background:rgba(167,139,250,.28) !important;color:#ede9fe !important}'
    +'.edt-b-fil{border-left-color:rgba(160,140,224,.75)}'
    +'.edt-b-ajout{border-left-color:#7fb0e0;background:rgba(127,176,224,.06)}'
    +'.edt-b-joue{border-left-color:#34d399;background:rgba(52,211,153,.07)}'
@@ -19710,7 +19716,12 @@ function edtProjeter(isoDebut,nbJours){
     for(var k=0;k<cases.length;k++){
       var c=cases[k], cle=iso+'|'+c.creneau+'|'+(c.classe||'');
       var cel={iso:iso,creneau:c.creneau,classe:c.classe,classeMjpc:c.classeMjpc||'',
-               salle:c.salle||'',fil:c.fil||null,dispute:!!c.__dispute,ajoutee:!!c.ajoutee,nature:'prevu'};
+               salle:c.salle||'',fil:c.fil||null,dispute:!!c.__dispute,ajoutee:!!c.ajoutee,nature:'prevu',
+               /* [2ter ⑪b] la case retient qu'elle vient d'un créneau d'essai : c'est
+                  ce qui lui donnera sa couleur, dans la semaine comme dans le mois.
+                  Hors mode test, `edtCasesA` ne rend aucun créneau fictif : la marque
+                  ne peut pas exister, et la couleur non plus. */
+               essai:!!c.fictif};
       if(off){ cel.nature='horsTemps'; cel.libelle=off.libelle||off.motif; cellules[cle]=cel; continue; }
       if(c.mjpc===false){ cel.nature='horsMjpc'; cellules[cle]=cel; continue; }
       if(!cel.classeMjpc){ cel.nature='nonImportee'; cellules[cle]=cel; continue; }
@@ -19846,6 +19857,15 @@ function edtPeindreSemaine(){
   e.innerHTML=h;
 }
 function edtCelluleHtml(c){
+  /* [2ter ⑪b] LA CLASSE D'ESSAI SE VOIT À SA COULEUR. Paul : « il faut simplement
+     qu'elle soit en couleur ». Une couleur, rien d'autre : ni nom changé, ni texte
+     de plus, ni comportement touché. Le corps de la case n'est pas réécrit — on
+     ajoute une classe au bloc qu'il rend, quelle que soit sa nature. */
+  var edtH=edtCelluleCorps(c);
+  if(c&&c.essai)edtH=edtH.replace('class="edt-b','class="edt-b edt-b-essai');
+  return edtH;
+}
+function edtCelluleCorps(c){
   if(c.nature==='horsMjpc')return '<div class="edt-b edt-b-hors" title="hors français, jamais compté">'
     +escapeHtml(c.classe)+'<i>hors MJPC</i></div>';
   if(c.nature==='horsTemps')return '<div class="edt-b edt-b-off">'+escapeHtml(c.libelle||'')+'</div>';
@@ -20789,6 +20809,7 @@ function edtPeindreMois(){
         +(off?('<i class="edt-mini-t">'+escapeHtml(off.libelle||off.motif)+'</i>')
              :dedans.map(function(x){
                 var cl=x.nature==='jouee'?'edt-m-joue':(x.nature==='sansSeance'?'edt-m-sans':(x.nature==='prevu'?'edt-m-prevu':'edt-m-autre'));
+                if(x.essai)cl+=' edt-m-essai';   /* [2ter ⑪b] la même couleur, dans le mois */
                 var ks=JSON.stringify(x.iso+'|'+x.creneau+'|'+(x.classe||'')).replace(/"/g,'&quot;');
                 return '<span class="edt-m '+cl+'" title="'+escapeHtml(x.creneau+' '+(x.classeMjpc||x.classe))+'"'
                   +' onclick="edtCaseClic('+ks+')" onpointerdown="edtGlisserDebut(event,'+ks+')">'

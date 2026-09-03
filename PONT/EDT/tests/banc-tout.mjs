@@ -110,6 +110,11 @@ const BANCS = [
   ['banc-dates-annee-11a.mjs', '⑪a · les deux dates de l\'année, saisissables',
     ['VERT — les quatre points', 'les deux dates sont au hub', 'tombe avant son début',
      'plus de treize mois', 'hors du calendrier injecté']],
+  /* [2ter ⑪b] le banc de la couleur : la classe d'essai se voit, et seulement
+     en mode test — semaine, mois, et ce que l'année montre ou non. */
+  ['banc-classe-essai-couleur-11b.mjs', '⑪b · la classe d\'essai en couleur',
+    ['VERT — la classe d\'essai est en couleur', 'case(s) en couleur dans la semaine',
+     'pastille(s) en couleur dans le mois', 'la couleur a disparu']],
   ['banc-verrou-bascule-09.mjs', '⑨ · le verrou, la bascule, la photo retentée',
     ['TOUT PASSE — 5 repères', '"ecrituresDecisions":1', '"jamaisReplacee":true']]
 ];

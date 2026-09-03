@@ -1,0 +1,52 @@
+① MODE TEST ÉTEINT — la classe d'essai n'est nulle part
+   version : 8.73.0-⑪ᵇ
+   ✔ CLIC « 🛠 Panneau prof »
+   ✔ CLIC « 📅 Emploi du temps »
+   ✔ CLIC « 📅 Ouvrir l’emploi du temps »
+   ✔ CLIC « Semaine »
+   {"casesEssaiSemaine":0,"pastillesEssaiMois":0,"cellulesEssai":0,"cases":18,"modeTest":false,"bordure":"(aucune case d'essai)","fond":"","ou":[]}
+   ✔ hors mode test : aucune case d'essai, aucune couleur
+   ▸ tests/11b/b01-mode-test-eteint-aucune-couleur.png
+   ✔ CLIC « Année »
+   l'année, mode test éteint : {"bandeaux":104,"classes":0}
+   ▸ tests/11b/b02-mode-test-eteint-annee.png
+   ✔ CLIC « Semaine »
+
+② MODE TEST ALLUMÉ — la semaine
+   ✔ CLIC « ✕ Fermer l’emploi du temps »
+   ✔ CLIC « 🧪 Mode test »
+   mode test : true
+   ✔ CLIC « 📅 Emploi du temps »
+   ✔ CLIC « 📅 Ouvrir l’emploi du temps »
+   ✔ CLIC « Semaine »
+   {"casesEssaiSemaine":4,"pastillesEssaiMois":0,"cellulesEssai":4,"cases":22,"modeTest":true,"bordure":"rgb(167, 139, 250)","fond":"rgba(167, 139, 250, 0.16)","ou":["3E Charles de Gaulle aucune séance","3E Charles de Gaulle aucune séance","3E Charles de Gaulle aucune séance","3E Charles de Gaulle aucune séance"]}
+   ✔ 4 case(s) en couleur dans la semaine · bordure rgb(167, 139, 250) · fond rgba(167, 139, 250, 0.16)
+   ✔ autant de cases colorées que de cases d'essai : 4
+   ▸ tests/11b/b03-mode-test-allume-semaine-en-couleur.png
+
+③ LE MOIS
+   ✔ CLIC « Mois »
+   {"casesEssaiSemaine":0,"pastillesEssaiMois":24,"cellulesEssai":24,"cases":138,"modeTest":true,"bordure":"rgba(120, 120, 120, 0.3)","fond":"rgba(167, 139, 250, 0.28)","ou":[]}
+   ✔ 24 pastille(s) en couleur dans le mois
+   ▸ tests/11b/b04-mode-test-allume-mois-en-couleur.png
+
+④ L'ANNÉE — ce qu'elle montre des heures de classe
+   ✔ CLIC « Année »
+   l'année, mode test allumé : {"bandeaux":104,"classes":0,"essai":0}
+   MESURE : l'année montre AUTANT de bandeaux éteinte qu'allumée (104) — elle ne dessine pas les créneaux de cours, mais les événements et les jours de classe : il n'y a rien à y colorer, et je le déclare plutôt que d'y inventer une couleur.
+   ▸ tests/11b/b05-mode-test-allume-annee.png
+
+⑤ MODE TEST RÉÉTEINT — la couleur disparaît avec la classe d'essai
+   ✔ CLIC « Semaine »
+   ✔ CLIC « ✕ Fermer l’emploi du temps »
+   ✔ CLIC « Mode test actif — rien n’est enregistré »
+   mode test : false
+   ✔ CLIC « 📅 Emploi du temps »
+   ✔ CLIC « 📅 Ouvrir l’emploi du temps »
+   ✔ CLIC « Semaine »
+   {"casesEssaiSemaine":0,"pastillesEssaiMois":0,"cellulesEssai":0,"cases":18,"modeTest":false,"bordure":"(aucune case d'essai)","fond":"","ou":[]}
+   ✔ la couleur a disparu en même temps que la classe d'essai
+   ▸ tests/11b/b06-mode-test-reeteint-plus-de-couleur.png
+
+écritures parties vers le faux hub : 7
+VERT — la classe d'essai est en couleur, et seulement en mode test

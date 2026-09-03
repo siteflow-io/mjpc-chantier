@@ -25,7 +25,7 @@ Attendu de fin de cycle, pour **chaque niveau** : au moins trois œuvres complè
 | | Exigé | Réalisé |
 |---|---|---|
 | Œuvres intégrales étudiées | 3 | **3** — *Le Horla*, *La Parure*, *Le Cid* |
-| Lectures cursives | 3 | **3** — *Je suis une légende*, *Le Fantôme de Canterville*, *Le Petit Chose* |
+| Lectures cursives | 3 | **3** — *Les Misérables*, *Le Fantôme de Canterville*, *Le Petit Chose* |
 | Groupements de textes | 3 | **4** — chapitres 1, 3, 5, 6 |
 
 ### Points de passage obligés
@@ -92,7 +92,7 @@ Alternance : une seule paire de groupements à la suite, aux rangs 5 et 6.
 - **Corpus** : des extraits de Hugo, Balzac et Zola, des poèmes de Baudelaire, et des photographies de Paris au XIXe siècle
 - **Production** : décrire un lieu de la ville d'après une photographie, une fois pour le rendre attirant, une fois pour le rendre inquiétant
 - **Majeure** : lire des textes non littéraires, des images et des documents composites
-- **Livre à avoir lu** : *Je suis une légende* — Toussaint
+- **Livre à avoir lu** : *Les Misérables* — Toussaint
 
 ### Chapitre 2 — Le Horla
 
@@ -164,13 +164,13 @@ Six titres. *Les Misérables* est acheté bien que le chapitre travaille sur ext
 
 | Livre | Statut | À avoir lu pour |
 |---|---|---|
-| *Je suis une légende*, Matheson | cursive | Toussaint |
+| *Les Misérables*, Hugo — **collection Déclic** | cursive | Toussaint |
 | *Le Horla*, Maupassant | intégrale | novembre |
 | *Le Fantôme de Canterville*, Wilde | cursive | vacances de Noël |
 | *La Parure*, Maupassant | intégrale | janvier |
 | *Le Petit Chose*, Daudet | cursive | vacances d'hiver |
 | *Le Cid*, Corneille | intégrale | vacances de printemps |
-| *Les Misérables*, Hugo — collection Déclic | groupement d'extraits | — |
+| 
 
 Pour *Le Cid*, une édition annotée de collège : la compréhension du texte en dépend.
 

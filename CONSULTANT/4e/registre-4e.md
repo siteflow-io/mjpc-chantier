@@ -20,6 +20,15 @@ Décisions datées et dettes ouvertes. Toute décision qui change rend caduque l
 - Le mot **lyrisme** ne titre pas le chapitre 5. Retiré de l'entrée en 2018, absent en 2020, absent des titres de corpus d'éduscol. Il reste une notion travaillée à l'intérieur.
 - Le diaporama annuel de 4e est produit par modification du fichier de 3e, charte inchangée. Emplacements d'image laissés vides.
 
+
+**2 septembre 2026**
+
+- ***Les Misérables*** **change de statut.** Le chapitre 3 est conduit en plan de travail et repose sur une comparaison entre un corpus et l'œuvre Déclic : elle doit donc avoir été lue. Elle devient **lecture cursive**, à lire pour la Toussaint, rattachée au chapitre 1 sur la ville — Paris y est un lieu majeur — et réinvestie au chapitre 3 en janvier. Le chapitre 3 reste un groupement de textes.
+- ***Je suis une légende*** **est retiré du panier**, dont il occupait la place de la Toussaint. Le compte reste à trois cursives et le bon de commande descend à six titres.
+- **Conséquence à surveiller** : dix semaines séparent la lecture de son exploitation. Un dispositif de maintien — carnet de lecture, entrées worktrack — est à prévoir.
+- **Conséquence sur le programme** : l'enjeu « réfléchir aux conséquences à venir du développement des mégalopoles » n'est plus porté par aucun texte. Il l'était par le roman d'anticipation. À combler dans le corpus du chapitre 1.
+- **Point à trancher** : le corpus du chapitre 1 annonce des extraits de Hugo. Si ce sont des extraits des *Misérables*, ils consomment la matière du chapitre 3 ; s'ils servent d'amorce à la lecture cursive, c'est un choix délibéré. Sinon, prendre le Paris de *Notre-Dame de Paris*.
+
 ## Dettes ouvertes
 
 - **Compétence sans identifiant.** « Analyser le fonctionnement de la phrase simple et de la phrase complexe » figure au programme de 2020 parmi les cinq compétences de langue, et n'a pas d'identifiant dans la taxonomie du hub. C'est précisément l'objet du fil langue de 4e. Dette déjà consignée dans `CONSULTANT/CHAPITRE-1/registre-chapitre-3e.md` ; elle vaut aussi pour la 4e.

@@ -4669,3 +4669,37 @@ J'ai regardé ce que ces jours portent chez toi :
 **Tests manuels : aucun.**
 
 MEMO
+
+---
+
+## TOUR 94 — Paul
+
+Texte mot pour mot :
+
+> oui mais mjpc c'est pour les cours, c'est les cours qui sont importants. je dois pouvoir déclarer mon début d'année tel jour et puis le reste se cale, c'est tout. c'est ça la logique. l'année prochaine ça se trouve j'aurai des cours dès le mercredi, on ne sait pas.
+
+---
+
+## TOUR 94 — Claude (conscience n°11)
+
+Registre : `n°11 · 76`.
+
+Réponse mot pour mot :
+
+**C'est noté, et ton dernier argument est celui qui tranche.**
+
+**« L'année prochaine ça se trouve j'aurai des cours dès le mercredi, on ne sait pas. »**
+
+C'est exactement ça : **ta date de début n'est déductible de rien.** Ni de tes vacances, ni de la rentrée des élèves, ni d'aucune règle. **Elle ne peut venir que de toi.** C'est pour ça que le champ existe — et c'est pour ça que le bricoler par les vacances serait une impasse : l'an prochain, tu recommencerais, et pour une autre date.
+
+J'ai gravé ta règle au registre dans tes mots : **« mjpc c'est pour les cours »** — le calendrier de l'établissement dit ce qui occupe tes journées, **c'est toi qui dis quand tes cours commencent**. Les deux ne se déduisent pas l'un de l'autre.
+
+**Le dépannage par le JSON est écarté.**
+
+Ce qui reste tient en une phrase : **le prévu ne pose aucune séance avant `debutAnnee` ni après `finAnnee`.** Côté code, c'est une borne qui manque, pas une fonction à écrire — le champ est là, il est lu à trois endroits, aucun n'est le prévu.
+
+**Je n'ai rien rédigé.** Dis-moi si tu veux que j'écrive le mandat, et je te le soumets avant de le déposer — pas après.
+
+**Tests manuels : aucun.**
+
+MEMO

@@ -4111,3 +4111,27 @@ Mon avis : tu as exigé de promouvoir sur captures et de tout finir de bout en b
 **Cahier vivant** — ta décision sur le parcours, puis ton promeus.
 
 MEMO
+
+---
+
+## TOUR 81 — Paul
+
+Texte mot pour mot :
+
+> ok pour rejouer.
+
+---
+
+## TOUR 81 — Claude (conscience n°11)
+
+Mandat déposé : `PONT/EDT/MANDAT-LOT-2ter-12.md`, 5 789 o. Deux passes appliquées avant dépôt.
+Registre : `n°11 · 63`.
+
+Réponse mot pour mot : le mandat entier dans un bloc copiable, précédé du rappel des deux
+étapes enrichies, puis :
+
+**Tests manuels : aucun.** Rien n'a bougé.
+
+**Cahier vivant** — le parcours rejoué, puis ton promeus.
+
+MEMO

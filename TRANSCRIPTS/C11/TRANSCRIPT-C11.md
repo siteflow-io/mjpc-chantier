@@ -4833,3 +4833,66 @@ Le code porte pourtant ce commentaire : *« le réel ne dépend JAMAIS de ce qui
 **Tests manuels : les quatre qu'il te propose, si tu veux voir le défaut de tes yeux.**
 
 MEMO
+
+---
+
+## TOUR 97 — Paul
+
+Texte mot pour mot :
+
+> [audit de l'exécutant sur le prompt micro : quatre défauts dont un grave, deux remarques de méthode, et « ce n'est pas un micro »]
+
+---
+
+## TOUR 97 — Claude (conscience n°11)
+
+Vérifications : **`edtCasesDuJour` : 10 appels dans 9 fonctions** · **`banc-tout` : 35 bancs**,
+pas 32 · le **réel** est traité **après** les gardes dans `edtProjeter`, une garde placée avant
+effacerait la trace d'une heure jouée. Registre : `n°11 · 79`.
+
+Réponse mot pour mot :
+
+**Il a raison sur les quatre points, et sur sa conclusion. J'ai tout vérifié.**
+
+## Le point grave, mesuré
+
+`edtCasesDuJour` — la fonction qui donne les cases d'un jour — **a dix appels dans neuf fonctions**. `edtProjeter` n'en est **qu'une**.
+
+Les autres : **la vue Année** (deux fois), **la photo du prévu et les heures perdues**, **la liste des destinations** (deux fonctions), et quatre autres.
+
+**Donc ma garde n'aurait borné que la semaine et le mois.** Ta grille aurait dit « avant ta rentrée » pendant que **la photo du prévu comptait encore ces heures** et que **la liste des destinations proposait encore ces créneaux**.
+
+**Ma borne aurait été un décor.**
+
+## Le risque qu'il a vu et que je n'avais pas vu
+
+**Une heure déjà jouée.** J'ai lu le code : le réel est traité **après** les gardes, avec ce commentaire — « une heure jouée colore sa case même quand le chapitre est fini, dépublié ou supprimé ».
+
+**Ma garde placée avant aurait effacé la trace d'une heure que tu as réellement faite.** Si tu déclares le 3 septembre alors qu'une séance a été lancée le 1er, elle disparaît.
+
+## Mes deux autres fautes
+
+**L'ordre des gardes** : mon prompt disait « à côté des deux déjà là » — sans dire avant ou après. Si la mienne passe en premier, **un jour de vacances dirait « avant ta rentrée » au lieu de « vacances d'été »**.
+
+**Et un chiffre faux** : j'ai écrit « banc-tout, 32 bancs ». **Il y en a 35.** J'ai recopié le chiffre du rapport ⑧ sans le remesurer — trois bancs ont été ajoutés depuis. Un exécutant qui en joue 32 et écrit « entier » livre une preuve fausse.
+
+## Sa conclusion, que je reprends
+
+**Ce n'est pas un micro.** J'avais évalué le calibre **en ne regardant que `edtProjeter`**.
+
+**C'est la cinquième fois aujourd'hui que je conclus depuis un seul endroit du code.** Le geste touche **neuf fonctions**, pas une.
+
+## Ce qu'il te demande de trancher
+
+Deux points sur lesquels je suis d'accord avec lui, et que je te soumets tels quels :
+
+- **Une case qui porte une décision ou une heure jouée n'est jamais bornée** — le passé ne se réécrit pas.
+- **L'ordre** : vacances, puis hors MJPC, puis hors année — pour que chaque cas garde son nom.
+
+**Et un qui t'appartient** : **la borne va-t-elle seulement sur l'affichage, ou aussi sur ce qui compte et propose** — la photo du prévu, les heures perdues, la liste des destinations ? S'il n'y a que l'affichage, ta grille sera juste mais tes comptes resteront faux.
+
+Il te donne quatre tests à faire de ta main pour voir le défaut toi-même. **Je n'écris rien tant que tu n'as pas tranché.**
+
+**Tests manuels : les quatre qu'il te propose.**
+
+MEMO

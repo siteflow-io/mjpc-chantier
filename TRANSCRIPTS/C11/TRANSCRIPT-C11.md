@@ -4004,3 +4004,57 @@ Tout est au registre, `n°11 · 56`.
 **Cahier vivant** — ton promeus, puis le protocole d'après-promotion, puis l'injection de chapitre. En attente : la simplification des textes · la confrontation dettes ↔ code · les dettes hors lot.
 
 MEMO
+
+---
+
+## TOUR 79 — Paul
+
+Texte mot pour mot :
+
+> livré
+
+---
+
+## TOUR 79 — Claude (conscience n°11)
+
+Audit joué : ⑪-a et ⑪-b livrées sans arrêt entre · candidat 1 767 472 o / `4a5aa3d2…` ·
+`edtPoserDateAnnee` : **1 → 3 occurrences, un appelant** · non-régression 229/229, correctif
+du mode test intact · **deux captures téléchargées et REGARDÉES**. Registre : `n°11 · 61`.
+
+Réponse mot pour mot :
+
+**Verdict : ça va. Le point qui bloquait ton promeus est fermé — et je l'ai vu, pas déduit.**
+
+## Tes dates d'année existent
+
+J'ai ouvert la capture. Sous les quatre dates du brevet, l'écran porte maintenant **« début de l'année »** et **« fin de l'année »**, deux champs date, avec cette phrase :
+
+> *Le début et la fin de l'année scolaire. Ils arrivent avec le calendrier injecté ; ici, tu les corriges à la main. Avancer la fin renvoie les heures posées au-delà dans les heures à replacer, et te les nomme.*
+
+Et dans le code, la fonction qui refusait dans le vide **a enfin un appelant**. Ton mandat ⑥ — « modifiables à la main » — est complet.
+
+Il a poussé les trois refus en captures séparées, plus la preuve que la fin avancée renvoie les heures au-delà.
+
+## Ta classe d'essai est en couleur
+
+J'ai regardé aussi. Les quatre cases — lundi 8h, mardi 8h, jeudi 10h07, vendredi 13h — sont **en violet**, fond et liseré, nettement détachées du brun de tes vraies classes. **Et les vraies ne changent pas.**
+
+Six captures : mode test éteint (aucune couleur), allumé (semaine, mois, année), **puis rééteint — plus de couleur**.
+
+## Ce qui n'a pas bougé
+
+229 fonctions, aucun doublon, aucune disparue. Le moteur intact. **Et le correctif du mode test toujours à sa place** — c'est le plus important avant la prochaine étape, qui y touche.
+
+**Ce que je n'ai pas vérifié moi-même** : les dix autres captures. J'en ai regardé deux — celles des deux points que tu avais tranchés. Le reste repose sur ses rapports.
+
+## Ce qui reste
+
+**Le mode test qui vide ton écran.** C'est le §③ du mandat : le patron de ta taxonomie — lire le vrai hub, écrire dans le faux — avec l'interdiction d'écrire au vrai, remesurée.
+
+**Tests manuels : aucun.** Rien en production.
+
+**Ce qu'il attend de toi : « continuer ».**
+
+**Cahier vivant** — ⑪ finale, puis le parcours refait, puis ton promeus.
+
+MEMO

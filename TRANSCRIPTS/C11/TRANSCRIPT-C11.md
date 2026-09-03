@@ -4548,3 +4548,25 @@ Réponse mot pour mot : le compte rendu de promotion, l'adresse avec `&v=`, et l
 geste par geste.
 
 MEMO
+
+---
+
+## TOUR 91 — Paul
+
+Texte mot pour mot :
+
+> livre moi les json mis à jour. j'ai déjà l'heure de demain matin (turing) qui a été déplacée à aujourd'hui à 14h (vérifie horaires exacts)
+
+---
+
+## TOUR 91 — Claude (conscience n°11)
+
+Mesures : jeudi 3/9 **semaine A** · vendredi 4/9 **semaine A** · **4 TURING vendredi
+`08:00-08:55`** · **jeudi `13:57-14:52` LIBRE** (14h y tombe) · **le hub porte désormais une
+photo automatique « Rentrée »** (`pho:20260903095842`), déclenchée seule · calendrier et
+grille **pas encore injectés**. Registre : `n°11 · 73`.
+
+Réponse mot pour mot : les horaires vérifiés, la photo automatique, l'avertissement sur les
+JSON, et les trois adresses.
+
+MEMO

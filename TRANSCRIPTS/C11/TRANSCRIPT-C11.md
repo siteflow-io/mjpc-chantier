@@ -4186,3 +4186,61 @@ Deux limites de banc, honnêtes : une liste déroulante déployée **ne se captu
 **Cahier vivant** — ton promeus. Il emporte le lot **et** la réparation du mode test qui attend depuis le 27 août. Ensuite : le protocole d'après-promotion, puis l'injection de chapitre.
 
 MEMO
+
+---
+
+## TOUR 83 — Paul
+
+Texte mot pour mot :
+
+> [message de l'exécutant : la règle des infobulles posée par Paul · le blocage d'écriture au registre · l'audit — 100 cliquables, 6 bulles, 94 sans · sept points de vocabulaire · la question du destinataire]
+
+---
+
+## TOUR 83 — Claude (conscience n°11)
+
+Mesures : **bloc EDT recompté — 35 boutons, 12 `title=`, 3 `aria-label` : exactement ses
+chiffres** · reste du site : **88 `title=`** contre 65 annoncés, écart sans effet.
+Entrée poussée au registre à sa place : `n°11 · 65`.
+
+Réponse mot pour mot :
+
+**Ses chiffres du bloc emploi du temps sont exacts, je les ai recomptés. Et j'ai poussé sa règle au registre — il ne pouvait pas.**
+
+## Son blocage n'en est pas un
+
+Son jeton **lit** ta production mais n'y **écrit** pas. C'est normal et c'est voulu : l'étanchéité a été prouvée le 31 août, et un exécutant ne doit pas pouvoir écrire en production. **Le registre est tenu par moi.** C'est fait, entrée `n°11 · 65`.
+
+## L'état de la dette, chiffré
+
+**Cent éléments cliquables, six infobulles, quatre-vingt-quatorze sans.** Dans le code : ton emploi du temps a 12 infobulles pour 35 boutons ; le reste du site, 88 pour 275. **L'emploi du temps est le pire endroit.**
+
+Un écart entre nous : il annonce 65 pour le reste du site, j'en mesure 88. Sans effet sur le constat.
+
+**Et il se vise lui-même en premier** : ses deux dernières livraisons — tes champs de dates, ta couleur — **n'ont ajouté aucune infobulle**.
+
+## La question qu'il refuse de trancher — je la tranche
+
+Il demande : ces infobulles sont-elles pour toi en classe, ou pour quelqu'un qui découvre le site ?
+
+**Ta motivation existe déjà** : « le système doit être solide et ne pas me bloquer dans trois mois quand je ne saurai même plus cette histoire d'identifiants ».
+
+**Donc : elles sont pour toi dans trois mois.** Quelqu'un qui connaît son métier et son site, mais qui a oublié le détail. Ni télégraphique, ni manuel pour inconnu — une phrase qui dit **ce que le geste fait et ce qu'il coûte**, dans tes mots.
+
+Tu corriges si tu n'es pas d'accord.
+
+## Une seule question, et je ne la tranche pas
+
+Sur ton écran, une case dit **« X Français X. — 4 HUGO · hors MJPC »**, et son infobulle dit **« hors français, jamais compté »**.
+
+**Les deux sont faux.** Ce n'est pas « hors MJPC » — ça nomme ton site, pas ta classe. Et ce n'est pas « hors français » — **c'en est**, c'est du français, assuré par un autre professeur.
+
+**Quel mot veux-tu pour cette case ?**
+
+Le reste des sept points est net : la plomberie affichée (`/site/edt/`), « classe appariée », « jalon », le filtre « 37 · A ou B » jamais expliqué, « Sortir le JSON » alors que « copier » est le mot juste, et « expérimentale » face à « classe d'essai ».
+
+**Tests manuels : aucun.** Rien n'a bougé, rien n'est en production.
+
+**Cahier vivant** — ta réponse sur ce mot, puis le mandat ⑬ en deux temps : les mots, puis les infobulles avec un banc qui échoue si un bouton n'en porte pas.
+
+MEMO

@@ -4396,3 +4396,28 @@ Et j'ai monté ce banc **quatre fois** avant qu'il tourne — il manquait des fo
 **Cahier vivant** — le mandat ⑬ (les mots, puis les infobulles), puis ton promeus.
 
 MEMO
+
+---
+
+## TOUR 87 — Paul
+
+Texte mot pour mot :
+
+> ok fais le prompt pour les info bulles. va lire d'abord ce que j'avais déjà dit à propos de ces infos bulles par le passé. j'ai déjà fait plusieurs fois ce chantier dans les apps et dans le site lui-même.
+
+---
+
+## TOUR 87 — Claude (conscience n°11)
+
+Recherche : registre (410 Ko) **rien d'antérieur** · les 34 documents de `docs/` · **`MJPC6-journal.md`
+porte le bug du survol tactile (05-06/08), la passe tactile du site (06/08), et la preuve
+d'ajout non invasif à généraliser** · `@media (hover: hover) and (pointer: fine)` : **une
+occurrence** dans le candidat. Mandat déposé, 10 158 o. Registre : `n°11 · 69`.
+
+Réponse mot pour mot : ce que j'ai trouvé dans son journal, puis le mandat entier, puis :
+
+**Tests manuels : aucun.**
+
+**Cahier vivant** — ⑬a les mots, ⑬ les infobulles, puis ton promeus.
+
+MEMO

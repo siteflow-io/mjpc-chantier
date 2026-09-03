@@ -4345,3 +4345,54 @@ L'infobulle dit « hors français, jamais compté », et la fenêtre répète «
 **Cahier vivant** — ta réponse sur le détour, puis le mandat ⑬ (les mots, puis les infobulles), puis ton promeus.
 
 MEMO
+
+---
+
+## TOUR 86 — Paul
+
+Texte mot pour mot :
+
+> non tu dois faire le test toi même. et oui pour la reformulation du vocab
+
+---
+
+## TOUR 86 — Claude (conscience n°11)
+
+Banc monté par la conscience : **29 fonctions extraites du candidat**, jouées sur la **vraie
+grille** et le **vrai calendrier** de Paul. Quatre essais avant d'aboutir. Registre : `n°11 · 68`.
+
+Réponse mot pour mot :
+
+**Fait. Et ça marche — prouvé sur ta vraie grille.**
+
+J'ai extrait vingt-neuf fonctions du candidat et je les ai fait tourner sur ton fichier de grille et ton calendrier. Case de départ : une heure de **4 HUGO**, mercredi 14 septembre à 11h04. **638 destinations proposées.**
+
+**Voici les trois qui comptent :**
+
+| date | ce qu'il y a à 10:07-11:02 | proposé ? |
+|---|---|---|
+| **lundi 21/9** (semaine B) | X Français X. — 4 TURING, **hors MJPC** | **OUI — « créneau libre, heure ajoutée »** |
+| **lundi 28/9** (semaine A) | X Français X. — 4 HUGO, **hors MJPC** | **OUI — « créneau libre, heure ajoutée »** |
+| **lundi 5/10** (semaine B) | X Français X. — 4 TURING, **hors MJPC** | **OUI — « créneau libre, heure ajoutée »** |
+
+**Soixante-quatre entrées** de ta liste tombent sur ce créneau, toutes marquées « heure ajoutée ».
+
+**Donc ce que tu veux faire est déjà possible** : tu ouvres une case de ta classe, tu prends « Déplacer cette heure, ou en ajouter une… », tu choisis un de ces lundis à 10h07 — et l'heure devient une heure de français à toi, comptée dans ta prévision.
+
+## Ce que mon test prouve, et ce qu'il ne prouve pas
+
+Il **appelle la fonction**, il ne clique pas. **Il prouve que ta liste contient bien ces créneaux.** Il ne prouve pas que le geste complet — ouvrir, choisir, valider — aboutit à l'écran.
+
+**C'est exactement la faute qui a coûté deux trous à ce lot**, alors je le dis : **le geste par clics reste à faire**, et c'est à l'exécutant, banc à l'appui. Je le mets dans le mandat.
+
+Et j'ai monté ce banc **quatre fois** avant qu'il tourne — il manquait des fonctions à chaque essai. Aucune conclusion tirée avant.
+
+## La suite
+
+**Ta passe de vocabulaire est validée**, j'écris le mandat ⑬. Il portera les sept points, **et la correction de cette infobulle qui ment deux fois** : « hors français, jamais compté » — c'est du français, **et cette heure peut compter**, ce que mon banc vient de prouver.
+
+**Tests manuels : aucun** — je l'ai fait.
+
+**Cahier vivant** — le mandat ⑬ (les mots, puis les infobulles), puis ton promeus.
+
+MEMO

@@ -75,7 +75,7 @@ Tu pousses au sas, **tu relis le fichier après la poussée**, et **tu publies s
 
 **Pourquoi le 27 août** : les vacances d'été du calendrier vont du `2026-08-01` au **`2026-08-26`**. Le 27 est donc le premier jour où le site s'autorise à poser une séance, parce que **`edtJourSansCours` ne lit que `vacances` et `feries`**.
 
-**Pourquoi déclarer la date n'a rien changé** : `edtDebutAnnee()` a **trois appelants — `edtVersions` (L17855), `edtNormaliserGrille` (L19031), `edtEcheancesPhoto` (L20002). Aucun ne calcule le prévu.** Et `edtFinAnnee()` en a quatre — `edtHeuresJamaisReplacees` (×2), `edtCreneauxOu` (L20391), `edtDestinationsPour` (L20563). **Ni l'une ni l'autre ne borne ce que Paul voit et ce que le site compte.**
+**Pourquoi déclarer la date n'a rien changé** : `edtDebutAnnee()` a **trois appelants — `edtVersions` (L17855), `edtNormaliserGrille` (L19031), `edtEcheancesPhoto` (L20002). Aucun ne calcule le prévu.** Et `edtFinAnnee()` en a **trois** — `edtHeuresJamaisReplacees` (L18356, L18379) et `edtCreneauxOu` (L20391). *(La mention dans `edtDestinationsPour` à la L20563 est **dans un commentaire**, pas du code : corrigé après audit.)* **Ni l'une ni l'autre ne borne ce que Paul voit et ce que le site compte.**
 
 **LA SOURCE COMMUNE : `edtCasesDuJour`, DIX APPELS DANS NEUF FONCTIONS.** Mesuré, avec ce que chacune sert :
 
@@ -100,6 +100,8 @@ Tu pousses au sas, **tu relis le fichier après la poussée**, et **tu publies s
 
 **Et l'effet diffère selon l'endroit — c'est le cœur du mandat :**
 
+0. **AUCUNE DES TROIS NATURES EXISTANTES NE CHANGE** : une case `horsTemps` (vacances, férié), `horsMjpc` (heure de Paul non fléchée dans le site) ou **`nonImportee`** (classe qui n'est pas chez lui) **garde son nom et son comportement**, même hors année. Tu n'ajoutes qu'un cas : celui qui n'en avait aucun.
+
 1. **À L'AFFICHAGE — la case RESTE, et c'est tranché par Paul.** Dans `edtProjeter` et `edtPeindreAnnee`, une date hors année donne une case **présente, grisée, sans séance**, avec son mot : **« avant ta rentrée »** ou **« après ton dernier jour »**. Rendu sur le patron exact de `horsTemps`, qui existe déjà dans `edtCelluleCorps` : `<div class="edt-b edt-b-off">…</div>`.
    **Pourquoi la case reste** : mesuré, le 27/08 porte le CODIR, le déjeuner d'équipe, la photo et la pré-rentrée ; le 28/08 la pré-rentrée ; le 31/08 la préparation ; le 01/09 **la rentrée des 6e** ; le 02/09 **la rentrée des 5e-4e-3e**. **Huit événements réels. Les faire disparaître serait mentir dans l'autre sens.**
 
@@ -115,17 +117,25 @@ Tu pousses au sas, **tu relis le fichier après la poussée**, et **tu publies s
 
 **UNE CASE QUI PORTE UNE HEURE DÉJÀ JOUÉE, OU UNE DÉCISION DE PAUL, N'EST JAMAIS BORNÉE.**
 
-**Mesuré, et c'est le risque le plus sérieux de ce mandat** : dans `edtProjeter`, les gardes viennent en tête (`horsTemps` à l'offset 1323, `horsMjpc` à 1440) **et le réel est traité APRÈS** — `edtChercherTrace` à l'offset 2649, avec ce commentaire du code : *« le réel ne dépend JAMAIS de ce qui attend : une heure jouée colore sa case même quand le chapitre est fini, dépublié ou supprimé de la file. »*
+**Mesuré, et c'est le risque le plus sérieux de ce mandat** : dans `edtProjeter`, **trois** gardes viennent en tête et coupent la suite — `horsTemps` (1323), `horsMjpc` (1440), **`nonImportee` (1521, la case d'une classe qui n'est pas chez Paul : `if(!cel.classeMjpc)`)** — **et le réel est traité APRÈS** — `edtChercherTrace` à l'offset 2649, avec ce commentaire du code : *« le réel ne dépend JAMAIS de ce qui attend : une heure jouée colore sa case même quand le chapitre est fini, dépublié ou supprimé de la file. »*
 
 **Une garde `horsAnnee` placée bêtement en tête effacerait donc la trace d'une heure que Paul a réellement faite.** Si Paul a lancé une séance le 1er septembre et déclare ensuite sa rentrée au 3, **cette heure doit rester telle quelle** — jouée, avec ses activités.
 
 **Il en va de même d'une décision** : une heure cochée, banalisée, déplacée ou à replacer **garde son état**.
 
-## ③ L'ORDRE DES GARDES — dit explicitement
+## ③ QUEL MOT GAGNE, ET OÙ LA GARDE SE POSE — deux choses différentes, ne les confonds pas
 
-**`horsTemps` → `horsMjpc` → `horsAnnee`.**
+**⚠ CETTE SECTION A ÉTÉ CORRIGÉE APRÈS UN AUDIT : lue de travers, elle te ferait effacer les heures que Paul a réellement faites. Lis les deux points.**
 
-**Pourquoi cet ordre** : un jour de vacances avant la rentrée doit dire **« vacances d'été »**, pas « avant ta rentrée » — le mot le plus précis gagne. Et une heure hors MJPC garde son nom.
+**① QUEL MOT GAGNE — c'est du vocabulaire, pas des lignes de code.** Une case hors année qui est **aussi** un jour de vacances dit **« vacances d'été »** ; une case hors année qui est **aussi** hors MJPC garde **« hors MJPC »** ; une case hors année d'une **classe non importée** garde **« classe non encore importée »**. **Le mot le plus précis gagne. « avant ta rentrée » ne s'affiche que s'il n'y a rien d'autre à dire.**
+
+**② OÙ LA GARDE SE POSE — et c'est là que tout se joue.** Mesuré dans `edtProjeter` : **les trois gardes du haut coupent la suite** (`continue`) — `horsTemps` (offset 1323), `horsMjpc` (1440), **`nonImportee` (1521)** — **et le réel n'est cherché qu'à l'offset 2649** (`edtChercherTrace`).
+
+**Si tu poses ta garde avec ces trois-là, tu effaces les heures que Paul a réellement jouées avant sa rentrée.** C'est exactement ce que le §② interdit.
+
+**DONC : LA BORNE REMPLACE LE PRÉVU, JAMAIS LE RÉEL NI UNE DÉCISION. Elle se pose APRÈS la recherche de trace, pas avec les trois gardes du haut.** Le §③.① ci-dessus ne classe que **les mots**, il ne dit pas où mettre les lignes.
+
+**Et pour que la case hors année garde le mot des trois gardes du haut alors que ta borne vient plus bas** : ces trois-là coupent déjà avant d'arriver à toi — **tu n'as rien à faire, l'ordre des mots est acquis.** Vérifie-le et dis-le.
 
 ## ⓪ter CE QUI N'EST PAS DANS CE MANDAT
 
@@ -165,6 +175,7 @@ Si l'un de ces sujets te paraît nécessaire, **signale et attends**.
 10. **La photo du prévu** : nombre de cases avant/après, et **`depuis`** — montre ce qu'elle photographie maintenant.
 11. **Le pendant inverse** : `finAnnee` dépassée → les cases d'après restent, sans séance. **Si l'écran refuse une `finAnnee` passée — c'est le refus de ⑥ et il est légitime — force-la dans ton banc et DÉCLARE-LE.**
 12. **Sans `debutAnnee` ni `finAnnee` déclarées : rien ne change.** Compte avant/après.
+    **⚠ ATTENTION, ET C'EST UN PIÈGE MESURÉ** : `edtDebutAnnee()` et `edtFinAnnee()` **inventent une date quand Paul n'a rien posé** — `…-08-01` et `…-07-31`. **Si ta borne les appelle, elle bornera TOUJOURS, même sans rien de déclaré, et cette preuve sera infaisable.** **Ta borne lit `EDT_DATES.debutAnnee` et `EDT_DATES.finAnnee` BRUTES, et ne borne que du côté où Paul a effectivement posé une date.**
 13. **L'infobulle de la nature nouvelle** est là.
 14. **Non-régression** : la liste chiffrée du §⑤, **`banc-tout` en entier (35)**.
 15. **Garde** : verte sur ses cinq questions, **et rouge sur cinq contrôles négatifs que tu poses toi-même**.

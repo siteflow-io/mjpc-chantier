@@ -5023,3 +5023,24 @@ Registre : `n°11 · 81`. **Mandat soumis, non déposé.**
 Réponse mot pour mot : ce que j'ai remesuré et corrigé, puis le mandat entier.
 
 MEMO
+
+---
+
+## TOUR 100 — Paul
+
+Texte mot pour mot :
+
+> je vais lancer un nouvel exécutant. ton prompt doit être canonique à ce titre, surtout l'entête. mets lui directement le jeton du sas.
+
+---
+
+## TOUR 100 — Claude (conscience n°11)
+
+En-tête refondu : **huit sections** avant le mandat. **Jeton du sas dans le bloc copiable, jeton
+de production vérifié absent. Mandat NON déposé au sas** (il contient un jeton).
+Relecture : dix marqueurs présents, **un doublon de numérotation trouvé et corrigé**.
+Registre : `n°11 · 82`.
+
+Réponse mot pour mot : ce que porte l'en-tête, puis le mandat entier avec le jeton.
+
+MEMO

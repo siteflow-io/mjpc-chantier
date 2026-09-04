@@ -2906,7 +2906,7 @@ function mjpcEcrireRest(url,options,cb){
    (les 3 gestes, le geste conservatoire par app, ce qui ne peut pas arriver).
    RESTAURER LA VERSION PRÉCÉDENTE : docs/MJPC6-restauration.md (convention BUG).
    ═══════════════════════════════════════════════════════════════════════════ */
-var APP_VERSION="8.73.0-⑭a";
+var APP_VERSION="8.73.0-⑭";
 var APP_VERSION_DATE="2026-08-27";
 // ── 11. Coffre : dérivation, chiffrement, empreinte (v1.3.0) ──
 // (Le canon porte deux sections « 8 » — dette de numérotation connue, non corrigée
@@ -21185,6 +21185,13 @@ function edtHeuresDeLEvenement(ev){
     edtCasesDuJour(d).forEach(function(x){
       if(!x||x.mjpc===false||!x.classeMjpc)return;
       if(ev.niveau&&edtNiveauDe(x.classeMjpc)!==ev.niveau)return;
+      /* [2ter 14] HORS ANNEE, L'HEURE NE COUTE RIEN : un evenement de
+         l'etablissement pose avant la rentree de Paul ne lui prend aucune heure,
+         et sa fiche ne s'affiche plus dans « Heures perdues ».
+         SAUF si Paul a decide quelque chose sur cette heure-la : sa coche doit
+         rester retrouvable (`edtEvenementJustifie`, `edtCochesDeplacees`), sinon
+         on lui effacerait un travail qu'il a fait. */
+      if(edtHorsAnnee(d)&&!edtDecisionPour(x.classeMjpc,d,x.creneau))return;
       out.push({classe:x.classeMjpc,iso:d,creneau:x.creneau,cle:edtCleHeure(d,x.creneau,x.classeMjpc)});
     });
     d=edtPlusJour(d,1);
@@ -21473,6 +21480,13 @@ function edtRefusDepot(c,dst){
   if(dst.iso<edtAujourdhui())return 'on ne pose pas une heure dans le passé (le '+dst.iso+' est déjà passé).';
   var off=edtJourSansCours(dst.iso);
   if(off)return 'le '+dst.iso+' est sans cours \u2014 '+(off.libelle||off.motif)+'.';
+  /* [2ter 14] LE REFUS HORS ANNEE, APRES « sans cours » : le mot le plus precis
+     gagne, un jour de vacances dit « vacances », pas « avant ta rentree ».
+     CE SEUL REFUS SERT AUSSI LES DEUX LISTES DE DESTINATIONS : `edtCreneauxOu`
+     et `edtCreneauxLibresLe` passent toutes les deux par ici, donc aucun creneau
+     hors annee n'est propose - il n'y a rien a ecrire ailleurs. */
+  var edtHorsD=edtHorsAnnee(dst.iso);
+  if(edtHorsD)return 'ce jour est '+edtHorsD.libelle+' du '+edtJourEnClair(edtHorsD.borne)+'.';
   var kr=EDT.creneaux||{},sans=(kr.sansApresMidi&&typeof kr.sansApresMidi==='object')?kr.sansApresMidi:null;
   var jour=edtNomDuJour(dst.iso);
   if(dst.creneau&&sans&&sans[jour]&&String(dst.creneau)>=String(sans[jour]))

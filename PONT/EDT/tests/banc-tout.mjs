@@ -127,7 +127,12 @@ const BANCS = [
      et le passé de Paul (heure jouée, heure banalisée) n'est jamais réécrit. */
   ['banc-borne-annee-14a.mjs', '⑭a · la borne des dates de l\'année',
     ['TOUT PASSE — banc ⑭a', 'AUCUNE CASE NE DISPARAÎT',
-     'EST TOUJOURS JOUÉE', 'le mot est à l\'écran']]
+     'EST TOUJOURS JOUÉE', 'le mot est à l\'écran']],
+  /* [2ter ⑭] les comptes, les propositions, le refus nommé, la photo,
+     le pendant inverse par le geste, et l'audit adverse. */
+  ['banc-borne-annee-14.mjs', '⑭ · les comptes, les propositions, la photo',
+    ['TOUT PASSE — banc ⑭', 'ne coûtent plus rien',
+     'LE REFUS EST NOMMÉ', 'ne photographie plus que des séances de l\'année']]
 ];
 
 /* un banc à la fois, avec sa limite de temps ; et on ne laisse jamais un

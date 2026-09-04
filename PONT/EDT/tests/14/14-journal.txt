@@ -1,0 +1,92 @@
+① AVANT — AUCUNE DATE D'ANNÉE DÉCLARÉE
+   événement de classe posé au calendrier de test : 1er septembre, niveau 3e
+   version : 8.73.0-⑭
+   ✔ CLIC « 🛠 Panneau prof »
+   ✔ CLIC « 📅 Emploi du temps »
+   ✔ CLIC « 📅 Ouvrir l’emploi du temps »
+   ✔ CLIC « Heures perdues… »
+   HEURES PERDUES · fiches 13 · coches 21 · fiches d'avant la rentrée 2
+   six premières : ["Banc ⑭ — sortie 3e AVANT la rentrée · mardi 1 septembre · te","Tribunal Saumur 4e (après-midi) ? 17h AG · jeudi 17 septembr","Séjour Verdun 3e · 14-16 octobre · tes 3e perdraient 2 heure","Stages 3e (uniquement 3e Horizon pro) · lundi 16 novembre · ","Stages 3e · 17-18 novembre · tes 3e perdraient 2 heures ; te","3e rapport de stage (matin) Forum métiers Saumur (13h30 15h)"]
+   ▸ tests/14/a01-avant-heures-perdues.png
+   ✔ CLIC « Semaine »
+   ✔ CLIC « ‹ »
+   écran : vendredi 4 septembre · il est 20:29
+   case ouverte : edtCaseClic2026-08-28|10:07-11:02|3 FRANKLIN Aretha
+   DESTINATIONS depuis cette case : 957 entrées — — choisir parmi 957 créneaux —
+   les premières : ["ven 4/9 · 10:07-11:02","ven 4/9 · 11:04-11:59  — pris par 4E BANKSY","ven 4/9 · 13:00-13:55  — créneau libre, heure ajoutée","ven 4/9 · 13:57-14:52  — créneau libre, heure ajoutée"]
+   ▸ tests/14/a02-avant-destinations-depuis-le-27-aout.png
+   ✔ CLIC « Aujourd’hui »
+   ✔ CLIC « 📷 Photo du prévu »
+   PHOTO DU PRÉVU · {"depuis":"2026-08-31","prise":"2026-09-04","nom":"vendredi 4 septembre","natures":{"total":18,"prevu":3,"horsMjpc":2,"rienDePret":6,"nonImportee":7}}
+   ▸ tests/14/a03-avant-photo-du-prevu.png
+
+② PAUL DÉCLARE SA RENTRÉE (3 septembre) ET SON DERNIER JOUR (3 juillet)
+   ✔ CLIC « 🛠 Panneau prof »
+   ✔ CLIC « 🎓 Dates de l’année »
+   ✔ FRAPPE de 03/09/2026 dans « début de l'année » → EDT_DATES : {"debutAnnee":"2026-09-03","finAnnee":null}
+   ✔ FRAPPE de 03/07/2027 dans « fin de l'année » → EDT_DATES : {"debutAnnee":"2026-09-03","finAnnee":"2027-07-03"}
+   ✔ les deux dates sont posées
+   ▸ tests/14/a04-les-deux-dates-posees.png
+
+③ APRÈS — LES COMPTES, LES PROPOSITIONS, LA PHOTO
+   ✔ CLIC « 📅 Emploi du temps »
+   ✔ CLIC « 📅 Ouvrir l’emploi du temps »
+   ✔ CLIC « Heures perdues… »
+   HEURES PERDUES · fiches 12 · coches 20 · fiches d'avant la rentrée 1
+   six premières : ["Tribunal Saumur 4e (après-midi) ? 17h AG · jeudi 17 septembr","Séjour Verdun 3e · 14-16 octobre · tes 3e perdraient 2 heure","Stages 3e (uniquement 3e Horizon pro) · lundi 16 novembre · ","Stages 3e · 17-18 novembre · tes 3e perdraient 2 heures ; te","3e rapport de stage (matin) Forum métiers Saumur (13h30 15h)","Visite des lycées St-Louis / les Ardilliers 3e · lundi 23 no"]
+   ▸ tests/14/a05-apres-heures-perdues.png
+   ✔ CLIC « Semaine »
+   ✔ CLIC « ‹ »
+   case ouverte : edtCaseClic2026-08-28|08:00-08:55|4 TURING
+   DESTINATIONS depuis la MÊME case : 0 entrées — (pas de liste de destinations dans la modale)
+   les premières : []
+   ▸ tests/14/a06-apres-destinations-depuis-le-27-aout.png
+   ✔ CLIC « Aujourd’hui »
+   ✔ CLIC « 📷 Photo du prévu »
+   PHOTO DU PRÉVU · {"depuis":"2026-08-31","prise":"2026-09-04","nom":"vendredi 4 septembre","natures":{"total":18,"horsAnnee":6,"horsMjpc":2,"nonImportee":7,"rienDePret":2,"prevu":1}}
+   ▸ tests/14/a07-apres-photo-du-prevu.png
+
+⑤ LE PENDANT INVERSE — APRÈS LE DERNIER JOUR
+   on ne peut pas cliquer 44 fois sur « › » pour atteindre juillet 2027.
+   Alors on rapproche le dernier jour : Paul pose le MERCREDI 9 septembre 2026.
+   La semaine du 7 est alors à UN clic, et elle porte les deux côtés : lundi à
+   mercredi dans l'année, jeudi et vendredi après. Le pendant inverse devient
+   ATTEIGNABLE PAR LE GESTE, et le dépôt refusé aussi.
+   ✔ CLIC « 🛠 Panneau prof »
+   ✔ CLIC « 🎓 Dates de l’année »
+   ✔ FRAPPE de 09/09/2026 dans « fin de l'année » → EDT_DATES : {"debutAnnee":null,"finAnnee":"2026-09-09"}
+   ✔ le dernier jour est posé au mercredi 9 septembre
+   ✔ CLIC « 📅 Emploi du temps »
+   ✔ CLIC « 📅 Ouvrir l’emploi du temps »
+   ✔ CLIC « › »
+   écran : vendredi 4 septembre · il est 20:29
+   semaine du 14 septembre : {"cases":20,"off":3,"prevu":2,"joue":1,"apresLeDernierJour":3,"mots":["après ton dernier jour"]}
+   ✔ semaine du 7 septembre : 20 cases, dont 3 qui disent « après ton dernier jour » — et 2 séance(s) encore prévue(s) AVANT le 9
+   ▸ tests/14/a08-le-pendant-inverse-apres-le-dernier-jour.png
+
+④ LE DÉPÔT HORS ANNÉE EST REFUSÉ, ET LE REFUS EST NOMMÉ
+   on le prouve du côté de la FIN : avant la rentrée, tout est déjà passé et
+   c'est le refus du passé qui sort d'abord — mesuré, et c'est le bon ordre.
+   source : edtCaseClic("2026-09-09|10:07-11:02|3 FRANKLIN Aretha")
+   le site répond : Dépôt refusé : ce jour est après ton dernier jour du mercredi 9 septembre. | Compris
+   ✔ LE REFUS EST NOMMÉ : « ce jour est après ton dernier jour du mercredi 9 septembre. »
+   ▸ tests/14/a09-le-refus-du-depot-hors-annee.png
+
+⑥ AUDIT ADVERSE
+   { "debutApresFin": { "unJourDuMilieu": true, "leDebut": true }, "seulementLeDebut": { "avant": true, "loinApres": false }, "seulementLaFin": { "avant": false, "apres": true }, "datesEffacees": { "rienNEstBorne": true }, "bornesIncluses": { "leJourDeLaRentree": true, "leDernierJour": true, "laVeille": true, "leLendemain": true }, "valeursSales": { "vide": true, "nul": true } }
+   ⚠ APPEL DE FONCTION : DÉCLARÉ pour tout ce bloc — l'écran REFUSE une fin
+     antérieure au début (c'est le refus de ⑥, il est légitime), donc ces cas
+     ne sont pas atteignables au clic. Ils sont forcés ici, et déclarés comme tels.
+   ✔ les bornes sont incluses des deux côtés
+   ✔ dates effacées après coup : plus rien n'est borné
+   ✔ avec la seule rentrée posée, seul l'avant est borné
+   ▸ tests/14/a10-audit-adverse.png
+
+⑦ LES VERDICTS
+   ✔ heures perdues : 21 heure(s) cochables avant, 20 après — les heures d'avant la rentrée ne coûtent plus rien
+   ✔ destinations : 957 entrées avant, 0 après — les créneaux hors année ne sont plus proposés
+   photo : 18 cases (3 prévues) le 2026-08-31 → 18 cases (1 prévues) le 2026-08-31
+   ✔ la photo garde le même nombre de cases : rien ne disparaît de l'archive
+   ✔ la photo ne photographie plus que des séances de l'année (3 → 1 prévues)
+
+TOUT PASSE — banc ⑭

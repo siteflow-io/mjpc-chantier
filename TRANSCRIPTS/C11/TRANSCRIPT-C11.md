@@ -5001,3 +5001,25 @@ Borner à un seul endroit ferait dire à ta grille « avant ta rentrée » penda
 **Tests manuels : aucun.**
 
 MEMO
+
+---
+
+## TOUR 99 — Paul
+
+Texte mot pour mot :
+
+> ok écris et fais attention à ne pas rédiger le mandat avec des erreurs, comme auparavant.
+
+---
+
+## TOUR 99 — Claude (conscience n°11)
+
+**22 chiffres remesurés avant d'écrire.** Trouvé au passage : `edtSectionPanneau` **4 et non 2**
+(périmé depuis ⑪a). **Deux erreurs de l'audit précédent corrigées** : la photo passe par
+`edtProjeter`, et `edtHeuresDeLEvenement` sert aux heures perdues. Relecture du mandat contre
+lui-même : 22 chiffres présents, 6 paires de sections cohérentes, 5 interdictions.
+Registre : `n°11 · 81`. **Mandat soumis, non déposé.**
+
+Réponse mot pour mot : ce que j'ai remesuré et corrigé, puis le mandat entier.
+
+MEMO

@@ -19,7 +19,7 @@ la rentrée, et tout le reste était décalé d'autant. Ce n'est plus le cas.
 | | taille | md5 | version |
 |---|---|---|---|
 | **base** (sas = production, bit à bit) | 1 769 457 | `8837063de4466afb71622e89181ae44a` | 8.73.0-⑪ |
-| **candidat** (relu au sas après la poussée) | *voir « RELECTURE AU SAS » en fin de rapport* | | 8.73.0-⑭a |
+| **candidat** (relu au sas après la poussée) | **1 773 173** | **`1ab4d4a08602abd622572081a42a4b78`** | **8.73.0-⑭a** |
 
 ## CE QUI A ÉTÉ ÉCRIT
 
@@ -168,3 +168,10 @@ Joués sur le candidat, **tous verts** :
 `edtCreneauxLibresLe`) · §①.4 le refus nommé au dépôt (`edtRefusDepot`) · §①.5 la photo du
 prévu, mesurée · le pendant inverse · l'audit adverse · `banc-tout` en entier (36) ·
 les captures de ⑭.
+
+## RELECTURE AU SAS, APRÈS LA POUSSÉE
+
+`PONT/EDT/index.html` relu depuis le sas après le push, et non depuis ma machine :
+**1 773 173 octets**, md5 **`1ab4d4a08602abd622572081a42a4b78`**, version **8.73.0-⑭a**.
+Identique bit à bit au fichier audité ici. Base + 3 716 octets.
+**La production n'a pas été touchée : la promotion est le geste de Paul.**

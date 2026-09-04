@@ -122,7 +122,12 @@ const BANCS = [
      'identique, octet pour octet', 'la grille est exactement celle d\'avant',
      'ni le vide ni la panne n\'ont été mis en cache']],
   ['banc-verrou-bascule-09.mjs', '⑨ · le verrou, la bascule, la photo retentée',
-    ['TOUT PASSE — 5 repères', '"ecrituresDecisions":1', '"jamaisReplacee":true']]
+    ['TOUT PASSE — 5 repères', '"ecrituresDecisions":1', '"jamaisReplacee":true']],
+  /* [2ter ⑭a] la borne des dates de l'année : la case reste, le prévu s'arrête,
+     et le passé de Paul (heure jouée, heure banalisée) n'est jamais réécrit. */
+  ['banc-borne-annee-14a.mjs', '⑭a · la borne des dates de l\'année',
+    ['TOUT PASSE — banc ⑭a', 'AUCUNE CASE NE DISPARAÎT',
+     'EST TOUJOURS JOUÉE', 'le mot est à l\'écran']]
 ];
 
 /* un banc à la fois, avec sa limite de temps ; et on ne laisse jamais un

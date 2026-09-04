@@ -1,0 +1,91 @@
+① AVANT — AUCUNE DATE D'ANNÉE DÉCLARÉE
+   version : 8.73.0-⑭a
+   EDT_DATES au départ : {"debutAnnee":null,"finAnnee":null}
+   ✔ CLIC « 🛠 Panneau prof »
+   ✔ CLIC « 📅 Emploi du temps »
+   ✔ CLIC « 📅 Ouvrir l’emploi du temps »
+   ✔ CLIC « ‹ »
+   écran : vendredi 4 septembre · il est 06:17
+   SEMAINE DU 24/08 · {"casesCliquables":20,"casesMois":0,"pastillesMois":0,"moisAutre":0,"moisPrevu":0,"prevu":2,"jouee":0,"off":13,"horsMjpc":0,"nonImportee":4,"sansSeance":0,"rienDePret":1,"evenementsAnnee":0,"pastillesAnnee":0,"jourAnnee":0,"bandeaux":["d'été (avant la rentrée)","13h45 photo 14h30-18h pré-rentrée","8
+   ▸ tests/14a/a01-avant-semaine-du-24-aout.png
+   ✔ CLIC « › »
+   SEMAINE DU 31/08 · {"casesCliquables":18,"casesMois":0,"pastillesMois":0,"moisAutre":0,"moisPrevu":0,"prevu":3,"jouee":0,"off":0,"horsMjpc":2,"nonImportee":7,"sansSeance":0,"rienDePret":6,"evenementsAnnee":0,"pastillesAnnee":0,"jourAnnee":0,"bandeaux":["préparation rentrée","Rentrée scolaire des élèves de 6e","Rentrée
+   ▸ tests/14a/a02-avant-semaine-du-31-aout.png
+   ✔ CLIC « › »
+   SEMAINE DU 07/09 · {"casesCliquables":20,"casesMois":0,"pastillesMois":0,"moisAutre":0,"moisPrevu":0,"prevu":4,"jouee":1,"off":0,"horsMjpc":3,"nonImportee":9,"sansSeance":0,"rienDePret":3,"evenementsAnnee":0,"pastillesAnnee":0,"jourAnnee":0,"bandeaux":["13h Photo des classes","16h Célébration de rentrée 17h Equipes éd
+   ✔ CLIC « Mois »
+   VUE MOIS · {"casesCliquables":30,"casesMois":30,"pastillesMois":114,"moisAutre":92,"moisPrevu":21,"prevu":0,"jouee":0,"off":0,"horsMjpc":0,"nonImportee":0,"sansSeance":0,"rienDePret":0,"evenementsAnnee":0,"pastillesAnnee":0,"jourAnnee":0,"bandeaux":[],"motsOff":[]}
+   ▸ tests/14a/a03-avant-vue-mois.png
+   ✔ CLIC « Année »
+   VUE ANNÉE · événements 104 · pastilles 283 · jours 372
+   ▸ tests/14a/a04-avant-vue-annee.png
+
+② LE PASSÉ DE PAUL, POSÉ AVANT LA RENTRÉE (1er septembre)
+   ✔ CLIC « Semaine »
+   ✔ CLIC « Aujourd’hui »
+   cases de 3e avant la rentrée : [{"cle":"2026-08-31|08:57-09:52|3 FRANKLIN Aretha","iso":"2026-08-31","creneau":"08:57-09:52","classe":"3E Charles de Gaulle","nature":"prevu"},{"cle":"2026-09-01|15:07-16:02|3 FRANKLIN Aretha","iso":"2026-09-01","creneau":"15:07-16:02","classe":"3E Charles de Gaulle","nature":"prevu"},{"cle":"2026-09-02|10:07-11:02|3 FRANKLIN Aretha","iso":"2026-09-02","creneau":"10:07-11:02","classe":"3E Charles de Gaulle","nature":"rienDePret"}]
+   HEURE JOUÉE posée au hub : 2026-08-31_08h57-09h52_3E_Charles_de_Gaulle → 2 activités
+   HEURE BANALISÉE posée au hub : 2026-09-01_15h07-16h02_3E_Charles_de_Gaulle → sortie scolaire
+   ✔ CLIC « 🛠 Panneau prof »
+   ✔ CLIC « 📅 Emploi du temps »
+   ✔ CLIC « 📅 Ouvrir l’emploi du temps »
+   SEMAINE DU 31/08 avec le passé · jouée 1 · banalisée 1 · prévu 1 · cases 18
+   ✔ l'heure jouée du 2026-08-31 est bien jouée avant la borne
+   ✔ l'heure banalisée du 2026-09-01 est bien banalisée avant la borne
+   ▸ tests/14a/a05-avant-le-passe-est-la.png
+
+③ PAUL DÉCLARE SA RENTRÉE AU 3 SEPTEMBRE
+   ✔ CLIC « ✕ Fermer l’emploi du temps »
+   ✔ CLIC « 🎓 Dates de l’année »
+   ✔ FRAPPE de 03/09/2026 dans « début de l'année » → EDT_DATES : {"debutAnnee":"2026-09-03","finAnnee":null}
+   ✔ le champ porte le 3 septembre
+   ▸ tests/14a/a06-la-rentree-declaree-au-3-septembre.png
+
+④ APRÈS — LES TROIS VUES, COMPTÉES
+   ✔ CLIC « 📅 Emploi du temps »
+   ✔ CLIC « 📅 Ouvrir l’emploi du temps »
+   ✔ CLIC « ‹ »
+   écran : vendredi 4 septembre · il est 06:17
+   SEMAINE DU 24/08 · {"casesCliquables":20,"casesMois":0,"pastillesMois":0,"moisAutre":0,"moisPrevu":0,"prevu":0,"jouee":0,"off":16,"horsMjpc":0,"nonImportee":4,"sansSeance":0,"rienDePret":0,"evenementsAnnee":0,"pastillesAnnee":0,"jourAnnee":0,"bandeaux":["d'été (avant la rentrée)","13h45 photo 14h30-18h pré-rentrée","8
+   ▸ tests/14a/a07-apres-semaine-du-24-aout.png
+   ✔ CLIC « › »
+   SEMAINE DU 31/08 · {"casesCliquables":18,"casesMois":0,"pastillesMois":0,"moisAutre":0,"moisPrevu":0,"prevu":1,"jouee":1,"off":4,"horsMjpc":2,"nonImportee":7,"sansSeance":1,"rienDePret":2,"evenementsAnnee":0,"pastillesAnnee":0,"jourAnnee":0,"bandeaux":["préparation rentrée","Rentrée scolaire des élèves de 6e","Rentrée
+   ▸ tests/14a/a08-apres-semaine-du-31-aout.png
+   ✔ CLIC « › »
+   SEMAINE DU 07/09 · {"casesCliquables":20,"casesMois":0,"pastillesMois":0,"moisAutre":0,"moisPrevu":0,"prevu":4,"jouee":1,"off":0,"horsMjpc":3,"nonImportee":9,"sansSeance":0,"rienDePret":3,"evenementsAnnee":0,"pastillesAnnee":0,"jourAnnee":0,"bandeaux":["13h Photo des classes","16h Célébration de rentrée 17h Equipes éd
+   ▸ tests/14a/a09-apres-semaine-du-07-septembre.png
+   ✔ CLIC « Mois »
+   VUE MOIS · {"casesCliquables":30,"casesMois":30,"pastillesMois":114,"moisAutre":90,"moisPrevu":21,"prevu":0,"jouee":0,"off":0,"horsMjpc":0,"nonImportee":0,"sansSeance":0,"rienDePret":0,"evenementsAnnee":0,"pastillesAnnee":0,"jourAnnee":0,"bandeaux":[],"motsOff":[]}
+   ▸ tests/14a/a10-apres-vue-mois.png
+   ✔ CLIC « Année »
+   VUE ANNÉE · événements 104 · pastilles 276 · jours 372
+   ▸ tests/14a/a11-apres-vue-annee.png
+
+⑤ LES VERDICTS
+   ✔ semaine du 24/08 : 20 cases avant, 20 après — AUCUNE CASE NE DISPARAÎT
+   ✔ semaine du 31/08 : 18 cases avant, 18 après — AUCUNE CASE NE DISPARAÎT
+   ✔ semaine du 07/09 : 20 cases avant, 20 après — AUCUNE CASE NE DISPARAÎT
+   ✔ vue mois : 30 cases avant, 30 après — AUCUNE CASE NE DISPARAÎT
+   ✔ vue année : 372 jours dessinés, inchangé
+   ✔ vue année : 104 événements, inchangé — le calendrier n'est pas touché
+   ✔ semaine du 31/08 : le prévu tombe de 3 à 1
+   ✔ semaine du 24/08 : plus aucune séance prévue
+   ✔ semaine du 07/09 : le prévu est intact (4) — après la rentrée, rien ne bouge
+   ✔ le mot est à l'écran, 4 fois : « avant ta rentrée »
+   ✔ L'HEURE JOUÉE DU 1er SEPTEMBRE EST TOUJOURS JOUÉE (1) — le passé n'est pas réécrit
+   ✔ L'HEURE BANALISÉE DU 2 SEPTEMBRE EST INTACTE (1)
+   ✔ semaine du 31/08 : 4 étiquettes de calendrier, inchangé — ["préparation rentrée","Rentrée scolaire des élèves de 6e","Rentrée scolaire des élèves de 5e, 4 et 3e","matin, temps de cohésion"]
+
+⑥ L'INFOBULLE DE LA NATURE NOUVELLE
+   ✔ CLIC « Semaine »
+   ✔ CLIC « ‹ »
+   ✔ CLIC « ‹ »
+   ✔ infobulle présente
+   « Ce jour est avant ta rentrée du jeudi 3 septembre. Le site n’y pose aucune séance et ne t’y compte aucune heure. Ce que ton établissement a mis ce jour-là reste affiché, et une heure que tu as vraiment faite reste jouée. Pour déplacer cette limite : le panneau du prof, les deux dates de l’année. »
+   ▸ tests/14a/a12-infobulle-de-la-case-hors-annee.png
+
+⑦ LE REPLI — SANS DATE DÉCLARÉE, RIEN NE CHANGE
+   (mesuré au ① : la borne n'a rien fait tant que Paul n'avait rien posé)
+   ✔ avant toute déclaration, la semaine du 31/08 portait 3 séance(s) prévue(s) : la borne ne s'était pas déclenchée
+
+TOUT PASSE — banc ⑭a

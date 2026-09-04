@@ -2906,7 +2906,7 @@ function mjpcEcrireRest(url,options,cb){
    (les 3 gestes, le geste conservatoire par app, ce qui ne peut pas arriver).
    RESTAURER LA VERSION PRÉCÉDENTE : docs/MJPC6-restauration.md (convention BUG).
    ═══════════════════════════════════════════════════════════════════════════ */
-var APP_VERSION="8.73.0-⑪";
+var APP_VERSION="8.73.0-⑭a";
 var APP_VERSION_DATE="2026-08-27";
 // ── 11. Coffre : dérivation, chiffrement, empreinte (v1.3.0) ──
 // (Le canon porte deux sections « 8 » — dette de numérotation connue, non corrigée
@@ -18792,6 +18792,22 @@ function edtFinAnnee(){
 function edtDebutAnnee(){
   return EDT_DATES.debutAnnee||(String(EDT_ANNEE).split('-')[0]+'-08-01');
 }
+/* [2ter 14a] LA BORNE DE L'ANNEE - UN SEUL ENDROIT DECIDE.
+   « je dois pouvoir déclarer mon début d’année tel jour et puis le reste se cale ».
+   Cette date est-elle dans l’année scolaire de Paul ? BORNES INCLUSES.
+   ELLE LIT LES DATES BRUTES, JAMAIS `edtDebutAnnee()` NI `edtFinAnnee()` : ces
+   deux-là INVENTENT une date quand Paul n’a rien posé (…-08-01 et …-07-31), et
+   borner sur une date inventée bornerait un site où rien n’est déclaré.
+   LES DEUX CÔTÉS SONT INDÉPENDANTS : Paul peut poser sa rentrée sans poser sa fin
+   d’année - on ne borne que du côté où il a effectivement posé une date.
+   Rend null quand le jour est dans l’année, ou quand rien n’est déclaré. */
+function edtHorsAnnee(iso){
+  if(!iso)return null;
+  var edtDeb=EDT_DATES&&EDT_DATES.debutAnnee, edtFin=EDT_DATES&&EDT_DATES.finAnnee;
+  if(edtDeb&&String(iso)<edtDeb)return {cote:'avant',borne:edtDeb,libelle:'avant ta rentr\u00e9e'};
+  if(edtFin&&String(iso)>edtFin)return {cote:'apres',borne:edtFin,libelle:'apr\u00e8s ton dernier jour'};
+  return null;
+}
 /* [⑥] LES TROIS REFUS, nommés et chiffrés. */
 function edtValiderDatesAnnee(debut,fin){
   var edtF=[];
@@ -19770,6 +19786,20 @@ function edtProjeter(isoDebut,nbJours){
         cel.reportees=(trouvee.activites||[]).filter(function(a){return a&&a.reel===0;}).length;
         cel.clos=!!trouvee.clos; cellules[cle]=cel; continue;
       }
+      /* [2ter 14a] LA BORNE SE POSE ICI, ET PAS PLUS HAUT.
+         Elle remplace LE PREVU, jamais le reel ni une decision de Paul :
+         - le reel vient d’être traité juste au-dessus (`jouee` a déjà coupé) ;
+         - une heure banalisée ou déplacée a coupé encore avant (`sansSeance`) ;
+         - une heure AJOUTÉE à la main, ÉPINGLÉE, ou VENUE d’un déplacement est
+           elle aussi une décision de Paul : on ne la borne pas.
+         Posée en tête avec `horsTemps`/`horsMjpc`/`nonImportee`, elle effacerait
+         les heures que Paul a réellement faites avant sa rentrée.
+         ET ELLE NE CONSOMME PAS LA FILE : les séances qui attendent ne sont plus
+         brûlées sur des jours d’avant la rentrée - c’est tout le point. */
+      var edtDecidee=!!(cel.ajoutee||(dec&&(dec.epingle||dec.ajoutee||dec.venantDe)));
+      var edtHors=edtDecidee?null:edtHorsAnnee(iso);
+      if(edtHors){ cel.nature='horsAnnee'; cel.libelle=edtHors.libelle; cel.borne=edtHors.borne;
+                   cellules[cle]=cel; continue; }
       if(!f||!f.seances.length){ cel.nature='rienDePret'; cellules[cle]=cel; continue; }
       var s=f.seances[f.i];
       if(!s){ cel.nature='rienDePret'; cellules[cle]=cel; continue; }
@@ -19898,6 +19928,15 @@ function edtCelluleCorps(c){
   if(c.nature==='horsMjpc')return '<div class="edt-b edt-b-hors" title="hors français, jamais compté">'
     +escapeHtml(c.classe)+'<i>hors MJPC</i></div>';
   if(c.nature==='horsTemps')return '<div class="edt-b edt-b-off">'+escapeHtml(c.libelle||'')+'</div>';
+  /* [2ter 14a] LA NATURE NOUVELLE - même patron que `horsTemps`, et SON INFOBULLE.
+     Elle dit ce que la case est, et ce que ça coûte : rien. */
+  if(c.nature==='horsAnnee')return '<div class="edt-b edt-b-off" title="'
+    +escapeHtml('Ce jour est '+(c.libelle||'')+(c.borne?(' du '+edtJourEnClair(c.borne)):'')
+      +'. Le site n\u2019y pose aucune s\u00e9ance et ne t\u2019y compte aucune heure. '
+      +'Ce que ton \u00e9tablissement a mis ce jour-l\u00e0 reste affich\u00e9, '
+      +'et une heure que tu as vraiment faite reste jou\u00e9e. '
+      +'Pour d\u00e9placer cette limite : le panneau du prof, les deux dates de l\u2019ann\u00e9e.')
+    +'">'+escapeHtml(c.libelle||'')+'</div>';
   if(c.nature==='nonImportee')return '<div class="edt-b edt-b-gris"><b>'+escapeHtml(c.classe)+'</b><i>classe non encore importée</i></div>';
   if(c.nature==='deplacee'){
     var edtP=String(c.deplaceeVers||'').split('|');
@@ -20840,7 +20879,9 @@ function edtPeindreMois(){
                 var cl=x.nature==='jouee'?'edt-m-joue':(x.nature==='sansSeance'?'edt-m-sans':(x.nature==='prevu'?'edt-m-prevu':'edt-m-autre'));
                 if(x.essai)cl+=' edt-m-essai';   /* [2ter ⑪b] la même couleur, dans le mois */
                 var ks=JSON.stringify(x.iso+'|'+x.creneau+'|'+(x.classe||'')).replace(/"/g,'&quot;');
-                return '<span class="edt-m '+cl+'" title="'+escapeHtml(x.creneau+' '+(x.classeMjpc||x.classe))+'"'
+                /* [2ter 14a] dans le mois aussi, la case hors annee DIT ce qu'elle est */
+                return '<span class="edt-m '+cl+'" title="'+escapeHtml(x.creneau+' '+(x.classeMjpc||x.classe)
+                  +((x.nature==='horsAnnee')?(' \u2014 '+(x.libelle||'')+' : aucune s\u00e9ance, aucune heure compt\u00e9e'):''))+'"'
                   +' onclick="edtCaseClic('+ks+')" onpointerdown="edtGlisserDebut(event,'+ks+')">'
                   +escapeHtml((x.classeMjpc||x.classe).slice(0,14))+'</span>';
               }).join(''))
@@ -20933,13 +20974,22 @@ function edtPeindreAnnee(){
         var edtNoms={};
         edtCasesDuJour(edtIso).forEach(function(c){ if(c&&c.mjpc!==false&&c.classeMjpc)edtNoms[c.classeMjpc]=true; });
         var edtL=Object.keys(edtNoms).slice(0,4);
+        /* [2ter 14a] LA BORNE DANS LA VUE ANNEE : hors annee, aucune pastille de
+           PREVU - mais la case du jour reste, avec ses evenements. Une pastille qui
+           porte une decision de Paul ou une heure vraiment jouee reste, elle : c'est
+           la meme regle qu'a la semaine, le passe ne se reecrit pas. */
+        var edtHorsA=edtHorsAnnee(edtIso);
         if(edtL.length){
-          h+='<span class="edt-an-pas">'+edtL.map(function(n){
-            var v=null;
+          var edtPas=edtL.map(function(n){
+            var v=null,edtTr=null;
             edtCasesDuJour(edtIso).forEach(function(c){ if(c&&c.classeMjpc===n&&!v)v=edtDecisionPour(n,edtIso,c.creneau); });
-            var edtE=(v&&v.sansSeance)?'ps':((v&&(v.jouee||v.epingle))?'pj':'pp');
+            if(edtHorsA&&!v)edtCasesDuJour(edtIso).forEach(function(c){
+              if(c&&c.classeMjpc===n&&!edtTr)edtTr=edtChercherTrace(n,edtIso,c.creneau); });
+            if(edtHorsA&&!v&&!edtTr)return '';
+            var edtE=(v&&v.sansSeance)?'ps':((v&&(v.jouee||v.epingle))?'pj':(edtTr?'pj':'pp'));
             return '<i class="'+edtE+'" title="'+escapeHtml(n)+'"></i>';
-          }).join('')+'</span>';
+          }).join('');
+          if(edtPas)h+='<span class="edt-an-pas">'+edtPas+'</span>';
         }
       }
       h+='</span></div>';

@@ -5044,3 +5044,43 @@ Registre : `n°11 · 82`.
 Réponse mot pour mot : ce que porte l'en-tête, puis le mandat entier avec le jeton.
 
 MEMO
+
+---
+
+## TOUR 101 — Paul
+
+Texte mot pour mot :
+
+> mets le mandat sur github mais sans le jeton du coup
+
+---
+
+## TOUR 101 — Claude (conscience n°11)
+
+Déposé : `PONT/EDT/MANDAT-LOT-2ter-14.md`, commit `00824971`, **17 767 o**, vérifié bit à bit.
+Jeton **remplacé par une consigne**, pas retiré en silence. **Les 19 mandats du sas relus un
+par un : aucun ne porte de jeton.** Registre : `n°11 · 83`.
+
+Réponse mot pour mot :
+
+**Déposé et vérifié.**
+
+`PONT/EDT/MANDAT-LOT-2ter-14.md` — commit `00824971`, 17 767 octets. J'ai relu le fichier après la poussée : identique au local, au caractère près.
+
+**Je n'ai pas retiré le jeton en silence**, je l'ai remplacé par une consigne — parce qu'un exécutant neuf doit savoir quoi faire s'il ne l'a pas :
+
+> *Paul te le donne dans la conversation, une fois. Il ne figure pas ici : un jeton ne va jamais dans un fichier du dépôt. Si tu ne l'as pas reçu, demande-le en une ligne et attends — ne travaille pas sans, tu ne pourrais pas livrer, et deux exécutants s'y sont déjà cassé les dents.*
+
+C'est la leçon de ⑧-a et de ⑨ : deux fois, un exécutant a tout fait et n'a rien pu pousser.
+
+**Et j'ai vérifié plus large que ta demande** : j'ai téléchargé et relu **les dix-neuf mandats présents au sas**, un par un. **Aucun ne porte de jeton.** La règle a tenu sur tout le lot.
+
+**Le mandat existe donc en deux états, et les deux sont justes** : au sas, sans jeton, avec la consigne — c'est celle qui reste, celle que la conscience n°12 relira ; et dans notre conversation, avec le jeton en clair — c'est celle que tu colles à l'exécutant.
+
+**Le jeton ne vit que dans le fil.**
+
+**Tests manuels : aucun.**
+
+**Cahier vivant** — ⑭ en deux temps, puis ton promeus, puis le protocole de passation et de mort.
+
+MEMO

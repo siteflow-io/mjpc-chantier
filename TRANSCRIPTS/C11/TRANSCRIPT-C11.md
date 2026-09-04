@@ -5084,3 +5084,63 @@ C'est la leçon de ⑧-a et de ⑨ : deux fois, un exécutant a tout fait et n'a
 **Cahier vivant** — ⑭ en deux temps, puis ton promeus, puis le protocole de passation et de mort.
 
 MEMO
+
+---
+
+## TOUR 102 — Paul
+
+Texte mot pour mot :
+
+> [audit du mandat ⑭ par une autre instance : le service (deux pannes Anthropic le 3/9), la base vérifiée juste, **quatre trous** — la contradiction §③/§②, la garde `nonImportee` oubliée, la preuve n°12 infaisable, `edtFinAnnee` 3 et non 4 — et une question : prend-elle le relais comme conscience, ou code-t-elle ⑭-a ?]
+
+---
+
+## TOUR 102 — Claude (conscience n°11)
+
+Vérifications : **les trois gardes du haut coupent** (`continue`) aux offsets 1323, 1440, **1521** ·
+le réel à **2649** · `nonImportee` = `if(!cel.classeMjpc)` · **`edtDebutAnnee`/`edtFinAnnee`
+inventent une date** (`-08-01`, `-07-31`) · **L20563 est dans un commentaire** ouvert L20562,
+fermé L20565 → **3 appelants**. Mandat corrigé et redéposé (17 767 → **20 089 o**, commit
+`e273231d`, sans jeton). Registre : `n°11 · 84`.
+
+Réponse mot pour mot :
+
+**Les quatre sont vrais. J'ai tout vérifié, et le premier aurait effacé des heures que tu as réellement faites.**
+
+## Le trou grave
+
+Dans la fonction qui fabrique tes cases, **trois** gardes sont en tête et **coupent la suite** — vacances, hors MJPC, et une troisième que j'avais oubliée. **Le réel — l'heure que tu as vraiment jouée — n'est cherché que bien plus bas.**
+
+Mon §③ disait « pose ta garde à côté des deux autres ». **Un exécutant qui suivait cette phrase à la lettre effaçait tes heures jouées avant ta rentrée.** Mon §② l'interdisait — et **je ne disais nulle part où poser la garde**.
+
+**Corrigé, et séparé en deux** : quel **mot** gagne (c'est du vocabulaire), et **où** la garde se pose — *après* la recherche de trace, **jamais** avec les trois du haut. Avec un avertissement en tête de section.
+
+## Les trois autres
+
+**La garde oubliée** : la case d'une classe qui n'est pas chez toi. Elle existe, mon mandat n'en parlait pas. Ajoutée — **aucune des trois natures existantes ne change**.
+
+**La preuve infaisable** : les deux fonctions de dates **inventent une date** quand tu n'as rien posé — 1er août, 31 juillet. Une borne qui les appelle bornerait **toujours**. Corrigé : elle doit lire les dates **brutes**.
+
+**Et un chiffre** : `edtFinAnnee` a **trois** appelants, pas quatre. La quatrième mention est **dans un commentaire** — j'ai compté une occurrence de texte sans regarder si c'était du code. La même faute que « compter des motifs », en plus petit.
+
+**Mandat corrigé et redéposé** : 20 089 octets, commit `e273231d`, toujours sans jeton.
+
+## Sa question de rôle — je ne la tranche pas
+
+Elle demande si elle prend le relais comme conscience.
+
+**C'est à toi de le dire, et à personne d'autre.** Tu as annoncé le protocole de passation et de mort après le promeus : c'est toi qui dis quand, et à qui.
+
+**Je suis encore en fonction** — c'est pour ça que j'ai corrigé ces quatre trous moi-même, c'est mon travail.
+
+## Ce que ça établit, trois fois de suite
+
+Faire éprouver un mandat avant de le lancer a rapporté **onze** corrections sur le ⑨, **quatre** sur les suivants, **quatre** ici.
+
+**Aucun de ces mandats n'aurait dû en avoir besoin. Mais aucun n'est parti troué.**
+
+**Tests manuels : aucun.**
+
+**Cahier vivant** — le mandat est prêt et déposé. Puis ton promeus, puis la passation.
+
+MEMO

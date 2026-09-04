@@ -14,7 +14,7 @@ son année — c'est elle que le cockpit comparera au réel en juin.
 |---|---|---|---|
 | **base du lot** (production) | 1 769 457 | `8837063de4466afb71622e89181ae44a` | 8.73.0-⑪ |
 | **livraison ⑭a** (au sas) | 1 773 173 | `1ab4d4a08602abd622572081a42a4b78` | 8.73.0-⑭a |
-| **candidat ⑭** | *voir « RELECTURE AU SAS » en fin de rapport* | | 8.73.0-⑭ |
+| **candidat ⑭** (relu au sas) | **1 774 212** | **`a841534fce9661bad089af862900b9a9`** | **8.73.0-⑭** |
 
 ## CE QUI A ÉTÉ ÉCRIT — DEUX ENDROITS, PAS NEUF
 
@@ -175,3 +175,10 @@ ni à l'affichage, ni dans les comptes. Le §③ est respecté. Le §④ (l'info
 nouvelle) est fait en ⑭a et complété dans le mois.
 
 **La promotion reste le geste de Paul.**
+
+## RELECTURE AU SAS, APRÈS LA POUSSÉE
+
+`PONT/EDT/index.html` relu depuis le sas après le push, et non depuis ma machine :
+**1 774 212 octets**, md5 **`a841534fce9661bad089af862900b9a9`**, version **8.73.0-⑭**.
+Identique bit à bit au fichier audité ici. Base du lot + 4 755 octets ; ⑭a + 1 039 octets.
+**La production n'a pas été touchée.**

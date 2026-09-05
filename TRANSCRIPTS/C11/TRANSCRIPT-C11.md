@@ -5268,3 +5268,55 @@ Le `&v=87314` force le rechargement. Sans lui, tu risques de voir l'ancienne ver
 **Tests manuels : ceux du tour précédent, avec la bonne adresse.**
 
 MEMO
+
+---
+
+## TOUR 106 — Paul
+
+Texte mot pour mot :
+
+> [deux captures : semaine du 24-28 août et semaine du 31/8-4/9] j'ai ça.
+
+---
+
+## TOUR 106 — Claude (conscience n°11)
+
+Mesures au hub : **`/site/edt/grille` — 30 créneaux, ZÉRO `classeMjpc`** · `/site/classes`
+**null**, ses classes sont à **`/classes`** (3E Charles de Gaulle 29 élèves, 4E BANKSY 29,
+4E PYTHAGORE 28, 5e HERGÉ 31) · **les nomenclatures ne coïncident pas**. Registre : `n°11 · 87`.
+
+Réponse mot pour mot :
+
+**Le site fait exactement ce qu'on lui a demandé. Ce qui manque, c'est un geste que tu n'as pas encore fait.**
+
+## Ce que j'ai mesuré dans ton hub
+
+**Aucun de tes trente créneaux ne porte de classe appariée.** Zéro sur trente.
+
+Et c'est écrit en bas de tes deux captures : **« aucune classe appariée »**.
+
+Tes classes existent bien — 3E Charles de Gaulle avec 29 élèves, 4E BANKSY 29, 4E PYTHAGORE 28, 5e HERGÉ 31. **Mais elles ne sont reliées à rien.**
+
+**Parce que les deux nomenclatures ne se ressemblent pas** : ta grille d'établissement dit « 3 DYLAN Bob », « 3 FRANKLIN Aretha », « 4 HUGO », « 4 TURING ». Ton site connaît « 3E Charles de Gaulle », « 4E BANKSY ». **Personne ne peut deviner que l'une est l'autre — c'est toi qui le sais.**
+
+## Pourquoi tu ne vois pas la borne
+
+La case dit **« classe non encore importée »**, et cette réponse-là **passe avant** « avant ta rentrée ».
+
+**C'est l'ordre que j'ai fait poser** : le mot le plus précis gagne, et « je ne connais pas cette classe » est plus précis que « c'est avant ta rentrée ».
+
+**Mais je ne t'avais pas dit la conséquence** : tant qu'aucune classe n'est appariée, **la borne ne se voit nulle part**. Tu as promu un correctif dont tu ne peux pas voir l'effet.
+
+## Ce qu'il te reste à faire
+
+**Apparier tes classes** — dire au site que « 3 DYLAN Bob » est ta 3E Charles de Gaulle, que « 4 HUGO » est telle des tiennes. Le mécanisme existe depuis le lot ⑤, mais **je ne t'ai jamais vu le jouer**.
+
+C'est dans le panneau prof, section Emploi du temps.
+
+**Ensuite seulement** tes séances apparaîtront, et la borne avec elles.
+
+**Tests manuels** : apparie une seule classe pour commencer — la 3E Charles de Gaulle sur « 3 DYLAN Bob » ou « 3 FRANKLIN Aretha », celle qui est la bonne. Puis regarde la semaine du 31 août : ses cases devraient passer à **« avant ta rentrée »**, grisées.
+
+**Dis-moi ce que tu vois, et je mesure.**
+
+MEMO

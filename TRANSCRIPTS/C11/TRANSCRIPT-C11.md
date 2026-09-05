@@ -5207,3 +5207,24 @@ Et sur l'audit adverse : **« appel de fonction : déclaré »** — l'écran re
 **Cahier vivant** — ton promeus de ⑭, puis le protocole de passation et de mort.
 
 MEMO
+
+---
+
+## TOUR 104 — Paul
+
+Texte mot pour mot :
+
+> promeus
+
+---
+
+## TOUR 104 — Claude (conscience n°11)
+
+Promotion **`8a95be5ffbe7`**, vérifiée par le blob du commit : **1 774 212 o /
+`a841534fce9661bad089af862900b9a9`**, identique au candidat audité. Protocole joué : journal
+(`4244f5b2`), point de retour (`beb50c22`), index des fonctions (`9ba33f80`), registre.
+Registre : `n°11 · 86`.
+
+Réponse mot pour mot : le compte rendu, l'adresse avec `&v=`, et les tests geste par geste.
+
+MEMO

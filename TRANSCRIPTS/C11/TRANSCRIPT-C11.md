@@ -5228,3 +5228,43 @@ Registre : `n°11 · 86`.
 Réponse mot pour mot : le compte rendu, l'adresse avec `&v=`, et les tests geste par geste.
 
 MEMO
+
+---
+
+## TOUR 105 — Paul
+
+Texte mot pour mot :
+
+> ce n'est pas la bonne adresse. Il faut le niveua
+
+---
+
+## TOUR 105 — Claude (conscience n°11)
+
+Mesure : le site lit **un seul** paramètre d'URL, **`n`** ; `levelLabels` accepte
+**`3e`, `4e`, `5e`, `6e`**. La forme canonique est documentée dans `docs/` :
+`…/?n=<niveau>&v=<version>`.
+
+Réponse mot pour mot :
+
+**Tu as raison, mon adresse était incomplète. Je l'ai mesurée au lieu de la deviner.**
+
+Ton site lit **un seul** paramètre en plus de la version : **`n`**, le niveau. Les quatre valeurs acceptées sont **`3e`, `4e`, `5e`, `6e`**. Et la forme canonique est écrite dans ta doc : `…/?n=<niveau>&v=<version>`.
+
+**Tes adresses, une par niveau :**
+
+**3e** — https://siteflow-io.github.io/monsieurjaipascompris/?n=3e&v=87314
+
+**4e** — https://siteflow-io.github.io/monsieurjaipascompris/?n=4e&v=87314
+
+**5e** — https://siteflow-io.github.io/monsieurjaipascompris/?n=5e&v=87314
+
+**6e** — https://siteflow-io.github.io/monsieurjaipascompris/?n=6e&v=87314
+
+**Pour toi, les deux qui comptent aujourd'hui : `n=3e` et `n=4e`** — ce sont tes classes de cette année.
+
+Le `&v=87314` force le rechargement. Sans lui, tu risques de voir l'ancienne version.
+
+**Tests manuels : ceux du tour précédent, avec la bonne adresse.**
+
+MEMO

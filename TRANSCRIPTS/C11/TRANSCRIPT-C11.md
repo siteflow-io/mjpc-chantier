@@ -5144,3 +5144,66 @@ Faire éprouver un mandat avant de le lancer a rapporté **onze** corrections su
 **Cahier vivant** — le mandat est prêt et déposé. Puis ton promeus, puis la passation.
 
 MEMO
+
+---
+
+## TOUR 103 — Paul
+
+Texte mot pour mot :
+
+> livré
+
+---
+
+## TOUR 103 — Claude (conscience n°11)
+
+Audit joué : **⑭-a (04/09 06h18) et ⑭ (04/09 20h32) livrées, ⑭-a non auditée** — écart complet
+mesuré · candidat 1 774 212 o / `a841534f…` · **`horsAnnee` à l'offset 3852, APRÈS le réel
+(2649)** · `edtHorsAnnee` lit les **dates brutes** · **4 appelants au lieu de 6** ·
+non-régression 230/230 · **capture `a08` regardée**. Registre : `n°11 · 85`.
+
+Réponse mot pour mot :
+
+**Verdict : ça va. Le point qui aurait effacé tes heures est traité juste — et il a fait mieux que mon mandat sur un point.**
+
+## Ce que j'ai vérifié en premier
+
+Les trois gardes du haut sont **inchangées**. Le réel est cherché à l'offset 2649. **Et la nouvelle borne est à 3852 — après.**
+
+**Tes heures jouées avant ta rentrée sont protégées.** La correction est suivie à la lettre.
+
+Et la fonction qu'il a écrite lit **`EDT_DATES.debutAnnee` et `finAnnee` brutes** — elle ne borne que du côté où tu as posé une date. Le piège des dates inventées est évité.
+
+## Mieux que ce que je demandais
+
+Je demandais de borner **deux** listes de destinations. Il a mesuré qu'elles passent **toutes les deux par le refus de dépôt** — donc **un seul endroit borne les deux**. Quatre points d'appel au lieu de six.
+
+## Ses chiffres
+
+Heures perdues : **13 fiches / 21 heures → 12 / 20**. La fiche de l'événement d'avant ta rentrée a disparu, et l'heure qu'il te coûtait avec.
+
+Liste des destinations depuis une case du 28 août : **957 créneaux → 0**.
+
+Photo du prévu : **18 cases avant et après — rien ne disparaît** — mais 3 séances prévues → 1, et 6 cases enregistrées « hors année ».
+
+Refus du dépôt, par un vrai glisser-déposer : **« Dépôt refusé : ce jour est après ton dernier jour du mercredi 9 septembre. »**
+
+## Ce que j'ai vu
+
+J'ai ouvert la capture du pendant inverse. Semaine du 7 septembre, dernier jour posé au 9 : **lundi, mardi et mercredi portent tes séances** — « 3 activités · 1 reportée », « L'Albatros · heure 1/3 », « heure 2/3 » — **et jeudi et vendredi portent des cases grisées disant « après ton dernier jour »**, sans séance.
+
+**Les cases restent. C'est exactement ce que tu avais tranché.**
+
+Et il a réussi cette preuve **sans rien forcer** : je l'autorisais à truquer la date dans son banc, il a posé le dernier jour au 9 septembre — à un clic — **et la semaine porte les deux côtés à la fois**.
+
+## Ses deux honnêtetés
+
+Il a **posé une donnée** pour rendre une preuve possible — ton calendrier ne porte aucun événement de classe avant la rentrée — et il le déclare.
+
+Et sur l'audit adverse : **« appel de fonction : déclaré »** — l'écran refuse une fin antérieure au début, donc ces cas ne sont pas atteignables au clic et **ne sont pas prouvés au sens du mandat**. Il applique la règle que tu as fait graver.
+
+**Tests manuels : aucun.** Rien en production — le candidat est au sas.
+
+**Cahier vivant** — ton promeus de ⑭, puis le protocole de passation et de mort.
+
+MEMO

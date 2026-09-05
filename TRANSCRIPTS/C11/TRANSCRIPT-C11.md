@@ -5320,3 +5320,61 @@ C'est dans le panneau prof, section Emploi du temps.
 **Dis-moi ce que tu vois, et je mesure.**
 
 MEMO
+
+---
+
+## TOUR 107 — Paul
+
+Texte mot pour mot :
+
+> si je fais ça, quelle conséquence sur les données, le profil longitudinal etc?
+
+---
+
+## TOUR 107 — Claude (conscience n°11)
+
+Mesures : `edtApparierNom` **pose un seul champ** (`classeMjpc`) et **écrit une seule fois**,
+avec photo de l'avant · **`edtProjeter` : ZÉRO écriture** — le prévu est calculé, jamais
+stocké · classes et élèves à **`/classes`**, chapitres à `/site/<niveau>/chapitres`, **hors de
+`/site/edt/`** · **`/site/3e/traces` : null**, le chapitre 3e porte **9 séances, 0 trace**.
+Registre : `n°11 · 88`.
+
+Réponse mot pour mot :
+
+**J'ai mesuré, et la réponse est courte : ce geste écrit un seul champ, dans un seul endroit, et il est archivé.**
+
+## Ce que l'appariement écrit
+
+Il pose **un seul champ** sur les cases de ta grille : le nom de ta classe à côté du nom de l'établissement. **Une seule écriture**, dans **`/site/edt/grille`**, et **l'état d'avant part à la corbeille** avant qu'elle parte.
+
+Rien d'autre n'est touché.
+
+## Tes séances ne seront pas créées — elles seront calculées
+
+C'est le point qui répond vraiment à ta question. **Le prévu n'est stocké nulle part.** J'ai vérifié : la fonction qui le fabrique contient **zéro écriture**. Le code le dit lui-même : *« calculé à chaque affichage, écrit nulle part »*.
+
+Donc quand tes séances apparaîtront, **rien ne se sera ajouté à tes données**. Elles se déduisent de ta grille et de tes chapitres, à chaque fois.
+
+## Ton profil longitudinal n'est pas dans l'emploi du temps
+
+Tes classes et tes élèves vivent à `/classes` — 3E Charles de Gaulle et ses 29 élèves, 4E BANKSY, 4E PYTHAGORE, 5e HERGÉ. Tes chapitres vivent par niveau.
+
+**L'emploi du temps n'écrit que sous `/site/edt/`** — c'est la troisième question de la garde, verte à chaque livraison du lot. **Il ne peut pas les atteindre.**
+
+## Et aujourd'hui, il n'y a rien à écraser
+
+J'ai regardé : **aucune trace au hub. Zéro.** Ton chapitre de 3e porte neuf séances, aucune n'a été jouée.
+
+**Donc aucun passé à protéger pour l'instant** — et quand il y en aura un, la règle du dernier lot le protège : le réel et tes décisions ne sont jamais bornés.
+
+## Ce que je ne peux pas te garantir, et je te le dis
+
+**Je n'ai jamais vu ce geste joué.** Ni par toi, ni par un banc **au clic**. J'ai lu la fonction, son archivage a été corrigé et prouvé en ⑤c-ter — **mais l'appariement lui-même n'a jamais figuré dans une preuve par le geste.**
+
+**C'est un trou du lot que personne n'avait relevé.**
+
+Ce que ça veut dire concrètement : le risque n'est pas dans tes données — il est que **le geste ne marche pas comme prévu à l'écran**. Si c'est le cas, l'état d'avant est à la corbeille.
+
+**Tests manuels : apparie une seule classe, et dis-moi ce que tu vois.** Je mesurerai le hub après.
+
+MEMO

@@ -5528,3 +5528,60 @@ C'est voulu — *« une classe reste la même quand l'emploi du temps change »*
 **Tests manuels : une seule ligne, regarde, et si ça ne va pas — rechoisis « non encore importée ».**
 
 MEMO
+
+---
+
+## TOUR 111 — Paul
+
+Texte mot pour mot :
+
+> c'est bon j'ai apparié banksy et pythagore
+
+---
+
+## TOUR 111 — Claude (conscience n°11)
+
+Mesures au hub : **30 créneaux, 12 appariés** — `4 HUGO → 4E BANKSY` (6), `4 TURING →
+4E PYTHAGORE` (6) · restent `3 DYLAN Bob` et `3 FRANKLIN Aretha` · **les deux archives trouvées
+au 06/09** (la corbeille range par date **UTC**), contenu vérifié : 0 apparié puis 6 apparié.
+Registre : `n°11 · 92`.
+
+Réponse mot pour mot :
+
+**Mesuré dans ton hub : ça a marché, et exactement comme annoncé.**
+
+**Douze créneaux sur trente sont appariés :**
+
+> **4 HUGO → 4E BANKSY** : 6 créneaux
+> **4 TURING → 4E PYTHAGORE** : 6 créneaux
+
+Six par nom — **semaine A et semaine B ensemble**, comme je te l'avais dit. Restent « 3 DYLAN Bob » et « 3 FRANKLIN Aretha » si tu veux les faire.
+
+## Ton filet a fonctionné, et j'ai regardé dedans
+
+Les deux archives sont là. Je les ai d'abord cherchées au 5 septembre — **rien** — puis trouvées au 6 : **la corbeille range par date UTC**, donc à 21h en France une archive part au lendemain. Bon à savoir pour toi, sans conséquence.
+
+Et leur contenu s'enchaîne exactement :
+
+> `edt-grille_091125` — 30 créneaux, **0 apparié** : l'état d'avant ton premier geste
+> `edt-grille_091127`, deux secondes plus tard — 30 créneaux, **6 appariés, 4 HUGO → 4E BANKSY** : l'état entre les deux
+
+**Elles disent ce qu'elles contiennent, pas seulement qu'elles existent.**
+
+## Ce que ça vaut
+
+Je te disais il y a trois tours que **l'appariement n'avait jamais été prouvé par le geste** — ni par moi, ni par un banc, ni par une capture.
+
+**C'est fait maintenant. Par toi, sur ton site, sur des données martyres** — exactement l'usage que tu avais prévu le 25 août.
+
+**Le trou est fermé par l'usage, pas par un banc.**
+
+## La question de départ reste ouverte
+
+**Est-ce que la borne des dates se voit, maintenant ?** Sur les cases de 4 HUGO et 4 TURING avant le 3 septembre, tu devrais lire **« avant ta rentrée »**, grisé — et non plus « classe non encore importée ».
+
+**Je ne peux pas le voir. Dis-moi.**
+
+**Tests manuels : ouvre la semaine du 31 août, et regarde les cases de 4 HUGO et 4 TURING.**
+
+MEMO

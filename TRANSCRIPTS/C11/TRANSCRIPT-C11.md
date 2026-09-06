@@ -5378,3 +5378,55 @@ Ce que ça veut dire concrètement : le risque n'est pas dans tes données — i
 **Tests manuels : apparie une seule classe, et dis-moi ce que tu vois.** Je mesurerai le hub après.
 
 MEMO
+
+---
+
+## TOUR 108 — Paul
+
+Texte mot pour mot :
+
+> ok mais j'avais dit que je voulais apparier mes classes uniquement après la purge des classes martyres. Est ce que c'est grave si je fais l'import maintenant§?
+
+---
+
+## TOUR 108 — Claude (conscience n°11)
+
+Décision retrouvée au registre (ligne 5, 25/08 ; point 12 de la file). Mesures : ses classes
+actuelles sont **celles de 2025-2026** · **`/site` est préservé intégralement** par la purge,
+**`/classes` n'est dans aucun contrat**. Registre : `n°11 · 89`.
+
+Réponse mot pour mot :
+
+**Ta décision est retrouvée, et la réponse est : ce n'est pas grave — c'est du travail à refaire, pas une perte.**
+
+## Ce que tu avais dit, le 25 août
+
+> « les données au hub restent **martyres** jusqu'à la fin du codage — **M17a, l'import des vraies classes, vient en tout dernier, c'est une sécurité** »
+
+Et dans ta file : « **M17a** — en tout dernier de tout dernier : **purge des 2025-2026, import des quatre classes réelles**, codes et liens. »
+
+## Ce que tes classes sont aujourd'hui
+
+**Celles de l'an dernier.** 3E Charles de Gaulle avec 29 élèves, 4E BANKSY, 4E PYTHAGORE, 5e HERGÉ — ton registre le dit : « élèves réels de **2025-2026** ». **Tes vraies classes de cette année n'existent pas encore.**
+
+## Les trois points
+
+**Rien ne casse.** Ta grille vit sous `/site`, et ton registre a déjà vérifié que **la purge préserve `/site` intégralement**. L'appariement ne sera pas effacé.
+
+**Mais il pointera dans le vide.** Il relie un créneau à un **nom de classe**. Après la purge, ce nom n'existera plus — les cases redeviendront « classe non encore importée ».
+
+**Donc : du travail à refaire.** Un geste par classe, et la corbeille garde l'état d'avant à chaque fois.
+
+## Et une raison de le faire quand même — je te la pose, je ne tranche pas
+
+**L'appariement n'a jamais été prouvé par le geste.** Je te l'ai dit au tour précédent : ni toi, ni un banc au clic.
+
+**Tu es aujourd'hui le seul à pouvoir l'éprouver — et sur des classes martyres**, c'est-à-dire exactement ce à quoi elles servent depuis le 25 août.
+
+Le faire maintenant, sur les classes de l'an dernier, **c'est le tester sans rien risquer**. Le découvrir cassé en octobre sur tes vraies classes serait pire.
+
+**C'est ta décision, et elle est tienne depuis le 25 août.**
+
+**Tests manuels** : si tu y vas, apparie **une seule** classe et dis-moi ce que tu vois. Je mesurerai le hub après.
+
+MEMO

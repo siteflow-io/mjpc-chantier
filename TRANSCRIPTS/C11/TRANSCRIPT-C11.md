@@ -5430,3 +5430,54 @@ Le faire maintenant, sur les classes de l'an dernier, **c'est le tester sans rie
 **Tests manuels** : si tu y vas, apparie **une seule** classe et dis-moi ce que tu vois. Je mesurerai le hub après.
 
 MEMO
+
+---
+
+## TOUR 109 — Paul
+
+Texte mot pour mot :
+
+> donc j'importe une classe 26 27? donne moi la marche à suivre précise.
+
+---
+
+## TOUR 109 — Claude (conscience n°11)
+
+Mesures : `edtClassesDuHub` rend **toutes les classes non archivées** (les martyres comprises) ·
+`edtNomsDeGrille` **exclut `mjpc===false`** → **quatre lignes** : 3 DYLAN Bob, 3 FRANKLIN Aretha,
+4 HUGO, 4 TURING · l'écran est un bloc **« 🔗 Classes de la grille et classes du site »** avec
+**une liste déroulante par ligne**, `onchange` qui **écrit aussitôt**. Registre : `n°11 · 90`.
+
+Réponse mot pour mot :
+
+**Non — et je préfère te le dire avant que tu fasses un geste que tu ne veux pas.**
+
+## Ce ne sont pas la même chose
+
+**Importer une classe**, c'est créer une classe avec ses élèves. **C'est M17a**, que tu as placé « en tout dernier de tout dernier ». **Ce n'est pas ce dont on parle.**
+
+**Apparier**, c'est dire au site que « 3 DYLAN Bob » — le nom de ta grille d'établissement — **est** ta 3E Charles de Gaulle, qui existe déjà. **Aucune classe n'est créée, aucun élève n'est touché.**
+
+## La marche à suivre
+
+**Panneau prof → Emploi du temps.** Descends jusqu'au bloc **« 🔗 Classes de la grille et classes du site »**. Tu y liras : *« Tant qu'une classe de la grille n'est pas appariée, sa case s'affiche mais ne projette rien. »*
+
+**Tu auras quatre lignes** — j'ai mesuré, ce sont exactement celles-là :
+
+> **3 DYLAN Bob** · **3 FRANKLIN Aretha** · **4 HUGO** · **4 TURING**
+
+Tes créneaux « X Français X. » et « Concertation » n'y sont pas : ils sont hors MJPC.
+
+**Chaque ligne porte une liste déroulante**, qui montre « — non encore importée — » puis toutes tes classes non archivées : 3E Charles de Gaulle, 4E BANKSY, 4E PYTHAGORE, 5e HERGÉ, et aussi CLASSE TEST, _TEST, _test_pilotage_debat_s3.
+
+**Tu choisis, et c'est écrit tout de suite** — il n'y a pas de bouton de confirmation. L'état d'avant part à la corbeille.
+
+## Deux choses avant que tu y ailles
+
+**Commence par une seule ligne.** Prends « 3 DYLAN Bob » et donne-lui 3E Charles de Gaulle. Puis regarde la semaine du 31 août : les cases doivent passer à **« avant ta rentrée »**, grisées.
+
+**Et je te dois une réserve** : **je n'ai jamais vu cet écran.** Ni sur une capture, ni joué par un banc. **Je te le décris d'après le code, pas d'après une image.** Si ça ne ressemble pas à ça, tu le verras le premier — dis-le-moi.
+
+**Tests manuels : une seule ligne, puis la semaine du 31 août.** Je mesurerai le hub après.
+
+MEMO

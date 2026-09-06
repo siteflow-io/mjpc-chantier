@@ -5481,3 +5481,50 @@ Tes créneaux « X Français X. » et « Concertation » n'y sont pas : ils sont
 **Tests manuels : une seule ligne, puis la semaine du 31 août.** Je mesurerai le hub après.
 
 MEMO
+
+---
+
+## TOUR 110 — Paul
+
+Texte mot pour mot :
+
+> et ce sera défaisable comme geste?
+
+---
+
+## TOUR 110 — Claude (conscience n°11)
+
+Mesures : le menu porte **`<option value="">— non encore importée —</option>` en première
+position** ; `edtApparierNom` pose `String(nomHub||'')` → chaîne vide · `edtEcrireArchive`
+**archive d'abord, n'écrit que si l'archivage réussit** · l'archive part à la corbeille **avec
+son chemin d'origine**. Registre : `n°11 · 91`.
+
+Réponse mot pour mot :
+
+**Oui, de deux façons — et la première est le même geste à l'envers.**
+
+## Défaire, c'est refaire le geste
+
+**Le menu porte une première ligne : « — non encore importée — ».** Tu la rechoisis, et la case redevient ce qu'elle était. Pas de bouton spécial, pas de manipulation.
+
+## Et l'état d'avant est à la corbeille
+
+Avant de toucher quoi que ce soit, le site prend **une photo de ta grille entière**. Et il n'écrit **que si cette photo a bien été mise à l'abri** — sinon il te le dit et n'écrit rien : *« Impossible de mettre l'état d'avant à l'abri — rien n'a été écrit. Le site continue en lecture. »*
+
+L'archive part dans **ta corbeille**, avec **l'adresse où la remettre** enregistrée dedans.
+
+**Donc : le geste inverse immédiat, et le filet derrière.**
+
+## Une chose que tu dois savoir avant de cliquer
+
+**Un seul choix apparie toutes les heures de ce nom.** Si tu donnes 3E Charles de Gaulle à « 3 DYLAN Bob », **toutes ses heures de la semaine A et de la semaine B, sur toute l'année**, sont appariées d'un coup.
+
+C'est voulu — *« une classe reste la même quand l'emploi du temps change »*. **Et le défaire les défait toutes de la même façon.**
+
+## Ma réserve, la même qu'au tour précédent
+
+**Je n'ai jamais vu cet écran ni ce geste joué.** Tout ce que je viens de te dire est lu dans le code. **Le premier à le voir, c'est toi.**
+
+**Tests manuels : une seule ligne, regarde, et si ça ne va pas — rechoisis « non encore importée ».**
+
+MEMO

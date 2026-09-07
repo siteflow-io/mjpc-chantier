@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<title>Maquette v7 — pilotage ordi et relecture, deux onglets</title>
+<style>
+:root{--fond:#0e0c0a;--carte:#1c1712;--carte2:#241d16;--bord:#3a2f24;--bord2:#5a4a37;--texte:#efe6d8;--texte2:#b8a894;--sourd:#7d6f5e;--or:#e0b25a;--joue:#5c9e6e;--rouge:#c9443a;--gel:#6fa8d8}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--fond);color:var(--texte);font-family:'EB Garamond',Georgia,serif;font-size:15px;line-height:1.3;overflow:hidden}
+button{font:inherit}
+.btn{background:var(--carte2);border:1px solid var(--bord2);color:var(--texte);padding:6px 11px;border-radius:8px;cursor:pointer;white-space:nowrap}
+.btn:hover{border-color:var(--or)}
+.btn.or{background:var(--or);color:#1a1409;border-color:var(--or);font-weight:600}
+.btn.fin{border-color:var(--rouge);color:#e0a09a}
+.btn.rond{border-radius:50%;width:38px;height:38px;padding:0;font-size:1.1rem;display:inline-flex;align-items:center;justify-content:center}
+.btn.on{border-color:var(--or);color:var(--or);background:#2a2214}
+.btn.rond.gelon{border-color:var(--gel);color:#cfe6f8;background:#22303c}
+small.k{color:var(--sourd);font-size:.72rem;margin-left:4px}
+/* barre du haut */
+.haut{height:44px;display:flex;align-items:center;gap:12px;padding:0 12px;background:#070605;border-bottom:1px solid #262019}
+.haut .qui{font-weight:600;white-space:nowrap}
+.haut .ou{color:var(--texte2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:420px}
+.haut .chrono{margin-left:auto;display:flex;align-items:center;gap:8px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.haut .chrono b{font-size:1.15rem;color:var(--or)}
+.haut .chrono .p{color:var(--sourd);cursor:pointer}
+.haut .heure{color:var(--texte2);margin-left:6px}
+/* onglets : deux écrans, jamais l'un sur l'autre */
+.onglets{display:flex;gap:2px;margin-right:6px}
+.ong{background:transparent;border:1px solid transparent;color:var(--texte2);padding:6px 12px;border-radius:8px;cursor:pointer}
+.ong.on{background:var(--carte2);border-color:var(--bord2);color:var(--or);font-weight:600}
+body.vue-relecture .corps{display:none}
+#ecran-relecture{display:none;height:calc(100% - 44px);overflow:auto;padding:22px 34px 40px;background:var(--fond)}
+body.vue-relecture #ecran-relecture{display:block}
+.rel{max-width:1120px;margin:0 auto;font-size:1rem;line-height:1.5}
+.rel h2{margin:0 0 4px;font-size:1.35rem;font-weight:600}
+.rel .sous{color:var(--texte2);margin-bottom:18px}
+.rel h3{font-size:.78rem;letter-spacing:.09em;text-transform:uppercase;color:var(--sourd);font-weight:600;margin:22px 0 8px;border-bottom:1px solid var(--bord);padding-bottom:4px}
+.rel .deux{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.rel .pas{padding:10px 14px;margin:8px 0;background:var(--carte);border:1px solid var(--bord);border-left:4px solid var(--joue);border-radius:6px}
+.rel .pas.retour{border-left-color:#e0a09a}.rel .pas.saut{border-left-color:#c9a04a}
+.rel .pas .h{color:var(--or);font-variant-numeric:tabular-nums;font-weight:600;margin-right:8px}
+.rel .pas .d{color:var(--texte2);margin-left:8px}
+.rel .pas .l{margin:3px 0 0 4px;color:var(--texte2)}
+.rel .pas .l.gel{color:var(--gel)}
+.rel table{border-collapse:collapse;width:100%}
+.rel td,.rel th{padding:6px 10px 6px 0;border-top:1px solid var(--bord);vertical-align:top;text-align:left}
+.rel th{color:var(--sourd);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;font-weight:600;border-top:0}
+.rel tr.non td{color:var(--sourd)}
+.rel .puce{display:inline-block;border:1px solid var(--bord2);border-radius:14px;padding:2px 10px;margin:3px 6px 3px 0}
+.rel .puce b{color:var(--or)}
+.rel .vide{color:var(--sourd);font-style:italic}
+/* corps */
+.corps{display:grid;grid-template-columns:186px 1fr 330px;height:calc(100% - 44px)}
+.corps.replie{grid-template-columns:0 1fr 330px}
+.volet{background:#131009;border-right:1px solid #262019;padding:10px 8px;overflow:auto}
+.corps.replie .volet{display:none}
+.volet h4,.droite h4,.notes h4{margin:0 0 6px;font-size:.72rem;letter-spacing:.09em;text-transform:uppercase;color:var(--sourd);font-weight:600;display:flex;align-items:center;gap:8px}
+.volet h4 span{margin-left:auto;cursor:pointer}
+.vig{display:flex;gap:6px;align-items:flex-start;padding:3px 4px;border-radius:6px;margin-bottom:2px;cursor:pointer}
+.vig:hover{background:var(--carte)}
+.vig .n{color:var(--sourd);font-size:.72rem;width:14px;text-align:right;padding-top:6px}
+.vig .m{width:118px;height:66px;background:#f1ebe0;border-radius:3px;border:1px solid #6a5a48;position:relative;overflow:hidden;color:#2a2219;padding:5px 6px}
+.vig .m b{display:block;font-size:.5rem;font-weight:600;letter-spacing:.02em;text-transform:uppercase;line-height:1.1;margin-bottom:3px}
+.vig .m i{display:block;height:2.5px;background:#b9ad9b;border-radius:2px;margin:2.5px 0}
+.vig .m .img{position:absolute;inset:16px 6px 6px;background:repeating-linear-gradient(135deg,#d9cfbf,#d9cfbf 5px,#cabca8 5px,#cabca8 10px);border-radius:2px}
+.vig .t{font-size:.72rem;color:var(--sourd);width:26px;padding-top:4px;font-variant-numeric:tabular-nums}
+.vig.cour .m{border:2px solid var(--or);box-shadow:0 0 0 1px var(--or)}
+.vig.faite .m{opacity:.55}.vig.faite .n{color:var(--joue)}
+.volet .sea{margin:8px 4px 4px;font-size:.86rem;color:var(--texte2);border-top:1px solid #262019;padding-top:6px}
+.volet .sea b{color:var(--texte);font-weight:600;display:block}
+.volet .autre{font-size:.84rem;color:var(--sourd);margin:3px 4px 0;line-height:1.35;cursor:pointer}
+.volet .autre:hover{color:var(--or)}
+.volet .autre.cour{color:var(--texte)}
+/* la diapo */
+.scene{padding:8px 16px 0;display:flex;flex-direction:column;gap:7px;min-width:0;overflow:hidden}
+.scene .titre{display:flex;align-items:baseline;gap:10px;color:var(--texte2);font-size:.92rem}
+.scene .titre b{color:var(--texte);font-weight:600}
+.scene .titre .d{margin-left:auto;color:var(--sourd);font-style:italic}
+.temoin{display:none;align-items:center;gap:10px;background:#16222c;border:1px solid var(--gel);color:#cfe6f8;border-radius:8px;padding:5px 12px;font-size:.9rem}
+.temoin b{font-weight:600}
+body.gel .temoin{display:flex}
+.murcadre{position:relative;width:768px;margin:0 auto;user-select:none}
+.mur{background:#f4efe6;color:#1f1a14;border-radius:6px;aspect-ratio:16/9;padding:20px 28px;position:relative;box-shadow:0 0 0 1px #000 inset;overflow:hidden}
+.mur .etiq{position:absolute;top:8px;left:12px;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:#8a7a68;border:1px solid #cfc3b2;padding:2px 8px;border-radius:12px;background:#f4efe6;z-index:2}
+.mur .corpsd{position:absolute;inset:34px 28px 22px;overflow:hidden}
+.mur h2{margin:0 0 8px;font-weight:600;line-height:1.2}
+.mur ol{margin:0;padding-left:1.6em;list-style:none}
+.mur li::before{content:attr(data-n) ". ";display:inline-block;width:1.6em;margin-left:-1.6em;color:#6a5a48}
+.mur li{margin:.3em 0;cursor:pointer;border-radius:3px}
+.mur li.pas{color:#c0b4a4}
+.mur.public li.pas{display:none}
+.mur li.lum{background:#ffe89a;padding:0 4px}
+.mur li.ecr::after{content:' ✍';color:#8a6a2e}
+.mur li.hors{display:none}
+.mur img{max-width:100%;max-height:100%;display:block;margin:0 auto;object-fit:contain}
+.mur .imgzone{position:absolute;inset:30px 28px 44px;display:flex;align-items:center;justify-content:center}
+.mur .legende{position:absolute;left:28px;right:28px;bottom:10px;font-size:.85rem;color:#5a4d40;font-style:italic;text-align:center}
+.mur .page{position:absolute;bottom:6px;right:12px;font-size:.7rem;color:#8a7a68;z-index:2}
+.mur .bandeau{position:absolute;left:0;right:0;bottom:0;background:#1f1a14;color:#f4efe6;padding:8px 16px;font-size:1.05rem;display:none;z-index:3}
+.mur .bandeau.on{display:block}
+.mur.mode-lum li:hover,.mur.mode-ecr li:hover{outline:2px dashed #8a6a2e}
+.loupe{position:absolute;border:2px solid var(--or);background:rgba(224,178,90,.14);display:none;pointer-events:none}
+.loupe span{position:absolute;left:0;top:100%;font-size:.7rem;color:#8a7a68;white-space:nowrap;background:#f4efe6;padding:0 4px}
+.outils{display:flex;align-items:center;gap:8px;padding-top:2px;flex-wrap:wrap}
+.outils .groupe{display:flex;gap:6px;align-items:center}
+.outils .nav{margin-left:auto;display:flex;align-items:center;gap:10px;color:var(--texte2)}
+.outils .nav .btn{font-size:1.05rem;padding:5px 14px}
+.zoomt{display:flex;align-items:center;gap:6px;color:var(--texte2);font-size:.86rem;border:1px solid var(--bord);border-radius:20px;padding:2px 10px}
+.zoomt input{width:90px}
+.notes{background:#171310;border:1px solid var(--bord);border-radius:8px;padding:7px 12px;font-size:.96rem;color:var(--texte2);line-height:1.4;min-height:60px;flex:1;overflow:auto}
+.notes h4 span{margin-left:auto;font-weight:400;letter-spacing:0;text-transform:none;font-style:italic}
+.notes .vide{color:var(--sourd);font-style:italic}
+/* droite */
+.droite{background:#131009;border-left:1px solid #262019;padding:10px 12px;display:flex;flex-direction:column;gap:9px;overflow:auto}
+.suivante{background:#e9e2d6;color:#1f1a14;border-radius:5px;aspect-ratio:16/9;padding:8px 12px;font-size:.78rem;position:relative;border:1px solid #6a5a48;overflow:hidden}
+.suivante b{display:block;font-size:.92rem;margin-bottom:2px;color:#1f1a14}
+.suivante .img{height:46px;background:repeating-linear-gradient(135deg,#d9cfbf,#d9cfbf 6px,#cabca8 6px,#cabca8 12px);border-radius:4px;margin-top:6px}
+.suivante .aumur{position:absolute;top:6px;right:8px;font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;color:#2f5f88;border:1px solid #6fa8d8;border-radius:10px;padding:1px 7px;display:none}
+body.gel .suivante .aumur{display:inline}
+.suivi{background:var(--carte);border:1px solid var(--bord);border-radius:8px;padding:9px 11px;display:flex;flex-direction:column;gap:9px;flex:1}
+.ligne{display:flex;justify-content:space-between;gap:8px;font-size:.92rem;align-items:baseline}
+.ligne b{color:var(--or)}
+.barre{height:5px;background:var(--bord);border-radius:3px;overflow:hidden}
+.barre i{display:block;height:100%;width:0;background:var(--joue);transition:width .5s}
+.petit{color:var(--joue);font-size:.84rem}
+.petit.retard{color:#e0a09a}
+.vif input{width:100%;background:#0f0c09;border:1px solid var(--bord2);color:var(--texte);padding:6px 9px;border-radius:7px;font:inherit;font-size:1rem}
+.cand{display:flex;gap:5px;flex-wrap:wrap;margin-top:6px;min-height:20px}
+.cand span{border:1px solid var(--bord2);border-radius:14px;padding:1px 8px;font-size:.86rem;color:var(--texte2);cursor:pointer}
+.cand span:hover,.cand span.choisi{border-color:var(--or);color:var(--or)}
+.motifs{display:flex;gap:6px;margin-top:6px}
+.motifs .btn{padding:3px 10px;font-size:.9rem}
+.dern{color:var(--texte2);font-size:.86rem;line-height:1.45;margin-top:4px}
+.dern b{color:var(--texte);font-weight:600}
+.total{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--bord);padding-top:7px;font-size:.9rem}
+.total b{color:var(--or);font-size:1.05rem}
+.absents{color:var(--sourd);font-size:.82rem}
+/* fenêtre de notes au fil de l'eau */
+.fil{display:none;position:absolute;right:346px;bottom:110px;width:420px;background:#1c1712;border:1px solid var(--or);border-radius:10px;box-shadow:0 12px 40px rgba(0,0,0,.6);padding:10px 12px;z-index:9}
+.fil h4{margin:0 0 6px;font-size:.72rem;letter-spacing:.09em;text-transform:uppercase;color:var(--or);font-weight:600;display:flex;align-items:center;gap:8px}
+.fil h4 .x{margin-left:auto;color:var(--texte2);cursor:pointer;font-weight:400;letter-spacing:0;text-transform:none}
+.fil .deja{font-size:.86rem;color:var(--texte2);line-height:1.45;margin-bottom:6px;max-height:120px;overflow:auto}
+.fil .deja b{color:var(--sourd);font-weight:400;font-variant-numeric:tabular-nums}
+.fil textarea{width:100%;height:56px;background:#0f0c09;border:1px solid var(--bord2);color:var(--texte);border-radius:7px;padding:6px 9px;font:inherit;font-size:.98rem;resize:none}
+.fil .pied2{font-size:.76rem;color:var(--sourd);font-style:italic;margin-top:4px}
+body.notes .fil{display:block}
+/* grille de toutes les diapos, menu ⋯, fin de l'heure */
+.voile{display:none;position:absolute;inset:0;background:rgba(6,5,4,.9);z-index:20;padding:30px 40px;overflow:auto}
+.voile.on{display:block}
+.voile h3{margin:0 0 14px;font-weight:600}
+.grille{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.grille .g{cursor:pointer;background:#f1ebe0;color:#2a2219;border-radius:4px;aspect-ratio:16/9;padding:8px;font-size:.72rem;position:relative;border:2px solid transparent}
+.grille .g:hover,.grille .g.cour{border-color:var(--or)}
+.grille .g b{display:block;font-size:.66rem;text-transform:uppercase;letter-spacing:.02em}
+.grille .g .n{position:absolute;bottom:4px;right:6px;color:#8a7a68}
+.menu{display:none;position:absolute;background:#1c1712;border:1px solid var(--bord2);border-radius:9px;padding:6px;z-index:10;box-shadow:0 8px 30px rgba(0,0,0,.6);min-width:230px}
+.menu.on{display:block}
+.menu .btn{display:block;width:100%;text-align:left;border:0;background:transparent;padding:7px 10px}
+.menu .btn:hover{background:var(--carte2)}
+.aide{position:absolute;left:200px;bottom:4px;color:var(--sourd);font-size:.74rem;font-style:italic;pointer-events:none}
+/* la garde : un geste hors du fil normal, en cours, et le tableau te suivrait */
+.garde{display:none;position:absolute;inset:0;background:rgba(6,5,4,.55);z-index:30;align-items:center;justify-content:center}
+.garde.on{display:flex}
+.garde .boite{background:#1c1712;border:1px solid var(--gel);border-radius:12px;padding:16px 20px;width:520px;box-shadow:0 16px 50px rgba(0,0,0,.7)}
+.garde h3{margin:0 0 4px;font-weight:600;font-size:1.2rem}
+.garde p{margin:0 0 12px;color:var(--texte2)}
+.garde .choix{display:flex;gap:8px;flex-wrap:wrap}
+.garde .choix .btn{padding:8px 14px}
+.garde .choix .btn.gelb{background:#22303c;border-color:var(--gel);color:#cfe6f8;font-weight:600}
+.garde small{display:block;margin-top:10px;color:var(--sourd);font-style:italic}
+/* la fenêtre du tableau (le mur) */
+body.estmur{background:#000}
+body.estmur .murseul{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+body.estmur .mur{width:min(100vw,177.7vh);height:auto;border-radius:0}
+body.estmur .mur .corpsd{transform-origin:0 0}
+</style></head>
+<body>
+<div id="pilotage">
+<div class="haut">
+  <span class="onglets"><button class="ong on" id="ong-pilotage">Pilotage</button><button class="ong" id="ong-relecture">Relecture</button></span>
+  <span class="qui">3E Charles de Gaulle</span>
+  <span class="ou" id="ou">mardi 15:07-16:02 · heure 1 sur 3</span>
+  <span class="chrono" title="Temps écoulé depuis le début de l'heure. ⏸ suspend, ↺ remet à zéro."><b id="chr">00:00</b><span class="p" id="pause">⏸</span><span class="p" id="raz">↺</span><span class="heure" id="heure"></span></span>
+  <button class="btn" id="bnotes" title="Notes au fil de l'eau : s'ouvre ici, le curseur dedans ; touche N pour ouvrir et refermer (Échap aussi). Jamais montrées à la classe.">📝 Notes<small class="k">N</small></button>
+  <button class="btn" id="btableau" title="Ouvre la fenêtre du tableau dans une nouvelle fenêtre : glisse-la sur le vidéoprojecteur. Elle suit ton pilotage.">⧉ Tableau</button>
+  <button class="btn fin" id="bfin" title="Termine l'heure : la trace est écrite, la relecture et École Directe se remplissent.">Fin de l'heure</button>
+</div>
+<div class="corps" id="corps">
+  <div class="volet" id="volet"></div>
+  <div class="scene">
+    <div class="titre"><b id="numero"></b><span id="acte"></span><span class="d" id="temoin-mini"></span></div>
+    <div class="temoin" id="temoin">❄ <span id="temoin-txt"></span></div>
+    <div class="murcadre" id="murcadre"><div class="mur" id="mur"></div><div class="loupe" id="loupe"><span></span></div></div>
+    <div class="outils">
+      <div class="groupe">
+        <button class="btn rond" id="blum" title="Surligner : clique ensuite l'élément à mettre en lumière (au tableau aussi). Re-clique pour ranger.">✦</button>
+        <button class="btn rond" id="becr" title="À écrire : clique ensuite l'élément que les élèves recopient. Re-clique pour ranger.">✍</button>
+        <button class="btn rond" id="btoutes" title="Toutes les diapos de la séance en grille, pour sauter loin (T)">⊞</button>
+        <button class="btn rond" id="bloupe" title="Loupe : trace un cadre sur la diapo, le tableau grossit cette zone ; molette pour ×2 ×3 ×4. Re-clique pour ranger (L).">🔍</button>
+        <button class="btn rond" id="bgel" title="Gel : le tableau reste sur ce qu'il montre, toi tu continues librement (G). Remplace la télécommande du vidéoprojecteur.">❄</button>
+        <button class="btn rond" id="bplus" title="Chrono au tableau · Qui a participé au tableau · Absents · Appoint">⋯</button>
+        <span class="zoomt" title="Le texte grossit au tableau ; la diapo se lit alors en pages, le texte n'est jamais coupé.">texte au tableau <input type="range" id="taille" min="0" max="4" value="0"> <span id="taillev">normal</span></span>
+      </div>
+      <div class="nav">
+        <button class="btn" id="bprec" title="Revoile le dernier élément (←) ; en début de diapo, diapo précédente">◀</button>
+        <button class="btn or" id="bsuiv" title="Dévoile l'élément suivant (→, espace, clic de la télécommande) ; en fin de diapo, diapo suivante">▶ Dévoiler</button>
+        <span id="compte"></span>
+      </div>
+    </div>
+    <div class="notes"><h4>Notes pour cette diapo</h4><div id="notesd"></div></div>
+  </div>
+  <div class="droite">
+    <div><h4>Diapo suivante</h4><div class="suivante" id="suivante"></div></div>
+    <div class="suivi">
+      <div><h4>Où on en est</h4><div class="ligne"><span id="ou-act"></span><b id="ou-t"></b></div><div class="barre"><i id="ou-b"></i></div><div class="petit" id="ou-p"></div></div>
+      <div class="vif"><h4>Participation</h4><input type="text" id="vif" placeholder="initiales : ch, ab, jl…" title="Les initiales : la liste se réduit ; un seul candidat, Entrée le prend. Puis 1, 2 ou 3."><div class="cand" id="cand"></div>
+        <div class="motifs"><button class="btn" data-m="1" title="1 — a répondu">1</button><button class="btn" data-m="2" title="2 — a proposé">2</button><button class="btn" data-m="3" title="3 — a lu, récité">3</button><button class="btn" id="bannule" title="Annule la dernière prise de parole">↶</button></div>
+        <div class="dern" id="dern">—</div></div>
+      <div class="total"><span>Ont participé</span><b id="total">0 sur 27 présents</b></div>
+      <div class="absents" id="absents">2 absents : DELACROIX Romain, PINET Charlotte — jamais montré à la classe</div>
+    </div>
+  </div>
+</div>
+<div id="ecran-relecture"><div class="rel"><h2 id="rel-titre">Relecture</h2><div class="sous" id="rel-sous"></div><div id="rel"></div></div></div>
+<div class="fil" id="fil">
+  <h4>📝 Notes au fil de l'eau · <span id="fil-ou"></span><span class="x" id="fil-x" title="Refermer : N, Échap, ou ici">✕ refermer (N)</span></h4>
+  <div class="deja" id="fil-deja"><i style="color:var(--sourd)">aucune note encore</i></div>
+  <textarea id="fil-t" placeholder="Entrée pour garder la note (elle prend l'heure et la diapo)"></textarea>
+  
+</div>
+<div class="voile" id="vtoutes"><h3>Toutes les diapos de la séance <small style="color:var(--sourd);font-weight:400">— clique pour y aller · Échap pour fermer</small></h3><div class="grille" id="grille"></div></div>
+
+<div class="voile" id="vfin"><h3>Fin de l'heure</h3><div id="fin-txt" style="max-width:720px;line-height:1.5"></div><p><button class="btn or" id="bfin-ok">Oui, clore</button> <button class="btn" id="bfin-non">Annuler</button></p></div>
+<div class="menu" id="menu">
+  <button class="btn" data-a="chrono">⏱ Chrono au tableau</button>
+  <button class="btn" data-a="qui">👥 Qui a participé, au tableau</button>
+  <button class="btn" data-a="absents">Absents (pour toi seul)</button>
+  <button class="btn" data-a="appoint">＋ Appoint — une notion imprévue</button>
+</div>
+<div class="garde" id="garde2"><div class="boite">
+  <h3 id="garde2-titre"></h3>
+  <div class="choix"><button class="btn gelb" id="garde2-revenir" title="Entrée">Revenir là où est la classe, puis dégeler</button><button class="btn" id="garde2-ici">Dégeler ici</button><button class="btn" id="garde2-non" title="Échap">Rester gelé</button></div>
+</div></div>
+<div class="garde" id="garde"><div class="boite">
+  <h3 id="garde-titre">La classe te suivrait.</h3>
+  <p id="garde-txt">Geler d'abord ?</p>
+  <div class="choix"><button class="btn gelb" id="garde-gel" title="Le tableau reste sur ce qu'il montre ; tu y vas seul (Entrée)">❄ Geler, puis y aller</button><button class="btn" id="garde-devant" title="Le tableau te suit : la classe voit le changement, il s'écrit">Y aller devant la classe</button><button class="btn" id="garde-non" title="Ne rien faire (Échap)">Rester</button></div>
+</div></div>
+
+</div>
+<div class="murseul" id="murseul" style="display:none"><div class="mur public" id="mur2"></div></div>
+
+<script>
+const DATA = /*DATA*/null;
+const TAILLES = [{n:'normal',fs:1.22},{n:'+1',fs:1.45},{n:'+2',fs:1.7},{n:'+3',fs:2.0},{n:'+4',fs:2.4}];
+const estMur = location.search.indexOf('mur') >= 0;
+
+// ───────── rendu d'une diapo (même code pour le pilotage et le mur) ─────────
+function elements(ecran){ // les éléments dévoilables d'une diapo, dans l'ordre
+  const out = []; ecran.blocs.forEach((b, bi) => b.el.forEach((e, ei) => out.push({b: bi, e: ei, txt: e, t: b.t}))); return out;
+}
+function rendre(mur, et, opts){ // et = {si, di, nDev, lum:[], ecr:[], taille, page, loupe, bandeau}
+  const ecran = DATA.seances[et.si].ecrans[et.di]; const fs = TAILLES[et.taille].fs;
+  let h = `<span class="etiq">${esc(ecran.act)}</span>`;
+  const b0 = ecran.blocs[0];
+  if (b0 && b0.t === 'image') {
+    h += `<div class="imgzone">${b0.ref ? `<img src="${b0.ref}" alt="">` : '<div style="width:80%;height:80%;background:repeating-linear-gradient(135deg,#d9cfbf,#d9cfbf 8px,#cabca8 8px,#cabca8 16px);border-radius:6px"></div>'}</div><div class="legende">${esc(b0.txt)}</div>`;
+  } else {
+    h += `<div class="corpsd" style="font-size:${fs}rem"><h2 style="font-size:${fs*1.25}rem">${esc((b0 && b0.txt) || ecran.act)}</h2>`;
+    let k = 0;
+    ecran.blocs.forEach((b, bi) => {
+      if (bi > 0 && b.txt) h += `<h2 style="font-size:${fs*1.1}rem">${esc(b.txt)}</h2>`;
+      if (b.el.length) { h += '<ol>'; b.el.forEach((e, ei) => { const cls = [k >= et.nDev ? 'pas' : '', et.lum.includes(k) ? 'lum' : '', et.ecr.includes(k) ? 'ecr' : ''].join(' '); h += `<li data-k="${k}" data-n="${ei + 1}" class="${cls}">${esc(e)}</li>`; k++; }); h += '</ol>'; }
+    });
+    h += '</div>';
+  }
+  h += `<span class="page" id="${mur.id}-page"></span><div class="bandeau ${et.bandeau ? 'on' : ''}">${esc(et.bandeau || '')}</div>`;
+  mur.innerHTML = h;
+  paginer(mur, et);
+  loupeSur(mur, et);
+}
+// essai 2 du zoom : pagination d'AFFICHAGE — le texte ne change pas, on montre les éléments qui tiennent
+function paginer(mur, et){
+  const corps = mur.querySelector('.corpsd'); const page = mur.querySelector('.page'); if (!corps) { page.textContent = ''; return; }
+  const lis = Array.from(corps.querySelectorAll('li')); const H = corps.clientHeight; const h2 = corps.querySelector('h2');
+  lis.forEach(l => l.classList.remove('hors'));
+  if (!lis.length || corps.scrollHeight <= H + 2) { page.textContent = ''; return; }
+  // découpe en pages selon la hauteur disponible sous le titre
+  const pages = []; let cur = []; const base = h2 ? h2.offsetHeight + 8 : 0;
+  lis.forEach(l => { const bas = l.offsetTop + l.offsetHeight - (lis[0].offsetTop) ; l._bas = bas; });
+  let debut = 0; lis.forEach((l, i) => { if (l._bas - debut > H - base && cur.length) { pages.push(cur); cur = []; debut = l.offsetTop - lis[0].offsetTop; } cur.push(i); }); pages.push(cur);
+  // la page montrée : celle qui contient le dernier élément dévoilé (ou celle demandée)
+  let pi = pages.findIndex(p => p.includes(Math.max(0, Math.min(lis.length - 1, et.nDev - 1)))); if (et.page != null && et.page >= 0 && et.page < pages.length) pi = et.page; if (pi < 0) pi = 0;
+  lis.forEach((l, i) => { if (!pages[pi].includes(i)) l.classList.add('hors'); });
+  page.textContent = `page ${pi + 1} / ${pages.length}`;
+  et._pages = pages.length; et._pi = pi;
+}
+function loupeSur(mur, et){
+  const corps = mur.querySelector('.corpsd') || mur.querySelector('.imgzone'); if (!corps) return;
+  if (et.loupe && mur.classList.contains('public')) { const L = et.loupe; const f = L.f; const W = mur.clientWidth, H = mur.clientHeight;
+    mur.style.overflow = 'hidden'; const cx = (L.x + L.w / 2) * W, cy = (L.y + L.h / 2) * H;
+    mur.firstElementChild && (mur.firstElementChild.style.display = 'none');
+    corps.style.transformOrigin = '0 0'; corps.style.transform = `translate(${W/2 - cx*f}px, ${H/2 - cy*f}px) scale(${f})`; corps.style.left = '0'; corps.style.top = '0'; corps.style.right = 'auto'; corps.style.bottom = 'auto'; corps.style.width = (W - 56) + 'px'; corps.style.height = (H - 56) + 'px'; corps.style.margin = '34px 28px';
+  }
+}
+function esc(s){ return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+// ───────── la fenêtre du tableau ─────────
+if (estMur) {
+  document.body.classList.add('estmur'); document.getElementById('pilotage').style.display = 'none'; document.getElementById('murseul').style.display = 'flex';
+  const mur2 = document.getElementById('mur2'); document.title = 'Tableau — ce que voit la classe';
+  window.addEventListener('message', ev => { if (ev.data && ev.data.et) rendre(mur2, ev.data.et, {}); });
+  window.addEventListener('resize', () => { if (window._et) rendre(mur2, window._et, {}); });
+  if (window.opener) window.opener.postMessage({ murPret: true }, '*');
+} else {
+
+// ───────── le pilotage ─────────
+const S = { si: 0, di: 0, taille: 0, page: null, mode: null, gel: null, loupe: null, bandeau: '', pause: false, ecoule: 0, notesFil: [], parts: [], cand: null };
+const parDiapo = {}; // état de dévoilement par diapo : {nDev, lum, ecr}
+const cle = () => S.si + '|' + S.di;
+const etatDiapo = () => parDiapo[cle()] || (parDiapo[cle()] = { nDev: 0, lum: [], ecr: [] });
+const seance = () => DATA.seances[S.si]; const ecran = () => seance().ecrans[S.di];
+const etatComplet = () => { const d = etatDiapo(); return { si: S.si, di: S.di, nDev: d.nDev, lum: d.lum.slice(), ecr: d.ecr.slice(), taille: S.taille, page: S.page, loupe: S.loupe, bandeau: S.bandeau }; };
+let fenetreMur = null;
+const mur = document.getElementById('mur');
+const $ = id => document.getElementById(id);
+
+function tout(){ // re-rend l'écran de pilotage, et pousse au mur si pas gelé
+  const et = etatComplet(); const e = ecran(); const n = elements(e).length;
+  rendre(mur, et, {}); mur.className = 'mur' + (S.mode === 'lum' ? ' mode-lum' : S.mode === 'ecr' ? ' mode-ecr' : '');
+  $('numero').textContent = `Diapo ${S.di + 1} sur ${seance().ecrans.length}`; $('acte').textContent = ` · ${e.act} · prévue ${e.dur} min`;
+  $('compte').textContent = n ? `${Math.min(et.nDev, n)} / ${n} dévoilés` : 'rien à dévoiler';
+  $('notesd').innerHTML = DATA.notes[cle()] ? esc(DATA.notes[cle()]) : '<span class="vide">—</span>';
+  const sv = seance().ecrans[S.di + 1]; $('suivante').innerHTML = sv ? `<span class="aumur">au tableau, figé</span><b>${esc(sv.act)}</b>${esc((sv.blocs[0] && sv.blocs[0].txt) || '')} · ${sv.dur} min${sv.blocs[0] && sv.blocs[0].t === 'image' ? '<div class="img"></div>' : ''}` : '<b>Fin de la séance</b>';
+  volet(); ouOnEnEst(); $('fil-ou').textContent = `3E Charles de Gaulle · diapo ${S.di + 1}`;
+  $('bloupe').classList.toggle('on', S.mode === 'loupe'); $('blum').classList.toggle('on', S.mode === 'lum'); $('becr').classList.toggle('on', S.mode === 'ecr');
+  $('taillev').textContent = TAILLES[S.taille].n;
+  if (!S.gel) pousser(et);
+}
+const J = []; window.J = J; S.mur = null; const vuMax = {};   // le journal, l'état au mur, le plus loin dévoilé par diapo
+function journal(type, x){ J.push(Object.assign({ t: Date.now(), type, mur: S.mur ? { si: S.mur.si, di: S.mur.di } : null }, x || {})); }
+function pousser(et){
+  const av = S.mur; const k = et.si + '|' + et.di;
+  if (!av) journal('diapo', { si: et.si, di: et.di, nature: 'début' });
+  else if (av.si !== et.si || av.di !== et.di) journal('diapo', { si: et.si, di: et.di, nature: (et.si === av.si && et.di === av.di + 1) ? 'suivante' : (et.si === av.si && et.di < av.di) ? 'retour' : 'saut', de: { si: av.si, di: av.di } });
+  if (et.nDev > (vuMax[k] || 0)) { for (let i = (vuMax[k] || 0); i < et.nDev; i++) journal('devoile', { si: et.si, di: et.di, k: i }); vuMax[k] = et.nDev; }
+  if (av && av.si === et.si && av.di === et.di) { et.lum.filter(x => !av.lum.includes(x)).forEach(x => journal('lumiere', { si: et.si, di: et.di, k: x })); et.ecr.filter(x => !av.ecr.includes(x)).forEach(x => journal('ecrire', { si: et.si, di: et.di, k: x })); }
+  S.mur = et;
+  if (fenetreMur && !fenetreMur.closed) { try { fenetreMur.postMessage({ et }, '*'); } catch (e) {} } }
+function volet(){
+  let h = `<h4>Séance ${S.si + 1} · ${seance().ecrans.length} diapos <span id="plier" title="Replie le volet (P)">◀</span></h4>`;
+  seance().ecrans.forEach((e, i) => { const d = parDiapo[S.si + '|' + i]; const faite = i < S.di; const img = e.blocs[0] && e.blocs[0].t === 'image';
+    h += `<div class="vig ${i === S.di ? 'cour' : ''} ${faite ? 'faite' : ''}" data-i="${i}"><span class="n">${i + 1}</span><div class="m"><b>${esc(e.act)}</b>${img ? '<div class="img"></div>' : '<i></i><i style="width:70%"></i><i></i><i style="width:55%"></i>'}</div><span class="t">${esc(e.h)}</span></div>`; });
+  h += `<div class="sea"><b>Le chapitre</b>${DATA.seances.length} séances · un clic ouvre ses diapos ici</div>`;
+  DATA.seances.forEach((s, i) => { h += `<div class="autre ${i === S.si ? 'cour' : ''}" data-s="${i}">${i + 1} · ${esc(s.titre)}</div>`; });
+  $('volet').innerHTML = h;
+  const v = $('volet').querySelector('.vig.cour'); if (v) v.scrollIntoView({ block: 'nearest' });
+}
+function ouOnEnEst(){
+  const e = ecran(); const prevuAvant = seance().ecrans.slice(0, S.di).reduce((a, x) => a + (x.dur || 0), 0);
+  const dansDiapo = Math.max(0, S.ecoule / 60 - prevuAvant); const part = e.dur ? Math.min(1, dansDiapo / e.dur) : 0;
+  $('ou-act').textContent = `${e.act} — en cours`; $('ou-t').textContent = `${Math.floor(dansDiapo)} / ${e.dur} min`; $('ou-b').style.width = (part * 100) + '%';
+  const ecart = S.ecoule / 60 - prevuAvant; const p = $('ou-p');
+  if (ecart > e.dur + 1) { p.className = 'petit retard'; p.textContent = `${Math.round(ecart - e.dur)} min de retard sur le prévu · diapo ${S.di + 1} sur ${seance().ecrans.length}`; }
+  else { p.className = 'petit'; p.textContent = `dans les temps · diapo ${S.di + 1} sur ${seance().ecrans.length}`; }
+}
+// navigation
+// le fil normal : ▶ dévoile l'élément suivant, puis passe à la diapo suivante — jamais de garde
+function devoiler(){ const d = etatDiapo(); const n = elements(ecran()).length; if (d.nDev < n) { d.nDev++; S.page = null; } else if (S.di < seance().ecrans.length - 1) { S.di++; S.page = null; } tout(); }
+// tout le reste (revenir, sauter, aller ailleurs) est HORS FIL : si le tableau te suivrait, la garde demande
+function revoiler(){ garde(() => { const d = etatDiapo(); if (d.nDev > 0) { d.nDev--; S.page = null; } else if (S.di > 0) { S.di--; S.page = null; } tout(); }, 'revenir en arrière'); }
+function aller(i){ i = Math.max(0, Math.min(seance().ecrans.length - 1, i)); if (i === S.di) return; const d = etatDiapo(); const n = elements(ecran()).length;
+  const fil = (i === S.di + 1 && d.nDev >= n);   // la diapo suivante, tout dévoilé : c'est le fil normal
+  const faire = () => { S.di = i; S.page = null; tout(); };
+  if (fil) return faire(); garde(faire, i < S.di ? 'revenir à la diapo ' + (i + 1) : 'sauter à la diapo ' + (i + 1)); }
+let gardeEnAttente = null;
+function garde(faire, quoi){ if (S.gel) return faire();                       // déjà gelé : libre
+  gardeEnAttente = faire; $('garde-titre').textContent = 'La classe te suivrait — ' + quoi + '.'; $('garde').classList.add('on'); $('garde-gel').focus(); }
+$('garde-gel').onclick = () => { $('garde').classList.remove('on'); if (!S.gel) gel(); const f = gardeEnAttente; gardeEnAttente = null; if (f) f(); };
+$('garde-devant').onclick = () => { $('garde').classList.remove('on'); const f = gardeEnAttente; gardeEnAttente = null; if (f) f(); };
+$('garde-non').onclick = () => { $('garde').classList.remove('on'); gardeEnAttente = null; };
+$('garde2-revenir').onclick = () => { $('garde2').classList.remove('on'); S.si = S.gel.si; S.di = S.gel.di; S.page = null; degeler(); };
+$('garde2-ici').onclick = () => { $('garde2').classList.remove('on'); degeler(); };
+$('garde2-non').onclick = () => { $('garde2').classList.remove('on'); };
+$('bsuiv').onclick = devoiler; $('bprec').onclick = revoiler;
+$('volet').addEventListener('click', ev => { const v = ev.target.closest('.vig'); if (v) return aller(+v.dataset.i); const a = ev.target.closest('.autre'); if (a) { S.si = +a.dataset.s; S.di = 0; S.page = null; tout(); } if (ev.target.id === 'plier') $('corps').classList.add('replie'); });
+$('corps').addEventListener('dblclick', ev => { if ($('corps').classList.contains('replie')) $('corps').classList.remove('replie'); });
+// surligner / à écrire / loupe : des MODES, un clic sur l'élément agit
+$('blum').onclick = () => { S.mode = S.mode === 'lum' ? null : 'lum'; tout(); };
+$('becr').onclick = () => { S.mode = S.mode === 'ecr' ? null : 'ecr'; tout(); };
+mur.addEventListener('click', ev => { const li = ev.target.closest('li'); if (!li || !S.mode || S.mode === 'loupe') return; const k = +li.dataset.k; const d = etatDiapo(); const L = S.mode === 'lum' ? d.lum : d.ecr; const i = L.indexOf(k); if (i >= 0) L.splice(i, 1); else L.push(k); tout(); });
+// la loupe : on trace un cadre
+$('bloupe').onclick = () => { if (S.mode === 'loupe') { S.mode = null; S.loupe = null; $('loupe').style.display = 'none'; } else S.mode = 'loupe'; tout(); };
+let trace = null;
+$('murcadre').addEventListener('mousedown', ev => { if (S.mode !== 'loupe') return; const r = mur.getBoundingClientRect(); trace = { x0: (ev.clientX - r.left) / r.width, y0: (ev.clientY - r.top) / r.height }; ev.preventDefault(); });
+window.addEventListener('mousemove', ev => { if (!trace) return; const r = mur.getBoundingClientRect(); const x1 = (ev.clientX - r.left) / r.width, y1 = (ev.clientY - r.top) / r.height; const L = { x: Math.min(trace.x0, x1), y: Math.min(trace.y0, y1), w: Math.abs(x1 - trace.x0), h: Math.abs(y1 - trace.y0), f: (S.loupe && S.loupe.f) || 2 }; S.loupe = L; dessinerLoupe(); });
+window.addEventListener('mouseup', () => { if (trace) { trace = null; if (S.loupe && S.loupe.w > .03) { S.loupe.f = Math.max(1.5, Math.min(4, Math.round((1 / Math.max(S.loupe.w, S.loupe.h)) * 2) / 2)); dessinerLoupe(); tout(); } } });
+$('murcadre').addEventListener('wheel', ev => { if (!S.loupe) return; ev.preventDefault(); S.loupe.f = Math.max(1.5, Math.min(4, S.loupe.f + (ev.deltaY < 0 ? .5 : -.5))); dessinerLoupe(); tout(); }, { passive: false });
+function dessinerLoupe(){ const l = $('loupe'); if (!S.loupe) { l.style.display = 'none'; return; } const L = S.loupe; l.style.display = 'block'; l.style.left = (L.x * 100) + '%'; l.style.top = (L.y * 100) + '%'; l.style.width = (L.w * 100) + '%'; l.style.height = (L.h * 100) + '%'; l.querySelector('span').textContent = `loupe ×${L.f}`; }
+// le gel
+$('bgel').onclick = gel;
+function degeler(){ S.gel = null; document.body.classList.remove('gel'); $('bgel').classList.remove('gelon'); journal('degel'); tout(); }
+function gel(){ if (S.gel) {
+    if (S.gel.si !== S.si || S.gel.di !== S.di) {   // écart : la classe verrait un saut
+      $('garde2-titre').textContent = `La classe est sur la diapo ${S.gel.di + 1}, tu es à la diapo ${S.di + 1}.`;
+      $('garde2').classList.add('on'); $('garde2-revenir').focus(); return; }
+    degeler();
+  } else { journal('gel'); S.gel = etatComplet(); document.body.classList.add('gel'); $('bgel').classList.add('gelon'); $('temoin-txt').textContent = `La classe est sur la diapo ${S.gel.di + 1} — ${DATA.seances[S.gel.si].ecrans[S.gel.di].act}.`; } }
+// zoom-texte (essai 2)
+$('taille').oninput = ev => { S.taille = +ev.target.value; S.page = null; tout(); };
+// menu ⋯
+$('bplus').onclick = ev => { const m = $('menu'); const r = ev.target.getBoundingClientRect(); m.style.left = r.left + 'px'; m.style.top = (r.bottom + 6) + 'px'; m.classList.toggle('on'); };
+$('menu').addEventListener('click', ev => { const b = ev.target.closest('[data-a]'); if (!b) return; $('menu').classList.remove('on'); const a = b.dataset.a;
+  if (a === 'chrono') S.bandeau = S.bandeau.startsWith('⏱') ? '' : `⏱ ${$('chr').textContent} — ${ecran().act}`;
+  else if (a === 'qui') { const noms = [...new Set(S.parts.map(p => p.nom.split(' ').slice(-1)[0]))]; S.bandeau = S.bandeau.startsWith('👥') ? '' : `👥 Ont participé : ${noms.join(', ') || 'personne encore'}`; }
+  else if (a === 'absents') alert('Absents (pour toi seul) : DELACROIX Romain, PINET Charlotte');
+  else if (a === 'appoint') { const t = prompt('Appoint — la notion imprévue, en un mot :'); if (t) { seance().ecrans.splice(S.di + 1, 0, { act: 'Appoint : ' + t, h: '＋', dur: 5, blocs: [{ t: 'consigne', txt: t, el: [] }] }); tout(); } }
+  tout(); });
+document.addEventListener('click', ev => { if (!ev.target.closest('#menu') && !ev.target.closest('#bplus')) $('menu').classList.remove('on'); });
+// toutes les diapos
+$('btoutes').onclick = toutes;
+function toutes(){ const v = $('vtoutes'); if (v.classList.contains('on')) return v.classList.remove('on'); $('grille').innerHTML = seance().ecrans.map((e, i) => `<div class="g ${i === S.di ? 'cour' : ''}" data-i="${i}"><b>${esc(e.act)}</b>${esc((e.blocs[0] && e.blocs[0].txt) || '').slice(0, 90)}<span class="n">${i + 1} · ${esc(e.h)}</span></div>`).join(''); v.classList.add('on'); }
+$('grille').addEventListener('click', ev => { const g = ev.target.closest('.g'); if (g) { $('vtoutes').classList.remove('on'); aller(+g.dataset.i); } });
+// notes au fil de l'eau
+$('bnotes').onclick = notesFil; $('fil-x').onclick = notesFil;
+function notesFil(){ const on = document.body.classList.toggle('notes'); if (on) $('fil-t').focus(); }
+$('fil-t').addEventListener('keydown', ev => { if (ev.key === 'Enter' && !ev.shiftKey) { ev.preventDefault(); const t = ev.target.value.trim(); if (t) { S.notesFil.push({ h: hhmm(), di: (S.mur ? S.mur.di : S.di) + 1, t }); journal('note', { txt: t }); ev.target.value = ''; $('fil-deja').innerHTML = S.notesFil.map(n => `<b>${n.h}</b> · diapo ${n.di} — ${esc(n.t)}`).join('<br>'); } } if (ev.key === 'Escape') { notesFil(); } });
+// participation
+const ELEVES = DATA.eleves; const ABSENTS = ['DELACROIX Romain', 'PINET Charlotte']; const PRESENTS = ELEVES.filter(e => !ABSENTS.includes(e));
+$('vif').addEventListener('input', candidats); $('vif').addEventListener('keydown', ev => { if (ev.key === 'Enter') { const c = $('cand').querySelectorAll('span'); if (c.length === 1) choisir(c[0].textContent); } if (ev.key === 'Escape') { ev.target.value = ''; candidats(); ev.target.blur(); } });
+function candidats(){ const v = $('vif').value.trim().toLowerCase(); const c = $('cand'); if (!v) { c.innerHTML = ''; S.cand = null; return; }
+  const l = PRESENTS.filter(e => { const [nom, ...pr] = e.split(' '); const p = pr.join(' '); return (nom.toLowerCase().startsWith(v[0]) && (v.length < 2 || p.toLowerCase().startsWith(v.slice(1)))) || e.toLowerCase().startsWith(v); });
+  c.innerHTML = l.map(e => `<span class="${S.cand === e ? 'choisi' : ''}">${esc(e)}</span>`).join(''); if (l.length === 1) S.cand = l[0]; }
+$('cand').addEventListener('click', ev => { if (ev.target.tagName === 'SPAN') choisir(ev.target.textContent); });
+function choisir(nom){ S.cand = nom; $('cand').querySelectorAll('span').forEach(s => s.classList.toggle('choisi', s.textContent === nom)); }
+document.querySelectorAll('.motifs [data-m]').forEach(b => b.onclick = () => { if (!S.cand) { $('vif').focus(); return; } S.parts.push({ nom: S.cand, m: b.dataset.m, di: (S.mur ? S.mur.di : S.di) + 1, h: hhmm() }); journal('parole', { nom: S.cand, m: b.dataset.m }); $('vif').value = ''; $('cand').innerHTML = ''; S.cand = null; participation(); $('vif').focus(); });
+$('bannule').onclick = () => { S.parts.pop(); journal('parole-annulee'); participation(); };
+function participation(){ const d = S.parts.slice(-4).reverse(); $('dern').innerHTML = d.length ? d.map(p => `<b>${esc(p.nom.split(' ').slice(-1)[0])}</b> — diapo ${p.di}, motif ${p.m}`).join(' · ') : '—'; $('total').textContent = `${new Set(S.parts.map(p => p.nom)).size} sur ${PRESENTS.length} présents`; }
+// le tableau dans sa fenêtre
+$('btableau').onclick = () => { if (fenetreMur && !fenetreMur.closed) { fenetreMur.focus(); return; } fenetreMur = window.open(location.href.split('?')[0] + '?mur=1', 'mjpc-tableau', 'width=960,height=540'); if (!fenetreMur) alert('La fenêtre a été bloquée par le navigateur : autorise les fenêtres pour ce fichier, puis reclique.'); };
+window.addEventListener('message', ev => { if (ev.data && ev.data.murPret) pousser(S.gel || etatComplet()); });
+// fin de l'heure
+$('bfin').onclick = () => { $('fin-txt').innerHTML = `Ton cours devait finir à 16:02. ${S.parts.length} prise(s) de parole, ${new Set(S.parts.map(p => p.nom)).size} élève(s) ; ${S.notesFil.length} note(s) au fil de l'eau ; tu es à la diapo ${S.di + 1} sur ${seance().ecrans.length}. Ce qui n'a pas été joué te sera proposé à reporter, comme aujourd'hui. <br><br><i style="color:var(--sourd)">(maquette : rien n'est enregistré)</i>`; $('vfin').classList.add('on'); };
+$('bfin-ok').onclick = () => { $('vfin').classList.remove('on'); journal('fin'); voir('relecture'); };
+function voir(v){ document.body.classList.toggle('vue-relecture', v === 'relecture'); $('ong-pilotage').classList.toggle('on', v !== 'relecture'); $('ong-relecture').classList.toggle('on', v === 'relecture'); if (v === 'relecture') relecture(); }
+$('ong-pilotage').onclick = () => voir('pilotage'); $('ong-relecture').onclick = () => voir('relecture'); $('bfin-non').onclick = () => $('vfin').classList.remove('on');
+// chrono
+$('pause').onclick = () => { S.pause = !S.pause; $('pause').textContent = S.pause ? '▶' : '⏸'; }; $('raz').onclick = () => { S.ecoule = 0; };
+function hhmm(){ const d = new Date(); return String(d.getHours()).padStart(2, '0') + ':' + String(d.getMinutes()).padStart(2, '0'); }
+setInterval(() => { if (!S.pause) S.ecoule++; const m = Math.floor(S.ecoule / 60), s = S.ecoule % 60; $('chr').textContent = String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0'); $('heure').textContent = hhmm(); if (S.ecoule % 5 === 0) ouOnEnEst(); }, 1000);
+// clavier
+document.addEventListener('keydown', ev => { const champ = /INPUT|TEXTAREA/.test(document.activeElement.tagName);
+  if ($('garde').classList.contains('on')) { if (ev.key === 'Enter') { ev.preventDefault(); $('garde-gel').click(); } if (ev.key === 'Escape') $('garde-non').click(); return; }
+  if ($('garde2').classList.contains('on')) { if (ev.key === 'Enter') { ev.preventDefault(); $('garde2-revenir').click(); } if (ev.key === 'Escape') $('garde2-non').click(); return; }
+  
+  if (ev.key === 'Escape') { $('vtoutes').classList.remove('on'); $('vfin').classList.remove('on'); $('menu').classList.remove('on'); if (document.body.classList.contains('notes')) notesFil(); return; }
+  if (champ) return;
+  if (ev.key === 'ArrowRight' || ev.key === ' ') { ev.preventDefault(); devoiler(); }
+  else if (ev.key === 'ArrowLeft') { ev.preventDefault(); revoiler(); }
+  else if (ev.key === 'PageDown') { ev.preventDefault(); aller(S.di + 1); }
+  else if (ev.key === 'PageUp') { ev.preventDefault(); aller(S.di - 1); }
+  else if (ev.key.toLowerCase() === 'n') { ev.preventDefault(); notesFil(); }
+  else if (ev.key.toLowerCase() === 'g') gel();
+  else if (ev.key.toLowerCase() === 'l') $('bloupe').click();
+  else if (ev.key.toLowerCase() === 't') toutes();
+  else if (ev.key.toLowerCase() === 'p') $('corps').classList.toggle('replie');
+  else if (ev.key.toLowerCase() === 'r') voir(document.body.classList.contains('vue-relecture') ? 'pilotage' : 'relecture');
+});
+// ───────── la relecture : construite sur le journal du mur, et sur rien d'autre ─────────
+function fmt(t){ const d = new Date(t); return String(d.getHours()).padStart(2, '0') + ':' + String(d.getMinutes()).padStart(2, '0') + ':' + String(d.getSeconds()).padStart(2, '0'); }
+function duree(ms){ const s = Math.round(ms / 1000); return s < 60 ? s + ' s' : Math.floor(s / 60) + ' min ' + String(s % 60).padStart(2, '0') + ' s'; }
+function relecture(){
+  const fin = Date.now(); const ecrans = seance().ecrans; const nomDiapo = (si, di) => DATA.seances[si].ecrans[di].act;
+  const diapos = J.filter(e => e.type === 'diapo');
+  // ① le fil de l'heure
+  let fil = '';
+  diapos.forEach((e, i) => { const fin2 = diapos[i + 1] ? diapos[i + 1].t : fin;
+    const dans = x => x.t >= e.t && x.t < fin2;
+    const gels = J.filter(x => (x.type === 'gel' || x.type === 'degel') && dans(x));
+    const dev = J.filter(x => x.type === 'devoile' && x.si === e.si && x.di === e.di && dans(x)).length;
+    const par = J.filter(x => x.type === 'parole' && dans(x)); const notes = J.filter(x => x.type === 'note' && dans(x));
+    const verbe = e.nature === 'début' ? 'La classe est sur' : e.nature === 'suivante' ? 'La classe passe à' : e.nature === 'retour' ? 'Retour de la diapo ' + (e.de.di + 1) + ' à' : 'Saut de la diapo ' + (e.de.di + 1) + ' à';
+    fil += `<div class="pas ${e.nature}"><span class="h">${fmt(e.t)}</span>${verbe} <b>la diapo ${e.di + 1} — ${esc(nomDiapo(e.si, e.di))}</b><span class="d">${duree(fin2 - e.t)}</span>`
+      + (dev ? `<div class="l">${dev} élément${dev > 1 ? 's' : ''} dévoilé${dev > 1 ? 's' : ''}</div>` : '')
+      + [].concat(gels.map(g => ({ t: g.t, h: `<div class="l gel">${fmt(g.t)} — ${g.type === 'gel' ? 'tableau figé' : 'tableau dégelé'}</div>` })),
+                  par.map(p => ({ t: p.t, h: `<div class="l">${fmt(p.t)} — ${esc(p.nom)}, motif ${p.m}</div>` })),
+                  notes.map(n => ({ t: n.t, h: `<div class="l">${fmt(n.t)} — note : ${esc(n.txt)}</div>` }))).sort((a, b) => a.t - b.t).map(x => x.h).join('') + '</div>'; });
+  // ② diapo par diapo
+  const temps = {}; diapos.forEach((e, i) => { const k = e.si + '|' + e.di; temps[k] = (temps[k] || 0) + ((diapos[i + 1] ? diapos[i + 1].t : fin) - e.t); });
+  let bilan = '<table><tr><th>Diapo</th><th>Au tableau</th><th>Prévu</th><th>Dévoilé</th><th>Ce qui s\'est passé</th></tr>';
+  ecrans.forEach((e, di) => { const k = S.si + '|' + di; const el = elements(e); const vu = vuMax[k] || 0; const t = temps[k] || 0; const jouee = t > 0;
+    const recit = !jouee ? 'pas jouée — à reporter, donner à la maison, annuler ou laisser' : el.length ? (vu >= el.length ? 'tout a été vu' : vu ? `on s\'est arrêté après « ${esc(el[vu - 1]).slice(0, 80)}… »` : 'affichée, rien dévoilé') : 'affichée';
+    bilan += `<tr class="${jouee ? '' : 'non'}"><td><b>${di + 1}</b> ${esc(e.act)}</td><td>${jouee ? duree(t) : '—'}</td><td>${e.dur} min</td><td>${el.length ? vu + ' / ' + el.length : '—'}</td><td>${recit}</td></tr>`; });
+  bilan += '</table>';
+  // ③ participation, ④ notes
+  const parE = {}; S.parts.forEach(p => { (parE[p.nom] = parE[p.nom] || []).push(p); });
+  const partH = Object.keys(parE).length ? Object.keys(parE).sort().map(n => `<span class="puce">${esc(n)} <b>${parE[n].length}</b> <small style="color:var(--sourd)">${parE[n].map(p => 'diapo ' + p.di + ' · motif ' + p.m).join(', ')}</small></span>`).join('') : '<span class="vide">personne encore</span>';
+  const notesH = S.notesFil.length ? S.notesFil.map(n => `<div><b style="color:var(--or)">${n.h}</b> · diapo ${n.di} — ${esc(n.t)}</div>`).join('') : '<span class="vide">aucune</span>';
+  const nGel = J.filter(e => e.type === 'gel').length;
+  $('rel-titre').textContent = `Relecture — 3E Charles de Gaulle · mardi 15:07-16:02`;
+  $('rel-sous').textContent = `${DATA.seances[S.si].titre} · ${J.length ? fmt(J[0].t) : '—'} → ${fmt(fin)} · ${Object.keys(temps).length} diapo${Object.keys(temps).length > 1 ? 's' : ''} jouée${Object.keys(temps).length > 1 ? 's' : ''} sur ${ecrans.length} · ${S.parts.length} prise${S.parts.length > 1 ? 's' : ''} de parole (${Object.keys(parE).length} élève${Object.keys(parE).length > 1 ? 's' : ''}) · ${S.notesFil.length} note${S.notesFil.length > 1 ? 's' : ''} · tableau figé ${nGel} fois`;
+  $('rel').innerHTML = `<h3>Le fil de l'heure — ce que la classe a vu</h3>${fil || '<span class="vide">rien encore</span>'}`
+    + `<h3>Diapo par diapo</h3>${bilan}`
+    + `<div class="deux"><div><h3>Participation</h3>${partH}</div><div><h3>Notes au fil de l'eau</h3>${notesH}</div></div>`;
+}
+$('ou').textContent = 'mardi 15:07-16:02 · heure 1 sur 3 · ' + DATA.seances[0].titre;
+tout(); participation();
+}
+</script>
+</body></html>

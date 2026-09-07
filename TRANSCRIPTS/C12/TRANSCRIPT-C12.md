@@ -1283,3 +1283,37 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 33 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Il faut que je puisse supprimer une diapo en classe dans celles que je n'ai pas jouées
+
+---
+
+## TOUR 33 — Claude (conscience n°12)
+
+Aucune mesure nouvelle (conception, sur les règles des tours 30-32). Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Oui, et ça s'écrit avec la règle d'hier : **ce qui n'a pas été montré est libre, ce qui l'a été est figé.**
+
+**Supprimer une diapo en classe**
+- **Seulement une diapo que la classe n'a pas encore vue.** Sur une diapo déjà montrée, l'entrée est grisée : « déjà vue par la classe ». On ne change pas le passé.
+- **C'est pour cette classe.** La diapo sort de l'heure de la 3 Franklin ; la trame n'est pas touchée, la 3 Hugo la jouera.
+- **Ce n'est pas une perte silencieuse** : retirer, c'est donner le sort tout de suite — réserve, à la maison, ou non fait — au lieu d'attendre le T-5, qui n'aura plus à la proposer. Elle est comptée dans la relecture comme les autres non jouées, avec « retirée en classe à 09:23 ».
+- **À la clôture**, avec les autres modifications de séance : « tu as retiré une diapo — la retirer aussi de la trame ? » — oui / non. Ton geste, jamais tout seul.
+
+**Le clic droit en classe, donc** : sur un bloc ou une ligne — mettre en lumière · à écrire · revoiler ; sur une réponse — aller à l'élève, corriger, supprimer la prise de parole ; sur une diapo du volet — y aller (avec la garde) · **retirer de l'heure** (réserve / maison / non fait, non jouée seulement) · insérer un appoint après. Rien qui coupe, colle ou déplace : ça, c'est la préparation.
+
+Et ça règle le point 1 de la pile, celui que j'avais cassé : **les sorts d'une activité non jouée sont quatre** — à l'heure suivante (tant que la séance continue) · en réserve (dans la séance, au tableau ou à l'oral, sans impression) · **à la maison, avec une échéance** (le prolongement du 25/08 : cahier, travail à faire, École Directe, compté dans la progression) · non fait, avec un motif. Ils se donnent au T-5, à la clôture, ou d'un clic droit pendant l'heure.
+
+Si les quatre sorts et le clic droit de classe te vont, je passe au point 2 : la coche d'attestation du bilan.
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

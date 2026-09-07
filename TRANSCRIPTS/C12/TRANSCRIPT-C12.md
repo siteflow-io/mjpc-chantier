@@ -218,3 +218,38 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 6 — Paul
+
+Texte de Paul, mot pour mot :
+
+> En fait, mon déroulé dans l'éditeur me sert à voir le rendu en classe, d'où la vue tableau. Je joue "en avance" ce qu'une séance donnera en classe. Ensuite, je veux avoir accès à mon chapitre en permanence. En fait, tout ce que tu vois là, c'est de la reproduction (plus ou moins bien faite) de ce que fait le logiciel powerpoint. C'est lui que j'utilise en classe. Ce qui me manque juste dans le logiciel diaporama, c'est toutes les fonctionnalités de suivi en direct, de gel aussi (je dois utiliser la télécommande du vidéoproj). Tu vois?
+
+---
+
+## TOUR 6 — Claude (conscience n°12)
+
+Aucune mesure nouvelle ce tour (cadrage dans la conversation ; rien déposé hormis ce transcript).
+
+Réponse mot pour mot :
+
+Oui, je vois. Je le redis dans tes mots pour être sûr :
+
+- **En classe, c'est PowerPoint que tu utilises.** Le site ne l'a pas encore remplacé. Tout ce que j'ai sous les yeux — l'éditeur, le déroulé, la vue tableau — c'est une reproduction de PowerPoint, plus ou moins bien faite.
+- **Ce que PowerPoint ne sait pas faire, et que tu attends du site** : le suivi en direct (qui participe, où on en est, le temps, ce qui en sort pour la relecture et École Directe) et le gel (aujourd'hui tu passes par la télécommande du vidéoprojecteur).
+- **Ce que tu fais dans l'éditeur** : jouer en avance, pour voir ce que la séance donnera au tableau — d'où la vue tableau depuis la préparation.
+- **Et tu veux ton chapitre à portée en permanence** — pas seulement l'écran du moment.
+
+Ce que ça change pour le dessin : le modèle est connu, c'est PowerPoint, et il a **trois écrans** — celui où on prépare (les vignettes à gauche, la diapo au centre, les outils à droite), celui du présentateur en classe (la diapo en cours, la suivante, le chrono, les notes, l'écran noir), et le mur. Le site a les mêmes trois — préparation, pilotage, tableau — mais il les a fondus dans un seul, avec le chapitre entier autour, et le moteur au milieu dans son cadre. Le suivi en direct et le gel viennent se poser sur l'écran du présentateur, pas ailleurs. Et « jouer en avance » doit rester une répétition : aujourd'hui « Lancer la séance » écrit un vrai cours au hub — une répétition ne doit rien écrire.
+
+Ce que tu gardes, je l'ai listé au tour d'avant, et rien n'en sort : les cinq blocs, le dévoilement, le gel, la mise en lumière, « à écrire », le zoom qui passe au mur, le chrono, la participation, le tableau, le récit, le papier, École Directe, le T-5, la reprise, la trace des heures, la copie par classe, le téléphone.
+
+**Ce que je propose** : je te dessine la maquette des deux écrans — « je prépare » et « je joue en classe » (le mur ne change pas) — en HTML, comme pour l'emploi du temps, et tu la corriges jusqu'à ce qu'elle soit la tienne. Rien ne se code avant.
+
+**Ma question, une seule, avant de dessiner** : le suivi en direct — qui participe, où on en est, le temps — tu le veux **sur ton écran de contrôle, à côté de la diapo**, ou **seulement au téléphone** (ton écran ne montrant que ce que voit la classe) ?
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

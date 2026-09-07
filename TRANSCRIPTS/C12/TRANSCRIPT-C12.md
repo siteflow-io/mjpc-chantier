@@ -1214,3 +1214,39 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 32 — Paul
+
+Texte de Paul, mot pour mot :
+
+> et le clic droit?
+
+---
+
+## TOUR 32 — Claude (conscience n°12)
+
+Lectures jouées avant réponse (lecture seule ; rien déposé hormis ce transcript) : moteur `menuEcran` L2137-2156 (menu d'une diapo), `ctx*` L2160-2185, le clic droit sur le contenu L2349-2382 (bloc, étape/réponse, image, suite), `sousTab`/`cs*`/`cb*`/`sel*` L2383-2412 (presse-papier `presse`, `neuf_`), sélection par cadre L2186-2245 ; site `ctxOuvrir` L11637, `ctxSommaireCible` L11730, `_drEntreesEcran` L15929 (Ouvrir · Dupliquer ici · Envoyer vers « séance » · Supprimer).
+
+Réponse mot pour mot :
+
+Oublié aussi, et il est partout. Relu — trois menus au clic droit, plus la sélection :
+
+**1. Sur une diapo, dans la colonne des vignettes ou le sommaire** (`menuEcran`) : Ouvrir cet écran · Dupliquer l'écran · Insérer un écran vide après · Monter · Descendre · Supprimer l'écran. (Et pour une « suite » du zoom : supprimer la suite, tout replier — ça tombe avec le découpage.)
+
+**2. Sur un bloc, dans la diapo** : Supprimer ce bloc · Dupliquer · Monter · Descendre · Copier · Coller ici · Couper. **Sur une étape ou une réponse** (clic droit sur la ligne) : Supprimer cette étape / cette réponse · Dupliquer · Monter · Descendre. Sur une **image** : seulement Supprimer (dupliquer et déplacer « télescopent la mise en scène », correctif n°95). Le presse-papier tient plusieurs blocs et survit d'une diapo à l'autre, et un bloc collé est « neuf » — jamais montré, pas encore assumé.
+
+**3. La sélection par cadre** : clic gauche maintenu sur le fond, on tire un rectangle sur plusieurs blocs → copier, couper, supprimer, « à écrire » sur le lot.
+
+**4. Dans le site, sur un écran de la colonne chapitre** (`_drEntreesEcran`) : Ouvrir · Dupliquer ici · **Envoyer vers « telle séance »** (déplacer une diapo d'une séance à une autre) · Supprimer — le même menu que celui du chapitre, étendu.
+
+**Ce que ça donne dans la base saine — à trancher, une seule question à la fin :**
+- **En préparation, tout ça reste, tel quel** : c'est la structure — dupliquer, insérer, monter, descendre, supprimer, copier-coller, envoyer vers une autre séance, la sélection par cadre. Ça va dans le sujet « préparation ».
+- **En classe, le clic droit change de sens.** Il ne doit pas restructurer la séance devant les élèves (supprimer une diapo en pleine heure, c'est modifier la copie de la classe, donc le passé possible). Ce qui a du sens en classe, sur un bloc ou une étape : **mettre en lumière · à écrire · revoiler celui-ci · aller à la réponse de tel élève** ; sur une diapo du volet : **y aller** (avec la garde), **la mettre en réserve maintenant** (au lieu d'attendre le T-5), **l'envoyer à la maison**. Et rien qui coupe, colle ou déplace.
+
+**Ma question** : en classe, veux-tu **un clic droit réduit à ces gestes de classe** (lumière, à écrire, revoiler, réserve, maison, aller à) — ou **le même clic droit qu'en préparation**, complet, quitte à toucher la copie de la classe en pleine heure ?
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

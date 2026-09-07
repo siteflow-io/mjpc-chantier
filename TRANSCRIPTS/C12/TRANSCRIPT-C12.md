@@ -978,3 +978,63 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 26 — Paul
+
+Texte de Paul, mot pour mot :
+
+> fais moi un flux en classe réelle sur mes créneaux, disons en franklin par exemple. je n'arrive pas à visualiser dans ma tête ce que ça donnerait.
+
+---
+
+## TOUR 26 — Claude (conscience n°12)
+
+Lectures jouées avant réponse (lecture seule ; rien déposé hormis ce transcript) : grille appariée du sas (3 FRANKLIN Aretha → 3E Charles de Gaulle : lundi 08:57-09:52 AB, mardi 15:07-16:02 A/B, mercredi 10:07-11:02 A/B, jeudi 16:04-16:59 B, vendredi 10:07-11:02 AB), créneaux 2026-2027 (temps utile = fin − début − 5), trame test séance 1 (18 diapos, rituels aux diapos 8 et 9) et séance 2.
+
+Réponse mot pour mot :
+
+Semaine B, celle du 7 septembre, 3 Franklin Aretha (grille appariée : lundi 08:57, mardi 15:07, mercredi 10:07, jeudi 16:04, vendredi 10:07). Séance 1 « Poésie et peinture : le Romantisme en question », 18 diapos, deux heures dans ta trame — heure 1 : diapos 1 à 8, la 8 étant « Question-bilan » ; heure 2 : diapos 9 à 18, la 9 étant « Où en sommes-nous ? ». Voilà ce que ça donne, heure par heure. Ce qui est écrit *ainsi* est ce que le site fait tout seul.
+
+**Lundi, 08:57-09:52 — heure 1**
+
+08:55. Tu ouvres le portable en salle. Le site s'ouvre sur ton emploi du temps, la case du moment est en or : « 3 Franklin · 08:57-09:52 · Poésie et peinture, heure 1 sur 2 ». Un clic : le pilotage, plein écran, prêt — la diapo 1 au centre, tes notes dessous, le volet des vignettes à gauche, rien d'autre. Tu fais Win+K, la fenêtre du tableau part sur le vidéoprojecteur. Si Win+K ne marche pas, l'ordi de classe est sur l'adresse du tableau et il attend.
+
+09:01. La classe est installée. Tu cliques **Lancer**. *L'heure commence à 09:01, elle finit à 09:52 : 46 minutes utiles, le site le dit dans le bandeau, et il recale les horaires prévus des diapos.* Le tableau montre la diapo 1. Ton écran montre la même, plus le gris des étapes non dévoilées, plus tes notes : « rassurer sur l'orthographe ». *Le journal commence : « 09:01, la classe est sur la diapo 1 ».*
+
+09:01-09:11. Tu dévoiles les étapes 1, 2, 3 à la flèche. *Chaque dévoilement s'écrit.* Les élèves écrivent leur tableau à trois colonnes. Tu veux regarder ce que tu as prévu sur le tableau 3 : tu cliques la vignette 4 — **« La classe te suivrait — sauter à la diapo 4. Geler d'abord ? »** — Entrée. *Le tableau reste sur la diapo 1, étape 3. Le journal ne bouge plus.* Tu regardes la 4, la 5, tu reviens à la 1. Tu cliques ❄ : *tu es revenu là où est la classe, le dégel est silencieux, rien ne s'est écrit.* Tu dévoiles l'étape 4.
+
+09:14. Zélia répond. Tu tapes « ze », un seul nom, Entrée, motif 1. *« 09:14, Zélia, diapo 1, motif 1 ».* Elle a dit « le sublime » sans le mot : touche N, tu écris « Line : le sublime sans le mot — reprendre au bilan », Entrée, N. *La note prend 09:14 et la diapo 1. Rien de tout ça au tableau.*
+
+09:17-09:40. Tableaux 1 à 5, les images. Tu passes de l'une à l'autre à la flèche (*le fil normal, aucune question*). Sur le Friedrich, tu traces un cadre à la loupe : le tableau grossit le voyageur, le texte ne bouge pas. Sur la diapo 7, « Les hypothèses de la classe », les 22 minutes prévues. La colonne de droite dit « 3 min de retard sur le prévu », en rouge : tu le sais, tu continues.
+
+09:47. **T-5.** *Le bandeau paraît : il reste 5 minutes d'agenda ; la diapo 8, la question-bilan, n'a pas été jouée, et la 7 est en cours.* Il propose **« Aller au bilan »**. Tu cliques : *saut devant la classe à la diapo 8 — le journal l'écrit, la 7 est marquée « interrompue à 09:47 »*. Tu poses la question-bilan, trois réponses, tu prends la parole de Clovis (motif 2).
+
+09:50. Tu cliques **Fin de l'heure**. *L'écran de clôture : « heure 1 close à 09:50 ; 7 diapos jouées, la 7 interrompue ; 2 prises de parole ; 1 note ».* Pour la 7, un choix — **heure suivante / réserve / non fait**. Tu choisis « heure suivante » : les hypothèses, il faut les finir devant tout le monde. *Deux boutons : copier pour École Directe « contenu de séance », copier « travail à faire ».* Tu colles, tu fermes. Les élèves notent l'agenda. 09:52.
+
+Chez toi, le soir, si tu veux : l'onglet Relecture de cette heure. Tout y est, dans l'ordre : 09:01 diapo 1, les quatre étapes, Zélia, la note, 09:17 Tableau 1… 09:47 saut au bilan, Clovis. Diapo par diapo : joué / interrompu, 6 min au tableau pour 5 prévues. Rien de ce que tu as fait pendant le gel n'y est.
+
+**Mardi, 15:07-16:02 — heure 2**
+
+15:05. L'emploi du temps : « 3 Franklin · heure 2 sur 2 ». Le pilotage s'ouvre **sur la diapo 9, « Où en sommes-nous ? »** — ton rituel. *Au-dessus du volet : « reportée de l'heure 1 : Les hypothèses de la classe (22 min, interrompue) — elle passe après le rituel ; l'heure 2 dépasse de 14 min ».* Le volet montre l'ordre réel : 9, puis la 7, puis 10 à 18. Tu vois le débordement, tu décides : tu réduis la 7 à 10 minutes d'un clic sur sa durée, le débordement tombe à 2 minutes. *C'est toi qui valides, le site ne résorbe rien.*
+
+15:08. Lancer. Le rituel : « Quel mot avons-nous employé pour ce qui manque à l'image ? » — la réponse attendue est en gris chez toi, pas au tableau. Tu la dévoiles quand ils ont trouvé.
+
+15:12-15:22. La 7, les hypothèses, finies. *Journal : « diapo 7 (reportée de l'heure 1), 15:12-15:22 ».*
+
+15:22-15:57. Diapos 10 à 17. À 15:40, sur « Les règles héritées », tu gèles pour préparer la suite pendant qu'ils copient ; tu vas jusqu'à la 14, tu reviens à la 11, ❄ — *silencieux*. Une fois, tu dégèles sans être revenu : **« La classe est sur la diapo 11, tu es à la diapo 14. »** — tu cliques « Revenir là où est la classe, puis dégeler ». *Rien ne s'est écrit.*
+
+15:57. **T-5.** Les diapos 16 et 17 ne sont pas jouées ; la 18, « Question-bilan et travail à faire », l'est encore moins. **Aller au bilan** : saut à la 18. Pour la 16 et la 17, à la clôture : c'est la dernière heure de la séance, « heure suivante » n'existe plus — **réserve** ou **non fait**. La 16, « Placer les poètes », se fait seul sur papier : réserve. La 17, un débat : non fait, motif « pas le temps ». *Comptés tous les deux dans la relecture, aucun ne disparaît.*
+
+16:00. Clôture, École Directe, agenda. *La relecture de l'heure est prête ; la relecture de séance aussi : les deux heures bout à bout, la 7 « prévue heure 1, jouée heure 2 », la 16 en réserve, la 17 non faite avec son motif.* *Elle te dit : « à imprimer pour la 3 Franklin : 1 activité en réserve, PDF ×29 ».* Tu imprimes mercredi matin en salle des profs.
+
+**Mercredi, 10:07-11:02 — séance 2, heure 1**
+
+Tu arrives avec les 29 feuilles de « Placer les poètes ». La séance 2, « L'Albatros », s'ouvre sur sa diapo 1. Quand les premiers ont fini l'activité 3, tu leur tends la feuille. Si tu veux le noter : initiales, « réserve ». Sinon rien. La séance 1 est close ; sa réserve a servi ou pas — elle ne réapparaîtra pas à la séance 7.
+
+Deux hypothèses que j'ai prises pour écrire ça, à confirmer ou à changer : l'impression **entre les deux heures** (mardi soir, pour mercredi), pas d'avance ; et une réserve qui ne survit pas à sa séance — la 16 se donne mercredi ou jeudi, puis c'est fini.
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

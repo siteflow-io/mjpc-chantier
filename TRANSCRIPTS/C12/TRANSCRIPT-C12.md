@@ -759,3 +759,36 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 20 — Paul
+
+Texte de Paul, mot pour mot :
+
+> le tableau qui existe via le bouton c'est win K. parfois ça marche, parfois ça marche pas: et quand ça marche pas, il me faut le tableau distant (je pilote avec mon ordi portable, l'ordi classe projette le tableau distant via le vidéo projecteur, et voilà.
+
+---
+
+## TOUR 20 — Claude (conscience n°12)
+
+Lectures jouées avant réponse (lecture seule ; rien déposé hormis ce transcript) : `sesTabChercherCours` L17197 (l'ordi de classe sonde `/site/cours_actif` toutes les 2 s, cours de moins de 4 h), `sesTabMonter`, `SES` L16649 (`mode` = `?vue=tableau|tel` ; le cran de zoom est un état de session), chemins `/site/cours_actif` (un seul cours actif pour tout le site) ; liste des documents du chantier EDT au sas (ARBITRAGE-PHASE0 + réponses, mandats, rapports, SEQUENCE-TEST-PAUL) ; `DEROULE/CADRAGE-TEMPS.md` §4, §9, §13, §14, §15 relus.
+
+Réponse mot pour mot :
+
+Compris, et ça tranche le sujet du tableau. Voilà ce que ça fixe — je te l'écris comme les lignes du cadrage, corrige ce qui n'est pas dans tes mots :
+
+**Le tableau**
+1. **Un seul état du tableau, tenu par ton pilotage** : la diapo, ce qui est dévoilé, les marques, la taille du texte et sa page, la loupe, le bandeau (chrono, qui a participé). C'est cet état — et lui seul — que le journal enregistre, à l'instant où tu le publies.
+2. **Deux supports pour le montrer, jamais deux états** : la fenêtre sur ton ordinateur (Win+K, immédiate), et le tableau distant sur l'ordi de la classe, qui lit le même état par le hub. Quand Win+K marche, tu n'as rien à faire ; quand il ne marche pas, l'ordi de classe ouvre l'adresse du tableau et attend le cours — c'est déjà comme ça aujourd'hui (`?vue=tableau`, un seul cours en cours à la fois pour tout le site), on le garde tel quel.
+3. **Le gel, c'est l'état publié qui ne bouge plus** — donc la fenêtre et le distant se figent ensemble, sans rien de spécial à faire pour le distant.
+4. **Le retard du distant n'est pas une donnée** : le journal dit ce que le tableau devait montrer et quand ; ton écran te dit si le distant suit (« suit », « en retard de n s », « perdu »), pour que tu saches, jamais pour changer le journal.
+5. **Le zoom (texte au tableau, page, loupe) fait partie de l'état** : les deux supports le montrent pareil.
+
+**Ce que je reprends tel quel du cadrage du temps (25/08)**, parce que rien ne le contredit : la fin est fixe, le début est lancé par toi, les cinq dernières minutes sont à l'agenda, le retard recalcule et le site montre le débordement sans le résorber, le T-5 et ses choix par activité, les deux copies pour École Directe, et l'architecture à trois objets — la trame préparée, la séance jouée par classe (ce que tu écris en classe dans une diapo, les réponses avec initiales, appartient à cette classe), la remontée dans la trame par geste explicite seulement. Le journal du tableau s'ajoute à la séance jouée par classe, il ne la remplace pas.
+
+**Ma question suivante, une seule** — elle commande l'emploi du temps (« heure 1 sur 3 »), le T-5 et la relecture : **quand une séance se joue sur plusieurs heures, la deuxième heure s'ouvre-t-elle là où la classe s'est arrêtée** — même diapo, mêmes éléments dévoilés, les activités reportées marquées — **ou sur la première diapo pas encore jouée ?** Et la relecture : une par heure (comme École Directe), la séance étant la somme de ses heures ?
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

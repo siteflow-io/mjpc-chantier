@@ -5606,3 +5606,23 @@ Réponse mot pour mot :
 **Ça marche. J'ai calculé ce que ton écran devait dire, depuis ta grille, et je l'ai comparé à ton image : dix-huit cases sur dix-huit.**
 
 MEMO
+
+---
+
+## TOUR 113 — Paul
+
+Texte mot pour mot :
+
+> je veux que les prompts passent obligatoirement par ici. tu ne peux pas faire de transmission en background, sinon c'est exactement ce qui génère de la dérive car je ne peux pas controler ce que tu écris.
+
+---
+
+## TOUR 113 — Claude (conscience n°11)
+
+Registre : `n°11 · 95`. **La passation est livrée EN ENTIER dans la conversation** — elle avait
+été déposée au tour précédent sans qu'il en lise une ligne.
+
+Réponse mot pour mot : la reconnaissance de la faute, la règle gravée, puis le texte complet
+de la passation.
+
+MEMO

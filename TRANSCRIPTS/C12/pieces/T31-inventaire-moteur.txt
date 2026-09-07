@@ -1,0 +1,186 @@
+=== UI DU MOTEUR (boutons / onglets / réglettes) ===
+L387: Sommaire | ong('sommaire')
+L388: Documents | ong('documents')
+L389: Déroulé | ong('deroule')
+L390: Relecture | ong('relecture')
+L391: Papier | ong('papier')
+L399: + Écran | nouvelEcran()
+L408: ◀ ▶ | replie() ; devoile()
+L410: ❄ Gel | gel()
+L411: ✦ Mettre en lumière ✍🏻 À écrire | spot() ; stylo()
+L412: G S ✕ ↶ Annuler | forme('bold') ; forme('underline') ; forme('hilite','#ffe94a') ; forme('hilite',
+L414: 32 pt | 
+L417: Départ | chrono()
+L418: Chrono au tableau | this.classList.toggle('on');envoie()
+L420: 👥 Qui a participé ⧉ Ouvrir le tableau | quiParle() ; tableau()
+L434: + Consigne | ajoute('consigne')
+L435: + Fiche | ajoute('fiche')
+L436: + Question | ajoute('question')
+L437: + Schéma | ajoute('schema')
+L438: + Image | ajoute('image')
+L595: if(b.rappel) h+=' ' | ouvrirRappel('+j+')
+L599: h+=' ' | loupe('+n+','+j+')
+
+=== RACCOURCIS CLAVIER ===
+L1442: function ligne(ev,j,k){ if(ev.key!=='Enter')return; ev.preventDefault(); sauve(); lire();
+L1820: if(e.key==='Enter'){ e.preventDefault(); sp.blur(); }
+L1821: if(e.key==='Escape'){ var b2=blocImg(); sp.textContent=(b2&&b2.marques[k]?b2.marques[k].txt:'')||''; sp.blur(); } }
+L1828: if(ev.key==='Escape'){ PRIS={}; selMk=null; if(mkOutil)armeMk(mkOutil); dessineEcran(); marquePris(); }
+L1829: if((ev.key==='Delete')&&selMk!==null){ var b=blocImg();
+L2442: if((ev.ctrlKey||ev.metaKey)&&ev.key.toLowerCase()==='z'){ev.preventDefault();annuler();return;}
+L2444: var k2=ev.key.toLowerCase();
+L2448: if((ev.ctrlKey||ev.metaKey)&&ev.key.toLowerCase()==='v'&&!ed&&presse){
+L2454: if(ed&&(ev.ctrlKey||ev.metaKey)){var k=ev.key.toLowerCase();
+L2462: if(ev.key==='ArrowRight'||ev.key===' '){ev.preventDefault();devoile();}
+L2463: if(ev.key==='ArrowLeft'||ev.key==='Backspace'){ev.preventDefault();replie();}});
+
+=== FONCTIONS (157) avec leur commentaire ===
+L538 prenom(i) — la classe : initiales → prénom réel (au tableau on nomme, dans le pilotage on abrège) 
+L540 hm(m) — var DEBUT="10:07"; heure de début de la séance 
+L541 horaires() — var DEBUT="10:07"; heure de début de la séance 
+L542 maintenant() — var DEBUT="10:07"; heure de début de la séance 
+L543 ecranDuMoment() — 
+L548 corps(n) —  conservé pour les vignettes 
+L549 calePilote() —  même loi que le tableau : 32 pt = 5,6 % de la hauteur de la boîte 
+L555 sauve() — var H=b.getBoundingClientRect().height; la boîte entière : le padding est en %, donc homothétique 
+L556 annuler() — 
+L558 marqueFiche(n,j,k) — 
+L560 marque(n,j,sous) — 
+L563 html(n,pourClasse) — 
+L660 borneRev() —  le compteur de dévoilement ne dépasse jamais le contenu réel 
+L669 rendre() — 
+L799 outilsDuRegime() — 
+L820 schLignes(b) — 
+L821 esc(s) — 
+L823 schemaHTML(b,pourClasse) — 
+L846 schEch() — ═══ SCHÉMAS — le contenu est déclaré, positions, traits et couleurs sont calculés ═══ une seule réglette pour 
+L847 cle(txt) — une seule réglette pour tout l'écran : le schéma en dérive, comme la fiche et l'image 
+L848 mesure(txt,fs) —  positions déplacées à la main : elles priment sur le calcul 
+L850 separe(N,W,H,marge) — function mesure(txt,fs){ return {w:Math.max(52,String(txt).length*fs*0.54)+14, h:fs*2.1}; } positions déplacée
+L891 surface(N,W,H,marge) — 
+L899 dessine(n) — 
+L906 carte(L) — 
+L951 frise(L) — 
+L986 arbre(L) — ── ARBRE : profondeur déduite de l'indentation ── 
+L1019 cycle(L) — ── CYCLE : étapes réparties sur un cercle ── 
+L1055 grille(L) — ── TABLEAU ── 
+L1076 ouTexte(n) — 
+L1085 partAjoute(ini,type,note) — 
+L1092 partRetire(ini,id) — peintQui(); la modale « qui a participé » suit, si elle est ouverte 
+L1099 histoire(ini) — l'historique COMPLET d'un élève : ses réponses retenues ET ses prises sans réponse 
+L1115 copierED(quoi) — 
+L1142 figeRecit() — 
+L1143 rendRecit() — 
+L1164 imparfait(s) — 
+L1174 empreinte(s) — 
+L1175 connecteur(type,graine) — 
+L1176 personne(t) — 
+L1177 recit(t) — 
+L1197 lisible(s) — return "la consigne était : « "+s+" »"; une citation ne se transpose pas 
+L1204 citations(b,j,e) — 
+L1231 majVues() — 
+L1408 lire() — 
+L1442 ligne(ev,j,k) — 
+L1446 va(n) — b.vues=Math.max(b.vues||0,k+1); ce qu'on vient d'écrire est montré tout de suite 
+L1449 pas(d) — if(ficheOuverte&&ficheOuverte[0]!==n)ficheOuverte=null; on quitte l'écran : la fiche se referme 
+L1453 elems(b) —  ce qui se dévoile à l'intérieur d'un bloc 
+L1481 photoVu() —  ce qui est déjà montré, avant le geste 
+L1487 animeArrivees(av) — 
+L1516 devoile() — 
+L1529 replie() — 
+L1543 bascule(j,k) — 
+L1544 gel() — 
+L1547 zoom() — rendre(); au dégel, rendre() → envoie() repeint le tableau } 
+L1550 supprimeSuite(n) — if(iz<av) reabsorbe(); les suites n'existent que par le zoom 
+L1560 reabsorbe() — 
+L1610 regime(n) — monter/descendre, ✍🏻, mise en lumière). Jamais les deux : c'est la source des télescopages. 
+L1614 estVisuel() — 
+L1615 imagePleine(n) — 
+L1620 reglages() — 
+L1661 majB(f,leger) — 
+L1664 calibreMarques(racine) — if(blocRegle)blocRegle.neuf=false; éditer un bloc visuel, c'est l'assumer : il devient montrable (correctif n°
+L1672 dessineEcran() —  on repeint l'écran sans toucher au panneau ni au focus 
+L1677 setForme(v) — 
+L1679 setSrc(v) — 
+L1680 setPos(v) — 
+L1681 setRef(v) — 
+L1684 setLeg(v) — var a=document.getElementById('rgl-a'); [n°91] le lien d'aide suit la saisie 
+L1685 setSupport(v) — var a=document.getElementById('rgl-a'); [n°91] le lien d'aide suit la saisie 
+L1686 setDev(v) — 
+L1687 armeMk(o) — 
+L1689 supMk(k) — 
+L1703 repeintSch() — ══ PRÉHENSION — déplacer, redimensionner, sélectionner (repris des maquettes A et B) ══ 
+L1704 marquePris() — ══ PRÉHENSION — déplacer, redimensionner, sélectionner (repris des maquettes A et B) ══ 
+L1752 urlMedia(ref) — 
+L1753 prendreImage(f) — 
+L1759 blocImg() — 
+L1809 editeMarque(mk) — 
+L1832 ajoute(t) — 
+L1856 uid() — ══════════════════════════════════════════════════════════════════════════════ 
+L1857 idBloc(b) — ══════════════════════════════════════════════════════════════════════════════ 
+L1864 memeFeuille(a,b) — 
+L1869 dejaPosee(b) — 
+L1877 neuf_(b) —  une copie : rien n'a été montré 
+L1887 purgeMarques(e,b) —  les marques suivent le bloc, pas son rang 
+L1892 coupeTexte(html) — Un bloc unique trop long n'est JAMAIS refusé : il se coupe et coule sur l'écran suivant. 
+L1903 scinde(e) — 
+L1961 degorge(auto) —  ce qui dépasse part sur un écran neuf, la suite ne bouge pas 
+L1988 nouvelEcran() — i=i+1; passage automatique sur la suite 
+L1992 dansSurligne() —  la sélection est-elle déjà surlignée ? 
+L2004 forme(q,couleur) — 
+L2044 stylo() — ── ✍🏻 : marquer ce que les élèves doivent écrire ── 
+L2047 cleObjet(el) — 
+L2137 menuEcran(ev,n) — ── clic droit sur une vignette (colonne de gauche) et sur une ligne du sommaire ── 
+L2156 bornes(n) — 
+L2160 ctxAller() — 
+L2161 ctxSup() — 
+L2164 ctxSupSuite() — 
+L2165 ctxReabs() — 
+L2166 ctxDup() — 
+L2173 ctxVide() — 
+L2176 ctxMonte(d) — 
+L2186 selVide() — ── sélection par cadre : clic gauche maintenu sur le fond, on tire un rectangle ── 
+L2229 selSup() — 
+L2242 selEcrire() — 
+L2246 ouvrirRappel(j) — 
+L2260 poseRappel(j,motif,libreSeul) — 
+L2269 ouvrirPart(ini) — 
+L2298 supPart(ini,id) — 
+L2299 corrigePart(ini,id) — 
+L2310 majPart(ini,id,type) — 
+L2316 allerRep(n,k) — 
+L2318 posePart(type) — 
+L2328 spot() — 
+L2339 allumeTableau(cle) — allumeTableau(el.dataset.s); passe par le point de sortie unique : rien si gelé spot(); l'outil se repose : on
+L2345 allume(el) — 
+L2383 ferme() — if(Date.now()<gardeMenu)return; on vient d'ouvrir le menu : on le laisse 
+L2384 sousTab() — 
+L2386 csSup() — 
+L2388 csDup() — 
+L2389 csMove(d) — 
+L2391 cbSup() — 
+L2393 cbDup() — 
+L2394 cbMove(d) — 
+L2396 cbCopie() — 
+L2397 cbColle() — 
+L2401 cbCoupe() — 
+L2404 selCopie() — 
+L2407 selCoupe() — 
+L2408 selCopie2() — 
+L2413 loupe(n,j) — 
+L2427 fermeLoupe() — 
+L2428 corpsFiche(b,j) — 
+L2433 ficheHTML(b,pourClasse) — 
+L2437 scrollFiche(el) — la page telle qu'elle est imprimée : A4 portrait, charte de l'atelier 
+L2473 deborde() —  mesure fiable : scrollHeight mentent en flex height:100% 
+L2482 verifDeborde() — 
+L2495 majVignette(n) — 
+L2505 quiParle() — ── tableau ── ── « Qui a participé » : une modale sur le tableau, ouverte et fermée par la bascule ── 
+L2510 peintQui() — 
+L2527 tableau() — 
+L2620 cale(t) —  même loi que le pilotage : 32 pt = 5,6 % de la hauteur de la boîte 
+L2624 envoie() — 
+L2664 ong(v) — ── onglets ── 
+L2671 affiche() — ── chrono ── 
+L2673 regleChrono() — 
+L2674 chrono() — 

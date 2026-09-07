@@ -623,3 +623,39 @@ Tests : aucun, rien n'est livré au site.
 MEMO
 
 ---
+
+## TOUR 16 — Paul
+
+Texte de Paul, mot pour mot :
+
+> OK mais maintenant il faut que je puisse tester la relecture du coup. Vu que c'est le point majeur de ce diaporama enregistré en temps réel
+
+---
+
+## TOUR 16 — Claude (conscience n°12)
+
+Travail joué avant réponse (rien déposé hormis ce transcript et ses pièces T16) : maquette v6 = v5 + journal du tableau (écrit uniquement dans `pousser()`, c'est-à-dire quand l'état envoyé au mur change ; paroles et notes rattachées à la diapo au mur) + relecture construite sur ce journal (fil de l'heure, diapo par diapo, participation, notes) + seconde garde au dégel (si écart) + retrait des textes méta. Gabarit `pieces/T16-v6-template.html`, générateur `pieces/T16-gen-v6.py`, banc `pieces/T16-test-v6.mjs` ; journal obtenu au banc : `diapo#1(début) devoile#1 ×3 parole note gel degel devoile#1 ×3 diapo#4(saut) diapo#3(retour)` — rien entre gel et dégel ; zéro erreur JS. Captures `pieces/T16-v6-01-garde-au-degel.png`, `pieces/T16-v6-02-relecture.png`.
+
+Réponse mot pour mot :
+
+La v6 (jointe, manipulable) a la relecture. Elle se construit **uniquement sur le journal du tableau** — ce que la classe a vu, horodaté — et sur rien de ce que tu fais sur ton écran.
+
+**Pour la tester** : joue une heure comme tu veux (dévoile, gèle, saute, reviens, prends des paroles, écris des notes), puis **R** ou le bouton **Relecture** à tout moment (elle se lit en cours d'heure, c'est le même journal), ou **Fin de l'heure → Oui, clore**. Échap referme.
+
+**Ce qu'elle montre**
+1. **Le fil de l'heure** : chaque changement du tableau, à la seconde — « la classe passe à », « retour de la 4 à la 3 », « saut de la 1 à la 8 » —, le temps que la diapo est restée au tableau, les éléments dévoilés à ce moment-là, les gels et dégels, et, **rattachées à la diapo que la classe voyait à cet instant** (pas à celle où tu étais), les prises de parole et tes notes.
+2. **Diapo par diapo** : jouée ou pas, le temps réel contre le prévu, le plus loin dévoilé (jamais moins, même après un retour), et une ligne de récit : « on a tout vu », « on s'est arrêté après “…” », « affichée, rien dévoilé », ou **« pas jouée — à reporter, donner à la maison, annuler ou laisser »** pour ce qui n'a jamais été au tableau.
+3. **La participation**, par élève, avec la diapo et le motif.
+4. **Les notes au fil de l'eau**, à leur heure.
+
+**Ce que j'ai vérifié en la jouant** : trois dévoilements, une parole, une note, gel, saut à la 8 en gel, dégel → la seconde garde (« La classe est sur la diapo 1, tu es à la diapo 8 »), retour à la 1 puis dégel : **rien ne s'écrit** entre le gel et le dégel, pas une ligne. Puis un saut « devant la classe » à la 4 et un retour à la 3 : le fil les écrit, la 2 est « pas jouée ». Ce que tu as vu sur la 1 reste « 6 / 6 ».
+
+**Aussi dans la v6** : la seconde garde au dégel (seulement s'il y a un écart, Entrée = revenir là où est la classe) ; les textes méta retirés ; les phrases des gardes en attente de tes mots (« La classe te suivrait — revenir en arrière. Geler d'abord ? » et « La classe est sur la diapo 3, tu es à la diapo 8. »).
+
+**Ce qui n'y est pas** : le récit à l'imparfait de l'ancien moteur (il se refera sur ce journal, ce n'est pas ce que tu testes ici), les décisions du T-5 (affichées, pas jouables), le papier, École Directe.
+
+Tests : aucun, rien n'est livré au site.
+
+MEMO
+
+---

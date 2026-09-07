@@ -291,3 +291,42 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 8 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Je ne dois pas être bloqué par le gel moi. Par ailleurs je pense qu'il faut vraiment plus se rapprocher de ce que fait un vrai diaporama. Comment as-tu conçu tes maquettes là ? Quels choix as-tu fait?
+
+---
+
+## TOUR 8 — Claude (conscience n°12)
+
+Travail joué avant réponse (rien déposé hormis ce transcript et ses pièces T8) : maquette v2 HTML statique 1366×768, rendue en image (état normal, état gelé) ; pièces `pieces/T8-maquette-pilotage-ordi-v2.html`, `pieces/T8-maquette-pilotage-ordi-v2.png`, `pieces/T8-maquette-pilotage-ordi-v2-gel.png`.
+
+Réponse mot pour mot :
+
+**Comment j'ai conçu la v1, et ce que j'ai choisi** — sans détour :
+
+1. **L'ossature** : j'ai pris le mode présentateur d'un diaporama comme squelette (la diapo en cours, la suivante, le chrono), mais je l'ai suivi de loin : j'ai gardé les places du site actuel pour le reste. Résultat : une chose entre les deux.
+2. **Le gel** : je l'ai dessiné comme un voile sur *ta* diapo, avec un « tableau figé » dessus. C'est faux, et c'est exactement ce que tu relèves : le gel fige le mur, pas toi. Sur ton écran, il ne doit rien changer sauf un témoin.
+3. **Le chapitre** : je l'ai mis en liste de titres, à gauche, ouvert en permanence — parce que tu l'avais demandé « en permanence ». Un diaporama, lui, montre des vignettes, pas des lignes.
+4. **Les commandes** : j'ai gardé les boutons du site (mettre en lumière, à écrire, chrono au tableau, qui a participé) sous la diapo, alignés, avec leurs noms — là où un diaporama met six petits ronds sans mot.
+5. **Le suivi** : trois blocs à droite, empilés. Ce que j'ai pris du site (les motifs 1/2/3, la liste des initiales, l'appoint, les absents jamais montrés) vient du code et des captures ; ce que j'ai inventé, c'est la présentation.
+6. **Retiré** : le panneau prof, les onglets, « Ajouter à cet écran », le bandeau de préparation. Ça, je le maintiens.
+7. **La charte** vient de la maquette de l'emploi du temps ; les données sont celles de ton chapitre 3e test.
+
+**La v2 est calquée sur le présentateur d'un vrai diaporama, place par place** (image jointe, deux états) :
+- **En haut** : le chrono de l'heure avec pause et remise à zéro, l'heure, ce qui reste, et « Fin de l'heure » à droite.
+- **À gauche** : le volet des **vignettes** de la séance (numérotées, l'horaire à côté, la courante encadrée), et en dessous le chapitre — un clic sur une autre séance amène ses diapos dans le volet. Il se replie.
+- **Au centre** : la diapo, plus grande ; « Diapo 1 sur 18 » au-dessus ; dessous **six ronds aux mêmes places qu'un diaporama** — surligner ✦, à écrire ✍, toutes les diapos ⊞, zoom pour la classe 🔍, gel ❄, et ⋯ pour le reste (chrono au tableau, qui a participé, appoint, absents) ; puis ◀ ▶ Dévoiler et « 3 / 6 dévoilés ».
+- **À droite** : la diapo suivante en haut, comme un présentateur ; **le suivi en direct à la place des notes** — où on en est, participation, ont participé, absents.
+- **Le gel, corrigé** : ton écran ne change pas. Un témoin bleu au-dessus de la diapo dit ce que le mur montre et jusqu'où, la vignette de droite se marque « au tableau, figé », le rond ❄ s'allume. Tu avances, tu reviens, tu prépares ; un clic dégèle.
+
+Dis-moi ce qui ne va pas encore, dans l'ordre.
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

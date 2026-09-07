@@ -685,3 +685,39 @@ Tests : aucun, rien n'est livré au site.
 MEMO
 
 ---
+
+## TOUR 18 — Paul
+
+Pièce jointe : une capture d'écran de la maquette v7 chez Paul (1875 × 868) — la page glissée vers le haut, la diapo coupée, la zone « Notes pour cette diapo » étirée jusqu'en bas (recopiée en `pieces/T18-capture-de-Paul-bug-notes.png`).
+
+Texte de Paul, mot pour mot :
+
+> par ailleurs, ta maquette a des bugs. le problème c'est que si tu veux l'importer dans index.html pour remplacer l'ancien déroulé, tu vas aussi importer les bugs. par exemple, ce comportement des notes. (joue la maquette, tu verras le problème: et il y en a probablement d'autres que je n'ai pas vus parce que pas joués).
+
+---
+
+## TOUR 18 — Claude (conscience n°12)
+
+Travail joué avant réponse (rien déposé hormis ce transcript et ses pièces T18) : banc large `pieces/T18-bancs-v7.mjs` (5 tailles d'écran, 95 diapos, 9 séances, taille +4, participation, note ; mesure : diapo dans l'écran, défilement du body/scène, notes qui dépassent, hauteur de l'écran) → v7 : 422 défauts, reproduit le bug de Paul (après note : body défilé de 377 px, écran de 1838 px pour 868) ; cause : `#pilotage` sans hauteur, colonnes sans `min-height:0`, `focus()` qui fait défiler ; v8 (`pieces/T18-v8-template.html`, `pieces/T18-gen-v8.py`) : 0 défaut ; second banc `pieces/T18-bancs2-v8.mjs` (gardes, fenêtre du tableau, gel, image + loupe, pagination contrôle = tableau, relecture, appoint, chrono au tableau) : 0 défaut ; captures `pieces/T18-v8-01-ecran-de-paul-1875x868.png`, `pieces/T18-v8-02-loupe-sur-image-au-tableau.png`, `pieces/T18-v8-03-tableau-texte-plus4-page.png`.
+
+Réponse mot pour mot :
+
+Tu as raison sur les deux points, et je réponds au second d'abord parce qu'il compte plus.
+
+**Rien de la maquette ne s'importe dans `index.html`.** Elle sert à fixer les gestes et les règles ; le code de production s'écrira de zéro par un exécutant, sur le cadrage que nous arrêtons ici, avec ses bancs. Ce qui se transmettrait, lui, c'est un **défaut de conception** caché dans la maquette — et c'est exactement pour ça que tes bugs comptent : chacun se relit comme « est-ce un défaut de mon code de maquette, ou une règle mal pensée ? ». Celui-ci était du code.
+
+**Ton bug, reproduit puis corrigé.** Je l'ai rejoué sur ta taille d'écran (1875 × 868) : après une note ou une prise de parole, la page entière glissait vers le haut, la diapo sortait de l'écran, la zone de notes s'étirait jusqu'en bas. Cause : l'écran n'avait pas de hauteur fixée — la colonne des vignettes et la colonne de droite l'allongeaient au-delà de la fenêtre, et le premier champ qui prenait le curseur faisait défiler tout le reste. Corrigé dans la v8 : l'écran tient dans la fenêtre quelle qu'elle soit, seules les colonnes prévues défilent, la diapo se dimensionne à la hauteur disponible, les notes ont un plafond, aucun champ ne fait défiler.
+
+**Ce que j'ai joué d'autre, parce que tu as raison qu'il y en avait** — deux bancs, 0 défaut à l'arrivée :
+- cinq tailles d'écran (1280 × 720 → 1920 × 1080, et la tienne), les 95 diapos des 9 séances, tout dévoilé, texte au tableau +4, participation, note : la diapo reste entière à l'écran, rien ne défile, rien ne dépasse — **422 défauts dans la v7 sur ce parcours, 0 dans la v8** ;
+- les gardes (Échap, Rester, Entrée), la fenêtre du tableau qui suit le dévoilement, ne bouge pas pendant le gel et rattrape au dégel, une diapo image au tableau, la loupe sur l'image (grossit, se range), la pagination identique sur ton écran et au tableau (le texte ne déborde pas à +4), relecture puis retour, l'appoint, le chrono au tableau.
+
+**Ce que je n'ai pas joué** : le tactile, deux écrans réels (je ne peux tester la fenêtre du tableau qu'en fenêtre), les images réelles (hors ligne ici). Si tu en trouves d'autres, dis-les : chaque bug devient une ligne du cadrage.
+
+v8 jointe.
+
+Tests : aucun, rien n'est livré au site.
+
+MEMO
+
+---

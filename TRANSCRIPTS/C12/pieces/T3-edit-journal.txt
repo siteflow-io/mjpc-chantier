@@ -1,0 +1,11 @@
+DÉPART : {"k":0,"act":"Analyse d'images : la routine","grp":"","suite":0,"rev":0,"blocs":[{"t":"consigne","frag":"","nEt":6,"lens":[50,57,159,60,110,42]}]}
+étape 3 trouvée : 1
+focus après clic : LI 0.et.2 | Étape 3 : Au brouillon, dans un tableau à trois colonnes — c
+après phrase 1 → 19 écrans, écran courant 2, focus : LI 0.et.2 sur écran 2 ; écran 1 = [{"t":"consigne","frag":"f1","nEt":3,"lens":[50,57,318]}] ; suite = [{"t":"consigne","frag":"f1","nEt":3,"lens":[60,110,42]}]
+après phrase 2 → 19 écrans, écran courant 2, focus : LI 0.et.2 sur écran 2 ; écran 1 = [{"t":"consigne","frag":"f1","nEt":3,"lens":[50,57,318]}] ; suite = [{"t":"consigne","frag":"f1","nEt":3,"lens":[60,110,196]}]
+après phrase 3 → 19 écrans, écran courant 2, focus : LI 0.et.2 sur écran 2 ; écran 1 = [{"t":"consigne","frag":"f1","nEt":3,"lens":[50,57,318]}] ; suite = [{"t":"consigne","frag":"f1","nEt":3,"lens":[60,110,350]}]
+après phrase 4 → 20 écrans, écran courant 3, focus : BODY  sur écran 3 ; écran 1 = [{"t":"consigne","frag":"f1","nEt":3,"lens":[50,57,318]}] ; suite = [{"t":"consigne","frag":"f1","nEt":2,"lens":[60,110]}]
+étapes après frappe (toutes, écran + suites) : 1104 signes
+la phrase tapée 4 fois est-elle présente 4 fois ? 4 fois
+écritures au faux hub : []
+erreurs JS : []

@@ -1,0 +1,16 @@
+heure vue par la page : Tue Sep 08 2026 15:10:00 GMT+0200 (Central European Summer Time)
+① panneau prof → Emploi du temps ; bouton ouvrir présent : true
+② grille ouverte, semaine : null
+   cases occupées : [{"cle":"2026-09-09|08:00-08:55|4 HUGO","txt":"4 HUGO classe non encore importée"},{"cle":"2026-09-11|08:00-08:55|4 TURING","txt":"4 TURING classe non encore importée"},{"cle":"2026-09-07|08:57-09:52|3 FRANKLIN Aretha","txt":"3E Charles de Gaulle 3 activités · 1 rep"},{"cle":"2026-09-08|08:57-09:52|4 TURING","txt":"4 TURING classe non encore importée"},{"cle":"2026-09-09|08:57-09:52|4 TURING","txt":"4 TURING classe non encore importée"},{"cle":"2026-09-11|08:57-09:52|4 HUGO","txt":"4 HUGO classe non encore importée"},{"cle":"2026-09-07|10:07-11:02|X Français X. — 4 TURING","txt":"X Français X. — 4 TURING hors MJPC"},{"cle":"2026-09-08|10:07-11:02|3 DYLAN Bob","txt":"3 DYLAN Bob classe non encore importée"}]
+③ case visée : {"cle":"2026-09-08|15:07-16:02|3 FRANKLIN Aretha","txt":"3E Charles de Gaulle Étude de texte acco"}
+   voile du site présent par-dessus : ⚠️ 9 fiches d’applications ne sont pas à jour Voici exactement pourquoi chacune 
+   boutons de la modale : ["✕","▶ Ouvrir le pilotage et lancer","Banaliser cette heure"]
+④ clic « Ouvrir le pilotage et lancer » : true
+   ce qui est visible : []
+   régime : [object Object]
+   éléments au-dessus (z-index) sous le centre de l'écran : ["edt-btn","edt-actions edt-haut","edt-panneau","tprof-content","tprof-body","tprof-box"]
+   sous le panneau prof : {"atZone":true,"atZoneVisible":false,"atZoneTexte":"StructureDérouléRelecturePapierLe chapitre2 documents sur 35 attendus▾Poésie et peinture : le Romantisme en questionLes ","tprofVisible":true,"tprofZ":"auto","atelierZ":"auto","cadre":true,"cadreVisible":false}
+   ⑤ clic sur la croix du panneau prof : true
+   ce qui est visible après : {"atZone":false,"cadre":false,"tprof":false,"centre":["val-input-pair","val-form","val-box","page-validation"]}
+écritures au faux hub : ["PUT /corbeille/2026-09-08/edt-mise-a-niveau-calendrier_151000","PUT /corbeille/2026-09-08/edt-mise-a-niveau-grille_151000","PUT /corbeille/2026-09-08/edt-mise-a-niveau-creneaux_151000","PUT /site/edt/calendrier/2026-2027","PUT /site/edt/grille/2026-2027","PUT /site/edt/creneaux/2026-2027","PUT /site/edt/photos/2026-2027","PUT /site/3e/chapitres/0/seances/1/deroule_joue/3E Charles de Gaulle","PUT /site/cours_actif","PUT /site/3e/chapitres/0/seances/1/deroule_joue/3E Charles de Gaulle/scene","PUT /site/3e/chapitres/0/seances/1/deroule_joue/3E Charles de Gaulle/scene","PUT /site/3e/chapitres/0/seances/1/deroule_joue/3E Charles de Gaulle/heures/2026-09-08_15h07-16h02_3E_Charles_de_Gaulle"]
+erreurs JS : []

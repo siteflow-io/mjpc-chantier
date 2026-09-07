@@ -1250,3 +1250,36 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 33 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Il faut que je puisse supprimer une diapo en classe dans celles que je n'ai pas jouées
+
+---
+
+## TOUR 33 — Claude (conscience n°12)
+
+Aucune mesure nouvelle (conception). Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Entendu. Ça fixe le clic droit en classe, et une règle de plus :
+
+**Le clic droit en classe** — sur une diapo du volet : **Y aller** (avec la garde) · **Retirer de l'heure** (seulement si elle n'a pas encore été au tableau) · **Réserve maintenant** · **À la maison** ; sur un bloc ou une étape : mettre en lumière · à écrire · revoiler celui-ci · aller à la réponse de tel élève. Rien qui coupe, colle, duplique ou déplace : ça, c'est la préparation.
+
+**Retirer une diapo en classe, précisément :**
+- **Seulement une diapo pas encore montrée.** Une diapo qui a été au tableau ne se retire pas — le passé ne change pas. La diapo bilan ne se retire pas non plus, elle ferme l'heure.
+- **Ça touche la copie de la classe, pas le chapitre.** La diapo sort du fil de cette classe pour cette heure ; les autres classes ne voient rien. Rien ne remonte tout seul.
+- **Le tableau ne bouge pas**, donc pas de garde et rien dans le journal du tableau ; mais la copie le note (« retirée à 09:23 ») et la relecture le dit.
+- **Réversible tant que l'heure est ouverte** : clic droit → « Remettre dans l'heure ». Pas de « es-tu sûr ? ».
+- **Son sort se règle à la clôture, avec les autres non jouées** — heure suivante, réserve, maison, non fait — parce que « retirée » n'est pas un sort : une activité prévue doit être utilisée. Et **« verser dans le chapitre »** te propose alors de la retirer aussi de la trame, si c'était ça le sens de ton geste.
+
+**Le point 1 de la pile, pour le refermer d'un mot** : « à la maison » revient parmi les sorts, tel que cadré le 25/08 — le prolongement, avec une échéance, qui garde ses notions, entre dans le travail à faire, le récit et École Directe, et apparaît « donnée à la maison le … » à la séance suivante. **C'est bien ça ?**
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

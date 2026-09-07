@@ -1038,3 +1038,35 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 27 — Paul
+
+Texte de Paul, mot pour mot :
+
+> donc ça veut dire des impressions sans savoir si elles vont servir: rhédibitoire. par ailleurs, que se passe t-il si j'affiche un bloc que je ne voulais pas afficher et que je reviens aussitot en arrière? (je le dévoilerai quand même après) mais du coup, il s'écrit deux fois? Enfin, si je modifie dans les blocs grisés, et ce en pleine séance, j'avais normalement dans mon ancien déroulé la possibilité de garder la modif ultérieurement et de la répercuter dans l'écriture du chapitre.
+
+---
+
+## TOUR 27 — Claude (conscience n°12)
+
+Lectures jouées avant réponse (lecture seule ; rien déposé hormis ce transcript) : le papier du moteur L1387-1410 (récit « Ce qu'on a fait aujourd'hui » + fiches à coller, pas de feuilles d'activité), `lire()` (édition directe des blocs), `atDrEnrAuto` L14906 (en classe rien ne remonte à la préparation), `atDrModifsDeLaSeance` L14564 (comparaison copie / trame par identité `eid`, « Tu as modifié n choses »), CADRAGE-TEMPS §7 (les trois natures de travail).
+
+Réponse mot pour mot :
+
+Rédhibitoire, donc retiré. Les trois points :
+
+**1. Plus aucune impression que tu n'as pas demandée.** J'ai relu ce que le Papier du site produit aujourd'hui : « ce qu'on a fait aujourd'hui » à relire, et les fiches à coller — pas les feuilles d'activité. Celles que tu donnes aux élèves rapides sont les tiennes, déjà là. Alors la réserve ne s'imprime pas : **elle se donne avec ce que tu as** — ta feuille, le cahier, ou l'oral. Le site fait une seule chose : pendant l'heure, **⋯ → « Réserve de la séance »** te montre les activités mises en réserve, avec leur consigne lisible pour la dicter, et **un clic les affiche au tableau en encart « pour ceux qui ont fini »** pendant que les autres travaillent — c'est une publication au tableau, donc elle se note. Si un jour tu veux une feuille, tu la demandes, PDF d'une activité seule, jamais tout seul. Rien à gérer, rien à imprimer.
+
+**2. Un bloc dévoilé par erreur, revoilé aussitôt, dévoilé plus tard : une seule ligne, à l'heure où il est resté.** Deux règles :
+- **Revoiler efface.** L'apparition d'une seconde reste dans le fil détaillé (« 09:14:02 apparu, 09:14:04 retiré ») parce que la classe l'a vue, mais **le récit et le compte de dévoilement ne gardent que ce qui est resté visible** ; quand tu le dévoiles pour de bon à 09:20, c'est cette heure-là qui compte, une fois. Pas de seuil : c'est ton geste de revoiler qui annule.
+- **◀ sur la même diapo est un geste du fil, sans garde** : corriger une erreur devant la classe se fait d'un clic, pas de « geler d'abord ? ». La garde ne reste que pour changer de diapo en arrière et pour sauter. (Dans la v8, ◀ déclenche la garde : c'est à corriger dans la maquette.)
+
+**3. Modifier un bloc grisé en pleine séance, garder la modif, la répercuter dans le chapitre : oui, et c'est déjà la règle du 25/08.** Ce que tu écris en classe vit dans la copie de la classe (rien ne remonte tout seul — `atDrEnrAuto` : « en classe, rien ne remonte à la préparation »). À la clôture, le site compare la copie à la trame, diapo par diapo, par identité (`atDrModifsDeLaSeance`, corrigé après ton test du 23/08), et te dit : « tu as modifié 2 diapos — verser dans le chapitre ? », chacune avec oui / non. La relecture marque « modifié en séance ». La base saine garde exactement ça : copie de classe, comparaison par identité, versement par ton geste, jamais automatique.
+
+Ce que ça ferme : la réserve (sans papier, sans registre, au tableau ou à l'oral, dans la séance seulement), l'erreur de dévoilement, la modification en séance.
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

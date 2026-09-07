@@ -912,3 +912,37 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 24 — Paul
+
+Texte de Paul, mot pour mot :
+
+> une app qui n'existe pas encore. Et c'est là la grande difficulté: il faudrait que je puisse me débrouiller analogiquement. En gros, je prends la feuille de l'activité non faite et je la donne aux élèves qui sont allés plus vite. Ou je leur donne une consigne orale... Rien n'est vraiment satisfaisant. Et le suivi numérique est faisable, mais de manière régulière, illusoire (je ne peux pas réserver des tablettes systématiquement à toutes les heures).
+
+---
+
+## TOUR 24 — Claude (conscience n°12)
+
+Aucune mesure nouvelle (conception ; l'onglet Papier du moteur existe, vu au tour 11 : `dr_vue('papier')`). Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Alors on cadre avec ce qui existe — le papier et toi — et pas avec une app qui n'existe pas. Trois choses.
+
+**1. L'entraînement perso sort du chantier, la trace y reste.** Tant que l'app n'existe pas, « à l'entraînement » n'est pas une sortie. La réserve garde chaque activité avec son histoire (prévue heure 1, non jouée, en réserve depuis le 8/9) : le jour où l'app existe, elle a de quoi se remplir. Rien ne se perd, et on ne code pas un pont vers le vide.
+
+**2. La réserve est du papier, et le site le prépare.** Le site sait déjà mettre une séance sur papier (l'onglet Papier). La réserve, c'est le même savoir-faire à l'activité : **une feuille par activité en réserve** — consigne et étapes, ou question, ou fiche — sur une demi-page, la réponse attendue à part pour toi. Elle se sort au bon moment : **à la clôture de l'heure**, la relecture dit « à imprimer avant la prochaine fois : 2 activités en réserve » ; tu imprimes chez toi ou en salle des profs, tu arrives avec. Une image à commenter ou un schéma se mettent sur la feuille aussi, en noir et blanc — ça se lit. La consigne orale reste possible : c'est une réserve « sans feuille », elle se note pareil.
+
+**3. Le suivi, c'est toi, d'un geste, sans tablette.** Quand tu donnes une réserve à un élève qui a fini, tu tapes ses initiales et tu choisis l'activité — le même geste que la participation, motif « réserve ». En fin d'heure aussi, en bloc, si tu n'as pas eu le temps. Ce qui se suit, c'est **qui a reçu quoi** ; la correction reste sur le papier, entre l'élève et toi. Le profil de classe dit « Analyse d'images : prévue heure 1 · donnée en réserve à 5 élèves » — c'est vrai, c'est régulier, et ça ne demande rien à personne d'autre que toi.
+
+**Ce que ça ferme** : les sorties d'une activité non jouée sont **trois** — à l'heure suivante, en réserve (papier), annulée avec motif. Une réserve jamais donnée reste « en attente » et le site le rappelle jusqu'à la fin du chapitre, où il te demande son sort définitif. Pas de « ne rien donner », pas de perte silencieuse.
+
+**Ce que ça ne fait pas, pour être net** : le site ne sait pas si l'élève a réussi la réserve ; il sait qu'il l'a reçue. Le jour de l'app, ça changera.
+
+Si ça te va, le sort des activités non jouées est fermé, et je passe au suivant : ce que devient la copie d'une classe quand tu modifies la trame après coup.
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

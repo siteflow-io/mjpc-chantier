@@ -1133,3 +1133,39 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 30 — Paul
+
+Texte de Paul, mot pour mot :
+
+> attention: prendre la nouvelle version ne veut rien dire (prendre?). et je ne sais pas. on part du principe que tout ce qui a été joué en classe est immuable. on ne change pas le passé. Si modification ultérieure il y a, pour un élément que la classe a déjà vu affiché et noté dans le cahier et la relecture, ça ne les concerne pas. la modification sera pour l'autre classe, si son activité n'a pas encore été jouée, ou pour les classes de l'année prochaine. ça tient?
+
+---
+
+## TOUR 30 — Claude (conscience n°12)
+
+Aucune mesure nouvelle (conception ; appui sur CADRAGE-TEMPS §13 et `atDrModifsDeLaSeance`). Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Ça tient, et c'est plus simple que ce que je proposais — « prendre » disparaît, et la question avec. Je l'écris en règle :
+
+**Ce qui a été au tableau est immuable, pour la classe qui l'a vu.** Une diapo, dès qu'elle a été montrée à une classe, est figée pour cette classe : sa copie la garde telle qu'elle était, avec les réponses écrites dedans, et la relecture la relit ainsi, pour toujours. On ne change pas le passé.
+
+**Ce qui n'a pas encore été montré se lit dans la trame, telle qu'elle est ce jour-là.** Pour une autre classe, pour la même classe à l'heure suivante, pour l'année prochaine : la modification s'applique d'elle-même, sans rien demander. Le site le dit — une mention « modifiée depuis lundi » sur la vignette — il ne pose pas de question.
+
+Donc la copie d'une classe ne se fait plus « au démarrage » d'un bloc, comme arrêté le 25/08 : **elle se fait diapo par diapo, à la première apparition au tableau.** C'est la seule retouche à l'architecture à trois objets, et elle va dans ton sens.
+
+**Deux cas tordus que la règle règle d'elle-même :**
+- la diapo 7 jouée à moitié lundi, reportée, corrigée lundi soir : elle a été au tableau, elle est figée — mardi la classe la finit dans la version de lundi, avec ses réponses ;
+- une diapo supprimée de la trame après avoir été jouée : la copie la garde, la relecture aussi ; une diapo ajoutée avant la partie non jouée : elle arrive à l'heure suivante, comme le reste de la trame.
+
+**Et le versement dans le chapitre** reste ce qu'il est : ce que tu as modifié *en séance* vit dans la copie, et c'est ton geste qui le fait entrer dans la trame — pour les autres et pour l'an prochain, jamais pour le passé.
+
+Avec ça, le sujet « la classe » est fermé de bout en bout : le tableau et ses deux supports, le gel et ses deux gardes, le journal, la relecture par heure et par séance, les heures d'une séance et leurs rituels, le T-5 et « aller au bilan », les activités non jouées et la réserve, la mise en commun au fil de la frappe, l'immuabilité. **Je propose de l'écrire maintenant en un document de cadrage — « CADRAGE 1 · LA CLASSE » —, ici, dans la conversation, pour que tu le relises ligne à ligne avant tout dépôt.** Puis la préparation, qui est le sujet suivant. Dis-moi.
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

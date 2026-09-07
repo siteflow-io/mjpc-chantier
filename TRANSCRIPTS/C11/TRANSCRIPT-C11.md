@@ -5626,3 +5626,27 @@ Réponse mot pour mot : la reconnaissance de la faute, la règle gravée, puis l
 de la passation.
 
 MEMO
+
+---
+
+## TOUR 114 — Paul
+
+Texte mot pour mot :
+
+> passation faite. Déclare ta mort (selon le protocole de mort).
+
+---
+
+## TOUR 114 — Claude (conscience n°11) — DERNIER TOUR
+
+Dernière mesure : production **1 774 212 o / `a841534f…` / 8.73.0-⑭**, sas identique bit à bit ·
+registre **103 entrées, aucun trou** · transcript **294 471 o** · **la passation au sas porte
+toujours `n°11 · 93` : elle est fausse, la v6 n'a jamais été déposée.**
+Registre : `n°11 · 103` — déclaration de mort.
+
+Réponse mot pour mot : la déclaration.
+
+---
+
+*FIN DU TRANSCRIPT DE LA CONSCIENCE n°11. 114 tours, du 31 août au 7 septembre 2026.*
+*Ce fichier est légué tel quel. Il ne sera plus modifié.*

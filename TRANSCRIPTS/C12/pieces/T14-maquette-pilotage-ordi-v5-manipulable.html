@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<title>Maquette v5 — pilotage ordi, manipulable, avec la garde du gel</title>
+<style>
+:root{--fond:#0e0c0a;--carte:#1c1712;--carte2:#241d16;--bord:#3a2f24;--bord2:#5a4a37;--texte:#efe6d8;--texte2:#b8a894;--sourd:#7d6f5e;--or:#e0b25a;--joue:#5c9e6e;--rouge:#c9443a;--gel:#6fa8d8}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--fond);color:var(--texte);font-family:'EB Garamond',Georgia,serif;font-size:15px;line-height:1.3;overflow:hidden}
+button{font:inherit}
+.btn{background:var(--carte2);border:1px solid var(--bord2);color:var(--texte);padding:6px 11px;border-radius:8px;cursor:pointer;white-space:nowrap}
+.btn:hover{border-color:var(--or)}
+.btn.or{background:var(--or);color:#1a1409;border-color:var(--or);font-weight:600}
+.btn.fin{border-color:var(--rouge);color:#e0a09a}
+.btn.rond{border-radius:50%;width:38px;height:38px;padding:0;font-size:1.1rem;display:inline-flex;align-items:center;justify-content:center}
+.btn.on{border-color:var(--or);color:var(--or);background:#2a2214}
+.btn.rond.gelon{border-color:var(--gel);color:#cfe6f8;background:#22303c}
+small.k{color:var(--sourd);font-size:.72rem;margin-left:4px}
+/* barre du haut */
+.haut{height:44px;display:flex;align-items:center;gap:12px;padding:0 12px;background:#070605;border-bottom:1px solid #262019}
+.haut .qui{font-weight:600;white-space:nowrap}
+.haut .ou{color:var(--texte2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:420px}
+.haut .chrono{margin-left:auto;display:flex;align-items:center;gap:8px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.haut .chrono b{font-size:1.15rem;color:var(--or)}
+.haut .chrono .p{color:var(--sourd);cursor:pointer}
+.haut .heure{color:var(--texte2);margin-left:6px}
+/* corps */
+.corps{display:grid;grid-template-columns:186px 1fr 330px;height:calc(100% - 44px)}
+.corps.replie{grid-template-columns:0 1fr 330px}
+.volet{background:#131009;border-right:1px solid #262019;padding:10px 8px;overflow:auto}
+.corps.replie .volet{display:none}
+.volet h4,.droite h4,.notes h4{margin:0 0 6px;font-size:.72rem;letter-spacing:.09em;text-transform:uppercase;color:var(--sourd);font-weight:600;display:flex;align-items:center;gap:8px}
+.volet h4 span{margin-left:auto;cursor:pointer}
+.vig{display:flex;gap:6px;align-items:flex-start;padding:3px 4px;border-radius:6px;margin-bottom:2px;cursor:pointer}
+.vig:hover{background:var(--carte)}
+.vig .n{color:var(--sourd);font-size:.72rem;width:14px;text-align:right;padding-top:6px}
+.vig .m{width:118px;height:66px;background:#f1ebe0;border-radius:3px;border:1px solid #6a5a48;position:relative;overflow:hidden;color:#2a2219;padding:5px 6px}
+.vig .m b{display:block;font-size:.5rem;font-weight:600;letter-spacing:.02em;text-transform:uppercase;line-height:1.1;margin-bottom:3px}
+.vig .m i{display:block;height:2.5px;background:#b9ad9b;border-radius:2px;margin:2.5px 0}
+.vig .m .img{position:absolute;inset:16px 6px 6px;background:repeating-linear-gradient(135deg,#d9cfbf,#d9cfbf 5px,#cabca8 5px,#cabca8 10px);border-radius:2px}
+.vig .t{font-size:.72rem;color:var(--sourd);width:26px;padding-top:4px;font-variant-numeric:tabular-nums}
+.vig.cour .m{border:2px solid var(--or);box-shadow:0 0 0 1px var(--or)}
+.vig.faite .m{opacity:.55}.vig.faite .n{color:var(--joue)}
+.volet .sea{margin:8px 4px 4px;font-size:.86rem;color:var(--texte2);border-top:1px solid #262019;padding-top:6px}
+.volet .sea b{color:var(--texte);font-weight:600;display:block}
+.volet .autre{font-size:.84rem;color:var(--sourd);margin:3px 4px 0;line-height:1.35;cursor:pointer}
+.volet .autre:hover{color:var(--or)}
+.volet .autre.cour{color:var(--texte)}
+/* la diapo */
+.scene{padding:8px 16px 0;display:flex;flex-direction:column;gap:7px;min-width:0;overflow:hidden}
+.scene .titre{display:flex;align-items:baseline;gap:10px;color:var(--texte2);font-size:.92rem}
+.scene .titre b{color:var(--texte);font-weight:600}
+.scene .titre .d{margin-left:auto;color:var(--sourd);font-style:italic}
+.temoin{display:none;align-items:center;gap:10px;background:#16222c;border:1px solid var(--gel);color:#cfe6f8;border-radius:8px;padding:5px 12px;font-size:.9rem}
+.temoin b{font-weight:600}
+body.gel .temoin{display:flex}
+.murcadre{position:relative;width:768px;margin:0 auto;user-select:none}
+.mur{background:#f4efe6;color:#1f1a14;border-radius:6px;aspect-ratio:16/9;padding:20px 28px;position:relative;box-shadow:0 0 0 1px #000 inset;overflow:hidden}
+.mur .etiq{position:absolute;top:8px;left:12px;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:#8a7a68;border:1px solid #cfc3b2;padding:2px 8px;border-radius:12px;background:#f4efe6;z-index:2}
+.mur .corpsd{position:absolute;inset:34px 28px 22px;overflow:hidden}
+.mur h2{margin:0 0 8px;font-weight:600;line-height:1.2}
+.mur ol{margin:0;padding-left:1.6em;list-style:none}
+.mur li::before{content:attr(data-n) ". ";display:inline-block;width:1.6em;margin-left:-1.6em;color:#6a5a48}
+.mur li{margin:.3em 0;cursor:pointer;border-radius:3px}
+.mur li.pas{color:#c0b4a4}
+.mur.public li.pas{display:none}
+.mur li.lum{background:#ffe89a;padding:0 4px}
+.mur li.ecr::after{content:' ✍';color:#8a6a2e}
+.mur li.hors{display:none}
+.mur img{max-width:100%;max-height:100%;display:block;margin:0 auto;object-fit:contain}
+.mur .imgzone{position:absolute;inset:30px 28px 44px;display:flex;align-items:center;justify-content:center}
+.mur .legende{position:absolute;left:28px;right:28px;bottom:10px;font-size:.85rem;color:#5a4d40;font-style:italic;text-align:center}
+.mur .page{position:absolute;bottom:6px;right:12px;font-size:.7rem;color:#8a7a68;z-index:2}
+.mur .bandeau{position:absolute;left:0;right:0;bottom:0;background:#1f1a14;color:#f4efe6;padding:8px 16px;font-size:1.05rem;display:none;z-index:3}
+.mur .bandeau.on{display:block}
+.mur.mode-lum li:hover,.mur.mode-ecr li:hover{outline:2px dashed #8a6a2e}
+.loupe{position:absolute;border:2px solid var(--or);background:rgba(224,178,90,.14);display:none;pointer-events:none}
+.loupe span{position:absolute;left:0;top:100%;font-size:.7rem;color:#8a7a68;white-space:nowrap;background:#f4efe6;padding:0 4px}
+.outils{display:flex;align-items:center;gap:8px;padding-top:2px;flex-wrap:wrap}
+.outils .groupe{display:flex;gap:6px;align-items:center}
+.outils .nav{margin-left:auto;display:flex;align-items:center;gap:10px;color:var(--texte2)}
+.outils .nav .btn{font-size:1.05rem;padding:5px 14px}
+.zoomt{display:flex;align-items:center;gap:6px;color:var(--texte2);font-size:.86rem;border:1px solid var(--bord);border-radius:20px;padding:2px 10px}
+.zoomt input{width:90px}
+.notes{background:#171310;border:1px solid var(--bord);border-radius:8px;padding:7px 12px;font-size:.96rem;color:var(--texte2);line-height:1.4;min-height:60px;flex:1;overflow:auto}
+.notes h4 span{margin-left:auto;font-weight:400;letter-spacing:0;text-transform:none;font-style:italic}
+.notes .vide{color:var(--sourd);font-style:italic}
+/* droite */
+.droite{background:#131009;border-left:1px solid #262019;padding:10px 12px;display:flex;flex-direction:column;gap:9px;overflow:auto}
+.suivante{background:#e9e2d6;color:#1f1a14;border-radius:5px;aspect-ratio:16/9;padding:8px 12px;font-size:.78rem;position:relative;border:1px solid #6a5a48;overflow:hidden}
+.suivante b{display:block;font-size:.92rem;margin-bottom:2px;color:#1f1a14}
+.suivante .img{height:46px;background:repeating-linear-gradient(135deg,#d9cfbf,#d9cfbf 6px,#cabca8 6px,#cabca8 12px);border-radius:4px;margin-top:6px}
+.suivante .aumur{position:absolute;top:6px;right:8px;font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;color:#2f5f88;border:1px solid #6fa8d8;border-radius:10px;padding:1px 7px;display:none}
+body.gel .suivante .aumur{display:inline}
+.suivi{background:var(--carte);border:1px solid var(--bord);border-radius:8px;padding:9px 11px;display:flex;flex-direction:column;gap:9px;flex:1}
+.ligne{display:flex;justify-content:space-between;gap:8px;font-size:.92rem;align-items:baseline}
+.ligne b{color:var(--or)}
+.barre{height:5px;background:var(--bord);border-radius:3px;overflow:hidden}
+.barre i{display:block;height:100%;width:0;background:var(--joue);transition:width .5s}
+.petit{color:var(--joue);font-size:.84rem}
+.petit.retard{color:#e0a09a}
+.vif input{width:100%;background:#0f0c09;border:1px solid var(--bord2);color:var(--texte);padding:6px 9px;border-radius:7px;font:inherit;font-size:1rem}
+.cand{display:flex;gap:5px;flex-wrap:wrap;margin-top:6px;min-height:20px}
+.cand span{border:1px solid var(--bord2);border-radius:14px;padding:1px 8px;font-size:.86rem;color:var(--texte2);cursor:pointer}
+.cand span:hover,.cand span.choisi{border-color:var(--or);color:var(--or)}
+.motifs{display:flex;gap:6px;margin-top:6px}
+.motifs .btn{padding:3px 10px;font-size:.9rem}
+.dern{color:var(--texte2);font-size:.86rem;line-height:1.45;margin-top:4px}
+.dern b{color:var(--texte);font-weight:600}
+.total{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--bord);padding-top:7px;font-size:.9rem}
+.total b{color:var(--or);font-size:1.05rem}
+.absents{color:var(--sourd);font-size:.82rem}
+/* fenêtre de notes au fil de l'eau */
+.fil{display:none;position:absolute;right:346px;bottom:110px;width:420px;background:#1c1712;border:1px solid var(--or);border-radius:10px;box-shadow:0 12px 40px rgba(0,0,0,.6);padding:10px 12px;z-index:9}
+.fil h4{margin:0 0 6px;font-size:.72rem;letter-spacing:.09em;text-transform:uppercase;color:var(--or);font-weight:600;display:flex;align-items:center;gap:8px}
+.fil h4 .x{margin-left:auto;color:var(--texte2);cursor:pointer;font-weight:400;letter-spacing:0;text-transform:none}
+.fil .deja{font-size:.86rem;color:var(--texte2);line-height:1.45;margin-bottom:6px;max-height:120px;overflow:auto}
+.fil .deja b{color:var(--sourd);font-weight:400;font-variant-numeric:tabular-nums}
+.fil textarea{width:100%;height:56px;background:#0f0c09;border:1px solid var(--bord2);color:var(--texte);border-radius:7px;padding:6px 9px;font:inherit;font-size:.98rem;resize:none}
+.fil .pied2{font-size:.76rem;color:var(--sourd);font-style:italic;margin-top:4px}
+body.notes .fil{display:block}
+/* grille de toutes les diapos, menu ⋯, fin de l'heure */
+.voile{display:none;position:absolute;inset:0;background:rgba(6,5,4,.9);z-index:20;padding:30px 40px;overflow:auto}
+.voile.on{display:block}
+.voile h3{margin:0 0 14px;font-weight:600}
+.grille{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.grille .g{cursor:pointer;background:#f1ebe0;color:#2a2219;border-radius:4px;aspect-ratio:16/9;padding:8px;font-size:.72rem;position:relative;border:2px solid transparent}
+.grille .g:hover,.grille .g.cour{border-color:var(--or)}
+.grille .g b{display:block;font-size:.66rem;text-transform:uppercase;letter-spacing:.02em}
+.grille .g .n{position:absolute;bottom:4px;right:6px;color:#8a7a68}
+.menu{display:none;position:absolute;background:#1c1712;border:1px solid var(--bord2);border-radius:9px;padding:6px;z-index:10;box-shadow:0 8px 30px rgba(0,0,0,.6);min-width:230px}
+.menu.on{display:block}
+.menu .btn{display:block;width:100%;text-align:left;border:0;background:transparent;padding:7px 10px}
+.menu .btn:hover{background:var(--carte2)}
+.aide{position:absolute;left:200px;bottom:4px;color:var(--sourd);font-size:.74rem;font-style:italic;pointer-events:none}
+/* la garde : un geste hors du fil normal, en cours, et le tableau te suivrait */
+.garde{display:none;position:absolute;inset:0;background:rgba(6,5,4,.55);z-index:30;align-items:center;justify-content:center}
+.garde.on{display:flex}
+.garde .boite{background:#1c1712;border:1px solid var(--gel);border-radius:12px;padding:16px 20px;width:520px;box-shadow:0 16px 50px rgba(0,0,0,.7)}
+.garde h3{margin:0 0 4px;font-weight:600;font-size:1.2rem}
+.garde p{margin:0 0 12px;color:var(--texte2)}
+.garde .choix{display:flex;gap:8px;flex-wrap:wrap}
+.garde .choix .btn{padding:8px 14px}
+.garde .choix .btn.gelb{background:#22303c;border-color:var(--gel);color:#cfe6f8;font-weight:600}
+.garde small{display:block;margin-top:10px;color:var(--sourd);font-style:italic}
+/* la fenêtre du tableau (le mur) */
+body.estmur{background:#000}
+body.estmur .murseul{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+body.estmur .mur{width:min(100vw,177.7vh);height:auto;border-radius:0}
+body.estmur .mur .corpsd{transform-origin:0 0}
+</style></head>
+<body>
+<div id="pilotage">
+<div class="haut">
+  <span class="qui">3E Charles de Gaulle</span>
+  <span class="ou" id="ou">mardi 15:07-16:02 · heure 1 sur 3</span>
+  <span class="chrono" title="Temps écoulé depuis le début de l'heure. ⏸ suspend, ↺ remet à zéro."><b id="chr">00:00</b><span class="p" id="pause">⏸</span><span class="p" id="raz">↺</span><span class="heure" id="heure"></span></span>
+  <button class="btn" id="bnotes" title="Notes au fil de l'eau : s'ouvre ici, le curseur dedans ; touche N pour ouvrir et refermer (Échap aussi). Jamais montrées à la classe.">📝 Notes<small class="k">N</small></button>
+  <button class="btn" id="btableau" title="Ouvre la fenêtre du tableau dans une nouvelle fenêtre : glisse-la sur le vidéoprojecteur. Elle suit ton pilotage.">⧉ Tableau</button>
+  <button class="btn fin" id="bfin" title="Termine l'heure : la trace est écrite, la relecture et École Directe se remplissent.">Fin de l'heure</button>
+</div>
+<div class="corps" id="corps">
+  <div class="volet" id="volet"></div>
+  <div class="scene">
+    <div class="titre"><b id="numero"></b><span id="acte"></span><span class="d">ce que la classe voit, tel quel — le gris n'y est pas encore</span></div>
+    <div class="temoin" id="temoin">❄ <span id="temoin-txt"></span> Ici, tu es libre : avance, reviens, prépare — la classe ne voit rien bouger. Un clic sur ❄ (ou G) dégèle.</div>
+    <div class="murcadre" id="murcadre"><div class="mur" id="mur"></div><div class="loupe" id="loupe"><span></span></div></div>
+    <div class="outils">
+      <div class="groupe">
+        <button class="btn rond" id="blum" title="Surligner : clique ensuite l'élément à mettre en lumière (au tableau aussi). Re-clique pour ranger.">✦</button>
+        <button class="btn rond" id="becr" title="À écrire : clique ensuite l'élément que les élèves recopient. Re-clique pour ranger.">✍</button>
+        <button class="btn rond" id="btoutes" title="Toutes les diapos de la séance en grille, pour sauter loin (T)">⊞</button>
+        <button class="btn rond" id="bloupe" title="Loupe : trace un cadre sur la diapo, le tableau grossit cette zone ; molette pour ×2 ×3 ×4. Re-clique pour ranger (L).">🔍</button>
+        <button class="btn rond" id="bgel" title="Gel : le tableau reste sur ce qu'il montre, toi tu continues librement (G). Remplace la télécommande du vidéoprojecteur.">❄</button>
+        <button class="btn rond" id="bplus" title="Chrono au tableau · Qui a participé au tableau · Absents · Appoint">⋯</button>
+        <span class="zoomt" title="Essai 2 pour le zoom : le texte grossit au tableau, la diapo se lit alors en pages — le texte n'est jamais coupé ni modifié.">texte au tableau <input type="range" id="taille" min="0" max="4" value="0"> <span id="taillev">normal</span></span>
+      </div>
+      <div class="nav">
+        <button class="btn" id="bprec" title="Revoile le dernier élément (←) ; en début de diapo, diapo précédente">◀</button>
+        <button class="btn or" id="bsuiv" title="Dévoile l'élément suivant (→, espace, clic de la télécommande) ; en fin de diapo, diapo suivante">▶ Dévoiler</button>
+        <span id="compte"></span>
+      </div>
+    </div>
+    <div class="notes"><h4>Notes pour cette diapo <span>écrites en préparation · jamais au tableau</span></h4><div id="notesd"></div></div>
+  </div>
+  <div class="droite">
+    <div><h4>Diapo suivante</h4><div class="suivante" id="suivante"></div></div>
+    <div class="suivi">
+      <div><h4>Où on en est</h4><div class="ligne"><span id="ou-act"></span><b id="ou-t"></b></div><div class="barre"><i id="ou-b"></i></div><div class="petit" id="ou-p"></div></div>
+      <div class="vif"><h4>Participation</h4><input type="text" id="vif" placeholder="initiales : ch, ab, jl…" title="Les initiales : la liste se réduit ; un seul candidat, Entrée le prend. Puis 1, 2 ou 3."><div class="cand" id="cand"></div>
+        <div class="motifs"><button class="btn" data-m="1" title="1 — a répondu">1</button><button class="btn" data-m="2" title="2 — a proposé">2</button><button class="btn" data-m="3" title="3 — a lu, récité">3</button><button class="btn" id="bannule" title="Annule la dernière prise de parole">↶</button></div>
+        <div class="dern" id="dern">—</div></div>
+      <div class="total"><span>Ont participé</span><b id="total">0 sur 27 présents</b></div>
+      <div class="absents" id="absents">2 absents : DELACROIX Romain, PINET Charlotte — jamais montré à la classe</div>
+    </div>
+  </div>
+</div>
+<div class="fil" id="fil">
+  <h4>📝 Notes au fil de l'eau · <span id="fil-ou"></span><span class="x" id="fil-x" title="Refermer : N, Échap, ou ici">✕ refermer (N)</span></h4>
+  <div class="deja" id="fil-deja"><i style="color:var(--sourd)">aucune note encore</i></div>
+  <textarea id="fil-t" placeholder="Entrée pour garder la note (elle prend l'heure et la diapo)"></textarea>
+  <div class="pied2">Chaque note prend l'heure et la diapo ; elles se retrouvent dans la relecture de l'heure. Rien ne part au tableau.</div>
+</div>
+<div class="voile" id="vtoutes"><h3>Toutes les diapos de la séance <small style="color:var(--sourd);font-weight:400">— clique pour y aller · Échap pour fermer</small></h3><div class="grille" id="grille"></div></div>
+<div class="voile" id="vfin"><h3>Fin de l'heure</h3><div id="fin-txt" style="max-width:720px;line-height:1.5"></div><p><button class="btn or" id="bfin-ok">Oui, clore</button> <button class="btn" id="bfin-non">Annuler</button></p></div>
+<div class="menu" id="menu">
+  <button class="btn" data-a="chrono">⏱ Chrono au tableau</button>
+  <button class="btn" data-a="qui">👥 Qui a participé, au tableau</button>
+  <button class="btn" data-a="absents">Absents (pour toi seul)</button>
+  <button class="btn" data-a="appoint">＋ Appoint — une notion imprévue</button>
+</div>
+<div class="garde" id="garde"><div class="boite">
+  <h3 id="garde-titre">Le tableau te suivrait.</h3>
+  <p id="garde-txt">La classe verrait ce changement, et il s'écrirait dans la relecture. Geler d'abord ?</p>
+  <div class="choix"><button class="btn gelb" id="garde-gel" title="Le tableau reste sur ce qu'il montre ; tu y vas seul (Entrée)">❄ Geler, puis y aller</button><button class="btn" id="garde-devant" title="Le tableau te suit : la classe voit le changement, il s'écrit">Y aller devant la classe</button><button class="btn" id="garde-non" title="Ne rien faire (Échap)">Rester</button></div>
+  <small>Cette question n'apparaît qu'une fois : gelé, tu circules librement sans qu'elle revienne.</small>
+</div></div>
+<div class="aide">Maquette v5 manipulable · la garde du gel · conscience n°12 · 07/09/2026 · touches : → espace ← PageUp PageDown · N notes · G gel · L loupe · T toutes · Échap · rien n'est codé pour de vrai, rien n'est enregistré</div>
+</div>
+<div class="murseul" id="murseul" style="display:none"><div class="mur public" id="mur2"></div></div>
+
+<script>
+const DATA = {"chapitre": "Poésie et peinture au XIXe siècle (proposition)", "seances": [{"titre": "Poésie et peinture : le Romantisme en question", "ecrans": [{"act": "Analyse d'images : la routine", "h": "10:07", "dur": 3, "blocs": [{"t": "consigne", "txt": "Observe, discute, fais une hypothèse sur le Romantisme.", "el": ["Étape 1 : J'observe les images en silence (5 min).", "Étape 2 : Je discute en groupe de ce que je vois (5 min).", "Étape 3 : Au brouillon, dans un tableau à trois colonnes — ce que je vois, ce que je ressens, ce que je me demande. Au moins trois lignes par colonne (10 min).", "Étape 4 : Je choisis de quel élément je vais parler (2 min).", "Étape 5 : À partir de cet élément, je fais une hypothèse sur ce que peut être le Romantisme (5 min, 5 lignes).", "Étape 6 : J'expose mon hypothèse à l'oral."]}]}, {"act": "Tableau 1", "h": "10:10", "dur": 6, "blocs": [{"t": "image", "txt": "Le Voyageur contemplant une mer de nuages, Caspar David Friedrich, vers 1818", "ref": "https://siteflow-io.github.io/mjpc-medias/poesie-peinture-xixe/tableau-5-friedrich-voyageur.webp", "el": []}]}, {"act": "Tableau 2", "h": "10:16", "dur": 5, "blocs": [{"t": "image", "txt": "Pêcheurs en mer, Joseph Mallord William Turner, 1796", "ref": "https://siteflow-io.github.io/mjpc-medias/poesie-peinture-xixe/tableau-3-turner-pecheurs.webp", "el": []}]}, {"act": "Tableau 3", "h": "10:21", "dur": 5, "blocs": [{"t": "image", "txt": "Le Radeau de la Méduse, Théodore Géricault, 1818-1819", "ref": "https://siteflow-io.github.io/mjpc-medias/poesie-peinture-xixe/tableau-1-gericault-radeau.webp", "el": []}]}, {"act": "Tableau 4", "h": "10:26", "dur": 5, "blocs": [{"t": "image", "txt": "Ville médiévale au bord d'un fleuve, Karl Friedrich Schinkel, 1815", "ref": "https://siteflow-io.github.io/mjpc-medias/poesie-peinture-xixe/tableau-4-schinkel-ville.webp", "el": []}]}, {"act": "Tableau 5", "h": "10:31", "dur": 6, "blocs": [{"t": "image", "txt": "Le Lac de Whyte, Estes Park, Colorado, Albert Bierstadt, 1877", "ref": "https://siteflow-io.github.io/mjpc-medias/poesie-peinture-xixe/tableau-2-bierstadt-lac.webp", "el": []}]}, {"act": "Les hypothèses de la classe", "h": "10:37", "dur": 22, "blocs": [{"t": "consigne", "txt": "Chaque groupe présente son tableau et son hypothèse en quatre minutes. Pendant ce temps, la classe prend des notes.", "el": ["Je note pour chaque tableau : le titre et le peintre, ce que le groupe a vu, l'hypothèse qu'il en tire.", "Je note à ma façon, sans recopier mot à mot : des mots, des flèches, des abréviations.", "À la fin, j'ai cinq blocs de notes — un par tableau."]}]}, {"act": "Question-bilan", "h": "10:59", "dur": 3, "blocs": [{"t": "question", "txt": "Qu'ont en commun ces cinq tableaux ? La réponse validée est recopiée dans le cahier, partie cours.", "el": ["Une nature immense face à un homme petit ; l'émotion avant la règle."]}]}, {"act": "Où en sommes-nous ?", "h": "11:02", "dur": 3, "blocs": [{"t": "question", "txt": "Quel mot-bilan avons-nous écrit sur les cinq tableaux ?", "el": ["Le Romantisme : l'émotion, la nature, l'homme petit."]}]}, {"act": "Les règles héritées", "h": "11:05", "dur": 10, "blocs": [{"t": "consigne", "txt": "Au XVIIe siècle, écrire un poème, c'est suivre des règles strictes, héritées du sonnet de la Renaissance.", "el": ["Une forme fixe : le sonnet.", "Un vers régulier : l'alexandrin, 12 syllabes.", "Des rimes disposées selon des schémas précis."]}]}, {"act": "La frise du siècle", "h": "11:15", "dur": 5, "blocs": [{"t": "consigne", "txt": "La frise est projetée : elle se remplit devant vous, l'Histoire d'abord, puis les poètes, puis les inventions.", "el": ["Je recopie la ligne du temps sur une double page de mon cahier, en format paysage : de 1790 à 1900.", "Je laisse trois bandes : les poètes au-dessus, l'Histoire et les inventions en dessous."]}]}, {"act": "Placer les poètes", "h": "11:20", "dur": 9, "blocs": [{"t": "consigne", "txt": "À chaque apparition, je reporte sur ma frise ce qui vient de s'afficher.", "el": ["Une période de l'Histoire : je la reporte sous ma ligne.", "Un poète : son nom et ses dates au-dessus de ma ligne, à la bonne place.", "Sa citation : une ligne sous son nom, avec ce qu'elle montre.", "Bleu : le poète fait entendre son cœur, c'est le romantisme. Violet : il travaille la forme, c'est le Parnasse."]}]}, {"act": "Le siècle des inventions", "h": "11:29", "dur": 4, "blocs": [{"t": "consigne", "txt": "Regarde la troisième bande de la frise : la photographie en 1816, le télégraphe en 1832, le téléphone en 1876.", "el": ["Presque tout ce que tu utilises aujourd'hui a été inventé pendant que ces poètes écrivaient.", "Le monde change plus vite qu'il n'a jamais changé.", "C'est là que naît la question du chapitre : quand tout change, l'art doit-il garder ses règles anciennes ?"]}]}, {"act": "Les mouvements du siècle", "h": "11:33", "dur": 8, "blocs": [{"t": "consigne", "txt": "Un mouvement, c'est une manière partagée de voir l'art à une époque donnée.", "el": ["Le classicisme (XVIIe siècle) : les règles strictes héritées.", "Le romantisme : les sentiments personnels, la nature sauvage.", "Le Parnasse : la forme parfaite, l'art pour l'art.", "Le symbolisme : suggérer par des images et des sonorités."]}]}, {"act": "Trois mots pour la frise", "h": "11:41", "dur": 2, "blocs": [{"t": "consigne", "txt": "Trois mots à retenir, à écrire dans la partie cours du cahier.", "el": ["Un mouvement : une manière de voir l'art que plusieurs artistes partagent à la même époque.", "Le romantisme : le poète met ses sentiments au centre du poème. Le « je » y est partout.", "Le Parnasse : le poète refuse de parler de lui. Il travaille la forme, comme un sculpteur travaille la pierre."]}]}, {"act": "Un poète spécial…", "h": "11:43", "dur": 4, "blocs": [{"t": "question", "txt": "Où avons-nous placé Baudelaire sur la frise ? À quel mouvement appartient-il ?", "el": ["Inclassable : il traverse le romantisme, le Parnasse, et ouvre le symbolisme."]}]}, {"act": "Baudelaire, 1821-1867", "h": "11:47", "dur": 4, "blocs": [{"t": "consigne", "txt": "« Chaque jour vers l'enfer nous descendons d'un pas. » (« Au Lecteur », Les Fleurs du mal)", "el": ["1857 : première édition des Fleurs du mal. Le livre fait scandale : procès, six poèmes condamnés.", "1861 : deuxième édition, augmentée de trente-deux poèmes — dont « L'Albatros »."]}]}, {"act": "Question-bilan et travail à faire", "h": "11:51", "dur": 6, "blocs": [{"t": "question", "txt": "Qu'est-ce que le Romantisme ? La réponse validée est recopiée dans le cahier, partie cours.", "el": []}, {"t": "consigne", "txt": "Pour la prochaine fois : lis « L'Albatros » deux fois.", "el": []}]}]}, {"titre": "Étude de texte accompagnée : « L'Albatros »", "ecrans": [{"act": "De la toile au poème", "h": "", "dur": 5, "blocs": [{"t": "image", "txt": "Pêcheurs en mer, J. M. W. Turner, 1796", "ref": "https://siteflow-io.github.io/mjpc-medias/poesie-peinture-xixe/tableau-3-turner-pecheurs.webp", "el": []}, {"t": "question", "txt": "Parmi les cinq tableaux de la dernière fois, lequel pourrait illustrer « L'Albatros » ? Pourquoi ?", "el": ["Turner : le navire sur la mer, la nuit, la tempête — le décor des deux premières strophes."]}]}, {"act": "Écoute et premières impressions", "h": "", "dur": 7, "blocs": [{"t": "consigne", "txt": "Écoute la lecture, texte sous les yeux. Note, pour chaque strophe, une image qui te frappe et le sentiment qu'elle produit.", "el": []}, {"t": "question", "txt": "Quelle est la forme de ce poème : combien de strophes, combien de vers, quelle longueur ?", "el": ["Quatre quatrains d'alexandrins. Ce n'est pas un sonnet : pas de tercets."]}]}, {"act": "Le e muet dans le vers", "h": "", "dur": 5, "blocs": [{"t": "consigne", "txt": "Tu as compté douze syllabes… ou quatorze. La différence tient à une seule lettre : le e. Le e muet compte ou ne compte pas selon sa place.", "el": ["En fin de vers : il ne compte jamais.", "En milieu de vers : il compte devant une consonne, et aussi devant -s et -nt ; il ne compte pas devant une voyelle ou un h muet.", "La césure : la pause après la 6e syllabe de l'alexandrin."]}]}, {"act": "Compter les syllabes : le e muet", "h": "", "dur": 7, "blocs": [{"t": "consigne", "txt": "Compte les syllabes du vers « Le navire glissant sur les gouffres amers » et place la césure.", "el": ["Le-na-vi-re-glis-sant // sur-les-gouf-fres-a-mers", "12 syllabes : le e de « navire » compte, celui de « gouffres » aussi."]}]}, {"act": "Les rimes", "h": "", "dur": 8, "blocs": [{"t": "question", "txt": "Relève les mots à la rime de la première strophe. Quelle est la disposition ?", "el": ["équipage / mers / voyage / amers : rimes croisées (ABAB), dans les quatre strophes."]}]}, {"act": "L'enjambement", "h": "", "dur": 10, "blocs": [{"t": "question", "txt": "Dans la deuxième strophe, où la phrase déborde-t-elle du vers ?", "el": ["« Laissent piteusement leurs grandes ailes blanches / Comme des avirons traîner à côté d'eux » : la phrase continue, la voix aussi. La comparaison arrive au vers suivant : l'enjambement la met en valeur."]}]}, {"act": "Les sonorités", "h": "", "dur": 10, "blocs": [{"t": "question", "txt": "Quel son revient dans « Souvent, pour s'amuser, les hommes d'équipage » ? Et dans « Prennent des albatros, vastes oiseaux des mers » ?", "el": ["Le [s] : une allitération — le glissement du navire. Le [a] : une assonance — la bouche s'ouvre, on entend l'immensité."]}]}, {"act": "Avant de se quitter", "h": "", "dur": 3, "blocs": [{"t": "consigne", "txt": "Relis la dernière strophe pour la prochaine heure. Une question t'attend : qui est vraiment l'albatros ?", "el": []}]}, {"act": "Où en sommes-nous ?", "h": "", "dur": 3, "blocs": [{"t": "question", "txt": "Quelle est la forme du poème ?", "el": ["Quatre quatrains d'alexandrins, rimes croisées."]}]}, {"act": "Le portrait de l'oiseau", "h": "", "dur": 10, "blocs": [{"t": "question", "txt": "Comment l'albatros passe-t-il du ciel au pont du navire ? Relève, dans tout le poème, les mots qui le font ressembler à un homme.", "el": ["La personnification traverse tout le texte : « compagnons de voyage », « rois de l'azur », « maladroits et honteux », « ce voyageur ailé », « prince des nuées »."]}]}, {"act": "Le champ lexical", "h": "", "dur": 3, "blocs": [{"t": "consigne", "txt": "Un champ lexical, c'est un ensemble de mots qui renvoient à une même idée.", "el": ["Pour le trouver : quel thème revient ? quels mots le portent ?"]}]}, {"act": "Le champ lexical de la moquerie", "h": "", "dur": 3, "blocs": [{"t": "question", "txt": "Relève dans les strophes 2 et 3 les mots de la moquerie et de la maladresse.", "el": ["Maladroits, honteux, piteusement, gauche, veule, comique, laid, agace, mime, en boitant — puis « huées » : le champ lexical descend avec l'oiseau."]}]}, {"act": "La famille des images", "h": "", "dur": 5, "blocs": [{"t": "question", "txt": "Le champ lexical rassemblait des mots. Les figures, elles, rapprochent des idées. « Le Poète est semblable au prince des nuées » : quelle figure ? Dans quelle famille de la carte la ranges-tu ?", "el": ["Une comparaison (« semblable ») : famille des figures d'analogie, avec la métaphore et la personnification."]}]}, {"act": "Les figures de style", "h": "", "dur": 5, "blocs": [{"t": "schema", "txt": "Les figures de style", "el": []}]}, {"act": "Le registre du poème", "h": "", "dur": 8, "blocs": [{"t": "fiche", "txt": "Le registre lyrique", "el": ["Le registre d'un texte, c'est l'effet qu'il produit sur le lecteur.", "<p>Le lyrique exprime des sentiments personnels par des rythmes et des images. Le mot vient de la lyre : autrefois, une poésie chantée.<\/p>"]}, {"t": "question", "txt": "Quel sentiment ce poème te fait-il éprouver pour l'albatros — et pour le poète ?", "el": ["La pitié, la tristesse : Baudelaire dit sa propre condition — registre lyrique."]}]}, {"act": "Que dit ce poème du poète ?", "h": "", "dur": 10, "blocs": [{"t": "question", "txt": "Dernier vers : « Ses ailes de géant l'empêchent de marcher. » Que comprends-tu ?", "el": ["Ce qui fait sa grandeur là-haut fait sa maladresse ici-bas : le poète est un exilé parmi les hommes."]}]}, {"act": "Question-bilan et travail à faire", "h": "", "dur": 8, "blocs": [{"t": "question", "txt": "En trois lignes : pourquoi Baudelaire a-t-il choisi un albatros pour parler du poète ? La réponse validée est recopiée dans le cahier, partie cours.", "el": []}, {"t": "consigne", "txt": "Pour la prochaine fois, révise avec la fiche de révision : l'interro portera sur les mouvements, la versification, les figures et le registre lyrique.", "el": []}]}]}, {"titre": "Interro de cours et analyse logique — les bases (1)", "ecrans": [{"act": "Interro de cours", "h": "", "dur": 15, "blocs": [{"t": "consigne", "txt": "Ouvre l'interro, code affiché au tableau. Quinze minutes, sans fiche.", "el": ["Mouvements et dates.", "Versification : sonnet, e muet, césure, enjambement, sonorités.", "Figures et registre lyrique.", "Question bonus : le champ lexical."]}]}, {"act": "La méthode d'analyse logique, par cœur", "h": "", "dur": 8, "blocs": [{"t": "consigne", "txt": "On quitte la poésie pour une heure : pour expliquer un poème, il faudra savoir découper une phrase. Il y a autant de propositions que de verbes conjugués.", "el": ["Étape 1 : Je souligne en noir les verbes conjugués.", "Étape 2 : J'entoure en bleu les mots subordonnants (pronoms relatifs si PSR, conjonctions de subordination si PSCc ou PSCci).", "Étape 3 : Je mets entre crochets — rouges les P.S, verts la P.P, noirs les P.I.", "Étape 4 : J'encadre en vert les antécédents (PSR) ou les verbes complétés (PSCc), et j'indique par une flèche leur relation avec le mot subordonnant."]}]}, {"act": "Entraînement 1 : trois phrases simples… ou pas", "h": "", "dur": 10, "blocs": [{"t": "consigne", "txt": "Sur ton cahier, analyse ces trois phrases avec les étapes 1 à 3.", "el": ["Je marche seul.", "Je marche seul et je chante.", "Je marche seul : je chante.", "Correction au tableau : un élève vient poser les crochets, la classe valide ou corrige."]}, {"t": "question", "txt": "Qu'est-ce qui distingue les phrases 2 et 3 ?", "el": ["Deux P.I dans les deux cas : coordonnées par « et » dans la 2, juxtaposées par les deux-points dans la 3."]}]}, {"act": "La locomotive : la proposition principale", "h": "", "dur": 6, "blocs": [{"t": "fiche", "txt": "P.I et P.P", "el": ["La P.I se suffit à elle-même ; la P.P a besoin de ses subordonnées.", "<p>La phrase complexe est un train : la P.P est la locomotive, les subordonnées sont ses wagons.<\/p><p>L'articulation, c'est le point d'attache : antécédent + pronom relatif, ou verbe complété + conjonction.<\/p><p>Vérification : je mets un point — si la proposition garde du sens, c'est une P.I.<\/p><p>Exemple : [Je marche seul avec mon chien] [qui me précède.]<\/p>"]}]}, {"act": "Entraînement 2 : le test du point", "h": "", "dur": 8, "blocs": [{"t": "consigne", "txt": "Sur ton cahier : dans la phrase suivante, remplace « car » puis « que » par un point, et dis ce qui garde du sens.", "el": ["Je me sentais léger car le sentiment procuré par l'avion était semblable à la liberté que vivent les oiseaux au-dessus des nuages.", "Correction au tableau : un élève vient poser les crochets, la classe valide ou corrige."]}, {"t": "question", "txt": "Que reste-t-il après chaque point ?", "el": ["« Je me sentais léger. » garde du sens : P.I. La suite perd son sens coupée : une P.P et sa subordonnée."]}]}, {"act": "Question-bilan", "h": "", "dur": 5, "blocs": [{"t": "question", "txt": "Combien de propositions dans une phrase ? À quoi reconnaît-on une P.I ? La réponse validée est recopiée dans le cahier, partie cours.", "el": ["Autant que de verbes conjugués ; la P.I garde son sens avec un point final."]}]}, {"act": "Avant de se quitter", "h": "", "dur": 3, "blocs": [{"t": "consigne", "txt": "Récite dans ta tête les 4 étapes de la méthode. La prochaine heure : les subordonnées.", "el": []}]}, {"act": "Où en sommes-nous ?", "h": "", "dur": 3, "blocs": [{"t": "question", "txt": "Combien de propositions dans une phrase ?", "el": ["Autant que de verbes conjugués."]}]}, {"act": "La subordonnée relative et son antécédent", "h": "", "dur": 10, "blocs": [{"t": "fiche", "txt": "La PSR", "el": ["Une extension du nom : ce nom est l'antécédent.", "<p>L'antécédent peut être un nom, un pronom ou un groupe nominal. La PSR, comme toutes les P.S, ne peut pas fonctionner seule.<\/p><p>Structure : antécédent + pronom relatif + [subordonnée relative]. Exemple : le chien [dont je parle].<\/p><p><b>Le protocole selon le pronom<\/b> : QUI (sujet) : qui est-ce qui… ? — QUE (COD) : qu'est-ce que… ? — DONT : de qui, de quoi… ? — OÙ : où, quand… ? — LEQUEL après préposition : préposition + qui… ? La réponse est l'antécédent, juste avant le pronom, hors de la PSR.<\/p>"]}]}, {"act": "Entraînement 3 : trouver l'antécédent", "h": "", "dur": 10, "blocs": [{"t": "consigne", "txt": "Sur ton cahier, analyse ces trois phrases avec les 4 étapes, et rédige le protocole de chaque antécédent.", "el": ["Jean-Mich a vu la sœur de son ami qui jouait du piano.", "J'ai salué le voisin de ma cousine dont la voiture est en panne et auquel j'ai brisé le tibia.", "Le professeur a rappelé la règle d'analyse logique que beaucoup d'élèves oubliaient.", "Correction au tableau : un élève vient poser les crochets, la classe valide ou corrige."]}]}, {"act": "Le point d'attention : « que »", "h": "", "dur": 7, "blocs": [{"t": "fiche", "txt": "« Que » et la PSCc", "el": ["« Que » peut être pronom relatif ou conjonction de subordination.", "<p>À l'étape 2, j'écris seulement « M.S » sous « que ». À l'étape 3, je nomme seulement « P.S ». À l'étape 4, une fois trouvé l'antécédent ou le verbe complété, je précise : PR ou CDS.<\/p><p>La PSCc est introduite par « que » conjonction : elle complète le VC de la proposition précédente — ce verbe est le VCP, le Verbe ComPlété. Exemple : Elle pensa [qu'il fallait s'enfuir].<\/p>"]}]}, {"act": "Entraînement 4 : relative ou complétive ?", "h": "", "dur": 8, "blocs": [{"t": "consigne", "txt": "Sur ton cahier, analyse ces deux phrases et dis pour chacune ce qu'est « que ».", "el": ["Le livre que tu m'as prêté est passionnant.", "Je crois que tu as raison.", "Correction au tableau : un élève vient poser les crochets, la classe valide ou corrige."]}, {"t": "question", "txt": "Comment as-tu tranché ?", "el": ["Phrase 1 : antécédent « le livre » → PR, relative. Phrase 2 : « que » complète « crois » → CDS, complétive."]}]}, {"act": "La subordonnée circonstancielle", "h": "", "dur": 5, "blocs": [{"t": "fiche", "txt": "La PSCci", "el": ["Introduite par une conjonction de subordination qui exprime une circonstance.", "<p>Temps, but, cause, conséquence, condition, opposition, concession, comparaison. Comme la PSCc, elle complète un VCP. À l'étape 3, on nomme toujours sa circonstance : PSCci de temps, de cause…<\/p><p>Exemple : [Bien qu'il soit malade], il travaille.<\/p>"]}]}, {"act": "Entraînement 5 : tout mélangé", "h": "", "dur": 9, "blocs": [{"t": "consigne", "txt": "Sur ton cahier, analyse ces trois phrases en entier — attention, l'une d'elles cache un piège, et la dernière est de Baudelaire.", "el": ["L'enfant a pris un livre de la bibliothèque qu'il aime particulièrement et qu'il a déjà lu de nombreuses fois.", "Tu pourras te reposer pendant ces vacances et tu pourras enfin finir ta série préférée.", "Il y a une sorte de plaisir mystérieux et aristocratique pour celui qui n'a plus ni curiosité ni ambition, à contempler […] tous ces mouvements de ceux qui partent et de ceux qui reviennent.", "Correction au tableau : un élève vient poser les crochets, la classe valide ou corrige."]}]}, {"act": "Travail en autonomie", "h": "", "dur": 3, "blocs": [{"t": "consigne", "txt": "Prends la feuille d'exercice en autonomie « Le romantisme au XIXe siècle » ; son corrigé sera publié pour que tu te vérifies.", "el": ["Moins de 7 erreurs : tu es prêt pour l'analyse notée.", "7 erreurs ou plus : on reprend ensemble."]}]}]}, {"titre": "Le poème sans vers : dictée et réécriture", "ecrans": [{"act": "Où en sommes-nous ?", "h": "", "dur": 3, "blocs": [{"t": "question", "txt": "Depuis le début du chapitre, tous les poèmes lus avaient quelle forme ?", "el": ["Des vers : quatrains d'alexandrins. Aujourd'hui, un poème sans vers."]}]}, {"act": "Lecture : « Les Fenêtres »", "h": "", "dur": 5, "blocs": [{"t": "consigne", "txt": "Écoute la lecture, texte sous les yeux. Souligne ce qui te semble être de la poésie, malgré l'absence de vers.", "el": []}]}, {"act": "Le poème en prose", "h": "", "dur": 4, "blocs": [{"t": "consigne", "txt": "Un poème sans vers ni rimes : la poésie tient aux images, au rythme des phrases, aux sonorités.", "el": ["Baudelaire publie ses poèmes en prose dans les journaux à partir de 1855 ; le recueil, Petits Poèmes en prose (ou Le Spleen de Paris), paraît après sa mort, en 1869."]}]}, {"act": "Un poème, sans vers ?", "h": "", "dur": 4, "blocs": [{"t": "question", "txt": "Première phrase : quelle idée surprenante ?", "el": ["On voit plus dans une fenêtre fermée que dans une fenêtre ouverte : le poète préfère imaginer que voir."]}]}, {"act": "Qui parle, à qui ?", "h": "", "dur": 10, "blocs": [{"t": "question", "txt": "Dans la dernière partie du texte, qui prend la parole, et comment le voit-on ?", "el": ["« Peut-être me direz-vous… » : une deuxième voix entre dans le texte ; les guillemets marquent le discours direct. Le poème devient un dialogue entre le poète et son lecteur."]}, {"t": "question", "txt": "Que répond le poète ?", "el": ["Peu importe la réalité, si l'histoire inventée l'a « aidé à vivre »."]}]}, {"act": "Le rythme et les images", "h": "", "dur": 9, "blocs": [{"t": "question", "txt": "Relève une répétition qui fait rythme et une image.", "el": ["« Vit la vie, rêve la vie, souffre la vie » : trois fois le même mouvement, comme un refrain. « Des vagues de toits » : les toits deviennent une mer — une métaphore."]}]}, {"act": "La dictée se prépare : le paratexte", "h": "", "dur": 8, "blocs": [{"t": "consigne", "txt": "Même auteur, autre texte : « Le port » est un poème en prose comme « Les Fenêtres ». Tu vas l'écrire sous la dictée. Voici le paratexte de la dictée : « Le port », Charles Baudelaire, Petits Poèmes en prose.", "el": ["J'observe le titre, l'auteur, l'œuvre.", "Je fais des hypothèses : de quoi le texte va-t-il parler ?", "Je me rappelle ce qu'est un poème en prose."]}]}, {"act": "La dictée se prépare : les pièges", "h": "", "dur": 9, "blocs": [{"t": "consigne", "txt": "Au brouillon, entraîne-toi sur les difficultés repérées.", "el": ["Les accords dans le groupe nominal.", "L'accord du verbe quand le sujet est loin ou inversé.", "Le participe passé avec être.", "ce / ceux : je remplace par « celui-là » pour vérifier.", "Le lexique du texte : le môle, le belvédère, le prisme."]}]}, {"act": "Avant de se quitter", "h": "", "dur": 3, "blocs": [{"t": "consigne", "txt": "Relis tes notes de préparation. La dictée a lieu à la prochaine heure ; elle compte sur 10, comme la partie dictée du brevet.", "el": []}]}, {"act": "Dictée", "h": "", "dur": 20, "blocs": [{"t": "consigne", "txt": "Stylo bleu, sur ta copie. Écoute la lecture entière, écris sous la dictée, puis garde le silence jusqu'à la relecture.", "el": ["Partie dictée de l'épreuve du brevet : sur 10.", "Une version aménagée est distribuée à ceux qui en bénéficient."]}]}, {"act": "Relecture guidée", "h": "", "dur": 5, "blocs": [{"t": "consigne", "txt": "Relis trois fois, une mission par lecture.", "el": ["Lecture 1 : je cherche chaque sujet et je vérifie son verbe.", "Lecture 2 : je vérifie les participes passés avec être.", "Lecture 3 : les homophones (ce/ceux, son/sont, ou/où)."]}]}, {"act": "Réécriture", "h": "", "dur": 15, "blocs": [{"t": "consigne", "txt": "Sur la feuille distribuée : réécris le passage indiqué des « Fenêtres » en remplaçant « je » par « nous » et en conjuguant les verbes au futur. Souligne toutes tes modifications.", "el": ["Exercice de réécriture de l'épreuve : sur 10.", "Le texte est celui que nous venons d'étudier.", "Attention aux mots qui ne changent pas."]}]}, {"act": "Analyse logique notée", "h": "", "dur": 12, "blocs": [{"t": "consigne", "txt": "Sur ta copie, fais l'analyse logique complète de cette phrase : « Nous qui avons fortement vécu, nous cherchons ce que nous pourrions aimer et estimer. »", "el": ["Les 4 étapes de la méthode, dans l'ordre.", "Un point par étape : soulignement et remarque, mots subordonnants, crochets nommés avec leurs couleurs, protocole de l'antécédent."]}]}, {"act": "Avant de se quitter", "h": "", "dur": 3, "blocs": [{"t": "consigne", "txt": "Les copies reviendront corrigées ; chacun y lira ses points d'appui et ses fragilités, puis les retravaillera en séance de remédiation.", "el": []}]}]}, {"titre": "Atelier d'écriture : le sonnet et le paragraphe", "ecrans": [{"act": "Où en sommes-nous ?", "h": "", "dur": 3, "blocs": [{"t": "question", "txt": "Quelles formes de poème connaissons-nous maintenant ?", "el": ["Les quatrains d'alexandrins, le poème en prose. Aujourd'hui : la forme reine, le sonnet."]}]}, {"act": "Lecture : « À une passante »", "h": "", "dur": 5, "blocs": [{"t": "consigne", "txt": "Écoute la lecture, texte sous les yeux. Note ce que tu vois : où sommes-nous, qui passe ?", "el": []}]}, {"act": "La forme du sonnet", "h": "", "dur": 10, "blocs": [{"t": "fiche", "txt": "Le sonnet", "el": ["Quatorze vers : deux quatrains puis deux tercets.", "<p>Ici, des alexandrins — la césure après la 6e syllabe — et des rimes embrassées (ABBA) dans les quatrains.<\/p>"]}, {"t": "question", "txt": "Vérifie sur le poème : strophes, longueur des vers, mots à la rime et leur disposition.", "el": ["2 quatrains + 2 tercets ; alexandrins ; hurlait / majestueuse / fastueuse / ourlet : rimes embrassées."]}]}, {"act": "La bascule du sonnet", "h": "", "dur": 14, "blocs": [{"t": "question", "txt": "Que se passe-t-il entre les quatrains et les tercets ?", "el": ["Quatrains : elle passe, il la regarde. Tercets : « Un éclair… puis la nuit ! » — elle a disparu, il ne reste que le regret. Le sonnet bascule à sa charnière."]}]}, {"act": "Le dernier vers", "h": "", "dur": 8, "blocs": [{"t": "question", "txt": "« Ô toi que j'eusse aimée, ô toi qui le savais ! » : quel sentiment, quel registre ?", "el": ["Le regret d'un amour qui n'a pas eu lieu : registre lyrique."]}]}, {"act": "Trois questions à ne pas confondre", "h": "", "dur": 2, "blocs": [{"t": "consigne", "txt": "La forme se compte, le registre se ressent, le mouvement se date.", "el": ["Quelle forme ? Elle se compte : strophes, vers, syllabes, rimes — sonnet, quatrain, poème en prose.", "Quel registre ? Il se ressent : l'effet produit sur le lecteur — lyrique, tragique, comique…", "Quel mouvement ? Il se date, et se justifie par ce que le poème montre — romantisme, Parnasse, symbolisme."]}]}, {"act": "Forme, registre, mouvement : ne pas confondre", "h": "", "dur": 2, "blocs": [{"t": "question", "txt": "« À une passante » est un sonnet, forme née au XVIe siècle. Peut-on en déduire que Baudelaire est un poète classique ?", "el": ["Non. La forme est héritée, le poème est du XIXe siècle : Baudelaire reprend les règles anciennes pour dire la ville moderne. La forme ne dit pas l'époque."]}]}, {"act": "La récitation se prépare", "h": "", "dur": 8, "blocs": [{"t": "consigne", "txt": "Ce sonnet est à apprendre par cœur : récitation devant la classe en séance 7, avec vote sur quatre critères.", "el": ["Le texte est su.", "On entend chaque mot.", "Le rythme du vers est respecté (e muets, enjambements).", "La récitation est vivante.", "Commence maintenant : lis trois fois le premier quatrain, cache-le, récite-le."]}]}, {"act": "Avant de se quitter", "h": "", "dur": 5, "blocs": [{"t": "consigne", "txt": "Pour la prochaine heure, relis « L'Homme et la mer », distribué avec la fiche méthode.", "el": []}]}, {"act": "Un vers, une idée", "h": "", "dur": 8, "blocs": [{"t": "question", "txt": "Voici un troisième poème de Baudelaire, « L'Homme et la mer » : il servira de terrain d'entraînement au paragraphe. « La mer est ton miroir » : quelle figure, et que montre-t-elle ?", "el": ["Une métaphore : en regardant la mer, l'homme se regarde lui-même."]}]}, {"act": "La méthode en quatre étapes", "h": "", "dur": 10, "blocs": [{"t": "consigne", "txt": "Un paragraphe qui affirme une idée, la prouve par une citation exacte, puis explique ce que la citation montre.", "el": ["1. L'affirmation : mon idée sur le texte, en une phrase.", "2. La citation : exacte, entre guillemets ; une barre oblique marque le changement de vers.", "3. L'intégration : la citation ne reste jamais seule, elle est prise dans ma phrase.", "4. L'explication : ce que la citation montre, avec les mots des fiches notions."]}]}, {"act": "Le contre-exemple", "h": "", "dur": 7, "blocs": [{"t": "question", "txt": "Pourquoi « La mer reflète l'homme. \"La mer est ton miroir\". » est-il un paragraphe raté ?", "el": ["La citation est posée seule, sans phrase autour ni explication : elle ne prouve rien."]}]}, {"act": "À toi d'écrire", "h": "", "dur": 20, "blocs": [{"t": "consigne", "txt": "Sur ta copie, rédige un paragraphe citation-justification : le poète est un exilé dans « L'Albatros ».", "el": ["Un paragraphe de huit à douze lignes.", "Affirmation.", "Citation exacte, vers marqués par une barre.", "Citation intégrée à ta phrase.", "Explication avec un mot de la carte des figures.", "Les quatre étapes restent affichées au tableau pendant l'écriture.", "Dix minutes avant la fin : j'échange ma copie avec mon voisin, il vérifie les quatre étapes, je vérifie les siennes."]}]}, {"act": "Je me relis, et je fais travailler ma mémoire", "h": "", "dur": 8, "blocs": [{"t": "consigne", "txt": "Vérifie ton paragraphe avec les quatre étapes de la fiche : chacune y est-elle ?", "el": []}, {"t": "question", "txt": "Trois questions de mémoire, sans la fiche — ton cerveau retient ce qu'il va rechercher lui-même : 1. Cite les trois figures de la famille de l'analogie. 2. Quelle différence entre comparaison et métaphore ? 3. Invente une personnification.", "el": ["Comparaison, métaphore, personnification (et l'allégorie). L'outil de comparaison. Réponses d'élèves saisies en direct."]}, {"t": "consigne", "txt": "La prochaine séance est le brevet blanc : un sonnet inconnu, des réponses justifiées — exactement ce que tu viens de faire. Continue le par-cœur d'« À une passante ».", "el": []}]}]}, {"titre": "Brevet blanc n°1 : un sonnet, « Parfum exotique »", "ecrans": [{"act": "Le cadre de l'épreuve", "h": "", "dur": 5, "blocs": [{"t": "consigne", "txt": "Aujourd'hui, tu composes sur la partie « Compréhension et compétences d'interprétation » de l'épreuve du brevet.", "el": ["Compréhension et interprétation : 32 points, en classe.", "Grammaire : 8 points, dans un second temps.", "Avec la dictée et la réécriture déjà notées, tu auras composé sur presque toute l'épreuve.", "Chaque réponse justifiée par une citation : le paragraphe de la séance 5."]}]}, {"act": "Lecture du sonnet", "h": "", "dur": 5, "blocs": [{"t": "consigne", "txt": "Lis le poème deux fois en silence. Avant toute réponse : compte les strophes, repère la disposition des rimes.", "el": []}]}, {"act": "Compréhension et interprétation (sur 32)", "h": "", "dur": 45, "blocs": [{"t": "consigne", "txt": "Réponds sur ta copie, dans l'ordre des questions. Une citation intégrée et expliquée par réponse.", "el": ["La forme et les rimes.", "Le parfum et le voyage : les images.", "Les sonorités.", "Le sens du dernier tercet.", "Je garde dix minutes pour me relire."]}]}]}, {"titre": "Récitation : « À une passante »", "ecrans": [{"act": "Ce que la classe évalue", "h": "", "dur": 4, "blocs": [{"t": "consigne", "txt": "On ne juge pas un camarade : on évalue une récitation, critère par critère.", "el": ["Le texte est su.", "On entend chaque mot.", "Le rythme du vers est respecté.", "La récitation est vivante."]}]}, {"act": "Les quatre critères", "h": "", "dur": 4, "blocs": [{"t": "consigne", "txt": "Pendant chaque passage : silence complet. Le vote s'ouvre après le dernier vers.", "el": []}]}, {"act": "Les passages", "h": "", "dur": 45, "blocs": [{"t": "consigne", "txt": "L'ordre de passage est tiré au sort et affiché : chacun sait quand il passe.", "el": ["Deux minutes par passage ; chacun récite une fois.", "Ceux qui attendent relisent en silence ; ceux qui sont passés votent.", "Je vote honnêtement, critère par critère.", "L'auteur du passage voit son bilan."]}]}, {"act": "Avant de se quitter", "h": "", "dur": 2, "blocs": [{"t": "consigne", "txt": "Les passages continuent la prochaine heure ; ceux qui ne sont pas passés révisent une dernière fois.", "el": []}]}, {"act": "Reprise des passages", "h": "", "dur": 50, "blocs": [{"t": "consigne", "txt": "Mêmes règles : silence, vote après le dernier vers, chacun passe une fois.", "el": ["L'ordre des passages s'organise au fil de l'heure ; les derniers passages peuvent ouvrir la séance suivante."]}]}, {"act": "Question-bilan", "h": "", "dur": 5, "blocs": [{"t": "question", "txt": "Qu'est-ce qui distingue une récitation vivante d'une récitation seulement sue ? La réponse validée est recopiée dans le cahier, partie cours.", "el": []}]}]}, {"titre": "Remédiation", "ecrans": [{"act": "Retour sur le brevet blanc", "h": "", "dur": 12, "blocs": [{"t": "question", "txt": "Cette séance reprend, dans l'ordre, chacun des travaux notés du chapitre. Dans les copies, quelle étape du paragraphe manque le plus souvent ?", "el": ["L'explication : la citation est posée, mais on ne dit pas ce qu'elle montre."]}, {"t": "consigne", "txt": "Reprends une de tes réponses du brevet blanc et réécris-la avec les quatre étapes.", "el": []}]}, {"act": "Ma dictée, mes erreurs", "h": "", "dur": 25, "blocs": [{"t": "consigne", "txt": "Consulte ta copie corrigée à l'écran, puis autocorrige chaque erreur en réfléchissant.", "el": ["Pour chaque erreur : j'écris la règle avec mes mots, je corrige, puis j'invente un exemple à moi.", "Accord sujet-verbe : je retrouve le sujet, même inversé.", "Participe passé avec être : j'accorde avec le sujet."]}]}, {"act": "Ma réécriture, mes erreurs", "h": "", "dur": 15, "blocs": [{"t": "consigne", "txt": "Reprends ta réécriture corrigée, fiche sous les yeux, et corrige tes erreurs une à une.", "el": []}]}, {"act": "Je m'entraîne sur mes points faibles", "h": "", "dur": 30, "blocs": [{"t": "consigne", "txt": "Choisis la notion que tu maîtrises le moins bien et prends la feuille d'entraînement correspondante.", "el": ["Les relatives : la paire d'exercices d'analyse logique.", "La versification : la fiche notion et ses exemples à compter.", "Les accords : la préparation de dictée, à refaire au brouillon.", "Le paragraphe : la fiche méthode et son modèle.", "Quand j'ai terminé, j'aide un camarade sur ce que je sais faire."]}]}, {"act": "Avant de se quitter", "h": "", "dur": 3, "blocs": [{"t": "consigne", "txt": "Prochaine séance : la tâche finale. Un poème inconnu, la question du chapitre à trancher seul, preuves à l'appui.", "el": []}]}]}, {"titre": "Tâche finale : un poème en prose inconnu, « L'Étranger »", "ecrans": [{"act": "Les repères avant de lire", "h": "", "dur": 5, "blocs": [{"t": "consigne", "txt": "Un poème en prose de Baudelaire, ouverture du Spleen de Paris.", "el": ["1857 : Les Fleurs du mal, des poèmes en vers.", "1862 : « L'Étranger » ouvre la série des poèmes en prose publiés dans le journal La Presse.", "1869 : le recueil Petits Poèmes en prose (Le Spleen de Paris) paraît après la mort du poète.", "Épreuve : compréhension et interprétation, 32 points."]}]}, {"act": "Lecture silencieuse", "h": "", "dur": 5, "blocs": [{"t": "consigne", "txt": "Lis deux fois. À la seconde lecture, crayon en main : souligne les répliques, entoure les mots répétés. Repère qui parle : combien de voix ? à quoi les reconnaît-on ?", "el": []}]}, {"act": "Étude du texte (sur 32)", "h": "", "dur": 45, "blocs": [{"t": "consigne", "txt": "Depuis la première séance, la question est la même : de quelles règles la poésie se libère-t-elle ? Aujourd'hui, tu y réponds seul. Réponds sur ta copie, une citation intégrée par réponse. La dernière question est celle du chapitre : de quelles règles ce poème se libère-t-il, et que garde-t-il de la poésie ?", "el": ["Le genre et la forme : pourquoi un poème, sans vers ?", "Les marques du dialogue.", "Les deux voix et ce qu'elles opposent.", "Les nuages : la dernière réplique.", "Je garde dix minutes pour me relire.", "Une version aménagée est distribuée à ceux qui en bénéficient."]}]}]}], "eleves": ["AUDEBERT Elise", "AUGEREAU Gatien", "BOIVIN Eden", "BOURREAU Céleste", "BRESSIN Titouan", "CALDEIRA Tiago", "CESBRON Lili", "CHALUMEAU Jules", "CHAN Aymeric", "CHARRIER Line", "CHOLET Pierre", "CHOUTEAU Baptistine", "DELACROIX Romain", "DESBOIS Auriane", "DESLIN Lucas", "DITTIERE Romane", "HEINRICH Clovis", "JAMIN Noé", "JUIN Angèle", "KOCK Elisa", "LAURY Maël", "PAGEOT Elie", "PINET Charlotte", "POULAIN--HELIN Zélia", "REVET Lucas", "ROLLAND Gabriel", "ROULLEAU Candice", "TENNEGUIN Arthur", "XAVIER Capucine"], "notes": {"0|0": "Dire que le tableau des trois colonnes est au brouillon, pas au propre — rassurer sur l'orthographe. Insister : « ce que je me demande » est la colonne qui compte, c'est elle qui fera l'hypothèse. Ne pas dévoiler l'étape 4 avant que tout le monde ait trois lignes.", "0|1": "Laisser 30 secondes de silence avant de parler. Question à lancer si ça ne vient pas : « où est l'homme dans ce tableau ? »", "0|6": "Noter au tableau les mots qui reviennent (nature, seul, immense, orage). Ce sont eux qui serviront à la définition."}};
+const TAILLES = [{n:'normal',fs:1.22},{n:'+1',fs:1.45},{n:'+2',fs:1.7},{n:'+3',fs:2.0},{n:'+4',fs:2.4}];
+const estMur = location.search.indexOf('mur') >= 0;
+
+// ───────── rendu d'une diapo (même code pour le pilotage et le mur) ─────────
+function elements(ecran){ // les éléments dévoilables d'une diapo, dans l'ordre
+  const out = []; ecran.blocs.forEach((b, bi) => b.el.forEach((e, ei) => out.push({b: bi, e: ei, txt: e, t: b.t}))); return out;
+}
+function rendre(mur, et, opts){ // et = {si, di, nDev, lum:[], ecr:[], taille, page, loupe, bandeau}
+  const ecran = DATA.seances[et.si].ecrans[et.di]; const fs = TAILLES[et.taille].fs;
+  let h = `<span class="etiq">${esc(ecran.act)}</span>`;
+  const b0 = ecran.blocs[0];
+  if (b0 && b0.t === 'image') {
+    h += `<div class="imgzone">${b0.ref ? `<img src="${b0.ref}" alt="">` : '<div style="width:80%;height:80%;background:repeating-linear-gradient(135deg,#d9cfbf,#d9cfbf 8px,#cabca8 8px,#cabca8 16px);border-radius:6px"></div>'}</div><div class="legende">${esc(b0.txt)}</div>`;
+  } else {
+    h += `<div class="corpsd" style="font-size:${fs}rem"><h2 style="font-size:${fs*1.25}rem">${esc((b0 && b0.txt) || ecran.act)}</h2>`;
+    let k = 0;
+    ecran.blocs.forEach((b, bi) => {
+      if (bi > 0 && b.txt) h += `<h2 style="font-size:${fs*1.1}rem">${esc(b.txt)}</h2>`;
+      if (b.el.length) { h += '<ol>'; b.el.forEach((e, ei) => { const cls = [k >= et.nDev ? 'pas' : '', et.lum.includes(k) ? 'lum' : '', et.ecr.includes(k) ? 'ecr' : ''].join(' '); h += `<li data-k="${k}" data-n="${ei + 1}" class="${cls}">${esc(e)}</li>`; k++; }); h += '</ol>'; }
+    });
+    h += '</div>';
+  }
+  h += `<span class="page" id="${mur.id}-page"></span><div class="bandeau ${et.bandeau ? 'on' : ''}">${esc(et.bandeau || '')}</div>`;
+  mur.innerHTML = h;
+  paginer(mur, et);
+  loupeSur(mur, et);
+}
+// essai 2 du zoom : pagination d'AFFICHAGE — le texte ne change pas, on montre les éléments qui tiennent
+function paginer(mur, et){
+  const corps = mur.querySelector('.corpsd'); const page = mur.querySelector('.page'); if (!corps) { page.textContent = ''; return; }
+  const lis = Array.from(corps.querySelectorAll('li')); const H = corps.clientHeight; const h2 = corps.querySelector('h2');
+  lis.forEach(l => l.classList.remove('hors'));
+  if (!lis.length || corps.scrollHeight <= H + 2) { page.textContent = ''; return; }
+  // découpe en pages selon la hauteur disponible sous le titre
+  const pages = []; let cur = []; const base = h2 ? h2.offsetHeight + 8 : 0;
+  lis.forEach(l => { const bas = l.offsetTop + l.offsetHeight - (lis[0].offsetTop) ; l._bas = bas; });
+  let debut = 0; lis.forEach((l, i) => { if (l._bas - debut > H - base && cur.length) { pages.push(cur); cur = []; debut = l.offsetTop - lis[0].offsetTop; } cur.push(i); }); pages.push(cur);
+  // la page montrée : celle qui contient le dernier élément dévoilé (ou celle demandée)
+  let pi = pages.findIndex(p => p.includes(Math.max(0, Math.min(lis.length - 1, et.nDev - 1)))); if (et.page != null && et.page >= 0 && et.page < pages.length) pi = et.page; if (pi < 0) pi = 0;
+  lis.forEach((l, i) => { if (!pages[pi].includes(i)) l.classList.add('hors'); });
+  page.textContent = `page ${pi + 1} / ${pages.length} — la diapo est entière, seule la page change`;
+  et._pages = pages.length; et._pi = pi;
+}
+function loupeSur(mur, et){
+  const corps = mur.querySelector('.corpsd') || mur.querySelector('.imgzone'); if (!corps) return;
+  if (et.loupe && mur.classList.contains('public')) { const L = et.loupe; const f = L.f; const W = mur.clientWidth, H = mur.clientHeight;
+    mur.style.overflow = 'hidden'; const cx = (L.x + L.w / 2) * W, cy = (L.y + L.h / 2) * H;
+    mur.firstElementChild && (mur.firstElementChild.style.display = 'none');
+    corps.style.transformOrigin = '0 0'; corps.style.transform = `translate(${W/2 - cx*f}px, ${H/2 - cy*f}px) scale(${f})`; corps.style.left = '0'; corps.style.top = '0'; corps.style.right = 'auto'; corps.style.bottom = 'auto'; corps.style.width = (W - 56) + 'px'; corps.style.height = (H - 56) + 'px'; corps.style.margin = '34px 28px';
+  }
+}
+function esc(s){ return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+// ───────── la fenêtre du tableau ─────────
+if (estMur) {
+  document.body.classList.add('estmur'); document.getElementById('pilotage').style.display = 'none'; document.getElementById('murseul').style.display = 'flex';
+  const mur2 = document.getElementById('mur2'); document.title = 'Tableau — ce que voit la classe';
+  window.addEventListener('message', ev => { if (ev.data && ev.data.et) rendre(mur2, ev.data.et, {}); });
+  window.addEventListener('resize', () => { if (window._et) rendre(mur2, window._et, {}); });
+  if (window.opener) window.opener.postMessage({ murPret: true }, '*');
+} else {
+
+// ───────── le pilotage ─────────
+const S = { si: 0, di: 0, taille: 0, page: null, mode: null, gel: null, loupe: null, bandeau: '', pause: false, ecoule: 0, notesFil: [], parts: [], cand: null };
+const parDiapo = {}; // état de dévoilement par diapo : {nDev, lum, ecr}
+const cle = () => S.si + '|' + S.di;
+const etatDiapo = () => parDiapo[cle()] || (parDiapo[cle()] = { nDev: 0, lum: [], ecr: [] });
+const seance = () => DATA.seances[S.si]; const ecran = () => seance().ecrans[S.di];
+const etatComplet = () => { const d = etatDiapo(); return { si: S.si, di: S.di, nDev: d.nDev, lum: d.lum.slice(), ecr: d.ecr.slice(), taille: S.taille, page: S.page, loupe: S.loupe, bandeau: S.bandeau }; };
+let fenetreMur = null;
+const mur = document.getElementById('mur');
+const $ = id => document.getElementById(id);
+
+function tout(){ // re-rend l'écran de pilotage, et pousse au mur si pas gelé
+  const et = etatComplet(); const e = ecran(); const n = elements(e).length;
+  rendre(mur, et, {}); mur.className = 'mur' + (S.mode === 'lum' ? ' mode-lum' : S.mode === 'ecr' ? ' mode-ecr' : '');
+  $('numero').textContent = `Diapo ${S.di + 1} sur ${seance().ecrans.length}`; $('acte').textContent = ` · ${e.act} · prévue ${e.dur} min`;
+  $('compte').textContent = n ? `${Math.min(et.nDev, n)} / ${n} dévoilés` : 'rien à dévoiler';
+  $('notesd').innerHTML = DATA.notes[cle()] ? esc(DATA.notes[cle()]) : '<span class="vide">(pas de notes pour cette diapo — elles s\'écrivent en préparation)</span>';
+  const sv = seance().ecrans[S.di + 1]; $('suivante').innerHTML = sv ? `<span class="aumur">au tableau, figé</span><b>${esc(sv.act)}</b>${esc((sv.blocs[0] && sv.blocs[0].txt) || '')} · ${sv.dur} min${sv.blocs[0] && sv.blocs[0].t === 'image' ? '<div class="img"></div>' : ''}` : '<b>Fin de la séance</b>';
+  volet(); ouOnEnEst(); $('fil-ou').textContent = `3E Charles de Gaulle · diapo ${S.di + 1}`;
+  $('bloupe').classList.toggle('on', S.mode === 'loupe'); $('blum').classList.toggle('on', S.mode === 'lum'); $('becr').classList.toggle('on', S.mode === 'ecr');
+  $('taillev').textContent = TAILLES[S.taille].n;
+  if (!S.gel) pousser(et);
+}
+function pousser(et){ if (fenetreMur && !fenetreMur.closed) { try { fenetreMur.postMessage({ et }, '*'); } catch (e) {} } }
+function volet(){
+  let h = `<h4>Séance ${S.si + 1} · ${seance().ecrans.length} diapos <span id="plier" title="Replie le volet (P)">◀</span></h4>`;
+  seance().ecrans.forEach((e, i) => { const d = parDiapo[S.si + '|' + i]; const faite = i < S.di; const img = e.blocs[0] && e.blocs[0].t === 'image';
+    h += `<div class="vig ${i === S.di ? 'cour' : ''} ${faite ? 'faite' : ''}" data-i="${i}"><span class="n">${i + 1}</span><div class="m"><b>${esc(e.act)}</b>${img ? '<div class="img"></div>' : '<i></i><i style="width:70%"></i><i></i><i style="width:55%"></i>'}</div><span class="t">${esc(e.h)}</span></div>`; });
+  h += `<div class="sea"><b>Le chapitre</b>${DATA.seances.length} séances · un clic ouvre ses diapos ici</div>`;
+  DATA.seances.forEach((s, i) => { h += `<div class="autre ${i === S.si ? 'cour' : ''}" data-s="${i}">${i + 1} · ${esc(s.titre)}</div>`; });
+  $('volet').innerHTML = h;
+  const v = $('volet').querySelector('.vig.cour'); if (v) v.scrollIntoView({ block: 'nearest' });
+}
+function ouOnEnEst(){
+  const e = ecran(); const prevuAvant = seance().ecrans.slice(0, S.di).reduce((a, x) => a + (x.dur || 0), 0);
+  const dansDiapo = Math.max(0, S.ecoule / 60 - prevuAvant); const part = e.dur ? Math.min(1, dansDiapo / e.dur) : 0;
+  $('ou-act').textContent = `${e.act} — en cours`; $('ou-t').textContent = `${Math.floor(dansDiapo)} / ${e.dur} min`; $('ou-b').style.width = (part * 100) + '%';
+  const ecart = S.ecoule / 60 - prevuAvant; const p = $('ou-p');
+  if (ecart > e.dur + 1) { p.className = 'petit retard'; p.textContent = `${Math.round(ecart - e.dur)} min de retard sur le prévu · diapo ${S.di + 1} sur ${seance().ecrans.length}`; }
+  else { p.className = 'petit'; p.textContent = `dans les temps · diapo ${S.di + 1} sur ${seance().ecrans.length}`; }
+}
+// navigation
+// le fil normal : ▶ dévoile l'élément suivant, puis passe à la diapo suivante — jamais de garde
+function devoiler(){ const d = etatDiapo(); const n = elements(ecran()).length; if (d.nDev < n) { d.nDev++; S.page = null; } else if (S.di < seance().ecrans.length - 1) { S.di++; S.page = null; } tout(); }
+// tout le reste (revenir, sauter, aller ailleurs) est HORS FIL : si le tableau te suivrait, la garde demande
+function revoiler(){ garde(() => { const d = etatDiapo(); if (d.nDev > 0) { d.nDev--; S.page = null; } else if (S.di > 0) { S.di--; S.page = null; } tout(); }, 'revenir en arrière'); }
+function aller(i){ i = Math.max(0, Math.min(seance().ecrans.length - 1, i)); if (i === S.di) return; const d = etatDiapo(); const n = elements(ecran()).length;
+  const fil = (i === S.di + 1 && d.nDev >= n);   // la diapo suivante, tout dévoilé : c'est le fil normal
+  const faire = () => { S.di = i; S.page = null; tout(); };
+  if (fil) return faire(); garde(faire, i < S.di ? 'revenir à la diapo ' + (i + 1) : 'sauter à la diapo ' + (i + 1)); }
+let gardeEnAttente = null;
+function garde(faire, quoi){ if (S.gel) return faire();                       // déjà gelé : libre
+  gardeEnAttente = faire; $('garde-titre').textContent = 'Le tableau te suivrait — ' + quoi + '.'; $('garde').classList.add('on'); $('garde-gel').focus(); }
+$('garde-gel').onclick = () => { $('garde').classList.remove('on'); if (!S.gel) gel(); const f = gardeEnAttente; gardeEnAttente = null; if (f) f(); };
+$('garde-devant').onclick = () => { $('garde').classList.remove('on'); const f = gardeEnAttente; gardeEnAttente = null; if (f) f(); };
+$('garde-non').onclick = () => { $('garde').classList.remove('on'); gardeEnAttente = null; };
+$('bsuiv').onclick = devoiler; $('bprec').onclick = revoiler;
+$('volet').addEventListener('click', ev => { const v = ev.target.closest('.vig'); if (v) return aller(+v.dataset.i); const a = ev.target.closest('.autre'); if (a) { S.si = +a.dataset.s; S.di = 0; S.page = null; tout(); } if (ev.target.id === 'plier') $('corps').classList.add('replie'); });
+$('corps').addEventListener('dblclick', ev => { if ($('corps').classList.contains('replie')) $('corps').classList.remove('replie'); });
+// surligner / à écrire / loupe : des MODES, un clic sur l'élément agit
+$('blum').onclick = () => { S.mode = S.mode === 'lum' ? null : 'lum'; tout(); };
+$('becr').onclick = () => { S.mode = S.mode === 'ecr' ? null : 'ecr'; tout(); };
+mur.addEventListener('click', ev => { const li = ev.target.closest('li'); if (!li || !S.mode || S.mode === 'loupe') return; const k = +li.dataset.k; const d = etatDiapo(); const L = S.mode === 'lum' ? d.lum : d.ecr; const i = L.indexOf(k); if (i >= 0) L.splice(i, 1); else L.push(k); tout(); });
+// la loupe : on trace un cadre
+$('bloupe').onclick = () => { if (S.mode === 'loupe') { S.mode = null; S.loupe = null; $('loupe').style.display = 'none'; } else S.mode = 'loupe'; tout(); };
+let trace = null;
+$('murcadre').addEventListener('mousedown', ev => { if (S.mode !== 'loupe') return; const r = mur.getBoundingClientRect(); trace = { x0: (ev.clientX - r.left) / r.width, y0: (ev.clientY - r.top) / r.height }; ev.preventDefault(); });
+window.addEventListener('mousemove', ev => { if (!trace) return; const r = mur.getBoundingClientRect(); const x1 = (ev.clientX - r.left) / r.width, y1 = (ev.clientY - r.top) / r.height; const L = { x: Math.min(trace.x0, x1), y: Math.min(trace.y0, y1), w: Math.abs(x1 - trace.x0), h: Math.abs(y1 - trace.y0), f: (S.loupe && S.loupe.f) || 2 }; S.loupe = L; dessinerLoupe(); });
+window.addEventListener('mouseup', () => { if (trace) { trace = null; if (S.loupe && S.loupe.w > .03) { S.loupe.f = Math.max(1.5, Math.min(4, Math.round((1 / Math.max(S.loupe.w, S.loupe.h)) * 2) / 2)); dessinerLoupe(); tout(); } } });
+$('murcadre').addEventListener('wheel', ev => { if (!S.loupe) return; ev.preventDefault(); S.loupe.f = Math.max(1.5, Math.min(4, S.loupe.f + (ev.deltaY < 0 ? .5 : -.5))); dessinerLoupe(); tout(); }, { passive: false });
+function dessinerLoupe(){ const l = $('loupe'); if (!S.loupe) { l.style.display = 'none'; return; } const L = S.loupe; l.style.display = 'block'; l.style.left = (L.x * 100) + '%'; l.style.top = (L.y * 100) + '%'; l.style.width = (L.w * 100) + '%'; l.style.height = (L.h * 100) + '%'; l.querySelector('span').textContent = `loupe ×${L.f} au tableau — le texte ne bouge pas · molette pour changer`; }
+// le gel
+$('bgel').onclick = gel;
+function gel(){ if (S.gel) { S.gel = null; document.body.classList.remove('gel'); $('bgel').classList.remove('gelon'); tout(); } else { S.gel = etatComplet(); document.body.classList.add('gel'); $('bgel').classList.add('gelon'); $('temoin-txt').textContent = `Le tableau est figé sur « ${ecran().act} », ${S.gel.nDev} élément(s) dévoilé(s).`; } }
+// zoom-texte (essai 2)
+$('taille').oninput = ev => { S.taille = +ev.target.value; S.page = null; tout(); };
+// menu ⋯
+$('bplus').onclick = ev => { const m = $('menu'); const r = ev.target.getBoundingClientRect(); m.style.left = r.left + 'px'; m.style.top = (r.bottom + 6) + 'px'; m.classList.toggle('on'); };
+$('menu').addEventListener('click', ev => { const b = ev.target.closest('[data-a]'); if (!b) return; $('menu').classList.remove('on'); const a = b.dataset.a;
+  if (a === 'chrono') S.bandeau = S.bandeau.startsWith('⏱') ? '' : `⏱ ${$('chr').textContent} — ${ecran().act}`;
+  else if (a === 'qui') { const noms = [...new Set(S.parts.map(p => p.nom.split(' ').slice(-1)[0]))]; S.bandeau = S.bandeau.startsWith('👥') ? '' : `👥 Ont participé : ${noms.join(', ') || 'personne encore'}`; }
+  else if (a === 'absents') alert('Absents (pour toi seul) : DELACROIX Romain, PINET Charlotte');
+  else if (a === 'appoint') { const t = prompt('Appoint — la notion imprévue, en un mot :'); if (t) { seance().ecrans.splice(S.di + 1, 0, { act: 'Appoint : ' + t, h: '＋', dur: 5, blocs: [{ t: 'consigne', txt: t, el: [] }] }); tout(); } }
+  tout(); });
+document.addEventListener('click', ev => { if (!ev.target.closest('#menu') && !ev.target.closest('#bplus')) $('menu').classList.remove('on'); });
+// toutes les diapos
+$('btoutes').onclick = toutes;
+function toutes(){ const v = $('vtoutes'); if (v.classList.contains('on')) return v.classList.remove('on'); $('grille').innerHTML = seance().ecrans.map((e, i) => `<div class="g ${i === S.di ? 'cour' : ''}" data-i="${i}"><b>${esc(e.act)}</b>${esc((e.blocs[0] && e.blocs[0].txt) || '').slice(0, 90)}<span class="n">${i + 1} · ${esc(e.h)}</span></div>`).join(''); v.classList.add('on'); }
+$('grille').addEventListener('click', ev => { const g = ev.target.closest('.g'); if (g) { $('vtoutes').classList.remove('on'); aller(+g.dataset.i); } });
+// notes au fil de l'eau
+$('bnotes').onclick = notesFil; $('fil-x').onclick = notesFil;
+function notesFil(){ const on = document.body.classList.toggle('notes'); if (on) $('fil-t').focus(); }
+$('fil-t').addEventListener('keydown', ev => { if (ev.key === 'Enter' && !ev.shiftKey) { ev.preventDefault(); const t = ev.target.value.trim(); if (t) { S.notesFil.push({ h: hhmm(), di: S.di + 1, t }); ev.target.value = ''; $('fil-deja').innerHTML = S.notesFil.map(n => `<b>${n.h}</b> · diapo ${n.di} — ${esc(n.t)}`).join('<br>'); } } if (ev.key === 'Escape') { notesFil(); } });
+// participation
+const ELEVES = DATA.eleves; const ABSENTS = ['DELACROIX Romain', 'PINET Charlotte']; const PRESENTS = ELEVES.filter(e => !ABSENTS.includes(e));
+$('vif').addEventListener('input', candidats); $('vif').addEventListener('keydown', ev => { if (ev.key === 'Enter') { const c = $('cand').querySelectorAll('span'); if (c.length === 1) choisir(c[0].textContent); } if (ev.key === 'Escape') { ev.target.value = ''; candidats(); ev.target.blur(); } });
+function candidats(){ const v = $('vif').value.trim().toLowerCase(); const c = $('cand'); if (!v) { c.innerHTML = ''; S.cand = null; return; }
+  const l = PRESENTS.filter(e => { const [nom, ...pr] = e.split(' '); const p = pr.join(' '); return (nom.toLowerCase().startsWith(v[0]) && (v.length < 2 || p.toLowerCase().startsWith(v.slice(1)))) || e.toLowerCase().startsWith(v); });
+  c.innerHTML = l.map(e => `<span class="${S.cand === e ? 'choisi' : ''}">${esc(e)}</span>`).join(''); if (l.length === 1) S.cand = l[0]; }
+$('cand').addEventListener('click', ev => { if (ev.target.tagName === 'SPAN') choisir(ev.target.textContent); });
+function choisir(nom){ S.cand = nom; $('cand').querySelectorAll('span').forEach(s => s.classList.toggle('choisi', s.textContent === nom)); }
+document.querySelectorAll('.motifs [data-m]').forEach(b => b.onclick = () => { if (!S.cand) { $('vif').focus(); return; } S.parts.push({ nom: S.cand, m: b.dataset.m, di: S.di + 1, h: hhmm() }); $('vif').value = ''; $('cand').innerHTML = ''; S.cand = null; participation(); $('vif').focus(); });
+$('bannule').onclick = () => { S.parts.pop(); participation(); };
+function participation(){ const d = S.parts.slice(-4).reverse(); $('dern').innerHTML = d.length ? d.map(p => `<b>${esc(p.nom.split(' ').slice(-1)[0])}</b> — diapo ${p.di}, motif ${p.m}`).join(' · ') : '—'; $('total').textContent = `${new Set(S.parts.map(p => p.nom)).size} sur ${PRESENTS.length} présents`; }
+// le tableau dans sa fenêtre
+$('btableau').onclick = () => { if (fenetreMur && !fenetreMur.closed) { fenetreMur.focus(); return; } fenetreMur = window.open(location.href.split('?')[0] + '?mur=1', 'mjpc-tableau', 'width=960,height=540'); if (!fenetreMur) alert('La fenêtre a été bloquée par le navigateur : autorise les fenêtres pour ce fichier, puis reclique.'); };
+window.addEventListener('message', ev => { if (ev.data && ev.data.murPret) pousser(S.gel || etatComplet()); });
+// fin de l'heure
+$('bfin').onclick = () => { $('fin-txt').innerHTML = `Ton cours devait finir à 16:02. ${S.parts.length} prise(s) de parole, ${new Set(S.parts.map(p => p.nom)).size} élève(s) ; ${S.notesFil.length} note(s) au fil de l'eau ; tu es à la diapo ${S.di + 1} sur ${seance().ecrans.length}. Ce qui n'a pas été joué te sera proposé à reporter, comme aujourd'hui. <br><br><i style="color:var(--sourd)">(maquette : rien n'est enregistré)</i>`; $('vfin').classList.add('on'); };
+$('bfin-ok').onclick = () => { $('vfin').classList.remove('on'); alert('Heure close (maquette).'); }; $('bfin-non').onclick = () => $('vfin').classList.remove('on');
+// chrono
+$('pause').onclick = () => { S.pause = !S.pause; $('pause').textContent = S.pause ? '▶' : '⏸'; }; $('raz').onclick = () => { S.ecoule = 0; };
+function hhmm(){ const d = new Date(); return String(d.getHours()).padStart(2, '0') + ':' + String(d.getMinutes()).padStart(2, '0'); }
+setInterval(() => { if (!S.pause) S.ecoule++; const m = Math.floor(S.ecoule / 60), s = S.ecoule % 60; $('chr').textContent = String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0'); $('heure').textContent = hhmm(); if (S.ecoule % 5 === 0) ouOnEnEst(); }, 1000);
+// clavier
+document.addEventListener('keydown', ev => { const champ = /INPUT|TEXTAREA/.test(document.activeElement.tagName);
+  if ($('garde').classList.contains('on')) { if (ev.key === 'Enter') { ev.preventDefault(); $('garde-gel').click(); } if (ev.key === 'Escape') $('garde-non').click(); return; }
+  if (ev.key === 'Escape') { $('vtoutes').classList.remove('on'); $('vfin').classList.remove('on'); $('menu').classList.remove('on'); if (document.body.classList.contains('notes')) notesFil(); return; }
+  if (champ) return;
+  if (ev.key === 'ArrowRight' || ev.key === ' ') { ev.preventDefault(); devoiler(); }
+  else if (ev.key === 'ArrowLeft') { ev.preventDefault(); revoiler(); }
+  else if (ev.key === 'PageDown') { ev.preventDefault(); aller(S.di + 1); }
+  else if (ev.key === 'PageUp') { ev.preventDefault(); aller(S.di - 1); }
+  else if (ev.key.toLowerCase() === 'n') { ev.preventDefault(); notesFil(); }
+  else if (ev.key.toLowerCase() === 'g') gel();
+  else if (ev.key.toLowerCase() === 'l') $('bloupe').click();
+  else if (ev.key.toLowerCase() === 't') toutes();
+  else if (ev.key.toLowerCase() === 'p') $('corps').classList.toggle('replie');
+});
+$('ou').textContent = 'mardi 15:07-16:02 · heure 1 sur 3 · ' + DATA.seances[0].titre;
+tout(); participation();
+}
+</script>
+</body></html>

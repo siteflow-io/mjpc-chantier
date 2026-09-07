@@ -380,7 +380,9 @@ Texte de Paul, mot pour mot :
 
 ## TOUR 9 — Claude (conscience n°12)
 
-Travail joué avant réponse (rien déposé hormis ce transcript et ses pièces T9) : maquette v3 (notes présentateur sous la diapo ; fenêtre de notes au fil de l'eau, touche N + bouton ; loupe au lieu du zoom-texte), rendue en trois états ; pièces `pieces/T9-maquette-pilotage-ordi-v3.html`, `pieces/T9-maquette-pilotage-ordi-v3.png`, `pieces/T9-maquette-pilotage-ordi-v3-notes-fil-de-l-eau.png`, `pieces/T9-maquette-pilotage-ordi-v3-loupe.png`.
+Travail joué avant réponse (rien déposé hormis ce transcript et ses pièces T9) : maquette v3 (notes présentateur sous la diapo ; fenêtre de notes au fil de l'eau, touche N + bouton ; loupe au lieu du zoom-texte), rendue en trois états ; pièces `pieces/T9b-maquette-pilotage-ordi-v3.html`, `pieces/T9b-maquette-pilotage-ordi-v3.png`, `pieces/T9-maquette-pilotage-ordi-v3-notes-fil-de-l-eau.png`, `pieces/T9-maquette-pilotage-ordi-v3-loupe.png`.
+
+⚠ Télescopage constaté au dépôt : une autre instance de la conscience n°12 a répondu au même tour 9 et a poussé à 11:33 UTC un transcript « tour 9 » et trois pièces (`T9-maquette-pilotage-ordi-v3.html`, `.png`, `-carnet.png`) ; le présent transcript (11:37 UTC) a remplacé le sien. Ces trois pièces-là ne sont pas les miennes ; les miennes portent le préfixe `T9b-`. Paul n'a lu qu'une des deux réponses : c'est celle-là qui fait foi, pas le dépôt.
 
 Réponse mot pour mot :
 

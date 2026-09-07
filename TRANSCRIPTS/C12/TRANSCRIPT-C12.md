@@ -587,3 +587,39 @@ Tests : aucun, rien n'est livré au site.
 MEMO
 
 ---
+
+## TOUR 15 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok alors j'ai fait le test, ça va bien (il faudra quand même reformuler les questions et dégager tous les comms métas). J'ai sauté à une diapo ultérieure, puis j'ai dégelé. là aucune alerte. Normal? Et si normal dans la version actuelle, ça serait utile? Il faut répondre en termes de logique de classe, et de logique de la relecture ensuite (que l'enchainement ne soit pas cassé quoi)
+
+---
+
+## TOUR 15 — Claude (conscience n°12)
+
+Aucune lecture nouvelle ; réponse sur le comportement de la maquette v5 (le dégel `gel()` ne pose pas de garde). Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Normal, oui : dans la v5, le dégel ne pose aucune question — je l'avais pris pour « le geste conscient ». Ton test montre que ce n'est pas suffisant. Voilà pourquoi, dans l'ordre que tu demandes.
+
+**Logique de classe.** Pendant le gel, le tableau est resté sur la diapo 3 et toi tu es allé à la 8. Au dégel, la classe passe d'un coup de la 3 à la 8. Deux cas, et le site ne peut pas les distinguer :
+- tu le veux — tu as regardé plus loin, tu as choisi, tu montres la 8 : le saut est ton geste ;
+- tu ne le veux pas — tu voulais revenir à la 3 avant de dégeler, tu as oublié où en était la classe, et elle voit surgir la 8 avec quatre diapos escamotées.
+Le témoin bleu te dit l'écart, mais un témoin se lit ; au dégel, on ne lit plus, on agit. **Une seconde garde, symétrique de la première, est utile — mais seulement s'il y a un écart** : « Le tableau est sur la diapo 3, tu es à la 8. » avec deux boutons, **Revenir à la 3, puis dégeler** et **Dégeler ici — la classe passe à la 8**. Si tu es revenu là où était le tableau, le dégel est silencieux, comme aujourd'hui. Pas lourd : elle n'apparaît que quand la classe verrait un saut, et c'est exactement le moment où tu veux le savoir.
+
+**Logique de relecture.** L'enchaînement tient dans les deux cas, parce que le journal ne note que le mur :
+- **Dégel ici** : il s'écrit une transition « 15:18, de la diapo 3 à la diapo 8 ». Les minutes du gel restent sur la 3 (c'est ce que la classe avait sous les yeux). Les diapos 4 à 7 n'ont jamais été au mur : « pas jouées », le T-5 te les proposera à reporter, donner, annuler ou laisser. Rien de ce que tu as fait pendant le gel n'y entre.
+- **Revenir à la 3, puis dégeler** : rien ne s'écrit du tout — pour la classe, il ne s'est rien passé pendant le gel. Le fil reprend à la 3 là où il était.
+Ce qui casserait l'enchaînement, ce serait un dégel qui n'écrit pas le saut, ou des diapos comptées jouées sans avoir été montrées. Les deux gardes ferment ces deux portes : la première empêche un saut involontaire *avant* le gel, la seconde *au* dégel. Entre les deux, tu es libre et rien ne s'écrit.
+
+**Tes deux remarques, notées comme règles du chantier** : les phrases du site se reformulent avec toi, dans tes mots (« tableau », « classe », jamais « vue », « mur », « pilotage ») ; et aucun commentaire méta dans l'écran — les « cette question n'apparaît qu'une fois », le pied de page, le « ce que la classe voit, tel quel » sont des aides de maquette, pas des textes du site.
+
+Si tu veux, je te rends la v6 avec la seconde garde et les phrases nettoyées, pour que tu la joues.
+
+Tests : aucun, rien n'est livré au site.
+
+MEMO
+
+---

@@ -369,3 +369,38 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 9 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Ok mais alors il faut aussi ajouter une zone de notes présentateur en bas afin que je n'oublie pas quoi dire à chaque diapo. Enfin, il faudra aussi une fenêtre ouvrable par raccourci afin de prendre des notes au fil de l'eau, et refermable par ce raccourci aussi ( avec un bouton aussi). De plus il faut me trouver une solution pour le zoom, c'est ce qui avait fait tout planter dans le moteur actuel.
+
+---
+
+## TOUR 9 — Claude (conscience n°12)
+
+Travail joué avant réponse (rien déposé hormis ce transcript et ses pièces T9) : maquette v3 (notes présentateur sous la diapo ; fenêtre de notes au fil de l'eau, touche N + bouton ; loupe au lieu du zoom-texte), rendue en trois états ; pièces `pieces/T9-maquette-pilotage-ordi-v3.html`, `pieces/T9-maquette-pilotage-ordi-v3.png`, `pieces/T9-maquette-pilotage-ordi-v3-notes-fil-de-l-eau.png`, `pieces/T9-maquette-pilotage-ordi-v3-loupe.png`.
+
+Réponse mot pour mot :
+
+Les trois sont dans la v3 (images jointes : normal, notes au fil de l'eau ouvertes, loupe).
+
+**1. Les notes présentateur** : une zone sous la diapo, sur toute la largeur — « Notes pour cette diapo », écrites en préparation, lues en classe, jamais au tableau. Elle a sa place dans la diapo elle-même, comme dans un diaporama : une diapo = son contenu + ses notes.
+
+**2. Les notes au fil de l'eau** : une petite fenêtre qui s'ouvre par la touche **N** (ou le bouton 📝 en haut), le curseur dedans, et se referme par N, Échap ou sa croix. Chaque note prend l'heure et la diapo du moment ; elles se retrouvent dans la relecture de l'heure. Rien ne part au tableau. (N ne réagit que quand tu n'es pas déjà en train d'écrire dans un champ.)
+
+**3. Le zoom — ma proposition, et pourquoi.** Ce qui a tout fait planter, c'est un zoom qui **grossit le texte à la volée** : la diapo déborde, alors le moteur la coupe en morceaux, puis la recolle, et à chaque coupe c'est ta donnée qu'il modifie. Un vrai diaporama ne fait jamais ça, et c'est la solution : **le texte ne se redimensionne pas en classe.**
+- **La taille se règle en préparation**, dans la diapo, comme dans un diaporama. Si une diapo est trop pleine, la police descend d'elle-même jusqu'à un plancher « lisible du fond » (c'est ce que fait un diaporama quand tu écris trop) ; sous ce plancher, la diapo se marque **« trop pleine »** en préparation, et c'est **toi** qui la coupes en deux d'un geste, à l'endroit que tu choisis. Jamais le site tout seul, jamais en classe.
+- **En classe, le zoom devient une loupe** : tu encadres une zone, le tableau la grossit (×2, ×3 à la molette), le texte ne bouge pas d'un signe, un clic la range. C'est le geste d'un diaporama, et c'est ce dont l'élève du fond a besoin.
+- **Conséquence** : plus aucun découpage automatique, donc plus de père / fils / groupe, plus de suites, plus de recollement, plus de six enveloppes — le LOT G n'a plus lieu d'être. Tes diapos actuelles trop pleines apparaîtront marquées à la première ouverture ; tu les coupes ou tu les laisses.
+
+Ce que ça t'enlève, pour être honnête : la réglette qui grossit tout le texte d'un coup pendant l'heure. Si tu y tiens, dis-le-moi, et il faut alors le LOT G tel que cadré le 25/08 — c'est l'autre voie, plus lourde.
+
+Dis-moi ce qui ne va pas encore.
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

@@ -553,3 +553,37 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 14 — Paul
+
+Texte de Paul, mot pour mot :
+
+> non. le seuil c'est arbitraire, il faut quelque chose de conscient, mais pas lourd. Je pensais à quelque chose: quand j'ai lancé une heure, normalement je vais afficher tout au fur et à mesure sans problème. Cependant, je peux vouloir revenir en arrière, aller à la diapo suivante, sauter etc. Il faudrait à ce moment là une garde: le site me dirait "tu quittes la vue tableau (à reformuler, ce n'est pas la bonne phrase), veux-tu geler d'abord? avec le bouton direct. comme ça je ne peux pas oublier de geler, et tout est sécurisé. qu'en penses-tu?
+
+---
+
+## TOUR 14 — Claude (conscience n°12)
+
+Travail joué avant réponse (rien déposé hormis ce transcript et ses pièces T14) : maquette v5 = v4 + la garde du gel (gabarit `pieces/T14-v5-template.html`, générateur `pieces/T14-gen-v5.py`) ; rejouée au banc (`pieces/T14-test-v5.mjs`) : ◀ après trois dévoilements → garde « revenir en arrière » ; Entrée → gel posé, geste fait ; deux PageDown gelé → aucune garde ; dégel puis ▶ ×7 → aucune garde ; clic vignette 10 → garde « sauter à la diapo 10 » ; « Y aller devant la classe » → diapo 10, pas de gel ; zéro erreur JS. Captures `pieces/T14-v5-01-garde-au-retour.png`, `pieces/T14-v5-02-gele-circule-librement.png`.
+
+Réponse mot pour mot :
+
+C'est mieux que le seuil, et je te dis pourquoi : la question n'est plus « combien de temps compte comme joué » (arbitraire) mais « est-ce que la classe doit voir ce geste » — et ça, tu es le seul à le savoir, au moment où ça compte. La garde te le demande une fois, et tout ce qui s'écrit ensuite dans la relecture est un choix, pas un accident.
+
+Ce que j'ai vérifié en la mettant dans la maquette (v5 jointe, manipulable) :
+
+- **Elle ne vient jamais sur le fil normal** : ▶ (dévoiler l'élément suivant, puis passer à la diapo suivante) ne la déclenche pas — sept ▶ d'affilée, aucune question.
+- **Elle vient sur tout geste hors du fil** : ◀ revenir, PageUp, PageDown avant d'avoir tout dévoilé (= sauter le reste), un clic sur une vignette ou dans la grille qui n'est pas la diapo suivante attendue.
+- **Trois réponses, et pas une de plus** : **❄ Geler, puis y aller** (le bouton direct, et Entrée), **Y aller devant la classe** (parce que revenir en arrière *pour* la classe est aussi un vrai geste — « revoyons ce qu'on a dit » —, alors le tableau suit et ça s'écrit), **Rester** (Échap).
+- **Elle ne vient qu'une fois** : gelé, tu circules librement, aucune question ; au dégel non plus (le dégel est le geste conscient). Rejoué : gel par la garde, puis deux sauts, aucune question.
+- **Elle n'existe qu'en heure lancée** : en répétition, en préparation, rien.
+
+Pour la phrase, je propose : **« Le tableau te suivrait — revenir en arrière. »** puis « La classe verrait ce changement, et il s'écrirait dans la relecture. Geler d'abord ? ». Le premier mot dit la conséquence, pas la mécanique. Corrige-la dans tes mots.
+
+Ce que ça donne pour le journal : plus aucune diapo « passée » par erreur. Un saut « devant la classe » va directement à la diapo visée, sans montrer les intermédiaires ; elles restent « pas jouées » pour le T-5. Un retour « devant la classe » s'écrit comme un retour, et ce qui a été vu reste vu.
+
+Tests : aucun, rien n'est livré au site.
+
+MEMO
+
+---

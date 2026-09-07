@@ -330,3 +330,42 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 9 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Ok mais alors il faut aussi ajouter une zone de notes présentateur en bas afin que je n'oublie pas quoi dire à chaque diapo. Enfin, il faudra aussi une fenêtre ouvrable par raccourci afin de prendre des notes au fil de l'eau, et refermable par ce raccourci aussi ( avec un bouton aussi). De plus il faut me trouver une solution pour le zoom, c'est ce qui avait fait tout planter dans le moteur actuel.
+
+---
+
+## TOUR 9 — Claude (conscience n°12)
+
+Travail joué avant réponse (rien déposé hormis ce transcript et ses pièces T9) :
+- vérifié dans le moteur : aucun champ de notes par diapo (`.note` = le motif d'une prise de parole, L777/L1111/L2282) ; raccourcis existants : Échap, Suppr (L1825) ; tailles au mur `fsT=20*e, fsF=16*e, fsM=13*e` (L912)
+- maquette v3 = v2 + notes du présentateur sous la diapo + carnet de l'heure (fenêtre flottante, touche N, bouton) + zoom sans découpage (la diapo tient, loupe) ; pièces `pieces/T9-maquette-pilotage-ordi-v3.html`, `pieces/T9-maquette-pilotage-ordi-v3.png`, `pieces/T9-maquette-pilotage-ordi-v3-carnet.png`
+
+Réponse mot pour mot :
+
+Les trois sont dans la **v3** (image jointe, deux états : normal, et le carnet ouvert).
+
+**1. Les notes du présentateur** — sous la diapo, comme dans un diaporama : une zone par diapo, écrite en préparation, lue en classe, avec A− A+ et repliable. Ça n'existe pas aujourd'hui dans le moteur (le seul « note » qu'il connaît, c'est le motif d'une prise de parole) : c'est un champ neuf sur chaque diapo.
+
+**2. Le carnet de l'heure** — une fenêtre par-dessus ton écran, jamais au tableau, qui s'ouvre et se ferme avec la touche **N** (ou le bouton « ✎ Carnet » en haut). Chaque note prend l'heure et la diapo du moment ; Entrée la garde ; tout ira dans la relecture de l'heure. Ça n'existe pas non plus : neuf.
+
+**3. Le zoom.** Je te dis d'abord pourquoi ça a tout fait planter, en une phrase : le zoom grossissait le texte, la diapo débordait, et le moteur **coupait la diapo elle-même en morceaux** pour que ça tienne, puis la recollait au dézoom — tout ce qui a cassé (ordre inversé, double titre, texte perdu, curseur qui saute) vient de là. Un vrai diaporama ne fait jamais ça : une diapo est une image fixe. Voici les solutions, ce que chacune te coûte, et mon avis :
+
+- **A. La diapo tient toujours, plus la loupe** *(ce que fait un diaporama)*. Le texte prend la plus grande taille qui rentre dans la diapo ; plus de zoom libre. Pour grossir un point, la loupe 🔍 : un cadre que tu déplaces, la diapo ne change pas. Si une diapo est trop pleine pour être lue du fond, le site te le dit en préparation (« lisible du fond ✓ / trop petit »), et tu la coupes en deux toi-même — comme dans PowerPoint. **Coût : tu renonces au zoom en classe.** Gain : plus jamais de découpage, plus jamais de surprise, et c'est la solution la plus simple à coder — donc la plus sûre.
+- **B. Les pages d'affichage** *(le LOT G tel qu'il avait été cadré)*. Le zoom reste ; quand ça déborde, le site coupe **l'affichage** entre deux éléments — jamais dedans, jamais la donnée — et tu passes de page en page avec ▶. Coût : c'est un calcul délicat (il dépend du mur), c'est ce qui a demandé six rustines la dernière fois, et l'élève perd la vue d'ensemble.
+- **C. La diapo qui défile**. Le zoom reste ; la diapo devient plus haute que le mur et tu la fais défiler. Coût : ça défile devant la classe ; ça ne ressemble plus à un diaporama.
+- **D. L'élément en grand**. Au zoom fort, le mur montre l'élément que tu viens de dévoiler en gros, les précédents réduits au-dessus. Coût : la classe ne voit plus la diapo entière.
+
+**Mon avis : A.** C'est ce que tu fais déjà avec PowerPoint, la classe le connaît, et c'est le seul choix qui supprime la cause au lieu de la contenir. La v3 est dessinée avec A : « ✓ lisible du fond · 34 pt · la diapo tient en entier », et 🔍 est devenu la loupe. Si tu tiens au zoom en classe, c'est B, et je le dessine.
+
+Dis-moi ce que tu choisis pour le zoom, et ce qui ne va pas encore dans la v3.
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

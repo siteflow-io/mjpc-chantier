@@ -1,0 +1,146 @@
+L4272 driveExtraireId(texte) — [C5-3ac2] l'extraction d'id Drive, UNE fois pour toute l'application — le cœur de linkModalApplyUrl, partagé avec l
+L14364 atDrMaintenant() — 
+L14368 atDrSynchroDebut() — 
+L14371 atDrMajUtile() — 
+L14377 atDrSuiviAppliquer() — 
+L14405 atVecuAfficher() — 
+L14422 atDrClore() — 
+L14428 atDrCloreFin() — 
+L14436 atT5Reste() — 
+L14443 atT5Etat() — 
+L14453 atT5Zone() — 
+L14460 atT5Appliquer() — 
+L14472 atT5Appel(e) — 
+L14485 atT5Restantes() — 
+L14494 atT5Modale() — 
+L14530 atT5Choix(n,quoi) — 
+L14539 atT5Veille(on) — 
+L14546 _drTexteBloc(bl) — 
+L14554 _drEmpreinte(ecran) — 
+L14561 _drCoupe(t,n) — 
+L14564 atDrModifsDeLaSeance() — 
+L14611 atDrClotureModale() — 
+L14645 atDrReprendre(indices) — 
+L14680 _drCreneauDe(c) — `AT_DR_COURS` comme pour le pointeur `cours_actif` lu au hub. Deux fabriques divergentes seraient deux vrits sur le
+L14686 _drCleHeureDe(c,ts) — 
+L14693 _drBaseHeureDe(c,ts) — 
+L14701 _drSignatureCours(c) — la SIGNATURE d'une heure : ce qui la distingue de toute autre. Elle sert au compare-et-efface du pointeur () et la 
+L14709 _drCoursActifEffacerSi(sig) — `cours_actif` CESSE D'TRE UNE SECONDE SOURCE : il ne peut tre que le REFLET de la trace ouverte. Toute clture le re
+L14717 _drHeureCloseAu(c,cb) — LA TRACE FAIT FOI : une heure close ne se reprend plus, par aucun chemin.
+L14722 _drCreneauHeure() — 
+L14723 _drCleHeure() — 
+L14730 _drBaseHeure() — 
+L14739 _drPaquetHeure(clos) — le paquet de l'heure — EXACTEMENT celui que composait atVecuEcrire, extrait pour être poussé au fil de l'eau comme 
+L14782 _drTraceAuto() — [LOT C1 ] LA TRACE S'CRIT AU FIL sur le mcanisme de `_drCopieAuto` : mme dbounce de 900 ms, mme fonction d'criture,
+L14798 _drTraceReprendre() — la RELANCE dans le mme crneau REPREND la trace en cours (patron du chrono accumul de worktrack, CADRAGE-TEMPS 2) : 
+L14826 atVecuDemarrer() — 
+L14834 atVecuEntrer(n) — 
+L14847 atVecuSortir() — 
+L14857 atVecuMinutes(n) — 
+L14865 atVecuEcrire() — 
+L14906 atDrEnrAuto() — 
+L14913 atDrEnrConfirme(ok) — 
+L14922 atDrTrame(snum) — 
+L14931 atDrTrameEnregistrer() — 
+L14943 atDrJouer(classeSlug, classeNom) — 
+L14986 atDrBrancherSuivi() — 
+L14998 atDrMonter() — 
+L15068 _drCloreHeureRestee(slugNeuf,nomNeuf) — 
+L15087 atDrJouerClic() — 
+L15129 atDrCompChange(v) —  [T1-crochet] l'cran dclare ses notions/comptences 
+L15136 atDrTaxoOptions() —  la taxo Atelier alimente le champ si elle est charge (TAXO_CACHE) 
+L15199 drWin() — la fenêtre du jeu — seul point d'accès
+L15200 drDoc() — 
+L15220 sesIncident(ou,err) — Le 24/08, un défaut de données a rendu le pilotage muet en pleine classe : l'exception était absorbée par les try/c
+L15236 _drEmpreinteTrame(ecrans) — (level|chnum|snum|classe|joué) : une trame changée à jeton identique n'était jamais rechargée, et le moteur restait
+L15259 _drEidNeuf() — suite porte celle de son père (via `grp`) et meurt au dézoom. Lui donner une identité stable fabriquerait de la fau
+L15260 _drIdentifierEcrans(ecrans) — 
+L15270 _drEidDuRang(n,ecrans) — l'identité D'USAGE d'un rang : celle du PÈRE si le rang désigne un fils du zoom.
+L15279 _drRangDeLEid(eid,ecrans) — le rang LOCAL d'une identité — chaque appareil a le sien, et c'est tout l'objet du lot.
+L15286 _drRangPere(n,ecrans) — le rang du PÈRE : le vécu, la participation et les décisions s'y ancrent toujours.
+L15292 _drNormaliserTrame(ecrans) — 
+L15316 _drAssurerCadre() — 
+L15333 _drVerifier(texte) — intégrité au boot : le texte chargé EST deroule86.html, prouvé par empreinte
+L15348 _drQuandPret(fn) — 
+L15352 _drSain() — [garde] la santé du cadre : le jeu répond et la scène existe. Une iframe détachée puis rattachée par n'importe quel
+L15357 _drReconstruire() — 
+L15365 _drHabiller() — [É3] dans le CADRE, la barre du haut et la colonne vignettes du moteur font DOUBLON avec la barre MJPC et le sommai
+L15376 _drPontEtat() — 
+L15383 _drAfficher(on) — le suiveur : l'iframe (fixe, dans body) épouse la zone at-dr-hote-zone
+L15409 _drEnvelopper() — les enveloppes runtime (le fichier du jeu n'est jamais modifié) : · rendre() → suivi de l'écran courant (colonne, v
+L15734 _drTailleCadre() — la bote du cadre, mesure : c'est elle qui grandit ou rtrcit quand Paul partage son cran en deux, et c'est d'elle qu
+L15829 _drFlushTrame(ancienJeton) — [flush de bascule] un enregistrement automatique en attente (debounce 900 ms) au moment de changer de séance serait
+L15855 _drLibelles() — son chargement. Le pont les rcrivait UNE SEULE FOIS, dans dr_ouvrir donc jamais aprs un rechargement du cadre, une 
+L15866 _drTitrerColonne(ctx) — 
+L15881 _drTrameDe(sk) — MÊME mécanisme de menu contextuel (table ctxSommaireCible + ctxOuvrir du site, étendus par ENVELOPPES — la base res
+L15888 _drEcrireTrame(sk,motif) — 
+L15893 _drRechargerSi(sk) — 
+L15929 _drEntreesEcran(sk,n) — 
+L16015 atDrVueInterne(v) — [A7] Relecture et Papier : les vues DÉJÀ CONSTRUITES du moteur (récit, pages A4), rendues par le pont — plus d'écri
+L16036 _drCalerStructure() — },{passive:false}); battement propre : Structure se cale même sans cadre
+L16226 _drCopieAuto() — [classe · copie au fil de l'eau] atDrEnrAuto protège la préparation (« en classe, rien ne remonte ») — mais LA COPI
+L16247 _drRefusionner(t) — refusé ») : écran-fragment grp+suite, dur:0, blocs frag. L'artifice ne doit pas fuir dans la donnée : à l'export, l
+L16315 _drInitialesDe(nom) — PRENOMS viennent de LA CLASSE (initiales dérivées, collisions suffixées), DEBUT vient du créneau réel (tête en prép
+L16321 _drPrenomsDeLaClasse(slug) — 
+L16340 _drProchainCreneau() — 
+L16350 _drPoserContexteMoteur() — 
+L16382 _drVifInstaller() — en tête du panneau — taper les initiales (ou le début du prénom) ouvre la fiche de l'élève ; les chiffres choisisse
+L16499 _drVifAller(ev) — [vif · accès d'un seul appui] ² ou F2, DEPUIS N'IMPORTE OÙ (page ou cadre), amène le curseur dans le champ des init
+L16517 _drPaletteOuvrir(d) — consigne, réponse au tableau, nulle part), Maj+Espace fait surgir la palette en surimpression : initiales en grand,
+L16623 _drPaletteBrancher(d) — 
+L16676 sesChemins(c) —  c = {niveau,chapitre,seance,classeSlug} 
+L16680 sesGet(url,cb) — 
+L16681 sesPut(url,val) —  flux de session : silencieux (l'indicateur d'état parle), jamais le classeur d'échecs 
+L16687 sesCoursEcrire() — ═══ CÔTÉ PILOTE — le cours annoncé, la scène émise, les gestes des autres appliqués ═══
+L16701 sesCoursFermer() — 
+L16705 sesArreter() — 
+L16707 sesBrancherPilote(reprise) — 
+L16747 _drRecollerEtapes(t) — [LOT E · COMPLÉMENT 2] recolle les fragments d'étape (`suiteEt`) dans la trame, du dernier vers le premier — une ét
+L16799 _drRangDuMorceau(W,n,m) — [LOT F ②] le rang local du morceau numéro `m` du groupe auquel appartient `n`. `m=0` est le père, `m=1` le premier 
+L16807 _drVueGroupe(W,n) — 
+L16819 _drRatioEcran(W) — 
+L16832 _drLargeurEcran(W) — contenu pour 35,8 px de police (0,0565) contre 585 px pour 32,35 (0,0553) au pilote — 2 % d'écart, assez pour que l
+L16842 _drVuePere(W,n) — 
+L16860 sesPhoto() — la PHOTO DE SCÈNE : l'équivalent exact d'envoie() côté données — c'est ELLE qui décide ce que voit le tableau. Gel 
+L16906 sesEmettre(vite) — 
+L16915 sesPartEmettre() — 
+L16935 sesPollPilote() — 
+L16963 _sesRangLocal(o,W) — [LOT C2 .5] la rsolution locale : chaque appareil traduit l'identit reue en SON propre rang. dfaut d'identit (mette
+L16968 sesAppliquer(o) — 
+L17038 sesBandeau() — le bandeau du pilote : l'état de la session, sobre, dans la tête du déroulé
+L17045 sesBandeauEtat(ok,muet) — 
+L17060 sesOuvrirTableau() — URL mettre en favori. Comme dans le QCM ( Ouvrir vue tableau ) : une NOUVELLE FENTRE, dimensionne, sans barres, gli
+L17068 sesQROuvrir() — 
+L17087 sesQRFermer() — 
+L17094 sesRepriseRetirer() — [LOT C3a ] LA BANNIRE VRIFIE CHAQUE PASSAGE, et DISPARAT D'ELLE-MME ds que l'heure qu'elle propose n'est plus ouver
+L17097 sesReprisePeindre(c) — 
+L17109 sesRepriseSilence() — 
+L17110 sesReprisePoser() — 
+L17126 sesReprendre() — 
+L17155 sesBootTableau() — ═══ LA VUE TABLEAU (?vue=tableau) — un terminal muet : elle PEINT, elle n'écrit JAMAIS ═══
+L17185 sesTabCle(c) — disparat ? l'image reste. Le pilote revient sur LE MME cours ? la scne reprend d'elle-mme. Il revient sur UN AUTRE 
+L17186 sesTabVeillePointeur() — 
+L17197 sesTabChercherCours() — 
+L17212 sesTabMonter() — 
+L17248 _sesTabBoite(r) — proportions de l'écran de contrôle, et il refait la découpe avec le moteur qu'il embarque déjà. Mesuré : à boîte ho
+L17285 _drMorceauDuDevoilement(W,n) — aller du morceau au père ; ici on fait le chemin inverse. Le morceau à projeter est le DERNIER du groupe qui a quel
+L17310 _sesTabComposer(W,o,essai) — dévoilement, on laisse le moteur scinder à sa boîte, puis on va au bon morceau. Aucun état résiduel ne survit d'un 
+L17384 sesTabPoll() — 
+L17429 sesTabChrono(chr) — 
+L17436 sesTabQui(o) — 
+L17450 sesBootTel() — ═══ LE TÉLÉPHONE (?vue=tel) — le pilote de poche : prompteur + palette (maquettes 23/08) ═══
+L17513 sesTelChercherCours() — 
+L17551 sesBrancherPiloteTel(W) — 
+L17568 sesTelGeste(g) — 
+L17604 sesTelCranPas(d) — un appui = un cran, avec butées : le doigt ne peut pas dépasser
+L17608 sesTelCran(v) — 
+L17615 sesTelMajCran() — l'étiquette et le point suivent le cran de session, d'où qu'il vienne
+L17623 sesTelChrono() — 
+L17640 sesCurseurFin(el) — 
+L17646 sesTelPeindre() — 
+L17711 sesTelPart() — 
+L17729 sesPartPeindre() — 
+L17754 sesPartMotifs(ini) — 
+L17778 sesPartMotif(ini,type) — 
+L17785 sesPartRetirer(ini,id) — 
+L17790 sesTelPlus1(ini) — 

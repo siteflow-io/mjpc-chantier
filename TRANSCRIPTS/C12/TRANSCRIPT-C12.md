@@ -1070,3 +1070,35 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 28 — Paul
+
+Texte de Paul, mot pour mot :
+
+> il y a aussi autre chose: tout le système de zoom avait aussi été créé parce que j'utilise ppt en édition quand je suis en classe et que je note les réponses des élèves notamment en cas de mise en commun. C'est ce qui me permet aussi de faire le suivi de la mise en commun et des participations élèves.
+
+---
+
+## TOUR 28 — Claude (conscience n°12)
+
+Lectures jouées avant réponse (lecture seule ; rien déposé hormis ce transcript) : dans le moteur, `partAjoute` L1085 / `partRetire` L1092 (participation par initiales, avec écran, activité, heure, type, note), `bascule` L1543 (réponse « reformulée »), `quiParle` L2505, `lire()` (les réponses `reps[k].i` initiales et `reps[k].r` texte saisies dans la diapo).
+
+Réponse mot pour mot :
+
+Ça change l'écran de classe, et c'est heureux que tu le dises maintenant : ce n'est pas un présentateur, c'est **un présentateur où tu écris dans la diapo pendant l'heure**. PowerPoint en édition, c'est ça — et le zoom servait à rendre lisible au mur une vue d'édition faite pour ton écran. Voilà ce que ça fixe.
+
+**1. La diapo se modifie en direct, au clic, pendant l'heure.** Un clic dans une question ouvre une réponse ; tu tapes les initiales (le site trouve l'élève, comme la participation), la réponse, Entrée : la suivante. Tu peux marquer « reformulée ». Les blocs grisés se retouchent pareil. Tout ça vit dans la copie de la classe, et la relecture liste les réponses **par élève** — c'est ton suivi de mise en commun, sans autre saisie. L'ancien déroulé le fait déjà (`reps` avec initiales, `refo`, `partAjoute`) ; on le garde tel quel.
+
+**2. Ce que tu tapes apparaît au tableau, en grand, au fil de la frappe.** Le tableau n'est plus ta vue d'édition réduite : c'est la diapo plein écran, à la taille du tableau, et l'état publié comprend le texte en train de s'écrire. Le zoom-pour-lire-l'édition n'a plus de raison d'être ; ce qui reste est ce qu'on a dit : la taille du texte au tableau, la loupe.
+
+**3. C'est exactement le cas qui plantait, et la base saine le tient autrement.** Écrire huit réponses dans une question fait déborder la diapo. L'ancien moteur coupait la donnée pendant que tu tapais — et te déplaçait. Ici l'écriture ne touche que la donnée ; l'affichage se pagine ; **la page suit ce que tu écris**, sur ton écran et au tableau ; rien n'est coupé, rien ne bouge sous tes doigts. Pendant le gel, tu écris sans que la classe voie, et tout paraît au dégel.
+
+**4. Dans le journal** : une réponse est un événement (heure, diapo, élève, texte, reformulée ou non) écrit quand elle paraît au tableau — donc au dégel si tu l'as saisie gelé. Elle compte comme prise de parole de l'élève ; tu n'as pas à la ressaisir dans la participation.
+
+**Ma question, une seule** : pendant la mise en commun, la classe voit-elle la réponse **au fil de la frappe** (lettre par lettre, comme PowerPoint en édition), ou **seulement quand tu fais Entrée** ? La première est fidèle à ton usage ; la seconde est plus propre au mur et donne une ligne nette au journal.
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

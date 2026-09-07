@@ -5585,3 +5585,24 @@ Je te disais il y a trois tours que **l'appariement n'avait jamais été prouvé
 **Tests manuels : ouvre la semaine du 31 août, et regarde les cases de 4 HUGO et 4 TURING.**
 
 MEMO
+
+---
+
+## TOUR 112 — Paul
+
+Texte mot pour mot :
+
+> [capture : semaine du 31 août au 4 septembre, après l'appariement]
+
+---
+
+## TOUR 112 — Claude (conscience n°11)
+
+Confrontation calculée depuis la grille du hub, puis comparée à l'image : **dix-huit créneaux
+de la semaine A, dix-huit concordances**. Registre : `n°11 · 93`.
+
+Réponse mot pour mot :
+
+**Ça marche. J'ai calculé ce que ton écran devait dire, depuis ta grille, et je l'ai comparé à ton image : dix-huit cases sur dix-huit.**
+
+MEMO

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<title>Maquette v1 — le pilotage ordi (écran de classe)</title>
+<style>
+/* palette du site (fond noir chaud, ambre, cartes à bord fin) — reprise de la maquette EDT */
+:root{--fond:#120f0b;--carte:#1c1712;--carte2:#241d16;--bord:#3a2f24;--bord2:#5a4a37;--texte:#efe6d8;--texte2:#b8a894;--sourd:#7d6f5e;--or:#e0b25a;--joue:#5c9e6e;--rouge:#c9443a}
+*{box-sizing:border-box}
+body{margin:0;background:var(--fond);color:var(--texte);font-family:'EB Garamond',Georgia,serif;font-size:15px;line-height:1.3;width:1366px;height:768px;overflow:hidden}
+.ecran{display:grid;grid-template-rows:52px 1fr;height:768px}
+/* ── bandeau : la classe, l'heure, ce qui reste — et les deux gestes de survie ── */
+.bandeau{display:flex;align-items:center;gap:14px;padding:0 16px;border-bottom:1px solid var(--bord);background:var(--carte)}
+.bandeau .classe{font-size:1.15rem;font-weight:600}
+.bandeau .creneau{color:var(--texte2)}
+.bandeau .seance{color:var(--texte2);font-style:italic;max-width:460px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bandeau .temps{margin-left:auto;display:flex;align-items:baseline;gap:10px}
+.bandeau .temps b{font-size:1.25rem;color:var(--or)}
+.bandeau .temps small{color:var(--texte2)}
+.btn{background:var(--carte2);border:1px solid var(--bord2);color:var(--texte);padding:7px 12px;border-radius:9px;font:inherit;cursor:pointer;white-space:nowrap}
+.btn.or{background:var(--or);color:#1a1409;border-color:var(--or);font-weight:600}
+.btn.gel{border-color:#6fa8d8;color:#9cc7ea}
+.btn.on{background:#2a3a4a;border-color:#6fa8d8;color:#cfe6f8;box-shadow:0 0 0 1px #6fa8d8 inset}
+.btn.fin{border-color:var(--rouge);color:#e0a09a}
+/* ── trois colonnes : le chapitre · la diapo · le suivi ── */
+.corps{display:grid;grid-template-columns:232px 1fr 318px;gap:0;height:716px}
+.col{padding:12px;overflow:hidden}
+.chapitre{border-right:1px solid var(--bord);background:#171310}
+.chapitre h3,.suivi h3{margin:0 0 6px;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--sourd);font-weight:600;display:flex;align-items:center;gap:8px}
+.chapitre h3 .plier{margin-left:auto;color:var(--sourd);font-size:.9rem;cursor:pointer}
+.sea{padding:4px 6px;border-radius:7px;color:var(--texte2);font-size:.92rem;display:flex;gap:6px;align-items:baseline}
+.sea .n{color:var(--sourd);font-size:.8rem;min-width:16px}
+.sea.faite .n::before{content:'✓';color:var(--joue)}
+.sea.cour{color:var(--texte);background:var(--carte2);border:1px solid var(--bord2)}
+.ecrans{margin:2px 0 6px 10px;border-left:2px solid var(--bord);padding-left:8px}
+.ec{display:flex;gap:7px;align-items:baseline;padding:2px 6px;border-radius:6px;font-size:.9rem;color:var(--texte2)}
+.ec .h{color:var(--sourd);font-size:.78rem;min-width:36px;font-variant-numeric:tabular-nums}
+.ec.faite{color:var(--sourd)}.ec.faite .h::after{content:' ✓';color:var(--joue)}
+.ec.cour{background:var(--or);color:#1a1409;font-weight:600}.ec.cour .h{color:#1a1409}
+.ec.avenir{}
+.ec.appoint{color:#c9a04a;font-style:italic}
+/* ── la diapo en cours, telle que la classe la voit ── */
+.scene{display:flex;flex-direction:column;gap:10px;padding:14px 16px}
+.mur{background:#f4efe6;color:#1f1a14;border-radius:8px;aspect-ratio:16/9;padding:26px 34px;position:relative;box-shadow:0 0 0 1px #000 inset}
+.mur .etiq{position:absolute;top:10px;left:14px;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:#8a7a68;border:1px solid #cfc3b2;padding:2px 8px;border-radius:12px}
+.mur .page{position:absolute;bottom:8px;right:14px;font-size:.72rem;color:#8a7a68}
+.mur h2{margin:22px 0 12px;font-size:1.7rem;font-weight:600}
+.mur ol{margin:0;padding-left:24px;font-size:1.28rem;line-height:1.35}
+.mur li{margin:6px 0}
+.mur li.pas{color:#c0b4a4}                                     /* pas encore dévoilé : la classe ne le voit pas */
+.mur li.lum{background:#ffe89a;padding:0 4px;border-radius:3px}    /* mis en lumière */
+.mur .voile{position:absolute;inset:0;border-radius:8px;background:rgba(20,30,40,.45);display:none;align-items:center;justify-content:center;color:#cfe6f8;font-size:1.3rem;letter-spacing:.06em}
+.commandes{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.commandes .fleches .btn{font-size:1.15rem;padding:5px 14px}
+.commandes .sep{width:1px;height:26px;background:var(--bord2);margin:0 4px}
+.zoom{display:flex;align-items:center;gap:8px;color:var(--texte2);font-size:.9rem}
+.zoom input{width:120px}
+.legende{color:var(--sourd);font-size:.85rem;font-style:italic}
+/* ── le suivi en direct ── */
+.suivi{border-left:1px solid var(--bord);background:#171310;display:flex;flex-direction:column;gap:12px}
+.bloc{background:var(--carte);border:1px solid var(--bord);border-radius:9px;padding:9px 11px}
+.suivante{background:#e9e2d6;color:#1f1a14;border-radius:6px;aspect-ratio:16/9;padding:10px 12px;font-size:.8rem;position:relative}
+.suivante b{display:block;font-size:.95rem;margin-bottom:4px}
+.suivante .img{height:52px;background:repeating-linear-gradient(135deg,#d9cfbf,#d9cfbf 6px,#cabca8 6px,#cabca8 12px);border-radius:4px;margin-top:6px}
+.ou{display:flex;flex-direction:column;gap:4px;font-size:.92rem}
+.ou .act{display:flex;justify-content:space-between;gap:8px}
+.ou .act b{color:var(--or)}
+.ou .avance{color:var(--joue);font-size:.85rem}
+.ou .retard{color:var(--rouge);font-size:.85rem}
+.barre{height:6px;background:var(--bord);border-radius:3px;overflow:hidden;margin:4px 0}
+.barre i{display:block;height:100%;width:38%;background:var(--joue)}
+.vif input{width:100%;background:#0f0c09;border:1px solid var(--bord2);color:var(--texte);padding:6px 9px;border-radius:7px;font:inherit;font-size:1rem}
+.vif .cand{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+.vif .cand span{border:1px solid var(--bord2);border-radius:14px;padding:2px 9px;font-size:.9rem;color:var(--texte2)}
+.vif .cand span.un{border-color:var(--or);color:var(--or)}
+.vif .motifs{display:flex;gap:6px;margin-top:8px}
+.vif .motifs .btn{padding:4px 10px;font-size:.9rem}
+.dernieres{margin-top:8px;color:var(--texte2);font-size:.88rem;line-height:1.45}
+.dernieres b{color:var(--texte);font-weight:600}
+.qui{display:flex;justify-content:space-between;align-items:baseline;font-size:.92rem}
+.qui b{color:var(--or);font-size:1.1rem}
+.absents{color:var(--sourd);font-size:.85rem}
+.note{position:absolute;left:250px;bottom:8px;color:var(--sourd);font-size:.8rem;font-style:italic}
+</style></head><body>
+<div class="ecran">
+
+  <div class="bandeau">
+    <span class="classe">3E Charles de Gaulle</span>
+    <span class="creneau">mardi 15:07-16:02 · heure 1 sur 3</span>
+    <span class="seance">Poésie et peinture : le Romantisme en question</span>
+    <span class="temps"><b>15:09</b><small>reste 48 min utiles · T-5 à 15:57</small></span>
+    <button class="btn gel" title="Le tableau reste figé sur ce qu'il montre : tu peux avancer, revenir, préparer, la classe ne voit rien bouger. Un second clic dégèle.">❄ Geler le tableau</button>
+    <button class="btn" title="Ouvre la fenêtre du tableau (à glisser sur le vidéoprojecteur). Rien d'autre à faire.">⧉ Tableau</button>
+    <button class="btn fin" title="Clôt cette heure : la trace est écrite, la relecture et École Directe se remplissent.">Clore l'heure</button>
+  </div>
+
+  <div class="corps">
+
+    <!-- ① le chapitre, à portée en permanence — on clique un écran, on y est -->
+    <div class="col chapitre">
+      <h3>Le chapitre <span class="plier" title="Replier la colonne : la diapo prend la place">◀</span></h3>
+      <div class="sea cour"><span class="n">1</span>Poésie et peinture : le Romantisme en question</div>
+      <div class="ecrans">
+        <div class="ec cour"><span class="h">15:07</span>Analyse d'images : la routine</div>
+        <div class="ec"><span class="h">15:10</span>Tableau 1</div>
+        <div class="ec"><span class="h">15:16</span>Tableau 2</div>
+        <div class="ec"><span class="h">15:21</span>Tableau 3</div>
+        <div class="ec"><span class="h">15:26</span>Tableau 4</div>
+        <div class="ec"><span class="h">15:31</span>Tableau 5</div>
+        <div class="ec"><span class="h">15:37</span>Les hypothèses de la classe</div>
+        <div class="ec appoint"><span class="h">＋</span>appoint — une notion imprévue</div>
+        <div class="ec"><span class="h">15:59</span>Question-bilan</div>
+        <div class="ec" style="color:var(--sourd)"><span class="h">…</span>9 écrans de plus</div>
+      </div>
+      <div class="sea"><span class="n">2</span>Étude de texte accompagnée : « L'Albatros »</div>
+      <div class="sea"><span class="n">3</span>Interro de cours et analyse logique — les bases (1)</div>
+      <div class="sea"><span class="n">4</span>Le poème sans vers : dictée et réécriture</div>
+      <div class="sea"><span class="n">5</span>Atelier d'écriture : le sonnet et le paragraphe</div>
+      <div class="sea"><span class="n">6</span>Brevet blanc n°1 : « Parfum exotique »</div>
+      <div class="sea"><span class="n">7</span>Récitation : « À une passante »</div>
+      <div class="sea"><span class="n">8</span>Remédiation</div>
+      <div class="sea"><span class="n">9</span>Tâche finale : « L'Étranger »</div>
+    </div>
+
+    <!-- ② la diapo en cours, exactement ce que la classe voit — plus, en gris, ce qu'elle ne voit pas encore -->
+    <div class="col scene">
+      <div class="mur">
+        <span class="etiq">Analyse d'images : la routine</span>
+        <h2>Observe, discute, fais une hypothèse sur le Romantisme.</h2>
+        <ol>
+          <li>Étape 1 : J'observe les images en silence (5 min).</li>
+          <li>Étape 2 : Je discute en groupe de ce que je vois (5 min).</li>
+          <li class="lum">Étape 3 : Au brouillon, dans un tableau à trois colonnes — ce que je vois, ce que je ressens, ce que je me demande. Au moins trois lignes par colonne (10 min).</li>
+          <li class="pas">Étape 4 : Je choisis de quel élément je vais parler (2 min).</li>
+          <li class="pas">Étape 5 : À partir de cet élément, je fais une hypothèse sur ce que peut être le Romantisme (5 min, 5 lignes).</li>
+          <li class="pas">Étape 6 : J'expose mon hypothèse à l'oral.</li>
+        </ol>
+        <span class="page">page 1 / 2 au zoom 44 pt — la diapo est entière, seule la page change</span>
+        <div class="voile">❄ le tableau est figé</div>
+      </div>
+      <div class="commandes">
+        <span class="fleches"><button class="btn" title="Revoile le dernier élément (la classe le voit disparaître)">◀</button> <button class="btn or" title="Dévoile l'élément suivant ; en fin de diapo, passe à la suivante">▶ Dévoiler</button></span>
+        <span class="sep"></span>
+        <button class="btn" title="Met en lumière l'élément cliqué (surligné au tableau)">✦ Mettre en lumière</button>
+        <button class="btn" title="Marque l'élément « à écrire » : les élèves le recopient">✍ À écrire</button>
+        <span class="sep"></span>
+        <span class="zoom" title="Grossit ce que la classe lit au tableau. Ton écran suit le mur, tel quel.">zoom pour la classe <input type="range" min="0" max="4" value="2"> 44 pt</span>
+        <span class="sep"></span>
+        <button class="btn" title="Projette le chrono de l'activité en cours au tableau">⏱ Chrono au tableau</button>
+        <button class="btn" title="Projette « qui a participé » (prénoms) au tableau">👥 Qui a participé</button>
+      </div>
+      <div class="legende">Ce que tu vois ici est ce qui est au tableau, tel quel — sauf le gris, qui n'y est pas encore.</div>
+    </div>
+
+    <!-- ③ le suivi en direct : ce que PowerPoint ne sait pas faire -->
+    <div class="col suivi">
+      <div class="bloc">
+        <h3>Suivante</h3>
+        <div class="suivante"><b>Tableau 1</b>William Turner, <i>Pluie, vapeur et vitesse</i><div class="img"></div></div>
+      </div>
+      <div class="bloc ou">
+        <h3>Où on en est</h3>
+        <div class="act"><span>Analyse d'images : la routine — <i>en cours</i></span><b>2 / 3 min</b></div>
+        <div class="barre"><i style="width:66%"></i></div>
+        <div class="act"><span>puis : Tableau 1</span><span>6 min</span></div>
+        <div class="avance">dans les temps · 1re activité sur 8 avant la question-bilan</div>
+      </div>
+      <div class="bloc vif">
+        <h3>Participation</h3>
+        <input type="text" value="ch" title="Tape les initiales : la liste se réduit ; un seul candidat, il s'ouvre tout seul">
+        <div class="cand"><span>CHALUMEAU Jules</span><span>CHAN Aymeric</span><span>CHARRIER Line</span><span>CHOLET Pierre</span><span>CHOUTEAU Baptistine</span></div>
+        <div class="motifs"><button class="btn" title="1 — a répondu">1</button><button class="btn" title="2 — a proposé">2</button><button class="btn" title="3 — a lu / récité">3</button><button class="btn" title="Annule la dernière prise de parole (Ctrl+Z)">↶</button></div>
+        <div class="dernieres"><b>Zélia</b> — étape 3, motif 1 · <b>Clovis</b> — étape 2, motif 2 · <b>Line</b> — étape 1, motif 1</div>
+      </div>
+      <div class="bloc">
+        <div class="qui"><span>Ont participé</span><b>3 sur 27 présents</b></div>
+        <div class="absents">2 absents : DELACROIX Romain, PINET Charlotte — jamais montré à la classe</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<div class="note">Maquette v1 · conscience n°12 · 07/09/2026 · rien n'est codé, tout se discute · les infobulles disent ce que fait chaque geste</div>
+</body></html>

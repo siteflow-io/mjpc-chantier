@@ -445,3 +445,35 @@ Tests : aucun, rien n'est livré au site.
 MEMO
 
 ---
+
+## TOUR 11 — Paul
+
+Texte de Paul, mot pour mot :
+
+> C'est vrai que c'est pas mal du tout. Mais en revanche, il y a un impact sur la relecture, non?
+
+---
+
+## TOUR 11 — Claude (conscience n°12)
+
+Lectures jouées avant réponse (lecture seule ; rien déposé hormis ce transcript) : `atDrVueInterne` (la relecture et le papier sont des vues internes du moteur, `DR.dr_vue`) ; L15040-15060 de `index.html` ([14e] après la clôture, Relecture et Papier lisent la séance jouée `deroule_joue[classe].ecrans`) ; dans le moteur : `recit()` (L1177, transposition à l'imparfait), le bilan par écran (L755-790 : cumul des groupes père/fils en une ligne, `vues` par bloc, `reps[].i`, `histoire()` des élèves) ; les chemins écrits par le pont pendant le cours : `deroule_joue/<classe>/heures/…`, `/vecu.json`, `/ecrans.json`, `prises`.
+
+Réponse mot pour mot :
+
+Oui, il y en a un — et je suis allé lire ce que la relecture mange avant de te répondre.
+
+**Ce qu'elle est aujourd'hui** : une vue *du moteur* (comme le papier), qui relit **la copie jouée de la séance pour la classe** — les diapos avec, pour chacune, jusqu'où tu as dévoilé, ce que tu as surligné ou marqué « à écrire », les réponses avec les initiales, les prises de parole, les heures réelles, le vécu. Le récit transpose tes consignes à l'imparfait à partir de ça. Rien d'autre.
+
+**Ce qui change, dans le bon sens** : sans découpage, la copie jouée n'a plus de père, de fils, de suites, de groupes — la relecture n'a plus à « cumuler une activité étalée sur plusieurs écrans en une ligne », le papier et l'export non plus. Elle devient plus simple, et plus juste : une diapo = une ligne, comme dans ta préparation.
+
+**Ce qui ne doit pas changer, et c'est une exigence à écrire dans le mandat** : le nouveau pilotage écrit **la même copie jouée**, au même endroit et dans la même forme — le dévoilement se compte par élément (la page n'est qu'un affichage, elle n'existe pas dans la donnée), le surlignage, l'à-écrire, les réponses, les prises de parole, les heures, le vécu. Preuve à exiger : une heure jouée dans le nouveau pilotage, puis ouverte dans la relecture d'aujourd'hui, donne le même récit qu'une heure jouée dans l'ancien. Tant que ce banc ne passe pas, on ne touche pas à la relecture.
+
+**Ce qui s'ajoute** : les notes au fil de l'eau — elles ont l'heure et la diapo, elles ont leur place dans le récit (« 15:08, note du professeur : … ») et, si tu veux, dans la copie pour École Directe. Le gel peut aussi laisser une ligne dans le vécu (« tableau figé de 15:12 à 15:15 »), utile pour comprendre un trou dans le suivi. La loupe ne laisse rien. Les notes présentateur restent de la préparation, hors relecture — sauf si tu les veux dedans.
+
+**Le choix qui reste, et il est à toi** : relecture et papier vivent dans l'ancien moteur. Soit on les y laisse dans un premier temps (ils marchent, tu les as éprouvés) et le nouveau pilotage leur fournit la copie jouée compatible ; soit on les refait avec. Je propose le premier, pour livrer le pilotage vite et sans casser ce qui tient — la relecture nouvelle viendrait ensuite, avec les notes au fil de l'eau.
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

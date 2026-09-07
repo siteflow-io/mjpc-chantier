@@ -875,3 +875,40 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 23 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok mais alors il faudrait que le sort de ce qui n'a pas été fait soit ultra surveillé afin de ne pas avoir de pertes sèches. J'avais dans l'idée qu'on devait le surveiller pour pouvoir quantifier une heure correctement par la suite, mais il faut aussi que ça puisse servir aux élèves qui vont plus vite, ou que ça soit des activités de réserve, ou qui vont dans l'app d'entraînement perso des élèves. Tu vois l'idée? Une activité prévue doit être utilisée, quel que soit son environnement d'utilisation.
+
+---
+
+## TOUR 23 — Claude (conscience n°12)
+
+Lectures jouées avant réponse (lecture seule ; rien déposé hormis ce transcript) : `atT5Modale` (les quatre sorts : « reportée à la séance suivante », « donnée à la maison », « annulée », « laissée sans suite »), `atT5Choix` (écrit `AT_T5_CHOIX[n]` puis `_drTraceAuto`), `_drTraceReprendre` L14818 (relit les décisions du même créneau seulement), `edtPhotoDecisions` / `EDT_CLASSEMENT` (décisions d'heures banalisées : autre objet), `EDT.decisions` L19737 ; côté élève : aucun consommateur de « donnée à la maison » ; `plan_de_travail` au hub, lu par `index.html` (corbeille, import) et par `worktrack.html` (×7) seulement.
+
+Réponse mot pour mot :
+
+Je vois l'idée, et elle change la nature du T-5 : ce n'est plus « décide du sort », c'est « place l'activité quelque part ». Je te dis d'abord ce que le site fait aujourd'hui, lu :
+
+**Aujourd'hui, le sort est noté, pas suivi.** Le T-5 propose quatre boutons — reporter à la prochaine séance, donner à la maison, annuler, ne rien donner (`atT5Modale`) — et écrit le choix dans la trace de l'heure (`decisions`). Ensuite : « reportée » n'est réinjectée nulle part (la reprise ne relit les choix que dans le même créneau) ; « donnée à la maison » ne va nulle part côté élève (aucun lien avec le plan de travail ni une app) ; « annulée » et « ne rien donner » sont des pertes que le site accepte sans compter. Ta crainte est fondée : **les pertes sèches existent déjà, et elles sont invisibles.**
+
+**Ce que je propose — la réserve, par classe.** Une activité prévue et non jouée entre dans un registre de la classe, et elle n'en sort que **placée** :
+- **à l'heure suivante** (devant la classe, après le rituel — la règle 4) ;
+- **en réserve de classe** — pour les élèves qui vont plus vite : elle reste ouvrable depuis ton pilotage (⋯ → « Réserve : 3 activités »), et tu la donnes à qui a fini ;
+- **à l'entraînement perso** — elle part dans l'app d'entraînement des élèves, sous une forme qui s'y joue ;
+- **annulée, avec un motif** — la seule perte, et elle est assumée et comptée.
+**« Ne rien donner » disparaît.** Tant qu'une activité n'est pas placée, elle est « en attente », et le site la relance : à l'ouverture de l'heure suivante, dans la relecture, dans le profil de classe, et par un compteur permanent — « 2 activités en attente » — sur le pilotage et la case de l'emploi du temps, comme les heures perdues. Rien ne s'efface, rien ne se tait.
+
+**Ce que ça donne pour tes trois usages** : quantifier l'heure — la relecture dit, par heure, le temps prévu, le temps joué, ce qui est parti en réserve, à l'entraînement, ou annulé et pourquoi ; les élèves rapides — la réserve est à portée pendant l'heure ; l'entraînement perso — l'activité y vit, et **son « fait » remonte** : le profil de classe dit « prévue heure 1 · faite à l'entraînement par 12 élèves », sinon on ne saurait pas si la place a servi.
+
+**Ce que ça coûte, sans le cacher** : une activité doit pouvoir se jouer hors du tableau — une consigne à étapes, une question avec sa réponse attendue, une fiche, ça se transporte ; une image à commenter ou un schéma, il faut décider comment ; et l'environnement de destination doit savoir dire « fait » à la classe d'origine.
+
+**Ma question, une seule, pour cadrer le sort « entraînement perso »** : **l'app d'entraînement perso des élèves, c'est laquelle aujourd'hui** — le plan de travail de worktrack (le seul endroit du hub qui porte `plan_de_travail`), ou une app qui n'existe pas encore ?
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

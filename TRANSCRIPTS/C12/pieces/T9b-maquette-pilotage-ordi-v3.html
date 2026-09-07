@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<title>Maquette v3 — le pilotage ordi : notes présentateur, notes au fil de l'eau, loupe</title>
+<style>
+:root{--fond:#0e0c0a;--carte:#1c1712;--carte2:#241d16;--bord:#3a2f24;--bord2:#5a4a37;--texte:#efe6d8;--texte2:#b8a894;--sourd:#7d6f5e;--or:#e0b25a;--joue:#5c9e6e;--rouge:#c9443a;--gel:#6fa8d8}
+*{box-sizing:border-box}
+body{margin:0;background:var(--fond);color:var(--texte);font-family:'EB Garamond',Georgia,serif;font-size:15px;line-height:1.3;width:1366px;height:768px;overflow:hidden}
+.btn{background:var(--carte2);border:1px solid var(--bord2);color:var(--texte);padding:6px 11px;border-radius:8px;font:inherit;cursor:pointer;white-space:nowrap}
+.btn.or{background:var(--or);color:#1a1409;border-color:var(--or);font-weight:600}
+.btn.fin{border-color:var(--rouge);color:#e0a09a}
+.btn.rond{border-radius:50%;width:38px;height:38px;padding:0;font-size:1.1rem;display:inline-flex;align-items:center;justify-content:center}
+.btn.rond.on{border-color:var(--gel);color:#cfe6f8;background:#22303c}
+/* ── la barre du haut : comme dans le mode présentateur (chrono à gauche, heure, fin à droite) ── */
+.haut{height:44px;display:flex;align-items:center;gap:14px;padding:0 14px;background:#070605;border-bottom:1px solid #262019}
+.haut .qui{font-weight:600;white-space:nowrap}
+.haut .ou{color:var(--texte2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:430px}
+.haut .chrono{margin-left:auto;display:flex;align-items:center;gap:8px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.haut .chrono b{font-size:1.15rem;color:var(--or)}
+.haut .chrono .p{color:var(--sourd);font-size:.95rem}
+.haut .heure{color:var(--texte2);margin-left:8px}
+/* ── le corps : volet des diapos · la diapo · suivante + suivi ── */
+.corps{display:grid;grid-template-columns:186px 1fr 330px;height:724px}
+.volet{background:#131009;border-right:1px solid #262019;padding:10px 8px;overflow:hidden}
+.volet h4{margin:0 0 6px 4px;font-size:.72rem;letter-spacing:.09em;text-transform:uppercase;color:var(--sourd);font-weight:600;display:flex;align-items:center}
+.volet h4 span{margin-left:auto;cursor:pointer}
+.vig{display:flex;gap:6px;align-items:flex-start;padding:3px 4px;border-radius:6px;margin-bottom:2px}
+.vig .n{color:var(--sourd);font-size:.72rem;width:14px;text-align:right;padding-top:6px}
+.vig .m{width:118px;height:66px;background:#f1ebe0;border-radius:3px;border:1px solid #6a5a48;position:relative;overflow:hidden;color:#2a2219}
+.vig .m i{position:absolute;left:6px;right:6px;height:3px;background:#b9ad9b;border-radius:2px}
+.vig .m b{position:absolute;left:6px;top:6px;font-size:.55rem;font-weight:600;font-style:normal;letter-spacing:.02em}
+.vig .m .img{position:absolute;inset:14px 6px 6px;background:repeating-linear-gradient(135deg,#d9cfbf,#d9cfbf 5px,#cabca8 5px,#cabca8 10px);border-radius:2px}
+.vig .t{font-size:.72rem;color:var(--sourd);width:24px;padding-top:4px;font-variant-numeric:tabular-nums}
+.vig.cour .m{border:2px solid var(--or);box-shadow:0 0 0 1px var(--or)}
+.vig.faite .m{opacity:.55}.vig.faite .n{color:var(--joue)}
+.volet .sea{margin:8px 4px 4px;font-size:.86rem;color:var(--texte2);border-top:1px solid #262019;padding-top:6px}
+.volet .sea b{color:var(--texte);font-weight:600;display:block}
+.volet .autres{font-size:.82rem;color:var(--sourd);margin:4px 4px 0;line-height:1.5}
+/* ── la diapo en cours : grande, comme sur le mur ── */
+.scene{padding:10px 18px 0;display:flex;flex-direction:column;gap:8px}
+.scene .titre{display:flex;align-items:baseline;gap:10px;color:var(--texte2);font-size:.92rem}
+.scene .titre b{color:var(--texte);font-weight:600}
+.temoin{display:none;align-items:center;gap:10px;background:#16222c;border:1px solid var(--gel);color:#cfe6f8;border-radius:8px;padding:6px 12px;font-size:.92rem}
+.temoin b{font-weight:600}
+.mur{background:#f4efe6;color:#1f1a14;border-radius:6px;aspect-ratio:16/9;max-height:432px;width:768px;margin:0 auto;padding:22px 30px;position:relative;box-shadow:0 0 0 1px #000 inset}
+.mur .etiq{position:absolute;top:10px;left:14px;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:#8a7a68;border:1px solid #cfc3b2;padding:2px 8px;border-radius:12px}
+.mur h2{margin:18px 0 8px;font-size:1.45rem;font-weight:600}
+.mur ol{margin:0;padding-left:22px;font-size:1.1rem;line-height:1.3}
+.mur li{margin:5px 0}
+.mur li.pas{color:#c0b4a4}
+.mur li.lum{background:#ffe89a;padding:0 4px;border-radius:3px}
+.mur .page{position:absolute;bottom:8px;right:14px;font-size:.72rem;color:#8a7a68}
+/* la barre d'outils du présentateur, sous la diapo : les mêmes places que dans un vrai diaporama */
+.outils{display:flex;align-items:center;gap:8px;padding-top:2px}
+.outils .groupe{display:flex;gap:6px;align-items:center}
+.outils .nav{margin-left:auto;display:flex;align-items:center;gap:10px;color:var(--texte2)}
+.outils .nav .btn{font-size:1.05rem;padding:5px 14px}
+.outils .aide{color:var(--sourd);font-size:.82rem;font-style:italic;margin-left:10px}
+/* ── à droite : la suivante en haut (comme le présentateur), le suivi en direct à la place des notes ── */
+.droite{background:#131009;border-left:1px solid #262019;padding:10px 12px;display:flex;flex-direction:column;gap:10px;overflow:hidden}
+.droite h4{margin:0 0 5px;font-size:.72rem;letter-spacing:.09em;text-transform:uppercase;color:var(--sourd);font-weight:600}
+.suivante{background:#e9e2d6;color:#1f1a14;border-radius:5px;aspect-ratio:16/9;padding:10px 12px;font-size:.8rem;position:relative;border:1px solid #6a5a48}
+.suivante b{display:block;font-size:.95rem;margin-bottom:3px;color:#1f1a14}
+.suivante .img{height:48px;background:repeating-linear-gradient(135deg,#d9cfbf,#d9cfbf 6px,#cabca8 6px,#cabca8 12px);border-radius:4px;margin-top:6px}
+.suivante .aumur{position:absolute;top:6px;right:8px;font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:#2f5f88;border:1px solid #6fa8d8;border-radius:10px;padding:1px 7px;display:none}
+.suivi{background:var(--carte);border:1px solid var(--bord);border-radius:8px;padding:9px 11px;display:flex;flex-direction:column;gap:9px;flex:1}
+.ligne{display:flex;justify-content:space-between;gap:8px;font-size:.92rem;align-items:baseline}
+.ligne b{color:var(--or)}
+.barre{height:5px;background:var(--bord);border-radius:3px;overflow:hidden}
+.barre i{display:block;height:100%;width:66%;background:var(--joue)}
+.petit{color:var(--joue);font-size:.84rem}
+.vif input{width:100%;background:#0f0c09;border:1px solid var(--bord2);color:var(--texte);padding:6px 9px;border-radius:7px;font:inherit;font-size:1rem}
+.cand{display:flex;gap:5px;flex-wrap:wrap;margin-top:6px}
+.cand span{border:1px solid var(--bord2);border-radius:14px;padding:1px 8px;font-size:.86rem;color:var(--texte2)}
+.motifs{display:flex;gap:6px;margin-top:6px}
+.motifs .btn{padding:3px 10px;font-size:.9rem}
+.dern{color:var(--texte2);font-size:.86rem;line-height:1.45;margin-top:4px}
+.dern b{color:var(--texte);font-weight:600}
+.total{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--bord);padding-top:7px;font-size:.9rem}
+.total b{color:var(--or);font-size:1.05rem}
+.absents{color:var(--sourd);font-size:.82rem}
+/* les notes présentateur : sous la diapo, jamais au mur — écrites en préparation, lues en classe */
+.notes{background:#171310;border:1px solid var(--bord);border-radius:8px;padding:8px 12px;font-size:.98rem;color:var(--texte2);line-height:1.4;min-height:78px}
+.notes h4{margin:0 0 3px;font-size:.7rem;letter-spacing:.09em;text-transform:uppercase;color:var(--sourd);font-weight:600;display:flex;gap:10px}
+.notes h4 span{margin-left:auto;font-weight:400;letter-spacing:0;text-transform:none;font-style:italic}
+.notes b{color:var(--texte);font-weight:600}
+/* la fenêtre de notes au fil de l'eau : touche N (ou le bouton 📝), N ou Échap la referme ; ne va jamais au mur */
+.fil{display:none;position:absolute;right:346px;bottom:120px;width:420px;background:#1c1712;border:1px solid var(--or);border-radius:10px;box-shadow:0 12px 40px rgba(0,0,0,.6);padding:10px 12px;z-index:5}
+.fil h4{margin:0 0 6px;font-size:.72rem;letter-spacing:.09em;text-transform:uppercase;color:var(--or);font-weight:600;display:flex;align-items:center;gap:8px}
+.fil h4 .x{margin-left:auto;color:var(--texte2);cursor:pointer;font-weight:400;letter-spacing:0;text-transform:none}
+.fil .deja{font-size:.86rem;color:var(--texte2);line-height:1.45;margin-bottom:6px}
+.fil .deja b{color:var(--sourd);font-weight:400;font-variant-numeric:tabular-nums}
+.fil textarea{width:100%;height:64px;background:#0f0c09;border:1px solid var(--bord2);color:var(--texte);border-radius:7px;padding:6px 9px;font:inherit;font-size:.98rem;resize:none}
+.fil .pied2{font-size:.78rem;color:var(--sourd);font-style:italic;margin-top:4px}
+body.notes .fil{display:block}
+/* la loupe : le mur grossit une zone, le texte ne bouge pas */
+.loupe{display:none;position:absolute;left:32px;top:88px;width:300px;height:150px;border:2px solid var(--or);border-radius:6px;background:rgba(224,178,90,.14)}
+.loupe span{position:absolute;left:0;bottom:-22px;font-size:.72rem;color:#8a7a68;white-space:nowrap}
+body.avec-loupe .loupe{display:block}
+body.gel .temoin{display:flex}
+body.gel .suivante .aumur{display:inline}
+body.gel .btn.rond.gel{border-color:var(--gel);color:#cfe6f8;background:#22303c}
+.pied{position:absolute;left:200px;bottom:6px;color:var(--sourd);font-size:.78rem;font-style:italic}
+</style></head><body>
+
+<div class="haut">
+  <span class="qui">3E Charles de Gaulle</span>
+  <span class="ou">mardi 15:07-16:02 · heure 1 sur 3 · Poésie et peinture : le Romantisme en question</span>
+  <span class="chrono" title="Le temps écoulé depuis le début de l'heure ; ⏸ suspend, ↺ remet à zéro (comme dans un diaporama)"><b>00:02:14</b><span class="p">⏸ ↺</span><span class="heure">15:09 · reste 48 min</span></span>
+  <button class="btn" title="Notes au fil de l'eau : la fenêtre s'ouvre ici, le curseur dedans ; touche N pour l'ouvrir et la refermer (Échap aussi). Jamais montrée à la classe.">📝 Notes <small style="color:var(--sourd)">N</small></button>
+  <button class="btn" title="Ouvre la fenêtre du tableau, à glisser sur le vidéoprojecteur">⧉ Tableau</button>
+  <button class="btn fin" title="Termine l'heure : la trace est écrite, la relecture et École Directe se remplissent">Fin de l'heure</button>
+</div>
+
+<div class="corps">
+
+  <!-- le volet des diapos, comme dans un diaporama : les vignettes, pas une liste -->
+  <div class="volet">
+    <h4>Séance 1 · 18 diapos <span title="Replie le volet ; la diapo prend la place">◀</span></h4>
+    <div class="vig cour"><span class="n">1</span><div class="m"><b>ANALYSE D'IMAGES : LA ROUTINE</b><i style="top:20px"></i><i style="top:28px;width:70%"></i><i style="top:36px"></i><i style="top:44px;width:55%"></i><i style="top:52px"></i></div><span class="t">15:07</span></div>
+    <div class="vig"><span class="n">2</span><div class="m"><b>TABLEAU 1</b><div class="img"></div></div><span class="t">15:10</span></div>
+    <div class="vig"><span class="n">3</span><div class="m"><b>TABLEAU 2</b><div class="img"></div></div><span class="t">15:16</span></div>
+    <div class="vig"><span class="n">4</span><div class="m"><b>TABLEAU 3</b><div class="img"></div></div><span class="t">15:21</span></div>
+    <div class="vig"><span class="n">5</span><div class="m"><b>TABLEAU 4</b><div class="img"></div></div><span class="t">15:26</span></div>
+    <div class="vig"><span class="n">6</span><div class="m"><b>TABLEAU 5</b><div class="img"></div></div><span class="t">15:31</span></div>
+    <div class="vig"><span class="n">7</span><div class="m"><b>LES HYPOTHÈSES DE LA CLASSE</b><i style="top:22px"></i><i style="top:30px;width:60%"></i><i style="top:38px"></i></div><span class="t">15:37</span></div>
+    <div class="vig"><span class="n">8</span><div class="m"><b>QUESTION-BILAN</b><i style="top:22px"></i><i style="top:30px;width:50%"></i></div><span class="t">15:59</span></div>
+    <div class="sea"><b>Le chapitre</b>9 séances · un clic ouvre ses diapos ici</div>
+    <div class="autres">2 · L'Albatros<br>3 · Interro et analyse logique<br>4 · Le poème sans vers<br>5 · Atelier d'écriture<br>6 · Brevet blanc n°1 …</div>
+  </div>
+
+  <!-- la diapo en cours, en grand -->
+  <div class="scene">
+    <div class="titre"><b>Diapo 1 sur 18</b> · Analyse d'images : la routine · prévue 3 min <span style="margin-left:auto;color:var(--sourd);font-style:italic">ce que la classe voit, tel quel — le gris n'y est pas encore</span></div>
+    <div class="temoin">❄ <b>Le tableau est figé</b> sur « Analyse d'images », dévoilée jusqu'à l'étape 3. Ici, tu es libre : avance, reviens, prépare — la classe ne voit rien bouger. Un clic sur ❄ dégèle.</div>
+    <div class="mur">
+      <span class="etiq">Analyse d'images : la routine</span>
+      <h2>Observe, discute, fais une hypothèse sur le Romantisme.</h2>
+      <ol>
+        <li>Étape 1 : J'observe les images en silence (5 min).</li>
+        <li>Étape 2 : Je discute en groupe de ce que je vois (5 min).</li>
+        <li class="lum">Étape 3 : Au brouillon, dans un tableau à trois colonnes — ce que je vois, ce que je ressens, ce que je me demande. Au moins trois lignes par colonne (10 min).</li>
+        <li class="pas">Étape 4 : Je choisis de quel élément je vais parler (2 min).</li>
+        <li class="pas">Étape 5 : À partir de cet élément, je fais une hypothèse sur ce que peut être le Romantisme (5 min, 5 lignes).</li>
+        <li class="pas">Étape 6 : J'expose mon hypothèse à l'oral.</li>
+      </ol>
+      <div class="loupe"><span>loupe ×2 au tableau — la zone encadrée, agrandie ; le texte ne bouge pas</span></div>
+    </div>
+    <div class="outils">
+      <div class="groupe">
+        <button class="btn rond" title="Surligner : met en lumière l'élément cliqué, au tableau aussi">✦</button>
+        <button class="btn rond" title="À écrire : marque l'élément que les élèves recopient">✍</button>
+        <button class="btn rond" title="Toutes les diapos de la séance en grille, pour sauter loin">⊞</button>
+        <button class="btn rond" title="Loupe : grossit au tableau la zone que tu encadres (molette ou +/−), sans toucher au texte. Un second clic range la loupe.">🔍</button>
+        <button class="btn rond gel" title="Gel : le tableau reste sur ce qu'il montre, toi tu continues librement. Remplace la télécommande du vidéoprojecteur.">❄</button>
+        <button class="btn rond" title="Chrono au tableau · Qui a participé au tableau · Appoint (une notion imprévue) · Absents">⋯</button>
+      </div>
+      <span class="aide">✦ ✍ ⊞ 🔍 ❄ ⋯ — les mêmes places que dans un diaporama</span>
+      <div class="nav">
+        <button class="btn" title="Revoile le dernier élément">◀</button>
+        <button class="btn or" title="Dévoile l'élément suivant ; en fin de diapo, passe à la suivante. Flèche droite, espace, ou le clic de la télécommande.">▶ Dévoiler</button>
+        <span>3 / 6 dévoilés</span>
+      </div>
+    </div>
+    <div class="notes">
+      <h4>Notes pour cette diapo <span>écrites en préparation · jamais au tableau</span></h4>
+      <b>Dire</b> que le tableau des trois colonnes est au brouillon, pas au propre — rassurer sur l'orthographe. <b>Insister</b> : « ce que je me demande » est la colonne qui compte, c'est elle qui fera l'hypothèse. Si Zélia a fini avant les autres, lui demander une 4e ligne. <b>Ne pas dévoiler</b> l'étape 4 avant que tout le monde ait trois lignes.
+    </div>
+  </div>
+
+  <!-- à droite : la suivante, puis le suivi en direct à la place des notes du présentateur -->
+  <div class="droite">
+    <div>
+      <h4>Diapo suivante</h4>
+      <div class="suivante"><span class="aumur">au tableau, figé</span><b>Tableau 1</b>William Turner, <i>Pluie, vapeur et vitesse</i> · 6 min<div class="img"></div></div>
+    </div>
+    <div class="suivi">
+      <div>
+        <h4>Où on en est</h4>
+        <div class="ligne"><span>Analyse d'images — en cours</span><b>2 / 3 min</b></div>
+        <div class="barre"><i></i></div>
+        <div class="petit">dans les temps · 1re activité sur 8 avant la question-bilan</div>
+      </div>
+      <div class="vif">
+        <h4>Participation</h4>
+        <input type="text" value="ch" title="Les initiales : la liste se réduit ; un seul candidat, il s'ouvre tout seul">
+        <div class="cand"><span>CHALUMEAU Jules</span><span>CHAN Aymeric</span><span>CHARRIER Line</span><span>CHOLET Pierre</span><span>CHOUTEAU Baptistine</span></div>
+        <div class="motifs"><button class="btn" title="1 — a répondu">1</button><button class="btn" title="2 — a proposé">2</button><button class="btn" title="3 — a lu, récité">3</button><button class="btn" title="Annule la dernière prise de parole">↶</button></div>
+        <div class="dern"><b>Zélia</b> — étape 3, motif 1 · <b>Clovis</b> — étape 2, motif 2 · <b>Line</b> — étape 1, motif 1</div>
+      </div>
+      <div class="total"><span>Ont participé</span><b>3 sur 27 présents</b></div>
+      <div class="absents">2 absents : DELACROIX Romain, PINET Charlotte — jamais montré à la classe</div>
+    </div>
+  </div>
+
+</div>
+<div class="fil">
+  <h4>📝 Notes au fil de l'eau · 3E Charles de Gaulle · diapo 1 <span class="x" title="Refermer : touche N, Échap, ou ce bouton">✕ refermer (N)</span></h4>
+  <div class="deja"><b>15:08</b> — Beaucoup de « c'est moche » sur Friedrich : garder pour la séance 2, le goût.<br><b>15:09</b> — Jules n'a pas son cahier.</div>
+  <textarea>Line a proposé « le sublime » sans le mot — le reprendre à la question-bilan.</textarea>
+  <div class="pied2">Chaque note prend l'heure et la diapo ; elles se retrouvent dans la relecture de l'heure. Rien ne part au tableau.</div>
+</div>
+<div class="pied">Maquette v3 · conscience n°12 · 07/09/2026 · notes présentateur · notes au fil de l'eau (N) · loupe au lieu du zoom-texte · rien n'est codé</div>
+</body></html>

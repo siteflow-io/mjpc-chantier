@@ -477,3 +477,45 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 12 — Paul
+
+Texte de Paul, mot pour mot :
+
+> non il faut que le chantier soit refait depuis zéro (avec possibilité de recyclage de l'ancien déroulé) mais il faut vraiment partir sur une base saine. les patchs successifs ont ajouté beaucoup de complexité. pour la relecture, elle est actuellement corrélée au dévoilement, ce qui permet l'écriture au fil de la séance. Mais je fais beaucoup quelque chose quand je suis en cours: avancer de quelques diapos, revenir, etc, en mode gel pendant que les élèves écrivent. Si la relecture enregistre tout ce que je fais, ça va devenir incohérent. réponse sur lecture, et non sur mémoire ou avis IA sans fondement
+
+---
+
+## TOUR 12 — Claude (conscience n°12)
+
+Lectures jouées avant réponse (lecture seule ; rien déposé hormis ce transcript) — moteur deroule86 décodé : `devoile()` L1516, `replie()` L1529, `va()` L1446, `pas()` L1449, `gel()` L1547, `envoie()` L1063 (« if(gele)return »), variables globales L547 (`gele`, `nGel`), bilan de la relecture L755-790, toutes les écritures de `vues` (L666, 1444, 1451, 1484, 1521-1540) ; pont d'`index.html` : `W.rendre` L15413 → `atVecuEntrer` L14834 / `atVecuSortir` → `_drTraceAuto` L14782, `_drPaquetHeure`, `_drCopieAuto` L16226, `W.envoie` L15636, `dr_exporterTrame` L14238 (photo de `W.ECRANS` après refusion, `vues`/`rev` compris).
+
+Réponse mot pour mot :
+
+Pris : le chantier se refait de zéro, sur une base saine, l'ancien déroulé sert de carrière (on recycle ce qui vaut, rien ne s'empile dessus).
+
+Sur la relecture, voilà ce que le code fait aujourd'hui — lu, pas supposé ; les repères sont dans le moteur (deroule86) et dans le pont d'`index.html`.
+
+**1. La relecture ne lit pas ce que tu fais : elle lit un état.** Le dévoilement modifie directement la donnée des diapos : chaque bloc porte `vues` (combien d'éléments sont dévoilés) et chaque diapo porte `rev` (jusqu'où elle est ouverte) — moteur, `devoile()` L1516. La copie jouée de la classe est une photo de ces diapos telles qu'elles sont à ce moment-là (`dr_exporterTrame`, pont L14238 ; `_drCopieAuto`, L16226), et la relecture compte « vus / total » dessus (moteur L755-790). **C'est un dernier état, pas un historique.**
+
+**2. Revenir en arrière réécrit cet état.** `replie()` (L1529) : reculer d'un élément fait `vues--` ; remonter à la diapo précédente la rend **entière** (`vues = tout`, `rev = tout`) ; et ré-avancer sur la suivante la remet **à zéro** (`pas()`, L1451). Donc un aller-retour efface ce que tu avais réellement dévoilé : la relecture ne peut pas distinguer « j'ai montré jusqu'à l'étape 3 puis je suis revenu » de « j'ai tout montré ». Ça, c'est l'incohérence que tu sens — elle existe déjà, gel ou pas.
+
+**3. Le gel ne fige que le mur, rien d'autre.** `gel()` (L1547) ne fait que poser `gele` ; le seul endroit qui s'en soucie est `envoie()` (L1063 : « si gelé, retour »), le point de sortie vers le tableau. `devoile`, `replie`, `pas`, `va` ne le regardent pas. Pendant le gel, `vues`, `rev` et la diapo courante bougent comme d'habitude.
+
+**4. Et le vécu compte ce que tu fais en gel comme du temps de classe.** À chaque changement de diapo, le pont entre dans l'activité (`W.rendre` L15413 → `atVecuEntrer` L14834) : minutes et passages s'additionnent par diapo et s'écrivent au fil (`_drTraceAuto` L14782, `_drPaquetHeure`). Rien ne teste `gele`. **Tes allers-retours en gel pendant que les élèves écrivent sont donc comptés comme des passages et des minutes sur des diapos que la classe n'a pas vues.**
+
+**Conclusion, sur ces quatre points** : ta crainte est fondée, et le défaut est déjà là — la relecture est corrélée au *geste du professeur*, pas à *ce que la classe a vu*, et elle garde un état au lieu d'un cumul.
+
+**Ce que ça impose à la base saine** (c'est une conséquence des points ci-dessus, pas un goût) :
+- **Trois choses séparées** : où *tu* es (le pilotage) ; ce que *le mur* montre ; et **le journal de ce que la classe a vu** — un cumul horodaté (« diapo 4, élément 3, vu à 15:12 »), écrit **uniquement quand le mur change**.
+- **En gel, le mur ne change pas, donc rien ne s'écrit** : tu avances, tu recules, tu prépares, le journal ne bouge pas, le temps continue de compter sur la diapo que la classe voit. Au dégel, l'écart entre le mur et le pilotage s'écrit une fois, comme un saut.
+- **Revenir ne dé-voit rien** : ce qui a été vu reste vu ; le journal ne décrémente jamais.
+- **La relecture se construit sur ce journal** — et elle garde ce qui marche (le récit à l'imparfait, les réponses avec initiales, les prises de parole), qui n'a pas besoin de `vues` pour exister.
+
+Ce que je n'ai pas lu : la vue vécue future et le papier en détail — je ne les cite pas.
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

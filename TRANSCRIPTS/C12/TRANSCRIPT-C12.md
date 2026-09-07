@@ -792,3 +792,41 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 21 — Paul
+
+Pièces jointes : deux diapos de son PowerPoint 2026 — « Question-bilan · Heure 1 · suite · S1 » (question « Qu'ont en commun ces trois images ? », champ de réponse, consigne) et « Où en sommes-nous ? · Heure 2 · 3 min · S1 » (question de réinvestissement, réponse attendue « Le hors champ. ») — recopiées en `pieces/T21-diapo-question-bilan-heure-1.png` et `pieces/T21-diapo-ou-en-sommes-nous-heure-2.png`.
+
+Texte de Paul, mot pour mot :
+
+> En réalité c'est là où c'est touchy: actuellement, j'ai bien ma séance en plusieurs heures (avec le but d'arriver à une séance = 1h). Donc, dans mon diaporama version 2026, au début de l'heure 2 j'ai un rituel de réinvestissement. voilà. mais encore faut-il que j'arrive à la diapo de la question bilan. Donc il faut voir, ça reste ouvert (mais tu dois m'aider pour qu'on ferme ce point: pas de cadrage avec points ouverts ou dettes latentes). La relecture: une par heure évidemment. comme ED. Et une relecture globale séance.
+
+---
+
+## TOUR 21 — Claude (conscience n°12)
+
+Lectures jouées avant réponse (lecture seule ; rien déposé hormis ce transcript et ses pièces) : `edtHeuresPour` L19635 (somme des durées / temps utile, arrondi au-dessus : 110 / 50 → 3), `edtChapitreEnCours`, `edtTraceExiste` ; la trame test : séances 1-3, 110 min prévues chacune, rituels aux diapos 8-9 (« Question-bilan » / « Avant de se quitter » puis « Où en sommes-nous ? ») ; aucune frontière d'heure dans la donnée (`nbHeures`, `heurePrevue`… : aucune occurrence).
+
+Réponse mot pour mot :
+
+Merci pour les deux diapos : elles disent la structure mieux qu'une explication. Tes diapos portent déjà l'heure (« Heure 1 », « Heure 2 »), et la frontière est faite de deux rituels — **la question-bilan qui ferme l'heure, « Où en sommes-nous ? » qui ouvre la suivante**. Ta trame dans le site les a aussi : séance 1, diapo 8 « Question-bilan » puis diapo 9 « Où en sommes-nous ? », et la même chose dans les séances 2 et 3.
+
+**Ce que le site fait aujourd'hui, et qui est faux** : il ne connaît pas cette frontière. Il compte les heures d'une séance en divisant la somme des durées par le temps utile (`edtHeuresPour`, L19635) : 110 min / 50 → « heure 1 sur 3 », alors que ta séance est bâtie sur deux heures. L'emploi du temps affiche donc un nombre d'heures qui n'est pas le tien.
+
+**Pour fermer le point, cinq règles** — dis-moi laquelle ne va pas, sinon c'est fermé :
+
+1. **La frontière d'heure est une décision de préparation, portée par la trame.** Chaque diapo appartient à une heure prévue (Heure 1, Heure 2…). Le site propose la coupure d'après les durées, tu la déplaces d'un geste ; la question-bilan est la dernière diapo de son heure, « Où en sommes-nous ? » la première de la suivante. L'emploi du temps lit ce nombre d'heures-là, plus un quotient.
+2. **Le bilan se joue toujours.** À T-5, en plus des choix par activité, le site propose **« Aller au bilan »** : un saut devant la classe jusqu'à la question-bilan de l'heure ; les diapos sautées reçoivent leur sort (reporter, maison, annuler, laisser). Tu gardes tes cinq minutes d'agenda.
+3. **L'heure 2 s'ouvre sur son rituel, pas sur un signet.** « Où en sommes-nous ? » est fait pour ça. Le pilotage s'ouvre dessus.
+4. **Ce qui a été reporté passe après le rituel, avant le programme de l'heure 2.** Le site l'affiche à l'ouverture (« 2 diapos reportées de l'heure 1 »), le volet montre l'ordre réel, le débordement est visible et c'est toi qui valides — jamais résorbé tout seul. Ce qui a été donné à la maison ou annulé n'y est pas.
+5. **Une heure 1 terminée sans bilan ni clôture (coupure, oubli) ne perd rien.** Le journal dit ce que la classe a vu ; à l'ouverture de l'heure 2, le site rattrape le T-5 : il te demande le sort des diapos non jouées, puis ouvre le rituel.
+
+**La relecture, comme tu dis** : une par heure, la copie École Directe à chaque fois ; et une relecture de séance, qui met les heures bout à bout avec le sort des reports entre les deux.
+
+Et « une séance = une heure », ton but : avec la règle 1, une séance d'une heure est simplement une séance sans frontière ; rien ne change pour elle.
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

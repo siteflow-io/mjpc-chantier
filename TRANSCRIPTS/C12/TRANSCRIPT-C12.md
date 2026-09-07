@@ -1169,3 +1169,48 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 31 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Relis la totalité du déroulé actuel et du jeu en classe pour vérifier tout ce que tu as laissé de côté.
+
+---
+
+## TOUR 31 — Claude (conscience n°12)
+
+Lectures jouées avant réponse (lecture seule ; rien déposé hormis ce transcript et ses deux pièces) : inventaire du moteur (`pieces/T31-inventaire-moteur.txt` : interface L387-438, raccourcis, 157 fonctions avec leurs commentaires) ; inventaire du pont (`pieces/T31-inventaire-pont.txt` : 130 fonctions `_dr*`, `atDr*`, `atT5*`, `atVecu*`, `ses*`, `dr*` avec leurs commentaires) ; `DEROULE/CADRAGE-TEMPS.md` §5, §6, §7, §8, §10, §11, §12 ; `DEROULE/CADRAGE-INTEGRATION.md` (chaîne, vocabulaire du tableau, trois temps, arbitrages ouverts).
+
+Réponse mot pour mot :
+
+Relu en entier : le moteur (2 682 lignes, 157 fonctions, son interface, ses raccourcis), le jeu en classe dans le pont (`_dr*`, `atDr*`, `atT5*`, `atVecu*`, `ses*`, 130 fonctions), et les deux cadrages du 25/08 (le temps, l'intégration). Voilà tout ce que j'avais laissé de côté — rangé en trois piles : **oublié et à cadrer**, **à reprendre tel quel** (ça existe, ça marche, rien à décider), **tombe** avec la base saine.
+
+**① OUBLIÉ — à cadrer, avec une décision de toi pour chacun**
+
+1. **« Donner à la maison » — je l'ai supprimé à tort.** Le cadrage du temps (§5, §7) le définit : *le prolongement* — une activité non faite, basculée sur le cahier avec une date d'échéance, qui garde ses notions et compte dans la progression, marquée « donnée à la maison le … » à la séance suivante, et qui entre dans « Travail à faire », dans le récit, dans École Directe. Ce n'est pas l'app d'entraînement, c'est le cahier. **Il doit revenir parmi les sorts** : heure suivante · réserve · **à la maison (avec échéance)** · non fait.
+2. **La coche d'attestation du bilan** (§6) : « dès qu'une diapo bilan est atteinte, une coche apparaît ; si je la coche, la séance est terminée et les élèves ont écrit le bilan ». Le bilan est un bloc de type propre, unique, toujours dernier, rien ne s'insère après lui. Je n'ai parlé que d'« aller au bilan », jamais de la coche qui **termine la séance**.
+3. **Les compétences par diapo et le coût des sorts** : chaque diapo déclare ses notions (`atDrCompChange`, la taxonomie) ; le T-5 affiche le coût en compétences de chaque choix ; et la **règle générale des alertes** (§10) : une alerte regarde ce qui est prévu ailleurs (« il faudra y revenir, c'est prévu séance 6 ») et disparaît d'elle-même. Rien de ça dans mon cadrage.
+4. **L'absence** (§11) : saisie en classe, jamais montrée ; le site produit pour l'absent le récit du jour, le travail donné, le message ; déclaration de mise à jour par l'élève. J'ai mis « absents » sur la maquette sans le mécanisme.
+5. **La mise en commun, en entier** : la palette (Maj+Espace : initiales en grand, et *où va la réponse* — dans la consigne, comme réponse au tableau, nulle part), le VIF joignable de n'importe où (² ou F2), l'historique complet d'un élève (`histoire`), corriger ou supprimer une prise de parole après coup, aller à la réponse depuis l'élève, les prénoms réels au tableau et les initiales chez toi, **les collisions d'initiales** (deux élèves, mêmes lettres). Je n'ai cadré que « initiales + motif ».
+6. **Les blocs, en profondeur** : les **marques sur une image** (annotations posées et dévoilées une par une, Delete, Échap), les **schémas** (carte, frise, arbre, cycle, tableau — positions calculées, déplaçables à la main), la **fiche annotée par la classe** (couche d'annotation par classe, fiche A4, papier à coller), le **bloc rappel** (prérequis), la **loupe sur une fiche**, l'image collée ou glissée (Ctrl+V). J'ai cadré « les cinq blocs » comme des mots.
+7. **Le récit figé et retouché à la main** (`figeRecit`) contre le récit automatique — un choix de relecture que je n'ai pas repris.
+8. **Une heure restée ouverte** : « une heure close ne se reprend plus, par aucun chemin » ; la bannière « une heure est ouverte — reprendre ? » qui vérifie à chaque passage ; lancer une autre heure clôt la précédente. Je l'ai listé en cas tordu sans règle.
+9. **Le mode test** : le nouveau pilotage écrit-il au hub de test quand tu es en test ? Cité, pas cadré.
+10. **Les incidents en classe** : le 24/08, une exception avalée a rendu le pilotage muet en pleine heure ; depuis, tout incident se voit (`sesIncident`). La base saine doit garder cette règle : **le pilotage ne se tait jamais**.
+11. **Le QR code** (ouvrir le tableau ou le téléphone d'un appareil) et **le temps réel** : décidé le 25/08 en websockets, aujourd'hui un sondage toutes les 900 ms. À trancher pour le tableau distant.
+12. **Les documents du chapitre** (l'onglet Documents, les ressources Drive/URL reliées aux diapos) et **le lien avec les feuilles de l'atelier** (les blocs schéma/frise que les feuilles n'affichent pas — la dette « priorité » du registre). Hors de mon cadrage.
+13. **Ce que l'élève reçoit après l'heure** : le récit « ce qu'on a fait aujourd'hui », les fiches, le travail à faire, l'envoi ou la publication de la feuille de séance. C'est une sortie que je n'ai pas décrite.
+14. **Le vocabulaire du tableau** vérifié avec toi le 25/08 (écran de pilotage · tableau · tableau autonome) et **les arbitrages restés ouverts** : bandes claires au tableau, étiquettes redimensionnables, types de schémas retenus, cartes trop denses, code de couleurs du surlignage, sort d'une séance close.
+
+**② À REPRENDRE TEL QUEL** (je les nomme pour qu'ils soient dans le cadrage, pas pour en discuter) : la clé d'une heure (date + créneau + classe) et sa signature ; « le cours actif n'est que le reflet de la trace ouverte » ; la trace écrite au fil et la reprise dans le même créneau (chrono accumulé, décisions conservées) ; l'identité des diapos (`eid`) et le rang local par appareil ; les horaires prévus recalculés depuis le début réel ; la loi de taille du texte (32 pt = 5,6 % de la hauteur de la boîte) ; le chrono, « chrono au tableau », « qui a participé » au tableau avec les prénoms ; G / S / surligner / effacer / annuler (Ctrl+Z) ; « à écrire » et « mettre en lumière » ; l'enregistrement automatique de la préparation et son vidage au changement de séance ; le tableau distant terminal muet qui garde sa dernière image ; l'appoint ; la tête du déroulé (classe, créneau, début, maintenant).
+
+**③ TOMBE** : le cadre (iframe) et sa vérification d'intégrité, les six enveloppes, la scission et sa refusion, `vues`/`rev` comme état, le zoom-texte du moteur, la reconstruction du cadre, le téléphone actuel (à refaire plus tard), la modale « tu as modifié n choses » telle quelle (remplacée par le versement diapo par diapo, même mécanisme).
+
+Ce que je propose : je reprends la pile ① dans l'ordre, un point par tour, avec une seule question chacun — en commençant par le 1, parce que c'est une erreur de ma part à corriger. Dis-moi si l'ordre te va.
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

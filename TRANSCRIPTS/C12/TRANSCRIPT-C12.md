@@ -946,3 +946,35 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 25 — Paul
+
+Texte de Paul, mot pour mot :
+
+> oui mais ça me demande encore quelque chose à gérer. par ailleurs tu parles de structure (la réserve et son emploi). mais ce qui importe, c'est le contenu: une réserve de séance 1 qui traîne jusqu'à la séance 7 et qui est donnée à ce moment là, c'est pas propre. par ailleurs, la réserve doit être imprimée au complet pour une classe, parce qu'on ne sait jamais à l'avance qui aura terminé avant.
+
+---
+
+## TOUR 25 — Claude (conscience n°12)
+
+Aucune mesure nouvelle (conception). Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Tu as raison sur les trois. Je réduis.
+
+**1. Une activité vit dans sa séance, pas au-delà.** Une réserve de la séance 1 n'a rien à faire à la séance 7 : le contenu est périmé. Donc **plus de registre qui traîne** : ce qui n'est pas joué pendant une séance se règle **dans la séance**, et à sa dernière heure ce qui reste est compté « non fait » — assumé, quantifié, jamais caché, mais **sans rien à gérer**. Les sorts se réduisent à ce qu'ils sont vraiment : à l'heure suivante (tant que la séance continue), en réserve papier, ou non fait. Le compteur « en attente » disparaît avec le registre : ce qui importe se lit dans la relecture de l'heure et de la séance.
+
+**2. Le contenu commande, pas la structure.** La quantification, elle, est automatique : le journal du tableau sait ce qui a été joué ; la relecture dit par heure ce qui ne l'a pas été. Tu n'as rien à saisir pour ça. Le suivi « qui a reçu la feuille » que je proposais te coûte un geste : **il devient facultatif** — un clic si tu veux savoir, rien sinon.
+
+**3. La réserve s'imprime au complet.** Une feuille de réserve = les activités non jouées de la séance, mises en page pour être faites seul sur papier, et le site la sort **en un PDF que tu imprimes pour toute la classe** — parce que tu ne sais pas qui aura fini. Ce qui en reste après l'heure suit ton usage d'aujourd'hui.
+
+Ce qui te reste à gérer, et rien d'autre : au T-5, un clic par activité non jouée (heure suivante / réserve / non fait), et l'impression.
+
+**Ma question, une seule, sur le moment de l'impression** : le paquet papier de réserve, tu le veux **prêt avant la séance** — le site imprime d'avance, dès la préparation, les activités de la séance qui se font seul sur papier, à tout hasard —, ou **après l'heure 1** — seulement celles qui n'ont pas été jouées, donc imprimées entre deux heures ? La première te donne toujours quelque chose sous la main, mais imprime pour rien ; la seconde imprime juste, mais suppose un passage à l'imprimante entre les deux heures.
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

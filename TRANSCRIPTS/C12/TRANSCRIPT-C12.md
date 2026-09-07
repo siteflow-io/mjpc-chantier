@@ -519,3 +519,37 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 13 — Paul
+
+Texte de Paul, mot pour mot :
+
+> donc le récit est uniquement construit sur ce qui apparait au tableau en fait, c'est ça? mais si j'affiche des choses au tableau puis que je reviens en arrière? ou que je saute une diapo?
+
+---
+
+## TOUR 13 — Claude (conscience n°12)
+
+Aucune lecture nouvelle (appui sur les lectures du tour 12 : `replie` L1529, `pas` L1451, `va` L1446, `atVecuEntrer` L14834). Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Oui, c'est ça : dans ce que je propose, **le récit se construit sur ce que le tableau a montré, et seulement ça** — un journal qui s'écrit à chaque fois que le mur change, jamais quand c'est ton écran seul qui bouge. Tes deux cas, en distinguant ce que le code fait aujourd'hui (lu) et ce que le journal ferait (proposition) :
+
+**Tu affiches des choses, puis tu reviens en arrière (sans gel).**
+- *Aujourd'hui* : reculer rend la diapo précédente « entière » et ré-avancer remet la suivante à zéro (`replie` L1529, `pas` L1451) — ce que tu avais dévoilé est effacé de la copie ; le vécu, lui, compte un nouveau passage et les minutes sur la diapo où tu reviens.
+- *Journal* : le retour est un changement du mur, il s'écrit — « 15:14, retour à la diapo 3 ». Mais **ce qui a été vu reste vu** : la diapo 4 garde « vue jusqu'à l'étape 3, de 15:10 à 15:14 ». Le récit dit les deux : ce qu'on a vu, puis qu'on y est revenu. Les minutes se comptent sur la diapo affichée, y compris pendant le retour.
+
+**Tu reviens en arrière en gel.** Rien ne s'écrit ; les minutes continuent sur la diapo figée au mur. Au dégel, si tu es revenu là où était le mur, il ne s'est rien passé pour la classe ; sinon le saut s'écrit une fois.
+
+**Tu sautes une diapo.**
+- *Aujourd'hui* : par la colonne (`va`, L1446) le mur passe directement, la diapo sautée n'a ni passage ni minute ni dévoilement — la relecture la compte 0 / n, et le T-5 la range dans « pas jouée » (reporter, donner à la maison, annuler, ne rien donner). Par les flèches, elle apparaît une seconde au tableau : le vécu lui compte un passage.
+- *Journal* : une diapo qui n'apparaît pas au mur n'existe pas pour la classe — « pas jouée », comme aujourd'hui, et le T-5 en fait ce que tu décides. Si elle n'a fait que passer (les flèches), il faut une règle pour que le récit ne la raconte pas : **une diapo compte jouée si au moins un élément y a été dévoilé au tableau, ou si elle y est restée plus d'un seuil** (30 secondes ? une minute ?). Le seuil, c'est toi qui le fixes ; en dessous, c'est un passage, il apparaît dans le vécu détaillé mais pas dans le récit.
+
+**Ce que le récit raconte alors** : la suite des diapos réellement montrées, avec pour chacune ce qui a été dévoilé (jamais moins que le plus loin atteint), le temps qu'elle est restée au mur, les réponses et les prises de parole rattachées à ce moment-là, et tes notes au fil de l'eau à leur heure. Rien de ce que tu fais sur ton écran n'y entre.
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

@@ -253,3 +253,41 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 7 — Paul
+
+Texte de Paul, mot pour mot :
+
+> pour ta question: tout doit être sur le pilotage ordi, et le téléphone n'est qu'une "télécommande" avec certaines fonctionnalités et pas d'autres. Donc pour l'instant il faut se concentrer sur le pilotage ordi, et seulement plus tard on fera le téléphone. D'ailleurs, le téléphone actuel souffre d'innombrables bugs et est à jeter en l'état.
+
+---
+
+## TOUR 7 — Claude (conscience n°12)
+
+Travail joué avant réponse (rien déposé hormis ce transcript et ses pièces T7) :
+- charte reprise de `TRANSCRIPTS/C10/pieces/T78-maquette-edt-v3-geste.html` ; données réelles du hub simulé du sas (chapitre 3e « Poésie et peinture », 9 séances, écran 1 et ses 6 étapes, 29 élèves de la 3E Charles de Gaulle)
+- maquette HTML statique 1366×768 de l'écran de pilotage ordi, rendue en image dans le Chromium du conteneur (état normal, état gelé)
+- pièces : `pieces/T7-maquette-pilotage-ordi-v1.html`, `pieces/T7-maquette-pilotage-ordi-v1.png`, `pieces/T7-maquette-pilotage-ordi-v1-gel.png`
+
+Réponse mot pour mot :
+
+Compris : tout sur le pilotage ordi, le téléphone n'est qu'une télécommande, il viendra après — et celui d'aujourd'hui est à jeter. Je note ces trois choses telles quelles.
+
+Voici la **maquette v1 de l'écran de classe**, en image et en HTML (tu peux l'ouvrir, survoler les boutons : chaque geste porte son infobulle). Rien n'est codé, tout se discute.
+
+Ce qu'elle montre, et pourquoi :
+- **Le bandeau** : la classe, le créneau, l'heure de la séance, l'heure qu'il est et ce qui reste ; et les trois gestes qu'on ne cherche jamais — **geler le tableau** (plus de télécommande du vidéoprojecteur), ouvrir le tableau, clore l'heure.
+- **À gauche, ton chapitre en permanence** : les neuf séances, celle du jour déployée avec ses écrans et leur horaire, les faits cochés, celui en cours en or, l'appoint à sa place. Un clic sur un écran, tu y es. La colonne se replie d'un clic si tu veux la diapo plus grande.
+- **Au centre, la diapo telle que la classe la voit**, avec en gris ce qu'elle ne voit pas encore ; dessous, seulement les gestes de classe : dévoiler, revenir, mettre en lumière, à écrire, le zoom pour la classe, le chrono et « qui a participé » à projeter. Au zoom, la diapo reste entière : elle se lit en pages (« page 1 / 2 »), le texte n'est jamais coupé ni recollé.
+- **À droite, ce que PowerPoint ne fait pas** : la diapo suivante, où on en est (l'activité en cours, son temps prévu et réel, l'avance ou le retard), la participation (les initiales, la liste qui se réduit, les motifs 1/2/3, annuler), ont participé, absents — jamais montrés à la classe.
+- **Ce qui a disparu de cet écran** : le panneau prof, les onglets Structure / Relecture / Papier, « Ajouter à cet écran », le bandeau de préparation. Tout ça vit avant ou après l'heure, pas pendant.
+
+**Ce que je n'ai pas dessiné** : la fenêtre du tableau (elle ne change pas), le T-5 (il surgit à l'heure dite, comme aujourd'hui), la clôture, et l'écran de préparation — je le dessine après que celui-ci est le tien.
+
+Dis-moi ce qui ne va pas, dans l'ordre où ça te gêne ; je corrige et je te rends la v2.
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

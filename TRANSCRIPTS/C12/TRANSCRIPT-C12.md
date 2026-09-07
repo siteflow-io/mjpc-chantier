@@ -721,3 +721,41 @@ Tests : aucun, rien n'est livré au site.
 MEMO
 
 ---
+
+## TOUR 19 — Paul
+
+Texte de Paul, mot pour mot :
+
+> du coup il faut voir toutes les conséquences que les nouveaux choix ont sur le reste de mjpc. On y va. il faut tester les évidences, les cas variables, les cas tordus, etc. Tout ce qui peut faire télescopage, illogisme, perte de données etc. Il faut cadrer autant que le chantier emploi du temps;
+
+---
+
+## TOUR 19 — Claude (conscience n°12)
+
+Mesures jouées avant réponse (lecture seule ; rien déposé hormis ce transcript) : les 13 autres apps de production récupérées et cherchées (`deroule`, `cours_actif`, `deroule_joue`, `/scene`) — aucune occurrence hors un homonyme dans `pilotage_debat_s3.html` ; `index.html` : 1 234 fonctions, familles `_dr*` 58, `atDr*` 20, `atT5*` 9, `atVecu*` 6, `ses*` 47 (159 usages de `SES.`), `edt*` 230 ; consommateurs par fonction de `deroule_joue` (24 occ., 12 fonctions dont `edtTraceDe`, `edtSeanceJouee`, `edtCheminTrace`), `cours_actif` (16 occ., 14 fonctions dont 8 `ses*`), `.deroule` (23 occ., 9 fonctions dont `edtHeuresPour`, `atSomEcransDe`, `atP2*`), décisions T-5 (13 occ., 8 fonctions), heures perdues (21 occ., 13 fonctions), vestiges `kind==='diaporama'` (2) ; hub réel en GET seulement : racine, `/site` (atelier, 3e, 4e vide, 5e, 6e, edt, config), `cours_actif` null, 3 chapitres, 10 séances, 9 avec déroulé, 95 écrans (59 consignes, 36 questions, 6 images, 6 fiches, 1 schéma), 0 écran `grp`/`suite`, 0 `deroule_joue`, 0 heure, 0 vécu, 0 décision ; deux formes de clés d'écran.
+
+Réponse mot pour mot :
+
+On y va. Avant de cadrer, j'ai mesuré ce que le déroulé touche, pour que le cadrage parte de la carte et pas de mémoire.
+
+**Ce que ça touche, mesuré**
+- **Une seule app** : tout est dans `index.html`. Les treize autres n'ont pas une ligne sur le déroulé (mesuré fichier par fichier).
+- **Dans `index.html`** : 1 234 fonctions ; le déroulé en occupe quatre familles (`_dr*` 58, `atDr*` 20, `atT5*` 9, `atVecu*` 6), plus la session à trois appareils (`ses*` 47, 159 usages) et le moteur embarqué (300 Ko encodés).
+- **Ce qui lit ses données, hors du déroulé lui-même** : **l'emploi du temps** (la case « heure jouée », la trace de l'heure, les heures qui restent pour une séance, les décisions de fin d'heure qui deviennent des reports, les heures perdues — 13 fonctions), **le sommaire du chapitre** (la progression « heure 1 sur 3 »), **la page élève** (deux vestiges « diaporama » muets), **la session à trois appareils** (le cours actif, le tableau distant, le téléphone).
+- **Ce qu'il y a dans ton hub, ce matin** (lu, pas écrit) : 3 chapitres, 10 séances, 9 avec un déroulé, 95 diapos ; **aucune heure jouée, aucune copie de classe, aucune décision de fin d'heure, aucun écran coupé en morceaux**. Tu joues avec PowerPoint : il n'y a rien à migrer côté classe. Seule la préparation existe, en deux formes de diapo (avec ou sans identité, horaire, `rev`/`vues`).
+
+**Ce que le cadrage doit couvrir, par sujet** — un document par sujet, écrit ici, lu par toi, déposé après ton mot, comme pour l'emploi du temps :
+1. **Les données** — la diapo (ce qu'on garde : titre, durée, les cinq blocs, compétences, identité ; ce qu'on ajoute : notes présentateur, taille du texte, coupure décidée par toi ; ce qu'on retire : `rev`, `vues`, père/fils/suite), **le journal du tableau** (nouveau, par heure), la trace de l'heure que l'emploi du temps lit, les décisions de fin d'heure, le cours actif, les notes au fil de l'eau, le mode test.
+2. **Les écrans** — pilotage (v8), relecture (onglet), **préparation** (à dessiner), le tableau, la fin de l'heure et le T-5, la reprise après coupure, **la répétition** (jouer en avance sans rien écrire).
+3. **Les entrées** — depuis l'emploi du temps (la superposition, à refaire), depuis l'atelier, depuis un cours resté ouvert.
+4. **Les sorties** — relecture, papier, École Directe, profil de classe, heures perdues, progression du chapitre, et plus tard le profil longitudinal.
+5. **Les cas tordus, à jouer un par un** — coupure en pleine heure ; deux heures le même jour avec la même classe ; heure lancée sur une classe non appariée ; séance sans déroulé ; diapo vide ; heure jamais close ; T-5 ou appoint pendant le gel ; répétition puis vrai lancement ; fenêtre du tableau fermée ou ouverte deux fois ; changement de séance en pleine heure ; préparation modifiée après une heure jouée (la relecture doit encore la lire) ; même séance jouée par deux classes ; images absentes ; mode test.
+6. **Les dettes qui tombent ou restent** — le LOT G tombe ; la poignée du champ contenu, le saut d'image, le père/fils tombent avec l'éditeur ; le tableau distant et le téléphone restent des chantiers à part ; les infobulles et les mots, dès la première livraison.
+
+**Ma première question, une seule, parce qu'elle commande le sujet 1 et le sujet 2** : aujourd'hui le tableau existe trois fois — une fenêtre sur ton ordinateur (Win+K, comme PowerPoint), un tableau distant sur un autre appareil branché au vidéoprojecteur via le hub, et le téléphone. **Dans la base saine, le tableau est-il la fenêtre de ton ordinateur seulement (deux écrans, comme PowerPoint), ou faut-il encore un tableau distant sur un autre appareil ?** Si c'est la fenêtre seule, le hub ne porte plus l'état du tableau, il n'y a plus de latence ni de session pour ça, et le journal du tableau s'écrit depuis ton écran ; si le distant reste, le hub porte ce que le tableau montre, et le journal s'écrit à partir de là.
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

@@ -143,3 +143,41 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 4 — Paul
+
+Texte de Paul, mot pour mot :
+
+> j'ai largement documenté le bug. normalement tu as suffisamment d'informations sur github pour savoir exactement quel est le problème: je ne vais pas passer la moitié de cette nouvelle conscience à réexpliquer un problème déjà documenté avec précision.
+
+---
+
+## TOUR 4 — Claude (conscience n°12)
+
+Lectures jouées avant réponse (lecture seule ; rien déposé hormis ce transcript) :
+- sas : `ARCHIVES/2026-08-24-site-editeur-deroule-buggue-par-claude/README.md` (8.66.0, md5 `8f8a7ece…`) · `PONT/BUGS-PONT.md` · `PONT/BUG-FEUILLES-SCHEMA.md` · `PONT/TABLEAU-DISTANT/rapport.md` (§ « TRANCHÉ PAR PAUL (23/08) + UN BUG D'ALIGNEMENT AU PILOTAGE ») · `PASSATION-C8-C9.md` · `PASSATION-C9-C10-{etat-et-file,decisions-et-methode,fautes}.md` · `PASSATION-C10-C11.md` · `TRANSCRIPT-C9.md` · `TRANSCRIPTS/C10/TRANSCRIPT-C10.md` (recherches ciblées) · `CONSULTANT/CHAPITRE-1/registre-chapitre-3e.md` et `LISEZ-MOI.md` · arbre complet du sas (1 114 fichiers) et liste des branches : **`main` seule**, aucun dossier ni mandat LOT G
+- production : `docs/MJPC6-DETTES.md` relu à sa version du jour (`cca15e52`, 499 759 o ; entrées `n°11 · 90` à `102`) · `docs/MJPC6-journal.md` (entrées 20/08 → 26/08) · `docs/MJPC6-registre-bugs.md` (§ chantier PONT/déroulé n°8) · `docs/MJPC6-3-CHANTIER.md`, `docs/MJPC6-restauration.md` (recherches ciblées) · branches : `main` seule
+- conversations passées de Paul (outil de recherche) : conscience n°8 (23/08, le bug d'alignement, capture de Paul), conscience n°9 (24/08, remise à zéro puis 7 promotions), conscience n°10, LOT D/E (25/08)
+- constat : le moteur `AT_DR_B64` en production est identique à celui du 25/08 (md5 `2ba70f9ef8aacb6f81962ea4e1b62944`) ; les six enveloppes du pont sont en place ; le LOT G n'a jamais été lancé
+
+Réponse mot pour mot :
+
+Tu as raison, c'est documenté, et j'ai maintenant tout lu. Voilà ce que GitHub dit, avec ses dates :
+
+- **23/08** (ta capture, rapport TABLEAU-DISTANT) : en préparation, la liste des écrans à gauche, la vignette et l'éditeur ne montrent pas le même écran — un écran d'écart.
+- **24/08** (archive « site éditeur déroulé buggué par Claude », 8.66.0) : le système père / fils / groupe, quand un écran déborde, a produit chez toi des morceaux en ordre inversé, un double titre de vignette, un écran père mal étiqueté ; **il a abîmé un chapitre**. Tu as demandé de le supprimer et de repartir de diapositives simples. La n°9 a corrigé l'ordre à la place (8.66 puis 8.67 : le désordre survivait au dézoom et s'inscrivait dans ta préparation) ; une 8.66 a dû être restaurée (frappe saccadée).
+- **25/08** (l'exécutant du LOT F, pièce T58, et ton mot « s'il faut refaire le moteur, il faut ») : la cause de fond — **le découpage écrase la donnée** (une étape coupée devient deux moitiés, qu'il faut recoller au dézoom, à l'export, dans le récit, sur le papier), et **six enveloppes** posées depuis le pont se compensent les unes les autres. Son banc a même perdu du texte (405 signes recollés à 201). Il a cadré le LOT G — le découpage pose des bornes d'affichage sur un écran intact — avec ses sept points, ses bancs réutilisables et le point de retour. À minuit tu l'as mis en dette pour la Toussaint, « sauf si ça devient trop pénible à l'usage ».
+- **26/08** : la poignée du champ « contenu » qui revient en mini à chaque rendu ; le saut d'image à « suivant ».
+- **Ce matin** : le curseur qui te suit sur l'écran de suite dans la mauvaise étape — même famille, même cause.
+
+**Ce que j'ai vérifié en plus** : le LOT G n'a jamais été lancé. Aucune branche au sas, aucun dossier, aucun mandat — seul le message de l'exécutant (T58) le cadre. Le moteur en production est intact à l'octet depuis le 25/08 (`2ba70f9e…`), les six enveloppes sont toujours là.
+
+**Ce que je comprends de ta vision**, dans tes mots : le zoom sert à la classe, pas à toi — l'élève du fond doit lire sans qu'une ligne soit coupée ni perdue ; et en préparation, tu dois pouvoir écrire tes écrans sans que le site te bouge, te change d'écran ou te coupe ton texte. Le découpage doit être un effet d'affichage, jamais une modification de ce que tu as écrit.
+
+**Ma question, une seule** : j'écris le mandat du LOT G (la voie du 25/08 : refaire le découpage du moteur en bornes d'affichage, banc de préparation d'abord, retrait des six enveloppes, `AT_DR_SHA256` régénérée, point de retour 8.73.0-⑭) — ou tu veux la voie du 24/08, sans aucun découpage, un écran = une diapo ? Ce sont deux mandats différents. Je le rédige ici, tu le lis, et je ne dépose rien avant ton mot.
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

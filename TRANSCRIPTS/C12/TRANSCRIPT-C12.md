@@ -181,3 +181,40 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 5 — Paul
+
+Texte de Paul, mot pour mot :
+
+> EN fait vu qu'on touche au moteur, ce serait presque le moment de toute refondre. Je ne sais pas si cet éditeur est le plus pratique en utilisation en classe. Ce qui est certain c'est que la quasi totalité des fonctionnalité est ultra utile, mais c'est sur l'ergonomie que je me pose la question. Sachant que ce déroulé est appelé dans l'emploi du temps aussi et en plus il y a un problème de superposition bref. ça bug bien tout ça.
+
+---
+
+## TOUR 5 — Claude (conscience n°12)
+
+Mesures jouées avant réponse (lecture seule ; rien déposé hormis ce transcript et ses pièces T5) :
+- lu `edtLancer` (L20355), `edtQuandPilotagePret`, `edtRienDePret`, le bouton « ▶ Ouvrir le pilotage et lancer » (L20554 : natures `prevu` / `rienDePret`) ; captures existantes `PONT/EDT/tests/4-5-*` et `4-6-*` regardées (26/08 : le lancement depuis l'EDT aboutissait à « Fin de l'heure » sur l'accueil)
+- geste joué (`pieces/T5-edt-pilotage.mjs`, journal `pieces/T5-edt-pilotage-journal.txt`) : faux hub complété de la grille appariée, du calendrier et des créneaux du sas ; fuseau Europe/Paris, heure figée au mardi 08/09/2026 15:10 ; Panneau prof → Emploi du temps → Ouvrir → case mardi 15:07 3 FRANKLIN Aretha (3E Charles de Gaulle) → « ▶ Ouvrir le pilotage et lancer »
+- résultat : écritures au faux hub `deroule_joue/3E Charles de Gaulle`, `cours_actif`, `scene` ×2, `heures/2026-09-08_15h07-16h02_3E_Charles_de_Gaulle` (le cours est lancé) ; `#at-zone` porte le déroulé mais `offsetParent === null`, cadre du moteur monté et invisible, `.tprof-box` visible au-dessus (section Emploi du temps) ; après la croix du panneau prof : accueil / page d'identification, aucun pilotage visible
+- première tentative (lundi 09:00, case 08:57) : la case était une heure déjà jouée dans le hub simulé (« Close. »), pas de bouton de lancement — écartée
+- le voile `#fi-overlay` (« 9 fiches d'applications ne sont pas à jour ») recouvre l'écran EDT dès l'ouverture d'une case ; retiré comme dans tous les bancs pour poursuivre
+- captures : `pieces/T5-p03-case-ouverte-sous-le-voile.png`, `pieces/T5-p04-apres-lancer-panneau-prof-devant.png`, `pieces/T5-p05-panneau-prof-ferme-accueil.png`
+
+Réponse mot pour mot :
+
+Avant de répondre sur la refonte, j'ai joué le chemin de l'emploi du temps, puisque tu l'as nommé. Deux superpositions, mesurées par le geste :
+
+1. **Depuis l'emploi du temps, « Ouvrir le pilotage et lancer » lance bien le cours — mais tu ne le vois pas.** Mardi 15:07, 3e Franklin (appariée à la classe test), heure figée à 15:10 : le clic écrit au hub le cours actif, la scène et la trace de l'heure — le cours tourne — **et l'écran reste sur le panneau prof, section Emploi du temps**. Le pilotage est monté derrière, invisible (l'atelier n'est pas ouvert). Si tu fermes le panneau prof, tu retombes sur la page d'accueil. Le cours est lancé, la classe attend, et le pilotage n'est nulle part. (Limite de mon banc : faux hub, et je n'avais pas posé ta connexion prof — la page d'accueil que je vois derrière est peut-être différente chez toi ; le reste ne dépend pas de ça.)
+2. **Le voile « 9 fiches d'applications ne sont pas à jour » recouvre l'emploi du temps** au moment où tu ouvres une case. Dans mon banc c'est parce que le faux hub n'a pas de fiches ; chez toi, je ne sais pas — tous les bancs précédents retiraient ce voile avant de cliquer, personne ne l'a mesuré en vrai.
+
+**Sur la refonte.** Ce que tu dis est cohérent avec ce que j'ai sous les yeux : aujourd'hui **préparer et piloter sont le même écran** — le moteur dans son cadre, avec autour le sommaire du chapitre, la colonne des vignettes, quatre onglets, le panneau « Ajouter à cet écran », le bandeau de préparation, et le panneau prof en dessous. En classe, tu pilotes dans l'écran où tu prépares. Le moteur, lui, sait faire beaucoup (les cinq blocs, le dévoilement, le gel, la mise en lumière, « à écrire », le zoom, le chrono, la participation et « qui a participé », le tableau, le récit, le papier, École Directe, le T-5, la reprise, la trace des heures, la copie par classe) — et c'est ça que tu veux garder.
+
+Ce que je te propose comme méthode, et tu tranches : **une maquette avant tout mandat**, comme pour l'emploi du temps — je te dessine l'écran de classe (et l'écran de préparation s'il change), tu le corriges jusqu'à ce que ce soit le tien, et seulement ensuite un lot, dans lequel le moteur est refait (le découpage en bornes d'affichage, sans les six enveloppes). Le bug du curseur et la superposition du lancement tombent dedans.
+
+**Ma question, une seule, pour dessiner juste** : en classe, une fois la séance lancée, qu'est-ce que tu veux avoir sous les yeux — et rien d'autre ? (Ce que je vois aujourd'hui autour de la scène, c'est le chapitre entier ; je ne sais pas si tu t'en sers pendant l'heure.)
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

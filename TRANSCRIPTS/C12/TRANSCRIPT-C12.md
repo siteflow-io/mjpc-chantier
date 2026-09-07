@@ -1102,3 +1102,34 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 29 — Paul
+
+Texte de Paul, mot pour mot :
+
+> oui c'est au fil de la frappe. mais actuellement dans le moteur je ne suis pas sûr que ce soit ça, parce qu'il faut encore que je dégrise pour que ça s'affiche (ce qui me coute un geste de plus, il faudrait effectivement que je n'ai que le gel à gérer).
+
+---
+
+## TOUR 29 — Claude (conscience n°12)
+
+Lectures jouées avant réponse (lecture seule ; rien déposé hormis ce transcript) : moteur L648-656 (rendu des réponses pour la classe : `if(pourClasse&&k>=(b.vues||0))return`, et le bloc doit être dévoilé : `j<e.rev-1`), `ligne()` L1442-1445 (Entrée : nouvelle réponse et `vues = max(vues, k+1)`).
+
+Réponse mot pour mot :
+
+Tu as raison, et je l'ai vérifié dans le moteur : une réponse n'apparaît au tableau que si son rang est en dessous de `vues` (L652, « les réponses arrivent une par une »), et `vues` ne monte qu'à Entrée (`ligne`, L1442) — pendant la frappe, la classe ne voit rien ; et il faut en plus que le bloc question soit dévoilé (`rev`). Deux gestes de trop, comme tu dis.
+
+**La règle, dans la base saine — une seule chose à gérer, le gel :**
+- **Le gris, c'est ce qui est préparé et pas encore montré.** Ce que tu écris en classe n'est jamais gris : **il paraît au tableau au fil de la frappe**, lettre par lettre, sauf si le tableau est gelé — alors tout paraît au dégel.
+- **Écrire dévoile.** Cliquer dans une question grisée pour y noter une réponse la dévoile de lui-même ; pas de flèche avant, pas d'Entrée après pour « montrer ».
+- **Entrée passe à la réponse suivante**, c'est tout ce qu'elle fait.
+
+**Dans le journal** : une réponse est une ligne, pas une par lettre — « 09:14, Zélia : « le sublime », reformulée » —, ouverte à la première lettre au tableau, close quand tu passes à la suivante ou que tu quittes le bloc. Elle compte comme prise de parole. Rien à ressaisir.
+
+**Ma question suivante, une seule — un cas tordu entre deux heures.** Lundi, la 3 Franklin joue l'heure 1 : tu notes quatre réponses dans la question de la diapo 7. Lundi soir, tu corriges la consigne de la diapo 10 dans le chapitre. Mardi, l'heure 2 s'ouvre : **elle part de la copie de la classe (avec les quatre réponses, mais l'ancienne consigne de la 10), ou de la trame (avec ta consigne corrigée, mais sans les quatre réponses) ?** Ce que je propose : la copie de la classe est la vérité pour tout ce qui a été joué (les réponses restent), et **le site te montre à l'ouverture ce qui a changé dans la trame depuis** — « la diapo 10 a été modifiée lundi soir — prendre la nouvelle version ? » — diapo par diapo, seulement pour celles pas encore jouées par cette classe. Ni tout l'un, ni tout l'autre.
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

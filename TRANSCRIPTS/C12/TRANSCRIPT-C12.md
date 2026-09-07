@@ -101,3 +101,45 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 3 — Paul
+
+Texte de Paul, mot pour mot :
+
+> oui c'est cet écran. Va lire les dettes, puis va tester le site et tu verras le bug. Une conscience a beaucoup tourné dessus (enveloppes de pont etc) avant de conclure que le moteur devait être modifié. Va vérifier et lire.
+
+---
+
+## TOUR 3 — Claude (conscience n°12)
+
+Mesures jouées avant réponse (lecture seule ; rien déposé nulle part hormis ce transcript et ses pièces T3) :
+- `docs/MJPC6-DETTES.md` de production lu (2 622 lignes) : entrées LOT E / LOT F / LOT G (L157-172), dettes du 26/08 (L182-186 : saut d'image, poignée du champ contenu), dettes 29-30, tour 146 (le moteur et le report), section F et les entrées `n°11 · 101` (l'éditeur est dans le moteur `DR`)
+- pièce `TRANSCRIPTS/C10/pieces/T58-message-executant-lotF-moteur.md` lue en entier ; `PONT/DETTES-VIVANTES.md` récupéré
+- moteur `AT_DR_B64` décodé (309 812 → 229 960 caractères, 2 682 lignes, 157 fonctions, md5 de la chaîne `2ba70f9ef8aacb6f81962ea4e1b62944`) ; lus : `zoom`, `reabsorbe`, `scinde`, `degorge`, `deborde`, `verifDeborde` ; dans le pont : `_drAssurerCadre`, la garde de scission [MICRO C3a-⑥] (L15660)
+- geste 1 (`pieces/T3-zoom.mjs`, journal `pieces/T3-zoom-journal.txt`) : vue Déroulé, écran 1, réglette 1→4 puis 4→0 ; découpe [6] → [3,3] → [2,1,3] → [2,1,3] ; retour [3,3] → [3,3] → [6] ; texte final identique au départ (539 signes)
+- geste 2 (`pieces/T3-edit.mjs`, journal `pieces/T3-edit-journal.txt`) : clic dans l'étape 3 de l'écran 1, quatre phrases tapées (154 signes chacune) ; après la phrase 1 : 19 écrans, écran courant 2, focus sur `0.et.2` de la suite (= étape 6) ; phrases 2 et 3 écrites dans l'étape 6 (42 → 196 → 350 signes) ; phrase 4 : 20 écrans, écran courant 3, focus perdu (`BODY`) ; aucun signe perdu, texte au mauvais endroit
+- captures : `pieces/T3-e01-apres-phrase-1.png`, `pieces/T3-e04-apres-phrase-4.png`, `pieces/T3-z04-zoom-cran-4.png` ; écritures au faux hub : aucune ; erreurs JS : aucune
+
+Réponse mot pour mot :
+
+Lu, puis joué. Voilà ce que j'ai vu.
+
+**Les dettes.** Le registre dit que l'éditeur de diaporama, c'est le moteur du Déroulé (deroule86, embarqué dans le site, montré dans son cadre). Le LOT G — refaire le découpage du moteur — est en dette « à régler aux vacances de la Toussaint, sauf si ça devient trop pénible à l'usage » (ta décision du 25/08 à minuit). Le diagnostic de l'exécutant de l'époque : quand le moteur coupe un écran trop plein, il coupe la donnée elle-même, puis la recolle au dézoom ; six enveloppes du pont compensent autour d'un moteur qu'on n'a jamais touché. Tu avais dit : « s'il faut refaire le moteur, il faut. »
+
+**Le zoom, cran par cran, sur l'écran 1 (6 étapes).** Monter 1 → 4 : l'écran se coupe en 2, puis en 3 morceaux (2 étapes · 1 étape · 3 étapes, la découpe empilée) ; redescendre 4 → 0 : tout se recolle, et le texte revient à l'identique, au signe près. Pas de perte de texte par ce chemin-là.
+
+**L'écriture — et là, ça ne va pas.** J'ai cliqué dans l'étape 3 de l'écran 1 et tapé une phrase, comme toi. Dès que l'écran est plein, le site coupe l'écran en deux (étapes 1-2-3 / étapes 4-5-6), **te projette sur l'écran de suite, et pose ton curseur dans l'étape 6**. Tout ce que tu tapes ensuite part dans l'étape 6, pas dans l'étape 3 où tu écrivais. À la quatrième phrase, nouvelle coupe : l'étape 6 se retrouve seule sur une « Suite 2 », gonflée de trois phrases qui ne sont pas les siennes, et le curseur est perdu. Rien n'est effacé — mais ton texte est au mauvais endroit, et tu changes d'écran sans l'avoir demandé. Captures jointes : après la première phrase, après la quatrième. Le sommaire de gauche saute aussi (il surligne « Tableau 1 », puis « Tableau 2 », alors que tu es sur les suites de l'écran 1).
+
+**La cause, lue après l'avoir vue** — deux choses qui se contredisent : le moteur coupe l'écran par étapes entières, donc l'étape où tu écris ne bouge pas ; mais juste après, il « suit le curseur » sur l'écran neuf en le remettant sur un repère qui compte la position dans l'écran (troisième étape), pas l'étape elle-même. Le pont laisse faire exprès quand tu tapes (la garde posée au [C3a-⑥] ne retient le professeur que quand il ne tape pas).
+
+**Ce que je n'ai pas vérifié** : le même geste en classe (régime lancé) ; la poignée du champ « contenu » (dette déclarée le 26/08, pas rejouée) ; et tout ça sur le faux hub du sas, pas sur tes vraies données.
+
+Dis-moi si c'est bien ce bug-là. Ensuite il y a deux voies, et c'est toi qui choisis : un correctif court depuis le pont (quand tu tapes, tu restes sur ton écran et dans ton étape ; le trop-plein part derrière sans t'emmener), ou ouvrir le LOT G maintenant (le découpage ne touche plus jamais la donnée, ce qui ferme cette famille de bugs d'un coup — mais c'est le cœur du moteur, avec un banc de préparation complet avant tout). Je ne rédige rien avant ton mot.
+
+Transcript à jour : tour 3, les captures, les journaux et les deux scripts joués en pièces.
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

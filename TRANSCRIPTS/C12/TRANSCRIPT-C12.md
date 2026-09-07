@@ -830,3 +830,48 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 22 — Paul
+
+Texte de Paul, mot pour mot :
+
+> quels sont les avantages et inconvénients de ce flux?
+
+---
+
+## TOUR 22 — Claude (conscience n°12)
+
+Aucune mesure nouvelle (conception, sur les lectures des tours 20-21). Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Les deux, sans arrondir.
+
+**Avantages**
+- **La frontière d'heure est la tienne**, celle de ton PowerPoint, pas un quotient : l'emploi du temps compte les vraies heures, le T-5 sait où est le bilan de l'heure, la relecture par heure tombe juste sur École Directe.
+- **L'heure a toujours une fin propre** : le bilan joué, les cinq minutes d'agenda gardées, le sort de ce qui reste décidé sur le moment et pas reconstruit après.
+- **L'heure suivante s'ouvre toujours pareil**, sur son rituel, quel que soit l'état de la précédente : tu n'as pas à chercher où on en était, la classe retrouve un cadre stable.
+- **Rien ne se perd** : coupure, oubli de clôture, bilan raté — le journal fait foi, et le sort des diapos non jouées se règle à l'ouverture suivante.
+- **Préparation et classe parlent la même langue** (Heure 1, Heure 2), et « une séance = une heure » n'est pas une exception, c'est une séance sans frontière.
+
+**Inconvénients, et ce que chacun coûte**
+- **Une décision de plus en préparation** : poser ou vérifier la frontière. Le site la propose d'après les durées ; le coût est un regard par séance. Tu le fais déjà dans PowerPoint.
+- **Les reports s'empilent** : ce qui passe de l'heure 1 à l'heure 2 recule le programme de l'heure 2, qui déborde à son tour, et ainsi de suite sur une séance de trois heures. Le site le montre à l'ouverture (« l'heure 2 dépasse de 12 min ») et tu tranches à chaque T-5 — c'est le prix d'une progression honnête, mais c'est bien **une charge de décision à chaque heure**, pas une charge en moins.
+- **« Aller au bilan » est un saut devant la classe** : elle voit les diapos escamotées, et la relecture les note comme telles. C'est juste, mais ça se voit.
+- **L'ordre réel devient propre à chaque classe** (rituel, reports, programme) : la trame ne bouge pas, mais la copie de la classe porte cet ordre, et le volet des vignettes doit le montrer, pas la trame. Plus de choses à tenir par classe — c'est déjà l'architecture arrêtée le 25/08, mais elle pèse ici.
+- **La relecture de séance n'est lisible qu'avec les frontières marquées** : chaque diapo doit dire « prévue heure 1, jouée heure 2 », sinon on confond ce qui a glissé et ce qui était prévu.
+
+**Trois trous que ce flux laisse, avec ce que je propose pour les boucher** — à trancher, sinon ce sont des dettes latentes :
+1. **Une heure suivante sans rituel préparé** (la séance n'a pas de « Où en sommes-nous ? », ou la classe entame une heure 3 sur une séance prévue en deux) : le site n'invente jamais une diapo ; l'heure s'ouvre sur la première diapo à jouer (reportée ou prévue), et si tu veux un rituel, c'est un appoint, en un geste.
+2. **Le T-5 rattrapé** (règle 5) se joue **avant le lancement** de l'heure suivante, dans l'écran d'ouverture — jamais devant la classe.
+3. **Tu refuses « Aller au bilan »** parce que tu préfères finir l'activité : c'est ton droit, l'heure se clôt sans bilan, la relecture l'écrit tel quel — pas de bilan à cette heure.
+
+**Ce que j'ai écarté, et pourquoi** : le signet (reprendre où on s'est arrêté) — plus simple à coder, mais il casse le rituel et rend l'ouverture dépendante de l'état de la veille ; le quotient actuel — faux ; le saut automatique au bilan à T-5 — contraire à « il montre, je valide ».
+
+Si les coûts te vont et les trois bouchons aussi, le point est fermé.
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

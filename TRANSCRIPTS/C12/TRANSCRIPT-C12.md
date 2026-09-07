@@ -659,3 +659,29 @@ Tests : aucun, rien n'est livré au site.
 MEMO
 
 ---
+
+## TOUR 17 — Paul
+
+Texte de Paul, mot pour mot :
+
+> C'est illisible ton affaire. la relecture doit être un onglet autre.
+
+---
+
+## TOUR 17 — Claude (conscience n°12)
+
+Travail joué avant réponse (rien déposé hormis ce transcript et ses pièces T17) : maquette v7 = v6 avec la relecture en onglet propre (Pilotage | Relecture, touche R), écran plein, sections lisibles, sous-événements triés par heure ; gabarit `pieces/T17-v7-template.html`, générateur `pieces/T17-gen-v7.py`, banc `pieces/T17-test-v7.mjs` (même parcours qu'au tour 16, zéro erreur JS) ; captures `pieces/T17-v7-02-relecture-onglet.png`, `pieces/T17-v7-03-retour-pilotage.png`.
+
+Réponse mot pour mot :
+
+Corrigé : la relecture est un **onglet à part**, en haut à gauche — **Pilotage | Relecture** —, un écran plein, jamais l'un sur l'autre. **R** bascule de l'un à l'autre, « Fin de l'heure → Oui, clore » y amène aussi. Le pilotage continue de tourner derrière (le chrono, le tableau) quand tu es sur la relecture.
+
+Elle se lit en quatre parties, dans l'ordre : le fil de l'heure (ce que la classe a vu, à la seconde, avec les gels, les paroles et les notes à leur heure) ; diapo par diapo (au tableau, prévu, dévoilé, ce qui s'est passé) ; la participation ; les notes au fil de l'eau. Le contenu ne change pas, c'est le même journal du tableau.
+
+v7 jointe.
+
+Tests : aucun, rien n'est livré au site.
+
+MEMO
+
+---

@@ -406,3 +406,42 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 10 — Paul
+
+Texte de Paul, mot pour mot :
+
+> il faudrait que tes htmls de maquette soient activables, parce que sinon c'est juste des png. pour le zoom je ne sais pas. il faudrait vraiment que j'ai une maquette à manipuler pour me rendre compte.
+
+---
+
+## TOUR 10 — Claude (conscience n°12)
+
+Travail joué avant réponse (rien déposé hormis ce transcript et ses pièces T10) : maquette v4 manipulable, un seul fichier HTML (74 831 octets), données réelles du chapitre 3e test du hub simulé (9 séances, 95 diapos, 29 élèves) injectées par `pieces/T10-gen-v4.py` depuis `pieces/T10-v4-template.html` ; fenêtre du tableau par `window.open` + `postMessage` ; rejouée au banc (`pieces/T10-test-v4.mjs`) : dévoilement, surlignage, zoom-texte paginé (« page 2 / 3 »), gel, notes au fil de l'eau, fenêtre du tableau, loupe, participation — zéro erreur JS. Captures `pieces/T10-v4-01…08.png`.
+
+Réponse mot pour mot :
+
+Tu as raison : une maquette figée ne dit rien du geste. Voici la **v4, manipulable** — un seul fichier HTML, à ouvrir dans ton navigateur (double-clic). Tout réagit, rien n'est enregistré, rien ne touche au site.
+
+**Ce que tu peux faire dedans**
+- **Dévoiler / revenir** : ▶ ◀, ou → ← espace ; PageDown / PageUp changent de diapo ; les vignettes à gauche et ⊞ (T) sautent où tu veux ; les autres séances du chapitre s'ouvrent d'un clic en bas du volet ; P replie le volet.
+- **Le tableau** : ⧉ Tableau ouvre une seconde fenêtre — c'est ce que voit la classe, elle suit ton pilotage (si ton navigateur bloque la fenêtre, autorise-la et reclique). Glisse-la sur le vidéoprojecteur pour de vrai si tu veux.
+- **Le gel** : ❄ ou G. Le tableau reste sur ce qu'il montre, toi tu continues (change de diapo, tu verras : le tableau ne bouge pas). Re-❄ dégèle.
+- **Surligner ✦, à écrire ✍** : clique le bouton, puis l'élément sur la diapo. Ça passe au tableau.
+- **Les notes** : celles de la diapo en bas (trois diapos en ont, pour l'exemple) ; N ouvre la fenêtre au fil de l'eau, Entrée garde la note, N ou Échap referme.
+- **Le suivi** : tape des initiales (ch, ab…), la liste se réduit, clique un nom ou Entrée s'il est seul, puis 1 / 2 / 3 ; ↶ annule. Le chrono tourne, « où on en est » se calcule sur les durées prévues.
+- **⋯** : chrono au tableau, qui a participé au tableau, absents, appoint.
+
+**Le zoom : deux essais dedans, pour que tu compares à la main**
+1. **La loupe** (🔍 ou L) : trace un cadre sur ta diapo, le tableau grossit cette zone, la molette change le grossissement. Le texte ne bouge pas.
+2. **« Texte au tableau »** (la réglette) : le texte grossit vraiment au tableau, et la diapo se lit alors en pages (« page 2 / 3 ») — c'est le LOT G fait proprement : rien n'est coupé dans ta donnée, seul l'affichage se découpe. Dévoiler passe de page en page.
+
+Dis-moi, après l'avoir prise en main, lequel des deux te va (ou les deux, ou aucun), et tout ce qui ne va pas — dans l'ordre.
+
+Ce qui n'y est pas encore : l'écran de préparation, la reprise en début d'heure, le T-5, les images ne s'affichent que si tu es en ligne (elles viennent du dépôt des médias).
+
+Tests : aucun, rien n'est livré au site.
+
+MEMO
+
+---

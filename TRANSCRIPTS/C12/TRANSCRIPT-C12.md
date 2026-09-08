@@ -1517,3 +1517,35 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 39 — Paul
+
+Texte de Paul, mot pour mot :
+
+> non je m'en sers en classe aussi, notamment quand je note des gros pavés. je remonte mon bloc au fur et à mesure que j'écris, et je reste sur la même diapo plutot que d'en créer d'autres. Mais c'est aussi dû au fait que sur ppt je dois obligatoirement écrire dans une zone, que je dois insérer d'abord, ce qui ralentit. en soi, mon mjpc règle déjà le problème. peut être en revanche que ce dont j'ai besoin, ce n'est pas un hors cadre mais des blocs déplaçables où je peux changer la taille de police comme sur ppt.
+
+---
+
+## TOUR 39 — Claude (conscience n°12)
+
+Aucune mesure nouvelle (conception ; mise en tension contre les tours 9, 28, 34). Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Compris, et ça change la question : ce que tu fais dans PowerPoint — remonter le bloc à mesure que tu écris pour rester sur la même diapo — c'est un contournement d'une limite de PowerPoint (une zone à insérer avant d'écrire). Dans le site, tu écris dans le bloc, il grandit, et on a posé hier que **la page suit ce que tu écris** : le pavé ne te chasse plus de la diapo. Donc le besoin de « hors cadre » tombe ; reste ce que tu nommes à la fin, et je le mets en tension avec ce qu'on a cadré.
+
+**Des blocs déplaçables.** Aujourd'hui les blocs sont empilés, du haut vers le bas, et c'est ce qui permet deux choses qu'on a décidées : la page qui suit l'écriture, et « texte au tableau » qui grossit tout d'un coup. Des blocs à position libre, comme dans PowerPoint, cassent les deux : un bloc posé en bas à droite ne se pagine pas, et grossir le texte fait chevaucher les blocs. **Ce que je propose** : les blocs restent empilés, mais **déplaçables dans l'ordre** — tu prends un bloc et tu le montes ou le descends, en préparation comme en classe — et la mise en page à deux colonnes (l'image à côté du texte) se fait par un choix de la diapo, pas par des positions libres. Ça garde la page et le grossissement ; ça perd la position au pixel près, que rien de ce qu'on a cadré ne réclame.
+
+**La taille de police par bloc.** On a dit « le texte ne se redimensionne pas en classe » — c'était contre *le site* qui coupe et recolle. Toi qui règles un bloc en petit, normal ou grand, c'est un choix de contenu, comme surligner : ça s'intègre. Deux tailles se combinent alors : celle du bloc (petit / normal / grand, dans la diapo) et « texte au tableau » (tout grossit ensemble, dans l'état du tableau). En classe, changer la taille d'un bloc déjà montré est une marque, comme le surlignage : elle passe au tableau et s'écrit dans le journal.
+
+**Le gros pavé de mise en commun, précisément.** Tu tapes huit réponses ; le bloc déborde. Deux façons de le tenir, et c'est là que je te demande de trancher :
+- **le site réduit d'abord la police de ce bloc** pour que tout reste visible, jusqu'à la limite lisible du fond, et **seulement ensuite** passe en pages — c'est ton geste PowerPoint, fait tout seul ;
+- **ou il passe en pages tout de suite**, police inchangée : la classe voit la page où tu écris, les premières réponses sont à la page 1.
+
+**Ma question, une seule** : pour un pavé qui grandit en classe, **la police se réduit d'abord (tout visible tant que c'est lisible), ou la page change tout de suite ?**
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

@@ -1317,3 +1317,53 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 34 — Paul
+
+Texte de Paul, mot pour mot :
+
+> à chaque fois que je donne une idée ou une orientation, tu dois la mettre en tension avec ce qu'on a déjà cadré. Est ce qu'elle s'intègre ou pas? est-ce qu'elle télescope ou pas? Tu ne dois jamais me dire "oui c'est bon on fait ça " alors que deux tours avant on a parlé de quelque chose qui techniquement va produire des bugs avec la nouvelle idée ou orientation. En effet, je suis développeur pédagogique, mais sur la technique, c'est toi.
+
+(Date : mardi 8 septembre 2026.)
+
+---
+
+## TOUR 34 — Claude (conscience n°12)
+
+Aucune mesure nouvelle ; relecture croisée des règles cadrées aux tours 12 à 33 de ce transcript. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Règle prise, et elle vaut pour tout ce qui suit : chaque idée passe d'abord contre ce qui est déjà cadré, et je te dis où ça s'intègre et où ça télescope avant de dire oui. Je l'applique tout de suite, en arrière, sur tout ce qu'on a fermé depuis hier — voilà ce que ça donne, du plus grave au plus petit.
+
+**Télescopages trouvés**
+
+1. **« Écrire dévoile » (mise en commun) contre « retoucher un bloc grisé en pleine séance pour plus tard » (ta demande du tour 27).** Si écrire dévoile, retoucher une consigne grisée pour la séance suivante la montre à la classe. Les deux ne peuvent pas être vraies ensemble. Ce que je propose : *écrire dévoile* ne vaut que pour **une réponse dans un bloc question** ; retoucher un bloc préparé (consigne, fiche) le laisse gris, il se dévoile à la flèche. Sinon, il faut geler pour retoucher — et tu m'as dit ne vouloir que le gel à gérer, ce qui plaiderait pour « tout dévoile hors gel ». **À trancher, c'est ma question du jour.**
+
+2. **« Ce qui a été vu reste vu » (tours 12-13) contre « revoiler efface » (tour 27).** Une seule règle pour les deux : **◀ sur la même diapo annule le dernier dévoilement** (l'apparition reste dans le fil détaillé, pas dans le récit) ; **changer de diapo ne dé-voit rien**. Sans ça, le journal se contredit.
+
+3. **Supprimer une diapo en classe (hier) contre la trame vivante (tour 30).** Si ce qui n'est pas joué se lit dans la trame, la diapo retirée pour la 3 Franklin *revient* à l'heure 2, depuis la trame. Il faut que la copie de la classe porte aussi **les décisions sur le non-joué** — retirée, en réserve, à la maison, non fait — et que ces décisions masquent la trame pour cette classe. C'est une retouche de l'architecture : la copie = ce qui a été montré **+ les sorts**. Même chose pour les quatre sorts du T-5, qui sans ça ne survivraient pas à l'heure.
+
+4. **Supprimer en classe contre le bilan unique et dernier (§6 du 25/08).** La question-bilan et le rituel d'ouverture ne sont pas retirables en classe : l'entrée est grisée. Sinon « aller au bilan » n'a plus de cible.
+
+5. **Supprimer en classe contre la frontière d'heure et le débordement.** Retirer une diapo de l'heure recalcule le prévu : le débordement affiché change à l'instant. À écrire, sinon la colonne de droite ment.
+
+6. **La réserve « en encart au tableau » (tour 27) contre le journal du tableau.** Afficher l'encart est une publication, donc une ligne — mais **pas un dévoilement de la diapo** : elle reste « en réserve », le journal dit « réserve X affichée de 09:30 à 09:40 ». Sinon la relecture la compte jouée.
+
+7. **« Aller au bilan » contre la garde.** Le saut proposé par le T-5 est *devant la classe* par nature : pas de garde. Idem pour le retour via « revenir là où est la classe ». À écrire, sinon un exécutant mettra la garde partout.
+
+8. **Corriger ou supprimer une prise de parole après coup (tour 32) contre l'immuabilité (tour 30).** L'immuabilité porte sur **ce que la classe a vu** ; une prise de parole est ta saisie, jamais montrée : corrigeable, avec trace (« corrigé à 09:40 »). Sans cette distinction, on ne peut plus rattraper une faute de frappe d'initiales.
+
+9. **La réponse au fil de la frappe contre le tableau distant par le hub.** Publier chaque lettre au hub, avec un sondage toutes les 900 ms ou même en temps réel, c'est des dizaines d'écritures par réponse. C'est technique, je le tranche : le pilotage publie au tableau distant par paquets de quelques centaines de millisecondes ; la fenêtre locale suit à la lettre. La classe ne voit pas la différence, le hub si.
+
+10. **La pagination « la page suit ce que tu écris » contre les deux supports du tableau.** La page doit être la même sur ton écran, la fenêtre et le distant : c'est le pilotage qui la calcule, dans la boîte du tableau (la loi de taille), et les supports l'affichent — jamais chacun sa page. Sinon la classe et toi ne lisez pas la même page.
+
+**Ce qui s'intègre sans frottement** (vérifié, je ne le détaille pas) : les deux gardes avec la répétition (aucune en répétition) ; le versement dans le chapitre avec l'immuabilité (il modifie la trame, jamais le passé) ; la frontière d'heure avec la trame vivante et « une séance = 1h » ; le retrait en classe avec le versement (« aussi dans la trame ? ») ; la relecture par heure et par séance avec le journal.
+
+Les dix lignes ci-dessus entrent dans le cadrage telles quelles, sauf la 1, que tu tranches : **retoucher un bloc grisé en classe le montre-t-il (tout dévoile hors gel, un seul geste à gérer), ou reste-t-il gris (seules les réponses dévoilent) ?**
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

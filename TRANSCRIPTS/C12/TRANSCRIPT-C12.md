@@ -1483,3 +1483,37 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 38 — Paul
+
+Texte de Paul, mot pour mot :
+
+> attends je ne comprends rien. tu utilises des métaphores obscures: sorts, parking, comptabilité... tu m'as perdu.
+
+---
+
+## TOUR 38 — Claude (conscience n°12)
+
+Aucune mesure nouvelle. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Tu as raison, je reprends sans images. Trois mots que j'ai employés et que je bannis : « sort » voulait dire *ce que tu décides pour une activité que tu n'as pas faite* (la faire à l'heure suivante, la garder pour les élèves rapides, la donner à la maison, ou l'abandonner) ; « parking » voulait dire *la zone grise autour de la diapo* ; « comptabilité » voulait dire *le compte de ce qui n'a pas été fait, dans la relecture*.
+
+**Le commentaire, en clair.**
+- Tu es en classe avec la 3 Franklin. Clic droit sur la diapo, « Commenter », tu tapes « trop long, couper en deux l'an prochain », Entrée. Le commentaire garde la date, l'heure, et « 3 Franklin ».
+- Il est rangé **avec ce que la 3 Franklin a fait** — pas dans le chapitre lui-même. Quand la 3 Hugo joue la même diapo, elle ne le voit pas.
+- Sur ton écran, la diapo montre une petite pastille « 💬 1 », et sa vignette aussi. Un clic dessus rouvre le commentaire. Le tableau ne le montre jamais. La relecture ne le montre pas.
+- Plus tard, le cockpit ira chercher les commentaires de la Franklin et de la Hugo et les mettra côte à côte sur le chapitre. Ça, c'est le cockpit, pas ce chantier.
+
+**Le zoom de PowerPoint, en clair.** Ce que tu aimes, c'est t'approcher de la diapo pour écrire, ou t'en éloigner pour tout voir, sans que rien ne change dans la diapo. Ça, on le garde, **sur ton écran** : Ctrl + molette, en préparation et en classe. La classe, elle, voit toujours la diapo à sa taille normale. Rien ne casse, parce que ce que la classe voit ne dépend pas de ce que tu regardes.
+
+**La zone autour de la diapo, en clair.** Dans PowerPoint, tu peux poser un bloc à côté de la diapo, dans le gris : il n'est pas dans la diapo, il n'apparaît pas au mur. On peut faire pareil. Le seul problème est celui-ci : si, **en classe**, tu tires hors de la diapo une activité que tu avais prévue, elle n'a pas été faite — et on s'est dit hier qu'une activité prévue et non faite doit être décidée (heure suivante, élèves rapides, maison, abandonnée) et apparaître dans la relecture. Si elle est juste posée dans le gris, elle disparaît sans qu'on le sache. Ce que je propose : en préparation, ce qui est dans le gris n'est pas prévu, c'est du brouillon ; en classe, tirer une activité dans le gris, c'est la retirer de l'heure, et le site te demande ce que tu en fais, comme pour une diapo retirée.
+
+**Ma question, simple** : cette zone grise autour de la diapo, **tu t'en sers en préparation seulement**, ou **aussi en classe** ?
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

@@ -1549,3 +1549,36 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 40 — Paul
+
+Texte de Paul, mot pour mot :
+
+> il faut que ça se réduise d'abord jusqu'à l'acceptable au fond, et ensuite ça bascule à l'autre. mais seulement, c'est exactement le genre de moment où un élève me demande de revenir en arrière parce qu'il est à la bourre. sur ppt, je reviens en arrière et ça règle la question. là, ça impacte la relecture. NOn? ou on a déjà tranché?
+
+---
+
+## TOUR 40 — Claude (conscience n°12)
+
+Aucune mesure nouvelle (conception ; mise en tension contre les tours 12-13, 27, 34 et 39). Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Pris : **la police du bloc se réduit d'abord, jusqu'à la limite lisible du fond ; ensuite seulement, la diapo passe en pages.**
+
+Ton cas n'a pas été tranché ; il se règle avec ce qui l'est déjà, sans rien casser. Deux choses à distinguer, parce que la réponse dépend de laquelle tu fais :
+
+**1. Revenir à la page précédente de la même diapo** (l'élève à la bourre veut revoir les premières réponses). Ce n'est ni un retour de diapo ni un revoilement : rien n'est retiré, les réponses sont toutes là, on montre une autre partie de la même diapo. Donc :
+- **pas de garde** — c'est un geste pour la classe, il doit être immédiat : deux petites flèches « ‹ page 1 / 2 › » sous la diapo dès qu'elle est paginée (et Maj+← / Maj+→ au clavier), distinctes de ◀ ▶ qui dévoilent ;
+- **pas d'effet sur la relecture** : ce qui a été vu reste vu, le récit ne bouge pas ; le fil détaillé note juste « page 1 montrée de 09:31 à 09:33 », parce que le tableau a changé — c'est tout.
+Exactement comme PowerPoint quand tu reviens en arrière, et la relecture ne s'en mêle pas.
+
+**2. Ce qui télescope, et la règle qui répare** : on a dit « la page suit ce que tu écris ». Si tu reviens page 1 pour l'élève et que tu continues d'écrire, la page repart à la 2 sous ses yeux. Deux issues, la seconde est celle qu'on a déjà : soit tu attends qu'il ait fini ; **soit tu gèles** — le tableau reste page 1 pour lui, tu écris page 2, tu dégèles quand il a copié. Un seul geste à gérer, celui qu'on a choisi ; et à ce dégel-là il n'y a pas de garde (même diapo, page différente), le tableau rattrape simplement. Je l'écris dans le cadrage : « si tu changes de page à la main, elle reste tant que tu n'écris pas ; dès que tu écris, la page de l'écriture revient — geler pour tenir les deux. »
+
+**3. Une correction à la maquette v8 qui en découle** : aujourd'hui « Dévoiler » y passe de page en page tout seul et ◀ revoile ; il faut y ajouter les flèches de page et le Maj+←/→, et retirer la garde de ◀ (déjà noté). Je les mettrai dans la v9 avec le reste.
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

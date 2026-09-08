@@ -1412,3 +1412,40 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 36 — Paul
+
+Texte de Paul, mot pour mot :
+
+> le commentaire c'est uniquement en classe. la relecture ne fait pas apparaitre le comm. le comm sert uniquement au cockpit prof (pas encore codé). regarde comment il se réduit sur ppt, et comment on sait qu'une diapo en porte 1.
+
+---
+
+## TOUR 36 — Claude (conscience n°12)
+
+Aucune mesure nouvelle (conception ; PowerPoint décrit de mémoire, non vérifié). Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Corrigé sur les deux points, et ça simplifie : **le commentaire est un geste de classe, il ne va ni au tableau ni dans la relecture ; il attend le cockpit prof.** Je retire la « relecture du chapitre » que j'avais ajoutée hier : ce n'est pas ce chantier, c'est le cockpit, plus tard. Ce chantier ne fait que deux choses : **poser** le commentaire, **le montrer** sur la diapo.
+
+**Comment PowerPoint fait** — je le décris de mémoire, je ne peux pas l'ouvrir d'ici, et les versions diffèrent un peu :
+- une diapo qui porte un commentaire montre **une petite pastille de commentaire** dans son coin (en haut à gauche de la diapo en édition), et **la même pastille sur sa vignette** dans le volet de gauche ;
+- le commentaire lui-même vit dans un **volet à droite**, qu'on ouvre et referme ; refermé, il ne reste que la pastille ; un clic sur la pastille rouvre le volet sur ce commentaire ;
+- chaque commentaire porte **l'auteur et l'heure** (« il y a 3 min », puis la date), on peut y répondre, le marquer réglé, le supprimer ;
+- **en mode diaporama, rien ne s'affiche** : le mur ne connaît pas les commentaires.
+
+**Ce que ça donne chez nous, mis en tension avec ce qui est cadré :**
+- **Le geste** : clic droit sur la diapo (scène ou vignette) → Commenter → une petite fenêtre s'ouvre sur ton écran, comme celle des notes mais ancrée à la diapo ; Entrée pose le commentaire avec **la date, l'heure, la classe et l'heure de cours** ; Échap ou sa croix la réduit.
+- **Réduit** : une pastille « 💬 2 » en haut à gauche de la diapo sur ton écran, et la même sur la vignette. Clic dessus : la fenêtre rouvre, avec les commentaires dans l'ordre, chacun daté. **Jamais dans l'état du tableau** — la fenêtre Win+K et le distant ne la voient pas. Compatible avec le journal (rien n'est publié).
+- **Où il vit** : dans la trame, sur la diapo, par son identité — comme tu l'as dit, une métadonnée de la séance. Il s'écrit à l'instant, sans versement : il ne change pas le contenu montré, l'immuabilité n'est pas touchée ; la copie de classe ne le copie pas.
+- **Ni en préparation, ni en répétition** : « uniquement en classe », donc l'entrée n'existe que dans le clic droit de classe. Si un jour tu le veux ailleurs, c'est une ligne à ajouter, pas une règle à changer.
+- **Distinct de N** : N, c'est ce qui se passe avec cette classe maintenant (journal de l'heure, relecture) ; le commentaire, c'est ce que tu penses de la diapo (trame, cockpit). Deux gestes, deux mots, deux endroits.
+
+**Une seule question, parce qu'elle décide de la pastille** : quand la 3 Hugo joue la même diapo trois jours après la 3 Franklin, **la pastille montre-t-elle le commentaire posé avec la Franklin** (il appartient à la diapo, il est là pour toutes les classes) — ou seulement les commentaires de la classe en cours ?
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

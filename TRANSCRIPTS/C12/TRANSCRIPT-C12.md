@@ -1610,3 +1610,37 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 42 — Paul
+
+Texte de Paul, mot pour mot :
+
+> est ce que tu peux me livrer la maquette avec tout ça? Et si oui, est ce qu'elle pourra être importée directement en lieu et place du déroulé actuel?
+
+---
+
+## TOUR 42 — Claude (conscience n°12)
+
+Aucune mesure nouvelle. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+**Oui pour la maquette.** Tout ce qu'on a fermé depuis la v8 tient dans un fichier manipulable, données réelles du chapitre 3e, sans hub. C'est gros ; je te propose de la rendre en trois fois pour que tu joues chaque partie avant la suivante :
+- **v9a — l'heure** : ◀ sans garde ; les pages (clic sur l'indicateur, molette, Maj+←/→, « la page suit l'écriture, changée à la main elle reste tant que tu n'écris pas ») ; la police du bloc qui se réduit avant la pagination ; la mise en commun (clic dans une question, initiales, la réponse au fil de la frappe, Entrée = suivante, reformulée) ; les blocs grisés retouchables qui restent gris ; petit / normal / grand par bloc ; monter / descendre un bloc ; Ctrl + molette pour ta vue ; les deux gardes ; le journal avec apparition et retrait.
+- **v9b — les décisions** : le clic droit de classe (lumière, à écrire, revoiler ; corriger ou supprimer une prise de parole ; y aller, retirer de l'heure avec les quatre décisions, insérer un appoint, commenter) ; les commentaires par classe avec leur pastille ; la réserve en encart au tableau ; le T-5 avec « aller au bilan » ; l'écran de fin d'heure (ce qui n'a pas été fait et sa décision, les diapos modifiées et le versement).
+- **v9c — la séance** : la frontière d'heure dans la trame ; l'heure 2 qui s'ouvre sur le rituel avec les reportées après et le débordement ; l'immuabilité (une diapo vue reste telle quelle, la trame modifiée vaut pour la suite) ; la relecture par heure et la relecture de séance ; l'ordi de classe simulé dans une seconde fenêtre.
+Je commence sur ton mot.
+
+**Non pour l'importer telle quelle** — et c'est toi qui l'as dit le mieux (« tu vas aussi importer les bugs »). Une maquette n'est pas du code de production, pour des raisons précises :
+- elle ne parle pas au hub : pas de copie par classe, pas de trace de l'heure, pas de cours actif, pas de mode test, pas de tableau distant par le hub ;
+- elle n'est pas dans `index.html` : pas d'atelier autour, pas d'emploi du temps qui la lance, pas de page élève, pas de connexion prof, pas de manifeste ;
+- elle n'a ni bancs de production, ni reprise après coupure, ni incidents visibles, ni infobulles dans tes mots ;
+- son code est un code de maquette : tout global, tout en mémoire, écrit pour être joué, pas pour tenir un an.
+
+**Ce qu'elle est, en revanche, et c'est plus utile qu'un import** : **la spécification exécutable du mandat**. Le mandat dira : « le pilotage se comporte comme la maquette v9, geste par geste, et les bancs rejouent ses gestes » ; l'exécutant part de zéro sur cette base saine, et il peut piocher dans la maquette (le rendu d'une diapo, la pagination, les gardes) comme dans une carrière — à la condition de tout repasser par ses bancs, jamais par un copier-coller. Base saine, c'est ça.
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

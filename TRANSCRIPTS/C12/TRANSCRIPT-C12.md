@@ -1582,3 +1582,31 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 41 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ça ajoute des boutons.
+
+---
+
+## TOUR 41 — Claude (conscience n°12)
+
+Aucune mesure nouvelle. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Vrai. Alors aucun bouton de plus : la page se change avec ce qui est déjà là.
+
+- **L'indicateur de page** qu'on affiche déjà dans le coin de la diapo (« page 2 / 2 ») devient le geste : un clic dessus remonte d'une page, un autre redescend. Il n'apparaît que quand la diapo est paginée, donc rien ne s'ajoute quand il n'y a rien à paginer.
+- **La molette** sur la diapo de ton écran fait la même chose — page précédente, page suivante — et Ctrl + molette reste le zoom de ta vue, comme on l'a dit hier. Deux gestes différents pour deux choses différentes, sur la même surface, sans un pixel de plus.
+- **Au clavier**, Maj+← et Maj+→.
+
+La barre du bas ne bouge pas : ◀ ▶ dévoilent, le reste est ce qu'on a validé. Je l'écris ainsi dans le cadrage et dans la v9.
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

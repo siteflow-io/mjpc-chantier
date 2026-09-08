@@ -1367,3 +1367,48 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 35 — Paul
+
+Texte de Paul, mot pour mot :
+
+> oui oui le seul dévoilement par écriture directe concerne les mises en commun, évidemment. De toute façon pour le reste si je modifie ça reste grisé, c'est normalement déjà le cas. En revanche tous les conflits que tu as listés sont je pense précisément la source des nombreux bugs du moteur actuel. Il faudra aussi une fonctionnalité de commentaire. En effet, on a ajouté la fonctionnalité des notes, comme sur ppt, mais il faut aussi que je puisse faire un commentaire sur une diapo par clic droit. même comportement que ppt: horodatage, et ça doit faire partie des métadonnées d'une séance, afin de pouvoir faire une relecture du chapitre après coup.
+
+---
+
+## TOUR 35 — Claude (conscience n°12)
+
+Aucune mesure nouvelle (conception ; mise en tension contre les tours 27, 29, 30, 32-34 et CADRAGE-TEMPS §6). Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Point 1 fermé : **seule une réponse écrite dans une question paraît au tableau au fil de la frappe ; tout le reste, retouché en classe, reste gris et se dévoile à la flèche.** Et oui : les dix conflits d'hier sont, à la lecture du code, ce que les six enveloppes essayaient de compenser l'une après l'autre. La base saine les règle en amont, une fois.
+
+**Le commentaire de diapo — mis en tension avant d'être accepté.**
+
+Ce que c'est, dans tes mots : comme PowerPoint, un clic droit sur une diapo, un texte, l'horodatage, et ça appartient à la séance pour relire le chapitre après coup. Ça s'intègre, à condition de le tenir distinct de deux choses qui lui ressemblent :
+
+| | Notes présentateur | Notes au fil de l'eau (N) | **Commentaire** |
+|---|---|---|---|
+| appartient à | la diapo, dans la trame | l'heure d'une classe (le journal) | **la diapo, dans la trame** |
+| s'écrit | en préparation | en classe | **n'importe quand, clic droit** |
+| porte | quoi dire | l'heure et la diapo au tableau | **la date, et si c'est en classe, la classe et l'heure** |
+| se relit dans | le pilotage | la relecture de l'heure | **la relecture du chapitre** |
+| va au tableau | jamais | jamais | **jamais** |
+
+**Où ça télescope, et la règle qui répare :**
+1. **Contre « en classe, rien ne remonte à la préparation ».** Un commentaire posé en classe s'écrit dans la trame tout de suite — sans passer par le versement — parce qu'il **ne change pas le contenu que la classe a vu** : c'est une métadonnée. L'immuabilité n'est pas touchée. C'est la seule chose qui s'écrit dans la trame pendant une heure, et il faut le dire en toutes lettres au mandat.
+2. **Contre la copie de classe diapo par diapo.** La copie fige le *contenu* montré ; elle ne copie ni les notes présentateur ni les commentaires. Sinon un commentaire d'hier sur la 3 Franklin serait invisible pour la 3 Hugo — alors qu'il parle de la diapo.
+3. **Contre la trame vivante et la suppression.** Le commentaire s'accroche à l'identité de la diapo ; si tu supprimes la diapo de la trame, ses commentaires partent avec elle, et la relecture du chapitre le dit (« diapo supprimée le 12/9, 2 commentaires »). Sinon des commentaires orphelins.
+4. **Contre les notes au fil de l'eau : deux gestes, deux mots, jamais mélangés.** N pour « ce qui se passe maintenant avec cette classe » ; clic droit → Commenter pour « ce que je pense de cette diapo ». La relecture de l'heure peut mentionner qu'un commentaire a été posé pendant l'heure, mais il vit ailleurs.
+5. **Contre le journal du tableau** : un commentaire n'est pas une publication, il n'y entre pas ; il a sa propre date.
+
+**Ce que ça ajoute au cadrage** : dans les données de la diapo, une liste de commentaires (date, texte, et le contexte de classe s'il y en a un) ; dans le clic droit — préparation et classe — « Commenter » ; et une sortie de plus, **la relecture du chapitre** : séance par séance, diapo par diapo, les commentaires avec leur date, plus les relectures de séance et ce qui n'a pas été fait — le bilan de fin de chapitre du 25/08 trouve là sa matière.
+
+Une seule question : **le commentaire posé en classe s'écrit-il dans la trame à l'instant, sans versement** (c'est ce que je propose, parce qu'il ne change pas le contenu) — ou veux-tu qu'il attende la clôture comme une modification ?
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

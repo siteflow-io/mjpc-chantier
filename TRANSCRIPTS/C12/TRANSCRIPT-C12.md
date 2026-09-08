@@ -1449,3 +1449,37 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 37 — Paul
+
+Texte de Paul, mot pour mot :
+
+> non le commentaire appartient à la classe, mais il se retrouvera dans le cockpit en commentaire sur un chapitre, fait sur deux jeux. Par ailleurs, l'avantage de powerpoint c'est quand même cette possibilité de sortir hors du cadre de la diapo et d'avoir une sorte de zoom infini, en tout cas en mode édition.
+
+---
+
+## TOUR 37 — Claude (conscience n°12)
+
+Aucune mesure nouvelle (conception ; mise en tension contre les tours 27, 28, 30, 34 et 36). Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+**Le commentaire, corrigé et mis en tension.** Il appartient à la classe : il vit donc **dans la séance jouée par la classe**, rattaché à la diapo par son identité — comme les notes N et les sorts —, pas dans la trame. Deux conséquences que je retire de ce que j'avais dit hier : plus rien ne s'écrit dans la trame pendant une heure (c'est plus sain), et la pastille ne montre que les commentaires **de la classe en cours**. Le cockpit, plus tard, lira les deux jeux (Franklin, Hugo) et les posera côte à côte sur le chapitre : c'est son affaire, pas la nôtre — nous, on stocke par classe, par diapo, avec la date et l'heure de cours. Un commentaire sur une diapo pas encore montrée tient dans la copie de classe au même titre qu'un sort (la retouche d'architecture du tour d'hier : la copie = ce qui a été montré **+ les sorts + les commentaires**). Une diapo supprimée de la trame ensuite : le commentaire reste, chez la classe ; le cockpit dira « diapo disparue depuis ».
+
+**Le hors-cadre et le zoom infini de PowerPoint** — mis en tension avec ce qu'on a cadré, parce que ça touche trois règles :
+
+1. **Le zoom infini est un zoom de *vue*, pas de contenu.** Ça s'intègre : on a dit « le texte ne se redimensionne pas en classe » — ici rien ne se redimensionne, c'est ton regard qui s'approche. En préparation : Ctrl + molette sur le plan de travail, la diapo se rapproche ou s'éloigne, tu écris en grand, le contenu est le même. **En classe aussi, sur ton écran de contrôle seulement** : tu zoomes pour écrire huit réponses ou tu dézoomes pour tout voir, **l'état du tableau ne bouge pas** — la classe voit la diapo à sa taille, paginée si besoin. C'est ce qui te manquait avec PowerPoint en édition, sans ce qui plantait.
+
+2. **Le hors-cadre, c'est un parking.** Ce qui est posé autour de la diapo n'est pas dans la diapo : jamais publié, jamais paginé, jamais au tableau. Ça s'intègre avec l'état du tableau (il ne connaît que le cadre). En classe, **glisser un bloc hors du cadre le retire du tableau** — c'est un revoilement, la même règle que ◀ : le fil garde « apparu, retiré », le récit ne garde que ce qui est resté. **Le ramener dans le cadre le montre** : un dévoilement, une ligne. Cohérent avec le journal.
+
+3. **Là où ça télescope : la quantification.** On a posé qu'une activité prévue doit être utilisée et que tout ce qui n'est pas joué est compté. Un bloc garé hors cadre est-il « prévu et non joué » — donc compté, sort à donner — ou un brouillon qui n'existe pas ? Si c'est compté, ton parking se remplit de sorts à régler à chaque T-5 ; si ce n'est pas compté, un bloc sorti du cadre en classe disparaît de la comptabilité alors qu'il était prévu. Ce que je propose : **hors cadre en préparation = brouillon, pas compté** ; **sorti du cadre en classe = retiré de l'heure, donc un sort** (réserve, maison, non fait), comme une diapo retirée. La différence, c'est le moment du geste.
+
+4. **Contre la répétition et la relecture** : la répétition montre le cadre tel que la classe le verra, paginé, sans le parking ; la relecture ne voit que le cadre. Rien à changer.
+
+**Ma question, une seule** : le hors-cadre te sert-il **en préparation seulement** (garer des blocs en construisant la diapo), ou **aussi en classe** (mettre un bloc de côté devant les élèves, le ramener plus tard) ? La seconde option ajoute le geste 2 au clic droit de classe et la règle 3 au T-5 ; la première ne touche que la préparation.
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

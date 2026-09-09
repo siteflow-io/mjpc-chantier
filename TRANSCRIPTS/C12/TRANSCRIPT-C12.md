@@ -2192,3 +2192,36 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 55 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok
+
+---
+
+## TOUR 55 — Claude (conscience n°12)
+
+Écriture faite au sas (jeton du sas), vérifiée bit à bit : `DEROULE/CADRAGE-2-LA-RELECTURE.md` — 1.6 bis / ter / quater et 1.7 écrits tels que validés (commit `9e5f4030fd34`). Lectures : `edtAbsence` L20785, `edtAbsencesHtml` L20797 (absents saisis dans la case EDT, écrits dans la trace `absents`), aucun autre lecteur de `trace.absents`. Rien d'autre déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Écrit au cadrage 2 tel que validé (1.6 bis, ter, quater et 1.7), déposé, vérifié bit à bit.
+
+**L'absent — ce qui existe aujourd'hui, lu** : l'absence se saisit **dans la case de l'emploi du temps** (« Absents de cette heure (0 sur 29) — un clic marque, un clic défait, jamais montré à la classe », `edtAbsence` L20785) et s'écrit dans la trace de l'heure. Rien ne la lit ensuite : ni le récit, ni la page élève, ni le profil — c'est une liste qui dort. Le cadrage du 25/08 (§11) voulait plus : le récit du jour pour l'absent, le travail donné, un message, et sa déclaration de mise à jour.
+
+**Ce que je propose, mis en tension avec ce qui est cadré :**
+1. **L'absence se saisit aussi depuis le pilotage**, pendant l'heure — ⋯ → Absents, la liste de la classe, un clic marque — et c'est la même donnée que la case de l'emploi du temps (une seule liste par heure, dans la trace). Jamais au tableau, jamais dans le récit (1.10 : rien de ce qui est pour toi seul).
+2. **Le récit ne change pas pour l'absent : c'est le même.** « Ce qu'on a fait aujourd'hui » lui dit ce qu'il a manqué, activité par activité ; « Pour la prochaine séance » lui dit ce qu'il doit faire, en entier (1.6 bis). Rien à écrire de plus : le récit a été conçu pour lui aussi. Ce qui change, c'est **l'adresse** : l'absent le reçoit chez lui, par École Directe (tu colles le contenu de séance, comme pour tous) — le site n'a pas de canal vers un élève, et le cadrage ne lui en invente pas.
+3. **Un absent compte dans la participation comme absent** : « 12 élèves ont pris la parole sur 27 présents » — le 27 vient de la liste. Et « ce qui s'est passé » le dit.
+4. **Ce qui tombe du §11 du 25/08** : le « message à l'absent » et sa « déclaration de mise à jour » supposent un canal élève et une saisie de l'élève — l'app élève n'existe pas (tour 24). Ils sortent du chantier ; la liste d'absents reste, prête pour le jour où ils reviendront.
+5. **Où ça télescope** : la case de l'emploi du temps et le pilotage écrivent la même liste ; si tu la modifies après l'heure (un élève marqué par erreur), le récit ne change pas (il ne la contient pas) mais « ce qui s'est passé » et le compte des présents oui — c'est une correction de saisie (4.7), avec trace.
+
+Si ça te va, l'absent est fermé ainsi ; la file du cadrage 2 ne contient plus que la forme du récit de séance (sur maquette, v9c) et le papier. Et je construis la v9b sur ton mot.
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

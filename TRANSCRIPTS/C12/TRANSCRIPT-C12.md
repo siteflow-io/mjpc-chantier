@@ -1769,3 +1769,44 @@ Tests : aucun, rien n'est livré au site.
 MEMO
 
 ---
+
+## TOUR 44 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok on continue.
+
+(Date : mercredi 9 septembre 2026.)
+
+---
+
+## TOUR 44 — Claude (conscience n°12)
+
+Écritures faites : le cadrage 1 déposé au sas `DEROULE/CADRAGE-1-LA-CLASSE.md` (commit `3b5720efb359`), corps identique à la version soumise au tour 43, vérifié bit à bit. Maquette v9a construite (gabarit `pieces/T44-v9a-template.html`, générateur `pieces/T44-gen-v9a.py`) ; bancs : `pieces/T44-test-v9a.mjs` (◀ sans garde, mise en commun, gel/dégel des réponses, pavé → police 0,7 puis pages, page à la main ‹ › / Maj+→ / clic dans la question, taille de bloc au tableau, retouche grise, Ctrl+molette) → 0 défaut ; `pieces/T18-bancs-v7.mjs` rejoué → 0 défaut ; `pieces/T44-bancs2-v9a.mjs` (banc 2 de la v8 adapté à la règle ◀) → 0 défaut. Bugs corrigés en cours de banc : raccourcis déclenchés depuis le champ de réponse (contenteditable non reconnu comme champ), garde fantôme au ◀ en début de séance, ligne d'écriture hors page après changement manuel. Captures `pieces/T44-v9a-01-mise-en-commun.png`, `pieces/T44-v9a-02-tableau.png`.
+
+Réponse mot pour mot :
+
+Ton « ok » pris pour le cadrage : **déposé au sas tel que tu l'as lu** (`DEROULE/CADRAGE-1-LA-CLASSE.md`, seule la ligne de statut change : « validé par Paul le 09/09 »), vérifié bit à bit.
+
+**La v9a — l'heure — est jointe, manipulable.** Ce qu'elle joue en plus de la v8, chaque point avec sa règle du cadrage :
+- **◀ sur la même diapo revoile, sans garde** (2.2) ; le retrait s'écrit (« retiré ») et le récit ne garde que ce qui est resté (3.3). ◀ en début de diapo remonte d'une diapo, avec la garde.
+- **La mise en commun** (4.2) : clique dans une question, tape les initiales — le site nomme l'élève —, Entrée, tape la réponse : **elle est au tableau au fil de la frappe**, Entrée ouvre la suivante, un clic sur une réponse la marque « reformulée ». Chaque réponse compte comme prise de parole (« Jules — diapo 8, motif réponse »). Pendant le gel, rien ne passe ; au dégel, tout paraît.
+- **Le pavé** (5.2) : à partir d'une dizaine de réponses, **la police du bloc se réduit** (jusqu'à 70 %), puis la diapo passe en pages ; la page suit ce que tu écris ; ton écran et le tableau montrent la même page.
+- **La page à la main, sans bouton** (5.3) : ‹ › dans l'indicateur « page 2 / 2 » du coin, la molette sur la diapo, Maj+← / Maj+→. Elle reste tant que tu n'écris pas ; un clic dans la question te ramène à la page de l'écriture.
+- **Retoucher un élément préparé** (4.3) : double-clic, tu corriges, Entrée ; **le gris reste gris**, rien ne part au tableau.
+- **Le clic droit sur un bloc** (4.5, 4.6) : Petit / Normal / Grand, Monter, Descendre — au tableau aussi. (Le clic droit complet, c'est la v9b.)
+- **Ctrl + molette** (5.6) : ta vue s'approche ou s'éloigne, le tableau ne bouge pas.
+
+**Joué avant de te la donner** : trois bancs, 0 défaut — le banc de la v9a (les huit gestes ci-dessus, dans l'ordre, avec la fenêtre du tableau ouverte), et les deux bancs de la v8 rejoués sur la v9a (cinq tailles d'écran, 95 diapos ; gardes, gel, loupe, image, pagination identique contrôle / tableau, relecture, appoint, chrono).
+
+**Trois bugs trouvés par les bancs et corrigés avant livraison**, pour que tu saches ce qui aurait cassé chez toi : taper une réponse contenant un « n », un « g » ou un « r » déclenchait les raccourcis (notes, gel, relecture) — le champ de réponse n'était pas reconnu comme un champ ; ◀ en tout début de séance ouvrait une garde vers une diapo qui n'existe pas ; après un changement de page à la main, la ligne pour écrire restait sur l'autre page sans moyen d'y revenir.
+
+**Ce que je n'ai pas joué** : ton écran réel et ta souris (la molette, Ctrl + molette, le double-clic au bon endroit du texte) ; la fenêtre du tableau autrement qu'en fenêtre.
+
+Joue-la ; dis-moi ce qui ne va pas, dans l'ordre. La v9b (clic droit complet, commentaires, réserve, T-5, fin d'heure) part sur ton mot.
+
+Tests : aucun, rien n'est livré au site.
+
+MEMO
+
+---

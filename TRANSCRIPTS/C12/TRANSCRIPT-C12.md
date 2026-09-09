@@ -2225,3 +2225,33 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 56 — Paul
+
+Texte de Paul, mot pour mot :
+
+> 4. attention, ce n'est pas parce que ça n'existe pas encore qu'il faut le faire tomber. au contraire: plus tard, l'absent aura la notif dans son profil avec l'amendement de maj. et il n'aura même plus à aller sur ED, même si je continuerai aussi mon copier coller, car il aura toutes les infos direct sur le site (je pense à des liens que je pourrais mettre vers un item de l'app d'entrainement, etc). 5. pas compris.
+
+---
+
+## TOUR 56 — Claude (conscience n°12)
+
+Aucune mesure nouvelle. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+**4 — corrigé, et c'est une règle de méthode que je retiens** : ce qui n'existe pas encore ne tombe pas, il se prépare. Donc le message à l'absent et sa déclaration de mise à jour restent au cadrage, et ce chantier **pose la donnée et sa place**, pour que la page élève, plus tard, n'ait qu'à lire :
+- **À la clôture de l'heure, le site enregistre au hub, par classe et par heure : le récit, le travail à faire en entier, la liste des absents, et un mot pour les absents** (un champ libre, facultatif, dans l'écran de clôture). Tout ça se réécrit si tu verses une note ou figes le récit après coup — ce que l'élève lira est toujours la dernière version.
+- **Ce que la page élève fera plus tard, sans que ce chantier le code** : « tu étais absent mardi 8/9 — voici ce qu'on a fait, ce qu'il y a à faire, le mot du professeur » ; une case « j'ai mis à jour mon cahier » (la déclaration de mise à jour) ; des liens vers un item de l'app d'entraînement quand elle existera. Le chantier laisse la place : chaque activité donnée à la maison garde son identité de diapo, pour qu'un lien puisse s'y accrocher.
+- **Ton copier-coller École Directe continue** ; le site ne le remplace pas, il s'y ajoute.
+- **Où ça télescope** : rien ne se publie aux élèves tant que la page n'existe pas, donc « enregistré » ne veut pas dire « montré ». Le jour où la page élève lira ces données, il faudra décider si c'est automatique à la clôture ou un geste de toi — ce sera dans le cadrage de la page élève, pas ici. Je l'écris comme un point réservé, pas comme un point ouvert.
+
+**5 — en clair** : si, après l'heure, tu corriges la liste des absents (un élève coché par erreur), c'est permis ; ça change seulement le nombre de présents là où il apparaît (« 12 élèves sur 27 présents », et « ce qui s'est passé »). Rien d'autre ne bouge. C'est tout ce que je voulais dire.
+
+**Une seule question** : le mot pour les absents — **un par heure, pour tous les absents de cette heure**, ou **un par élève** ?
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

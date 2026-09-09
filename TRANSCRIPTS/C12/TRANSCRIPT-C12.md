@@ -2091,3 +2091,33 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 52 — Paul
+
+Texte de Paul, mot pour mot :
+
+> En fait il faut que j'aie le choix, c'est tout. et c'est déjà le cas normalement: une activité non faite, je choisis quoi en faire et donc c'est à ce moment que ça s'inscrit dans le récit. Donc voilà tout. Mais je n'ai pas testé la fonctionnalité en vrai, donc je ne sais pas à quoi ça correspond concrètement.
+
+---
+
+## TOUR 52 — Claude (conscience n°12)
+
+Aucune mesure nouvelle. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+C'est plus simple que ce que je tournais, et ça règle la tension d'un coup : **ce qui s'inscrit dans le récit, c'est ta décision, au moment où tu la prends** — et une décision annoncée à la classe est un fait de l'heure, pas un futur. Donc :
+
+- Au T-5, à la clôture ou d'un clic droit, pour une activité non faite : quatre choix. Si tu prends **« à la maison »**, le site te propose la prochaine heure de la classe comme échéance (mercredi 9 septembre), et **tu choisis** : cette date, une autre, ou aucune.
+- **Ce que tu as choisi s'écrit tel quel dans le récit**, à cet instant : « *Le débat*, à faire à la maison pour mercredi 9 septembre » — ou « à faire à la maison », si tu n'as pas mis de date. Et ça ne bouge plus, parce que c'est ce que tu as dit à la classe.
+- L'échéance sert aussi au site après coup (le rappel à l'ouverture de l'heure suivante, le profil), mais **le récit ne dit que ce que tu as décidé ce jour-là.**
+
+Pour « à quoi ça correspond concrètement » : tu ne l'as jamais joué parce que tu joues avec PowerPoint — et le T-5 d'aujourd'hui, que j'ai lu, ne fait que noter le choix. **C'est exactement la v9b** : le T-5 avec « aller au bilan », l'écran de fin d'heure avec la liste de ce qui n'a pas été fait et ses quatre choix, l'échéance proposée et modifiable, le clic droit complet, les commentaires, la réserve en encart — et, à côté, le récit qui se recompose sous tes yeux avec la phrase qui en sort, pour que tu voies ce que ça donne. Tu la joueras, et tu me diras ce qui ne va pas, comme pour la v9a.
+
+Ce qui est cadré la couvre entièrement (cadrage 1 §6, §7, §9, §10 ; cadrage 2 §1, §3) ; ce qui reste dans la file (l'absent, la forme du récit de séance, la phrase du bilan pour le retiré, le papier) n'y entre pas. Je la construis sur ton mot.
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

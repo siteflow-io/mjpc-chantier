@@ -1,0 +1,49 @@
+# CADRAGE 2 · LA RELECTURE — le récit, « ce qui s'est passé », et les notes qu'on y verse
+*Conscience n°12, écrit le 09/09/2026 à partir des tours 46 et 47 du transcript C12 et de la lecture entière de la relecture de l'ancien moteur (L1248-1387). Soumis à Paul dans la conversation ; déposé au sas seulement après son mot. Complète le cadrage 1 (il en corrige les points 10.2 et 11.3).*
+
+## 0 · Deux faces, un onglet
+- 0.1 La relecture est **un onglet à part**, jamais superposé au pilotage (cadrage 1, 11.2). Elle a **deux faces**, l'une à côté de l'autre :
+  - **le récit** — « Ce qu'on a fait aujourd'hui » — écrit pour l'élève et pour École Directe, en prose ;
+  - **ce qui s'est passé** — pour Paul seul — l'intégralité de l'heure : le fil à la seconde, diapo par diapo, la participation, les notes au fil de l'eau.
+- 0.2 Les deux se construisent **sur le journal du tableau et la copie de la classe** (cadrage 1, §3 et §8), et sur rien d'autre — sauf les notes versées (§3 ci-dessous), qui entrent dans le récit parce que Paul les y met.
+- 0.3 Une relecture par heure ; une relecture de séance qui met les heures bout à bout (cadrage 1, 11.1).
+
+## 1 · Le récit — repris de l'ancien moteur tel quel, nourri autrement
+- 1.1 **Le cadre** : la classe, le chapitre, la séance, la date ; « Cette heure a commencé à … et s'est terminée à … » (le début réel, la fin du créneau).
+- 1.2 **Un paragraphe par activité montrée**, ouvert par l'heure réelle d'arrivée au tableau et le nom de l'activité, fait de phrases transposées au passé par la même machine qu'aujourd'hui (`recit` : verbe en tête → « on a … », « je » → « le professeur … », citation quand ça ne se transpose pas : « la consigne était : « … » », les étapes : « la consigne précisait : … »), enchaînées par les connecteurs de la doctrine (succession, ajout, retour, bilan), jamais le même deux fois dans un paragraphe, majuscule après le point.
+- 1.3 **Par type de bloc**, comme aujourd'hui : image → « on a observé *…*, où on a repéré « … » » (les marques dévoilées) ; schéma → « on a construit le schéma *…* » ; fiche → « on a travaillé / repris la fiche *…* », « où on a surligné « … » », « On a recopié dans le cahier : « … » » (ce qui a été surligné ou marqué à recopier), sinon sa définition ; question → « on a répondu à la question : « … ». **AB** a répondu : « … », que le professeur a reformulée ; **CD**, **EF** ont aussi participé à la mise en commun. »
+- 1.4 **Seulement ce qui a été montré** : le journal du tableau remplace `rev` / `vues` — une diapo jamais au tableau n'a pas de paragraphe ; un élément revoilé sur place n'y est pas (cadrage 1, 3.3) ; un bloc « neuf » n'y est pas ; ce qui s'est passé pendant le gel n'y est pas ; les pages, la loupe, la taille du texte n'y sont pas.
+- 1.5 **Les réponses écrites en classe** y sont avec les initiales et « reformulée » (cadrage 1, 4.2, 4.4) ; les prises de parole rattachées à la diapo au tableau (3.5) donnent « ont aussi participé ».
+- 1.6 **Le travail à faire sort du fil et clôt le récit** : « Pour la prochaine séance — … ». Deux sources qui se cumulent : une consigne montrée qui porte une échéance (comme aujourd'hui : « pour lundi », « à rendre pour »), et **la décision « à la maison, avec une échéance »** donnée à une activité non faite (cadrage 1, 7.1).
+- 1.7 **Le bilan de l'heure** ferme le récit : « on a travaillé … fiches, observé … documents, répondu à … questions ; **n** élèves ont pris la parole. » ; s'y ajoute, si c'est le cas, ce qui a été retiré ou non fait, en une phrase sobre décidée avec Paul au mot près.
+- 1.8 **Le récit se recompose tout seul** à chaque ouverture. **« Le figer pour le corriger »** reste possible (texte retouché à la main, qui ne suit plus rien ; « Revenir au récit automatique » perd les retouches, après confirmation) — c'est la voie rare ; la voie normale pour changer un récit est le versement des notes (§3).
+- 1.9 **Deux copies pour École Directe**, en HTML propre, comme aujourd'hui : « contenu de séance » (sans le travail à faire) et « travail à faire ». Le papier en découle : « ce qu'on relit » (le récit), « ce qu'on colle » (les fiches).
+- 1.10 **N'entrent jamais dans le récit** : les notes non versées, les commentaires, les gardes, les gels, les pages, les retraits, les décisions autres que « à la maison » (elles sont dans « ce qui s'est passé »), les blocs non montrés.
+
+## 2 · « Ce qui s'est passé » — pour Paul seul
+- 2.1 **Le fil de l'heure** : chaque changement du tableau, à la seconde — arrivée d'une diapo (début, suivante, retour, saut), éléments dévoilés et retirés, marques, pages montrées, gels et dégels, encart de réserve, chrono et « qui a participé » au tableau — et, à leur heure, les réponses écrites, les prises de parole, les notes.
+- 2.2 **Diapo par diapo** : au tableau (temps réel), prévu, dévoilé (le plus loin atteint), ce qui s'est passé (tout vu / arrêté après « … » / affichée / retirée à … / pas jouée), et la décision pour ce qui n'a pas été fait (heure suivante, réserve, maison avec échéance, non fait avec motif).
+- 2.3 **La participation par élève** (prises de parole et réponses, diapo, motif), corrigeable avec trace (cadrage 1, 4.7).
+- 2.4 **Les notes au fil de l'eau**, en entier, chacune avec son heure, la diapo au tableau, et sa marque « versée au récit » ou non.
+- 2.5 Rien de cette face ne va à l'élève ni à École Directe.
+
+## 3 · Les notes au fil de l'eau et le versement
+- 3.1 Une note est ce que Paul dit à l'oral et qui n'est pas dans la diapo — un exemple, un moyen mnémotechnique, ce qui fait le cours dans sa particularité — ou ce qu'il veut retenir de l'heure. Elle se prend par N pendant l'heure (cadrage 1, 10.2), avec l'heure et la diapo que la classe voyait.
+- 3.2 **La fenêtre N montre la liste des notes de l'heure, en entier, au fur et à mesure**, et chaque note porte un bouton **« Verser au récit »** — annulable d'un clic (« Retirer du récit »). Le geste se fait **dans le temps du cours**, ou après, depuis « ce qui s'est passé » où la même liste est là.
+- 3.3 **Verser est une donnée**, jamais une retouche du texte : la note reçoit la marque « versée » dans la copie de la classe ; le récit, en se recomposant, l'intègre **dans le paragraphe de la diapo que la classe voyait quand la note a été prise**, à sa place dans l'ordre. Dé-verser retire la marque et la note sort du récit.
+- 3.4 **La note entre telle quelle** — ce sont les mots de Paul, écrits pour le cours — précédée d'un connecteur de la doctrine comme les autres phrases, sans étiquette (« le professeur a noté que » n'existe pas) et sans transposition qui la dénaturerait. Paul voit l'intégralité de la note avant de la verser ; s'il veut la formuler autrement pour le récit, il la retouche dans la fenêtre N (la note est modifiable), puis il verse. Pas d'aller-retour de validation en plus.
+- 3.5 Verser, c'est publier : la note versée est dans les deux copies École Directe. C'est le choix de Paul au moment du geste.
+- 3.6 **Contre le récit figé** : si le récit est figé, verser une note l'insère une fois dans le texte figé, au bon paragraphe ; au retour au récit automatique, la marque « versée » reprend la main. Jamais deux sources en même temps.
+- 3.7 **À la clôture**, parmi les modifications de séance proposées au versement dans le chapitre (cadrage 1, 8.4), les notes versées au récit sont proposées aussi comme **notes présentateur de la diapo** — oui / non, diapo par diapo — pour que l'exemple ou le moyen mnémotechnique serve l'an prochain. Aucun bouton de plus : c'est l'écran de clôture qui existe déjà.
+
+## 4 · La relecture de séance
+- 4.1 Les récits des heures bout à bout, avec la frontière d'heure marquée et, entre deux heures, ce qui a été reporté, donné à la maison, mis en réserve ou non fait — chaque activité disant « prévue heure 1, jouée heure 2 » quand elle a glissé.
+- 4.2 « Ce qui s'est passé » de la séance : les mêmes faces, heure par heure.
+- 4.3 La forme exacte du récit de séance (un seul texte continu, ou un récit par heure sous un titre) : **à décider avec Paul sur maquette** (v9c).
+
+## 5 · Corrections au cadrage 1
+- 5.1 **11.3** devient : « La relecture a deux faces — le récit, et « ce qui s'est passé » — construites sur le journal du tableau et la copie de la classe ; le récit est celui de l'ancien moteur, nourri par le journal ; voir le cadrage 2. »
+- 5.2 **10.2** devient : « Notes au fil de l'eau (N) : … elles vont dans « ce qui s'est passé », et dans le récit seulement si Paul les y verse (cadrage 2, §3) ; jamais au tableau. »
+
+## 6 · Ce qui reste à cadrer (et n'est pas dans la v9b)
+La phrase du bilan pour le retiré et le non-fait (1.7, au mot près) · l'absent : le récit pour l'absent, le message, la déclaration de mise à jour (cadrage 1, §14) · la forme du récit de séance (4.3) · le papier en détail.

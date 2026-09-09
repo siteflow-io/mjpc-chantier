@@ -2121,3 +2121,39 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 53 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok alors pour finir à propos des activités de fin d'heure. actuellement, je prends une capture d'écran de mon ppt, je la colle dans ED, et j'écris teerminer l'activité pour la prochaine fois. Pour toute activité non faite, il faut qu'elle apparaisse dans son intégralité. En effet, même si l'élève peut avoir l'activité imprimée si jamais j'ai fait un doc de séance, il faut qu'il puisse savoir de quelle activité il s'agit et son contenu, s'il n'a pas de support imprimé.
+
+---
+
+## TOUR 53 — Claude (conscience n°12)
+
+Aucune mesure nouvelle (conception ; mise en tension contre le cadrage 2, 1.4 et 1.6, et `copierED`). Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Compris, et c'est la capture d'écran qu'on remplace : **une activité donnée à la maison entre dans le récit en entier — son titre et tout son contenu — pour que l'élève sans feuille sache quoi faire.** Mis en tension avec ce qui est cadré :
+
+**Où ça télescope, et la règle** : le récit ne dit que ce qui a été montré (cadrage 2, 1.4). Une activité donnée à la maison, souvent, n'a pas été montrée, ou à moitié. Elle entre quand même, en entier — c'est **la seconde exception** au « seulement ce qui a été montré », avec les notes versées, et le cadrage la nomme : *ce qui est donné à faire est donné en entier.*
+
+**Ce que « en entier » veut dire, par type de bloc** (dans « Pour la prochaine séance — », qui clôt le récit et fait la copie « travail à faire ») :
+- une **consigne** : son texte et **toutes** ses étapes, dévoilées ou non, dans l'ordre de la diapo ;
+- une **question** : la question ; pas la réponse attendue ;
+- une **fiche** : son titre, sa définition, son corps ;
+- une **image** : sa légende et **le lien** vers l'image (un collage HTML dans École Directe n'emporte pas les images, c'est à vérifier chez toi ; le lien, lui, passe) ;
+- un **schéma** : son titre et ses éléments, en liste ;
+- si l'activité a été **commencée en classe**, la mention « à terminer » ; sinon « à faire » ; puis ta date si tu en as mis une.
+
+**Ce que ça donne** : « Pour la prochaine séance — *Placer les poètes*, à terminer : Place chaque poète sur la frise, à la date de son recueil. 1. Lamartine, *Méditations*. 2. Hugo, *Les Contemplations*. 3. … » — la diapo, en texte, telle que l'élève l'aurait eue.
+
+**Ma question, une seule** : le contenu en entier, **seulement pour ce qui est donné à la maison**, ou **aussi pour la réserve** (ceux qui ont fini) et **le reporté** (qu'on fera à la prochaine séance) — qui, eux, restent dans le bilan par leur titre seul dans ce que je propose ?
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

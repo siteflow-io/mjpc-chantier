@@ -1834,3 +1834,41 @@ Tests : aucun, rien n'est livré au site.
 MEMO
 
 ---
+
+## TOUR 46 — Paul
+
+Texte de Paul, mot pour mot :
+
+> bon maintenant pour la relecture, je pense que tu n'as pas regardé comment elle fonctionnait dans l'ancien moteur. attention, pas de relivraison tant que ce n'est pas cadré.
+
+---
+
+## TOUR 46 — Claude (conscience n°12)
+
+Lectures jouées avant réponse (lecture seule ; rien déposé hormis ce transcript) : moteur `v-relecture` L460, `majVues` L1248-1387 (le récit : cadre, un paragraphe par activité, transposition par type de bloc, silence sur le non-montré et le « neuf », travail à faire à échéance, bilan de l'heure, figé/automatique, boutons ED), `recit` L1177, `lisible`, `citations` L1200 (surligné, à recopier), `copierED` L1115 (deux copies, HTML propre), `figeRecit`/`rendRecit` L1142-1143, `empreinte` L1174.
+
+Réponse mot pour mot :
+
+Tu as raison : je l'avais lue pour savoir *d'où elle tire ses données*, pas *ce qu'elle produit*. Relue en entier cette fois (moteur L1248-1387, `recit` L1177, `citations`, `copierED` L1115, `figeRecit` L1142). Voilà ce qu'elle est.
+
+**La relecture de l'ancien moteur est un récit en prose, écrit pour l'élève et pour École Directe** — « Ce qu'on a fait aujourd'hui » — et pas un fil d'événements :
+- **un cadre** : la classe, le chapitre, la séance, la date ; « Cette heure a commencé à 10 h 07 et s'est terminée à 11 h 02 » ;
+- **un paragraphe par activité**, ouvert par l'heure et le nom de l'activité (« *Analyse d'images* — À 10 h 07, … »), fait de phrases **transposées à l'imparfait** : « Observez les images » devient « on a observé les images », « je passe » devient « le professeur est passé », une consigne qui ne se transpose pas devient « la consigne était : « … » », les étapes suivantes « la consigne précisait : … » ; les phrases s'enchaînent par des **connecteurs** variés (succession, ajout, retour, bilan) tirés d'une petite doctrine, jamais deux fois le même dans un paragraphe ;
+- **par type de bloc** : une image → « on a observé *La Liberté guidant le peuple*, où on a repéré « le drapeau », « les corps » » ; un schéma → « on a construit le schéma *…* » ; une fiche → « on a travaillé la fiche *…* » (ou « repris », avec le motif du rappel), « où on a surligné « … » », « On a recopié dans le cahier : « … » » — les citations sont ce qui a été surligné ou marqué à recopier ; une question → « on a répondu à la question : « … ». **AB** a répondu : « … », que le professeur a reformulée ; **CD**, **EF** ont aussi participé à la mise en commun. » ;
+- **seulement ce qui a été montré** : le silence sur tout bloc non dévoilé, sur tout bloc « neuf » ;
+- **le travail à faire sort du fil et clôt le récit** : « Pour la prochaine séance — … » (aujourd'hui repéré dans le texte des consignes : « pour lundi », « à rendre pour ») ;
+- **le bilan de l'heure** : « Pour finir, on a travaillé deux fiches, observé trois documents et répondu à une question ; **12** élèves ont pris la parole. » ;
+- **deux gestes** : « Le figer pour le corriger » (le récit devient un texte que tu retouches à la main et qui ne suit plus le déroulé ; « Revenir au récit automatique » perd les retouches) ; et **deux copies pour École Directe**, en HTML propre : « contenu de séance » (sans le travail à faire) et « travail à faire » ;
+- **le papier** en découle : « ce qu'on relit » (le récit) puis « ce qu'on colle » (les fiches).
+
+**Ce que j'avais faux, et ce que ça corrige dans le cadrage 1.** Ma maquette montrait un fil horodaté (« 09:14, Zélia, motif 1 ») et un tableau diapo par diapo : c'est **la matière**, pas la relecture. Dans le cadrage : **11.3 est à réécrire** — la relecture, c'est *le récit*, comme aujourd'hui, nourri par le journal du tableau et la copie de classe au lieu de `rev` / `vues` ; et **10.2 est faux** sur un point — les notes au fil de l'eau ne vont pas dans le récit (il est pour l'élève et pour École Directe, elles sont pour toi).
+
+**Ce qui s'intègre sans frottement** : « seulement ce qui a été montré » = le journal du tableau (3.1-3.4), et ◀ revoilé = silence ; les réponses avec initiales et « reformulée » (4.2, 4.4) = exactement les phrases de mise en commun ; « à la maison, avec une échéance » (7.1) donne « Pour la prochaine séance » **plus sûrement** que la détection de « pour lundi » dans une consigne — les deux se cumulent ; l'immuabilité (8.1) garantit que le récit relit la diapo telle qu'elle a été montrée ; « figer pour corriger » et les deux copies se reprennent tels quels (12).
+
+**Ma question, une seule, avant tout cadrage 2 et toute relivraison** : ce que ma maquette montrait — le fil à la seconde, le diapo par diapo, la participation par élève, tes notes — **devient-il une vue à part, pour toi seul, à côté du récit** (« ce que la classe a vu / ce qui s'est passé »), **ou disparaît-il** (la relecture, c'est le récit et rien d'autre, tes notes se relisant ailleurs) ?
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

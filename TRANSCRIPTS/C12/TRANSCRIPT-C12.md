@@ -1990,3 +1990,39 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 49 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok on continue le cadrage (et il reste d'autres choses au cadrage, une fois le récit terminé). Par ailleurs, il faut que les élèves soient désignés non par leurs initiales comme dans le diapo, mais par leur prénom (et si prénom similaire, initiale du nom de famille en plus du prénom). C'est un récit, il faut donc humaniser.
+
+---
+
+## TOUR 49 — Claude (conscience n°12)
+
+Écritures faites au sas (jeton du sas), vérifiées bit à bit : `DEROULE/CADRAGE-2-LA-RELECTURE.md` déposé (commit `375db882a489`), corps identique à la version soumise au tour 48 plus la règle 1.5 bis ajoutée dans les mots de Paul et la ligne de statut ; `DEROULE/CADRAGE-1-LA-CLASSE.md` corrigé aux points 10.2 et 11.3 (commit `16480ae3dc7f`). Rien d'autre déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Cadrage 2 déposé au sas, avec ta règle ajoutée telle que tu la dis (1.5 bis) ; les points 10.2 et 11.3 du cadrage 1 corrigés dans le fichier déposé. Vérifiés bit à bit.
+
+**Les prénoms dans le récit — mis en tension, et ce que ça fixe :**
+- Ça s'intègre sans rien casser : en classe, tu tapes des initiales, mais **ce qui est enregistré, c'est l'élève** (la liste de classe le trouve) — donc le récit peut dire « Zélia a répondu » là où la diapo montre « ZP ». La diapo et le tableau gardent les initiales, comme tu le dis ; le récit seul humanise.
+- **Deux prénoms identiques dans la classe** : l'initiale du nom s'ajoute — « Léa B. », « Léa M. » — seulement dans ce cas.
+- **Un élève non identifié** (initiales sans candidat unique) : le récit dit « un élève a répondu : … », et « ce qui s'est passé » te le signale pour que tu corriges (4.7 du cadrage 1).
+- Une chose à savoir, sans leçon : le récit part dans École Directe, contenu de séance ; les prénoms de ceux qui ont parlé y seront lus par toute la classe et les parents. C'est ton choix, je l'écris tel quel.
+
+**On continue le récit — la file du cadrage 2, §6, un point par tour.** Le premier : **la phrase du bilan pour ce qui n'a pas été fait** (1.7), à fixer au mot près puisqu'elle part dans École Directe. Aujourd'hui le bilan ne dit rien du non-fait. Je te propose, après « … ; 12 élèves ont pris la parole. » :
+
+> « Deux activités n'ont pas été faites cette heure-ci : *Placer les poètes*, qu'on fera à la prochaine séance, et *Le débat*, qu'on ne fera pas. »
+
+— avec, selon la décision : « qu'on fera à la prochaine séance » (heure suivante), « qui est à faire à la maison pour lundi » (maison, avec l'échéance — et elle apparaît aussi dans « Pour la prochaine séance »), « qui reste à faire pour ceux qui ont fini » (réserve), « qu'on ne fera pas » (non fait). Le motif du non-fait ne sort pas : il est pour toi.
+
+**Ma question, une seule** : ces quatre tournures te vont-elles telles quelles, ou tu me donnes les tiennes ?
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

@@ -76,13 +76,13 @@
 
 ## 10 · Les notes et les commentaires
 - 10.1 **Notes présentateur** : par diapo, dans la trame, écrites en préparation, lues sous la diapo en classe, jamais au tableau.
-- 10.2 **Notes au fil de l'eau (N)** : une fenêtre qui s'ouvre et se referme par N (ou Échap, ou son bouton), Entrée garde la note avec l'heure et la diapo au tableau ; elles vont dans la relecture de l'heure ; jamais au tableau.
+- 10.2 **Notes au fil de l'eau (N)** : une fenêtre qui s'ouvre et se referme par N (ou Échap, ou son bouton), Entrée garde la note avec l'heure et la diapo au tableau ; elles vont dans « ce qui s'est passé », et dans le récit seulement si Paul les y verse (cadrage 2, §3) ; jamais au tableau (corrigé le 09/09).
 - 10.3 **Commentaire** : en classe seulement, clic droit → Commenter, Entrée pose le commentaire avec la date, l'heure, la classe et l'heure de cours ; **il appartient à la classe** (dans la copie de la classe, par identité de diapo) ; une pastille « 💬 n » sur la diapo et sa vignette, clic pour rouvrir ; jamais au tableau, jamais dans la relecture ; il attend le cockpit prof, qui posera les commentaires des classes côte à côte sur le chapitre.
 
 ## 11 · La relecture
 - 11.1 **Une relecture par heure** (la copie École Directe à chaque fois) **et une relecture de séance** (les heures bout à bout, chaque diapo disant « prévue heure 1, jouée heure 2 », avec les décisions entre les deux).
 - 11.2 **Un onglet à part**, jamais superposé au pilotage : Pilotage | Relecture, R bascule, la clôture y amène.
-- 11.3 Construite **sur le journal du tableau et la copie de la classe, et rien d'autre** : le fil de l'heure (chaque changement du tableau, à la seconde, avec gels, paroles, réponses, notes à leur heure), diapo par diapo (au tableau, prévu, dévoilé, ce qui s'est passé, décision pour le non-joué), la participation par élève, les notes au fil de l'eau. Le récit à l'imparfait se refait sur ce journal.
+- 11.3 La relecture a deux faces — **le récit** (« Ce qu'on a fait aujourd'hui », pour l'élève et École Directe, celui de l'ancien moteur nourri par le journal) et **« ce qui s'est passé »** (pour Paul seul : le fil, diapo par diapo, la participation, les notes) — construites sur le journal du tableau et la copie de la classe. Voir le cadrage 2 (corrigé le 09/09).
 - 11.4 Rien de ce que Paul a fait pendant le gel n'y entre ; les commentaires n'y entrent pas.
 
 ## 12 · Repris tel quel de l'existant (à citer dans le mandat, pas à rediscuter)

@@ -2026,3 +2026,37 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 50 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok en revanche je m'interroge sur le jour nommé. l'app le fait automatiquement?
+
+---
+
+## TOUR 50 — Claude (conscience n°12)
+
+Lecture jouée avant réponse : `_drProchainCreneau` L16340 (prochain jour ouvré, « à défaut d'EDT hebdo »), `_drPoserContexteMoteur` L16351 ; aucune fonction `edtProchain*`. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Aujourd'hui, non — et c'est faux : `_drProchainCreneau` (L16340) donne **le prochain jour ouvré, tout court**, « à défaut d'EDT hebdo » — un mardi, ça dit « mercredi 10 septembre » même si la classe n'a pas cours le mercredi. Ce commentaire date d'avant l'emploi du temps ; depuis le 03/09, le site sait mieux.
+
+**Dans la base saine, oui, l'app le fait, et à partir de ce qu'elle sait déjà :**
+- **L'échéance par défaut, c'est la prochaine heure de cette classe**, lue dans l'emploi du temps appariée (grille, semaines A/B, calendrier — les jours sans cours sautés). 3 Franklin, mardi 15:07 : la prochaine est **mercredi 10:07** → « pour mercredi 9 septembre ».
+- **Toujours le jour et la date**, jamais « lundi » seul — dans École Directe, « lundi » ne dit pas quel lundi.
+- **Tu changes d'un clic** si tu veux plus loin : la liste des prochaines heures de la classe, tu en choisis une. Rien à taper.
+- **La date est figée dans la copie de la classe** au moment de la décision (8.1) : si l'emploi du temps change ensuite, le récit d'hier ne bouge pas.
+
+**Où ça télescope, et la règle** : une classe **non appariée** (pas de créneau connu — aujourd'hui 3 Dylan et 3 Franklin le sont, mais pas toutes) : le site ne devine pas ; il te demande la date, ou écrit « pour la prochaine séance » sans jour. Et une heure **banalisée** ou un jour sans cours au calendrier n'est jamais proposé.
+
+Le bilan garde donc tes quatre tournures, avec l'échéance ainsi : « *…*, qui est à faire à la maison pour mercredi 9 septembre ».
+
+Point suivant de la file : **l'absent** — le récit pour l'absent, le message, sa déclaration de mise à jour (§11 du 25/08). Je le mets en tension et je te le propose au prochain tour, sauf si tu veux prendre un autre point d'abord.
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

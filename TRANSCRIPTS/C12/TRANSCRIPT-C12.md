@@ -2157,3 +2157,38 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 54 — Paul
+
+Texte de Paul, mot pour mot :
+
+> pour ta question, que proposes tu de logique et de pédagogique?
+
+---
+
+## TOUR 54 — Claude (conscience n°12)
+
+Aucune mesure nouvelle. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Ce que je propose, et pourquoi :
+
+**Le contenu entier accompagne ce que l'élève doit faire seul ; un titre suffit pour ce que la classe fera, ou ne fera pas.**
+
+- **À la maison → en entier.** L'élève a une tâche hors de la classe, sans toi devant lui : il lui faut la consigne, les étapes, la question, la fiche — tout, comme la capture d'écran d'aujourd'hui. Avec « à faire » si elle n'a pas été commencée, « à terminer » si elle l'a été en classe.
+- **Reportée à la prochaine séance → le titre seul.** « *Les hypothèses de la classe*, qu'on fera à la prochaine séance. » L'élève n'a rien à faire ; lui donner le contenu, c'est lui dire en creux « prépare-le » sans le dire, et c'est dévoiler une activité que tu mèneras. Si tu veux qu'il la prépare, c'est une décision différente : « à la maison », et elle entre en entier.
+- **En réserve → le titre seul.** « *Placer les poètes*, qui reste à faire pour ceux qui ont fini. » C'est un travail de classe, donné en classe à qui a fini ; l'élève rapide qui l'a faite s'y retrouve, les autres savent qu'elle existe ; personne n'a de tâche chez lui.
+- **Non faite → le titre seul.** « *Le débat*, qu'on ne fera pas. » C'est honnête, et ça suffit ; le motif reste pour toi.
+
+**La logique** : le récit dit à l'élève ce qu'il doit savoir pour la suite. Une tâche demande son contenu ; une information demande son nom. Et ça tient avec l'absent (le point suivant de la file) : l'absent reçoit le récit et le travail donné — donc **tout ce qu'il doit faire, en entier, et le nom de tout ce qu'il a manqué** ; ce qu'il a manqué se lit dans le récit des activités jouées, pas dans une copie intégrale des diapos.
+
+**Et la pédagogie du « en entier »** : le contenu intégral, c'est la diapo en texte — jamais la réponse attendue d'une question, jamais tes notes présentateur, jamais ce qui est marqué « pour toi ». L'élève reçoit ce qu'il aurait vu au tableau, pas ce que tu gardais.
+
+Si ça te va, c'est écrit ainsi au cadrage 2 (1.6, complété), et je passe à l'absent.
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

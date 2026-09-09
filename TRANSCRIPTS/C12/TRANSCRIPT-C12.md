@@ -1810,3 +1810,27 @@ Tests : aucun, rien n'est livré au site.
 MEMO
 
 ---
+
+## TOUR 45 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ça m'a l'air pas mal. En haut il y a encore pause et réinitialiser le temps. ce sont des métas maquettes, non?
+
+---
+
+## TOUR 45 — Claude (conscience n°12)
+
+Travail joué : v9a.1 = v9a sans ⏸ ni ↺ sur le chrono de l'heure (gabarit `pieces/T44-v9a-template.html` mis à jour → `pieces/T45-v9a-template.html`, générateur `pieces/T45-gen-v9a1.py`) ; banc `pieces/T45-test-v9a1.mjs` (le banc de la v9a rejoué) → 0 défaut. Rien déposé hormis ce transcript et ses pièces.
+
+Réponse mot pour mot :
+
+Pas des métas de maquette — pire : des commandes sans objet. Elles viennent du présentateur PowerPoint, où le chrono est celui de l'orateur, qu'on suspend et remet à zéro. Chez toi, le temps est celui du créneau : **la fin est fixe, le début est celui de ton « Lancer », et une heure de cours ne se met pas en pause** (6.2). Suspendre ou remettre à zéro ce chrono, ce serait mentir au T-5 et au débordement. Le chrono qu'on suspend et qu'on relance existe ailleurs, à sa place : celui d'une activité, « Chrono au tableau » (12).
+
+Retirés. La barre du haut ne garde que : le temps écoulé depuis le lancement, l'heure qu'il est, ce qui reste. C'est la **v9a.1** jointe (le banc de la v9a rejoué dessus : 0 défaut ; les deux autres bancs n'y touchent pas).
+
+Tests : aucun, rien n'est livré au site.
+
+MEMO
+
+---

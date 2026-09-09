@@ -2060,3 +2060,34 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 51 — Paul
+
+Texte de Paul, mot pour mot :
+
+> je n'aime pas l'idée que l'échéance soit fixée dans le récit.
+
+---
+
+## TOUR 51 — Claude (conscience n°12)
+
+Aucune mesure nouvelle (conception ; mise en tension contre le cadrage 1, 8.1 et 7.1, et le cadrage 2, 1.6). Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Tu as raison, et c'est un télescopage que j'aurais dû voir : **une échéance regarde l'avenir, et l'immuabilité (8.1) ne vaut que pour ce que la classe a vu.** Figer « pour mercredi 9 septembre » dans le récit, c'est graver une date qui peut bouger (une heure banalisée, une sortie, ton choix) dans un texte qui, lui, ne bouge plus. Les deux ne vont pas ensemble.
+
+**Ce que je propose à la place, et qui sépare les deux :**
+- **Le récit ne porte pas de date.** Il dit ce qui est décidé, comme aujourd'hui : « Pour la prochaine séance — … » et, dans le bilan, « *…*, qui est à faire à la maison ». Rien de plus. C'est vrai le jour même et ça reste vrai.
+- **L'échéance vit ailleurs, et elle vit** : c'est un attribut de l'activité dans la copie de la classe, proposé par défaut (la prochaine heure de la classe, lue dans l'emploi du temps), **modifiable tant qu'elle n'est pas passée**. Elle sert au site — le rappel à l'ouverture de l'heure suivante (« travail donné pour aujourd'hui : … »), « ce qui s'est passé », le profil de classe — pas au texte.
+- **École Directe a son propre champ de date** quand tu colles « travail à faire » : tu la poses là, comme aujourd'hui.
+
+Le bilan devient donc : « Deux activités n'ont pas été faites cette heure-ci : *Placer les poètes*, qu'on fera à la prochaine séance, et *Le débat*, qui est à faire à la maison. » — et « Pour la prochaine séance — … » en clôture du récit, sans jour.
+
+Une seule question : **« pour la prochaine séance », ça te va comme seule mention de temps dans le récit, ou tu n'en veux aucune** (« à faire à la maison », point) ?
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

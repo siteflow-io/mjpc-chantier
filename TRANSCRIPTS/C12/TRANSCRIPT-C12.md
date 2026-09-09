@@ -1872,3 +1872,42 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 47 — Paul
+
+Texte de Paul, mot pour mot :
+
+> oui on peut le garder. et c'est grâce à ça (qui reprend l'intégralité de ce qu'il s'est passé en cours, notes y compris) que je peux verser ou non des notes dans le récit. il faudra qu'elles s'intègrent aussi bien dans le récit.
+
+---
+
+## TOUR 47 — Claude (conscience n°12)
+
+Aucune mesure nouvelle (conception ; mise en tension contre le cadrage 1 §3, §10, §11, §12 et la lecture du tour 46). Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Pris : la relecture a **deux faces** — **le récit** (« Ce qu'on a fait aujourd'hui », pour l'élève et École Directe, en prose, comme aujourd'hui) et, à côté, **ce qui s'est passé** (pour toi : le fil à la seconde, diapo par diapo, la participation, tes notes). C'est de la seconde que tu **verses** des notes dans la première. Mis en tension avec ce qui est cadré, voilà ce que ça impose :
+
+1. **Verser est une donnée, pas une retouche.** Le récit se recompose tout seul à chaque ouverture (12). Si verser une note revenait à l'écrire à la main dans le récit, elle disparaîtrait à la recomposition suivante. Donc verser **marque la note** dans la copie de la classe (« versée au récit »), et la recomposition l'intègre d'elle-même **dans le paragraphe de la diapo que la classe voyait quand tu l'as prise** (3.5), à sa place dans l'ordre. Dé-verser retire la marque. Rien à retenir.
+
+2. **Elle s'intègre comme une phrase du paragraphe, par la même machine.** Une note est une phrase à toi (« Line a proposé le sublime sans le mot ») ; le récit la transpose comme il transpose une consigne — verbe en tête au passé, connecteur devant, minuscule après le point — et sans étiquette « le professeur a noté que » : c'est ce « aussi bien » que tu demandes. **Au moment de verser, tu vois la phrase telle qu'elle entrera** et tu peux la retoucher pour le récit — la note d'origine reste intacte pour toi. Une note qui ne se transpose pas entre telle quelle, sans « la consigne était ».
+
+3. **Où ça télescope, et la règle** :
+   - **contre le récit figé** (retouché à la main) : le récit figé ne suit plus rien ; verser une note dedans, c'est une insertion dans le texte figé, au bon paragraphe, une fois — et si tu reviens au récit automatique, la marque « versée » reprend la main. Deux sources, mais jamais en même temps.
+   - **contre « seulement ce qui a été montré »** (3.1) : une note versée n'a pas été montrée à la classe ; elle entre parce que **tu** l'y mets. C'est la seule matière du récit qui ne vienne pas du tableau, et le cadrage le dit en toutes lettres.
+   - **contre École Directe** : les deux copies prennent le récit avec ses notes versées — c'est le but ; donc verser, c'est publier : une note « Jules n'a pas son cahier » ne se verse pas, c'est ton choix au moment du geste.
+   - **contre la relecture de séance** : les notes versées à l'heure 1 sont dans le récit de l'heure 1, donc dans celui de la séance.
+   - **contre les commentaires** (10.3) : ils ne sont ni dans le récit ni dans « ce qui s'est passé » — aucun changement.
+
+4. **Ce que ça corrige dans le cadrage 1** : 11.3 — la relecture, ce sont *deux* vues, le récit et « ce qui s'est passé » ; 10.2 — les notes vont dans « ce qui s'est passé », et dans le récit **seulement si versées**.
+
+**Ma question, une seule** : au moment de verser, veux-tu **toujours voir et valider la phrase** avant qu'elle entre (un aller-retour, mais aucune surprise dans École Directe), ou **verser d'un clic** et corriger après si besoin en figeant le récit ?
+
+Le cadrage 2 · la relecture s'écrit sur ta réponse, puis la v9b.
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

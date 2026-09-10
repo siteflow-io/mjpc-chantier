@@ -2445,3 +2445,39 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 63 — Paul
+
+Texte de Paul, mot pour mot :
+
+> et du coup les activités? choix en fin d'heure ou fin de séance? on a déjà parlé de ce point là (va chercher sur github)
+
+---
+
+## TOUR 63 — Claude (conscience n°12)
+
+Lectures : `DEROULE/CADRAGE-TEMPS.md` §4, §5 (les quatre choix du bandeau, « reporter = une séance ultérieure du chapitre ; ne pas avoir fini = continuer à la prochaine heure »), §12 ; transcript C10 L4406 et L4854 (mots de Paul : pas de report en fin d'heure, seulement en fin de séance ; la fin d'heure demande le travail à faire pour la prochaine fois, le spiralaire, à prévoir dans le json de chapitre). Rien déposé hormis ce transcript (le cadrage 1 §7 sera corrigé sur sa réponse).
+
+Réponse mot pour mot :
+
+Trouvé, et tu l'avais tranché fin août (transcript C10) — je cite :
+
+> « il n'y a pas de report à la fin d'une heure, car la séance n'est pas finie. le seul moment où le report peut être affiché c'est quand une séance est terminée […] ce n'est pas « reporté à la fin de l'heure », c'est « ce qui reste à faire », le pendant de « déjà fait ». »
+> « ce qui nous induit en erreur, c'est qu'actuellement le moteur demande le report d'activité à la fin de l'HEURE. donc le moteur doit être modifié sur ce point. Il ne doit plus demander à la fin d'une heure, mais à la fin d'une séance. la seule chose qu'il peut demander [à la fin de l'heure], c'est le travail à faire pour la prochaine fois, et donc dans le json de chapitre il faut qu'il y ait un endroit pour le travail à faire pour la prochaine fois, le spiralaire. »
+
+**Donc mon 7.1 est faux sur le moment**, et je le corrige — mis en tension avec le reste :
+
+- **Aux heures intermédiaires, le T-5 ne demande rien sur les activités.** Ce qui n'est pas fait reste « ce qui reste à faire » de la séance et passe à l'heure suivante, après la réactivation (6.6) — sans décision, sans rien à gérer. Le T-5 y demande **une seule chose : le travail à faire pour la prochaine fois** — le spiralaire, prévu dans la trame à chaque heure, que tu valides ou modifies — et c'est lui qui entre dans « Pour la prochaine séance » et dans École Directe.
+- **À la fin de la séance** (sa dernière heure, celle du bilan), la décision se prend pour tout ce qui reste : **reporter à la séance suivante** (un changement de progression, que tu avais dans les choix du 25/08 et que j'avais retiré à tort — l'activité entre en tête de la séance suivante pour cette classe, après sa réactivation, marquée « reportée de la séance 1 » : c'est placé, visible, immédiat — le contraire de la réserve qui traîne) · **à la maison** (en entier dans le récit, avec la date si tu la choisis) · **non fait**, avec un motif.
+- **La réserve n'est pas une décision de fin de séance** : elle sert *pendant* la séance, pour ceux qui ont fini. Elle se déclare pendant l'heure, par clic droit sur la diapo — « retirer de l'heure → en réserve » — et elle meurt avec la séance (7.2).
+- **Le clic droit reste possible à tout moment** pour anticiper (réserve, maison, non fait) : la décision par défaut, c'est « reste à faire » ; la décision explicite, c'est quand tu veux ; la décision obligatoire, c'est la fin de séance.
+- **Contre le bilan de séance** (6.4) : « Aller au bilan » n'existe qu'à la dernière heure, et c'est là que la décision se pose — cohérent.
+- **Contre le spiralaire** : il faut un endroit dans la trame pour « le travail à faire pour la prochaine fois », par heure — c'est de la préparation (sujet 2), je l'y range.
+
+**Ma question, une seule** : **« reporter à la séance suivante » revient parmi les décisions de fin de séance**, comme le 25/08 — oui, ou tu préfères que ce qui reste à la fin d'une séance ne puisse aller qu'à la maison ou nulle part ?
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

@@ -10,8 +10,8 @@
 
 ## 1 · Le récit — repris de l'ancien moteur tel quel, nourri autrement
 - 1.1 **Le cadre** : la classe, le chapitre, la séance, la date ; « Cette heure a commencé à … et s'est terminée à … » (le début réel, la fin du créneau).
-- 1.2 **Un paragraphe par activité montrée**, ouvert par l'heure réelle d'arrivée au tableau et le nom de l'activité, fait de phrases transposées au passé par la même machine qu'aujourd'hui (`recit` : verbe en tête → « on a … », « je » → « le professeur … », citation quand ça ne se transpose pas : « la consigne était : « … » », les étapes : « la consigne précisait : … »), enchaînées par les connecteurs de la doctrine (succession, ajout, retour, bilan), jamais le même deux fois dans un paragraphe, majuscule après le point.
-- 1.3 **Par type de bloc**, comme aujourd'hui : image → « on a observé *…*, où on a repéré « … » » (les marques dévoilées) ; schéma → « on a construit le schéma *…* » ; fiche → « on a travaillé / repris la fiche *…* », « où on a surligné « … » », « On a recopié dans le cahier : « … » » (ce qui a été surligné ou marqué à recopier), sinon sa définition ; question → « on a répondu à la question : « … ». **AB** a répondu : « … », que le professeur a reformulée ; **CD**, **EF** ont aussi participé à la mise en commun. »
+- 1.2 **Un paragraphe par activité montrée**, ouvert par l'heure réelle d'arrivée au tableau et le nom de l'activité, fait de phrases transposées au passé par la même machine qu'aujourd'hui (`recit` : verbe en tête → « on a … », « je » → « **M. Meney** … » — jamais « le professeur », Paul 10/09 —, citation quand ça ne se transpose pas : « la consigne était : « … » », les étapes : « la consigne précisait : … »), enchaînées par les connecteurs de la doctrine (succession, ajout, retour, bilan), jamais le même deux fois dans un paragraphe, majuscule après le point.
+- 1.3 **Par type de bloc**, comme aujourd'hui : image → « on a observé *…*, où on a repéré « … » » (les marques dévoilées) ; schéma → « on a construit le schéma *…* » ; fiche → « on a travaillé / repris la fiche *…* », « où on a surligné « … » », « On a recopié dans le cahier : « … » » (ce qui a été surligné ou marqué à recopier), sinon sa définition ; question → « on a répondu à la question : « … ». **Zélia** a répondu : « … », que M. Meney a reformulée ; **Clovis**, **Line** ont aussi participé à la mise en commun. »
 - 1.4 **Seulement ce qui a été montré** : le journal du tableau remplace `rev` / `vues` — une diapo jamais au tableau n'a pas de paragraphe ; un élément revoilé sur place n'y est pas (cadrage 1, 3.3) ; un bloc « neuf » n'y est pas ; ce qui s'est passé pendant le gel n'y est pas ; les pages, la loupe, la taille du texte n'y sont pas.
 - 1.5 **Les réponses écrites en classe** y sont avec « reformulée » (cadrage 1, 4.2, 4.4) ; les prises de parole rattachées à la diapo au tableau (3.5) donnent « ont aussi participé ».
 - 1.5 bis **Dans le récit, les élèves sont désignés par leur prénom** — pas par leurs initiales comme dans la diapo : « c'est un récit, il faut humaniser » (Paul, 09/09). Si deux élèves de la classe portent le même prénom, l'initiale du nom s'ajoute (« Léa B. », « Léa M. »). Les prénoms viennent de la liste de classe ; la saisie en classe reste par initiales, l'identité de l'élève est ce qui est enregistré. Un élève non identifié (initiales sans candidat unique) donne « un élève a répondu : … », et « ce qui s'est passé » le signale pour correction (cadrage 1, 4.7).
@@ -29,6 +29,7 @@
 - 2.2 **Diapo par diapo** : au tableau (temps réel), prévu, dévoilé (le plus loin atteint), ce qui s'est passé (tout vu / arrêté après « … » / affichée / retirée à … / pas jouée), et la décision pour ce qui n'a pas été fait (heure suivante, réserve, maison avec échéance, non fait avec motif).
 - 2.3 **La participation par élève** (prises de parole et réponses, diapo, motif), corrigeable avec trace (cadrage 1, 4.7).
 - 2.4 **Les notes au fil de l'eau**, en entier, chacune avec son heure, la diapo au tableau, et sa marque « versée au récit » ou non.
+- 2.4 bis **L'appel** : les absents, les arrivées avec heure et raison, à leur place dans le fil (cadrage 1, 11 bis).
 - 2.5 Rien de cette face ne va à l'élève ni à École Directe.
 
 ## 3 · Les notes au fil de l'eau et le versement
@@ -50,4 +51,4 @@
 - 5.2 **10.2** devient : « Notes au fil de l'eau (N) : … elles vont dans « ce qui s'est passé », et dans le récit seulement si Paul les y verse (cadrage 2, §3) ; jamais au tableau. »
 
 ## 6 · Ce qui reste à cadrer (et n'est pas dans la v9b)
-L'absent : le récit pour l'absent, le message, la déclaration de mise à jour (cadrage 1, §14) · la forme du récit de séance (4.3) · le papier en détail.
+La forme du récit de séance (4.3) · le papier en détail. (L'absent est cadré au cadrage 1, 11 bis, le 10/09.)

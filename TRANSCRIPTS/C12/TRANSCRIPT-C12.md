@@ -2293,3 +2293,35 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 58 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Mais ça va dans le journal bien sûr, cette info. et oui, M. Meney
+
+---
+
+## TOUR 58 — Claude (conscience n°12)
+
+Écritures faites au sas (jeton du sas), vérifiées bit à bit : `DEROULE/CADRAGE-1-LA-CLASSE.md` (0.4 M. Meney ; 3.2 deux sortes de lignes ; 9.1 clic droit sur un nom ; nouveau 11 bis l'appel et les absents ; §14 mis à jour — commit `e69e63c46e7d`) ; `DEROULE/CADRAGE-2-LA-RELECTURE.md` (1.2 et 1.3 M. Meney et prénoms ; 2.4 bis l'appel ; §6 mis à jour — commit `79620e9568d0`). Un premier passage (commits `82070124d2b3`, `c614662511ed`) avait poussé les fichiers inchangés parce que le script s'était arrêté sur une assertion avant d'écrire ; rejoué, vérifié. Rien d'autre déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Oui, dans le journal — et ça m'a fait préciser une chose que le cadrage disait mal : **le journal de l'heure a deux sortes de lignes** — ce que le tableau a montré, et ce que tu as saisi (prises de parole, réponses, notes, l'appel avec les arrivées et leurs raisons, les décisions). Le récit ne lit que la première sorte ; « ce qui s'est passé » lit les deux. C'est écrit maintenant (cadrage 1, 3.2). Mon premier passage ce matin s'est arrêté avant d'écrire — une assertion mal posée dans mon script ; rien de faux n'est parti, j'ai rejoué et vérifié bit à bit.
+
+**Écrit dans les deux cadrages déposés, vérifiés bit à bit :**
+- **« M. Meney »** devant les élèves, jamais « le professeur » ni « le prof » — dans le récit (« que M. Meney a reformulée »), le mot pour les absents, tout texte qui leur est destiné (cadrage 1, 0.4 ; cadrage 2, 1.2 et 1.3).
+- **L'appel dans le flux** (cadrage 1, 11 bis) : une seule donnée par heure et par élève — absent depuis le début, ou arrivé à telle heure avec une raison facultative — saisie dans le pilotage (liste de classe, absents en grisé, clic droit → présent / absent) ou dans la case de l'emploi du temps, qui est adaptée au nouveau format ; un absent n'est pas proposé dans les initiales ; tout va dans le journal, jamais au tableau ni dans le récit ; corriger après coup est permis.
+- **Le mot pour les absents**, par heure, personnalisé, avec le récit qui s'arrête à l'heure d'arrivée pour ceux qui sont venus en cours d'heure (11b.4).
+- **Ce qui n'existe pas encore ne tombe pas** (11b.5) : à la clôture, récit, travail en entier, absents et mots sont enregistrés par classe et par heure **dans une structure nommée, à un seul endroit, avec le commentaire « ici se branche le profil longitudinal »**, listée dans « Où trouver quoi ». La page élève et le profil s'y brancheront.
+
+**Où en est la file.** Cadrage 2 : il ne reste que la forme du récit de séance (sur maquette, v9c) et le papier. Cadrage 1, §14 : la coche du bilan · les compétences par diapo, le coût des décisions, les alertes · la mise en commun en entier (palette, où va la réponse, ² / F2, historique, collisions) · les blocs en profondeur (marques sur image, schémas, fiche annotée, rappel) · le mode test · le QR code et le temps réel du distant · les documents et les feuilles · le vocabulaire et les arbitrages du 25/08 · la préparation.
+
+La v9b (clic droit complet, commentaires, réserve, T-5, fin d'heure avec les décisions, l'appel dans la liste de classe) est couverte par ce qui est cadré ; je la construis sur ton mot — ou on continue la file d'abord, comme tu préfères.
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

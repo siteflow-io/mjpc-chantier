@@ -2325,3 +2325,33 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 59 — Paul
+
+Texte de Paul, mot pour mot :
+
+> on a pas traité le cas où l'élève s'en va en cours.
+
+---
+
+## TOUR 59 — Claude (conscience n°12)
+
+Écriture faite au sas, vérifiée bit à bit : `DEROULE/CADRAGE-1-LA-CLASSE.md`, 11b.1, 11b.2, 11b.4 (présences en segments : arrivé / parti / revenu, raisons, mot ajusté, compte des présents). Rien d'autre déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Vrai — et c'est le symétrique de l'arrivée, qui manquait. Mis en tension avec le 11 bis d'hier, ça change la forme de la donnée, pas les règles :
+
+- **La présence d'un élève dans l'heure se note en segments** : présent depuis le début, arrivé à …, parti à …, revenu à … — chaque bord avec sa raison facultative (infirmerie, rendez-vous, exclusion : tu écris ce que tu veux, ou rien). Le clic droit sur un nom de la liste de classe propose ce qui a du sens à l'instant : **absent · présent / arrivé · parti · revenu**. L'heure est prise toute seule.
+- **Un élève parti n'est plus proposé dans les initiales**, comme un absent ; revenu, il l'est.
+- **Le mot pour l'élève s'ajuste** : parti à 11 h 30 → « Nathan, tu es parti à 11 h 30. Voici ce qu'on a fait après : » et le récit **à partir de 11 h 30** ; parti puis revenu → le récit de l'intervalle seulement. Le journal à la seconde le permet ; il ne reçoit que ce qu'il a manqué.
+- **« 27 présents »** compte les élèves présents au moins une partie de l'heure ; « ce qui s'est passé » sait qui était là à chaque instant — c'est ce que le profil longitudinal lira (minutes présentes par élève et par heure), au même endroit nommé.
+- **La case de l'emploi du temps** lit et écrit ces segments — adaptée, comme dit hier.
+
+Écrit au cadrage 1, 11 bis (11b.1, 11b.2, 11b.4), déposé, vérifié bit à bit.
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

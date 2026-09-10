@@ -2414,3 +2414,34 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 62 — Paul
+
+Texte de Paul, mot pour mot :
+
+> non, le bilan est par séance. En effet, pour l'instant j'ai fait un bilan par heure, mais c'est trop lourd. Donc le bilan est bien celui de la séance. Pour ce qui est de la transition entre deux heures, je garderai uniquement la diapo de réactivation, c'est tout.
+
+---
+
+## TOUR 62 — Claude (conscience n°12)
+
+Écriture faite au sas, vérifiée bit à bit : `DEROULE/CADRAGE-1-LA-CLASSE.md` — 6.1, 6.3, 6.4, 6.7, 9.3, §14 (le bilan de séance, la réactivation seule, la coche). Rien d'autre déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Pris, et ça simplifie trois règles. Mis en tension et corrigé dans le cadrage 1 (déposé, vérifié bit à bit) :
+
+- **6.1** — entre deux heures, **une seule diapo de transition : la réactivation**, première de l'heure suivante ; **le bilan est celui de la séance, unique, toujours dernier**. Plus de bilan d'heure.
+- **6.3** — le T-5 des heures intermédiaires ne propose que les décisions sur ce qui reste ; **« Aller au bilan » n'existe qu'à la dernière heure**. Une heure intermédiaire se clôt sur la dernière diapo jouée, ses cinq minutes d'agenda gardées.
+- **6.4** — **une seule coche, celle de la séance** : elle paraît quand la diapo bilan est atteinte en heure lancée ; cochée, la séance est terminée ; elle se décoche avec trace ; pas de coche en répétition. La clôture n'attend pas la coche mais le dit ; la relecture écrit « sans bilan attesté » ; l'emploi du temps le montre. Rien ne s'insère après le bilan (appoint compris, 9.3).
+- **6.7** — « sans clôture » suffit ; le mot « bilan » en est sorti.
+
+Ce que ça ne change pas : le récit de chaque heure garde son paragraphe de fin (« Pour finir, on a travaillé… ; 12 élèves ont pris la parole ») — c'est un compte, pas ta question-bilan ; et ta trame test porte encore des bilans d'heure aux diapos 8 des séances 1 à 3 : elle évoluera avec toi, le site n'y touche pas.
+
+La coche est fermée. Point suivant de la file : **les compétences par diapo, le coût des décisions au T-5, et la règle des alertes** (§10 du 25/08). Je lis l'existant (`atDrCompChange`, la taxonomie, ce que le T-5 affichait) et je te le mets en tension au prochain tour.
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

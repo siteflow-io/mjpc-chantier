@@ -2615,3 +2615,36 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 68 — Paul
+
+Texte de Paul, mot pour mot :
+
+> oui c'est très bien. oui, une activité pas commencée peut sortir du programme pour rattraper le retard ( et doit être fléchée exactement pour cette raison. "pas le temps"). Ensuite, il faut aussi que lorsque je fais ma sélection à la fin, je VOIE les diapos et activités concernées. Je ne dois pas cocher une liste de références, mais je dois VOIR ce sur quoi je décide. Que proposes-tu?
+
+---
+
+## TOUR 68 — Claude (conscience n°12)
+
+Écriture faite au sas, vérifiée bit à bit : `DEROULE/CADRAGE-1-LA-CLASSE.md` 7.1, 7.2, 7.3 (l'objectif horaire, les vignettes réelles au T-5, « à la maison, pas le temps » qui sort du programme, la fin de séance sans défaut). Rien d'autre déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Pris, et écrit au cadrage 1 (7.1 à 7.3, déposé, vérifié bit à bit) : **une activité pas commencée peut sortir du programme — « à la maison, pas le temps » —, fléchée ainsi pour toi, le profil et la relecture**, à côté de « terminer » et « préparer » qui, elles, sont reprises en classe.
+
+**Voir ce sur quoi tu décides — ce que je propose pour l'écran de fin d'heure :**
+
+- **Les diapos restantes de l'heure, en vignettes réelles**, en rangée sur ton écran — la diapo rendue en petit, telle qu'elle est (titre, consigne, étapes, image), assez grande pour se lire d'un coup d'œil, à peu près un tiers de largeur chacune ; s'il y en a plus de trois, la rangée défile. **Un clic sur une vignette l'agrandit** en plein, un autre la réduit. Pas une liste de titres : les diapos elles-mêmes.
+- **Sous chaque vignette, la décision**, avec « à l'heure suivante » déjà posé et le débordement affiché en haut (« mardi dépasse de 14 min ») qui se recalcule à chaque clic. Une diapo interrompue montre où on s'est arrêté (le gris de ce qui n'a pas été dévoilé).
+- **Dessous, le travail à faire pour mardi** : les mêmes vignettes se cochent d'un coup quand tu les as mises « à terminer » ou « à préparer » ; puis « apprendre » avec la liste des notions de l'heure telle qu'elle partira ; ce que la trame prévoyait ; le champ libre. Et **le texte qui partira dans École Directe s'écrit sous tes yeux** au fur et à mesure — tu vois ce que l'élève lira, pas des références.
+- **Tout ça sur ton écran seulement**, le tableau reste sur la diapo courante (gelé ou non, comme tu l'as laissé).
+
+C'est la même vignette qu'à gauche dans le volet, en plus grand, et le même rendu que la diapo : rien de nouveau à dessiner, juste à montrer. Tu la joueras dans la v9b — c'est exactement ce qu'elle contient.
+
+Point suivant de la file : **les notions et compétences déclarées par les diapos** (elles nourrissent « apprendre les notions de l'heure » et le coût des décisions). Je lis l'existant et je te le mets en tension au prochain tour.
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

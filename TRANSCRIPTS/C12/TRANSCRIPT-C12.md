@@ -2743,3 +2743,38 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 72 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok d'accord. va lire maintenant sur le site la taxo, et notamment la possibilité de créer de nouvelles notions.
+
+---
+
+## TOUR 72 — Claude (conscience n°12)
+
+Lectures : l'éditeur de taxonomie M8bis dans `index.html` L2160-2556 (`taxoCharger` avec le mode test, `_taxoIdNeuf` L2257, `_taxoGesteCreer` L2320, `_taxoValiderChamps` L2361, `_taxoFormCreation` L2449, `_profSectionTaxo` L2548), `atDrCompChange` / `atDrTaxoOptions` (la diapo tague des codes existants). Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Lu : l'éditeur de taxonomie du panneau prof (« M8bis », L2160-2556).
+
+**Ce qu'il sait faire** : dans une famille existante, **« + Nouvelle notion »** — libellé professeur, libellé élève, niveaux (« 6e-3e » par défaut), exemple facultatif ; l'identifiant est fabriqué tout seul (préfixe du domaine + numéro suivant, jamais réutilisé) et ne change plus ; la notion naît active ; la version de la taxonomie s'incrémente. Il sait aussi corriger les libellés, les niveaux, l'exemple, et désactiver une notion. En mode test, on édite une copie qui s'évapore en sortant du test.
+
+**Ce qu'il ne sait pas faire** : créer une **famille** ou un **domaine** ; poser la **source** (attendu de fin d'année ou choix de progression, que le pan littéraire du 02/08 avait écrite dans chaque notion — une notion créée ici n'en porte pas). Donc le volet littérature qui manque (de nouvelles familles) ne se fera pas par cet éditeur : c'est un mandat, comme le 02/08.
+
+**Mis en tension avec ce qu'on a cadré, et ce que je propose :**
+1. **Créer une notion là où tu tagues, pas seulement au panneau prof.** Aujourd'hui, en préparation, une diapo déclare ses notions dans un champ alimenté par la taxonomie ; si la notion manque, il faut quitter la diapo, aller au panneau prof, créer, revenir. Je propose le même geste, à portée, **depuis la préparation d'une diapo, depuis l'appoint en classe, et depuis la liste « apprendre » de fin d'heure** : « + une notion » — on cherche dans la taxonomie ; si elle n'y est pas, le même formulaire (famille à choisir, les quatre champs), la même écriture, le même identifiant — **un seul éditeur, appelé de plusieurs endroits**, jamais un second.
+2. **Contre l'avertissement du 01/08** (tout ce qui touche la taxonomie a un aval : Concordance, profil, cockpit) : créer une notion depuis le pilotage, c'est écrire au référentiel en pleine heure. Ça s'intègre si c'est **le même geste que le panneau prof**, rien de moins ; et la notion créée est **taguée à l'instant** sur la diapo qui l'a fait naître (l'appoint, ou la diapo que tu choisis).
+3. **Contre le mode test** : une notion créée en test s'évapore ; une diapo qui la tague pointerait sur rien en sortant du test. Le site le dit au moment de créer en test, et retire le tag à la sortie.
+4. **Contre l'immuabilité** (8.1) : les libellés sont modifiables, les identifiants non. Le récit « Apprendre : … » et le mot pour les absents doivent relire **les libellés tels qu'ils étaient à la clôture** — enregistrés dans la copie de la classe avec les identifiants —, pas la taxonomie vivante ; sinon corriger un libellé demain changerait un récit d'hier. « Déjà vue le 3/9 », elle, se calcule sur les identifiants.
+5. **Contre la liste « apprendre » classée** (tour 70) : une notion créée en fin d'heure entre dans sa famille, à sa place ; une famille qui n'existe pas ne se crée pas là — on la voit venir, on la demande par mandat.
+
+**Une seule question** : une notion créée **en classe** (par l'appoint, ou en fin d'heure) se rattache **à la diapo en cours** par défaut, ou tu veux **toujours choisir la diapo** de l'heure à laquelle elle appartient ?
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

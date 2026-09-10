@@ -2548,3 +2548,35 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 66 — Paul
+
+Texte de Paul, mot pour mot :
+
+> terminer à la maison c'est forcément repris en classe, même à l'oral. Mais sinon c'est pas mal. ET il faut aussi un choix champ libre, afin que je puisse écrire un travail spécifique qui n'entrerait pas dans ces catégories.
+
+---
+
+## TOUR 66 — Claude (conscience n°12)
+
+Écritures faites au sas, vérifiées bit à bit : `DEROULE/CADRAGE-1-LA-CLASSE.md` §7 réécrit (7.0 à 7.7 : rien en fin d'heure sur les diapos, le travail à faire et ses cinq propositions, les décisions de fin de séance dont « reporter à la séance suivante », la réserve pendant la séance, l'échéance choisie) ; `DEROULE/CADRAGE-2-LA-RELECTURE.md` 1.6 et 1.6 ter mis en cohérence. Rien d'autre déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Pris : **« terminer à la maison » ne retire rien du programme — l'activité est reprise en classe, même à l'oral.** Et le champ libre est là (je l'avais mis en dernier, il y reste : « un travail spécifique qui n'entre dans aucune catégorie »).
+
+Ton « ok » du tour précédent, je le prends aussi pour **« on la fera à la séance suivante »** parmi les choix de fin de séance — c'est écrit ; dis-moi si ce n'était pas ça.
+
+Le §7 du cadrage 1 est réécrit en entier et déposé (vérifié bit à bit), et le cadrage 2 suit (1.6, 1.6 ter). En clair :
+- **fin d'une heure** : rien sur les diapos restantes ; **le travail à faire pour la prochaine fois**, en un clic — terminer l'activité en cours (reprise en classe), préparer la suivante, apprendre les notions de l'heure, ce que la trame prévoyait, ou un champ libre ;
+- **fin de la séance** : pour ce qui reste, **reporter à la séance suivante · à la maison · non fait** ;
+- **pendant l'heure, quand tu veux** : clic droit → réserve · maison · non fait ;
+- **la réserve** sert pendant la séance, pour ceux qui ont fini, et meurt avec elle.
+
+Point suivant de la file, et il vient d'entrer dans le travail à faire par « apprendre les notions de l'heure » : **les notions et compétences déclarées par chaque diapo, ce que le T-5 en montre, et la règle des alertes** du 25/08. Je lis l'existant et je te le mets en tension au prochain tour.
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

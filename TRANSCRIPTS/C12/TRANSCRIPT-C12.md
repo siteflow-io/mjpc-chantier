@@ -2379,3 +2379,38 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 61 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok on passe à la suite.
+
+---
+
+## TOUR 61 — Claude (conscience n°12)
+
+Lectures : `DEROULE/CADRAGE-TEMPS.md` §6 (le bilan clôt la séance, mots de Paul) ; existant : aucun type « bilan », aucune coche dans `index.html` ni dans le moteur (seul `<p class="bilan">` du récit, L1371). Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Je lis « la suite » comme la file du cadrage ; si tu voulais la v9b, dis-le et je bascule.
+
+**La coche du bilan** — ce que tu avais dit le 25/08 : « dès qu'une diapo bilan est atteinte, une coche apparaît dans les commandes ; si je la coche, la séance est terminée et les élèves ont bien écrit le bilan — une attestation de ma part. » Le bilan : un bloc d'un type propre, unique, toujours dernier, rien ne s'insère après lui. **Rien de tout ça n'a jamais été codé** (aucun type « bilan » dans le moteur ; le mot n'y désigne que le paragraphe de fin du récit).
+
+**Mis en tension avec ce qui est cadré depuis :**
+1. **« Unique dans la séance » contre les séances à plusieurs heures** (6.1) : tu as maintenant une question-bilan **par heure** (« Question-bilan — Heure 1 », puis « Question-bilan et travail à faire » à l'heure 2). Donc le type « bilan » marque **la dernière diapo de chaque heure**, et le bilan de la dernière heure est celui de la séance. La coche est **par heure** : les élèves ont écrit le bilan de cette heure. La séance est terminée quand le bilan de sa dernière heure est coché. Une séance d'une heure : une seule coche, comme tu le disais.
+2. **La coche contre « Fin de l'heure »** : deux gestes, deux sens. La coche atteste (les élèves ont écrit) ; la clôture ferme (trace, décisions, École Directe). Et « tant qu'elle n'est pas cochée, la séance reste en cours » se heurte à « lancer une autre heure clôt la précédente » (12). La règle : **la clôture n'attend pas la coche, mais elle le dit** — « le bilan n'est pas attesté » — et l'heure se clôt quand même ; la relecture écrit « sans bilan attesté » ; l'emploi du temps le montre sur la case. Jamais bloquant, jamais silencieux.
+3. **La coche contre « Aller au bilan »** (6.3) : le saut t'amène sur la diapo bilan → la coche paraît dans les commandes → un clic. Deux gestes en tout pour finir proprement.
+4. **« Rien après le bilan » contre l'appoint et les reports** : un appoint ne s'insère jamais après le bilan de l'heure (9.3 précisé) ; les reportées passent après le rituel de l'heure suivante, donc avant son bilan (6.6, déjà cohérent) ; « retirer de l'heure » est interdit sur le bilan (9.2, déjà). En préparation, glisser une diapo après le bilan de son heure est refusé.
+5. **Où la coche va** : dans le journal (ligne de saisie, horodatée), dans « ce qui s'est passé », dans la trace pour l'emploi du temps et le profil longitudinal (l'heure a un bilan, ou pas). Jamais au tableau.
+
+**Ce qui n'est pas dit le 25/08 et que je propose** : la coche se décoche (une erreur), avec trace ; et la diapo bilan atteinte **en répétition** ne montre pas de coche (rien n'y est écrit).
+
+**Ma question, une seule** : **une coche par heure** (chaque question-bilan), la séance terminée au dernier — ou **une seule coche**, sur le bilan de la dernière heure seulement ?
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

@@ -2580,3 +2580,38 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 67 — Paul
+
+Texte de Paul, mot pour mot :
+
+> en fait il faut préciser quelque chose: mes séances sont organisées en H1 H2, H3 etc. Donc ça veut dire qu'il y a bien un objectif HORAIRE pour l'heure. Donc en réalité, tu dis "rien sur les diapos restantes", mais en fait si, sur les diapos restantes HORAIRES, il faut quelque chose. Souvent ça tombe bien avec "terminer l'activité ou préparer la suivante" parce que j'ai pas trop mal calibré mes horaires, mais c'est juste qu'on a pris du retard à l'entrée en classe par exemple, ou avec des questions imprévues...
+
+---
+
+## TOUR 67 — Claude (conscience n°12)
+
+Aucune mesure nouvelle. Rien déposé hormis ce transcript (le cadrage 1 §7 sera réécrit sur sa réponse).
+
+Réponse mot pour mot :
+
+Tu as raison, et je corrige « rien sur les diapos restantes » : **chaque heure a son objectif — les diapos prévues pour H1 —, et à la fin de H1, celles qui n'ont pas été faites sont un écart qu'il faut voir et décider.** Avec la 3 Franklin, lundi 09:47 :
+
+**Le T-5 montre deux choses, l'une au-dessus de l'autre :**
+
+1. **« Prévu pour cette heure, pas fait »** — la liste des diapos de H1 qui restent (par exemple *Les hypothèses de la classe*, interrompue, et *Question-bilan*… non, celle-là n'existe plus ; disons *Tableau 5*). Pour chacune, **un choix par défaut déjà posé : « à l'heure suivante »** — elle glisse à mardi, après la réactivation, et le site affiche tout de suite le débordement que ça donne (« mardi dépasse de 14 min »). Tu ne touches à rien si ça te va. Sinon, ligne par ligne : **terminer à la maison** (commencée ; reprise en classe, même à l'oral), **préparer à la maison** (pas commencée ; reprise en classe), **en réserve**, **non fait**. Le débordement se recalcule à chaque clic.
+2. **« Travail à faire pour mardi »** — ce que tu coches : terminer / préparer (les mêmes lignes qu'au-dessus, cochées d'un coup si tu les as choisies là-haut), apprendre les notions de l'heure, ce que la trame prévoyait, le champ libre.
+
+Souvent, comme tu dis, les deux se recouvrent en un clic : « terminer *Les hypothèses* » règle la première liste et remplit la seconde. Quand tu as pris du retard à l'entrée ou sur une question imprévue, c'est la première liste qui le montre, et c'est toi qui décides ce qui glisse et ce qui part.
+
+**À la fin de la séance**, même liste, mais **sans défaut** (rien ne peut plus glisser) et avec **« reporter à la séance suivante »** en plus. Une seule mécanique, deux moments.
+
+**Ce que ça corrige** : 7.1 et 7.2 du cadrage 1 (je les réécris sur ton mot) ; 6.6 ne change pas (ce qui glisse passe après la réactivation, avec le débordement visible).
+
+**Ma question, une seule** : une activité **pas commencée** donnée à la maison en fin d'heure (« préparer »), **est-elle reprise en classe comme « terminer »** — oui, toujours, c'est ce que je propose : rien de ce qui est donné à la maison ne disparaît du programme, on le reprend au moins à l'oral — **ou peut-elle sortir du programme** pour rattraper le retard ?
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

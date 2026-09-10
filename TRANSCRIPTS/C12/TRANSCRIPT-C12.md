@@ -2514,3 +2514,37 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 65 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok mais voilà une friction: généralement le travail à faire en fin d'HEURE est de terminer l'activité en cours, ou de préparer la suivante. Mais ça peut aussi être agrémenté d'un apprentissage de notions etc. Donc voilà.
+
+---
+
+## TOUR 65 — Claude (conscience n°12)
+
+Aucune mesure nouvelle. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Vu — et ça précise ce que « le travail à faire pour mardi » veut dire. Lundi, fin de l'heure 1, le site ne te demande pas une phrase à inventer : il te propose, en un clic chacun, ce que tu donnes le plus souvent :
+
+- **terminer l'activité en cours** — celle qu'on a commencée et pas finie ; elle part en entier dans le récit, marquée « à terminer » ;
+- **préparer la suivante** — la première qu'on n'a pas encore faite ; en entier aussi, marquée « à préparer » ;
+- **apprendre les notions de l'heure** — la liste des notions des diapos jouées (elles sont déclarées dans chaque diapo : c'est le point suivant de la file, ça tombe bien) ;
+- **ce que tu avais prévu** dans ta préparation pour cette heure (le spiralaire), s'il y en a un ;
+- et une ligne libre si tu veux autre chose.
+
+Tu coches, tu ajustes, c'est fini : ça part dans « Pour la prochaine séance » et dans École Directe.
+
+**Ce que ça change à ce qu'on a dit à l'instant** : à la fin d'une heure intermédiaire, le site ne demande toujours pas « quoi faire » des diapos restantes — elles attendent mardi — mais « terminer » et « préparer » sont bien des décisions sur des diapos, prises en fin d'heure. Ça tient, à une condition à trancher :
+
+**Ma question, une seule** : **« terminer à la maison » retire-t-elle l'activité du programme de mardi** — elle est faite chez soi, on ne la rejoue pas devant la classe, tu la corriges ou pas — **ou reste-t-elle à faire mardi** (terminée chez soi *et* reprise en classe) ? « Préparer », elle, la laisse forcément dans le programme.
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

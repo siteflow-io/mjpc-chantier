@@ -2681,3 +2681,35 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 70 — Paul
+
+Texte de Paul, mot pour mot :
+
+> proposées d'un coup et il faut qu'elles soient classées, afin de pouvoir en décocher plusieurs à la fois. quelle classification envisager?
+
+---
+
+## TOUR 70 — Claude (conscience n°12)
+
+Lecture (GET) : la taxonomie du hub — 7 domaines (dom-ortho-lex, dom-ortho-gram, dom-grammaire, dom-conjugaison, dom-lexique, dom-litterature, dom-versification), chacun en familles puis notions (`libelleEleve`, `libelleProf`, `exemple`, `niveaux`, `source`). Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+La classification existe déjà : c'est celle de ta taxonomie, lue au hub — **sept domaines** (orthographe lexicale, orthographe grammaticale, grammaire, conjugaison, lexique, littérature, versification), chacun en **familles** (« Les grandes familles de textes », « Genres et formes littéraires »…), chacune en **notions** avec deux libellés — celui pour l'élève (« Reconnaître à quelle famille appartient un texte ») et celui pour toi (« Les caractéristiques des genres littéraires ») — plus un exemple et le niveau. Rien à inventer, et c'est la seule classification qui restera vraie quand tu ajouteras des notions.
+
+**Ce que je propose pour la liste « apprendre »** :
+- **Groupée par domaine, puis par famille**, dans l'ordre de la taxonomie ; les notions dedans, **en libellé élève** (c'est ce qui part dans École Directe), ton libellé à toi en survol.
+- **Une case par groupe** : décocher « Versification » décoche ses six notions d'un clic ; décocher une famille décoche les siennes ; une notion se décoche seule.
+- **Chaque notion dit si elle est nouvelle ou déjà vue** — « nouvelle » quand cette classe la rencontre pour la première fois dans le chapitre, « déjà vue le 3/9 » sinon (le site le sait par la copie de la classe). Et **un clic « seulement les nouvelles »** pour ne garder que ce qui s'apprend vraiment : le reste se révise, ce n'est pas pareil.
+- Dans le récit : « Apprendre : *Reconnaître à quelle famille appartient un texte* ; *…* » — les libellés élève, dans l'ordre de la taxonomie.
+
+**Mis en tension** : ça s'intègre avec la règle du 22/08 (jamais un code) ; avec l'immuabilité (la liste cochée est figée dans le récit de l'heure, la mention « déjà vue » se lit dans la copie) ; et avec les compétences, qui restent hors de « apprendre » mais entrent dans le coût des décisions.
+
+Une seule question : **par domaine puis famille** (la taxonomie), c'est bien la classification que tu veux — ou tu préfères **par diapo de l'heure** (les notions groupées sous l'activité qui les a travaillées) ?
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

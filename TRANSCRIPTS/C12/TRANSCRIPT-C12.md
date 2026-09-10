@@ -2355,3 +2355,27 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 60 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Voilà. Comme ça ça correspond à ce que je dis dans la réalité, quand un élève me prévient qu'il partira au milieu du cours de demain: tu penseras à rattraper tout ce qu'on a fait quand tu n'étais pas là;
+
+---
+
+## TOUR 60 — Claude (conscience n°12)
+
+Aucune mesure nouvelle. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+C'est exactement ça, et c'est pour ça que ça tient : le site ne fait que ce que tu dis déjà à l'élève — « tu rattraperas tout ce qu'on a fait quand tu n'étais pas là » —, sauf qu'il lui donne le « tout » lui-même, à la minute près, avec le travail en entier. Rien de plus, rien d'inventé.
+
+Je m'arrête là sur l'appel : il est fermé. La suite est à toi : la v9b (le clic droit complet, l'appel dans la liste de classe, les commentaires, la réserve, le T-5, la fin d'heure et ses décisions, le récit qui se recompose sous tes yeux), ou d'abord un point de la file du cadrage 1 — la coche du bilan est le premier.
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

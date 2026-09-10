@@ -2255,3 +2255,41 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 57 — Paul
+
+Texte de Paul, mot pour mot :
+
+> il faut que ce soit apparent dans le code, afin qu'une future instance puisse y brancher le profil longitudinal. Et" le mot du professeur" ça ne veut rien dire, et je ne dois pas être appelé "professeur" sur mon site (règle à vérifier, va chercher). 5. ok oui. d'ailleurs pour les absents qui reviennent en milieu d'heure, il me faut l'horodatage, une raison facultative à mettre, et il faut aussi que dans ma liste de classe, je vois leur nom en grisé et que je puisse faire clic droit et les désigner présents. comme ça l'appel se fait dans le flux, et ne m'oblige pas à sortir du pilotage pour aller faire mon appel et revenir. Regarde contre l'existant déjà. Le mot pour les absents sous ce format, personnalisé, par heure: "Nathan, tu n'étais pas là jeudi à 11H. voici ce qu'on a fait... etc".
+
+(Date : jeudi 10 septembre 2026.)
+
+---
+
+## TOUR 57 — Claude (conscience n°12)
+
+Lectures jouées avant réponse : la règle de ton L3197-3220 d'`index.html` (« jamais le professeur n'est mis en cause devant l'élève ») ; occurrences « M. Meney » (L4820, L5562 et l'accueil) ; « le professeur » dans le récit du moteur (L1177, L1300) et dans CADRAGE-INTEGRATION §47 ; aucune règle écrite « ne pas m'appeler professeur » trouvée dans le registre, les cadrages, le journal, le registre des bugs ; l'existant de l'appel : `edtAbsence` L20785 (liste de noms par heure, sans heure ni raison), `updatePresence` L4883 (présence des appareils, autre chose), `_profSectionPresence` L6706 (« à venir »). Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Dans l'ordre.
+
+**« Apparent dans le code »** — règle du mandat, telle quelle : tout ce que l'heure produit sur un élève (absence, retour et raison, prises de parole, réponses, travail donné, mot reçu) vit dans **une structure nommée, à un seul endroit, avec un commentaire qui dit « ici se branche le profil longitudinal »**, et cet endroit est dans « Où trouver quoi ». Une future instance ne cherche pas : elle lit.
+
+**« Professeur » — ce que j'ai trouvé, et ce que je n'ai pas trouvé.** La règle écrite dans le site (L3197) dit : *« Jamais le professeur n'est mis en cause devant l'élève ; aucun texte destiné à un élève ne doit dire ou laisser entendre qu'il manque quelque chose de sa part »* — c'est une règle de ton, pas d'appellation. Pour l'appellation, le site te nomme **« M. Meney »** partout où il s'adresse à un élève (« Utilise le lien fourni par M. Meney », « M. Meney (prof) ») ; mais **le récit d'aujourd'hui dit « le professeur »** (« que le professeur a reformulée », « le professeur est passé »), et le cadrage d'intégration du 25/08 dit « le prof ». Je n'ai trouvé nulle part la règle « ne pas m'appeler professeur » écrite. **Dis-la-moi en un mot et elle entre au cadrage** — je propose « M. Meney » dans tout ce qui va à l'élève (récit, mot pour les absents), puisque c'est déjà le nom du site.
+
+**L'appel dans le flux — contre l'existant.** Aujourd'hui : l'absence se coche dans la case de l'emploi du temps, une liste de noms, sans heure ni raison (`edtAbsence`), et la « présence » du hub est autre chose (les appareils connectés, « à venir » au panneau prof). Aucun appel dans le pilotage. Ce que ça devient, mis en tension :
+- **Dans le pilotage, la liste de classe montre les absents en grisé** ; clic droit sur un nom → **« présent »** (arrivé à 11 h 20, une raison facultative), ou **« absent »** ; l'heure est prise toute seule. L'appel se fait sans quitter le pilotage.
+- **Une seule donnée** pour la case de l'emploi du temps et le pilotage : par heure, par élève, « absent depuis le début » ou « arrivé à … (raison) ». Le format de la trace change (une liste de noms devient une liste avec heure et raison) : la case de l'emploi du temps est à adapter — c'est écrit, pas oublié.
+- **Un absent n'est pas proposé dans les initiales** de la participation ; dès qu'il est marqué présent, il l'est.
+- **Contre le journal** : rien de tout ça ne va au tableau ni dans le récit ; « ce qui s'est passé » le porte (« Nathan, arrivé à 11 h 20 »).
+
+**Le mot pour les absents, par heure, personnalisé — et le journal le rend plus juste que tu ne le demandes.** Le site compose pour chaque absent : « **Nathan, tu n'étais pas là jeudi à 11 h.** Voici ce qu'on a fait : » puis le récit, puis « Pour la prochaine séance : » et le travail en entier ; ton mot libre de l'heure, s'il y en a un, à la fin. Et **pour un élève arrivé en cours d'heure**, parce que le journal est à la seconde : « Nathan, tu es arrivé à 11 h 20. Voici ce qu'on a fait avant : » et **le récit s'arrête à 11 h 20** — il n'a manqué que ça. Tout ça enregistré à la clôture, par élève, prêt pour la page élève.
+
+**Une seule question** : « M. Meney », c'est bien le nom que le site doit te donner devant les élèves, dans le récit comme dans le mot ?
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

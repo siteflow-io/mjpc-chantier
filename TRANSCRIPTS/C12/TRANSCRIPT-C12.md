@@ -2648,3 +2648,36 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 69 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok
+
+---
+
+## TOUR 69 — Claude (conscience n°12)
+
+Lectures : `DEROULE/CADRAGE-TEMPS.md` §10 (la règle des alertes) et §5 (le coût en compétences) ; `atDrCompChange` L14930-ish (l'écran déclare ses notions), `atTaxoLibelle` L15162 (règle du 22/08), le T-5 L14512 (« ces notions ne seront pas travaillées aujourd'hui ») ; la trame test (95 diapos, 1 à 12 codes chacune) ; la taxonomie du hub en GET (domaines, compétences francaisC4 et transversales, alias). Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+**Les notions et compétences — ce qui existe, lu** : chaque diapo déclare ses codes (`comp`, 1 à 12 par diapo dans ta trame test : `litt-036`, `c4-lire-02`, `tr-personne-02`…) ; la taxonomie du hub les porte en trois blocs — les notions par domaine, les compétences du cycle 4, les transversales — et le site sait les nommer en entier (`atTaxoLibelle`, ta règle du 22/08 : « un code ne parle à personne, ni au professeur ni à l'inspecteur ») ; le T-5 d'aujourd'hui dit déjà, sous chaque activité : « Si tu la passes, ces notions ne seront pas travaillées aujourd'hui : … ». La règle des alertes du 25/08 : *une alerte ne constate jamais un manque sans regarder ce qui est prévu ailleurs, elle dit « il faudra y revenir, c'est prévu séance 6 », et disparaît d'elle-même dès que le prévu existe — pour toutes les alertes du site.*
+
+**Mis en tension avec ce qu'on a cadré, et ce que je propose :**
+1. **« Apprendre les notions de l'heure »** (7.2) ne propose que **les notions** — pas les compétences, qui ne s'apprennent pas par cœur. La liste : les notions des diapos jouées cette heure, en libellés entiers, cochées d'un coup, chacune décochable. Dans le récit et École Directe : « Apprendre : le hors-champ, le sublime ».
+2. **Sous chaque vignette du T-5, le coût** — repris de l'existant, avec la règle des alertes : « Ces notions ne seraient pas travaillées : *le sublime* — **prévu séance 3** » (apaisant), ou « — **pas prévu ailleurs** » (l'alerte). Le site regarde la trame de cette classe : ce qui reste à jouer dans le chapitre. Décider « pas le temps » ou « non fait » sur une notion pas prévue ailleurs, c'est en connaissance de cause ; « à la maison » ou « reporter » ne coûte rien.
+3. **Une alerte est vivante, jamais stockée** : elle se recalcule à chaque affichage (fin de séance, plus tard le profil et le cockpit, sur la même donnée). Si tu ajoutes la notion dans une diapo à venir, elle disparaît. Ça s'intègre avec l'immuabilité : la décision et les codes de la diapo sont figés dans la copie de la classe ; l'alerte, elle, lit le futur.
+4. **Contre « une activité vit dans sa séance »** (7.5) : une notion portée seulement par une activité « pas le temps » ou « non fait » est perdue pour la classe — c'est précisément ce que le coût montre, et rien d'autre ne la rattrape en silence.
+5. **Apparent dans le code** : les codes des diapos jouées et les décisions, par classe et par heure, sont dans la structure nommée du profil longitudinal (11b.5) — le profil de classe et le cockpit y liront les manques.
+
+**Ce qui n'entre pas dans ce chantier** : les alertes au profil de classe et au cockpit (ils n'existent pas — la donnée les attend).
+
+**Ma question, une seule** : pour « apprendre », **toutes les notions des diapos jouées, proposées d'un coup et décochables** — ou seulement celles que tu choisis une à une ?
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

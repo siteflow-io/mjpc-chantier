@@ -2481,3 +2481,36 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 64 — Paul
+
+Texte de Paul, mot pour mot :
+
+> explique plus simplement, je suis perdu
+
+---
+
+## TOUR 64 — Claude (conscience n°12)
+
+Aucune mesure nouvelle. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Plus simple, avec la 3 Franklin. Séance « Poésie et peinture », deux heures : lundi et mardi.
+
+**Lundi, fin de l'heure 1.** Il reste trois diapos que tu n'as pas faites. Le site ne te demande rien sur elles : la séance n'est pas finie, elles seront faites mardi, après la diapo de réactivation. Le site te demande une seule chose : **le travail à faire pour mardi** — celui que tu avais prévu dans ta préparation (tu confirmes, ou tu changes). C'est ça qui part dans École Directe.
+
+**Mardi, fin de l'heure 2 — la fin de la séance.** Tu arrives au bilan. Il reste une diapo que tu n'as pas faite. Là, le site te demande quoi en faire, parce que la séance se ferme. Trois choix :
+- **on la fera à la séance suivante** — elle sera en tête de la séance « L'Albatros », mercredi ;
+- **à la maison** — elle part en entier dans le récit et dans École Directe ;
+- **on ne la fera pas**.
+
+**Pendant l'heure, quand tu veux.** Tu peux décider plus tôt, d'un clic droit sur une diapo que tu n'as pas encore montrée : la mettre en réserve pour ceux qui ont fini, la donner à la maison, ou l'abandonner. C'est facultatif ; si tu ne fais rien, la diapo attend simplement son tour.
+
+**Ma question, en clair** : à la fin de la séance, le choix **« on la fera à la séance suivante »** existe-t-il, oui ou non ? C'est le choix que tu avais demandé le 25 août ; je l'avais enlevé, à tort je crois.
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

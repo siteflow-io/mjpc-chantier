@@ -2713,3 +2713,33 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 71 — Paul
+
+Texte de Paul, mot pour mot :
+
+> oui mais il n'y a pas que ça, car la taxo n'a pas encore tout son volet littérature (va vérifier sur github dans ce qui était prévu au plan).
+
+---
+
+## TOUR 71 — Claude (conscience n°12)
+
+Lectures : arbres du sas et de la production (aucun fichier « plan » de la taxonomie hors `docs/MJPC6-plan-de-travail.md` et `taxonomie_atelier.json`) ; journal du 02/08 (M-TAXO-LIT, v1.4.0 : 7 domaines, 51 familles, 210 notions, sources A/B) ; plan de travail (XIII.8 la clé de voûte, avertissement du 01/08) ; taxonomie du hub en GET (7 domaines ; littérature 7 familles / 39 notions ; versification 4 / 17 ; 238 ids notions + compétences) ; mesure : 60 codes distincts dans la trame test, 0 absent de la taxonomie. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Vérifié — et je te dis ce que j'ai trouvé et ce que je n'ai pas trouvé.
+
+**Ce qu'il y a** : le journal du 02/08 (« M-TAXO-LIT — le pan littéraire ») : la taxonomie est passée de 5 à 7 domaines, 40 à 51 familles, 154 à 210 notions, avec la source de chaque notion (attendu de fin d'année cité, ou choix de progression). Au hub aujourd'hui : **« Le texte et ses formes », 7 familles, 39 notions** (genres et formes 6 · énonciation et voix narrative 5 · construction du récit 2 · registres 6 · figures de style 13 · argumentation 3 · analyse de l'image 4) et **« Le vers et les sons », 4 familles, 17 notions**. Ta trame test tague 60 codes distincts, dont 12 en littérature : **tous existent dans la taxonomie**, aucun orphelin.
+
+**Ce que je n'ai pas trouvé** : un plan écrit qui dise *ce qui manque encore* au volet littérature. Le plan de travail dit que la taxonomie est « la clé de voûte » et pose l'avertissement du 01/08 (chercher l'aval avant d'y toucher), pas de liste des familles à venir. Si ce plan est ailleurs (une conversation, un fichier que je n'ai pas ouvert), dis-moi où.
+
+**Ce que ça change au cadrage — et c'est le point** : rien, à condition d'écrire une règle. La liste « apprendre » et le coût des décisions **lisent la taxonomie telle qu'elle est le jour où on les affiche** — domaines, familles, notions — sans rien supposer de sa complétude ; **une notion qui n'y est pas ne peut pas être taguée, donc pas proposée, donc pas alertée** — c'est déjà la règle de la maison (« une notion absente du prompt ne peut pas être taguée », 02/08). Quand le volet littérature grandira (histoire littéraire, mouvements, formes poétiques, thèmes — je devine, je ne sais pas), les nouvelles familles apparaîtront d'elles-mêmes dans la liste, avec leurs cases. Compléter la taxonomie est un autre chantier, à ton rythme ; celui-ci ne la touche pas et ne l'attend pas.
+
+**Une seule question** : le plan du volet littérature, **il existe quelque part que je devrais lire**, ou c'est dans ta tête pour l'instant ?
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

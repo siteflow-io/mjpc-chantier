@@ -2813,3 +2813,40 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 74 — Paul
+
+Texte de Paul, mot pour mot :
+
+> 1. OK. mais du coup le choix de progression doit pouvoir être rattaché à une notion de la taxo quand même, ou  à un attendu. comme un sous item admettons. ainsi, tout reste toujours rattaché à un attendu du collège. Pour la limite, pas compris.  4. attention à distinguer réécriture et complétion. Si on complète, ça part bien dans les récits. Si on réécrit (par exemple je renomme le "hors champ" en "champ", là c'est refusé. non? 5. ok. La question: l'appoint ne veut rien dire, je ne sais pas de quoi tu parles. sinon le par défaut proposé me semble aller
+
+---
+
+## TOUR 74 — Claude (conscience n°12)
+
+Lecture : `index.html` L15005 — le champ `at-dr-comp`, placeholder « appoint — une notion imprévue surgie du cours », `onchange="atDrCompChange"` : l'appoint est un tag de notion sur l'écran en cours, pas une diapo insérée (erreur de lecture de la conscience depuis le tour 7, corrigée). Écriture faite au sas, vérifiée bit à bit : `DEROULE/CADRAGE-1-LA-CLASSE.md` (9.1, 9.3, 6.4, 6.5, 3.2, §12 corrigés). Rien d'autre déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+**L'appoint — j'avais mal lu, et je le corrige.** « Appoint », c'est un mot du site actuel que tu n'as jamais choisi : le petit champ de la tête du déroulé, « appoint — une notion imprévue surgie du cours », qui sert à **déclarer sur la diapo en cours une notion que tu as travaillée à l'oral sans l'avoir prévue**. Ce n'est pas une diapo ajoutée — j'avais compris ça, et mes maquettes insèrent une diapo : c'est faux, et le cadrage 1 est corrigé (9.1, 9.3, 6.4, 6.5, déposé, vérifié bit à bit). Le mot, lui, est à remplacer par le tien : je propose **« notion imprévue »**. Ta réponse au par défaut vaut donc pour ça : **une notion imprévue se déclare sur la diapo affichée au tableau, changeable d'un clic.**
+
+**1 — le choix de progression rattaché.** Pris : une notion créée « par choix de progression » **se rattache toujours à une notion existante ou à un attendu du collège** — comme un sous-item — pour que rien ne flotte hors des programmes. À la création, quand le site ne trouve pas la notion dans les attendus, il ne dit pas seulement « je l'assume » : il demande **« sous quelle notion, ou sous quel attendu ? »** et tu choisis dans la taxonomie ou dans les attendus. La notion naît avec ce rattachement, lisible par un inspecteur. Sans rattachement, pas de création.
+
+**La limite, en clair** : le site cherche des mots. Si tu écris « le sublime » et que l'attendu dit « la puissance émotionnelle des images », il ne fera pas le lien tout seul — il te dira « pas trouvé », et c'est toi qui rattacheras. Il ne juge pas, il cherche ; c'est pour ça que la porte du rattachement existe.
+
+**4 — compléter et réécrire.** Pris, et c'est plus fin que ce que je proposais :
+- **Compléter** (« le hors-champ » → « le hors-champ : ce qui manque à l'image ») : permis ; **la complétion part dans les récits**, même ceux d'hier — le sens ne change pas, il se précise.
+- **Réécrire** (« le hors-champ » → « le champ ») : **refusé** par l'éditeur. Le site le voit ainsi : si le nouveau libellé ne contient plus l'ancien, c'est une réécriture — il refuse et propose la voie propre : créer une nouvelle notion, désactiver l'ancienne. Les identifiants ne bougent jamais.
+- Le récit **figé** (retouché à la main) ne change pas, et ce qui est déjà collé dans École Directe non plus, évidemment.
+
+**5 — ok.**
+
+Tout ça — les notions taguées par diapo, « apprendre » classée, le coût et les alertes, la notion imprévue, la création avec la garde Éduscol et le rattachement, compléter / réécrire — je le pose dans un **cadrage 3 · les notions**, court, que je te soumets au prochain tour pour relecture.
+
+**Une seule question** : **« notion imprévue »**, comme mot à la place d'« appoint » — ça te va, ou tu en as un autre ?
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

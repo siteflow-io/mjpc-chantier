@@ -2850,3 +2850,36 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 75 — Paul
+
+Texte de Paul, mot pour mot :
+
+> pour la limite: il faut trouver un moyen pour que la liaison soit plus performante. Sinon ça ne sert à rien que le site dise "pas trouvé". NOtion imprévue oui, à l place d'appoint
+
+---
+
+## TOUR 75 — Claude (conscience n°12)
+
+Lecture : `index.html` — aucun appel d'IA en ligne (0 occurrence d'api.anthropic / openai / v1/messages hors le moteur encodé) ; les prompts sont copiés par Paul (`atIACopier`, `edtCopierPrompt`, 18 fonctions `*Prompt*`). Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+« Notion imprévue » à la place d'« appoint » : pris, écrit.
+
+**La liaison notion → attendu, plus performante que « pas trouvé ».** D'abord ce que le site peut et ne peut pas : **il n'appelle aucune IA en ligne** — tout ce qu'il sait de l'IA, c'est fabriquer des prompts que tu copies (« Copier le prompt » du chapitre, de l'emploi du temps). Et on ne peut pas mettre une clé d'IA dans une page publique : elle serait lue par n'importe qui. Donc l'intelligence ne peut pas être dans la page au moment où tu crées ; elle doit être **mise dans la donnée, une fois, avant** — comme l'audit de juillet, fait hors ligne par une conscience, puis appliqué. Ce que je propose :
+
+1. **Les attendus entrent au hub découpés et enrichis, par mandat.** Chaque attendu de fin d'année (5e, 4e, 3e) est découpé en items courts (« distinguer les principales caractéristiques des genres littéraires ») ; **chaque item reçoit ses mots-clés, ses synonymes et ses formulations scolaires** (« le sublime », « la puissance émotionnelle », « l'émotion devant la nature »…) — c'est ce travail-là qui demande une intelligence, et c'est un exécutant qui le fait, sur pièces, une fois ; tu relis. Le résultat est une table, au hub, versionnée comme la taxonomie.
+2. **À la création, le site ne cherche plus des mots, il cherche dans cette table** — sans accents, sans pluriels, sur les radicaux — et **il propose toujours les trois attendus les plus proches, classés**, avec le passage en clair. Tu choisis d'un clic, ou tu ouvres la liste entière si aucun ne va. Il ne dit jamais seulement « pas trouvé » : il dit « voici ce qui s'en approche ».
+3. **La porte reste** : si vraiment rien ne convient, tu rattaches à la main — à une notion existante ou à un attendu choisi dans la liste. Sans rattachement, pas de création.
+4. **La table grandit avec toi** : quand tu rattaches à la main une notion que le site n'avait pas su proposer, **tes mots entrent dans la table** pour l'item choisi ; la fois d'après, il trouve. Sans mandat, sans IA : le site apprend de tes rattachements.
+
+**Mis en tension** : ça s'intègre avec l'avertissement du 01/08 (la table a un aval : le profil, le cockpit — on la versionne comme la taxonomie) ; avec le mode test (la table se lit, ne s'écrit pas en test) ; avec « apparent dans le code » (la table est un objet nommé, un seul endroit). Ce que ça coûte : un mandat de préparation des attendus avant que la garde existe — sans lui, la garde n'a rien où chercher, et je ne la promettrais pas.
+
+Le cadrage 3 · les notions suit, avec tout ça, au prochain tour.
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

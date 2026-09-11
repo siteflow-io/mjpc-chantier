@@ -2778,3 +2778,38 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 73 — Paul
+
+Texte de Paul, mot pour mot :
+
+> 1 oui excellent, mais il faut une garde: eduscol. Si je peux créer une notion qui entre dans le programme de terminale, le site doit m'en empêcher. 2. ok. 3. ok. 4. pas compris. 5. pas compris. Question: pas compris
+
+(Date : vendredi 11 septembre 2026.)
+
+---
+
+## TOUR 73 — Claude (conscience n°12)
+
+Lectures : `docs/MJPC6-audit-eduscol.md` (adossement à la terminologie 2020, arbitrages du 19/07, couverture par PDF téléversé et extrait en local) ; taxonomie du hub : sources des notions (154 sans source, 28 ATTENDU, 28 CHOIX DE PROGRESSION) ; aucun fichier des attendus de fin d'année au sas ni en production. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+**1 — la garde Éduscol.** Voilà ce que le site a, et ce qu'il n'a pas : pour la grammaire, il est adossé à la terminologie officielle 2020 (audit du 19/07, tes quatre arbitrages) ; pour la littérature, 28 notions citent un **attendu de fin d'année** (5e, 4e ou 3e) et 28 sont marquées **« choix de progression de Paul »** — mais **les textes des attendus ne sont pas au site** : l'exécutant les avait lus dans le conteneur, ils n'y sont plus. Le site ne peut donc pas, aujourd'hui, dire « ça, c'est de la terminale ».
+
+Ce que je propose, en deux temps, et ça t'empêche vraiment :
+- **Les attendus de fin d'année du collège (5e, 4e, 3e) entrent au hub**, une fois, comme texte de référence — tu les téléverses, comme le guide de grammaire en juillet.
+- **À la création d'une notion, le site cherche son libellé dans les attendus.** S'il trouve, il te montre le passage et la notion naît avec sa source (« ATTENDU — 4e : « … » »), comme le 02/08. **S'il ne trouve rien, il refuse** : « je ne trouve pas cette notion dans les attendus du collège » — avec une seule porte, explicite : **« choix de progression, je l'assume »**, et une ligne pour dire pourquoi. Une notion de terminale ne passe pas par mégarde ; elle ne passe que si tu l'écris noir sur blanc comme ton choix. La colonne B reste ce qu'elle est : assumée, lisible par un inspecteur.
+- Limite honnête : c'est une recherche de mots, pas un jugement ; un synonyme peut ne pas être trouvé (tu verras la porte) ; c'est la même méthode que l'audit de juillet, rendue automatique.
+
+**4 — en clair.** Tu peux corriger le libellé d'une notion plus tard (« le hors-champ » devient « le hors-champ : ce qui manque à l'image »). Les récits déjà envoyés aux élèves ne doivent pas changer pour autant : le site garde, pour chaque heure, **le libellé tel qu'il était ce jour-là**. On ne réécrit pas ce que les élèves ont lu.
+
+**5 — en clair.** La liste « apprendre » est rangée par famille (« Les figures de style », « L'analyse de l'image »…). Si la notion que tu veux créer appartient à une famille qui n'existe pas encore — par exemple « Les mouvements littéraires » —, tu ne peux pas la créer là : le site ne sait pas créer une famille ; il faut d'abord la famille, par un mandat comme celui du 02/08. Le site te le dit au lieu de te laisser chercher.
+
+**La question, en clair.** Quand tu crées une notion en pleine classe (par l'appoint, ou en fin d'heure), le site l'accroche à une diapo — pour que le récit et le profil sachent où elle a été travaillée. **Par défaut, la diapo affichée au moment où tu la crées**, et tu peux changer d'un clic. Ça te va ?
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

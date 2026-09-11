@@ -2964,3 +2964,49 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 77 — Paul
+
+Texte de Paul, mot pour mot :
+
+> on en est où?
+
+---
+
+## TOUR 77 — Claude (conscience n°12)
+
+Aucune mesure nouvelle. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Le point, tel quel.
+
+**Fermé et déposé au sas** (`DEROULE/`), chaque ligne validée par toi dans la conversation :
+- **Cadrage 1 · la classe** — le tableau et ses deux supports, le gel et ses deux gardes, le journal (deux sortes de lignes), le dévoilement et la mise en commun au fil de la frappe, les pages / la loupe / le zoom de vue, les heures d'une séance et le bilan de séance, le travail à faire en fin d'heure et les décisions de fin de séance, l'immuabilité et la copie de classe, le clic droit de classe, les notes, les commentaires, l'appel et les absents, ce qui est repris de l'existant, ce qui tombe.
+- **Cadrage 2 · la relecture** — le récit (repris de l'ancien moteur, nourri par le journal, M. Meney, les prénoms), « ce qui s'est passé », les notes versées, le travail à faire en entier, les tournures du bilan, l'échéance choisie.
+
+**Soumis, en attente de ton mot** : **cadrage 3 · les notions** (tour précédent).
+
+**Maquettes** : v1 à v8 jouées et corrigées ; **v9a.1 (l'heure)** livrée, jouée par toi ; **v9b** (clic droit complet, appel dans la liste, commentaires, réserve, T-5 avec vignettes, fin d'heure et fin de séance, le récit qui se recompose) et **v9c** (la séance : deux heures, reports, relecture de séance) **pas commencées** — elles attendent que le cadrage qu'elles jouent soit fermé, et il l'est presque.
+
+**Ce qui reste dans la file du cadrage**, un point par tour :
+1. la mise en commun en entier — la palette (Maj+Espace), où va la réponse, le VIF joignable de partout (² / F2), l'historique d'un élève, les collisions d'initiales ;
+2. les blocs en profondeur — marques sur image, schémas, fiche annotée par la classe, rappel, image collée ;
+3. le mode test dans le nouveau pilotage ;
+4. le QR code et le temps réel du tableau distant ;
+5. les documents du chapitre et les feuilles de l'atelier ;
+6. le vocabulaire du tableau et les arbitrages restés ouverts le 25/08 ;
+7. la forme du récit de séance et le papier (sur maquette, v9c) ;
+8. **la préparation** — l'écran où tu construis (frontières d'heure, notes présentateur, taille par bloc, « trop pleine », le spiralaire par heure, la répétition) : un cadrage 4 et une maquette à part.
+
+**Deux préalables hors du chantier, à mandater à part** : les attendus de fin d'année au hub, découpés et enrichis (sans eux, pas de garde Éduscol) ; le volet littérature de la taxonomie (des familles nouvelles).
+
+**Ensuite, dans l'ordre** : v9b et v9c jouées par toi → cadrage 4 et maquette de la préparation → la séquence de test que tu rejoueras sur chaque livraison → le mandat, en livraisons courtes, fidèle aux maquettes geste par geste.
+
+**Docs de suivi** : le transcript est à jour (77 tours) ; le registre, le journal et « Où trouver quoi » datent du 08/09 — depuis, il y a de nouvelles dettes à y inscrire (l'appoint mal lu, le quotient d'heures faux, les décisions du T-5 notées mais jamais suivies, le prochain créneau faux, les absents jamais relus). Je les mets à jour sur ton mot, comme tu l'exiges avant toute livraison.
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

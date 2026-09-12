@@ -3097,3 +3097,42 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 80 — Paul
+
+Texte de Paul, mot pour mot :
+
+> tu vas reprendre tout ce qui est au document de cadrage qu'on a fait avant, et tu vas vérifier contre l'existant, car je soupçonne que tu n'as pas visualisé l'existant depuis longtemps. Ensuite j'attends un rapport compréhensible, expliqué.
+
+---
+
+## TOUR 80 — Claude (conscience n°12)
+
+Gestes joués (bancs `pieces/T80-existant.mjs`, `pieces/T80-existant2.mjs`, résultats `T80-existant.json`, `T80-existant2.json`) : page de production, faux hub, séance lancée en classe (3E Charles de Gaulle, 10:12), fenêtre du tableau ouverte ; dévoiler ×3 (rev 2, vues [1], le tableau montre l'étape 1), revoiler (vues [0]), aller à une diapo (immédiat, tableau suit), gel puis va(6) (tableau inchangé) puis dégel (tableau saute, diapo vide), mise en lumière (`spot-on` des deux côtés), zoom 4 (19 écrans, vues [0], tableau réduit au titre) et 0 (18), chrono au tableau (07:00), réponse dans la question après un dévoilement (rev 1 : pas au tableau pendant ni après Entrée), étape grisée éditable (« pas apres »), champ appoint → comp `litt-036`, aucun champ de notes, pas d'absents dans le pilotage, relecture et papier, clôture (« Tu n'as rien modifié pendant le cours »). Captures `pieces/T80-ex-*.png`. Rapport : `pieces/T80-RAPPORT-cadrage-contre-existant.md`. Rien déposé hormis ce transcript et ses pièces.
+
+Réponse mot pour mot :
+
+Tu avais raison de le soupçonner : jusqu'à hier, j'avais lu le déroulé bien plus que je ne l'avais joué. C'est fait maintenant — le site de production, une séance lancée en classe avec la 3E Charles de Gaulle, la fenêtre du tableau ouverte, chaque geste du cadrage joué et mesuré, avec captures. Le rapport complet est joint (et en pièce du transcript) ; voilà l'essentiel, en clair.
+
+**Ce que le site sait déjà faire, vu en le jouant — et que le cadrage reprend tel quel** : lancer une heure (la tête dit « EN CLASSE — 3E Charles de Gaulle · lancée 10:12 · fin 11:02 · 45 min utiles ») ; ouvrir la fenêtre du tableau, qui suit ; dévoiler et revoiler ; **geler** — gelé, je suis allé à la diapo 7, le tableau est resté sur la diapo 1, vrai ; **mettre en lumière** (la marque passe au tableau) ; le chrono et le chrono au tableau ; le VIF, la palette, l'historique, « qui a participé » avec les prénoms ; écrire dans une diapo en classe, une étape grisée retouchable qui reste grise ; la notion imprévue (le champ « appoint » tague bien la diapo) ; la copie de classe et sa comparaison à la clôture (« tu n'as rien modifié pendant le cours : ta préparation reste telle quelle ») ; le récit qui se recompose, le figer, les deux copies École Directe, le papier.
+
+**Ce que le site fait, mais mal — et que le cadrage corrige** :
+- **au dégel, le tableau saute sans rien demander** : dégelé sur la diapo 7 où rien n'était dévoilé, **la classe a vu un écran vide** ; aucune garde nulle part ;
+- **le zoom coupe la diapo** : réglette à 4 → 19 écrans au lieu de 18, **et le dévoilement remis à zéro** (la classe perd ce qu'elle voyait) ; à 0, recollé ;
+- **une réponse écrite n'apparaît pas au tableau**, ni pendant la frappe, ni après Entrée, tant que le bloc n'a pas été dévoilé deux fois à la flèche ;
+- **le T-5 demande le sort des activités à la fin de l'heure** (tu l'avais interdit fin août), **en codes** (« litt-036 · c4-lire-02 ») ;
+- **ce qui est enregistré est un état, pas un journal** : rien n'est horodaté, ◀ et le zoom effacent ;
+- **le récit dit « le professeur »** et les initiales ;
+- la palette pose une prise après avoir dit « aucun élève » ; la copie de classe se fait en bloc au lancement.
+
+**Ce qui n'existe pas, et que le cadrage ajoute** : les deux gardes ; le journal du tableau ; les pages, la loupe, le zoom de vue ; la frontière d'heure, le bilan de séance et sa coche ; le travail à faire en un clic, la réserve en encart, « pas le temps », les décisions de fin de séance ; « retirer de l'heure » et le clic droit de classe ; les notes (présentateur, au fil de l'eau) et les commentaires ; l'appel dans le flux avec heures et raisons ; « ce qui s'est passé », les notes versées, le mot pour l'absent, la relecture de séance.
+
+**Ce que je n'ai pas pu jouer** : le tableau distant sur un second appareil, la reprise après coupure, une séance sur deux créneaux, le clic droit en classe (ma cible n'a pas pris), les images réelles.
+
+Rien n'est déposé comme cadrage : ce rapport ne contredit aucune règle écrite, il les fonde. Si tu vois un point où l'existant et le cadrage se contredisent, c'est celui-là qu'on prend en premier.
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

@@ -1,0 +1,16 @@
+classes proposées : ["3E Charles de Gaulle","CLASSE TEST"]
+régime : classe | cours_actif écrit : 1
+après ² : élément actif dans le cadre = INPUT#vif
+après F2 : élément actif = INPUT#vif
+suggestion VIF : → Jules (Entrée)
+PARTICIPATION après 1 : {"JC":[{"id":"b1_5gg0","ecran":0,"act":"Analyse d'images : la routine","ou":"Analyse d'images : la routine · consigne","h":"10:12","type":"participe","note":"","ts":1788855120000}]}
+palette ouverte ? oui (flex)
+suggestion palette : Aucun élève avec ces initiales.
+PARTICIPATION après palette 2 : JC:1 ZP:1
+focus revenu ? LI 0.et.0
+noms cliquables dans le panneau : ["EA","GA","EB","CB","TB"]
+historique ouvert : true | EA — 0 prise de parole NOTER UNE PRISE DE PAROLE ICI : a participé a proposé une piste on y reviendra avec lui Ces notes ne partent jamais au tableau. Elles rejoignent le profil de l'élève.
+fenêtre du tableau : ouverte
+modale qui au tableau : true | 2 élèves sur 29 ont participé Jules · Zélia il reste 27 élèves à passer
+écritures au faux hub : 11 — PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/part ; PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/scene ; PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/scene ; PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/scene
+erreurs JS : []

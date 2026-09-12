@@ -1,0 +1,40 @@
+{
+ "A0-mur": "ANALYSE D'IMAGES : LA ROUTINE • Observe, discute, fais une hypothèse sur le Romantisme. Étape 1 : J'observe les images en silence (5 min).",
+ "A1-pilote-gele": {
+  "i": 6,
+  "act": "Les hypothèses de la classe",
+  "rev": 0,
+  "vues": [
+   0
+  ],
+  "gele": true
+ },
+ "A1-mur-gele": "ANALYSE D'IMAGES : LA ROUTINE • Observe, discute, fais une hypothèse sur le Romantisme. Étape 1 : J'observe les images en silence (5 min).",
+ "A2-mur-degele": "",
+ "A2-question": "aucune question au dégel",
+ "B-mur-html": "spot-on | null",
+ "B-pilote-li": "spot-on | ",
+ "C0-etat": {
+  "i": 7,
+  "act": "Question-bilan",
+  "rev": 1,
+  "vues": [
+   0
+  ],
+  "gele": false
+ },
+ "C1-mur-pendant-frappe": "PAS visible au mur pendant la frappe",
+ "C2-mur-apres-entree": "pas visible après Entrée",
+ "C2-etat": {
+  "i": 7,
+  "act": "Question-bilan",
+  "rev": 1,
+  "vues": [
+   1
+  ],
+  "gele": false
+ },
+ "D0-vignette-classe": "col vignettes",
+ "D1-menu": "aucun menu",
+ "E-modales": []
+}

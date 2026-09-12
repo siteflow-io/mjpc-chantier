@@ -1,0 +1,116 @@
+{
+ "regime": "classe",
+ "tete-classe": "EN CLASSE — 3E Charles de Gaulle · lancée 10:12 · fin 11:02 · 45 min utiles · copie de ma préparation ■ Clore la séance 📅 Emploi du temps Séance jouée avec 3E Charles de Gaulle (copie du 10:12:00 AM). déroulé intègre · bit pour bit ● session 📺 Ouvrir la vue ",
+ "tableau-ouvert": true,
+ "apres-3-devoile": {
+  "i": 0,
+  "n": 18,
+  "rev": 2,
+  "vues": [
+   1
+  ],
+  "gele": false,
+  "iz": 1
+ },
+ "mur-apres-3": "ANALYSE D'IMAGES : LA ROUTINE • Observe, discute, fais une hypothèse sur le Romantisme. Étape 1 : J'observe les images en silence (5 min).",
+ "apres-revoile": {
+  "i": 0,
+  "n": 18,
+  "rev": 2,
+  "vues": [
+   0
+  ],
+  "gele": false,
+  "iz": 1
+ },
+ "apres-va4": {
+  "i": 3,
+  "n": 18,
+  "rev": 0,
+  "vues": [
+   0
+  ],
+  "gele": false,
+  "iz": 1
+ },
+ "mur-apres-va4": "",
+ "question-avant-va": "aucune (va() est direct)",
+ "gel": {
+  "i": 3,
+  "n": 18,
+  "rev": 0,
+  "vues": [
+   0
+  ],
+  "gele": true,
+  "iz": 1
+ },
+ "mur-pendant-gel": "",
+ "pilote-pendant-gel": {
+  "i": 6,
+  "n": 18,
+  "rev": 0,
+  "vues": [
+   0
+  ],
+  "gele": true,
+  "iz": 1
+ },
+ "mur-apres-degel": "",
+ "lumiere-mur": [],
+ "apres-zoom-4": {
+  "i": 0,
+  "n": 19,
+  "rev": 2,
+  "vues": [
+   0
+  ],
+  "gele": false,
+  "iz": 4
+ },
+ "mur-apres-zoom": "ANALYSE D'IMAGES : LA ROUTINE • Observe, discute, fais une hypothèse sur le Romantisme.",
+ "apres-dezoom": {
+  "i": 0,
+  "n": 18,
+  "rev": 2,
+  "vues": [
+   0
+  ],
+  "gele": false,
+  "iz": 0
+ },
+ "chrono-mur": "07:00",
+ "champs-editables-question": [
+  "SPAN act",
+  "P 0.q",
+  "SPAN 0.i.0",
+  "SPAN 0.r.0"
+ ],
+ "mur-pendant-frappe-reponse": "la réponse N EST PAS au mur pendant la frappe",
+ "mur-apres-entree": "toujours pas au mur après Entrée",
+ "etat-question": {
+  "i": 7,
+  "n": 18,
+  "rev": 0,
+  "vues": [
+   1
+  ],
+  "gele": false,
+  "iz": 0
+ },
+ "etape-grisee-editable": {
+  "editable": true,
+  "classe": "pas apres"
+ },
+ "menu-clic-droit-classe": "aucun menu visible",
+ "champ-notes": false,
+ "absents-pilotage": false,
+ "appoint-comp": [
+  "litt-036"
+ ],
+ "relecture": "Ce récit se recompose tout seul à partir du déroulé. Le figer pour le corriger 📋 Copier pour École Directe — contenu de séance 📋 … travail à faire Ce qu'on a fait aujourd'hui 3E Charles de Gaulle · Poésie et peinture au XIXe siècle (proposition), Poésie et peinture : le Romantisme en question · mardi 8 septembre Cette heure a commencé à 10 h 12 et s'est terminée à 12 h 02. ANALYSE D'IMAGES : LA ROUTINE À 10 h 12, la consigne était : « Observe, discute, fais une hypothèse sur le Romantisme. »",
+ "papier": "Papier — ce qui s'imprime pour le cahier CLASSE3E Charles de Gaulle CHAPITREPoésie et peinture au XIXe siècle (proposition) SÉANCEPoésie et peinture : le Romantisme en question Ce qu'on a fait aujourd'hui À relire — mercredi 9 septembre Cette heure a commencé à 10 h 12 et s'est terminée à 12 h 02. A",
+ "cloture": [],
+ "ecritures-hub": 29,
+ "erreurs": []
+}

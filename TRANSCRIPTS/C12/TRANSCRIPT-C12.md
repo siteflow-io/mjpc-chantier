@@ -3054,3 +3054,46 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 79 — Paul
+
+Texte de Paul, mot pour mot :
+
+> il faut que tu regardes l'existant et son vrai fonctionnement actuel.
+
+---
+
+## TOUR 79 — Claude (conscience n°12)
+
+Geste joué (banc `pieces/T79-vif.mjs`, journal `pieces/T79-vif-journal.txt`) : page de production, faux hub, admin + connexion prof, atelier → Modifier → Déroulé → classe 3E Charles de Gaulle → « Lancer la séance » (régime classe, cours_actif écrit au faux hub) ; ² et F2 → focus `#vif` ; « cj » → « → Jules (Entrée) » ; 1 → PARTICIPATION JC (type « participe », écran 0, « consigne », 10:12) ; Maj+Espace → palette ouverte, « ze » → « Aucun élève avec ces initiales » puis 2 → prise posée pour ZP (Zélia) — incohérence message / action ; focus revenu sur `LI 0.et.0` ; clic sur un nom du panneau → historique « EA — 0 prise de parole », motifs réels « a participé / a proposé une piste / on y reviendra avec lui », note « pourquoi (facultatif — pour toi seul) — Ces notes ne partent jamais au tableau. Elles rejoignent le profil de l'élève » ; fenêtre du tableau + « qui a participé » → « 2 élèves sur 29 ont participé — Jules · Zélia — il reste 27 élèves à passer » ; premier essai à 15:10 → la modale de fin d'heure actuelle (T-5) capturée. Captures `pieces/T79-vif-00-modale-fin-d-heure-actuelle.png`, `T79-vif-02-apres-1.png`, `T79-vif-03-palette.png`, `T79-vif-04-historique.png`, `T79-vif-05-qui-au-tableau.png`. Zéro erreur JS. Rien déposé hormis ce transcript et ses pièces.
+
+Réponse mot pour mot :
+
+Joué, cette fois — pas lu. La page de production, la 3E Charles de Gaulle, la séance lancée en classe (faux hub, heure figée à 10:12), et les gestes un par un. Captures jointes.
+
+**Ce qui marche, tel que je l'ai vu**
+- **² et F2** amènent le curseur dans le champ « initiales — puis 1/2/3, note, Entrée », de n'importe où. Vrai.
+- **Le VIF** : « cj » → « → Jules (Entrée) » ; **1** pose la prise : Jules, « a participé », sur « Analyse d'images : la routine · consigne », à 10:12 ; le panneau dit « posé : JC ✕ (Ctrl+Z) » ; c'est écrit au hub (`…/part`).
+- **Les trois motifs réels** ne sont pas ceux que j'avais mis dans la maquette : **« a participé » (1), « a proposé une piste » (2), « on y reviendra avec lui » (3)** — le troisième est une alerte pour l'élève, pas une qualité d'intervention. Je corrige la maquette et le cadrage.
+- **La note « pourquoi (facultatif — pour toi seul) »** existe, avec cette phrase sous la fiche : « Ces notes ne partent jamais au tableau. Elles rejoignent le profil de l'élève. » — donc elle sert au profil longitudinal : **elle reste**, ma question d'hier tombe.
+- **L'historique** : un clic sur un nom du panneau ouvre « EA — 0 prise de parole » et permet d'en noter une ; les prises s'y corrigent et s'y suppriment.
+- **« Qui a participé »** au tableau : « 2 élèves sur 29 ont participé — Jules · Zélia — il reste 27 élèves à passer », prénoms réels.
+- **La palette Maj+Espace** surgit bien en surimpression, le curseur revient exactement où il était (l'étape 1, vérifié).
+
+**Ce qui ne marche pas, vu**
+- **La palette contredit le VIF** : « ze » → la palette affiche « Aucun élève avec ces initiales », mais la touche **2** pose quand même une prise pour Zélia. Le message et l'action ne regardent pas la même liste (la palette attend « ZP », le VIF accepte le début du prénom). Un professeur qui lit « aucun élève » et appuie quand même ne sait pas ce qu'il a posé.
+- **La modale de fin d'heure d'aujourd'hui** (elle a surgi à mon premier essai, l'heure figée hors du créneau) : « Ton cours devait finir à 11:02. Tu es allé 253 minutes au-delà… 17 activités ne sont pas jouées — décide de leur sort », et sous chaque activité **des codes** — « litt-036 · litt-037 · c4-lire-02 · tr-personne-02 » — contre ta règle du 22/08 ; puis les quatre boutons. Tu ne l'avais jamais vue : elle est en pièce.
+
+**Ce que ça change à ce que je te proposais**
+- Les motifs sont les tiens : 1 · 2 · 3 = a participé · a proposé une piste · on y reviendra avec lui. Écrire une réponse reste une prise à part (« réponse »), sans double saisie (4.4).
+- La palette et le VIF **cherchent dans la même liste, de la même façon** (initiales *ou* début du prénom, comme le VIF), et **ce qui est affiché est ce qui sera posé** — jamais « aucun élève » suivi d'une pose.
+- La note « pour toi seul » reste, et elle va dans la structure nommée du profil (11b.5), comme le site le promet déjà.
+- Le coût au T-5 se dit en libellés, jamais en codes (cadrage 3, 0.2) — c'est déjà écrit, la capture montre pourquoi.
+
+Rien n'attend ton mot ici : c'est de la lecture. Point suivant de la file : **les blocs en profondeur** (marques sur image, schémas, fiche annotée par la classe, rappel, image collée) — je les joue aussi avant de t'en parler.
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

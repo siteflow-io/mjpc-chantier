@@ -3010,3 +3010,47 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 78 — Paul
+
+Texte de Paul, mot pour mot :
+
+> mets tout à jour et réglons tout ce qui est en attente de mon mot. Puis passons à la suite.
+
+(Date : samedi 12 septembre 2026.)
+
+---
+
+## TOUR 78 — Claude (conscience n°12)
+
+Écritures faites, vérifiées bit à bit : au sas, `DEROULE/CADRAGE-3-LES-NOTIONS.md` déposé (commit `2068f85ed33d`, corps identique à la version soumise au tour 76) et `DEROULE/CADRAGE-2-LA-RELECTURE.md` (1.6 renvoie au cadrage 3, commit `011e5f239dc0`) ; en production, `docs/MJPC6-DETTES.md` (n°12 · 14 à 19, commit `da82fcb9957f`), `docs/MJPC6-journal.md` (entrée 09 → 12/09, commit `13978e23dbcb`), `docs/MJPC6-OU-TROUVER-QUOI.md` (ajouts du 12/09, commit `4c8b2a325bf5`). Lectures pour la suite : `_drVifInstaller` L16382, `_drVifAller` L16499 (² / F2), `_drPaletteOuvrir` L16517, `_drPaletteBrancher` L16623 (Maj+Espace), `_drInitialesDe` L16315, `_drPrenomsDeLaClasse` (collisions suffixées), moteur `histoire` L1099, `ouvrirPart` L2269, `corrigePart` L2299, `supPart` L2298, `allerRep` L2316, `posePart`, `quiParle` L2505, `peintQui` L2510.
+
+Réponse mot pour mot :
+
+**Tout est à jour, vérifié bit à bit** : le cadrage 3 déposé (validé par ton mot d'aujourd'hui), le cadrage 2 y renvoie ; le registre a ses entrées n°12 · 14 à 19 (les cadrages, la v9a et ses bugs, l'appoint mal lu, les dettes de la production trouvées en cadrant, les deux préalables, un accroc de méthode) ; le journal a l'entrée du 9 → 12 septembre ; « Où trouver quoi » dit où sont les trois cadrages, la v9a, ce que tu as dit fin août, et les préalables. Rien n'est promu. Plus rien n'attend ton mot.
+
+**La suite — la mise en commun en entier.** Lu, pour la première fois complètement : le VIF, la palette, l'historique, les collisions. Voilà ce qui existe et ce que j'en fais, mis en tension avec ce qu'on a cadré (4.2, 4.4, 4.7 ; le journal ; les prénoms du récit).
+
+**Ce qui existe aujourd'hui**
+- **Le VIF** (« la décharge cognitive du direct ») : un champ en tête du panneau ; taper les initiales ou le début du prénom ouvre l'élève ; 1, 2, 3 posent le motif ; une note facultative « pour toi seul » ; Entrée pose ; le champ revient vidé. Il se rejoint **d'un seul appui, de n'importe où : ² ou F2**, ou / hors saisie. Le geste précis (question, fiche, page) est noté avec la prise de parole.
+- **La palette Maj+Espace** (« la touche de Paul ») : d'où que vienne le geste — en train d'écrire dans une consigne, dans une réponse au tableau, ou nulle part —, elle surgit en surimpression : initiales en grand, la suggestion (« → Zélia — 1/2/3, ou note puis Entrée »), Tab pour la note ; **le curseur revient exactement là où il était**, réponse en cours comprise ; aucun dévoilement ne part ; n'existe qu'en classe.
+- **Les initiales** : prénom + nom (« ZP »), et **deux élèves aux mêmes initiales reçoivent un chiffre** (« ZP », « ZP2 »), fabriqué à chaque chargement de la classe.
+- **L'historique d'un élève** : ses réponses retenues *et* ses prises sans réponse, en cliquant son nom ; **corriger** un motif ou une note, **supprimer** une prise, **aller à la réponse** dans la diapo.
+- **« Qui a participé » au tableau** : les prénoms réels de ceux qui ont parlé, jamais quand le tableau est gelé.
+
+**Ce que la base saine reprend tel quel** (à citer dans le mandat) : le VIF et ses touches (² / F2 / la palette Maj+Espace), le retour du curseur à l'endroit exact, les motifs 1/2/3, la note pour toi seul, l'historique, corriger / supprimer / aller à la réponse, les prénoms au tableau — jamais gelé.
+
+**Où ça télescope, et ce que je propose**
+1. **Contre « écrire une réponse dévoile et compte comme prise de parole » (4.2, 4.4)** : aujourd'hui une réponse écrite et une prise de parole sont deux saisies ; demain, écrire une réponse **est** une prise de parole (motif « réponse »), sans double saisie ; le VIF et la palette servent aux prises **sans** réponse écrite (« a répondu à l'oral », « a proposé », « a lu ») — les motifs 1/2/3 restent ceux du site. Une seule liste, dans le journal.
+2. **Contre les prénoms du récit (cadrage 2, 1.5 bis)** : les initiales suffixées « ZP2 » sont un artefact de saisie ; **ce qui est enregistré, c'est l'élève**, et deux élèves aux mêmes initiales se départagent au moment de taper (la liste des candidats, comme dans la maquette) — le suffixe disparaît, le prénom fait le récit. Sur le tableau, la réponse porte les initiales telles que tapées.
+3. **Contre le gel** : la palette et le VIF fonctionnent pendant le gel (ce sont des saisies, pas des publications) ; « qui a participé » au tableau ne se met pas à jour tant que le gel dure — cohérent avec 3.1.
+4. **Contre l'absent** (11 bis) : un absent ou un parti n'est pas proposé par le VIF ni par la palette ; marqué présent, il l'est.
+5. **Contre le journal** : chaque prise de parole est une ligne de saisie avec l'élève, le motif, la note, l'heure et la diapo au tableau (3.5) ; corriger ou supprimer laisse une trace (4.7).
+
+**Une seule question** : la **note « pour toi seul »** sur une prise de parole (« pourquoi », un mot sur la qualité de l'intervention) — tu t'en sers ? Elle reste, ou elle tombe pour alléger la palette ?
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

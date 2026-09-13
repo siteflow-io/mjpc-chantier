@@ -3246,3 +3246,39 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 84 — Paul
+
+Texte de Paul, mot pour mot :
+
+> c'est quoi la différence entre sondage 900 ms et websockets?
+
+---
+
+## TOUR 84 — Claude (conscience n°12)
+
+Aucune mesure nouvelle (le sondage à 900 ms : `sesTabChercherCours` L17197 et le sondage de scène lus au tour 20 ; la décision websockets du 25/08 au registre). Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Deux façons pour l'ordi de classe d'apprendre que ton pilotage a changé quelque chose :
+
+- **Le sondage toutes les 900 ms** — c'est ce qui existe : l'ordi de classe **demande** au hub, toutes les 0,9 seconde, « y a-t-il du nouveau ? », et redessine si oui. Comme regarder sa boîte aux lettres toutes les secondes.
+- **Les websockets** — le hub **prévient** l'ordi de classe à l'instant où quelque chose change, sur une connexion qui reste ouverte. Comme une sonnette.
+
+Ce que ça change, concrètement :
+- **Le délai** : avec le sondage, jusqu'à une seconde de retard entre ton geste et le tableau ; avec la sonnette, un dixième de seconde. Pour dévoiler une étape, une seconde ne se voit pas. Pour **la réponse au fil de la frappe**, ça se voit : en sondage, le tableau reçoit les mots par saccades d'une seconde ; en sonnette, presque à la lettre.
+- **Le coût pour le hub** : le sondage, c'est environ 4 000 demandes par heure de cours, la plupart pour rien ; la sonnette, une seule connexion. Le hub gratuit compte les deux, différemment ; ni l'un ni l'autre ne le dépasse pour un professeur.
+- **La solidité** : le sondage marche partout, sans rien d'autre que ce que le site a déjà, et se remet seul après une coupure. La sonnette demande une bibliothèque en plus dans la page (une centaine de kilo-octets), et **le réseau du collège peut la bloquer** (ce genre de connexion passe parfois mal les filtres d'établissement) — il faut alors retomber sur le sondage.
+
+Ce que je te recommande, en pesant que le tableau distant est ton secours quand Win+K ne marche pas, pas ton usage de tous les jours :
+- **Première livraison : le sondage, gardé**, avec un réglage : **toutes les 300 ms pendant que tu écris**, 900 ms sinon — la frappe devient lisible, sans dépendance nouvelle ni risque réseau.
+- **La sonnette, en livraison à part, plus tard**, avec retour automatique au sondage si elle ne passe pas — quand le reste tient.
+
+Ton choix : **le sondage réglé maintenant, la sonnette plus tard** — ou la sonnette dès le mandat, en acceptant le risque du réseau du collège ?
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

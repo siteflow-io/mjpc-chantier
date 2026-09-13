@@ -3413,3 +3413,38 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 89 — Paul
+
+Texte de Paul, mot pour mot :
+
+> oui ça m'arrive. Et d'ailleurs, il faut une garde pour les fiches: en effet, avec le prompt actuel, une instance peut créer une diapo de fiche sans être empêchée, ce qui casse tout. et ça devrait d'ailleurs être le cas pour tous les objets du diaporama: un objet doit avoir une garde, afin de ne pas être détourné par une instance. Et cela me permettra très vite d'identifier les manques de l'éditeur. D'ailleurs, une instance a déjà fait un rapport assez complet sur les manques de l'éditeur actuel. Il faut que tu le retrouves: c'est celle qui a travaillé sur le chapitre poésie et peinture de 3e il me semble.
+
+---
+
+## TOUR 89 — Claude (conscience n°12)
+
+Lectures : sas `CONSULTANT/CHAPITRE-1/LISEZ-MOI.md` § « L'éditeur du site — les gestes empêchés », `registre-chapitre-3e.md` (audit des blocs fiche, correction de fond des types, dette 29, dette 30, amendement du 26/08, fin de chantier), `retro-ingenierie-prompt-chapitre.md` (règles 23, 64, 68), `AMENDEMENT-trous-du-prompt.md` (listé). Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+**Retrouvé.** C'est le consultant du chapitre « Poésie et peinture » (25-26/08), au sas, `CONSULTANT/CHAPITRE-1/` : `LISEZ-MOI.md` § « L'éditeur du site — les gestes empêchés », le `registre-chapitre-3e.md` (dettes 25, 29, 30 et l'amendement du 26/08), `AMENDEMENT-trous-du-prompt.md`, et la `retro-ingenierie-prompt-chapitre.md` (76 règles). Ce qu'il dit des manques, en clair :
+- **dette 29** — pas de bloc « texte suivi » (un titre, une phrase, quelques lignes) : le consultant a mis onze écrans en `consigne` faute de mieux, et ta phrase est citée : « c'est un trou du site, pour ce chapitre on prend le format consigne, tant pis » ; l'amendement du 26/08 rétrécit la dette (neuf de ces écrans devaient être des schémas — cinq formes existent, pas une), mais le trou reste : **un bloc texte manque** ;
+- **dette 30** — **aucun bloc ne sait afficher une page** : la frise interactive du XIXe siècle (HTML, 17 objets aux flèches) s'ouvre à la main depuis la colonne des documents ; « ce qu'il faudrait : un bloc `page`, pendant du bloc `image`, même champ d'adresse » ;
+- **dette 25** — les feuilles ne portent pas d'objets graphiques (hors classe, je la laisse) ;
+- le piège de **l'adresse relative** des images (le site ajoute la base, l'adresse complète se double) ; **le prompt ne dit pas quand employer `fiche` plutôt que `schema`**, et l'instance a inventé une règle que tu as arrêtée net ; **« fiche » désigne à la fois un produit du site et un type de bloc**, rien ne les relie ; et ta phrase-cadre : *« la question, c'est que le prompt permette à l'instance de créer sans avoir deroule.html sous les yeux »*.
+
+**Ouvrir un document au tableau — oui, donc on cadre, et c'est la dette 30.** Deux gestes, mis en tension :
+- **préparé** : un **bloc « page »** dans une diapo (même champ d'adresse que l'image ; la frise du XIXe siècle en est le premier cas) ; au tableau, la page s'affiche dans le cadre ; **▶ et ◀ du pilotage vont à la page** (« étape suivante » de la frise), un seul geste pour toi ; l'état du tableau devient « page + étape » (le gel fige l'étape, le journal note « frise, étape 9 ») ; l'ordi de classe charge la page lui-même et reçoit l'étape ;
+- **imprévu** : ⋯ → **« Montrer un document du chapitre »** — la liste des documents de la séance (Drive, PDF, page), un clic le projette ; c'est une publication, journalisée (« document *…* montré de 10:31 à 10:38 ») ; le récit dit « on a projeté *…* ».
+Contre l'immuabilité : une page est un document extérieur (mjpc-medias) ; le journal fige son adresse et son étape, pas son contenu — si tu changes la frise après coup, le récit ne le sait pas. Je l'écris tel quel.
+
+**La garde des objets — ta règle, et elle change le cadrage 4.** *Un objet du diaporama ne peut pas être détourné par une instance* : chaque type (consigne, question, fiche, schéma dans ses cinq formes, image, page, texte, bilan, réactivation) a **un contrat** — ce qu'il doit contenir, ce qu'il ne peut pas être —, et ce contrat est **tenu à trois endroits** : le prompt (l'instance le connaît sans avoir le moteur sous les yeux), la validation du JSON à l'import (refus avec le motif, jamais un contournement silencieux — règle 23 du consultant), et l'éditeur (le formulaire ne propose que ce que le contrat permet). Exemples : **une fiche n'existe que liée à une feuille du chapitre** — sinon refus ; un bilan est unique et dernier ; un schéma respecte le format de sa forme ; une image a une adresse relative qui existe ; une page une adresse HTML. Et quand **aucun objet ne convient**, l'instance **déclare un manque** au lieu d'en tordre un — c'est ainsi que les manques de l'éditeur se voient.
+
+Tout ça — les objets, leurs contrats, le bloc texte, le bloc page, « montrer un document » — entre au **cadrage 4 · la préparation**, qu'on ouvre maintenant. **Une seule question** : pour la frise projetée, **les flèches de ton pilotage pilotent la page** (c'est ce que je propose), ou tu préfères que la page garde ses propres touches, à cliquer au tableau ?
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

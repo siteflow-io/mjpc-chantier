@@ -3381,3 +3381,35 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 88 — Paul
+
+Texte de Paul, mot pour mot :
+
+> je reviens sur les schémas: une carte mentale devrait occuper par défaut la majeure partie de l'écran, et ça se règle au json d'injection je pense. et ta proposition 5 me semble trop restrictive, du fait justement que la densité doit d'abord être absorbée par l'utilisation de l'espace tableau disponible. Pour le code couleur, je dois pouvoir l'associer à un code sur une diapo, mais facultatif. et la légende doit toujours apparaître si association faite. Pour les docs et feuilles, quelle légitimité auraient -ils pour entrer dans le chantier?
+
+---
+
+## TOUR 88 — Claude (conscience n°12)
+
+Lectures : moteur `schEch` L846 (échelle 0,6-2,4 depuis la taille du texte), boîte fixe 1000 × 560 (L910, 952, 987, 1020) ; l'onglet Documents L1243-1247 (la liste des fiches posées dans les diapos, « aucune fiche posée »). Rien déposé hormis ce transcript (le cadrage 1 sera écrit sur sa réponse).
+
+Réponse mot pour mot :
+
+**Les schémas — corrigé, et tu as raison sur les deux points.** Ce que le moteur fait aujourd'hui : un schéma est dessiné dans une boîte fixe de 1000 × 560, avec une échelle calculée à partir de la taille du texte (`schEch`, 0,6 à 2,4) — d'où la carte des figures de style qui flotte au milieu avec des marges. Les règles, réécrites :
+- **Un schéma seul sur sa diapo occupe par défaut tout le cadre du tableau** (moins l'étiquette et la légende), et **l'échelle se règle dans la donnée du bloc** (le JSON d'injection : « plein » par défaut, ou une valeur) — pas un calcul à partir de la taille du texte.
+- **La densité s'absorbe d'abord par l'espace** : trente nœuds sur tout un tableau, ça se lit. « Trop dense » ne se dit **que si, à pleine surface, le texte des nœuds passe sous le plancher lisible du fond** (5.7) — et là c'est toi qui coupes. La loupe reste, en plus, pour la branche dont on parle.
+Mis en tension : ça s'intègre avec la pagination (un schéma ne se pagine pas, il prend la surface) et avec la loi de taille (le plancher lisible est le même partout).
+
+**Le code de couleurs — facultatif, par diapo, avec sa légende.** Règles :
+- En préparation, une diapo peut porter **une légende de surlignage** (« jaune = à retenir · rose = un piège… »), dans sa donnée, facultative.
+- **Si une légende existe, elle apparaît toujours au tableau** quand la diapo est montrée — un bandeau discret en bas, qui fait partie de l'état du tableau et que la pagination respecte ; sans légende, rien n'apparaît et les couleurs sont libres.
+- Le récit sait la lire : « on a surligné en rose le piège : « … » » quand la légende existe, « on a surligné « … » » sinon (cadrage 2, 1.3).
+
+**Les documents et les feuilles — leur légitimité.** J'ai relu ce que l'onglet « Documents » du moteur faisait : **la liste des fiches posées dans les diapos**, pour les rouvrir en grand d'un clic (« aucune fiche posée » sinon). Ce n'est pas un objet à part : c'est un raccourci vers les blocs fiche — et il est couvert par le volet et le clic sur la fiche. **Les documents du chapitre** (Drive, liens) ne passent jamais au tableau : ils vivent dans l'atelier. **Les feuilles** de l'atelier réutilisent les blocs pour l'impression élève ; la dette « elles n'affichent pas schéma et frise » est une dette d'impression, pas de classe. **Aucun geste de classe ne les touche : ils n'ont pas de légitimité ici**, sauf une, que je te demande : **t'arrive-t-il, en classe, de vouloir ouvrir un document du chapitre au tableau** (un PDF, une page) depuis une diapo ? Si oui, c'est un geste à cadrer ; si non, ils restent hors du chantier.
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

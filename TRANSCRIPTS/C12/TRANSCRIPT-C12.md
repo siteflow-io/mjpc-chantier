@@ -3515,3 +3515,40 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 92 — Paul
+
+Texte de Paul, mot pour mot :
+
+> non une page sans contrat doit être identifiée et une alerte doit me le dire, ainsi que la marche à suivre (dans trois mois, il faudra que j'aie le mode d'emploi). et surtout, une page html doit être tout à fait épisodique, et on devrait pouvoir d'abord se pencher sur l'éditeur pour ajouter un type d'objet, plutot que de chosiir la béquille de la page html. en effet, sinon je suis IA dépendant ad vitam, et ça ne me va pas.
+
+---
+
+## TOUR 92 — Claude (conscience n°12)
+
+Aucune mesure nouvelle (conception ; le dévoilement des schémas en deux temps lu au tour 83 : rev 2 max). Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Pris, et ça renverse l'ordre que j'avais mis : **l'objet natif d'abord, la page HTML en dernier recours** — sinon chaque frise te rend dépendant d'une instance pour la créer, la corriger, la refaire l'an prochain. Ce que ça fixe, mis en tension avec le reste :
+
+1. **Une page sans contrat n'est jamais traitée en silence.** À l'affichage, si la page ne répond pas au pilotage, **une alerte te le dit dans le site, avec la marche à suivre** : ce qui manque (le contrat d'étapes), et **le texte prêt à copier** à donner à l'instance qui l'a faite pour qu'elle l'ajoute. Dans trois mois, tu n'as pas à te souvenir : l'alerte contient le mode d'emploi. C'est la règle des alertes du 25/08 (elle dit quoi faire, pas seulement quoi manque) appliquée aux pages.
+
+2. **La hiérarchie, écrite dans le prompt et dans le site** : 
+   - une instance qui ne trouve pas d'objet pour ce qu'elle veut faire **déclare un manque d'objet** — dans le site, ce manque devient une ligne visible : « objet à ajouter à l'éditeur : *une frise dévoilée poète par poète* », avec le chapitre qui l'attend ;
+   - **c'est toi qui choisis** : attendre l'objet (un mandat court sur l'éditeur), ou, pour cette fois, une page HTML ;
+   - **chaque page HTML est marquée « épisodique »** et compte : le site affiche « 3 pages HTML dans tes chapitres, 3 objets manquants à l'éditeur » — un compteur qui doit tendre vers zéro, pas un catalogue. Une page n'est jamais un modèle pour la suivante.
+
+3. **La frise du consultant n'aurait pas dû être une page** — et le cadrage la rend inutile : le bloc schéma, forme « frise », **se dévoile pas à pas** (un poète à chaque flèche, ses dates, sa citation à la suivante), comme les autres formes se dévoilent branche par branche. Aujourd'hui un schéma ne se dévoile qu'en deux temps (le titre, puis tout) : la base saine le dévoile élément par élément, dans l'ordre de la donnée. C'est le premier « objet à ajouter » du chantier, et il rentre dans le mandat, pas dans une page.
+
+4. **Le mode d'emploi vit dans le site.** Chaque alerte porte sa marche à suivre ; chaque objet de l'éditeur porte son infobulle (ta règle du 03/09) ; et une page « Comment on ajoute un objet » existe dans le panneau prof, pour toi dans trois mois et pour une instance neuve. Rien qui suppose d'aller lire GitHub.
+
+Ce que ça retire de ma réponse d'hier : « une page sans contrat s'affiche fixe » — non : elle s'affiche **et** l'alerte parle ; et la section HTML du prompt commence par « **n'en fais pas** : cherche l'objet, déclare le manque, attends le mot de Paul ».
+
+Le cadrage 4 arrive avec tout ça au prochain tour, entier.
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

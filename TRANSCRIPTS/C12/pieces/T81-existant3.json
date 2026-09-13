@@ -1,0 +1,65 @@
+{
+ "1-etat": {
+  "i": 7,
+  "rev": 1,
+  "vues": [
+   0
+  ],
+  "reps": [
+   ":Une nature immense face à"
+  ]
+ },
+ "1-mur": "QUESTION-BILAN",
+ "2-apres-Entree": {
+  "i": 7,
+  "rev": 1,
+  "vues": [
+   1
+  ],
+  "reps": [
+   ":Une nature immense face à",
+   ":"
+  ]
+ },
+ "2-focus": "SPAN 0.i.1",
+ "3-focus-apres-Tab": "SPAN 0.r.1",
+ "3-etat-pendant-frappe": {
+  "i": 7,
+  "rev": 1,
+  "vues": [
+   1
+  ],
+  "reps": [
+   ":Une nature immense face à",
+   "ZP:Le voyageur est de dos"
+  ]
+ },
+ "3-mur-pendant-frappe": "PAS visible au mur",
+ "3-mur-texte": "QUESTION-BILAN",
+ "4-etat-apres-Entree": {
+  "i": 7,
+  "rev": 1,
+  "vues": [
+   2
+  ],
+  "reps": [
+   ":Une nature immense face à",
+   "ZP:Le voyageur est de dos",
+   ":"
+  ]
+ },
+ "4-mur-apres-Entree": "PAS visible au mur",
+ "5-etat-apres-2e-devoile": {
+  "i": 7,
+  "rev": 2,
+  "vues": [
+   2
+  ],
+  "reps": [
+   ":Une nature immense face à",
+   "ZP:Le voyageur est de dos",
+   ":"
+  ]
+ },
+ "5-mur": "QUESTION-BILAN Qu'ont en commun ces cinq tableaux ? La réponse validée est recopiée dans le cahier, partie cours. Une nature immense face à un homme petit ; l'émotion avant la règle. ZP Le voyageur est de dos"
+}

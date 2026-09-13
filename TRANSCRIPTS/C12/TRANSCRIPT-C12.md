@@ -3136,3 +3136,38 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 81 — Paul
+
+Texte de Paul, mot pour mot :
+
+> tu as vérifié tes captures avant de les livrer?
+
+(Date : dimanche 13 septembre 2026.)
+
+---
+
+## TOUR 81 — Claude (conscience n°12)
+
+Vérification des captures livrées au tour 80 : `T80-ex-03-zoom4.png` juste ; `T80-ex-11-cloture.png` juste ; `T80-ex-09-reponse-mur.png` illisible seule et la mesure derrière était invalide (`T80-ex-09-reponse-pilote.png` montre la frappe partie dans la réponse attendue préparée `0.r.0`). Geste rejoué correctement (`pieces/T81-existant3.mjs`, `T81-existant3.json`) : un ▶ → rev 1, tableau = étiquette seule ; Entrée → nouvelle ligne `0.i.1` / `0.r.1`, « ZP », « Le voyageur est de dos » → pas au tableau pendant la frappe ni après Entrée (vues [2]) ; second ▶ → rev 2, le tableau montre la question, la réponse attendue préparée et la réponse de l'élève. Captures `pieces/T81-ex-12-reponse-eleve-pilote.png`, `T81-ex-12-reponse-eleve-mur.png`, `T81-ex-13-reponse-eleve-mur-apres-2e-devoile.png`. Rapport corrigé : `pieces/T81-RAPPORT-cadrage-contre-existant-corrige.md`. Rien déposé hormis ce transcript et ses pièces.
+
+Réponse mot pour mot :
+
+Non — pas toutes, et j'aurais dû. J'avais regardé la lumière, la clôture, la palette, l'historique, « qui a participé » et la modale de fin d'heure avant de les livrer ; **je n'avais pas regardé les trois que je t'ai données hier en fin de tour** (le zoom, la réponse au tableau, la clôture) ni la relecture et le papier. Vérifiées ce matin, voilà ce qu'elles valent :
+
+- **Le zoom à 4** : juste — on voit « sur plusieurs écrans », la « Suite 1 » avec les étapes 4 et 5, l'étape 3 coupée en bas de la diapo, et tout en gris (le dévoilement remis à zéro). Elle dit ce que j'ai écrit.
+- **La clôture** : juste — « Tu n'as rien modifié pendant le cours ».
+- **La réponse au tableau : fausse, et la capture le montrait.** Le tableau y est vide avec la seule étiquette « QUESTION-BILAN » — c'est cohérent avec ce que j'affirmais, mais illisible seule ; et la capture du pilote au même instant révèle que **ma frappe était partie dans la réponse attendue préparée** (« Le voyageur est de dosUne nature immense… »), pas dans une réponse d'élève. La mesure ne prouvait rien. L'affirmation, elle, venait de la lecture du code (tour 29), pas du geste.
+
+**Rejoué correctement ce matin**, avec le vrai geste : Entrée en fin de dernière réponse → une nouvelle ligne, initiales « ZP », Tab, « Le voyageur est de dos ». Résultat, mesuré des deux côtés :
+- un seul ▶ : le tableau ne montre que l'étiquette ; **la réponse de l'élève n'y est pas, ni pendant la frappe, ni après Entrée** ;
+- un second ▶ : le tableau montre d'un coup la question, **la réponse attendue que tu avais préparée** — celle qui ne devrait pas se montrer avant la mise en commun — **et** la réponse de l'élève.
+Donc ce que tu décrivais est vrai, et plus grave que ce que j'écrivais : dégriser pour montrer la réponse d'un élève montre aussi la réponse attendue. Le rapport est corrigé (section 4) et redéposé en pièce, avec les captures justes.
+
+**La règle que je m'applique désormais, et qui manquait** : une capture n'est livrée que regardée, et regardée pour ce qu'elle prouve — pas seulement pour ce qu'elle montre. C'est ta règle des preuves (« une preuve dit ce qu'elle contient ») ; je l'avais appliquée aux bancs, pas aux images.
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

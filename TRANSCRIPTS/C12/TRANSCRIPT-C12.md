@@ -3212,3 +3212,37 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 83 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok on y va.
+
+---
+
+## TOUR 83 — Claude (conscience n°12)
+
+Gestes joués (banc `pieces/T83-blocs.mjs`, résultats `T83-blocs.json`) : séance 2 chargée (`atSomAllerEcran(0,1)`), lancée en classe ; schéma index 14 (rev 2, SVG rendu, capture `T83-bl-01-schema.png`), fiche index 15 (carte + « cliquer pour agrandir », `T83-bl-04-fiche.png`), image index 0 (img rendue, `T83-bl-05-image.png`) ; `armeMk`, `ouvrirRappel`, `poseRappel` présents. Non atteints : nœud de schéma (sélecteur), surlignage dans la fiche agrandie. Un faux plantage dû au banc (argument de `va` non passé) identifié et corrigé. Écriture au sas, vérifiée bit à bit : `DEROULE/CADRAGE-1-LA-CLASSE.md` — nouveau §4 bis (mise en commun), §12 (blocs en profondeur), §14 mis à jour. Rien d'autre déposé hormis ce transcript et ses pièces.
+
+Réponse mot pour mot :
+
+Points 1 et 2 fermés, écrits au cadrage 1, déposés, vérifiés bit à bit.
+
+**1 · La mise en commun** (nouveau 4 bis) — repris de l'existant tel que joué : le VIF et ² / F2, les trois motifs réels (a participé · a proposé une piste · on y reviendra avec lui), la note « pour toi seul » qui va au profil, la palette Maj+Espace et le retour exact du curseur, l'historique avec corriger / supprimer / aller à la réponse, « qui a participé » au tableau. Ce qui change : une seule liste pour le VIF et la palette, « ce qui est affiché est ce qui sera posé », la réponse écrite compte comme prise, les absents non proposés.
+
+**2 · Les blocs en profondeur** — joués sur la séance 2 (« L'Albatros »), captures regardées avant de te les donner :
+- **le schéma** « Les figures de style » : rendu en carte, un nœud central, six familles en couleur, les notions en feuilles — ça marche, et c'est beau ;
+- **la fiche** « Le registre lyrique » : une carte titre + définition, « cliquer pour agrandir » ouvre la fiche entière ;
+- **l'image** (Turner) : rendue avec sa légende ; les marques et leur dévoilement existent (`armeMk`) ; **le rappel** existe.
+Ils entrent dans « repris tel quel » (§12) **avec une obligation écrite : l'exécutant les rejoue et le prouve** — parce que trois choses n'ont pas été atteintes par mon banc et ne sont donc pas prouvées : déplacer un nœud du schéma à la main, surligner dans la fiche agrandie, poser et dévoiler des marques sur une image réelle (hors ligne, pas d'image).
+
+**Deux choses vues en passant, pour le registre** : la première diapo de la séance 2 est **déjà coupée en deux** à l'ouverture (« sur plusieurs écrans · Suite 1 ») — la scission automatique agit dès qu'un écran déborde, sans que tu aies touché à rien ; et un défaut de mon propre banc m'a fait croire un instant à un plantage du moteur sur le schéma — c'était moi, pas lui, je le dis pour que le registre ne porte pas une fausse dette.
+
+**Prochain tour, points 3 et 4** : le mode test (je vérifie contre l'existant) et le temps réel du tableau distant — là, une question pour toi : garder le sondage toutes les 900 ms, que tu as jugé acceptable le 25/08, ou passer aux websockets que tu avais décidés le même jour ?
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

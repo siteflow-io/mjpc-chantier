@@ -3345,3 +3345,39 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 87 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok ça me va
+
+---
+
+## TOUR 87 — Claude (conscience n°12)
+
+Lectures : `DEROULE/CADRAGE-INTEGRATION.md` §27 (vocabulaire du tableau vérifié avec Paul) et §49 (arbitrages encore ouverts) ; aucun « plan n°6 » au sas. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+**Points 5 et 6, en une fois.**
+
+**Le vocabulaire du tableau** — vérifié avec toi le 25/08 : *écran de pilotage* (ce que tu vois seul), *tableau* (la surface projetée, nue, gros texte), *tableau autonome* (une propriété : tenir debout seul, garder sa dernière image, ne changer que si le pilotage est présent et dégelé). Depuis, on a dit « la fenêtre du tableau » (Win+K) et « le tableau distant » (l'ordi de classe). Je propose de fixer, dans les mots du site : **le pilotage** · **le tableau** (ce que la classe voit, quel que soit le support) · **la fenêtre du tableau** (Win+K) · **l'ordi de classe** (le tableau distant) — et « autonome » reste une règle, pas un mot affiché. Rien d'autre à trancher.
+
+**Les arbitrages restés ouverts le 25/08**, avec ce que je propose pour chacun :
+1. **Le sort d'une séance close** — tranché depuis : immuable pour la classe qui l'a vue, relue dans la relecture, ce qui restait décidé à sa dernière heure (cadrage 1, §7 et §8). Fermé.
+2. **Les bandes claires au tableau** — le tableau d'aujourd'hui est un fond clair, texte sombre (vu) ; c'est ce qui se lit au vidéoprojecteur. On le garde ; pas de bande, pas de décor.
+3. **Les étiquettes et légendes redimensionnables** — couvert par la taille par bloc (petit / normal / grand, 4.6) et par « texte au tableau » ; pas de poignée à tirer.
+4. **Les types de schémas retenus** — les cinq existent (carte, frise, arbre, cycle, tableau) et marchent : on garde les cinq, sans en ajouter.
+5. **Les cartes trop denses pour un écran projeté** — la carte des figures de style a trente nœuds : du fond de la classe, illisible. Deux règles : en préparation, un schéma trop dense est **marqué « trop dense »** comme une diapo « trop pleine » (5.7), et c'est toi qui le coupes ; en classe, **la loupe** (5.5) grossit la branche dont on parle. Pas de redimensionnement automatique.
+6. **Le code de couleurs du surlignage** — quatre couleurs existent (jaune, vert, rose, bleu) sans signification. Deux choix : un code fixe, le même dans toutes les classes — par exemple **jaune = à retenir · vert = un exemple · rose = un piège · bleu = du vocabulaire** —, que le récit saurait dire (« on a surligné en rose le piège : … ») ; ou libre, sans signification, et le récit dit seulement « on a surligné ». **Ça, c'est toi.**
+
+**Les documents du chapitre et les feuilles de l'atelier** — les documents reliés aux diapos et les feuilles qui réutilisent les blocs ne touchent pas la classe ; je propose de **les laisser hors de ce chantier** (la dette « les feuilles n'affichent pas schéma et frise » reste au registre, telle quelle).
+
+Deux mots de toi suffisent : **le code de couleurs — fixe (lequel) ou libre ?** et **d'accord pour laisser documents et feuilles hors du chantier ?** Le reste s'écrit tel que proposé, sauf objection.
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

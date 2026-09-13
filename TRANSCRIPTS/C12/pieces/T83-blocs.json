@@ -1,0 +1,82 @@
+{
+ "seance": {
+  "n": 18,
+  "types": [
+   "image",
+   "question",
+   "consigne+question",
+   "consigne",
+   "consigne",
+   "question",
+   "question",
+   "question",
+   "consigne",
+   "question",
+   "question",
+   "consigne",
+   "question",
+   "question",
+   "schema",
+   "fiche+question"
+  ]
+ },
+ "index-schema": 14,
+ "schema-etat": {
+  "rev": 2,
+  "vues": 0,
+  "forme": "carte",
+  "noeuds": 0
+ },
+ "schema-mur": "(pas de scene())",
+ "schema-pilote-rendu": {
+  "svg": 1,
+  "schemaEl": null,
+  "enfants": 0,
+  "html": "<span class=\"act\" contenteditable=\"true\" data-p=\"act\">Les figures de style</span><div class=\"sch neuf-vu\" data-s=\"14.0\" data-bloc=\"0\"><svg viewBox=\"-141.76574068513864 -14.900000000000002 1477.7600000000004 831.2400000000002\" preserveAspectRatio=\"none\"><line x1=\"594.5\" y1=\"336.68500000000006\" x2=\"59"
+ },
+ "schema-noeud": null,
+ "index-fiche": 15,
+ "fiche-mur": "(pas de scene())",
+ "fiche-annot": {
+  "annot": "",
+  "mark": false
+ },
+ "fiche-pilote-mark": 0,
+ "image-etat": {
+  "rev": 1,
+  "mk": 0,
+  "ref": "https://siteflow-io.github.io/mjpc-media"
+ },
+ "image-pilote": {
+  "img": 1,
+  "mk": 0
+ },
+ "armeMk-existe": "function",
+ "rappel-existe": {
+  "ouvrirRappel": "function",
+  "poseRappel": "function"
+ },
+ "bouton-rappel": [
+  "+ Écran",
+  "◀",
+  "▶",
+  "❄ Gel",
+  "✦ Mettre en lumière",
+  "✍🏻 À écrire",
+  "G",
+  "S",
+  "✕",
+  "↶ Annuler",
+  "Départ",
+  "Chrono au tableau",
+  "👥 Qui a participé",
+  "⧉ Ouvrir le tableau",
+  "Document analysé",
+  "Illustration",
+  "+ Consigne",
+  "+ Fiche",
+  "+ Question",
+  "+ Schéma",
+  "+ Image"
+ ]
+}

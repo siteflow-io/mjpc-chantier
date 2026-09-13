@@ -3476,3 +3476,42 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 91 — Paul
+
+Texte de Paul, mot pour mot :
+
+> oui très bien. donc ça veut aussi dire que dans le prompt d'injection, il faut qu'il y ait toute une section dédiée à la création de html.
+
+---
+
+## TOUR 91 — Claude (conscience n°12)
+
+Lectures : `mjpcPromptChemin` / `mjpcPromptCharger` L3034-3060 (les prompts sont chargés du hub), hub `site/atelier/prompts` (chapitre 7 120 signes, deroule 2 273, fiche_seance 8 182) ; le prompt `deroule` lu en entier (« cinq types de blocs, aucun autre », schéma `carte` seul, pas de garde fiche, pas de page). Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Oui — et j'ai lu le prompt du déroulé tel qu'il est au hub (`site/atelier/prompts/deroule`, 2 273 signes) : il dit **« cinq types de blocs, aucun autre »**, donne un exemple de chacun, une seule forme de schéma (`carte`), rien sur ce qu'une fiche doit être, rien sur une page, rien sur le HTML. C'est le prompt que suivait le consultant ; ses erreurs y sont écrites d'avance.
+
+**Le prompt d'injection devient un contrat, en trois sections — et il vit au hub, composé par le site, donc c'est du mandat :**
+
+1. **Les objets et leurs gardes** — chaque type avec ce qu'il doit contenir et ce qu'il ne peut pas être : consigne (à l'impératif, étapes) · question (jamais vide ; les réponses attendues à part, jamais dévoilées avec la question) · **fiche : seulement liée à une feuille du chapitre, sinon refus** · schéma dans ses **cinq formes** avec le format de `src` de chacune (carte « Étiquette : a, b », frise « année : événement », arbre par indentation, tableau par `|`, cycle une ligne par étape) et **l'échelle « plein » par défaut** · image (adresse relative dans mjpc-medias, jamais complète) · **texte** (le bloc qui manquait : un titre, quelques lignes — dette 29) · **page** (dette 30) · bilan (unique, dernier) · réactivation (première de son heure) · les notions par diapo, prises dans la taxonomie · l'heure prévue de chaque diapo (6.1). Et la règle du consultant : **quand aucun objet ne convient, l'instance déclare un manque, elle ne tord rien.**
+
+2. **La création de HTML — la section que tu demandes**, pour qu'une instance fabrique une page pilotable sans avoir le moteur sous les yeux :
+   - **quand** : seulement pour ce qu'aucun bloc ne sait faire (une frise animée, un schéma vivant), et après avoir déclaré le manque ;
+   - **le contrat de pilotage** : la page annonce son nombre d'étapes au chargement, reçoit « étape suivante / précédente / aller à n » du pilotage, et répond où elle en est — c'est ce qui fait que **tes flèches la font avancer** et que le gel, le journal et l'ordi de classe la connaissent ; une page sans ce contrat s'affiche fixe, et ▶ passe à la diapo suivante ;
+   - **la forme** : un seul fichier, aucune ressource extérieure, le cadre 16:9 tenu **sans débordement ni défilement à toutes les tailles**, la loi de taille du fond (le plancher lisible), fond clair et texte sombre comme le tableau, rien d'interactif à la souris (tout se pilote aux flèches), pas de commentaire méta, « M. Meney » s'il faut te nommer ;
+   - **les preuves exigées** avant livraison : rendu vérifié à quatre tailles et à chaque étape, un test automatique qui refuse tout débordement, les captures regardées, l'empreinte du fichier en ligne comparée au fichier livré — exactement ce que le consultant a fait pour la frise, écrit noir sur blanc ;
+   - **la déclaration** : l'adresse dans mjpc-medias, l'item de source `html` dans la séance, le bloc `page` dans la diapo avec son nombre d'étapes.
+
+3. **Le mode de travail** : cadrage avant JSON (la règle existante, à rappeler au moment technique, comme le consultant le demandait), et **un manque du site ne se contourne jamais sans ton mot**.
+
+**Mis en tension** : le contrat de la page est **une garde comme les autres** (cadrage 4) — le site vérifie à l'affichage que la page répond, sinon il la traite comme fixe et le dit ; à l'import, il vérifie l'adresse et le nombre d'étapes déclaré ; le prompt, la validation et l'éditeur disent la même chose (tour 89).
+
+Tout ça entre au **cadrage 4 · la préparation**, que je te soumets entier au prochain tour.
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

@@ -3448,3 +3448,31 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 90 — Paul
+
+Texte de Paul, mot pour mot :
+
+> pas compris ta question
+
+---
+
+## TOUR 90 — Claude (conscience n°12)
+
+Aucune mesure nouvelle. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+En clair. La frise du XIXe siècle que le consultant a faite est une page à part, avec ses propres étapes : on appuie sur une flèche, un poète apparaît ; encore une flèche, le suivant — dix-sept étapes.
+
+Quand cette page est projetée au tableau pendant ton cours, il faut bien que quelqu'un appuie sur ces flèches. Deux possibilités :
+- **soit tes flèches habituelles font avancer la page** : tu es dans ton pilotage, tu appuies sur ▶ comme pour dévoiler une étape, et c'est la frise au tableau qui avance d'un poète ; tu ne changes pas de clavier ni d'écran, le gel et le journal marchent pareil ;
+- **soit la page se pilote toute seule** : il faut cliquer dedans, sur le tableau ou sur l'ordi de classe, avec ses propres touches — donc quitter ton pilotage pour la faire avancer.
+
+Je propose la première : **tes flèches, toujours**. Ça te va ?
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

@@ -3282,3 +3282,33 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 85 — Paul
+
+Texte de Paul, mot pour mot :
+
+> non normalement le réseau marche bien. de toute façon avec mon ordi portable je me connecte en partage de connexion sur mon téléphone.
+
+---
+
+## TOUR 85 — Claude (conscience n°12)
+
+Lectures : le mode test M8 L1746-1760 (`M8_TEST`, `M8_TEST_STORE`, « aucune écriture ne part au hub »), `mjpcEcrireRest` (garde du mode test sur PUT/DELETE), `mjpcPutJson` L13540 ; les écritures du déroulé : `_drTraceAuto`, `_drCopieAuto`, `_drEcrireTrame` → `mjpcPutJson` (protégées) ; `sesCoursEcrire`, `sesEmettre` → `sesPut` (fetch direct, non protégé) ; `_drCloreHeureRestee` → fetch direct ; aucune occurrence de `m8TestOn` dans le pont du déroulé ; `edtEnEssai` L17867 (l'EDT lit le mode test). Écriture au sas, vérifiée bit à bit : `DEROULE/CADRAGE-1-LA-CLASSE.md` — 1.3 (websockets + retour au sondage), nouveau 11 ter (mode test), §14 mis à jour. Rien d'autre déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Alors la sonnette dès le mandat — écrit (1.3) : **websockets, et retour automatique au sondage si la connexion ne s'établit pas** (300 ms quand tu écris, 900 sinon). Une précision que je garde en tête sans en faire une question : ton portable est en 4G, mais **l'ordi de classe, lui, est sur le réseau du collège** — c'est lui qui reçoit la sonnette ; si un jour elle ne passe pas là-bas, le retour au sondage prend le relais sans que tu aies rien à faire. Point 4 fermé.
+
+**Point 3 — le mode test, mesuré contre l'existant**, et c'est une dette :
+- ce qui passe par le canal commun (`mjpcEcrireRest`) respecte le mode test : la trace de l'heure, la copie de classe, la trame restent en mémoire et s'évaporent — bien ;
+- mais **le cours actif, la scène du tableau distant et la clôture d'une heure restée ouverte écrivent en direct au vrai hub, même en test** — un tableau distant réel pourrait s'allumer pendant un essai ;
+- et les lectures se font toujours sur le vrai hub : une copie écrite en test n'est pas relue.
+**Règle de la base saine** (11 ter) : **un seul canal, lecture et écriture, pour tout le pilotage**, qui applique le mode test aux deux sens ; en test, rien ne part au hub — ni cours actif, ni scène —, le tableau distant ne reçoit rien (Win+K marche), la classe d'essai de l'emploi du temps est la classe du test, le journal d'une heure de test ne va nulle part. Déposé, vérifié bit à bit.
+
+**Prochain tour, points 5 et 6** : je te liste en une fois le vocabulaire du tableau et les arbitrages restés ouverts le 25/08 (bandes claires, étiquettes redimensionnables, formes de schéma retenues, cartes trop denses, couleurs du surlignage, sort d'une séance close), avec pour chacun ce que je propose ; et les documents du chapitre et les feuilles de l'atelier, que je propose de laisser hors du chantier. Tu tranches en une fois.
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

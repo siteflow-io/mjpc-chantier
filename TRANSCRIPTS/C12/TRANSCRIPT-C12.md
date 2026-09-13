@@ -3312,3 +3312,36 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 86 — Paul
+
+Texte de Paul, mot pour mot :
+
+> pas compris la dette du point 3
+
+---
+
+## TOUR 86 — Claude (conscience n°12)
+
+Aucune mesure nouvelle. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+En clair, avec ton usage.
+
+**Le mode test, c'est la pastille du panneau prof** : quand elle est allumée, tu peux tout essayer — lancer une heure, cliquer, écrire — **sans que rien ne s'enregistre pour de vrai** ; ce que tu fais reste dans la mémoire de la page et disparaît quand tu éteins la pastille. C'est le principe.
+
+**La dette** : dans le déroulé, ce principe n'est tenu qu'à moitié.
+- Ce qui est **bien protégé** : la trace de l'heure, la copie de la classe, ta préparation. En test, elles ne partent pas au hub. Bien.
+- Ce qui **fuit** : quand tu lances une heure en test, le site écrit quand même, pour de vrai, au hub, **« un cours est en cours avec la 3 Franklin »** et **la diapo à montrer au tableau distant**. Conséquence concrète : si l'ordi de la salle est allumé sur l'adresse du tableau pendant que tu fais un essai chez toi, **il affiche ton essai comme un vrai cours**. Et si tu fermes une heure restée ouverte pendant un test, cette fermeture est réelle.
+- Ce qui **ne se relit pas** : ce que tu écris en test reste en mémoire, mais quand le site relit le hub (par exemple pour afficher « heure jouée » dans l'emploi du temps), il lit le vrai hub — donc ton essai n'apparaît pas là où tu voudrais le voir pour vérifier.
+
+**Pourquoi** : le déroulé a deux façons d'écrire au hub — l'une passe par la porte commune du site, qui connaît la pastille ; l'autre (le cours en cours, la scène du tableau) écrit en direct, sans regarder la pastille. Deux portes, une seule gardée.
+
+**Ce que le cadrage impose** (11 ter) : **une seule porte pour tout le pilotage, dans les deux sens** — écrire *et* lire —, qui connaît la pastille. En test : rien ne part au hub, pas même « cours en cours » ; le tableau distant ne voit rien ; ce que tu essaies se relit là où tu l'attends ; et ça se voit à l'écran que tu es en test.
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

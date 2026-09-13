@@ -3171,3 +3171,44 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 82 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Bon que reste t-il? Il faut finaliser ce chantier pour enfin lancer la production.
+
+---
+
+## TOUR 82 — Claude (conscience n°12)
+
+Aucune mesure nouvelle. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Ce qui reste, et comment le finir sans traîner.
+
+**À cadrer encore — sept points, dont quatre se ferment en un tour parce que l'existant marche et qu'on le reprend tel quel :**
+1. **La mise en commun** — jouée (tours 78-79), il ne reste qu'à l'écrire au cadrage 1 : VIF, palette, motifs réels, note pour toi seul, historique, corriger / supprimer, une seule liste et « ce qui est affiché est ce qui est posé ». *Un tour, sans question.*
+2. **Les blocs en profondeur** (marques sur image, schémas, fiche annotée par la classe, rappel, image collée) — je les joue une fois, et s'ils marchent, ils entrent dans « repris tel quel » avec l'obligation pour l'exécutant de les rejouer. *Un tour.*
+3. **Le mode test** — règle simple : le pilotage en test écrit sur la copie de test, comme le reste du site ; je vérifie contre l'existant. *Un tour.*
+4. **Le temps réel du tableau distant et le QR** — un choix : garder le sondage toutes les 900 ms (ça marche, tu l'as éprouvé) ou passer aux websockets décidés le 25/08. *Un tour, une question.*
+5. **Le vocabulaire du tableau et les arbitrages restés ouverts le 25/08** — je te les liste en une fois, tu tranches en une fois. *Un tour.*
+6. **Les documents du chapitre et les feuilles de l'atelier** — je propose de les laisser hors de ce chantier (ils ne touchent pas la classe) ; un mot de toi. *Dans le même tour que 5.*
+7. **La préparation** — le vrai morceau qui reste : l'écran où tu construis (le plan de travail zoomable, les blocs, les frontières d'heure, les notes présentateur, la taille par bloc, « trop pleine » et la coupure à la main, le spiralaire par heure, la répétition qui n'écrit rien, le clic droit complet, les notions). C'est l'éditeur qui plantait : il faut un **cadrage 4** (deux ou trois tours) **et une maquette manipulable** que tu joues.
+
+**Puis, dans l'ordre, sans quoi le mandat n'a pas de matière :**
+- **v9b** (le clic droit de classe, l'appel, les commentaires, la réserve, le T-5 en vignettes, la fin d'heure et de séance, le récit qui se recompose) et **v9c** (la séance sur deux heures, la relecture de séance) — jouées par toi, corrigées ;
+- **la maquette de la préparation** — jouée par toi ;
+- **la séquence de test** que tu rejoueras sur chaque livraison, écrite à partir des maquettes ;
+- **le mandat**, en livraisons courtes, chacune fidèle geste par geste à la maquette validée, avec ses bancs et ses captures ; les premières livraisons peuvent partir dès que la classe (cadrages 1-3, v9a-c) est fermée, pendant qu'on finit la préparation — deux exécutants ne se gênent pas s'ils n'ont pas la même matière.
+
+**En parallèle, à mandater à part dès maintenant** : les attendus de fin d'année au hub, découpés et enrichis — un exécutant peut le faire pendant qu'on cadre la préparation ; sans eux, pas de garde Éduscol.
+
+Compte tenu de ce que tu peux jouer, je propose de commencer aujourd'hui par les points 1 à 6 en trois tours, puis la préparation. **Ça te va, ou tu veux la préparation d'abord ?**
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

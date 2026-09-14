@@ -3639,3 +3639,51 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 94 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ça veut dire quoi une diapo ne se coupe que par mon geste? concrètement je fais comment? par ailleurs la porte d'entrée du déroulé est fastidieuse du côté édition.  Il faudrait que le bouton "modifier" dans l'arborescence des chapitres, s'appelle "éditer dans l'atelier". 1.3. Il faut que le raccourci tab fonctionne pour écrire dans les blocs. 1.4. il va y avoir des télescopages je pense, mais pas sûr, à auditer. 1.5. ok. 1.6. à préciser, je n'ai pas compris. 1.7. pareil, précision demandée. 2.1. un bloc balancé sur une diapo via le clic droit va voir son identité générale changer donc il faut s'assurer que ça ne télescope rien derrière (le récit, les compétences, etc). 4. je me demande s'il ne faudrait pas coder une appli de création de pages. un éditeur comme celui de ppt, avec les blocs, les formes, la mise en forme etc. Dédié à ça. Et que l'éditeur lirai ensuite en objet. à voir. Un objet qui manque aussi, c'est la vidéo. 4.3 il faudra que l'instance ait suffisamment de contexte pour ne pas créer une lecture d'objet qui crash le site, vu que ce sera un chantier unique. 4.6. a priori les documents apparaissent dans le flux des diapos, mais effectivement, il faut que tous les docs soient accessibles en un clic à n'importe quel moment de la séance, et qu'ils soient pilotables (défilables, etc). et se ferment avec une croix, et effectivement le récit garde trace non seulement de l'affichage du document, mais aussi de ce qu'on y a fait. 5 et 6. attention, une instance qui travaille sur un chapitre ultérieur devra aller lire le site afin de savoir où son travail tombe. Cependant, elle ne devra jamais supposer qu'elle a une connaissance complète du site. Elle devra non seulement lire le code, mais également visualiser.
+
+(Date : lundi 14 septembre 2026.)
+
+---
+
+## TOUR 94 — Claude (conscience n°12)
+
+Aucune mesure nouvelle (le rattachement des réponses au rang du bloc : `reps` dans `ECRANS[i].blocs[j]`, lu aux tours 28-29). Rien déposé hormis ce transcript ; le cadrage 4 sera réécrit sur sa réponse.
+
+Réponse mot pour mot :
+
+Point par point, et je corrige le cadrage 4 dans la foulée.
+
+**0.4 — « une diapo ne se coupe que par ton geste », concrètement.** En préparation, quand une diapo ne tient plus au plancher lisible du fond, la colonne de droite dit « trop pleine ». Toi : **clic droit sur le bloc ou l'étape où tu veux couper → « Couper la diapo ici »** ; le site crée une seconde diapo avec ce qui suit (même titre suivi de « (suite) », même heure prévue, mêmes notions), tu ajustes les titres si tu veux. Ou tu retires un bloc, ou tu le mets en « petit ». **Le site ne coupe jamais tout seul, et en classe jamais** — en classe, seule la page change (5.2), la donnée ne bouge pas. Le zoom qui coupait est mort.
+
+**La porte d'entrée** — d'accord : le bouton de l'arborescence des chapitres s'appelle **« Éditer dans l'atelier »**, et il ouvre **directement sur le Déroulé de la séance choisie**, pas sur Structure. Deuxième porte, depuis l'emploi du temps : la case d'une heure à venir → « Préparer », qui arrive au même endroit.
+
+**1.3 — Tab.** Oui : **Tab passe au champ suivant** (l'étape suivante, puis le bloc suivant), **Maj + Tab au précédent**, Entrée crée l'étape suivante (existant). Écrit.
+
+**1.4 — le clic droit complet, à auditer.** Tu as raison de le soupçonner : chaque entrée sera passée contre le reste (identité, récit, notions, heure prévue, bilan et réactivation, copie de classe) **sur la maquette de la préparation**, entrée par entrée, avant le mandat. Je l'écris comme un audit dû, pas comme un fait.
+
+**1.6 — en clair.** Quand tu modifies une diapo en préparation, **le site enregistre tout seul** quelques secondes après ta frappe : pas de bouton, pas d'oubli possible. « Vidé au changement de séance » voulait dire : si tu changes de séance pendant ces quelques secondes, ce qui attendait est **envoyé avant** de changer — rien n'est perdu. Et la modification vaut pour toute classe qui n'a pas encore vu cette diapo (8.2). Je le réécris avec ces mots.
+
+**1.7 — en clair.** Le consultant s'est perdu entre quatre mots : « fiche » (un produit du site : la fiche notion imprimable), « fiche » (un bloc dans une diapo), « item » (un document du chapitre), « écran » (une diapo). Je propose de fixer, à l'écran : **diapo** · **bloc** · **document** (pour item) · **feuille** (pour le produit imprimable) · **fiche posée** (le bloc qui montre une feuille). Ce sont des mots à toi ; corrige-les.
+
+**2.1 — un bloc ou une diapo déplacés au clic droit.** Vrai télescopage possible, et la règle qui le ferme : **chaque diapo et chaque bloc portent une identité stable** ; **déplacer ne change pas l'identité, dupliquer en crée une nouvelle** ; et **tout ce qui s'y rattache — réponses, annotations, prises de parole, notions, décisions — se rattache à l'identité, jamais à la position**. Aujourd'hui les réponses d'une classe sont rattachées au *rang* du bloc (`reps[0]`) : un bloc monté au-dessus d'un autre échangerait leurs réponses. Ça tombe. Et ce qui a été montré à une classe est figé de toute façon (8.1) : un déplacement en préparation ne vaut que pour la suite.
+
+**4 — une appli de création de pages.** Je le mets en tension avant de dire oui : un éditeur de pages « comme PowerPoint » (blocs, formes, mise en forme libre), lu ensuite comme objet, c'est **un second éditeur** avec ses propres gardes, ses propres bancs, et le risque de recréer ce que tu quittes — la position libre qu'on a écartée (tour 39). Ce que ça achèterait : la frise, les schémas vivants, sans instance. Ce que les objets natifs peuvent déjà acheter : les cinq formes de schéma dévoilées pas à pas, la mise en page à deux colonnes, l'image annotée. **Je propose : pas dans ce chantier** ; on le note comme chantier possible, à décider quand les objets natifs auront montré leurs limites — et le compteur de pages HTML dira s'il est nécessaire. **La vidéo, oui, c'est un objet qui manque** : je l'ajoute (adresse dans mjpc-medias, ou un lien ; les flèches lancent et arrêtent ; le journal note « vidéo lue de … à … »).
+
+**4.3 — un nouvel objet ne fait jamais crasher le site.** Deux règles : **tout nouvel objet passe par un mandat** (bancs, fidélité, « le pilotage ne se tait jamais ») — jamais par une instance qui l'invente dans un chapitre ; et **un objet inconnu ou mal formé s'affiche comme « objet non lisible »** avec une alerte et la marche à suivre, jamais une page blanche. L'instance qui crée un objet a le contexte par le prompt (§5) et par la règle 5-6 ci-dessous.
+
+**4.6 — les documents.** Pris tel quel : ils apparaissent dans le flux des diapos (leurs items), **et** tous les documents de la séance sont **accessibles en un clic à tout moment** (⋯ → Documents, ou une touche) ; **pilotables** (défiler, les pages d'un PDF, les étapes d'une page, aux flèches) ; **se ferment d'une croix** (retour à la diapo) ; et **le journal garde l'affichage et ce qu'on y a fait** (page 3 vue de 10:31 à 10:34, étape 9) — le récit dit « on a projeté *…* (pages 1 à 3) ».
+
+**5 et 6 — l'instance d'un chapitre ultérieur.** Écrit en règle du prompt : *avant de produire, l'instance charge le site, joue le déroulé d'une séance existante, et lit le code de l'objet qu'elle vise ; elle ne suppose jamais qu'elle connaît le site en entier ; lire ne suffit pas, elle visualise.* Et elle déclare ce qu'elle n'a pas pu voir.
+
+Je réécris le cadrage 4 avec tout ça (dont la vidéo, l'appli de pages notée « plus tard », l'audit du clic droit, les identités). **Deux mots de toi** : les mots de 1.7 te vont, ou tu en donnes d'autres ? Et l'appli de pages : « plus tard », comme je le propose ?
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

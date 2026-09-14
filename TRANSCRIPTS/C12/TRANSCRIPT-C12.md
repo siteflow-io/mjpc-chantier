@@ -3687,3 +3687,56 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 95 — Paul
+
+Texte de Paul, mot pour mot :
+
+> attention sur la porte d'entrée: le bouton modifier actuel est disponible aussi sur le chapitre lui même, dans l'arborescence, donc celui ci doit ouvrir le chapitre. Pour les séances, effectivement ça ouvre la séance. et oui pour la case de l'edt. D'ailleurs, est ce qu'en fonction de la classe, dans le bouton "préparer", j'atteris bien là où j'en suis avec chaque classe? Et il faudra aussi qu'à partir de là je puisse avoir une review de tout ce qui a été fait depuis le début du chapitre, avec telle ou telle classe (ça entre dans le profil longitudinal classe, et c'est là où ça sera, nativement). 1.4 . l'audit est à faire maintenant sinon ça devient une dette. 1.6 ok. 1.7. fiche posée ne veut rien dire. 2.1. oui, le rang est à abolir totalement. 4. ok pour l'app de création de pages, chantier à part. et pour la vidéo, tu proposes quelque chose qui a l'air intéressant, mais il faut cadrer plus, et dès maintenant.4.6 un document affiché, que peut-on y faire dedans et qu'est ce qui sera enregistré concrètement? 5 et 6, dans le prompt, l'instance doit demander à l'utilisateur les json des chapitres précédents. cela lui donnera des modèles.
+
+---
+
+## TOUR 95 — Claude (conscience n°12)
+
+Aucune mesure nouvelle (l'audit du clic droit est fait contre les cadrages 1 à 4 ; la limite des 100 Mo par fichier sur GitHub est une connaissance de la conscience, à vérifier). Rien déposé hormis ce transcript ; le cadrage 4 sera réécrit sur sa réponse.
+
+Réponse mot pour mot :
+
+Dans l'ordre, avec l'audit demandé.
+
+**La porte d'entrée** — pris : « Éditer dans l'atelier » sur le chapitre ouvre le chapitre (Structure) ; sur une séance, ouvre cette séance (Déroulé). **La case de l'emploi du temps → « Préparer » : oui, tu atterris là où tu en es avec cette classe** — la séance, l'heure prévue suivante *pour cette classe* (H2 si elle a joué H1), avec ce qui reste à faire et ce qui a été reporté, parce que la préparation « pour une classe » lit la trame **et** la copie de la classe. Et **la revue de tout ce qui a été fait depuis le début du chapitre avec cette classe** — séances et heures jouées, diapos vues, décisions, notions vues — a sa place dans cet écran d'ouverture : ce chantier y met la revue de base à partir de la structure nommée (11b.5) ; le profil longitudinal classe, quand il viendra, la remplira nativement au même endroit.
+
+**1.4 — l'audit du clic droit, fait maintenant**, chaque entrée contre l'identité, le récit, les notions, l'heure prévue, le bilan et la réactivation, la copie de classe, le journal :
+- **Ouvrir** — rien à dire.
+- **Dupliquer une diapo** — nouvelle identité ; notions copiées ; heure prévue héritée, durées recalculées, le débordement se voit ; jamais montrée, donc libre. **Refus** sur le bilan et la réactivation (uniques).
+- **Insérer une diapo après** — nouvelle identité, heure héritée, sans rôle. **Refus** après le bilan.
+- **Monter / descendre une diapo** — identité inchangée ; **si elle franchit une frontière d'heure, elle change d'heure prévue et le site le dit** ; **refus** de déplacer le bilan (toujours dernier) et la réactivation (toujours première de son heure) ; pour une classe qui l'a déjà vue, rien ne change (figée) ; pour la suite, le nouvel ordre s'applique.
+- **Supprimer une diapo** — déjà montrée à une classe : sa copie la garde, la relecture aussi ; jamais montrée : disparaît ; le coût en notions (« pas prévu ailleurs ») se recalcule ; **refus** sur le bilan et la réactivation.
+- **Envoyer vers une autre séance** — identité inchangée ; l'heure prévue se recalcule dans la séance d'arrivée ; une classe qui l'a vue dans la séance de départ la garde là (figée) ; les suivantes la verront dans la séance d'arrivée ; **refus** sur le bilan et la réactivation.
+- **Sur un bloc : supprimer, dupliquer, monter, descendre, taille** — l'identité du bloc ne change pas en le déplaçant ; **le rang est aboli** : réponses, annotations, marques se rattachent à l'identité. **Copier / coller / couper** — **coller donne toujours une nouvelle identité** (le bloc est « neuf » jusqu'à sa première apparition) ; ce qu'une classe avait écrit sur le bloc d'origine reste dans sa copie figée.
+- **Sur une étape ou une réponse : supprimer, dupliquer, monter, descendre** — le journal d'une heure passée référence **la copie figée de la classe**, jamais la trame : réordonner en préparation ne change aucun récit.
+- **La sélection par cadre** — mêmes règles que bloc par bloc.
+Bilan de l'audit : trois refus (bilan, réactivation, après-bilan), deux règles (identité au collage ; le journal lit la copie), un signalement (franchir une frontière d'heure). Rien qui reste flou.
+
+**1.7 — les mots**, sans « fiche posée » : **une seule chose, un seul mot — la feuille** (le produit imprimable *et* ce qu'une diapo en montre : c'est le même objet, dans deux lieux) ; **document** pour ce qui est joint au chapitre ; **diapo**, **bloc**. Le mot « fiche » disparaît de l'écran. Ça te va ?
+
+**2.1** — le rang est aboli, partout : identités.
+
+**4 — l'appli de pages** : chantier à part, noté. **La vidéo, cadrée maintenant** — mise en tension avec le tableau, le gel, le journal, le récit :
+- **La source** : un fichier dans mjpc-medias, ou un lien direct ; pas de lecteur tiers avec ses publicités au tableau. (Une limite technique à trancher avec toi : GitHub, qui héberge mjpc-medias, refuse les fichiers de plus de 100 Mo — **où sont tes vidéos aujourd'hui ?**)
+- **Les repères, posés en préparation** : « 0:00–1:20 l'ouverture · 1:20–2:05 le monologue ». C'est ce qui rend une vidéo **dévoilable comme un bloc** : **▶ lance jusqu'au repère suivant et s'arrête**, ◀ revient au repère précédent ; sans repère, ▶ lance / met en pause.
+- **Le son sort du tableau** (la fenêtre ou l'ordi de classe), jamais de ton pilotage ; l'ordi de classe charge la vidéo lui-même et reçoit « lire à t », « pause » — c'est comme ça que les deux restent ensemble.
+- **Le gel** met la vidéo en pause au tableau ; **le journal** note « *…* lue de 0:00 à 1:20, de 10:31 à 10:33 » ; **le récit** dit « on a regardé *…* jusqu'à *l'ouverture* » ; « ce qui s'est passé » garde les temps.
+- **La garde** : une vidéo sans adresse valide ou sans repère est acceptée mais signalée (« aucun repère : ▶ lira jusqu'à la fin »).
+
+**4.6 — un document affiché : ce qu'on y fait, ce qui s'enregistre.** Selon sa nature : **un PDF ou une image de plusieurs pages** — on tourne les pages aux flèches, on grossit une zone à la loupe, on y met une lumière (une marque de l'heure, pas du document) ; **une page HTML** — on avance ses étapes ; **une vidéo** — on la lit par repères. **Enregistré** : le document, la page ou l'étape ou le temps, l'heure d'arrivée et de départ sur chacun, les marques posées — **jamais le contenu du document lui-même** (il est extérieur, l'immuabilité ne le couvre pas, et le cadrage le dit). Le récit : « on a projeté *…* (pages 1 à 3) ».
+
+**5 et 6** — écrit : dans le prompt, **l'instance demande à l'utilisateur les JSON des chapitres précédents** avant de produire, comme modèles, en plus de charger le site, de jouer un déroulé et de lire le code de l'objet visé.
+
+Je réécris le cadrage 4 avec tout ça et je te le redonne entier ; **un seul mot en attente : « feuille » partout, et où sont tes vidéos.**
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

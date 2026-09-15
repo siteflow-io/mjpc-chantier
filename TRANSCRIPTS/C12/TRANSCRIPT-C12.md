@@ -4094,3 +4094,40 @@ Tests : « Fin de l'heure » → les vignettes montrent chaque diapo entière ; 
 MEMO
 
 ---
+
+## TOUR 107 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok va lire l'intégralité des pièges dans lesquels sont tombées les instances précédentes sur les chantiers mjpc, et teste ta maquette à cet aune. j'attends ton rapport.
+
+---
+
+## TOUR 107 — Claude (conscience n°12)
+
+Lectures : extraction mécanique de 505 lignes (registre `docs/MJPC6-DETTES.md` et journal `docs/MJPC6-journal.md`) portant règle / erreur / piège, lues (`pieces/T107-pieges-extraits-registre-journal.txt`) ; treize familles. Épreuve `pieces/T107-aune-pieges.mjs` (réseau, comptes, infobulles, méta, codes, récit après ◀, frappe longue, caractères français, Échap, bandeau à 768 et 720, faux vert, identités) ; sept pièges trouvés dans la v9b et corrigés (identités, dejaVue, infobulles, prompt() → fenêtre, banc par le clic, nom versionné, réponse longue défilée) ; bancs rejoués : `T107-test-v9b.mjs` 40/40, tailles 5/5, types tous, épreuve 0 défaut. Rapport `pieces/T107-RAPPORT-v9b-a-l-aune-des-pieges.md`. Maquette v9b.3 `T107-maquette-pilotage-ordi-v9b3-manipulable.html` (md5 `e758c7cf00c9…`), gabarit `T107-v9b-template.html`, générateur `T107-gen-v9b.py`. Pièces au sas. Rien d'autre déposé hormis ce transcript et ses pièces.
+
+Réponse mot pour mot :
+
+Lu — le registre entier, le journal du 16/07 au 15/09, les cadrages du 25/08, les documents du consultant : 505 lignes qui portent une règle, une erreur ou un piège, extraites puis lues (pièce jointe). Elles se rangent en **treize familles**, et j'ai mis la v9b à l'épreuve de chacune, par mesure. Le rapport complet est joint ; voilà l'essentiel.
+
+**Ce que l'épreuve a trouvé dans la v9b — sept pièges, corrigés dans la v9b.3 jointe :**
+1. **Le rang pris pour une identité** (le bug des séances mélangées, l'EDT, ton cadrage 4) : le journal des diapos, les notes et les prises de parole n'enregistraient que le rang de la diapo → ils portent maintenant son identité.
+2. **Le faux vert** : « seulement les nouvelles » reposait sur une fonction qui répondait toujours non — un bouton mort qui passait pour vrai → « déjà rencontrée » est calculé sur la trame, et l'infobulle dit sur quoi.
+3. **Les boîtes système** : la raison d'une absence et le motif d'un « non fait » passaient par un `prompt()` du navigateur, et mon banc les acceptait en aveugle — exactement le piège gravé le 18/07 → une petite fenêtre du site (Entrée garde, Échap passe), plus aucune boîte système.
+4. **Le banc qui appelle au lieu de cliquer** : le tableau, ⋯, le T-5 et les réglages étaient déclenchés par script → tout passe par la souris et le clavier ; 40/40.
+5. **Deux fichiers différents sous le même nom** : mon générateur réécrivait `T104-…` alors que le sas portait la v9b initiale sous ce nom → chaque livraison a son nom, le générateur écrit ailleurs.
+6. **Deux infobulles manquantes** (Pilotage, Relecture).
+7. **Le texte coupé** : une réponse plus longue qu'une page (au-delà de ~700 signes) débordait → le tableau défile vers la fin de la frappe ; **limite déclarée**, à traiter au mandat.
+
+**Ce qui tenait déjà, mesuré** : aucune écriture ni réseau ; aucun code ni mot de plomberie à l'écran ; Échap ferme une fenêtre à la fois, jamais l'écran de fin, n'annule aucune décision ; le bandeau de clôture visible et cliquable à 1366 × 768 et 1280 × 720 ; le récit lit ce que la classe a vu (3 dévoilées, 1 revoilée → 2 citées) ; les guillemets, apostrophes et accents traversent intacts ; les chiffres annoncés recomptés.
+
+**Ce qui reste déclaré, sans correction** : la vidéo simulée, « + une notion » grisé (les attendus), la transposition du récit, la réponse plus longue qu'une page, le tactile hors périmètre, l'état par rang à l'intérieur de la maquette (inoffensif ici, aboli au mandat), le rendu du tableau par injection (commodité de maquette).
+
+**Verdict : ça va**, avec ces limites écrites. Bancs après corrections : gestes 40/40 par le clic, cinq tailles, tous les types avec image réelle, l'épreuve des pièges — 0 défaut. Et une chose que le registre dit à chaque page et que je garde : la faute de la n°11, sept jours à mesurer un fichier sans l'ouvrir, est celle que tu m'as évitée samedi.
+
+Tests : rejoue les onze du tour 104 sur la v9b.3 ; en plus, « Parti à… » sur un nom : la petite fenêtre de raison (Entrée garde, Échap passe) ; et au T-5, « seulement les nouvelles » : en H1 rien ne bouge (tout est nouveau), en H2 les notions de H1 se décochent.
+
+MEMO
+
+---

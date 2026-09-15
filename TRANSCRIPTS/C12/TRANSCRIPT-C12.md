@@ -4035,3 +4035,34 @@ Tests pour toi, dans l'ordre :
 MEMO
 
 ---
+
+## TOUR 105 — Paul
+
+Texte de Paul, mot pour mot :
+
+> clique sur fin de l'heure, et regarde ce que ça fait.
+
+---
+
+## TOUR 105 — Claude (conscience n°12)
+
+Geste joué (`vis/fin9b.mjs`) : « Fin de l'heure » dès l'ouverture → l'écran des décisions (8 cartes), la section « Avant de clore » et les boutons hors de la vue (contenu de 1 002 px), « aucune notion déclarée sur les diapos jouées » alors que la diapo 1 est au tableau. Corrigé dans le gabarit (`T105-v9b-template.html`) : bandeau d'action fixe en bas avec la phrase qui dit ce que Clore fait, titre explicite, les notions des diapos apparues au tableau. Bancs rejoués : 0 défaut. Maquette v9b.1 `T105-maquette-pilotage-ordi-v9b1-manipulable.html`, capture `T105-fin-de-l-heure-corrigee.png` (regardée). Pièces au sas. Rien d'autre déposé hormis ce transcript et ses pièces.
+
+Réponse mot pour mot :
+
+Cliqué, dès l'ouverture, avant tout geste. Ce que ça fait, vu :
+
+**Ça ouvre le même écran que le T-5** — les huit diapos de H1 en vignettes, « à l'heure suivante » posé partout, le débordement (« l'heure suivante dépasserait de 70 min », puisque rien n'a été joué), le travail à faire, le texte École Directe — **et la clôture était en dessous, hors de l'écran** : il fallait défiler pour trouver « Avant de clore » (diapos modifiées, notes versées, mot pour les absents) et le bouton « Clore l'heure ». À l'écran, rien ne disait que c'était une clôture, et rien ne disait où était le bouton. Tu as eu raison de cliquer.
+
+**Corrigé, dans la v9b.1 jointe** :
+- **le bandeau d'action est fixé en bas**, toujours visible : « Clore ferme l'heure : le journal, le récit, le travail à faire et le mot des absents sont enregistrés pour cette classe » — Annuler · **Clore l'heure et ouvrir la relecture** ; au T-5, le même bandeau dit « Rien n'est fermé : tu reviens au cours avec ces décisions » — Revenir au cours · Garder ces décisions ;
+- **le titre dit ce que c'est** : « Fin de l'heure — ce qu'il reste à décider, puis clore » ;
+- et un défaut que ce clic a révélé : « apprendre » disait « aucune notion déclarée sur les diapos jouées » alors que la diapo 1 était au tableau — le site ne comptait que les diapos dévoilées ; maintenant **toute diapo apparue au tableau compte**, et « Dire ce qu'on voit, avec les mots justes » est proposée.
+
+Les deux bancs rejoués : 0 défaut. Capture regardée : le bandeau est visible sans défiler.
+
+Tests : refais le clic « Fin de l'heure » à l'ouverture — le bandeau et son bouton or en bas ; puis « Annuler » : retour au cours, rien de fermé ; puis joue deux diapos, « Fin de l'heure », défile jusqu'à « Avant de clore », un mot pour les absents, « Clore » : la relecture.
+
+MEMO
+
+---

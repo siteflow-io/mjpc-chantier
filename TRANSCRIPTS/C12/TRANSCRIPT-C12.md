@@ -4066,3 +4066,31 @@ Tests : refais le clic « Fin de l'heure » à l'ouverture — le bandeau et son
 MEMO
 
 ---
+
+## TOUR 106 — Paul
+
+Pièce jointe : sa capture de l'écran « Fin de l'heure » (le Tableau 1 en énorme), recopiée en `pieces/T106-capture-de-Paul-tableau-enorme.png`.
+
+Texte de Paul, mot pour mot :
+
+> voilà ce que j'ai. les tableaux apparaissent en énorme. vérifie tout les types de diapos. Elles doivent apparaître entières, lisibles dans leur intégralité et défilables comme c'est déjà le cas.
+
+---
+
+## TOUR 106 — Claude (conscience n°12)
+
+Cause : la vignette du T-5 (`.mini`) ne portait pas la classe `.mur`, donc aucune règle du tableau ne s'y appliquait (image à taille naturelle, corps non contraint) ; hors ligne, l'image vide masquait le défaut. Correction dans le gabarit (`T106-v9b-template.html`) : la vignette contient un vrai `.mur` de 1096 × 616 réduit par transformation (échelle 0,511 dans une carte de 580 px), un clic l'agrandit à l'échelle 1 ; banc `T106-vignettes-tous-types.mjs` (image réelle injectée ; consigne, question, image, schéma, fiche, vidéo, deux blocs — aucun débordement, séance 1 H1/H2 et séance 2 H2) ; `T104-test-v9b.mjs` et `T104-bancs-v9b.mjs` rejoués : 0 défaut. Captures regardées : `T106-fin-H1-images.png`, `T106-fin-H2-derniere-heure.png`, `T106-fin-seance2-schema-fiche.png`. Maquette v9b.2 `T106-maquette-pilotage-ordi-v9b2-manipulable.html`. Pièces au sas. Rien d'autre déposé hormis ce transcript et ses pièces.
+
+Réponse mot pour mot :
+
+Vu, et c'est une vraie faute : **la vignette du T-5 n'obéissait pas aux règles du tableau** — je rendais la diapo dans une petite boîte qui n'avait pas la classe du tableau, donc l'image s'affichait à sa taille naturelle (énorme), et le texte n'était pas contraint non plus. Je ne l'ai pas vu parce que, hors ligne, mes images sont vides : leçon prise, **le banc rend maintenant une image réelle** avant de mesurer.
+
+**Corrigé (v9b.2 jointe)** : **la vignette est la diapo entière, réduite** — le même rendu que le tableau, à l'échelle, avec tout dedans (le titre, toutes les étapes, l'image et sa légende, la légende de surlignage, la barre de la vidéo) ; **un clic l'agrandit à taille réelle**, un autre la réduit ; la rangée défile comme avant. Les étapes pas encore dévoilées restent en gris, un peu plus lisibles qu'au tableau.
+
+**Tous les types vérifiés, mesurés, avec une image réelle** : consigne, question, image, schéma, fiche, vidéo, et les diapos à deux blocs (consigne + question, fiche + question) — **aucun débordement**, sur la séance 1 (H1 et H2) et la séance 2. Les deux bancs rejoués : 0 défaut. Trois captures regardées : H1 avec les cinq tableaux, H2 (dernière heure : « Aller au bilan », « Reporter à la séance suivante », sans défaut posé), la séance 2 avec le schéma et la fiche.
+
+Tests : « Fin de l'heure » → les vignettes montrent chaque diapo entière ; clique sur l'une d'elles : taille réelle, lisible ; re-clic : réduite ; fais défiler la rangée jusqu'au bout.
+
+MEMO
+
+---

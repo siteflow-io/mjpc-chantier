@@ -4402,3 +4402,32 @@ Fait, dans l'ordre que tu demandes : d'abord les six ajustements confrontés au 
 MEMO
 
 ---
+
+## TOUR 116 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok et maintenant contre l'existant.
+
+---
+
+## TOUR 116 — Claude (conscience n°12)
+
+Existant joué (`pieces/T116-existant4.mjs`, capture `T116-existant-1536x864.png`) : police du corps proportionnelle à la boîte (6,36-6,40 % de la hauteur aux trois tailles) mais diapo coupée en écrans ; vignettes avec contenu en texte réduit (10 px) ; `atSomPlier` mais aucune colonne rabattable ; Ctrl+Z annule la dernière prise (1 → 0) ; quatre couleurs de surlignage + retirer (`forme('hilite', …)`) ; `atT5Modale` à l'heure réelle ; pas de rattrapage (tour 112). Audit `pieces/T116-AUDIT-v9c2-contre-existant.md` (repris tel quel / repris et corrigé / créé, par point). Rien déposé hormis ce transcript et ses pièces.
+
+Réponse mot pour mot :
+
+Contre l'existant, joué (la production en classe, trois tailles d'écran : 1366 × 768, 1536 × 864, 1920 × 1080). L'audit est joint ; l'essentiel :
+
+- **La loi de taille — surprise : l'existant l'applique déjà.** La police du corps de diapo est **proportionnelle à la boîte, 6,4 % de sa hauteur**, aux trois tailles (19 px sur 301 px, 22 px sur 344 px). Ce qui ne va pas chez lui, c'est le remède quand ça ne tient pas : **il coupe la diapo en écrans** (3 à 4 lignes visibles, « Suite 1 »). La maquette, elle, avait perdu la proportion. La v9c.2 garde **la proportion de l'existant (6,4 %)** et remplace le remède : la police descend jusqu'à un **plancher lisible du fond — 4,2 % de la hauteur, c'est 32 pt sur une boîte de 760 px, ta loi du 25/08** — pour que la diapo la plus chargée tienne entière ; sous le plancher, c'est la préparation qui dit « trop pleine », pas la classe qui paie ; en classe, seules les réponses qui grandissent passent en pages. **Deux nombres à valider : 6,4 % et 4,2 %.**
+- **Le zoom de vue** : l'existant n'en a pas (Ctrl + molette = le zoom du navigateur, tout grandit, outils compris) → créé, dans le cadre.
+- **L'activité** : l'ancien moteur avait prévu le groupe (« une activité étalée = un paragraphe » dans le récit) mais **jamais renseigné** dans ce chapitre → repris (le groupe) et étendu (l'objet, les décisions, le numéro, la frontière).
+- **Les miniatures** : l'existant montre **déjà le contenu** des diapos à gauche, en texte réduit à 10 px, tronqué, sans la mise en page du tableau → repris et corrigé : la diapo elle-même, à l'échelle.
+- **Les colonnes repliables** : le sommaire se plie par séance, mais aucune colonne ne se rabat → créé.
+- **Les trous de fidélité de la v9c.1 — et c'est la leçon de cette confrontation : l'existant les a presque tous.** ² / F2 ✔, la palette Maj + Espace ✔ (avec son défaut « aucun élève » puis pose — au registre), l'historique par élève ✔, **Ctrl+Z ✔** (mesuré : il annule la dernière prise), **les quatre couleurs de surlignage ✔** (jaune Ctrl+H, vert, rose, bleu, retirer — sur la sélection), le T-5 à l'heure réelle ✔. Ma maquette les avait omis : c'est l'inverse du piège de la traduction, mais un piège quand même — **une maquette doit être au moins ce que le site sait faire**, et le protocole le dit (§3). Ne manquent à l'existant que le rattrapage avant lancement (✘, tout repart à zéro) et le mot de l'absent (∅) — créés.
+
+Sur ton « ok » : les cadrages d'abord (l'activité et ses conséquences, la loi de taille avec les deux nombres, le zoom, l'écran), puis la v9c.2 dans l'ordre annoncé, une seule livraison. Je pars dès ton mot sur les deux nombres — ou dis-moi d'y aller avec ceux-là.
+
+MEMO
+
+---

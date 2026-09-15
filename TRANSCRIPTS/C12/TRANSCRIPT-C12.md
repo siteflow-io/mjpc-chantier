@@ -3987,3 +3987,51 @@ Tests : aucun, rien n'est livré au site.
 MEMO
 
 ---
+
+## TOUR 104 — Paul
+
+Texte de Paul, mot pour mot :
+
+> mets à jour puis v9b.
+
+---
+
+## TOUR 104 — Claude (conscience n°12)
+
+Écritures en production, vérifiées bit à bit : `docs/MJPC6-DETTES.md` (n°12 · 20 à 25, commit `77671f92b1a1`), `docs/MJPC6-journal.md` (entrée 13 → 15/09, commit `109e1121e233`), `docs/MJPC6-OU-TROUVER-QUOI.md` (ajouts du 15/09, commit `b226dd813a36`). Maquette v9b construite sur un gabarit neuf (`T104-v9b-template.html`, ~600 lignes), générateur `T104-gen-v9b.py` (identités, heures prévues H1/H2, rôles réactivation/bilan, notions par diapo, légende de surlignage sur la diapo 10, une diapo vidéo simulée avec repères, travail prévu par heure, deux documents, la taxonomie réelle du hub en lecture — 7 domaines, 51 familles, 210 notions —, la classe et ses prochaines heures). Bancs : `T104-test-v9b.mjs` (40 vérifications : appel, VIF et absents, notes versées, commentaires et pastilles, clic droit ligne/diapo/réponse, réserve en encart au tableau, documents et pages, notion imprévue, légende au tableau, vidéo : approche, passage automatique, lecture par repères, T-5 : vignettes réelles, défaut, décisions, texte ED, notions classées ; clôture ; récit ; ce qui s'est passé) et `T104-bancs-v9b.mjs` (5 tailles d'écran) — 0 défaut. Défauts trouvés et corrigés avant livraison : collision de classe CSS (`.pas`), accents dans la recherche d'élève, type d'événement de l'appel écrasé, menu ⋯ refermé par le clic, injection du code dans la fenêtre du tableau (fonctions fléchées), Échap fermait le document en même temps que la liste, les cartes du T-5 disparaissaient une fois décidées, connecteurs doublés dans le récit, les raccourcis lettres écrivaient dans le champ ouvert, l'encart de réserve couvrait le texte. Captures regardées avant livraison : `T104-v9b-01` à `07`. Pièces au sas. Rien d'autre déposé hormis ce transcript et ses pièces.
+
+Réponse mot pour mot :
+
+Docs à jour (registre n°12 · 20 à 25, journal, « Où trouver quoi » — vérifiés bit à bit). Et voilà la **v9b, manipulable**, jointe : tout ce qui a été cadré depuis le 9 septembre pour l'heure en classe, joué sur la vraie trame de la 3E Charles de Gaulle (19 diapos, 29 élèves, la taxonomie réelle du hub en lecture).
+
+**Ce que tu peux jouer, geste par geste :**
+- **L'appel dans la liste de classe** (clic droit sur un nom : absent · présent arrivé à… · parti à… · revenu, raison facultative) ; les absents et les partis en grisé, jamais proposés dans les initiales ; le compte « x sur n présents ».
+- **Le clic droit de classe** : sur une ligne (lumière · à écrire · revoiler · taille du bloc) ; sur une réponse (aller à l'élève · corriger · supprimer la prise) ; sur une diapo, dans le volet ou sur la scène (y aller · retirer de l'heure → en réserve / à la maison / non fait — grisé sur une diapo déjà vue, sur le bilan, sur la réactivation · déclarer une notion imprévue · commenter).
+- **Les commentaires** (fenêtre, pastille 💬 sur la diapo et sur sa vignette) ; **les notes N** avec « Verser au récit » (elles entrent telles quelles, à leur place, surlignées).
+- **⋯** : chrono au tableau · qui a participé · la réserve de la séance (afficher au tableau en encart « pour ceux qui ont fini ») · les documents de la séance (projeter, pages aux flèches, croix pour fermer) · déclarer une notion imprévue (cherche dans la vraie taxonomie).
+- **La légende de surlignage** au tableau (diapo 10, « jaune = à retenir · rose = un piège »).
+- **La vidéo** (diapo 18, simulée : pas de fichier ici) : ▶ lit jusqu'au repère suivant, ◀ revient ; et **les trois temps de la garde** — règle la clé et le tableau dans ⚙ : en approche, l'annonce ; à la diapo, elle **passe toute seule** avec « diapo 18, la vidéo sur…, passée : pas de clé USB branchée », le bouton Passer reste.
+- **T-5** (⚙ → « Faire arriver T-5 ») : **les diapos restantes de l'heure en vignettes réelles** (un clic agrandit), « à l'heure suivante » déjà posé, le débordement qui se recalcule, les décisions (terminer / préparer / pas le temps / réserve / non fait avec motif ; en H2 : reporter à la séance suivante), le coût en libellés (« prévu plus loin » / « pas prévu ailleurs »), une diapo retirée en classe qui reste visible avec sa décision ; dessous, **le travail à faire** : terminer / préparer cochés d'après tes choix, ce que la trame prévoyait, **apprendre** classé par domaine et famille avec les cases de groupe, le champ libre, l'échéance ; et **le texte École Directe qui s'écrit sous tes yeux**.
+- **Fin de l'heure** : les diapos modifiées à verser, les notes versées à garder en notes présentateur, le mot pour les absents ; puis **la relecture à deux faces** — le récit (cadre, un paragraphe par diapo montrée, la note versée, « M. Meney a reformulée », le bilan avec les activités non faites par leur décision, « Pour la prochaine séance » en entier, le mot par absent) et « ce qui s'est passé » (le fil à la seconde, diapo par diapo, la participation, l'appel, les notes avec verser).
+- Et tout ce que la v9a avait déjà.
+
+**Ce qu'elle n'a pas, dit d'avance** : les images (hors ligne : la légende seule), la transposition fine du récit à l'imparfait (la structure y est, pas la conjugaison), la création d'une notion avec la garde Éduscol (grisée : les attendus ne sont pas là), la séance sur deux heures (v9c). Les réglages de simulation vivent derrière ⚙ ; rien de tout ça n'existe dans le site.
+
+**Preuves** : deux bancs, 0 défaut — le banc des gestes (`T104-test-v9b.mjs`, 40 vérifications) et le banc des tailles d'écran (5 tailles) ; sept captures regardées avant livraison (dont le T-5 en vignettes, le récit, le tableau avec l'encart, la vidéo au repère). Pièces au sas : `T104-*`.
+
+Tests pour toi, dans l'ordre :
+1. Clic droit sur un nom de la liste → absent ; tape ses initiales dans le champ : il n'est pas proposé.
+2. Clic droit sur une vignette du volet → retirer de l'heure → en réserve ; puis ⋯ → Réserve → « Afficher au tableau » : l'encart paraît sur la fenêtre du tableau (bouton Tableau).
+3. ⋯ → Documents → projeter la fiche méthode ; → et ← tournent les pages ; Échap ferme.
+4. N → une note → Entrée → « Verser au récit » ; puis R : elle est dans le récit, surlignée.
+5. Clic droit sur le titre de la diapo → Commenter → une phrase → Entrée : la pastille 💬 1 apparaît sur la diapo et sur la vignette.
+6. Va à la diapo 10 : la légende de surlignage est en bas du tableau.
+7. ⚙ → clé « branchée nulle part » ; va à la diapo 17 : l'alerte « la diapo suivante a une vidéo » ; ▶ jusqu'à la 18 : elle passe toute seule et l'annonce le dit.
+8. ⚙ → clé « sur ton ordi portable » ; diapo 18 : ▶ lit jusqu'à « la composition », ◀ revient.
+9. ⚙ → « Faire arriver T-5 » : les vignettes, la décision par défaut, clique « Terminer à la maison » sur la première : le texte École Directe change ; décoche une famille de notions : la ligne « Apprendre » change.
+10. Fin de l'heure → un mot pour les absents → Clore : le récit, puis « Ce qui s'est passé ».
+11. ⚙ → H2 (dernière heure) → T-5 : « Aller au bilan », « Reporter à la séance suivante », pas de défaut.
+
+MEMO
+
+---

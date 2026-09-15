@@ -4331,3 +4331,41 @@ Tests : lundi — quatre ▶ sur l'activité 1, Fin de l'heure → Clore → Lan
 MEMO
 
 ---
+
+## TOUR 114 — Paul
+
+Pièce jointe : sa capture de la v9c.1 (diapo 1 en « page 2 / 4 », titre énorme, une seule étape visible), recopiée en `pieces/T114-capture-de-Paul-police-trop-grosse.png`.
+
+Texte de Paul, mot pour mot :
+
+> ajustements à faire: la taille de police dans la maquette est beaucoup trop grosses, chaque diapo ne contient que le titre en énorme et une seule consigne, et on est au zoom minimum. au zoom minimum (visible du fond de classe), une diapo doit tout contenir. audit, il y a peut-être d'autres bugs d'affichage que je n'ai pas repérés. le zoom ctrl molette de la souris est bien, mais il cache les controles (la diapo passe par dessus). elle doit rester dans son cadre et le reste doit s'adapter et rester toujours atteignable. par ailleurs tu as numéroté les consignes alors que ce sont les activités qui doivent être numérotées. audit. enfin, à gauche, je dois voir le vrai contenu des diapos, même en petit: ce doit être un vrai ppt (dans un ppt, on voit bien le contenu des diapos). enfin, je dois pouvoir rabbatre la ligne de scroll de la colonne de gauche, comme sur ppt, afin d'avoir plus de place sur mon écran central. pareil à droite. et pour la même raison. et de fait, si je donne plus ou moins d'espace sur telle ou telle colonne, le contenu doit s'ajuster, remonter, redescendre etc. récapitule avant de retravailler la maquette. RA
+
+---
+
+## TOUR 114 — Claude (conscience n°12)
+
+Lecture : la trame test n'a pas de champ de groupe d'activité (`grp` absent des écrans ; l'ancien moteur le prévoyait). Cause de la police : taille en rem de fenêtre, pas en fraction du cadre. Rien déposé hormis ce transcript et la capture de Paul.
+
+Réponse mot pour mot :
+
+Récapitulatif, avant de toucher la maquette.
+
+**1. La police trop grosse — une diapo doit tout contenir au zoom minimum.** Cause trouvée : la taille du texte est fixée en pixels de fenêtre (≈ 19 px), alors que la diapo, elle, se réduit avec l'écran — sur ton écran, le cadre fait ~530 px de haut, donc trois lignes tiennent et la diapo se découpe en quatre pages. C'est le contraire d'un diaporama, où le texte est **proportionnel à la diapo**. Correction : **la police est une fraction du cadre de la diapo** (comme dans un PPT), calibrée pour que la diapo la plus pleine du chapitre tienne en une page au zoom minimum ; les pages ne servent plus qu'aux réponses qui s'allongent. Le même rendu sert au tableau, aux vignettes du T-5 et à la colonne de gauche.
+
+**2. Le zoom Ctrl + molette cache les contrôles.** Aujourd'hui il agrandit la diapo par-dessus tout. Correction : **la diapo reste dans son cadre** ; le zoom change la part de la colonne centrale qu'elle occupe ; les outils (▶, ◀, gel, ⋯) restent sous elle, toujours atteignables ; ce sont les notes qui cèdent la place (elles défilent).
+
+**3. Les numéros : les activités, pas les diapos.** J'ai numéroté chaque diapo (« A1 · Analyse d'images », « A2 · Tableau 1 »…) ; or « Tableau 1 » à « Tableau 5 » et « Les hypothèses de la classe » sont **une seule activité**, étalée sur sept diapos. Ta trame test ne dit pas encore où commence et finit une activité (l'ancien moteur avait un champ de groupe, jamais renseigné dans ce chapitre). Correction : **l'activité est un objet** — un numéro, un titre, une ou plusieurs diapos — porté par la trame et exigé par le prompt (cadrage 4, 3.2 bis) ; le tableau, le volet, le récit et le cahier disent « Activité 1 — Analyse d'images » sur ses sept diapos. Dans la maquette je regrouperai à la main (A1 = les sept premières diapos, A2 = la question-bilan, etc.). **Question, une seule** : une activité ne s'étale-t-elle jamais sur deux heures d'une séance, ou peut-elle chevaucher la frontière d'heure ?
+
+**4. La colonne de gauche montre le vrai contenu.** Aujourd'hui des vignettes factices (titre + traits). Correction : **de vraies miniatures** — chaque diapo rendue telle qu'elle est, réduite, comme dans un PPT (le même rendu que le tableau, à l'échelle).
+
+**5. Les colonnes se rabattent, le centre s'adapte.** Gauche et droite **repliables** (une poignée, comme PPT), et le centre prend la place : la diapo grandit, la police suit (point 1), les outils restent en place, les notes remontent ou descendent. L'inverse aussi : rouvrir une colonne rend la place.
+
+**6. Audit d'affichage.** À trois tailles courantes (1366 × 768, 1536 × 864 — ton écran à 125 % —, 1920 × 1080), sur chaque écran (pilotage, tableau, T-5, ouverture, relecture), avec les colonnes ouvertes et fermées : rien ne déborde, rien ne se cache, tout est atteignable ; captures regardées.
+
+Ce que ça touche au cadrage : le point 1 précise la loi de taille (cadrage 1, 5.1) ; le point 3 ajoute l'objet « activité » au cadrage 4 (3.2 bis) et au cadrage 2 (1.1 bis) ; les points 2, 4, 5 sont de l'écran (cadrage 1, 0.1 et 1.1 du cadrage 4). Le reste ne bouge pas.
+
+Ordre de travail proposé : 1 → 3 → 4 → 5 → 2 → 6, en une seule livraison (v9c.2), bancs et captures à l'appui.
+
+MEMO
+
+---

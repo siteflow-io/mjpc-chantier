@@ -4459,3 +4459,31 @@ Ton ok sur ces deux nombres, et je pars : les cadrages, puis la v9c.2.
 MEMO
 
 ---
+
+## TOUR 118 — Paul
+
+Texte de Paul, mot pour mot :
+
+> je parle en tailles de police moi, pas en pourcentage.
+
+---
+
+## TOUR 118 — Claude (conscience n°12)
+
+Conversion sur la diapo de référence du 25/08 (762 px de haut) : 6,4 % = 36 pt ; 32 pt = 5,6 % (et non 4,2 % : erreur de conversion du tour 116, corrigée). Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+En tailles de police, alors — comme dans un diaporama, où « 32 pt » veut dire 32 pt **sur la diapo**, quelle que soit la taille de l'écran qui la montre. La diapo de référence est celle du 25 août (une boîte de 762 px de haut, où ta loi « 32 pt » a été mesurée).
+
+**Taille normale du texte au tableau : 36 pt.** C'est ce que l'existant fait aujourd'hui (mesuré : 6,4 % de la hauteur = 36 pt sur la diapo de référence).
+
+**Plancher, lisible du fond de la classe : 32 pt.** C'est ta loi du 25 août, telle quelle (j'avais mal converti hier en écrivant 4,2 % : 32 pt, c'est 5,6 %, comme tu l'avais dit).
+
+Ce que ça implique, et je te le dis parce que ça pèse : entre 36 pt et 32 pt il n'y a que 12 % de marge — une diapo qui ne tient pas à 36 pt tiendra rarement à 32 pt. Autrement dit, **avec ta loi, c'est la préparation qui doit faire tenir les diapos** (« trop pleine » dès la rédaction, le prompt qui limite la densité), pas la classe. Si tu veux plus de souplesse en classe, c'est le normal qu'il faut monter (40 pt, par exemple), pas le plancher qu'il faut descendre.
+
+Donc, ton ok sur : **36 pt normal · 32 pt plancher** (ou 40 pt · 32 pt si tu préfères la marge).
+
+MEMO
+
+---

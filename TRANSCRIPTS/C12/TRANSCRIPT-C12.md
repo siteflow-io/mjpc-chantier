@@ -4511,3 +4511,33 @@ Je pars avec ces deux nombres : les cadrages (l'activité, la loi de taille 36/2
 MEMO
 
 ---
+
+## TOUR 120 — Paul
+
+Texte de Paul, mot pour mot :
+
+> vérifie dans l'existant du site! vu que tu ne retrouves pas le 26 dans les fichiers. TOUJOURS VERIFIER L'EXISTANT.
+
+---
+
+## TOUR 120 — Claude (conscience n°12)
+
+Vérifié dans le moteur (`moteur.html`) : L547 `PT=[24,32,38,44,52], iz=1` ; L553 `fontSize = H * 0.056 * (PT[iz]/32)` (32 pt = 5,6 % de la hauteur de la boîte) ; L2622 idem pour le tableau ; aucun « 26 » lié à une taille de police dans le moteur, dans `index.html` (hors CSS de l'EDT), ni dans les prompts au hub. Ma mesure du tour 116 (6,4 %) portait sur `#contenu`, pas sur la diapo : corrigée — normal existant = 32 pt. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Vérifié dans l'existant — le moteur du déroulé, lignes 547 et 553 :
+
+- **la réglette « texte au tableau » a cinq crans : 24 · 32 · 38 · 44 · 52 pt**, et s'ouvre sur **32 pt** ;
+- **la loi de taille est écrite noir sur blanc dans le code** : `police = hauteur de la boîte × 5,6 % × (cran / 32)` — donc **32 pt = 5,6 % de la hauteur**, exactement ta loi du 25 août ;
+- **le plus petit cran est 24 pt** (4,2 %) ; **26 pt n'apparaît nulle part** dans le site, ni dans le moteur, ni dans les prompts, ni dans les cadrages.
+
+Et je corrige ma propre mesure du tour 116 : j'avais lu « 6,4 % » sur la boîte de texte (plus petite que la diapo), pas sur la diapo — **le normal de l'existant est 32 pt, pas 36**.
+
+Ce que je propose, sur ces faits : **32 pt normal** (l'existant, ta loi) · **26 pt plancher** (ton mot d'aujourd'hui, à la place du cran 24 qui existe et que tu juges trop petit) · les crans au-dessus gardés (38 · 44 · 52). Le rapport 32 → 26 laisse 19 % de marge pour faire tenir une diapo chargée avant qu'elle soit « trop pleine ».
+
+Ton ok sur **32 · 26**, et je pars.
+
+MEMO
+
+---

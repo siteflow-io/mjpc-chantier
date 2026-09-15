@@ -3740,3 +3740,38 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 96 — Paul
+
+Texte de Paul, mot pour mot :
+
+> pour les vidéos, elles seront sur ma clef usb, en local. Donc il faut le même type de lien qu'on peut metttre dans diaporama (lier un fichier) et du coup il faut que la vidéo se lance non en externe comme le fait ppt, qui va ouvrir vlc ou autre logiciel multimédia, mais en interne avec ses commandes etc. cout de l'hébergement vidéo: zéro. Mais si le disque n'est pas atteignable (clef non branchée) il faut une garde. pour le mot en attente feuille, précise.
+
+(Date : mardi 15 septembre 2026.)
+
+---
+
+## TOUR 96 — Claude (conscience n°12)
+
+Lecture : les mots affichés par le site — « Nouvelle feuille » (atelier), « Fiche notion » / « Fiche méthode » (bloc du moteur). Conception sur la contrainte des fichiers locaux (accès au dossier désigné par le navigateur, connaissance de la conscience). Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+**La vidéo sur ta clé — ça se fait, à une condition technique que je te dis d'abord.** Une page du site (elle vient d'internet, en https) **n'a pas le droit d'ouvrir un fichier de ta clé par son chemin** — le navigateur l'interdit, pour tous les sites du monde. Ce qui est permis : **tu désignes la clé une fois** (un clic, une fenêtre du navigateur, tu choisis le dossier « MJPC-vidéos » de ta clé), et la page garde l'accès à ce dossier tant que tu ne le retires pas (Chrome et Edge le retiennent d'une session à l'autre, avec une confirmation d'un clic au premier usage de la journée). À partir de là, la vidéo se lit **à l'intérieur de la diapo**, avec le lecteur du navigateur — pas VLC, pas de fenêtre à part —, et **tes flèches la pilotent** comme au tour d'hier (les repères posés en préparation, ▶ jusqu'au repère suivant, ◀ au précédent, le gel met en pause). Coût d'hébergement : zéro, comme tu dis.
+
+**Ce que ça fixe, mis en tension :**
+- **Lier une vidéo, en préparation** : tu choisis le fichier sur la clé ; le site garde **le nom du fichier et le dossier désigné**, jamais un chemin de disque ; il te montre la vidéo pour poser les repères.
+- **La garde, clé non branchée** — à trois moments : **à l'ouverture de l'heure**, le site vérifie chaque vidéo de la séance et te dit, avant de lancer, « la vidéo *…* de la diapo 12 n'est pas atteignable — branche la clé, puis clique ici » ; **en classe**, la diapo vidéo dont le fichier manque montre l'alerte sur ton écran seulement (le tableau reste sur la diapo précédente, rien ne s'y affiche) et ▶ passe à la suite ; **en préparation**, la vignette porte « fichier non atteignable ». Jamais un lecteur noir devant la classe.
+- **Le tableau : c'est l'appareil qui projette qui lit la vidéo.** Avec Win+K (la fenêtre sur ton portable, la clé branchée dessus), tout va. **Sur l'ordi de classe, la vidéo ne peut se lire que si la clé y est branchée** et que ce dossier y a été désigné une fois aussi ; sinon la garde le dit (« la vidéo ne peut pas être montrée sur l'ordi de classe ») — ton portable, lui, l'a. C'est une limite réelle, je ne la cache pas : une vidéo sur ta clé ne traverse pas le hub.
+- **Le son sort du tableau** ; le journal, le récit, les repères : comme hier.
+- Ça s'intègre avec le mode test (rien n'est écrit, la clé sert pareil), avec l'immuabilité (le journal note le nom du fichier et les temps, pas le contenu), et avec la règle des alertes (chacune dit quoi faire).
+
+**« Feuille » — précisé.** Aujourd'hui le site emploie deux mots pour la même chose : l'atelier crée des **feuilles** (« Nouvelle feuille » : fiche notion, fiche méthode, fiche grammaire, fiche révision — c'est le mot des boutons), et le bloc de diapo qui en montre une s'appelle **« Fiche notion »** (le mot du moteur). Le consultant s'y est perdu. Je propose **un seul mot, le tien, aux deux endroits** : ou bien **feuille** partout (« la feuille *Le registre lyrique* », posée dans la diapo 15, agrandie d'un clic) et le mot « fiche » disparaît de l'écran ; ou bien **fiche** partout et les boutons de l'atelier disent « Nouvelle fiche ». Peu m'importe lequel ; ce qui compte, c'est qu'il n'y en ait plus qu'un. **Lequel ?**
+
+Je réécris le cadrage 4 avec la vidéo et ce mot dès ta réponse.
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

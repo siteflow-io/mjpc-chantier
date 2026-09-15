@@ -4131,3 +4131,35 @@ Tests : rejoue les onze du tour 104 sur la v9b.3 ; en plus, « Parti à… » su
 MEMO
 
 ---
+
+## TOUR 108 — Paul
+
+Texte de Paul, mot pour mot :
+
+> et sur la reconstruction après clic? il n'y avait pas que ça comme erreurs faites (la reconstruction après clic est un défaut de ta maquette par exemple, et c'est un piège déjà rencontré)
+
+---
+
+## TOUR 108 — Claude (conscience n°12)
+
+Sources relues (grep « reconstru / repeint / rafraîchi / scroll / focus / saut / latence », 170 lignes) : le saut d'image du 20/08, la poignée perdue (lot 6), la modale refermée par le repeint, `scrollIntoView` banni, le halo qui ne reconstruit rien, le rendu par ligne. Mesures avant (`pieces/T108-reconstruction.mjs`) : image recréée au tableau, rangée du T-5 remise à 0 après décision, vignette agrandie perdue après une case, volet et liste recréés. Correction : `morph` / `poserHtml` (mise à jour minimale, nœud actif intouché) sur le mur, le volet, la liste, les candidats, les notes, l'écran de fin et ses vignettes ; injectée aussi dans la fenêtre du tableau. Mesures après : tout conservé. Chevauchements mesurés (`T108-chevauchements.mjs`) : pastille × étiquette, légende × bandeau → corrigés (pastille à droite ; classe `avec-bandeau` qui fait monter légende, page, encart) → 0. Boutons du récit rendus vrais et prouvés (`T108-recit-boutons.mjs` : presse-papier lu, figer, retouche qui survit). Bancs rejoués : gestes 40/40, tailles 5/5, types tous, pièges 0. Rapport complété (`pieces/T108-RAPPORT-v9b-a-l-aune-des-pieges-complete.md`). Maquette v9b.4 `T108-maquette-pilotage-ordi-v9b4-manipulable.html` (md5 `b738eacf84ad…`), gabarit et générateur T108. Pièces au sas. Rien d'autre déposé hormis ce transcript et ses pièces.
+
+Réponse mot pour mot :
+
+Tu as raison, et je l'avais sous les yeux sans le voir : **la reconstruction après clic est un piège écrit noir sur blanc** — ton « saut d'une microseconde de l'image dès que je fais suivant » (20/08), la poignée du champ « contenu » perdue parce que « le panneau est reconstruit à chaque rendu », la modale qui se referme « parce que la grille est repeinte », `scrollIntoView` banni, la règle du sommaire natif « un clic déplace le halo, ne reconstruit rien », et l'exécutant loué pour « un rendu par ligne, sans redessin ni bataille avec une saisie ». Ma maquette faisait exactement l'inverse : à chaque geste, tout l'écran était refait.
+
+**Mesuré avant correction** (cinq reconstructions) : au tableau, **l'image était recréée à chaque geste** — c'est ton saut ; à l'écran de fin, **une décision remettait la rangée des vignettes au début** et **une case cochée refermait la vignette agrandie** ; le volet recréait ses vignettes à chaque ▶ ; la liste de classe était refaite à chaque lettre tapée dans le VIF.
+
+**Corrigé, v9b.4 jointe** : plus aucune reconstruction — une mise à jour minimale, nœud par nœud : seul ce qui change est touché, le champ où tu écris n'est jamais modifié, les images, les défilements et la vignette agrandie restent. **Mesuré après** : image même nœud (pilote et tableau), rangée 600 → 600, vignette agrandie conservée, volet et liste non recréés, note en édition conservée. Tous les bancs repassent (gestes 40/40, tailles, types, pièges). Et pour le mandat, c'est une règle : *le pilotage ne reconstruit jamais l'écran au clic ; il met à jour ce qui change*.
+
+**Et tu as raison aussi qu'il n'y avait pas que ça** — deuxième passage, deux familles de plus trouvées et corrigées :
+- **les chevauchements entre couches** (la pastille de version au-dessus d'un bouton, 21/07) : mesuré avec tout allumé — la pastille 💬 couvrait l'étiquette de la diapo, la légende de surlignage passait sous le chrono au tableau ; corrigés, 0 chevauchement pilote et tableau ;
+- **une interface qui annonce une action qu'elle ne fait pas** (« Supprimer cette classe » qui ne supprimait rien, 31/07) : les trois boutons du récit — Copier pour École Directe, Copier le travail à faire, Le figer — ne faisaient rien ; ils font maintenant ce qu'ils disent, et c'est prouvé (le presse-papier lu, la retouche du récit figé qui survit à un dévoilement).
+
+Le rapport est complété (§14 à 16) et rejoint. Ce que je retiens pour moi : j'avais lu les pièges comme une liste de mots ; toi tu les lis comme des gestes — c'est en jouant la maquette contre chacun, pas en cherchant des mots, qu'ils se voient.
+
+Tests : ⚙ → « Faire arriver T-5 », fais défiler la rangée vers la droite, choisis une décision : la rangée ne bouge pas ; agrandis une vignette, coche une notion : elle reste agrandie ; ouvre le tableau, dévoile sur une diapo d'image : plus de saut ; R → « Copier pour École Directe » : « copié » s'affiche ; « Le figer » : retouche une phrase, reviens au cours, dévoile, R : ta retouche est là.
+
+MEMO
+
+---

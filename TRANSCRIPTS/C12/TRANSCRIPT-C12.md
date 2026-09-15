@@ -3927,3 +3927,31 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 102 — Paul
+
+Texte de Paul, mot pour mot :
+
+> je sais qu'il mène à l'espace. Donc la consigne pour l'élève c'est "voici le lien de l'espace de travail, clique ensuite sur le dossier français, puis sur le nom du chapitre en cours, puis sur la vidéo".
+
+---
+
+## TOUR 102 — Claude (conscience n°12)
+
+Le brouillon du cadrage 4 v2 (4b.6) est complété avec la consigne de Paul ; non déposé (pièce `pieces/T102-CADRAGE-4-LA-PREPARATION-v2-soumis.md`). Rien déposé hormis ce transcript et cette pièce.
+
+Réponse mot pour mot :
+
+Pris, mot pour mot. Comme le rangement est toujours le même — l'espace de la classe › *Français* › le chapitre en cours › la vidéo —, **tu n'as plus rien à saisir que le nom du fichier** ; le site compose la consigne lui-même, dans tes mots :
+
+> « voici le lien de l'espace de travail [lien] ; clique ensuite sur le dossier *Français*, puis sur *Poésie et peinture* (le chapitre en cours), puis sur la vidéo *Le Radeau*. »
+
+— dans le travail à faire, le récit et le mot de l'absent. Écrit en 4b.6.
+
+Le cadrage 4 v2 est complet et à jour de tout ce que tu as dit depuis samedi. **Ton mot, et je le dépose** ; puis les maquettes.
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

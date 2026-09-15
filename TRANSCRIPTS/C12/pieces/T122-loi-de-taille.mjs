@@ -1,0 +1,21 @@
+import { chromium } from '/home/claude/.npm-global/lib/node_modules/playwright/index.mjs';
+const nav = await chromium.launch({ executablePath: '/opt/google/chrome/chrome', args: ['--no-sandbox','--allow-file-access-from-files'], headless: true });
+const ctx = await nav.newContext({ viewport: { width: 1536, height: 864 } }); const page = await ctx.newPage(); const errs = []; page.on('pageerror', e => errs.push(e.message));
+const p = ms => page.waitForTimeout(ms); const ev = (f, a) => page.evaluate(f, a);
+await page.goto('file:///home/claude/C12/maquette-v9c2-courante.html'); await p(500);
+const mesure = () => ev(() => { const m = document.getElementById('mur'); const c = m.querySelector('.corpsd'); const r = m.getBoundingClientRect(); const fs = c ? parseFloat(getComputedStyle(c).fontSize) : null; const sc = document.querySelector('.scene').getBoundingClientRect(); const outils = document.querySelector('.outils').getBoundingClientRect(); return { mur: Math.round(r.width) + '×' + Math.round(r.height), police: fs ? fs.toFixed(1) : null, pt: fs ? (fs / r.height / 0.056 * 32).toFixed(1) : null, li: m.querySelectorAll('li[data-k]').length, pages: S.pagesCourantes ? S.pagesCourantes.length : 1, deborde: c ? c.scrollHeight > c.clientHeight + 2 : false, outilsVisibles: outils.bottom <= sc.bottom + 1 && outils.top >= r.bottom - 1, reduite: (S.mur || {}).policeReduite }; });
+for (let k = 0; k < 6; k++) await page.keyboard.press('ArrowRight');
+console.log('1536×864, colonnes ouvertes :', JSON.stringify(await mesure()));
+await page.screenshot({ path: 'vis/v9c2-01-1536.png' });
+await page.click('#pg'); await p(200); console.log('gauche repliée :', JSON.stringify(await mesure()));
+await page.click('#pd'); await p(200); console.log('les deux repliées :', JSON.stringify(await mesure())); await page.screenshot({ path: 'vis/v9c2-02-1536-repliees.png' });
+await ev(() => { document.querySelector('.scene').dispatchEvent(new WheelEvent('wheel', { deltaY: 100, ctrlKey: true, bubbles: true, cancelable: true })); }); await p(200); console.log('zoom −1 cran :', JSON.stringify(await mesure()));
+for (let k = 0; k < 6; k++) await ev(() => { document.querySelector('.scene').dispatchEvent(new WheelEvent('wheel', { deltaY: 100, ctrlKey: true, bubbles: true, cancelable: true })); }); await p(200); console.log('zoom mini :', JSON.stringify(await mesure()));
+await page.click('#pg'); await page.click('#pd'); await p(200);
+await page.setViewportSize({ width: 1366, height: 768 }); await p(300); console.log('1366×768 :', JSON.stringify(await mesure()));
+await page.setViewportSize({ width: 1920, height: 1080 }); await p(300); console.log('1920×1080 :', JSON.stringify(await mesure()));
+// la diapo la plus chargée tient-elle entière à 32 pt ? sinon à combien ?
+await page.setViewportSize({ width: 1536, height: 864 }); await p(300);
+const rap = await ev(() => { const out = []; DATA.seances[0].ecrans.forEach((e, i) => { const m = document.getElementById('mur'); const et = { si: 0, di: i, nDev: elements(e).length, lum: [], ecr: [], taille: 1, page: null, reps: {}, tailles: {}, textes: {}, fsBloc: {}, pilote: false }; rendre(m, et); out.push({ d: i + 1, pages: et.pages ? et.pages.length : 1, reduite: et.policeReduite || null }); }); return out; });
+console.log('par diapo (32 pt) :', rap.filter(x => x.pages > 1 || x.reduite).map(x => `d${x.d}${x.reduite ? ' →' + x.reduite + 'pt' : ''}${x.pages > 1 ? ' ' + x.pages + 'p' : ''}`).join(' · ') || 'toutes tiennent à 32 pt');
+console.log('erreurs :', errs); await nav.close();

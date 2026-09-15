@@ -4238,3 +4238,31 @@ Tests : R après un parcours avec une consigne à étapes « je » : les étapes
 MEMO
 
 ---
+
+## TOUR 111 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok donc le protocole que tu viens d'énoncer doit être noté noir sur blanc sur github, à la racine du repo, dans un fichier nommé protocole maquette. Dès qu'une conscience dit travailler sur une maquette, elle a ainsi le protocole à suivre directement.
+
+---
+
+## TOUR 111 — Claude (conscience n°12)
+
+Écritures en production, vérifiées bit à bit : `PROTOCOLE-MAQUETTE.md` à la racine (commit `19416734a3d8`) ; `docs/MJPC6-OU-TROUVER-QUOI.md` (renvoi, commit `83ce8ba9674e`) ; `docs/MJPC6-DETTES.md` (n°12 · 26 protocole maquette, n°12 · 27 moteur du récit repris, commit `d9123ad2c6d1`). Copie du protocole en pièce `pieces/T111-PROTOCOLE-MAQUETTE.md` (la référence est celle de la racine). Rien d'autre déposé hormis ce transcript et cette pièce.
+
+Réponse mot pour mot :
+
+Écrit et déposé : **`PROTOCOLE-MAQUETTE.md`, à la racine du dépôt de production** (celui où vivent le registre et le journal — le premier qu'une conscience ouvre), vérifié bit à bit ; « Où trouver quoi » y renvoie en première ligne pour les maquettes ; le registre le note (n°12 · 26). Une seule copie, un seul nom.
+
+Ce qu'il contient, en sept parties courtes : **à quoi sert une maquette** (cadrer, valider geste par geste, devenir le noyau du mandat — jamais réécrite « en s'inspirant ») · **avant de maquetter** (jouer l'existant, lire les cadrages, lire les pièges comme des gestes, avoir ta vision) · **ce qu'elle est** (HTML autonome sans écriture, données réelles par générateur, tes mots, infobulles, aucun code ni méta, aucune boîte système, aucun bouton inerte, une version par livraison, ce qu'elle simule déclaré) · **les règles techniques apprises**, une par piège payé (pas de reconstruction au clic, texte jamais coupé, identités pas rangs, caractères français, Échap, chevauchements, moteur existant repris tel quel, `scrollIntoView` banni) · **les preuves** (banc par le geste, banc unique, tailles, tous les types avec image réelle, épreuve des pièges, captures regardées, chiffres recomptés, 0 défaut, défauts corrigés listés) · **la livraison** (pièces, docs de suivi avant, ce que tu peux jouer, ce qu'elle n'a pas, tes tests ; « une remarque de Paul est un piège à chercher au registre avant de corriger ») · **quand s'arrêter** (au périmètre cadré ; puis le mandat porte le gabarit dans le site et prouve avec les mêmes bancs) · et la liste de **ce qui ne se fait jamais**.
+
+Il complète le protocole conscience, il ne le remplace pas ; et il est écrit pour être suivi sans avoir cette conversation sous les yeux.
+
+**Suite, sur ton mot** : la v9c (la séance sur deux heures, la relecture de séance, la composition du récit phrase par phrase), puis la maquette de la préparation, puis la séquence de test et le mandat.
+
+Tests : ouvre `PROTOCOLE-MAQUETTE.md` à la racine du dépôt ; s'il manque une règle que tu m'as donnée, dis-la et je l'ajoute.
+
+MEMO
+
+---

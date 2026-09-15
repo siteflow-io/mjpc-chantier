@@ -4200,3 +4200,41 @@ Tests : joue deux diapos, une réponse d'élève avec ses initiales, un clic sur
 MEMO
 
 ---
+
+## TOUR 110 — Paul
+
+Texte de Paul, mot pour mot :
+
+> 1. ça dépend de ce que dit la consigne. Mais en réalité, un "je" est toujours un élève. Pour moi, je suis désigné par "M. MENEY". 2. lier par adverbes variés, pas toujours les mêmes. 3. Oui, il faut narrativiser "on a vu que etc". 4: nettoyage à faire. par ailleurs, quelle est l'orientation du chantier à cet instant T? Est ce que la maquette a vocation à être perfectionnée jusqu'à être le nouveau déroulé? ou alors ce travail se fait sur le site directement? qu'avait-on prévu?
+
+---
+
+## TOUR 110 — Claude (conscience n°12)
+
+Complément du moteur du récit dans le gabarit (`T110-v9b-template.html`) : « je » élève → « on a + participe » (table d'irréguliers, verbes en -e et -is, pronominaux, auxiliaire être ; les « je » intérieurs à l'imparfait) ; adverbes variés tirés à la graine (« d'abord », « après quoi », « dans un second temps », « et enfin »…) ; phrases nominales « X : Y » → « on a vu que X, c'était Y » ; les durées « (n min) » retirées ; nettoyage de la ponctuation avec l'espace française conservée. Bancs rejoués : gestes 40/40, tailles, pièges, reconstruction — 0 défaut. Maquette v9b.6 `T110-maquette-pilotage-ordi-v9b6-manipulable.html` (md5 `92c8a711e499…`), capture du récit regardée (`T110-recit.png`). Pièces au sas. Rien d'autre déposé hormis ce transcript et ses pièces.
+
+Réponse mot pour mot :
+
+Les quatre points, faits dans la **v9b.6 jointe**, sur tes mots :
+1. **« Je » est toujours un élève** → le récit le raconte : « J'observe les images en silence » devient « on a observé les images en silence » ; « je discute de ce que je vois » devient « on a discuté de ce qu'on voyait » ; « je me demande » → « on s'est demandé ». Une table de verbes courants (irréguliers compris), et quand un verbe n'y est pas, l'étape est citée en place plutôt que déformée — la table grandira au fil des chapitres, c'est écrit comme dette. Toi, tu es « M. Meney », partout.
+2. **Les étapes sont liées par des adverbes variés** — « d'abord … ; après quoi … ; dans un second temps … ; et enfin … » — tirés à la graine de la diapo, jamais les mêmes deux fois de suite. Les durées prévues (« (5 min) ») sortent du récit : elles n'intéressent pas l'élève.
+3. **Les phrases nominales se racontent** : « Une forme fixe : le sonnet » → « on a vu qu'une forme fixe, c'était le sonnet ».
+4. **Nettoyage** : plus de double point, plus de « . ». », l'espace avant « : ; ? ! » gardée (typographie française).
+
+Le récit sur le même parcours qu'hier, maintenant : *« À 13 h 35, la consigne était : « Observe, discute, fais une hypothèse sur le Romantisme. » — d'abord on a observé les images en silence ; après quoi on a discuté en groupe de ce qu'on voyait ; dans un second temps la consigne disait : « Au brouillon, dans un tableau à trois colonnes… » ; et enfin on a choisi de quel élément on allait parler. […] Zélia a répondu : « Une nature immense face à un homme petit », que M. Meney a reformulée. Jules a aussi participé à la mise en commun. […] d'abord on a vu qu'une forme fixe, c'était le sonnet ; ensuite on a vu qu'un vers régulier, c'était l'alexandrin, 12 syllabes. »* Tous les bancs : 0 défaut.
+
+**L'orientation du chantier à cet instant — ce qu'on avait prévu, et ce que je te propose.**
+
+*Ce qu'on avait prévu* (les 7 et 8 septembre, puis le 13) : les maquettes servent à cadrer et à valider **geste par geste** ; ensuite **un mandat d'exécutant** reconstruit le déroulé dans le site, sur la base saine, **fidèle geste par geste à ce que tu as joué** — ta règle du 8 : « pas de piochage au jugé, sinon aucun intérêt » — en livraisons courtes, chacune avec ses bancs et ses captures, que tu promeus. La maquette n'était pas le produit : elle n'a ni hub, ni session, ni emploi du temps, ni mode test réel, ni ordi de classe réel, ni téléphone.
+
+*Ce que la maquette est devenue* : plus qu'un dessin. Son code porte déjà le journal, les gardes, les pages, la mise en commun, l'appel, les décisions, le T-5, la relecture avec le moteur repris, la mise à jour minimale, les bancs par le geste. Réécrire tout ça « en s'inspirant » dans le site, c'est le piège de la traduction : deux codes, deux comportements, et le mandat qui « décrit un état qui n'existe plus ».
+
+*Ce que je propose, donc* : **la maquette devient le noyau du nouveau déroulé** — pas perfectionnée à l'infini dans la conversation, mais **portée dans le site par le mandat**, à partir de son gabarit et pas d'une page blanche. L'exécutant y branche ce que la maquette simule : le hub par un seul canal (lecture et écriture, mode test compris), la session et l'ordi de classe (websockets, retour au sondage), l'emploi du temps et les portes, la sécurité, la vidéo réelle sur la clé, la taxonomie et la garde Éduscol, les identités partout (le rang aboli jusque dans l'état), les infobulles — et il prouve, geste par geste, que le site fait ce que la maquette fait, avec les mêmes bancs. Ce qui reste à cadrer sur maquette avant : **v9c** (la séance sur deux heures, le récit de séance — et c'est là qu'on travaille la composition phrase par phrase) et **la préparation** (son écran, ses objets, ses gardes). Puis la séquence de test, puis le mandat en livraisons.
+
+Autrement dit : oui, on continue sur la maquette — mais **jusqu'à v9c et la préparation, pas plus** ; le reste se fait dans le site, par mandat, sur ton promeus. Si tu préfères que le mandat parte d'une page blanche avec la maquette pour seule référence, dis-le : c'est plus long et c'est le piège de la traduction, mais c'est possible.
+
+Tests : R après un parcours avec une consigne à étapes « je » : les étapes racontées (« on a … »), liées par des adverbes différents, sans les durées ; une phrase nominale « X : Y » → « on a vu que X, c'était Y » ; aucun double point.
+
+MEMO
+
+---

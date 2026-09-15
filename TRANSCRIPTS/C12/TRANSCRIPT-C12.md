@@ -4303,3 +4303,31 @@ Tests : lundi — joue quatre étapes de la diapo 1, une réponse d'élève, une
 MEMO
 
 ---
+
+## TOUR 113 — Paul
+
+Texte de Paul, mot pour mot :
+
+> 1. elle reprend, là où on en était, mais flèche les objets précédemment vus en " retrouve cette partie dans ton cahier". d'ailleurs, dans le prompt de création de chapitre, un chapitre ne peut être accepté si l'ensemble de ses activités ne sont pas numérotées. C'est aussi le genre de chose qui permet à l'élève de se repérer dans la relecture.
+
+---
+
+## TOUR 113 — Claude (conscience n°12)
+
+Gabarit v9c.1 (`T113-v9c-template.html`) : `num` par diapo (générateur, continu sur le chapitre, « 17 bis » pour l'insérée), affiché à l'étiquette, au volet, au T-5, à l'ouverture, dans le récit ; `dejaVuAvant(di)` et l'état `deja` : les éléments vus dans une heure précédente portent `.deja` et sont suivis de « ↑ retrouve cette partie dans ton cahier » ; le journal `diapo` porte `deja` ; le récit de l'heure dit la reprise et ne relit que [deja, vu). Banc `T113-test-reprise.mjs` : 0 défaut ; tous les autres bancs rejoués : 0 défaut ; captures regardées (`T113-reprise-mur.png`, `T113-reprise-pilote.png`). Cadrages écrits et déposés : 1 (6.6), 2 (1.1 bis), 4 (3.2 bis, 5.1). Accroc de méthode : deux scripts d'écriture arrêtés sur une assertion avant d'écrire, fichiers inchangés poussés sous un commit qui disait le contraire (commits `5d51bc407e6e`, `4846b7a112ee`, `d4e4d0cbafdc`, `7d9b62a5483d`, `ecab7b4981d3`) — attrapé par la vérification du contenu, refait, vérifié (`e56c7d95bc3e`, `56dda62622d8`, `86508a6c0093`). Maquette `T113-maquette-pilotage-ordi-v9c1-manipulable.html` (md5 `3bd36a99a598…`). Pièces au sas. Rien d'autre déposé hormis ce transcript et ses pièces.
+
+Réponse mot pour mot :
+
+Pris, et fait dans la **v9c.1 jointe** — avec un accroc de méthode que je te dis d'abord, parce qu'il est au registre depuis le 10/09 et que je viens d'y retomber : mon script d'écriture des cadrages s'est arrêté sur une assertion mal posée, et j'ai poussé des fichiers inchangés sous un message de commit qui disait le contraire. Ma vérification « le contenu poussé, pas seulement le commit » l'a attrapé cette fois (elle a dit ÉCART), j'ai refait, et les trois cadrages portent maintenant ce que tu as dit, vérifié bit à bit **et** par le contenu. C'est écrit ainsi dans le transcript.
+
+**1. La reprise d'une diapo glissée.** Mardi, « Analyse d'images » reprend là où on en était : les quatre étapes vues lundi restent affichées avec un liseré, suivies de **« ↑ retrouve cette partie dans ton cahier »**, et ▶ dévoile l'étape 5. Au pilote et au tableau (capture regardée). Le récit de mardi dit : *« Activité 1 — Analyse d'images : la routine. À 10 h 07, on a repris l'activité 1 là où on s'était arrêté — la partie déjà faite est dans le cahier … »* et ne répète pas ce qui a été fait lundi. Cadrage 1 (6.6).
+
+**2. Le numéro d'activité.** Chaque activité porte un numéro **continu sur le chapitre** — « Activité 1 » … « Activité 18 » sur la première séance, la suite sur la suivante — au tableau (l'étiquette : « ACTIVITÉ 1 — ANALYSE D'IMAGES : LA ROUTINE »), dans le volet, au T-5, dans le récit. Et la règle, écrite au cadrage 4 (3.2 bis, et dans le prompt) : **un chapitre dont les activités ne sont pas toutes numérotées est refusé** — par le prompt, par la validation à l'import, par l'éditeur. J'y ai ajouté une chose que ta règle impose sans le dire : **un numéro ne change jamais une fois montré à une classe** — une diapo insérée après coup reçoit « 17 bis », jamais une renumérotation, sinon les cahiers déjà écrits ne correspondent plus. Dis-moi si « bis » te va.
+
+**Preuves** : le banc de la reprise (lundi quatre étapes, clôture, mardi la réactivation puis l'activité 1 fléchée, ▶ sur l'étape 5, le récit de mardi sans lundi), les bancs de la séance et des gestes, les tailles, la reconstruction, les chevauchements — 0 défaut ; deux captures regardées. Cadrages 1, 2 et 4 déposés.
+
+Tests : lundi — quatre ▶ sur l'activité 1, Fin de l'heure → Clore → Lancer l'heure 2 ; ▶ sur la réactivation, puis ▶ : l'activité 1 revient avec ses quatre étapes fléchées « retrouve cette partie dans ton cahier », ▶ dévoile la cinquième ; ouvre le tableau : même chose ; R → le récit de l'heure 2 commence par « on a repris l'activité 1 ».
+
+MEMO
+
+---

@@ -3775,3 +3775,31 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 97 — Paul
+
+Texte de Paul, mot pour mot :
+
+> pas compris l'histoire du tableau et du son. précise. En fait feuille, c'est le support vierge dans le site (en gros, un word blanc). mais fiche, c'est fiche notion, fiche grammaire, etc. c'est du pédagogique. C'est un contenu qui va dans une feuille. La feuille peut contenir autre chose qu'une fiche.
+
+---
+
+## TOUR 97 — Claude (conscience n°12)
+
+Le cadrage 4 est réécrit (v2) et soumis en pièce jointe ; non déposé (pièce locale, recopiée en `pieces/T97-CADRAGE-4-LA-PREPARATION-v2-soumis.md`). Rien déposé hormis ce transcript et cette pièce.
+
+Réponse mot pour mot :
+
+**Le tableau et le son, en clair.** Une vidéo, c'est l'appareil qui projette qui la lit, et c'est de lui que sort le son.
+- **Cas 1, Win+K** : ton portable projette (la fenêtre du tableau est sur ton portable, dupliquée sur le vidéoprojecteur). La clé est branchée sur ton portable. La vidéo se lit, le son sort de ton portable — vers les enceintes de la salle, comme n'importe quelle vidéo que tu passerais. Rien de spécial.
+- **Cas 2, l'ordi de classe** : c'est lui qui projette. Pour lire la vidéo, il faut qu'il **voie le fichier** — donc que la clé soit branchée **sur lui**, et que tu lui aies désigné le dossier une fois (un clic, comme sur ton portable). Alors ton pilotage lui dit « lis à tel instant », « pause », et le son sort de l'ordi de classe. Si la clé est sur ton portable et pas sur l'ordi de classe, il ne peut pas la lire — et le site te le dit, au lieu d'afficher un lecteur noir. C'est la seule limite : **une vidéo sur ta clé ne voyage pas par le hub**.
+
+**Feuille et fiche — pris tel que tu le dis** : la feuille est le support vierge du site ; la fiche est un contenu pédagogique qui va dans une feuille ; une feuille peut contenir autre chose. Le bloc de diapo garde son nom, « fiche », et sa garde devient exacte : **il n'existe que lié à une fiche qui vit dans une feuille du chapitre**. « Item » et « écran » disparaissent de l'écran ; « document » désigne ce qui est joint au chapitre.
+
+Le **cadrage 4, réécrit entier** avec tout ce que tu as dit depuis samedi — les portes d'entrée (« Éditer dans l'atelier », « Préparer » là où tu en es avec chaque classe, la revue du chapitre par classe), Tab, l'audit du clic droit fait, le rang aboli, les mots, la vidéo sur la clé et sa garde, les documents pilotables et ce qui s'enregistre, l'appli de pages en chantier à part, les JSON des chapitres précédents dans le prompt — est joint pour relecture ; il n'est pas déposé. Sur ton mot, je le dépose, et on passe aux maquettes.
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

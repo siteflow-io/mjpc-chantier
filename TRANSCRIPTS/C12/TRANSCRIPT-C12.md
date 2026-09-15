@@ -4266,3 +4266,40 @@ Tests : ouvre `PROTOCOLE-MAQUETTE.md` à la racine du dépôt ; s'il manque une 
 MEMO
 
 ---
+
+## TOUR 112 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok pour la v9C et on applique le protocole maquette dès maintenant
+
+---
+
+## TOUR 112 — Claude (conscience n°12)
+
+Protocole maquette appliqué. §1 : l'existant joué sur deux heures (`pieces/T112-existant-deux-heures.mjs`, capture `T112-existant-H2-repart-a-zero.png`) : relancement à zéro, « 0 min déjà comptées » ; cadrages 6.5-6.7, 7, 8 et cadrage 2 §4 relus. Gabarit v9c (`T112-v9c-template.html`) : temps simulé par heure (HEURES_SIM, `now()`), `h`/`heure` sur chaque enregistrement, `ordreHeure(h)` (réactivation, glissées, diapos, bilan), volet par ordre avec « ↩ » et « pas dans cette heure », navigation par l'ordre (hors de l'heure : la trame), écran d'ouverture (`ouvrirOuverture`), `lancerHeure`, coche du bilan, clôture de séance, relecture à cinq faces (`vuJ`, `repsJ`, `recitHtml(fin, h)`, `passeHtml(fin, h)`, `recitSeanceHtml`), heure de Paris. Bancs : `T112-test-v9c-seance.mjs` 17/17, `T112-test-v9c-gestes.mjs` 40/40, tailles 5/5, types tous, pièges 0, reconstruction 0, chevauchements 0. Registre n°12 · 28-29 avant livraison (commit `b025bb5420b7` puis recompte). Maquette `T112-maquette-pilotage-ordi-v9c-manipulable.html` (md5 `18f9d85ed520…`). Captures regardées : `T112-v9c-01-ouverture-H2.png`, `T112-v9c-02-H2-volet.png`, `T112-v9c-03-relecture-seance.png`. Pièces au sas. Rien d'autre déposé hormis ce transcript et ses pièces.
+
+Réponse mot pour mot :
+
+Protocole appliqué, dans l'ordre : **l'existant joué sur deux heures d'abord** (une séance lancée, close, relancée sur la 3E Charles de Gaulle) — et il ne sait pas reprendre : « Heure de 10:07-11:02 reprise — 0 min déjà comptées », le pilotage repart à la diapo 1, dévoilement à zéro, « Où on en est » 0/8 partout ; la trace de l'heure est écrite mais rien ne la relit. Au registre (n°12 · 28). C'est le trou que la **v9c jointe** comble.
+
+**Ce que tu peux jouer, geste par geste** (sur la vraie trame, avec lundi 15:07 et mardi 10:07 comme heures simulées, à l'heure de Paris) :
+- **Lundi, l'heure 1** : tout ce que la v9b fait (appel, réponses, notes, décisions…), puis **Fin de l'heure → Clore** : le site n'ouvre plus la relecture, il ouvre **« Où en est la 3E Charles de Gaulle — mardi 15 septembre, 10:07-11:02 · heure 2 sur 2 »** : l'heure 1 (close à…, diapos montrées, élèves ayant parlé, le mot aux absents rappelé), **ce que l'heure 2 jouera dans l'ordre** — la réactivation d'abord, puis ce qui a glissé de lundi (marqué ↩, avec « à terminer » ou « préparée à la maison »), puis les diapos de mardi, le bilan de la séance en dernier —, le débordement prévu, les vidéos et la clé ; deux boutons : voir la relecture de l'heure 1, **Lancer l'heure 2**. Si l'heure 1 n'a pas été close, lancer est refusé jusqu'à ses décisions.
+- **Mardi, l'heure 2** : le pilotage s'ouvre sur « Où en sommes-nous ? » ; ▶ suit l'ordre de l'heure (la réactivation, puis les glissées, puis mardi) ; le volet montre cet ordre, avec « ↩ H1 » sur les glissées et, en bas, « pas dans cette heure » (la diapo en réserve, ce qui est retiré) ; sur la diapo du bilan, **la coche « Les élèves ont écrit le bilan »** paraît ; **Fin de l'heure** est une fin de séance : « Reporter à la séance suivante », pas de défaut, le bilan attesté ou non dit noir sur blanc ; Clore ouvre la relecture.
+- **La relecture à cinq faces** : le récit et « ce qui s'est passé » **par heure**, lus au journal de l'heure (lundi ne contient rien de mardi, et inversement ; le mot de l'absent dit « lundi » ou « mardi ») ; et **« La séance »** — ma proposition pour la forme que le cadrage 2 laissait ouverte : le cadre de la séance avec ses deux dates, puis **« Heure 1 — lundi 14 septembre, de 15 h 07 à 16 h 02 »** et ses paragraphes, **« Pour mardi — … »** (le travail donné entre les deux), **« Heure 2 — mardi… »**, et un seul bilan : « Sur la séance, on a travaillé…, répondu à… ; n élèves ont pris la parole. Une activité restait à la fin de la séance : « Les règles héritées », qu'on fera à la prochaine séance. Le bilan de la séance a été écrit par les élèves. » — copiable pour École Directe.
+
+**Ce qu'elle n'a pas** : la vidéo réelle, la garde Éduscol, le papier de séance, le tableau distant sur un autre appareil ; l'état par rang à l'intérieur (aboli au mandat) ; et une chose qui attend ton mot, ci-dessous.
+
+**Défauts trouvés et corrigés avant livraison** : l'heure affichée en UTC (13 h 07 pour 15 h 07) → Europe/Paris partout ; les glissées non annoncées à l'ouverture (je comparais à l'heure en cours, pas à l'heure cible) ; ▶ depuis une diapo « pas dans cette heure » revenait au début de l'heure → il suit la trame.
+
+**Preuves** : le banc de la séance (17 vérifications, deux heures jouées de bout en bout par le clic), le banc des gestes de la v9b rejoué sur la v9c (40), les tailles, tous les types avec image réelle, l'épreuve des pièges, la reconstruction, les chevauchements — **0 défaut**. Trois captures regardées (l'ouverture de mardi, le volet de l'heure 2, la relecture de séance).
+
+**Deux mots à trancher** :
+1. **Une diapo glissée qui avait été commencée lundi** (« Analyse d'images », quatre étapes vues) : mardi, elle **reprend avec ce que la classe avait déjà vu** (les quatre étapes déjà dévoilées, il reste les deux dernières) — c'est ce que fait la maquette. Ou tu préfères qu'elle reparte de zéro devant la classe ?
+2. **La forme du récit de séance** ci-dessus : ça te va, ou tu la veux autrement (par exemple un seul récit continu sans les sous-titres d'heure) ?
+
+Tests : lundi — joue quatre étapes de la diapo 1, une réponse d'élève, une note versée, un absent ; Fin de l'heure → « Préparer à la maison » sur Tableau 1 → un mot aux absents → Clore ; lis « Où en est la classe » ; Lancer l'heure 2 : la réactivation, puis ▶ : « Analyse d'images » reprend à l'étape 5 ; va à la diapo 19 : la coche ; Fin de l'heure : « Reporter » sur une diapo → Clore ; la relecture : les cinq faces, puis « La séance ».
+
+MEMO
+
+---

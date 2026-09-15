@@ -4431,3 +4431,31 @@ Sur ton « ok » : les cadrages d'abord (l'activité et ses conséquences, la lo
 MEMO
 
 ---
+
+## TOUR 117 — Paul
+
+Texte de Paul, mot pour mot :
+
+> exactement: une maquette doit être au moins ce que le site sait faire. pour mon ok, c'est quoi les deux nombres? sois explicite bon sang.
+
+---
+
+## TOUR 117 — Claude (conscience n°12)
+
+Aucune mesure nouvelle. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Explicitement.
+
+**Nombre 1 — la taille normale du texte au tableau : 6,4 % de la hauteur de la diapo.** C'est ce que l'existant fait aujourd'hui. Concrètement : sur ton vidéoprojecteur, si la diapo fait 1 m de haut, une ligne de texte fait 6,4 cm de haut. Sur ton écran à 1536 × 864, ça donne du texte à 22 px. C'est la taille de départ de chaque diapo.
+
+**Nombre 2 — le plancher, la plus petite taille lisible du fond de la classe : 4,2 % de la hauteur de la diapo.** C'est ta loi du 25 août (« 32 pt sur une boîte de 760 px »), traduite en proportion. Concrètement : une ligne de 4,2 cm sur une diapo de 1 m ; 14,5 px sur ton écran. Quand une diapo est trop chargée pour tenir à 6,4 %, le texte descend — jusqu'à 4,2 %, jamais en dessous — pour que tout tienne entier. Si même à 4,2 % ça ne tient pas, la diapo est « trop pleine » : c'est à toi de la couper en préparation ; en classe elle s'affiche quand même, en pages.
+
+Donc : **6,4 % = normal ; 4,2 % = plancher.** Un rapport de 1,5 entre les deux : la diapo la plus chargée peut contenir une fois et demie plus de texte que la diapo normale avant d'être déclarée trop pleine.
+
+Ton ok sur ces deux nombres, et je pars : les cadrages, puis la v9c.2.
+
+MEMO
+
+---

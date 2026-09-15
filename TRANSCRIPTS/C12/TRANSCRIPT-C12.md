@@ -4163,3 +4163,40 @@ Tests : ⚙ → « Faire arriver T-5 », fais défiler la rangée vers la droite
 MEMO
 
 ---
+
+## TOUR 109 — Paul
+
+Texte de Paul, mot pour mot :
+
+> il manquera la date dans la relecture. Sinon tout le reste m'a l'air à peu près correct (je n'ai pas tout testé). La relecture, il faudra travailler sur sa composition, je ne suis pas sûr que tu aies repris le moteur de l'ancien déroulé.
+
+---
+
+## TOUR 109 — Claude (conscience n°12)
+
+Aveu : le récit de la maquette n'était pas le moteur de l'ancien déroulé. Correction : `moteur.html` L1146-1230 extrait tel quel (VERBES, PRESENT_IMPARFAIT, PERSONNE, CONNECTEURS, empreinte, connecteur, personne, imparfait, recit) — 4 515 caractères, seule modification « le professeur » → « M. Meney » — injecté dans le gabarit (`/*__RECIT__*/`) ; `recitHtml` réécrit sur `majVues` (tête « À hh h mm, », connecteurs par rang, majuscule après point, bilan « En fin d'heure… », devoirs détectés) avec les greffes du cadrage (prénoms, image, schéma, vidéo, document, lumière, notes versées, non faites, présents, travail à faire) ; la date du jour dans le cadre et dans le mot de l'absent ; les étapes à la première personne de l'élève citées (question posée à Paul). Bancs rejoués : 0 défaut. Maquette v9b.5 `T109-maquette-pilotage-ordi-v9b5-manipulable.html` (md5 `2a457be1a6ff…`), pièces `T109-*` (gabarit, générateur, moteur extrait, parcours du récit, capture regardée). Pièces au sas. Rien d'autre déposé hormis ce transcript et ses pièces.
+
+Réponse mot pour mot :
+
+Tu as raison sur les deux points, et je le dis sans détour : **je n'avais pas repris le moteur de l'ancien déroulé** — j'avais écrit un récit à moi, en prose simple, avec mes propres connecteurs. Le cadrage 2 (1.2, 1.3) dit pourtant « repris de l'ancien moteur : la transposition, la table de règles, les tournures par type de bloc ». Corrigé dans la **v9b.5 jointe** :
+
+- **Le moteur du récit est repris tel quel** — extrait du fichier de l'ancien déroulé (`moteur.html`, L1146-1230 : la table des verbes à l'impératif, le passage à la personne « on », le présent mis à l'imparfait, les quatre familles de connecteurs et leur tirage, la fonction `recit()` et ses règles, la tête de paragraphe « À 11 h 04, », la majuscule après le point, le bilan « En fin d'heure, on a travaillé une fiche et répondu à deux questions ; n élèves ont pris la parole ») — 4 515 caractères injectés sans modification, sauf **« le professeur » → « M. Meney »** (cadrage 2). Le fichier extrait est en pièce (`T109-recit-moteur-repris-de-l-ancien-deroule.js`) pour que tu puisses le comparer.
+- **La date est là** : « 3E Charles de Gaulle · chapitre, séance · **mardi 15 septembre 2026** · heure 1 », et le mot pour l'absent dit « tu n'étais pas là mardi à 11 h 04 ».
+- Ce que l'ancien ne savait pas et que le cadrage ajoute est greffé **à côté** du moteur, pas à sa place : les prénoms au lieu des initiales, « M. Meney a reformulée », l'image, le schéma, la vidéo (« jusqu'à la composition »), le document projeté, la mise en lumière, les notes versées (telles quelles, surlignées), les activités non faites par leur décision, « sur n présents », le travail à faire de la fin d'heure.
+
+Le récit produit sur un vrai parcours (capture regardée) : *« À 11 h 04, la consigne était : « Observe, discute, fais une hypothèse sur le Romantisme. » La consigne précisait : « j'observe les images en silence (5 min). » « je discute en groupe… » — Zélia a répondu : « Une nature immense face à un homme petit. », que M. Meney a reformulée. Jules a aussi participé à la mise en commun. — Pour la prochaine séance — Apprendre la définition du Romantisme (fiche notion). — En fin d'heure, on a répondu à une question ; 2 élèves sur 29 présents ont pris la parole. »*
+
+**Sa composition, à travailler ensemble — ce que je vois, en le lisant** :
+1. **Qui parle dans une consigne ?** Le consultant a écrit les étapes à la première personne de l'élève (« J'observe », « Je discute »). L'ancien moteur prenait « je » pour toi (« M. Meney passe dans les rangs »). J'ai tranché provisoirement : une étape qui commence par « je » est celle de l'élève → elle est **citée** entre guillemets, sans transposition. À toi de dire si c'est ça, ou si le récit doit la transposer (« on a observé les images en silence ») — ce qui demande une conjugaison que l'ancien moteur n'a pas.
+2. **Les citations successives** sont juxtaposées (« … (5 min). » « je discute… ») : l'ancien faisait pareil ; on peut les lier (« puis », « ensuite ») ou les mettre en liste.
+3. **Les phrases nominales** (« Une forme fixe : le sonnet. ») passent telles quelles — c'est la règle de l'ancien ; on peut vouloir « on a vu qu'une forme fixe… ».
+4. **Le double point** après une question (« …partie cours. ». ») : à nettoyer.
+Rien de ça n'est tranché par moi : c'est le sujet de la v9c (le récit de séance), où on le travaillera phrase par phrase sur des vraies heures.
+
+Bancs rejoués : 0 défaut partout (gestes, tailles, types, pièges, reconstruction, boutons du récit).
+
+Tests : joue deux diapos, une réponse d'élève avec ses initiales, un clic sur la réponse (reformulée), une prise de parole, une note versée, puis R : le récit doit ressembler à celui que tu connais, avec la date, les prénoms et M. Meney.
+
+MEMO
+
+---

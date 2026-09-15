@@ -3955,3 +3955,35 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 103 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok c'est bon. dépose.
+
+---
+
+## TOUR 103 — Claude (conscience n°12)
+
+Écritures faites au sas, vérifiées bit à bit : `DEROULE/CADRAGE-4-LA-PREPARATION.md` déposé (corps identique à la pièce T102) ; `DEROULE/CADRAGE-2-LA-RELECTURE.md` 1.6 ter complété. Rien d'autre déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Déposé : `DEROULE/CADRAGE-4-LA-PREPARATION.md`, corps identique à la version que tu as lue (seule la ligne de statut change : validé le 15/09), vérifié bit à bit. Le cadrage 2 porte en plus la tournure « regarder » pour une vidéo et le renvoi à la consigne École Directe (1.6 ter), déposé aussi.
+
+**Où on en est** : les quatre cadrages sont écrits et déposés — la classe, la relecture, les notions, la préparation. Il reste, avant le mandat :
+1. **v9b** — le clic droit de classe, l'appel dans la liste, les commentaires, la réserve en encart, le T-5 en vignettes avec les décisions, la fin d'heure et la fin de séance, le récit qui se recompose sous tes yeux ;
+2. **v9c** — la séance sur deux heures, la réactivation et ce qui glisse, la relecture de séance, l'ordi de classe simulé ;
+3. **la maquette de la préparation** — l'écran, les objets, le clic droit audité, la coupure à la main, la frontière d'heure, les notes, la vidéo et ses repères ;
+4. **la séquence de test** que tu rejoueras sur chaque livraison ;
+5. **le mandat**, en livraisons courtes, fidèle aux maquettes geste par geste.
+Et, à mandater à part dès maintenant : **les attendus au hub** (sans eux, pas de garde Éduscol).
+
+Je commence la **v9b** sur ton mot — ou les docs de suivi d'abord, comme tu l'exiges avant toute livraison : le registre, le journal et « Où trouver quoi » datent du 12/09, et il y a depuis le cadrage 4, les dettes vues en jouant (la palette qui dit « aucun élève » puis pose, le mode test qui fuit, la réponse attendue montrée au second ▶), la vidéo, les documents. Je te propose de les mettre à jour maintenant, puis la v9b.
+
+Tests : aucun, rien n'est livré au site.
+
+MEMO
+
+---

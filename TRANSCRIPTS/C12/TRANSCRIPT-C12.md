@@ -4369,3 +4369,36 @@ Ordre de travail proposé : 1 → 3 → 4 → 5 → 2 → 6, en une seule livrai
 MEMO
 
 ---
+
+## TOUR 115 — Paul
+
+Texte de Paul, mot pour mot :
+
+> une activité peut chevaucher une frontière d'heure, notamment dans le cas où elle n'est pas finie. ce que tu viens de dire, tu le confrontes au cadrage, et surtout tu confrontes la maquette au cadrage.
+
+---
+
+## TOUR 115 — Claude (conscience n°12)
+
+Audit écrit : `pieces/T115-AUDIT-maquette-v9c1-contre-cadrage.md` (première partie : les six ajustements confrontés au cadrage ; seconde partie : la v9c.1 règle par règle, cadrages 1, 2, 3 — verdicts ✔ ◐ ✘ ∅ —). Deux ✘ (loi de taille non appliquée ; diapo prise pour activité), des ∅ dans le périmètre (palette Maj + Espace, historique par élève, ² / F2, surlignage par couleur, Ctrl+Z, T-5 à l'heure réelle et rattrapage, mot de l'absent tronqué, infobulles de menu). Rien déposé hormis ce transcript et cette pièce ; les cadrages seront écrits sur la réponse de Paul.
+
+Réponse mot pour mot :
+
+Fait, dans l'ordre que tu demandes : d'abord les six ajustements confrontés au cadrage, puis la maquette v9c.1 confrontée au cadrage, règle par règle (147 règles des cadrages 1, 2, 3). L'audit complet est joint ; voilà ce qu'il donne.
+
+**Les six ajustements, contre le cadrage.**
+- **La police** : le cadrage disait juste — « 32 pt = 5,6 % de la hauteur de la boîte » (5.4) — mais l'écrivait en points, une unité d'écran ; la maquette a suivi la lettre, pas la loi. La règle devient : *la taille du texte est une fraction de la boîte du tableau, jamais une unité d'écran* ; une diapo entière tient au réglage normal ; les pages ne servent qu'à ce qui grandit en classe (5.2 reste).
+- **Ctrl + molette** : le cadrage (5.6) dit ce que le zoom ne touche pas, pas ce qu'il doit laisser atteignable → à écrire : la diapo reste dans son cadre, les outils dessous, les notes cèdent.
+- **L'activité** : c'est le vrai trou. Le cadrage parle « d'activités » partout (§7, le T-5, le récit, le numéro) mais **ne dit nulle part qu'une activité est un objet distinct de la diapo** — une ou plusieurs diapos, un numéro, un titre. La maquette a pris diapo = activité, et donc décide par diapo, raconte par diapo, numérote par diapo : ✘ sur l'unité. Avec ton mot d'aujourd'hui — **une activité peut chevaucher une frontière d'heure, notamment quand elle n'est pas finie** — la règle devient : l'activité est un objet du cadrage 4 ; la frontière d'heure peut passer en son milieu ; **les décisions se prennent par activité** (une activité non finie glisse entière, ses diapos vues fléchées « retrouve cette partie dans ton cahier ») ; le récit fait **un paragraphe par activité** (comme l'ancien moteur avec son groupe) ; le T-5 montre les diapos restantes groupées sous leur activité.
+- **Les miniatures, les colonnes repliables, le centre qui s'adapte** : trois trous du cadrage 1 (0.1), à écrire tels que tu les as dits.
+- **L'audit à trois tailles** : le protocole en demandait deux ; j'ajoute 1536 × 864, ton écran.
+
+**La maquette contre le cadrage — ce que l'audit trouve** : sur les 147 règles, la plupart sont ✔ et prouvées par un banc ; **deux ✘** (la loi de taille non appliquée ; l'unité diapo au lieu de l'activité — dans le T-5, les décisions, le récit, le numéro) ; et **des trous de fidélité que je n'avais pas vus** : ² / F2 non simulés, **la palette Maj + Espace absente**, **pas d'historique par élève** (un clic sur un nom ouvre l'appel, pas ses prises), le surlignage par couleur et Ctrl+Z absents, le T-5 simulé sans l'heure réelle du créneau, le T-5 de l'heure précédente non rejoué avant le lancement (6.7 : je refuse de lancer, je ne rattrape pas), le mot de l'absent qui renvoie au récit entier au lieu de s'arrêter à son heure, des entrées de menu sans infobulle. Tout ça entre dans la v9c.2. Ce qui est **hors de la maquette et déclaré** (au mandat, tel que cadré) : le hub et l'ordi de classe réels, le mode test, l'immuabilité comme mécanisme, la vidéo réelle, la garde Éduscol, la répétition et le cadrage 4 (la maquette de la préparation), le papier.
+
+**Ce que je propose de faire maintenant** : écrire d'abord ces règles dans les cadrages (l'activité au cadrage 4 et ses conséquences aux cadrages 1 et 2 ; la loi de taille ; le zoom ; l'écran), puis la v9c.2 avec les cinq lots de l'audit, dans cet ordre : la loi de taille et le zoom → l'activité → les miniatures et les colonnes → les trous de fidélité → l'audit à trois tailles. Une seule livraison, bancs et captures à l'appui.
+
+**Une question avant d'écrire l'activité** : au T-5, quand une activité de sept diapos n'est pas finie, la décision « à terminer à la maison » porte sur **l'activité entière** (l'élève termine chez lui les diapos non vues) — ou peut-elle porter sur **une diapo** (« préparez le Tableau 4 ») ? Je propose l'activité entière, avec les diapos visibles dessous pour que tu voies ce qu'il reste.
+
+MEMO
+
+---

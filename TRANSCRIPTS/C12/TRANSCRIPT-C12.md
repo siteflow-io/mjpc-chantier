@@ -4487,3 +4487,27 @@ Donc, ton ok sur : **36 pt normal · 32 pt plancher** (ou 40 pt · 32 pt si tu p
 MEMO
 
 ---
+
+## TOUR 119 — Paul
+
+Texte de Paul, mot pour mot :
+
+> non c'est 26 le plancher normalement
+
+---
+
+## TOUR 119 — Claude (conscience n°12)
+
+Cherché : « 26 pt » n'est écrit nulle part dans les documents (le cadrage 1, 5.4, portait « 32 pt = 5,6 % » depuis le 25/08) ; le mot de Paul prime : plancher 26 pt, normal 36 pt (l'existant). Rien déposé hormis ce transcript ; le cadrage 1 sera corrigé avec le lot des cadrages.
+
+Réponse mot pour mot :
+
+26 pt, pris — c'est ton mot, il prime sur le « 32 pt » que le cadrage 1 (5.4) portait depuis le 25 août ; je le corrige.
+
+Donc : **36 pt normal · 26 pt plancher**, sur la diapo de référence, convertis en proportion pour tout écran. La marge est bonne (le texte peut descendre de 28 % avant d'être déclaré trop plein) : une diapo chargée tiendra entière en classe sans qu'on la coupe ; seules les vraiment trop pleines seront signalées en préparation.
+
+Je pars avec ces deux nombres : les cadrages (l'activité, la loi de taille 36/26, le zoom, l'écran), puis la v9c.2.
+
+MEMO
+
+---

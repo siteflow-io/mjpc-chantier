@@ -3836,3 +3836,31 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 99 — Paul
+
+Texte de Paul, mot pour mot :
+
+> non, "lisible sur ton portable" ou "lisible sur l'ordi de classe", l'adjectif lisible est obscur. il faut quelque chose qui mette en évidence qu'on parle de la vidéo. "clef usb branchée sur ton ORDI portable" (il faut bien mentionner ordi, parce que portable seul peut désigner le téléphone) et pareil "clef usb branchée sur l'ordi classe" ok pour la revérif et la garde si pas branchée du tout. 2. parfait, mais plutot que passe, il faut que le diapo passe tout seul. pour éviter de casser le flux. et annonce explicite sur mon pilotage: diapo tant avec la vidéo sur tel sujet, passée parce que pas de clef branchée. mais option passer doit être dispo quand même, si ça passe pas automatiquement pour je ne sais quelle raison.
+
+---
+
+## TOUR 99 — Claude (conscience n°12)
+
+Le brouillon du cadrage 4 v2 (4b.4) est réécrit dans les mots de Paul ; non déposé (pièce `pieces/T99-CADRAGE-4-LA-PREPARATION-v2-soumis.md`). Rien déposé hormis ce transcript et cette pièce.
+
+Réponse mot pour mot :
+
+Pris, mot pour mot, et réécrit (4b.4) :
+- plus de « lisible » : **« clé USB branchée sur ton ordi portable »** / **« clé USB branchée sur l'ordi de classe »** — et « ordi portable » toujours en deux mots, jamais « portable » seul ;
+- à l'ouverture : la ligne par vidéo, « Revérifier », rien ne bloque ;
+- en approche : « la diapo suivante a une vidéo (*le Radeau*) — la clé USB n'est pas branchée sur l'ordi de classe » ;
+- à la diapo : **elle passe toute seule**, le tableau va à la suivante sans lecteur, et ton pilotage l'annonce : **« diapo 12, la vidéo sur *le Radeau*, passée : pas de clé USB branchée »** ; le bouton **Passer** reste là au cas où ; le journal et la fin d'heure la comptent comme pas jouée.
+
+Le cadrage 4 v2 est prêt avec ça. Sur ton mot, je le dépose et on passe aux maquettes.
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

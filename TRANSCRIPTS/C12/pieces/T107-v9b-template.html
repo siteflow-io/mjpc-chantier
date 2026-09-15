@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8"><title>Maquette v9b — les décisions</title>
+<style>
+:root{--fond:#0f0d0a;--carte:#1b1712;--carte2:#241e17;--bord:#332a20;--bord2:#4a3d2f;--texte:#efe6d6;--texte2:#b9ab94;--sourd:#7d7061;--or:#e4b45c;--gel:#8fc4ea;--joue:#7fb77e;--rouge:#e0a09a;--ambre:#c9a04a}
+*{box-sizing:border-box}html,body{height:100%}
+body{margin:0;background:var(--fond);color:var(--texte);font-family:'EB Garamond',Georgia,serif;font-size:15px;line-height:1.3;overflow:hidden}
+#pilotage{height:100%;display:flex;flex-direction:column;overflow:hidden;position:relative}
+button{font:inherit;cursor:pointer}
+.btn{background:var(--carte2);border:1px solid var(--bord2);color:var(--texte);border-radius:8px;padding:6px 12px}
+.btn:hover{border-color:var(--or)}.btn.or{background:#3a2c14;border-color:var(--or);color:var(--or);font-weight:600}
+.btn.fin{border-color:#7a3b3b;color:#e3b1b1}.btn.gelb{background:#22303c;border-color:var(--gel);color:#cfe6f8;font-weight:600}
+.rond{width:40px;height:40px;border-radius:50%;background:var(--carte2);border:1px solid var(--bord2);color:var(--texte);display:inline-flex;align-items:center;justify-content:center;font-size:1.05rem}
+.rond.on{border-color:var(--or);color:var(--or);box-shadow:0 0 0 2px #3a2c14}.rond.gelon{border-color:var(--gel);color:var(--gel);box-shadow:0 0 0 2px #22303c}
+.haut{height:46px;display:flex;align-items:center;gap:12px;padding:0 14px;background:#141110;border-bottom:1px solid var(--bord);flex:0 0 auto}
+.onglets{display:flex;gap:2px;margin-right:6px}.ong{background:transparent;border:1px solid transparent;color:var(--texte2);padding:6px 12px;border-radius:8px}.ong.on{background:var(--carte2);border-color:var(--bord2);color:var(--or);font-weight:600}
+.haut .qui{font-weight:600}.haut .ou{color:var(--texte2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:34vw}
+.haut .chrono{margin-left:auto;display:flex;align-items:baseline;gap:10px}.haut .chrono b{color:var(--or);font-variant-numeric:tabular-nums;font-size:1.15rem}.haut .heure{color:var(--sourd);font-variant-numeric:tabular-nums}
+.corps{display:grid;grid-template-columns:186px minmax(0,1fr) 336px;grid-template-rows:minmax(0,1fr);flex:1;min-height:0}
+body.vue-relecture .corps{display:none}
+.volet{background:#131009;border-right:1px solid #262019;padding:8px 8px;overflow:auto;min-height:0}
+.volet h5{margin:0 0 6px;color:var(--sourd);font-size:.72rem;letter-spacing:.09em;text-transform:uppercase;display:flex;justify-content:space-between}
+.vig{display:flex;gap:6px;padding:6px 5px;border-radius:7px;cursor:pointer;position:relative;align-items:flex-start}
+.vig.cour{background:#231c12;outline:1px solid var(--or)}.vig .n{width:14px;color:var(--sourd);font-size:.72rem;text-align:right;padding-top:5px}
+.vig .m{flex:1;aspect-ratio:16/9;background:#e9e3d8;border-radius:3px;border:1px solid #b9ad9a;padding:4px 5px;color:#333;font-size:.5rem;line-height:1.15;overflow:hidden}
+.vig .m b{display:block;font-size:.52rem;text-transform:uppercase;letter-spacing:.04em;color:#222}.vig .m i{display:block;height:2.5px;background:#bbb;margin:2px 0;border-radius:2px}
+.vig .h{position:absolute;right:6px;top:6px;color:var(--sourd);font-size:.66rem}
+.vig.h2{border-top:1px dashed var(--bord2)}.vig .role{position:absolute;left:24px;bottom:2px;font-size:.6rem;color:var(--ambre)}
+.vig.retiree .m{opacity:.35}.vig .past{position:absolute;right:6px;bottom:4px;font-size:.62rem;color:var(--or)}
+.vig.jouee .n{color:var(--joue)}
+.scene{padding:8px 16px 8px;display:flex;flex-direction:column;gap:7px;min-width:0;min-height:0;overflow:hidden}
+.scene .titre{display:flex;align-items:baseline;gap:10px;font-size:.98rem}.scene .titre b{color:var(--texte)}.scene .titre .d{color:var(--texte2)}
+.murcadre{position:relative;width:min(100%,calc((100vh - 300px) * 16 / 9));max-width:1100px;margin:0 auto;user-select:none;flex:0 0 auto;transform-origin:top center}
+.mur{aspect-ratio:16/9;background:#fffdf8;color:#1f1a14;border-radius:6px;box-shadow:0 10px 40px rgba(0,0,0,.6);position:relative;overflow:hidden}
+.mur .etiq{position:absolute;left:24px;top:10px;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:#6a5a48;border:1px solid #cfc3b2;border-radius:12px;padding:2px 10px}
+.mur .corpsd{position:absolute;inset:34px 28px 22px;overflow:hidden;font-size:1.22rem;line-height:1.35}
+.mur h2{margin:0 0 .3em;font-size:1.25em;font-weight:600}
+.mur ol{margin:0;padding-left:1.4em}.mur li{margin:.2em 0}.mur li.pas{color:#8a8172;opacity:.45}.mur.tableau li.pas{display:none}
+.mur li.lum{background:#fff1a8}.mur li.ecr::before{content:'✍ ';color:#8a6a2e}
+.mur li.hors,.mur .ajout.hors,.mur h2.hors{display:none}
+.mur .bloc{position:relative;border-radius:4px}.mur .bloc.t-petit{font-size:.8em}.mur .bloc.t-grand{font-size:1.25em}
+.mur ol.reps{list-style:none;padding-left:.4em;margin-top:.3em}.mur ol.reps li b{color:#6a5a48;font-weight:600;margin-right:.4em;font-size:.85em}.mur ol.reps li.refo{font-style:italic}.mur ol.reps li.refo::after{content:' ↺';color:#8a6a2e;font-size:.8em}
+.mur .ajout{display:none;margin-top:.3em;align-items:center;gap:.4em;font-size:.9em}.mur.pilote .ajout{display:flex}
+.mur .ajout .ini{width:3.2em;border:1px solid #cfc3b2;border-radius:4px;padding:.1em .3em;font:inherit;background:#fff;text-transform:uppercase}
+.mur .ajout .txt{flex:1;border:1px solid #cfc3b2;border-radius:4px;padding:.1em .4em;font:inherit;background:#fff;min-height:1.4em;outline:none}.mur .ajout .qui{font-size:.8em;color:#6a5a48;white-space:nowrap}
+.mur [contenteditable="true"]{outline:1px dashed #b9a98f;background:#fffdf5}
+.mur .imgzone{position:absolute;inset:40px 28px 44px;display:flex;align-items:center;justify-content:center;overflow:hidden}.mur .imgzone img{max-width:100%;max-height:100%}
+.mur .legende{position:absolute;left:28px;right:28px;bottom:14px;font-size:.85rem;color:#6a5a48;text-align:center}
+.mur .page{position:absolute;right:16px;bottom:6px;font-size:.62rem;color:#8a8172;cursor:default}.mur .page span{cursor:pointer;padding:0 .3em;color:#6a5a48}
+.mur .bandeau{position:absolute;left:0;right:0;bottom:0;background:#1f1a14;color:#fffdf8;font-size:.95rem;padding:6px 22px;display:none}.mur .bandeau.on{display:block}
+.mur .legsur{position:absolute;left:28px;right:28px;bottom:26px;font-size:.66rem;color:#6a5a48;display:flex;gap:14px}.mur .legsur span::before{content:'';display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:4px;vertical-align:middle}
+.mur .legsur .jaune::before{background:#fff1a8}.mur .legsur .rose::before{background:#f6c6d6}.mur .legsur .vert::before{background:#cfe9c0}.mur .legsur .bleu::before{background:#c6dcf3}
+.mur .encart{position:absolute;right:20px;bottom:44px;width:38%;background:#f3eee2;border:1px solid #cfc3b2;border-radius:8px;padding:8px 12px;font-size:.78rem;box-shadow:0 6px 20px rgba(0,0,0,.15)}.mur .encart b{display:block;font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:#6a5a48;margin-bottom:4px}
+.mur .doc{position:absolute;inset:0;background:#f7f4ee;padding:34px 40px}.mur .doc h3{margin:0 0 8px;font-size:1.1rem}.mur .doc .pg{height:78%;background:#fff;border:1px solid #cfc3b2;border-radius:4px;padding:16px;color:#333;font-size:.9rem;line-height:1.5;overflow:hidden}
+.mur .video{position:absolute;inset:40px 28px 30px;background:#111;border-radius:6px;color:#eee;display:flex;flex-direction:column;justify-content:flex-end;padding:14px 18px}.mur .video .bar{height:6px;background:#444;border-radius:3px;position:relative}.mur .video .bar i{position:absolute;top:-4px;width:3px;height:14px;background:var(--or)}.mur .video .bar b{position:absolute;left:0;top:0;height:6px;background:#9fd0ff;border-radius:3px}.mur .video .lb{font-size:.8rem;color:#bbb;margin-bottom:6px}
+.mur .loupe{position:absolute;border:2px solid #e4b45c;background:rgba(228,180,92,.12);pointer-events:none}
+.outils{display:flex;align-items:center;gap:8px;padding:2px 0;flex:0 0 auto}.outils .sep{flex:1}.outils .compte{color:var(--texte2);font-size:.9rem}
+.zoomt{display:flex;align-items:center;gap:6px;color:var(--texte2);font-size:.85rem;border:1px solid var(--bord);border-radius:8px;padding:2px 8px}.zoomt input{width:90px}
+.notes{background:#171310;border:1px solid var(--bord);border-radius:8px;padding:7px 12px;font-size:.96rem;color:var(--texte2);line-height:1.4;min-height:56px;max-height:26vh;flex:0 1 auto;overflow:auto}.notes h4{margin:0 0 4px;font-size:.72rem;letter-spacing:.09em;text-transform:uppercase;color:var(--sourd)}
+.droite{background:#131009;border-left:1px solid #262019;padding:10px 12px;display:flex;flex-direction:column;gap:9px;overflow:auto;min-height:0}
+.suivante{background:var(--carte);border:1px solid var(--bord);border-radius:8px;padding:8px 10px}.suivante h5{margin:0 0 4px;font-size:.72rem;letter-spacing:.09em;text-transform:uppercase;color:var(--sourd)}.suivante .m{aspect-ratio:16/9;background:#e9e3d8;border-radius:3px;padding:6px 8px;color:#222;font-size:.58rem;overflow:hidden}
+.suivi{background:var(--carte);border:1px solid var(--bord);border-radius:8px;padding:9px 11px;display:flex;flex-direction:column;gap:8px;flex:0 0 auto}
+.suivi h5{margin:0;font-size:.72rem;letter-spacing:.09em;text-transform:uppercase;color:var(--sourd)}.suivi .ou{display:flex;justify-content:space-between;font-size:.92rem}.suivi .ou b{color:var(--or)}.suivi .retard{color:var(--rouge);font-size:.85rem}
+.vif input{width:100%;background:#0f0d0a;border:1px solid var(--bord2);color:var(--texte);border-radius:7px;padding:6px 9px;font:inherit}.vif .cand{color:var(--texte2);font-size:.85rem;min-height:1.2em}.vif .cand span{cursor:pointer;margin-right:8px}
+.motifs{display:flex;gap:6px}.motifs .btn{padding:3px 9px}.motifs .btn.off{opacity:.35;pointer-events:none}
+.liste{max-height:26vh;overflow:auto;font-size:.82rem;line-height:1.25;column-count:2;column-gap:10px}.liste div{padding:1px 4px;border-radius:4px;cursor:default;break-inside:avoid}.liste div.abs{color:var(--sourd);text-decoration:line-through}.liste div.parti{color:var(--sourd);font-style:italic}.liste div.parle{color:var(--or)}.liste div:hover{background:var(--carte2)}
+.temoin{display:none;background:#22303c;border:1px solid var(--gel);color:#cfe6f8;border-radius:8px;padding:6px 10px;font-size:.88rem}body.gel .temoin{display:block}
+body.gel .mur{outline:2px solid var(--gel)}
+.voile{display:none;position:absolute;inset:46px 0 0;background:var(--fond);z-index:20;padding:22px 34px;overflow:auto}.voile.on{display:block}
+.garde{display:none;position:absolute;inset:0;background:rgba(6,5,4,.55);z-index:30;align-items:center;justify-content:center}.garde.on{display:flex}
+.garde .boite{background:#1c1712;border:1px solid var(--gel);border-radius:12px;padding:16px 20px;width:520px;box-shadow:0 16px 50px rgba(0,0,0,.7)}.garde h3{margin:0 0 6px;font-weight:600;font-size:1.15rem}.garde p{margin:0 0 12px;color:var(--texte2)}.garde .choix{display:flex;gap:8px;flex-wrap:wrap}
+.fen{display:none;position:absolute;background:#1c1712;border:1px solid var(--bord2);border-radius:12px;box-shadow:0 16px 50px rgba(0,0,0,.7);z-index:25;padding:12px 14px}.fen.on{display:block}.fen h4{margin:0 0 8px;font-size:.78rem;letter-spacing:.09em;text-transform:uppercase;color:var(--sourd);display:flex;justify-content:space-between}.fen h4 .x{cursor:pointer;color:var(--texte2)}
+.fen textarea,.fen input[type=text]{width:100%;background:#0f0d0a;border:1px solid var(--bord2);color:var(--texte);border-radius:7px;padding:6px 9px;font:inherit}
+#fnotes{right:346px;bottom:104px;width:520px}#fnotes .ligne{display:flex;gap:8px;align-items:flex-start;padding:5px 0;border-top:1px solid var(--bord)}#fnotes .ligne .h{color:var(--sourd);font-size:.8rem;width:78px;flex:0 0 auto}#fnotes .ligne .t{flex:1;outline:none}#fnotes .ligne .btn{padding:2px 8px;font-size:.8rem}#fnotes .ligne.versee .t{color:var(--or)}
+#fcomm{width:440px}#fcomm .c{padding:5px 0;border-top:1px solid var(--bord);font-size:.92rem}#fcomm .c .h{color:var(--sourd);font-size:.78rem}
+.menu{display:none;position:absolute;background:#1c1712;border:1px solid var(--bord2);border-radius:9px;padding:6px;z-index:40;box-shadow:0 8px 30px rgba(0,0,0,.6);min-width:220px}.menu.on{display:block}
+.menu .it{display:block;width:100%;text-align:left;border:0;background:transparent;color:var(--texte);padding:6px 10px;border-radius:6px}.menu .it:hover{background:var(--carte2)}.menu .it.off{color:var(--sourd);cursor:default}.menu .it.off:hover{background:transparent}.menu hr{border:0;border-top:1px solid var(--bord);margin:4px 0}.menu .ss{padding-left:22px;font-size:.92rem}
+.pastille{position:absolute;left:10px;top:8px;background:#fff3c4;color:#5a4a1a;border-radius:10px;padding:1px 7px;font-size:.7rem;cursor:pointer;z-index:2}
+.rel{max-width:1120px;margin:0 auto;font-size:1rem;line-height:1.5}.rel h2{margin:0 0 4px;font-size:1.35rem;font-weight:600}.rel .sous{color:var(--texte2);margin-bottom:14px}
+.rel h3{font-size:.78rem;letter-spacing:.09em;text-transform:uppercase;color:var(--sourd);font-weight:600;margin:20px 0 8px;border-bottom:1px solid var(--bord);padding-bottom:4px}
+.rel .faces{display:flex;gap:4px;margin-bottom:14px}.rel .faces .ong{border-color:var(--bord)}
+.recit{background:#fffdf8;color:#1f1a14;border-radius:8px;padding:22px 30px;font-size:1.05rem;line-height:1.6;max-width:900px}.recit h4{margin:.9em 0 .3em;font-size:1rem;color:#5a4a34}.recit p{margin:.4em 0}.recit .cadre{color:#6a5a48;font-size:.92rem}.recit .versee{background:#fff6d6}
+.pasfil{padding:10px 14px;margin:8px 0;background:var(--carte);border:1px solid var(--bord);border-left:4px solid var(--joue);border-radius:6px}.pasfil.retour{border-left-color:var(--rouge)}.pasfil.saut{border-left-color:var(--ambre)}.pasfil .h{color:var(--or);font-variant-numeric:tabular-nums;font-weight:600;margin-right:8px}.pasfil .d{color:var(--texte2);margin-left:8px}.pasfil .l{margin:3px 0 0 4px;color:var(--texte2)}.pasfil .l.gel{color:var(--gel)}
+.rel table{border-collapse:collapse;width:100%}.rel td,.rel th{padding:6px 10px 6px 0;border-top:1px solid var(--bord);vertical-align:top;text-align:left}.rel th{color:var(--sourd);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;font-weight:600;border-top:0}.rel tr.non td{color:var(--sourd)}
+.rel .puce{display:inline-block;border:1px solid var(--bord2);border-radius:14px;padding:2px 10px;margin:3px 6px 3px 0}.rel .vide{color:var(--sourd);font-style:italic}
+/* l'écran de fin d'heure : les vignettes réelles et les décisions */
+.fin h2{margin:0 0 6px}.fin .sous{color:var(--texte2);margin-bottom:12px}.fin .debord{color:var(--rouge);font-weight:600}
+.fin .rangee{display:flex;gap:14px;overflow-x:auto;padding-bottom:8px}.fin .carte{flex:0 0 580px;background:var(--carte);border:1px solid var(--bord);border-radius:10px;padding:10px}
+.fin .carte .mini{width:560px;height:315px;position:relative;overflow:hidden;border-radius:4px;cursor:zoom-in;background:#fffdf8}.fin .carte .mini .mur{position:absolute;left:0;top:0;width:1096px;height:616px;transform:scale(0.511);transform-origin:top left;border-radius:0;box-shadow:none}.fin .carte .mini li.pas{opacity:.7}
+.fin .carte .dec{margin-top:8px;display:flex;flex-wrap:wrap;gap:5px}.fin .carte .dec .btn{padding:3px 8px;font-size:.85rem}.fin .carte .dec .btn.on{border-color:var(--or);color:var(--or)}.fin .carte .cout{color:var(--texte2);font-size:.82rem;margin-top:6px}
+.fin .travail{margin-top:18px;background:var(--carte);border:1px solid var(--bord);border-radius:10px;padding:12px 14px}.fin .travail label{display:block;padding:3px 0}.fin .taxo .dom{margin:6px 0}.fin .taxo .fam{margin-left:18px}.fin .taxo .not{margin-left:36px;color:var(--texte2)}.fin .taxo .neuve{color:var(--joue);font-size:.78rem}
+.fin .ed{margin-top:14px;background:#fffdf8;color:#1f1a14;border-radius:8px;padding:14px 18px;font-size:.95rem;white-space:pre-wrap}.fin .ed b{display:block;color:#6a5a48;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+.fin .carte .mini.grand{position:fixed;left:calc(50vw - 548px);top:80px;width:1096px;height:616px;z-index:50;cursor:zoom-out;box-shadow:0 20px 60px rgba(0,0,0,.8)}.fin .carte .mini.grand .mur{transform:none}
+.barre-fin{position:fixed;left:0;right:0;bottom:0;background:#141110;border-top:1px solid var(--bord2);padding:10px 34px;display:flex;align-items:center;gap:10px;z-index:22}
+.alerte{background:#3a2a14;border:1px solid var(--ambre);color:#f1dfb5;border-radius:8px;padding:8px 12px;font-size:.92rem}.alerte .btn{padding:2px 8px;font-size:.85rem;margin-left:8px}
+.simu{position:absolute;right:12px;top:52px;width:360px}
+.simu label{display:block;padding:2px 0}
+</style></head><body>
+<div id="pilotage">
+<div class="haut">
+  <span class="onglets"><button class="ong on" id="ong-pilotage" title="L'écran de classe : la diapo, le tableau, la participation">Pilotage</button><button class="ong" id="ong-relecture" title="Le récit de l'heure et ce qui s'est passé (R)">Relecture</button></span>
+  <span class="qui" id="hclasse"></span><span class="ou" id="hou"></span>
+  <span class="chrono" title="Le temps écoulé depuis le lancement de l'heure, et l'heure qu'il est."><b id="chr">00:00</b><span class="heure" id="heure"></span></span>
+  <button class="btn" id="bnotes" title="Notes au fil de l'eau (N) — pour toi ; « Verser au récit » les met dans le récit">📝 Notes</button>
+  <button class="btn" id="btableau" title="Ouvre la fenêtre du tableau (Win+K la met sur le vidéoprojecteur)">⧉ Tableau</button>
+  <button class="btn fin" id="bfin" title="Termine l'heure : les décisions, le travail à faire, École Directe, la relecture">Fin de l'heure</button>
+  <button class="btn" id="bsimu" title="Réglages de la maquette (rien de tout ça n'existe dans le site)">⚙</button>
+</div>
+<div class="corps">
+  <div class="volet" id="volet"></div>
+  <div class="scene">
+    <div class="titre"><b id="numero"></b><span class="d" id="dtitre"></span><span class="d" id="temoin-mini" style="margin-left:auto"></span></div>
+    <div class="murcadre" id="murcadre"><div class="mur pilote" id="mur"></div><div class="pastille" id="pastille" style="display:none"></div></div>
+    <div id="alerte-video" class="alerte" style="display:none"></div>
+    <div class="outils">
+      <button class="rond" id="blum" title="Mettre en lumière : clic puis un élément — surligné au tableau">✦</button>
+      <button class="rond" id="becr" title="À écrire : clic puis un élément — marqué à recopier">✍</button>
+      <button class="rond" id="btoutes" title="Toutes les diapos (T)">⊞</button>
+      <button class="rond" id="bloupe" title="Loupe : trace un cadre, le tableau grossit cette zone (L)">🔍</button>
+      <button class="rond" id="bgel" title="Gel (G) : le tableau ne bouge plus, tu es libre">❄</button>
+      <button class="rond" id="bplus" title="Chrono au tableau · qui a participé · absents · réserve · documents · notion imprévue">⋯</button>
+      <span class="zoomt" title="Le texte grossit au tableau ; la diapo se lit alors en pages, jamais coupée">texte au tableau <input type="range" id="taille" min="0" max="4" value="0"><span id="taille-l">normal</span></span>
+      <span class="sep"></span>
+      <button class="rond" id="bprec" title="◀ revoile le dernier élément ; en début de diapo, revient à la précédente">◀</button>
+      <button class="btn or" id="bdev" title="▶ (→, espace) dévoile l'élément suivant, puis passe à la diapo suivante">▶ Dévoiler</button>
+      <span class="compte" id="compte"></span>
+    </div>
+    <div class="notes"><h4>Notes pour cette diapo</h4><div id="notesd"></div></div>
+  </div>
+  <div class="droite">
+    <div class="suivante"><h5>Diapo suivante</h5><div id="suiv"></div></div>
+    <div class="temoin" id="temoin">❄ <span id="temoin-txt"></span></div>
+    <div class="suivi">
+      <h5>Où on en est</h5><div class="ou" id="ou"></div><div class="retard" id="retard"></div>
+      <h5>Participation</h5>
+      <div class="vif"><input id="vif" placeholder="initiales : ch, ab, jl…" title="Initiales ou début du prénom, puis 1 · 2 · 3"><div class="cand" id="cand"></div></div>
+      <div class="motifs"><button class="btn off" data-m="1" title="a participé">1</button><button class="btn off" data-m="2" title="a proposé une piste">2</button><button class="btn off" data-m="3" title="on y reviendra avec lui">3</button><button class="btn" id="bannule" title="Annule la dernière prise">↶</button></div>
+      <div id="dern" style="color:var(--texte2);font-size:.85rem">—</div>
+      <h5>La classe <span id="presents" style="color:var(--or)"></span></h5>
+      <div class="liste" id="liste" title="Clic droit sur un nom : absent · présent · parti · revenu"></div>
+    </div>
+  </div>
+</div>
+<div id="ecran-relecture" class="voile"><div class="rel"><h2 id="rel-titre">Relecture</h2><div class="sous" id="rel-sous"></div><div class="faces"><button class="ong on" id="face-recit">Le récit</button><button class="ong" id="face-passe">Ce qui s'est passé</button></div><div id="rel"></div></div></div>
+<div id="ecran-fin" class="voile fin"><div id="fin"></div></div>
+<div id="vtoutes" class="voile"><h3 style="margin:0 0 12px">Toutes les diapos <button class="btn" onclick="document.getElementById('vtoutes').classList.remove('on')" style="float:right">✕ Fermer (Échap)</button></h3><div id="toutes" style="display:grid;grid-template-columns:repeat(6,1fr);gap:12px"></div></div>
+<div class="garde" id="garde"><div class="boite"><h3 id="garde-titre">La classe te suivrait.</h3><p>Geler d'abord ?</p><div class="choix"><button class="btn gelb" id="garde-gel" title="Entrée">❄ Geler, puis y aller</button><button class="btn" id="garde-devant">Y aller devant la classe</button><button class="btn" id="garde-non" title="Échap">Rester</button></div></div></div>
+<div class="garde" id="garde2"><div class="boite"><h3 id="garde2-titre"></h3><div class="choix"><button class="btn gelb" id="garde2-revenir" title="Entrée">Revenir là où est la classe, puis dégeler</button><button class="btn" id="garde2-ici">Dégeler ici</button><button class="btn" id="garde2-non" title="Échap">Rester gelé</button></div></div></div>
+<div class="fen" id="fnotes"><h4>Notes au fil de l'eau <span class="x" id="fnotes-x">✕</span></h4><div id="fnotes-l"></div><input type="text" id="fil-t" placeholder="Entrée garde la note (heure et diapo au tableau)"></div>
+<div class="fen" id="fcomm"><h4>Commentaires — <span id="fcomm-diapo"></span> <span class="x" id="fcomm-x">✕</span></h4><div id="fcomm-l"></div><input type="text" id="fcomm-t" placeholder="Entrée pose le commentaire (date, heure, classe)"></div>
+<div class="fen" id="fnotion" style="width:520px"><h4>Notion imprévue — <span id="fnotion-diapo"></span> <span class="x" id="fnotion-x">✕</span></h4><input type="text" id="fnotion-t" placeholder="cherche dans la taxonomie : « registre », « figure »…"><div id="fnotion-l" style="max-height:40vh;overflow:auto;margin-top:8px"></div></div>
+<div class="fen" id="freserve" style="width:520px"><h4>Réserve de la séance <span class="x" id="freserve-x">✕</span></h4><div id="freserve-l"></div></div>
+<div class="fen" id="fdocs" style="width:520px"><h4>Documents de la séance <span class="x" id="fdocs-x">✕</span></h4><div id="fdocs-l"></div></div>
+<div class="fen simu" id="fsimu"><h4>Réglages de la maquette <span class="x" id="fsimu-x">✕</span></h4>
+  <label>Heure jouée : <select id="s-heure"><option value="1">H1 (lundi) — heure intermédiaire</option><option value="2">H2 (mardi) — dernière heure, avec le bilan</option></select></label>
+  <label>Clé USB : <select id="s-cle"><option value="portable">branchée sur ton ordi portable</option><option value="classe">branchée sur l'ordi de classe</option><option value="aucune">branchée nulle part</option></select></label>
+  <label>Le tableau : <select id="s-tab"><option value="fenetre">la fenêtre sur ton ordi portable (Win+K)</option><option value="classe">l'ordi de classe</option></select></label>
+  <button class="btn" id="s-t5">Faire arriver T-5 maintenant</button>
+</div>
+<div class="fen" id="fraison" style="width:380px"><h4 id="fraison-t">Raison (facultatif)</h4><input type="text" id="fraison-i" placeholder="Entrée pour garder, Échap pour passer"></div>
+<div class="menu" id="menu"></div>
+<div class="menu" id="menuplus"></div>
+</div>
+<script>
+/*__DATA__*/
+/*__ELEVES__*/
+const $ = id => document.getElementById(id);
+const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const TAILLES = [{ l: 'normal', fs: 1.22 }, { l: '+1', fs: 1.36 }, { l: '+2', fs: 1.52 }, { l: '+3', fs: 1.7 }, { l: '+4', fs: 1.92 }];
+const MOTIFS = { 1: 'a participé', 2: 'a proposé une piste', 3: 'on y reviendra avec lui', reponse: 'a répondu' };
+const prenom = e => e.split(' ').slice(1).join(' ');
+const prenomUnique = e => { const p = prenom(e); const doublon = ELEVES.filter(x => x !== e && prenom(x) === p).length; return doublon ? p + ' ' + e[0] + '.' : p; };
+// ───────── l'état ─────────
+const S = window.S = { si: 0, di: 0, heure: 1, taille: 0, page: null, pageManuelle: false, mode: null, gel: null, loupe: null, bandeau: '', ecoule: 0, vue: 1, blocActif: null,
+  parts: [], cand: null, notesFil: [], comm: {}, appel: {}, decisions: {}, reserve: [], notionsImprevues: {}, travail: { terminer: [], preparer: [], apprendre: null, prevu: true, libre: '' }, echeance: null, motAbsents: '',
+  cle: 'portable', tab: 'fenetre', doc: null, videoPos: {}, t5: false, close: false, versements: {}, mur: null, attente: null };
+const parDiapo = {}; const vuMax = {}; const J = window.J = [];
+const seance = () => DATA.seances[S.si]; const ecran = () => seance().ecrans[S.di]; const cle = () => S.si + '|' + S.di;
+const etatDiapo = () => parDiapo[cle()] || (parDiapo[cle()] = { nDev: 0, lum: [], ecr: [], reps: {}, tailles: {}, textes: {}, fsBloc: {} });
+const eleves = () => ELEVES;
+const absentA = (e, t) => { const seg = S.appel[e] || []; let present = true; for (const s of seg) { if (s.t <= (t || Date.now())) present = (s.type === 'arrive' || s.type === 'revenu') ? true : (s.type === 'absent' || s.type === 'parti') ? false : present; } return !present; };
+const presents = () => ELEVES.filter(e => !absentA(e)).length;
+const nomPresent = e => !absentA(e);
+const hhmm = t => { const d = new Date(t || Date.now()); return String(d.getHours()).padStart(2, '0') + ':' + String(d.getMinutes()).padStart(2, '0'); };
+const fmt = t => { const d = new Date(t); return hhmm(t) + ':' + String(d.getSeconds()).padStart(2, '0'); };
+const duree = ms => { const s = Math.round(ms / 1000); return s < 60 ? s + ' s' : Math.floor(s / 60) + ' min ' + String(s % 60).padStart(2, '0') + ' s'; };
+const journal = (type, x) => { J.push(Object.assign({ t: Date.now(), type, mur: S.mur ? { si: S.mur.si, di: S.mur.di } : null }, x || {})); };
+const diapoAuMur = () => (S.mur ? S.mur.di : S.di);
+const ecransDeLHeure = () => seance().ecrans.map((e, i) => ({ e, i })).filter(x => x.e.heure === S.heure && !S.decisions[x.e.eid]);
+const retiree = e => !!(S.decisions[e.eid] && S.decisions[e.eid].moment === 'classe');
+function elements(e){ const out = []; e.blocs.forEach((b, bi) => (b.el || []).forEach((t, ei) => out.push({ b: bi, e: ei, txt: t, t: b.t }))); return out; }
+// ───────── rendu (pilote et tableau) ─────────
+function rendre(mur, et){
+  const e = DATA.seances[et.si].ecrans[et.di]; const fs = TAILLES[et.taille].fs; const reps = et.reps || {}; const tailles = et.tailles || {}; const fsB = et.fsBloc || {}; const tx = et.textes || {};
+  let h = `<span class="etiq">${esc(e.act)}</span>`;
+  const b0 = e.blocs[0];
+  if (et.doc) { h += docHtml(et.doc); }
+  else if (b0 && b0.t === 'video') { h += videoHtml(b0, et); }
+  else if (b0 && b0.t === 'image') { h += `<div class="imgzone">${b0.ref ? `<img src="${b0.ref}" alt="">` : '<div style="width:80%;height:80%;background:repeating-linear-gradient(135deg,#d9cfbf,#d9cfbf 8px,#cabca8 8px,#cabca8 16px);border-radius:6px"></div>'}</div><div class="legende">${esc(b0.txt)}</div>`; }
+  else {
+    h += `<div class="corpsd" style="font-size:${fs}rem">`; let k = 0;
+    e.blocs.forEach((b, bi) => { const cls = 'bloc' + (tailles[bi] ? ' t-' + tailles[bi] : ''); const st = fsB[bi] ? ` style="font-size:${fsB[bi]}em"` : ''; h += `<div class="${cls}" data-bi="${bi}"${st}>`;
+      const titre = tx[bi + '.t'] != null ? tx[bi + '.t'] : b.txt; if (titre) h += `<h2 style="font-size:${bi === 0 ? 1.25 : 1.1}em" data-p="${bi}.t">${esc(titre)}</h2>`;
+      if (b.el && b.el.length) { h += '<ol>'; b.el.forEach((x, ei) => { const c = [k >= et.nDev ? 'pas' : '', (et.lum || []).includes(k) ? 'lum' : '', (et.ecr || []).includes(k) ? 'ecr' : ''].join(' '); const t2 = tx[bi + '.' + ei] != null ? tx[bi + '.' + ei] : x; h += `<li data-k="${k}" data-p="${bi}.${ei}" class="${c}">${esc(t2)}</li>`; k++; }); h += '</ol>'; }
+      if (b.t === 'question') { const rs = reps[bi] || []; if (rs.length) { h += '<ol class="reps">'; rs.forEach((r, ri) => { h += `<li data-r="${ri}" class="${r.refo ? 'refo' : ''}"><b>${esc(r.i)}</b>${esc(r.r)}</li>`; }); h += '</ol>'; }
+        if (et.pilote) h += `<div class="ajout" data-bi="${bi}"><input class="ini" maxlength="4" placeholder="ini" title="Les initiales de l'élève ; puis la réponse"><div class="txt" contenteditable="true" data-bi="${bi}" title="La réponse, au tableau au fil de la frappe ; Entrée = réponse suivante"></div><span class="qui"></span></div>`; }
+      h += '</div>'; });
+    h += '</div>';
+  }
+  if (e.legende && !et.doc) h += `<div class="legsur">${Object.keys(e.legende).map(c => `<span class="${c}">${esc(c)} = ${esc(e.legende[c])}</span>`).join('')}</div>`;
+  if (et.encart) h += `<div class="encart"><b>Pour ceux qui ont fini</b>${esc(et.encart)}</div>`;
+  h += `<span class="page"></span><div class="bandeau ${et.bandeau ? 'on' : ''}">${esc(et.bandeau || '')}</div>`;
+  mur.innerHTML = h;
+  if (et.pages) appliquerPages(mur, et); else paginer(mur, et);
+  const corpsF = mur.querySelector('.corpsd'); if (corpsF && et._blocActif != null && corpsF.scrollHeight > corpsF.clientHeight + 2) corpsF.scrollTop = corpsF.scrollHeight;
+  loupeSur(mur, et);
+}
+function docHtml(d){ const doc = (DATA.documents[String(S.si)] || []).find(x => x.id === d.id); if (!doc) return ''; const n = doc.type === 'pdf' ? doc.pages : doc.etapes; const p = d.pos || 1;
+  return `<div class="doc"><h3>${esc(doc.titre)} <span style="color:#6a5a48;font-size:.8rem">— ${doc.type === 'pdf' ? 'page' : 'étape'} ${p} / ${n}</span></h3><div class="pg">${doc.type === 'pdf' ? `Page ${p} du document — le texte de la fiche méthode se lit ici, à la taille du tableau.` : `Étape ${p} de la frise : un poète apparaît, ses dates, sa citation.`}</div></div>`; }
+function videoHtml(b, et){ const pos = et.videoPos || 0; const pct = Math.min(100, pos / b.duree * 100); const rep = b.reperes.filter(r => r.t <= pos).slice(-1)[0];
+  return `<div class="video"><div class="lb">${esc(b.txt)} — ${Math.floor(pos / 60)}:${String(pos % 60).padStart(2, '0')} / ${Math.floor(b.duree / 60)}:${String(b.duree % 60).padStart(2, '0')}${rep ? ' · ' + esc(rep.l) : ''}${et.videoLecture ? ' · ▶ lecture' : ' · pause'}</div><div class="bar"><b style="width:${pct}%"></b>${b.reperes.map(r => `<i style="left:${r.t / b.duree * 100}%" title="${esc(r.l)}"></i>`).join('')}</div></div>`; }
+function paginer(mur, et){
+  const corps = mur.querySelector('.corpsd'); const page = mur.querySelector('.page'); if (!corps) { if (page) page.textContent = ''; et.pages = null; return; }
+  const H = corps.clientHeight; corps.querySelectorAll('.hors').forEach(l => l.classList.remove('hors'));
+  const gros = et._blocActif != null ? corps.querySelector(`.bloc[data-bi="${et._blocActif}"]`) : null;
+  if (gros && corps.scrollHeight > H + 2) { let f = parseFloat(gros.style.fontSize) || 1; while (corps.scrollHeight > H + 2 && f > 0.7) { f = Math.round((f - 0.05) * 100) / 100; gros.style.fontSize = f + 'em'; } et.fsBloc = et.fsBloc || {}; if (f < 1) et.fsBloc[et._blocActif] = f; else delete et.fsBloc[et._blocActif]; }
+  if (corps.scrollHeight <= H + 2) { page.textContent = ''; et.pages = null; return; }
+  const els = Array.from(corps.querySelectorAll('li, .ajout')); const base = corps.querySelector('h2') ? corps.querySelector('h2').offsetHeight + 8 : 0; const top0 = els.length ? els[0].offsetTop : 0; const pages = []; let cur = [], debut = 0;
+  els.forEach((l, i) => { const bas = l.offsetTop + l.offsetHeight - top0; if (bas - debut > H - base && cur.length) { pages.push(cur); cur = []; debut = l.offsetTop - top0; } cur.push(i); }); pages.push(cur);
+  et.pages = pages; if (!et._pageManuelle || et.page == null || et.page >= pages.length) et.page = pageDeSuivi(et, els, pages); appliquerPages(mur, et);
+}
+function pageDeSuivi(et, els, pages){ let cible = -1; els.forEach((l, i) => { if (l.classList.contains('ajout') && et._blocActif != null && +l.dataset.bi === et._blocActif) cible = i; });
+  if (cible < 0) { let last = -1; els.forEach((l, i) => { if (l.dataset.k != null && +l.dataset.k < et.nDev) last = i; if (l.dataset.r != null) last = i; }); cible = Math.max(0, last); }
+  const pi = pages.findIndex(p => p.includes(cible)); return pi < 0 ? 0 : pi; }
+function appliquerPages(mur, et){ const corps = mur.querySelector('.corpsd'); const page = mur.querySelector('.page'); if (!corps || !et.pages) { if (page) page.textContent = ''; return; }
+  const els = Array.from(corps.querySelectorAll('li, .ajout')); const pi = Math.max(0, Math.min(et.pages.length - 1, et.page || 0)); els.forEach((l, i) => l.classList.toggle('hors', !et.pages[pi].includes(i)));
+  corps.querySelectorAll('.bloc').forEach(b => { const vis = Array.from(b.querySelectorAll('li, .ajout')).some(x => !x.classList.contains('hors')); b.querySelectorAll('h2').forEach(t => t.classList.toggle('hors', !vis && b.querySelectorAll('li, .ajout').length > 0)); });
+  page.innerHTML = et.pages.length > 1 ? `<span data-p="-1" title="page précédente (molette, Maj+←)">‹</span>page ${pi + 1} / ${et.pages.length}<span data-p="1" title="page suivante (molette, Maj+→)">›</span>` : ''; }
+function loupeSur(mur, et){ mur.querySelectorAll('.loupe').forEach(x => x.remove()); const z = mur.querySelector('.corpsd, .imgzone, .doc, .video'); if (!z) return; z.style.transform = ''; z.style.transformOrigin = '';
+  if (!et.loupe) return; const L = et.loupe; z.style.transformOrigin = `${L.x * 100}% ${L.y * 100}%`; z.style.transform = `scale(${L.f})`; }
+// ───────── l'état complet, le tableau, le journal ─────────
+const etatComplet = () => { const d = etatDiapo(); const e = ecran(); return { si: S.si, di: S.di, nDev: d.nDev, lum: d.lum.slice(), ecr: d.ecr.slice(), taille: S.taille, page: S.page, loupe: S.loupe, bandeau: S.bandeau, reps: JSON.parse(JSON.stringify(d.reps)), tailles: Object.assign({}, d.tailles), textes: Object.assign({}, d.textes), fsBloc: Object.assign({}, d.fsBloc), _blocActif: S.blocActif, _pageManuelle: !!S.pageManuelle, encart: S.encart || null, doc: S.doc ? Object.assign({}, S.doc) : null, videoPos: S.videoPos[e.eid] || 0, videoLecture: !!S.videoLecture }; };
+let fenetreMur = null;
+function pousser(et){ const av = S.mur; const k = et.si + '|' + et.di;
+  if (!av) journal('diapo', { si: et.si, di: et.di, eid: DATA.seances[et.si].ecrans[et.di].eid, nature: 'début' });
+  else if (av.si !== et.si || av.di !== et.di) journal('diapo', { si: et.si, di: et.di, eid: DATA.seances[et.si].ecrans[et.di].eid, nature: (et.si === av.si && et.di === av.di + 1) ? 'suivante' : (et.si === av.si && et.di < av.di) ? 'retour' : 'saut', de: { si: av.si, di: av.di } });
+  if (et.nDev > (vuMax[k] || 0)) { for (let i = (vuMax[k] || 0); i < et.nDev; i++) journal('devoile', { si: et.si, di: et.di, k: i }); vuMax[k] = et.nDev; }
+  else if (av && av.si === et.si && av.di === et.di && et.nDev < (vuMax[k] || 0)) { for (let i = (vuMax[k] || 0) - 1; i >= et.nDev; i--) journal('retire', { si: et.si, di: et.di, k: i }); vuMax[k] = et.nDev; }
+  if (av && av.si === et.si && av.di === et.di) {
+    et.lum.filter(x => !av.lum.includes(x)).forEach(x => journal('lumiere', { si: et.si, di: et.di, k: x })); et.ecr.filter(x => !av.ecr.includes(x)).forEach(x => journal('ecrire', { si: et.si, di: et.di, k: x }));
+    Object.keys(et.reps || {}).forEach(bi => (et.reps[bi] || []).forEach((r, ri) => { const avR = ((av.reps || {})[bi] || [])[ri]; if (!avR && r.r) journal('reponse', { si: et.si, di: et.di, bi: +bi, ri, eleve: r.eleve, ini: r.i, txt: r.r, refo: r.refo }); else if (avR && (avR.r !== r.r || avR.refo !== r.refo)) { const ev2 = J.slice().reverse().find(x => x.type === 'reponse' && x.si === et.si && x.di === et.di && x.bi === +bi && x.ri === ri); if (ev2) { ev2.txt = r.r; ev2.refo = r.refo; } } }));
+    if (av.page !== et.page && et.pages && et.pages.length > 1) journal('page', { si: et.si, di: et.di, p: (et.page || 0) + 1 });
+    if ((av.encart || null) !== (et.encart || null)) journal(et.encart ? 'reserve-affichee' : 'reserve-retiree', { txt: et.encart || av.encart });
+    if (JSON.stringify(av.doc || null) !== JSON.stringify(et.doc || null)) { if (et.doc && (!av.doc || av.doc.id !== et.doc.id)) journal('document', { id: et.doc.id, pos: et.doc.pos }); else if (et.doc) journal('document-page', { id: et.doc.id, pos: et.doc.pos }); else journal('document-ferme', { id: av.doc.id }); }
+    if (av.videoLecture !== et.videoLecture || av.videoPos !== et.videoPos) journal(et.videoLecture ? 'video-lecture' : 'video-pause', { si: et.si, di: et.di, pos: et.videoPos });
+  }
+  S.mur = et; if (fenetreMur && !fenetreMur.closed) { try { fenetreMur.postMessage({ et }, '*'); } catch (e) {} } }
+// ───────── tout() : le rendu du pilotage ─────────
+const mur = $('mur');
+function tout(){
+  const e = ecran(); const et = etatComplet(); et.pilote = true; rendre(mur, et); mur.className = 'mur pilote' + (S.mode === 'lum' ? ' mode-lum' : S.mode === 'ecr' ? ' mode-ecr' : ''); et.pilote = false;
+  S.page = et.page; S.pagesCourantes = et.pages; etatDiapo().fsBloc = Object.assign({}, et.fsBloc || {});
+  if (!S.gel) pousser(et); else S.attente = et;
+  $('numero').textContent = `Diapo ${S.di + 1} sur ${seance().ecrans.length}`; $('dtitre').textContent = `· ${e.act} · prévue ${e.dur} min · H${e.heure}${e.role ? ' · ' + (e.role === 'bilan' ? 'bilan de la séance' : 'réactivation') : ''}`;
+  $('compte').textContent = elements(e).length ? `${etatDiapo().nDev} / ${elements(e).length} dévoilés` : (e.blocs[0] && e.blocs[0].t === 'video' ? 'vidéo — ▶ jusqu\'au repère suivant' : 'rien à dévoiler');
+  $('notesd').innerHTML = DATA.notes[cle()] ? esc(DATA.notes[cle()]) : '<span style="color:var(--sourd)">—</span>';
+  const s = seance().ecrans[S.di + 1]; $('suiv').innerHTML = s ? `<b style="display:block;font-size:.95rem;margin-bottom:4px">${esc(s.act)}</b><div class="m">${esc((s.blocs[0] || {}).txt || '')}</div>` : '<span style="color:var(--sourd)">— fin de la séance —</span>';
+  const pastille = $('pastille'); const nC = (S.comm[e.eid] || []).length; pastille.style.display = nC ? 'block' : 'none'; pastille.textContent = '💬 ' + nC;
+  ouOnEnEst(); volet(); brancherAjout(); brancherMenus(); participation(); temoin(); alerteVideo(); $('taille-l').textContent = TAILLES[S.taille].l;
+  if (S.gel) $('temoin-txt').textContent = `La classe est sur la diapo ${S.gel.di + 1} — ${DATA.seances[S.gel.si].ecrans[S.gel.di].act}.`;
+}
+function ouOnEnEst(){ const e = ecran(); const prevu = seance().ecrans.filter(x => x.heure === S.heure).reduce((a, x) => a + x.dur, 0); const utile = 46; const debord = prevu - utile;
+  $('ou').innerHTML = `<span>${esc(e.act)} — en cours</span><b>H${S.heure} · ${prevu} min prévues / ${utile} utiles</b>`; $('retard').textContent = debord > 0 ? `l'heure dépasse de ${debord} min` : ''; }
+function volet(){ const v = $('volet'); let h = `<h5><span>Séance ${S.si + 1} · ${seance().ecrans.length} diapos</span></h5>`;
+  seance().ecrans.forEach((e, i) => { const k = S.si + '|' + i; const nC = (S.comm[e.eid] || []).length; const dec = S.decisions[e.eid];
+    h += `<div class="vig ${i === S.di ? 'cour' : ''} ${e.heure === 2 && seance().ecrans[i - 1] && seance().ecrans[i - 1].heure === 1 ? 'h2' : ''} ${dec ? 'retiree' : ''} ${vuMax[k] ? 'jouee' : ''}" data-i="${i}" title="${esc(e.act)}${dec ? ' — ' + esc(libDecision(dec)) : ''}"><span class="n">${i + 1}</span><div class="m"><b>${esc(e.act)}</b><i></i><i style="width:80%"></i><i style="width:60%"></i></div><span class="h">H${e.heure}</span>${e.role ? `<span class="role">${e.role === 'bilan' ? 'bilan' : 'réactivation'}</span>` : ''}${nC ? `<span class="past">💬${nC}</span>` : ''}</div>`; });
+  v.innerHTML = h; const c = v.querySelector('.vig.cour'); if (c) { const r = c.offsetTop; if (r < v.scrollTop || r + c.offsetHeight > v.scrollTop + v.clientHeight) v.scrollTop = r - v.clientHeight / 2; } }
+function temoin(){ $('temoin-mini').textContent = S.gel ? '❄ tableau gelé' : ''; }
+// ───────── navigation, gardes, gel ─────────
+let gardeEnAttente = null;
+function garde(faire, quoi){ if (S.gel) return faire(); gardeEnAttente = faire; $('garde-titre').textContent = 'La classe te suivrait — ' + quoi + '.'; $('garde').classList.add('on'); $('garde-gel').focus({ preventScroll: true }); }
+$('garde-gel').onclick = () => { $('garde').classList.remove('on'); if (!S.gel) gel(); const f = gardeEnAttente; gardeEnAttente = null; if (f) f(); };
+$('garde-devant').onclick = () => { $('garde').classList.remove('on'); const f = gardeEnAttente; gardeEnAttente = null; if (f) f(); };
+$('garde-non').onclick = () => { $('garde').classList.remove('on'); gardeEnAttente = null; };
+function devoiler(){ const e = ecran(); const d = etatDiapo(); S.blocActif = null; S.pageManuelle = false;
+  if (S.doc) { const doc = (DATA.documents[String(S.si)] || []).find(x => x.id === S.doc.id); const n = doc.type === 'pdf' ? doc.pages : doc.etapes; if (S.doc.pos < n) { S.doc.pos++; tout(); return; } }
+  if (e.blocs[0] && e.blocs[0].t === 'video') { videoSuivant(); return; }
+  const n = elements(e).length; if (d.nDev < n) { d.nDev++; S.page = null; } else if (S.di < seance().ecrans.length - 1) { allerSuivante(); return; } tout(); }
+function allerSuivante(){ let i = S.di + 1; while (i < seance().ecrans.length && retiree(seance().ecrans[i])) i++; if (i >= seance().ecrans.length) return; S.di = i; S.page = null; S.doc = null; tout(); }
+function revoiler(){ const d = etatDiapo(); if (S.doc) { if (S.doc.pos > 1) { S.doc.pos--; tout(); } return; } const e = ecran(); if (e.blocs[0] && e.blocs[0].t === 'video') { videoPrecedent(); return; }
+  if (d.nDev > 0) { d.nDev--; S.page = null; S.blocActif = null; tout(); return; } if (S.di === 0) return; garde(() => { S.di--; S.page = null; S.doc = null; tout(); }, 'revenir à la diapo ' + S.di); }
+function aller(i){ i = Math.max(0, Math.min(seance().ecrans.length - 1, i)); if (i === S.di) return; S.pageManuelle = false; S.blocActif = null; const d = etatDiapo(); const n = elements(ecran()).length; const fil = (i === S.di + 1 && d.nDev >= n);
+  const faire = () => { S.di = i; S.page = null; S.doc = null; tout(); }; if (fil) return faire(); garde(faire, i < S.di ? 'revenir à la diapo ' + (i + 1) : 'sauter à la diapo ' + (i + 1)); }
+function gel(){ if (S.gel) { if (S.gel.si !== S.si || S.gel.di !== S.di) { $('garde2-titre').textContent = `La classe est sur la diapo ${S.gel.di + 1}, tu es à la diapo ${S.di + 1}.`; $('garde2').classList.add('on'); $('garde2-revenir').focus({ preventScroll: true }); return; } degeler(); }
+  else { journal('gel'); S.gel = etatComplet(); document.body.classList.add('gel'); $('bgel').classList.add('gelon'); tout(); } }
+function degeler(){ S.gel = null; document.body.classList.remove('gel'); $('bgel').classList.remove('gelon'); journal('degel'); tout(); }
+$('garde2-revenir').onclick = () => { $('garde2').classList.remove('on'); S.si = S.gel.si; S.di = S.gel.di; S.page = null; degeler(); };
+$('garde2-ici').onclick = () => { $('garde2').classList.remove('on'); degeler(); }; $('garde2-non').onclick = () => { $('garde2').classList.remove('on'); };
+$('bgel').onclick = gel; $('bdev').onclick = devoiler; $('bprec').onclick = revoiler;
+$('volet').addEventListener('click', ev => { const v = ev.target.closest('.vig'); if (v) aller(+v.dataset.i); });
+function pageMain(d){ if (!S.pagesCourantes || S.pagesCourantes.length < 2) return; S.page = Math.max(0, Math.min(S.pagesCourantes.length - 1, (S.page || 0) + d)); S.pageManuelle = true; tout(); }
+mur.addEventListener('click', ev => { const sp = ev.target.closest('.page span'); if (sp) { ev.stopPropagation(); pageMain(+sp.dataset.p); } });
+$('murcadre').addEventListener('wheel', ev => { if (S.loupe || ev.ctrlKey) return; if (!S.pagesCourantes || S.pagesCourantes.length < 2) return; ev.preventDefault(); pageMain(ev.deltaY > 0 ? 1 : -1); }, { passive: false });
+document.querySelector('.scene').addEventListener('wheel', ev => { if (!ev.ctrlKey) return; ev.preventDefault(); S.vue = Math.max(.6, Math.min(2.5, Math.round((S.vue + (ev.deltaY < 0 ? .1 : -.1)) * 10) / 10)); $('murcadre').style.transform = `scale(${S.vue})`; }, { passive: false });
+// ───────── marques, loupe, taille ─────────
+$('blum').onclick = () => { S.mode = S.mode === 'lum' ? null : 'lum'; $('blum').classList.toggle('on', S.mode === 'lum'); $('becr').classList.remove('on'); };
+$('becr').onclick = () => { S.mode = S.mode === 'ecr' ? null : 'ecr'; $('becr').classList.toggle('on', S.mode === 'ecr'); $('blum').classList.remove('on'); };
+mur.addEventListener('click', ev => { if (!S.mode) return; const li = ev.target.closest('li[data-k]'); if (!li) return; const k = +li.dataset.k; const d = etatDiapo(); const arr = S.mode === 'lum' ? d.lum : d.ecr; const j = arr.indexOf(k); if (j >= 0) arr.splice(j, 1); else arr.push(k); tout(); });
+$('taille').oninput = ev => { S.taille = +ev.target.value; S.page = null; tout(); };
+$('bloupe').onclick = () => { if (S.loupe) { S.loupe = null; $('bloupe').classList.remove('on'); tout(); return; } S.loupeArm = !S.loupeArm; $('bloupe').classList.toggle('on', S.loupeArm); };
+let dragL = null; mur.addEventListener('mousedown', ev => { if (!S.loupeArm) return; const r = mur.getBoundingClientRect(); dragL = { x0: (ev.clientX - r.left) / r.width, y0: (ev.clientY - r.top) / r.height }; ev.preventDefault(); });
+document.addEventListener('mouseup', ev => { if (!dragL) return; const r = mur.getBoundingClientRect(); const x1 = (ev.clientX - r.left) / r.width, y1 = (ev.clientY - r.top) / r.height; S.loupe = { x: (dragL.x0 + x1) / 2, y: (dragL.y0 + y1) / 2, f: 2 }; S.loupeArm = false; dragL = null; journal('loupe', { f: 2 }); tout(); });
+// ───────── mise en commun : réponses au fil de la frappe ─────────
+const plat = s => String(s || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+function candidats(v){ v = plat((v || '').trim()); if (!v) return []; return ELEVES.filter(e => nomPresent(e)).filter(e => { const [nom, ...pr] = e.split(' '); const p2 = plat(pr.join(' ')); const n2 = plat(nom); return (n2.startsWith(v[0]) && (v.length < 2 || p2.startsWith(v.slice(1)))) || plat(e).startsWith(v) || p2.startsWith(v) || (p2[0] === v[0] && v.length >= 2 && n2.startsWith(v[1])); }); }
+function brancherAjout(){
+  mur.querySelectorAll('.ajout').forEach(a => { const bi = +a.dataset.bi; const ini = a.querySelector('.ini'); const txt = a.querySelector('.txt'); const qui = a.querySelector('.qui');
+    ini.oninput = () => { const l = candidats(ini.value); qui.textContent = l.length === 1 ? l[0] : l.length ? l.length + ' élèves' : (ini.value.trim() ? 'aucun élève' : ''); a._eleve = l.length === 1 ? l[0] : null; };
+    ini.onkeydown = ev => { if (ev.key === 'Enter') { ev.preventDefault(); txt.focus(); } if (ev.key === 'Escape') ini.blur(); };
+    txt.onfocus = () => { S.blocActif = bi; };
+    txt.oninput = () => { const d = etatDiapo(); d.reps[bi] = d.reps[bi] || []; const cur = d.reps[bi]._enCours; const initiales = (ini.value.trim().toUpperCase() || '?'); if (cur == null) { d.reps[bi].push({ i: initiales, r: txt.textContent, refo: false, eleve: a._eleve }); d.reps[bi]._enCours = d.reps[bi].length - 1; } else { d.reps[bi][cur].r = txt.textContent; d.reps[bi][cur].i = initiales; }
+      const n0 = elements(ecran()).findIndex(x => x.b === bi); if (n0 >= 0 && d.nDev < n0) d.nDev = n0; S.page = null; S.pageManuelle = false; S._garderFocus = bi; tout(); };
+    txt.onkeydown = ev => { if (ev.key === 'Enter') { ev.preventDefault(); const d = etatDiapo(); if (d.reps[bi]) { const cur = d.reps[bi]._enCours; if (cur != null && d.reps[bi][cur].eleve) S.parts.push({ nom: d.reps[bi][cur].eleve, m: 'reponse', di: diapoAuMur() + 1, eid: seance().ecrans[diapoAuMur()].eid, h: hhmm(), t: Date.now() }); delete d.reps[bi]._enCours; } S._garderFocus = bi; S._focusIni = true; tout(); } if (ev.key === 'Escape') txt.blur(); };
+  });
+  mur.querySelectorAll('li[data-p], h2[data-p]').forEach(el => { el.ondblclick = ev => { ev.stopPropagation(); el.contentEditable = 'true'; el.focus(); const fin = () => { el.contentEditable = 'false'; const d = etatDiapo(); d.textes[el.dataset.p] = el.textContent; journal('retouche', { si: S.si, di: S.di, p: el.dataset.p }); tout(); }; el.onblur = fin; el.onkeydown = e => { if (e.key === 'Enter' || e.key === 'Escape') { e.preventDefault(); el.blur(); } }; }; });
+  mur.querySelectorAll('ol.reps li').forEach(li => { li.onclick = ev => { if (S.mode) return; const d = etatDiapo(); const bi = +li.closest('.bloc').dataset.bi; const r = d.reps[bi][+li.dataset.r]; r.refo = !r.refo; tout(); }; });
+  if (S._garderFocus != null) { const a = mur.querySelector(`.ajout[data-bi="${S._garderFocus}"]`); if (a) { const c = S._focusIni ? a.querySelector('.ini') : a.querySelector('.txt'); if (S._focusIni) { a.querySelector('.ini').value = ''; a.querySelector('.qui').textContent = ''; } else { const d = etatDiapo(); const cur = d.reps[S._garderFocus] && d.reps[S._garderFocus]._enCours; if (cur != null) { a.querySelector('.txt').textContent = d.reps[S._garderFocus][cur].r; a.querySelector('.ini').value = d.reps[S._garderFocus][cur].i; } } c.focus({ preventScroll: true }); if (!S._focusIni) { const sel = window.getSelection(); const rg = document.createRange(); rg.selectNodeContents(c); rg.collapse(false); sel.removeAllRanges(); sel.addRange(rg); } } S._garderFocus = null; S._focusIni = false; }
+}
+mur.addEventListener('click', ev => { if (S.mode || S.loupeArm) return; const bloc = ev.target.closest('.bloc'); if (!bloc) return; const a = bloc.querySelector('.ajout'); if (a && !ev.target.closest('.ajout') && !ev.target.closest('ol.reps') && !ev.target.closest('.page') && !ev.target.isContentEditable) { const bi = +bloc.dataset.bi; if (a.classList.contains('hors')) { S.pageManuelle = false; S.blocActif = bi; S._garderFocus = bi; S._focusIni = true; tout(); } else a.querySelector('.ini').focus({ preventScroll: true }); } });
+// ───────── participation (VIF) et la classe ─────────
+function participation(){ const v = $('vif'); const l = candidats(v.value); $('cand').innerHTML = l.slice(0, 6).map(e => `<span title="${esc(e)}">${esc(prenom(e))}</span>`).join(''); document.querySelectorAll('.motifs [data-m]').forEach(b => b.classList.toggle('off', !(S.cand || l.length === 1)));
+  const last = S.parts[S.parts.length - 1]; $('dern').textContent = last ? `${prenomUnique(last.nom)} — diapo ${last.di}, ${MOTIFS[last.m] || last.m}` : '—';
+  const parle = new Set(S.parts.map(p => p.nom)); $('presents').textContent = `${parle.size} sur ${presents()} présents`;
+  $('liste').innerHTML = ELEVES.map(e => { const seg = S.appel[e] || []; const st = seg.length ? seg[seg.length - 1].type : 'present'; return `<div class="${absentA(e) ? (st === 'parti' ? 'parti' : 'abs') : (parle.has(e) ? 'parle' : '')}" data-e="${esc(e)}" title="${esc(e)}${seg.map(s => ' · ' + s.type + ' ' + hhmm(s.t) + (s.raison ? ' (' + s.raison + ')' : '')).join('')}">${esc(prenomUnique(e))}</div>`; }).join(''); }
+$('vif').oninput = () => { S.cand = null; participation(); }; $('vif').onkeydown = ev => { if (ev.key === 'Enter') { const l = candidats($('vif').value); if (l.length === 1) S.cand = l[0]; participation(); } if (ev.key === 'Escape') $('vif').blur(); };
+$('cand').onclick = ev => { const s = ev.target.closest('span'); if (s) { S.cand = s.title; $('vif').value = s.title.split(' ').slice(1).join(' '); participation(); } };
+document.querySelectorAll('.motifs [data-m]').forEach(b => b.onclick = () => { const l = candidats($('vif').value); const nom = S.cand || (l.length === 1 ? l[0] : null); if (!nom) return; S.parts.push({ nom, m: b.dataset.m, di: diapoAuMur() + 1, eid: seance().ecrans[diapoAuMur()].eid, h: hhmm(), t: Date.now() }); journal('parole', { nom, m: b.dataset.m }); S.cand = null; $('vif').value = ''; participation(); $('vif').focus({ preventScroll: true }); });
+$('bannule').onclick = () => { const p = S.parts.pop(); if (p) journal('parole-annulee', { nom: p.nom }); participation(); };
+// ───────── notes N (liste + verser) ─────────
+$('bnotes').onclick = () => basculerNotes(); $('fnotes-x').onclick = () => basculerNotes(false);
+function basculerNotes(on){ const f = $('fnotes'); const ouvrir = on == null ? !f.classList.contains('on') : on; f.classList.toggle('on', ouvrir); if (ouvrir) { peindreNotes(); $('fil-t').focus({ preventScroll: true }); } }
+function peindreNotes(){ $('fnotes-l').innerHTML = S.notesFil.map((n, i) => `<div class="ligne ${n.versee ? 'versee' : ''}"><span class="h">${n.h} · d${n.di}</span><div class="t" contenteditable="true" data-i="${i}">${esc(n.t)}</div><button class="btn" data-v="${i}" title="${n.versee ? 'Retire cette note du récit' : 'La note entre telle quelle dans le récit, au paragraphe de cette diapo'}">${n.versee ? 'Retirer du récit' : 'Verser au récit'}</button></div>`).join('') || '<div style="color:var(--sourd)">aucune note pour l\'instant</div>';
+  $('fnotes-l').querySelectorAll('[data-v]').forEach(b => b.onclick = () => { const n = S.notesFil[+b.dataset.v]; n.versee = !n.versee; journal(n.versee ? 'note-versee' : 'note-retiree', { txt: n.t }); peindreNotes(); });
+  $('fnotes-l').querySelectorAll('.t').forEach(t => t.onblur = () => { S.notesFil[+t.dataset.i].t = t.textContent; }); }
+$('fil-t').onkeydown = ev => { if (ev.key === 'Enter') { const t = ev.target.value.trim(); if (t) { S.notesFil.push({ h: hhmm(), di: diapoAuMur() + 1, eid: seance().ecrans[diapoAuMur()].eid, t, versee: false, ts: Date.now() }); journal('note', { txt: t }); ev.target.value = ''; peindreNotes(); } } if (ev.key === 'Escape') basculerNotes(false); };
+// ───────── commentaires (par classe, sur la diapo) ─────────
+function ouvrirComm(eid){ S.commEid = eid || ecran().eid; $('fcomm-diapo').textContent = seance().ecrans.find(e => e.eid === S.commEid).act; peindreComm(); const f = $('fcomm'); f.classList.add('on'); f.style.left = '380px'; f.style.top = '120px'; $('fcomm-t').focus({ preventScroll: true }); }
+function peindreComm(){ $('fcomm-l').innerHTML = (S.comm[S.commEid] || []).map(c => `<div class="c"><div class="h">${new Date(c.t).toLocaleDateString('fr-FR')} ${hhmm(c.t)} · ${esc(DATA.classe.nom)}</div>${esc(c.txt)}</div>`).join('') || '<div style="color:var(--sourd)">aucun commentaire</div>'; }
+$('fcomm-t').onkeydown = ev => { if (ev.key === 'Enter') { const t = ev.target.value.trim(); if (t) { (S.comm[S.commEid] = S.comm[S.commEid] || []).push({ t: Date.now(), txt: t }); journal('commentaire', { eid: S.commEid, txt: t }); ev.target.value = ''; peindreComm(); tout(); } } if (ev.key === 'Escape') $('fcomm').classList.remove('on'); };
+$('fcomm-x').onclick = () => $('fcomm').classList.remove('on'); $('pastille').onclick = () => ouvrirComm();
+// ───────── notion imprévue ─────────
+function ouvrirNotion(eid){ S.notionEid = eid || ecran().eid; $('fnotion-diapo').textContent = seance().ecrans.find(e => e.eid === S.notionEid).act; const f = $('fnotion'); f.classList.add('on'); f.style.left = '380px'; f.style.top = '120px'; $('fnotion-t').value = ''; peindreNotion(''); $('fnotion-t').focus({ preventScroll: true }); }
+function peindreNotion(q){ q = q.toLowerCase(); const res = []; DATA.taxo.forEach(d => d.familles.forEach(f => f.notions.forEach(n => { if (q && ((n.prof || '').toLowerCase().includes(q) || (n.eleve || '').toLowerCase().includes(q) || (f.prof || '').toLowerCase().includes(q))) res.push({ d, f, n }); })));
+  const deja = S.notionsImprevues[S.notionEid] || [];
+  $('fnotion-l').innerHTML = (deja.length ? `<div style="color:var(--texte2);margin-bottom:6px">déclarées sur cette diapo : ${deja.map(id => esc(libNotion(id))).join(' · ')}</div>` : '') + (q ? (res.slice(0, 12).map(r => `<div class="c" style="padding:4px 0;border-top:1px solid var(--bord)"><button class="btn" data-n="${r.n.id}" style="padding:2px 8px;margin-right:8px">+</button>${esc(r.n.prof)} <span style="color:var(--sourd)">— ${esc(r.d.prof)} › ${esc(r.f.prof)}</span></div>`).join('') || `<div style="color:var(--texte2)">rien dans la taxonomie pour « ${esc(q)} » — <button class="btn" style="padding:2px 8px" disabled title="Créer une notion : le même geste que le panneau prof, avec la garde Éduscol (les attendus ne sont pas dans la maquette)">+ une notion</button></div>`) : '');
+  $('fnotion-l').querySelectorAll('[data-n]').forEach(b => b.onclick = () => { (S.notionsImprevues[S.notionEid] = S.notionsImprevues[S.notionEid] || []).push(b.dataset.n); journal('notion-imprevue', { eid: S.notionEid, id: b.dataset.n }); peindreNotion($('fnotion-t').value); }); }
+$('fnotion-t').oninput = ev => peindreNotion(ev.target.value); $('fnotion-x').onclick = () => $('fnotion').classList.remove('on');
+function libNotion(id){ for (const d of DATA.taxo) for (const f of d.familles) for (const n of f.notions) if (n.id === id) return n.prof; return id; }
+function libNotionEleve(id){ for (const d of DATA.taxo) for (const f of d.familles) for (const n of f.notions) if (n.id === id) return n.eleve || n.prof; return id; }
+// ───────── réserve et documents ─────────
+function ouvrirReserve(){ const f = $('freserve'); f.classList.add('on'); f.style.left = '380px'; f.style.top = '120px';
+  const l = Object.keys(S.decisions).filter(eid => S.decisions[eid].choix === 'reserve').map(eid => seance().ecrans.find(e => e.eid === eid)).filter(Boolean);
+  $('freserve-l').innerHTML = l.length ? l.map(e => `<div class="c" style="padding:6px 0;border-top:1px solid var(--bord)"><b>${esc(e.act)}</b><div style="color:var(--texte2);font-size:.9rem">${esc((e.blocs[0] || {}).txt || '')} ${(e.blocs[0] && e.blocs[0].el || []).map((x, i) => (i + 1) + '. ' + esc(x)).join(' ')}</div><button class="btn" data-enc="${e.eid}" style="margin-top:4px;padding:2px 8px">${S.encart && S.encartEid === e.eid ? 'Retirer du tableau' : 'Afficher au tableau, pour ceux qui ont fini'}</button></div>`).join('') : '<div style="color:var(--sourd)">rien en réserve — une diapo se met en réserve par clic droit → retirer de l\'heure → en réserve</div>';
+  $('freserve-l').querySelectorAll('[data-enc]').forEach(b => b.onclick = () => { const e = seance().ecrans.find(x => x.eid === b.dataset.enc); if (S.encart && S.encartEid === e.eid) { S.encart = null; S.encartEid = null; } else { S.encart = e.act + ' — ' + ((e.blocs[0] || {}).txt || ''); S.encartEid = e.eid; } tout(); ouvrirReserve(); }); }
+$('freserve-x').onclick = () => $('freserve').classList.remove('on');
+function ouvrirDocs(){ const f = $('fdocs'); f.classList.add('on'); f.style.left = '380px'; f.style.top = '120px'; const l = DATA.documents[String(S.si)] || [];
+  $('fdocs-l').innerHTML = l.map(d => `<div class="c" style="padding:6px 0;border-top:1px solid var(--bord)"><b>${esc(d.titre)}</b> <span style="color:var(--sourd)">${d.type === 'pdf' ? d.pages + ' pages' : d.etapes + ' étapes'}</span><div><button class="btn" data-doc="${d.id}" style="margin-top:4px;padding:2px 8px">${S.doc && S.doc.id === d.id ? '✕ Fermer (retour à la diapo)' : 'Projeter au tableau'}</button></div></div>`).join('');
+  $('fdocs-l').querySelectorAll('[data-doc]').forEach(b => b.onclick = () => { if (S.doc && S.doc.id === b.dataset.doc) S.doc = null; else S.doc = { id: b.dataset.doc, pos: 1 }; tout(); ouvrirDocs(); }); }
+$('fdocs-x').onclick = () => $('fdocs').classList.remove('on');
+// ───────── vidéo : lecture par repères, gardes ─────────
+function videoAtteignable(){ return (S.tab === 'fenetre' && S.cle === 'portable') || (S.tab === 'classe' && S.cle === 'classe'); }
+function videoSuivant(){ const b = ecran().blocs[0]; const eid = ecran().eid; if (!videoAtteignable()) return; const pos = S.videoPos[eid] || 0; const suiv = b.reperes.find(r => r.t > pos); S.videoPos[eid] = suiv ? suiv.t : b.duree; S.videoLecture = !!suiv; journal('video', { si: S.si, di: S.di, de: pos, a: S.videoPos[eid] }); tout(); if (!suiv) { S.videoLecture = false; } }
+function videoPrecedent(){ const b = ecran().blocs[0]; const eid = ecran().eid; const pos = S.videoPos[eid] || 0; const prec = b.reperes.filter(r => r.t < pos).slice(-1)[0]; S.videoPos[eid] = prec ? prec.t : 0; S.videoLecture = false; tout(); }
+function alerteVideo(){ const a = $('alerte-video'); const e = ecran(); const suivante = seance().ecrans[S.di + 1]; a.style.display = 'none'; a.innerHTML = '';
+  const estV = x => x && x.blocs[0] && x.blocs[0].t === 'video';
+  if (estV(e) && !videoAtteignable()) { if (S.cle === 'aucune') { a.style.display = 'block'; a.innerHTML = `Diapo ${S.di + 1}, la vidéo sur <b>${esc(e.blocs[0].txt)}</b>, passée : pas de clé USB branchée. <button class="btn" id="a-passer">Passer</button>`; if (!S._passeAuto) { S._passeAuto = true; setTimeout(() => { S._passeAuto = false; if (ecran() === e && !videoAtteignable()) { journal('video-passee', { si: S.si, di: S.di, motif: 'fichier non atteignable' }); S.decisions[e.eid] = S.decisions[e.eid] || { choix: 'passee', moment: 'classe', motif: 'pas de clé USB branchée' }; allerSuivante(); } }, 1500); } $('a-passer').onclick = () => { journal('video-passee', { si: S.si, di: S.di, motif: 'fichier non atteignable' }); allerSuivante(); }; }
+    else { a.style.display = 'block'; a.innerHTML = `La vidéo <b>${esc(e.blocs[0].txt)}</b> — la clé USB n'est pas branchée sur ${S.tab === 'classe' ? "l'ordi de classe" : 'ton ordi portable'} (elle est sur ${S.cle === 'classe' ? "l'ordi de classe" : 'ton ordi portable'}). ${S.tab === 'classe' && S.cle === 'portable' ? 'Ou ouvre la fenêtre du tableau sur ton ordi portable.' : ''} <button class="btn" id="a-passer">Passer</button>`; $('a-passer').onclick = () => { journal('video-passee', { si: S.si, di: S.di, motif: 'clé non branchée sur l\'appareil qui projette' }); allerSuivante(); }; } }
+  else if (estV(suivante) && !videoAtteignable()) { a.style.display = 'block'; a.innerHTML = `La diapo suivante a une vidéo (<b>${esc(suivante.blocs[0].txt)}</b>) — la clé USB n'est pas branchée sur ${S.tab === 'classe' ? "l'ordi de classe" : 'ton ordi portable'}.`; } }
+// ───────── ⋯ et le clic droit ─────────
+function menuA(m, x, y, items){ m.innerHTML = items.map(it => it === '-' ? '<hr>' : `<button class="it ${it.off ? 'off' : ''} ${it.ss ? 'ss' : ''}" data-a="${it.a}" ${it.off ? 'disabled' : ''} title="${esc(it.t || '')}">${esc(it.l)}</button>`).join(''); const r = $('pilotage').getBoundingClientRect(); m.style.left = Math.min(x - r.left, r.width - 260) + 'px'; m.style.top = Math.min(y - r.top, r.height - 300) + 'px'; m.classList.add('on'); }
+document.addEventListener('click', ev => { if (!ev.target.closest('.menu') && !ev.target.closest('#bplus')) { $('menu').classList.remove('on'); $('menuplus').classList.remove('on'); } });
+$('bplus').onclick = ev => { ev.stopPropagation(); const r = $('bplus').getBoundingClientRect(); menuA($('menuplus'), r.left, r.bottom + 4, [{ a: 'chrono', l: 'Chrono au tableau' }, { a: 'qui', l: 'Qui a participé (au tableau)' }, '-', { a: 'reserve', l: 'Réserve de la séance…' }, { a: 'docs', l: 'Documents de la séance…' }, { a: 'notion', l: 'Déclarer une notion imprévue…' }, { a: 'appel', l: 'L\'appel : clic droit sur un nom de la liste', off: true }]);
+  $('menuplus').onclick = e => { const b = e.target.closest('[data-a]'); if (!b) return; $('menuplus').classList.remove('on'); const a = b.dataset.a; if (a === 'chrono') { S.bandeau = S.bandeau ? '' : '⏱ 07:00'; tout(); } if (a === 'qui') { const parle = [...new Set(S.parts.map(p => p.nom))].map(prenomUnique); S.bandeau = `${parle.length} élève${parle.length > 1 ? 's' : ''} sur ${presents()} ${parle.length > 1 ? 'ont' : 'a'} participé — ${parle.join(' · ')}`; tout(); } if (a === 'reserve') ouvrirReserve(); if (a === 'docs') ouvrirDocs(); if (a === 'notion') ouvrirNotion(); }; };
+function brancherMenus(){
+  // sur une diapo (volet et scène), sur un bloc / une ligne / une réponse, sur un nom
+  $('volet').oncontextmenu = ev => { const v = ev.target.closest('.vig'); if (!v) return; ev.preventDefault(); menuDiapo(+v.dataset.i, ev.clientX, ev.clientY); };
+  mur.oncontextmenu = ev => { ev.preventDefault(); const rep = ev.target.closest('ol.reps li'); const li = ev.target.closest('li[data-k]'); const bloc = ev.target.closest('.bloc');
+    if (rep) { const d = etatDiapo(); const bi = +bloc.dataset.bi; const r = d.reps[bi][+rep.dataset.r]; menuA($('menu'), ev.clientX, ev.clientY, [{ a: 'eleve', l: `Aller à ${r.eleve ? prenomUnique(r.eleve) : r.i}` }, { a: 'corriger', l: 'Corriger cette réponse' }, { a: 'suppr-rep', l: 'Supprimer cette prise de parole' }]);
+      $('menu').onclick = e => { const b = e.target.closest('[data-a]'); if (!b) return; $('menu').classList.remove('on'); if (b.dataset.a === 'suppr-rep') { d.reps[bi].splice(+rep.dataset.r, 1); journal('reponse-supprimee', { eleve: r.eleve }); tout(); } if (b.dataset.a === 'corriger') { rep.contentEditable = 'true'; rep.focus(); rep.onblur = () => { rep.contentEditable = 'false'; r.r = rep.textContent.replace(/^[A-Z?]{1,4}/, '').trim(); journal('reponse-corrigee', { eleve: r.eleve }); tout(); }; } if (b.dataset.a === 'eleve') { $('vif').value = r.eleve ? prenom(r.eleve) : ''; participation(); $('vif').focus({ preventScroll: true }); } }; return; }
+    if (li) { const k = +li.dataset.k; const d = etatDiapo(); menuA($('menu'), ev.clientX, ev.clientY, [{ a: 'lum', l: (d.lum.includes(k) ? 'Retirer la lumière' : 'Mettre en lumière') }, { a: 'ecr', l: (d.ecr.includes(k) ? 'Retirer « à écrire »' : 'À écrire') }, { a: 'revoiler', l: 'Revoiler celui-ci', off: k >= d.nDev }, '-', { a: 'petit', l: 'Bloc : petit', ss: true }, { a: 'normal', l: 'Bloc : normal', ss: true }, { a: 'grand', l: 'Bloc : grand', ss: true }]);
+      $('menu').onclick = e => { const b = e.target.closest('[data-a]'); if (!b) return; $('menu').classList.remove('on'); const a = b.dataset.a; const bi = +bloc.dataset.bi; if (a === 'lum' || a === 'ecr') { const arr = a === 'lum' ? d.lum : d.ecr; const j = arr.indexOf(k); if (j >= 0) arr.splice(j, 1); else arr.push(k); } if (a === 'revoiler') { d.nDev = k; } if (['petit', 'normal', 'grand'].includes(a)) { if (a === 'normal') delete d.tailles[bi]; else d.tailles[bi] = a; } tout(); }; return; }
+    menuDiapo(S.di, ev.clientX, ev.clientY); };
+  $('liste').oncontextmenu = ev => { const n = ev.target.closest('[data-e]'); if (!n) return; ev.preventDefault(); const e = n.dataset.e; const abs = absentA(e); const seg = S.appel[e] || []; const dernier = seg.length ? seg[seg.length - 1].type : 'present';
+    const items = abs ? [{ a: 'arrive', l: dernier === 'parti' ? `Revenu — ${prenomUnique(e)} (${hhmm()})` : `Présent, arrivé à ${hhmm()} — ${prenomUnique(e)}` }] : [{ a: 'absent', l: `Absent — ${prenomUnique(e)}` }, { a: 'parti', l: `Parti à ${hhmm()} — ${prenomUnique(e)}` }];
+    menuA($('menu'), ev.clientX, ev.clientY, items); $('menu').onclick = ev2 => { const b = ev2.target.closest('[data-a]'); if (!b) return; $('menu').classList.remove('on'); const type = b.dataset.a === 'arrive' ? (dernier === 'parti' ? 'revenu' : 'arrive') : b.dataset.a; const poser = raison => { (S.appel[e] = S.appel[e] || []).push({ type, t: Date.now(), raison: raison || '' }); journal('appel', { eleve: e, quoi: type, raison: raison || '' }); participation(); }; if (type === 'parti' || type === 'arrive') demander(`${prenomUnique(e)} — ${type === 'parti' ? 'parti' : 'arrivé'} à ${hhmm()} : raison (facultatif)`, poser); else poser(''); }; };
+}
+function libDecision(d){ return ({ suivante: 'à l\'heure suivante', reserve: 'en réserve', terminer: 'à terminer à la maison', preparer: 'à préparer à la maison', pastemps: 'à la maison, pas le temps', maison: 'à la maison', nonfait: 'non fait', reporter: 'reportée à la séance suivante', passee: 'passée (vidéo)' })[d.choix] || d.choix; }
+function menuDiapo(i, x, y){ const e = seance().ecrans[i]; const k = S.si + '|' + i; const vue = !!vuMax[k] || (S.mur && S.mur.di === i); const role = !!e.role; const dec = S.decisions[e.eid];
+  const items = [{ a: 'aller', l: 'Y aller' + (i !== S.di ? '' : ' (tu y es)'), off: i === S.di }, '-',
+    { a: 'ret', l: dec ? `Retirée de l'heure — ${libDecision(dec)}` : 'Retirer de l\'heure', off: vue || role || !!dec, t: vue ? 'déjà vue par la classe' : role ? (e.role === 'bilan' ? 'le bilan de la séance ne se retire pas' : 'la réactivation ne se retire pas') : '' },
+    { a: 'ret-reserve', l: 'en réserve (pour ceux qui ont fini)', ss: true, off: vue || role || !!dec }, { a: 'ret-maison', l: 'à la maison', ss: true, off: vue || role || !!dec }, { a: 'ret-nonfait', l: 'non fait', ss: true, off: vue || role || !!dec }, '-',
+    { a: 'notion', l: 'Déclarer une notion imprévue…' }, { a: 'comm', l: `Commenter… (${(S.comm[e.eid] || []).length})` }];
+  menuA($('menu'), x, y, items); $('menu').onclick = ev => { const b = ev.target.closest('[data-a]'); if (!b) return; $('menu').classList.remove('on'); const a = b.dataset.a; if (a === 'aller') aller(i); if (a === 'notion') ouvrirNotion(e.eid); if (a === 'comm') ouvrirComm(e.eid);
+    if (a.startsWith('ret-')) { const choix = a.slice(4); const poser = motif => { S.decisions[e.eid] = { choix, moment: 'classe', h: hhmm(), motif: motif || '' }; journal('retiree', { eid: e.eid, choix, motif: motif || '' }); if (i === S.di) allerSuivante(); else tout(); }; if (choix === 'nonfait') demander(`« ${e.act} » non faite — motif (pour toi)`, poser); else poser(''); } }; }
+function demander(titre, cb){ const f = $('fraison'); $('fraison-t').textContent = titre; const i = $('fraison-i'); i.value = ''; f.classList.add('on'); f.style.left = '380px'; f.style.top = '140px'; i.focus({ preventScroll: true }); i.onkeydown = ev => { if (ev.key === 'Enter') { f.classList.remove('on'); cb(i.value.trim()); } if (ev.key === 'Escape') { ev.stopPropagation(); f.classList.remove('on'); cb(''); } }; }
+// ───────── T-5, fin d'heure, fin de séance ─────────
+function t5(){ S.t5 = true; ouvrirFin(false); }
+function ouvrirFin(cloture){ const derniere = S.heure === 2; const restantes = seance().ecrans.map((e, i) => ({ e, i })).filter(x => x.e.heure === S.heure && !(vuMax[S.si + '|' + x.i] >= elements(x.e).length && elements(x.e).length) && !(x.e.role === 'bilan') && !(x.e.blocs[0] && x.e.blocs[0].t === 'video' && (S.videoPos[x.e.eid] || 0) >= x.e.blocs[0].duree) && !(S.decisions[x.e.eid] && S.decisions[x.e.eid].choix === 'passee'));
+  restantes.forEach(x => { if (!S.decisions[x.e.eid] && !derniere) S.decisions[x.e.eid] = { choix: 'suivante', moment: 'fin', defaut: true }; });
+  const enCours = restantes.filter(x => vuMax[S.si + '|' + x.i] > 0); const bilan = seance().ecrans.find(e => e.role === 'bilan');
+  const montrees = new Set(J.filter(x => x.type === 'diapo').map(x => x.di)); const notionsHeure = new Set(); seance().ecrans.forEach((e, i) => { if (montrees.has(i) || vuMax[S.si + '|' + i]) (e.comp || []).forEach(c => notionsHeure.add(c)); (S.notionsImprevues[e.eid] || []).forEach(c => notionsHeure.add(c)); });
+  if (S.travail.apprendre == null) S.travail.apprendre = [...notionsHeure].filter(id => libNotion(id) !== id);
+  const prevu = DATA.travailPrevu[S.si + '|' + S.heure] || '';
+  let h = `<h2>${cloture ? 'Fin de l\'heure — ce qu\'il reste à décider, puis clore' : 'Il reste 5 minutes'} — ${esc(DATA.classe.nom)} · H${S.heure}${derniere ? ' · dernière heure de la séance' : ''}</h2><div class="sous">${derniere ? 'La séance se ferme : pour ce qui reste, une décision par activité.' : 'Ce qui était prévu pour cette heure et n\'a pas été fait glisse à l\'heure suivante, sauf si tu décides autrement.'} ${derniere && bilan && !(vuMax[S.si + '|' + seance().ecrans.indexOf(bilan)]) ? '<button class="btn or" id="f-bilan">Aller au bilan</button>' : ''}</div>`;
+  h += `<h3 style="color:var(--sourd);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase">Prévu pour cette heure, pas fait — <span class="debord" id="f-debord"></span></h3><div class="rangee">`;
+  restantes.forEach(x => { const e = x.e; const d = S.decisions[e.eid] || {}; const notions = (e.comp || []).map(libNotion).filter(l => l && !/^[a-z0-9-]+$/.test(l)).slice(0, 4); const prevAilleurs = (e.comp || []).some(c => seance().ecrans.some((o, oi) => o !== e && oi > x.i && (o.comp || []).includes(c)));
+    const choix = derniere ? [['reporter', 'Reporter à la séance suivante'], ['terminer', 'Terminer à la maison'], ['preparer', 'Préparer à la maison'], ['pastemps', 'À la maison, pas le temps'], ['nonfait', 'Non fait']] : [['suivante', 'À l\'heure suivante'], ['terminer', 'Terminer à la maison'], ['preparer', 'Préparer à la maison'], ['pastemps', 'À la maison, pas le temps'], ['reserve', 'En réserve'], ['nonfait', 'Non fait']];
+    const enClasse = d.moment === 'classe';
+    h += `<div class="carte" data-eid="${e.eid}"><div class="mini" data-i="${x.i}" title="Un clic agrandit"></div><div style="margin-top:6px"><b>${esc(e.act)}</b> <span style="color:var(--sourd)">· ${e.dur} min${vuMax[S.si + '|' + x.i] ? ' · commencée' : ''}${enClasse ? ' · retirée en classe à ' + d.h + ' : ' + libDecision(d) : ''}</span></div><div class="dec" ${enClasse ? 'style="opacity:.4;pointer-events:none"' : ''}>${choix.filter(c => !(c[0] === 'terminer' && !vuMax[S.si + '|' + x.i]) && !(c[0] === 'preparer' && vuMax[S.si + '|' + x.i])).map(c => `<button class="btn ${d.choix === c[0] ? 'on' : ''}" data-c="${c[0]}">${c[1]}</button>`).join('')}</div>${notions.length ? `<div class="cout">Ces notions ne seraient pas travaillées : ${notions.map(esc).join(' · ')} — <b>${prevAilleurs ? 'prévu plus loin dans le chapitre' : 'pas prévu ailleurs'}</b></div>` : ''}${d.choix === 'nonfait' ? `<div class="cout">motif : <input type="text" data-motif="${e.eid}" value="${esc(d.motif || '')}" placeholder="pour toi" style="width:60%"></div>` : ''}</div>`; });
+  if (!restantes.length) h += '<div style="color:var(--texte2)">tout ce qui était prévu pour cette heure a été fait.</div>';
+  h += `</div>`;
+  // le travail à faire
+  h += `<div class="travail"><h3 style="margin-top:0">Travail à faire pour la prochaine fois</h3>`;
+  const term = restantes.filter(x => (S.decisions[x.e.eid] || {}).choix === 'terminer'); const prep = restantes.filter(x => (S.decisions[x.e.eid] || {}).choix === 'preparer'); const mais = restantes.filter(x => ['pastemps', 'maison'].includes((S.decisions[x.e.eid] || {}).choix));
+  h += `<div style="color:var(--texte2)">${term.length ? 'terminer : ' + term.map(x => '<b>' + esc(x.e.act) + '</b>').join(', ') + ' (reprise en classe) · ' : ''}${prep.length ? 'préparer : ' + prep.map(x => '<b>' + esc(x.e.act) + '</b>').join(', ') + ' (reprise en classe) · ' : ''}${mais.length ? 'à faire : ' + mais.map(x => '<b>' + esc(x.e.act) + '</b>').join(', ') + ' · ' : ''}${!term.length && !prep.length && !mais.length ? 'rien choisi au-dessus pour la maison.' : ''}</div>`;
+  h += `<label><input type="checkbox" id="f-prevu" ${S.travail.prevu && prevu ? 'checked' : ''} ${prevu ? '' : 'disabled'}> Ce que la trame prévoyait pour cette heure : <i>${esc(prevu || 'rien de prévu')}</i></label>`;
+  h += `<div class="taxo"><label><b>Apprendre les notions de l'heure</b> <button class="btn" id="f-nouvelles" style="padding:1px 7px;font-size:.8rem" title="Décoche les notions déjà rencontrées plus tôt dans le chapitre (dans la maquette : d'après la trame, pas d'après ce que la classe a vu)">seulement les nouvelles</button></label>${taxoHtml(notionsHeure)}</div>`;
+  h += `<label>Autre travail : <input type="text" id="f-libre" value="${esc(S.travail.libre)}" placeholder="un travail spécifique, dans tes mots" style="width:70%"></label>`;
+  h += `<label>Échéance (si tu la donnes) : <select id="f-ech"><option value="">aucune</option>${DATA.classe.prochaines.map(p => `<option value="${p.iso}" ${S.echeance === p.iso ? 'selected' : ''}>${esc(p.l)}</option>`).join('')}</select> <span style="color:var(--sourd)">— la prochaine heure de la classe est proposée en premier</span></label>`;
+  h += `</div><div class="ed"><b>Ce qui partira dans École Directe — travail à faire</b><span id="f-ed"></span></div>`;
+  if (cloture) { h += clotureHtml(); }
+  h += `<div style="height:70px"></div><div class="barre-fin"><span style="color:var(--texte2)">${cloture ? 'Clore ferme l\'heure : le journal, le récit, le travail à faire et le mot des absents sont enregistrés pour cette classe.' : 'Rien n\'est fermé : tu reviens au cours avec ces décisions.'}</span><span style="flex:1"></span><button class="btn" id="f-fermer">${cloture ? 'Annuler' : 'Revenir au cours'}</button>${cloture ? '<button class="btn or" id="f-clore">Clore l\'heure et ouvrir la relecture</button>' : '<button class="btn or" id="f-ok">Garder ces décisions</button>'}</div>`;
+  $('fin').innerHTML = h; $('ecran-fin').classList.add('on');
+  // vignettes réelles
+  $('fin').querySelectorAll('.mini').forEach(m => { const i = +m.dataset.i; const e = seance().ecrans[i]; const st = parDiapo[S.si + '|' + i] || { nDev: 0, lum: [], ecr: [], reps: {}, tailles: {}, textes: {}, fsBloc: {} }; const et = { si: S.si, di: i, nDev: elements(e).length, lum: st.lum, ecr: st.ecr, taille: 0, page: 0, reps: st.reps, tailles: st.tailles, textes: st.textes, fsBloc: {}, pilote: false, videoPos: S.videoPos[e.eid] || 0 }; const inner = document.createElement('div'); inner.className = 'mur'; m.innerHTML = ''; m.appendChild(inner); rendre(inner, et); if (st.nDev < elements(e).length) inner.querySelectorAll('li[data-k]').forEach(li => { if (+li.dataset.k >= st.nDev) li.classList.add('pas'); }); const pg = inner.querySelector('.page'); if (pg) pg.textContent = ''; m.onclick = () => m.classList.toggle('grand'); });
+  const debord = () => { const min = restantes.filter(x => (S.decisions[x.e.eid] || {}).choix === 'suivante' || (S.decisions[x.e.eid] || {}).choix === 'terminer' || (S.decisions[x.e.eid] || {}).choix === 'preparer').reduce((a, x) => a + x.e.dur, 0); const suiv = seance().ecrans.filter(e => e.heure === S.heure + 1).reduce((a, e) => a + e.dur, 0); const d = suiv + min - 46; $('f-debord').textContent = derniere ? '' : (d > 0 ? `l'heure suivante dépasserait de ${d} min` : 'l\'heure suivante tient'); }; debord();
+  $('fin').querySelectorAll('[data-c]').forEach(b => b.onclick = () => { const eid = b.closest('.carte').dataset.eid; S.decisions[eid] = { choix: b.dataset.c, moment: 'fin', h: hhmm() }; ouvrirFin(cloture); });
+  $('fin').querySelectorAll('[data-motif]').forEach(i => i.onchange = () => { S.decisions[i.dataset.motif].motif = i.value; edTexte(); });
+  $('fin').querySelectorAll('[data-notion]').forEach(c => c.onchange = () => { const id = c.dataset.notion; const l = S.travail.apprendre; if (c.checked) { if (!l.includes(id)) l.push(id); } else { const j = l.indexOf(id); if (j >= 0) l.splice(j, 1); } ouvrirFin(cloture); });
+  $('fin').querySelectorAll('[data-grp]').forEach(c => c.onchange = () => { const ids = c.dataset.grp.split(','); const l = S.travail.apprendre; ids.forEach(id => { const j = l.indexOf(id); if (c.checked) { if (j < 0) l.push(id); } else if (j >= 0) l.splice(j, 1); }); ouvrirFin(cloture); });
+  const fn = $('f-nouvelles'); if (fn) fn.onclick = () => { S.travail.apprendre = S.travail.apprendre.filter(id => !dejaVue(id)); ouvrirFin(cloture); };
+  const fp = $('f-prevu'); if (fp) fp.onchange = () => { S.travail.prevu = fp.checked; edTexte(); };
+  $('f-libre').oninput = ev => { S.travail.libre = ev.target.value; edTexte(); }; $('f-ech').onchange = ev => { S.echeance = ev.target.value || null; edTexte(); };
+  const fb = $('f-bilan'); if (fb) fb.onclick = () => { $('ecran-fin').classList.remove('on'); const bi = seance().ecrans.indexOf(bilan); const faire = () => { S.di = bi; S.page = null; tout(); }; if (S.gel) faire(); else faire(); journal('aller-bilan', { di: bi }); };
+  $('f-fermer').onclick = () => { $('ecran-fin').classList.remove('on'); tout(); }; const fo = $('f-ok'); if (fo) fo.onclick = () => { $('ecran-fin').classList.remove('on'); tout(); };
+  const fc = $('f-clore'); if (fc) fc.onclick = () => { S.motAbsents = ($('f-mot') || {}).value || ''; Object.keys(S.versements).forEach(() => {}); journal('cloture'); S.close = true; $('ecran-fin').classList.remove('on'); voir('relecture'); };
+  edTexte();
+}
+function dejaVue(id){ return DATA.seances.some((s, k) => s.ecrans.some(e => (e.comp || []).includes(id) && (k < S.si || (k === S.si && e.heure < S.heure)))); }
+function taxoHtml(set){ let h = ''; DATA.taxo.forEach(d => { const fams = d.familles.map(f => ({ f, ns: f.notions.filter(n => set.has(n.id)) })).filter(x => x.ns.length); if (!fams.length) return; const idsD = fams.flatMap(x => x.ns.map(n => n.id)); const allD = idsD.every(id => S.travail.apprendre.includes(id));
+  h += `<div class="dom"><label><input type="checkbox" data-grp="${idsD.join(',')}" ${allD ? 'checked' : ''}> <b>${esc(d.prof)}</b></label>`; fams.forEach(x => { const idsF = x.ns.map(n => n.id); const allF = idsF.every(id => S.travail.apprendre.includes(id)); h += `<div class="fam"><label><input type="checkbox" data-grp="${idsF.join(',')}" ${allF ? 'checked' : ''}> ${esc(x.f.prof)}</label>`; x.ns.forEach(n => { h += `<div class="not"><label><input type="checkbox" data-notion="${n.id}" ${S.travail.apprendre.includes(n.id) ? 'checked' : ''}> ${esc(n.eleve || n.prof)} <span class="neuve">${dejaVue(n.id) ? 'déjà rencontrée' : 'nouvelle'}</span></label></div>`; }); h += '</div>'; }); h += '</div>'; }); return h || '<div style="color:var(--sourd)">aucune notion déclarée sur les diapos jouées</div>'; }
+function contenuEntier(e){ return e.blocs.map(b => { if (b.t === 'consigne') return b.txt + (b.el && b.el.length ? ' ' + b.el.map((x, i) => (i + 1) + '. ' + x).join(' ') : ''); if (b.t === 'question') return b.txt; if (b.t === 'fiche') return b.txt + (b.el && b.el[0] ? ' — ' + b.el[0] : ''); if (b.t === 'image') return b.txt + ' (image)'; if (b.t === 'schema') return 'le schéma « ' + b.txt + ' »'; if (b.t === 'video') return 'la vidéo « ' + b.txt + ' »'; return b.txt; }).join(' '); }
+function texteTravail(){ const l = []; const ech = S.echeance ? DATA.classe.prochaines.find(p => p.iso === S.echeance) : null;
+  Object.keys(S.decisions).forEach(eid => { const d = S.decisions[eid]; const e = seance().ecrans.find(x => x.eid === eid); if (!e) return; if (d.choix === 'terminer') l.push(`Terminer « ${e.act} » : ${contenuEntier(e)}`); if (d.choix === 'preparer') l.push(`Préparer « ${e.act} » : ${contenuEntier(e)}`); if (d.choix === 'pastemps' || d.choix === 'maison') { if (e.blocs[0] && e.blocs[0].t === 'video') l.push(`Regarder la vidéo « ${e.blocs[0].txt} » : voici le lien de l'espace de travail ${DATA.classe.lienED} ; clique ensuite sur le dossier Français, puis sur « ${DATA.chapitre.split(' (')[0]} » (le chapitre en cours), puis sur la vidéo « ${e.blocs[0].fichier} ».`); else l.push(`Faire « ${e.act} » : ${contenuEntier(e)}`); } });
+  if (S.travail.prevu && DATA.travailPrevu[S.si + '|' + S.heure]) l.push(DATA.travailPrevu[S.si + '|' + S.heure]);
+  if (S.travail.apprendre && S.travail.apprendre.length) l.push('Apprendre : ' + S.travail.apprendre.map(libNotionEleve).join(' ; ') + '.');
+  if (S.travail.libre.trim()) l.push(S.travail.libre.trim());
+  return (l.length ? 'Pour la prochaine séance' + (ech ? ' (' + ech.l.split(',')[0] + ')' : '') + ' — ' + l.join(' — ') : ''); }
+function edTexte(){ const z = $('f-ed'); if (z) z.textContent = texteTravail() || '(rien pour l\'instant)'; }
+function clotureHtml(){ const modifs = []; seance().ecrans.forEach((e, i) => { const st = parDiapo[S.si + '|' + i]; if (st && Object.keys(st.textes || {}).length) modifs.push(e); }); const versees = S.notesFil.filter(n => n.versee);
+  let h = `<div class="travail"><h3 style="margin-top:0">Avant de clore</h3>`;
+  h += `<div><b>Diapos modifiées pendant l'heure</b> — verser dans le chapitre ? ${modifs.length ? modifs.map(e => `<label><input type="checkbox" data-verse="${e.eid}"> ${esc(e.act)}</label>`).join('') : '<span style="color:var(--sourd)">aucune</span>'}</div>`;
+  h += `<div style="margin-top:8px"><b>Notes versées au récit</b> — les garder aussi comme notes présentateur de la diapo ? ${versees.length ? versees.map((n, i) => `<label><input type="checkbox" data-np="${i}"> diapo ${n.di} : ${esc(n.t.slice(0, 60))}</label>`).join('') : '<span style="color:var(--sourd)">aucune</span>'}</div>`;
+  const absents = ELEVES.filter(e => (S.appel[e] || []).length);
+  h += `<div style="margin-top:8px"><b>Un mot pour les absents</b> (${absents.length ? absents.map(prenomUnique).join(', ') : 'aucun'}) : <input type="text" id="f-mot" value="${esc(S.motAbsents)}" placeholder="facultatif — ajouté à la fin du mot de chacun" style="width:60%"></div>`;
+  h += `<div style="margin-top:8px;color:var(--texte2)">À la clôture, le site enregistre par classe et par heure : le récit, le travail à faire en entier, la liste des absents avec leurs heures, le mot par absent — là où le profil longitudinal se branchera.</div></div>`; return h; }
+$('bfin').onclick = () => ouvrirFin(true);
+// ───────── relecture : le récit, et ce qui s'est passé ─────────
+function voir(v){ ['fnotes', 'fcomm', 'fnotion', 'freserve', 'fdocs', 'fsimu', 'menu', 'menuplus'].forEach(id => $(id).classList.remove('on')); document.body.classList.toggle('vue-relecture', v === 'relecture'); $('ecran-relecture').classList.toggle('on', v === 'relecture'); $('ong-pilotage').classList.toggle('on', v !== 'relecture'); $('ong-relecture').classList.toggle('on', v === 'relecture'); if (v === 'relecture') relecture(); }
+$('ong-pilotage').onclick = () => voir('pilotage'); $('ong-relecture').onclick = () => voir('relecture'); $('face-recit').onclick = () => { S.face = 'recit'; relecture(); }; $('face-passe').onclick = () => { S.face = 'passe'; relecture(); };
+function relecture(){ S.face = S.face || 'recit'; $('face-recit').classList.toggle('on', S.face === 'recit'); $('face-passe').classList.toggle('on', S.face === 'passe'); const fin = Date.now();
+  $('rel-titre').textContent = `Relecture — ${DATA.classe.nom} · H${S.heure} · ${seance().titre}`; $('rel-sous').textContent = `${J.length ? fmt(J[0].t) : '—'} → ${fmt(fin)} · ${S.close ? 'heure close' : 'heure en cours'}`;
+  $('rel').innerHTML = S.face === 'recit' ? recitHtml(fin) : passeHtml(fin); }
+function recitHtml(fin){ const diapos = J.filter(e => e.type === 'diapo'); const vus = {}; diapos.forEach(e => { vus[e.di] = vus[e.di] || e.t; }); const ordre = Object.keys(vus).map(Number).sort((a, b) => vus[a] - vus[b]);
+  const debut = J.length ? hhmm(J[0].t) : hhmm(); let h = `<div class="recit"><p class="cadre">${esc(DATA.classe.nom)} · ${esc(DATA.chapitre)} · ${esc(seance().titre)} · heure ${S.heure}. Cette heure a commencé à ${debut} et s'est terminée à ${hhmm(fin)}.</p><h4>Ce qu'on a fait aujourd'hui</h4>`;
+  const connecteurs = ['Ensuite', 'Puis', 'Après cela', 'Dans la foulée', 'On a poursuivi']; let ci = 0; const conn = () => connecteurs[(ci++) % connecteurs.length];
+  let nFiches = 0, nDocs = 0, nQuestions = 0;
+  ordre.forEach(di => { const e = seance().ecrans[di]; const st = parDiapo[S.si + '|' + di] || { nDev: 0, reps: {}, lum: [] }; const k = S.si + '|' + di; const vu = vuMax[k] || 0; const els = elements(e); const phrases = [];
+    e.blocs.forEach((b, bi) => { const elsB = els.map((x, idx) => ({ x, idx })).filter(o => o.x.b === bi && o.idx < vu);
+      if (b.t === 'consigne') { phrases.push(`la consigne était : « ${b.txt} »`); if (elsB.length) phrases.push('la consigne précisait : ' + elsB.map(o => '« ' + o.x.txt.replace(/^Étape \d+ : /, '').replace(/\.$/, '') + ' »').join(', puis ')); }
+      if (b.t === 'question') { nQuestions++; const rs = (st.reps[bi] || []).filter(r => r.r); phrases.push(`on a répondu à la question : « ${b.txt} »` + (rs.length ? '. ' + rs.map(r => `${r.eleve ? prenomUnique(r.eleve) : 'Un élève'} a répondu : « ${r.r} »${r.refo ? ', que M. Meney a reformulée' : ''}`).join(' ; ') : '')); const autres = [...new Set(S.parts.filter(p => p.di === di + 1 && p.m !== 'reponse').map(p => prenomUnique(p.nom)))]; if (autres.length) phrases.push(`${autres.join(', ')} ${autres.length > 1 ? 'ont' : 'a'} aussi participé à la mise en commun`); }
+      if (b.t === 'fiche') { nFiches++; phrases.push(`on a travaillé la fiche « ${b.txt} »`); }
+      if (b.t === 'image') { nDocs++; phrases.push(`on a observé ${b.txt}`); }
+      if (b.t === 'schema') { phrases.push(`on a construit le schéma « ${b.txt} »`); }
+      if (b.t === 'video') { const pos = S.videoPos[e.eid] || 0; const rep = b.reperes.filter(r => r.t <= pos).slice(-1)[0]; if (pos > 0) phrases.push(`on a regardé « ${b.txt} »${rep ? ' jusqu\'à ' + rep.l : ''}`); } });
+    const lum = (st.lum || []).map(kk => els[kk]).filter(Boolean).map(x => x.txt); if (lum.length) phrases.push(`on a mis en lumière « ${lum.join(' », « ')} »`);
+    J.filter(x => x.type === 'document' && x.mur && x.mur.di === di).forEach(x => { const d = (DATA.documents[String(S.si)] || []).find(y => y.id === x.id); const pages = J.filter(y => (y.type === 'document' || y.type === 'document-page') && y.id === x.id).map(y => y.pos); nDocs++; if (d) phrases.push(`on a projeté « ${d.titre} »${pages.length > 1 ? ' (' + (d.type === 'pdf' ? 'pages' : 'étapes') + ' ' + Math.min(...pages) + ' à ' + Math.max(...pages) + ')' : ''}`); });
+    S.notesFil.filter(n => n.versee && n.di === di + 1).forEach(n => phrases.push(`<span class="versee">${esc(n.t.replace(/[.\s]+$/, ''))}</span>`));
+    if (!phrases.length) return; const nettoie = p => p.replace(/\.+$/, ''); h += `<h4>${esc(e.act)}</h4><p>À ${hhmm(vus[di])}, ${phrases.map((p, i) => nettoie(i === 0 ? p : (p.startsWith('<span') ? p : conn() + ', ' + p))).join('. ')}.</p>`; });
+  const parle = new Set(S.parts.map(p => p.nom)); const nonFaites = Object.keys(S.decisions).map(eid => ({ e: seance().ecrans.find(x => x.eid === eid), d: S.decisions[eid] })).filter(x => x.e && x.d.choix !== 'passee' || (x.e && x.d.choix === 'passee'));
+  const tourn = x => { const v = x.e.blocs[0] && x.e.blocs[0].t === 'video'; const c = x.d.choix; if (c === 'suivante' || c === 'reporter') return `« ${x.e.act} », qu'on ${v ? 'regardera' : 'fera'} à la prochaine séance`; if (c === 'reserve') return `« ${x.e.act} », qui reste à faire pour ceux qui ont fini`; if (c === 'nonfait') return `« ${x.e.act} », qu'on ne ${v ? 'regardera' : 'fera'} pas`; if (c === 'terminer') return `« ${x.e.act} », à terminer à la maison`; if (c === 'preparer') return `« ${x.e.act} », à préparer à la maison`; if (c === 'pastemps' || c === 'maison') return `« ${x.e.act} », à ${v ? 'regarder' : 'faire'} à la maison`; if (c === 'passee') return `« ${x.e.act} », qu'on regardera à la prochaine séance`; return `« ${x.e.act} »`; };
+  h += `<h4>Pour finir</h4><p>Pour finir, on a travaillé ${nFiches} fiche${nFiches > 1 ? 's' : ''}, observé ${nDocs} document${nDocs > 1 ? 's' : ''} et répondu à ${nQuestions} question${nQuestions > 1 ? 's' : ''} ; ${parle.size} élève${parle.size > 1 ? 's' : ''} sur ${presents()} présents ${parle.size > 1 ? 'ont' : 'a'} pris la parole.${nonFaites.length ? ` ${nonFaites.length > 1 ? nonFaites.length + ' activités n\'ont pas été faites' : 'Une activité n\'a pas été faite'} cette heure-ci : ${nonFaites.map(tourn).join(' ; ')}.` : ''}</p>`;
+  const tr = texteTravail(); if (tr) h += `<h4>Pour la prochaine séance</h4><p>${esc(tr.replace(/^Pour la prochaine séance[^—]*— /, ''))}</p>`;
+  h += `</div><div style="margin-top:12px;display:flex;gap:8px"><button class="btn" title="Copie le récit sans le travail à faire">Copier pour École Directe — contenu de séance</button><button class="btn" title="Copie le travail à faire en entier">Copier — travail à faire</button><button class="btn" title="Le récit devient un texte que tu retouches à la main ; il ne suit plus rien">Le figer pour le corriger</button></div>`;
+  const absents = ELEVES.filter(e => (S.appel[e] || []).length); if (absents.length) { h += `<h3>Le mot pour chaque absent (enregistré à la clôture)</h3>`; absents.forEach(e => { const seg = S.appel[e]; const arr = seg.find(s => s.type === 'arrive'); const part = seg.find(s => s.type === 'parti'); h += `<div class="recit" style="margin-bottom:10px"><p><b>${esc(prenomUnique(e))}</b>, ${arr ? 'tu es arrivé à ' + hhmm(arr.t) + '. Voici ce qu\'on a fait avant' : part ? 'tu es parti à ' + hhmm(part.t) + '. Voici ce qu\'on a fait après' : 'tu n\'étais pas là ' + new Date().toLocaleDateString('fr-FR', { weekday: 'long' }) + ' à ' + (J.length ? hhmm(J[0].t) : hhmm()) + '. Voici ce qu\'on a fait'} : (le récit ci-dessus, ${arr ? 'jusqu\'à ' + hhmm(arr.t) : part ? 'à partir de ' + hhmm(part.t) : 'en entier'})${tr ? ' — ' + esc(tr) : ''}${S.motAbsents ? ' — ' + esc(S.motAbsents) : ''}</p></div>`; }); }
+  return h; }
+function passeHtml(fin){ const diapos = J.filter(e => e.type === 'diapo'); let fil = '';
+  diapos.forEach((e, i) => { const fin2 = diapos[i + 1] ? diapos[i + 1].t : fin; const dans = x => x.t >= e.t && x.t < fin2; const lignes = [];
+    J.filter(x => dans(x) && x.type !== 'diapo').forEach(x => { const l = ({ devoile: () => `élément ${x.k + 1} dévoilé`, retire: () => `élément ${x.k + 1} retiré`, gel: () => 'tableau figé', degel: () => 'tableau dégelé', parole: () => `${prenomUnique(x.nom)} — ${MOTIFS[x.m]}`, reponse: () => `${x.eleve ? prenomUnique(x.eleve) : x.ini} a répondu : « ${x.txt} »${x.refo ? ' (reformulée)' : ''}`, note: () => `note : ${x.txt}`, 'note-versee': () => `note versée au récit`, page: () => `page ${x.p} montrée`, lumiere: () => `mis en lumière : élément ${x.k + 1}`, ecrire: () => `à écrire : élément ${x.k + 1}`, appel: () => `${prenomUnique(x.eleve)} — ${({ absent: 'absent', arrive: 'arrivé', parti: 'parti', revenu: 'revenu' })[x.quoi] || x.quoi}${x.raison ? ' (' + x.raison + ')' : ''}`, retiree: () => `retirée de l'heure : ${libDecision({ choix: x.choix })}`, commentaire: () => `commentaire posé`, 'notion-imprevue': () => `notion imprévue : ${libNotion(x.id)}`, 'reserve-affichee': () => `réserve affichée au tableau : ${x.txt}`, 'reserve-retiree': () => 'réserve retirée du tableau', document: () => `document projeté (position ${x.pos})`, 'document-page': () => `document : position ${x.pos}`, 'document-ferme': () => 'document fermé', video: () => `vidéo lue de ${x.de}s à ${x.a}s`, 'video-passee': () => `vidéo passée : ${x.motif}`, loupe: () => 'loupe', retouche: () => 'un élément retouché (reste gris)', 'aller-bilan': () => 'aller au bilan', 'parole-annulee': () => 'prise de parole annulée', 'reponse-supprimee': () => 'prise de parole supprimée', 'reponse-corrigee': () => 'réponse corrigée', 'video-lecture': () => 'vidéo : lecture', 'video-pause': () => 'vidéo : pause' })[x.type]; if (l) lignes.push(`<div class="l ${x.type === 'gel' || x.type === 'degel' ? 'gel' : ''}">${fmt(x.t)} — ${l()}</div>`); });
+    const verbe = e.nature === 'début' ? 'La classe est sur' : e.nature === 'suivante' ? 'La classe passe à' : e.nature === 'retour' ? 'Retour de la diapo ' + (e.de.di + 1) + ' à' : 'Saut de la diapo ' + (e.de.di + 1) + ' à';
+    fil += `<div class="pasfil ${e.nature}"><span class="h">${fmt(e.t)}</span>${verbe} <b>la diapo ${e.di + 1} — ${esc(seance().ecrans[e.di].act)}</b><span class="d">${duree(fin2 - e.t)}</span>${lignes.join('')}</div>`; });
+  let bilan = '<table><tr><th>Diapo</th><th>Heure</th><th>Au tableau</th><th>Prévu</th><th>Dévoilé</th><th>Ce qui s\'est passé</th></tr>'; const temps = {}; diapos.forEach((e, i) => { temps[e.di] = (temps[e.di] || 0) + ((diapos[i + 1] ? diapos[i + 1].t : fin) - e.t); });
+  seance().ecrans.forEach((e, di) => { const k = S.si + '|' + di; const el = elements(e); const vu = vuMax[k] || 0; const t = temps[di] || 0; const jouee = t > 0; const d = S.decisions[e.eid]; const recit = d ? libDecision(d) + (d.motif ? ' (' + d.motif + ')' : '') + (d.moment === 'classe' ? ' — retirée en classe à ' + d.h : '') : !jouee ? 'pas jouée' : el.length ? (vu >= el.length ? 'tout a été vu' : vu ? `on s'est arrêté après « ${esc(el[vu - 1].txt).slice(0, 70)}… »` : 'affichée, rien dévoilé') : 'affichée';
+    bilan += `<tr class="${jouee ? '' : 'non'}"><td><b>${di + 1}</b> ${esc(e.act)}${e.role ? ' <i>(' + e.role + ')</i>' : ''}</td><td>H${e.heure}</td><td>${jouee ? duree(t) : '—'}</td><td>${e.dur} min</td><td>${el.length ? vu + ' / ' + el.length : '—'}</td><td>${recit}</td></tr>`; }); bilan += '</table>';
+  const parE = {}; S.parts.forEach(p => { (parE[p.nom] = parE[p.nom] || []).push(p); });
+  const partH = Object.keys(parE).length ? Object.keys(parE).sort().map(n => `<span class="puce">${esc(prenomUnique(n))} <b style="color:var(--or)">${parE[n].length}</b> <small style="color:var(--sourd)">${parE[n].map(p => 'd' + p.di + ' · ' + (MOTIFS[p.m] || p.m)).join(', ')}</small></span>`).join('') : '<span class="vide">personne encore</span>';
+  const notesH = S.notesFil.length ? S.notesFil.map((n, i) => `<div><b style="color:var(--or)">${n.h}</b> · diapo ${n.di} — ${esc(n.t)} <button class="btn" data-vv="${i}" style="padding:1px 7px;font-size:.8rem">${n.versee ? 'Retirer du récit' : 'Verser au récit'}</button></div>`).join('') : '<span class="vide">aucune</span>';
+  const appelH = ELEVES.filter(e => (S.appel[e] || []).length).map(e => `<div>${esc(prenomUnique(e))} — ${S.appel[e].map(s => s.type + ' ' + hhmm(s.t) + (s.raison ? ' (' + esc(s.raison) + ')' : '')).join(', ')}</div>`).join('') || '<span class="vide">tous présents</span>';
+  setTimeout(() => $('rel').querySelectorAll('[data-vv]').forEach(b => b.onclick = () => { const n = S.notesFil[+b.dataset.vv]; n.versee = !n.versee; relecture(); }), 0);
+  return `<h3>Le fil de l'heure — ce que la classe a vu, et ce que tu as saisi</h3>${fil || '<span class="vide">rien encore</span>'}<h3>Diapo par diapo</h3>${bilan}<div style="display:grid;grid-template-columns:1fr 1fr;gap:28px"><div><h3>Participation</h3>${partH}<h3>L'appel</h3>${appelH}</div><div><h3>Notes au fil de l'eau</h3>${notesH}</div></div>`; }
+// ───────── ⚙ simulation, tableau, toutes, raccourcis, horloge ─────────
+$('bsimu').onclick = () => $('fsimu').classList.toggle('on'); $('fsimu-x').onclick = () => $('fsimu').classList.remove('on');
+$('s-heure').onchange = ev => { S.heure = +ev.target.value; const first = seance().ecrans.findIndex(e => e.heure === S.heure); S.di = Math.max(0, first); S.page = null; tout(); };
+$('s-cle').onchange = ev => { S.cle = ev.target.value; tout(); }; $('s-tab').onchange = ev => { S.tab = ev.target.value; tout(); }; $('s-t5').onclick = () => { $('fsimu').classList.remove('on'); t5(); };
+$('btableau').onclick = () => { if (fenetreMur && !fenetreMur.closed) { fenetreMur.focus(); return; } fenetreMur = window.open('', 'tableau', 'width=1100,height=640'); const d = fenetreMur.document; d.write('<!DOCTYPE html><html><head><meta charset="utf-8"><title>Tableau</title>' + document.querySelector('style').outerHTML + '<style>html,body{height:100%;margin:0;background:#111}.mur{width:min(100vw,calc(100vh * 16 / 9));height:auto;margin:0 auto;border-radius:0;box-shadow:none}</style></head><body><div class="mur tableau" id="mur2"></div><script>window.addEventListener("message",ev=>{if(ev.data&&ev.data.et){ev.data.et.pilote=false;window._et=ev.data.et;rendre(document.getElementById("mur2"),ev.data.et);}});window.opener&&window.opener.postMessage({pret:true},"*");<\/script></body></html>'); d.close();
+  const inj = d.createElement('script'); const fns = { esc, elements, rendre, docHtml, videoHtml, paginer, pageDeSuivi, appliquerPages, loupeSur }; inj.textContent = Object.keys(fns).map(n => 'var ' + n + ' = ' + fns[n].toString() + ';').join('\n') + '\nvar TAILLES = ' + JSON.stringify(TAILLES) + ';\nvar DATA = ' + JSON.stringify(DATA).replace(/<\//g, '<\\/') + ';\nvar S = { si: ' + S.si + ' };'; d.body.appendChild(inj); };
+window.addEventListener('message', ev => { if (ev.data && ev.data.pret) pousser(S.gel || etatComplet()); });
+$('btoutes').onclick = () => { $('toutes').innerHTML = seance().ecrans.map((e, i) => `<div class="vig" data-i="${i}" style="display:block"><div class="m" style="height:auto;aspect-ratio:16/9"><b>${esc(e.act)}</b></div><div style="font-size:.8rem;color:var(--texte2)">${i + 1} · H${e.heure}${S.decisions[e.eid] ? ' · ' + libDecision(S.decisions[e.eid]) : ''}</div></div>`).join(''); $('vtoutes').classList.add('on'); $('toutes').querySelectorAll('.vig').forEach(v => v.onclick = () => { $('vtoutes').classList.remove('on'); aller(+v.dataset.i); }); };
+document.addEventListener('keydown', ev => { const champ = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName) || document.activeElement.isContentEditable;
+  if ($('garde').classList.contains('on')) { if (ev.key === 'Enter') { ev.preventDefault(); $('garde-gel').click(); } if (ev.key === 'Escape') $('garde-non').click(); return; }
+  if ($('garde2').classList.contains('on')) { if (ev.key === 'Enter') { ev.preventDefault(); $('garde2-revenir').click(); } if (ev.key === 'Escape') $('garde2-non').click(); return; }
+  if (ev.key === 'Escape') { const ouvertes = ['vtoutes', 'fnotes', 'fcomm', 'fnotion', 'freserve', 'fdocs', 'fsimu', 'fraison', 'menu', 'menuplus'].filter(id => $(id).classList.contains('on')); ouvertes.forEach(id => $(id).classList.remove('on')); if (!ouvertes.length && S.doc) { S.doc = null; tout(); } if (document.activeElement) document.activeElement.blur(); return; }
+  if (champ) return;
+  if ((ev.key === 'ArrowRight' && !ev.shiftKey) || ev.key === ' ') { ev.preventDefault(); devoiler(); }
+  else if (ev.key === 'ArrowLeft' && ev.shiftKey) { ev.preventDefault(); pageMain(-1); } else if (ev.key === 'ArrowRight' && ev.shiftKey) { ev.preventDefault(); pageMain(1); }
+  else if (ev.key === 'ArrowLeft') { ev.preventDefault(); revoiler(); }
+  else if (ev.key === 'PageDown') { ev.preventDefault(); aller(S.di + 1); } else if (ev.key === 'PageUp') { ev.preventDefault(); aller(S.di - 1); }
+  else if (ev.key.toLowerCase() === 'g') { ev.preventDefault(); gel(); } else if (ev.key.toLowerCase() === 'n') { ev.preventDefault(); basculerNotes(); } else if (ev.key.toLowerCase() === 't') { ev.preventDefault(); $('btoutes').click(); } else if (ev.key.toLowerCase() === 'l') { ev.preventDefault(); $('bloupe').click(); } else if (ev.key.toLowerCase() === 'r') { ev.preventDefault(); voir(document.body.classList.contains('vue-relecture') ? 'pilotage' : 'relecture'); } });
+setInterval(() => { S.ecoule++; const m = Math.floor(S.ecoule / 60), s = S.ecoule % 60; $('chr').textContent = String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0'); $('heure').textContent = hhmm(); }, 1000);
+$('hclasse').textContent = DATA.classe.nom; $('hou').textContent = `mardi 15:07-16:02 · heure 1 sur 2 · ${seance().titre}`;
+tout();
+</script></body></html>

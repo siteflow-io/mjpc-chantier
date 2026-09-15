@@ -3894,3 +3894,36 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 101 — Paul
+
+Pièce jointe : la liste de ses espaces de travail École Directe (3 DYLAN BOB, 3 FRANKLIN ARETHA, 4 BANKSY, 4 HUGO, 4 PYTHAGORE, 4 TURING), recopiée en `pieces/T101-espaces-de-travail-ED.png`.
+
+Texte de Paul, mot pour mot :
+
+> une vidéo peut être hébergée sur ecole directe. Donc dans ce cas, il faut que je puisse mettre l'endroit où trouver la vidéo sur ED. l'adresse de l'espace de travail se présente toujours comme ça: https://www.ecoledirecte.com/P/94/EspacesTravail/1/cloud et en fonction du nombre d'espace de travail que j'ai, le numéro change. voilà mes espaces de travail. Banksy et pythagore ne servent pas (ce ne sont pas mes classes).
+
+---
+
+## TOUR 101 — Claude (conscience n°12)
+
+Le brouillon du cadrage 4 v2 (4b.5 complété, 4b.6 nouveau) est réécrit ; non déposé (pièce `pieces/T101-CADRAGE-4-LA-PREPARATION-v2-soumis.md`). Rien déposé hormis ce transcript et ses pièces.
+
+Réponse mot pour mot :
+
+Pris, et ça règle le trou d'« à la maison » pour les vidéos. Ce que ça fixe (4b.6), mis en tension :
+
+- **Chaque classe porte, une fois pour toutes, le numéro de son espace de travail École Directe** — tu le saisis dans la fiche de la classe, à côté de l'appariement de l'emploi du temps : l'adresse est toujours `…/EspacesTravail/<n>/cloud`, seul le numéro change. Les 3 Dylan Bob, 3 Franklin Aretha, 4 Hugo, 4 Turing en ont un ; Banksy et Pythagore, rien. Une donnée par classe, dans la structure nommée (apparent dans le code), que la page élève et le profil réutiliseront.
+- **Une vidéo porte, en plus du fichier sur la clé, son emplacement sur École Directe** : le dossier et le nom du fichier dans le cloud de l'espace. Tu le renseignes en préparation.
+- **Alors « à la maison » est proposé**, et le travail à faire, le récit, le mot de l'absent disent : « à regarder à la maison : *Le Radeau* — dans l'espace de travail de la 3 Franklin sur École Directe (Espaces de travail › cloud), dossier *Poésie et peinture* », avec le lien de l'espace. Sans emplacement ni adresse en ligne, le bouton reste grisé avec la raison.
+- **En classe, c'est la clé qui lit** : École Directe demande une connexion, le tableau ne peut pas y lire. **À la maison, c'est École Directe.** Deux lieux, deux usages, la même vidéo.
+
+Une limite que je te dis : le lien mène à l'espace, pas au fichier (École Directe n'a pas d'adresse par fichier, à ce que je sais) ; c'est le nom du dossier et du fichier dans le texte qui guide l'élève. Si ED offre un lien par fichier, on le mettra.
+
+Le cadrage 4 v2 est prêt avec ça. Sur ton mot, je le dépose.
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

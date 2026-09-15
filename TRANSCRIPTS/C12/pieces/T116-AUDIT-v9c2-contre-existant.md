@@ -1,0 +1,24 @@
+# AUDIT — les corrections prévues pour la v9c.2, confrontées à l'existant (joué le 15/09)
+*Conscience n°12. Banc `T116-existant4.mjs` : la production en classe, faux hub, mesures à 1366 × 768, 1536 × 864, 1920 × 1080. Pour chaque point : ce que l'existant fait (mesuré), ce que la maquette fera, la règle pour le mandat (repris tel quel · repris et corrigé · créé).*
+
+| Point de la v9c.2 | L'existant, mesuré | La maquette v9c.2 | Mandat |
+|---|---|---|---|
+| **1. Loi de taille** | **La police du corps est déjà proportionnelle à la boîte : 6,36 à 6,40 % de sa hauteur aux trois tailles** (19 px sur 301 px ; 22 px sur 344 px). Mais le contenu ne tient pas : l'existant **coupe la diapo en écrans** (3 à 4 lignes visibles, « Suite 1 »). La réglette « 32 pt » ajoute des crans par-dessus. | La même proportion (6,4 % au réglage normal), **sans coupe** : la diapo la plus chargée tient entière parce que la police descend, jusqu'à un plancher lisible du fond (**4,2 % de la hauteur** — c'est 32 pt sur une boîte de 760 px, la loi du 25/08) ; sous le plancher, ce n'est plus la classe qui paie, c'est la préparation qui dit « trop pleine » (5.7) ; en classe, seules les réponses qui grandissent passent en pages (5.2). | Repris (la proportion) et corrigé (plus de coupe ; le plancher ; les pages). Les deux nombres (6,4 %, 4,2 %) sont à valider par Paul. |
+| **2. Ctrl + molette** | Aucun zoom de vue : Ctrl + molette est le zoom du navigateur, qui agrandit tout, outils compris. | Un zoom de la seule vue : la diapo grandit **dans son cadre**, les outils restent sous elle, les notes cèdent. | Créé. |
+| **3. L'activité** | L'ancien moteur prévoyait un groupe (`grp`) : « une activité étalée = un paragraphe » dans le récit — **jamais renseigné** dans ce chapitre (mesuré : `grp` absent des 18 écrans). Le T-5 et les décisions sont par écran. | L'activité est un objet (numéro continu, titre, une ou plusieurs diapos) ; décisions et T-5 par activité ; un paragraphe par activité ; la frontière d'heure peut la traverser ; reprise fléchée. | Repris (le groupe du récit) et étendu (objet, décisions, numéro, frontière). |
+| **4. Les miniatures** | La colonne « Écrans » montre **déjà le contenu** de chaque diapo, en texte réduit (10 px), pas à l'échelle : le texte est tronqué, la mise en page n'est pas celle du tableau. | La diapo elle-même, rendue et réduite (le rendu du tableau, à l'échelle). | Repris et corrigé (à l'échelle). |
+| **5. Colonnes repliables** | Le sommaire du chapitre se plie par séance (`atSomPlier`) ; **aucune colonne ne se rabat** ; aucun bouton. | Gauche et droite repliables d'une poignée ; le centre s'adapte. | Créé. |
+| **6a. ² / F2** | ✔ existant (joué le 12/09). | À simuler (une touche). | Repris tel quel. |
+| **6b. Palette Maj + Espace** | ✔ existant — avec son défaut : « Aucun élève avec ces initiales » puis une pose quand même. | La palette, avec la même liste que le VIF, et ce qui est affiché est posé. | Repris et corrigé. |
+| **6c. Historique par élève** | ✔ existant (clic sur un nom : ses prises, corriger, supprimer, aller à la réponse). | Le même geste. | Repris tel quel. |
+| **6d. Ctrl+Z** | ✔ existant : Ctrl+Z annule la dernière prise de parole (mesuré : 1 → 0). | Ctrl+Z sur la dernière saisie (prise, réponse, note). | Repris et étendu. |
+| **6e. Surligner par couleur** | ✔ existant : jaune (Ctrl+H), vert, rose, bleu, retirer — sur la sélection, dans le bloc (`forme('hilite', couleur)`). | Les quatre couleurs sur la sélection ; la légende de surlignage de la diapo les nomme (tour 88). | Repris tel quel, plus la légende. |
+| **6f. T-5 à l'heure réelle** | ✔ existant : `atT5Modale` surgit à cinq minutes de la fin du créneau. | Le T-5 arrive à l'heure réelle du créneau simulé (pas seulement par ⚙). | Repris tel quel. |
+| **6g. Rattrapage avant lancement** | ✘ existant : « Heure reprise — 0 min déjà comptées », tout repart à zéro (joué le 15/09). | L'écran d'ouverture rejoue le T-5 de l'heure non close avant de lancer (6.7). | Créé. |
+| **6h. Le mot de l'absent tronqué** | ∅ existant. | Le récit s'arrête / commence à l'heure du segment. | Créé. |
+| **6i. Infobulles des entrées de menu** | ◐ existant : les boutons ont des `title`, les menus non. | Chaque entrée porte la sienne. | Créé. |
+
+## Ce que cette confrontation change à la v9c.2
+- Pour les gestes que l'existant a déjà (6a à 6f), **la maquette ne les invente pas : elle les rejoue comme l'existant**, défaut corrigé quand il est au registre (la palette). C'est le protocole §3 (« le moteur existant est repris tel quel ») ; ma v9c.1 les avait omis — l'inverse du piège de la traduction, mais un piège quand même : la maquette doit être au moins ce que le site sait faire.
+- Pour la loi de taille, **l'existant avait la proportion juste et le mauvais remède (couper)** : la maquette garde la proportion et remplace le remède.
+- Deux nombres à valider : 6,4 % (normal, celui de l'existant) et 4,2 % (le plancher lisible du fond).

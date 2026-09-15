@@ -1,0 +1,11 @@
+import { chromium } from '/home/claude/.npm-global/lib/node_modules/playwright/index.mjs';
+const nav = await chromium.launch({ executablePath: '/opt/google/chrome/chrome', args: ['--no-sandbox','--allow-file-access-from-files'], headless: true });
+const ctx = await nav.newContext({ viewport: { width: 1366, height: 768 } }); await ctx.grantPermissions(['clipboard-read', 'clipboard-write']); const page = await ctx.newPage(); const errs = []; page.on('pageerror', e => errs.push(e.message));
+const p = ms => page.waitForTimeout(ms); const ev = (f, a) => page.evaluate(f, a);
+await page.goto('file:///home/claude/C12/maquette-v9b-courante.html'); await p(400);
+await page.keyboard.press('ArrowRight'); await page.keyboard.press('ArrowRight'); await page.keyboard.press('r'); await p(300);
+await page.click('#r-copie-contenu'); await p(200); console.log('copie :', await ev(() => document.getElementById('r-copie-etat').textContent), '| presse-papier :', (await ev(() => navigator.clipboard.readText())).slice(0, 80));
+await page.click('#r-figer'); await p(200); console.log('figé :', await ev(() => document.querySelector('.recit').isContentEditable), '|', await ev(() => document.getElementById('r-figer').textContent));
+await page.click('.recit p:nth-of-type(2)'); await page.keyboard.press('End'); await page.keyboard.type(' (retouché)'); await page.keyboard.press('r'); await page.keyboard.press('ArrowRight'); await page.keyboard.press('r'); await p(300);
+console.log('la retouche survit à un nouveau dévoilement :', (await ev(() => document.querySelector('.recit').innerText)).includes('(retouché)'));
+console.log('erreurs :', errs); await nav.close();

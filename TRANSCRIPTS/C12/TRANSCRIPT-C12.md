@@ -3803,3 +3803,36 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 98 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok donc ça veut simplement dire que le site doit d'abord me dire qu'il faut branche la clé soit sur mon ordi portable, soit sur l'ordi de classe, avant de me donner la garde finale du non branchement nulle part. Que propsoes tu du coup?
+
+---
+
+## TOUR 98 — Claude (conscience n°12)
+
+Aucune mesure nouvelle. Le brouillon du cadrage 4 v2 (4b.4) est réécrit en trois temps, non déposé (pièce `pieces/T98-CADRAGE-4-LA-PREPARATION-v2-soumis.md`). Rien déposé hormis ce transcript et cette pièce.
+
+Réponse mot pour mot :
+
+Exactement. Ce que je propose, en trois temps, parce que le site sait deux choses que tu n'as pas à retenir : **quel appareil projette** (la fenêtre Win+K sur ton portable, ou l'ordi de classe connecté au hub) et **où le fichier est visible** (ton portable le sait pour lui ; l'ordi de classe le dit par le hub).
+
+**1. À l'ouverture de l'heure, avant de lancer** — pour chaque vidéo de la séance, une ligne :
+- « ✔ *Le Radeau* — lisible sur ton portable » ou « ✔ lisible sur l'ordi de classe » : rien à faire ;
+- « ✘ *Le Radeau* — **branche la clé sur l'ordi de classe** » (c'est lui qui projette) ou « **… sur ton portable** » (Win+K) — le site nomme l'appareil qui projette, pas les deux ; avec l'autre voie en dessous quand elle existe : « ou ouvre la fenêtre du tableau (Win+K) : la clé est sur ton portable » ;
+- un bouton **« Revérifier »** après avoir branché. Tu lances quand tu veux ; rien ne bloque.
+
+**2. Pendant l'heure, en approche** — dès que la vidéo est la diapo suivante, si l'appareil qui projette ne la voit pas (la clé a été retirée, ou tu es passé de Win+K à l'ordi de classe), une ligne sur ton écran, avant d'y arriver : « la diapo suivante a une vidéo, pas lisible sur l'ordi de classe — branche la clé dessus, ou passe ». Tu as le temps de brancher.
+
+**3. La garde finale, à la diapo vidéo** — si le fichier n'est visible **ni sur ton portable ni sur l'ordi de classe** : sur ton écran seulement, « la vidéo ne peut pas être montrée : la clé n'est branchée nulle part — branche-la, puis **Réessayer** ; ou **Passer** » ; **le tableau reste sur la diapo précédente**, jamais de lecteur noir ; si tu passes, le journal note « vidéo non montrée, fichier non atteignable », et la fin d'heure la traite comme pas jouée (reste à faire, réserve, maison, non fait).
+
+Trois moments, une seule idée : **le site te dit où brancher, avant que la classe ne le voie.** Écrit tel quel dans le cadrage 4 (4b.4) ; sur ton mot je dépose le cadrage entier.
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

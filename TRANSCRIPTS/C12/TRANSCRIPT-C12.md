@@ -3864,3 +3864,33 @@ Tests : aucun, rien n'est livré.
 MEMO
 
 ---
+
+## TOUR 100 — Paul
+
+Texte de Paul, mot pour mot :
+
+> alors pour le journal ok, en revanche pour le récit?
+
+---
+
+## TOUR 100 — Claude (conscience n°12)
+
+Le brouillon du cadrage 4 v2 (4b.5) est complété ; non déposé (pièce `pieces/T100-CADRAGE-4-LA-PREPARATION-v2-soumis.md`). Rien déposé hormis ce transcript et cette pièce.
+
+Réponse mot pour mot :
+
+Pour le récit, la règle générale s'applique et elle suffit : **le récit ne dit que ce qui a été montré** (cadrage 2, 1.4). Une vidéo passée n'a pas été montrée, donc **pas un mot dans le fil de l'heure** — et surtout pas « pas de clé branchée » : c'est une raison pour toi, pas pour l'élève.
+
+Elle apparaît **une seule fois, dans le bilan, par sa décision**, comme toute activité pas jouée (cadrage 1, 7.1) : « *Le Radeau*, qu'on regardera à la prochaine séance » (elle glisse, par défaut) ; ou « en réserve » ; ou « qu'on ne regardera pas ». Avec une tournure pour la vidéo : « regarder » plutôt que « faire », le site le sait par le type de l'objet.
+
+**Un cas que ça découvre — mis en tension avec « à la maison »** : donner une vidéo à regarder chez soi n'est possible que si l'élève peut l'atteindre — pas depuis ta clé. Donc pour une vidéo, **« à la maison » n'est proposé que si elle a une adresse en ligne** ; sinon le bouton est grisé avec la raison (« la vidéo est sur ta clé, l'élève ne peut pas l'ouvrir »). Même chose pour le mot de l'absent.
+
+Et si tu veux que la classe sache qu'une vidéo n'a pas pu passer, c'est **une note versée** au récit, dans tes mots — jamais le site de lui-même.
+
+Écrit dans le cadrage 4 (4b.5) et, pour la tournure « regarder », dans le cadrage 2 (1.6 ter). Sur ton mot, je dépose le cadrage 4.
+
+Tests : aucun, rien n'est livré.
+
+MEMO
+
+---

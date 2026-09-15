@@ -1,0 +1,15 @@
+import { chromium } from '/home/claude/.npm-global/lib/node_modules/playwright/index.mjs';
+const nav = await chromium.launch({ executablePath: '/opt/google/chrome/chrome', args: ['--no-sandbox','--allow-file-access-from-files'], headless: true });
+const page = await nav.newPage({ viewport: { width: 1366, height: 768 } }); page.on('pageerror', e => console.log('ERREUR', e.message));
+const p = ms => page.waitForTimeout(ms);
+await page.goto('file:///home/claude/C12/maquette-v9b-courante.html'); await p(400);
+for (let k = 0; k < 4; k++) await page.keyboard.press('ArrowRight');
+await page.click('#volet .vig[data-i="7"]'); await p(100); await page.click('#garde-devant'); await p(200); await page.keyboard.press('ArrowRight'); await p(100);
+await page.click('#mur .ajout .ini'); await page.keyboard.type('ze'); await page.keyboard.press('Enter'); await page.keyboard.type('Une nature immense face à un homme petit.'); await page.keyboard.press('Enter'); await p(200);
+await page.click('#mur ol.reps li'); await p(100); await page.keyboard.press('Escape');
+await page.fill('#vif', 'cj'); await page.click('.motifs [data-m="1"]'); await p(100);
+await page.click('#volet .vig[data-i="9"]'); await p(100); await page.click('#garde-devant'); await p(200); await page.keyboard.press('ArrowRight'); await page.keyboard.press('ArrowRight');
+await page.keyboard.press('n'); await page.keyboard.type('Line a dit le sublime sans le mot.'); await page.keyboard.press('Enter'); await p(100); await page.click('#fnotes [data-v="0"]'); await page.keyboard.press('Escape');
+await page.keyboard.press('r'); await p(400);
+console.log(await page.evaluate(() => document.querySelector('.recit').innerText));
+await page.screenshot({ path: 'vis/v9b-recit-moteur.png' }); await nav.close();

@@ -4614,3 +4614,41 @@ Tests, dans l'ordre : ▶ six fois sur la diapo 1 : tout tient, « 32 pt » à l
 MEMO
 
 ---
+
+## TOUR 123 — Paul
+
+Texte de Paul, mot pour mot :
+
+> je n'ai pas testé la maquette, reteste la en entier, vérifie tout, joue tout, clique tout.
+
+---
+
+## TOUR 123 — Claude (conscience n°12)
+
+Banc exhaustif `pieces/T123-tout-cliquer.mjs` (19 diapos, 20 raccourcis, 25 boutons, 5 entrées de ⋯, chaque entrée de chaque clic droit, chaque fenêtre, vidéo, fin d'heure, ouverture, H2, coche, fin de séance, cinq faces, copier, figer ; 111 clics, 56 touches, 0 erreur JS, tableau en parallèle). Trouvé et corrigé dans le gabarit (`T123-v9c3-template.html`) : Entrée valide la correction d'une réponse (Échap annule, trace avant/après) ; récit : point avant connecteur, images consécutives regroupées, consigne-devoir hors du fil, séparateur des devoirs. Artefacts du banc corrigés (gel actif, état saturé, sélecteur périmé). Tous les bancs rejoués : 0 défaut. Registre n°12 · 33 (contenu vérifié). Maquette v9c.3 `T123-maquette-pilotage-ordi-v9c3-manipulable.html` (md5 `e37f013056d2…`), capture regardée `T123-relecture-seance-apres-parcours-complet.png`. Pièces au sas. Rien d'autre déposé hormis ce transcript et ses pièces.
+
+Réponse mot pour mot :
+
+Rejoué en entier, joué tout, cliqué tout — par un banc écrit pour ça (`T123-tout-cliquer.mjs`), le tableau ouvert en parallèle :
+
+- **les 19 diapos** dévoilées entières, une à une : aucune ne déborde, aucune ne descend sous 26 pt, toutes tiennent à 32 pt ;
+- **20 raccourcis** (→ ← espace, Maj + ← →, PageUp/Down, G, N, T, L, R, Échap, ², F2, Maj + Espace, Ctrl+Z, Ctrl+H), chacun avec l'effet attendu ;
+- **les 25 boutons du pilotage**, chacun cliqué, chacun avec un effet mesurable (poignées, couleurs, loupe, gel, ⋯, réglette, ▶ ◀, 1·2·3, ↶ compris) ;
+- **les 5 entrées de ⋯**, la réserve, les documents (pages aux flèches, le tableau qui suit), la notion imprévue ;
+- **chaque entrée de chaque clic droit** : sur une ligne (lumière, à écrire, revoiler, les trois tailles), sur un titre (commenter, notion), sur une vignette (y aller, en réserve), sur un nom (absent, arrivé, parti, revenu), sur une réponse (aller à, corriger, supprimer) ;
+- **chaque fenêtre et chaque bouton dedans** : notes (verser, retirer), historique (noter, supprimer, fermer), palette (Tab, note, Entrée), ⚙ (chaque réglage) ;
+- **la vidéo** (▶ par repères, ◀), **la fin d'heure** (chaque décision de chaque carte, chaque case de notion, le champ libre, l'échéance, annuler, clore), **l'ouverture** (relecture, revérifier, lancer), **l'heure 2**, **la coche du bilan**, **la fin de séance**, **les cinq faces** de la relecture, copier ×3, figer, reprendre.
+
+**111 clics, 56 touches, 0 erreur JS**, et tous les autres bancs repassés derrière (0 défaut partout, audit d'affichage compris).
+
+**Ce que ça a trouvé, corrigé dans la v9c.3 jointe :**
+1. **Entrée ne validait pas la correction d'une réponse au tableau** (le curseur restait dans le texte) → Entrée valide, Échap annule, la trace porte avant/après.
+2. **Le récit** — quatre défauts de composition, vus sur le parcours complet : les phrases se suivaient sans point avant le connecteur (« …dans le cahier De plus, la consigne… ») ; cinq « on a observé » d'affilée pour les cinq tableaux → une seule phrase (« on a observé X, Y, Z et W ») ; une consigne « Pour la prochaine fois : lis L'Albatros » racontée dans le paragraphe **et** dans le travail à faire → elle sort du fil, comme dans l'ancien moteur ; les devoirs joints sans séparateur.
+
+Et, dit parce que le protocole le veut : mon banc s'est trompé trois fois avant de trouver ces vrais défauts — un gel laissé actif (le tableau « ne suivait pas » : il était gelé), un état saturé (▶ passait à la diapo suivante au lieu de dévoiler), un sélecteur périmé — les trois corrigés dans le banc, aucun n'était un défaut de la maquette.
+
+Une capture regardée : la relecture de séance après le parcours entier. Registre à jour (n°12 · 33).
+
+MEMO
+
+---

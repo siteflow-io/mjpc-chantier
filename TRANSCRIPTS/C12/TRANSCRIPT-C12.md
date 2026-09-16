@@ -4732,3 +4732,64 @@ Tests : ▶ trois fois, ✦ puis clique l'étape 1 : dix pulsations dorées puis
 MEMO
 
 ---
+
+## TOUR 126 — Paul
+
+Texte de Paul, mot pour mot :
+
+> fais les corrections des défauts!!!. Par ailleurs, voici Plusieurs points que j'ai relevés pendant que tu codais, à voir s'ils sont réglés ou pas: les poignées des colonnes doivent être exactement les mêmes que celles de ppt: si je tire ça augmente les contenus, si je réduis ça réduit. tu vois? reformule pour être sûr que tu me comprends bien. ça fait plusieurs fois que je te demande des choses que tu n'exécutes pas tel que je te le dis. Par ailleurs, le maj espace que tu as repris du déroulé, tu ne lui as pas repris toutes ses caractéristiques (recherche par premières lettres, recherche par initiales, clic à côté de la boite pour la faire disparaitre, raisons 1,2,3), Pareil pour la liste de classe, rien de tout le dispositif du déroulé (noms pas cliquables comme à l'origine, on ne voit pas le nombre de participations, etc.). Il y a donc énormément d'éléments que tu as recopiés en moins bien, et de loin. C'est ce genre d'audit que j'attendais. par ailleurs le zoom dans la diapo par sélection souris ne correspond plus à ce qu'on avait avant (je dessinais un cadre, ça zoomait sur la partie prise par le cadre). Enfin, il y a énormément d'éléments de ta maquette qui sont relatifs à la maquette, et qu'on ne peut pas intégrer tels quels dans mjpc. l'enchainement heure 1 heure 2 par exemple, le T-5 qui arrive avant, le chrono qui se lance tout seul, la fausse relecture, etc. et beaucoup d'autres choses.
+
+---
+
+## TOUR 126 — Claude (conscience n°12)
+
+Lecture du dispositif de participation de l'ancien : moteur L240-272 (CSS), L770-779 (le panneau), L1071-1125 (motifs, partAjoute, histoire), ouvrirPart/corrigePart/posePart/supPart/allerRep (L2240-2300) ; pont L16315-16340 (initiales), L16382-16498 (VIF), L16517-16621 (palette). Gabarit v9c.5 (`vis/v9c5-template.html`) : le dispositif recopié ; la loupe par cadre (échelle du cadre) ; les poignées tirées (séparateurs, repli sous 60 px, double-clic) ; les quatre défauts de l'ancien corrigés ; l'entrée par l'emploi du temps (`edt()`, rien ne tourne avant « Lancer », ⚙ = simulation nommée). Banc `test-v9c5.mjs` écrit et vert ; les bancs antérieurs adaptés (`*-5.mjs`) : tout cliquer 105/56/0, séance, gestes, reprise, audit d'affichage — 0 défaut ; le banc des tailles interrompu à la limite d'outils. Rien déposé au sas dans ce tour.
+
+Réponse mot pour mot :
+
+Point d'étape, sans tool — limite d'outils atteinte, donc **rien n'est livré** dans ce tour (ni pièces au sas, ni transcript, ni maquette jointe). Voilà exactement où j'en suis, et d'abord la reformulation que tu demandes.
+
+**Les poignées, comme je te comprends** : ce ne sont pas des boutons « replier / rouvrir ». Ce sont des **séparateurs qu'on tire à la souris**, comme entre le volet des diapositives et la diapo dans PowerPoint : je saisis la barre et je la tire vers la droite → la colonne de gauche s'élargit **en continu** et ses miniatures grossissent d'autant, le centre rétrécit ; je la tire vers la gauche → elle rétrécit, les miniatures avec, et tout à gauche elle disparaît ; même chose à droite avec la liste de classe et le reste ; et à chaque instant le contenu se réajuste (remonte, redescend, grossit). C'est ce que j'ai codé : une barre verticale sur toute la hauteur, curseur ⟷, tirée en direct ; en dessous de 60 px la colonne se replie ; un double-clic replie ou rouvre à la largeur d'avant. Dis-moi si c'est bien ça.
+
+**Ce qui est fait, mesuré, 0 défaut aux bancs (v9c.5 en cours) :**
+- **Le dispositif de participation de l'ancien, repris tel quel** — pas « en moins bien » : les **pastilles d'initiales** (vert = a répondu, pointillé bleu = a parlé, le petit compteur, l'historique au survol, les muets d'abord en ambre, un absent barré, un parti en italique) ; le **VIF** « ⌨ initiales — puis 1/2/3, note, Entrée » avec ses règles exactes (initiales dans n'importe quel ordre dès deux lettres, ou début du prénom ; les pastilles candidates s'allument ; **un seul élève trouvé ouvre sa fiche et met le curseur dans la note** ; 1/2/3 pose le motif ; Entrée dans la note = « a participé » avec la note ; Échap ; « posé : INI ✕ (Ctrl+Z) » six secondes) ; la **fiche d'élève** (historique réponse/parole, → aller à la réponse, ✎ corriger, ✕ retirer, « Noter une prise de parole ici », les trois motifs, la note « pourquoi (facultatif — pour toi seul) », la phrase « ces notes ne partent jamais au tableau », clic ailleurs la ferme après la garde de 400 ms) ; la **palette Maj + Espace** (voile, initiales en grand, suggestions prénom + initiales, les motifs « 1 · a participé », la note, « dernières : … ✕ », **clic à côté annule**, et le curseur revient exactement où il était — mesuré : dans la réponse au tableau, le texte intact).
+- **La loupe par cadre** : je trace un cadre sur la diapo, **cette zone remplit le tableau** (échelle calculée sur le cadre), second clic remet la diapo entière.
+- **Les quatre défauts de l'ancien, corrigés** : l'image support en **plein écran** avec sa légende en bandeau ; le ✍ visible au pilote ; la lumière qui survit au re-rendu ; la police qui suit le redimensionnement.
+- **La porte du site** : la maquette s'ouvre sur **l'emploi du temps** (deux cases : lundi 15:07, mardi 10:07) ; **rien ne tourne avant « Lancer »** — ni chrono, ni horloge ; la clôture ramène à l'emploi du temps ; la case de mardi ouvre « Où en est la classe » puis lance l'heure 2. Le ⚙ ne garde que ce qui est simulation, nommé « Simulation (n'existe pas dans le site) » : la clé USB, le tableau, et « avancer l'horloge » à T-5 — parce que dans le site, l'heure vient de l'emploi du temps et de la vraie horloge.
+- Sept bancs rejoués sur la v9c.5 (dont « tout cliquer », 105 clics, 56 touches, 0 erreur), l'audit d'affichage : 0 défaut ; le banc des cinq tailles s'est interrompu au dernier tool (à rejouer).
+
+**Ce qui reste, dans l'ordre :** rejouer le banc des tailles et les mesures de visuels sur la v9c.5 ; regarder les captures ; le rapport « l'ancien contre la maquette, dispositif par dispositif » (participation, palette, loupe, poignées, chrono, T-5, enchaînement des heures, relecture) ; le registre, les pièces, le transcript. Et une question sur ta « fausse relecture » : entends-tu que la relecture de la maquette est composée à partir d'un journal simulé (c'est le cas, et c'est l'objet même de la maquette), ou que la relecture du site (l'onglet Relecture : récit, papier, copies) a des visuels et des gestes que je n'ai pas repris ? Dis-moi lequel, je le traite comme les autres.
+
+Dis « continuer » et je finis la livraison.
+
+MEMO
+
+---
+
+## TOUR 127 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Continuer
+
+---
+
+## TOUR 127 — Claude (conscience n°12)
+
+Banc des tailles adapté et rejoué (0 défaut) ; visuels du tableau sur la v9c.5 : 16/17 + 17/17 (le seul écart : la légende d'image en plein écran, voulu — défaut n°1 de l'ancien corrigé) ; reconstruction, chevauchements, pièges, types : 0 défaut ; cinq captures regardées. Audit `pieces/T126-AUDIT-dispositifs-ancien-contre-maquette.md` ; registre n°12 · 35 (contenu vérifié, commit `d696539e7168`). Maquette v9c.5 `T126-maquette-pilotage-ordi-v9c5-manipulable.html`, gabarit, générateur, bancs, captures en pièces `T126-*`. Question ouverte à Paul : la « fausse relecture ». Rien d'autre déposé hormis ce transcript et ses pièces.
+
+Réponse mot pour mot :
+
+Livré : la **v9c.5 jointe**, l'audit dispositif par dispositif (joint), les pièces au sas, le registre (n°12 · 35).
+
+**Ce que l'audit dit, sans détour** : tu avais raison — le dispositif de participation n'avait pas été repris, il avait été réinventé en moins bien. La v9c.5 recopie celui de l'ancien, code et CSS (le moteur pour le panneau, l'historique et la fiche d'élève ; le pont pour le VIF et la palette), et chaque caractéristique est mesurée par le geste : les pastilles d'initiales et leurs couleurs, le compteur, les muets d'abord, la fiche d'élève et sa garde de 400 ms, **le VIF avec l'anagramme d'initiales, l'ouverture de la fiche au seul candidat, le curseur dans la note, « posé : INI ✕ (Ctrl+Z) »**, **la palette avec ses suggestions, ses motifs, sa note, ses « dernières », le clic à côté, et le curseur qui revient exactement** (mesuré dans une réponse au tableau). Plus : la loupe par cadre (la zone tracée remplit le tableau), les poignées qu'on tire comme PowerPoint, les quatre défauts de l'ancien corrigés, l'entrée par l'emploi du temps — plus rien ne se lance tout seul.
+
+**Bancs, tous rejoués sur la v9c.5, 0 défaut** : le nouveau (29 vérifications par le geste sur la participation, la loupe, les poignées, les défauts, l'emploi du temps), « tout cliquer » (105 clics, 56 touches, 0 erreur), la séance, les gestes, la reprise, les cinq tailles, les types, les pièges, la reconstruction, les chevauchements, l'audit d'affichage ; les visuels du tableau : 33 identiques sur 34 — **le seul écart est voulu** (la légende d'une image en plein écran, le défaut n°1 de l'ancien que tu m'as fait corriger). Cinq captures regardées (l'emploi du temps, le VIF avec la fiche ouverte, la palette, la loupe par cadre, la poignée tirée).
+
+**Un point à confirmer** : les poignées — tu as ma reformulation au tour précédent ; si ce n'est pas ça, dis-le. **Et la question ouverte** : « la fausse relecture » — composée d'un journal simulé (c'est l'objet de la maquette), ou l'onglet Relecture du site dont je n'aurais pas repris les visuels et les gestes ? Selon ta réponse je fais pour la relecture ce que je viens de faire pour la participation.
+
+Tests, dans l'ordre : la page s'ouvre sur l'emploi du temps, le chrono ne bouge pas ; « Lancer » lundi ; dans le champ « ⌨ initiales », tape « mt » puis « tm » : le même élève ; tape « ze » : sa fiche s'ouvre, le curseur est dans la note, appuie sur 2 : « posé : ZP ✕ (Ctrl+Z) », la pastille ZP passe en fin de liste avec son compteur ; clique sur une pastille : la fiche (historique, noter, corriger, retirer) ; clique ailleurs : elle se ferme ; Maj + Espace, tape « ga », Tab, une note, Entrée : posé, et le curseur revient où il était ; 🔍 puis trace un cadre sur la diapo : la zone remplit le tableau ; tire la barre entre le volet et la diapo vers la droite : les vignettes grossissent en continu ; tire-la jusqu'au bord : le volet se replie ; double-clic : il revient ; va sur « Tableau 1 » : l'image occupe tout, la légende en bandeau.
+
+MEMO
+
+---

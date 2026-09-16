@@ -4652,3 +4652,83 @@ Une capture regardée : la relecture de séance après le parcours entier. Regis
 MEMO
 
 ---
+
+## TOUR 124 — Paul
+
+Texte de Paul, mot pour mot :
+
+> tu vas vérifier que tout ce qu'avait le déroulé est repris exactement ici (tous les VISUELS). par exemple, mettre en lumière.
+
+---
+
+## TOUR 124 — Claude (conscience n°12)
+
+Lecture du CSS du tableau de l'ancien (moteur L2545-2597, la fenêtre du tableau ; le pilote L108-190 ; allume() L2345 ; L1666-1670 la légende calée sur l'image). Charte recopiée dans le gabarit v9c.4 (`vis/v9c4-template.html`), rendu réécrit sur la structure de l'ancien ; mesures style calculé par style calculé (`visuels-tab-existant.mjs` → JSON, `visuels-tab-maquette.mjs`) : 15/17 identiques au moment du point d'étape (arrivée des blocs et image support restaient). Le tour s'est arrêté à la limite d'outils : rien déposé au sas dans ce tour.
+
+Réponse mot pour mot :
+
+Point d'étape, sans tool — limite d'outils atteinte, donc **rien n'est livré** dans ce tour : ni pièces, ni transcript, ni maquette. Voilà ce que la vérification a donné.
+
+**Ce que j'ai fait.** J'ai lu le CSS du tableau de l'ancien déroulé — pas celui du pilote, celui de **la fenêtre que la classe voit** (moteur L2545-2597) —, je l'ai **recopié tel quel** dans la maquette (v9c.4 en cours), j'ai réécrit le rendu pour produire la même structure (étiquette verte en pilule, consigne = pictogramme + texte gras, étapes avec le chevron doré « › », question, réponses en pastilles vertes, fiche, image, schéma), et j'ai **mesuré style par style, dans les deux fenêtres du tableau, sur le même parcours** : vingt propriétés par objet.
+
+**Résultat : 15 objets identiques sur 17** — corps, étiquette, consigne, pictogramme, étape, chevron, **étape en lumière**, étape à écrire, question, réponse, initiales, initiales reformulée, texte de réponse, cadre d'image, image absente. Erreurs JS : 0.
+
+**Ce que j'avais faux, corrigé :**
+- **Mettre en lumière** — c'est ton exemple, et je l'avais mal repris : dans l'ancien ce n'est pas un état, c'est **un flash : dix pulsations dorées (1 s chacune), fond crème #fff8e2, puis plus rien (10,5 s), et l'outil se repose après le clic**. J'avais un fond jaune fixe et un outil qui restait armé. Maintenant identique, mesuré (animation, nombre, fond) — et le journal garde la trace pour le récit.
+- **À écrire** : au tableau, l'ancien met un cadre pointillé bleu avec un **liseré gauche épais**, sans ✍ (le ✍ n'est qu'au pilote — et même là, un défaut de l'ancien fait gagner le chevron). Repris tel quel, identique.
+- Police EB Garamond, papier #fffdf9, encre #22303f, l'étiquette verte, les chevrons, les pastilles d'initiales : tout est identique.
+
+**Les deux écarts restants, trouvés, pas encore corrigés :**
+- **L'arrivée en fondu** : dans l'ancien, chaque élément dévoilé et **chaque bloc qui apparaît** (une image, une fiche) glisse en fondu (animation « arrive », 0,62 s). Je l'ai pour les étapes ; pas encore pour les blocs.
+- **L'image « support » en plein écran** : dans l'ancien, un tableau à analyser occupe **toute la diapo**, l'étiquette et la légende par-dessus (légende en bandeau sombre en bas). Ma maquette la met dans un cadre 16/9 avec marges. À reprendre (le CSS est lu, la règle est claire).
+
+**Encore à mesurer, sur d'autres diapos** : la fiche (bordure, type, définition au liseré doré), le surlignage `mark`, le schéma, « qui a participé » (dans l'ancien : un voile sombre et une boîte papier à bordure dorée, pas mon bandeau — déjà recopié, pas encore mesuré), l'écran d'attente avant le cours (l'heure en géant), la sortie d'écran en zoom arrière (0,5 s) — les deux derniers recopiés, pas mesurés.
+
+Dis-moi « continuer » : je finis les deux écarts, je mesure le reste, je rejoue tous les bancs, et je livre la v9c.4 avec le tableau de comparaison en pièce.
+
+MEMO
+
+---
+
+## TOUR 125 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Continuer
+
+---
+
+## TOUR 125 — Claude (conscience n°12)
+
+Fini : l'arrivée sur les blocs ; l'image support — le CSS plein-img de l'ancien est cassé (nesting L2545), la classe voit l'image dans son cadre : la maquette reproduit l'affiché ; la légende calée sur la largeur de l'image (L1670) ; les quatre couleurs de surlignage (L412) ; « qui a participé » mot pour mot (peintQui L2510-2525, Échap le retire) ; l'écran d'attente poussé au tableau à la clôture ; la fiche en page (loupe L2408-2424, zoomIn/zoomOut, charte des fiches L43-63) ; les fiches en HTML ; la correction de réponse (const) corrigée. Mesures : premier parcours 17/17, second parcours (attente, fiche, schéma, mark, arrivée, qui, fiche en page, sortie) 17/17 — `pieces/T124-VISUELS-existant-contre-maquette.md`. Bancs adaptés à la structure de l'ancien (`*-4.mjs`) et rejoués : tout cliquer 110 clics / 56 touches / 0 erreur, séance, gestes, reprise, tailles, types, pièges, reconstruction, chevauchements, audit d'affichage — 0 défaut. Registre n°12 · 34 (contenu vérifié). Maquette v9c.4 `T124-maquette-pilotage-ordi-v9c4-manipulable.html` (md5 `66d02adc083a…`), gabarit, générateur, charte recopiée, bancs de mesure, JSON de l'existant, cinq captures regardées. Pièces au sas. Rien d'autre déposé hormis ce transcript et ses pièces.
+
+Réponse mot pour mot :
+
+Vérification finie, mesurée, livrée : **la v9c.4 jointe reprend exactement les visuels du tableau de l'ancien déroulé — 34 objets sur 34 identiques**, style calculé par style calculé, dans les deux fenêtres du tableau, sur le même parcours. Le tableau de comparaison est en pièce (joint aussi).
+
+**La méthode, en un mot** : j'ai pris le CSS que la classe voit dans l'ancien (la fenêtre du tableau, pas le pilote) et je l'ai recopié tel quel — police, couleurs, tailles relatives, bordures, animations — puis j'ai mesuré, objet par objet, vingt propriétés.
+
+**Ce que ta question a fait tomber, et qui est corrigé :**
+- **Mettre en lumière** : dans l'ancien, ce n'est pas un état — c'est un **flash de dix pulsations dorées, fond crème, puis plus rien, et l'outil se repose**. Ma maquette avait un fond jaune fixe. Corrigé, identique.
+- **À écrire** au tableau : cadre pointillé bleu et **liseré gauche épais**, sans ✍. Corrigé, identique.
+- **Le surlignage** : les quatre couleurs de l'ancien (#ffe94a, #b6f0c2, #ffc9d6, #bcd9ff), pas mes pastels. Corrigé.
+- **La légende d'une image** : l'ancien la cale sur la **largeur de l'image** (3,5 %), et ses marques aussi (4,2 %) — pas sur la police du corps. Corrigé, identique.
+- **L'arrivée en fondu** de ce qui vient d'apparaître (0,62 s, une seule fois) : pour les étapes et pour les blocs. Corrigé.
+- **« Qui a participé »** : dans l'ancien, un **voile sombre sur la diapo et une boîte papier à bordure dorée** — « 2 élèves sur 29 ont participé », les prénoms séparés par « · », « ×2 » en pastille verte, « il reste 27 élèves à passer ». J'avais un bandeau. Corrigé, mot pour mot ; Échap le retire.
+- **L'écran d'attente** (fond sombre, l'heure en géant, la date, le site, la classe) : au tableau après la clôture d'une heure, avant la suivante. Identique.
+- **La fiche en page** : un clic sur une fiche l'ouvre au tableau à la charte des fiches (en-tête, titre, ancrage, corps, pied), **entrée en zoom**, **sortie en zoom arrière** au second clic ou à Échap — c'est la « loupe » de l'ancien, et c'est là seulement que le zoom arrière existe (pas au changement de diapo, que j'avais inventé et retiré).
+- Les fiches sont rendues en HTML comme dans l'ancien (leur corps porte des balises).
+
+**Quatre défauts de l'ancien, découverts en mesurant — à toi de décider, je ne les ai pas reproduits ni corrigés sans ton mot :**
+1. **Le CSS du tableau n'est pas fermé** (moteur L2545, une accolade manque) : les six règles de l'image « support » en plein écran sont avalées — **la classe n'a jamais vu un tableau en plein écran** ; elle voit l'image dans son cadre, étiquette au-dessus, légende grise dessous. La maquette reproduit ce qui s'affiche. Si tu veux le plein écran (l'intention écrite), c'est une ligne.
+2. Au pilote, le ✍ de « à écrire » est masqué par le chevron sur une étape.
+3. La mise en lumière meurt au premier re-rendu du pilote (la reconstruction après clic, encore).
+4. La police du pilote ne suit pas un redimensionnement de la fenêtre.
+
+**Preuves** : les quatre bancs de mesure (existant → JSON, maquette → comparaison), et tous les bancs de la maquette rejoués sur la v9c.4, adaptés à la structure de l'ancien — « tout cliquer » (110 clics, 56 touches, 0 erreur), la séance, les gestes, la reprise, les tailles, les types, les pièges, la reconstruction, les chevauchements, l'audit d'affichage : **0 défaut**. Cinq captures regardées (le tableau avec la lumière et l'à-écrire, « qui a participé », la fiche en page, le pilote, le tableau de l'existant sur une image). Registre à jour (n°12 · 34).
+
+Tests : ▶ trois fois, ✦ puis clique l'étape 1 : dix pulsations dorées puis plus rien, l'outil s'est reposé ; ✍ puis l'étape 3 : le cadre bleu au liseré ; sélectionne deux mots, Ctrl+H : le jaune de l'ancien ; ⋯ → Qui a participé : la boîte sur le voile ; va sur une diapo à fiche (séance 2 dans ⚙ ? non — la fiche est dans la trame de la séance 2, que la maquette joue via le volet « pas dans cette heure » : clique sur une fiche : elle s'ouvre au tableau en zoom ; Échap : zoom arrière) ; Fin de l'heure → Clore : le tableau montre l'attente, l'heure en géant.
+
+MEMO
+
+---

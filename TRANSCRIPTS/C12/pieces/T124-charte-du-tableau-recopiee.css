@@ -1,0 +1,62 @@
+/* ═══ CHARTE DU TABLEAU — recopiée telle quelle du CSS que la classe voit dans l'ancien déroulé (moteur.html L2545-2597, la fenêtre du tableau) ; « vh » de l'écran plein devient « cqh » (1 % de la hauteur de la diapo) ═══ */
+.mur{container-type:size;font-family:"EB Garamond",Garamond,serif;background:#fffdf9;color:#22303f}
+.mur .ecran{position:absolute;inset:0;padding:3.2% 3.6%;display:flex;flex-direction:column;gap:1.2%;overflow:hidden;box-sizing:border-box;background:#fffdf9;color:#22303f}
+.mur .act{font-size:.42em;letter-spacing:.13em;text-transform:uppercase;color:#0f8f53;border:1px solid rgba(15,143,83,.4);border-radius:999px;padding:.18em .5em;align-self:flex-start}
+.mur .cons{display:flex;gap:1.4cqh}.mur .cons .pic{font-size:1.1em;flex:0 0 auto;line-height:1.25}.mur .cons .txt{font-size:1.05em;line-height:1.28;font-weight:600;flex:1}
+.mur .sch{flex:1;min-height:0;display:flex;flex-direction:column;overflow:hidden;justify-content:center}
+.mur .sch-t{font-size:.72em;font-weight:600;margin-bottom:.15em}
+.mur .sch svg{width:100%;height:auto;aspect-ratio:16/9;max-height:100%;display:block}
+.mur .sch table{border-collapse:collapse;width:100%;font-size:.62em}
+.mur .sch th,.mur .sch td{border:1px solid #777;padding:.18em .3em;text-align:left;vertical-align:top}
+.mur .sch th{background:#f3ede2;font-size:.82em;text-transform:uppercase}
+.mur .img{display:flex;flex-direction:column;min-height:0;max-height:100%;width:100%}.mur .img.img-plein{flex:1 1 0;min-height:0;width:100%}
+.mur .img-sup{position:relative;width:100%;aspect-ratio:16/9;max-height:100%;margin:0 auto;line-height:0;overflow:hidden}
+.mur .img-sup img{display:block;width:100%;height:100%;object-fit:cover}
+.mur .img-vide{position:absolute;inset:0;background:repeating-linear-gradient(45deg,#f0ece3,#f0ece3 10px,#e8e2d6 10px,#e8e2d6 20px);display:flex;align-items:center;justify-content:center;color:#a99a86;font-size:.5em;text-align:center}
+.mur .img-lg{font-size:.4em;font-style:italic;text-align:center;margin-top:.4em;flex:0 0 auto;color:#5c7186}
+.mur .img .mk{position:absolute;transform:translate(-50%,-50%);font-size:.42em;line-height:1.25}
+.mur .img .mk-pt span{background:#0f8f53;color:#fff;font-weight:700;border-radius:50%;width:1.9em;height:1.9em;display:flex;align-items:center;justify-content:center}
+.mur .img .mk-et span{background:#fffdf9;border:1.4px solid #22303f;border-radius:3px;padding:.1em .4em;white-space:nowrap}
+.mur .img .mk-lg span{background:rgba(34,48,63,.9);color:#fff;border-radius:3px;padding:.1em .45em;white-space:nowrap}
+.mur .img .mk-fl span{color:#d1495b;font-size:1.5em}
+.mur .img .mk-cd{border:2px solid #d1495b;border-radius:3px;background:rgba(209,73,91,.07)}
+.mur ul.etapes{list-style:none;margin:0;padding:0}.mur ul.etapes li{padding:.12em 0 .12em .75em;position:relative}
+.mur ul.etapes li::before{content:"›";position:absolute;left:.15em;color:#c99a4e;font-weight:700}
+.mur .fiche{border:1px solid #e6ddd0;background:#fff;padding:1cqh 1.4cqh}.mur .fiche .tt{font-size:.52em;letter-spacing:.07em;text-transform:uppercase;color:#5c7186}
+.mur .fiche h3{margin:.1em 0 .12em;font-size:.9em}.mur .fiche .def{border-left:.4cqh solid #c99a4e;padding:.2em .4em;background:#fdf8ef;font-size:.8em;margin-top:.5cqh}
+.mur .rap{align-self:flex-start;background:#eef4fa;color:#2f5b84;border:1px solid #b9d0e6;border-radius:999px;padding:.12em .55em;font-size:.42em;letter-spacing:.04em}
+.mur .fiche .loupe{display:none}.mur .q{font-weight:600;margin:0}
+.mur .aecrire{position:relative;border:.09em dashed #6b8fb5;border-left:.34em solid #6b8fb5;border-radius:.12em;background:rgba(107,143,181,.07);padding:.2em .35em .2em .5em;margin:.08em 0}
+@keyframes arrive{from{opacity:0;transform:translateY(.5em)}to{opacity:1;transform:none}}
+@keyframes arriveMk{from{opacity:0;transform:translate(-50%,-50%) scale(.6)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+.mur .neuf-vu{animation:arrive .62s cubic-bezier(.22,.9,.24,1) both}
+.mur .img .mk.neuf-vu{animation:arriveMk .62s cubic-bezier(.22,.9,.24,1) both}
+@keyframes zoomIn{from{transform:scale(.22);opacity:0}60%{opacity:1}to{transform:scale(1);opacity:1}}
+@keyframes zoomOut{from{transform:scale(1);opacity:1}to{transform:scale(.34);opacity:.35}}
+.mur .ecran-sortie{animation:zoomOut .5s cubic-bezier(.5,0,.75,0) both;transform-origin:top center;pointer-events:none}
+.mur .rep{display:flex;gap:.35em;align-items:baseline;padding:.18em 0;border-bottom:1px dotted #e6ddd0}
+.mur .ini{background:#d9f2e4;color:#0a5c37;border:1px solid #7cc9a4;font-size:.56em;font-weight:700;border-radius:.12em;padding:.1em .3em;min-width:1.1em;text-align:center}
+.mur .ini.refo{background:#e4e9ee;color:#3b4d5c;border-color:#a9b8c4}.mur .dit{flex:1}.mur mark{background:#ffe94a}
+@keyframes puls{0%,100%{box-shadow:0 0 0 0 rgba(201,154,78,0)}50%{box-shadow:0 0 0 1.1cqh rgba(201,154,78,.9)}}
+.mur .spot-on{animation:puls 1s ease-in-out 10;background:#fff8e2}
+.mur .quiw{position:absolute;inset:0;display:none;align-items:center;justify-content:center;background:rgba(13,11,10,.72);z-index:9}
+.mur .quiw.on{display:flex}
+.mur .quib{background:#fffdf9;color:#22303f;padding:5cqh 6cqh;max-width:86%;text-align:center;border:.4cqh solid #c99a4e}
+.mur .quit{font-size:3.2cqh;font-weight:600;margin-bottom:2cqh}
+.mur .quil{font-size:4cqh;line-height:1.6}
+.mur .qn{font-style:normal;font-size:.52em;background:#0f8f53;color:#fff;border-radius:999px;padding:.1em .5em;vertical-align:super}
+.mur .attente{position:absolute;inset:0;background:#1a1512;color:#f0e7db;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2cqh;font-family:"EB Garamond",Garamond,serif}
+.mur .attente .h{font-size:14cqh;font-variant-numeric:tabular-nums;line-height:1}
+.mur .attente .d{font-size:3.4cqh;color:#c9b79a}
+.mur .attente .n{font-size:2.4cqh;color:#8a7a5a;letter-spacing:.14em;text-transform:uppercase}
+.mur .attente .c{font-size:2.8cqh;color:#f0e7db;border:1px solid #4a4038;border-radius:999px;padding:.5cqh 2cqh}
+/* ═══ fin de la charte recopiée ═══ */
+/* propre à la maquette (n'existait pas dans l'ancien) : le gris du pilote sur ce qui n'est pas dévoilé, les pages, la reprise fléchée, la réponse au fil de la frappe */
+.mur.pilote ul.etapes li.pas{opacity:.45}.mur.tableau ul.etapes li.pas{display:none}.fin .carte .mini ul.etapes li.pas{opacity:.7}
+.mur li.hors,.mur .ajout.hors,.mur .rep.hors,.mur .cons.hors,.mur .q.hors{display:none}
+.mur ul.etapes li.deja{color:#6a5a48;box-shadow:inset 3px 0 0 #d8ccb4}.mur ul.etapes li.cahier{color:#8a6a2e;font-style:italic;font-size:.85em}.mur ul.etapes li.cahier::before{content:'↑'}
+.mur .bloc{position:relative}.mur .bloc.t-petit{font-size:.8em}.mur .bloc.t-grand{font-size:1.25em}
+.mur .ajout{display:none;margin-top:.3em;align-items:center;gap:.4em;font-size:.9em}.mur.pilote .ajout{display:flex}
+.mur .ajout .ini{width:3.2em;border:1px solid #cfc3b2;border-radius:4px;padding:.1em .3em;font:inherit;background:#fff;text-transform:uppercase}
+.mur .ajout .txt{flex:1;border:1px solid #cfc3b2;border-radius:4px;padding:.1em .4em;font:inherit;background:#fff;min-height:1.4em;outline:none;font-weight:400}.mur .ajout .qui{font-size:.8em;color:#6a5a48;white-space:nowrap}
+.mur [contenteditable="true"]{outline:1px dashed #b9a98f;background:#fffdf5}

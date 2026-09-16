@@ -1,0 +1,57 @@
+// v9c.5 : la participation de l'ancien, la loupe par cadre, les poignées tirées, les quatre défauts, l'entrée par l'emploi du temps
+import { chromium } from '/home/claude/.npm-global/lib/node_modules/playwright/index.mjs';
+const nav = await chromium.launch({ executablePath: '/opt/google/chrome/chrome', args: ['--no-sandbox','--allow-file-access-from-files'], headless: true });
+const ctx = await nav.newContext({ viewport: { width: 1536, height: 864 } }); const page = await ctx.newPage(); const errs = []; page.on('pageerror', e => { errs.push(e.message); console.log('ERREUR JS :', e.message, (e.stack||'').split('\n')[1]); });
+const D = []; const p = ms => page.waitForTimeout(ms); const ok = (c, m) => { if (!c) D.push(m); }; const ev = (f, a) => page.evaluate(f, a);
+await page.goto('file:///home/claude/C12/maquette-v9c5-courante.html'); await p(600);
+// E. l'emploi du temps : rien ne tourne avant « Lancer »
+ok(await ev(() => document.getElementById('ecran-edt').classList.contains('on')), 'la maquette ne s\'ouvre pas sur l\'emploi du temps'); ok((await ev(() => document.getElementById('chr').textContent)) === '—', 'le chrono tourne avant le lancement');
+await page.click('#edt-cases [data-lancer="1"]'); await p(400); ok(await ev(() => S.lancee && !document.getElementById('ecran-edt').classList.contains('on')), 'Lancer ne lance pas l\'heure 1'); ok(/lundi/.test(await ev(() => document.getElementById('hou').textContent)), 'la tête ne dit pas lundi après le lancement');
+// A. la participation de l'ancien : les pastilles d'initiales, muets d'abord en ambre, compteur, fiche d'élève
+const past = await ev(() => Array.from(document.querySelectorAll('#part span')).map(s => s.dataset.ini)); ok(past.length === 29 && past.every(x => /^[A-Z]{2}\d?$/.test(x)), 'les pastilles ne sont pas des initiales : ' + past.slice(0, 5).join(','));
+ok(await ev(() => document.querySelectorAll('#part span.muet').length === 29), 'les muets ne sont pas marqués au départ');
+// le VIF : « ze » → un seul élève → sa fiche s'ouvre, le curseur dans la note ; 2 pose « a proposé une piste »
+await page.click('#vif'); await page.keyboard.type('ze'); await p(200); ok(await ev(() => document.getElementById('ppop').classList.contains('on')), 'un seul élève trouvé n\'ouvre pas sa fiche'); ok(await ev(() => document.activeElement && document.activeElement.id === 'pnote'), 'le curseur n\'est pas dans la note');
+await page.keyboard.press('2'); await p(200); ok((await ev(() => S.parts.length)) === 1 && (await ev(() => S.parts[0].m)) === 'piste', '2 ne pose pas « a proposé une piste »'); ok(/posé : <b>/.test(await ev(() => document.getElementById('vif-dernier').innerHTML)), 'le « posé : INI ✕ » n\'apparaît pas');
+ok(await ev(() => { const sp = Array.from(document.querySelectorAll('#part span')).find(s => /Zélia/.test(s.dataset.e)); return sp && sp.classList.contains('oral') && sp.querySelector('.pastoral') && sp.querySelector('.pastoral').textContent === '1'; }), 'la pastille ne montre pas la prise (pointillé, compteur 1)');
+ok(await ev(() => Array.from(document.querySelectorAll('#part span')).findIndex(s => /Zélia/.test(s.dataset.e)) === 28), 'l\'élève qui a parlé n\'est pas passé à la fin (muets d\'abord)');
+// Ctrl+Z dans le VIF annule
+await page.click('#vif'); await page.keyboard.press('Control+z'); await p(150); ok((await ev(() => S.parts.length)) === 0, 'Ctrl+Z dans le VIF n\'annule pas la pose');
+// initiales dans le désordre : « ea » et « ae » trouvent le même
+const a1 = await ev(() => candidats('ae')), a2 = await ev(() => candidats('ea')); ok(a1.length && JSON.stringify(a1) === JSON.stringify(a2), 'les initiales dans le désordre ne trouvent pas le même élève');
+// plusieurs candidats → liens ; clic sur un lien → fiche
+await page.fill('#vif', ''); await page.keyboard.type('l'); await p(150); const nL = await ev(() => document.querySelectorAll('#vif-sug a').length); ok(nL >= 2, 'plusieurs candidats ne donnent pas des liens'); if (nL) { await page.click('#vif-sug a'); await p(150); ok(await ev(() => document.getElementById('ppop').classList.contains('on')), 'le lien n\'ouvre pas la fiche'); }
+// la fiche : « Noter une prise de parole ici » : clic sur un motif pose ; l'historique ; ✕ retire ; clic ailleurs ferme
+await page.click('#ppop [data-pose="participe"]'); await p(150); ok((await ev(() => S.parts.length)) === 1, 'le bouton motif de la fiche ne pose pas'); ok(!(await ev(() => document.getElementById('ppop').classList.contains('on'))), 'la fiche ne se ferme pas après la pose');
+const ini1 = await ev(() => iniDe(S.parts[0].nom)); await page.click(`#part span[data-ini="${ini1}"]`); await p(150); ok(/1 prise de parole/.test(await ev(() => document.getElementById('ppop').innerText)), 'la fiche ne compte pas la prise'); await page.click('#ppop [data-sup]'); await p(150); ok((await ev(() => S.parts.length)) === 0, '✕ ne retire pas la prise');
+await p(450); await page.mouse.click(700, 300); await p(150); ok(!(await ev(() => document.getElementById('ppop').classList.contains('on'))), 'un clic ailleurs ne ferme pas la fiche');
+// la palette Maj+Espace : voile, boîte, suggestions, motifs, note, dernières, clic à côté ; le curseur revient dans la réponse au tableau
+await page.click('#volet .vig[data-i="7"]'); await p(150); if (await ev(() => document.getElementById('garde').classList.contains('on'))) await page.click('#garde-devant'); await p(200); await page.keyboard.press('ArrowRight'); await page.click('#mur .ajout .ini'); await page.keyboard.type('cj'); await page.keyboard.press('Enter'); await page.keyboard.type('Le sublime'); await p(100);
+await page.keyboard.press('Shift+ '); await p(200); ok(await ev(() => document.getElementById('vif-palette').classList.contains('on') && document.activeElement && document.activeElement.id === 'vif-pal-in'), 'Maj+Espace n\'ouvre pas la palette avec le curseur dedans');
+await page.keyboard.type('ze'); await p(150); ok(/→ <b>Zélia/.test(await ev(() => document.getElementById('vif-pal-sug').innerHTML)) && await ev(() => document.querySelectorAll('#vif-pal-motifs button').length === 3), 'la palette ne désigne pas Zélia avec ses trois motifs');
+await page.keyboard.press('Tab'); await page.keyboard.type('a osé'); await page.keyboard.press('Enter'); await p(250); ok((await ev(() => S.parts.length)) === 1 && (await ev(() => S.parts[0].note)) === 'a osé' && (await ev(() => S.parts[0].m)) === 'participe', 'Entrée dans la note ne pose pas le motif 1 avec la note');
+ok(await ev(() => document.activeElement && document.activeElement.classList.contains('txt') && document.activeElement.textContent === 'Le sublime'), 'le curseur ne revient pas dans la réponse au tableau');
+await page.keyboard.press('Shift+ '); await p(150); ok(/dernières :/.test(await ev(() => document.getElementById('vif-pal-hist').textContent)), 'la palette ne montre pas les dernières'); await page.keyboard.type('xq'); await p(100); ok(/Aucun élève/.test(await ev(() => document.getElementById('vif-pal-sug').textContent)), 'la palette ne dit pas « Aucun élève »');
+await page.mouse.click(30, 400); await p(200); ok(!(await ev(() => document.getElementById('vif-palette').classList.contains('on'))), 'un clic à côté ne ferme pas la palette');
+await page.keyboard.press('Escape');
+// B. la loupe par cadre : le cadre tracé remplit le tableau
+await page.click('#volet .vig[data-i="0"]'); await p(150); if (await ev(() => document.getElementById('garde').classList.contains('on'))) await page.click('#garde-devant'); await p(200);
+await page.click('#bloupe'); const r = await ev(() => { const b = document.getElementById('mur').getBoundingClientRect(); return [b.left, b.top, b.width, b.height]; });
+await page.mouse.move(r[0] + r[2] * 0.1, r[1] + r[3] * 0.2); await page.mouse.down(); await page.mouse.move(r[0] + r[2] * 0.6, r[1] + r[3] * 0.6, { steps: 5 }); await page.mouse.up(); await p(200);
+const L = await ev(() => S.loupe); ok(L && Math.abs(L.x0 - 0.1) < 0.02 && Math.abs(L.w - 0.5) < 0.02, 'le cadre tracé n\'est pas retenu : ' + JSON.stringify(L)); ok(/scale\(2/.test(await ev(() => document.querySelector('#mur .corpsd').style.transform)), 'la zone cadrée ne remplit pas le tableau (échelle attendue 2)');
+await page.click('#bloupe'); await p(100); ok(!(await ev(() => S.loupe)), 'le second clic ne retire pas la loupe');
+// C. les poignées : tirer élargit la colonne et ses vignettes ; tirer au-delà replie ; double-clic rouvre
+const w0 = await ev(() => document.querySelector('#volet .mini').getBoundingClientRect().width); const pg = await ev(() => { const b = document.getElementById('pg').getBoundingClientRect(); return [b.left + 4, b.top + b.height / 2]; });
+await page.mouse.move(pg[0], pg[1]); await page.mouse.down(); await page.mouse.move(pg[0] + 120, pg[1], { steps: 6 }); await page.mouse.up(); await p(300);
+const w1 = await ev(() => document.querySelector('#volet .mini').getBoundingClientRect().width); ok(w1 > w0 + 80, 'tirer la poignée n\'élargit pas les vignettes : ' + w0 + ' → ' + w1);
+const lg1 = await ev(() => S.lg); await page.mouse.move(pg[0] + 120, pg[1]); await page.mouse.down(); await page.mouse.move(pg[0] - 400, pg[1], { steps: 6 }); await page.mouse.up(); await p(300); ok(await ev(() => S.sansGauche), 'tirer tout à gauche ne replie pas la colonne');
+await page.dblclick('#pg'); await p(300); ok(await ev(() => !S.sansGauche) && (await ev(() => S.lg)) === lg1, 'le double-clic ne rouvre pas à la largeur d\'avant');
+// D. les quatre défauts : plein écran pour une image support ; ✍ visible au pilote
+await page.click('#volet .vig[data-i="1"]'); await p(150); if (await ev(() => document.getElementById('garde').classList.contains('on'))) await page.click('#garde-devant'); await p(300);
+ok(await ev(() => document.querySelector('#mur .corpsd').classList.contains('plein-img') && getComputedStyle(document.querySelector('#mur .img-lg')).backgroundColor === 'rgba(34, 48, 63, 0.72)'), 'l\'image support n\'est pas en plein écran avec sa légende en bandeau');
+await page.click('#volet .vig[data-i="0"]'); await p(150); if (await ev(() => document.getElementById('garde').classList.contains('on'))) await page.click('#garde-devant'); await p(200); await page.keyboard.press('ArrowRight'); await page.click('#becr'); await page.click('#mur li[data-k="0"]'); await page.click('#becr'); await p(150);
+ok((await ev(() => getComputedStyle(document.querySelector('#mur li.aecrire'), '::after').content)) === '"✍🏻"', 'le ✍ n\'est pas visible au pilote');
+// la clôture ramène à l'emploi du temps ; la case de mardi lance l'heure 2 (via « Où en est la classe »)
+await page.click('#bfin'); await p(400); await page.click('#f-clore'); await p(500); ok(await ev(() => document.getElementById('ecran-edt').classList.contains('on')), 'la clôture ne ramène pas à l\'emploi du temps'); ok(/heure close/.test(await ev(() => document.getElementById('edt-cases').innerText)), 'la case de lundi ne dit pas « heure close »');
+await page.click('#edt-cases [data-lancer="2"]'); await p(400); ok(/Où en est la 3E/.test(await ev(() => document.getElementById('fin').innerText)), 'la case de mardi n\'ouvre pas « Où en est la classe »'); await page.click('#o-lancer'); await p(300); ok((await ev(() => S.heure)) === 2, 'l\'heure 2 ne se lance pas');
+if (errs.length) D.push('erreurs JS : ' + JSON.stringify(errs)); console.log(D.length ? D.join('\n') : 'aucun défaut'); console.log('--- fin :', D.length, 'défaut(s)'); await nav.close();

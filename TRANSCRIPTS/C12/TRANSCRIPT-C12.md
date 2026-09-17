@@ -4863,3 +4863,40 @@ Je n'ai rien modifié ce tour. Dès ton mot sur la garde (a ou b) et sur la refo
 MEMO
 
 ---
+
+## TOUR 130 — Paul
+
+Texte de Paul, mot pour mot :
+
+> 1. a, mais la garde doit fonctionner aussi si je clique sur une vignette d'avant. Pour le 4, oui c'est ça. Sachant que le win k doit m'être proposé dès que je fais win k, et là c'est bien une fenêtre qui s'ouvre et qui a le comportement de windows bien sûr, et qui se met sur le vidéo proj automatiquement, en mode étendu du coup (on est pas sur un dupliquer, sinon ils verront mon pilotage). Peut être à encore cadrer, pose moi tes questions. Par ailleurs, il y a le tableau distant, et c'est probablement ce mode là que j'utiliserai le plus souvent, car ça me permet d'afficher même quand le win k n'est pas fiable (problème de détection de l'écran, etc, alors qu'en tableau distant c'est l'ordi branché en filaire sur le vidéo proj qui est piloté.
+
+---
+
+## TOUR 130 — Claude (conscience n°12)
+
+Gabarit v9c.6 (`T130-v9c6-template.html`) : `aller(i, parLeFil)` — le fil n'est que ▶ ; PageDown/PageUp par l'ordre de l'heure et la garde ; le champ de réponse vidé après Entrée ; `finie()` vraie pour une diapo sans élément dès qu'elle a été au tableau (journal) ; `vueDroite()` — la diapo suivante rendue entière, bascule « Le tableau, en ce moment » (l'état envoyé, classe `.mur.tableau`, gel compris) sur `#btableau` ; la fenêtre sur `#bvideoproj` ; le bandeau du haut tenant à 1366 px. Banc `T130-test-v9c6.mjs` 0 défaut ; tous les bancs adaptés (`*-6.mjs`) : 0 défaut ; visuels 16/17 + 17/17 (écart voulu). Cadrage 1 (2.2, 0.1) et registre n°12 · 36 déposés, contenu vérifié. Maquette `T130-maquette-pilotage-ordi-v9c6-manipulable.html` (md5 `3c2655dc2ae5…`), capture regardée. Cinq questions de cadrage posées (Win+K, tableau distant). Pièces au sas. Rien d'autre déposé hormis ce transcript et ses pièces.
+
+Réponse mot pour mot :
+
+La **v9c.6 jointe** : la garde (a), le double affichage, la diapo suivante en entier, la vue qui bascule vers le tableau — plus les deux télescopages du tour 128. Cadrage 1 écrit (2.2 et 0.1), registre à jour (n°12 · 36).
+
+**Ce qui est fait, mesuré, 0 défaut aux bancs :**
+- **La garde (a)** : ▶ fait avancer ; tout le reste demande — la vignette suivante (diapo finie ou pas, image comprise), une vignette d'avant (« revenir à la diapo 1 »), une d'après, PageDown, PageUp. Et PageDown/PageUp suivent maintenant l'ordre de l'heure, comme ▶.
+- **Le double affichage** : après Entrée, le champ de réponse est vidé ; deux réponses de suite sortent chacune une fois, avec leurs initiales.
+- **Une image montrée compte faite** : elle ne glisse plus à l'heure suivante, elle n'est plus « restante » au T-5.
+- **La vue de droite** : « Diapo suivante » est la diapo qui vient, entière, rendue comme les vignettes ; le bouton **Tableau** la bascule vers **« Le tableau, en ce moment »** — exactement ce que voient les élèves (rien de non dévoilé, pas de gris), suivie en temps réel, gel compris (pendant le gel, la vue reste sur la classe pendant que tu avances) — et retour au second clic. **Aucune fenêtre ne s'ouvre.** La fenêtre du vidéoprojecteur est un bouton à part, « 🖥 Écran 2 ».
+- Le bandeau du haut tient à 1366 px avec le bouton de plus (l'audit d'affichage l'a attrapé, corrigé).
+- Bancs : le nouveau (garde, double affichage, images, vue), « tout cliquer » (106 clics, 0 erreur), la participation, la séance, les gestes, la reprise, les cinq tailles, les types, les pièges, la reconstruction, les chevauchements, l'audit d'affichage, les visuels du tableau (33/34, l'écart voulu) — 0 défaut. Capture regardée.
+
+**Le cadrage de la projection — mes questions, une à la fois, dans l'ordre où elles décident :**
+1. **Sur ton ordi portable, le navigateur est Edge ou Chrome ?** Ce sont les seuls où une page peut *voir* qu'un second écran vient d'apparaître (après Win+K) et y placer une fenêtre en plein écran ; Firefox ne le permet pas.
+2. **« Proposé dès que je fais Win+K »** — je comprends : tu fais Win+K, Windows connecte le vidéoprojecteur en mode étendu ; à cet instant le site *détecte* le nouvel écran et te propose, en un clic, « envoyer le tableau sur l'écran 2 » (après une autorisation à donner une seule fois : « gérer les fenêtres sur tous les écrans »). Est-ce bien ça — ou veux-tu que la fenêtre parte toute seule sur l'écran 2, sans clic ? (Sans clic, le navigateur refuse souvent d'ouvrir une fenêtre : je préfère le clic, qui est sûr.)
+3. **Si le vidéoprojecteur sans fil décroche pendant l'heure**, la fenêtre revient sur ton écran, par-dessus le pilotage. On la ferme d'elle-même et on te le dit (« l'écran 2 a décroché »), ou on la garde ?
+4. **Le tableau distant** (l'ordi de classe, en filaire) : quand les deux existent — l'ordi de classe qui suit et un écran 2 ouvert —, lequel projette ? Je propose : **l'ordi de classe a la priorité tant qu'il répond** ; l'écran 2 sert quand il n'y a pas d'ordi de classe ou qu'il ne répond plus ; et la vue « Le tableau, en ce moment » porte le témoin : « ordi de classe · suit » / « écran 2 · suit » / « personne ne suit ». C'est important pour la vidéo sur clé (la garde doit savoir qui projette).
+5. **Sur l'ordi de classe**, la page « tableau » du site : qui l'ouvre, et quand ? Tu l'ouvres en plein écran au début de chaque heure (un clic sur l'ordi de classe), ou elle reste ouverte en permanence (l'ordi de classe allumé, la page à demeure, qui attend l'heure suivante — c'est l'écran d'attente qu'on a repris de l'ancien) ?
+
+Tests : lundi, tout dévoiler sur la diapo 1, clique la vignette 2 : la garde ; « Y aller devant la classe » ; sur Tableau 1, clique la vignette 3 : la garde ; clique la vignette 1 : « revenir » ; PageDown : la garde ; ▶ : passe sans rien demander ; diapo 8, une réponse GA puis Entrée, une réponse EA puis Entrée : deux lignes, une par élève ; clique « Tableau » : la vue de droite montre ce que voit la classe ; dévoile : elle suit ; gèle et avance : elle reste ; « Tableau » à nouveau : la diapo suivante ; « Écran 2 » : la fenêtre.
+
+MEMO
+
+---

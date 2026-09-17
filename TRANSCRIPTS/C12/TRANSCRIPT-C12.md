@@ -5095,3 +5095,33 @@ Tests : lundi, diapo 8, deux réponses (ga, rd) et une prise de parole (ld) ; �
 MEMO
 
 ---
+
+## TOUR 137 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok pour le tableau en fin d'heure, il me faut l'UI Ecole directe à gauche. Pour la participation, il faut toutes les méta: aujourd'hui, séance de telle heure à telle heure, 5 élèves etc. Il reste Tant d'élèves à passer etc. par ailleurs j'ai testé le windows k avec mon vidéo proj perso (accepte le win k en natif, c'est un valerion pro 2). je suis obligé d'utiliser étendre et de glisser ma fenêtre de tableau, elle ne se met pas automatiquement sur l'écran étendu. je ne veux pas à voir ni à sélectionner "étendre" ni à devoir glisser la fenêitre et la redimensionner pour l'écran étendu.
+
+---
+
+## TOUR 137 — Claude (conscience n°12)
+
+Vérifié : aucune reproduction de l'UI École Directe dans le site ni les cadrages ; la seule capture ED (T101) est la liste des espaces de travail. Demandé à Paul la capture de la vue élève du travail à faire. La participation avec métas : à faire dans la même livraison. Win+K : « Étendre » est un réglage Windows (mémorisé par écran : à mesurer chez Paul) ; le placement et le plein écran sur l'écran étendu se font par l'autorisation Chrome, mesurable seulement en https : page de test proposée dans le dépôt de production, sur son ordre. Aucune modification, rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Noté pour le tableau en fin d'heure — et deux choses avant de le refaire :
+
+**1. L'UI École Directe à gauche.** Je ne l'ai pas : le site n'en a aucune reproduction (vérifié : rien dans le code, rien dans les cadrages), et la seule capture que tu m'aies donnée d'École Directe est la liste des espaces de travail (tour 101), pas le cahier de textes. Je ne vais pas la fabriquer de mémoire. **Envoie-moi une capture de ce que les élèves voient dans leur École Directe quand ils ouvrent le travail à faire** — la vue élève, c'est elle qu'il faut qu'ils reconnaissent au tableau — et, si tu l'as sous la main, la vue prof où tu le saisis. Je reproduis la vue élève à l'identique dans la partie gauche, avec ton texte dedans.
+
+**2. La participation avec toutes ses métas** — compris, ce sera : *jeudi 17 septembre 2026 · 3E Charles de Gaulle · séance de 15 h 07 à 16 h 02 (heure 1 sur 2) · 5 élèves sur 29 ont participé · les prénoms · il reste 24 élèves à passer* — plus, si tu le veux, le nombre de réponses écrites au tableau et de prises de parole à l'oral. Je le fais dans la même livraison que l'UI École Directe, dès ta capture.
+
+**3. Win+K sur ton Valerion** — ce que tu décris est exactement ce que le cadrage 1.7 doit régler, et il y a deux gestes distincts :
+- **« Étendre »** : c'est Windows qui choisit le mode de projection (Win+P), pas le site — aucune page web ne peut le forcer. Mais Windows **mémorise le mode par écran** une fois qu'il a été choisi : la deuxième fois que tu connectes le Valerion, il doit se mettre en étendu de lui-même. **À mesurer chez toi, deux minutes** : connecte-le, choisis Étendre, déconnecte, reconnecte — est-il étendu d'emblée ? Si oui, tu ne le choisis qu'une fois dans ta vie ; si non, je le note et le site te le dira au moins clairement (« l'écran est en mode dupliqué : Win+P → Étendre »), parce qu'en dupliqué la classe verrait ton pilotage.
+- **Glisser et redimensionner la fenêtre** : ça, le site le supprime — c'est précisément ce que permet l'autorisation Chrome « gérer les fenêtres sur tous vos écrans » : la fenêtre du tableau est **ouverte directement sur l'écran étendu, en plein écran**, sans glisser ni redimensionner. **Mais ce n'est mesurable que sur une page en https** (le site), pas dans la maquette ouverte comme un fichier : Chrome refuse cette autorisation à un fichier. Ce que je te propose, sur ton ordre : je dépose dans le dépôt de production une **page de test minuscule** (`docs/outils/test-ecran-2.html`, en https sur le site) — un bouton « Envoyer sur l'écran 2 » et rien d'autre — pour que tu vérifies chez toi, avec le Valerion, en trois clics : Win+K, l'autorisation Chrome une fois, le bouton, et la fenêtre doit partir seule sur le vidéoprojecteur. On saura avant le mandat si Chrome et Windows font ce qu'on attend.
+
+Rien modifié dans la maquette ce tour. J'attends : ta capture École Directe, ton mot sur la page de test, et ta mesure « Étendre mémorisé ou pas ».
+
+MEMO
+
+---

@@ -5203,3 +5203,31 @@ Tests : lundi, clique la vignette 4 : « sauter à la diapo 4 », puis « Diapo 
 MEMO
 
 ---
+
+## TOUR 140 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok alors j'ai testé: le ✍ ne doit jamais recouvrir du texte au tableau des élèves et au mien. pour le travail à faire, il vaut à T-5 et AUSSI quand je vais pour cloturer la séance et que je suis sur mon écran final de décisions, juste avant de clore. le champ qui est là, où je peux le modifier, c'est lui qui nourrit le travail à faire.
+
+---
+
+## TOUR 140 — Claude (conscience n°12)
+
+Gabarit v9c.11 (`T140-v9c11-template.html`) : le ✍🏻 dans un retrait réservé (2,6 em, règle spécifique aux éléments marqués, le chevron cédant la place), au pilote et au tableau ; `S.enFin` — la vue de fin d'heure poussée au tableau tant que l'écran de fin est ouvert (T-5 ou clôture), retour au cours à la fermeture, le champ ED nourrit le travail à faire. Banc `T140-test-v9c11.mjs` (le ✍ mesuré contre chaque rectangle de texte) 0 défaut ; bancs `*-11.mjs` 0 défaut ; visuels 15/17 (deux écarts voulus : légende plein écran, retrait du ✍). Registre n°12 · 41 (contenu vérifié). Maquette `T140-maquette-pilotage-ordi-v9c11-manipulable.html`. Pièces au sas. Rien d'autre déposé hormis ce transcript et ses pièces.
+
+Réponse mot pour mot :
+
+Fait, mesuré, livré (v9c.11 jointe) :
+
+- **Le ✍🏻 ne recouvre plus rien** : au pilotage comme au tableau, il prend la place du chevron « › » dans un retrait réservé à gauche du texte — mesuré par le banc : aucun rectangle de texte sous la pastille, sur aucune ligne, et la pastille reste dans le cadre. (L'écart avec l'ancien est déclaré au banc des visuels : c'était le défaut n°2 de l'ancien, réglé pour de bon.)
+- **La vue de fin d'heure au tableau** (agenda École Directe à gauche, participation à droite) **vaut tant que ton écran de fin est ouvert** : à T-5, et quand tu ouvres « Fin de l'heure » pour clore ; dès que tu le refermes (« Garder ces décisions », « Annuler »), le tableau revient au cours. **Le champ « ce qui partira dans École Directe » de cet écran est celui qui nourrit le travail à faire** : ce que tu y écris est au tableau à la lettre, conservé si tu refermes et rouvres, et gardé tel quel à la clôture (École Directe, récit, historique). Mesuré de bout en bout.
+- Bancs : le nouveau (le ✍ mesuré contre le texte ; T-5, retour au cours, clôture, le champ, l'historique), et tous les autres rejoués sur la v9c.11 — la garde, les rangs, la participation, la saisie, la coupure, la v9c.2, « tout cliquer » (105 clics, 0 erreur), l'audit d'affichage : **0 défaut**. Registre à jour (n°12 · 41).
+
+En attente de ton côté : le journal de la page de test v2 (le plein écran).
+
+Tests : ✍ sur deux étapes : la pastille est dans la marge de la ligne, jamais sur les lettres, au tableau aussi ; ⚙ → T-5 : le tableau passe sur l'agenda ; « Garder ces décisions » : le tableau revient au cours ; « Fin de l'heure » : l'agenda revient ; écris dans le champ École Directe : le tableau suit ; « Annuler », puis « Fin de l'heure » : ton texte est toujours là ; Clore : l'attente.
+
+MEMO
+
+---

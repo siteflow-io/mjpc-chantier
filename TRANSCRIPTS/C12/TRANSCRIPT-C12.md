@@ -4823,3 +4823,43 @@ Rien de livré, rien de modifié dans la maquette ce tour ; les deux bancs d'ana
 MEMO
 
 ---
+
+## TOUR 129 — Paul
+
+Pièce jointe : sa capture (diapo 8, deux réponses identiques GA et EA, le champ de saisie encore plein), recopiée en `pieces/T129-capture-de-Paul-double-affichage.png`.
+
+Texte de Paul, mot pour mot :
+
+> le problème de garde était effectivement sur les images. la garde ne s'affichait pas quand je cliquais sur l'image suivante. Par ailleurs, Gros problème sur la prise de parole. Tu dois me dire si ces choses se règlent dans le site, ou dans la maquette comme on a cadré il y a quelques tours. Ce n'est parce que je vois des bugs qu'il faut les régler dans la foulée: il faut me dire d'abord si ça a vocation à être réglé maintenant, plutot qu'après l'intégration de la maquette dans le site. En effet, la prise de parole des élèves se fait avec les vrais élèves, Or là dans la maquette ce sont de faux élèves (non?). Enfin autre chose: les poignées de tirage fonctionnent très bien c'est exactement ce que j'attendais. l'écran de la diapo suivante doit être comme les diapos de gauche: complète, pour que je sache exactement ce qui vient en entier. Par ailleurs, il faudrait que lorsque j'affiche le tableau (bouton tableau pour moi, pour visualiser), au lieu qu'il ouvre une nouvelle fenetre, il s'affiche à la place de cette diapo suivante. Ainsi, je n'ai pas besoin d'avoir deux fenêtres l'une à coté de l'autre, et je peux controler en temps réel ce qui s'affiche au tableau, puis revenir à la vue de la diapo suivante, puis réafficher le tableau etc. Tu as compris le princiep?
+
+---
+
+## TOUR 129 — Claude (conscience n°12)
+
+Le double affichage reproduit (`pieces/T129-double-affichage.mjs`) : identique sur la v9b.6 et la v9c.5 — le champ de réponse n'est pas vidé après Entrée ; pas un télescopage. Aucune modification. Réponse : la règle maquette / mandat, les élèves sont les vrais du hub, la garde depuis une image à trancher (a : seul ▶ est le fil ; b : une diapo sans rien à dévoiler n'est jamais finie d'elle-même), la reformulation de la vue « tableau à la place de la diapo suivante ». Rien déposé hormis ce transcript et ses pièces.
+
+Réponse mot pour mot :
+
+D'abord la règle, puisque tu la demandes — elle découle de ce qu'on a cadré aux tours 110-111 (« la maquette devient le noyau du nouveau déroulé ; le mandat la porte dans le site et branche ce qu'elle simule ») :
+
+**Se règle maintenant, dans la maquette : tout ce qui est un geste, un écran ou une composition** — parce que le mandat reproduira la maquette geste par geste, une maquette qui a le bug donne un site qui a le bug. **Se règle au mandat, pas avant : tout ce qui dépend de ce que la maquette simule** — le hub, la session, les appareils, l'emploi du temps réel, les fichiers, la vraie horloge.
+
+Et sur les élèves : **ce sont les vrais** — les 29 de la 3E Charles de Gaulle, lus au hub (la même liste que le site), avec les initiales fabriquées par la règle du site (prénom + nom, doublons numérotés). Seules les prises de parole sont fausses (c'est moi qui les pose en jouant). Donc la prise de parole se règle **dans la maquette**.
+
+Point par point :
+
+1. **La garde depuis une image** — tu as raison, et c'est un cadrage à préciser, pas un bug : le cadrage 2.2 dit « le fil, c'est ▶ et la vignette suivante quand la diapo est finie » ; une image n'a rien à dévoiler, elle est « finie » dès qu'elle est montrée, donc la vignette suivante passait sans garde (v9b.6 pareil, mesuré). Ce qui te manque, c'est la garde. Deux règles possibles : **(a) seul ▶ est le fil ; un clic sur une vignette, même la suivante, est un saut → garde** ; **(b)** une diapo sans rien à dévoiler n'est jamais finie d'elle-même : depuis une image, la vignette suivante déclenche la garde, mais depuis une consigne finie elle reste le fil. Je te propose (a), la plus simple à tenir en classe : *▶ fait avancer, tout le reste demande*. Ton mot.
+
+2. **Le double affichage d'une réponse** — reproduit et compris : après Entrée, le champ de saisie n'est pas vidé ; la réponse suivante s'y ajoute et sort en double. **Ce n'est pas un télescopage** : le défaut est là depuis la v9b (mesuré sur la v9b.6, même résultat). C'est la mécanique de la réponse au fil de la frappe (cadrage 4.2) → **maquette, maintenant**.
+
+3. **La diapo suivante en entier**, comme les vignettes de gauche → écran → **maquette**.
+
+4. **Le tableau à la place de la diapo suivante** — tu as compris, et je reformule pour être sûr : la case « Diapo suivante » devient une **vue qui bascule** : soit elle montre la diapo qui vient (entière, rendue), soit elle montre **exactement ce que le tableau affiche en ce moment** (ce que voient les élèves : rien de non dévoilé, pas de gris) ; le bouton « Tableau » fait basculer l'une vers l'autre, à volonté, **sans ouvrir de fenêtre** ; tu contrôles ainsi le tableau en temps réel dans ta propre page. La fenêtre pour le vidéoprojecteur (celle que Win+K envoie) reste un geste à part. C'est bien ça ? → écran → **maquette**.
+
+5. Les poignées : noté, validées.
+
+Je n'ai rien modifié ce tour. Dès ton mot sur la garde (a ou b) et sur la reformulation du 4, je livre la v9c.6 avec les quatre corrections, les deux télescopages du tour précédent (PageDown/PageUp dans l'ordre de l'heure ; une image montrée compte faite), les bancs rejoués et les captures.
+
+MEMO
+
+---

@@ -5021,3 +5021,39 @@ Une question, la seule : **le choix par défaut, tant que tu n'as pas répondu �
 MEMO
 
 ---
+
+## TOUR 135 — Paul
+
+Texte de Paul, mot pour mot :
+
+> oui ça me va. et ensuite il faut régler les bugs maquette, ou alors on a d'autres choses à voir?
+
+---
+
+## TOUR 135 — Claude (conscience n°12)
+
+Cadrage 1 · 1.3 bis déposé (contenu vérifié). Gabarit v9c.7 (`T135-v9c7-template.html`) : la saisie des réponses de l'ancien (lignes modifiables, ligne libre après Entrée, Entrée → ligne suivante et curseur aux initiales, double-clic → reformulée, la classe ne voit pas la ligne vide, frappe à la lettre) ; le ✍🏻 au tableau ; le témoin vert / rouge clignotant et ses libellés ; la coupure simulée (⚙) avec la question et le temps mis à part retranché. Pièges corrigés : collision de classe `.attente` (ligne libre ↔ écran d'attente) ; le morph ne mettait pas à jour les attributs du champ actif ; les réponses doublées au journal ; les bancs recalés (`.rep:not(.libre)`, double-clic à la souris, `dit`). Banc `T135-test-v9c7.mjs` et tous les bancs `*-7.mjs` : 0 défaut. Registre n°12 · 37 (contenu vérifié). Maquette `T135-maquette-pilotage-ordi-v9c7-manipulable.html` (md5 `cf9b796a09e6…`), capture. Le plan des choses restantes donné à Paul. Pièces au sas. Rien d'autre déposé hormis ce transcript et ses pièces.
+
+Réponse mot pour mot :
+
+Cadrage 1.3 bis écrit et déposé (la coupure comme objet du journal, la question à la reconnexion, **mis à part par défaut**). Et la **v9c.7 jointe**, avec les bugs de maquette réglés et ce qu'on a cadré ces trois tours :
+
+- **La saisie des réponses, reprise de l'ancien** : la ligne est le champ — initiales « ·· », texte « … », une ligne libre après Entrée, Entrée = ligne suivante et curseur aux initiales, double-clic sur les initiales = reformulée, la classe ne voit jamais une ligne vide ; **la frappe part au tableau à la lettre**. Plus de champ séparé, plus de double saisie — mesuré au pilote et au tableau. (Deux pièges attrapés en le faisant, dits comme le protocole le veut : la classe de ma ligne libre portait le même nom que l'écran d'attente du tableau — elle s'affichait en grand par-dessus le titre ; et le champ où tu écris ne recevait pas sa classe « reformulée » tant qu'il avait le curseur.)
+- **Le ✍🏻 au tableau des élèves.**
+- **Le témoin** : point vert quand tout est connecté, rouge qui clignote sinon, dans le bandeau du haut, dans la vue « Le tableau, en ce moment » et dans un coin du tableau ; libellés « tableau distant connecté » / « tableau en Win K » (⚙ choisit le support).
+- **La coupure, simulée par ⚙ « Coupure de 3 min »** : le point passe au rouge, l'horloge avance de trois minutes, à la « reconnexion » la question (Entrée : le cours a continué, ce temps compte · Échap : mis à part), la coupure entre au journal, le temps mis à part est **retranché** de « Où on en est » et du temps par diapo, il apparaît une fois dans « ce qui s'est passé », **jamais dans le récit**. Le mécanisme réel (le hub, les vraies coupures) se mesure au mandat.
+- Bancs : le nouveau (la saisie, le ✍🏻, le témoin, la coupure), « tout cliquer » (105 clics, 0 erreur), la garde, la participation, la séance, les gestes, la reprise, les tailles, les types, les pièges, la reconstruction, les chevauchements, l'audit d'affichage, les visuels du tableau (33/34, l'écart voulu) — **0 défaut**. Registre à jour (n°12 · 37).
+
+**Ta question — après les bugs de maquette, reste-t-il autre chose ?** Oui, voilà la liste, dans l'ordre où je propose de la prendre :
+1. **Toi : rejouer la v9c.7 en entier** avec les tests ci-dessous ; c'est elle qui fixe la maquette de la classe.
+2. **La « fausse relecture »** — je t'ai posé la question au tour 127 et elle est restée ouverte : composée d'un journal simulé (l'objet de la maquette), ou l'onglet Relecture du site dont je n'aurais pas repris les visuels et gestes ? Si c'est le second, je fais pour la relecture ce que j'ai fait pour la participation.
+3. **Les arbitrages du récit de séance** (tour 112, point 2) : les deux heures bout à bout avec leurs frontières, ou une forme continue — à trancher sur la face « la séance » de la maquette.
+4. **La maquette de la préparation** (cadrage 4 : l'écran, les objets, les gardes, « trop pleine », l'activité comme objet, les attendus) — le second noyau du mandat.
+5. **La séquence de test** du mandat (les coupures, l'attente et la tenue, les deux supports, la clé, la file hors ligne).
+6. **Le mandat** en livraisons courtes, le gabarit v9c comme noyau ; et, avant lui, les attendus au hub (préalable de la garde Éduscol).
+
+Tests, dans l'ordre : lundi, diapo 8 (Question-bilan), ▶, clique dans la ligne « ·· … », tape « ga », Tab, tape la réponse : elle apparaît chez les élèves lettre à lettre (vue « Tableau ») ; Entrée : une nouvelle ligne libre, le curseur dans ses initiales ; double-clic sur « GA » : reformulée, gris-bleu, au tableau aussi ; clic droit sur la réponse : aller, corriger, supprimer ; ✍ sur une étape : le ✍🏻 est aussi chez les élèves ; le point vert dans le bandeau ; ⚙ → Coupure de 3 min : le point rouge clignote, puis la question — Échap ; « Où on en est » n'a pas bougé de 3 min ; R → « ce qui s'est passé » montre la coupure, le récit non.
+
+MEMO
+
+---

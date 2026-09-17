@@ -4990,3 +4990,34 @@ Rien d'autre à cadrer sur la saisie. Ton mot sur le 1 (à la lettre ou à Entr�
 MEMO
 
 ---
+
+## TOUR 134 — Paul
+
+Texte de Paul, mot pour mot :
+
+> 1. oui, à la lettre. 3. attends, c'est moins simple que ça. le temps continue, or la question n'est pas de savoir si ça n'apparait pas dans le récit ou le journal, mais de se dire qu'une activité qui avait été prévue pour 8 minutes admettons, en mettrait 16 le temps de la reconnexion, et que le site analyserait le " reste à faire " de fin de séance comme issu du fait que l'activité aurait pris le double de temps. Tu comprends?
+
+---
+
+## TOUR 134 — Claude (conscience n°12)
+
+Réponse : la coupure comme objet du journal (début au dernier signe de vie vu par le hub, fin à la reconnexion, activité en cours), la question à la reconnexion (le cours a continué / temps mis à part), le temps mis à part retranché partout et jamais dans le récit, bancs du mandat ; une question à Paul sur le défaut (mis à part proposé). Aucune modification, rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Je comprends, et tu as raison : l'horodatage ne suffit pas. Le temps de l'heure continue (la fin reste à 16 h 02, le T-5 arrive à l'heure), mais **le temps passé pendant une coupure serait imputé à l'activité en cours** — 8 minutes prévues, 16 mesurées — et tout ce qui lit ce temps le lirait de travers : « Où on en est » (prévu / utile, « l'heure dépasse de… »), le temps par activité dans « ce qui s'est passé », le reste à faire au T-5 présenté comme le prix d'une activité deux fois trop longue, et demain le bilan de temps d'une séance. Faux d'un bout à l'autre.
+
+Ce qui le complique — et que le site ne peut pas deviner : **pendant une coupure, tu as peut-être continué le cours** (le tableau tient, la classe travaille : ce temps est bien celui de l'activité) **ou tu as réglé un problème** (le vidéoprojecteur, le réseau, l'ordi de classe : ce temps n'appartient à aucune activité). Seul toi le sais.
+
+Ce que je propose de cadrer (1.3 bis) :
+- **La coupure est un objet du journal** : son début (le dernier signe de vie du pilotage vu par le hub — pas ce que dit le pilotage, qui peut avoir planté), sa fin (la reconnexion), la diapo et l'activité en cours, sa durée. Le pilotage reprend sur ce que l'heure est devenue, pas sur ce qu'il avait en mémoire.
+- **À la reconnexion, une question, un clic** : *« Coupure de 7 min pendant « Tableau 3 » — le cours a continué (ce temps compte) / on a perdu ce temps (mis à part) »*. Tant que tu n'as pas répondu, ce temps est **mis à part** — c'est le choix le moins faux : une activité n'est jamais allongée à ton insu, et si le cours a continué, tu le dis en un clic.
+- **Le temps mis à part ne compte pour aucune activité** : « Où on en est », le temps par activité, le T-5 et le bilan de temps le retranchent ; il apparaît une fois, à sa place, dans « ce qui s'est passé » (« coupure de 7 min à 15 h 12 »). **Jamais dans le récit** (1.10) : les élèves n'ont pas à le lire.
+- Le témoin rouge qui clignote (1.8) est le même événement vu du tableau.
+- **À mesurer au mandat**, pas dans la maquette (pas de réseau) : couper le hub 3 minutes pendant une activité, reconnecter, répondre « mis à part », vérifier que l'activité garde son temps, que « Où on en est » ne bouge pas, que le journal porte la coupure et que le récit ne la porte pas ; puis rejouer en répondant « a continué ».
+
+Une question, la seule : **le choix par défaut, tant que tu n'as pas répondu — mis à part (ce que je propose) ou compté ?** Ton mot, et j'écris 1.3 bis, puis je livre la v9c.7 (la saisie de l'ancien à la lettre, le ✍🏻 au tableau, le témoin vert / rouge clignotant et ses libellés).
+
+MEMO
+
+---

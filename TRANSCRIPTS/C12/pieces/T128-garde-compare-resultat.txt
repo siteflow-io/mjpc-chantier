@@ -1,0 +1,36 @@
+══ v9b.6 (validée le 15/09) ══
+ouverture → pilote d1 (0 dévoilés) · tableau d1 · gel non · garde non
+2 ▶ → pilote d1 (2 dévoilés) · tableau d1 · gel non · garde non
+clic vignette 2 (diapo pas finie) → pilote d1 (2 dévoilés) · tableau d1 · gel non · garde OUVERTE « La classe te suivrait — sauter à la diapo 2. »
+  → Rester → pilote d1 (2 dévoilés) · tableau d1 · gel non · garde non
+4 ▶ (diapo finie, 6/6) → pilote d1 (6 dévoilés) · tableau d1 · gel non · garde non
+clic vignette 2 (la suivante, diapo finie) → pilote d2 (0 dévoilés) · tableau d2 · gel non · garde non
+clic vignette 5 (saut) → pilote d2 (0 dévoilés) · tableau d2 · gel non · garde OUVERTE « La classe te suivrait — sauter à la diapo 5. »
+  → Geler, puis y aller → pilote d5 (0 dévoilés) · tableau d2 · gel oui · garde non
+  ▶ pendant le gel → pilote d6 (0 dévoilés) · tableau d2 · gel oui · garde non
+clic ❄ (dégeler ailleurs) → pilote d6 (0 dévoilés) · tableau d2 · gel oui · garde non · garde2 OUVERTE
+  → Revenir là où est la classe, puis dégeler → pilote d2 (0 dévoilés) · tableau d2 · gel non · garde non
+◀ en début de diapo (retour) → pilote d2 (0 dévoilés) · tableau d2 · gel non · garde OUVERTE « La classe te suivrait — revenir à la diapo 1. »
+  → Y aller devant la classe → pilote d1 (6 dévoilés) · tableau d1 · gel non · garde non
+PageDown → pilote d2 (0 dévoilés) · tableau d2 · gel non · garde non
+clic vignette 8 → pilote d2 (0 dévoilés) · tableau d2 · gel non · garde OUVERTE « La classe te suivrait — sauter à la diapo 8. »
+  → Entrée (= geler puis y aller) → pilote d8 (0 dévoilés) · tableau d2 · gel oui · garde non
+erreurs JS : 0
+══ v9c.5 ══
+ouverture → pilote d1 (0 dévoilés) · tableau d1 · gel non · garde non
+2 ▶ → pilote d1 (2 dévoilés) · tableau d1 · gel non · garde non
+clic vignette 2 (diapo pas finie) → pilote d1 (2 dévoilés) · tableau d1 · gel non · garde OUVERTE « La classe te suivrait — sauter à la diapo 2. »
+  → Rester → pilote d1 (2 dévoilés) · tableau d1 · gel non · garde non
+4 ▶ (diapo finie, 6/6) → pilote d1 (6 dévoilés) · tableau d1 · gel non · garde non
+clic vignette 2 (la suivante, diapo finie) → pilote d2 (0 dévoilés) · tableau d2 · gel non · garde non
+clic vignette 5 (saut) → pilote d2 (0 dévoilés) · tableau d2 · gel non · garde OUVERTE « La classe te suivrait — sauter à la diapo 5. »
+  → Geler, puis y aller → pilote d5 (0 dévoilés) · tableau d2 · gel oui · garde non
+  ▶ pendant le gel → pilote d6 (0 dévoilés) · tableau d2 · gel oui · garde non
+clic ❄ (dégeler ailleurs) → pilote d6 (0 dévoilés) · tableau d2 · gel oui · garde non · garde2 OUVERTE
+  → Revenir là où est la classe, puis dégeler → pilote d2 (0 dévoilés) · tableau d2 · gel non · garde non
+◀ en début de diapo (retour) → pilote d2 (0 dévoilés) · tableau d2 · gel non · garde OUVERTE « La classe te suivrait — revenir à la diapo 1. »
+  → Y aller devant la classe → pilote d1 (6 dévoilés) · tableau d1 · gel non · garde non
+PageDown → pilote d2 (0 dévoilés) · tableau d2 · gel non · garde non
+clic vignette 8 → pilote d2 (0 dévoilés) · tableau d2 · gel non · garde OUVERTE « La classe te suivrait — sauter à la diapo 8. »
+  → Entrée (= geler puis y aller) → pilote d8 (0 dévoilés) · tableau d2 · gel oui · garde non
+erreurs JS : 0

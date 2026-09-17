@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8"><title>Test — envoyer le tableau sur l'écran 2</title>
+<style>
+body{font-family:"EB Garamond",Garamond,"Times New Roman",serif;background:#161311;color:#ece4d6;margin:0;padding:28px 34px;font-size:18px;line-height:1.5}
+h1{font-size:1.5rem;margin:0 0 6px;color:#e0c48c}.s{color:#a6957c;font-size:.95rem;margin-bottom:22px}
+.etape{background:#1f1a15;border:1px solid #3b3128;border-radius:10px;padding:14px 18px;margin:12px 0}
+.etape b{color:#e0c48c}button{font:inherit;font-size:1.05rem;padding:9px 16px;border-radius:8px;border:1px solid #6b5230;background:#2a2119;color:#f0e6d4;cursor:pointer;margin:6px 8px 6px 0}button.or{background:#c99a4e;color:#1a1410;border-color:#c99a4e;font-weight:600}button:disabled{opacity:.4;cursor:default}
+#j{background:#0f0d0b;border:1px solid #3b3128;border-radius:8px;padding:12px 14px;font-size:.95rem;min-height:120px;white-space:pre-wrap;margin-top:14px}
+.ok{color:#8fe0b8}.ko{color:#f08a8a}.temoin{display:inline-block;width:12px;height:12px;border-radius:50%;background:#3cbb80;vertical-align:middle;margin-right:6px}.temoin.rouge{background:#e8484c;animation:c 1s steps(2,start) infinite}@keyframes c{to{visibility:hidden}}
+</style></head><body>
+<h1>Test — envoyer le tableau sur l'écran 2</h1>
+<div class="s">Une page de rien : elle vérifie, chez toi, avec ton vidéoprojecteur, que Chrome et Windows font ce qu'on attend. Rien n'est enregistré nulle part.</div>
+
+<div class="etape"><b>1.</b> Connecte le vidéoprojecteur : <b>Win + K</b>, choisis-le. (Windows a mémorisé « Étendre » : l'écran doit s'étendre tout seul. S'il duplique, Win + P → Étendre.)</div>
+<div class="etape"><b>2.</b> <button id="b1" class="or">Détecter les écrans</button> — Chrome te demandera une fois : « … souhaite gérer les fenêtres sur tous vos écrans » → <b>Autoriser</b>.</div>
+<div class="etape"><b>3.</b> <button id="b2" disabled>Envoyer le tableau sur l'écran 2</button> — la fenêtre doit apparaître <b>sur le vidéoprojecteur, en plein écran, sans que tu la glisses ni la redimensionnes</b>. Ici, tu gardes cette page. <button id="b3" disabled>Rappeler la fenêtre</button></div>
+<div class="etape"><b>4.</b> Éteins ou déconnecte le vidéoprojecteur : la fenêtre doit se fermer d'elle-même et le message le dire. <span id="temoin"><span class="temoin"></span>connecté</span></div>
+<div id="j">journal du test — copie-colle ce cadre dans ta réponse.
+</div>
+<script>
+const j = document.getElementById('j'); const log = (t, cls) => { const d = new Date(); j.innerHTML += `<span class="${cls || ''}">${d.toLocaleTimeString('fr-FR')} — ${t}</span>\n`; };
+let det = null, fen = null;
+const ecrans = () => det ? det.screens.map((s, i) => `écran ${i + 1} : ${s.width}×${s.height} à (${s.left},${s.top})${s.isPrimary ? ' — principal (le tien)' : ' — secondaire (le vidéoprojecteur ?)'}${s.label ? ' · ' + s.label : ''}`).join('\n') : '';
+const second = () => det ? det.screens.find(s => !s.isPrimary) : null;
+log('navigateur : ' + navigator.userAgent.replace(/^.*(Chrome\/[\d.]+).*$/, '$1') + (window.isSecureContext ? ' · page sécurisée (https) : OK' : ' · PAGE NON SÉCURISÉE : Chrome refusera — ouvre-la depuis le site, pas comme un fichier'), window.isSecureContext ? 'ok' : 'ko');
+log('gestion des écrans dans ce navigateur : ' + (('getScreenDetails' in window) ? 'disponible' : 'ABSENTE (il faut Chrome ou Edge récent)'), ('getScreenDetails' in window) ? 'ok' : 'ko');
+document.getElementById('b1').onclick = async () => { try { det = await window.getScreenDetails(); log('autorisation accordée · ' + det.screens.length + ' écran(s) :\n' + ecrans(), 'ok'); if (det.screens.length < 2) log('un seul écran vu par Chrome : le vidéoprojecteur n\'est pas connecté, ou il est en mode DUPLIQUÉ (Win + P → Étendre).', 'ko'); else { document.getElementById('b2').disabled = false; log('écran 2 trouvé : tu peux envoyer.', 'ok'); }
+    det.addEventListener('screenschange', () => { log('les écrans ont changé · ' + det.screens.length + ' écran(s) :\n' + ecrans()); const s2 = second(); if (!s2 && fen && !fen.closed) { fen.close(); fen = null; document.getElementById('temoin').innerHTML = '<span class="temoin rouge"></span>l\'écran 2 a décroché — refais Win + K, puis « Envoyer »'; log('l\'écran 2 a décroché : la fenêtre du tableau a été fermée pour ne pas revenir par-dessus le pilotage.', 'ko'); document.getElementById('b2').disabled = true; } else if (s2) { document.getElementById('b2').disabled = false; document.getElementById('temoin').innerHTML = '<span class="temoin"></span>connecté'; log('un écran 2 est là : tu peux envoyer.', 'ok'); } }); }
+  catch (e) { log('refusé ou impossible : ' + e.message + ' — si tu as cliqué Bloquer, clique le cadenas à gauche de l\'adresse et remets l\'autorisation.', 'ko'); } };
+document.getElementById('b2').onclick = async () => { const s2 = second(); if (!s2) { log('pas d\'écran 2.', 'ko'); return; }
+  const html = `<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><title>Tableau — test</title><style>html,body{height:100%;margin:0;background:#fffdf9;color:#22303f;font-family:"EB Garamond",Garamond,serif;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2vh}.h{font-size:14vh;font-variant-numeric:tabular-nums}.d{font-size:3.4vh;color:#5c7186}</style></head><body><div class="h" id="h"></div><div class="d">Si tu lis ceci sur le vidéoprojecteur, en plein écran, c'est gagné.</div><script>setInterval(()=>{document.getElementById('h').textContent=new Date().toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit',second:'2-digit'})},500)<\/script></body></html>`;
+  fen = window.open('', 'tableauTest', `left=${s2.availLeft},top=${s2.availTop},width=${s2.availWidth},height=${s2.availHeight}`); if (!fen) { log('Chrome a bloqué l\'ouverture de la fenêtre (bloqueur de fenêtres) — autorise les fenêtres pour ce site.', 'ko'); return; }
+  fen.document.open(); fen.document.write(html); fen.document.close(); log(`fenêtre ouverte sur l'écran 2 (${s2.availWidth}×${s2.availHeight} à ${s2.availLeft},${s2.availTop})`, 'ok'); document.getElementById('b3').disabled = false;
+  try { await fen.document.documentElement.requestFullscreen({ screen: s2 }); log('plein écran demandé sur l\'écran 2 : OK', 'ok'); } catch (e) { log('plein écran refusé (' + e.message + ') : la fenêtre est sur l\'écran 2 mais avec sa barre — appuie sur F11 dedans une fois.', 'ko'); } };
+document.getElementById('b3').onclick = () => { if (fen && !fen.closed) { fen.close(); log('fenêtre fermée.'); } fen = null; document.getElementById('b3').disabled = true; };
+</script></body></html>

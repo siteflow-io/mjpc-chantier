@@ -5165,3 +5165,41 @@ Tests de la maquette : lundi, deux réponses (ga, rd) et trois prises de parole 
 MEMO
 
 ---
+
+## TOUR 139 — Paul
+
+Pièce jointe : sa capture (heure 2, « Diapo 3 sur 19 » sous la vignette 4, le témoin du gel écrasé, le point de connexion en boîte bleue), recopiée en `pieces/T139-capture-de-Paul-H2-gel-numeros.png`.
+
+Texte de Paul, mot pour mot :
+
+> voilà le rapport: journal du test — copie-colle ce cadre dans ta réponse.
+> 13:43:51 — navigateur : Chrome/151.0.0.0 · page sécurisée (https) : OK
+> 13:43:51 — gestion des écrans dans ce navigateur : disponible
+> 13:44:12 — autorisation accordée · 2 écran(s) :
+> écran 1 : 1574×886 à (0,0) — principal (le tien) · Q320
+> écran 2 : 1575×886 à (1574,0) — secondaire (le vidéoprojecteur ?)
+> 13:44:12 — écran 2 trouvé : tu peux envoyer.
+> 13:44:19 — fenêtre ouverte sur l'écran 2 (1575×846 à 1574,0)
+> 13:44:19 — plein écran refusé (Permissions check failed) : la fenêtre est sur l'écran 2 mais avec sa barre — appuie sur F11 dedans une fois. par ailleurs, plusieurs bugs, quand je joue l'heure 2 de la maquette. affichage du gel qui est écrasé (regarde partout sur la capture, où il est affiché), et surtout, le compte des diapos des activités etc: vu que des diapos ont glissé de l'heure 1 à 2, il y a un méga télescopage, qui impacte du coup tout ce qui est lié à la numérotation des diapos. Je soupçonne une histoire de rang, encore.
+
+---
+
+## TOUR 139 — Claude (conscience n°12)
+
+Mesuré : collision de classe `.temoin` (point de connexion ↔ témoin du gel) → `.pt-cnx` ; numéros de diapo par index de trame → `rangDe` / `libDiapo` partout ; en mesurant, l'ordre de l'heure recalculé à chaque geste (une glissée montrée mardi sortait de l'ordre) → figé au lancement (`S.ordres[h]`). Gabarit v9c.10 (`T139-v9c10-template.html`), banc `T139-test-v9c10.mjs` 0 défaut, bancs `*-10.mjs` 0 défaut, audit d'affichage 0. Page de test v2 (`docs/outils/test-ecran-2.html`, commit `009bc3fb4509`, bit à bit) : la fenêtre demande elle-même le plein écran, sinon Entrée dedans. Registre n°12 · 40 (contenu vérifié). Pièces au sas. Rien d'autre déposé hormis ce transcript, ses pièces et la page de test.
+
+Réponse mot pour mot :
+
+**Le journal du test : presque tout est bon, une chose à refaire.** Chrome 151, page sécurisée, autorisation accordée, **deux écrans vus** (le tien 1574×886, le Valerion à côté), **la fenêtre ouverte directement sur l'écran 2 sans glisser** — c'est ce qu'on voulait. Le seul refus : le plein écran (« Permissions check failed ») — parce que je le demandais depuis ta page, et Chrome veut que ce soit la fenêtre elle-même qui le demande. **Page de test v2 déposée** (même adresse, fichier joint) : la fenêtre demande le plein écran toute seule en s'ouvrant ; si Chrome refuse encore, **appuie sur Entrée** (le curseur est déjà dans la fenêtre, tu n'as pas à aller sur le vidéoprojecteur) et elle passe en plein écran. Refais les étapes 2 à 4 et recolle-moi le journal ; les deux lignes qui comptent sont « plein écran sur l'écran 2 : OK » ou « refusé au chargement … dis-moi si Entrée suffit ».
+
+**Les bugs de l'heure 2 — analysés, mesurés, corrigés (v9c.10 jointe).** Tu as vu juste deux fois, et il y en avait un troisième :
+1. **Le gel écrasé** : mon nouveau point de connexion portait le même nom de classe que le témoin du gel — collision : le point devenait une boîte bleue, le témoin du gel un rond écrasé. Renommé. C'est ma deuxième collision de nom en deux jours (la ligne de réponse « attente » contre l'écran d'attente, tour 135) : règle écrite au registre, toute nouvelle classe est préfixée et cherchée dans le gabarit avant d'être écrite.
+2. **Les numéros** : « Diapo 3 sur 19 » sous une vignette numérotée 4 — l'un comptait dans la trame, l'autre dans l'heure. Et « la classe est sur la diapo 9 » pour la première diapo de mardi. **Règle : un numéro de diapo affiché est toujours son rang dans l'heure en cours** — le numéro (« Diapo 4 sur 17 · heure 2 »), la garde (« sauter à la diapo 4 »), le témoin du gel, la vue « le tableau en ce moment », le fil de « ce qui s'est passé », la coupure, le bilan. L'index de la trame reste interne. Ce n'était pas un rang d'élève cette fois, mais bien un rang de diapo, et tu l'as senti.
+3. **Trouvé en mesurant** : l'ordre de l'heure se recalculait à chaque geste ; une image glissée à mardi, montrée mardi, devenait « faite » et **sortait de l'ordre de mardi pendant qu'on était dessus** (« hors de l'heure 2 »). L'ordre d'une heure est maintenant **figé à son lancement** (c'est le cadrage 6.6 : les glissées sont décidées à la clôture).
+- Bancs : le nouveau (point et témoin distincts, rangs lundi et mardi, garde, gel, vue), « tout cliquer » (105 clics, 0 erreur), la saisie, la coupure, la participation, la garde, la v9c.2, l'audit d'affichage — 0 défaut. Registre à jour (n°12 · 40).
+
+Tests : lundi, clique la vignette 4 : « sauter à la diapo 4 », puis « Diapo 4 sur 8 · heure 1 » ; ❄ : le témoin du gel en boîte bleue, le point vert intact ; Fin de l'heure, Clore, mardi, Lancer : « Diapo 1 sur N · heure 2 » sur la réactivation ; clique la 4e vignette : « sauter à la diapo 4 » et, dessus, « Diapo 4 sur N · heure 2 », toujours dans l'heure ; ❄ : « la classe est sur la diapo 4 ».
+
+MEMO
+
+---

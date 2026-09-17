@@ -4959,3 +4959,34 @@ La maquette v9c.6 ne change pas ce tour ; la prochaine (v9c.7) portera les libel
 MEMO
 
 ---
+
+## TOUR 133 — Paul
+
+Pièce jointe : sa capture (diapo 16, la réponse RD en ligne et dans le champ d'ajout), recopiée en `pieces/T133-capture-de-Paul-double-saisie.png`.
+
+Texte de Paul, mot pour mot :
+
+> les déconnexions vont avoir un impact sur la mesure du temps d'une activité, et donc sur le déroulé, sur le récit, etc. il faut aussi le ✍🏻au tableau du coup, c'est évident. voici une capture: tu as réglé une partie du problème car il n'y a plus de doublon au tableau des élèves, mais moi j'ai toujours cette espèce de double saisie bizarre sur mon pilotage. c'est dû à quoi? mesure, audit puis attends
+
+---
+
+## TOUR 133 — Claude (conscience n°12)
+
+Mesuré dans l'ancien (moteur L648-656, L1441-1446, L207) : la ligne de réponse est le champ (ini « ·· », dit « … », ligne vide en attente, Entrée → ligne suivante et curseur aux initiales, double-clic → reformulée, la classe ne voit jamais une ligne vide, montrée à Entrée) ; la maquette a un champ d'ajout séparé qui garde le texte → la double saisie. Audit `pieces/T133-AUDIT-saisie-des-reponses-ancien-contre-maquette.md`. Aucune modification ; propositions (saisie de l'ancien + frappe à la lettre ou à Entrée, ✍🏻 au tableau, la file hors ligne horodatée pour 1.3) en attente du mot de Paul. Rien déposé hormis ce transcript et ses pièces.
+
+Réponse mot pour mot :
+
+Mesuré et audité, rien modifié — voilà d'où vient la double saisie, et ce que ça décide.
+
+**La cause, dans le code.** Dans l'ancien déroulé, **la ligne de réponse est le champ de saisie** : chaque réponse est une ligne avec deux cases où tu écris — les initiales (« ·· » tant que vide) et le texte (« … » tant que vide) ; il y a toujours une dernière ligne vide qui attend au bout de la liste ; Entrée dans le texte montre la ligne à la classe, ajoute une nouvelle ligne vide et met le curseur aux initiales de celle-ci ; double-clic sur les initiales = reformulée. **Il n'y a aucun champ séparé.** Ma maquette, elle, a inventé un champ d'ajout sous la liste ; dès ta première lettre, la réponse est créée et rendue comme une ligne (pour partir au tableau au fil de la frappe), **et le champ garde ton texte jusqu'à Entrée** : tu vois donc la même réponse deux fois — la ligne, et le champ. Le tableau ne montre que la ligne, d'où : plus de doublon chez les élèves (tour 130), toujours chez toi. C'est encore un « recopié en moins bien » : une forme inventée à la place de celle de l'ancien. L'audit complet est en pièce.
+
+**Ce que je propose pour la v9c.7 — et j'attends ton mot :**
+1. **La saisie des réponses reprise telle quelle de l'ancien** : les lignes modifiables (« ·· » / « … »), la ligne vide en attente, Entrée = ligne suivante et curseur aux initiales, double-clic sur les initiales = reformulée, la classe ne voit jamais une ligne vide ; plus de champ séparé. Et je garde ce que tu as cadré le 9/09 (4.2) : **la frappe part au tableau à la lettre** — la ligne apparaît chez les élèves dès la première lettre (dans l'ancien, elle n'apparaissait qu'à Entrée). Dis-moi si tu maintiens « à la lettre » ou si tu préfères « à Entrée », comme l'ancien.
+2. **Le ✍🏻 au tableau des élèves aussi** — oui, évident, une ligne.
+3. **Les déconnexions et le temps** — tu as raison, et ça se cadre maintenant (1.3) : *chaque geste est horodaté à l'instant où tu le fais, sur ton pilotage ; si le pilotage est coupé du hub, il garde ses gestes en file et les envoie à la reconnexion, avec leur heure ; le journal, les temps par activité, le récit restent justes ; le tableau tient le dernier état reçu (1.9) et le point est rouge le temps de la coupure.* Ce qui n'est pas mesurable dans la maquette (pas de réseau) et sera un banc du mandat : couper le hub pendant une activité, refaire trois gestes, reconnecter, vérifier le journal et le récit.
+
+Rien d'autre à cadrer sur la saisie. Ton mot sur le 1 (à la lettre ou à Entrée) et sur le 3, et je livre la v9c.7 : la saisie de l'ancien, le ✍🏻 au tableau, le témoin vert / rouge clignotant avec ses libellés.
+
+MEMO
+
+---

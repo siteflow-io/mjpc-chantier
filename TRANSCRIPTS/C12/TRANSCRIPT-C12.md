@@ -5231,3 +5231,34 @@ Tests : ✍ sur deux étapes : la pastille est dans la marge de la ligne, jamais
 MEMO
 
 ---
+
+## TOUR 141 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Ok. Dans ce tableau de fin d'heure, la colonne de droite avec la participation doit prendre moins de place. Et je dois pouvoir piloter cet écran, et pouvoir modifier en direct le travail à faire. Pour l'onglet contenu de séance, quand je clique dessus je devrais y retrouver le récit de la séance ( utile pour montrer aux élèves ). Tu as compris? Enfin, le clignotant est trop fort, il faut une pulsation douce. Et la couleur de Ecole directe n'est pas tout à fait la bonne. Essaie de reprendre le logo ED aussi au passage.
+
+---
+
+## TOUR 141 — Claude (conscience n°12)
+
+Couleurs mesurées au pixel sur la capture ED (`T141-capture-ED-couleurs.png`) ; gabarit v9c.12 : grille 2.3fr/1fr, `S.finVue` (travail / contenu) piloté depuis l'écran de fin, `recitPourED(h)` (le récit de l'heure dans l'agenda), pulsation `edpulse` (opacité, 1,8 s), bloc-logo « MON ESPACE ÉLÈVE » avec le « + ». Banc `T141-test-v9c12.mjs` 0 défaut (une section replacée avant la clôture) ; bancs `*-12.mjs` 0 défaut. Registre n°12 · 42 (contenu vérifié). Captures `T141-tableau-travail-a-faire.png`, `T141-tableau-contenu-de-la-seance.png`. Pièces au sas. Rien d'autre déposé hormis ce transcript et ses pièces.
+
+Réponse mot pour mot :
+
+Compris, fait, mesuré (v9c.12 jointe, deux screenshots joints) :
+
+- **La colonne de la participation prend moins de place** : moins d'un tiers du tableau (mesuré), tout le reste à l'agenda.
+- **Tu pilotes cet écran depuis ton écran de fin** : une ligne « Au tableau, pendant cet écran : **Travail à faire** / **Contenu de la séance (le récit)** » ; et le champ École Directe se modifie **en direct** — chaque lettre part au tableau.
+- **L'onglet « Contenus de séances »** montre au tableau **le récit de l'heure** — celui que les élèves retrouveront, calculé par le même moteur que la relecture (activité par activité, les réponses avec les prénoms, les prises de parole). Le screenshot le montre tel qu'il sort du journal de la maquette.
+- **La pulsation** : douce (la date s'estompe et revient en 1,8 s), plus de clignotement.
+- **Les couleurs d'École Directe** : prises au pixel sur ta capture — le bandeau (#0e478d), le bloc du logo (#0e579e), le bleu des titres, du liseré et des onglets (#0f8fd1), le fond (#edf3fd), l'onglet actif (#e4e7ea). **Le logo** : je n'ai pas l'image du logo « ED » (ta capture n'en montre que le bloc-texte « MON ESPACE ENSEIGNANT »), donc j'ai repris ce bloc — fond bleu foncé, texte blanc en capitales, le petit « + » en bas à droite — en « MON ESPACE ÉLÈVE » ; si tu veux le vrai logo, envoie-moi son image et je la mets à la place.
+- Bancs : le nouveau (l'onglet piloté, le récit au tableau, la largeur, la couleur, la pulsation), le ✍, les rangs, la saisie, « tout cliquer » (105 clics, 0 erreur), l'audit d'affichage — 0 défaut. Registre à jour (n°12 · 42).
+
+Toujours en attente : le journal de la page de test v2.
+
+Tests : ⚙ → T-5, « Écran 2 » : la colonne de droite est étroite, la date pulse doucement ; clique « Contenu de la séance (le récit) » dans ton écran de fin : le tableau montre le récit ; « Travail à faire » : retour ; tape dans le champ École Directe : le tableau suit à la lettre.
+
+MEMO
+
+---

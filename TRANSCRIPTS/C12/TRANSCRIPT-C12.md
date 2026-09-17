@@ -4900,3 +4900,36 @@ Tests : lundi, tout dévoiler sur la diapo 1, clique la vignette 2 : la garde ; 
 MEMO
 
 ---
+
+## TOUR 131 — Paul
+
+Texte de Paul, mot pour mot :
+
+> 1. chrome systématique. 2. oui avec clic, pour pouvoir refuser si besoin, en revanche je ne comprends pas la phrase "gérer les fenêtres sur tous les écrans". 3. ça veut dire quoi: "Si le vidéoprojecteur sans fil décroche pendant l'heure"? 4. c'est quoi "l'ordi de classe qui suit" et "un écran 2 ouvert?" 5. écran d'attente tant qu'une séance n'est pas lancée (conflit probable avec tenue du tableau meme après déconnexion du pilotage, donc à mesurer et voir). Et oui, j'ouvre l'adresse url du tableau sur une page google sur l'ordi de classe sur lequel est branché le vidéo proj. et en fonction, soit je ferme à la fin de l'heure (changement de salle) ou je garde pour la classe suivante.
+
+---
+
+## TOUR 131 — Claude (conscience n°12)
+
+Explications dans les mots de Paul (la permission Chrome, le décrochage du sans-fil, les deux supports, la clé qui décide) ; règle proposée pour l'attente et la tenue du tableau (l'attente tant qu'aucune heure n'est lancée ; l'heure lancée → le tableau tient le dernier état, témoin discret ; l'attente revient à la clôture) ; à mesurer au mandat. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Dans tes mots, point par point — et ce que ça décide.
+
+**2. « Gérer les fenêtres sur tous les écrans. »** C'est la phrase que Chrome affichera, une seule fois, en haut de la page : *« monsieurjaipascompris.fr souhaite gérer les fenêtres sur tous vos écrans »*, avec Autoriser / Bloquer. Ça donne au site le droit de *savoir* quels écrans sont branchés (l'écran du portable, le vidéoprojecteur) et d'ouvrir une fenêtre directement sur le bon. Tu cliques Autoriser une fois sur ton ordi, Chrome s'en souvient, plus rien ensuite. Sans ça, le site ne peut pas viser le vidéoprojecteur : il ouvrirait la fenêtre sur ton écran et tu devrais la glisser toi-même.
+
+**3. « Si le vidéoprojecteur sans fil décroche. »** Win+K, c'est une connexion sans fil (le vidéoprojecteur reçoit l'image par le réseau). Comme tout sans-fil, elle peut se couper en cours d'heure — distance, réseau du collège, veille du projecteur. Quand ça arrive, Windows retire l'écran 2 et **ramène tout sur ton écran** : la fenêtre du tableau se retrouve par-dessus ton pilotage, en grand. Ce que je propose : le site le voit, ferme cette fenêtre de lui-même, et t'affiche « l'écran 2 a décroché — refais Win+K, puis clique Écran 2 ». Si tu n'as jamais eu ce cas, on prévoit juste ça, et rien de plus.
+
+**4. « L'ordi de classe qui suit » et « un écran 2 ouvert ».** Il y a deux façons de projeter, et tu peux avoir l'une, l'autre, ou les deux le même jour :
+- **l'ordi de classe** : l'ordinateur de la salle, branché en filaire au vidéoprojecteur, sur lequel tu ouvres l'adresse du tableau dans Chrome. « Qui suit » veut dire : il reçoit bien ce que tu envoies (il est allumé, connecté, la page est ouverte). C'est le tableau distant, celui que tu utiliseras le plus.
+- **l'écran 2** : la fenêtre que ton portable envoie au vidéoprojecteur par Win+K.
+Les deux montrent la même chose ; s'ils existent en même temps, il n'y a pas de conflit d'image. La seule chose qui doit choisir, c'est **la vidéo sur clé USB** : elle ne peut sortir que de l'appareil où la clé est branchée. Donc, pas de « priorité » à décider : **le site regarde où est la clé** — sur l'ordi de classe et il suit → la vidéo passe par lui ; sur ton portable → par l'écran 2 ; sinon la garde te le dit (c'est le cadrage 4b, déjà écrit). Et la vue « Le tableau, en ce moment » porte le témoin : *ordi de classe · suit* / *écran 2 · ouvert* / *personne ne suit*.
+
+**5. L'écran d'attente et la tenue du tableau.** Tu as vu le conflit avant moi, et il est réel : le cadrage 1.5 dit que le tableau distant **tient le dernier état** si ton pilotage se déconnecte (le portable qui perd le réseau, ou la page fermée par erreur) — les élèves ne doivent pas voir l'écran d'attente au milieu d'une activité. Règle que je propose pour les deux : **l'attente s'affiche tant qu'aucune heure n'est lancée pour cette classe ; dès qu'une heure est lancée, le tableau tient le dernier état reçu, même si le pilotage ne répond plus, et il le montre discrètement (un point dans un coin : « le pilotage ne répond plus depuis 40 s ») ; l'attente ne revient qu'à la clôture de l'heure.** Et ton usage — la page laissée ouverte pour la classe suivante ou fermée en changeant de salle — marche avec ça : une page laissée ouverte retombe sur l'attente à la clôture, et repart d'elle-même quand l'heure suivante est lancée. **À mesurer**, comme tu dis : ce sera un banc du mandat (le pilotage coupé au milieu d'une activité ; la clôture ; le lancement suivant), pas de la maquette, qui n'a pas de réseau.
+
+Ce qui reste à cadrer là-dessus : rien d'autre, sauf ton mot sur le 3 (fermer et dire) et sur la règle du 5. Dès que tu me le donnes, j'écris le cadrage 1 §1 (les supports, la clé, le témoin, l'attente et la tenue) et le protocole de test du mandat ; la maquette v9c.6 n'a pas à changer pour ça (elle porte déjà le témoin et l'attente en simulation).
+
+MEMO
+
+---

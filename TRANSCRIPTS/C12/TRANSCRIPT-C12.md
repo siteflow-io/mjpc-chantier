@@ -5125,3 +5125,43 @@ Rien modifié dans la maquette ce tour. J'attends : ta capture École Directe, t
 MEMO
 
 ---
+
+## TOUR 138 — Paul
+
+Pièce jointe : sa capture de l'agenda École Directe (vue enseignant, cahier de textes, jeudi 17 septembre), recopiée en `pieces/T138-capture-de-Paul-agenda-ecole-directe.png`.
+
+Texte de Paul, mot pour mot :
+
+> la page de test tu me la livres ici et tu me dis quoi faire. voilà l'ui de l'agenda ecole directe. le but n'est pas de reproduire l'ui exact(notamment la pub dico), mais qu'ils reconnaissent qu'on est bien dans l'agenda ecole directe, et la date doit clignoter en gros (pour taire la question : "monsieur c'est pour quand?). 2. oui pour le détail des prises de parole, et des participations écrites. pour le wink : oui il mémorise le étendre. pour le site, il faut du coup ta page de test.
+
+---
+
+## TOUR 138 — Claude (conscience n°12)
+
+Page de test `docs/outils/test-ecran-2.html` écrite (getScreenDetails, autorisation, window.open sur l'écran secondaire + requestFullscreen({screen}), screenschange → fermeture et message ; journal du test à copier), déposée sur le dépôt de production (commit `e018b3824209`, bit à bit) — non vérifiable en https depuis ici (github.io hors du réseau autorisé). Gabarit v9c.9 (`T138-v9c9-template.html`) : la vue de fin d'heure au tableau — l'agenda ED reconnaissable à gauche (date en gros clignotante, animation `edclignote`), la participation avec métas et détail écrit / oral à droite. Banc `T138-test-v9c9.mjs` 0 défaut (deux artefacts du banc corrigés : troncature, `innerText` qui ignore la date pendant le clignotement) ; tout cliquer 105/56/0 ; audit d'affichage 0. Registre n°12 · 39 (contenu vérifié). Captures. Pièces au sas. Rien d'autre déposé hormis ce transcript, ses pièces et la page de test.
+
+Réponse mot pour mot :
+
+**La page de test « écran 2 » — livrée ici (fichier joint) et servie par le site**, en https, là où Chrome accepte l'autorisation :
+`https://siteflow-io.github.io/monsieurjaipascompris/docs/outils/test-ecran-2.html` (le dépôt l'a depuis ce tour ; GitHub Pages met une à deux minutes à la servir).
+
+**Quoi faire, dans l'ordre, avec le Valerion :**
+1. Ouvre cette adresse dans **Chrome**, sur ton portable. La page dit tout de suite si elle est bien « sécurisée » et si Chrome sait gérer les écrans (deux lignes vertes en bas).
+2. **Win + K**, choisis le Valerion. Il doit s'étendre tout seul (tu as mesuré que Windows le mémorise).
+3. Clique **« Détecter les écrans »** → Chrome demande une fois « … souhaite gérer les fenêtres sur tous vos écrans » → **Autoriser**. La page liste les écrans ; elle doit voir l'écran 2 (le Valerion). Si elle n'en voit qu'un, c'est que Windows est en dupliqué : Win + P → Étendre.
+4. Clique **« Envoyer le tableau sur l'écran 2 »** → une fenêtre avec l'heure en géant doit apparaître **sur le vidéoprojecteur, en plein écran, sans que tu la glisses ni la redimensionnes**. Cette page reste chez toi. (Si Chrome bloque la fenêtre, un petit icône à droite de l'adresse : autoriser les fenêtres pour ce site.)
+5. Éteins ou déconnecte le Valerion : la fenêtre doit se fermer d'elle-même, et la page afficher le point rouge et « l'écran 2 a décroché ».
+6. **Copie-colle le cadre « journal du test » dans ta réponse.** C'est lui qui me dit ce que Chrome et Windows ont fait, ligne par ligne.
+
+**La vue de fin d'heure au tableau, refaite (v9c.9 jointe, screenshot joint) :**
+- **À gauche, l'agenda École Directe, reconnaissable** — le bandeau bleu « Mon espace élève · Collège Saint-Joseph », « Cahier de textes (3 Charles de Gaulle) », les onglets « Travail à faire / Contenus de séances », **la date en gros, qui clignote**, la carte « FRANCAIS » avec ton texte, « Donné le 14 septembre par M. MENEY P. ». Pas la pub, pas le calendrier.
+- **À droite, la participation avec toutes ses métas** : la date du jour, la classe, « séance de 15 h 07 à 16 h 02 · heure 1 sur 2 », « 5 élèves sur 29 ont participé », les prénoms, **« 2 réponses écrites au tableau · 3 prises de parole à l'oral »**, « il reste 24 élèves à passer ».
+- Bancs : le nouveau (l'agenda, la date qui clignote, les métas, le texte de Paul de bout en bout), « tout cliquer » (105 clics, 0 erreur), la saisie, l'audit d'affichage — 0 défaut. Registre à jour (n°12 · 39).
+
+Si la vue te va, je l'écris au cadrage (1 · 7 et 2 · 1.6) avec la règle de la date (celle de l'échéance choisie ; sinon « la prochaine fois ») ; et j'attends ton journal du test.
+
+Tests de la maquette : lundi, deux réponses (ga, rd) et trois prises de parole (ld, ze, cj) ; ⚙ → Faire arriver T-5 ; « Écran 2 » ou la vue « Tableau » : l'agenda à gauche, la date qui clignote, la participation à droite ; choisis une échéance : la date change ; écris dans le champ École Directe : le texte suit.
+
+MEMO
+
+---

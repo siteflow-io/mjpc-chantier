@@ -1,0 +1,20 @@
+a. d1 → clic vignette 9 (hors heure) → pilote d1 (0) · tableau d1 · gel non · garde OUVERTE « La classe te suivrait — sauter à la diapo 9. »
+b. d1 finie → clic sur la miniature de la 2 → pilote d2 (0) · tableau d2 · gel non · garde non
+c1. d2 (image) → clic vignette 3 → pilote d3 (0) · tableau d3 · gel non · garde non
+c2. → clic vignette 5 → pilote d3 (0) · tableau d3 · gel non · garde OUVERTE « La classe te suivrait — sauter à la diapo 5. »
+d. ▶ sur une image → pilote d4 (0) · tableau d4 · gel non · garde non
+e. clic droit → Y aller (vignette 6) → pilote d4 (0) · tableau d4 · gel non · garde OUVERTE « La classe te suivrait — sauter à la diapo 6. »
+f. Toutes → clic diapo 7 → pilote d4 (0) · tableau d4 · gel non · garde OUVERTE « La classe te suivrait — sauter à la diapo 7. »
+g. fiche d'élève ouverte → clic vignette 7 → pilote d4 (0) · tableau d4 · gel non · garde OUVERTE « La classe te suivrait — sauter à la diapo 7. »
+h. gel → clic vignette 8 → pilote d8 (0) · tableau d4 · gel oui · garde non
+   dégel, revenu → pilote d4 (0) · tableau d4 · gel non · garde non
+i1. PageDown → pilote d5 (0) · tableau d5 · gel non · garde non
+i2. PageUp → pilote d5 (0) · tableau d5 · gel non · garde OUVERTE « La classe te suivrait — revenir à la diapo 4. »
+j1. d8, ▶ au bout → pilote d8 (1) · tableau d8 · gel non · garde non
+j2. d8 → PageDown → pilote d8 (1) · tableau d8 · gel non · garde OUVERTE « La classe te suivrait — sauter à la diapo 9. »
+k0. H2 lancée → pilote d9 (0) · tableau d9 · gel non · garde non
+k1. ▶ sur la réactivation → pilote d9 (1) · tableau d9 · gel non · garde non
+k2. ▶ (fin de la réactivation) → pilote d2 (0) · tableau d2 · gel non · garde non
+k3. PageDown → pilote d3 (0) · tableau d3 · gel non · garde non
+k4. clic vignette Tableau 1 (glissée) → pilote d3 (0) · tableau d3 · gel non · garde OUVERTE « La classe te suivrait — revenir à la diapo 2. »
+erreurs JS : []

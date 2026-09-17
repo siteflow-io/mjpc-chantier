@@ -5057,3 +5057,41 @@ Tests, dans l'ordre : lundi, diapo 8 (Question-bilan), ▶, clique dans la ligne
 MEMO
 
 ---
+
+## TOUR 136 — Paul
+
+Pièce jointe : sa capture (« 1 élève sur 29 ont participé — Lucas D. » alors que GA, RD et LD ont participé), recopiée en `pieces/T136-capture-de-Paul-qui-a-participe.png`.
+
+Texte de Paul, mot pour mot :
+
+> autre problème: lors de l'affichage de la participation, tous les élèves ne sont pas comptés. par ailleurs, il faudrait qu'à la fin d'une séance, la participation s'affiche automatiquement dans une colonne sur le coté droit du tableau (à T-5). et il faudrait que le travail à faire, la date pour laquelle c'est à faire, s'affichent dans la partie gauche. Tu vois l'idée? Dis moi ce que tu as compris, et montre moi un screenshot de ce que ça donnerait. ce serait une vue de l'écran "ce qui partira sur ecole directe travail à faire". et il faut que je puisse modifier ce champ directement, et l'enregistrer tel quel dans l'historique. tu vois? pour la fausse relecture: je me demandais si la relecture était bien le produit du site, et non de ta rédaction à toi IA. 3. les deux heures avec leur frontière, évidemment. 4. oui il faudra la faire. 5. oui. 6. oui.
+
+---
+
+## TOUR 136 — Claude (conscience n°12)
+
+Gabarit v9c.8 (`T136-v9c8-template.html`) : `quiAParticipe()` (réponses + prises) ; `finHeure` dans l'état poussé à T-5 (vue `.finh` : travail à faire et date à gauche, participation à droite) ; `#f-ed` modifiable, `S.travailEdite[heure]` gardé tel quel (ED, récit, tableau, historique), « revenir au texte composé ». Banc `T136-test-v9c8.mjs` 0 défaut ; bancs `*-8.mjs` 0 défaut. Captures : `T136-tableau-des-eleves-a-T5.png` (le screenshot demandé), `T136-pilotage-a-T5-champ-ED.png`. Registre n°12 · 38 (contenu vérifié). Cadrage à écrire sur le mot de Paul. Pièces au sas. Rien d'autre déposé hormis ce transcript et ses pièces.
+
+Réponse mot pour mot :
+
+**Ce que j'ai compris, et fait (v9c.8 jointe, screenshot joint) :**
+
+1. **« Qui a participé » ne comptait pas tout le monde** — trouvé : depuis que la maquette ne double plus une réponse au tableau dans la liste des prises de parole, « qui a participé » ne lisait plus que cette liste ; GA et RD avaient répondu, LD avait parlé, il n'en voyait qu'un. Corrigé : il compte les réponses et les prises, comme les pastilles. Mesuré : trois participations → « 3 élèves sur 29 ».
+
+2. **À T-5, le tableau des élèves bascule de lui-même** sur une vue de fin d'heure : **à gauche, « Travail à faire — pour [la date choisie] » et le texte qui partira dans École Directe ; à droite, « n élèves sur 29 ont participé », les prénoms, « il reste k élèves à passer »**. C'est le screenshot joint (le vrai tableau, à T-5, avec cinq participations et un texte que j'ai écrit moi-même dans le champ). Pendant ce temps, ton pilotage garde son écran de décision.
+
+3. **Le champ « Ce qui partira dans École Directe — travail à faire » se modifie directement** dans l'écran de fin d'heure : tant que tu n'y touches pas, il est composé d'après tes décisions ; dès que tu écris dedans, **ton texte remplace la composition et part tel quel** — dans École Directe, dans le récit (« Pour mercredi 9 septembre — … »), au tableau à T-5, et dans l'historique (le journal le garde à chaque frappe, et à la clôture). Un lien « revenir au texte composé » te rend la composition si tu changes d'avis. Mesuré de bout en bout par le banc.
+
+**Est-ce bien l'idée ?** Si oui, je l'écris au cadrage (1 · 7 et 2 · 1.6). Un point que je n'ai pas tranché seul : la date affichée au tableau est celle que tu choisis dans « Échéance » ; si tu n'en choisis pas, le tableau dit « pour la prochaine fois ».
+
+**La « fausse relecture »** — non, ce n'est pas ma rédaction : **le récit est calculé par la maquette**, à partir du journal, par le moteur de l'ancien déroulé repris tel quel (tournures, connecteurs, adverbes, personne, imparfait) ; je n'écris pas une ligne du récit. La preuve est dans les bancs : deux parcours différents donnent deux récits différents, et le récit change quand tu revoiles un élément ou retires une réponse. Ce sera pareil dans le site : le même moteur, le journal du hub à la place du journal simulé.
+
+3. Les deux heures avec leur frontière : noté, c'est la forme actuelle de la face « la séance ». 4-5-6 : notés, dans cet ordre après ta validation de la maquette.
+
+Bancs : le nouveau (participation complète, T-5 au tableau, texte ED modifié de bout en bout), « tout cliquer » (105 clics, 0 erreur), la saisie, la garde, la participation, la v9c.2, l'audit d'affichage — 0 défaut. Registre à jour (n°12 · 38).
+
+Tests : lundi, diapo 8, deux réponses (ga, rd) et une prise de parole (ld) ; ⋯ → Qui a participé : « 3 élèves sur 29 » ; ⚙ → Faire arriver T-5 : ouvre « Écran 2 » ou la vue « Tableau » : le travail à faire à gauche, la participation à droite ; choisis une échéance : la date change au tableau ; écris dans le champ « ce qui partira dans École Directe » : le tableau et le récit reprennent ton texte tel quel ; « revenir au texte composé ».
+
+MEMO
+
+---

@@ -4933,3 +4933,29 @@ Ce qui reste à cadrer là-dessus : rien d'autre, sauf ton mot sur le 3 (fermer 
 MEMO
 
 ---
+
+## TOUR 132 — Paul
+
+Texte de Paul, mot pour mot :
+
+> 2. ok, je pensais que c'était une formulation que tu proposais. si c'est natif chrome, ok. 3. ok ça me va. 4. Donc au lieu de formuler "qui suit", mettre "tableau distant connecté". pour le win K, mettre "tableau en win k". 5. le point Ok, mais doit juste être un point rouge qui clignote, et d'ailleurs en fait, autant se servir de ce témoin comme du témoin de connexion: vert quand tout est connecté et fonctionne, rouge à la déconnexion. Pas de orange? ... Pour l'attente = cloture de l'heure, c'est très bien, ça règle la question proprement, non? parce que ça gère le cas où je me déconnecte en pilotage, et que la séance reste quand même en cours et l'affichage au tableau continue à tenir? Par ailleurs, un souci sur le bouton ✍🏻. Je l'ai bien sur mon pilotage, mais il n'apparait pas sur le tableau des élèves (cf capture à suivre).
+
+---
+
+## TOUR 132 — Claude (conscience n°12)
+
+Cadrage 1 §1 écrit et déposé (1.6 les deux supports nommés, 1.7 Win+K et le décrochage, 1.8 le témoin vert / rouge clignotant, 1.9 l'attente et la tenue, 1.10 la clé) — commit vérifié par le contenu. Le ✍🏻 au tableau : c'est l'ancien (signalé au tour 125, mesuré identique) ; proposé à ajouter sur son mot. Rien d'autre déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Écrit et déposé, cadrage 1 §1 (1.6 à 1.10), dans tes mots : **« tableau distant »** (l'ordi de classe en filaire, l'adresse du tableau ouverte dans Chrome) et **« tableau en Win K »** (la fenêtre envoyée au vidéoprojecteur sans fil, mode étendu, jamais dupliqué) ; Win+K → le site détecte l'écran et propose en un clic, l'autorisation Chrome une seule fois (c'est bien la formulation native de Chrome, pas la mienne) ; si l'écran sans fil décroche, la fenêtre se ferme d'elle-même et le site le dit ; **le témoin : un point vert quand tout est connecté et fonctionne, un point rouge qui clignote à la déconnexion, pas d'orange**, avec le libellé « tableau distant connecté » / « tableau en Win K » ; **l'attente tant qu'aucune heure n'est lancée, la tenue du dernier état dès qu'une heure est lancée, l'attente qui ne revient qu'à la clôture** ; la clé USB qui décide de quel appareil sort la vidéo.
+
+Sur ta question du 5 : **oui, ça règle le cas proprement** — si ton pilotage se déconnecte, l'heure reste en cours (elle est lancée au hub, pas dans ta page), le tableau garde ce qu'il affichait, le point passe au rouge, et rien d'autre ne bouge ; tu rouvres ton pilotage, il reprend là où l'heure en est, le point repasse au vert. Le seul cas où le tableau retombe sur l'attente, c'est quand tu clos l'heure. C'est écrit comme ça, et c'est à mesurer au mandat avec un banc qui coupe le pilotage au milieu d'une activité.
+
+**Le ✍🏻 absent du tableau des élèves** : ce n'est pas un bug de la maquette, c'est **l'ancien** — je te l'avais signalé au tour 125 : dans l'ancien déroulé, « à écrire » se montre au tableau par le cadre pointillé bleu et le liseré gauche épais, **sans le ✍🏻**, qui n'existe qu'au pilotage ; et la maquette reproduit exactement ce que la classe voyait (mesuré, identique). Si tu veux le ✍🏻 aussi au tableau des élèves, dis-le et je l'ajoute (une ligne) — j'attends ta capture pour être sûr que c'est bien ça que tu vois, et pas autre chose.
+
+La maquette v9c.6 ne change pas ce tour ; la prochaine (v9c.7) portera les libellés du témoin (« tableau distant connecté » / « tableau en Win K »), le point vert / rouge clignotant, et le ✍🏻 au tableau si tu le veux.
+
+MEMO
+
+---

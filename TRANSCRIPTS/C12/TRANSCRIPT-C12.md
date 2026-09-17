@@ -4793,3 +4793,33 @@ Tests, dans l'ordre : la page s'ouvre sur l'emploi du temps, le chrono ne bouge 
 MEMO
 
 ---
+
+## TOUR 128 — Paul
+
+Texte de Paul, mot pour mot :
+
+> la garde quand je passe à une nouvelle diapo ne fonctionne plus correctement. Il y a eu un télescopage. Analyse avant de relivrer.
+
+---
+
+## TOUR 128 — Claude (conscience n°12)
+
+Analyse sans modification : `pieces/T128-garde-compare-v9b6-v9c5.mjs` (dix-sept gestes identiques sur les deux versions, résultat en pièce) ; `pieces/T128-garde-douze-cas.mjs` (douze cas sur la v9c.5, résultat en pièce). Deux télescopages trouvés : PageDown/PageUp suivent la trame et non l'ordre de l'heure (garde en heure 2 depuis la réactivation) ; une image montrée n'est pas comptée faite (vuMax posé par dévoilement seulement) et glisse à l'heure 2. Aucun geste où la garde elle-même diffère de la v9b.6 : question posée à Paul. Rien déposé hormis ce transcript et ses pièces.
+
+Réponse mot pour mot :
+
+Analysé, pas relivré. Voilà ce que j'ai mesuré.
+
+**1. Le même parcours de gardes, joué sur la v9b.6 (que tu avais dite « à peu près correcte » le 15/09) et sur la v9c.5, geste par geste, le tableau ouvert à côté** — dix-sept gestes : deux ▶ puis clic sur la vignette suivante (diapo pas finie), Rester, tout dévoiler, clic sur la suivante (diapo finie), saut à la 5, Geler puis y aller, ▶ pendant le gel, dégel ailleurs, Revenir là où est la classe, ◀ en début de diapo, Y aller devant la classe, PageDown, saut à la 8, Entrée. **Les deux versions donnent exactement le même résultat, geste pour geste** : la garde s'ouvre aux mêmes moments avec le même texte, le pilote et le tableau sont aux mêmes diapos, le gel se comporte pareil. Le relevé est en pièce (`T128-garde-compare-resultat.txt`).
+
+**2. Douze cas de plus sur la v9c.5** (vignette hors de l'heure, clic sur la miniature elle-même, depuis une image, clic droit → Y aller, la grille « Toutes », la fiche d'élève ouverte, pendant le gel, PageDown/PageUp, la dernière diapo de l'heure, l'heure 2). Tous conformes au cadrage (2.2 : le fil, c'est ▶ et la vignette suivante quand la diapo est finie ; 2.3 : la garde partout ailleurs) — **sauf deux télescopages réels, trouvés par ces cas, qui sont bien entre du neuf et de l'ancien :**
+- **PageDown / PageUp suivent la trame, pas l'ordre de l'heure.** En heure 2, l'ordre est : la réactivation, puis les glissées de lundi, puis mardi. PageDown depuis la réactivation va à la diapo d'après **dans la trame** (« Les règles héritées »), qui n'est pas la suivante de l'heure → la garde s'ouvre (« sauter à la diapo 10 ») alors que tu voulais simplement « la suivante ». C'est un télescopage entre PageDown (v9a) et l'ordre de l'heure (v9c). Correction évidente : PageDown/PageUp = suivante/précédente **dans l'ordre de l'heure**, comme ▶.
+- **Une image montrée n'est pas comptée comme faite.** Une diapo d'image n'a rien à dévoiler ; le compte de « ce que la classe a vu » n'est posé que par un dévoilement ; donc un tableau montré lundi est tenu pour « pas fait » : il glisse à mardi (l'ordre de l'heure 2 remet « Tableau 1 » après la réactivation) et il reste au T-5 comme restant. Télescopage entre les images (v9b) et le glissement par activité (v9c.2). Correction : une diapo montrée sans élément à dévoiler est faite dès qu'elle a été au tableau.
+
+**3. Ce que je ne trouve pas, et donc je ne sais pas** : un geste où la garde de changement de diapo elle-même se comporte autrement qu'en v9b.6. Avant de corriger quoi que ce soit, il me faut le tien : **quel geste exactement, et qu'as-tu vu** — la garde qui s'ouvre alors qu'elle ne devrait pas, qui ne s'ouvre pas, qui s'ouvre avec le mauvais texte, ou le tableau qui bouge malgré « geler » ? Si c'est PageDown en heure 2, c'est le premier télescopage ; sinon, dis-moi le geste et je le joue.
+
+Rien de livré, rien de modifié dans la maquette ce tour ; les deux bancs d'analyse sont au sas.
+
+MEMO
+
+---

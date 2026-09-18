@@ -5391,3 +5391,30 @@ Tu as raison sur les captures : des morceaux, une coupée, pas contrôlées — 
 MEMO
 
 ---
+
+## TOUR 146 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Je reprends tes points que tu n'as pas numérotés. 1. si, ça se verse dans la trame mais sur mon clic (déjà prévu et codé). 2. T-5 attention, ça ne disparait pas au sens propre du terme, c'est de la réorganisation. 3. le récit ok. précise ta phrase: le temps mis à part (1.3 bis) n'entre pas dans le calcul des temps. 4. ok. 5. Oui évidemment, déjà donné par moi, on ne s'occupe pas de l'agenda des collègues. Je n'ai pas fini, attends.
+
+---
+
+## TOUR 146 — Claude (conscience n°12)
+
+Corrections actées (versement sur clic ; réorganisation ; les temps du récit calés sur l'horaire réel, le temps mis à part retranché seulement du temps d'activité) ; rien écrit ni codé, en attente de la suite. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Pris, point par point, et j'attends la suite avant d'écrire quoi que ce soit.
+
+1. **La diapo de fin d'heure se verse dans la trame, sur ton clic** — je corrige : pas d'exception ; elle suit la règle déjà prévue et codée (8.4 : à la clôture, « verser dans le chapitre ? », diapo par diapo, sur ton clic). Ce qui reste vrai : rien ne se verse **sans** ton clic.
+2. **Le T-5 : de la réorganisation, pas une disparition** — je corrige le mot : rien ne se perd — les cartes par activité restante, les décisions, les notions, l'échéance, le mot aux absents, le versement, le rattrapage —, tout est **réorganisé** : l'alerte non bloquante à la place de la bascule, la diapo de fin au centre à la place de la vue à part, la séquence à droite à la place de l'écran.
+3. **Ma phrase sur le temps mis à part était fausse dans ce sens, je la corrige** : **les trois temps du récit se calent sur l'horaire réel de l'heure**, tel que la classe l'a vécu — « au milieu de l'heure », c'est vers la 30ᵉ minute de l'heure réelle, coupure ou pas. Le temps mis à part (1.3 bis) **n'est retranché que du temps compté pour l'activité** (« Où on en est », le T-5, le bilan de temps) ; il ne déplace pas les repères du récit. Une activité coupée 7 minutes en son milieu est donc racontée là où elle a eu lieu, et comptée 7 minutes de moins.
+5. **« Déjà donné » = déjà donné par toi, pour cette classe** ; l'agenda des collègues, on ne s'en occupe pas.
+
+Je n'écris rien aux cadrages ni à la maquette tant que tu n'as pas fini.
+
+MEMO
+
+---

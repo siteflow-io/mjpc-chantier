@@ -5262,3 +5262,35 @@ Tests : ⚙ → T-5, « Écran 2 » : la colonne de droite est étroite, la date
 MEMO
 
 ---
+
+## TOUR 142 — Paul
+
+Pièce jointe : sa capture de l'écran de fin (voile) — recopiée en `pieces/T142-capture-de-Paul-ecran-de-fin.png`.
+
+Texte de Paul, mot pour mot :
+
+> le surlignage ne fonctionne pas: vérifie tous les boutons. Pour l'écran de travail à faire, autant me remplacer le champ par l'écran du tableau lui-même. Comme ça j'écris dedans en direct et voilà. D'ailleurs, ça me fait penser que le récit devrait avoir trois temps, calé sur l'horaire: "Au début de l'heure on a commencé par..." ( chaque moment contenu dans les dix premières minutes de l'heure), "Puis, au milieu de l'heure, on a fait ... " (chaque moment contenu entre la minute 25 et la minute 35), "Enfin, à la fin de l'heure, on a fait ça ... ET on l'a terminé/Mais on ne l'a pas terminé"(chaque moment contenu entre la minute 45 et la minute 55). Par ailleurs, normalement dans l'ancien moteur j'avais le temps par activité, modifiable en direct etc. Reformule ce que tu as compris pour être sur que tu es bien alignée. et pour l'UI école directe à la fin, il faut quand même que la police soit en garamond afin d'avoir une cohérence entre mon site et ED. Enfin, l'écran de fin doit pouvoir avoir exactement les mêmes outils que tout le reste. Il me faudra une proposition en capture d'écran png, pour que je voie ce que tu proposes visuellement.
+
+---
+
+## TOUR 142 — Claude (conscience n°12)
+
+Mesuré : `user-select:none` sur `.murcadre` interdisait la sélection à la souris (les bancs sélectionnaient au script) ; l'ancien `#durees` (moteur L783-785, `horaires()`, `ecranDuMoment()`, `.dur.retard`). Gabarit v9c.13 : la sélection possible, « retirer » élargi, l'agenda en Garamond, l'écran de fin intégré (le mur rend `finHeure` au pilote, éditable `#ed-edit`, onglets `data-onglet`, `brancherFin()` ; `#fin` déplacé dans `#droite-fin`, la colonne de droite en mode `fin`, rouverte si repliée ; le voile réservé à l'ouverture). Pièges corrigés : display inline, id manquant, classe « ouverture » sur la mauvaise ligne, `brancherFin` injecté au tableau, les décisions qui débordaient de la colonne, l'audit d'affichage adapté aux colonnes défilables. Banc `T142-test-v9c13.mjs` (surlignage par la souris, écran de fin, ouverture) 0 défaut ; bancs `*-13.mjs` 0 défaut ; audit 0. Registre n°12 · 43 (contenu vérifié). Capture `T142-proposition-ecran-de-fin-integre.png`. Reformulation demandée (récit en trois temps, durées en direct) en attente. Pièces au sas. Rien d'autre déposé hormis ce transcript et ses pièces.
+
+Réponse mot pour mot :
+
+**Le surlignage** — trouvé et corrigé, et c'était grave : le cadre du tableau interdisait **toute sélection à la souris** (une règle posée pour la loupe), donc aucune couleur ne pouvait prendre ; mes bancs surlignaient avec une sélection fabriquée au script et ne l'ont jamais vu. Règle écrite au registre : un banc qui sélectionne le fait à la souris. Maintenant mesuré par le geste réel — glisser la souris sur le texte, puis chaque couleur (jaune, vert, rose, bleu), ✕ (retire toute marque touchée par la sélection), Ctrl+H — au pilotage et au tableau. « Vérifie tous les boutons » : « tout cliquer » rejoué (105 clics, 0 erreur) et le nouveau banc les prend un à un par la souris.
+
+**La proposition visuelle** (v9c.13 jointe, capture jointe) — l'écran de fin n'est plus un écran à part : **le centre est le tableau de fin lui-même**, tel que les élèves le voient — l'agenda École Directe **en Garamond**, la date qui pulse, **le texte du travail à faire que tu écris directement dedans** (ce que tu tapes est ce qui part), les onglets cliquables, la participation à droite du tableau ; **dessous, les mêmes outils que d'habitude** ; **dans la colonne de droite, les décisions** (une carte par activité restante avec ses diapos, les notions à apprendre, l'échéance, le mot aux absents, le versement) ; en bas, « Annuler » / « Clore l'heure ». La colonne de gauche ne bouge pas. Bancs : 0 défaut, audit d'affichage 0. Dis-moi ce qui te va et ce qui ne te va pas sur la capture.
+
+**Ce que j'ai compris, pour être alignée — reformulé, tu confirmes :**
+1. **Le récit en trois temps, calés sur l'horaire de l'heure** — pas sur l'ordre des activités : *« Au début de l'heure, on a commencé par… »* rassemble tout ce qui s'est passé **dans les dix premières minutes** ; *« Puis, au milieu de l'heure, on a fait… »* tout ce qui s'est passé **entre la 25ᵉ et la 35ᵉ minute** ; *« Enfin, à la fin de l'heure, on a fait… et on l'a terminé / mais on ne l'a pas terminé »* tout ce qui s'est passé **entre la 45ᵉ et la 55ᵉ minute**, avec le verdict : fini ou pas. Ce que je ne sais pas, et que tu dois trancher : **ce qui se passe entre la 10ᵉ et la 25ᵉ, et entre la 35ᵉ et la 45ᵉ** — rattaché au temps le plus proche ? raconté sans repère de temps (« ensuite… ») ? ou trois tranches pleines : début 0-20, milieu 20-40, fin 40-55 ? Et « on l'a terminé / pas terminé » porte sur l'activité en cours à la 55ᵉ minute, c'est bien ça ?
+2. **Le temps par activité, modifiable en direct** — vérifié dans l'ancien : le pilote avait une liste « durées », une ligne par écran avec **un champ « min » modifiable pendant le cours**, l'heure prévue de début calculée en cumulant, et **la ligne de l'écran en cours qui clignote en ambre quand tu es en retard sur l'horaire**. Ma maquette a les durées prévues mais pas ce dispositif. Je le reprends tel quel, par activité (avec ses diapos), dans « Où on en est » — c'est aussi ce qui donne les trois temps du récit leur base (l'horaire prévu contre l'horaire réel). Tu confirmes ?
+
+Dès tes réponses : le récit en trois temps, les durées en direct, et le cadrage 1 · 7 et 2 · 1.6 (la vue de fin, le champ qui nourrit).
+
+Tests : sélectionne deux mots à la souris sur la diapo 1, clique le jaune : surligné, au tableau aussi ; sélectionne-les à nouveau, ✕ : retiré ; « Fin de l'heure » : le centre devient l'agenda, écris dedans, le tableau suit ; clique « Contenus de séances » au centre : le récit ; les décisions à droite ; « Annuler » : le cours revient.
+
+MEMO
+
+---

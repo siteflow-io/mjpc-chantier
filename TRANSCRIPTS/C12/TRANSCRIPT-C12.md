@@ -5324,3 +5324,36 @@ Rien codé ce tour ; le récapitulatif entrera aux cadrages 1, 2 et 4 dès ta va
 MEMO
 
 ---
+
+## TOUR 144 — Paul
+
+Texte de Paul, mot pour mot :
+
+> 1. que proposes tu de plus logique? 2. propose! jamais de coupure en pleine activité avec les élèves. Regarde le système de worktrack. 3. il faut que je voie sur captures avant que tu codes la maquette. sinon on se retrouve dans le coup précédent, où tu codes alors que je ne l'ai pas demandé.
+
+---
+
+## TOUR 144 — Claude (conscience n°12)
+
+Worktrack relevé (docs/CADRAGE-TEMPS.md §2 : alerte T-5 non bloquante, quatre états, cours {debut, fin}, chrono accumulé). Cinq propositions visuelles en HTML statique hors maquette (`pieces/T144-propositions.html`) capturées : A durées par activité avec les états de worktrack, B alerte T-5 non bloquante, C diapo de fin d'heure (travail à faire, « déjà donné », participation voilée), D onglet Contenus (récit en trois temps, « on a continué »), E colonne en séquence repliée. Aucune modification de la maquette. Rien déposé hormis ce transcript et ces pièces.
+
+Réponse mot pour mot :
+
+Rien codé dans la maquette. Cinq **captures de proposition** jointes (des maquettes visuelles à part, pas la maquette), et deux propositions à trancher.
+
+**1. Une activité qui traverse deux temps du récit — ce que je propose de plus logique** : elle est racontée **dans le temps où elle a commencé**, et **le temps suivant s'ouvre par « on a continué [l'activité] »** avec ce qui s'y est passé. Jamais coupée à l'intérieur : le paragraphe de l'activité reste entier dans son temps de départ, et la suite est une reprise, pas une coupure. C'est ainsi que les élèves l'ont vécue (« on a continué les tableaux ») et c'est ce que la capture D montre : *« Au début de l'heure, on a commencé par l'activité 1… Puis, au milieu de l'heure, on a continué l'activité 1 avec… Enfin, à la fin de l'heure, on a fait l'activité 2… Et on l'a terminée. »*
+
+**2. Le T-5, sans jamais couper une activité — ce que je propose, sur le modèle de worktrack** (relevé au cadrage-temps : *« alerte T-5 non bloquante, réarmée à chaque cours »*, et ses quatre états lisibles *dans les temps · il te reste peu de temps · tu dépasses · terminée*) : à T-5, **une alerte au pilotage, non bloquante** — « il reste 5 minutes ; l'activité en cours : … ; la diapo de fin d'heure attend ; le tableau ne bouge pas tant que tu n'y vas pas » — avec « Aller à la fin d'heure » et « Plus tard ». **Le tableau ne change jamais tout seul** ; tu vas à la diapo de fin quand l'activité en cours est finie (ou quand tu décides de la laisser), par ▶ ou par la vignette. Capture B.
+
+**3. Les captures, avant de coder :**
+- **A — « Où on en est », les durées par activité** : une ligne par activité de l'heure, `[min] hh:mm  Activité — titre`, le chiffre modifiable en cours d'heure (les heures suivantes se recalent), les faites barrées, la ligne en cours en gras, et **l'état de worktrack** en pastille : *terminée · dans les temps · il te reste peu de temps (80 %) · tu dépasses (+4 min)*, les deux derniers qui pulsent. Tout tient sans défilement dans la colonne, la participation dessous.
+- **B — l'alerte T-5** non bloquante.
+- **C — la diapo de fin d'heure**, dévoilée jusqu'au travail à faire : l'étiquette « Fin d'heure — lundi 14 septembre, 15 h 07 – 16 h 02 », l'agenda École Directe en Garamond, **« PRENEZ VOS AGENDAS — POUR MERCREDI 9 SEPTEMBRE »** qui pulse, la carte FRANCAIS avec **« déjà donné pour mercredi (jeudi dernier) : … »** en tête puis le travail de l'heure, « Donné le … », et en bas, encore voilée (grisée comme un élément non dévoilé), la participation.
+- **D — la même diapo, onglet « Contenus de séances »** : le récit en trois temps, « figé, modifiable ».
+- **E — la colonne de droite en fin d'heure, en séquence** : 1 · l'échéance (faite, résumée sur une ligne, ✔) → flèche → 2 · ce qui reste et les notions (ouverte : les cartes par activité, les cases) → flèche grise → 3 · avant de clore (repliée) → 4 · Clore.
+
+Dis-moi, capture par capture, ce qui te va et ce qui ne te va pas ; je n'écris rien dans la maquette avant.
+
+MEMO
+
+---

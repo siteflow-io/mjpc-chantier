@@ -1,0 +1,89 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><style>
+:root{--fond:#0f0d0b;--carte:#171310;--carte2:#1f1a15;--bord:#2b241d;--bord2:#3b3128;--texte:#ece4d6;--texte2:#a6957c;--sourd:#6b5d4e;--or:#c99a4e;--gel:#6fb3e0;--joue:#3cbb80}
+body{margin:0;background:var(--fond);color:var(--texte);font-family:"EB Garamond",Garamond,"Times New Roman",serif;font-size:15px}
+.pp-col{width:336px;padding:10px 12px;box-sizing:border-box;border-left:1px solid var(--bord);height:818px;overflow:hidden;display:flex;flex-direction:column;gap:10px}
+h5{margin:0 0 4px;font-size:.72rem;letter-spacing:.09em;text-transform:uppercase;color:var(--sourd)}
+.pp-bloc{background:var(--carte);border:1px solid var(--bord);border-radius:8px;padding:8px 10px}
+.pp-dur{font-size:.86rem;line-height:1.35}.pp-dur .pp-l{display:flex;gap:6px;align-items:center;padding:2px 0;border-bottom:1px dotted var(--bord)}.pp-dur .pp-l:last-child{border:0}.pp-dur input{width:2.4em;background:#191411;color:var(--texte);border:1px solid var(--bord2);border-radius:3px;text-align:right;font:inherit;font-size:.82rem;padding:0 3px}.pp-dur .pp-h{color:var(--sourd);width:3.2em;font-variant-numeric:tabular-nums}.pp-dur .pp-t{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.pp-dur .pp-faite{color:var(--sourd)}.pp-dur .pp-faite .pp-t{text-decoration:line-through}.pp-dur .pp-cours .pp-t{color:var(--texte);font-weight:600}.pp-dur .pp-etat{font-size:.68rem;border-radius:999px;padding:0 6px;white-space:nowrap}.pp-etat.pp-ok{background:rgba(60,187,128,.18);color:#8fe0b8}.pp-etat.pp-peu{background:rgba(201,154,78,.2);color:#e0c48c;animation:c 1.6s ease-in-out infinite}.pp-etat.pp-dep{background:rgba(232,72,76,.2);color:#f0a0a0;animation:c 1.2s ease-in-out infinite}.pp-etat.pp-fin{background:rgba(111,179,224,.15);color:#a8cbea}
+@keyframes c{50%{opacity:.35}}
+.vif{width:100%;box-sizing:border-box;padding:4px 8px;border:1px solid #4a3f33;border-radius:8px;background:#171310;color:#e8ddcf;font:inherit;font-size:13px}
+.pp-part{display:flex;flex-wrap:wrap;gap:4px}.pp-part span{border:1px solid var(--bord);border-radius:3px;padding:1px 6px;font-size:.72rem;color:#e0a84e}.pp-part span.pp-ok{background:rgba(60,187,128,.16);border-color:#3cbb80;color:#f0e7db}.pp-part span.pp-oral{border-style:dashed;border-color:#7fa3c9;color:#f0e7db}
+.pp-alerte{position:absolute;left:190px;top:56px;width:560px;background:#1c1712;border:1px solid var(--or);border-radius:10px;padding:10px 14px;box-shadow:0 8px 26px rgba(0,0,0,.5);display:flex;gap:12px;align-items:center}
+.pp-alerte b{color:var(--or)}.btn{background:var(--carte2);border:1px solid var(--bord2);color:var(--texte);border-radius:8px;padding:5px 12px;font:inherit;cursor:pointer}.btn.or{background:var(--or);color:#1a1410;border-color:var(--or);font-weight:600}
+.pp-seq{display:flex;flex-direction:column;gap:6px}.pp-sec{background:var(--carte);border:1px solid var(--bord);border-radius:8px;padding:8px 10px}.pp-sec.pp-faite{border-color:#2f4a3c}.pp-sec .pp-tt{display:flex;justify-content:space-between;align-items:center;font-weight:600}.pp-sec .pp-tt .pp-ok{color:var(--joue);font-size:.8rem;font-weight:400}.pp-sec .pp-resume{color:var(--texte2);font-size:.85rem}.pp-sec.pp-ouverte{border-color:var(--or)}.pp-fleche{text-align:center;color:var(--or);font-size:1.1rem;line-height:1;cursor:pointer}.pp-fleche.pp-grise{color:var(--sourd)}
+.pp-carte{background:var(--carte2);border:1px solid var(--bord);border-radius:8px;padding:6px 8px;margin:6px 0;font-size:.86rem}.pp-carte .pp-dec{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}.pp-carte .pp-dec .btn{padding:1px 6px;font-size:.78rem}.pp-carte .pp-dec .btn.on{border-color:var(--or);color:var(--or)}
+label{display:block;font-size:.85rem;color:var(--texte2)}
+.mur{width:982px;height:552px;background:#fffdf9;color:#22303f;font-family:"EB Garamond",Garamond,serif;font-size:31px;position:relative;box-sizing:border-box;border-radius:6px;overflow:hidden}
+.ecran{position:absolute;inset:0;padding:3.2% 3.6%;display:flex;flex-direction:column;gap:1.2%}
+.act{font-size:.42em;letter-spacing:.13em;text-transform:uppercase;color:#0f8f53;border:1px solid rgba(15,143,83,.4);border-radius:999px;padding:.18em .5em;align-self:flex-start}
+.pas{opacity:.45}
+.pp-ed{font-family:"EB Garamond",Garamond,serif;background:#edf3fd;border:1px solid #d8e0ea;display:flex;flex-direction:column;flex:1;min-height:0}
+.pp-ed-b{background:#0e478d;color:#fff;display:flex;align-items:center;gap:1em;height:1.5em;font-size:.55em}.pp-ed-l{background:#0e579e;height:100%;display:flex;align-items:center;padding:0 .8em;font-weight:700;font-size:.75em;line-height:1.1;text-align:center;border-radius:0 0 .8em 0}
+.pp-ed-c{padding:.4em .8em;font-size:.62em;display:flex;flex-direction:column;gap:.35em;flex:1;min-height:0}.pp-ed-t{color:#0f8fd1;font-size:1.2em;font-weight:300}.pp-ed-o{display:flex;font-size:.7em}.pp-ed-o span{border:1px solid #cfd8e3;padding:.2em .7em;background:#fff;color:#0f8fd1}.pp-ed-o span.on{background:#e4e7ea;color:#333}
+.pp-ed-d{text-align:center;font-size:1.5em;font-weight:700;color:#0e478d;animation:p 1.8s ease-in-out infinite}@keyframes p{50%{opacity:.3}}
+.pp-ed-k{background:#fff;border:1px solid #d8e0ea;border-left:.25em solid #0f8fd1;padding:.5em .8em;flex:1;min-height:0;overflow:hidden;margin-bottom:2.2em}.pp-ed-m{text-align:center;color:#0f8fd1;font-size:.85em;letter-spacing:.04em;margin-bottom:.4em}.pp-ed-x{font-size:.95em;line-height:1.45}.pp-ed-x .pp-deja{color:#5c7186;font-style:italic;font-size:.9em;border-left:3px solid #cfd8e3;padding-left:.5em;margin-bottom:.4em}.pp-ed-dn{text-align:right;font-style:italic;color:#555;font-size:.7em;margin-top:.5em}
+.pp-part2{position:absolute;left:3.6%;right:3.6%;bottom:3.5%;background:#fffdf9;border-top:.18em solid #c99a4e;padding:.4em .8em;font-size:.55em;text-align:center;line-height:1.35;display:flex;gap:1.2em;align-items:baseline;justify-content:center}.pp-part2 .pp-g{color:#0f8f53;font-weight:600}.pp-part2 .pp-m{color:#5c7186;font-size:.85em}
+.pp-recit{font-size:.62em;line-height:1.5;padding:.2em .4em}.pp-recit .pp-temps{color:#0f8fd1;font-weight:700;display:block;margin-top:.5em}.pp-recit .pp-verdict{color:#0f8f53;font-weight:600}
+</style></head><body>
+<!-- A · Où on en est : les durées par activité, modifiables, avec les quatre états de worktrack -->
+<div id="A" class="pp-col" style="position:relative">
+  <div class="pp-bloc"><h5>Diapo suivante</h5><div style="height:150px;background:#e9e3d8;border-radius:4px"></div></div>
+  <div class="pp-bloc"><h5>Où on en est — H1 · 55 min prévues / 46 utiles · <span style="color:#f0a0a0">dépasse de 9 min</span></h5>
+    <div class="pp-dur">
+      <div class="pp-l pp-faite"><input value="3"><span class="pp-h">15:07</span><span class="pp-t">A1 · Analyse d'images : la routine</span><span class="pp-etat pp-fin">terminée</span></div>
+      <div class="pp-l pp-cours"><input value="25"><span class="pp-h">15:10</span><span class="pp-t">A1 · les cinq tableaux (7 diapos)</span><span class="pp-etat pp-dep">tu dépasses · +4 min</span></div>
+      <div class="pp-l"><input value="4"><span class="pp-h">15:35</span><span class="pp-t">A2 · Question-bilan</span><span class="pp-etat pp-ok">dans les temps</span></div>
+      <div class="pp-l"><input value="3"><span class="pp-h">15:39</span><span class="pp-t">A3 · Les règles héritées</span><span class="pp-etat pp-ok">dans les temps</span></div>
+      <div class="pp-l"><input value="6"><span class="pp-h">15:42</span><span class="pp-t">A4 · La frise du siècle</span><span class="pp-etat pp-ok">dans les temps</span></div>
+      <div class="pp-l"><input value="5"><span class="pp-h">15:48</span><span class="pp-t">A5 · Placer les poètes</span><span class="pp-etat pp-ok"></span></div>
+      <div class="pp-l"><input value="4"><span class="pp-h">15:53</span><span class="pp-t">A6 · Le siècle des inventions</span><span class="pp-etat pp-ok"></span></div>
+      <div class="pp-l" style="color:var(--sourd)"><input value="5" disabled><span class="pp-h">15:57</span><span class="pp-t">Fin d'heure — travail à faire, récit, participation</span><span class="pp-etat"></span></div>
+    </div>
+    <div style="font-size:.75rem;color:var(--sourd);margin-top:4px">un chiffre se change en cours d'heure : les heures suivantes se recalent</div>
+  </div>
+  <div class="pp-bloc"><h5>Participation <span style="color:var(--or)">3 sur 29 présents</span></h5><input class="vif" placeholder="⌨ initiales — puis 1/2/3, note, Entrée"><div class="pp-part" style="margin-top:6px"><span>EA</span><span>EB</span><span>CB</span><span>TB</span><span>TC</span><span>LC</span><span>JC</span><span>AC</span><span>LC2</span><span>PC</span><span>BC</span><span>RD</span><span>AD</span><span>LD</span><span>RD2</span><span>CH</span><span>NJ</span><span>AJ</span><span>EK</span><span>ML</span><span>EP</span><span>CP</span><span>ZP</span><span>LR</span><span>GR</span><span>CR</span><span>AT</span><span class="pp-ok">GA <i>1</i></span><span class="pp-oral">ZP <i>1</i></span></div></div>
+</div>
+<!-- B · l'alerte T-5, non bloquante (worktrack) -->
+<div id="B" style="position:relative;width:1100px;height:120px;background:var(--fond)">
+  <div class="pp-alerte"><div style="flex:1"><b>T-5 — il reste 5 minutes.</b><br><span style="color:var(--texte2)">L'activité en cours : <b style="color:var(--texte)">A1 · les cinq tableaux</b>, tu dépasses de 4 min. La diapo de fin d'heure attend — le tableau ne bouge pas tant que tu n'y vas pas.</span></div><button class="btn or">Aller à la fin d'heure</button><button class="btn">Plus tard</button></div>
+</div>
+<!-- C · la diapo de fin d'heure, dévoilée jusqu'au 2e élément -->
+<div id="C" class="mur"><div class="ecran"><span class="act">Fin d'heure — lundi 14 septembre, 15 h 07 – 16 h 02</span>
+  <div class="pp-ed"><div class="pp-ed-b"><span class="pp-ed-l">MON ESPACE<br>ÉLÈVE</span><span>Collège Saint-Joseph</span></div>
+    <div class="pp-ed-c"><div class="pp-ed-t">Cahier de textes <span style="color:#777;font-size:.6em">(3 Charles de Gaulle)</span></div><div class="pp-ed-o"><span class="on">Travail à faire</span><span>Contenus de séances</span></div>
+      <div class="pp-ed-d">PRENEZ VOS AGENDAS — POUR MERCREDI 9 SEPTEMBRE</div>
+      <div class="pp-ed-k"><div class="pp-ed-m">FRANCAIS</div><div class="pp-ed-x"><div class="pp-deja">déjà donné pour mercredi (jeudi dernier) : relire la fiche sur le champ lexical.</div>Pour mercredi : terminer le tableau à trois colonnes (Tableaux 3, 4 et 5) et relire la définition du Romantisme. Apporter le livre.</div><div class="pp-ed-dn">Donné le 14 septembre par M. MENEY P.</div></div>
+    </div></div>
+  <div class="pp-part2 pas"><span class="pp-g">5 élèves sur 29 ont participé</span><span>Gatien · Jules · Romain · Lucas D. · Zélia</span><span class="pp-m">2 réponses écrites · 3 prises de parole · il reste 24 à passer</span></div>
+</div></div>
+<!-- D · la même diapo, onglet Contenus de séances : le récit en trois temps -->
+<div id="D" class="mur"><div class="ecran"><span class="act">Fin d'heure — lundi 14 septembre, 15 h 07 – 16 h 02</span>
+  <div class="pp-ed"><div class="pp-ed-b"><span class="pp-ed-l">MON ESPACE<br>ÉLÈVE</span><span>Collège Saint-Joseph</span></div>
+    <div class="pp-ed-c"><div class="pp-ed-t">Cahier de textes <span style="color:#777;font-size:.6em">(3 Charles de Gaulle)</span></div><div class="pp-ed-o"><span>Travail à faire</span><span class="on">Contenus de séances</span></div>
+      <div class="pp-ed-k"><div class="pp-ed-m">FRANCAIS — contenu de la séance du lundi 14 septembre <span style="color:#999">· figé, modifiable</span></div><div class="pp-recit">
+        <span class="pp-temps">Au début de l'heure, on a commencé par</span> l'activité 1 — la routine d'analyse d'images : la consigne était : « Observe, discute, fais une hypothèse sur le Romantisme. » — d'abord on a observé les images en silence ; après quoi on a discuté en groupe de ce qu'on voyait. Ensuite on a observé <b>Le Voyageur contemplant une mer de nuages</b> et <b>Pêcheurs en mer</b>.
+        <span class="pp-temps">Puis, au milieu de l'heure, on a continué</span> l'activité 1 avec <b>Le Radeau de la Méduse</b> et <b>Ville médiévale au bord d'un fleuve</b> ; chaque groupe a présenté son tableau et son hypothèse.
+        <span class="pp-temps">Enfin, à la fin de l'heure, on a fait</span> l'activité 2 — la question-bilan : « Qu'ont en commun ces cinq tableaux ? » <b>Gatien</b> a répondu : « Une nature immense face à un homme petit » ; <b>Romain</b> : « La solitude et le silence ». <span class="pp-verdict">Et on l'a terminée.</span>
+      </div></div>
+    </div></div>
+</div></div>
+<!-- E · la colonne de droite en fin d'heure : la séquence en sections repliées -->
+<div id="E" class="pp-col">
+  <h5>Fin de l'heure — dans l'ordre</h5>
+  <div class="pp-seq">
+    <div class="pp-sec pp-faite"><div class="pp-tt">1 · L'échéance <span class="pp-ok">✔ mercredi 9 septembre</span></div><div class="pp-resume">« Prenez vos agendas pour le mercredi 9 » est au tableau.</div></div>
+    <div class="pp-fleche">▼</div>
+    <div class="pp-sec pp-ouverte"><div class="pp-tt">2 · Ce qui reste, et les notions</div>
+      <div class="pp-carte"><b>Activité 1 — les cinq tableaux</b> <span style="color:var(--sourd)">· 3 diapos restantes · 15 min · commencée</span><div class="pp-dec"><button class="btn on">À l'heure suivante</button><button class="btn">Terminer à la maison</button><button class="btn">En réserve</button><button class="btn">Non fait</button></div></div>
+      <div class="pp-carte"><b>Activité 2 — Question-bilan</b> <span style="color:var(--sourd)">· terminée</span></div>
+      <label><input type="checkbox" checked> Ce que la trame prévoyait : <i>Apprendre la définition du Romantisme (fiche notion)</i></label>
+      <label><input type="checkbox" checked> Apprendre les notions de l'heure — 3 nouvelles <span style="color:var(--sourd)">(seulement les nouvelles)</span></label>
+      <div style="font-size:.78rem;color:var(--sourd);margin-top:4px">chaque case cochée ou décochée se voit au tableau, dans le travail à faire</div>
+    </div>
+    <div class="pp-fleche pp-grise">▼</div>
+    <div class="pp-sec" style="opacity:.55"><div class="pp-tt">3 · Avant de clore</div><div class="pp-resume">verser les diapos modifiées · garder les notes · un mot pour les absents</div></div>
+    <div class="pp-fleche pp-grise">▼</div>
+    <div class="pp-sec" style="opacity:.55"><div class="pp-tt">4 · Clore l'heure</div><div class="pp-resume">le journal, le récit, le travail à faire, le mot des absents sont enregistrés</div></div>
+  </div>
+</div>
+</body></html>

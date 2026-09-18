@@ -5294,3 +5294,33 @@ Tests : sélectionne deux mots à la souris sur la diapo 1, clique le jaune : su
 MEMO
 
 ---
+
+## TOUR 143 — Paul
+
+Texte de Paul, mot pour mot :
+
+> explique tes choix pour ta proposition écran de fin intégré. Est ce une vraie diapo? par ailleurs je ne peux pas scroller dans le contenu de séance et je dois pouvoir aussi modifier mon récit (même mécanisme qu'à la fin, figer pour modifier). Et si c'est une vraie diapo, il faudrait que je puisse la geler comme les autres, etc. elle doit avoir les mêmes caractéristiques que les autres. Et à la limite, ça devrait être une vraie diapo, prévue exactement ainsi au json d'injection (donc au prompt de création de chapitre), et remplie par la vraie avancée de l'heure: comme ça le récit et le travail à faire ne sont pas seulement des éléments pour moi, mais pour les élèves. Et l'intérêt d'en faire une vraie diapo, c'est qu'elle va se dévoiler exactement comme les autres, au clic sur dévoiler, etc. Elle hérite exactement de toutes les fonctionnalités des autres diapos.  Pour le surlignage, ça me fait penser que dans l'ancien déroulé je pouvais modifier mes diapos pendant l'heure. il y avait tout un système de versement ou non des modifications dans la trame de chapitre etc. mais peut etre est ce à voir lors du branchement dans mjpc. Autre élément: la participation. actuellement je dois aller la chercher dans les ... des outils, puis je dois recliquer dessus pour la faire disparaître. elle doit être un bouton à part entière, et lui trouver un raccoruci (maj P? à voir les conflits avec les raccourcis windows). Pour ta compréhension: 1. oui c'est ça. les temps entre les trois temps sont racontés simplement sans repère de temps narratif. on a fini, on n'a pas fini porte évidemment sur l'activité en cours à T-5. Mais attention: si je viens de commencer une activité (en gros entre 1 et 5 minutes dans la nouvelle activité), on la considère comme non terminée certes, mais en nuançant avec "tout juste commencée". 2. le temps oui, ce doit être pareil que dans l'ancien, mais à voir si on arrive à respecter la règle "tout dans le même écran sans scroll". peut être propose moi une disposition différente, une UI ergonomique. Pour le travail à faire: il faudra que le site communique sur ce qu'il a déjà en travail à faire pour telle ou telle séance. En effet, si l'élève a déjà écrit quelque chose dans son agenda pour un créneau, il faut que ça apparaisse au tableau dans le travail à faire, et qu'on vienne y ajouter le travail de cette heure. Quand je décoche les cases rapides du travail à faire pour la prochaine fois, ça doit se répercuter au tableau, évidemment. enfin, plus besoin du champ de modification si je peux modifier dans la diapo directement, non? Pour l'ui ergonomique de la colonne de droite de fin d'heure: Ce serait bien que tout ce que j'ai à cliquer à la fin de la séance me soit proposé en séquentiel, qui s'empile au fur et à mesure en sections repliées: d'abord l'échéance du travail à faire (prenez vos agendas pour le), puis les cases à cocher, puis le "avant de clore". et entre chaque section, les flèches de dévoilement. Récapitules tout.
+
+---
+
+## TOUR 143 — Claude (conscience n°12)
+
+Récapitulatif écrit (`pieces/T143-RECAPITULATIF-fin-d-heure.md`, sections A à I, trois questions) ; aucune modification de la maquette ; rien déposé hormis ce transcript et cette pièce.
+
+Réponse mot pour mot :
+
+Le récapitulatif complet est joint et au sas ; l'essentiel, dans l'ordre de tes points :
+
+**Mes choix pour l'écran de fin intégré, et ce qu'ils valaient.** J'ai rendu la vue de fin dans le cadre du tableau pour garder les mêmes outils dessous et le même envoi au tableau, mis les décisions dans la colonne de droite (celle de « Où on en est ») et « Clore » en bas. **Mais non, ce n'est pas une vraie diapo** : c'est un rendu à part du cadre — il ne se dévoile pas au clic, ne se gèle pas, n'a pas de pages (d'où le récit qui ne défile pas), ne se surligne pas, n'est ni dans le volet ni dans la trame, et son récit ne se modifie pas. J'ai comblé seul un trou de cadrage : c'est ce que le protocole interdit, et tu le tranches autrement, à raison.
+
+**Ce que tu décides, reformulé :** **la fin d'heure est une vraie diapo**, de rôle « fin d'heure », prévue dans la trame par le prompt de création de chapitre (comme la réactivation et le bilan), dernière diapo de chaque heure, vide dans la trame et **remplie par la vraie avancée de l'heure** ; elle **hérite de tout** — volet, ▶ élément par élément, gel, lumière, surlignage, pages, taille, tableau, journal — ; on écrit dedans directement (plus de champ à part) ; **le récit s'y modifie comme dans la relecture : figer, puis modifier** ; c'est pour les élèves autant que pour toi. Ses éléments dévoilés dans l'ordre : *prenez vos agendas pour le [date]* → le travail à faire (agenda École Directe, Garamond) → le contenu de la séance (le récit) → qui a participé.
+
+**Le récit en trois temps** : au début (les dix premières minutes), au milieu (25ᵉ-35ᵉ), à la fin (45ᵉ-55ᵉ) avec « on l'a terminé / on ne l'a pas terminé » sur l'activité en cours à T-5 — **« tout juste commencée »** si elle a entre 1 et 5 minutes — ; les entre-temps racontés sans repère de temps. **Le temps par activité** : repris de l'ancien (le champ « min » modifiable en direct, l'heure prévue cumulée, la ligne en cours qui clignote en ambre en retard), par activité, en **liste compacte dans la colonne de droite** pour tenir sans défilement — à voir sur capture. **Le travail à faire** : ce que le site a déjà envoyé pour la même échéance apparaît au tableau et le travail de l'heure s'y ajoute ; les cases cochées ou décochées se répercutent au tableau à la lettre. **Mise en tension** : ce que les collègues ont donné dans l'agenda École Directe de l'élève, le site ne peut pas le lire — « déjà dans l'agenda » sera « déjà donné par toi ». **La colonne de droite en fin d'heure** : une séquence en sections repliées qui s'empilent — l'échéance, les cases à cocher, « avant de clore », Clore — avec une flèche de dévoilement entre chaque. **La participation** : un bouton à part, **Maj + P** (pas de conflit Windows ni Chrome). **Modifier les diapos pendant l'heure et verser** : renvoyé au branchement, la maquette garde le geste.
+
+**Trois questions avant que je code la v9c.14 :** 1) une activité qui traverse deux temps du récit — racontée dans le temps où elle commence et reprise dans le suivant, ou coupée ? 2) le T-5 **propose** d'aller à la diapo de fin (un clic) ou **y va** tout seul ? 3) la liste compacte des durées : d'accord pour la voir sur capture avant de trancher ?
+
+Rien codé ce tour ; le récapitulatif entrera aux cadrages 1, 2 et 4 dès ta validation.
+
+MEMO
+
+---

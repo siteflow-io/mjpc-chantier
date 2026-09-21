@@ -5488,3 +5488,34 @@ Rien n'est codé dans la maquette. Ton « ok ça me va » de tout à l'heure val
 MEMO
 
 ---
+
+## TOUR 149 — Paul
+
+Texte de Paul, mot pour mot :
+
+> l'alerte doit apparaitre au dessus de la zone de notes plutot. et sa modale doit être déplaçable (si besoin de lire ce qu'il y a derrière)
+
+---
+
+## TOUR 149 — Claude (conscience n°12)
+
+Cadrages 1 (5.4 bis, 6.3 réécrit, 6.4 bis, 7.0, 8.1 bis, 12 bis), 2 (1.2 ter, 1.2 quater, 1.6 quinquies, 1.10, 3.8, 1 bis « Le chapitre ») et 4 (2.6) écrits et déposés (bit à bit). Registre n°12 · 44 (contenu vérifié). Plan de la v9c.14 en six livraisons courtes. Aucun code. Rien d'autre déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Tranché et écrit. **L'alerte T-5 : au-dessus de la zone de notes**, dans la colonne du centre, sans rien recouvrir de la diapo, **et sa boîte se déplace à la souris** pour lire ce qu'il y a derrière — c'est le cadrage 1 · 6.3 réécrit.
+
+**Les cadrages sont écrits et déposés** (vérifiés bit à bit), toute la fin d'heure d'un tenant :
+- **Cadrage 1** — 5.4 bis (les durées par activité, modifiables en direct, les états de worktrack, la règle sans défilement, la durée changée vaut pour la classe) · 6.3 (l'alerte, son lieu, déplaçable, jamais de bascule du tableau) · 6.4 bis (la diapo de fin d'heure : rôle, dernière de chaque heure, le bilan puis la fin d'heure, ses quatre éléments dans l'ordre, tout modifiable dedans, versée sur ton clic seulement) · 7.0 (la séquence de la colonne de droite : échéance → ce qui reste et notions → avant de clore → Clore, les flèches, les sections repliées) · 8.1 bis (l'exception de la diapo de fin) · 12 bis (le bouton « Qui a participé », Maj + P).
+- **Cadrage 2** — 1.2 ter (les trois temps calés sur l'horaire réel, les entre-temps sans repère, « on a continué ») · 1.2 quater (le verdict, « tout juste commencée ») · 1.6 quinquies (« déjà donné », par toi, pour cette classe) · 1.10 (la diapo de fin ne se raconte pas) · 3.8 (une seule source pour le récit figé) · **1 bis : la face « Le chapitre »**.
+- **Cadrage 4** — 2.6 (le rôle « fin » : JSON, prompt, vérification à l'import).
+Registre à jour (n°12 · 44).
+
+**La v9c.14, en livraisons courtes** — chacune close par un arrêt, tu relances par « continuer » :
+(a) la diapo de fin d'heure (rôle, dévoilement élément par élément, l'agenda ED, l'édition dedans, la participation) ; (b) l'alerte T-5 au-dessus des notes, déplaçable + la séquence de la colonne de droite ; (c) les durées par activité et les états ; (d) le récit en trois temps et le verdict ; (e) le bouton « Qui a participé », Maj + P ; (f) la face « Le chapitre ». Chaque livraison : bancs par le geste, captures plein écran, transcript.
+
+Dis « continuer » pour (a).
+
+MEMO
+
+---

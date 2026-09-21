@@ -5801,3 +5801,34 @@ Tests : joue la diapo 1 (▶ trois fois, surligne un mot), va sur Question-bilan
 MEMO
 
 ---
+
+## TOUR 160 — Paul
+
+Texte de Paul, mot pour mot :
+
+> continuer
+
+---
+
+## TOUR 160 — Claude (conscience n°12)
+
+(a) codée par `T160-patch-a.py` sur le gabarit a0 → `T160-v9c14a-template.html` : normaliserTrame (rôle fin par heure), ordreHeureCalc (fin en dernier, jamais glissé), elements (quatre virtuels), état `cahier`, rendu du bloc cahier en em, gardeCahier (restantes / validation / en avance) par aller / allerSuivante / t5 / bfin, récit ignorant le rôle fin, champ ED retiré, libellés. Pièges : allerSuivante contournait aller() ; l'ancien CSS en cqh écrasait la taille (retiré) ; le corps du cahier sans font-size ; le voile de garde avec les bonnes classes. Banc `T160-test-a-cahier.mjs` 0 défaut ; a0 rejoué 0 ; les bancs antérieurs cassent (rangs, ancien écran de fin) — réécriture par titre reportée au tour suivant, déclarée ; captures plein écran (garde, pilote et tableau à 2 et 4 dévoilés), contrôlées. Registre n°12 · 47 (contenu vérifié). Maquette `T160-maquette-pilotage-ordi-v9c14a-manipulable.html` (md5 `9578527a0925…`). Pièces au sas. Rien d'autre déposé hormis ce transcript et ses pièces.
+
+Réponse mot pour mot :
+
+**(a) livrée — la diapo « Cahier de textes » (v9c.14 a jointe, cinq captures plein écran jointes) — en état provisoire déclaré, avec trois dettes ouvertes que je règle au prochain tour avant (b).**
+
+**Fait, prouvé par le geste (0 défaut) :** à l'ouverture, chaque heure reçoit sa diapo « Cahier de textes » en dernière position (ce que l'import du site fera) ; elle ne glisse jamais ; **▶ la dévoile en quatre éléments** — « PRENEZ VOS AGENDAS — POUR MERCREDI 9 SEPTEMBRE » qui pulse, le travail à faire dans l'agenda École Directe (avec « déjà donné pour cette date »), le contenu de la séance (l'onglet Contenus, le récit), qui a participé avec ses métas — gris chez toi, absents au tableau tant que non dévoilés ; **la garde du cahier** (les activités restantes / validation / en avance, « Rester » / « Y aller ») par ▶ depuis la dernière activité, par la vignette, par ⚙ T-5 et par « Fin de l'heure » ; **tu écris le travail à faire dans la diapo** et le tableau suit à la lettre ; l'échéance choisie dans la colonne change la date au tableau ; **le texte suit le curseur de taille** comme toute diapo ; le gel, le surlignage, la lumière s'y appliquent ; le récit de la relecture ne la raconte pas ; le champ École Directe a disparu de la colonne. Captures : la garde, le pilote et le tableau à 2 dévoilés (le travail écrit), à 4 dévoilés (le récit, la participation).
+
+**Provisoire, dit dans la maquette (⚙) :** la colonne des décisions d'aujourd'hui reste jusqu'à (b) ; ⚙ « faire arriver T-5 » va au cahier par la garde (l'alerte en (b)) ; le récit est en lecture seule et coupé en bas (les trois temps, « figer, puis modifier » et sa pagination en (d)).
+
+**Trois dettes ouvertes, déclarées (registre n°12 · 47), à régler au prochain tour avant (b) :**
+1. **Les bancs de non-régression antérieurs** (« tout cliquer », v9c.10-13) désignent les diapos par leur rang et l'écran de fin par son ancienne forme : ils cassent, comme la relecture l'avait prévu (télescopages 1 et 5) — je dois les réécrire par titre et par le geste ; je n'ai pas eu le budget de ce tour pour le faire. Ce que j'ai : le nouveau banc (a) et le banc d'insertion (a0), 0 défaut.
+2. Au pilote, l'onglet « Contenus de séances » non dévoilé devrait apparaître en pâle ; sur la capture il n'apparaît pas — à mesurer.
+3. L'audit d'affichage (1366 / 1536 / 1920) n'a pas été rejoué sur cette version.
+
+Pas de tests à te donner tant que ces trois dettes ne sont pas réglées ; « continuer » et je les règle, puis (b).
+
+MEMO
+
+---

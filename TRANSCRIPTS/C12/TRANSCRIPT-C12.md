@@ -5605,3 +5605,33 @@ Une chose que tu n'as pas tranchée et que j'ai retenue faute de contre-ordre : 
 MEMO
 
 ---
+
+## TOUR 153 — Paul
+
+Pièce jointe : l'extrait de ma réponse précédente (« Une chose que tu n'as pas tranchée … le temps de l'activité en cours s'arrête »).
+
+Texte de Paul, mot pour mot :
+
+> qu'est ce qui est le plus logique?
+
+---
+
+## TOUR 153 — Claude (conscience n°12)
+
+Réponse de cadrage (le chrono de l'heure est l'heure de la classe, ne s'arrête jamais avant Clore, passe en dépassement après zéro ; le temps de l'activité en cours s'arrête au passage au cahier de textes ; retour arrière = le temps repart). Aucune écriture ni code. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Le plus logique, dans tes mots :
+
+**Le chrono de l'heure ne s'arrête jamais avant Clore** — parce qu'il n'est pas un chrono à toi, c'est **l'heure de la classe** : 15 h 07 → 16 h 02. Le cahier de textes fait partie de l'heure (c'est ses cinq dernières minutes, réservées), les élèves copient, tu réponds à une question, la sonnerie tombe ; tout ça a une heure, le journal la date, la coupure éventuelle aussi. Si le chrono s'arrêtait en allant au cahier de textes, « Où on en est » mentirait (« tu es à l'heure » alors que la sonnerie a sonné), le dépassement ne se verrait plus, et le récit ne saurait plus situer ce qui s'est passé pendant ces cinq minutes. Le compte à rebours va donc jusqu'à zéro, **puis passe en dépassement** (« +1:30 ») jusqu'à Clore : tu vois de combien tu déborde.
+
+**Le temps de l'activité en cours s'arrête, lui, à l'instant où tu vas au cahier de textes** — parce qu'une activité, c'est du temps devant la classe sur ses diapos ; quand le cahier de textes est au tableau, aucune activité n'est en cours. C'est là que son verdict se fixe (terminée, pas terminée, tout juste commencée) et que sa durée est arrêtée pour le bilan de temps. Sinon, chaque cahier de textes gonflerait de cinq minutes la dernière activité, et le T-5 du lendemain te dirait qu'elle a « pris trop de temps » — exactement le mensonge qu'on vient d'écarter pour les coupures.
+
+**Et si tu reviens en arrière** (▶ arrière, la garde) pour finir quelque chose : le temps de cette activité repart, le verdict se refera au prochain passage au cahier de textes. Rien de l'heure ne s'est arrêté entre-temps.
+
+Les deux autres options ne tiennent pas : *tout arrêter* (l'heure mentirait), ou *tout laisser courir dans l'activité* (l'activité mentirait). C'est ce que 6.3 dit déjà ; si tu confirmes, « continuer » lance la livraison (a).
+
+MEMO
+
+---

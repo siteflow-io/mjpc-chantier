@@ -5738,3 +5738,36 @@ Un « ok » sur les deux, ou tes corrections, et je code.
 MEMO
 
 ---
+
+## TOUR 158 — Paul
+
+Texte de Paul, mot pour mot :
+
+> la taille du texte de l'agenda doit être pilotable exactement comme toutes les autres diapos. L'état entre A et b, il faudra que ce soit déclaré que c'est provisoire. Enfin, est ce que tu as vérifié que rien n'était rangé par rang, que tout était objet avec id interne, y compris les diapos de cahier de texte?
+
+---
+
+## TOUR 158 — Claude (conscience n°12)
+
+Mesuré dans le gabarit v9c.13 : `eid` présent mais réservé aux vidéos ; état par diapo clé par `S.si|index` (16), journal par `di` (19), `S.di` index (59), volet `data-i` ; décisions par `actId` (14). Registre n°12 · 45 (contenu vérifié) : chantier (a0) « tout par identifiant » avant (a), banc d'insertion. Taille de l'agenda au curseur ; état provisoire déclaré. Aucun code. Rien déposé hormis ce transcript et le registre.
+
+Réponse mot pour mot :
+
+**Non, je ne l'avais pas vérifié** — et tu avais raison de demander. Mesuré à l'instant dans le gabarit v9c.13 :
+- les diapos ont bien un identifiant interne (`eid`), mais il ne sert **qu'aux vidéos** ;
+- **l'état par diapo** — réponses, dévoilement, surlignages, tailles, textes — est rangé par **séance + numéro de rang dans la trame** (16 clés) ;
+- **le journal** note la diapo par son **rang** (19 sortes d'événements) ;
+- **le curseur courant** est un rang (59 usages) ; le volet adresse les vignettes par rang ;
+- seules **les décisions** sont par identifiant d'activité (l'objet-activité de la v9c.2).
+
+Donc si j'insérais aujourd'hui les diapos « Cahier de textes » (une par heure), **tout ce qui vient après la 8ᵉ diapo se décalerait d'un cran** : réponses, dévoilements, journal, garde — le télescopage que tu flairais. Ma relecture ne l'avait pas vu parce que je regardais les mécanismes, pas les clés.
+
+**Ce que ça règle, en clair :** un chantier préalable, **(a0) — tout par identifiant**, avant (a) : l'état par diapo, le journal, les liens (la garde, la vue de droite, le volet, le récit, les décisions) sont clés par l'identifiant de la diapo ; le rang ne sert plus qu'à l'affichage et se recalcule ; **preuve par un banc** : on insère une diapo au milieu de la trame, on rejoue, et pas une réponse, pas un dévoilement, pas une ligne de journal, pas une décision n'a bougé. Le mandat aura la même exigence (un `eid` stable par diapo dans le JSON d'injection). Déclaré au registre (n°12 · 45).
+
+**Tes deux autres points :** la taille du texte de l'agenda — **pilotée par le curseur exactement comme toute diapo**, tout le texte (je retire mon « décor à part ») ; l'état entre (a) et (b) — **déclaré provisoire** dans la maquette elle-même (une mention visible), au registre et au transcript.
+
+Ordre : (a0) puis (a). « Continuer » lance (a0).
+
+MEMO
+
+---

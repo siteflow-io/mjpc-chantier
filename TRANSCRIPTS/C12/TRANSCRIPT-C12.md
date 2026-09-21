@@ -5771,3 +5771,33 @@ Ordre : (a0) puis (a). « Continuer » lance (a0).
 MEMO
 
 ---
+
+## TOUR 159 — Paul
+
+Texte de Paul, mot pour mot :
+
+> continuer.
+
+---
+
+## TOUR 159 — Claude (conscience n°12)
+
+(a0) codé : gabarit `T159-v9c14a0-template.html` (eidDe / indexDe / K, clés si|eid, journal avec eid et `reindexer()` au changement de trame, `S.ordresEid`, gel/tableau/coupure/curseur par eid, ⚙ « Insérer une diapo au milieu »). Générateur par différence (`T159-gen-par-difference.py`, reproduit la v9c.13 bit à bit). Banc `T159-test-a0-insertion.mjs` 0 défaut ; non-régression (tout cliquer 106/56/0, v9c13, v9c12, v9c11, v9c10) 0 défaut ; le banc T136 (antérieur à l'agenda) obsolète, remplacé par T141. Piège : réindexation à chaque rendu → au changement de trame seulement. Capture `T159-apres-insertion-plein-ecran.png` contrôlée. Registre n°12 · 45 ✔, n°12 · 46 (contenu vérifié). Maquette `T159-maquette-pilotage-ordi-v9c14a0-manipulable.html` (md5 `643d2695d6a8…`). Pièces au sas. Rien d'autre déposé hormis ce transcript et ses pièces.
+
+Réponse mot pour mot :
+
+**(a0) livré : tout par identifiant** (v9c.14 a0 jointe, capture plein écran jointe), 0 défaut.
+
+Ce qui a changé sous le capot, dans tes mots : chaque diapo a son identifiant, et **tout ce qui la concerne y est accroché** — ses réponses, ses dévoilements, ses surlignages, ses tailles, les lignes du journal, l'ordre figé de l'heure, le gel, le tableau des élèves, la coupure, la diapo où tu es. Son rang dans la trame ne sert plus qu'à l'affichage et se recalcule quand la trame change. Les décisions étaient déjà par identifiant d'activité.
+
+**La preuve, par le geste** — un nouveau réglage de simulation, ⚙ « Insérer une diapo au milieu » : après trois dévoilements sur la diapo 1, un surlignage, deux réponses sur Question-bilan et un gel, on insère une diapo neuve au milieu de l'heure : elle prend sa place dans l'ordre (la capture : « Diapo 9 sur 9 », la diapo insérée en 5ᵉ), et **pas une réponse, pas un dévoilement, pas une ligne de journal, pas une décision, ni le gel, ni le tableau des élèves, ni ta diapo courante n'ont bougé** (banc, 0 défaut). Non-régression : « tout cliquer » (106 clics, 0 erreur), la saisie, la garde, les rangs, le ✍, la vue de fin d'aujourd'hui — 0 défaut.
+
+Deux choses à dire : un piège attrapé en route (recalculer les rangs à chaque rendu bloquait le curseur ; on ne recalcule qu'au changement de trame) ; et, l'environnement ayant été vidé ce matin, les sources du générateur ont disparu — j'ai écrit un générateur par différence qui reprend les données et le moteur du récit de la v9c.13 (vérifié : il la reproduit bit à bit). **Provisoire, déclaré** : la a0 est la v9c.13 avec ses clés changées ; l'écran de fin d'aujourd'hui y reste jusqu'à (a) et (b). Registre : n°12 · 45 réglée, n°12 · 46.
+
+Tests : joue la diapo 1 (▶ trois fois, surligne un mot), va sur Question-bilan, deux réponses, ❄ ; ⚙ → « Insérer une diapo au milieu » : la diapo apparaît dans le volet au milieu de l'heure, tu es toujours sur Question-bilan avec tes deux réponses, le tableau des élèves n'a pas bougé, la diapo 1 a toujours ses trois éléments et son surlignage ; R → « ce qui s'est passé » : chaque ligne est encore sur sa diapo.
+
+« Continuer » pour (a) : la diapo « Cahier de textes ».
+
+MEMO
+
+---

@@ -5679,3 +5679,36 @@ Tout ce qui touche la fin d'heure est maintenant écrit et validé. Dis « conti
 MEMO
 
 ---
+
+## TOUR 156 — Paul
+
+Texte de Paul, mot pour mot :
+
+> avant livraison, il faut une relecture de télescopage, et tu dois être lisible dans ton rapport et donner des solutions si télescopage il y a.
+
+---
+
+## TOUR 156 — Claude (conscience n°12)
+
+Gabarit v9c.13 relu (ordreHeureCalc, finie, elements, numDe, pousser, vueDroite, volet, miniatures, t5, bilan, recitHtml, menuDiapo). Relecture écrite (`pieces/T156-RELECTURE-telescopage-livraison-a.md`) : cinq sections, sept télescopages avec solutions, l'état intermédiaire déclaré. Aucun code. Rien déposé hormis ce transcript et cette pièce.
+
+Réponse mot pour mot :
+
+La relecture de télescopage de la livraison (a) est jointe et au sas — mécanisme par mécanisme, trois verdicts (✔ rien à faire · ⚠ télescopage et la solution · ⏳ reporté et dit). L'essentiel, lisible :
+
+**Sept télescopages, chacun avec sa solution :**
+1. **Les index de trame se décalent** (deux diapos s'ajoutent, une par heure) → les bancs cessent de désigner une diapo par son numéro et la désignent par son titre ou son rôle.
+2. **Le glissement** prendrait le cahier de textes non fini pour une activité à reporter → le rôle « fin » ne glisse jamais, ne se retire jamais, n'entre pas en réserve (comme le bilan).
+3. **Le rendu et le dévoilement** : la diapo est vide dans la trame → un bloc « cahier » à **quatre éléments virtuels**, pour que ▶, « n / 4 dévoilés », le gris des non dévoilés, le journal et « finie » marchent sans exception.
+4. **La loi de taille** (32 / 26 pt) contre l'agenda dessiné en proportions d'écran → le texte lisible par la classe (l'échéance, le travail, le récit, les prénoms) suit le curseur ; le décor de l'agenda reste en proportions.
+5. **La pagination** : le récit est long → ses paragraphes sont les unités de page du bloc cahier.
+6. **La garde ordinaire** (« la classe te suivrait ») contre la garde du cahier de textes → pour ce rôle, la garde du cahier de textes (restantes / validation / en avance, « Rester » / « Y aller ») remplace l'ordinaire, y compris par ▶ depuis la dernière activité.
+7. **Le récit** raconterait le cahier de textes → il ignore le rôle fin (2 · 1.10) ; les cartes du T-5 l'excluent.
+
+**Ce que (a) laisse en l'état, dit d'avance :** la colonne des décisions reste telle quelle jusqu'à (b) — « Fin de l'heure » ouvre la colonne **et** va au cahier de textes par la garde ; ⚙ « faire arriver T-5 » va au cahier de textes par la garde (l'alerte vient en (b)) ; le récit affiché dans le cahier est celui du moteur actuel, en lecture seule, jusqu'à (d) ; le champ École Directe de la colonne est retiré (la diapo est le champ).
+
+Si la relecture te va, « continuer » lance (a).
+
+MEMO
+
+---

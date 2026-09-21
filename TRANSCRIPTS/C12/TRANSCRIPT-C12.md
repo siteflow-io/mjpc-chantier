@@ -5903,3 +5903,37 @@ Rien codé. « Continuer » lance (b).
 MEMO
 
 ---
+
+## TOUR 163 — Paul
+
+Texte de Paul, mot pour mot :
+
+> continue
+
+---
+
+## TOUR 163 — Claude (conscience n°12)
+
+(b) codée par `T163-patch-b.py` sur le gabarit (a) → `T163-v9c14b-template.html` : tick → compte à rebours et paliers (`heureCahier`, `palier`, `alerteOuvrir/Replier/Fermer`, le glisser, le clic à côté), ⚙ T-5/T-3/T-1/heure du cahier (`avancerA`), `sequenceHtml` (quatre sections composées du contenu de `ouvrirFin`, mêmes identifiants, flèches, résumés, « Reprendre le cours »). Bug latent réglé : `now()` sans DECALAGE depuis la v9c.7. Pièges : la classe `.travail` partagée par « avant de clore » ; « avant de clore » faite dès qu'elle est vue ; les branchements tolérants aux sections fermées ; le clic sur la ligne repliée exclu du « clic à côté » ; le libellé « réactivation » en dur (seconde occurrence). Bancs : `T163-test-b-alerte-sequence.mjs` 0 ; cahier, a0, régression, tout cliquer (105 clics, 64 touches, 0 erreur), audit d'affichage : 0 — banc unique `T163-tous-les-bancs-b.sh`. Sept captures plein écran (deux contrôlées : T-5, séquence 2). Registre n°12 · 49 (contenu vérifié). Maquette `T163-maquette-pilotage-ordi-v9c14b-manipulable.html` (md5 `abc7480efefc…`). Empreintes contrôlées, pas de doublon. Pièces au sas. Rien d'autre déposé hormis ce transcript et ses pièces.
+
+Réponse mot pour mot :
+
+**(b) livrée — l'alerte T-5 et la séquence de fin d'heure (v9c.14 b jointe, sept captures plein écran jointes) — 0 défaut sur les six bancs, d'une seule commande.**
+
+**L'alerte et le chrono, prouvés par le geste :** à T-5 (cinq minutes avant le cahier de textes, 15 h 52) le chrono du bandeau **devient un compte à rebours** « −4:59 » ambre qui pulse ; à T-3 orange et plus vite ; à T-1 rouge, critique ; à l'heure du cahier « +0:03 », le dépassement, jusqu'à Clore — l'heure ne s'arrête jamais. **L'alerte** apparaît **au-dessus de la zone de notes** (jamais au tableau) : le palier, l'activité en cours et son état, « **Aller au cahier de textes** » (→ la garde, → « Y aller » → le cahier, l'alerte disparaît) et « **Plus tard** » ; « Plus tard » ou un clic à côté la replie sur une ligne (« T-5 · le cahier de textes attend — ▸ », un clic la rouvre) ; elle revient à chaque palier ; **à l'heure du cahier elle ne se replie plus** ; **déplaçable** par sa poignée à la souris, bornée dans l'écran, relâchée en bas elle reprend sa place. ⚙ simule T-5, T-3, T-1 et l'heure du cahier.
+
+**La séquence de la colonne de droite** : « Fin de l'heure » ouvre **1 · L'échéance** (« Prenez vos agendas pour le… », « Sans échéance ») ; l'échéance choisie va au tableau, la section se replie sur « ✔ mercredi 9 septembre — « Prenez vos agendas » est au tableau », la flèche s'allume ; **2 · Ce qui reste, et les notions** (les cartes par activité, les cases) — la flèche vers la 3 ne s'allume que lorsque **chaque** activité restante a sa décision ; **3 · Avant de clore** ; **4 · Clore l'heure**. Les sections faites se rouvrent d'un clic ; « **Reprendre le cours** » en tête.
+
+**Un bug latent depuis la v9c.7, trouvé et réglé** : l'horloge simulée ignorait le décalage — la « coupure de 3 minutes » ne durait en fait que le temps réel de la simulation (2 secondes) ; corrigé, tout ce qui touche le temps mis à part vaut maintenant vraiment 3 minutes.
+
+**Provisoire, déclaré (⚙)** : « tu dépasses de 42 min » sur la capture T-5 est le temps passé sur la diapo tel que le journal le voit (la simulation avance l'horloge d'un coup) — les vrais états de worktrack en (c) ; le travail à faire long déborde de sa carte — la pagination en (d).
+
+Captures : T-5, l'alerte repliée, T-1, l'heure du cahier, la garde, la séquence (section 1, puis section 2 avec la 1 résumée). Registre n°12 · 49. Empreintes des pièces contrôlées (aucun doublon).
+
+Tests : ⚙ → T-5 : le chrono « −5:00 » pulse en ambre, l'alerte au-dessus des notes ; « Plus tard » : une ligne ; clic sur la ligne : elle revient ; clic à côté : repliée ; ⚙ → T-3 : orange ; ⚙ → T-1 : rouge ; saisis ⠿ et déplace la boîte, relâche en bas : elle revient ; ⚙ → l'heure du cahier : « c'est l'heure du cahier de textes », un clic à côté ne la replie plus, le chrono « +0:xx » ; « Aller au cahier de textes » → la garde → « Y aller » ; « Fin de l'heure » → section 1, choisis l'échéance (elle est au tableau si la date est dévoilée) → flèche → section 2, décide pour chaque activité → flèche → 3 → flèche → 4 → Clore.
+
+« Continuer » pour (c) — les durées par activité et les états de worktrack — après sa relecture de télescopage.
+
+MEMO
+
+---

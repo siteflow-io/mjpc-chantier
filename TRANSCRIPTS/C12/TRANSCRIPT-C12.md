@@ -5544,3 +5544,33 @@ Si ces deux captures te vont, l'alerte est cadrée comme ça (6.3 déjà écrit 
 MEMO
 
 ---
+
+## TOUR 151 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok, on est d'accord que "aller à la fin de l'heure" arrête le chrono? ou non? Et il faudrait une garde: quand je clique sur aller à la fin de l'heure, j'ai juste un récap des activités qui ne seraient pas faites pour l'heure. et je dois confirmer une deuxième fois. Enfin, si je clique sur plus tard, ou à coté de la modale, celle ci doit revenir à T-3, puis T-1. Enfin le bouton 'aller à la fin de l'heure' devrait plutot s'appeler "aller au cahier de textes?". Non?
+
+---
+
+## TOUR 151 — Claude (conscience n°12)
+
+Réponse de cadrage (deux chronos ; la garde « ce qui resterait non fait » avec « Y aller » / « Rester » ; l'alerte à T-5, T-3, T-1 puis « l'heure est finie » qui ne se replie plus ; « Aller au cahier de textes » et la diapo nommée « Cahier de textes ») ; trois questions. Rien écrit ni codé. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Point par point, avec ce que ça touche dans le cadré :
+
+**1. Le chrono.** Deux chronos, deux réponses. **Le chrono de l'heure** (celui du bandeau, « 04:54 » à côté de l'heure qu'il est) **ne s'arrête pas** : l'heure va jusqu'à 16 h 02 et jusqu'à Clore, le journal continue de dater ce qui se passe (l'échéance choisie, le texte écrit, les décisions), le tableau distant tient (1.9). **Le temps de l'activité en cours, lui, s'arrête** à l'instant où tu vas au cahier de textes : c'est là que son verdict se fixe (terminée / pas terminée / tout juste commencée), et les minutes passées sur le cahier de textes sont comptées « fin d'heure » (les 5 réservées, 5.4 bis), jamais imputées à une activité. Si tu reviens à une activité après (▶ arrière, la garde), son temps repart. C'est ce que je propose ; dis-moi si tu voulais autre chose.
+
+**2. La garde avant d'y aller** — d'accord, et elle s'intègre à ce qui existe : la première garde (2.3, « la classe te suivrait ») existe déjà pour tout saut hors du fil ; ici elle prend une forme propre : **« Aller au cahier de textes — ce qui resterait non fait pour cette heure »** : une ligne par activité restante (son numéro, son titre, ses diapos restantes, son temps prévu), et **deux boutons : « Y aller » / « Rester »** ; « Y aller » est la deuxième confirmation. Rien d'autre à décider à ce moment-là : les décisions par activité se prennent ensuite, dans la séquence de la colonne de droite (7.0). Un point à trancher : **quand tout est fait** (aucune activité restante), la garde est-elle sautée (on y va directement) ? Je propose oui.
+
+**3. « Plus tard », ou un clic à côté** : l'alerte se replie et **revient à T-3, puis à T-1**. Ce qu'il reste à trancher : **après T-1** — à l'heure de fin (16 h 02), si tu n'es toujours pas au cahier de textes, je propose qu'elle revienne une dernière fois avec « l'heure est finie » et qu'elle **ne se replie plus** tant que tu n'as pas cliqué (elle reste au-dessus des notes, déplaçable, pas bloquante) ; et si tu es déjà au cahier de textes à T-3 ou T-1, elle ne revient pas.
+
+**4. Le nom** — oui : **« Aller au cahier de textes »**, et par cohérence **la diapo de fin d'heure s'appelle « Cahier de textes »** partout où l'élève et toi la voyez (le volet, l'étiquette « Cahier de textes — lundi 14 septembre, 15 h 07 – 16 h 02 », la dernière ligne des durées) ; « fin d'heure » reste le nom du rôle dans le JSON (cadrage 4, 2.6) et dans le journal. C'est exactement ce que les élèves reconnaissent (l'agenda École Directe s'appelle « Cahier de textes »).
+
+Trois mots de toi — le chrono (1), la garde sautée quand tout est fait (2), après T-1 (3) — et j'écris 6.3 et 6.4 bis dans ces termes, puis « continuer » pour la livraison (a).
+
+MEMO
+
+---

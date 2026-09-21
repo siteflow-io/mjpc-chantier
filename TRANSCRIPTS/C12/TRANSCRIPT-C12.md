@@ -5459,3 +5459,32 @@ J'attends ton mot sur la face « Le chapitre » et sur les captures ; rien n'est
 MEMO
 
 ---
+
+## TOUR 148 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok ça me va. en revanche redonne tes captures avec l'explication légendée pour chacune
+
+---
+
+## TOUR 148 — Claude (conscience n°12)
+
+Les cinq captures du tour 145 reprises du sas et celle du tour 147 ; légendées par `T148-legender.py` (repères numérotés sur l'image, légende sous l'image, écran entier conservé) : `T148-capture-legendee-A…F.png`. Contrôlées (C, E), deux repères recalés, un glyphe manquant retiré. Aucune modification de la maquette. Pièces au sas. Rien d'autre déposé hormis ce transcript et ses pièces.
+
+Réponse mot pour mot :
+
+Les six captures, légendées, jointes — chacune est l'écran entier, avec des repères numérotés posés sur l'image et, sous l'image, la légende de chaque repère. Contrôlées avant envoi (C et E regardées ; deux repères mal posés corrigés).
+
+- **A** — « Où on en est » avec les durées par activité modifiables en direct et les états de worktrack (5 repères).
+- **B** — l'alerte T-5 non bloquante (5 repères, dont le 5ᵉ : l'emplacement montré n'est pas retenu, je la propose dans la colonne de droite).
+- **C** — la diapo de fin d'heure, vraie diapo, dévoilée jusqu'au travail à faire (8 repères).
+- **D** — la même, onglet « Contenus de séances », le récit en trois temps, figé et modifiable (6 repères).
+- **E** — la colonne de droite en fin d'heure, la séquence en sections repliées (8 repères).
+- **F** — la Relecture, sixième face « Le chapitre » : le tracé des travaux à faire, ce qui manquait, ce qui était en trop, les notions (6 repères).
+
+Rien n'est codé dans la maquette. Ton « ok ça me va » de tout à l'heure valide la face « Le chapitre » et les captures ; dès ton mot sur l'emplacement de l'alerte (B), j'écris les cadrages (la liste du recadrage T145) puis la v9c.14.
+
+MEMO
+
+---

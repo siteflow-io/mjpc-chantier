@@ -5574,3 +5574,34 @@ Trois mots de toi — le chrono (1), la garde sautée quand tout est fait (2), a
 MEMO
 
 ---
+
+## TOUR 152 — Paul
+
+Texte de Paul, mot pour mot :
+
+> 2. non, la garde marche quand même, mais en validation: aucune activité restante prévue, tu es à l'heure. Et ensuite même flux (rester ou y aller). et pareil si je suis en avance: tu as fait X activités en avance (elles étaient prévues pour telle Heure, telle séance). 3. oui TB, mais en fait il me faudrait un compte à rebours: le chrono doit pulser de plus en plus à partir de 5 minutes de la fin, et devenir un compte à rebours plutot qu'un chrono. TU vois l'idée? et à T-3, il change de couleur et pulse plus rapidement, et à T-1 il faut que la modale du T-1 sois alerte critique. Les modales de T-5 T- doivent aussi suivre cette progression d'alerte, mais pas pulser (sinon illisibles, ou alors une pulsation qui ne gene pas la lecture). 4. ok
+
+---
+
+## TOUR 152 — Claude (conscience n°12)
+
+Cadrage 1 · 6.3 réécrit (progression d'alerte, compte à rebours, garde de validation / en avance, les chronos, le nom) et 6.4 bis (« Cahier de textes »), déposés bit à bit. Captures plein écran légendées I à N (`T152-capture-progression.mjs`), contrôlées (K : le compte à rebours figé pour la capture ; L : repères recalés). Aucune modification de la maquette. Pièces au sas. Rien d'autre déposé hormis ce transcript et ses pièces.
+
+Réponse mot pour mot :
+
+Compris, écrit, et montré. **Le cadrage 1 · 6.3 est réécrit et déposé** avec tout ça : la progression d'alerte T-5 → T-3 → T-1 → « l'heure est finie » (qui ne se replie plus), « Plus tard » ou un clic à côté replie et fait revenir, le chrono du bandeau qui **devient un compte à rebours à T-5** et pulse de plus en plus (T-3 : change de couleur et pulse plus vite ; T-1 : critique), les boîtes qui suivent la gradation **sans pulser** ; la garde avant d'y aller **toujours**, en trois formes — les activités restantes / **validation** (« aucune activité restante prévue, tu es à l'heure ») / **en avance** (« tu as fait n activités en avance, prévues pour telle heure, telle séance ») — avec le même flux « Rester » / « Y aller » ; le chrono de l'heure ne s'arrête pas, le temps de l'activité en cours s'arrête ; « **Aller au cahier de textes** », et la diapo nommée « Cahier de textes » (6.4 bis).
+
+**Six captures plein écran, légendées, jointes** (prises dans la vraie page, rien codé) :
+- **I** — T-5 : compte à rebours ambre, alerte ambre.
+- **J** — T-3 : le compte à rebours change de couleur, l'alerte orange.
+- **K** — T-1 : alerte critique, compte à rebours rouge avec halo.
+- **L** — la garde « ce qui resterait non fait » : une ligne par activité restante, « Rester » / « Y aller ».
+- **M** — la même garde en validation (tout est fait).
+- **N** — la même garde quand tu es en avance.
+Sur les captures le compte à rebours est figé (une image ne pulse pas) ; en vrai il pulse lentement, puis plus vite, puis vite.
+
+Une chose que tu n'as pas tranchée et que j'ai retenue faute de contre-ordre : **le chrono de l'heure continue** en allant au cahier de textes, **le temps de l'activité en cours s'arrête** (point 1 du tour précédent). Si c'est bon, « continuer » lance la livraison (a).
+
+MEMO
+
+---

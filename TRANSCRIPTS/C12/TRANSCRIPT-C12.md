@@ -5635,3 +5635,25 @@ Les deux autres options ne tiennent pas : *tout arrêter* (l'heure mentirait), o
 MEMO
 
 ---
+
+## TOUR 154 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Ok, en revanche il faut absolument une garde. le T-5, c'est par rapport au cahier de texte, pas à la fin de l'heure. Tu comprends? R/A
+
+---
+
+## TOUR 154 — Claude (conscience n°12)
+
+R/A : réponse concise (le repère = l'heure du cahier de textes = fin de l'heure − 5 min réservées ; T-5/T-3/T-1 recalés ; à zéro « c'est l'heure du cahier de textes » ; dépassement du cahier de textes ; la garde toujours). Rien écrit ni codé ; en attente. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Compris. **Le repère, c'est l'heure du cahier de textes, pas la fin de l'heure** : le cahier de textes commence à la fin de l'heure moins ses cinq minutes réservées (16 h 02 → **15 h 57**). Donc : **T-5 = 15 h 52**, T-3 = 15 h 54, T-1 = 15 h 56 ; le compte à rebours compte jusqu'à **15 h 57**, et à zéro l'alerte dit « **c'est l'heure du cahier de textes** » (elle ne se replie plus) ; après, il compte le dépassement **du cahier de textes**. **La garde reste obligatoire** : « Aller au cahier de textes » ouvre toujours le récap (restantes / validation / en avance) puis « Y aller ». Le chrono de l'heure et l'heure qu'il est restent au bandeau jusqu'à Clore.
+
+Je corrige 6.3 dans ces termes sur ton mot.
+
+MEMO
+
+---

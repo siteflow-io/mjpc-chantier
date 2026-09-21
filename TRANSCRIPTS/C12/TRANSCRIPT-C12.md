@@ -5712,3 +5712,29 @@ Si la relecture te va, « continuer » lance (a).
 MEMO
 
 ---
+
+## TOUR 157 — Paul
+
+Texte de Paul, mot pour mot :
+
+> je ne sais pas s'il y a des choses à régler, tu ne me l'as pas dit en clair
+
+---
+
+## TOUR 157 — Claude (conscience n°12)
+
+Réponse en clair : rien ne bloque ; deux points à son mot (la taille du texte dans l'agenda ; l'état intermédiaire entre (a) et (b)). Aucun code. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+En clair : **rien ne bloque la livraison (a)**. Les sept télescopages ont chacun leur solution, et six d'entre elles ne demandent aucune décision de toi — elles découlent de ce qui est déjà cadré (le rôle fin ne glisse pas, la garde obligatoire, le récit qui l'ignore, les quatre éléments dévoilés, les pages, les bancs par titre).
+
+**Deux choses seulement, à ton mot :**
+1. **La taille du texte dans l'agenda** — je propose : ce que la classe doit lire (l'échéance, le travail à faire, le récit, les prénoms) suit le curseur du tableau (32 pt, plancher 26) ; le décor de l'agenda (bandeau, « Cahier de textes », onglets) reste en proportions d'écran, plus petit. Si tu veux tout au curseur, dis-le.
+2. **L'état entre (a) et (b)** — pendant une livraison, « Fin de l'heure » ouvre la colonne des décisions d'aujourd'hui **et** va au cahier de textes par la garde ; ⚙ « faire arriver T-5 » va au cahier par la garde (l'alerte arrive en (b)) ; le récit dans le cahier est celui d'aujourd'hui, en lecture seule (les trois temps et « figer » en (d)). C'est provisoire et déclaré ; si tu préfères que (a) et (b) soient livrées ensemble pour ne pas voir cet état, dis-le.
+
+Un « ok » sur les deux, ou tes corrections, et je code.
+
+MEMO
+
+---

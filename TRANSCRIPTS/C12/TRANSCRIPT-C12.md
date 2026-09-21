@@ -5832,3 +5832,33 @@ Pas de tests à te donner tant que ces trois dettes ne sont pas réglées ; « c
 MEMO
 
 ---
+
+## TOUR 161 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Règle les dettes
+
+---
+
+## TOUR 161 — Claude (conscience n°12)
+
+Dette 2 : collision de classe `.voile` → `ed-voile`, mesurée (test-a). Dette 1 : `T161-regression-a.mjs` (par titre et par le geste) 0 défaut ; `T161-tout-cliquer-a.mjs` sans rang (105 clics, 64 touches, 0 erreur, 0 défaut). Dette 3 : `T161-audit-affichage-a.mjs` réécrit (le conteneur défilable reconnu), 0 défaut. Banc unique `T161-tous-les-bancs-a.sh`. Registre n°12 · 47 ✔, n°12 · 48 (contenu vérifié). Maquette `T161-maquette-pilotage-ordi-v9c14a-manipulable.html` (md5 `505bc90a9372…`). Pièces au sas. Rien d'autre déposé hormis ce transcript et ses pièces.
+
+Réponse mot pour mot :
+
+**Les trois dettes sont réglées (v9c.14 a jointe, mise à jour) — (a) est close, 0 défaut sur tous les bancs.**
+
+1. **La non-régression, par titre et par le geste** — un banc neuf rejoue sur cette version tout ce qui existait avant : le surlignage à la souris (chaque couleur, ✕, Ctrl+H), le ✍ hors du texte chez toi et au tableau, le point de connexion et le témoin du gel, les rangs par heure et la garde d'une vignette d'avant, la saisie des réponses à la lettre, le VIF (la fiche du seul candidat, « posé : ZP »), la palette Maj + Espace, « qui a participé » (réponses + prises), la coupure mise à part, les couleurs et la pulsation de l'agenda, les métas de participation, la clôture, mardi (la réactivation en « Diapo 1 · heure 2 », l'ordre qui finit par le bilan puis le cahier), la coche du bilan — **0 défaut**. « Tout cliquer » réécrit sans un seul rang (la vidéo et le bilan désignés par ce qu'ils sont) : **105 clics, 64 touches, 0 erreur, 0 défaut**. Les anciens bancs v9c.10-13 sont remplacés.
+2. **L'onglet « Contenus de séances » non dévoilé** n'apparaissait pas : c'était une **quatrième collision de nom** (ma classe « voile » était celle de l'écran-voile, donc masquée). Renommée, mesurée : il apparaît en pâle chez toi tant qu'il n'est pas dévoilé.
+3. **L'audit d'affichage** réécrit et joué : trois tailles d'écran, colonnes repliées ou non, cinq écrans (emploi du temps, diapo, cahier, fin d'heure, relecture) — **0 défaut**.
+
+**Un banc unique** rejoue les cinq bancs d'une seule commande et échoue si un seul échoue : (a) le cahier, (a0) l'insertion, la non-régression, tout cliquer, l'affichage — **tous à 0**. Registre : n°12 · 47 réglée, n°12 · 48.
+
+Tests, dans l'ordre : lundi, joue la diapo 1 (▶ ×3), va sur Question-bilan, une réponse, ▶ au bout : la garde du cahier (les activités restantes), « Rester » puis ▶, « Y aller » ; « Diapo 9 sur 9 · heure 1 · Cahier de textes », « 0 / 4 dévoilés » ; l'onglet « Contenus de séances » en pâle ; ▶ : la date qui pulse au tableau ; ▶ : le travail à faire (écris dedans, le tableau suit) ; ▶ : le récit ; ▶ : la participation ; le curseur de taille : tout le texte suit ; ❄, un surlignage sur la date : ça marche ; « Fin de l'heure » : la colonne des décisions (provisoire), l'échéance change la date au tableau ; Clore ; mardi : « Diapo 1 · heure 2 · réactivation », le volet finit par bilan puis Cahier de textes.
+
+« Continuer » pour (b) : l'alerte T-5 (le compte à rebours, la progression, la garde déjà là) et la séquence de la colonne de droite — après sa relecture de télescopage, lisible, avec ce qui reste à trancher ou rien.
+
+MEMO
+
+---

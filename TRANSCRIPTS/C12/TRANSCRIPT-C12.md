@@ -5519,3 +5519,28 @@ Dis « continuer » pour (a).
 MEMO
 
 ---
+
+## TOUR 150 — Paul
+
+Texte de Paul, mot pour mot :
+
+> je veux voir la capture de l'alerte
+
+---
+
+## TOUR 150 — Claude (conscience n°12)
+
+Alerte T-5 injectée dans la vraie page v9c.13 entre les outils et la zone de notes, puis déplacée à la souris par sa poignée (`T150-capture-alerte.mjs`) ; captures plein écran légendées G et H (`T150-capture-legendee-G.png`, `-H.png`), contrôlées (la première version du déplacement sortait de l'écran, refaite). Aucune modification de la maquette. Pièces au sas. Rien d'autre déposé hormis ce transcript et ses pièces.
+
+Réponse mot pour mot :
+
+Les deux captures de l'alerte, plein écran, légendées, jointes — prises dans la vraie page de la maquette, rien codé au gabarit :
+
+- **G — l'alerte T-5 à sa place** : entre la barre d'outils et la zone de notes, dans la colonne du centre ; elle ne recouvre rien de la diapo ; la poignée ⠿ à gauche, le texte (« il reste 5 minutes », l'activité en cours et son état, « la diapo de fin d'heure attend — le tableau ne bouge pas tant que tu n'y vas pas »), « Aller à la fin d'heure », « Plus tard ». Le tableau des élèves ne change pas.
+- **H — la même alerte, déplacée à la souris** par sa poignée : elle flotte là où tu la poses (ici au-dessus de la diapo), ce qu'il y avait derrière est lisible ; relâchée en bas, elle reprend sa place au-dessus des notes.
+
+Si ces deux captures te vont, l'alerte est cadrée comme ça (6.3 déjà écrit dans ces termes) et j'attaque la livraison (a) de la v9c.14 sur ton « continuer ».
+
+MEMO
+
+---

@@ -5657,3 +5657,25 @@ Je corrige 6.3 dans ces termes sur ton mot.
 MEMO
 
 ---
+
+## TOUR 155 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok
+
+---
+
+## TOUR 155 — Claude (conscience n°12)
+
+Cadrage 1 · 6.3 corrigé (le repère = l'heure du cahier de textes ; T-5/T-3/T-1 recalés ; « c'est l'heure du cahier de textes » ; dépassement du cahier de textes ; garde obligatoire), déposé bit à bit. Aucun code. Rien déposé hormis ce transcript et le cadrage.
+
+Réponse mot pour mot :
+
+6.3 corrigé et déposé : le repère est l'heure du cahier de textes (fin de l'heure moins cinq minutes réservées) ; T-5 = cinq minutes avant lui, T-3, T-1 recalés ; le compte à rebours compte jusqu'à lui, à zéro « c'est l'heure du cahier de textes » (l'alerte ne se replie plus), puis le dépassement du cahier de textes jusqu'à Clore ; la garde avant d'y aller, obligatoire, à chaque fois.
+
+Tout ce qui touche la fin d'heure est maintenant écrit et validé. Dis « continuer » et je lance la livraison (a) de la v9c.14 : la diapo « Cahier de textes » (rôle, dévoilement élément par élément, l'agenda École Directe, l'édition dedans, la participation), avec ses bancs par le geste et ses captures plein écran.
+
+MEMO
+
+---

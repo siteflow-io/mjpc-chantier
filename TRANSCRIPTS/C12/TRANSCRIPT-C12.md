@@ -5868,3 +5868,38 @@ MEMO
 ## TOUR 161 bis — Claude (conscience n°12), complément dans le même tour
 
 Attrapé au contrôle des empreintes du sas : `T161-test-a-cahier.mjs` et `T161-test-a0-insertion.mjs` avaient la même empreinte — le banc du cahier avait été écrasé par une copie du banc d'insertion lors de l'adaptation des bancs (une boucle `${f%-a0}` mal bornée), donc les « 0 défaut » du banc du cahier annoncés après ce moment étaient ceux du banc d'insertion, et la vérification de l'onglet (dette 2) n'avait pas été jouée. Le banc du cahier a été réécrit à l'identique, avec la vérification de l'onglet, et rejoué : 0 défaut ; pièces T160 et T161 remplacées au sas ; le banc unique corrigé. Déclaré à Paul.
+
+## TOUR 162 — Paul
+
+Texte de Paul, mot pour mot :
+
+> continue
+
+---
+
+## TOUR 162 — Claude (conscience n°12)
+
+Gabarit v9c.14 a relu (tick du chrono L935, t5, ⚙ s-t5, ouvrirFin, la classe `.alerte` existante). Relecture de télescopage de (b) écrite (`pieces/T162-RELECTURE-telescopage-livraison-b.md`) : quatre sections, neuf télescopages avec solutions, rien à trancher, deux libellés pris sauf contre-ordre. Aucun code. Rien déposé hormis ce transcript et cette pièce.
+
+Réponse mot pour mot :
+
+La relecture de télescopage de (b) est jointe et au sas. En clair :
+
+**Rien ne bloque la livraison (b).** Neuf télescopages trouvés, chacun avec sa solution, aucun ne demande une décision de toi :
+1. **Le repère du chrono** : le tick calcule l'heure du cahier (fin − 5 min) ; à cinq minutes de lui, un seul et même chrono devient compte à rebours, puis dépassement du cahier après zéro.
+2. **La simulation ⚙ « faire arriver T-5 »** visait la fin de l'heure : recalée sur le cahier, avec trois boutons de plus (T-3, T-1, l'heure du cahier).
+3. **`t5()`** allait au cahier par la garde (le provisoire de (a)) : il n'ouvre plus que l'alerte ; le geste vers le cahier est celui de l'alerte.
+4. **Une cinquième collision de nom évitée** : la classe « alerte » existe déjà (une bulle d'aide) — la boîte s'appelle autrement.
+5. **Deux glissers sur la page** (les poignées de colonnes et la boîte) : la boîte a ses propres écouteurs, posés et retirés à chaque glisser, bornée dans la fenêtre.
+6. **Le clic à côté** : un seul écouteur, qui ignore les gardes, la palette et la fiche, et ne replie plus à zéro.
+7. **« Aller au cahier »** inactif tant qu'une garde est ouverte (jamais deux gardes).
+8. **L'écran de fin monolithique** devient quatre sections avec les mêmes identifiants (les bancs de (a) tiennent), « Garder ces décisions » disparaît, « Annuler » devient « Reprendre le cours ».
+9. **Les bancs** ouvrent les sections par les flèches avant Clore ; l'audit d'affichage gagne un écran (l'alerte dépliée).
+
+**Deux libellés que je prends sauf contre-ordre** : « Reprendre le cours » pour refermer la colonne ; l'alerte repliée sur une ligne « T-5 · le cahier de textes attend — ▸ » au même endroit.
+
+Rien codé. « Continuer » lance (b).
+
+MEMO
+
+---

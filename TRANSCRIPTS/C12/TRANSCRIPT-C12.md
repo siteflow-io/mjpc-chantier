@@ -5857,8 +5857,14 @@ Réponse mot pour mot :
 
 Tests, dans l'ordre : lundi, joue la diapo 1 (▶ ×3), va sur Question-bilan, une réponse, ▶ au bout : la garde du cahier (les activités restantes), « Rester » puis ▶, « Y aller » ; « Diapo 9 sur 9 · heure 1 · Cahier de textes », « 0 / 4 dévoilés » ; l'onglet « Contenus de séances » en pâle ; ▶ : la date qui pulse au tableau ; ▶ : le travail à faire (écris dedans, le tableau suit) ; ▶ : le récit ; ▶ : la participation ; le curseur de taille : tout le texte suit ; ❄, un surlignage sur la date : ça marche ; « Fin de l'heure » : la colonne des décisions (provisoire), l'échéance change la date au tableau ; Clore ; mardi : « Diapo 1 · heure 2 · réactivation », le volet finit par bilan puis Cahier de textes.
 
+**Une erreur attrapée après coup, dite :** en vérifiant les empreintes des pièces au sas, deux bancs avaient la même — le banc du cahier avait été écrasé par une copie du banc d'insertion pendant l'adaptation des bancs, donc les « 0 défaut » du cahier annoncés depuis étaient ceux de l'insertion, et la vérification de l'onglet n'avait pas été jouée. Le banc du cahier est réécrit à l'identique, avec la vérification de l'onglet, rejoué : **0 défaut** ; les pièces sont remplacées au sas, le banc unique corrigé.
+
 « Continuer » pour (b) : l'alerte T-5 (le compte à rebours, la progression, la garde déjà là) et la séquence de la colonne de droite — après sa relecture de télescopage, lisible, avec ce qui reste à trancher ou rien.
 
 MEMO
 
 ---
+
+## TOUR 161 bis — Claude (conscience n°12), complément dans le même tour
+
+Attrapé au contrôle des empreintes du sas : `T161-test-a-cahier.mjs` et `T161-test-a0-insertion.mjs` avaient la même empreinte — le banc du cahier avait été écrasé par une copie du banc d'insertion lors de l'adaptation des bancs (une boucle `${f%-a0}` mal bornée), donc les « 0 défaut » du banc du cahier annoncés après ce moment étaient ceux du banc d'insertion, et la vérification de l'onglet (dette 2) n'avait pas été jouée. Le banc du cahier a été réécrit à l'identique, avec la vérification de l'onglet, et rejoué : 0 défaut ; pièces T160 et T161 remplacées au sas ; le banc unique corrigé. Déclaré à Paul.

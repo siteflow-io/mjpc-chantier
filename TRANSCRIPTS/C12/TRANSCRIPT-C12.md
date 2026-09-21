@@ -5418,3 +5418,44 @@ Je n'écris rien aux cadrages ni à la maquette tant que tu n'as pas fini.
 MEMO
 
 ---
+
+## TOUR 147 — Paul
+
+Texte de Paul, mot pour mot :
+
+> 1. en fait, j'imaginais qu'elle se verse dans la trame si j'avais besoin de figer un travail à faire dans mon chapitre canonique par exemple. Mais je pense que j'utiliserai peu cette fonctionnalité. En réalité, mon besoin est d'avoir au bout du chapitre, un tracé de tous les travaux à faire, et de pouvoir ensuite voir ce qui manquait au chapitre ou qui était en trop (et qui a du partir dans le travail à faire). Donc pas forcément verser dans la trame, mais en tout cas pouvoir en faire une relecture complète sur l'ensemble du chapitre. J'attends ta proposition, intégrée dans l'existant. 2. ok, et du coup il faudra que tu me présentes chacune de tes captures livrées au tour précédent, parce qu'il faut que je sache ce qu'il y a, les avantages de chacune etc. 3. montre un exemple concret. 4. oui.
+
+---
+
+## TOUR 147 — Claude (conscience n°12)
+
+Environnement réinitialisé (21/09) : Playwright réinstallé (1.63), maquette v9c.13, gabarit, propositions et transcript repris du sas. Proposition « Le chapitre » (sixième face de la Relecture : le tracé des travaux à faire, ce qui manquait / était en trop, les notions) injectée dans la vraie page et capturée plein écran (`T147-proposition-le-chapitre-plein-ecran.png`, `T147-capture-le-chapitre.mjs`), contrôlée. Présentation des cinq captures du tour 145, exemple concret du temps mis à part. Aucune modification de la maquette. Pièces au sas. Rien d'autre déposé hormis ce transcript et ses pièces.
+
+Réponse mot pour mot :
+
+D'abord une déclaration : mon environnement de travail a été réinitialisé ce matin (le dossier vidé, l'outil de capture désinstallé) ; j'ai tout repris depuis le sas — la maquette v9c.13, le gabarit, les propositions, le transcript — et réinstallé l'outil ; rien n'est perdu, les pièces sont au sas.
+
+**1. Ta demande, reformulée, et ma proposition intégrée dans l'existant — capture plein écran jointe.** Ce dont tu as besoin, ce n'est pas de verser la diapo de fin dans la trame, c'est **une relecture complète du chapitre** : le tracé de tous les travaux à faire, et ce qui manquait ou était en trop. Elle a déjà sa place : **l'onglet Relecture**, qui a aujourd'hui cinq faces (le récit et « ce qui s'est passé » de chaque heure, la séance) — j'y ajoute **une sixième face, « Le chapitre »**, calculée des journaux des heures closes (les heures à venir lues dans la trame) :
+- **1 · Le tracé des travaux à faire** — une ligne par heure du chapitre : donné le, pour le, ce qui est parti dans École Directe (le texte tel quel), et « déjà donné pour cette date » ; les heures à venir en gris avec ce que la trame prévoit. Copiable pour École Directe.
+- **2 · Ce qui manquait, ce qui était en trop** — à gauche, **parti à la maison ou reporté** (le chapitre était trop plein) : activité par activité, avec le temps prévu contre le temps passé et ton motif ; en bas, le compte (« 3 activités sur 11 n'ont pas tenu · 22 min de trop »). À droite, **ce qui manquait** (ajouté pendant l'heure, absent de la trame) : les notions imprévues déclarées, les réponses d'élèves gardées, les notes versées au récit, les diapos modifiées en classe et leur sort (versée ou non).
+- **3 · Les notions du chapitre** — prévue où, travaillée quand (par quelle activité), donnée à apprendre quand ; les imprévues, les non travaillées, les à venir.
+Rien de nouveau à inventer : tout est déjà dans le journal, les décisions du T-5, les notions, les réponses ; c'est une **lecture** de plus, pas un mécanisme de plus. La copie de classe au hub la rendra vraie sur tout le chapitre ; la maquette la montre sur la séance jouée.
+
+**2. Les cinq captures du tour 145, une à une — ce qu'il y a, et l'avantage de chacune :**
+- **A — « Où on en est » avec les durées par activité.** La colonne de droite, sous la diapo suivante : l'en-tête inchangé (prévu / utile / dépasse), puis **une ligne par activité de l'heure** : le chiffre des minutes, **modifiable en cours d'heure** (les heures de début se recalent), l'heure prévue de début, le titre, et **l'état de worktrack** en pastille — terminée, dans les temps, il te reste peu de temps (qui pulse), tu dépasses (+4 min, qui pulse). Les faites barrées, la ligne en cours en gras, la fin d'heure en dernier. **Avantage** : tu vois d'un coup d'œil où tu devrais être et où tu es, tu corriges une durée sans quitter le cours, et tout tient sans défilement ; la participation reste dessous.
+- **B — l'alerte T-5.** Une boîte au pilotage seulement : « il reste 5 minutes ; l'activité en cours : … tu dépasses de 4 min ; la diapo de fin attend — le tableau ne bouge pas tant que tu n'y vas pas », « Aller à la fin d'heure » / « Plus tard ». **Avantage** : jamais de coupure devant la classe, c'est toi qui décides du moment. **Sur cette capture je ne retiens pas l'emplacement** (elle recouvre le titre) : je propose la colonne de droite, au-dessus de « Où on en est », ou le bandeau du haut à côté du chrono.
+- **C — la diapo de fin d'heure, au centre**, dévoilée jusqu'au travail à faire : l'étiquette « Fin d'heure — lundi 14 septembre, 15 h 07 – 16 h 02 » ; l'agenda École Directe reconnaissable, en Garamond ; **« PRENEZ VOS AGENDAS — POUR MERCREDI 9 SEPTEMBRE »** qui pulse ; la carte FRANCAIS avec, en tête, **« déjà donné pour mercredi (jeudi dernier) : … »** puis le travail de l'heure, « Donné le … » ; en bas, la participation, encore voilée. Les mêmes outils dessous, le volet et la colonne inchangés. **Avantage** : c'est une diapo comme les autres — ▶ la dévoile élément par élément, elle se gèle, se surligne, se pagine, part au tableau ; et ce que les élèves voient est ce que tu écris.
+- **D — la même diapo, onglet « Contenus de séances »** : le récit en trois temps (« Au début de l'heure, on a commencé par… Puis, au milieu de l'heure, on a continué… Enfin, à la fin de l'heure, on a fait… Et on l'a terminée. »), « figé, modifiable ». **Avantage** : le récit est pour les élèves, au tableau, dans l'agenda qu'ils retrouveront ; et tu le corriges dedans.
+- **E — la colonne de droite en fin d'heure, la séquence** : 1 · l'échéance (faite : ✔ mercredi 9, résumée sur une ligne) → flèche → 2 · ce qui reste et les notions (ouverte : les cartes par activité, les cases) → flèche grise → 3 · avant de clore (repliée) → 4 · Clore. **Avantage** : tout ce que tu as à cliquer, dans l'ordre, une chose à la fois ; les faites se replient ; chaque choix se voit au tableau.
+
+**3. L'exemple concret du temps mis à part et des trois temps.** Heure de 15 h 07 à 16 h 02. L'activité 1 commence à 15 h 15 (8 minutes prévues). À 15 h 19 le réseau tombe ; ça revient à 15 h 26 : **coupure de 7 minutes**, tu réponds « mis à part ». L'activité 1 se termine à 15 h 30.
+- **Le temps compté pour l'activité** : de 15 h 15 à 15 h 30, 15 minutes réelles, **moins 7 mises à part = 8 minutes** → « dans les temps », et le T-5 ne dira pas qu'elle a pris le double.
+- **Le récit** se cale sur l'heure réelle, coupure ou pas : « **Au début de l'heure** (15 h 07 – 15 h 17), on a commencé par l'activité 1… » ; sa fin, à 15 h 30 (23ᵉ minute), tombe dans un entre-temps : racontée **sans repère** (« ensuite, on a terminé… ») ; « **Puis, au milieu de l'heure** (15 h 32 – 15 h 42), on a fait l'activité 2… » ; la coupure n'est jamais dans le récit (elle est dans « ce qui s'est passé » : « coupure de 7 min à 15 h 19, mise à part »).
+
+**4.** Noté.
+
+J'attends ton mot sur la face « Le chapitre » et sur les captures ; rien n'est codé.
+
+MEMO
+
+---

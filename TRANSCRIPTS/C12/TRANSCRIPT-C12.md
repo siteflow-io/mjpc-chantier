@@ -5937,3 +5937,29 @@ Tests : ⚙ → T-5 : le chrono « −5:00 » pulse en ambre, l'alerte au-dessus
 MEMO
 
 ---
+
+## TOUR 164 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Pour la garde, quand j'ai le " ce qui resterait non fait pour cette heure", il faut que les éléments de la liste soient cliquables afin que je visualise d'un coup à quoi ça correspond. si je clique sur A1 par exemple, je dois voir la diapo concernée qui s'ouvre en modale, puis je la referme, et ainsi de suite.
+
+---
+
+## TOUR 164 — Claude (conscience n°12)
+
+(b2) : `apercuOuvrir` / `apercuFermer` (modale `#gc-apercu` au-dessus de la garde, la diapo rendue par `rendre()` en miniature grande, ◀ ▶ ✕ Échap flèches clavier, clic à côté, journal `cahier-garde-apercu`), les lignes `.gc-l.cliquable` avec `data-diapos`. Piège : balise `id="garde-cahier\\"` coupée. Banc `T164-test-b2-apercu.mjs` 0 ; banc unique `T164-tous-les-bancs-b2.sh` 7 × 0. Cadrage 1 · 6.3 complété et déposé (bit à bit). Registre n°12 · 50. Capture contrôlée (le témoin du tableau retiré de l'aperçu). Maquette `T164-maquette-pilotage-ordi-v9c14b2-manipulable.html`. Pièces au sas. Rien d'autre déposé hormis ce transcript, ses pièces, le cadrage et le registre.
+
+Réponse mot pour mot :
+
+Fait, mesuré (v9c.14 b2 jointe, capture plein écran jointe) : **dans la garde du cahier, chaque ligne « A1 · … » est cliquable** — un clic ouvre, **par-dessus la garde**, l'aperçu de la première diapo restante de l'activité, rendue telle qu'au tableau ; **◀ ▶** (ou les flèches du clavier) parcourent ses autres diapos restantes ; **✕**, Échap ou un clic à côté referment l'aperçu **et la garde est toujours là** ; tu peux enchaîner une ligne, puis l'autre ; le tableau des élèves ne bouge pas ; « Rester » / « Y aller » comme avant. Cadrage 1 · 6.3 complété, registre n°12 · 50.
+
+Sept bancs à 0 d'une seule commande (l'aperçu, l'alerte et la séquence, le cahier, l'insertion, la non-régression, tout cliquer, l'affichage). Un piège attrapé au banc et dit : une balise coupée par mon script rendait la garde introuvable.
+
+Tests : ⚙ → T-5, « Aller au cahier de textes » : la garde ; clique sur « A1 » : la diapo 1 s'ouvre en grand par-dessus, « 1/7 » ; ▶ : la 2 ; ← : la 1 ; Échap : la garde est encore là ; clique sur la seconde ligne : sa diapo ; ✕ ; « Rester ».
+
+« Continuer » pour (c) — les durées par activité et les états de worktrack — après sa relecture de télescopage.
+
+MEMO
+
+---

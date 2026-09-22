@@ -5963,3 +5963,33 @@ Tests : ⚙ → T-5, « Aller au cahier de textes » : la garde ; clique sur « 
 MEMO
 
 ---
+
+## TOUR 165 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok c'est bon. Et par ailleurs, la maquette mets en "activités non faites" des activités faites dans la maquette. c'est prévu que ce soit corrigé?
+
+---
+
+## TOUR 165 — Claude (conscience n°12)
+
+Mesuré (`T165-mesure-faites.mjs`) : après tout jouer par ▶, aucune diapo à éléments finie (vuMax 0/n) — cause : `const k = et.si + '|' + et.di` dans `pousser()`, resté par rang après (a0). Réparé (clé par eid). Bancs durcis (insertion : dévoilements non vides ; cahier : tout par ▶ → validation). Le banc de l'aperçu (T164) découvert écrasé par une boucle (doublon du banc de l'alerte) : réécrit, rejoué, contrôle des empreintes. Banc unique 8 × 0 (`T165-tous-les-bancs-b2.sh`). Registre n°12 · 51 (contenu vérifié). Maquette `T165-maquette-pilotage-ordi-v9c14b2-manipulable.html`. Pièces au sas. Rien d'autre déposé hormis ce transcript, ses pièces et le registre.
+
+Réponse mot pour mot :
+
+Non, ce n'était pas prévu : c'était **un bug, et tu l'as attrapé** — réparé, mesuré, et les bancs durcis pour qu'il ne revienne pas (v9c.14 b2 jointe, corrigée).
+
+**La cause** : quand j'ai tout mis par identifiant (a0), une seule clé m'a échappé — celle du compteur de dévoilement écrite au moment d'envoyer au tableau, restée par rang de diapo. Le compteur s'écrivait sous une clé et se lisait sous une autre : **plus aucune diapo à éléments n'était « finie »**, donc toute activité jouée restait « restante » (la garde, la séquence, le T-5, le glissement à l'heure suivante). Mes bancs ne l'ont pas vu parce que l'insertion comparait des dévoilements vides des deux côtés, et parce qu'aucun banc n'exigeait la validation après avoir tout joué.
+
+**Réparé et prouvé** : après avoir tout joué par ▶, la garde dit « validation — aucune activité restante », toutes les diapos de l'heure sont finies. **Bancs durcis** : l'insertion exige des dévoilements enregistrés avant de comparer ; le banc du cahier joue l'heure entière par ▶ et exige la validation. Huit bancs à 0 d'une seule commande.
+
+**Une deuxième chose à te dire** : en contrôlant les empreintes, j'ai trouvé que le banc de l'aperçu (hier) avait été écrasé par une boucle de copie — comme au tour 161 — et que sa pièce au sas était un doublon du banc de l'alerte ; réécrit, rejoué (0 défaut), redéposé ; règle tenue : contrôle des empreintes de tous les bancs avant chaque dépôt. Registre n°12 · 51.
+
+Tests : lundi, joue toute l'heure par ▶ sans rien sauter : à la fin, la garde du cahier dit « validation — aucune activité restante » ; joue à moitié la diapo 1 puis va au cahier par la vignette : « A1 — n diapos restantes » avec le bon compte ; Clore ; mardi : seules les diapos vraiment non finies ont glissé.
+
+« Continuer » pour (c).
+
+MEMO
+
+---

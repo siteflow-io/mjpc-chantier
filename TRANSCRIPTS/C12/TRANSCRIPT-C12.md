@@ -5993,3 +5993,33 @@ Tests : lundi, joue toute l'heure par ▶ sans rien sauter : à la fin, la garde
 MEMO
 
 ---
+
+## TOUR 166 — Paul
+
+Texte de Paul, mot pour mot :
+
+> continuer
+
+---
+
+## TOUR 166 — Claude (conscience n°12)
+
+`ouOnEnEst()` (L500) et `etatActivite()` (b) relus ; relecture de télescopage de (c) écrite (`pieces/T166-RELECTURE-telescopage-livraison-c.md`) : six télescopages avec solutions, rien à trancher. Aucun code. Rien déposé hormis ce transcript et cette pièce.
+
+Réponse mot pour mot :
+
+La relecture de télescopage de (c) est jointe et au sas. En clair : **rien ne bloque, rien à trancher.** Six télescopages, chacun avec sa solution :
+1. **« Où on en est » comptait par diapo et par la trame** → une seule source de durée par activité, qui lit ce que tu as changé ; les glissées comprises ; le cahier à 5 min.
+2. **Deux calculs du temps passé** (l'alerte de (b) et la liste) → une seule fonction, hors temps mis à part ; l'alerte lit la même.
+3. **Le chiffre modifiable** dans une colonne serrée → un petit champ par ligne, Entrée ou clic ailleurs valide, les flèches ne changent pas de diapo quand tu es dedans, le changement au journal.
+4. **L'immuabilité** → une durée changée vaut pour cette classe ; « Avant de clore » liste « durées changées » avec la case « verser dans la trame » ; rien ne se verse sans ton clic.
+5. **La règle sans défilement** → lignes serrées, mesurées aux trois tailles ; l'élargissement automatique de la colonne est une règle du mandat (la poignée existe déjà).
+6. **La simulation qui avance l'horloge d'un coup** gonfle le temps de l'activité en cours → un réglage ⚙ « avancer sans compter », nommé simulation, pour que les états restent lisibles.
+
+Les quatre états : *terminée* (toutes ses diapos finies) · rien tant qu'elle n'est pas commencée · *dans les temps* · *il te reste peu de temps* (80 %, pulse) · *tu dépasses (+n min)* (pulse) — les mêmes pour l'alerte T-5.
+
+« Continuer » lance (c).
+
+MEMO
+
+---

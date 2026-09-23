@@ -6228,3 +6228,25 @@ Je propose la **2** : c'est la plus claire au tableau (on voit lequel des deux e
 23/09/2026 15:36 MEMO
 
 ---
+
+## TOUR 174 — Paul
+
+Texte de Paul, mot pour mot :
+
+> composé par le site | ma version (modifier)
+
+---
+
+## TOUR 174 — Claude (conscience n°12)
+
+Cadrage 2 · 3.8 complété des libellés, déposé bit à bit. Aucun code. Rien déposé hormis ce transcript et le cadrage.
+
+Réponse mot pour mot :
+
+Écrit et déposé (cadrage 2 · 3.8) : le sélecteur « **composé par le site** | **ma version (modifier)** » — plus de « figer / défiger » nulle part : ni dans le cahier de textes, ni dans la relecture, ni dans le journal (« ma version » / « composé par le site »).
+
+Tout ce que (d) doit faire est maintenant cadré : les trois temps et le verdict, le sélecteur avec ta version gardée et récupérable, Ctrl+Z et l'historique, la garde après copie pour École Directe, le défilement dans la diapo qui suit au tableau, « Lancer l'animation en accéléré ». « Continuer » lance (d).
+
+23/09/2026 16:08 MEMO
+
+---

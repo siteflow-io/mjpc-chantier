@@ -6144,3 +6144,33 @@ Deux libellés pris sauf contre-ordre : « Figer pour modifier » / « Défiger 
 23/09/2026 15:07 MEMO
 
 ---
+
+## TOUR 171 — Paul
+
+Texte de Paul, mot pour mot :
+
+> 3. attention, défiger ne doit pas me faire perdre  les modifs. il faut que si je fais des modifs, celles ci soient enregistrées et récupérables. D'ailleurs, si j'édite, il me faut les mêmes fonctionnalités d'édition que le reste (possibilité de revenir en arrière etc). 4. pas compris, à préciser. 5. pas compris, à préciser. 6. bonnne proposition, et ça correspondra à ce que fais ppt: le jeu des animations automatique quand on lance un diapo.
+
+---
+
+## TOUR 171 — Claude (conscience n°12)
+
+Réponse de cadrage : le récit à deux états (composé / ta version), figer/défiger sans perte, « Reprendre ma version », versions datées au journal, Ctrl+Z et l'historique ↶ ↷ ; la pagination précisée ; les bancs précisés ; l'accéléré comme PowerPoint. Aucun code. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Point par point, dans tes mots :
+
+**3. Figer / défiger — corrigé, rien ne se perd.** Le récit a deux états : **composé** (le site l'écrit et le réécrit à chaque geste) et **ta version** (à partir du moment où tu figes et modifies). « Figer pour modifier » : le récit devient un texte à toi, dans la diapo, avec **les mêmes outils d'édition que toute diapo** — Ctrl+Z / Ctrl+Y dans le texte, et **l'historique** (chaque modification est une version datée, au journal, comme pour une diapo modifiée en classe : ↶ revient à la version précédente, ↷ la rétablit). « Défiger » **ne détruit rien** : le récit repasse au composé, **ta version reste enregistrée** et « Reprendre ma version » la remet à sa place ; si tu refiges plus tard, tu repars de ta dernière version, pas de zéro. Ce qui part dans École Directe, au tableau et dans l'historique, c'est ce qui est affiché au moment de clore : ta version si elle est en place, sinon le composé — et la relecture montre toujours la même chose que le cahier (une seule source par heure).
+
+**4. La pagination, précisée.** Quand le récit (ou le travail à faire) est trop long pour tenir dans la diapo au tableau, il est **découpé en pages qu'on tourne** — exactement comme aujourd'hui une réponse d'élève trop longue : la molette ou « page suivante », et les élèves voient la page en cours. Un paragraphe n'est jamais coupé au milieu : la coupe se fait entre deux paragraphes. Aujourd'hui, le texte long est simplement coupé en bas de la carte (c'est ce que tu as vu) ; (d) règle ça.
+
+**5. Les bancs, précisés.** C'est mon affaire, pas la tienne : mes tests automatiques lisent le récit pour vérifier qu'il se compose bien ; comme sa forme change (les trois temps), je dois les réécrire pour qu'ils cherchent les nouveaux repères — sinon ils diraient « défaut » à tort. Rien à décider pour toi.
+
+**6. « Jouer l'heure en accéléré », comme PowerPoint** : oui — un réglage ⚙ qui lance l'heure toute seule : elle dévoile, avance de diapo en diapo à la vitesse prévue (chaque diapo tient sa durée, en accéléré), jusqu'au cahier de textes — pour voir le récit en trois temps se composer. Nommé simulation, jamais dans le site.
+
+Si le 3 te va, « continuer » lance (d).
+
+23/09/2026 15:24 MEMO
+
+---

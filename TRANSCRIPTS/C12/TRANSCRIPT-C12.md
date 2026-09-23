@@ -6086,3 +6086,31 @@ Tests : A1 à 1, Entrée : le curseur reste dans le champ ; → : rien ; clique 
 MEMO
 
 ---
+
+## TOUR 169 — Paul
+
+Texte de Paul, mot pour mot :
+
+> j'ai mis une minute dans le temps de A1, ensuite j'ai passé mes diapos avec la flèche, comme d'habitude. Il m'a dit il te reste peu de temps, et ce message clignotait toujours quand j'ai passé la minute, et il m'a dit terminée alors que je suis encore dans l'affichage de la dernière diapo de A1.
+
+---
+
+## TOUR 169 — Claude (conscience n°12)
+
+`etatWorktrack` : « terminée » seulement si l'activité est quittée (`!diapos.includes(S.di)`) ; seuils à la seconde (`tempsActiviteSec`), dépassement arrondi vers le haut. Banc `T169-test-c-durees.mjs` (sur la dernière diapo tout dévoilé → en cours ; quittée → terminée) 0 ; banc unique 8 × 0. Cadrage 1 · 5.4 bis complété et déposé. Registre n°12 · 54. Maquette `T169-maquette-pilotage-ordi-v9c14c3-manipulable.html`. Pièces au sas. Rien d'autre déposé hormis ce transcript, ses pièces, le cadrage et le registre.
+
+Réponse mot pour mot :
+
+Compris : la « dégringolade », c'était ta flèche, comme d'habitude — donc le vrai défaut est double, et il est réglé (v9c.14 c3 jointe) :
+1. **« Il te reste peu de temps » clignotait encore passé la minute** : l'état ne se rafraîchissait qu'au geste suivant — réglé au tour précédent (rafraîchi toutes les 15 secondes), et les seuils se calculent maintenant à la seconde (à 1 minute prévue, « tu dépasses · +1 min » dès que la minute est passée).
+2. **« Terminée » alors que tu es encore sur la dernière diapo de A1** : je tenais l'activité pour terminée dès que tout était dévoilé. **Règle corrigée et écrite** (cadrage 1 · 5.4 bis) : une activité n'est « terminée » (barrée) **qu'une fois que tu l'as quittée** ; tant que la diapo où tu es est l'une des siennes, elle est en cours — en gras, avec son état. Mesuré : sur la dernière diapo de A1, tout dévoilé, A1 reste « en cours » ; ▶ vers A2 : A1 passe « terminée », barrée.
+
+Huit bancs à 0. Registre n°12 · 54.
+
+Tests : A1 à 1, Entrée ; passe A1 à la flèche jusqu'à sa dernière diapo, tout dévoilé, et reste dessus : la ligne A1 est en gras, « tu dépasses · +n min » (pas « terminée ») ; attends 30 s : le chiffre du dépassement monte tout seul ; ▶ vers Question-bilan : A1 « terminée », barrée.
+
+« Continuer » pour (d) — le récit en trois temps, le verdict, « figer puis modifier », la pagination — après sa relecture de télescopage.
+
+MEMO
+
+---

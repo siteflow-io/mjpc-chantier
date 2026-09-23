@@ -6053,3 +6053,36 @@ Tests : lundi, regarde « Où on en est » : A1 15:07, A2 à l'heure de A1 + sa 
 MEMO
 
 ---
+
+## TOUR 168 — Paul
+
+Pièce jointe : sa capture (A1 à 1 min, le pilote sur le cahier, A1 et A2 « terminée »), recopiée en `pieces/T168-capture-de-Paul-duree-1-min.png`.
+
+Texte de Paul, mot pour mot :
+
+> j'ai passé la première diapo à 1 minute. le sélecteur de diapos a dégringolé jusqu'à la dernière diapo en me mettant la modale "aller au cahier de textes". et la question bilan s'est barrée toute seule. Fais le test, attends que la minute soit écoulée et vois le comportement.
+
+---
+
+## TOUR 168 — Claude (conscience n°12)
+
+Reproduction (`T168-repro-1-min.mjs`, 75 s d'attente) : rien ne bouge par le temps ; relecture des six appels de « suivante » : aucun temporel. Trois défauts réglés : rafraîchissement des états (tick, 15 s), Entrée garde le curseur, `ev.repeat` ignoré pour le dévoilement. Banc `T168-test-c-durees.mjs` étendu (70 s réels, touche maintenue) 0 ; banc unique 8 × 0. Registre n°12 · 53. Maquette `T168-maquette-pilotage-ordi-v9c14c2-manipulable.html`. Question à Paul (la touche après le « 1 »). Pièces au sas. Rien d'autre déposé hormis ce transcript, ses pièces et le registre.
+
+Réponse mot pour mot :
+
+Testé comme tu l'as demandé : A1 réglée à 1 minute, puis 75 secondes d'attente sans toucher à rien, en observant chaque quart de minute. **Le temps seul ne fait rien bouger** : la diapo reste la 1, la garde ne s'ouvre pas, rien n'est dévoilé. Et j'ai relu tout ce qui peut faire « diapo suivante » dans la maquette : six appels, tous déclenchés par un geste ou une décision, aucun par l'horloge. Ta capture, elle, montre que des dévoilements ont eu lieu (le récit dans le cahier raconte la consigne et deux étapes, Question-bilan est barrée parce que sa réponse a été dévoilée) : la dégringolade est venue de ▶ répétés — le plus probable : **après le « 1 » et Entrée, le champ rendait le clavier au pilotage, et une touche → ou Espace, maintenue, dévoilait en rafale jusqu'au cahier**.
+
+**Trois défauts réels trouvés en cherchant, réglés (v9c.14 c2 jointe) :**
+1. **Les états ne se rafraîchissaient pas tout seuls** — « dans les temps » restait affiché passé la minute, jusqu'au geste suivant ; la liste se rafraîchit maintenant toutes les 15 secondes (mesuré : après 70 s sans geste, A1 à 1 min passe à « tu dépasses », et la diapo n'a pas bougé).
+2. **Entrée dans le champ rendait le clavier au pilotage** — Entrée valide et **garde le curseur dans le champ** ; → et Espace n'y font rien.
+3. **Une touche maintenue dévoilait en rafale** — règle de sécurité : la répétition automatique du clavier ne dévoile jamais (mesuré : → maintenue 1,2 s = un seul dévoilement).
+
+Huit bancs à 0. Registre n°12 · 53.
+
+**Une question pour être sûr** : après avoir tapé « 1 », qu'as-tu appuyé — Entrée, Tab, ou rien (clic ailleurs) ? Si c'est autre chose que ce que j'ai corrigé, je le reproduis.
+
+Tests : A1 à 1, Entrée : le curseur reste dans le champ ; → : rien ; clique sur la diapo, attends 70 s : « tu dépasses » apparaît tout seul, la diapo n'a pas bougé ; maintiens → une seconde : un seul élément dévoilé.
+
+MEMO
+
+---

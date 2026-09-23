@@ -6202,3 +6202,29 @@ Pris et écrit aux cadrages (déposés) :
 23/09/2026 15:31 MEMO
 
 ---
+
+## TOUR 173 — Paul
+
+Texte de Paul, mot pour mot :
+
+> 3. ok. figer défiger est une terminologie bizarre cela dit. il faudrait trouver des termes qui correspondent mieux à ces actions.
+
+---
+
+## TOUR 173 — Claude (conscience n°12)
+
+Trois propositions de libellés (la plume ; le sélecteur « composé par le site | ma version » ; l'action simple), la 2 recommandée. Aucun code, rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+D'accord, « figer / défiger » dit la mécanique, pas ce que tu fais. Trois façons de le nommer dans tes mots, par ce que le geste fait :
+
+1. **Par la plume** — « **Reprendre la plume** » (le site arrête d'écrire, le récit devient le tien, modifiable) / « **Rendre la plume au site** » (il recompose ; ta version reste gardée) / « **Ma version** » (la remettre à sa place).
+2. **Par l'état, un sélecteur à deux positions** — « Récit : **composé par le site** | **ma version** » ; sur « ma version », le texte est modifiable ; sur « composé par le site », il se réécrit tout seul, et ta version attend dans l'autre position. Pas de bouton d'action : on choisit ce qu'on montre, et ce qui est montré au moment de clore est ce qui part.
+3. **Par l'action simple** — « **Modifier** » / « **Revenir au récit du site** » / « **Ma version** ».
+
+Je propose la **2** : c'est la plus claire au tableau (on voit lequel des deux est affiché), elle n'a pas de verbe technique, et elle porte naturellement la garde (basculer sur « ma version » après une copie pour École Directe → « déjà copié à 16 h 05 — poursuivre quand même ? »). Ton mot, et j'écris les libellés au cadrage puis je lance (d) sur « continuer ».
+
+23/09/2026 15:36 MEMO
+
+---

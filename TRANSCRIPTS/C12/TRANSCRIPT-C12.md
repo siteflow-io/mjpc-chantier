@@ -6250,3 +6250,37 @@ Tout ce que (d) doit faire est maintenant cadré : les trois temps et le verdict
 23/09/2026 16:08 MEMO
 
 ---
+
+## TOUR 175 — Paul
+
+Texte de Paul, mot pour mot :
+
+> continuer
+
+---
+
+## TOUR 175 — Claude (conscience n°12)
+
+(d) codée par `T175-patch-d.py` → `T175-v9c14d-template.html` : `troisTemps` (par le journal, t0/t1 réels, repères, continué, verdict), `recitHtml` → ma version, `barreRecit`, `basculerRecit` / `poserVersion` / `versionsDe` / `gardeCopie`, le sélecteur dans le cahier et la relecture, `recitPourED` par ma version, le défilement (`S.cahierScroll`, la molette, le tableau), `s-anim`. Pièges : l'ancienne ligne « figé » cassait la syntaxe ; le handler de copie ; `vuJ().fin` n'est pas une heure ; le moteur ne pousse pas de paragraphe sans phrase ; le branchement des boutons posé dans recitHtml0 ; la relecture se quitte par l'onglet. Banc `T175-test-d-recit.mjs` 0 ; banc unique 9 × 0 ; empreintes contrôlées. Registre n°12 · 55. Quatre captures (une contrôlée). Maquette `T175-maquette-pilotage-ordi-v9c14d-manipulable.html`. Pièces au sas. Rien d'autre déposé hormis ce transcript, ses pièces et le registre.
+
+Réponse mot pour mot :
+
+**(d) livrée (v9c.14 d jointe, quatre captures plein écran jointes) — neuf bancs à 0 d'une seule commande.**
+
+**Le récit en trois temps** : « Au début de l'heure, on a commencé par l'activité 1 — … », « Puis, au milieu de l'heure, on a continué l'activité 1 avec Les hypothèses de la classe », « Enfin, à la fin de l'heure, on a fait l'activité 2 — Question-bilan », **le verdict** (« Et on l'a terminée. » / « Mais on ne l'a pas terminée. » / « — tout juste commencée »), le tout calé sur l'heure réelle du journal ; les entre-temps sans repère ; une activité vue sans phrase a quand même son repère.
+
+**Le sélecteur « composé par le site | ma version (modifier) »** dans le cahier (onglet Contenus, chez toi seulement — le tableau ne voit que le récit) et dans la relecture : une seule source par heure. Sur « ma version », le récit est modifiable dans la diapo, ce que tu tapes part au tableau, Ctrl+Z dans le texte, ↶ ↷ parcourent tes versions ; « composé par le site » ne perd rien, ta version t'attend. **La garde après copie** : après « Copier pour École Directe », basculer sur « ma version » demande « déjà copié à 16 h 05 — poursuivre quand même ? ».
+
+**Le défilement dans la diapo** : la molette sur le cahier fait défiler le récit (ou le travail) chez toi, **le tableau suit**, on ne change pas de diapo ; Ctrl + molette reste le zoom.
+
+**« Lancer l'animation en accéléré »** (⚙) : l'heure se joue toute seule, chaque diapo tient sa durée prévue, jusqu'au cahier — c'est ainsi que les captures ont été prises.
+
+Deux choses dites (registre n°12 · 55) : le repère (« l'activité 1 — … ») et le titre bleu du paragraphe (« Activité 1 — … ») se suivent ; une question dévoilée sans réponse d'élève n'est nommée que par son repère (la règle de l'ancien : ce qui n'a pas produit de phrase ne se raconte pas).
+
+Tests : ⚙ → « Lancer l'animation en accéléré », laisse faire jusqu'au cahier ; ▶ ×3 : le récit en trois temps au tableau ; molette sur le cahier : le tableau défile avec toi ; « ma version (modifier) » : écris une ligne, elle est au tableau ; ↶ puis ↷ ; « composé par le site » : le récit du site revient ; « ma version » : ta ligne est toujours là ; R : la relecture montre la même chose ; « Copier pour École Directe » puis « ma version » : la garde ; « Annuler » ne bascule pas, « Poursuivre » bascule.
+
+« Continuer » pour (e) — le bouton « Qui a participé », Maj + P — après sa relecture de télescopage.
+
+23/09/2026 16:57 MEMO
+
+---

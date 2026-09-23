@@ -6320,3 +6320,31 @@ Tests : ⚙ → « Lancer l'animation en accéléré » ; ▶ ×3 ; molette sur 
 23/09/2026 17:12 MEMO
 
 ---
+
+## TOUR 177 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok, mais plutôt "la réponse attendue vue en classe était...". on ne mentionne jamais des outils techniques (dévoilée au tableau). enfin, le scroll fonctionne, mais le champ est minuscule en hauteur. et sur le tableau, ça ne scrolle rien. il faut que je puisse avoir la possibilité d'agrandir le champ, mais attention à ce qu'il reste bien dans la diapo (elle peut s'adapter éventuellement).
+
+---
+
+## TOUR 177 — Claude (conscience n°12)
+
+Moteur : la question posée sans réponse racontée (« la réponse attendue vue en classe était ») ; « ⤢ agrandir / ⤡ réduire » (`S.cahierGrand[h]`, l'état voyage, classe posée après le morph) ; la mini « tableau en ce moment » suit (hash). Banc (d) étendu (question racontée sans mot technique ; agrandir dans la diapo, le tableau suit, réduire) ; banc unique 9 × 0. Cadrages 1 · 6.4 bis et 2 · 1.10 complétés et déposés. Registre n°12 · 57. Deux captures (une contrôlée). Maquette `T177-maquette-pilotage-ordi-v9c14d3-manipulable.html`. Pièces au sas. Rien d'autre déposé hormis ce transcript, ses pièces, les cadrages et le registre.
+
+Réponse mot pour mot :
+
+Fait (v9c.14 d3 jointe, deux captures jointes), neuf bancs à 0 :
+
+1. **Le récit** : « on a posé la question : « Qu'ont en commun ces cinq tableaux ? » ; **la réponse attendue vue en classe était** : « Une nature immense face à un homme petit ; l'émotion avant la règle. » » — et la règle est écrite au cadrage 2 · 1.10 : **jamais un outil technique dans le récit** (pas de « dévoilée au tableau », pas de « diapo », pas d'écran) ; il dit ce que la classe a vécu.
+2. **La carte s'agrandit** : un bouton « **⤢ agrandir** » chez toi sur le cahier — la date et le bandeau se réduisent, la carte du récit (ou du travail) prend la place, **tout reste dans la diapo** ; **le tableau fait pareil**, et la vue « le tableau en ce moment » aussi ; « ⤡ réduire » rend la disposition d'origine. Cadrage 1 · 6.4 bis complété.
+3. **Le tableau qui « ne scrollait rien »** : la vue « le tableau en ce moment » (la miniature à droite) ne se redessinait pas au défilement — elle suit maintenant, comme le vrai tableau (mesuré au fond des deux côtés au tour précédent). Si c'est le vrai tableau chez toi (Écran 2) qui ne suivait pas, dis-le-moi et je le reproduis en Win+K.
+
+Une chose dite (registre n°12 · 57) : agrandie, la carte laisse un bandeau vide sous la participation, en bas de la diapo — je le resserre si tu le veux.
+
+Tests : ⚙ → accéléré ; ▶ ×3 ; « ⤢ agrandir » : la carte prend la place, la date en petit, le tableau pareil ; molette : le tableau suit jusqu'au fond ; onglet Contenus : « on a posé la question… la réponse attendue vue en classe était… » ; « ⤡ réduire ».
+
+23/09/2026 17:44 MEMO
+
+---

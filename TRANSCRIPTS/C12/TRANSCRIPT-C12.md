@@ -6174,3 +6174,31 @@ Si le 3 te va, « continuer » lance (d).
 23/09/2026 15:24 MEMO
 
 ---
+
+## TOUR 172 — Paul
+
+Texte de Paul, mot pour mot :
+
+> 3. il faut une garde alors: car si je modifie un récit après l'avoir copié pour école directe, il faut que ce ne soit pas possible, ou alors en connaissance de cause. "poursuivre quand même? " Tu vois? 4. non: ce doit être un scroll dans la diapo. on voit le récit, et je scroll dans mon pilotage, et ça bouge au tableau. pareil pour le travail à faire. comme ça , un seul et même affichage pour le cahier de texte, on ne bouge pas de diapo. 6. non, pas simulation, mais "lancer l'animation en accéléré"
+
+---
+
+## TOUR 172 — Claude (conscience n°12)
+
+Cadrage 2 · 3.8 réécrit (deux états, défiger sans perte, versions, garde après copie) ; cadrage 1 · 6.4 bis complété (le récit défile dans la diapo, le tableau suit ; « Lancer l'animation en accéléré ») ; déposés, vérifiés bit à bit. Aucun code. Rien déposé hormis ce transcript et les cadrages.
+
+Réponse mot pour mot :
+
+Pris et écrit aux cadrages (déposés) :
+
+**3. La garde après copie** — si le récit (ou le travail à faire) a déjà été copié pour École Directe, toute nouvelle modification passe par « **Ce récit a déjà été copié pour École Directe à 16 h 05 — poursuivre quand même ?** » (Poursuivre / Annuler), et le « poursuivre » entre au journal. Avec le reste du 3 : deux états (composé / ta version), défiger sans rien perdre, « Reprendre ma version », Ctrl+Z et l'historique ↶ ↷.
+
+**4. Pas de pages : un défilement dans la diapo.** Le récit et le travail à faire longs **défilent dans le cahier de textes** ; tu fais défiler au pilotage (la molette dans la diapo), **le tableau suit la même position** ; un seul et même affichage, on ne change pas de diapo. Ctrl + molette reste le zoom.
+
+**6. « Lancer l'animation en accéléré »** — c'est le nom, pas « simulation » : le bouton joue l'heure toute seule, dévoile et avance de diapo en diapo à la vitesse prévue, en accéléré, jusqu'au cahier de textes, comme le jeu automatique des animations de PowerPoint.
+
+« Continuer » lance (d) avec ces trois points.
+
+23/09/2026 15:31 MEMO
+
+---

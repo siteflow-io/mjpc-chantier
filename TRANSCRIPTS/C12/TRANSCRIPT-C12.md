@@ -6284,3 +6284,39 @@ Tests : ⚙ → « Lancer l'animation en accéléré », laisse faire jusqu'au c
 23/09/2026 16:57 MEMO
 
 ---
+
+## TOUR 176 — Paul
+
+Pièce jointe : sa capture (le défilement bloqué à mi-hauteur), recopiée en `pieces/T176-capture-de-Paul-scroll.png`.
+
+Texte de Paul, mot pour mot :
+
+> le scroll fonctionne mais à moitié: je ne peux pas scroller à fond, et par ailleurs l'accéléré devrait me donner un récit beaucoup plus étoffé. regarde la capture
+
+---
+
+## TOUR 176 — Claude (conscience n°12)
+
+Défilement réparé (`.ed-recit` sans hauteur bornée, `.ed-carte` overflow auto, position en proportion) ; banc (d) étendu (au fond des deux côtés, trois temps entiers) ; banc unique 9 × 0. Le récit de l'accéléré imprimé (`dbg-scroll.mjs`) ; proposition d'enrichissement du moteur (citer la question dévoilée et sa réponse attendue) soumise. Registre n°12 · 56. Maquette `T176-maquette-pilotage-ordi-v9c14d2-manipulable.html`. Pièces au sas. Rien d'autre déposé hormis ce transcript, ses pièces et le registre.
+
+Réponse mot pour mot :
+
+**Le défilement : c'était un bug, réglé** (v9c.14 d2 jointe). Deux causes : le bloc du récit gardait une hauteur bornée qui coupait tout ce qui dépassait (le défilement s'arrêtait là), et la position envoyée au tableau était en pixels alors que les hauteurs diffèrent — le tableau restait à mi-chemin quand tu étais au fond. Maintenant la carte défile sur tout le récit et la position voyage en proportion : mesuré, quinze crans de molette et tu es au fond des deux côtés, les trois temps entiers visibles (capture jointe). Neuf bancs à 0.
+
+**Le récit de l'accéléré, imprimé pour que tu le voies en entier** (c'est ce que le défilement te cachait) :
+
+> Au début de l'heure, on a commencé par l'activité 1 — Analyse d'images : les cinq tableaux.
+> Activité 1 — À 15 h 07, la consigne était : « Observe, discute, fais une hypothèse sur le Romantisme. » — d'abord on a observé les images en silence ; après quoi on a discuté en groupe de ce qu'on voyait ; dans un second temps la consigne disait : « Au brouillon, dans un tableau à trois colonnes… » ; et enfin on a choisi de quel élément on allait parler ; après cela la consigne disait : « À partir de cet élément, je fais une hypothèse… » ; puis on a exposé notre hypothèse à l'oral. De plus, on a observé cinq documents (Tableau 1 à 5).
+> Puis, au milieu de l'heure, on a continué l'activité 1 avec Les hypothèses de la classe.
+> Enfin, à la fin de l'heure, on a fait l'activité 2 — Question-bilan.
+> Et on l'a terminée.
+
+Il est maigre pour deux raisons, et il faut les distinguer. **La première est normale** : l'accéléré n'a pas d'élèves — pas une réponse écrite, pas une prise de parole, pas un surlignage ; or c'est ça qui étoffe un récit de vraie heure (les prénoms, ce qu'ils ont dit, ce qu'on a validé). **La seconde est une limite du moteur**, celle de l'ancien (cadrage 2 · 1.10) : une question dévoilée devant la classe **sans réponse d'élève** ne se raconte pas — ici « Les hypothèses de la classe » et « Question-bilan » ne sont nommées que par leur repère, alors que tu as posé la question et dévoilé la réponse attendue.
+
+**Ce que je propose, si tu le valides** (ça touche 1.10) : quand une question a été dévoilée, le récit la cite — « On a posé la question : « Qu'ont en commun ces cinq tableaux ? » » — et, si la réponse attendue a été dévoilée au tableau, il l'ajoute : « la réponse attendue, dévoilée au tableau, était : « Une nature immense face à un homme petit ; l'émotion avant la règle. » » ; avec les réponses des élèves quand il y en a, comme aujourd'hui. Ton mot, et je l'écris au cadrage et je le code dans (d) avant (e).
+
+Tests : ⚙ → « Lancer l'animation en accéléré » ; ▶ ×3 ; molette sur le cahier jusqu'au bout : « Et on l'a terminée. » visible chez toi et au tableau.
+
+23/09/2026 17:12 MEMO
+
+---

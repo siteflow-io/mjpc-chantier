@@ -6023,3 +6023,33 @@ Les quatre états : *terminée* (toutes ses diapos finies) · rien tant qu'elle 
 MEMO
 
 ---
+
+## TOUR 167 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ccontinuer
+
+---
+
+## TOUR 167 — Claude (conscience n°12)
+
+(c) codée par `T167-patch-c.py` → `T167-v9c14c-template.html` : `dureeDe`, `tempsActivite`, `etatWorktrack`, `activitesDeLHeure`, la liste `#durees` dans `ouOnEnEst` (champ, recalage, journal `duree-changee`, copie `S.durees`), « Durées changées — verser ? » à la clôture, cartes et garde par `dureeDe`, la simulation qui note un saut mis à part. Réparation : les règles CSS du mode fin de la colonne (T142) n'avaient jamais pris — réécrites, mesurées par l'audit. Banc `T167-test-c-durees.mjs` 0 ; banc unique `T167-tous-les-bancs-c.sh` 8 × 0 ; empreintes contrôlées. Registre n°12 · 52. Trois captures (une contrôlée). Maquette `T167-maquette-pilotage-ordi-v9c14c-manipulable.html`. Pièces au sas. Rien d'autre déposé hormis ce transcript, ses pièces et le registre.
+
+Réponse mot pour mot :
+
+**(c) livrée — les durées par activité, modifiables en direct, avec les états de worktrack (v9c.14 c jointe, trois captures plein écran jointes) — huit bancs à 0 d'une seule commande.**
+
+**Ce que tu vois, sous « Où on en est »** : une ligne par activité de l'heure (les glissées comprises) — **le chiffre des minutes** (tu le changes pendant le cours : Entrée ou clic ailleurs valide, Échap rend l'ancien, les flèches ne changent pas de diapo tant que tu es dedans), **l'heure prévue de début** cumulée depuis le début de l'heure (elle se recale quand tu changes un chiffre), le titre, et **l'état** en pastille : rien tant qu'elle n'est pas commencée · *dans les temps* · *il te reste peu de temps* (80 %, pulse) · *tu dépasses · +n min* (pulse) · *terminée* (barrée). La ligne en cours en gras ; « Cahier de textes · 5 min » en dernier, immuable ; l'en-tête « n min prévues / 50 utiles ». L'alerte T-5 lit le même état. Une durée changée entre au journal, vaut pour cette classe, et « Avant de clore » propose de la **verser dans la trame** (rien sans ton clic) ; la garde du cahier et les cartes lisent la durée changée. La simulation qui avance l'horloge ne gonfle plus l'activité en cours.
+
+**Trouvé au contrôle des captures et réparé** : les règles d'affichage de la colonne en fin d'heure (ne montrer que la séquence, la cacher après « Reprendre le cours »), écrites au tour 142, **n'avaient jamais pris** — un remplacement de texte fait sans vérification ; la colonne montrait tout à la fois. Réécrites, et l'audit d'affichage le mesure désormais. Registre n°12 · 52.
+
+Captures : la liste pendant le cours ; « il te reste peu de temps » sur A2 après une coupure comptée, A1 changée à 40 min et l'heure de A2 recalée ; la colonne en fin d'heure, seule.
+
+Tests : lundi, regarde « Où on en est » : A1 15:07, A2 à l'heure de A1 + sa durée, le cahier à 15:57 ; ▶ trois fois : A1 « dans les temps » ; change A1 à 40, Entrée : A2 passe à 15:47, l'en-tête change ; Échap dans le champ rend la valeur ; ⚙ coupure puis Entrée (le cours a continué) sur Question-bilan : « il te reste peu de temps » ; joue A1 en entier : « terminée », barrée ; « Fin de l'heure » : seule la séquence dans la colonne ; section 3 : « Durées changées : A1 40 min — verser ? ».
+
+« Continuer » pour (d) — le récit en trois temps, le verdict, « figer puis modifier », la pagination du récit — après sa relecture de télescopage.
+
+MEMO
+
+---

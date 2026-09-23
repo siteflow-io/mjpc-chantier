@@ -6348,3 +6348,30 @@ Tests : ⚙ → accéléré ; ▶ ×3 ; « ⤢ agrandir » : la carte prend la p
 23/09/2026 17:44 MEMO
 
 ---
+
+## TOUR 178 — Paul
+
+Texte de Paul, mot pour mot :
+
+> en fait le mode agrandi doit être par défaut. et par ailleurs, je ne vois toujours pas que la miniature qui est censée retranscrire l'écran 2, prends le scroll aussi. il le faut absolument. Je dois pouvoir piloter le tableau comme si c'était en direct.
+
+---
+
+## TOUR 178 — Claude (conscience n°12)
+
+Agrandi par défaut (`S.cahierGrand[h] !== false`) ; au défilement, `vueDroite(etatComplet())` après `pousser` ; la pulsation gardée en mode réduit (les bancs cahier et régression l'exigeaient : 6.4 bis). Banc (d) étendu (agrandi par défaut ; la vue « le tableau en ce moment » suit à 5 %) ; banc unique 9 × 0. Cadrage 1 · 6.4 bis mis à jour, déposé. Registre n°12 · 58. Capture contrôlée. Maquette `T178-maquette-pilotage-ordi-v9c14d4-manipulable.html`. Pièces au sas. Rien d'autre déposé hormis ce transcript, ses pièces, le cadrage et le registre.
+
+Réponse mot pour mot :
+
+Fait (v9c.14 d4 jointe, capture jointe), neuf bancs à 0 :
+
+1. **Le cahier s'ouvre agrandi** ; « ⤡ réduire » rend la disposition d'origine, « ⤢ agrandir » la remet ; la date garde sa pulsation même petite. Cadrage 1 · 6.4 bis mis à jour.
+2. **La vue « le tableau, en ce moment » suit le défilement** — c'était un vrai défaut : au défilement, l'état partait bien au tableau, mais la vue de droite n'était pas redessinée (elle ne l'était qu'au geste suivant). Elle se redessine maintenant à chaque cran de molette, avec exactement ce que le tableau reçoit ; mesuré : sa position suit la tienne à 5 % près. La capture : le pilote défilé jusqu'au verdict, et la vue de droite au même endroit — tu pilotes le tableau comme en direct.
+
+Registre n°12 · 58.
+
+Tests : ⚙ → accéléré ; ▶ ×3 : le cahier est agrandi d'emblée ; « Tableau » (la vue de droite bascule sur « le tableau, en ce moment ») ; molette sur le cahier : la vue de droite défile avec toi, jusqu'au fond ; « ⤡ réduire » : la vue de droite se réduit aussi.
+
+23/09/2026 17:55 MEMO
+
+---

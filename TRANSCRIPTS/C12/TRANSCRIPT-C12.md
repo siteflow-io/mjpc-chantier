@@ -6114,3 +6114,33 @@ Tests : A1 à 1, Entrée ; passe A1 à la flèche jusqu'à sa dernière diapo, t
 MEMO
 
 ---
+
+## TOUR 170 — Paul
+
+Texte de Paul, mot pour mot :
+
+> continuer
+
+---
+
+## TOUR 170 — Claude (conscience n°12)
+
+`recitHtml` (L875-930 : le moteur, `S.recitFige` pour l'heure courante, `r-figer`), `recitPourED`, `paginer` relus ; relecture de télescopage de (d) écrite (`pieces/T170-RELECTURE-telescopage-livraison-d.md`) : six télescopages avec solutions, rien à trancher. Aucun code. Rien déposé hormis ce transcript et cette pièce. (Nouvelle règle de Paul : chaque réponse horodatée « JJ/MM/AAAA HH:MM MEMO ».)
+
+Réponse mot pour mot :
+
+La relecture de télescopage de (d) est jointe et au sas. En clair : **rien ne bloque, rien à trancher.** Six télescopages, chacun avec sa solution :
+1. **Le moteur du récit** (un paragraphe par activité, dans l'ordre vu) reçoit **une passe de regroupement au-dessus** : les activités sont rangées par le temps où elles ont commencé (début / entre / milieu / entre / fin, à l'heure réelle) ; une activité qui se poursuit dans le temps suivant y est reprise par « on a continué… », coupée seulement entre deux diapos, jamais dans une phrase.
+2. **Le verdict** se calcule à la composition depuis le journal : l'activité en cours au passage au cahier — terminée / pas terminée / « tout juste commencée » si 1 à 5 minutes ; sans passage au cahier, la dernière activité vue à la clôture.
+3. **« Figer » existait dans la relecture pour l'heure courante seulement** → il devient **par heure, une seule source** : dans le cahier (onglet Contenus), « Figer pour modifier » rend le récit modifiable dans la diapo, ce que tu tapes est le figé de l'heure, la relecture montre la même chose ; « Défiger » recompose (ton texte est perdu, dit au clic).
+4. **La pagination** ne connaissait que les étapes et les réponses → les paragraphes du récit et du travail deviennent des unités de page dans le cahier ; la classe voit page par page.
+5. **Les bancs** qui lisent le récit changent de repères (les titres d'activité restent).
+6. **La simulation** : l'horloge n'avance qu'en temps réel, donc tout se passerait « au début de l'heure » → un réglage ⚙ « jouer l'heure en accéléré » (chaque diapo vue avance l'horloge de sa durée prévue, mis à part pour le compte), nommé simulation, pour voir les trois temps.
+
+Deux libellés pris sauf contre-ordre : « Figer pour modifier » / « Défiger (recompose, ton texte est perdu) ».
+
+« Continuer » lance (d).
+
+23/09/2026 15:07 MEMO
+
+---

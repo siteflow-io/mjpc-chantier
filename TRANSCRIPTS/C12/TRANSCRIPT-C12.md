@@ -7046,3 +7046,33 @@ Tests : joue une heure (ou l'accéléré), clôture ; « Relecture » → « Le 
 24/09/2026 19:58 MEMO
 
 ---
+
+## TOUR 203 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok alors le tracé, dorénavant, montre au fur et à mesure le vrai chapitre que j'ai fait. Et du coup, c'est là où le prévu doit s'adapter par la suite. Imaginons: je n'ai pas fait une activité sur les énonciations imbriquées. les séances suivantes ne peuvent pas remobiliser cette notion. Tu comprends?
+
+---
+
+## TOUR 203 — Claude (conscience n°12)
+
+Mesuré : la trame porte `comp` (notions travaillées), aucune donnée « remobilise » ; les cadrages ne parlent pas de remobilisation. Réponse de cadrage (la donnée à la préparation, le signalement dans le tracé et à l'ouverture de l'heure suivante avec deux choix, l'état « manquante pour la suite »), deux questions. Aucun code, rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Je comprends, et c'est plus qu'un affichage : c'est **le prévu qui doit lire le fait**. Mis en tension avec ce qui existe, puis ce que je propose.
+
+1. **Ce qu'on a aujourd'hui.** Le tracé montre le vrai chapitre heure par heure — et pour les heures à venir, seulement « ce que la trame prévoit », telle quelle. Le glissement (6.6) reporte bien une activité non faite à l'heure suivante, mais **rien ne relie une notion non travaillée à ce qui, plus loin, la remobilise** : si l'activité sur les énonciations imbriquées est passée en réserve ou « non faite », la séance suivante qui s'appuie dessus se présentera comme si de rien n'était.
+2. **Ce qui manque, dans la donnée.** Une diapo sait ce qu'elle *travaille* (ses notions, `comp`) ; elle ne sait pas ce qu'elle *remobilise* (les notions qu'elle suppose acquises). Sans ça, le site ne peut pas raisonner. Cadrage MJPC : ce qui n'existe pas encore ne tombe pas — la préparation (cadrage 4) doit porter, par activité, « **cette activité remobilise :** … », saisi par toi à la préparation, avec une proposition par défaut (les notions de la même famille travaillées plus tôt dans le chapitre).
+3. **Ce que le site fait avec, sans jamais décider à ta place** (8.1) :
+   - **dans le tracé**, les heures à venir deviennent le « chapitre tel qu'il va se faire » : chaque diapo à venir qui remobilise une notion **non travaillée** (activité non faite, en réserve, partie à la maison sans retour) est signalée — « remobilise *énonciations imbriquées*, non travaillée depuis l'heure 1 » ;
+   - **à l'ouverture de l'heure suivante** (« Où en est la classe », 6.7), ces signalements te sont mis devant les yeux avec les deux choix possibles : remettre d'abord l'activité manquante dans l'ordre de l'heure (elle est en réserve ou glissée : un clic la replace avant), ou retirer / décaler la diapo qui remobilise ; tu peux aussi ne rien faire, en connaissance de cause — c'est noté au journal ;
+   - **dans les notions du chapitre** (partie 3), une notion attendue par une activité à venir et non travaillée passe « **manquante pour la suite** » (nouvel état, en rouge).
+   Rien ne se verse dans la trame depuis là : ce sont des choix de l'heure, pour cette classe.
+
+Deux choses à ton mot : **(a)** la saisie de « remobilise » à la préparation, par activité, avec proposition par défaut — c'est bien ce que tu veux ? **(b)** l'adaptation se fait à l'ouverture de l'heure suivante avec tes deux choix (remettre l'activité avant / décaler la diapo), jamais toute seule — d'accord ? Si oui, j'écris les cadrages 2 · 1 bis, 1 · 6.7 et 4 (la donnée), et je le code dans la maquette (une activité de l'heure 2 remobilisant une notion de l'heure 1, pour que tu le voies).
+
+24/09/2026 20:06 MEMO
+
+---

@@ -6883,3 +6883,34 @@ Réponse mot pour mot :
 24/09/2026 13:22 MEMO
 
 ---
+
+## TOUR 197 — Paul
+
+Texte de Paul, mot pour mot (tours 196 bis et 197) :
+
+> continuer
+
+> continuer
+
+---
+
+## TOUR 197 — Claude (conscience n°12)
+
+(b4-1) close : trois fonctions coupées remises (`allerAuCahier`, `copierTexte`, `manquesAvantDeClore`), la classe unique de « Étape suivante », l'étape ouverte « faite », les notes réduites nommées ; bancs recalés (test-b3 sur le nouveau cadrage, test-b, test-cahier) ; banc unique `T197-tous-les-bancs-b4.sh` 11 × 0 (le premier lancement avait été tué par un `pkill` qui matchait son propre shell — dit). Quatre captures (une contrôlée). Registre n°12 · 61. Maquette `T197-maquette-pilotage-ordi-v9c14b4-manipulable.html`. Pièces au sas. Rien d'autre déposé hormis ce transcript, ses pièces et le registre.
+
+Réponse mot pour mot :
+
+**(b4) première partie — livrée (v9c.14 b4 jointe, quatre captures plein écran jointes) : onze bancs à 0 d'une seule commande.**
+
+1. **Le banc unique** : hier il ne s'était jamais lancé — mon nettoyage des processus avait tué son propre shell (une erreur de manipulation, dite). Relancé seul : les onze bancs à 0.
+2. **Ce que tu as** : « Préparer le cahier de textes » → la disposition validée (volet en numéros, diapo réduite par la poignée, le pas à pas sous la diapo, les notes réduites à une ligne qui dit ce qu'elle est, la colonne normale avec la vignette complète « gelé — la classe est sur la diapo 1 ») ; le cahier entier chez toi, rien à la classe ; ▶ et ❄ inactifs, Clore refusé (« reviens au cours, puis clos ») ; **seul « Revenir au cours » dégèle** et rend tout ; **la préparation se garde** (re-« Préparer » reprend à la même étape avec tes choix). Le pas à pas : une étape à la fois, « ◀ / Étape suivante ▶ », le fil, la liste cliquable ; l'étape « le récit relu » attend la fin (« à relire à la fin de l'heure », « Relu » grisé). Les poignées restent toutes actives.
+3. Registre n°12 · 61 ; empreintes contrôlées.
+4. **Reste (b4-2)** : « Montrer cette suite à la classe » ; le récit au fil de l'heure (ma version + la suite à part, « Reprendre la suite dans ma version », « relu » décoché si l'heure continue).
+
+Tests : ⚙ → T-5 → « Préparer le cahier de textes » : la disposition ; la classe voit toujours ses étapes (vignette) ; ▶ : rien ; ❄ : rien ; choisis l'échéance, « Étape suivante ▶ » ; décide les activités ; clique « 3 · le travail à faire » dans la liste, « Écrire dans le cahier ▸ », tape ; « 4 · le récit relu » : « à relire à la fin », « Relu » grisé ; tire la poignée sous la diapo : elle grandit / rétrécit ; « Revenir au cours » : ta diapo, tout dégelé, la disposition d'avant ; ⚙ T-5 → « Préparer » : tu reprends à la même étape avec ton échéance.
+
+« Continuer » pour (b4-2).
+
+24/09/2026 14:05 MEMO
+
+---

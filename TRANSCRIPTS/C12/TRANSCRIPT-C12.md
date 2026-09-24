@@ -7102,3 +7102,37 @@ Ton mot sur la capture 1 (les trois choix, leur libellé), et j'écris les cadra
 24/09/2026 20:20 MEMO
 
 ---
+
+## TOUR 205 — Paul
+
+Texte de Paul, mot pour mot :
+
+> pour chaque choix, je dois absolument avoir des questions auxquelles je peux répondre par oui ou non, et c'est ce faisceaux de réponses qui fait le choix. tu comprends?
+
+---
+
+## TOUR 205 — Claude (conscience n°12)
+
+Réponse de cadrage : l'arbre de questions oui/non (besoin de la notion ? temps pour l'activité manquante ? reprise courte possible ?) → quatre conclusions (laisser / remettre avant / laisser avec reprise courte / décaler), confirmées par « C'est ça ». Aucun code, rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Oui : pas trois boutons à choisir, mais **des questions auxquelles tu réponds oui ou non, et c'est le faisceau des réponses qui fait le choix** — le site conclut, tu confirmes. Voici l'arbre, sur l'exemple de mardi (« Les règles héritées » remobilise « l'énonciation », non travaillée) :
+
+1. **« Cette heure a-t-elle besoin de « l'énonciation » pour tenir ? »**
+   - **non** → *Laisser tel quel* : l'heure se joue comme prévu, c'est noté au journal (« remobilisée sans avoir été travaillée, en connaissance de cause »). Fin.
+   - **oui** → question 2.
+2. **« As-tu le temps de jouer d'abord « Analyse d'images » (52 min prévues — l'heure dépasserait de 20 min) ? »**
+   - **oui** → *Remettre « Analyse d'images » avant* : elle repasse en tête de l'heure, l'ordre est recalculé, le T-5 le redira. Fin.
+   - **non** → question 3.
+3. **« Peux-tu reprendre la notion toi-même, en quelques minutes, sans l'activité ? »**
+   - **oui** → *Laisser, avec une reprise courte* : l'heure se joue, une ligne « reprise de « l'énonciation » avant « Les règles héritées » » est ajoutée à l'ordre du jour de l'heure et au récit ; noté au journal.
+   - **non** → *Décaler « Les règles héritées »* : elle glisse à l'heure suivante comme une activité non faite (la carte du glissement, 6.6, la reprendra) ; noté au journal.
+
+Chaque question est une seule phrase, deux boutons **Oui / Non**, la conclusion s'affiche en clair (« Donc : on remet « Analyse d'images » avant ») avec **« C'est ça »** / **« Recommencer »**. Une notion par faisceau ; s'il y en a plusieurs, elles s'enchaînent. Tout est noté au journal (les réponses et la conclusion), rien ne se verse dans la trame.
+
+Ton mot sur l'arbre (les trois questions, leurs réponses), et je te le montre en capture avant d'écrire les cadrages et de coder (g).
+
+24/09/2026 20:26 MEMO
+
+---

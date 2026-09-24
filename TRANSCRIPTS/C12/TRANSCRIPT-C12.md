@@ -6722,3 +6722,29 @@ Ton mot sur les deux règles du 2, et je les écris avec le 1, puis « continuer
 24/09/2026 10:43 MEMO
 
 ---
+
+## TOUR 192 — Paul
+
+Texte de Paul, mot pour mot :
+
+> 2. montre moi. je ne visualise pas ce que tu dis.
+
+---
+
+## TOUR 192 — Claude (conscience n°12)
+
+Deux captures de proposition (`pieces/T192-proposition-recit-milieu-A/B-plein-ecran.png`, injectées après une demi-heure jouée en accéléré) : A l'étape « le récit relu » en milieu d'heure (à relire à la fin, « Relu » grisé) ; B « ma version » écrite à 15 h 40 puis la suite composée ajoutée à part. Aucun code, rien déposé hormis ce transcript et les captures.
+
+Réponse mot pour mot :
+
+Deux captures plein écran jointes (propositions injectées, rien codé) — la scène : il est 15 h 40, la classe travaille sur « Les hypothèses de la classe », tu prépares ton cahier.
+
+1. **Capture A — l'étape « le récit relu » en milieu d'heure.** Le pas à pas est à l'étape 4 ; un encart doré te dit : « Il est 15 h 40 : **le récit se complète jusqu'à la fin de l'heure** — ce que tu lis maintenant n'est pas encore ce qui partira. Tu peux le lire, le retoucher, mais l'étape ne se cochera qu'une fois l'heure jouée et le récit relu à la fin. » Le bouton « Relu » est grisé (« à la fin de l'heure ») ; dans la liste, « 4 · le récit relu — *à relire à la fin de l'heure* ». Tu passes à l'étape suivante (le mot aux absents) sans être bloqué ; la liste te le rappellera au moment de clore.
+
+2. **Capture B — « ma version » choisie au milieu.** Dans le cahier, onglet Contenus : en haut, **ton texte** (« Au début de l'heure, on a commencé par… *(ma version, écrite à 15 h 40)* ») ; en dessous, séparé par un pointillé et sur fond pâle, **« — la suite de l'heure, composée par le site depuis 15 h 40 (tu la reprendras dans ta version à la fin) »** : « Puis, au milieu de l'heure, on a continué… Enfin, à la fin de l'heure… Et on l'a terminée. » L'encart de l'étape le dit : « la suite est ajoutée sous ta version, à part — à la fin, « ma version (modifier) » te remet tout dans un seul texte à corriger. Rien n'est perdu. » Ce qui part dans École Directe et l'historique = ton texte + la suite (les deux, dans cet ordre), tant que tu n'as pas tout repris.
+
+Ton mot, et j'écris ça au cadrage (7.0 ter et 2 · 3.8), puis « continuer » lance (b4).
+
+24/09/2026 10:53 MEMO
+
+---

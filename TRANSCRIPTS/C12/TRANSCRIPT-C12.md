@@ -6402,3 +6402,29 @@ Tests : ⚙ → T-5 : l'alerte au-dessus des notes **et** la colonne ouverte sur
 24/09/2026 07:24 MEMO
 
 ---
+
+## TOUR 180 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok, est ce que je peux préparer mon cahier de texte avant la fin de l'heure? Par exemple, les élèves sont en activité en autonomie à moins le quart, ça sonne à pile, est ce que je peux passer à la diapo cahier de texte pour la préparer, et ensuite terminer mon flux de diapos? Dis moi les possibilités selon l'existant, mais une solution simple, ergonomique et rapide.
+
+---
+
+## TOUR 180 — Claude (conscience n°12)
+
+Réponse de cadrage (trois possibilités selon l'existant ; la proposition « Préparer le cahier de textes » = gel + cahier + séquence, « Revenir au cours » = retour + dégel). Aucun code. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Oui, et avec l'existant tu as déjà trois façons, de la moins bonne à la meilleure :
+
+1. **La séquence seule, à tout moment** : « Fin de l'heure » ouvre la colonne (l'échéance, les décisions, les cases des notions) sans rien changer au tableau ; « Reprendre le cours » referme, tes choix restent. Ce que tu ne peux pas y faire : écrire le travail à faire et retoucher le récit — ils se font dans la diapo du cahier.
+2. **Aller au cahier puis revenir** : la vignette « Cahier de textes » → la garde → « Y aller » ; tu écris le travail, tu choisis « ma version » ; puis ◀ ou la vignette d'avant te ramène à tes diapos, ce que tu as écrit reste. L'inconvénient : pendant que tu prépares, **la classe voit l'agenda vide** (le cadre du cahier, rien dedans) au lieu de la consigne de l'activité en autonomie.
+3. **Le gel, puis le cahier** — c'est la bonne : ❄ sur l'activité en autonomie (la classe garde sa consigne au tableau), puis la vignette « Cahier de textes » → tu prépares tout chez toi (échéance, décisions, travail à faire, ma version) sans que le tableau bouge ; au retour, ❄ à nouveau et la garde du dégel te propose « ici » (la diapo où tu es) — tu reprends ton flux. Ça marche aujourd'hui, en quatre clics.
+
+**Ce que je propose pour que ce soit un seul geste** : un bouton « **Préparer le cahier de textes** » (dans la séquence, tout en haut, et dans l'alerte T-5) qui fait exactement le 3 d'un coup — gèle le tableau sur la diapo en cours, t'emmène au cahier, ouvre la séquence ; et, une fois au cahier, « **Revenir au cours** » te ramène à la diapo gelée et dégèle. Le journal note « préparation du cahier de textes ». Rien de neuf sous le capot : le gel, la garde, la diapo — juste enchaînés. Ton mot, et je l'écris au cadrage (1 · 6.4 bis) et je le code.
+
+24/09/2026 07:33 MEMO
+
+---

@@ -6673,3 +6673,25 @@ Ton mot sur cette disposition, et je code (b4).
 24/09/2026 10:33 MEMO
 
 ---
+
+## TOUR 190 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok c'est bon là. Et on est d'accord que les poignées restent toutes actives bien entendu, si je veux changer. Là c'est juste l'affichage par défaut de départ.
+
+---
+
+## TOUR 190 — Claude (conscience n°12)
+
+Cadrage 1 · 7.0 ter écrit et déposé bit à bit (la préparation : disposition de départ, poignées actives, cahier entier, pas à pas, seul Revenir dégèle, Montrer cette suite). Aucun code. Rien déposé hormis ce transcript et le cadrage.
+
+Réponse mot pour mot :
+
+Oui : **les poignées restent toutes actives** — les deux colonnes et la poignée sous la diapo ; ce qui est validé, c'est l'affichage de départ de la préparation, que tu peux changer à la main à tout moment. Écrit et déposé (cadrage 1 · 7.0 ter) : la disposition de départ, le cahier entier sans dévoiler, le pas à pas, seul « Revenir au cours » dégèle (❄ inactif, Clore refusé), « Montrer cette suite à la classe » avec sa borne.
+
+« Continuer » lance (b4), relecture de télescopage en tête.
+
+24/09/2026 10:37 MEMO
+
+---

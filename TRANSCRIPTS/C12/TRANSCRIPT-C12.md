@@ -6516,3 +6516,29 @@ Tests : ⚙ → T-5 ; « Préparer le cahier de textes » : ❄ dans le bandeau,
 24/09/2026 09:35 MEMO
 
 ---
+
+## TOUR 184 — Paul
+
+Texte de Paul, mot pour mot :
+
+> je suis perdu dans le guidage là. je ne sais pas où cliquer, quoi faire... Quand je suis en mode relecture du cahier de texte, tant que je ne suis pas revenu au cours, les élèves ne doivent pas être dégelés. et il y a à mon avis un télescopage au niveau de la relecture du récit, en mode préparation du cahier de texte: si je veux la modifier ou la relire, je dois la dévoiler...
+
+---
+
+## TOUR 184 — Claude (conscience n°12)
+
+Mesuré : sept appels de `degeler()` — Revenir, ❄, garde2 (ici/revenir), Clore, la réinitialisation. Capture de proposition (`pieces/T184-proposition-pas-a-pas-plein-ecran.png`, injectée, non codée) : le cahier entier en préparation, la colonne en pas à pas. Trois propositions soumises. Aucun code, rien déposé hormis ce transcript et la capture.
+
+Réponse mot pour mot :
+
+Tu as raison sur les trois points ; voici ce que j'ai mesuré et ce que je propose (capture plein écran jointe, une proposition, rien codé).
+
+1. **Le guidage te perd** parce que je t'ai mis trois choses à la fois : une liste de contrôle, sept boîtes empilées avec des flèches, et des boutons dans chaque boîte. **Proposition : un pas à pas** — la colonne ne montre qu'**une étape à la fois** (« Étape 3 sur 7 — le travail à faire »), ce qu'il faut y faire en une phrase, ses contrôles, et **deux boutons seulement : « ◀ Étape précédente » / « Étape suivante ▶ (le récit) »** ; un fil de sept pastilles en haut (vert = faite, or = ici) ; la liste des sept en bas, cliquable pour sauter. Plus de flèches ▼, plus de boîtes empilées. En tête, un seul bouton : « Revenir au cours ».
+2. **Les élèves dégelés pendant la préparation** — mesuré : quatre gestes dégèlent aujourd'hui : « Revenir au cours » (voulu), le bouton ❄, la garde du gel (« ici / revenir »), et **« Clore »**. En préparation, ❄ et Clore ne doivent pas dégeler. **Règle proposée** : pendant la préparation, **seul « Revenir au cours » dégèle** ; ❄ est inactif (« en préparation : revenir au cours d'abord ») ; Clore en préparation est refusé par la garde (« tu prépares, la classe est encore sur la diapo 1 : reviens au cours, puis clos »).
+3. **Le télescopage du récit, exact** : pour relire ou modifier le récit en préparation, il fallait dévoiler — et ces dévoilements auraient compté : au moment d'aller au cahier avec la classe, tout serait apparu d'un coup. **Proposition** : en préparation, **le cahier s'affiche entier chez toi sans rien dévoiler** (la capture : la date, le travail, les onglets, la participation, tous lisibles, « préparation — rien n'est montré à la classe » à la place du compteur) ; ▶ ne fait rien pendant la préparation ; le dévoilement, élément par élément, reste pour le moment où tu es au cahier **avec** la classe.
+
+Si ces trois points te vont, je les écris au cadrage (7.0 bis) et je remplace le guidage actuel par le pas à pas.
+
+24/09/2026 09:41 MEMO
+
+---

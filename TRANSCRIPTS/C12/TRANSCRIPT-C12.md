@@ -6458,3 +6458,29 @@ Deux choses à ton mot : **l'ordre** des étapes (celui ci-dessus : échéance �
 24/09/2026 07:41 MEMO
 
 ---
+
+## TOUR 182 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok, en revanche pour le récit tu proposes qu'il soit considéré comme relu si je vais jusqu'au bout, mais attention, car je peux faire des allers retours de  scroll. et la garde à clore doit me dire ce que je risque si je clos quand même
+
+---
+
+## TOUR 182 — Claude (conscience n°12)
+
+Cadrage 1 · 7.0 bis écrit (le guidage complet : Préparer / Revenir, la liste de contrôle, le récit relu une fois, la garde à Clore avec les risques), déposé bit à bit. Aucun code. Rien déposé hormis ce transcript et le cadrage.
+
+Réponse mot pour mot :
+
+Pris, écrit et déposé (cadrage 1 · 7.0 bis « le guidage du cahier de textes ») :
+
+1. **Le récit relu** : l'étape se coche dès que tu as atteint le bout du récit **une fois** ; tes allers-retours de défilement ensuite ne la décochent jamais ; tu peux aussi la cocher d'un clic « Relu », et « ma version » la coche (tu l'as forcément lu pour l'écrire).
+2. **La garde à Clore dit ce qui manque et ce que tu risques**, ligne par ligne : l'échéance absente → le cahier dira « la prochaine fois », les élèves ne sauront pas pour quand ; le travail à faire vide → rien dans École Directe ni dans l'historique pour la prochaine fois ; une activité restante sans décision → elle glissera à l'heure suivante par défaut ; le récit non relu → il partira tel quel dans l'historique (et dans École Directe s'il est copié) ; pas copié pour École Directe → le cahier de textes de l'école restera vide, à remplir à la main plus tard ; le mot aux absents vide → les absents n'auront pas de mot. Puis « Clore quand même » / « Y retourner ».
+3. Le reste comme validé : « Préparer le cahier de textes » (gel + cahier + séquence) et « Revenir au cours », la liste de contrôle en tête, le travail à faire et la copie pour École Directe comme étapes, dans l'ordre échéance → ce qui reste → travail → récit → mot aux absents → copie → clore.
+
+« Continuer » lance le codage (livraison (b3) : le guidage), avec sa relecture de télescopage en tête de réponse.
+
+24/09/2026 07:52 MEMO
+
+---

@@ -6914,3 +6914,29 @@ Tests : ⚙ → T-5 → « Préparer le cahier de textes » : la disposition ; l
 24/09/2026 14:05 MEMO
 
 ---
+
+## TOUR 198 — Paul
+
+Texte de Paul, mot pour mot :
+
+> je n'ai rien testé. continuer
+
+---
+
+## TOUR 198 — Claude (conscience n°12)
+
+(b4-2) codée par `vis/patch-b5.py` (gabarit `v9c14b5-template.html`, non déposé) : `suitePourLaClasse` / `montrerSuite` / `ligneSuite` (« Montrer cette suite à la classe », « Passer la classe à la diapo n », la borne avant le cahier) ; `troisTemps(…, depuis)`, `suiteDepuis` / `suiteHtml` / `reprendreSuite`, `S.recitMoiT`, « Reprendre la suite dans ma version » (cahier et relecture), « relu » seulement en fin d'heure au cahier, décoché au journal `diapo` (« le récit a changé depuis : à relire »), « ma version » ne coche plus « relu ». Banc `test-b5.mjs` 0 (pièges : la fenêtre du tableau réutilisée après un goto ; un recul d'horloge dans le banc faussait « depuis »). Banc unique b5 : 11 bancs à 0, « tout cliquer » 1 défaut : une erreur JS « Maximum call stack size exceeded » dans le moteur du récit (`recitEtape`, regex sur un texte anormalement long) — non élucidée, non attribuée. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+**(b4) deuxième partie — codée et prouvée par son banc ; livraison pas close : un banc sur douze a une erreur, non élucidée ; rien déposé.**
+
+1. **Relecture de télescopage (b4-2)**, en tête : « Montrer cette suite à la classe » agit sur l'état gelé (la photo de la classe) et compte pour la classe (journal, « finie », récit) — pas pour le cahier ; ▶ clavier reste inactif en préparation ; la borne : jamais le cahier. Le récit au fil de l'heure : « ma version » retient l'heure de la prise de plume ; le moteur compose la suite à partir de cet instant, séparément ; « Reprendre » colle et avance l'instant ; « relu » ne se coche qu'au cahier avec la classe, et toute diapo vue ensuite le décoche ; « ma version » ne coche plus « relu » (l'ancienne règle l'aurait fait à tort en milieu d'heure).
+2. **Fait et prouvé (banc b5, 0 défaut)** : sous la vignette, en préparation, « Pour les élèves qui ont fini, la suite sur leur diapo : *Étape 4 — …* » → « Montrer cette suite à la classe » : la classe voit l'élément de plus, ton cahier n'a rien dévoilé, le journal note « montré depuis la préparation » ; quand leur diapo est finie : « Passer la classe à la diapo 2 » → la classe passe, ton curseur reste ; avant le cahier : « le cahier se joue avec la classe : reviens au cours », pas de bouton. Le récit : ma version écrite en milieu d'heure, puis l'heure jouée, au cahier : ton texte + « — la suite de l'heure, composée par le site depuis 15 h 52 » (chez toi et au tableau) ; « Reprendre la suite dans ma version » colle tout en un seul texte ; le défilement au fond coche « relu » en fin d'heure ; une nouvelle diapo vue le décoche et la liste dit « le récit a changé depuis : à relire ».
+3. **Onze bancs à 0 sur douze, d'une seule commande.** Le douzième, « tout cliquer », remonte une erreur dans le moteur du récit de l'ancien (un débordement de pile sur un texte anormalement long) : je ne sais pas encore quel geste du banc la provoque ni si (b4-2) y est pour quelque chose — je ne le dis pas tant que ce n'est pas mesuré. Prochain tour : l'élucider, la régler, puis le banc unique, les captures, le dépôt (pièces, registre n°12 · 62, transcript).
+
+« Continuer ».
+
+24/09/2026 14:46 MEMO
+
+---

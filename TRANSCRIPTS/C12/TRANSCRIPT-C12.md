@@ -6955,5 +6955,12 @@ L'erreur du banc « tout cliquer » élucidée par un hook de mesure (`dbg-tc.mj
 
 Réponse mot pour mot :
 
+1. **L'erreur du banc « tout cliquer », élucidée et réglée** : une boucle infinie entre le récit et lui-même — le moteur de l'ancien, pour un élève arrivé ou parti en cours d'heure, se rappelle pour composer un récit tronqué ; et depuis (d), ce rappel repassait par « ma version », qui rappelait le moteur, qui rappelait « ma version »… à l'infini. Ce n'était pas (b4-2), c'était (d), révélé seulement quand « tout cliquer » enchaîne « ma version » et « élève arrivé ». Réglé : le rappel interne du moteur va droit au récit brut. « Tout cliquer » : 105 clics, 0 erreur, 0 défaut.
+2. **Deux retouches** vues sur les captures : la séquence se redessine quand tu arrives au cahier avec la classe (l'étape 4 disait encore « le récit se complète… » alors que l'heure était finie) ; la tête du pas à pas, en colonne, se met sur deux lignes au lieu d'écraser les boutons.
+3. **Pas clos ce tour** : le banc unique des douze, lancé pendant les captures, n'a rien écrit (le même symptôme que la veille : deux navigateurs en concurrence) ; je le relance seul au prochain tour, puis les cinq captures refaites après la retouche, le dépôt (pièces, registre n°12 · 62, transcript). Rien n'est déposé d'ici là. (Et une erreur de manipulation dite : un nettoyage de processus a encore tué le shell du tour ; le transcript a été refait juste après.)
+
+« Continuer ».
+
+24/09/2026 14:38 MEMO
 
 ---

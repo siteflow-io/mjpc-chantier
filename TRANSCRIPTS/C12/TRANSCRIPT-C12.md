@@ -7076,3 +7076,29 @@ Deux choses à ton mot : **(a)** la saisie de « remobilise » à la préparatio
 24/09/2026 20:06 MEMO
 
 ---
+
+## TOUR 204 — Paul
+
+Texte de Paul, mot pour mot :
+
+> 2. donc ça doit être dans le prompt pour que l'instance fasse les liens entre séances et activités. 3. non, la formulation ne va pas. ce n'est pas "non travaillée depuis", c'est non travaillée tout court! b. du coup à voir.
+
+---
+
+## TOUR 204 — Claude (conscience n°12)
+
+Deux captures de proposition (`pieces/T204-proposition-remobilise-ouverture/chapitre-plein-ecran.png`, injectées après une heure 1 close avec l'activité 1 en réserve) : le signalement à l'ouverture de l'heure 2 avec trois choix ; le tracé et l'état « manquante pour la suite ». Aucun code, rien déposé hormis ce transcript et les captures.
+
+Réponse mot pour mot :
+
+Pris, et montré (deux captures plein écran jointes, propositions injectées, rien codé) :
+
+1. **La donnée vient du prompt de préparation** : c'est l'instance qui prépare la séance qui fait les liens entre séances et activités — pour chaque activité, ce qu'elle travaille et ce qu'elle **remobilise**. Ça s'écrit au cadrage 4 (la préparation), dans ce que le prompt exige de la trame ; le pilotage ne fait que lire. Pas de saisie manuelle.
+2. **« Non travaillée » tout court** — corrigé partout.
+3. **b, à voir : le voici.** Capture 1, l'ouverture de mardi (« Où en est la classe ») : en tête, en rouge, « Ce que cette heure remobilise et qui n'a pas été travaillé » — « *Les règles héritées* (activité 2 de cette heure) remobilise « l'énonciation : qui parle, à qui » — **non travaillée** : l'activité 1 de lundi, *Analyse d'images*, est en réserve » ; trois choix : **« Remettre « Analyse d'images » avant »** (elle repasse en tête de l'heure), **« Décaler « Les règles héritées »** (elle glisse à l'heure suivante, comme une activité non faite), **« Laisser tel quel »** (tu joues l'heure en le sachant) ; c'est noté au journal, rien ne change dans la trame. Capture 2, le tracé du chapitre : l'heure à venir porte l'alerte, et dans les notions, « l'énonciation » passe en **« manquante pour la suite »**.
+
+Ton mot sur la capture 1 (les trois choix, leur libellé), et j'écris les cadrages (4 : la donnée dans le prompt ; 1 · 6.7 : l'ouverture ; 2 · 1 bis : le tracé et l'état) puis je code (g).
+
+24/09/2026 20:20 MEMO
+
+---

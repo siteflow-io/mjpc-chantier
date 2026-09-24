@@ -6622,3 +6622,29 @@ Ton mot sur 1 et 2, et je code (b4) : le pas à pas, la préparation (seul « Re
 24/09/2026 10:08 MEMO
 
 ---
+
+## TOUR 188 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok non ça ne va pas. Ce qu'on fait c'est que lorsqu'on est au cahier de texte, la zone de notes est réduite vers le bas (sur ppt, c'est une barre poignée qu'on tire depuis le bas de la diapo). On ne l'enlève pas, on la réduit. Et la préparation du cahier de texte se met là. Donc on peut revenir à une colonne de droite moins large, et surtout, l'écran vignette doit être complet, jamais réduit comme tu le montres là dans ta proposition visuelle.
+
+---
+
+## TOUR 188 — Claude (conscience n°12)
+
+Capture de proposition v3 (`pieces/T188-proposition-preparation-v3-plein-ecran.png`, injection : la diapo réduite par la poignée, la préparation sous la diapo, les notes réduites en bas, la colonne de droite normale, la vignette complète). Deux essais intermédiaires (v3, v3b) non livrés (la préparation coupée). Aucun code, rien déposé hormis ce transcript et la capture.
+
+Réponse mot pour mot :
+
+Capture jointe (plein écran, proposition injectée, rien codé), refaite selon ton mot :
+
+1. **Au cahier de textes, la diapo se réduit par une poignée sous elle** (comme PowerPoint : tirer vers le haut agrandit la diapo, vers le bas donne la place à la préparation) ; **la préparation prend la place, sous la diapo, au centre** — l'étape en cours à gauche (ses contrôles, « ◀ Étape précédente », « Étape suivante ▶ »), la liste des sept à droite, « Revenir au cours » en tête ; **la zone de notes n'est pas enlevée, elle est réduite** à une ligne tout en bas (« notes — réduites, tire la poignée pour les rouvrir »).
+2. **La colonne de droite reprend sa largeur normale**, sans la séquence : **la vignette « le tableau, en ce moment » complète** (la classe et ses trois étapes, jamais coupée), la suite pour la classe (« Montrer cette suite à la classe »), puis « Où on en est » et la participation comme d'habitude.
+3. Le volet de gauche normal ; le cahier entier chez toi (rien dévoilé pour la classe), « préparation — rien n'est montré à la classe » sous la diapo.
+
+Ton mot sur cette disposition, et je code (b4) : la poignée et la préparation sous la diapo, le pas à pas, seul « Revenir au cours » dégèle, le cahier entier sans dévoiler, « Montrer cette suite à la classe ».
+
+24/09/2026 10:24 MEMO
+
+---

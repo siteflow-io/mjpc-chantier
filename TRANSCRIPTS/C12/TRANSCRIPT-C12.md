@@ -6992,3 +6992,30 @@ Tests : ⚙ T-5 → « Préparer » : sous la vignette, la ligne avec l'étape s
 24/09/2026 18:12 MEMO
 
 ---
+
+## TOUR 201 — Paul
+
+Texte de Paul, mot pour mot :
+
+> je n'ai rien testé de ta livraison de 18h07, continue
+
+---
+
+## TOUR 201 — Claude (conscience n°12)
+
+(e) codée sur le gabarit b5 → `T201-v9c14e-template.html` : `#bqui` (👥) avant ⋯, `basculerQui(par)` unique (bouton / Maj+P / menu), le raccourci Maj + P hors champ, la classe `.actif`. Banc `T201-test-e-qui-a-participe.mjs` 0 ; banc unique : douze à 0, l'audit rejoué seul à 0 (le script s'éteint au dernier banc ; l'audit passe en premier désormais). Registre n°12 · 63. Deux captures (une contrôlée). Maquette `T201-maquette-pilotage-ordi-v9c14e-manipulable.html`. Pièces au sas. Rien d'autre déposé hormis ce transcript, ses pièces et le registre.
+
+Réponse mot pour mot :
+
+**(e) livrée — le bouton « Qui a participé » à part, et Maj + P (v9c.14 e jointe, deux captures jointes) — treize bancs à 0.**
+
+1. **Ce que tu as** : un bouton 👥 dans la barre d'outils, juste avant ⋯, avec son infobulle (« Qui a participé (Maj + P) : montre à la classe qui a participé depuis le début de l'heure — réponses et prises de parole — et combien il reste à passer ; un second clic le retire ») ; **Maj + P** fait la même chose au clavier (dans une réponse, Maj + P tape un P, comme il se doit) ; le menu ⋯ garde son entrée. Le bouton s'allume tant que c'est au tableau ; le journal note par quel geste (capture : « 2 élèves sur 29 ont participé — Gatien · Zélia — il reste 27 élèves à passer »).
+2. **Les bancs** : le nouveau (le bouton, Maj + P, le menu, la lettre seule qui ne fait rien, Maj + P dans un champ) à 0 ; douze bancs à 0 en une commande, le treizième (l'affichage) rejoué seul à 0 — pour la troisième fois le script s'éteint pendant ce dernier banc (le plus lourd : six navigateurs) ; je l'ai mis en premier pour la suite. Registre n°12 · 63.
+
+Tests : sur Question-bilan, une réponse (GA) et une prise de parole (VIF, ze, 2) ; clique 👥 : la classe voit « 2 élèves sur 29 ont participé — Gatien · Zélia — il reste 27 à passer », le bouton s'allume ; re-clique : retiré ; Maj + P : affiché ; Maj + P : retiré ; clique dans une réponse et tape Maj + P : un P s'écrit, rien au tableau.
+
+« Continuer » pour (f) — la face « Le chapitre » (sixième face de la Relecture), après sa relecture de télescopage.
+
+24/09/2026 18:30 MEMO
+
+---

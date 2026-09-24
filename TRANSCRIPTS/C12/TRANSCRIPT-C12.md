@@ -6375,3 +6375,30 @@ Tests : ⚙ → accéléré ; ▶ ×3 : le cahier est agrandi d'emblée ; « Tab
 23/09/2026 17:55 MEMO
 
 ---
+
+## TOUR 179 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok il y a un souci: la fin de l'heure dans l'ordre dois m'être proposée AVANT que le cahier de texte ne s'affiche. Je ne dois pas être obligé de cliquer sur "fin de l'heure" pour accéder à ce panneau et ses sections. sinon, je ne peux pas préparer mon agenda.
+
+---
+
+## TOUR 179 — Claude (conscience n°12)
+
+`palier('t5')` et `gc-aller` ouvrent la séquence (`ouvrirFin(true)`) ; la garde ignore les décisions par défaut ; `.droite.fin.cahier > .suivante` visible (classe `cahier` posée dans `tout()`). Bancs (b, cahier, d, audit) étendus ; banc unique 9 × 0. Cadrage 1 · 7.0 complété, déposé. Registre n°12 · 59. Deux captures (une contrôlée). Maquette `T179-maquette-pilotage-ordi-v9c14d5-manipulable.html`. Pièces au sas. Rien d'autre déposé hormis ce transcript, ses pièces, le cadrage et le registre.
+
+Réponse mot pour mot :
+
+Fait (v9c.14 d5 jointe, deux captures jointes), neuf bancs à 0 :
+
+1. **La séquence « Fin de l'heure — dans l'ordre » s'ouvre d'elle-même** : à T-5, en même temps que l'alerte (tu prépares l'échéance et les décisions pendant que la classe termine), et au « Y aller » de la garde du cahier si elle n'était pas déjà ouverte — sans passer par « Fin de l'heure », qui reste le geste manuel. Cadrage 1 · 7.0 précisé.
+2. **Deux télescopages trouvés au banc, réglés** : la garde du cahier prenait les décisions par défaut (posées par la séquence) pour tes décisions et passait en « validation » à tort — corrigé ; et en fin d'heure la colonne cachait la vue « le tableau, en ce moment » — **sur le cahier, elle reste visible au-dessus de la séquence** (capture 2 : le tableau côté classe encore vide, la séquence dessous, toi qui prépares) ; ailleurs en fin d'heure, la séquence seule.
+
+Registre n°12 · 59.
+
+Tests : ⚙ → T-5 : l'alerte au-dessus des notes **et** la colonne ouverte sur « 1 · L'échéance » ; choisis-la ; « Aller au cahier de textes » → « Y aller » : le cahier gris (rien dévoilé), la vue du tableau au-dessus de la séquence, l'échéance déjà choisie ; ▶ : la date apparaît à la classe.
+
+24/09/2026 07:24 MEMO
+
+---

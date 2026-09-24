@@ -6428,3 +6428,33 @@ Oui, et avec l'existant tu as déjà trois façons, de la moins bonne à la meil
 24/09/2026 07:33 MEMO
 
 ---
+
+## TOUR 181 — Paul
+
+Texte de Paul, mot pour mot :
+
+> oui ta proposition est la bonne. et j'aimerais avoir une sorte de guidage pour le remplissage du cahier de texte. en effet, c'est souvent un moment où je dois me concentrer sur ce que je prévois etc, et si je le fais dans la précipitation, c'est le moment où j'oublie. Que proposes-tu?
+
+---
+
+## TOUR 181 — Claude (conscience n°12)
+
+Proposition de guidage (la liste de contrôle en tête de la séquence, le travail à faire et la copie ED comme étapes, le récit relu, la garde à Clore), deux questions (l'ordre, la garde). Aucun code, rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Le guidage existe déjà à moitié : c'est la séquence (1 · l'échéance → 2 · ce qui reste → 3 · avant de clore → 4 · clore), qui n'allume la flèche suivante que lorsque l'étape est faite. Ce qui lui manque pour être un vrai garde-fou de la précipitation, dans tes mots :
+
+1. **Une liste de contrôle en tête de la séquence**, qui se coche toute seule et dit **la prochaine étape** : « ✔ l'échéance · ✔ ce qui reste (2 décisions) · ○ le travail à faire — *c'est là que tu en es* · ○ le récit relu · ○ le mot aux absents (facultatif) · ○ copié pour École Directe · ○ clore ». Un clic sur une ligne t'emmène au bon endroit (la section, ou le champ dans la diapo).
+2. **Le travail à faire devient une étape à part entière** (aujourd'hui il se remplit « en passant » par les cases) : l'étape rappelle ce qui le nourrit et **te propose** ce que tu risques d'oublier — ce que la trame prévoyait pour cette date, les notions cochées, l'activité non terminée (« à finir à la maison » si tu l'as décidé), et un « et pour la prochaine fois, rien d'autre ? » ; elle n'est cochée que si le travail a du texte, ou si tu dis explicitement « rien pour la prochaine fois ».
+3. **Le récit relu** : une étape qui te demande de le parcourir une fois (elle se coche quand tu as fait défiler jusqu'au bout, ou choisi « ma version »).
+4. **La copie pour École Directe** devient une étape (le contenu, puis le travail) : cochée quand c'est copié — c'est celle qu'on oublie le plus.
+5. **Une garde à « Clore »** qui dit ce qui manque : « Il manque : le travail à faire, la copie pour École Directe — clore quand même ? » (Clore quand même / Y retourner). Rien n'est bloquant : tu restes maître, mais tu ne peux pas clore sans l'avoir lu.
+
+Tout ça s'appuie sur l'existant : la séquence, les cases, « ma version », la copie, le journal ; ça ajoute deux étapes (le travail, la copie) et la liste en tête. **Avec ta validation d'avant** : « Préparer le cahier de textes » ouvre tout ça sur la liste de contrôle, tableau gelé.
+
+Deux choses à ton mot : **l'ordre** des étapes (celui ci-dessus : échéance → ce qui reste → travail à faire → récit → mot aux absents → copie → clore), et **la garde à Clore** — « clore quand même ? » comme proposé, ou bloquante tant que le travail à faire est vide ?
+
+24/09/2026 07:41 MEMO
+
+---

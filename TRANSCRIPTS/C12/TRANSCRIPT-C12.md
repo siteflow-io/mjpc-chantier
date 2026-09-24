@@ -6940,3 +6940,20 @@ Réponse mot pour mot :
 24/09/2026 14:46 MEMO
 
 ---
+
+## TOUR 199 — Paul
+
+Texte de Paul, mot pour mot :
+
+> continuer
+
+---
+
+## TOUR 199 — Claude (conscience n°12)
+
+L'erreur du banc « tout cliquer » élucidée par un hook de mesure (`dbg-tc.mjs`) : une boucle infinie `recitHtml` ↔ `recitHtml0` — le moteur de l'ancien rappelle `recitHtml(fin, h, bornes)` pour un élève arrivé ou parti, et le wrapper de (d) repassait par « ma version » puis `recitHtml0`, à l'infini ; réglé (les appels avec bornes vont droit au moteur). « Tout cliquer » 105 clics, 0 erreur, 0 défaut. Deux retouches : la séquence se redessine à l'arrivée au cahier ; la tête du pas à pas compacte en colonne. Cinq captures prises (la 4 à refaire). Le banc unique lancé en parallèle des captures n'a rien écrit — à relancer seul. Un `pkill` a de nouveau tué le shell du tour (dit). Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+
+---

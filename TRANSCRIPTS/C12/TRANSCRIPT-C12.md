@@ -6596,3 +6596,29 @@ Ton mot sur la capture et sur cette explication, et je code (b4) : le pas à pas
 24/09/2026 09:52 MEMO
 
 ---
+
+## TOUR 187 — Paul
+
+Texte de Paul, mot pour mot :
+
+> alors non. la vignette doit remonter, parce que c'est surtout la visibilité de la prépa cahier de textes dont j'ai besoin. Et pour les flèches de dévoilement de la miniature, visuellement c'est incompréhensible, on ne comprend pas qu'elle est différente de la flèche de la diapo cahier de texte. En fait mon idée était vraiment d'en faire quelque chose d'exceptionnel, juste pour dévoiler une question ou une consigne suivante sur la diapo. D'où mon doute sur le fait de coder cette fonctionnalité. et en même temps, c'est très utile pédagogiquement, ça me permet de continuer à préparer tout en pilotant le tableau encore.
+
+---
+
+## TOUR 187 — Claude (conscience n°12)
+
+Capture de proposition v2 (`pieces/T187-proposition-preparation-v2-plein-ecran.png`) : la vignette petite en haut, « Montrer cette suite à la classe » avec l'aperçu de l'élément, le pas à pas prend la place. Aucun code, rien déposé hormis ce transcript et la capture.
+
+Réponse mot pour mot :
+
+Capture jointe (plein écran, proposition injectée, rien codé), refaite selon tes deux remarques :
+
+1. **La vignette redescend à sa taille habituelle, en haut** ; **le pas à pas prend toute la place** en dessous (une étape à la fois, ses contrôles, « ◀ Étape précédente / Étape suivante ▶ », la liste des sept en bas). La colonne de droite à la moitié de l'écran, le volet réduit à des numéros, le cahier entier au centre. (Sur la capture, la vignette est coupée en bas — un défaut d'échelle de l'injection, pas du codage à venir.)
+2. **Les flèches remplacées par un geste exceptionnel, explicite** : sous la vignette, une ligne qui dit **ce qui serait montré** — « Pour les élèves qui ont fini, la suite sur leur diapo : *Étape 4 — Je choisis de quel élément je vais parler.* » — et **un seul bouton, « Montrer cette suite à la classe »**. On lit ce qu'on va montrer avant de le montrer, on comprend que c'est pour la classe (pas pour le cahier), et il n'y a rien à confondre avec ▶. Pas de recul depuis là (pour reculer, tu reviens au cours). Quand la diapo de la classe est finie, la ligne dit « leur diapo est finie — la suite serait la diapo 2 : *Tableau 1* » et le bouton devient « Passer la classe à la diapo 2 » ; il s'arrête net avant le cahier de textes. Chaque « montrer » compte pour la classe (journal « montré depuis la préparation », récit, temps) et jamais pour le cahier.
+3. **Sur ton doute** : c'est bien un geste d'exception, et sous cette forme il est petit à coder (l'état gelé existe, on l'avance d'un cran et on l'envoie) et lisible. Je propose de le coder.
+
+Ton mot sur 1 et 2, et je code (b4) : le pas à pas, la préparation (seul « Revenir au cours » dégèle, le cahier entier sans dévoiler, les largeurs, les outils compacts) et « Montrer cette suite à la classe ».
+
+24/09/2026 10:08 MEMO
+
+---

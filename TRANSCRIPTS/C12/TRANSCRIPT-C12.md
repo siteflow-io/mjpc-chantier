@@ -6648,3 +6648,28 @@ Ton mot sur cette disposition, et je code (b4) : la poignée et la préparation 
 24/09/2026 10:24 MEMO
 
 ---
+
+## TOUR 189 — Paul
+
+Texte de Paul, mot pour mot :
+
+> pourquoi tu m'as remis la colonne de gauche en non réduite? Par ailleurs, je ne comprends pas pourquoi dans ton exemple le cahier de texte apparaît aussi gros. Je ne sais pas si c'est un effet de la capture ou de la maquette html.
+
+---
+
+## TOUR 189 — Claude (conscience n°12)
+
+Capture de proposition v4 (`pieces/T189-proposition-preparation-v4-plein-ecran.png`) : le volet réduit, la diapo réduite et re-rendue (texte proportionnel), la préparation sous la diapo, les notes réduites, la colonne de droite normale, la vignette complète. Trois essais intermédiaires non livrés (v3d, v3e). Aucun code, rien déposé hormis ce transcript et la capture.
+
+Réponse mot pour mot :
+
+Deux erreurs de ma part, corrigées sur la capture jointe :
+
+1. **Le volet de gauche** : tu l'avais demandé réduit au maximum et je l'avais remis normal en croyant que ta phrase « revenir à une colonne de droite moins large » valait pour les deux côtés. Il est réduit à des numéros sur cette capture, comme tu l'as dit.
+2. **Le cahier « aussi gros »** : c'était un effet de la capture, pas de la maquette. Dans l'injection, j'avais rétréci la diapo sans la redessiner, donc le texte gardait la taille d'une diapo pleine hauteur. Dans la maquette codée, le texte suit toujours la hauteur de la diapo (c'est la loi de taille : 32 pt de tableau = une proportion de la hauteur) : quand la poignée réduit la diapo, tout le cahier se réduit avec elle — c'est ce que montre maintenant la capture (la diapo à ~60 %, le texte proportionnel, la préparation en grand dessous, les notes réduites en bas, la colonne de droite normale avec la vignette complète).
+
+Ton mot sur cette disposition, et je code (b4).
+
+24/09/2026 10:33 MEMO
+
+---

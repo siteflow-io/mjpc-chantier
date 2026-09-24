@@ -6849,3 +6849,37 @@ Tout ce qu'il faut pour (b4) est cadré et validé : la disposition de préparat
 24/09/2026 12:56 MEMO
 
 ---
+
+## TOUR 196 — Paul
+
+Texte de Paul, mot pour mot :
+
+> continuer
+
+---
+
+## TOUR 196 — Claude (conscience n°12)
+
+(b4-1) codée par `vis/patch-b4.py` (gabarit `v9c14b4-template.html`, non déposé) : poignée (`#poignee-mur`, `S.murPart` dans `dimensionner`), zone `#prep`, notes `.reduites`, volet réduit (`.corps.prep`), `sequenceHtml` réécrit en pas à pas (une étape, `#f-suivante` avec `data-fleche`, `#f-precedente`, la liste `.sec[data-sec] > .ctl-l[data-ouvre]`), `ouvrirFin` rend dans `#prep` en préparation, `preparerCahier` / `revenirAuCours` posent et rendent la disposition (`S.dispoAvant`), ▶ / ❄ / Clore refusés en préparation, le cahier entier (`cahier.prepa`). Pièges : `f-fermer` absent en préparation ; la colonne remise en `fin` par ouvrirFin. Banc `test-b4.mjs` 0 ; test-d, test-c, test-b2-apercu recalés 0 ; test-b3, test-b, test-cahier à recaler (sections empilées). Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+**(b4) — première partie codée et prouvée, livraison pas close (limite d'outils atteinte) ; rien déposé au sas ni au registre tant que tout n'est pas à 0.**
+
+**Relecture de télescopage (b4), en tête :**
+1. **La colonne de droite pendant la préparation** : la séquence y vivait ; elle doit rester normale (la vignette complète, « Où on en est ») → le pas à pas se rend dans une zone sous la diapo (`#prep`) en préparation, et dans la colonne hors préparation — même composant, mêmes identifiants (les bancs de (b3) tiennent par les ids).
+2. **La taille de la diapo** : le calcul de la place existait (`dimensionner`) → une « part de hauteur » pilotée par la poignée (58 % de départ en préparation, 100 % sinon) ; le texte suit (loi de taille).
+3. **Le gel et les dégels** : ❄ et Clore en préparation → refusés avec le message ; seul « Revenir au cours » dégèle.
+4. **Le dévoilement en préparation** : ▶ ne fait rien ; le cahier est rendu entier chez toi par un drapeau dans l'état (jamais envoyé au tableau, qui reste gelé).
+5. **Les sept sections empilées** → un seul « pas à pas » ; « Étape suivante » garde l'identité de l'ancienne flèche pour les bancs.
+6. **« Montrer cette suite à la classe »** et **le récit au fil de l'heure** (ma version + la suite à part, « Reprendre la suite ») : pas encore codés — deuxième partie.
+
+**Fait et prouvé par le geste (banc b4, 0 défaut)** : « Préparer le cahier de textes » pose la disposition validée (volet en numéros, diapo réduite par la poignée, notes réduites en bas, le pas à pas sous la diapo, la colonne normale avec la vignette), le cahier entier chez toi (rien à la classe, « préparation — rien n'est montré à la classe »), ▶ inactif, ❄ inactif, Clore refusé (« reviens au cours, puis clos »), le pas à pas (étape 1 → suivante → 2, la liste cliquable, l'étape 4 « à relire à la fin » avec « Relu » grisé en milieu d'heure), la poignée qui rétrécit ou agrandit la diapo, « Revenir au cours » qui rend tout, et **la préparation gardée** (re-« Préparer » → la même étape, l'échéance choisie).
+
+**Ce qui reste, au prochain tour** : trois bancs anciens à recaler sur le pas à pas (le guidage, l'alerte-séquence, le cahier — ils cherchent encore des sections empilées), le banc unique des onze, les captures, le dépôt ; puis la deuxième partie (le geste d'exception et le récit au fil de l'heure).
+
+« Continuer ».
+
+24/09/2026 13:22 MEMO
+
+---

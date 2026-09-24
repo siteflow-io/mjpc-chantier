@@ -6827,3 +6827,25 @@ Deux exemples, avec le récit réel de la maquette (même heure : activité 1 pu
 24/09/2026 12:52 MEMO
 
 ---
+
+## TOUR 195 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok.
+
+---
+
+## TOUR 195 — Claude (conscience n°12)
+
+Cadrage 2 · 3.8 et cadrage 1 · 7.0 ter complétés et déposés bit à bit. Aucun code. Rien déposé hormis ce transcript et les cadrages.
+
+Réponse mot pour mot :
+
+Écrit et déposé (cadrage 2 · 3.8 : ma version au fil de l'heure, la suite à part, « Reprendre la suite dans ma version », le récit relu seulement à la fin ; cadrage 1 · 7.0 ter : la préparation se garde, « Revenir au cours » ne perd rien).
+
+Tout ce qu'il faut pour (b4) est cadré et validé : la disposition de préparation (poignées actives), le pas à pas, seul « Revenir au cours » dégèle, le cahier entier sans dévoiler, « Montrer cette suite à la classe », le récit au fil de l'heure. « Continuer » lance (b4), relecture de télescopage en tête.
+
+24/09/2026 12:56 MEMO
+
+---

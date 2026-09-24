@@ -6542,3 +6542,33 @@ Si ces trois points te vont, je les écris au cadrage (7.0 bis) et je remplace l
 24/09/2026 09:41 MEMO
 
 ---
+
+## TOUR 185 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok ça me va. mais pour la préparation du cahier de texte, il faudrait que la colonne de droite prenne la moitié de la largeur de l'écran automatiquement, que la colonne de gauche se réduise au maximum, et que l'écran central soit bien visible quand même. Par ailleurs, il faut absolument que la vignette bascule sur la vue tableau en ce moment, afin que je puisse continuer à aider les élèves là dessus. et ce serait intéressant si j'avais les flèches de dévoilement sur la vignette, afin de pouvoir dévoiler une consigne suivante pour des élèves qui auraient fini l'activité en cours. à voir au télescopage, et surtout le bénéfice risque/lourdeur du chantier
+
+---
+
+## TOUR 185 — Claude (conscience n°12)
+
+Mise en tension (largeurs : simple ; la vignette : déjà fait ; les flèches de dévoilement sur la vignette : bénéfice / risque / lourdeur, borne proposée). Aucun code, rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Compris, mis en tension point par point — rien codé :
+
+1. **La colonne de droite à la moitié de l'écran en préparation, la gauche au minimum, le centre visible** : simple et sans télescopage. Les largeurs des colonnes existent déjà (les poignées) ; en préparation, la droite passe à la moitié de la fenêtre, le volet se réduit au plus étroit (les vignettes deviennent des numéros), la diapo du centre garde ses proportions dans ce qui reste (à 1536 px : la diapo fait encore ~600 px de large, lisible pour préparer) ; « Revenir au cours » rend les largeurs d'avant. L'audit d'affichage le mesurera aux trois tailles.
+2. **La vignette sur « le tableau, en ce moment »** : c'est déjà fait depuis hier (« Préparer » y bascule, elle reste visible au-dessus de la séquence sur le cahier) — la capture de la proposition le montre (« gelé — la classe est sur la diapo 1 »).
+3. **Les flèches de dévoilement sur la vignette, pour la classe pendant que tu prépares** — le télescopage est réel, et voici le bénéfice / risque / lourdeur :
+   - **Bénéfice** : réel et pédagogique — les élèves qui ont fini avancent d'une étape sans que tu quittes le cahier ; c'est exactement l'autonomie de moins le quart.
+   - **Risque** : le gel devient un « pilotage de la classe à distance » : deux curseurs (le tien sur le cahier, celui de la classe sur sa diapo). Ce que ça touche : le dévoilement compte pour la classe (le journal, « finie », le récit, les états de temps), pas pour le cahier ; ▶ au clavier ne peut pas servir (tu écris dans le cahier) ; et il faut une borne : **on dévoile la diapo où la classe est, on peut passer à sa diapo suivante, mais jamais jusqu'au cahier de textes** (lui se joue avec la classe). Le risque de confusion se règle par un seul endroit : les flèches **sur la vignette elle-même**, et nulle part ailleurs, avec « la classe est sur la diapo 1 · 3 / 6 » sous la vignette.
+   - **Lourdeur** : une livraison courte — l'état gelé existe et sait se pousser au tableau ; il s'agit de le faire avancer d'un cran depuis deux boutons ◀ ▶ sur la vignette (dévoiler / élément précédent / diapo suivante), avec le journal qui note « dévoilé depuis la préparation ».
+   - **Mon avis** : ça vaut le coup, avec la borne ci-dessus ; c'est le cadrage 1.9 (le tableau tenu pendant que Paul fait autre chose) poussé d'un cran.
+
+Si tu valides 1 et 3 avec la borne, j'écris 7.0 bis en entier (le pas à pas, la préparation, seul « Revenir » dégèle, le cahier entier sans dévoiler, les largeurs, les flèches de la vignette) et je code le tout en une livraison (b4), relecture de télescopage en tête.
+
+24/09/2026 09:42 MEMO
+
+---

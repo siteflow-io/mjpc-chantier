@@ -6484,3 +6484,35 @@ Pris, écrit et déposé (cadrage 1 · 7.0 bis « le guidage du cahier de textes
 24/09/2026 07:52 MEMO
 
 ---
+
+## TOUR 183 — Paul
+
+Texte de Paul, mot pour mot (tours 182 bis et 183) :
+
+> Continuer
+
+> Continuer
+
+---
+
+## TOUR 183 — Claude (conscience n°12)
+
+(b3) codée par `T183-patch-b3.py` → `T183-v9c14b3-template.html` : `preparerCahier` / `revenirAuCours`, `controleCahier`, la séquence en sept sections (`sequenceHtml` réécrite), `allerAuCahier`, `copierTexte`, `manquesAvantDeClore`, la garde à Clore, le récit relu par le défilement, les copies comptées. Défauts anciens réglés : le voile de fin rouvert vide par `ouvrirFin` ; le tick pendant l'ouverture ; `DECALAGE` reporté sur H2 ; l'animation pendant l'ouverture ; la détection de l'ouverture par « #fin dans #ecran-fin ». Bancs : `T183-test-b3-guidage.mjs` 0 ; neuf autres recalés (sept sections, la garde à Clore, l'ouverture lancée avant de clore, les simulations hors de « tout cliquer ») — 0 chacun ; banc unique `T183-tous-les-bancs-b3.sh`. Quatre captures contrôlées. Registre n°12 · 60. Maquette `T183-maquette-pilotage-ordi-v9c14b3-manipulable.html`. Pièces au sas. Rien d'autre déposé hormis ce transcript, ses pièces et le registre.
+
+Réponse mot pour mot :
+
+**(b3) le guidage du cahier de textes — livré (v9c.14 b3 jointe, quatre captures plein écran jointes), dix bancs à 0.**
+
+1. **Le blocage d'hier, compris et réglé** : la séquence rouvrait à chaque fois le vieux voile de fin d'heure, **vide**, qui interceptait les clics — masqué jusque-là parce que le bouton Clore flottait au-dessus de tout. En creusant, trois autres défauts anciens : le compte à rebours déclenchait l'alerte pendant l'écran d'ouverture de mardi (et le cassait), le décalage simulé de lundi se reportait sur mardi (T-5 immédiat), l'animation accélérée continuait pendant l'ouverture. Les quatre sont réglés et mesurés.
+2. **Ce que tu as** : « Préparer le cahier de textes » (dans l'alerte T-5 et en tête de la séquence) — le tableau gelé sur la diapo en cours, le cahier chez toi, la séquence ouverte, la vue de droite sur « le tableau, en ce moment » (capture 2 : la classe voit toujours ses étapes, toi le cahier) ; « Revenir au cours » te ramène et dégèle.
+3. **La liste de contrôle** en tête, qui se coche seule et dit « c'est là que tu en es » ; sept étapes (l'échéance · ce qui reste · le travail à faire · le récit relu · le mot aux absents · copié pour École Directe · clore), chacune avec ses aides (« Écrire dans le cahier ▸ », « Rien pour la prochaine fois », « Lire dans le cahier ▸ », « Relu », les deux copies).
+4. **La garde à Clore** (capture 4) : ce qui manque, et ce que tu risques pour chacun ; « Y retourner » ouvre la première étape manquante ; « Clore quand même » clôt et le note au journal.
+5. Registre n°12 · 60 ; empreintes des pièces contrôlées.
+
+Tests : ⚙ → T-5 ; « Préparer le cahier de textes » : ❄ dans le bandeau, le cahier chez toi, la classe toujours sur ses étapes (vue de droite), la liste de contrôle ; choisis l'échéance (✔) ; clique « ce qui reste », décide pour chaque activité (✔) ; « le travail à faire » → « Écrire dans le cahier ▸ », tape une ligne ; « le récit relu » → « Lire dans le cahier ▸ », molette jusqu'au bout (✔), remonte : reste ✔ ; « copié » : les deux copies (✔) ; « Revenir au cours » : ta diapo, dégelée ; « Fin de l'heure » → section 7 → Clore : la garde te dit ce qui manque ; « Y retourner » ; puis « Clore quand même ».
+
+« Continuer » pour (e) — le bouton « Qui a participé », Maj + P.
+
+24/09/2026 09:35 MEMO
+
+---

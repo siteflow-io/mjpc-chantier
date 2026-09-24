@@ -1,0 +1,2 @@
+#!/bin/sh
+cd /home/claude; r=0; for f in audit-affichage-e test-e test-b5-e test-b4-e test-b3-e test-d-e test-c-e test-b2-apercu-e test-b-e test-cahier-e test-a0-e regression-e tout-cliquer-e; do out=$(timeout 400 node vis/$f.mjs 2>&1 | grep -a "fin :" | tail -1); echo "$f : $out"; echo "$out" | grep -q "fin : 0 défaut" || r=1; done; [ $r = 0 ] && echo "TOUS LES BANCS : 0 défaut" || echo "ÉCHEC"; exit $r

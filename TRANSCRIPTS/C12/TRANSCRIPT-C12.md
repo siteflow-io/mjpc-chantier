@@ -6775,3 +6775,55 @@ Si ça te va, j'écris ce flux au cadrage (2 · 3.8 et 7.0 ter) et « continuer 
 24/09/2026 11:04 MEMO
 
 ---
+
+## TOUR 194 — Paul
+
+Texte de Paul, mot pour mot :
+
+> montre moi un exemple de récit auquel j'aurais ajouté une phrase en plein milieu de l'heure, et un exemple où j'aurais modifié une phrase automatique d'un premier paragraphe par exmeple.
+
+---
+
+## TOUR 194 — Claude (conscience n°12)
+
+Deux exemples en texte (ajout d'une phrase au milieu ; modification d'une phrase automatique du premier paragraphe), avec la suite composée à part et le récit final après reprise ; le cas d'un retour tardif sur une activité déjà racontée. Aucun code, rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Deux exemples, avec le récit réel de la maquette (même heure : activité 1 puis « Les hypothèses de la classe », puis « Question-bilan »). Dans les deux, tu prends la plume à 15 h 40, pendant « Les hypothèses de la classe » en autonomie.
+
+**1. Tu ajoutes une phrase au milieu de l'heure.**
+
+*Ce que le site avait composé à 15 h 40, et que « ma version » a figé :*
+> Au début de l'heure, on a commencé par l'activité 1 — Analyse d'images : les cinq tableaux.
+> Activité 1 — À 15 h 07, la consigne était : « Observe, discute, fais une hypothèse sur le Romantisme. » — d'abord on a observé les images en silence ; après quoi on a discuté en groupe de ce qu'on voyait ; dans un second temps la consigne disait : « Au brouillon, dans un tableau à trois colonnes… » ; et enfin on a choisi de quel élément on allait parler. De plus, on a observé cinq documents (Tableau 1 à 5).
+
+*Tu ajoutes ta phrase (en gras ici pour la voir) :*
+> … De plus, on a observé cinq documents (Tableau 1 à 5). **Beaucoup ont relevé le personnage de dos et la brume ; on a fixé le mot « sublime » au tableau.**
+
+*Ce que le site ajoute dessous, à part, au fur et à mesure (tu n'y touches pas) :*
+> — la suite de l'heure, composée par le site depuis 15 h 40 :
+> Puis, au milieu de l'heure, on a continué l'activité 1 avec Les hypothèses de la classe : Gatien a proposé « une nature immense face à un homme petit », Romain « la solitude et le silence ».
+> Enfin, à la fin de l'heure, on a fait l'activité 2 — Question-bilan : on a posé la question : « Qu'ont en commun ces cinq tableaux ? » ; la réponse attendue vue en classe était : « Une nature immense face à un homme petit ; l'émotion avant la règle ».
+> Et on l'a terminée.
+
+*À la fin, « Reprendre la suite dans ma version » colle les deux, et c'est ce qui part (École Directe, historique) après relecture :*
+> Au début de l'heure, on a commencé par l'activité 1 — … De plus, on a observé cinq documents (Tableau 1 à 5). **Beaucoup ont relevé le personnage de dos et la brume ; on a fixé le mot « sublime » au tableau.**
+> Puis, au milieu de l'heure, on a continué l'activité 1 avec Les hypothèses de la classe : Gatien a proposé… Romain…
+> Enfin, à la fin de l'heure, on a fait l'activité 2 — Question-bilan : … Et on l'a terminée.
+
+**2. Tu modifies une phrase automatique du premier paragraphe.**
+
+*Le site avait écrit :*
+> … après quoi on a discuté en groupe de ce qu'on voyait ; dans un second temps la consigne disait : « Au brouillon, dans un tableau à trois colonnes — ce que je vois, ce que je ressens, ce que je me demande. Au moins trois lignes par colonne (10 min). » ; …
+
+*Tu la remplaces par la tienne (en gras) :*
+> … après quoi on a discuté en groupe de ce qu'on voyait ; **puis chacun a rempli au brouillon un tableau à trois colonnes (ce que je vois / ce que je ressens / ce que je me demande) — la plupart ont eu du mal avec la troisième colonne** ; …
+
+*Ta phrase ne bouge plus jamais* : le site ne réécrit pas ta version. La suite de l'heure s'ajoute dessous, à part, exactement comme dans l'exemple 1 ; à la fin, « Reprendre la suite dans ma version », relecture, et ça part avec ta phrase corrigée et la suite.
+
+**Un cas à connaître** : si, après 15 h 40, il se passe quelque chose qui concerne le début (Ambre donne à 15 h 55 une réponse sur l'activité 1), ça n'est pas réécrit dans ton premier paragraphe — c'est raconté dans la suite, à sa place dans le temps (« on est revenu sur l'activité 1 : Ambre a proposé… »), et tu le laisses là ou tu le déplaces en corrigeant à la fin.
+
+24/09/2026 12:52 MEMO
+
+---

@@ -6572,3 +6572,27 @@ Si tu valides 1 et 3 avec la borne, j'écris 7.0 bis en entier (le pas à pas, l
 24/09/2026 09:42 MEMO
 
 ---
+
+## TOUR 186 — Paul
+
+Texte de Paul, mot pour mot :
+
+> 3. je n'ai pas compris comment tu résous. 1. ok. et je veux une capture pour voir le visuel, avant de te dire de coder.
+
+---
+
+## TOUR 186 — Claude (conscience n°12)
+
+Capture de proposition (`pieces/T186-proposition-preparation-largeurs-plein-ecran.png`, injection : droite à la moitié, volet réduit, cahier entier, vignette avec « ◀ / ▶ Dévoiler pour la classe » et « la classe est sur la diapo 1 · 3 / 6 dévoilés », pas à pas). Le point 3 réexpliqué (faire avancer la photo figée de la classe ; compte pour la classe ; borne avant le cahier ; ▶ clavier inactif). Aucun code, rien déposé hormis ce transcript et la capture.
+
+Réponse mot pour mot :
+
+1. **La capture jointe** (plein écran, proposition injectée, rien codé) : en préparation, le volet de gauche réduit à des numéros, le cahier de textes entier au centre (plus petit, lisible), et la colonne de droite à la moitié de l'écran — en haut la vue « le tableau, en ce moment » en grand (ce que la classe voit : ses trois étapes), avec sous elle les deux flèches et « la classe est sur la diapo 1 · 3 / 6 dévoilés » ; dessous, « Préparer le cahier de textes — Revenir au cours » et le pas à pas (une étape à la fois). Deux choses à resserrer au codage, visibles sur la capture : la barre d'outils du centre s'écrase sur trois lignes, et le titre de la diapo se replie — en préparation, les outils passent en version compacte.
+
+2. **Le point 3, expliqué autrement.** Aujourd'hui, quand tu gèles, la classe voit **une photo figée** de la diapo où elle était, et tu vas où tu veux chez toi. Les flèches sur la vignette **font avancer cette photo** : « ▶ Dévoiler pour la classe » dévoile l'élément suivant de la diapo de la classe et l'envoie au tableau — exactement comme si tu avais appuyé sur ▶ en étant sur cette diapo, sauf que tu n'y vas pas : ton curseur reste sur le cahier, tu continues à préparer. « ◀ » recule d'un élément, comme d'habitude. Ce que ça compte : **pour la classe** (la diapo 1 a un élément de plus dévoilé, le journal le note, le récit le racontera, les états de temps suivent) ; **rien pour le cahier** (il n'est pas dévoilé). La borne : quand la diapo de la classe est finie, ▶ passe à sa diapo suivante ; il s'arrête net avant le cahier de textes (« le cahier se joue avec la classe : reviens au cours »). Et pendant la préparation, ▶ au clavier ne fait rien (tu écris dans le cahier) : les flèches de la vignette sont le seul chemin, donc pas de confusion sur « qui avance ».
+
+Ton mot sur la capture et sur cette explication, et je code (b4) : le pas à pas, la préparation (seul « Revenir au cours » dégèle, le cahier entier sans dévoiler, les largeurs, les outils compacts), les flèches de la vignette avec la borne.
+
+24/09/2026 09:52 MEMO
+
+---

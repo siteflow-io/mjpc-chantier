@@ -7019,3 +7019,30 @@ Tests : sur Question-bilan, une réponse (GA) et une prise de parole (VIF, ze, 2
 24/09/2026 18:30 MEMO
 
 ---
+
+## TOUR 202 — Paul
+
+Texte de Paul, mot pour mot :
+
+> je n''ai toujours rien testé. continue
+
+---
+
+## TOUR 202 — Claude (conscience n°12)
+
+(f) codée par `T202-patch-f.py` → `T202-v9c14f-template.html` : l'onglet « Le chapitre », `chapitreHtml` (tracé / manquait-en trop / notions), `tempsActiviteH`, `brancherChapitre` (copie), la clôture archive `S.echeanceHeure` et `S.apprendreHeure`. Banc `T202-test-f-le-chapitre.mjs` 0 (piège : la relecture s'ouvre par l'onglet après la clôture de H1). Banc unique (audit en premier) : treize à 0 en une commande ; « tout cliquer » cassait sur l'onglet du chapitre (data-h changeant) → retouche, rejoué seul 0 ; banc unique relancé en fond après la retouche. Registre n°12 · 64. Capture contrôlée. Maquette `T202-maquette-pilotage-ordi-v9c14f-manipulable.html`. Pièces au sas. Rien d'autre déposé hormis ce transcript, ses pièces et le registre.
+
+Réponse mot pour mot :
+
+**(f) livrée — la face « Le chapitre » (v9c.14 f jointe, capture plein écran jointe) — quatorze bancs à 0. La série (a) à (f) de la v9c.14 est livrée.**
+
+1. **Ce que tu as** : dans la Relecture, un sixième onglet, « Le chapitre », en trois parties — **1 · le tracé des travaux à faire** (une ligne par heure : donné le, pour quelle date, le texte parti tel quel, « déjà donné pour cette date », copiable pour École Directe ; les heures à venir lues dans la trame) ; **2 · ce qui manquait, ce qui était en trop** (par heure : les activités parties à la maison ou reportées, temps prévu contre temps passé, « n activités sur N n'ont pas tenu · m min de trop » ; et ce qui manquait : notions imprévues, réponses gardées, notes versées, diapos modifiées) ; **3 · les notions du chapitre** (prévue où, travaillée quand et par quelle activité, à apprendre donnée quand ; travaillée / à venir / non travaillée / imprévue). Rien ne se verse depuis cette face. La clôture archive maintenant, par heure, l'échéance et les notions données, à côté du travail parti.
+2. **Les bancs** : le nouveau à 0 ; treize à 0 en une commande (l'audit en premier, cette fois il a tenu), « tout cliquer » rejoué seul à 0 (106 clics, 0 erreur) après une retouche de l'onglet ; le banc unique relancé en fond pour confirmer après cette retouche — je te donne le résultat au prochain tour. Registre n°12 · 64.
+
+Tests : joue une heure (ou l'accéléré), clôture ; « Relecture » → « Le chapitre » : le tracé de l'heure 1 avec ton échéance et ton texte, « Copier pour École Directe » ; l'heure 2 « à venir : la trame prévoit… » ; les activités parties à la maison avec leurs minutes ; les notions.
+
+**Ce qui reste, dans l'ordre du cahier des charges vivant** : (1) tes tests des livraisons (b3) à (f) que tu n'as pas encore faits ; (2) la maquette de la préparation (cadrage 4) ; (3) la séquence de test du mandat ; (4) le mandat en livraisons courtes + attendus hub ; (5) la « fausse relecture » / logo ED image que tu n'as pas envoyé ; (6) le journal de la page de test Win+K v2.
+
+24/09/2026 19:58 MEMO
+
+---

@@ -6695,3 +6695,30 @@ Oui : **les poignées restent toutes actives** — les deux colonnes et la poign
 24/09/2026 10:37 MEMO
 
 ---
+
+## TOUR 191 — Paul
+
+Texte de Paul, mot pour mot :
+
+> je viens de penser à quelque chose: parfois je prépare mon cahier de texte en pleiin milieu de la séance, pendant une activité autonome longue par exemple. il faut que si je reviens au cours alors que j'ai commencé à préparer mon cahier de texte, le site garde bien l'enregistrement de là où j'en étais dans ma préparation. on est d'accord? enfin, pour la relecture du récit. je n'ai toujorus pas compris comment je pouvais la valider dans la mesure où l'heure n'était pas déroulée entièrement.
+
+---
+
+## TOUR 191 — Claude (conscience n°12)
+
+Réponse de cadrage (la préparation gardée ; le récit relu seulement sur le récit final, décoché si l'heure continue ; « ma version » au milieu + la suite composée ajoutée à part). Aucun code, rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+1. **Oui, on est d'accord** : « Revenir au cours » ne perd rien. Tout ce que tu as préparé — l'étape où tu en étais, l'échéance, les décisions, le travail écrit, les cases, « rien pour la prochaine fois », le mot aux absents, ta version du récit — reste enregistré pour cette heure ; quand tu reviens à la préparation (par « Préparer » ou à T-5), tu reprends à l'étape où tu étais. Je l'écris en toutes lettres au cadrage.
+
+2. **Le récit en milieu d'heure — tu as raison, il y a un vrai télescopage** : le récit se compose jusqu'à la clôture ; ce que tu relis à moins le quart n'est pas ce qui partira, puisque la suite de l'heure s'y ajoutera. Deux règles pour que ça tienne :
+   - **« Le récit relu » se coche seulement sur le récit final** : si tu le relis au milieu, l'étape reste ○ avec « le récit se complète jusqu'à la fin de l'heure — à relire à la fin » ; et si tu l'as coché puis que l'heure continue (une nouvelle diapo vue), il se décoche avec « le récit a changé depuis : à relire ». La liste de contrôle te le rappelle au moment de clore.
+   - **« Ma version » au milieu de l'heure** : ta version est une photo du récit à cet instant ; ce qui se passe après doit y être. Je propose que le site **ajoute sous ta version, à part, la suite composée** (« — la suite de l'heure, composée par le site : … ») tant que tu ne l'as pas reprise ; « ma version (modifier) » à la fin te remet tout dans un seul texte à corriger. Tu ne perds rien, la suite n'est pas oubliée.
+   Ce que tu peux préparer sans risque au milieu de l'heure : l'échéance, les décisions (provisoires, elles suivront ce qui se joue ensuite), le travail à faire, le mot aux absents.
+
+Ton mot sur les deux règles du 2, et je les écris avec le 1, puis « continuer » lance (b4).
+
+24/09/2026 10:43 MEMO
+
+---

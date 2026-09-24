@@ -6964,3 +6964,31 @@ Réponse mot pour mot :
 24/09/2026 14:38 MEMO
 
 ---
+
+## TOUR 200 — Paul
+
+Texte de Paul, mot pour mot :
+
+> continuer
+
+---
+
+## TOUR 200 — Claude (conscience n°12)
+
+Banc unique b5 relancé seul : onze bancs à 0 en une commande ; l'audit d'affichage rejoué seul (0) car le script a été coupé avant sa dernière ligne. Captures refaites après les deux retouches (une contrôlée). Registre n°12 · 62. Maquette `T200-maquette-pilotage-ordi-v9c14b5-manipulable.html`. Pièces au sas (empreintes contrôlées). Rien d'autre déposé hormis ce transcript, ses pièces et le registre.
+
+Réponse mot pour mot :
+
+**(b4) deuxième partie — livrée (v9c.14 b5 jointe, cinq captures plein écran jointes) : douze bancs à 0.**
+
+1. **Le banc unique**, relancé seul : onze bancs à 0 en une commande ; le douzième (l'affichage) n'a pas eu le temps d'écrire sa ligne avant que le script soit coupé — rejoué seul, 0 défaut. Je le dis tel quel.
+2. **Ce que tu as** : en préparation, sous la vignette, « Pour les élèves qui ont fini, la suite sur leur diapo : *Étape 4 — …* » → **« Montrer cette suite à la classe »** (capture 1 ; capture 2 : le tableau côté classe après) ; leur diapo finie → « Passer la classe à la diapo 2 » ; avant le cahier → « reviens au cours ». Le récit au fil de l'heure : **ma version écrite à 15 h 52** (capture 3), puis l'heure jouée : au cahier, ton texte suivi de **« — la suite de l'heure, composée par le site depuis 15 h 52 »** (capture 4), **« Reprendre la suite dans ma version »** colle tout (capture 5) ; « relu » ne se coche qu'à la fin, au cahier avec la classe, et se décoche si une diapo est vue ensuite (« le récit a changé depuis : à relire »).
+3. Registre n°12 · 62 ; empreintes contrôlées.
+
+Tests : ⚙ T-5 → « Préparer » : sous la vignette, la ligne avec l'étape suivante ; « Montrer cette suite à la classe » : la classe voit une étape de plus, ton cahier reste tel quel ; clique jusqu'à « Passer la classe à la diapo 2 » ; « Revenir au cours ». Puis : joue la moitié de l'heure (⚙ accéléré, arrête-le avec ⚙ ou laisse-le), « Fin de l'heure » → « Préparer » → « 4 · le récit relu » → « Lire dans le cahier ▸ » → « ma version (modifier) », écris une phrase ; « Revenir au cours » ; finis l'heure ; au cahier, onglet Contenus : ta phrase, puis la suite composée dessous ; « Reprendre la suite dans ma version » ; molette au fond : « ✔ 4 · le récit relu » ; ▶ vers une autre diapo : « le récit a changé depuis : à relire ».
+
+« Continuer » pour (e) — le bouton « Qui a participé », Maj + P.
+
+24/09/2026 18:12 MEMO
+
+---

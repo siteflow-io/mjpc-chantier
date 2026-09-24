@@ -6748,3 +6748,30 @@ Ton mot, et j'écris ça au cadrage (7.0 ter et 2 · 3.8), puis « continuer » 
 24/09/2026 10:53 MEMO
 
 ---
+
+## TOUR 193 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok. donc si je comprends bien le flux, ça veut dire que je peux ajouter des choses de ma version au fur et à mesure de l'heure, comme ça je n'ai pas besoin de le faire à la fin? mais qu'en est-il des modifications sur le récit automatique, si je les fais au milieu de l'heure par exemple?
+
+---
+
+## TOUR 193 — Claude (conscience n°12)
+
+Réponse de cadrage (le flux de « ma version » au fil de l'heure ; corriger le composé = prendre la plume ; la suite ajoutée à part, retours compris ; « Reprendre la suite dans ma version »). Aucun code, rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Oui, c'est le flux — et il tient aussi pour les corrections du milieu d'heure :
+
+1. **Tu peux enrichir ta version au fil de l'heure.** Dès que tu choisis « ma version », ton texte est à toi : tu y ajoutes ce que tu veux, quand tu veux (à 15 h 40, à 15 h 50…). Rien ne t'oblige à tout faire à la fin.
+2. **Corriger le récit automatique au milieu = c'est la même chose que « ma version ».** Le récit composé se réécrit tout seul à chaque geste ; on ne peut donc pas y corriger une phrase « en place » (elle serait réécrite). Le seul moyen de corriger, c'est de prendre la plume : le clic sur « ma version (modifier) » fige **ce qui est composé à cet instant** dans ton texte, et tu corriges dedans — ta correction ne bouge plus.
+3. **Ce qui se passe après ta prise de plume** n'est jamais perdu : tout ce qui suit (la suite des activités, mais aussi un retour sur une activité déjà racontée — une réponse d'élève arrivée plus tard sur l'activité 1, par exemple, racontée comme « on est revenu sur… ») s'ajoute **dessous, à part**, composé par le site, dans l'ordre du temps.
+4. **À la fin, un seul geste** : « Reprendre la suite dans ma version » colle la suite composée à la fin de ton texte, en un seul récit à corriger ; tu relis, l'étape se coche, ça part. Tu peux le faire plusieurs fois dans l'heure si tu veux (chaque suite nouvelle s'incorpore à la demande), ou une seule fois à la fin.
+
+Si ça te va, j'écris ce flux au cadrage (2 · 3.8 et 7.0 ter) et « continuer » lance (b4).
+
+24/09/2026 11:04 MEMO
+
+---

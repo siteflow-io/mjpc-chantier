@@ -7434,3 +7434,25 @@ Ton mot sur la capture, et ton journal de test quand tu l'as fait ; (g) se code 
 25/09/2026 15:24 MEMO
 
 ---
+
+## TOUR 217 — Paul
+
+Pièce jointe : le journal de la page de test v1 (collé dans la conversation ; extraits en `pieces/T217-journal-test-dictee-v1-de-Paul.txt`).
+
+---
+
+## TOUR 217 — Claude (conscience n°12)
+
+Verdict mesuré : les boutons sans focus tiennent (aucun blur), mais chaque touche provoque `compositionend` ~30 ms après (le clavier arrête le micro) et s'insère au milieu du mot en composition. Page de test v2 (`docs/outils/test-dictee-v2.html`) : mode A (native) et mode B (le site écoute par la reconnaissance de Chrome, ponctuation au doigt sans coupure, texte au fur et à mesure) côte à côte. Rien d'autre déposé hormis ce transcript, la pièce et la page v2.
+
+Réponse mot pour mot :
+
+Ton journal est clair, et le verdict est net : **la ponctuation au doigt pendant la dictée native ne va pas.**
+
+1. **Ce que le journal prouve** : le champ n'a jamais perdu le focus (les boutons sans focus marchent) — mais **à chaque touche, le clavier termine sa composition dans les 30 ms** (« compositionend » juste après « bouton », les quatre fois), c'est-à-dire qu'il **arrête le micro** ; tu as dû rappuyer à chaque fois (6 s, 5 s, 4 s de silence avant la reprise). Et la touche s'insère **au milieu du mot en cours** : « cours à, » (le « à » est arrivé après la virgule), « ça ne« je » (le guillemet collé dans « ne »). Rien à faire côté site : c'est le clavier qui décide.
+2. **Ce qu'il reste, sans rien de payant** : **(A)** la dictée native telle quelle, la ponctuation **après coup** au doigt (une fois le micro arrêté, un bouton insère au curseur, ou tu touches un mot et la ponctuation se met après) — la qualité que tu connais, mais pas au fil de la parole ; **(B)** **le site qui écoute** (Chrome, pilotable) : les touches ne coupent rien, le texte vient au fur et à mesure, la ponctuation au doigt tient — la qualité reste à mesurer : sur ton téléphone, Chrome utilise le moteur du système, **c'est peut-être le même que ton clavier**. Je ne le sais pas ; il faut la même phrase dans les deux.
+3. **La page de test v2 fait les deux côte à côte** : **https://siteflow-io.github.io/monsieurjaipascompris/docs/outils/test-dictee-v2.html** — mode A comme avant (le micro du clavier), puis **🎤 Écouter (site)** pour le mode B : dis **la même phrase**, appuie « , » en parlant, « . », « ? », puis ■ Arrêter ; ✔ Valider, « Copier le journal ». Deux choses à me dire : la ponctuation au doigt a-t-elle tenu en B, et **la qualité de B comparée à A** (pareil / mieux / moins bien). C'est ce résultat qui décide du 7.2.
+
+25/09/2026 15:26 MEMO
+
+---

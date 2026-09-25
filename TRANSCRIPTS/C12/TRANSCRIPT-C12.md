@@ -7409,3 +7409,28 @@ Réponse mot pour mot :
 25/09/2026 15:12 MEMO
 
 ---
+
+## TOUR 216 — Paul
+
+Texte de Paul, mot pour mot :
+
+> continuer
+
+---
+
+## TOUR 216 — Claude (conscience n°12)
+
+Page de test `docs/outils/test-dictee.html` déposée sur le dépôt de production (boutons de ponctuation sans focus, insertion par execCommand / setRangeText, journal des événements focus/blur/composition/input, pauses horodatées, copie du journal) ; copie en pièce `T216-test-dictee.html`. Capture de proposition de l'écran de dictée (plein écran + zoom). Aucun code dans la maquette. Rien d'autre déposé hormis ce transcript, les pièces et la page de test.
+
+Réponse mot pour mot :
+
+Deux choses livrées :
+
+1. **La page de test de la dictée native**, sur le dépôt de production : **https://siteflow-io.github.io/monsieurjaipascompris/docs/outils/test-dictee.html** (quelques minutes pour qu'elle soit servie). Sur ton téléphone : touche le champ, lance le micro **de ton clavier**, dis une phrase ; sans arrêter, appuie sur le bouton « , » de la page ; continue de parler ; essaie « . » et « ? » ; ⏸ Pause puis ▶ Reprendre ; ✔ Valider ; **« Copier le journal »** et colle-le-moi ici. Les boutons ne prennent jamais le focus (c'est ce qui est testé) ; la page note tout (le focus, la composition en cours, chaque insertion, ce que le clavier a écrit après). C'est le journal qui dira si la dictée a tenu — pas moi.
+2. **La capture de l'écran de dictée** (plein écran + un zoom, propositions injectées, rien codé) : « Expliqué à l'oral » ouvert sur la diapo de l'activité 2 avant de dévoiler ; en tête, le chrono contre le prévu (« 1 min passée sur 3 prévues · l'heure est en retard de 4 min ») ; ce que l'oral remplace (l'activité 2, ou une reprise) ; les notions à cocher ; le texte au fur et à mesure (en jaune = dicté ; en gris = pas encore sûr) ; la rangée de ponctuation ; 🎤 / ⏸ / ▶ / ✔ Valider ; l'horodatage. (Un bouton radio est mal placé sur la capture — injection, pas le codage à venir.)
+
+Ton mot sur la capture, et ton journal de test quand tu l'as fait ; (g) se code après les deux.
+
+25/09/2026 15:24 MEMO
+
+---

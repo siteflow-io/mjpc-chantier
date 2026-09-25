@@ -7302,3 +7302,35 @@ Ton mot sur 1 (Chrome testé en vrai) et sur 3 (« faite à l'oral »), et je fa
 25/09/2026 07:12 MEMO
 
 ---
+
+## TOUR 212 — Paul
+
+Texte de Paul, mot pour mot :
+
+> 1. Non, il faut vraiment que ce soit le natif. whisper on oublie, on n'envisage jamais de chose payante. et google chrome, oui un peu meilleur, mais bof. Il faut trouver une solution. 2. ok. 3. et du coup si le contenu d'une activité n'est pas dévoilé, il ne fait pas partie du récit mais est remplacé par le transcript vocal, mais en revanche il faut qu'on puisse reprendre à la diapo suivante après, sauf si à nouveau mode vocal. Tu vois? il faut bien cadrer ce flux là, parce que sinon ça va faire des trous de cadrage. 4. ok
+
+---
+
+## TOUR 212 — Claude (conscience n°12)
+
+Réponse de cadrage (le natif : boutons sans focus, à mesurer par une page de test sur le téléphone ; le flux « faite à l'oral » cadré : où, pendant, validation, après, le repentir, la reprise). Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+1. **Le natif, sans rien de payant — la solution est à mesurer, pas à deviner.** Voici la piste, et sa limite honnête : la dictée du clavier ne s'arrête que si le champ perd le focus. Des boutons de ponctuation **qui ne prennent jamais le focus** (le site insère « , » « . » « ? » dans le champ sans le quitter) laissent le clavier ouvert — et donc, en principe, sa dictée en cours. Ce que je ne peux pas savoir d'ici : si **ton** clavier (celui de ton téléphone) tolère qu'on insère du texte pendant qu'il dicte, ou s'il coupe. **Ce que je propose : une page de test, comme pour Win+K** — un champ, les boutons de ponctuation « sans focus », ⏸ / ▶ (le site ne pilote pas le micro du clavier ; il horodate seulement), un journal ; tu l'ouvres sur ton téléphone, tu dictes une phrase, tu appuies « , » au doigt, tu continues, tu me dis. Si ça tient, c'est la solution ; si le clavier coupe, il n'y a **pas** de solution native au doigt, et on le saura — il resterait la ponctuation dite à la voix (« virgule »), que tu n'as pas voulue. Pause / reprise : avec la dictée native, la pause est celle du clavier (son micro) ; le site enregistre juste les moments.
+2. Pris.
+3. **Le flux « faite à l'oral », cadré pour qu'il n'y ait pas de trou** :
+   - **Où ça commence** : sur la diapo de l'activité, avant de dévoiler (rien n'est montré) — ou depuis n'importe où par « Expliqué à l'oral », en disant ce que ça remplace : *l'activité X* (faite à l'oral) ou *une reprise* (rien de prévu).
+   - **Pendant** : le tableau montre **le titre de l'activité et « à l'oral »**, pas son contenu ; chez toi, l'écran de dictée avec le chrono contre le prévu ; ⏸ / ▶ n'arrêtent que le temps compté.
+   - **À la validation** : l'activité est **faite à l'oral** (comme « terminée », avec ce marquage) ; son temps = ta dictée ; ses diapos ne sont pas dévoilées et **ne le seront plus dans cette heure** (sautées) ; **au récit, le paragraphe de l'activité, c'est ton transcript** (« Activité 2 — faite à l'oral : … »), à la place des éléments non montrés ; ses notions passent « travaillées (à l'oral) » ; le journal note début, pauses, fin, durée, ce que ça remplaçait, et si c'était dicté.
+   - **Après** : le curseur va à la **première diapo de l'activité suivante** ; ▶ reprend normalement — sauf si tu redemandes l'oral, et c'est le même flux.
+   - **Si tu dévoiles quand même** une diapo de l'activité après un oral « partiel » (tu as changé d'avis) : l'activité redevient « en cours », rien n'est perdu — le transcript reste dans son paragraphe, à sa place dans le temps (« à l'oral : … »), et les éléments montrés s'y ajoutent.
+   - **Une reprise** (rien de prévu) : elle n'a pas de diapo ; le récit la met à sa place dans le temps (« À 10 h 22, on a repris à l'oral : … »), son temps est compté sur l'activité en cours, rien n'est sauté.
+   Ce qui reste à trancher : rien, si ce flux te va.
+4. Pris.
+
+Ton mot sur 1 (la page de test sur ton téléphone) et sur 3 ; ensuite j'écris les cadrages, je fais la page de test et la capture de l'écran de dictée.
+
+25/09/2026 07:22 MEMO
+
+---

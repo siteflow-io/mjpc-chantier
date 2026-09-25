@@ -1,0 +1,6 @@
+(journal collé par Paul au tour 219 — extraits ; complet dans la conversation)
+Mode A (native, sans toucher pendant) : « Je suis en train d'enregistrer une phrase, et dès que j'appuie sur la virgule ça ne marche plus. » — texte impeccable ; chaque bouton → compositionend 40-60 ms après (le clavier coupe).
+Mode B (Chrome écoute) : segments de 3-5 s relancés (B-end/B-restart × 20) ; des débuts de segment perdus (« je » dans « je viens mettre… », « tout en tapant » isolé, « marche pas » répété) ; la ponctuation au doigt arrive avant le mot en cours de reconnaissance (« là où il faut, pas ») ; confiance 83-93 % sur ce qui est capté.
+--- texte final B ---
+cette fois-ci en train d'écrire avec, le site il me met des virgules là où il faut, pas et là je viens d'écrire tout en tapant marche pas mais ça ne marche pas parce que ça détecte très mal« cependant citation, certes ça fonctionne pendant que je parle viens mettre de la ponctuation. j'invente des phrases et surtout il ne capte pas toutes les phrases
+Verdict de Paul : « Ça ne marche vraiment pas bien, ça capte pas tout ce que je dis et ça invente des phrases ou des morceaux de phrases, ça met de la ponctuation tout seul etc »

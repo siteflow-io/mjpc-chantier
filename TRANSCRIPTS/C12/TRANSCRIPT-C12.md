@@ -7216,3 +7216,30 @@ Ton mot, et j'écris tout ça (cadrages 4, 1 · 6.7, 2 · 1 bis, 1 · le geste �
 25/09/2026 06:46 MEMO
 
 ---
+
+## TOUR 209 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok alors la transcription seule, en revanche il va falloir utiliser une fonctionnalité de transcription la plus performante possible, parce que celle de ok google est assez défaillante parfois. La native de mon téléphone n'est pas trop mal. Et du coup il faudrait que ce soit effectivement juste un bouton micro à coté du champ libre, comme ça je choisis soit le champ libre soit le micro. mais en revanche je dois pouvoir utiliser mon téléphone pour faire ça, OU l'ordi. et si j'utilise la transcription, il faut que l'app attire mon attention sur cette partie spécifique du récit, pour vérifier qu'il n'y a pas de transcription bizarre par exemple. Ou alors, elle peut remettre en forme automatiquement?
+
+---
+
+## TOUR 209 — Claude (conscience n°12)
+
+Réponse de cadrage (téléphone : la dictée native du clavier ; ordi : Chrome en attendant, relais Whisper à part ; le marquage « dicté — à vérifier » au récit, l'étape relu et la garde à Clore ; la remise en forme légère sans reformulation). Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Pris : transcription seule, un micro à côté du champ libre, sur le téléphone **ou** l'ordi, l'attention attirée sur la partie dictée. Ce qui est possible, sans te vendre du vent :
+
+1. **Sur le téléphone, la meilleure transcription est celle que tu connais déjà : la dictée native de ton clavier.** Le champ libre est un champ de texte ; sur le téléphone, tu touches le micro du clavier et tu parles — c'est ton téléphone qui transcrit, avec sa qualité, et le site n'a rien à coder pour ça. Ça marche dès que le site est ouvert sur le téléphone (le pilotage au téléphone est un chantier à venir ; dans la maquette, je le simule).
+2. **Sur l'ordi**, le micro du navigateur, c'est celui de Chrome — le même moteur que « OK Google », avec ses défaillances. Il n'y a pas mieux **sans serveur** : les transcriptions vraiment performantes (Whisper, par exemple) demandent d'envoyer l'audio à un service payant par un relais que le site n'a pas aujourd'hui. Donc : **téléphone = la native, ordi = Chrome en attendant**, et un relais Whisper si un jour tu veux mieux sur l'ordi (chantier à part, petit coût à l'usage). Le champ libre reste là : tu choisis le clavier ou le micro.
+3. **L'attention** : ce qui vient d'une dictée entre au récit **marqué « dicté — à vérifier »** (surligné dans le cahier et la relecture) ; l'étape « le récit relu » le dit (« une phrase dictée à vérifier ») et « Lire dans le cahier ▸ » t'amène dessus ; le marquage disparaît quand tu l'as touchée ou cliqué « c'est bon ». Rien ne part avec le marquage : la garde à Clore le compte parmi les manques.
+4. **La remise en forme automatique** : oui, mais **légère et honnête** — majuscule au début, point à la fin, espaces avant « ? » et « ! », doublons de mots effacés. Jamais de reformulation : le site n'invente pas ce que tu as dit. Si tu veux un jour une remise en forme « intelligente », c'est le même relais qu'au point 2.
+
+Ton mot sur 2 (Chrome sur l'ordi en attendant), et j'écris les cadrages puis je code (g).
+
+25/09/2026 06:56 MEMO
+
+---

@@ -1,0 +1,5 @@
+(journal collé par Paul au tour 218 — extraits ; complet dans la conversation)
+Mode A : 15:40:58.699 bouton « , » → 15:40:58.742 compositionend (le clavier coupe, comme en v1)
+Mode B : B-end / B-restart toutes les ~5 s (Android coupe l'écoute continue) ; B-final avec conf 0 pour chaque hypothèse partielle (« et », « et donc », « et donc tu »…), puis le vrai final : « et donc tu m'attends ou pas » conf 88, « et donc tu m'entends ou pas » conf 93 ; B-bouton « , » sans coupure.
+--- texte final (v2 recollait tout) ---
+J'enregistre, , et je t'attends. : etetet doncet doncet doncet doncet donc tuet donc tu m'attends ouet donc tu m'attends ou pasetetet doncet doncet donc tuet donc tu m'entends, et donc tu m'entends ouet donc tu m'entends ou pas

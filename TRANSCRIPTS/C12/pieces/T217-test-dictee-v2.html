@@ -1,0 +1,51 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Test v2 — deux dictées côte à côte</title>
+<style>
+body{font:17px/1.4 Georgia,serif;margin:0;padding:12px;background:#f7f4ee;color:#1c1712}h1{font-size:1.2rem;margin:0 0 6px}.sous{color:#6a5a48;font-size:.9rem;margin-bottom:10px}
+textarea{width:100%;box-sizing:border-box;font:inherit;font-size:1.1rem;padding:10px;border:2px solid #c99a4e;border-radius:10px;min-height:150px;background:#fff}
+.ponct{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}.ponct button{font:inherit;font-size:1.3rem;min-width:52px;height:48px;border:1px solid #8a7a66;border-radius:10px;background:#fff}.ponct button:active{background:#c99a4e}
+.ctl{display:flex;gap:8px;margin:8px 0;flex-wrap:wrap}.ctl button{font:inherit;padding:10px 14px;border:1px solid #8a7a66;border-radius:10px;background:#fff}.ctl .or{background:#c99a4e;border-color:#c99a4e;color:#1c1712;font-weight:700}
+#etat{font-size:.95rem;margin:6px 0;padding:6px 10px;border-radius:8px;background:#fff;border:1px solid #d9cfbf}#etat b{color:#1a7a3e}#etat .r{color:#b3261e}
+#journal{font:13px/1.35 monospace;background:#1c1712;color:#e8dcc4;padding:8px;border-radius:8px;max-height:220px;overflow:auto;white-space:pre-wrap}
+.consigne{background:#fff;border:1px solid #d9cfbf;border-radius:8px;padding:8px 10px;margin:8px 0;font-size:.95rem}
+</style></head><body>
+<h1>Test v2 — deux dictées côte à côte</h1>
+<div class="sous">v2 · 25/09/2026 · à faire sur le téléphone. Le test v1 a montré : avec la dictée du clavier, appuyer sur une touche de ponctuation coupe le micro (la composition se termine) et peut abîmer le mot en cours. Ici on compare avec « le site écoute » (Chrome), où les touches ne coupent rien.</div>
+<div class="consigne"><b>Le test, dans l'ordre :</b> 1) touche le champ, lance <b>le micro de ton clavier</b> et dis une phrase ; 2) sans arrêter, appuie sur le bouton <b>« , »</b> ci-dessous ; 3) continue à parler ; 4) regarde : la dictée a-t-elle continué après le bouton ? Le texte s'est-il bien écrit après la virgule ? 5) essaie « . » puis « ? » ; 6) appuie sur <b>⏸ Pause</b> (le site n'arrête pas le micro : il note l'heure), puis <b>▶ Reprendre</b> ; 7) <b>✔ Valider</b>, puis <b>Copier le journal</b> et envoie-le-moi.</div>
+<textarea id="champ" placeholder="Parle avec le micro de ton clavier…" autocomplete="off" autocapitalize="sentences" spellcheck="false"></textarea>
+<div class="ponct" id="ponct"><button data-i=", ">,</button><button data-i=". ">.</button><button data-i=" ? ">?</button><button data-i=" ! ">!</button><button data-i=" : ">:</button><button data-i="« ">«</button><button data-i=" »">»</button><button data-i="&#10;">¶</button></div>
+<div class="consigne" style="border-color:#c99a4e"><b>Mode B — le site écoute :</b> appuie sur <b>🎤 Écouter (site)</b> (Chrome demande l'accès au micro une fois), dis <u>la même phrase</u> qu'en mode A, appuie « , » au doigt en parlant, continue, « . », « ? » ; puis <b>■ Arrêter</b>. Compare la qualité des deux textes, et dis-moi si la ponctuation au doigt a tenu en mode B.</div><div class="ctl"><button id="ecouter" class="or">🎤 Écouter (site)</button><button id="arreter" disabled>■ Arrêter</button><span id="eb" style="align-self:center;font-size:.9rem;color:#6a5a48">mode B : —</span></div><div class="ctl"><button id="pause">⏸ Pause</button><button id="reprendre" disabled>▶ Reprendre</button><button id="valider" class="or">✔ Valider</button><button id="copier">Copier le journal</button><button id="vider">Vider</button></div>
+<div id="etat">état : <b id="focus">champ sans focus</b> · composition : <span id="compo">non</span> · dernier événement : <span id="dernier">—</span></div>
+<div id="journal"></div>
+<script>
+const $ = id => document.getElementById(id); const champ = $('champ'); const J = []; const t0 = Date.now();
+const hh = () => { const d = new Date(); return d.toTimeString().slice(0, 8) + '.' + String(d.getMilliseconds()).padStart(3, '0'); };
+function log(type, x){ const l = hh() + ' ' + type + (x ? ' ' + JSON.stringify(x) : ''); J.push(l); $('journal').textContent = J.slice(-40).join('\n'); $('journal').scrollTop = 1e6; $('dernier').textContent = type; }
+log('ouverture', { ua: navigator.userAgent.slice(0, 80), largeur: innerWidth });
+champ.addEventListener('focus', () => { $('focus').textContent = 'champ avec focus'; $('focus').className = ''; log('focus'); });
+champ.addEventListener('blur', () => { $('focus').textContent = 'champ SANS focus (le clavier a pu couper)'; $('focus').className = 'r'; log('blur'); });
+champ.addEventListener('compositionstart', () => { $('compo').textContent = 'OUI (dictée ou saisie en cours)'; log('compositionstart'); });
+champ.addEventListener('compositionupdate', e => log('compositionupdate', { data: (e.data || '').slice(-30) }));
+champ.addEventListener('compositionend', e => { $('compo').textContent = 'non'; log('compositionend', { data: (e.data || '').slice(-30) }); });
+champ.addEventListener('input', e => log('input', { type: e.inputType, data: (e.data || '').slice(-30), longueur: champ.value.length, fin: champ.value.slice(-25) }));
+champ.addEventListener('beforeinput', e => log('beforeinput', { type: e.inputType, data: (e.data || '').slice(-20) }));
+/* les boutons de ponctuation ne prennent JAMAIS le focus : l'insertion se fait au curseur sans quitter le champ */
+document.querySelectorAll('#ponct button').forEach(b => { b.setAttribute('tabindex', '-1'); b.addEventListener('pointerdown', e => { e.preventDefault(); }); b.addEventListener('mousedown', e => e.preventDefault()); b.addEventListener('touchstart', e => { e.preventDefault(); inserer(b.dataset.i.replace('&#10;', '\n')); }, { passive: false }); b.addEventListener('click', e => { e.preventDefault(); if (e.pointerType === 'touch' || e.detail === 0) return; inserer(b.dataset.i.replace('&#10;', '\n')); }); });
+function inserer(txt){ const avaitFocus = document.activeElement === champ; const s = champ.selectionStart, e = champ.selectionEnd; log('bouton', { txt, focusAvant: avaitFocus, sel: [s, e] }); let ok = false; try { champ.focus({ preventScroll: true }); champ.setSelectionRange(s, e); ok = document.execCommand && document.execCommand('insertText', false, txt); } catch (x) { log('execCommand-erreur', { m: String(x) }); } if (!ok) { champ.setRangeText(txt, s, e, 'end'); champ.dispatchEvent(new InputEvent('input', { bubbles: true, inputType: 'insertText', data: txt })); } log('insere', { par: ok ? 'execCommand' : 'setRangeText', focusApres: document.activeElement === champ, fin: champ.value.slice(-25) }); }
+let pauses = []; $('pause').onclick = () => { pauses.push({ debut: hh() }); $('pause').disabled = true; $('reprendre').disabled = false; log('pause'); }; $('reprendre').onclick = () => { pauses[pauses.length - 1].fin = hh(); $('pause').disabled = false; $('reprendre').disabled = true; log('reprendre'); champ.focus({ preventScroll: true }); };
+/* mode B : la reconnaissance vocale de Chrome, pilotée par le site — les boutons de ponctuation insèrent sans rien couper */
+const SR = window.SpeechRecognition || window.webkitSpeechRecognition; let rec = null, finalB = '', ecoute = false;
+if (!SR) { $('eb').textContent = 'mode B : pas de reconnaissance vocale dans ce navigateur'; $('ecouter').disabled = true; log('modeB-absent'); }
+function demarrerB(){ if (!SR) return; rec = new SR(); rec.lang = 'fr-FR'; rec.continuous = true; rec.interimResults = true; rec.maxAlternatives = 1;
+  rec.onstart = () => { ecoute = true; $('eb').textContent = 'mode B : j\'écoute…'; $('ecouter').disabled = true; $('arreter').disabled = false; log('B-start'); };
+  rec.onresult = e => { let interim = ''; for (let i = e.resultIndex; i < e.results.length; i++) { const r = e.results[i]; if (r.isFinal) { const t = r[0].transcript; finalB += t; log('B-final', { t: t.slice(-40), conf: Math.round((r[0].confidence || 0) * 100) }); champ.value = champ.value.replace(/\u2063[^\u2063]*$/, '') + t; } else interim += r[0].transcript; } if (interim) { champ.value = champ.value.replace(/\u2063[^\u2063]*$/, '') + '\u2063' + interim; log('B-interim', { t: interim.slice(-30) }); } champ.scrollTop = 1e6; };
+  rec.onerror = e => { log('B-erreur', { e: e.error }); $('eb').textContent = 'mode B : erreur ' + e.error; };
+  rec.onend = () => { log('B-end', { ecoute }); if (ecoute) { try { rec.start(); log('B-restart'); } catch (x) { log('B-restart-erreur', { m: String(x) }); } } else { $('eb').textContent = 'mode B : arrêté'; $('ecouter').disabled = false; $('arreter').disabled = true; } };
+  try { rec.start(); } catch (x) { log('B-start-erreur', { m: String(x) }); } }
+$('ecouter').onclick = () => { champ.blur(); demarrerB(); };
+$('arreter').onclick = () => { ecoute = false; if (rec) rec.stop(); champ.value = champ.value.replace(/\u2063/g, ''); log('B-stop', { texte: champ.value.slice(-60) }); };
+const insererOrig = inserer; inserer = function(txt){ if (ecoute) { const v = champ.value.replace(/\u2063[^\u2063]*$/, ''); const inter = (champ.value.match(/\u2063([^\u2063]*)$/) || [])[1] || ''; champ.value = v.replace(/\s+$/, '') + txt + (inter ? '\u2063' + inter : ''); log('B-bouton', { txt, fin: champ.value.replace(/\u2063/g, '').slice(-25) }); return; } insererOrig(txt); };
+$('valider').onclick = () => { log('valide', { texte: champ.value, longueur: champ.value.length, pauses }); alert('Validé — maintenant « Copier le journal » et envoie-le.'); };
+$('copier').onclick = () => { const tout = J.join('\n') + '\n--- texte final ---\n' + champ.value; if (navigator.clipboard) navigator.clipboard.writeText(tout).then(() => alert('Journal copié (' + J.length + ' lignes). Colle-le dans la conversation.')).catch(() => prompt('Copie à la main :', tout)); else prompt('Copie à la main :', tout); };
+$('vider').onclick = () => { champ.value = ''; J.length = 0; $('journal').textContent = ''; log('vide'); };
+document.querySelectorAll('.ctl button').forEach(b => { b.addEventListener('pointerdown', e => e.preventDefault()); b.addEventListener('mousedown', e => e.preventDefault()); });
+</script></body></html>

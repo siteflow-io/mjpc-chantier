@@ -7162,3 +7162,28 @@ Une chose à ton mot : la ligne libre (« on a expliqué à l'oral : *les guille
 25/09/2026 06:36 MEMO
 
 ---
+
+## TOUR 207 — Paul
+
+Texte de Paul, mot pour mot :
+
+> pas compris ta question
+
+---
+
+## TOUR 207 — Claude (conscience n°12)
+
+Reformulation de la question (notion cochée / phrase libre / les deux). Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Plus simplement. Quand tu cliques « Expliqué à l'oral », il y a deux façons de dire *quoi* :
+
+1. **Une notion du chapitre**, cochée dans une liste (« l'énonciation : qui parle, à qui ») — le site sait alors la relier au chapitre : elle passe « travaillée (à l'oral) », elle n'est plus manquante pour la suite.
+2. **Une phrase à toi**, tapée librement (« les guillemets dans une citation imbriquée ») — quelque chose que tu as expliqué mais qui n'est pas une notion listée du chapitre ; le site peut la mettre au récit et au journal, mais il ne peut pas la relier à une notion.
+
+Ma question était : est-ce que le geste doit offrir **les deux** (la liste de notions, et en plus un champ libre), ou **seulement la liste** ? Mon avis : les deux — la phrase libre va au récit ; si en plus tu coches une notion, elle compte pour le chapitre.
+
+25/09/2026 06:40 MEMO
+
+---

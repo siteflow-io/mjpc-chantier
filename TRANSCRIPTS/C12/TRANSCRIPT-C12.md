@@ -7509,3 +7509,25 @@ Ton mot sur 3 ; si oui, une page v4 te fait essayer la passe de ponctuation (tou
 25/09/2026 17:22 MEMO
 
 ---
+
+## TOUR 220 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Non mais on laisse tomber l'enregistrement. Trop lourd à faire en classe. On garde l'oral en revanche
+
+---
+
+## TOUR 220 — Claude (conscience n°12)
+
+Cadrage 1 · 7.2 réécrit sans la dictée (les tests consignés comme mesure), déposé bit à bit. Aucun code. Rien déposé hormis ce transcript et le cadrage.
+
+Réponse mot pour mot :
+
+Pris : **l'enregistrement tombe, l'oral reste.** Le cadrage 1 · 7.2 est réécrit et déposé : plus de dictée, de micro ni d'écran de dictée (les trois tests sur ton téléphone sont consignés comme la mesure qui l'a tranché ; la place d'un champ « audio » reste prévue, vide) ; ce qui reste, intact : le geste « Expliqué à l'oral » (ce que l'oral remplace — une activité de l'heure ou une reprise —, les notions cochées et / ou une phrase courte tapée), le chrono contre le prévu, ⏸ / ▶ sur le temps, ✔ Valider, l'horodatage, la remise en forme légère, le flux « faite à l'oral » (le tableau montre le titre et « à l'oral », les diapos sautées, ton texte comme paragraphe du récit, la suite qui reprend), la reprise qui décale d'autant, les chronos qui se décalent si tu dévoiles après.
+
+« Continuer » lance (g) : la capture du geste « Expliqué à l'oral » (simple, sans dictée) et du faisceau à l'ouverture pour validation, puis le code dans la maquette.
+
+25/09/2026 17:30 MEMO
+
+---

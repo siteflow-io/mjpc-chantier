@@ -7360,3 +7360,30 @@ Pris et écrit — les trois cadrages sont déposés (bit à bit) :
 25/09/2026 07:42 MEMO
 
 ---
+
+## TOUR 214 — Paul
+
+Texte de Paul, mot pour mot :
+
+> avant de continuer, ça te semble logique tout ça?
+
+---
+
+## TOUR 214 — Claude (conscience n°12)
+
+Avis : logique dans l'ensemble ; le 7.2 dépend d'une mesure non faite (la page de test) ; un trou (borner « faite à l'oral » à l'heure en cours) ; l'accumulation des gestes et la règle proposée. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Oui, dans l'ensemble c'est logique, et c'est même la première fois que le pilotage « boucle » : le prévu lit le fait, le fait corrige le prévu, et le récit raconte ce qui s'est vraiment passé, oral compris. Mais deux choses ne vont pas encore, et une m'inquiète :
+
+1. **Ce qui tient** : « remobilise » dans la trame (la donnée est au bon endroit : celui qui prépare) ; le faisceau oui / non qui conclut à ta place sans décider à ta place ; l'oral comme fusible, avec la reprise qui décale d'autant et l'activité faite à l'oral qui saute ses diapos ; le transcript qui devient le paragraphe du récit — tout ça s'emboîte sans trou avec le glissement, le récit en trois temps, le chapitre.
+2. **Ce qui ne va pas encore — le 7.2 repose sur une chose non mesurée** : la ponctuation au doigt sans couper la dictée native. Tout l'écran de dictée en dépend. Tant que la page de test n'a pas parlé sur ton téléphone, je n'ai pas le droit de coder cet écran — je peux seulement en faire la capture. Si le clavier coupe, le 7.2 se réduit à : le champ libre, la dictée native, la ponctuation à la voix ou au clavier après coup, et la remise en forme. Il faut le savoir avant (g).
+3. **Un trou à boucher au 7.2** : « faite à l'oral » depuis n'importe où — l'activité que l'oral remplace doit être **bornée à l'heure en cours, et non encore faite**. Sinon on pourrait « faire à l'oral » une activité de la semaine prochaine, et le glissement ne saurait plus quoi en faire. Je l'ajoute au cadrage si tu dis oui.
+4. **Ce qui m'inquiète — l'accumulation des gestes.** Depuis hier, le pilotage a gagné : la préparation, « Montrer cette suite », le pas à pas, « Expliqué à l'oral », le faisceau à l'ouverture. Chacun est juste ; ensemble, ils menacent « souplesse + usage épuré ». La règle que je propose pour tenir : **un seul point d'entrée par geste** (⋯ pour l'oral, l'alerte / la séquence pour la préparation, l'ouverture pour le faisceau), **rien qui s'ajoute à l'écran tant qu'on n'en a pas besoin** (la ligne « montrer la suite » n'existe qu'en préparation, l'encart du faisceau n'existe que s'il y a une notion non travaillée), et **le journal qui note tout** pour que le récit et le chapitre restent la seule mémoire.
+
+Si 3 et 4 te vont, je les écris, puis « continuer » lance la page de test et la capture de l'écran de dictée.
+
+25/09/2026 15:08 MEMO
+
+---

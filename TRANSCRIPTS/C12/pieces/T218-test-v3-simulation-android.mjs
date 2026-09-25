@@ -1,0 +1,9 @@
+import { chromium } from '/home/claude/.npm-global/node_modules/playwright/index.mjs';
+const nav = await chromium.launch({ executablePath: '/opt/google/chrome/chrome', args: ['--no-sandbox','--allow-file-access-from-files'], headless: true });
+const page = await nav.newPage({ viewport: { width: 400, height: 800 } }); page.on('pageerror', e => console.log('ERREUR', e.message)); const p = ms => page.waitForTimeout(ms);
+// une fausse reconnaissance vocale qui rejoue exactement le comportement Android du journal v2 (hypothèses partielles marquées finales, confiance 0 ; le vrai final à 0.9 ; coupure toutes les 5 s)
+await page.addInitScript(() => { window.webkitSpeechRecognition = class { constructor(){ this.continuous = true; } start(){ this._on = true; setTimeout(() => this.onstart && this.onstart(), 10); const seq = [['et', 0], ['et donc', 0], ['et donc tu', 0], ["et donc tu m'entends ou pas", 0.93]]; let k = 0; this._t = setInterval(() => { if (!this._on) return; if (k < seq.length) { const [t, c] = seq[k++]; const r = [{ transcript: t, confidence: c }]; r.isFinal = true; const results = [r]; this.onresult && this.onresult({ results, resultIndex: 0 }); } else { clearInterval(this._t); this._on = false; this.onend && this.onend(); } }, 120); } stop(){ this._on = false; clearInterval(this._t); setTimeout(() => this.onend && this.onend(), 50); } }; window.SpeechRecognition = window.webkitSpeechRecognition; });
+await page.goto('file:///tmp/test-dictee-v3.html'); await p(300); await page.click('#ecouter'); await p(250); await page.click('#ponct button[data-i=", "]'); await p(700); await page.click('#arreter'); await p(500);
+console.log('texte :', JSON.stringify(await page.evaluate(() => document.getElementById('champ').value)));
+console.log(await page.evaluate(() => document.getElementById('journal').textContent.split('\n').filter(l => /B-/.test(l)).map(l => l.slice(13)).join(' | ')));
+await nav.close();

@@ -7334,3 +7334,29 @@ Ton mot sur 1 (la page de test sur ton téléphone) et sur 3 ; ensuite j'écris 
 25/09/2026 07:22 MEMO
 
 ---
+
+## TOUR 213 — Paul
+
+Texte de Paul, mot pour mot :
+
+> 1. ok pour la page de test. 3. si c'est une reprise, ça ne remplace rien, ça décale le prévu d'autant. 3. si je dévoile quand même une diapo de l'activité après un oral, du coup ça décale les chronos, forcément. pareil pour la reprise.
+
+---
+
+## TOUR 213 — Claude (conscience n°12)
+
+Cadrages écrits et déposés bit à bit : 1 · 7.1 (remobilise, faisceau), 1 · 7.2 (Expliqué à l'oral / faite à l'oral, dictée native, flux, reprise qui décale, chronos), 2 · 1 bis (le chapitre lit le fait), 4 · 2.7 (le prompt). Aucun code. Rien déposé hormis ce transcript et les cadrages.
+
+Réponse mot pour mot :
+
+Pris et écrit — les trois cadrages sont déposés (bit à bit) :
+
+1. **Cadrage 1 · 7.1** — le prévu lit le fait : la donnée « remobilise » vient du prompt de préparation ; « non travaillée » tout court ; à l'ouverture de l'heure, le faisceau de questions oui / non (besoin ? temps ? reprise à l'oral ?) qui fait le choix, confirmé par toi ; rien ne se verse.
+2. **Cadrage 1 · 7.2** — « Expliqué à l'oral » / « faite à l'oral » : ce que l'oral remplace (une activité, ou une reprise), quoi (notions cochées et / ou phrase libre) ; la dictée native du téléphone seulement, jamais payant, jamais d'audio conservé ; l'écran de dictée (au fur et à mesure, ponctuation au doigt sans focus — à mesurer par la page de test —, ⏸ / ▶, ✔ Valider, horodatage, le chrono contre le prévu) ; l'attention seulement sur ce qui est dicté ; la remise en forme légère (majuscule après le point) ; **le flux** : le tableau montre le titre et « à l'oral », l'activité faite à l'oral avec le transcript comme paragraphe, ses diapos sautées, la suite reprend à l'activité suivante ; **une reprise ne remplace rien, elle décale le prévu d'autant** ; **dévoiler après un oral décale les chronos d'autant**, pareil pour une reprise.
+3. **Cadrage 2 · 1 bis** (le chapitre lit le fait : l'alerte, « manquante pour la suite », l'oral) et **cadrage 4 · 2.7** (la trame dit ce que chaque activité remobilise — le prompt).
+
+« Continuer » lance : la page de test de la dictée native (à ouvrir sur ton téléphone) et la capture de l'écran de dictée ; puis (g) dans la maquette après tes retours.
+
+25/09/2026 07:42 MEMO
+
+---

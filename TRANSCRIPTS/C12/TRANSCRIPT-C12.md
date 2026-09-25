@@ -7456,3 +7456,27 @@ Ton journal est clair, et le verdict est net : **la ponctuation au doigt pendant
 25/09/2026 15:26 MEMO
 
 ---
+
+## TOUR 218 — Paul
+
+Pièce jointe : le journal de la page de test v2 (extraits en `pieces/T218-journal-test-dictee-v2-de-Paul.txt`).
+
+---
+
+## TOUR 218 — Claude (conscience n°12)
+
+Mesuré : A coupe (idem v1) ; B tient la ponctuation au doigt, reconnaissance correcte (conf 88-93 %), défaut de la page v2 (hypothèses partielles marquées finales sur Android, écoute relancée toutes les 5 s, recollage). Page v3 (`docs/outils/test-dictee-v3.html`) : dernière hypothèse par segment, vrai final à confiance > 0, ponctuation posée pendant un segment réinsérée après le k-ième mot ; simulation Android du journal v2 rejouée (`T218-test-v3-simulation-android.mjs`) : « et donc, tu m'entends ou pas ». Rien d'autre déposé hormis ce transcript, les pièces et la page v3.
+
+Réponse mot pour mot :
+
+Ton journal v2 dit trois choses nettes :
+
+1. **Mode A (le clavier)** : pareil qu'en v1 — chaque touche coupe le micro. Fermé.
+2. **Mode B (le site écoute)** : **la ponctuation au doigt a tenu** (« B-bouton » sans aucune coupure), et **la reconnaissance a bien entendu** : « et donc tu m'attends ou pas » à 88 %, « et donc tu m'entends ou pas » à 93 % — c'est propre. Le texte illisible (« etetet doncet donc… ») est **un défaut de ma page**, pas du moteur : sur Android, Chrome renvoie chaque hypothèse partielle comme « finale » (avec une confiance à 0) et coupe l'écoute toutes les 5 secondes pour la relancer ; la v2 recollait tout bout à bout.
+3. **La v3 corrige ça** : elle ne garde que la dernière hypothèse de chaque segment (en gris tant qu'elle bouge), fige au vrai final, relance l'écoute sans recoller, et **la ponctuation que tu poses en parlant est remise à sa place dans le texte final** (après le mot où tu l'as posée). J'ai rejoué ton journal v2 contre la v3 en simulation : « et donc, tu m'entends ou pas » — plus de doublon. **https://siteflow-io.github.io/monsieurjaipascompris/docs/outils/test-dictee-v3.html** — refais seulement le mode B, avec **une phrase longue (20 s)**, la ponctuation au doigt en parlant, ■ Arrêter, ✔ Valider, « Copier le journal ». Ce que je veux savoir : la qualité du texte final (les mots), et si les mots dits juste au moment des relances (toutes les 5 s) sont perdus.
+
+Si la v3 tient, le 7.2 se code avec « le site qui écoute » sur le téléphone — pas de clavier, pas de service payant.
+
+25/09/2026 15:50 MEMO
+
+---

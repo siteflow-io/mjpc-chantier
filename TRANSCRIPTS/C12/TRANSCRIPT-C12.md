@@ -7136,3 +7136,29 @@ Ton mot sur l'arbre (les trois questions, leurs réponses), et je te le montre e
 24/09/2026 20:26 MEMO
 
 ---
+
+## TOUR 206 — Paul
+
+Texte de Paul, mot pour mot :
+
+> la question 3 est très intéressante parce qu'elle me permet de faire entrer au récit quelque chose que j'aurai expliqué à l'oral sans forcément avoir joué la diapo correspondante. Tu vois l'idée?
+
+---
+
+## TOUR 206 — Claude (conscience n°12)
+
+Mesuré : le récit ne lit pas `notionsImprevues`. Réponse de cadrage : le geste « Expliqué à l'oral » (absorbe « notion imprévue » ; récit, chapitre, journal ; la question 3 y mène), une question (la ligne libre). Aucun code, rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Oui, je vois l'idée — et elle dépasse la question 3 : **ce que tu expliques à l'oral sans jouer la diapo doit exister pour le site** (au récit, dans le chapitre), sinon le vrai chapitre est faux par omission. Mis en tension avec ce qui existe :
+
+1. **Ce qu'on a** : le geste ⋯ « notion imprévue » ajoute une notion à la diapo en cours — mais **le récit ne la raconte pas** (mesuré : le moteur ne la lit pas), et elle ne vaut que pour une diapo jouée. Rien pour « j'ai expliqué ça à l'oral, sans diapo ».
+2. **Ce que je propose** : un seul geste, à tout moment de l'heure — « **Expliqué à l'oral** » (dans ⋯, à la place de « notion imprévue » qu'il absorbe) : tu choisis une notion du chapitre (proposées d'abord : celles que l'heure remobilise et qui ne sont pas travaillées), ou tu écris une ligne libre ; c'est daté. Trois effets : **le récit** le raconte à sa place dans le temps (« À 10 h 22, on a repris à l'oral l'énonciation : qui parle, à qui ») ; **le chapitre** marque la notion « travaillée (à l'oral, heure 2) » — elle n'est plus manquante pour la suite ; **le journal** le note. Rien ne se verse dans la trame.
+3. **La question 3 devient ce geste** : « Peux-tu reprendre la notion toi-même ? — oui » ouvre « Expliqué à l'oral » avec la notion déjà choisie, et la ligne « reprise de l'énonciation avant *Les règles héritées* » entre dans l'ordre de l'heure pour que tu n'oublies pas ; quand tu la fais, un clic sur cette ligne la date et l'envoie au récit.
+
+Une chose à ton mot : la ligne libre (« on a expliqué à l'oral : *les guillemets dans une citation imbriquée* »), tu la veux dans le même geste, ou seulement les notions du chapitre ?
+
+25/09/2026 06:36 MEMO
+
+---

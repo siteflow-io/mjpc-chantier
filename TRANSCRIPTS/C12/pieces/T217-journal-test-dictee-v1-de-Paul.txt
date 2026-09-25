@@ -1,0 +1,13 @@
+(journal collé par Paul au tour 217 — extraits significatifs ; le journal complet est dans la conversation)
+15:16:54.180 bouton {"txt":", ","focusAvant":true,"sel":[50,50]}
+15:16:54.194 insere {"par":"execCommand","focusApres":true,"fin":"rer une partie du cours, "}
+15:16:54.232 input {"type":"insertCompositionText","data":"egistrer une partie du cours à","longueur":54,"fin":"r une partie du cours à, "}
+15:16:54.269 compositionend {"data":"à"}
+15:17:00.279 compositionstart   (6 s après : Paul a rappuyé sur le micro du clavier)
+15:17:30.502 bouton {"txt":"« ","focusAvant":true,"sel":[93,93]}
+15:17:30.537 compositionend {"data":"is j'ai l'impression que ça ne"}   → « ça ne« je »
+15:17:46.015 bouton {"txt":", "} → 15:17:46.056 compositionend
+15:17:51.418 bouton {"txt":" ? "} → 15:17:51.468 compositionend
+15:17:58.583 bouton {"txt":" »"}
+--- texte final ---
+Je suis en train d'enregistrer une partie du cours à l'oral, mais j'ai l'impression que ça ne« je suis obligé d'appuyer à nouveau sur le micro natif de mon téléphone, et dès que je clique sur les touches je ? Je suis obligé de rappuyer dessus »

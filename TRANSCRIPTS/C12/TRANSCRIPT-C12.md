@@ -7480,3 +7480,32 @@ Si la v3 tient, le 7.2 se code avec « le site qui écoute » sur le téléphone
 25/09/2026 15:50 MEMO
 
 ---
+
+## TOUR 219 — Paul
+
+Pièce jointe : le journal de la page de test v3 (extraits en `pieces/T219-journal-test-dictee-v3-de-Paul.txt`).
+
+Texte de Paul, mot pour mot :
+
+> Ça ne marche vraiment pas bien, ça capte pas tout ce que je dis et ça invente des phrases ou des morceaux de phrases, ça met de la ponctuation tout seul etc
+
+---
+
+## TOUR 219 — Claude (conscience n°12)
+
+Verdict mesuré : le mode B (Chrome) perd des débuts de segment à chaque relance (3-5 s), la ponctuation au doigt arrive avant le mot en cours ; le mode A (native) est très bon sans toucher. Proposition : dicter au clavier natif sans toucher, ponctuer après au doigt (toucher un mot), remise en forme ; le 7.2 à corriger en conséquence ; une page v4 proposée. Rien déposé hormis ce transcript et la pièce.
+
+Réponse mot pour mot :
+
+Ton journal confirme ton verdict, et je le partage : **le mode B ne va pas.**
+
+1. **Ce que le journal mesure en B** : Chrome coupe et relance l'écoute toutes les 3 à 5 secondes (vingt fois en une minute), et **à chaque relance il perd le début** (« je » dans « je viens mettre… », « tout en tapant » isolé, « marche pas » en double) ; la ponctuation au doigt arrive **avant** que le dernier mot soit reconnu — la virgule que tu as posée après « il faut pas » s'est mise avant « pas » ; les mots captés sont justes (confiance 83-93 %), mais il en manque. C'est le moteur de Chrome sur ton téléphone, pas la page : rien à corriger côté site.
+2. **Ce que les trois tests prouvent en A** : la dictée native de ton clavier est **très bonne** — « Je suis en train d'enregistrer une phrase, et dès que j'appuie sur la virgule ça ne marche plus. » sans une faute, et elle met elle-même la majuscule — **tant qu'on ne touche rien pendant**. Toucher coupe le micro, c'est le clavier qui décide.
+3. **Donc, sans rien de payant, la seule voie qui tient** : **dicter avec ton clavier sans toucher, et ponctuer après** — une passe rapide au doigt une fois le micro arrêté : le texte dicté s'affiche en gros, **tu touches un mot et la ponctuation choisie se met juste après** (les boutons , . ? ! restent ; ils ne servent plus pendant, mais après) ; la remise en forme légère fait le reste (majuscules après les points) ; pause / reprise = le micro du clavier, le site horodate. Ce n'est pas « la ponctuation au fil de la parole », mais c'est la qualité que tu veux, et la passe de ponctuation prend quelques secondes.
+4. **Ce que ça change au cadrage 7.2** : « le texte apparaît au fur et à mesure » reste (la native l'affiche mot à mot) ; « la ponctuation au doigt sans couper » devient « **la ponctuation au doigt après la dictée, mot par mot** » ; le reste (marquage « dicté — à vérifier », validation, horodatage, chrono, ce que l'oral remplace) ne bouge pas.
+
+Ton mot sur 3 ; si oui, une page v4 te fait essayer la passe de ponctuation (toucher un mot) avant que je ne corrige le cadrage et code (g).
+
+25/09/2026 17:22 MEMO
+
+---

@@ -7243,3 +7243,35 @@ Ton mot sur 2 (Chrome sur l'ordi en attendant), et j'écris les cadrages puis je
 25/09/2026 06:56 MEMO
 
 ---
+
+## TOUR 210 — Paul
+
+Texte de Paul, mot pour mot :
+
+> sur l'ordi je n'utiliserai pas la transcription vocale a priori. c'est vraiment sur le téléphone. Et l'attention doit être attirée uniquement si j'ai utilisé le bouton du micro, pas si j'ai tapé dans le champ libre. 4. ok en revanche je veux tester ça, parce que je ne veux pas qu'il me mette des majuscules et des points arbitraires de manière intempestives.
+
+---
+
+## TOUR 210 — Claude (conscience n°12)
+
+Réponse de cadrage (pas de micro sur l'ordi ; le bouton 🎤 = mode dictée qui marque ; les règles de remise en forme avec cinq exemples avant/après). Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Pris, avec un point à régler et les exemples demandés :
+
+1. **Pas de transcription sur l'ordi** : le micro n'y apparaît pas. Sur le téléphone seulement.
+2. **L'attention seulement si tu as dicté** — il y a un piège : la dictée native passe par le clavier du téléphone, et le site ne peut pas savoir si le texte a été tapé ou dicté. **Solution** : le bouton 🎤 du site ne transcrit pas lui-même ; il **ouvre le champ en mode dictée** (« parle avec le micro de ton clavier »), et tout ce qui entre tant que ce mode est ouvert est marqué « dicté — à vérifier ». Tu tapes au clavier → rien n'est marqué ; tu touches 🎤 puis tu dictes → marqué. C'est toi qui dis que c'est dicté, par le bouton.
+3. **La remise en forme, à tester** — voici exactement ce qu'elle ferait, et rien d'autre (règles : une majuscule au premier caractère **seulement s'il est en minuscule** ; un point final **seulement s'il n'y a aucune ponctuation à la fin** ; l'espace avant ? ! : ; ; les doublons immédiats « le le » supprimés ; **jamais** de point ni de majuscule ailleurs, jamais un mot changé) :
+   - « on a repris l'énonciation qui parle à qui » → « On a repris l'énonciation qui parle à qui. »
+   - « j'ai expliqué les guillemets dans une citation imbriquée, ils ont compris » → « J'ai expliqué les guillemets dans une citation imbriquée, ils ont compris. »
+   - « Pourquoi le narrateur dit je ? » → inchangé (déjà une majuscule, déjà une ponctuation ; l'espace avant ? est déjà là).
+   - « attention le le point de vue change au milieu » → « Attention le point de vue change au milieu. » (le doublon « le le » retiré ; **pas** de virgule ajoutée après « attention » — le site ne devine pas ta ponctuation).
+   - « on a vu ça. et aussi la focalisation interne » → « On a vu ça. et aussi la focalisation interne. » (la majuscule après le point **n'est pas** ajoutée : ce serait arbitraire ; seule la première l'est).
+   Si ces cinq exemples te vont, c'est la règle ; sinon dis-moi lequel tu changerais.
+
+Ton mot sur 2 et 3, et j'écris les cadrages puis je code (g).
+
+25/09/2026 07:03 MEMO
+
+---

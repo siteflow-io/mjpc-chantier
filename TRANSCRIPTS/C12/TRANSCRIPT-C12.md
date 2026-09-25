@@ -7387,3 +7387,25 @@ Si 3 et 4 te vont, je les écris, puis « continuer » lance la page de test et 
 25/09/2026 15:08 MEMO
 
 ---
+
+## TOUR 215 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok
+
+---
+
+## TOUR 215 — Claude (conscience n°12)
+
+Cadrage 1 · 7.2 (bornes) et 7.3 (la règle des gestes) écrits et déposés bit à bit. Aucun code. Rien déposé hormis ce transcript et le cadrage.
+
+Réponse mot pour mot :
+
+Écrit et déposé : cadrage 1 · 7.2, les bornes (l'oral ne remplace qu'une activité de l'heure en cours non encore faite ; l'écran de dictée ne se code qu'après la page de test) ; cadrage 1 · 7.3, la règle des gestes (un seul point d'entrée par geste, rien à l'écran sans besoin, le journal note tout).
+
+« Continuer » lance la page de test de la dictée native (à ouvrir sur ton téléphone) et la capture de l'écran de dictée.
+
+25/09/2026 15:12 MEMO
+
+---

@@ -7275,3 +7275,30 @@ Ton mot sur 2 et 3, et j'écris les cadrages puis je code (g).
 25/09/2026 07:03 MEMO
 
 ---
+
+## TOUR 211 — Paul
+
+Texte de Paul, mot pour mot :
+
+> 2. et je veux voir mon texte dicté s'afficher au fur et à mesure. Comme ça je peux éventuellement corriger juste après. et il faut aussi un bouton de validation bien sûr, un horodatage aussi. et je dois pouvoir aussi commencer à dicter pour une activité, puis mettre en pause, puis continuer, et ainsi de suite. Et du coup il faut voir au niveau du suivi horaire contre le prévu de l'activité. ce controle de l'horaire me permettrait notamment d'aller parfois plus vite sur des activités, et rattraper du retard par exemple. l'oral devient une sorte de fusible qui permet d'adapter finement le cours réel à la rigidité du prévu. Enfin, il me faudrait des boutons de ponctuation, QUI NE COUPENT PAS L'ENREGISTREMENT. en gros je dicte, et je mets ma ponctuation au doigt. chose infaisable avec la dictée vocale classique, où le simple fait d'utiliser le clavier au doigt désactive aussitôt le vocal. Sur ta mise en forme légère: un point doit être suivi d'une majuscule: le dernier exemple que tu donnes est faux, la majuscule après le point DOIT être ajotuée, ce n'est pas du tout arbitraire, c'est la convention classique!)
+
+---
+
+## TOUR 211 — Claude (conscience n°12)
+
+Réponse de cadrage (le moteur : l'écoute pilotée par le site — Chrome sur le téléphone, à tester en vrai ; l'écran de dictée ; le suivi horaire et « faite à l'oral » ; la majuscule après le point). Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Pris, point par point — et un télescopage à trancher au 1 :
+
+1. **La ponctuation au doigt sans couper le vocal change le moteur.** La dictée native de ton téléphone passe par le clavier : dès que tu touches un bouton, le clavier coupe le micro — c'est justement ce que tu décris. Pour que le site affiche le texte **au fur et à mesure**, mette **pause / reprise**, et insère « , . ? » **au doigt sans arrêter l'écoute**, il faut que ce soit **le site qui écoute**, pas le clavier. Sur un téléphone Android, la seule écoute pilotable par une page web est celle de Chrome (moteur Google, en ligne — pas l'« OK Google » hors ligne : souvent meilleur, mais c'est le même éditeur ; à tester sur ton téléphone avant de juger). L'alternative « très performante » (Whisper) exige un relais et transcrit par tranches de quelques secondes, pas mot à mot. **Ma proposition : Chrome sur le téléphone, testé en vrai par toi sur une explication réelle ; si la qualité ne va pas, le relais Whisper en chantier à part.** Ton mot.
+2. **L'écran de dictée** (je te le montre en capture avant de coder) : le texte apparaît au fur et à mesure, gris tant qu'il n'est pas sûr, noir ensuite ; une rangée de boutons **, . ? ! : « » ¶** qui insèrent au curseur sans couper ; **⏸ Pause / ▶ Reprendre** ; tu peux taper une correction dans le texte à tout moment (l'écoute reste ouverte) ; **✔ Valider** ; l'horodatage du début et de la fin.
+3. **Le suivi horaire pendant l'oral** : en tête de l'écran, l'activité en cours et son chrono contre le prévu (« A2 · 7 min passées sur 15 prévues ») et l'état de l'heure (« l'heure est en avance de 3 min »). Et l'oral comme **fusible** : au moment de dicter, tu dis ce que cet oral **remplace** — « une reprise » (rien de prévu), ou **« l'activité X, faite à l'oral »** : alors l'activité est comptée faite (à l'oral), sa diapo n'est pas dévoilée, son temps est celui de ta dictée, le récit dit « faite à l'oral », et ce qui suit se recale. C'est ce qui te permet d'aller plus vite et de rattraper.
+4. **La remise en forme** : tu as raison, la majuscule après un point, un ? ou un ! est la convention — corrigé : « on a vu ça. et aussi la focalisation interne » → « On a vu ça. Et aussi la focalisation interne. » Le reste des règles inchangé.
+
+Ton mot sur 1 (Chrome testé en vrai) et sur 3 (« faite à l'oral »), et je fais la capture de l'écran de dictée.
+
+25/09/2026 07:12 MEMO
+
+---

@@ -7582,3 +7582,31 @@ Réponse mot pour mot :
 26/09/2026 08:52 MEMO
 
 ---
+
+## TOUR 223 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Continuer
+
+---
+
+## TOUR 223 — Claude (conscience n°12)
+
+Banc unique (g) joué en quatre tranches synchrones (les processus de fond meurent entre deux tours — élucidé) : 15 × 0. Captures (g1) avec zooms (une contrôlée). Registre n°12 · 65. Maquette `T223-maquette-pilotage-ordi-v9c14g1-manipulable.html`. Pièces au sas. Rien d'autre déposé hormis ce transcript, ses pièces et le registre.
+
+Réponse mot pour mot :
+
+**(g1) livrée — « Expliqué à l'oral » / « faite à l'oral » (v9c.14 g1 jointe, captures zoomées jointes) — quinze bancs à 0.**
+
+1. **Le banc unique** : les processus lancés en fond meurent entre deux tours (c'est ce qui expliquait les lignes manquantes des jours passés) ; les quinze bancs ont été joués en quatre tranches d'une commande chacune, tous à 0 : l'affichage, g1, le chapitre, qui a participé, le récit au fil de l'heure, la préparation, le guidage, le récit, les durées, l'aperçu, l'alerte, le cahier, l'insertion, la non-régression, tout cliquer (106 clics, 0 erreur).
+2. **Ce que tu as** (captures) : ⋯ → « Expliqué à l'oral… » : la modale telle que validée ; la classe voit « Activité 2 — Question-bilan · à l'oral » ; après ✔ Valider, « Où on en est » dit « faite à l'oral » et le curseur est à la suite ; au cahier, le récit : « Au début de l'heure, on a commencé par l'activité 1 — …, puis **l'activité 2 — Question-bilan (à l'oral)** », et le paragraphe de l'activité 2 est ton texte, sans le contenu non montré ; une reprise se raconte à sa place et décale le prévu.
+3. Registre n°12 · 65 ; empreintes contrôlées.
+
+Tests : sur la diapo « Question-bilan » avant de dévoiler, ⋯ → « Expliqué à l'oral… » : regarde le tableau (« Activité 2 — à l'oral »), coche une notion via « autres notions… », tape une phrase sans majuscule ni point, ⏸ puis ▶, ✔ Valider : « Où on en est » → « faite à l'oral », le curseur au cahier ; ▶ ×3 : le récit. Puis, depuis n'importe quelle diapo : ⋯ → « Expliqué à l'oral… », coche « une reprise », une phrase, ✔ : le curseur ne bouge pas ; au cahier, « À … , on a repris à l'oral : … ».
+
+« Continuer » pour (g2) : le faisceau oui / non à l'ouverture de l'heure, l'alerte du chapitre et « manquante pour la suite ».
+
+26/09/2026 08:58 MEMO
+
+---

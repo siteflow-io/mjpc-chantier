@@ -7610,3 +7610,29 @@ Tests : sur la diapo « Question-bilan » avant de dévoiler, ⋯ → « Expliqu
 26/09/2026 08:58 MEMO
 
 ---
+
+## TOUR 224 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Continuer
+
+---
+
+## TOUR 224 — Claude (conscience n°12)
+
+(g2) codée par `vis/patch-g2.py` sur le gabarit g1 → `v9c14g2-template.html` (non déposé) : `faisceauHtml` / `brancherFaisceau` à l'ouverture (Q1-Q3, fil, entraînements, conclusion « C'est ça / Recommencer », actions : laisser / remettre avant (décision 'suivante' sur la source) / reprise à l'oral (`S.reprisesPrevues`) / décaler (décision 'suivante' moment classe, marquée « décalée » dans l'ordre)) ; la reprise prévue dans « Où on en est » (clic → oral prérempli) ; le chapitre : l'alerte sur l'heure à venir, « manquante pour la suite », le critère « travaillée » = l'activité finie ou l'oral (voir une diapo ne suffit pas — corrigé aussi dans g1) ; toutes les diapos d'activité par identifiant (`diaposAct`) — un défaut trouvé au banc : `a.diapos` n'était pas cohérent avec `actId`. Banc `test-g2.mjs` 0 ; test-g1, test-e sur g2 : 0 ; test-f recalé (rien n'est fini dans son scénario → « non travaillée ») : 0. Les douze autres bancs à jouer par tranches au tour suivant. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+**(g2) codée et prouvée par son banc — livraison pas close : douze bancs restent à rejouer par tranches, puis les captures et le dépôt (limite d'outils atteinte).**
+
+1. **Relecture de télescopage (g2)**, en tête, avec deux vrais défauts trouvés au banc : (a) « travaillée » ne peut pas vouloir dire « une diapo vue » — l'activité 1 en réserve avait sa première diapo vue, la notion passait travaillée et le faisceau ne s'ouvrait jamais ; désormais **une notion est travaillée quand l'activité qui la porte est finie, ou par un oral** (le chapitre lit le même critère) ; (b) les diapos d'une activité étaient retrouvées par une liste d'indices qui ne correspondait pas à l'identifiant porté par les diapos (une décision « décaler » tombait sur la mauvaise activité) — tout (g) passe maintenant par l'identifiant, la règle de (a0).
+2. **Fait et prouvé (banc g2, 0 défaut)** : le chapitre, avant même la clôture, porte l'alerte sur l'heure 2 (« *Les règles héritées* remobilise *Décrire une image fixe ou mobile* — non travaillée ») et la notion est « **manquante pour la suite** — attendue par *Les règles héritées* (heure 2) » ; à l'ouverture de mardi, **le faisceau** : question 1 avec le contexte ; **non → « on laisse tel quel »** ; « Recommencer » ; **oui → question 2** (« As-tu le temps de jouer d'abord *Analyse d'images* (52 min prévues — l'heure dépasserait de n min) ? ») avec le fil des réponses ; **non → question 3 ; oui → « une reprise à l'oral … avant *Les règles héritées* »** ; « C'est ça » : la ligne « ↺ reprise à l'oral de … » dans l'ordre de l'heure, le journal ; l'heure lancée : la reprise prévue dans « Où on en est », **un clic ouvre « Expliqué à l'oral » avec la notion cochée** ; validée, la ligne disparaît et la notion est travaillée. Les deux autres conclusions : **question 2 oui → *Analyse d'images* remise avant *Les règles héritées* dans l'heure 2** ; **question 3 non → *Les règles héritées* décalée** (retirée de l'heure, marquée « ↪ décalée à l'heure suivante »).
+3. **Les bancs sur g2** : g2, g1, le chapitre (recalé : dans son scénario rien n'est fini, la notion est « non travaillée »), qui a participé — à 0 ; les douze autres au prochain tour, par tranches.
+
+« Continuer » : les tranches, les captures, le dépôt (registre n°12 · 66).
+
+26/09/2026 10:10 MEMO
+
+---

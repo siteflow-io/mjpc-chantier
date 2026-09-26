@@ -7556,3 +7556,29 @@ Ton mot sur les deux ; ensuite je code (g) : le geste, le faisceau, le tracé et
 26/09/2026 07:52 MEMO
 
 ---
+
+## TOUR 222 — Paul
+
+Texte de Paul, mot pour mot :
+
+> C'est bon continue
+
+---
+
+## TOUR 222 — Claude (conscience n°12)
+
+(g1) codée par `vis/patch-g.py` → gabarit `v9c14g-template.html` (non déposé) : la donnée `remob` simulée après le chargement de la trame (« Les règles héritées » remobilise litt-036) ; ⋯ « Expliqué à l'oral… » (`ouvrirOral`, `validerOral`, `fermerOral`, `miseEnFormeLegere`, `notionsTravaillees`, `remobNonTravaillees`, `libNotion`) ; le tableau montre « Activité n — à l'oral » (`et.oral`) ; `finie` et `etatWorktrack` connaissent « faite à l'oral » ; le récit : le paragraphe de l'activité = l'oral (clé de l'activité, le paragraphe standard tombe), la reprise à sa place, `troisTemps` place les oraux dans le temps ; une reprise = coupure non comptée ; le chapitre : « travaillée (à l'oral) ». Banc `test-g1.mjs` 0 (pièges : `finie` est par diapo ; les libellés « c4-… » absents de la taxonomie simulée). Le banc unique (quinze bancs, l'audit en premier) lancé en fond. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+**(g1) codée et prouvée par son banc — livraison pas close : le banc unique des quinze tourne, les captures et le dépôt suivent (limite d'outils atteinte).**
+
+1. **Relecture de télescopage (g1)**, en tête : une activité faite à l'oral n'a aucune diapo vue — le récit en trois temps ne l'aurait pas racontée : elle y prend place par son heure de début, avec la clé de l'activité, et son paragraphe standard (celui qui aurait raconté la question posée) tombe ; « finie » se décide par diapo : les diapos d'une activité faite à l'oral comptent finies pour tout le pilotage (temps, séquence, glissement) ; une reprise est comptée comme une coupure non comptée dans les activités (le mécanisme des coupures existait) : elle décale le prévu d'autant ; le tableau, pendant un oral qui remplace une activité, reçoit un état « titre + à l'oral » et rien d'autre.
+2. **Fait et prouvé (banc g1, 0 défaut)** : ⋯ → « Expliqué à l'oral… » sur la diapo de l'activité 2 avant de dévoiler : la modale (chrono « A2 · Question-bilan · sur 3 prévues », ce que l'oral remplace, les notions, la phrase), **la classe voit « Activité 2 — Question-bilan · à l'oral » et pas le contenu**, ⏸ / ▶ comptés, la mise en forme légère exacte (« Une nature immense face à un homme petit. L'émotion avant la règle ; on a insisté sur le personnage de dos. » — majuscule après le point, doublon « le le » retiré), ✔ Valider : l'activité **faite à l'oral** (« Où on en est » le dit), le curseur passé à la suite, le journal ; au cahier, le récit : « **Activité 2 — Question-bilan faite à l'oral (Décrire une image fixe ou mobile) : Une nature immense…** », sans le contenu non montré ; une **reprise** depuis une autre diapo : notée, le curseur ne bouge pas, son temps n'est pas compté sur l'activité (il décale le prévu), et le récit dit « À 15 h 09, on a repris à l'oral : On a repris ce qu'est une hypothèse. » à sa place.
+3. **Dit** : les compétences « c4-… » de la trame simulée n'ont pas de libellé dans la maquette (elles s'affichent par leur code) — dans le site, la taxonomie les porte.
+
+« Continuer » : le banc unique, les captures, le dépôt (registre n°12 · 65) ; puis (g2), le faisceau à l'ouverture et l'alerte du chapitre.
+
+26/09/2026 08:52 MEMO
+
+---

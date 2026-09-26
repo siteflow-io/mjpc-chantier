@@ -7531,3 +7531,28 @@ Pris : **l'enregistrement tombe, l'oral reste.** Le cadrage 1 · 7.2 est réécr
 25/09/2026 17:30 MEMO
 
 ---
+
+## TOUR 221 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Continuer
+
+---
+
+## TOUR 221 — Claude (conscience n°12)
+
+Deux captures de proposition (g), injectées (`pieces/T221-proposition-g-oral[-zoom].png`, `T221-proposition-g-faisceau[-zoom].png`) : « Expliqué à l'oral » sans dictée ; le faisceau oui / non à l'ouverture, une question à la fois. Aucun code. Rien déposé hormis ce transcript et les captures.
+
+Réponse mot pour mot :
+
+Deux propositions à valider (captures zoomées + plein écran jointes, injectées, rien codé) :
+
+1. **« Expliqué à l'oral », sans dictée.** En tête : l'activité en cours et son chrono contre le prévu (« A2 · 1 min passée sur 3 prévues · l'heure est en retard de 4 min »). Puis **ce que cet oral est** : *remplace l'activité 2, faite à l'oral* (ses diapos ne seront pas dévoilées ; la classe voit « Activité 2 — à l'oral ») ou *une reprise* (le prévu se décale d'autant). Puis **les notions travaillées à l'oral** — celles que l'heure remobilise sans les avoir travaillées sont proposées d'abord, marquées en rouge « remobilisée, non travaillée » ; « autres notions… » ouvre le reste du chapitre. Puis **la phrase courte, tapée — ou rien**. ⏸ / ▶ sur le temps ; **✔ Valider** ; Annuler ; l'horodatage. La note rappelle la remise en forme légère et « rien ne se verse dans la trame ».
+2. **Le faisceau à l'ouverture de l'heure** : une seule question à la fois, en gros, **Oui / Non** ; au-dessus, le contexte (« *Les règles héritées* remobilise « l'énonciation » — non travaillée : *Analyse d'images* est en réserve ») et le fil des réponses déjà données (« 1 · … — oui ») ; en dessous, en clair, **ce que chaque réponse entraîne** (« Si oui → on remet *Analyse d'images* avant. Si non → question 3 »). À la fin, la conclusion s'affiche avec « C'est ça » / « Recommencer ».
+
+Ton mot sur les deux ; ensuite je code (g) : le geste, le faisceau, le tracé et les notions qui lisent le fait, avec la donnée « remobilise » simulée dans la trame de la maquette (l'activité 2 de mardi remobilise une notion de lundi).
+
+26/09/2026 07:52 MEMO
+
+---

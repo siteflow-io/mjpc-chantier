@@ -7689,3 +7689,30 @@ Tests : joue lundi jusqu'à la diapo 4, « Fin de l'heure », l'activité 1 « e
 27/09/2026 09:10 MEMO
 
 ---
+
+## TOUR 227 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Pour les notions de l'explication à l'oral en réalité elles ne changent pas. Je n'ai pas à les rechoisir. Logique non?
+
+---
+
+## TOUR 227 — Claude (conscience n°12)
+
+`ouvrirOral` : `rendreNotions()` selon le choix (activité → notions de l'activité d'office ; reprise prévue → sa notion d'office ; reprise libre → le choix), « + une autre notion… ». Bancs g1 / g2 recalés (un regex mal échappé par mes outils, réparé par réécriture directe de la ligne), les quatorze autres rejoués à 0 en tranches, tout cliquer 106 clics 0 erreur. Cadrage 1 · 7.2 complété et déposé. Registre n°12 · 67. Capture contrôlée. Maquette `T227-maquette-pilotage-ordi-v9c14g-manipulable.html`. Pièces au sas. Rien d'autre déposé hormis ce transcript, ses pièces, le cadrage et le registre.
+
+Réponse mot pour mot :
+
+Oui, logique — et fait (v9c.14 g jointe, capture zoomée jointe), seize bancs à 0 (quatre tranches) :
+
+1. **Si l'oral remplace une activité, ses notions sont celles de l'activité, d'office** — cochées, non modifiables (capture : « Notions travaillées à l'oral — *celles de l'activité* : ☑ c4-lire-02 ») ; « + une autre notion… » reste derrière un clic pour le cas exceptionnel.
+2. **La reprise prévue à l'ouverture porte sa notion d'office** (« celle de l'ouverture de l'heure »).
+3. **Seule une reprise libre demande de choisir** — c'est le seul cas où le site ne peut pas savoir : les remobilisées non travaillées d'abord, puis « autres notions du chapitre… », puis « tout le programme… » par famille, replié.
+4. Cadrage 1 · 7.2 complété ; registre n°12 · 67 ; la note sur « c4-lire-02 » affiché par son code tient toujours (pas de libellé dans la trame simulée).
+
+Tests : sur « Question-bilan », ⋯ → « Expliqué à l'oral… » : la notion de l'activité déjà cochée et grisée ; coche « une reprise » : les cases redeviennent libres ; recoche « remplace l'activité 2 » : d'office à nouveau.
+
+27/09/2026 09:45 MEMO
+
+---

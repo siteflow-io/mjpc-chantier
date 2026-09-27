@@ -7636,3 +7636,27 @@ Réponse mot pour mot :
 26/09/2026 10:10 MEMO
 
 ---
+
+## TOUR 225 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Je reviens sur la capture g11. Qu'est ce qu'elle montre cette modale?
+
+---
+
+## TOUR 225 — Claude (conscience n°12)
+
+Relu la capture g1-1 : « autres notions… » déplie toute la taxonomie simulée (268 notions) et envahit la modale ; défaut reconnu (7.3), correction annoncée : les notions du chapitre d'abord, tout le programme par famille repliée derrière un second clic. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Ce que montre la capture g1-1, honnêtement : **surtout un défaut.**
+
+1. **Ce qu'elle devait montrer** : la modale « Expliqué à l'oral » telle que validée — le chrono en tête, « cet oral remplace l'activité 2 / est une reprise », les notions, la phrase tapée, ⏸ / ▶ / ✔ Valider / Annuler, l'horodatage. Tout ça y est (le champ avec la phrase « une nature immense face à un homme petit. l'émotion avant la règle ; on a insisté sur le personnage de dos », les boutons, « début 15 h 07 · 0 min 0 s » en bas).
+2. **Ce qu'elle montre en fait** : pour la capture, le banc avait cliqué « autres notions… » pour cocher « Décrire une image fixe ou mobile » — et **« autres notions… » déplie toute la taxonomie d'un coup : 268 notions**, de « Appliquer la concordance des temps » à « L'assonance ». La liste envahit la modale, repousse le chrono et le choix « remplace / reprise » hors de vue. En classe, c'est inutilisable — et c'est la règle des gestes (7.3) prise en défaut : rien à l'écran sans besoin.
+3. **Ce qui doit être** : « autres notions… » propose **les notions du chapitre** (celles que la trame de la séance porte — travaillées ou remobilisées par ses activités —, quelques-unes), pas tout le programme ; et seulement derrière un second clic « tout le programme… », la taxonomie entière, **par famille, repliée**. Je le corrige dans la maquette avant de clore (g2), et je refais la capture avec la modale telle qu'elle doit être.
+
+27/09/2026 08:27 MEMO
+
+---

@@ -7716,3 +7716,36 @@ Tests : sur « Question-bilan », ⋯ → « Expliqué à l'oral… » : la noti
 27/09/2026 09:45 MEMO
 
 ---
+
+## TOUR 228 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Ok continue
+
+---
+
+## TOUR 228 — Claude (conscience n°12)
+
+Lecture du cadrage 4 (§1 l'écran, §9 ce qui reste) ; proposition du chantier « maquette de la préparation » : dans la même maquette (onglet Atelier, même rendu), six livraisons courtes (p1-p6), télescopages nommés. Aucun code, rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+La série (a)-(g) livrée, le cahier des charges vivant dit : **la maquette de la préparation** (cadrage 4, §9 : « une livraison, jouée par Paul »). Avant toute capture, le plan et sa mise en tension :
+
+1. **Où elle vit** : le cadrage 4 dit « trois colonnes, comme le pilotage », la diapo au centre à sa taille de tableau, l'écriture dans la diapo, la répétition = le même écran que le pilotage sans rien écrire. **Je propose donc de la construire dans la même maquette**, comme un troisième onglet en haut — « Pilotage · Relecture · **Atelier** » — avec le même moteur de rendu : ce que tu écris dans l'atelier s'affiche exactement comme la classe le verra, et « ▶ Jouer en avance » bascule dans le pilotage sans rien enregistrer. À part, on aurait deux rendus qui divergent.
+2. **Les livraisons, courtes, dans l'ordre** :
+   - **(p1)** l'écran : les trois colonnes (le chapitre à gauche avec séances, diapos, heures prévues et frontières ; la diapo au centre avec ses notes ; à droite ce que la diapo déclare et ce que le site en dit) ; le zoom Ctrl + molette ; l'ouverture depuis l'arborescence (« Éditer dans l'atelier »).
+   - **(p2)** écrire : un clic dans un bloc, on tape ; Tab / Maj + Tab / Entrée ; les blocs empilés qui montent et descendent ; l'enregistrement automatique (simulé : le témoin « enregistré il y a n s »).
+   - **(p3)** le clic droit complet sur une diapo / un bloc / une étape / une image (l'audit du 14/09 : dupliquer, insérer, monter / descendre avec la frontière d'heure, supprimer, envoyer vers une autre séance ; les refus sur le bilan et la réactivation).
+   - **(p4)** les objets et leurs gardes (§3) : chaque type de bloc avec son contrat, le manque d'objet déclaré (« objet à ajouter »), la fiche liée à une feuille, la vidéo (4 bis), le document (4 ter).
+   - **(p5)** l'activité comme objet (numéro continu, titre, ses diapos, ses notions travaillées **et remobilisées** — 2.7), l'heure prévue proposée d'après les durées, le travail à faire prévu par heure (2.3), le rôle « fin d'heure » (2.6).
+   - **(p6)** « ▶ Jouer en avance » (1.5) et les alertes du site (« trop pleine », « fiche non liée », « fichier non atteignable », « page sans contrat » 4.3) avec leur marche à suivre.
+   Chaque livraison : capture plein écran + zoom avant de coder, relecture de télescopage, banc par le geste, banc unique par tranches.
+3. **Télescopages déjà vus** : l'atelier et le pilotage partagent la trame — une modification en préparation vaut pour toute classe qui n'a pas encore vu la diapo (8.2), et le journal d'une heure passée lit la copie figée de la classe (1.4) : la maquette devra montrer ce partage sans le casser (une classe qui a vu, une qui n'a pas vu). Et « ce qui n'existe pas encore ne tombe pas » : le prompt d'injection (§5) n'est pas dans la maquette, mais ce qu'il produit (la trame avec ses objets) y est.
+
+Ton mot sur 1 (le même écran, onglet Atelier) et sur l'ordre de 2 ; puis je fais la capture de (p1).
+
+27/09/2026 18:47 MEMO
+
+---

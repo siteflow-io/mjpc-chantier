@@ -7660,3 +7660,32 @@ Ce que montre la capture g1-1, honnêtement : **surtout un défaut.**
 27/09/2026 08:27 MEMO
 
 ---
+
+## TOUR 226 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Ok
+
+---
+
+## TOUR 226 — Claude (conscience n°12)
+
+« autres notions du chapitre… » puis « tout le programme… » par famille repliée (un ternaire incomplet a cassé la page une fois — trouvé par bissection, réglé) ; g1 et g2 rejoués 0 ; les quatorze autres bancs par tranches : 0 ; tout cliquer 106 clics 0 erreur. Captures (g2) avec zooms (la modale contrôlée). Registre n°12 · 66. Maquette `T226-maquette-pilotage-ordi-v9c14g-manipulable.html`. Pièces au sas. Rien d'autre déposé hormis ce transcript, ses pièces et le registre.
+
+Réponse mot pour mot :
+
+**(g2) livrée — le faisceau à l'ouverture et le chapitre qui lit le fait (v9c.14 g jointe, captures zoomées jointes) — seize bancs à 0 (cinq tranches). La série (a) à (g) est livrée.**
+
+1. **Le défaut de la capture g1-1, réglé** : « autres notions du chapitre… » ne déplie plus que les notions que la trame de la séance travaille ou remobilise (une dizaine ici), et « tout le programme… » (par famille, replié) n'apparaît que derrière un second clic — capture 1.
+2. **Ce que tu as** : le chapitre porte l'alerte sur l'heure à venir et la notion « manquante pour la suite » (capture 2) ; à l'ouverture de mardi, le faisceau — capture 3 : question 2 avec le contexte, le fil (« 1 · … — oui ») et ce que chaque réponse entraîne ; capture 4 : la conclusion « une reprise à l'oral … avant *Les règles héritées* » avec « C'est ça / Recommencer » ; capture 5 : après « C'est ça », la ligne « ↺ reprise à l'oral … » dans l'ordre de l'heure ; capture 6 : l'heure lancée, la reprise prévue dans « Où on en est », cliquable. Les deux autres conclusions (remettre *Analyse d'images* avant ; décaler *Les règles héritées*) sont prouvées par le banc.
+3. **Deux règles fixées par le banc** (déjà dites au tour 224) : une notion est travaillée quand l'activité qui la porte est finie ou par un oral ; les diapos d'une activité se retrouvent par identifiant.
+4. Registre n°12 · 66 ; empreintes contrôlées.
+
+Tests : joue lundi jusqu'à la diapo 4, « Fin de l'heure », l'activité 1 « en réserve », clos ; « Relecture » → « Le chapitre » : l'alerte sur l'heure 2 et « manquante pour la suite » ; lance l'heure 2 : le faisceau ; réponds non → « on laisse » ; « Recommencer » ; oui, non, oui → « reprise à l'oral » → « C'est ça » ; « Lancer l'heure 2 » : la reprise prévue à droite, clique-la : « Expliqué à l'oral » avec la notion cochée ; ✔ Valider : la ligne disparaît. Refais avec oui / oui : *Analyse d'images* en tête de l'heure 2 ; avec oui / non / non : *Les règles héritées* décalée.
+
+**Ce qui reste, dans l'ordre du cahier des charges vivant** : (1) tes tests des livraisons (b3) à (g) ; (2) la maquette de la préparation (cadrage 4) ; (3) la séquence de test du mandat ; (4) le mandat en livraisons courtes + attendus hub ; (5) la « fausse relecture » / logo ED image que tu n'as pas envoyé ; (6) le journal de la page de test Win+K v2.
+
+27/09/2026 09:10 MEMO
+
+---

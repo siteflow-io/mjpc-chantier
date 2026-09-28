@@ -8119,3 +8119,29 @@ Rien à trancher sur le fond. Ton mot sur le découpage, et je code (p4a).
 28/09/2026 21:05 MEMO
 
 ---
+
+## TOUR 243 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Continue
+
+---
+
+## TOUR 243 — Claude (conscience n°12)
+
+(p4a) codée par `vis/patch-p4a.py` sur le gabarit p3 → `v9c15p4a-template.html` (non déposé) : la simulation de donnée (deux feuilles du chapitre avec sept fiches, quatre fiches de la trame liées, une fiche non liée sur « Les règles héritées », un objet inconnu « tableau-double » et une page sans contrat sur « Question-bilan ») ; « + bloc » → `choixObjet` (huit cartes avec leur contrat, vidéo grisée jusqu'à p4b, page en pointillé, « déclarer un objet manquant ») ; `formulaireObjet` : texte, consigne, question (refus si vide, refus sans réponse attendue, la réponse à part), fiche (le choix parmi les feuilles, le bloc lié porte feuille + fiche + texte), schéma (forme, échelle plein), image (refus d'une adresse complète, adresse relative dans mjpc-medias), page HTML (refusée sans manque déclaré ; avec ou sans contrat), manque d'objet (`S.objetsManquants`, journal) ; au rendu : un type inconnu → « objet non lisible » au pilote et dans l'atelier, rien au tableau ; une fiche non liée → « fiche non liée », rien au tableau ; une page → sa vignette, « sans contrat : jouée comme une image » ; `alertesForme` (la liste du chapitre avec la marche à suivre et le texte prêt à copier pour l'instance), « À régler (n) » dans la carte du chapitre → `ouvrirARegler` (ouvrir la diapo, copier le texte) ; la carte « Sur la forme » lit la part de la diapo ; clic droit sur une fiche → « Lier à une fiche… » ; « + image » et « + fiche… » actifs. Pièges : la simulation par heure avant le calcul des heures (ciblée par titre) ; les apostrophes dans les chaînes de simulation (typographiques). Banc `test-p4a.mjs` 0 (tableau vérifié : l'objet non lisible n'y affiche rien). Les dix-neuf autres bancs à rejouer par tranches. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+**(p4a) codée et prouvée par son banc — livraison pas close : le banc unique (vingt bancs) reste à jouer par tranches, puis les captures et le dépôt (limite d'outils atteinte).**
+
+1. **Relecture de télescopage (p4a)**, en tête : le contrat de chaque objet est tenu au même endroit que le rendu — le pilote et l'atelier montrent « objet non lisible » ou « fiche non liée » avec la marche à suivre, **le tableau n'affiche rien à leur place** (jamais une page blanche, jamais un bloc cassé devant la classe) ; une page HTML ne se crée qu'après un manque déclaré, et sans contrat elle est jouée comme une image et va dans « À régler » ; la liste « À régler » et la carte « Sur la forme » lisent la même source (la diapo ouverte pour la carte, le chapitre entier pour la liste), donc jamais deux comptes différents.
+2. **Fait et prouvé (banc p4a, 0 défaut)** : « + bloc » → les huit objets avec leur contrat (vidéo grisée jusqu'à p4b) ; **Texte** ajouté sans puce ; **Question** refusée vide, refusée sans réponse attendue, ajoutée avec la réponse à part ; **Image** : une adresse complète refusée, une adresse relative rangée dans mjpc-medias ; **Schéma** : sans titre refusé, ajouté avec sa forme et l'échelle « plein » ; **Fiche…** : les deux feuilles du chapitre et leurs sept fiches, « Le sonnet » liée avec son texte, rendue ; **Page HTML** : refusée tant qu'aucun manque n'est déclaré ; « Déclarer un objet manquant » (compté dans « Le chapitre », au journal) ; puis la page sans contrat ajoutée, signalée au rendu et dans « Sur la forme » ; la diapo simulée avec un **objet inconnu** : « Objet non lisible — « tableau-double » » dans l'atelier, **rien au tableau** (mesuré dans la fenêtre du tableau) ; **« À régler (n) »** : la liste du chapitre (l'objet inconnu, la page simulée, la fiche non liée, la page ajoutée, le manque), « Ouvrir la diapo », « Copier le texte pour l'instance » ; sur une **fiche non liée** : « Fiche non liée » au rendu, clic droit → « Lier à une fiche… » → liée, l'alerte tombe.
+3. **Dit** : les feuilles du chapitre sont simulées dans la maquette (la trame n'en a pas) ; la copie vers le presse-papiers passe par le navigateur (le texte est aussi gardé pour le banc).
+
+« Continuer » : les tranches, les captures, le dépôt (registre n°12 · 71), puis (p4b) la vidéo et les documents.
+
+28/09/2026 23:05 MEMO
+
+---

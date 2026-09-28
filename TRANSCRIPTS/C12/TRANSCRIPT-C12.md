@@ -7855,3 +7855,31 @@ Réponse mot pour mot :
 28/09/2026 13:16 MEMO
 
 ---
+
+## TOUR 233 — Paul
+
+Texte de Paul, mot pour mot :
+
+> continuer
+
+---
+
+## TOUR 233 — Claude (conscience n°12)
+
+Banc unique (p1) joué en cinq tranches : 17 × 0. Registre n°12 · 68. Maquette `T233-maquette-pilotage-ordi-v9c15p1-manipulable.html`. Pièces au sas (empreintes contrôlées). Rien d'autre déposé hormis ce transcript, ses pièces et le registre.
+
+Réponse mot pour mot :
+
+**(p1) livrée — l'atelier, l'écran de la préparation (v9c.15 p1 jointe, captures jointes) — dix-sept bancs à 0 (cinq tranches).**
+
+1. **Les bancs** : l'affichage, p1, le faisceau, l'oral, le chapitre, qui a participé, le récit au fil de l'heure, la préparation du cahier, le guidage, le récit, les durées, l'aperçu, l'alerte, le cahier, l'insertion, la non-régression, tout cliquer (106 clics, 0 erreur) — tous à 0.
+2. **Ce que tu as** : sur l'emploi du temps, **« Éditer dans l'atelier »** (à la place de « Préparer ») ouvre l'atelier sur la première diapo de l'heure, sans rien lancer ; l'onglet **Atelier** ; le chapitre par heure à gauche, la diapo entière au centre, les cartes à droite ; un clic sur une diapo l'ouvre ; Ctrl + molette zoome ; **rien n'est poussé au tableau, rien n'est écrit, rien n'est marqué comme vu** tant que tu es dans l'atelier ; « ▶ Jouer en avance » te remet au pilotage.
+3. Registre n°12 · 68 ; empreintes contrôlées.
+
+Tests : ouvre la maquette ; sur l'emploi du temps, « Éditer dans l'atelier » (heure 1) : l'atelier, la diapo 1 entière, « Atelier · Diapo 1 sur 9 · … · prévue 3 min · H1 15 h 07 → 15 h 10 » ; à gauche, clique « 7 Les hypothèses… » puis une diapo de H2 : la diapo et les cartes changent ; Ctrl + molette : la diapo zoome ; onglet Pilotage : les éléments non dévoilés redeviennent gris ; onglet Atelier : tout en plein ; « ▶ Jouer en avance » : le pilotage ; « Relecture » → le journal ne contient aucune diapo vue venant de l'atelier.
+
+« Continuer » pour (p2) : écrire dans la diapo (un clic dans un bloc, on tape ; Tab / Maj + Tab / Entrée ; les blocs qui montent et descendent ; l'enregistrement automatique) — capture avant de coder.
+
+28/09/2026 13:32 MEMO
+
+---

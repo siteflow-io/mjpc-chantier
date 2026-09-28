@@ -7883,3 +7883,31 @@ Tests : ouvre la maquette ; sur l'emploi du temps, « Éditer dans l'atelier » 
 28/09/2026 13:32 MEMO
 
 ---
+
+## TOUR 234 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Continue
+
+---
+
+## TOUR 234 — Claude (conscience n°12)
+
+Capture de proposition (p2) — écrire dans la diapo (`pieces/T234-proposition-p2-ecrire-plein-ecran.png` + zoom), injectée sur la maquette p1. Rien codé, rien déposé hormis ce transcript et les captures.
+
+Réponse mot pour mot :
+
+La capture de **(p2) — écrire dans la diapo** (zoom + plein écran joints, proposition injectée, rien codé) :
+
+1. **Un clic dans un bloc, tu tapes** : le bloc en édition prend un contour pointillé doré ; la ligne où tu es est surlignée avec le curseur ; le texte s'affiche exactement comme la classe le verra (même taille, même police).
+2. **La barre du bloc**, en haut à droite du bloc : **▲ ▼** (monter / descendre le bloc, aussi Alt + ↑ / ↓), **+ étape** (ajoute un élément après), **✕** (supprime le bloc — avec confirmation si des réponses d'élèves y sont accrochées, 1.8). Le nom du bloc (« bloc 2 · étapes · 3 éléments ») en petit au-dessus — sur la capture il chevauche le titre d'activité : au codage il ira dans la barre.
+3. **Au clavier** : **Tab** passe à l'élément suivant, **Maj + Tab** au précédent, **Entrée** en fin de ligne crée l'élément suivant (la ligne « Étape 4 — … » en gris italique, prête à être tapée), **Échap** annule la ligne vide.
+4. **L'enregistrement automatique** (1.6) : le témoin de la barre passe de « ✔ enregistré » à « **● modification en cours — enregistrement dans 3 s** » pendant la frappe, puis revient à « ✔ enregistré il y a n s » ; rien à sauver, jamais. Si l'enregistrement échoue (hors ligne), le témoin le dit en rouge et garde la frappe.
+5. **Une aide** en bas à gauche de la scène rappelle ces gestes (plein écran).
+
+Rien à trancher sur le fond, c'est le cadrage 4 · 1.2 et 1.6. Ton mot, et je code (p2).
+
+28/09/2026 14:52 MEMO
+
+---

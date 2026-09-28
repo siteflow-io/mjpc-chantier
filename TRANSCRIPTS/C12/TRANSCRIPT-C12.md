@@ -8063,3 +8063,32 @@ Réponse mot pour mot :
 28/09/2026 20:40 MEMO
 
 ---
+
+## TOUR 241 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Continuer
+
+---
+
+## TOUR 241 — Claude (conscience n°12)
+
+Banc unique (p3) joué en cinq tranches : 19 × 0. Captures (une contrôlée). Registre n°12 · 70. Maquette `T241-maquette-pilotage-ordi-v9c15p3-manipulable.html`. Pièces au sas (empreintes contrôlées). Rien d'autre déposé hormis ce transcript, ses pièces et le registre.
+
+Réponse mot pour mot :
+
+**(p3) livrée — le clic droit complet de l'atelier (v9c.15 p3 jointe, captures jointes) — dix-neuf bancs à 0 (cinq tranches).**
+
+1. **Les bancs** : l'affichage, p3, p2, p1, le faisceau, l'oral, le chapitre, qui a participé, le récit au fil de l'heure, la préparation du cahier, le guidage, le récit, les durées, l'aperçu, l'alerte, le cahier, l'insertion, la non-régression, tout cliquer (106 clics, 0 erreur) — tous à 0.
+2. **Ce que tu as (captures)** : le menu sur la diapo 8 « Question-bilan · A2 · H1 » avec la note « ↓ en descendant, elle passe en H2 : l'heure 1 revient à 52 + 5 = 57 min +7, l'heure 2 monte à 69 min +19 » ; le menu sur la fin d'heure, tout grisé avec le pourquoi ; le menu sur un bloc.
+3. **Dit** : la « copie de classe » (une diapo supprimée que la classe qui l'a vue garde) n'existe pas dans la maquette — le journal la garde par identifiant, c'est le site qui fera la copie (cadrage 1 · 1.4).
+4. Registre n°12 · 70 ; empreintes contrôlées.
+
+Tests : atelier ; clic droit sur « 8 Question-bilan » dans la colonne : lis la note sous « Descendre » ; « Dupliquer » : la copie apparaît, le curseur dessus ; Suppr : confirmation, elle disparaît ; clic droit sur « 1 Analyse d'images » → Supprimer : le message dit qu'une classe l'a vue (Annuler) ; clic droit sur « 9 Cahier de textes » : tout grisé, survole pour lire pourquoi ; ouvre la diapo 7 ; clic droit dans le titre du bloc → Dupliquer le bloc ; clic droit sur le second → Taille (grand) ; Copier, puis Coller ici sur le premier ; clic droit sur le troisième → Couper la diapo ici : « Les hypothèses de la classe (suite) » apparaît dans la colonne en H1 ; Ctrl + D et Ctrl + Entrée sur la diapo ouverte ; Alt + ↓ trois fois sur une diapo de fin d'heure 1 : elle passe en H2 et le message le dit.
+
+« Continuer » pour (p4) : les objets et leurs gardes (cadrage 4 §3 : chaque type de bloc et son contrat, « objet à ajouter », la fiche liée à une feuille, la vidéo, le document) — capture avant de coder.
+
+28/09/2026 20:52 MEMO
+
+---

@@ -7962,3 +7962,31 @@ Réponse mot pour mot :
 28/09/2026 18:05 MEMO
 
 ---
+
+## TOUR 237 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Continuer
+
+---
+
+## TOUR 237 — Claude (conscience n°12)
+
+Banc unique (p2, version corrigée) joué en cinq tranches : 18 × 0. Registre n°12 · 69. Maquette `T237-maquette-pilotage-ordi-v9c15p2-manipulable.html`. Pièces au sas (empreintes contrôlées). Rien d'autre déposé hormis ce transcript, ses pièces et le registre.
+
+Réponse mot pour mot :
+
+**(p2) livrée — écrire dans la diapo (v9c.15 p2 jointe) — dix-huit bancs à 0 sur la version corrigée (cinq tranches).**
+
+1. **Les bancs** : l'affichage, p2 (avec le cas « changer de diapo puis Entrée »), p1, le faisceau, l'oral, le chapitre, qui a participé, le récit au fil de l'heure, la préparation du cahier, le guidage, le récit, les durées, l'aperçu, l'alerte, le cahier, l'insertion, la non-régression, tout cliquer (106 clics, 0 erreur) — tous à 0.
+2. **Deux règles fixées pour la suite du chantier**, nées des pièges du morph : un geste branché sur un nœud lit toujours la diapo du moment, jamais celle du branchement ; l'état éditable se repose à chaque rendu. Elles vaudront pour (p3) à (p6).
+3. Registre n°12 · 69 ; empreintes contrôlées.
+
+Tests : atelier, diapo 7 ; clique dans « Je note à ma façon… », tape à la fin, regarde le témoin (« ● modification en cours… » puis « ✔ enregistré ») ; Entrée : la nouvelle étape vide avec son invite, tape, Entrée, Échap ; Tab / Maj + Tab ; « + bloc » en bas : un bloc « Nouveau bloc », tape son titre ; ▲ dans la barre du bloc, puis Alt + ↓ ; « + étape » ; ✕ sur ce bloc : supprimé sans question ; ferme l'aide (✕ dans la colonne de droite) ; onglet Pilotage : ta phrase est dans la diapo.
+
+« Continuer » pour (p3) : le clic droit complet (dupliquer, insérer, monter / descendre avec la frontière d'heure, supprimer, envoyer vers une autre séance ; les refus sur le bilan et la réactivation) — capture avant de coder.
+
+28/09/2026 18:33 MEMO
+
+---

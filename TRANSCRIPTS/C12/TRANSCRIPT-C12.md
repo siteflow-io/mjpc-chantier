@@ -7829,3 +7829,29 @@ Si ça te va, je l'écris au cadrage 4 (§1 et §6) et au cadrage 1 · 6.7, et j
 28/09/2026 13:05 MEMO
 
 ---
+
+## TOUR 232 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok
+
+---
+
+## TOUR 232 — Claude (conscience n°12)
+
+Cadrages déposés (4 · 1.1 précisé, 4 · 6.1 la page « À régler », 1 · 6.7). (p1) codée par `vis/patch-p1.py` sur le gabarit g → `v9c15p1-template.html` (non déposé) : onglet Atelier (`voir('atelier')`, `S.atelier`), `voletAtelier` (le chapitre par heure avec frontières et dépassement sur 50 utiles), `droiteAtelier` (les trois cartes + le chapitre ; « sur la forme » seulement s'il y a quelque chose), `creneauDe`, le numéro d'atelier, la barre de l'atelier (`#outils-atelier`, boutons à venir désactivés, « ▶ Jouer en avance » = bascule pilotage en p1), « Éditer dans l'atelier » sur l'EDT, le rendu de la diapo entière (`et.atelier`), **l'atelier ne pousse rien, n'écrit rien au journal, ne marque rien comme vu** (`pousser` et `journal` court-circuités). Pièges : le volet standard réécrivait la colonne ; la colonne de droite cachée par un style inline ; le sous-titre doublonné ; le dépassement calculé sur 55 au lieu de 50 utiles ; le numéro par l'heure jouée au lieu de l'heure de la diapo ; le 'diapo' du chargement (comportement existant, hors p1). Banc `test-p1.mjs` 0. Captures prises (une contrôlée). Le banc unique (dix-sept bancs) à jouer par tranches au tour suivant ; rien déposé hormis ce transcript et les cadrages.
+
+Réponse mot pour mot :
+
+**(p1) codée et prouvée par son banc — livraison pas close : le banc unique des dix-sept bancs reste à jouer par tranches, puis le dépôt (limite d'outils atteinte).** Les cadrages (4 · 1.1, 4 · 6.1 « À régler », 1 · 6.7) sont déposés.
+
+1. **Relecture de télescopage (p1)**, en tête : l'atelier partage l'écran avec le pilotage, donc tout ce que le pilotage fait « en passant » (pousser au tableau, écrire au journal, marquer une diapo comme vue) devait être coupé net en atelier — c'est fait : **l'atelier ne pousse rien, n'écrit rien, ne marque rien** ; le dépassement d'une heure se calcule comme au pilotage (50 min utiles + 5 de cahier), sinon les deux écrans se seraient contredits ; le numéro suit l'heure de la diapo ouverte, pas l'heure jouée.
+2. **Ce que tu as (capture jointe, la diapo 7)** : l'onglet **Atelier** après Relecture ; le bandeau sans chrono ni Fin de l'heure ; **à gauche, le chapitre par heure** (« H1 · lundi 14 septembre · 55 min — 55 + 5 = 60 min +10 », les diapos numérotées avec A1/A2 et leurs minutes, le cahier ; H2 « +16 ») ; **au centre la diapo entière** (rien de grisé) et la barre de l'atelier (+ bloc, + étape… à venir, « ✔ enregistré », « ▶ Jouer en avance ») ; **à droite** « Ce que la diapo déclare » (Activité 1 · diapo 7 sur 7, H1 22 min 15:37 → 15:59, les notions, remobilise : rien, 3 éléments), « Pour la classe » (⚠ l'heure 1 dépasse de 10 min, avec quoi faire), « Le chapitre » — et « Sur la forme » n'apparaît que sur une diapo qui a quelque chose à régler (une fiche non liée, mesuré). Un clic sur une diapo de la colonne l'ouvre ; Ctrl + molette zoome ; « Éditer dans l'atelier » sur l'emploi du temps ouvre l'atelier sans lancer l'heure ; « Jouer en avance » bascule sur le pilotage (le vrai « rien n'est écrit » en répétition est (p6)).
+3. **Dit** : au chargement de la maquette, le pilotage note déjà « diapo 1 vue » avant tout geste — c'est un comportement existant, hors (p1), à regarder à part.
+
+« Continuer » : les tranches du banc unique, le dépôt (registre n°12 · 68), puis (p2) écrire dans la diapo.
+
+28/09/2026 13:16 MEMO
+
+---

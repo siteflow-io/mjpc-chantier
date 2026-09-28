@@ -7937,3 +7937,28 @@ Réponse mot pour mot :
 28/09/2026 17:25 MEMO
 
 ---
+
+## TOUR 236 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Continuer
+
+---
+
+## TOUR 236 — Claude (conscience n°12)
+
+Bancs (p2) copiés ; dix-huit bancs joués en cinq tranches : 0 partout (tout cliquer 106 clics, 0 erreur). En prenant les captures, un vrai défaut trouvé sur la diapo 7 : après un changement de diapo dans la colonne, Entrée créait l'élément dans la diapo précédente — le morph réutilise les nœuds d'une diapo à l'autre et le handler avait capturé `ecran()` au branchement ; réglé (la diapo du moment lue à l'événement), le banc p2 complété par ce cas (0). Les dix-sept autres bancs sont à rejouer sur la version corrigée avant dépôt (tour suivant). Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+**Les dix-huit bancs à 0 sur (p2) — puis un vrai défaut trouvé en prenant les captures, réglé, et le banc complété ; la version corrigée doit repasser les dix-sept autres bancs avant dépôt (tour suivant, limite d'outils).**
+
+1. **Le défaut** : sur la diapo 7 ouverte depuis la colonne, Entrée créait la nouvelle étape… **dans la diapo 1**. La cause est la même mécanique qu'hier : le « morph » réutilise les nœuds d'une diapo à l'autre, et le geste avait retenu la diapo du moment où il avait été branché. Réglé : chaque geste lit la diapo ouverte au moment où tu l'utilises ; le banc rejoue maintenant « changer de diapo puis Entrée » (0 défaut). Mesuré après correction : la trame de la diapo 7 a bien son élément vide à la bonne place, celle de la diapo 1 est intacte.
+2. **Captures jointes** (diapo 7) : après la frappe et Entrée — la ligne ajoutée « , et je souligne ce qui m'étonne », la nouvelle étape vide surlignée avec son invite, la barre du bloc « BLOC 1 · CONSIGNE · 4 ÉLÉMENTS », le témoin « ● modification en cours » ; puis, 3 s après la frappe de « Je compare mes notes avec mon voisin. », « ✔ enregistré ».
+
+« Continuer » : les cinq tranches sur la version corrigée, le dépôt (registre n°12 · 69), puis (p3) le clic droit.
+
+28/09/2026 18:05 MEMO
+
+---

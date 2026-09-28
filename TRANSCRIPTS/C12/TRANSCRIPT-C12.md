@@ -8037,3 +8037,29 @@ Parce que c'est moi qui les ai posés tous les trois d'un coup pour la capture �
 28/09/2026 19:20 MEMO
 
 ---
+
+## TOUR 240 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Ok. Alors continue
+
+---
+
+## TOUR 240 — Claude (conscience n°12)
+
+(p3) codée par `vis/patch-p3.py` sur le gabarit p2 → `v9c15p3-template.html` (non déposé) : en atelier, le clic droit sur une diapo de la colonne (`menuAtelierDiapo` : Ouvrir, Dupliquer Ctrl + D, Insérer une diapo après Ctrl + Entrée, Monter / Descendre Alt + ↑ ↓ avec la note de frontière d'heure, Envoyer vers une autre séance… (choix par numéro : identité inchangée, dernière heure de la cible, avant sa fin d'heure), Couper la diapo ici…, Supprimer Suppr ; les refus grisés avec le pourquoi pour la fin d'heure, le bilan, la réactivation) ; sur un bloc (`menuAtelierMur` : dupliquer à nouvelle identité, monter / descendre, taille petit / normal / grand lue au rendu pilote et tableau, copier / couper / coller ici à nouvelle identité, couper la diapo ici → « (suite) » même heure mêmes notions durée partagée, supprimer) ; sur un élément (dupliquer, monter, descendre, supprimer) ; sur une image (supprimer) ; `dupliquerDiapo`, `insererDiapoApres`, `deplacerDiapo` (franchir la fin d'heure change l'heure prévue et le dit), `supprimerDiapo` (confirmation ; « une classe l'a déjà vue : elle la garde dans sa copie »), `couperDiapoIci`, `apresTrame` (réindexe par identifiant, libère les ordres des heures non lancées), `toast` ; les raccourcis clavier de l'atelier hors champ. Banc `test-p3.mjs` 0 (ajustements : la vignette courante a une animation — clic droit par événement ; « Envoyer » actif car la maquette a plusieurs séances). Les dix-huit autres bancs à rejouer par tranches. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+**(p3) codée et prouvée par son banc — livraison pas close : le banc unique (dix-neuf bancs) reste à jouer par tranches, puis les captures et le dépôt (limite d'outils atteinte).**
+
+1. **Relecture de télescopage (p3)**, en tête : tout geste sur la trame passe par l'identité (dupliquer et coller donnent une identité neuve à la diapo et à chacun de ses blocs ; déplacer, couper, envoyer la gardent) et se termine par une réindexation — le journal, les ordres figés d'une heure lancée ou close, le curseur, tout se recale par identifiant (la règle de a0) ; les ordres des heures non lancées sont libérés pour que le compte des heures se recalcule ; **franchir la fin d'heure** en descendant fait passer la diapo dans l'heure suivante et le dit — la fin d'heure reste la dernière de la sienne ; la taille d'un bloc (petit / normal / grand) est lue par le même rendu au pilotage et au tableau.
+2. **Fait et prouvé (banc p3, 0 défaut)** : les menus tels que validés, un seul à la fois ; les refus grisés qui disent pourquoi ; dupliquer (copie juste après, identités neuves, notions copiées, heure héritée, le curseur dessus, la colonne et le numéro suivent) ; supprimer avec confirmation, et le mot « une classe l'a déjà vue : elle la garde dans sa copie » sur une diapo vue ; insérer après ; monter ; descendre trois fois : elle franchit la fin d'heure et passe en H2, le message le dit, la fin d'heure reste la dernière de H1 ; Suppr, Ctrl + D, Ctrl + Entrée ; sur un élément : dupliquer, supprimer ; sur un bloc : dupliquer (identité neuve), taille (grand se rend plus grand), copier puis coller ici (identité neuve, la taille suit), couper la diapo ici (« Les hypothèses de la classe (suite) », même heure, mêmes notions, la durée partagée 22 = 11 + 11), supprimer ; rien de dévoilé au journal ; au pilotage, le clic droit reste celui du pilotage.
+3. **Dit** : « Envoyer vers une autre séance » demande le numéro de la séance dans une boîte (la maquette ; l'écran de choix propre est pour le site) et pose la diapo à la dernière heure de la cible, avant sa fin d'heure.
+
+« Continuer » : les tranches, les captures, le dépôt (registre n°12 · 70), puis (p4) les objets et leurs gardes.
+
+28/09/2026 20:40 MEMO
+
+---

@@ -7990,3 +7990,30 @@ Tests : atelier, diapo 7 ; clique dans « Je note à ma façon… », tape à la
 28/09/2026 18:33 MEMO
 
 ---
+
+## TOUR 238 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Continuer
+
+---
+
+## TOUR 238 — Claude (conscience n°12)
+
+Relu 4 · 1.4 (le clic droit audité) et 0.4 (couper la diapo). Capture de proposition (p3) — les trois menus (diapo, bloc, fin d'heure refusée) (`pieces/T238-proposition-p3-clicdroit-plein-ecran.png` + zoom), injectée. Rien codé, rien déposé hormis ce transcript et les captures.
+
+Réponse mot pour mot :
+
+La capture de **(p3) — le clic droit** (zoom + plein écran joints ; les trois menus sont montrés en même temps pour la capture, en vrai un seul s'ouvre ; proposition injectée, rien codé). C'est le cadrage 4 · 1.4 (l'audit du 14/09) et 0.4 mis en écran :
+
+1. **Sur une diapo de la colonne** (menu en haut à gauche, « DIAPO 7 · LES HYPOTHÈSES DE LA CLASSE · A1 · H1 ») : **Ouvrir** (Entrée) · **Dupliquer** (Ctrl + D — nouvelle identité, notions copiées, heure héritée) · **Insérer une diapo après** (Ctrl + Entrée) · **Monter / Descendre** (Alt + ↑ / ↓ — identité inchangée) avec, dessous, ce que le site dit quand le geste franchit une frontière d'heure : « ↓ en descendant, elle passe en H2 (mardi 15/09) : l'heure 1 revient à 38 + 5 = 43 min ✔, l'heure 2 monte à 83 min +33 » · **Envoyer vers une autre séance…** · **Couper la diapo ici…** (0.4 : par le bloc) · **Supprimer** (Suppr — une classe qui l'a vue la garde dans sa copie). Chaque entrée porte son infobulle.
+2. **Sur un bloc dans la diapo** (menu en haut à droite, « BLOC 1 · CONSIGNE · 4 ÉLÉMENTS ») : **Dupliquer le bloc · Monter · Descendre · Taille : petit · normal · grand · Copier · Couper · Coller ici** (coller donne toujours une nouvelle identité) · **Couper la diapo ici** (la seconde diapo « (suite) », même heure, mêmes notions) · **Supprimer le bloc** (confirmation si des réponses y sont accrochées). Sur une étape : supprimer · dupliquer · monter · descendre ; sur une image : supprimer.
+3. **Les refus, dits et grisés** (menu du bas, la diapo « Cahier de textes », rôle fin d'heure) : « Dupliquer — la diapo de fin d'heure ne se duplique pas (2.6) », « Monter / Descendre — elle reste la dernière de son heure », « Supprimer — chaque heure garde sa fin d'heure ; de même le bilan et la réactivation (1.4) ». Le geste refusé reste visible et dit pourquoi, il ne disparaît pas.
+4. **Ce qui ne s'écrit pas** : réordonner, dupliquer, supprimer en préparation ne change aucun récit passé (le journal d'une heure passée lit la copie figée de la classe, 1.4).
+
+Rien à trancher sur le fond. Ton mot, et je code (p3) — la sélection par cadre (« à écrire » sur le lot) viendra avec (p4), les objets.
+
+28/09/2026 18:50 MEMO
+
+---

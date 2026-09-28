@@ -7911,3 +7911,29 @@ Rien à trancher sur le fond, c'est le cadrage 4 · 1.2 et 1.6. Ton mot, et je c
 28/09/2026 14:52 MEMO
 
 ---
+
+## TOUR 235 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Continuer
+
+---
+
+## TOUR 235 — Claude (conscience n°12)
+
+(p2) codée par `vis/patch-p2.py` sur le gabarit p1 → `v9c15p2-template.html` (non déposé) : chaque élément et titre de bloc éditable dans l'atelier (`brancherAtelier`, `ecrireDansDiapo` écrit dans la trame), Tab / Maj + Tab / Entrée (nouvel élément vide avec invite) / Échap (annule une ligne vide) / Alt + ↑ ↓, la barre du bloc (`poserBarreBloc` : nom, ▲ ▼, + étape, ✕ avec confirmation si des réponses y sont accrochées, `deplacerBloc`, `supprimerBloc`), « + bloc » et « + étape » de la barre de l'atelier actifs, l'enregistrement automatique simulé (`marquerModif`, témoin « ● modification en cours — enregistrement dans n s » puis « ✔ enregistré il y a n s », journal `atelier-modif` / `atelier-enregistre`), l'aide en carte fermable en tête de la colonne de droite. Pièges (six, tous réglés par le banc) : brancher seulement les déjà-éditables ; les touches traitées remontaient au clavier global (Échap fermait l'atelier) ; l'aide flottante recouvrait la barre ; les clones du morph perdaient leurs écouteurs (WeakSet) ; le morph retire les attributs absents du nouveau rendu (contenteditable reposé à chaque passage) ; le rendu différé (brancher avant de focaliser, un observateur du mur). Banc `test-p2.mjs` 0 (une trame simulée à un seul bloc par diapo : « + bloc » sert au banc pour monter / descendre). Les dix-sept autres bancs à rejouer par tranches. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+**(p2) codée et prouvée par son banc — livraison pas close : le banc unique (dix-huit bancs) reste à jouer par tranches, puis les captures et le dépôt (limite d'outils atteinte).**
+
+1. **Relecture de télescopage (p2)**, en tête, avec ce que le banc a attrapé : le rendu de la diapo passe par le « morph » du site (il réutilise les nœuds et ne touche jamais celui qui a le focus — ta règle) : il fallait reposer l'état éditable après chaque rendu et rebrancher les nœuds recréés, sinon la ligne créée par Entrée n'était pas éditable ; les touches que l'atelier traite (Tab, Entrée, Échap, Alt + flèches) ne doivent pas remonter au clavier du pilotage (Échap fermait l'atelier) ; l'aide ne peut pas flotter sur la barre. Tout ça est réglé.
+2. **Fait et prouvé (banc p2, 0 défaut)** : un clic dans une étape, tu tapes — le texte change dans la diapo **et dans la trame** (le pilotage le lit aussitôt : « et je souligne ce qui m'étonne » y est), le bloc prend son contour et sa barre (« BLOC 1 · CONSIGNE · 6 ÉLÉMENTS ▲ ▼ + étape ✕ »), le témoin passe « ● modification en cours — enregistrement dans 3 s » puis « ✔ enregistré » ; **Tab / Maj + Tab** ; **Entrée** crée l'élément vide avec son invite, tu tapes ; **Échap** annule la ligne vide ; **+ bloc** ajoute un bloc (curseur dans son titre) ; **▲ / ▼ / Alt + ↑ ↓** montent et descendent ; **+ étape** ; **✕** demande confirmation si des réponses d'élèves sont accrochées, sinon supprime ; rien n'est écrit au journal comme vu ou dévoilé.
+3. **Dit** : la trame simulée n'a qu'un bloc par diapo (le banc crée le second avec « + bloc ») ; les vraies trames en ont plusieurs.
+
+« Continuer » : les tranches, les captures, le dépôt (registre n°12 · 69), puis (p3) le clic droit.
+
+28/09/2026 17:25 MEMO
+
+---

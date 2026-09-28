@@ -7749,3 +7749,30 @@ Ton mot sur 1 (le même écran, onglet Atelier) et sur l'ordre de 2 ; puis je fa
 27/09/2026 18:47 MEMO
 
 ---
+
+## TOUR 229 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok on y va
+
+---
+
+## TOUR 229 — Claude (conscience n°12)
+
+Capture de proposition (p1) — l'atelier (`pieces/T229-proposition-p1-atelier.png` + zooms gauche / centre / droite), injectée dans la maquette g (onglet Atelier, colonne du chapitre par heure, diapo éditable, barre de l'atelier, trois cartes à droite). Rien codé, rien déposé hormis ce transcript et les captures.
+
+Réponse mot pour mot :
+
+La capture de **(p1) — l'écran de l'atelier** (plein écran + trois zooms : gauche, centre, droite ; proposition injectée, rien codé) :
+
+1. **En haut**, un troisième onglet **« Atelier »** à côté de Pilotage et Relecture ; le bandeau garde la classe et la séance, mais **ni chrono, ni « Fin de l'heure », ni Tableau** : rien n'est joué. La ligne de la diapo dit : « Atelier · Diapo 7 sur 12 · heure 1 · activité 1 · Les hypothèses de la classe · prévue 10 min · H1 15 h 34 → 15 h 44 ».
+2. **À gauche, la colonne du chapitre** : le chapitre, la séance 1 (2 h), puis **par heure** : la frontière « H1 · lundi 14/09 · 55 min » avec le compte (« 52 + 3 + 5 = 60 min, **+10** ») ; les diapos numérotées avec leur activité (A1, A2…) et leur durée ; le cahier de textes de l'heure ; la frontière H2 ; la séance 2 repliée (« 12 diapos · H3 · jeudi 17/09 ») ; en bas, l'aide : Ctrl + molette, glisser, clic droit.
+3. **Au centre, la diapo à sa taille de tableau**, entière et éditable (ici l'injection a laissé trois étapes grisées — dans l'atelier tout est en plein) ; sous elle, la barre de l'atelier : **+ bloc · + étape · + image · + fiche… · + vidéo…**, la taille, **« ✔ enregistré il y a 4 s »** (l'enregistrement automatique, 1.6), **« ▶ Jouer en avance »** ; puis les notes présentateur.
+4. **À droite, trois cartes** : **« Ce que la diapo déclare »** (l'activité et son rang dans l'activité, l'heure prévue et la durée — « proposée d'après les durées ; déplaçable » —, les notions travaillées, ce qu'elle remobilise, la légende de surlignage, le nombre d'éléments) ; **« Ce que le site en dit »** (✔ identité stable, ✔ tient dans le tableau ; ⚠ l'heure 1 dépasse de 10 min avec la marche à suivre ; ⚠ une notion remobilisée en H2 que rien ne travaille avant, avec ce que le faisceau fera) ; **« Le chapitre »** (séances, heures, diapos, activités ; notions travaillées / jamais travaillées ; pages HTML et objets manquants — 4.4).
+
+Ce qui reste à trancher par toi : rien sur le fond — c'est le cadrage 4 §1 mis en écran. Ton mot, et je code (p1) : l'onglet, les trois colonnes, le zoom, l'ouverture depuis l'arborescence (« Éditer dans l'atelier »).
+
+28/09/2026 12:41 MEMO
+
+---

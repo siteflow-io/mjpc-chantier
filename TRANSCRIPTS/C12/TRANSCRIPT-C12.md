@@ -7776,3 +7776,30 @@ Ce qui reste à trancher par toi : rien sur le fond — c'est le cadrage 4 §1 m
 28/09/2026 12:41 MEMO
 
 ---
+
+## TOUR 230 — Paul
+
+Texte de Paul, mot pour mot :
+
+> la section "ce que le site en dit" mélange des infos techniques et pédagogiques, non?
+
+---
+
+## TOUR 230 — Claude (conscience n°12)
+
+Capture de proposition refaite (`pieces/T230-proposition-p1b-droite-zoom.png`) : la colonne de droite séparée en « Pour la classe — le temps et les notions » (pédagogique) et « Sur la forme — ce qui peut casser en classe » (technique, seulement s'il y a quelque chose à dire), plus « Le chapitre ». Rien codé, rien déposé hormis ce transcript et les captures.
+
+Réponse mot pour mot :
+
+Oui, elle mélangeait — corrigé (zoom de la colonne de droite joint, proposition injectée, rien codé) :
+
+1. **« Ce que la diapo déclare »** reste : l'activité, l'heure prévue, la durée, les notions travaillées et remobilisées, la légende, les éléments.
+2. **« Pour la classe — le temps et les notions »** : ce qui compte pédagogiquement — l'heure qui dépasse (et quoi faire), une notion remobilisée que rien ne travaille avant, les notions du chapitre que personne ne travaille (« Les énonciations imbriquées », « La modalisation » — prévues nulle part).
+3. **« Sur la forme — ce qui peut casser en classe »** : le technique, à part — une fiche non liée à une feuille, une page HTML sans contrat, un fichier non atteignable, une diapo qui ne tient pas dans le tableau, chacun avec sa marche à suivre. **Cette carte n'apparaît que s'il y a quelque chose à dire** ; les « ✔ » (identité stable, tient dans le tableau) disparaissent : rien à l'écran sans besoin (7.3).
+4. **« Le chapitre »** : les comptes (séances, diapos, activités, notions travaillées / jamais travaillées, pages HTML et objets manquants — le compteur à faire tendre vers zéro, 4.4).
+
+Ton mot, et je code (p1).
+
+28/09/2026 12:52 MEMO
+
+---

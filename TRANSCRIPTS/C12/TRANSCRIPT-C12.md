@@ -7803,3 +7803,29 @@ Ton mot, et je code (p1).
 28/09/2026 12:52 MEMO
 
 ---
+
+## TOUR 231 — Paul
+
+Texte de Paul, mot pour mot :
+
+> 3. pour ça, au lieu que ça apparaisse dans le pilotage, il faudrait que ce soit autre part. Vu que je prépare mon cours avant l'heure, ce sont des choses qui ne doivent jamais s'afficher quand je joue une heure réelle de classe.
+
+---
+
+## TOUR 231 — Claude (conscience n°12)
+
+Réponse de cadrage : la carte « Sur la forme » vit dans l'atelier seulement ; le pilotage n'en parle qu'à l'ouverture de l'heure (une ligne « n choses à régler dans l'atelier ») ; le détail complet dans une page « À régler » du chapitre. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+D'accord, et je précise où ça vit — mis en tension avec l'existant :
+
+1. **La carte « Sur la forme » est une carte de l'atelier, jamais du pilotage.** Elle n'apparaît que dans l'onglet Atelier (la capture d'hier, c'est l'atelier). Pendant une heure réelle, **aucune alerte de forme ne s'affiche** : une diapo dont la fiche n'est pas liée s'affiche sans ce bloc, une page HTML sans contrat se joue comme une image ; le journal le note, la classe ne voit rien de technique.
+2. **Un seul endroit du pilotage y touche, et c'est avant de lancer** : l'ouverture de l'heure (« Où en est la classe »), qui vérifie déjà les vidéos (« clé USB branchée · Revérifier », 6.7). Elle dirait, de la même façon, **« 2 choses à régler dans l'atelier pour cette heure »** avec le lien — une ligne, pas le détail ; si tu lances quand même, c'est noté au journal, et plus rien n'en parle pendant l'heure.
+3. **Le détail complet vit avec le chapitre** : dans l'arborescence des chapitres, à côté de « Éditer dans l'atelier », une page **« À régler »** (la liste de tout ce qui peut casser, chapitre par chapitre, avec la marche à suivre et le texte prêt à copier pour l'instance — 4.3 / 4.4, le compteur à faire tendre vers zéro). L'atelier n'en montre que la part de la diapo ouverte.
+
+Si ça te va, je l'écris au cadrage 4 (§1 et §6) et au cadrage 1 · 6.7, et je code (p1) avec l'atelier tel que validé (sans la carte de forme dans le pilotage — elle n'y a jamais été).
+
+28/09/2026 13:05 MEMO
+
+---

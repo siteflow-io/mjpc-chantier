@@ -8017,3 +8017,23 @@ Rien à trancher sur le fond. Ton mot, et je code (p3) — la sélection par cad
 28/09/2026 18:50 MEMO
 
 ---
+
+## TOUR 239 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Pourquoi il y a deux clics droits ouverts lun par dessus lautre?
+
+---
+
+## TOUR 239 — Claude (conscience n°12)
+
+Réponse : les trois menus posés ensemble pour la capture (maladresse de présentation) ; en vrai un seul menu à la fois. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Parce que c'est moi qui les ai posés tous les trois d'un coup pour la capture — le menu de la diapo, celui du bloc, celui de la fin d'heure — afin de te montrer les trois cas sur une seule image, et ils se chevauchent. C'est une maladresse de présentation, pas un comportement : en vrai, **un clic droit ouvre un seul menu**, le précédent se ferme, et un clic ailleurs ou Échap le ferme. Si tu veux, je refais trois captures séparées, une par menu, avant de coder ; sinon je code (p3) tel que décrit.
+
+28/09/2026 19:20 MEMO
+
+---

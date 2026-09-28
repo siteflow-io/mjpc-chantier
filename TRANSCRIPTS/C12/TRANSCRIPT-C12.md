@@ -8092,3 +8092,30 @@ Tests : atelier ; clic droit sur « 8 Question-bilan » dans la colonne : lis la
 28/09/2026 20:52 MEMO
 
 ---
+
+## TOUR 242 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Continuer
+
+---
+
+## TOUR 242 — Claude (conscience n°12)
+
+Relu 4 · §3, §4, 4 bis, 4 ter. Captures de proposition (p4) (`pieces/T242-proposition-p4-*.png`) : le choix d'objet au « + bloc », le choix de fiche dans les feuilles, l'objet non lisible, la carte forme ; découpage proposé (p4a / p4b). Rien codé, rien déposé hormis ce transcript et les captures.
+
+Réponse mot pour mot :
+
+La capture de **(p4) — les objets et leurs gardes** (captures zoomées + plein écran jointes, propositions injectées, rien codé). C'est le cadrage 4 §3, §4, 4 bis, 4 ter mis en écran — et c'est gros : je propose de le livrer en deux fois, (p4a) puis (p4b).
+
+1. **« + bloc » ouvre le choix de l'objet** (capture 1) : huit cartes, chacune avec son contrat en une ligne — **Texte** (pour dire, pas pour faire), **Consigne** (à l'impératif, des étapes), **Question** (jamais vide ; réponses attendues à part), **Fiche…** (seulement liée à une fiche d'une feuille du chapitre — sinon refus), **Schéma…** (carte, frise, arbre, cycle, tableau ; se dévoile élément par élément), **Image…** (adresse relative dans mjpc-medias, légende, marques), **Vidéo…** (un fichier sur ta clé USB, des repères — jamais hébergée), **Page HTML…** en pointillé (dernier recours, après un manque déclaré, avec son contrat de pilotage) ; en bas, **« Aucun objet ne convient ? Déclarer un objet manquant »** — la ligne « objet à ajouter à l'éditeur : … » reste visible dans « À régler » avec ce qui l'attend (3.3).
+2. **« Fiche… »** (capture 2) : le choix parmi **les fiches des feuilles du chapitre**, feuille par feuille (« Le Romantisme — repères » : Le registre lyrique, Le sonnet… ; « Grammaire — la phrase » : P.I et P.P, La PSR…) ; « pas de fiche qui convienne ? écris-la d'abord dans une feuille » — le bloc n'existe pas sans fiche liée (1.7). Dans la maquette, les feuilles seront simulées (la trame n'en a pas encore).
+3. **Un objet non lisible** (capture 2, dans la diapo) : un bloc dont le type n'est pas dans le contrat s'affiche en rouge pointillé « ⚠ Objet non lisible — « tableau-double » » avec la marche à suivre, jamais une page blanche (3.1) ; la carte « Sur la forme » le reprend, avec la fiche non liée.
+4. **Le découpage** : **(p4a)** = les points 1 à 3 (le choix d'objet, les formulaires de texte / consigne / question / image / schéma avec leur contrat, la fiche liée, l'objet non lisible, le manque d'objet, la page HTML avec ou sans contrat) ; **(p4b)** = la vidéo (désigner le dossier de la clé une fois — simulé —, les repères, la garde en trois temps déjà au pilotage) et les documents du chapitre (4 ter : joindre, feuilleter, la croix).
+
+Rien à trancher sur le fond. Ton mot sur le découpage, et je code (p4a).
+
+28/09/2026 21:05 MEMO
+
+---

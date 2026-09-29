@@ -8329,3 +8329,32 @@ Tests : atelier, diapo 7 ; « + vidéo… » → Ajouter sans rien : refus ; « 
 29/09/2026 08:10 MEMO
 
 ---
+
+## TOUR 251 — Paul
+
+Texte de Paul, mot pour mot :
+
+> continuer. Quand est ce que le chantier sera fini?
+
+---
+
+## TOUR 251 — Claude (conscience n°12)
+
+Estimation en tours de « continuer » (maquette ≈ 8-10, mandat ≈ 3-4, l'exécutant hors compte). Relu 4 · §2 et 3.2 bis. Capture de proposition (p5) (`pieces/T251-proposition-p5-activite-*.png`) : la carte « Ce que la diapo déclare » éditable, le travail à faire prévu par heure, les activités du chapitre avec le refus. Rien codé, rien déposé hormis ce transcript et les captures.
+
+Réponse mot pour mot :
+
+**Quand le chantier sera fini** — mesuré sur le rythme des livraisons de ces trois jours (une livraison = capture, code + banc, tranches + dépôt ≈ 3 « continuer ») :
+
+1. **La maquette de la préparation** : il reste **(p5)** l'activité comme objet (capture ci-dessous) et **(p6)** « Jouer en avance » sans rien écrire + les alertes avec marche à suivre ; plus deux restes de (p4) : le dessin des cinq formes du schéma, l'écran de choix pour « Envoyer vers une autre séance ». **≈ 8 à 10 « continuer »**, tes remarques comprises.
+2. **Puis le mandat** : la séquence de test (les gestes que tu feras sur le site), le mandat en livraisons courtes avec ses attendus hub, relu ligne à ligne contre le cadrage : **≈ 3 à 4 « continuer »**.
+3. **Puis l'exécutant** : il code le site en livraisons courtes que tu relances ; j'audite chacune ; tu promeus sur captures. Là je ne peux pas compter : ça dépend de lui et de toi. Pour donner une mesure, la série (a) à (g) du pilotage — un chantier comparable — a demandé une vingtaine de livraisons d'exécutant.
+Donc : **la maquette entière dans une douzaine de tours, le mandat prêt dans une quinzaine, le site après le mandat**. Ce que je ne compte pas : tes tests des livraisons (b3) à (p4b), qui peuvent rouvrir des points.
+
+**(p5) — l'activité comme objet** (capture zoomée jointe, injectée, rien codé) : la carte « Ce que la diapo déclare » **s'écrit** : l'activité (choix, ou « + nouvelle activité »), son titre et ses diapos, la durée, le rôle (aucun / réactivation / bilan / fin d'heure posée par le site), l'heure prévue proposée d'après les durées avec « ↓ passer en H2 », les notions travaillées et remobilisées (des jetons ✕, « + notion… », la proposition par défaut : la même famille plus tôt) ; la carte **« L'heure 1 — le travail à faire prévu »** (2.3 : ce que le T-5 proposera, pour quelle heure) ; la carte **« Les activités du chapitre »** (A1 … An avec leurs diapos et leur heure, « + activité », « renuméroter (continu) ») avec le refus : une diapo sans numéro d'activité est en rouge, « le chapitre est refusé à l'import tant qu'une activité n'est pas numérotée » (3.2 bis).
+
+Ton mot, et je code (p5).
+
+29/09/2026 08:20 MEMO
+
+---

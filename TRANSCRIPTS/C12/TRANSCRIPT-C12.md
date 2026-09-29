@@ -8565,3 +8565,32 @@ Codé et prouvé sur la maquette (p6) : **la carte est en lecture par défaut** 
 29/09/2026 09:30 MEMO
 
 ---
+
+## TOUR 260 — Paul
+
+Texte de Paul, mot pour mot :
+
+> continuer
+
+---
+
+## TOUR 260 — Claude (conscience n°12)
+
+Banc unique (p6) joué en six tranches : 23 × 0 (p4b recalé : en répétition le journal se tait). Captures (une contrôlée). Cadrage 4 · 1.5 réécrit (libellé, colonne sobre) et déposé. Registre n°12 · 74. Maquette `T260-maquette-pilotage-ordi-v9c15p6-manipulable.html`. Pièces au sas (empreintes contrôlées). Rien d'autre déposé hormis ce transcript, ses pièces, le cadrage et le registre.
+
+Réponse mot pour mot :
+
+**(p6) livrée — « Jouer en avance — répétition », les alertes avec marche à suivre, la colonne sobre (v9c.15 p6 jointe, captures jointes) — vingt-trois bancs à 0 (six tranches). La maquette de la préparation est complète, (p1) à (p6).**
+
+1. **Les bancs** : l'affichage, p6, p5 (recalé : modifier, plis), p4b (recalé : en répétition le journal se tait), p4a, p3, p2, p1, le faisceau, l'oral, le chapitre, qui a participé, le récit au fil de l'heure, la préparation du cahier, le guidage, le récit, les durées, l'aperçu, l'alerte, le cahier, l'insertion, la non-régression, tout cliquer (106 clics, 0 erreur) — tous à 0.
+2. **Ce que tu as (captures)** : la colonne sobre ; le bandeau « JOUER EN AVANCE — RÉPÉTITION · rien n'est écrit · aucune garde, aucun gel · 00:03 · diapo 7, dévoilée 2 / 3 · ■ Arrêter » avec le tableau qui reçoit ; l'alerte « fichier non atteignable » sur la vidéo avec la marche à suivre.
+3. **Cadrage 4 · 1.5 réécrit** au libellé et déposé ; registre n°12 · 74 ; empreintes contrôlées.
+4. **Ce qui reste de la maquette** (au registre) : le dessin des cinq formes du schéma et leur dévoilement élément par élément ; l'écran de choix propre pour « Envoyer vers une autre séance ». Le reste du chantier : tes tests de (b3) à (p6), puis la séquence de test du mandat et le mandat.
+
+Tests : atelier, diapo 7 : la carte de droite en quatre lignes, « modifier » puis « fermer » ; les deux cartes repliées, un clic sur leur titre ; « À régler (n) » → « Ouvrir la diapo » sur la ligne « sans numéro d'activité » : la carte s'ouvre avec « ⚠ À corriger ici » ; « ▶ Jouer en avance — répétition » : la bordure rayée, le bandeau, Tableau, ▶ ▶ (le tableau suit), clique une diapo loin devant (pas de garde), G (refus dit), « ■ Arrêter » : retour à l'atelier, la diapo 7 non dévoilée ; « 10 Vidéo » (H2) : « fichier non atteignable — aucun dossier de clé n'est désigné » ; « + vidéo… » → « Désigner le dossier de la clé… » puis ✕ : l'alerte tombe si le fichier y est.
+
+« Continuer » : (a) je referme les deux restes (le schéma dessiné, l'écran d'envoi) — ou (b) tu testes d'abord (b3) à (p6) et on passe à la séquence de test du mandat. Ton mot.
+
+29/09/2026 09:40 MEMO
+
+---

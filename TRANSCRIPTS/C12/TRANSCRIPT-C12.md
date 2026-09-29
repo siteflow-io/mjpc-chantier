@@ -8249,3 +8249,29 @@ Donc : 29 oui, 30 à finir en (p4b), 25 non (feuilles, chantier à part), le sch
 29/09/2026 07:12 MEMO
 
 ---
+
+## TOUR 248 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok. continue.
+
+---
+
+## TOUR 248 — Claude (conscience n°12)
+
+Mesuré : la vidéo (videoHtml, repères, garde, passage) et les documents (DATA.documents, S.doc, docHtml) existent au pilotage. Captures de proposition (p4b) (`pieces/T248-proposition-p4b-*.png`) : le formulaire vidéo, la carte « Document… » à trancher, la page avec contrat pilotée. Une question de cadrage (document : objet ou item ?). Rien codé, rien déposé hormis ce transcript et les captures.
+
+Réponse mot pour mot :
+
+La capture de **(p4b) — la vidéo, la page pilotée, les documents** (trois zooms joints, propositions injectées, rien codé). D'abord la mise en tension : **la vidéo et les documents existent déjà au pilotage** (le lecteur avec repères, ▶ jusqu'au repère suivant, la garde en trois temps, la vidéo passée, le journal et le récit ; ⋯ → Documents avec pages et étapes, la croix). (p4b) n'invente rien en classe : elle donne à l'atelier de quoi **préparer** ces objets, et elle ferme la dette 30.
+
+1. **« Vidéo… »** (capture 1) : « **Désigner le dossier de la clé…** » (une fenêtre du navigateur, une fois ; le site retient le dossier et le nom du fichier, jamais un chemin — 4b.1 ; dans la maquette c'est simulé : « ✔ dossier « MJPC-VIDEOS » désigné sur cet ordi portable · 3 fichiers »), le choix du fichier, la légende, **les repères** (une ligne par repère : temps + libellé, ✕, « + repère ») ; « sans repère, acceptée mais signalée dans Sur la forme » (4b.5). Sur un bloc vidéo existant : clic droit → « Repères… » pour les modifier. Le lecteur en classe ne change pas.
+2. **La page HTML avec contrat, pilotée** (capture 3, dette 30) : au pilote et au tableau, une page avec contrat s'affiche « page — étape 1 / 3 », **▶ étape suivante, ◀ précédente**, le gel la fige, le journal note l'étape (4.2) — exactement la mécanique des repères vidéo et des documents à étapes ; sans contrat, elle reste jouée comme une image. Dans la maquette la page est simulée (un cadre qui compte ses étapes), le vrai chargement du fichier est pour le site.
+3. **« Document… »** (capture 2) — **à trancher par toi** : le cadrage 4 ter dit que les documents de la séance « apparaissent dans le flux des diapos (leurs items) » et §3 ne liste pas « document » parmi les objets. Deux lectures : **(a)** un neuvième objet « Document… » dans le choix (la carte dorée sur la capture) : le bloc renvoie à un document de la séance, on l'ouvre d'un clic depuis la diapo, on tourne les pages, on le ferme d'une croix ; **(b)** pas d'objet : les documents restent au niveau de la séance (⋯ → Documents), et l'atelier ajoute seulement « + document… » pour en joindre un. Mon avis : (a), parce que la place du document dans le flux dit quand tu comptes le projeter — et le §3.2 du cadrage 4 gagnerait la ligne « document ». Ton mot.
+
+Ton mot sur 3, et je code (p4b).
+
+29/09/2026 07:22 MEMO
+
+---

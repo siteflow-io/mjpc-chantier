@@ -8358,3 +8358,28 @@ Ton mot, et je code (p5).
 29/09/2026 08:20 MEMO
 
 ---
+
+## TOUR 252 — Paul
+
+Texte de Paul, mot pour mot :
+
+> continue
+
+---
+
+## TOUR 252 — Claude (conscience n°12)
+
+(p5) codée par `vis/patch-p5.py` sur le gabarit p4b → `v9c15p5-template.html` (non déposé) : la carte « Ce que la diapo déclare » s'écrit (l'activité par un choix ou « + nouvelle activité… », le titre de l'activité, le titre de la diapo, la durée — la colonne et le compte de l'heure suivent —, le rôle avec ses gardes — bilan unique, réactivation première de son heure et unique, fin d'heure posée par le site —, « ↓ passer en H2 / ↑ passer en H1 », les notions travaillées et remobilisées en jetons ✕ avec « + notion… » (le choix : le chapitre d'abord, puis tout le programme par famille) et « proposer » (la même famille travaillée plus tôt), la légende de surlignage) ; la carte « L'heure n — le travail à faire prévu » (2.3, `DATA.travailPrevu`) ; la carte « Les activités du chapitre » (A1 … An, diapos et heures, une diapo sans numéro en rouge, « + activité », « renuméroter (continu) ») ; « sans numéro d'activité : refus à l'import » dans « À régler ». Pièges : un champ éditable vide n'avait pas de taille ; une réactivation posée hors tête d'heure passait (la garde manquait) et bloquait ensuite « passer en H2 » (rôle fixe) ; la trame simulée a une activité « 10 bis » (numéro non entier) — le numéro continu se calcule sur les entiers. Banc `test-p5.mjs` 0. Les vingt et un autres bancs à rejouer par tranches. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+**(p5) codée et prouvée par son banc — livraison pas close : le banc unique (vingt-deux bancs) reste à jouer par tranches, puis les captures et le dépôt (limite d'outils atteinte).**
+
+1. **Relecture de télescopage (p5)**, en tête : tout ce que la carte écrit passe par les mêmes objets que le pilotage lit (le titre de la diapo change le numéro et la colonne ; la durée recalcule le compte de l'heure ; l'activité se rattache par identifiant, jamais par rang) ; **les gardes de rôle** : le bilan est unique, la réactivation est la première de son heure et unique — le banc a attrapé qu'une réactivation posée au milieu d'une heure passait, et devenait ensuite une diapo « fixe » qu'on ne pouvait plus déplacer ; la trame simulée a une activité numérotée « 10 bis » : le numéro continu se calcule sur les entiers, et « renuméroter (continu) » la remet dans l'ordre.
+2. **Fait et prouvé (banc p5, 0 défaut)** : le titre de la diapo (« — v2 » dans la trame, le numéro, la colonne) ; la durée (12 min → le compte de l'heure 1 change) ; le titre de l'activité ; un second bilan refusé ; une réactivation hors tête d'heure refusée avec le message ; une notion retirée, une ajoutée par le choix du chapitre, « proposer » remplit « remobilise » avec la même famille travaillée plus tôt ; la légende « jaune = ce qu'on voit · vert = ce qu'on ressent » écrite et rendue dans la diapo ; le travail à faire prévu de l'heure 1 ; **↓ passer en H2** (la diapo en tête de H2, après la réactivation) puis **↑ passer en H1** (juste avant la fin d'heure 1) ; **« + nouvelle activité… »** (« Le concours de la classe », A11, la diapo rattachée) ; « — hors activité » → « sans numéro d'activité : refus à l'import » dans la carte et dans « À régler » ; rattachée à A1 ; « renuméroter » sans trou ; la fin d'heure : une carte qui dit son rôle, rien à écrire ; le pilotage lit la trame modifiée.
+
+« Continuer » : les tranches, les captures, le dépôt (registre n°12 · 73), puis (p6) « Jouer en avance » sans rien écrire et les alertes avec marche à suivre — la dernière livraison de la maquette.
+
+29/09/2026 08:55 MEMO
+
+---

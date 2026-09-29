@@ -8514,3 +8514,32 @@ Si elle te paraît lourde à l'écran, je peux la replier par défaut en lecture
 29/09/2026 09:00 MEMO
 
 ---
+
+## TOUR 258 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok, c'est juste que c'est effectivement lourd à l'écran, et surtout c'est fouillis j'ai l'impresion. par ailleurs, on est d'accord que si je dois faire quelque chose dans cette section, le site me le dira? Parce que là comme ça, je ne sais pas quoi faire devant un tel appareil technique;
+
+---
+
+## TOUR 258 — Claude (conscience n°12)
+
+Réponse : oui, « À régler » est la seule liste d'obligations, chaque ligne dit le geste ; la carte est à lire, pas à remplir ; proposition (capture `pieces/T258-proposition-colonne-sobre-*.png`, injectée) : la carte en lecture avec « modifier », les cartes secondaires repliées, « Sur la forme » muette quand rien. Rien codé, rien déposé hormis ce transcript et les captures.
+
+Réponse mot pour mot :
+
+Oui, on est d'accord, et c'est la règle du cadrage (6.1, 7.3) : **le site te dit quand tu as quelque chose à faire, et quel geste** — la seule liste d'obligations est « À régler (n) », chaque ligne y dit le geste (« rattache-la à une activité », « lie-la à une fiche », « convertis-le en PDF », « coupe la diapo ici ») et « Ouvrir la diapo » t'y amène. Tant que « À régler » est à zéro, tu n'as rien à faire dans cette carte : elle est là pour être lue, pas remplie. Le « fouillis » vient de moi : j'ai livré la carte ouverte avec tous ses champs, alors que la règle des gestes dit « rien à l'écran sans besoin ».
+
+Ce que je propose (capture jointe, injectée, rien codé) — la colonne de droite sobre :
+
+1. **« Ce que la diapo déclare » en lecture** : quatre lignes de prose — « A1 · Analyse d'images : les cinq tableaux — diapo 7 sur 7 de l'activité / H1 lundi 14 septembre · 22 min · 15:37 → 15:59 / travaille …, remobilise … / surlignage : … » — et un seul mot, **« modifier »**, qui ouvre les champs de (p5) ; ils se referment dès que tu as fini (ou par « fermer »). Quand tu arrives par « À régler → Ouvrir la diapo », la carte s'ouvre d'elle-même sur la ligne à corriger et te dit laquelle.
+2. **« L'heure n — le travail à faire prévu »** et **« Les activités du chapitre »** : **repliées** (un titre, un clic pour ouvrir), parce qu'on ne s'en sert pas à chaque diapo.
+3. **« Sur la forme »** ne dit plus rien quand il n'y a rien à dire — ou une ligne : « Rien pour cette diapo — elle passera ».
+4. **« Le chapitre »** garde « À régler (n) », avec la note « la seule liste de ce que tu as à faire ».
+
+Ton mot, et je le code dans (p6) avant les tranches (c'est un habillage de (p5), pas un nouveau geste : les bancs restent).
+
+29/09/2026 09:10 MEMO
+
+---

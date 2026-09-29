@@ -8383,3 +8383,31 @@ Réponse mot pour mot :
 29/09/2026 08:55 MEMO
 
 ---
+
+## TOUR 253 — Paul
+
+Texte de Paul, mot pour mot :
+
+> continuer
+
+---
+
+## TOUR 253 — Claude (conscience n°12)
+
+Banc unique (p5) joué en six tranches : 22 × 0 (p1 recalé). Captures (une contrôlée). Registre n°12 · 73. Maquette `T253-maquette-pilotage-ordi-v9c15p5-manipulable.html`. Pièces au sas (empreintes contrôlées). Rien d'autre déposé hormis ce transcript, ses pièces et le registre.
+
+Réponse mot pour mot :
+
+**(p5) livrée — l'activité comme objet (v9c.15 p5 jointe, captures jointes) — vingt-deux bancs à 0 (six tranches).**
+
+1. **Les bancs** : l'affichage, p5, p4b, p4a, p3, p2, p1 (recalé sur la carte éditable), le faisceau, l'oral, le chapitre, qui a participé, le récit au fil de l'heure, la préparation du cahier, le guidage, le récit, les durées, l'aperçu, l'alerte, le cahier, l'insertion, la non-régression, tout cliquer (106 clics, 0 erreur) — tous à 0.
+2. **Ce que tu as (captures)** : la carte « Ce que la diapo déclare — tout s'écrit ici » avec « remobilise » rempli par « proposer » (« Décrire une image fixe ou mobile », « Les plans et le cadrage » : la même famille, travaillée plus tôt) ; le choix de notion (le chapitre d'abord, puis tout le programme) ; la diapo passée « hors activité » ; « L'heure 1 — le travail à faire prévu » ; « Les activités du chapitre » A1 … A8.
+3. Registre n°12 · 73 ; empreintes contrôlées.
+
+Tests : atelier, diapo 7 ; à droite, clique le titre de la diapo, ajoute « — v2 », Entrée : le numéro et la colonne suivent ; durée 12 → le compte de l'heure 1 change ; rôle « bilan » → refus (unique) ; rôle « réactivation » → refus (pas en tête) ; ✕ sur une notion ; « + notion… » → choisis ; « proposer » sur Remobilise ; la légende : tape « jaune = ce qu'on voit · vert = ce qu'on ressent », Entrée : elle est dans la diapo ; le travail à faire prévu ; « ↓ passer en H2 » puis « ↑ passer en H1 » ; Activité → « + nouvelle activité… » : « A11 » ; Activité → « — hors activité » : la ligne rouge « sans numéro d'activité » et « À régler » ; remets A1 ; « renuméroter (continu) » ; « 9 Cahier de textes » : la carte dit « posée par le site ».
+
+« Continuer » pour (p6), la dernière livraison de la maquette : « ▶ Jouer en avance » sans rien écrire (ni journal, ni copie, aucune garde, aucun gel) et les alertes du site avec leur marche à suivre (« trop pleine », « fiche non liée », « fichier non atteignable », « page sans contrat ») — capture avant de coder.
+
+29/09/2026 09:20 MEMO
+
+---

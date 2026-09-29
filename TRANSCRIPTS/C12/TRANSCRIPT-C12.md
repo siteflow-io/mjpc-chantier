@@ -8484,3 +8484,33 @@ Pris : **« Jouer en avance — répétition »** partout (le bouton de l'atelie
 29/09/2026 09:25 MEMO
 
 ---
+
+## TOUR 257 — Paul
+
+Texte de Paul, mot pour mot :
+
+> en revanche, dans "ce que la diapo déclare", à quoi sert cette section en fait?
+
+---
+
+## TOUR 257 — Claude (conscience n°12)
+
+Réponse : la carte est ce que la diapo dit au reste du site (activité, titre / durée / heure prévue, rôle, notions travaillées / remobilisées, légende) et ce que le pilotage, le chapitre, le cahier, la page élève à venir lisent ; l'instance la remplit, Paul vérifie et corrige ; proposition de la replier en lecture par défaut avec « modifier ». Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Elle sert à une chose : **c'est là que la diapo dit au reste du site ce qu'elle est** — tout ce que le pilotage, le chapitre et le cahier lisent sans que tu aies à le redire en classe. Ligne par ligne, dans tes mots :
+
+1. **L'activité** (A1 · Analyse d'images…) : c'est ce qui fait le numéro continu sur le chapitre, l'étiquette « Activité 1 — … » au tableau, le tableau des activités, le récit (« Activité 1 faite »), le bilan ; et la règle : une diapo sans activité fait refuser le chapitre.
+2. **Le titre, la durée, l'heure prévue** : c'est ce que la colonne de gauche affiche, ce que le compte de l'heure additionne (« 52 + 5 = 57 min +7 »), ce que le T-5 regarde pour dire ce qui ne tiendra pas, ce que le faisceau de l'ouverture d'heure propose de laisser ou de remettre.
+3. **Le rôle** (réactivation, bilan, fin d'heure) : ce qui rend une diapo « rituelle » — elle ne compte pas comme activité, elle ne se déplace pas, le cahier de textes s'y accroche.
+4. **Les notions travaillées / remobilisées** : c'est ce que le chapitre coche (« travaillée » quand l'activité est finie), ce que le faisceau signale à l'ouverture (« remobilise une notion non travaillée »), ce qui va au cahier et, plus tard, à la page élève et à l'entraînement — la donnée est là pour que la suite n'ait qu'à lire.
+5. **La légende de surlignage** : ce que le surligneur veut dire au tableau (jaune = …).
+
+En temps normal, **tu n'y touches pas** : l'instance qui prépare le chapitre remplit tout ça (le prompt l'exige), et la carte te le montre pour vérifier. Tu y vas quand quelque chose est faux ou manque — une notion oubliée, une durée à corriger, une diapo à rattacher à la bonne activité — et pour ça il fallait qu'elle s'écrive (p5), sinon tu repassais par le JSON.
+
+Si elle te paraît lourde à l'écran, je peux la replier par défaut en lecture (les mêmes lignes, sans les champs) avec un « modifier » qui l'ouvre : ton mot.
+
+29/09/2026 09:00 MEMO
+
+---

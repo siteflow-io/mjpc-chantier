@@ -8646,3 +8646,28 @@ Ton mot sur 3, et je code (p7) ainsi — ou tu préfères une convention différ
 29/09/2026 12:30 MEMO
 
 ---
+
+## TOUR 263 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok fais ce que tu proposes.
+
+---
+
+## TOUR 263 — Claude (conscience n°12)
+
+(p7) codée par `vis/patch-p7.py` sur le gabarit p6 → `v9c15p7-template.html` (non déposé) : `dessinerSchema(forme, titre, lignes, cl)` — les cinq formes dessinées depuis la source texte existante (carte : le titre au centre, « Branche : a, b » ; frise : « date = événement » ; arbre : indentation ; cycle : une étape par ligne ; tableau : « | ») en SVG ou table, chaque ligne = un élément dévoilable (k), estompé au pilote (`.el.pas`), absent au tableau ; le rendu du bloc schéma le lit ; `b.el` = les lignes de `src` (au chargement et à la création) ; le formulaire « Schéma… » (forme, convention affichée, titre, source en textarea, refus sans titre / sans ligne) ; simulation : un schéma carte sur « Les mouvements du siècle » (séance jouée) et la source du schéma existant ; la fenêtre du tableau reçoit `dessinerSchema` (piège : les fonctions injectées au tableau sont une liste fermée — sans elle, le tableau ne dessinait pas) ; l'écran « Envoyer vers une autre séance » (les autres séances, leurs heures, le compte à l'arrivée par heure, la note du départ ; le clic pose la diapo à la fin de l'heure choisie avant sa fin d'heure, identité inchangée). Banc `test-p7.mjs` 0 (la carte dévoilée branche par branche au pilote et au tableau ; les cinq formes créées ; l'écran d'envoi et l'envoi). Les vingt-trois autres bancs à rejouer par tranches. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+**(p7) codée sur le format existant et prouvée par son banc — livraison pas close : le banc unique (vingt-quatre bancs) reste à jouer par tranches, puis les captures et le dépôt (limite d'outils atteinte).**
+
+1. **Relecture de télescopage (p7)** : rien de nouveau dans la donnée — `forme` + `src` texte, une ligne par élément, comme le prompt d'injection le dit déjà ; chaque ligne devient un élément dévoilable, au même titre qu'une étape de consigne (▶, le compte des éléments, la lumière, le journal) ; un piège attrapé par le banc : **la fenêtre du tableau reçoit une liste fermée de fonctions** — sans le dessin, le tableau ne dessinait pas ; c'est ajouté, et c'est une règle pour le mandat (tout ce que le rendu appelle doit passer au tableau).
+2. **Fait et prouvé (banc p7, 0 défaut)** : la carte simulée « Les figures de style » (trois branches depuis la source) sur « Les mouvements du siècle » : au pilote les branches non dévoilées sont estompées, **au tableau elles sont absentes**, ▶ les dévoile une par une ; « Schéma… » dans l'atelier : la convention change avec la forme, refus sans titre, refus sans ligne, puis **les cinq formes créées et dessinées** depuis leur source (frise « 1820 = Lamartine… », cycle « lire / noter / dire / écrire », tableau « | Romantisme | Parnasse… », arbre indenté, carte « Nature : forêt, mer ») ; **« Envoyer vers une autre séance »** : l'écran liste les autres séances et leurs heures avec « à la fin de H3 · 21 + 22 + 5 = 48 min ✔ », la note « ici, elle sort du compte : l'heure 1 revient à … », et le clic pose la diapo à la fin de l'heure choisie, identité inchangée.
+
+« Continuer » : les tranches, les captures, le dépôt (registre n°12 · 75) — et la maquette n'aura plus de reste.
+
+29/09/2026 12:45 MEMO
+
+---

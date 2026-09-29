@@ -8167,3 +8167,29 @@ Le même encart sert à « À régler » (le bouton dans la carte du chapitre, �
 29/09/2026 07:15 MEMO
 
 ---
+
+## TOUR 245 — Paul
+
+Texte de Paul, mot pour mot :
+
+> continuer
+
+---
+
+## TOUR 245 — Claude (conscience n°12)
+
+Bancs (p4a) copiés ; joués : audit, p4a, p3, p2 (recalé : « + bloc » ouvre le choix → Consigne), p1 (recalé : une fiche non liée, le libellé p4a), g2, g1, f, e, b5, b4, b3, d, c, b2, b, cahier, a0, régression : 0 partout ; tout cliquer a d'abord échoué deux fois — la simulation (objet inconnu + page) était posée sur « Question-bilan », une diapo que le banc exerce (déplacée), puis les alertes de forme faisaient déborder la diapo au pilote : **les alertes ne prennent plus la place du contenu** (une bandelette en surimpression, une par diapo, pilote et atelier seulement) et la vignette de page est compacte ; p4a et tout cliquer à 0 sur cette version. Le rendu ayant changé, les dix-huit autres bancs sont à rejouer sur la version finale avant dépôt (tour suivant). Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+**Dix-neuf bancs à 0 sur (p4a), puis « tout cliquer » a attrapé deux choses, réglées — la version finale doit repasser les dix-huit autres bancs avant dépôt (tour suivant, limite d'outils).**
+
+1. **Ce que « tout cliquer » a attrapé** : (a) ma simulation (l'objet inconnu et la page sans contrat) était posée sur « Question-bilan », une diapo que le banc exerce — déplacée sur une diapo à part ; (b) **les alertes de forme faisaient déborder la diapo au pilote** (« diapo 16 déborde sans page ») : une alerte n'est pas du contenu, elle ne doit pas pousser la diapo au-delà du plancher lisible — désormais **une bandelette en surimpression**, en bas de la diapo, au pilote et dans l'atelier seulement, et la vignette de page est compacte ; p4a et tout cliquer (106 clics, 0 erreur) à 0 sur cette version.
+2. **Deux bancs recalés sur le geste de (p4)** : le banc de (p2) — « + bloc » ouvre maintenant le choix d'objet, il prend « Consigne » ; le banc de (p1) — la carte « Sur la forme » sur une fiche **non liée** (la simulation lie quatre fiches de la trame).
+3. **Règle fixée** : une simulation de donnée pour la maquette ne se pose jamais sur une diapo que les bancs existants exercent.
+
+« Continuer » : les tranches sur la version finale, les captures, le dépôt (registre n°12 · 71), puis (p4b).
+
+29/09/2026 06:40 MEMO
+
+---

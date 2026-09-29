@@ -8459,3 +8459,28 @@ Si le mot ne te va pas dans l'écran, je peux écrire « Jouer en avance — rie
 29/09/2026 08:44 MEMO
 
 ---
+
+## TOUR 256 — Paul
+
+Texte de Paul, mot pour mot :
+
+> dans ce cas tu mets: "jouer en avance - répétition" partout
+
+---
+
+## TOUR 256 — Claude (conscience n°12)
+
+Libellé retenu partout : « Jouer en avance — répétition ». (p6) codée par `vis/patch-p6.py` sur le gabarit p5 → `v9c15p6-template.html` (non déposé) : le bouton « ▶ Jouer en avance — répétition » ; `lancerRepetition` (un instantané de l'état, de « vu », des dévoilements et du journal ; le pilotage ; la bordure rayée et le bandeau « JOUER EN AVANCE — RÉPÉTITION · rien n'est écrit · aucune garde, aucun gel · chrono · diapo n, dévoilée k / n · ■ Arrêter ») ; en répétition le journal se tait, `pousser` envoie au tableau sans rien écrire (ni journal ni « vu »), `garde` passe, `gel` refuse et le dit, le palier (T-5) se tait ; `arreterRepetition` restaure tout (état, vu, dévoilements, journal, décisions, coupures), retire le bandeau, met le tableau en sortie, revient à l'atelier sur la diapo ; l'onglet Atelier arrête ; le volet de l'atelier se réécrit après un passage au pilotage ; les alertes « fichier non atteignable » (vidéo dont le fichier n'est pas dans le dossier de clé désigné, ou aucun dossier) et « trop pleine » (mesurée sur la diapo rendue : le corps déborde ou plus d'une page), avec leur marche à suivre ; la colonne de droite se re-rend après le rendu du mur. Banc `test-p6.mjs` 0. Les vingt-deux autres bancs à rejouer par tranches ; le cadrage 4 · 1.5 à mettre au libellé. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Pris : **« Jouer en avance — répétition »** partout (le bouton de l'atelier, le bandeau, l'infobulle, le cadrage 4 · 1.5 au dépôt). **(p6) est codée et prouvée par son banc — livraison pas close : le banc unique (vingt-trois bancs) reste à jouer par tranches, puis les captures et le dépôt (limite d'outils atteinte).**
+
+1. **Relecture de télescopage (p6)**, en tête : la répétition partage tout le moteur du pilotage, et coupe tout ce qui écrit — le journal se tait, le tableau reçoit sans que rien ne soit marqué « vu », les gardes passent, le gel refuse et le dit, le T-5 se tait ; à l'arrêt, **un instantané pris au lancement restaure tout** (l'état, les dévoilements, « vu », le journal, les décisions, les coupures) : ce qui a été joué en répétition n'a pas eu lieu. Un piège attrapé : après un passage au pilotage, la colonne de l'atelier ne se réécrivait pas ; et « trop pleine » se mesurait avant le rendu de la diapo — la colonne de droite se re-rend maintenant après le mur.
+2. **Fait et prouvé (banc p6, 0 défaut)** : le libellé ; le lancement (le pilotage, la bordure rayée, le bandeau, le chrono, « ■ Arrêter ») ; ▶ deux fois : la diapo se dévoile, **le tableau reçoit**, le journal et « vu » ne bougent pas ; aller sur une diapo « devant » : aucune garde ; G : aucun gel ; le T-5 forcé : rien ; une décision et une coupure posées en répétition ; « ■ Arrêter » : retour à l'atelier sur la diapo, bandeau retiré, journal, « vu », décisions, coupures revenus à l'instantané, les dévoilements oubliés ; l'onglet Atelier arrête aussi ; **les alertes** : la vidéo « le Radeau » de la trame sans dossier désigné → « fichier non atteignable … aucun dossier de clé n'est désigné » avec la marche à suivre, disparaît quand le fichier est sur la clé ; une diapo qui tient n'est pas dite pleine ; une diapo gonflée de quatre blocs → « Diapo trop pleine : le texte passe sous le plancher lisible » avec « Couper la diapo ici … Le site ne coupe jamais seul ».
+
+« Continuer » : les tranches, les captures, le dépôt (registre n°12 · 74) — la maquette de la préparation complète ; puis les deux restes de (p4), tes tests, la séquence de test du mandat.
+
+29/09/2026 09:25 MEMO
+
+---

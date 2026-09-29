@@ -8275,3 +8275,29 @@ Ton mot sur 3, et je code (p4b).
 29/09/2026 07:22 MEMO
 
 ---
+
+## TOUR 249 — Paul
+
+Texte de Paul, mot pour mot :
+
+> oui document, c'est surtout word et pdf. mais aussi tout type de doc
+
+---
+
+## TOUR 249 — Claude (conscience n°12)
+
+Cadrage 4 · 3.2 : l'objet « document » écrit et déposé (le contrat par type : PDF / image à pages / page HTML / Word lu par une bibliothèque libre ou converti / tout autre type accepté mais non projetable : « convertis-le en PDF »). (p4b) codée par `vis/patch-p4b.py` sur le gabarit p4a → `v9c15p4b-template.html` (non déposé) : le formulaire vidéo (désigner le dossier de la clé — simulé —, le fichier, la légende, les repères éditables ; refus sans dossier / sans fichier / sans légende ; sans repère acceptée et signalée), clic droit → « Repères… » ; le formulaire document (choisir un document joint ou en joindre un : le type par l'extension, pages ou étapes ; la garde par type au rendu, dans « Sur la forme » et « À régler ») ; le bloc « doc » dans le flux (📄 titre · type · pages · projetable / non projetable) ; au pilote, un clic l'ouvre au tableau (S.doc), ▶ tourne la page, la croix « ✕ retour à la diapo » le ferme, un document non projetable refuse et le dit ; la page HTML avec contrat pilotée par étapes (▶ / ◀, journal `page-etape`, le gel la fige) ; « + vidéo… » et « + document… » dans la barre. Piège de fond réglé : **le tableau gardait une copie de la trame prise à son ouverture** — le pilotage lui envoie désormais la diapo et les documents avec chaque état (cadrage 4 · 8.2). Banc `test-p4b.mjs` 0 (le bloc caché derrière le voile du pilote : clic par l'événement ; le gel par la touche G ; une diapo neuve pour que les documents tiennent sur une page). Les vingt autres bancs à rejouer par tranches. Rien déposé hormis ce transcript et le cadrage.
+
+Réponse mot pour mot :
+
+Pris — **« document » est un objet, Word et PDF d'abord, tout type accepté** : écrit au cadrage 4 · 3.2 et déposé, avec le contrat par type (PDF et image à pages : les pages aux flèches ; page HTML : ses étapes ; Word : lu par le site avec une bibliothèque libre, jamais un service payant, ou converti en PDF si la lecture échoue ; tout autre type : accepté dans la séance mais « non projetable tel quel : convertis-le en PDF », dit dans « Sur la forme » et « À régler »). **(p4b) est codée et prouvée par son banc — livraison pas close : le banc unique (vingt et un bancs) reste à jouer par tranches, puis les captures et le dépôt (limite d'outils atteinte).**
+
+1. **Relecture de télescopage (p4b)**, en tête, avec un piège de fond attrapé par le banc : **le tableau gardait une copie de la trame prise à son ouverture** — une diapo modifiée ou ajoutée dans l'atelier après l'ouverture du tableau n'y arrivait jamais (l'étape 2 de la page restait à 1). Le pilotage envoie désormais la diapo et les documents de la séance avec chaque état (8.2 : une modification en préparation vaut pour la classe qui n'a pas encore vu). Le lecteur vidéo, la garde en trois temps, ⋯ → Documents n'ont pas bougé : (p4b) prépare, la classe joue comme avant.
+2. **Fait et prouvé (banc p4b, 0 défaut)** : « + vidéo… » sans dossier désigné → refus ; « Désigner le dossier de la clé… » (simulé) → les trois fichiers ; le fichier, la légende, deux repères (« 0:00 l'ouverture », « 1:20 le monologue ») → le bloc porte fichier, dossier, durée, repères ; clic droit → « Repères… », retirés → « vidéo sans repère » signalée ; « + document… » : un **.docx** joint (4 pages) → dans le flux « 📄 Le cours sur le Romantisme · docx · 4 pages · projetable », garde « lu par le site » ; un **.odt** → « non projetable tel quel : convertis-le en PDF » ; un PDF déjà joint posé dans la diapo ; au pilotage, **un clic ouvre le PDF au tableau (page 1 / 3), ▶ tourne à la page 2, la croix ramène à la diapo**, le .odt refuse de s'ouvrir et le dit ; la **page HTML avec contrat** (après un manque déclaré) : « étape 1 / 3 » au pilote et au tableau, ▶ → 2 (journal), ◀ → 1, le gel la fige.
+3. **Dit** : le dossier de la clé et la lecture du Word sont simulés dans la maquette (le site les fera avec la fenêtre du navigateur et une bibliothèque libre) ; la page HTML est un cadre qui compte ses étapes, pas le fichier chargé.
+
+« Continuer » : les tranches, les captures, le dépôt (registre n°12 · 72), puis (p5) l'activité comme objet.
+
+29/09/2026 07:50 MEMO
+
+---

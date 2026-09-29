@@ -8696,3 +8696,32 @@ Réponse mot pour mot :
 29/09/2026 18:20 MEMO
 
 ---
+
+## TOUR 265 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Continuer
+
+---
+
+## TOUR 265 — Claude (conscience n°12)
+
+Banc unique (p7, version finale) joué en six tranches : 24 × 0 ; l'alerte « schéma trop dense » ajoutée (le banc recalé : cinq schémas sur une diapo = dense ; un seul = pas dense et grand). Captures (une contrôlée). Registre n°12 · 75. Maquette `T265-maquette-pilotage-ordi-v9c15p7-manipulable.html`. Pièces au sas (empreintes contrôlées). Rien d'autre déposé hormis ce transcript, ses pièces et le registre.
+
+Réponse mot pour mot :
+
+**(p7) livrée — les cinq formes du schéma dessinées sur le format existant, l'écran d'envoi (v9c.15 p7 jointe, captures jointes) — vingt-quatre bancs à 0 sur la version finale (six tranches). La maquette de la préparation n'a plus de reste.**
+
+1. **Les bancs** : l'affichage, p7, p6, p5, p4b, p4a (recalé), p3, p2 (recalé), p1, le faisceau, l'oral, le chapitre, qui a participé, le récit au fil de l'heure, la préparation du cahier, le guidage, le récit, les durées, l'aperçu, l'alerte, le cahier, l'insertion, la non-régression, tout cliquer (106 clics, 0 erreur) — tous à 0.
+2. **Ce que tu as (captures)** : la carte « Les figures de style » au pilote, deux branches dévoilées sur trois (la troisième estompée), et **le tableau** où la troisième est absente ; la colonne de droite avec « Schéma trop dense : il n'a pas la place — donne-lui sa diapo : Couper la diapo ici » (parce que ce schéma simulé est coincé sous une consigne de quatre lignes : c'est le cas que le site doit attraper, et il l'attrape) ; l'écran « Envoyer vers une autre séance » avec le compte par heure ; une diapo à quatre formes (volontairement dense, pour montrer les formes — illisibles à dessein).
+3. **Une règle de plus pour le mandat**, attrapée par le banc : la fenêtre du tableau reçoit une liste fermée de fonctions ; tout ce que le rendu appelle doit y passer.
+4. Registre n°12 · 75 ; empreintes contrôlées.
+
+Tests : atelier, « 7 Les mouvements du siècle » (H2) : la carte dessinée sous la consigne, à droite « trop dense » ; clic droit sur le bloc du schéma → « Couper la diapo ici » : la carte a sa diapo « (suite) », l'alerte tombe ; « ▶ Jouer en avance — répétition », Tableau, ▶ trois fois : les branches une par une, le tableau suit ; ■ Arrêter ; Ctrl + Entrée, « + bloc » → « Schéma… » : change la forme et lis la convention ; « frise » avec « 1820 = Lamartine » et « 1830 = Hernani », Ajouter : la frise remplit la diapo ; clic droit sur une diapo de la colonne → « Envoyer vers une autre séance… » : lis le compte, choisis une heure, la diapo part.
+
+« Continuer » : la maquette est finie — tes tests de (b3) à (p7), puis la séquence de test du mandat.
+
+29/09/2026 20:35 MEMO
+
+---

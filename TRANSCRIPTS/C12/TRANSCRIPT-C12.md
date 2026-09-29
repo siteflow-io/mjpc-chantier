@@ -8193,3 +8193,31 @@ Réponse mot pour mot :
 29/09/2026 06:40 MEMO
 
 ---
+
+## TOUR 246 — Paul
+
+Texte de Paul, mot pour mot :
+
+> continuer
+
+---
+
+## TOUR 246 — Claude (conscience n°12)
+
+Banc unique (p4a, version finale) joué en cinq tranches : 20 × 0. Captures (une contrôlée). Registre n°12 · 71. Maquette `T246-maquette-pilotage-ordi-v9c15p4a-manipulable.html`. Pièces au sas (empreintes contrôlées). Rien d'autre déposé hormis ce transcript, ses pièces et le registre.
+
+Réponse mot pour mot :
+
+**(p4a) livrée — les objets et leurs gardes (v9c.15 p4a jointe, captures jointes) — vingt bancs à 0 sur la version finale (cinq tranches).**
+
+1. **Les bancs** : l'affichage, p4a, p3, p2, p1, le faisceau, l'oral, le chapitre, qui a participé, le récit au fil de l'heure, la préparation du cahier, le guidage, le récit, les durées, l'aperçu, l'alerte, le cahier, l'insertion, la non-régression, tout cliquer (106 clics, 0 erreur) — tous à 0.
+2. **Ce que tu as (captures)** : le choix d'objet ; « Fiche… » avec les feuilles du chapitre ; sur « Trois mots pour la frise », la page « Placer les poètes » (« sans contrat de pilotage : jouée comme une image ») et, en bandelette rouge en bas de la diapo, « ⚠ Objet non lisible — « tableau-double » (bloc 2) » avec la marche à suivre — la classe, elle, ne voit ni l'un ni l'autre ; la carte « Sur la forme » et « À régler ».
+3. Registre n°12 · 71 ; empreintes contrôlées.
+
+Tests : atelier, diapo 7 ; « + bloc » : les huit objets, lis leurs contrats ; « Question » : Ajouter sans rien → refus ; tape la question, Ajouter → refus (la réponse attendue) ; tape la réponse → la question est dans la diapo ; « + image » : colle une adresse `https://…` → refus ; tape `poesie-peinture-xixe/tableau-6.jpg` → ajoutée ; « + fiche… » : choisis « Le sonnet » ; « + bloc » → « Page HTML… » : refusée (aucun manque) ; « Déclarer un objet manquant » ; « Page HTML… » de nouveau : possible ; à droite, « Le chapitre » compte l'objet manquant et « À régler (n) » ; clique-le : la liste, « Copier le texte pour l'instance » ; dans la colonne, « 7 Trois mots… » (H2) : la bandelette rouge et la page ; onglet Pilotage → Tableau : rien de rouge au tableau ; « 2 Les règles héritées » (H2) : « Fiche non liée », clic droit sur la bandelette → « Lier à une fiche… ».
+
+« Continuer » pour (p4b) : la vidéo (désigner le dossier de la clé une fois — simulé —, les repères) et les documents du chapitre — capture avant de coder.
+
+29/09/2026 06:55 MEMO
+
+---

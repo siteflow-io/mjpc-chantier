@@ -1,0 +1,3 @@
+#!/bin/sh
+# à jouer en tranches d'une commande chacune (les processus de fond meurent entre deux tours)
+cd /home/claude; r=0; for f in audit-affichage-p4b test-p4b test-p4a-p4b test-p3-p4b test-p2-p4b test-p1-p4b test-g2-p4b test-g1-p4b test-f-p4b test-e-p4b test-b5-p4b test-b4-p4b test-b3-p4b test-d-p4b test-c-p4b test-b2-apercu-p4b test-b-p4b test-cahier-p4b test-a0-p4b regression-p4b tout-cliquer-p4b; do out=$(timeout 400 node vis/$f.mjs 2>&1 | grep -a "fin :" | tail -1); echo "$f : $out"; echo "$out" | grep -q "fin : 0 défaut" || r=1; done; [ $r = 0 ] && echo "TOUS LES BANCS : 0 défaut" || echo "ÉCHEC"; exit $r

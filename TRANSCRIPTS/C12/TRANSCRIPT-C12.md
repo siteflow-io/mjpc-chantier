@@ -8301,3 +8301,31 @@ Pris — **« document » est un objet, Word et PDF d'abord, tout type accepté*
 29/09/2026 07:50 MEMO
 
 ---
+
+## TOUR 250 — Paul
+
+Texte de Paul, mot pour mot :
+
+> contiuner
+
+---
+
+## TOUR 250 — Claude (conscience n°12)
+
+Banc unique (p4b) joué en six tranches : 21 × 0 (p4a recalé : neuf cartes). Captures (une contrôlée). Registre n°12 · 72. Maquette `T250-maquette-pilotage-ordi-v9c15p4b-manipulable.html`. Pièces au sas (empreintes contrôlées). Rien d'autre déposé hormis ce transcript, ses pièces et le registre.
+
+Réponse mot pour mot :
+
+**(p4b) livrée — la vidéo à préparer, la page pilotée, l'objet document (v9c.15 p4b jointe, captures jointes) — vingt et un bancs à 0 (six tranches). La dette 30 est fermée.**
+
+1. **Les bancs** : l'affichage, p4b, p4a (recalé : neuf objets), p3, p2, p1, le faisceau, l'oral, le chapitre, qui a participé, le récit au fil de l'heure, la préparation du cahier, le guidage, le récit, les durées, l'aperçu, l'alerte, le cahier, l'insertion, la non-régression, tout cliquer (106 clics, 0 erreur) — tous à 0.
+2. **Ce que tu as (captures)** : le formulaire vidéo (le dossier de la clé désigné, les trois fichiers, la légende, deux repères) ; une diapo avec trois documents dans le flux — « Le cours sur le Romantisme · docx · 4 pages · projetable », « Le tableau des notes · autre · 3 pages · **non projetable tel quel : convertis-le en PDF** », « Fiche méthode : décrire une image · pdf · 3 pages · projetable » ; au pilotage, le PDF ouvert « page 2 / 3 » avec la croix « ✕ retour à la diapo », et le tableau qui montre la même page.
+3. Registre n°12 · 72 ; empreintes contrôlées. **Restes de (p4)**, au registre : le dessin des cinq formes du schéma ; l'écran de choix propre pour « Envoyer vers une autre séance ».
+
+Tests : atelier, diapo 7 ; « + vidéo… » → Ajouter sans rien : refus ; « Désigner le dossier de la clé… » ; choisis « le-radeau.mp4 », une légende, un repère « 0:00 l'ouverture », « + repère » « 1:20 le monologue », Ajouter ; clic droit sur le bloc vidéo → « Repères… » ; Ctrl + Entrée (diapo neuve) ; « + document… » : `cours.docx` « Le cours » 4 pages → Joindre ; encore : `notes.odt` → « non projetable » ; encore : choisis « Fiche méthode » (déjà jointe) ; « ▶ Jouer en avance », Tableau, ouvre la diapo neuve, dévoile tout, clique « Fiche méthode » : le document au tableau page 1 / 3, ▶ page 2, « ✕ retour à la diapo » ; clique « Le tableau des notes » : refus dit. Puis, en atelier sur la diapo neuve : « + bloc » → « Déclarer un objet manquant » → « Page HTML… » avec la case « contrat » cochée → au pilotage, ▶ fait avancer « étape 1 / 3 » → 2, ◀ → 1, G (gel) puis ▶ : le tableau reste à l'étape.
+
+« Continuer » pour (p5) : l'activité comme objet (numéro continu, titre, ses diapos, ses notions travaillées et remobilisées, l'heure prévue proposée d'après les durées, le travail à faire prévu par heure, le rôle « fin d'heure ») — capture avant de coder.
+
+29/09/2026 08:10 MEMO
+
+---

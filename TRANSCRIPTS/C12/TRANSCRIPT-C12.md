@@ -8437,3 +8437,25 @@ Rien à trancher sur le fond. Ton mot, et je code (p6).
 29/09/2026 08:50 MEMO
 
 ---
+
+## TOUR 255 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ça veut dire quoi répétition?
+
+---
+
+## TOUR 255 — Claude (conscience n°12)
+
+Réponse : le mot du cadrage (4 · 1.5, 1 · 2.5) pour « Jouer en avance » — jouer la séance en avance sans rien écrire ; proposition d'un autre libellé si le mot ne convient pas. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+« Répétition » = **jouer la séance en avance, comme au théâtre avant la première** : c'est le mot que le cadrage donne à « ▶ Jouer en avance » (cadrage 4 · 1.5, cadrage 1 · 2.5 : « ni garde ni gel en répétition »). Concrètement : tu es dans l'atelier, tu veux voir ce que la classe verra — tu cliques « ▶ Jouer en avance » : tu as le pilotage, la diapo, ▶ / ◀, le tableau si tu l'ouvres, exactement comme mardi devant la classe ; mais **rien n'est écrit** — pas de journal, pas de « diapo vue », pas de copie de classe, pas de cours actif, pas de T-5, pas de garde, pas de gel. Tu regardes, tu vérifies, tu arrêtes : rien n'a eu lieu. C'est ça que le bandeau rappelle.
+
+Si le mot ne te va pas dans l'écran, je peux écrire « Jouer en avance — rien n'est écrit » à la place de « RÉPÉTITION » ; dis-moi.
+
+29/09/2026 08:44 MEMO
+
+---

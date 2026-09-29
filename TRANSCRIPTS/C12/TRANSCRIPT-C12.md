@@ -8725,3 +8725,30 @@ Tests : atelier, « 7 Les mouvements du siècle » (H2) : la carte dessinée sou
 29/09/2026 20:35 MEMO
 
 ---
+
+## TOUR 266 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Une diapo ne peut jamais contenir plusieurs schémas. Par ailleurs, quand il y a un schéma, il faut absolument qu'il soit parfaitement lisible. Que proposes-tu ?
+
+---
+
+## TOUR 266 — Claude (conscience n°12)
+
+Mise en tension (les règles corrigent p7) ; proposition (p8) : un schéma = sa diapo (refus à l'import, l'atelier crée la diapo suivante, « Schéma… » grisé si déjà un) ; les libellés en texte de la diapo (police de la diapo, jamais sous le plancher), les formes derrière ; « trop dense » mesuré (chevauchement / débordement) + plafonds par forme au contrat. Capture `pieces/T266-proposition-p8-schema-lisible-*.png` (injectée). Rien codé, rien déposé hormis ce transcript et les captures.
+
+Réponse mot pour mot :
+
+D'abord la mise en tension : tes deux règles **corrigent (p7)**, qui admettait un schéma sous une consigne (« trop dense » seulement si le dessin faisait moins de la moitié) et plusieurs schémas par diapo. Elles ne télescopent rien d'autre : le contrat existant (forme + source texte) reste, la frise des feuilles reste. Ce que je propose (capture jointe, injectée, rien codé) :
+
+1. **Un schéma = sa diapo.** Une diapo qui a un schéma n'a rien d'autre que son titre (et, au plus, une consigne d'une ligne). Le site l'impose aux trois endroits du contrat : à l'import, une diapo à deux schémas ou à un schéma noyé dans du texte est **refusée** (le prompt d'injection le dit) ; dans l'atelier, « Schéma… » sur une diapo qui a déjà du contenu **crée la diapo suivante** avec le schéma, à la même heure, mêmes notions (le geste « Couper la diapo ici », fait tout seul) ; « Schéma… » est grisé si la diapo en a déjà un (« une diapo n'a qu'un schéma »).
+2. **Lisible comme le texte, garanti par construction** : les libellés du schéma ne sont plus dessinés dans le SVG (où ils rapetissent avec le dessin), ils sont **du texte de la diapo, dans sa police** — jamais plus petit que le plancher lisible du tableau, celui que l'audit d'affichage mesure déjà ; seules les formes (ellipse, lignes, cercles, cases) sont dessinées derrière, et s'étirent à la diapo. Sur la capture : la carte « Les figures de style » seule sur sa diapo, les trois branches en 0,8 em (la troisième estompée : non dévoilée), le centre en 0,85 em.
+3. **« Trop dense » devient une mesure, pas une estimation** : si, à pleine diapo, les libellés se chevauchent ou débordent (la même mesure que « trop pleine »), « À régler » dit : « coupe ce schéma en deux (deux diapos) ou enlève des éléments ». Avec un plafond au contrat, dit à l'import : **carte 6 branches, frise 6 repères, cycle 6 étapes, arbre 3 niveaux et 7 nœuds, tableau 4 colonnes × 5 lignes** — au-delà, refus avec le message.
+4. **Ce que ça change pour la classe** : un schéma est toujours plein écran et lisible du fond ; le dévoilement branche par branche reste ; la diapo « Les mouvements du siècle » de la maquette sera coupée en deux (la consigne, puis la carte).
+
+Ton mot sur 1 à 3 (les plafonds de 3 sont à ta main), et je code (p8) — capture des cinq formes une par une avant le banc.
+
+29/09/2026 21:25 MEMO
+
+---

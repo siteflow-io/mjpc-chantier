@@ -8543,3 +8543,25 @@ Ton mot, et je le code dans (p6) avant les tranches (c'est un habillage de (p5),
 29/09/2026 09:10 MEMO
 
 ---
+
+## TOUR 259 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok
+
+---
+
+## TOUR 259 — Claude (conscience n°12)
+
+La colonne sobre codée dans `vis/patch-p6.py` (p6 bis) : la carte « Ce que la diapo déclare » en lecture par défaut (quatre lignes de prose : activité et rang, heure prévue, notions travaillées, remobilise, surlignage), « modifier » ouvre les champs de (p5), « fermer » les referme, changer de diapo la remet en lecture ; « L'heure n — le travail à faire prévu » et « Les activités du chapitre (n) » repliées, un clic sur le titre ouvre ; « À régler → Ouvrir la diapo » ouvre la carte sur la ligne à corriger (« ⚠ À corriger ici : l'activité — … ») ; « À régler (n) — la seule liste de ce que tu as à faire ; chaque ligne dit le geste ». Bancs : p6 0, p5 recalé (modifier, plis, retour en lecture) 0, p1 0, p4a 0 ; les dix-neuf autres à rejouer par tranches, puis captures et dépôt. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Codé et prouvé sur la maquette (p6) : **la carte est en lecture par défaut** (quatre lignes, « modifier » à droite), les champs ne s'ouvrent que par « modifier » et se referment par « fermer » ou en changeant de diapo ; « L'heure n — le travail à faire prévu » et « Les activités du chapitre (n) » sont **repliées** (un clic sur le titre) ; depuis « À régler → Ouvrir la diapo », la carte s'ouvre d'elle-même avec « ⚠ À corriger ici : l'activité — rattache la diapo à une activité numérotée » ; sous « À régler (n) » : « la seule liste de ce que tu as à faire ; chaque ligne dit le geste ». Bancs : p6, p5 (recalé : modifier, plis, retour en lecture), p1, p4a à 0 — les dix-neuf autres à rejouer par tranches au prochain tour, puis captures et dépôt (n°12 · 74).
+
+« Continuer » : les tranches, les captures, le dépôt de (p6) — la maquette de la préparation complète.
+
+29/09/2026 09:30 MEMO
+
+---

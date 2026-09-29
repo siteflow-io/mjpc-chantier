@@ -8594,3 +8594,28 @@ Tests : atelier, diapo 7 : la carte de droite en quatre lignes, « modifier » p
 29/09/2026 09:40 MEMO
 
 ---
+
+## TOUR 261 — Paul
+
+Texte de Paul, mot pour mot :
+
+> continuer
+
+---
+
+## TOUR 261 — Claude (conscience n°12)
+
+(a) retenu : refermer les restes. Captures de proposition (p7) (`pieces/T261-proposition-p7-*.png`) : la planche des cinq formes du schéma avec leurs sources et le contrat ; l'écran de choix « Envoyer vers une autre séance » avec le compte par heure. Rien codé, rien déposé hormis ce transcript et les captures.
+
+Réponse mot pour mot :
+
+Je prends (a) : refermer les deux restes de la maquette. La capture de **(p7) — le schéma dessiné et l'écran d'envoi** (deux zooms joints, injectés, rien codé) :
+
+1. **Les cinq formes du schéma, dessinées depuis leur source** (planche) — chacune a le format de sa donnée, et c'est le contrat que l'instance qui prépare doit respecter : **carte** (mentale) `{ centre, branches: [{ texte, sous: [] }] }`, dévoilée centre puis branche par branche ; **frise** `{ debut, fin, jalons: [{ date, texte }] }`, jalon par jalon ; **arbre** `{ racine: { texte, enfants: [] } }`, niveau par niveau ; **cycle** `{ etapes: [texte] }`, étape par étape dans le sens des aiguilles ; **tableau** `{ colonnes: [], lignes: [[…]] }`, ligne par ligne. **Le contrat** (3.2) : échelle « plein » par défaut, réglable dans la donnée ; dévoilé élément par élément avec ▶ comme un bloc ; au pilote, le prochain élément est en clair et les suivants estompés (comme sur la planche), au tableau les suivants sont absents ; « trop dense » seulement si, à pleine surface, le texte passe sous le plancher lisible — alors « À régler ». Dans l'atelier, « Schéma… » demande la forme puis les éléments (une ligne par élément, comme les repères vidéo). Dans la maquette, le schéma simulé « Les figures de style » recevra une donnée frise pour être joué.
+2. **« Envoyer vers une autre séance »** (à la place de la boîte à numéro) : l'écran liste **les autres séances du chapitre avec leurs heures et leurs dates**, et pour chaque heure ce que l'arrivée donnerait au compte (« à la fin de H3 (lun 21/09) · 21 + 22 = 43 min ✔ » en clair, « 44 + 22 = 66 min +16 » sinon) ; tu choisis l'heure ; la diapo arrive avant la fin d'heure de cette heure, identité inchangée (notions et réponses d'élèves la suivent) ; la note dit ce que l'heure de départ regagne.
+
+Rien à trancher sur le fond. Ton mot, et je code (p7) — la dernière livraison de la maquette.
+
+29/09/2026 09:35 MEMO
+
+---

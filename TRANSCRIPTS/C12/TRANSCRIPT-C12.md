@@ -8145,3 +8145,25 @@ Réponse mot pour mot :
 28/09/2026 23:05 MEMO
 
 ---
+
+## TOUR 244 — Paul
+
+Texte de Paul, mot pour mot :
+
+> la capture P41 choix objet, l'encart de choix est toujours visible en bas de ma diapo? ou c'est du clic droit?
+
+---
+
+## TOUR 244 — Claude (conscience n°12)
+
+Réponse : l'encart n'apparaît qu'au clic sur « + bloc » (ou + image / + fiche…), se ferme à l'ajout ou par sa croix ; pas du clic droit. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Ni l'un ni l'autre : l'encart **n'apparaît que quand tu cliques « + bloc »** dans la barre sous la diapo (ou « + image », « + fiche… », qui l'ouvrent directement sur leur formulaire). Il se pose en bas de la scène, par-dessus les notes, le temps de choisir ; il se ferme dès que l'objet est ajouté, ou par sa croix. Le reste du temps, rien — la règle des gestes (7.3) : rien à l'écran sans besoin. Ce n'est pas du clic droit : le clic droit sur un bloc, c'est le menu de (p3) (dupliquer, taille, couper la diapo ici, lier à une fiche…).
+
+Le même encart sert à « À régler » (le bouton dans la carte du chapitre, à droite) : il s'ouvre, tu lis, tu fermes.
+
+29/09/2026 07:15 MEMO
+
+---

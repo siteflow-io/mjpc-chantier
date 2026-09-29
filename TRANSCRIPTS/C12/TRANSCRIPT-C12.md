@@ -8619,3 +8619,30 @@ Rien à trancher sur le fond. Ton mot, et je code (p7) — la dernière livraiso
 29/09/2026 09:35 MEMO
 
 ---
+
+## TOUR 262 — Paul
+
+Texte de Paul, mot pour mot :
+
+> poûr les schémas, tu as regardé l'existant?
+
+---
+
+## TOUR 262 — Claude (conscience n°12)
+
+Non : faute reconnue. Mesuré ensuite dans `index.html` (production, 1 774 212 octets) : le contrat existant du bloc schéma (`forme` 'carte' par défaut, `src` texte une ligne par élément, `z`, `pos`) dans le prompt d'injection et `atP2NormaliserBloc` ; `bloc_frise` (date = événement) et `bloc_schema` (zone vide) dans l'éditeur de feuilles ; aucun rendu des formes côté diapo. Proposition retirée (objets JSON) et remplacée par le rendu sur le format texte existant avec une convention par forme. Rien codé, rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Non — pas avant ta question, et c'était une faute contre la règle « chercher ce qui existe avant de fabriquer ». Je viens de le faire (le site de production, `index.html`, lu en entier sur « schema », « frise », « carte », « arbre », « cycle ») :
+
+1. **Il existe déjà un contrat de donnée pour le bloc « schéma »**, dans le prompt d'injection et la validation à l'import : `{ "t": "schema", "forme": "carte", "titre": "…", "src": "Première famille : a, b\nDeuxième famille : c" }` — **la source est du texte, une ligne par élément**, avec une échelle `z` (1 = plein) et des positions `pos` ; « carte » est la forme par défaut. Ma proposition d'objets JSON (`{ centre, branches: [...] }` etc.) **télescopait ce contrat** : je la retire.
+2. **Il existe, dans l'éditeur de feuilles, une « frise chronologique »** (`bloc_frise` : « Repères (date = événement) », une ligne par repère, rendue en frise) et une « zone de schéma à dessiner à la main » (`bloc_schema` : une hauteur, une légende, rien dedans — c'est la dette 25 : les schémas des fiches rendus en tableau ou laissés vides).
+3. **Il n'existe aucun rendu des formes** côté diapo : ni au tableau, ni au pilote — un bloc « schema » s'affiche aujourd'hui comme un cadre avec son titre. Le dessin des cinq formes reste à faire ; ce que je fais, c'est le faire **sur le format existant** : la source texte, une ligne par élément, avec une convention par forme — **carte** : le titre au centre, une ligne « Branche : a, b » par branche ; **frise** : une ligne « date = événement » (la même convention que la frise des feuilles) ; **arbre** : une ligne par nœud, l'indentation (deux espaces) pour le niveau ; **cycle** : une étape par ligne ; **tableau** : une ligne par rangée, les colonnes séparées par « | », la première ligne = les en-têtes. Dévoilé ligne par ligne, dans l'ordre de la source — c'est le contrat (3.2), et c'est ce que le prompt d'injection dit déjà.
+4. **Ce que ça change pour toi** : rien à réécrire dans les chapitres déjà faits (le format ne bouge pas) ; l'instance qui prépare écrit ses schémas comme aujourd'hui, et ils se dessinent.
+
+Ton mot sur 3, et je code (p7) ainsi — ou tu préfères une convention différente pour une forme.
+
+29/09/2026 12:30 MEMO
+
+---

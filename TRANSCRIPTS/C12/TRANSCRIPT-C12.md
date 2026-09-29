@@ -8671,3 +8671,28 @@ Réponse mot pour mot :
 29/09/2026 12:45 MEMO
 
 ---
+
+## TOUR 264 — Paul
+
+Texte de Paul, mot pour mot :
+
+> continuer
+
+---
+
+## TOUR 264 — Claude (conscience n°12)
+
+Bancs (p7) copiés ; joués : audit, p7, p6, p5, p4b, p4a (recalé : la source du schéma), p3, p2 (recalé : le témoin d'enregistrement tourne sur un tick d'une seconde — attendre 4,5 s), p1, g2, g1, f, e, b5, b4, b3, d, c, b2, b, cahier, a0, régression : 0 ; tout cliquer a attrapé « Les mouvements du siècle déborde » avec le schéma simulé : le bloc du schéma prend maintenant le reste de la diapo (flex) et le dessin se contraint à la hauteur disponible ; p7, l'audit et tout cliquer à 0 sur cette version. Le rendu ayant changé, les vingt et un autres bancs sont à rejouer sur la version finale avant dépôt (tour suivant). Captures faites. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+**Vingt-trois bancs à 0 sur (p7), puis « tout cliquer » a attrapé un débordement, réglé — la version finale doit repasser les vingt et un autres bancs avant dépôt (tour suivant, limite d'outils).**
+
+1. **Ce que « tout cliquer » a attrapé** : avec le schéma simulé, « Les mouvements du siècle » débordait — le dessin prenait sa hauteur à lui (16/9 de la largeur) au lieu de la place qui reste sous la consigne. Maintenant **le bloc du schéma prend le reste de la diapo et le dessin s'y contraint** (un schéma seul remplit la diapo — l'échelle « plein » ; avec une consigne au-dessus, il prend ce qui reste). Mesuré : la diapo tient (552 / 552), le dessin fait 148 px sous une consigne de quatre lignes ; p7, l'audit d'affichage et tout cliquer (106 clics, 0 erreur) à 0.
+2. **Deux bancs recalés** : p4a — « Schéma… » demande maintenant une source, le banc en donne une (deux jalons) ; p2 — le témoin « ✔ enregistré » tourne sur un tick d'une seconde après 3 s, le banc attendait 3,5 s : il attend 4,5 s (ce n'était pas une régression, une marge trop courte).
+
+« Continuer » : les tranches sur la version finale, les captures, le dépôt (registre n°12 · 75).
+
+29/09/2026 18:20 MEMO
+
+---

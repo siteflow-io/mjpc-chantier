@@ -8411,3 +8411,29 @@ Tests : atelier, diapo 7 ; à droite, clique le titre de la diapo, ajoute « —
 29/09/2026 09:20 MEMO
 
 ---
+
+## TOUR 254 — Paul
+
+Texte de Paul, mot pour mot :
+
+> continue
+
+---
+
+## TOUR 254 — Claude (conscience n°12)
+
+Relu 4 · 1.5, 0.4, §6. Captures de proposition (p6) (`pieces/T254-proposition-p6-*.png`) : la répétition (bandeau, chrono, arrêter) ; les alertes « trop pleine » et « fichier non atteignable » avec marche à suivre. Rien codé, rien déposé hormis ce transcript et les captures.
+
+Réponse mot pour mot :
+
+La capture de **(p6) — la répétition et les alertes** (deux zooms joints, propositions injectées, rien codé), la dernière livraison de la maquette :
+
+1. **« ▶ Jouer en avance » = la répétition** (1.5) : le même écran que le pilotage — la diapo, ▶ / ◀, le tableau (la fenêtre Win+K possible), les mêmes gestes — mais **rien n'est écrit** : ni journal, ni copie de classe, ni cours actif ; aucune garde (pas de « diapo devant », pas de garde à Clore), aucun gel, aucun T-5. Pour que tu le saches à chaque seconde : une **bordure rayée dorée en haut de l'écran** et un bandeau « **RÉPÉTITION** — rien n'est écrit … · chrono de répétition 03:12 · diapo 7, dévoilée 2 / 4 » avec **« ■ Arrêter la répétition »** (retour à l'atelier sur cette diapo ; ce qui a été dévoilé en répétition est oublié). Le chrono de répétition part de zéro à chaque lancement ; l'heure réelle et le cahier de textes ne bougent pas.
+2. **Les alertes avec leur marche à suivre** (0.4, 4b.4, 6.1), dans « Sur la forme » et « À régler » : **« Diapo trop pleine »** — le texte passe sous le plancher lisible du fond (« 32 pt → il faudrait 26 pt ») : « coupe la diapo : clic droit sur le bloc où couper → Couper la diapo ici ; ou retire un bloc ; ou mets-en un en petit. Le site ne coupe jamais seul » ; **« Vidéo : fichier non atteignable »** — le fichier n'est pas dans le dossier de la clé désigné : « remets le fichier sur la clé, ou redésigne le dossier ; en classe, la diapo passerait toute seule et le récit dirait “qu'on regardera à la prochaine séance” ». « Fiche non liée » et « page sans contrat » sont déjà là depuis (p4).
+3. **Mise en tension** : la répétition partage le moteur du pilotage ; tout ce que le pilotage écrit « en passant » (le journal, vuMax, les décisions, les coupures, le cahier) est coupé comme dans l'atelier, mais **le tableau, lui, reçoit** (c'est le but : voir ce que la classe verra). C'est le seul mode où le tableau reçoit sans que rien ne s'écrive.
+
+Rien à trancher sur le fond. Ton mot, et je code (p6).
+
+29/09/2026 08:50 MEMO
+
+---

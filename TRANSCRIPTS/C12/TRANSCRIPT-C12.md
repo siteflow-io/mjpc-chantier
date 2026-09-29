@@ -8221,3 +8221,31 @@ Tests : atelier, diapo 7 ; « + bloc » : les huit objets, lis leurs contrats ; 
 29/09/2026 06:55 MEMO
 
 ---
+
+## TOUR 247 — Paul
+
+Texte de Paul, mot pour mot :
+
+> est ce que tu as bien codé les nouveaux objets qui avaient été remontés par l'instance qui avait travaillé sur la création du chapitre 3e?
+
+---
+
+## TOUR 247 — Claude (conscience n°12)
+
+Vérifié contre le registre (dettes 25, 29, 30, lot 10) et le code : 29 codé ; 30 à moitié (l'ouverture et le pilotage de la page en p4b) ; 25 hors chantier (feuilles) ; le dessin des formes du schéma reste ; lot 10 réglé au contrat. Registre n°12 · 71 bis. Rien d'autre déposé hormis ce transcript et le registre.
+
+Réponse mot pour mot :
+
+Vérifié contre le registre (dettes 25, 29, 30 et le lot 10, remontées par l'instance du chapitre 3e) et contre le code de (p4a) :
+
+1. **Dette 29 — le bloc « texte »** (une diapo simple : un titre, quelques lignes ; onze écrans du chapitre l'attendaient, mis en « consigne » faute de mieux) : **codé**. « + bloc » → Texte crée `{ t: 'texte', txt, el }`, rendu sans puce, au pilote comme au tableau ; le contrat le dit (« pour dire, pas pour faire »). Mesuré par le banc.
+2. **Dette 30 — un écran qui ouvre une page HTML** (la frise s'ouvrait à la main) : **codé à moitié**. L'objet « page » existe (créé seulement après un manque déclaré, avec ou sans contrat, gardé dans « À régler », rendu en vignette « page HTML — placer-les-poetes.html »). Ce qui manque : **l'ouverture et le pilotage de la page en classe** (4.2 : elle annonce ses étapes, les flèches la font avancer, le gel la fige, le journal note l'étape) — c'est (p4b), avec les documents (4 ter : « un document affiché est pilotable : une page HTML, ses étapes »). Aujourd'hui, au tableau, une page se joue « comme une image ».
+3. **Dette 25 — les objets graphiques dans les feuilles** (carte mentale, frise, annotation ; trois fiches ont rendu leur schéma en tableau) : **pas codé, et pas dans ce chantier** : c'est l'éditeur de feuilles, hors de l'atelier des diapos. Côté diapo, le bloc « schéma » a ses cinq formes (carte, frise, arbre, cycle, tableau) au formulaire, mais le rendu des formes reste un cadre vide « schéma — titre » dans la maquette : le dessin des cinq formes et leur dévoilement élément par élément ne sont pas faits. Je le note comme reste de (p4).
+4. **Lot 10 — « le champ adresse dans mjpc-medias ajoute la base : une adresse complète se double »** : **réglé au contrat** : le formulaire refuse une adresse complète et n'ajoute la base qu'une fois.
+5. **Ce qui a été ajouté au-delà** : le mécanisme général « déclarer un objet manquant » (3.3), pour que la prochaine instance n'ait plus à tordre un objet.
+
+Donc : 29 oui, 30 à finir en (p4b), 25 non (feuilles, chantier à part), le schéma dessiné à finir. Je l'écris au registre n°12 · 71 en complément.
+
+29/09/2026 07:12 MEMO
+
+---

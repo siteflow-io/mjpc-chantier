@@ -9720,3 +9720,25 @@ Tes trois mots (104, 105, 106), et je corrige le cadrage 6 et les deux mandats, 
 30/09/2026 20:50 MEMO
 
 ---
+
+## TOUR 302 — Paul
+
+Texte de Paul, mot pour mot :
+
+> c'est bon. applique ce qu'elle a dit. par ailleurs, ce sera elle l'exécutant du mandat, vu qu'elle a déjà une connnaissance du terrain.
+
+---
+
+## TOUR 302 — Claude (conscience n°12)
+
+Appliqué R87 à R111 et les tranchages 104-106 : cadrage 6 réécrit (un seul contrat) et déposé ; mandat 1 v4 (5 321 mots, titre de conversation, rôle de l'exécutante = la relectrice, sa relecture au seuil) et mandat 2 v2 déposés sans jetons (`MANDATS/`, pièces T302). Le mandat 1 est livré en bloc avec les jetons dans la conversation. Rien d'autre déposé hormis ce transcript.
+
+Réponse mot pour mot (le mandat 1 v4 = pièce T302-MANDAT-ELEVE-1-v4.md, reproduit dans la conversation avec les jetons) :
+
+Appliqué, tout, dans son ordre : **le cadrage 6** d'abord (un seul contrat : 1.2 la forme exacte du profil + `amenagements` + le nombre en clair `nbDispositifs` ; 1.4 le QCM lit `amenagements` ; 1.5 l'archive d'un retrait en consultation seule ; 3.4 aucun ◆ sans clé ; 3.4 quater les noms sur la page des classes avec la clé, un nombre sans clé et dans la case de l'heure ; 3.4 quinquies la dictée lit `amenagements.dicteeAmenagee`, le clic droit part de la fiche, rien d'autre ; les restes de l'an dernier en corbeille comptés ; 5.1 quater `adapte` reporté au cadrage 7) ; puis **le mandat 1, version 4** (les deux phrases fausses remplacées par ce que fait le code ; le titre de conversation en première ligne ; acorn ; la vue élève prouvée à chaque livraison ; la fiche à 390 et 360 px ; la doctrine du site ; l'adresse du QCM 7.7.0 ; « Fiche élève » à la place réservée que l'exécutante localise et cite ; une seule source pour le rappel ; la reprise au premier import et plus de bouton ; le sexe choisi dans la fiche ; la fenêtre de clé propre à la fiche ; la classe sans année ; `classeDuRegistre` en règle ; la dictée : hub inchangé hors son bac à sable, la trace des copies d'avant, la liste nominative des écritures avec sa méthode, `toggleAmenageDictee` rebranché) ; puis **le mandat 2** (la date au survol, la taille de l'étiquette, l'âge jamais lu, « NOM Prénom », une livraison ⓪ bis pour le mode test du pilotage). Le tout déposé au sas sans jetons, vérifié ; pièces T302.
+
+Et puisque **c'est elle l'exécutante** : le mandat s'ouvre maintenant par le titre de conversation et par son rôle — « tu as relu ce mandat deux fois ; avant de coder, relis cette version contre ta proposition ; si un de tes points n'y est pas, tu le dis avant toute ligne de code » — c'est sa troisième relecture, faite par elle, au seuil de l'exécution. Pas de conversation de plus : tu lui colles le mandat 1 ci-dessous (avec les jetons), elle relit, elle dit, puis elle livre ⓪ et s'arrête ; « continuer » pour ①, ②, ③, ④ ; à chaque arrêt, tu me transmets sa note et ses captures, j'audite, tu promeus ou pas. Le mandat 2 attend.
+
+30/09/2026 21:05 MEMO
+
+---

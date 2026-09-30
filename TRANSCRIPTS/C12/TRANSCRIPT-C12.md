@@ -9053,3 +9053,31 @@ Ton mot sur 40, et j'intègre 27 à 39 dans le cadrage 6.
 30/09/2026 08:05 MEMO
 
 ---
+
+## TOUR 277 — Paul
+
+Texte de Paul, mot pour mot :
+
+> fais des propositions pour les tranchages
+
+---
+
+## TOUR 277 — Claude (conscience n°12)
+
+Propositions : 41 identifiants en clair / textes chiffrés (+ mesurer les règles de lecture de la base) ; 42 la ligne avant et après un jour sans cours ; 43 pas de rappel, la date de mise à jour visible ; 44 le ◆ chez Paul seulement ; 45 le sexe en clair pour l'accord des messages, l'âge jamais lu par une app. Rien écrit au cadrage, rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Mes propositions, une par point, avec ce qui les motive — tu barres ce qui ne te va pas :
+
+41. **27 — Les identifiants PAP en clair, les textes chiffrés : oui.** Un identifiant (« pap-08 ») ne décrit pas l'élève, il dit à l'app quoi faire ; sans lui en clair, aucune app n'aménage rien. Les remarques et la synthèse — ce qui décrit l'élève — restent chiffrées avec ta clé. Et une mesure avant le mandat : les règles de lecture de la base, pour savoir qui peut lire `/classes` sans être toi.
+42. **34 — Un jour sans cours : la ligne avant ET après.** Avant : sur la dernière heure de cette classe qui précède l'anniversaire, « 🎂 Titouan G. aura 14 ans samedi » ; après : sur la première heure qui suit, « c'était l'anniversaire de Titouan G. dimanche (14 ans) » ; le jour même quand il y a cours, « a 14 ans aujourd'hui ». Dans les trois cas le bouton « Afficher au tableau » et la même pastille invariable. Motif : tu le dis quand tu vois la classe, pas quand le calendrier le décide.
+43. **38 — Pas de rappel automatique ; la date de la dernière mise à jour, visible.** La fiche PAP se réévalue en équipe éducative, pas sur une alerte du site ; le site montre « cases cochées le 15/09/2026 » dans la fiche et dans le ◆ au survol, et c'est tout. Si un jour tu veux un rappel (« ces cases ont plus de six mois »), il s'ajoute sans rien casser.
+44. **Le ◆ chez toi seulement.** Dans les apps, l'élève fléché ne voit ni ◆ ni mot : l'app applique l'aménagement (le temps, le QCM, la dictée à trous) sans le nommer — sur sa tablette, il a « son » cours, pas un cours marqué. Motif : le fléchage sert à toi et aux apps, jamais à l'élève ni à ses camarades ; et une tablette se voit de la table d'à côté.
+45. **Deux points que je tranche avec toi en même temps, puisqu'ils en dépendent** : (a) **le sexe** est lu par les apps pour l'accord des messages (« tu es prête / prêt ») — en clair, comme aujourd'hui, jamais affiché tel quel ; (b) **l'âge** n'est jamais lu par une app : seule la console le calcule (les anniversaires) ; les apps qui voudraient adapter un contenu à l'âge le font par le niveau de la classe, pas par la date de naissance.
+
+Ton mot (« ok » suffit, ou le numéro de ce que tu changes), et j'intègre 27 à 45 dans le cadrage 6 puis je te le redonne.
+
+30/09/2026 08:12 MEMO
+
+---

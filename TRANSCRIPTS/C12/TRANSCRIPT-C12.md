@@ -8962,3 +8962,28 @@ Ce qui vaut pour les quatre : la ligne se déclenche depuis les trois portes (la
 30/09/2026 07:45 MEMO
 
 ---
+
+## TOUR 274 — Paul
+
+Texte de Paul, mot pour mot :
+
+> la pastille oui, en revanche le texte doit être invariablement: bon anniversaire titouan. et moi dans ma console je vois l'age.
+
+---
+
+## TOUR 274 — Claude (conscience n°12)
+
+Tranché : la pastille A au tableau, texte invariable « 🎂 Bon anniversaire Titouan » (prénom seul) ; l'âge dans la console seulement, aux trois portes. Proposition d'écrire le cadrage 6. Rien écrit, rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Pris, tranché ainsi :
+
+24. **Au tableau** : la pastille A, dans la ligne de l'étiquette d'activité, en haut à droite, et son texte est **invariablement « 🎂 Bon anniversaire Titouan »** — le prénom, rien d'autre : ni l'âge, ni la date, ni « aujourd'hui / demain ». Deux anniversaires le même jour : « Bon anniversaire Titouan et Lina ».
+25. **Dans ta console** : la ligne complète avec l'âge — « 🎂 Titouan G. a 14 ans aujourd'hui · Lina B. aura 14 ans demain (mardi 15/09) » — aux trois portes (la case de l'heure, le 🎂 de la barre pendant l'heure, le T-5), avec « Afficher au tableau » / « Retirer ».
+
+J'écris maintenant le cadrage 6 « L'ÉLÈVE » avec les points 4 à 8, 15 à 19 et 24-25 (le profil, l'import du fichier, les quinze cases PAP et leurs identifiants, ce que chaque case déclenche — à valider case par case —, le fléchage, les anniversaires), je le dépose au sas et je te le donne à relire. Ton mot.
+
+30/09/2026 07:50 MEMO
+
+---

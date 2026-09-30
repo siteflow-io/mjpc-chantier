@@ -8987,3 +8987,27 @@ J'écris maintenant le cadrage 6 « L'ÉLÈVE » avec les points 4 à 8, 15 à 1
 30/09/2026 07:50 MEMO
 
 ---
+
+## TOUR 275 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok
+
+---
+
+## TOUR 275 — Claude (conscience n°12)
+
+Cadrage 6 « L'ÉLÈVE » écrit (`C12/CADRAGE-6-L-ELEVE.md`) et déposé au sas (`DEROULE/CADRAGE-6-L-ELEVE.md`, bit à bit). Rien d'autre déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Le **cadrage 6 — L'ÉLÈVE** est écrit et déposé au sas (`DEROULE/CADRAGE-6-L-ELEVE.md`, vérifié bit à bit ; joint pour relecture). Il tient en cinq parties, dans tes mots :
+
+26. **§0 Ce que ça change pour la classe** et ce que le site fait aujourd'hui (mesuré) ; **§1 le site seul propriétaire de l'identité** : la liste ne change pas de forme, un profil par élève `{ sexe, naissance, dispositif, pap, synthese }`, chiffré comme les codes sauf ce que les apps lisent sans la clé (sexe, dispositif oui/non), le QCM lit le sexe dans le profil après une migration ; **§2 l'import** : ton fichier .xlsx tel quel ou le tableau collé, la ligne des colonnes reconnue, l'aperçu avant de valider, les élèves complétés jamais doublés ; **§3 les adaptations** : les quinze lignes de la fiche PAP avec leurs identifiants pap-01 … pap-15, la remarque par ligne, la synthèse, le ◆ au pilotage et jamais au tableau, le déclenchement par case **à valider par toi et à mesurer app par app** (3.3), le contenu `adapte` au contrat du chapitre ; **§4 les anniversaires** : l'âge dans la console à trois portes, la pastille « 🎂 Bon anniversaire Titouan » au tableau sur ton clic, un état poussé ; **§5 ce qui reste** : le déclenchement case par case, et le cadrage 7 « la tablette » quand tu m'auras donné le HTML du panneau d'aide.
+
+Relis-le ; dis ce qui manque ou ce qui est faux. Ensuite : la maquette de l'import et de la fiche élève (captures d'abord), ou le retour à la maquette de la préparation — à ton choix.
+
+30/09/2026 08:00 MEMO
+
+---

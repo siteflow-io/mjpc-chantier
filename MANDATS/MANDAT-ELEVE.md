@@ -41,6 +41,13 @@ Ce mandat sert le professeur qui dépose le fichier de sa classe et a, dans la m
 - **Ce que tu ne fais pas** : tu ne changes pas la forme de `/classes/<slug>/eleves` ; tu ne touches ni aux codes ni au coffre ; tu ne crées aucun lien entre années (cadrage 6 · 1.7) ; tu n'inventes aucun déclenchement d'app hors ceux de ce mandat (le sexe pour le QCM, pap-15 pour la dictée) ; tu n'affiches rien du profil au tableau, dans un récit, un export, une archive, ni devant l'élève ; tu ne reformules pas les quinze libellés PAP.
 - **Si tu ne sais pas répondre « à quoi ça sert en classe ? » sans deviner, tu ne codes pas : tu demandes**, en une question précise, et tu attends.
 
+## 1 bis. LES DÉPÔTS ET LES JETONS
+
+- **Le sas** (tes livraisons) : dépôt GitHub `siteflow-io/mjpc-chantier`, branche `main`. Tu écris par l'API GitHub (`PUT /repos/siteflow-io/mjpc-chantier/contents/<chemin>`, contenu en base64, `sha` de la version courante pour une mise à jour) avec le jeton **SAS** : `__JETON_SAS__`. Tu vérifies chaque dépôt bit à bit (relire le blob, comparer).
+- **Le dépôt de production** : `siteflow-io/monsieurjaipascompris`, branche `main` — tu y **lis** `index.html`, `evaluation-qcm.html`, `correction_dictee.html`, `mjpc-core.js`, `docs/MJPC6-DETTES.md`, `PROTOCOLE-MAQUETTE.md`, `docs/MJPC6-1-DISPOSITIF.md` avec le jeton **PROD** : `__JETON_PROD__`. Tu y **écris** seulement le registre des dettes (`docs/MJPC6-DETTES.md`, section de ton lot, ta propre numérotation) et, après le promeus de Paul, le protocole d'après-promotion ; **jamais `index.html` ni une app en production : c'est le geste de Paul**.
+- **Le hub** (Firebase, lecture seule pour tes mesures) : `https://mjpc-hub-default-rtdb.europe-west1.firebasedatabase.app` — tu n'y écris **rien** hors du mode test (`m8TestOn()`), et le mode test écrit dans son magasin, pas au hub.
+- Les jetons ne vont dans aucun fichier déposé, dans aucune capture, dans aucune note : ils vivent dans cette conversation.
+
 ## 2. LES SIX LIVRAISONS
 
 ### ① Lire le fichier et montrer l'aperçu — rien n'est écrit (cadrage 6 · 2.1 à 2.3, 2.6, 2.7)

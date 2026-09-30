@@ -9355,3 +9355,30 @@ Je l'écris ainsi au cadrage 6 (« la fiche élève = la fiche d'identité, en t
 30/09/2026 15:08 MEMO
 
 ---
+
+## TOUR 288 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok parfait. et donc on est d'accord que tout s'attache à l'élève, comme on avait cadré la création d'un élève, son code, son identité, etc? Je veux être sûr.
+
+---
+
+## TOUR 288 — Claude (conscience n°12)
+
+Mesuré : la clé de tout = le nom canonique (san) ; `ensureEleveUuid` crée `/eleves/<uuid>` (uuid, nom, prénom, inscriptions par année, créé le) + `/eleves_index/<nom> = uuid`, seulement à la première connexion de l'élève (3 fiches au hub pour 128 codes) ; la purge efface l'index sans les fiches (dette). Proposition : la fiche d'identité = `/eleves/<uuid>`, uuid créé à l'import, inscriptions par année, purge = effacer les fiches des élèves absents des nouvelles listes. Rien écrit au cadrage, rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Vérifié dans le code et au hub avant de répondre, parce que ta question touche le socle. Oui, tout s'attache à l'élève — et voici **comment, aujourd'hui, mesuré** :
+
+74. **La clé de tout, c'est le nom canonique** (« NOM Prénom » passé par `san` : minuscules, accents ôtés) : la liste de la classe, le code personnel (`/codes/<nom>`, 128 codes au hub), les résultats de chaque app (`…/results/<nom>`, les carnets d'erreurs, le QCM), l'aménagement dictée — et le profil du cadrage 6 tel que je l'ai écrit.
+75. **Il existe déjà un identifiant unique par élève**, que je n'avais pas vu : `ensureEleveUuid` crée un `uuid` et une fiche `/eleves/<uuid>` = { uuid, nom, prénom, nom d'origine, **inscriptions** [{ année, niveau, classe }], créé le }, avec un index `nom → uuid` (`/eleves_index`). C'est **exactement le modèle multi-années de la feuille de route**, et il est en place. Mais : **il n'est créé qu'à la première connexion de l'élève**, pas à la création de la classe (3 fiches au hub pour 128 codes) ; et **la purge de rentrée efface l'index sans effacer les fiches** — un élève qui revient l'an prochain recevrait un second uuid. C'est une dette du site (je l'inscris au registre), et c'est ce qui empêchait « tout s'attache à l'élève » d'être vrai d'une année sur l'autre.
+76. **Ce que ça change au cadrage 6 — je te propose de le corriger, et je crois que c'est ce que tu voulais** : **la fiche d'identité, c'est `/eleves/<uuid>`**, pas `/classes/<classe>/profils/<élève>`. L'import crée l'uuid de chaque élève **à l'import** (plus besoin d'attendre sa connexion) et y range sexe, naissance, dispositif, cases PAP (datées, par année), remarques et synthèse chiffrées ; l'inscription de l'année (classe, niveau) s'ajoute à `inscriptions` ; le code personnel reste où il est. La liste de classe reste des noms (les apps la lisent ainsi), et les apps continuent de ranger par nom : le lien nom → uuid, c'est l'index. Un élève qui change de classe : une inscription de plus, rien ne bouge. La purge de rentrée ne touche plus ni l'index ni les fiches : elle **efface les fiches des élèves absents des nouvelles listes** (partis du collège) après la sauvegarde complète, et garde les autres avec leur historique — c'est là que le profil longitudinal se rangera.
+77. **Ce qui reste comme au cadrage 6** : tout le reste (l'import, la fiche, le ◆, les anniversaires, le rappel, la dictée) — seule l'adresse du profil change, et elle devient la bonne.
+
+Ton mot sur 76 (poser le profil sur l'uuid existant), et je corrige le cadrage 6 puis j'écris le mandat.
+
+30/09/2026 15:15 MEMO
+
+---

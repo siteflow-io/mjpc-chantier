@@ -9690,3 +9690,33 @@ Réponds par les numéros (99 à 103, « ok » ou ta correction) ; je corrige to
 30/09/2026 20:40 MEMO
 
 ---
+
+## TOUR 301 — Paul
+
+Texte de Paul, mot pour mot :
+
+> voilà la proposition de modification par l'instance relectrice:
+
+(joint : la proposition de la relectrice, points 87 à 111 — reproduite en pièce T301)
+
+---
+
+## TOUR 301 — Claude (conscience n°12)
+
+La proposition est prise entièrement ; trois points à trancher par Paul : 104 (R111 : les noms sur la page des classes avec la clé — la conscience se range à la relectrice contre son 103), 105 (R104 : effacer les restes de l'an dernier, corbeille comptée), 106 (R105 : `adapte` reporté au cadrage 7). Rien déposé hormis ce transcript et la pièce.
+
+Réponse mot pour mot :
+
+Lu. Sa proposition (je cite ses numéros « R87 » à « R111 » pour ne pas les confondre avec les miens, qui continuent à 104) recouvre la mienne (99 à 103) sur 82, 84, 85 ; elle la précise sur 83 et la contredit sur 86 ; et elle ajoute ce que je devais corriger de toute façon (R87 à R106). Je la prends **entièrement**, avec trois choses à trancher par toi :
+
+104. **R111 contre mon 103 (question 86)** : la relectrice garde **les noms sur la page des classes, avec ta clé seulement** (comme la capture T284 que tu as validée), un nombre sans clé, et un nombre dans la case de l'heure. Elle a raison contre moi : la page des classes est ta console, tu y as ta clé, et la capture est ce que tu as validé. Je me range à R111. **Ton mot.**
+105. **R104 — effacer les restes de l'an dernier** : après la reprise, `classes_amenages` (le reste de la 5e Hergé, classe supprimée) et les sexes du QCM des six classes supprimées partent en corbeille, comptés, puis sont retirés du contrat de purge. C'est un effacement de données : **ton mot.** (Ma position : oui — c'est de l'an dernier, contraire à la clôture, et la corbeille garde une copie.)
+106. **R105 — `adapte` au contrat d'injection** : une ligne dans le mandat 1, ou un report écrit au cadrage 7 ? Ma position : **le report au cadrage 7**, parce que le mandat 1 ne touche pas aux chapitres et qu'une ligne de contrat sans l'atelier ni la tablette pour la lire ne serait qu'un mot ; la règle « ce qui n'existe pas encore ne tombe pas » est tenue par le cadrage 6 · 3.5, qui reste écrit. **Ton mot.**
+
+Tout le reste, je l'applique tel qu'elle l'écrit : le cadrage 6 réécrit là où il contredit encore (R87, R88) ; les deux phrases fausses (R89, R90) ; le protocole (R91 titre de conversation et acorn, R92 la vue élève prouvée, R93 le mobile à 390 et 360 px, R94 la doctrine du site, R95 l'adresse du QCM 7.7.0, R96 « Fiche élève » à la place réservée, R97 une seule source) ; les trous (R98 le clic droit à partir de la fiche, R99 la fenêtre de clé propre à la fiche, R100 le sexe dans la fiche, R101 la classe sans année, R102 `classeDuRegistre`, R103 la dictée : hub inchangé hors `_test_correction_dictee`, la trace des copies d'avant, la liste nominative des écritures) ; R106 pour le mandat 2 ; R107 à R110 telles quelles. Elle ne rédige pas — c'est moi qui corrige, elle relit : c'est l'ordre.
+
+Tes trois mots (104, 105, 106), et je corrige le cadrage 6 et les deux mandats, je redépose, et je te donne le prompt de troisième relecture.
+
+30/09/2026 20:50 MEMO
+
+---

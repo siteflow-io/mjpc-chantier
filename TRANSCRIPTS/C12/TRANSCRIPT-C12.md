@@ -9282,3 +9282,29 @@ Ton mot sur 65 à 68, et j'écris le mandat — relu ligne à ligne contre le ca
 30/09/2026 14:55 MEMO
 
 ---
+
+## TOUR 285 — Paul
+
+Texte de Paul, mot pour mot :
+
+> et la fiche élève?
+
+---
+
+## TOUR 285 — Claude (conscience n°12)
+
+Mesuré : aucune fiche élève dans la console ; une place réservée (TODO profil élève longitudinal `/eleves/{id}`, composante réservée « Historique et progression ») ; `eleves_index`, `mjpcProfils` comme nœuds. Réponse : la fiche (e2) est la première page de ce profil prévu, ouverte depuis la liste de la classe ; le modèle `/eleves/{id}` multi-années non ouvert maintenant, noté au cadrage 6 §5. Rien écrit, rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Elle est dans la capture (la première du tour précédent, « ◆ B… M… — 3 DYLAN BOB ») — mais ta question m'a fait regarder ce que j'aurais dû regarder avant de la dessiner : **y a-t-il déjà une fiche élève dans la console ?** Mesuré dans `index.html` :
+
+69. **Non, il n'y en a pas** — il y a **une place réservée** : dans la feuille de route du code, « TODO : PROFIL ÉLÈVE — suivi longitudinal : modèle `/eleves/{id}` avec profil persistant multi-années, tableau de bord par élève (toutes dictées, évaluations, évolution), graphiques de progression » ; et dans le contrat du chapitre, une composante réservée « Historique et progression de l'élève — cette partie arrivera avec le profil de l'élève ». Le site connaît par ailleurs `eleves_index` (« Index des élèves ») et `mjpcProfils` (« Profils MJPC ») comme nœuds à sauvegarder. Le pilotage, lui, a sa fiche d'élève en classe (les pastilles, `#ppop`).
+70. **Ce que ça change** : ma fiche (e2) n'est pas un écran de plus — **c'est la première page de ce profil élève prévu**, et elle doit en prendre la place et le nom : `/classes/<classe>/profils/<élève>` aujourd'hui (le cadrage 6), avec l'identité (nom, sexe, naissance), le dispositif et les cases PAP ; plus tard, sur la même page, l'historique (dictées, évaluations, progression) que la feuille de route annonce. Le mandat le dira : « la fiche élève est le profil longitudinal, commencé par son identité et son PAP ; les onglets suivants viendront avec la Concordance ». Rien dans la capture ne change ; son titre devient « Fiche élève » et elle s'ouvre depuis la liste de la classe (un clic sur l'élève) — c'est là que la case ◆ et « Ouvrir les fiches » du rappel mènent.
+71. **Le modèle `/eleves/{id}` de la feuille de route** (un élève hors de sa classe, pour plusieurs années) : c'est plus que ce que le cadrage 6 décide (le profil est sous la classe, purgé à la rentrée). Je propose de **ne pas l'ouvrir maintenant** — il touche la purge, les archives, la Concordance — et de le noter au cadrage 6 §5 comme ce qui suivra ; le profil sous la classe est ce qui te débloque aujourd'hui, et il se déplacera vers `/eleves/{id}` le jour où le longitudinal s'écrit, sans rien perdre.
+
+Ton mot sur 70-71 (avec 65 à 68), et j'écris le mandat.
+
+30/09/2026 15:00 MEMO
+
+---

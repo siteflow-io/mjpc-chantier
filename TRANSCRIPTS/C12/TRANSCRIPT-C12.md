@@ -8882,3 +8882,31 @@ Vu les trois captures (le panneau « Aide » de la saisie des compétences : « 
 30/09/2026 07:35 MEMO
 
 ---
+
+## TOUR 271 — Paul
+
+Texte de Paul, mot pour mot :
+
+> 12. je pense que le texte libre n'est pas la meilleure option, il faut que je puisse cliquer les adaptations possibles. Nous avons des fiches de PAP, je te montre un exemple. Il faut que toutes les adaptations me soient proposées et après je clique ou non. Et là, l'app sait exactement, il n'y a pas d'interprétation possible. 13. Oui ça peut être pas mal au tableau, mais c'est moi qui choisit d'afficher, montre moi un visuel.
+
+(joints : le mode d'emploi HTML des compétences transversales ; un PDF de fiches PAP « Équipe éducative » de l'établissement — non déposé, aucun nom consigné)
+
+---
+
+## TOUR 271 — Claude (conscience n°12)
+
+Réponse : les adaptations = les quinze lignes de la fiche PAP en cases à cocher avec identifiants fixes (pap-01 … pap-15), la remarque par ligne, la synthèse, chiffré ; une proposition de déclenchement par case (à mesurer app par app) ; les anniversaires : captures `pieces/T271-proposition-anniversaire-*.png` (la ligne 🎂 dans la case de l'heure avec « Afficher au tableau », le bandeau au tableau, prénom seul). Rien écrit, rien déposé hormis ce transcript et les captures.
+
+Réponse mot pour mot :
+
+Lu la fiche PAP de l'établissement (« Équipe éducative ») — je n'en cite aucun nom, je ne la dépose nulle part. Elle donne le vocabulaire exact, et c'est mieux que tout ce que je proposais : **les adaptations sont les lignes de cette fiche, ni plus ni moins.**
+
+15. **Le profil « adaptations » = la fiche PAP en cases à cocher**, deux blocs, quinze lignes, dans l'ordre de la fiche : *Pour toutes les disciplines* — (1) supports écrits aérés et agrandis (Arial 14) · (2) limiter la copie (synthèse photocopiée, École Directe) · (3) lecture par un tiers ou lecture immersive (MPA) · (4) décomposer les consignes, hiérarchiser · (5) méthodes de travail (organisation répétitive, accompagnement) · (6) contraintes associées (fatigue, lenteur) · (7) utilisation de l'informatique : MPA ; *Évaluations* — (8) temps majoré · (9) privilégier l'oral · (10) diminuer le nombre d'exercices · (11) limiter la quantité d'écrit (QCM, à trous, schémas) · (12) ne pas pénaliser l'orthographe et le soin · (13) ne pas pénaliser le manque de participation orale · (14) limiter le « par cœur » aux notions clés · (15) dictées aménagées. Chaque case a **un identifiant fixe** (pap-01 … pap-15) : c'est ça que le site et les apps lisent, sans interprétation. À côté de chaque case cochée, la **remarque de la fiche** si tu veux la reporter (« faire reformuler par l'élève », « selon évolution, à réévaluer ») ; et en bas la **synthèse** (points de vigilance). Tout ça chiffré, lisible avec ta clé.
+16. **Ce que chaque case déclenche** (ma proposition, à valider case par case, et à mesurer app par app avant le mandat — je ne sais pas encore ce que chaque app fait aujourd'hui) : (1) → la tablette et les fiches en grand ; (3) → le bouton « lis-moi » sur la tablette (la voix du navigateur, gratuite) ; (4) → la version `adapte` des consignes du chapitre, décomposée ; (8) → temps majoré dans les apps d'évaluation (QCM, dictée) ; (10) (11) → moins de questions, QCM plutôt qu'écrit ; (12) → la correction de dictée ne compte pas l'orthographe ; (14) → le cahier et l'entraînement se limitent aux notions clés ; (15) → la dictée universelle en mode aménagé ; (13) → « qui a participé » ne signale pas l'absence de participation ; (2) (5) (6) (7) (9) → informatifs pour toi (le ◆ les montre). Le fichier Excel donne le fléchage (« Dispositifs : oui ») ; les cases, tu les coches depuis la fiche, une fois par élève, dans la console.
+17. **Les anniversaires au tableau, c'est toi qui choisis** (captures jointes) : dans l'emploi du temps, la case de l'heure porte la ligne « 🎂 Titouan G. a 14 ans aujourd'hui · Lina B. aura 14 ans demain (mardi 15/09) » avec **« Afficher au tableau »** et ✕ ; au tableau, seulement si tu as cliqué : un bandeau doré **« 🎂 Bon anniversaire, Titouan ! »** — le prénom seul, jamais l'âge ni la date ; tu le retires d'un clic, et il tombe de lui-même au changement d'heure.
+
+Ton mot sur 15 à 17 (surtout le déclenchement de 16, case par case), et j'écris le cadrage 6.
+
+30/09/2026 07:35 MEMO
+
+---

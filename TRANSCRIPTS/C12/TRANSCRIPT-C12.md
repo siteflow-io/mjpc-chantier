@@ -9633,3 +9633,30 @@ Le mandat 1, avec les jetons, en bloc copiable ; le mandat 2 à la suite. Puis l
 30/09/2026 19:05 MEMO
 
 ---
+
+## TOUR 299 — Paul
+
+Texte de Paul, mot pour mot :
+
+> je fais quoi avec ces mandats?
+
+---
+
+## TOUR 299 — Claude (conscience n°12)
+
+Marche à suivre : (97) seconde relecture par une instance neuve avec le prompt mis à jour (`MANDATS/PROMPT-RELECTURE-2-MANDAT-ELEVE.md`, sans jetons au sas ; rapport attendu `MANDATS/RELECTURE-2-MANDAT-ELEVE.md`) ; (98) puis lancement de « L'ÉLÈVE — 1 » dans une conversation d'exécutant, livraisons ⓪→④ relancées par « continuer », audit ici avant chaque promeus ; le mandat 2 attend. Rien d'autre déposé hormis ce transcript et le prompt.
+
+Réponse mot pour mot (le prompt de seconde relecture est reproduit dans la conversation avec les jetons) :
+
+Deux gestes, dans l'ordre — et rien d'autre :
+
+97. **Maintenant : la seconde relecture.** Ouvre une conversation neuve avec une instance, colle-lui le **prompt de seconde relecture** ci-dessous (le même que la première, mis à jour : il pointe vers les deux mandats et demande, pour chacun des 61 points de la première relecture, « réglé / non réglé / réglé autrement », puis une relecture à neuf ; son rapport ira au sas en `MANDATS/RELECTURE-2-MANDAT-ELEVE.md`). Tu me transmets le rapport ici ; je corrige s'il reste quelque chose ; quand elle écrit « LANÇABLE TEL QUEL », on passe à 98. Tu n'as rien à écrire toi-même sur GitHub.
+98. **Ensuite : le lancement de « L'ÉLÈVE — 1 ».** Une autre conversation neuve avec un exécutant : tu lui colles le **mandat 1** tel qu'il est dans mon message précédent (le bloc avec les jetons). Il lit, mesure, et livre ⓪ (le mode test étanche) puis s'arrête ; tu tapes « continuer » pour ①, ②, ③, ④. À chaque arrêt, tu me transmets sa note de livraison et ses captures ici : j'audite contre le mandat et le cadrage, puis tu promeus — ou pas. **Le mandat 2 attend** : le promeus du 1, et ton mot sur le moteur du déroulé ; tu ne le lances pas maintenant.
+
+Ce que tu ne fais pas : tu ne recopies pas les jetons ailleurs que dans ces deux conversations ; tu ne donnes pas ton vrai fichier de classe à l'exécutant (il travaille sur un fichier fictif de la même forme ; ton fichier ne sert qu'à toi, dans le site, quand ⓪→③ seront promus).
+
+Le prompt de seconde relecture, avec les jetons :
+
+30/09/2026 19:15 MEMO
+
+---

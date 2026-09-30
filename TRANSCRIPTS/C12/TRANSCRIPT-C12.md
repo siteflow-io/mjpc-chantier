@@ -9081,3 +9081,32 @@ Ton mot (« ok » suffit, ou le numéro de ce que tu changes), et j'intègre 27 
 30/09/2026 08:12 MEMO
 
 ---
+
+## TOUR 278 — Paul
+
+Texte de Paul, mot pour mot :
+
+> 38. Le rappel se fait dans les trois premières semaines de septembre, c'est le moment des équipes éducatives. D'ailleurs c'est une information qui est dans le calendrier annuel, donc on peut même pointer le jour précis de l'ESS. A cadrer. 44. Ok. 45 ok
+
+---
+
+## TOUR 278 — Claude (conscience n°12)
+
+Lu : le calendrier annuel existe (`EDT_FAMILLES` : evenementsClasse, jalons, etablissement, feries, vacances, periodes). Cadré 38 : la fenêtre du 1er au 21 septembre, le jour précis quand le calendrier porte « équipe éducative / ESS / PAP », la veille, le lendemain jusqu'à l'enregistrement ; ce que le rappel ne fait pas ; le libellé à mesurer. 41 et 42 tenus pour retenus sauf avis contraire. Rien écrit au cadrage, rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Lu avant de cadrer : le site **a déjà un calendrier annuel** injecté depuis le calendrier de l'établissement (sous `/site/edt/` : les événements de classe `{ niveau, début, libellé }`, les jalons, les événements d'établissement `{ date, libellé }`, les fériés, les vacances, les périodes) — c'est le bloc EDT du 26/08. L'ESS peut donc être **pointée au jour**, sans rien ajouter à la donnée : il suffit que le calendrier la porte.
+
+46. **38 cadré — le rappel PAP, calé sur les équipes éducatives** :
+  - **La fenêtre de septembre** : du 1er au 21 septembre, la console (la page des classes) et la case de la première heure de chaque classe qui a des élèves fléchés portent la ligne « 🗂 3 élèves fléchés en 4e VH — leurs cases PAP sont à mettre à jour après l'équipe éducative » avec « Ouvrir les fiches ». Rien les autres mois.
+  - **Le jour précis, quand le calendrier le donne** : si un événement du calendrier annuel (de classe ou d'établissement) porte « équipe éducative », « ESS » ou « PAP » dans son libellé, le rappel dit la date : « ESS de la 4e VH : mardi 15/09 » ; **la veille**, « c'est demain » ; **le lendemain et jusqu'à ce que tu aies enregistré** (la date de mise à jour des cases ≥ la date de l'ESS), « les cases de la 4e VH sont-elles à jour ? ». Une ESS ajoutée au calendrier en cours d'année déclenche la même chose, hors septembre.
+  - **Ce que le rappel ne fait pas** : il ne touche pas aux cases (c'est toi, depuis la fiche signée) ; il ne va ni au tableau, ni au cahier de textes, ni aux apps ; il ne nomme pas les élèves dans la case de l'heure (un nombre), les noms sont derrière « Ouvrir les fiches ».
+  - **Ce qui reste à mesurer** : le libellé exact que le calendrier de l'établissement donne à ces réunions (pour que le site les reconnaisse sans que tu renommes rien) — à lire dans ton calendrier injecté.
+47. **44 et 45 : pris.** **41 et 42** (les identifiants en clair, la ligne avant / après un jour sans cours) : tu ne les as pas commentés — je les tiens pour retenus sauf ton mot contraire, et je le dis dans le cadrage.
+
+J'intègre 27 à 47 dans le cadrage 6 et je te le redonne. Ton mot.
+
+30/09/2026 13:50 MEMO
+
+---

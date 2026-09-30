@@ -1,0 +1,1 @@
+(Proposition de modification transmise par Paul au tour 301, écrite par l'instance relectrice après son second rapport — points 87 à 111. Texte reçu, reproduit tel quel dans la conversation de la conscience n°12 ; conservé ici comme pièce. Les numéros sont ceux de la relectrice, cités « R87 » à « R111 » par la conscience.)

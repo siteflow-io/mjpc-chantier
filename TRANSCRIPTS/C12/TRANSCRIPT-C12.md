@@ -9660,3 +9660,33 @@ Le prompt de seconde relecture, avec les jetons :
 30/09/2026 19:15 MEMO
 
 ---
+
+## TOUR 300 — Paul
+
+Texte de Paul, mot pour mot :
+
+(Paul transmet le second rapport de l'instance relectrice — `MANDATS/RELECTURE-2-MANDAT-ELEVE.md`, commit d685885, verdict « À CORRIGER AVANT LANCEMENT », points 62 à 81, questions 82 à 86, et le sort des 61 points de la première ; reproduit en pièce T300)
+
+---
+
+## TOUR 300 — Claude (conscience n°12)
+
+Vérifié : `_corbPlanRestauration` ne restaure pas un retrait d'élève (« archive partielle ») ; `edtNormaliser` ne réordonne rien ; QCM `APP_VERSION 7.6.0`. Propositions 99 à 103 pour les questions 82 à 86 (migration à l'import + purge existante ; nombre en clair par classe ; aucun ◆ sans clé ; rien au clic droit ; un nombre dans la ligne du rappel). Engagement : corriger tous les points restants puis troisième relecture. Rien d'autre déposé hormis ce transcript et la pièce.
+
+Réponse mot pour mot :
+
+Rapport lu, verdict pris : **à corriger avant lancement** — et je le confirme sur les deux ancrages faux, mesurés à l'instant : la restauration de la corbeille ne restaure pas un retrait d'élève (« archive partielle […] réinsère l'élève depuis Élèves & codes ») ; et `edtNormaliser` ne réordonne rien. Le QCM est en `7.6.0`. Le reste (les points non réglés de la première relecture — 4, 8, 9, 10, 15, 16, 18, 19, 20, 21, 23, 29, 33, 35, 36, 37, 40, 41 — et 62 à 76) sera corrigé point par point dans le mandat 1 et le cadrage 6, avec la liste nominative des écritures de `results`, le regard mobile, la doctrine du site en lecture, la vue élève prouvée, le texte de la clé propre à la fiche, `toggleAmenageDictee` rebranché, les résidus des classes supprimées, `adapte` au contrat, la classe sans année, le sexe saisi dans la fiche, `classeDuRegistre` en règle, la trace pour les copies d'avant. Puis troisième relecture.
+
+Cinq questions sont à toi (82 à 86) ; ma proposition pour chacune — tu tranches :
+
+99. **82 — la reprise des sexes et des aménagements** : **à l'import**, comme sur la capture validée, pas par un bouton : à la validation de l'import d'une classe, le site reprend ce que le QCM et la dictée savaient d'elle (sexes, élèves aménagés), le dit dans l'aperçu (« 13 sexes repris du QCM, 1 aménagement repris de la dictée ») et l'écrit avec le reste. Les restes des classes supprimées (les six classes de `qcm/eleveSexes`, la classe de `classes_amenages`) partent par **la purge de rentrée existante** (le QCM et la dictée les purgent déjà) — donc `classes_amenages` reste dans la purge de la dictée tant qu'il n'est pas vide, et sort du manifeste seulement après.
+100. **83 — un nombre en clair par classe** (combien d'élèves ont un dispositif, jamais un nom) : **oui**, c'est ce qui fait marcher le rappel des équipes éducatives sans ta clé ; ça ne décrit personne. Le texte du rappel sans clé : « 🗂 3 élèves à dispositif en 4e VH — saisis ta clé pour ouvrir leurs fiches ».
+101. **84 — le ◆ au pilotage sans ta clé : aucun ◆**, cohérent avec 80 (le fléchage nominatif ne se lit qu'avec la clé) ; à la place, une seule ligne dans la barre du pilotage : « saisis ta clé pour voir les élèves à dispositif » (le nombre de 100 le permet sans nom). Le cadrage 3.4 est corrigé en ce sens.
+102. **85 — au clic droit dans la dictée : rien** à la place de l'ancien « registre de la classe » ; l'aménagement se règle dans la console, la dictée ne fait que le lire, et le clic droit garde « aménagé / non aménagé pour cette dictée ».
+103. **86 — le rappel sur la page des classes : un nombre dans la ligne, jamais un nom** ; les noms sont derrière « Ouvrir les fiches », avec la clé. La capture T284 date d'avant ta décision de tout chiffrer ; ce qui en reste tel quel : la marge « lu dans le calendrier annuel : … », « rien à signaler » pour une classe sans fléché, et dans la dictée « — ou élève par élève, par le clic droit ». Je le réécris ainsi dans le mandat et je refais la capture.
+
+Réponds par les numéros (99 à 103, « ok » ou ta correction) ; je corrige tout, je redépose, puis la troisième relecture.
+
+30/09/2026 20:40 MEMO
+
+---

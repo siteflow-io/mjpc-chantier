@@ -9011,3 +9011,45 @@ Relis-le ; dis ce qui manque ou ce qui est faux. Ensuite : la maquette de l'impo
 30/09/2026 08:00 MEMO
 
 ---
+
+## TOUR 276 — Paul
+
+Texte de Paul, mot pour mot :
+
+> relecture des trous de ce cadrage, vas y.
+
+---
+
+## TOUR 276 — Claude (conscience n°12)
+
+Relecture du cadrage 6 contre les cadrages 1 à 4 et le code (corbeille `retrait-eleve` : nom + code ; purge de rentrée ; `secuExigeCle` seulement pour les codes ; la sauvegarde complète du hub) : quatre télescopages avec solution (chiffrement contre apps ; export contre sauvegarde ; pastille contre copie de classe ; la clé au pilotage), huit trous avec proposition (homonymes, changement de classe, l'import n'enlève personne, jour sans cours, 29 février, T-5 affiché non écrit, purge de rentrée, date de mise à jour de la fiche, l'atelier et `adapte`), quatre points à trancher. Rien écrit au cadrage, rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Relecture du cadrage 6 contre les cadrages 1 à 4 et contre le code (`index.html` : la corbeille, la purge de rentrée, la clé, la sauvegarde complète du hub). Quatre télescopages, huit trous, et ce que tu dois trancher.
+
+**Télescopages (chacun avec sa solution) :**
+27. **Le chiffrement contre les apps (1.3 contre 3.3)** : j'ai écrit « `pap` chiffré » et, trois lignes plus loin, « la tablette lit pap-01, la dictée lit pap-12 » — impossible sans la clé, que ni la tablette ni les apps n'ont. Solution : **les identifiants cochés en clair** (`pap: ["pap-01", "pap-04"]`, c'est ce que les apps lisent), **les remarques et la synthèse chiffrées** (c'est le texte qui décrit l'élève). Reste à mesurer : qui peut lire la base (les règles Firebase) — je ne les ai pas lues.
+28. **« Rien ne sort dans un export » (1.3) contre la sauvegarde complète du hub** (« classes, élèves, codes, chapitres… », rangée sur ta clé USB) : sans les profils, une restauration les perdrait. Solution : *export* = ce qui va aux autres (récits, archives de classe, feuilles) : jamais le profil ; *ta sauvegarde complète* : tout, y compris les profils, tels qu'ils sont dans la base (les parties chiffrées restent chiffrées) — et l'import de sauvegarde les remet.
+29. **La pastille d'anniversaire contre la copie de classe** (cadrage 1 : la classe garde une copie figée de ce qu'elle a vu) : la pastille est dans l'état poussé, donc elle entrerait dans la copie avec le prénom. Solution : la pastille est un état **à côté** de l'état de la diapo (comme le gel), jamais dans la copie de classe ni dans le récit.
+30. **Le détail au pilotage « avec la clé » (3.4)** : la clé ne s'exige aujourd'hui que pour les codes (l'encart en haut de la console) ; pendant l'heure, si elle n'est pas saisie, le détail des cases est illisible. Solution : le ◆ et les identifiants (en clair, 27) se lisent toujours au pilotage ; les remarques et la synthèse seulement si la clé est là — et le pilotage le dit d'une ligne (« saisis ta clé pour lire les remarques »), sans rien bloquer.
+
+**Trous (chacun avec ma proposition) :**
+31. **Deux élèves au même nom** : le profil est rangé sous le nom (le même slug que les codes) ; deux « MARTIN Léa » dans une classe s'écraseraient. Proposition : l'import refuse un doublon exact et le dit (« deux élèves portent ce nom : renomme l'un des deux dans le fichier, ex. MARTIN Léa 2 ») — la date de naissance permet de les distinguer à l'aperçu.
+32. **Un élève qui change de classe** : le retrait d'un élève passe par la corbeille (mesuré : il emporte son nom et son code) ; il doit **emporter son profil** ; l'ajout dans l'autre classe le reprend de la corbeille. À écrire au §1.
+33. **L'import n'enlève personne** : un élève présent dans le site mais absent du fichier reste (le retrait est un geste à part, avec sa corbeille) ; l'aperçu le signale (« 2 élèves du site ne sont pas dans le fichier »). À écrire au §2.
+34. **L'anniversaire un jour sans cours** (week-end, vacances, ou un jour où tu n'as pas cette classe) : « la veille » ne suffit pas. Proposition : la ligne apparaît sur **la dernière heure de cette classe avant** l'anniversaire (« Titouan aura 14 ans samedi ») et sur **la première après** (« c'était l'anniversaire de Titouan dimanche ») ; au tableau, la pastille reste « Bon anniversaire Titouan » — invariable.
+35. **Le 29 février** : l'anniversaire tombe le 28 février les années sans 29. (Trois lignes de code, mais si on ne l'écrit pas, il n'existe pas.)
+36. **La ligne au T-5 s'affiche, elle ne s'écrit pas** dans le cahier de textes (le cahier est le récit de l'heure, lu par la classe) — à préciser au 4.1.
+37. **La purge de rentrée** : elle emporte les profils avec les classes (les PAP ne survivent pas à l'année ; ta sauvegarde de l'année, sur ta clé, les garde chiffrés). À écrire au §1.
+38. **La fiche PAP évolue** (« selon évolution, à réévaluer », « possibilité d'évolution dans l'année ») : le profil garde **la date de la dernière mise à jour** des cases, affichée dans la fiche ; pas de rappel automatique (sauf si tu le veux).
+39. **L'atelier de préparation et la version `adapte` (3.5)** : le cadrage 4 ne dit pas comment Paul écrit ou corrige la version adaptée d'un bloc dans l'atelier (p2 écrit dans la diapo, pas dans sa version adaptée). Ça s'écrira avec le cadrage 7 ; en attendant, le contrat d'injection porte `adapte`, l'atelier ne le montre pas encore — dit, pas oublié.
+
+**À trancher par toi :**
+40. 27 (les identifiants en clair, le texte chiffré) ; 34 (la ligne avant / après un jour sans cours) ; 38 (un rappel de réévaluation, oui ou non) ; et si le ◆ doit apparaître aussi dans les apps devant l'élève lui-même (par exemple le QCM sur sa tablette) ou seulement chez toi — je propose : **seulement chez toi**, l'app applique l'aménagement sans le nommer.
+
+Ton mot sur 40, et j'intègre 27 à 39 dans le cadrage 6.
+
+30/09/2026 08:05 MEMO
+
+---

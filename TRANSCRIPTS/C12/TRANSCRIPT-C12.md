@@ -9407,3 +9407,27 @@ Le cadrage 6 est complet et aligné sur juillet. Ton mot, et j'écris le mandat 
 30/09/2026 15:30 MEMO
 
 ---
+
+## TOUR 290 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok vas y. attention, ton mandat sera relu, donc dès maintenant sois sûr de ce que tu y mets (pas de dérives de conscience, il y a des antécédents, à consulter).
+
+---
+
+## TOUR 290 — Claude (conscience n°12)
+
+Relu les antécédents (dispositif : règles gravées, point 16, adresse complète, captures regardées, principe cardinal ; addendum 25/08 : la vision du commandeur, l'incident du LOT D). Mesuré chaque ancrage cité (coffre `mjpcChiffrer` / `mjpcDechiffrer` AES-GCM, `/codes` {chiffre, empreinte, sel}, `_importEleves` / `parseEleves`, modale « Nouvelle classe », `retrait-eleve`, `MJPC_PURGE`, `ensureEleveUuid`, `_exportHub`, mode test `m8TestOn`, `AT_DR_SUIVI`, calendrier, `evaluation-qcm`, `correction_dictee`). Mandat « L'ÉLÈVE » écrit (`C12/MANDAT-ELEVE.md`, 3 500 mots), déposé `MANDATS/MANDAT-ELEVE.md` et pièce T290, livré en bloc dans la conversation. Rien d'autre déposé hormis ce transcript.
+
+Réponse mot pour mot (le mandat lui-même est la pièce T290-MANDAT-ELEVE-v1-soumis.md, reproduit dans la conversation) :
+
+Avant d'écrire, j'ai relu les antécédents : le dispositif (les règles gravées, le point 16 sur le mode test, l'adresse de test complète — « ça doit faire 20 fois que je le répète » —, « les captures se regardent », « une source non lue n'est pas une source », le principe cardinal) et l'addendum du 25/08 sur la vision du commandeur (« on rallonge la liste des dettes par incompréhension de ce que je veux » ; l'incident du zoom du LOT D : une finalité devinée, puis gravée). Et j'ai mesuré dans le code chaque chose que le mandat nomme (les chemins, les fonctions, le coffre, la purge, la sauvegarde, le calendrier, la dictée) — rien n'y est de souvenir.
+
+Le mandat « L'ÉLÈVE » est ci-dessous en bloc copiable, déposé au sas (`MANDATS/MANDAT-ELEVE.md`, pièce T290), ~3 500 mots : les mots de Paul en tête ; ce que l'exécutant lit avant d'écrire (le cadrage 6, le protocole, l'existant mesuré) ; les règles (livraisons courtes, bancs par le geste, mode test avec noms fictifs, jamais un nom réel au sas, captures regardées, tooltips, adresse complète, principe cardinal, rien de payant, relevé de collisions, ce qu'il ne fait pas, « s'il ne sait pas, il demande ») ; les six livraisons avec, pour chacune, le cadrage cité, le geste, la donnée exacte, les gardes, les bancs, les captures ; la fin de livraison ; ce qui n'est pas dans le mandat. Une chose y est **à mesurer par l'exécutant avant la livraison ②**, parce que je ne l'ai pas lue : les règles de lecture de la base Firebase.
+
+Relis-le ligne à ligne contre le cadrage 6 ; dis-moi les trous ou les dérives, je corrige avant que tu le lances.
+
+30/09/2026 15:35 MEMO
+
+---

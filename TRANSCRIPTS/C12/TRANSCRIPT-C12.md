@@ -9225,3 +9225,31 @@ Ton mot sur 59 (a ou b), et j'écris 58 à 61 au cadrage 6 ; puis (e1) l'import,
 30/09/2026 14:40 MEMO
 
 ---
+
+## TOUR 283 — Paul
+
+Texte de Paul, mot pour mot :
+
+> 59 a mais en revanche je dois pouvoir aussi le faire élève par élève, pas seulement en bloc. pour le reste ça me semble correct.
+
+---
+
+## TOUR 283 — Claude (conscience n°12)
+
+Cadrage 6 complété (3.4 quinquies) et redéposé (bit à bit). Capture de proposition (e1) : l'écran d'import avec l'aperçu (`pieces/T283-proposition-e1-import-*.png`, noms masqués). Rien codé, rien déposé hormis ce transcript, le cadrage et les captures.
+
+Réponse mot pour mot :
+
+Pris : **59 a, élève par élève et en bloc** — les deux gestes écrivent le même override par dictée (le clic droit existant sur l'élève, et une ligne « 3 élèves pap-15 : aménagés pour cette dictée · tout passer en non aménagé », et l'inverse). Écrit au cadrage 6 avec 58, 60, 61 (§3.4 quinquies « la correction de dictée et pap-15 » : le registre de classe = pap-15 du profil, migration une fois, l'app ne l'écrit plus ; l'override par dictée reste ; la trace `amenagee` + mode + base dans le résultat ; pap-12 sans effet sur le barème) ; redéposé au sas, vérifié bit à bit.
+
+**(e1) — l'écran d'import** (capture jointe ; un écran de console, dessiné à part, noms masqués) :
+
+62. **Une zone** : « Dépose ici le fichier .xlsx de la classe — ou clique pour le choisir · ou colle le tableau (Ctrl + V) » ; rien n'est envoyé ailleurs, le fichier est lu dans le navigateur.
+63. **L'aperçu — rien n'est encore écrit** : la classe lue dans le fichier (« 3 DYLAN BOB » → nouvelle classe, ou « déjà présente, à compléter ») ; 25 élèves · 13 F / 12 M · 1 dispositif (« à préciser dans la fiche : les cases PAP ») · colonnes ignorées (Age, Régime) · aucun doublon (ou le doublon nommé, refusé) · déjà présents / nouveaux ; le tableau des lignes (nom, naissance, sexe, dispositif ◆, état) ; la phrase qui dit ce qui sera écrit et ce qui ne le sera pas (l'import n'enlève personne).
+64. **Deux boutons** : « Valider l'import — créer « 3 DYLAN BOB » avec ses 25 élèves » / « Annuler ». À la validation : la liste + les profils, puis la migration une fois de `qcm/eleveSexes` et de `classes_amenages` vers les profils (les deux apps lisent ensuite le profil).
+
+Ton mot sur 62-64, et j'écris **le mandat (e1)** : la vision (« ce que ça change pour la classe »), les livraisons courtes (① lire le fichier et l'aperçu · ② écrire liste + profils · ③ les migrations et la lecture par le QCM et la correction de dictée · ④ les tests geste par geste, avec ton vrai fichier, sans noms dans le sas), les attendus hub, les tooltips — livré en bloc copiable dans la conversation.
+
+30/09/2026 14:45 MEMO
+
+---

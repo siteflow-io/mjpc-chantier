@@ -9333,3 +9333,25 @@ Rien à attendre, donc. Ton mot, et j'écris le mandat.
 30/09/2026 15:05 MEMO
 
 ---
+
+## TOUR 287 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok Donc ça veut dire que la fiche ici est en fait une fiche d'identité. et sous cette fiche,viennent se ranger toutes les informations du profil longitudinal, c'est ça?
+
+---
+
+## TOUR 287 — Claude (conscience n°12)
+
+Oui ; écrit au cadrage 6 (3.1 bis) et redéposé (bit à bit). Rien d'autre déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Oui, exactement. La fiche livrée maintenant est **la fiche d'identité** de l'élève : qui il est (nom, sexe, naissance), son dispositif et ses cases PAP — ce que le site doit savoir de lui pour bien le traiter partout. Et **sous cette fiche, au même endroit, viendront se ranger toutes les informations du profil longitudinal** : ses dictées et leurs résultats, ses évaluations, ses carnets d'erreurs, sa progression notion par notion (la Concordance), d'une année sur l'autre. Une seule page par élève, l'identité en tête, l'historique dessous — jamais deux fiches.
+
+Je l'écris ainsi au cadrage 6 (« la fiche élève = la fiche d'identité, en tête du profil longitudinal ») et dans le mandat. Ton mot, et j'écris le mandat.
+
+30/09/2026 15:08 MEMO
+
+---

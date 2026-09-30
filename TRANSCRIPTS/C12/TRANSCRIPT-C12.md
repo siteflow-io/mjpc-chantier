@@ -8819,3 +8819,38 @@ Casquette de conscience. J'ai lu le code avant de répondre — voici ce qui exi
 30/09/2026 07:05 MEMO
 
 ---
+
+## TOUR 269 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ça se présente comme ça
+
+(un fichier Excel de classe joint — l'export du logiciel de vie scolaire ; non déposé au sas, aucun nom consigné)
+
+---
+
+## TOUR 269 — Claude (conscience n°12)
+
+Lu la structure du fichier (feuille « Les élèves » ; six lignes d'en-tête du logiciel ; ligne 7 : Nom · Date de naissance · Sexe · Age · Régime · Classe · Dispositifs ; 25 élèves ; « Nom » = « NOM Prénom » en une cellule ; Sexe M/F ; Dispositifs = « oui » ou vide). Réponse : ce que ça règle dans le cadrage 6 (import du .xlsx lu dans le navigateur, aperçu, profil sexe / naissance / dispositif / précisions chiffrées, fléchage jamais au tableau) ; Q3 reste. Rien écrit, rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Lu (le fichier reste chez moi, je ne le dépose nulle part et je ne cite aucun nom). C'est un export du logiciel de vie scolaire, et il répond à Q1 et Q2 :
+
+1. **Sa forme** : une feuille « Les élèves » ; six lignes d'en-tête du logiciel (« Edité le … », « Année scolaire », « Classe : 3 DYLAN BOB », « Prof principal », « Effectif : 25 élèves ») ; puis la ligne des colonnes, en ligne 7 : **Nom · Date de naissance · Sexe · Age · Régime · Classe · Dispositifs** ; puis 25 élèves.
+2. **« Nom »** contient déjà « NOM Prénom » dans une seule cellule — **exactement le format du site**. Rien à découper : l'import prend la colonne telle quelle.
+3. **« Sexe »** = M / F (13 F, 12 M) — ce que le QCM attend (m / f).
+4. **« Dispositifs »** = **« oui » ou vide** (1 sur 25 ici). Donc ton export **flèche** l'élève adapté mais **ne dit pas quoi** (PAP, PPS, dys, tiers-temps…). Le profil aura deux choses : le fléchage `dispositif : oui`, pris du fichier ; et des **précisions** (le type, l'aménagement), que tu écriras toi-même dans la console, élève par élève — ou que l'import prendra d'un autre fichier si tu en as un.
+5. **Le reste** — Date de naissance (JJ/MM/AAAA), Age, Régime, Classe : la date de naissance va au profil (utile plus tard : l'âge à la date, jamais affiché aux élèves) ; Age et Régime sont ignorés ; « Classe » sert à une chose : **le nom de la classe est dans le fichier** (« Classe : 3 DYLAN BOB »), l'import peut te le proposer.
+
+**Ce que ça règle dans le cadrage 6 (les points 4 à 7 de ma réponse précédente tiennent, précisés) :**
+6. **L'import** : tu **déposes le fichier .xlsx tel quel** (lu dans le navigateur par une bibliothèque libre, rien d'envoyé ailleurs, rien de payant) — ou tu colles le tableau depuis Excel, ça revient au même. Le site saute les lignes d'en-tête du logiciel, reconnaît la ligne « Nom · Date de naissance · Sexe · … », et te montre **l'aperçu** : 25 élèves, 13 F / 12 M, 1 dispositif, la classe « 3 DYLAN BOB » (à créer ou à compléter), les colonnes ignorées (Age, Régime). Tu valides. Un élève déjà présent est complété, jamais doublé.
+7. **Le profil** : `sexe`, `naissance`, `dispositif` (oui / non), `precisions` (texte, chiffré comme les codes) — et c'est tout ce que le site sait d'un élève en plus de son nom.
+8. **Le fléchage** : le ◆ dans la fiche élève du pilotage, dans la copie de classe, dans « qui a participé » ; jamais au tableau, jamais dans un export. Le chapitre et les apps lisent `dispositif` pour servir la version adaptée quand elle existe.
+
+Reste **Q3** (les tablettes : combien d'adaptés par classe, tablettes de l'établissement avec un navigateur ?) pour ouvrir le cadrage 7. Sur 6 à 8 : ton mot, et j'écris le cadrage 6 (« L'ÉLÈVE ») au sas, puis la maquette de l'import et du profil en captures.
+
+30/09/2026 07:15 MEMO
+
+---

@@ -9382,3 +9382,28 @@ Ton mot sur 76 (poser le profil sur l'uuid existant), et je corrige le cadrage 6
 30/09/2026 15:15 MEMO
 
 ---
+
+## TOUR 289 — Paul
+
+Texte de Paul, mot pour mot :
+
+> alors attention: un élève ne vit qu'un an. on ne fait jamais le lien entre une année A et une B ou C, parce que chaque année est une cloture. Cependant, cette option pourra être mise en place plus tard, mais pas aujourd'hui. Je ne veux pas que des élèves aient un profil plus précis que d'autres, juste parce que je les ai eus plusieurs années de suite et pas d'autres. C'est un choix d'égalité, pas pédagogique. Et toute l'identité élève construite aujourd'hui est le fruit d'un très long travail mené en juillet, donc normalement tout est cadré et bien codé en ce sens.
+
+---
+
+## TOUR 289 — Claude (conscience n°12)
+
+Proposition 76 retirée. Relu le socle de juillet (dispositif, doctrine, code : `sanMJPC`, M-SÉCU, classe avec année, purge, identité stable). Cadrage 6 : 1.7 (un élève ne vit qu'un an, choix d'égalité), 3.1 bis (dans l'année), §5 (lien entre années fermé) — déposé bit à bit. Registre n°12 · 76 : dette, la purge n'emporte pas `/eleves`. Rien d'autre déposé hormis ce transcript, le cadrage et le registre.
+
+Réponse mot pour mot :
+
+Compris, et je retire ma proposition 76 : **un élève ne vit qu'un an**, chaque année est une clôture, jamais de lien entre A et B — un choix d'égalité. Le cadrage 6 revient donc à ce qu'il disait : le profil vit sous la classe de l'année et meurt avec elle à la purge. J'ai relu le socle de juillet avant de l'écrire (le dispositif, la doctrine, le code) : la clé `sanMJPC` dans onze apps sur treize, les codes personnels chiffrés (le coffre M-SÉCU), la classe qui porte son année scolaire, la purge de rentrée « nouvelles classes → nouveaux codes », la règle « tout objet référençable porte une identité stable » — le cadrage 6 s'y appuie et ne rouvre rien.
+
+78. **Écrit au cadrage 6** (1.7, déposé, bit à bit) : la règle et son motif dans tes mots ; le profil sous la classe (1.2) ; la fiche d'identité en tête du longitudinal **dans l'année seulement** (3.1 bis) ; le lien entre années fermé par choix, rouvrable plus tard sur ta décision (§5).
+79. **Une dette du site, mesurée et inscrite (n°12 · 76)** : l'identifiant technique de connexion crée une fiche `/eleves/<uuid>` avec ses inscriptions par année, et **la purge de rentrée efface l'index mais pas ces fiches** — trois survivent au hub aujourd'hui, contre la clôture. C'est ce que je prenais pour un modèle voulu ; c'est un reste. Le mandat le règle (la purge emporte `/eleves`, après la sauvegarde complète). Je n'y touche pas seul.
+
+Le cadrage 6 est complet et aligné sur juillet. Ton mot, et j'écris le mandat « l'élève » (six livraisons, bloc copiable, relu ligne à ligne contre le cadrage).
+
+30/09/2026 15:30 MEMO
+
+---

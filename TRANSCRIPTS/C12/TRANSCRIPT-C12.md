@@ -9308,3 +9308,28 @@ Ton mot sur 70-71 (avec 65 à 68), et j'écris le mandat.
 30/09/2026 15:00 MEMO
 
 ---
+
+## TOUR 286 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok. donc concrètement, la fiche élève ne pourra pas être ouverte tant qu'on aura pas codé le profil longitudinal?
+
+---
+
+## TOUR 286 — Claude (conscience n°12)
+
+Réponse : non — la fiche s'ouvre dès la livraison ③ ; le longitudinal est une suite sur la même page, pas une condition. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Non, c'est l'inverse — je me suis mal fait comprendre :
+
+72. **La fiche élève s'ouvre dès la livraison ③ du mandat**, dans la console, depuis la liste de la classe (un clic sur l'élève), avec ce qu'elle a aujourd'hui : l'identité (nom, sexe, naissance), le dispositif, les quinze cases PAP, les remarques, la synthèse, la date de mise à jour. C'est ce que la capture montre, et c'est ce qui te sert dès la rentrée.
+73. **Le profil longitudinal, c'est ce qui viendra s'ajouter sur cette même page plus tard** (l'historique des dictées, des évaluations, la progression) — un autre chantier, avec la Concordance. Il n'est pas une condition : il est une suite. Ce que je voulais dire au point 70, c'est seulement que la fiche prend dès maintenant **la place** que le code lui réservait, pour qu'on ne construise pas deux fiches.
+
+Rien à attendre, donc. Ton mot, et j'écris le mandat.
+
+30/09/2026 15:05 MEMO
+
+---

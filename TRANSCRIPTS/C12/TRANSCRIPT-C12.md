@@ -9253,3 +9253,32 @@ Ton mot sur 62-64, et j'écris **le mandat (e1)** : la vision (« ce que ça cha
 30/09/2026 14:45 MEMO
 
 ---
+
+## TOUR 284 — Paul
+
+Texte de Paul, mot pour mot :
+
+> est ce qu'on ne peut pas faire l'intégralité des captures et un mandat final?
+
+---
+
+## TOUR 284 — Claude (conscience n°12)
+
+Oui : un seul mandat en livraisons courtes ; les captures restantes faites (`pieces/T284-proposition-e2-fiche-*`, `e3-pilotage-*`, `e4-rappel-dictee-*`, noms masqués) : la fiche élève (quinze cases avec identifiants, remarques, synthèse, date, cadenas), le ◆ au pilotage, le rappel ESS, la ligne pap-15 dans la correction de dictée. Plan du mandat en six livraisons. Rien codé, rien déposé hormis ce transcript et les captures.
+
+Réponse mot pour mot :
+
+Oui — et c'est même plus propre : **un seul mandat « l'élève », en livraisons courtes que tu relances par « continuer »**, ce que le protocole exige de toute façon ; et toutes les captures validées d'abord. Voici ce qui manquait (captures jointes, noms masqués) ; avec (e1) au tour précédent et les anniversaires (T271, T273-274), le jeu est complet :
+
+65. **(e2) La fiche élève** dans la console : « ◆ B… M… — 3 DYLAN BOB », né le…, M, **dispositif : oui (lu dans le fichier)**, « cases cochées le 15/09/2026 », le cadenas (« les remarques et la synthèse sont chiffrées avec ta clé — saisie ✔ ») ; les deux blocs de la fiche PAP, **les quinze lignes avec leur identifiant** (pap-01 … pap-15), une case et une remarque par ligne ; la synthèse ; « Enregistrer la fiche » ; et la ligne qui dit **ce que les apps liront** (« pap-01 · 03 · 04 · 08 … — jamais les remarques »).
+66. **(e3) Le ◆ au pilotage** : sur la pastille de l'élève dans « qui a participé » ; dans sa fiche, un encart « ◆ dispositif — cases cochées le 15/09 : pap-01 supports agrandis · pap-03 … » et « remarques et synthèse : saisis ta clé pour les lire ». Rien au tableau.
+67. **(e4) Le rappel des équipes éducatives** sur la page des classes : « 🗂 ESS de la 4e : mardi 15/09 — c'est demain. 4 élèves fléchés : leurs cases PAP sont à mettre à jour… · Ouvrir les fiches », avec, en marge, ce que le site a lu dans le calendrier (« 17h Equipes éducatives 4e ») ; après l'ESS : « les cases de B… M… sont-elles à jour ? (cochées le 04/09, avant l'ESS) » ; une classe sans fléché : « rien à signaler ».
+68. **La correction de dictée** : dans l'écran d'une dictée, la ligne « PAP · 3 élèves pap-15 (dictées aménagées) : aménagés pour cette dictée, d'après leur fiche · Tout passer en non aménagé pour cette dictée — ou élève par élève, par le clic droit » ; les cartes des élèves disent « aménagé » / « non aménagé (cette dictée) ».
+
+**Le mandat final « l'élève »** couvrira, en six livraisons : ① lire le fichier et l'aperçu (e1) · ② écrire liste + profils, les migrations (`qcm/eleveSexes`, `classes_amenages`) et la lecture par le QCM · ③ la fiche élève (e2) · ④ le ◆ au pilotage (e3) · ⑤ les anniversaires (trois portes, la pastille) et le rappel ESS (e4) · ⑥ la correction de dictée (le registre lu dans le profil, l'override élève par élève et en bloc, la trace `amenagee` dans le résultat) — chacune avec ses bancs par le geste (ton vrai fichier, sans noms au sas), ses attendus hub, ses tooltips, ses captures avant/après, et un arrêt. Ce qui n'y est pas : le déclenchement dans les autres apps (e5, après lecture) et la tablette (cadrage 7).
+
+Ton mot sur 65 à 68, et j'écris le mandat — relu ligne à ligne contre le cadrage 6, livré en bloc copiable.
+
+30/09/2026 14:55 MEMO
+
+---

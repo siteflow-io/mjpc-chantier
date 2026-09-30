@@ -8752,3 +8752,31 @@ Ton mot sur 1 à 3 (les plafonds de 3 sont à ta main), et je code (p8) — capt
 29/09/2026 21:25 MEMO
 
 ---
+
+## TOUR 267 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Tu as visualisé ta capture?
+
+---
+
+## TOUR 267 — Claude (conscience n°12)
+
+Oui, et deux défauts laissés passer (libellé cassé sur deux lignes, traits à travers les mots) : faute reconnue. Capture refaite avec libellés à largeur réservée, traits arrêtés au bord des boîtes, et la mesure (0 chevauchement, 0 hors zone, police 25 px) ; `pieces/T267-proposition-p8-schema-lisible-corrigee-*.png`. Rien codé, rien déposé hormis ce transcript et les captures.
+
+Réponse mot pour mot :
+
+Oui — et j'ai laissé passer deux défauts qu'elle montrait : **« Figures d'opposition » cassé sur deux lignes** (« Figures / d'opposition ») et **les traits qui traversaient les mots** (« comparaison · métaphore », « antithèse · oxymore »). Une capture « contrôlée » qui contredit ce que j'écris juste au-dessus (« lisible, garanti par construction ») n'est pas contrôlée : c'est une faute, et elle confirme la règle que je proposais au point 3 — la lisibilité se **mesure**, elle ne se déclare pas.
+
+La capture refaite (jointe), avec ce que ça impose au dessin :
+
+1. **Un libellé a sa largeur** : jamais de retour à la ligne au milieu d'un nom ; s'il ne tient pas, c'est « trop dense », pas un mot coupé.
+2. **Les traits s'arrêtent au bord des libellés**, mesurés sur les boîtes réelles du texte (et au bord de l'ellipse), jamais à travers un mot.
+3. **La mesure** est faite dans la capture même : 0 chevauchement entre libellés, 0 libellé hors de la diapo, police des branches 25 px à cette échelle (0,8 em de la diapo — la même police que le texte). C'est exactement ce que la carte « Sur la forme » dira quand ce n'est pas le cas.
+
+Le reste de la proposition (1 : un schéma = sa diapo ; 3 : les plafonds) ne change pas. Ton mot, et je code (p8) — avec, cette fois, les cinq formes montrées une par une et mesurées avant le banc.
+
+30/09/2026 06:45 MEMO
+
+---

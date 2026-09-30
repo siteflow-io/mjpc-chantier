@@ -9530,3 +9530,27 @@ Je réécris maintenant **deux mandats** : **« L'ÉLÈVE — 1 »** (①②③�
 30/09/2026 17:05 MEMO
 
 ---
+
+## TOUR 295 — Paul
+
+Texte de Paul, mot pour mot :
+
+> c'est faux, tu n'as pas lu le calendrier. pure invention: aucun nom d'élève dedans. va vérifier.
+
+---
+
+## TOUR 295 — Claude (conscience n°12)
+
+Relu au hub mot pour mot : « 16h Equipe éduc. N.Laury 17h Equipes éducatives 5e » (14/09) — la conscience avait pris « N.Laury » pour un nom d'élève : invention (mécanisme ③ de la n°9 : affirmer sans mesurer — une ligne réelle, un sens ajouté). Retiré du cadrage 6 (3.4 quater, déposé) et des points 85 / 88 ; le rappel se réduit à la fenêtre de septembre et à la date par niveau. Rien d'autre déposé hormis ce transcript et le cadrage.
+
+Réponse mot pour mot :
+
+Vérifié à l'instant, au hub, mot pour mot. Le calendrier porte, le 14/09 : « 16h Equipe éduc. N.Laury 17h Equipes éducatives 5e ». Ce « N.Laury », **je l'ai pris pour un nom d'élève : c'est une invention de ma part** — rien dans le calendrier ne dit qui c'est, et il y a toutes les chances que ce soit un adulte (une collègue, une AESH, une référente), une initiale et un nom dans un agenda d'établissement. Tu as raison : aucun nom d'élève dans le calendrier. Je retire donc **tout ce qui reposait dessus** : l'« équipe éducative individuelle » du cadrage 6 (3.4 quater, troisième tiret), le point 32 de la relecture et mes points 85 et 88 — il n'y a que des équipes éducatives **par niveau**, et c'est ça que le site lit.
+
+89. **Le rappel se réduit à ce qui est mesuré** : la fenêtre du 1er au 21 septembre pour toute classe qui a des fléchés, et la date lue dans le calendrier quand un libellé porte « équipe(s) éduc… » suivi d'un niveau (3e, 4e, 5e, 6e) — rien d'autre, jamais un nom.
+
+Je corrige le cadrage 6 et le mandat en conséquence. C'est le mécanisme ③ de la n°9 (« j'ai affirmé sans mesurer ») : je l'ai commis en lisant une ligne réelle et en y ajoutant ce qu'elle ne disait pas. Je le note au transcript comme tel.
+
+30/09/2026 17:10 MEMO
+
+---

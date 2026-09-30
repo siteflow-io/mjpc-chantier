@@ -9583,3 +9583,29 @@ Ton mot sur 93, et sur l'arrêt.
 30/09/2026 17:25 MEMO
 
 ---
+
+## TOUR 297 — Paul
+
+Texte de Paul, mot pour mot :
+
+> attention, il ne faut pas dériver sur  un chantier du calendrier. en réalité, c'est un excel qui bouge tout le temps. donc c'est normal si des choses ont bougé. vérifie la cohérence des changements, uniquement, puis reprenons notre chantier. de toute façon, les alertes suivront les dates, quel que soit l'import. cependant, vérifie que le code est bon pour la lecture de l'injection du calendrier. enfin, sur notre question initiale, on prend le jour des ESS avec la mention du niveau pour le jour de toutes les ESS du niveau. c'est comme ça qu'on fait. S'il y a plusieurs mentions d'ess dans le calendrier, on prend toujours la première date: le rappel s'affichera, même si une autre ess arrive après, mais au moins l'alerte joue, alors que dans le cas inverse elle ne jouera pas, ou en tout cas en retard. je préfère autant anticiper.
+
+---
+
+## TOUR 297 — Claude (conscience n°12)
+
+Cohérence des écarts : forme d'une évolution du fichier, non départageable ; registre n°12 · 81 réécrit en constat. Code de lecture vérifié (`edtAnneeEvenements`, `edtAlerteInjection` 30 jours). Règle ESS écrite au cadrage 6 (3.4 quater, déposé bit à bit). Rien d'autre déposé hormis ce transcript, le cadrage et le registre.
+
+Réponse mot pour mot :
+
+Compris : pas de chantier du calendrier. Fait, dans l'ordre :
+
+94. **La cohérence des changements** : les écarts entre le hub (04/09) et ton fichier (30/09) ont tous la forme d'une évolution du fichier — des réunions déplacées (l'équipe éducative du 14 au 21, la célébration du 10 au 17), des précisions ajoutées (« 4e V.Hugo »), des événements ajoutés fin septembre ; aucun doublon, aucune date impossible. Je ne peux pas départager une reformulation d'une mise à jour sans le fichier du 04/09, et je ne l'affirme donc plus : la dette n°12 · 81 est **réécrite en constat** (« le fichier bouge ; rien à régler ; réinjecter quand tu veux »). Mon mot « infidèle » est retiré.
+95. **Le code de lecture est bon** : `edtAnneeEvenements` lit exactement les champs présents au hub (`libelle`, `date` / `debut` / `fin` pour l'établissement et les jalons ; `libelle`, `debut`, `fin`, `niveau` pour les événements de classe ; les vacances par `debut`/`fin`, les fériés par `date`) ; et l'alerte « injection de plus de 30 jours » existe déjà (`edtAlerteInjection`, avec « plus tard » à 30 jours) : le site prévoit le fichier qui bouge.
+96. **La règle des ESS, écrite au cadrage 6 (3.4 quater, déposé)** dans tes mots : le jour des ESS avec la mention du niveau vaut pour toutes les classes de ce niveau ; s'il y a plusieurs dates pour un niveau, **la première** est retenue — le rappel joue tôt plutôt qu'en retard.
+
+Je reprends le chantier : les deux mandats (« L'ÉLÈVE — 1 » : ①②③⑥ + le rappel sur la page des classes ; « L'ÉLÈVE — 2 » : ④⑤ avec la refonte du déroulé), corrigés sur la relecture et sur tes réponses 80 à 84, 86, 87, 89, 96, puis la seconde relecture. « Continuer » pour les recevoir.
+
+30/09/2026 18:45 MEMO
+
+---

@@ -9110,3 +9110,29 @@ J'intègre 27 à 47 dans le cadrage 6 et je te le redonne. Ton mot.
 30/09/2026 13:50 MEMO
 
 ---
+
+## TOUR 279 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Ok. Le calendrier tu le trouves sur github celui au hub est celui en vigueur
+
+---
+
+## TOUR 279 — Claude (conscience n°12)
+
+Lu le calendrier au hub (`/site/edt/calendrier/2026-2027`) : équipes éducatives par niveau dans « établissement » (08/09 3e, 10/09 6e, 14/09 5e, 15/09 4e), libellés composites, une équipe individuelle. Cadrage 6 réécrit avec les points 27 à 47 et redéposé (bit à bit). Rien d'autre déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Lu le calendrier en vigueur au hub (2026-2027, injecté le 04/09) : les équipes éducatives y sont, **par niveau**, dans les événements d'établissement — « 17h Equipes éducatives 3e » le 08/09, « … Equipes éduc. 6e … » le 10/09, « … Equipes éducatives 5e » le 14/09, « 17h Equipes éducatives 4e 18h30 Parents 4e » le 15/09 (la fiche PAP que tu m'as montrée est datée du 15/09 : ça colle) ; plus une équipe éducative individuelle avec le nom d'un élève dans le libellé. Les libellés sont composites (trois réunions dans une cellule) : le site cherchera le motif « équipe(s) éduc… » suivi du niveau, sans que tu renommes rien.
+
+Le **cadrage 6 est réécrit avec tout ce qui a été tranché** (27 à 47) et redéposé au sas, vérifié bit à bit (joint) :
+
+48. **§1** : ce qui est en clair (sexe, dispositif, les identifiants des cases) et ce qui est chiffré (naissance, remarques, synthèse) ; export contre sauvegarde complète ; la corbeille emporte le profil quand un élève change de classe ; la purge de rentrée emporte les profils ; les règles de lecture de la base à mesurer avant tout mandat. **§2** : les doublons de nom refusés et dits ; l'import n'enlève personne. **§3** : le ◆ et les cases toujours lisibles au pilotage, les textes avec la clé (une ligne le dit) ; le ◆ chez toi seulement ; la date de mise à jour visible ; **le rappel des équipes éducatives** — la fenêtre du 1er au 21 septembre, le jour précis lu dans le calendrier, la veille, le lendemain jusqu'à ton enregistrement, l'équipe individuelle pour un élève seul, ce que le rappel ne fait pas ; l'atelier et `adapte` : dit, pas oublié. **§4** : la ligne avant et après un jour sans cours, le 29 février, le T-5 affiché non écrit, la pastille à côté de l'état (jamais dans la copie de classe ni le récit), le sexe et l'âge. **§5** : ce qui reste (le déclenchement case par case, les règles de la base, le cadrage 7).
+
+Relis ; puis ton choix : la maquette de l'import et de la fiche élève (captures d'abord), ou le retour à la maquette de la préparation, ou le HTML du panneau pour ouvrir le cadrage 7.
+
+30/09/2026 14:15 MEMO
+
+---

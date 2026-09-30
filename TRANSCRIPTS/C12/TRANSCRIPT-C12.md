@@ -8854,3 +8854,31 @@ Reste **Q3** (les tablettes : combien d'adaptés par classe, tablettes de l'éta
 30/09/2026 07:15 MEMO
 
 ---
+
+## TOUR 270 — Paul
+
+Texte de Paul, mot pour mot :
+
+> 4. les précisions seront-elles exploitées, ou c'est juste informatif? 5. pour la date de naissance, j'aimerais avoir une petite fonctionnalité des anniversaires, et avoir la notification de l'anniversaire un jour avant, et les voir dans mon emploi du temps (🎂Titouan G va avoir ... ans). Q3: ça dépend, le nombre n'est pas fixe. les tablettes sont avec un navigateur oui. Actuellement on travaille sur un sheet de compétences avec un google script, et on a codé un html d'aide assez performant et que j'aimerais réutiliser pour les adaptés parce que c'est typiquement ce qui peut marcher avec eux. Ils ont le cours normal, mais en plus, ils ont un bot qui leur reformule ce qu'ils voient. c'est l'idée. je t'ai mis des cpatures d'écran, tu me diras si tu veux le html pour en reproduire fidèlement l'UI et l'ergonomie. au lieu d'un ? l'élève aurait un émoji prof, et le contenu de l'aide pourrrait être plus adapté pour eux (à cadrer).
+
+(trois captures du panneau « Aide » de la saisie des compétences jointes)
+
+---
+
+## TOUR 270 — Claude (conscience n°12)
+
+Réponse : les précisions à deux niveaux (fléchage exploité ; texte libre informatif ; étiquettes exploitées quand Paul les choisit) ; les anniversaires dans l'EDT et le cahier de textes du pilotage (prénom + initiale, jamais au tableau) ; la tablette : oui au HTML, mise en tension (rien d'improvisé, tout vient du chapitre — le contrat `adapte` —, l'état du hub, les réponses vers la fiche élève, le code élève) ; proposition d'écrire le cadrage 6 maintenant. Rien écrit, rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Vu les trois captures (le panneau « Aide » de la saisie des compétences : « Ce que vous voyez », « Ce que vous pouvez faire », les questions fréquentes en pastilles, le fil de réponses, « Chercher un mot »). Réponses et mise en tension, dans l'ordre :
+
+12. **Les précisions (ton point 4) — exploitées ou informatives ?** Ma proposition : **les deux, à deux niveaux**. Ce qui est *exploité* par le site et les apps, c'est le fléchage `dispositif : oui` (le seul fait sûr, il vient du fichier). Les précisions sont *informatives* pour toi (la fiche élève au pilotage, la copie de classe) **tant qu'on n'a pas de vocabulaire** ; dès qu'on en a un — quelques étiquettes que tu choisis (police agrandie, consigne courte, temps majoré, lecture par le bot…), posées à la main dans la console — ces étiquettes deviennent exploitées : la tablette, le chapitre et les apps les lisent (« consigne courte » → la version `adapte` ; « police agrandie » → la tablette grossit). Donc : texte libre = pour toi ; étiquettes = pour le site. Tu choisiras les étiquettes quand on cadrera la tablette.
+13. **Les anniversaires (ton point 5)** : ça s'intègre dans ce qui existe — l'emploi du temps du pilotage (les cases EDT) et le cahier de textes ; rien de nouveau à inventer. Le jour J et la veille, sur la case de la classe : « 🎂 Titouan G. va avoir 14 ans demain » / « 🎂 Titouan G. a 14 ans aujourd'hui » ; dans le cahier de textes de l'heure, la même ligne, pour ne pas l'oublier au T-5 ; **prénom + initiale du nom, jamais l'âge ni la date au tableau** (au tableau, seulement si tu le décides toi, comme une note). La date de naissance vit dans le profil, lisible avec ta clé comme le reste ; l'âge se calcule à la date du jour, rien n'est stocké d'autre.
+14. **La tablette des adaptés (Q3, et ton idée du panneau d'aide)** : oui, **envoie-moi le HTML** — je reproduirai fidèlement l'UI et l'ergonomie (le panneau à droite, les trois blocs, les pastilles de questions, le fil, la recherche). La mise en tension avant de cadrer, pour que ça tienne avec le reste : **ce que le « prof » de la tablette dit n'est jamais improvisé** — pas d'IA en direct devant un élève (rien de payant, et rien qui parle à ta place sans que tu l'aies lu) ; tout vient du chapitre : pour chaque diapo, l'instance qui prépare écrit la version adaptée (« Ce que tu vois », « Ce que tu dois faire », trois questions et leurs réponses guidées) — c'est le contrat `adapte` du point 7 ; le panneau lit **l'état poussé par le hub** (la même diapo que le tableau, au même moment) et affiche la version adaptée de cette diapo ; « Chercher un mot » cherche dans les fiches du chapitre ; les réponses de l'élève aux questions reviennent dans ta fiche élève (participation, comme une réponse levée). L'émoji prof à la place du « ? », d'accord. Le nombre d'adaptés variable ne change rien : chaque tablette s'identifie par le code élève à 4 chiffres qui existe déjà.
+
+**Ce que je propose maintenant** : j'écris le cadrage 6 « L'ÉLÈVE » (le profil, l'import du fichier, le fléchage, les anniversaires, les étiquettes) et je l'ouvre au sas ; le cadrage 7 « LA TABLETTE » s'écrira quand j'aurai le HTML et tes étiquettes. Ton mot sur 12 à 14, et le HTML.
+
+30/09/2026 07:35 MEMO
+
+---

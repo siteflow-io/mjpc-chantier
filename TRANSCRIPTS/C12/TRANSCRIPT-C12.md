@@ -9609,3 +9609,27 @@ Je reprends le chantier : les deux mandats (« L'ÉLÈVE — 1 » : ①②③⑥
 30/09/2026 18:45 MEMO
 
 ---
+
+## TOUR 298 — Paul
+
+Texte de Paul, mot pour mot :
+
+> continue
+
+---
+
+## TOUR 298 — Claude (conscience n°12)
+
+Cadrage 6 corrigé (1.3, 1.5, 1.6, 2.4, 3.4) et déposé bit à bit. Mandats « L'ÉLÈVE — 1 » (v3 : gabarit des lots, base md5/blobs, livraisons ⓪ mode test étanche · ① aperçu · ② écriture + migrations + QCM · ③ fiche + rappel · ④ dictée ; 4 019 mots) et « L'ÉLÈVE — 2 » (662 mots) écrits, déposés sans jetons (`MANDATS/`, pièces T298), livrés en blocs avec les jetons dans la conversation. Rien d'autre déposé hormis ce transcript.
+
+Réponse mot pour mot (les deux mandats sont les pièces T298-MANDAT-ELEVE-1-v3.md et T298-MANDAT-ELEVE-2.md, reproduits dans la conversation) :
+
+Les deux mandats sont écrits, déposés au sas sans les jetons (`MANDATS/MANDAT-ELEVE-1.md`, `MANDATS/MANDAT-ELEVE-2.md`, pièces T298), et le cadrage 6 est corrigé sur la relecture et tes réponses (1.3 tout chiffré sauf le sexe + le nœud `amenagements` pour les apps ; 1.5 la corbeille sans geste nouveau ; 1.6 la suppression de classe et la purge telles qu'elles sont ; 2.4 le réimport ne touche pas la fiche, l'import sans clé n'est pas bloqué ; 3.4 le ◆ jamais dans la copie de classe ; 3.4 quater la première date par niveau).
+
+Ce qui a changé dans le mandat 1 par rapport à la v2 : la forme des lots (contexte, base avec tailles / md5 / blobs et STOP à la commande, versions livrées 8.74.0 et 6.6.0, interdits, preuves, livraison, ce que le lot ne fait pas) ; une livraison ⓪ qui rend le mode test étanche avant tout banc (dettes 77, 78, 76) ; `sanMJPC` partout ; le contrat des données exact (les paquets chiffrés, `attente`, `amenagements`, `nbDispositifs` en clair pour le rappel) ; l'appariement de classe confirmé par toi ; les cas anormaux nommés ; la fiche l'emporte au réimport ; les 22 écritures de `results` ; la dette 79 réglée en ④ ; `toggleAmenageDictee` gardé ; le mot « aménagée » nulle part sur la feuille ; les captures validées citées (T283, T284) ; jamais un nom ; le rappel par niveau, première date. Le mandat 2 (◆ au pilotage, anniversaires) attend le promeus du 1 et ta décision sur le moteur.
+
+Le mandat 1, avec les jetons, en bloc copiable ; le mandat 2 à la suite. Puis la seconde relecture, avec le même prompt (il pointe vers `MANDATS/MANDAT-ELEVE-1.md` et `-2.md` : je le mettrai à jour d'une ligne si tu le lances).
+
+30/09/2026 19:05 MEMO
+
+---

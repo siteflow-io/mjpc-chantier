@@ -9504,3 +9504,29 @@ Réponds par les numéros (80 à 87, « ok » ou ta correction), et je réécris
 30/09/2026 16:55 MEMO
 
 ---
+
+## TOUR 294 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok pour tout. sauf 59, je n'ai pas compris ta phrase.
+
+---
+
+## TOUR 294 — Claude (conscience n°12)
+
+80 à 84, 86, 87 pris. 59 reformulé (point 88 : le nom de famille seul dans le calendrier → rappel individuel si un seul élève des classes de Paul le porte, rien sinon). Plan : deux mandats (« L'ÉLÈVE — 1 » : ①②③⑥ + rappel ESS console ; « L'ÉLÈVE — 2 » : ④⑤ avec la refonte du déroulé), le cadrage 6 corrigé, puis seconde relecture. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Pris pour 80 à 84, 86, 87. Pour 59, je reformule :
+
+88. Dans ton calendrier, le 14/09 porte « 16h Equipe éduc. <un nom de famille> 17h Equipes éducatives 5e » : l'équipe éducative d'un seul élève, désignée par **son nom de famille seul**, sans prénom. Le site ne peut donc pas savoir avec certitude de quel élève il s'agit. Ma proposition : **le site cherche ce nom de famille dans toutes tes classes ; s'il ne trouve qu'un seul élève qui le porte, il lui fait le rappel individuel (« ESS de <Prénom> N. : lundi 14/09 ») ; s'il en trouve deux (des frères, un homonyme) ou aucun, il ne fait rien de plus** — la fenêtre de septembre couvre déjà tous les fléchés. Ainsi tu n'as jamais à retoucher le calendrier de l'établissement pour que ça marche.
+
+Si tu préfères que dans ce cas le site te demande « lequel ? » plutôt que de se taire, dis-le.
+
+Je réécris maintenant **deux mandats** : **« L'ÉLÈVE — 1 »** (①②③⑥ + le rappel des équipes éducatives sur la page des classes ; la console et la dictée ; te débloque tes classes et tes dictées) et **« L'ÉLÈVE — 2 »** (④⑤ : le ◆ au pilotage, les anniversaires — à lancer avec la nouvelle version du déroulé), en corrigeant tout ce que la relecture a relevé (le gabarit des lots, la fuite du mode test réglée en tête, la purge telle qu'elle est, la reprise depuis la corbeille comme geste nouveau, `sanMJPC` partout, `toggleAmenageDictee` rebranché, les captures validées citées, la copie de classe et le déroulé nommés par ce qui leur répond dans le code, les formats, les cas anormaux, les six écritures de `results`, l'appariement de classe, les noms fictifs à préfixe impossible, la base md5 et le STOP…) et le cadrage 6 corrigé aux points 1.3, 1.5, 1.6, 2.4, 3.4, 3.4 quater. Puis seconde relecture. Ton mot sur 88, et j'y vais.
+
+30/09/2026 17:05 MEMO
+
+---

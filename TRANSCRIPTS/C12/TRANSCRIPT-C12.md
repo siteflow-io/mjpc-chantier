@@ -9554,3 +9554,32 @@ Je corrige le cadrage 6 et le mandat en conséquence. C'est le mécanisme ③ de
 30/09/2026 17:10 MEMO
 
 ---
+
+## TOUR 296 — Paul
+
+Texte de Paul, mot pour mot :
+
+> alors là il faut s'arrêter deux secondes. Voici le fichier avec lequel l'instance a injecté le calendrier.
+
+(joint : `calendrier_scolaire_2026_2027.xlsx`, le fichier source — non déposé)
+
+---
+
+## TOUR 296 — Claude (conscience n°12)
+
+Lu la source cellule par cellule et comparée au hub : le 14/09 au hub est faux (« Equipe éduc. N.Laury » est au 21/09 18h30 dans la source ; heure 16h inventée ; « Parents 5e » perdu), le 10/09 reçoit la célébration du 17/09, les 21-25/09 absents, 141 dates non retrouvées telles quelles. Registre n°12 · 81. Proposition : réinjection mécanique par outil avec aperçu et comparaison. Rien d'autre déposé hormis ce transcript et le registre.
+
+Réponse mot pour mot :
+
+Arrêt pris. J'ai lu le fichier source cellule par cellule (une feuille « Calendrier 2026-2027», un mois = trois colonnes, une ligne par jour) et je l'ai comparé, date par date, à ce que l'instance a injecté au hub. Le fichier reste chez moi, il ne va nulle part.
+
+90. **Ce que dit la source sur le point qui nous a arrêtés** : le **14 septembre** porte « 17h Equipes éducatives 5e 18h30 Parents 5e » — rien d'autre. « Equipe éduc. N.Laury » est **au 21 septembre, à 18h30**, dans la cellule « 15h 3eHPro visite pépinières 17h Commission projet éducatif 18h30 Equipe éduc. N.Laury ». Au hub, l'instance a écrit au 14/09 « **16h** Equipe éduc. N.Laury 17h Equipes éducatives 5e » : elle a **déplacé** cette réunion d'une semaine et **inventé une heure**, et elle a perdu « 18h30 Parents 5e ». Donc : mon erreur (avoir fait de N.Laury un élève) est bien la mienne ; mais la ligne que je lisais était déjà fausse.
+91. **Ce n'est pas un cas isolé.** Le **10/09** : le hub ajoute « 16h Célébration de rentrée » qui, dans la source, est au **17/09** ; le **17/09** du hub perd cette célébration et « 4e V.Hugo » devient « 4e ? » ; le **21/09** (pépinières, commission, équipe éduc.), le **22/09** et le **25/09** (rencontres du maire, 6e), le **23/09** (festival des orgues 6e) sont **absents** du hub ; le **28/09** perd « 3e Exposition 2nde GM (matin) ». Sur 198 cellules de texte dans la source, **141 dates ne se retrouvent pas telles quelles au hub** — une part sont les mentions « Semaine 37 (B) » (qui ne sont peut-être pas des événements à injecter), mais pas seulement : j'ai vérifié septembre à la main, ci-dessus.
+92. **Ce que ça change** : le calendrier injecté est **infidèle à sa source** — des dates déplacées, des heures inventées, des événements perdus. Tout ce qui s'appuie dessus (le rappel des équipes éducatives du cadrage 6, l'emploi du temps, les alertes de la classe) lit une donnée fausse. Je l'inscris au registre comme dette (n°12 · 81 : « le calendrier au hub n'est pas fidèle au fichier de l'établissement »). L'injection d'un calendrier par une instance qui *reformule* est le problème : c'est une recopie, elle doit être **mécanique** — une cellule = une date = un texte, sans interprétation.
+93. **Ce que je propose** : refaire l'injection du calendrier **par un outil, pas par une instance** : un lecteur du fichier .xlsx (le même que celui de l'import des listes, livraison ①), qui produit une entrée par cellule à la date exacte, le texte tel quel ; l'aperçu avant d'écrire (comme pour les classes) ; et une comparaison source ↔ hub qui signale chaque écart. Ça entre dans le mandat « L'ÉLÈVE — 1 » comme livraison ⓪ ou dans un micro à part — à toi de dire. Et « N.Laury » : c'est un libellé de l'établissement ; le site ne fera jamais rien d'un nom, il n'affichera que ce que le calendrier porte.
+
+Ton mot sur 93, et sur l'arrêt.
+
+30/09/2026 17:25 MEMO
+
+---

@@ -8935,3 +8935,30 @@ Non — ce serait une faute : tu penses à l'anniversaire au milieu de l'heure, 
 30/09/2026 07:40 MEMO
 
 ---
+
+## TOUR 273 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Je ne veux pas que ça soit en modale par dessus le cours. montre moi plusieurs propositions de là où ça peut se placer durant la séance, au tableau.
+
+---
+
+## TOUR 273 — Claude (conscience n°12)
+
+Quatre placements au tableau en captures de la fenêtre du tableau (`pieces/T273-anniversaire-tableau-A..D-*.png`) : A pastille dans la ligne de l'étiquette, B pied de diapo, C liseré au-dessus, D écran à part à la place ; aucun par-dessus le cours. Rien écrit, rien déposé hormis ce transcript et les captures.
+
+Réponse mot pour mot :
+
+Compris : jamais par-dessus le cours. Quatre placements au tableau, en captures de la vraie fenêtre du tableau (captures jointes), aucun ne recouvre la diapo :
+
+20. **A — une pastille dans la ligne de l'étiquette d'activité**, en haut à droite, de la taille de l'étiquette : « 🎂 Titouan a 14 ans aujourd'hui ». Rien ne bouge, rien n'est caché ; discret, lisible du fond ; elle reste tant que tu ne la retires pas.
+21. **B — un pied de diapo**, comme la légende de surlignage : une ligne sobre tout en bas, sous un trait pointillé : « 🎂 Aujourd'hui, c'est l'anniversaire de Titouan — bon anniversaire ! ». Le contenu remonte d'une ligne (la diapo est un peu moins haute) ; c'est la place déjà prévue pour ce qui accompagne la diapo sans en faire partie.
+22. **C — un liseré au-dessus de la diapo**, hors de la diapo : une bande sombre de 5 % de la hauteur, dorée, « 🎂 Bon anniversaire, Titouan ! » ; la diapo reste entière, un peu plus petite, en dessous.
+23. **D — un écran à part, à la place de la diapo**, le temps d'un clic : le gâteau, « Bon anniversaire, Titouan ! », la classe et la date ; c'est un écran que tu pousses comme une diapo et que tu quittes d'un clic — la diapo en cours revient telle quelle (rien n'est dévoilé ni perdu). Pas une modale : le cours n'est pas dessous, il est mis en pause le temps que tu veux.
+
+Ce qui vaut pour les quatre : la ligne se déclenche depuis les trois portes (la case de l'heure, le 🎂 de la barre pendant l'heure, le T-5) ; c'est un état poussé (le gel le tient, le journal note « anniversaire affiché » sans le prénom) ; le prénom seul, jamais l'âge ni la date au tableau — sauf sur D, où la date de la séance (pas de naissance) figure ; il se retire d'un clic ou à la fin de l'heure. Tu peux en garder deux (par exemple A pendant l'heure, D pour le moment où tu le dis). Ton choix, et le cadrage 6 s'écrit.
+
+30/09/2026 07:45 MEMO
+
+---

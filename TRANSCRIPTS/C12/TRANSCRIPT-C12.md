@@ -9160,3 +9160,35 @@ Continue la bifurcation quand tu veux.
 30/09/2026 14:20 MEMO
 
 ---
+
+## TOUR 281 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Ok donc il faut terminer le chantier id élève afin que je puisse enfin créer mes classes et pouvoir corriger mes dictée.
+
+---
+
+## TOUR 281 — Claude (conscience n°12)
+
+Mesuré : `correction_dictee.html` et `dictee_universelle.html` ne lisent que `/classes/<classe>/eleves` (ni sexe ni profil) ; le QCM lit le sexe. Plan en livraisons (e1) import → (e2) fiche PAP → (e3) fléchage au pilotage → (e4) anniversaires et rappel ESS → (e5) déclenchement dans les apps + cadrage 7 ; (e1)/(e2) en captures puis mandat direct (écrans de console), (e3)/(e4) avec la maquette ou un mandat à part. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+D'accord : le chantier « l'élève » passe devant. Mesuré d'abord ce qui bloque quoi : **la correction de dictée et la dictée universelle ne lisent que la liste des noms** (`/classes/<classe>/eleves`), ni sexe ni profil ; **le QCM** lit le sexe. Donc ce qui te bloque aujourd'hui pour créer tes classes, c'est l'import lui-même — et dès que la liste est écrite, tes dictées se corrigent.
+
+Le chantier en livraisons courtes, dans l'ordre de ce qui te débloque :
+
+49. **(e1) L'import du fichier de classe** — tu déposes le .xlsx tel quel (ou tu colles), l'aperçu (la classe lue dans le fichier, 25 élèves, 13 F / 12 M, 1 dispositif, colonnes ignorées, doublons refusés, l'import n'enlève personne), tu valides : la liste + le profil (sexe, naissance, dispositif). **C'est ce qui te permet de créer tes classes et de corriger tes dictées.** Le QCM lit le sexe dans le profil (migration une fois).
+50. **(e2) La fiche élève** dans la console — les quinze cases PAP avec leurs identifiants, la remarque par ligne, la synthèse chiffrée, la date de mise à jour, le fléchage à la main ; la corbeille et la purge emportent le profil.
+51. **(e3) Le fléchage au pilotage** — le ◆ dans la fiche élève, la copie de classe, « qui a participé », les cases lisibles, les textes avec la clé.
+52. **(e4) Les anniversaires et le rappel des équipes éducatives** — les trois portes, la pastille au tableau, le jour de l'ESS lu dans le calendrier.
+53. **(e5) Le déclenchement dans les apps** (temps majoré, QCM, dictée à trous…) — après lecture des apps, case par case, sur ton mot ; et le cadrage 7 (la tablette) à part.
+
+Pour aller vite sans casser le protocole : **(e1) et (e2) ne passent pas par une maquette HTML manipulable** — ce sont des écrans de console (un formulaire, un aperçu, une fiche), pas un geste de classe à jouer ; je te montre **les captures de l'écran d'import et de la fiche** (tour suivant), tu valides, et le mandat (e1) part en livraisons courtes que tu relances par « continuer », avec ses bancs (le fichier réel de ta classe, sans noms dans le sas), les attendus hub et les tests geste par geste. (e3) et (e4) touchent le pilotage : ils entreront dans la maquette de la préparation quand on y reviendra, ou dans un mandat à part — à trancher alors.
+
+Ton mot sur l'ordre 49 → 53, et je fais les captures de (e1).
+
+30/09/2026 14:25 MEMO
+
+---

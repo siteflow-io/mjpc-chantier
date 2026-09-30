@@ -9471,3 +9471,36 @@ Avant d'écrire ce prompt, j'ai regardé la racine du sas, et j'y ai trouvé ce 
 30/09/2026 15:40 MEMO
 
 ---
+
+## TOUR 293 — Paul
+
+Texte de Paul, mot pour mot :
+
+(Paul transmet le rapport de l'instance relectrice — `MANDATS/RELECTURE-MANDAT-ELEVE.md`, commit dad538a, verdict « À CORRIGER AVANT LANCEMENT », points 1 à 61, questions 53 à 61 ; le rapport est au sas, reproduit en pièce T293)
+
+---
+
+## TOUR 293 — Claude (conscience n°12)
+
+Remesuré et confirmé : la fuite du mode test (`mjpcFetchOk` direct → corbeille, purge, `ensureEleveUuid`), la purge lue au hub (`_purgePlan(hub.manifestes)`, contrat index = `eleves_index`, `codes` ; `/classes` non purgé), la lecture anonyme (HTTP 200). Registre n°12 · 77 → 80. Propositions pour les questions 53 à 61 (points 80 à 87), dont deux mandats (①②③⑥ console + dictée ; ④⑤ avec la refonte du déroulé). Rien d'autre déposé hormis ce transcript, la pièce et le registre.
+
+Réponse mot pour mot :
+
+Rapport lu en entier, verdict pris : **à corriger avant lancement**. Avant de te répondre, j'ai remesuré les deux points qui changent le plus le mandat, et la relectrice a raison sur les deux : **le mode test fuit au vrai hub** (`mjpcFetchOk` fait un `fetch` direct ; la corbeille, la purge et l'identifiant élève passent par là) et **la purge de rentrée ne vide pas `/classes`** (elle lit les contrats publiés au hub, et celui du site ne purge que `eleves_index` et `codes` — les classes de l'an dernier, c'est toi qui les as supprimées à la main). Ma phrase « les profils partent avec les classes à la purge » était fausse. Et la base se lit sans clé (HTTP 200 anonyme sur `/classes`). J'ai inscrit au registre ce que la relecture a mesuré et que je confirme : **n°12 · 77** (la fuite du mode test), **78** (l'année en dur dans l'identifiant élève), **79** (le recalcul des notes de dictée ignore l'aménagement), **80** (la base lisible sans clé — un constat pour ta décision, pas une dette de code).
+
+Ce que je fais ensuite : corriger le mandat point par point (A à E, y compris le gabarit des lots que je n'avais pas suivi), puis te le redonner pour une seconde relecture. Mais neuf questions sont à toi (53 à 61) ; voici, pour chacune, **ma proposition** — tu tranches :
+
+80. **53 — la base lisible sans clé.** Je propose de **chiffrer aussi `dispositif` et les numéros de cases** dans le profil, et de donner aux apps ce qu'elles lisent **sans la clé** sous une forme qui ne décrit personne : un nœud `/classes/<slug>/amenagements/<clé>` ne portant que les *effets* que les apps appliquent (`dicteeAmenagee: true`, `sexe: "m"`) — pas la fiche PAP. Le sexe reste en clair (il l'est déjà dans le QCM). Coût : les apps lisent un nœud de plus ; gain : personne, avec l'adresse du hub, ne lit « untel a un PAP, lignes 3, 8, 12 ».
+81. **54 — l'import sans la clé.** Jamais bloqué (règle ⑧ de OU-EST-CE) : l'import écrit la liste, le sexe, le dispositif ; **la date de naissance attend ta clé** — une ligne le dit (« 25 dates de naissance en attente de ta clé ») et le site les chiffre dès que tu la saisis (comme les codes préparés).
+82. **55 — le réimport contre ta fiche.** **Ta fiche l'emporte** : un réimport ne touche jamais `dispositif`, `pap`, `remarques`, `synthese`, `majLe` ; il complète seulement ce qui est vide (sexe, naissance) et ajoute les nouveaux élèves. Le point 5 du rapport (`pap: []` écrit à chaque import) est corrigé dans le même mouvement.
+83. **56 — le ◆ dans la copie de classe.** **Non** : la copie de classe est ce que la classe a vu ; le ◆ est pour toi. Je corrige le cadrage 6 · 3.4 (qui le mettait dans la copie) — c'était une dérive de ma part.
+84. **57 — le moteur actuel ou la refonte du déroulé.** Je propose **deux mandats** (c'est aussi ma réponse à 58) : le premier, **①②③⑥**, dans la console et la dictée, ne touche pas au déroulé et te débloque tes classes et tes dictées ; le second, **④⑤** (le ◆ au pilotage, les anniversaires, le rappel), entre dans le chantier de la nouvelle version du déroulé avec la maquette de la préparation — donc pas dans le moteur actuel. Sauf le rappel des équipes éducatives sur la page des classes, qui est de la console : il va dans le premier.
+85. **59 — l'équipe éducative individuelle.** Le calendrier ne porte qu'un mot : le site ne rappelle **que si un seul élève de tes classes porte ce nom de famille** ; deux ou aucun : pas de rappel individuel, la fenêtre de septembre suffit. Pas de renommage du calendrier à ta charge.
+86. **60 — deux prénoms identiques le même jour.** « Bon anniversaire Léa et Léa » est ridicule : **le prénom suivi de l'initiale** dans ce seul cas (« Bon anniversaire Léa B. et Léa M. »).
+87. **61 — le mot « aménagée » sur la feuille de l'élève.** À toi : c'est la feuille qu'il a devant lui et que ses voisins voient. Je propose « Dictée — version 2 » ou le titre de la dictée seul, et le mot « aménagée » nulle part sur le papier.
+
+Réponds par les numéros (80 à 87, « ok » ou ta correction), et je réécris le mandat — en deux mandats si tu prends 84 — puis je le passe à la seconde relecture.
+
+30/09/2026 16:55 MEMO
+
+---

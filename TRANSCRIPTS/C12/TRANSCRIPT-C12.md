@@ -9192,3 +9192,36 @@ Ton mot sur l'ordre 49 → 53, et je fais les captures de (e1).
 30/09/2026 14:25 MEMO
 
 ---
+
+## TOUR 282 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Alors attention. J'ai fait le push moi même de la dictée correction ( je n'ai travaillé que sur ce html pour l'instant) et il y a eu beaucoup de changements. Dans ce html, il y a un fléchage dictée aménagée et du coup il devra lire les élèves adaptés et quelle dictée ils ont eu. Sachant qu'il est possible qu'un élève qui a une adaptation en dictée peut faire une dictée en mode non adapté, notamment quand cette dictée a été préparée. Va lire et reviens.
+
+---
+
+## TOUR 282 — Claude (conscience n°12)
+
+Lu `correction_dictee.html` (commit b815d1dc, 30/09 04:38) : deux barèmes (préparée / brevet), la version aménagée par dictée (lacunes, modes A/B/C, base 10, papier), le fléchage à deux niveaux (`/classes_amenages/<classe>/<élève>` + override `/correction_dictee/<id>/amenages/<élève>`, l'override prime), les résultats sans trace « aménagé ». Mise en tension : le registre de classe = pap-15 du profil (migration, l'app ne l'écrit plus) ; l'override par dictée reste ; la règle de départ à trancher (a/b) ; la trace `amenagee` dans le résultat ; pap-12 sans effet sur le barème. Rien écrit au cadrage, rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Lu la version que tu as poussée ce matin (`correction_dictee.html`, commit b815d1dc du 30/09 04:38, après celui du 29/09). Ce qu'elle fait, mesuré :
+
+54. **Deux barèmes par dictée** (23/09) : « préparée » (chaque faute compte) et « type brevet » ; c'est un réglage de la dictée.
+55. **Une version aménagée par dictée** : `dictee/amenagee = { enabled, defaultMode A|B|C, base 10, lacunes [...], consigne }` — des mots à trous, mode A (trois propositions), B (pointillés nus), C (avec indice), les distracteurs générés, le document papier imprimable ; « 📘 Paramétrer une version aménagée (PAP/DYS) pour cette dictée ».
+56. **Le fléchage de l'élève, à deux niveaux** : un **registre par classe** `/classes_amenages/<classe>/<élève> = true` (persistant, purgé à la rentrée) et un **override par dictée** `/correction_dictee/<id>/amenages/<élève> = true | false` ; la règle `isEleveAmenage` : **l'override prime, sinon le registre**. Le clic droit sur un élève : « aménagé (cette dictée) » / « aménagé (registre de la classe) ». Un élève aménagé est corrigé sur la base aménagée (10) quand la dictée a sa version aménagée. C'est exactement ton cas : un élève du registre fait une dictée préparée en non aménagé → un override « false » sur cette dictée.
+57. **Ce que les résultats ne gardent pas** : `results/<élève>` porte la note, la déduction, les erreurs — **pas la trace « corrigé en aménagé »** ; on le déduit après coup du registre et de l'override, qui peuvent changer. « Quelle dictée il a eue » n'est donc pas écrit noir sur blanc dans le résultat.
+
+**Mise en tension avec le cadrage 6 — deux télescopages, deux compléments :**
+58. **`classes_amenages` est un registre d'identité tenu par l'app** — contre la décision du 18/07 et contre le profil (§1). Solution : **le registre de classe, c'est la case pap-15 du profil** (« dictées aménagées ») ; l'app la lit, ne l'écrit plus ; une migration une fois copie `classes_amenages` vers `pap-15` des profils, puis le nœud disparaît (et sort de la purge). **L'override par dictée reste dans l'app** : c'est un fait de la dictée (« cette dictée-ci, préparée, en non aménagé »), pas de l'identité — il est légitime et le cadrage 6 le dit.
+59. **La règle de départ pour une dictée** : aujourd'hui, le défaut est « selon le registre » quel que soit le barème. Deux options : **(a)** garder — l'élève pap-15 est aménagé par défaut, tu bascules par dictée quand elle a été préparée ; **(b)** le barème décide du défaut — « préparée » ⇒ non aménagé par défaut pour tous, « type brevet » ⇒ aménagé pour les pap-15 — et tu bascules l'exception. Tu tranches ; je propose **(a)** avec, dans l'écran de la dictée, une ligne « 3 élèves pap-15 : aménagés pour cette dictée · tout passer en non aménagé » — un clic, pas trois.
+60. **La trace dans le résultat** : `results/<élève>` gagne `amenagee: true|false` (et le mode A/B/C si aménagé) au moment de la correction — sinon l'archive de l'élève ne dit pas quelle dictée il a eue. À écrire au cadrage 6 (§3.3, pap-15).
+61. **pap-12** (« ne pas pénaliser l'orthographe ») ne touche pas au barème de la dictée : c'est la version aménagée (pap-15) qui répond à l'élève dys — la correction ne change pas de barème toute seule. À écrire, pour qu'aucun exécutant ne l'invente.
+
+Ton mot sur 59 (a ou b), et j'écris 58 à 61 au cadrage 6 ; puis (e1) l'import, dont la migration du registre fait partie.
+
+30/09/2026 14:40 MEMO
+
+---

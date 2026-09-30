@@ -9431,3 +9431,23 @@ Relis-le ligne à ligne contre le cadrage 6 ; dis-moi les trous ou les dérives,
 30/09/2026 15:35 MEMO
 
 ---
+
+## TOUR 291 — Paul
+
+Texte de Paul, mot pour mot :
+
+> je ne vois pas que tu donnes les jetons
+
+---
+
+## TOUR 291 — Claude (conscience n°12)
+
+Section « 1 bis. Les dépôts et les jetons » ajoutée au mandat (le sas et son API, le dépôt de production en lecture + registre, le hub en lecture, les jetons vivent dans la conversation et dans aucun fichier déposé) ; la copie au sas porte des espaces réservés, le bloc de la conversation porte les jetons. Mandat v2 déposé (`MANDATS/MANDAT-ELEVE.md`, pièce T291). Rien d'autre déposé hormis ce transcript.
+
+Réponse mot pour mot (le mandat v2 complet est reproduit dans la conversation avec les jetons ; la pièce T291 le porte sans les jetons) :
+
+Vrai, et c'est une dérive connue : sans les jetons, l'exécutant ne peut ni lire la production ni pousser au sas. Ajouté au mandat en section « 1 bis. Les dépôts et les jetons » — le sas et comment y écrire, le dépôt de production (lecture des sources, écriture du registre seulement, jamais index.html ni une app), le hub en lecture seule hors mode test — et la règle : les jetons vivent dans la conversation, dans aucun fichier déposé (la copie au sas porte des espaces réservés). Le mandat v2 complet, jetons compris, est ci-dessous en bloc copiable.
+
+30/09/2026 15:25 MEMO
+
+---

@@ -8780,3 +8780,42 @@ Le reste de la proposition (1 : un schéma = sa diapo ; 3 : les plafonds) ne cha
 30/09/2026 06:45 MEMO
 
 ---
+
+## TOUR 268 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok je bifurque, tu vas reprendre ta casquette de conscience pendant quelques tours: je suis en train de créer mes nouvelles classes de cette année, j'ai supprimé des classes de l'année dernière sauf les charles de gaulle (classe test avec vraies données), et au moment d'injecter mes nouvelles listes de classe, je me rends compte que seuls les noms et prénoms sont pris en compte, alors que j'ai des excels de classe avec nom prénom, date de naissance, adaptations( !! ), sexe, et d'autres informations qui ne servent pas à mjpc. Or, le sexe est utilisé par au moins une app et le sera pour tous, et surtout surtout, les adaptations! ces élèves doivent être fléchés spécifiquement dans le site, dans les apps etc. Un chapitre injectera par exemple des choses pour les adaptés, ce qui rejoint ce que nous sommes en train de faire: il faudra qu'on ait des choses spécifiques pour les adaptés: je pensais par exemple à une tablette, où ils auraient une vue du tableau comme tout le monde, mais avec un système de questions prédéfinies sur ce qu'ils voient à l'écran. à cadrer.
+
+---
+
+## TOUR 268 — Claude (conscience n°12)
+
+Bifurcation (casquette conscience). Lu avant de répondre : `index.html` (`_importEleves`, `parseEleves` : une ligne = un nom ; `/classes/<slug>/eleves` = chaînes ; aucun profil) ; `evaluation-qcm.html` (le sexe dans `qcm/eleveSexes`, décision M7 du 18/07 : l'identité appartient au site) ; `worktrack.html` (pas de sexe). Réponse : l'existant, la mise en tension, la proposition de cadrage 6 (profil par élève, import Excel avec en-têtes et aperçu, fléchage des adaptés jamais au tableau et chiffré, contenu adapté au contrat du chapitre, la tablette = page élève, cadrage 7), trois questions. Rien codé, rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Casquette de conscience. J'ai lu le code avant de répondre — voici ce qui existe, puis la mise en tension, puis ce que je propose de cadrer, puis mes questions.
+
+**Ce que le site fait aujourd'hui (mesuré dans `index.html` et les apps) :**
+1. **L'import** = un cadre « un élève par ligne, ex : DUPONT Marie » ; chaque ligne devient une chaîne « NOM Prénom » ; la classe dans Firebase, c'est `/classes/<classe>/eleves = ["NOM Prénom", …]`, rien d'autre (les codes élèves vivent à part, chiffrés). **Aucun profil par élève n'existe** — donc quand tu colles ton Excel, tout ce qui n'est pas le nom part au nom (« DUPONT Marie 12/03/2013 F PAP » deviendrait un élève ainsi nommé) ou est perdu.
+2. **Le sexe** : c'est l'app d'évaluation QCM qui l'utilise ; il vit dans `qcm/eleveSexes/<classe>/<élève>` = « m » / « f », rangé **par l'app**, avec ce commentaire dans son code : « l'identité (classes, élèves, sexes) appartient au site MJPC : une app ne la gère pas » (ta décision du 18/07). Le site l'a décidé, mais ne le fait pas : il n'y a nulle part, dans la console, où poser un sexe.
+3. **Les adaptations** : aucune trace nulle part — ni dans le site, ni dans les apps, ni dans le contrat des chapitres.
+
+**Mise en tension avec ce qu'on a cadré :** le pilotage a déjà la fiche élève (pastilles, participation, réponses), la copie de classe, le cahier de textes, et le chapitre décrit ses diapos à l'instance par un contrat — c'est là que le fléchage des adaptés doit se lire, sans rien inventer de nouveau ; et la règle « ce qui n'existe pas encore ne tombe pas » vaut pour la tablette : on prépare la donnée et sa place maintenant.
+
+**Ce que je propose de cadrer (cadrage 6 — l'élève) :**
+4. **Le site devient le seul propriétaire de l'identité élève**, comme décidé le 18/07 : à côté de la liste (qui ne change pas de forme, pour ne rien casser dans les apps), un **profil par élève** : `/classes/<classe>/profils/<élève> = { sexe, naissance, adaptations }`. Le QCM lira le sexe dans le profil (une migration une fois : ce qu'il a déjà rangé est copié dans les profils, puis il ne range plus rien).
+5. **L'import lit ton Excel tel que tu le colles** : la première ligne dit les colonnes (Nom, Prénom, Sexe, Date de naissance, Adaptations… le reste ignoré et dit : « 3 colonnes ignorées : … ») ; un **aperçu en tableau** avant de valider ; un élève déjà présent est complété, jamais doublé ; sans ligne d'en-tête, une ligne = un nom (l'existant).
+6. **Les adaptations, fléchées partout où tu pilotes, jamais devant la classe** : dans la fiche élève du pilotage un signe discret (◆) avec le détail au clic ; dans la copie de classe ; dans « qui a participé » ; **jamais au tableau, jamais dans un export ou une archive** ; et parce que c'est une donnée sensible, **chiffrée comme les codes** (lisible avec ta clé seulement).
+7. **Le chapitre peut porter du contenu adapté** : le contrat d'injection gagne une ligne — un bloc ou une activité peut avoir sa version `adapte` (une consigne plus courte, une question guidée) ; le pilotage sait qui est adapté et à qui la servir. C'est ce qui nourrira la tablette.
+8. **La tablette des adaptés** = la page élève dont le cadrage 1 parle déjà : elle reçoit **le même état que le tableau** (le hub le pousse déjà), et par-dessus **des questions prédéfinies sur ce qui est à l'écran**, dont les réponses reviennent dans la fiche élève (participation) — à cadrer à part (cadrage 7), après 4 à 7.
+
+**Mes questions (je n'écris rien avant) :**
+9. **Q1** — Une cellule « adaptations » de ton Excel, telle quelle : c'est un mot (« PAP »), une liste (« dys, tiers-temps »), une phrase ? Le vocabulaire du fléchage en dépend.
+10. **Q2** — Les en-têtes exacts de tes colonnes (la première ligne de l'Excel), pour que l'import les reconnaisse sans que tu renommes quoi que ce soit.
+11. **Q3** — Les tablettes : combien d'adaptés par classe, et sont-ce des tablettes de l'établissement (un navigateur, rien à installer) ?
+
+30/09/2026 07:05 MEMO
+
+---

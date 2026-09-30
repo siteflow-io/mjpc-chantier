@@ -9451,3 +9451,23 @@ Vrai, et c'est une dérive connue : sans les jetons, l'exécutant ne peut ni lir
 30/09/2026 15:25 MEMO
 
 ---
+
+## TOUR 292 — Paul
+
+Texte de Paul, mot pour mot :
+
+> fais moi maintenant un prompt de relecture de ton mandat afin de vérifier que tu es dans les clous. une instance va te relire. elle doit s'appuyer sur tout ce qui est sur github en termes de protocole conscience/exécutant.
+
+---
+
+## TOUR 292 — Claude (conscience n°12)
+
+Lu la racine du sas (LOT1 → LOT12 avec leurs MANDAT.md, DICTEE2 → 6, CONSULTANT, PONT, PASSATION-C5…C11, OU-EST-CE-DEJA-ECRIT.md, PROTOCOLE-AJOUTS-25-08.md) et `PASSATION-C9-C10-fautes.md` (les huit mécanismes) ; `CLAUDE.md` en production. Constat déclaré : le mandat a été écrit sans avoir lu `OU-EST-CE-DEJA-ECRIT.md`, `docs/MJPC6-LECTURES.md`, `PASSATION-C9-C10-fautes.md` ni un `MANDAT.md` de lot précédent — la faute ② de la n°9 ; c'est écrit dans le prompt de relecture (point 7). Prompt de relecture écrit (`MANDATS/PROMPT-RELECTURE-MANDAT-ELEVE.md`, sans jetons ; pièce T292), livré en bloc avec les jetons. Rien d'autre déposé hormis ce transcript.
+
+Réponse mot pour mot (le prompt complet est reproduit dans la conversation, avec les jetons) :
+
+Avant d'écrire ce prompt, j'ai regardé la racine du sas, et j'y ai trouvé ce que je n'avais pas lu avant le mandat : les mandats des lots précédents (LOT1 à LOT12, chacun avec son MANDAT.md — les gabarits), les passations C5 → C11 avec « PASSATION-C9-C10-fautes.md » (huit mécanismes de dérive, nommés par la conscience qui les a commis), « OU-EST-CE-DEJA-ECRIT.md » (écrit pour ne pas te faire répéter), et « docs/MJPC6-LECTURES.md » (le noyau de lecture). Ne pas les avoir lus avant d'écrire le mandat, c'est la faute ② de la n°9, telle quelle. Je le déclare dans le prompt (point 7) pour que la relectrice mesure ce que ces lectures auraient changé, plutôt que de le deviner moi-même après coup. Le prompt lui donne tout ce qui est sur GitHub, dans les deux dépôts, la méthode dans l'ordre, la forme du rapport (verdict tranché en première ligne, dérives / ancrages faux / omissions / ajouts non cadrés / trous / conforme mesuré / questions), et ce qu'elle ne fait pas.
+
+30/09/2026 15:40 MEMO
+
+---

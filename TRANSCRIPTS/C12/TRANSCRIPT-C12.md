@@ -9136,3 +9136,27 @@ Relis ; puis ton choix : la maquette de l'import et de la fiche élève (capture
 30/09/2026 14:15 MEMO
 
 ---
+
+## TOUR 280 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Tout est bien enregistré si jamais tu as une amnésie ? Je veux dire, si je continue sur cette bifurcation, le retour à la maquette de préparation sera faisable sans problème ?
+
+---
+
+## TOUR 280 — Claude (conscience n°12)
+
+Mesuré au sas (948 pièces, transcript 104 → 279, cadrages, protocole, maquette p7 + gabarit + patch + bancs + générateur) ; manquaient la source DATA (`maquette-v9c13-courante.html`) et `err.mjs` : déposés avec un kit de reprise `TRANSCRIPTS/C12/REPRISE-MAQUETTE.md` (aussi en pièce T280). Rien d'autre déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Mesuré au sas avant de te répondre : **948 pièces C12**, le transcript mot pour mot des tours 104 à 279 (vérifié bit à bit à chaque tour), les cadrages 1 à 4 et 6, le protocole maquette, et pour la maquette : la dernière version figée (`T265-…v9c15p7-manipulable.html`), son gabarit, son patch, ses 24 bancs, le générateur (`T159-gen-par-difference.py`). Il manquait **deux choses** pour régénérer sans rien réinventer : la source des données (`maquette-v9c13-courante.html`) et le petit outil d'erreurs JS. Je viens de les déposer, avec **un kit de reprise** (`TRANSCRIPTS/C12/REPRISE-MAQUETTE.md`) qui dit à une conscience amnésique : où en est le chantier (p1 → p7 livrés, p8 proposé non codé, la bifurcation, le reste du cahier des charges), comment régénérer et rejouer (les tranches, Playwright), les règles apprises, où est le protocole.
+
+Donc oui : **le retour à la maquette de la préparation se fera sans problème**, sur cette conversation ou sur une neuve — tout ce qu'il faut est au sas, rien n'est dans ma seule tête. La seule chose qu'une reprise ne retrouvera pas telle quelle, c'est ce que tu n'as pas encore tranché (les plafonds de p8) : c'est noté comme « en attente de ton mot », pas comme décidé.
+
+Continue la bifurcation quand tu veux.
+
+30/09/2026 14:20 MEMO
+
+---

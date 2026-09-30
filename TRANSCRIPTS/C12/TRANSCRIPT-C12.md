@@ -8910,3 +8910,28 @@ Ton mot sur 15 à 17 (surtout le déclenchement de 16, case par case), et j'écr
 30/09/2026 07:35 MEMO
 
 ---
+
+## TOUR 272 — Paul
+
+Texte de Paul, mot pour mot :
+
+> l'affichage de l'anniversaire n'est possible qu'au lancement de la séance, pas après?
+
+---
+
+## TOUR 272 — Claude (conscience n°12)
+
+Réponse : non — la même ligne à trois portes (la case de l'heure avant le lancement, un 🎂 dans la barre du pilotage les jours d'anniversaire, le T-5) ; le bandeau au tableau est un état poussé (gel, journal sans prénom, retrait d'un clic ou à la fin de l'heure) ; rien en répétition. Rien écrit, rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Non — ce serait une faute : tu penses à l'anniversaire au milieu de l'heure, pas forcément avant de lancer. Ce que je propose :
+
+18. **Trois portes, la même ligne** : la ligne « 🎂 Titouan G. a 14 ans aujourd'hui » est dans la case de l'heure avant le lancement (ce que montre la capture) **et** dans le pilotage pendant l'heure — dans la barre des outils, un 🎂 discret qui n'apparaît que les jours où il y a un anniversaire dans la classe ; un clic → « Afficher au tableau » / « Retirer » — **et** au T-5 (le cahier de textes), la même ligne, pour ceux que tu voudrais dire à la fin. Où que tu sois dans l'heure, un clic.
+19. **Au tableau** : le bandeau se pose par-dessus la diapo en cours sans rien dévoiler ni déplacer (c'est un état poussé comme les autres : le gel le tient, le journal note « anniversaire affiché » sans le prénom) ; il se retire d'un clic ou tombe de lui-même à la fin de l'heure. En répétition (jouer en avance), la ligne existe mais rien n'est poussé — rien n'est écrit.
+
+Ça tient avec la règle des gestes : un seul mécanisme, trois endroits où le trouver, rien à l'écran les jours sans anniversaire. Ton mot, et le cadrage 6 s'écrit avec 15 à 19.
+
+30/09/2026 07:40 MEMO
+
+---

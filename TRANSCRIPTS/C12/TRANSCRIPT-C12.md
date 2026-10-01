@@ -10122,3 +10122,27 @@ Réponds-lui : **« la note sur la base de la correction, sans conversion : la b
 01/10/2026 09:40 MEMO
 
 ---
+
+## TOUR 316 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok et si je fais une dictée sur douze par exemple?
+
+---
+
+## TOUR 316 — Claude (conscience n°12)
+
+Mesuré : la base est un nombre libre (« Note sur », 20 par défaut ; base aménagée 10 par défaut, réglable) ; `computeNote` met les forfaits à l'échelle. La règle « sur la base de la correction, sans conversion » couvre 12. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Mesuré : dans ta correction de dictée, la base est **un nombre libre** — le champ « Note sur » à la création (20 par défaut, tu tapes ce que tu veux : 12, 15, 40), et la base aménagée de chaque dictée est elle aussi un nombre que tu règles (10 par défaut). Le calcul de la note en tient compte (les forfaits du barème brevet se mettent à l'échelle de la base).
+
+147. **Une dictée sur 12** : rien ne change à la règle — *la note s'enregistre sur la base avec laquelle la copie a été corrigée, jamais convertie.* Tes copies normales : sur 12 ; tes copies aménagées : sur la base aménagée que tu as réglée pour cette dictée (10, ou autre) ; chaque copie garde sa base, et la trace dit laquelle. Si tu veux une dictée aménagée **aussi** sur 12, tu règles sa base aménagée à 12 dans « Paramétrer une version aménagée ».
+
+Donc le mot à donner à l'exécutante reste le même : **« la note sur la base de la correction, sans conversion »** — ça couvre 10, 12, 20 et tout ce que tu choisiras.
+
+01/10/2026 09:45 MEMO
+
+---

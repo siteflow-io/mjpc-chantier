@@ -10851,3 +10851,28 @@ Il me reste donc **212** (ta largeur) et **218** (ok pour « à blanc d'abord »
 01/10/2026 18:55 MEMO
 
 ---
+
+## TOUR 342 — Paul
+
+Texte de Paul, mot pour mot :
+
+> La troisième proposition dans chaque capture et pour la correction rapide affiche plus de contenu de phrase. Pour le reclassement, si ça impacte que les copies de l'année dernière dans ce cas ce n'est pas grave. Dis moi juste si le cas se représentera sur des copies ultérieures ( y compris la dictée Dylan)
+
+---
+
+## TOUR 342 — Claude (conscience n°12)
+
+1100 px retenu, contexte de phrase en mode rapide. Réponse : M sur ponctuation ne se représentera plus (0 Dylan, 5 l'an dernier) ; ponctuation en trop : Dylan 4 (3 copies) + 19 l'an dernier, puis automatique. Mandat « L'écran de correction » (L1-L8) écrit, déposé au sas sans jetons (`MANDATS/MANDAT-DICTEE-CORRECTION.md`, 3 018 mots), livré en bloc avec les jetons dans la conversation. Exécutant neuf conseillé.
+
+Réponse mot pour mot (le mandat = le fichier déposé, reproduit avec les jetons) :
+
+Pris : **1100 px**, et le mode rapide montre plus de la phrase. Sur le reclassement, mesuré au hub :
+
+220. **Le cas « M sur une ponctuation » ne se représentera plus** : après la livraison, la touche M s'adapte et le menu au clic l'est déjà — aucun geste ne peut plus le produire ; il n'existe que dans 5 copies de l'an dernier, **0 chez les Dylan**. **Le cas « ponctuation en trop »**, lui, existe chez les Dylan (4 signes, 3 copies) et dans les brevets blancs de l'an dernier (19) : c'est précisément ce que tu veux reclasser (les 0,5 rendus) ; après la livraison, un signe « en plus » part **automatiquement** au forfait à la saisie — le cas ne se représente plus non plus. Le reclassement se fait d'abord **à blanc** (un rapport copie par copie que tu lis), puis pour de bon après ton « ok », avec une archive en corbeille.
+
+Le mandat est écrit et déposé (`MANDATS/MANDAT-DICTEE-CORRECTION.md`, 3 018 mots, sans jetons) : huit livraisons — **L1** jamais de perte, enregistrement instantané et position reprise · **L2** ⇧R bascule · **L3** M qui s'adapte, clavier réduit, boutons pré-sélectionnés + Entrée, le mot juste bloqué · **L4** le reclassement à blanc (ton « ok ») · **L5** le reclassement réel, la ponctuation en trop automatique, le bouton « M→P » retiré · **L6** la recherche par initiales en fin de copie rapide · **L7** la largeur 1100 et la phrase · **L8** la recherche permanente et le curseur au clavier. Chacune avec ses bancs par le geste ajoutés au kit, le banc unique vert, les captures, un arrêt. **Il faut un exécutant neuf** (la relectrice a sa conversation ELEVE-1 ; ce chantier a son kit) : ouvre une conversation, donne-lui `banc_dictee_kit.zip`, puis colle le bloc ci-dessous.
+
+
+01/10/2026 19:45 MEMO
+
+---

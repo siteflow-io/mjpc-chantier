@@ -10653,3 +10653,28 @@ Promu : `correction_dictee.html` 6.6.2, commit `31090d39746f`, **bit à bit** (7
 01/10/2026 12:55 MEMO
 
 ---
+
+## TOUR 335 — Paul
+
+Texte de Paul, mot pour mot :
+
+> bug quand je clique sur sauter à la fin, en correction rapide: react-dom.production.min.js:121 ReferenceError: editForm is not defined at correction_dictee.html?v=6.6.2:3880:23 […] Uncaught ReferenceError: editForm is not defined
+
+---
+
+## TOUR 335 — Claude (conscience n°12)
+
+Mesuré : le bloc « Barème » de l'écran « Terminé ! » du mode Rapide lit `editForm` (variable d'`EditionDictee`) — présent dans la 6.5.0 (hérité). Registre n°12 · 93. Micro 6.6.3 : bloc retiré (−1 014 o), `node --check` 0 ; banc par le geste (Rapide → Sauter à la fin) VERT 3/0 (6.6.2 tombe, 6.6.3 « Terminé ! ») ; captures ; déposé `LIVRAISONS/MICRO-fin-rapide/` bit à bit. Attend le promeus.
+
+Réponse mot pour mot :
+
+Mesuré, corrigé, prouvé, déposé (`LIVRAISONS/MICRO-fin-rapide/`) — rien de promu :
+
+191. **La cause** : l'écran « Terminé ! » du mode Rapide portait un bloc « Barème » (deux boutons radio) qui lisait une variable de **l'édition de la dictée**, inexistante dans l'écran de correction → la page tombe dès qu'un élève pas encore corrigé arrive au bout par « Sauter à la fin ». **Ce bloc est dans ta 6.5.0 d'hier** : ce n'est pas une régression de ④ ni de ② bis, c'est un défaut hérité que ce chemin révèle. Inscrit au registre, **n°12 · 93**.
+192. **Le micro 6.6.3** : le bloc mort est retiré (le barème se règle dans Préparation, comme avant) — 12 lignes de moins, 737 081 o, `node --check` 0 erreur. **Banc par le geste** (ouvrir la dictée → ⚡ Rapide → « Sauter à la fin », sur faux Firebase, ZZTEST) : **6.6.2 tombe (« editForm is not defined ») ; 6.6.3 affiche « Terminé ! », 0 erreur JS** ; 0 sortie du navigateur. VERT 3/0. Captures ci-dessus : avant (l'écran figé) / après (« Terminé ! », Enregistrer, Relire).
+
+**Tu peux promouvoir** (`promeus`). Après : https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?v=6.6.3 → ta dictée → ⚡ Rapide → « Sauter à la fin » → « Terminé ! » → Enregistrer.
+
+01/10/2026 13:15 MEMO
+
+---

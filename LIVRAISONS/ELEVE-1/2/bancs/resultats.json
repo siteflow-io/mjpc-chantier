@@ -1,0 +1,2427 @@
+{
+ "R": {
+  "A_cle": true,
+  "A_chips": [
+   "Classe lue dans le fichier « ZZTEST-3e.xlsx » : 3 ZZTEST",
+   "→ déjà présente : ZZTEST 3e (à compléter)",
+   "classe visée : \n— choisis —\nnouvelle classe « 3 ZZTEST »\nZZTEST 3e",
+   "25 élèves",
+   "12 F · 12 M · 1 sans sexe",
+   "1 dispositif (à préciser dans la fiche : les cases PAP)",
+   "colonnes ignorées : Age, Régime",
+   "✔ aucun doublon",
+   "déjà présents : 0 · nouveaux : 25",
+   "1 ligne sans nom, ignorée",
+   "1 date de naissance illisible, laissée vide",
+   "premier import de cette classe — reprise : 1 sexe du QCM (là où le fichier n’en donne pas) · 1 aménagement de dictée (case pap-15 de la fiche)",
+   "restes de l’an dernier (classes supprimées) : 2 sexes du QCM (1 classe) · 1 aménagement de dictée (1 classe) → partiront en corbeille"
+  ],
+  "A_msg": "✔ Écrit dans « ZZTEST 3e » : la liste (25 nouveaux) · 25 profils · 2 dispositifs dans la classe · reprise : 1 sexe du QCM, 1 aménagement de dictée · restes de l’an dernier : 3 en corbeille",
+  "A": {
+   "eleves": 25,
+   "nb": 2,
+   "annee": "2026-2027",
+   "amen": {
+    "zztest_mu_leo": {
+     "sexe": "m"
+    },
+    "zztest_pi_noe": {
+     "sexe": "m"
+    },
+    "zztest_nu_maya": {
+     "sexe": "f"
+    },
+    "zztest_xi_marc": {
+     "sexe": "m"
+    },
+    "zztest_zeta_dan": {
+     "sexe": "m"
+    },
+    "zztest_eta_gina": {
+     "sexe": "f"
+    },
+    "zztest_rho_rose": {
+     "sexe": "f"
+    },
+    "zztest_tau_sara": {
+     "sexe": "f"
+    },
+    "zztest_phi_tess": {
+     "sexe": "f"
+    },
+    "zztest_chi_yann": {
+     "sexe": "m"
+    },
+    "zztest_psi_vera": {
+     "sexe": "f"
+    },
+    "zztest_iota_ines": {
+     "sexe": "f"
+    },
+    "zztest_alpha_anna": {
+     "sexe": "f"
+    },
+    "zztest_beta_bruno": {
+     "sexe": "m",
+     "dicteeAmenagee": true
+    },
+    "zztest_delta_carl": {
+     "sexe": "m"
+    },
+    "zztest_theta_hugo": {
+     "sexe": "m"
+    },
+    "zztest_kappa_ivan": {
+     "sexe": "m"
+    },
+    "zztest_lambda_lea": {
+     "sexe": "f"
+    },
+    "zztest_sigma_remi": {
+     "sexe": "m"
+    },
+    "zztest_omega_axel": {
+     "sexe": "m"
+    },
+    "zztest_aurora_zoe": {
+     "sexe": "f"
+    },
+    "zztest_gamma_clara": {
+     "sexe": "f"
+    },
+    "zztest_epsilon_emma": {
+     "sexe": "f"
+    },
+    "zztest_omicron_nina": {
+     "sexe": "f"
+    },
+    "zztest_upsilon_theo": {
+     "sexe": "m"
+    }
+   },
+   "profils": {
+    "zztest_mu_leo": {
+     "sexe": "m",
+     "attente": false,
+     "naissance": "\"2012-12-12\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_pi_noe": {
+     "sexe": "m",
+     "attente": false,
+     "naissance": "\"2012-04-16\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_nu_maya": {
+     "sexe": "f",
+     "attente": false,
+     "naissance": "\"2012-01-13\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_xi_marc": {
+     "sexe": "m",
+     "attente": false,
+     "naissance": "\"2012-02-14\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_zeta_dan": {
+     "sexe": "m",
+     "attente": false,
+     "naissance": null,
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "sexe"
+     ],
+     "forme_naissance": null
+    },
+    "zztest_eta_gina": {
+     "sexe": "f",
+     "attente": false,
+     "naissance": "\"2012-07-07\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_rho_rose": {
+     "sexe": "f",
+     "attente": false,
+     "naissance": "\"2012-05-17\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_tau_sara": {
+     "sexe": "f",
+     "attente": false,
+     "naissance": "\"2012-07-19\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_phi_tess": {
+     "sexe": "f",
+     "attente": false,
+     "naissance": "\"2012-09-21\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_chi_yann": {
+     "sexe": "m",
+     "attente": false,
+     "naissance": "\"2012-10-22\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_psi_vera": {
+     "sexe": "f",
+     "attente": false,
+     "naissance": "\"2012-11-23\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_iota_ines": {
+     "sexe": "f",
+     "attente": false,
+     "naissance": "\"2012-09-09\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_alpha_anna": {
+     "sexe": "f",
+     "attente": false,
+     "naissance": "\"2012-01-01\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_beta_bruno": {
+     "sexe": "m",
+     "attente": false,
+     "naissance": "\"2012-02-02\"",
+     "dispositif": "true",
+     "pap": "[\"pap-15\"]",
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "pap",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_delta_carl": {
+     "sexe": "m",
+     "attente": false,
+     "naissance": "\"2012-04-04\"",
+     "dispositif": "true",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_theta_hugo": {
+     "sexe": "m",
+     "attente": false,
+     "naissance": "\"2012-03-12\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_kappa_ivan": {
+     "sexe": "m",
+     "attente": false,
+     "naissance": "\"2012-10-10\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_lambda_lea": {
+     "sexe": "f",
+     "attente": false,
+     "naissance": "\"2012-11-11\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_sigma_remi": {
+     "sexe": "m",
+     "attente": false,
+     "naissance": "\"2012-06-18\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_omega_axel": {
+     "sexe": "m",
+     "attente": false,
+     "naissance": "\"2012-12-24\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_aurora_zoe": {
+     "sexe": "f",
+     "attente": false,
+     "naissance": "\"2012-01-25\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_gamma_clara": {
+     "sexe": "f",
+     "attente": false,
+     "naissance": "\"2012-03-03\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_epsilon_emma": {
+     "sexe": "f",
+     "attente": false,
+     "naissance": "\"2012-05-05\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_omicron_nina": {
+     "sexe": "f",
+     "attente": false,
+     "naissance": "\"2012-03-15\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_upsilon_theo": {
+     "sexe": "m",
+     "attente": false,
+     "naissance": "\"2012-08-20\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    }
+   }
+  },
+  "A_corb": [
+   [
+    "restes-eleve-1_073743",
+    "restes-eleve-1"
+   ]
+  ],
+  "A_tombes": [
+   "/qcm/eleveSexes/ZZTEST 5e ancienne",
+   "/classes_amenages/ZZTEST 5e ancienne"
+  ],
+  "A2_chips": [
+   "Classe lue dans le fichier « ZZTEST-3e.xlsx » : 3 ZZTEST",
+   "→ déjà présente : ZZTEST 3e (à compléter)",
+   "classe visée : \n— choisis —\nnouvelle classe « 3 ZZTEST »\nZZTEST 3e",
+   "25 élèves",
+   "12 F · 12 M · 1 sans sexe",
+   "1 dispositif (à préciser dans la fiche : les cases PAP)",
+   "colonnes ignorées : Age, Régime",
+   "✔ aucun doublon",
+   "déjà présents : 25 · nouveaux : 0",
+   "1 ligne sans nom, ignorée",
+   "1 date de naissance illisible, laissée vide",
+   "réimport : ta fiche l’emporte — dispositif, cases, remarques et synthèse déjà écrits ne sont jamais touchés ; seul le vide est complété"
+  ],
+  "A2_msg": "✔ Écrit dans « ZZTEST 3e » : la liste (0 nouveau) · 0 profil · 2 dispositifs dans la classe · reprise : 0 sexe du QCM, 0 aménagement de dictée",
+  "A2": {
+   "eleves": 25,
+   "nb": 2,
+   "annee": "2026-2027",
+   "amen": {
+    "zztest_mu_leo": {
+     "sexe": "m"
+    },
+    "zztest_pi_noe": {
+     "sexe": "m"
+    },
+    "zztest_nu_maya": {
+     "sexe": "f"
+    },
+    "zztest_xi_marc": {
+     "sexe": "m"
+    },
+    "zztest_zeta_dan": {
+     "sexe": "m"
+    },
+    "zztest_eta_gina": {
+     "sexe": "f"
+    },
+    "zztest_rho_rose": {
+     "sexe": "f"
+    },
+    "zztest_tau_sara": {
+     "sexe": "f"
+    },
+    "zztest_phi_tess": {
+     "sexe": "f"
+    },
+    "zztest_chi_yann": {
+     "sexe": "m"
+    },
+    "zztest_psi_vera": {
+     "sexe": "f"
+    },
+    "zztest_iota_ines": {
+     "sexe": "f"
+    },
+    "zztest_alpha_anna": {
+     "sexe": "f"
+    },
+    "zztest_beta_bruno": {
+     "sexe": "m",
+     "dicteeAmenagee": true
+    },
+    "zztest_delta_carl": {
+     "sexe": "m"
+    },
+    "zztest_theta_hugo": {
+     "sexe": "m"
+    },
+    "zztest_kappa_ivan": {
+     "sexe": "m"
+    },
+    "zztest_lambda_lea": {
+     "sexe": "f"
+    },
+    "zztest_sigma_remi": {
+     "sexe": "m"
+    },
+    "zztest_omega_axel": {
+     "sexe": "m"
+    },
+    "zztest_aurora_zoe": {
+     "sexe": "f"
+    },
+    "zztest_gamma_clara": {
+     "sexe": "f"
+    },
+    "zztest_epsilon_emma": {
+     "sexe": "f"
+    },
+    "zztest_omicron_nina": {
+     "sexe": "f"
+    },
+    "zztest_upsilon_theo": {
+     "sexe": "m"
+    }
+   },
+   "profils": {
+    "zztest_mu_leo": {
+     "sexe": "m",
+     "attente": false,
+     "naissance": "\"2012-12-12\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_pi_noe": {
+     "sexe": "m",
+     "attente": false,
+     "naissance": "\"2012-04-16\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_nu_maya": {
+     "sexe": "f",
+     "attente": false,
+     "naissance": "\"2012-01-13\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_xi_marc": {
+     "sexe": "m",
+     "attente": false,
+     "naissance": "\"2012-02-14\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_zeta_dan": {
+     "sexe": "m",
+     "attente": false,
+     "naissance": null,
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "sexe"
+     ],
+     "forme_naissance": null
+    },
+    "zztest_eta_gina": {
+     "sexe": "f",
+     "attente": false,
+     "naissance": "\"2012-07-07\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_rho_rose": {
+     "sexe": "f",
+     "attente": false,
+     "naissance": "\"2012-05-17\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_tau_sara": {
+     "sexe": "f",
+     "attente": false,
+     "naissance": "\"2012-07-19\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_phi_tess": {
+     "sexe": "f",
+     "attente": false,
+     "naissance": "\"2012-09-21\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_chi_yann": {
+     "sexe": "m",
+     "attente": false,
+     "naissance": "\"2012-10-22\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_psi_vera": {
+     "sexe": "f",
+     "attente": false,
+     "naissance": "\"2012-11-23\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_iota_ines": {
+     "sexe": "f",
+     "attente": false,
+     "naissance": "\"2012-09-09\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_alpha_anna": {
+     "sexe": "f",
+     "attente": false,
+     "naissance": "\"2012-01-01\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_beta_bruno": {
+     "sexe": "m",
+     "attente": false,
+     "naissance": "\"2012-02-02\"",
+     "dispositif": "true",
+     "pap": "[\"pap-15\"]",
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "pap",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_delta_carl": {
+     "sexe": "m",
+     "attente": false,
+     "naissance": "\"2012-04-04\"",
+     "dispositif": "true",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_theta_hugo": {
+     "sexe": "m",
+     "attente": false,
+     "naissance": "\"2012-03-12\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_kappa_ivan": {
+     "sexe": "m",
+     "attente": false,
+     "naissance": "\"2012-10-10\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_lambda_lea": {
+     "sexe": "f",
+     "attente": false,
+     "naissance": "\"2012-11-11\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_sigma_remi": {
+     "sexe": "m",
+     "attente": false,
+     "naissance": "\"2012-06-18\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_omega_axel": {
+     "sexe": "m",
+     "attente": false,
+     "naissance": "\"2012-12-24\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_aurora_zoe": {
+     "sexe": "f",
+     "attente": false,
+     "naissance": "\"2012-01-25\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_gamma_clara": {
+     "sexe": "f",
+     "attente": false,
+     "naissance": "\"2012-03-03\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_epsilon_emma": {
+     "sexe": "f",
+     "attente": false,
+     "naissance": "\"2012-05-05\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_omicron_nina": {
+     "sexe": "f",
+     "attente": false,
+     "naissance": "\"2012-03-15\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_upsilon_theo": {
+     "sexe": "m",
+     "attente": false,
+     "naissance": "\"2012-08-20\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    }
+   }
+  },
+  "A3": {
+   "eleves": 24,
+   "nb": 1,
+   "annee": "2026-2027",
+   "amen": {
+    "zztest_mu_leo": {
+     "sexe": "m"
+    },
+    "zztest_pi_noe": {
+     "sexe": "m"
+    },
+    "zztest_nu_maya": {
+     "sexe": "f"
+    },
+    "zztest_xi_marc": {
+     "sexe": "m"
+    },
+    "zztest_zeta_dan": {
+     "sexe": "m"
+    },
+    "zztest_eta_gina": {
+     "sexe": "f"
+    },
+    "zztest_rho_rose": {
+     "sexe": "f"
+    },
+    "zztest_tau_sara": {
+     "sexe": "f"
+    },
+    "zztest_phi_tess": {
+     "sexe": "f"
+    },
+    "zztest_chi_yann": {
+     "sexe": "m"
+    },
+    "zztest_psi_vera": {
+     "sexe": "f"
+    },
+    "zztest_iota_ines": {
+     "sexe": "f"
+    },
+    "zztest_alpha_anna": {
+     "sexe": "f"
+    },
+    "zztest_beta_bruno": {
+     "sexe": "m",
+     "dicteeAmenagee": true
+    },
+    "zztest_theta_hugo": {
+     "sexe": "m"
+    },
+    "zztest_kappa_ivan": {
+     "sexe": "m"
+    },
+    "zztest_lambda_lea": {
+     "sexe": "f"
+    },
+    "zztest_sigma_remi": {
+     "sexe": "m"
+    },
+    "zztest_omega_axel": {
+     "sexe": "m"
+    },
+    "zztest_aurora_zoe": {
+     "sexe": "f"
+    },
+    "zztest_gamma_clara": {
+     "sexe": "f"
+    },
+    "zztest_epsilon_emma": {
+     "sexe": "f"
+    },
+    "zztest_omicron_nina": {
+     "sexe": "f"
+    },
+    "zztest_upsilon_theo": {
+     "sexe": "m"
+    }
+   },
+   "profils": {
+    "zztest_mu_leo": {
+     "sexe": "m",
+     "attente": false,
+     "naissance": "\"2012-12-12\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_pi_noe": {
+     "sexe": "m",
+     "attente": false,
+     "naissance": "\"2012-04-16\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_nu_maya": {
+     "sexe": "f",
+     "attente": false,
+     "naissance": "\"2012-01-13\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_xi_marc": {
+     "sexe": "m",
+     "attente": false,
+     "naissance": "\"2012-02-14\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_zeta_dan": {
+     "sexe": "m",
+     "attente": false,
+     "naissance": null,
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "sexe"
+     ],
+     "forme_naissance": null
+    },
+    "zztest_eta_gina": {
+     "sexe": "f",
+     "attente": false,
+     "naissance": "\"2012-07-07\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_rho_rose": {
+     "sexe": "f",
+     "attente": false,
+     "naissance": "\"2012-05-17\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_tau_sara": {
+     "sexe": "f",
+     "attente": false,
+     "naissance": "\"2012-07-19\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_phi_tess": {
+     "sexe": "f",
+     "attente": false,
+     "naissance": "\"2012-09-21\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_chi_yann": {
+     "sexe": "m",
+     "attente": false,
+     "naissance": "\"2012-10-22\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_psi_vera": {
+     "sexe": "f",
+     "attente": false,
+     "naissance": "\"2012-11-23\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_iota_ines": {
+     "sexe": "f",
+     "attente": false,
+     "naissance": "\"2012-09-09\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_alpha_anna": {
+     "sexe": "f",
+     "attente": false,
+     "naissance": "\"2012-01-01\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_beta_bruno": {
+     "sexe": "m",
+     "attente": false,
+     "naissance": "\"2012-02-02\"",
+     "dispositif": "true",
+     "pap": "[\"pap-15\"]",
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "pap",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_theta_hugo": {
+     "sexe": "m",
+     "attente": false,
+     "naissance": "\"2012-03-12\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_kappa_ivan": {
+     "sexe": "m",
+     "attente": false,
+     "naissance": "\"2012-10-10\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_lambda_lea": {
+     "sexe": "f",
+     "attente": false,
+     "naissance": "\"2012-11-11\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_sigma_remi": {
+     "sexe": "m",
+     "attente": false,
+     "naissance": "\"2012-06-18\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_omega_axel": {
+     "sexe": "m",
+     "attente": false,
+     "naissance": "\"2012-12-24\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_aurora_zoe": {
+     "sexe": "f",
+     "attente": false,
+     "naissance": "\"2012-01-25\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_gamma_clara": {
+     "sexe": "f",
+     "attente": false,
+     "naissance": "\"2012-03-03\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_epsilon_emma": {
+     "sexe": "f",
+     "attente": false,
+     "naissance": "\"2012-05-05\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_omicron_nina": {
+     "sexe": "f",
+     "attente": false,
+     "naissance": "\"2012-03-15\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_upsilon_theo": {
+     "sexe": "m",
+     "attente": false,
+     "naissance": "\"2012-08-20\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    }
+   }
+  },
+  "A3_corb": "{\"classes\": {\"zztest_3e\": {\"eleves\": [\"ZZTEST DELTA Carl\"], \"profils\": {\"zztest_delta_carl\": {\"majLe\": null, \"attente\": false, \"sexe\": \"m\", \"naissance\": \"v1.bGMjQDbf0Ob91vkO.3CwM1NBqPClDx1138JQ4i9JSuqmy2jXR3KViJQ==\", \"dispositif\": \"v1.HpO3+5I/RXTxqAuG.uiQNthU5ZtE9/he7JOit1MvKCl0=\"}}, \"amenagements\": {\"zztest_delta_carl\": {\"sexe\": \"m\"}}}}}",
+  "A_hub": [],
+  "A_ext": [],
+  "A_err": [],
+  "B_chips": [
+   "Classe lue dans le fichier « ZZTEST-3e.xlsx » : 3 ZZTEST",
+   "→ déjà présente : ZZTEST 3e (à compléter)",
+   "classe visée : \n— choisis —\nnouvelle classe « 3 ZZTEST »\nZZTEST 3e",
+   "« ZZTEST 3e » n’a pas d’année scolaire : elle te sera demandée à la validation",
+   "25 élèves",
+   "12 F · 12 M · 1 sans sexe",
+   "1 dispositif (à préciser dans la fiche : les cases PAP)",
+   "colonnes ignorées : Age, Régime",
+   "✔ aucun doublon",
+   "déjà présents : 0 · nouveaux : 25",
+   "1 ligne sans nom, ignorée",
+   "1 date de naissance illisible, laissée vide",
+   "premier import de cette classe — reprise : 1 sexe du QCM (là où le fichier n’en donne pas) · 1 aménagement de dictée (case pap-15 de la fiche)",
+   "restes de l’an dernier (classes supprimées) : 2 sexes du QCM (1 classe) · 1 aménagement de dictée (1 classe) → partiront en corbeille",
+   "ta clé n’est pas saisie : la liste et le sexe s’écrivent ; les dates de naissance et les dispositifs attendront ta clé (encart en haut)"
+  ],
+  "B_titre": "Compléter la classe : son année scolaire",
+  "B_ro": true,
+  "B_msg": "✔ Écrit dans « ZZTEST 3e » : la liste (25 nouveaux) · 25 profils · 2 dispositifs dans la classe · reprise : 1 sexe du QCM, 1 aménagement de dictée · restes de l’an dernier : 3 en corbeille\n🔒 25 fiches attendent ta clé (date de naissance, dispositif) : saisis-la dans l’encart en haut. Si tu fermes la page avant, réimporte le fichier avec ta clé.",
+  "B": {
+   "eleves": 25,
+   "nb": 2,
+   "annee": "2026-2027",
+   "amen": {
+    "zztest_mu_leo": {
+     "sexe": "m"
+    },
+    "zztest_pi_noe": {
+     "sexe": "m"
+    },
+    "zztest_nu_maya": {
+     "sexe": "f"
+    },
+    "zztest_xi_marc": {
+     "sexe": "m"
+    },
+    "zztest_zeta_dan": {
+     "sexe": "m"
+    },
+    "zztest_eta_gina": {
+     "sexe": "f"
+    },
+    "zztest_rho_rose": {
+     "sexe": "f"
+    },
+    "zztest_tau_sara": {
+     "sexe": "f"
+    },
+    "zztest_phi_tess": {
+     "sexe": "f"
+    },
+    "zztest_chi_yann": {
+     "sexe": "m"
+    },
+    "zztest_psi_vera": {
+     "sexe": "f"
+    },
+    "zztest_iota_ines": {
+     "sexe": "f"
+    },
+    "zztest_alpha_anna": {
+     "sexe": "f"
+    },
+    "zztest_beta_bruno": {
+     "sexe": "m",
+     "dicteeAmenagee": true
+    },
+    "zztest_delta_carl": {
+     "sexe": "m"
+    },
+    "zztest_theta_hugo": {
+     "sexe": "m"
+    },
+    "zztest_kappa_ivan": {
+     "sexe": "m"
+    },
+    "zztest_lambda_lea": {
+     "sexe": "f"
+    },
+    "zztest_sigma_remi": {
+     "sexe": "m"
+    },
+    "zztest_omega_axel": {
+     "sexe": "m"
+    },
+    "zztest_aurora_zoe": {
+     "sexe": "f"
+    },
+    "zztest_gamma_clara": {
+     "sexe": "f"
+    },
+    "zztest_epsilon_emma": {
+     "sexe": "f"
+    },
+    "zztest_omicron_nina": {
+     "sexe": "f"
+    },
+    "zztest_upsilon_theo": {
+     "sexe": "m"
+    }
+   },
+   "profils": {
+    "zztest_mu_leo": {
+     "sexe": "m",
+     "attente": true,
+     "naissance": null,
+     "dispositif": null,
+     "pap": null,
+     "champs": [
+      "attente",
+      "majLe",
+      "sexe"
+     ],
+     "forme_naissance": null
+    },
+    "zztest_pi_noe": {
+     "sexe": "m",
+     "attente": true,
+     "naissance": null,
+     "dispositif": null,
+     "pap": null,
+     "champs": [
+      "attente",
+      "majLe",
+      "sexe"
+     ],
+     "forme_naissance": null
+    },
+    "zztest_nu_maya": {
+     "sexe": "f",
+     "attente": true,
+     "naissance": null,
+     "dispositif": null,
+     "pap": null,
+     "champs": [
+      "attente",
+      "majLe",
+      "sexe"
+     ],
+     "forme_naissance": null
+    },
+    "zztest_xi_marc": {
+     "sexe": "m",
+     "attente": true,
+     "naissance": null,
+     "dispositif": null,
+     "pap": null,
+     "champs": [
+      "attente",
+      "majLe",
+      "sexe"
+     ],
+     "forme_naissance": null
+    },
+    "zztest_zeta_dan": {
+     "sexe": "m",
+     "attente": true,
+     "naissance": null,
+     "dispositif": null,
+     "pap": null,
+     "champs": [
+      "attente",
+      "majLe",
+      "sexe"
+     ],
+     "forme_naissance": null
+    },
+    "zztest_eta_gina": {
+     "sexe": "f",
+     "attente": true,
+     "naissance": null,
+     "dispositif": null,
+     "pap": null,
+     "champs": [
+      "attente",
+      "majLe",
+      "sexe"
+     ],
+     "forme_naissance": null
+    },
+    "zztest_rho_rose": {
+     "sexe": "f",
+     "attente": true,
+     "naissance": null,
+     "dispositif": null,
+     "pap": null,
+     "champs": [
+      "attente",
+      "majLe",
+      "sexe"
+     ],
+     "forme_naissance": null
+    },
+    "zztest_tau_sara": {
+     "sexe": "f",
+     "attente": true,
+     "naissance": null,
+     "dispositif": null,
+     "pap": null,
+     "champs": [
+      "attente",
+      "majLe",
+      "sexe"
+     ],
+     "forme_naissance": null
+    },
+    "zztest_phi_tess": {
+     "sexe": "f",
+     "attente": true,
+     "naissance": null,
+     "dispositif": null,
+     "pap": null,
+     "champs": [
+      "attente",
+      "majLe",
+      "sexe"
+     ],
+     "forme_naissance": null
+    },
+    "zztest_chi_yann": {
+     "sexe": "m",
+     "attente": true,
+     "naissance": null,
+     "dispositif": null,
+     "pap": null,
+     "champs": [
+      "attente",
+      "majLe",
+      "sexe"
+     ],
+     "forme_naissance": null
+    },
+    "zztest_psi_vera": {
+     "sexe": "f",
+     "attente": true,
+     "naissance": null,
+     "dispositif": null,
+     "pap": null,
+     "champs": [
+      "attente",
+      "majLe",
+      "sexe"
+     ],
+     "forme_naissance": null
+    },
+    "zztest_iota_ines": {
+     "sexe": "f",
+     "attente": true,
+     "naissance": null,
+     "dispositif": null,
+     "pap": null,
+     "champs": [
+      "attente",
+      "majLe",
+      "sexe"
+     ],
+     "forme_naissance": null
+    },
+    "zztest_alpha_anna": {
+     "sexe": "f",
+     "attente": true,
+     "naissance": null,
+     "dispositif": null,
+     "pap": null,
+     "champs": [
+      "attente",
+      "majLe",
+      "sexe"
+     ],
+     "forme_naissance": null
+    },
+    "zztest_beta_bruno": {
+     "sexe": "m",
+     "attente": true,
+     "naissance": null,
+     "dispositif": null,
+     "pap": null,
+     "champs": [
+      "attente",
+      "majLe",
+      "sexe"
+     ],
+     "forme_naissance": null
+    },
+    "zztest_delta_carl": {
+     "sexe": "m",
+     "attente": true,
+     "naissance": null,
+     "dispositif": null,
+     "pap": null,
+     "champs": [
+      "attente",
+      "majLe",
+      "sexe"
+     ],
+     "forme_naissance": null
+    },
+    "zztest_theta_hugo": {
+     "sexe": "m",
+     "attente": true,
+     "naissance": null,
+     "dispositif": null,
+     "pap": null,
+     "champs": [
+      "attente",
+      "majLe",
+      "sexe"
+     ],
+     "forme_naissance": null
+    },
+    "zztest_kappa_ivan": {
+     "sexe": "m",
+     "attente": true,
+     "naissance": null,
+     "dispositif": null,
+     "pap": null,
+     "champs": [
+      "attente",
+      "majLe",
+      "sexe"
+     ],
+     "forme_naissance": null
+    },
+    "zztest_lambda_lea": {
+     "sexe": "f",
+     "attente": true,
+     "naissance": null,
+     "dispositif": null,
+     "pap": null,
+     "champs": [
+      "attente",
+      "majLe",
+      "sexe"
+     ],
+     "forme_naissance": null
+    },
+    "zztest_sigma_remi": {
+     "sexe": "m",
+     "attente": true,
+     "naissance": null,
+     "dispositif": null,
+     "pap": null,
+     "champs": [
+      "attente",
+      "majLe",
+      "sexe"
+     ],
+     "forme_naissance": null
+    },
+    "zztest_omega_axel": {
+     "sexe": "m",
+     "attente": true,
+     "naissance": null,
+     "dispositif": null,
+     "pap": null,
+     "champs": [
+      "attente",
+      "majLe",
+      "sexe"
+     ],
+     "forme_naissance": null
+    },
+    "zztest_aurora_zoe": {
+     "sexe": "f",
+     "attente": true,
+     "naissance": null,
+     "dispositif": null,
+     "pap": null,
+     "champs": [
+      "attente",
+      "majLe",
+      "sexe"
+     ],
+     "forme_naissance": null
+    },
+    "zztest_gamma_clara": {
+     "sexe": "f",
+     "attente": true,
+     "naissance": null,
+     "dispositif": null,
+     "pap": null,
+     "champs": [
+      "attente",
+      "majLe",
+      "sexe"
+     ],
+     "forme_naissance": null
+    },
+    "zztest_epsilon_emma": {
+     "sexe": "f",
+     "attente": true,
+     "naissance": null,
+     "dispositif": null,
+     "pap": null,
+     "champs": [
+      "attente",
+      "majLe",
+      "sexe"
+     ],
+     "forme_naissance": null
+    },
+    "zztest_omicron_nina": {
+     "sexe": "f",
+     "attente": true,
+     "naissance": null,
+     "dispositif": null,
+     "pap": null,
+     "champs": [
+      "attente",
+      "majLe",
+      "sexe"
+     ],
+     "forme_naissance": null
+    },
+    "zztest_upsilon_theo": {
+     "sexe": "m",
+     "attente": true,
+     "naissance": null,
+     "dispositif": null,
+     "pap": null,
+     "champs": [
+      "attente",
+      "majLe",
+      "sexe"
+     ],
+     "forme_naissance": null
+    }
+   }
+  },
+  "B2": {
+   "eleves": 25,
+   "nb": 0,
+   "annee": "2026-2027",
+   "amen": {
+    "zztest_mu_leo": {
+     "sexe": "m"
+    },
+    "zztest_pi_noe": {
+     "sexe": "m"
+    },
+    "zztest_nu_maya": {
+     "sexe": "f"
+    },
+    "zztest_xi_marc": {
+     "sexe": "m"
+    },
+    "zztest_zeta_dan": {
+     "sexe": "m"
+    },
+    "zztest_eta_gina": {
+     "sexe": "f"
+    },
+    "zztest_rho_rose": {
+     "sexe": "f"
+    },
+    "zztest_tau_sara": {
+     "sexe": "f"
+    },
+    "zztest_phi_tess": {
+     "sexe": "f"
+    },
+    "zztest_chi_yann": {
+     "sexe": "m"
+    },
+    "zztest_psi_vera": {
+     "sexe": "f"
+    },
+    "zztest_iota_ines": {
+     "sexe": "f"
+    },
+    "zztest_alpha_anna": {
+     "sexe": "f"
+    },
+    "zztest_beta_bruno": {
+     "sexe": "m",
+     "dicteeAmenagee": true
+    },
+    "zztest_delta_carl": {
+     "sexe": "m"
+    },
+    "zztest_theta_hugo": {
+     "sexe": "m"
+    },
+    "zztest_kappa_ivan": {
+     "sexe": "m"
+    },
+    "zztest_lambda_lea": {
+     "sexe": "f"
+    },
+    "zztest_sigma_remi": {
+     "sexe": "m"
+    },
+    "zztest_omega_axel": {
+     "sexe": "m"
+    },
+    "zztest_aurora_zoe": {
+     "sexe": "f"
+    },
+    "zztest_gamma_clara": {
+     "sexe": "f"
+    },
+    "zztest_epsilon_emma": {
+     "sexe": "f"
+    },
+    "zztest_omicron_nina": {
+     "sexe": "f"
+    },
+    "zztest_upsilon_theo": {
+     "sexe": "m"
+    }
+   },
+   "profils": {
+    "zztest_mu_leo": {
+     "sexe": "m",
+     "attente": false,
+     "naissance": "\"2012-12-12\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_pi_noe": {
+     "sexe": "m",
+     "attente": false,
+     "naissance": "\"2012-04-16\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_nu_maya": {
+     "sexe": "f",
+     "attente": false,
+     "naissance": "\"2012-01-13\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_xi_marc": {
+     "sexe": "m",
+     "attente": false,
+     "naissance": "\"2012-02-14\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_zeta_dan": {
+     "sexe": "m",
+     "attente": false,
+     "naissance": null,
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "sexe"
+     ],
+     "forme_naissance": null
+    },
+    "zztest_eta_gina": {
+     "sexe": "f",
+     "attente": false,
+     "naissance": "\"2012-07-07\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_rho_rose": {
+     "sexe": "f",
+     "attente": false,
+     "naissance": "\"2012-05-17\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_tau_sara": {
+     "sexe": "f",
+     "attente": false,
+     "naissance": "\"2012-07-19\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_phi_tess": {
+     "sexe": "f",
+     "attente": false,
+     "naissance": "\"2012-09-21\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_chi_yann": {
+     "sexe": "m",
+     "attente": false,
+     "naissance": "\"2012-10-22\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_psi_vera": {
+     "sexe": "f",
+     "attente": false,
+     "naissance": "\"2012-11-23\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_iota_ines": {
+     "sexe": "f",
+     "attente": false,
+     "naissance": "\"2012-09-09\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_alpha_anna": {
+     "sexe": "f",
+     "attente": false,
+     "naissance": "\"2012-01-01\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_beta_bruno": {
+     "sexe": "m",
+     "attente": false,
+     "naissance": "\"2012-02-02\"",
+     "dispositif": "true",
+     "pap": "[\"pap-15\"]",
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "pap",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_delta_carl": {
+     "sexe": "m",
+     "attente": false,
+     "naissance": "\"2012-04-04\"",
+     "dispositif": "true",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_theta_hugo": {
+     "sexe": "m",
+     "attente": false,
+     "naissance": "\"2012-03-12\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_kappa_ivan": {
+     "sexe": "m",
+     "attente": false,
+     "naissance": "\"2012-10-10\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_lambda_lea": {
+     "sexe": "f",
+     "attente": false,
+     "naissance": "\"2012-11-11\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_sigma_remi": {
+     "sexe": "m",
+     "attente": false,
+     "naissance": "\"2012-06-18\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_omega_axel": {
+     "sexe": "m",
+     "attente": false,
+     "naissance": "\"2012-12-24\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_aurora_zoe": {
+     "sexe": "f",
+     "attente": false,
+     "naissance": "\"2012-01-25\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_gamma_clara": {
+     "sexe": "f",
+     "attente": false,
+     "naissance": "\"2012-03-03\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_epsilon_emma": {
+     "sexe": "f",
+     "attente": false,
+     "naissance": "\"2012-05-05\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_omicron_nina": {
+     "sexe": "f",
+     "attente": false,
+     "naissance": "\"2012-03-15\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    },
+    "zztest_upsilon_theo": {
+     "sexe": "m",
+     "attente": false,
+     "naissance": "\"2012-08-20\"",
+     "dispositif": "false",
+     "pap": null,
+     "champs": [
+      "attente",
+      "dispositif",
+      "majLe",
+      "naissance",
+      "sexe"
+     ],
+     "forme_naissance": "3 morceaux"
+    }
+   }
+  },
+  "B_hub": [],
+  "B_ext": [],
+  "B_err": [],
+  "C_pre": [
+   "3 ZZTEST",
+   "3e",
+   "2026-2027"
+  ],
+  "C": {
+   "3_zztest": [
+    25,
+    2
+   ]
+  },
+  "C_hub": [],
+  "C_err": [],
+  "D_verif": [
+   "ZZTEST ARCH Ada\nNom et code\nTravail\n3 données"
+  ],
+  "D_archive": "{\"classes\": {\"zztest_arch\": {\"eleves\": [\"ZZTEST ARCH Ada\"]}}}",
+  "D_archive_sans_fiche": true,
+  "D_corbeille_a_la_fiche": true,
+  "D_effaces": [
+   "/classes/zztest_arch/profils/zztest_arch_ada",
+   "/classes/zztest_arch/amenagements/zztest_arch_ada"
+  ],
+  "D_hub": [],
+  "D_err": []
+ },
+ "qcm": {
+  "base": {
+   "ecoutes": [
+    "classes",
+    "qcm/eleveSexes"
+   ],
+   "sexes": {
+    "ZZTEST ALPHA Anna": "m",
+    "ZZTEST BETA Bruno": null,
+    "ZZTEST GAMMA Clara": "f"
+   },
+   "migration": {
+    "classesCopiees": 0,
+    "sexesMigres": 1
+   },
+   "ecritures": [
+    "set qcm/eleveSexes/ZZTEST LEGACY/zztest_old_otto"
+   ]
+  },
+  "livree": {
+   "ecoutes": [
+    "classes"
+   ],
+   "sexes": {
+    "ZZTEST ALPHA Anna": "f",
+    "ZZTEST BETA Bruno": "m",
+    "ZZTEST GAMMA Clara": null
+   },
+   "migration": {
+    "classesCopiees": 0,
+    "sexesMigres": 0
+   },
+   "ecritures": []
+  }
+ },
+ "vue": {
+  "base": {
+   "tag": "base",
+   "texte_visible": 613,
+   "mots_interdits": {
+    "aménag": false,
+    "PAP": false,
+    "◆": false,
+    "mode test": false,
+    "Mode test": false
+   },
+   "ecritures_hub": [
+    [
+     "PUT",
+     "/presence/u-zz1"
+    ]
+   ],
+   "externes_non_GET": [],
+   "erreurs_js": []
+  },
+  "livree": {
+   "tag": "livree",
+   "texte_visible": 613,
+   "mots_interdits": {
+    "aménag": false,
+    "PAP": false,
+    "◆": false,
+    "mode test": false,
+    "Mode test": false
+   },
+   "ecritures_hub": [
+    [
+     "PUT",
+     "/presence/u-zz1"
+    ]
+   ],
+   "externes_non_GET": [],
+   "erreurs_js": []
+  }
+ },
+ "hub": [
+  {
+   "classes": 9,
+   "codes": 128,
+   "eleves": 3,
+   "eleves_index": 3,
+   "corbeille": 25,
+   "manifestes": 11,
+   "classes_amenages": 1,
+   "qcm_eleveSexes": 9
+  },
+  {
+   "classes": 9,
+   "codes": 128,
+   "eleves": 3,
+   "eleves_index": 3,
+   "corbeille": 25,
+   "manifestes": 11,
+   "classes_amenages": 1,
+   "qcm_eleveSexes": 9
+  }
+ ]
+}

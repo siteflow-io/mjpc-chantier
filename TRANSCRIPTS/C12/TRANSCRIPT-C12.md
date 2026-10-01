@@ -10206,3 +10206,31 @@ Réponse à 166 (Paul, par la conscience n°12, 01/10) : (a). Dans l'écran du p
 01/10/2026 10:00 MEMO
 
 ---
+
+## TOUR 319 — Paul
+
+Texte de Paul, mot pour mot :
+
+> livré
+
+---
+
+## TOUR 319 — Claude (conscience n°12)
+
+Audit de `LIVRAISONS/ELEVE-1/4/` : diff 63/132, 6.6.0, `isEleveAmenage` → fiche via `registreDepuisAmenagements`, `toggleAmenageClasse` retirée, trace `{amenagee, mode, base}`, recalcul épargne les aménagées, `baseDeCopie`, feuille sans le mot, `classes_amenages` au contrat tant que non vide ; banc unique rejoué VERT 19/0 (faux Firebase ; premier rejeu tombé par mon montage, rejoué) ; dettes 79, 84, 85, 86 réglées au registre ; captures regardées. Verdict : ça va, promouvable. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Audit de la livraison ④ (« la correction de dictée lit l'aménagement de la fiche », `LIVRAISONS/ELEVE-1/4/`), mesuré :
+
+149. **Le fichier** : base = ta 6.5.0 (`75f48e2d…`, vérifiée, tu ne l'as pas repoussée) → **6.6.0, 735 974 o (+11 318)**, md5 `f4cdfbef…` ; 63 lignes retirées, 132 ajoutées ; `node --check` 0 erreur. **Vérifié dans le code** : `isEleveAmenage` suit d'abord le choix fait pour la dictée, sinon **la fiche** (`registreDepuisAmenagements` : la case `dicteeAmenagee` de `/classes/<clé>/amenagements`, la classe trouvée par sa clé) ; `toggleAmenageClasse` a disparu ; les deux seules lectures restantes de l'ancien registre servent à **tracer une fois les copies d'avant**, conformément au mandat ; la trace `{ amenagee, mode, base }` est écrite à l'enregistrement et le recalcul **s'arrête** sur une copie `amenagee === true` ; la note se lit sur la base de la copie (`baseDeCopie`), jamais convertie ; dans la feuille papier, le mot « aménagée » n'est plus que dans un commentaire du code ; `classes_amenages` reste au contrat de purge tant qu'il n'est pas vide (mesuré : 1 classe) — conforme.
+150. **Le banc unique, rejoué par moi** (la dictée entière sur un faux Firebase en mémoire, React et jszip servis en local, 0 requête sortante ; vrai hub lu avant/après, identique) : **VERT, 19 vérifications, 0 échec** — avant (6.5.0) : pas de ligne PAP, Anna « 8/20 » ; après : la ligne PAP mot pour mot, Bruno « aménagé » d'après sa fiche, l'ancienne copie d'Anna tracée une fois (A+C, base 10) et « 8/10 » ; le clic droit aller-retour sans « registre » ; le bloc aller-retour ; la copie de Bruno « Enregistrer (10/10) » → 10, trace A+C base 10 ; Clara « (20/20) » → 20 sans base écrite ; l'encart « 20/20 · 2 copies aménagées — moyenne 9/10 » ; la base 20 → 12 : Clara 12, Anna 8 et Bruno 10 intactes ; le bilan suit sans rouvrir ; une nouvelle copie « (12/12) » ; la feuille sans le mot ni l'identifiant ; le bilan exporté avec chaque base, aucun mot ; l'écran de Bruno « 10/10 », ni « aménagé », ni « PAP », ni ◆. (Mon premier rejeu est tombé au premier point : mon montage servait la livrée deux fois ; rejoué avec la base sous son propre nom : vert.)
+151. **Trois dettes déjà là, rencontrées à son banc et réglées dans la livraison, au registre (n°12 · 84, 85, 86)** : l'écran ne lisait jamais la version aménagée ; après un changement de base l'écran gardait les anciennes notes ; les élèves fictifs du bac à sable portaient des noms possibles (maintenant `ZZTEST …`). Et **la 79** (le recalcul) réglée. Pas de dette restante.
+152. **Un mot qu'elle cite de toi** — « l'aménagement n'est pas un secret d'État » — a fixé le bilan exporté (chaque note avec sa base, pour une analyse) : c'est ta décision dans sa conversation, je la prends telle quelle ; rien ne va à l'élève.
+153. **Verdict : ça va. Tu peux promouvoir ④** (`correction_dictee.html` 6.6.0). Captures ci-dessus : l'écran de correction (la ligne PAP, Bruno aménagé, Anna 8/10), la copie de Bruno « Enregistrer (10/10) », l'encart Moyenne, ce que voit l'élève.
+
+Tes tests, après promotion (https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?v=6.6.0) : 1) Accès professeur ; 2) une dictée qui a sa version aménagée, dans une classe où une fiche a pap-15 coché : la ligne « PAP · … » en haut, « aménagé » sur la carte ; 3) clic droit sur l'élève → « Retirer aménagé (cette dictée) » : « non aménagé (cette dictée) » ; clic droit → « Aménagé (cette dictée) » : retour à sa fiche ; 4) corrige sa copie : « Enregistrer (10/10) », la carte « …/10 » ; 5) Données → Bilan : « Moyenne …/20 » et « n copies aménagées — moyenne …/10 » ; 6) Préparation → change « Note sur » → Enregistrer : le bilan suit, la copie aménagée n'a pas bougé ; 7) la feuille de la version aménagée : le mot n'y est plus ; 8) le bac à sable (🧪) : ses élèves s'appellent « ZZTEST … ». Ton « promeus » — puis **la dette vivante** : ② bis (le QCM), déjà au sas, à coller à l'exécutante.
+
+01/10/2026 11:05 MEMO
+
+---

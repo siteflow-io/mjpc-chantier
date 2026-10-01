@@ -10731,3 +10731,33 @@ Réponds « (a) ou (b) » et la largeur ; je rédige alors le bloc copiable avec
 01/10/2026 13:50 MEMO
 
 ---
+
+## TOUR 338 — Paul
+
+Texte de Paul, mot pour mot :
+
+> il y a d'autres choses: quand la correction détecte que le mot que je tape est le même que le bon mot, elle doit me bloquer. en effet, j'ai tendance à écrire le bon mot (déformation professionnelle) alors que je dois recopier le mot mal écrit de l'élève. de plus, j'ai des raccourcis claviers pour les types d'erreurs natifs, mais les nouveaux que j'ai codés avec l'instance dictée n'ont aucun raccourci clavier. par exemple, sur une ponctuation, j'ai bien le "manquant" qui passe en "ponctuation", donc c'est parfait, mais quand je clique M, il enregistre manquant et ignore le fait que c'est une ponctuation manquante. fais l'audit. et voici le banc
+
+(joint : `banc_dictee_kit.zip`, md5 62b94362…)
+
+---
+
+## TOUR 338 — Claude (conscience n°12)
+
+Kit déballé (instantané avec noms réels : jamais au sas) ; `scenarios_modes.py` rejoué sur la 6.6.3 : S1 et S3 perdent, S2 correct. Audit mesuré : la saisie du fautif (`confirmFautifI`, `confirmFautifTexte`, `submitFautif`) n'est jamais comparée au mot attendu (N3) ; au clic le menu remplace M par P sur une ponctuation, au clavier M marque M (N4) ; touches existantes G L M(/) I(?) P E A Espace Retour, aucune pour X ; mode texte sans raccourci. Décisions demandées : B2 (a/b), N2 largeur, raccourcis manquants. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Kit reçu (md5 `62b94362…`, le bon), déballé, et son premier banc rejoué **sur la 6.6.3 en ligne** : `scenarios_modes.py` → **S1 : perte silencieuse au retour (rouverte « 10 … · · −0 », hub vide) ; S3 : ⇧R → « 0 err. », hub vide ; S2 correct** — les constats de la conscience « dictée » tiennent sur la version promue. (Son instantané porte des listes d'élèves réels : il reste chez toi et chez moi, jamais au sas.)
+
+**L'audit de tes deux demandes, mesuré dans la 6.6.3 :**
+
+198. **Le bon mot tapé à la place du mot de l'élève (N3)** : les trois endroits où tu recopies ce qu'a écrit l'élève (le menu du mode texte, le mode rapide, l'ancien écran) **acceptent n'importe quoi** — la saisie est rangée telle quelle, jamais comparée au mot attendu. Rien ne te bloque. À faire : si ce que tu tapes est le mot juste (comparé sans la casse), le champ refuse — « c'est le mot juste : recopie ce que l'élève a écrit » — et reste ouvert ; tu peux toujours laisser vide (le trou numéroté existant).
+199. **La touche M sur une ponctuation (N4)** : au **clic**, sur un signe de ponctuation, le menu remplace bien « ∅ Manquant » par « · Ponct. manquante » (c'est ce que tu décris) ; **au clavier**, la touche M (ou « / ») marque « M » sans regarder le signe — dans le mode rapide comme dans l'ancien écran — et c'est le bouton « M→P » qui rattrape après coup. À faire : M sur une ponctuation marque P, comme le clic (l'apostrophe reste une élision, E, comme aujourd'hui).
+200. **Les raccourcis des types** : mesuré, le mode rapide a une touche pour **G, L, M (/), I (?), P (sur un signe), E (sur une apostrophe), A**, Espace (correct), Retour (précédent) ; **aucune touche pour le mot en trop (X)**, qui ne se pose qu'au clic. Le mode texte n'a aucun raccourci (tout passe par le menu au clic). **Dis-moi lesquels te manquent** — le mot en trop au clavier ? des touches dans le mode texte ? — je ne les devine pas.
+
+**Ce qu'il me faut de toi pour écrire le bloc de l'exécutant** (une réponse par numéro) : **196** B2 : (a) ou (b) ; N2 : 1100 px ou autre ; **200** : les raccourcis qui manquent. Le mandat de la conscience « dictée » s'élargit alors de N3 (le bon mot bloqué) et N4 (M → P au clavier, les raccourcis), avec la base 6.6.3 et les jetons.
+
+01/10/2026 14:05 MEMO
+
+---

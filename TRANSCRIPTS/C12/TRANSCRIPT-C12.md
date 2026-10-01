@@ -10603,3 +10603,29 @@ Dis « ok » et j'écris les deux textes, prêts à coller.
 01/10/2026 13:00 MEMO
 
 ---
+
+## TOUR 333 — Paul
+
+Texte de Paul, mot pour mot :
+
+> fais le directement. passe au banc et compagnie, puis dis moi quand je peux promouvoir. oas besoin d'exécutant
+
+---
+
+## TOUR 333 — Claude (conscience n°12)
+
+Micro codé par la conscience : `correction_dictee.html` 6.6.2 (+1 405 o, `dupliquerDicteeEntiere`, `DUP_REGLAGES` / `DUP_ETAT_ELEVES`, infobulle), base vérifiée, collisions 0, `node --check` 0 ; banc par le geste sur faux Firebase VERT 11/0 ; captures avant/après ; déposé `LIVRAISONS/MICRO-dup-dictee/` bit à bit. Attend le promeus.
+
+Réponse mot pour mot :
+
+Fait, en filière micro — codé, prouvé, déposé au sas (`LIVRAISONS/MICRO-dup-dictee/`), rien de promu :
+
+188. **Le fichier** : `correction_dictee.html` 6.6.1 (base re-téléchargée et vérifiée, `ebf6fdc8…`) → **6.6.2**, 738 095 o (+1 405) ; édition ciblée : le bouton ⧉ (son infobulle et son clic) et une fonction `dupliquerDicteeEntiere` avec les deux listes — **les réglages** (`config`, `dictee` (la version aménagée), `copyOptions`, `exercices`, `exercices_html`, `binomes`, `heure`) copiés ; **l'état des élèves** (`results`, `absents`, `amenages`, `autocorrection`, `effacees`, `exercices_*` résultats, `copyPublishedAt`) jamais ; titre « Copie de … », non publiée. Collisions 0, `node --check` 0 erreur.
+189. **Le banc, par le geste** (le bouton ⧉, sur un faux Firebase en mémoire, une dictée ZZTEST semée avec ses 16 nœuds, 0 sortie du navigateur) : **VERT, 11 vérifications, 0 échec** — 6.6.1 : la copie n'a que `config` ; 6.6.2 : exactement les 7 réglages, la version aménagée entière (2 trous, modes A et C, base 10, consigne), rien de l'état des élèves, la config identique sauf le titre et « non publiée », l'original intact nœud à nœud, une seule écriture de dictée, le message « 7 réglages copiés, version aménagée comprise ; aucune copie d'élève », l'infobulle qui dit ce qu'il copie et ce qu'il laisse, 0 erreur JS.
+190. **Captures ci-dessus** : avant (6.6.1 : la copie sans badge « Aménagée ») / après (6.6.2 : la copie porte « 📘 Aménagée · 2 », « Non publiée »).
+
+**Tu peux promouvoir** (`promeus`). Après : https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?v=6.6.2 → sur ta dictée de 3 Dylan Bob, ⧉ → le message « 7 réglages copiés, version aménagée comprise » → la copie avec le badge 📘, non publiée → ouvre-la, Préparation → « Paramétrer une version aménagée » : les trous sont là.
+
+01/10/2026 13:05 MEMO
+
+---

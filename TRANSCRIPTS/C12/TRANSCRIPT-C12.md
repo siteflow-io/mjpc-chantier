@@ -10479,3 +10479,25 @@ Le ménage de l'an dernier est terminé. Il reste, dans la dette vivante : **③
 01/10/2026 12:30 MEMO
 
 ---
+
+## TOUR 328 — Paul
+
+Texte de Paul, mot pour mot :
+
+> vérifie
+
+---
+
+## TOUR 328 — Claude (conscience n°12)
+
+Mesuré : la fiche de l'élève cité est enregistrée (majLe 2026-10-01, cases/remarques/synthèse chiffrées, dicteeAmenagee false) ; 4_turing 3/3 fiches à jour. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Vérifié à 12:32 : **sa fiche est enregistrée** — cases cochées le 01/10/2026, les cases, remarques et synthèse chiffrées, « dictée aménagée : non » (tu as coché une autre case que pap-15, c'est bien ce qui est publié), et la 4 Turing a maintenant **3 fiches à jour sur 3 fléchés** : son rappel ESS doit s'être éteint sur la page des classes. Donc la première fois, l'enregistrement n'avait pas eu lieu ; cette fois il a abouti — rien à ajouter au mandat.
+
+Le ménage est fini, les quatre classes sont propres, les dictées se corrigent. La dette vivante : **③ bis** (l'interface du panneau prof : toute la largeur, les boutons ↻ ✕ dans le cadre, « Ouvrir les fiches » filtré sur les fléchés) → la purge de rentrée → l'appariement de l'emploi du temps. Dis « ok » et j'écris ③ bis.
+
+01/10/2026 12:35 MEMO
+
+---

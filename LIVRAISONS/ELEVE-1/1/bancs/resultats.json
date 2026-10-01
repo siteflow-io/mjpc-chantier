@@ -1,0 +1,167 @@
+{
+ "livree": {
+  "tag": "livree",
+  "sheetjs_demande": 1,
+  "etapes": {
+   "A_nouvelle": {
+    "chips": [
+     "Classe lue dans le fichier « ZZTEST-3e.xlsx » : 3 ZZTEST",
+     "→ nouvelle classe (aucune de tes classes ne porte ces mots)",
+     "classe visée : \n— choisis —\nnouvelle classe « 3 ZZTEST »\nZZTEST 4e",
+     "elle se créera par la fenêtre « Nouvelle classe » (nom, niveau, année)",
+     "25 élèves",
+     "12 F · 12 M · 1 sans sexe",
+     "1 dispositif (à préciser dans la fiche : les cases PAP)",
+     "colonnes ignorées : Age, Régime",
+     "✔ aucun doublon",
+     "nouveaux : 25",
+     "1 ligne sans nom, ignorée",
+     "1 date de naissance illisible, laissée vide"
+    ],
+    "lignes": 25
+   },
+   "A_presente": {
+    "chips": [
+     "Classe lue dans le fichier « ZZTEST-3e.xlsx » : 3 ZZTEST",
+     "→ déjà présente : ZZTEST 3e (à compléter)",
+     "classe visée : \n— choisis —\nnouvelle classe « 3 ZZTEST »\nZZTEST 3e\nZZTEST 4e",
+     "cette liste est celle de « ZZTEST 3e », pas de la classe ouverte « ZZTEST 4e »",
+     "25 élèves",
+     "12 F · 12 M · 1 sans sexe",
+     "1 dispositif (à préciser dans la fiche : les cases PAP)",
+     "colonnes ignorées : Age, Régime",
+     "✔ aucun doublon",
+     "déjà présents : 1 · nouveaux : 24",
+     "1 ligne sans nom, ignorée",
+     "1 date de naissance illisible, laissée vide",
+     "1 élève de la classe absent du fichier : l’import n’enlève personne"
+    ],
+    "lignes": 25,
+    "select": "zztest_3e"
+   },
+   "B_doublon": {
+    "chips": [
+     "Classe lue dans le fichier « ZZTEST-3e-doublon.xlsx » : 3 ZZTEST",
+     "→ déjà présente : ZZTEST 3e (à compléter)",
+     "classe visée : \n— choisis —\nnouvelle classe « 3 ZZTEST »\nZZTEST 3e\nZZTEST 4e",
+     "cette liste est celle de « ZZTEST 3e », pas de la classe ouverte « ZZTEST 4e »",
+     "26 élèves",
+     "13 F · 12 M · 1 sans sexe",
+     "2 dispositifs (à préciser dans la fiche : les cases PAP)",
+     "colonnes ignorées : Age, Régime",
+     "✘ 1 doublon : lignes 8 et 33 « ZZTEST ALPHA Anna » — deux élèves auraient la même clé : renomme l’un des deux dans le fichier (ex. « MARTIN Léa 2 »). L’import est refusé tant qu’il reste un doublon.",
+     "déjà présents : 2 · nouveaux : 24",
+     "1 date de naissance illisible, laissée vide",
+     "Dispositifs : « x » lu comme oui (1)",
+     "1 élève de la classe absent du fichier : l’import n’enlève personne"
+    ],
+    "lignes": 26,
+    "valider_desactive": true
+   },
+   "C_colle": {
+    "chips": [
+     "Classe lue dans le tableau collé : 3 ZZTEST",
+     "→ déjà présente : ZZTEST 3e (à compléter)",
+     "classe visée : \n— choisis —\nnouvelle classe « 3 ZZTEST »\nZZTEST 3e\nZZTEST 4e",
+     "cette liste est celle de « ZZTEST 3e », pas de la classe ouverte « ZZTEST 4e »",
+     "25 élèves",
+     "12 F · 12 M · 1 sans sexe",
+     "1 dispositif (à préciser dans la fiche : les cases PAP)",
+     "colonnes ignorées : Age, Régime",
+     "✔ aucun doublon",
+     "déjà présents : 1 · nouveaux : 24",
+     "1 ligne sans nom, ignorée",
+     "1 date de naissance illisible, laissée vide",
+     "1 élève de la classe absent du fichier : l’import n’enlève personne"
+    ],
+    "lignes": 25
+   },
+   "D_noms": {
+    "chips": [
+     "Aucune ligne « Classe : » dans le tableau collé",
+     "→ nouvelle classe (aucune de tes classes ne porte ces mots)",
+     "classe visée : \n— choisis —\nnouvelle classe\nZZTEST 3e\nZZTEST 4e",
+     "elle se créera par la fenêtre « Nouvelle classe » (nom, niveau, année)",
+     "2 élèves",
+     "un nom par ligne : sexe, naissance et dispositif ne sont pas fournis",
+     "✔ aucun doublon",
+     "nouveaux : 2"
+    ],
+    "lignes": 2
+   }
+  },
+  "mode_test": true,
+  "zone_presente": 1,
+  "cadre_secours_present": 1,
+  "valider_message": "L’écriture arrive à la livraison suivante : rien n’a été écrit.",
+  "valider_rien_ecrit": true,
+  "annuler_vide": true,
+  "ecritures_hub_en_mode_test": [],
+  "externes_non_GET": [],
+  "erreurs_js": [],
+  "magasin_cles": [
+   "/classes/zztest_3e",
+   "/classes/zztest_3e/eleves",
+   "/classes/zztest_4e",
+   "/site/config/brevetDates"
+  ]
+ },
+ "vue_base": {
+  "tag": "base",
+  "texte_visible": 613,
+  "mots_interdits": {
+   "aménag": false,
+   "PAP": false,
+   "◆": false,
+   "mode test": false,
+   "Mode test": false
+  },
+  "ecritures_hub": [
+   [
+    "PUT",
+    "/presence/u-zz1"
+   ]
+  ],
+  "externes_non_GET": [],
+  "erreurs_js": []
+ },
+ "vue_livree": {
+  "tag": "livree",
+  "texte_visible": 613,
+  "mots_interdits": {
+   "aménag": false,
+   "PAP": false,
+   "◆": false,
+   "mode test": false,
+   "Mode test": false
+  },
+  "ecritures_hub": [
+   [
+    "PUT",
+    "/presence/u-zz1"
+   ]
+  ],
+  "externes_non_GET": [],
+  "erreurs_js": []
+ },
+ "classe_test_survit": {
+  "base": false,
+  "livree": true
+ },
+ "hub_avant": {
+  "classes": 9,
+  "codes": 128,
+  "eleves": 3,
+  "eleves_index": 3,
+  "corbeille": 25,
+  "manifestes": 11
+ },
+ "hub_apres": {
+  "classes": 9,
+  "codes": 128,
+  "eleves": 3,
+  "eleves_index": 3,
+  "corbeille": 25,
+  "manifestes": 11
+ }
+}

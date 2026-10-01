@@ -10178,3 +10178,31 @@ Code ④, puis arrêt. Après ④ : le complément ② bis (QCM 7.7.1), déjà d
 01/10/2026 09:50 MEMO
 
 ---
+
+## TOUR 318 — Paul
+
+Texte de Paul, mot pour mot :
+
+> [le point d'étape de l'exécutante sur ④ : 163 ce qui est fait (la source de l'aménagement par la clé de classe, le clic droit depuis la fiche, la ligne PAP avec son bouton, les cartes, chaque copie garde sa base dans les cinq écritures et le reclassement, le recalcul épargne les aménagées, les notes affichées sur la base de la copie, les copies d'avant tracées une fois, la feuille sans le mot, le bac à sable) ; 164 sept copies aménagées d'avant, bases égales, pas d'écart ; 165 l'écran de fin de l'élève lit la base de sa copie ; question 166 : la moyenne de classe — (a) moyenne des copies sur la base de la dictée + « n copies aménagées » et leur moyenne, ou (b) ?]
+
+---
+
+## TOUR 318 — Claude (conscience n°12)
+
+Réponse 166 : (a), avec la règle « rien devant l'élève » pour le bilan exporté (ni le mot ni le compte s'il sort de la console) ; réponse rédigée pour l'exécutante. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Mise en tension avant de te proposer : le cadrage dit « rien devant l'élève » (3.4 bis) ; l'encart « Moyenne » est dans ton écran, mais le « bilan exporté », je ne sais pas à qui il va (je ne l'ai pas retrouvé tel quel dans le code) — c'est elle qui le sait, et la règle dépend de ça.
+
+148. **Ma proposition pour 166, c'est (a)** : la moyenne de la dictée sur sa base, calculée sur les seules copies corrigées sur cette base ; à côté, « n copies aménagées — moyenne m sur leur base ». Chaque chiffre dit sa base, on ne mêle jamais des /20 et des /10, et tu vois les deux. **Et une règle de plus**, sans rien demander d'autre : si le bilan exporté sort de ta console (vers la classe, une famille, une feuille), il ne porte **ni le mot « aménagées » ni le compte** — seulement la moyenne de la dictée et le nombre de copies qu'elle compte ; ce qui désigne les aménagés reste dans ton écran.
+
+Colle-lui ceci :
+
+```
+Réponse à 166 (Paul, par la conscience n°12, 01/10) : (a). Dans l'écran du professeur, l'encart « Moyenne » donne la moyenne de la dictée sur sa base, calculée sur les seules copies corrigées sur cette base, et à côté « n copies aménagées — moyenne m sur leur base » (chaque chiffre dit sa base ; rien n'est mêlé). Dans le bilan exporté : tu mesures d'abord à qui il va ; s'il peut sortir de la console (classe, famille, feuille), il ne porte ni le mot « aménagées » ni le compte des copies aménagées — seulement la moyenne de la dictée sur sa base et le nombre de copies comptées (cadrage 6 · 3.4 bis : rien devant l'élève) ; s'il reste au professeur, il dit la même chose que l'écran. 165 : d'accord, l'écran de fin de l'élève lit la base de sa copie, sans mot. Puis le banc, les captures, la note, le dépôt, l'arrêt ; ② bis après.
+```
+
+01/10/2026 10:00 MEMO
+
+---

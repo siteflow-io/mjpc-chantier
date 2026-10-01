@@ -10146,3 +10146,35 @@ Donc le mot à donner à l'exécutante reste le même : **« la note sur la base
 01/10/2026 09:45 MEMO
 
 ---
+
+## TOUR 317 — Paul
+
+Texte de Paul, mot pour mot :
+
+> fais moi la réponse pour l'instance.
+
+---
+
+## TOUR 317 — Claude (conscience n°12)
+
+Réponse à l'exécutante rédigée (162 : la base de la correction, sans conversion, dans les cinq écritures qui posent une copie, les cartes, les copies d'avant ; 161 d'accord ; ② bis après ④). Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Colle-lui ceci :
+
+```
+Réponse à 162 (Paul, par la conscience n°12, 01/10) :
+
+La note d'une copie s'enregistre SUR LA BASE AVEC LAQUELLE LA COPIE A ÉTÉ CORRIGÉE, jamais convertie. Une copie normale : la base de la dictée (le champ « Note sur » — 20 par défaut, mais Paul fait aussi des dictées sur 12 ou autre) ; une copie aménagée : la base aménagée réglée pour cette dictée (10 par défaut, modifiable). Chaque copie garde sa base ; la trace `amenagee / mode / base` dit d'où vient la note.
+
+Mesuré par la conscience : la ligne 2420 (`computeNote(errors, extras, dicteeData.base, dicteeData.bareme)`) est un reste, pas une règle — l'écran calcule déjà la base effective (l. 3011) ; l'enregistrement doit l'utiliser. Donc, dans ④ : l'enregistrement, la correction rapide, la restauration depuis la corbeille, l'échange ou le transfert de copie, le reclassement M → P et le recalcul sur changement de base utilisent tous la base de la trace de la copie (base aménagée pour une copie marquée `amenagee: true`, base de la dictée sinon) ; les cartes affichent « …/base de la copie » ; aucune conversion nulle part. Les copies aménagées d'avant la 6.6.0 reçoivent leur trace une fois (déduite de l'override puis de l'ancien registre), avec `base` = la base aménagée de la dictée au moment de la reprise.
+
+161 : d'accord — la trace garde les modes réellement employés (« A », « A+C »…), le mode par défaut si aucun trou n'en précise.
+
+Code ④, puis arrêt. Après ④ : le complément ② bis (QCM 7.7.1), déjà déposé au sas (`MANDATS/COMPLEMENT-ELEVE-1-2bis.md`).
+```
+
+01/10/2026 09:50 MEMO
+
+---

@@ -9799,3 +9799,31 @@ Puis « continuer » à l'exécutante, dans sa conversation, pour la livraison �
 01/10/2026 06:50 MEMO
 
 ---
+
+## TOUR 305 — Paul
+
+Texte de Paul, mot pour mot :
+
+> livré
+
+---
+
+## TOUR 305 — Claude (conscience n°12)
+
+Audit de `LIVRAISONS/ELEVE-1/1/` : diff (5 retirées / 221 ajoutées, 22 fonctions `eli*`, `_m8Superposer` dans `loadClasses`/`loadCodes` en mode test seulement), aucune écriture dans le nouveau code (vérifié fonction par fonction), SheetJS à la demande, `node --check` 0, banc unique rejoué VERT 18/0 (SheetJS local, Chrome du conteneur), vrai hub inchangé, capture Q3 fidèle à T283, dette n°12 · 82 rencontrée et réglée. Verdict : ça va, promouvable. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Audit de la livraison ① (« lire le fichier et montrer l'aperçu — rien n'est écrit », `LIVRAISONS/ELEVE-1/1/`), mesuré :
+
+114. **Le fichier** : base = la production promue (`c54b1c33…`, vérifiée) → livrée **8.74.0-①, 1 796 109 o (+20 341)**, md5 `c9af8e31…` ; **5 lignes retirées, 221 ajoutées** : la version et sa date, le bloc d'import inséré en tête d'« Élèves & codes » (`_profSectionEleves`), et `loadClasses` / `loadCodes` qui, en mode test seulement, superposent le magasin à la lecture (`_m8Superposer`) ; 22 fonctions `eli…` nouvelles, **relevé de collisions 0** (vérifié : aucun `eli` dans la base). **Aucune écriture dans le nouveau code** — je l'ai vérifié fonction par fonction : `eliValider` ne fait que le dire ; les seuls « push » d'`eliAnalyser` sont des tableaux JavaScript. SheetJS 0.18.5 (Apache-2.0) chargé depuis cdnjs **seulement quand un fichier arrive**, avec le Ctrl + V en repli s'il ne charge pas. `node --check` 0 erreur.
+115. **Le banc unique, rejoué par moi** (hub simulé, SheetJS servi depuis une copie locale, Chrome du conteneur ; vrai hub inchangé 9 · 128 · 3 · 3 · 25 · 11) : **VERT, 18 vérifications, 0 échec** — 25 élèves lus, 12 F · 12 M · 1 sans sexe, 1 dispositif, Age et Régime ignorés, 1 ligne sans nom, 1 date illisible ; « 3 ZZTEST » reconnu comme « ZZTEST 3e » (mots sans ordre, 3 = 3e) ; déjà présents 1 · nouveaux 24 · 1 absent du fichier ; « pas de la classe ouverte » dit ; doublon refusé, lignes nommées, « Valider » grisé ; « x » lu comme oui ; Ctrl + V = même aperçu ; Ctrl + V de noms = un nom par ligne ; « Valider » : **rien d'écrit** (magasin et hub identiques) ; 0 erreur JS ; vue élève inchangée (pastille seule).
+116. **La dette rencontrée et réglée** : en mode test, une classe créée disparaissait au rechargement d'« Élèves & codes » (`loadClasses` / `loadCodes` relisaient le vrai hub sans le magasin) — prouvé au banc (base : perdue ; livrée : là) ; inscrite au registre **n°12 · 82**, réglée dans la livraison, pas de dette restante. Conforme à la règle.
+117. **L'aperçu est fidèle à la capture validée T283** (ci-dessus, Q3) : la classe lue et son appariement avec la liste pour confirmer, les comptes, les anomalies une à une, le tableau, la phrase « ce qui sera écrit », les deux boutons. Les quatre infobulles sont écrites pour toi.
+118. **Verdict : ça va. Tu peux promouvoir ①** (`LIVRAISONS/ELEVE-1/1/index.html`). Captures ci-dessus : Q2 (en mode test, la classe créée reste et le bloc d'import est là), Q3 (l'aperçu), Q4 (le doublon refusé).
+
+Tes tests, après promotion (https://siteflow-io.github.io/monsieurjaipascompris/?n=3e&v=8.74.0) : 1) pastille **V8.74.0-①** ; 2) connexion professeur → Panneau prof → 🧪 Mode test → Élèves & codes : « Importer la liste d'une classe » en haut ; 3) dépose le .xlsx d'une de tes classes : l'aperçu dit « déjà présente : <ta classe> (à compléter) » ou « nouvelle classe », compte les élèves, F · M, les dispositifs — compare à ton fichier ; 4) « Valider l'import » : « L'écriture arrive à la livraison suivante : rien n'a été écrit » ; 5) dans Excel, copie le tableau (de la ligne « Nom » à la fin) puis Ctrl + V sur la page : le même aperçu ; 6) Classes → « + Nouvelle classe » (un nom d'essai) → Élèves & codes : elle est là ; « Quitter le mode test » : elle disparaît, rien n'est parti. Ton « promeus », puis « continuer » à l'exécutante pour ②.
+
+01/10/2026 07:25 MEMO
+
+---

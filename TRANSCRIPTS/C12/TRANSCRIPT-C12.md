@@ -9827,3 +9827,32 @@ Tes tests, après promotion (https://siteflow-io.github.io/monsieurjaipascompris
 01/10/2026 07:25 MEMO
 
 ---
+
+## TOUR 306 — Paul
+
+Texte de Paul, mot pour mot :
+
+> promeus
+
+---
+
+## TOUR 306 — Claude (conscience n°12)
+
+Promotion de `LIVRAISONS/ELEVE-1/1/index.html` (commit 6024b2c4c966, bit à bit) ; protocole : registre 82 ✔, journal, point de retour, où-trouver-quoi, index (1 405) ; mandat 1 : ① promue, nouvelle base pour ②. Adresse et tests donnés.
+
+Réponse mot pour mot :
+
+Promu, protocole joué dans le tour :
+
+119. **Promotion** : la production = la livraison ①, commit `6024b2c4c966`, **vérifié bit à bit** (1 796 109 o, md5 `c9af8e31…`) ; la base d'avant était bien ⓪ (`401c53d5…`).
+120. **Les docs** : registre — n°12 · **82 ✔** ; journal — l'entrée du 01/10 (l'import, l'aperçu, la dette rencontrée, la suite) ; le point de retour (`401c53d5…`, 8.74.0-⓪) dans `MJPC6-restauration.md` ; `OU-TROUVER-QUOI` — la section « l'import du fichier de classe » (le bloc, la lecture, l'analyse, l'appariement, « Valider », le mode test) ; l'index des fonctions régénéré (1 405). Le mandat 1 au sas marque ① promue avec la nouvelle base pour ②.
+
+**L'adresse** : https://siteflow-io.github.io/monsieurjaipascompris/?n=3e&v=8.74.0 — pastille **V8.74.0-①**.
+
+**Tes tests, geste par geste** : 1) la pastille V8.74.0-① ; 2) connexion professeur → Panneau prof → 🧪 Mode test → Élèves & codes : « Importer la liste d'une classe » en haut ; 3) dépose le .xlsx d'une de tes classes : l'aperçu — « déjà présente : <ta classe> (à compléter) » ou « nouvelle classe », le nombre d'élèves, F · M, les dispositifs — compare à ton fichier ; 4) « Valider l'import » : « L'écriture arrive à la livraison suivante : rien n'a été écrit » ; 5) dans Excel, copie le tableau (de la ligne « Nom » à la fin) puis Ctrl + V sur la page : le même aperçu ; 6) Classes → « + Nouvelle classe » (un nom d'essai) → Élèves & codes : elle est là ; « Quitter le mode test » : elle disparaît, rien n'est parti.
+
+Puis « continuer » à l'exécutante pour ② (l'écriture de la liste et des profils, la reprise des sexes et des aménagements, le QCM) — c'est la livraison qui te crée tes classes pour de bon.
+
+01/10/2026 07:20 MEMO
+
+---

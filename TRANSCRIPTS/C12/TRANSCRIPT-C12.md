@@ -10876,3 +10876,29 @@ Le mandat est écrit et déposé (`MANDATS/MANDAT-DICTEE-CORRECTION.md`, 3 018 m
 01/10/2026 19:45 MEMO
 
 ---
+
+## TOUR 343 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Je vais demander à la même instance de faire cette exécution
+
+---
+
+## TOUR 343 — Claude (conscience n°12)
+
+Accord ; trois précisions : le kit puis le bloc dans sa conversation (titre inchangé, base 6.6.3) ; ce mandat avant ③ bis ; relance d'un exécutant neuf si elle oublie. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+D'accord — elle connaît le fichier (④, ② bis) et le protocole. Trois choses pour que ça tienne :
+
+221. **Dans sa conversation**, colle d'abord le kit (`banc_dictee_kit.zip`), puis le bloc tel quel ; la première ligne (« Nomme cette conversation… ») ne s'applique pas, elle garde son titre — dis-le-lui d'un mot. Sa base est la **6.6.3** du bloc, pas celle qu'elle a livrée en ② bis (deux micros sont passés depuis) : le md5 à la commande le lui rappelle.
+222. **L'ordre** : ce mandat passe **avant ③ bis** (l'interface du panneau prof reste dans la dette vivante, après L8) — tu corriges tes dictées maintenant, le panneau attend.
+223. **Sa conversation est longue** (relectures, ⓪ → ④, ② bis) : si elle se met à oublier (une base fausse, une règle déjà donnée qu'elle redemande), on relance un exécutant neuf avec le même bloc — c'est le protocole, pas un reproche.
+
+Elle livre L1 et s'arrête ; tu me transmets sa note et ses captures ; j'audite ; tu promeus — je pousse. À L4, c'est toi qui lis le rapport à blanc et dis « ok ».
+
+01/10/2026 19:50 MEMO
+
+---

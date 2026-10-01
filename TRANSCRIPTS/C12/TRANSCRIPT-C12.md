@@ -10992,3 +10992,27 @@ Tes tests, après promotion (https://siteflow-io.github.io/monsieurjaipascompris
 01/10/2026 20:45 MEMO
 
 ---
+
+## TOUR 348 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Promeus
+
+---
+
+## TOUR 348 — Claude (conscience n°12)
+
+Promotion 6.7.0-L1 (commit 3a438e0da854, bit à bit) ; protocole : registre 94/95 ✔, journal, point de retour, où-trouver-quoi. Tests donnés ; L2 ensuite.
+
+Réponse mot pour mot :
+
+Promu : `correction_dictee.html` **6.7.0-L1**, commit `3a438e0da854`, **bit à bit** (738 687 o, md5 `913f8b5c…`) ; registre n°12 · **94, 95 ✔** ; journal, point de retour (6.6.3), où-trouver-quoi à jour.
+
+**Tes tests** : https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?v=6.7.0 → 1) une dictée → une copie en mode texte → pose 2 erreurs → « ← » sans rien enregistrer → rouvre : les 2 erreurs sont là, le dernier mot encadré ; 2) pose une 3e erreur, F5, rouvre la dictée et la copie : les 3 erreurs, le curseur sur la 3e ; 3) « Enregistrer → suivant » : la copie suivante s'ouvre, la précédente est corrigée dans la grille.
+
+Puis « continuer » à l'exécutante pour **L2** (⇧R bascule, sans perte). Dette vivante inchangée après L8 : ③ bis → purge de rentrée → appariement de l'emploi du temps.
+
+01/10/2026 20:40 MEMO
+
+---

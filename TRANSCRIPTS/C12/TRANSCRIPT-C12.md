@@ -9884,3 +9884,32 @@ Tes tests, après promotion : 1) https://siteflow-io.github.io/monsieurjaipascom
 01/10/2026 08:05 MEMO
 
 ---
+
+## TOUR 308 — Paul
+
+Texte de Paul, mot pour mot :
+
+> promeus
+
+---
+
+## TOUR 308 — Claude (conscience n°12)
+
+Promotion ② : index (commit 7c58bef49aba) et QCM 7.7.0 (commit f6def710ae96), bit à bit ; protocole : journal, deux points de retour, où-trouver-quoi, index (1 420) ; mandat 1 : ② promue. Adresses et tests donnés.
+
+Réponse mot pour mot :
+
+Promu, protocole joué :
+
+126. **Promotion** : `index.html` = la livraison ② (commit `7c58bef49aba`, **bit à bit**, 1 813 946 o, md5 `80d45486…`) et `evaluation-qcm.html` 7.7.0 (commit `f6def710ae96`, **bit à bit**, 550 410 o, md5 `9d6df9f4…`) ; les bases d'avant étaient bien ① et 7.6.0.
+127. **Les docs** : journal (l'entrée du 01/10 : le profil existe, la reprise, les restes, le QCM, la 3E Charles de Gaulle signalée) ; deux points de retour dans `MJPC6-restauration.md` (index ①, QCM 7.6.0) ; `OU-TROUVER-QUOI` (le profil, ce que les apps lisent, l'attente de la clé, la reprise, la classe absente, le retrait, le QCM) ; l'index des fonctions régénéré (1 420) ; le mandat 1 au sas : ② promue, nouvelle base pour ③. Aucune dette nouvelle à marquer (② n'en a déclaré ni réglé).
+
+**Les adresses** : https://siteflow-io.github.io/monsieurjaipascompris/?n=3e&v=8.74.0 (pastille **V8.74.0-②**) et https://siteflow-io.github.io/monsieurjaipascompris/evaluation-qcm.html?v=7.7.0.
+
+**Tes tests, geste par geste** : 1) la pastille V8.74.0-② ; 2) **d'abord en mode test** : Panneau prof → 🧪 Mode test → Élèves & codes → saisis ta clé dans l'encart → dépose le fichier d'une de tes classes → l'aperçu (reprise et restes annoncés) → « Valider l'import » → « Import fait » → les noms dans la liste → « Quitter le mode test » : rien n'est parti ; 3) **pour de vrai** (mode test quitté, clé saisie) : le fichier de chacune de tes classes → l'aperçu → « Valider » → le compte rendu ; la première fois, les restes de l'an dernier partent en corbeille, annoncés et comptés ; 4) en mode test, retire un élève d'essai : sa fiche part en corbeille avec lui ; 5) le QCM 7.7.0 : tes classes y sont avec leurs élèves.
+
+Puis « continuer » à l'exécutante pour ③ (la fiche élève — les quinze cases — et le rappel des équipes éducatives).
+
+01/10/2026 08:15 MEMO
+
+---

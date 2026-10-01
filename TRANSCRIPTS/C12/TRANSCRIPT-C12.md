@@ -9913,3 +9913,42 @@ Puis « continuer » à l'exécutante pour ③ (la fiche élève — les quinze 
 01/10/2026 08:15 MEMO
 
 ---
+
+## TOUR 309 — Paul
+
+Texte de Paul, mot pour mot :
+
+> l'exécutant continue. J'ai ouvert qcm: pourquoi je vois encore apparaître des classes que j'ai supprimé? Je retrouve pythagore, banksy hergé de l'année dernière.
+
+---
+
+## TOUR 309 — Claude (conscience n°12)
+
+Mesuré au hub (`/classes` : « 4E Banksy », « 4e Pythagore », « 5E Hergé » présentes avec leurs élèves ; corbeille du 30/09 : suppressions de « 4E BANKSY », « 4E PYTHAGORE », « 5e HERGÉ » ; `qcm/classes` : 4e-banksy, 4e-pythagore, 5e-herge…) et dans le code du QCM : `migrerClassesUneFois` (à chaque ouverture) recopie dans `/classes` toute classe de `qcm/classes` absente de la racine. Dette n°12 · 83 inscrite ; complément ② bis rédigé pour l'exécutante (QCM 7.7.1 : plus de création de classe, `qcm/classes` en corbeille puis effacé, hors contrat de purge). Rien d'autre déposé hormis ce transcript et le registre.
+
+Réponse mot pour mot :
+
+Mesuré avant de répondre — c'est une dette de l'app QCM, pas de ta manipulation :
+
+128. **Ce qui se passe** : tu as bien supprimé « 4E BANKSY », « 4E PYTHAGORE », « 5e HERGÉ » le 30/09 (les trois archives sont dans ta corbeille). Mais le QCM a une « migration silencieuse » **jouée à chaque ouverture** : il garde un vieux nœud à lui (`qcm/classes`, de l'époque où il avait ses propres classes) et **recopie dans les classes du site toute classe de ce vieux nœud qu'il ne trouve plus à la racine**. Donc : tu supprimes, tu ouvres le QCM, et il recrée « 4E Banksy », « 4e Pythagore », « 5E Hergé » — avec leurs élèves de l'an dernier (29, 28, 31), sous des clés qui ne sont même pas celles du site. C'est ce que tu vois. Il le faisait déjà en 7.6.0 ; la 7.7.0 ne l'a pas retiré (ni le mandat, ni la relectrice, ni moi ne l'avions vu). Une app qui écrit l'identité, contre ta décision du 18/07 et contre la clôture annuelle.
+129. **Inscrit au registre (n°12 · 83)** et réglé par un **complément ② bis** que l'exécutante fait avant ③ : le QCM ne crée plus jamais de classe (la recopie disparaît), son vieux nœud `qcm/classes` part en corbeille compté puis s'efface et sort de son contrat de purge ; bancs, captures, QCM 7.7.1. Après promotion, tu supprimes à nouveau les trois classes revenues dans la console — elles ne reviendront plus. **Ne les supprime pas avant** : elles reviendraient à la prochaine ouverture du QCM.
+
+Colle ceci à l'exécutante, dans sa conversation (elle est au milieu de ③ : elle finit ou interrompt, à son choix, mais ② bis passe avant la prochaine promotion) :
+
+```
+COMPLÉMENT ② bis — pour l'exécutante (mandat « L'ÉLÈVE — 1 »), à faire AVANT ③ ou en même temps, sur `evaluation-qcm.html` → 7.7.1 — dette n°12 · 83, mesurée par la conscience le 01/10 :
+
+Paul a ouvert le QCM après la promotion et y retrouve « 4E Banksy », « 4e Pythagore », « 5E Hergé », qu'il avait supprimées le 30/09 (corbeille `suppression-classe_0640xx`). Cause, mesurée dans le code et au hub : `migrerClassesUneFois`, jouée à chaque ouverture du QCM (`useEffect`), copie dans `/classes/<nom complet>` toute classe de `qcm/classes/<slug>` absente de la racine ; `qcm/classes` porte encore 3e-charles-de-gaulle, 4e-banksy, 4e-pythagore, 5e-herge, _test → les trois classes supprimées sont recréées sous `/classes` avec leurs élèves de l'an dernier, sous des clés qui ne sont pas des clés `sanMJPC`. Une app écrit l'identité (contre la décision du 18/07) et ressuscite des classes closes (cadrage 6 · 1.7).
+
+Ce que tu livres (QCM 7.7.1, base = la 7.7.0 promue, 550 410 o, md5 `9d6df9f4f349172f210e23d9c8da6f55`, re-téléchargée et vérifiée à la commande) :
+1. `migrerClassesUneFois` **ne crée plus jamais de classe** : plus aucune copie vers `/classes`, plus aucune lecture de `qcm/classes` ; l'app ne lit que `/classes` et `amenagements` (②). La fonction peut rester vide (ou disparaître avec son appel) — tu mesures et tu dis ce qui l'appelle, et le `onDone` ne casse rien.
+2. `qcm/classes` part **en corbeille, compté** (une archive, motif `qcm-classes-legacy`), puis le nœud s'efface, puis il sort de `MJPC_MANIFESTE.noeuds` et de `MJPC_PURGE.purger` du QCM (republiés). Au hub le vrai nœud sera traité par Paul après promotion (un bouton dans le QCM, visible du professeur seulement, qui fait ces trois gestes et dit le compte — ou, si le QCM n'a pas de geste professeur, dis-le et propose).
+3. Bancs (mode test du QCM, hub simulé, données ZZTEST) : avec un `qcm/classes` fictif portant une classe absente de `/classes`, 7.7.0 la recrée ; 7.7.1 : **0 écriture** vers `/classes`, la classe n'apparaît pas ; la corbeille reçoit `qcm/classes` compté, le nœud est vide après ; vue élève du QCM inchangée ; vrai hub inchangé.
+4. Captures : le QCM avant (les trois classes revenues) / après (plus rien ne revient) sur hub simulé ; note de livraison ; adresse `https://siteflow-io.github.io/monsieurjaipascompris/evaluation-qcm.html?v=7.7.1` ; tests pour Paul : après promotion, supprimer à nouveau les trois classes dans la console (corbeille), rouvrir le QCM : elles ne reviennent pas.
+
+Puis tu t'arrêtes ; Paul relance « continuer » pour ③.
+```
+
+01/10/2026 08:25 MEMO
+
+---

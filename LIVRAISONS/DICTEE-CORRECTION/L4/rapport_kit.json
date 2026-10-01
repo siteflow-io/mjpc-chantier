@@ -1,0 +1,1246 @@
+{
+ "dictees": [
+  {
+   "id": "dictee_5e_chapitre_utopie-5e_herge",
+   "titre": "Dictée 5E, chapitre utopie",
+   "classe": "5e HERGÉ",
+   "base": 20,
+   "bareme": "preparee",
+   "ordre": "rang dans la grille de la classe",
+   "touchees": [
+    {
+     "eleve": 7,
+     "conversions": [
+      {
+       "cas": "signe « en trop » → forfait ponctuation",
+       "signe": ".",
+       "position": "après le mot -1",
+       "collisionFormeA": false
+      },
+      {
+       "cas": "signe « en trop » → forfait ponctuation",
+       "signe": "-",
+       "position": "après le mot 66",
+       "collisionFormeA": false
+      }
+     ],
+     "base_copie": 20,
+     "note_stockee": 1,
+     "note_recalculee_avant": 1,
+     "note_apres": 1,
+     "aménagée": false
+    }
+   ],
+   "intactes": [
+    {
+     "eleve": 1,
+     "sha_avant": "afd3622b920e9b03",
+     "sha_apres": "afd3622b920e9b03",
+     "identique": true
+    },
+    {
+     "eleve": 2,
+     "sha_avant": "b6582d34e1114ab7",
+     "sha_apres": "b6582d34e1114ab7",
+     "identique": true
+    },
+    {
+     "eleve": 3,
+     "sha_avant": "f80986f2f7824316",
+     "sha_apres": "f80986f2f7824316",
+     "identique": true
+    },
+    {
+     "eleve": 4,
+     "sha_avant": "8fdadf6e9f209f56",
+     "sha_apres": "8fdadf6e9f209f56",
+     "identique": true
+    },
+    {
+     "eleve": 5,
+     "sha_avant": "5683ced65a72dbaa",
+     "sha_apres": "5683ced65a72dbaa",
+     "identique": true
+    },
+    {
+     "eleve": 6,
+     "sha_avant": "bc390afe1e157648",
+     "sha_apres": "bc390afe1e157648",
+     "identique": true
+    },
+    {
+     "eleve": 8,
+     "sha_avant": "b02758ede7580fd3",
+     "sha_apres": "b02758ede7580fd3",
+     "identique": true
+    },
+    {
+     "eleve": 9,
+     "sha_avant": "a3be619d831a03a8",
+     "sha_apres": "a3be619d831a03a8",
+     "identique": true
+    },
+    {
+     "eleve": 10,
+     "sha_avant": "90a29732c94f127c",
+     "sha_apres": "90a29732c94f127c",
+     "identique": true
+    },
+    {
+     "eleve": 11,
+     "sha_avant": "0c6d057f96f373bb",
+     "sha_apres": "0c6d057f96f373bb",
+     "identique": true
+    },
+    {
+     "eleve": 12,
+     "sha_avant": "7dd18dc347424742",
+     "sha_apres": "7dd18dc347424742",
+     "identique": true
+    },
+    {
+     "eleve": 13,
+     "sha_avant": "4b798aa619bb42fa",
+     "sha_apres": "4b798aa619bb42fa",
+     "identique": true
+    },
+    {
+     "eleve": 14,
+     "sha_avant": "10d0765cb3477738",
+     "sha_apres": "10d0765cb3477738",
+     "identique": true
+    },
+    {
+     "eleve": 15,
+     "sha_avant": "8562c2398892051a",
+     "sha_apres": "8562c2398892051a",
+     "identique": true
+    },
+    {
+     "eleve": 16,
+     "sha_avant": "c2cfdc4ba4cea6c5",
+     "sha_apres": "c2cfdc4ba4cea6c5",
+     "identique": true
+    },
+    {
+     "eleve": 17,
+     "sha_avant": "f9130960d6125a51",
+     "sha_apres": "f9130960d6125a51",
+     "identique": true
+    },
+    {
+     "eleve": 18,
+     "sha_avant": "cfeb3730d56dcdf6",
+     "sha_apres": "cfeb3730d56dcdf6",
+     "identique": true
+    },
+    {
+     "eleve": 19,
+     "sha_avant": "29968c55449f012c",
+     "sha_apres": "29968c55449f012c",
+     "identique": true
+    },
+    {
+     "eleve": 20,
+     "sha_avant": "fa205158ea40ddbc",
+     "sha_apres": "fa205158ea40ddbc",
+     "identique": true
+    },
+    {
+     "eleve": 21,
+     "sha_avant": "bf99951b5a5e759c",
+     "sha_apres": "bf99951b5a5e759c",
+     "identique": true
+    },
+    {
+     "eleve": 22,
+     "sha_avant": "9d1f8faa9117da3b",
+     "sha_apres": "9d1f8faa9117da3b",
+     "identique": true
+    },
+    {
+     "eleve": 23,
+     "sha_avant": "366b4b0142c21d59",
+     "sha_apres": "366b4b0142c21d59",
+     "identique": true
+    },
+    {
+     "eleve": 24,
+     "sha_avant": "78aa23944f6594a8",
+     "sha_apres": "78aa23944f6594a8",
+     "identique": true
+    },
+    {
+     "eleve": 25,
+     "sha_avant": "b20f1617bf7e065b",
+     "sha_apres": "b20f1617bf7e065b",
+     "identique": true
+    },
+    {
+     "eleve": 26,
+     "sha_avant": "ca2a11452c6de912",
+     "sha_apres": "ca2a11452c6de912",
+     "identique": true
+    },
+    {
+     "eleve": 27,
+     "sha_avant": "01b36217a9b65937",
+     "sha_apres": "01b36217a9b65937",
+     "identique": true
+    },
+    {
+     "eleve": 28,
+     "sha_avant": "8affb1ef8d9e2b29",
+     "sha_apres": "8affb1ef8d9e2b29",
+     "identique": true
+    },
+    {
+     "eleve": 29,
+     "sha_avant": "f7ec83f93a215475",
+     "sha_apres": "f7ec83f93a215475",
+     "identique": true
+    },
+    {
+     "eleve": 30,
+     "sha_avant": "a30f6c396db17639",
+     "sha_apres": "a30f6c396db17639",
+     "identique": true
+    },
+    {
+     "eleve": 31,
+     "sha_avant": "a63bcca65239aeb1",
+     "sha_apres": "a63bcca65239aeb1",
+     "identique": true
+    }
+   ],
+   "mSurSigne": 0,
+   "signesEnTrop": 2
+  },
+  {
+   "id": "dictee_brevet_blanc_3e-3e_charles_de_gaulle",
+   "titre": "Dictée brevet blanc 3E",
+   "classe": "3E Charles de Gaulle",
+   "base": 10,
+   "bareme": "brevet",
+   "ordre": "rang dans la grille de la classe",
+   "touchees": [
+    {
+     "eleve": 4,
+     "conversions": [
+      {
+       "cas": "signe « en trop » → forfait ponctuation",
+       "signe": ".",
+       "position": "après le mot -1",
+       "collisionFormeA": false
+      }
+     ],
+     "base_copie": 10,
+     "note_stockee": 5,
+     "note_recalculee_avant": 5,
+     "note_apres": 5.5,
+     "aménagée": false
+    },
+    {
+     "eleve": 12,
+     "conversions": [
+      {
+       "cas": "signe « en trop » → forfait ponctuation",
+       "signe": ".",
+       "position": "après le mot -1",
+       "collisionFormeA": false
+      }
+     ],
+     "base_copie": 10,
+     "note_stockee": 5,
+     "note_recalculee_avant": 5,
+     "note_apres": 5.5,
+     "aménagée": false
+    },
+    {
+     "eleve": 15,
+     "conversions": [
+      {
+       "cas": "signe « en trop » → forfait ponctuation",
+       "signe": ".",
+       "position": "après le mot -1",
+       "collisionFormeA": false
+      }
+     ],
+     "base_copie": 10,
+     "note_stockee": 2.5,
+     "note_recalculee_avant": 2.5,
+     "note_apres": 3,
+     "aménagée": false
+    },
+    {
+     "eleve": 17,
+     "conversions": [
+      {
+       "cas": "signe « en trop » → forfait ponctuation",
+       "signe": ".",
+       "position": "après le mot -1",
+       "collisionFormeA": false
+      }
+     ],
+     "base_copie": 10,
+     "note_stockee": 6,
+     "note_recalculee_avant": 6,
+     "note_apres": 6.5,
+     "aménagée": false
+    },
+    {
+     "eleve": 18,
+     "conversions": [
+      {
+       "cas": "signe « en trop » → forfait ponctuation",
+       "signe": ".",
+       "position": "après le mot 88",
+       "collisionFormeA": false
+      }
+     ],
+     "base_copie": 10,
+     "note_stockee": 0.5,
+     "note_recalculee_avant": 0.5,
+     "note_apres": 1,
+     "aménagée": false
+    },
+    {
+     "eleve": 19,
+     "conversions": [
+      {
+       "cas": "signe « en trop » → forfait ponctuation",
+       "signe": "-",
+       "position": "après le mot 64",
+       "collisionFormeA": false
+      }
+     ],
+     "base_copie": 10,
+     "note_stockee": 0,
+     "note_recalculee_avant": 0,
+     "note_apres": 0,
+     "aménagée": false
+    },
+    {
+     "eleve": 21,
+     "conversions": [
+      {
+       "cas": "signe « en trop » → forfait ponctuation",
+       "signe": ".",
+       "position": "après le mot -1",
+       "collisionFormeA": false
+      }
+     ],
+     "base_copie": 10,
+     "note_stockee": 5,
+     "note_recalculee_avant": 5,
+     "note_apres": 5.5,
+     "aménagée": false
+    },
+    {
+     "eleve": 22,
+     "conversions": [
+      {
+       "cas": "signe « en trop » → forfait ponctuation",
+       "signe": ".",
+       "position": "après le mot -1",
+       "collisionFormeA": false
+      }
+     ],
+     "base_copie": 10,
+     "note_stockee": 0,
+     "note_recalculee_avant": 0,
+     "note_apres": 0,
+     "aménagée": false
+    },
+    {
+     "eleve": 24,
+     "conversions": [
+      {
+       "cas": "signe « en trop » → forfait ponctuation",
+       "signe": ".",
+       "position": "après le mot -1",
+       "collisionFormeA": false
+      },
+      {
+       "cas": "signe « en trop » → forfait ponctuation",
+       "signe": ".",
+       "position": "après le mot 88",
+       "collisionFormeA": false
+      }
+     ],
+     "base_copie": 10,
+     "note_stockee": 0,
+     "note_recalculee_avant": 0,
+     "note_apres": 0,
+     "aménagée": false
+    },
+    {
+     "eleve": 25,
+     "conversions": [
+      {
+       "cas": "signe « en trop » → forfait ponctuation",
+       "signe": ".",
+       "position": "après le mot -1",
+       "collisionFormeA": false
+      },
+      {
+       "cas": "signe « en trop » → forfait ponctuation",
+       "signe": ".",
+       "position": "après le mot 88",
+       "collisionFormeA": false
+      }
+     ],
+     "base_copie": 10,
+     "note_stockee": 8.5,
+     "note_recalculee_avant": 8.5,
+     "note_apres": 9.5,
+     "aménagée": false
+    },
+    {
+     "eleve": 28,
+     "conversions": [
+      {
+       "cas": "signe « en trop » → forfait ponctuation",
+       "signe": ".",
+       "position": "après le mot -1",
+       "collisionFormeA": false
+      }
+     ],
+     "base_copie": 10,
+     "note_stockee": 2.5,
+     "note_recalculee_avant": 2.5,
+     "note_apres": 3,
+     "aménagée": false
+    }
+   ],
+   "intactes": [
+    {
+     "eleve": 1,
+     "sha_avant": "cb1de1273c53c2c6",
+     "sha_apres": "cb1de1273c53c2c6",
+     "identique": true
+    },
+    {
+     "eleve": 2,
+     "sha_avant": "79267776fcbb58c0",
+     "sha_apres": "79267776fcbb58c0",
+     "identique": true
+    },
+    {
+     "eleve": 3,
+     "sha_avant": "1a1614a9bf6b5828",
+     "sha_apres": "1a1614a9bf6b5828",
+     "identique": true
+    },
+    {
+     "eleve": 5,
+     "sha_avant": "b1cbc1f502deee5a",
+     "sha_apres": "b1cbc1f502deee5a",
+     "identique": true
+    },
+    {
+     "eleve": 6,
+     "sha_avant": "c8c31b383d26b2e8",
+     "sha_apres": "c8c31b383d26b2e8",
+     "identique": true
+    },
+    {
+     "eleve": 7,
+     "sha_avant": "cf29be6ce32e998d",
+     "sha_apres": "cf29be6ce32e998d",
+     "identique": true
+    },
+    {
+     "eleve": 8,
+     "sha_avant": "097a23e926833cd0",
+     "sha_apres": "097a23e926833cd0",
+     "identique": true
+    },
+    {
+     "eleve": 9,
+     "sha_avant": "0889e1ed988977ab",
+     "sha_apres": "0889e1ed988977ab",
+     "identique": true
+    },
+    {
+     "eleve": 10,
+     "sha_avant": "5c66e511c9ed22ef",
+     "sha_apres": "5c66e511c9ed22ef",
+     "identique": true
+    },
+    {
+     "eleve": 11,
+     "sha_avant": "9b598d973e271e0d",
+     "sha_apres": "9b598d973e271e0d",
+     "identique": true
+    },
+    {
+     "eleve": 13,
+     "sha_avant": "20632b1ae532bf72",
+     "sha_apres": "20632b1ae532bf72",
+     "identique": true
+    },
+    {
+     "eleve": 14,
+     "sha_avant": "9782318e4032b8f7",
+     "sha_apres": "9782318e4032b8f7",
+     "identique": true
+    },
+    {
+     "eleve": 16,
+     "sha_avant": "d14a365492cc6659",
+     "sha_apres": "d14a365492cc6659",
+     "identique": true
+    },
+    {
+     "eleve": 20,
+     "sha_avant": "68d07203748bd2f5",
+     "sha_apres": "68d07203748bd2f5",
+     "identique": true
+    },
+    {
+     "eleve": 23,
+     "sha_avant": "67da8e7ee04f7548",
+     "sha_apres": "67da8e7ee04f7548",
+     "identique": true
+    },
+    {
+     "eleve": 26,
+     "sha_avant": "06798b786f4e1566",
+     "sha_apres": "06798b786f4e1566",
+     "identique": true
+    },
+    {
+     "eleve": 27,
+     "sha_avant": "bd4e5193dac8d484",
+     "sha_apres": "bd4e5193dac8d484",
+     "identique": true
+    }
+   ],
+   "mSurSigne": 0,
+   "signesEnTrop": 13
+  },
+  {
+   "id": "dictee_brevet_blanc_4e-4e_banksy",
+   "titre": "Dictée brevet blanc 4E",
+   "classe": "4e Banksy",
+   "base": 10,
+   "bareme": "brevet",
+   "ordre": "rang dans la grille de la classe",
+   "touchees": [
+    {
+     "eleve": 11,
+     "conversions": [
+      {
+       "cas": "M sur un signe → P",
+       "signe": "-",
+       "position": 91
+      }
+     ],
+     "base_copie": 10,
+     "note_stockee": 5.5,
+     "note_recalculee_avant": 5.5,
+     "note_apres": 6,
+     "aménagée": false
+    },
+    {
+     "eleve": 12,
+     "conversions": [
+      {
+       "cas": "signe « en trop » → forfait ponctuation",
+       "signe": "?",
+       "position": "après le mot 87",
+       "collisionFormeA": false
+      }
+     ],
+     "base_copie": 10,
+     "note_stockee": 7,
+     "note_recalculee_avant": 7,
+     "note_apres": 7.5,
+     "aménagée": false
+    },
+    {
+     "eleve": 17,
+     "conversions": [
+      {
+       "cas": "signe « en trop » → forfait ponctuation",
+       "signe": ".",
+       "position": "après le mot -1",
+       "collisionFormeA": false
+      }
+     ],
+     "base_copie": 10,
+     "note_stockee": 0,
+     "note_recalculee_avant": 0,
+     "note_apres": 0,
+     "aménagée": false
+    },
+    {
+     "eleve": 19,
+     "conversions": [
+      {
+       "cas": "signe « en trop » → forfait ponctuation",
+       "signe": ".",
+       "position": "après le mot -1",
+       "collisionFormeA": false
+      }
+     ],
+     "base_copie": 10,
+     "note_stockee": 1,
+     "note_recalculee_avant": 1,
+     "note_apres": 1.5,
+     "aménagée": false
+    },
+    {
+     "eleve": 25,
+     "conversions": [
+      {
+       "cas": "signe « en trop » → forfait ponctuation",
+       "signe": ".",
+       "position": "après le mot -1",
+       "collisionFormeA": false
+      }
+     ],
+     "base_copie": 10,
+     "note_stockee": 0,
+     "note_recalculee_avant": 0,
+     "note_apres": 0,
+     "aménagée": false
+    }
+   ],
+   "intactes": [
+    {
+     "eleve": 1,
+     "sha_avant": "bc9845125e5c1c73",
+     "sha_apres": "bc9845125e5c1c73",
+     "identique": true
+    },
+    {
+     "eleve": 2,
+     "sha_avant": "9c5eca11aae99c40",
+     "sha_apres": "9c5eca11aae99c40",
+     "identique": true
+    },
+    {
+     "eleve": 3,
+     "sha_avant": "05fddb5627fe3f98",
+     "sha_apres": "05fddb5627fe3f98",
+     "identique": true
+    },
+    {
+     "eleve": 4,
+     "sha_avant": "c96fe25a0eca078d",
+     "sha_apres": "c96fe25a0eca078d",
+     "identique": true
+    },
+    {
+     "eleve": 5,
+     "sha_avant": "3b59e31f6a5cedf0",
+     "sha_apres": "3b59e31f6a5cedf0",
+     "identique": true
+    },
+    {
+     "eleve": 6,
+     "sha_avant": "fb70c8e96ef6b49f",
+     "sha_apres": "fb70c8e96ef6b49f",
+     "identique": true
+    },
+    {
+     "eleve": 7,
+     "sha_avant": "379ab4146146a3ba",
+     "sha_apres": "379ab4146146a3ba",
+     "identique": true
+    },
+    {
+     "eleve": 8,
+     "sha_avant": "f1260b09b1bbe530",
+     "sha_apres": "f1260b09b1bbe530",
+     "identique": true
+    },
+    {
+     "eleve": 9,
+     "sha_avant": "b7ffc2cce13d463b",
+     "sha_apres": "b7ffc2cce13d463b",
+     "identique": true
+    },
+    {
+     "eleve": 10,
+     "sha_avant": "899984371c8bc3d7",
+     "sha_apres": "899984371c8bc3d7",
+     "identique": true
+    },
+    {
+     "eleve": 13,
+     "sha_avant": "603b49fb1fbe163b",
+     "sha_apres": "603b49fb1fbe163b",
+     "identique": true
+    },
+    {
+     "eleve": 14,
+     "sha_avant": "59aa0a772f2f4832",
+     "sha_apres": "59aa0a772f2f4832",
+     "identique": true
+    },
+    {
+     "eleve": 15,
+     "sha_avant": "62a32080ae06b69b",
+     "sha_apres": "62a32080ae06b69b",
+     "identique": true
+    },
+    {
+     "eleve": 16,
+     "sha_avant": "a184d671e5b95330",
+     "sha_apres": "a184d671e5b95330",
+     "identique": true
+    },
+    {
+     "eleve": 18,
+     "sha_avant": "4339b9f32c8b8980",
+     "sha_apres": "4339b9f32c8b8980",
+     "identique": true
+    },
+    {
+     "eleve": 20,
+     "sha_avant": "a9e41ee1440380fe",
+     "sha_apres": "a9e41ee1440380fe",
+     "identique": true
+    },
+    {
+     "eleve": 21,
+     "sha_avant": "c3c4d3219d9c9e4a",
+     "sha_apres": "c3c4d3219d9c9e4a",
+     "identique": true
+    },
+    {
+     "eleve": 22,
+     "sha_avant": "02436fe4f7eb2161",
+     "sha_apres": "02436fe4f7eb2161",
+     "identique": true
+    },
+    {
+     "eleve": 23,
+     "sha_avant": "a95e465616a43901",
+     "sha_apres": "a95e465616a43901",
+     "identique": true
+    },
+    {
+     "eleve": 24,
+     "sha_avant": "6e61e7404f414adc",
+     "sha_apres": "6e61e7404f414adc",
+     "identique": true
+    },
+    {
+     "eleve": 26,
+     "sha_avant": "b4f94ee63af5c3ec",
+     "sha_apres": "b4f94ee63af5c3ec",
+     "identique": true
+    },
+    {
+     "eleve": 27,
+     "sha_avant": "38e58fbe343a4790",
+     "sha_apres": "38e58fbe343a4790",
+     "identique": true
+    },
+    {
+     "eleve": 28,
+     "sha_avant": "0b997f178574fba1",
+     "sha_apres": "0b997f178574fba1",
+     "identique": true
+    }
+   ],
+   "mSurSigne": 1,
+   "signesEnTrop": 4
+  },
+  {
+   "id": "dictee_brevet_blanc_4e-4e_pythagore",
+   "titre": "Dictée brevet blanc 4E",
+   "classe": "4e Pythagore",
+   "base": 10,
+   "bareme": "brevet",
+   "ordre": "rang dans la grille de la classe",
+   "touchees": [
+    {
+     "eleve": 22,
+     "conversions": [
+      {
+       "cas": "signe « en trop » → forfait ponctuation",
+       "signe": ".",
+       "position": "après le mot -1",
+       "collisionFormeA": false
+      }
+     ],
+     "base_copie": 10,
+     "note_stockee": 0,
+     "note_recalculee_avant": 0,
+     "note_apres": 0,
+     "aménagée": false
+    },
+    {
+     "eleve": 28,
+     "conversions": [
+      {
+       "cas": "M sur un signe → P",
+       "signe": "?",
+       "position": 116
+      }
+     ],
+     "base_copie": 10,
+     "note_stockee": 3,
+     "note_recalculee_avant": 3,
+     "note_apres": 3.5,
+     "aménagée": false
+    }
+   ],
+   "intactes": [
+    {
+     "eleve": 1,
+     "sha_avant": "27503d5cb8547ca0",
+     "sha_apres": "27503d5cb8547ca0",
+     "identique": true
+    },
+    {
+     "eleve": 2,
+     "sha_avant": "52a210376a9f8398",
+     "sha_apres": "52a210376a9f8398",
+     "identique": true
+    },
+    {
+     "eleve": 3,
+     "sha_avant": "89c2bf8b458292f3",
+     "sha_apres": "89c2bf8b458292f3",
+     "identique": true
+    },
+    {
+     "eleve": 4,
+     "sha_avant": "dfc343b245146ddc",
+     "sha_apres": "dfc343b245146ddc",
+     "identique": true
+    },
+    {
+     "eleve": 5,
+     "sha_avant": "63593c22ec7930d4",
+     "sha_apres": "63593c22ec7930d4",
+     "identique": true
+    },
+    {
+     "eleve": 6,
+     "sha_avant": "334bac91f6cc5e3b",
+     "sha_apres": "334bac91f6cc5e3b",
+     "identique": true
+    },
+    {
+     "eleve": 7,
+     "sha_avant": "6bb65e3cf0919b90",
+     "sha_apres": "6bb65e3cf0919b90",
+     "identique": true
+    },
+    {
+     "eleve": 8,
+     "sha_avant": "3afc8c5afba63673",
+     "sha_apres": "3afc8c5afba63673",
+     "identique": true
+    },
+    {
+     "eleve": 9,
+     "sha_avant": "3603ff1b605af754",
+     "sha_apres": "3603ff1b605af754",
+     "identique": true
+    },
+    {
+     "eleve": 10,
+     "sha_avant": "c81769b347657947",
+     "sha_apres": "c81769b347657947",
+     "identique": true
+    },
+    {
+     "eleve": 11,
+     "sha_avant": "65f6ee689fc6ba72",
+     "sha_apres": "65f6ee689fc6ba72",
+     "identique": true
+    },
+    {
+     "eleve": 12,
+     "sha_avant": "dcb376fb44e40cc6",
+     "sha_apres": "dcb376fb44e40cc6",
+     "identique": true
+    },
+    {
+     "eleve": 13,
+     "sha_avant": "e14b02d0076bd53d",
+     "sha_apres": "e14b02d0076bd53d",
+     "identique": true
+    },
+    {
+     "eleve": 14,
+     "sha_avant": "5fc3de3603972285",
+     "sha_apres": "5fc3de3603972285",
+     "identique": true
+    },
+    {
+     "eleve": 15,
+     "sha_avant": "697cafeba0a88ec2",
+     "sha_apres": "697cafeba0a88ec2",
+     "identique": true
+    },
+    {
+     "eleve": 16,
+     "sha_avant": "5680cc960508f9fe",
+     "sha_apres": "5680cc960508f9fe",
+     "identique": true
+    },
+    {
+     "eleve": 17,
+     "sha_avant": "1477e4c73eb5c105",
+     "sha_apres": "1477e4c73eb5c105",
+     "identique": true
+    },
+    {
+     "eleve": 18,
+     "sha_avant": "63b4778443a8e63a",
+     "sha_apres": "63b4778443a8e63a",
+     "identique": true
+    },
+    {
+     "eleve": 19,
+     "sha_avant": "d787b569cf59a40e",
+     "sha_apres": "d787b569cf59a40e",
+     "identique": true
+    },
+    {
+     "eleve": 20,
+     "sha_avant": "63db7df964f551df",
+     "sha_apres": "63db7df964f551df",
+     "identique": true
+    },
+    {
+     "eleve": 21,
+     "sha_avant": "e7dfa4886c51f0b1",
+     "sha_apres": "e7dfa4886c51f0b1",
+     "identique": true
+    },
+    {
+     "eleve": 23,
+     "sha_avant": "319e0e7d1c05373d",
+     "sha_apres": "319e0e7d1c05373d",
+     "identique": true
+    },
+    {
+     "eleve": 24,
+     "sha_avant": "ed9dfee60ba20231",
+     "sha_apres": "ed9dfee60ba20231",
+     "identique": true
+    },
+    {
+     "eleve": 25,
+     "sha_avant": "ab528b0537e991bc",
+     "sha_apres": "ab528b0537e991bc",
+     "identique": true
+    },
+    {
+     "eleve": 26,
+     "sha_avant": "43e78eec047d8ebe",
+     "sha_apres": "43e78eec047d8ebe",
+     "identique": true
+    },
+    {
+     "eleve": 27,
+     "sha_avant": "9c25952cd648f703",
+     "sha_apres": "9c25952cd648f703",
+     "identique": true
+    }
+   ],
+   "mSurSigne": 1,
+   "signesEnTrop": 1
+  },
+  {
+   "id": "dictee_preparee_5e_grandes_decouvertes-5e_herge",
+   "titre": "Dictée préparée 5e grandes découvertes",
+   "classe": "5e HERGÉ",
+   "base": 10,
+   "bareme": "preparee",
+   "ordre": "rang dans la grille de la classe",
+   "touchees": [
+    {
+     "eleve": 2,
+     "conversions": [
+      {
+       "cas": "signe « en trop » → forfait ponctuation",
+       "signe": ".",
+       "position": "après le mot 19",
+       "collisionFormeA": false
+      },
+      {
+       "cas": "signe « en trop » → forfait ponctuation",
+       "signe": ".",
+       "position": "après le mot 27",
+       "collisionFormeA": false
+      }
+     ],
+     "base_copie": 10,
+     "note_stockee": 5,
+     "note_recalculee_avant": 5,
+     "note_apres": 5,
+     "aménagée": false
+    },
+    {
+     "eleve": 9,
+     "conversions": [
+      {
+       "cas": "signe « en trop » → forfait ponctuation",
+       "signe": ".",
+       "position": "après le mot -1",
+       "collisionFormeA": false
+      }
+     ],
+     "base_copie": 10,
+     "note_stockee": 0,
+     "note_recalculee_avant": 0,
+     "note_apres": 0,
+     "aménagée": false
+    },
+    {
+     "eleve": 10,
+     "conversions": [
+      {
+       "cas": "signe « en trop » → forfait ponctuation",
+       "signe": ".",
+       "position": "après le mot 22",
+       "collisionFormeA": false
+      }
+     ],
+     "base_copie": 10,
+     "note_stockee": 8.5,
+     "note_recalculee_avant": 8.5,
+     "note_apres": 8.5,
+     "aménagée": false
+    },
+    {
+     "eleve": 11,
+     "conversions": [
+      {
+       "cas": "signe « en trop » → forfait ponctuation",
+       "signe": ".",
+       "position": "après le mot -1",
+       "collisionFormeA": false
+      },
+      {
+       "cas": "signe « en trop » → forfait ponctuation",
+       "signe": ".",
+       "position": "après le mot 7",
+       "collisionFormeA": false
+      },
+      {
+       "cas": "signe « en trop » → forfait ponctuation",
+       "signe": ".",
+       "position": "après le mot 18",
+       "collisionFormeA": false
+      }
+     ],
+     "base_copie": 10,
+     "note_stockee": 4,
+     "note_recalculee_avant": 4,
+     "note_apres": 4,
+     "aménagée": false
+    },
+    {
+     "eleve": 12,
+     "conversions": [
+      {
+       "cas": "signe « en trop » → forfait ponctuation",
+       "signe": ".",
+       "position": "après le mot -1",
+       "collisionFormeA": false
+      }
+     ],
+     "base_copie": 10,
+     "note_stockee": 1.5,
+     "note_recalculee_avant": 1.5,
+     "note_apres": 1.5,
+     "aménagée": false
+    },
+    {
+     "eleve": 26,
+     "conversions": [
+      {
+       "cas": "signe « en trop » → forfait ponctuation",
+       "signe": ".",
+       "position": "après le mot -1",
+       "collisionFormeA": false
+      }
+     ],
+     "base_copie": 10,
+     "note_stockee": 1,
+     "note_recalculee_avant": 1,
+     "note_apres": 1,
+     "aménagée": false
+    },
+    {
+     "eleve": 27,
+     "conversions": [
+      {
+       "cas": "signe « en trop » → forfait ponctuation",
+       "signe": ".",
+       "position": "après le mot -1",
+       "collisionFormeA": false
+      }
+     ],
+     "base_copie": 10,
+     "note_stockee": 6,
+     "note_recalculee_avant": 6,
+     "note_apres": 6,
+     "aménagée": false
+    }
+   ],
+   "intactes": [
+    {
+     "eleve": 1,
+     "sha_avant": "12fc454ffbfbf4f7",
+     "sha_apres": "12fc454ffbfbf4f7",
+     "identique": true
+    },
+    {
+     "eleve": 3,
+     "sha_avant": "9360711e292bffd3",
+     "sha_apres": "9360711e292bffd3",
+     "identique": true
+    },
+    {
+     "eleve": 4,
+     "sha_avant": "7ded94865eaacae8",
+     "sha_apres": "7ded94865eaacae8",
+     "identique": true
+    },
+    {
+     "eleve": 5,
+     "sha_avant": "47613a4c19927751",
+     "sha_apres": "47613a4c19927751",
+     "identique": true
+    },
+    {
+     "eleve": 6,
+     "sha_avant": "6a4568ba58728e8d",
+     "sha_apres": "6a4568ba58728e8d",
+     "identique": true
+    },
+    {
+     "eleve": 7,
+     "sha_avant": "abd808e9cdff61e6",
+     "sha_apres": "abd808e9cdff61e6",
+     "identique": true
+    },
+    {
+     "eleve": 8,
+     "sha_avant": "31a72e6b4a0ecdc6",
+     "sha_apres": "31a72e6b4a0ecdc6",
+     "identique": true
+    },
+    {
+     "eleve": 13,
+     "sha_avant": "7109eff688477d7b",
+     "sha_apres": "7109eff688477d7b",
+     "identique": true
+    },
+    {
+     "eleve": 14,
+     "sha_avant": "8ea42cb3b0cddd87",
+     "sha_apres": "8ea42cb3b0cddd87",
+     "identique": true
+    },
+    {
+     "eleve": 15,
+     "sha_avant": "1bebc03490c81a71",
+     "sha_apres": "1bebc03490c81a71",
+     "identique": true
+    },
+    {
+     "eleve": 16,
+     "sha_avant": "c128652abeddd694",
+     "sha_apres": "c128652abeddd694",
+     "identique": true
+    },
+    {
+     "eleve": 17,
+     "sha_avant": "4a855f0207e85960",
+     "sha_apres": "4a855f0207e85960",
+     "identique": true
+    },
+    {
+     "eleve": 18,
+     "sha_avant": "6cbf4d0b0260efad",
+     "sha_apres": "6cbf4d0b0260efad",
+     "identique": true
+    },
+    {
+     "eleve": 19,
+     "sha_avant": "5d7baae5d630d35c",
+     "sha_apres": "5d7baae5d630d35c",
+     "identique": true
+    },
+    {
+     "eleve": 20,
+     "sha_avant": "987f215f28630fe9",
+     "sha_apres": "987f215f28630fe9",
+     "identique": true
+    },
+    {
+     "eleve": 21,
+     "sha_avant": "78a992efaa3f192a",
+     "sha_apres": "78a992efaa3f192a",
+     "identique": true
+    },
+    {
+     "eleve": 22,
+     "sha_avant": "ac1505bc227c11d1",
+     "sha_apres": "ac1505bc227c11d1",
+     "identique": true
+    },
+    {
+     "eleve": 23,
+     "sha_avant": "edeb28e6397a4ac0",
+     "sha_apres": "edeb28e6397a4ac0",
+     "identique": true
+    },
+    {
+     "eleve": 24,
+     "sha_avant": "3bbbf5253f0a4bb2",
+     "sha_apres": "3bbbf5253f0a4bb2",
+     "identique": true
+    },
+    {
+     "eleve": 25,
+     "sha_avant": "9b318f64f6fba555",
+     "sha_apres": "9b318f64f6fba555",
+     "identique": true
+    },
+    {
+     "eleve": 28,
+     "sha_avant": "8a0d85c70f38c16b",
+     "sha_apres": "8a0d85c70f38c16b",
+     "identique": true
+    },
+    {
+     "eleve": 29,
+     "sha_avant": "95eb08f081c4a69d",
+     "sha_apres": "95eb08f081c4a69d",
+     "identique": true
+    },
+    {
+     "eleve": 30,
+     "sha_avant": "71f1fe55f6480782",
+     "sha_apres": "71f1fe55f6480782",
+     "identique": true
+    }
+   ],
+   "mSurSigne": 0,
+   "signesEnTrop": 10
+  }
+ ],
+ "totaux": {
+  "copiesTouchees": 26,
+  "mSurSigne": 2,
+  "signesEnTrop": 30,
+  "copiesIntactes": 119,
+  "collisionsFormeA": 0,
+  "ecartsNoteStockee": 0
+ }
+}

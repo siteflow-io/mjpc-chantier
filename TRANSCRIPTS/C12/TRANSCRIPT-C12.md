@@ -11042,3 +11042,27 @@ Tes tests, après promotion (https://siteflow-io.github.io/monsieurjaipascompris
 01/10/2026 21:00 MEMO
 
 ---
+
+## TOUR 350 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Promeus
+
+---
+
+## TOUR 350 — Claude (conscience n°12)
+
+Promotion 6.7.0-L2 (commit c79c6b57a1f6, bit à bit) ; protocole : journal, point de retour, où-trouver-quoi. Tests donnés ; L3 ensuite.
+
+Réponse mot pour mot :
+
+Promu : `correction_dictee.html` **6.7.0-L2**, commit `c79c6b57a1f6`, **bit à bit** (739 572 o, md5 `9053962b…`) ; journal, point de retour (L1), où-trouver-quoi à jour (aucune dette à marquer : L2 n'en a ni déclaré ni réglé).
+
+**Tes tests** : https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?v=6.7.0 → 1) une copie en mode texte → 2 erreurs → **⇧R** : le mode rapide, même copie, « 2 err. » ; 2) une erreur au clavier → **⇧R** : le mode texte, 3 erreurs ; l'aller-retour deux fois : rien ne bouge ; 3) dans le champ « ce qu'a écrit l'élève », un R majuscule s'écrit, rien ne bascule.
+
+Puis « continuer » à l'exécutante pour **L3** (M qui s'adapte, clavier réduit, boutons pré-sélectionnés + Entrée, le mot juste bloqué).
+
+01/10/2026 21:58 MEMO
+
+---

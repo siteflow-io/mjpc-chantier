@@ -9,7 +9,7 @@ def jouer(cible, tag, dossier):
     hub=Hub(); ext=[]; R={'cible':cible,'tag':tag,'etapes':[]}
     try:
      with sync_playwright() as pw:
-         b=pw.chromium.launch(); pg=b.new_page(viewport={'width':1500,'height':960},accept_downloads=True)
+         b=pw.chromium.launch(); pg=b.new_page(viewport={'width':1500,'height':960},accept_downloads=True,timezone_id='Europe/Paris',locale='fr-FR')
          err=[]; pg.on('pageerror',lambda e: err.append(str(e)[:140]))
          pg.on('dialog',lambda d: d.dismiss())
          def r(route,req):
@@ -66,8 +66,15 @@ def jouer(cible, tag, dossier):
          R['fin_purge']=pg.locator('.cm-sub,.cm-ok').all_inner_texts()[:3]
          pg.screenshot(path=f'{dossier}/{tag}-5-purge-terminee.png')
          R['ecritures_hub_en_mode_test']=[e for e in hub.ecritures if e['phase']=='test']
-         R['externes_non_GET']=ext
          R['magasin']=pg.evaluate("""()=>{const o={};for(const k in M8_TEST_STORE){const v=M8_TEST_STORE[k];o[k]=v===null?'∅ (effacé)':(typeof v==='object'?'objet':String(v).slice(0,20));}return o;}""")
+         # sortir du mode test, puis regarder la corbeille : ce qui est parti pour de bon s'y voit
+         pg.locator('.cm-btn').filter(has_text='Fermer').last.click(); time.sleep(0.6)
+         hub.phase='apres'; pg.click('#tprof-testpill'); time.sleep(1.0)
+         R['mode_test_apres']=pg.evaluate('m8TestOn()')
+         pg.click('.tprof-section-btn[data-section="corbeille"]'); time.sleep(1.5)
+         R['corbeille_hub_apres']=sorted(k2 for k1,v in (hub.root.get('corbeille') or {}).items() for k2 in (v or {}))
+         pg.screenshot(path=f'{dossier}/{tag}-6-corbeille-hors-mode-test.png')
+         R['externes_non_GET']=ext
          R['erreurs_js']=err
          b.close()
     except Exception as e:

@@ -11117,3 +11117,31 @@ Puis « continuer » à l'exécutante pour **L4** — le reclassement **à blanc
 01/10/2026 22:30 MEMO
 
 ---
+
+## TOUR 353 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Livré
+
+---
+
+## TOUR 353 — Claude (conscience n°12)
+
+Audit de `LIVRAISONS/DICTEE-CORRECTION/L4/` (rapport à blanc) : outil en lecture seule, aucun nom ni clé, 21 copies touchées / 86 intactes (sha), 0 écart de note stockée, 2 M sur signe (apostrophes exclues), 22 signes en trop ; conséquences expliquées (brevet : +0,5 sauf tranche de 4 ; préparée : rien ; Dylan 1 copie +0,5) ; forme (B) recommandée et partagée ; M→P perd des champs. Attend le « ok » de Paul. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Audit de L4 (« le reclassement, à blanc », `LIVRAISONS/DICTEE-CORRECTION/L4/`) — rien n'est écrit, c'est un rapport, et c'est **toi** qui dis « ok » :
+
+237. **Ce que j'ai vérifié** : l'outil ne fait que lire (sa seule « écriture » est le calcul d'une empreinte) ; le rapport ne porte **aucun nom ni aucune clé d'élève** (les élèves y sont des numéros de rang) ; les notes stockées au hub sont toutes égales au recalcul avant reclassement (0 écart : le calcul part d'une base saine) ; **86 copies sur 107 prouvées identiques octet pour octet** avant / après.
+238. **Les nombres, et l'écart avec les miens, expliqué** : 21 copies touchées ; **2 « M sur un signe »** (pas 5 : les 3 autres sont des M sur une **apostrophe**, qui est une élision, pas une ponctuation — la règle les exclut, à raison) ; **22 signes « en trop »** (pas 23 : le dernier était une apostrophe seule, même raison). Chez les Dylan : 4 signes sur 3 copies, comme je l'avais compté.
+239. **Ce que ça change pour les notes, dans tes mots** : en **brevet**, un signe en trop ne coûte plus 0,5 ; il rejoint les ponctuations (0,5 par tranche de 4) — donc une copie **gagne 0,5 par signe, sauf si ce signe lui fait atteindre une tranche de 4** (alors rien ne bouge). **Tes Dylan : 1 copie gagne 0,5, 2 ne bougent pas.** En **préparée**, la ponctuation coûte 0,5 comme le mot en trop : la note ne change pas, seul le compte change. Les deux « M sur un signe » (l'an dernier) : +0,5 chacun.
+240. **La forme, mesurée, et sa recommandation que je partage** : les erreurs de l'app sont rattachées **aux mots du texte** (une par mot), et un signe en trop n'est pas un mot du texte ; le sortir des « mots en trop » pour en faire une « ponctuation manquante » créerait 2 collisions et **ferait apparaître chez l'élève, dans son autocorrection, une faute à corriger qui n'existe pas**. Donc **(B)** : le signe **reste** parmi les mots en trop, **marqué « ponctuation », et compté au forfait** — l'écran le montre où l'élève l'a écrit, l'élève ne voit rien de nouveau, la règle est tenue. C'est ce que le rapport applique.
+241. **Une chose de plus qu'elle a trouvée** : le bouton « M→P » actuel **reconstruit la copie en perdant ses autres champs** (positions, commentaire de bilan) — une raison de plus de le retirer ; L5 le fait et garde tout.
+
+**Si tu dis « ok », L5 applique ça pour de bon** (une archive en corbeille des copies avant, la ligne « n copies reclassées », la ponctuation en trop automatique à la saisie, le bouton « M→P » retiré). Si quelque chose dans 239-240 ne te va pas, dis quoi.
+
+01/10/2026 22:45 MEMO
+
+---

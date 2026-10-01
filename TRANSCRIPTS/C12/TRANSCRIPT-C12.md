@@ -9742,3 +9742,30 @@ Et puisque **c'est elle l'exécutante** : le mandat s'ouvre maintenant par le ti
 30/09/2026 21:05 MEMO
 
 ---
+
+## TOUR 303 — Paul
+
+Texte de Paul, mot pour mot :
+
+> livré
+
+---
+
+## TOUR 303 — Claude (conscience n°12)
+
+Audit de `LIVRAISONS/ELEVE-1/0/` : diff mesuré (33 lignes ciblées : version 8.74.0-⓪, `eleves` au manifeste et à la purge, `_anneeScolaire()` dans `ensureEleveUuid`, `mjpcFetchOk` routé par le mode test, clés du magasin cohérentes avec `_sitePut`/`_siteGet`), `node --check` 0, banc unique rejoué par la conscience (Chrome du conteneur) : VERT 17/0, vrai hub inchangé ; captures regardées. Verdict : ça va, promouvable. Erreur du mandat relevée : la classe `_test_index` n'existe pas (à corriger pour ①→④). Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Audit de la livraison ⓪ (« le mode test étanche », `LIVRAISONS/ELEVE-1/0/`), contre le mandat et le cadrage, mesuré — pas lu sur sa note :
+
+107. **Le fichier** : base re-téléchargée vérifiée (`a841534f…`), livrée `8.74.0-⓪` **1 775 768 o (+1 556)**, md5 `c54b1c332b71…` ; **33 lignes changées, toutes ciblées** : la version et sa date, `MJPC_MANIFESTE.noeuds` et `MJPC_PURGE.purger` gagnent `"eleves"`, `ensureEleveUuid` lit `_anneeScolaire()`, et `mjpcFetchOk` (1 898 → 3 431 o) passe par le mode test — en `m8TestOn()`, toute écriture non-GET vers le hub va au magasin `M8_TEST_STORE` sous la même clé que `_sitePut` (`/chemin`), un DELETE y pose `null` (la lecture suivante, « lire le vrai, écrire dans le faux », voit le vide), un PATCH éclate ses clés ; les adresses hors hub ne sont pas touchées. Rien d'autre ne bouge. `node --check` : 0 erreur sur les deux blocs.
+108. **Le banc unique, rejoué par moi** (sur un hub simulé, données `ZZTEST`, le vrai hub lu avant/après inchangé : classes 9, codes 128, eleves 3, eleves_index 3, corbeille 25, manifestes 11) : **VERT, 17 vérifications, 0 échec** — la base **fuit** (2 PUT corbeille, 1 DELETE eleves_index, 1 DELETE codes en mode test), la livrée **0 écriture** au hub en mode test, la corbeille et `/eleves` au magasin, « 3 emplacements purgés · 0 échec », mode test quitté : la corbeille **vide** sur la livrée (2 entrées parties pour de bon sur la base) ; vue élève : 0 erreur JS, aucun mot interdit, mêmes écritures, seul écart la pastille de version. Seule retouche pour rejouer ici : le chemin du Chrome du conteneur.
+109. **Ce qui manque ou s'écarte** : rien contre le mandat ⓪. Elle a mesuré que la classe `_test_index` du mandat n'existe pas (« aucune classe active ») et joué sur `zztest_3e` — c'est une erreur du mandat, pas de l'exécutante ; je corrige le mandat pour ① à ④ (la classe de test se crée par le geste). Les dettes 76, 77, 78 sont marquées au registre « réglé au sas, attend le promeus » ; le ✔ après ton mot.
+110. **Verdict : ça va. Tu peux promouvoir ⓪** (`LIVRAISONS/ELEVE-1/0/index.html` → `index.html` de la production). Captures jointes : la corbeille avant/après le mode test (A1 base : 2 entrées parties pour de bon / A2 livrée : vide) et la fin de purge sur la livrée (B2 : 3 emplacements, dans le test seulement). Attention, avant de promouvoir : **sur le site en ligne (8.73.0), ne fais ni retrait d'élève ni purge en mode test** — c'est exactement ce qui écrit pour de bon aujourd'hui.
+
+Tes tests, après promotion (adresse : https://siteflow-io.github.io/monsieurjaipascompris/?n=3e&v=8.74.0) : la pastille **V8.74.0-⓪** ; Panneau prof → 🧪 Mode test (« Mode test actif — rien n'est enregistré ») ; Élèves & codes → 3E Charles de Gaulle → ✕ sur un élève → « Oui, continuer » : il disparaît ; Configuration & Firebase → « 🧹 Purge de rentrée… » : la simulation compte aussi `eleves` pour le site → « Fermer » ; « Quitter le mode test » : l'élève est revenu ; Corbeille : aucune entrée datée d'aujourd'hui. Ton « promeus », puis « continuer » à l'exécutante pour ①.
+
+01/10/2026 06:45 MEMO
+
+---

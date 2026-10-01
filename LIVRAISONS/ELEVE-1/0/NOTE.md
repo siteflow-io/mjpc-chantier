@@ -19,10 +19,11 @@ Mesuré : la classe `_test_index` du mandat n'apparaît pas dans « Élèves & c
 
 Parcours joué sur la base PUIS sur la livrée : Panneau prof → 🧪 Mode test → Élèves & codes → ✕ « Retirer l'élève » → « Oui, continuer » → Configuration & Firebase → « 🧹 Purge de rentrée… » → « Continuer vers la purge réelle… » → « ⬇ Enregistrer la sauvegarde… » → taper PURGER → « 🧹 Purger définitivement ».
 
-Banc unique `banc_unique_0.py` : **VERT, 15 vérifications, 0 échec** (sortie dans `sortie_banc_unique_0.txt`) :
+Banc unique `banc_unique_0.py` : **VERT, 17 vérifications, 0 échec** (sortie dans `sortie_banc_unique_0.txt`) :
 - **base 8.73.0 : 4 écritures parties vers la base en mode test** — 2 PUT `/corbeille/…` (le retrait, la purge), 1 DELETE `/eleves_index`, 1 DELETE `/codes` ; écran : « 2 emplacements purgés » sous « Mode test actif — rien n'est enregistré ».
 - **livrée 8.74.0-⓪ : 0 écriture vers la base, 0 hors de la base**, en mode test, pendant tout le parcours ; au magasin : la corbeille du retrait et celle de la purge, `/eleves_index`, `/codes` et `/eleves` vidés ; écran : « ✓ 3 emplacements purgés · 0 échec » (le 3e est `/eleves`, nouveau au contrat) ; 0 erreur JS.
 - **vue élève** (élève fictif connecté, base et livrée) : 0 erreur JS ; ni « aménag », ni « PAP », ni ◆, ni « mode test » à l'écran ; mêmes écritures (la présence de l'élève) ; écart d'image : **la seule pastille de version** (V8.73.0-⑭ → V8.74.0-⓪), regardé à l'agrandi (`captures/vue_eleve_ecarts_zoom.png`). (Un passage précédent montrait aussi deux points de ≤ 5 px sur les étoiles animées des cartes de niveau : animation.)
+- **mode test quitté, la corbeille** (le geste : la pastille « Mode test », puis Corbeille) : **base : 2 entrées parties pour de bon** (le retrait d'un élève, la purge de rentrée) ; **livrée : « La corbeille est vide. »**
 - **le vrai hub inchangé**, lu avant et après (comptes, jamais un nom) : classes 9, codes 128, eleves 3, eleves_index 3, corbeille 25, manifestes 11 — identiques.
 
 ## Attendus hub (après ta promotion)
@@ -31,8 +32,10 @@ Aucun nœud nouveau. Quand tu te connectes en professeur, le site publie son con
 ## Infobulles
 Aucun geste ajouté par ⓪, donc aucune infobulle nouvelle.
 
-## Captures (`captures/`, écran entier, regardées)
-`base-*` (avant) et `livree-*` (après), même parcours : 1 panneau · 2 élèves en mode test · 3 Configuration en mode test · 4 simulation de purge · 5 purge terminée · vue élève ; plus `planche_0.png` (Configuration et fins de purge, agrandies) et `vue_eleve_ecarts_zoom.png`.
+## Captures (`captures/`)
+**Pour toi, légendées, avant/après du même parcours** : `A1-avant-corbeille.png` / `A2-apres-corbeille.png` (la corbeille une fois le mode test quitté : 2 entrées parties pour de bon / vide) ; `B1-avant-fin-de-purge.png` / `B2-apres-fin-de-purge.png` (la fin de la purge en mode test : « 2 emplacements » effacés pour de vrai / « 3 emplacements » effacés dans le test seulement).
+Écran entier, sans légende, pour l'audit : `base-*` et `livree-*` (1 panneau · 2 élèves en mode test · 3 Configuration · 4 simulation de purge · 5 purge terminée · 6 corbeille hors mode test · vue élève). `vue_eleve_ecarts_zoom.png` est mon contrôle de l'écran élève (en haut l'ancienne version, en bas la nouvelle : seule la pastille de version change).
+Le navigateur du banc est réglé à l'heure de Paris (les dates affichées dans les captures).
 
 ## Avant ta promotion — attention
 Sur le site en ligne (8.73.0), **ne fais ni retrait d'élève ni purge en mode test** : c'est précisément ce qui écrit pour de bon aujourd'hui.

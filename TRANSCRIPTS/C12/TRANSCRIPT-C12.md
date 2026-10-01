@@ -10678,3 +10678,29 @@ Mesuré, corrigé, prouvé, déposé (`LIVRAISONS/MICRO-fin-rapide/`) — rien d
 01/10/2026 13:15 MEMO
 
 ---
+
+## TOUR 336 — Paul
+
+Texte de Paul, mot pour mot :
+
+> promeus
+
+---
+
+## TOUR 336 — Claude (conscience n°12)
+
+Promotion micro 6.6.3 (commit 69d9b105a406, bit à bit, 737 047 o, md5 be6e2481…) ; registre 93 ✔ ; journal, point de retour. Faute déclarée : taille et md5 annoncés avant une retouche de commentaire (737 081 / a1c4d162) — corrigés dans la note, le journal et la restauration (mécanisme « affirmer sans remesurer »). Dette vivante rappelée.
+
+Réponse mot pour mot :
+
+Promu : `correction_dictee.html` 6.6.3, commit `69d9b105a406`, **bit à bit** contre le fichier déposé et prouvé (737 047 o, md5 `be6e2481…`) ; registre n°12 · **93 ✔** ; journal et point de retour (6.6.2) à jour.
+
+193. **Une correction de ma part, déclarée** : dans mon message précédent et dans la note, j'avais écrit 737 081 o et un autre md5 — les chiffres mesurés avant une retouche du commentaire dans le code (j'avais reformulé une phrase sans remesurer). Le fichier promu est bien celui du banc et du dépôt ; la note, le journal et le point de retour portent maintenant les bons chiffres. C'est le mécanisme « affirmer sans remesurer » ; noté au transcript.
+
+**Ton test** : https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?v=6.6.3 → ta dictée → ⚡ Rapide → « Sauter à la fin » → « Terminé ! » → Enregistrer.
+
+**La dette vivante** : ③ bis (l'interface du panneau prof : toute la largeur, les boutons ↻ ✕ dans le cadre, « Ouvrir les fiches » filtré — dettes 87, 88, 89) → la purge de rentrée → l'appariement de l'emploi du temps. « ③ bis » pour l'exécutante, ou « directement » pour que je le fasse.
+
+01/10/2026 13:25 MEMO
+
+---

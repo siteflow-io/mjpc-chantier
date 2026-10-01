@@ -10344,3 +10344,31 @@ La dette vivante, après ce complément : ③ bis (l'interface : largeur, bouton
 01/10/2026 11:35 MEMO
 
 ---
+
+## TOUR 323 — Paul
+
+Texte de Paul, mot pour mot :
+
+> livré
+
+---
+
+## TOUR 323 — Claude (conscience n°12)
+
+Audit de `LIVRAISONS/ELEVE-1/2bis/` : trois fichiers (dictée 6.6.1, réécriture 2.4.1, QCM 7.7.1), diffs mesurés, `classeDuNiveau` par le champ `niveau`, `migrerClassesUneFois` vidée, `qcm/classes` hors purge, `rangerAncienCarnet` ; `node --check` 0 ; banc unique rejoué VERT 13/0 (react 17/18 locaux ; premier rejeu tombé par le temps d'attente de la migration 7.7.0, rejoué à 6 s) ; captures regardées. Verdict : ça va, promouvable (trois fichiers). Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Audit du complément ② bis (`LIVRAISONS/ELEVE-1/2bis/`), mesuré :
+
+164. **Les trois fichiers** : dictée 6.6.0 → **6.6.1** (736 690 o, +716 ; 3 lignes retirées, 8 ajoutées) ; réécriture 2.4.0 → **2.4.1** (274 783 o, +669 ; 2/7) ; QCM 7.7.0 → **7.7.1** (550 571 o, +161 ; 107 retirées / 59 ajoutées — la migration vidée). `node --check` 0 erreur sur les trois. **Vérifié dans le code** : plus aucun filtre « la clé commence par le niveau » dans la dictée (création et édition) ni dans la réécriture — `classeDuNiveau` lit le champ `niveau` de la classe, repli sur la clé pour une classe sans niveau ; `migrerClassesUneFois` ne fait plus rien (rend 0, 0 ; plus aucune lecture de `qcm/classes` sauf par le bouton « Ranger ») ; `qcm/classes` est sorti de la purge du QCM ; `rangerAncienCarnet` met le carnet en corbeille compté puis l'efface.
+165. **Le banc unique, rejoué par moi** (faux Firebase en mémoire, react 17 et 18 servis en local ; vrai hub lu avant/après, identique) : **VERT, 13 vérifications, 0 échec** — dictée 6.6.0 au niveau 3e : la classe importée absente ; 6.6.1 : présente, par son nom, la 4e absente, à l'édition aussi ; réécriture idem ; QCM 7.7.0 recrée la classe fantôme de l'ancien carnet (la fuite) ; 7.7.1 : 0 écriture, rien ne revient, aucun message ; « Ranger l'ancien carnet » : corbeille (2 classes, 3 élèves, motif `qcm-classes-legacy`), puis le nœud vide et le contrat sans lui, la confirmation dit le compte, le second clic « déjà vide » ; le QCM affiche les classes par leur nom (un défaut de plus réglé : il montrait les clés) ; vues élève des trois apps inchangées ; 0 erreur. (Mon premier rejeu est tombé sur la vérification « 7.7.0 fuit » : deux secondes ne suffisaient pas à sa migration dans mon conteneur ; six secondes : vert.)
+166. **Verdict : ça va. Tu peux promouvoir les trois** : `correction_dictee.html` 6.6.1, `reecriture.html` 2.4.1, `evaluation-qcm.html` 7.7.1. Captures ci-dessus : la liste « Classe » de la dictée au niveau 3e, la liste du QCM, le bouton « Ranger ».
+
+Tes tests, après promotion — dans cet ordre, c'est ce qui vide la dette : 1) https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?v=6.6.1 → Accès professeur → Nouvelle dictée → Niveau 3e → Classe : « 3E Charles de Gaulle », « 3 DYLAN BOB », « 3 FRANKLIN ARETHA » ; 2) https://siteflow-io.github.io/monsieurjaipascompris/reecriture.html?v=2.4.1 → Créer une réécriture → Niveau 3e → les mêmes ; 3) https://siteflow-io.github.io/monsieurjaipascompris/evaluation-qcm.html?v=7.7.1 → Accès professeur → Données → 💾 Sauvegarde → Maintenance → **« Ranger l'ancien carnet de classes »** → la confirmation dit « 5 classes » → OK ; 4) **maintenant tu peux** : console → Classes → supprime « 4E Banksy », « 4e Pythagore », « 5E Hergé » ; 5) rouvre le QCM : elles ne reviennent pas ; 6) console → Élèves & codes → une de tes classes → « compléter » avec son fichier : l'aperçu annonce les restes de l'an dernier (sexes du QCM, aménagement de Hergé) → Valider : ils partent en corbeille.
+
+Ton « promeus » ; ensuite la dette vivante : **③ bis** (l'interface : largeur, boutons, « Ouvrir les fiches ») → la purge de rentrée → l'appariement de l'emploi du temps.
+
+01/10/2026 12:05 MEMO
+
+---

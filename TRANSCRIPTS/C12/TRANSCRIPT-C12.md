@@ -10704,3 +10704,30 @@ Promu : `correction_dictee.html` 6.6.3, commit `69d9b105a406`, **bit à bit** co
 01/10/2026 13:25 MEMO
 
 ---
+
+## TOUR 337 — Paul
+
+Texte de Paul, mot pour mot :
+
+(Paul transmet, sans autre mot, le « MANDAT DE VÉRIFICATION ET DE RÉPARATION — ÉCRAN DE CORRECTION DE correction_dictee » remis par la conscience « dictée » le 01/10 : base 6.6.2 (738 095 o, 0aeb7712), kit `banc_dictee_kit.zip`, vérifications (scenarios_modes, fuzz_correction, fuzz_rapide, scenarios_grille), à réparer B1 (⇧R perd les erreurs non enregistrées), B1 bis (⇧R bascule), B2 (sortie sans enregistrer : décision a/b), N1 (recherche par initiales en fin de copie rapide), N2 (largeur : colonne rapide 480 px, « ← Texte » déborde), règles pour l'exécutant.)
+
+---
+
+## TOUR 337 — Claude (conscience n°12)
+
+Mis en tension avec la production : base dépassée (6.6.3 promue à 13:19, dette 93) ; `.container` 760 px partagé, colonne rapide 480 px en dur (deux endroits), ⇧R → `setTab("rapide")` confirmé ; pas de télescopage avec ④ (passer par `save`) ni ③ bis. Deux décisions demandées (B2 : recommandation (a) ; N2 : largeur 1100 px ?) ; deux écarts de protocole à harmoniser (qui pousse ; le kit). Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Lu, et mis en tension avec ce que je mesure sur la production — avant d'en faire un mandat d'exécutant :
+
+194. **La base citée est dépassée.** Le mandat part de la 6.6.2 (738 095 o, `0aeb7712…`, mesurée à 13 h 10) ; depuis, tu as promu la **6.6.3** (737 047 o, md5 `be6e2481…`, 13 h 19) — le micro qui retire le bloc « Barème » mort de l'écran « Terminé ! » du mode Rapide (dette 93). L'exécutant doit partir de la 6.6.3, et son banc « sauter à la fin » doit rester vert. Je corrige la base dans le bloc.
+195. **Tout le reste est juste et je le confirme** : `.container` est à 760 px et partagée avec les écrans élèves ; la colonne du mode rapide est à 480 px en dur (deux endroits : l'écran de correction rapide et l'écran de l'élève en autocorrection) ; ⇧R appelle `setTab("rapide")` et démonte l'écran du mode texte avec ses erreurs non enregistrées — c'est bien la cause de B1. Les points B1, B1 bis, B2, N1, N2 ne télescopent ni ④ (la trace et la base de la copie passent par `save`, que l'enregistrement à chaque geste devra appeler tel quel) ni ③ bis (une autre app).
+196. **Deux décisions à toi avant que j'écrive le bloc** : **B2** — je recommande **(a)** : le mode texte enregistre à chaque geste comme le mode rapide, par `save` (donc la trace et la base de la copie ne changent pas), et « Enregistrer → suivant » garde son contrôle « mots recopiés » et l'avancée ; (b) la demande à la sortie ne protège pas un rechargement ou une fermeture de page. **N2** — la largeur : 1100 px pour l'écran de correction (texte et rapide), ou autre chose ?
+197. **Deux écarts de protocole à harmoniser dans le bloc** : « Paul pousse lui-même le fichier » → ici c'est moi qui pousse sur ton « promeus », après audit (comme pour tout ce chantier) ; et le kit `banc_dictee_kit.zip`, je ne l'ai pas — c'est toi qui le donnes à l'exécutante dans sa conversation (le mandat le dit), le bloc le rappellera.
+
+Réponds « (a) ou (b) » et la largeur ; je rédige alors le bloc copiable avec les jetons, la base 6.6.3, les lectures (le cadrage 6, le registre n°12, `PASSATION-C9-C10-fautes`), les règles de ce chantier, et l'ordre des livraisons (B2 → B1/B1 bis → N1 → N2, chacune close par un arrêt).
+
+01/10/2026 13:50 MEMO
+
+---

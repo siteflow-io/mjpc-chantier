@@ -1,0 +1,10 @@
+S1 avant retour : 8,5 ZZTEST Kilo /10 · 1G1L · −1,5 
+    fenêtre à la sortie : aucune
+    rouverte : 8,5 ZZTEST Kilo /10 · 1G1L · −1,5  | hub : [(3, 'G'), (7, 'L')]
+S2 rapide, hub : [(0, 'G'), (2, 'L')]
+    après « Pause » : 8,5 ZZTEST Lima /10 · 1G1L · −1,5 
+    + 1 en mode texte : 8 ZZTEST Lima /10 · 1G1L1∅ · −2 
+    hub après Enregistrer : [(0, 'G'), (2, 'L'), (9, 'M')]
+S3 mode texte : 8,5 ZZTEST Mike /10 · 1G1L · −1,5 
+    après ⇧R : 2 err. · 1.5 pts | hub : [(3, 'G'), (7, 'L')]
+fenêtres : [] | erreurs de page : []

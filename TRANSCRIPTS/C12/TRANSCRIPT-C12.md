@@ -10579,3 +10579,27 @@ Dis « ok » (ou corrige la règle 185), et j'écris ③ bis pour l'exécutante.
 01/10/2026 12:55 MEMO
 
 ---
+
+## TOUR 332 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok. mais c'est un micro, non?
+
+---
+
+## TOUR 332 — Claude (conscience n°12)
+
+Oui : la duplication = un micro (dictée 6.6.2, promu seul) ; ③ bis = le lot UI d'index.html ; deux textes séparés à écrire. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Oui : la duplication (92), c'est **un micro** — une fonction, un fichier (`correction_dictee.html` 6.6.2), un banc par le geste, des captures avant/après, promu seul. Je ne le colle pas dans ③ bis.
+
+187. Donc deux choses séparées, pour la même exécutante, chacune livrée et promue seule : **le micro « duplication totale »** (dictée), et **③ bis « l'interface du panneau prof »** (`index.html` : la largeur, les boutons dans le cadre, « Ouvrir les fiches » filtré — trois corrections courtes, un seul lot parce que c'est le même écran). L'ordre entre les deux, c'est toi : je propose le micro d'abord (c'est ta dictée, et c'est dix minutes).
+
+Dis « ok » et j'écris les deux textes, prêts à coller.
+
+01/10/2026 13:00 MEMO
+
+---

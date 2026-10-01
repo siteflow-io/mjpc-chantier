@@ -10097,3 +10097,28 @@ Réponds-lui « sur 10 » (ou « sur 20 »), et elle code ④.
 01/10/2026 09:30 MEMO
 
 ---
+
+## TOUR 315 — Paul
+
+Texte de Paul, mot pour mot :
+
+> mais pourquoi le site la transforme sur 20? parce que les dictées sur 20 ne sont pas la norme brevet, plutot dictée préparée, et encore. Donc en soi, le barème sur 10 est déjà le barème le plus naturel. Mais en revancche, il peut m'arriver de faire une dictée sur 20 oui.
+
+---
+
+## TOUR 315 — Claude (conscience n°12)
+
+Mesuré dans `correction_dictee.html` : l'écran calcule la base effective (l. 3011 : base aménagée si aménagé) mais l'enregistrement appelle `computeNote(…, dicteeData.base, …)` (l. 2420) : un reste, pas une règle. Règle proposée : la note sur la base de la correction, sans conversion (base aménagée pour un aménagé, base de la dictée pour les autres). Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Mesuré dans ta correction de dictée pour te répondre sans supposer :
+
+145. **Pourquoi le site repasse sur 20** : ce n'est pas une règle, c'est un reste. L'écran de correction calcule la base « effective » de l'élève (ta base aménagée s'il est aménagé, sinon la base de la dictée) — ligne 3011 — mais **l'enregistrement, lui, appelle le calcul de la note avec `dicteeData.base`** (ligne 2420), c'est-à-dire la base de la dictée, 20 par défaut : la version aménagée a été ajoutée après, et cette ligne n'a pas suivi. Rien de voulu.
+146. **La règle à donner à l'exécutante, dans tes mots** : *la note s'enregistre sur la base avec laquelle la copie a été corrigée, jamais convertie.* Une copie normale : la base de la dictée (20, ou ce que tu as réglé — tu peux faire une dictée sur 20, ou sur autre chose) ; une copie aménagée : ta base aménagée (10 par défaut, ou ce que tu as réglé pour cette dictée). La trace « aménagé : oui, mode, base » dit ensuite d'où vient la note. Pas de « sur 10 partout » ni de « sur 20 partout » : chaque copie garde sa base.
+
+Réponds-lui : **« la note sur la base de la correction, sans conversion : la base aménagée pour un aménagé, la base de la dictée pour les autres »**, et elle code ④.
+
+01/10/2026 09:40 MEMO
+
+---

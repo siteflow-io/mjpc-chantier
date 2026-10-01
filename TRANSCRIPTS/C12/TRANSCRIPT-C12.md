@@ -10454,3 +10454,28 @@ C'est le même geste que l'import, refait sur une classe qui existe déjà — r
 01/10/2026 12:25 MEMO
 
 ---
+
+## TOUR 327 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok vérifie.
+
+---
+
+## TOUR 327 — Claude (conscience n°12)
+
+Mesuré : archive `restes-eleve-1_122638` (176 sexes, 3 aménagements) ; `qcm/eleveSexes` réduit aux classes vivantes ; `classes_amenages` vide ; classes intactes ; la fiche de l'élève cité toujours non enregistrée. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Vérifié au hub, à 12:27 :
+
+178. **Les restes sont partis** : une archive `restes-eleve-1` à 12:26 dans ta corbeille (176 sexes de l'an dernier, 3 aménagements ; les nœuds `qcm/eleveSexes` des six anciennes classes et `classes_amenages/5e HERGÉ`) ; il ne reste dans `qcm/eleveSexes` que la 3E Charles de Gaulle, CLASSE TEST et _TEST (des classes vivantes : normal) ; `classes_amenages` est **vide**. Tes quatre classes sont intactes (30 · 30 · 25 · 30 élèves, autant de fiches, personne doublé).
+179. **La fiche de l'élève de 4 Turing n'est toujours pas enregistrée** (aucune case, pas de date). Si tu l'as refaite et que « Fiche enregistrée — cases cochées le … » n'est pas apparu, c'est une dette ; si tu ne l'as pas encore refaite, refais-la et dis-moi ce que tu vois.
+
+Le ménage de l'an dernier est terminé. Il reste, dans la dette vivante : **③ bis** (l'interface du panneau prof) → la purge de rentrée → l'appariement de l'emploi du temps. Ton mot sur la fiche, et j'écris ③ bis.
+
+01/10/2026 12:30 MEMO
+
+---

@@ -1,0 +1,272 @@
+{
+ "avant_cartes": {
+  "Z. Anna": "Z. Anna📘 | 8/20",
+  "Z. Bruno": "Z. Bruno | —",
+  "Z. Clara": "Z. Clara | —"
+ },
+ "avant_pap": 0,
+ "cartes0": {
+  "Z. Anna": "Z. Anna | 8/10",
+  "Z. Bruno": "Z. Bruno📘 | aménagé | —",
+  "Z. Clara": "Z. Clara | —"
+ },
+ "pap0": "PAP1 élève pap-15 (dictées aménagées) : aménagés pour cette dictée, d’après leur fiche. Tout passer en non aménagé pour cette dictée — ou élève par élève, par le clic droit",
+ "trace_anna": {
+  "errors": [],
+  "extras": [],
+  "note": 8,
+  "deduction": 0,
+  "counts": {},
+  "timestamp": 1,
+  "amenagee": true,
+  "mode": "A+C",
+  "base": 10
+ },
+ "migrations": [
+  [
+   "update",
+   "correction_dictee/dictee_zz/results",
+   [
+    "zztest_alpha_anna/amenagee",
+    "zztest_alpha_anna/mode",
+    "zztest_alpha_anna/base"
+   ]
+  ]
+ ],
+ "menu1": [
+  "❌ Marquer absent",
+  "✓ Retirer aménagé (cette dictée)"
+ ],
+ "ov1": {
+  "zztest_beta_bruno": false
+ },
+ "cartes1": {
+  "Z. Anna": "Z. Anna | 8/10",
+  "Z. Bruno": "Z. Bruno | non aménagé (cette dictée) | —",
+  "Z. Clara": "Z. Clara | —"
+ },
+ "menu2": [
+  "❌ Marquer absent",
+  "📘 Aménagé (cette dictée)"
+ ],
+ "ov2": {},
+ "cartes2": {
+  "Z. Anna": "Z. Anna | 8/10",
+  "Z. Bruno": "Z. Bruno📘 | aménagé | —",
+  "Z. Clara": "Z. Clara | —"
+ },
+ "ov3": {
+  "zztest_beta_bruno": false
+ },
+ "pap3": "PAP1 élève pap-15 (dictées aménagées) : non aménagés pour cette dictée. Tout repasser en aménagé (leur fiche) — ou élève par élève, par le clic droit",
+ "ov4": {},
+ "pap4": "PAP1 élève pap-15 (dictées aménagées) : aménagés pour cette dictée, d’après leur fiche. Tout passer en non aménagé pour cette dictée — ou élève par élève, par le clic droit",
+ "res_bruno": {
+  "errors": [],
+  "extras": [],
+  "note": 10,
+  "deduction": 0,
+  "counts": {
+   "G": 0,
+   "L": 0,
+   "M": 0,
+   "I": 0,
+   "P": 0,
+   "A": 0,
+   "E": 0,
+   "X": 0
+  },
+  "timestamp": 1790843922080,
+  "amenagee": true,
+  "mode": "A+C",
+  "base": 10
+ },
+ "res_clara": {
+  "errors": [],
+  "extras": [],
+  "note": 20,
+  "deduction": 0,
+  "counts": {
+   "G": 0,
+   "L": 0,
+   "M": 0,
+   "I": 0,
+   "P": 0,
+   "A": 0,
+   "E": 0,
+   "X": 0
+  },
+  "timestamp": 1790843925625,
+  "amenagee": false
+ },
+ "cartes5": {
+  "Z. Anna": "Z. Anna | 8/10",
+  "Z. Bruno": "Z. Bruno📘 | aménagé | 10/10",
+  "Z. Clara": "Z. Clara | 20/20"
+ },
+ "moyenne1": "Moyenne\n20/20\n2 copies aménagées — moyenne 9/10",
+ "rendue": 1790843932031,
+ "apres_base": {
+  "zztest_alpha_anna": 8,
+  "zztest_beta_bruno": 10,
+  "zztest_gamma_clara": 12
+ },
+ "config_base": 12,
+ "moyenne2": "Moyenne\n12/12\n2 copies aménagées — moyenne 9/10",
+ "cartes6": {
+  "Z. Anna": "Z. Anna | 8/10",
+  "Z. Bruno": "Z. Bruno📘 | aménagé | 10/10",
+  "Z. Clara": "Z. Clara | 12/12"
+ },
+ "lib_clara2": "Enregistrer (12/12) → suivant",
+ "res_clara2": {
+  "errors": [],
+  "extras": [],
+  "note": 12,
+  "deduction": 0,
+  "counts": {
+   "G": 0,
+   "L": 0,
+   "M": 0,
+   "I": 0,
+   "P": 0,
+   "A": 0,
+   "E": 0,
+   "X": 0
+  },
+  "timestamp": 1790843946395,
+  "amenagee": false
+ },
+ "papier": {
+  "mot": false,
+  "id": false,
+  "titre1": "Dictée",
+  "titre2": "Dictée ZZTEST"
+ },
+ "export": {
+  "eleves": [
+   [
+    "Anna",
+    8,
+    10
+   ],
+   [
+    "Bruno",
+    10,
+    10
+   ],
+   [
+    "Clara",
+    12,
+    12
+   ]
+  ],
+  "bilan": {
+   "effectif": 3,
+   "corriges": 1,
+   "moyenne": 12,
+   "mediane": 12,
+   "mots_les_plus_echoues": [],
+   "moyenne_sur": 12
+  },
+  "mot": false
+ },
+ "ecritures": [
+  [
+   "set",
+   "manifestes/correction_dictee"
+  ],
+  [
+   "update",
+   "correction_dictee/dictee_zz/results",
+   [
+    "zztest_alpha_anna/amenagee",
+    "zztest_alpha_anna/mode",
+    "zztest_alpha_anna/base"
+   ]
+  ],
+  [
+   "set",
+   "correction_dictee/dictee_zz/amenages/zztest_beta_bruno"
+  ],
+  [
+   "remove",
+   "correction_dictee/dictee_zz/amenages/zztest_beta_bruno"
+  ],
+  [
+   "update",
+   "correction_dictee/dictee_zz/amenages",
+   [
+    "zztest_beta_bruno"
+   ]
+  ],
+  [
+   "update",
+   "correction_dictee/dictee_zz/amenages",
+   [
+    "zztest_beta_bruno"
+   ]
+  ],
+  [
+   "set",
+   "correction_dictee/dictee_zz/results/zztest_beta_bruno"
+  ],
+  [
+   "set",
+   "correction_dictee/dictee_zz/results/zztest_gamma_clara"
+  ],
+  [
+   "set",
+   "correction_dictee/dictee_zz/copyOptions"
+  ],
+  [
+   "set",
+   "correction_dictee/dictee_zz/copyPublishedAt"
+  ],
+  [
+   "update",
+   "correction_dictee/dictee_zz/config",
+   [
+    "bareme",
+    "title",
+    "niveau",
+    "published",
+    "classe",
+    "base",
+    "competences",
+    "showNote",
+    "exercicesOuverts",
+    "peerHelp",
+    "text"
+   ]
+  ],
+  [
+   "set",
+   "correction_dictee/dictee_zz/results/zztest_gamma_clara/note"
+  ],
+  [
+   "set",
+   "correction_dictee/dictee_zz/results/zztest_gamma_clara/deduction"
+  ],
+  [
+   "set",
+   "correction_dictee/dictee_zz/results/zztest_gamma_clara/counts"
+  ],
+  [
+   "set",
+   "correction_dictee/dictee_zz/results/zztest_gamma_clara"
+  ]
+ ],
+ "err": [],
+ "ext": [],
+ "eleve_liste": "Mes dictées\n\nZZTEST BETA Bruno\n\nMe déconnecter\nDictée ZZTEST\nZZTEST 5e · corrigée le 01/10/2026\nÀ faire\n10/10\nOuvrir →",
+ "eleve_ecran": "🎉\nBravo pour tout, Bruno !\nNote de dictée\n10/10\n\nAucune erreur. Rien à corriger, rien à reprendre.\n\nÀ savoir : Ta note de dictée (10/10), c’est moi qui la calcule, sur ta copie papier. Ta note d’autocorrection (5/5) est une note à part : tu n’avais aucune erreur à retrouver. Elle ne change pas ta note de dictée.\nÀ recopier chez toi, sur ta copie :\n« Pour cette dictée, je n’ai fait aucune erreur, et pour la prochaine, je devrai relire avec le même soin. »\n📄 Ma dictée autocorrigée\nTA DICTÉE CORRIGÉE\nLe petit chat dort sur le tapis rouge.\nANALYSE DE TES ERREURS\n← Retour",
+ "eleve_mots": {
+  "aménag": false,
+  "Aménag": false,
+  "PAP": false,
+  "◆": false,
+  "pap-15": false
+ },
+ "eleve_err": []
+}

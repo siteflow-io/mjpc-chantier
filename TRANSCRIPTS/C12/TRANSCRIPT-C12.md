@@ -10428,3 +10428,29 @@ Dis-moi quand 171 et la fiche sont faits ; j'écris alors le complément ③ bis
 01/10/2026 12:20 MEMO
 
 ---
+
+## TOUR 326 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Pas encore fait : l'étape 171 (« compléter » une classe avec son fichier) — les restes de l'an dernier (les sexes du QCM de 9 anciennes clés, l'aménagement de Hergé) sont encore là ; ils partiront à ce geste. comment je fais "compléter avec son fichier"? c'est obscur comme formule.
+
+---
+
+## TOUR 326 — Claude (conscience n°12)
+
+Le geste expliqué : redéposer le fichier d'une classe existante dans « Élèves & codes » ; l'aperçu « déjà présente (à compléter) » et la ligne des restes ; « Valider l'import — compléter ». Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+C'est le même geste que l'import, refait sur une classe qui existe déjà — rien de nouveau à apprendre :
+
+175. Console → **Panneau prof → Élèves & codes** → la zone « Dépose ici le fichier .xlsx de la classe » → **dépose le fichier d'une de tes quatre classes** (n'importe laquelle, par exemple 4 TURING, le même fichier que ce matin).
+176. L'aperçu dit « → déjà présente : 4 TURING (à compléter) », « déjà présents : 30 · nouveaux : 0 », et, en bas des pastilles, la ligne **« restes de l'an dernier (classes supprimées) : … sexes du QCM · 1 aménagement de dictée → partiront en corbeille »**.
+177. **« Valider l'import — compléter « 4 TURING » »** → « Import fait » : rien ne change pour tes élèves (personne n'est doublé, les fiches ne sont pas touchées), et les restes partent en corbeille. C'est tout.
+
+« Compléter », c'est le mot du bouton quand la classe existe déjà (au lieu de « créer »). Dis-moi quand c'est fait, je vérifie au hub.
+
+01/10/2026 12:25 MEMO
+
+---

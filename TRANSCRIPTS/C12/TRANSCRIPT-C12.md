@@ -10039,3 +10039,35 @@ Rien à changer au mandat ; ② bis reste la dette vivante, après ④.
 01/10/2026 09:20 MEMO
 
 ---
+
+## TOUR 313 — Paul
+
+Texte de Paul, mot pour mot :
+
+> regarde mercredi matin, c'est l'exemple flagrant de ce que je te dis: je ne sais plus quand, au moment où j'ai travaillé sur l'emploi du temps, une instance m'a conseillé de désigner HUGO et TURING comme banksy et pythagore. ça permettait d'afficher l'emploi du temps sur mjpc, vu que je n'avais pas encore importé mes nouvelles classes (vu que ça devait être le dernier geste que je devais faire après avoir terminé le plan de codage). Sinon, voici la réponse de l'exécutant: [la réponse de l'exécutante : lecture de la dictée 6.5.0 ; 20 écritures sous results/, 5 posent une copie ; la note d'un élève aménagé s'affiche sur 10 mais s'enregistre recalculée sur 20 ; question 162 : base aménagée ou base 20 ? ; point 161 : mode par trou dans la trace]
+
+(deux captures : l'emploi du temps MJPC de la semaine, et l'emploi du temps papier)
+
+---
+
+## TOUR 313 — Claude (conscience n°12)
+
+Remesuré la grille EDT : appariement `classeMjpc` « 4 HUGO → 4E BANKSY », « 4 TURING → 4E PYTHAGORE » (6 créneaux chacun), 3e non appariées — le point 138 du tour 312 était faux (mesure incomplète, mécanisme ③), reconnu. Le geste existant : le panneau d'appariement de l'emploi du temps (`edtApparierNom`, archivé « Grille — appariement des classes »), à faire après l'import et après ② bis. Question 162 : proposition « base aménagée (10), comme l'écran », avec les conséquences (cartes /10, reclassement M→P, recalcul). Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Deux sujets. D'abord l'emploi du temps — et une correction de ma part.
+
+140. **Tu as raison, et mon point 138 d'hier soir était faux** : j'avais mesuré le libellé des créneaux (« 4 HUGO », « 4 TURING ») sans regarder le champ d'à côté, **l'appariement** (`classeMjpc`). Remesuré : la grille 2026-2027 porte « 4 HUGO → 4E BANKSY » (6 créneaux) et « 4 TURING → 4E PYTHAGORE » (6 créneaux) ; « 3 DYLAN Bob » et « 3 FRANKLIN Aretha » ne sont appariés à rien (« classe non encore importée », ce que ta capture montre). C'est exactement ce que tu décris : au moment de l'emploi du temps, pour voir tes cases, on t'a fait pointer Hugo et Turing vers les classes qui existaient alors. C'est le mécanisme ③ de la n°9 (affirmer sur une mesure incomplète) ; je l'ai commis, c'est noté au transcript.
+141. **Ce qu'il faut faire, et c'est un geste qui existe déjà** — rien à coder : dans **Emploi du temps**, le panneau de l'emploi du temps a une section d'appariement : pour chaque nom de la grille, une liste déroulante vers une classe du site (« — non encore importée — » / tes classes). Une fois tes quatre classes importées, tu y mets : « 3 FRANKLIN Aretha → 3e Aretha Franklin », « 3 DYLAN Bob → 3e Bob Dylan », « 4 HUGO → 4e Victor Hugo », « 4 TURING → 4e Turing ». La grille est archivée en corbeille à chaque changement (« Grille — appariement des classes »). Tant que Banksy et Pythagore existent (elles reviennent par le QCM, ② bis), les cases de Hugo et Turing continueront de s'appeler ainsi : **l'appariement, après l'import et après ② bis.**
+
+Ensuite la question 162 de l'exécutante — c'est ton barème, tu tranches ; ma proposition, mise en tension avec le cadrage :
+
+142. **La copie d'un élève aménagé s'enregistre sur la base de ta version aménagée (10 par défaut), comme l'écran de correction te la montre** — pas sur 20. Le cadrage le dit déjà sans le dire : la trace « aménagé : oui, mode, base » s'écrit « au moment de la correction, jamais recalculée après » (3.4 quinquies) ; si la note enregistrée est recalculée sur 20 à l'instant même, la trace ment. Et c'est le principe « l'app sait exactement » : ce que tu as validé à l'écran est ce qui est gardé. Conséquences qu'elle règle dans la même livraison : les cartes affichent « …/10 » pour un aménagé, le reclassement M → P respecte la base de la trace, le recalcul sur changement de base ne touche pas les copies marquées. Si tu préfères 20 partout (une seule échelle sur les cartes), dis-le : alors c'est la *conversion* qui s'enregistre, et la trace garde « base 10 » pour dire d'où elle vient.
+143. Son point 161 (le mode par trou, la trace « A » ou « A+C ») est juste, elle le règle seule.
+
+Réponds-lui par un mot (« base aménagée » ou « 20 ») et elle code ④.
+
+01/10/2026 09:35 MEMO
+
+---

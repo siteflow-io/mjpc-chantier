@@ -10902,3 +10902,23 @@ Elle livre L1 et s'arrête ; tu me transmets sa note et ses captures ; j'audite 
 01/10/2026 19:50 MEMO
 
 ---
+
+## TOUR 344 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Non tout se fait au SAS
+
+---
+
+## TOUR 344 — Claude (conscience n°12)
+
+Compris : livraisons lues au sas sur « livré », rien transmis par Paul ; le kit (noms réels) donné dans la conversation de l'exécutante. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Compris : comme pour ELEVE-1 — elle dépose chaque livraison au sas (`LIVRAISONS/DICTEE-CORRECTION/L1/` : fichier, bancs, captures, note), tu me dis « livré », je lis tout au sas, j'audite, tu dis « promeus », je pousse. Tu ne transmets rien. La seule chose qui ne passe pas par le sas, c'est le kit (son instantané porte des noms d'élèves réels) : tu le lui donnes dans sa conversation, une fois.
+
+01/10/2026 19:55 MEMO
+
+---

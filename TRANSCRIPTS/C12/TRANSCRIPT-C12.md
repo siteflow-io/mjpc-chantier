@@ -10790,3 +10790,37 @@ Il me reste tes réponses à **196** (B2 : (a) ou (b) ; N2 : 1100 px ?), **202**
 01/10/2026 14:25 MEMO
 
 ---
+
+## TOUR 340 — Paul
+
+Texte de Paul, mot pour mot :
+
+> 202. Attention, avant de retirer le bouton il faut mesurer ce que ça implique. Est ce que ce qu'il rattrape est un cas qui n'arrivera plus jamais? 203. Sur l'histoire du mot en trop: des élèves mettent parfois de la ponctuation en trop. J'utilise alors le + mais il ne propose que mot en trop et ça retire 0.5. ce que j'imagine c'est une détection : vu que la liste des ponctuations c'est une liste fermée, dès que l'App détecte que je mets une ponctuation en "en plus" elle le bascule dans le forfait ponctuation. Ça évite de pénaliser un élève pour un tiret en trop ou un point en trop... Même si le jour du brevet ça sera probablement enlevé ( à confronter aux textes officiels). Et pour moi ça simplifie, parce que je n'ai plus besoin de dire si c'est type ponctuation vu que la détection se fait. De fait, j'ai quasi terminé la correction de la dictée des Dylan. Certains élèves sont dans ce cas là, donc il faudra qu'avec la nouvelle version d'app la bascule se fasse automatiquement ( c'est faisable, j'ai rentré scrupuleusement tout ce qui était une erreur sur la copie des élèves , donc pour ce "en plus" et le fait que c'est de la ponctuation, l'App pourra reclasser. Et donc appliquer les forfaits et donc annuler les 0.5 enlevés. 204: non pas tab, les flèches. Non pas "3 mots" mais les mots eux mêmes et qui disparaissent au fur et à mesure que je précise la frappe. Repose moi tes questions auxquelles je 'ai pas repondu
+
+---
+
+## TOUR 340 — Claude (conscience n°12)
+
+Mesuré : M→P reclasse uniquement M posé sur une ponctuation (hors apostrophe) ; au hub 0 cas Dylan, 0 CdG, 3 Banksy, 2 Pythagore ; mots en trop qui sont des ponctuations : Dylan 4 sur 3 copies, CdG 14, Banksy 4, Pythagore 1 ; computeNote compte X à 0,5 dans les deux barèmes. Cadrage : reclassement automatique à l'ouverture (M→P et X ponctuation → forfait P), bouton retiré ; recherche : flèches, les mots eux-mêmes. Questions reposées : 211 B2, 212 N2, 213 P/E, 214 reclassement, 215 curseur/types. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Mesuré avant de répondre :
+
+208. **Le bouton « M→P » (202)** : il rattrape **une seule chose** — une erreur « Manquant » posée sur un signe de ponctuation (hors apostrophe), qu'il reclasse en « Ponctuation » et recalcule la note (il laisse les apostrophes, et il ne touche à rien d'autre). Au hub aujourd'hui : **0 cas dans ta dictée des Dylan, 0 dans le brevet blanc 3E, 3 dans Banksy, 2 dans Pythagore** (l'an dernier). Dès que la touche M s'adapte (et le clic l'est déjà), **ce cas ne peut plus se produire par aucun geste** : le bouton n'a plus d'avenir. Je propose : la livraison reclasse une fois, toute seule, les copies qui portent encore ce cas (les 5 de l'an dernier, et toute autre à venir) **au moment où la dictée s'ouvre**, puis le bouton disparaît. Si tu préfères le garder tant que les dictées de l'an dernier existent, dis-le.
+209. **La ponctuation en trop (203)** : mesuré, le « + » range tout en « mot en trop » (X, −0,5, dans les deux barèmes), sans regarder ce que c'est. Au hub : ta dictée des Dylan a **4 « en plus » qui sont des ponctuations (« , » et « - »), sur 3 copies** ; le brevet blanc 3E en a 14, Banksy 4, Pythagore 1. Ce que je cadre, d'après tes mots : **une ponctuation « en plus » (la liste fermée des signes, l'apostrophe exclue) va automatiquement au forfait ponctuation** — en barème brevet, dans le compte des « quatre ponctuations = 0,5 » ; en barème préparée, au coût de la ponctuation (0,5 aujourd'hui) ; tu n'as plus à dire que c'est de la ponctuation. **Et le reclassement des copies déjà corrigées se fait automatiquement**, par la même reprise que 208, à l'ouverture de la dictée : les 0,5 enlevés pour ces signes sont rendus, la note et la trace recalculées sur la base de la copie ; tu vois une ligne « n copies reclassées » une fois. Les textes officiels du brevet, je ne les ai pas sous les yeux : je ne sais pas ce qu'ils disent de la ponctuation en trop ; ton barème brevet dans l'app met déjà la ponctuation au forfait, et c'est ce que la bascule suit.
+210. **La recherche (204), corrigée** : les flèches ← → passent d'un candidat au suivant (pas Tab) ; la bande montre **les mots eux-mêmes** (pas un nombre), qui disparaissent à mesure que tu précises ; un seul mot restant → il s'ouvre ; Entrée ouvre le candidat courant ; Échap efface.
+
+**Les questions auxquelles tu n'as pas encore répondu**, reposées telles quelles :
+
+211. **B2** (196) — quand tu quittes une copie sans « Enregistrer » : **(a)** le mode texte enregistre à chaque geste, comme le mode rapide (ma recommandation), ou **(b)** une demande « Enregistrer les erreurs de NOM ? » à chaque sortie ?
+212. **N2** (196) — la largeur de l'écran de correction (texte et rapide) : **1100 px**, ou autre chose ? (Les écrans élèves ne bougent pas.)
+213. **Les touches P et E** (202) — les garder comme doublons silencieux de la touche M adaptée, ou les retirer ?
+214. **208 et 209** — ok pour le reclassement automatique à l'ouverture et le retrait du bouton, ou le garder ?
+215. **205 et 206** — le curseur (← → ↑ ↓ en sautant la ponctuation, Entrée ouvre) et, menu ouvert, les types au clavier (G, L, M adaptée, I, A) + Ctrl+Z : ok ?
+
+Dès tes cinq réponses, j'écris le bloc de l'exécutant.
+
+01/10/2026 18:40 MEMO
+
+---

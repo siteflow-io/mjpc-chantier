@@ -10010,3 +10010,32 @@ Puis « continuer » à l'exécutante pour ④ — la correction de dictée lit 
 01/10/2026 09:00 MEMO
 
 ---
+
+## TOUR 312 — Paul
+
+Texte de Paul, mot pour mot :
+
+> l'instance est lancée. je reviens sur l'histoire des élèves que je voyais toujours dans qcm. en réalité, je les vois aussi sur mjpc dans l'onglet élève. en plus, je me demande s'il n'y a pas un télescopage entre l'onglet "classes" et l'onglet "élèves". j'avais bien supprimé mes classes banksy pythagore et hergé (hier ou ce matin, je ne sais plus) et elles réapparaissent dans classes. Enfin, dans le calendrier, tu m'avais fait désigner mes nouvelles classes par banksy et pythagore (c'était pour afficher mon emploi du temps). Démêle moi tout ça
+
+(deux captures de la console jointes : « Élèves & codes » avec 4E Banksy et des élèves de l'an dernier ; « Classes » avec les quatre classes et les rappels)
+
+---
+
+## TOUR 312 — Claude (conscience n°12)
+
+Mesuré au hub : `/classes` porte « 4E Banksy », « 4e Pythagore », « 5E Hergé » (recréées par le QCM depuis `qcm/classes`, tour 309) ; « Classes » et « Élèves & codes » lisent le même nœud (pas de télescopage) ; `/codes` 128 jamais purgés ; la grille EDT 2026-2027 désigne les classes par « 3 FRANKLIN Aretha », « 3 DYLAN Bob », « 4 HUGO », « 4 TURING », CdG (classe d'essai), Concertation ; « 4 BANKSY » / « 4 PYTHAGORE » une fois chacune sous « X Français X. — … » (inconnu, à demander) ; Paul a supprimé ses quatre nouvelles classes vides ce matin (07:50). Réponse : la cause unique, l'ordre (④, ② bis, suppression, purge de rentrée), l'EDT. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Démêlé, mesuré au hub à l'instant (rien de supposé) :
+
+136. **Pourquoi Banksy, Pythagore et Hergé reviennent — dans le QCM ET dans la console.** C'est une seule cause, celle du tour 309 : le QCM garde son vieux nœud `qcm/classes` (3e Charles de Gaulle, 4E Banksy, 4e Pythagore, 5E Hergé, _TEST — avec leurs listes d'élèves de l'an dernier, 29 / 28 / 31) et, **à chaque ouverture, recrée dans les classes du site celles qu'il n'y trouve plus**. Tu as bien supprimé « 4E BANKSY », « 4E PYTHAGORE », « 5e HERGÉ » (archives du 30/09 dans ta corbeille) ; le QCM les a recréées sous « 4E Banksy », « 4e Pythagore », « 5E Hergé », avec leurs élèves. La console lit les classes du site : elle les montre, dans « Classes » comme dans « Élèves & codes » — les deux onglets lisent **le même** nœud, il n'y a **pas de télescopage** entre eux, c'est la même donnée revenue. Les codes que tu vois à côté des noms (6270…) sont les codes de l'an dernier (`/codes`, 128 entrées, jamais purgés) : dès que la classe revient, ils se raccrochent.
+137. **Ce qu'il ne faut pas faire maintenant** : les supprimer encore — elles reviendraient à la prochaine ouverture du QCM. **L'ordre** : ④ (ta dictée), puis **② bis** (le QCM ne crée plus jamais de classe et son vieux nœud part en corbeille), puis tu supprimes les trois classes une dernière fois, puis la **purge de rentrée** (qui emporte les codes et les identifiants de l'an dernier : « nouvelles classes → nouveaux codes ») — tes nouvelles classes recevront leurs codes à neuf.
+138. **Le calendrier et les noms Banksy / Pythagore.** Je ne retrouve pas ce que tu décris. Dans l'emploi du temps 2026-2027 injecté au hub, **tes classes sont désignées par leur nom du logiciel** : « 3 FRANKLIN Aretha » (7 créneaux), « 3 DYLAN Bob » (6), « 4 HUGO » (6), « 4 TURING » (6), « 3E Charles de Gaulle (classe d'essai) » (4), « Concertation ». « 4 BANKSY » et « 4 PYTHAGORE » y apparaissent **une fois chacune**, sous la forme « X Français X. — 4 BANKSY » / « X Français X. — 4 PYTHAGORE » — des créneaux marqués d'un autre nom d'enseignant que le tien ; je ne sais pas ce que c'est (un collègue dans l'export ? une ligne de l'établissement ?) : tu le sais mieux que moi, dis-le-moi si tu veux que je regarde. En tout cas l'emploi du temps **n'appelle pas** tes nouvelles classes Banksy ou Pythagore.
+139. **Les nouvelles classes et l'emploi du temps.** Ce matin à 7 h 50 tu as supprimé « 3e Aretha Franklin », « 3e Bob Dylan », « 4e Turing », « 4e Victor Hugo » (archives dans ta corbeille) — j'imagine pour les recréer par l'import du fichier. C'est le bon geste : à l'import, l'aperçu te proposera « nouvelle classe » et la fenêtre « Nouvelle classe » pré-remplie (nom lu, niveau, année) ; et l'emploi du temps retrouvera ses classes **par les mots du nom** (« 3 FRANKLIN Aretha » = « 3e Aretha Franklin »), comme l'appariement de l'import.
+
+Rien à changer au mandat ; ② bis reste la dette vivante, après ④.
+
+01/10/2026 09:20 MEMO
+
+---

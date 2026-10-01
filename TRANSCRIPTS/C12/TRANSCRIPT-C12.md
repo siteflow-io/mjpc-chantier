@@ -10305,3 +10305,42 @@ Ce sont trois corrections de la console, courtes, pour la même exécutante : je
 01/10/2026 11:25 MEMO
 
 ---
+
+## TOUR 322 — Paul
+
+Texte de Paul, mot pour mot :
+
+> autre chose à faire partir dans le mandat, parce que bloquant pour la dictée: quand je crée une dictée, je dois renseigner pour quelle classe est la dictée. Or, en niveau 3e, je n'ai que... la 3e charles de gaulle dans la liste déroulante. 3e dylan et 3e franklin n'apparaissent pas.
+
+---
+
+## TOUR 322 — Claude (conscience n°12)
+
+Mesuré : la dictée filtre les classes par `c.toLowerCase().indexOf(niveau) === 0` (la clé doit commencer par « 3e ») — création et édition ; la réécriture aussi ; QCM / dictée universelle / worktrack filtrent sur `.niveau`. Registre n°12 · 90 (bloquant). Complément ② bis élargi (A dette 90 : dictée 6.6.1 + réécriture ; B dette 83 : QCM 7.7.1 ; C bancs ; D captures, adresses, tests) déposé au sas et livré en bloc. Dette vivante réordonnée.
+
+Réponse mot pour mot :
+
+Mesuré, et c'est bloquant en effet :
+
+162. **La cause** : à la création d'une dictée, la liste « Classe » garde les classes dont **la clé commence par « 3e »** (« 3E Charles de Gaulle » passe) ; tes nouvelles classes ont pour clé celle du site — `3_dylan_bob`, `3_franklin_aretha` — qui commence par « 3_ » : exclues. Le filtre est le même à l'édition d'une dictée, et dans l'app de réécriture. Le QCM, la dictée universelle et worktrack, eux, lisent le champ « niveau » de la classe (3e / 4e) : ils ne sont pas touchés. Inscrit au registre, **n°12 · 90**, bloquant.
+163. **Le complément ② bis est élargi** (déposé au sas) : **A.** la dictée (6.6.1) et la réécriture filtrent par le niveau de la classe, affichent son nom ; **B.** le QCM (7.7.1) ne ressuscite plus les classes ; **C.** bancs, captures, une livraison, un arrêt. Tu le colles à l'exécutante maintenant — c'est la chose à faire ; ③ bis (l'interface) vient après.
+
+```
+COMPLÉMENT ② bis — pour l'exécutante (mandat « L'ÉLÈVE — 1 », entièrement promu ⓪ → ④) — trois choses, trois fichiers, une livraison, un arrêt. Dettes n°12 · 83 et 90 (mesurées par la conscience), toutes deux bloquantes pour Paul.
+
+BASES, re-téléchargées et vérifiées à la commande (md5), STOP si elles diffèrent : `evaluation-qcm.html` 7.7.0 (550 410 o, md5 `9d6df9f4f349172f210e23d9c8da6f55`) → **7.7.1** ; `correction_dictee.html` 6.6.0 (735 974 o, md5 `f4cdfbef85cf557a4a91e5900ef6c5b4`) → **6.6.1** ; `reecriture.html` (tu mesures sa taille, son md5 et sa version) → +0.0.1.
+
+A. **La dictée et la réécriture ne proposent pas les nouvelles classes (dette 90)** — Paul : « quand je crée une dictée, je dois renseigner pour quelle classe est la dictée. Or, en niveau 3e, je n'ai que la 3e Charles de Gaulle dans la liste déroulante. 3e Dylan et 3e Franklin n'apparaissent pas. » Cause mesurée : la liste « Classe » est filtrée par `c.toLowerCase().indexOf(niveauInput) === 0` — la CLÉ doit commencer par « 3e » ; les classes importées ont pour clé `sanMJPC(nom)` (`3_dylan_bob`, `3_franklin_aretha`, `4_hugo`, `4_turing`) : exclues. Même filtre à l'édition (`editForm.niveau`) et dans `reecriture.html`. Correctif : filtrer par le champ `niveau` du nœud (`CLASSES[c].niveau === niveauInput`), avec repli sur le début de la clé pour une classe sans `niveau` ; aux deux endroits de la dictée et dans la réécriture ; la liste affiche le NOM de la classe (`CLASSES[c].nom || c`) et compte ses élèves. Tu vérifies que le QCM, la dictée universelle et worktrack n'ont pas ce filtre (la conscience a mesuré qu'ils filtrent sur `.niveau`) et tu le dis.
+
+B. **Le QCM ressuscite les classes supprimées (dette 83)** — Paul a supprimé « 4E BANKSY », « 4E PYTHAGORE », « 5e HERGÉ » le 30/09 ; `migrerClassesUneFois`, jouée à chaque ouverture du QCM (`useEffect`), recopie dans `/classes/<nom complet>` toute classe de `qcm/classes/<slug>` absente de la racine ; `qcm/classes` porte encore 3e-charles-de-gaulle, 4e-banksy, 4e-pythagore, 5e-herge, _test → les trois sont recréées (« 4E Banksy », « 4e Pythagore », « 5E Hergé », avec leurs élèves de l'an dernier, sous des clés qui ne sont pas `sanMJPC`). Correctif (QCM 7.7.1) : 1) `migrerClassesUneFois` ne crée plus jamais de classe — plus aucune copie vers `/classes`, plus aucune lecture de `qcm/classes` ; tu mesures ce qui l'appelle et le `onDone` ne casse rien ; 2) `qcm/classes` part en corbeille, compté (motif `qcm-classes-legacy`), puis s'efface, puis sort de `MJPC_MANIFESTE.noeuds` et de `MJPC_PURGE.purger` du QCM (republiés) — par un geste professeur dans le QCM (bouton visible du professeur seul, qui fait les trois gestes et dit le compte ; si le QCM n'a pas d'écran professeur, dis-le et propose).
+
+C. **Bancs** (par le geste, hub simulé / faux Firebase, données ZZTEST, vrai hub lu avant/après inchangé) : dictée et réécriture — une classe de test avec `niveau: "3e"` et une clé `zztest_3e` : absente de la liste avant, présente après, affichée par son nom ; QCM — avec un `qcm/classes` fictif portant une classe absente de `/classes` : 7.7.0 la recrée, 7.7.1 0 écriture vers `/classes` et la classe n'apparaît pas ; la corbeille reçoit `qcm/classes` compté, le nœud est vide après ; vues élève inchangées ; 0 erreur JS.
+
+D. Captures avant/après (la liste « Classe » de la dictée au niveau 3e ; le QCM avec / sans les classes revenues) ; note ; dépôt vérifié ; adresses complètes `…/correction_dictee.html?v=6.6.1`, `…/evaluation-qcm.html?v=7.7.1`, `…/reecriture.html?v=<version>` ; tests pour Paul : créer une dictée en 3e et voir ses deux classes ; après promotion, supprimer à nouveau les trois classes dans la console (corbeille), rouvrir le QCM : elles ne reviennent pas. Puis arrêt.
+```
+
+La dette vivante, après ce complément : ③ bis (l'interface : largeur, boutons, « Ouvrir les fiches ») → tu supprimes Banksy / Pythagore / Hergé → la purge de rentrée → un « compléter » d'une classe → l'appariement de l'emploi du temps.
+
+01/10/2026 11:35 MEMO
+
+---

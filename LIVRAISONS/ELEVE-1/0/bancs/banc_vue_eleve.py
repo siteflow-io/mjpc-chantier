@@ -6,7 +6,7 @@ from hub_simule import Hub
 def jouer(cible,tag,dossier):
     hub=Hub(); ext=[]; R={'tag':tag}
     with sync_playwright() as pw:
-        b=pw.chromium.launch(); pg=b.new_page(viewport={'width':1500,'height':960})
+        b=pw.chromium.launch(); pg=b.new_page(viewport={'width':1500,'height':960},timezone_id='Europe/Paris',locale='fr-FR')
         err=[]; pg.on('pageerror',lambda e: err.append(str(e)[:140])); pg.on('dialog',lambda d:d.dismiss())
         def r(route,req):
             u=req.url

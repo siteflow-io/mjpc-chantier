@@ -11016,3 +11016,29 @@ Puis « continuer » à l'exécutante pour **L2** (⇧R bascule, sans perte). De
 01/10/2026 20:40 MEMO
 
 ---
+
+## TOUR 349 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Livré
+
+---
+
+## TOUR 349 — Claude (conscience n°12)
+
+Audit de `LIVRAISONS/DICTEE-CORRECTION/L2/` : diff 9/16 depuis L1, 6.7.0-L2, le handler ⇧R (champs ignorés, deux sens, même copie), `eleveRapideParDefaut` ; bancs rejoués (geste L2 VERT sur L2 et rouge sur L1, S1/S3 sans perte, fuzz_rapide 0 bug, vue élève identique) ; captures regardées. Verdict : ça va, promouvable. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Audit de L2 (« ⇧R est une bascule, sans perte », `LIVRAISONS/DICTEE-CORRECTION/L2/`), mesuré :
+
+230. **Le fichier** : base = L1 promue (`913f8b5c…`, vérifiée) → **6.7.0-L2, 739 572 o (+885)**, md5 `9053962b…` ; 9 lignes retirées, 16 ajoutées ; `node --check` 0 erreur. **Vérifié dans le code** : l'écoute du clavier de l'écran de la dictée **ignore les champs de saisie** (input, textarea, select) puis, sur ⇧R, passe du mode texte au mode rapide **sur la copie ouverte** et du mode rapide au mode texte **sur la copie que le rapide montrait** ; « ← Texte » et « ⏸ Pause » reviennent à la même copie (avant : à la grille) ; les infobulles le disent.
+231. **Les bancs, rejoués par moi sur le kit anonymisé** (faux hub, 0 accès au vrai hub) : le banc par le geste **VERT** — 2 erreurs en texte, ⇧R → mode rapide sur le même élève avec ses 2 erreurs, une touche I → 3, ⇧R → mode texte avec les 3, une M → 4, quatre ⇧R de suite : toujours le même élève, 4 erreurs intactes ; un « R » tapé dans le champ « ce qu'a écrit l'élève » s'écrit sans basculer ; **sur L1 ce banc échoue** (le retour n'existait pas) ; `scenarios_modes` : S1 et **S3 sans perte** (« 2 err. » après ⇧R), S2 correct ; `fuzz_rapide` (3 copies) : 0 bug ; **vue élève identique** à la 6.6.3. (Son banc unique complet est vert chez elle ; j'ai rejoué les quatre bancs qui touchent L2.)
+232. **Verdict : ça va. Tu peux promouvoir L2.** Captures ci-dessus : avant (6.6.3 : ⇧R → « 0 err. ») / après (L2 : ⇧R → le mode rapide avec ses 2 erreurs, puis ⇧R → le mode texte, les 2 erreurs).
+
+Tes tests, après promotion (https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?v=6.7.0) : 1) une copie en mode texte → 2 erreurs → **⇧R** : le mode rapide, même copie, « 2 err. » ; 2) une erreur au clavier (G ou L) → **⇧R** : le mode texte, 3 erreurs ; refais l'aller-retour deux fois : rien ne bouge ; 3) dans le champ « ce qu'a écrit l'élève », tape un R majuscule : il s'écrit, rien ne bascule. Ton « promeus », puis « continuer » pour **L3** (M qui s'adapte, clavier réduit, le mot juste bloqué).
+
+01/10/2026 21:00 MEMO
+
+---

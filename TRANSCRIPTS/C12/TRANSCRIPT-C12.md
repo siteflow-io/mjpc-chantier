@@ -11093,3 +11093,27 @@ Tes tests, après promotion (https://siteflow-io.github.io/monsieurjaipascompris
 01/10/2026 22:30 MEMO
 
 ---
+
+## TOUR 352 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Promeus
+
+---
+
+## TOUR 352 — Claude (conscience n°12)
+
+Promotion 6.7.0-L3 (commit e2bb6bc346f2, bit à bit) ; protocole : registre 96 ✔, journal, point de retour, où-trouver-quoi. Tests donnés ; L4 à blanc ensuite.
+
+Réponse mot pour mot :
+
+Promu : `correction_dictee.html` **6.7.0-L3**, commit `e2bb6bc346f2`, **bit à bit** (741 928 o, md5 `f5d7685b…`) ; registre n°12 · **96 ✔** ; journal, point de retour (L2), où-trouver-quoi à jour.
+
+**Tes tests** : https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?v=6.7.0 → 1) une copie → ⇧R → jusqu'à un point : « · Ponct. manqu. ↵ » encadré → **Entrée** → P ; 2) une virgule : **M** → P ; une apostrophe : « Élision ↵ » encadré → Entrée → E ; P et E ne font plus rien ; 3) un mot : G, le mot juste → refusé, champ ouvert ; ce qu'a écrit l'élève → accepté ; 4) ⇧R (texte) → un mot → G → le mot juste → refusé ; « Passer » → l'erreur sans mot.
+
+Puis « continuer » à l'exécutante pour **L4** — le reclassement **à blanc** : elle ne livre qu'un rapport (copie par copie, notes avant → après, les autres copies prouvées intactes) ; **c'est toi qui le lis et dis « ok »** avant L5.
+
+01/10/2026 22:30 MEMO
+
+---

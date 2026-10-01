@@ -9769,3 +9769,33 @@ Tes tests, après promotion (adresse : https://siteflow-io.github.io/monsieurjai
 01/10/2026 06:45 MEMO
 
 ---
+
+## TOUR 304 — Paul
+
+Texte de Paul, mot pour mot :
+
+> promeus
+
+---
+
+## TOUR 304 — Claude (conscience n°12)
+
+Promotion de `LIVRAISONS/ELEVE-1/0/index.html` en production (commit 0444c8197acf, bit à bit) ; protocole d'après-promotion : registre 76/77/78 ✔, journal, point de retour, où-trouver-quoi, index des fonctions régénéré (1 383) ; mandat 1 corrigé (⓪ promue, nouvelle base, classe de test par le geste). Adresse complète et tests geste par geste donnés.
+
+Réponse mot pour mot :
+
+Promu, et le protocole d'après-promotion est joué dans ce tour :
+
+111. **Promotion** : `index.html` de la production = la livraison ⓪, commit `0444c8197acf`, **vérifié bit à bit** (1 775 768 o, md5 `c54b1c332b71…`) ; la base d'avant était bien celle du mandat (`13ac6c35…`), personne n'avait poussé entre-temps.
+112. **Les docs** : registre — n°12 · **76, 77, 78 ✔** ; journal — l'entrée du 01/10 (le problème, la résolution, le commit, la suite) ; `MJPC6-restauration.md` — le point de retour (`13ac6c35…`, 8.73.0-⑭, avec l'attention sur le contrat de purge publié au hub) ; `MJPC6-OU-TROUVER-QUOI.md` — la section du 01/10 (le transport routé, ce qui passe par lui, la purge, l'année, le chantier et ce qui n'existe pas encore) ; `MJPC6-INDEX-FONCTIONS.md` régénéré sur la version promue (1 383 fonctions).
+113. **Le mandat 1 corrigé** au sas : la livraison ⓪ marquée promue avec la nouvelle base (1 775 768 o, `c54b1c33…`) — l'exécutante la re-télécharge et la vérifie à la commande avant ① — et la classe de test se crée par le geste (`ZZTEST 3e`), plus de `_test_index` inexistant.
+
+**L'adresse** : https://siteflow-io.github.io/monsieurjaipascompris/?n=3e&v=8.74.0 — la pastille doit dire **V8.74.0-⓪** (si elle dit encore 8.73.0, rouvre l'adresse avec `&v=8.74.0` : c'est le cache).
+
+**Tes tests, geste par geste** : 1) la pastille V8.74.0-⓪ ; 2) connexion professeur → Panneau prof → **🧪 Mode test** : « Mode test actif — rien n'est enregistré » ; 3) Élèves & codes → 3E Charles de Gaulle → ✕ sur un élève → « Oui, continuer » : il disparaît de la liste ; 4) Configuration & Firebase → « 🧹 Purge de rentrée… » : la simulation compte maintenant aussi `eleves` pour le site → « Fermer » (ne va pas plus loin) ; 5) « Quitter le mode test » : l'élève est revenu, rien n'est parti ; 6) Corbeille : aucune entrée datée d'aujourd'hui.
+
+Puis « continuer » à l'exécutante, dans sa conversation, pour la livraison ① (l'aperçu d'import) — en lui disant d'une ligne que ⓪ est promue et que la base a changé (elle le verra au md5).
+
+01/10/2026 06:50 MEMO
+
+---

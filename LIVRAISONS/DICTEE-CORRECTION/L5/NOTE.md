@@ -18,6 +18,9 @@
 **`banc_L5_geste.py`** (par le geste : ouvrir la dictée, poser un signe) : à l'ouverture du brevet blanc 3E, **11 copies touchées = les 11 du rapport**, leurs notes après = celles du rapport ([0, 0, 0, 1, 3, 3, 5,5, 5,5, 5,5, 6,5, 9,5]) ; **les 17 autres identiques octet pour octet** ; leurs autres champs gardés ; **11 entrées en corbeille**, chacune avec la copie d'avant exacte et son chemin de restauration ; la ligne « 11 copies reclassées » ; le bouton « M→P » absent ; **rouverte : rien de plus** (corbeille et copies inchangées, plus de ligne) ; une virgule posée en plus : `{afterIdx, word: ",", type: "P"}`, note 10 (au forfait), « +, P » à l'écran ; un mot posé en plus : 9,5 (mot en trop) ; 0 fenêtre, 0 erreur. **Sur L3, ce banc est rouge.**
 **Banc unique sur L5 : VERT, 0 échec** (`sorties/`) : S1/S3 sans perte, S2 correct ; fuzz_correction graines 1 et 2 : 0 bug ; fuzz_rapide : 0 bug ; grille : 0 erreur (elle note maintenant « 8 notes changées » — ce sont les 8 copies du brevet blanc 3E que le reclassement fait gagner, à l'ouverture ; et « M→P : aucune fenêtre » — le bouton n'existe plus) ; bancs L1, L2, L3, L5 verts ; vue élève identique.
 
+## Déclaré, non prouvé au banc
+La **restauration depuis la corbeille de la console** n'est pas jouée par ce banc (il ne tourne que dans la dictée). Mesuré dans le code de la console (`_corbPlanRestauration`) : une entrée qui porte `_meta.chemin` et `data` est remise à ce chemin — c'est la forme de chaque entrée `reclassement-ponctuation` (vérifiée au banc : chemin `correction_dictee/<dictée>/results/<élève>`, data = la copie d'avant exacte). Ton test 4 le confirmera.
+
 ## Captures (`captures/`)
 `V1-avant.png` / `V2-apres.png` (l'ouverture du brevet blanc 3E) ; `V3-avant.png` / `V4-apres.png` (une virgule posée en plus).
 

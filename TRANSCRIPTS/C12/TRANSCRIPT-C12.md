@@ -10922,3 +10922,28 @@ Compris : comme pour ELEVE-1 — elle dépose chaque livraison au sas (`LIVRAISO
 01/10/2026 19:55 MEMO
 
 ---
+
+## TOUR 345 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Non mais le kit au sas aussi je suis sur mon téléphone actuellement je ne peux pas le faire moi-même
+
+---
+
+## TOUR 345 — Claude (conscience n°12)
+
+Kit anonymisé (125 noms → noms impossibles à initiales conservées, clés remplacées, 32 fichiers ; résidus = les seuls noms fictifs du bac à sable), bancs rejoués (scenarios_modes, scenarios_grille, fuzz NB=1), déposé `KITS/banc_dictee_kit_anonyme.zip` (2 266 923 o, md5 d39fc51d…) bit à bit ; mandat mis à jour (kit au sas, dette 94 en L1) ; dette n°12 · 94 inscrite (un nom réel dans un commentaire du code en production).
+
+Réponse mot pour mot :
+
+Fait — le kit est au sas, mais **pas tel quel** : son instantané et 27 de ses bancs portaient les noms de 125 élèves réels, et le sas n'en reçoit jamais. Donc :
+
+224. **`KITS/banc_dictee_kit_anonyme.zip`** (2 266 923 o, md5 `d39fc51d…`, déposé bit à bit) : les 125 noms remplacés partout — instantané, bancs, clés — par des noms impossibles qui gardent les initiales (les bancs qui cherchent « CL » marchent encore ; mesuré : 2 élèves « CL » au lieu de 3, dit dans le `LISEZMOI`) ; vérifié : aucun nom réel ne reste dans l'archive. Rejoués sur le kit anonymisé avec la 6.6.3 : `scenarios_modes` (S1 et S3 perdent, S2 correct), `scenarios_grille`, `fuzz_correction` (une copie, 0 bug). Le mandat au sas pointe maintenant vers ce kit (md5 inclus).
+225. **Une dette trouvée en anonymisant, inscrite (n°12 · 94)** : un commentaire du code de ta correction de dictée **en ligne** porte le nom d'un élève réel (« Garde du 29/09 (copie de … effacée sans trace) ») — le fichier est public. Je l'ai confiée à **L1** du mandat (le commentaire reformulé sans nom, et une vérification qu'il n'y en a pas d'autre). Si tu préfères que je le règle tout de suite par un micro, dis-le.
+
+Pour l'exécutante, une ligne à ajouter au bloc que tu lui colles : **« Le kit est au sas : `KITS/banc_dictee_kit_anonyme.zip` (md5 d39fc51df522b9fd2295ba9151851c72), pas en pièce jointe. »** Le reste du bloc est inchangé.
+
+01/10/2026 20:20 MEMO
+
+---

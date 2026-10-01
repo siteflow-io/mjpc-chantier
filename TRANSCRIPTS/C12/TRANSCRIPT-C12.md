@@ -10272,3 +10272,36 @@ Promu : `correction_dictee.html` 6.6.0, commit `089486a23102`, **bit à bit** ; 
 01/10/2026 11:10 MEMO
 
 ---
+
+## TOUR 321 — Paul
+
+Texte de Paul, mot pour mot :
+
+> une histoire d'UI. il faudrait que mon pilotage prenne la largeur complète de l'écran, parce que la modale c'est bien mais tout est entassé, je dois scroller en permanence. par ailleurs, les flèches de réinitiation d'élèves se retrvouent non cadrées. Enfin, quand je suis dans classe et que je vois l'alerte ESS, et que je clique sur voir les fiches, il faudrait que je n'ai que les élèves adaptés, plutot que d'être rebasculé sur l'onglet élèves complet. Par ailleurs, va vérifier ce que j'ai fait sur le site, le hub devrait avoir changé( import de classe, pap cochés etc).
+
+(capture : « Élèves & codes » de 4 TURING, boutons ↻ ✕ hors cadre)
+
+---
+
+## TOUR 321 — Claude (conscience n°12)
+
+Mesuré au hub : quatre classes importées (3_dylan_bob 25, 3_franklin_aretha 30, 4_hugo 30, 4_turing 30 ; profils, sexes, aménagements, nbDispositifs 1/0/4/3, 7 fiches PAP cochées, 0 en attente) ; restes de l'an dernier non partis (les classes recréées existent encore) ; contrat de purge publié avec `eleves`. Registre n°12 · 87 (largeur du panneau), 88 (boutons hors cadre), 89 (« Ouvrir les fiches » filtré). Proposition : complément ③ bis UI après ② bis ; dette vivante réordonnée. Rien d'autre déposé hormis ce transcript et le registre.
+
+Réponse mot pour mot :
+
+Vérifié au hub d'abord :
+
+157. **Ce que tu as fait est là, tel qu'attendu** : tes quatre classes importées avec leur année 2026-2027 — 3 DYLAN BOB (25 élèves, 25 fiches, 13 F · 12 M), 3 FRANKLIN ARETHA (30, 15 · 15), 4 HUGO (30, 19 · 11), 4 TURING (30, 19 · 11) ; les aménagements écrits pour chacun ; les nombres de dispositifs 1 · 0 · 4 · 3 ; **7 fiches PAP cochées** (1 en 3 Dylan Bob, 4 en 4 Hugo, 2 en 4 Turing) avec « dictée aménagée » publiée pour 6 d'entre elles ; aucune fiche en attente de clé. Le contrat de purge du site publié au hub porte bien `eleves`.
+158. **Une chose qui n'a pas bougé, et c'est normal** : les restes de l'an dernier (les sexes du QCM des classes Banksy / Pythagore / Hergé, le registre d'aménagement de Hergé) ne sont pas partis en corbeille — parce que, pour le site, ces classes **existent encore** (le QCM les a recréées). Ils partiront quand tu les auras supprimées pour de bon après ② bis, au prochain import ou « compléter » d'une classe.
+
+Tes trois demandes d'interface, inscrites au registre (n°12 · **87, 88, 89**), dans tes mots :
+
+159. **87** — le panneau prof prend toute la largeur (et la hauteur) de l'écran, au lieu d'une modale étroite où tout s'entasse.
+160. **88** — les boutons ↻ / ✕ de chaque élève sortent du cadre de la carte (ta capture) : à remettre dans la ligne.
+161. **89** — « Ouvrir les fiches » depuis le rappel ESS ouvre la classe **filtrée sur les élèves fléchés** (avec un lien « tous les élèves »), au lieu de la liste complète.
+
+Ce sont trois corrections de la console, courtes, pour la même exécutante : je propose un **complément ③ bis « UI du panneau prof »** (les trois, avec bancs par le geste, captures avant/après, et la fiche à 390 px qui doit rester bonne), **après ② bis** — l'ordre de la dette vivante devient : ② bis (QCM) → ③ bis (UI) → tu supprimes Banksy / Pythagore / Hergé → la purge de rentrée → un « compléter » d'une classe (les restes partent) → l'appariement de l'emploi du temps. Dis « ok » (ou change l'ordre), et j'écris ③ bis.
+
+01/10/2026 11:25 MEMO
+
+---

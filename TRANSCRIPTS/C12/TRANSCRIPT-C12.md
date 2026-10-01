@@ -10528,3 +10528,29 @@ Si tu voyais autre chose avant (un « /20 » quelque part sur ces mêmes dictée
 01/10/2026 12:45 MEMO
 
 ---
+
+## TOUR 330 — Paul
+
+Texte de Paul, mot pour mot :
+
+> tu m'expliques pourquoi je vois mes élvèes de l'année dernière? alors qu'ils sont supprimés partout? les hergé eux, ont bien disparu. mais banksy et pythagore non.
+
+---
+
+## TOUR 330 — Claude (conscience n°12)
+
+Mesuré : les dictées « brevet blanc 4E » (Banksy, Pythagore) existent au hub avec `config.eleves` (29 / 28) et 28 copies chacune ; `load` lit `/classes/{name}` sinon `config.eleves` ; la dictée de Hergé a été supprimée par Paul à 11:16 (corbeille). Supprimer une classe ne supprime pas ses dictées ; la purge de rentrée (contrat `correction_dictee`) ou la suppression manuelle les enlève. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Mesuré :
+
+182. **Ce que tu vois, ce ne sont pas tes classes de l'an dernier : ce sont tes dictées de l'an dernier.** Une dictée garde **sa propre liste d'élèves** (écrite dans sa configuration à la création : 29 noms pour « brevet blanc 4E — Banksy », 28 pour Pythagore) et ses 28 copies corrigées. Quand sa classe n'existe plus, la dictée s'ouvre quand même et lit sa propre liste (« Dynamic class reference : /classes/{name} if available, fallback to config/eleves » — c'est son code depuis l'origine). Supprimer une classe ne supprime pas ses dictées : une dictée est une archive.
+183. **Hergé a « disparu » parce que tu as supprimé sa dictée** (« Dictée 5E, chapitre utopie », corbeille à 11:16, et une autre le 23/09). Banksy et Pythagore : leurs deux brevets blancs sont encore au hub, donc encore dans ta liste. Rien d'autre ne les distingue.
+184. **Ce qui les enlève** : soit tu supprimes ces deux dictées à la main (comme Hergé, elles vont en corbeille, un an), soit **la purge de rentrée** — c'est son travail : le contrat de la correction de dictée purge `correction_dictee` (les dictées et leurs copies), en gardant ses réglages, et le site purge les codes et identifiants de l'an dernier. C'est le prochain geste de la dette vivante après ③ bis ; tu peux aussi la faire avant, elle ne touche pas tes classes de cette année (une sauvegarde complète est enregistrée chez toi d'abord — le site l'impose).
+
+Rien à corriger ici. Ton « ok » pour ③ bis.
+
+01/10/2026 12:45 MEMO
+
+---

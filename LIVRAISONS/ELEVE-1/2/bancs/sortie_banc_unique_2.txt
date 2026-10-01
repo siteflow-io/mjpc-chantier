@@ -1,0 +1,22 @@
+OK  A : clé saisie par le geste (encart), valide — true
+OK  A : aperçu — reprise 1 sexe du QCM · 1 aménagement de dictée ; restes 2 sexes + 1 aménagement → corbeille — ["premier import de cette classe — reprise : 1 sexe du QCM (là où le fichier n’en donne pas) · 1 aménagement de dictée (case pap-15 de la fiche)", "restes de l’an dernier (classes supprimées) : 2 sexes du QCM (1 classe) · 1 aménagement de d
+OK  A : écrit — 25 dans la liste, 25 fiches, 2 dispositifs (1 du fichier + 1 repris) — [25, 25, 2]
+OK  A : fiche chiffrée — naissance « 2012-01-01 », dispositif « false » (Anna) ; en clair : seulement sexe, attente, majLe — {"sexe": "f", "attente": false, "naissance": "\"2012-01-01\"", "dispositif": "false", "pap": null, "champs": ["attente", "dispositif", "majLe", "naissance", "sexe"], "forme_naissance": "3 morceaux"}
+OK  A : repris de la dictée (Bruno) — dispositif « true », case « pap-15 », dictée aménagée pour les apps — ["true", "[\"pap-15\"]", {"sexe": "m", "dicteeAmenagee": true}]
+OK  A : date impossible (Zeta) — pas de naissance
+OK  A : sexe repris du QCM là où le fichier n’en donne pas (Ines : f) ; le fichier l’emporte ailleurs (Anna : f, le QCM disait m) — [{"sexe": "f"}, {"sexe": "f"}]
+OK  A : restes de l’an dernier en corbeille (motif restes-eleve-1), puis effacés — [[["restes-eleve-1_073743", "restes-eleve-1"]], ["/qcm/eleveSexes/ZZTEST 5e ancienne", "/classes_amenages/ZZTEST 5e ancienne"]]
+OK  A2 : réimport — « ta fiche l’emporte », 0 doublé (25), fiches identiques — [25, 2]
+OK  A3 : retrait d’un élève à dispositif — sa fiche part (en corbeille avec lui), le compte passe à 1 — [1, "{\"classes\": {\"zztest_3e\": {\"eleves\": [\"ZZTEST DELTA Carl\"], \"profils\": {\"zztest_delta_carl\": {\"majLe\": null, \"attente\": "]
+OK  B : classe sans année — « Compléter la classe : son année scolaire », nom verrouillé, puis l’import continue — ["Compléter la classe : son année scolaire", "2026-2027"]
+OK  B : sans la clé — 25 fiches « en attente », aucune date au hub
+OK  B : la clé saisie — les 25 se chiffrent ; Anna « 2012-01-01 » — {"sexe": "f", "attente": false, "naissance": "\"2012-01-01\"", "dispositif": "false", "pap": null, "champs": ["attente", "dispositif", "majLe", "naissance", "sexe"], "forme_naissance": "3 morceaux"}
+OK  C : aucune classe — fenêtre pré-remplie « 3 ZZTEST » · 3e · 2026-2027, puis 25 élèves écrits — [["3 ZZTEST", "3e", "2026-2027"], {"3_zztest": [25, 2]}]
+OK  D : l’archive transmissible ne porte ni fiche ni aménagement — "{\"classes\": {\"zztest_arch\": {\"eleves\": [\"ZZTEST ARCH Ada\"]}}}"
+OK  D : la corbeille (pour toi) garde la fiche ; fiche et aménagement effacés de la classe — ["/classes/zztest_arch/profils/zztest_arch_ada", "/classes/zztest_arch/amenagements/zztest_arch_ada"]
+OK  A–D : 0 écriture au hub en mode test, 0 hors hub, 0 erreur JS — {"A_hub": [], "B_hub": [], "C_hub": [], "D_hub": [], "A_err": [], "B_err": [], "C_err": [], "D_err": []}
+OK  QCM 7.6.0 (base) : lit qcm/eleveSexes et y écrit (la fuite à fermer) — {"ecoutes": ["classes", "qcm/eleveSexes"], "sexes": {"ZZTEST ALPHA Anna": "m", "ZZTEST BETA Bruno": null, "ZZTEST GAMMA Clara": "f"}, "migration": {"classesCopiees": 0, "sexesMigres": 1}, "ecritures": ["set qcm/eleveSexes/ZZTEST LEGACY/zzte
+OK  QCM 7.7.0 : n’écoute plus que /classes ; sexes = ceux de la console (Anna f, Bruno m) ; rien de l’ancien nœud (Clara : aucun) ; 0 écriture — {"ecoutes": ["classes"], "sexes": {"ZZTEST ALPHA Anna": "f", "ZZTEST BETA Bruno": "m", "ZZTEST GAMMA Clara": null}, "migration": {"classesCopiees": 0, "sexesMigres": 0}, "ecritures": []}
+OK  vue élève : 0 erreur, aucun mot interdit, mêmes écritures ; seul écart la pastille — [[268, 274, 268, 274], [1466, 876, 1469, 880]]
+OK  vrai hub inchangé — [{"classes": 9, "codes": 128, "eleves": 3, "eleves_index": 3, "corbeille": 25, "manifestes": 11, "classes_amenages": 1, "qcm_eleveSexes": 9}, {"classes": 9, "codes": 128, "eleves": 3, "eleves_index": 3, "corbeille": 25, "manifestes": 11, "c
+BANC UNIQUE : VERT (0 échec)

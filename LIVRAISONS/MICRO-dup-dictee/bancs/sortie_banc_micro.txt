@@ -1,0 +1,12 @@
+OK  6.6.1 (avant) : une copie, avec /config seulement — ["config"]
+OK  6.6.2 : une copie, tous les réglages, aucun état d'élève — ["binomes", "config", "copyOptions", "dictee", "exercices", "exercices_html", "heure"]
+OK  6.6.2 : la version aménagée est copiée entière (2 lacunes, modes A et C, base 10, consigne) — {"enabled": true, "base": 10, "defaultMode": "A", "consigne": "Complète les trous."}
+OK  6.6.2 : options de copie, exercices, page d'exercices, binômes, heure copiés — ["binomes", "config", "copyOptions", "dictee", "exercices", "exercices_html", "heure"]
+OK  6.6.2 : rien de l'état des élèves dans la copie — []
+OK  6.6.2 : titre « Copie de … », non publiée, le reste de la config identique — {"title": "Copie de Dictée ZZTEST aménagée", "published": false, "base": 20, "bareme": "brevet", "classe": "zztest_3e"}
+OK  6.6.2 : l'original n'a pas bougé (comparé nœud à nœud à ce qui a été semé) — ["absents", "amenages", "autocorrection", "binomes", "config", "copyOptions", "copyPublishedAt", "dictee", "effacees", "exercices", "exercices_consultes", "exercices_html", "exercices_imprimes", "exercices_results", "heu
+OK  6.6.2 : une seule écriture de dictée, sous la copie (l'autre écriture est le contrat de l'app, publié à l'ouverture — existant) — [["set", "manifestes/correction_dictee"], ["set", "correction_dictee/dictee_zz_amen_copie_1790851687411"]]
+OK  6.6.2 : le message dit le nombre de réglages et « version aménagée comprise » — ["Dictée dupliquée : Copie de Dictée ZZTEST aménagée (7 réglages copiés, version aménagée comprise ; aucune copie d’élève). Réaffecte-la à une classe via le crayon si besoin."]
+OK  6.6.2 : l'infobulle du bouton dit ce qu'elle copie et ce qu'elle laisse — "Dupliquer la dictée entière : le texte, le barème, la version aménagée (trous, modes, base, consigne), les options de co"
+OK  0 erreur JS, 0 sortie du navigateur (base, livrée) — {"err": [[], []], "ext": [[], []]}
+BANC UNIQUE : VERT (0 échec)

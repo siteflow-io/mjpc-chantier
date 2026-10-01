@@ -10402,3 +10402,29 @@ Puis dis-moi, et la dette vivante continue : **③ bis** (l'interface du panneau
 01/10/2026 12:15 MEMO
 
 ---
+
+## TOUR 325 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok. vérifie. puis avant la dette vivante, dis moi pourquoi [un élève de 4e, nommé par Paul] est toujours indiqué comme pas encore coché dans l'ESS, alors que j'ai coché, mais une autre case que la dictée. Par ailleurs, avant de rédiger le mandat de la dette (auquel il faudra ajouter l'histoire de coche de [cet élève], sauf si c'est normal), dis moi si je peux enfin corriger mes dictées de cette année sans crainte
+
+---
+
+## TOUR 325 — Claude (conscience n°12)
+
+Mesuré au hub : carnet du QCM rangé (5 classes, 147 élèves en corbeille), `qcm/classes` vide, les trois classes de l'an dernier supprimées (12:04) ; restes (`qcm/eleveSexes`, `classes_amenages`) encore là : l'étape « compléter » pas encore faite. La fiche de l'élève cité : jamais enregistrée (aucune case, pas de `majLe`) — le rappel dit vrai ; à refaire, et à signaler si « Fiche enregistrée » ne vient pas. Dictées : oui, sans crainte (6.6.1, classes présentes, aménagements publiés). Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Vérifié au hub (une rafale de « 403 » passagers de Firebase pendant ma première lecture ; relu, tout répond) :
+
+172. **Ton ménage** : l'ancien carnet du QCM est rangé (corbeille `qcm-classes-legacy` : 5 classes, 147 élèves ; le nœud est vide ; le contrat de purge du QCM ne le porte plus) ; **« 4E Banksy », « 4e Pythagore », « 5E Hergé » sont parties** (corbeille, 12:04) ; il ne reste au hub que tes quatre classes, la 3E Charles de Gaulle, CLASSE TEST et les classes de test. **Pas encore fait** : l'étape 171 (« compléter » une classe avec son fichier) — les restes de l'an dernier (les sexes du QCM de 9 anciennes clés, l'aménagement de Hergé) sont encore là ; ils partiront à ce geste.
+173. **L'élève que tu cites (4 Turing)** : sa fiche au hub n'a **jamais été enregistrée** — elle porte ce que l'import a écrit (sexe, naissance, dispositif), **aucune case, aucune date de mise à jour**. Les deux autres fléchés de la classe ont leurs cases et leur date. Donc le rappel dit vrai : « jamais cochées ». Ce qui s'est passé, je ne peux pas le mesurer d'ici : soit la fiche s'est fermée sans « Enregistrer la fiche » (ce qui n'est pas enregistré est perdu — l'infobulle le dit), soit l'enregistrement n'a pas abouti. Refais-la : coche, « Enregistrer la fiche », et attends la ligne **« Fiche enregistrée — cases cochées le 01/10/2026 »**. Si cette ligne ne vient pas, dis-le-moi : ce sera une dette, pas une fausse manipulation. Pour l'instant ce n'est pas un défaut mesuré, donc rien à ajouter au mandat.
+174. **Tes dictées de cette année : oui, tu peux les corriger sans crainte.** Mesuré : la correction de dictée en ligne est la 6.6.1, tes quatre classes y sont par leur nom, leurs listes sont complètes, les aménagements publiés (6 élèves « dictée aménagée » d'après les fiches cochées). Ce que ça donne : tu crées la dictée pour la classe ; si tu veux une version à trous, tu la paramètres dans la dictée (base 10 par défaut, modifiable) ; les élèves dont la fiche a pap-15 **enregistrée** sont aménagés par défaut (tu bascules par dictée au clic droit, ou tous d'un coup) ; chaque copie garde sa base. Une seule condition : une fiche non enregistrée (comme ci-dessus) n'aménage personne.
+
+Dis-moi quand 171 et la fiche sont faits ; j'écris alors le complément ③ bis (l'interface).
+
+01/10/2026 12:20 MEMO
+
+---

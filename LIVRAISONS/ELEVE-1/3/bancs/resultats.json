@@ -1,0 +1,212 @@
+{
+ "R": {
+  "cle": true,
+  "imp4": "✔ Écrit dans « 4 ZZTEST » : la liste (3 nouveaux) · 3 profils · 1 dispositif dans la classe · reprise : 0 sexe du QCM, 0 aménagement de dictée",
+  "imp3": "✔ Écrit dans « 3 ZZTEST » : la liste (25 nouveaux) · 25 profils · 1 dispositif dans la classe · reprise : 0 sexe du QCM, 0 aménagement de dictée",
+  "r0910": {
+   "3 ZZTEST": "🗂 1 élève fléché en 3 ZZTEST : leurs cases PAP sont à mettre à jour après l’équipe éducative. Ouvrir les fiches\n◆ ZZTEST DELTA Carl — jamais cochées",
+   "4 ZZTEST": "🗂 ESS de la 4e : mardi 15/09. 1 élève fléché en 4 ZZTEST : leurs cases PAP sont à mettre à jour après l’équipe éducative. Ouvrir les fiches\n◆ ZZTEST BETA Bruno — jamais cochées\nlu dans le calendrier annuel : « 17h Equipes éducatives 4e 18h30 Parents 4e »",
+   "ZZTEST 5e": "rien à signaler\nlu dans le calendrier annuel : « 16h Equipe éduc. N.Laury 17h Equipes éducatives 5e »"
+  },
+  "r0914": {
+   "3 ZZTEST": "🗂 1 élève fléché en 3 ZZTEST : leurs cases PAP sont à mettre à jour après l’équipe éducative. Ouvrir les fiches\n◆ ZZTEST DELTA Carl — jamais cochées",
+   "4 ZZTEST": "🗂 ESS de la 4e : mardi 15/09 — c’est demain. 1 élève fléché : leurs cases PAP sont à mettre à jour après l’équipe éducative. Ouvrir les fiches\n◆ ZZTEST BETA Bruno — jamais cochées\nlu dans le calendrier annuel : « 17h Equipes éducatives 4e 18h30 Parents 4e »",
+   "ZZTEST 5e": "rien à signaler\nlu dans le calendrier annuel : « 16h Equipe éduc. N.Laury 17h Equipes éducatives 5e »"
+  },
+  "r0915": {
+   "3 ZZTEST": "🗂 1 élève fléché en 3 ZZTEST : leurs cases PAP sont à mettre à jour après l’équipe éducative. Ouvrir les fiches\n◆ ZZTEST DELTA Carl — jamais cochées",
+   "4 ZZTEST": "🗂 ESS de la 4e : mardi 15/09 — aujourd’hui. 1 élève fléché : leurs cases PAP sont à mettre à jour après l’équipe éducative. Ouvrir les fiches\n◆ ZZTEST BETA Bruno — jamais cochées\nlu dans le calendrier annuel : « 17h Equipes éducatives 4e 18h30 Parents 4e »",
+   "ZZTEST 5e": "rien à signaler\nlu dans le calendrier annuel : « 16h Equipe éduc. N.Laury 17h Equipes éducatives 5e »"
+  },
+  "r0916": {
+   "3 ZZTEST": "🗂 1 élève fléché en 3 ZZTEST : leurs cases PAP sont à mettre à jour après l’équipe éducative. Ouvrir les fiches\n◆ ZZTEST DELTA Carl — jamais cochées",
+   "4 ZZTEST": "🗂 ESS de la 4e : mardi 15/09. Les cases de 4 ZZTEST sont-elles à jour ? (1 élève fléché) Ouvrir les fiches\n◆ ZZTEST BETA Bruno — jamais cochées\nlu dans le calendrier annuel : « 17h Equipes éducatives 4e 18h30 Parents 4e »",
+   "ZZTEST 5e": "rien à signaler\nlu dans le calendrier annuel : « 16h Equipe éduc. N.Laury 17h Equipes éducatives 5e »"
+  },
+  "case": {
+   "premieres": {
+    "2026-10-19|11:04-11:59|4 ZZTEST": "4_zztest",
+    "2026-10-19|08:57-09:52|ZZTEST 5e": "zztest_5e"
+   },
+   "html": [
+    [
+     "2026-10-19|11:04-11:59|4 ZZTEST",
+     "<div class=\"elf-case\" title=\"Rappel des équipes éducatives : les cases PAP de cette classe sont à mettre à jour (Panneau prof → Classes)\">🗂 1 fléché · cases PAP (ESS 15/09)</div>"
+    ],
+    [
+     "2026-10-19|08:57-09:52|ZZTEST 5e",
+     ""
+    ]
+   ]
+  },
+  "f_tete": "◆ ZZTEST BETA Bruno — 4 ZZTEST",
+  "f_sous": "Fiche élève · né le 27/09/2013 · sexe \nF\nM\n · dispositif : \noui\nnon\n · cases cochées le jamais · 🔒 la fiche est chiffrée avec ta clé — saisie ✔",
+  "f_disp_on": true,
+  "f_redessin_garde": [
+   true,
+   true,
+   "lecture par un tiers en évaluation",
+   "vigilance : fatigue en fin de journée"
+  ],
+  "f_msg": "✔ Fiche enregistrée — cases cochées le 16/09/2026 ; les apps liront : dictée aménagée oui.",
+  "p_bruno": {
+   "sexe": "m",
+   "majLe": "2026-09-16",
+   "attente": false,
+   "dispositif": "true",
+   "pap": "[\"pap-03\",\"pap-15\"]",
+   "remarques": "{\"pap-03\":\"lecture par un tiers en évaluation\"}",
+   "synthese": "\"vigilance : fatigue en fin de journée\"",
+   "amen": {
+    "sexe": "m",
+    "dicteeAmenagee": true
+   },
+   "nb": 1
+  },
+  "f_rouverte": [
+   true,
+   true,
+   false,
+   "lecture par un tiers en évaluation",
+   "vigilance : fatigue en fin de journée",
+   "16/09/2026"
+  ],
+  "p_alpha": {
+   "sexe": "f",
+   "majLe": "2026-09-16",
+   "attente": false,
+   "dispositif": "true",
+   "pap": "[]",
+   "remarques": "{}",
+   "synthese": "\"\"",
+   "amen": {
+    "sexe": "f",
+    "dicteeAmenagee": false
+   },
+   "nb": 2
+  },
+  "p_clara": {
+   "sexe": "m",
+   "majLe": null,
+   "attente": false,
+   "dispositif": "false",
+   "pap": null,
+   "remarques": null,
+   "synthese": null,
+   "amen": {
+    "sexe": "m"
+   },
+   "nb": 2
+  },
+  "flags": [
+   "elf-flag-zztest_alpha_anna",
+   "elf-flag-zztest_beta_bruno"
+  ],
+  "r0916b": {
+   "3 ZZTEST": "🗂 1 élève fléché en 3 ZZTEST : leurs cases PAP sont à mettre à jour après l’équipe éducative. Ouvrir les fiches\n◆ ZZTEST DELTA Carl — jamais cochées",
+   "4 ZZTEST": "lu dans le calendrier annuel : « 17h Equipes éducatives 4e 18h30 Parents 4e »",
+   "ZZTEST 5e": "rien à signaler\nlu dans le calendrier annuel : « 16h Equipe éduc. N.Laury 17h Equipes éducatives 5e »"
+  },
+  "r1020": {
+   "3 ZZTEST": null,
+   "4 ZZTEST": "lu dans le calendrier annuel : « 17h Equipes éducatives 4e 18h30 Parents 4e »",
+   "ZZTEST 5e": "rien à signaler\nlu dans le calendrier annuel : « 16h Equipe éduc. N.Laury 17h Equipes éducatives 5e »"
+  },
+  "A_hub": [],
+  "A_ext": [],
+  "A_err": [],
+  "mobile_390": {
+   "bouton": {
+    "x": 25,
+    "y": 763,
+    "width": 171.59375,
+    "height": 44
+   },
+   "visible": true,
+   "err": []
+  },
+  "mobile_360": {
+   "bouton": {
+    "x": 25,
+    "y": 659,
+    "width": 171.59375,
+    "height": 44
+   },
+   "visible": true,
+   "err": []
+  },
+  "B_imp": "✔ Écrit dans « 4 ZZTEST » : la liste (3 nouveaux) · 3 profils · 1 dispositif dans la classe · reprise : 0 sexe du QCM, 0 aménagement de dictée\n🔒 3 fiches attendent ta clé (date de naissance, dispositif) : saisis-la dans l’encart en haut. Si tu fermes la page avant, réimporte le fichier avec ta clé.",
+  "B_r0916": {
+   "4 ZZTEST": "🗂 ESS de la 4e : mardi 15/09. Les cases de 4 ZZTEST sont-elles à jour ? (1 élève à dispositif) Ouvrir les fiches\nsaisis ta clé pour ouvrir leurs fiches (encart d’« Élèves & codes »)\nlu dans le calendrier annuel : « 17h Equipes éducatives 4e 18h30 Parents 4e »"
+  },
+  "B_sous": "Fiche élève · né le … : saisis ta clé · sexe \nF\nM\n · dispositif : saisis ta clé · cases cochées le jamais · 🔒 la fiche est chiffrée avec ta clé — à saisir (encart en haut)",
+  "B_cases_inactives": true,
+  "B_fenetre": "Ta clé est nécessaire pour enregistrer la fiche : le dispositif, les cases, les remarques et la synthèse sont chiffrés avec elle. Saisis-la dans l’encart en haut, puis enregistre. Rien n’a été écrit.",
+  "B_sexe": {
+   "sexe": "f"
+  },
+  "B_hub": [],
+  "B_ext": [],
+  "B_err": []
+ },
+ "vue": {
+  "base": {
+   "tag": "base",
+   "texte_visible": 613,
+   "mots_interdits": {
+    "aménag": false,
+    "PAP": false,
+    "◆": false,
+    "mode test": false,
+    "Mode test": false
+   },
+   "ecritures_hub": [
+    [
+     "PUT",
+     "/presence/u-zz1"
+    ]
+   ],
+   "externes_non_GET": [],
+   "erreurs_js": []
+  },
+  "livree": {
+   "tag": "livree",
+   "texte_visible": 613,
+   "mots_interdits": {
+    "aménag": false,
+    "PAP": false,
+    "◆": false,
+    "mode test": false,
+    "Mode test": false
+   },
+   "ecritures_hub": [
+    [
+     "PUT",
+     "/presence/u-zz1"
+    ]
+   ],
+   "externes_non_GET": [],
+   "erreurs_js": []
+  }
+ },
+ "hub": [
+  {
+   "classes": 8,
+   "codes": 128,
+   "eleves": 3,
+   "eleves_index": 3,
+   "corbeille": 26,
+   "manifestes": 11,
+   "classes_amenages": 1
+  },
+  {
+   "classes": 8,
+   "codes": 128,
+   "eleves": 3,
+   "eleves_index": 3,
+   "corbeille": 26,
+   "manifestes": 11,
+   "classes_amenages": 1
+  }
+ ]
+}

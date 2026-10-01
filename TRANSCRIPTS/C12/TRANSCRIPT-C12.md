@@ -9952,3 +9952,32 @@ Puis tu t'arrêtes ; Paul relance « continuer » pour ③.
 01/10/2026 08:25 MEMO
 
 ---
+
+## TOUR 310 — Paul
+
+Texte de Paul, mot pour mot :
+
+> je ferai le complément pour qcm plus tard, le plus urgent est de finir ce chantier de création de classe pour me débloquer pour corriger mes dictées. l'instance a livré. garde le complément en dette vivante de cette conversation, afin que ce soit la chose à faire après la dernière livraison du mandat en cours.
+
+---
+
+## TOUR 310 — Claude (conscience n°12)
+
+DETTE VIVANTE DE LA CONVERSATION : le complément ② bis (QCM 7.7.1, dette n°12 · 83) — à faire après la livraison ④ ; à reposer tel quel. Audit de `LIVRAISONS/ELEVE-1/3/` : diff 8/240, quinze libellés 15/15 identiques, chiffrement vérifié (`_elfChif` → `mjpcChiffrer`, `mjpcLot`), rappel (motif, première date, fenêtre), `node --check` 0, banc unique rejoué VERT 21/0, captures regardées. Verdict : ça va, promouvable. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Pris : le complément ② bis (le QCM qui ressuscite les classes, dette n°12 · 83) **est la dette vivante de cette conversation — la chose à faire après la dernière livraison du mandat (④)** ; je la reposerai alors telle quelle, et d'ici là ne supprime pas les trois classes revenues.
+
+Audit de la livraison ③ (« la fiche élève et le rappel des équipes éducatives », `LIVRAISONS/ELEVE-1/3/`), mesuré :
+
+130. **Le fichier** : base = la production ② (`80d45486…`, vérifiée) → **8.74.0-③, 1 838 175 o (+24 229)**, md5 `ac792b28…` ; 8 lignes retirées, 240 ajoutées ; préfixe `elf` libre. **Les quinze libellés PAP sont mot pour mot ceux du mandat** (comparés un à un : 15/15). **Le chiffrement est tenu** : « Enregistrer » refuse sans la clé (sa propre fenêtre, « ta clé est nécessaire pour enregistrer la fiche »), puis chiffre `dispositif`, `pap`, `remarques`, `synthese` par `mjpcChiffrer(SECU.cle, …)` avant d'écrire, pose `majLe`, publie `dicteeAmenagee` (= pap-15) pour les apps et fait suivre `nbDispositifs` ; tout passe par `mjpcLot`. Le sexe s'écrit en clair, sans clé, à la fiche et à l'aménagement — conforme (R100). Le rappel lit `edtAnneeEvenements` avec le motif « équipe(s) éduc… + niveau » et **retient la première date** du niveau ; fenêtre du 1er au 21 septembre ; veille / jour / après ; sans la clé, le nombre de `nbDispositifs` et « saisis ta clé » ; dans la case de l'heure, un nombre. `node --check` 0 erreur.
+131. **Le banc unique, rejoué par moi** (horloge posée, hub simulé, clé de test ; vrai hub inchangé) : **VERT, 21 vérifications, 0 échec** — 10/09 « ESS de la 4e : mardi 15/09 », la 3e sans ESS → la ligne de septembre, la 5e sans fléché → « rien à signaler » ; 14/09 « c'est demain » ; 15/09 « aujourd'hui » ; 16/09 « les cases … sont-elles à jour ? » ; la fiche de Bruno (◆, né le, dispositif oui, « jamais ») ; **un redessin pendant la saisie n'efface rien** ; enregistrée puis rouverte : cases, remarques, synthèse, `majLe` reviennent ; Anna non → oui, le compte 1 → 2 ; le sexe aussitôt ; ◆ dans la liste ; les deux fiches cochées après l'ESS : le rappel s'éteint ; 20/10 : plus rien ; la case de l'heure : « 1 fléché · cases PAP (ESS 15/09) », aucun nom (prouvé par la fonction, déclaré : l'emploi du temps n'est pas reconstitué au banc) ; 390 et 360 px : « Enregistrer » visible ; sans clé : tout comme prévu ; 0 écriture au hub, 0 erreur ; vue élève inchangée. Une erreur trouvée par son banc et corrigée avant de livrer (la page des classes se redessinait sans fin).
+132. **Deux détails, sans effet sur le site** : sa note porte un « {nok} » non remplacé (le nombre de vérifications — c'est 21, lu dans la sortie) ; et la fiche (capture T3) montre l'encart des codes au-dessus — c'est l'encart de la clé existant, à sa place.
+133. **Verdict : ça va. Tu peux promouvoir ③** (`LIVRAISONS/ELEVE-1/3/index.html`). Captures ci-dessus : la fiche enregistrée (haut : ◆, né le, F/M, oui/non, cases cochées le ; les lignes PAP mot pour mot), le bas de la fiche, le rappel sur la page des classes.
+
+Tes tests, après promotion (https://siteflow-io.github.io/monsieurjaipascompris/?n=3e&v=8.74.0) : 1) pastille **V8.74.0-③** ; 2) Panneau prof → Classes : pour tes classes qui ont des fléchés, « ESS de la … — les cases … sont-elles à jour ? » (sans clé : le nombre ; avec ta clé : les noms) ; 3) Élèves & codes → saisis ta clé → une classe : ◆ à côté des élèves à dispositif → clique sur un nom : sa fiche ; 4) coche ses cases, une remarque, la synthèse → « Enregistrer la fiche » → « cases cochées le 01/10/2026 » ; ferme, rouvre : tout est là ; 5) le sexe d'un élève qui n'en a pas : F ou M dans sa fiche ; 6) quand toutes les fiches fléchées d'une classe sont enregistrées : Classes → le rappel s'éteint ; 7) l'emploi du temps : la première heure d'une classe à fiches en attente porte « 🗂 n fléchés · cases PAP (ESS …) ». Ton « promeus », puis « continuer » pour ④ (la dictée) — la dernière ; ensuite ② bis.
+
+01/10/2026 08:55 MEMO
+
+---

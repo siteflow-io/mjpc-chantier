@@ -9981,3 +9981,32 @@ Tes tests, après promotion (https://siteflow-io.github.io/monsieurjaipascompris
 01/10/2026 08:55 MEMO
 
 ---
+
+## TOUR 311 — Paul
+
+Texte de Paul, mot pour mot :
+
+> promeus
+
+---
+
+## TOUR 311 — Claude (conscience n°12)
+
+Promotion ③ (commit 9d30e10cffd6, bit à bit) ; protocole : journal, point de retour, où-trouver-quoi, index (1 451) ; mandat 1 : ③ promue, ④ sur la dictée, ② bis après ④. Adresse et tests donnés.
+
+Réponse mot pour mot :
+
+Promu, protocole joué :
+
+134. **Promotion** : `index.html` = la livraison ③, commit `9d30e10cffd6`, **bit à bit** (1 838 175 o, md5 `ac792b28…`) ; la base d'avant était bien ② (`308f8d35…`).
+135. **Les docs** : journal (la fiche d'identité, le chiffrement, le rappel, la suite ④ puis ② bis) ; le point de retour (② `308f8d35…`) dans `MJPC6-restauration.md` ; `OU-TROUVER-QUOI` (la fiche, l'enregistrement chiffré, la lecture, le ◆, le rappel, la place réservée) ; l'index des fonctions régénéré (1 451) ; le mandat 1 au sas : ③ promue, ④ sur la dictée seule, et **② bis inscrit comme la suite après ④**. Aucune dette nouvelle (③ n'en a ni déclaré ni réglé).
+
+**L'adresse** : https://siteflow-io.github.io/monsieurjaipascompris/?n=3e&v=8.74.0 — pastille **V8.74.0-③**.
+
+**Tes tests, geste par geste** : 1) la pastille V8.74.0-③ ; 2) Panneau prof → Classes : pour tes classes qui ont des fléchés, « ESS de la … — les cases … sont-elles à jour ? » (sans clé : le nombre ; avec ta clé : les noms) ; 3) Élèves & codes → saisis ta clé → une classe : ◆ à côté des élèves à dispositif → clique sur un nom : sa fiche ; 4) coche ses cases PAP depuis la fiche signée, une remarque, la synthèse → « Enregistrer la fiche » → « cases cochées le 01/10/2026 » ; ferme, rouvre : tout est là ; 5) le sexe d'un élève qui n'en a pas : F ou M dans sa fiche ; 6) quand toutes les fiches fléchées d'une classe sont enregistrées : Classes → son rappel s'éteint ; 7) l'emploi du temps : la première heure d'une classe à fiches en attente porte « 🗂 n fléchés · cases PAP (ESS …) ».
+
+Puis « continuer » à l'exécutante pour ④ — la correction de dictée lit l'aménagement (la dernière livraison : c'est elle qui te rend tes dictées corrigeables avec les aménagements). Ensuite, **la dette vivante** : ② bis.
+
+01/10/2026 09:00 MEMO
+
+---

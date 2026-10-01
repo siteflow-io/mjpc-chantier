@@ -10501,3 +10501,30 @@ Le ménage est fini, les quatre classes sont propres, les dictées se corrigent.
 01/10/2026 12:35 MEMO
 
 ---
+
+## TOUR 329 — Paul
+
+Texte de Paul, mot pour mot :
+
+> tu m'expliques????
+
+(deux captures : les dictées « brevet blanc 4E » de l'an dernier, 4e Banksy et 4e Pythagore, toutes les notes « /10 »)
+
+---
+
+## TOUR 329 — Claude (conscience n°12)
+
+Mesuré au hub : les quatre dictées ont `config.base = 10`, barème brevet ; notes ≤ 8,5 ; aucune copie tracée aménagée ni recalculée ; la 6.5.0 affichait déjà « note/data.base », la 6.6.1 « note/baseDeCopie » = 10 pour une copie non aménagée. Donc l'affichage est juste : ces dictées ont été créées sur 10. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Mesuré au hub avant d'expliquer — rien n'a été recalculé ni touché :
+
+180. **Ces deux dictées (« brevet blanc 4E », Banksy et Pythagore, l'an dernier) ont été créées avec « Note sur » = 10**, barème brevet. C'est écrit dans leur configuration au hub (`base : 10`), et leurs notes enregistrées vont de 0 à 8,5 — des notes sur 10, depuis le jour de la correction. Aucune copie n'est marquée aménagée, aucune n'a été recalculée (elles n'ont pas de trace, donc la 6.6.x ne les a pas touchées). La 6.5.0 affichait déjà « note / `data.base` », donc **« /10 » hier comme aujourd'hui** ; la 6.6.1 affiche « note / base de la copie », qui vaut la base de la dictée pour une copie non aménagée : **10**. Même chose pour le brevet blanc 3E Charles de Gaulle (base 10). Ta dictée de cette année (3 Dylan Bob, « Dictée n°1 type brevet… ») est aussi sur 10, avec une version aménagée sur 10, mode B — 0 copie corrigée pour l'instant.
+181. **Donc ce que tu vois est juste** : ces dictées sont sur 10 parce que tu les as réglées sur 10 à la création (le brevet se note sur 10, et c'est ce que tu as choisi). Si tu voulais les lire sur 20, c'est « Réglages → Note sur 20 → Enregistrer » dans la dictée : le recalcul convertit les copies non aménagées (c'est le geste existant, prouvé à ④) — mais tu changes alors le barème d'une dictée de l'an dernier.
+
+Si tu voyais autre chose avant (un « /20 » quelque part sur ces mêmes dictées), dis-moi où : je mesure. Sinon, rien à faire, et la dette vivante attend ton « ok » pour ③ bis.
+
+01/10/2026 12:45 MEMO
+
+---

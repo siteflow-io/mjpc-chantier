@@ -43,10 +43,10 @@
    {
     "phase": "test",
     "methode": "PUT",
-    "chemin": "/corbeille/2026-10-01/retrait-eleve_040640"
+    "chemin": "/corbeille/2026-10-01/retrait-eleve_061425"
    }
   ],
-  "sauvegarde_telechargee": "mjpc-hub_sauvegarde-avant-purge_2026-10-01_0406.json",
+  "sauvegarde_telechargee": "mjpc-hub_sauvegarde-avant-purge_2026-10-01_0614.json",
   "fin_purge": [
    "Effacement de 2 emplacements…"
   ],
@@ -54,12 +54,12 @@
    {
     "phase": "test",
     "methode": "PUT",
-    "chemin": "/corbeille/2026-10-01/retrait-eleve_040640"
+    "chemin": "/corbeille/2026-10-01/retrait-eleve_061425"
    },
    {
     "phase": "test",
     "methode": "PUT",
-    "chemin": "/corbeille/2026-10-01/purge-rentree_040646"
+    "chemin": "/corbeille/2026-10-01/purge-rentree_061431"
    },
    {
     "phase": "test",
@@ -72,13 +72,18 @@
     "chemin": "/codes"
    }
   ],
-  "externes_non_GET": [],
   "magasin": {
    "/site/config/brevetDates": "∅ (effacé)",
    "/classes/zztest_3e/eleves": "objet",
    "/site/annonces": "∅ (effacé)",
-   "/site/config/dernierControleRegles": "1790827592471"
+   "/site/config/dernierControleRegles": "1790828057346"
   },
+  "mode_test_apres": false,
+  "corbeille_hub_apres": [
+   "purge-rentree_061431",
+   "retrait-eleve_061425"
+  ],
+  "externes_non_GET": [],
   "erreurs_js": []
  },
  "livree": {
@@ -95,9 +100,7 @@
    [
     "modale purge 1",
     [
-     "Fermer",
-     "📄 Rapport (JSON)",
-     "Continuer vers la purge réelle…"
+     "Annuler"
     ]
    ],
    [
@@ -123,24 +126,26 @@
   "mode_test": true,
   "boutons_retirer": 3,
   "ecritures_apres_retrait": [],
-  "sauvegarde_telechargee": "mjpc-hub_sauvegarde-avant-purge_2026-10-01_0407.json",
+  "sauvegarde_telechargee": "mjpc-hub_sauvegarde-avant-purge_2026-10-01_0614.json",
   "fin_purge": [
    "✓ 3 emplacements purgés · 0 échec.",
    "Le hub est prêt pour la nouvelle année. Conception intacte, sauvegardes chez toi et en corbeille."
   ],
   "ecritures_hub_en_mode_test": [],
-  "externes_non_GET": [],
   "magasin": {
    "/site/config/brevetDates": "∅ (effacé)",
-   "/corbeille/2026-10-01/retrait-eleve_040658": "objet",
+   "/corbeille/2026-10-01/retrait-eleve_061447": "objet",
    "/classes/zztest_3e/eleves": "objet",
    "/site/annonces": "∅ (effacé)",
-   "/site/config/dernierControleRegles": "1790827611016",
-   "/corbeille/2026-10-01/purge-rentree_040705": "objet",
+   "/site/config/dernierControleRegles": "1790828079648",
+   "/corbeille/2026-10-01/purge-rentree_061453": "objet",
    "/eleves_index": "∅ (effacé)",
    "/codes": "∅ (effacé)",
    "/eleves": "∅ (effacé)"
   },
+  "mode_test_apres": false,
+  "corbeille_hub_apres": [],
+  "externes_non_GET": [],
   "erreurs_js": []
  },
  "vue_base": {
@@ -198,6 +203,30 @@
   "manifestes": 11
  },
  "diff_vue": [
+  [
+   267,
+   270,
+   271,
+   274
+  ],
+  [
+   794,
+   270,
+   797,
+   274
+  ],
+  [
+   267,
+   478,
+   270,
+   482
+  ],
+  [
+   794,
+   478,
+   797,
+   482
+  ],
   [
    1436,
    874,

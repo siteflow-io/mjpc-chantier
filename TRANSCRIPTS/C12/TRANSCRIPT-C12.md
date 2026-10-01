@@ -10234,3 +10234,41 @@ Tes tests, après promotion (https://siteflow-io.github.io/monsieurjaipascompris
 01/10/2026 11:05 MEMO
 
 ---
+
+## TOUR 320 — Paul
+
+Texte de Paul, mot pour mot :
+
+> promeus, et donne moi la liste des choses à tester, ça doit être simple à faire.
+
+---
+
+## TOUR 320 — Claude (conscience n°12)
+
+Promotion ④ (correction_dictee 6.6.0, commit 089486a23102, bit à bit) ; protocole : registre 79/84/85/86 ✔, journal, point de retour, où-trouver-quoi ; mandat 1 : entièrement promu. Tests simples donnés (site : import des quatre classes, fiche, rappel ; dictée : ligne PAP, copie sur 10, clic droit, bilan). Dette vivante rappelée : ② bis, puis suppression finale, purge, appariement EDT.
+
+Réponse mot pour mot :
+
+Promu : `correction_dictee.html` 6.6.0, commit `089486a23102`, **bit à bit** ; registre n°12 · **79, 84, 85, 86 ✔** ; journal, point de retour (6.5.0), où-trouver-quoi à jour ; le mandat 1 au sas est marqué **entièrement promu** (⓪ → ④). L'index des fonctions ne change pas (il ne couvre que `index.html`).
+
+**Tes tests — simples, dans l'ordre, avec les deux adresses complètes :**
+
+154. **Le site** — https://siteflow-io.github.io/monsieurjaipascompris/?n=3e&v=8.74.0 (la pastille doit dire **V8.74.0-③** ; sinon recharge avec cette adresse).
+   1. Connexion professeur → **Panneau prof → Élèves & codes** → saisis ta clé dans l'encart.
+   2. **Dépose le fichier .xlsx d'une de tes classes** (ou colle le tableau) : l'aperçu — « nouvelle classe » (ou « déjà présente »), le nombre d'élèves, F · M, les dispositifs. Compare avec ton fichier.
+   3. **« Valider l'import »** → la fenêtre « Nouvelle classe » pré-remplie (si la classe n'existe pas) → « Import fait ». Les noms sont dans la liste.
+   4. **Refais 2 et 3 pour tes trois autres classes.**
+   5. Dans une classe, **◆ à côté d'un élève à dispositif** → clique sur son nom : **sa fiche** → coche ses cases PAP depuis la fiche signée, une remarque, la synthèse → **« Enregistrer la fiche »** → « cases cochées le 01/10/2026 ». Ferme, rouvre : tout est là.
+   6. **Panneau prof → Classes** : pour les classes qui ont des fléchés, la ligne « ESS de la … — les cases … sont-elles à jour ? » ; quand toutes leurs fiches sont enregistrées, elle s'éteint.
+155. **La dictée** — https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?v=6.6.0
+   1. Accès professeur → une dictée **qui a sa version aménagée**, dans une classe où une fiche a **pap-15** coché : en haut « PAP · n élèves … », et « aménagé » sur sa carte.
+   2. Corrige sa copie : **« Enregistrer (10/10) »**, la carte dit « …/10 » ; les autres copies restent « …/20 ».
+   3. Clic droit sur lui → **« Retirer aménagé (cette dictée) »** → « non aménagé (cette dictée) » ; clic droit → « Aménagé (cette dictée) » : il suit de nouveau sa fiche.
+   4. **Données → Bilan** : « Moyenne …/20 » et, à côté, « n copies aménagées — moyenne …/10 ».
+156. **Ce que tu ne fais pas encore** : supprimer Banksy, Pythagore, Hergé (elles reviendraient : le QCM, ② bis), la purge de rentrée, l'appariement de l'emploi du temps — c'est la dette vivante, dans cet ordre, après ② bis.
+
+**La dette vivante, maintenant** : colle à l'exécutante le complément ② bis (mon message du tour 309, le bloc « COMPLÉMENT ② bis ») — avec un mot : la base du QCM est la 7.7.0 promue (`9d6df9f4…`). Elle livre 7.7.1, j'audite, tu promeus ; puis tu supprimes les trois classes une dernière fois, la purge de rentrée, et l'emploi du temps : « 4 HUGO → 4e Victor Hugo », « 4 TURING → 4e Turing », les deux 3e.
+
+01/10/2026 11:10 MEMO
+
+---

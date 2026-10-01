@@ -38,6 +38,8 @@ chk=[
  ('livrée : le contrat du site purge eleves', 'eleves' in (rl.get('contrat_purger') or []), rl.get('contrat_purger')),
  ('livrée : /eleves purgé au magasin', rl.get('magasin',{}).get('/eleves')=='∅ (effacé)', rl.get('magasin',{}).get('/eleves')),
  ('livrée : purge terminée, 0 échec', any('0 échec' in t for t in rl.get('fin_purge',[])), rl.get('fin_purge')),
+ ('base : hors mode test, la corbeille montre 2 entrées parties pour de bon', len(rb.get('corbeille_hub_apres',[]))==2, rb.get('corbeille_hub_apres')),
+ ('livrée : hors mode test, la corbeille est vide', rl.get('corbeille_hub_apres')==[], rl.get('corbeille_hub_apres')),
  ('livrée : 0 erreur JS', rl.get('erreurs_js')==[], rl.get('erreurs_js')),
  ('vue élève : 0 erreur JS (base, livrée)', vb['erreurs_js']==[] and vl['erreurs_js']==[], (vb['erreurs_js'],vl['erreurs_js'])),
  ('vue élève : aucun mot interdit', not any(vl['mots_interdits'].values()), vl['mots_interdits']),

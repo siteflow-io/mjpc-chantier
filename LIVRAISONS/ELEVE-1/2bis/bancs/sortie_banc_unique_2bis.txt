@@ -1,0 +1,14 @@
+OK  dictée 6.6.0 — « Nouvelle dictée », niveau 3e : la classe importée ZZTEST 3e ABSENTE — ["— Choisir —", "3E Charles de Gaulle (2)"]
+OK  dictée 6.6.1 — niveau 3e : « ZZTEST 3e (3) » présente, par son nom ; la 4e absente — ["— Choisir —", "3E Charles de Gaulle (2)", "ZZTEST 3e (3)"]
+OK  dictée 6.6.1 — à l’édition (niveau 3e) : ZZTEST 3e présente — [["—", "3E Charles de Gaulle"], ["—", "3E Charles de Gaulle (2)", "ZZTEST 3e (3)"]]
+OK  réécriture 2.4.0 — niveau 3e : ZZTEST 3e ABSENTE ; 2.4.1 : présente par son nom, la 4e absente — [["— Choisir —", "3E Charles de Gaulle (2)"], ["— Choisir —", "3E Charles de Gaulle (2)", "ZZTEST 3e (3)"]]
+OK  QCM 7.7.0 — à l’ouverture, recrée la classe de l’ancien carnet (la fuite) — [[["transaction", "classes/ZZTEST FANTOME"]], ["ZZTEST FANTOME"]]
+OK  QCM 7.7.1 — 0 écriture vers /classes, la classe ne revient pas, aucun message — [[], []]
+OK  « Ranger l’ancien carnet » : la corbeille reçoit les 2 classes (3 élèves), motif qcm-classes-legacy — {"qcm-classes-legacy-1790847771217": {"meta": {"motif": "qcm-classes-legacy", "chemin": "/qcm/classes", "app": "evaluation-qcm", "ts": 1790847771217, "classes": 2, "eleves": 3}, "classes": ["3e-charles-de-gaulle", "zztest-fantome"]}}
+OK  puis le nœud est vide, et le contrat de purge du QCM ne le porte plus — [null, ["qcm/sessions", "qcm/sessionActive", "qcm/presence", "qcm/qrScans", "qcm/eleveSexes", "mjpcProfils"]]
+OK  les messages : la confirmation dit le compte ; le second clic dit « déjà vide » — [["L’ancien carnet de classes du QCM porte 2 classe(s) et 3 élève(s).\n\nC’est lui qui recréait les classes que tu supprimes.\n\nIl part en corbeille (gardé un an), puis il est effacé. Tes classes du site ne sont pas touchées.\n\nContinuer ?", "✅ Rangé : 2 cla
+OK  QCM — la liste des classes montre leur NOM (7.7.0 : la clé « zztest_3e » ; 7.7.1 : « ZZTEST 3e (3 élèves) ») — [["3E Charles de Gaulle (2 élèves)", "zztest_3e (3 élèves)", "zztest_4e (1 élèves)", "ZZTEST FANTOME (2 élèves)"], ["3E Charles de Gaulle (2 élèves)", "ZZTEST 3e (3 élèves)", "ZZTEST 4e (1 élèves)"]]
+OK  vues élève inchangées (dictée, réécriture, QCM) ; 0 erreur JS — {"dictee": [true, [], []], "reecriture": [true, [], []], "qcm": [true, [], []]}
+OK  0 erreur JS et 0 sortie du navigateur (professeur) — {"dictee_err_livree": [], "dictee_ext_livree": [], "reec_err_livree": [], "reec_ext_livree": [], "qcm_err_livree": [], "qcm_ext_livree": []}
+OK  vrai hub inchangé — [{"classes": 12, "correction_dictee": 5, "corbeille": 26, "codes": 199, "qcm_classes": 5}, {"classes": 12, "correction_dictee": 5, "corbeille": 26, "codes": 199, "qcm_classes": 5}]
+BANC UNIQUE : VERT (0 échec)

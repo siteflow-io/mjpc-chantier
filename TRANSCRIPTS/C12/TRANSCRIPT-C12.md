@@ -9856,3 +9856,31 @@ Puis « continuer » à l'exécutante pour ② (l'écriture de la liste et des p
 01/10/2026 07:20 MEMO
 
 ---
+
+## TOUR 307 — Paul
+
+Texte de Paul, mot pour mot :
+
+> livré
+
+---
+
+## TOUR 307 — Claude (conscience n°12)
+
+Audit de `LIVRAISONS/ELEVE-1/2/` : diff (index 16/200, QCM 11/16), contrat des données vérifié dans le code (profil chiffré, rien en clair sans clé, `mjpcLot`, `amenagements`, `nbDispositifs`, QCM 0 écriture), `node --check` 0, banc unique rejoué VERT 21/0 (serveur local, clé de test, hub simulé ; un 503 passager du hub, rejoué), captures regardées. Deux points signalés (Charles de Gaulle perd ses sexes au QCM ; les dates attendent dans la page). Verdict : ça va, promouvable (index + QCM). Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Audit de la livraison ② (« écrire la liste, la fiche, l'aménagement ; la reprise ; le QCM », `LIVRAISONS/ELEVE-1/2/`), mesuré :
+
+121. **Les fichiers** : `index.html` base = la production ① (`c9af8e31…`, vérifiée) → **8.74.0-②, 1 813 946 o (+17 837)**, md5 `80d45486…` ; 16 lignes retirées (l'ancien « Valider » qui ne faisait rien, le retrait d'élève, l'archive), 200 ajoutées ; `evaluation-qcm.html` 7.6.0 → **7.7.0, 550 410 o (+842)**, 11 retirées / 16 ajoutées. `node --check` 0 erreur sur les trois blocs.
+122. **Le contrat des données est tenu** — vérifié dans le code, pas sur la note : le profil écrit `{ sexe, attente, majLe }` en clair et `naissance`, `dispositif`, `pap` **chiffrés par `mjpcChiffrer(SECU.cle, …)`** ; sans la clé, **rien de la naissance ni du dispositif ne part à la base** (ils attendent dans la page, le profil porte `attente: true`) ; toutes les écritures passent par `mjpcLot` / `_corbeillePuis` / `_fbDeletePath` (routés par le mode test) ; `amenagements` ne porte que `sexe` et `dicteeAmenagee` ; `nbDispositifs` est un entier. Le QCM **n'écrit plus** `qcm/eleveSexes` (0 écriture) et lit `amenagements` par la clé de classe.
+123. **Le banc unique, rejoué par moi** (page servie en local pour le contexte sûr du chiffrement, clé de test saisie par le geste, hub simulé, vrai hub inchangé — classes 9, codes 128, eleves 3, eleves_index 3, corbeille 25, manifestes 11, classes_amenages 1, qcm/eleveSexes 9) : **VERT, 21 vérifications, 0 échec** — 25 dans la liste, 25 fiches, 2 dispositifs (1 du fichier, 1 repris de la dictée) ; la fiche d'Anna déchiffrée « 2012-01-01 » / `false`, rien d'autre en clair que sexe, attente, majLe ; Bruno repris : `pap-15`, dictée aménagée ; le sexe repris du QCM seulement là où le fichier n'en donne pas (le fichier l'emporte ailleurs) ; les restes de l'an dernier en corbeille (`restes-eleve-1`) puis effacés ; réimport : 0 doublé, fiches identiques ; le retrait emporte la fiche, le compte suit ; classe sans année → la fenêtre, puis l'import ; sans clé → 25 fiches en attente, aucune date au hub, puis chiffrées à la saisie ; aucune classe → la fenêtre pré-remplie ; l'archive transmissible sans fiche ; QCM 7.7.0 : n'écoute que `/classes`, 0 écriture ; vue élève inchangée.
+124. **Deux choses que je te signale** (pas des défauts, des choix faits dans sa conversation que je ne peux pas vérifier d'ici) : (a) **la 3E Charles de Gaulle perd ses sexes dans le QCM** tant que tu ne l'importes pas par son fichier — la note dit « accepté par toi » ; confirme-le ; (b) **sans ta clé, les dates attendent dans la page, pas dans la base** : si tu fermes la page avant de saisir la clé, tu réimportes le fichier avec la clé (une ligne le dit) — c'est plus sûr que le mandat ne l'exigeait (rien en clair nulle part), et je le prends. Le QCM est prouvé par la fonction, pas par le geste, parce qu'il n'affiche le sexe nulle part — déclaré comme tel, conforme.
+125. **Verdict : ça va. Tu peux promouvoir ②** — les deux fichiers ensemble : `index.html` **et** `evaluation-qcm.html`. Captures ci-dessus : l'aperçu avec la reprise et les restes ; « Import fait » ; l'import sans clé.
+
+Tes tests, après promotion : 1) https://siteflow-io.github.io/monsieurjaipascompris/?n=3e&v=8.74.0 : pastille **V8.74.0-②** ; 2) **d'abord en mode test** : Panneau prof → 🧪 Mode test → Élèves & codes → saisis ta clé dans l'encart → dépose le fichier d'une de tes classes → l'aperçu (reprise, restes) → « Valider l'import » → « Import fait » → les noms dans la liste → « Quitter le mode test » : rien n'est parti ; 3) **pour de vrai** (mode test quitté, clé saisie) : le fichier de chacune de tes classes → l'aperçu → « Valider » → le compte rendu ; la première fois, les restes de l'an dernier partent en corbeille, annoncés ; 4) en mode test, retire un élève d'essai : sa fiche part en corbeille avec lui ; 5) https://siteflow-io.github.io/monsieurjaipascompris/evaluation-qcm.html?v=7.7.0 : tes classes y sont avec leurs élèves. Ton « promeus », puis « continuer » pour ③ (la fiche élève et le rappel).
+
+01/10/2026 08:05 MEMO
+
+---

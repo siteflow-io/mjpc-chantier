@@ -10554,3 +10554,28 @@ Rien à corriger ici. Ton « ok » pour ③ bis.
 01/10/2026 12:45 MEMO
 
 ---
+
+## TOUR 331 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok. J'ai une option de duplication, sauf que celle ci ne duplique pas l'intégralité d'une dictée, notamment quand j'ai paramétrée une version aménagée. Il faut que la duplication soit totale.
+
+---
+
+## TOUR 331 — Claude (conscience n°12)
+
+Mesuré : le bouton ⧉ copie `config` seul ; les nœuds d'une dictée (réglages vs état des élèves) listés depuis le code. Registre n°12 · 92. Règle proposée (tous les réglages, jamais l'état des élèves) ; à livrer dans ③ bis (dictée 6.6.2). Rien d'autre déposé hormis ce transcript et le registre.
+
+Réponse mot pour mot :
+
+Mesuré dans la correction de dictée : le bouton ⧉ **copie seulement la configuration** (titre, texte, classe, base, barème, niveau, compétences ; « Copie de … », non publiée). Il laisse derrière lui **la version aménagée** (les trous, les modes, sa base, la consigne), les options de copie, les exercices — tout ce qui n'est pas dans `config`. Son infobulle le dit à moitié (« copie le texte et le barème, sans les copies élèves »). Inscrit au registre, **n°12 · 92**.
+
+185. **La règle que je propose pour « duplication totale »** : la copie reprend **tous tes réglages** — la configuration (titre « Copie de … », non publiée), la version aménagée entière, les options de copie, les exercices et leur page, les binômes, l'heure — et **jamais l'état des élèves** (les copies corrigées, les absents, les aménagés pour cette dictée, l'autocorrection, les copies effacées, les résultats d'exercices, la date de remise). L'infobulle dira ce qu'elle copie et ce qu'elle laisse.
+186. **Où ça se livre** : c'est la dictée (6.6.2), pas la console ; je l'ajoute au complément ③ bis comme **deuxième partie** (une livraison, deux fichiers : `index.html` pour l'interface, `correction_dictee.html` pour la duplication), bancs par le geste sur une dictée à version aménagée, captures avant/après.
+
+Dis « ok » (ou corrige la règle 185), et j'écris ③ bis pour l'exécutante.
+
+01/10/2026 12:55 MEMO
+
+---

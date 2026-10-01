@@ -10965,3 +10965,30 @@ Réponse mot pour mot : le mandat = le fichier déposé, avec les jetons dans la
 01/10/2026 20:00 MEMO
 
 ---
+
+## TOUR 347 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Livré
+
+---
+
+## TOUR 347 — Claude (conscience n°12)
+
+Audit de `LIVRAISONS/DICTEE-CORRECTION/L1/` : diff 16/27, 6.7.0-L1, `autoTexte` dans les cinq gestes du mode texte, `texteIdx`, nom réel retiré, 0 nom d'élève des quatre classes ; bancs rejoués sur le kit anonymisé (geste VERT, S1/S3 sans perte, fuzz_correction 5 copies 0 bug, fuzz_rapide 3 copies 0 bug, vue élève identique) ; dettes 94 et 95 réglées. Verdict : ça va, promouvable. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Audit de L1 (« jamais de perte : l'enregistrement est instantané, la position reprise », `LIVRAISONS/DICTEE-CORRECTION/L1/`), mesuré :
+
+226. **Le fichier** : base = la 6.6.3 (`be6e2481…`, vérifiée) → **6.7.0-L1, 738 687 o (+1 640)**, md5 `913f8b5c…` ; 16 lignes retirées, 27 ajoutées ; `node --check` 0 erreur. **Vérifié dans le code** : chaque geste du mode texte (poser un type, saisir le mot de l'élève, poser ou retirer un mot en trop, retirer une erreur) appelle l'enregistrement (`autoTexte` → le même `onAutoSave` que le mode rapide, qui passe par `save`, donc la base et la trace de la copie) avec la position (`texteIdx`) ; le commentaire qui portait un nom d'élève n'en porte plus ; **aucun des 144 noms de tes élèves** (noms complets) n'est dans le fichier — les deux noms de famille très courants qui restent sont ceux d'exemples fictifs (« DUPONT Marie / MARTIN Lucas » du modèle de saisie, « ZZTEST MOREAU Sacha » du bac à sable), pas des élèves.
+227. **Les bancs, rejoués par moi sur le kit anonymisé** (faux hub, 0 accès au vrai hub) : le banc par le geste **VERT** (1 erreur au hub après le 1er clic, 2 après le 2e avec la position 7 ; « ← » puis réouverture : 1G1L, le mot encadré ; rechargement : pareil) ; `scenarios_modes` : **S1 ne perd plus** (rouverte « 8,5 … 1G1L », hub [(3,G),(7,L)]), **S3 ne perd plus non plus** (« 2 err. » après ⇧R — avant même L2), S2 correct ; `fuzz_correction` graine 1 (5 copies) : **0 bug** ; `fuzz_rapide` (3 copies) : **0 bug** ; **vue élève identique** à la 6.6.3.
+228. **Deux dettes réglées en route** : la n°12 · 94 (le nom dans le commentaire) ; et une de ④ qu'elle a trouvée (n°12 · 95) : l'enregistrement automatique qui part de l'écran de correction vers le mode rapide **ne portait pas la trace** de la copie — 0 copie touchée au hub (mesuré par elle, cohérent avec ce que j'ai lu : le seul élève aménagé des Dylan n'a pas encore de copie corrigée). Pas de dette restante.
+229. **Verdict : ça va. Tu peux promouvoir L1.** Captures ci-dessus : avant (6.6.3 : la copie rouverte vide) / après (L1 : les 2 erreurs, le dernier mot encadré).
+
+Tes tests, après promotion (https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?v=6.7.0) : 1) une dictée → une copie en mode texte → pose 2 erreurs → « ← » sans rien enregistrer → rouvre : les 2 erreurs sont là, le dernier mot encadré ; 2) pose une 3e erreur, F5, rouvre la dictée et la copie : les 3 erreurs, le curseur sur la 3e ; 3) « Enregistrer → suivant » : la copie suivante s'ouvre, la précédente est corrigée dans la grille. Ton « promeus », puis « continuer » pour L2 (⇧R bascule).
+
+01/10/2026 20:45 MEMO
+
+---

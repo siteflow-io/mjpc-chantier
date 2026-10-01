@@ -1,0 +1,16 @@
+OK  base : le banc VOIT la fuite (écritures au hub en mode test > 0) — [{"phase": "test", "methode": "PUT", "chemin": "/corbeille/2026-10-01/retrait-eleve_040640"}, {"phase": "test", "methode": "PUT", "chemin": "/corbeille/2026-10-01/purge-rentree_040646"}, {"phase": "test", "methode": "DELETE", "chemin": "/eleves_index"}, {"phas
+OK  livrée : parcours complet sans échec — null
+OK  livrée : mode test actif — true
+OK  livrée : 0 écriture au hub en mode test (retrait + purge) — []
+OK  livrée : 0 écriture hors hub en mode test — []
+OK  livrée : la corbeille du retrait est au magasin — ["/corbeille/2026-10-01/retrait-eleve_040658", "/corbeille/2026-10-01/purge-rentree_040705"]
+OK  livrée : le contrat du site purge eleves — ["eleves_index", "codes", "eleves"]
+OK  livrée : /eleves purgé au magasin — "∅ (effacé)"
+OK  livrée : purge terminée, 0 échec — ["✓ 3 emplacements purgés · 0 échec.", "Le hub est prêt pour la nouvelle année. Conception intacte, sauvegardes chez toi et en corbeille."]
+OK  livrée : 0 erreur JS — []
+OK  vue élève : 0 erreur JS (base, livrée) — [[], []]
+OK  vue élève : aucun mot interdit — {"aménag": false, "PAP": false, "◆": false, "mode test": false, "Mode test": false}
+OK  vue élève : mêmes écritures base / livrée — [[["PUT", "/presence/u-zz1"]], []]
+OK  vue élève : seuls écarts = la pastille de version et des points ≤ 25 px² (étoiles animées) — [[1436, 874, 1470, 881]]
+OK  vrai hub inchangé (comptes avant = après) — [{"classes": 9, "codes": 128, "eleves": 3, "eleves_index": 3, "corbeille": 25, "manifestes": 11}, {"classes": 9, "codes": 128, "eleves": 3, "eleves_index": 3, "corbeille": 25, "manifestes": 11}]
+BANC UNIQUE : VERT (0 échec)

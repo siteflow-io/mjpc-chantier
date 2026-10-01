@@ -10824,3 +10824,30 @@ Dès tes cinq réponses, j'écris le bloc de l'exécutant.
 01/10/2026 18:40 MEMO
 
 ---
+
+## TOUR 341 — Paul
+
+Texte de Paul, mot pour mot :
+
+> 210. Et les flèches bas et haut, j'ai dit avant! Tu ne t'en souviens plus? 211. Automatique. L'enregistrement doit être instantané. Et toujours pareil, je dois reprendre exactement où j'en étais quand je réouvre la correction d'une copie. 212. Il faut que tu me montres par captures, je ne peux pas dire comme ça. 213. on enlève uniquement les raccourcis, pas les boutons. Le bouton s'active automatiquement quand c'est de la P ou de la E et j'ai juste à valider avec entrée. 214. Je ne sais pas, je veux l'assurance que ça ne va pas tout rechambouler vu que c'est un bouton de patch, donc codé pour de mauvaises raisons. 215 oui.
+
+---
+
+## TOUR 341 — Claude (conscience n°12)
+
+Flèches ↑ ↓ ajoutées à la recherche (oubli reconnu). 216 enregistrement instantané + position reprise ; 217 touches P/E retirées, boutons pré-sélectionnés, Entrée ; 218 l'assurance du reclassement (mesuré : M→P ne fait qu'une chose ; reprise à blanc avec rapport copie par copie, archive en corbeille, inchangé prouvé) ; 219 captures de largeur (planches 760/1000/1100/1300 à 1366 et 1920, texte et rapide, faites sur le faux hub). Restent 212 et 218. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Pris, 211 à 215. Et oui, 210 : les quatre flèches, dans la recherche comme pour le curseur — ← → le candidat précédent / suivant dans l'ordre du texte, **↑ ↓ le candidat de la ligne du dessus / du dessous** ; tu l'avais dit en 201, je l'avais oublié dans la recherche : corrigé.
+
+216. **211 — enregistrement instantané** : chaque geste du mode texte (un type posé, un mot de l'élève saisi, un mot en trop, une erreur retirée) écrit aussitôt, par le même enregistrement que le mode rapide ; **et la position** (le mot clignotant, le dernier corrigé) est enregistrée avec — à la réouverture tu retrouves la copie exactement où tu l'as laissée, curseur compris. « Enregistrer → suivant » ne fait plus que passer à l'élève suivant, avec son contrôle « mots recopiés ».
+217. **213 — les touches P et E retirées, les boutons restent, et s'activent tout seuls** : quand le mot courant est un signe de ponctuation, le bouton « Ponctuation » est pré-sélectionné (mis en avant) et **Entrée le valide** ; une apostrophe → « Élision » pré-sélectionné, Entrée ; la touche M fait la même chose sur ces mots-là. Sur un mot ordinaire, rien n'est pré-sélectionné.
+218. **214 — l'assurance, mesurée, sur le reclassement** : le bouton « M→P » **ne fait qu'une chose** (mesuré dans son code) : une erreur « Manquant » posée sur un signe de ponctuation (hors apostrophe) devient « Ponctuation », et la note est recalculée ; il ne touche ni aux G, L, I, A, E, ni aux mots en trop, ni aux copies qui n'ont pas ce cas. La reprise que je propose fait **exactement ces deux reclassements et rien d'autre** : (1) M sur un signe → P (5 copies de l'an dernier au hub, 0 cette année) ; (2) un « en plus » qui est un signe → au forfait ponctuation (23 copies : 4 chez les Dylan). Les garanties que le mandat exigera : **à blanc d'abord** — la livraison produit un rapport copie par copie (clé de l'élève, dictée, note avant → après, les erreurs reclassées) sur l'instantané du kit et sur un relevé du hub, **tu le lis et tu dis « ok » avant que la bascule réelle existe** ; une **archive en corbeille** des copies avant reclassement (restaurable) ; la trace de la copie conservée ; **tout le reste prouvé inchangé** copie par copie par le banc (chaque copie sans ces deux cas : identique octet pour octet). Si le rapport à blanc te montre autre chose que +0,5 par signe (ou le forfait), rien ne se fait.
+219. **212 — la largeur, en captures** (ci-dessus, trois planches) : le mode texte à 760 (actuel), 1000, 1100, 1300 px sur un écran de 1366 ; le mode rapide aux mêmes largeurs ; le mode texte sur un écran de 1920. Ce que je vois : à 760 le texte tient sur 6 lignes ; à 1100, sur 4 ; à 1300 le texte devient très long à lire d'une ligne. Pour le mode rapide, à 1100 les six boutons de types sont larges et le bouton « ← Texte » tient dans son cadre. **Choisis une largeur** (ou dis « comme 1100 »).
+
+Il me reste donc **212** (ta largeur) et **218** (ok pour « à blanc d'abord ») ; puis j'écris le bloc.
+
+01/10/2026 18:55 MEMO
+
+---

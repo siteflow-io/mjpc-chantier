@@ -1,0 +1,20 @@
+OK  avant (6.5.0) : pas de ligne PAP ; Anna « 8/20 » — {"Z. Anna": "Z. Anna📘 | 8/20", "Z. Bruno": "Z. Bruno | —", "Z. Clara": "Z. Clara | —"}
+OK  la ligne PAP de la capture T284-e4 — "PAP1 élève pap-15 (dictées aménagées) : aménagés pour cette dictée, d’après leur fiche. Tout passer en non aménagé pour cette dictée — ou élève par élève, par le clic droit"
+OK  Bruno « aménagé » d’après sa fiche — "Z. Bruno📘 | aménagé | —"
+OK  l’ancienne copie d’Anna tracée une fois (aménagée, « A+C », base 10) et affichée « 8/10 » — [{"errors": [], "extras": [], "note": 8, "deduction": 0, "counts": {}, "timestamp": 1, "amenagee": true, "mode": "A+C", "base": 10}, 1]
+OK  le clic droit : plus d’entrée « registre » ; un clic → « non aménagé (cette dictée) » ; un second → retour à la fiche — [["❌ Marquer absent", "✓ Retirer aménagé (cette dictée)"], {"zztest_beta_bruno": false}, {}]
+OK  le bloc : « Tout passer en non aménagé » puis « Tout repasser en aménagé (leur fiche) » — [{"zztest_beta_bruno": false}, {}]
+OK  copie de Bruno : « Enregistrer (10/10) », note 10, trace aménagée « A+C » base 10 — {"errors": [], "extras": [], "note": 10, "deduction": 0, "counts": {"G": 0, "L": 0, "M": 0, "I": 0, "P": 0, "A": 0, "E": 0, "X": 0}, "timestamp": 1790843922080, "amenagee": true, "mode": "A+C", "base": 10}
+OK  copie de Clara : « Enregistrer (20/20) », note 20, non aménagée (aucune base écrite) — {"errors": [], "extras": [], "note": 20, "deduction": 0, "counts": {"G": 0, "L": 0, "M": 0, "I": 0, "P": 0, "A": 0, "E": 0, "X": 0}, "timestamp": 1790843925625, "amenagee": false}
+OK  les cartes : « 10/10 » et « 20/20 » — {"Z. Anna": "Z. Anna | 8/10", "Z. Bruno": "Z. Bruno📘 | aménagé | 10/10", "Z. Clara": "Z. Clara | 20/20"}
+OK  l’encart « Moyenne » : « 20/20 », puis « 2 copies aménagées — moyenne 9/10 » — "Moyenne\n20/20\n2 copies aménagées — moyenne 9/10"
+OK  rendre les copies (geste) : la dictée est rendue — 1790843932031
+OK  la base 20 → 12 : Clara recalculée 12 ; Anna 8 et Bruno 10 intactes — {"zztest_alpha_anna": 8, "zztest_beta_bruno": 10, "zztest_gamma_clara": 12}
+OK  sans rouvrir, le bilan se met à jour : « 12/12 » et « 2 copies aménagées — moyenne 9/10 » — "Moyenne\n12/12\n2 copies aménagées — moyenne 9/10"
+OK  une nouvelle copie normale se note sur la base actuelle : « Enregistrer (12/12) » — ["Enregistrer (12/12) → suivant", 12]
+OK  la feuille papier (par la fonction) : aucun « aménag… », pas d’identifiant, titres « Dictée » / « Dictée ZZTEST » — {"mot": false, "id": false, "titre1": "Dictée", "titre2": "Dictée ZZTEST"}
+OK  le bilan exporté (par la fonction) : chaque note avec sa base ; moyenne sur 12 des seules copies sur 12 ; aucun mot — {"eleves": [["Anna", 8, 10], ["Bruno", 10, 10], ["Clara", 12, 12]], "bilan": {"effectif": 3, "corriges": 1, "moyenne": 12, "mediane": 12, "mots_les_plus_echoues": [], "moyenne_sur": 12}, "mot": false}
+OK  l’écran de Bruno (élève) : sa note « 10/10 », ni « aménagé », ni « PAP », ni ◆ — [{"aménag": false, "Aménag": false, "PAP": false, "◆": false, "pap-15": false}, ["01/10", "10/10", "10/10", "10/10", "5/5"]]
+OK  0 erreur JS, 0 sortie du navigateur — [[], []]
+OK  vrai hub inchangé (lu avant et après) — [{"classes": 8, "correction_dictee": 6, "classes_amenages": 1, "codes": 128, "corbeille": 26}, {"classes": 8, "correction_dictee": 6, "classes_amenages": 1, "codes": 128, "corbeille": 26}]
+BANC UNIQUE : VERT (0 échec)

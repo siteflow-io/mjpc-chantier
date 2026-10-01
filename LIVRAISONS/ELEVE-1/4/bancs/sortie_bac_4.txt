@@ -1,0 +1,5 @@
+ÉLÈVES FICTIFS : ["ZZTEST DURAND Alice", "ZZTEST MARTIN Lucas", "ZZTEST BERNARD Emma", "ZZTEST PETIT Thomas", "ZZTEST ROBERT Chloé", "ZZTEST MOREAU Sacha"]
+CODES FICTIFS : ['zztest_bernard_emma', 'zztest_durand_alice', 'zztest_martin_lucas', 'zztest_moreau_sacha', 'zztest_petit_thomas', 'zztest_robert_chloe']
+APRÈS CRÉATION — aménagements de la classe de test : {"zztest_durand_alice": {"sexe": "f", "dicteeAmenagee": false}, "zztest_martin_lucas": {"sexe": "m", "dicteeAmenagee": true}, "zztest_bernard_emma": {"sexe": "f", "dicteeAmenagee": false}, "zztest_petit_thomas": {"sexe": "m", "dicteeAmenagee": false}, "zztest_robert_chloe": {"sexe": "f", "dicteeAmenagee": false}, "zztest_moreau_sacha": {"se
+APRÈS EFFACEMENT — classe de test : null
+erreurs JS : []

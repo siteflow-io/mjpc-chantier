@@ -1,0 +1,117 @@
+{
+ "dictee_nouvelle_base": [
+  "— Choisir —",
+  "3E Charles de Gaulle (2)"
+ ],
+ "dictee_edition_base": [
+  "—",
+  "3E Charles de Gaulle"
+ ],
+ "dictee_err_base": [],
+ "dictee_ext_base": [],
+ "dictee_nouvelle_livree": [
+  "— Choisir —",
+  "3E Charles de Gaulle (2)",
+  "ZZTEST 3e (3)"
+ ],
+ "dictee_edition_livree": [
+  "—",
+  "3E Charles de Gaulle (2)",
+  "ZZTEST 3e (3)"
+ ],
+ "dictee_err_livree": [],
+ "dictee_ext_livree": [],
+ "reec_base": [
+  "— Choisir —",
+  "3E Charles de Gaulle (2)"
+ ],
+ "reec_err_base": [],
+ "reec_ext_base": [],
+ "reec_livree": [
+  "— Choisir —",
+  "3E Charles de Gaulle (2)",
+  "ZZTEST 3e (3)"
+ ],
+ "reec_err_livree": [],
+ "reec_ext_livree": [],
+ "qcm_ecritures_classes_base": [
+  [
+   "transaction",
+   "classes/ZZTEST FANTOME"
+  ]
+ ],
+ "qcm_dialogues_base": [
+  "🔄 Mise à jour automatique des données :\n\n• 1 classe(s) déplacée(s) vers le nœud partagé /classes (visibles maintenant dans correction de dictée et les autres apps MJPC)\n\nC'est fait une seule fois."
+ ],
+ "qcm_fantome_dans_classes_base": [
+  "ZZTEST FANTOME"
+ ],
+ "qcm_options_base": [
+  "3E Charles de Gaulle (2 élèves)",
+  "zztest_3e (3 élèves)",
+  "zztest_4e (1 élèves)",
+  "ZZTEST FANTOME (2 élèves)"
+ ],
+ "qcm_err_base": [],
+ "qcm_ext_base": [],
+ "qcm_ecritures_classes_livree": [],
+ "qcm_dialogues_livree": [],
+ "qcm_fantome_dans_classes_livree": [],
+ "qcm_options_livree": [
+  "3E Charles de Gaulle (2 élèves)",
+  "ZZTEST 3e (3 élèves)",
+  "ZZTEST 4e (1 élèves)"
+ ],
+ "qcm_rangement_dialogues": [
+  "L’ancien carnet de classes du QCM porte 2 classe(s) et 3 élève(s).\n\nC’est lui qui recréait les classes que tu supprimes.\n\nIl part en corbeille (gardé un an), puis il est effacé. Tes classes du site ne sont pas touchées.\n\nContinuer ?",
+  "✅ Rangé : 2 classe(s) et 3 élève(s) en corbeille ; l’ancien carnet est effacé. Les classes que tu supprimes ne reviendront plus."
+ ],
+ "qcm_corbeille": {
+  "qcm-classes-legacy-1790847771217": {
+   "meta": {
+    "motif": "qcm-classes-legacy",
+    "chemin": "/qcm/classes",
+    "app": "evaluation-qcm",
+    "ts": 1790847771217,
+    "classes": 2,
+    "eleves": 3
+   },
+   "classes": [
+    "3e-charles-de-gaulle",
+    "zztest-fantome"
+   ]
+  }
+ },
+ "qcm_classes_apres": null,
+ "qcm_manifeste_purger": [
+  "qcm/sessions",
+  "qcm/sessionActive",
+  "qcm/presence",
+  "qcm/qrScans",
+  "qcm/eleveSexes",
+  "mjpcProfils"
+ ],
+ "qcm_rangement_2e": [
+  "✅ L’ancien carnet de classes du QCM est déjà vide : rien à ranger."
+ ],
+ "qcm_err_livree": [],
+ "qcm_ext_livree": [],
+ "eleve_dictee": [
+  true,
+  [],
+  [],
+  "Combien êtes-vous sur cette tablette ?\nSi ton binôme est absent, choisis « 1 élève ».\n👤 1 élève\n👥 2 élèves"
+ ],
+ "eleve_reecriture": [
+  true,
+  [],
+  [],
+  "Réécriture\n\nIdentifie-toi pour retrouver ta réécriture.\n\nNom\nPrénom\nCode personnel\nAfficher\nAccéder\n← Retour\n?"
+ ],
+ "eleve_qcm": [
+  true,
+  [],
+  [],
+  "⭐\n🎯\n✨\n💡\n🎲\n🔥\n🎓 Choisis ta classe\n3E Charles de Gaulle\nzztest_3e\nzztest_4e\n← Retour"
+ ]
+}

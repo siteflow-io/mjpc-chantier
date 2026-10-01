@@ -1,0 +1,17 @@
+[modes] code 0 — 18 s
+  OK S1 sans perte, S2 correct
+[fc1] code 0 — 92 s
+  OK fuzz_correction graine 1 : 0 bug
+[fc2] code 0 — 81 s
+  OK fuzz_correction graine 2 : 0 bug
+[fr] code 0 — 48 s
+  OK fuzz_rapide : 0 bug
+[gr] code 0 — 10 s
+  OK grille : 0 erreur de page
+[banc_L1_geste] code 0 — 15 s
+  OK banc_L1_geste
+[banc_L2_geste] code 0 — 19 s
+  OK banc_L2_geste
+[eleve] code 0 — 9 s
+  OK vue élève inchangée
+BANC UNIQUE : VERT (0 échec)

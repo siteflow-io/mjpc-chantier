@@ -10372,3 +10372,33 @@ Ton « promeus » ; ensuite la dette vivante : **③ bis** (l'interface : largeu
 01/10/2026 12:05 MEMO
 
 ---
+
+## TOUR 324 — Paul
+
+Texte de Paul, mot pour mot :
+
+> promeus
+
+---
+
+## TOUR 324 — Claude (conscience n°12)
+
+Promotion ② bis : dictée 6.6.1 (ca5b5b23ba3c), réécriture 2.4.1 (c6193c8ffcd8), QCM 7.7.1 (2287da6be81f), bit à bit ; registre 83/90/91 ✔ ; journal, points de retour, où-trouver-quoi. Tests et ménage donnés (ranger le carnet, supprimer les trois classes, compléter une classe). Dette vivante : ③ bis → purge de rentrée → appariement EDT.
+
+Réponse mot pour mot :
+
+Promu, les trois, **bit à bit** : `correction_dictee.html` 6.6.1 (commit `ca5b5b23ba3c`), `reecriture.html` 2.4.1 (`c6193c8ffcd8`), `evaluation-qcm.html` 7.7.1 (`2287da6be81f`). Registre n°12 · **83, 90, 91 ✔** ; journal, trois points de retour, où-trouver-quoi à jour (l'index des fonctions ne couvre que `index.html`, inchangé).
+
+**Tes tests, dans l'ordre — c'est aussi le ménage de l'an dernier, tu le fais une fois :**
+
+167. https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?v=6.6.1 → Accès professeur → Nouvelle dictée → Niveau **3e** → la liste « Classe » : « 3E Charles de Gaulle », « 3 DYLAN BOB », « 3 FRANKLIN ARETHA ». (Niveau 4e : « 4 HUGO », « 4 TURING », et encore Banksy / Pythagore tant que tu ne les as pas supprimées.)
+168. https://siteflow-io.github.io/monsieurjaipascompris/reecriture.html?v=2.4.1 → Créer une réécriture → Niveau 3e → les mêmes.
+169. https://siteflow-io.github.io/monsieurjaipascompris/evaluation-qcm.html?v=7.7.1 → Accès professeur → **Données → 💾 Sauvegarde → Maintenance → « Ranger l'ancien carnet de classes »** → la confirmation dit « 5 classes » → OK.
+170. Console (https://siteflow-io.github.io/monsieurjaipascompris/?n=3e&v=8.74.0) → **Classes → supprime « 4E Banksy », « 4e Pythagore », « 5E Hergé »** (elles partent en corbeille). Rouvre le QCM : elles ne reviennent pas ; ses listes montrent les **noms** de tes classes.
+171. Console → Élèves & codes → une de tes classes → **« compléter »** avec son fichier → l'aperçu annonce « restes de l'an dernier … → partiront en corbeille » → Valider.
+
+Puis dis-moi, et la dette vivante continue : **③ bis** (l'interface du panneau prof : toute la largeur, les boutons ↻ ✕ dans le cadre, « Ouvrir les fiches » filtré sur les fléchés — j'écris le complément pour l'exécutante) → la purge de rentrée (les codes de l'an dernier) → l'appariement de l'emploi du temps (« 4 HUGO → 4 HUGO » etc. : tes classes portent maintenant les noms de la grille, l'appariement sera direct).
+
+01/10/2026 12:15 MEMO
+
+---

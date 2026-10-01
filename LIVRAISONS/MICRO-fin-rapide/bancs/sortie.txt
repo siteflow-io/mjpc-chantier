@@ -1,0 +1,4 @@
+OK  6.6.2 (avant) : « Sauter à la fin » fait tomber la page (ReferenceError editForm) — ["editForm is not defined"]
+OK  6.6.3 : « Sauter à la fin » affiche « Terminé ! », 0 erreur JS — {"termine": true, "err": []}
+OK  0 sortie du navigateur (base, livrée) — [[], []]
+BANC UNIQUE : VERT (0 échec)

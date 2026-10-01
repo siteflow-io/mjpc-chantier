@@ -10071,3 +10071,29 @@ Réponds-lui par un mot (« base aménagée » ou « 20 ») et elle code ④.
 01/10/2026 09:35 MEMO
 
 ---
+
+## TOUR 314 — Paul
+
+Texte de Paul, mot pour mot :
+
+> je n'ai rien compris. pour l'appariement, ça part dans la dette vivante du coup, après le 4.
+
+---
+
+## TOUR 314 — Claude (conscience n°12)
+
+DETTE VIVANTE DE LA CONVERSATION (après ④, dans l'ordre) : ② bis (QCM 7.7.1, dette n°12 · 83) → suppression finale de Banksy / Pythagore / Hergé → purge de rentrée → import des quatre classes → appariement de l'emploi du temps (4 HUGO → 4e Victor Hugo, 4 TURING → 4e Turing, les 3e). Question 162 reformulée simplement (note sur 10 ou sur 20 ; proposition : sur 10). Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Pris : l'appariement de l'emploi du temps part dans la dette vivante. **La liste, dans l'ordre, après ④** : ② bis (le QCM ne recrée plus les classes) → tu supprimes Banksy, Pythagore, Hergé une dernière fois → la purge de rentrée (les codes de l'an dernier) → tu importes tes quatre classes → l'emploi du temps : « 4 HUGO » vers 4e Victor Hugo, « 4 TURING » vers 4e Turing, les deux 3e vers les leurs. Je la reposerai telle quelle au moment venu.
+
+Et la question de l'exécutante, plus simplement — c'est tout ce qu'elle te demande :
+
+144. Quand tu corriges la dictée d'un élève **aménagé**, l'écran te montre sa note **sur 10**. Mais au moment où tu enregistres, le site transforme cette note **en note sur 20**, et c'est le sur 20 qu'il garde et qu'il affiche sur sa carte. Elle te demande : **on garde la note sur 10, celle que tu as vue** — ou la note sur 20 ? Je te propose **sur 10** : c'est ce que tu as validé, et c'est ce que la fiche de l'élève doit dire.
+
+Réponds-lui « sur 10 » (ou « sur 20 »), et elle code ④.
+
+01/10/2026 09:30 MEMO
+
+---

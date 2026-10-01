@@ -11066,3 +11066,30 @@ Puis « continuer » à l'exécutante pour **L3** (M qui s'adapte, clavier rédu
 01/10/2026 21:58 MEMO
 
 ---
+
+## TOUR 351 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Livré
+
+---
+
+## TOUR 351 — Claude (conscience n°12)
+
+Audit de `LIVRAISONS/DICTEE-CORRECTION/L3/` : diff 23/36 depuis L2, 6.7.0-L3, `typeAdapteM` / `preselectionRapide` / `motJuste`, touches P/E retirées (0), `RapideGlobal` jamais appelée (code mort : registre n°12 · 97) ; bancs rejoués (geste L3 VERT, rouge sur L2 ; fuzz_rapide accordé 0 bug ; S1/S3 sans perte ; vue élève identique) ; dette 96 réglée par elle. Verdict : ça va, promouvable. Déposé : le registre (97) et ce transcript.
+
+Réponse mot pour mot :
+
+Audit de L3 (« M qui s'adapte, le clavier réduit, le mot juste bloqué », `LIVRAISONS/DICTEE-CORRECTION/L3/`), mesuré :
+
+233. **Le fichier** : base = L2 promue (`9053962b…`, vérifiée) → **6.7.0-L3, 741 928 o (+2 356)**, md5 `f5d7685b…` ; 23 lignes retirées, 36 ajoutées ; `node --check` 0 erreur. **Vérifié dans le code** : `typeAdapteM` (apostrophe → E, signe → P, sinon M), `preselectionRapide` (le bouton mis en avant, Entrée le valide), `motJuste` (comparaison sans la casse, accents tels quels) ; **les touches P et E n'existent plus** dans le mode rapide (0 occurrence) ; les boutons restent ; la ligne d'aide dit le nouveau clavier.
+234. **Les bancs, rejoués par moi sur le kit anonymisé** : le banc par le geste **VERT** — M sur un mot → M ; sur un point, « · Ponct. manqu. ↵ » mis en avant, Entrée → P ; M sur une virgule → P ; sur l'apostrophe, « Élision ↵ » mis en avant, Entrée → E ; P et E sur un mot : rien ; G puis le mot juste (avec ou sans majuscule) : refusé, champ ouvert, rien d'écrit ; un autre mot : accepté ; vide : accepté ; même chose dans le mode texte ; **sur L2 ce banc est rouge** ; `fuzz_rapide` accordé au nouveau clavier (3 copies) : 0 bug ; S1 / S3 toujours sans perte ; **vue élève identique** à la 6.6.3.
+235. **Deux choses qu'elle déclare, que je confirme** : (a) une dette déjà là, réglée (n°12 · 96) : dans le mode texte, « Passer » enregistrait le mot déjà tapé ; (b) **l'« ancien écran » que le mandat citait (`RapideGlobal`) n'est appelé nulle part** (0 appel, mesuré) — elle ne l'a pas touché, à raison : c'est du code mort. Je l'inscris au registre comme tel (n°12 · 97 : à retirer, une fois, hors de ce mandat) — pas une dette de cette livraison.
+236. **Verdict : ça va. Tu peux promouvoir L3.** Captures ci-dessus : avant / après sur un point (le bouton mis en avant), et la garde du mot juste refusée.
+
+Tes tests, après promotion (https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?v=6.7.0) : 1) une copie → ⇧R → avance jusqu'à un point : « · Ponct. manqu. ↵ » est encadré ; **Entrée** → l'erreur P ; 2) sur une virgule : **M** → P ; sur une apostrophe : « Élision ↵ » encadré, Entrée → E ; les touches P et E ne font plus rien ; 3) sur un mot : G, tape **le mot juste** → refusé, le champ reste ouvert ; tape ce qu'a écrit l'élève → accepté ; 4) ⇧R (mode texte) → un mot → G → le mot juste → refusé ; « Passer » → l'erreur sans mot. Ton « promeus », puis « continuer » pour **L4** (le reclassement **à blanc** : tu liras son rapport et diras « ok » avant L5).
+
+01/10/2026 22:30 MEMO
+
+---

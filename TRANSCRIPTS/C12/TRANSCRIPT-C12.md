@@ -10947,3 +10947,21 @@ Pour l'exécutante, une ligne à ajouter au bloc que tu lui colles : **« Le kit
 01/10/2026 20:20 MEMO
 
 ---
+
+## TOUR 346 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Ok donne-moi le mandat pour l'exécutant
+
+---
+
+## TOUR 346 — Claude (conscience n°12)
+
+Le mandat « L'écran de correction » (version au sas `MANDATS/MANDAT-DICTEE-CORRECTION.md`, kit anonymisé, dette 94 en L1) reproduit en bloc avec les jetons. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot : le mandat = le fichier déposé, avec les jetons dans la conversation, précédé de : « Le voici, à coller tel quel dans sa conversation (la première ligne, le titre, ne s'applique pas si elle garde la sienne). »
+
+01/10/2026 20:00 MEMO
+
+---

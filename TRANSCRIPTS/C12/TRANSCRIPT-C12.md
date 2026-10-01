@@ -10629,3 +10629,27 @@ Fait, en filière micro — codé, prouvé, déposé au sas (`LIVRAISONS/MICRO-d
 01/10/2026 13:05 MEMO
 
 ---
+
+## TOUR 334 — Paul
+
+Texte de Paul, mot pour mot :
+
+> promeus
+
+---
+
+## TOUR 334 — Claude (conscience n°12)
+
+Promotion micro 6.6.2 (commit 31090d39746f, bit à bit) ; protocole : registre 92 ✔, journal, point de retour, où-trouver-quoi. Test donné ; dette vivante rappelée (③ bis, purge, appariement).
+
+Réponse mot pour mot :
+
+Promu : `correction_dictee.html` 6.6.2, commit `31090d39746f`, **bit à bit** (738 095 o, md5 `0aeb7712…`) ; registre n°12 · **92 ✔** ; journal, point de retour (6.6.1), où-trouver-quoi à jour.
+
+**Ton test** : https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?v=6.6.2 → Accès professeur → sur ta dictée de 3 Dylan Bob, **⧉** → le message « Copie de … (7 réglages copiés, version aménagée comprise ; aucune copie d'élève) » → la copie dans la liste avec « 📘 Aménagée », « Non publiée » → ouvre-la, Préparation → « Paramétrer une version aménagée » : tes trous y sont.
+
+**La dette vivante, ce qui reste** : ③ bis (l'interface du panneau prof : toute la largeur, les boutons ↻ ✕ dans le cadre, « Ouvrir les fiches » filtré sur les fléchés — dettes 87, 88, 89) → la purge de rentrée (les codes de l'an dernier et les dictées de l'an dernier) → l'appariement de l'emploi du temps. Dis « ③ bis » et j'écris le complément pour l'exécutante — ou « directement » et je le fais moi-même comme le micro.
+
+01/10/2026 12:55 MEMO
+
+---

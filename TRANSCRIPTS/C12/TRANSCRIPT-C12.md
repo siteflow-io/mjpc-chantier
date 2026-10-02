@@ -12246,3 +12246,27 @@ Tes tests, après promotion (https://siteflow-io.github.io/monsieurjaipascompris
 02/10/2026 20:05 MEMO
 
 ---
+
+## TOUR 398 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Promeus
+
+---
+
+## TOUR 398 — Claude (conscience n°12)
+
+Promotion 6.7.0-L11 (commit 458756cd94e9, bit à bit) ; protocole : journal, point de retour, où-trouver-quoi. Tests donnés ; L12 ensuite.
+
+Réponse mot pour mot :
+
+Promu : `correction_dictee.html` **6.7.0-L11**, commit `458756cd94e9`, **bit à bit** (795 799 o, md5 `fe8f030b…`) ; journal, point de retour (L9), où-trouver-quoi à jour (aucune dette à marquer : les cinq défauts de route ont été réglés dans la livraison).
+
+**Tes tests** : https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?v=6.7.0 → 1) les Dylan → Préparation → « ✓ Formes acceptées » → clique « cadavres » → tape « cadavre », Entrée : le mot se souligne, « n copies recalculées (ici et dans « … Franklin ») », les notes des 11 Dylan et 3 Franklin remontent ; 2) ✕ sur la pastille : elles redescendent ; refais l'ajout ; 3) mode rapide, sur « cadavres » : G, « cadavre », clique « ✓ forme acceptée (ce texte) » ; le même bouton « ✕ ne plus accepter » l'annule ; 4) le 0 du pavé compose toujours (1 puis 0 = la 10e) ; 5) Réglages : « partagées avec… », « retirer » ; 6) côté élève : « forme acceptée » à la place du retrait, sur sa feuille et dans son autocorrection.
+
+Puis « continuer » à l'exécutante pour **L12** (l'aide « ? » qui suit l'écran, avec les lignes de L11), puis L13 et L14.
+
+02/10/2026 20:10 MEMO
+
+---

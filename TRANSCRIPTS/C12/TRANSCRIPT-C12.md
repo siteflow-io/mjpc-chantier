@@ -11751,3 +11751,25 @@ Si 289-290 te vont, je mets à jour la maquette (v3 : l'écran « Formes accept�
 02/10/2026 14:50 MEMO
 
 ---
+
+## TOUR 378 — Paul
+
+Texte de Paul, mot pour mot :
+
+> sur ta mesure, c'était uniquement le mot cadavre toléré. les autres sont de vraies fautes: fort n'est pas ford, et Souville, nom propre écrit au tableau.
+
+---
+
+## TOUR 378 — Claude (conscience n°12)
+
+Lecture corrigée : seule « cadavre » est une tolérance (11 Dylan + 3 Franklin récupèrent leur point) ; ford/souville sont de vraies fautes. 289/290 en attente de son mot ; maquette v3 ensuite. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Pris, et je corrige ma lecture : **seule « cadavre » est une tolérance** ; « ford » et « souville » sont de vraies fautes (fort ≠ ford ; Souville écrit au tableau) — le A chez les Franklin n'était pas une tolérance, et je n'avais pas à le lire comme telle. Donc, avec la règle du texte : **« cadavre » acceptée une fois → les 11 Dylan et les 3 Franklin récupèrent leur point (1 pour G, 0,5 pour L), rien d'autre ne bouge.** C'est exactement le cas que le mécanisme sert, et pas plus.
+
+Si 289 (la règle du texte, pour tous, rétroactive) et 290 (« Formes acceptées » dans Préparation, le texte cliquable) te vont, je fais la maquette v3 ; puis le cadrage de L9 / L11 / L12 est fini.
+
+02/10/2026 14:55 MEMO
+
+---

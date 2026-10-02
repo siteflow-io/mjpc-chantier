@@ -12025,3 +12025,30 @@ Tes tests, après promotion (https://siteflow-io.github.io/monsieurjaipascompris
 02/10/2026 16:25 MEMO
 
 ---
+
+## TOUR 389 — Paul
+
+Texte de Paul, mot pour mot :
+
+> une autocorrection ne peut pas se faire avant la première heure faite en classe. Donc une fois que l'élève a fait sa coche d'attestation, il attend que je lance la correction. Et quand je lance, pas de rechargement évidemment: ça doit le débloquer directement. par ailleurs, pour le mode adapté. Toutes mes dictées ont le mode, mais apparemment l'adaptation ne s'applique pas: en effet, mes élèves adaptés eprdent des points commme tout le monde. Or, l'app sait sur quels mots ils sont évalués, donc ils doivent être évalués sur ces mots là. ça n'enlève pas le fait que moi, je corrige quand même le reste de leur copie, et qu'à l'autocorrection, ils doivent tout corriger. Mais pour la dictée, ils ne sont pénalisés que sur les mots qu'ils avaient à écrire en dictée aménagée. A cadrer. Promeus L9 et réponds moi.
+
+---
+
+## TOUR 389 — Claude (conscience n°12)
+
+Promotion L9 (commit b8ae096e3fd7, bit à bit ; 99 ✔ ; journal, point de retour, où-trouver-quoi). Dettes 100 (verrou première heure, déblocage en direct) et 101 (note aménagée sur les trous) inscrites. Mesuré : l'écran élève ne lit pas l'heure en direct ; Dylan : 12 trous mode A base 10, 1 copie aménagée corrigée (6/10, 4 erreurs) ; computeNote compte tout. Cadrage 312 (écran d'attente, écoute de l'heure, verrou tombe à la première heure) et 313 (seules les erreurs des trous comptent ; les autres visibles sans coût, « hors dictée aménagée », rétroactif). Questions 312, 313 a/b.
+
+Réponse mot pour mot :
+
+**L9 est promue** : commit `b8ae096e3fd7`, **bit à bit** (773 563 o, md5 `4f0ecbca…`) ; registre n°12 · **99 ✔** ; journal, point de retour (L10b), où-trouver-quoi à jour. Tes tests : 1) ouvre une dictée : « ✓ n copies ont reçu leur identité » ; 2) Réglages → la date de correction ; côté élève, sa liste et sa feuille la montrent ; 3) ↻ sur une copie, rouvre l'élève : « Non, laisser dans la corbeille » ; 4) 🔀 : plus de bandeau. Puis « continuer » pour L11.
+
+**Tes deux demandes, inscrites au registre (n°12 · 100 et 101) et mises en tension avec ce qui existe :**
+
+312. **L'autocorrection attend la première heure (100)** — mesuré : aujourd'hui l'écran d'un élève **ne lit pas l'heure en direct** (il la lit à l'ouverture) ; l'attestation est écrite sur sa copie. Ce que je cadre : après la coche et « Commencer », si **aucune heure n'a encore été lancée** sur cette dictée, l'élève voit un écran d'attente (« Ta correction s'ouvrira quand ton professeur lancera la séance. ») ; **l'écran écoute l'heure** : dès que tu la lances, il bascule tout seul sur l'autocorrection, sans rechargement ; le verrou tombe **à la première heure** : une fois lancée (même close ensuite), l'élève peut continuer plus tard, chez lui. Le bac à sable fait pareil. **Question** : après cette première heure, libre chez lui — c'est bien ça ?
+313. **La note des élèves aménagés (101)** — mesuré : ta dictée des Dylan a une version aménagée (**12 trous**, mode A, base 10), **une copie aménagée corrigée** (notée 6/10, 4 erreurs), les Franklin la même version, 0 copie aménagée encore ; et la copie garde sa trace (④) mais **le calcul compte toutes les erreurs**, dans les trous ou pas — c'est ça qui pénalise. Ce que je cadre : pour une copie aménagée, **seules les erreurs posées sur les mots des trous comptent** (note, forfaits, répétitions — sur la base de la copie, 10) ; **les autres erreurs restent visibles**, posées par toi comme aujourd'hui, et **à corriger dans l'autocorrection**, mais **sans coût**, avec, pour l'élève, une mention — je propose **« hors dictée aménagée »** ; c'est la même mécanique « visible, sans coût » que les formes acceptées (L11), avec un autre motif. Rétroactif sur les copies aménagées déjà corrigées (1 chez les Dylan). Un signe de ponctuation ou un mot en trop hors des trous : sans coût aussi. **Questions** : (a) le mot pour l'élève, « hors dictée aménagée » ? (b) les ponctuations hors trous : sans coût, d'accord ?
+
+Dès tes réponses (312, 313 a/b), je les cadre en L13 (le verrou de l'heure) et L14 (la note aménagée) — et si tu veux les voir avant, une maquette.
+
+02/10/2026 16:35 MEMO
+
+---

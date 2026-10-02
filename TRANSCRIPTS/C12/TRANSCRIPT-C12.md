@@ -11827,3 +11827,26 @@ Dès ton « promeus », j'écris les compléments **L9** (identité et date de c
 02/10/2026 15:05 MEMO
 
 ---
+
+## TOUR 381 — Paul
+
+Texte de Paul, mot pour mot :
+
+> pas compris le 295
+
+---
+
+## TOUR 381 — Claude (conscience n°12)
+
+295 réexpliqué (297 Ctrl+chiffre pris par Chrome, le pavé marche ; 298 la relecture unique des copies à la première ouverture). Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Le 295, plus simplement :
+
+297. **Ctrl + chiffre.** Pour choisir une forme sans pavé numérique, on a prévu « Ctrl + 2 ». Mais dans Chrome, Ctrl + 2 veut déjà dire « aller au 2e onglet » : il est possible que le navigateur le prenne pour lui avant que la page ne le voie. On ne peut pas le prouver au banc (pas d'onglets là-bas). Ça ne te concerne pas : **tu as un pavé numérique, et le pavé marche toujours.** Si un jour tu essaies Ctrl + 2 et que Chrome change d'onglet, tu me le dis, et on choisira une autre touche de secours.
+298. **« n formes retenues ».** La première fois que tu ouvriras une dictée après la promotion, l'app relira **une seule fois** toutes tes copies déjà corrigées (les 107) pour en tirer les formes que tu as recopiées, et te dira « ✓ n formes retenues ». C'est ce qui remplit la liste dès le début — sans ça, elle partirait vide et ne connaîtrait que ce que tu tapes à partir de maintenant. Ça ne change rien aux copies.
+
+02/10/2026 15:10 MEMO
+
+---

@@ -1,0 +1,37 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><style>
+body{margin:0;background:#f7f7f5;color:#1d1d1b;font:16px/1.5 Georgia,serif}
+.container{max-width:760px;margin:0 auto;padding:20px 16px 80px}
+.card{background:#fff;border:1px solid #dadada;border-radius:14px;padding:18px 22px;margin-bottom:14px}
+.top{display:flex;justify-content:space-between;align-items:center}.top b{font-size:1.15rem}
+.muted{color:#6b6b66}.btn{display:inline-block;border:1px solid #dadada;background:#fff;border-radius:10px;padding:8px 14px;font:inherit}
+.btn.primary{background:#2563eb;color:#fff;border-color:#2563eb;font-weight:700;width:100%;text-align:center;padding:12px}
+.attente{text-align:center;padding:36px 16px}.attente .ico{font-size:2.6rem}.attente h2{margin:10px 0 6px}
+.bandeau{background:#fff7e6;border:1px solid #f2d59a;border-radius:12px;padding:12px 16px;display:flex;gap:12px;align-items:center;margin-bottom:12px}
+.bandeau .t{font-size:1.4rem}.bandeau b{color:#8a6d00}
+.amen{background:#eef6ff;border:1px solid #bcd4f5;border-radius:12px;padding:12px 16px;margin-bottom:12px}
+.bar{display:flex;gap:14px;align-items:center;margin:8px 0 14px}.note{font-size:1.5rem;font-weight:700;color:#1a7f37}.prog{flex:1;height:8px;background:#eee;border-radius:4px}.prog i{display:block;height:8px;width:35%;background:#2563eb;border-radius:4px}
+.texte{line-height:2.3;font-size:1.05rem}.case{display:inline-block;min-width:3.2em;height:1.3em;border-bottom:2px solid #b42318;background:#fbeaea;border-radius:4px;vertical-align:middle;margin:0 2px}
+.case.l{border-color:#1d4ed8;background:#e8eefb}.case.ok{border-color:#1a7f37;background:#e6f4ec;color:#1a7f37;font-weight:700;padding:0 6px}
+.hors{display:inline-block;font-size:.72rem;color:#6b6b66;background:#f1f1ee;border-radius:6px;padding:0 6px;vertical-align:middle;margin-left:2px}
+.legende{font-size:.85rem;color:#6b6b66}
+</style></head><body>
+<div class="container" id="E1">
+ <div class="card"><div class="top"><b>Dictée n°1 type brevet (avec révisions), extrait de la lettre de Fritz</b><span class="btn">← Mes dictées</span></div><div class="muted">CHEVALIER Flavie · 3_franklin_aretha</div></div>
+ <div class="card attente"><div class="ico">⏳</div><h2>Ta correction s'ouvrira quand ton professeur lancera la séance.</h2><div class="muted">Tu as lu et coché les consignes. Reste sur cette page : elle s'ouvrira toute seule, sans rien recharger.</div></div>
+</div>
+<div class="container" id="E2" hidden>
+ <div class="card"><div class="top"><b>Dictée n°1 type brevet (avec révisions), extrait de la lettre de Fritz</b><span class="btn">← Mes dictées</span></div><div class="muted">CHEVALIER Flavie · 3_franklin_aretha</div></div>
+ <div class="bandeau"><div class="t">🏠</div><div><b>Tu es hors classe : tu as 45 minutes.</b><div class="muted">Il te reste <b>44 min</b>. Après, tu pourras revenir une autre fois.</div></div></div>
+ <div class="card"><div class="bar"><div class="note">5 /5</div><div><div class="muted">0 corrigée sur 6 · 0 essai raté</div><div class="prog"><i style="width:0"></i></div></div><span class="btn">🔄</span></div>
+ <div class="legende">Clique une case, tape le bon mot. <span style="color:#b42318">G grammaire</span> · <span style="color:#1d4ed8">L lexique</span> · <span style="color:#6b21a8">I illisible</span></div>
+ <p class="texte">Le 2 à Saint-Laurent, nous avons <span class="case"></span> le signal de l'alerte. On est venu nous chercher avec des véhicules, et on nous a <span class="case"></span> jusqu'à quelques kilomètres du front de Verdun. Vous ne pouvez pas vous imaginer les premières impressions que nous avons ressenties. La puanteur de <span class="case l"></span> montait des tranchées…</p></div>
+</div>
+<div class="container" id="E3" hidden>
+ <div class="card"><div class="top"><b>Dictée n°1 type brevet (avec révisions), extrait de la lettre de Fritz</b><span class="btn">← Mes dictées</span></div><div class="muted">ZZTEST ALPHA Anna · 3_dylan_bob · dictée aménagée</div></div>
+ <div class="amen"><b>J'ai corrigé toute ta copie : tu dois faire l'autocorrection complète, mais la note ne compte que pour les mots que tu avais à compléter le jour de la dictée.</b></div>
+ <div class="card"><div class="bar"><div class="note">5 /5</div><div><div class="muted">2 corrigées sur 7 · 1 essai raté · <b>note de dictée : 7 / 10</b> (sur les 12 mots à compléter)</div><div class="prog"><i style="width:28%"></i></div></div><span class="btn">🔄</span></div>
+ <div class="legende">Clique une case, tape le bon mot. Les cases marquées <span class="hors">ne compte pas</span> sont à corriger aussi, mais sans retrait.</div>
+ <p class="texte">Le 2 à Saint-Laurent, nous avons <span class="case ok">entendu</span> le signal de l'alerte. On est venu nous chercher avec des véhicules, et on nous a <span class="case"></span> jusqu'à quelques <span class="case"></span><span class="hors">ne compte pas</span> du front de Verdun. Vous ne pouvez pas vous imaginer les premières impressions que nous avons <span class="case l"></span><span class="hors">ne compte pas</span>. La puanteur de <span class="case ok">cadavres</span> montait des tranchées…</p></div>
+</div>
+<script>var e=location.hash.replace('#','')||'E1';['E1','E2','E3'].forEach(function(i){document.getElementById(i).hidden=(i!==e)})</script>
+</body></html>

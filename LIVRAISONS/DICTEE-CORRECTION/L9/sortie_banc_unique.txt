@@ -1,0 +1,18 @@
+[banc_L5_geste] code 0 — 13 s
+  OK    modes
+  OK    fc1
+  OK    fc2
+  OK    fr
+  OK    gr
+  OK    banc_L1_geste
+  OK    banc_L2_geste
+  OK    banc_L3_geste
+  OK    banc_L5_geste
+  OK    banc_L6_geste
+  OK    banc_L6b_geste
+  OK    banc_L7_geste
+  OK    banc_L8_geste
+  OK    banc_L10_geste
+  OK    banc_L9_geste
+  OK    eleve
+BANC UNIQUE : VERT (0 échec)

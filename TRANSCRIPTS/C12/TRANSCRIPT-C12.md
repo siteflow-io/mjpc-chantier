@@ -11643,3 +11643,30 @@ Je fais maintenant **la maquette** : la case avec le 0 et « forme acceptée »,
 02/10/2026 14:25 MEMO
 
 ---
+
+## TOUR 374 — Paul
+
+Texte de Paul, mot pour mot :
+
+> la touche ? (maj , ) doit servir à l'aide, pas à Illisible, qui lui est la touche i. attention, l'aide contextuelle doit s'adapter au contexte justement. et quel que soit l'écran sur lequel je suis dans n'importe quel état de l'app, je dois avoir ce ? quelque part.
+
+---
+
+## TOUR 374 — Claude (conscience n°12)
+
+Pris : « ? » = l'aide, « i » = illisible, aide contextuelle partout. Maquette T374 (md5 dd040c7b3295) : forme acceptée (0 du pavé, bouton, bascule, Réglages, recalcul, « forme acceptée » chez l'élève, liste « acceptée » / « acceptée chez les Dylan »), aide contextuelle (?, F1, bouton, Échap, suit l'écran), i = illisible ; banc par le geste VERT 9/9 ; captures contrôlées ; déposée au sas.
+
+Réponse mot pour mot :
+
+Pris : **« ? » (Maj + ,) ouvre l'aide ; « i » seul fait Illisible** (l'alias « ? » d'Illisible est retiré) ; l'aide suit le contexte ; le « ? » est présent sur tous les écrans du professeur, dans tous les états (y compris pendant une case ouverte, où la touche « ? » s'écrit dans la case : là, c'est le bouton ou F1).
+
+La maquette (ci-dessus, `T374-maquette-forme-acceptee-aide-v1.html`, md5 `dd040c7b3295`, pièce T374 au sas) — un fichier seul, rien ne part :
+
+283. **Ce qu'elle joue** : le mode rapide sur « cadavres », avec la liste des formes déjà vues (« cadavre » ×7, **« acceptée chez les Dylan »**). Tape **G**, prends « cadavre » (pavé 1) : l'erreur coûte 1 (note 19). Refais **G**, tape ou prends « cadavre », puis **0 du pavé** (ou le bouton « ✓ forme acceptée (toute la dictée) ») : la note remonte à 20, **l'élève lit « forme acceptée »** à côté de son erreur, la liste marque « cadavre » **« acceptée »**, et l'onglet **Réglages** la liste avec « retirer » (elle coûte à nouveau pour toutes les copies). Le même **0** sur une forme acceptée l'annule (bascule). **« ? »** (ou **F1**, ou le bouton en haut à droite) : l'aide de l'endroit où tu es — « sur un mot », « la case », « fin de copie », « Réglages » — elle change toute seule quand tu changes d'écran ; **Échap** la ferme. **« i »** = Illisible.
+284. **Prouvé par le geste** (banc, 1366 × 768) : 9 vérifications vertes, 0 erreur. Captures écran entier ci-dessus : l'aide ouverte sur la case ; la liste avec « acceptée ».
+
+Joue-la ; si ça va, le cadrage de L9 (identité, date de correction, le « non » du bandeau), L11 (forme acceptée) et L12 (l'aide) est fini et j'écris les trois compléments.
+
+02/10/2026 14:45 MEMO
+
+---

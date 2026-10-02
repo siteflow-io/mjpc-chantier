@@ -11589,3 +11589,32 @@ Quatre questions, une réponse courte chacune :
 02/10/2026 14:05 MEMO
 
 ---
+
+## TOUR 372 — Paul
+
+Texte de Paul, mot pour mot :
+
+> 273: une fois pour toutes. 274. oui. en revanche sur le type de modification, je m'en fiche, non? D'ailleurs, un télescopage que j'ai vu: un élève sur lequel j'ai entré une correction et en fait je me rends compte que je n'étais pas sur la bonne copie numérique, et que je change grâce au bouton d'interversion, après j'ai l'alerte "une version de cette copie a été supprimée, la restaurer? ". Et ce bandeau d'ailleurs n'a aucune autre sortie que "restaurer". je devrais pouvoir répondre non et donc annuler l'alerte. 275. Non, je veux pouvoir l'annuler pour la classe entière. Donc ce n'est pas copie par copie, comme ta question le suggère. j'attends ta proposition. sachant que ça va impacter la capitalisation, forcément. 276. plutot: forme acceptée. parce que c'est ce cas précis.
+
+---
+
+## TOUR 372 — Claude (conscience n°12)
+
+Pris 273 (une date par dictée), 274 (sans « par »), 276 (« forme acceptée ») ; dette n°12 · 99 inscrite (bandeau sans « non », réveillé par l'échange — mesuré : un seul bouton, GESTES_EFFACEMENT.echanger). Proposition 277-280 : une règle de la dictée (mot, forme) acceptée pour toutes les copies, rétroactive ; geste 0 du pavé / Ctrl+0 / bouton ; bascule ; Réglages ; la capitalisation marque « acceptée » et « acceptée chez les Dylan » ; l'élève lit « forme acceptée ». Maquette proposée. Déposé : le registre et ce transcript.
+
+Réponse mot pour mot :
+
+Pris : **273** une date pour toute la dictée ; **274** « créée le », « modifiée le » — sans le « par » ; **276** « forme acceptée ». Et ton télescopage est une dette, inscrite (**n°12 · 99**) : mesuré, le bandeau « une copie de … a été effacée … » n'a qu'un bouton, « La restaurer » ; et l'**échange** de copies range l'ancienne version dans les effacées comme un effacement, d'où le bandeau. À régler avec L9 : un bouton **« Non, laisser dans la corbeille »** qui ferme le bandeau (la version reste en corbeille), et l'échange — un geste voulu — ne réveille plus ce bandeau.
+
+**275 — « forme acceptée », pour la classe entière : ma proposition.**
+
+277. **Ce que c'est** : une règle de la dictée, pas d'une copie — « sur le mot *cadavres*, la forme *cadavre* est acceptée » ; elle s'applique **à toutes les copies de la dictée, déjà corrigées ou à venir** : l'erreur reste visible (même type, même couleur), **coûte 0**, l'élève lit « forme acceptée », les notes des copies déjà corrigées sont recalculées sur place.
+278. **Le geste** : quand tu poses l'erreur (G ou L) et que la forme est dans la case — tapée ou prise dans la liste — au lieu de valider par Entrée, tu valides par **0 du pavé numérique** (ou Ctrl + 0) = « forme acceptée pour toute la dictée » ; en mode texte, le même 0, ou le bouton « ✓ forme acceptée » à côté de « Valider ». Le même geste sur une forme déjà acceptée l'annule (bascule). Dans **Réglages** de la dictée, la liste des formes acceptées, pour les relire ou en retirer une.
+279. **La capitalisation suit** : dans la liste des formes déjà vues, une forme acceptée dans cette dictée est marquée « acceptée » ; une forme acceptée dans une **autre** dictée (les Dylan) est marquée « acceptée chez les Dylan » et le 0 l'accepte ici d'un coup — tu ne refais pas le raisonnement, tu le reprends.
+280. **Ce que l'élève voit** : l'erreur, son type, et « forme acceptée » — rien d'autre. Dans l'autocorrection, elle reste à corriger (c'est l'orthographe du texte), mais sans retrait.
+
+Si 277-280 te vont, je te fais la maquette (la case avec le 0, la liste avec « acceptée », le Réglages), puis le complément L9 (identité, date de correction, le « non » du bandeau) et L11 (formes acceptées).
+
+02/10/2026 14:15 MEMO
+
+---

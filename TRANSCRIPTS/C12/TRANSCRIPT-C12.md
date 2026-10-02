@@ -11773,3 +11773,28 @@ Si 289 (la règle du texte, pour tous, rétroactive) et 290 (« Formes acceptée
 02/10/2026 14:55 MEMO
 
 ---
+
+## TOUR 379 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok on y va
+
+---
+
+## TOUR 379 — Claude (conscience n°12)
+
+Maquette v3 (md5 7ad88c29c595) : onglet « Préparation — formes acceptées » (texte cliquable, fenêtre par mot, ajouter/retirer, garde du mot juste, soulignement vert + compte), la règle du texte partagée et rétroactive (0 en correction, Réglages « de ce texte »), aide contextuelle ; banc VERT 7/7 ; capture contrôlée ; déposée T379.
+
+Réponse mot pour mot :
+
+La **v3** (ci-dessus, md5 `7ad88c29c595`, pièce T379 au sas) :
+
+291. **Ce qu'elle ajoute** : l'onglet **« Préparation — formes acceptées »** : le texte à ses places, tu cliques « cadavres », une fenêtre « Formes acceptées pour « cadavres » » : tape *cadavre*, Entrée — le mot est souligné en vert avec le compte, le journal dit « d'avance : *cadavre* acceptée pour « cadavres », dans toutes les dictées de ce texte — les copies déjà corrigées sont recalculées » ; ✕ retire ; le mot juste est refusé ; Échap ferme. En **correction**, prendre *cadavre* ne coûte alors rien, la liste la marque « acceptée », l'élève lit « forme acceptée ». Le **0** en correction pose la même règle (« dans cette dictée et dans « Dictée n°1 — lettre de Fritz », même texte ; les copies recalculées ici et là-bas »), et elle apparaît aussitôt dans Préparation. **Réglages** : « formes acceptées de ce texte — partagées avec… », retirer = pour tous. L'aide suit (« Préparation — formes acceptées »).
+292. **Prouvé par le geste** (banc, 1366 × 768) : 7 vérifications vertes, 0 erreur. Capture écran entier ci-dessus.
+
+Joue-la. Si ça va, **le cadrage de L9 (identité, date de correction, le « non » du bandeau), L11 (formes acceptées : la règle du texte, le 0, Préparation, Réglages) et L12 (l'aide « ? ») est fini**, et j'écris les trois compléments — à ton mot.
+
+02/10/2026 15:10 MEMO
+
+---

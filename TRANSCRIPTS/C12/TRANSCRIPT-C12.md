@@ -12147,3 +12147,29 @@ Si ça te va, réponds « . du pavé » : je corrige le complément L11 au sas (
 02/10/2026 18:40 MEMO
 
 ---
+
+## TOUR 394 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Non ce n'est pas naturel de mettre un point pour forme acceptée. Trouve autre chose
+
+---
+
+## TOUR 394 — Claude (conscience n°12)
+
+Trois touches sans télescopage proposées : « + » du pavé (recommandée), Ctrl+Entrée, Maj+Entrée. Attend le choix. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Ce que le clavier permet sans télescopage, dans la case (les lettres y sont du texte, les chiffres du pavé des numéros) :
+
+320. **« + » du pavé** — la grande touche à droite des chiffres, la main déjà sur le pavé : « + » = *je l'accepte* (une tolérance en plus). Rien d'autre ne l'utilise ; un élève n'écrit pas « + » dans une dictée.
+321. **Ctrl + Entrée** — Entrée valide, Ctrl + Entrée valide *en acceptant* : la même main, un modificateur ; connu ailleurs (envoyer un message).
+322. **Maj + Entrée** — pareil que 321, avec Maj.
+
+Ma recommandation : **le « + » du pavé** — une seule touche, là où tu es déjà. Dis « + », « Ctrl+Entrée » ou « Maj+Entrée », et je corrige le complément L11 au sas et te donne la phrase pour l'exécutante.
+
+02/10/2026 18:45 MEMO
+
+---

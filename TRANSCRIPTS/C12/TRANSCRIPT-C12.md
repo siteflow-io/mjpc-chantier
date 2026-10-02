@@ -11894,3 +11894,25 @@ Réponse mot pour mot : le bloc = le fichier déposé, précédé de « Les troi
 02/10/2026 15:25 MEMO
 
 ---
+
+## TOUR 384 — Paul
+
+Texte de Paul, mot pour mot :
+
+> tu em donnes un complément mais je n'ai pas donné le mandat d'origine à l'exécutant, si? Sinon tu mets tout au sas, et je lui dis d'aller voir là bas
+
+---
+
+## TOUR 384 — Claude (conscience n°12)
+
+Réponse : le mandat d'origine a été collé au tour 346 (L1→L8, L10 livrées avec) ; tout est au sas (MANDATS/) ; une ligne pour l'exécutante. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Si : tu lui as collé le mandat d'origine hier (tour 346), c'est avec lui qu'elle a livré L1 → L8 et L10 — les règles, les interdits, les jetons et le kit y sont. Et tout est au sas, dans `MANDATS/` : le mandat (`MANDAT-DICTEE-CORRECTION.md`), le complément L10 (`COMPLEMENT-DICTEE-CORRECTION-L10.md`) et les trois nouveaux (`COMPLEMENT-DICTEE-CORRECTION-L9-L11-L12.md`).
+
+Tu peux donc lui écrire une seule ligne : **« Les compléments L9, L11, L12 sont au sas : `MANDATS/COMPLEMENT-DICTEE-CORRECTION-L9-L11-L12.md` — lis-les, puis commence par L9. »**
+
+02/10/2026 15:35 MEMO
+
+---

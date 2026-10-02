@@ -11916,3 +11916,29 @@ Tu peux donc lui écrire une seule ligne : **« Les compléments L9, L11, L12 so
 02/10/2026 15:35 MEMO
 
 ---
+
+## TOUR 385 — Paul
+
+Texte de Paul, mot pour mot :
+
+> question: si je lance l'heure d'autocorrection, pour simuler, et voir ce qu'un élève voit, ça impacte quoi? je peux le faire sans conséquences?
+
+---
+
+## TOUR 385 — Claude (conscience n°12)
+
+Mesuré : lancer l'heure écrit `heure` {debut, fin, classe} + recalcule `binomes` ; côté élève pendant l'heure : dictée corrigée, analyse, « Ma dictée autocorrigée » cachées, « Mes exercices » absent, statut « Pas fini » à la clôture ; clôturer/prolonger, pas d'annulation. Réponse : pas sans conséquence sur une vraie dictée ; le bac à sable ZZTEST pour simuler ; un code élève dans un autre navigateur pour voir la vue hors heure. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Mesuré dans la correction de dictée (6.7.0-L10b) — « lancer l'heure » sur une dictée fait trois choses, et ce n'est pas rien :
+
+300. **Ce que ça écrit** : `heure` sur la dictée (début = maintenant, fin = l'heure que tu donnes) **et les binômes** de la classe (recalculés d'après les copies : l'élève qui a le moins d'erreurs avec celui qui en a le plus, etc.). Il faut une heure de fin dans le futur.
+301. **Ce que ça change chez les élèves, aussitôt** : pour un élève qui ouvre son autocorrection **pendant l'heure** (ou jusqu'à 6 h avant son début), **la dictée corrigée, l'analyse et « Ma dictée autocorrigée » sont cachées jusqu'à la fin de l'heure**, et le bouton « Mes exercices » n'apparaît pas ; la colonne « Statut » du suivi compte sur cette fenêtre (« Pas fini, à terminer » à la clôture). Un élève qui s'autocorrige chez lui ce soir, pendant ton essai, aurait donc un écran différent de celui prévu.
+302. **Ce qui l'arrête** : « Clôturer » (`cloture: true`, l'heure est close ; le site garde « Dernière heure close à … »), « Prolonger » (+10 min). Il n'y a pas de bouton « annuler comme si rien ne s'était passé » : après clôture, `heure` reste sur la dictée avec son historique, et les binômes recalculés restent.
+
+**Donc : non, pas sans conséquence sur une vraie dictée** — pas tant que des élèves peuvent s'y connecter. **Sans conséquence, c'est le bac à sable** : « Créer le bac à sable » sur l'accueil fait une classe ZZTEST avec deux dictées et six élèves et leurs codes ; là, tu lances l'heure, tu ouvres un élève (son code) dans un autre onglet ou sur ton téléphone, tu vois exactement ce qu'il voit, et rien de réel n'est touché. Si tu veux voir **ta** dictée des Dylan du point de vue d'un élève sans lancer l'heure : son code dans un autre navigateur suffit (la vue élève, hors heure, est celle qu'ils ont aujourd'hui).
+
+02/10/2026 16:00 MEMO
+
+---

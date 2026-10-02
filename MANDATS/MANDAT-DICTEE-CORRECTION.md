@@ -77,6 +77,8 @@ Mode d'emploi : `LISEZMOI.md`. Faux hub (`bench/fakefb.js`), aucun accès au vra
 
 
 
+> **AJOUT DU 02/10 (après L7) : L7 a été promue sous la forme L7b = L7 + L6b (la conscience l'a rebasée) ; la base de L8 est la 6.7.0-L7b en ligne (748 284 o, md5 `65d6bd9fdb1f72e73a254c450007bcb5`), vérifiée à la commande.**
+
 > **AJOUT DU 02/10 (après L6) — dette n°12 · 98, réglée par la conscience en micro L6b** : en mode rapide, **Entrée = correct, mot suivant, partout, même sur un signe** (comme avant L3) ; le bouton mis en avant dit « (M) » et **M le valide**. L3 avait fait d'Entrée la touche de validation : chaque signe traversé par Entrée devenait une P (Paul : « gros télescopage »). À ta prochaine livraison : ta base est la **6.7.0-L6b** promue (md5 à la commande), tu accordes `banc_L3_geste.py` (« Entrée sur un signe → P » devient « Entrée avance, M → P ») et tu gardes `fuzz_rapide.py` tel qu'accordé en L6b.
 
 ## LES RÈGLES DE CE MANDAT

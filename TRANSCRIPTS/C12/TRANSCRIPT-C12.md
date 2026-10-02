@@ -12125,3 +12125,25 @@ La phrase pour l'exécutante : **« Après L11 et L12, les compléments L13 et L
 02/10/2026 17:55 MEMO
 
 ---
+
+## TOUR 393 — Paul
+
+Texte de Paul, mot pour mot : (il colle la réponse de l'exécutante, L11 codée non déposée, dont le point 258 : « le 0 du pavé ne sert plus jamais à composer un numéro ; les formes n° 10, 20, 30 ne se prennent plus au pavé, seulement au clic ; 1 puis 0 accepte la n° 1 au lieu de prendre la n° 10 ; je laisse ainsi, fidèle à la maquette, ou tu veux autre chose ? »)
+
+---
+
+## TOUR 393 — Claude (conscience n°12)
+
+Télescopage reconnu (faute de la maquette : 14 formes, le n° 10 invisible). Proposition 319 : le 0 reste un chiffre ; « forme acceptée » = la touche « . » du pavé (NumpadDecimal) ; même mécanisme. Attend le mot de Paul pour corriger le complément L11 au sas. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Sa question 258 est un vrai télescopage, et c'est moi qui l'ai laissé passer dans la maquette (14 formes : le cas n° 10 ne s'y voyait pas) : **le 0 du pavé ne peut pas être à la fois « forme acceptée » et le chiffre des numéros 10, 20, 30…** Non, on ne laisse pas ainsi — une forme qui ne se prend plus qu'au clic, c'est exactement ce que le pavé devait éviter.
+
+319. **Ma proposition** : le 0 redevient **un chiffre, toujours** (1 puis 0 = la forme n° 10, comme avant) ; et « forme acceptée » prend **la touche « . » du pavé numérique** (la touche décimale, à droite du 0 — l'app la reconnaît par sa place, point ou virgule) : tu composes le numéro, ou tu tapes la forme, puis **« . »** = acceptée pour ce texte ; le même « . » l'annule ; « . » seul reprend la forme acceptée ailleurs. Le bouton « ✓ forme acceptée » reste. Rien d'autre ne change dans L11 — c'est une touche qui change, pas le mécanisme.
+
+Si ça te va, réponds « . du pavé » : je corrige le complément L11 au sas (et l'aide « ? » de L12 suivra), et tu lui dis : **« Pour 258 : non — le 0 reste un chiffre ; "forme acceptée" passe sur la touche « . » du pavé (NumpadDecimal) ; le complément L11 est corrigé au sas, relis-le, puis continue. »** Si tu préfères une autre touche, dis laquelle.
+
+02/10/2026 18:40 MEMO
+
+---

@@ -11382,3 +11382,27 @@ Tes tests, après promotion (https://siteflow-io.github.io/monsieurjaipascompris
 02/10/2026 12:55 MEMO
 
 ---
+
+## TOUR 363 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Promeus
+
+---
+
+## TOUR 363 — Claude (conscience n°12)
+
+Promotion 6.7.0-L8 (commit 16368f9d77cf, bit à bit) ; protocole : journal, point de retour, où-trouver-quoi ; mandat marqué complet. Tests donnés ; questions 257/258/260 reposées ; dette vivante rappelée.
+
+Réponse mot pour mot :
+
+Promu : `correction_dictee.html` **6.7.0-L8**, commit `16368f9d77cf`, **bit à bit** (755 719 o, md5 `a6c0ce56…`) ; journal, point de retour (L7b), où-trouver-quoi à jour ; le mandat au sas est marqué **entièrement livré et promu** (L1 → L8).
+
+**Tes tests** : https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?v=6.7.0 → 1) une copie en mode texte → tape les premières lettres d'un mot unique : son menu s'ouvre ; G, L, M, I ou A au clavier ; 2) tape « le » : les « le » clignotent, la bande les montre ; flèches, puis Entrée ; 3) Échap ; les flèches déplacent le curseur de mot en mot (la ponctuation sautée), ↑ ↓ de ligne en ligne ; Entrée ouvre ; 4) pose une erreur, Ctrl+Z : elle disparaît.
+
+**Ce qui reste, dans l'ordre** : L9 (l'identité et la date de correction des copies), L10 (la capitalisation des formes fautives), L11 (l'erreur sans coût) — j'écris les trois dès tes réponses : **257** (a) « même texte » ? (b) un chiffre seul = un choix ? · **258** une date par dictée, ou aussi par copie ? · **260** (a) la touche 0 ? (b) « signalé, sans retrait » ? Puis la dette vivante : ③ bis (l'interface du panneau prof), la purge de rentrée, l'appariement de l'emploi du temps, le code mort (97).
+
+02/10/2026 12:55 MEMO
+
+---

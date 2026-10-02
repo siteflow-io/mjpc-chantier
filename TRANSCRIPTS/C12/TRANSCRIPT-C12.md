@@ -11850,3 +11850,29 @@ Le 295, plus simplement :
 02/10/2026 15:10 MEMO
 
 ---
+
+## TOUR 382 — Paul
+
+Texte de Paul, mot pour mot :
+
+> en fait, sans pavé numérique c'est sur téléphone. et sur téléphone, controle 2 ne marche pas de toute façon. Donc en réalité, pas besoin du ctrl 2. en plus, au lieu de ctrl 2, si jamais le clavier n'avait pas de pavé numérique, ce serait les chiffres de la ligne du haut (&é"'(...) qui eux sont activables par maj puis la touche de la ligne du haut. Donc on enlève ctrl 2, ça ne fera pas de conflit. ok pour le 298. promeus, avec la modif que j'ai dite.
+
+---
+
+## TOUR 382 — Claude (conscience n°12)
+
+Mise en tension : Maj + touche du haut = taper un chiffre dans la case (AZERTY) → pas de choix par Maj ; règle : le pavé seul, sinon le clic. L10b (Ctrl+chiffre retiré, 3 lignes) déposée, banc L10b VERT, L6b, vue élève ; promue (commit c80f54e4e58c, bit à bit, 768 116 o, md5 bf3f2c03…) ; journal, point de retour, où-trouver-quoi. Tests donnés ; compléments L9/L11/L12 ensuite.
+
+Réponse mot pour mot :
+
+D'accord sur le fond, et une précision mesurée avant d'appliquer : sans pavé, **Maj + touche du haut, c'est justement comme ça qu'on tape un chiffre dans la case** sur un clavier français (« 3 » = Maj + "). Donc Maj + chiffre ne peut pas servir de choix sans télescoper le texte. Comme tu dis que sans pavé c'est le téléphone, **la règle est simple : le pavé seul choisit ; sans pavé, le clic sur la ligne** — et rien d'autre.
+
+299. **Appliqué et promu** : **L10b = L10 sans « Ctrl + chiffre »** (3 lignes : la lecture retirée, l'infobulle et la ligne d'aide nettoyées), déposée au sas à côté de L10, `node --check` 0 erreur, le banc L10 rejoué avec « Ctrl + 2 ne fait rien » : **VERT**, L6b vert, vue élève identique. **Promue** : commit `c80f54e4e58c`, **bit à bit** (768 116 o, md5 `bf3f2c03…`) ; journal, point de retour (L8), où-trouver-quoi à jour.
+
+**Tes tests** : https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?v=6.7.0 → 1) ouvre les Dylan : « ✓ n formes retenues » ; 2) une copie des Franklin → mode rapide → G sur un mot souvent raté : la liste des formes des Dylan, la plus fréquente en 1 ; 3) son numéro au pavé : prise ; 10 formes ou plus : 1 attend, puis le second chiffre ; Entrée prend le numéro en cours ; Échap l'efface ; 4) « 3 » de la rangée du haut : il s'écrit ; 5) une forme nouvelle : à la copie suivante elle est dans la liste ; 6) mode texte : pareil.
+
+Maintenant j'écris **L9, L11, L12** en un bloc (le cadrage est clos, la maquette v3 est le noyau).
+
+02/10/2026 15:15 MEMO
+
+---

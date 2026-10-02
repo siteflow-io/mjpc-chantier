@@ -11942,3 +11942,30 @@ Mesuré dans la correction de dictée (6.7.0-L10b) — « lancer l'heure » sur 
 02/10/2026 16:00 MEMO
 
 ---
+
+## TOUR 386 — Paul
+
+Texte de Paul, mot pour mot :
+
+> oui, c'est ce que j'ai fait mais taant que je ne lance pas la dictée, j'ai ça comme écran (en tant que l'élève). par ailleurs je trouve bizarre que le fait que louise soit connectée ne mette pas automatiquement l'autre élève. J'ai coché la case aide entre pairs.
+
+(capture : vue élève « Disponible après la séance » ; seconde moitié : écran de code)
+
+---
+
+## TOUR 386 — Claude (conscience n°12)
+
+Mesuré : « Disponible après la séance » = `copyPublishedAt` absent (Publier les copies, onglet Données), indépendant de l'heure ; la tablette en deux moitiés = deux élèves, deux codes, indépendantes ; « aide entre pairs » = proposition à l'élève qui a fini d'aider celui qui a le plus d'erreurs ; binômes calculés au lancement de l'heure pour le suivi. Conseil : le bac à sable. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Mesuré, les deux :
+
+303. **« Disponible après la séance »** ne dépend pas de l'heure : la copie d'un élève est **ouvrable quand tu as publié les copies** — « Publier les copies » dans l'onglet Données (ce geste pose la date de publication) ; tant que ce n'est pas fait, l'élève voit sa dictée avec « Disponible après la séance » et ne peut rien ouvrir, heure lancée ou pas. C'est voulu : tu corriges tranquillement, tu publies quand tout est prêt. **Pour voir ce que voit Louise, il faut donc publier** (ou faire l'essai dans le bac à sable, dont la dictée A est déjà publiée).
+304. **La seconde moitié ne se remplit pas toute seule, et ce n'est pas « aide entre pairs »** : la tablette en deux moitiés (lot 3b) est faite pour **deux élèves assis à la même table**, chacun avec son code — chaque moitié est une app élève complète et indépendante, qui garde son élève 70 minutes. « Aide entre pairs », c'est autre chose : **quand un élève a fini** son autocorrection, l'app lui propose d'aller aider le camarade qui a le plus d'erreurs restantes (une proposition sur son écran, pas une connexion automatique de l'autre moitié). Les **binômes** du suivi (la paire côte à côte dans ton tableau) sont calculés **au lancement de l'heure**, pour ton tableau de suivi, pas pour remplir la tablette.
+
+Donc, dans ta capture, tout fait ce qu'il doit : Louise connectée, sa dictée pas encore publiée, l'autre moitié qui attend l'autre élève. Pour simuler la séance entière sans toucher les Dylan : le bac à sable (deux dictées, six codes), lance l'heure là, deux moitiés, deux codes.
+
+02/10/2026 16:05 MEMO
+
+---

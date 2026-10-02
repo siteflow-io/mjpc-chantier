@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8"><title>Maquette — forme acceptée, et l'aide « ? » qui suit l'écran (v3)</title>
+<style>
+:root{--bg:#f7f7f5;--card:#fff;--line:#dadada;--txt:#1d1d1b;--sub:#6b6b66;--muted:#9a9a94;--g:#b42318;--l:#1d4ed8;--ok:#1a7f37;--hl:#fff3bf;--hl2:#ffe08a;--acc:#0b7a4b}
+body{margin:0;background:var(--bg);color:var(--txt);font:16px/1.45 Georgia,"Times New Roman",serif}
+.wrap{max-width:1300px;margin:0 auto;padding:12px 24px 20px;display:grid;grid-template-columns:1fr 380px;gap:18px}
+.top{grid-column:1/3;display:flex;align-items:center;gap:14px}
+.top h1{font-size:1.15rem;margin:0;flex:1}.top .sub{color:var(--sub);font-size:.9rem}
+.aidebtn{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:#fff;font:inherit;font-weight:700;cursor:pointer}
+.aidebtn:hover{background:var(--hl)}
+.onglets{display:flex;gap:8px;margin:4px 0 10px}.onglets button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 14px;font:inherit;cursor:pointer}.onglets button.on{background:#1d4ed8;color:#fff;border-color:#1d4ed8}
+.head{display:flex;align-items:center;gap:16px;background:#f1f1ee;border-radius:14px;padding:10px 18px;margin-bottom:8px}
+.note{font-size:1.6rem;font-weight:700;color:var(--ok)}
+.ctx{text-align:center;color:var(--sub);margin:8px 0 4px}.ctx b{color:var(--txt)}
+.mot{background:var(--card);border:1px solid var(--line);border-radius:14px;text-align:center;padding:14px 10px 8px;font-size:1.9rem;font-weight:700}
+.mot small{display:block;font-size:.78rem;font-weight:400;color:var(--muted);margin-top:6px}
+.boutons{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.btn{border:1px solid var(--line);background:#fff;border-radius:12px;padding:9px;font-weight:700;cursor:pointer;font:inherit}
+.btn.g{color:var(--g);background:#fbeaea}.btn.l{color:var(--l);background:#e8eefb}.btn.i{color:#6b21a8;background:#f3e8ff}
+.champ{border:2px solid var(--l);border-radius:14px;padding:12px 16px;background:#f4f7ff;margin-top:8px}
+.champ .titre{font-weight:700;margin-bottom:6px}
+.liste{display:grid;grid-template-columns:repeat(3,1fr);gap:3px 14px;margin:4px 0 10px}
+.forme{display:flex;align-items:baseline;gap:8px;padding:3px 8px;border-radius:8px;cursor:pointer}
+.forme .n{min-width:2.2em;text-align:right;color:var(--muted)}.forme .f{font-style:italic}.forme .c{color:var(--muted);font-size:.85rem}
+.forme .acc{font-size:.75rem;color:var(--acc);background:#e6f4ec;border-radius:6px;padding:0 6px}.forme .acc.ailleurs{color:#8a6d00;background:#fff3bf}
+.forme.candidat{background:var(--hl)}.forme.exact{background:var(--hl2);outline:2px solid #e0b64a}
+.saisie{display:flex;gap:8px;align-items:center}
+.saisie input{flex:1;font:inherit;font-size:1.05rem;padding:8px 12px;border:1px solid var(--line);border-radius:10px}
+.saisie .num{min-width:5em;text-align:center;font-weight:700;color:#8a6d00;background:var(--hl2);border-radius:10px;padding:8px 10px;visibility:hidden}.saisie .num.on{visibility:visible}
+.btn.acc{color:var(--acc);background:#e6f4ec;border-color:#bfe3cf}
+.garde{color:var(--g);font-size:.9rem;margin-top:5px;min-height:1.2em}
+.aide{color:var(--muted);font-size:.8rem;margin-top:6px}
+.fin{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;text-align:center;margin-top:8px}
+.fin input{font:inherit;padding:8px 12px;border:1px solid var(--line);border-radius:10px;width:60%}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 16px}
+.card h2{font-size:.95rem;margin:0 0 6px;color:var(--sub)}.card ol,.card ul{margin:0;padding-left:1.2em}.card li{margin:2px 0}
+.aside{display:flex;flex-direction:column;gap:12px}
+.touches{display:grid;grid-template-columns:repeat(3,52px);gap:5px}.touches button{height:40px;border:1px solid var(--line);border-radius:10px;background:#fff;font:inherit;font-weight:700;cursor:pointer}.touches button.large{grid-column:span 2}
+.sim{color:var(--muted);font-size:.78rem;margin-top:4px}
+.erreur-acc{display:inline-block;margin-left:6px;font-size:.75rem;color:var(--acc);background:#e6f4ec;border-radius:6px;padding:0 6px}
+.regl .ligne{display:flex;justify-content:space-between;align-items:center;padding:4px 0;border-bottom:1px dashed var(--line)}
+.regl .ligne button{font:inherit;font-size:.85rem;border:1px solid var(--line);background:#fff;border-radius:8px;padding:2px 8px;cursor:pointer}
+/* l'aide : par-dessus tout, Échap ferme */
+#voile{position:fixed;inset:0;background:rgba(0,0,0,.25);display:none;align-items:flex-start;justify-content:center;padding-top:60px;z-index:50}
+#voile.on{display:flex}
+.panneau{background:#fff;border-radius:16px;width:min(760px,92vw);box-shadow:0 20px 60px rgba(0,0,0,.25);padding:18px 22px;max-height:80vh;overflow:auto}
+.panneau h2{margin:0 0 4px;font-size:1.1rem}.panneau .ou{color:var(--sub);font-size:.9rem;margin-bottom:10px}
+.panneau table{width:100%;border-collapse:collapse}.panneau td{padding:5px 8px;border-bottom:1px solid #eee;vertical-align:top}
+.panneau td.k{white-space:nowrap;font-family:ui-monospace,Consolas,monospace;font-size:.95rem;background:#f4f4f1;border-radius:6px;width:1%}
+.panneau .pied{color:var(--muted);font-size:.8rem;margin-top:10px}
+</style></head><body><div class="wrap">
+<div class="top"><h1>Maquette — « forme acceptée » pour toute la dictée, et l'aide « ? » qui suit l'écran</h1><span class="sub">tout est simulé, rien ne part</span><button class="aidebtn" id="btnAide" title="? (ou F1) : les touches et les gestes possibles sur cet écran, maintenant — Échap ferme">?</button></div>
+<div class="col">
+  <div class="onglets"><button class="on" data-ecran="rapide">⚡ Correction rapide</button><button data-ecran="prepa">Préparation — formes acceptées</button><button data-ecran="reglages">Réglages de la dictée</button><span style="flex:1"></span><label style="font-size:.85rem;color:var(--sub)" title="Pour essayer les deux cas : la forme « cadavre » a été acceptée dans « Dictée n°1 — lettre de Fritz » (les Dylan). Même texte : elle est acceptée ici d'office. Autre texte : elle est seulement proposée, 0 l'accepte ici."><input type="checkbox" id="memeTexte" checked> cette dictée a le même texte que « Dictée n°1 — lettre de Fritz » (les tolérances sont partagées)</label></div>
+  <div id="ecranRapide">
+    <div class="head"><div class="note" id="noteV">20</div><div><b>ZZTEST ALPHA Anna</b><div style="color:var(--sub);font-size:.85rem" id="compte">0 err. · 0 pts</div></div></div>
+    <div class="ctx">La puanteur de <b>cadavres</b> montait des tranchées .</div>
+    <div class="mot" id="mot">cadavres<small>Mot 4/144 · G ou L ouvre la case · i = illisible · ? = l'aide</small></div>
+    <div class="boutons">
+      <button class="btn g" id="bG" title="G : erreur de grammaire — ouvre la case « ce qu'a écrit l'élève »">G Grammaire</button>
+      <button class="btn l" id="bL" title="L : erreur de lexique — ouvre la case « ce qu'a écrit l'élève »">L Lexique</button>
+      <button class="btn i" id="bI" title="i : illisible">i Illisible</button>
+    </div>
+    <div class="champ" id="champ" hidden>
+      <div class="titre" id="titre">Marquage G — Qu'a écrit l'élève ?</div>
+      <div class="liste" id="liste" title="Les formes déjà vues sur « cadavres » dans toutes tes dictées. Le pavé numérique choisit ; 0 du pavé = forme acceptée pour toute la dictée."></div>
+      <div class="saisie">
+        <input id="in" type="text" autocomplete="off" spellcheck="false" placeholder="recopie ce qu'a écrit l'élève — ou choisis au pavé" title="Ce que l'élève a écrit. Un ? tapé ici est du texte ; l'aide s'ouvre par le bouton ? ou F1.">
+        <div class="num" id="num"></div>
+        <button class="btn" id="valider" title="Entrée : l'erreur compte, comme d'habitude">✓ Valider</button>
+        <button class="btn acc" id="accepter" title="0 du pavé (ou Ctrl+0) : la forme est acceptée pour toute la dictée — l'erreur reste visible chez tous, elle ne coûte rien à personne, les copies déjà corrigées sont recalculées">✓ forme acceptée (toute la dictée)</button>
+      </div>
+      <div class="garde" id="garde"></div>
+      <div class="aide">pavé = choisir · rangée du haut = écrire · Ctrl + chiffre = comme le pavé · 0 du pavé = forme acceptée · Entrée = valider · Échap = effacer le numéro, puis fermer · ? = l'aide</div>
+    </div>
+    <div class="fin" id="fin" hidden><div style="font-size:1.4rem">✅</div><b>Terminé !</b><div style="color:var(--sub);margin:4px 0 8px">Copie suivante — tape les initiales, puis Entrée :</div><input id="ini" placeholder="DA pour Dupont Alice"><div style="color:var(--muted);font-size:.8rem;margin-top:6px">(simulé : Entrée revient à l'écran)</div></div>
+    <div class="boutons" style="grid-template-columns:1fr 1fr"><button class="btn" id="bTerminer" title="Terminer la copie (simulé) — montre l'écran de fin, et son aide">Terminer →</button><button class="btn" id="bRecommencer" title="Revenir au mot (simulé)">↺ Revenir au mot</button></div>
+  </div>
+  <div id="ecranPrepa" hidden class="card"><h2>Formes acceptées — dis d'avance ce que tu tolères : clique un mot, ajoute la ou les formes que tu accepteras sans retrait. Une règle du texte : elle vaut pour toutes les dictées qui ont ce texte, toutes leurs copies, déjà corrigées ou à venir.</h2>
+<div id="texteMots" style="line-height:2.1;font-size:1.05rem" title="Clique un mot pour voir ou ajouter ses formes acceptées. Un mot souligné en vert en a déjà."></div>
+<div id="fenMot" hidden style="margin-top:12px;border:2px solid var(--acc);border-radius:12px;padding:10px 14px;background:#f2faf5">
+  <div style="font-weight:700;margin-bottom:6px" id="fenTitre"></div>
+  <div id="fenListe" style="margin-bottom:8px"></div>
+  <div class="saisie"><input id="fenIn" type="text" placeholder="ajouter une forme acceptée (Entrée)" title="La forme que tu accepteras sans retrait ; le mot juste est refusé"><button class="btn acc" id="fenAjouter" title="Entrée : ajouter cette forme, pour tous">+ ajouter</button><button class="btn" id="fenFermer" title="Échap : fermer">Fermer</button></div>
+  <div class="garde" id="fenGarde"></div>
+</div></div>
+<div id="ecranReglages" hidden class="card regl"><h2>Formes acceptées de ce texte — partagées avec « Dictée n°1 — lettre de Fritz » (les Franklin) : l'erreur reste visible, elle ne coûte rien</h2><div id="reglListe"></div><div class="sim">Retirer une forme la fait coûter à nouveau, pour toutes les copies.</div></div>
+</div>
+<div class="aside">
+  <div class="card"><h2>Ce que la correction retient (simulé — rien ne part vraiment)</h2><ol id="log"><li style="color:var(--muted)">rien encore</li></ol></div>
+  <div class="card"><h2>Ce que lira l'élève (sa copie)</h2><div id="vueEleve" style="color:var(--sub)">rien encore</div></div>
+  <div class="card"><h2>Pavé numérique simulé</h2><div class="touches" id="touches"></div><div class="sim">Ces touches envoient ce qu'envoie le pavé d'un clavier (code « Numpad… »).</div></div>
+</div>
+</div>
+<div id="voile"><div class="panneau" role="dialog"><h2 id="aideTitre">Ce que tu peux faire ici</h2><div class="ou" id="aideOu"></div><table id="aideTable"></table><div class="pied">Échap ferme · cette aide change toute seule avec l'écran · un second onglet (non simulé) garde les nouveautés</div></div></div>
+<script>
+/* formes déjà vues sur « cadavres » : fictives ; « ailleurs » = acceptée dans une autre dictée (les Dylan) */
+var FORMES=[{f:"cadavre",c:7,ailleurs:"Dictée n°1 — lettre de Fritz"},{f:"cadavres,",c:3},{f:"cadavre,",c:2},{f:"cadavrs",c:1},{f:"cadavres.",c:1}];
+var TEXTE="Au front , la puanteur de cadavres montait des tranchées . Nous avons entendu le signal de l'alerte .";
+var MOTS=TEXTE.split(' ').filter(function(w){return /\w/.test(w)});
+var MOT="cadavres", ACCEPTEES={}, REGLES={}, motFen=null; type=null, errors=[], numero="", ouvert=false, ecran="rapide", etat="mot", choisi=null;
+var $=function(id){return document.getElementById(id)};
+function motJuste(s,att){return (s||"").trim().toLowerCase()===att.toLowerCase()}
+function log(t){var ol=$('log'); if(ol.children.length===1&&ol.children[0].style.color)ol.innerHTML=''; var li=document.createElement('li'); li.textContent=t; ol.appendChild(li)}
+function memeTexte(){return $('memeTexte').checked}
+function accepteeAilleurs(f){var o=FORMES.filter(function(x){return x.f.toLowerCase()===(f||'').toLowerCase()})[0]; return o&&o.ailleurs?o.ailleurs:null}
+function regle(m){return REGLES[m.toLowerCase()]=REGLES[m.toLowerCase()]||{}}
+function estAccepteePour(m,f){ if(regle(m)[(f||'').toLowerCase()])return true; if(m.toLowerCase()===MOT.toLowerCase()&&ACCEPTEES[(f||'').toLowerCase()])return true; return !!(memeTexte()&&m.toLowerCase()===MOT.toLowerCase()&&accepteeAilleurs(f)) }
+function estAcceptee(f){return estAccepteePour(MOT,f)}   /* la règle du texte : partagée, rétroactive */
+function rendreListe(){
+  var ul=$('liste'); ul.innerHTML='';
+  FORMES.forEach(function(o,i){var n=i+1,d=document.createElement('div'); d.className='forme'; if(numero&&String(n).indexOf(numero)===0)d.classList.add('candidat'); if(numero&&String(n)===numero)d.classList.add('exact');
+    d.title='Clic : prendre cette forme. Au pavé : '+n+(estAcceptee(o.f)?' — acceptée dans cette dictée':(o.ailleurs?' — acceptée dans « '+o.ailleurs+' » : 0 l\'accepte ici aussi':''));
+    d.innerHTML='<span class="n">'+n+'</span><span class="f">'+o.f+'</span><span class="c">×'+o.c+'</span>'+(ACCEPTEES[o.f.toLowerCase()]?'<span class="acc">acceptée</span>':(o.ailleurs?(memeTexte()?'<span class="acc">acceptée (règle du texte, partagée avec « '+o.ailleurs+' »)</span>':'<span class="acc ailleurs">acceptée dans « '+o.ailleurs+' » — 0 l\'accepte ici</span>'):''));
+    d.onclick=function(){prendre(n)}; ul.appendChild(d)});
+  $('num').textContent=numero?('n° '+numero):''; $('num').classList.toggle('on',!!numero);
+}
+function rendreReglages(){var r=$('reglListe'); var lignes=[]; Object.keys(REGLES).forEach(function(m){Object.keys(REGLES[m]).forEach(function(k){lignes.push([m,k,REGLES[m][k]])})}); Object.keys(ACCEPTEES).forEach(function(k){ if(!(REGLES[MOT.toLowerCase()]||{})[k]) lignes.push([MOT.toLowerCase(),k,ACCEPTEES[k]]) });
+  r.innerHTML=lignes.length?'':'<div style="color:var(--muted)">aucune pour l\'instant</div>';
+  lignes.forEach(function(L){var d=document.createElement('div'); d.className='ligne'; d.innerHTML='<span>sur « '+L[0]+'» : <i>'+L[2]+'</i> — acceptée, pour toutes les dictées de ce texte</span>'; var b=document.createElement('button'); b.textContent='retirer'; b.title='Cette forme coûte à nouveau, pour toutes les copies, dans toutes les dictées de ce texte'; b.onclick=function(){delete regle(L[0])[L[1]]; delete ACCEPTEES[L[1]]; log('« '+L[2]+' » n\'est plus acceptée pour ce texte : elle coûte à nouveau, partout.'); recalc(); rendreReglages(); rendreListe(); rendreTexte()}; d.appendChild(b); r.appendChild(d)});}
+function ACCEPTEES_nom(k){return k}
+function recalc(){var pts=0; errors.forEach(function(e){e.sansCout=estAcceptee(e.fautif); if(!e.sansCout)pts+=(e.type==='G'?1:e.type==='L'?0.5:e.type==='I'?0.5:0)}); $('compte').textContent=errors.length+' err. · '+pts+' pts'; $('noteV').textContent=20-pts; vueEleve()}
+function vueEleve(){var v=$('vueEleve'); if(!errors.length){v.textContent='rien encore';return} v.innerHTML=errors.map(function(e){return '<div>« '+MOT+' » — elle a écrit « '+(e.fautif||'…')+' » <b style="color:'+(e.type==='G'?'var(--g)':e.type==='L'?'var(--l)':'#6b21a8')+'">'+e.type+'</b>'+(e.sansCout?'<span class="erreur-acc">forme acceptée</span>':'')+'</div>'}).join('')}
+function ouvrir(t){type=t; ouvert=true; etat='case'; $('champ').hidden=false; $('titre').textContent='Marquage '+t+' — Qu\'a écrit l\'élève ? (facultatif)'; $('in').value=''; numero=''; $('garde').textContent=''; rendreListe(); $('in').focus(); majAide()}
+function fermer(){ouvert=false; etat='mot'; $('champ').hidden=true; numero=''; type=null; $('mot').focus(); majAide()}
+function enregistrer(forme,accepter){
+  if(motJuste(forme,MOT)){$('garde').textContent='C\'est le mot juste : recopie ce que l\'élève a écrit.'; return}
+  var f=forme.trim(); errors=errors.filter(function(e){return e.idx!==4}); var e={idx:4,type:type,word:MOT}; if(f)e.fautif=f; errors.push(e);
+  if(f){var i=FORMES.findIndex(function(x){return x.f.toLowerCase()===f.toLowerCase()}); if(i>=0)FORMES[i].c++; else FORMES.push({f:f,c:1}); FORMES.sort(function(a,b){return b.c-a.c||a.f.localeCompare(b.f)})}
+  var lib=(type==='G'?'une erreur de grammaire':'une erreur de lexique');
+  if(accepter&&f){ if(estAcceptee(f)){delete ACCEPTEES[f.toLowerCase()]; delete regle(MOT)[f.toLowerCase()]; log('« '+f+' » n\'est plus acceptée pour ce texte : elle coûte à nouveau, pour toutes les copies, dans toutes les dictées qui ont ce texte.')} else {ACCEPTEES[f.toLowerCase()]=f; regle(MOT)[f.toLowerCase()]=f; log('Anna : '+lib+' sur « '+MOT+' » — elle a écrit « '+f+' »'+(choisi?' (pris dans la liste, n° '+choisi+')':' (tapé)')+'. « '+f+' » est maintenant une FORME ACCEPTÉE pour ce texte : visible chez tous, sans retrait, dans cette dictée et dans « Dictée n°1 — lettre de Fritz » (même texte) ; les copies déjà corrigées sont recalculées, ici et là-bas.')} }
+  else log('Anna : '+lib+' sur « '+MOT+' »'+(f?' — elle a écrit « '+f+' »'+(choisi?' (pris dans la liste, n° '+choisi+')':' (tapé)'):' — sans recopie')+'.'+(f&&estAcceptee(f)?(ACCEPTEES[f.toLowerCase()]?' Forme acceptée dans cette dictée : elle ne coûte rien.':' Forme acceptée pour ce texte (règle partagée avec « '+accepteeAilleurs(f)+' ») : elle ne coûte rien.'):''));
+  recalc(); rendreReglages(); fermer();
+}
+function prendre(n){var o=FORMES[n-1]; if(!o)return; choisi=n; enregistrer(o.f,false); choisi=null}
+function accepterCourant(){ if(!ouvert)return; var f=$('in').value.trim(); if(numero){var o=FORMES[+numero-1]; if(o){choisi=+numero; f=o.f} numero=''}
+  if(!f){ var ail=FORMES.filter(function(x){return x.ailleurs&&!ACCEPTEES[x.f.toLowerCase()]}); if(ail.length===1){ f=ail[0].f; choisi=FORMES.indexOf(ail[0])+1; log('0 seul : la forme acceptée dans « '+ail[0].ailleurs+' » est prise — « '+f+' ».') } else if(ail.length>1){ $('garde').textContent='Plusieurs formes sont acceptées ailleurs : tape son numéro, puis 0.'; rendreListe(); return } else { $('garde').textContent='Tape ou choisis d\'abord la forme à accepter.'; return } }
+  enregistrer(f,true); choisi=null}
+function chiffrePave(c){ if(!ouvert)return; if(c==='0'){accepterCourant();return} numero+=c; var exact=FORMES.length>=+numero, prefixe=FORMES.some(function(_,i){var s=String(i+1);return s!==numero&&s.indexOf(numero)===0}); if(!exact){$('garde').textContent='Pas de forme n° '+numero+'.'; numero=''; rendreListe(); return} if(prefixe){rendreListe();return} var n=+numero; numero=''; rendreListe(); prendre(n) }
+/* ---------- l'aide contextuelle ---------- */
+var AIDES={
+  mot:{ou:'Mode rapide — sur un mot',l:[['G','erreur de grammaire → la case « ce qu\'a écrit l\'élève »'],['L','erreur de lexique → la case'],['M','manquant (sur un signe : ponctuation ; sur une apostrophe : élision)'],['i','illisible'],['A','attention (sans retrait)'],['Espace / Entrée','correct, mot suivant'],['Retour','mot précédent'],['⇧R','passer en mode texte, même copie'],['?  (ou F1)','cette aide']]},
+  case:{ou:'La case « ce qu\'a écrit l\'élève »',l:[['pavé numérique','choisir une forme déjà vue (les chiffres se composent : 1 puis 2 = la 12e ; prise dès que le numéro est sûr, ou à Entrée)'],['rangée du haut','écrire un chiffre dans la case (« 3 » pour « trois »)'],['Ctrl + chiffre','comme le pavé'],['0 du pavé (ou Ctrl+0)','FORME ACCEPTÉE pour toute la dictée — visible, sans coût ; le même 0 l\'annule ; 0 seul prend la forme déjà acceptée dans une autre dictée (même texte : elle l\'est déjà d\'office)'],['Entrée','valider ce qui est tapé (ou le numéro en cours)'],['Échap','effacer le numéro ; puis fermer la case'],['bouton ?  (ou F1)','cette aide (ici, la touche ? s\'écrit dans la case)']]},
+  fin:{ou:'Fin de copie',l:[['lettres','les initiales de l\'élève suivant (DA pour Dupont Alice)'],['Entrée','ouvrir l\'élève proposé, en mode rapide'],['⇧R','passer en mode texte'],['?  (ou F1)','cette aide']]},
+  prepa:{ou:'Préparation — formes acceptées',l:[['clic sur un mot','ouvrir ses formes acceptées'],['Entrée','ajouter la forme tapée (pour toutes les dictées de ce texte, copies déjà corrigées recalculées)'],['✕','retirer une forme : elle coûte à nouveau, partout'],['Échap','fermer la fenêtre du mot'],['?  (ou F1)','cette aide']]},
+  reglages:{ou:'Réglages de la dictée',l:[['retirer','une forme acceptée coûte à nouveau, pour toutes les copies'],['?  (ou F1)','cette aide']]}
+};
+function contexte(){ if(ecran==='reglages')return 'reglages'; if(ecran==='prepa')return 'prepa'; return etat }
+function majAide(){ if(!$('voile').classList.contains('on'))return; var a=AIDES[contexte()]; $('aideOu').textContent=a.ou; var t=$('aideTable'); t.innerHTML=''; a.l.forEach(function(r){var tr=document.createElement('tr'); tr.innerHTML='<td class="k">'+r[0]+'</td><td>'+r[1]+'</td>'; t.appendChild(tr)}) }
+function ouvrirAide(){ $('voile').classList.add('on'); majAide() } function fermerAide(){ $('voile').classList.remove('on') }
+$('btnAide').onclick=ouvrirAide; $('voile').onclick=function(e){ if(e.target===$('voile'))fermerAide() };
+/* ---------- clavier ---------- */
+document.addEventListener('keydown',function(e){
+  var aideOn=$('voile').classList.contains('on'); var dansChamp=(e.target&&(e.target.tagName==='INPUT'));
+  if(e.key==='F1'){e.preventDefault(); aideOn?fermerAide():ouvrirAide(); return}
+  if(aideOn){ if(e.key==='Escape'){e.preventDefault(); fermerAide()} return }   /* l'aide ouverte : Échap la ferme, le reste attend */
+  if(e.key==='?'&&!dansChamp){e.preventDefault(); ouvrirAide(); return}         /* ? = l'aide (hors d'une case de saisie) */
+  if(ecran!=='rapide'){ return }
+  if(etat==='fin'){ if(e.key==='Enter'){e.preventDefault(); etat='mot'; $('fin').hidden=true; $('ini').value=''; log('(simulé) la copie suivante s\'ouvre en mode rapide')} return }
+  if(!ouvert){ if(e.key==='g'||e.key==='G'){ouvrir('G');e.preventDefault()} else if(e.key==='l'||e.key==='L'){ouvrir('L');e.preventDefault()} else if(e.key==='i'||e.key==='I'){e.preventDefault(); type='I'; enregistrer('',false)} return }
+  if(e.code&&e.code.indexOf('Numpad')===0&&/^\d$/.test(e.key)){e.preventDefault(); chiffrePave(e.key); return}
+  if(e.ctrlKey&&/^\d$/.test(e.key)){e.preventDefault(); chiffrePave(e.key); return}
+  if(e.key==='Enter'){e.preventDefault(); if(numero){var n=+numero; numero=''; rendreListe(); prendre(n)} else enregistrer($('in').value,false); return}
+  if(e.key==='Escape'){e.preventDefault(); if(numero){numero=''; rendreListe()} else fermer(); return}
+});
+$('bG').onclick=function(){ouvrir('G')}; $('bL').onclick=function(){ouvrir('L')}; $('bI').onclick=function(){type='I'; enregistrer('',false)};
+$('valider').onclick=function(){ if(numero){var n=+numero; numero=''; rendreListe(); prendre(n)} else enregistrer($('in').value,false) }; $('accepter').onclick=accepterCourant;
+$('bTerminer').onclick=function(){ if(ouvert)fermer(); etat='fin'; $('fin').hidden=false; $('ini').focus(); majAide() }; $('bRecommencer').onclick=function(){ etat='mot'; $('fin').hidden=true; majAide() };
+document.querySelectorAll('.onglets button').forEach(function(b){ b.onclick=function(){ document.querySelectorAll('.onglets button').forEach(function(x){x.classList.remove('on')}); b.classList.add('on'); ecran=b.dataset.ecran; $('ecranRapide').hidden=(ecran!=='rapide'); $('ecranPrepa').hidden=(ecran!=='prepa'); $('ecranReglages').hidden=(ecran!=='reglages'); if(ecran==='prepa')rendreTexte(); rendreReglages(); majAide() } });
+['7','8','9','4','5','6','1','2','3','0'].forEach(function(c){var b=document.createElement('button'); b.textContent=c; if(c==='0')b.className='large'; b.title=(c==='0'?'0 du pavé : forme acceptée':'Comme la touche '+c+' du pavé'); b.onclick=function(){document.dispatchEvent(new KeyboardEvent('keydown',{key:c,code:'Numpad'+c,bubbles:true}))}; $('touches').appendChild(b)});
+var be=document.createElement('button'); be.textContent='↵'; be.title='Entrée du pavé'; be.onclick=function(){document.dispatchEvent(new KeyboardEvent('keydown',{key:'Enter',code:'NumpadEnter',bubbles:true}))}; $('touches').appendChild(be);
+function rendreTexte(){var z=$('texteMots'); z.innerHTML=''; TEXTE.split(' ').forEach(function(w){var sp=document.createElement('span'); var m=w.replace(/[^\w'’\-]/g,''); if(!m){sp.textContent=w+' '; sp.style.color='var(--muted)'; z.appendChild(sp); return}
+  var n=Object.keys(regle(m)).length; sp.textContent=w; sp.style.cursor='pointer'; sp.style.padding='0 3px'; sp.style.borderRadius='6px'; sp.title=n?'formes acceptées : '+Object.values(regle(m)).join(', '):'clique pour ajouter une forme acceptée'; if(n){sp.style.textDecoration='underline'; sp.style.textDecorationColor='var(--acc)'; sp.style.textDecorationThickness='2px'; sp.innerHTML=w+'<sup style="color:var(--acc);font-size:.7rem"> '+n+'</sup>'}
+  if(motFen&&motFen.toLowerCase()===m.toLowerCase()){sp.style.background='#e6f4ec'} sp.onclick=function(){ouvrirFen(m)}; z.appendChild(sp); z.appendChild(document.createTextNode(' '))})}
+function ouvrirFen(m){motFen=m; $('fenMot').hidden=false; $('fenTitre').textContent='Formes acceptées pour « '+m+' »'; rendreFen(); $('fenIn').value=''; $('fenGarde').textContent=''; $('fenIn').focus(); rendreTexte()}
+function rendreFen(){var l=$('fenListe'); var ks=Object.keys(regle(motFen)); l.innerHTML=ks.length?'':'<span style="color:var(--muted)">aucune — tape la forme que tu accepteras</span>'; ks.forEach(function(k){var b=document.createElement('span'); b.className='acc'; b.style.cssText='display:inline-block;margin:0 6px 4px 0;padding:2px 8px;border-radius:8px;background:#e6f4ec;color:var(--acc)'; b.innerHTML='<i>'+regle(motFen)[k]+'</i> <b style="cursor:pointer" title="retirer : elle coûte à nouveau, partout">✕</b>'; b.querySelector('b').onclick=function(){delete regle(motFen)[k]; delete ACCEPTEES[k]; log('« '+k+' » n\'est plus acceptée pour « '+motFen+' » : elle coûte à nouveau, partout.'); recalc(); rendreFen(); rendreTexte(); rendreReglages(); rendreListe()}; l.appendChild(b)})}
+function fenAjouter(){var f=$('fenIn').value.trim(); if(!f)return; if(motJuste(f,motFen)){$('fenGarde').textContent='C\'est le mot juste : une forme acceptée est une autre graphie.';return} regle(motFen)[f.toLowerCase()]=f; if(motFen.toLowerCase()===MOT.toLowerCase()){ACCEPTEES[f.toLowerCase()]=f; var i=FORMES.findIndex(function(x){return x.f.toLowerCase()===f.toLowerCase()}); if(i<0)FORMES.push({f:f,c:0})} $('fenIn').value=''; $('fenGarde').textContent=''; log('D\'avance : « '+f+' » acceptée pour « '+motFen+' », dans toutes les dictées de ce texte — les copies déjà corrigées sont recalculées.'); recalc(); rendreFen(); rendreTexte(); rendreReglages(); rendreListe()}
+$('fenAjouter').onclick=fenAjouter; $('fenFermer').onclick=function(){$('fenMot').hidden=true; motFen=null; rendreTexte()}; $('fenIn').addEventListener('keydown',function(e){ if(e.key==='Enter'){e.preventDefault(); fenAjouter()} if(e.key==='Escape'){e.preventDefault(); $('fenMot').hidden=true; motFen=null; rendreTexte()} });
+rendreTexte(); rendreReglages(); $('memeTexte').onchange=function(){recalc(); rendreListe(); log(memeTexte()?'(essai) même texte : les formes acceptées dans « Dictée n°1 — lettre de Fritz » le sont ici d\'office':'(essai) autre texte : elles sont seulement proposées — 0 les accepte ici')};
+</script></body></html>

@@ -11497,3 +11497,28 @@ Tu as raison : je suis allé trop vite — un mandat avant la fin du cadrage, c'
 02/10/2026 13:30 MEMO
 
 ---
+
+## TOUR 368 — Paul
+
+Texte de Paul, mot pour mot :
+
+> je veux voir une maquette du point 269.
+
+---
+
+## TOUR 368 — Claude (conscience n°12)
+
+PROTOCOLE-MAQUETTE relu ; maquette autonome T368 (md5 05bf035bd9ae) : 14 formes fictives triées par fréquence, pavé numérique qui compose (préfixe → attente, sinon prise aussitôt ; Entrée ; Échap), rangée du haut = texte, Ctrl+chiffre, garde du mot juste, pavé simulé, journal « ce qui s'enregistrerait » ; banc par le geste VERT 10/10 (1366×768) ; capture contrôlée ; déposée au sas (pièces T368). Livrée à Paul.
+
+Réponse mot pour mot :
+
+La maquette du point 269, manipulable (ci-dessus, `T368-maquette-capitalisation-v1.html`, md5 `05bf035bd9ae` ; au sas en pièce T368) — un fichier seul, rien ne part, rien n'est lu ailleurs ; ouvre-la dans ton navigateur :
+
+271. **Ce qu'elle joue** : le mode rapide sur le mot « trois », avec **14 formes fictives** déjà vues, triées par fréquence (la 1 = « 3 » ×11). Tape **G** ou **L** : la case s'ouvre avec la liste. **Au pavé numérique** (le vrai, ou le pavé simulé à droite si tu n'en as pas) : **3** → la forme n°3 prise aussitôt (aucun numéro de 30 à 39) ; **1** → l'app attend (1, 10 à 14 possibles : ils sont surlignés, « n° 1 » s'affiche), puis **2** → la forme n°12 ; **1 puis Entrée** → la forme n°1 sans attendre. **Rangée du haut** : tape 3 dans la case → c'est du texte, Entrée l'enregistre comme la forme « 3 ». **Ctrl + 2** = comme le pavé. Le mot juste est refusé. Échap efface le numéro, puis ferme. Une forme nouvelle rejoint la liste avec son compte ; une forme choisie voit son compte monter. La colonne de droite dit ce qui s'enregistrerait (la copie et l'objet « forme »).
+272. **Prouvé par le geste** (banc, 1366 × 768) : 10 vérifications vertes, 0 erreur — les cas de 271, un par un. Capture écran entier ci-dessus : le numéro 1 en composition (les candidats 1, 10 à 14 surlignés).
+
+Joue-la et dis-moi ce qui va, ce qui ne va pas — puis les réponses encore ouvertes (**258**, **260** a/b) et le cadrage sera fini.
+
+02/10/2026 13:40 MEMO
+
+---

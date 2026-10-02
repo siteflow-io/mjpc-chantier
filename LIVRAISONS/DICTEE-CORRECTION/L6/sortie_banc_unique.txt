@@ -1,0 +1,12 @@
+  OK    modes
+  OK    fc1
+  OK    fc2
+  OK    fr
+  OK    gr
+  OK    banc_L1_geste
+  OK    banc_L2_geste
+  OK    banc_L3_geste
+  OK    banc_L5_geste
+  OK    banc_L6_geste
+  OK    eleve
+BANC UNIQUE : VERT (0 échec)

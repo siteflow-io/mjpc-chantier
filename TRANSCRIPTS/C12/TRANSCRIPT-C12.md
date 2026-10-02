@@ -12297,3 +12297,27 @@ Tes tests, après promotion (https://siteflow-io.github.io/monsieurjaipascompris
 02/10/2026 21:50 MEMO
 
 ---
+
+## TOUR 400 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Promeus
+
+---
+
+## TOUR 400 — Claude (conscience n°12)
+
+Promotion 6.7.0-L12 (commit 9280243a0d0f, bit à bit) ; protocole : journal, point de retour, où-trouver-quoi. Tests donnés ; L13 puis L14 ensuite ; dette vivante rappelée.
+
+Réponse mot pour mot :
+
+Promu : `correction_dictee.html` **6.7.0-L12**, commit `9280243a0d0f`, **bit à bit** (809 581 o, md5 `89a82a82…`) ; journal, point de retour (L11), où-trouver-quoi à jour.
+
+**Tes tests** : https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?v=6.7.0 → 1) l'accueil : le « ? » rond en haut à droite ; tape « ? » : ce que tu peux faire ; Échap ; 2) une copie → ⇧R → « ? » : le tableau du mode rapide ; tape G : rien dessous ; Échap ; 3) G (la case) → F1 : l'aide de la case ; Échap : l'aide se ferme, la case reste ; « ? » s'écrit dans la case ; 4) « i » pose Illisible, « ? » n'en pose plus ; 5) Préparation, Réglages, Données : le « ? » dit chaque fois où tu es.
+
+Puis « continuer » à l'exécutante pour **L13** (l'attente de la première séance, 45 minutes hors classe), puis **L14** (la note des élèves aménagés) — après quoi le mandat « L'écran de correction » sera clos, et il restera la dette vivante : ③ bis (le panneau prof du site), la purge de rentrée, l'appariement de l'emploi du temps, le code mort (97).
+
+02/10/2026 21:45 MEMO
+
+---

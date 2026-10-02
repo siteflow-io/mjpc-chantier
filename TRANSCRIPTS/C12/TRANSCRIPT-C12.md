@@ -12195,3 +12195,27 @@ Non, et voici pourquoi : sur ton clavier, **Maj + à, c'est déjà la seule faç
 02/10/2026 18:50 MEMO
 
 ---
+
+## TOUR 396 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Bon en fait, vu que c'est un cas rare, il faut un bouton. Je clique dessus, ça règle la question. Aucun raccourci comme ça je ne peux pas me télescoper au clavier, et quand je veux mettre une exception, je clique sur le bouton. Il faut le cadrer du coup
+
+---
+
+## TOUR 396 — Claude (conscience n°12)
+
+Complément L11 corrigé au sas : forme acceptée = un bouton seulement (bascule « ✕ ne plus accepter », inactif case vide, « accepter ici » sur la ligne d'une forme acceptée ailleurs), le 0 reste un chiffre, aucun raccourci ; aide L12 ajustée. Phrase pour l'exécutante.
+
+Réponse mot pour mot :
+
+Cadré et corrigé au sas (`MANDATS/COMPLEMENT-DICTEE-CORRECTION-L9-L11-L12.md`, L11 point 3, « prime sur la maquette v3 ») :
+
+324. **Aucun raccourci pour « forme acceptée »** ; **le 0 du pavé reste un chiffre, toujours** (1 puis 0 = la forme n° 10). Dans la case, à côté de « Valider », le bouton **« ✓ forme acceptée (ce texte) »** prend la forme en cours (tapée ou choisie au pavé) et pose la règle du texte ; sur une forme déjà acceptée, le même bouton dit « ✕ ne plus accepter » et l'annule ; case vide → bouton inactif ; pour une forme acceptée dans un autre texte, la ligne de la liste a son petit bouton « accepter ici ». Préparation, Réglages, l'élève, le rétroactif : inchangés. L'aide « ? » (L12) dira « le bouton — aucun raccourci ».
+
+La phrase pour l'exécutante : **« Pour 258 : non — aucun raccourci pour "forme acceptée", c'est un bouton seulement (le 0 du pavé reste un chiffre) ; le complément L11 est corrigé au sas (point 3) : relis-le, adapte, puis continue. »**
+
+02/10/2026 18:55 MEMO
+
+---

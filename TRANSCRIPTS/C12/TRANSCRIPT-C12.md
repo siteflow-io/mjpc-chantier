@@ -11670,3 +11670,31 @@ Joue-la ; si ça va, le cadrage de L9 (identité, date de correction, le « non 
 02/10/2026 14:45 MEMO
 
 ---
+
+## TOUR 375 — Paul
+
+Texte de Paul, mot pour mot :
+
+> j'ai mis "forme acceptée chez les dylan" (d'ailleurs la formulation ne va pas,   l'app ne sait pas dire "chez les dylan"), et ça enlève 1 pt! et pareil, j'ai voulu mettre 0 directement , mais j'ai été bloqué parce que je devais d'abord dire la forme acceptée. Mais si je mets 0, c'est de facto celle qui a été acceptée dans une autre classe, c'est logique non? Non? dis moi si non
+
+(capture de la maquette v1 : « cadavre » prise, 1 point retiré)
+
+---
+
+## TOUR 375 — Claude (conscience n°12)
+
+Maquette v2 (md5 e38eddaba16b) : même texte → acceptée d'office (0 point) ; autre texte → proposée, « 0 l'accepte ici » ; 0 seul prend la forme acceptée ailleurs ; le titre de la dictée au lieu de « chez les Dylan » ; case à cocher pour jouer les deux cas ; banc VERT 4/4 ; capture contrôlée ; déposée T375.
+
+Réponse mot pour mot :
+
+Tu as raison sur les deux, et c'est corrigé dans la **v2** (ci-dessus, md5 `e38eddaba16b`, pièce T375) :
+
+285. **Une forme acceptée dans une dictée au même texte est acceptée ici d'office** — c'est la même phrase, la même tolérance ; la prendre dans la liste ne coûte plus rien, l'élève lit « forme acceptée », et la liste dit « acceptée (« Dictée n°1 — lettre de Fritz », même texte) ». Pour une dictée **d'un autre texte** (« cadavre » dans une autre phrase, où ce serait une vraie faute d'accord), elle est seulement **proposée** : « acceptée dans « Dictée n°1 — lettre de Fritz » — 0 l'accepte ici ». La maquette a une case à cocher en haut (« cette dictée a le même texte… ») pour jouer les deux cas.
+286. **0 seul = celle-là** : si tu n'as rien tapé ni choisi et qu'une forme acceptée ailleurs existe pour ce mot, le 0 la prend et l'accepte ici (s'il y en avait plusieurs, l'app demande son numéro, puis 0).
+287. **La formulation** : l'app ne connaît pas « les Dylan » — l'objet « forme » ne porte aucune classe, c'est voulu — mais elle connaît **le titre de la dictée** où la forme a été acceptée : c'est lui qu'elle dit. Si cette dictée a été supprimée : « acceptée dans une dictée supprimée ».
+
+Banc par le geste : 4 vérifications vertes (même texte : 0 point retiré ; autre texte : 1 point et la proposition ; 0 seul ; 0 erreur). Capture ci-dessus. Rejoue, et dis-moi.
+
+02/10/2026 14:55 MEMO
+
+---

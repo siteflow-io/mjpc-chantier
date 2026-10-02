@@ -11424,3 +11424,26 @@ Réponse mot pour mot : le bloc = le complément déposé, précédé du paragra
 02/10/2026 13:00 MEMO
 
 ---
+
+## TOUR 365 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Réexplique moi le b. Pour le a, je ne sais pas s'il faut limiter à la dictée similaire ou s'il faut ouvrir la porte en grand à l'ensemble des fautes faites par les élèves dans toutes les dictées.
+
+---
+
+## TOUR 365 — Claude (conscience n°12)
+
+(b) réexpliqué (un chiffre seul = un choix validé aussitôt ; mêlé à des lettres = le mot). (a) mis en tension : par la place vs par le mot attendu ; recommandation : porte en grand par mot attendu, contexte identique en tête ; mesuré : la purge de rentrée emporte les copies (preserver = config, dictee, textes) → index à part `correction_dictee_formes` sans nom, préservé par la purge, construit une fois. Deux questions. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+265. **Le (b), réexpliqué.** Quand tu marques G ou L, la case « ce qu'a écrit l'élève » s'ouvre, et au-dessus d'elle la liste : « 1 · *cadavre* ×4 — 2 · *cadavres,* ×2 — 3 · *cadave* ×1 ». Pour prendre la forme n°2, **tu tapes juste 2 au pavé numérique** : la case ne contient que « 2 », l'app comprend « la forme n°2 », l'écrit à ta place et valide tout de suite — tu n'appuies même pas sur Entrée. Si la forme de l'élève n'est pas dans la liste, tu la tapes en lettres comme aujourd'hui, Entrée. La seule chose à savoir : un chiffre **seul** dans la case, c'est un choix ; un chiffre **au milieu de lettres** (« 2a », « a2 », « 20 »), c'est le mot de l'élève, tel quel. Un élève n'écrit jamais « 2 » tout seul à la place d'un mot dans une dictée, donc aucun risque de confusion. Et la liste s'arrête à 9 : une touche, un chiffre.
+266. **Le (a), mis en tension — ma recommandation : ouvrir en grand.** Deux façons de dire « le même mot » : **par la place** (le 37e mot de ce texte : seules les dictées au même texte le partagent) ou **par le mot lui-même** (« cadavres » attendu, où qu'il soit : tous les textes qui contiennent « cadavres » le partagent). Les formes fautives d'un mot sont les mêmes d'un texte à l'autre (« cadavre », « cadavre, », « cadavrs ») — la porte en grand te sert donc **dès la première dictée d'un texte nouveau**, pas seulement pour une dictée dupliquée. Ce que je propose : la clé = **le mot attendu** (sa graphie exacte, sans tenir compte de la majuscule de début de phrase) ; la liste montre d'abord les formes vues **sur ce mot dans les dictées au même texte** (le contexte identique), puis celles vues sur ce mot ailleurs, chacune avec son compte ; neuf au plus. Et une conséquence que la mesure impose : **la purge de rentrée emporte les copies** (seuls les textes et réglages des dictées sont préservés) — donc si les formes ne vivent que dans les copies, **tout ton repérage disparaît chaque été**. Pour que « ta correction devienne vertueuse » d'une année sur l'autre, les formes doivent vivre dans un **index à part** (`correction_dictee_formes/<mot attendu>/<forme> = compte` — une forme et un nombre, **aucun nom, aucune classe, aucune année** : rien d'un élève), **préservé par la purge**, nourri à chaque enregistrement, et construit une fois depuis toutes les copies existantes (les 107 d'aujourd'hui).
+
+**Dis-moi** : (1) la porte en grand par mot attendu, oui ou non ; (2) l'index à part qui survit à la purge, oui ou non. Je corrige le complément L10 au sas avant que l'exécutante ne code (si elle a déjà commencé sur « même texte », le changement est petit : la clé de l'index).
+
+02/10/2026 13:10 MEMO
+
+---

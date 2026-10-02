@@ -11145,3 +11145,30 @@ Audit de L4 (« le reclassement, à blanc », `LIVRAISONS/DICTEE-CORRECTION/L4/`
 01/10/2026 22:45 MEMO
 
 ---
+
+## TOUR 354 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Livré
+
+---
+
+## TOUR 354 — Claude (conscience n°12)
+
+Audit de `LIVRAISONS/DICTEE-CORRECTION/L5/` : diff 44/44 depuis L3, 6.7.0-L5, `reclassementPonctuation` = la règle du rapport, corbeille avant écriture, M→P et `hasConv` retirés, `confirmInsert` (signe → P) ; bancs rejoués (geste L5 VERT = rapport L4, rouge sur L3 ; S1/S3 ; fuzz ; vue élève identique) ; restauration confirmée dans le code de la console. Verdict : ça va, promouvable. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Audit de L5 (« le reclassement réel, la ponctuation en trop automatique, le bouton M→P retiré », `LIVRAISONS/DICTEE-CORRECTION/L5/`) — elle l'a codé sur ton « ok » de la forme (B), mesuré :
+
+242. **Le fichier** : base = L3 promue (`f5d7685b…`, vérifiée ; L4 n'avait rien changé) → **6.7.0-L5, 743 864 o (+1 936)**, md5 `5c743058…` ; 44 lignes retirées, 44 ajoutées ; `node --check` 0 erreur. **Vérifié dans le code** : `reclassementPonctuation` applique **mot pour mot la règle du rapport** (un M sur un signe → P ; un signe en trop → marqué P, compté au forfait, rien d'autre ne bouge) et recalcule par `computeNote` sur la base de la copie ; à l'ouverture, **la corbeille d'abord** (une entrée par copie, avec le chemin exact de la copie et son état d'avant), **puis** l'écriture des copies ; le bouton « M→P » et sa mécanique (`hasConv`) ont disparu — il ne reste qu'un commentaire ; un signe posé « en plus » part au forfait (`confirmInsert`) et s'affiche « +, P ».
+243. **Les bancs, rejoués par moi sur le kit anonymisé** (faux hub, 0 accès au vrai hub) : le banc par le geste **VERT** — à l'ouverture du brevet blanc 3E, **11 copies touchées = les 11 du rapport L4, mêmes notes** ([0, 0, 0, 1, 3, 3, 5,5, 5,5, 5,5, 6,5, 9,5]), **les 17 autres identiques octet pour octet**, 11 entrées en corbeille avec la copie d'avant exacte, la ligne « ✓ 11 copies reclassées (ponctuation) — l'état d'avant est dans la corbeille », le bouton absent, **rouverte : rien de plus** ; une virgule posée en plus → « +, P », note au forfait ; un mot posé en plus → mot en trop ; **sur L3 ce banc est rouge** ; S1 / S3 sans perte ; `fuzz_correction` : 0 bug ; **vue élève identique** à la 6.6.3.
+244. **Une chose déclarée, non prouvée par son banc, que je confirme dans le code de la console** : la restauration d'une entrée « reclassement-ponctuation » depuis la corbeille (elle porte un chemin et un état : la console sait remettre ça — c'est la forme qu'elle restaure). Ton test 4 le vérifie sur une copie.
+245. **Verdict : ça va. Tu peux promouvoir L5.** Captures ci-dessus : l'ouverture du brevet blanc 3E avant / après (la ligne, plus de « M→P ») et une virgule posée en plus (« +, P »). **Ce que ça fera chez toi à la première ouverture de chaque dictée** : exactement le rapport — brevet blanc 3E 11 copies, Banksy 5, Pythagore 2, **tes Dylan 3** (1 gagne 0,5, 2 ne bougent pas) ; 21 entrées en corbeille.
+
+Tes tests, après promotion (https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?v=6.7.0) : 1) ouvre ta dictée des Dylan : « ✓ 3 copies reclassées (ponctuation) » ; le bouton « M→P » n'est plus là ; 2) ferme, rouvre : plus de ligne, rien ne change ; 3) une copie en mode texte → « + » entre deux mots → une virgule → Entrée : « +, P », la note ne perd pas 0,5 ; 4) console → Corbeille : les entrées « reclassement-ponctuation » (une par copie) ; « Restaurer » sur l'une remet la copie d'avant. Ton « promeus », puis « continuer » pour **L6** (la recherche par initiales en fin de copie rapide).
+
+02/10/2026 06:35 MEMO
+
+---

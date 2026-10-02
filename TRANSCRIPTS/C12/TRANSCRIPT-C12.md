@@ -12103,3 +12103,25 @@ Dis « ok » et j'écris L13 et L14 (les captures corrigées suivront avec la li
 02/10/2026 17:50 MEMO
 
 ---
+
+## TOUR 392 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Ok. Les mandats sont à mettre au sas. J'attends ta phrase pour l'exécutant
+
+---
+
+## TOUR 392 — Claude (conscience n°12)
+
+Compléments L13 (verrou de la première séance avec écran d'attente et écoute de l'heure ; hors classe 45 min, bandeau sans phrase de fin ; 55 → 45) et L14 (note aménagée sur les trous, phrase de Paul mot pour mot, aucune étiquette dans le texte, rétroactif) écrits et déposés `MANDATS/COMPLEMENT-DICTEE-CORRECTION-L13-L14.md`. La phrase pour l'exécutante donnée.
+
+Réponse mot pour mot :
+
+Déposé au sas : `MANDATS/COMPLEMENT-DICTEE-CORRECTION-L13-L14.md` (L13 : l'attente de la première séance et les 45 minutes hors classe ; L14 : la note des élèves aménagés sur les mots à compléter — avec tes deux corrections : pas de phrase de fin, pas d'étiquette dans le texte).
+
+La phrase pour l'exécutante : **« Après L11 et L12, les compléments L13 et L14 sont au sas : `MANDATS/COMPLEMENT-DICTEE-CORRECTION-L13-L14.md` — lis-les, puis enchaîne L13 puis L14. »**
+
+02/10/2026 17:55 MEMO
+
+---

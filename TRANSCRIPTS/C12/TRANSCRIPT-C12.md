@@ -11246,3 +11246,32 @@ Puis « continuer » à l'exécutante pour **L7** (la largeur 1100 px, la phrase
 02/10/2026 06:45 MEMO
 
 ---
+
+## TOUR 358 — Paul
+
+Texte de Paul, mot pour mot :
+
+> gros télescopage! en mode rapide, j'avance en utilisant le entrée. sauf que sur de la ponctuation, le entrée marque la ponctuation comme absente... et donc je me retrouve avec ça sur la dictée classiqué
+
+(capture : une copie en mode texte avec « , P », « - P », « , P », « ' E » posées par Entrée)
+
+---
+
+## TOUR 358 — Claude (conscience n°12)
+
+Mesuré : 6.5.0 Entrée = fastSkip (comme Espace) ; L3 : Entrée → fastMark(preselection) sur un signe. Faute de cadrage de la conscience (tour 341, mise en tension oubliée) : registre n°12 · 98. Micro L6b codé par la conscience : Entrée = fastSkip partout, libellés « (M) », ligne d'aide ; banc par le geste VERT (rouge sur L6), fuzz_rapide accordé 0 bug, S1/S3, L6 vert, vue élève identique ; déposé `LIVRAISONS/DICTEE-CORRECTION/L6b/` bit à bit ; mandat mis à jour (base L6b, banc L3 à accorder). Les P indues : pas d'horodatage sur les copies rapides, Paul les retire au clic. Attend le promeus.
+
+Réponse mot pour mot :
+
+Tu as raison, et c'est **ma faute de cadrage**, pas celle de l'exécutante : au tour 341 j'ai pris « j'ai juste à valider avec Entrée » sans mesurer qu'**Entrée était déjà la touche d'avance du mode rapide** (Entrée = correct, mot suivant, comme Espace — c'est dans la 6.5.0). L3 a fait d'Entrée la touche qui valide « Ponct. manquante » sur un signe : chaque signe que tu traverses avec Entrée devient une erreur P. La mise en tension que je dois faire à chaque idée, je ne l'ai pas faite là. Inscrit au registre (n°12 · 98), avec la faute.
+
+249. **Réparé tout de suite, en micro** (`LIVRAISONS/DICTEE-CORRECTION/L6b/`, rien de promu) : **Entrée = correct, mot suivant, partout, même sur un signe** (comme avant L3) ; le bouton mis en avant reste, il dit maintenant « Ponct. manqu. **(M)** » / « Élision **(M)** », et **c'est M qui le valide** (M s'adapte déjà) ; la ligne d'aide dit « Entrée = correct, mot suivant ». 5 lignes changées, 746 933 o, `node --check` 0 erreur.
+250. **Banc par le geste, sur le kit anonymisé** : Entrée sur un point → le mot suivant, **0 erreur** ; Entrée sur une virgule → 0 erreur ; M sur un point → P ; Entrée sur un mot → le suivant ; l'aide et le libellé ; **VERT sur L6b, ROUGE sur la version en ligne** ; le fuzz du mode rapide accordé (Entrée n'est plus une marque) : 0 bug ; S1 / S3 sans perte ; le banc de fin de copie (L6) vert ; vue élève identique. Capture ci-dessus : Entrée sur un point, rien n'est marqué.
+251. **Les copies que ça a touchées** : au hub, les copies corrigées en mode rapide n'ont pas d'horodatage — je ne peux pas distinguer une P posée par Entrée depuis hier 22 h 24 d'une P que tu as voulue. Dans les copies que tu as corrigées depuis (celle de ta capture au moins), **tu retires ces P au clic** (mode texte : clic sur le signe → retirer). Si tu me dis lesquelles, je te liste leurs P.
+252. L'exécutante accorde son banc L3 (« Entrée valide » → « M valide ») à sa prochaine livraison ; je le lui écris dans le mandat.
+
+**Tu peux promouvoir L6b** (`promeus`). Ton test après : une copie en mode rapide → Entrée sur un signe : il passe, rien n'est marqué ; M sur un signe : P.
+
+02/10/2026 07:05 MEMO
+
+---

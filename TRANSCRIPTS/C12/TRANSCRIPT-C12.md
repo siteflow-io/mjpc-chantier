@@ -11876,3 +11876,21 @@ Maintenant j'écris **L9, L11, L12** en un bloc (le cadrage est clos, la maquett
 02/10/2026 15:15 MEMO
 
 ---
+
+## TOUR 383 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok écris les trois. attention tu vas avoir une compression.
+
+---
+
+## TOUR 383 — Claude (conscience n°12)
+
+Compléments L9 (identité : id/creeLe/modifieLe, reprise une fois, invisible élève ; date de correction par dictée dans Réglages ; dette 99 : « Non, laisser dans la corbeille », l'échange ne réveille plus le bandeau), L11 (formes acceptées : règle du texte dans `correction_dictee_textes/<texteKey>/formesAcceptees`, rétroactive, 0 du pavé / bouton / 0 seul, la liste L10 marquée, Préparation « Formes acceptées », Réglages, « forme acceptée » pour l'élève, bilan), L12 (l'aide « ? » : touche ?, F1, Échap, bouton partout, contenu par écran mesuré, « i » seul = illisible, règle « chaque livraison ajoute sa ligne ») écrits et déposés `MANDATS/COMPLEMENT-DICTEE-CORRECTION-L9-L11-L12.md` ; livrés en bloc.
+
+Réponse mot pour mot : le bloc = le fichier déposé, précédé de « Les trois compléments, à coller tel quel à l'exécutante (ils sont au sas) ».
+
+02/10/2026 15:25 MEMO
+
+---

@@ -12173,3 +12173,25 @@ Ma recommandation : **le « + » du pavé** — une seule touche, là où tu es 
 02/10/2026 18:45 MEMO
 
 ---
+
+## TOUR 395 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Ou le 0 de maj 0?
+
+---
+
+## TOUR 395 — Claude (conscience n°12)
+
+Non : Maj + à = le « 0 » de la rangée du haut = du texte (« 10 » pour « dix » télescope). Il faut une touche qui n'écrit jamais : « + » du pavé ou Ctrl+Entrée. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Non, et voici pourquoi : sur ton clavier, **Maj + à, c'est déjà la seule façon d'écrire « 0 » dans la case** — c'est le « 0 » de la rangée du haut, et la rangée du haut, on l'a décidé, c'est du texte (le « 3 » pour « trois »). Si Maj + 0 devenait « forme acceptée », le jour où un élève écrit « 10 » pour « dix », tu tapes 1 puis 0 en haut… et le 0 accepte la forme au lieu de s'écrire. Même télescopage que le 0 du pavé, déplacé.
+
+323. Il faut une touche qui **n'écrit jamais rien dans la case** : c'est pour ça que je te proposais **« + » du pavé** (ou Ctrl + Entrée). Dis-moi laquelle.
+
+02/10/2026 18:50 MEMO
+
+---

@@ -12052,3 +12052,29 @@ Dès tes réponses (312, 313 a/b), je les cadre en L13 (le verrou de l'heure) et
 02/10/2026 16:35 MEMO
 
 ---
+
+## TOUR 390 — Paul
+
+Texte de Paul, mot pour mot :
+
+> 312 oui mais il doit être prévenu qu'il n'a que 45 min. Donc à partir de la seconde ouverture de la dictée après la fin d'une séance d'auto correction il doit savoir qu'il est hors classe et donc que son temps de consultation est limité à 45 minutes. 313. Non, la phrase doit être claire pour l'élève " j'ai corrigé toute ta copie, tu dois faire lautocorrection complète mais la note ne compte que pour les mots que tu avais à compléter le jour de la dictée". Maquette non, mais captures oui
+
+---
+
+## TOUR 390 — Claude (conscience n°12)
+
+Trois captures de proposition (écran d'attente ; bandeau hors classe 45 min avec compte ; dictée aménagée avec la phrase de Paul, cases « ne compte pas », note sur les mots à compléter) déposées en pièces T390 ; cadrage 314-316 ; 313 b pris par défaut (ponctuation hors trous sans coût). Attend son mot pour L13/L14.
+
+Réponse mot pour mot :
+
+Pris. Trois captures de proposition ci-dessus (écrans dessinés, pas l'app — c'est ce que l'exécutante devra rendre) :
+
+314. **L'écran d'attente** (312) : après la coche et « Commencer », tant qu'aucune séance n'a été lancée : « ⏳ Ta correction s'ouvrira quand ton professeur lancera la séance. Reste sur cette page : elle s'ouvrira toute seule, sans rien recharger. » Dès que tu lances l'heure, l'écran bascule sur l'autocorrection.
+315. **Hors classe, 45 minutes** : à **chaque ouverture hors séance après une séance close**, un bandeau en tête : « 🏠 Tu es hors classe : tu as 45 minutes. Il te reste 44 min. Après, tu pourras revenir une autre fois. » — le compte descend ; à zéro, l'écran se ferme sur « Ton temps est fini pour aujourd'hui, tu pourras revenir une autre fois » (sa progression est gardée). La fenêtre actuelle de 55 min devient 45. Pendant une séance en classe, pas de bandeau : c'est l'heure qui compte.
+316. **La dictée aménagée** (313) : en tête, **ta phrase, mot pour mot** : « J'ai corrigé toute ta copie : tu dois faire l'autocorrection complète, mais la note ne compte que pour les mots que tu avais à compléter le jour de la dictée. » Les cases hors des mots à compléter portent une petite marque **« ne compte pas »** (à corriger aussi, sans retrait) ; sa note de dictée est calculée **sur les mots à compléter seulement** (« note de dictée : 7 / 10 (sur les 12 mots à compléter) ») ; la note d'autocorrection /5, elle, porte sur tout. Côté professeur : tu corriges toute la copie comme aujourd'hui ; les erreurs hors trous sont posées, visibles, sans coût ; rétroactif sur les copies aménagées déjà corrigées (1 chez les Dylan). Les signes de ponctuation et mots en trop hors trous : sans coût aussi (tu n'as pas répondu à 313 b — je le prends ainsi, dis-moi si non).
+
+Si ces trois écrans te vont, j'écris L13 (l'attente et les 45 minutes) et L14 (la note aménagée) — à ton mot. L11 et L12 restent à livrer par l'exécutante entre-temps.
+
+02/10/2026 16:45 MEMO
+
+---

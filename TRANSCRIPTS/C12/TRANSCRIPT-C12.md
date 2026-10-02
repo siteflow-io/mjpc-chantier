@@ -11332,3 +11332,27 @@ Reste à toi : **L7b à promouvoir** (« promeus »), puis « continuer » pour 
 02/10/2026 07:40 MEMO
 
 ---
+
+## TOUR 361 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Promeus
+
+---
+
+## TOUR 361 — Claude (conscience n°12)
+
+Promotion 6.7.0-L7b (commit b90749223543, bit à bit) ; protocole : journal, point de retour, où-trouver-quoi ; mandat : base de L8 = L7b. Tests donnés ; questions 257/258/260 reposées.
+
+Réponse mot pour mot :
+
+Promu : `correction_dictee.html` **6.7.0-L7b**, commit `b90749223543`, **bit à bit** (748 284 o, md5 `65d6bd9f…`) ; journal, point de retour (L6b), où-trouver-quoi à jour ; le mandat au sas dit que la base de L8 est L7b (md5 à la commande).
+
+**Tes tests** : https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?v=6.7.0 → 1) une copie en mode texte : elle prend la largeur de ton écran (1100 px), le texte tient sur moins de lignes, rien ne dépasse ; 2) ⇧R : la même largeur ; au-dessus du mot, la phrase entière où il se trouve, le mot en gras ; Entrée avance, M marque ; 3) côté élève (téléphone ou tablette) : rien n'a changé.
+
+Puis « continuer » à l'exécutante pour **L8** (la recherche permanente et le curseur au clavier, en mode texte). Et il me reste tes réponses pour écrire L9 à L11 : **257** (a) « même texte » ? (b) un chiffre seul = un choix ? · **258** une date de correction par dictée, ou aussi par copie ? · **260** (a) la touche 0 ? (b) « signalé, sans retrait » ?
+
+02/10/2026 12:35 MEMO
+
+---

@@ -11472,3 +11472,28 @@ Colle à l'exécutante une ligne : **« Le complément L10 a été corrigé au s
 02/10/2026 13:25 MEMO
 
 ---
+
+## TOUR 367 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Attention sur l'histoire des chiffres. Je ne veux pas être limité à 9, surtout si la forme qui revient le plus souvent est en position 10 par exemple. Quand je tape un nombre à partir de 10, il faut trouver une solution pour que ce soit reconnu comme tel. Sans pour autant télescoper avec l'écriture d'un chiffre ou nombre. Tu vas trop vite, on est encore en cadrage du coup. Pas de mandat sans finir le cadrage
+
+---
+
+## TOUR 367 — Claude (conscience n°12)
+
+Faute reconnue (mandat avant la fin du cadrage) ; complément L10 marqué « EN CADRAGE — NE PAS CODER » au sas. Cadrage : liste complète triée par fréquence, numéros composés au pavé, validation quand le numéro n'est plus préfixe d'un autre ou à Entrée, rangée du haut = texte, Ctrl+chiffres = pavé. Questions restantes : 269, 258, 260 a/b, autres demandes.
+
+Réponse mot pour mot :
+
+Tu as raison : je suis allé trop vite — un mandat avant la fin du cadrage, c'est la faute que le dispositif interdit. Le complément L10 au sas est **marqué « EN CADRAGE — NE PAS CODER »** en première ligne ; dis à l'exécutante de ne pas y toucher (une ligne : « L10 est repassée en cadrage, attends »). On finit de cadrer ici, et seulement ensuite j'écris.
+
+269. **Les nombres au pavé, cadrés.** La liste est **complète** (toutes les formes, numérotées, sans limite), **triée par fréquence** — la forme qui revient le plus est toujours en 1, celle d'après en 2 (j'abandonne mon « même texte en tête », qui aurait pu reléguer la plus fréquente). Au pavé, **les chiffres se composent** : tu tapes 1 puis 2 → le numéro 12 ; **le choix se valide tout seul dès que ce que tu as tapé ne peut plus être le début d'un autre numéro** (liste de 25 formes : tu tapes 3 → aucun numéro de 30 à 39 n'existe → la forme 3 est prise aussitôt ; tu tapes 1 → 10 à 19 existent → l'app attend ; tu tapes 2 → la forme 12 est prise), **ou à Entrée** si tu ne veux pas attendre ; le numéro en cours se voit en surbrillance sur la liste, Échap l'efface. C'est le mécanisme du « ⌨ initiales » du déroulé (un seul candidat possible → c'est lui). Télescopage avec l'écriture d'un nombre : **aucun**, parce que l'écriture passe par la rangée du haut (« 3 » pour « trois » : tu tapes le 3 du haut) et le choix par le pavé ; Ctrl + chiffres fait comme le pavé pour un clavier qui n'en a pas.
+270. **Ce qui est cadré et ne bouge plus** (de tes mots) : les erreurs vivent en objets Firebase à part, sans nom ni classe, qui survivent à la suppression d'une copie ou d'une dictée et à la purge ; la clé est le mot attendu ; toutes les dictées comptent ; la liste apparaît dans la case « ce qu'a écrit l'élève », en mode rapide comme en mode texte ; rien devant l'élève.
+
+**Ce qu'il reste à cadrer avant tout mandat** — une réponse par numéro : **269** : ok, ou quelque chose te gêne ? · **258** : une date de correction par dictée, ou aussi par copie ? · **260** (a) : la touche 0 pour « sans coût » en mode rapide ? · **260** (b) : le mot pour l'élève, « signalé, sans retrait » ? · et si tu as **d'autres choses** pour la correction, c'est maintenant, avant que j'écrive.
+
+02/10/2026 13:30 MEMO
+
+---

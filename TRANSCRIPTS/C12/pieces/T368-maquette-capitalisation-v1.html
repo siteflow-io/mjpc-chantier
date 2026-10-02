@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8"><title>Maquette — la liste des formes déjà vues, choisie au pavé numérique (v1)</title>
+<style>
+:root{--bg:#f7f7f5;--card:#fff;--line:#dadada;--txt:#1d1d1b;--sub:#6b6b66;--muted:#9a9a94;--g:#b42318;--l:#1d4ed8;--ok:#1a7f37;--hl:#fff3bf;--hl2:#ffe08a}
+body{margin:0;background:var(--bg);color:var(--txt);font:16px/1.45 Georgia,"Times New Roman",serif}
+.wrap{max-width:1300px;margin:0 auto;padding:16px 24px 24px;display:grid;grid-template-columns:1fr 360px;gap:18px}
+.wrap>h1,.wrap>.sub{grid-column:1/3}.wrap>h1{margin:0}.wrap>.sub{margin-bottom:4px}
+.col{min-width:0}.aside{display:flex;flex-direction:column;gap:14px}
+h1{font-size:1.25rem;margin:0 0 4px}.sub{color:var(--sub);font-size:.95rem;margin-bottom:18px}
+.head{display:flex;align-items:center;gap:16px;background:#f1f1ee;border-radius:14px;padding:12px 18px;margin-bottom:14px}
+.note{font-size:1.7rem;font-weight:700;color:var(--ok)}
+.ctx{text-align:center;color:var(--sub);margin:10px 0 6px}.ctx b{color:var(--txt);font-size:1.05rem}
+.mot{background:var(--card);border:1px solid var(--line);border-radius:14px;text-align:center;padding:16px 10px 10px;font-size:2rem;font-weight:700}
+.mot small{display:block;font-size:.8rem;font-weight:400;color:var(--muted);margin-top:10px}
+.boutons{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}
+.btn{border:1px solid var(--line);background:#fff;border-radius:12px;padding:10px;font-weight:700;cursor:pointer;font:inherit}
+.btn.g{color:var(--g);background:#fbeaea}.btn.l{color:var(--l);background:#e8eefb}.btn:disabled{opacity:.45;cursor:not-allowed}
+.champ{border:2px solid var(--l);border-radius:14px;padding:14px 16px;background:#f4f7ff;margin-top:12px}
+.champ .titre{font-weight:700;margin-bottom:8px}
+.liste{display:grid;grid-template-columns:repeat(3,1fr);gap:4px 14px;margin:6px 0 12px}
+.forme{display:flex;align-items:baseline;gap:8px;padding:3px 8px;border-radius:8px;cursor:pointer}
+.forme .n{min-width:2.2em;text-align:right;color:var(--muted);font-variant-numeric:tabular-nums}
+.forme .f{font-style:italic}.forme .c{color:var(--muted);font-size:.85rem}
+.forme.candidat{background:var(--hl)}.forme.exact{background:var(--hl2);outline:2px solid #e0b64a}
+.saisie{display:flex;gap:8px;align-items:center}
+.saisie input{flex:1;font:inherit;font-size:1.05rem;padding:9px 12px;border:1px solid var(--line);border-radius:10px}
+.saisie .num{min-width:5.5em;text-align:center;font-weight:700;color:#8a6d00;background:var(--hl2);border-radius:10px;padding:9px 10px;visibility:hidden}
+.saisie .num.on{visibility:visible}
+.garde{color:var(--g);font-size:.9rem;margin-top:6px;min-height:1.2em}
+.aide{color:var(--muted);font-size:.8rem;margin-top:8px}
+.enreg{margin-top:0;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 16px}
+.enreg h2{font-size:.95rem;margin:0 0 6px;color:var(--sub)}
+.enreg ol{margin:0;padding-left:1.2em}.enreg li{margin:2px 0}
+.pave{margin-top:0;border:1px dashed var(--line);border-radius:14px;padding:12px 16px;background:#fafaf8}
+.pave h2{font-size:.95rem;margin:0 0 8px;color:var(--sub)}
+.touches{display:grid;grid-template-columns:repeat(3,56px);gap:6px}
+.touches button{height:44px;border:1px solid var(--line);border-radius:10px;background:#fff;font:inherit;font-weight:700;cursor:pointer}
+.touches button.large{grid-column:span 2}
+.sim{color:var(--muted);font-size:.8rem;margin-top:6px}
+</style></head><body><div class="wrap">
+<h1>Maquette — la liste des formes déjà vues, choisie au pavé numérique</h1>
+<div class="sub">Le mode rapide, sur le mot « trois ». Tout est simulé : aucune écriture, aucune lecture ailleurs que dans cette page. Les formes de la liste sont fictives.</div>
+
+<div class="col">
+<div class="head"><div class="note">20</div><div><b>ZZTEST ALPHA Anna</b><div style="color:var(--sub);font-size:.85rem" id="compte">0 err. · 0 pts</div></div></div>
+<div class="ctx">Elle a vu le mot <b>trois</b> fois , et chaque fois elle a souri .</div>
+<div class="mot" id="mot">trois<small>Mot 7/144 · G ou L ouvre la case « ce qu'a écrit l'élève »</small></div>
+<div class="boutons">
+  <button class="btn g" id="bG" title="G : erreur de grammaire sur ce mot — ouvre la case où tu recopies ce qu'a écrit l'élève">G Grammaire</button>
+  <button class="btn l" id="bL" title="L : erreur de lexique sur ce mot — ouvre la case où tu recopies ce qu'a écrit l'élève">L Lexique</button>
+</div>
+
+<div class="champ" id="champ" hidden>
+  <div class="titre" id="titre">Marquage L — Qu'a écrit l'élève ?</div>
+  <div class="liste" id="liste" title="Les formes déjà vues sur ce mot dans toutes tes dictées, de la plus fréquente à la plus rare, avec leur nombre. Le pavé numérique choisit (les chiffres se composent : 1 puis 2 = la 12e) ; un chiffre de la rangée du haut s'écrit dans la case."></div>
+  <div class="saisie">
+    <input id="in" type="text" autocomplete="off" spellcheck="false" placeholder="recopie ce qu'a écrit l'élève — ou choisis au pavé numérique" title="Ce que l'élève a écrit, tel quel. Le mot juste est refusé. Un chiffre tapé ici (rangée du haut) est du texte.">
+    <div class="num" id="num" title="Le numéro en cours de composition au pavé"></div>
+    <button class="btn" id="valider" title="Entrée : prend ce qui est dans la case — ou, si un numéro est en cours, la forme de ce numéro">✓ Valider</button>
+  </div>
+  <div class="garde" id="garde"></div>
+  <div class="aide">Pavé numérique = choisir (les chiffres se composent ; la forme est prise dès que le numéro ne peut plus être le début d'un autre, ou à Entrée) · rangée du haut = écrire · Ctrl + chiffre = comme le pavé · Échap = effacer le numéro, puis fermer la case</div>
+</div>
+
+</div>
+<div class="aside">
+<div class="enreg"><h2>Ce qui s'enregistrerait (simulé — rien ne part)</h2><ol id="log"><li style="color:var(--muted)">rien encore</li></ol></div>
+
+<div class="pave"><h2>Pavé numérique simulé — pour essayer sans pavé (un vrai pavé fait pareil)</h2>
+<div class="touches" id="touches"></div>
+<div class="sim">Ces touches envoient exactement ce qu'envoie le pavé numérique d'un clavier (code « Numpad… »).</div></div>
+</div>
+</div>
+<script>
+/* Les formes déjà vues sur « trois » — fictives, triées par fréquence (la plus fréquente est toujours la 1). */
+var FORMES=[["3",11],["troi",9],["troix",6],["trois,",5],["troie",4],["troit",3],["trroi",3],["3.",2],["troid",2],["toris",2],["troisse",1],["troids",1],["trois'",1],["thrrois",1]];
+var MOT="trois", type=null, errors=[], numero="", ouvert=false;
+var $=function(id){return document.getElementById(id)};
+function motJuste(s,att){return (s||"").trim().toLowerCase()===att.toLowerCase()}
+function log(t){var ol=$('log'); if(ol.children.length===1&&ol.children[0].style.color){ol.innerHTML=''} var li=document.createElement('li'); li.textContent=t; ol.appendChild(li)}
+function rendreListe(){
+  var ul=$('liste'); ul.innerHTML='';
+  FORMES.forEach(function(f,i){
+    var n=i+1, d=document.createElement('div'); d.className='forme';
+    if(numero&&String(n).indexOf(numero)===0) d.classList.add('candidat');
+    if(numero&&String(n)===numero) d.classList.add('exact');
+    d.title='Clic : prendre cette forme. Au pavé : '+n;
+    d.innerHTML='<span class="n">'+n+'</span><span class="f">'+f[0].replace(/</g,'&lt;')+'</span><span class="c">×'+f[1]+'</span>';
+    d.onclick=function(){prendre(n)}; ul.appendChild(d);
+  });
+  $('num').textContent=numero?('n° '+numero):''; $('num').classList.toggle('on',!!numero);
+}
+function ouvrir(t){type=t; ouvert=true; $('champ').hidden=false; $('titre').textContent='Marquage '+t+' — Qu\'a écrit l\'élève ? (facultatif)'; $('in').value=''; numero=''; $('garde').textContent=''; rendreListe(); $('in').focus()}
+function fermer(){ouvert=false; $('champ').hidden=true; numero=''; type=null; $('mot').focus()}
+function enregistrer(forme){
+  if(motJuste(forme,MOT)){$('garde').textContent='C\'est le mot juste : recopie ce que l\'élève a écrit.'; return}
+  errors=errors.filter(function(e){return e.idx!==7}); var e={idx:7,type:type,word:MOT}; if(forme.trim())e.fautif=forme.trim(); errors.push(e);
+  var i=FORMES.findIndex(function(f){return f[0].toLowerCase()===forme.trim().toLowerCase()});
+  if(forme.trim()){ if(i>=0)FORMES[i][1]++; else FORMES.push([forme.trim(),1]); FORMES.sort(function(a,b){return b[1]-a[1]||a[0].localeCompare(b[0])}) }
+  $('compte').textContent=errors.length+' err. · '+(type==='G'?1:0.5)+' pts';
+  log('erreur '+type+' sur « '+MOT+' » — ce qu\'a écrit l\'élève : « '+(forme.trim()||'(rien)')+' »'+(forme.trim()?' — et un objet « forme » de plus (mot « '+MOT+' », forme « '+forme.trim()+' », '+type+')':''));
+  fermer();
+}
+function prendre(n){var f=FORMES[n-1]; if(!f)return; log('choix au pavé : n° '+n+' → « '+f[0]+' »'); enregistrer(f[0])}
+function chiffrePave(c){
+  if(!ouvert)return; numero+=c;
+  var exact=FORMES.length>=+numero, prefixe=FORMES.some(function(_,i){var s=String(i+1);return s!==numero&&s.indexOf(numero)===0});
+  if(!exact){ $('garde').textContent='Pas de forme n° '+numero+'.'; numero=''; rendreListe(); return }
+  if(prefixe){ rendreListe(); return }            /* un autre numéro peut encore commencer ainsi : on attend */
+  var n=+numero; numero=''; rendreListe(); prendre(n);
+}
+document.addEventListener('keydown',function(e){
+  if(!ouvert){ if(e.key==='g'||e.key==='G'){ouvrir('G');e.preventDefault()} else if(e.key==='l'||e.key==='L'){ouvrir('L');e.preventDefault()} return }
+  var dansCase=(e.target===$('in'));
+  if(e.code&&e.code.indexOf('Numpad')===0&&/^\d$/.test(e.key)){ e.preventDefault(); chiffrePave(e.key); return }   /* le pavé = choisir */
+  if(e.ctrlKey&&/^\d$/.test(e.key)){ e.preventDefault(); chiffrePave(e.key); return }                             /* Ctrl + chiffre = comme le pavé */
+  if(e.key==='Enter'){ e.preventDefault(); if(numero){var n=+numero; numero=''; rendreListe(); prendre(n)} else enregistrer($('in').value); return }
+  if(e.key==='Escape'){ e.preventDefault(); if(numero){numero=''; rendreListe()} else fermer(); return }
+  /* un chiffre de la rangée du haut, dans la case : du texte, rien de spécial */
+});
+$('bG').onclick=function(){ouvrir('G')}; $('bL').onclick=function(){ouvrir('L')}; $('valider').onclick=function(){ if(numero){var n=+numero; numero=''; rendreListe(); prendre(n)} else enregistrer($('in').value) };
+/* le pavé simulé envoie de vrais événements clavier avec le code Numpad */
+['7','8','9','4','5','6','1','2','3','0'].forEach(function(c){var b=document.createElement('button'); b.textContent=c; if(c==='0')b.className='large'; b.title='Comme la touche '+c+' du pavé numérique'; b.onclick=function(){document.dispatchEvent(new KeyboardEvent('keydown',{key:c,code:'Numpad'+c,bubbles:true}))}; $('touches').appendChild(b)});
+var be=document.createElement('button'); be.textContent='↵'; be.title='Entrée du pavé'; be.onclick=function(){document.dispatchEvent(new KeyboardEvent('keydown',{key:'Enter',code:'NumpadEnter',bubbles:true}))}; $('touches').appendChild(be);
+</script></body></html>

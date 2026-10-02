@@ -11722,3 +11722,32 @@ Si tu préfères pouvoir aussi en ajouter une dans Réglages (avant de corriger,
 02/10/2026 14:30 MEMO
 
 ---
+
+## TOUR 377 — Paul
+
+Texte de Paul, mot pour mot :
+
+> oui il faut aussi ça: que je puisse dire d'avance quels mots je tolère écrits différement. Donc il faut que j'aie la dictée, avec les mêmes places de mots, et que je puisse cliquer dessus et entrer la ou les formes acceptées. à cadrer. Par ailleurs, dès lors que je mets 0 après avoir dit la catégorie d'une erreur, ça doit se répercuter sur l'ensemble des copies du même texte. je n'ai pas à le refaire à chaque copie. Si la tolérance vaut pour un, elle vaut pour tous. par ailleurs, vu que je n'avais pas ce mécanisme, regarde comment je me suis adapté entre le paquet des dylan et celui des franklin (sachant que celui des franklin, j'en ai corrigés 4 ou 5 ce matin entre 6h et 8h et j'ai repris mon paquet cet après midi).
+
+---
+
+## TOUR 377 — Claude (conscience n°12)
+
+Mesuré au hub (Dylan 24 copies / Franklin 13, même texte) : « cadavre » G ×11 chez les Dylan vs G ×2 + L ×1 ; « ford »/« souville » L chez les Dylan vs A ; « 3 » L ×6 vs rien ; « 2 » A/L chez les Franklin. Cadrage : 289 la forme acceptée = règle du texte, partagée, rétroactive, 0 posé une fois ; 290 « Formes acceptées » dans Préparation (texte cliquable comme la version aménagée), fenêtre par mot, soulignement vert. Maquette v3 proposée. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Mesuré d'abord — les deux paquets sont au hub (même texte, les Dylan 24 copies, les Franklin 13) ; voici comment tu t'es adapté, mot par mot, sans aucun nom :
+
+288. **« cadavre »** : chez les Dylan, **11 copies marquées G** (1 point chacune) ; chez les Franklin, 2 G et **1 L** (0,5) — tu as commencé à baisser le coût, mais onze Dylan ont perdu le point. **« ford », « souville »** (Fort de Souville) : Dylan **L ×2** chacun (0,5) ; Franklin **A** (attention, sans retrait) — tu as fait à la main ce que « forme acceptée » fera. **« 3 » pour « trois »** : Dylan L ×6 ; Franklin rien de marqué. **« 2 » pour « deux »** : Franklin A ×2 et L ×1 ; Dylan rien. Le reste (entendus, venus, amené, couché, exhument, goute, puenteur, abrit/abris, kilomètre…) est corrigé pareil des deux côtés. **Conclusion** : la rétroactivité sur le même texte que tu demandes n'est pas un confort, c'est ce qui remet les Dylan au niveau des Franklin — « cadavre », « ford », « souville » acceptés une fois, et 15 copies des Dylan récupèrent leurs points.
+
+**Les deux règles, cadrées :**
+
+289. **Une tolérance vaut pour tous, sur le même texte.** La forme acceptée n'est plus une règle de la dictée : c'est **une règle du texte** — toutes les dictées qui ont ce texte (les Dylan, les Franklin, toute copie future du même texte) la partagent, **sur toutes leurs copies, déjà corrigées ou à venir**, notes recalculées sur place. Le 0 du pavé la pose une fois, tu ne le refais jamais. Dans Réglages d'une dictée, tu vois « les formes acceptées de ce texte (partagées avec : Dictée n°1 des Franklin) », tu retires pour tous. Pour une dictée d'un **autre** texte, la forme est proposée (« acceptée dans « … » »), le 0 l'accepte là aussi.
+290. **Dire d'avance ce que tu tolères** : dans **Préparation** de la dictée (à côté de « Paramétrer une version aménagée », qui montre déjà le texte mot par mot cliquable — c'est le même geste), un bouton « **Formes acceptées** » : le texte à ses places, tu cliques un mot, une petite fenêtre « formes acceptées pour « cadavres » : *cadavre* ✕ · [ajouter une forme] », Entrée ajoute, ✕ retire ; les mots qui ont une tolérance sont soulignés en vert avec leur compte ; mêmes règles qu'au 0 (une règle du texte, pour tous, rétroactive, la garde du mot juste). Pendant la correction, la liste des formes déjà vues montre ces formes « acceptée » dès la première copie.
+
+Si 289-290 te vont, je mets à jour la maquette (v3 : l'écran « Formes acceptées » dans Préparation, la règle partagée entre Dylan et Franklin) ; puis le cadrage de L9 / L11 / L12 est fini.
+
+02/10/2026 14:50 MEMO
+
+---

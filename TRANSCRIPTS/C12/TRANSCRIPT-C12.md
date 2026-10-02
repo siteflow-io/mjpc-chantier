@@ -11522,3 +11522,27 @@ Joue-la et dis-moi ce qui va, ce qui ne va pas — puis les réponses encore ouv
 02/10/2026 13:40 MEMO
 
 ---
+
+## TOUR 369 — Paul
+
+Texte de Paul, mot pour mot :
+
+> je ne comprends rien de ça, dans ta maquette: Ce qui s'enregistrerait (simulé — rien ne part) 1. choix au pavé : n° 8 → « 3. » 2. erreur L sur « trois » — ce qu'a écrit l'élève : « 3. » — et un objet « forme » de plus (mot « trois », forme « 3. », L)
+
+---
+
+## TOUR 369 — Claude (conscience n°12)
+
+Jargon de plomberie dans le journal (contraire au protocole) : maquette v2 (md5 dc8d3e5e3f15), le journal en phrases de Paul (« Anna : une erreur de lexique sur « trois » — elle a écrit « 3. » (pris dans la liste, n° 8). Pour les prochains élèves, « 3. » compte maintenant ×3. ») ; banc adapté VERT 10/10 ; déposée T369.
+
+Réponse mot pour mot :
+
+C'était du jargon de plomberie dans la colonne de droite — contraire au protocole des maquettes, je l'ai réécrite. **v2** ci-dessus (md5 `dc8d3e5e3f15`, pièce T369 au sas). La même chose dit maintenant :
+
+> Anna : une erreur de lexique sur « trois » — elle a écrit « 3. » (pris dans la liste, n° 8). Pour les prochains élèves, « 3. » compte maintenant ×3.
+
+Donc, en une phrase : ce que tu as marqué chez cet élève, ce qu'il a écrit, d'où ça vient (la liste, ou tapé), et ce que ça change pour les suivants (le compte de cette forme monte). Le titre de la colonne : « Ce que la correction retient ». Les gestes sont les mêmes (le banc, 10 vérifications, vert). Rejoue-la et dis-moi.
+
+02/10/2026 13:45 MEMO
+
+---

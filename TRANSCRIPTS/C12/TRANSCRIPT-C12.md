@@ -12270,3 +12270,30 @@ Puis « continuer » à l'exécutante pour **L12** (l'aide « ? » qui suit l'é
 02/10/2026 20:10 MEMO
 
 ---
+
+## TOUR 399 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Livré
+
+---
+
+## TOUR 399 — Claude (conscience n°12)
+
+Audit de `LIVRAISONS/DICTEE-CORRECTION/L12/` : diff 5/146, 6.7.0-L12, « ? » plus alias d'Illisible, F1 interceptée, 9 contextes, aide côté professeur seulement ; banc L12 VERT 15/15, L11, L10, L8, L6b, L3, S1/S3, vue élève identique ; deux défauts réglés en route ; captures regardées. Verdict : ça va, promouvable. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Audit de **L12** (« l'aide « ? » qui suit l'écran », `LIVRAISONS/DICTEE-CORRECTION/L12/`), mesuré :
+
+329. **Le fichier** : base = L11 promue (`fe8f030b…`, vérifiée) → **6.7.0-L12, 809 581 o (+13 782)**, md5 `89a82a82…` ; 5 lignes retirées, 146 ajoutées ; `node --check` 0 erreur. **Vérifié dans le code** : « ? » n'est plus un alias d'Illisible dans le mode rapide (0 occurrence) ; F1 est interceptée ; neuf contextes d'aide, chaque ligne prise du code ; l'aide est rendue **seulement côté professeur** (l'accueil, l'écran de la dictée, l'écran de la copie) — aucun composant élève ne la porte ; les lignes de L9 et L11 y sont.
+330. **Les bancs, rejoués par moi sur le kit anonymisé** : le banc par le geste **VERT, 15 vérifications** — l'accueil (« ? », le bouton, Échap) ; la grille (F1 ; l'ancien « ? » de la barre absent) ; **l'aide change sans se fermer** quand l'onglet change dessous ; le mode texte menu fermé (G pendant l'aide ne lance aucune recherche) et menu ouvert (Échap ferme l'aide et laisse le menu) ; **les touches du menu pressées une à une** font ce que l'aide dit ; le mode rapide : son tableau exact **et chaque touche pressée** (Espace et Entrée avancent, Retour recule, i → I, A, M, G et L ouvrent la case, ⇧R) ; « ? » ne pose plus Illisible ; la case (F1, Échap laisse la case, « ? » s'y écrit) ; la fin de copie ; Préparation, formes acceptées, version aménagée ; Réglages ; Données ; « Nouveautés » ; le bouton sur l'écran de la copie ; 0 erreur. L11, L10, L8, L6b, L3 : verts sur L12 ; S1 / S3 ; **vue élève identique** à la 6.6.3.
+331. **Deux défauts trouvés en route, réglés** (l'aide qui disparaissait sur l'écran de la copie ; Échap qui fermait aussi la case). Pas de dette restante.
+332. **Verdict : ça va. Tu peux promouvoir L12** — et avec elle les compléments L9-L11-L12 sont livrés ; restent L13 et L14 (au sas). Captures ci-dessus : l'aide sur le mode texte, le mode rapide, la case.
+
+Tes tests, après promotion (https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?v=6.7.0) : 1) l'accueil : le « ? » rond en haut à droite ; tape « ? » : ce que tu peux faire ; Échap ; 2) une copie → ⇧R → « ? » : le tableau du mode rapide ; tape G : rien dessous ; Échap ; 3) G (la case) → F1 : l'aide de la case ; Échap : l'aide se ferme, la case reste ; « ? » s'écrit dans la case ; 4) « i » pose Illisible, « ? » n'en pose plus ; 5) Préparation, Réglages, Données : le « ? » dit chaque fois où tu es. Puis « continuer » pour **L13**.
+
+02/10/2026 21:50 MEMO
+
+---

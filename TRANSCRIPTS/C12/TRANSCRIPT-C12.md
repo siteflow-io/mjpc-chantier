@@ -12219,3 +12219,30 @@ La phrase pour l'exécutante : **« Pour 258 : non — aucun raccourci pour "for
 02/10/2026 18:55 MEMO
 
 ---
+
+## TOUR 397 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Livré
+
+---
+
+## TOUR 397 — Claude (conscience n°12)
+
+Audit de `LIVRAISONS/DICTEE-CORRECTION/L11/` : diff 16/168, 6.7.0-L11, aucun raccourci d'acceptation (bouton seul, 0 = chiffre), règle dans correction_dictee_textes (préservé), élève « forme acceptée » seulement ; banc L11 VERT 16/16 (base L9 fournie au chemin attendu), L10, L9, L8, L6b, S1/S3, vue élève ; cinq défauts réglés en route ; captures regardées. Verdict : ça va, promouvable. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Audit de **L11** (« les formes acceptées », `LIVRAISONS/DICTEE-CORRECTION/L11/`), mesuré :
+
+325. **Le fichier** : base = L9 promue (`4f0ecbca…`, vérifiée) → **6.7.0-L11, 795 799 o (+22 236)**, md5 `fe8f030b…` ; 16 lignes retirées, 168 ajoutées ; `node --check` 0 erreur. **Vérifié dans le code** : **aucun raccourci clavier n'accepte une forme** (le bouton seul ; ni « + », ni « . », ni 0 : le 0 du pavé reste un chiffre dans la composition) ; la règle vit dans `correction_dictee_textes/<texte>/formesAcceptees`, nœud déjà préservé par la purge ; l'élève ne voit que « forme acceptée » (le mot technique `sansCout` n'apparaît que dans le code, jamais dans un texte) ; c'est bien ton point 3 corrigé qu'elle a codé.
+326. **Les bancs, rejoués par moi sur le kit anonymisé** : le banc par le geste **VERT, 16 vérifications** — Préparation : « Syllabes » refusé, « syllabe » ajoutée → « 3 copies recalculées (ici et dans « ZZTEST jumelle ») », les copies des deux dictées sans coût, **les notes 5 → 10 / 9,5 / 10 puis, ✕, 9 / 8,5 / 9** ; en correction : le bouton inactif case vide ; « syllabe » + bouton → le message, l'erreur sans coût, les autres copies aussi ; le même bouton, devenu « ✕ ne plus accepter », l'annule ; un autre élève : « 1 syllabe ×4 acceptée », pavé 1 → sans coût ; **le 0 reste un chiffre** ; Réglages « partagées avec » ; l'autre texte : « acceptée dans « … » » + « accepter ici » ; le bilan exporté ; retirer → coût revenu ; **la feuille de l'élève comparée mot à mot à la L9 : deux différences, « −1 » → « forme acceptée » sous le mot et dans la liste, rien d'autre** ; son autocorrection : la carte « forme acceptée » ; L10, L9, L8, L6b : verts sur L11 ; S1 / S3 ; **vue élève identique** à la 6.6.3.
+327. **Cinq défauts trouvés en route, réglés dans la livraison** (Échap dans la fenêtre de Préparation ; le message en mode rapide ; l'écran de la copie sans l'identifiant de sa dictée ; la carte d'erreur de l'autocorrection ordinateur ; la feuille qui affichait encore « −1 ») — pas de dette restante. Les lignes de l'aide « ? » viendront avec L12, qui la crée.
+328. **Verdict : ça va. Tu peux promouvoir L11.** Captures ci-dessus : la case avec le bouton ; Préparation → « ✓ Formes acceptées » (« syllabes » souligné, « 3 copies recalculées ») ; la feuille de l'élève avec « forme acceptée ».
+
+Tes tests, après promotion (https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?v=6.7.0) : 1) les Dylan → Préparation → « ✓ Formes acceptées » → clique « cadavres » → tape « cadavre », Entrée : le mot se souligne, « n copies recalculées (ici et dans « … Franklin ») », les notes remontent (11 Dylan, 3 Franklin) ; 2) ✕ sur la pastille : elles redescendent ; refais l'ajout ; 3) mode rapide, sur « cadavres » : G, « cadavre », clique « ✓ forme acceptée (ce texte) » (ou le pavé : la forme est déjà marquée « acceptée ») ; 4) le 0 du pavé compose toujours ; 5) Réglages : « partagées avec… », « retirer » ; 6) côté élève : « forme acceptée » sur sa feuille et dans son autocorrection. Puis « continuer » pour **L12** (l'aide « ? »).
+
+02/10/2026 20:05 MEMO
+
+---

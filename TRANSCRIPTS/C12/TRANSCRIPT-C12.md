@@ -11196,3 +11196,29 @@ Puis « continuer » à l'exécutante pour **L6** (la recherche par initiales en
 02/10/2026 06:28 MEMO
 
 ---
+
+## TOUR 356 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Livré
+
+---
+
+## TOUR 356 — Claude (conscience n°12)
+
+Audit de `LIVRAISONS/DICTEE-CORRECTION/L6/` : diff 1/20, 6.7.0-L6, garde « dans un champ », `rechFin`, `onOuvrirRapide` ; banc L6 par le geste VERT (rouge sur L5) ; fuzz_rapide 0 bug ; S1/S3 ; vue élève identique. Verdict : ça va, promouvable. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Audit de L6 (« la recherche par initiales en fin de copie, en mode rapide », `LIVRAISONS/DICTEE-CORRECTION/L6/`), mesuré :
+
+246. **Le fichier** : base = L5 promue (`5c743058…`, vérifiée) → **6.7.0-L6, 746 811 o (+2 947)**, md5 `c28534fa…` ; 1 ligne retirée, 20 ajoutées ; `node --check` 0 erreur. **Vérifié dans le code** : le clavier du mode rapide **se tait dès que le curseur est dans un champ** (input, textarea, select, zone éditable) ; le champ des initiales sur l'écran « Terminé ! » prend le curseur ; Entrée ou un clic ouvre l'élève **en mode rapide** (`onOuvrirRapide`), pas la grille.
+247. **Les bancs, rejoués par moi sur le kit anonymisé** : le banc par le geste **VERT** — fin de copie : le champ est là **et a le curseur** ; « zt » propose les trois ZZTEST, l'absent dit « absent », la copie faite « ✔ corrigée » ; les lettres tapées (dont g, l) **n'ajoutent aucune erreur** à la copie finie ; « zs » → le premier proposé ; **Entrée → l'élève suivant en mode rapide**, où G pose bien une erreur sur lui, la copie précédente intacte ; **sur L5 ce banc est rouge** ; `fuzz_rapide` : 0 bug ; S1 / S3 sans perte ; **vue élève identique** à la 6.6.3.
+248. **Verdict : ça va. Tu peux promouvoir L6.** Captures ci-dessus : avant (L5 : « Terminé ! » sans champ), après (le champ, « zs » → l'élève proposé), et l'élève ouvert en mode rapide.
+
+Tes tests, après promotion (https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?v=6.7.0) : 1) une copie en mode rapide → finis-la (ou « Terminer → ») : le champ des initiales a le curseur ; 2) tape les initiales d'un élève de ton tas : il est proposé (un absent dit « absent », une copie faite « ✔ corrigée ») ; rien n'a bougé sur la copie finie ; 3) Entrée : l'élève s'ouvre directement en mode rapide. Ton « promeus », puis « continuer » pour **L7** (la largeur 1100 px et la phrase entière en mode rapide).
+
+02/10/2026 06:45 MEMO
+
+---

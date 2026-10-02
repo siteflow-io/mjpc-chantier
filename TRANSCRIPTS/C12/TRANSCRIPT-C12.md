@@ -11172,3 +11172,27 @@ Tes tests, après promotion (https://siteflow-io.github.io/monsieurjaipascompris
 02/10/2026 06:35 MEMO
 
 ---
+
+## TOUR 355 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Promeus
+
+---
+
+## TOUR 355 — Claude (conscience n°12)
+
+Promotion 6.7.0-L5 (commit a9c379ce2688, bit à bit) ; protocole : journal, point de retour, où-trouver-quoi. Tests donnés ; L6 ensuite.
+
+Réponse mot pour mot :
+
+Promu : `correction_dictee.html` **6.7.0-L5**, commit `a9c379ce2688`, **bit à bit** (743 864 o, md5 `5c743058…`) ; journal, point de retour (L3), où-trouver-quoi à jour (aucune dette à marquer).
+
+**Tes tests** : https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?v=6.7.0 → 1) ouvre ta dictée des Dylan : « ✓ 3 copies reclassées (ponctuation) — l'état d'avant est dans la corbeille » ; le bouton « M→P » n'est plus là ; 2) ferme, rouvre : plus de ligne, rien ne change ; 3) une copie en mode texte → « + » entre deux mots → une virgule → Entrée : « +, P », la note ne perd pas 0,5 ; 4) console → Corbeille : les entrées « reclassement-ponctuation » (une par copie) ; « Restaurer » sur l'une remet la copie d'avant. (Les trois autres dictées — brevets blancs — se reclasseront aussi à leur première ouverture : 11, 5, 2 copies.)
+
+Puis « continuer » à l'exécutante pour **L6** (la recherche par initiales en fin de copie, en mode rapide).
+
+02/10/2026 06:28 MEMO
+
+---

@@ -11564,3 +11564,28 @@ Réponse mot pour mot : le bloc = le complément déposé, précédé de « Le c
 02/10/2026 14:00 MEMO
 
 ---
+
+## TOUR 371 — Paul
+
+Texte de Paul, mot pour mot :
+
+> cadrage L9 et L11: redis moi tes questions précises, pas compliquées.
+
+---
+
+## TOUR 371 — Claude (conscience n°12)
+
+Quatre questions courtes : 273 date par dictée ou par copie ; 274 identité (créée le, modifiée le, par) suffit ? ; 275 touche 0 ; 276 « signalé, sans retrait ». Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Quatre questions, une réponse courte chacune :
+
+273. **La date de correction que voit l'élève** (sur sa feuille et dans sa liste) : tu la règles **une fois pour toute la dictée** (toutes les copies affichent la même) — ou veux-tu aussi pouvoir la changer **copie par copie** ?
+274. **L'identité de la copie** (invisible pour l'élève) : « créée le », « modifiée le », « modifiée par (texte / rapide / reclassement) » — ça te suffit, oui ou non ?
+275. **Erreur sans coût, le geste au clavier en mode rapide** : la touche **0** (zéro point), juste après avoir posé l'erreur — oui, ou une autre touche ?
+276. **Erreur sans coût, ce que lit l'élève** à côté de l'erreur : « signalé, sans retrait » — oui, ou d'autres mots ?
+
+02/10/2026 14:05 MEMO
+
+---

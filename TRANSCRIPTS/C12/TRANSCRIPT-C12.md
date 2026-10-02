@@ -11275,3 +11275,34 @@ Tu as raison, et c'est **ma faute de cadrage**, pas celle de l'exécutante : au 
 02/10/2026 07:05 MEMO
 
 ---
+
+## TOUR 359 — Paul
+
+Texte de Paul, mot pour mot :
+
+> l7 livré, tu promouvras tout en même temps. Dans le cadrage, j'ai oublié quelque chose d'important: déjà, l'horodatage des copies bien sûr, mais invisible sur la copie de l'élève (données internes, identité de la copie, c'est un objet, comme n'importe quel élément "volant" dans le site). Chaque copie doit avoir une identité (regarde une diapo par exemple, ou un chapitre, tout a une identité). Par ailleurs, pourquoi me reparles tu de L3? enfin, il faudrait que lorsque je corrige, quel que soit le mode, je bénéficie de ma correction antérieure, et ce, sur toutes les dictées similaires. Je m'explique: j'ai corrigé les dylan. j'ai dupliqué la dictée pour créer les franklin. Ce que je veux, c'est que dès que j'entre une erreur, si je reclique dans une copie ultérieure sur le même mot, j'ai la liste numérotées des erreurs faites sur ce mot par les élèves précédents. pourquoi numérotée, parce que comme ça je tape au pavé numérique la forme fautive similaire (cette fonctionnalité sert lorsque les élèves font toujours les mêmes erreurs sur les mêmes mots) et comme ça je gagne encore du temps, et ma correction devient vertueuse car je capitalise sur mon repérage antérieur. fais d'abord la promotion bloquante du l6b afin que je retrouve mon entrée clavier et mon m en validation, puis dis moi si on peut promouvoir l7, puis réponds moi sur le reste
+
+---
+
+## TOUR 359 — Claude (conscience n°12)
+
+L6b promue (commit bfef40d1a605, bit à bit ; registre 98 ✔, journal, point de retour). L7 (base L6) rebasée en L7b (= L7 + L6b ; diff prouvé identique à L6→L7 hors version), déposée au sas, bancs rejoués (L7 VERT : 1100 px, 0 débordement, écrans élèves au pixel ; L6b, L6, S1/S3, fuzz, vue élève). « L3 » = le banc de l'exécutante à accorder. Cadrage N7 (identité : id, creeLe, modifieLe, modifiePar ; invisible élève ; reprise une fois) et N8 (formes fautives numérotées par mot sur les dictées de même texte, pavé numérique ; télescopages ; questions a/b). Déposé : L7b et sa note au sas, ce transcript.
+
+Réponse mot pour mot :
+
+Dans l'ordre que tu demandes.
+
+253. **L6b est promue** (commit `bfef40d1a605`, bit à bit, 746 933 o) : Entrée avance partout, M valide le bouton mis en avant ; registre 98 ✔, journal, point de retour. Recharge https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?v=6.7.0 : la ligne d'aide dit « Entrée = correct, mot suivant ».
+254. **L7 : ça va, mais pas telle quelle** — elle a été livrée sur la base L6, **avant** le micro L6b : la promouvoir aurait remis le bug d'Entrée. J'ai donc fait **L7b = L7 + les cinq lignes de L6b** (déposée au sas à côté, `LIVRAISONS/DICTEE-CORRECTION/L7/correction_dictee_L7b.html`, 748 284 o, md5 `65d6bd9f…`), avec la preuve : **le diff de L6b vers L7b est ligne pour ligne celui de L6 vers L7** (27 lignes, seule la ligne de version diffère). Audit de L7 : `.container` intact (les écrans élèves le partagent), une classe propre `corr-prof` à 1100 px pour les deux écrans du professeur, la phrase entière en mode rapide ; **rejoué sur L7b** : largeur 1100 à 1366 et 1920 px, 0 bouton hors cadre, 0 défilement de côté ; **les écrans élèves identiques au pixel** ; Entrée avance (L6b) ; fin de copie (L6) ; S1 / S3 ; fuzz rapide 0 bug ; vue élève identique. Captures ci-dessus (mode texte et mode rapide à 1366 px). **Tu peux promouvoir L7b** (`promeus` : je pousse L7b).
+255. **« Pourquoi L3 ? »** — pas la livraison, qui est bonne : **son banc** (`banc_L3_geste.py`, un test de l'exécutante) vérifie encore « Entrée sur un point → P » ; depuis L6b c'est faux par construction, donc ce test est rouge et doit devenir « Entrée avance, M → P ». C'est écrit dans le mandat pour sa prochaine livraison. Rien d'autre.
+
+**Ton cadrage, mis en tension avec ce qui existe :**
+
+256. **L'identité et l'horodatage des copies (N7)** — tu as raison, et c'est ce qui m'a manqué ce matin pour retrouver les P posées par Entrée. Mesuré : une copie n'a aujourd'hui qu'un `timestamp` posé par l'enregistrement du mode texte (pas par le mode rapide) ; les objets du site ont un `id` (préfixe + horodatage + aléa) et des `creeLe` / `modifieLe`. Je propose : chaque copie porte **`id`** (posé à sa création, jamais changé), **`creeLe`**, **`modifieLe`** (à chaque geste, dans les deux modes et au reclassement) et **`modifiePar`** (« texte », « rapide », « reclassement », « restauration ») — **invisibles sur l'écran et la feuille de l'élève** (le banc le prouve), portés dans le bilan exporté ; les copies déjà au hub reçoivent leur identité une fois à l'ouverture (`creeLe` = leur `timestamp` s'il existe, sinon « inconnu »). La duplication d'une dictée ne copie jamais une copie, donc jamais une identité. **Question** : l'historique geste par geste (chaque erreur avec son heure) — tu le veux aussi, ou l'identité de la copie suffit ?
+257. **Capitaliser les erreurs des élèves précédents (N8)** — ce qui existe : le champ « ce qu'a écrit l'élève » est vide, et la garde du mot juste (L3). Ce que je cadre : dans ce champ, en mode rapide comme en mode texte, **la liste numérotée des formes fautives déjà saisies sur ce même mot** (le même mot au même endroit du texte), par toi, **dans toutes les dictées qui ont le même texte** (les Franklin dupliquées des Dylan : même texte ; je retiens « même texte » plutôt que « dupliquée de », parce que ça couvre aussi les brevets blancs identiques de l'an dernier) ; triée du plus fréquent au plus rare, avec le compte (« 1 · *ils ont entendus* ×4 ») ; **tu tapes le chiffre au pavé numérique → la forme est prise et validée** ; tu peux aussi taper une forme nouvelle, qui rejoint la liste pour les suivants. Télescopages réglés : un chiffre **seul** = un choix (une forme d'élève qui est un chiffre seul, ça n'arrive pas dans une dictée ; si tu dois en saisir un, tu l'écris en toutes lettres puis tu corriges — à trancher) ; la liste s'arrête à 9 ; la garde du mot juste s'applique aux formes proposées (une forme égale au mot juste n'est jamais proposée) ; aucun nom d'élève dans la liste (une forme et un compte) ; rien devant l'élève. **Questions** : (a) « même texte » te va, ou « dupliquée de » seulement ? (b) un chiffre seul = un choix, Entrée inutile : d'accord ?
+
+Ces deux-là deviennent **L9** (l'identité) et **L10** (la capitalisation) du mandat, après L8 ; je les écris dès tes réponses — et je redonne l'ordre : L7b à promouvoir maintenant, puis « continuer » pour L8.
+
+02/10/2026 07:30 MEMO
+
+---

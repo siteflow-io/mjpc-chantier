@@ -11698,3 +11698,27 @@ Banc par le geste : 4 vérifications vertes (même texte : 0 point retiré ; aut
 02/10/2026 14:55 MEMO
 
 ---
+
+## TOUR 376 — Paul
+
+Texte de Paul, mot pour mot :
+
+> attends. en fait cette forme acceptée, elle se règle dans les réglages de la dictée, c'est ça?
+
+---
+
+## TOUR 376 — Claude (conscience n°12)
+
+Non : elle se décide pendant la correction (0 du pavé sur la forme en cours) ; Réglages ne sert qu'à relire et retirer ; proposition d'ajout manuel dans Réglages si Paul le veut. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Non — pas d'abord. Elle se **décide pendant la correction**, au moment où tu tombes sur le mot : tu poses G (ou L), la forme est dans la case (tapée ou prise dans la liste), et **0 du pavé** dit « cette forme, pour toute la dictée, sans coût ». C'est là que tu la vois, c'est là que tu tranches.
+
+Les **Réglages de la dictée** ne servent qu'après : y **relire** la liste des formes acceptées de cette dictée, et en **retirer** une (elle coûte à nouveau pour toutes les copies). On n'y ajoute rien à la main — ajouter une forme sans l'avoir vue sur une copie, c'est deviner.
+
+Si tu préfères pouvoir aussi en ajouter une dans Réglages (avant de corriger, par exemple « cadavre » que tu sais d'avance tolérer), dis-le : c'est une ligne de plus, pas un autre mécanisme.
+
+02/10/2026 14:30 MEMO
+
+---

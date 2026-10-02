@@ -11406,3 +11406,21 @@ Promu : `correction_dictee.html` **6.7.0-L8**, commit `16368f9d77cf`, **bit à b
 02/10/2026 12:55 MEMO
 
 ---
+
+## TOUR 364 — Paul
+
+Texte de Paul, mot pour mot :
+
+> C'est surtout la capitalisation qu'il faut faire en priorité.
+
+---
+
+## TOUR 364 — Claude (conscience n°12)
+
+Complément L10 (capitalisation) écrit et déposé (`MANDATS/COMPLEMENT-DICTEE-CORRECTION-L10.md`) ; tranché faute de réponse : « même texte », un chiffre seul = un choix (Paul prime) ; livré en bloc. L11 et L9 ensuite (258, 260 en attente).
+
+Réponse mot pour mot : le bloc = le complément déposé, précédé du paragraphe de tranchage et suivi du rappel des questions 258 et 260.
+
+02/10/2026 13:00 MEMO
+
+---

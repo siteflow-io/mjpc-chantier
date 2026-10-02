@@ -11306,3 +11306,29 @@ Ces deux-là deviennent **L9** (l'identité) et **L10** (la capitalisation) du m
 02/10/2026 07:30 MEMO
 
 ---
+
+## TOUR 360 — Paul
+
+Texte de Paul, mot pour mot :
+
+> historique par geste à mon avis ça ne sert pas à grand chose, en revanche, sur la copie pdf de l'élève, il y a la date de correction qui est marquée. J'aimerais pouvoir modifier la date de correction. En effet, c'est quelque chose sur lequel l'élève peut faire une fixette et déduire des choses qu'il n'a pas à déduire, et pour moi, ça me permet d'unifier le jour de la correction. Pour les télescopages, ton explication est tellement resserrée que je ne l'ai pas comprise. Enfin, il me faudrait une option qui permet de garder une erreur visible, mais d'enlever son coût. Je m'explique: dans la dictée actuelle des 3e, il y a "puanteur de cadavres" dans le texte original. Sauf que si les élèves écrivent "puanteur de cadavre", ils ne font pas une erreur à proprement parler (sur cadavre). Donc je veux pouvoir signaler "G", comme je le fais actuellement, mais sans que cela ne leur coûte.
+
+---
+
+## TOUR 360 — Claude (conscience n°12)
+
+Mesuré : la date vue par l'élève (feuille « Corrigé le » et liste « corrigée le ») = `timestamp` de la copie ; aucun marqueur « sans coût » n'existe, `computeNote` coûte par type. Cadrage : une date de correction par dictée réglable (258) ; télescopages expliqués simplement (259) ; erreur « sans coût » (260 : clic ou touche 0, type et couleur gardés, hors note/forfaits/répétitions, « signalé, sans retrait » pour l'élève, capitalisée). Questions 258, 260 a/b ; 257 a/b en attente. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Pris : pas d'historique par geste. Mesuré avant de cadrer le reste :
+
+258. **La date que voit l'élève** — deux endroits, tous deux lisent **l'horodatage réel de la copie** (`timestamp`) : sur sa feuille imprimée (« Corrigé le … ») et dans sa liste de dictées à l'écran (« corrigée le … »). Ce que je cadre, dans tes mots : **une « date de correction » par dictée, que tu règles** (dans Réglages de la dictée ; par défaut, le jour où tu as corrigé la première copie), et **c'est elle que l'élève voit partout** — feuille et écran — pour toutes les copies de la dictée ; les horodatages internes (`creeLe`, `modifieLe`, N7) restent vrais et invisibles. Une dictée sans date réglée affiche, comme aujourd'hui, la date réelle. **Question** : une seule date pour toute la dictée te suffit (c'est ce que « unifier le jour » dit), ou veux-tu aussi pouvoir la changer copie par copie ?
+259. **Les télescopages du pavé numérique (257), dit simplement.** Le problème : dans la case « ce qu'a écrit l'élève », tu tapes des lettres pour recopier le mot de l'élève ; si tu tapes « 2 » pour choisir la forme n°2 de la liste, comment la case sait-elle que c'est un choix et pas une lettre du mot ? **La règle** : un chiffre **tout seul**, et rien d'autre dans la case, = un choix ; dès qu'il y a une lettre avec, c'est le mot que tu tapes. Dans une dictée, un élève n'écrit jamais un chiffre seul à la place d'un mot — si ça t'arrive un jour, tu l'écris en lettres. Les deux autres : la liste s'arrête à 9 (un chiffre = une touche) ; et une forme identique au mot juste n'est jamais proposée (la garde de L3). C'est tout.
+260. **L'erreur visible mais sans coût (N9)** — « puanteur de cadavre » : tu veux signaler G à l'élève sans qu'il perde 1 point. Mesuré : chaque erreur a un type et le type dit son coût ; rien n'existe pour dire « celle-ci ne coûte pas ». Ce que je cadre : **sur une erreur posée, un geste « sans coût »** — au clic (mode texte : dans son menu, « sans coût ») et au clavier (mode rapide : la touche **0**, zéro point, sur l'erreur que tu viens de poser, hors de toute case de saisie) ; l'erreur **garde son type et sa couleur**, porte une petite marque (« 0 »), **ne compte ni dans la note ni dans les forfaits ni dans les répétitions**, et reste dans l'autocorrection de l'élève avec, pour lui, la mention « signalé, sans retrait » — pas de terme technique. **Et ça se capitalise** (N8) : quand tu as marqué « cadavre » sans coût chez un élève, la forme proposée aux suivants vient **avec** son « sans coût » : tu tapes le chiffre, c'est fait. La trace de la copie dit combien d'erreurs sont sans coût. **Questions** : (a) la touche 0 en mode rapide te va ? (b) le mot pour l'élève : « signalé, sans retrait », ou un autre ?
+
+Reste à toi : **L7b à promouvoir** (« promeus »), puis « continuer » pour L8 ; je mets N7 (identité + date de correction), N8 (capitalisation) et N9 (sans coût) dans le mandat en L9, L10, L11 dès tes réponses à 256 (déjà : pas d'historique — pris), 257 (a, b), 258, 260 (a, b).
+
+02/10/2026 07:40 MEMO
+
+---

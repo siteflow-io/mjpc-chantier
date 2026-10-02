@@ -11997,3 +11997,31 @@ Si tu veux les captures réelles de ce parcours, le bac à sable te les donne en
 02/10/2026 16:15 MEMO
 
 ---
+
+## TOUR 388 — Paul
+
+Texte de Paul, mot pour mot :
+
+> 307: mais du coup, elle peut corriger sans que j'aie lancé l'heure d'autocorrection de mon coté? Par ailleurs, l9 est livré
+
+---
+
+## TOUR 388 — Claude (conscience n°12)
+
+308 : oui, l'autocorrection s'ouvre à la publication des copies, l'heure = la séance (cache, binômes, statut ; 55 min par session hors heure) ; verrou = cadrage si voulu. Audit L9 : diff 17/48, 6.7.0-L9, fonctions, échange exclu, « Non » ; banc L9 VERT (rouge sur L10b), L10/L5 accordés, L8, L6b, S1/S3, vue élève ; verdict : ça va. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+308. **307, oui** : dès que les copies sont publiées, Flavie peut s'autocorriger **sans que tu aies lancé l'heure** — à la maison ce soir, par exemple. L'heure n'est pas un verrou, c'est **la séance** : lancée, elle cache aux élèves la dictée corrigée, l'analyse et « Ma dictée autocorrigée » jusqu'à la fin, calcule les binômes, et fait vivre ta colonne « Statut ». Hors heure, l'élève a une fenêtre de 55 minutes par session (mesuré dans le code) et tout le reste est visible. Si tu veux que l'autocorrection **n'ouvre qu'avec l'heure** (un verrou), c'est un cadrage — dis-le.
+
+**L'audit de L9** (`LIVRAISONS/DICTEE-CORRECTION/L9/`), mesuré :
+
+309. **Le fichier** : base = L10b (`bf3f2c03…`, vérifiée) → **6.7.0-L9, 773 563 o (+5 447)**, md5 `4f0ecbca…` ; 17 lignes retirées, 48 ajoutées ; `node --check` 0 erreur. **Vérifié dans le code** : l'identité (`copie_` + horodatage + aléa, `creeLe`, `modifieLe` écrit par `save` et par le reclassement, le recalcul, la restauration) ; la date vue par l'élève = la date de correction de la dictée si réglée, sinon la date réelle de sa copie — aux deux endroits (liste, feuille) ; le bandeau avec « Non, laisser dans la corbeille » ; **l'échange exclu** du bandeau.
+310. **Les bancs, rejoués par moi sur le kit anonymisé** : le banc par le geste **VERT** — 30 copies reçoivent leur identité une fois (« ✓ 30 copies ont reçu leur identité (interne, invisible pour l'élève) »), `creeLeInconnu` sur celles sans date, pas de seconde pose ; une copie neuve → `id`, `creeLe`, `modifieLe` ; une erreur de plus → `modifieLe` avance, le reste inchangé ; le bandeau avec « Non » → fermé, posé, la corbeille garde la version, il ne revient pas ; un échange → pas de bandeau ; Réglages → la date ; **l'élève** : « corrigée le 15/09/2026 » dans sa liste, « Corrigé le 15/09/2026 » sur sa feuille, **aucun champ d'identité** nulle part ; sans date : la date réelle ; **sur L10b ce banc est rouge** ; L10 et L5 accordés, L8, L6b : verts sur L9 ; S1 / S3 ; **vue élève identique** à la 6.6.3 (hors date non réglée).
+311. **Verdict : ça va. Tu peux promouvoir L9.** Captures ci-dessus : le bandeau avec « Non », Réglages avec la date, la feuille d'un élève « Corrigé le 15/09/2026 ».
+
+Tes tests, après promotion (https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?v=6.7.0) : 1) ouvre une dictée : « ✓ n copies ont reçu leur identité » ; 2) Réglages → règle la date de correction (ou « = le jour de la première copie corrigée ») ; côté élève, sa liste et sa feuille montrent cette date ; 3) réinitialise une copie (↻), rouvre l'élève : le bandeau a « Non, laisser dans la corbeille » ; clique-le : il disparaît et ne revient pas ; 4) échange deux copies (🔀) : plus de bandeau. Puis « continuer » pour L11.
+
+02/10/2026 16:25 MEMO
+
+---

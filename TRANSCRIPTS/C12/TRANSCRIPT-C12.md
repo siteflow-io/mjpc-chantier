@@ -11356,3 +11356,29 @@ Puis « continuer » à l'exécutante pour **L8** (la recherche permanente et le
 02/10/2026 12:35 MEMO
 
 ---
+
+## TOUR 362 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Livré
+
+---
+
+## TOUR 362 — Claude (conscience n°12)
+
+Audit de `LIVRAISONS/DICTEE-CORRECTION/L8/` : diff 4/75 depuis L7b, 6.7.0-L8, mécanismes vérifiés (menu fermé / ouvert, flèches prises, Ctrl+Z, mode rapide intact à l'octet, banc L3 accordé) ; bancs rejoués (L8 VERT, rouge sur L7b ; L3, L6b, L6, L7 verts ; S1/S3 ; fuzz ; vue élève identique). Verdict : ça va, promouvable ; le mandat est entièrement livré. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Audit de L8 (« la recherche permanente et le curseur au clavier, en mode texte » — la dernière du mandat, `LIVRAISONS/DICTEE-CORRECTION/L8/`), mesuré :
+
+261. **Le fichier** : base = L7b promue (`65d6bd9f…`, vérifiée) → **6.7.0-L8, 755 719 o (+7 435)**, md5 `a6c0ce56…` ; 4 lignes retirées, 75 ajoutées ; `node --check` 0 erreur. **Vérifié dans le code** : la recherche et le curseur ne vivent que menu fermé et hors de tout champ ; les touches de type ne vivent que menu ouvert ; les flèches sont prises (la page ne défile plus avec elles) ; ↑ ↓ par la place réelle des mots à l'écran ; Ctrl+Z ; **le mode rapide n'est pas touché** (ses trois fonctions ont la même taille à l'octet près) ; et elle a accordé le banc L3 à L6b comme demandé.
+262. **Les bancs, rejoués par moi sur le kit anonymisé** : le banc par le geste **VERT** — « sy » : « syllabes » s'ouvre seul ; « lui » : les deux clignotent, la bande les montre, → passe au second, Entrée ouvre ; G + le mot juste refusé, « luit » posé ; **Ctrl+Z retire l'erreur et le hub est vide** ; Échap, le curseur ; → saute la virgule ; ↓ descend d'une ligne (mesuré), sans défilement ; ↑ remonte ; Entrée ouvre, M pose ; ⇧R aller-retour ; « abc » dans le champ de l'élève s'y écrit sans recherche ; **sur L7b ce banc est rouge** ; le banc L3 accordé, L6b, L6, L7 : verts sur L8 ; S1 / S3 sans perte ; fuzz de correction : 0 bug ; **vue élève identique** à la 6.6.3.
+263. **Verdict : ça va. Tu peux promouvoir L8** — et avec elle **le mandat « L'écran de correction » est entièrement livré** (L1 → L8, plus L4 à blanc et L6b). Captures ci-dessus : avant (« lui » tapé : rien), après (les deux « lui » clignotent, la bande), le curseur sur sa ligne avec M posé.
+
+Tes tests, après promotion (https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?v=6.7.0) : 1) une copie en mode texte → tape les premières lettres d'un mot unique : son menu s'ouvre ; G, L, M, I ou A au clavier ; 2) tape « le » : les « le » clignotent, la bande les montre ; flèches, puis Entrée ; 3) Échap ; les flèches déplacent le curseur de mot en mot (la ponctuation sautée), ↑ ↓ de ligne en ligne ; Entrée ouvre ; 4) pose une erreur, Ctrl+Z : elle disparaît. Ton « promeus » — puis, dès tes réponses à **257** (a, b), **258**, **260** (a, b), j'écris L9 (l'identité et la date de correction), L10 (la capitalisation), L11 (l'erreur sans coût), et après elles la dette vivante : ③ bis, la purge de rentrée, l'appariement de l'emploi du temps, le code mort (97).
+
+02/10/2026 12:55 MEMO
+
+---

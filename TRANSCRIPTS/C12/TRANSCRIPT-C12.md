@@ -12078,3 +12078,28 @@ Si ces trois écrans te vont, j'écris L13 (l'attente et les 45 minutes) et L14 
 02/10/2026 16:45 MEMO
 
 ---
+
+## TOUR 391 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Pourquoi tu as ajouté " tu pourras revenir une autre fois?" Et pas d'étiquette "ne compte pas" dans le corps de la dictée sinon ça rajoute un distrzcteur pour un élève qui est déjà adapté.
+
+---
+
+## TOUR 391 — Claude (conscience n°12)
+
+Deux corrections : la phrase ajoutée seule est retirée (trou comblé seul, contraire au protocole) ; aucune étiquette dans le corps de la dictée aménagée — la phrase de Paul en tête seule, le bandeau de score. Attend « ok » pour L13/L14. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Tu as raison deux fois, et je corrige :
+
+317. **« Tu pourras revenir une autre fois »** — c'est moi qui l'ai ajouté, personne ne me l'a demandé : j'ai comblé un trou seul (ce que l'élève fait quand les 45 minutes sont finies), ce que le protocole m'interdit. Je le retire. Le bandeau dit seulement : **« Tu es hors classe : tu as 45 minutes. Il te reste 44 min. »** À zéro, l'écran se ferme et revient à « Mes dictées », sans phrase. Si tu veux dire autre chose à ce moment-là, c'est toi qui me donnes les mots.
+318. **Aucune étiquette « ne compte pas » dans le texte** — rien d'ajouté dans le corps de la dictée d'un élève adapté : les cases sont toutes pareilles, il les corrige toutes, et c'est **ta phrase en tête**, seule, qui dit la règle. Le bandeau de score dit « note de dictée : 7 / 10 (sur les 12 mots à compléter) », et c'est tout.
+
+Dis « ok » et j'écris L13 et L14 (les captures corrigées suivront avec la livraison de l'exécutante, pas avant).
+
+02/10/2026 17:50 MEMO
+
+---

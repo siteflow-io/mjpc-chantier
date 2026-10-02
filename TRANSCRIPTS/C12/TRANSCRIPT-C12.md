@@ -11447,3 +11447,28 @@ Réponse mot pour mot :
 02/10/2026 13:10 MEMO
 
 ---
+
+## TOUR 366 — Paul
+
+Texte de Paul, mot pour mot :
+
+> b. Évidemment que si: dans la dictée Dylan et Franklin, le trois a été écrit  3 oar plusieurs élèves compté en erreur de lexique. Pour l'arrêt de la liste à 9, pourquoi ? a. Pour que ça survive a la purge, la réponse était celle que j'avais écarté pour l'instant pour les erreurs: elles doivent vivre en objet firebase et survivre du coup à la purge, même si la copie de dictée originale a disparu, ou la dictée créée dans l'App.
+
+---
+
+## TOUR 366 — Claude (conscience n°12)
+
+Complément L10 corrigé et redéposé : clé = mot attendu (toutes les dictées, même texte en tête) ; objets `correction_dictee_erreurs/<id>` sans nom, préservés par la purge, reconstruits une fois ; choix au pavé numérique (Numpad) ou Ctrl+chiffre, chiffre de la rangée du haut = texte ; 9 choisissables, les suivantes en gris ; bancs adaptés. Une ligne pour l'exécutante.
+
+Réponse mot pour mot :
+
+Tu as raison sur les deux, et le complément L10 est corrigé au sas (`MANDATS/COMPLEMENT-DICTEE-CORRECTION-L10.md`, « la règle, exacte, corrigée » prime sur l'ancien texte) :
+
+267. **(b) corrigé** — « 3 » pour « trois » est une forme d'élève : donc **un chiffre tapé dans la case est toujours du texte**. Le choix se fait **par le pavé numérique** : la touche 2 **du pavé** = la forme n°2 prise et validée aussitôt ; le même 2 **sur la rangée du haut** = le caractère « 2 » dans la case, comme une lettre (c'est ce que tu avais dit dès le départ : « je tape au pavé numérique » — l'app distingue les deux touches). Sans pavé : Ctrl + chiffre. **Et le 9** : parce qu'un chiffre = une touche ; au-delà, les formes suivantes sont **affichées en gris, lisibles, à taper** — tu vois tout, tu choisis d'une touche les neuf plus fréquentes.
+268. **(a) : les erreurs vivent en objets Firebase et survivent à tout** — `correction_dictee_erreurs/<id>` : le mot attendu, la forme saisie, le type (G/L), la dictée et l'empreinte de son texte, le niveau, l'identité et la date — **aucun nom, aucune clé d'élève, aucune classe** (une forme fautive n'est à personne) ; écrit à chaque saisie, retiré si tu retires l'erreur, **jamais par la suppression d'une copie, d'une dictée, ni par la purge** (le nœud entre dans ce que la purge préserve) ; reconstruit une fois depuis les 107 copies existantes. La liste vient de ces objets ; **la porte en grand** : la clé est le mot attendu, toutes les dictées, les formes vues dans le même texte en tête.
+
+Colle à l'exécutante une ligne : **« Le complément L10 a été corrigé au sas (tours 365-366) : relis-le avant de coder — la clé est le mot attendu, les erreurs deviennent des objets `correction_dictee_erreurs` préservés par la purge, le choix se fait au pavé numérique (Numpad) ou Ctrl+chiffre, un chiffre de la rangée du haut est du texte. »** Si elle a déjà commencé, elle reprend sur ce texte.
+
+02/10/2026 13:25 MEMO
+
+---

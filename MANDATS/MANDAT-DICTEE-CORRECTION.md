@@ -1,6 +1,6 @@
 TITRE DE CETTE CONVERSATION : « MJPC 6 — DICTÉE — l'écran de correction ». Nomme cette conversation exactement ainsi.
 
-# MANDAT — « L'ÉCRAN DE CORRECTION » de `correction_dictee.html` : jamais de perte, ⇧R bascule, M qui s'adapte, le mot juste bloqué, la ponctuation en trop au forfait, la recherche et le curseur au clavier, la largeur
+# MANDAT — « L'ÉCRAN DE CORRECTION » — **ENTIÈREMENT LIVRÉ ET PROMU le 02/10 (L1 → L8, L4 à blanc, micro L6b ; production 6.7.0-L8, 755 719 o, md5 `a6c0ce567fc92617be2ce0f6d613fff7`). Les livraisons L9 (identité et date de correction des copies), L10 (capitalisation des formes fautives), L11 (erreur sans coût) s'écriront à la suite, sur les réponses de Paul (C12, tours 359-360).** de `correction_dictee.html` : jamais de perte, ⇧R bascule, M qui s'adapte, le mot juste bloqué, la ponctuation en trop au forfait, la recherche et le curseur au clavier, la largeur
 
 *Conscience n°12, 01/10/2026, à partir du mandat de la conscience « dictée » (01/10, B1 / B1 bis / B2 / N1 / N2) et du cadrage fait avec Paul dans la conversation C12 (tours 337 à 342 : N3 à N6, le reclassement). Tu es l'exécutant : tu lis avant d'écrire, tu mesures avant d'affirmer, tu demandes quand tu ne sais pas — tu ne devines jamais. Ce mandat se joue en HUIT livraisons courtes (L1 → L8), chacune poussée au sas et close par un arrêt ; Paul relance par « continuer ».*
 

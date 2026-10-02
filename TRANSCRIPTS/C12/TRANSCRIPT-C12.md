@@ -11222,3 +11222,27 @@ Tes tests, après promotion (https://siteflow-io.github.io/monsieurjaipascompris
 02/10/2026 06:45 MEMO
 
 ---
+
+## TOUR 357 — Paul
+
+Texte de Paul, mot pour mot :
+
+> promeus
+
+---
+
+## TOUR 357 — Claude (conscience n°12)
+
+Promotion 6.7.0-L6 (commit 3503e364a654, bit à bit) ; protocole : journal, point de retour, où-trouver-quoi. Tests donnés ; L7 ensuite.
+
+Réponse mot pour mot :
+
+Promu : `correction_dictee.html` **6.7.0-L6**, commit `3503e364a654`, **bit à bit** (746 811 o, md5 `c28534fa…`) ; journal, point de retour (L5), où-trouver-quoi à jour (aucune dette à marquer).
+
+**Tes tests** : https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?v=6.7.0 → 1) une copie en mode rapide → finis-la (ou « Terminer → ») : le champ des initiales a le curseur ; 2) tape les initiales d'un élève de ton tas : il est proposé (un absent dit « absent », une copie faite « ✔ corrigée ») ; rien n'a bougé sur la copie finie ; 3) Entrée : l'élève s'ouvre directement en mode rapide.
+
+Puis « continuer » à l'exécutante pour **L7** (la largeur 1100 px, la phrase entière en mode rapide, les écrans élèves prouvés inchangés).
+
+02/10/2026 06:45 MEMO
+
+---

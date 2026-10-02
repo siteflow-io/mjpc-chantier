@@ -11798,3 +11798,32 @@ Joue-la. Si ça va, **le cadrage de L9 (identité, date de correction, le « non
 02/10/2026 15:10 MEMO
 
 ---
+
+## TOUR 380 — Paul
+
+Texte de Paul, mot pour mot :
+
+> voilà c'est bon. l10 livré, par ailleurs.
+
+---
+
+## TOUR 380 — Claude (conscience n°12)
+
+Cadrage L9/L11/L12 clos (maquette v3 validée). Audit de `LIVRAISONS/DICTEE-CORRECTION/L10/` : diff 13/115, 6.7.0-L10, objets sans nom, contrat (preserver + noeuds), Numpad par code, mode rapide intact ; bancs rejoués (L10 VERT : 552 objets, liste, pavé, Ctrl+Z, suppressions, contrat ; L8, L6b, L3 ; S1/S3 ; vue élève identique) ; captures regardées. Verdict : ça va, promouvable. Compléments L9/L11/L12 après le promeus. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Cadrage clos — merci. D'abord l'audit de **L10** (« la capitalisation », `LIVRAISONS/DICTEE-CORRECTION/L10/`), mesuré :
+
+293. **Le fichier** : base = L8 (`a6c0ce56…`, vérifiée) → **6.7.0-L10, 768 109 o (+12 390)**, md5 `cd2363f9…` ; 13 lignes retirées, 115 ajoutées ; `node --check` 0 erreur. **Vérifié dans le code** : les objets `correction_dictee_erreurs/<id>` portent exactement `id, creeLe, mot, forme, type, dicteeId, texteKey, niveau` — **aucun nom, aucune clé, aucune classe** ; le nœud est dans ce que la purge préserve **et** dans le manifeste ; le pavé est lu **par la place de la touche** (le verrou numérique allumé ou non — un défaut qu'elle a trouvé et réglé), Ctrl + chiffre pareil ; le mode rapide hors de la case est intact à l'octet.
+294. **Les bancs, rejoués par moi sur le kit anonymisé** : le banc par le geste **VERT** — nœud vide avant ; première ouverture : « ✓ 552 formes retenues », **552 objets, tous sans nom** ; la liste de « syllabes » = 13 formes depuis les objets, « silabes ×3 » en 1, la forme de l'autre texte comptée, ni le mot juste ni le vide ; pavé 3 → prise ; pavé 1 → « n° 1 » et les 10 à 13 surlignées, puis 2 → la 12 ; 1 + Entrée → la 1 ; 3 de la rangée du haut → « 3 » en texte ; Ctrl + 2 → la 2 ; le mot juste refusé ; Échap efface puis ferme ; une forme nouvelle → un objet ; Ctrl + Z → l'objet retiré ; mode texte : même liste, mêmes gestes ; copie effacée puis dictée supprimée → les objets restent ; pas de seconde reconstruction ; le contrat publié préserve le nœud ; L8, L6b, L3 verts sur L10 ; S1 / S3 ; **vue élève identique** à la 6.6.3.
+295. **Deux choses qu'elle dit et que je confirme** : « Ctrl + chiffre » peut être pris par Chrome pour changer d'onglet (le pavé, lui, marche toujours — tu l'essaieras) ; et une relecture **une fois** de toutes tes copies à la première ouverture (« ✓ n formes retenues ») : chez toi ce sera les 107 copies, quelques centaines d'objets.
+296. **Verdict : ça va. Tu peux promouvoir L10.** Captures ci-dessus : la liste en mode rapide, « n° 1 » en composition, le mode texte.
+
+Tes tests, après promotion (https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?v=6.7.0) : 1) ouvre les Dylan : « ✓ n formes retenues » ; 2) une copie des Franklin → mode rapide → G sur un mot souvent raté : la liste des formes des Dylan, la plus fréquente en 1 ; 3) son numéro au pavé : prise ; avec 10 formes ou plus, 1 attend, puis le second chiffre ; Entrée prend le numéro en cours ; Échap l'efface ; 4) « 3 » de la rangée du haut : il s'écrit ; 5) une forme nouvelle : à la copie suivante elle est dans la liste ; 6) mode texte : pareil ; 7) Ctrl + 2 : s'il change d'onglet, dis-le.
+
+Dès ton « promeus », j'écris les compléments **L9** (identité et date de correction, le « non » du bandeau), **L11** (formes acceptées) et **L12** (l'aide « ? ») — en un bloc, sur la maquette v3 validée.
+
+02/10/2026 15:05 MEMO
+
+---

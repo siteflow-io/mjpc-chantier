@@ -11969,3 +11969,31 @@ Donc, dans ta capture, tout fait ce qu'il doit : Louise connectée, sa dictée p
 02/10/2026 16:05 MEMO
 
 ---
+
+## TOUR 387 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok donc j'ai "rendu mes copies" (donc j'ai un double geste entre la puvlication de la dictée dans les paramètres, et la publication des copies en fait). et les filles sont donc prêtes à faire l'autocorrection. si je clique sur "ouvrir" chez flavie, j'ai les trois coches, et après, quel sera l'écran?
+
+(capture : moitié gauche « Mes dictées » Flavie, binôme Camille, « À faire · Ouvrir → » ; moitié droite « Ton binôme : Camille, tape ton code »)
+
+---
+
+## TOUR 387 — Claude (conscience n°12)
+
+Tentative de rejouer la vue élève sur le faux hub (codes du kit non acceptés : abandonné) ; réponse d'après le code : 305 le double geste (published vs copyPublishedAt), 306 l'écran « Avant de commencer » (cinq lignes, une case « J'ai lu et compris », « Commencer mon autocorrection »), 307 l'écran d'autocorrection (barre /5, texte à cases masquées, fenêtre par erreur, essais ratés, écran de fin, aide entre pairs, exercices). Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Lu dans le code de la 6.7.0-L10b (je n'ai pas pu rejouer la vue élève sur le faux hub : les codes du kit anonymisé ne passent pas ma connexion — je te réponds d'après le code, écran par écran) :
+
+305. **Le double geste, c'est deux choses** : « publiée » dans les paramètres = **la dictée existe pour les élèves** (elle apparaît dans « Mes dictées ») ; « Publier les copies » (Données) = **les copies corrigées sont rendues** (« Ouvrir » s'allume, « corrigée le … »). Tu corriges entre les deux sans qu'ils voient leurs notes. Si tu veux un seul geste, c'est un cadrage à faire — dis-le.
+306. **Après « Ouvrir » chez Flavie — l'écran « Avant de commencer »** : cinq lignes (« tu vas retrouver toi-même les erreurs de ta dictée, en tapant le bon mot » · « ta note d'autocorrection est une note à part » · « un essai au hasard te coûte des points » · « à la fin, si tu as perdu des points, tu pourras en regagner en répondant à des questions » · « si ton voisin t'aide, c'est toi qui tapes »), **une seule case** « J'ai lu et compris » (les « trois coches » que tu vois sont peut-être les cases de la seconde moitié ou de l'étape de la tablette — dis-moi si tu en vois trois sur cet écran, je regarderai), puis le bouton **« Commencer mon autocorrection »**, actif une fois la case cochée ; le moment est enregistré sur sa copie.
+307. **Puis l'écran d'autocorrection** : en haut, la barre fixe avec la légende des types, **sa note d'autocorrection /5**, « n/total corrigés · n essais ratés », la barre de progression, « ← » et « 🔄 recharge » ; le rappel éventuel de l'heure et l'encart « points à regagner » ; **le texte de la dictée avec ses erreurs masquées** (des cases cliquables, colorées selon le type : G rouge, L bleu…), plus la liste de ses mots en trop et de ses « attention » s'il y en a ; **elle clique une case** → une petite fenêtre : le type, « erreur n° », le nombre d'essais, une case « tape le bon mot », Entrée ou « Valider » ; juste → la case se remplit en vert et la progression avance ; faux → un essai raté (ça coûte sur sa note /5), elle réessaie. Quand toutes les erreurs sont faites : **l'écran de fin** — sa note de dictée (si tu l'as autorisée), sa note d'autocorrection, la phrase de fin selon sa tranche, les questions pour regagner des points, la phrase à recopier, « Ma dictée autocorrigée » ; si « aide entre pairs » est coché et qu'elle a fini, la proposition d'aller aider le camarade qui a le plus d'erreurs restantes ; et « Mes exercices » si tu les as ouverts (hors heure lancée).
+
+Si tu veux les captures réelles de ce parcours, le bac à sable te les donne en deux minutes (dictée A publiée, six codes) — et moi, si tu me donnes le code d'un élève ZZTEST du bac à sable réel, je ne m'en sers pas : la règle, c'est jamais le vrai hub en écriture ; je resterai sur ce que le code dit.
+
+02/10/2026 16:15 MEMO
+
+---

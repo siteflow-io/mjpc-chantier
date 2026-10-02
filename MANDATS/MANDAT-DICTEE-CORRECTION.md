@@ -75,6 +75,10 @@ Mode d'emploi : `LISEZMOI.md`. Faux hub (`bench/fakefb.js`), aucun accès au vra
 - Télescopages réglés par construction : les lettres ne vivent que menu fermé, les touches de type que menu ouvert ; un champ de saisie ouvert garde tout le clavier ; les flèches ne font plus défiler la page quand le curseur est actif ; rien ne touche les écrans élèves.
 - Bancs par le geste : la recherche (un mot unique s'ouvre ; des doublons « le » : clignotent, flèches, Entrée) ; le curseur (← → sautent la ponctuation ; ↑ ↓ changent de ligne, vérifié par la géométrie) ; menu ouvert, les types au clavier ; Ctrl+Z ; aucune collision avec ⇧R ni avec un champ ouvert ; vue élève inchangée. Captures. Arrêt.
 
+
+
+> **AJOUT DU 02/10 (après L6) — dette n°12 · 98, réglée par la conscience en micro L6b** : en mode rapide, **Entrée = correct, mot suivant, partout, même sur un signe** (comme avant L3) ; le bouton mis en avant dit « (M) » et **M le valide**. L3 avait fait d'Entrée la touche de validation : chaque signe traversé par Entrée devenait une P (Paul : « gros télescopage »). À ta prochaine livraison : ta base est la **6.7.0-L6b** promue (md5 à la commande), tu accordes `banc_L3_geste.py` (« Entrée sur un signe → P » devient « Entrée avance, M → P ») et tu gardes `fuzz_rapide.py` tel qu'accordé en L6b.
+
 ## LES RÈGLES DE CE MANDAT
 
 - Une livraison = un lot poussé au sas (`LIVRAISONS/DICTEE-CORRECTION/<Ln>/` : le fichier, les nouveaux bancs, la sortie du banc unique, les captures, `NOTE.md`), puis un arrêt. Jamais de livraison avec dette ; une dette rencontrée se règle dans la même livraison, inscrite au registre (section n°12, « réglée au sas »).

@@ -11618,3 +11618,28 @@ Si 277-280 te vont, je te fais la maquette (la case avec le 0, la liste avec « 
 02/10/2026 14:15 MEMO
 
 ---
+
+## TOUR 373 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok. il va falloir ajouter un ? qui liste l'ensemble des raccourcis et des actions que je peux faire sur n'importe quel écran où je suis, dans les modes de correction. Sinon, je ne sais plus ce que je peux faire, et je ralentis à chercher mes raccourcis, ou je me trompe.
+
+---
+
+## TOUR 373 — Claude (conscience n°12)
+
+Mesuré : un « ? » existe (AideModal générale), « ? » = illisible en mode rapide. Cadrage 281 : aide contextuelle par écran (six contextes), bouton « ? » ou F1 (interceptée), Échap ferme, suit l'écran ; nouveautés en second onglet ; 282 : L12 livrée avec L11, règle « chaque geste ajouté ajoute sa ligne ». Maquette annoncée. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Mesuré avant de cadrer : il existe déjà un **« ? »** en haut à droite de la dictée (« Aide et nouveautés ») — un panneau général, le même partout ; et en mode rapide, **la touche « ? » marque « Illisible »** (c'est un raccourci existant) : elle ne peut donc pas ouvrir l'aide.
+
+281. **L'aide contextuelle, cadrée** : le « ? » en haut à droite devient **l'aide de l'endroit où tu es** — elle liste **les raccourcis et les gestes possibles maintenant**, et rien d'autre : grille (initiales, clic droit, ⇧R) · mode texte menu fermé (lettres = recherche, flèches = curseur, Entrée, Échap, Ctrl+Z, ⇧R) · mode texte menu ouvert (G L M I A, G/L → la case, Échap) · mode rapide (G L M I A, Espace, Entrée, Retour, ⇧R, ? = illisible) · la case « ce qu'a écrit l'élève » (pavé = choisir, rangée du haut = écrire, Ctrl + chiffre, **0 = forme acceptée**, Entrée, Échap) · fin de copie (initiales, Entrée). Chaque ligne : la touche, puis ce qu'elle fait, dans tes mots. Elle s'ouvre **par le bouton « ? »** ou par **F1** (la seule touche libre dans tous les modes ; l'app l'intercepte pour que le navigateur ne l'ouvre pas), se superpose sans rien fermer ni rien perdre, **Échap la ferme**, et elle change toute seule si tu changes d'écran pendant qu'elle est ouverte. Le panneau « nouveautés » reste derrière, dans un second onglet de la même fenêtre.
+282. C'est **L12**, à livrer **avec L11** (la liste doit être complète au moment où elle paraît) ; et chaque livraison suivante qui ajoute un geste **ajoute sa ligne** — c'est une règle du mandat désormais.
+
+Je fais maintenant **la maquette** : la case avec le 0 et « forme acceptée », la liste capitalisée avec « acceptée » / « acceptée chez les Dylan », le Réglages des formes acceptées, et le « ? » contextuel (bouton, F1, Échap) dans le mode rapide, la case, et la fin de copie. Un tour, puis tu joues.
+
+02/10/2026 14:25 MEMO
+
+---

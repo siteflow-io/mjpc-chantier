@@ -11546,3 +11546,21 @@ Donc, en une phrase : ce que tu as marqué chez cet élève, ce qu'il a écrit, 
 02/10/2026 13:45 MEMO
 
 ---
+
+## TOUR 370 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok c'est bon.
+
+---
+
+## TOUR 370 — Claude (conscience n°12)
+
+Maquette v2 validée → le complément L10 final (noyau = la maquette, gestes exacts, objets Firebase préservés, liste complète, pavé qui compose, rangée du haut = texte, Ctrl+chiffre, bancs reprenant les dix gestes de la maquette) déposé au sas, bannière « en cadrage » retirée ; livré en bloc. Questions 258 et 260 reposées pour L9 / L11.
+
+Réponse mot pour mot : le bloc = le complément déposé, précédé de « Le cadrage de la capitalisation est fini et la maquette validée : voici le complément L10 pour l'exécutante, à coller tel quel » et suivi des questions 258 et 260.
+
+02/10/2026 14:00 MEMO
+
+---

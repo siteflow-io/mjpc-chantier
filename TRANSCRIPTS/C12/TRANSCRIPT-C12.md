@@ -12875,3 +12875,27 @@ Donc oui : **c'est le barème préparée qui fait que tu ne vois pas « une erre
 03/10/2026 12:15 MEMO
 
 ---
+
+## TOUR 422 — Paul
+
+Texte de Paul, mot pour mot :
+
+> par ailleurs tu as introduit un bug en n'adaptant pas la modale, sur cet écran. à faire en micro tout de suite car ça me bloque. pour la règle, vérifie éduscol. Il faut quelqeu chose de précis. je ne veux pas rechanger ce qu'on a codé, l'existant, qui normalement respecte les directives officielles (brevet). mesure, audit, réponse
+
+(capture : la modale du mode texte, le champ « Mot fautif » écrasé par le bouton « forme acceptée »)
+
+---
+
+## TOUR 422 — Claude (conscience n°12)
+
+Micro L14b (la modale du mode texte : flexWrap, champ ≥ 200 px) : banc 264 px / 26 px avant, L8 et L11 verts, promu bit à bit (commit 07e13a893c5b, 819 835 o, md5 66e0ab5a…) ; dette 123 ✔, journal, point de retour ; complément L15 → base L14b. Éduscol : pas de web ici ; ce que je sais du barème DNB (1 / 0,5 / 0,5 par 4 ponctuation / répétition une fois) = l'existant brevet, inchangé ; préparée = le barème de Paul (387).
+
+Réponse mot pour mot :
+
+388. **Le bug, mesuré et réglé en micro, promu** : dans la modale du mode texte, le bouton « ✓ forme acceptée (ce texte) » de L11 prenait la place sur une ligne qui ne se repliait pas — **le champ « Mot fautif » était écrasé à 26 px**. C'est une faute de L11 que je n'avais pas vue (je n'avais audité que le mode rapide). **6.7.0-L14b** : la ligne se replie, le champ garde 200 px au moins, le bouton passe en dessous ; banc par le geste : **264 px après, 26 px avant** ; L8 et L11 restent verts ; promu **bit à bit** (commit `07e13a893c5b`, 819 835 o, md5 `66e0ab5a…`) ; registre (**123 ✔**), journal, point de retour ; le complément L15 pointe cette base. Captures avant/après ci-dessus. **Ton test** : https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?v=6.7.0 → une copie en mode texte → clique un mot → G → le champ est large, Entrée fonctionne. Dis à l'exécutante : **« La base est passée en 6.7.0-L14b (micro de la modale du mode texte) : reprends-la, ou reporte le micro. »**
+
+389. **Éduscol — je ne peux pas le consulter d'ici** : la recherche web est éteinte dans cette conversation (tu peux l'activer, ou me coller la grille). Ce que je peux dire **sans affirmer plus que je ne sais** : le barème officiel de la dictée du brevet (grille de la note de service DNB) compte **1 point par erreur grammaticale, 0,5 par erreur lexicale, 0,5 par tranche de quatre erreurs de ponctuation / majuscule**, et prévoit que **la même erreur répétée n'est pénalisée qu'une fois** — c'est exactement ce que l'existant encode en « type brevet », et je ne le changerai pas. **Préparée** n'est pas un barème officiel : c'est le tien, et aujourd'hui il ne porte pas la règle de répétition (385). Vérifie la grille sur Éduscol de ton côté ; si elle dit la même chose, l'existant brevet est bon, et pour « préparée » tu décides (387 a/b/c).
+
+03/10/2026 11:20 MEMO
+
+---

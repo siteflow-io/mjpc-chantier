@@ -12321,3 +12321,30 @@ Puis « continuer » à l'exécutante pour **L13** (l'attente de la première s�
 02/10/2026 21:45 MEMO
 
 ---
+
+## TOUR 401 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Livré
+
+---
+
+## TOUR 401 — Claude (conscience n°12)
+
+Audit de `LIVRAISONS/DICTEE-CORRECTION/L13/` : diff 9/30, 6.7.0-L13, textes élèves exacts (0 mot de plus), 45 min, écoute de l'heure ; banc L13 VERT 9/9 (rouge sur L12), L12 et L11 accordés verts (le banc L12 d'abord rejoué dans sa version d'avant : rouge, normal — une ligne d'aide de plus), L10, L6b, S1/S3, vue élève ; captures regardées. Verdict : ça va, promouvable. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Audit de **L13** (« l'autocorrection attend la première séance ; hors classe, 45 minutes », `LIVRAISONS/DICTEE-CORRECTION/L13/`), mesuré :
+
+333. **Le fichier** : base = L12 promue (`89a82a82…`, vérifiée) → **6.7.0-L13, 813 092 o (+3 511)**, md5 `4ce6fa98…` ; 9 lignes retirées, 30 ajoutées ; `node --check` 0 erreur. **Vérifié dans le code** : les textes vus par l'élève sont **exactement** ceux du complément (les deux phrases de l'attente, « Tu es hors classe : tu as 45 minutes. Il te reste n min. »), **aucun mot de plus** (ni « revenir une autre fois », ni « ton temps est fini » : 0 occurrence) ; la fenêtre hors heure est à 45 minutes ; l'écran écoute l'heure.
+334. **Les bancs, rejoués par moi sur le kit anonymisé** : le banc par le geste **VERT, 9 vérifications** — copies publiées, aucune heure : la coche, « Commencer » → **l'écran d'attente, ses lignes mot pour mot**, aucune session posée ; **l'heure écrite au hub pendant qu'il attend → l'écran s'ouvre seul, sans rechargement** ; heure en cours → pas de bandeau ; séance close puis ouverture → **le bandeau exact**, le compte descend (43 min une minute plus tard), **à zéro → « Mes dictées », sans phrase, la progression intacte au hub** ; une dictée non publiée : inchangée ; l'aide le dit ; **sur L12 ce banc est rouge** ; L12 (accordé : une ligne d'aide de plus), L11 (accordé : son passage élève pose une séance), L10, L6b : verts sur L13 ; S1 / S3 ; **vue élève identique** à la 6.6.3 hors ces deux écrans.
+335. **Une mesure utile qu'elle fait** : avant L13, la session de l'élève commençait dès l'ouverture — un élève qui ouvrait la veille au soir aurait trouvé sa fenêtre déjà passée le lendemain ; elle ne commence plus qu'avec la séance. Le bac à sable n'est pas joué au banc (même chemin de code) — dit, pas caché.
+336. **Verdict : ça va. Tu peux promouvoir L13.** Captures ci-dessus : l'attente, l'écran ouvert seul quand la séance est lancée, le bandeau hors classe.
+
+Tes tests, après promotion (https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?v=6.7.0) : 1) le bac à sable (ou une dictée sans heure) : un élève coche, « Commencer » → l'attente ; Données → Suivi → « ▶ Lancer l'autocorrection » : son écran s'ouvre seul ; 2) clôture ; l'élève rouvre : « Tu es hors classe : tu as 45 minutes. Il te reste 44 min. », le compte descend ; 3) à zéro, « Mes dictées » ; rouvrir redonne 45 min. Puis « continuer » pour **L14** (la dernière).
+
+03/10/2026 07:20 MEMO
+
+---

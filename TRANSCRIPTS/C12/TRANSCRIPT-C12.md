@@ -12742,3 +12742,30 @@ Dis « ok » et je la fabrique ainsi — et rien d'autre dedans.
 03/10/2026 10:30 MEMO
 
 ---
+
+## TOUR 417 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok
+
+---
+
+## TOUR 417 — Claude (conscience n°12)
+
+Maquette L16 = l'app réelle 6.7.0-L14 autonome (1676617 o, md5 921036224ad3) : faux hub (fakefb.js) + instantané anonymisé + React inline ; patch minimal : formesPour(type), liste et pavé par type, épellation immédiate à G/L (noms de lettres, 2,4, 3 formes), bascule « déjà enregistrée en L (×n). Passer en L ? » ; banc par le geste VERT 6/6 (5e, mot « rêvaient ») ; capture.
+
+Réponse mot pour mot :
+
+La maquette L16 refaite selon la règle — **c'est l'app réelle 6.7.0-L14, en un seul fichier** (`T417-maquette-L16-app-reelle.html`, 1676617 o, md5 `921036224ad3`, pièce T417), branchée sur le faux hub du kit anonymisé (les dictées, les copies, les 536 formes capitalisées ; rien de réel n'est touché ; aucun réseau nécessaire) ; un bandeau vert en bas le rappelle. **Tout est l'existant** ; la seule nouveauté tient en quatre lignes repérées « L16 » :
+
+374. **L'audio allumé, G ou L** → la case s'ouvre et, **sur-le-champ** (6 ms au banc), la voix épelle les formes **du type choisi** : « numéro 1 èr e circonflexe vé a i té » (rêvait), « numéro 2 … » — sans relire le mot, sans ding, à 2,4 ; **la liste de la case ne montre que les formes de ce type** (G : rêvait ×3, revaient, révais, rêvée, rêver ; L : revaient, révaient, rêveaient — mesuré sur « rêvaient », 5e, mot 19) ; le pavé choisit dans cette liste.
+375. **La bascule** : en G, tu tapes « révaient » (vue en L ×4) → **« « révaient » a déjà été enregistrée en L (×4). Passer en L ? »** avec les deux boutons ; « Passer en L » pose l'erreur en L et avance ; « Garder G » la pose en G.
+
+**Pour l'essayer chez toi** : ouvre le fichier, « Dictée 5E, chapitre utopie » → Ouvrir → onglet ⚡ Rapide → Espace jusqu'à « rêvaient » (mot 19) → L, écoute ; Échap ; G, écoute ; tape « révaient », Entrée → la bascule. Banc par le geste sur ce fichier (voix simulée) : **VERT, 6 vérifications**. Capture ci-dessus.
+
+Reste pour écrire L16 : (a) 3 formes épelées ou toutes celles du type ; (b) sur « Passer en L », la forme compte en L seulement (je propose oui).
+
+03/10/2026 10:55 MEMO
+
+---

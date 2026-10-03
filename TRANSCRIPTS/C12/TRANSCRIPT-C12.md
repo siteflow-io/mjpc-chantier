@@ -12848,3 +12848,30 @@ Pris : T4 oui (écrit au sas, L13b). La maquette **v3**, toujours l'app réelle 
 03/10/2026 12:00 MEMO
 
 ---
+
+## TOUR 421 — Paul
+
+Texte de Paul, mot pour mot :
+
+> non mais pour enregistrer, vu que tu dis que c'est au hub, il faut que j'enregistre une fois ma voix pour n'importe quelle app qui l'utilisera plus tard. Donc il faut un fichier que tu mets sur github ou au hub et qui nourrit l'app de dictée et éventuellement d'autres. Par ailleurs, je reviens sur les modes: préparée/Brevet. On est bien d'accord que les caractéristiques de chaque mode s'appliquent? le forfait ponctuation c'est déjà le cas, mais pour ce qui est des mots avec la même erreur? je suis en train de corriger les 4e, en préparée, et il y a beaucoup de "leur", et je me demandais si c'étiat le fait d'être en préaprée qui faisait que je ne voyais pas le "compte une erreur similaire une fois". mesure, audite, et réponds avec précision.
+
+---
+
+## TOUR 421 — Claude (conscience n°12)
+
+Voix : nœud commun `site/voix/<son>` au hub, préservé, page d'enregistrement unique, lu par toute app. Mesuré : computeNote — brevet : G1 L0,5 M0,5 I0,5 X0,5 P forfait, répétitions (mot exact + type) comptées une fois ; préparée : G1 L0,5 M1 I1 X0,5 P0,5, aucune règle de répétition. Hub 4e Hugo : 8/10 copies avec leur/leurs, 4 avec plusieurs (2,3,5,5), chacune 1 point. Questions 387 a/b/c.
+
+Réponse mot pour mot :
+
+384. **Ta voix, une fois pour toutes** : d'accord, pas dans le navigateur — **au hub**, dans un nœud commun à tout le site (`site/voix/<son>` : 39 petits sons, ~300 Ko en tout), **préservé par la purge**, écrit par une page d'enregistrement unique (celle de la maquette, mise dans l'index de MJPC ou dans la dictée — tu diras où), et **lu par n'importe quelle app** qui veut épeler ou nommer une lettre. Le hub plutôt que GitHub : tu réenregistres un son sans commit, et toutes tes apps le voient aussitôt. C'est ce que j'écrirai dans L16.
+
+385. **Les barèmes, mesurés dans le calcul de la note (`computeNote`), avec précision** :
+- **Type brevet** : G 1 · L 0,5 · M 0,5 · I 0,5 · mot en trop 0,5 · ponctuation **au forfait** (0,5 par tranche de 4, à l'échelle de la base) · **une même faute sur un même mot n'est comptée qu'une fois** (la règle « erreur similaire ») — mais la clé est **le mot exact + le type** : trois « leur » marqués G = 1 point ; « leur » G et « leurs » G = deux clés = 2 points.
+- **Préparée** : G 1 · L 0,5 · M 1 · I 1 · mot en trop 0,5 · ponctuation 0,5 **chacune** · **aucune règle de répétition** : chaque « leur » coûte 1.
+Donc oui : **c'est le barème préparée qui fait que tu ne vois pas « une erreur similaire comptée une fois »** — elle n'existe qu'en brevet.
+386. **Chez tes 4e (Hugo, préparée), mesuré au hub** : 10 copies ; **8 ont au moins une erreur sur leur / leurs, 4 en ont plusieurs** (2, 3, 5 et 5 fois — « leur → leurs », « leurs → leur »), chacune facturée 1 point : ces quatre copies perdent 2, 3, 5 et 5 points sur ce seul mot.
+387. **Ce qui est à toi de trancher** (je ne change rien sans ton mot) : (a) la règle « une faute similaire, une fois » **aussi en préparée** ? (b) sa clé : le mot exact (« leur » ≠ « leurs », c'est l'actuel en brevet), ou **la famille du mot** (leur/leurs, son/sont…) — autrement dit « la même faute », pas « le même mot » ? (c) rétroactif sur les copies déjà corrigées (les 4e : 15 points en jeu sur 4 copies) ? Dis (a) oui/non, (b) mot / faute, (c) oui/non, et ça devient une dette réglée dans L15.
+
+03/10/2026 12:15 MEMO
+
+---

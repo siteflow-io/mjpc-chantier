@@ -12476,3 +12476,35 @@ Dis-moi : C1 te va (ou quoi changer) ; D1 ; E1 ; et je finis le cadrage de L15 (
 03/10/2026 08:45 MEMO
 
 ---
+
+## TOUR 406 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Promeus. Ok pour tes propositions d'UI. Par ailleurs, l'écran que je t'ai envoyé avant, c'était parce qu'avec les codes de mjpc ne fonctionnaient pas sur une dictée de test. Or, ce sont bien les élèves de test donc je devrais pouvoir y accéder (ça me permettrait de tester vraiment en mode vrai élève depuis le départ, et pas seulement dans le bac à sable de la dictée). POur la capture que je te partage là, l'élève voit sa note de dictée dès l'overlay du chrono. il ne doit voir sa note qu'après le chrono. enfin, sur l'écran de regain des points, au lieu d'avoir la consigne en infobulle quand il passe sa souris (sachant que l'élève est au tactile) sur le bouton, la consigne doit apparaître en clair. Et il faut un bouton aussi où il peut refuser de regagner des points. par ailleurs, le regain des points doit apparaitre dans le bilan, sinon ça fausse les commentaires. j'attends tes propositions. Par ailleurs, quand je masque les copies après les avoir rendues, l'élève, s'il ne recharge pas son onglet, y a toujours accès. Encore une fois, problème d'actualisation.
+
+(trois captures : le chrono avec la note visible derrière ; l'écran de fin avec « Regagner des points » ; la version 5/5 avec « Détail de ta note »)
+
+---
+
+## TOUR 406 — Claude (conscience n°12)
+
+Promotion 6.7.0-L14 (commit 5cd02805a301, bit à bit ; 101 ✔ ; journal, point de retour corrigé après une faute de md5 déclarée, où-trouver-quoi) — mandat clos. Dettes 110-114 inscrites. Visuels T406 : G1 chrono sans la note, G2 regain en clair + « Je garde ma note », G3 bilan avec le regain ; 357 codes de test à mesurer ; 361 masquage en direct. Attend l'accord pour écrire L15 / L15.1.
+
+Réponse mot pour mot :
+
+**Promu** : `correction_dictee.html` **6.7.0-L14**, commit `5cd02805a301`, **bit à bit** (819 640 o, md5 `6516ce91…`) ; registre n°12 · **101 ✔** ; journal, point de retour (L13), où-trouver-quoi à jour. **Le mandat « L'écran de correction » est clos.** (Une faute déclarée : j'avais écrit un md5 complété de tête dans le point de retour ; corrigé par la mesure dans le même tour.) Tes tests : 1) les Dylan : « ✓ 1 copie aménagée recalculée » ; 2) l'élève aménagé : l'encart en tête, le texte sans marque, sa note sur les 12 mots ; 3) une erreur hors trou chez lui : sa note ne bouge pas.
+
+Pris : **C1, D1, E1** validés. Tes cinq remarques sont au registre (**110 → 114**), et voici mes propositions en captures (ci-dessus) :
+
+357. **Les élèves de test de MJPC (110)** : ce sont bien tes élèves de test, avec leurs codes du site ; qu'ils ne puissent pas entrer dans une dictée de test, c'est une dette — je mesure dans L15 où le code est vérifié et je règle : un élève de la classe de test entre avec son code MJPC, comme un vrai.
+358. **G1 — le chrono sans la note (111)** : pendant « Tu as 2 minutes pour écrire ta correction en vert… », l'écran derrière ne montre plus la note ; la fenêtre dit « Ta note de dictée s'affichera à la fin du chrono » ; à zéro, l'écran de fin avec les deux notes.
+359. **G2 — regagner des points, en clair (112)** : la consigne écrite dans l'encart, pas en infobulle : « Comment ça marche : une question sur une règle que tu as ratée ; si tu réponds juste, tu regagnes 1,25 point sur ta note d'autocorrection. Si tu réponds faux, tu ne perds rien. Tu peux aussi garder ta note telle quelle. » — et **le bouton « Je garde ma note (2,5/5) »** à côté de « Répondre à une question » ; une fois cliqué, les questions ne sont plus proposées pour cette dictée. Les mots sont à toi : corrige-les.
+360. **G3 — le regain dans le bilan (113)** : la note d'autocorrection affichée **avec son détail** (« 2,5/5 + 1,25 regagné »), un tableau « Détail de ton autocorrection » (essais ratés −2,5 ; question regagnée +1,25, avec la règle ; question ratée 0 ; total) ; et **la phrase à recopier le dit** (« j'ai regagné 1,25 point en répondant sur l'accord du verbe »), pour que le commentaire ne mente plus ; le bilan exporté et le suivi professeur portent le regain à part.
+361. **Le masquage des copies en direct (114)** : comme l'heure (L13), l'écran de l'élève **écoute** « copies rendues / masquées » : si tu masques pendant qu'il a sa copie ouverte, son écran revient à « Mes dictées » (« Disponible après la séance ») sans rechargement ; si tu rends, « Ouvrir » s'allume chez lui tout seul. Même règle pour « publiée / non publiée » de l'accueil (C1).
+
+Si 357-361 te vont (ou dis ce qui change), le cadrage de L15 est complet : paramétrage aménagé (102, 104, 105), onglets et F5 (103), accueil C1 (109), modale D1 et propositions (106), import E1 (108), modes suivis d'effets, 110 → 114 ; et L15.1 l'analyse (107). J'écris alors les deux compléments au sas et te donne la phrase.
+
+03/10/2026 08:55 MEMO
+
+---

@@ -13111,3 +13111,29 @@ Puis « continuer » à l'exécutante pour **L15a** (reprise sur cette base), pu
 03/10/2026 15:15 MEMO
 
 ---
+
+## TOUR 432 — Paul
+
+Texte de Paul, mot pour mot :
+
+> livré
+
+---
+
+## TOUR 432 — Claude (conscience n°12)
+
+Audit L15a reprise : diff 122/91, 6.7.0-L15a, propositions L10 d'abord + règles ciblées (jamais vide ni le mot), suggestDistracteurs seulement dans addLacune (morte), mode suivi d'effets ; banc L15a VERT 9/9 (rouge sur L15-0b), L15-0b, L14, L11, vue élève verts ; captures. Verdict : ça va (102, 104, 105, 106). Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Audit de **L15a reprise** (« le paramétrage de la version aménagée », `LIVRAISONS/DICTEE-CORRECTION/L15a/`), mesuré :
+
+408. **Le fichier** : base = L15-0b promue (`f58664d4…`, vérifiée) → **6.7.0-L15a, 834 940 o (+6 134)**, md5 `022bd99d…` ; 122 lignes retirées, 91 ajoutées ; `node --check` 0 erreur. **Vérifié dans le code** : les propositions viennent **d'abord des vraies formes des copies (L10)**, puis de règles ciblées ; **jamais vide, jamais le mot lui-même** (filtre mesuré) ; l'ancienne fabrique au hasard (« ddevint ») **n'est plus appelée nulle part** sauf dans une fonction morte (`addLacune`, plus utilisée — à retirer avec le code mort, dette 97) ; le mode par défaut est **suivi d'effets** (`completerPourMode`) ; la coche reste sur Préparation.
+409. **Les bancs, rejoués par moi sur le kit anonymisé** : L15a **VERT, 9 vérifications** — la coche → **toujours sur Préparation**, `enabled` au hub ; mode B → `defaultMode: "B"` **écrit au hub**, le message ; mode C → les mots ont leur indice et leur raisonnement ; clic sur « syllabes » → **la fenêtre** (ta maquette D1) : « syllabes ✓ la bonne / silabes / syllabe » (les vraies formes semées, par fréquence), « Proposer d'autres formes », « Mode pour ce mot », « Retirer ce mot » (le mot rendu au texte), Entrée enregistre, Échap annule sans rien écrire ; **sur L15-0b ce banc est rouge** ; L15-0b, L14, L11 verts sur L15a ; vue élève identique à la 6.6.3. Son banc unique : vert, 0 échec.
+410. **Verdict : ça va. Tu peux promouvoir L15a** — dettes **102, 104, 105, 106**. Captures ci-dessus : Préparation, la fenêtre d'un mot.
+
+Tes tests, après promotion (https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?v=6.7.0) : 1) les Dylan → Préparation → coche « Paramétrer une version aménagée » : tu restes sur Préparation ; 2) mode par défaut B : le hub le garde (recharge, c'est toujours B), les mots suivent ; 3) clique « cadavres » : la fenêtre, tes trois propositions (les vraies formes des copies en premier), modifie, Entrée ; 4) « Retirer ce mot » : il revient au texte ; 5) plus de « ddevint » ni de proposition vide, nulle part. Puis « continuer » pour **L13b**.
+
+03/10/2026 15:55 MEMO
+
+---

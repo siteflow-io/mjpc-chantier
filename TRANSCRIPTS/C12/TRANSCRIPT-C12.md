@@ -13087,3 +13087,27 @@ Tes tests, après promotion (https://siteflow-io.github.io/monsieurjaipascompris
 03/10/2026 15:05 MEMO
 
 ---
+
+## TOUR 431 — Paul
+
+Texte de Paul, mot pour mot :
+
+> promeus
+
+---
+
+## TOUR 431 — Claude (conscience n°12)
+
+Promotion 6.7.0-L15-0b (commit c6e1a57fe6ec, bit à bit) ; protocole : dettes 116/117/118/124 ✔, journal, point de retour, où-trouver-quoi. Tests donnés ; L15a ensuite.
+
+Réponse mot pour mot :
+
+Promu : `correction_dictee.html` **6.7.0-L15-0b**, commit `c6e1a57fe6ec`, **bit à bit** (828 806 o, md5 `f58664d4…`) ; registre n°12 · **116, 117, 118, 124 ✔** ; journal, point de retour (L14b), où-trouver-quoi à jour.
+
+**Tes tests** : https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?v=6.7.0 → 1) les 4 Hugo : « ✓ copie recalculée : … sur 10 mots à compléter », ton élève aménagé passe de 0 à 5/10 ; 2) clic droit sur un élève corrigé → aménagé : sa note change aussitôt ; refais → elle revient ; 3) mode texte, flèches jusqu'à un mot du milieu, ⇧R : le rapide est sur ce mot ; avance, ⇧R : le curseur est là ; 4) les Dylan → Préparation → Formes acceptées : seul le premier « cadavres » est souligné ; en correction, G sur le second avec « cadavre » → ça coûte ; 5) « Empereur » tapé pour « empereur » : accepté comme recopie.
+
+Puis « continuer » à l'exécutante pour **L15a** (reprise sur cette base), puis L13b et la suite.
+
+03/10/2026 15:15 MEMO
+
+---

@@ -1,6 +1,6 @@
-# DICTÉE — L'ÉCRAN DE CORRECTION · L15a — le paramétrage de la version aménagée
+# DICTÉE — L'ÉCRAN DE CORRECTION · L15a (reprise) — le paramétrage de la version aménagée
 
-*Exécutant du complément L15, livraison L15a (dettes n°12 · 102, 104, 105, 106 ; visuel D1). Rien n'est promu.*
+*Exécutant du complément L15, livraison **L15a reprise sur la 6.7.0-L15-0b en ligne** (dettes n°12 · 102, 104, 105, 106 ; visuel D1). Elle remplace `LIVRAISONS/DICTEE-CORRECTION/L15a/` (partie de L15-0, avant le micro L14b et les points 7 et 8). Le code de L15a est le même, rejoué sur la nouvelle base. Rien n'est promu.*
 
 ## Ce que ça change pour toi
 - **Cocher « Paramétrer une version aménagée » reste sur Préparation** et déplie le paramétrage (102 : la case ramenait à la Correction).
@@ -11,20 +11,23 @@
 - **L'indice du mode C** se fabrique d'après **l'écart entre la forme fautive la plus fréquente et le mot** (pluriel, singulier, féminin, terminaison du verbe, accent, consonne double) ; sinon un indice honnête : « Regarde bien l'orthographe de ce mot dans la phrase. » — modifiable dans la fenêtre.
 - **L'aide « ? »** (Préparation — version aménagée) : la fenêtre d'un mot, Entrée / Échap, le mode par défaut suivi d'effets.
 
+
 ## Le fichier
-- Base : **L15-0** (au sas, md5 `53cdf811a7b4aba7d803c9a963794284`) — L15-0 n'est pas encore promue ; elle-même partie de la **6.7.0-L14 en ligne** (md5 `6516ce917a5bfe0a94663b252582086c`, vérifiée à la commande). → **6.7.0-L15a** : **830,510 o** (+6,135), md5 `5dc768341ff013a9252c307a75d3edd2`.
+- Base **6.7.0-L15-0b en ligne** (828 806 o, md5 `f58664d49a00228e3ac7d4c181e42817`, vérifiée à la commande) → **6.7.0-L15a** : **834,940 o** (+6,134), md5 `022bd99d02197698bbb9a2a001ba0d74`.
 - Ajoutées : `HOMOPHONES_L15A`, `reglesCibleesL15a`, `propositionsPourL15a`, `indiceEcartL15a` ; dans `ConfigAmenagee` : l'écoute en direct, `completerPourMode`, `setDefaultMode` (suivi d'effets), la fenêtre (`ouvrirFenL15a`, `enregistrerFenL15a`, `retirerFenL15a`, `autresFormesL15a`, Entrée / Échap), le message ; l'ancien panneau du bas retiré ; `EditionDictee` (`resteIci`) et `PreparationDictee` ; trois lignes d'aide. Syntaxe : 1 bloc, `node --check` 0 erreur, `acorn --ecma2020` 0 erreur.
+- **Avec L15-0b (point 7)** : changer les mots à compléter recalcule, comme avant, les copies aménagées (L14) ; un élève marqué aménagé après correction prend la version aménagée courante.
 
 ## Les bancs (`bancs/`) — le kit anonymisé, faux hub, ZZTEST
-**`banc_L15a_geste.py`** (par le geste, 9 vérifications ; deux mots déjà à compléter, des formes semées sur « syllabes » : « silabes » ×2, « syllabe » ×1) : la case cochée → **toujours sur Préparation, `enabled` au hub** ; mode par défaut B → **`defaultMode: "B"` au hub**, le message ; mode C → les deux mots ont leur indice et leur raisonnement ; clic sur « syllabes » → **la fenêtre** ; mode du mot A → **« syllabes / silabes / syllabe »** (la bonne cochée, les vraies formes d'abord, par fréquence ; aucune vide, aucune égale au mot, aucun doublement) ; « Proposer d'autres formes » → « sylabes, silabes » (la consonne double existante, dédoublée) ; **Entrée → enregistré** (mode A, trois propositions) ; un mot nouveau puis **Échap → rien d'ajouté** ; « Retirer ce mot » → **rendu au texte** ; 0 erreur. **Sur L15-0, ce banc est rouge** (la case ramène à la Correction).
+**`banc_L15a_geste.py`** (par le geste, 9 vérifications ; deux mots déjà à compléter, des formes semées sur « syllabes » : « silabes » ×2, « syllabe » ×1) : la case cochée → **toujours sur Préparation, `enabled` au hub** ; mode par défaut B → **`defaultMode: "B"` au hub**, le message ; mode C → les deux mots ont leur indice et leur raisonnement ; clic sur « syllabes » → **la fenêtre** ; mode du mot A → **« syllabes / silabes / syllabe »** (la bonne cochée, les vraies formes d'abord, par fréquence ; aucune vide, aucune égale au mot, aucun doublement) ; « Proposer d'autres formes » → « sylabes, silabes » (la consonne double existante, dédoublée) ; **Entrée → enregistré** (mode A, trois propositions) ; un mot nouveau puis **Échap → rien d'ajouté** ; « Retirer ce mot » → **rendu au texte** ; 0 erreur. **Sur L15-0b, ce banc est rouge** (la case ramène à la Correction).
 **Non joué au banc** : l'écran de l'élève en version aménagée (A : les propositions, B : le trou, C : l'indice) — le banc vérifie ce que ces écrans lisent au hub (le mode et les propositions ou l'indice de chaque mot) ; son code n'est pas touché.
-**Banc unique sur L15a : VERT, 0 échec** (`sorties/`) : S1/S3, S2, fuzz ×3, grille, bancs L1 → L14, L15-0, L15a (dont **L14, la note aménagée**), vue élève identique à la 6.6.3.
+**Banc unique sur L15a : VERT, 0 échec** (`sorties/`) : S1/S3, S2, fuzz ×3, grille, bancs L1 → L14, L15-0, L15-0b, L15a (dont **L14, la note aménagée**, et **L15-0b**), vue élève identique à la 6.6.3.
+
 
 ## Captures (`captures/`)
-`D1-avant.png` (la case : on quitte la Préparation) ; `D2-preparation.png` (on reste ; le mode C et son message) ; `D3-fenetre.png` (la fenêtre de « syllabes »).
+`D1-avant.png` (L15-0b : la case fait quitter la Préparation) ; `D2-preparation.png` (on reste ; le mode C et son message) ; `D3-fenetre.png` (la fenêtre de « syllabes »).
 
-## Tes tests, après promotion (L15-0 puis L15a)
-1. https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?v=6.7.0 → les Dylan → Préparation : la version aménagée est dépliée ; décoche / recoche : tu restes sur Préparation.
-2. Mode par défaut C : le message compte les mots qui suivent ; un élève aménagé voit les indices.
+## Tes tests, après promotion
+1. https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?v=6.7.0 → les Dylan → Préparation : décoche / recoche la version aménagée : tu restes sur Préparation.
+2. Mode par défaut C : le message compte les mots qui suivent.
 3. Clique « amenés » : sa fenêtre ; « ↻ Proposer d'autres formes » : les vraies fautes de tes élèves d'abord ; « Mode pour ce mot : B » ; Entrée.
 4. Clique un mot ordinaire, puis Échap : rien n'est ajouté ; « 🗑 Retirer ce mot » sur un mot à compléter : il est rendu au texte.

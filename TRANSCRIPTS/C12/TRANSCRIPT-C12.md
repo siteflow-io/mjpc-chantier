@@ -12718,3 +12718,27 @@ Deux questions pour clore L16 : **(a)** le nombre de formes épelées : 3, ou to
 03/10/2026 10:20 MEMO
 
 ---
+
+## TOUR 416 — Paul
+
+Texte de Paul, mot pour mot :
+
+> bon, ta maquette ne correspond à rien de l'existant en fait. je suis en train de te faire reconstruire l'existant, or une maquette ne doit jamais être retravaillée pour qu'on lui ajoute des fonctionnalités existant déjà. sinon, c'est une perte de temps.
+
+---
+
+## TOUR 416 — Claude (conscience n°12)
+
+Faute de méthode reconnue ; règle inscrite dans PROTOCOLE-MAQUETTE.md (une maquette part de l'existant : l'app réelle sur faux hub, on n'ajoute que la nouveauté) ; proposition 373 : maquette L16 = l'app 6.7.0-L14 en un fichier autonome sur le faux hub du kit + la seule nouveauté audio. Attend « ok ».
+
+Réponse mot pour mot :
+
+Tu as raison, et c'est une faute de méthode, pas un détail : j'ai dessiné un écran à côté de l'app au lieu de partir de l'écran rapide réel (le mot, G/L, la case avec la liste de L10, le pavé, le bouton « forme acceptée », l'audio déjà là), et tu as dû me redemander l'existant pièce par pièce. **La règle est inscrite dans `PROTOCOLE-MAQUETTE.md`** (une maquette part de l'existant ; on n'y ajoute que la nouveauté ; une maquette qui te fait redemander l'existant est fautive et se refait depuis l'app).
+
+373. **La bonne méthode pour L16, que je propose** : la maquette = **l'app réelle 6.7.0-L14, en un seul fichier que tu ouvres chez toi**, branchée sur le faux hub du kit anonymisé (les 107 copies, les formes capitalisées, rien de réel touché), **plus la seule nouveauté** : quand l'audio est allumé et que tu presses G ou L, l'épellation immédiate des formes du type choisi, et la bascule « passer en L ? ». Tout le reste est l'existant, tel quel. C'est ce que je ferai pour toutes les maquettes à venir.
+
+Dis « ok » et je la fabrique ainsi — et rien d'autre dedans.
+
+03/10/2026 10:30 MEMO
+
+---

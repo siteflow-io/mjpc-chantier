@@ -13060,3 +13060,30 @@ Ta phrase pour elle : **« Validé : continuer — L15-0b, puis L15a reprise, pu
 03/10/2026 14:35 MEMO
 
 ---
+
+## TOUR 430 — Paul
+
+Texte de Paul, mot pour mot :
+
+> livré
+
+---
+
+## TOUR 430 — Claude (conscience n°12)
+
+Audit L15-0b : diff 41/94, 6.7.0-L15-0b, micro L14b dedans, règle par place, motJuste casse comprise, trace suit le marquage, ⇧R ; bancs L15-0b VERT 7/7, L15-0 VERT, L2/L10/L11 accordés verts (anciens rouges : normal), L14, L8, vue élève ; relevés reconfirmés (cadavres, Hugo). Verdict : ça va, promouvable (116, 117, 118, 124). Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Audit de **L15-0b** (`LIVRAISONS/DICTEE-CORRECTION/L15-0b/` — L15-0 reprise sur la L14b, avec les points 7 et 8), mesuré :
+
+404. **Le fichier** : base = L14b promue (`66e0ab5a…`, vérifiée — le micro de la fenêtre du mode texte est dedans, mesuré) → **6.7.0-L15-0b, 828 806 o (+8 971)**, md5 `f58664d4…` ; 41 lignes retirées, 94 ajoutées ; `node --check` 0 erreur. **Vérifié dans le code** : la règle du texte est rangée **par place** (`formesAcceptees/<place>/<forme>`) ; la garde du mot juste compare **casse comprise** (« Empereur » pour « empereur » accepté) ; la trace suit le marquage (recalcul, corbeille `recalcul-amenage…`, message) ; ⇧R et « ← Texte » / Pause portent le mot où l'on est.
+405. **Les bancs, rejoués par moi sur le kit anonymisé** : L15-0b **VERT, 7 vérifications** — une copie déjà marquée mais tracée ordinaire → recalculée à l'ouverture (trace, 9/10, les erreurs hors trous sans coût) ; clic droit → aménagé sur une copie corrigée → « copie recalculée : 2 erreurs comptées sur 3 mots à compléter », corbeille 2 entrées ; démarqué → version ordinaire, 7,5/10 ; ⇧R : curseur texte au mot 20 → le rapide s'ouvre sur le 20 ; 10 mots plus loin, ⇧R → le curseur texte sur le 30 ; L15-0 (points 1 à 6) **VERT** ; L2 accordé, **L10 et L11 accordés** (les bancs d'avant sont rouges, normal : la liste marque « acceptée » par place désormais), L14, L8 : verts ; vue élève identique à la 6.6.3. Son banc unique : vert, 0 échec, bancs L1 → L14 compris.
+406. **Les relevés reconfirmés** — les 22 « cadavres » **tous à la place 119**, 21 sans coût, la Franklin n°2 « cadave » comptée : **le même relevé que le mien, aucune note faussée** ; la copie des Hugo : trace ordinaire, 43 erreurs dont 6 dans les 10 trous, note 0 → **5/10 à ta première ouverture**, seule copie du hub dans ce cas.
+407. **Verdict : ça va. Tu peux promouvoir L15-0b** — elle règle les dettes **116, 117, 118, 124**. Captures ci-dessus : G sur le second « lui » ; l'élève marqué après correction.
+
+Tes tests, après promotion (https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?v=6.7.0) : 1) les 4 Hugo : « ✓ copie recalculée : … sur 10 mots à compléter », ton élève aménagé passe de 0 à 5/10 ; 2) clic droit sur un élève corrigé → aménagé : sa note change aussitôt ; refais → elle revient ; 3) mode texte, flèches jusqu'à un mot du milieu, ⇧R : le rapide est sur ce mot ; avance, ⇧R : le curseur est là ; 4) les Dylan → Préparation → Formes acceptées : seul le premier « cadavres » est souligné ; en correction, G sur le second avec « cadavre » → ça coûte ; 5) « Empereur » tapé pour « empereur » : accepté comme recopie. Puis « continuer » pour L15a reprise.
+
+03/10/2026 15:05 MEMO
+
+---

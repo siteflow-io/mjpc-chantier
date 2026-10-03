@@ -12692,3 +12692,29 @@ Réponse mot pour mot :
 03/10/2026 10:05 MEMO
 
 ---
+
+## TOUR 415 — Paul
+
+Texte de Paul, mot pour mot :
+
+> il y a une pause assez longue entre quand j'arrive sur le mot et la prononciation de "numéro 1". il faut la supprimer. comme ça dès que je clique G ou L ou peu importe, j'ai tout de suite l'audio des erreurs capitalisées. par ailleurs, actuellement il n'y a aucune distinction de types d'erreurs capitalisées. Or, je sélectionne bien un type à chaque fois. Donc je ne devrai avoir que les propositions de chaque type, non? Et si par exemple j'ai mis G, et que je tape une erreur qui était préalablement enregistrée en L, l'app doit me le dire "passer en L?". et inversement pour G du coup. A cadrer. d'illeurs ta maquette devrait reproduire aussi la sélection du type, sinon elle ne correspond pas à l'existant.
+
+---
+
+## TOUR 415 — Claude (conscience n°12)
+
+Maquette v6 (T415) : le mot lu à l'arrivée ; G/L ouvre la case et épelle sur-le-champ les formes du type choisi (pas de relecture, pas de ding, < 20 ms) ; la liste par type ; la bascule « déjà enregistrée en L (×2). Passer en L ? » avec deux boutons ; banc VERT 4/4 ; capture. Questions (a) nombre de formes, (b) la forme ne compte que là où elle est mise.
+
+Réponse mot pour mot :
+
+v6 ci-dessus (pièce T415), qui reproduit l'existant — le mot, puis **G ou L** — et cadre tes trois points :
+
+370. **Plus de pause** : à l'arrivée sur le mot, la voix lit le mot, et c'est tout ; **dès que tu presses G ou L**, la case s'ouvre et **l'épellation commence sur-le-champ** — sans relire le mot, sans « ding » (mesuré au banc : moins de 20 ms entre la touche et « numéro 1 »). Le « ding » disparaît : le type que tu choisis déclenche l'audio, il n'y a plus rien à annoncer.
+371. **Par type** : chaque forme capitalisée porte le type sous lequel tu l'as enregistrée (c'est déjà dans les objets de L10) ; **la liste et l'audio ne montrent que les formes du type choisi** — G sur « voulait » : « numéro 1 vé o u èl a i ès (voulais) », « numéro 2 … (voulai) », « numéro 3 … (voulé) » ; les formes vues en L (« voullait », « vouler ») n'y sont pas ; L les donnerait, elles seules. Le numéro tapé au pavé est celui de cette liste.
+372. **La bascule** : tu es en G, tu tapes « voullait », déjà enregistrée en L : l'app dit **« « voullait » a déjà été enregistrée en L (×2). Passer en L ? »** avec deux boutons, **« Passer en L »** et **« Garder G »** (et la voix le dit si l'audio est allumé : « déjà en L, passer en L ? ») ; l'inverse pour une forme vue en G quand tu es en L. Boutons, pas de raccourci (ta règle). Une forme vue sous les deux types ne déclenche rien.
+
+Deux questions pour clore L16 : **(a)** le nombre de formes épelées : 3, ou toutes celles du type (rarement plus de 3 par type) ? **(b)** quand tu passes en L sur la bascule, l'erreur est posée en L et la forme compte en L — et la forme garde-t-elle aussi son compte en G si elle y avait été vue ? (je propose : non, elle n'est que là où tu l'as mise). Dis-moi, et j'écris L16.
+
+03/10/2026 10:20 MEMO
+
+---

@@ -13040,3 +13040,23 @@ L'ordre complet : L15-0 → L15a → L13b → L15b → L15c → L15d → L15e �
 03/10/2026 14:25 MEMO
 
 ---
+
+## TOUR 429 — Paul
+
+Texte de Paul, mot pour mot : (il colle la relecture de l'exécutante : 310 la file ; 311 L15-0 et L15a à reprendre sur L14b, points 7 et 8 ; proposition L15-0b ; 312 touche C libre, plafond sans effet actuel (≤ 3 ponctuations par copie), objets L10 à étendre à C, ordre de calcul de la note proposé en cinq étapes, Préparée à reconfirmer.)
+
+---
+
+## TOUR 429 — Claude (conscience n°12)
+
+Validé : L15-0b sur L14b (points 7 et 8), L15a reprise, puis L13b et la suite ; touche C ; objets L10 avec C ; l'ordre de calcul (sans-coût → un type par mot → répétitions → forfait plafonné → l'unité) écrit au complément (L15g point 6) ; file mise à jour.
+
+Réponse mot pour mot :
+
+Sa relecture est juste, et je valide tout : **311** — oui, L15-0b reprise sur la L14b avec les points 7 (l'élève marqué aménagé après coup, relevé des Hugo reconfirmé) et 8 (⇧R part du mot où l'on est), puis L15a par-dessus, puis L13b et la suite dans l'ordre ; **312** — la touche **C** est bonne ; le plafond du forfait ne change aucune note actuelle (mesuré : au plus 3 ponctuations par copie), il s'appliquera avec L15h ; les objets de L10 sont créés aussi pour C ; et **son ordre de calcul de la note est le bon** — (1) retirer les sans-coût, (2) un type par mot, le plus grave, (3) les répétitions, (4) le forfait plafonné, (5) l'unité — je l'ai écrit au complément (L15g, point 6) : une seule fonction, partout. Elle reconfirmera que « Préparée » est le barème actuel à l'octet.
+
+Ta phrase pour elle : **« Validé : continuer — L15-0b, puis L15a reprise, puis L13b et la suite ; l'ordre de calcul est au complément, L15g point 6. »**
+
+03/10/2026 14:35 MEMO
+
+---

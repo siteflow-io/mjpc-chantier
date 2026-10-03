@@ -12372,3 +12372,34 @@ Puis « continuer » à l'exécutante pour **L14** (la note des élèves aménag
 03/10/2026 07:30 MEMO
 
 ---
+
+## TOUR 403 — Paul
+
+Texte de Paul, mot pour mot :
+
+> il faut qu'on fasse un L15. Mesure les paramétrages du mode aménagé. Audit de ce qui va et qui ne va pas. je parle bien du paramétrage. Les boutons, font-ils ce qu'on attend d'eux? le rechargement se fait-il? etc. Par ailleurs, les propositions automatiques en mode "3 propositions" sont totalement absurdes et peu crédibles. Il faut que ces propositions soient vraiment crédibles. A cadrer (en L15 fin). Par ailleurs, je dois pouvoir injecter une dictée (mode classique ET mode préparée) que j'ai faite, qui est en pdf et qui a le format suivant (voir pj). Enfin, audit de l'UI de mon écran d'accueil quand j'arrive sur correction dictée. (emplacement test, emplacement aménagé etc). Enfin, test tous les onglets, quand on est entré dans une dictée, et notamment le rechargement, la tenue d'un onglet etc. Dernière chose: l'analyse automatique des erreurs de l'élève. va regarder toutes les copies des 3E et surtout l'analyse de leurs erreurs, puis reviens me faire l'audit. ça, c'est L15.1
+
+(aucune pièce jointe reçue)
+
+---
+
+## TOUR 403 — Claude (conscience n°12)
+
+Audit L15 mesuré (gestes sur faux hub : coche → Correction, lacune au clic ok, reclic ne retire pas, mode B non écrit, F5 → accueil ; `suggestDistracteurs` : doublement au hasard, vide ; accueil : bloc mode test ; `gramComment` ignore le fautif : 514 erreurs 3E, 50 % génériques, commentaires faux). Rapport déposé `AUDITS/L15-AUDIT-DICTEE.md` + captures ; dettes 102-109 au registre. Demandes : le PDF, les choix d'accueil, accord sur les cadrages, l'ordre.
+
+Réponse mot pour mot :
+
+L'audit L15 est fait et déposé (`AUDITS/L15-AUDIT-DICTEE.md` au sas, avec les deux captures) ; les dettes **n°12 · 102 à 109** sont au registre. Dans l'ordre de tes demandes, mesuré sur la 6.7.0-L13 :
+
+337. **Le paramétrage de la version aménagée, par le geste** — ce qui va : cliquer un mot crée la lacune et l'écrit au hub aussitôt. Ce qui ne va pas : **cocher « Paramétrer une version aménagée » active bien la version mais bascule sur l'onglet Correction** (l'écran de paramétrage disparaît : il faut revenir sur Préparation) (102) ; **recliquer un mot ne retire pas la lacune**, contrairement à l'infobulle (104) ; **choisir « B — Trou simple » ne s'écrit pas** (le hub garde A) (105) ; **F5 renvoie à l'accueil** : la dictée, l'onglet, l'écran sont perdus (103). « Note sur », « Consigne », « Regénérer » : présents, pas encore mesurés geste par geste — ils le seront dans L15.
+338. **Les « 3 propositions »** — mesuré dans leur fabrique : des permutations d'accents, **un doublement de consonne au hasard** (« ddevint », « nnaturellement »), des terminaisons, une petite table d'homophones ; aucun contrôle ; **et quand il manque des candidats, une proposition vide**. L'indice et le raisonnement sont des phrases toutes faites (« courrier → courriel » pour « naturellement »). (106) Le cadrage que je proposerai en fin de L15 : **les vraies formes de tes élèves d'abord** (la capitalisation L10, par mot), puis des règles ciblées, jamais de vide, et ta main.
+339. **Injecter une dictée depuis ton PDF** — **la pièce jointe n'est pas arrivée** dans la conversation : je n'ai rien pu mesurer. Renvoie-la, et je cadre (108).
+340. **L'accueil** (capture ci-dessus) — la liste des dictées, puis **le bloc « Mode test » en pleine largeur avec ses outils d'éprouvette** (Regénérer, Tout effacer, « Éprouver les mécanismes livrés », « Se mettre à la place d'un élève ») : la moitié de l'écran ; « Nouvelle dictée » passe sous la ligne ; « Aménagée · 0 » sur une dictée activée sans trou. (109) C'est à toi de dire où va le mode test (replié ? en bas ? dans Données ?) et « Nouvelle dictée ».
+341. **Les onglets et le rechargement** — F5 sur n'importe quel onglet : l'accueil ; **aucun onglet n'est tenu, la dictée non plus** (103). Cadrage : l'adresse porte la dictée et l'onglet, F5 rouvre au même endroit, comme la copie reprend là où tu étais.
+342. **L15.1 — l'analyse automatique, sur les 37 copies des 3E (514 erreurs)** : le commentaire est choisi **d'après le mot attendu et le type, jamais d'après ce que l'élève a écrit**. Résultat : **50 % de commentaires génériques**, et des **commentaires faux** — « abri » écrit « abris » (13 fois) → « Participe en -i » ; « quelques » → « quelque » → « Participe en -u + déterminant pluriel » ; « amenés » → « ammené » → « Participe en -é » (c'est le double m) ; « goutte » → « goûte » → « Double consonne » (c'est l'accent) ; « cadavres / kilomètres / instant / exhume » avec un -s ou un -nt en trop ou en moins (68 fois) → rien de précis ; « 3 » pour « trois » → rien. Juste quand l'écart est bien un accord de participe ou un homophone de la table. (107) Cadrage : analyser **l'écart lettre à lettre entre la forme de l'élève et le mot** (un -s, un -nt, un accent, une consonne doublée, -é/-er, un homophone) et en déduire le commentaire ; sinon un commentaire honnête ; nourri des formes capitalisées.
+
+**Ce qu'il me faut de toi** : le PDF (339) ; tes choix pour l'accueil (340) ; « d'accord » sur la ligne de 338 et 342 ; et l'ordre — je propose **L15** = paramétrage (102, 104, 105), onglets (103), accueil (109), propositions (106), injection (108) ; **L15.1** = l'analyse (107). Puis « continuer » à l'exécutante pour L14, qui ne dépend de rien de ceci.
+
+03/10/2026 07:55 MEMO
+
+---

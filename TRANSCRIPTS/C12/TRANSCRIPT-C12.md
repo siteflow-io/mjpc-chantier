@@ -12940,3 +12940,31 @@ Sources : ac-strasbourg (2021 : …/DNB_Septembre_2021/21GENFRME3C_BAT.pdf ; 202
 03/10/2026 11:35 MEMO
 
 ---
+
+## TOUR 425 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok. donc sur l'app actuelle, si on se colle au brevet (pour la dictée brevet), il faut rajouter un type en réalité: les accents. c'est ça? Vu que j'ai déjà corrigé mes copies, ET entré les mots écrits par les élèves, le reclassement se fera automatiquement? (un L avec le mot "prêt" écrit "pret", par exemple)
+
+---
+
+## TOUR 425 — Claude (conscience n°12)
+
+Oui : un type « accent / majuscule / trait d'union » au forfait (accents grammaticaux restent G). Mesuré au hub (fichiers téléchargés) : Dylan 11 L accent seul / 8 copies (1 grammatical à exclure), Franklin 5 / 5, Hugo 10 / 4 (préparée) ; brevets blancs 3E/4E : 521 L sans recopie → pas de reclassement automatique. Impact ≤ 0,5 par copie, à reconfirmer par l'exécutante. Proposition : L15h (type accent au forfait, reclassement à blanc puis réel) + L15g (profils). Attend « ok ».
+
+Réponse mot pour mot :
+
+395. **Oui : pour coller au brevet, il faut un type de plus — « accent / majuscule / trait d'union » (non grammatical)** — qui va **au forfait avec la ponctuation** (0,5 par 4, plafond 2), au lieu d'être une erreur L à 0,5 chacune. Les accents **grammaticaux** (a / à, la / là, ou / où, du / dû, sur / sûr) restent des erreurs G à 1 point : le texte officiel les exclut du forfait, et c'est déjà ce que tu fais.
+396. **Le reclassement automatique, mesuré au hub, copie par copie** : il n'est possible que **là où tu as recopié ce qu'a écrit l'élève** — la règle est mécanique : si la recopie, une fois les accents enlevés, est le mot attendu, c'est une erreur d'accent (« prêt » écrit « pret ») ; si la seule différence est une majuscule ou un trait d'union, pareil ; et jamais pour un homophone grammatical (« là » écrit « la » reste G). Ce que ça donne :
+- **Dylan (brevet)** : 81 erreurs L, **11 sont « accent seul »** sur 8 copies (« vehicules », « kilomêtres », « çe ») — dont **1 à exclure** (« là » → « la », grammatical) ; 2 majuscule/trait d'union ; 11 G « accent seul » que je regarderai une par une (ce sont a / à et consorts : elles restent G).
+- **Franklin (brevet)** : 64 L, **5 « accent seul »** sur 5 copies (« vehicules » ×3, « alèrte »…) ; 11 G à vérifier de même.
+- **Hugo (préparée)** : 50 L, **10 « accent seul »** sur 4 copies (« meme », « demolitions », « commençèrent ») — mais en préparée, le forfait n'existe pas : ce sera ton profil (394) qui dira.
+- **Les trois brevets blancs** (3E Charles de Gaulle 113 L, 4E Banksy 203, 4E Pythagore 205) : **aucune recopie** sur ces erreurs L (corrigées avant la capitalisation, sans saisie) — **aucun reclassement automatique possible** ; elles restent L à 0,5, sauf reprise à la main.
+397. **Ce que ça change pour les notes** : chez les Dylan, 8 copies passent 10 accents de « 0,5 chacun » à « 0,5 par 4 » — jusqu'à 0,5 point récupéré par copie ; chez les Franklin, 5 copies. Je ferai mesurer et reconfirmer par l'exécutante avant livraison (comme pour « cadave »). Dette **126** : à livrer comme L5 — **d'abord à blanc** (le rapport copie par copie, tu dis « ok »), puis réel, corbeille d'abord, et le nouveau type dans le mode rapide (une touche) et le mode texte (menu), avec sa ligne d'aide et son commentaire pour l'élève (L15.1 : « accent manquant / en trop »).
+
+Dis « ok » et j'ajoute L15h (le type accent au forfait, le reclassement à blanc puis réel) et L15g (les profils de barème, 394) au complément.
+
+03/10/2026 13:45 MEMO
+
+---

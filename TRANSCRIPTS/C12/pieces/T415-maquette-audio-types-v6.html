@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8"><title>Maquette — l'audio dit les formes du type choisi, dès G ou L (v6)</title>
+<style>
+:root{--bg:#f7f7f5;--card:#fff;--line:#dadada;--txt:#1d1d1b;--sub:#6b6b66;--muted:#9a9a94;--ok:#1a7f37;--g:#b42318;--l:#1d4ed8;--hl:#fff3bf}
+body{margin:0;background:var(--bg);color:var(--txt);font:16px/1.45 Georgia,serif}
+.wrap{max-width:1100px;margin:0 auto;padding:14px 24px;display:grid;grid-template-columns:1fr 340px;gap:18px}
+h1{grid-column:1/3;font-size:1.15rem;margin:0}.sub{grid-column:1/3;color:var(--sub);font-size:.9rem}
+.head{display:flex;align-items:center;gap:14px;background:#f1f1ee;border-radius:14px;padding:8px 16px;margin-bottom:8px}
+.note{font-size:1.5rem;font-weight:700;color:var(--ok)}
+.btn{border:1px solid var(--line);background:#fff;border-radius:10px;padding:8px 14px;font:inherit;cursor:pointer}.btn.on{background:#dbeafe;border-color:#93c5fd;font-weight:700}
+.btn.g{color:var(--g);background:#fbeaea}.btn.l{color:var(--l);background:#e8eefb}.btn.p{background:#2563eb;color:#fff;border-color:#2563eb;font-weight:700}
+.ctx{text-align:center;color:var(--sub);margin:6px 0}.ctx b{color:var(--txt);font-size:1.05rem}
+.mot{background:var(--card);border:1px solid var(--line);border-radius:14px;text-align:center;padding:18px 10px 8px;font-size:2.1rem;font-weight:700}
+.mot small{display:block;font-size:.8rem;font-weight:400;color:var(--muted);margin-top:6px}
+.boutons{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0}
+.champ{border:2px solid var(--l);border-radius:14px;padding:10px 14px;background:#f4f7ff}
+.champ.g{border-color:var(--g);background:#fdf4f4}
+.liste{margin:4px 0 8px}.liste .f{display:inline-block;margin:2px 10px 2px 0}.liste .n{color:var(--muted)}.liste .dit{background:var(--hl);border-radius:6px;padding:0 6px}
+.saisie{display:flex;gap:8px;align-items:center}.saisie input{flex:1;font:inherit;font-size:1.05rem;padding:8px 12px;border:1px solid var(--line);border-radius:10px}
+.bascule{margin-top:8px;background:#fff7e6;border:1px solid #f2d59a;border-radius:10px;padding:8px 12px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 16px;margin-bottom:12px}.card h2{font-size:.95rem;margin:0 0 6px;color:var(--sub)}
+.sst{min-height:3.2em;font-family:ui-monospace,Consolas,monospace;font-size:.95rem;color:#333;background:#f6f6f3;border-radius:8px;padding:8px 10px;white-space:pre-wrap}
+.aide{color:var(--muted);font-size:.8rem;margin-top:6px}
+</style></head><body><div class="wrap">
+<h1>Maquette — l'audio dit les formes déjà vues du type choisi, dès G ou L</h1>
+<div class="sub">Tout est simulé. « 🔊 Audio » puis Espace : le mot est lu. G ou L : la case s'ouvre et <b>tout de suite</b> les formes <b>de ce type</b> sont épelées. Les formes sont fictives ; chacune a le type sous lequel elle a été enregistrée.</div>
+<div class="col">
+  <div class="head"><div class="note">20</div><div><b>ZZTEST ALPHA Anna</b><div style="color:var(--sub);font-size:.85rem" id="compte">0 err.</div></div><span style="flex:1"></span><button class="btn" id="bAudio">🔊 Audio</button></div>
+  <div class="ctx" id="ctx"></div>
+  <div class="mot" id="mot">—<small>Espace = mot suivant · Retour = précédent · G / L = marquer · Échap = fermer / couper</small></div>
+  <div class="boutons"><button class="btn g" id="bG" title="G : grammaire — la case s'ouvre, les formes déjà vues en G sont épelées">G Grammaire</button><button class="btn l" id="bL" title="L : lexique — la case s'ouvre, les formes déjà vues en L sont épelées">L Lexique</button></div>
+  <div class="champ" id="champ" hidden>
+    <div style="font-weight:700;margin-bottom:4px" id="titre"></div>
+    <div class="liste" id="liste"></div>
+    <div class="saisie"><input id="in" placeholder="recopie ce qu'a écrit l'élève — ou son numéro au pavé" autocomplete="off"><button class="btn p" id="valider">✓ Valider</button></div>
+    <div class="bascule" id="bascule" hidden><span id="basTxt"></span><button class="btn" id="bPasser">Passer en L</button><button class="btn" id="bGarder">Garder G</button></div>
+    <div class="aide">La liste et l'audio ne montrent que les formes du type choisi. Une forme déjà vue sous l'autre type : l'app le dit et propose de changer de type.</div>
+  </div>
+</div>
+<div class="aside">
+  <div class="card"><h2>Ce que la voix dit (sous-titres)</h2><div class="sst" id="sst">rien encore</div></div>
+  <div class="card"><h2>Ce que la correction retient</h2><ol id="log"><li style="color:var(--muted)">rien encore</li></ol></div>
+  <div class="card"><h2>Pavé simulé</h2><button class="btn" id="bSuiv">Espace</button> <button class="btn" id="bPrec">Retour</button> <button class="btn" id="bStop">Échap</button></div>
+</div>
+</div>
+<script>
+var TEXTE=["Dans","la","lumière","grise","du","matin",",","le","vieux","pêcheur","voulait","rentrer","."];
+/* chaque forme : [forme, compte, type sous lequel elle a été enregistrée] */
+var FORMES={"voulait":[["voulais",6,"G"],["voulai",3,"G"],["voullait",2,"L"],["voulé",2,"G"],["vouler",1,"L"]],"pêcheur":[["pecheur",4,"L"],["pêcheurs",2,"G"]],"lumière":[["lumiere",5,"L"]],"grise":[["grize",2,"L"],["grises",1,"G"]]};
+var i=0, audio=false, type=null, $=function(id){return document.getElementById(id)}; var DIT=[]; window.__DIT=DIT; var VEP=2.4;
+var NOMS={a:'a',b:'bé',c:'cé',d:'dé',e:'e',f:'èf',g:'gé',h:'ache',i:'i',j:'ji',k:'ka',l:'èl',m:'èm',n:'èn',o:'o',p:'pé',q:'ku',r:'èr',s:'ès',t:'té',u:'u',v:'vé',w:'double vé',x:'ixe',y:'i grec',z:'zède','é':'é','è':'è','ê':'e circonflexe','â':'a circonflexe','î':'i circonflexe','ô':'o circonflexe','û':'u circonflexe','ç':'cé cédille','ï':'i tréma','ë':'e tréma','à':'à','ù':'ù'};
+function lettres(f){ return f.split('').map(function(c){var k=c.toLowerCase();var n=NOMS[k]||k; if(c!==k)n+=' majuscule'; return n}).join(' ') }
+var S=window.__voix||window.speechSynthesis; var lignes=[];
+function sst(){ $('sst').textContent=lignes.join('\n') }
+function parler(t,rate,cb){ DIT.push(t); lignes.push(t); sst(); if(!S){ if(cb)cb(); return } var u=new (window.__Utt||SpeechSynthesisUtterance)(t); u.lang='fr-FR'; u.rate=rate||1; u.onend=function(){ if(cb)cb() }; S.speak(u) }
+function couper(){ if(S)S.cancel() }
+function log(t){var ol=$('log'); if(ol.children.length===1&&ol.children[0].style.color)ol.innerHTML=''; var li=document.createElement('li'); li.textContent=t; ol.appendChild(li)}
+function formesDuType(w,t){ return (FORMES[w]||[]).filter(function(f){return f[2]===t}) }
+function rendre(){ var w=TEXTE[i]; $('ctx').innerHTML=TEXTE.map(function(t,k){return k===i?'<b>'+t+'</b>':t}).join(' '); $('mot').childNodes[0].textContent=w; lignes=[]; if(audio){ couper(); parler(w,1.15) } }
+function ouvrir(t){ type=t; var w=TEXTE[i]; var fs=formesDuType(w,t); $('champ').hidden=false; $('champ').classList.toggle('g',t==='G'); $('titre').textContent='Marquage '+t+' — Qu\'a écrit l\'élève ?';
+  $('liste').innerHTML=fs.length?('<span class="n">déjà vu en '+t+' : </span>'+fs.map(function(f,k){return '<span class="f" id="f'+k+'"><span class="n">'+(k+1)+'</span> <i>'+f[0]+'</i> <span class="n">×'+f[1]+'</span></span>'}).join('')):'<span class="n">aucune forme déjà vue en '+t+' sur ce mot</span>';
+  $('bascule').hidden=true; $('in').value=''; $('in').focus();
+  if(audio&&fs.length){ couper(); /* tout de suite : pas de relecture du mot, pas de ding */ var k=0; (function suite(){ if(k>=Math.min(3,fs.length))return; var f=fs[k]; var el=$('f'+k); if(el)el.classList.add('dit'); parler('numéro '+(k+1)+' '+lettres(f[0]),VEP,function(){k++;suite()}) })() } }
+function fermer(){ $('champ').hidden=true; type=null; couper() }
+function valider(){ var v=$('in').value.trim(); var w=TEXTE[i]; var fs=FORMES[w]||[]; var n=+v; if(/^\d+$/.test(v)){ var f=formesDuType(w,type)[n-1]; if(!f)return; v=f[0] }
+  var autre=type==='G'?'L':'G'; var dansAutre=fs.filter(function(f){return f[0].toLowerCase()===v.toLowerCase()&&f[2]===autre})[0]; var dansType=fs.filter(function(f){return f[0].toLowerCase()===v.toLowerCase()&&f[2]===type})[0];
+  if(dansAutre&&!dansType){ $('bascule').hidden=false; $('basTxt').textContent='« '+v+' » a déjà été enregistrée en '+autre+' (×'+dansAutre[1]+'). Passer en '+autre+' ?'; $('bPasser').textContent='Passer en '+autre; $('bGarder').textContent='Garder '+type; $('bPasser').onclick=function(){ type=autre; enregistrer(v) }; $('bGarder').onclick=function(){ enregistrer(v) }; if(audio){couper(); parler('déjà en '+autre+'. passer en '+autre+' ?',1.3)} return }
+  enregistrer(v) }
+function enregistrer(v){ var w=TEXTE[i]; log('« '+w+' » : erreur '+type+(v?' — elle a écrit « '+v+' »':'')); var fs=FORMES[w]=FORMES[w]||[]; var ex=fs.filter(function(f){return f[0].toLowerCase()===v.toLowerCase()&&f[2]===type})[0]; if(v){ if(ex)ex[1]++; else fs.push([v,1,type]) } $('compte').textContent=(+$('compte').textContent.split(' ')[0]+1)+' err.'; fermer(); if(i<TEXTE.length-1){i++;rendre()} }
+$('bAudio').onclick=function(){ audio=!audio; $('bAudio').classList.toggle('on',audio); if(audio)rendre(); else couper() };
+$('bG').onclick=function(){ouvrir('G')}; $('bL').onclick=function(){ouvrir('L')}; $('valider').onclick=valider;
+$('bSuiv').onclick=function(){ if(i<TEXTE.length-1){i++;rendre()} }; $('bPrec').onclick=function(){ if(i>0){i--;rendre()} }; $('bStop').onclick=function(){couper()};
+document.addEventListener('keydown',function(e){ var dansCase=(e.target===$('in')); if(type&&dansCase){ if(e.key==='Enter'){e.preventDefault();valider()} else if(e.key==='Escape'){e.preventDefault();fermer()} return }
+  if(e.key===' '||e.key==='Enter'){e.preventDefault(); if(i<TEXTE.length-1){i++;rendre()}} else if(e.key==='Backspace'){e.preventDefault(); if(i>0){i--;rendre()}} else if(e.key==='g'||e.key==='G'){e.preventDefault();ouvrir('G')} else if(e.key==='l'||e.key==='L'){e.preventDefault();ouvrir('L')} else if(e.key==='Escape'){couper()} });
+rendre();
+</script></body></html>

@@ -12611,3 +12611,23 @@ Joue-la et dis-moi : signal seul ou épelé par défaut ; combien de formes ; le
 03/10/2026 09:35 MEMO
 
 ---
+
+## TOUR 411 — Paul
+
+Texte de Paul, mot pour mot :
+
+> la vitesse de l'épellation doit être bien plus rapide.
+
+---
+
+## TOUR 411 — Claude (conscience n°12)
+
+Maquette v2 (T411) : vitesse d'épellation 1,9 par défaut (posée 1,3 / rapide 1,9 / très rapide 2,4), lettres séparées par un espace (plus de virgule = plus de pause), accents dits par leur son (« é »), le nom seulement pour ê â î ô û ç ; banc simulé vert.
+
+Réponse mot pour mot :
+
+Fait, v2 ci-dessus : **l'épellation va bien plus vite** — trois choses y contribuent : la vitesse de la voix pour l'épellation passe à 1,9 (réglage : posée 1,3 / rapide 1,9 / très rapide 2,4), **les lettres sont dites sans virgule** (la virgule faisait une pause à chaque lettre), et **les accents se disent par leur son** (« é », « è ») — on ne nomme que ê, â, î, ô, û et ç. Essaie « rapide » et « très rapide » et dis-moi laquelle te va par défaut ; c'est ce que j'écrirai dans L16, avec tes réponses de 367.
+
+03/10/2026 09:20 MEMO
+
+---

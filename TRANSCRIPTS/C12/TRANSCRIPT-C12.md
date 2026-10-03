@@ -13161,3 +13161,29 @@ Puis « continuer » à l'exécutante pour **L13b** (l'heure close à fin + 10 m
 03/10/2026 16:00 MEMO
 
 ---
+
+## TOUR 434 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Livré
+
+---
+
+## TOUR 434 — Claude (conscience n°12)
+
+Audit L13b : diff 11/18, 6.7.0-L13b, heureActive/heureClose/heureFinEffective (fin + 10), dansHeureLancee (T3), aucun texte élève nouveau ; banc L13b VERT 6/6 (rouge sur L15a), L13, L15a, L15-0b, vue élève verts. Verdict : ça va. Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Audit de **L13b** (« l'heure se ferme seule à fin + 10 minutes ; la session appartient à son heure », `LIVRAISONS/DICTEE-CORRECTION/L13b/`), mesuré :
+
+411. **Le fichier** : base = L15a promue (`022bd99d…`, vérifiée) → **6.7.0-L13b, 837 270 o (+2 330)**, md5 `1f1593e4…` ; 11 lignes retirées, 18 ajoutées ; `node --check` 0 erreur. **Vérifié dans le code** : une seule règle partout — l'heure est **active jusqu'à fin + 10 min**, **close** au premier de « Clôturer » ou fin + 10 (`heureClose`, `heureFinEffective`), « fermée seule » quand fin + 10 est passée sans clôture ; **T3** : une session appartient à l'heure où elle a commencé (début − 10 ≤ session ≤ fin + 10 — la fenêtre de 6 h n'existe plus) ; **aucun texte élève nouveau** (le bandeau est celui de L13, mot pour mot).
+412. **Les bancs, rejoués par moi sur le kit anonymisé** : L13b **VERT, 6 vérifications** — l'élève rouvre à fin + 5 → **dans l'heure** (pas de bandeau) ; à fin + 11 → **« Il te reste 44 min »** ; la même dictée relancée (sa session datait d'une heure 4 h plus tôt) → il travaille dans l'heure en cours, sans bandeau ; deux dictées, la première jamais clôturée → **à l'accueil, « heure fermée seule à … (non clôturée) » sur la première seulement**, et au Suivi la même ligne (T4) ; **sur L15a ce banc est rouge** ; L13 (l'attente, les 45 min), L15a, L15-0b : verts sur L13b ; vue élève identique à la 6.6.3 ; son banc unique : vert, 0 échec, L1 → L15a compris.
+413. **Verdict : ça va. Tu peux promouvoir L13b.** Captures ci-dessus : la ligne de la dictée à l'accueil (« heure fermée seule ») ; l'élève qui rouvre à fin + 11.
+
+Tes tests, après promotion (https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?v=6.7.0) : 1) bac à sable : lance une heure qui finit dans 2 minutes, ne clôture pas ; à la fin + 5, l'élève rouvre : pas de bandeau ; à fin + 11 : « Tu es hors classe : tu as 45 minutes. Il te reste 44 min. » ; 2) l'accueil et le Suivi : « heure fermée seule à … (non clôturée) » ; 3) une seconde dictée lancée pendant ce temps : rien ne se mélange. Puis « continuer » pour **L15b** (la dictée et l'onglet tenus au F5).
+
+03/10/2026 23:05 MEMO
+
+---

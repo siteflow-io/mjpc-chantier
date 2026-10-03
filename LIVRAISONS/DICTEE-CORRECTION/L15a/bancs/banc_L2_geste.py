@@ -40,8 +40,8 @@ print(json.dumps(R,ensure_ascii=False))
 attendu=[(3,'G'),(7,'L')]
 ok=(R['texte_0'][0]=='texte' and R['texte_0'][2]==attendu
     and R['aller_1'][:2]==('rapide','ZZTEST Mike') and R['aller_1'][2]==attendu
-    and len(R['rapide_1'])==3 and R['retour_1'][:2]==('texte','ZZTEST Mike') and len(R['retour_1'][2])==3
-    and len(R['texte_1'])==4 and R['aller_2']==('rapide','ZZTEST Mike') and R['retour_2']==('texte','ZZTEST Mike') and R['aller_3']==('rapide','ZZTEST Mike')
+    and R['rapide_1']==[(3,'G'),(7,'I')] and R['retour_1'][:2]==('texte','ZZTEST Mike') and R['retour_1'][2]==[(3,'G'),(7,'I')]   # [accordé à L15-0b, dette 124] ⇧R ouvre le rapide sur le mot où l'on est (le 7), « i » le marque
+    and len(R['texte_1'])==3 and R['aller_2']==('rapide','ZZTEST Mike') and R['retour_2']==('texte','ZZTEST Mike') and R['aller_3']==('rapide','ZZTEST Mike')
     and R['retour_3'][:2]==('texte','ZZTEST Mike') and R['retour_3'][2]==R['texte_1']
     and R['champ']==('texte','aR') and R['onglet_rapide'][0]=='rapide' and R['onglet_rapide'][1] and R['onglet_retour']==('texte',R['onglet_rapide'][1])
     and R['fenetres']==[] and R['erreurs']==[])

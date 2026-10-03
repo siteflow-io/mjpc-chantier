@@ -12912,3 +12912,31 @@ Texte de Paul, mot pour mot :
 
 Dettes 124 (⇧R part du mot courant → L15-0 point 8, déposé) et 125 (barème préparée paramétrable → à cadrer). Recherche Éduscol lancée (la recherche avancée est activée) : la grille officielle de la dictée du DNB.
 
+
+## TOUR 424 — Paul
+
+Texte de Paul, mot pour mot :
+
+> donc va chercher dans les éléments de correction publiés avec chaque sujet national
+
+---
+
+## TOUR 424 — Claude (conscience n°12)
+
+Recherche web (web_search) : éléments de correction 2021 (21GENFRME3-C, Strasbourg), 2022 (22GENFRME1-C), 2023 (Grenoble), juin 2025 Amérique du Nord : 1 / 0,5 / 0,5 par 4 (ponctuation, majuscule, trait d'union, accent ; 2025 : plafond 2 points) / mot oublié 0,5 ; « une erreur répétée sur le même mot ne sera pénalisée qu'une seule fois » ; « plusieurs erreurs sur le même mot : la plus grave » ; aménagée : 1 point par mot recopié, −0,5 entouré / recopié fautif ; 2022 : ponctuation non évaluée. Existant brevet conforme sur la répétition ; écarts : accents comptés L 0,5 au lieu du forfait, pas de plafond (dette 126). Proposition 394 : profils de barème (L15g).
+
+Réponse mot pour mot :
+
+Trouvé — les **éléments de correction officiels publiés avec les sujets nationaux** (mis en ligne par les académies), mot pour mot :
+
+390. **Le barème de la dictée (10 points), constant d'une session à l'autre** : « On enlève 1 point par erreur grammaticale · 0,5 point par erreur lexicale · 0,5 point pour quatre erreurs de ponctuation, majuscule, trait d'union ou accent · chaque mot oublié = une erreur lexicale (0,5) » — sujets de **septembre 2021** (21GENFRME3-C, ac-strasbourg), **2023** (éléments de correction, ac-grenoble), **juin 2025 Amérique du Nord** (qui ajoute : forfait « dans la limite de 2 points », et « accents non grammaticaux »). Une exception : **2022** (22GENFRME1-C) : « la ponctuation n'est pas évaluée, mais on sanctionne l'oubli récurrent de majuscule = une erreur lexicale pour tous les oublis ». Le barème « −0,5 / −0,25 » qu'on lit sur certains sites est **l'ancien** (dictée sur 5 ou 6 points, avant 2018) : à ignorer.
+391. **La règle de répétition, formulation exacte** : « **Une erreur répétée sur le même mot ne sera pénalisée qu'une seule fois.** » (2021, 2023, 2025) — c'est **le même mot**, pas « la même faute sur des mots différents » ; et « si plusieurs erreurs sont commises sur le même mot, on ne pénalise que la plus grave ». **Ton existant « type brevet » est conforme sur ce point** (clé = le mot + le type ; une erreur par mot) : « leur » G et « leurs » G restent deux pénalités au brevet aussi. Je ne change rien.
+392. **Deux écarts de l'existant avec le barème officiel, mesurés** : **(a) les accents** — au brevet, un accent (non grammatical : « decoration ») et une majuscule entrent dans **le forfait 0,5 par 4**, avec la ponctuation et les traits d'union ; dans l'app, un accent faux est une erreur **L = 0,5 à chaque fois** (quatre accents : 2 points chez toi, 0,5 au brevet) ; **(b) le plafond** : 2025 plafonne le forfait à 2 points ; l'app ne plafonne pas. Illisible (0,5) et mot en trop (0,5) ne sont pas dans les textes : c'est ton choix, pas une divergence. Dette **126** : au barème brevet, une catégorie « accent / majuscule / trait d'union » au forfait (avec la ponctuation), plafonnée à 2 — à cadrer, c'est toi qui dis si tu veux coller au texte.
+393. **La dictée aménagée officielle** : « 1 point par bonne réponse / par mot correctement recopié ; on retire 0,5 point quand la réponse juste est entourée et non recopiée, ou recopiée de manière fautive » (2021, 2025). Ta version (12 choix sur 10, L14) est la tienne ; si tu veux le barème officiel pour le brevet blanc aménagé, c'est un réglage de plus.
+394. **« Préparée » paramétrable (dette 125) — ce que je propose** : le « Barème » devient **une liste de profils** : **Brevet** (verrouillé, le texte officiel ci-dessus) ; **Préparée** (le tien d'aujourd'hui, modifiable) ; et **tes profils** (« Négociée », « Ciblée »… nommés par toi), chacun avec : le coût de G, L, M, I, mot en trop ; la ponctuation à l'unité ou au forfait (0,5 par n, plafond) ; la répétition (non / par mot / par faute) ; la base. Un profil se choisit par dictée (Préparation), se duplique, se modifie — les copies de la dictée sont recalculées, corbeille d'abord. Si ça te va, je l'écris en L15g, et tu trancheras 387 (les « leur » des 4e) dans ton profil « Préparée ».
+
+Sources : ac-strasbourg (2021 : …/DNB_Septembre_2021/21GENFRME3C_BAT.pdf ; 2022 : …/DNB/2022/DNB_2022_Correction.pdf), ac-grenoble (…/1-elements_de_correction.pdf), correction juin 2025 Amérique du Nord.
+
+03/10/2026 11:35 MEMO
+
+---

@@ -12348,3 +12348,27 @@ Tes tests, après promotion (https://siteflow-io.github.io/monsieurjaipascompris
 03/10/2026 07:20 MEMO
 
 ---
+
+## TOUR 402 — Paul
+
+Texte de Paul, mot pour mot :
+
+> promeus
+
+---
+
+## TOUR 402 — Claude (conscience n°12)
+
+Promotion 6.7.0-L13 (commit 0da433f5ae8f, bit à bit) ; protocole : registre 100 ✔, journal, point de retour, où-trouver-quoi. Tests donnés ; L14 ensuite.
+
+Réponse mot pour mot :
+
+Promu : `correction_dictee.html` **6.7.0-L13**, commit `0da433f5ae8f`, **bit à bit** (813 092 o, md5 `4ce6fa98…`) ; registre n°12 · **100 ✔** ; journal, point de retour (L12), où-trouver-quoi à jour.
+
+**Tes tests** : https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?v=6.7.0 → 1) le bac à sable (ou une dictée sans heure) : un élève coche, « Commencer » → l'attente ; Données → Suivi → « ▶ Lancer l'autocorrection » : son écran s'ouvre seul, sans recharger ; 2) clôture ; l'élève rouvre : « Tu es hors classe : tu as 45 minutes. Il te reste 44 min. », le compte descend ; 3) à zéro : « Mes dictées » ; rouvrir redonne 45 min.
+
+Puis « continuer » à l'exécutante pour **L14** (la note des élèves aménagés) — la dernière du mandat.
+
+03/10/2026 07:30 MEMO
+
+---

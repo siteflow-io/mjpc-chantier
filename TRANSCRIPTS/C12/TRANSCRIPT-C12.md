@@ -12651,3 +12651,23 @@ v3 ci-dessus : la voix dit maintenant « numéro 1, v o u l a i s — numéro 2,
 03/10/2026 09:30 MEMO
 
 ---
+
+## TOUR 413 — Paul
+
+Texte de Paul, mot pour mot :
+
+> sur le grize, la voix dit numéro 1 g r u i z e.
+
+---
+
+## TOUR 413 — Claude (conscience n°12)
+
+Cause : la voix recolle les lettres isolées en syllabes (« g r i » → « gru-i »). v4 (T413) : chaque lettre donnée par son nom en toutes lettres (gé, èr, i, zède, e), virgules entre les noms, « majuscule » dit après une capitale ; je ne peux pas entendre : banc = séquence des textes seulement.
+
+Réponse mot pour mot :
+
+C'est la voix qui recolle des lettres isolées en syllabe (« g r i » devient « gru-i »). **v4** ci-dessus : chaque lettre est donnée **par son nom écrit en toutes lettres** — « numéro 1, gé, èr, i, zède, e » — ce qu'une voix ne peut plus recoller ; « é » et « è » par leur son, « e circonflexe », « cé cédille », et une majuscule est dite (« gé majuscule »). Je ne peux pas l'entendre d'ici : écoute « grize » et « voulais » et dis-moi si c'est net ; si « èr » ou « èl » sonnent mal chez toi, je changerai les noms (« erre », « elle »).
+
+03/10/2026 09:40 MEMO
+
+---

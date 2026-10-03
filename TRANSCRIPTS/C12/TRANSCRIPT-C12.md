@@ -12799,3 +12799,27 @@ Rejoue, et il me reste pour L16 : la vitesse d'épellation qui te va (je mets ce
 03/10/2026 11:10 MEMO
 
 ---
+
+## TOUR 419 — Paul
+
+Texte de Paul, mot pour mot :
+
+> bon l'épellation ne fonctionne vraiment pas bien. Je ne sais pas si ça vaut le coup. Ou alors, il faut trouver autre chose que la voix native. on a déjà eu cette discussion quand on a codé l'audio. Voici un message de l'exécutant, par ailleurs. enfin, autre chose: la phrase qu'on voit au dessus du mot encadré, en correction rapide, elle doit être alignée. enfin je veux dire, le mot doit être aligné (rêveaient en gros doit être en dessous de rêveaient en petit dans sa ligne). et du coup, des ... de chaque côté de la phrase du texte (quand je dis phrase, c'est plutôt suite de mots). ainsi, je vois un défilement fluide qui va de la droite vers la gauche, et mon regard n'a pas besoin d'aller retrouver le mot qui s'est décalé à la fin. par ailleurs, c'est ainsi que je peux anticiper, car si le mot en noir va jusqu'à la fin de la ligne et qu'il y a un point (ocmme actuellement) je n'ai aucune visibilité sur ce qui suit et je ne peux pas faire d'avance rapide avec la flèche droite.
+
+(joint : le message de l'exécutante — Paul a tranché 291 : fin + 10 min puis 45 min ; télescopages 1-4 ; propositions T1-T4 ; L13b)
+
+---
+
+## TOUR 419 — Claude (conscience n°12)
+
+Épellation : dette 122, deux voies natives (signal + écran ; lettres enregistrées par Paul) à trancher. Message exécutante : T1-T3 validés, T4 à Paul ; L13b écrit au sas (avant L15b) avec les mots de Paul. Ligne du texte centrée : dette 121, note L16 au sas, maquette sur l'app réelle après 379.
+
+Réponse mot pour mot :
+
+379. **L'épellation** : on a eu cette discussion, et la conclusion n'a pas changé — la voix native ne sait pas épeler proprement (elle recolle, ou elle traîne). Il n'y a que deux voies qui restent natives et gratuites : **(a)** on renonce à l'épellation : à G ou L, **un signal court** (il y a des formes) et **la liste à l'écran**, que tu lis ; **(b)** **ta voix, enregistrée une fois** : tu dis les 26 lettres, les accents et « numéro un, deux, trois » (une quarantaine de petits sons, enregistrés dans le navigateur, gardés au hub), et l'app les enchaîne — net, rapide, pas de collage, réglable. (a) est prêt tout de suite ; (b) est une petite livraison de plus. Dis (a), (b), ou « ni l'un ni l'autre » — dette 122.
+380. **Le message de l'exécutante (ta réponse à 291)** : ses propositions tiennent — j'ai validé **T1** (close au premier de « Clôturer » ou fin + 10 ; dans l'heure jusque-là), **T2** (45 min à partir de chaque ouverture après ça), **T3** (une session appartient à l'heure où elle a commencé — fini la fenêtre de 6 h, qui ne servait plus depuis L13 : c'est ce qui règle la dictée relancée dans la matinée) ; ta matinée de 4 h = 4 dictées = 4 heures indépendantes, aucun mélange, mesuré. **T4** est à toi : veux-tu lire « heure fermée seule à 10 h 10 (non clôturée) » sur la ligne de la dictée à l'accueil et dans son Suivi ? Oui / non / tes mots. C'est écrit au sas en **L13b**, à faire avant L15b ; ta phrase pour elle : **« L13b est au sas (dans le complément L15, après L15a) : fais-la avant L15b ; pour T4, [oui / non]. »**
+381. **La ligne du texte en mode rapide** (dette 121) : pris tel que tu le dis — le mot courant **centré sous le gros mot**, n mots avant, n mots après, « … » aux deux bouts, **la ligne glisse** de droite à gauche quand tu avances, et tu vois ce qui suit pour anticiper à la flèche droite. Elle rejoint L16 avec l'audio (même écran) ; je la maquetterai **sur l'app réelle**, comme T418, dès que tu as tranché 379 — pour ne pas refaire la maquette deux fois.
+
+03/10/2026 11:30 MEMO
+
+---

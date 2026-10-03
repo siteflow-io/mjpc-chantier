@@ -1,0 +1,25 @@
+[banc_L11_geste] code 0 — 94 s
+[banc_L14_geste] code 0 — 68 s
+[banc_L150_geste] code 0 — 19 s
+  OK    modes
+  OK    fc1
+  OK    fc2
+  OK    fr
+  OK    gr
+  OK    banc_L1_geste
+  OK    banc_L2_geste
+  OK    banc_L3_geste
+  OK    banc_L5_geste
+  OK    banc_L6_geste
+  OK    banc_L6b_geste
+  OK    banc_L7_geste
+  OK    banc_L8_geste
+  OK    banc_L10_geste
+  OK    banc_L9_geste
+  OK    banc_L11_geste
+  OK    banc_L12_geste
+  OK    banc_L13_geste
+  OK    banc_L14_geste
+  OK    banc_L150_geste
+  OK    eleve
+BANC UNIQUE : VERT (0 échec)

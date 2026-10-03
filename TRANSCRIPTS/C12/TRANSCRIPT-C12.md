@@ -12823,3 +12823,28 @@ Réponse mot pour mot :
 03/10/2026 11:30 MEMO
 
 ---
+
+## TOUR 420 — Paul
+
+Texte de Paul, mot pour mot :
+
+> 379. je ne savais aps qu'on pouvait faire avec ma voix! je veux bien essayer. 380. oui je veux pour T4. 381. là pour le coup, effectivement, maquette app réelle pour voir si on est bien alignés.
+
+---
+
+## TOUR 420 — Claude (conscience n°12)
+
+T4 validé (complément L13b). Maquette L16 v3 (md5 f4c6483fbae2, T420) sur l'app réelle : la ligne de contexte centrée sur le mot (grille 1fr/auto/1fr, budget égal, « … », espaces réels ; 0 px d'écart sur 16 mots), le panneau « Mes lettres, dans ma voix » (MediaRecorder, 39 sons, stockage local, Essai), l'épellation par les sons enregistrés (prouvée avec des sons factices) ; capture.
+
+Réponse mot pour mot :
+
+Pris : T4 oui (écrit au sas, L13b). La maquette **v3**, toujours l'app réelle (ci-dessus, md5 `f4c6483fbae2`, pièce T420) :
+
+382. **381 — la ligne centrée** : le mot courant est **exactement sous le gros mot** (mesuré au banc : 0 px d'écart sur 16 mots d'affilée), même budget de texte à gauche et à droite, « … » aux deux bouts dès que le texte continue, et la ligne glisse quand tu avances (Espace) ou recules — tu vois ce qui suit. Capture ci-dessus.
+383. **379 (b) — tes lettres dans ta voix** : dans la barre du mode rapide, le petit **🎙** (à côté de « épel. ») ouvre « Mes lettres, dans ma voix » : il te présente les sons un à un (« numéro 1, 2, 3 », a → z, é è ê à â î ô û ç, « majuscule » : 39 sons), **Enregistrer** (1,4 s au micro du navigateur), **Réécouter**, **Suivant**, et un bouton **« Essai : voulais »** qui enchaîne tes sons. Dès que tu as enregistré, **G ou L épelle avec ta voix** (plus la voix native) — prouvé au banc avec des sons factices : « numéro 1, r, ê, v, a, i, t ». Dans la maquette, tes sons restent dans ton navigateur ; en production ils iront au hub (un seul enregistrement, pour tous tes postes).
+
+**Pour l'essayer** : ouvre le fichier → 5E utopie → Ouvrir → ⚡ Rapide → 🎙 → enregistre au moins « numéro 1 » et les lettres de « voulais » (v o u l a i s) → « Essai ». Puis Espace jusqu'à « rêvaient », G. Dis-moi si c'est net et assez rapide — et L16 sera écrit avec ta voix, la ligne centrée, le type, la bascule, « Changer → » et Suppr.
+
+03/10/2026 12:00 MEMO
+
+---

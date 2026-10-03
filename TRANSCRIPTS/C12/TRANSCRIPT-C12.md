@@ -12403,3 +12403,40 @@ L'audit L15 est fait et déposé (`AUDITS/L15-AUDIT-DICTEE.md` au sas, avec les 
 03/10/2026 07:55 MEMO
 
 ---
+
+## TOUR 404 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Pour que je fasse mes choix et que je te réponde, tu dois me proposer plusieurs visuels (notamment sur les questions d'UI)
+
+(joints : `Dictée_adaptée.pdf` — texte à crochets [a / b / c], consigne « entoure la forme correcte », 10 ou 12 choix sur 10 points ; `Dictée_classique.pdf` — le texte juste + notes de grammaire ; deux dictées : Haussmann et lettre de Fritz)
+
+---
+
+## TOUR 404 — Claude (conscience n°12)
+
+Cinq visuels déposés (pièces T404) : A1 test replié en bas, A2 onglets, A3 barre d'atelier compacte ; B1 dépôt des deux PDF (lecture, crochets, pré-remplissage), B2 vérification (mots à compléter, propositions du PDF avec la bonne forme déduite du classique, notes de grammaire → indices, Enregistrer). Mesuré : la forme correcte n'est pas toujours la première du crochet → déduite du texte classique. Questions : A1/A2/A3, B1+B2, accord 338/342.
+
+Réponse mot pour mot :
+
+Les deux PDF sont arrivés et lus (le texte en est extractible, pas une image) ; voici les visuels — des écrans dessinés, pas l'app — pour que tu choisisses.
+
+**L'accueil (dette 109) — trois propositions :**
+
+343. **A1 — le mode test replié en bas** : la liste « Mes dictées » d'abord, avec en pied les deux boutons « ＋ Nouvelle dictée » et « 📄 Importer depuis un PDF » ; le mode test réduit à une ligne grise (« bac à sable actif · 6 élèves, 2 dictées · Ouvrir ▾ ») qui se déplie seulement si tu l'ouvres.
+344. **A2 — des onglets** : « Mes dictées · Nouvelle dictée · Importer un PDF · 🧪 Atelier de test » ; chaque chose à sa page, l'accueil ne montre que les dictées.
+345. **A3 — une barre d'atelier compacte en haut** : une seule ligne grise (« Mode test — bac à sable actif · Se mettre à la place d'un élève ▾ · Éprouver ▾ · Regénérer · Tout effacer ») au-dessus des dictées ; les boutons « Nouvelle dictée » et « Importer » sous la liste.
+Dans les trois : le badge « Aménagée · n » ne s'affiche que s'il y a au moins un trou (plus de « Aménagée · 0 ») ; le « ? » reste en haut à droite.
+
+**L'injection d'une dictée depuis tes PDF (dette 108) — ce que j'ai lu et ce que je propose :**
+
+346. **Tes deux PDF se complètent** : la **classique** = le texte juste, suivi de tes notes de grammaire (sujet souligné, verbe en gras, « participe passé avec être : accord avec le sujet… ») ; l'**adaptée** = le même texte avec des crochets « [entendu / entendus / entendue] », la consigne (« entoure la forme correcte »), le nombre de choix (« douze choix, sur 10 points ») — et **la forme correcte n'est pas toujours la première du crochet** (« [couché / couchés / couchée] » : c'est la deuxième). Donc l'app déduit la bonne forme **du texte classique**, et prend **tes propositions telles quelles** pour le mode A — ce sont les propositions crédibles que tu réclames (338) : les tiennes.
+347. **B1 — l'écran de dépôt** : tu déposes les deux fichiers (la classique seule suffit pour une dictée sans version aménagée) ; l'app dit ce qu'elle a lu (« texte lu, 142 mots », « 12 crochets reconnus »), pré-remplit le titre, la classe, le barème, et la version aménagée (depuis les crochets, mode A, 12 choix, note sur 10 — le « sur 10 points » de ta consigne).
+348. **B2 — l'écran de vérification** : le texte avec les mots à compléter surlignés ; pour chacun, tes propositions avec la bonne forme cochée (« couché · **couchés** ✓ · couchée »), modifiables ; tes notes de grammaire gardées comme indices pour le mode C ; « Enregistrer la dictée ». Rien ne s'écrit avant ce bouton.
+
+**Ce que je te demande** : pour l'accueil, **A1, A2 ou A3** (ou un mélange, en le disant) ; pour l'import, **B1 + B2 te vont** ou ce qui te gêne ; et pour **338 / 342** (les propositions depuis tes formes et tes PDF d'abord ; l'analyse par l'écart lettre à lettre) : d'accord ? Puis j'écris L15 et L15.1.
+
+03/10/2026 08:15 MEMO
+
+---

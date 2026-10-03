@@ -12993,3 +12993,28 @@ Donc, au brevet, l'effet reste petit et sûr : 9 erreurs chez les Dylan, 4 chez 
 03/10/2026 14:10 MEMO
 
 ---
+
+## TOUR 427 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Alors j'ai un autre souci, qui couvrira ( ou pas?) les cas limites comme ce-là : les mots que je classe en G et que je recopie tels que l'élève a écrit peuvent contenir du L. Ils sont enregistrés ainsi dans la capitalisation, et en soi ce n'est pas grave parce que c'est la faute la plus lourde qui l'emporte. Mais c'est simplement qu'on ne peut pas mettre plusieurs types d'erreur par mot. Et en soi, peut être qu'il n'y en a pas besoin. A ton analyse
+
+---
+
+## TOUR 427 — Claude (conscience n°12)
+
+Analyse : un type par mot = le texte officiel (la plus grave) ; la capitalisation garde la forme sous le type choisi (voulu) ; les écarts multiples vivent dans l'analyse L15.1 (le commentaire nomme tous les écarts) ; le reclassement automatique ne touche que les formes dont le seul écart est accent/majuscule/trait d'union, rapport à blanc. Attend « ok » pour L15g/L15h.
+
+Réponse mot pour mot :
+
+400. **Mon analyse : un seul type par mot, c'est juste, et il n'en faut pas plus.** Le texte officiel le dit tel quel — « si plusieurs erreurs sont commises sur le même mot, on ne pénalise que la plus grave » — donc pour la **note**, un type par mot est exactement le brevet. « ammenés » pour « amenés » (double m + accord) = G, 1 point, et c'est tout.
+401. **Ce que ça fait à la capitalisation** : la forme est gardée **sous le type que tu as choisi** — « ammenés » en G. C'est voulu : la liste de L16 te propose les formes par type, et une forme vue un jour en G, un autre en L (même mot) existe sous les deux, sans bascule. Rien à changer.
+402. **Là où « plusieurs erreurs par mot » doit vivre : dans l'analyse pour l'élève (L15.1), pas dans le coût.** Le commentaire par l'écart lettre à lettre verra **les deux écarts** (« une consonne doublée, et l'accord avec « nous » ») et les dira tous les deux ; l'élève, lui, doit retaper le mot juste entier, donc corriger les deux. C'est déjà ce que je cadre en L15.1 ; j'y ajoute cette phrase : *un mot n'a qu'un type, mais le commentaire nomme tous les écarts*.
+403. **Les cas limites comme « ce-là » et le reclassement automatique** : la règle que je mets dans L15h — **on ne reclasse au forfait que les formes dont le seul écart est un accent (aigu, grave, circonflexe, tréma), une majuscule ou un trait d'union** ; dès qu'il y a une lettre de plus, de moins ou changée, une cédille, un homophone grammatical, on ne touche à rien. « ce-là » : un accent et un tiret, pas d'autre lettre → reclassable selon le texte ; mais le rapport à blanc te le montre avec les autres, et tu rayes ce que tu veux garder en L. Rien ne se recalcule sans ton « ok » sur la liste.
+
+Si ça te va, « ok » et j'écris L15g (profils) et L15h (le type au forfait + reclassement à blanc puis réel) au complément.
+
+03/10/2026 14:20 MEMO
+
+---

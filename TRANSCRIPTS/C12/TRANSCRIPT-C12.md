@@ -13018,3 +13018,25 @@ Si ça te va, « ok » et j'écris L15g (profils) et L15h (le type au forfait + 
 03/10/2026 14:20 MEMO
 
 ---
+
+## TOUR 428 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok
+
+---
+
+## TOUR 428 — Claude (conscience n°12)
+
+L15g (profils de barème : Brevet verrouillé sur le texte officiel, Préparée modifiable, profils de Paul ; réglages ; recalcul ; accueil) et L15h (type « C » accent/majuscule/trait d'union au forfait ; reclassement à blanc puis réel ; chiffres mesurés ; un type par mot) écrits au complément L15 (sas) ; ordre mis à jour ; L15.1 : le commentaire nomme tous les écarts.
+
+Réponse mot pour mot :
+
+Écrit et déposé au sas (`MANDATS/COMPLEMENT-DICTEE-CORRECTION-L15.md`) : **L15g** — les profils de barème (Brevet verrouillé sur les éléments de correction officiels, Préparée = ton barème actuel modifiable, tes profils « Négociée », « Ciblée »… par duplication ; coûts, ponctuation à l'unité ou au forfait, répétition non / par mot / par famille, base ; choix par dictée, recalcul compté) ; **L15h** — le type « accent / majuscule / trait d'union » au forfait (jamais la cédille ni un accent grammatical), sa touche et son menu, et le reclassement des copies existantes **à blanc d'abord** (le rapport copie par copie avec mes chiffres : Dylan 9, Franklin 4, Hugo 8, brevets blancs 0 — reconfirmés par l'exécutante), puis réel après ton « ok » ; et dans L15.1 : un mot n'a qu'un type, mais le commentaire nomme tous les écarts.
+
+L'ordre complet : L15-0 → L15a → L13b → L15b → L15c → L15d → L15e → L15f → **L15g → L15h** → L15.1. La phrase pour l'exécutante : **« Le complément L15 au sas a deux sections de plus, L15g (profils de barème) et L15h (type accent au forfait, reclassement à blanc puis réel), à faire après L15f et avant L15.1 ; l'ordre est en tête du fichier. »**
+
+03/10/2026 14:25 MEMO
+
+---

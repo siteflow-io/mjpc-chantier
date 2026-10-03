@@ -12508,3 +12508,29 @@ Si 357-361 te vont (ou dis ce qui change), le cadrage de L15 est complet : param
 03/10/2026 08:55 MEMO
 
 ---
+
+## TOUR 407 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok C'est bon. autre bug à régler dans le même mandat . pour cette dictée j'ai bien entré exactement toutes les erreurs des élèves, et pourtant dans copies je ne peux plus jamais utiliser les trois options (brut, placeholder etc) alors que j'ai bien retapé les erreurs.
+
+(capture : l'onglet Copies, « Brut / Barré / Placeholder » grisés)
+
+---
+
+## TOUR 407 — Claude (conscience n°12)
+
+Mesuré : `copieRecopiee` exige une recopie pour toute erreur sauf M (P, I, A, E n'en ont jamais) → dette n°12 · 115. Compléments L15a → L15f et L15.1 (à blanc puis code) écrits et déposés `MANDATS/COMPLEMENT-DICTEE-CORRECTION-L15.md`. La phrase pour l'exécutante.
+
+Réponse mot pour mot :
+
+Mesuré, ton bug : dans l'onglet Copies, les modes Brut / Barré / Placeholder ne s'ouvrent que si **chaque erreur sauf « manquant » porte une recopie** — or une ponctuation manquante, un illisible, une « attention », une élision n'ont jamais de recopie : dès qu'une copie en a une, les trois modes tombent, quoi que tu aies retapé. La règle sera « recopie attendue pour G et L seulement » (dette n°12 · 115, dans L15d).
+
+Le cadrage étant clos, **les compléments L15 sont au sas** : `MANDATS/COMPLEMENT-DICTEE-CORRECTION-L15.md` — L15a le paramétrage aménagé (coche qui reste sur Préparation, modes suivis d'effets, la modale D1, les propositions depuis les vraies formes, jamais de vide), L15b la dictée et l'onglet tenus au F5, L15c l'accueil C1 (niveaux, tri, taux, coche publiée, statut des copies pulsant, mode test replié, « éprouver » retiré), L15d les élèves de test avec leur code MJPC + les modes Brut/Barré/Placeholder, L15e l'import depuis n'importe quel PDF (E1 / B2), L15f côté élève (la note après le chrono, le regain en clair + « Je garde ma note », le regain au bilan, l'actualisation en direct), puis L15.1 l'analyse des erreurs par l'écart lettre à lettre — **d'abord à blanc** (un rapport sur les 514 erreurs des 3E que tu relis), puis le code.
+
+La phrase pour l'exécutante : **« Les compléments L15 (L15a → L15f) et L15.1 sont au sas : `MANDATS/COMPLEMENT-DICTEE-CORRECTION-L15.md` — lis-les, puis commence par L15a. Pour L15e, je te donnerai les deux PDF. »**
+
+03/10/2026 09:10 MEMO
+
+---

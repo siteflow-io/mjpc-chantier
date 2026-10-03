@@ -12440,3 +12440,39 @@ Dans les trois : le badge « Aménagée · n » ne s'affiche que s'il y a au moi
 03/10/2026 08:15 MEMO
 
 ---
+
+## TOUR 405 — Paul
+
+Texte de Paul, mot pour mot :
+
+> alors pour l'accueil, je veux quelque chose d'encore plus rangé. "Mes dictées" puis les niveaux: 3e, 4e, 5e, 6e. Si vide, message "vide pour l'instant". Dans chaque niveau, les dictées triées par date de création, et qui montrent leur taux de correction (voir capture). Le nom de la classe, j'aimerais qu'il n'apparaisse pas avec son nom technique (franklin dylan hugo et turing sont dans ce cas aujourd'hui, mais ça se règle dans mjpc je pense). Enfin, la coche de publication doit être directement à côté des boutons modifier, dupliquer et corbeille. décocher mets à jour instantanément l'étiquette publiée/non publiée (et fait ce que ça dit, évidemment). Pour la coche de rendu des copies. Pareil, je veux voir le statut directement dans cet accueil (copies non rendues en gris tant que la correction n'est pas complétée entièrement, et qui passe en cliquable pulsant dès que la correction est finie, et si je clique, ça active le bouton dédié dans l'onglet "copies" et ça m'emmène à cet onglet. pour le mode test, la fonction "éprouver" est obscure. Enfin, l'import via pdf. attention, si tu codes comme ça, le format accepté est ultra strict (il faut des crochets, etc). Il faut donc que je puisse importer depuis n'importe quel pdf, même présenté différement. enfin, les modes doivent être suivis d'effets: si je change de mode, tout ce qui est impacté doit suivre, et ainsi de suite. Enfin, pour le mode 3 propositions: actuellement, je dois cliquer sur les mots un par un et les propositions s'affichent tout en bas, c'est ultra pénible. quand je clique sur un mot, son menu doit s'ouvrir en modale, et voilà. Refais tes propositions sur captures. Par ailleurs, l'exécutant a livré (à traiter en premier avant de me répondre sur L15).
+
+(captures : la barre de taux 90 % ; l'écran de code du bac à sable « Ton code n'est pas encore enregistré »)
+
+---
+
+## TOUR 405 — Claude (conscience n°12)
+
+Audit L14 : diff 12/55, 6.7.0-L14, phrase exacte, aucune étiquette, banc L14 VERT 10/10 (rouge sur L13), L13/L12/L11 verts → ça va, promouvable, mandat clos. Visuels T405 : C1 accueil par niveaux (taux, coche publiée, statut copies pulsant, classe lisible, test replié), D1 modale du mot (mode A), E1 import souple ; cadrages 355 (modes suivis d'effets), 356 (code du bac à sable non reconnu → à mesurer).
+
+Réponse mot pour mot :
+
+**D'abord L14** (« la note des élèves aménagés », `LIVRAISONS/DICTEE-CORRECTION/L14/`), mesuré :
+
+349. **Le fichier** : base = L13 promue (`4ce6fa98…`, vérifiée) → **6.7.0-L14, 819 640 o (+6 548)**, md5 `6516ce91…` ; 12 lignes retirées, 55 ajoutées ; `node --check` 0 erreur. **Vérifié dans le code** : ta phrase, **mot pour mot** (deux fois : l'écran de l'élève et sa feuille) ; **aucune étiquette dans le corps de la dictée** (les deux « ne compte pas » du fichier sont des commentaires de code, pas des textes) ; seules les erreurs des trous comptent ; les autres `sansCout`, motif « aménagé » ; rétroactif avec la corbeille d'abord.
+350. **Les bancs, rejoués par moi** : le banc par le geste **VERT, 10 vérifications** — la copie aménagée d'avant recalculée une fois (corbeille, les autres identiques) ; en mode rapide : 2 erreurs dans les trous + 3 hors trous → note = base − les 2 seules ; une erreur hors trou → la note ne bouge pas, dans un trou → elle bouge ; un élève non aménagé : rien ne change ; un trou retiré → recalcul, message ; le bilan ; **l'élève : l'encart avec ta phrase exacte, le corps de la dictée identique à celui d'un élève non aménagé**, sa feuille avec la note aménagée et aucune marque ; **sur L13 ce banc est rouge** ; L13, L12, L11 verts sur L14.
+351. **Verdict : ça va. Tu peux promouvoir L14** — et avec elle **le mandat « L'écran de correction » est clos** (L1 → L14). Captures ci-dessus : l'élève aménagé, sa feuille, la copie côté professeur. Tes tests après promotion : 1) ouvre les Dylan : « ✓ 1 copie aménagée recalculée » ; 2) l'élève aménagé (ou ZZTEST aménagé dans le bac à sable) : l'encart en tête, le texte sans marque, sa note sur les 12 mots ; 3) corrige-lui une erreur hors trou : sa note ne bouge pas.
+
+**Puis L15 — tes consignes, refaites en captures (ci-dessus) :**
+
+352. **C1 — l'accueil rangé** : « Mes dictées », puis **les niveaux 3e, 4e, 5e, 6e** ; un niveau vide dit « vide pour l'instant » ; dans chaque niveau, les dictées **triées par date de création**, avec **le taux de correction** (la barre verte, 90 %), **le nom de classe lisible** (« 3e Dylan Bob » — la clé technique `3_dylan_bob` vient du registre des classes de MJPC : c'est là qu'on règle le libellé, pas dans la dictée ; je le mesurerai), **la coche « publiée » à côté de ✏️ ⧉ 🗑️** (décocher met l'étiquette à jour sur-le-champ et dépublie vraiment), **le statut des copies** : « copies non rendues » gris tant que la correction n'est pas complète ; **« rendre les copies ▸ » cliquable et pulsant** dès 100 % — le clic ouvre l'onglet Copies et y active le bouton ; « copies rendues le 01/10 » ensuite. Le mode test : une ligne repliée, et « éprouver » disparaît (ses trois boutons rejoignent l'atelier replié, nommés par ce qu'ils vérifient).
+353. **D1 — le mode A sans la pénibilité** : tu cliques un mot → **sa modale s'ouvre là** : les trois propositions modifiables, la bonne cochée, « ↻ Proposer d'autres formes (depuis les copies) » (les vraies formes de tes élèves — L10), « Mode pour ce mot : A ▾ » (B, C), « 🗑 Retirer ce mot », Enregistrer / Annuler (Entrée / Échap). Plus de liste tout en bas.
+354. **E1 — l'import depuis n'importe quel PDF** : tu déposes un PDF ; l'app lit le texte et **reconnaît ce qu'elle peut** (crochets, parenthèses, barres « a / b », mots soulignés) ; ce qu'elle a compris est surligné ; **si elle ne reconnaît rien, tu choisis les mots à la main en cliquant dans le texte lu** ; le texte est modifiable ; rien ne s'enregistre avant « Enregistrer ». Deux PDF (classique + adaptée) restent possibles mais plus obligatoires.
+355. **Les modes suivis d'effets** : changer le mode par défaut (A/B/C) ou le mode d'un mot **recalcule tout ce qui en dépend** — les propositions ou l'indice de chaque mot, la consigne, la note sur, l'affichage côté élève ; et tout s'écrit au hub au clic (la dette 105). C'est la règle que je mettrai dans L15.
+356. **Une chose vue sur ta capture 2** : dans le bac à sable, « Dictée test — rendue », Alice, code 6947 → « Ton code n'est pas encore enregistré ». Le bac à sable crée ses codes ; s'ils ne sont pas reconnus, c'est une dette — je le mesurerai dans L15 (110).
+
+Dis-moi : C1 te va (ou quoi changer) ; D1 ; E1 ; et je finis le cadrage de L15 (paramétrage, onglets, accueil, propositions, import, modale, codes du bac à sable) et L15.1 (l'analyse).
+
+03/10/2026 08:45 MEMO
+
+---

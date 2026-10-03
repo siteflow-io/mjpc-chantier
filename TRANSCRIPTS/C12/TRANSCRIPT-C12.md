@@ -12769,3 +12769,33 @@ Reste pour écrire L16 : (a) 3 formes épelées ou toutes celles du type ; (b) s
 03/10/2026 10:55 MEMO
 
 ---
+
+## TOUR 418 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ça va beaucoup trop vite du coup. par ailleurs le "changer" doit prendre en compte le type déjà entré de l'erreur, non? parce que G changé en G, ça n'a pas de sens. pour le raccourci de "annuler l'erreur", ça serait bien que ce soit la touche sup.
+
+(capture : mode rapide, « abordée » déjà marqué G, les quatre boutons Garder / Annuler / Changer → G / Changer → L, vitesse 3,00×)
+
+---
+
+## TOUR 418 — Claude (conscience n°12)
+
+Maquette L16 v2 (md5 eb190c3e1c12, T418) : vitesse d'épellation propre 1,5 + curseur « épel. » (mémorisé) ; « Changer → » vers l'autre type seulement (dette 119) ; Suppr = annuler l'erreur hors champ (dette 120) ; banc VERT 4/4 ; capture. Questions restantes : vitesse par défaut, (a), (b).
+
+Réponse mot pour mot :
+
+v2 ci-dessus (même fichier, l'app réelle ; md5 `eb190c3e1c12`, pièce T418) :
+
+376. **L'épellation a sa propre vitesse**, à part de celle du mot : **1,5 par défaut**, et un petit curseur vert « épel. » à côté du curseur de la voix, dans la barre du mode rapide — règle-le à ton oreille (0,8 → 3), il se souvient de ton choix. Le mot, lui, garde ta vitesse (3,00×).
+377. **« Changer → »** ne propose plus que **l'autre type** : une erreur déjà G n'a que « Changer → L » ; déjà L, que « Changer → G » (dette 119, mesurée dans l'existant).
+378. **Suppr = « Annuler l'erreur »** sur le mot courant, hors de la case de saisie (dans la case, Suppr efface un caractère, comme partout) ; l'infobulle du bouton le dit (dette 120).
+
+Banc par le geste sur le fichier : **VERT, 4 vérifications** (1,5 et le curseur ; « Changer → G » seul sur un mot marqué L ; Suppr fait baisser le compte d'erreurs et avance). Capture ci-dessus.
+
+Rejoue, et il me reste pour L16 : la vitesse d'épellation qui te va (je mets celle que tu dis par défaut), (a) 3 formes ou toutes celles du type, (b) « Passer en L » : la forme ne compte qu'en L.
+
+03/10/2026 11:10 MEMO
+
+---

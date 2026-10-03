@@ -3421,7 +3421,7 @@ function CorrScreen(p){
      (data.amenagee restait vide) : la base aménagée n'était jamais employée. Il l'écoute désormais. */
   var sAC=useState(null),amenCfg=sAC[0],setAmenCfg=sAC[1];
   var sBC=useState(null),baseCfg=sBC[0],setBaseCfg=sBC[1];var sDC=useState(""),dateCorr=sDC[0],setDateCorr=sDC[1];   /* [L9] */
-  useEffect(function(){var rA=db.ref("correction_dictee/"+p.dicteeId+"/dictee/amenagee");function fA(sn){AMEN_LAC[p.dicteeId]=lacunesDe(sn.val());setAmenCfg(sn.val()||null)}   /* [L14] */rA.on("value",fA);
+  useEffect(function(){var rA=db.ref("correction_dictee/"+p.dicteeId+"/dictee/amenagee");function fA(sn){AMEN_LAC[p.dicteeId]=lacunesDe(sn.val());setAmenCfg(sn.val()||null);setAmenLus(function(x){return Object.assign({},x,{version:true})})}   /* [L14] */rA.on("value",fA);
     var rB=db.ref("correction_dictee/"+p.dicteeId+"/config/base");function fB(sn){var v=sn.val();setBaseCfg(typeof v==="number"?v:(v?Number(v):null))}rB.on("value",fB);   /* [ELEVE-1 ④ — complément] la base suit le réglage, sans rouvrir */
     var rD=db.ref("correction_dictee/"+p.dicteeId+"/config/dateCorrection");function fD(sn){setDateCorr(sn.val()||"")}rD.on("value",fD);   /* [L9] la date de correction réglée */
     return function(){rA.off("value",fA);rB.off("value",fB);rD.off("value",fD)};},[p.dicteeId]);
@@ -3440,6 +3440,7 @@ function CorrScreen(p){
   // Aménagée : registre par classe + override par dictée
   var sA1=useState({}),amenagesDictee=sA1[0],setAmenagesDictee=sA1[1];
   var sA2=useState({}),classeAmenages=sA2[0],setClasseAmenages=sA2[1];
+  var sAL=useState({}),amenLus=sAL[0],setAmenLus=sAL[1];   /* [L15-0b] les trois sources lues avant d'oser recalculer */
   var sA3=useState(null),ctxMenu=sA3[0],setCtxMenu=sA3[1]; // {x,y,eleveKey,name}
   var sA4=useState(null),ancienRegistre=sA4[0],setAncienRegistre=sA4[1];   /* [ELEVE-1 ④] lu une fois, pour les copies d'avant la 6.6.0 */
   useEffect(function(){   /* [ELEVE-1 ④] les copies aménagées d'avant la 6.6.0 reçoivent leur trace, UNE fois (override, puis l'ancien registre) */
@@ -3475,6 +3476,24 @@ function CorrScreen(p){
   var sMAO=useState(""),msgAccepteesOuv=sMAO[0],setMsgAccepteesOuv=sMAO[1];   /* [L11] */
   var sMAM=useState(""),msgAmen=sMAM[0],setMsgAmen=sMAM[1];var lacPrecRef=React.useRef(undefined);   /* [L14] */
   var sFR=useState(0),formesRetenues=sFR[0],setFormesRetenues=sFR[1],sFP=useState(0),formesPret=sFP[0],setFormesPret=sFP[1];   /* [L10] */
+  useEffect(function(){   /* [L15-0b] dette 118 : la trace d'une copie suit le marquage de l'élève (clic droit, fiche) ; recalcul, la corbeille d'abord */
+    if(!formesPret||!amenLus.dictee||!amenLus.classe||!amenLus.version)return;
+    var amen=dAmenDe(data),lac=lacunesDe(data.amenagee),cles=[],nouv={};
+    Object.keys(p.corrections||{}).forEach(function(k){var c=p.corrections[k];if(!c||typeof c!=="object")return;
+      var veut=isEleveAmenage(k,amenagesDictee,classeAmenages)&&!!amen;if(veut===(c.amenagee===true))return;
+      var tr=veut?traceCopie(true,amen,data.base):{amenagee:false};var c2=Object.assign({},c,{amenagee:!!tr.amenagee,mode:tr.amenagee?tr.mode:null,base:tr.amenagee?tr.base:null});
+      var m=marquerAmenage(toArr(c.errors||[]).filter(function(e){return e!=null}),toArr(c.extras||[]).filter(function(e){return e!=null}),veut,lac);
+      var sc=computeNote(m.errs,m.extras,baseDeCopie(c2,data.base),data.bareme);
+      nouv[k]={amenagee:c2.amenagee,mode:c2.mode,base:c2.base,errors:m.errs,extras:m.extras,note:sc.note,deduction:sc.deduction,counts:sc.counts,modifieLe:Date.now()};cles.push(k);});
+    if(!cles.length)return;
+    var now=new Date(),jour=now.toISOString().slice(0,10),hh=("0"+now.getHours()).slice(-2)+("0"+now.getMinutes()).slice(-2)+("0"+now.getSeconds()).slice(-2);
+    Promise.all(cles.map(function(k){return db.ref("corbeille/"+jour+"/recalcul-amenage_"+hh+"_"+k).set({_meta:{motif:"recalcul-amenage",chemin:"correction_dictee/"+p.dicteeId+"/results/"+k,source:"correction_dictee",dictee:p.dicteeId,cle:k,le:Date.now()},data:p.corrections[k]});}))
+      .then(function(){var w={},cp={};cles.forEach(function(k){Object.keys(nouv[k]).forEach(function(f){w[k+"/"+f]=nouv[k][f];});cp[k]=Object.assign({},p.corrections[k],nouv[k]);});
+        return db.ref("correction_dictee/"+p.dicteeId+"/results").update(w).then(function(){p.onResetCorrections(Object.assign({},p.corrections,cp));
+          if(cles.length===1){var n0=nouv[cles[0]],nc=toArr(n0.errors).filter(function(e){return e&&!e.sansCout}).length;
+            setMsgAmen(n0.amenagee?"copie recalcul\u00e9e : "+nc+" erreur"+(nc>1?"s":"")+" compt\u00e9e"+(nc>1?"s":"")+" sur "+((lac||[]).length)+" mots \u00e0 compl\u00e9ter ; l\u2019\u00e9tat d\u2019avant est dans la corbeille.":"copie recalcul\u00e9e en version ordinaire : "+nc+" erreur"+(nc>1?"s":"")+" compt\u00e9e"+(nc>1?"s":"")+" ; l\u2019\u00e9tat d\u2019avant est dans la corbeille.");}
+          else setMsgAmen(cles.length+" copies recalcul\u00e9es (l\u2019am\u00e9nagement de leur \u00e9l\u00e8ve a chang\u00e9) ; l\u2019\u00e9tat d\u2019avant est dans la corbeille.");});});
+  },[formesPret,amenLus.dictee,amenLus.classe,amenLus.version,JSON.stringify(amenagesDictee),JSON.stringify(classeAmenages),JSON.stringify(lacunesDe(data.amenagee)),data.amenagee&&data.amenagee.enabled]);
   useEffect(function(){   /* [L14] les copies aménagées : recalculées une fois à l'ouverture, puis chaque fois que les trous changent */
     if(!formesPret)return;var lac=lacunesDe(data.amenagee),cle=JSON.stringify(lac);if(lacPrecRef.current===cle)return;
     var premier=lacPrecRef.current===undefined;lacPrecRef.current=cle;AMEN_LAC[p.dicteeId]=lac;
@@ -3509,11 +3528,11 @@ function CorrScreen(p){
   }
   useEffect(function(){
     var r1=db.ref("correction_dictee/"+p.dicteeId+"/amenages");
-    function f1(s){setAmenagesDictee(s.val()||{})}r1.on("value",f1);
+    function f1(s){setAmenagesDictee(s.val()||{});setAmenLus(function(x){return Object.assign({},x,{dictee:true})})}   /* [L15-0b] */r1.on("value",f1);
     var classe=data.classe||"_default";
     /* [ELEVE-1 ④] la fiche de l'élève, plus le registre classes_amenages (plus aucun repli) */
     var r2=db.ref("classes/"+cleDuRegistre(classe)+"/amenagements");
-    function f2(s){setClasseAmenages(registreDepuisAmenagements(s.val()))}r2.on("value",f2);
+    function f2(s){setClasseAmenages(registreDepuisAmenagements(s.val()));setAmenLus(function(x){return Object.assign({},x,{classe:true})})}   /* [L15-0b] */r2.on("value",f2);
     return function(){r1.off("value",f1);r2.off("value",f2)};
   },[p.dicteeId,data.classe]);
   function toggleAmenageDictee(eleveKey){
@@ -3543,8 +3562,8 @@ function CorrScreen(p){
       /* [L2] ⇧R est une bascule : du mode texte au mode rapide ET du mode rapide au mode texte, sur la même copie ;
          rien n'est perdu (L1 : tout est déjà enregistré) ; inactif dans un champ de saisie (ci-dessus) */
       if(e.shiftKey&&(e.key==="R"||e.key==="r")){
-        if(tab==="correct"&&cur){e.preventDefault();setTab("rapide");}
-        else if(tab==="rapide"){e.preventDefault();var re=cur||eleveRapideParDefaut();if(re)setCur(re);setTab("correct");}
+        if(tab==="correct"&&cur){e.preventDefault();window.__basculeL15=Object.assign({t:Date.now()},window.__posL15||{});setTab("rapide");}   /* [L15-0b] le mot où l'on est */
+        else if(tab==="rapide"){e.preventDefault();window.__basculeL15=Object.assign({t:Date.now()},window.__posL15||{});var re=cur||eleveRapideParDefaut();if(re)setCur(re);setTab("correct");}
       }
     }
     window.addEventListener("keydown",onKey);
@@ -3776,7 +3795,7 @@ function CorrScreen(p){
         onAutoSave:function(err,ext,fastIdxVal,posTexte){
           p.onSave(san(rapideEleve),err,ext,fastIdxVal,traceCopie(isEleveAmenage(san(rapideEleve),amenagesDictee,classeAmenages),dAmenDe(data),data.base),posTexte);   /* [ELEVE-1 ④] */
         },
-        onExitFast:function(){setCur(rapideEleve);setTab("correct")},   /* [L2] la même copie, en mode texte */
+        onExitFast:function(){window.__basculeL15=Object.assign({t:Date.now()},window.__posL15||{});setCur(rapideEleve);setTab("correct")},   /* [L15-0b] « ← Texte » / Pause : le même mot */   /* [L2] la même copie, en mode texte */
         elevesRecherche:sortElevesByNom(data.eleves),corrigees:p.corrections,absentsRecherche:p.absents,   /* [L6] la recherche en fin de copie */
         onOuvrirRapide:function(nom){setCur(nom);},   /* [L6] l'élève choisi s'ouvre directement en mode rapide (l'onglet reste Rapide) */
         onSave:function(err,ext){
@@ -4389,7 +4408,12 @@ function CorrEleve(p){
     overlay.style.top=top+"px";
     overlay.style.height=height+"px";
   },[lastTouched,errors,extras,fastMode]);
-  useEffect(function(){if(!fastMode&&lastTouched>=0)setCurseur(lastTouched);},[lastTouched,fastMode]);   /* [L8] le dernier mot corrigé devient le curseur */
+  useEffect(function(){if(!fastMode&&lastTouched>=0)setCurseur(lastTouched);},[lastTouched,fastMode]);
+  useEffect(function(){   /* [L15-0b] la bascule ⇧R reprend LE MOT OÙ L'ON ÉTAIT (dette 124) : texte → rapide sur le mot du curseur ; rapide → texte, le curseur sur le mot du rapide */
+    var b=window.__basculeL15;if(!b||b.eleve!==p.eleve||Date.now()-b.t>5000||b.idx==null)return;window.__basculeL15=null;
+    if(fastMode){var k=wordTokens.findIndex(function(w){return w&&w.idx>=b.idx});if(k>=0)setFastIdx(k);}else{setCurseur(b.idx);}
+  },[]);
+  useEffect(function(){var ti=fastMode?((wordTokens[fastIdx]||{}).idx):(curseur!=null?curseur:(lastTouched>=0?lastTouched:null));window.__posL15={eleve:p.eleve,idx:(ti==null?null:ti)};},[fastMode,fastIdx,curseur,lastTouched]);   /* [L15-0b] le mot où l'on est, pour la bascule */   /* [L8] le dernier mot corrigé devient le curseur */
   useEffect(function(){   /* [L8] la page suit le mot courant (curseur ou candidat) */
     if(fastMode)return;var i=rechTexte?candIdx:curseur;if(i==null)return;var g=wordGridRef.current;var el=g&&g.querySelector('[data-word-idx="'+i+'"]');if(el&&el.scrollIntoView)el.scrollIntoView({block:"nearest"});
   },[curseur,candIdx,rechTexte,fastMode]);
@@ -4705,9 +4729,9 @@ function CorrEleve(p){
         ),
         h("div",{style:{fontSize:".85rem",color:"var(--text-sub)",marginBottom:6}},"Qu\u2019a \u00e9crit l\u2019\u00e9l\u00e8ve ? (facultatif)"),
         (function(){var lT=listeFormesTexte();return listeFormesHtml(lT,function(n){var f=lT[n-1];if(f)confirmFautifTexte(f.forme);},{mot:askFautifTexte?motCleForme(tokens,askFautifTexte.idx):"",idx:askFautifTexte?askFautifTexte.idx:null,accepterIci:function(f){accepterCourantL11("T",f)}});})(),   /* [L10] ; [L11] */
-        h("div",{style:{display:"flex",gap:8}},
+        h("div",{style:{display:"flex",gap:8,flexWrap:"wrap"}},   /* [micro L11c — 03/10] la modale du mode texte : le champ garde sa largeur, le bouton « forme acceptée » passe à la ligne s'il manque de place */
           numeroHtml(),
-          h("input",{ref:fautifTexteRef,value:fautifTexteVal,onChange:function(e){setFautifTexteVal(e.target.value);setGardeMot(false)},placeholder:"Mot fautif...",style:{flex:1,padding:"10px 12px",fontSize:"1rem",borderRadius:10,border:"1.5px solid var(--border)"},onKeyDown:function(e){var lT=listeFormesTexte();if(toucheFormes(e,lT,function(n){var f=lT[n-1];if(f)confirmFautifTexte(f.forme);}))return;   /* [L10] */
+          h("input",{ref:fautifTexteRef,value:fautifTexteVal,onChange:function(e){setFautifTexteVal(e.target.value);setGardeMot(false)},placeholder:"Mot fautif...",style:{flex:"1 1 200px",minWidth:200,padding:"10px 12px",fontSize:"1rem",borderRadius:10,border:"1.5px solid var(--border)"},onKeyDown:function(e){var lT=listeFormesTexte();if(toucheFormes(e,lT,function(n){var f=lT[n-1];if(f)confirmFautifTexte(f.forme);}))return;   /* [L10] */
             if(e.key==="Enter")confirmFautifTexte();else if(e.key==="Escape"){e.preventDefault();setAskFautifTexte(null);setFautifTexteVal("");setGardeMot(false);setNumFormes("");setMsgFormes("");}}}),
           h("button",{className:"btn-sm btn-primary",title:"Valider avec le mot saisi. Raccourci : Entr\u00e9e",onClick:function(){confirmFautifTexte()}},"\u2713"),
           boutonAccepterL11("T"),   /* [L11] un bouton, aucun raccourci */

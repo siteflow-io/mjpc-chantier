@@ -12968,3 +12968,28 @@ Dis « ok » et j'ajoute L15h (le type accent au forfait, le reclassement à bla
 03/10/2026 13:45 MEMO
 
 ---
+
+## TOUR 426 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Ok mais là tu m'as mis deux fois des mots à cédille fautive dans les accents.
+
+---
+
+## TOUR 426 — Claude (conscience n°12)
+
+Faute de critère reconnue (la cédille traitée comme un accent) ; règle corrigée (aigu, grave, circonflexe, tréma, majuscule, trait d'union ; jamais la cédille ni les homophones grammaticaux) ; recomptage : Dylan 9 / 7 copies (cas limite « ce-là »), Franklin 4 / 4, Hugo 8 / 4 (préparée) ; brevets blancs : rien. Attend « ok » pour L15h / L15g.
+
+Réponse mot pour mot :
+
+Tu as raison : la cédille n'est pas un accent — « çe » pour « ce », « commençèrent » pour « commencèrent », c'est une erreur **lexicale** (le son change), pas un signe au forfait. Mon critère de mesure traitait la cédille comme un accent ; corrigé, et la règle s'écrit ainsi :
+
+398. **Le forfait « accent / majuscule / trait d'union »** couvre les accents **aigu, grave, circonflexe, tréma**, la majuscule, le trait d'union — **jamais la cédille** (lexical), **jamais un accent grammatical** (a / à, la / là, ou / où, du / dû, sur / sûr : G). Pour le reclassement automatique : la recopie, une fois ces seuls signes retirés, est le mot attendu ; sinon, on ne touche à rien.
+399. **Les chiffres, recomptés** : **Dylan** : **9** erreurs L reclassables sur 7 copies (« vehicules » ×2, « kilomêtres » ×2, « goûtte », « bàs », « alèrte », « chantiér »…) — exclus : « çe » (cédille), « la » pour « là » (grammatical) ; un cas limite à te soumettre dans le rapport à blanc : « ce-là » pour « cela » (un accent et un trait d'union : au forfait selon le texte, mais c'est toi qui tranches). **Franklin** : **4** sur 4 copies (« vehicules » ×3, « alèrte ») ; exclu : « la » pour « là ». **Hugo (préparée)** : **8** sur 4 copies ; exclus : « commençèrent », « dépaçait », « balçons », « fassades » (cédille ou lexical). Les brevets blancs 3E / 4E : toujours rien de reclassable (pas de recopie).
+
+Donc, au brevet, l'effet reste petit et sûr : 9 erreurs chez les Dylan, 4 chez les Franklin, à montrer **à blanc** avant tout recalcul. Dis « ok » et j'écris L15h (le type au forfait, le reclassement à blanc puis réel, la touche et le menu, l'aide) et L15g (les profils de barème).
+
+03/10/2026 14:10 MEMO
+
+---

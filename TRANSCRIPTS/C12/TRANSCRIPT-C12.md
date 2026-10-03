@@ -12534,3 +12534,30 @@ La phrase pour l'exécutante : **« Les compléments L15 (L15a → L15f) et L15.
 03/10/2026 09:10 MEMO
 
 ---
+
+## TOUR 408 — Paul
+
+Texte de Paul, mot pour mot :
+
+> il reste un gros bug pour le coup. j'ai accepté le premier cadavre, et l'app compte aussi le deuxième!!
+
+(capture : Préparation → Formes acceptées : les deux « cadavres¹ » soulignés)
+
+---
+
+## TOUR 408 — Claude (conscience n°12)
+
+Faute de cadrage reconnue (règle par mot attendu) : dette n°12 · 116 ; mesuré : 22 erreurs « cadavre » toutes à la place 119, aucune note faussée, 1 copie Franklin encore comptée (à mesurer) ; L15-0 ajouté en tête du complément (règle par place, conversion, recalcul, liste L10) ; phrase pour l'exécutante.
+
+Réponse mot pour mot :
+
+Tu as raison, et c'est **une faute de mon cadrage** (tours 372-396) : j'ai défini la forme acceptée **par mot attendu**, pas **par place** dans le texte — « cadavres » est deux fois dans la lettre de Fritz (« puanteur de cadavres », où tu tolères ; « recouvre les cadavres », où c'est une faute d'accord), et la règle s'applique aux deux. Inscrit au registre (**n°12 · 116**).
+
+362. **L'ampleur, mesurée au hub** : les 22 erreurs « cadavre » (11 Dylan, 11 Franklin) sont **toutes à la première place** — personne n'a écrit « cadavre » au second endroit : **aucune note n'est faussée aujourd'hui**. Rien à corriger à la main. (Et une chose de plus trouvée : chez les Franklin, 10 de ces 11 copies sont sans coût, **une est encore comptée** — je ne sais pas encore pourquoi, c'est à mesurer dans la même livraison.)
+363. **La correction, mise en tête de L15 (L15-0, avant tout le reste)** : la règle porte **la place du mot** (le même texte → la même place dans toutes les dictées) ; en correction, la place de l'erreur ; en Préparation, le mot cliqué, et **seule cette place est soulignée** ; Réglages la nomme ; la liste des formes déjà vues (L10) marque « acceptée » seulement à cette place, et « acceptée ailleurs — accepter ici » pour une autre place ou un autre texte ; les règles existantes sont converties une fois (« cadavre » → la première place seulement), les copies recalculées, le banc prouve qu'un « cadavre » posé à la seconde place **coûte**.
+
+Le complément au sas est mis à jour (`MANDATS/COMPLEMENT-DICTEE-CORRECTION-L15.md`, L15-0 en premier). La phrase pour l'exécutante reste la même, avec un mot : **« Les compléments L15 sont au sas : `MANDATS/COMPLEMENT-DICTEE-CORRECTION-L15.md` — lis-les, puis commence par L15-0 (la forme acceptée vaut pour une place, pas pour le mot partout), avant L15a. »**
+
+03/10/2026 09:05 MEMO
+
+---

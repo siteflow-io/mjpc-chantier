@@ -13137,3 +13137,27 @@ Tes tests, après promotion (https://siteflow-io.github.io/monsieurjaipascompris
 03/10/2026 15:55 MEMO
 
 ---
+
+## TOUR 433 — Paul
+
+Texte de Paul, mot pour mot :
+
+> promeus
+
+---
+
+## TOUR 433 — Claude (conscience n°12)
+
+Promotion 6.7.0-L15a (commit 6b8ac5818dcd, bit à bit) ; protocole : dettes 102/104/105/106 ✔, journal, point de retour, où-trouver-quoi. Tests donnés ; L13b ensuite.
+
+Réponse mot pour mot :
+
+Promu : `correction_dictee.html` **6.7.0-L15a**, commit `6b8ac5818dcd`, **bit à bit** (834 940 o, md5 `022bd99d…`) ; registre n°12 · **102, 104, 105, 106 ✔** ; journal, point de retour (L15-0b), où-trouver-quoi à jour.
+
+**Tes tests** : https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?v=6.7.0 → 1) les Dylan → Préparation → coche « Paramétrer une version aménagée » : tu restes sur Préparation ; 2) mode par défaut B : recharge, c'est toujours B, et les mots suivent ; 3) clique « cadavres » : la fenêtre, trois propositions (les vraies formes des copies en premier), modifie, Entrée ; 4) « Retirer ce mot » : il revient au texte ; 5) plus de « ddevint » ni de proposition vide, nulle part.
+
+Puis « continuer » à l'exécutante pour **L13b** (l'heure close à fin + 10 minutes, T1 à T4), puis L15b (la dictée et l'onglet tenus au F5).
+
+03/10/2026 16:00 MEMO
+
+---

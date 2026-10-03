@@ -12631,3 +12631,23 @@ Fait, v2 ci-dessus : **l'épellation va bien plus vite** — trois choses y cont
 03/10/2026 09:20 MEMO
 
 ---
+
+## TOUR 412 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok pour le très rapide. En revanche plutôt que de dire 1, il faut "numéro 1" "numéro 2". maquette.
+
+---
+
+## TOUR 412 — Claude (conscience n°12)
+
+Maquette v3 (T412) : « numéro 1, v o u l a i s », « très rapide » (2,4) par défaut ; banc simulé vert.
+
+Réponse mot pour mot :
+
+v3 ci-dessus : la voix dit maintenant « numéro 1, v o u l a i s — numéro 2, v o u l a i — numéro 3, v o u l é », et « très rapide » est la vitesse par défaut. Joue-la ; si c'est bon, il me reste tes réponses de 367 : signal seul ou épelé par défaut, et combien de formes (1, 2 ou 3) — puis j'écris L16.
+
+03/10/2026 09:30 MEMO
+
+---

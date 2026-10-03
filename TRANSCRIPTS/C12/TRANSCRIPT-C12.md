@@ -12561,3 +12561,28 @@ Le complément au sas est mis à jour (`MANDATS/COMPLEMENT-DICTEE-CORRECTION-L15
 03/10/2026 09:05 MEMO
 
 ---
+
+## TOUR 409 — Paul
+
+Texte de Paul, mot pour mot :
+
+> 362: à mesurer oui, si ça impacte les notes c'est de la plus haute importance. Mesure directement, et fais reconfirmer la mesure par l'exécutant. Il faut être sûr. par ailleurs, autre correctif, la majuscule (télescope la souplesse de l'identification du mot, mais à bien cadrer précisément).
+
+(capture : mode rapide, « Empereur » tapé pour « empereur » → « C'est le mot juste »)
+
+---
+
+## TOUR 409 — Claude (conscience n°12)
+
+Mesuré au hub : la copie Franklin encore comptée a la recopie « cadave » (vraie faute) → aucune note faussée ; reconfirmation demandée à l'exécutante dans L15-0 (point 5). Majuscule : dette 117, règle précise (refus seulement si identique casse comprise ; casse seule = recopie valide ; L10 garde la casse ; L11 casse comprise ; L15.1 écart « majuscule ») ajoutée en L15-0 point 6. Phrase pour l'exécutante.
+
+Réponse mot pour mot :
+
+364. **Mesuré directement au hub, copie par copie (22 erreurs « cadavres », sans nom)** : la copie des Franklin « encore comptée » porte la recopie **« cadave »** (sans r) — ce n'est pas « cadavre », c'est une vraie faute, et la règle ne la couvre pas : **sa note est juste**. Les 21 autres (11 Dylan, 10 Franklin : recopie « cadavre » exactement, toutes à la première place) sont sans coût, comme voulu. **Aucune note n'est faussée.** C'est écrit dans L15-0 avec l'ordre à l'exécutante de **reconfirmer le même relevé** (lecture seule du hub, copie par copie, dans sa note) avant de livrer.
+365. **La majuscule (dette 117), cadrée précisément** : aujourd'hui la garde du mot juste compare **sans la casse** — donc « Empereur » tapé pour « empereur » est refusé, et tu ne peux pas signaler une majuscule en trop ou manquante. La règle devient : **la garde refuse seulement si la recopie est identique au mot, casse comprise** ; si **la seule différence est la casse** (« Empereur » / « empereur », « le » pour « Le » en début de phrase, « verdun » pour « Verdun »), la recopie est acceptée telle quelle — c'est une erreur de majuscule, du type que tu choisis ; la liste des formes déjà vues garde la casse (« Empereur » et « empereur » sont deux formes) ; une forme acceptée se compare casse comprise ; l'analyse (L15.1) reconnaît l'écart « majuscule » et le commente. Ce qui est déjà au hub ne change pas. Dans L15-0, point 6.
+
+Le complément au sas est à jour. La phrase pour l'exécutante : **« Le complément L15-0 au sas a deux ajouts (points 5 et 6) : reconfirme la mesure des 22 « cadavres » dans ta note, et règle la majuscule ; puis continue l'ordre. »**
+
+03/10/2026 09:15 MEMO
+
+---

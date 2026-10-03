@@ -1,0 +1,4 @@
+géométrie : {"texte_1366": {"largeur": 1100, "defilement_h": false, "boutons_qui_depassent": [], "contexte": null}, "rapide_1366": {"largeur": 1100, "defilement_h": false, "boutons_qui_depassent": [], "contexte": "Pourluiparler,nousnousadressionsd’abordàPenanster,quiluirépétaitnosproposparunelente…"}, "erreurs_1366": [], "texte_1920": {"largeur": 1100, "defilement_h": false, "boutons_qui_depassent": [], "contexte": null}, "rapide_1920": {"largeur": 1100, "defilement_h": false, "boutons_qui_depassent": [], "contexte": "Pourluiparler,nousnousadressionsd’abordàPenanster,quiluirépétaitnosproposparunelente…"}, "erreurs_1920": []}
+écrans élèves — écarts au pixel : [None, None, None, None]
+géométrie True | phrase True 'Pourluiparler,nousnousadressionsd’abordàPenanster,quiluirépé' | élèves identiques True
+BANC L7 PAR LE GESTE : VERT

@@ -12671,3 +12671,24 @@ C'est la voix qui recolle des lettres isolées en syllabe (« g r i » devient �
 03/10/2026 09:40 MEMO
 
 ---
+
+## TOUR 414 — Paul
+
+Texte de Paul, mot pour mot :
+
+> du coup ça va plus lentement en fait. Par ailleurs, je suis en train de corriger les hugo. Regarde axel, je l'ai mis en aménagé (cette dictée). Pourquoi sa note ne change pas? il a fait des erreurs sur tous les mots de la dictée aménagée?
+
+---
+
+## TOUR 414 — Claude (conscience n°12)
+
+Audio : v5 (T414) — les noms de lettres sans virgule (plus de pause), « au galop » (3,0) ajouté. Hugo : mesuré au hub — la dictée `amenages/<clé>: true`, la copie trace `amenagee: false` (corrigée avant le marquage), le recalcul L14 ne touche que les copies tracées aménagées ; 43 erreurs, 6 dans les 10 trous (4 G + 2 L = 5 pts → 5/10 au lieu de 0). Dette 118 ; L15-0 point 7 (marquer/démarquer → recalcul, reprise) ; mesure à reconfirmer par l'exécutant.
+
+Réponse mot pour mot :
+
+368. **L'épellation** : ce sont les virgules entre les noms qui ralentissent (chaque virgule = une pause). **v5** ci-dessus : les noms sans virgule (« gé èr i zède e »), à 2,4, et une vitesse « au galop » (3,0) à essayer. Je ne peux pas entendre : dis-moi si c'est net et assez vif, ou si on revient aux lettres brutes à 3,0 en acceptant quelques collages.
+369. **Ta copie des Hugo, mesurée au hub** : non, il n'a pas fait d'erreur sur tous les mots à compléter — il a **43 erreurs, dont 6 seulement dans les 10 mots à compléter** (4 G + 2 L = 5 points : sa note aménagée serait **5/10**, pas 0). Pourquoi 0 : tu l'as marqué aménagé **après** avoir corrigé sa copie ; la dictée le sait (il est bien dans ses aménagés), mais **la copie garde la trace posée au moment de la correction (« non aménagée »)**, et le recalcul de L14 ne touche que les copies tracées aménagées. C'est une dette (**118**), ajoutée en tête de L15 (L15-0, point 7) : marquer ou démarquer un élève recalcule aussitôt sa copie, et les copies déjà dans ce cas sont reprises ; la mesure est à reconfirmer par l'exécutante. En attendant, une seule chose la débloque : **réinitialiser puis recorriger** sa copie une fois marqué — ou attendre L15-0 (quelques livraisons). À toi de dire.
+
+03/10/2026 10:05 MEMO
+
+---

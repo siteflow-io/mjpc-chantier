@@ -12899,3 +12899,16 @@ Réponse mot pour mot :
 03/10/2026 11:20 MEMO
 
 ---
+
+## TOUR 423 — Paul
+
+Texte de Paul, mot pour mot :
+
+> quand j'ai commencé en maj R, puis sorti, puis continué à corriger en classique et que je rebascule en maj R, il me remet au mot où j'étais en maj R, et non pas au mot où j'étais en classique. Or, il le faut. ok pour la réponse, va quand même vérifier sur eduscol, et du coup il faut que le mode préparé devienne paramétrable. en effet, cela permettra de configurer plusieurs types de dictées: actuellement une préparée a juste pas le ^même barème que le brevet, mais il existe beaucoup d'autres types de dictées  préparées(négociées, ciblées, etc) qu'il faut que je puisse évaluer. D'où la nécessité de pouvoir paramétrer une dictée préparée.
+
+---
+
+## TOUR 423 — Claude (conscience n°12)
+
+Dettes 124 (⇧R part du mot courant → L15-0 point 8, déposé) et 125 (barème préparée paramétrable → à cadrer). Recherche Éduscol lancée (la recherche avancée est activée) : la grille officielle de la dictée du DNB.
+

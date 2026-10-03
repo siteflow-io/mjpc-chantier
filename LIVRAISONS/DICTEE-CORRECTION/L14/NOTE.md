@@ -1,0 +1,28 @@
+# DICTÉE — L'ÉCRAN DE CORRECTION · L14 — la note des élèves aménagés : seuls les mots à compléter comptent
+
+*Exécutant des compléments L13-L14, livraison L14 — la dernière : le mandat « L'écran de correction » est clos avec elle. Rien n'est promu.*
+
+## Ce que ça change pour la classe
+- **Pour une copie aménagée** (sa trace dit `amenagee: true`), **seules les erreurs posées sur les mots des trous** (`dictee/amenagee.lacunes[].tokenIdx`) **comptent** dans la note, les forfaits et les répétitions, sur la base de la copie ; **toutes les autres** — mots hors trous, ponctuation, mots en trop — restent posées et visibles comme aujourd'hui, **sans coût** (`sansCout: true`, motif `amenage` ; la mécanique de L11, un autre motif ; `counts.sansCout` les compte à part). Tu corriges toute la copie ; la note affichée est la note aménagée.
+- **Rétroactif** : à la première ouverture de la dictée, les copies aménagées déjà corrigées sont recalculées une fois, **l'état d'avant en corbeille d'abord** (motif `recalcul-amenage`, une entrée par copie, restaurable) — « ✓ n copies aménagées recalculées ; l'état d'avant est dans la corbeille. » ; et chaque fois que la version aménagée change (un trou ajouté ou retiré) — « … — la version aménagée a changé ».
+- **Ce que voit l'élève aménagé**, et rien d'autre : en tête de son autocorrection, un encart avec **ta phrase, mot pour mot** : « J'ai corrigé toute ta copie : tu dois faire l'autocorrection complète, mais la note ne compte que pour les mots que tu avais à compléter le jour de la dictée. » ; là où sa note de dictée apparaît déjà (l'écran de fin), « (sur les k mots à compléter) » ; **rien dans le corps de la dictée** : toutes les cases sont pareilles, il corrige tout, sa note d'autocorrection porte sur tout ; **sa feuille** : la même phrase sous l'en-tête, la note aménagée, un coût seulement sous les mots des trous, **aucune autre marque** (ni étiquette, ni « forme acceptée »).
+- **Le bilan exporté** : `erreurs_comptees` et `sans_cout` par élève, la note et sa base ; rien de nominatif de plus.
+- **L'aide « ? »** (Préparation → version aménagée) : « seuls les mots à compléter comptent dans la note de l'élève aménagé ; tu corriges toute sa copie, ses autres erreurs restent visibles, sans coût ».
+
+## La base
+L13 n'était pas encore promue : **L14 part de L13** (au sas `LIVRAISONS/DICTEE-CORRECTION/L13/correction_dictee.html`, 813 092 o, md5 `4ce6fa98b97c959856fc00d8227e300f`), elle-même partie de la **6.7.0-L12 en ligne** (809 581 o, md5 `89a82a824077066e82823dda85353cfe`, vérifiée à la commande). → **6.7.0-L14** : **819,640 o** (+6,548), md5 `6516ce917a5bfe0a94663b252582086c`.
+
+## Le fichier
+Ajoutés : `AMEN_LAC`, `lacunesDe`, `marquerAmenage`, `recalculerAmenagees` ; dans `CorrScreen` : la version aménagée tenue à jour pour l'enregistrement, la reprise (à l'ouverture, puis à chaque changement des trous), la ligne. Modifiés : `computeNote` (un mot en trop sans coût ne coûte rien), `save` (la copie aménagée marque ses erreurs hors trous), la liste de l'élève et ses données (`amenagee`, `nbTrous`), l'autocorrection (l'encart, « (sur les k mots à compléter) », la mention « forme acceptée » réservée à L11), la feuille (la phrase, aucun coût hors trous), le bilan exporté, une ligne d'aide. Syntaxe : 1 bloc, `node --check` 0 erreur, `acorn --ecma2020` 0 erreur.
+
+## Les bancs (`bancs/`) — le kit anonymisé, faux hub, ZZTEST
+**`banc_L14_geste.py`** (par le geste, 10 vérifications ; une version aménagée à 3 trous) : **la reprise** — la copie aménagée d'avant (une erreur dans un trou, une hors trou, un mot en trop) recalculée une fois : l'erreur hors trou et le mot en trop sans coût, note 7 → 9, « 1 copie aménagée recalculée », la corbeille avec la copie d'avant exacte ; **toutes les autres copies identiques à ce que fait la L13 à la même ouverture** ; **le mode rapide** : un élève aménagé, M sur 5 mots (dont 2 trous) → les 3 hors trous sans coût, **sa note = celle d'un élève non aménagé qui n'a que les 2 erreurs des trous** ; une erreur ajoutée hors trou → la note ne bouge pas (9 → 9) ; dans un trou → elle bouge (9 → 8,5) ; un élève non aménagé : tout compte (9 → 8,5) ; **un trou retiré** → « — la version aménagée a changé », l'erreur de ce mot devenue sans coût ; **le bilan** : `"erreurs_comptees": 2` ; **l'élève** : l'encart, la phrase exacte (et aucun encart chez un élève non aménagé), **le corps de la dictée identique** à celui d'un élève non aménagé (hors la phrase et le prénom) ; **sa feuille** : la phrase une fois, le coût seulement pour les 2 erreurs des trous (4 « −0,5 » contre 10 chez le non-aménagé), aucune « forme acceptée » ; 0 erreur.
+**Banc unique sur L14 : VERT, 0 échec** (`sorties/`) : S1/S3 sans perte, S2 correct ; fuzz_correction ×2 : 0 bug ; fuzz_rapide : 0 bug ; grille : 0 erreur ; bancs L1, L2, L3, L5, L6, L6b, L7, L8, L10, L9, L11, L12, L13, L14 verts ; vue élève (l'accueil) identique à la 6.6.3.
+
+## Captures (`captures/`)
+`F1-eleve.png` (l'autocorrection de l'élève aménagé) ; `F2-feuille.png` (sa feuille) ; `F3-prof.png` (côté professeur, sa copie).
+
+## Tes tests, après promotion (L13 puis L14)
+1. https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?v=6.7.0 → la dictée des Dylan : « ✓ 1 copie aménagée recalculée » ; sa note remonte (seules les erreurs des trous comptent) ; ses autres erreurs restent visibles.
+2. Ajoute une erreur hors trou à cette copie : la note ne bouge pas ; dans un trou : elle bouge.
+3. Côté élève (aménagé) : la phrase en tête de son autocorrection ; le texte, les cases : comme les autres ; sa feuille : la phrase sous l'en-tête.

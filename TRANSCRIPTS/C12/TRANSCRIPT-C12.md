@@ -12586,3 +12586,28 @@ Le complément au sas est à jour. La phrase pour l'exécutante : **« Le compl�
 03/10/2026 09:15 MEMO
 
 ---
+
+## TOUR 410 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok. une dernière chose: quand j'ai l'audio activé et qu'il y a déjà des erreurs capitalisées, j'aimerais avoir un signal sonore, ou mieux, les trois premières formes épelées du type "1 V O U L A I S ". C'est faisable? je veux une maquette de ça. Je lance l'exécutant sur l15, le cadrage de l'audio se continue ici et sera l16
+
+---
+
+## TOUR 410 — Claude (conscience n°12)
+
+Maquette T410 (md5 6393a636f1a2) : voix du navigateur, le mot, un ding (oscillateur 880 Hz), les formes épelées « 1 : v, o, u, l, a, i, s » (accents nommés), réglages (signal seul / épelé, nombre, vitesse, accents), avancer coupe ; banc avec voix simulée VERT 5/5 ; capture. Mises en tension 367 (temps, accents, homophones, signal, pavé). Questions pour L16.
+
+Réponse mot pour mot :
+
+Faisable, avec la voix du navigateur (gratuite, native — celle qui lit déjà le mot en mode rapide) : la maquette est ci-dessus (`T410-maquette-audio-formes-v1.html`, md5 `6393a636f1a2`, pièce T410 au sas). **Ouvre-la, clique « 🔊 Audio », avance avec Espace** : sur « voulait », tu entends le mot, un petit « ding », puis « 1 : v, o, u, l, a, i, s — 2 : v, o, u, l, a, i — 3 : v, o, u, l, e accent aigu ». Sur « rentrer » (aucune forme) : le mot seulement. Les sous-titres à droite montrent ce que la voix dit ; la capture ci-dessus les montre.
+
+366. **Ce que la maquette joue (L16, à cadrer)** : le signal seulement, **ou** le signal puis les formes épelées (réglage) ; le **nombre** de formes épelées (1 à 3) ; la **vitesse de l'épellation** à part de la vitesse du mot ; **les accents dits** (« e accent aigu ») ou tus ; **avancer coupe la voix** aussitôt ; Échap la coupe aussi.
+367. **Les mises en tension, mesurées** : (a) **le temps** — épeler trois formes de sept lettres prend 9 à 12 secondes ; sur un mot sans faute chez cet élève, c'est perdu ; d'où le réglage « signal seul » et « 1 forme », et la voix coupée dès que tu avances — mais dis-moi comment tu corriges : si tu avances sans attendre, l'épellation ne gêne pas ; si tu veux l'entendre entière, c'est 10 s par mot à formes ; (b) **les lettres** — la voix française dit bien chaque lettre séparée par une virgule ; les accents ont besoin d'être nommés (« e accent aigu ») sinon « é » et « e » s'entendent pareil ; (c) **les formes identiques à l'oreille** (« voulais / voulait ») : l'épellation est justement ce qui les distingue ; (d) **le signal** : un son court (880 Hz, 0,2 s) — pas une voix ; (e) **le pavé** : les numéros entendus sont ceux de la liste (1, 2, 3) : tu tapes le chiffre entendu.
+
+Joue-la et dis-moi : signal seul ou épelé par défaut ; combien de formes ; les accents ; et ce qui manque — puis j'écris L16.
+
+03/10/2026 09:35 MEMO
+
+---

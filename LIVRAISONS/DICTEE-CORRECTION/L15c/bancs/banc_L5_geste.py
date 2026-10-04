@@ -3,6 +3,9 @@ Par le geste (ouvrir la dictée, poser un signe en trop), faux hub du kit (insta
 import sys, copy, os, json; sys.argv=['x','a','b']; sys.path.insert(0,'.')
 import banc_L1 as L
 from banc import Banc
+def deplierNiveaux(p):
+    p.evaluate("() => { document.querySelectorAll('.niveau-l15c[data-ouvert=\"0\"] h3').forEach(function(h){ h.click() }) }"); p.wait_for_timeout(300)   # [L15c-c] les niveaux sont repliés par défaut
+
 F=os.environ.get('FICHIER','../live_663.html'); D3='dictee_brevet_blanc_3e-3e_charles_de_gaulle'; CAP=os.environ.get('CAPTURES','')
 ATTENDU=json.load(open(os.environ.get('RAPPORT_L4','/home/claude/dc/L4/rapport_kit.json')))
 att=[d for d in ATTENDU['dictees'] if d['id']==D3][0]

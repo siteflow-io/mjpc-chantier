@@ -13363,3 +13363,29 @@ Fait en micro, promu : **6.7.0-L15c-c** — chaque niveau est **un dépliant, re
 04/10/2026 08:20 MEMO
 
 ---
+
+## TOUR 442 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok. que fait le bouton corbeille?
+
+---
+
+## TOUR 442 — Claude (conscience n°12)
+
+Lu dans le code (`supprimerDicteeAvecCorbeille`) et rapporté.
+
+Réponse mot pour mot :
+
+Mesuré dans le code (`supprimerDicteeAvecCorbeille`) — le 🗑️ d'une dictée fait, dans l'ordre :
+
+423. **Il demande confirmation** : « Supprimer <titre> ? Elle sera archivée dans la corbeille MJPC (récupérable un an) et un export JSON sera téléchargé. Continuer ? » — rien ne se passe si tu refuses.
+424. **Il lit la dictée entière au hub** (texte, barème, version aménagée, copies, absents, autocorrections, exercices, date de remise — tout le nœud `correction_dictee/<id>`).
+425. **Ceinture 1 — un fichier JSON est téléchargé sur ton poste** (`dictee_<id>_<date>.json`), tout de suite, même hors ligne.
+426. **Ceinture 2 — la dictée est archivée dans la corbeille du hub** (`corbeille/<jour>/suppression-dictee_<heure>`, avec son motif, l'année scolaire, le titre, l'heure), **puis seulement elle est retirée** de `correction_dictee`. Si l'archivage échoue, il te le dit et te demande si tu veux supprimer quand même (le JSON, lui, est déjà sur ton poste).
+427. **Ce qu'il ne fait pas** : il ne touche ni au registre des classes, ni aux formes capitalisées (L10 : elles restent, avec leur `dicteeId`), ni aux règles du texte (L11, partagées entre dictées du même texte), ni aux élèves aménagés de la classe. Et il n'y a pas de bouton « restaurer » dans l'app de dictée : la restauration passe par la console MJPC (la corbeille du hub) ou par le JSON.
+
+04/10/2026 08:25 MEMO
+
+---

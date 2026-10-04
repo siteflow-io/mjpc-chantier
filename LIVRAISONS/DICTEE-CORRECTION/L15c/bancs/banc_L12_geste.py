@@ -3,6 +3,9 @@ le contenu de chaque endroit (et qui change quand l'écran change), et chaque to
 import sys, copy, os, json, re; sys.argv=['x','a','b']; sys.path.insert(0,'.')
 import banc_L1 as L
 from banc import Banc
+def deplierNiveaux(p):
+    p.evaluate("() => { document.querySelectorAll('.niveau-l15c[data-ouvert=\"0\"] h3').forEach(function(h){ h.click() }) }"); p.wait_for_timeout(300)   # [L15c-c] les niveaux sont repliés par défaut
+
 F=os.environ.get('FICHIER','../live_663.html'); D3='dictee_brevet_blanc_3e-3e_charles_de_gaulle'; CAP=os.environ.get('CAPTURES','')
 db=copy.deepcopy(L.BASE); cl=db['correction_dictee'][D3]['config']['classe']; db['classes'][cl]['eleves']=list(db['classes'][cl]['eleves'])+['ZZTEST Oscar','ZZTEST Papa']
 R={}
@@ -18,7 +21,7 @@ R['accueil_bouton']=p.locator('#aide-btn').count()==1; k('?'); R['accueil']=aide
 if CAP: p.screenshot(path=CAP+'/L12-accueil.png')
 k('Escape'); R['accueil_ferme']=ferme()
 # 2. la grille ; l'aide qui change quand l'écran change (l'onglet Rapide ouvert sous l'aide)
-p.evaluate('''()=>{const el=[...document.querySelectorAll('div')].filter(x=>x.children.length<12&&x.textContent.includes('brevet blanc 3E')&&x.textContent.includes('Ouvrir'));const c=el[el.length-1];[...c.querySelectorAll('button,a,span')].find(x=>x.textContent.trim().startsWith('Ouvrir')).click()}'''); p.wait_for_timeout(2600)
+deplierNiveaux(p); p.evaluate('''()=>{const el=[...document.querySelectorAll('div')].filter(x=>x.children.length<12&&x.textContent.includes('brevet blanc 3E')&&x.textContent.includes('Ouvrir'));const c=el[el.length-1];[...c.querySelectorAll('button,a,span')].find(x=>x.textContent.trim().startsWith('Ouvrir')).click()}'''); p.wait_for_timeout(2600)
 R['grille_bouton']=p.locator('#aide-btn').count()==1; R['barre_sans_vieux_point']=p.locator('.nav2-aide').count()==0
 k('F1'); R['grille']=aide()
 p.evaluate("()=>{const b=[...document.querySelectorAll('button')].find(x=>x.textContent.includes('Rapide')&&x.className.includes('tab'));if(b)b.click()}"); p.wait_for_timeout(1200)

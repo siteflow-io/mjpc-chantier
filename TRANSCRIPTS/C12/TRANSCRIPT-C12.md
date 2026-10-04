@@ -13440,3 +13440,29 @@ Audit de **L15d** (« les élèves de test entrent avec leur code ; les modes d'
 04/10/2026 09:05 MEMO
 
 ---
+
+## TOUR 445 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Livré
+
+---
+
+## TOUR 445 — Claude (conscience n°12)
+
+Audit L15d-b : base L15c-d, le micro reporté (seule différence avec L15d, mesurée), 6.7.0-L15d-b ; bancs L15d VERT 8/8, L15c-d VERT, L15c, L15b, vue élève verts ; verdict : ça va (110, 115). Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Audit de **L15d-b** (`LIVRAISONS/DICTEE-CORRECTION/L15d-b/` — L15d reprise sur la L15c-d), mesuré :
+
+435. **Le fichier** : base = L15c-d promue (`0ddd51e0…`) → **6.7.0-L15d-b, 848 699 o (+715)**, md5 `dfde1522…` ; contre L15d, **la seule différence est la ligne du micro reportée** (plus le numéro de version) — mesuré ligne à ligne ; 9 retirées, 11 ajoutées contre la prod ; `node --check` 0 erreur.
+436. **Les bancs, rejoués par moi** : L15d **VERT, 8 vérifications** (les codes du bac à sable en empreinte, « Tout effacer » épargne la classe de test de MJPC, un élève du bac à sable et un élève de la classe de test de MJPC entrent avec leur code, mauvais code refusé, les modes Brut / Barré / Placeholder disponibles dès que G et L sont recopiés, grisés avec le compte sinon) ; **L15c-d VERT** (l'onglet Rapide reste sur le même élève) ; L15c, L15b, vue élève : verts ; son banc unique vert, 0 échec.
+437. **Verdict : ça va. Tu peux promouvoir L15d-b** — dettes **110, 115**. Capture : celle de L15d (l'onglet Copies, les trois modes).
+
+Tes tests, après promotion (https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?v=6.7.0) : 1) bac à sable → « Tout effacer » puis « Créer » : les codes qu'il affiche ; un élève de test entre avec son code (plus de « Ton code n'est pas encore enregistré ») ; 2) un élève de ta classe de test MJPC (DURAND Alice, 6947) entre dans une dictée de test ; **refais un code à martin_lucas dans MJPC** ; 3) l'onglet Copies des Dylan (recopies G et L faites) : Brut, Barré, Placeholder cliquables ; 4) l'onglet Rapide sans ⇧R : Entrée reste sur le même élève. Puis « continuer » pour **L15e** (l'import depuis n'importe quel PDF — donne-lui tes deux PDF).
+
+04/10/2026 14:25 MEMO
+
+---

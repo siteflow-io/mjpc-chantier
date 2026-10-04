@@ -4,6 +4,8 @@ qui dépublie au hub sur-le-champ, « ＋ Nouvelle dictée », le mode test repl
 import sys, copy, os, json, re, time; sys.argv=['x','a','b']; sys.path.insert(0,'.')
 import banc_L1 as L
 from banc import Banc
+def deplierNiveaux(p):
+    p.evaluate("() => { document.querySelectorAll('.niveau-l15c[data-ouvert=\"0\"] h3').forEach(function(h){ h.click() }) }"); p.wait_for_timeout(300)   # [L15c-c] les niveaux sont repliés par défaut
 F=os.environ.get('FICHIER','../live_663.html'); D3='dictee_brevet_blanc_3e-3e_charles_de_gaulle'; CAP=os.environ.get('CAPTURES','')
 db=copy.deepcopy(L.BASE); src=db['correction_dictee'][D3]
 # une classe à clé seule (nom du registre en capitales) et une petite dictée corrigée à 100 % ; une autre déjà rendue
@@ -12,7 +14,7 @@ cp=lambda t:{'errors':[{'idx':1,'type':'L','word':'devint','fautif':'devin'}],'e
 db['correction_dictee']['dictee_zz_cent']={'config':dict(src['config'],title='ZZTEST cent pour cent',classe='3_zz_test_alpha',niveau='3e',published=True),'results':{'zztest_un':cp(1700000500000),'zztest_deux':cp(1700000400000)}}
 db['correction_dictee']['dictee_zz_rendue']={'config':dict(src['config'],title='ZZTEST rendue',classe='3_zz_test_alpha',niveau='3e',published=True,creeLe=1600000000000),'results':{'zztest_un':cp(1),'zztest_deux':cp(2)},'copyPublishedAt':1790949532434}
 R={}
-b=Banc(F,1366,768); p=b.ouvrir('?mode=prof',db=db); p.wait_for_timeout(1800)
+b=Banc(F,1366,768); p=b.ouvrir('?mode=prof',db=db); p.wait_for_timeout(1800); deplierNiveaux(p)
 R['niveaux']=p.evaluate("()=>[...document.querySelectorAll('#mes-dictees .niveau-l15c')].map(n=>[n.dataset.niveau,[...n.querySelectorAll('.ligne-dictee-l15c')].map(l=>l.dataset.id),!!n.querySelector('.vide-l15c')])")
 R['ligne_cent']=p.evaluate("()=>{const l=document.querySelector('.ligne-dictee-l15c[data-id=\"dictee_zz_cent\"]');return l?l.innerText.replace(/\\s+/g,' '):null}")
 R['statuts']=p.evaluate("()=>Object.fromEntries([...document.querySelectorAll('.ligne-dictee-l15c')].map(l=>[l.dataset.id,(l.querySelector('.statut-l15c')||{}).className+' | '+((l.querySelector('.statut-l15c')||{}).innerText||'')]))")

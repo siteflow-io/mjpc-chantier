@@ -4,10 +4,12 @@ import sys, copy, os, json, re; sys.argv=['x','a','b']; sys.path.insert(0,'.')
 from urllib.parse import urlparse, parse_qs
 import banc_L1 as L
 from banc import Banc
+def deplierNiveaux(p):
+    p.evaluate("() => { document.querySelectorAll('.niveau-l15c[data-ouvert=\"0\"] h3').forEach(function(h){ h.click() }) }"); p.wait_for_timeout(300)   # [L15c-c] les niveaux sont repliés par défaut
 F=os.environ.get('FICHIER','../live_663.html'); D3='dictee_brevet_blanc_3e-3e_charles_de_gaulle'; CAP=os.environ.get('CAPTURES','')
 db=copy.deepcopy(L.BASE); cl=db['correction_dictee'][D3]['config']['classe']; db['classes'][cl]['eleves']=list(db['classes'][cl]['eleves'])+['ZZTEST Kilo']
 R={}
-b=Banc(F,1366,768); p=b.ouvrir('?mode=prof',db=db); p.wait_for_timeout(1000)
+b=Banc(F,1366,768); p=b.ouvrir('?mode=prof',db=db); p.wait_for_timeout(1000); deplierNiveaux(p)
 def q(): u=parse_qs(urlparse(p.url).query); return {k:v[0] for k,v in u.items() if k in ('dictee','onglet','vue','copie','mode')}
 def actif(): return p.evaluate("()=>{const t=[...document.querySelectorAll('button.tab.active,button.tab[class*=active]')].map(b=>b.textContent.trim());if(/date de correction/i.test(document.body.innerText)&&!t.length)t.push('Réglages');return t}")   # Réglages n'a pas de sous-onglet : on reconnaît son contenu
 def ecran():

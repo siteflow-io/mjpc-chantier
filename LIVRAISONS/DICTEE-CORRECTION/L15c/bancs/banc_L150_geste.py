@@ -3,6 +3,9 @@ le même mot à une autre place coûte toujours) ; la majuscule (la garde refuse
 import sys, copy, os, json, re, time; sys.argv=['x','a','b']; sys.path.insert(0,'.')
 import banc_L1 as L
 from banc import Banc
+def deplierNiveaux(p):
+    p.evaluate("() => { document.querySelectorAll('.niveau-l15c[data-ouvert=\"0\"] h3').forEach(function(h){ h.click() }) }"); p.wait_for_timeout(300)   # [L15c-c] les niveaux sont repliés par défaut
+
 F=os.environ.get('FICHIER','../live_663.html'); D3='dictee_brevet_blanc_3e-3e_charles_de_gaulle'; CAP=os.environ.get('CAPTURES','')
 def empreinte(t):   # la même empreinte que l'app (empreinteTexte)
     x=re.sub(r'\s+',' ',str(t).lower()).strip(); hh=5381
@@ -19,7 +22,7 @@ db.setdefault('correction_dictee_textes',{})[tk]={'formesAcceptees':{'lui':{'luy
 d['results']['zztest_alpha']={'errors':[{'idx':10,'type':'G','word':'lui','fautif':'luy','sansCout':True}],'extras':[],'note':10,'deduction':0,'counts':{'sansCout':1},'timestamp':1700000000000,'amenagee':False}
 R={}
 b=Banc(F,1366,768); p=b.ouvrir('?mode=prof',db=db); p.wait_for_timeout(1000)
-p.evaluate('''()=>{const el=[...document.querySelectorAll('div')].filter(x=>x.children.length<12&&x.textContent.includes('brevet blanc 3E')&&x.textContent.includes('Ouvrir'));const c=el[el.length-1];[...c.querySelectorAll('button,a,span')].find(x=>x.textContent.trim().startsWith('Ouvrir')).click()}'''); p.wait_for_timeout(4000)
+deplierNiveaux(p); p.evaluate('''()=>{const el=[...document.querySelectorAll('div')].filter(x=>x.children.length<12&&x.textContent.includes('brevet blanc 3E')&&x.textContent.includes('Ouvrir'));const c=el[el.length-1];[...c.querySelectorAll('button,a,span')].find(x=>x.textContent.trim().startsWith('Ouvrir')).click()}'''); p.wait_for_timeout(4000)
 R['ligne']=p.evaluate("()=>{const e=document.getElementById('ligne-acceptees');return e?e.innerText:null}")
 fa=(b.lire(p,'correction_dictee_textes/%s/formesAcceptees'%tk) or {}); fa=dict(enumerate(fa)) if isinstance(fa,list) else fa
 R['regles']=sorted((str(k),sorted((v or {}).keys())) for k,v in fa.items() if v)

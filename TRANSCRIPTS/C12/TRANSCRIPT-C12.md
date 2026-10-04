@@ -13240,3 +13240,27 @@ Tes tests, après promotion (https://siteflow-io.github.io/monsieurjaipascompris
 04/10/2026 07:10 MEMO
 
 ---
+
+## TOUR 437 — Paul
+
+Texte de Paul, mot pour mot :
+
+> promeus
+
+---
+
+## TOUR 437 — Claude (conscience n°12)
+
+Promotion 6.7.0-L15b (commit 166f935bf819, bit à bit) ; protocole : dette 103 ✔, journal, point de retour, où-trouver-quoi. Tests donnés ; L15c ensuite.
+
+Réponse mot pour mot :
+
+Promu : `correction_dictee.html` **6.7.0-L15b**, commit `166f935bf819`, **bit à bit** (840 104 o, md5 `b4df6113…`) ; registre n°12 · **103 ✔** ; journal, point de retour (L13b), où-trouver-quoi à jour.
+
+**Tes tests** : https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?v=6.7.0 → 1) une dictée → une copie → F5 : la même copie, au même mot ; 2) ⇧R → F5 : la même copie en rapide ; 3) Données → Suivi → F5 : le Suivi ; 4) copie l'adresse dans un autre onglet : le même écran ; 5) « ← Retour » : l'adresse redevient simple.
+
+Puis « continuer » à l'exécutante pour **L15c** (l'accueil rangé : niveaux, taux, coche « publiée », statut des copies, mode test replié).
+
+04/10/2026 07:15 MEMO
+
+---

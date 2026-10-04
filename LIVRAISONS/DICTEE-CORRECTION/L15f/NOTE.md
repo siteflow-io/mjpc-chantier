@@ -1,0 +1,26 @@
+# DICTÉE — L'ÉCRAN DE CORRECTION · L15f — côté élève : la note après le chrono, le regain en clair, le bilan, l'actualisation
+
+*Exécutant du complément L15, livraison L15f (dettes n°12 · 111, 112, 113, 114 ; visuels G1, G2, G3). Rien n'est promu. Question 334 tranchée : **A** (Paul, 04/10) — F5 rouvre au même endroit si ce navigateur garde la clé du professeur ; c'est ce que fait L15b, rien à changer.*
+
+## Ce que ça change pour la classe
+- **111 — pendant le chrono du stylo vert, aucune note** n'est visible derrière la fenêtre (ni la note de dictée, ni l'autocorrection, ni « À savoir », ni les tableaux) ; la fenêtre dit **« Ta note de dictée s'affichera à la fin du chrono. »** ; à zéro, l'écran de fin.
+- **112 — Regagner des points**, quand l'élève peut répondre : **la consigne en clair**, mot pour mot : « **Comment ça marche :** une question sur une règle que tu as ratée ; si tu réponds juste, tu regagnes 1,25 point sur ta note d'autocorrection. Si tu réponds faux, tu ne perds rien. Tu peux aussi garder ta note telle quelle. » (le montant suit le nombre d'erreurs : 5 ÷ n) ; **« ❓ Répondre à une question », puis « Je garde ma note (n/5) »** à côté (G2) : cliqué, c'est enregistré sur la copie (`autocorrection/<élève>/garderNote`) et plus aucune question n'est proposée pour cette dictée ; **plus aucune infobulle** dans l'encart.
+- **113 — le regain dans le bilan** (G3) : la note d'autocorrection avec son détail (**« 2,5/5 + 1,25 regagné »**) ; le tableau **« Détail de ton autocorrection »** sous l'en-tête (« 4 erreurs à retrouver, 7 essais (3 essais ratés, le premier offert) −2,5 », chaque question « Question regagnée : … +1,25 » / « Question ratée : … 0 », « Note d'autocorrection 3,75 / 5 ») ; **la phrase à recopier mentionne le regain** (« … surtout de grammaire ; j'ai regagné 1,25 point en répondant sur l'accord du verbe, et pour la prochaine, … ») ; **ton Suivi** porte « dont +1,25 regagné » sous la note ; **le bilan exporté** porte, par élève, `autocorrection: {note, sans_regain, regain}`.
+- **114 — l'actualisation en direct** : l'écran de l'élève **écoute**, pour chaque dictée, les copies rendues et la publication : **masquer** → sa ligne repasse à « Disponible après la séance », et s'il avait sa copie ouverte il revient à « Mes dictées » ; **rendre** → « Ouvrir » revient seul ; **dépublier** (L15c) → la dictée disparaît de sa liste ; sans rechargement.
+
+## Le fichier
+- Base : **L15e** (au sas, md5 `1c8de1e3be1b395939c2c192eb757be0`) — L15e n'est pas encore promue ; elle-même partie de la **6.7.0-L15d-b en ligne** (md5 `dfde1522b3e7f7cec144aea892bc10c6`, vérifiée à la commande). → **6.7.0-L15f** : **879,361 o** (+6,997), md5 `a525dc0168b80de8427fc1cfd3418dc5`.
+- Dans `EleveCorrection` : `scoreSansRegainL15f`, `regainL15f`, `questionsTraiteesL15f`, `detailAutocorrectionL15f`, `garderNoteL15f` ; la fenêtre du stylo (la phrase) ; l'en-tête de fin (rien pendant le chrono, le détail du regain) ; l'encart (la consigne, les deux boutons, sans infobulle). `phraseARecopier` (le regain). Le Suivi (`regain`, « dont +x regagné »). `buildDicteeJSON` (les autocorrections : note, sans regain, regain) et `PromptIaModal` (les lit). `AppEleve` : l'écoute de `copyPublishedAt` et `config/published` pour chaque dictée, le retour à « Mes dictées ». Syntaxe : 1 bloc, `node --check` 0 erreur, `acorn --ecma2020` 0 erreur.
+
+## Les bancs (`bancs/`) — le kit anonymisé, faux hub, ZZTEST
+**`banc_L15f_geste.py`** (par le geste, 14 vérifications ; le professeur agit en écrivant au hub de la page de l'élève — ce que fait son clic, reçu par l'écoute) : **pendant le chrono, aucune note** et la phrase exacte ; **à zéro, l'écran de fin** ; **la consigne mot pour mot** ; **« Je garde ma note (2,5/5) »** → `garderNote: true` au hub, plus de question ni de consigne ; **aucune infobulle dans l'encart** ; **« 2,5/5 + 1,25 regagné »** ; **le tableau** (les quatre lignes de G3) ; **la phrase avec le regain** ; **le Suivi « dont +1,25 regagné »** ; **le bilan exporté** (`"regain": 1.25`, `"sans_regain": 2.5`) ; **masquer / rendre** sans recharger ; **masquer avec la copie ouverte** → « Mes dictées » ; **dépublier** → la dictée disparaît ; 0 erreur.
+**Banc unique sur L15f : VERT, 0 échec, 32 étapes** (`sorties/`) : S1/S3, S2, fuzz ×3, grille, bancs L1 → L14, L15-0, L15-0b, L15a, L13b, L15b, L15c, L15c-b, L15c-c, L15c-d, L15d, L15e, L15f, vue élève identique à la 6.6.3.
+
+## Captures (`captures/`)
+`G1-chrono.png` (le chrono, sans note) ; `G2-regain.png` (la consigne, les deux boutons) ; `G3-bilan.png` (le regain à part, le détail, la phrase) ; `G4-liste.png` (« Mes dictées » après « dépublier »).
+
+## Tes tests, après promotion (L15e puis L15f)
+1. https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?v=6.7.0 → en mode test, un élève finit son autocorrection : pendant le chrono du stylo vert, aucune note ; à zéro, sa note.
+2. « Regagner des points » : la consigne en clair ; « Je garde ma note » : plus de question.
+3. Une question réussie : « … + 1,25 regagné », le détail, la phrase à recopier ; ton Suivi : « dont +1,25 regagné ».
+4. Côté professeur, masque les copies pendant qu'un élève a la sienne ouverte : il revient à « Mes dictées » ; rends-les : « Ouvrir » revient ; dépublie : la dictée disparaît de sa liste.

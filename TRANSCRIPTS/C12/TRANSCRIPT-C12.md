@@ -13536,3 +13536,24 @@ Ta phrase pour elle : **« Les deux PDF sont au sas, `MANDATS/pdf/` ; L15e valid
 04/10/2026 14:55 MEMO
 
 ---
+
+## TOUR 449 — Paul
+
+Texte de Paul, mot pour mot :
+
+> quand sera codé le classement de la capitalisation en deux colonnes L et G?
+
+---
+
+## TOUR 449 — Claude (conscience n°12)
+
+Réponse mot pour mot :
+
+441. **Il n'est pas encore codé, et il n'est écrit dans aucun complément** : la liste des formes **par type** (G ou L, celui que tu presses) est cadrée dans la maquette sur l'app réelle (T418 / T420 : la liste du type, la bascule « déjà enregistrée en L — passer en L ? », « Changer → » vers l'autre type seulement, Suppr = annuler l'erreur, la ligne du texte centrée), mais elle est rangée dans **L16**, avec l'audio — et L16 attend que l'épellation soit tranchée (ta voix enregistrée, pas encore essayée).
+442. **Ce que je propose : la détacher de l'audio.** Tout ça marche sans la voix. J'écris **L16a** aujourd'hui — la liste par type et le pavé dans cette liste, la bascule, « Changer → » vers l'autre type seulement, Suppr, la ligne centrée sous le gros mot — et je l'intercale **après L15f** (côté élève), avant L15g (les profils) ; l'audio restera **L16b**, quand tu auras essayé ta voix. L'exécutante continue dans l'ordre : L15e → L15f → **L16a** → L15g → L15h → L15.1 → L16b.
+
+Dis « ok » et je l'écris au complément ; si tu la veux plus tôt (avant L15f), dis-le.
+
+04/10/2026 15:05 MEMO
+
+---

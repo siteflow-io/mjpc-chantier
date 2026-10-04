@@ -13415,3 +13415,28 @@ Mesuré et réglé en micro, promu : **6.7.0-L15c-d**.
 04/10/2026 08:40 MEMO
 
 ---
+
+## TOUR 444 — Paul
+
+Texte de Paul, mot pour mot :
+
+> livré
+
+---
+
+## TOUR 444 — Claude (conscience n°12)
+
+Audit L15d : codes du bac à sable en empreinte (cause du 110), « Tout effacer » épargne MJPC (martin_lucas à refaire), copieRecopiee G et L (115) ; banc L15d VERT 8/8 (rouge sur L15c-c) ; mais base = L15c-c : le micro L15c-d absent (banc L15c-d rouge sur L15d) → ça ne va pas : L15d-b (report d'une ligne). Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Audit de **L15d** (« les élèves de test entrent avec leur code ; les modes d'affichage des copies », `LIVRAISONS/DICTEE-CORRECTION/L15d/`), mesuré :
+
+431. **Ce qu'elle a trouvé, et que je confirme dans le code et au hub** : le bac à sable rangeait les codes de ses élèves **en clair**, et depuis M-SÉCU-2 l'entrée n'accepte qu'un code en empreinte — d'où ton « Ton code n'est pas encore enregistré » pour DURAND Alice (110) ; et **« Tout effacer » effaçait aussi des codes de la classe de test de MJPC** (`martin_lucas` a disparu du hub — **il faut lui refaire un code dans MJPC**). Réglé : les codes du bac à sable en empreinte (les mêmes codes qu'il affiche), « Tout effacer » épargne la classe de test ; et les modes Brut / Barré / Placeholder n'exigent plus que la recopie de **G et L** (115), avec l'infobulle « il manque la recopie de n mots (G ou L) ».
+432. **Les bancs, rejoués par moi** : L15d **VERT, 8 vérifications** (codes rangés en empreinte sans clair ; « Tout effacer » épargne MJPC ; un élève du bac à sable entre ; **un élève de la classe de test de MJPC entre avec son code** ; mauvais code refusé ; G/L recopiés + P + I → les trois modes disponibles ; une G sans recopie → grisés, avec le compte) ; **rouge sur L15c-c** ; son banc unique vert, 0 échec, les bancs accordés aux dépliants compris.
+433. **Mais une chose bloque le promeus** : **L15d part de la L15c-c, pas de la L15c-d** — le micro d'hier matin (l'onglet Rapide qui pose l'élève une fois, dette 128) **n'y est pas** : mesuré, le marqueur est absent, et le banc L15c-d est **rouge** sur L15d (Entrée saute d'élève en élève). Elle a été commandée avant que je promeuve ce micro : ce n'est pas une faute de sa part, c'est le croisement.
+434. **Verdict : ça ne va pas en l'état — une reprise d'une ligne.** Ta phrase pour elle : **« L15d part de la L15c-c ; la L15c-d (le micro de l'onglet Rapide, une ligne dans CorrScreen, marqueur « [micro L15c-d ») est en ligne : reporte-la dans L15d → L15d-b, rejoue le banc L15c-d (dans L15c/bancs/) et ton banc unique, puis dépose. »** Je l'auditerai à réception. Capture ci-dessus : l'onglet Copies avec les trois modes disponibles.
+
+04/10/2026 09:05 MEMO
+
+---

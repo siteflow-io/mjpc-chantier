@@ -13490,3 +13490,27 @@ Puis « continuer » à l'exécutante pour **L15e** (l'import depuis n'importe q
 04/10/2026 14:24 MEMO
 
 ---
+
+## TOUR 447 — Paul
+
+Texte de Paul, mot pour mot : (il colle le message de l'exécutante : L15e codée, banc vert sur ses PDF de test, en attente des deux PDF de Paul ; 354-357 ; question 334 F5/clé toujours en attente.)
+
+---
+
+## TOUR 447 — Claude (conscience n°12)
+
+Les deux PDF (uploads du 03/10) remis à Paul pour l'exécutante ; L15e validée (mises en tension : pdf.js en ligne, crochet multi-mots → première forme + message, gras/souligné non reconnus conforme E1, règles ajoutées aux propositions) ; 334 : A recommandé, à Paul ; phrase pour l'exécutante.
+
+Réponse mot pour mot :
+
+Sa L15e suit E1 et B2, et je la valide — avec trois choses à dire avant qu'elle dépose :
+
+438. **Tes deux PDF sont ci-dessus**, ceux du 03/10 (`Dictée_classique.pdf`, 63 544 o ; `Dictée_adaptée.pdf`, 81 306 o) : télécharge-les et colle-les à l'exécutante. Je rappelle ce qu'ils contiennent pour son banc : 12 crochets, la bonne forme n'est **pas toujours la première** (« [couché / couchés / couchée] » → « couchés », la deuxième), et la classique porte **les notes de grammaire** en bas (sujet souligné, verbe en gras, « participe passé avec être : accord avec le sujet… ») — c'est ce qui nourrit l'indice du mode C.
+439. **Mises en tension, mesurées contre le cadrage** : (a) **pdf.js chargé « comme React »** = depuis le même dépôt en ligne que React ; rien de payant, rien n'est envoyé, mais l'import demande d'être en ligne — comme l'app entière : accepté ; (b) **la bonne forme « mot à mot » depuis le classique** : juste pour tes PDF (un crochet = un mot) ; si un jour un crochet couvre deux mots (« [l'a / la] »), elle doit prendre la première forme et te le dire — je le lui demande ; (c) **gras et souligné non reconnus** : conforme à E1 (« si le PDF le dit ») — elle le dit honnêtement, c'est bon ; (d) **« signal » avait une case vide** → deux règles ajoutées aux propositions de L15a (pluriel en -aux, -e final), L15a toujours vert : conforme à « jamais vide ».
+440. **334 / 417 — F5 et ta clé** : c'est à toi. Les deux choix : **A** (le sien) — si ton navigateur a déjà ta clé de professeur, F5 te rouvre au même endroit sans redonner ton code ; **B** — tu redonnes ton code à chaque F5, même avec la clé. Je recommande **A** : c'est ce que fait déjà la clé pour toute ouverture de l'app, F5 n'ouvre rien de plus. Dis A ou B.
+
+Ta phrase pour elle, quand tu as collé les PDF : **« Voici les deux PDF ; L15e validée par la conscience, avec une règle de plus : un crochet qui couvre plusieurs mots prend la première forme et le dit à l'écran ; réponse 334 : [A ou B]. Passe-les au banc, dépose. »**
+
+04/10/2026 14:50 MEMO
+
+---

@@ -3,13 +3,16 @@ comparé au hub après chaque touche (le mode rapide enregistre à chaque erreur
 import sys, copy, json, random, math, os, re, unicodedata; sys.argv=['x','a','b']; sys.path.insert(0,'.')
 import banc_L1 as L
 from banc import Banc
+def deplierNiveaux(p):
+    p.evaluate("() => { document.querySelectorAll('.niveau-l15c[data-ouvert=\"0\"] h3').forEach(function(h){ h.click() }) }"); p.wait_for_timeout(300)   # [L15c-c] les niveaux sont repliés par défaut
+
 F=os.environ.get('FICHIER','../live_0aeb.html'); G=int(os.environ.get('GRAINE','1')); NB=int(os.environ.get('NB','2')); rnd=random.Random(G)
 D3='dictee_brevet_blanc_3e-3e_charles_de_gaulle'
 def san(n): return re.sub(r'[^a-z0-9]+','_',''.join(c for c in unicodedata.normalize('NFD',n.lower()) if unicodedata.category(c)!='Mn')).strip('_')
 db=copy.deepcopy(L.BASE); cl=db['correction_dictee'][D3]['config']['classe']; NOMS=['ZZTEST Golf','ZZTEST Hotel','ZZTEST India','ZZTEST Juliet']
 db['classes'][cl]['eleves']=list(db['classes'][cl]['eleves'])+NOMS
 b=Banc(F,1400,900); p=b.ouvrir('?mode=prof',db=db); p.wait_for_timeout(1000); dlg=[]; p.on('dialog',lambda d: dlg.append(d.message[:80]))
-p.evaluate('''()=>{const el=[...document.querySelectorAll('div')].filter(x=>x.children.length<12&&x.textContent.includes('brevet blanc 3E')&&x.textContent.includes('Ouvrir'));const c=el[el.length-1];[...c.querySelectorAll('button,a,span')].find(x=>x.textContent.trim().startsWith('Ouvrir')).click()}'''); p.wait_for_timeout(1400)
+deplierNiveaux(p); p.evaluate('''()=>{const el=[...document.querySelectorAll('div')].filter(x=>x.children.length<12&&x.textContent.includes('brevet blanc 3E')&&x.textContent.includes('Ouvrir'));const c=el[el.length-1];[...c.querySelectorAll('button,a,span')].find(x=>x.textContent.trim().startsWith('Ouvrir')).click()}'''); p.wait_for_timeout(1400)
 bugs=[]
 def bug(s,d): bugs.append((s,d)); print('  BUG',s,'—',d[:300],flush=True)
 def ouvrir(nom): p.evaluate("(n)=>{const x=[...document.querySelectorAll('*')].filter(e=>e.children.length===0&&e.textContent.trim()===n);(x[0].closest('button,[role=button],div[style*=cursor]')||x[0]).click()}",'Z. '+nom.split(' ')[-1]); p.wait_for_timeout(900)

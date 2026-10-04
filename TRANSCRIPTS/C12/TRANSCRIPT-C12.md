@@ -13315,3 +13315,29 @@ Puis « continuer » à l'exécutante pour **L15d** (les élèves de test avec l
 04/10/2026 07:55 MEMO
 
 ---
+
+## TOUR 440 — Paul
+
+Texte de Paul, mot pour mot :
+
+> à faire en micro: tu m'élargis la page d'accueil parce que regarde là: je dois scroller énormément et même en scrollant, je n'ai pas toutes les infos d'une seule dictée sur la même hauteur d'écran tellement il y a de blanc.
+
+(capture : l'accueil, le titre replié sur 7 lignes) ; puis :
+
+> en fait, c'est même surtout que les infos de l'encart de gauche avec le titre de dictée etc, devrait être sur une ligne, avec en dessous la progression, le statut de rendu des copies, de publication, la modif, la duplication la corbeille et le bouton ouvrir.
+
+---
+
+## TOUR 440 — Claude (conscience n°12)
+
+Micro L15c-b : conteneur 1100 px, deux lignes par dictée ; banc 72 px (126-160 avant), L15c, L15b verts ; promu bit à bit (commit 9f92a9d4c446, 846 601 o) ; dette 127 ✔, journal, point de retour ; complément L15 → base L15c-b.
+
+Réponse mot pour mot :
+
+Fait en micro, promu : **6.7.0-L15c-b** — l'accueil passe à **1100 px** (comme l'écran de correction), et **chaque dictée tient en deux lignes** : le titre et ses infos (classe · créée le · mots à compléter) sur une ligne ; en dessous la progression, le statut des copies, la coche « publiée », ✏️ ⧉ 🗑️ et Ouvrir. Mesuré au banc avec ton titre long sur toutes les dictées : **72 px par dictée**, contre 126 à 160 avant ; L15c et L15b restent verts ; commit `9f92a9d4c446`, **bit à bit** (846 601 o, md5 `bc6c67d5…`) ; registre (**127 ✔** — une faute de L15c : je n'avais pas mesuré la hauteur avec un vrai titre), journal, point de retour ; le complément L15 pointe cette base. Captures avant / après ci-dessus.
+
+**Ton test** : https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?v=6.7.0 → l'accueil : les Dylan et les Franklin tiennent chacune en deux lignes, sans scroll pour une dictée. Dis à l'exécutante : **« La base est passée en 6.7.0-L15c-b (micro de l'accueil, deux lignes par dictée) : reprends-la. »**
+
+04/10/2026 08:10 MEMO
+
+---

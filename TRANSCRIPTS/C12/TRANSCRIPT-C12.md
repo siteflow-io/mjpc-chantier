@@ -13557,3 +13557,25 @@ Dis « ok » et je l'écris au complément ; si tu la veux plus tôt (avant L15f
 04/10/2026 15:05 MEMO
 
 ---
+
+## TOUR 450 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok je veux l'avoir dans la prochaine livraison de l'exécutant, après la prochaine promotion.
+
+---
+
+## TOUR 450 — Claude (conscience n°12)
+
+L16a écrite au complément (fidèle à la maquette T420 hors audio : liste par type, bascule, Changer → l'autre type, Suppr, ligne centrée ; bancs) ; ordre : L15e → L16a → L15f → L15g → L15h → L15.1 → L16b (audio). Déposée.
+
+Réponse mot pour mot :
+
+Écrit et déposé : **L16a** est au complément (`MANDATS/COMPLEMENT-DICTEE-CORRECTION-L15.md`), **juste après L15e**, avant L15f — fidèle geste par geste à la maquette sur l'app réelle (T420, hors audio) : la liste des formes **du type choisi** (G ou L) et le pavé dedans, la bascule « déjà enregistrée en L (×n). Passer en L ? » (boutons, sans raccourci), « Changer → » vers l'autre type seulement, **Suppr** = annuler l'erreur hors champ, et **la ligne du texte centrée sous le gros mot** (« … » aux deux bouts, écart ≤ 2 px mesuré au banc). L'audio reste L16b, après L15.1.
+
+Ta phrase pour elle, au moment où L15e sera promue : **« Continuer — la prochaine est L16a (au complément, juste après L15e) : les formes par type, la bascule, Changer →, Suppr, la ligne centrée, sans audio ; sa maquette est T420 dans TRANSCRIPTS/C12/pieces/. »**
+
+04/10/2026 16:45 MEMO
+
+---

@@ -13264,3 +13264,30 @@ Puis « continuer » à l'exécutante pour **L15c** (l'accueil rangé : niveaux,
 04/10/2026 07:15 MEMO
 
 ---
+
+## TOUR 438 — Paul
+
+Texte de Paul, mot pour mot :
+
+> livré
+
+---
+
+## TOUR 438 — Claude (conscience n°12)
+
+Audit L15c : diff 27/53, 6.7.0-L15c, « Éprouver » retiré, étiquette aménagée retirée, date posée une fois ; banc L15c VERT 12/12 (rouge sur L15b), L15b accordé, L13b, vue élève verts ; captures. Verdict : ça va (109). Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Audit de **L15c** (« l'accueil rangé », `LIVRAISONS/DICTEE-CORRECTION/L15c/`), mesuré :
+
+419. **Le fichier** : base = L15b promue (`b4df6113…`, vérifiée) → **6.7.0-L15c, 846 361 o (+6 257)**, md5 `68191117…` ; 27 lignes retirées, 53 ajoutées ; `node --check` 0 erreur. **Vérifié dans le code** : « Éprouver les mécanismes livrés » a disparu (0 occurrence) ; plus d'étiquette « Aménagée · n » ; la date de création d'une dictée est posée une fois au hub (la copie la plus ancienne, sinon le moment de l'ouverture) ; la coche « publiée » écrit au hub au clic.
+420. **Les bancs, rejoués par moi sur le kit anonymisé** : L15c **VERT, 12 vérifications** — les niveaux 3e, 4e, 5e, 6e dans l'ordre, « vide pour l'instant », le tri par date, **la classe lisible** (« 3 ZZ TEST ALPHA » → « 3e Zz Test Alpha »), « créée le », la date posée **une fois** (une date déjà là n'est pas touchée), **le taux 93 % (28 corrigées sur 30 attendues, les absents hors compte)**, les trois statuts (non rendues / **« rendre les copies ▸ » qui pulse à 100 %** / « rendues le … »), **décocher « publiée » dépublie au hub sur-le-champ**, « ＋ Nouvelle dictée » replié, le mode test en une ligne, **« rendre les copies ▸ » → l'onglet Copies avec son bouton prêt** ; **sur L15b ce banc est rouge** ; L15b accordé, L13b : verts sur L15c ; vue élève identique à la 6.6.3 ; son banc unique : vert, 0 échec, L1 → L15b compris.
+421. **Deux choses mesurées qu'elle te dit, et que je confirme** : tes classes ont un libellé **en capitales** dans MJPC (« 3 DYLAN BOB », « 4 HUGO ») — l'accueil les rend « 3e Dylan Bob », « 4e Hugo » ; si tu les nommes toi-même avec des minuscules dans MJPC, c'est ton nom qui s'affiche ; et la dépublication **disparaît chez l'élève sans rechargement avec L15f**, pas encore.
+422. **Verdict : ça va. Tu peux promouvoir L15c** — dette **109**. Captures ci-dessus : l'accueil (les niveaux, la ligne complète), l'onglet Copies avec le bouton prêt.
+
+Tes tests, après promotion (https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?v=6.7.0) : 1) l'accueil : 3e (Dylan, Franklin, Charles de Gaulle), 4e (Banksy, Pythagore, Hugo), 5e et 6e « vide pour l'instant » ; les classes lisibles, « créée le », le taux ; 2) sur les Dylan (100 %) : « rendre les copies ▸ » pulse → clic → Données → Copies, le bouton prêt ; 3) décoche « publiée » sur une dictée : « non publiée » aussitôt (recoche) ; 4) « ＋ Nouvelle dictée » déplie le formulaire ; 5) « 🧪 Mode test — Ouvrir ▾ » déplie l'atelier, plus d'« éprouver ». Puis « continuer » pour **L15d** (les élèves de test avec leur code MJPC ; les modes Brut / Barré / Placeholder).
+
+04/10/2026 07:55 MEMO
+
+---

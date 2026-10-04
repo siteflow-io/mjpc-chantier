@@ -13213,3 +13213,30 @@ Puis « continuer » à l'exécutante pour **L15b** (la dictée et l'onglet tenu
 04/10/2026 06:35 MEMO
 
 ---
+
+## TOUR 436 — Paul
+
+Texte de Paul, mot pour mot :
+
+> livré
+
+---
+
+## TOUR 436 — Claude (conscience n°12)
+
+Audit L15b : diff 5/23, 6.7.0-L15b, adresse sans recharger, rien de nouveau en localStorage, eleveKey jamais lu côté prof ; banc L15b VERT 10/10 avec vrais F5 (rouge sur L13b), L1 accordé, L13b, L15a, vue élève verts ; le choix de la reconnexion par clé laissé à Paul (417). Verdict : ça va (103). Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Audit de **L15b** (« la dictée, l'onglet et la copie tenus au rechargement », `LIVRAISONS/DICTEE-CORRECTION/L15b/`), mesuré :
+
+415. **Le fichier** : base = L13b promue (`1f1593e4…`, vérifiée) → **6.7.0-L15b, 840 104 o (+2 834)**, md5 `b4df6113…` ; 5 lignes retirées, 23 ajoutées ; `node --check` 0 erreur. **Vérifié dans le code** : l'adresse porte la dictée, l'onglet (et la vue des Données) et la copie, mise à jour **sans recharger** (une seule écriture d'adresse) ; **rien de nouveau n'est gardé dans le navigateur** ; le lien d'un élève (`eleveKey`) n'est jamais interprété côté professeur.
+416. **Les bancs, rejoués par moi sur le kit anonymisé, avec de vrais rechargements** : L15b **VERT, 10 vérifications** — F5 sur Préparation, sur Données → Suivi, sur Réglages → le même écran et la même adresse ; **F5 sur une copie en mode texte → la même copie, en texte ; ⇧R puis F5 → la même copie, en rapide** ; « ← Retour » nettoie l'adresse ; une adresse tapée ouvre Réglages ; une dictée inexistante → l'accueil, adresse nettoyée ; **sur L13b ce banc est rouge** ; L1 accordé (après F5 la copie est rouverte), L13b, L15a : verts sur L15b ; vue élève identique à la 6.6.3 ; son banc unique : vert, 0 échec, L1 → L13b compris.
+417. **Un choix qu'elle te soumet, et que je te laisse** : aujourd'hui F5 te déconnecte (tu redonnes ton code). Avec L15b, **si ton navigateur garde déjà ta clé de professeur** (celle du coffre, depuis M-SÉCU-3), F5 te rouvre **directement** au même endroit ; sinon tu redonnes ton code et tu arrives au même endroit. Rien de plus n'est gardé. Si tu préfères redonner ton code à chaque F5 même avec la clé, dis-le : une ligne à retirer.
+418. **Verdict : ça va. Tu peux promouvoir L15b** — dette **103**. Captures ci-dessus : avant (F5 → la liste), après (F5 → la même copie).
+
+Tes tests, après promotion (https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?v=6.7.0) : 1) une dictée → une copie → F5 : la même copie, au même mot ; 2) ⇧R → F5 : la même copie en rapide ; 3) Données → Suivi → F5 : le Suivi ; 4) copie l'adresse dans un autre onglet : le même écran ; 5) « ← Retour » : l'adresse redevient simple. Puis « continuer » pour **L15c** (l'accueil rangé).
+
+04/10/2026 07:10 MEMO
+
+---

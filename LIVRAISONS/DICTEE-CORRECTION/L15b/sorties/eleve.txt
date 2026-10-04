@@ -1,0 +1,2 @@
+écran élève identique : True | erreurs : [] []
+VUE ÉLÈVE : VERT

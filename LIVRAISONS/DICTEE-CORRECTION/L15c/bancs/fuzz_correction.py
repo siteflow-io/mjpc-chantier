@@ -4,6 +4,9 @@ MODE=classique|rapide|mixte ; GRAINE ; NB (copies)."""
 import sys, copy, json, random, math, os, re, unicodedata; sys.argv=['x','a','b']; sys.path.insert(0,'.')
 import banc_L1 as L
 from banc import Banc
+def deplierNiveaux(p):
+    p.evaluate("() => { document.querySelectorAll('.niveau-l15c[data-ouvert=\"0\"] h3').forEach(function(h){ h.click() }) }"); p.wait_for_timeout(300)   # [L15c-c] les niveaux sont repliés par défaut
+
 F=os.environ.get('FICHIER','../live_0aeb.html'); MODE=os.environ.get('MODE','classique'); G=int(os.environ.get('GRAINE','1')); NB=int(os.environ.get('NB','3'))
 rnd=random.Random(G); D3='dictee_brevet_blanc_3e-3e_charles_de_gaulle'
 COST={'G':1,'L':0.5,'M':1,'I':1,'X':0.5,'P':0.5,'A':0,'E':0.5}; COSTB={'G':1,'L':0.5,'M':0.5,'I':0.5,'X':0.5,'P':0,'A':0,'E':0.5}
@@ -25,13 +28,13 @@ NOMS=['ZZTEST Alpha','ZZTEST Bravo','ZZTEST Charlie','ZZTEST Delta','ZZTEST Echo
 db['classes'][cfg['classe']]['eleves']=list(db['classes'][cfg['classe']]['eleves'])+NOMS
 b=Banc(F,1400,900); p=b.ouvrir('?mode=prof',db=db); p.wait_for_timeout(1000); dlg=[]
 p.on('dialog',lambda d: dlg.append(d.message[:80]))
-p.evaluate('''()=>{const el=[...document.querySelectorAll('div')].filter(x=>x.children.length<12&&x.textContent.includes('brevet blanc 3E')&&x.textContent.includes('Ouvrir'));const c=el[el.length-1];[...c.querySelectorAll('button,a,span')].find(x=>x.textContent.trim().startsWith('Ouvrir')).click()}'''); p.wait_for_timeout(1400)
+deplierNiveaux(p); p.evaluate('''()=>{const el=[...document.querySelectorAll('div')].filter(x=>x.children.length<12&&x.textContent.includes('brevet blanc 3E')&&x.textContent.includes('Ouvrir'));const c=el[el.length-1];[...c.querySelectorAll('button,a,span')].find(x=>x.textContent.trim().startsWith('Ouvrir')).click()}'''); p.wait_for_timeout(1400)
 bugs=[]; journal=[]
 def bug(s,detail): bugs.append((s,detail)); print('  BUG',s,'—',detail[:260],flush=True)
 def ouvrir(nom): p.evaluate("(n)=>{const x=[...document.querySelectorAll('*')].filter(e=>e.children.length===0&&e.textContent.trim()===n);(x[0].closest('button,[role=button],div[style*=cursor]')||x[0]).click()}",'Z. '+nom.split(' ')[-1]); p.wait_for_timeout(900)
 def retour(): p.evaluate("()=>{const b=[...document.querySelectorAll('button')].find(x=>x.textContent==='←');b&&b.click()}"); p.wait_for_timeout(600)
 def toks(): return p.evaluate("()=>[...document.querySelectorAll('.word-grid button.word-btn')].map(b=>b.textContent)")
-def barre(): return p.evaluate("()=>{const t=document.body.innerText;const i=t.indexOf('🔀');return i>0?t.slice(0,i).replace(/\\n/g,' ').replace(/^\\?\\s+/,''):''}")   # [accordé à L12] le « ? » de l'aide, en tête de l'écran, n'est pas la note
+def barre(): return p.evaluate("()=>{const t=document.body.innerText;const i=t.indexOf('🔀');return i>0?t.slice(0,i).replace(/\\n/g,' '):''}")
 def popup_btn(t): return p.evaluate("(t)=>{const b=document.querySelector('.popup-btn-'+t.toLowerCase());if(!b)return false;b.click();return true}",t)
 def fautif(v):
     if v is None: return p.evaluate("()=>{const b=[...document.querySelectorAll('.popup-overlay button')].find(x=>x.textContent.trim()==='Passer');if(b){b.click();return true}return false}")

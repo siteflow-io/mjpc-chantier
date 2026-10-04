@@ -5,11 +5,14 @@ Par le geste (touches réelles), faux hub du kit, ZZTEST."""
 import sys, copy, os, json; sys.argv=['x','a','b']; sys.path.insert(0,'.')
 import banc_L1 as L
 from banc import Banc
+def deplierNiveaux(p):
+    p.evaluate("() => { document.querySelectorAll('.niveau-l15c[data-ouvert=\"0\"] h3').forEach(function(h){ h.click() }) }"); p.wait_for_timeout(300)   # [L15c-c] les niveaux sont repliés par défaut
+
 F=os.environ.get('FICHIER','../live_663.html'); D3='dictee_brevet_blanc_3e-3e_charles_de_gaulle'; CAP=os.environ.get('CAPTURES','')
 db=copy.deepcopy(L.BASE); cl=db['correction_dictee'][D3]['config']['classe']; db['classes'][cl]['eleves']=list(db['classes'][cl]['eleves'])+['ZZTEST Whiskey']
 R={}
 b=Banc(F,1400,900); p=b.ouvrir('?mode=prof',db=db); p.wait_for_timeout(1000); dlg=[]; p.on('dialog',lambda d:(dlg.append(d.message[:90]),d.dismiss()))
-p.evaluate('''()=>{const el=[...document.querySelectorAll('div')].filter(x=>x.children.length<12&&x.textContent.includes('brevet blanc 3E')&&x.textContent.includes('Ouvrir'));const c=el[el.length-1];[...c.querySelectorAll('button,a,span')].find(x=>x.textContent.trim().startsWith('Ouvrir')).click()}'''); p.wait_for_timeout(2500)
+deplierNiveaux(p); p.evaluate('''()=>{const el=[...document.querySelectorAll('div')].filter(x=>x.children.length<12&&x.textContent.includes('brevet blanc 3E')&&x.textContent.includes('Ouvrir'));const c=el[el.length-1];[...c.querySelectorAll('button,a,span')].find(x=>x.textContent.trim().startsWith('Ouvrir')).click()}'''); p.wait_for_timeout(2500)
 p.locator('.eleve-card',has_text='Z. Whiskey').first.click(); p.wait_for_timeout(1000)
 def hub(): r=b.lire(p,'correction_dictee/%s/results/zztest_whiskey'%D3) or {}; return [(e['idx'],e['type'],e.get('fautif')) for e in (r.get('errors') or []) if e]
 def popup(): return p.evaluate("()=>{const e=document.querySelector('.popup-word');return e?e.textContent:null}")

@@ -1,0 +1,3 @@
+{"pre_point": "· Ponct. manqu. (M)", "entree_sur_point": [true, true, []], "entree_sur_virgule": [true, []], "m_sur_point": [[33, "P"]], "entree_sur_mot": [true, true], "aide": {"entree_correct": true, "valide_bouton": false}, "libelle_pre": "· Ponct. manqu. (M)"}
+fenêtres : []
+BANC L6b PAR LE GESTE : VERT

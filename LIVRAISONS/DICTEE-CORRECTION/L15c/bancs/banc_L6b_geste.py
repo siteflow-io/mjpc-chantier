@@ -3,11 +3,14 @@ Par le geste, faux hub du kit, ZZTEST. (dette n°12 · 98 : L3 faisait marquer P
 import sys, copy, os, json; sys.argv=['x','a','b']; sys.path.insert(0,'.')
 import banc_L1 as L
 from banc import Banc
+def deplierNiveaux(p):
+    p.evaluate("() => { document.querySelectorAll('.niveau-l15c[data-ouvert=\"0\"] h3').forEach(function(h){ h.click() }) }"); p.wait_for_timeout(300)   # [L15c-c] les niveaux sont repliés par défaut
+
 F=os.environ.get('FICHIER','../live_L6b.html'); D3='dictee_brevet_blanc_3e-3e_charles_de_gaulle'; CAP=os.environ.get('CAPTURES','')
 db=copy.deepcopy(L.BASE); cl=db['correction_dictee'][D3]['config']['classe']; db['classes'][cl]['eleves']=list(db['classes'][cl]['eleves'])+['ZZTEST Papa']
 R={}
 b=Banc(F,1400,900); p=b.ouvrir('?mode=prof',db=db); p.wait_for_timeout(1000); dlg=[]; p.on('dialog',lambda d:(dlg.append(d.message[:90]),d.dismiss()))
-p.evaluate('''()=>{const el=[...document.querySelectorAll('div')].filter(x=>x.children.length<12&&x.textContent.includes('brevet blanc 3E')&&x.textContent.includes('Ouvrir'));const c=el[el.length-1];[...c.querySelectorAll('button,a,span')].find(x=>x.textContent.trim().startsWith('Ouvrir')).click()}'''); p.wait_for_timeout(1400)
+deplierNiveaux(p); p.evaluate('''()=>{const el=[...document.querySelectorAll('div')].filter(x=>x.children.length<12&&x.textContent.includes('brevet blanc 3E')&&x.textContent.includes('Ouvrir'));const c=el[el.length-1];[...c.querySelectorAll('button,a,span')].find(x=>x.textContent.trim().startsWith('Ouvrir')).click()}'''); p.wait_for_timeout(1400)
 p.locator('.eleve-card',has_text='Z. Papa').first.click(); p.wait_for_timeout(900)
 def hub(): r=b.lire(p,'correction_dictee/%s/results/zztest_papa'%D3) or {}; return [(e['idx'],e['type']) for e in (r.get('errors') or []) if e]
 def mot(): return p.evaluate("()=>{const e=document.querySelector('.fast-word');return e?e.childNodes[0].textContent.trim():null}")

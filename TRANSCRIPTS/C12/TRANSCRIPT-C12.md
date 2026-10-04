@@ -13481,5 +13481,12 @@ Promotion 6.7.0-L15d-b (commit 8c2cd6463d24, bit à bit) ; protocole : dettes 11
 
 Réponse mot pour mot :
 
+Promu : `correction_dictee.html` **6.7.0-L15d-b**, commit `8c2cd6463d24`, **bit à bit** (848 699 o, md5 `dfde1522…`) ; registre n°12 · **110, 115 ✔** ; journal, point de retour (L15c-d), où-trouver-quoi à jour. Une faute déclarée, la même que le 03/10 : j'avais écrit dans le journal et le point de retour un md5 complété de tête ; corrigé par la mesure dans le même tour — désormais le md5 des docs est injecté depuis la mesure, jamais tapé.
+
+**Tes tests** : https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?v=6.7.0 → 1) bac à sable → « Tout effacer » puis « Créer » : un élève de test entre avec le code affiché ; 2) DURAND Alice (6947) entre dans une dictée de test ; **refais un code à martin_lucas dans MJPC** ; 3) l'onglet Copies des Dylan : Brut, Barré, Placeholder cliquables ; 4) l'onglet Rapide sans ⇧R : Entrée reste sur le même élève.
+
+Puis « continuer » à l'exécutante pour **L15e** (l'import depuis n'importe quel PDF) — **donne-lui tes deux PDF** (`Dictée_classique.pdf`, `Dictée_adaptée.pdf`), ils sont son premier banc.
+
+04/10/2026 14:24 MEMO
 
 ---

@@ -1,0 +1,2 @@
+{"replies_par_defaut": [["3e", "0", 0, "▸3e1 dictée"], ["4e", "0", 0, "▸4e2 dictées"], ["5e", "0", 0, "▸5e3 dictées"], ["6e", "0", 0, "▸6evide pour l’instant"]], "apres_clic_4e": [["3e", "0", 0], ["4e", "1", 2], ["5e", "0", 0], ["6e", "0", 0]], "second_clic_replie": "0"}
+BANC L15c-c : VERT | erreurs : []

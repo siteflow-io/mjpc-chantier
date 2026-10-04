@@ -4,6 +4,9 @@ acceptée), l'autre texte (« acceptée dans « … » » + « accepter ici »),
 import sys, copy, os, json, time, re; sys.argv=['x','a','b']; sys.path.insert(0,'.')
 import banc_L1 as L
 from banc import Banc
+def deplierNiveaux(p):
+    p.evaluate("() => { document.querySelectorAll('.niveau-l15c[data-ouvert=\"0\"] h3').forEach(function(h){ h.click() }) }"); p.wait_for_timeout(300)   # [L15c-c] les niveaux sont repliés par défaut
+
 F=os.environ.get('FICHIER','../live_663.html'); D3='dictee_brevet_blanc_3e-3e_charles_de_gaulle'; CAP=os.environ.get('CAPTURES','')
 J='dictee_zz_jumelle'; A='dictee_zz_autre'; IDX=32
 db=copy.deepcopy(L.BASE); cfg3=db['correction_dictee'][D3]['config']; cl=cfg3['classe']

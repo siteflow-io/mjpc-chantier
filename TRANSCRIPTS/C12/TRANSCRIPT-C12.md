@@ -13389,3 +13389,29 @@ Mesuré dans le code (`supprimerDicteeAvecCorbeille`) — le 🗑️ d'une dict�
 04/10/2026 08:25 MEMO
 
 ---
+
+## TOUR 443 — Paul
+
+Texte de Paul, mot pour mot :
+
+> il y a un petit bug: quand je clique sur mode correction rapide, sans passer par maj R, et que je fais entrée, ça passe toutes les dictées en restant sur le premier mot à cahque fois et ça enregistre du coup, forcément, chaque dictée.
+
+---
+
+## TOUR 443 — Claude (conscience n°12)
+
+Mesuré : l'onglet Rapide choisissait « le premier non corrigé » à chaque rendu → saut après chaque enregistrement. Micro L15c-d : l'élève posé une fois (setCur). Banc : Entrée ×5 → même élève, mot 6, 1 copie (avant 5). Promu bit à bit (commit b251092f8ed3) ; dette 128 ✔, journal, point de retour. Faute déclarée : promu avant les verts L2/L6/L15-0b (rouges à cause des dépliants) ; 21 bancs accordés, verts, déposés ; complément à jour.
+
+Réponse mot pour mot :
+
+Mesuré et réglé en micro, promu : **6.7.0-L15c-d**.
+
+428. **La cause** : l'onglet « ⚡ Rapide » ouvert sans copie (sans ⇧R) choisissait « le premier élève non corrigé » **à chaque rendu** ; dès ton premier geste, sa copie était enregistrée, il n'était plus « non corrigé », l'écran passait au suivant — et ainsi de suite à chaque Entrée, une copie par geste. Un défaut de L2.
+429. **La correction** : l'élève choisi est **posé une fois** à l'ouverture de l'onglet, et l'écran reste sur lui jusqu'à ce que tu changes d'élève. Banc par le geste : trois élèves non corrigés, l'onglet Rapide, Entrée ×5 → **le même élève, mot 6, une seule copie enregistrée** (avant : mot 2, **cinq copies** créées). Commit `b251092f8ed3`, **bit à bit** (847 984 o, md5 `0ddd51e0…`) ; registre (**128 ✔**), journal, point de retour. Captures avant / après ci-dessus.
+430. **Une faute de rigueur, déclarée** : j'ai promu avant d'avoir le vert des bancs L2, L6 et L15-0b — ils étaient rouges non à cause de ce micro mais des **dépliants** (ton micro précédent : les lignes de l'accueil sont repliées, les anciens bancs ne trouvaient plus « Ouvrir »). Je les ai accordés (**21 bancs**, un dépliage avant de chercher la dictée), rejoués : L1, L2, L6, L14, L15-0b, L15b **verts** sur L15c-d ; ils sont au sas (`L15c/bancs/`), et le complément dit à l'exécutante de les reprendre de là. La prochaine fois, les verts avant le promeus, comme pour les livraisons.
+
+**Tes tests** : https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?v=6.7.0 → une dictée avec des copies non corrigées → onglet ⚡ Rapide (sans ⇧R) → Entrée, Entrée… : tu restes sur le même élève, le mot avance ; une seule copie bouge. Dis à l'exécutante : **« La base est passée en 6.7.0-L15c-d ; tous les bancs sont accordés aux dépliants dans L15c/bancs/ : reprends-les de là. »**
+
+04/10/2026 08:40 MEMO
+
+---

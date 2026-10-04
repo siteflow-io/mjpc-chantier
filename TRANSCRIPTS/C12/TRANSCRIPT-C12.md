@@ -13605,3 +13605,27 @@ Tes tests, après promotion (https://siteflow-io.github.io/monsieurjaipascompris
 04/10/2026 21:05 MEMO
 
 ---
+
+## TOUR 452 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Promeus
+
+---
+
+## TOUR 452 — Claude (conscience n°12)
+
+Promotion 6.7.0-L15e (commit 6b1d539e80b4, bit à bit) ; protocole : dette 108 ✔, journal, point de retour, où-trouver-quoi. Tests donnés ; L16a ensuite.
+
+Réponse mot pour mot :
+
+Promu : `correction_dictee.html` **6.7.0-L15e**, commit `6b1d539e80b4`, **bit à bit** (872 364 o, md5 `1c8de1e3…`) ; registre n°12 · **108 ✔** ; journal, point de retour (L15d-b), où-trouver-quoi à jour (md5 injectés depuis la mesure).
+
+**Tes tests** : https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?v=6.7.0 → 1) accueil → « 📄 Importer depuis un PDF » → dépose `Dictée_adaptée.pdf` puis `Dictée_classique.pdf` : « 12 groupes reconnus », les 12 mots surlignés, la note sur 10 ; 2) clique « couchés » : couchés ✓ / couché / couchée ; 3) choisis la classe, « Enregistrer la dictée » : elle s'ouvre sur Préparation avec sa version aménagée ; 4) un PDF quelconque sans crochets : « rien de reconnu », tu cliques les mots à la main ; 5) le 🗑️ de la dictée d'essai.
+
+Puis « continuer » à l'exécutante pour **L16a** : **« Continuer — la prochaine est L16a (au complément, juste après L15e) : les formes par type, la bascule, Changer →, Suppr, la ligne centrée, sans audio ; sa maquette est T420 dans TRANSCRIPTS/C12/pieces/. »**
+
+04/10/2026 22:06 MEMO
+
+---

@@ -13184,6 +13184,32 @@ Audit de **L13b** (« l'heure se ferme seule à fin + 10 minutes ; la session ap
 
 Tes tests, après promotion (https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?v=6.7.0) : 1) bac à sable : lance une heure qui finit dans 2 minutes, ne clôture pas ; à la fin + 5, l'élève rouvre : pas de bandeau ; à fin + 11 : « Tu es hors classe : tu as 45 minutes. Il te reste 44 min. » ; 2) l'accueil et le Suivi : « heure fermée seule à … (non clôturée) » ; 3) une seconde dictée lancée pendant ce temps : rien ne se mélange. Puis « continuer » pour **L15b** (la dictée et l'onglet tenus au F5).
 
-03/10/2026 23:05 MEMO
+03/10/2026 23:00 MEMO
+
+---
+
+## TOUR 435 — Paul
+
+Texte de Paul, mot pour mot :
+
+> tu as une erreur à retrouver, ça te prendra normalement une minute: c'est pourquoi tu es capable de garder tous tes points. Promeus.
+
+---
+
+## TOUR 435 — Claude (conscience n°12)
+
+Promotion 6.7.0-L13b (commit 8c730c8fa43d, bit à bit) ; protocole : journal, point de retour, où-trouver-quoi. L'erreur trouvée : l'horodatage du tour 434 différait entre la conversation (23:00) et le transcript (23:05) — corrigé.
+
+Réponse mot pour mot :
+
+Promu : `correction_dictee.html` **6.7.0-L13b**, commit `8c730c8fa43d`, **bit à bit** (837 270 o, md5 `1f1593e4…`) ; journal, point de retour (L15a), où-trouver-quoi à jour.
+
+414. **L'erreur, trouvée en une minute** : mon audit de L13b portait « 23:00 MEMO » dans la conversation et **« 23:05 MEMO » dans le transcript** — le transcript n'était plus mot pour mot. Corrigé (le transcript dit 23:00, comme toi tu l'as lu). Si tu en visais une autre, dis-la-moi : je ne la vois pas.
+
+**Tes tests** : https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?v=6.7.0 → 1) bac à sable : une heure qui finit dans 2 minutes, sans clôturer ; à fin + 5, l'élève rouvre : pas de bandeau ; à fin + 11 : « Tu es hors classe : tu as 45 minutes. Il te reste 44 min. » ; 2) l'accueil et le Suivi : « heure fermée seule à … (non clôturée) » ; 3) une seconde dictée lancée pendant ce temps : rien ne se mélange.
+
+Puis « continuer » à l'exécutante pour **L15b** (la dictée et l'onglet tenus au F5).
+
+04/10/2026 06:35 MEMO
 
 ---

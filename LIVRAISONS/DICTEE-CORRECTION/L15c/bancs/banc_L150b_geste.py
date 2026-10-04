@@ -4,6 +4,9 @@ l'on est, dans les deux sens. Faux hub du kit, ZZTEST."""
 import sys, copy, os, json, re; sys.argv=['x','a','b']; sys.path.insert(0,'.')
 import banc_L1 as L
 from banc import Banc
+def deplierNiveaux(p):
+    p.evaluate("() => { document.querySelectorAll('.niveau-l15c[data-ouvert=\"0\"] h3').forEach(function(h){ h.click() }) }"); p.wait_for_timeout(300)   # [L15c-c] les niveaux sont repliés par défaut
+
 F=os.environ.get('FICHIER','../live_663.html'); D3='dictee_brevet_blanc_3e-3e_charles_de_gaulle'; CAP=os.environ.get('CAPTURES','')
 db=copy.deepcopy(L.BASE); d=db['correction_dictee'][D3]; cl=d['config']['classe']
 db['classes'][cl]['eleves']=list(db['classes'][cl]['eleves'])+['ZZTEST Hotel','ZZTEST India','ZZTEST Juliet']
@@ -13,7 +16,7 @@ def cp(): return {'errors':copy.deepcopy(ERR),'extras':[],'note':7.5,'deduction'
 d['results']['zztest_hotel']=cp(); d['results']['zztest_india']=cp(); d.setdefault('amenages',{})['zztest_india']=True   # India : déjà marquée aménagée, sa copie corrigée avant
 R={}
 b=Banc(F,1366,768); p=b.ouvrir('?mode=prof',db=db); p.wait_for_timeout(1000)
-p.evaluate('''()=>{const el=[...document.querySelectorAll('div')].filter(x=>x.children.length<12&&x.textContent.includes('brevet blanc 3E')&&x.textContent.includes('Ouvrir'));const c=el[el.length-1];[...c.querySelectorAll('button,a,span')].find(x=>x.textContent.trim().startsWith('Ouvrir')).click()}'''); p.wait_for_timeout(4500)
+deplierNiveaux(p); p.evaluate('''()=>{const el=[...document.querySelectorAll('div')].filter(x=>x.children.length<12&&x.textContent.includes('brevet blanc 3E')&&x.textContent.includes('Ouvrir'));const c=el[el.length-1];[...c.querySelectorAll('button,a,span')].find(x=>x.textContent.trim().startsWith('Ouvrir')).click()}'''); p.wait_for_timeout(4500)
 def copie(k): return b.lire(p,'correction_dictee/%s/results/%s'%(D3,k)) or {}
 def resume(c): return (c.get('amenagee'),c.get('base'),c.get('note'),[(e['idx'],bool(e.get('sansCout'))) for e in c.get('errors',[]) if e])
 def ligne(): return p.evaluate("()=>{const e=document.getElementById('ligne-amenage');return e?e.innerText:null}")

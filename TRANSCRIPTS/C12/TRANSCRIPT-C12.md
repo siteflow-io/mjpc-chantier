@@ -13579,3 +13579,29 @@ Ta phrase pour elle, au moment où L15e sera promue : **« Continuer — la proc
 04/10/2026 16:45 MEMO
 
 ---
+
+## TOUR 451 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Livré
+
+---
+
+## TOUR 451 — Claude (conscience n°12)
+
+Audit L15e : diff 3/134, 6.7.0-L15e, pdf.js local au banc (copie npm), rien d'écrit avant Enregistrer ; banc L15e VERT 19/19 avec les deux PDF de Paul (12 groupes, bonnes formes, couchés 2e, sur 10, notes, enregistrée) et les PDF de test ; L15a, L15d, L15c, L15b, vue élève verts ; captures. Verdict : ça va (108). Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Audit de **L15e** (« l'import depuis n'importe quel PDF », `LIVRAISONS/DICTEE-CORRECTION/L15e/`), mesuré :
+
+443. **Le fichier** : base = L15d-b promue (`dfde1522…`, vérifiée) → **6.7.0-L15e, 872 364 o (+23 665)**, md5 `1c8de1e3…` ; 3 lignes retirées, 134 ajoutées ; `node --check` 0 erreur. **Vérifié** : le texte est lu dans le navigateur par pdf.js (Mozilla, libre, chargé depuis le même dépôt en ligne que React — rien de payant, rien n'est envoyé) ; les crochets, parenthèses, barres, « sur n points » reconnus ; la consigne, « Nom Prénom », « Douze choix… » écartés du texte ; le gras et le souligné non reconnus (dit honnêtement, conforme E1) ; **aucune écriture au hub avant « Enregistrer la dictée »** (mesuré au banc).
+444. **Les bancs, rejoués par moi, avec tes deux vrais PDF déposés dans le navigateur** : L15e **VERT, 19 vérifications** — **tes PDF : 12 groupes reconnus, les bonnes formes prises dans le classique (entendu, venu, amenés, pouvez, vu, trouvions, passé, couchés — la 2e du crochet —, recouvre, exhume, veut, tombe), le texte propre, « sur 10 », les notes de grammaire en indices (« couchés : participe employé comme adjectif… »), la fenêtre de « couchés » (couchés ✓ / couché / couchée), la dictée enregistrée avec ses 12 mots** ; les PDF de test : 3 groupes, rien d'écrit avant Enregistrer, un mot ordinaire n'a aucune case vide (« signal / signals / signaux »), la dictée créée s'ouvre sur Préparation, un PDF sans crochets → « rien de reconnu → tu choisis les mots à la main », un PDF image → « je n'ai trouvé aucun texte dans ce PDF… », un crochet sur plusieurs mots → la première forme, dite à l'écran ; L15a (avec ses deux règles de plus), L15d, L15c, L15b, vue élève : verts ; son banc unique vert, 0 échec, 31 étapes.
+445. **Verdict : ça va. Tu peux promouvoir L15e** — dette **108**. Captures ci-dessus : tes deux PDF lus ; la fenêtre de « couchés ».
+
+Tes tests, après promotion (https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?v=6.7.0) : 1) accueil → « 📄 Importer depuis un PDF » → dépose `Dictée_adaptée.pdf` puis `Dictée_classique.pdf` : « 12 groupes reconnus », le texte avec les 12 mots surlignés, la note sur 10 ; 2) clique « couchés » : couchés ✓ / couché / couchée ; 3) choisis la classe, « Enregistrer la dictée » : elle s'ouvre sur Préparation avec sa version aménagée ; 4) dépose un PDF quelconque sans crochets : « rien de reconnu », tu cliques les mots à la main ; 5) le 🗑️ de la dictée d'essai pour la retirer. Puis « continuer » pour **L16a** (les formes par type, la bascule, Changer →, Suppr, la ligne centrée).
+
+04/10/2026 21:05 MEMO
+
+---

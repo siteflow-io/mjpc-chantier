@@ -3,6 +3,9 @@ Par le geste, faux hub du kit, ZZTEST."""
 import sys, copy, os, json, time; sys.argv=['x','a','b']; sys.path.insert(0,'.')
 import banc_L1 as L
 from banc import Banc
+def deplierNiveaux(p):
+    p.evaluate("() => { document.querySelectorAll('.niveau-l15c[data-ouvert=\"0\"] h3').forEach(function(h){ h.click() }) }"); p.wait_for_timeout(300)   # [L15c-c] les niveaux sont repliés par défaut
+
 F=os.environ.get('FICHIER','../live_663.html'); D3='dictee_brevet_blanc_3e-3e_charles_de_gaulle'; CAP=os.environ.get('CAPTURES','')
 NOW=int(time.time()*1000); M=60000
 db=copy.deepcopy(L.BASE); d=db['correction_dictee'][D3]; cl=d['config']['classe']; db['classes'][cl]['eleves']=list(db['classes'][cl]['eleves'])+['ZZTEST Zulu','ZZTEST Yankee']
@@ -29,7 +32,7 @@ d2['correction_dictee'][D3]['autocorrection']={'zztest_zulu':{'attestation':{'t'
 b=Banc(F,1366,768); p=b.ouvrir('?mode=prof',db=d2); p.wait_for_timeout(1500)
 R['accueil']=p.evaluate("()=>[...document.querySelectorAll('.heure-fermee-seule')].map(e=>e.closest('[style*=\"flex: 1\"]')?e.closest('[style*=\"flex: 1\"]').innerText.split('\\n')[0]+' | '+e.innerText:e.innerText)")
 if CAP: p.screenshot(path=CAP+'/L13b-accueil.png')
-p.evaluate('''()=>{const el=[...document.querySelectorAll('div')].filter(x=>x.children.length<12&&x.textContent.includes('brevet blanc 3E')&&x.textContent.includes('Ouvrir'));const c=el[el.length-1];[...c.querySelectorAll('button,a,span')].find(x=>x.textContent.trim().startsWith('Ouvrir')).click()}'''); p.wait_for_timeout(2500)
+deplierNiveaux(p); p.evaluate('''()=>{const el=[...document.querySelectorAll('div')].filter(x=>x.children.length<12&&x.textContent.includes('brevet blanc 3E')&&x.textContent.includes('Ouvrir'));const c=el[el.length-1];[...c.querySelectorAll('button,a,span')].find(x=>x.textContent.trim().startsWith('Ouvrir')).click()}'''); p.wait_for_timeout(2500)
 p.get_by_role('button',name='Données',exact=True).first.click(); p.wait_for_timeout(600); p.locator('button:has-text("Suivi")').first.click(); p.wait_for_timeout(1500)
 R['suivi']=p.evaluate("()=>{const e=document.getElementById('heure-fermee-seule');return e?e.innerText:null}")
 R['pas_de_popup_depassee']=p.evaluate("()=>!document.body.innerText.includes('Fin de l’heure —')&&!document.body.innerText.includes('L’heure est dépassée')")

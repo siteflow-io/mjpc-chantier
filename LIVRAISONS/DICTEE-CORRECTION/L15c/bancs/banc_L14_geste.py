@@ -3,6 +3,9 @@ un trou retiré → recalcul ; l'élève : la phrase de Paul, rien dans le corps
 import sys, copy, os, json, time, re, difflib; sys.argv=['x','a','b']; sys.path.insert(0,'.')
 import banc_L1 as L
 from banc import Banc
+def deplierNiveaux(p):
+    p.evaluate("() => { document.querySelectorAll('.niveau-l15c[data-ouvert=\"0\"] h3').forEach(function(h){ h.click() }) }"); p.wait_for_timeout(300)   # [L15c-c] les niveaux sont repliés par défaut
+
 F=os.environ.get('FICHIER','../live_663.html'); D3='dictee_brevet_blanc_3e-3e_charles_de_gaulle'; CAP=os.environ.get('CAPTURES','')
 PHRASE='J’ai corrigé toute ta copie : tu dois faire l’autocorrection complète, mais la note ne compte que pour les mots que tu avais à compléter le jour de la dictée.'
 db=copy.deepcopy(L.BASE); d=db['correction_dictee'][D3]; cl=d['config']['classe']
@@ -22,7 +25,7 @@ p0.evaluate('''()=>{const el=[...document.querySelectorAll('div')].filter(x=>x.c
 ref=b0.lire(p0,'correction_dictee/%s/results'%D3) or {}; b0.fermer()
 b=Banc(F,1366,768); p=b.ouvrir('?mode=prof',db=db); p.wait_for_timeout(1000)
 avant=b.lire(p,'correction_dictee/%s/results'%D3) or {}
-p.evaluate('''()=>{const el=[...document.querySelectorAll('div')].filter(x=>x.children.length<12&&x.textContent.includes('brevet blanc 3E')&&x.textContent.includes('Ouvrir'));const c=el[el.length-1];[...c.querySelectorAll('button,a,span')].find(x=>x.textContent.trim().startsWith('Ouvrir')).click()}'''); p.wait_for_timeout(3500)
+deplierNiveaux(p); p.evaluate('''()=>{const el=[...document.querySelectorAll('div')].filter(x=>x.children.length<12&&x.textContent.includes('brevet blanc 3E')&&x.textContent.includes('Ouvrir'));const c=el[el.length-1];[...c.querySelectorAll('button,a,span')].find(x=>x.textContent.trim().startsWith('Ouvrir')).click()}'''); p.wait_for_timeout(3500)
 apres=b.lire(p,'correction_dictee/%s/results'%D3) or {}
 R['ligne']=p.evaluate("()=>{const e=document.getElementById('ligne-amenage');return e?e.innerText:null}")
 v=apres.get('zztest_vieux',{}); R['vieux']=([(e['idx'],bool(e.get('sansCout')),e.get('motifSansCout')) for e in v.get('errors',[])],[bool(x.get('sansCout')) for x in v.get('extras',[])],v.get('note'))

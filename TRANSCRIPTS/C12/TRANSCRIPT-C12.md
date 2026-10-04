@@ -13291,3 +13291,27 @@ Tes tests, après promotion (https://siteflow-io.github.io/monsieurjaipascompris
 04/10/2026 07:55 MEMO
 
 ---
+
+## TOUR 439 — Paul
+
+Texte de Paul, mot pour mot :
+
+> promeus
+
+---
+
+## TOUR 439 — Claude (conscience n°12)
+
+Promotion 6.7.0-L15c (commit f582908fe8d6, bit à bit) ; protocole : dette 109 ✔, journal, point de retour, où-trouver-quoi. Tests donnés ; L15d ensuite.
+
+Réponse mot pour mot :
+
+Promu : `correction_dictee.html` **6.7.0-L15c**, commit `f582908fe8d6`, **bit à bit** (846 361 o, md5 `68191117…`) ; registre n°12 · **109 ✔** ; journal, point de retour (L15b), où-trouver-quoi à jour.
+
+**Tes tests** : https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?v=6.7.0 → 1) l'accueil : 3e (Dylan, Franklin, Charles de Gaulle), 4e (Banksy, Pythagore, Hugo), 5e et 6e « vide pour l'instant » ; les classes lisibles, « créée le », le taux ; 2) sur les Dylan (100 %) : « rendre les copies ▸ » pulse → clic → Données → Copies, le bouton prêt ; 3) décoche « publiée » sur une dictée : « non publiée » aussitôt (recoche) ; 4) « ＋ Nouvelle dictée » déplie le formulaire ; 5) « 🧪 Mode test — Ouvrir ▾ » déplie l'atelier, plus d'« éprouver ».
+
+Puis « continuer » à l'exécutante pour **L15d** (les élèves de test avec leur code MJPC ; les modes Brut / Barré / Placeholder).
+
+04/10/2026 07:55 MEMO
+
+---

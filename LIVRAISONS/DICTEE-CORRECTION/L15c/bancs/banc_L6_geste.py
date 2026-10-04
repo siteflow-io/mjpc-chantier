@@ -3,6 +3,9 @@ Entrée ouvre le premier proposé directement en mode rapide ; absents et copies
 import sys, copy, os, json; sys.argv=['x','a','b']; sys.path.insert(0,'.')
 import banc_L1 as L
 from banc import Banc
+def deplierNiveaux(p):
+    p.evaluate("() => { document.querySelectorAll('.niveau-l15c[data-ouvert=\"0\"] h3').forEach(function(h){ h.click() }) }"); p.wait_for_timeout(300)   # [L15c-c] les niveaux sont repliés par défaut
+
 F=os.environ.get('FICHIER','../live_663.html'); D3='dictee_brevet_blanc_3e-3e_charles_de_gaulle'; CAP=os.environ.get('CAPTURES','')
 db=copy.deepcopy(L.BASE); cl=db['correction_dictee'][D3]['config']['classe']
 db['classes'][cl]['eleves']=list(db['classes'][cl]['eleves'])+['ZZTEST Romeo','ZZTEST Sierra','ZZTEST Tango','ZZTEST Uniform']
@@ -10,7 +13,7 @@ db['correction_dictee'][D3].setdefault('absents',{})['zztest_tango']=True
 db['correction_dictee'][D3]['results']['zztest_uniform']={'errors':[{'idx':0,'type':'G','word':'Marguerite','fautif':'zz'}],'extras':[],'note':9,'deduction':1,'counts':{'G':1},'timestamp':1,'amenagee':False}
 R={}
 b=Banc(F,1400,900); p=b.ouvrir('?mode=prof',db=db); p.wait_for_timeout(1000); dlg=[]; p.on('dialog',lambda d:(dlg.append(d.message[:90]),d.dismiss()))
-p.evaluate('''()=>{const el=[...document.querySelectorAll('div')].filter(x=>x.children.length<12&&x.textContent.includes('brevet blanc 3E')&&x.textContent.includes('Ouvrir'));const c=el[el.length-1];[...c.querySelectorAll('button,a,span')].find(x=>x.textContent.trim().startsWith('Ouvrir')).click()}'''); p.wait_for_timeout(2500)
+deplierNiveaux(p); p.evaluate('''()=>{const el=[...document.querySelectorAll('div')].filter(x=>x.children.length<12&&x.textContent.includes('brevet blanc 3E')&&x.textContent.includes('Ouvrir'));const c=el[el.length-1];[...c.querySelectorAll('button,a,span')].find(x=>x.textContent.trim().startsWith('Ouvrir')).click()}'''); p.wait_for_timeout(2500)
 def hub(k): r=b.lire(p,'correction_dictee/%s/results/%s'%(D3,k)) or {}; return [(e['idx'],e['type']) for e in (r.get('errors') or []) if e]
 def eleve_ecran(): t=p.evaluate("()=>document.body.innerText"); return [n for n in ('ZZTEST Romeo','ZZTEST Sierra','ZZTEST Tango','ZZTEST Uniform') if n in t.split('Copie suivante')[0]]
 p.locator('.eleve-card',has_text='Z. Romeo').first.click(); p.wait_for_timeout(900)

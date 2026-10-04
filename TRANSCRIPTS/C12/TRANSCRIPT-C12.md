@@ -13514,3 +13514,25 @@ Ta phrase pour elle, quand tu as collé les PDF : **« Voici les deux PDF ; L15e
 04/10/2026 14:50 MEMO
 
 ---
+
+## TOUR 448 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Mets les au sas
+
+---
+
+## TOUR 448 — Claude (conscience n°12)
+
+Les deux PDF déposés au sas (`MANDATS/pdf/Dictee_classique.pdf`, `MANDATS/pdf/Dictee_adaptee.pdf`), bit à bit ; complément L15e mis à jour (chemins, règle crochet multi-mots).
+
+Réponse mot pour mot :
+
+Déposés au sas, **bit à bit** : `MANDATS/pdf/Dictee_classique.pdf` (63 544 o) et `MANDATS/pdf/Dictee_adaptee.pdf` (81 306 o) ; le complément L15e les nomme comme premier banc, avec la règle du crochet à plusieurs mots.
+
+Ta phrase pour elle : **« Les deux PDF sont au sas, `MANDATS/pdf/` ; L15e validée par la conscience, avec une règle de plus (au complément) : un crochet qui couvre plusieurs mots prend la première forme et le dit à l'écran ; réponse 334 : [A ou B]. Passe-les au banc, dépose. »** — il te reste à mettre A ou B (440).
+
+04/10/2026 14:55 MEMO
+
+---

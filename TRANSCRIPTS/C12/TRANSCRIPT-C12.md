@@ -13341,3 +13341,25 @@ Fait en micro, promu : **6.7.0-L15c-b** — l'accueil passe à **1100 px** (comm
 04/10/2026 08:10 MEMO
 
 ---
+
+## TOUR 441 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok c'est bon, et je veux un dépliant pour chaque niveau, et chaque niveau replié par défaut
+
+---
+
+## TOUR 441 — Claude (conscience n°12)
+
+Micro L15c-c : niveaux en dépliants repliés par défaut (titre + compte, ▸/▾, clavier) ; bascule fonctionnelle ; banc L15c-c VERT ; bancs L15c, L15b, L15c-b accordés (deplierNiveaux) verts ; promu bit à bit (commit 7a74e8c1bea3, 847 544 o) ; journal, point de retour ; complément à jour, bancs déposés.
+
+Réponse mot pour mot :
+
+Fait en micro, promu : **6.7.0-L15c-c** — chaque niveau est **un dépliant, replié par défaut** : « ▸ 3e · 1 dictée », « ▸ 4e · 2 dictées », « ▸ 6e · vide pour l'instant » ; un clic (ou Entrée) déplie, un second replie ; au rechargement, tout est replié. Banc par le geste : repliés à l'ouverture, le compte dans le titre, le clic sur 4e déplie 4e seulement, le second clic replie ; **L15c, L15b et L15c-b accordés** (ils déplient avant de lire) : verts ; commit `7a74e8c1bea3`, **bit à bit** (847 544 o, md5 `de07a02a…`) ; journal, point de retour ; le complément L15 pointe cette base et ses bancs accordés sont au sas. Captures ci-dessus : replié ; 4e déplié.
+
+**Ton test** : https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?v=6.7.0 → l'accueil : quatre lignes 3e / 4e / 5e / 6e avec leur compte ; clique « 3e » : les Dylan, les Franklin, Charles de Gaulle ; re-clique : replié. Dis à l'exécutante : **« La base est passée en 6.7.0-L15c-c (accueil : niveaux en dépliants) ; les bancs L15c et L15b accordés sont dans L15c/bancs/ : reprends-les. »**
+
+04/10/2026 08:20 MEMO
+
+---

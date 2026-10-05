@@ -14525,3 +14525,31 @@ Tests, après promotion (https://siteflow-io.github.io/monsieurjaipascompris/cor
 05/10/2026 17:05 MEMO
 
 ---
+
+## TOUR 489 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok promeus. par ailleurs, des remarques sur cet écran: le mode, je ne sais toujours pas ce qu'est A B C. par ailleurs, quand je change de mode, les mots n'en changent pas. enfin, le menu des mots est très succinct, et par exemple la catégorie du mot n'est pas modifiable (tout en L). enfin, je ne sais pas ce que veut dire la notif en jaune (Mode A : 18 mots à compléter suivent ce mode (6 recalculés). par ailleurs, dans l'ancienne version de correction dictée j'avais un audit succinct mais plutot pas mal des pièges à éviter dans la dictée. ça me permettait de construire un vrai document de séance de préparation à la dictée, en cas de dictée préparée, ou une fiche de révisions pour une dictée type brevet. Il faut qu'on cadre cette fonctionnalité. ça devient un chantier dont le cadrage est à faire à la suite de ce qu'il reste à coder pour la dictée.
+
+(capture : Préparation, la fenêtre « est — mot à compléter n°1 », Mode B, le message jaune)
+
+---
+
+## TOUR 489 — Claude (conscience n°12)
+
+Promotion 6.7.0-L15h (bit à bit, protocole). Mesures : (b) mode par défaut vs mode propre, rien de visible ; (c) type L figé, pas dans la fenêtre. Micro L15h-b promu (libellés dans la fenêtre, message dans les mots de Paul ; 137, 140 ✔). Dettes 138, 139 → L15j (badges de mode, type dans la fenêtre) ; 141 chantier audit des pièges (GRAMM.analyseTexte existe) à cadrer après la dictée. Complément à jour.
+
+Réponse mot pour mot :
+
+525. **Promu : 6.7.0-L15h** (commit `aa159eefba33`, bit à bit, 903 274 o) — le type C ; registre 126 en partie, journal, point de retour, où-trouver-quoi. **Il te reste à rayer le rapport** : https://github.com/siteflow-io/mjpc-chantier/blob/main/LIVRAISONS/DICTEE-CORRECTION/L15h/RAPPORT-A-BLANC-L15h1.md — tu dis « ok » (avec tes ratures et tes deux tranchages : « ce-là », « mémé », et la phrase 523) → L15h-2.
+526. **Tes remarques sur Préparation — mesurées, et deux réglées en micro tout de suite (6.7.0-L15h-b, commit `2e3998e06baf`, bit à bit, 903 883 o)** : **(a)** les libellés A / B / C dans la fenêtre d'un mot : c'était ma faute (le micro de ce matin n'avait corrigé que l'import) — réglé (137 ✔) : « par défaut — A : 3 propositions à cocher », « B — Trou simple (l'élève écrit) », « C — Trou + indice grammatical » ; **(d)** le message : réglé (140 ✔), il dit maintenant « Mode par défaut : A (3 propositions à cocher). 18 mots à compléter le suivent ; 2 gardent le mode choisi dans leur fenêtre ; 6 propositions refaites pour le nouveau mode ; la consigne suit. »
+527. **(b) « quand je change de mode, les mots n'en changent pas »** — mesuré : le mode par défaut ne touche que **les mots sans mode propre** ; un mot dont la fenêtre dit « B » (comme « est » sur ta capture) **le garde** — c'est voulu (L15a), **mais rien ne le montre dans le texte** : tous les mots sont surlignés pareil. Règle écrite au complément pour L15j (138) : **chaque mot surligné porte son mode en petit (A / B / C)**, grisé s'il suit le défaut, plein s'il a le sien ; changer le défaut change les badges de ceux qui le suivent.
+528. **(c) le menu d'un mot : le type n'est pas modifiable, tout est en L** — mesuré : l'import écrit `L` sur chaque mot à compléter, et la fenêtre (propositions, autres formes, mode, retirer) n'a pas le type. Règle (139, L15j) : **un sélecteur « Si l'élève se trompe, l'erreur compte en : G / L / C »** dans la fenêtre, lu par la correction aménagée et les formes ; l'import proposera G quand la note de grammaire du PDF nomme le mot.
+529. **L'audit des pièges** : inscrit comme **chantier à cadrer après la dictée** (dette 141, au complément). Mesuré : la fonction d'analyse du texte (`GRAMM.analyseTexte` — homophones, terminaisons, accords, doubles consonnes, mot par mot) **existe encore dans l'app, sans écran**. Le cadrage portera sur : ce que montre l'audit (les pièges classés par catégorie d'écart de L15.1 et par notion), les deux documents dans tes mots (séance de préparation pour une préparée ; fiche de révisions pour un brevet), leur place et leur export, la capitalisation entre dictées, le lien avec la banque d'exercices. Ordre : après L15.1, L15i, L15j — avec des visuels validés avant tout mandat.
+
+Tests : https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?v=6.7.0 → Préparation d'une dictée aménagée → clique un mot : le sélecteur avec les libellés ; change le mode par défaut : le message en clair.
+
+05/10/2026 16:40 MEMO
+
+---

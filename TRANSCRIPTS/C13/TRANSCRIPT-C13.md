@@ -514,3 +514,39 @@ Tests pour toi : aucun. Ton geste : « continuer », pour chaque zone.
 
 05/10/2026 20:03 (heure de mon espace de travail, non vérifiée)
 MEMO
+
+---
+
+## TOUR 13 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Ok en revanche ça ne doit pas prendre 50 tours non plus
+
+---
+
+## TOUR 13 — Claude (conscience n°13)
+
+Relevé de structure de 643 fonctions (`_dr` 58, `at`/`atelier` 254, `ed` 83, `ch` 30, `fiches` 18, `ses` 47, `edt` 230 : nom, taille, premier commentaire, chemins du hub) ; vérifié dans le code : la trame vit à `site/<niveau>/chapitres/<n>/seances/<sk>/deroule.json` (`_drTrameDe`, `_drEcrireTrame`), « Lancer » (`edtLancer`) prend le premier chapitre publié du même fil et la première séance non jouée ; `sesTabMonter` et `sesTelChercherCours` montent le moteur ; `sesQROuvrir` existe. Carte complétée (Z2, Z4 à Z7) ; index des fonctions en pièce.
+
+Réponse mot pour mot :
+
+Compris : pas 50 tours. J'ai fait cinq zones d'un coup. Il en reste deux, puis la confrontation : **deux tours encore**.
+
+57. **Fait ce tour-ci** : le pont du déroulé, l'éditeur et l'atelier, l'emploi du temps et le calendrier, le tableau distant et le téléphone, et les chemins du hub. Pour 600 fonctions, j'ai relevé ce que chacune fait, sa taille et ce qu'elle lit ou écrit au hub. Tout est versé dans la carte : https://github.com/siteflow-io/mjpc-chantier/blob/main/TRANSCRIPTS/C13/pieces/CARTE-EXISTANT-DEROULE.md, avec l'index complet à côté. C'est une lecture **de structure**. La lecture ligne à ligne reste réservée aux endroits que le mandat touche, comme je l'ai fait pour les schémas.
+58. **Ce que ça m'apprend, et qui compte pour la suite** :
+    - le tableau distant et le téléphone montent le même moteur que ton ordinateur. Tout dessin de schéma devra donc tenir sur ces trois écrans ;
+    - « Lancer », depuis l'emploi du temps, prend le premier chapitre publié pour la classe et la première séance pas encore jouée, puis attend que le bandeau du déroulé soit prêt. Tout nouveau pilotage devra tenir ce contrat ;
+    - la trame d'une séance vit dans la séance elle-même, et chaque classe en reçoit une copie datée au premier lancement. C'est exactement la règle « la classe garde sa copie » du mandat ;
+    - **le QR pour raccorder un appareil existe déjà** dans le site. Le point « QR code » laissé ouvert au cadrage 1 §14 se ferme donc sur l'existant ;
+    - la fiche de préparation de la dictée, au format de l'éditeur, deviendra une feuille du chapitre : elle se liera à une séance comme toute feuille.
+59. **Pour le mandat p8 (la maquette)** : rien de ce que j'ai lu ne le contredit.
+60. **Reste** :
+    - Z1 : jouer le vrai parcours dans le navigateur, sur un faux hub, de l'emploi du temps jusqu'à la relecture, avec captures ;
+    - Z3 : le moteur au-delà des schémas (rendu des blocs, participation, récit, dévoilement) ;
+    - Z8 : la confrontation, c'est-à-dire « le mandat tient » ou « voici ce qui change ». Puis le dépôt.
+
+Tests pour toi : aucun. Ton geste : « continuer ».
+
+05/10/2026 22:06 (heure de mon espace de travail, non vérifiée)
+MEMO

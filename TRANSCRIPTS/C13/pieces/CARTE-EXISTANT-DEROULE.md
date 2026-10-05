@@ -33,14 +33,14 @@
   - `_purge` · 8 · 8 Ko
 
 ## Les zones à lire et à jouer, dans l'ordre
-- **Z1 · le parcours réel, joué** sur le faux hub (`PONT/EDT/tests/hub/`) : l'emploi du temps → « Éditer dans l'atelier » / « Préparer » → le déroulé → « Lancer » → le tableau → la fin d'heure → la relecture ; captures d'écran entier. — pas fait
+- **Z1 · le parcours réel, joué** sur le faux hub (`PONT/EDT/tests/hub/`) — joué au tour 14 : panneau prof → atelier → chapitres → « Modifier » → onglet Déroulé (préparation) → séance « Étude de texte accompagnée » → l'écran de la carte ; **pas joué** : « Lancer » depuis l'emploi du temps, la classe en direct, la relecture (p8 n'y touche pas ; le mandat de production devra les jouer).
 - **Z2 · le pont et le cadre** (`_dr*`, le script `pont-fusion`) : onglets, sommaire, régimes, temps, T-5, reprise, vécu. — lu en structure (tour 13), ci-dessous
-- **Z3 · le moteur** (157 fonctions) : rendu des blocs, schémas, participation, récit, dévoilement, gel. — lu : les schémas seulement (tours 10-11)
+- **Z3 · le moteur** (157 fonctions) : rendu des blocs, schémas, participation, récit, dévoilement, gel. — schémas lus ligne à ligne (tours 10-11) ; le reste lu en structure (tour 14), ci-dessous
 - **Z4 · l'éditeur de chapitre et l'atelier** (`ed*`, `at*` hors moteur, `ch*`, fiches, feuilles, import « Compléter le chapitre », prompts au hub). — lu en structure (tour 13), ci-dessous
 - **Z5 · l'emploi du temps et le calendrier** (`edt*`). — lu en structure (tour 13), ci-dessous
 - **Z6 · le tableau distant et le cours actif** (`ses*`). — lu en structure (tour 13), ci-dessous
 - **Z7 · le hub et les liens sortants** : les nœuds lus et écrits par Z2 à Z6 ; la dictée (`heure.seanceId`, la fiche de préparation), le profil, la taxonomie, les élèves et le PAP. — relevé des chemins (tour 13), ci-dessous
-- **Z8 · la confrontation** : ce que Z1 à Z7 changent au mandat p8 (version 2) et au futur mandat de production. — pas fait
+- **Z8 · la confrontation** : ce que Z1 à Z7 changent au mandat p8 (version 2) et au futur mandat de production. — fait au tour 14, ci-dessous
 
 ## Ce que chaque zone écrit ici
 Par fonction ou groupe : ce qu'elle fait pour Paul (dans ses mots), sa taille, qui l'appelle, ce qu'elle lit et écrit au hub ; les gestes joués ; **ce que ça implique pour le mandat**.
@@ -67,8 +67,9 @@ Par fonction ou groupe : ce qu'elle fait pour Paul (dans ses mots), sa taille, q
 - **Le lien avec le déroulé** : le chapitre en cours d'une classe (`edtChapitreEnCours`), la file des séances qui attendent (`edtFileDAttente`), la trace d'une heure (`edtChercherTrace`, `edtCheminTrace`), et **« Lancer »** (`edtLancer` → `edtQuandPilotagePret`, qui attend le bandeau du déroulé et ses trois champs).
 
 ## Z6 · Le tableau distant, le téléphone, la session (`ses*`, 47 fonctions, 55 Ko)
-- **Trois écrans** : le pilote (l'ordinateur), le tableau distant (`?vue=tableau`, « un terminal muet : il peint ») et le téléphone (`?vue=tel`, un pilote de poche : prompteur, palette, cran par cran, chrono, +1 de participation).
-- **Le tableau distant et le téléphone montent le moteur dans une iframe cachée** (`sesTabMonter`, `sesTelChercherCours`) : ce qui s'affiche au tableau est le dessin du moteur.
+- **Trois appareils** : le pilote (l'ordinateur), le tableau distant (`?vue=tableau`, « un terminal muet : il peint ») et le téléphone (`?vue=tel`).
+- **Le téléphone est une télécommande**, raccordée par le QR (corrigé au tour 14, sur la remarque de Paul : « non, tout ne doit pas rentrer dans l'écran de téléphone, il sert de télécommande grâce au QR code justement ») : lu dans `sesBootTel` et `sesTelPeindre`, il porte un prompteur (des cartes de texte : le libellé du bloc et ses 220 premiers caractères, les réponses à taper), la palette (◀ replier, ▶ dévoiler, écran précédent / suivant, gel, à écrire, chrono, au tableau, qui a participé, + participation) et la télécommande du zoom du tableau (deux gros boutons, crans 1 à 5). **Il ne dessine pas les schémas.** Il monte le moteur caché pour rejoindre la copie jouée et envoyer les gestes.
+- Le tableau distant monte le moteur dans une iframe cachée (`sesTabMonter`) : ce qui s'affiche au tableau est le dessin du moteur.
 - La scène passe par une **photo** (`sesPhoto`, l'équivalent côté données de l'envoi au tableau) ; le moteur écrit le rang de l'écran dans la part (`sesPartEmettre`) ; la reprise d'un cours en cours sur tout appareil (`sesReprendre`).
 - **Le QR existe** (`sesQROuvrir`, `qrScans`) : raccorder un appareil par QR est déjà dans le site — le point « QR code » du cadrage 1 §14 n'est pas à inventer.
 
@@ -78,5 +79,23 @@ Par fonction ou groupe : ce qu'elle fait pour Paul (dans ses mots), sa taille, q
 
 ## Ce que Z2 à Z7 impliquent déjà (avant Z8)
 - **Pour le mandat p8 (maquette)** : rien ne le contredit. La règle « la classe garde sa copie » (p8-3) est celle de l'existant (`atDrJouer` : copie horodatée au démarrage, une par classe).
-- **Pour le futur mandat de production** : le dessin des schémas doit servir **trois écrans** (pilote, tableau distant, téléphone), qui montent tous le moteur ; le dévoilement « une bulle par ▶ » passera par la photo de scène et la part (`sesPhoto`, `sesPartEmettre`) ; « Lancer » depuis l'emploi du temps attend le bandeau du déroulé et ses trois champs (`edtQuandPilotagePret`) : tout nouveau pilotage doit tenir ce contrat ou le remplacer explicitement.
+- **Pour le futur mandat de production** : le dessin des schémas sert **deux écrans** (le pilote et le tableau distant) ; le téléphone, télécommande, reçoit seulement la carte de texte du schéma et le geste ▶ ; le dévoilement « une bulle par ▶ » passera par la photo de scène et la part (`sesPhoto`, `sesPartEmettre`) ; « Lancer » depuis l'emploi du temps attend le bandeau du déroulé et ses trois champs (`edtQuandPilotagePret`) : tout nouveau pilotage doit tenir ce contrat ou le remplacer explicitement.
 - **Pour les cadrages** : le QR existe (Z6) ; le point « QR code » du cadrage 1 §14 se ferme sur l'existant.
+
+## Z1 · Joué le 05/10 (tour 14) — le déroulé en préparation et la vraie carte
+- Pièces : `T14-Z1-deroule-preparation.png`, `T14-Z1-vraie-carte-existant.png` (1536 × 864).
+- **Le déroulé en préparation** : quatre onglets (Structure · Déroulé · Relecture · Papier) ; à gauche le chapitre, ses documents et ses séances horodatées ; la colonne des écrans ; la scène ; dessous la palette (◀ ▶, Gel, Mettre en lumière, À écrire, G, S, quatre couleurs, Annuler, la réglette 32 pt, le chrono, Départ, Chrono au tableau, Qui a participé, Ouvrir le tableau) ; à droite « Ajouter à cet écran » (+ Consigne, + Fiche, + Question, + Schéma, + Image) ; en tête : la classe, le créneau, le début, « maintenant », le temps utile, « Lancer la séance », « Emploi du temps », l'appoint.
+- **La vraie carte « Les figures de style »** (séance « Étude de texte accompagnée », écran 15/18) : huit familles colorées, vingt-sept notions en bulles, dessinées au milieu de la scène, **notions visiblement minuscules** (la mesure de leur taille au navigateur n'a pas abouti : je ne donne pas de chiffre). Le panneau « SCHÉMA » à droite : la forme (Carte mentale · Frise · Arbre · Cycle · Tableau), **« Un à un / Tout ensemble »** (ici « Tout ensemble »), « Contenu » avec la règle d'écriture sous le champ (« Une famille par ligne, membres après « : », séparés par des virgules »), **« ⌖ Réordonner »** ; « + Schéma » **grisé** : l'écran a déjà son schéma.
+
+## Z3 · Le moteur au-delà des schémas (lu en structure, tour 14)
+- L'écran : `rendre` (8 Ko), `html`, `cls` (les marques), `ouvre` (la fiche, jamais montrée à la classe), `borneRev` (le dévoilement ne dépasse jamais le contenu), `elems` (ce qui se dévoile dans un bloc), `devoile` / `replie`, `gel`, `zoom` (les suites n'existent que par le zoom ; `reabsorbe`, `supprimeSuite`).
+- Le texte trop long : `coupeTexte`, `scinde`, `degorge`, `verifDeborde` — « rien n'est jamais refusé : on coupe » (le moteur coupe seul ; la base saine l'a remplacé par le geste de Paul, cadrage 4 · 0.4).
+- La participation et le récit : `partAjoute`, `partRetire`, `histoire`, `ouvrirPart`, `corrigePart`, `rendRecit`, `recit`, `imparfait`, `citations`, `copierED` (le collage vers École Directe).
+- Le tableau : `tableau` (9 Ko), `cale` (« même loi que le pilotage : 32 pt = 5,6 % de la hauteur »), `envoie` (le point de sortie unique vers le tableau), `allumeTableau` (gel : le tableau ne reçoit rien), `majVignette`.
+- La préparation : `reglages` (le panneau de droite, jamais reconstruit pendant qu'on y écrit), `ajoute`, `menuEcran`, `selVide`, `selSup`, `forme` (glisser les blocs par leur bordure), `blocImg`, `marquePris`, `calibreMarques`, `supMk` (les marques des images).
+
+## Z8 · La confrontation avec le mandat p8 (tour 14)
+- **Le mandat version 2 ne tenait pas** sur trois points, lus ou joués ici : il traitait « Un à un / Tout ensemble » comme un état à abandonner, alors que c'est un réglage de préparation, visible à l'écran ; il ne reprenait pas le panneau du schéma (forme, contenu et sa règle d'écriture, « ⌖ Réordonner ») ; il oubliait qu'on tire un point de frise pour changer sa date. **Corrigé en version 3.**
+- « + Schéma » grisé quand l'écran a déjà son schéma : **c'est déjà l'existant** (la décision 1 le confirme).
+- **Une question à Paul** : l'existant affiche « Tout ensemble » quand rien n'est réglé ; le cadrage 4 §3.2 dit « élément par élément ».
+- Le reste du mandat tient : rien de lu ni de joué ne le contredit.

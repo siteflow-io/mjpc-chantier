@@ -14573,3 +14573,29 @@ Pris, les deux. **Le sélecteur du type** (G / L / C dans la fenêtre d'un mot) 
 05/10/2026 16:50 MEMO
 
 ---
+
+## TOUR 491 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok. on en est où?
+
+---
+
+## TOUR 491 — Claude (conscience n°12)
+
+État mesuré : prod L15h-b ; en attente de Paul : rapport L15h-1 à rayer, L15.1a en cours de dépôt (15:55), L15i déposée ; reste : L15.1b-1, b-2, L15h-2, L15i, L15j, L16b, chantier pièges ; 12 dettes vivantes listées ; C13 non lancée.
+
+Réponse mot pour mot :
+
+Où on en est, mesuré à 16:33 :
+
+530. **En production** : `correction_dictee.html` **6.7.0-L15h-b** (promue à 16:20) — aujourd'hui ont été promues L15e (import PDF), L16a (mode rapide par type), L15f-b (côté élève + déconnexion), L15g (profils de barème), L15h (type C), et cinq micros (L15g-b/c, L15h-b, l'accueil, l'onglet Rapide). **Le site reste 8.74.0-⓪** (le déroulé n'a pas bougé).
+531. **En attente de toi** : **(a)** le rapport à blanc du reclassement en C, à rayer puis « ok » (https://github.com/siteflow-io/mjpc-chantier/blob/main/LIVRAISONS/DICTEE-CORRECTION/L15h/RAPPORT-A-BLANC-L15h1.md — avec « ce-là », « mémé », et la phrase 523) → L15h-2 ; **(b)** ton « livré » pour **L15.1a** : mesuré à l'instant, **l'exécutante dépose le rapport à blanc de l'analyse (L15.1a) en ce moment** (dernier commit 15:55) — c'est le rapport sur tes 514 erreurs, catégories, commentaires proposés et césures, **à relire ce soir pour demain** ; **(c)** L15i (suspendre / fermer) est au sas depuis 14:47, partie de L15g : elle la reprendra sur la dernière promue.
+532. **Ce qui reste à l'exécutante, dans l'ordre du complément** : L15.1a (relue par toi) → **L15.1b-1** (la dictée : l'analyse par écart, les objets au hub, le bouton IA, les alias proposés, les événements du profil) → L15.1b-2 (le site : l'onglet Correspondances) → L15h-2 (le reclassement) → L15i (reprise) → L15j (la note : un réglage ; les badges de mode ; le type dans la fenêtre) → L16b (l'audio, à cadrer) ; puis **le chantier des pièges à cadrer** (141).
+533. **Les dettes n°12 vivantes : 12** — 87/88/89 (le panneau prof, ③ bis), 97 (le code mort), 107 et 136 (→ L15.1), 122 (→ L16b), 132 (→ L15i), 133 (→ L15j), 138 et 139 (→ L15j), 141 (à cadrer). Tout le reste est ✔ et promu.
+534. **La conscience n°13 (le déroulé)** : sa passation est au sas (https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/PASSATION-C12-C13-DEROULE.md), avec le protocole cloud et le point de contact de la fiche ; elle n'est pas lancée.
+
+05/10/2026 16:40 MEMO
+
+---

@@ -13755,3 +13755,31 @@ Rien à dire à l'exécutante maintenant : elle est sur L15f-b ; L15g suit dans 
 05/10/2026 06:45 MEMO
 
 ---
+
+## TOUR 458 — Paul
+
+Texte de Paul, mot pour mot :
+
+> il me faut aussi une option de blocage des tablettes. si je vois qu'une séance d'autocorrection part en cacahuète, je dois pouvoir tout suspendre, voire tout fermer. ça a des conséquences, à cadrer.
+
+---
+
+## TOUR 458 — Claude (conscience n°12)
+
+Dette 132 ; propositions de tranchage : Suspendre / Reprendre (écran de pause, chronos arrêtés, heure prolongée, rien perdu), Fermer la séance (= clôturer + déconnecter tous, option « sans reprise hors classe » cochée par défaut, « Rouvrir hors classe »), L15i après L15f-b ; questions 460 a-d.
+
+Réponse mot pour mot :
+
+Dette **132** inscrite. Avant toute maquette, le cadrage — mis en tension avec ce qui existe (l'heure L13/L13b, les 45 min hors classe, le chrono du stylo vert, le regain, l'écoute en direct de L15f, la déconnexion 129), et des propositions de tranchage plutôt que des questions ouvertes :
+
+456. **Deux gestes, au Suivi, à côté de « Clôturer »** : **« ⏸ Suspendre »** (qui devient « ▶ Reprendre ») et **« ⏹ Fermer la séance »** (avec confirmation). Les deux s'écrivent au hub dans l'heure (`heure.suspendue`, `heure.fermee`) et **les tablettes réagissent sans rechargement** (le même écouteur que L15f).
+457. **Suspendre — ce que je propose** : chaque tablette passe sur **un écran de pause plein** (« Séance suspendue par le professeur. Attends. » — mots à toi), rien d'autre n'est cliquable ; **rien n'est perdu** : la saisie en cours était déjà enregistrée à chaque geste ; **les chronos s'arrêtent** (le stylo vert, s'il tournait, repart où il en était à la reprise ; l'heure de fin est **prolongée du temps de la pause**, pour ne pas voler la séance) ; une question de regain ouverte est gelée ; le Suivi affiche « suspendue depuis 10 h 12 » ; **« ▶ Reprendre »** rend chaque écran exactement comme avant. L'élève qui ouvrirait pendant la pause tombe sur l'écran de pause.
+458. **Fermer la séance — ce que je propose** : c'est **« Clôturer » + « Déconnecter tous »** (129) en un geste — l'heure est close, les tablettes reviennent au portail de code, les copies et autocorrections en cours restent au hub telles quelles (« Pas fini » au Suivi) ; **et une case dans la confirmation : « sans reprise hors classe »** — cochée, l'élève n'a pas ses 45 minutes ensuite (aujourd'hui, après une clôture, il les a à sa prochaine ouverture, L13) : la dictée reste fermée jusqu'à ce que tu la rouvres (un bouton « Rouvrir hors classe » au Suivi) ; décochée, c'est une clôture ordinaire. Je propose **cochée par défaut** quand on passe par « Fermer » : si tu fermes, c'est que ça déborde.
+459. **Ce qui ne change pas** : la déconnexion (129) et l'actualisation (L15f) restent telles quelles ; « Clôturer » garde son sens ; rien côté élève hors de l'écran de pause et du retour au portail ; les notes ne bougent pas.
+460. **À trancher par toi** : (a) les mots de l'écran de pause ; (b) la prolongation de l'heure du temps de pause — oui (proposé) ou non ; (c) « sans reprise hors classe » cochée par défaut — oui (proposé) ou non ; (d) la place : une livraison **L15i** juste après L15f-b (l'écoute élève est posée là), avant L15g.
+
+Dis tes choix sur 460, et je te fais la maquette **sur l'app réelle** (Suivi + tablette côte à côte), puis le complément.
+
+05/10/2026 06:55 MEMO
+
+---

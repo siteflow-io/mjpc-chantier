@@ -14430,3 +14430,26 @@ Pour la n°13 : dis-moi si je prépare la passation « déroulé » (510) et le 
 05/10/2026 16:15 MEMO
 
 ---
+
+## TOUR 485 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok on fait ça. et surtout, si tu me dis que l'exécutant tourne ordi éteint, ça veut aussi dire qu'il peut faire l'ensemble du mandat et qu'un seul audit est nécessaire à la fin?
+
+---
+
+## TOUR 485 — Claude (conscience n°12)
+
+Passation déroulé écrite et déposée (MANDATS/PASSATION-C12-C13-DEROULE.md) après mesure sur pièces (cadrages, T1 n°7 jamais livré, maquette v9c.15 p7 T265, dettes 12-75, restes). Réponse : non, pas un seul audit : trois livraisons max sans « continuer », audit par livraison, promeus par livraison.
+
+Réponse mot pour mot :
+
+514. **Non — « ordinateur éteint » ne veut pas dire « un seul audit à la fin »**, et je l'ai écrit tel quel dans la passation. L'exécutant cloud peut **enchaîner** sans attendre que tu sois là, mais chaque livraison reste **une branche à part, avec son banc unique et ses captures**, et la conscience **audite chaque livraison dans l'ordre**, même en différé ; tu promeus **par livraison, sur captures**. La raison est celle qu'on a payée trois fois sur la dictée (L15-0 → 0b, L15d → d-b, L15f → f-b) : une livraison fausse fait reprendre toutes celles qui partent d'elle — un audit unique à la fin d'un mandat de quinze livraisons, c'est quinze reprises possibles d'un coup. La règle que je propose : **au plus trois livraisons d'affilée sans ton « continuer »**, puis l'audit rattrape, et ça repart.
+515. **La passation « déroulé » est écrite et déposée** : `MANDATS/PASSATION-C12-C13-DEROULE.md` (jointe ci-dessous). Mesuré sur pièces : les six cadrages de septembre au sas (`DEROULE/CADRAGE-1…6`, `-TEMPS`), l'intégration et le mandat T1 de la n°7 (jamais livré — et la décision du 07-08/09 « on refait de zéro »), **la dernière maquette : v9c.15 p7, 29/09, 24 bancs à 0** (`T265-…` dans les pièces de C12), le registre n°12 · 12 à 75. **Ce qui est resté ouvert** : ta question du tour 266 (un seul schéma par diapo, lisible — ma proposition p8 attend ton mot), la séquence de test, **le mandat de production (jamais écrit)**, le préalable « attendus au hub » (la garde Éduscol), les dettes du site vues en cadrant, et le branchement avec la dictée (préparé de mon côté, `seanceId`). Les frontières avec mon couple (fichiers, hub, promotion) et le protocole cloud (branches, GitHub par l'app, Playwright à prouver, trois livraisons max) y sont.
+
+Pour lancer la n°13, colle-lui : **« Tu es la conscience n°13, sur le déroulé. Lis `MANDATS/PASSATION-C12-C13-DEROULE.md` au sas, puis tout ce qu'elle cite, avant de me dire quoi que ce soit. »** (et donne-lui les jetons dans la conversation, comme à moi).
+
+05/10/2026 16:35 MEMO
+
+---

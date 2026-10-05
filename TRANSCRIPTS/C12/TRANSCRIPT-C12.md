@@ -14702,3 +14702,29 @@ Tes tests après promotion de L15.1b-1 (https://siteflow-io.github.io/monsieurja
 05/10/2026 19:05 MEMO
 
 ---
+
+(ajout au tour 495, après mesure au hub : les quatre copies aménagées des Hugo gardent base 10 — 5/10, 5/10, 8/10, 9/10 — alors que la version aménagée est sur 20 ; L15h-2 ne recalcule que la copie touchée par un reclassement (la n° 21 → 15/20) ; les trois autres restent /10 tant que Paul ne ré-enregistre pas la base aménagée dans Préparation (L15g, dette 130 : le recalcul suit un changement). Dit à Paul en 550.)
+
+## TOUR 496 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Promeus
+
+---
+
+## TOUR 496 — Claude (conscience n°12)
+
+Promotion 6.7.0-L15.1b-1 (commit 861f62510d3d, bit à bit) ; protocole : dettes 107/136 ✔, 142, journal, point de retour, où-trouver-quoi. L15h-2 en attente du « oui » (549). Tests ; phrase pour l'exécutante.
+
+Réponse mot pour mot :
+
+Promu : `correction_dictee.html` **6.7.0-L15.1b-1**, commit `861f62510d3d`, **bit à bit** (941 445 o, md5 `178cbb58…`) ; registre n°12 · **107, 136 ✔** (première partie), **142** inscrite (la phrase à recopier) ; journal, point de retour (L15h-b), où-trouver-quoi à jour. **L15h-2 n'est pas promue** : elle attend ton « oui » sur la copie aménagée n° 21 (549) — dis-le et je la promeus dans la foulée.
+
+**Tes tests pour ce soir** : https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?v=6.7.0 → 1) les Dylan → Copies → une copie recopiée : sous chaque erreur, « Tu as écrit « … » : … », et « Mot long — décompose-le en syllabes : … » sur les mots de trois syllabes ; 2) Réglages → « Les commentaires de l'analyse » : réécris un commentaire dans tes mots, quitte le champ ; rouvre la copie : il a changé ; 3) Bilan : « 🔎 Analyse : n erreurs sans commentaire reconnu » ; 4) bac à sable, côté élève : les mêmes commentaires dans l'analyse de ses erreurs ; 5) Préparation des Hugo → ré-enregistre la « Note sur » 20 de la version aménagée → les quatre copies aménagées passent sur 20 (550).
+
+Puis « continuer » à l'exécutante : **« Continuer — L15.1b-1 seconde partie (le bouton IA, les alias, le profil, la phrase à recopier — dette 142 au registre), puis L15i (reprise), L15j. »**
+
+05/10/2026 19:26 MEMO
+
+---

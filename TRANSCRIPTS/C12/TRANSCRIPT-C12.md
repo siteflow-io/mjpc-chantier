@@ -14357,3 +14357,23 @@ Réponse mot pour mot :
 05/10/2026 15:45 MEMO
 
 ---
+
+## TOUR 482 — Paul
+
+Texte de Paul, mot pour mot :
+
+> non, belle c'est une syllabe, SAUF EN POESIE pour un mot de milieu de vers suivi d'un mot commençant par une consonne. attention à ne pas dégommer la taxo sur ce point là. mesure.
+
+---
+
+## TOUR 482 — Claude (conscience n°12)
+
+Mesuré dans la taxonomie : dom-versification / fam-48 « Le vers et le mètre » : vers-001 (décompte des syllabes), vers-006 (le e muet : « Une rose : le e final ne se compte pas devant une consonne »), vers-007 (la césure) ; ortho-lex-012 (écrire le e muet). Complément : la césure de la dictée = langue parlée (belle = 1), versification hors périmètre et protégée (paramètre vers:false), ortho-lex-012 pour l'erreur.
+
+Réponse mot pour mot :
+
+Mesuré dans ta taxonomie : le domaine « Le vers et les sons » (dom-versification), famille 48 « Le vers et le mètre », porte **`vers-001` « Le décompte des syllabes »**, **`vers-006` « Le e muet »** (exemple : « Une rose : le e final ne se compte pas devant une consonne ») et **`vers-007` « La césure »** — ta règle de poésie y est déjà, telle quelle ; et l'erreur de dictée sur un -e final relève, elle, de **`ortho-lex-012` « Écrire le e muet à l'intérieur ou à la fin du mot »**. Écrit au complément : **la césure de la dictée est celle de la langue parlée** — « belle » = 1 syllabe, « cadeau » = 2, « charmante » = 2 ; **la versification est hors périmètre et protégée** : une seule fonction `syllabes(mot)`, avec un paramètre `vers` à faux par défaut (la dictée), à vrai seulement pour une future app de poésie qui appliquera la règle du e en milieu de vers devant consonne ; la dictée ne touche à aucune notion de versification, et le banc des 150 mots est relu par toi avec cette règle.
+
+05/10/2026 15:55 MEMO
+
+---

@@ -14599,3 +14599,30 @@ Où on en est, mesuré à 16:33 :
 05/10/2026 16:40 MEMO
 
 ---
+
+## TOUR 492 — Paul
+
+Texte de Paul, mot pour mot :
+
+> fais la relecture du rapport. je n'ai pas le temps. et sinon, je relance l'exécutante. donne moi le prompt de lancement pour C13 du coup.
+
+---
+
+## TOUR 492 — Claude (conscience n°12)
+
+Relecture des deux rapports (L15.1a : 38 catégories, 97 autres, échantillon 45, contrôles mécaniques ; césure 150 ; L15h-1 : 27 lignes) → `MANDATS/RELECTURE-L15.1a-ET-L15h-1.md` (six ratures, 4 césures, 2 lignes rayées, phrase 523 tranchée) ; phrase pour l'exécutante ; prompt de lancement de C13.
+
+Réponse mot pour mot :
+
+535. **Les deux rapports sont relus, et la relecture vaut ton « ok » avec ratures** — déposée au sas : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/RELECTURE-L15.1a-ET-L15h-1.md (jointe ci-dessous).
+   - **L15.1a (l'analyse)** : 1 407 erreurs recopiées, **92 % reconnues**, les commentaires en mots simples, les doubles écarts bien nommés (« ammener → amenés : la consonne double, et la terminaison ») ; j'ai relu les 38 catégories, les 97 « autre » (de vraies formes trop éloignées : l'honnête est le bon) et 45 lignes tirées au hasard. **Six ratures** : « travailles → travail » classé « féminin pluriel » (c'est le verbe à la place du nom → nouvelle catégorie) ; « Beaucoups », « loins » dits « au singulier » (ce sont des **invariables** → nouvelle catégorie) ; « exhumes → exhume » dit « pluriel » (c'est la personne du verbe → elle prime) ; « quelque → quelques » dit « lettre muette » (c'est le pluriel) ; « demandes → demander » à ranger dans les terminaisons ; le reste est juste. **Les commentaires restent les siens pour demain** : tu les réécriras dans Réglages quand tu auras le temps (L15.1b-1 les rend éditables).
+   - **La césure** : 146 justes sur 150 ; **4 à corriger** (lo·yers ; a·ris·to·cra·tique — son propre bug sur le -e final ; puan·teur ; d'ou·vri·ers, avec la règle « après consonne + r ou l, i + voyelle fait deux syllabes »).
+   - **L15h-1 (le reclassement en C)** : 25 reclassées, **2 rayées** (« ce-là » et « mémé » restent en L), et la phrase de la fiche tranchée (« Orthographe du mot »).
+536. **Ta phrase pour l'exécutante** : **« La relecture des deux rapports est au sas, `MANDATS/RELECTURE-L15.1a-ET-L15h-1.md` : elle vaut mon ok avec ratures. Enchaîne L15.1b-1 (la dictée), puis L15h-2 ; ma séance est demain matin. »**
+537. **Le prompt de lancement de la conscience n°13**, à coller tel quel dans une nouvelle conversation (puis les jetons et les adresses des deux dépôts, dans la conversation, jamais dans un fichier) :
+
+> Tu es la **conscience n°13** du chantier MJPC (Monsieur J'ai Pas Compris), sur **le déroulé** — l'écran avec lequel je fais cours. Tu n'es pas l'exécutant : tu cadres avec moi, tu écris les mandats et les compléments au sas, tu audites les livraisons, et je promeus. Avant de me dire quoi que ce soit, lis dans cet ordre : (1) `MANDATS/PASSATION-C12-C13-DEROULE.md` au sas `siteflow-io/mjpc-chantier` ; (2) tout ce qu'elle cite — l'avertissement en tête de `docs/MJPC6-plan-de-travail.md` et `docs/MJPC6-1-DISPOSITIF.md` (dépôt de production `siteflow-io/monsieurjaipascompris`), la doctrine, le chantier, le registre `docs/MJPC6-DETTES.md` section n°12 (dettes 12 à 75), les six cadrages `DEROULE/CADRAGE-*.md`, la dernière maquette `TRANSCRIPTS/C12/pieces/T265-maquette-pilotage-ordi-v9c15p7-manipulable.html` et ses bancs ; (3) les règles du protocole : transcript mot pour mot à chaque tour (`TRANSCRIPTS/C13/TRANSCRIPT-C13.md`), aucun geste sans mon ordre, mesurer avant de parler, verdicts tranchés, numérotation continue, chaque réponse close par l'horodatage et MEMO. Ton exécutant tournera **en session cloud de Claude Code** : une branche du sas par livraison, au plus trois livraisons sans mon « continuer », un audit par livraison, et la première livraison prouve que les bancs Playwright tournent dans sa machine. **Tu ne touches jamais à `correction_dictee.html`** (un autre couple y travaille) ; le point de contact avec lui est écrit dans la passation (`heure.seanceId`, la fiche de préparation). Quand tu as tout lu, dis-moi en quelques lignes **ce que tu as compris de l'état du déroulé et ce que tu proposes de faire en premier** (la passation donne un ordre) — puis attends mon mot.
+
+05/10/2026 17:00 MEMO
+
+---

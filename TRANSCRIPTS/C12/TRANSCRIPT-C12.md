@@ -14094,3 +14094,28 @@ Si tu veux une catégorie de plus (une confusion que tu vois souvent chez tes é
 05/10/2026 09:40 MEMO
 
 ---
+
+## TOUR 471 — Paul
+
+Texte de Paul, mot pour mot :
+
+> montre moi une capture de cet écran réglages les commentaires de l'analyse
+
+---
+
+## TOUR 471 — Claude (conscience n°12)
+
+Maquette sur l'app réelle (T471) : Réglages → « Les commentaires de l'analyse » (13 catégories, texte éditable avec trous, aperçu sur une vraie erreur, Enregistrer / Texte d'origine / non-reconnus, infobulles) ; capture écran entier.
+
+Réponse mot pour mot :
+
+Ci-dessus, sur l'app réelle (6.7.0-L15g, faux hub) : **Réglages → « Les commentaires de l'analyse »** — la maquette est jointe (`T471-maquette-L151-reglages.html`, à ouvrir avec `?mode=prof` → une dictée → Réglages).
+
+483. **Ce que montre l'écran** : à gauche, **les 13 catégories d'écart** (-s/-x d'accord, -nt du verbe, -e du féminin, terminaison du verbe, accent, consonne double, homophone, lettre muette, majuscule, trait d'union, chiffre, cédille, et « non reconnu — le commentaire honnête ») ; à droite, **le texte de la catégorie choisie, modifiable**, avec ses trous `{forme} {mot} {lettre} {écart}` ; dessous, **l'aperçu rempli avec une vraie erreur de tes 3E** (« abris » pour « abri » → « Tu as écrit « abris » : le -s est en trop, « abri » s'accorde avec ce qu'il accompagne. ») ; « Enregistrer » (au hub, pour toutes tes dictées, dès la prochaine copie rendue), « Texte d'origine », et **« Voir les non-reconnus de cette dictée → »** (le Bilan liste le mot, la forme, le nombre d'élèves) ; la catégorie « non reconnu » affiche son compte (« 3E : 41 erreurs non reconnues » — chiffre de maquette). Chaque bouton a son infobulle.
+484. **Ce que la maquette ne fait pas** (elle est dessinée sur l'app, mais l'analyse elle-même n'existe pas encore) : le calcul de l'écart et le remplissage réel des trous viennent avec L15.1b ; les textes de la table sont **les miens, à réécrire par toi** — c'est le rapport à blanc (L15.1a) qui te les soumettra avec les 514 erreurs.
+
+Dis ce que tu changes (les catégories, les mots, la place), ou « ok », et L15.1 reste tel quel au complément avec cette maquette comme noyau.
+
+05/10/2026 09:55 MEMO
+
+---

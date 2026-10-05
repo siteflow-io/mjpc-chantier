@@ -13730,3 +13730,28 @@ Mesuré au hub (les Hugo) et dans le code :
 05/10/2026 06:35 MEMO
 
 ---
+
+## TOUR 457 — Paul
+
+Texte de Paul, mot pour mot :
+
+> dans l15G dans ce cas. enfin, il faudra pouvoir relier le chrono de la séance d'autocorrection de dictée à celui d'une séance dans mjpc, dans le déroulé. celui ci n'est pas fini, c'était notre chantier ici, mais ça doit être apparent dans le code de correction dictée qu'il y aura un branchement à faire sur ce point.
+
+---
+
+## TOUR 457 — Claude (conscience n°12)
+
+L15g point 8 (base → recalcul, bilan précis — dette 130) et point 9 (branchement séance MJPC préparé : heureDeLaDictee, heure.source / seanceId, marqueur, aide — dette 131) écrits au complément ; registre à jour.
+
+Réponse mot pour mot :
+
+Pris, les deux au complément, dans **L15g** :
+
+454. **Point 8 — la base** (dette 130) : changer « note sur » (dictée, version aménagée ou profil) **recalcule aussitôt toutes les copies concernées**, corbeille d'abord, message compté ; et le bilan dit ce qu'il compte : « Moyenne — n copies ordinaires : x/20 » et « k copies aménagées, à part, sur leur base : y/20 ». Les Hugo seront justes à la promotion de L15g.
+455. **Point 9 — le branchement avec la séance MJPC** (dette 131, « à préparer, pas à brancher ») : le déroulé n'est pas fini, donc rien ne se branche — mais la place est faite : **un seul point d'entrée** pour l'heure d'une dictée (`heureDeLaDictee`, que tout appelle : élève, Suivi, accueil, clôture, déconnexion), la donnée prête (`heure.source` = « dictee » aujourd'hui, « mjpc » demain, et `heure.seanceId` vide tant que rien n'est relié), **un marqueur visible dans le code** `[BRANCHEMENT MJPC — déroulé]` qui dit ce qui reste à faire, et une ligne d'aide. Le banc compte qu'aucune autre lecture de l'heure ne subsiste. Quand le déroulé existera, il n'aura qu'à remplir `seanceId` et à être lu par ce point d'entrée.
+
+Rien à dire à l'exécutante maintenant : elle est sur L15f-b ; L15g suit dans l'ordre, et le complément est à jour.
+
+05/10/2026 06:45 MEMO
+
+---

@@ -1,0 +1,2 @@
+{"eleve_avant": "AZZILEK Ezzet", "mot_avant": 1, "eleve_apres": "AZZILEK Ezzet", "mot_apres": 6, "copies_nouvelles": ["azzilek_ezzet"]}
+BANC L15c-d : VERT | erreurs : []

@@ -366,3 +366,62 @@ Tests pour toi : aucun.
 
 05/10/2026 18:42 (heure de mon espace de travail, non vérifiée)
 MEMO
+
+---
+
+## TOUR 10 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok avant de déposer ton mandat au sas, tu vas déroulé, tout l'historique de dev, et surtout le cadrage demandé et ficelé avec la conscience 12
+
+---
+
+## TOUR 10 — Claude (conscience n°13)
+
+Relu : les 269 messages de Paul de la C12, tours 1 à 267, en entier (73 Ko) ; les réponses de la n°12 aux tours 87-88 (densité, échelle, couleurs) et 262-263 (« l'existant » des schémas) ; `CONSULTANT/CHAPITRE-1/chapitre-3e-poesie-peinture-final.json` (le seul schéma réel : « Les figures de style », carte, 8 lignes, 27 notions) ; le moteur du déroulé de la production (`AT_DR_B64` d'`index.html` décodé, 229 960 o : `schemaHTML`, `carte/frise/arbre/cycle/grille`, `separe`, `SCH_COUL`, `pos` et `tirSch`). Mesuré : la vraie carte au rendu proposé p8, 1536 × 864 → 4 hors cadre, 4 chevauchements, 3 traits à travers un mot (en ligne) ; 4 hors cadre, 5 chevauchements (notions empilées). Pièce : `pieces/T10-vraie-carte-p8-mesure.png`. Mandat non déposé.
+
+Réponse mot pour mot :
+
+Je ne dépose pas. J'ai relu :
+- tous tes messages de la C12 sur le déroulé, tours 1 à 267, en entier ;
+- les réponses de la n°12 sur les schémas (tours 87-88, 262-263, 265-267) ;
+- ton vrai chapitre 3e ;
+- le moteur du déroulé qui tourne en production.
+
+Verdict : le mandat que je t'ai soumis ne va pas, pour trois raisons.
+
+40. **Les schémas existent déjà dans le site, et la maquette ne les a pas repris.** Le moteur de l'ancien déroulé est rangé dans `index.html` sous une forme compressée, qu'une recherche de mots ne voit pas. Il dessine les cinq formes. Pour la carte, il fait :
+    - une couleur par famille ;
+    - chaque notion dans sa propre bulle ;
+    - le dévoilement famille par famille, puis notion par notion ;
+    - un calcul qui écarte les bulles pour qu'elles ne se chevauchent pas ;
+    - et les bulles que tu déplaces à la main gardent leur place, avant tout calcul.
+
+    Le 29/09, tu as demandé « pour les schémas, tu as regardé l'existant ? ». La n°12 a cherché dans le texte d'`index.html` sans ouvrir ce moteur, et a conclu « il n'existe aucun rendu des formes ». C'est faux : je l'ai ouvert, tout y est. La p7 a donc redessiné les schémas en plus pauvre (ni couleurs, ni bulles par notion, ni déplacement à la main). Ça va contre le cadrage 1 §12, qui dit « repris tel quel », et contre ta règle : « une maquette doit être au moins ce que le site sait faire ». Ma proposition p8 et mon mandat refaisaient la même faute.
+
+41. **Les plafonds contredisent ce que tu as tranché le 13/09.** Au tour 88, tu as dit : « ta proposition 5 me semble trop restrictive, du fait justement que la densité doit d'abord être absorbée par l'utilisation de l'espace tableau disponible ». Or ta vraie carte du chapitre 3e, « Les figures de style », a 8 familles et 27 notions : le plafond « carte 6 branches » l'aurait refusée.
+
+42. **J'ai mesuré cette vraie carte** avec mon rendu proposé, en 32/26 pt, sur une diapo entière. Elle ne tient pas : 4 libellés coupés par le bord, 4 chevauchements (capture jointe). Ce que donne le moteur existant à 26 pt, avec ses bulles séparées : je ne sais pas, je ne l'ai pas mesuré.
+
+**Ce que je te propose de trancher avant de réécrire le mandat**
+
+43. **Reprendre tel quel le moteur des schémas de l'ancien déroulé**, avec par-dessus seulement ce qui est déjà cadré :
+    - la place « plein » (cadrage 4 §3.2) ;
+    - le dévoilement élément par élément (il le fait déjà pour la carte) ;
+    - le plancher de 26 pt, mesuré.
+
+    Ma proposition : oui.
+
+44. **Pas de plafond en nombre** : seule la mesure dit « trop dense », comme tu l'as tranché le 13/09. Ma proposition : oui. Ton « ok » du tour 4 sur les plafonds tombe.
+
+45. **Un geste pour couper une carte trop grande.** Clic droit sur une famille, puis « Couper le schéma ici » : les familles suivantes partent dans un second schéma, même titre suivi de « (suite) », sur une diapo nouvelle juste après. C'est ce que ta vraie carte demandera, puisqu'un schéma a sa propre diapo. Ma proposition : oui.
+
+46. **Le reste du mandat ne change pas** : d'abord les bancs qui tournent dans la machine (p8-1), puis un schéma par diapo et ses gardes. Ta vraie carte du chapitre 3e entre dans les données de test.
+
+Ton mot sur 43, 44 et 45 : je réécris alors le mandat et je te le soumets à nouveau avant tout dépôt. Le point 34 attend cette nouvelle version.
+
+Tests pour toi : aucun. Regarde la capture jointe : ta vraie carte, coupée et chevauchée.
+
+05/10/2026 18:48 (heure de mon espace de travail, non vérifiée)
+MEMO

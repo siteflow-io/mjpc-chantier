@@ -13629,3 +13629,29 @@ Puis « continuer » à l'exécutante pour **L16a** : **« Continuer — la proc
 04/10/2026 22:06 MEMO
 
 ---
+
+## TOUR 453 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Livré
+
+---
+
+## TOUR 453 — Claude (conscience n°12)
+
+Audit L16a : diff 19/36, 6.7.0-L16a, maquette hors audio, micro L14b gardé, Changer/Suppr ; banc L16a VERT 13/13 ; L10, L11, L7, L12 accordés, L15e, L15a, L14b (accordé aux dépliants), vue élève verts ; captures. Verdict : ça va (119, 120, 121) ; L15f à reprendre sur L16a (L15f-b). Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Audit de **L16a** (« mode rapide : les formes par type, la bascule, Changer →, Suppr, la ligne centrée », `LIVRAISONS/DICTEE-CORRECTION/L16a/`), mesuré :
+
+446. **Le fichier** : base = L15e promue (`1c8de1e3…`, vérifiée) → **6.7.0-L16a, 876 574 o (+4 210)**, md5 `73f4968e…` ; 19 lignes retirées, 36 ajoutées ; `node --check` 0 erreur. **Vérifié dans le code** : la maquette T420 reprise **hors audio** (aucune épellation, aucune voix, aucun panneau) ; « Changer → » conditionné à l'autre type ; Suppr ; la ligne en grille ; **la modale du mode texte garde le micro L14b** (le champ large, mesuré au banc L14b : vert).
+447. **Les bancs, rejoués par moi sur le kit anonymisé** (la 5e, « rêvaient », formes G et L) : L16a **VERT, 13 vérifications** — **la ligne : le mot courant centré sous le gros mot à ≤ 0,01 px sur 16 mots d'affilée, « … » aux deux bouts** ; G → la liste G seulement, le pavé 1 pose « rêvait » en G ; L → la liste L ; « révaient » en G → **la bascule**, « Passer en L » pose en L et avance ; « rêveaient » → « Garder G » pose en G ; une forme vue sous les deux → rien ; mot marqué G → « Changer → L » seul ; Suppr hors champ → l'erreur annulée, le compte baisse, on avance ; Suppr dans le champ → un caractère effacé ; L10, L11, L7, L12 accordés (la liste par type, la ligne), L15e (tes PDF), L15a, L14b, vue élève : verts ; son banc unique vert, 0 échec, 32 étapes.
+448. **Verdict : ça va. Tu peux promouvoir L16a** — dettes **119, 120, 121**. Captures ci-dessus : la ligne centrée ; la bascule. Une note de sa part : **L15f avait été déposée avant L16a par erreur d'ordre** ; elle la reprendra sur L16a (L15f-b) — je l'auditerai à ce moment-là, pas avant.
+
+Tes tests, après promotion (https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?v=6.7.0) : 1) ⇧R sur une copie des Dylan : la ligne au-dessus du mot, le mot courant **au milieu**, « … » des deux côtés, elle glisse quand tu avances ; 2) G sur un mot à formes : seulement les formes G ; L : seulement les L ; le pavé choisit dedans ; 3) tape en G une forme que tu avais mise en L : « a déjà été enregistrée en L (×n). Passer en L ? » → les deux boutons ; 4) sur un mot déjà G : un seul « Changer → L » ; 5) Suppr sur un mot marqué : l'erreur annulée. Puis « continuer » pour **L15f-b** (côté élève : la note après le chrono, le regain en clair, le bilan, l'actualisation en direct).
+
+05/10/2026 06:10 MEMO
+
+---

@@ -1,0 +1,2 @@
+{"avant": "10", "preparee": "20", "brevet": "10", "hub_inchange": [10, null], "erreurs": []}
+BANC 418 PAR LE GESTE : VERT

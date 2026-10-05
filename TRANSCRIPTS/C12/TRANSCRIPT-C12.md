@@ -14188,3 +14188,28 @@ Dis « ok », ou ce que tu changes ; rien à dire à l'exécutante avant L15.1.
 05/10/2026 10:40 MEMO
 
 ---
+
+## TOUR 475 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Attention : tu as lu la taxo sur mjpc?
+
+---
+
+## TOUR 475 — Claude (conscience n°12)
+
+Faute reconnue (489 écrit sans lire MJPC). Mesuré : taxonomie_atelier.json (v1.4.0) au dépôt et au hub /taxonomie : 7 domaines, 51 familles, 210 notions, compétences C4, alias.tables.correction_dictee (10 termes D1.x rattachés), circuit propose/valide, règles de partition et de comptage. Complément L15.1 corrigé : les catégories ciblent des notions/familles de cette taxonomie, propose → valide, vérification des cibles, un seul fil, comptage vérifié par le banc.
+
+Réponse mot pour mot :
+
+Non — et c'est une faute : j'ai écrit 489 sans lire MJPC. Lu maintenant, mesuré :
+
+490. **La taxonomie existe, et elle est riche** : `taxonomie_atelier.json` au dépôt de production (v1.4.0, 02/08/2026, 93 Ko) **et au hub, `/taxonomie`** — **7 domaines → 51 familles → 210 notions** (ids opaques immuables, `ortho-gram-001`… ; libellé élève / libellé prof ; exemple ; niveaux ; actif), les compétences du cycle 4 (`c4-langue-01`…), les types d'erreur (erreur, omission, illisible, ajout), et **une table d'alias par app** : `alias.tables.correction_dictee` — les « D1.1 … D2.3 » de la dictée y sont **des termes déjà rattachés** (D1.1 = `dom-ortho-gram`, D1.4 → fam-07 + fam-08, D1.5 → fam-12, D1.7 créée par toi le 21/07…), avec la relation `egal` / `inclus`, **le circuit « propose (IA) / valide (prof) »** (seul « valide » compte), et tes deux règles : **partition** (une notion a exactement un propriétaire fin par table) et **comptage** (une erreur = un point, jamais dupliqué : total des points = nombre d'erreurs).
+491. **Le rattachement, corrigé au complément** : rien à créer — chaque catégorie d'écart porte **ses cibles dans cette taxonomie** (des notions, ou une famille), relation `egal` / `inclus`, statut **« propose »** quand elle vient de l'IA et **« valide »** quand tu la valides dans l'écran (un bouton « Valider » par catégorie) ; **le prompt IA donne la taxonomie réelle** (domaines, familles, notions avec leurs ids) pour que l'IA cible des ids existants, et **« Vérifier » refuse** une cible inconnue ou une partition cassée ; les D1.x restent la table d'alias (Préparation, banque d'exercices) ; **un seul fil** : erreur → catégorie → notion → famille → domaine, et compétence C4 par la table ; le Bilan par domaine / famille / notion se compte **dans la règle de comptage** (le banc vérifie : total des points = nombre d'erreurs) ; le `competenceLabel` en dur de l'app devient une lecture de la table d'alias au hub.
+
+Rien d'autre ne change dans L15.1 (objets vivants, moteur de motifs, bouton IA, vérification, injection avec archive).
+
+05/10/2026 12:50 MEMO
+
+---

@@ -337,3 +337,32 @@ Tests pour toi : aucun.
 
 05/10/2026 18:39 (heure de mon espace de travail, non vérifiée)
 MEMO
+
+---
+
+## TOUR 9 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok c'est bon tout est paramétré
+
+---
+
+## TOUR 9 — Claude (conscience n°13)
+
+35 fait. Le « ok » porte sur les réglages, pas sur le contenu du mandat : le mandat reste soumis, non déposé ; rejoint à la réponse.
+
+Réponse mot pour mot :
+
+Le point 35 est fait. Il ne reste qu'un geste avant de lancer l'exécutant :
+
+34. Le mandat est joint ci-dessous, pour que tu l'aies sous la main. Tu le lis et tu me dis « ok », ou ce qui ne va pas. Je ne le dépose pas sans ton mot sur son contenu (règle du 07/09) : ton « ok » d'à l'instant portait sur les réglages.
+
+Dès ton « ok », je le dépose au sas et je te le confirme. Tu lances alors le point 36 : sur claude.ai/code, dépôt `mjpc-chantier`, mode « Accept edits », cette phrase, puis Entrée.
+
+> Tu es l'exécutant de MJPC sur le déroulé. Lis en entier `MANDATS/MANDAT-DEROULE-MAQUETTE-P8.md` dans ce dépôt et fais ce qu'il dit : les livraisons p8-1, p8-2 et p8-3, chacune sur sa branche, puis arrête-toi.
+
+Tests pour toi : aucun.
+
+05/10/2026 18:42 (heure de mon espace de travail, non vérifiée)
+MEMO

@@ -13704,3 +13704,29 @@ Ta phrase pour elle, tout de suite : **« L15f a un point 5 de plus au compléme
 05/10/2026 06:40 MEMO
 
 ---
+
+## TOUR 456 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok maintenant sur les notes: j'avais paramétré ma dictée hugo sur 10, pareil pour aménagé: je suis passé sur 20 pour la classique, et j'ai aussi mis sur 20 pour l'aménagée. sauf que du coup, j'ai des mélanges entre sur 20 et sur 10, et par ailleurs, dans mon onglet données, je pense que la phrase: 4 copies aménagées — moyenne 6,8/10 a un souci, non? ou alors elle est imprécise, je ne sais pas si c'est la moyenne des copies aménagées, ou si c'est la moyenne de la classe complète
+
+(captures : le bilan « Moyenne 7,3/20 · 4 copies aménagées — moyenne 6,8/10 » ; le tableau avec des /10 et des /20)
+
+---
+
+## TOUR 456 — Claude (conscience n°12)
+
+Mesuré : config.base 20, amenagee.base 20, 4 copies aménagées base 10 figée, 25 ordinaires sans base (suivent) ; le bilan : moyenne = ordinaires seules, aménagées à part sur leur base (juste, imprécis). Dette 130 (recalcul à la base + étiquettes du bilan) ; micro proposé ou L15g.
+
+Réponse mot pour mot :
+
+Mesuré au hub (les Hugo) et dans le code :
+
+451. **Le mélange 10 / 20** : la dictée est bien passée sur 20 (`config.base` 20) et sa version aménagée aussi (`amenagee.base` 20) ; **les 25 copies ordinaires** n'ont pas de base propre, elles **suivent** la dictée → affichées /20 ; **les 4 copies aménagées** ont leur base **figée à 10** dans leur trace (celle que L14 pose quand on corrige) → elles restent /10. Changer la base ne recalcule pas les copies déjà tracées : c'est la même famille de défaut que l'élève marqué aménagé après coup (118). Dette **130** : changer la base (ordinaire ou aménagée) **recalcule aussitôt toutes les copies concernées**, corbeille d'abord, message compté — la règle « suivi d'effets ».
+452. **La phrase du bilan** : elle est **juste mais imprécise**. Mesuré : « Moyenne 7,3/20 » = **les 25 copies ordinaires seules** ; « 4 copies aménagées — moyenne 6,8/10 » = **les 4 aménagées seules, sur leur base** — rien n'est mêlé (c'est ELEVE-1 ④), mais le bilan ne le dit pas. Il doit dire ce qu'il compte : **« Moyenne — 25 copies ordinaires : 7,3/20 »** et **« 4 copies aménagées, à part, sur leur base : 6,8/10 »** (et après le recalcul, /20). Le tableau garde chacune sur sa base.
+453. **Où le régler** : le plus propre est **L15g** (les profils de barème : la base y vit, et le recalcul par changement de profil est déjà cadré) — mais si tu veux les Hugo justes **maintenant**, je peux le faire **en micro** (le recalcul à la base + les deux étiquettes du bilan) : dis « micro » et je le mesure, le banc, et te le livre ; sinon ça part dans L15g.
+
+05/10/2026 06:35 MEMO
+
+---

@@ -44,7 +44,7 @@ q.evaluate("()=>{window.__dec=61000}"); q.wait_for_timeout(11000)
 R['bandeau_1min']=q.evaluate("()=>{const e=document.getElementById('bandeau-hors-classe');return e?e.innerText.replace(/\\s+/g,' ').trim():null}")
 ac_avant=b.lire(q,'correction_dictee/%s/autocorrection/zztest_zulu'%D3)
 q.evaluate("()=>{window.__dec=45*60000+1000}"); q.wait_for_timeout(11000)
-txt=q.locator('body').inner_text(); R['a_zero']=('Mes dictées' in txt and q.locator('.mesdictees-ligne').count()>0, 'hors classe' in txt)
+txt=q.locator('body').inner_text(); R['a_zero']=(('Mes dictées' in txt and q.locator('.mesdictees-ligne').count()>0) or 'Entre ton code personnel' in txt, 'hors classe' in txt)   # [accordé à L15f-b point 5] à zéro, l'élève est déconnecté : le portail de code
 ac_apres=b.lire(q,'correction_dictee/%s/autocorrection/zztest_zulu'%D3) or {}
 R['progression_gardee']=all(json.dumps((ac_apres or {}).get(k),sort_keys=True)==json.dumps((ac_avant or {}).get(k),sort_keys=True) for k in ('results','attempts','solved','total','attestation'))
 R['erreurs2']=b.erreurs[:2]; b.fermer()

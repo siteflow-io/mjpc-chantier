@@ -13655,3 +13655,27 @@ Tes tests, après promotion (https://siteflow-io.github.io/monsieurjaipascompris
 05/10/2026 06:10 MEMO
 
 ---
+
+## TOUR 454 — Paul
+
+Texte de Paul, mot pour mot :
+
+> promeus
+
+---
+
+## TOUR 454 — Claude (conscience n°12)
+
+Promotion 6.7.0-L16a (commit 948b18e69e99, bit à bit) ; protocole : dettes 119/120/121 ✔, journal, point de retour, où-trouver-quoi. Tests donnés ; L15f-b ensuite.
+
+Réponse mot pour mot :
+
+Promu : `correction_dictee.html` **6.7.0-L16a**, commit `948b18e69e99`, **bit à bit** (876 574 o, md5 `73f4968e…`) ; registre n°12 · **119, 120, 121 ✔** ; journal, point de retour (L15e), où-trouver-quoi à jour.
+
+**Tes tests** : https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?v=6.7.0 → 1) ⇧R sur une copie des Dylan : la ligne au-dessus du mot, le mot courant **au milieu**, « … » des deux côtés, elle glisse quand tu avances ; 2) G sur un mot à formes : seulement les formes G ; L : seulement les L ; le pavé choisit dedans ; 3) tape en G une forme que tu avais mise en L : « a déjà été enregistrée en L (×n). Passer en L ? » → les deux boutons ; 4) sur un mot déjà G : un seul « Changer → L » ; 5) Suppr sur un mot marqué : l'erreur annulée.
+
+Puis « continuer » à l'exécutante pour **L15f-b** (côté élève, reprise sur L16a : la note après le chrono, le regain en clair + « Je garde ma note », le regain au bilan, l'actualisation en direct).
+
+05/10/2026 05:51 MEMO
+
+---

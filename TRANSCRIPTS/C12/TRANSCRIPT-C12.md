@@ -14626,3 +14626,25 @@ Réponse mot pour mot :
 05/10/2026 17:00 MEMO
 
 ---
+
+## TOUR 493 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok mais du coup comment je lance l'exécutant en claude cloud, et quel est le prompt pour cet exécutant?
+
+---
+
+## TOUR 493 — Claude (conscience n°12)
+
+Gabarit déposé : `MANDATS/PROMPT-EXECUTANT-CLOUD-DEROULE.md` (brancher GitHub aux deux dépôts, lancer une session cloud sur le sas, le prompt de l'exécutant par livraison, la preuve de la première). Rappel : le mandat Déroulé n'existe pas encore (C13 l'écrit).
+
+Réponse mot pour mot :
+
+538. **Une chose d'abord** : l'exécutant du déroulé ne peut pas être lancé **aujourd'hui** — son mandat n'existe pas encore (c'est la conscience n°13 qui l'écrira après avoir tranché p8, la séquence de test et le préalable « attendus au hub »). Ce que je te donne, c'est **le mode d'emploi et le prompt, prêts pour ce moment-là** : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/PROMPT-EXECUTANT-CLOUD-DEROULE.md (joint).
+539. **Comment on lance** (d'après la doc lue aujourd'hui — les libellés exacts des boutons peuvent différer, je ne les ai pas sous les yeux) : **(1) une fois pour toutes**, dans Claude Code (claude.ai/code ou l'app de bureau), connecter GitHub par l'app Claude et lui donner les **deux dépôts** (le sas, et la production en lecture) — plus de jeton à coller ; le crédit se réclame une fois et s'applique seul. **(2) À chaque livraison** : claude.ai/code → nouvelle session **cloud** (ou « Cloud » au lieu de « Local » dans l'app de bureau, ou `claude --cloud "…"` dans un terminal) → le dépôt **`siteflow-io/mjpc-chantier`** → coller le prompt → lancer, et tu peux fermer l'ordinateur. La session pousse **une branche** (`deroule/L1`) ; la n°13 l'audite ; tu dis « continuer » → tu relances avec le numéro suivant ; trois d'affilée au plus.
+540. **Le prompt de l'exécutant** (à coller à chaque session, en changeant le numéro) : il dit qu'il est l'exécutant du mandat « Déroulé », qu'il lit **le mandat au sas, la passation et tout ce que le mandat nomme**, qu'il livre **une seule livraison** (Ln), fidèle geste par geste à la maquette, avec ses bancs par le geste **Playwright installés et prouvés dans sa machine**, le banc unique, les preuves comptées, les captures d'écran entier, aucun terme technique côté élève, les infobulles, jamais de rechargement, **jamais `correction_dictee.html`** ; qu'il dépose dans `LIVRAISONS/DEROULE/Ln/` et **pousse sur la branche `deroule/Ln`, jamais sur `main`**, puis s'arrête ; et qu'une contradiction se dit dans la note, jamais une dette cachée. Le texte complet est dans le gabarit, §3.
+
+05/10/2026 17:10 MEMO
+
+---

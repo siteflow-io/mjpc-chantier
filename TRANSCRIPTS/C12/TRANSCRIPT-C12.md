@@ -13783,3 +13783,30 @@ Dis tes choix sur 460, et je te fais la maquette **sur l'app réelle** (Suivi + 
 05/10/2026 06:55 MEMO
 
 ---
+
+## TOUR 459 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok tout est bon. il faut aussi l'infobulle sur chaque bouton.
+
+---
+
+## TOUR 459 — Claude (conscience n°12)
+
+Maquette 132 sur l'app réelle (md5 c744dfb77ef5, T459) à deux onglets (faux hub partagé par localStorage) : Suspendre/Reprendre (heure.suspendue, prolongation), Fermer (confirmation, case cochée, cloture + verrou + deconnexion/tous), Rouvrir ; élève : écran de pause, « La séance est fermée. », session effacée ; infobulles ; banc VERT 9/9 ; captures. Attend « ok » pour L15i.
+
+Réponse mot pour mot :
+
+Pris : tout validé, et les infobulles sur chaque bouton. La maquette, **sur l'app réelle** (6.7.0-L16a, ci-dessus : `T459-maquette-132-app-reelle.html`, md5 `c744dfb77ef5`, pièce T459) — **à deux onglets** : ouvre le fichier avec `?mode=prof` (la 3E, l'heure est en cours) et le même fichier avec `?maq=eleve` (« Mode élève » → « 1 élève » → la dictée) ; les deux onglets partagent le même faux hub, rien de réel n'est touché ; un bouton « Réinitialiser la maquette » dans le bandeau.
+
+461. **Au Suivi**, à côté de « ■ Clôturer l'heure » : **« ⏸ Suspendre »** (devient « ▶ Reprendre », fond ambre) et **« ⏹ Fermer la séance »** → la confirmation : « L'heure sera close et toutes les tablettes reviendront au portail de code. Les copies et autocorrections en cours restent enregistrées (« Pas fini »). », la case **« sans reprise hors classe » cochée**, « Fermer » / « Annuler » ; après : **« 🔒 Séance fermée sans reprise hors classe… »** et **« Rouvrir hors classe »**. Chaque bouton a son infobulle (ce qu'il fait, ce qu'il coûte).
+462. **Sur la tablette** : Suspendre → l'écran de pause plein **« Séance suspendue par le professeur. Attends. »** sans rechargement ; Reprendre → la copie revient exactement où elle était ; Fermer → **la tablette oublie l'élève** (sa session effacée) ; s'il rouvre la dictée pendant le verrou : **« La séance est fermée. Ton professeur te dira quand tu pourras reprendre. »** ; Rouvrir → il retrouve sa copie (ses 45 min hors classe).
+463. **Banc par le geste, deux onglets, VERT, 9 vérifications** (Suspendre → pause chez l'élève ; Reprendre → identique ; la confirmation cochée ; Fermer → heure close + verrou + tablette oubliée ; l'écran « fermée » ; Rouvrir → verrou levé). Captures ci-dessus : le Suivi suspendu, la confirmation de fermeture, la tablette en pause, la tablette « séance fermée ».
+464. **Deux choses que la maquette ne fait pas, prévues dans L15i** : la prolongation de l'heure du temps de pause est posée (le hub la calcule) mais le chrono du stylo vert n'est pas gelé dans la maquette ; et après « Fermer », la tablette revient à « Mes dictées » (dans L15f-b, la déconnexion renvoie au portail de code).
+
+Joue-la ; dis « ok » et j'écris L15i au complément (après L15f-b, avant L15g).
+
+05/10/2026 06:52 MEMO
+
+---

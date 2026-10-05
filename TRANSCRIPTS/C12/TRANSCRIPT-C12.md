@@ -14648,3 +14648,24 @@ Réponse mot pour mot :
 05/10/2026 17:10 MEMO
 
 ---
+
+## TOUR 494 — Paul
+
+Texte de Paul, mot pour mot :
+
+> j'ai lancé c13
+
+---
+
+## TOUR 494 — Claude (conscience n°12)
+
+Réponse mot pour mot :
+
+Pris. Deux choses pour que les deux couples ne se marchent pas dessus :
+
+541. **Ce que je ne touche plus** : rien du déroulé — ni `index.html`, ni `DEROULE/`, ni la passation (si la n°13 veut la corriger, c'est elle qui l'écrit). Je reste sur `correction_dictee.html`, le complément L15 et le registre n°12 (dettes 87 et suivantes) ; elle ouvre sa section n°13 au registre. Si elle a besoin de moi (la fiche de préparation, `heure.seanceId`), tu me transmets sa question ; je ne lis pas son transcript sans que tu me le demandes.
+542. **Ce que j'attends de mon côté** : l'exécutante sur **L15.1b-1** (la dictée, pour demain) puis **L15h-2** ; tu me dis « livré » et j'audite — pendant ce temps, rien d'autre à faire pour toi ici.
+
+05/10/2026 17:20 MEMO
+
+---

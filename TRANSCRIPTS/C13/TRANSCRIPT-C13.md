@@ -181,3 +181,42 @@ Tests pour toi : aucun à jouer ; lis le mandat joint.
 
 05/10/2026 18:06 (heure de mon espace de travail, non vérifiée)
 MEMO
+
+---
+
+## TOUR 5 — Paul
+
+Texte de Paul, mot pour mot :
+
+> normalement la dernière mouture de la maquette est validée. par ailleurs, tu n'es pas clair sur ce que je dois faire dorénavant.
+
+---
+
+## TOUR 5 — Claude (conscience n°13)
+
+Point 11 clos (maquette p7 validée par Paul). Pas de « ok » sur le mandat dans ce message : il reste soumis, non déposé. Réponse : les gestes de Paul, dans l'ordre, en clair.
+
+Réponse mot pour mot :
+
+Pris pour la maquette : la dernière mouture (p7) est validée. Le point 11 est clos.
+
+Ce que tu fais dorénavant, dans l'ordre :
+
+34. **Maintenant** : tu lis le mandat joint à ma réponse précédente et tu me dis « ok », ou ce qui ne va pas. Je le dépose au sas et je te le dis.
+35. **Une seule fois** : sur claude.ai/code, tu relies ton compte GitHub au dépôt `mjpc-chantier` (Claude te le propose à la première session).
+36. **Pour lancer l'exécutant** : sur claude.ai/code, nouvelle session cloud, dépôt `mjpc-chantier`. Tu colles cette phrase, et tu peux fermer l'ordi :
+
+> Tu es l'exécutant de MJPC sur le déroulé. Lis en entier `MANDATS/MANDAT-DEROULE-MAQUETTE-P8.md` dans ce dépôt et fais ce qu'il dit : les livraisons p8-1, p8-2 et p8-3, chacune sur sa branche, puis arrête-toi.
+
+37. **Quand la session s'est arrêtée** : tu m'écris « livré » ici. Rien d'autre.
+38. **Moi** : je contrôle ses livraisons une par une et je te dis « ça va » ou « ça ne va pas », captures à l'appui.
+    - Si ça va : je te donne l'adresse de la maquette p8 ; tu la joues et tu me dis si elle est bonne.
+    - Si ça ne va pas : j'écris la correction au sas, et tu relances une session avec la phrase que je te redonne. C'est ton « continuer ».
+39. Plus tard, pour le vrai site (plus la maquette), ce sera pareil, avec ton « promeus » sur captures à la fin de chaque livraison.
+
+Tu n'as donc que ces mots : « ok » pour un mandat, « livré » quand une session a fini, « continuer » pour relancer, « promeus » pour le site.
+
+Tests pour toi : aucun ; ton geste, c'est le point 34.
+
+05/10/2026 18:27 (heure de mon espace de travail, non vérifiée)
+MEMO

@@ -13679,3 +13679,28 @@ Puis « continuer » à l'exécutante pour **L15f-b** (côté élève, reprise s
 05/10/2026 05:51 MEMO
 
 ---
+
+## TOUR 455 — Paul
+
+Texte de Paul, mot pour mot :
+
+> j'ai testé quelque chose: sur les hugo, j'ai rendu les copies puis je me suis mis à la place de candice auger, qui a reçu lisa boissinot en binome. J'ai fait les connexions, et dans mon pilotage je les vois maintenant connectées, alors que j'ai fermé leur onglet, et ce, hors chrono bien sur. il faut que je puisse déconnecter les élèves afin que la tablette les oublie, sinon avec une autre classe qui suit juste après, ils retombent sur le compte des élèves précédents. Pareil pour les élèves, il leur faut un bouton se déconnecter. Enfin, la déconnexion doit être automatique quand le chrono arrive à la fin. ça peut se faire en micro? l'exécutant est lancé là.
+
+---
+
+## TOUR 455 — Claude (conscience n°12)
+
+Mesuré : session `mjpc_eleve` 12 h, statut du Suivi d'après `lastSeen`, « Me déconnecter » ne vide rien. Pas un micro : point 5 ajouté à L15f (dette 129) — bouton élève, Déconnecter / tous côté prof (ordre écouté), automatique à la clôture et à 45 min, copie conservée. Complément déposé ; phrase pour l'exécutante.
+
+Réponse mot pour mot :
+
+Mesuré dans le code, puis cadré :
+
+449. **Pourquoi tu les vois « connectées »** : la tablette garde l'élève dans sa mémoire (`mjpc_eleve`, 12 heures), et le Suivi ne mesure pas une vraie présence — il dit « En cours / Inactif / Déconnecté » d'après **le dernier battement** (toutes les 30 s tant que l'onglet est ouvert) : après la fermeture, « En cours » reste jusqu'à ce que le battement vieillisse. Et le bouton « Me déconnecter » qui existe sur l'écran d'identité **ne vide pas** cette mémoire ni le statut.
+450. **Pas un micro : c'est L15f-b**, que l'exécutante est en train de faire — elle y met déjà l'écoute en direct côté élève (rendre / masquer / dépublier), et la déconnexion est **le même mécanisme** ; en micro, je télescoperais sa livraison. J'ai écrit le **point 5 de L15f** au complément (dette **129**) : **(a)** côté élève, **« Se déconnecter »** sur tous ses écrans (sauf pendant le chrono du stylo vert) : la tablette l'oublie, statut « Déconnecté », retour au portail de code ; **(b)** côté professeur, **« Déconnecter »** sur chaque élève et **« Déconnecter tous »** au Suivi : un ordre au hub, **l'élève l'écoute et se déconnecte lui-même sans rechargement** ; **(c) automatique** à la clôture de l'heure (« Clôturer » ou fin + 10) et à la fin des 45 minutes hors classe ; **(d)** sa copie reste au hub : il la retrouve en retapant son code ; ta clé de professeur n'est jamais touchée. Banc à deux navigateurs.
+
+Ta phrase pour elle, tout de suite : **« L15f a un point 5 de plus au complément — la déconnexion (élève, professeur, automatique à la clôture) : lis-le et mets-le dans L15f-b avant de déposer. »**
+
+05/10/2026 06:40 MEMO
+
+---

@@ -14029,3 +14029,23 @@ Réponse mot pour mot :
 05/10/2026 09:15 MEMO
 
 ---
+
+## TOUR 468 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Le 479 tu laisses ainsi. L'exécutant est en train de faire l15h
+
+---
+
+## TOUR 468 — Claude (conscience n°12)
+
+479 tranché au complément (touche C avec L15h ; base du profil proposée, la dictée garde sa Note sur) ; l'ordre réel L15h → L15i → L15j écrit en tête.
+
+Réponse mot pour mot :
+
+Pris : 479 écrit tel quel au complément (la touche C avec L15h ; la base d'un profil est seulement proposée, la dictée garde sa « Note sur »), et l'ordre en tête du fichier dit maintenant ce qu'elle fait : **L15h (en cours) → L15i → L15j → L15.1 → L16b**. Pour L15h, je rappelle ce que j'auditerai : **d'abord la livraison à blanc** (L15h-1 : le rapport copie par copie, sans nom, avec ses chiffres à reconfirmer — Dylan 9 reclassables dont « ce-là » à trancher, Franklin 4, Hugo 8, brevets blancs 0 ; jamais une cédille ni un homophone grammatical) — **tu rayes, tu dis « ok », et seulement ensuite L15h-2 reclasse** (corbeille d'abord). Rien ne doit bouger au hub avant ton « ok » sur le rapport.
+
+05/10/2026 09:15 MEMO
+
+---

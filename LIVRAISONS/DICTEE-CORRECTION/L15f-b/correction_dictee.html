@@ -1531,6 +1531,11 @@ function nomClasseLisibleL15c(cle){var reg=(typeof CLASSES!=="undefined"&&CLASSE
   var src=(nom||String(cle||"")).replace(/_/g," ").trim().toLowerCase();if(!src)return "";
   src=src.replace(/(^|\s)([a-z\u00e0-\u00ff])/g,function(m,a,b){return a+b.toUpperCase()});return src.replace(/^(\d)\s/,"$1e ").replace(/^(\d)E\s/,"$1e ");}
 function dateCourteL15c(t){if(!t)return "";var d=new Date(t);return String(d.getDate()).padStart(2,"0")+"/"+String(d.getMonth()+1).padStart(2,"0")+"/"+d.getFullYear();}
+/* [L15f point 5 — dette 129] LA DÉCONNEXION : la tablette oublie l'élève (pas le professeur, jamais la clé du coffre) */
+function oublierSessionEleveL15f(){["sessionStorage","localStorage"].forEach(function(st){try{var S=window[st],v=S.getItem("mjpc_eleve");if(!v)return;var o=null;try{o=JSON.parse(v)}catch(e){}if(o&&o.is_prof)return;S.removeItem("mjpc_eleve");}catch(e){}});}
+function AppEleve(p){var sE=useState(null),etatD=sE[0],setEtatD=sE[1];   /* [L15f-5] */
+  return h("div",{style:{position:"relative"}},etatD&&etatD.visible?h("button",{className:"btn-sm btn-ghost",id:"se-deconnecter-fixe",onClick:etatD.deconnecter,style:{position:"absolute",top:10,right:12,zIndex:900,background:"var(--card)"}},"Se d\u00e9connecter"):null,
+    h(AppEleveCoeurL15f,Object.assign({},p,{onEtatDeconnexionL15f:setEtatD})));}
 /* [L5] signe de ponctuation (hors apostrophe) ? */
 function estSigne(w){w=String(w||"").trim();return !!w&&isPunct(w)&&!estApostrophe(w);}
 /* [L5] LE RECLASSEMENT (rapport L4, forme B, « ok » de Paul le 01/10) : (1) un « M » posé sur un signe → « P » ; (2) un signe « en trop »
@@ -5309,6 +5314,7 @@ function Suivi(p){
     var status;
     // Statut basé sur les données, pas sur le champ status Firebase
     if(finished) status="done";
+    else if(ac&&ac.deconnecte&&(!ac.lastSeen||ac.deconnecte>=ac.lastSeen-1000)) status="offline";   /* [L15f-5] déconnecté : sur-le-champ */
     else if(ac&&ac.solved>0&&lastSeen&&(NOW-lastSeen)<RECENT) status="active";
     else if(ac&&ac.solved>0) status="idle";
     else if(ac&&lastSeen&&(NOW-lastSeen)<RECENT) status="active";
@@ -5509,7 +5515,8 @@ function Suivi(p){
     ),
     // Detailed table
     h("div",{className:"card"},
-      h("h2",{style:{marginBottom:10}},"D\u00e9tail par \u00e9l\u00e8ve"),
+      h("div",{style:{display:"flex",alignItems:"center",gap:10,marginBottom:10}},h("h2",{style:{margin:0,flex:1}},"D\u00e9tail par \u00e9l\u00e8ve"),
+         h("button",{className:"btn-sm btn-ghost",id:"deconnecter-tous-l15f",onClick:function(){db.ref("correction_dictee/"+p.dicteeId+"/deconnexion/tous").set(Date.now());},title:"D\u00e9connecte tous les \u00e9l\u00e8ves de cette dict\u00e9e : les tablettes les oublient, la classe suivante tape ses codes. Rien d\u2019autre n\u2019est touch\u00e9."},"D\u00e9connecter tous")),   /* [L15f-5] */
       h(EleveSearchBar,{query:suiviQuery,onChange:setSuiviQuery,count:rowsFiltered.length}),
       h("div",{style:{overflowX:"auto"}},
         h("div",{className:"table-scroll"},h("table",{className:"bilan-table"},
@@ -5571,7 +5578,7 @@ function Suivi(p){
                 ex.hasExos&&ex.totalLibres>0?h("span",{style:{color:ex.saisiesLibres===ex.totalLibres?"var(--green)":"inherit",fontWeight:500}},ex.saisiesLibres+"/"+ex.totalLibres):"\u2014"
               ),
               h("td",{style:{textAlign:"center",fontWeight:500,color:ex.wrongAttempts>0?"var(--coral)":"var(--muted)"}},ex.wrongAttempts||"\u2014"),
-              h("td",null,(function(){var et=etapeDe(r);
+              h("td",null,h("button",{className:"btn-sm btn-ghost btn-deconnecter-l15f","data-cle":r.key,style:{fontSize:".7rem",padding:"1px 6px",marginRight:6},onClick:function(e){e.stopPropagation();db.ref("correction_dictee/"+p.dicteeId+"/deconnexion/"+r.key).set(Date.now());},title:"D\u00e9connecte cet \u00e9l\u00e8ve : sa tablette l\u2019oublie et revient au code. Sa copie et son autocorrection restent ; il les retrouve en retapant son code."},"D\u00e9connecter"),(function(){var et=r.status==="offline"?null:etapeDe(r);   /* [L15f-5] déconnecté : le Suivi le dit, avant l'étape */
                 if(!et)return h("span",{style:{fontSize:".8rem",color:r.status==="active"?"var(--primary)":r.status==="done"?"var(--green)":"var(--muted)"}},statusLabel(r.status));
                 return h("span",{className:et.ramasser?"etape-clignote":"",onClick:et.ramasser?function(e){ramasser(r.key,e)}:undefined,
                   title:et.ramasser?"Touchez quand vous avez ramass\u00e9 sa copie : la ligne s\u2019arr\u00eate de clignoter.":undefined,
@@ -8078,7 +8085,7 @@ function TabletteDeux(p){
         h("div",{style:{fontSize:".95rem",lineHeight:1.5}},"Tu pourras r\u00e9pondre aux questions pour regagner tes points quand "+prenom(m)+" aura fini sa correction. Aide "+prenom(m)+" : plus vous allez vite, plus il vous restera de temps pour regagner des points.")):null)}));
 }
 
-function AppEleve(p){
+function AppEleveCoeurL15f(p){
   var s1=useState("login"),screen=s1[0],setScreen=s1[1];
   var s2=useState([]),dictees=s2[0],setDictees=s2[1];
   var s3=useState(""),nomInput=s3[0],setNomInput=s3[1];
@@ -8130,8 +8137,20 @@ function AppEleve(p){
       function f2(sn){var v=sn.val()!==false;setDictees(function(prev){return (prev||[]).map(function(x){return x.id===dd.id&&x.published!==v?Object.assign({},x,{published:v}):x})});}
       r1.on("value",f1);r2.on("value",f2);offs.push(function(){r1.off("value",f1);r2.off("value",f2)});});
     return function(){offs.forEach(function(f){f()})};},[(dictees||[]).map(function(x){return x.id}).join("|")]);
+  var connecteLeL15f=React.useRef(0);useEffect(function(){if(identite)connecteLeL15f.current=Date.now();},[identite&&identite.cle]);   /* [L15f-5] le moment de la connexion */
+  var sStyloL15f=useState(false),styloActifL15f=sStyloL15f[0],setStyloActifL15f=sStyloL15f[1];
+  var deconnexionRefL15f=React.useRef(null);deconnexionRefL15f.current=function(){deconnexion();};
+  useEffect(function(){if(!identite||!dictees||!dictees.length)return;var offs=[],heures={};   /* [L15f-5] l'ordre du professeur et la clôture de l'heure */
+    function verifier(){var t0=connecteLeL15f.current;if(!t0)return;var now=Date.now();Object.keys(heures).forEach(function(id){var fe=heureFinEffective(heures[id]);if(fe&&fe<=now&&fe>t0)deconnexionRefL15f.current();});}
+    dictees.forEach(function(dd){var r3=db.ref("correction_dictee/"+dd.id+"/deconnexion"),r4=db.ref("correction_dictee/"+dd.id+"/heure");
+      function f3(sn){var v=sn.val()||{},t=Math.max(+(v[identite.cle]||0),+(v.tous||0));if(t&&connecteLeL15f.current&&t>connecteLeL15f.current)deconnexionRefL15f.current();}
+      function f4(sn){heures[dd.id]=sn.val()||null;verifier();}
+      r3.on("value",f3);r4.on("value",f4);offs.push(function(){r3.off("value",f3);r4.off("value",f4)});});
+    var it=setInterval(verifier,15000);
+    return function(){clearInterval(it);offs.forEach(function(f){f()})};},[identite&&identite.cle,(dictees||[]).map(function(x){return x.id}).join("|")]);
   useEffect(function(){if(!(screen==="copie"||screen==="correction")||!eleveData||!eleveData.dictee)return;var cur=(dictees||[]).filter(function(x){return x.id===eleveData.dictee.id})[0];
     if(cur&&(!cur.copyPublishedAt||!cur.published)){setScreen("mesdictees");}},[dictees,screen]);
+  useEffect(function(){if(p.onEtatDeconnexionL15f)p.onEtatDeconnexionL15f({visible:!!identite&&screen!=="login"&&screen!=="mesdictees"&&!styloActifL15f,deconnecter:function(){deconnexionRefL15f.current()}});},[identite&&identite.cle,screen,styloActifL15f]);   /* [L15f-5] le bouton fixe sait quand se montrer */
   // ── Dictées disponibles ──
   // La course était le bug : les dictées se construisaient avant l'arrivée du registre,
   // et leur roster restait vide pour toute la session. On attend classesData, et on
@@ -8319,6 +8338,8 @@ function AppEleve(p){
   }
 
   function deconnexion(){
+    try{var idL=identite&&identite.cle,tL=Date.now();if(idL)(dictees||[]).forEach(function(dd){var rL=db.ref("correction_dictee/"+dd.id+"/autocorrection/"+idL);rL.once("value").then(function(sn){if(sn.exists())rL.update({status:"offline",lastSeen:tL,deconnecte:tL});});});}catch(e){}   /* [L15f-5] le Suivi le voit sur-le-champ, pour chacune de ses dictées commencées */
+    oublierSessionEleveL15f();   /* [L15f-5] la tablette oublie l'élève */
     if(p.moitie)moitieEffacer(p.moitie);
     setChoisirAutre(false);
     setIdentite(null);setEleveData(null);setNomInput("");setPrenomInput("");setCodeInput("");
@@ -8379,7 +8400,7 @@ function AppEleve(p){
             p.moitie&&p.monBinome&&!p.voisinConnecte?h("p",{style:{fontSize:".88rem",margin:"6px 0 0",color:"#2563eb",fontWeight:600}},"Ton bin\u00f4me : "+p.monBinome.nom):null,
             errMsg&&h("p",{style:{color:"var(--coral)",fontSize:".88rem",margin:"6px 0 0"}},errMsg)
           ),
-          h("button",{className:"btn-sm btn-ghost",onClick:deconnexion},"Me d\u00e9connecter")
+          h("button",{className:"btn-sm btn-ghost",id:"se-deconnecter",onClick:deconnexion},"Se d\u00e9connecter")
         )
       ),
       h("div",{className:"card"},
@@ -8437,7 +8458,7 @@ function AppEleve(p){
 
   function retourListe(){ if(p.moitie)moitieDictee(p.moitie,null); setEleveData(null);setAttente(null);setScreen("mesdictees"); }
 
-  if(screen==="correction") return h(EleveCorrection,{moitie:p.moitie,onEtat:p.onEtat,voisinAide:p.voisinAide,voisinCorrige:p.voisinCorrige,data:eleveData,onBack:retourListe,onExercices:function(){setScreen("exercices")},onCopie:function(){setScreen("copie")},
+  if(screen==="correction") return h(EleveCorrection,{onStyloActif:setStyloActifL15f,onDeconnecter:function(){deconnexionRefL15f.current()},moitie:p.moitie,onEtat:p.onEtat,voisinAide:p.voisinAide,voisinCorrige:p.voisinCorrige,data:eleveData,onBack:retourListe,onExercices:function(){setScreen("exercices")},onCopie:function(){setScreen("copie")},
     histoQuestions:(function(){var m={};(dictees||[]).forEach(function(dd){if(!identite||!eleveData||dd.id===eleveData.dictee.id)return;var f=dd.autocorrection&&dd.autocorrection[identite.cle];var qs=f&&f.questions;if(!qs)return;Object.keys(qs).forEach(function(k){var q=qs[k];if(!q||!q.id||(q.ok!==true&&q.ok!==false))return;if(!m[q.id]||m[q.id].t<q.t)m[q.id]={t:q.t,ok:q.ok}})});return m})()});
   if(screen==="exercices"&&!(eleveData&&eleveData.dictee&&eleveData.dictee.exercicesOuverts)) return h("div",{className:"container fade-up",style:{paddingTop:30}},
     h("div",{className:"card",style:{textAlign:"center"}},
@@ -10021,6 +10042,7 @@ function EleveCorrection(p){
   var sSD=useState(null),sessionDebut=sSD[0],setSessionDebut=sSD[1];
   var sSF=useState(null),styloFin=sSF[0],setStyloFin=sSF[1];
   var sGN=useState(false),garderNoteL15f=sGN[0],setGarderNoteL15f=sGN[1];   /* [L15f] */
+  useEffect(function(){if(p.onStyloActif)p.onStyloActif(!!(styloFin&&styloFin>Date.now()));},[styloFin,Math.floor(Date.now()/5000)]);   /* [L15f-5] pas de bouton pendant le chrono */
   var sNow=useState(Date.now()),now=sNow[0],setNow=sNow[1];
   var sessionPoseeRef=React.useRef(false),styloDecideRef=React.useRef(false);
   var sHe=useState(null),heure=sHe[0],setHeure=sHe[1];
@@ -10371,7 +10393,7 @@ function EleveCorrection(p){
   useEffect(function(){   /* [L13] la séance lancée pendant que l'élève attend : sa session commence alors */
     if(!loading&&heure&&!sessionPoseeRef.current&&!finishedRef.current){sessionPoseeRef.current=true;db.ref(acRef+"/sessionDebut").set(Date.now())}
   },[heure,loading]);
-  useEffect(function(){if(horsClasseL13()&&now>=ouvHC+45*60000&&p.onBack)p.onBack();},[now,heure,heureLue]);   /* [L13] à zéro : « Mes dictées », sans phrase */
+  useEffect(function(){if(horsClasseL13()&&now>=ouvHC+45*60000){if(p.onDeconnecter)p.onDeconnecter();else if(p.onBack)p.onBack();}},[now,heure,heureLue]);   /* [L15f-5] la fin des 45 min hors classe : il se déconnecte */   /* [L13] à zéro : « Mes dictées », sans phrase */
   var _fin=finEffL13();
   var rapide=(finished&&styloFin>0&&now<styloFin+(p.voisinCorrige?30000:0))||(!!_fin&&now<_fin&&_fin-now<=5*60000);
   useEffect(function(){var t=setInterval(function(){setNow(Date.now())},rapide?1000:10000);return function(){clearInterval(t)}},[rapide]);

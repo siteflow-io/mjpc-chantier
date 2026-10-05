@@ -302,3 +302,38 @@ Tests pour toi : aucun.
 
 05/10/2026 18:34 (heure de mon espace de travail, non vérifiée)
 MEMO
+
+---
+
+## TOUR 8 — Paul
+
+Paul envoie une capture d'écran, sans texte (pièce `pieces/T8-paul-claude-code-environnement.png`) : claude.ai/code, le menu de l'environnement ouvert (« Local — Télécharger », « Cloud › », « Contrôle à distance › ») ; environnement « CODE BOULOT » ; dépôt `monsieurjaipascompris`, branche `main` ; mode « Auto » ; Opus 5.5, « Moyen ».
+
+---
+
+## TOUR 8 — Claude (conscience n°13)
+
+Capture lue : l'environnement s'appelle « CODE BOULOT » ; le dépôt sélectionné est la production ; le mode est « Auto ». Réponse : 35.3 sur sa capture, et les deux choix du point 36.
+
+Réponse mot pour mot :
+
+C'est la bonne fenêtre. Ton environnement ne s'appelle pas « Default » mais « CODE BOULOT » : c'est lui qu'on règle.
+
+35.3, à partir de ta capture :
+- survole « Cloud › » : la liste de tes environnements s'ouvre ;
+- survole « CODE BOULOT » : une petite roue dentée apparaît à droite, clique-la ;
+- dans la fenêtre qui s'ouvre, à « Network access » (« Accès réseau » si c'est traduit), choisis « Full » (« Complet ») ;
+- enregistre.
+
+Deux choses vues sur ta capture, pour le point 36 :
+- **le dépôt sélectionné est `monsieurjaipascompris`, c'est-à-dire la production.** Au lancement, clique dessus et choisis `mjpc-chantier` : l'exécutant ne doit jamais partir de la production ;
+- **le mode est « Auto ».** Pour lui, choisis « Accept edits » : clique sur « Auto » pour voir la liste.
+
+**En attente de toi**
+
+34. Tu lis le mandat joint à ma réponse du tour 4 et tu me dis « ok », ou ce qui ne va pas. Je le dépose au sas et je te le dis.
+
+Tests pour toi : aucun.
+
+05/10/2026 18:39 (heure de mon espace de travail, non vérifiée)
+MEMO

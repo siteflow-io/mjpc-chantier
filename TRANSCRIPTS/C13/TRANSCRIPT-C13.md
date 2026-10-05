@@ -220,3 +220,51 @@ Tests pour toi : aucun ; ton geste, c'est le point 34.
 
 05/10/2026 18:27 (heure de mon espace de travail, non vérifiée)
 MEMO
+
+---
+
+## TOUR 6 — Paul
+
+Texte de Paul, mot pour mot :
+
+> 35, comment je fais CONCRETEMENT
+
+---
+
+## TOUR 6 — Claude (conscience n°13)
+
+Lu (skill produit, puis documentation Claude Code : web-quickstart, cloud-environments ; un signalement GitHub sur Playwright en réseau « Trusted »). Le sas et la production sont publics (clonés sans jeton). La liste des domaines autorisés par « Trusted » ne contient aucun domaine de Playwright. Réponse : le point 35 en gestes ; « Full » recommandé pour le téléchargement de Chromium.
+
+Réponse mot pour mot :
+
+Le point 35, pas à pas. C'est à faire une seule fois, dans Chrome. Je n'ai pas l'interface sous les yeux : je suis la documentation d'Anthropic.
+
+35.1 Ouvre https://claude.ai/code avec ton compte Claude habituel. Le site te demande aussitôt de connecter GitHub. Clique : GitHub s'ouvre sur une page d'autorisation, tu cliques « Authorize », et tu reviens sur claude.ai/code.
+
+35.2 Installe l'application Claude sur GitHub, pour le seul dépôt du sas :
+- ouvre https://github.com/apps/claude/installations/new ;
+- choisis le compte `siteflow-io` ;
+- coche « Only select repositories » et sélectionne `mjpc-chantier` ;
+- clique « Install ».
+
+La documentation l'exige pour qu'une session travaille dans un dépôt privé. Pour le sas, qui est public, je ne sais pas si c'est indispensable : installe-la quand même, ça évite d'y revenir. Ne sélectionne pas la production : l'exécutant n'a rien à y écrire.
+
+35.3 Un environnement nommé « Default » est créé tout seul pour ton forfait. Change une seule chose :
+- au-dessus de la zone où l'on écrit, clique le petit nuage marqué « Default » ;
+- passe la souris sur « Default » et clique la roue dentée qui apparaît ;
+- dans « Network access », choisis « Full » ;
+- enregistre.
+
+Pourquoi : les bancs doivent télécharger leur navigateur de test. Le réglage d'origine, « Trusted », ne laisse passer qu'une liste de sites où celui de Playwright ne figure pas, et un utilisateur a signalé que l'installation de Playwright y échoue.
+
+35.4 C'est tout pour la mise en place. Si un écran ne ressemble pas à ce que je décris, envoie-moi une capture.
+
+Pour plus tard (point 36, dans la même page, une fois le mandat déposé) :
+- sous la zone d'écriture, le sélecteur de dépôt : choisis `siteflow-io/mjpc-chantier` ;
+- à côté, le mode : choisis « Accept edits », pour qu'il travaille et pousse sa branche sans te demander d'accord à chaque fichier ;
+- colle la phrase, puis Entrée.
+
+Tests pour toi : aucun. Le 35 se fait quand tu veux ; ce qui débloque la suite reste le 34, ton « ok » sur le mandat.
+
+05/10/2026 18:30 (heure de mon espace de travail, non vérifiée)
+MEMO

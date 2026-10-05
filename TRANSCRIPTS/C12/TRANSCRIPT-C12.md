@@ -13810,3 +13810,29 @@ Joue-la ; dis « ok » et j'écris L15i au complément (après L15f-b, avant L15
 05/10/2026 06:52 MEMO
 
 ---
+
+## TOUR 460 — Paul
+
+Texte de Paul, mot pour mot :
+
+> test "cloturer l'heure", et vois ce qui se passe chez l'élève.
+
+---
+
+## TOUR 460 — Claude (conscience n°12)
+
+Testé dans la maquette : « Clôturer l'heure » ne change rien chez l'élève connecté (copie ouverte, « Regagner des points », session gardée ; hub cloture:true) — la clôture n'agit qu'à la prochaine ouverture (L13). Cadré : L15f-b (129 c) doit déconnecter l'élève déjà connecté à la clôture ; L15i s'appuie dessus. Capture.
+
+Réponse mot pour mot :
+
+Testé dans la maquette (l'app réelle 6.7.0-L16a), un élève **en cours** d'autocorrection sur sa tablette, et toi qui cliques « ■ Clôturer l'heure » au Suivi :
+
+465. **Chez l'élève, rien ne bouge.** Même onglet, sans rechargement : sa copie reste ouverte, il continue à cliquer ses mots, **« Regagner des points » est toujours là**, sa session est toujours sur la tablette ; l'heure au hub dit bien `cloture: true`. Mesuré, capture ci-dessus. Le bouton promet pourtant « Ferme les questions pour toute la classe et libère les tablettes » — **il ne libère rien** : aujourd'hui (L13/L13b), la clôture n'agit qu'**à la prochaine ouverture** (l'élève qui rouvre après est « hors classe, 45 minutes ») ; sur une tablette déjà ouverte, seule la fin des questions au moment de répondre est fermée (`finSession`), pas l'écran.
+466. **Ce que ça cadre** : la clôture doit être **suivie d'effet sur-le-champ** chez l'élève connecté — c'est exactement le point (c) de 129 (déconnexion automatique à la clôture) que j'ai mis dans L15f-b : à la clôture, la tablette **se déconnecte seule** (session effacée, retour au portail), ses questions sont closes, et s'il revient, il est hors classe pour 45 minutes (ou derrière le verrou si tu as fermé « sans reprise »). « Fermer la séance » (132) = cette clôture + le verrou. Rien à ajouter au cadrage : **L15f-b règle 465**, L15i s'appuie dessus.
+467. **Une chose à retirer de la maquette** : l'écran de pause et l'écran « séance fermée » s'affichent pour **tout** élève connecté, même celui qui a fini (c'est voulu : tu bloques toutes les tablettes).
+
+Dis « ok » et j'écris L15i ; je dirai à l'exécutante, pour L15f-b, que la clôture doit déconnecter **l'élève déjà connecté**, pas seulement celui qui rouvre.
+
+05/10/2026 07:05 MEMO
+
+---

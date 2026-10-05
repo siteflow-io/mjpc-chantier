@@ -14495,3 +14495,33 @@ Oui, c'est exactement ça, et ça marche : **la conscience n°13 en chat** (tu l
 05/10/2026 16:45 MEMO
 
 ---
+
+## TOUR 488 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok donc je n'ai plus que la conscience à gérer en faisant ça? livré.
+
+---
+
+## TOUR 488 — Claude (conscience n°12)
+
+Audit L15h-1 : base L15g-c, 6.7.0-L15h (+3 345 o), type C, forfait, aucune écriture de reclassement ; rapport reconfirmé au hub (Hugo 9/5, Turing 3/2, Dylan 11/8, Franklin 4/4) ; bancs L15h-1 VERT 8/8 (rouge sur L15g-c), L12, L11, L15g, L16a, L15f-b verts ; phrase « Orthographe, accents… » à trancher ; L15i déposée (12:47), à auditer après. Verdict : ça va ; rayer le rapport → L15h-2.
+
+Réponse mot pour mot :
+
+Oui : en faisant ça, tu n'as plus que **la conscience** à gérer (et tes deux gestes : « continuer » et « promeus »).
+
+**Audit de L15h-1** (« le type C et le reclassement à blanc », `LIVRAISONS/DICTEE-CORRECTION/L15h/`) — et, mesuré au sas, **elle a aussi déposé L15i** (12:47, suspendre / fermer), partie de L15g ; elle dit elle-même qu'elle la reprendra sur la dernière promue : je l'auditerai après.
+
+520. **Le fichier** : base = L15g-c promue (`4b5ad28f…`, vérifiée) → **6.7.0-L15h, 903 274 o (+3 345)**, md5 `a5d6a057…` ; 16 lignes retirées, 33 ajoutées ; `node --check` 0 erreur. **Vérifié** : le type **C** (accent aigu / grave / circonflexe / tréma, majuscule, trait d'union ; jamais la cédille, jamais un homophone grammatical), la touche **C** et le bouton « C Accent / maj. » en rapide, l'entrée « C » au menu du mode texte, la recopie demandée, les formes capitalisées et listées par type, **au Brevet dans le forfait** (0,5 par 4, plafond 2), en Préparée à l'unité (0,5) ; la fiche de l'élève dit « Accent », « Majuscule », « Trait d'union » ; **aucune écriture de reclassement au hub** (0 occurrence).
+521. **Le rapport à blanc, reconfirmé par moi au hub, à l'instant** : **Hugo 9 reclassables sur 5 copies · Turing 3 sur 2 · Dylan 11 sur 8 · Franklin 4 sur 4 · brevets blancs 3E 0** — mes comptes sont exactement les siens (mes 9/4 et 8/4 du 03/10 étaient d'avant tes corrections). En Préparée **aucune note ne change** (C et L coûtent 0,5) ; au Brevet, **8 copies montent de 0,5 à 1 point**. Deux cas limites que **tu tranches en rayant** : « cela → ce-là » (trait d'union **et** accent) et « même → mémé » (un autre mot, mais mécaniquement un accent).
+522. **Les bancs, rejoués par moi** : L15h-1 **VERT, 8 vérifications** (la règle sur 11 cas — « eleve », « paris », « peut-etre », « ce-là », « elevé » → C ; « facon », « a », « ou », « sur », une lettre changée, une recopie vide → jamais ; le forfait Brevet 4 C → 0,5, 9 C → 1, 9 C + 10 P → 2 ; le menu et la touche C en texte ; le bouton et la touche C en rapide ; les objets de L10 pour C ; la fiche en mots simples) ; **rouge sur L15g-c** ; L12, L11 (accordés), L15g, L16a, L15f-b : verts ; son banc unique vert, 0 échec, 36 étapes.
+523. **Une phrase à trancher** (elle l'a laissée) : la fiche de l'élève décrit encore le L par « Orthographe, accents, majuscules… » — devenu faux. Je propose **« Orthographe du mot »** pour L, à côté de « Accent, majuscule ou trait d'union » pour C ; dis oui ou donne tes mots, et ça entre dans L15h-2.
+524. **Verdict : ça va. Tu peux promouvoir L15h-1** (le type C existe, rien n'est reclassé) — dette **126** en partie (le type) ; puis **tu rayes le rapport** (`RAPPORT-A-BLANC-L15h1.md`, 27 lignes) et tu dis « ok » → L15h-2 reclasse (corbeille d'abord, compté) et solde 126. Captures ci-dessous : la touche C en rapide ; le verso de la fiche.
+
+Tests, après promotion (https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?v=6.7.0) : 1) ⇧R sur une copie des Dylan, un mot sans erreur : la touche **C** → recopie demandée → « Accent, majuscule ou trait d'union » ; 2) mode texte : clic sur un mot → « C Accent / maj. » au menu ; 3) Préparation → Barème « Brevet » → « Voir le profil » : C au forfait ; 4) une fiche d'élève (Fiches élèves) : « Accent » / « Majuscule » au verso, rien de technique.
+
+05/10/2026 17:05 MEMO
+
+---

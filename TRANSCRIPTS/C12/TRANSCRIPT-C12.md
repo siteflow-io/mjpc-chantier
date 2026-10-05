@@ -14291,3 +14291,27 @@ Reste (b) : l'adresse des messages vers le profil de l'élève — « je ne sais
 05/10/2026 14:05 MEMO
 
 ---
+
+## TOUR 479 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok donc c'est le chantier prioritaire, il passe avant tout. en effet, je fais ma séance d'autocorrection demain, donc je veux que les commentaires d'analyse des erreurs soient parfaits pour demain, et que ça commence déjà à construire le profil longitudinal (pour le reveal, plus tard). Par ailleurs, quelque chose à traiter en micro: quand j'importe une dictée, par exemple à trous, je ne sais pas quel est le mode (A B C, mais je n'ai pas le libellé complet, donc je ne sais pas la correspondance). Enfin, l'exécutant a livré plusieurs fois je pense.
+
+---
+
+## TOUR 479 — Claude (conscience n°12)
+
+Micro L15g-b promu (libellés des modes ; dette 134 ✔) ; mesuré : aucune livraison depuis L15g ; complément : L15.1 prioritaire (ordre, découpage a / b-1 / b-2, événements du profil branchés vers /profil/<eleve>/events, tranché par la conscience) ; phrase pour l'exécutante.
+
+Réponse mot pour mot :
+
+503. **Le micro est fait et promu** : **6.7.0-L15g-b** (commit `265d95c6c2f1`, bit à bit, 899 808 o) — à l'import et dans la fenêtre de chaque mot, les modes portent leur libellé : **A — 3 propositions à cocher · B — Trou simple (l'élève écrit) · C — Trou + indice grammatical**, et la ligne dit « 12 mots · mode A (3 propositions à cocher) par défaut · sur 10 ». Registre 134 ✔, journal, point de retour. Test : Importer depuis un PDF → clique un mot → le sélecteur « Mode pour ce mot ».
+504. **L'exécutante n'a rien déposé depuis L15g** : mesuré au sas (les commits et les dossiers) — aucune L15h, ni L15i, ni L15j. Si elle t'a dit « livré », c'est sans dépôt : demande-lui où.
+505. **L15.1 passe avant tout, pour demain** — écrit au complément, en tête : l'ordre devient **L15.1a → L15.1b-1 → L15.1b-2**, puis L15h, L15i, L15j. **L15.1a** = le rapport à blanc, **déposé aujourd'hui** (une ligne par erreur des 3E, 4E et Hugo : forme → mot, catégorie, commentaire proposé dans tes mots, « reconnu / autre » ; le taux par catégorie) — **tu le relis ce soir, tu ratures** ; **L15.1b-1** = la dictée (l'analyse par écart, les catégories et homophones comme objets au hub avec seed, les trois lecteurs, Réglages = la fenêtre avec le bouton IA / Vérifier / Injecter, les alias proposés écrits dans ta taxonomie en statut « proposé », le lien profond vers le Panneau prof, **et les événements du profil branchés** — j'ai tranché l'adresse, celle de ta doctrine du 8 mai : `/profil/<élève>/events/<horodatage>`, un événement par erreur avec sa catégorie, ses notions validées et ses notions « en attente », pour que le profil commence à se construire demain sans rien dire en silence ; dis-moi si tu veux l'autre adresse) ; **L15.1b-2** = le site (l'onglet « Correspondances » de l'éditeur de taxonomie pour valider les alias) — s'il n'est pas prêt pour demain, tu valides en session, et le reste marche.
+
+Ta phrase pour elle, maintenant : **« Arrête L15h (rien n'est déposé). L15.1 passe avant tout — lis l'en-tête du complément et toute la section L15.1 (elle a beaucoup changé aujourd'hui) : dépose L15.1a (le rapport à blanc) dès que possible, puis L15.1b-1 ; ma séance est demain. »**
+
+05/10/2026 14:50 MEMO
+
+---

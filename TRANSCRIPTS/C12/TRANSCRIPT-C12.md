@@ -13862,3 +13862,27 @@ Tes tests, après promotion (https://siteflow-io.github.io/monsieurjaipascompris
 05/10/2026 07:25 MEMO
 
 ---
+
+## TOUR 462 — Paul
+
+Texte de Paul, mot pour mot :
+
+> promeus.
+
+---
+
+## TOUR 462 — Claude (conscience n°12)
+
+Promotion 6.7.0-L15f-b (commit 9d9938ff21d9, bit à bit) ; protocole : dettes 111/112/113/114/129 ✔, journal, point de retour, où-trouver-quoi. Tests donnés ; L15g ensuite (L15i attend le « ok » sur T459).
+
+Réponse mot pour mot :
+
+Promu : `correction_dictee.html` **6.7.0-L15f-b**, commit `9d9938ff21d9`, **bit à bit** (888 151 o, md5 `5e6ca2c5…`) ; registre n°12 · **111, 112, 113, 114, 129 ✔** ; journal, point de retour (L16a), où-trouver-quoi à jour.
+
+**Tes tests** : https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?v=6.7.0 → 1) bac à sable, un élève : pendant le chrono du stylo vert, aucune note derrière ; à zéro, l'écran de fin ; 2) « Regagner des points » : la consigne en clair, les deux boutons ; « Je garde ma note » → plus de question ; 3) une question juste : « 2,5/5 + 1,25 regagné », le tableau, la phrase à recopier ; 4) masque les copies pendant qu'un élève a la sienne ouverte : il revient à « Mes dictées » sans rechargement ; 5) « Se déconnecter » chez l'élève → le portail ; « Déconnecter tous » au Suivi → les tablettes reviennent au portail ; « Clôturer l'heure » → pareil ; les Hugo : « Déconnecter » sur tes deux élèves de ce matin.
+
+Il me faut ton **« ok » sur la maquette T459** (suspendre / fermer) pour écrire **L15i** ; en attendant, l'exécutante peut enchaîner **L15g** (les profils de barème, la base, le bilan précis, le branchement MJPC préparé) : **« Continuer — L15g. »**
+
+05/10/2026 07:25 MEMO
+
+---

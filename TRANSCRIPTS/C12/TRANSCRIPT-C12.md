@@ -14009,3 +14009,23 @@ Il te reste 479 (b) à confirmer (la base d'un profil = proposée, la dictée ga
 05/10/2026 09:08 MEMO
 
 ---
+
+## TOUR 468 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Le 479 tu laisses ainsi. L'exécutant est en train de faire l15i
+
+---
+
+## TOUR 468 — Claude (conscience n°12)
+
+479 tranché et écrit au complément (touche C avec L15h ; base du profil = proposée, la dictée garde sa Note sur). Attend L15i.
+
+Réponse mot pour mot :
+
+Écrit au complément tel quel : la touche « C » arrive avec L15h ; la base d'un profil est celle proposée quand on choisit le profil, la dictée garde sa « Note sur » — c'est déjà ce que fait la L15g promue, rien à changer. J'attends L15i.
+
+05/10/2026 09:15 MEMO
+
+---

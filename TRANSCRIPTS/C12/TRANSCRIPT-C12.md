@@ -14474,3 +14474,24 @@ Simple : **l'exécutant, oui ; la conscience, non.**
 05/10/2026 16:40 MEMO
 
 ---
+
+## TOUR 487 — Paul
+
+Texte de Paul, mot pour mot :
+
+> oui mais si je lance la conscience avec son mandat pour elle, et qu'ensuite c'est elle qui pousse au sas et l'exécutant lit et ainsi de suite? Normalement ça devrait marcher, non? parce que sinon je ne vois pas l'intérêt d'avoir l'exécutant en cloud sauf à utiliser les 250 doollards
+
+---
+
+## TOUR 487 — Claude (conscience n°12)
+
+Réponse mot pour mot :
+
+Oui, c'est exactement ça, et ça marche : **la conscience n°13 en chat** (tu la lances avec la passation, elle cadre avec toi, elle pousse le mandat et ses compléments au sas) ; **l'exécutant n°13 en session cloud** (tu le lances avec la phrase « lis le mandat au sas », il livre sur une branche) ; la conscience audite la branche, tu promeus. Même flux qu'ici, même sas.
+
+518. **L'intérêt, au-delà des 250 $** : (a) **il travaille quand tu n'es pas là** — tu lances le soir, trois livraisons sont au sas le matin, la conscience les audite dans l'ordre ; (b) **plusieurs sessions en parallèle** si un jour deux livraisons ne se touchent pas ; (c) **plus de jeton dans une conversation** — le dépôt passe par l'app GitHub et par branche, c'est plus propre et plus sûr ; (d) aucun exécutant en chat qui s'arrête parce que sa conversation est pleine.
+519. **Ce qui reste un geste de toi** : relancer (« continuer ») après l'audit de chaque lot de trois, et promouvoir. Rien d'autre ne change.
+
+05/10/2026 16:45 MEMO
+
+---

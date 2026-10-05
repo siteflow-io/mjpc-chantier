@@ -13935,3 +13935,25 @@ Une chose à déclarer : mon atelier (les fichiers de travail du conteneur) a é
 05/10/2026 08:00 MEMO
 
 ---
+
+## TOUR 465 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Non la note d'auto correction reste affichée, aucun problème là dessus. En revanche la note de dictée uniquement si je coche la case.
+
+---
+
+## TOUR 465 — Claude (conscience n°12)
+
+L15j précisée au complément : la note d'autocorrection et l'en-tête restent ; la note de dictée nulle part côté élève sans la case (réglage unique dans Réglages) ; capture T464 de référence ; l'exécutante retrouve l'écran fautif ou le dit.
+
+Réponse mot pour mot :
+
+Pris, et écrit tel quel dans L15j : **la note d'autocorrection (le « 5 /5 », « 0/11 corrigé », le jeu) reste affichée dans tous les cas ; la note de dictée n'apparaît nulle part côté élève tant que la case n'est pas cochée** — une seule case, dans Réglages, qui commande tous les écrans (Mes dictées, l'autocorrection, l'écran de fin, « À savoir », le tableau, la copie rendue, la feuille, le binôme), avec effet immédiat chez l'élève connecté. Ma capture T464 est la référence : sur la L15f-b, case décochée, je n'ai trouvé aucun « /10 » ni « /20 » sur les trois écrans — l'exécutante doit retrouver l'écran où toi tu la vois (sur tes Hugo, peut-être la copie rendue ou l'écran de fin), ou dire qu'il n'y en a plus ; le réglage unique se fait dans les deux cas.
+
+Rien à lui dire maintenant (elle est sur L15g) ; à la promotion : **« Continuer — L15i, puis L15j (au complément). »**
+
+05/10/2026 08:05 MEMO
+
+---

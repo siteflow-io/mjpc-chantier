@@ -14337,3 +14337,23 @@ Réponse mot pour mot :
 05/10/2026 15:30 MEMO
 
 ---
+
+## TOUR 481 — Paul
+
+Texte de Paul, mot pour mot :
+
+> pour le mot long, ce n'est pas un problème en revanche il faut que ce soit performant. déjà, 7 lettres ça ne fait pas un mot long pour moi. Enfin, la découpe doit être vraiment syllabique.
+
+---
+
+## TOUR 481 — Claude (conscience n°12)
+
+Au complément (L15.1) : la ligne reste ; mot long = 3 syllabes ou plus ; vraie césure syllabique (règles énoncées) ; banc de 150 mots des dictées, césure relue par Paul dans le rapport à blanc, 100 % exigé.
+
+Réponse mot pour mot :
+
+Écrit au complément, dans L15.1 : la ligne reste, et devient performante — **« mot long » = trois syllabes ou plus** (plus de seuil en lettres), et **une vraie césure syllabique du français** (une consonne entre deux voyelles part avec la voyelle qui suit ; deux consonnes se séparent sauf les groupes indissociables bl br cl cr dr fl fr gl gr pl pr tr vr ch ph th gn qu gu ; trois consonnes : après la première sauf groupe ; les voyelles composées et les nasales restent ensemble ; les doubles consonnes se séparent ; apostrophes et traits d'union coupent). La preuve : **une liste de 150 mots tirés de tes dictées** avec la césure attendue, que **tu relis dans le rapport à blanc** (une colonne « césure proposée »), et la fonction doit la respecter à 100 %. Le -e muet final est le seul cas que je laisse à ton tranchage au rapport (ca·deau — mais « belle » : bel·le ?).
+
+05/10/2026 15:45 MEMO
+
+---

@@ -14669,3 +14669,36 @@ Pris. Deux choses pour que les deux couples ne se marchent pas dessus :
 05/10/2026 17:20 MEMO
 
 ---
+
+## TOUR 495 — Paul
+
+Texte de Paul, mot pour mot :
+
+> livré
+
+---
+
+## TOUR 495 — Claude (conscience n°12)
+
+Audit L15.1b-1 (première partie) : diff 8/224, objets au hub, césure, Réglages, Bilan ; banc VERT 10/10, L11, L15h-1, L15f-b, vue élève verts ; seconde partie manquante dite (IA, alias, profil) ; dette 142 (phrase à recopier hors sujet). Audit L15h-2 (base L15.1b-1) : banc réel VERT 11/11 ; copie aménagée Hugo n°21 5/10 → 15/20 mesurée au hub (base 20, déduction 5) : à confirmer. Verdicts : L15.1b-1 ça va ; L15h-2 ça va si Paul confirme 549.
+
+Réponse mot pour mot :
+
+Deux livraisons au sas, auditées dans l'ordre (la seconde part de la première) :
+
+**L15.1b-1, première partie — l'analyse des erreurs par l'écart** (`LIVRAISONS/DICTEE-CORRECTION/L15.1b-1/`)
+543. **Le fichier** : base = L15h-b promue (`1a154f38…`, vérifiée) → **6.7.0-L15.1b-1, 941 445 o (+37 562)**, md5 `178cbb58…` ; 8 lignes retirées, 224 ajoutées ; `node --check` 0 erreur. **Vérifié** : le commentaire se déduit de l'écart dès que la forme est connue (le mot d'avant décide verbe / nom : « exhumes » → la personne, « travailles » → le verbe à la place du nom, « loins » → invariable) ; « autre » côté élève, jamais « non reconnu » ; **41 catégories et les paires d'homophones = des objets au hub** (écrits à la première ouverture), avec le seed embarqué ; **chaque erreur recopiée porte sa catégorie** (et l'objet forme de L10) ; **mot long = trois syllabes ou plus, la vraie césure** (« na·tu·rel·lement », « pré·oc·cu·pa·tions »), `vers: false` ; Réglages → « Les commentaires de l'analyse » (les catégories de cette dictée, le commentaire modifiable commun à toutes, « Ajouter une paire d'homophones »), le Bilan avec les non-reconnus ; **ma relecture appliquée cas par cas** (les six ratures, les quatre césures, la règle « consonne + r/l puis i + voyelle »).
+544. **Les bancs, rejoués par moi** : L15.1b-1 **VERT, 10 vérifications** (les objets au hub ; la copie téléchargée : « attention au l, simple ou double », « le -s est en trop », « Mot long — … na·tu·rel·lement », la forme acceptée sans commentaire ; un commentaire réécrit dans Réglages → la copie suivante le reprend sans rechargement ; une paire ajoutée ; la catégorie posée à la correction ; le Bilan ; **la césure relue 150 / 150**) ; L11 (accordé), L15h-1, L15f-b, vue élève : verts ; son banc unique vert, 0 échec, 37 étapes.
+545. **Ce qu'elle n'a pas mis, et qu'elle dit** (seconde partie, après ta séance) : le bouton « 🤖 Prompt IA » / Vérifier / Injecter, les alias proposés dans ta taxonomie, le lien vers le Panneau prof, le cumul « toutes dictées », **et l'événement du profil** — donc **demain, les commentaires sont là, mais le profil ne commence pas encore** ; il pourra être nourri **après coup** : chaque erreur porte déjà sa catégorie au hub, la seconde partie émettra les événements rétroactivement — rien n'est perdu.
+546. **Une chose vue sur sa capture, à régler** : la phrase **« À recopier sur la copie »** (l'ancien moteur, `phraseARecopier`) vise à côté — sur une copie dont les trois erreurs sont une consonne double et deux pluriels, elle dit « je devrai vérifier la terminaison des verbes à l'imparfait ». **C'est un texte que l'élève recopie** : dette **142**, à faire dans la seconde partie (la phrase s'appuie sur les catégories), **ou en micro dès ce soir si tu dis « micro »**.
+547. **Verdict : ça va. Tu peux promouvoir L15.1b-1** — dettes **107 et 136 ✔**. Captures ci-dessous : la copie rendue avec les commentaires de l'écart ; Réglages.
+
+**L15h-2 — le reclassement réel en C** (`LIVRAISONS/DICTEE-CORRECTION/L15h-2/`, **base = L15.1b-1**)
+548. **Le fichier** : 947 771 o (+6 326), md5 `02a8b691…` ; la liste exacte validée (25 erreurs, sans nom), **reclassée une seule fois par dictée, à son ouverture par toi** (corbeille d'abord, une entrée par copie, la note recalculée par la seule fonction, les objets de L10 republiés, une marque de migration, le message compté) ; « ce-là » et « mémé » restent en L. **Son banc (lecture seule du vrai hub, copie locale), rejoué par moi : VERT, 11 vérifications** — 10 / 4 / 9 / 2 = 25, une entrée de corbeille par copie, les deux rayées en L, **aucune note ne baisse**, en Préparée aucune copie ordinaire ne bouge, une seconde ouverture ne refait rien ; au Brevet, 5 notes des Dylan et 3 des Franklin montent (le forfait).
+549. **Une note change, à confirmer par toi** : **la copie aménagée n° 21 des Hugo passe de 5/10 à 15/20**. Mesuré au hub : la version aménagée des Hugo est **sur 20**, mais cette copie gardait sa base 10 (déduction 5, note 5) ; recalculée, elle prend la base 20 **avec la même déduction** : 15/20. C'est la règle que tu as prise avec L15g (la déduction est en points, pas en proportion) — mais c'est une note visible qui monte de 10 points sur 20. **Dis « oui » et L15h-2 est promouvable derrière L15.1b-1 ; dis « non » et je cadre l'exception.**
+
+Tes tests après promotion de L15.1b-1 (https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?v=6.7.0) : 1) les Dylan → Copies → une copie recopiée : sous chaque erreur, « Tu as écrit « … » : … » ; 2) Réglages → « Les commentaires de l'analyse » : réécris un commentaire, quitte le champ ; rouvre la copie : il a changé ; 3) Bilan : « 🔎 Analyse : n erreurs sans commentaire reconnu » ; 4) côté élève (bac à sable) : les mêmes commentaires dans l'analyse de ses erreurs.
+
+05/10/2026 19:05 MEMO
+
+---

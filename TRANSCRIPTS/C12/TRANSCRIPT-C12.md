@@ -14119,3 +14119,26 @@ Dis ce que tu changes (les catégories, les mots, la place), ou « ok », et L15
 05/10/2026 09:55 MEMO
 
 ---
+
+## TOUR 472 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Ok donc là ces catégories se créent au fur et à mesure que je corrige des dictées c'est ça? Il faut que ce soit automatique. Par ailleurs on peut anticiper sur tous les types d'erreurs possibles en en ajoutant d'autres?
+
+---
+
+## TOUR 472 — Claude (conscience n°12)
+
+Au complément (L15.1) : catégories fixes dans le code, classement automatique à la correction, commentaires et homophones éditables par Paul, non-reconnus au Bilan ; liste anticipée (~30, par famille) ; taux de reconnaissance par catégorie au rapport à blanc.
+
+Réponse mot pour mot :
+
+485. **Automatique, oui — mais pas « créées au fil des dictées »** : les catégories sont **fixes dans le code** (chacune est une règle de détection, écrite et testée) ; **chaque erreur recopiée est classée automatiquement** au moment où tu la corriges, sans rien faire ; tu n'édites que **les commentaires** (la page de la maquette) et les **paires d'homophones** (que tu peux ajouter toi-même, effet immédiat) ; ce que la mécanique ne reconnaît pas remonte au Bilan en « non reconnu » — et c'est là qu'on voit s'il manque une catégorie, qu'on ajoute alors par une livraison (pas à la main : une règle de détection, ça se code et ça se banque).
+486. **Anticiper, oui : la liste passe de 13 à une trentaine, par famille, dès L15.1** (écrite au complément) : **accords** (-s/-x, -nt, -e du féminin, le participe passé avec être / avec avoir et COD devant, -eux/-euse, pluriel en -aux) ; **conjugaison** (-é / -er / -ez / -ai / -ais / -ait / -aient, -ons/-ont, -a/-as, -t/-d final, imparfait / passé simple, impératif / infinitif) ; **homophones grammaticaux** (a/à, et/est, son/sont, ou/où, ce/se, ces/ses, c'est/s'est, on/ont, leur/leurs, la/là/l'a, mes/mais, peu/peut, quel/qu'elle, dans/d'en, sans/s'en, ni/n'y, si/s'y, tout/tous, quand/quant/qu'en, près/prêt, plutôt/plus tôt — et les tiens) ; **lexique** (accent — lequel, manquant ou en trop ; consonne double — laquelle ; lettre muette finale ; y/i ; le son [s] s/ss/c/ç/t ; le son [g]/[ʒ] g/gu/ge/j ; les nasales an/en, in/ain/ein, on/om ; o/au/eau ; é/er/ai/ez en fin de nom ; h muet ; m devant b/p ; lettres inversées ; lettre ajoutée ou omise ailleurs) ; **mots** (collé ou coupé, trait d'union, apostrophe/élision, majuscule, cédille, chiffre) ; et « autre » = l'honnête. Le rapport à blanc dira **le taux de reconnaissance par catégorie** et ce qui reste en « autre ».
+
+Si tu vois une confusion de tes élèves qui n'est pas dans cette liste, dis-la : elle y entre avant le code.
+
+05/10/2026 10:05 MEMO
+
+---

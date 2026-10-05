@@ -14142,3 +14142,23 @@ Si tu vois une confusion de tes élèves qui n'est pas dans cette liste, dis-la 
 05/10/2026 10:05 MEMO
 
 ---
+
+## TOUR 473 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Ok ça marche. Donc anticiper au maximum. Et un élève ne doit jamais voir "non reconnue" sur sa dictée ou copie, mais " autre"
+
+---
+
+## TOUR 473 — Claude (conscience n°12)
+
+Au complément (L15.1) : anticiper au maximum (l'exécutant complète la liste depuis les erreurs réelles et le dit) ; côté élève jamais « non reconnu », la catégorie de repli s'appelle « autre » ; « non reconnu » seulement côté professeur.
+
+Réponse mot pour mot :
+
+Écrit au complément : **anticiper au maximum** — l'exécutante complète la liste de toute confusion détectable qu'elle rencontre dans les 514 erreurs des 3E, les 4E et les Hugo, et le dit dans son rapport ; et **côté élève, jamais « non reconnu »** : sur sa dictée, sa copie, son bilan, la catégorie de repli s'appelle **« autre »**, et le commentaire honnête n'emploie ni « non reconnu » ni « catégorie » ; « non reconnu » n'existe que de ton côté (Réglages, Bilan). Rien à dire à l'exécutante maintenant (elle est sur L15h) ; L15.1 vient après L15i et L15j.
+
+05/10/2026 10:15 MEMO
+
+---

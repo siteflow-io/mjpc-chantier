@@ -13836,3 +13836,29 @@ Dis « ok » et j'écris L15i ; je dirai à l'exécutante, pour L15f-b, que la c
 05/10/2026 07:05 MEMO
 
 ---
+
+## TOUR 461 — Paul
+
+Texte de Paul, mot pour mot :
+
+> elle a livré
+
+---
+
+## TOUR 461 — Claude (conscience n°12)
+
+Audit L15f-b : diff 25/80, 6.7.0-L15f-b, textes vérifiés, « Se déconnecter » partout ; banc L15f-b VERT 15/15 (deux navigateurs), déconnexion VERT 7/7 (Se déconnecter, code, Déconnecter, tous, Clôturer), L13 accordé, L13b accordé, L16a, vue élève verts ; captures. Verdict : ça va (111, 112, 113, 114, 129). Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Audit de **L15f-b** (« côté élève + la déconnexion », `LIVRAISONS/DICTEE-CORRECTION/L15f-b/`, reprise sur la L16a), mesuré :
+
+468. **Le fichier** : base = L16a promue (`73f4968e…`, vérifiée) → **6.7.0-L15f-b, 888 151 o (+11 577)**, md5 `5e6ca2c5…` ; 25 lignes retirées, 80 ajoutées ; `node --check` 0 erreur. **Vérifié** : « Ta note de dictée s'affichera à la fin du chrono. » ; **plus aucune infobulle dans l'encart « Regagner des points »** ; « Me déconnecter » a disparu, **« Se déconnecter »** partout côté élève ; la clé du professeur jamais touchée.
+469. **Les bancs, rejoués par moi sur le kit anonymisé** : L15f-b **VERT, 15 vérifications** — le chrono sans note, l'écran de fin à zéro, **la consigne mot pour mot**, « Je garde ma note (n/5) » enregistré et les questions closes, le regain à part (« 2,5/5 + 1,25 regagné »), le tableau « Détail de ton autocorrection », la phrase à recopier avec le regain, ton Suivi « dont +1,25 regagné », le bilan exporté, **masquer / rendre / dépublier répercutés chez l'élève sans rechargement — à deux navigateurs** ; **la déconnexion, à deux navigateurs, VERT, 7 vérifications** — « Se déconnecter » → le portail de code, la tablette l'a oublié, le Suivi « Déconnecté » au même instant ; il retape son code → sa dictée revient ; le bouton est aussi sur sa copie ; **« Déconnecter » / « Déconnecter tous » du Suivi → l'élève revient au portail sans rechargement ; « Clôturer l'heure » → idem** (c'est le 465 de ce matin : réglé) ; L13 accordé (la fin des 45 min déconnecte), L13b accordé, L16a, vue élève : verts ; son banc unique vert, 0 échec, 34 étapes.
+470. **Verdict : ça va. Tu peux promouvoir L15f-b** — dettes **111, 112, 113, 114, 129**. Captures ci-dessus : le regain en clair avec « Je garde ma note », le bilan avec le regain, le Suivi avec « Déconnecter » et un élève « Déconnecté ».
+
+Tes tests, après promotion (https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?v=6.7.0) : 1) bac à sable, un élève : pendant le chrono du stylo vert, aucune note derrière ; à zéro, l'écran de fin ; 2) l'encart « Regagner des points » : la consigne en clair, les deux boutons ; « Je garde ma note » → plus de question ; 3) réponds juste à une question : « 2,5/5 + 1,25 regagné », le tableau, la phrase à recopier ; 4) masque les copies pendant qu'un élève a la sienne ouverte : il revient à « Mes dictées » sans rechargement ; 5) « Se déconnecter » chez l'élève → le portail ; « Déconnecter tous » au Suivi → les tablettes reviennent au portail ; « Clôturer l'heure » → pareil ; les Hugo : « Déconnecter » sur tes deux élèves de ce matin. Puis « continuer » pour **L15i** (suspendre / fermer) — que j'écris dès ton « ok » sur la maquette T459.
+
+05/10/2026 07:25 MEMO
+
+---

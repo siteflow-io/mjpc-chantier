@@ -14264,3 +14264,30 @@ En clair, en partant de ta classe.
 05/10/2026 13:35 MEMO
 
 ---
+
+## TOUR 478 — Paul
+
+Texte de Paul, mot pour mot :
+
+> D'accord mais les commentaires? Je les retrouve dans chaque onglet réglages de chaque dictée, mais on est d'accord qu'ils sont tous au même endroit au hub? Et que chaque dictée lit les commentaires qui correspondent aux erreurs de cette dictée? Enfin, pour la taxo et les erreurs, oui, sur mjpc, mais je dois pouvoir ouvrir depuis correction dictée. Afin de ne pas devoir toujours repasser par l'onglet taxo de mjpc. Enfin, il y a bien une capitalisation entre dictées, sur les commentaires et les catégories d'erreurs ?
+
+---
+
+## TOUR 478 — Claude (conscience n°12)
+
+Au complément (L15.1 ⑦ bis) : un seul lieu au hub pour tout, Réglages = fenêtre filtrée par les erreurs de la dictée, lecture par catégorie, lien profond vers l'éditeur taxo (Correspondances · correction_dictee), capitalisation entre dictées (cumul des non-reconnus).
+
+Réponse mot pour mot :
+
+Oui aux trois, et c'est écrit au complément :
+
+499. **Un seul endroit au hub.** Les commentaires, les catégories, les paires d'homophones et leurs rattachements vivent **à un seul endroit** (sous `site/analyses/` et dans ta taxonomie), **pour toutes les dictées**. L'onglet Réglages d'une dictée n'est qu'**une fenêtre sur ce lieu unique** : il te montre d'abord les commentaires des catégories **présentes dans les erreurs de cette dictée** (les autres repliées, à portée de clic), et ce que tu y modifies vaut aussitôt pour toutes les dictées — pas de copie par dictée.
+500. **Chaque dictée lit ce qui lui correspond.** Une copie n'affiche que les commentaires des catégories de ses propres erreurs ; le Bilan compte par catégorie et par notion pour cette dictée, et « toutes dictées » en cumul.
+501. **Ouvrir depuis la dictée.** Un bouton dans la dictée **ouvre directement l'éditeur de taxonomie du Panneau prof, sur « Correspondances · correction_dictee »** (nouvel onglet, lien profond — sans repasser par l'onglet Taxonomie de MJPC à la main) ; quand tu reviens, la dictée a déjà relu tes validations.
+502. **La capitalisation entre dictées, oui.** Catégories, commentaires, homophones, rattachements et non-reconnus **s'accumulent** dictée après dictée : une catégorie ajoutée depuis les Hugo sert aux Dylan ; les non-reconnus se cumulent au niveau du site, et l'IA les reçoit tous dans son prompt.
+
+Reste (b) : l'adresse des messages vers le profil de l'élève — « je ne sais pas encore » est une réponse valable (la porte sera préparée, le chantier du profil tranchera).
+
+05/10/2026 14:05 MEMO
+
+---

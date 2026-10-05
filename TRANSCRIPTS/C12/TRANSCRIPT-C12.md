@@ -13985,3 +13985,27 @@ Tes tests, après promotion (https://siteflow-io.github.io/monsieurjaipascompris
 05/10/2026 08:50 MEMO
 
 ---
+
+## TOUR 467 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Promeus
+
+---
+
+## TOUR 467 — Claude (conscience n°12)
+
+Promotion 6.7.0-L15g (commit be4586dae7d4, bit à bit) ; protocole : dettes 125/130/131 ✔, journal, point de retour, où-trouver-quoi. Tests donnés ; 479 (b) à confirmer ; L15i puis L15j ensuite.
+
+Réponse mot pour mot :
+
+Promu : `correction_dictee.html` **6.7.0-L15g**, commit `be4586dae7d4`, **bit à bit** (899 599 o, md5 `b8b82df7…`) ; registre n°12 · **125, 130, 131 ✔** ; journal, point de retour (L15f-b), où-trouver-quoi à jour.
+
+**Tes tests** : https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?v=6.7.0 → 1) les Hugo → Préparation → Barème « Préparée » ; « ⧉ Dupliquer » → « Ciblée », G à 0,5, répétition **par famille**, « leur/leurs », Enregistrer le profil ; choisis « Ciblée », Enregistrer → « n copies recalculées… corbeille », les 4 copies à leur/leurs changent ; 2) remets « Préparée » → les notes reviennent ; 3) Données → Bilan : « Moyenne — 25 copies ordinaires : …/20 » et « 4 copies aménagées, à part, sur leur base : …/20 » ; 4) « Brevet » : « 👁 Voir le profil », rien de modifiable ; 5) l'accueil : « barème Préparée » sur la ligne.
+
+Il te reste 479 (b) à confirmer (la base d'un profil = proposée, la dictée garde sa « Note sur » — je le mets ainsi au complément si tu dis oui). Puis à l'exécutante : **« Continuer — L15i (suspendre / fermer), puis L15j (la note : un seul réglage), au complément. »**
+
+05/10/2026 09:08 MEMO
+
+---

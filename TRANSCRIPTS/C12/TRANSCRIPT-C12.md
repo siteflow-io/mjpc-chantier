@@ -14553,3 +14553,23 @@ Tests : https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.ht
 05/10/2026 16:40 MEMO
 
 ---
+
+## TOUR 490 — Paul
+
+Texte de Paul, mot pour mot :
+
+> il faut que la fiche de préparation issue du repérage des pièges sorte au format canonique de l'éditeur mjpc, afin que je puisse la lier dans mon futur déroulé. pour le sélecteur avec le type d'erreur, il le faut, oui.
+
+---
+
+## TOUR 490 — Claude (conscience n°12)
+
+Mesuré dans CADRAGE-4 (§1.7 les mots : feuille / fiche / document / diapo / bloc ; §3 le contrat des objets, le bloc « fiche » lié seulement à une fiche d'une feuille du chapitre). Complément : la fiche de préparation = une fiche dans une feuille du chapitre, sous contrat, liable dans le déroulé, notions L15.1, format tenu par la n°13 ; 139 confirmé. Passation C13 : point 6 bis.
+
+Réponse mot pour mot :
+
+Pris, les deux. **Le sélecteur du type** (G / L / C dans la fenêtre d'un mot) : confirmé dans L15j. **La fiche de préparation au format canonique** : écrit au complément dans les mots de ton cadrage 4 du déroulé (§1.7 : « la feuille, c'est le support vierge du site ; la fiche, c'est un contenu pédagogique qui va dans une feuille » ; §3 : le bloc « fiche » d'une diapo n'existe que lié à une fiche existante d'une feuille du chapitre, sous le contrat des objets — « un objet inconnu ou mal formé s'affiche comme objet non lisible ») : la dictée écrira donc **une fiche dans une feuille du chapitre que tu choisis** (ou « sans chapitre », en attente), avec ses notions, **au format et au nœud de l'éditeur de MJPC — mesurés dans `index.html` au cadrage, jamais inventés** ; et j'ai ajouté le point à la passation de la n°13 : **le format de la fiche est un seul objet pour les deux couples** — la n°13 le tient (c'est l'éditeur du chapitre), la n°12 le consomme, aucune ne l'invente seule.
+
+05/10/2026 16:50 MEMO
+
+---

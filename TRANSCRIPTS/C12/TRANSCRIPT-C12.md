@@ -14377,3 +14377,27 @@ Mesuré dans ta taxonomie : le domaine « Le vers et les sons » (dom-versificat
 05/10/2026 15:55 MEMO
 
 ---
+
+## TOUR 483 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok. pendant que l'exécutant continue, est ce que je peux lancer un autre couple conscience exécutant sur le déroulé qu'on était en train de faire? et le faire en cowork, ça peut être intéressant?
+
+---
+
+## TOUR 483 — Claude (conscience n°12)
+
+Mesuré : pas de mandat Déroulé au sas ; le déroulé est dans C12 tours 1-103 + addendum doctrine 20/08. Réponse : oui, périmètres disjoints par fichier (index.html vs correction_dictee.html, point de contact préparé), dispositif propre C13, passation déroulé proposée ; Cowork : « je ne sais pas », essai sur une livraison courte de l'exécutant, conscience en chat.
+
+Réponse mot pour mot :
+
+Oui, à trois conditions, et une réserve sur Cowork que je ne peux pas lever d'ici.
+
+509. **Oui pour un second couple, si les périmètres ne se touchent pas par fichier.** Le déroulé vit dans `index.html` (la vue Déroulé d'une séance, les coutures de la conscience n°7) ; la dictée vit dans `correction_dictee.html`. **Jamais deux exécutants sur le même fichier** — c'est le croisement qu'on a payé avec L15d. Le seul point de contact est déjà préparé de mon côté (L15g : `heure.source`, `heure.seanceId`, le marqueur `[BRANCHEMENT MJPC — déroulé]`) : le déroulé pourra remplir `seanceId` sans toucher à la dictée. Une seule prod, chaque conscience promeut son fichier, et chacune lit le registre des dettes (section propre).
+510. **Un dispositif propre pour la n°13** : son transcript (`TRANSCRIPTS/C13/`), son mandat (`MANDATS/MANDAT-DEROULE.md`), ses livraisons (`LIVRAISONS/DEROULE/`), le même protocole (sas, jetons dans la conversation, bancs par le geste, banc unique, captures, promeus sur captures). Mesuré : **il n'existe pas de mandat Déroulé au sas** — le chantier déroulé est dans les tours 1 à 103 de mon transcript (l'éditeur de diaporama, la vue Déroulé, les coutures n°7 « deroule97 ») et dans l'addendum du 20/08 de la doctrine (passation C6→C7). Pour que la n°13 ne reparte pas de zéro, **je peux écrire une passation « déroulé » depuis mes tours 1-103 et ces documents** (ce qui était cadré, décidé, promis, laissé) — dis-le, et je la dépose au sas.
+511. **Cowork — je ne sais pas, et je ne veux pas te le vendre.** Le protocole d'un exécutant ici tient à trois gestes : pousser au sas et en prod **par l'API GitHub avec les jetons**, **exécuter les bancs Playwright** dans un conteneur, **lire et écrire le hub**. Je n'ai pas mesuré que Cowork fait ces trois choses comme le chat le fait ; la **conscience**, elle, doit rester en chat (cadrage, maquettes sur l'app réelle, audits rejoués). Ce que je propose : **essaie Cowork sur l'exécutant seulement, avec une première livraison courte** (une seule, close par « continuer »), et la n°13 juge sur pièces : le dépôt au sas est-il là, le banc unique a-t-il tourné, les captures sont-elles d'écran entier ? Si oui, on continue ; sinon, l'exécutant repasse en chat sans rien perdre.
+
+05/10/2026 16:05 MEMO
+
+---

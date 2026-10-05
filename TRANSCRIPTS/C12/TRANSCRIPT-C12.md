@@ -14162,3 +14162,29 @@ Réponse mot pour mot :
 05/10/2026 10:15 MEMO
 
 ---
+
+## TOUR 474 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Donc il faut que en haut de l'écran des commentaires, il y ait un bouton ia json, qui produit un prompt avec l'ensemble des erreurs et notamment les non reconnues, et qu'elle sorte un json injectable qui ajoute les nouvelles catégories. Ainsi, ni une erreur ni une catégories ne sont des en dur. Ce sont des objets qui vivent en tant que tels, avec leur id interne. Par ailleurs, fais le lien avec la taxonomie et dis moi comment on rattache tout ça.
+
+---
+
+## TOUR 474 — Claude (conscience n°12)
+
+Mesuré : mjpcPromptComposer / mjpcInjecterAvecArchive (socle), competenceLabel en dur. Maquette v2 (T474) : bouton « Prompt IA — catégories (JSON) » + fenêtre (prompt, copier, coller, vérifier, injecter). Complément L15.1 : catégories et homophones = objets au hub avec motifs déclaratifs (moteur générique seul en dur), erreur → categorie, taxonomie au hub, rattachement erreur → catégorie → compétence ← exercice ; vérification sur exemples, injection avec archive, reclassement compté.
+
+Réponse mot pour mot :
+
+Pris, et mesuré avant d'écrire : l'app a déjà le socle qu'il faut — `mjpcPromptComposer` (présentation, directives, cadrage, format, vocabulaire) et `mjpcInjecterAvecArchive` (archive avant, abandon si l'archive échoue, verdict), ceux de la banque d'exercices. La maquette v2 (ci-dessus, pièce T474) montre le bouton en haut de l'écran et sa fenêtre. Ce que j'ai écrit dans L15.1 :
+
+487. **Rien en dur — des objets avec leur id** : **une catégorie** = un objet au hub (`site/analyses/categories/<id>` : id, nom, famille, **compétence**, motifs, commentaire, exemples, actif, origine « livré / IA / Paul », version) ; **ses règles de détection sont des données** (« motifs » : suffixe, lettre, accent, double, homophone, casse, tiret, collage, regex) lues par un petit moteur générique — la seule chose en dur, c'est ce moteur ; les 30 catégories livrées sont écrites au hub comme objets à la première ouverture ; **une paire d'homophones** = un objet (`a, b, règle, D1.5`) ; **une erreur** (dans la copie et dans l'objet forme de L10) porte `categorie: <id>`, recalculée si les catégories changent.
+488. **Le bouton « 🤖 Prompt IA — catégories (JSON) »** : le prompt donne **la taxonomie, les catégories existantes et toutes les erreurs** (forme → mot, type, catégorie ou NON RECONNUE — les non reconnues en tête, avec leurs comptes) ; l'IA répond par un JSON `{ categories, homophones }` ; **« Vérifier »** lit le JSON et **teste chaque catégorie sur ses propres exemples avec le moteur** (ids en double, motifs inconnus, compétence absente → refus, rien d'écrit) ; **« Injecter »** archive, écrit les objets avec leur id, **reclasse les erreurs déjà corrigées** (compté) et le dit ; une catégorie refusée reste visible, inactive, avec sa raison.
+489. **Le rattachement à la taxonomie** : aujourd'hui les codes de compétences (D1.1 Orthographe grammaticale … D2.3 Vocabulaire) sont **en dur dans l'app** (`competenceLabel`). Ils deviennent **un objet au hub** (`site/taxonomie/<code>` : code, libellé, court, domaine), lu par les « compétences travaillées » de Préparation, le sous-titre pédagogique, la banque d'exercices **et** les catégories d'analyse. **Un seul fil** : **erreur → catégorie → compétence ← exercice**. Donc le Bilan par compétence se compte par catégorie, et les exercices ciblés d'une catégorie sont ceux de sa compétence ; le prompt IA des exercices et celui des catégories parlent le même vocabulaire (les codes).
+
+Dis « ok », ou ce que tu changes ; rien à dire à l'exécutante avant L15.1.
+
+05/10/2026 10:40 MEMO
+
+---

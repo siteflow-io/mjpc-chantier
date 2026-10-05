@@ -1,9 +1,4 @@
-[banc_L15b_geste] code 0 — 47 s
-[banc_L15c_geste] code 0 — 10 s
-[banc_L15d_geste] code 0 — 40 s
-[banc_L15e_geste] code 0 — 67 s
-[banc_L16a_geste] code 0 — 24 s
-[banc_L15fb_geste] code 0 — 78 s
+[banc_L15fb5_deconnexion] code 0 — 44 s
   OK    modes
   OK    fc1
   OK    fc2
@@ -36,5 +31,6 @@
   OK    banc_L15e_geste
   OK    banc_L16a_geste
   OK    banc_L15fb_geste
+  OK    banc_L15fb5_deconnexion
   OK    eleve
 BANC UNIQUE : VERT (0 échec)

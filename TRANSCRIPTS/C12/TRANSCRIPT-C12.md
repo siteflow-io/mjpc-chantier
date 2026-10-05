@@ -14049,3 +14049,23 @@ Pris : 479 écrit tel quel au complément (la touche C avec L15h ; la base d'un 
 05/10/2026 09:15 MEMO
 
 ---
+
+## TOUR 469 — Paul
+
+Texte de Paul, mot pour mot :
+
+> est ce que l'amélioration des analyses d'erreur autogeneres sur la copie finale sont bien prévus dans le codage restant?
+
+---
+
+## TOUR 469 — Claude (conscience n°12)
+
+Mesuré : gramComment a deux appels (la copie finale buildCopieHtml, la liste de l'autocorrection) ; L15.1 (dette 107) au complément, après L15j ; les trois lecteurs nommés dans L15.1.
+
+Réponse mot pour mot :
+
+Oui : c'est **L15.1** (dette 107), au complément, après L15j — et je viens de vérifier dans le code que la copie finale est bien concernée : le commentaire automatique (`gramComment`) a **deux lecteurs**, **la copie rendue à l'élève** (sous chaque erreur : « « abris » → abri » + le commentaire) et **la liste numérotée de l'autocorrection** (« 1 · « abri » · Lexique · le commentaire ») — plus le bilan de fin qui en dépend. L15.1 remplace cette analyse par **l'écart lettre à lettre** entre ce que l'élève a écrit et le mot attendu (-s, -nt, accent, consonne double, -é/-er, homophone, majuscule…), avec tes mots, nourrie des formes capitalisées et des formes acceptées, un type par mot mais **tous les écarts nommés**, et un commentaire honnête quand l'écart n'est pas reconnu ; **d'abord à blanc** (le rapport sur les 514 erreurs des 3E, que tu relis), puis le code. J'ai nommé les trois lecteurs dans L15.1 pour qu'aucun ne soit oublié. Ordre : L15h (en cours) → L15i → L15j → **L15.1** → L16b.
+
+05/10/2026 09:25 MEMO
+
+---

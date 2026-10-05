@@ -14069,3 +14069,28 @@ Oui : c'est **L15.1** (dette 107), au complément, après L15j — et je viens d
 05/10/2026 09:25 MEMO
 
 ---
+
+## TOUR 470 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ne doit-on pas aussi abonder la liste des analyses auto générées? comment a-t-on prévu d'améliorer concrètement, afin que l'analyse ne soit pas hors sujet?
+
+---
+
+## TOUR 470 — Claude (conscience n°12)
+
+Mesuré : gramComment par type + mot attendu, 56 homophones, sans lire la forme de l'élève. L15.1 précisée au complément : écart lettre à lettre → catégorie → table par catégorie au hub éditable dans Réglages (abondement sans coder) → honnête sinon → non-reconnus listés au Bilan → rapport à blanc chiffré.
+
+Réponse mot pour mot :
+
+Oui, et c'est maintenant écrit en concret dans L15.1 (mesuré d'abord : aujourd'hui l'analyse choisit d'après **le type et le mot attendu seulement** — 56 paires d'homophones en table, zéro lecture de ce que l'élève a écrit : d'où « abri → abris : participe en -i »).
+
+481. **La mécanique** : **(1)** l'écart entre la forme de l'élève et le mot attendu est calculé **lettre à lettre** (ajoutée, retirée, changée, l'accent, la casse, le tiret) et rangé dans **une catégorie** : `-s/-x d'accord`, `-nt du verbe`, `-e du féminin`, `terminaison de verbe (-é/-er/-ez/-ait)`, `accent (lequel)`, `consonne double (laquelle)`, `homophone`, `lettre muette`, `majuscule`, `tiret`, `chiffre`, `cédille`, `autre` ; **(2)** le commentaire vient d'**une table par catégorie d'écart, pas par mot**, et cette table est **au hub, éditable par toi dans Réglages** (« Les commentaires de l'analyse »), dans tes mots, avec des trous remplis par le mot et la lettre en cause (« Tu as écrit « abris » : le -s est en trop, « un abri » est au singulier ») — **c'est elle qu'on abonde**, sans coder ; **(3) jamais hors sujet** : pas d'écart reconnu, ou un écart qui contredit le type que tu as posé → **le commentaire honnête** (« Compare lettre à lettre avec le mot juste : « abri ». »), jamais une règle inventée ; **(4) les non-reconnus remontent** : le Bilan de chaque dictée compte et liste les erreurs « sans commentaire reconnu » (le mot, la forme, combien d'élèves) — tu abondes la table ou tu ajoutes un homophone, et le commentaire existe à la dictée suivante ; **(5)** les formes capitalisées donnent la forme exacte (sans recopie : pas d'écart, donc l'honnête par type) ; les formes acceptées n'ont pas de commentaire ; les notes de grammaire importées (L15e) servent quand elles nomment le mot.
+482. **La preuve avant le code** : L15.1a, **à blanc** — les 514 erreurs des 3E, une ligne par erreur : forme → mot, catégorie, commentaire proposé, « reconnu / honnête » ; **le taux de reconnus et le nombre de hors-sujet sont mesurés et dits** (la cible : zéro hors sujet) ; tu rayes et réécris ; puis L15.1b code, et rejoue le même rapport sur les 3E, les 4E et les Hugo.
+
+Si tu veux une catégorie de plus (une confusion que tu vois souvent chez tes élèves), dis-la : elle entre dans la liste avant que l'exécutante ne commence.
+
+05/10/2026 09:40 MEMO
+
+---

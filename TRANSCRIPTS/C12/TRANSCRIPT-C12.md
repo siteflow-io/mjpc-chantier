@@ -13910,3 +13910,28 @@ Pris, et écrit au complément :
 05/10/2026 07:50 MEMO
 
 ---
+
+## TOUR 464 — Paul
+
+Texte de Paul, mot pour mot :
+
+> tu vas faire une capture toi même. c'est l'écran juste après que les élèves aient entré leur code, en autocorrection.
+
+---
+
+## TOUR 464 — Claude (conscience n°12)
+
+Conteneur réinitialisé : atelier reconstruit (prod L15f-b, kit, transcript). Capture sur l'app en ligne, kit anonymisé, showNote décoché, heure lancée : Mes dictées → consignes → autocorrection ; aucune note de dictée (/10, /20), mais l'en-tête « 5 /5 · 0/11 corrigé » (note d'autocorrection de départ + nombre d'erreurs). Proposition L15j : jauge sans chiffre et « 0 corrigé » quand la note est masquée ; question à Paul.
+
+Réponse mot pour mot :
+
+Fait, sur l'app en ligne (6.7.0-L15f-b) avec le kit anonymisé, **la case « Afficher la note à l'élève » décochée** sur la dictée, une heure lancée, l'élève entre, ouvre sa dictée, coche les consignes — l'écran d'arrivée en autocorrection est ci-dessus (et « Mes dictées » avant).
+
+474. **Ce que l'élève voit, mesuré** : **aucune note de dictée** (aucun « /10 » ni « /20 » sur les trois écrans : Mes dictées, consignes, autocorrection) — la case fait son travail là. **Mais en haut à gauche, en gros et en vert : « 5 » puis « /5 · 0/11 corrigé · 0 essai raté »** : c'est **la note d'autocorrection de départ** (le jeu : 5 points, chaque essai raté en coûte) — et le **« 0/11 »** dit le nombre d'erreurs : qui sait compter a sa note de dictée (11 erreurs sur 10, ici). Je pense que c'est ce « 5 » que tu appelles « leur note » — dis-moi si c'est bien ça, ou envoie-moi l'écran si c'est autre chose.
+475. **Ce que je propose pour L15j, en plus du réglage unique** : quand la note de dictée est masquée, (a) l'en-tête de l'autocorrection **ne montre plus la jauge chiffrée** : le « 5 /5 » devient une jauge sans chiffre (la barre qui descend) et « 0/11 corrigé » devient « 0 corrigé » — le jeu reste, le compte qui trahit la note disparaît ; (b) quand la note est affichée, tout revient. À trancher : garder le chiffre de l'autocorrection même note masquée (c'est une note « à part », comme le dit la consigne) — **oui / non** ?
+
+Une chose à déclarer : mon atelier (les fichiers de travail du conteneur) a été réinitialisé entre deux tours ; j'ai tout repris depuis le sas et la prod (le kit, le transcript, l'app) — rien de perdu, le transcript est à jour.
+
+05/10/2026 08:00 MEMO
+
+---

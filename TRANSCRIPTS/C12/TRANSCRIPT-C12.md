@@ -14239,3 +14239,28 @@ Lu en entier : `SPEC_ATELIER.md` (vision, 10 principes, zones 1-5 et 9), la doct
 05/10/2026 13:45 MEMO
 
 ---
+
+## TOUR 477 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Je n'ai rien compris reformule en clair
+
+---
+
+## TOUR 477 — Claude (conscience n°12)
+
+Reformulation en clair (495-498).
+
+Réponse mot pour mot :
+
+En clair, en partant de ta classe.
+
+495. **Ce que la taxonomie est, et pourquoi tu l'as faite.** C'est ta liste de tout ce qu'un élève peut rater en français : 7 grands tiroirs (orthographe des mots, accords et terminaisons, grammaire, conjugaison, lexique, textes, vers), 51 sous-tiroirs, 210 « notions » (« accorder le déterminant avec le nom », « le -nt du verbe au pluriel »…). Chaque notion a un numéro qui ne change jamais, un nom pour toi et un nom pour l'élève. Tu l'as faite pour une seule chose : **que toutes tes apps parlent la même langue**, afin qu'une erreur d'accord en dictée, une faute d'accord en réécriture et une carte « accords » de worktrack soient **la même notion**, et qu'on puisse dire à un élève « tu progresses sur les accords, tu stagnes sur les homophones ». Règle d'or que tu as posée : **l'IA propose, toi tu valides, et seul ce que tu as validé compte**.
+496. **Où ça en est.** La liste existe (fichier + hub, protégée de la purge) et tu la gères depuis le Panneau prof. La dictée est déjà raccordée **grossièrement** : ses neuf grandes rubriques (« D1.1 Orthographe grammaticale »…) pointent vers les tiroirs, validées par toi en juillet. **Mais pas finement** : aucune erreur de dictée ne porte sa notion, et la dictée n'envoie rien au profil de l'élève — c'est le trou que L15.1 bouche.
+497. **Ce que L15.1 fait, simplement.** Quand tu corriges, l'app lit ce que l'élève a écrit (« abris » pour « abri »), **reconnaît le type d'écart** (ici « un -s en trop »), et **rattache cet écart à une notion de ta taxonomie** (« accord du nom »). Résultat : le commentaire sur la copie est juste, le bilan compte par notion, et l'erreur est prête à partir dans le profil de l'élève. Les types d'écart et leurs rattachements sont des objets (pas du code), que l'IA peut **proposer** à partir de tes erreurs non reconnues — et que **toi** tu valides.
+498. **Les deux questions, en clair.** **(a)** Quand l'IA propose « cet écart = cette notion », **où veux-tu cliquer « valider » ?** Je propose **au Panneau prof, dans Taxonomie** (là où tu gères déjà la liste — un seul endroit pour tout ce qui touche la taxonomie) ; les textes des commentaires, eux, restent dans les Réglages de la dictée. **(b)** Pour le profil de l'élève (le futur « Mon année »), les erreurs partiront sous forme de petits messages ; tes documents donnent **deux adresses** pour les ranger (une du 8 mai, une de la spec) : laquelle ? Si tu ne sais pas encore, je laisse la porte préparée sans brancher, et le chantier du profil tranchera.
+
+05/10/2026 13:35 MEMO
+
+---

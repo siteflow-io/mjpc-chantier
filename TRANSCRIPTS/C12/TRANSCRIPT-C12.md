@@ -14315,3 +14315,25 @@ Ta phrase pour elle, maintenant : **« Arrête L15h (rien n'est déposé). L15.1
 05/10/2026 14:50 MEMO
 
 ---
+
+## TOUR 480 — Paul
+
+Texte de Paul, mot pour mot :
+
+> non non un exécutant n'arrête jamais en plein mandat. par ailleurs, sur la dictée actuelle (4e et 3e) j'ai relu les analyses et elles ont changé par rapport à ce que j'avais avant. C'est même plutot qualitatif. Il y a toujours la décomposition aléatoire des mots longs (et surtout, qu'est ce qui définit un mot long?) Mais l'existant me semble assez correct. vérifie, et dis moi pourquoi on a upgrade en qualité d'analyse autogénérée. Enfin, on avait débloqué le grisage des boutons brut etc, dans l'onglet copie. il reste le même affichage périmé dans "visualiser", tout en bas.
+
+---
+
+## TOUR 480 — Claude (conscience n°12)
+
+Ordre corrigé (L15h se termine, L15.1 juste après). Mesuré : gramComment inchangé depuis L14 ; la qualité vient de la recopie → GRAMM.classify (moteur d'écart existant), consulté en dernier ; « mot long » = > 7 lettres, découpe mécanique par 3 (dette 136). Micro L15g-c promu (prévisualisation : corr[k]) ; dette 135 ✔ ; complément : L15.1 étend classify.
+
+Réponse mot pour mot :
+
+506. **Pris pour l'exécutante : elle finit L15h**, et L15.1 vient juste après — l'ordre en tête du complément le dit maintenant ainsi ; ma phrase de 505 est à remplacer par : **« Termine L15h. Juste après : L15.1, prioritaire (lis l'en-tête du complément et toute la section, elle a beaucoup changé) ; ma séance est demain. »**
+507. **Pourquoi l'analyse est devenue meilleure — mesuré, pas deviné** : la fonction qui écrit le commentaire (`gramComment`) **n'a pas changé d'un caractère depuis L14**. Ce qui a changé, c'est **la donnée** : depuis que les copies sont **recopiées** (L10, L15-0b, L15d — la forme fautive de l'élève est connue), le commentaire peut appeler **`GRAMM.classify(forme, attendu)`**, un moteur d'écart qui existait déjà dans l'app (homophones par table, terminaisons de verbes, accords, doubles consonnes, accents…) et qui compare ce que l'élève a écrit au mot juste. Avant la recopie, il n'avait que le type et le mot attendu : d'où « abri → abris : participe en -i ». **Mais** `classify` n'est consulté **qu'en dernier**, quand aucune note générique n'a été produite — et parmi ces notes génériques il y a **« Mot long — décompose en syllabes »**, déclenchée dès que **le mot fait plus de 7 lettres**, qui découpe **mécaniquement tous les 3 caractères** (« dé·com·pos·ée ») : ce n'est pas syllabique, c'est ce que tu vois comme aléatoire. Dette **136**. Ce que L15.1 fait de ça, écrit au complément : `classify` passe en premier dès que la forme est connue, ses règles deviennent les catégories-objets, et la ligne « mot long » disparaît (ou devient une vraie césure, testée). **Si tu la veux retirée dès ce soir pour demain, dis « micro »** : c'est une ligne, sans risque.
+508. **« Visualiser » — fait et promu** : **6.7.0-L15g-c** (commit `7083a09c439f`, bit à bit, 899 929 o). La cause : dans « 👁 Prévisualiser toutes », la disponibilité de Brut / Barré / Placeholder se calculait sur **l'élève sélectionné dans l'onglet Copies**, pas sur **celui qu'on feuillette** — d'où l'affichage périmé. Banc : un élève recopié sélectionné, un non recopié feuilleté → les trois modes grisés pour le feuilleté (avant : disponibles). Registre 135 ✔, journal, point de retour. Test : Copies → sélectionne une copie non recopiée → « Prévisualiser toutes » → feuillette jusqu'à une copie recopiée : Brut / Barré / Placeholder cliquables, et grisés sur une copie sans recopie.
+
+05/10/2026 15:30 MEMO
+
+---

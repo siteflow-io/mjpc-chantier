@@ -134,3 +134,50 @@ Tests pour toi : ouvre l'adresse du transcript (point 26) et vérifie que tes de
 
 05/10/2026 17:59 (heure de mon espace de travail, non vérifiée)
 MEMO
+
+---
+
+## TOUR 4 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok continue , sauf que maintenant tu vas gérer un exécutant (on revient au flux classique), qui travaillera dans claude cloud
+
+---
+
+## TOUR 4 — Claude (conscience n°13)
+
+« ok » lu sur les points 23 à 25 ; « gérer un exécutant » : la maquette p8 passe à un exécutant cloud. Mesuré : le gabarit p7 + le générateur régénèrent la maquette p7 au md5 5045f337… ; trois bancs p7 rejoués ici (chemins adaptés) : 0 ; les 24 bancs ont trois chemins écrits en dur. Écrits et soumis, NON déposés : `MANDAT-DEROULE-MAQUETTE-P8.md` et l'ajout au cadrage 4 §3.2 (dans les fichiers de la conversation, `C13/soumis/`).
+
+Réponse mot pour mot :
+
+Pris : ton « ok » vaut pour les points 23, 24 et 25, plafonds compris. À partir d'ici, l'exécutant code ; moi, je cadre, j'écris et j'audite. Je ne code plus p8 moi-même.
+
+28. **Le mandat est écrit** : `MANDAT-DEROULE-MAQUETTE-P8.md`, joint. Il n'est pas déposé : il attend ton mot (règle du 07/09 : écrire, te le soumettre, attendre, déposer).
+29. **Ce qu'il fait faire**, en trois livraisons d'affilée, chacune sur sa branche du sas (`deroule/p8-1`, `-2`, `-3`, jamais `main`), puis arrêt :
+    - **p8-1** : les 24 bancs rendus portables et rejoués à 0 dans la machine cloud, sur la p7 inchangée. C'est la preuve que Playwright tourne là-bas ; si elle échoue, il s'arrête.
+    - **p8-2** : les cinq formes lisibles par construction, la carte fidèle à la capture que tu as vue ; chaque forme mesurée et capturée seule, puis à son plafond.
+    - **p8-3** : « un schéma par diapo » dans les gestes de l'atelier, avec leurs gardes, puis la maquette v9c.15 p8.
+30. **Ce que tes trois « oui » entraînent**, et que le mandat fait coder tel quel — ton mot vaut aussi pour eux :
+    - coller ou dupliquer un schéma sur une diapo qui a déjà du contenu le pose dans une diapo nouvelle, juste après ;
+    - « + bloc » et « + étape » sont grisés sur une diapo à schéma, sauf l'unique consigne d'une ligne ;
+    - la taille « petit » est grisée pour un schéma ;
+    - au réglage « Texte au tableau » le plus bas, tout le schéma est à 26 pt : rien ne descend dessous.
+31. **Ce que la p7 enfreint déjà**, mesuré dans son code, et que p8-2 corrige : l'arbre coupe ses libellés à 17 caractères, le cycle à 13, le centre de la carte à 21 (avec « … ») ; le tableau est à environ 19 pt.
+32. **La base est éprouvée** : le gabarit p7 régénère exactement la maquette p7 (md5 identique), et trois bancs rejoués ici, chemins adaptés, sont à 0.
+33. **La décision s'écrit aussi dans son document** : un ajout au cadrage 4 (§3.2, la ligne « schéma »), joint, à déposer avec le mandat.
+
+**À ton « ok »**, je dépose les deux au sas et je te donne leurs adresses. Tu lances alors une session cloud sur `siteflow-io/mjpc-chantier`, avec cette seule phrase :
+
+> Tu es l'exécutant de MJPC sur le déroulé. Lis en entier `MANDATS/MANDAT-DEROULE-MAQUETTE-P8.md` dans ce dépôt et fais ce qu'il dit : les livraisons p8-1, p8-2 et p8-3, chacune sur sa branche, puis arrête-toi.
+
+À la première session, GitHub doit être connecté par l'app Claude, avec le sas en écriture.
+
+**En attente de toi**
+
+11. Je ne sais pas si tu as joué et validé les livraisons de la maquette, de (b3) à (p7). Le transcript ne le montre pas, et le code doit être fidèle à une maquette validée.
+
+Tests pour toi : aucun à jouer ; lis le mandat joint.
+
+05/10/2026 18:06 (heure de mon espace de travail, non vérifiée)
+MEMO

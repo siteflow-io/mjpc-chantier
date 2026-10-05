@@ -13886,3 +13886,27 @@ Il me faut ton **« ok » sur la maquette T459** (suspendre / fermer) pour écri
 05/10/2026 07:25 MEMO
 
 ---
+
+## TOUR 463 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok pour la maquette. par ailleurs, il faut corriger un point: les élèves, quand ils arrivent sur leur écran d'autocorrection, VOIENT leur note, alors que partout ailleurs j'ai décoché les cases d'affichage de la note. Il faut en fait qu'il n'y ait qu'un seul bouton pour afficher ou masquer la note, quel que soit l'endroit où la note apparaît. ce bouton doit être dans les réglages. Je lance l'exécutant sur l15G.
+
+---
+
+## TOUR 463 — Claude (conscience n°12)
+
+L15i (suspendre / fermer, maquette T459, stylo gelé, heure repoussée, deux navigateurs) et L15j (la note : un seul réglage dans Réglages, une seule fonction, inventaire compté, case de Préparation retirée, effet immédiat ; dette 133) écrites au complément ; ordre à jour ; capture demandée à Paul.
+
+Réponse mot pour mot :
+
+Pris, et écrit au complément :
+
+471. **L15i — suspendre / fermer** (dette 132), fidèle à la maquette T459 que tu as validée, infobulles comprises ; j'y ai ajouté ce que la maquette ne faisait pas : le stylo vert gelé pendant la pause, l'heure repoussée du temps de pause, et le banc à deux navigateurs.
+472. **L15j — la note de dictée côté élève : un seul réglage, dans Réglages** (dette **133**). Mesuré : il existe aujourd'hui **un** réglage par dictée (la case « Afficher la note à l'élève » dans Préparation), lu par « Mes dictées », l'écran de fin, « À savoir » et le tableau de la note — **mais pas par tous les écrans**. La règle que j'ai écrite : **un seul réglage dans Réglages**, « Afficher la note de dictée aux élèves » (avec son infobulle), **une seule fonction** que tout affichage de la note côté élève appelle (le banc compte qu'aucun ne la contourne), la case de Préparation **disparaît** (sa valeur reprise), la note d'autocorrection (/5 — le jeu) reste visible, et **l'effet est immédiat** chez l'élève connecté. L'exécutante doit **inventorier et compter** tous les affichages de la note côté élève (Mes dictées, l'arrivée sur l'autocorrection, l'écran de fin, la copie rendue en tête et sous les mots, la feuille, l'encart aménagé, le binôme…) — et si son inventaire ne retrouve pas l'écran où tu vois la note à l'arrivée, elle te demandera une capture. **Si tu peux m'en envoyer une maintenant** (l'écran d'arrivée avec la note), je l'ajoute au complément et son banc le reproduira.
+473. **L'ordre** : L15g (en cours) → **L15i → L15j** → L15h → L15.1 → L16b. Rien à dire à l'exécutante maintenant ; à la promotion de L15g : **« Continuer — L15i, puis L15j (au complément). »**
+
+05/10/2026 07:50 MEMO
+
+---

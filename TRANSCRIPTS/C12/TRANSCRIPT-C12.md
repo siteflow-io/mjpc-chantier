@@ -14401,3 +14401,32 @@ Oui, à trois conditions, et une réserve sur Cowork que je ne peux pas lever d'
 05/10/2026 16:05 MEMO
 
 ---
+
+## TOUR 484 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok, ma question portait plutot sur ça: Crédits de session cloud
+> S'applique automatiquement aux sessions cloud. Une fois le crédit utilisé ou expiré, l'utilisation habituelle de votre forfait s'applique.
+> Crédit inclus
+> Expire le 08:59 UTC+1, 5 novembre
+> 250 $US sur 250 $US restants
+
+---
+
+## TOUR 484 — Claude (conscience n°12)
+
+Vérifié (doc / annonces) : sessions cloud de Claude Code (VM Anthropic, clone GitHub, branche/PR, parallèle, crédit à part, expire 05/11). Réponse : convient à un exécutant ; trois adaptations du protocole (GitHub par l'app, branche par livraison, Playwright à installer et prouver) ; inconnues (Chromium, hub) ; première livraison courte en test.
+
+Réponse mot pour mot :
+
+Je suis allé vérifier (la doc et les annonces, d'aujourd'hui) : les **« sessions cloud »** sont **les sessions cloud de Claude Code** — l'agent tourne sur une machine hébergée par Anthropic, pas sur ton ordinateur : il **clone le dépôt GitHub**, travaille, **pousse une branche** (puis une pull request depuis claude.ai/code, ou tu rapatries dans ton terminal) ; ça se lance depuis claude.ai/code, l'onglet Code de l'app mobile, l'app de bureau (« Cloud » au lieu de « Local ») ou `claude --cloud "la tâche"` ; chaque lancement est une session indépendante, donc **plusieurs en parallèle** ; le travail continue ordinateur fermé. Le crédit de 250 $ est à part de tes limites de forfait, **dépensé en premier par les sessions cloud seulement** (ni Projects ni Routines), et **expire le 5 novembre**.
+
+512. **Est-ce que ça convient à un exécutant ? Oui — c'est même taillé pour lui**, et c'est une bonne façon de dépenser ce crédit avant le 5 novembre : un exécutant, c'est quelqu'un qui lit un mandat, code, banque, dépose au sas. Trois choses changent par rapport au protocole actuel, à écrire dans le mandat de la n°13 : **(a) plus de jetons dans la conversation** — la session cloud a déjà GitHub par l'app Claude (il faut que le sas **et** la prod soient accessibles à cette app) ; **(b) la livraison est une branche du sas** (une branche par livraison, `L1-deroule`, `L2-deroule`…), que la conscience audite et que tu fusionnes — la promotion en prod reste ton geste ; **(c) les bancs** : la machine cloud doit installer Playwright et Chromium elle-même (`pip install playwright && playwright install chromium`) — **à prouver à la première livraison** (le banc unique dans la branche, sa sortie avec). Si ces trois tiennent, le reste du protocole est identique.
+513. **Ce que je ne sais pas** : si la machine cloud laisse installer Chromium et joindre le hub Firebase — je ne peux pas le mesurer d'ici. D'où ma proposition inchangée : **la n°13 commande une première livraison courte en session cloud, et juge sur pièces** (la branche existe, le banc a tourné, les captures sont là). Si ça passe, tu as deux exécutants en parallèle sur deux fichiers, et le crédit paie celui du déroulé.
+
+Pour la n°13 : dis-moi si je prépare la passation « déroulé » (510) et le mandat avec ces trois adaptations.
+
+05/10/2026 16:15 MEMO
+
+---

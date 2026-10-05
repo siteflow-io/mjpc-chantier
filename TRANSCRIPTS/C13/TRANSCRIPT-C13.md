@@ -550,3 +550,47 @@ Tests pour toi : aucun. Ton geste : « continuer ».
 
 05/10/2026 22:06 (heure de mon espace de travail, non vérifiée)
 MEMO
+
+---
+
+## TOUR 14 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Attention à ne pas tirer de conclusions trop vite, comme l'histoire de l'écran de téléphone ( non, tout ne doit pas rentrer dans l'écran de téléphone, il sert de télécommande grâce au QR code justement). Termine ta lecture.
+
+---
+
+## TOUR 14 — Claude (conscience n°13)
+
+Lu : `sesBootTel`, `sesTelPeindre` (le téléphone = télécommande : prompteur de texte, palette, zoom du tableau ; ne dessine pas les schémas). Joué sur le faux hub (`z1b.mjs`, en pièce non poussée) : panneau prof → atelier → chapitres → Modifier → Déroulé → séance 1 → l'écran 15 de la vraie carte ; le panneau « SCHÉMA » de l'existant (forme, Un à un / Tout ensemble, Contenu, ⌖ Réordonner ; « + Schéma » grisé). Moteur lu en structure (157 fonctions). Mesure de la taille des notions au navigateur : non aboutie (chiffres incohérents, non rapportés). Carte complétée (Z1, Z3, Z8, correction du téléphone) ; mandat version 3 (dans `C13/soumis/`, non déposé) ; captures en pièces.
+
+Réponse mot pour mot :
+
+Tu as raison, et je l'ai vérifié dans le code : le téléphone est une télécommande. Il porte :
+- un prompteur, c'est-à-dire des cartes de texte ;
+- la palette : ◀ ▶, écran précédent et suivant, gel, à écrire, chrono, qui a participé, + participation ;
+- deux gros boutons pour zoomer le tableau.
+
+Il ne dessine pas les schémas. J'avais conclu sur la seule structure (« il fait tourner le moteur ») sans lire ce qu'il affiche. C'est corrigé dans la carte.
+
+Lecture terminée :
+
+61. **Joué** : le vrai déroulé en préparation, et ta vraie carte des figures de style dans le vrai site (captures jointes). **Lu en structure** : le moteur au-delà des schémas. **Pas joué** : « Lancer » depuis l'emploi du temps, la classe en direct, la relecture. P8 n'y touche pas ; le mandat de production devra les jouer.
+62. **Ce que le vrai site m'a montré, et que j'avais manqué** :
+    - le schéma a son panneau dans le site actuel : la forme, « Un à un / Tout ensemble », le contenu avec sa règle d'écriture sous le champ, et « ⌖ Réordonner », qui efface les places données à la main ;
+    - sur une frise, on tire un point pour changer sa date ;
+    - « + Schéma » est déjà grisé quand l'écran a son schéma.
+63. **Verdict : le mandat version 2 ne tenait pas.** Il jetait « Un à un / Tout ensemble » comme un état du dévoilement, alors que c'est ton réglage de préparation ; et il ne reprenait pas le panneau. C'est corrigé dans la version 3, jointe. Le reste tient.
+64. **Une seule question.** Quand rien n'est réglé, le site actuel montre le schéma « Tout ensemble » ; le cadrage 4 §3.2 dit « élément par élément ». Ma proposition :
+    - les schémas déjà faits gardent leur comportement : rien ne change dans tes chapitres ;
+    - un schéma créé par « Schéma… » part réglé sur « Un à un ».
+
+    **Ton mot.**
+
+À ton « ok », je dépose la version 3 et l'ajout au cadrage 4, et tu lances (point 36).
+
+Tests pour toi : aucun.
+
+05/10/2026 22:13 (heure de mon espace de travail, non vérifiée)
+MEMO

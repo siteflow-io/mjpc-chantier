@@ -474,3 +474,43 @@ Tests pour toi : aucun.
 
 05/10/2026 19:26 (heure de mon espace de travail, non vérifiée)
 MEMO
+
+---
+
+## TOUR 12 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Ok en revanche avant de piloter un exécutant tu dois avoir une connaissance vraiment complète de déroulé, de l'éditeur, de toutes les implications aussi( liens, calendrier, etc )
+
+---
+
+## TOUR 12 — Claude (conscience n°13)
+
+« Ok » sur 49, 50 et le mandat version 2 ; mandat non déposé tant que la connaissance n'est pas complète. Inventaire d'`index.html` (1 341 fonctions, familles et tailles, `pont-fusion`, `AT_DR_B64`) ; carte de l'existant ouverte en pièce (`pieces/CARTE-EXISTANT-DEROULE.md`, Z0 fait, Z1 à Z8 planifiées).
+
+Réponse mot pour mot :
+
+C'est noté : ton « ok » vaut pour 49, pour 50 et pour le mandat version 2. Je ne le dépose pas encore. D'abord la connaissance complète, parce qu'elle peut encore changer le mandat.
+
+53. **Ce que ça représente, mesuré.** Dans `index.html`, ce qui touche au déroulé et à l'éditeur fait environ 1 Mo de code : l'atelier, l'emploi du temps, le pont du déroulé, l'éditeur, le tableau distant, les chapitres. S'y ajoute le moteur de l'ancien déroulé (157 fonctions). C'est plus que ce que cette conversation peut tenir en tête d'un coup, en plus de ce que j'y ai déjà lu.
+54. **Donc j'écris au fur et à mesure.** Je tiens une carte de l'existant, zone par zone, poussée au sas à chaque tour avec le transcript : https://github.com/siteflow-io/mjpc-chantier/blob/main/TRANSCRIPTS/C13/pieces/CARTE-EXISTANT-DEROULE.md
+    - Ce qui y est écrit est lu dans le code ou joué dans le navigateur. Ce qui ne l'est pas encore est marqué « pas lu ».
+    - Rien ne dépend de ma mémoire : si cette conversation se remplit, la suivante reprend là.
+55. **L'ordre, une zone par « continuer »** :
+    - Z1 : le parcours réel, joué sur un faux hub : emploi du temps → Éditer dans l'atelier / Préparer → déroulé → Lancer → tableau → fin d'heure → relecture ;
+    - Z2 : le pont et le cadre du déroulé ;
+    - Z3 : le moteur, au-delà des schémas déjà lus ;
+    - Z4 : l'éditeur de chapitre, l'atelier, les fiches et les feuilles, l'import, les prompts ;
+    - Z5 : l'emploi du temps et le calendrier ;
+    - Z6 : le tableau distant et le cours actif ;
+    - Z7 : ce que tout ça lit et écrit au hub, et les liens vers les apps (la dictée, le profil, la taxonomie, les élèves) ;
+    - Z8 : la confrontation avec le mandat p8, c'est-à-dire ce qui change, en propositions à trancher.
+56. **Fait ce tour-ci** : Z0, l'inventaire (1 341 fonctions, leurs familles et leurs tailles), versé dans la carte.
+
+À la fin de Z8, je te dis « le mandat tient » ou « voici ce qui change ». Alors seulement je dépose.
+
+Tests pour toi : aucun. Ton geste : « continuer », pour chaque zone.
+
+05/10/2026 20:03 (heure de mon espace de travail, non vérifiée)
+MEMO

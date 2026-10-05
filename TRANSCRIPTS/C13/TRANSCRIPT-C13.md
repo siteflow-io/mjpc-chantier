@@ -425,3 +425,52 @@ Tests pour toi : aucun. Regarde la capture jointe : ta vraie carte, coupée et c
 
 05/10/2026 18:48 (heure de mon espace de travail, non vérifiée)
 MEMO
+
+---
+
+## TOUR 11 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Ok pour ta proposition mais attention au télescopage. Ça ne peux pas être plaqué par dessus l'existant.
+
+---
+
+## TOUR 11 — Claude (conscience n°13)
+
+43, 44, 45 validés. Lu dans le moteur de production décodé : `carte` (polices 13/16/20 × `schEch`, cadre 1000 × 560, `surface` qui agrandit puis l'écran réduit), `schemaHTML` (la source coupée au dévoilé avant le calcul des places), `separe` (dernier recours sans limite de cadre), `mesure` (estimation), `tirSch` / `repeintSch` (redessin de tout l'écran), `pos[cle(texte)]`, `b.vues` / `b.devoilerTout`. Mandat réécrit en version 2 (décisions 1 à 7, tableau des télescopages T1 à T10, p8-2 et p8-3 réécrites, plafonds retirés) et ajout au cadrage 4 version 2 — dans les fichiers de la conversation (`C13/soumis/`), non déposés.
+
+Réponse mot pour mot :
+
+Pris : 43, 44 et 45 sont validés. Je ne plaque rien. J'ai lu le moteur des schémas ligne à ligne, contre la maquette et contre les cadrages. Voici ce qui se télescope, et ce que le mandat en fait. Rien n'est déposé.
+
+47. **La taille.**
+    - L'ancien moteur écrit les notions à environ 18 pt et les familles à environ 22 pt.
+    - Quand le dessin ne tient pas, il l'agrandit, puis l'écran le réduit pour qu'il rentre : le texte rapetisse encore. C'est contraire à ton plancher de 26 pt.
+    - → Les tailles viennent de la loi de la maquette : titres à 32 pt, notions à 26 pt, jamais moins. Le dessin ne rapetisse plus jamais. S'il ne tient pas, le site dit « trop dense » et propose « Couper le schéma ici ».
+48. **Le dévoilement.**
+    - L'ancien moteur recalcule la place des bulles à chaque dévoilement : au tableau, les bulles déjà montrées bougent quand une nouvelle arrive.
+    - → La place de toutes les bulles est calculée une fois. Une bulle pas encore dévoilée est pâle chez toi et absente au tableau. Rien ne bouge.
+49. **Ce qu'on dévoile à chaque ▶.**
+    - Dans l'ancien moteur, chaque ▶ montre une bulle : la famille, puis chacune de ses notions.
+    - Dans la maquette p7, chaque ▶ montre une ligne entière : la famille et toutes ses notions d'un coup.
+    - → Je prends l'ancien : une bulle par ▶. Conséquence : ta vraie carte demande 35 ▶ au lieu de 8. Les comptes de la maquette (diapo finie, T-5, récit) suivent les bulles.
+    - **Ton mot.**
+50. **Déplacer une bulle à la main.**
+    - L'ancien moteur le permet, et la place que tu donnes passe avant le calcul.
+    - → Repris, dans l'atelier seulement : en classe, rien ne se déplace (cadrage 1 §9.1).
+    - Limite de l'existant : la place est rangée sous le texte de la bulle. Si tu renommes une notion, elle perd sa place et le calcul la replace. L'infobulle le dira.
+    - **Ton mot.**
+51. **Ce qui n'est pas repris.** L'ancien moteur rangeait le dévoilement dans le schéma lui-même. La base saine le range ailleurs, par diapo et par classe : le mandat interdit de reprendre l'ancienne façon.
+52. **Ce qui est repris tel quel** : les couleurs par famille, l'écartement des bulles, les cinq formes, la forme de la donnée (les chapitres déjà faits n'ont rien à réécrire).
+
+Le mandat réécrit est joint (version 2). Il contient le tableau de ces télescopages, tel que l'exécutant doit l'appliquer, ainsi que l'ajout corrigé au cadrage 4.
+
+**En attente de toi**
+
+34. Ton « ok » sur 49, sur 50 et sur le mandat version 2, ou ce qui ne va pas. Je le dépose alors au sas et je te le dis.
+
+Tests pour toi : aucun.
+
+05/10/2026 19:26 (heure de mon espace de travail, non vérifiée)
+MEMO

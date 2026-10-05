@@ -1,0 +1,730 @@
+# INDEX DES FONCTIONS — déroulé, éditeur, atelier, emploi du temps, tableau distant (production c9bc2d9)
+*Conscience n°13, tour 13 — relevé automatique : nom · taille · premier commentaire (150 car.) · chemins du hub cités. Sert de table des matières à la carte ; ce n est pas une lecture.*
+
+## Le pont du déroulé (_dr) — 58 fonctions
+- _drTexteBloc 0.2K 
+- _drEmpreinte 0.2K 
+- _drCoupe 0.1K 
+- _drCreneauDe 0.3K hors emploi du temps : le cr\u00e9neau reste ce qu'il est
+- _drCleHeureDe 0.4K 
+- _drBaseHeureDe 0.4K la SIGNATURE d'une heure : ce qui la distingue de toute autre. Elle sert au compare-et-efface du pointeur (\u2460) et \u00e0 la banni\u00e8re (\u2461)
+- _drSignatureCours 0.5K la SIGNATURE d'une heure : ce qui la distingue de toute autre. Elle sert au compare-et-efface du pointeur (\u2460) et \u00e0 la banni\u00e8re (\u2461)
+- _drCoursActifEffacerSi 0.4K `cours_actif` CESSE D'\u00caTRE UNE SECONDE SOURCE : il ne peut \u00eatre que le REFLET de la trace ouverte. Toute cl\u00f4ture le retire \u2014 mais 
+- _drHeureCloseAu 0.2K LA TRACE FAIT FOI : une heure close ne se reprend plus, par aucun chemin.
+- _drCreneauHeure 0.1K 
+- _drCleHeure 0.5K [LOT C2 \u2463] LA CLASSE ENTRE DANS LA CL\u00c9 \u2014 l'emploi du temps encha\u00eene deux classes en DEUX MINUTES (8h55\u21928h57, 11h02\u219211h04
+- _drBaseHeure 0.4K le paquet de l'heure — EXACTEMENT celui que composait atVecuEcrire, extrait pour être poussé au fil de l'eau comme à la clôture. Rien n'y est inventé.
+- _drPaquetHeure 2.5K le paquet de l'heure — EXACTEMENT celui que composait atVecuEcrire, extrait pour être poussé au fil de l'eau comme à la clôture. Rien n'y est inventé.
+- _drTraceAuto 0.8K [LOT C1 \u2461] LA TRACE S'\u00c9CRIT AU FIL — sur le m\u00e9canisme de `_drCopieAuto` : m\u00eame d\u00e9bounce de 900 ms, m\u00eame fonction d'\u00e
+- _drTraceReprendre 1.7K la RELANCE dans le m\u00eame cr\u00e9neau REPREND la trace en cours (patron du chrono accumul\u00e9 de worktrack, CADRAGE-TEMPS \u00a72) : le d\u00e9b
+- _drCloreHeureRestee 1.7K [LOT C2 \u2463] la clôture de l'heure pr\u00e9c\u00e9dente est CERTAINE, m\u00eame apr\u00e8s un rechargement : `cours_actif` fait foi. Le professeur 
+- _drEmpreinteTrame 1.5K 
+- _drEidNeuf 0.1K 
+- _drIdentifierEcrans 0.4K un fils du zoom n'a JAMAIS d'identité propre
+- _drEidDuRang 0.4K l'identité D'USAGE d'un rang : celle du PÈRE si le rang désigne un fils du zoom.
+- _drRangDeLEid 0.3K le rang LOCAL d'une identité — chaque appareil a le sien, et c'est tout l'objet du lot.
+- _drRangPere 0.2K le rang du PÈRE : le vécu, la participation et les décisions s'y ancrent toujours.
+- _drNormaliserTrame 0.9K [LOT C2 \u2460] toute trame qui entre est identifi\u00e9e
+- _drAssurerCadre 0.8K le premier événement load vient du document vide initial : on n'accepte que celui du déroulé lui-même (sa fonction rendre existe)
+- _drVerifier 1.1K intégrité au boot : le texte chargé EST deroule86.html, prouvé par empreinte
+- _drQuandPret 0.3K [garde] la santé du cadre : le jeu répond et la scène existe. Une iframe détachée puis rattachée par n'importe quel code du site PERD son contenu (écr
+- _drSain 0.2K [garde] la santé du cadre : le jeu répond et la scène existe. Une iframe détachée puis rattachée par n'importe quel code du site PERD son contenu (écr
+- _drReconstruire 0.4K [É3] dans le CADRE, la barre du haut et la colonne vignettes du moteur font DOUBLON avec la barre MJPC et le sommaire natif : masquées AU RUNTIME (le 
+- _drHabiller 0.5K [É3] dans le CADRE, la barre du haut et la colonne vignettes du moteur font DOUBLON avec la barre MJPC et le sommaire natif : masquées AU RUNTIME (le 
+- _drPontEtat 0.5K le suiveur : l'iframe (fixe, dans body) épouse la zone at-dr-hote-zone
+- _drAfficher 1.4K le suiveur : l'iframe (fixe, dans body) épouse la zone at-dr-hote-zone
+- _drEnvelopper 18.4K les enveloppes runtime (le fichier du jeu n'est jamais modifié) : |rendre() → suivi de l'écran courant (colonne, vécu) — couvre va, pas, annuler, vig
+- _drTailleCadre 6.3K la bo\u00eete du cadre, mesur\u00e9e : c'est elle qui grandit ou r\u00e9tr\u00e9cit quand Paul partage son \u00e9cran en deux, et c'est d'elle que d\u
+- _drFlushTrame 1.6K [flush de bascule] un enregistrement automatique en attente (debounce 900 ms) au moment de changer de séance serait détourné vers la NOUVELLE (perte s
+- _drLibelles 0.5K 
+- _drTitrerColonne 0.8K 
+- _drTrameDe 0.3K 
+- _drEcrireTrame 0.2K 
+- _drRechargerSi 0.2K 
+- _drEntreesEcran 4.2K 
+- _drCalerStructure 2.3K battement propre : Structure se cale même sans cadre
+- _drCopieAuto 1.1K [classe |copie au fil de l'eau] atDrEnrAuto protège la préparation (« en classe, rien ne remonte ») — mais LA COPIE de la classe doit, elle, suivre c
+- _drRefusionner 3.5K [LOT E |COMPLÉMENT 2] les fragments d'étape se recollent AVANT la refusion : l'export, la copie au hub, la relecture et le récit ne doivent jamais vo
+- _drInitialesDe 0.3K [reléve-en-dur |les trois branchements] la maquette n'a plus le dernier mot : PRENOMS viennent de LA CLASSE (initiales dérivées, collisions suffixées
+- _drPrenomsDeLaClasse 0.7K « NOM Prénom »
+- _drProchainCreneau 0.6K le prochain jour ouvré, à défaut d'EDT hebdo
+- _drPoserContexteMoteur 1.7K une classe CHOISIE sans élèves extraits → panneau VIDE (honnête), jamais le trombinoscope de maquette pour une classe réelle
+- _drVifInstaller 2.7K [participation au vif] la décharge cognitive du direct : un champ de frappe en tête du panneau — taper les initiales (ou le début du prénom) ouvre la 
+- _drVifAller 0.7K [vif |accès d'un seul appui] ² ou F2, DEPUIS N'IMPORTE OÙ (page ou cadre), amène le curseur dans le champ des initiales — zéro clic, zéro visée.
+- _drPaletteOuvrir 2.2K [palette Maj+Espace — la touche de Paul] d'où que vienne le geste (champ de consigne, réponse au tableau, nulle part), Maj+Espace fait surgir la palet
+- _drPaletteBrancher 2.7K le boot du montage : rappeler l'onglet retenu
+- _drRecollerEtapes 2.5K [LOT E |COMPLÉMENT 2] recolle les fragments d'étape (`suiteEt`) dans la trame, du dernier vers le premier — une étape coupée en trois se recolle de p
+- _drRangDuMorceau 0.2K [LOT F ②] le rang local du morceau numéro `m` du groupe auquel appartient `n`. `m=0` est le père, `m=1` le premier morceau de suite, etc. Rend `null` 
+- _drVueGroupe 0.5K 
+- _drRatioEcran 0.8K 
+- _drLargeurEcran 0.6K on transmet la FENÊTRE du moteur, pas la boîte `.ecran` : celle-ci dépend des colonnes de l'hôte (liste des écrans, panneau), donc la reproduire seule
+- _drVuePere 1.0K aucun père trouvé : on ne devine pas
+- _drMorceauDuDevoilement 1.3K 
+
+## L atelier (at, atelier) — 247 fonctions
+- attendre 2.5K 
+- atFeuilleProduitPoser 1.6K [C5-AR] requalifier une feuille existante : les six feuilles de Paul portent toutes `fiche_seance`. UNE écriture fine, le seul champ produit.
+- atProduitMenu 0.1K 
+- atProduitRayon 1.1K 
+- atPromptComposantes 19.9K ── La liste des composantes, GÉNÉRÉE. Une composante ajoutée au schéma y paraît sans qu'aucune liste soit retouchée (Q1 : toutes les non réservées). ─
+- atPromptSansAdresse 0.2K 
+- atPromptPieceAdresse 0.8K 
+- atPromptTexte 1.3K SITE-COURS-2c : chaque produit apporte ses jetons ; la fiche de séance garde exactement le sien (@@COMPOSANTES@@), le chapitre ajoute les siens.
+- atChargerOutils 0.1K M-PROMPT-4 : la liste des outils vient du hub, où les apps l'ont publiée.
+- atIAChargerPrompt 0.3K la base sinon le seed
+- atIAOuvrir 0.2K ── L'écran ──
+- atIARendre 1.8K 
+- atIAInfo 0.5K MICRO 04/08 — les trois pièces du champ visible.
+- atPromptDirectives 0.2K MICRO 04/08 — les trois pièces du champ visible.
+- atIATplTouche 0.3K Le bouton d'enregistrement ne s'allume qu'après une vraie modification : un bouton actif sans rien à enregistrer apprend à cliquer sans regarder.
+- atIAEnregistrerTplVue 0.8K On passe par le MÊME chemin qu'atIAEnregistrerTpl (atSitePut, callback (ok)) : réimplémenter une écriture qui marche serait prendre un risque pour rie
+- atIACopier 1.2K MICRO 04/08 — si Paul a modifié le champ sans enregistrer, on copie CE QU'IL VOIT. Copier autre chose que ce qui est à l'écran serait un mensonge d'in
+- atIAModifier 1.6K 
+- atIAEnregistrerTpl 0.6K 
+- atIARestaurerTpl 0.2K ── LA VÉRIFICATION — refus NOMMÉS, et ils s'ACCUMULENT (jamais le premier seul) ──
+- atIAValider 1.6K ── LA VÉRIFICATION — refus NOMMÉS, et ils s'ACCUMULENT (jamais le premier seul) ──
+- atIAVerifier 2.0K 
+- atIAApercu 2.7K ── L'APERÇU, puis LE CHOIX (deux boutons de même poids, aucun pré-choisi) ──
+- atIAAppliquer 2.8K la recopie contrôlée — le JSON épouse atDocNeuf, aucun traducteur
+- atIAInjecterNeuve 1.0K [LOT2-⑪] SANS feuille ouverte, la feuille neuve saurait où aller : on DEMANDE la séance de dépôt au lieu de créer une orpheline à ré-adresser. Le chap
+- atIAInjecterAvecDestination 2.7K 
+- atIARemplacer 0.6K 
+- atIARemplacerConfirme 2.9K L'ARCHIVE PART AVANT. Si elle échoue : ABANDON, rien n'est remplacé.
+- atPromptComplet 0.2K Le texte tel qu'il PARTIRA : repères remplis. C'est ce que le champ montre.
+- atDiffLignes 0.7K ── ④ LE DIFFÉRENTIEL — par lignes, sans dépendance ──
+- atIdsStructurels 0.6K Les identifiants structurels : ce qui, disparu, casse l'aval.
+- atZonesCritiques 1.1K ④ LES ZONES CRITIQUES — on NOMME ce qui manque. Jamais un refus.
+- atDiffHtml 1.4K 
+- atArchiverPuisEcrire 0.5K ── ③ ARCHIVE AVANT, ABANDON SI ELLE ÉCHOUE ──
+- atArchivesLire 0.3K ── ⑤ LA LISTE DES ARCHIVES ──
+- atArchiveDate 0.4K ① Le bloc d'édition, UN SEUL, appelé par les TROIS écrans. Trois copies auraient divergé — c'est précisément ce qui a produit « deux versions empilées
+- atBlocEdition 1.4K ① Le bloc d'édition, UN SEUL, appelé par les TROIS écrans. Trois copies auraient divergé — c'est précisément ce qui a produit « deux versions empilées
+- atSignalerModif 0.3K Le bouton reste gris tant que rien n'a changé : un bouton actif sans rien à enregistrer apprend à cliquer sans regarder.
+- atEnregistrerAvecDiff 0.4K ③ + ④ : le différentiel s'affiche, l'archive part AVANT, Paul décide.
+- atAnnulerEnr 0.1K 
+- atConfirmerEnr 1.5K [LOT2-⑧] la pièce d'adresse ne se PERSISTE jamais : elle est propre à LA feuille ouverte — figée dans le prompt enregistré, elle polluerait toutes les
+- atArchivesOuvrir 0.3K 
+- atArchivesRendre 1.5K 
+- atArchivesCocher 0.3K deux au plus : on compare deux versions
+- atArchiveRelire 0.5K ⑤ RESTAURER : archive l'état actuel AVANT de le remplacer — on ne perd jamais l'état d'avant, exactement comme à l'enregistrement.
+- atArchiveRestaurer 1.1K ⑤ RESTAURER : archive l'état actuel AVANT de le remplacer — on ne perd jamais l'état d'avant, exactement comme à l'enregistrement.
+- atArchivesComparer 2.7K ⑤ COMPARER deux archives — le MÊME atDiffHtml qu'à l'enregistrement.
+- atEsc 0.2K M-MANIFESTE (02/08) — BUG DE PRODUCTION CORRIGÉ. La classe capturait l'apostrophe DROITE (U+0027) mais la table définissait la TYPOGRAPHIQUE (U+2019) 
+- atLignes 0.1K 
+- atMultiligne 0.1K 
+- atListe 0.3K champ kind 'list' : tableau ou texte à lignes
+- atOrdreSeme 0.3K Mélange déterministe (appariement statique) — pas de hasard : deux impressions identiques
+- atDateFr 0.2K NB : formatage date robuste
+- atTexteOuReforme 2.9K Le texte d'une composante 'reforme' : principal ou reformulation selon la bascule H
+- atAccord 0.1K 
+- atCompterLignes 6.9K Accord (Paul, 29/07) : le libell\u00e9 suit le nombre r\u00e9el. Champ libre : on compte les lignes non vides.
+- atZoneLignes 7.1K Zones de travail
+- atelierIntitule 0.2K ── LA FEUILLE ENTIÈRE — atelierDocumentHTML(doc, ctxEleve) → HTML autonome. Fonction PURE : aucune écriture, aucune lecture réseau (§XIII.1ter). ──
+- atelierRenduComposante 0.5K ═══ [PONT-D] L'ANCRAGE CONTEXTUEL — quand une feuille est rendue DEPUIS un contexte (niveau/chapitre/séance de la navigation), l'en-tête se résout DU 
+- atCtxDeChapitre 0.5K ═══ [PONT-D] L'ANCRAGE CONTEXTUEL — quand une feuille est rendue DEPUIS un contexte (niveau/chapitre/séance de la navigation), l'en-tête se résout DU 
+- atCtxAffichage 0.5K 
+- atelierDocumentHTML 0.1K 
+- atelierPageHTML 2.2K Le DOCUMENT COMPLET autonome (page HTML avec sa charte sobre et son @media print) — c'est LUI que l'aperçu affiche (srcdoc) et que l'impression imprim
+- atelierCharteCSS 8.6K LA CHARTE SOBRE — EN DUR (décision : la charte est une décision de conception). Noir sur blanc, serif pour le texte long, hiérarchie explicite. Patron |hub: site/atelier/documents/<id>
+- atSitePut 0.1K Durcissement local (complément ② du feu vert) : _sitePut/_siteDelete du socle répondent true dès que fetch se résout — un refus HTTP (500, règles de s
+- atSiteDelete 0.3K M-ÉCHECS-1 : le socle vérifie désormais — délégation pure, cb(ok, issue)
+- atBrouillonCle 0.1K ── clés du brouillon local : préfixe distinct en mode test (confinement nommé) ──
+- atBrouillonEcrire 0.1K 
+- atBrouillonLire 0.1K 
+- atBrouillonEffacer 0.1K 
+- atBrouillonsTestPurger 0.6K nettoyage des zombies du mode test — vérifie ce qu'il fait
+- atDocNeuf 0.5K ── modèle d'un document neuf ──
+- atelierOuvrir 0.7K ── ouverture / fermeture de l'écran ──
+- atelierFermer 0.5K retour d'où l'on vient
+- atSiteGetDocs 0.4K Le magasin du mode test est PLAT par chemin exact : écrire des documents aux chemins enfants puis lire le parent donnerait null. En mode test, la list
+- atChargerListe 0.8K ── LA LISTE DES FEUILLES — créer |ouvrir
+- atExporterDoc 2.6K [PONT-B2] les consignes reformulées (différenciation) SURVIVENT au round-trip — arbitrage Paul 22/08 : des fiches en ont et en auront.
+- atImpCocher 0.1K 
+- atImpToutCocher 0.1K 
+- atImpBarreMaj 0.4K 
+- atImprimerSelection 0.8K [8.59.3] LA LIASSE DIT L'ÉTAT DU HUB, PAS CELUI D'UN ONGLET. AT.liste se charge à l'ouverture et ne se resynchronise pas : une session ouverte pendant
+- atImprimerSelection2 1.8K 
+- atRendreListe 5.6K [C5-3a] l'\u00e9diteur de chapitre reste ma\u00eetre jusqu'\u00e0 sa sortie
+- atNouvelleFeuilleIA 0.8K [LOT4-⑤] cette porte-ci vient de l'atelier, pas du chapitre
+- atNouvelleFeuille 0.2K 
+- atOuvrirDoc 2.1K SITE-COURS-2c : la version envoyée se charge UNE fois à l'ouverture (mesure d'écart sans lecture réseau à chaque enregistrement) ; drapeaux de proposi
+- atDupliquerDoc 0.8K 
+- atCorbeilleCle 0.3K Suppression : dénombrement affiché → archive corbeille (via _sitePut : couvert par le mode test, format {_meta,data} de _corbeillePut, lisible par l'é
+- atSupprimerDoc 2.7K SITE-COURS-2c : la version envoyée SUIT la feuille (jamais de version fantôme) ; si la feuille est déposée, on prévient (jamais bloqué) : l'item devie |hub: site/atelier/documents/
+- atMarquerModifie 0.4K ── PERSISTANCE — patron setMeta : l'écran suit immédiatement, la base suit avec un débounce ; le brouillon local part À CHAQUE frappe. ──
+- atEnregistrerMaintenant 3.3K le brouillon reflète l'état sauvé (repère de fraîcheur)
+- atEtat 1.8K 
+- atRendreEditeur 3.3K [8.59.2] la reconstruction détruit l'iframe d'aperçu : sa position se mémorise ICI, avant, et atRendreApercu la restaurera.
+- atRetourListe 0.1K 
+- atSetTitre 1.2K rattachement niveau / classe / élève (source : classesData du site, extractEleves)
+- atChargerChapitres 1.1K [8.59.1] UN NIVEAU CHARGÉ NE SE RECHARGE JAMAIS TOUT SEUL — même vide. Avant la purge de Paul, « chargé » se devinait à « a des chapitres » : un nivea
+- atRattRecharger 0.2K Les chapitres d'un niveau, triés par ordre — [{num,titre,ordre}]
+- atChapitresDe 0.4K Les chapitres d'un niveau, triés par ordre — [{num,titre,ordre}]
+- atSeancesDe 0.5K Les séances d'un chapitre, triées par ordre — [{num,titre,ordre}]
+- atRattPoserChapitre 0.3K Poser ou effacer l'adresse : les libellés viennent du HUB, jamais retapés.
+- atRattPoserSeance 0.3K Les champs d'affichage `chapitre`/`seance` suivent l'adresse (flux Windows).
+- atAdresseVersValeurs 0.7K Les champs d'affichage `chapitre`/`seance` suivent l'adresse (flux Windows).
+- atAdresseAffichage 0.8K Le libellé à l'écran se recalcule depuis le hub quand il est chargé (l'écran est à jour) ; sinon le libellé stocké à la sélection fait secours ; une f
+- atIAValiderAdresse 2.0K ── L'ADRESSE VENUE D'UNE IA SE VALIDE — refus NOMMÉS, libellés du hub ── Comparaisons STRICTES en codepoints (une apostrophe courbe n'est pas une droi
+- atTrouverChapitre 0.5K titre annoncé ≠ titre réel : refus
+- atTrouverSeance 0.6K ── 3e SOURCE DU BOUTON LIER : un document de l'atelier ── Un document, plusieurs points d'affichage (décision ④ du 27/07).
+- atAdresseLisible 1.2K L'adresse en toutes lettres — « 3e › Chapitre 1 › Séance 8 » (ordres du hub si chargés)
+- atAdresseCles 0.4K [C5-UID] \u2464 la CL\u00c9 courante d'une adresse : par identit\u00e9 d'abord, par rang ensuite. Les lectures qui ont besoin de la place r\u00e9elle 
+- atItemPointant 1.0K L'item de la séance qui pointe cette feuille, s'il existe — {itemId,item}|null
+- atFeuilleDeposee 0.7K le document du chapitre fait foi
+- atEnvoyerParDefaut 0.4K [LOT11-\u2461] L'ENVOI PAR D\u00c9FAUT \u2014 le d\u00e9p\u00f4t envoie sans c\u00e9r\u00e9monie (message par d\u00e9faut), TOUJOURS par l'\u00e9criva
+- atDeposerFeuille 2.3K ── LE DÉPÔT — l'item par l'écrivain unique ; l'ENVOI n'est plus écrit ici : il est encha\u00een\u00e9 par l'appelant, toujours via atEnvoyerVersion (L
+- atEcartDetail 0.1K SITE-COURS-2d |le cœur de la mesure d'écart, désormais DÉTAILLÉ : il compte ET nomme les zones touchées, au niveau de la SECTION (libellés que la feu
+- atEnvoiEcart 0.2K proposé — Paul valide sur captures
+- atEnvoiDefautLire 0.3K Le message par défaut vit en /site/atelier/config/messageEnvoiDefaut ; défaut codé sinon.
+- atEnvoyerClic 0.9K ── L'ENVOI — modale au message éditable (le défaut se conserve, ne s'écrase que sur demande explicite par la case). La date du jour remplace <date>. ─
+- atEnvoyer 2.4K [LOT11-\u2460\u24d0] la v\u00e9rit\u00e9 unique
+- atEnvoyerVersion 1.0K 
+- atProposerDepot 1.4K La proposition de dépôt (①) — jamais automatique, jamais insistante.
+- atStatutFeuille 2.2K Le STATUT d'une feuille (③) — croisé avec la vérité terrain (chapitresData).
+- atFeuillesAdresseesA 0.5K Les feuilles adressées à une séance et non déposées (②).
+- atDocsAssurer 0.4K un chargement est en route : son cb re-rendra — rappeler ici ferait boucler le rendu
+- atDeposerToutes 1.4K [Les déposer] du rappel — enchaîne les dépôts, garde nominative de 2b réutilisée.
+- atHtmlSection 0.4K Une section d'éditeur en accordéon — l'état tient la session d'édition (AT.sectionsOuvertes), remis à zéro par atOuvrirDoc.
+- atSectionToggle 0.2K Le clic dans l'aperçu mène à la section d'éditeur correspondante.
+- atAllerComposante 0.8K Le clic dans l'aperçu mène à la section d'éditeur correspondante.
+- atMessageApercu 0.4K L'écouteur du message d'aperçu — STRICT : seul le type 'at-va' venant de l'iframe d'aperçu est entendu, tout le reste est ignoré ; aucun geste d'écrit
+- atInfoInjection 1.9K ⓘ des voies d'injection — la substance que les modales de chInjecter disent déjà, mais AVANT le clic.
+- atSeances 0.4K [C5-3a] la réalité Firebase : `seances` arrive en TABLEAU quand les index sont denses, en OBJET quand l'index 0 manque (le trou du chapitre 1 réel). U
+- atSeancesRangSuivant 0.3K la CLÉ libre suivante (rangement technique) — le RANG, lui, se prend par ordSuivant
+- atOnglet 0.2K nouvelle chance au clic
+- atTbNiveau 0.1K le niveau des tableaux ②③ — celui de la page, changeable en tête d'onglet
+- atTbNiveauChange 0.1K 
+- atTbSelecteur 0.3K 
+- atChapitresAssurer 0.4K pas de recharge en boucle sur un hub muet : le bouton Réessayer réarme
+- atChapitresRecharger 0.2K le compteur qui s'apaise : les items sans liaison d'un chapitre
+- atChapitreLiaisons 0.9K le compteur qui s'apaise : les items sans liaison d'un chapitre
+- atRendreChapitres 2.2K 
+- atVoirPanneau 0.6K passerelle atelier → panneau : fermer l'atelier, déplier le chapitre, y aller
+- atEditerChapitre 1.9K ── L'ÉDITEUR DE CHAPITRE, EN PLACE — chaque champ écrit SON chemin précis, jamais un nœud entier, jamais `published`. Le chapitre du site reste l'uniq
+- atChSlug 0.2K ═══ [PONT-A] P3ter — EXPORT CHAPITRE POUR L'IA DE RELECTURE ═══ Le chapitre TEL QU'IL EST (titre, entrée, compétences, séances complètes : ordre, cle,
+- atChExporter 0.5K 
+- atEditerChapitreRendre 14.5K [LOT1-①] un redessin de DONNÉES ne perd pas la lecture : la position de la pile est reprise telle quelle, et la feuille courante est reposée par le re
+- atFeuilleDepotPoser 2.1K [LOT8-\u2469] L'\u00c9CRIVAIN UNIQUE du champ depot pos\u00e9 par une LIAISON : la feuille vivante note {niveau, chapitre, s\u00e9ance, uids, itemId, 
+- atChampChapitre 0.6K [LOT2-⑩] avant écrasement
+- atChampSeance 1.4K [LOT2-⑩]
+- atChampItem 0.7K [LOT2-⑩]
+- atEditerChapitreSortie 0.3K le sommaire PROPOSÉ — jamais automatique
+- atProposerSommaire 1.3K le sommaire PROPOSÉ — jamais automatique
+- atRegenererSommaire 0.8K 
+- atSupprimerChapitre 2.0K ── SUPPRESSION D'UN CHAPITRE — patron feuille : corbeille D'ABORD (l'échec abandonne tout), ou sans copie ; garde « prévenu, pas bloqué » si publié. ─
+- atDupliquerChapitre 2.6K [C5-UID] ① identités neuves, jamais celles de l'original
+- atRoster 0.2K ═══ fin [C5-3a-c] ═══
+- atHtmlRattachement 3.7K [LOT7b-⑥] l'adresse se lit AVANT de se régler : une ligne d'état claire (« Où va cette feuille ? » tant que rien n'est choisi, « ✓ Feuille adressée » 
+- atSetRatt 1.0K SITE-COURS-2b : l'adresse suit le niveau — chapitre et séance repartent de zéro
+- atCaseGrisee 0.4K une case du gabarit — grisage qui CONSEILLE (dépendances, rattachement), jamais un verrou : le clic active quand même, avec l'avertissement
+- atHtmlCase 0.9K 
+- atToggleCase 0.9K SITE-COURS-2d
+- atHtmlChampsUnique 1.3K champs d'une composante unique (structure non multiple)
+- atHtmlChamp 0.9K 
+- atValeurTypee 0.3K Q6 (décision de la conscience) : un champ de type liste stocke un TABLEAU de valeurs, jamais un texte à lignes — la Concordance n'aura rien à reparser
+- atSetValeur 0.4K SITE-COURS-2d : la zone d'aperçu correspondante pulsera
+- atBlocsDe 0.1K blocs multiples : la case a activé la ZONE ; « + » ajoute un second bloc, ↑ ↓ réordonnent, ✕ retire (décision de la conscience, Q1)
+- atHtmlBlocs 1.7K 
+- atAjouterBloc 0.2K 
+- atRetirerBloc 0.2K 
+- atBougerBloc 0.2K 
+- atSetBlocValeur 0.2K 
+- atSetBlocReforme 0.3K le piston : pré-coche le lot — la main reste entière (on peut tout décocher après)
+- atAppliquerProduit 0.6K le piston : pré-coche le lot — la main reste entière (on peut tout décocher après)
+- atLotContextes 0.3K ── L'APERÇU NAVIGABLE — clone du patron previewIdx de correction_dictee : élève par élève quand la feuille est nominative ; l'iframe srcdoc porte LE d
+- atCodeDe 0.2K 
+- atRendreApercu 0.8K SITE-COURS-2d : la zone touchée pulse une fois, puis se consomme
+- atApPrec 0.1K 
+- atApSuiv 0.2K Impression : le LOT ENTIER si la feuille est pour toute la classe ; sinon la feuille courante. Même document que l'aperçu (aucune divergence possible)
+- atImprimer 0.9K Impression : le LOT ENTIER si la feuille est pour toute la classe ; sinon la feuille courante. Même document que l'aperçu (aucune divergence possible)
+- atOuvrirOnglet 0.4K bulles d'info : le texte vient du schéma, jamais d'un attribut onclick
+- atInfoComposante 0.1K bulles d'info : le texte vient du schéma, jamais d'un attribut onclick
+- atInfoGroupe 0.1K 
+- atInfoProduits 0.2K 
+- atInfoRatt 0.3K ── petites modales de l'atelier (pas de prompt/confirm natifs) ──
+- atInfo 0.1K ── petites modales de l'atelier (pas de prompt/confirm natifs) ──
+- atModaleChoix 2.0K 
+- atVuesRetenir 0.1K ── fonctions ──
+- atVuesRappeler 0.1K 
+- atVuesBarreHtml 0.4K 
+- atVuesMonter 0.8K le rendu de l'\u00e9diteur vient d'\u00eatre pos\u00e9 dans at-zone : on l'enveloppe sans le re-rendre
+- atVuesAller 0.2K 
+- atVuesPoser 0.7K 
+- atSommaireNatifHtml 0.4K 
+- atSomEcransDe 0.4K 
+- atSomEcransHtml 1.0K [12e] le relatif hors séance ouverte
+- atSomInjecterEcrans 0.8K 
+- atSomAllerEcran 0.9K on change de séance jouée
+- atSomOuverte 0.2K la première s'ouvre
+- atSomPlier 0.1K 
+- atSomRafraichir 0.5K [LOT1-①] le défilement ne se perd pas
+- atSomSuivreCourant 0.3K 
+- atMn 0.1K 
+- atHhmm 0.1K 
+- atCreneauSel 0.1K 
+- atDebutPropose 0.2K 
+- atTempsUtile 0.1K 
+- atDrMaintenant 0.2K 
+- atDrSynchroDebut 0.1K 
+- atDrMajUtile 0.4K 
+- atDrSuiviAppliquer 1.3K les commandes de SUIVI n'ont pas de sens en préparation (et cassent si on les clique) : « Qui a participé » relève de la séance jouée avec une classe.
+- atVecuAfficher 0.6K 
+- atDrClore 0.1K 
+- atDrCloreFin 0.4K [SESSION] le cours s'efface : plus rien à rejoindre
+- atT5Reste 0.2K minutes avant le début de l'agenda
+- atT5Etat 0.4K 
+- atT5Zone 0.2K canon §5 : « dans la zone libre SOUS LES COMMANDES de l'écran de pilotage ». On la loge à la fin de la colonne centrale du déroulé, pas sous tout le b
+- atT5Appliquer 0.5K [C1-CONSCIENCE] le T-5 n'occupe plus la scène (il l'écrasait) : il vit dans le bandeau sous forme d'un appel discret, et le détail s'ouvre dans une MO
+- atT5Appel 0.7K 
+- atT5Restantes 0.3K 
+- atT5Modale 2.6K 
+- atT5Choix 0.3K [LOT C1 \u2461] une d\u00e9cision de fin d'heure ne se perd plus
+- atT5Veille 0.3K 
+- atDrModifsDeLaSeance 2.8K 
+- atDrClotureModale 1.8K 
+- atDrReprendre 2.5K  |hub: heures/
+- atVecuDemarrer 0.4K [LOT C1 \u2460] m\u00eame cr\u00e9neau \u2192 m\u00eame heure : on reprend
+- atVecuEntrer 0.5K [LOT C2 \u2462.3 / \u2461] un fils du zoom n'est jamais une ancre : le temps se compte sur le P\u00c8RE. Sans cela, zoomer pendant une activit\u00e9 l
+- atVecuSortir 0.3K [LOT C1 \u2461]
+- atVecuMinutes 0.2K 
+- atVecuEcrire 1.9K 
+- atDrEnrAuto 0.2K en classe, rien ne remonte à la préparation
+- atDrEnrConfirme 0.4K 
+- atDrTrame 0.3K 
+- atDrTrameEnregistrer 0.5K 
+- atDrJouer 3.0K la copie horodat\u00e9e AU D\u00c9MARRAGE : une par classe ; une trame modifi\u00e9e ensuite ne touche JAMAIS une s\u00e9ance d\u00e9j\u00e0 jou\u00e9
+- atDrBrancherSuivi 0.4K 
+- atDrMonter 4.9K [EDT] porte n\u00b03 \u2014 le bandeau du d\u00e9roul\u00e9
+- atDrJouerClic 3.0K [C1-CONSCIENCE] le professeur a TOUS les droits : on avertit, on ne bloque JAMAIS.
+- atDrCompChange 0.3K [T1-crochet] l'\u00e9cran d\u00e9clare ses notions/comp\u00e9tences
+- atDrTaxoOptions 0.5K la taxo Atelier alimente le champ si elle est charg\u00e9e (TAXO_CACHE)
+- atArbrePremiereSeance 0.5K [11e adaptation |支] le libellé d'une notion depuis la même source que la datalist
+- atTaxoLibelle 304.2K [11e adaptation |支] le libellé d'une notion depuis la même source que la datalist
+- atEcranEnvoyer 0.7K un écran envoyé seul quitte son groupe
+- atEcranDupliquer 0.5K copie : dévoilement à zéro
+- atEcranSupprimer 0.2K 
+- atDrVueInterne 1.1K [A7] Relecture et Papier : les vues DÉJÀ CONSTRUITES du moteur (récit, pages A4), rendues par le pont — plus d'écriteaux « à venir ».
+- atP2Uid 0.1K 
+- atP2NormaliserBloc 0.9K 
+- atP2ValiderDeroule 2.4K 
+- atP2AppliquerDeroules 5.1K L'application : rapprocher les séances (par clé d'abord, par titre sinon) et écrire les trames normalisées. politique='completer' (défaut) ajoute à la
+
+## L éditeur (ed, ed2) — 83 fonctions
+- editNoteSeance 0.6K M12-② |Texte libre de s\u00e9ance (c\u00f4t\u00e9 prof), lu par l'\u00e9l\u00e8ve \u00e0 la place des documents. Formulation par d\u00e9faut SOUMISE 
+- editTitle 1.0K 
+- edIARetourChapitre 0.4K [LOT4-⑤] la sortie du mode chapitre : même place (position de pile reprise)
+- edFeuillesDuChapitre 1.0K les feuilles du chapitre, dans l'ordre des séances puis des items (`ordre` fait foi)
+- edEditerFeuille 0.9K [LOT9-\u2466] edBarreFil RETIR\u00c9E \u2014 barre retir\u00e9e sur d\u00e9cision de Paul (LOT4-\u2461) ; preuve d'inatteignabilit\u00e9 au rapport.
+- edRetourChapitre 0.2K 
+- edAjouterSeance 0.5K [LOT2-⑥] INSÉRER UNE SÉANCE ICI — à une place choisie, AVANT la séance j. Distinct de « + Séance » (fin de liste) et de « + Feuille ici » (séance exis
+- edInsererSeanceAvant 1.5K [LOT2-⑥] INSÉRER UNE SÉANCE ICI — à une place choisie, AVANT la séance j. Distinct de « + Séance » (fin de liste) et de « + Feuille ici » (séance exis
+- edAjouterItem 0.3K 
+- edSupprimerSeance 0.3K [LOT2-⑩] un autre geste : le cran d'annulation tombe
+- edSupprimerItem 0.2K [LOT2-⑩]
+- edDeplacerSeance 0.5K 
+- edDeplacerItem 0.5K 
+- edOuvrirItem 0.5K [LOT12] donnée historique : visible, muette
+- edEnvoiInfo 1.0K [LOT7b-③] le « i » des états : une phrase par cas, là où ça se règle.
+- edFeuillesJamaisEnvoyees 0.4K [LOT7b-③] les feuilles du chapitre EN PLACE mais jamais envoyées.
+- edEnvoyerManquantes 1.4K 
+- edPublierItem 2.8K [LOT7b-③] LA GARDE : publier une feuille jamais envoyée = montrer une ligne qui ne s'ouvre sur rien. On prévient AVANT le choix des classes.
+- edPublierClasse 0.6K [LOT2-⑨] L'HÉRITAGE — une feuille créée DANS une séance reçoit ses notions et compétences, PRÉ-REMPLIES et modifiables, jamais imposées : cases cochab
+- edLibellesTaxo 0.2K [LOT2-⑨] L'HÉRITAGE — une feuille créée DANS une séance reçoit ses notions et compétences, PRÉ-REMPLIES et modifiables, jamais imposées : cases cochab
+- edHeriterSeance 0.5K 
+- edCreerFeuilleIci 2.5K [LOT2-⑨] les libellés des notions héritées
+- edFeuilleDepots 0.3K 
+- edPrendreFeuille 2.9K [LOT4d-D1] panne et vide séparés : deux messages nets.
+- edProduitDeclare 0.1K 
+- edIAdepuisTrou 3.2K les libellés des notions héritées
+- edDeplacerVersSeance 0.9K 
+- edDeplacerVersSeanceFaire 1.2K même uid, même contenu
+- edDupliquerVers 2.6K 
+- ed2Teinte 0.2K le fil des documents du chapitre, dans l'ordre : ce qui EXISTE et ce qui est ATTENDU
+- ed2Documents 1.5K le fil des documents du chapitre, dans l'ordre : ce qui EXISTE et ce qui est ATTENDU
+- ed2Sommaire 2.2K le sommaire : pastille teint\u00e9e par s\u00e9ance, point plein (existant) ou creux (attendu, gris\u00e9 italique), et l'avancement en t\u00eate.
+- ed2Poser 0.7K [LOT9-\u2466] ed2Pile RETIR\u00c9E \u2014 colonne remplac\u00e9e par le papier ; preuve d'inatteignabilit\u00e9 au rapport (0 appel direct, 0 appel pa
+- ed2Aller 2.7K [LOT9-\u2460] l'attendu (trou) se rejoint comme un document : sa cible au papier est le cadre .ed2-trou. Le \u00ab courant \u00bb (halo dor\u00e9, imp
+- ed2CharteScopee 0.6K 
+- ed2FeuilleHtml 0.3K [LOT3] le contenu d'une feuille — le document tel qu'il sortira, RENDU RÉUTILISÉ
+- ed2PagModeLu 0.2K 
+- ed2PagPoser 0.4K [LOT3] LA HAUTEUR VRAIE : mesurée sur le rendu (offsetHeight du .ed2-pdoc, relevée après chaque rendu par ed2Mesurer) ; l'estimation d'avant ne sert p
+- ed2Mesurer 0.2K 
+- ed2PagSignature 0.3K la repagination MESURÉE : si la découpe réelle diffère de celle à l'écran, UN rendu (changement de données de mise en page) — garde anti-boucle par si
+- ed2Repaginer 0.4K la repagination MESURÉE : si la découpe réelle diffère de celle à l'écran, UN rendu (changement de données de mise en page) — garde anti-boucle par si
+- ed2HauteurDoc 0.8K estimation de hauteur : PREMIER JET avant mesure (patron maquette)
+- ed2Pages 1.2K [LOT9-\u2461] la hauteur du titre de s\u00e9ance dans la page (border 2 + marges 18 + ligne ~18)
+- ed2CoutFeuilles 0.2K les lignes de découpe : grise = partage imposé par la page, dorée = ajoutée par Paul
+- ed2CoupeCle 0.1K 
+- ed2CoupeBasculer 0.2K 
+- ed2CoupeRetirer 0.4K « ces deux-là restent ensemble »
+- ed2Papier 2.3K l'atelier papier rendu : des feuilles A4, le folio, les en-têtes de séance, les lignes de partage et les emplacements toujours proposables.
+- ed2Imprimer 0.5K [PONT-D]
+- ed2ImprimerChapitre 1.4K 
+- ed2ImprimerHTML 0.2K 
+- ed2OuvrirOnglet 0.8K [PONT-D]
+- ed2PanVers 0.2K 
+- ed2PapierVers 0.4K le point d'édition : la ligne du panneau qui porte ce champ, mise en valeur, curseur dedans — et la zone du document allumée. La sélection RESTE.
+- ed2SelectionnerSeance 1.5K le point d'édition : la ligne du panneau qui porte ce champ, mise en valeur, curseur dedans — et la zone du document allumée. La sélection RESTE.
+- ed2SelectionnerChap 0.8K [LOT9-\u2462] LES CHAMPS DU CHAPITRE SE S\u00c9LECTIONNENT AUSSI : la ligne du panneau s'allume et re\u00e7oit le focus ; au papier, la page de garde 
+- ed2Selectionner 1.8K [LOT9-\u2460]
+- ed2Cle 0.1K 
+- ed2CleSe 0.6K [LOT9-\u2460] la cl\u00e9 d'une S\u00c9ANCE \u2014 m\u00eame famille, m\u00eame lectrice
+- ed2CleLire 1.2K [LOT9-\u2462] 'ch-<champ>' \u2192 un champ du CHAPITRE (title, entree, comp)
+- ed2ZoneDe 1.1K [LOT4c-⑦] LA ZONE VISÉE PAR UNE CLÉ — depuis la clé lue par ed2CleLire, l'élément [data-c] DANS LE BON document. Même règle de rang que ed2ClicPapier 
+- ed2ChampFHtml 0.8K 
+- ed2PanneauFeuille 2.8K [LOT4-①]
+- ed2SetValeurFeuille 0.3K 
+- ed2SetBlocFeuille 0.5K la MAJ CIBLÉE : seul le cadre de CETTE feuille est re-rendu (une même feuille déposée deux fois se met à jour partout), la zone touchée pulse.
+- ed2MajZone 0.6K la MAJ CIBLÉE : seul le cadre de CETTE feuille est re-rendu (une même feuille déposée deux fois se met à jour partout), la zone touchée pulse.
+- ed2SauverFeuille 1.2K 
+- ed2ClicTrou 0.2K [LOT9-\u2460] le clic d'un TROU du papier : les boutons du cadre gardent leurs gestes (on les laisse passer) ; ailleurs, la s\u00e9lection \u2014 l'it
+- ed2ClicPapier 0.7K [LOT4-①] le rang du bloc cliqué — les blocs ne vivent que dans .f-contenu
+- ed2ClicDocument 0.2K ③b clic dans le document → le point d'édition ; ③c clic sur un champ → la zone
+- ed2ClicChamp 0.9K [LOT4d] la clé porte l'item : la feuille désignée est CELLE DE LA LIGNE cliquée — mesuré : le halo suivait ED2.courant même pour la ligne d'une autre 
+- ed2Suivre 1.0K [LOT1-①] pas de suivi juste après un geste
+- edTitreNorm 0.5K toutes les apostrophes → une seule
+- edTitreCoeur 0.6K le préfixe de produit (« Fiche notion — », « Prépa brevet : »…) est ignoré
+- edAppariements 1.3K les correspondances : égales après normalisation (cœur ou titre entier). Rien d'approximatif : dans le doute on ne lie pas, on le MONTRE.
+- edProposerLiaisons 1.0K la MODALE : ce qui va être lié, nommé un par un, AVANT toute écriture.
+- edProposerLiaisonsPrete 1.0K 
+- edLierConfirme 1.4K [LOT4-\u2464] \u00ab apres \u00bb (optionnel) remplace le rendu de sortie.
+- edUndoVider 0.0K 
+- edUndoMaj 0.2K 
+- edUndoCourt 0.2K 
+- edUndoPoser 0.1K 
+- edUndoJouer 0.2K 
+
+## Les chapitres (ch) — 31 fonctions
+- chargerBrevetDates 0.5K 
+- chargerAnnonces 0.1K 
+- CH 26.6K Raccourcis de champs
+- chVocabulaireTaxo 1.0K Le vocabulaire de la taxonomie, GÉNÉRÉ (mjpcPromptVocabulaire du canon §12). Chaque notion porte ses niveaux entre crochets : l'IA peut signaler elle-
+- chVocabulaireTypes 0.2K Les identifiants valides, à plat — pour refuser une notion inventée EN LA NOMMANT.
+- chIdsTaxo 0.5K Les identifiants valides, à plat — pour refuser une notion inventée EN LA NOMMANT.
+- chChargerTaxo 0.2K LA VALIDATION — motifs ACCUMULÉS, élément CITÉ, message qui dit quoi corriger.
+- chValiderChapitre 0.5K LA VALIDATION — motifs ACCUMULÉS, élément CITÉ, message qui dit quoi corriger.
+- chInventaire 2.5K L'INVENTAIRE FACE À FACE — l'existant PRÉCIS, pas un compte.
+- chOuvrir 0.2K ── L'ÉCRAN — accès depuis la zone « Écrire avec une IA » ──
+- chRendre 1.5K 
+- chInfo 0.9K 
+- chAlerteGraphies 0.9K Signalement discret des deux graphies de classes (dette, SANS bouton de correction)
+- chVerifier 1.7K 
+- chChargerEtatAnnee 0.2K SITE-COURS-2e : l'état de l'année, lu pour le niveau visé.
+- chAfficherInventaire 7.5K [C5-ORD] le hub livre les chapitres en OBJET d\u00e8s qu'il y a des trous : on parcourt par cl\u00e9s r\u00e9elles, jamais par forEach de tableau.
+- chInjecter 3.3K LES TROIS VOIES. Écriture PAR INDEX, jamais la liste entière, jamais push.
+- chApresEcriture 1.1K [LOT B \u2463d] APR\u00c8S L'\u00c9CRITURE : la liste dit vrai, sans rechargement de page. Le LOT A avait trait\u00e9 `addChapter` (le bouton du panne
+- chInjecterConfirme 6.2K [LOT B \u2463b] le geste r\u00e9ellement demand\u00e9
+- chNettoyerPublished 2.0K `published` n'est JAMAIS écrit par l'injection — nettoyage récursif.
+- chEntreesDuNiveau 0.1K Les compétences du cycle 4, LUES dans la taxonomie (jamais recopiées).
+- chCompetencesC4 0.2K Les compétences du cycle 4, LUES dans la taxonomie (jamais recopiées).
+- chVocabulaireCompetences 0.2K 
+- chVocabulaireEntrees 0.5K ── L'ÉTAT DE L'ANNÉE — GÉNÉRÉ depuis la liste des chapitres du niveau. chInventaire regarde UN chapitre ; ici on lit la LISTE, parce que l'alternance 
+- chEtatAnnee 1.8K ── L'ÉTAT DE L'ANNÉE — GÉNÉRÉ depuis la liste des chapitres du niveau. chInventaire regarde UN chapitre ; ici on lit la LISTE, parce que l'alternance 
+- chSommaire 1.3K ── LE SOMMAIRE — CALCULÉ. Séance de rang 0, avec ses items, publiable à part. Il doit SE SUFFIRE À LUI-MÊME : à partir de lui seul, on doit pouvoir di
+- chSommaireSeance 1.1K La séance de rang 0 : une séance ORDINAIRE (elle porte des items comme les autres), publiable séparément. `published` n'est JAMAIS écrit ici.
+- chSommaireObjet 0.3K Le sommaire se suffit-il à lui-même pour l'IA du chapitre suivant ? Critère : pouvoir dire ce que le chapitre a travaillé SANS relire les séances.
+- chSommaireSuffisant 0.4K Le sommaire se suffit-il à lui-même pour l'IA du chapitre suivant ? Critère : pouvoir dire ce que le chapitre a travaillé SANS relire les séances.
+- chValiderDeclaration 2.3K ── LA VALIDATION de la déclaration : motifs ACCUMULÉS, élément CITÉ ──
+- chCalculerEcritures 4.0K ── LA GARDE D'ATTERRISSAGE — le calcul des écritures, extrait de chInjecterConfirme, MONTRÉ avant le clic. L'appariement par titre (celui qui a mélang
+
+## Les fiches des applications — 18 fonctions
+- fichesNormaliserJS 1.0K échappement : recopié tel quel
+- fichesExtraireObjet 1.3K gabarit commenté : écarté
+- fichesMajUne 1.0K 
+- fichesMettreAJour 0.4K Un échec sur une app n'arrête pas les autres : chacune est indépendante.
+- fichesAvancement 0.5K deux écrans peuvent être ouverts (section et voile) : on écrit dans les deux plutôt que de laisser getElementById n'en trouver qu'un — défaut mesuré a
+- fichesEtat 1.5K ── ④ le calcul, corrigé : une fiche ABSENTE n'est jamais « à jour » ──
+- fichesLireNom 0.3K 
+- fichesCompleterNoms 0.3K 
+- fichesDateFr 0.2K 
+- fichesMomentFr 0.2K 
+- fichesLignes 0.4K ── l'écran, dans le TABLEAU DE BORD ──
+- fichesCharger 0.4K 
+- fichesRendre 1.6K 
+- fichesInfo 0.8K 
+- fichesCliqueMaj 1.3K 
+- fichesVerifierAlerte 2.2K ── ② L'OVERLAY BLOQUANT, à l'ouverture du panneau prof ──
+- fichesOverlayMaj 0.5K M-MANIFESTE-3 ② : « Fermer » n'existe PAS avant le clic — il est créé ici, et TOUJOURS, quel que soit le résultat : si une app échoue, Paul n'est pas 
+- fichesOverlayFermer 0.7K ═══ fin § FICHES DES APPLICATIONS ═══
+
+## Le tableau distant, le téléphone, la session (ses) — 47 fonctions
+- sesIncident 1.1K ═══ [LOT A ②] LA CEINTURE — un échec se DIT, il ne s'avale pas ═══ Le 24/08, un défaut de données a rendu le pilotage muet en pleine classe : l'except
+- sesChemins 0.3K c = {niveau,chapitre,seance,classeSlug}
+- sesGet 0.1K 
+- sesPut 0.4K flux de session : silencieux (l'indicateur d'état parle), jamais le classeur d'échecs
+- sesCoursEcrire 0.8K ═══ CÔTÉ PILOTE — le cours annoncé, la scène émise, les gestes des autres appliqués ═══
+- sesCoursFermer 0.1K 
+- sesArreter 0.1K 
+- sesBrancherPilote 3.3K [LOT C2 \u2460] le point de passage unique : un \u00e9cran n\u00e9 de n'importe laquelle des treize fonctions du moteur re\u00e7oit son identit\u00e9 
+- sesPhoto 3.0K la PHOTO DE SCÈNE : l'équivalent exact d'envoie() côté données — c'est ELLE qui décide ce que voit le tableau. Gel : la photo n'est plus renouvelée, s
+- sesEmettre 0.3K 
+- sesPartEmettre 1.0K [LOT C2 \u2462.4] le moteur \u00e9crit `ecran:i` (un RANG) dans la participation \u2014 il n'est pas touch\u00e9. L'identit\u00e9 voyage donc avec, po
+- sesPollPilote 1.3K 
+- sesAppliquer 3.6K 
+- sesBandeau 0.8K le bandeau du pilote : l'état de la session, sobre, dans la tête du déroulé
+- sesBandeauEtat 1.1K ═══ LE QR — le pattern d'evaluation-qcm, à l'identique : nonce, image, écoute, fermeture au scan ═══
+- sesOuvrirTableau 0.5K 
+- sesQROuvrir 1.1K api.qrserver.com/v1/create-qr-code/?size=280x280&margin=10&data='+encodeURIComponent(url);
+- sesQRFermer 0.6K ═══ LA REPRISE — « un cours est en cours » sur tout appareil du professeur ═══
+- sesRepriseRetirer 0.1K 
+- sesReprisePeindre 0.6K 
+- sesRepriseSilence 0.1K 
+- sesReprisePoser 0.8K c'est d\u00e9j\u00e0 nous
+- sesReprendre 1.4K [LOT C3a \u2460] DERNI\u00c8RE V\u00c9RIFICATION AVANT D'AGIR : le pointeur et la trace font foi. Le professeur n'est pas bloqu\u00e9 \u2014 on lui di
+- sesBootTableau 2.1K ═══ LA VUE TABLEAU (?vue=tableau) — un terminal muet : elle PEINT, elle n'écrit JAMAIS ═══
+- sesTabCle 0.1K 
+- sesTabVeillePointeur 0.7K plus de cours : l'image RESTE
+- sesTabChercherCours 0.5K 
+- sesTabMonter 2.2K l'iframe moteur du site, cachée — intégrité vérifiée par le pont
+- sesTabPoll 2.2K [LOT B \u2462]
+- sesTabChrono 0.3K 
+- sesTabQui 0.9K 
+- sesBootTel 5.2K ═══ LE TÉLÉPHONE (?vue=tel) — le pilote de poche : prompteur + palette (maquettes 23/08) ═══
+- sesTelChercherCours 1.7K le TEL est un PILOTE : il monte le moteur (caché), rejoint la copie jouée, pose le régime
+- sesBrancherPiloteTel 1.4K [LOT C2 \u2460] le point de passage unique : un \u00e9cran n\u00e9 de n'importe laquelle des treize fonctions du moteur re\u00e7oit son identit\u00e9 
+- sesTelGeste 2.6K [LOT A ②] l'\u00e9chec est d\u00e9clar\u00e9 (voir le catch)
+- sesTelCranPas 0.1K un appui = un cran, avec butées : le doigt ne peut pas dépasser
+- sesTelCran 0.2K l'étiquette et le point suivent le cran de session, d'où qu'il vienne
+- sesTelMajCran 0.4K l'étiquette et le point suivent le cran de session, d'où qu'il vienne
+- sesTelChrono 1.1K [LOT B \u2460 A-4] L'AFFICHEUR DISAIT LE MAUVAIS T\u00c9MOIN. Il lisait `bmon` \u2014 \u00ab chrono au tableau \u00bb \u2014 et non l'\u00e9tat du com
+- sesCurseurFin 0.4K [LOT B \u2460 A-3] au doigt le curseur se pose o\u00f9 l'on touche : la frappe s'ins\u00e9rait au milieu d'un mot (mesur\u00e9). Il va d\u00e9sormais 
+- sesTelPeindre 4.4K 
+- sesTelPart 1.3K 
+- sesPartPeindre 1.3K 
+- sesPartMotifs 1.3K 
+- sesPartMotif 0.3K 
+- sesPartRetirer 0.2K 
+- sesTelPlus1 2.3K [LOT B \u2460 A-6] motif par d\u00e9faut ; l'appui long en choisit un autre
+
+## L emploi du temps et le calendrier (edt) — 230 fonctions
+- edtChemin 1.0K 
+- edtVersions 0.6K [⑧a] la déclaration de `edtDebutAnnee` qui se trouvait ici était MORTE : une seconde, en L18734, l'écrasait au chargement. Elle disait « le 1er août »
+- edtGrilleA 0.3K la version en vigueur à cette date : la dernière dont `debut <= iso`
+- edtEnEssai 0.1K [③bis-a] LE MODE TEST, VU DU BLOC EDT — une lecture, jamais une écriture.
+- edtCasesA 0.6K [③bis-a] LA CLASSE D'ESSAI n'existe QUE le temps du mode test. Elle se lit dans `creneauxFictifs`, jamais recopiée dans les créneaux réels : éteindre 
+- edtCasesCourantes 0.1K 
+- edtToutesLesCases 1.2K ── LE CHARGEMENT — six lectures, aucune obligatoire ─────────────────────
+- edtNormaliser 0.3K libellé normalisé : minuscules, accents retirés, espaces réduits, ponctuation ôtée
+- edtCondense 0.2K condensé déterministe (FNV-1a 32 bits, base 36) — identique sur tous les appareils de Paul. Il ne sert QU'À LA POSE.
+- edtValeurCritere 0.3K L'AMORCE — préfixe + condensé du contenu au moment de la pose, suffixé par la classe quand l'élément en dépend.
+- edtAmorce 0.4K L'AMORCE — préfixe + condensé du contenu au moment de la pose, suffixé par la classe quand l'élément en dépend.
+- edtHorodatage 0.4K photo : horodatage complet à la seconde, jamais la seule date
+- edtPoserIds 0.7K POSE — un élément sans id en reçoit un à sa PREMIÈRE RENCONTRE. Un id existant n'est JAMAIS recalculé. Collision → #2, à la pose seulement. Rend {pose
+- edtApparier 2.0K APPARIEMENT — quatre temps, dans cet ordre, et biunivoque. Rend {fort:[…], faible:[…], arrivent:[…], disparaissent:[…], ambigus:[…]} Le FAIBLE n'est j
+- edtListesFamilles 0.7K [③a] LES LISTES D'UNE FAMILLE DANS UN OBJET. L'entrant vient toujours en forme simple ; l'existant peut être en forme datée — on compare alors la vers
+- edtNomCritere 0.1K 
+- edtEtiquette 0.4K [③a] LA PHRASE D'UNE QUESTION DIT CE QUI CHANGE, nommément — jamais un compteur.
+- edtChangementsDe 0.5K [③b] CE QUI CHANGE ENTRE DEUX OBJETS APPARIÉS, nommément. La comparaison se fait sur la valeur normalisée, mais Paul lit SON texte, pas le normalisé.
+- edtPhraseFaible 0.5K [③b] LE DIFFÉRENTIEL NOMINATIF — Paul voit AVANT d'appuyer : ce qui arrive, ce qui a seulement bougé, ce qui disparaît (et ce que ça emporte de coches
+- edtDifferentielHtml 3.5K [③b] LE DIFFÉRENTIEL NOMINATIF — Paul voit AVANT d'appuyer : ce qui arrive, ce qui a seulement bougé, ce qui disparaît (et ce que ça emporte de coches
+- edtIdMenteur 0.5K [③a] LA RECONDUCTION DES IDENTITÉS À LA RÉINJECTION — avant toute écriture. Les FORTS sont appliqués sans un mot : même objet, même identité. Les FAIB
+- edtReconduire 1.5K [③a] LA RECONDUCTION DES IDENTITÉS À LA RÉINJECTION — avant toute écriture. Les FORTS sont appliqués sans un mot : même objet, même identité. Les FAIB
+- edtQuestionsFaibles 0.6K [③a] LES FAIBLES SE POSENT EN QUESTION, UNE PAR UNE. Rien ne s'écrit tant que Paul n'a pas répondu ; « non » laisse l'entrant arriver comme un objet n
+- edtPoserIdsObjet 2.9K POSE SUR UN OBJET ENTIER — le chemin réel de la rentrée est la PREMIÈRE INJECTION (le hub est vide) : les id naissent là, avant la première écriture.
+- edtArchiver 0.6K ARCHIVAGE — le modèle du site (chInjecterConfirme) : on archive AVANT, et on ABANDONNE si l'archivage échoue. Il n'y a pas d'exception « ajout pur ».
+- edtEcrireArchive 0.8K [③] ARCHIVER AVANT D'ÉCRASER — pour TOUTE écriture qui remplace un état existant. Le modèle est celui de la mise à niveau : on archive, et si l'archiv
+- edtEcrireObjet 0.5K LES CHARGES DE LA MISE À NIVEAU — écrites pour QUATRE dès maintenant. ① les id manquants (livraison ①) |② la date d'injection de repli (§⑨) ③ le clas
+- edtChargeInscrire 5.5K 
+- edtHeuresJamaisReplacees 1.7K 
+- edtMettreANiveau 2.8K L'ÉCRITURE UNIQUE DE MISE À NIVEAU — une seule, quelles que soient les charges. Elle ARCHIVE avant d'écrire. Si l'archivage OU l'écriture échoue, RIEN
+- edtCharger 1.3K [⑥] les dates de l'année, au même moment
+- edtAppliquerCreneaux 0.5K ── ② LES CRÉNEAUX — l'EDT devient la source, le dur devient le repli ────
+- edtMinutes 0.1K le temps utile d'une heure : fin − début − 5 minutes (la trace du hub le confirme)
+- edtTempsUtile 0.3K ── LE CALENDRIER, EN LECTURE — la lettre de semaine, les jours sans cours ─
+- edtLundiDe 0.4K ── LE CALENDRIER, EN LECTURE — la lettre de semaine, les jours sans cours ─
+- edtSemaineLettre 0.2K La lettre NE SE DÉDUIT JAMAIS d'une parité : le numéro de semaine repart à 1 au 1er janvier et 2026 compte 53 semaines ISO — la parité s'y retourne. O
+- edtEntre 0.0K 
+- edtJourSansCours 0.7K 
+- edtPeriodes 0.1K ── LES PÉRIODES — un objet, comme les créneaux ───────────────────────── AUCUN NOM DE PÉRIODE N'EST ÉCRIT ICI. Le découpage d'une année est déclaré, p
+- edtPeriodeA 0.4K rien saisi : aucune période ne filtre
+- edtPeriodesSaisies 0.2K les étiquettes que la grille cite, et que les périodes ne déclarent pas
+- edtEtiquettesOrphelines 0.4K les étiquettes que la grille cite, et que les périodes ne déclarent pas
+- edtValiderCreneaux 0.7K ── LES VALIDATEURS — un refus est toujours NOMMÉ, jamais silencieux ─────
+- edtValiderCalendrier 1.1K 
+- edtValiderGrille 1.8K les jours ouvrés et les demi-journées sans cours sont DÉCLARÉS dans l'objet des créneaux, jamais écrits ici : ils changent d'un établissement à l'autr
+- edtValiderPeriodes 1.9K 
+- edtValiderGrilleComplete 0.4K la grille apporte TROIS objets : les cases, les horaires, les périodes
+- edtFusionnerPeriodes 1.0K Réinjecter la grille ne perd JAMAIS les dates déjà saisies : une période dont le nom existe déjà garde les siennes.
+- edtInjOuvrir 0.1K ── L'INJECTION — même flow que partout : coller, vérifier, voir, injecter ─
+- edtInjVerifier 0.9K 
+- edtInjInjecter 2.8K [③a] RECONDUIRE LES IDENTITÉS AVANT TOUTE ÉCRITURE. Les forts en silence, les faibles en question : rien ne s'écrit tant que Paul n'a pas répondu. San
+- edtInjecterAvecLaGrille 1.4K les deux autres nœuds que la grille apporte, écrits dans la foulée
+- edtChargerDatesAnnee 0.8K deux lectures ciblées : le chemin porte le slash de l'exception ① du contrat, et la garde n'a pas besoin d'être élargie d'un iota.
+- edtRecalerAnnee 0.2K [⑥] EDT_ANNEE cesse d'être deviné : quand la date de début est connue, il en découle. Tant qu'elle ne l'est pas, la déduction d'avant reste.
+- edtFinAnnee 0.1K 
+- edtDebutAnnee 0.8K 
+- edtHorsAnnee 0.4K [⑥] LES TROIS REFUS, nommés et chiffrés.
+- edtValiderDatesAnnee 1.4K [⑥] LES TROIS REFUS, nommés et chiffrés.
+- edtHeuresApres 0.5K [⑥] LES HEURES POSÉES AU-DELÀ DE LA NOUVELLE FIN : elles ne disparaissent pas, elles redeviennent des heures à replacer, et elles sont NOMMÉES.
+- edtPoserDateAnnee 2.0K 
+- edtBlocDatesAnnee 1.8K l’écran des dates peut s’ouvrir sans que l’emploi du temps ait été ouvert : on lit les deux dates une fois, puis on redemande l’écran par la fonction 
+- edtSaisirDateAnnee 0.8K LA POSE SE FAIT QUAND LE CHAMP EST QUITTÉ, PAS À CHAQUE CHIFFRE. Mesuré au banc : une date frappée au clavier passe par des états entiers mais absurde
+- edtEcrireBrevet 1.1K [⑥] le prompt du calendrier peut produire les deux dates : même chemin
+- edtPeriodesEcrire 0.8K [⑤c-ter] même raison que pour la grille : `edtPeriodes()` rend la liste VIVANTE, et trois gestes la mutent avant d'appeler ici. La photo vient de l'ap
+- edtPeriodePoser 0.3K [⑤c-ter] avant de muter la période
+- edtPeriodeAjouter 0.4K [⑤c-ter] avant le push dans la liste vivante
+- edtPeriodeSupprimer 0.1K 
+- edtPeriodeDeplacer 0.4K [⑤c-ter] avant la permutation dans la liste vivante
+- edtCreneauPoser 0.7K [⑤c-bis] l'état d'avant, avant toute mutation
+- edtClassesDuHub 0.2K L'APPARIEMENT — la grille nomme « 3 FRANKLIN Aretha », le hub ne la connaît pas encore (les classes n'arrivent qu'en tout dernier). Tant que le champ 
+- edtNomsDeGrille 0.3K ── LES VERSIONS : écrire, valider, journaliser ───────────────────────────
+- edtValiderVersions 1.2K ── LES VERSIONS : écrire, valider, journaliser ───────────────────────────
+- edtEcrireGrille 0.6K [⑤c-bis] `edtNormaliserGrille` rend la référence VIVANTE, déjà mutée : la photo ne peut pas se prendre ici, elle vient de l'appelant, avant qu'il ne t
+- edtNormaliserGrille 0.3K passer à la forme datée sans rien demander à Paul : la grille actuelle devient la première version, à la date du 1er août.
+- edtVersionAjouter 0.5K [⑤c-bis] avant edtNormaliserGrille, qui mute
+- edtVersionPoser 0.4K [⑤c-bis] avant edtNormaliserGrille, qui mute
+- edtVersionSupprimer 0.9K [⑤c-bis] avant edtNormaliserGrille, qui mute
+- edtArriveeProf 0.4K jamais côté élève
+- edtReglagePoser 0.5K [⑤c-bis] l'état d'avant, avant toute mutation
+- edtSectionPanneau 0.6K ── LA PORTE ② : LE PANNEAU PROF ─────────────────────────────────────────
+- edtEtatLigne 0.4K [⑤] L'ALERTE MENSUELLE — AVEUGLE, SANS RÉSEAU. Le site ne va rien lire dehors : il compte les jours depuis la dernière injection. Un mois, et il le di
+- edtJoursDepuis 0.2K [⑤] L'ALERTE MENSUELLE — AVEUGLE, SANS RÉSEAU. Le site ne va rien lire dehors : il compte les jours depuis la dernière injection. Un mois, et il le di
+- edtAlerteInjection 0.4K « Plus tard » : on se tait
+- edtRappelPlusTard 0.1K 
+- edtPeindrePanneau 11.3K 
+- edtApparierNom 0.7K apparier toutes les cases qui portent le même nom de grille, d'un seul geste
+- edtDiffPeriodes 0.5K Ce que la réinjection ferait aux périodes — DIT AVANT le geste, jamais après. Le site ne perd rien en silence : « tu vois exactement ce qui sera écrit
+- edtPhraseDiffPeriodes 0.9K 
+- edtVersionAjouterGeste 0.5K 
+- edtJournalEdtHtml 0.6K 
+- edtApercu 0.5K 
+- edtPoserCss 16.1K 
+- edtChargerClasses 0.2K /classes, lu par l'EDT lui-même : il ne dépend d'aucun chargement fait ailleurs dans le site (mesuré au banc : `classesData` peut être vide quand l'ED
+- edtListe 0.2K 
+- edtNiveauDe 0.2K 
+- edtChargerChapitres 1.3K on garde les CLÉS : `AT.edChap.chnum` et `ATVUES.snum` sont des clés d'index, pas des objets — la porte du pilotage les exige telles quelles.
+- edtDecisionsOrphelines 0.6K [③b] LA CLASSE RENOMMÉE. Mesuré en ② : la clé d'une décision porte le nom de la classe ; si Paul renomme, ses décisions restent lisibles sous l'ancien
+- edtRattacherDecisions 1.4K [⑤c-bis] l'état d'avant, avant toute mutation
+- edtRattacherGeste 0.7K 
+- edtCleHeure 0.1K 
+- edtTraceDe 0.3K 
+- edtSeanceJouee 0.2K 
+- edtHeuresPour 0.3K le chapitre en cours d'une classe, pour un fil donné
+- edtChapitreEnCours 0.8K le chapitre en cours d'une classe, pour un fil donné
+- edtTraceExiste 0.1K [⑨b] LA TRACE D'UNE HEURE — le seul critère qui interdit de la déplacer. Relue à chaque appel : une trace supprimée rend l'heure déplaçable aussitôt.
+- edtChercherTrace 0.4K la file des séances qui attendent, pour une classe et un fil
+- edtFileDAttente 0.4K la file des séances qui attendent, pour une classe et un fil
+- edtNomDuJour 0.1K 
+- edtCasesDuJour 1.1K périodes non saisies : deux cases se disputent le créneau — on prend celle qui cite la première période déclarée, et on le dit.
+- edtPlusJour 0.1K 
+- edtLundiCourant 0.1K 
+- edtAujourdhui 0.5K ── LA PROJECTION ──────────────────────────────────────────────────────────
+- edtHeuresAjoutees 0.5K Une HEURE AJOUTÉE n'est pas un déplacement : c'est une heure de plus, posée sur un trou de l'emploi du temps. Elle n'existe dans aucune version de la 
+- edtDecisionPour 0.2K 
+- edtProjeter 4.5K 
+- edtOuvrir 1.6K ── L'ÉCRAN DE LA SEMAINE ──────────────────────────────────────────────────
+- edtToucheEchap 0.4K 
+- edtFermer 0.2K 
+- edtAller 0.2K 
+- edtAujourdhuiAller 0.1K 
+- edtHeureCourante 0.1K 
+- edtCreneauMaintenant 0.2K 
+- edtPeindreSemaine 2.3K [ELEVE-1 ③]
+- edtCelluleHtml 0.5K [2ter ⑪b] LA CLASSE D'ESSAI SE VOIT À SA COULEUR. Paul : « il faut simplement qu'elle soit en couleur ». Une couleur, rien d'autre : ni nom changé, ni
+- edtCelluleCorps 2.4K [2ter 14a] LA NATURE NOUVELLE - même patron que `horsTemps`, et SON INFOBULLE. Elle dit ce que la case est, et ce que ça coûte : rien.
+- edtDateLisible 0.3K 
+- edtDateCourte 0.2K 
+- edtBandeauHtml 1.4K 
+- edtCartesHtml 1.4K 
+- edtCarteClic 0.5K la photo du prévu — jamais le mot « figer » : on ne fige pas un prévu
+- edtPhotoPrendre 0.9K [⑧a] LE GESTE COMMUN — à la main ou toute seule, c'est la même photo : l'état du prévu de la semaine en cours, nommé, identifié, archivé avant d'écrir
+- edtPhoto 0.4K la photo à la main : elle porte sa date, et le bouton ne bouge pas
+- edtEcheancesPhoto 0.7K [⑧a] LES ÉCHÉANCES — la rentrée, puis chaque début de période. Elles sont DÉCLARÉES, jamais déduites : la date de l'année d'un côté, le magasin des pé
+- edtEcheanceDue 0.2K LA SEULE ÉCHÉANCE QUI COMPTE : la dernière échue. On ne rattrape pas le passé — ouvrir le site en janvier ne fabrique pas après coup la photo de la re
+- edtPhotoFaite 0.7K le site sait laquelle il a déjà prise : la photo porte son échéance
+- edtPhotoAuto 18.9K [⑨] DEUX DRAPEAUX, PAS UN. « en cours » empêche deux photos pendant que le hub répond ; « faite » ne se pose QU'APRÈS une écriture réussie. Un hub qui
+- edtPromptComplet 0.7K [④a] LE PROMPT COMPLET : la consigne, puis l'existant tel qu'il est au hub. Le hub vide est le cas COURANT (rien n'y a encore été écrit) : on le DIT, 
+- edtCopierPrompt 1.1K [④a] UN SEUL BOUTON, UN SEUL COLLAGE. Si le presse-papier refuse, le site le DIT et ouvre le texte à sélectionner — jamais un bouton qui ne fait rien.
+- edtSortirJson 1.2K sortir l'état réel d'un objet, pour relire, archiver, ou le donner à une IA
+- edtCaseClic 0.1K 
+- edtModaleFermer 0.1K 
+- edtCellule 0.1K ── les décisions au hub ──────────────────────────────────────────────────
+- edtDecisions 0.4K ── les décisions au hub ──────────────────────────────────────────────────
+- edtPhotoDe 0.2K [⑤c-bis] LA PHOTO D'UN OBJET AVANT QU'UN GESTE LE MUTE. `EDT[nom]` est la référence vivante : muter d'abord et archiver ensuite, c'est archiver l'état
+- edtPhotoDecisions 1.1K [⑤c] CE QU'UNE HEURE BANALISÉE COÛTE, selon sa catégorie. Tout ce qui touche au cours — évaluer, reprendre, tenir la classe — reste du TEMPS DE CLASSE
+- edtClassementDe 0.4K catégorie inconnue : perdue, non justifiée, et Paul tranche
+- edtBasculerClassement 0.5K [⑤c] LES DEUX BASCULES. Le choix de Paul est ÉCRIT : il survit à tout, et il ne se rediscute pas au chargement suivant.
+- edtBasculerStatut 1.1K 
+- edtMotifDe 0.2K décisions posées avant cette livraison
+- edtMotifEnClair 0.6K [⑨] DEUX ÉTATS, DEUX LIBELLÉS. `EDT_MOTIFS` n'est pas touché : c'est ici que le texte se compose, comme il le fait déjà pour `calendrier` et `banalise
+- edtBasculable 0.1K 
+- edtDatePose 0.1K 
+- edtEcrireDecision 2.2K 
+- edtSansSeance 1.2K 
+- edtDeplacerVers 0.6K date|creneau
+- edtAnnulerDecision 1.7K [⑤b] LE MOTIF PRÉCÉDENT REVIENT. Le journal garde l'état d'avant chaque geste : si le dernier geste sur cette heure a REMPLACÉ un motif, annuler rend 
+- edtLancer 2.3K 
+- edtQuandPilotagePret 0.4K sonde bornée : le bandeau du déroulé, ses trois champs, et le moteur monté
+- edtRienDePret 0.8K ── LES CRÉNEAUX OÙ DÉPLACER — les prochains de cette classe ───────────────
+- edtQuiEstEn 0.3K [⑥c] qui occupe ce créneau, si c'est une classe appariée autre que la sienne
+- edtCreneauxOu 1.7K [⑥] la liste s'arrête à la fin d'année déclarée
+- edtSemaineDe 0.2K [⑨b] CE QUE CHAQUE DESTINATION PORTE POUR ÊTRE CHERCHÉE : son mois, son numéro de semaine et sa lettre A/B. Le numéro et la lettre sont LUS dans le ca
+- edtOptionsOu 0.6K 
+- edtAjouterHeure 0.6K ── LE RENDU DE LA MODALE ─────────────────────────────────────────────────
+- edtBlocBanaliser 0.6K [⑨a] LE BLOC « BANALISER », SORTI DE LA MODALE POUR SERVIR DEUX FOIS : sur une case vierge, et sur une case qui porte déjà une décision. Même texte, m
+- edtPeindreModale 6.4K 
+- edtChoisirOu 0.5K [⑥c] un créneau pris ouvre les trois issues, jamais un refus
+- edtDestinationsPour 0.4K [⑥c] REPLACER POUR DE BON. L'heure à replacer est POSÉE sur une destination : elle est ajoutée là-bas, et elle cesse de compter comme heure perdue ici
+- edtReplacerHeure 1.8K [⑥c-bis] LA LISTE PROPOSE AUSSI LES CRÉNEAUX PRIS (⑥c) : y poser une heure mettrait deux classes au même moment. Trouvé par edtVerifierCoherence après
+- edtVerifierCoherence 1.1K [⑥④] AUCUN TÉLESCOPAGE — vérifié, jamais supposé. Rend la LISTE des télescopages trouvés sur une période : jamais deux classes au même créneau le même
+- edtProjeterJour 1.3K partie ailleurs : elle n'est plus là
+- edtQuoiChercher 0.4K 
+- edtFiltrerOu 0.8K 
+- edtJournalHtml 0.8K 
+- edtModaleSaisir 1.1K déplaçable : poignée, pointer events, contenue dans la zone
+- edtCheminTrace 0.7K ── LA TRACE D'UNE HEURE, ET SON CHEMIN (pour y écrire les absents) ───────
+- edtElevesDe 0.2K 
+- edtSlugEleve 0.2K le geste du QCM, repris tel quel : un clic marque, un clic défait
+- edtAbsence 0.6K le geste du QCM, repris tel quel : un clic marque, un clic défait
+- edtAbsencesHtml 0.9K 
+- edtHeuresJustifiees 0.6K ── LA DIVERGENCE — alerte progressive, jamais un blocage ─────────────────
+- edtAvancement 0.2K 
+- edtDivergence 1.2K 
+- edtEstExperimentale 0.3K ── LE MOIS ───────────────────────────────────────────────────────────────
+- edtPeindreMois 3.6K ── LE MOIS ───────────────────────────────────────────────────────────────
+- edtAnneeColonnes 0.3K 
+- edtAnneeEvenements 0.6K 
+- edtAnneeVacance 0.2K 
+- edtAnneeFerie 0.1K 
+- edtPeindreAnnee 4.8K 
+- edtAnneeHauteurs 0.6K la hauteur d'un bandeau se calcule APRÈS la peinture : elle dépend des lignes qu'il couvre, et les jours aplatis n'ont pas la même hauteur que les aut
+- edtAnneeDetail 0.3K 
+- edtAnneeZoom 0.8K ── LE CALENDRIER DE L'ANNÉE — lisible, et les écarts se déclarent ─────────
+- edtNiveauxConnus 0.2K le coût d'un événement, NIVEAU par NIVEAU. Les événements portent un niveau et `classes: []` : nommer une classe ici serait inventer une donnée.
+- edtCoutParNiveau 0.3K 
+- edtPhraseCout 0.3K le total, par classe : ce que l'année a coûté jusqu'ici
+- edtTotauxPerdues 0.7K le total, par classe : ce que l'année a coûté jusqu'ici
+- edtHeurePerdue 1.5K [⑤a] UNE HEURE, UNE CASE. Cochée : cette heure a bien été perdue — et une heure perdue à cause du calendrier est justifiée, sans bascule, c'est la règ
+- edtPeindreCalendrier 3.5K 
+- edtJourEnClair 0.2K 
+- edtDatesEnClair 0.4K [②a] LES HEURES QU'UN ÉVÉNEMENT RECOUVRE. Une décision est une décision D'HEURE, pas d'événement : l'événement dit seulement QUI l'a causée.
+- edtHeuresDeLEvenement 1.3K [②a] LES HEURES QU'UN ÉVÉNEMENT RECOUVRE. Une décision est une décision D'HEURE, pas d'événement : l'événement dit seulement QUI l'a causée.
+- edtEvenementJustifie 0.5K [②a] L'ÉVÉNEMENT EST-IL MARQUÉ ? La réponse ne vient plus de l'objet injecté — où elle disparaissait à chaque réinjection — mais du magasin des décisi
+- edtCochesDeLEvenement 0.5K [②] TOUTES LES COCHES POSÉES PAR UN ÉVÉNEMENT, où qu'elles soient, même si l'événement ne recouvre plus ces heures-là. Rien n'est jamais supprimé en s
+- edtCochesDeplacees 0.5K [②] LES COCHES QUI NE SONT PLUS SOUS L'ÉVÉNEMENT : il a bougé, ou la grille a changé sous lui. Elles restent au magasin, et le site les compte à voix 
+- edtEcrireDecisionsGroupe 0.9K [②a] PLUSIEURS HEURES, UNE SEULE ÉCRITURE. Un événement couvre souvent plusieurs heures : les poser une par une ferait autant d'écritures du même nœud
+- edtJustifier 2.6K par id STOCKÉ, jamais par indice ni par formule
+- edtHeuresAReplacer 0.6K [⑥b] LES HEURES À REPLACER — celles qu'une autre classe a prises. Tant que Paul ne les a pas reposées, ou déclarées perdues, le site les lui rappelle 
+- edtRappelAReplacerHtml 1.4K 
+- edtHeureReplacee 0.5K [⑥b] Paul l'a reposée : elle sort du rappel et des heures perdues.
+- edtPerteSeche 0.4K [⑥b] PERTE SÈCHE : Paul déclare que l'heure ne sera pas rendue. Elle entre dans les heures perdues, motif « heure prise par une autre classe », justif
+- edtTeteHtml 1.3K 
+- edtDireJalon 0.1K 
+- edtVue 0.5K [⑦b] Ctrl + molette : le zoom de la vue Année, et rien d'autre
+- edtPeindre 1.1K 
+- edtGlisserDebut 1.9K {cle, x0, y0, actif}
+- edtCibleSous 0.3K 
+- edtGlisserMarquer 0.4K 
+- edtGlisserNettoyer 0.3K ce qu'un dépôt ne peut jamais faire — dit avec des mots
+- edtRefusDepot 2.0K ce qu'un dépôt ne peut jamais faire — dit avec des mots
+- edtOccupantDe 0.6K [⑥a] QUI OCCUPE LA CASE VISÉE ? Une classe appariée, et une autre que la sienne : c'est le cas où le site proposait un refus sec, et où il propose mai
+- edtTroisIssues 1.0K [⑥a] LES TROIS ISSUES. Paul ne reçoit plus un refus : il reçoit le prix, puis il choisit. Échanger ne coûte rien à personne ; écraser coûte une heure 
+- edtEchangerHeures 1.3K [⑥a] L'ÉCHANGE — quatre décisions, UNE seule écriture, archive avant. Les deux départs portent `deplaceeVers` : ni l'une ni l'autre classe ne perd d'h
+- edtEcraserHeure 1.0K [⑥a] L'ÉCRASEMENT — Paul prend le créneau, et l'heure évincée devient une heure À REPLACER : motif déclaré en ⑤b, statut non justifié, basculable. Ell
+- edtDepot 0.5K jamais un refus sec
+- edtCreneauxLibresLe 0.4K 
+- edtPoserQuestionDepot 1.9K 
+- edtFermerQuestion 0.1K 
+- edtValiderDepot 0.7K On lit TOUT avant de fermer : la première version fermait la question puis cherchait la date d'effet dans un élément déjà retiré — la date choisie éta
+- edtChangerEmploiDuTemps 6.0K ① le geste durable : une version datée, et RIEN d'autre

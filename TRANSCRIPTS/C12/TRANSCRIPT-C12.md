@@ -13957,3 +13957,31 @@ Rien à lui dire maintenant (elle est sur L15g) ; à la promotion : **« Continu
 05/10/2026 08:05 MEMO
 
 ---
+
+## TOUR 466 — Paul
+
+Texte de Paul, mot pour mot :
+
+> livré
+
+---
+
+## TOUR 466 — Claude (conscience n°12)
+
+Audit L15g : diff 60/95, 6.7.0-L15g, computeNote réécrite (ordre validé), Brevet verrouillé, heureDeLaDictee + marqueur ; banc L15g VERT 12/12 ; L14, L11 (bases restaurées depuis l'historique), L15f-b, L13b, L15e, vue élève verts ; sa mesure (22/10/4) et la mienne (8/4 le 03/10) concordent à leur date ; deux points ouverts (touche C → L15h ; base du profil : proposée, la dictée garde sa Note sur — recommandé). Verdict : ça va (125, 130, 131). Rien déposé hormis ce transcript.
+
+Réponse mot pour mot :
+
+Audit de **L15g** (« les profils de barème, la base, le branchement MJPC préparé », `LIVRAISONS/DICTEE-CORRECTION/L15g/`), mesuré :
+
+476. **Le fichier** : base = L15f-b promue (`5e6ca2c5…`, vérifiée) → **6.7.0-L15g, 899 599 o (+11 448)**, md5 `b8b82df7…` ; 60 lignes retirées, 95 ajoutées ; `node --check` 0 erreur. **Vérifié dans le code** : **une seule fonction de note**, réécrite dans l'ordre validé (sans-coût → un type par mot → répétitions → forfait plafonné → l'unité) ; **Brevet verrouillé** sur le texte officiel (G 1 · L 0,5 · oublié 0,5 · forfait 0,5 par 4, plafond 2 · répétition par mot · la plus grave) ; `heureDeLaDictee` comme seul point d'entrée, le marqueur `[BRANCHEMENT MJPC — déroulé]` à trois endroits, « Lancer » écrit `source: "dictee"`, `seanceId: ""`.
+477. **Les bancs, rejoués par moi sur le kit anonymisé** : L15g **VERT, 12 vérifications** — Brevet s'ouvre en lecture seule ; « Dupliquer » Préparée → « Ciblée » ; G à 0,5 + répétition **par famille** « leur/leurs » → la copie semée (une G sur « leur », une sur « leurs ») perd 0,5 ; par mot exact → 1 ; le recalcul compté (27 copies, 27 entrées en corbeille, le message) ; **les autres dictées identiques à l'octet** ; la base ordinaire 10 → 20 et la base aménagée 10 → 20 recalculent les copies (corbeille) ; le Bilan dit « Moyenne — n copies ordinaires » et « k copies aménagées, à part, sur leur base » ; l'accueil nomme le profil ; l'heure n'a qu'un chemin ; L14, L11, L15f-b, L13b, L15e (tes PDF), vue élève : verts ; son banc unique vert, 0 échec.
+478. **Sa mesure au hub, et la mienne** : sur les Hugo, elle compte **22 copies** avec leur/leurs, 10 avec plusieurs, **4 avec « leur » ET « leurs »** (les seules que la répétition « par famille » change) ; j'avais dit « 8 copies avec leur/leurs, 4 avec plusieurs » — **c'était le 03/10 sur 10 copies corrigées** ; tu en as corrigé 29 depuis : les deux comptes sont justes à leur date, le 4 concorde. **Aucune note ne bouge à la promotion** (aucun profil touché : brevet → Brevet, préparée → Préparée, mêmes coûts).
+479. **Deux points ouverts, à toi** : **(a) la touche « C »** (accent / majuscule) : elle la propose **avec L15h**, qui définit le type en entier (menu, couleur, légende, feuille, aide) — d'accord avec elle ; **(b) la base d'un profil** : rangée dans le profil, mais **c'est la « Note sur » de la dictée qui compte** — je recommande de laisser ainsi : **la base du profil est celle proposée quand on choisit ce profil pour une dictée ; la dictée garde sa « Note sur »** (sinon modifier un profil changerait la base de toutes les dictées qui l'utilisent). Dis oui, ou l'inverse.
+480. **Verdict : ça va. Tu peux promouvoir L15g** — dettes **125, 130, 131**. Captures ci-dessous : l'éditeur de profil ; le Bilan avec ses deux moyennes.
+
+Tes tests, après promotion (https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?v=6.7.0) : 1) les Hugo → Préparation → Barème : « Préparée » ; « ⧉ Dupliquer » → nomme « Ciblée », G à 0,5, répétition **par famille**, « leur/leurs », Enregistrer le profil ; choisis « Ciblée », Enregistrer → « n copies recalculées… corbeille », les 4 copies à leur/leurs changent ; 2) remets « Préparée » → les notes reviennent ; 3) Données → Bilan : « Moyenne — 25 copies ordinaires : …/20 » et « 4 copies aménagées, à part, sur leur base : …/20 » (plus de /10 : la base aménagée 20 a recalculé) ; 4) « Brevet » : « 👁 Voir le profil », rien de modifiable ; 5) l'accueil : « barème Préparée » sur la ligne. Puis « continuer » pour **L15i** (suspendre / fermer), puis L15j.
+
+05/10/2026 08:50 MEMO
+
+---

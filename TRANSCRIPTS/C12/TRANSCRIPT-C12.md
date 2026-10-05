@@ -14213,3 +14213,29 @@ Rien d'autre ne change dans L15.1 (objets vivants, moteur de motifs, bouton IA, 
 05/10/2026 12:50 MEMO
 
 ---
+
+## TOUR 476 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Va lire tout le cadrage de la taxo sur github, et tout ce qu'on a codé pour elle et l'esprit dans lequel on l'a codée
+
+---
+
+## TOUR 476 — Claude (conscience n°12)
+
+Lecture complète (SPEC_ATELIER, doctrine §D/§E3, chantier M2/M8bis/M8-FUSION, plan (avertissement 01/08), taxonomie_atelier.json v1.4.0, index.html éditeur taxo). Mesuré : 4 tables d'alias validées, éditeur sans alias, dictée notions:[] et aucun événement. Complément L15.1 (d) réécrit : alias existante, validation au Panneau prof, IA propose, manifeste, événement profil préparé (chemin à trancher), libellé élève, seed, aval. Questions (a) (b).
+
+Réponse mot pour mot :
+
+Lu en entier : `SPEC_ATELIER.md` (vision, 10 principes, zones 1-5 et 9), la doctrine (§D Concordance, §E3 le profil longitudinal conçu le 8 mai), le chantier (M2, M8bis, M8-FUSION), l'avertissement du plan de travail (01/08), `taxonomie_atelier.json` v1.4.0 et l'éditeur de `index.html`. Ce que j'en retiens, et ce que ça change à L15.1 :
+
+492. **L'esprit** : la taxonomie **sert l'écriture correcte, pas le grammairien** ; double libellé prof / élève sans jargon ; **ids opaques immuables, libellés libres, jamais de suppression** (désactivation réversible), gouvernée par toi seul depuis le Panneau prof ; **chaque erreur garde la mémoire de son origine** (date, source, notion — Principe 9) ; **toutes les apps alimentent un profil élève unifié par des événements standard** (Principe 10, 8 mai) ; la Concordance = **sortir des apps tout vocabulaire d'analyse en dur** vers le référentiel central, avec un seed embarqué (autonomie si MJPC tombe) ; **« l'IA propose, le prof tranche, le moteur exécute du figé »** ; les tables d'alias par app (`egal` = cible unique, `inclus` = plusieurs ; `voisin` différée, jamais dans le décompte), statut `propose` / `valide`, **partition** et **comptage** ; **une seule administration** ; et l'avertissement du 01/08 : *« un champ qu'on ajoute est un champ dont quelqu'un dépendra — l'aval lira son absence comme une information »*.
+493. **Ce qui est codé** : le fichier et le nœud `/taxonomie` (M2, préservé à la purge), 7 domaines / 51 familles / 210 notions, les compétences C4, `typesErreur`, **quatre tables d'alias toutes validées par toi** (correction_dictee : 10 termes D1.x, les 20-21/07 ; dictee_universelle : 13 codes ; manuscrit : 6 ; terminologie : 2) ; l'éditeur du Panneau prof (M8bis : créer / renommer / désactiver, écritures ciblées) — **qui n'édite pas les alias** ; et dans la dictée : `notions: []` « rattachement Phase 3 », **aucune erreur taggée, aucun événement émis**. L15.1 est précisément ce maillon.
+494. **Ce que j'ai corrigé au complément** : ① une catégorie d'écart est **un vocable local de la dictée, rattaché par la table d'alias existante** (`terme`, `cibles`, `relation`, `statut`, `valide_le`), sous les règles de structure, partition et comptage — le banc vérifie « total des points par notion = nombre d'erreurs » ; ② **le rattachement se valide au Panneau prof → Taxonomie** (un onglet « Correspondances », par app), **pas dans les Réglages de la dictée**, qui ne gardent que les textes des commentaires et le bouton IA ; ③ le bouton IA **propose** les catégories **et leurs alias en `propose`** — rien n'entre dans un décompte avant ta validation ; ④ `MJPC_MANIFESTE.notions` rempli, chaque erreur porte `categorie` et, par l'alias validé, ses `notions` ; ⑤ **l'événement vers le profil est préparé, pas branché** (un point d'entrée, un marqueur `[BRANCHEMENT PROFIL — M15]`, et **une chose à trancher par toi : le chemin** — le 8 mai dit `/profil/<eleve>/events`, la spec dit `/eleves/{id}/evenements`) ; ⑥ l'élève voit **le libellé élève** de la notion, jamais l'id ; ⑦ seed embarqué ; ⑧ l'aval nommé dans la note (M15, M-PILOTAGE, COCKPIT, famille K, M20).
+
+À toi : (a) la validation des alias au Panneau prof, d'accord ? (b) le chemin des événements du profil (8 mai ou spec) ?
+
+05/10/2026 13:45 MEMO
+
+---

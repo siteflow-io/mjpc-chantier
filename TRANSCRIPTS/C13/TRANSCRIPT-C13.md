@@ -268,3 +268,37 @@ Tests pour toi : aucun. Le 35 se fait quand tu veux ; ce qui débloque la suite 
 
 05/10/2026 18:30 (heure de mon espace de travail, non vérifiée)
 MEMO
+
+---
+
+## TOUR 7 — Paul
+
+Paul envoie une capture d'écran, sans texte (pièce `pieces/T7-paul-github-app-claude.png`) : la page GitHub de l'application « Claude » — permissions « Read access to actions and metadata » et « Read and write access to checks, code, discussions, issues, pull requests, and workflows » ; « Repository access » : « Only select repositories », 1 dépôt, `siteflow-io/mjpc-chantier` ; bouton « Save » grisé ; bandeau jaune « Claude is requesting an update to its permissions » avec « Review request ».
+
+---
+
+## TOUR 7 — Claude (conscience n°13)
+
+Capture lue : 35.2 fait (sas seul, code en lecture-écriture, production non sélectionnée, publics en lecture seule). Bandeau de mise à jour des permissions : contenu inconnu, non nécessaire. Pièce poussée avec le transcript.
+
+Réponse mot pour mot :
+
+Le point 35.2 est fait, et bien fait :
+- l'application Claude n'a accès qu'au dépôt `siteflow-io/mjpc-chantier`, avec la lecture et l'écriture du code : c'est ce qu'il faut à l'exécutant pour pousser ses branches ;
+- la production n'est pas sélectionnée. La page précise que l'application lit de toute façon les dépôts publics, sans pouvoir y écrire : c'est exactement « la production en lecture » ;
+- « Save » est grisé : il n'y a rien à enregistrer, le réglage est déjà pris.
+
+Le bandeau jaune (« Claude is requesting an update to its permissions ») : je ne sais pas ce qu'il demande en plus, et ce n'est pas nécessaire pour ce que nous faisons. Laisse-le. Si la première session n'arrive pas à pousser sa branche, on le regardera, avec une capture de « Review request ».
+
+**À faire quand tu veux**
+
+35.3 L'environnement « Default » en « Full » : sur claude.ai/code, le petit nuage au-dessus de la zone d'écriture, puis la roue dentée, « Network access », « Full », et enregistrer.
+
+**En attente de toi**
+
+34. Tu lis le mandat joint à ma réponse du tour 4 et tu me dis « ok », ou ce qui ne va pas. Je le dépose au sas et je te le dis.
+
+Tests pour toi : aucun.
+
+05/10/2026 18:34 (heure de mon espace de travail, non vérifiée)
+MEMO

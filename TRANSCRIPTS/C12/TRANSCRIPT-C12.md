@@ -15053,3 +15053,26 @@ Dis « ok » (ou corrige) : je fais alors la maquette sur l'app réelle — la l
 06/10/2026 13:45 MEMO
 
 ---
+
+## TOUR 511 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok ça me va. pour le voile, il ne doit jamais jamais bloquer. il doit disparaître au rechargement, qui lui est toujours toujours une remise à zéro (donc il faut rentrer à nouveau son code et ses ids). ça télescope? enfin, un élève absent à la dictée: il n'a pas d'autocorrection, par définition. comment on gère ça?
+
+---
+
+## TOUR 511 — Claude (conscience n°12)
+
+Mesuré : reprise des moitiés 70 min (Lot 3b), shunt MJPC (session du site), etatDicteeEleve « Tu étais absent(e) » non ouvrable, calculerBinomes exclut les absents. Complément L15k : rechargement = remise à zéro (Lot 3b retiré, shunt désactivé sur la page élève, rien perdu au hub) ; absent à la dictée grisé à Lancer, jamais binôme, rattrapage en attente.
+
+Réponse mot pour mot :
+
+585. **Le voile ne bloque jamais, et le rechargement remet toujours la tablette à zéro — pris.** Ça **télescope une décision passée, que je te signale** : le lot 3b avait voulu qu'**au rechargement, chaque moitié retrouve son élève sans code** (pendant 70 minutes), et la page de correction **reprend aussi la session du site MJPC** sans redemander le code. Avec ta règle, **les deux disparaissent sur la page élève** : au rechargement, « Combien êtes-vous ? » revient, chacun retape son code — **et rien n'est perdu** : tout ce que l'élève a fait est enregistré au hub à chaque geste (mots retrouvés, essais, stylo vert, questions), son code le remet exactement où il en était ; seul un mot en train d'être tapé, pas encore validé, est à retaper. Ton côté professeur ne change pas (F5 garde ta dictée et ton onglet). Pas d'autre télescopage : « Se déconnecter » reste, « un élève = un écran » devient plus simple (la tablette ne retient plus rien).
+586. **L'élève absent à la dictée — c'est déjà géré, mesuré** : il n'a pas de copie, donc pas d'autocorrection ; dans « Mes dictées » il voit **« Tu étais absent(e) »** et la dictée ne s'ouvre pas ; il est **hors des binômes**. Ce que j'ajoute pour la séance : dans la liste de « Lancer », il apparaît **grisé, « absent à la dictée »**, non cochable (ce n'est pas un absent du jour) ; s'il se connecte sur une moitié, elle ne l'accepte jamais comme binôme (le voile, avec « Revenir ») ; seul, il voit « Tu étais absent(e) ». Le point d'accroche du **rattrapage** (une autre modalité, la dictée audio en étude) est prévu dans le code et reste en attente de son chantier ; s'il fait la dictée plus tard et que tu corriges sa copie, il rejoint un élève seul s'il y en a un, sinon il reste seul.
+
+Tout est écrit au complément (L15k). Prochaine étape : la maquette sur l'app réelle (la liste des absents à « Lancer », le dépliant des binômes, le voile avec « Revenir ») — dis « maquette » quand tu veux la voir.
+
+06/10/2026 13:58 MEMO
+
+---

@@ -786,3 +786,38 @@ Tests pour toi, sur la maquette jointe :
 
 06/10/2026 20:54 (heure de mon espace de travail, non vérifiée)
 MEMO
+
+---
+
+## TOUR 21 — Paul
+
+Texte de Paul, mot pour mot :
+
+> de toute façon tout cela ce sont des gardes: au json, une instance ne pourra jamais faire ces absurdités.
+
+---
+
+## TOUR 21 — Claude (conscience n°13)
+
+Mesuré dans `index.html` (c9bc2d9) : `atP2ValiderDeroule` (2,4 Ko) ne vérifie que le type connu, la question non vide, la source de l'image ; `atP2NormaliserBloc` reconstruit le schéma importé sans `devoilerTout` ni `pos` (z:1, pos:{}). Écrit dans la carte de l'existant, section « Pour le mandat de production ». Point 80 reposé tel quel.
+
+Réponse mot pour mot :
+
+82. **Tu as raison sur le fond : la vraie garde, c'est le JSON. Mais je l'ai vérifié dans le code : aujourd'hui, elle n'y est pas.**
+    - À l'import d'un déroulé, le site vérifie seulement trois choses : que chaque bloc a un type connu, qu'une question n'est pas vide, et qu'une image a sa source.
+    - Une instance peut donc déjà livrer deux schémas sur un écran, ou un schéma noyé dans du texte : l'import l'accepte.
+    - Ton « jamais » deviendra vrai quand le mandat du vrai site écrira ces refus dans la vérification de l'import. C'est la décision 1 ; la maquette, elle, n'a pas d'import.
+83. **Même lecture, une autre chose : l'import perd le réglage « Un à un / Tout ensemble ».** Un schéma injecté arrive donc toujours « Tout ensemble ». Comme le JSON est ta voie principale, il faudra que l'injection porte ce réglage.
+    Les points 82 et 83 sont écrits dans la carte de l'existant, pour le mandat du vrai site : https://github.com/siteflow-io/mjpc-chantier/blob/main/TRANSCRIPTS/C13/pieces/CARTE-EXISTANT-DEROULE.md
+84. **Les gardes de l'atelier restent.** Elles sont déjà codées et vérifiées par les bancs, et elles servent quand tu modifies à la main. Tu n'as pas à les tester toi-même.
+
+**En attente de toi**
+
+80. Il reste un défaut, déjà présent dans la p7 que tu as validée : « À régler » affiche deux fausses alertes « Objet non lisible « cahier » », une sur chaque diapo « Cahier de textes ». La diapo s'affiche bien : c'est la liste qui se trompe. Le complément p8-3c, joint, corrige la cause et ajoute un banc. Dis-moi « ok » : je le dépose et je te donne la phrase de relance.
+
+Tests pour toi, sur la maquette jointe au tour précédent (seulement ce qui compte) :
+- À l'heure 2, ouvre « Les figures de style », ta vraie carte. Coupe-la avec « Couper le schéma ici » jusqu'à ce que chaque morceau tienne, et juge si ça se lit.
+- Règle un morceau sur « Un à un », puis « Jouer en avance » : ▶ dévoile une bulle à la fois, et rien ne bouge au tableau.
+
+06/10/2026 21:17 (heure de mon espace de travail, non vérifiée)
+MEMO

@@ -1,0 +1,5 @@
+# AUDIT — p8-1, p8-2, p8-3 (conscience n°13, 06/10/2026, tour 17)
+- Branches : `deroule/p8-1` (f7046f13), `deroule/p8-2` (172b2fc5), `deroule/p8-3` (597f2278).
+- p8-1 : 24 bancs comparés ligne à ligne aux originaux `T265-*.mjs` : seules les lignes de chemin diffèrent ; nombre d'appels `ok(` identique dans chacun. **Ça va.**
+- p8-2 : `moteur-ancien-extrait.js` : 240 lignes de code, toutes présentes telles quelles dans le moteur de production décodé (`AT_DR_B64`, c9bc2d9), hors 8 lignes d'en-tête ajoutées. **Ça va.**
+- p8-3 : `regen.sh` rejoué dans le dépôt : gabarit `37a1ab5d…`, maquette `369d1388…`, identiques (aucune différence au `git status`). Banc unique rejoué chez la conscience (Node 22.22.2, Playwright 1.56.0, Chrome 141.0.7390.37), en quatre lots : 25 bancs à 0 ; `test-p8-3-gestes` : 1 défaut, identique à celui de la NOTE. Capture `p8-3-morceau-1-zoom.png` regardée : les traits vers « personnification » et « métaphore » passent derrière « comparaison » (lien faux). **Ça ne va pas.**

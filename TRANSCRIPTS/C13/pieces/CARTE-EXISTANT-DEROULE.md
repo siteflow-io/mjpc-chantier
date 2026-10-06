@@ -99,3 +99,8 @@ Par fonction ou groupe : ce qu'elle fait pour Paul (dans ses mots), sa taille, q
 - « + Schéma » grisé quand l'écran a déjà son schéma : **c'est déjà l'existant** (la décision 1 le confirme).
 - **Une question à Paul** : l'existant affiche « Tout ensemble » quand rien n'est réglé ; le cadrage 4 §3.2 dit « élément par élément ».
 - Le reste du mandat tient : rien de lu ni de joué ne le contredit.
+
+## Pour le mandat de production — ce que l'import fait aujourd'hui des schémas (mesuré le 06/10, tour 21)
+- **Paul, 06/10** : « au json, une instance ne pourra jamais faire ces absurdités ».
+- **Mesuré dans le code** : `atP2ValiderDeroule` vérifie seulement que chaque bloc a un type connu (consigne, fiche, question, schema, image), qu'une question n'est pas vide, qu'une image a sa source. **Il ne refuse ni deux schémas sur un écran, ni un schéma noyé dans du texte.** Ce « jamais » devient vrai quand le mandat de production écrit ces refus dans la validation de l'import (décision 1 du mandat p8), avec le message dans les mots de Paul et la marche à suivre.
+- **Mesuré dans le code** : `atP2NormaliserBloc` reconstruit un schéma importé comme `{id, t:'schema', forme, titre, z:1, pos:{}, src, vues:0}`. Il **perd le réglage « Un à un / Tout ensemble »** (`devoilerTout`) et les places à la main (`pos`). Un schéma injecté arrive donc toujours « Tout ensemble ». Le JSON étant la voie principale de Paul, le contrat d'injection et l'import devront porter ce réglage (décision 6 ter du mandat p8 : un schéma créé part « Un à un »).

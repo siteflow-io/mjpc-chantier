@@ -15778,3 +15778,31 @@ Quand tu reviens avec « livré », j'audite les huit morceaux dans l'ordre.
 06/10/2026 21:20 MEMO
 
 ---
+
+## TOUR 539 — Paul
+
+Texte de Paul, mot pour mot :
+
+> l'onglet correspondance, dans la dictée, ouvre https://siteflow-io.github.io/monsieurjaipascompris/index.html?panneau=taxonomie&onglet=correspondances&app=correction_dictee mais je tombe sur l'écran "lien invalide utilise le lien fourni par monsieurmeney"
+
+---
+
+## TOUR 539 — Claude (conscience n°12)
+
+Mesuré index.html 8.74.0-③ (lecture seule) : restoreSession ne lit que sessionStorage (nouvel onglet = pas prof → « Lien invalide ») ; pas de paramètre panneau= ni d'onglet Correspondances (L15.1b-2). Ajout au mandat L17 (L17-7 bis), note pour C13, dette 172 ; pas de micro (l'exécutante est sur le fichier).
+
+Réponse mot pour mot :
+
+Mesuré (le site en ligne, sans y toucher) — deux causes :
+
+658. **Le site ne te reconnaît pas dans un nouvel onglet** : il ne relit ta session de professeur que dans la mémoire de l'onglet ; le bouton ouvre un onglet neuf, vide → le site te prend pour un élève sans lien → « Lien invalide ».
+659. **L'onglet « Correspondances » n'existe pas encore sur le site** : c'est la partie « site » de l'analyse (valider les rattachements proposés), dans `index.html`, confiée au couple du déroulé — et le site ne sait pas lire l'adresse que la dictée lui envoie. Le bouton de la dictée pointe donc vers quelque chose qui n'est pas encore construit : c'est ma faute de l'avoir laissé actif.
+660. **Ce que j'ai fait, sans toucher au code** (l'exécutante travaille sur la dictée, je n'y mets pas les mains en même temps) :
+   - **ajouté au mandat L17** (L17-7 bis) : tant que le site ne sait pas l'ouvrir, le bouton **n'ouvre rien** et dit « La validation des correspondances se fera dans le Panneau prof de MJPC ; l'onglet n'existe pas encore. n rattachement(s) en attente. » ; il s'ouvrira le jour où le site répond ;
+   - **une note pour la conscience n°13** : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/NOTE-POUR-C13-CORRESPONDANCES.md — reconnaître le professeur dans un nouvel onglet (la même clé que la dictée), et ouvrir Taxonomie → Correspondances d'après l'adresse. **Transmets-lui** quand tu la vois.
+   - Inscrit au registre (172).
+   Si l'exécutante a déjà lu le mandat, dis-lui en une phrase : **« Le mandat L17 a un ajout, L17-7 bis : relis-le avant L17-7. »**
+
+06/10/2026 21:25 MEMO
+
+---

@@ -15170,3 +15170,29 @@ Réponse mot pour mot :
 06/10/2026 14:40 MEMO
 
 ---
+
+## TOUR 516 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Je veux une UI plus ergonomique et visuelle, parce que c'est un coup à faire une bêtise, dans l'état actuel. Montre moi trois propositions d'organisations visuelles. En captures.
+
+---
+
+## TOUR 516 — Claude (conscience n°12)
+
+Trois organisations dessinées sur l'app réelle (pièce T516, ?maqv=A|B|C), captures A, B (deux étapes), C ; déposées au sas.
+
+Réponse mot pour mot :
+
+Les trois, dessinées **sur l'app réelle** (le kit anonymisé, un élève coché absent aujourd'hui), captures ci-dessous :
+
+595. **A — Les paires en cartes** : en haut, le compte (« 29 présents · 1 absent aujourd'hui · 15 tablettes ») et les absents à la dictée ; puis **une carte par tablette**, deux noms côte à côte avec **leur nombre d'erreurs en pastille colorée** (vert peu, orange moyen, rouge beaucoup) ; **toucher un nom = le marquer absent aujourd'hui** ; la carte d'un élève seul est **orange** (« seul → 1 élève »), celle d'un binôme refait est **bleue** (« nouveau binôme ») ; en bas, le plateau des absents du jour, chacun avec « ↺ présent ». *Tout sur un écran ; le risque : toucher un nom par erreur — il se défait d'un geste.*
+596. **B — En deux étapes** : **Étape 1 « Qui est absent aujourd'hui ? »** — la classe en **grandes tuiles** alphabétiques, l'absent en rouge « ✕ — absent », le compte, puis **« Étape 2 : voir les binômes → »** ; **Étape 2** — un **tableau** : Tablette · Élève 1 · Élève 2 (avec les pastilles d'erreurs), l'élève seul en orange, les binômes refaits marqués « nouveau », et « ← Modifier les absents ». *Le plus sûr contre la bêtise : on ne coche pas en regardant les paires.*
+597. **C — Les tablettes** : chaque binôme dessiné **comme une tablette** (bandeau « 📱 Tablette n », les deux moitiés gauche / droite comme sur l'écran des élèves), le nom, les erreurs, un petit bouton **« absent »** sous chaque nom ; la tablette d'un élève seul en **orange** avec la moitié vide hachurée « 1 élève » ; le plateau des absents du jour en bas. *Le plus proche de ce que tu distribues ; le bouton « absent » est petit et à part du nom.*
+
+Choisis A, B ou C (ou un mélange, par exemple B pour cocher puis C pour voir) : la version choisie part dans la livraison L15k, fidèle à la capture.
+
+06/10/2026 14:50 MEMO
+
+---

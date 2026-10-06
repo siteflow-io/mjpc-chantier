@@ -15721,3 +15721,28 @@ Réponse mot pour mot :
 06/10/2026 21:00 MEMO
 
 ---
+
+## TOUR 537 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok
+
+---
+
+## TOUR 537 — Claude (conscience n°12)
+
+Commentaires en trois temps écrits pour les 41 catégories (variantes selon le mot d'avant), déposés : MANDATS/COMMENTAIRES-TROIS-TEMPS-A-RELIRE.md.
+
+Réponse mot pour mot :
+
+653. **Les commentaires en trois temps sont écrits, pour toutes les catégories** — à relire ici : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/COMMENTAIRES-TROIS-TEMPS-A-RELIRE.md (joint ci-dessous). Ce qu'il contient :
+   - **A. Les accords** (pluriel manquant ou en trop, féminin, -eux / -euse, -aux, mots invariables) — avec **des variantes choisies d'après le mot d'avant dans la phrase** : après un déterminant pluriel, après « être », après « avoir », sinon. Pour le participe passé avec avoir, le commentaire donne **le test** (« demande … quoi ? : si la réponse est avant le verbe, accorde ») plutôt que d'affirmer où est le COD.
+   - **B. Les verbes** (-nt, la personne, -t / -d, -ons / -ont, -é / -er / -ez / -ai, imparfait / passé simple, le verbe à la place du nom) — chaque fois la règle, le test (« remplace par vendre / vendu », « mets nous »), et la phrase de l'élève.
+   - **C. Les homophones** : le modèle ; les 30 paires de la table seront écrites dans la même forme si tu le valides.
+   - **D. L'orthographe du mot** (accents, consonnes doubles, lettres muettes, sons…) : deux temps, la règle et l'astuce (un mot de la même famille, le féminin, la syllabe).
+654. **Ce que je te demande** : raye ou réécris ce qui ne va pas ; dis si les variantes « après avoir / après être / après un déterminant » te conviennent ; et si j'écris les 30 paires d'homophones. Ensuite seulement, le code.
+
+06/10/2026 21:05 MEMO
+
+---

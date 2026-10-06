@@ -14878,3 +14878,28 @@ Réponse mot pour mot :
 06/10/2026 10:20 MEMO
 
 ---
+
+## TOUR 504 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Mets 3 minutes par défaut. Et audit et mesure le reste du coup
+
+---
+
+## TOUR 504 — Claude (conscience n°12)
+
+Micro L15.1b-1g (180 s par défaut) promu ; mesures : 146 (portail de moitié libre, binômes par connectés, asymétries Turing), 147 (pas un lag : code sur une moitié étrangère), 148 (Inès : ni done ni total) ; L15k cadré au complément (une moitié n'accepte qu'un désigné, un élève = un écran, symétrie, 0 erreur = terminé) ; dettes mesurées.
+
+Réponse mot pour mot :
+
+563. **3 minutes par défaut — fait et promu, 6.7.0-L15.1b-1g** (commit `ae61b4fe61e9`, bit à bit, 974 570 o) ; le réglage de Préparation reste (15 à 600 s) ; banc vert ; journal, point de retour.
+564. **Mesuré, les binômes (146) et « Quentin a vu Norah » (147)** : dans le code, « Combien êtes-vous sur cette tablette ? » est libre et **chaque moitié a son portail de code ouvert à n'importe quel élève** ; le binôme est écrit au hub **d'après les deux connectés**, sans désignation. Au hub, chez les Turing ce matin, j'ai trouvé **des binômes asymétriques** (Quentin → Pauline, mais Pauline → Ethan ; Corentin → Alexandre, mais Alexandre → Lou) : trois élèves ont tourné sur une même tablette. Et **ce que Quentin a vu n'est pas un lag** : quelqu'un a tapé son code sur la seconde moitié d'une tablette qui n'était pas la sienne, la moitié a montré son écran ; le rechargement l'a vidée.
+565. **Inès (148)** : chez les Turing, sa copie a 0 erreur et son autocorrection n'a **ni « terminé » ni total** (statut « hors ligne ») : la règle « zéro erreur → page de fin » ne tient que si son écran se charge jusqu'au bout ; au Suivi, « Corrige » reste.
+566. **Le cadrage que je propose — écrit au complément comme L15k, à faire avant L15i** (il touche les mêmes écrans) : **(1)** une moitié n'accepte qu'un élève **attendu** : la moitié 2, seulement **le binôme désigné** — par toi au Suivi (clic droit → « binôme de … »), ou par **« élève absent »** sur la tablette (l'élève présent nomme l'absent, la désignation s'écrit au hub et se voit au Suivi) ; un code non attendu → « Tu n'es pas sur ta tablette : va voir ton professeur » (tes mots) ; **(2) un élève = un écran** : taper son code ailleurs déconnecte l'autre écran ; le Suivi montre où il est ; **(3)** les binômes au hub toujours symétriques et désignés, les asymétries nettoyées ; **(4) zéro erreur = « Terminé » d'office** au Suivi, et « terminé » posé côté élève dès l'ouverture ; **(5)** rien ne change pour l'élève seul. Bancs à deux navigateurs et une tablette en deux moitiés. **Dis « ok »** et je fais la maquette sur l'app réelle ; ou corrige la règle.
+
+L15.1b-2 (l'onglet Correspondances, dans `index.html`) : à confier au couple du déroulé — dis-le à la n°13 ; je l'ai mis ainsi dans l'ordre du complément.
+
+06/10/2026 11:35 MEMO
+
+---

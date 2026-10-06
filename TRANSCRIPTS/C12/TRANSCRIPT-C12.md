@@ -15609,3 +15609,29 @@ Mesuré sur tes données des Turing, avec la version en ligne :
 06/10/2026 20:30 MEMO
 
 ---
+
+## TOUR 533 — Paul
+
+Texte de Paul, mot pour mot :
+
+> voilà. et si un élève part? et s'il part puis revient?
+
+---
+
+## TOUR 533 — Claude (conscience n°12)
+
+Lu dans le code : une seule case « absent », qui réapparie et voile la moitié de l'élève parti. Proposé : « parti » distinct d'« absent » (binôme continue seul, place gardée, reprise exacte au retour, décochage automatique) ; les tablettes disent qui est assis où. Dettes 168 validée, 169.
+
+Réponse mot pour mot :
+
+646. **Aujourd'hui (lu dans le code en ligne)** : tu n'as que la case « absent aujourd'hui ». Si tu la coches pour un élève **qui avait déjà commencé**, l'app réapparie son binôme avec un élève seul, et met le voile sur la moitié de l'élève parti — **à son retour, il ne peut plus reprendre sur sa moitié**. Ça ne va pas.
+647. **Ce que je propose : distinguer « parti » d'« absent »**. À l'étape 1, la tuile d'un élève **qui avait commencé** ne dit plus « absent » mais **« parti »** :
+   - **Il part** : tu touches sa tuile → « parti ». **Son binôme continue seul** ; **personne ne lui est réattribué** ; **sa place sur la tablette reste à lui** (son travail est gardé, rien ne se ferme chez son binôme). Au Suivi, sa tablette affiche « Martin parti ».
+   - **Il revient** : il retape son code sur sa moitié → **il reprend exactement où il en était**, son binôme est toujours là ; **la case « parti » se décoche toute seule** — tu n'as rien à faire.
+   - **Il ne revient pas avant la fin de l'heure** : il termine hors classe (45 minutes), comme un élève qui n'a pas fini — c'est déjà ainsi.
+   Pour que l'app sache qui travaille avec qui (ta règle d'hier et celle-ci en ont besoin), **chaque tablette dira au hub qui est assis sur ses deux moitiés** — sans jamais réécrire les binômes.
+648. Noté : **« voilà » = la règle de l'élève qui revient (645) est validée**. Inscrit (dettes 168 validée, 169).
+
+06/10/2026 20:30 MEMO
+
+---

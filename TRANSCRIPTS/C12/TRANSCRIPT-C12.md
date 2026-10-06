@@ -15100,3 +15100,23 @@ Réponse mot pour mot :
 06/10/2026 14:05 MEMO
 
 ---
+
+## TOUR 513 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Ok mais du coup comment l'élève revient à l'écran " mes dictées ? " Il se déconnecte ?
+
+---
+
+## TOUR 513 — Claude (conscience n°12)
+
+Mesuré : trois boutons de retour existent (« ← » en tête de la copie, « ← Mes dictées » sur l'attente, « ← Retour » sur la fin). Complément : vue « liste » dans l'état d'écran ; retour jamais par la déconnexion.
+
+Réponse mot pour mot :
+
+589. **Non, il ne se déconnecte pas** : il revient à « Mes dictées » par les boutons qui existent déjà (mesuré) — **« ← » en haut de sa copie**, **« ← Mes dictées »** sur l'écran d'attente, **« ← Retour »** sur l'écran de fin. « Mes dictées » devient simplement **une vue enregistrée comme les autres** : s'il recharge pendant qu'il y est, son code retapé le ramène à « Mes dictées ». **« Se déconnecter » reste un geste à part**, pour quitter la tablette (elle l'oublie). Écrit au complément.
+
+06/10/2026 14:15 MEMO
+
+---

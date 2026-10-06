@@ -15510,3 +15510,28 @@ Réponse mot pour mot :
 06/10/2026 20:10 MEMO
 
 ---
+
+## TOUR 529 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ta première czpture, je ne la comprends pas, surtout le 1. pour le reste, ok.
+
+---
+
+## TOUR 529 — Claude (conscience n°12)
+
+Capture du bouton 💡 refaite (T529 : une barre, trois aspects côte à côte, ce que voient les tablettes) ; ardoise notée (à confirmer).
+
+Réponse mot pour mot :
+
+639. Ma première capture empilait quatre fois la même barre, et le « 1 » n'était qu'un numéro d'étape : illisible, je la remplace. **Ce qu'il faut voir, c'est une seule barre** (le bouton « 💡 » et la phrase « Gabin, Lilly-Rose et Justin voient la question-guide ») **qui change d'aspect à chaque clic** — la nouvelle capture la montre trois fois côte à côte, avec dessous ce qui apparaît sur les tablettes de ces trois élèves :
+   - **Au départ** : le bouton est blanc ; sur leurs tablettes, rien.
+   - **Tu cliques une fois** : le bouton devient jaune pâle, « message envoyé » ; sur leurs tablettes : « 💡 Dans un instant, une aide va s'ouvrir quand tu toucheras un mot… »
+   - **Tu cliques une 2e fois** : le bouton devient orange, « aide active · 0:12 » ; en touchant un mot, ils voient la question-guide.
+   - **Quand tu veux, tu cliques une 3e fois** : l'aide s'éteint, la barre revient comme au départ.
+640. « Pour le reste, ok » : je note **l'ardoise** pour « Accent, majuscule », comme je l'avais proposée — dis-le si ce n'est pas ça.
+
+06/10/2026 20:15 MEMO
+
+---

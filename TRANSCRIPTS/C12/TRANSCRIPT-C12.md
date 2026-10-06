@@ -15319,3 +15319,32 @@ Réponds à la question de 608 (figer dès la première tablette à deux, ou seu
 06/10/2026 18:35 MEMO
 
 ---
+
+## TOUR 522 — Paul
+
+Texte de Paul, mot pour mot :
+
+> non, je ne corrigerai jamais d'élève entre la connexion et le lancement. c'est plus qu'improbable, donc impossible en fait. et si je le fais, il faut une garde: un refus "lance d'abord la séance, puis modifie ta correction si tu veux". enfin, inès: elle est marquée "terminée" en vert, alors que les autre sont en "heure terminée" en grisé, au statut. par ailleurs, le bouton d'entraide: normalement, c'est lui qui me permet de faire le mode binôme. si je ne le clique pas, le placement peut être libre. actuellement, il active un ancien système que j'avais mis en place, et qui télescope le flux (les élèves voient de manière aléatoire "lève toi et va aider untel"). Enfin, l'affichage de la note: c'est codé, le bouton que j'ai demandé tout à l'heure? par ailleurs, dans l'affichage de l'autocorrection, je vois une note avec la phrase "dont tant de points regagné", mais c'est vraiment un "dont"? par ailleurs, combien de questions ont les élèves pour regagner des points?
+
+---
+
+## TOUR 522 — Claude (conscience n°12)
+
+Mesuré : etapeDe (0 erreur sans autocorrection), peerHelp (peerTarget : plus d'erreurs restantes), acNote (5·(N−c+r)/N, premier raté offert, c ≤ N). Dettes 156-158. Réponses 610-615 ; micro proposé (clavier, binômes fixés, garde, Inès, mode binôme, bouton note).
+
+Réponse mot pour mot :
+
+Tout mesuré, rien codé :
+
+610. **La garde avant « Lancer » — pris** : si tu enregistres une correction alors que **des élèves sont déjà connectés** et que **la séance n'est pas lancée**, l'app refuse : « Lance d'abord la séance, puis modifie ta correction si tu veux. » Corriger quand personne n'est connecté reste libre, et pendant la séance aussi (la note change, les binômes non). Donc **plus de « figer dès la première tablette »** : les binômes sont fixés **à « Lancer »**, pour toute la séance, et libérés à sa fin.
+611. **Inès, mesuré** : sans aucune erreur, elle n'a pas d'autocorrection enregistrée ; le calcul de l'étape (« Heure terminée » quand l'heure est passée) ne s'applique donc pas à elle, et elle reste sur « Terminé » vert. Réglage : **le même affichage que les autres** — « Terminé » pendant l'heure, « Heure terminée » en gris après.
+612. **L'aide entre pairs, mesuré** : cochée, elle fait chercher à un élève qui a fini **le camarade qui a le plus d'erreurs restantes**, et lui affiche d'aller l'aider — l'ancien système, qui tombe au hasard des fins. Ta règle : **cette case devient le « mode binôme »** — **cochée** : les tablettes annoncent le binôme, la seconde moitié n'accepte que lui, ton Suivi montre les tablettes ; **décochée** : **placement libre** (deux élèves quelconques sur une tablette, aucune annonce, aucun refus) ; **le « va aider untel » disparaît**. Elle agit en direct (une tablette ouverte suit le changement). Je propose de la renommer « Binômes imposés (d'après les erreurs) » dans Préparation, et d'en rappeler l'état en haut de l'étape 1 du Suivi.
+613. **Le bouton « Afficher la note de dictée »** : **non, pas encore codé** (dette 149). Proposition : au Suivi, quand tous les présents ont fini, un bouton « Afficher la note de dictée aux élèves » (il coche le réglage qui existe, les tablettes l'affichent aussitôt) ; disponible aussi avant, avec une confirmation.
+614. **« dont … regagné » : oui, c'est juste**. La note affichée **contient déjà** les points regagnés : « 4/5 dont +1 regagné » veut dire 3/5 sans les questions, 4/5 avec.
+615. **Combien de questions ?** Une question **par essai raté**, **sauf le premier** (il est offert), et **au plus autant que d'erreurs dans la copie**. Chaque question réussie rend ce que l'essai raté avait coûté : **5 ÷ le nombre d'erreurs** (10 erreurs → 0,5 point par question ; 5 erreurs → 1 point).
+
+Dis « micro » et je fais ensemble : le clavier « 123 », les binômes fixés pour la séance, la garde, Inès, le mode binôme (et le bouton de la note si tu le veux aussi).
+
+06/10/2026 18:50 MEMO
+
+---

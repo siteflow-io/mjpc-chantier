@@ -15240,3 +15240,28 @@ Réponse mot pour mot :
 06/10/2026 15:05 MEMO
 
 ---
+
+## TOUR 519 — Paul
+
+Texte de Paul, mot pour mot :
+
+> il y a un conflit d'identification entre emma danard et emma landais, au niveau des binomes (et/ou des codes)
+
+---
+
+## TOUR 519 — Claude (conscience n°12)
+
+Mesuré au hub : autocorrections séparées et cohérentes, binômes distincts, resolveEleves exact, codes présents (empreintes) ; piste du même code non mesurable ; Danard 12/11 au Suivi ; dette 154 ; question à Paul.
+
+Réponse mot pour mot :
+
+Mesuré au hub à l'instant, sur la dictée des Franklin :
+
+600. **Dans les données, les deux Emma ne se mélangent pas** : Emma Danard a corrigé **les 13 mots de sa copie** (entendu, venu, quelques…) de 15 h 25 à 15 h 40 ; Emma Landais **les 5 mots de la sienne** (véhicules, amenés, chaque, instant, abri) de 15 h 27 à 15 h 34. **Leurs binômes ne se croisent pas non plus** : Danard ↔ Eden Laine-Ferelloc, Landais ↔ Océane Lacroix. Et l'app identifie par **NOM + prénom exacts + code** : aucune tolérance qui confondrait Danard et Landais.
+601. **Une piste que je ne peux pas vérifier d'ici** : si les deux Emma ont **le même code à 4 chiffres**, l'une peut entrer sous le nom de l'autre depuis l'écran « Ton binôme : DANARD Emma » — les codes sont gardés en empreintes, je ne peux pas les lire. Tu peux le vérifier dans le panneau des codes de MJPC.
+602. **Vu en passant, et c'est faux** : au Suivi, Danard affiche **« 12 / 11 »** (plus de mots trouvés que d'erreurs) — un mot compté d'un côté et pas de l'autre. Inscrit au registre (154), à régler après.
+603. **Ma question, une seule** : **qu'as-tu vu exactement** — quel nom sur quelle tablette, à quel écran (« Ton binôme : … », la copie, le Suivi) ?
+
+06/10/2026 15:50 MEMO
+
+---

@@ -698,3 +698,35 @@ Tests pour toi : aucun ; regarde la capture jointe.
 
 06/10/2026 14:34 (heure de mon espace de travail, non vérifiée)
 MEMO
+
+---
+
+## TOUR 18 — Paul
+
+Texte de Paul, mot pour mot :
+
+> b
+
+---
+
+## TOUR 18 — Claude (conscience n°13)
+
+Choix (b) de Paul, sur le complément écrit sur (b) et joint au tour 17. Déposés : `MANDATS/COMPLEMENT-DEROULE-P8-3.md` (sas) ; une ligne à `docs/MJPC6-OU-TROUVER-QUOI.md` (production). Relus au blob.
+
+Réponse mot pour mot :
+
+C'est noté : (b). Le complément est déposé, et je l'ai relu juste après son envoi : identique octet pour octet.
+
+76. **Le complément** : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/COMPLEMENT-DEROULE-P8-3.md
+    Il fait ajouter une seule chose : le calcul qui écarte les bulles évite aussi qu'un trait passe derrière une autre notion. Les bulles que tu as placées à la main ne bougent jamais. L'exécutant livre p8-3b sur sa propre branche, rejoue les 26 bancs, dit en combien de morceaux ta vraie carte tient maintenant, puis s'arrête.
+77. **« Où trouver quoi »**, en production, indique le complément.
+78. **Relance** : sur claude.ai/code, dans la même session si elle est encore ouverte, sinon dans une nouvelle (environnement « CODE BOULOT », dépôt `mjpc-chantier`, mode « Accept edits »). Colle cette phrase :
+
+> Tu es l'exécutant de MJPC sur le déroulé. Lis en entier `MANDATS/MANDAT-DEROULE-MAQUETTE-P8.md` puis `MANDATS/COMPLEMENT-DEROULE-P8-3.md` dans ce dépôt, et fais ce que dit le complément : la livraison p8-3b sur sa branche, puis arrête-toi.
+
+Quand la session s'est arrêtée : « livré ».
+
+Tests pour toi : aucun.
+
+06/10/2026 14:36 (heure de mon espace de travail, non vérifiée)
+MEMO

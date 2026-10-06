@@ -14837,3 +14837,22 @@ Fait, promu : **6.7.0-L15.1b-1e** (commit `fae9148d430a`, bit à bit, 973 106 o)
 06/10/2026 08:35 MEMO
 
 ---
+
+## TOUR 502 — Paul
+
+Texte de Paul, mot pour mot :
+
+> j'ai beau recharger je n'ai pas le message du reclassmeent. par ailleurs, dis moi le lien à donner aux élèves pour la correction aujourdh'ui
+
+---
+
+## TOUR 502 — Claude (conscience n°12)
+
+Réponse mot pour mot :
+
+558. **Le message ne reviendra pas, et c'est normal** : le reclassement des Hugo **a déjà eu lieu ce matin à 08:18** (mesuré au hub : la marque « 9 erreurs, 5 copies » est posée, les C sont dans les copies, l'état d'avant est dans la corbeille) — il ne se fait **qu'une seule fois par dictée**, et le message s'affiche à ce moment-là ; tu l'as raté parce qu'à 08:18 c'était encore un toast de quelques secondes. Rien n'est à refaire : ouvre une copie des Hugo, les mots « Acc. » y sont.
+559. **Le lien pour les élèves, aujourd'hui** : **https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?mode=eleve** — il arrive sur le portail élève, chacun tape son code (la séance s'ouvre quand tu lances l'heure au Suivi ; ils restent sur la page, elle s'ouvre seule).
+
+06/10/2026 08:45 MEMO
+
+---

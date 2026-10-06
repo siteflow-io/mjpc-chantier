@@ -594,3 +594,40 @@ Tests pour toi : aucun.
 
 05/10/2026 22:13 (heure de mon espace de travail, non vérifiée)
 MEMO
+
+---
+
+## TOUR 15 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Ok
+
+---
+
+## TOUR 15 — Claude (conscience n°13)
+
+« Ok » sur le point 64 et sur le dépôt. Décision 6 ter écrite dans le mandat ; ajout au cadrage 4 version 3 inséré sous la ligne « schéma » du §3.2. Déposés au sas : le mandat, le cadrage 4. Production : `docs/MJPC6-OU-TROUVER-QUOI.md` et `docs/MJPC6-plan-de-travail.md` complétés (ÉCHEC d'écriture).
+
+Réponse mot pour mot :
+
+C'est noté : les schémas déjà faits gardent leur comportement, et un schéma neuf part réglé sur « Un à un ». C'est écrit dans le mandat (décision 6 ter).
+
+65. **Déposé au sas**, et chaque fichier relu juste après son envoi : identique octet pour octet.
+    - le mandat, version 3 : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/MANDAT-DEROULE-MAQUETTE-P8.md
+    - la décision dans son document, le cadrage 4 §3.2 (sous la ligne « schéma ») : https://github.com/siteflow-io/mjpc-chantier/blob/main/DEROULE/CADRAGE-4-LA-PREPARATION.md
+66. **Le suivi en production n'a pas pu s'écrire** : le jeton reçu n'ouvre pas l'écriture du dépôt de production. Pour la ligne au plan de travail et l'ajout à « où trouver quoi », il me faut le jeton de production.
+67. **Tu peux lancer** (point 36). Sur claude.ai/code :
+    - environnement « CODE BOULOT » ;
+    - dépôt `mjpc-chantier`, pas `monsieurjaipascompris` ;
+    - mode « Accept edits » ;
+    - colle cette phrase, puis Entrée. Tu peux ensuite fermer l'ordi.
+
+> Tu es l'exécutant de MJPC sur le déroulé. Lis en entier `MANDATS/MANDAT-DEROULE-MAQUETTE-P8.md` dans ce dépôt et fais ce qu'il dit : les livraisons p8-1, p8-2 et p8-3, chacune sur sa branche, puis arrête-toi.
+
+68. **Quand la session s'est arrêtée**, tu m'écris « livré ». J'audite alors p8-1, p8-2 et p8-3, dans l'ordre.
+
+Tests pour toi : aucun. Ton geste : lancer, puis « livré ».
+
+06/10/2026 06:30 (heure de mon espace de travail, non vérifiée)
+MEMO

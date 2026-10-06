@@ -15690,3 +15690,34 @@ Mesuré au hub et dans le code :
 06/10/2026 20:50 MEMO
 
 ---
+
+## TOUR 536 — Paul
+
+Texte de Paul, mot pour mot :
+
+> oui, par ailleurs, je trouve que les commentaires sont très pauvres, notamment sur les erreurs de grammaire. de temps en temps, on a un rappel de règle (pluriel, etc) mais la plupart du temps on dit juste comment bien écrire le mot, sans dire comment et ce que c'est .
+
+(capture : le détail des erreurs de Leto)
+
+---
+
+## TOUR 536 — Claude (conscience n°12)
+
+Micro L15k-d promu (6.7.0-L15.1b-1l, commit 76de939832ed, bit à bit ; 33 copies reclassées, aucune note changée ; banc VERT avec les formes acceptées ; leçon de méthode : le banc doit porter correction_dictee_textes). Commentaires : proposition en trois temps (règle, test, ici) avec les exemples de Leto ; dette 171.
+
+Réponse mot pour mot :
+
+651 bis. **Le trait d'union — fait et promu : 6.7.0-L15.1b-1l** (commit `76de939832ed`, bit à bit, 989 974 o). À l'ouverture de chaque dictée concernée, les « - » passent en **« Acc. »** (corbeille d'abord) — **vérifié sur tes copies : 33 copies reclassées (29 oubliés, 10 ajoutés), aucune note ne change** ; la copie de Leto dit maintenant « « - » · **Trait d'union en trop · au forfait** » (plus de « −0,5 ») ; le texte écrit « **là-bas** », « **Saint-Laurent** » ; la copie prend ses points dans ton barème (une seule source). Banc vert ; L15h-1, L15g, l'export en un fichier : verts. **Test** : recharge, ouvre la dictée des Dylan (le message de reclassement apparaît), puis Copies → Leto.
+
+652 bis. **Les commentaires — tu as raison, et je le vois sur ta capture** : ils disent quoi écrire (« le -s est en trop ») mais pas **ce que c'est** ni **comment le vérifier**. Ce que je propose : chaque commentaire en **trois temps** — **la règle** (ce que c'est), **le test** (comment vérifier soi-même), **ici** (avec les mots de la phrase). Sur les erreurs de Leto, ça donnerait :
+   - **« entendus » → entendu** : « *Participe passé avec avoir* (« nous avons entendu ») : il ne s'accorde jamais avec le sujet. *Le test* : demande « avons entendu quoi ? » — le COD (« le signal ») est placé après : pas d'accord. »
+   - **« signale » → signal** : « *Nom ou verbe ?* « le signal » est un nom ; « il signale » est le verbe signaler. *Le test* : peux-tu mettre « un » devant ? Alors c'est le nom, sans e : un signal, un journal. »
+   - **« venus » → venu** : « *Participe passé avec être* (« on est venu ») : il s'accorde avec le sujet. *Le test* : qui est venu ? « on » (= quelqu'un) : singulier, venu. »
+   - **« ammener » → amenés** : « *Participe passé avec avoir* (« on nous a amenés ») : il s'accorde avec le COD s'il est placé avant. *Le test* : a amené qui ? « nous », placé avant : amenés. Et amener s'écrit avec un seul m (mener). »
+   - **« quelque » → quelques** : « *Le déterminant s'accorde avec le nom.* *Le test* : combien de kilomètres ? plusieurs : quelques kilomètres. »
+   - **« çe » → ce** : « *La cédille* ne se met que devant a, o, u (ça, garçon, reçu) ; devant e, le c fait déjà [s] : ce. »
+   Ce qu'il faut pour le faire : (a) l'analyse regarde **les mots d'avant** (auxiliaire avoir ou être, déterminant, sujet) — elle sait déjà repérer certains ; (b) chaque catégorie reçoit ses trois textes, **modifiables par toi dans Réglages** ; (c) **ce que l'app ne peut pas savoir à coup sûr** (où est le COD), elle le donne **en test** à faire par l'élève, jamais en affirmation fausse. Inscrit (dette 171). Valide le format (trois temps) et je l'écris pour toutes les catégories de grammaire, à te faire relire avant tout code.
+
+06/10/2026 21:00 MEMO
+
+---

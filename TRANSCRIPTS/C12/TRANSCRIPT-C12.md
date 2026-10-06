@@ -14746,3 +14746,24 @@ Rien ne m'attend de ton côté sauf une chose, et « continue » est sans doute 
 05/10/2026 19:35 MEMO
 
 ---
+
+(correction du tour 497 : « rien au sas » était faux — L15.1b-1c (05/10 19:12) et L15.1b-1d (06/10 06:38) étaient déposées ; la conscience n'avait lu que six commits.)
+
+## TOUR 498 — Claude (conscience n°12), suite du « Continue » de Paul (tour 497)
+
+Audits : L15.1b-1c (477 / dette 142 : phrase À recopier par l'écart ; banc VERT, rouge sur L15h-2) ; L15.1b-1d (seconde partie : écran T474, prompt avec taxonomie réelle, Vérifier, Injecter avec archive, alias en propose, profil branché un événement par erreur, manifeste, Bilan cumul ; banc VERT 12/12 ; L15.1b-1 accordé, L15f-b verts). Chaîne L15h-2 → 1c → 1d ; 549 toujours à trancher.
+
+Réponse mot pour mot :
+
+Correction d'abord : hier soir j'ai dit « rien au sas » — faux : **l'exécutante a déposé deux livraisons** (L15.1b-1c à 19:12, L15.1b-1d cette nuit à 06:38), que je n'avais pas vues parce que je n'avais regardé que les six derniers commits. Auditées ce matin, dans l'ordre où elles s'enchaînent : **L15h-2 → L15.1b-1c → L15.1b-1d** (chacune part de la précédente ; mesuré).
+
+551. **L15.1b-1c — la phrase « À recopier » d'après l'écart** (dette 142) : base L15h-2 (`02a8b691…`, vérifiée) → **6.7.0-L15.1b-1c, 949 974 o (+2 203)** ; aucune phrase nouvelle, les engagements déjà dans l'app ; **banc VERT** (la copie de la capture d'hier dit maintenant « … surtout de grammaire, et pour la prochaine, je devrai accorder chaque mot avec le déterminant pluriel qui le précède. » ; **rouge sur L15h-2**, qui disait « l'imparfait »). Capture ci-dessous.
+552. **L15.1b-1d — la seconde partie : le Prompt IA, Vérifier, Injecter, les rattachements, le profil** : base 1c → **6.7.0-L15.1b-1d, 971 626 o (+21 652)**, 19 lignes retirées, 114 ajoutées, `node --check` 0 erreur. **Vérifié dans le code** : l'écran Réglages conforme à la maquette T474 (en-tête, « ↗ Correspondances », « 🤖 Prompt IA — catégories (JSON) », la liste à gauche, l'aperçu sur une vraie erreur, Enregistrer / Texte d'origine) ; **le prompt donne ta taxonomie réelle lue au hub** (ids et libellés), les compétences lues dans ta table d'alias (rien en dur), les catégories existantes et **toutes les erreurs de toutes les dictées**, non reconnues en tête ; **Vérifier** teste chaque catégorie sur ses exemples et refuse (id, famille, compétence absente, motif inconnu, **cible inconnue, « egal » à plusieurs cibles, partition cassée**) ; **Injecter** = `mjpcInjecterAvecArchive` (archive en corbeille, abandon si elle échoue), **les rattachements écrits dans `/taxonomie/alias/tables/correction_dictee` en « propose »** (rien ne compte avant ta validation), puis les erreurs reclassées (corbeille, compté) ; **l'événement du profil branché** vers `/profil/<élève>/events/<horodatage>`, un par erreur, mis à jour jamais doublé, avec `notions_etat` qui dit en clair « aucun_rattachement / propose / valide » ; **le manifeste préserve `site/analyses` et `profil` à la purge** ; le Bilan cumule « toutes dictées ». **Bancs, rejoués par moi** : L15.1b-1d **VERT, 12 vérifications** (dont : motif inconnu → refusé, Injecter grisé ; partition cassée → refusée ; rien d'écrit avant Injecter ; un JSON valide → « 1 catégorie valide · 1 paire · 0 rejetée » ; Injecter → la catégorie au hub, le rattachement en « propose », l'archive, l'erreur reclassée ; **un événement par erreur, pas de doublon**) ; L15.1b-1 (accordé), L15f-b : verts ; son banc unique vert, 0 échec, 40 étapes. Captures ci-dessous.
+553. **Deux choses qu'elle dit et que je confirme** : (a) **la première injection touchera beaucoup de copies** (les erreurs corrigées avant hier n'ont pas de catégorie enregistrée ; Injecter la leur donne — corbeille d'abord) ; (b) **« ↗ Correspondances » ouvre le Panneau prof dans un nouvel onglet, mais l'onglet de validation n'existe pas encore** (c'est L15.1b-2, le site).
+554. **Verdict : ça va pour les deux** — mais **elles ne sont promouvables qu'après L15h-2**, qui attend toujours ton mot sur **la copie aménagée n° 21 des Hugo (5/10 → 15/20, point 549)**. Dis « oui » → je promeus les trois d'un coup (L15h-2, 1c, 1d), dettes **126 ✔ (en entier), 142 ✔, 107 ✔ (en entier)**. Dis « non » → je promeus 1c et 1d sur une base sans le reclassement, après l'avoir fait reprendre.
+
+Tes tests après promotion : 1) les Dylan → Réglages → « Les commentaires de l'analyse » : l'écran de la maquette ; 2) « 🤖 Prompt IA » → Copier → donne-le à l'IA → colle son JSON → Vérifier → Injecter ; 3) Copies → « À recopier » dit un engagement qui correspond aux erreurs ; 4) Bilan : « … · toutes dictées : n sur m » ; 5) les Hugo : à l'ouverture, « 9 erreurs reclassées en C … dans 5 copies », puis Préparation → ré-enregistre la « Note sur » 20 aménagée (550).
+
+06/10/2026 08:15 MEMO
+
+---

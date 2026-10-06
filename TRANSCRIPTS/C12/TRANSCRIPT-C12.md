@@ -15746,3 +15746,35 @@ Réponse mot pour mot :
 06/10/2026 21:05 MEMO
 
 ---
+
+## TOUR 538 — Paul
+
+Texte de Paul, mot pour mot :
+
+> tout est cadré. il faut coder. mandat à l'exécutant. il faut tout faire en une seule fois, par morceaux. je ne reviens ici que pour dire que l'ensemble a été livré.
+
+---
+
+## TOUR 538 — Claude (conscience n°12)
+
+Mandat L17 écrit et déposé (MANDATS/MANDAT-L17.md) : huit morceaux enchaînés (binômes, tablette élève, engagement, écran et Acc., commentaires trois temps, astuces, note et Préparation, suspendre/fermer), règles de toujours, leçon des formes acceptées pour les bancs ; conséquence de l'audit unique dite ; phrase pour l'exécutante.
+
+Réponse mot pour mot :
+
+655. **Le mandat est au sas** : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/MANDAT-L17.md (joint). Huit morceaux, enchaînés sans arrêt, chacun déposé au sas avant le suivant, puis un récapitulatif :
+   - **L17-1** les binômes fixés pour la séance (libérés à la fin), la garde avant « Lancer », l'élève qui part / qui revient, le mode binôme (la case renommée, placement libre sinon, fin du « va aider untel »), l'aménagé apparié sur les mêmes mots, Inès, le « 12 / 11 » ;
+   - **L17-2** la tablette élève : rechargement = remise à zéro, reprise exacte au hub, un élève = un écran ;
+   - **L17-3** l'engagement case par case (5 s), avec les phrases du binôme aménagé ;
+   - **L17-4** le bandeau resserré avec la légende, « Acc. » en ardoise partout (et encadré sur ta grille), le clavier « 123 », « sdp » ;
+   - **L17-5** les commentaires en trois temps (et les 30 paires d'homophones), la nouvelle consigne à recopier, deux phrases différentes par tablette ;
+   - **L17-6** les astuces 💡 (trois clics, les prénoms, la question-guide) ;
+   - **L17-7** la note (un réglage + le bouton « Afficher la note »), les badges de mode et le type dans la Préparation ;
+   - **L17-8** suspendre / fermer une séance (la maquette du 05/10).
+656. **Une chose que tu acceptes en faisant ainsi** : je n'auditerai qu'à la fin, morceau par morceau dans l'ordre ; si un morceau du début est faux, ceux qui suivent seront à reprendre. Le mandat oblige à des bancs complets à chaque morceau (avec tes formes acceptées, la leçon de ce soir) pour limiter ce risque.
+657. **Ta phrase pour l'exécutante** : **« Nouveau mandat au sas : `MANDATS/MANDAT-L17.md`. Si tu as une livraison en cours, termine-la d'abord. Puis livre les huit morceaux dans l'ordre, chacun déposé au sas, sans t'arrêter entre eux ; tu t'arrêtes après L17-8 avec le récapitulatif. »**
+
+Quand tu reviens avec « livré », j'audite les huit morceaux dans l'ordre.
+
+06/10/2026 21:20 MEMO
+
+---

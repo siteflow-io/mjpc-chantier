@@ -15375,3 +15375,34 @@ Mesuré au hub (dictée des Franklin) :
 06/10/2026 19:10 MEMO
 
 ---
+
+## TOUR 524 — Paul
+
+Texte de Paul, mot pour mot :
+
+> oui, c'est une bonne idée , ça sera "sdp". d'ailleurs, deux choses à cadrer encore: des aménagés ne peuvent pas se retrouver avec un élève classique. en effet, ils ont la dictée imprimée: ce matin, yanis n'a fait que recopier ce qui était sur la copie d'enzo, il n'a pas réfléchi une seconde. donc les adaptés en binome obligatoire, tant pis, ou alors autre chose? c'est une solution imparfaite et qui ne me va pas trop, j'aimerais trouver autre chose. Enfin, mesure l'écran: quand ils corrigent, les élèves n'ont que peu de visibilité sur le texte, car le clavier prend une bonne part de l'écran (ce sont des tablettes samsung classiques, elles ont au moins dix ans voire plus). on pourrait les passer en mode "plein écran" dans leur moitié, ou que le bandeau du haut se réduise? Je veux voir sur captures, plusieurs propositions. Enfin, pour des élèves qui ont plus de 20 erreurs, il faudrait qu'ils puissent avoir l'astuce quand ils cliquent sur le mot, quelque chose du genre: "pose-toi la question de l'accord: qui est-ce qui est farci? (réponse: les tomates, donc il écrit farcies). et ça appellerait la bnaque de commentaires, non? mais c'est peut-être ambitieux, à garder en tout cas. et peut-être qu'on perd l'intérêt de l'autocorrection, je ne sais pas.
+
+---
+
+## TOUR 524 — Claude (conscience n°12)
+
+Mesuré l'écran (1280×800, deux moitiés : .score-bar collant 178 px, clavier fixe 357 px → ~265 px de texte) ; trois propositions dessinées sur l'app réelle (pièces T524 : actuel, bandeau réduit, plein écran + phrase, bandeau + clavier compact) ; aménagés : trois pistes (mêmes mots, seul, copies retournées) ; sdp pris ; question-guide gardée. Dettes 159-162.
+
+Réponse mot pour mot :
+
+619. **« sdp » — pris** : une erreur de ponctuation à retrouver affichera « sdp » dans sa case. Ajouté à la liste du prochain micro (dette 159).
+620. **Les aménagés avec un élève classique** (dette 160) : je comprends le problème — l'élève classique a sa copie papier sous les yeux, et partout où lui ne s'est pas trompé, **elle contient la bonne réponse** ; Yanis n'avait qu'à la lire. Trois pistes autres que « les aménagés entre eux » :
+   - **(a) Le binôme sur les mêmes mots** (celle que je recommande) : l'app apparie un aménagé avec **l'élève classique qui s'est trompé sur les mêmes mots que lui** (elle compare les mots de leurs erreurs). La copie du voisin ne contient alors pas les bonnes réponses : il n'y a rien à recopier, il faut chercher ensemble. Si aucun élève ne recoupe assez, l'aménagé est seul.
+   - **(b) L'aménagé seul**, toujours (« 1 élève ») : simple, mais il perd l'échange.
+   - **(c) Les copies retournées** : la consigne à l'écran dit aux deux « retournez vos copies papier » pendant la correction, et elles ne se retournent qu'au stylo vert. Ça marche pour tout le monde, mais ça repose sur la discipline.
+   Dis laquelle (ou une combinaison, par exemple a + c).
+621. **L'écran, mesuré** (tablette 1 280 × 800, en deux moitiés) : le bandeau du haut reste collé (**178 px**) et le clavier prend **357 px** : il reste **environ 265 px de texte, un tiers de l'écran** — et le mot ouvert peut même passer sous le bandeau (capture 0, à gauche). Trois propositions, dessinées sur l'app réelle, captures ci-dessous :
+   - **1 — Le bandeau réduit** : une seule ligne (la note, le nom, « n/m corrigés ») ; la légende des couleurs passe derrière le « ? » ; touches un peu plus basses → **environ 390 px de texte**.
+   - **2 — Le plein écran dans la moitié** : dès qu'un mot est ouvert, le bandeau et « Regagner des points » disparaissent (ils reviennent quand il le referme), et **la phrase du mot s'affiche au-dessus du clavier** (« … Colomb aperçut une forêt [ ? ] … que cette … ») — l'élève voit toujours le contexte, même si le texte défile → environ 410 px de texte, **plus** la phrase.
+   - **3 — Le bandeau réduit et le clavier compact** : comme 1, mais les accents passent derrière une touche « é à ç » (comme les chiffres derrière « 123 »), quatre rangées au lieu de cinq → **environ 460 px de texte**.
+   Les trois se combinent (par exemple 3 + la phrase de 2). Choisis.
+622. **La question-guide pour un élève à plus de 20 erreurs** (« pose-toi la question de l'accord : qui est-ce qui est farci ? ») — gardée (dette 162). Mon avis, puisque tu te le demandes : elle **ne tue pas l'autocorrection** tant que **la réponse n'apparaît jamais** — c'est un étayage, l'élève cherche encore ; au-delà de 20 erreurs, sans aide il ne cherche plus du tout. Elle s'appuierait sur les catégories de l'analyse (une question-guide par catégorie, générique : « avec quel mot s'accorde-t-il ? ») ; la question précise (« qui est farci ? ») demande l'analyse de la phrase — c'est la partie ambitieuse, pour plus tard.
+
+06/10/2026 19:25 MEMO
+
+---

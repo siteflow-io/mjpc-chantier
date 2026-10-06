@@ -15265,3 +15265,27 @@ Mesuré au hub à l'instant, sur la dictée des Franklin :
 06/10/2026 15:50 MEMO
 
 ---
+
+## TOUR 520 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Codes différents. Reproduis le bug. Essaye toutes les configurations
+
+---
+
+## TOUR 520 — Claude (conscience n°12)
+
+Reproduction (banc_emma.py, banc_emma2.py, https local, copie de la dictée des Franklin, codes de test) : identification jamais confondue ; cause : copie de Roullier corrigée à 15:37 pendant la séance → binômes recalculés en direct par les tablettes (micro L15k-b) → quatre paires changent ; tablette avant : Danard → Eden ; après : Danard ↔ Landais. Dette 154 (cause), réglage proposé (binômes fixés écrits par la console, lus en direct par les tablettes).
+
+Réponse mot pour mot :
+
+604. **Reproduit, cause trouvée.** Configurations jouées sur une copie locale de ta dictée des Franklin (codes de test, rien écrit au hub) : chaque Emma seule (« 1 élève ») → la bonne identité ; chaque Emma en moitié 1 → la tablette annonce un binôme ; le binôme entre avec son code ; rechargement → les mêmes ; Danard puis Landais sur la même tablette. **Le code et l'identification ne confondent jamais les deux Emma.** Ce qui les a fait se croiser, c'est **le binôme annoncé** :
+605. **La cause** : tu as **corrigé la copie de Khaïs ROULLIER-UIJTDEHAAGE pendant la séance, à 15 h 37** (« Lancer » était à 15 h 08). Depuis mon micro de 14 h 30, les tablettes **recalculent** les binômes d'après les copies : une copie de plus décale le classement par nombre d'erreurs et **change quatre paires**. Reproduit : une tablette ouverte **avant** 15 h 37 annonce à Emma Danard « LAINÉ FÉRELLOC Eden » ; une tablette ouverte **après** lui annonce « LANDAIS Emma » — et à Emma Landais « DANARD Emma ». D'où le conflit, et le voile qui refusait des binômes pourtant légitimes. **C'est ma faute** : je t'avais dit que le calcul en direct « revenait au même tant que tu ne corriges pas de copie pendant la séance » — or c'est exactement ce qui arrive en classe ; et ta règle (les binômes ne bougent plus une fois constitués) n'était pas codée.
+606. **Le réglage que je propose** (ta règle du tour 510, enfin codée) : **les binômes sont fixés** — écrits une fois au hub par ta console ; ensuite **seules les absences du jour** et **les copies arrivées après** (rangées avec l'élève seul, s'il y en a un) les touchent ; **les tablettes lisent ces binômes en direct** au lieu de les recalculer chacune de leur côté — toutes disent donc toujours la même chose que ta console. Banc : la copie corrigée pendant la séance ne change aucune paire ; deux tablettes ouvertes avant et après annoncent le même binôme. **Dis « micro »** et je le code et le banque ; sinon il part dans L15k.
+
+Inscrit au registre (154, cause et réglage) ; les deux bancs de reproduction sont au sas.
+
+06/10/2026 16:15 MEMO
+
+---

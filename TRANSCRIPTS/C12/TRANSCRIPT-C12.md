@@ -15216,3 +15216,27 @@ Réponse mot pour mot :
 06/10/2026 14:45 MEMO
 
 ---
+
+## TOUR 518 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Code. Je ferai le rechargement de ma page une fois que tu as promu, vu que c'est de l'UI de ma console.
+
+---
+
+## TOUR 518 — Claude (conscience n°12)
+
+Micro L15k-c promu (6.7.0-L15.1b-1j : étape 1 tuiles, étape 2 tablettes sans bouton absent, toucher = vue en direct ; pendant l'heure étape 2) ; banc VERT ; journal, point de retour, sas.
+
+Réponse mot pour mot :
+
+599. **Promu : 6.7.0-L15.1b-1j** (commit `5da85bef8b9d`, bit à bit, 986 499 o) — **tu peux recharger ta console.** Au Suivi :
+   - **avant « Lancer »** : **Étape 1 « Qui est absent aujourd'hui ? »** — les grandes tuiles ; touche un nom → rouge « ✕ — absent » (touche encore → présent) ; puis **« Étape 2 : voir les binômes → »** ;
+   - **Étape 2 « Les binômes du jour »** — les tablettes (deux moitiés, les erreurs en pastilles, l'élève seul en orange « 1 élève », un binôme refait en bleu), **sans bouton « absent »** ; **touche une tablette → les deux écrans en direct, côte à côte** ; « ← Modifier les absents » ramène à l'étape 1 ;
+   - **pendant l'heure** (les Franklin maintenant) : la carte s'ouvre **directement sur l'étape 2**.
+   Banc par le geste VERT (l'absent écrit, la tuile rouge, 15 tablettes, aucun bouton « absent », la vue en direct, le retour, l'étape 2 pendant l'heure). Journal, point de retour. Les tablettes des élèves ne changent pas (rien à recharger chez eux).
+
+06/10/2026 15:05 MEMO
+
+---

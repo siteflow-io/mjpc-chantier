@@ -15406,3 +15406,28 @@ Réponse mot pour mot :
 06/10/2026 19:25 MEMO
 
 ---
+
+## TOUR 525 — Paul
+
+Texte de Paul, mot pour mot :
+
+> en fait il faut l'écran 0 actuel, mais que le bandeau soit plus resserré notamment en termes de rentabilité de l'espace. ils doivent garder la légende sous les yeux en permanence. enfin, le code couleur accent maj ou trait d'union ne se distingue vraiment pas de lexique. ok pour a du 620. Sauf que l'élève aménagé doit retourner sa copie à chaque fois, et a interdiction de la montrer à son voisin. Tu peux ajouter que si le voisin regarde la copie de l'aménagé pour faire son autocorrection, il aura zéro à l'autocorrection. ça doit faire partie de son attestation, au début. d'ailleurs, cette attestation: ça doit être un clic par engagement, une case par engagement. sinon, ils cliquent juste la case et ne lisent pas. et une attente de 5 secondes après chaque case cliquée avant que la suivante se dévoile. puis dévoilement de la dernière et après ils passent à la suite. pour la question guide, montre moi un écran de ce que ça peut donner.
+
+---
+
+## TOUR 525 — Claude (conscience n°12)
+
+Maquettes T525 (A bandeau serré + légende permanente, C en or / ardoise ; B engagements un par un, 5 s ; C question-guide ouverte / derrière un bouton) ; 620 a validé avec les deux règles ; dettes 160 (validé), 161 (choix), 163-165.
+
+Réponse mot pour mot :
+
+Trois maquettes sur l'app réelle (une tablette en deux moitiés, 1 280 × 800), captures ci-dessous :
+
+623. **A — L'écran actuel, bandeau resserré, légende toujours visible** : la note, le nom et « n/m corrigés » sur **une ligne** ; la légende en **une bande de petites pastilles** juste dessous, toujours là — **≈ 88 px au lieu de 178** ; tout le reste (le texte, le clavier) inchangé. **Le type C** : j'ai mis deux teintes à comparer — **à gauche l'or**, **à droite l'ardoise** (gris-bleu foncé), toutes deux avec le contour épais et le libellé raccourci « Accent, majuscule ». Mon avis : **l'ardoise** — l'or est trop proche du marron de « Mot manquant ». Choisis.
+624. **B — L'engagement, une case à la fois** : chaque phrase a sa case ; la suivante n'apparaît que **5 secondes après** la case cochée ; on voit « Encore n phrases après celle-ci » ; « Commencer » ne s'allume qu'après la dernière. J'ai mis tes règles en phrases d'élève (**à toi de corriger les mots**) : pour tous — « Je ne regarde pas la copie papier de mon voisin : si je le fais, j'ai zéro à l'autocorrection. » ; pour l'aménagé en plus (à droite) — « Je retourne ma copie papier à chaque fois que je la lis, et je ne la montre jamais à mon voisin. »
+625. **Le binôme de l'aménagé (620 a) — pris** : l'app l'apparie avec l'élève classique **qui s'est trompé sur les mêmes mots**, et les deux règles ci-dessus entrent dans l'engagement.
+626. **C — La question-guide** (plus de 20 erreurs) : **à gauche, ouverte d'office** au clic sur le mot, dans un cadre jaune au-dessus de la saisie : « 💡 Pose-toi la question de l'accord : qui est-ce qui est « ••• » ? Cherche le nom qu'il complète, puis accorde-le. » — jamais la réponse ; **à droite, derrière un bouton** « 💡 Une astuce pour ce mot » (l'élève la demande ; tu pourrais compter combien de fois). Choisis.
+
+06/10/2026 19:45 MEMO
+
+---

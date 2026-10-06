@@ -755,3 +755,34 @@ Tests pour toi : aucun.
 
 06/10/2026 19:05 (heure de mon espace de travail, non vérifiée)
 MEMO
+
+---
+
+## TOUR 20 — Paul
+
+Texte de Paul, mot pour mot :
+
+> livré
+
+---
+
+## TOUR 20 — Claude (conscience n°13)
+
+Audit de p8-3b (`pieces/T20-AUDIT-p8-3b.md`) : commit 0d33c1b4 ; `regen.sh` identique ; banc unique rejoué chez la conscience en trois lots : 26 × 0 ; capture du morceau « Figures d'analogie » regardée. Dette préexistante mesurée dans T265 (p7) et dans p8-3b : 2 fausses alertes « Objet non lisible « cahier » » dans « À régler » ; cause : `TYPES` sans `cahier`. Complément p8-3c écrit, soumis, non déposé (`C13/soumis/COMPLEMENT-DEROULE-P8-3c.md`). Maquette p8-3b (md5 f3b4eb2b…) jointe pour que Paul la joue.
+
+Réponse mot pour mot :
+
+79. **p8-3b : ça va.** J'ai rejoué ses 26 bancs chez moi : tous à zéro. La maquette se reconstruit à l'identique depuis son modèle. Sur ta vraie carte, chaque trait va maintenant de la famille à sa notion, sans passer derrière une autre bulle. Ta carte tient en 5 morceaux.
+80. **Il reste un défaut, déjà présent dans la p7 que tu as validée.** « À régler » affiche deux fausses alertes « Objet non lisible « cahier » », une sur chaque diapo « Cahier de textes ». La diapo s'affiche bien : c'est la liste qui se trompe. J'en ai lu la cause dans le code. Le complément p8-3c, joint, corrige la cause et ajoute un banc. Dis-moi « ok » : je le dépose et je te donne la phrase de relance.
+81. **En attendant, tu peux jouer la maquette p8** : le fichier est joint, il s'ouvre dans Chrome. La fausse alerte du cahier y est encore.
+
+Tests pour toi, sur la maquette jointe :
+- Dans l'atelier, à l'heure 2, ouvre la diapo « Les figures de style » (ta vraie carte) : « À régler » dit qu'elle ne tient pas lisible et propose de la couper.
+- Fais un clic droit sur une famille, puis « Couper le schéma ici » : la suite part sur une diapo nouvelle « (suite) », juste après. Recommence jusqu'à ce que chaque morceau tienne.
+- Dans le panneau du schéma : change la forme, passe de « Tout ensemble » à « Un à un », modifie le contenu, puis essaie « ⌖ Réordonner ».
+- Dans l'atelier, tire une bulle : elle garde sa place. Puis « Jouer en avance » : ▶ dévoile une bulle à la fois, rien ne bouge au tableau, et on ne peut plus tirer de bulle.
+- Sur une diapo qui a déjà du texte, « + bloc » puis « Schéma… » : le schéma part sur la diapo suivante. Sur une diapo qui a déjà un schéma, « Schéma… » est grisé et dit pourquoi.
+- Sur un bloc schéma, la taille « petit » est grisée.
+
+06/10/2026 20:54 (heure de mon espace de travail, non vérifiée)
+MEMO

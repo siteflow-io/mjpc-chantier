@@ -14791,3 +14791,27 @@ Puis « continuer » à l'exécutante : **« Continuer — L15.1b-2 (le site : l
 06/10/2026 08:04 MEMO
 
 ---
+
+## TOUR 500 — Paul
+
+Texte de Paul, mot pour mot :
+
+> je 'nai pas eu de message et par exemple sur la copie d'axel j'ai réouvrir sa copie en mode correction rapide pour qu'à l'enrgistrement les C apparaissent. Par aileurs, C c'est obscur pour parler des accents, non? Enfin, la couleur utilisée (une nuance d'orange) alors que le rouge c'est pour G, et enfin, on ne voit pas ces erreurs avec leur différence de couleur dans le texte, à part un petit c à côté du mot.
+
+---
+
+## TOUR 500 — Claude (conscience n°12)
+
+Mesuré au hub : reclassement fait (Hugo 9/5 à 08:18:42, marque, corbeille) ; l'écran n'a pas suivi, le toast éphémère (dette 143) ; type C : badge/libellé, couleur, surlignage (dette 144) ; micro proposé après la séance.
+
+Réponse mot pour mot :
+
+Mesuré au hub, à l'instant :
+
+555. **Le reclassement a bien tourné** — Hugo à 08:18:42 : **9 erreurs en C dans 5 copies**, la marque posée, une entrée de corbeille par copie ; Franklin et Turing à 08:16:56, Dylan à 08:17:59, pareil. Ce qui a raté, c'est **l'écran** : la relecture de la dictée après le reclassement n'a pas rafraîchi la copie que tu avais sous les yeux (d'où ton détour par le mode rapide pour Axel — sa copie au hub était déjà reclassée), et **le message** est un toast de quelques secondes en bas à gauche, parti avant que tu le voies. Dette **143** : l'écran suit le reclassement sans geste, et le message reste dans une carte jusqu'à ce que tu la fermes.
+556. **Le type C, trois choses justes** (dette **144**) : **(a)** « C » est obscur pour des accents — je propose le badge **« Acc. »** et le libellé **« Accent, majuscule »** partout où l'élève ou toi le lisez (la touche clavier reste C, mesurée libre) ; donne ton mot si tu en préfères un autre ; **(b)** la couleur (orange `#c2410c`) se confond avec le rouge de G — je propose **le cyan** (`#0891b2`, fond `#cffafe`), qui n'est pris par aucun type ; **(c)** dans le texte, le mot doit être **surligné comme G et L** (fond coloré, soulignement), pas un petit « c » à côté.
+557. **Comment on règle** : les trois tiennent dans **un micro** (badge, libellé, couleur, surlignage, la carte du message, l'écran qui suit) — **après ta séance**, dis « micro » avec tes choix (badge « Acc. » ou autre, cyan ou autre) et je le banque et le promeus ; sinon ça part dans L15j.
+
+06/10/2026 08:35 MEMO
+
+---

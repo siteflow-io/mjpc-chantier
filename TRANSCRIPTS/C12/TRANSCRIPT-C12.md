@@ -15196,3 +15196,23 @@ Choisis A, B ou C (ou un mélange, par exemple B pour cocher puis C pour voir) :
 06/10/2026 14:50 MEMO
 
 ---
+
+## TOUR 517 — Paul
+
+Texte de Paul, mot pour mot :
+
+> 516 b et c. Et c, si je clique sur un binôme, je retombe sur la vue en direct des deux écrans côte à côte ( fonctionnalité "visualiser", de la liste). Compris?
+
+---
+
+## TOUR 517 — Claude (conscience n°12)
+
+Mesuré : « 👁 » du Suivi → setEnDirect([a,b]), « En direct — A et B ». Complément L15k : étape 1 (B), étape 2 (C) sans bouton absent, toucher une tablette = vue en direct ; maquette T516 de référence.
+
+Réponse mot pour mot :
+
+598. **Compris** : **B pour cocher** (étape 1 : « Qui est absent aujourd'hui ? », les grandes tuiles), **puis C pour voir** (étape 2 : les binômes dessinés comme tes tablettes, l'élève seul en orange, les binômes refaits en bleu) — et **toucher une tablette ouvre la vue en direct des deux écrans côte à côte**, c'est-à-dire **la fonction « 👁 » qui existe déjà au Suivi** (mesurée : « En direct — A et B », lettre par lettre, sans rien changer chez eux) ; si personne n'est encore connecté sur cette tablette, la même vue le dit. Une conséquence que j'ai écrite : **à l'étape 2, plus de bouton « absent » sur les tablettes** — on ne coche qu'à l'étape 1, c'est ce qui évite la bêtise. Au complément (L15k), avec la maquette et les captures de référence. **Pour les Franklin tout à l'heure**, c'est l'écran du micro de 14:30 (les deux listes) qui est en ligne.
+
+06/10/2026 14:45 MEMO
+
+---

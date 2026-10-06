@@ -14998,3 +14998,33 @@ Ton message s'est coupé (« l'élève est b… ») : si ce n'était pas « bloq
 06/10/2026 13:25 MEMO
 
 ---
+
+## TOUR 509 — Paul
+
+Texte de Paul, mot pour mot :
+
+> bloqué oui. de plus ce n'est pas pour turing (séance déjà faite) mais pour les hugo. il faut trouver pourquoi le binome ne s'affiche pas automatiquement, et effectivement, il n'y a pas de porte de sortie une fois que l'élève a rentré son mauvais code. En fait, il faut que je voie dans ma console les binomes formés par les erreurs faites. attends avant de coder, on cadre. bon réflexe d'avoir retiré ton micro.
+
+---
+
+## TOUR 509 — Claude (conscience n°12)
+
+Mesuré : la tablette lit `binomes` du hub s'il existe (`cour.binomes || calculerBinomes`) ; Hugo : une seule paire (Candice ↔ Lisa, test du 05/10) → personne d'autre n'a de binôme. Dylan 24, Turing 28 (2 asymétriques). Cadrage L15k proposé (source unique = erreurs, console « Binômes », tablette, voile + Revenir) ; question : absent du jour.
+
+Réponse mot pour mot :
+
+Mesuré avant de cadrer (code + hub, 13:28) :
+
+578. **Pourquoi le binôme ne s'affiche pas chez les Hugo — trouvé** : la tablette prend les binômes **écrits au hub s'il y en a**, et ne les calcule d'après les erreurs **que s'il n'y en a aucun**. Or chez les Hugo, le hub ne contient **qu'une seule paire** : Candice Auger ↔ Lisa Boissinot, écrite **par ta tablette d'essai hier** (tu t'étais mis à leur place). Pour les 27 autres élèves, la tablette lit cette liste de deux noms, n'y trouve pas l'élève, et **ne propose personne**. (Les Dylan ont 24 binômes complets ; les Turing 28, dont 2 faussés ce matin.) **Pour les Hugo, maintenant, sans code** : si tu lances l'heure au Suivi, « Lancer » réécrit les binômes d'après les erreurs pour toute la classe — les tablettes proposeront alors le bon binôme (après rechargement). **Sur la version actuelle, ne laisse personne taper un autre code sur la seconde moitié** : elle accepte n'importe qui et réécrit les binômes.
+579. **Le cadrage que je propose (L15k, à valider ; rien n'est codé)** :
+   - **(a) Une seule source : les erreurs.** Les binômes sont **calculés d'après les copies** (le moins d'erreurs avec le plus d'erreurs, les absents à part, un élève seul si le nombre est impair) — **partout et toujours**, sur la tablette comme dans ta console ; ce qui est écrit au hub n'est plus qu'une trace, jamais relu, et **aucune tablette ne l'écrit**.
+   - **(b) Dans ta console** : au Suivi, un dépliant **« Binômes (d'après les erreurs) »** — chaque paire avec ses deux noms et leur nombre d'erreurs (« LAROCHE Gabin, 10 erreurs ↔ RECLU Philippine, 2 erreurs »), l'élève seul s'il y en a un — **visible avant même de lancer l'heure** ; et sur chaque ligne d'élève, le nom de son binôme.
+   - **(c) La tablette** : dès que le premier élève a tapé son code, l'autre moitié affiche **« Ton binôme : NOM Prénom — Prénom, tape ton code »** (l'écran existe, il marchera parce qu'il lira le calcul).
+   - **(d) Le mauvais code, jamais bloquant** : un autre élève qui tape son code sur la seconde moitié voit **« Ce n'est pas ta tablette : lève la main. »** avec **un bouton « Revenir »** qui efface son code et remet l'écran « Ton binôme : … » ; rien de l'autre moitié n'est montré ; si le binôme annoncé est absent, l'élève choisit « 1 élève » (le bouton existe).
+   - **(e)** le reste de L15k inchangé (un élève = un écran, 0 erreur = « Terminé »).
+   - **Banc à deux moitiés** : une dictée dont le hub a une paire partielle → le binôme s'affiche quand même ; mauvais code → voile → « Revenir » → bon code → il entre ; la console montre les mêmes paires que les tablettes.
+580. **Une question, une seule** : un élève **absent aujourd'hui** (présent à la dictée) — son binôme se retrouve seul. Je propose qu'il prenne « 1 élève », **sans recalculer les autres paires** (sinon, en cours de séance, tout le monde changerait de binôme) ; d'accord ?
+
+06/10/2026 13:35 MEMO
+
+---

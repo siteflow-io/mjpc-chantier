@@ -821,3 +821,36 @@ Tests pour toi, sur la maquette jointe au tour précédent (seulement ce qui com
 
 06/10/2026 21:17 (heure de mon espace de travail, non vérifiée)
 MEMO
+
+---
+
+## TOUR 22 — Paul
+
+Texte de Paul, mot pour mot :
+
+> oui j'ai fait le test c'est ok. en revanche ton deuxième test, sur la diapo 6 de H2 15 septembre, + bloc est grisé et affiche "grisé etc". sachant que c'est toi qui a injecté un schéma alors qu'il y a déjà du texte sur la diapo
+
+---
+
+## TOUR 22 — Claude (conscience n°13)
+
+Rejoué dans la maquette p8-3b (f3b4eb2b) : diapo 6 de H2 = blocs `consigne` + `schema` (`b-sim-schema`) ; « + bloc » et « + étape » désactivés, infobulles « Grisé : une diapo à schéma porte son titre, le schéma et au plus une consigne d'une ligne (un schéma par diapo). » (pièce `T22-diapo6-H2-bloc-grise.png`). Complément p8-3c élargi (cahier, simulation retirée, infobulles), soumis, non déposé.
+
+Réponse mot pour mot :
+
+85. **Premier test : ok, c'est noté.**
+86. **Le second : tu as raison. Il y a trois fautes, et elles sont de mon côté.**
+    - La diapo 6 de l'heure 2 porte à la fois une consigne de quatre lignes et un schéma. C'est une simulation posée par la n°12 en p7, et je l'ai gardée dans le mandat p8 comme « le cas que le site doit attraper ». Après ta remarque (au JSON, une instance ne pourra jamais faire ça), ce cas n'a plus de raison d'être dans la maquette : il fausse tes tests.
+    - Mon test ne disait pas sur quelle diapo le faire.
+    - L'infobulle de « + bloc » commence par « Grisé : … » (je l'ai relue). Elle décrit l'écran au lieu de te dire quoi faire.
+87. **Ma proposition, ajoutée au complément p8-3c, joint et élargi :**
+    - la simulation est retirée : la diapo 6 redevient sa consigne seule, comme avant la p7. Ta vraie carte sert de schéma de démonstration. La règle reste dans le code, et un banc l'éprouve sur une copie, jamais sur ce que tu joues ;
+    - toutes les infobulles des gestes grisés sont réécrites : sans le mot « Grisé », elles disent ce qui empêche, puis ce qu'il faut faire. Par exemple : « Cette diapo a son schéma : écris la suite dans la diapo suivante, ou coupe : clic droit sur le schéma → Couper la diapo ici » ;
+    - et le cahier de textes (point 80).
+
+    Ton « ok » vaut pour les trois : je dépose le complément et je te donne la phrase de relance.
+
+Tests pour toi : aucun pour l'instant.
+
+06/10/2026 21:21 (heure de mon espace de travail, non vérifiée)
+MEMO

@@ -14953,3 +14953,24 @@ Test pour les Turing : https://siteflow-io.github.io/monsieurjaipascompris/corre
 06/10/2026 13:00 MEMO
 
 ---
+
+## TOUR 507 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Donc là quand je donne les tablettes, vu que je ne connais pas mes binômes, qui se connecte en premier pour l'instant ? Nimporte qui?
+
+---
+
+## TOUR 507 — Claude (conscience n°12)
+
+Mesuré : la moitié vide affiche « Ton binôme : … , tape ton code » dès que l'autre est connecté (binomePropose) ; le Suivi range les paires.
+
+Réponse mot pour mot :
+
+573. **Oui, n'importe qui se connecte en premier.** Un élève prend une tablette, choisit « 2 élèves » et tape son code sur une moitié ; **l'autre moitié affiche aussitôt « Ton binôme : NOM Prénom — Prénom, tape ton code à 4 chiffres »** (c'est déjà dans l'app, mesuré) : l'élève nommé vient s'asseoir là et tape son code. Tu n'as rien à savoir à l'avance : c'est la tablette qui le dit.
+574. **Si quelqu'un d'autre tape son code sur cette moitié** (en passant par « ce n'est pas moi »), il voit maintenant le voile **« Ce n'est pas ta tablette : lève la main. »** ; si le binôme annoncé est absent, l'élève revient au début et choisit **« 1 élève »**. Tu vois aussi les paires au Suivi (elles y sont rangées deux par deux).
+
+06/10/2026 13:05 MEMO
+
+---

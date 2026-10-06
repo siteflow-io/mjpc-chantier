@@ -1,0 +1,3 @@
+node_modules/
+captures/*.png
+!captures/p8-2-*.png

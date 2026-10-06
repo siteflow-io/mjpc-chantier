@@ -15535,3 +15535,27 @@ Réponse mot pour mot :
 06/10/2026 20:15 MEMO
 
 ---
+
+## TOUR 530 — Paul
+
+Texte de Paul, mot pour mot :
+
+> le contenu du "au départ" du coup ne va pas. c'était ça que je pointais.
+
+---
+
+## TOUR 530 — Claude (conscience n°12)
+
+Capture refaite (T530) : la phrase de la barre change selon l'état (au départ « Aide possible pour … »).
+
+Réponse mot pour mot :
+
+641. Compris : **« voient la question-guide » était faux au départ** — à ce moment-là, ils ne voient rien. La phrase de la barre change maintenant avec l'état (capture ci-dessous) :
+   - **Au départ** : « Aide possible pour Gabin, Lilly-Rose et Justin (plus de 20 erreurs). »
+   - **Après un clic** : « Gabin, Lilly-Rose et Justin sont prévenus : l'aide arrive. »
+   - **Après deux clics** : « Gabin, Lilly-Rose et Justin voient la question-guide · depuis 0:12 »
+   - **Troisième clic** : retour à la phrase du départ.
+
+06/10/2026 20:15 MEMO
+
+---

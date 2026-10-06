@@ -730,3 +730,28 @@ Tests pour toi : aucun.
 
 06/10/2026 14:36 (heure de mon espace de travail, non vérifiée)
 MEMO
+
+---
+
+## TOUR 19 — Paul
+
+Texte de Paul, mot pour mot :
+
+> je garde le même exécutant, il est toujours ouvert.
+
+---
+
+## TOUR 19 — Claude (conscience n°13)
+
+Rien à mesurer ni à déposer : Paul relance dans la session cloud déjà ouverte.
+
+Réponse mot pour mot :
+
+D'accord : même session. Colle-lui la phrase du point 78. Il a déjà le mandat en tête ; la phrase lui fait lire le complément, puis livrer p8-3b sur sa branche avant de s'arrêter.
+
+Quand il s'est arrêté, écris-moi « livré ».
+
+Tests pour toi : aucun.
+
+06/10/2026 19:05 (heure de mon espace de travail, non vérifiée)
+MEMO

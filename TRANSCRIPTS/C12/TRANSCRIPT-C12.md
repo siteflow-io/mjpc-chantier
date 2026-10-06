@@ -15806,3 +15806,24 @@ Mesuré (le site en ligne, sans y toucher) — deux causes :
 06/10/2026 21:25 MEMO
 
 ---
+
+## TOUR 540 — Paul
+
+Texte de Paul, mot pour mot :
+
+> l'exécutante est déjà partie sur le mandat l17
+
+---
+
+## TOUR 540 — Claude (conscience n°12)
+
+Réponse mot pour mot :
+
+661. Pas de souci : **tu n'as rien à faire**. Elle a lu le mandat avant l'ajout ; deux cas :
+   - si tu lui envoies quand même la phrase (« Le mandat L17 a un ajout, L17-7 bis : relis-le avant L17-7. »), elle l'intègre sans s'arrêter — elle n'est pas encore à L17-7 ;
+   - sinon, je le verrai à l'audit : s'il manque, ce sera un **complément court avant la promotion** (le bouton qui n'ouvre rien et le dit), rien de plus.
+   En attendant, le bouton « ↗ Correspondances » mène à « Lien invalide » : ne t'en sers pas. Je ne touche pas à la dictée tant qu'elle y travaille. À ton « livré ».
+
+06/10/2026 21:25 MEMO
+
+---

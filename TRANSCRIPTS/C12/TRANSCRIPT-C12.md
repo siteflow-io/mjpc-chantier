@@ -15120,3 +15120,31 @@ Réponse mot pour mot :
 06/10/2026 14:15 MEMO
 
 ---
+
+## TOUR 514 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Ok. Code en micro. J'ai les Franklin à 15h.
+
+---
+
+## TOUR 514 — Claude (conscience n°12)
+
+Micro L15k-b promu (6.7.0-L15.1b-1i, commit 4a519611f71e, bit à bit) : binômes d'après les erreurs (hub ignoré), absents du jour au Suivi (orphelins seuls), liste des binômes, voile + Revenir, refusé jamais repris, 0 erreur = Terminé, session prof glissante. Banc VERT 13/13, L15f-b déconnexion, L15f-b, L13b verts ; lot 3b contrôle 4 inchangé (152). Hors micro : remise à zéro + reprise exacte, un élève = un écran, constitution figée.
+
+Réponse mot pour mot :
+
+590. **Fait en micro, promu : 6.7.0-L15.1b-1i** (commit `4a519611f71e`, bit à bit, 982 600 o), à 14:30. **Ce qui marche pour les Franklin** :
+   - **Le binôme s'affiche toujours** : les tablettes calculent les binômes **d'après les erreurs**, ne lisent plus et n'écrivent plus jamais ceux du hub (la paire de ton essai chez les Hugo ne bloque plus personne). Dès que le premier élève a tapé son code, l'autre moitié dit « Ton binôme : NOM Prénom ».
+   - **Le voile ne bloque jamais** : un autre élève sur la seconde moitié voit « Ce n'est pas ta tablette : lève la main. » et un bouton **« ← Revenir »** qui remet l'écran « Ton binôme : … » ; au rechargement, **le voile a disparu** et cet élève n'est jamais repris.
+   - **Au Suivi, avant « Lancer »** : **« ▸ Absents aujourd'hui »** (tu coches ; l'absent à la dictée est grisé) — **seuls les binômes des absents sont réappariés entre eux, toutes les autres paires restent**, et les tablettes le voient aussitôt, sans rechargement ; **« ▸ Binômes (n) »** : la liste des paires, avec les erreurs de chacun (capture ci-dessous).
+   - **Zéro erreur = « Terminé »** au Suivi (Inès) ; **ta session ne se périme plus** quand tu recharges la console.
+   - **Bancs, par le geste : VERT, 13 vérifications** (le binôme affiché malgré un hub faussé ; le voile, « Revenir », le rechargement sans voile, le bon binôme qui entre, le hub jamais réécrit ; les absents du jour : seul le binôme de l'absent a changé ; la liste ; 0 erreur ; la session) ; **la déconnexion à deux navigateurs, L15f-b, L13b : verts** ; le vieux banc des moitiés garde son contrôle rouge d'avant (dette 152), inchangé.
+591. **Ce qui n'est PAS dans ce micro** (trop gros pour 30 minutes sans risque — il part en livraison) : **le rechargement = remise à zéro avec reprise exacte** (l'élève retrouve son mot ouvert et sa saisie) — aujourd'hui, au rechargement, une moitié **retrouve encore son élève sans code** (comme avant) ; « un élève = un écran » ; la constitution figée au moment où la correction est complète (aujourd'hui : calculée à chaque fois d'après les copies, ce qui revient au même tant que tu ne corriges pas de copie pendant la séance).
+
+**Pour les Franklin** : ouvre le Suivi → « Absents aujourd'hui » → coche les absents → « Binômes » pour voir les paires → « Lancer » ; distribue les tablettes ; chaque élève tape son code, la tablette annonce son binôme.
+
+06/10/2026 14:35 MEMO
+
+---

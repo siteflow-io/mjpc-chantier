@@ -15481,3 +15481,32 @@ Réponse mot pour mot :
 06/10/2026 20:00 MEMO
 
 ---
+
+## TOUR 528 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok montre moi l'écran du coup. pour ta question, je veux voir les teintes: fais moi des propositions sur captures (une capture de la légende, une capture de l'écran élève en autocorrection, une capture de mon écran en mode correction, une capture de la copie élève à la fin). Par ailleurs, il faudrait que je puisse télécharger les copies en un seul html, dans l'onglet copies (bouton à mettre en dessous de télécharger zip).
+
+---
+
+## TOUR 528 — Claude (conscience n°12)
+
+Captures T528 : astuces (console 4 états + infobulle ; tablettes message / aide) ; teintes ardoise / or / noir sur légende, écran élève, écran prof, copie rendue. Mesuré en faisant la capture : la grille du professeur n'a pas la classe err-c (dette 144 rouverte) ; badge C de la copie (167) ; dette 166 (toutes les copies en un HTML).
+
+Réponse mot pour mot :
+
+**Les astuces** (deux captures : ta console, les tablettes) :
+633. **Ta console** — le bouton est **juste « 💡 »**, à côté : « Gabin, Lilly-Rose et Justin voient la question-guide ». Les quatre états l'un sous l'autre : avant le 1er clic (blanc) ; après le 1er (jaune pâle, « annoncée ») ; après le 2e (orange, « active depuis 0:12 ») ; après le 3e, quand tu veux (retour au blanc). L'infobulle, ouverte dessous, dit les trois clics sans rien à dire à l'oral.
+634. **Les tablettes** — à gauche, après ton 1er clic : le message dans son bandeau, toujours visible : « 💡 Dans un instant, une aide va s'ouvrir quand tu toucheras un mot : une question pour te guider, pas la réponse. » ; à droite, après ton 2e clic : en touchant un mot, la question-guide au-dessus de la saisie.
+
+**Les teintes de « Accent, majuscule »** — ardoise, or, noir — dans l'app réelle, sur les quatre écrans que tu as demandés (captures 1 à 4) :
+635. **La légende** et **l'écran de l'élève** : les trois se distinguent du bleu de « Lexique » ; **l'or** se rapproche du marron de « Mot manquant ».
+636. **Ton écran en mode correction** — et là, **une faute à moi, trouvée en faisant la capture** : sur ta grille de correction, **le mot C n'était pas encadré du tout** (seul un petit « C » à côté) — la grille oubliait ce type ; mon micro de ce matin n'avait vérifié que la règle de couleur, pas ta grille. **C'est exactement ce que tu m'avais signalé** (« on ne voit pas ces erreurs dans le texte, à part un petit c ») ; je l'ai corrigé dans la maquette (capture 3, le mot « immense » encadré dans chaque teinte) et inscrit (dette 144 rouverte) — il partira avec le reste.
+637. **La copie rendue** (capture 4, agrandie) : le badge dit encore « C » (pas « Acc. ») ; **en or, il se confond avec le « M »** jaune ; **en noir, il n'a plus de fond**, on ne le voit presque pas ; **l'ardoise reste lisible partout**. Mon avis : **ardoise**. Choisis.
+
+638. **Toutes les copies en un seul HTML** : inscrit (dette 166) — un bouton sous « Télécharger zip », dans l'onglet Copies : un seul fichier, toutes les copies de la classe l'une après l'autre (un saut de page entre chacune à l'impression), avec les mêmes options d'affichage que l'aperçu.
+
+06/10/2026 20:10 MEMO
+
+---

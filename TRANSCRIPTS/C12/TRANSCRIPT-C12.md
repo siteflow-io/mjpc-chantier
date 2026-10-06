@@ -15660,3 +15660,33 @@ Réponse mot pour mot :
 06/10/2026 20:40 MEMO
 
 ---
+
+## TOUR 535 — Paul
+
+Texte de Paul, mot pour mot :
+
+> il y a un problème sur le reclassement des - . leto a des points retirés à cause de ça, et il n'est pas le seul. je croyais que la question était réglée?
+
+---
+
+## TOUR 535 — Claude (conscience n°12)
+
+Mesuré : « là-bas » découpé en « là », « - », « bas » ; trait d'union oublié = erreur P, ajouté = extra P ; note inchangée (forfait P+C au Brevet), mais la copie affiche « MOT EN TROP −0,5 pt », le bilan « ponctuation », « Saint- Laurent » ; ampleur : 3 dictées Brevet, 34 élèves, 30 oubliés, 10 ajoutés ; computeNote compte un extra C comme X (à corriger). Dette 170 ; proposition.
+
+Réponse mot pour mot :
+
+Mesuré au hub et dans le code :
+
+651. **La note de Leto n'est pas touchée — mais sa copie le fait croire.** L'app découpe « là-bas » en trois morceaux (« là », « - », « bas »), et prend le trait d'union pour **un signe de ponctuation**. Leto a écrit « tout-de-suite » : ses deux traits d'union ajoutés sont des « signes en trop ». **Dans le calcul**, ils vont au forfait (au Brevet : 0,5 point par 4 signes, avec les accents et majuscules) — 0/10 dans les deux cas. **Sur la copie**, en revanche, chacun est affiché **« MOT EN TROP −0,5 pt »** (et « + −0,5 » dans le texte), le bilan lui conseille de travailler « la ponctuation », et le texte affiche **« Saint- Laurent », « là- bas »** (une espace après le tiret, sur toutes les copies).
+652. **Pourquoi je n'avais pas réglé ça** : le reclassement en « Acc. » (hier soir) ne touchait que **les mots** différant par un accent, une majuscule ou un trait d'union **à l'intérieur d'un même mot** ; ici le trait d'union est un morceau à part — il a échappé au reclassement.
+653. **L'ampleur** : 3 dictées au barème Brevet — Franklin 8 élèves, Dylan 7, 3E Charles de Gaulle 19 ; **30 traits d'union oubliés, 10 ajoutés**. Les dictées préparées (Hugo, Turing) n'ont pas de trait d'union.
+654. **Ce que je propose** :
+   - un « - » collé entre deux mots (« là-bas ») est un **trait d'union** : oublié ou ajouté, il compte en **« Acc. »**, au forfait avec les accents et les majuscules (la note ne change pas au Brevet) ;
+   - **la copie dit « trait d'union oublié » ou « trait d'union en trop — au forfait »**, sans « −0,5 » ; le bilan ne parle plus de ponctuation pour ça ; **plus d'espace après le trait d'union** dans le texte ;
+   - les copies existantes sont **reclassées** (corbeille d'abord, compté, **aucune note ne bouge** — je le vérifierai copie par copie avant de te le donner) ;
+   - en passant : un « Acc. » ajouté serait aujourd'hui compté comme un mot en trop (0,5) au lieu du forfait — corrigé dans la même livraison.
+   Dis « micro » si tu veux ça ce soir ; sinon ça part dans le mandat.
+
+06/10/2026 20:50 MEMO
+
+---

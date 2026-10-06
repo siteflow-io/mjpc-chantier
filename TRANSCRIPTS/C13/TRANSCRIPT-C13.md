@@ -661,3 +661,40 @@ Tests pour toi : aucun.
 
 06/10/2026 08:15 (heure de mon espace de travail, non vérifiée)
 MEMO
+
+---
+
+## TOUR 17 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Livré
+
+---
+
+## TOUR 17 — Claude (conscience n°13)
+
+Audit des trois livraisons (`pieces/T17-AUDIT-p8-1-a-p8-3.md`) : branches `deroule/p8-1` f7046f13, `deroule/p8-2` 172b2fc5, `deroule/p8-3` 597f2278 ; 24 bancs comparés aux originaux ; extrait de l'ancien moteur vérifié ligne à ligne ; `regen.sh` rejoué (md5 identiques) ; banc unique rejoué chez la conscience en quatre lots (25 × 0, `test-p8-3-gestes` 1 défaut, identique à la NOTE) ; capture du morceau « Figures d'analogie » regardée (pièce `T17-p8-3-morceau-analogie-zoom.png`). Complément p8-3b écrit sur la proposition (b), soumis, non déposé (`C13/soumis/COMPLEMENT-DEROULE-P8-3.md`).
+
+Réponse mot pour mot :
+
+Audit fait, et tout rejoué chez moi.
+
+71. **p8-1 : ça va.** Les 24 bancs n'ont changé que leurs chemins. Je les ai comparés ligne à ligne aux originaux : les vérifications sont toutes là. La maquette p7 n'a pas bougé.
+72. **p8-2 : ça va.** L'ancien moteur des schémas est vraiment repris : chaque ligne de son code se retrouve telle quelle dans le moteur de production. La maquette se reconstruit à l'identique depuis son gabarit.
+73. **p8-3 : ça ne va pas, et l'exécutant l'a dit lui-même en s'arrêtant, comme le mandat l'exige.**
+    - Ta vraie carte, coupée jusqu'au bout, donne 5 morceaux. Deux morceaux d'une seule famille gardent un défaut : des traits passent derrière une autre notion.
+    - Sur la capture jointe, « personnification » et « métaphore » semblent accrochées à « comparaison ». Les mots se lisent, mais le dessin dit un lien faux.
+    - J'ai rejoué ses 26 bancs chez moi : 25 à zéro, et ce même défaut, au mot près.
+74. **Ta décision.** Trois possibilités :
+    - (a) tu déplaces la bulle à la main chaque fois. Ça marche (une fois pour l'un des morceaux, deux pour l'autre), mais c'est à refaire pour chaque carte ;
+    - (b) l'écartement des bulles évite aussi qu'un trait passe derrière une autre notion : il pousse la notion vers la place libre, puisque la moitié basse de la diapo est vide. Une bulle que tu as placée à la main n'est jamais poussée. C'est une adaptation de plus de l'ancien moteur, de même nature que les autres ;
+    - (c) ne plus compter ce défaut : non, le dessin dirait un lien faux.
+
+    **Ma proposition : (b).** Le complément est écrit sur (b), joint. Ton « ok » vaut pour (b) et pour le complément : je le dépose et je te donne la phrase de relance.
+75. Pour le test, le banc a coupé ta carte en 5 diapos, jusqu'au bout. En vrai, c'est toi qui choisis où couper.
+
+Tests pour toi : aucun ; regarde la capture jointe.
+
+06/10/2026 14:34 (heure de mon espace de travail, non vérifiée)
+MEMO

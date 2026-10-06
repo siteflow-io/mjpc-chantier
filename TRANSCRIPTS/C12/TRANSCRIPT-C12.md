@@ -15028,3 +15028,28 @@ Mesuré avant de cadrer (code + hub, 13:28) :
 06/10/2026 13:35 MEMO
 
 ---
+
+## TOUR 510 — Paul
+
+Texte de Paul, mot pour mot :
+
+> en réalité, je les faisais se connecter avant de cliquer sur lancer, donc c'est peut-être de ma faute. me répondre précisement là dessus. en fait, dès qu'un binome est constitué (d'ailleurs quand? une fois une correction complète finie pour une classe? )il faut que un élève qui se connecte meme avant le lancer puisse trouver son binome. je pense que la correction finie complètement est le bon moment pour la constitution des binomes . par ailleurs, il faut que je puisse déclarer un élève absent le jour de l'autocorrection. quand je clique sur "lancer", la liste m'est proposée, je clique les absents, recalcul instantané des binomes sans rechargement. ça télescope?
+
+---
+
+## TOUR 510 — Claude (conscience n°12)
+
+Mesuré : liste des dictées élève chargée une fois (.once) ; avant Lancer la tablette calcule sauf binomes au hub (Hugo : paire du test). Complément L15k reprise : constitution à la correction complète, absents du jour à Lancer (orphelins seuls réappariés), lecture en direct, console, Revenir, données d'avant refaites ; télescopages.
+
+Réponse mot pour mot :
+
+581. **Ta faute ? Non.** Mesuré : avant « Lancer », la tablette **calcule bien les binômes d'après les erreurs — sauf s'il y en a déjà au hub**. Chez les Hugo, il y avait **la paire de ton essai d'hier** (Candice ↔ Lisa) : la tablette a pris cette liste de deux noms pour toute la classe, et personne d'autre n'a eu de binôme. Sans cet essai, tes élèves connectés avant « Lancer » auraient eu leur binôme. **Il y a une seconde cause** : la tablette charge la liste des dictées **une seule fois**, à l'ouverture — des binômes écrits ensuite (à « Lancer ») ne lui arrivent **qu'au rechargement**. Donc te connecter avant « Lancer » n'est pas une erreur ; c'est la tablette qui ne suit pas.
+582. **Quand constituer les binômes — d'accord avec toi : quand la correction de la classe est complète** (chaque élève corrigé ou absent à la dictée). L'app les calcule d'après les erreurs et les écrit **une fois** ; ensuite **ils ne bougent plus**, sauf par les absents du jour. Si tu rends les copies ou lances avant d'avoir tout corrigé, ils se constituent à ce moment-là. Et la tablette les lit **en direct** : un élève connecté avant « Lancer » voit son binôme dès qu'il existe, sans recharger.
+583. **Les absents du jour à « Lancer » — oui, avec une précision pour éviter le télescopage** : « Lancer » ouvre la liste de la classe ; tu coches les absents d'aujourd'hui ; **seuls les élèves dont le binôme est absent sont réappariés entre eux** (même règle : moins d'erreurs avec plus d'erreurs) ; **toutes les autres paires restent** — sinon, des élèves déjà assis ensemble se verraient changer de binôme en pleine séance. Instantané, sans rechargement ; décocher un absent par erreur défait le changement. **Ce n'est pas le même « absent » que celui de la dictée** : il est rangé à part, il ne touche ni aux notes, ni au Bilan, ni aux copies ; au Suivi l'élève s'affiche « Absent aujourd'hui », et il pourra faire son autocorrection plus tard (hors classe, 45 minutes).
+584. **Les autres télescopages, vérifiés** : l'heure et sa fermeture (L13), la déconnexion (L15f-b), la pause (L15i), la note (L15j), les aménagés — rien ne se heurte ; une copie corrigée **après** la constitution ne refait pas les paires (elle rejoint un élève seul s'il y en a un). **Le reste de L15k** : ta console montre les paires (« Binômes d'après les erreurs ») dès qu'elles existent ; la seconde moitié n'accepte que le binôme affiché, avec **« Revenir »** sur le voile ; les binômes faussés déjà au hub (Hugo, Turing) sont refaits à la première ouverture. Tout est écrit au complément.
+
+Dis « ok » (ou corrige) : je fais alors la maquette sur l'app réelle — la liste des absents à « Lancer » et le dépliant des binômes — avant tout code.
+
+06/10/2026 13:45 MEMO
+
+---

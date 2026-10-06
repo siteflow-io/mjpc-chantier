@@ -15348,3 +15348,30 @@ Dis « micro » et je fais ensemble : le clavier « 123 », les binômes fixés 
 06/10/2026 18:50 MEMO
 
 ---
+
+## TOUR 523 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok mais une question: pourquoi des élèves n'ont pas réussi à avoir 5/5 à l'autocorrection ? ils ont épuisé toutes leurs questions? regarde gabin, en 3e AF
+
+---
+
+## TOUR 523 — Claude (conscience n°12)
+
+Mesuré au hub : Gabin (4 erreurs, tiret : « là », « la », 2 ratés → 1 question, ratée → 3,75) ; la classe : 21 à 5/5, 7 en dessous (questions ratées : 5 élèves ; jamais faites : Océane, Khaïs) ; question : indice « signe de ponctuation ».
+
+Réponse mot pour mot :
+
+Mesuré au hub (dictée des Franklin) :
+
+616. **Gabin n'a pas épuisé ses questions — il en avait une, et il l'a ratée.** Sa copie a **4 erreurs** ; il a tout retrouvé, mais pour la ponctuation (le tiret « - ») il a d'abord tapé « là » puis « la » : **2 essais ratés**. Le premier est offert, le second lui coûte **5 ÷ 4 = 1,25 point** et lui donne **1 question** ; il l'a **ratée** (une question de ponctuation, réponse 2 fausse) → **3,75 / 5**. Avec peu d'erreurs dans la copie, chaque essai raté coûte cher.
+617. **Toute la classe** : **21 élèves à 5/5, 7 en dessous**, pour deux raisons seulement :
+   - **des questions ratées** (une question ratée n'est pas reposée) : Gabin (1 ratée sur 1), Justin Beaudrier (3 ratées sur 11), Emma Litou (3 sur 6), Lilly-Rose Joly (1 sur 2), Néo Le Marc (1 sur 4) ;
+   - **des questions jamais faites** : Océane Lacroix (1 due, 0 posée) et Khaïs Roullier (2 dues, 0 posée) — c'est la copie corrigée pendant la séance (Khaïs) et sa binôme du moment ; elles n'ont pas eu le temps (ou plus de 2 minutes avant la fin).
+   Aucun élève n'a manqué de questions : **chacun a eu exactement une question par essai raté au-delà du premier**.
+618. **Une chose vue au passage, à te soumettre** : Gabin a tapé « là » / « la » à la place du **tiret** — l'écran ne lui disait pas qu'il cherchait un signe de ponctuation. Veux-tu que, pour une erreur de ponctuation, la case dise « signe de ponctuation » (comme un indice), pour qu'un élève ne perde pas un point à chercher un mot ?
+
+06/10/2026 19:10 MEMO
+
+---

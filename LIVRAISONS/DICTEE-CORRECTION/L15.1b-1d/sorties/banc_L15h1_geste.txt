@@ -1,0 +1,3 @@
+{"regle": [true, true, true, true, false, false, false, true, false, false, false], "brevet": [0.5, 1, 2, 1.5], "menu_c": "C Accent / maj. (forfait)", "texte_pose_c": [[1, "C", "Devint"]], "bouton_c": 1, "rapide_pose_c": [[1, "C", "Devint"], [3, "C", "Xy"]], "objets_l10_c": [["C", "Devint"], ["C", "Xy"]], "eleve": [true, false], "erreurs": [], "erreurs2": []}
+conditions : {'regle': True, 'brevet_forfait': True, 'menu_c': True, 'texte_pose_c': True, 'rapide_bouton_touche': True, 'objets_l10_c': True, 'eleve_mots_simples': True, 'propre': True}
+BANC L15h-1 PAR LE GESTE : VERT

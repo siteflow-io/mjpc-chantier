@@ -1,0 +1,4 @@
+node_modules/
+captures/*.png
+!captures/p8-3-*.png
+!captures/p8-2-carte-*.png

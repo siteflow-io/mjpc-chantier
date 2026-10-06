@@ -1,0 +1,17 @@
+p8Separe : la signature : 34 → 40 o
+p8Separe : T11 dans la boucle : 115 → 1132 o
+p8SepCoupe : insertion : 40 → 542 o
+p8Carte : les traits passés à p8Separe : 59 → 175 o
+p8Frise : les traits passés à p8Separe : 27 → 212 o
+p8Arbre : les traits passés à p8Separe : 36 → 455 o
+p8Cycle : les traits passés à p8Separe : 64 → 445 o
+le tableau : p8SepCoupe dans sa liste de fonctions : 25 → 37 o
+p8Separe : 2505 o / 48 lignes → 3528 o / 59 lignes
+p8Carte : 1616 o / 32 lignes → 1732 o / 32 lignes
+p8Frise : 1975 o / 29 lignes → 2160 o / 29 lignes
+p8Arbre : 1404 o / 23 lignes → 1823 o / 25 lignes
+p8Cycle : 1982 o / 30 lignes → 2363 o / 32 lignes
+p8SepCoupe (nouvelle) : 371 o / 5 lignes
+généré maquette-pilotage-ordi-v9c15p8-manipulable.html 549873 octets · bloc repris 92432
+74eab91f63045e7daf7d1cd6b99133de  v9c15p8-template.html
+f3b4eb2b5dbf31842dcad4a5b520e74a  maquette-pilotage-ordi-v9c15p8-manipulable.html

@@ -1,0 +1,78 @@
+# MANDAT L17 — correction_dictee : tout ce qui a été cadré le 06/10/2026, en une seule fois, par morceaux
+*Conscience n°12, 06/10/2026, tour 538. Base : la production **6.7.0-L15.1b-1l** (`correction_dictee.html`, 989 974 o, md5 `328fa0a108d97c59954f1120edcc82cf`). Vérifie ce md5 avant tout.*
+
+## 0. Comment travailler — ordre de Paul (06/10, tour 538)
+- « **Tout faire en une seule fois, par morceaux. Je ne reviens que pour dire que l'ensemble a été livré.** » Tu livres **les huit morceaux ci-dessous, dans l'ordre, sans t'arrêter entre eux** : chaque morceau part du précédent, est **déposé au sas dans son dossier** (`LIVRAISONS/DICTEE-CORRECTION/L17-n/` : le fichier, `NOTE.md`, `bancs/`, `sorties/`, `captures/` d'écran entier) **avant** de passer au suivant ; tu ne t'arrêtes **qu'après le huitième**, avec une `LIVRAISONS/DICTEE-CORRECTION/L17-RECAP.md` (ce que chaque morceau change pour la classe, les fichiers et leurs md5, les bancs, ce qui reste). Si un morceau est impossible ou contradictoire : tu le dis dans sa NOTE, tu livres le reste, jamais une dette cachée.
+- Si une livraison d'un mandat précédent est en cours, **tu la termines d'abord** (un exécutant n'arrête jamais en plein mandat), puis tu commences L17 sur la dernière version promue.
+- Les règles de toujours : **textes vus par l'élève = les mots de Paul** (cités ici entre guillemets ; rien d'inventé, aucun terme technique) ; **une infobulle par geste, écrite pour Paul** ; **aucune page ne dépend d'un rechargement** (écoute en direct, un redessin ne casse jamais une saisie) ; **corbeille d'abord** pour toute donnée modifiée, jamais d'effacement ; **un banc par le geste** pour chaque règle, **un banc unique** qui rejoue tous les bancs (les anciens accordés compris) et échoue si un seul échoue ; **toute mesure qui touche des notes se fait sur une copie locale du hub réel** et se dit comptée (avant / après, copie par copie).
+- **Leçon du 06/10 (dette 170)** : un banc qui ouvre une dictée doit porter **`correction_dictee_textes`** (les formes acceptées) et **`correction_dictee_erreurs`** ; sans eux, le « sans coût » tombe et des notes baissent à tort.
+- Tu ne touches **jamais** à `index.html` (un autre couple y travaille).
+- Le registre `docs/MJPC6-DETTES.md` (section n°12) donne le détail de chaque dette citée ; les maquettes citées sont dans `TRANSCRIPTS/C12/pieces/` ; le code est **fidèle aux maquettes**.
+
+---
+
+## L17-1 — Les binômes : fixés pour la séance, et la vie de la classe
+*Ce que ça change pour la classe : les binômes ne changent plus pendant une séance ; un absent, un élève qui part ou qui revient ne défont jamais un binôme au travail ; Paul choisit binômes imposés ou placement libre.*
+1. **Binômes fixés par séance** (dette 154, tours 521-522) : constitués d'après les erreurs (`calculerBinomes`) **à « Lancer »** ; **inchangés jusqu'à la fin de la séance** (fin d'heure ou clôture), puis **libérés** (la séance suivante les reforme d'après les erreurs du moment). Une copie corrigée pendant la séance change la note, pas les paires. Écrits au hub par la **console**, **lus en direct par les tablettes** (plus aucun calcul de paires sur la tablette).
+2. **La garde avant « Lancer »** (dette 158) : enregistrer une correction alors que des élèves sont connectés et que la séance n'est pas lancée → refus : « **Lance d'abord la séance, puis modifie ta correction si tu veux.** »
+3. **Chaque tablette dit au hub qui est assis sur ses deux moitiés** (sans jamais écrire les binômes) — c'est ce qui permet les règles 4 et 5.
+4. **Absent du jour** (déjà en place, à garder) : seuls les élèves restés seuls sont réappariés entre eux ; aucune paire au travail ne change. **Un élève qui revient** (dette 168, validé tour 533) : il retrouve son binôme seulement s'il est encore seul ; sinon il rejoint un élève seul ; sinon il est seul ; **aucun binôme qui a commencé n'est défait ; le voile ne tombe jamais sur un élève déjà au travail**.
+5. **Un élève qui part** (dette 169, tour 533) : à l'étape 1, la tuile d'un élève qui avait commencé dit « **parti** » (pas « absent ») ; son binôme continue seul ; personne ne lui est réattribué ; sa place reste à lui ; au Suivi « Martin parti » ; **à son retour, il retape son code sur sa moitié et reprend exactement où il en était ; la case « parti » se décoche toute seule**.
+6. **Le mode binôme** (dette 157) : la case « Aide entre pairs » devient « **Binômes imposés (d'après les erreurs)** » (Préparation ; son état rappelé en haut de l'étape 1 du Suivi) — cochée : annonce du binôme, seconde moitié réservée, tablettes au Suivi ; décochée : **placement libre** (deux élèves quelconques, aucune annonce, aucun refus). **L'ancien « va aider untel » disparaît** (`peerTarget`).
+7. **Les aménagés** (dette 160, validé 620 a) : un aménagé est apparié avec **l'élève classique qui s'est trompé sur les mêmes mots** (le plus grand recoupement de mots en erreur) ; sinon seul.
+8. **Au Suivi** : Inès (0 erreur) suit l'affichage des autres — « Terminé » pendant l'heure, « Heure terminée » (gris) après (dette 156) ; **« trouvées » ne dépasse jamais le total** (Danard « 12 / 11 », dette 154).
+9. Le banc du lot 3b (les deux moitiés), rouge au contrôle 4 avant même L15k : **accordé ou l'écran corrigé**, mesuré (dette 152).
+Bancs : séance lancée → une copie corrigée ne change aucune paire ; fin de séance → paires libérées ; garde ; absent / revient / part / revient (deux navigateurs + une tablette en deux moitiés) ; mode libre ; aménagé apparié sur les mêmes mots ; Inès ; 12/11.
+
+## L17-2 — La tablette élève : rechargement = remise à zéro, reprise exacte
+*Ce que ça change pour la classe : un rechargement ne laisse jamais un élève sur la place d'un autre ; il retape son code et retrouve exactement ce qu'il faisait.* (tours 511-513 ; maquettes : aucune — c'est un comportement)
+1. **Seulement sur la page élève de la correction de dictée** : au rechargement, la tablette ne retient rien (ni `cd_moitie_n`, ni la session du site MJPC — le « shunt » est désactivé sur cette page) ; « Combien êtes-vous ? » revient ; chacun retape son code. Le lot 3b « reprise sans code » est retiré (décision de Paul qui le remplace).
+2. **Reprise exacte au hub** : `autocorrection/<élève>/ecran = { dictee, vue: "liste" | "consignes" | "copie" | "stylo" | "questions" | "fin", mot, saisie, question, t }` écrit à chaque changement (≤ 1 par seconde) ; son code retapé, l'app rouvre cette dictée, cette vue, ce mot avec ce qu'il tapait, cette question ; « Mes dictées » est une vue comme les autres ; on y revient par les boutons existants (« ← », « ← Mes dictées », « ← Retour »), jamais par la déconnexion.
+3. **Un élève = un écran** : taper son code ailleurs déconnecte l'autre écran (l'ordre `deconnexion/` de L15f-b, avec l'identifiant de la tablette ; la tablette qui le pose l'ignore).
+4. Le professeur n'est jamais touché (sa session glisse déjà).
+Bancs : un élève au milieu d'un mot (« devin ») → rechargement → code → même copie, même mot, « devin » dans le champ ; dans les questions → la même ; pendant le stylo vert → le chrono continue ; code tapé sur un second poste → le premier se déconnecte, le second reste.
+
+## L17-3 — L'engagement, une case à la fois
+*Ce que ça change pour la classe : les élèves lisent chaque engagement.* (dette 164 ; maquettes `T525-B-engagements-un-par-un.png`, `T526-engagement-binome-amenage.png`)
+- Une case par phrase ; la suivante apparaît **5 secondes** après la case cochée (« ⏳ La phrase suivante apparaît dans n s ») ; « Encore n phrases après celle-ci » ; « Commencer » après la dernière.
+- Les phrases (les mots de Paul) : « Je retrouve moi-même les erreurs de ma dictée, en tapant le bon mot. » · « Ma note d'autocorrection est une note à part : elle ne s'ajoute pas à ma note de dictée. » · « Un essai au hasard me coûte des points. » · « À la fin, si j'ai perdu des points, je pourrai en regagner en répondant à des questions. » · « Si mon voisin m'aide, c'est moi qui tape. »
+- **L'élève classique dont le binôme est aménagé** (en-tête « Ton binôme a une dictée aménagée. ») : + « Mon voisin a une dictée aménagée : je ne regarde jamais sa copie papier. Si je le fais, j'ai zéro à l'autocorrection. »
+- **L'aménagé** (en-tête « Tu as une dictée aménagée. ») : + « Je retourne ma copie papier à chaque fois que je l'ai lue, et je ne la montre jamais à mon voisin. **S'il regarde ma copie, il a zéro à l'autocorrection.** » (la dernière, encadrée en rouge, en gras).
+- L'attestation garde l'heure de chaque case (`attestation/cases/<n> = t`).
+Bancs : chaque case dévoile la suivante après 5 s (pas avant) ; les deux variantes ; « Commencer » grisé jusqu'à la dernière.
+
+## L17-4 — L'écran de correction élève, et le type « Acc. » partout
+*Ce que ça change pour la classe : plus de texte visible sur les vieilles tablettes, la légende toujours sous les yeux, « Acc. » lisible partout.*
+1. **Le bandeau resserré** (dette 161, maquette `T525-A-bandeau-serre-legende.png`) : la note, le nom, « n/m corrigé · n essai raté » sur **une ligne** ; la légende en **une bande de petites pastilles**, toujours visible (≈ 88 px au lieu de 178). Le reste de l'écran inchangé.
+2. **« Accent, majuscule » en ardoise** (dette 163, choisi par Paul ; captures `T528-1` à `T528-4`) : `#334155`, fond `#e2e8f0`, contour épais ; libellé court « Acc. », libellé long « Accent, majuscule » ; **sur la grille de correction du professeur, le mot C est encadré** (la classe `err-c` manquait — dette 144 rouverte) ; **sur la copie rendue, le badge dit « Acc. »** et reste lisible (dette 167).
+3. **Le clavier « 123 »** (dette 155) : un bouton « 123 » remplace les lettres par les chiffres ; touché à nouveau (« abc »), retour à l'AZERTY.
+4. **« sdp »** (dette 159) : une erreur de ponctuation à retrouver affiche « sdp » dans sa case (le trait d'union, devenu « Acc. », n'est pas concerné).
+5. **L'écran suit le reclassement à l'ouverture** sans geste (reste de la dette 143).
+Bancs : hauteur du bandeau mesurée ; légende présente pendant la saisie ; le mot C encadré sur la grille du professeur (classe et couleur) ; « Acc. » sur la copie ; 123 ↔ abc ; « sdp ».
+
+## L17-5 — Les commentaires en trois temps, et la phrase à recopier
+*Ce que ça change pour la classe : chaque erreur dit ce que c'est, comment vérifier, et l'applique à la phrase de l'élève.* (dette 171 ; **le texte à coder est `MANDATS/COMMENTAIRES-TROIS-TEMPS-A-RELIRE.md`, validé par Paul**)
+1. Chaque catégorie de l'analyse (L15.1) porte **trois textes** — `regle`, `test`, `ici` — (deux pour l'orthographe du mot : `regle`, `astuce`), avec **des variantes choisies d'après le mot d'avant dans la phrase** (après un déterminant pluriel ; après « être » ; après « avoir » ; sinon) — les listes de formes d'être, d'avoir et de déterminants pluriels dans le code, testées ; `{avant}` = ce mot. **Ce que l'app ne peut pas savoir à coup sûr (où est le COD) est donné en test, jamais affirmé.**
+2. **Les 30 paires d'homophones** de la table, écrites dans la même forme (règle, test de remplacement, ici), d'après le modèle du document.
+3. **Réglages → « Les commentaires de l'analyse »** : les trois champs par catégorie (et par variante), modifiables, communs à toutes les dictées, « Texte d'origine » ; la copie, la vue élève et le Bilan les lisent ; le bouton « 🤖 Prompt IA » demande désormais les trois textes.
+4. **La phrase à recopier** : la consigne devient « **Quand tu as tout fini, recopie ce commentaire en vert sur ta copie.** » (plus aucune mention de « chez toi » ni de « à la maison », dette 150) ; **deux élèves d'une même tablette n'ont jamais la même phrase** : plusieurs formulations par engagement, la seconde moitié prend une autre que la première (dette 151).
+Bancs : les erreurs de Leto (Dylan) donnent les commentaires du document (participe avec avoir / être, nom ou verbe, déterminant, cédille) ; une variante modifiée dans Réglages est relue sans rechargement ; deux élèves d'une tablette, deux phrases différentes ; la consigne nouvelle partout (copie, vue élève, export).
+
+## L17-6 — Les astuces 💡
+*Ce que ça change pour la classe : Paul donne trente secondes d'aide aux élèves en difficulté, d'un bouton, sans rien dire à l'oral.* (dette 165 ; maquettes `T530-bouton-astuces.png`, `T531-suivi-turing-bouton-depart.png`, `T528-6-astuces-eleves.png`, `T525-C-question-guide.png` à gauche)
+1. Au Suivi, au-dessus des tablettes : un bouton **« 💡 »** seul, et la phrase **qui change avec l'état** : au départ « **Aide possible pour X, Y et Z (plus de 20 erreurs).** » ; après un clic « **X, Y et Z sont prévenus : l'aide arrive.** » ; après deux clics « **X, Y et Z voient la question-guide · depuis m:ss** » ; troisième clic, quand il veut : retour au départ. Les prénoms : les élèves à **plus de 20 erreurs**, dans l'ordre de la liste de la classe.
+2. **Sur les tablettes de ces élèves seulement** : 1er clic → dans le bandeau, toujours visible : « **💡 Dans un instant, une aide va s'ouvrir quand tu toucheras un mot : une question pour te guider, pas la réponse.** » ; 2e clic → en touchant un mot, **la question-guide s'ouvre d'office** au-dessus de la saisie (cadre jaune) ; 3e clic → tout s'éteint. En direct, sans rechargement.
+3. **La question-guide = le texte « test » de la catégorie** de l'erreur (L17-5), dans sa variante ; si la forme n'a pas été recopiée, le test du type (G : l'accord ; L : la famille du mot ; Acc. : accents et majuscule ; P : « sdp »). **Jamais la réponse ; aucun point.**
+4. **L'infobulle du bouton** : « 💡 Les astuces, en trois clics. Elles ne concernent que les élèves nommés à côté (plus de 20 erreurs). 1er clic : un message les prévient sur leur écran qu'une aide arrive. 2e clic : l'aide s'ouvre — en touchant un mot, ils voient une question qui les oriente, jamais la réponse, sans perdre de point. 3e clic, quand tu veux : l'aide s'éteint partout. Les tablettes suivent aussitôt. »
+Bancs (deux navigateurs) : les trois états ; seuls les élèves nommés voient le message et la question ; aucun point retiré ; extinction partout.
+
+## L17-7 — La note, et la Préparation
+1. **La note de dictée côté élève : un seul réglage** (L15j / dette 133 — voir le complément L15) et **un bouton « Afficher la note de dictée aux élèves »** au Suivi, actif quand tous les présents ont fini, disponible avant avec confirmation ; il pose ce réglage ; les tablettes suivent (dette 149).
+2. **Préparation** : chaque mot surligné porte **son mode** (A / B / C, grisé s'il suit le défaut) (dette 138) ; la fenêtre d'un mot a **« Si l'élève se trompe, l'erreur compte en : G / L / Acc. »** (dette 139, confirmé par Paul).
+Bancs : le bouton de la note (avant / après la fin de tous) ; les badges de mode suivent le défaut ; le type choisi est celui de l'erreur à la correction.
+
+## L17-8 — Suspendre / fermer une séance
+*Le cadrage et la maquette validés le 05/10 : `TRANSCRIPTS/C12/pieces/T459-maquette-132-app-reelle.html` (dette 132 ; complément L15, section L15i).* Fidèle geste par geste ; le stylo vert est gelé pendant la pause et l'heure de fin repoussée du temps de pause ; banc à deux navigateurs.
+
+---
+**Après L17-8** : `L17-RECAP.md` au sas, puis tu t'arrêtes. La conscience audite les huit morceaux dans l'ordre ; Paul promeut sur captures.

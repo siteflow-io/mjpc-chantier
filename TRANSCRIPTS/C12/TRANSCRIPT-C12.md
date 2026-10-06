@@ -15076,3 +15076,27 @@ Tout est écrit au complément (L15k). Prochaine étape : la maquette sur l'app 
 06/10/2026 13:58 MEMO
 
 ---
+
+## TOUR 512 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok. Sur l'histoire du rechargement déconnexion, ça ne vaut que pour la dictée en mode élève pour l'instant, et l'élève doit se retrouver EXACTEMENT à l'endroit où il était et ce qu'il était en train de faire. Moi je ne dois jamais avoir à me reconnecter si je recharge ma console. Tout est cadré ?
+
+---
+
+## TOUR 512 — Claude (conscience n°12)
+
+Mesuré : session prof 12 h non glissante (lireSessionMJPC), oublierSessionEleveL15f épargne le prof. Complément L15k : remise à zéro seulement page élève dictée ; état d'écran au hub (dictée, vue, mot, saisie, question) restauré après le code ; session prof glissante ; 334 close (A).
+
+Réponse mot pour mot :
+
+587. **Oui, tout est cadré**, avec trois précisions écrites au complément (L15k) :
+   - **La remise à zéro ne vaut que pour la page élève de la correction de dictée** — aucune autre app, aucune autre page.
+   - **L'élève retrouve EXACTEMENT où il était** : ça demandait une chose qui n'existait pas — aujourd'hui, après son code, il repasse par « Mes dictées ». Désormais **l'état de son écran est enregistré au hub** (pas sur la tablette) à chaque changement : la dictée ouverte, l'endroit (consignes, copie, stylo vert, questions, fin), **le mot qu'il avait ouvert et ce qu'il était en train d'y taper**, la question en cours. Son code retapé, l'app le remet là, directement ; le stylo vert et les questions reprennent leur temps (déjà au hub).
+   - **Toi, tu ne te reconnectes jamais en rechargeant ta console** : mesuré, ta session tient aujourd'hui **12 heures depuis ta connexion**, puis il faut redonner ton code ; elle deviendra **glissante** (renouvelée à chaque ouverture), et la remise à zéro élève ne touche jamais une session professeur. F5 garde déjà ta dictée et ton onglet. Ça clôt ta question en attente depuis le 03/10 (334) : pas de code au rechargement pour toi.
+588. **Ce qui est prêt à partir** : L15k entier (binômes constitués à la correction complète, lus en direct, absents du jour à « Lancer » avec seuls les orphelins réappariés, la console des binômes, le voile avec « Revenir », la remise à zéro élève avec reprise exacte, ta session glissante, « Terminé » à 0 erreur, les données faussées refaites). **Il me reste la maquette** sur l'app réelle (la liste des absents à « Lancer », le dépliant des binômes, le voile) — dis « maquette » et je te la montre avant que l'exécutante ne code.
+
+06/10/2026 14:05 MEMO
+
+---

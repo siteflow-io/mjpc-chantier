@@ -14929,3 +14929,27 @@ L15k est prêt au complément (avant L15i) ; je ne fais pas de maquette pour ça
 06/10/2026 11:55 MEMO
 
 ---
+
+## TOUR 506 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Ok à coder maintenant ( Turing dans 13 minutes). Dis moi si ça peut se faire en micro cest l'urgence mais il ne faut rien casser. Par ailleurs, pour plus tard  il faut me mettre un bouton ( qui appelle la fonctionnalité déjà codée) d'affichage de la note de dictée, une fois que les eleves ont tous fini lautocorrection. De plus, le commentaire qu'ils doivent recopier doit être écrit en " quand tu as tout fini, recopie ce commentaire en vert sur ta copie ". Plus de mention de à la maison. Enfin, ce commentaire devra être affiné : deux élèves sur la même tablette ne doivent jamais avoir le même commentaire, donc il faut des versions différentes.
+
+---
+
+## TOUR 506 — Claude (conscience n°12)
+
+Micro L15k-a promu (6.7.0-L15.1b-1h : la tablette n'écrit plus les binômes ; la seconde moitié n'accepte que le binôme constitué, voile « lève la main » ; arrivee) ; banc VERT ; lot 3b contrôle 4 rouge déjà avant (dette 152) ; dettes 146 en partie, 149-151 inscrites.
+
+Réponse mot pour mot :
+
+570. **Fait en micro, promu : 6.7.0-L15.1b-1h** (commit `87556627352b`, bit à bit, 975 881 o) — **la partie urgente et sûre de L15k** : **(a)** la tablette **n'écrit plus jamais les binômes** (seul « Lancer » les écrit, d'après les copies et les erreurs) ; **(b)** **la seconde moitié n'accepte que le binôme constitué** de l'élève arrivé le premier : un autre code y reçoit un voile **« Ce n'est pas ta tablette : lève la main. »**, et rien de l'autre moitié n'est montré (l'ordre d'arrivée tient même après un rechargement ou l'ouverture d'une dictée). **Banc par le geste VERT** : le binôme constitué entre ; un autre élève est refusé avec le voile ; les binômes du hub ne bougent pas. **Rien d'autre n'est touché.** Une chose vue en vérifiant : le vieux banc des deux moitiés (lot 3b) a un contrôle rouge **déjà sur la version d'avant** (dette 152, à mesurer après) — le micro ne l'aggrave pas. **Pour les Turing** : recharge les tablettes ; si un élève voit le voile, il n'est pas sur sa tablette ; si son binôme est absent, il choisit « 1 élève ».
+571. **Ce qui reste de L15k pour après** : un élève = un écran (taper son code ailleurs déconnecte l'autre), le nettoyage des binômes asymétriques déjà au hub, et « Terminé » d'office à 0 erreur (Inès).
+572. **Inscrits pour plus tard** : **149** un bouton « Afficher la note de dictée » quand tous ont fini (il appelle le réglage existant) ; **150** la consigne : **« Quand tu as tout fini, recopie ce commentaire en vert sur ta copie. »** — plus aucune mention de « à la maison » ; **151** deux élèves d'une même tablette n'ont **jamais** le même commentaire à recopier (plusieurs formulations par catégorie, la seconde moitié prend une autre que la première), et le commentaire affiné.
+
+Test pour les Turing : https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?mode=eleve → « 2 élèves » → le premier tape son code, le second tape le sien : s'il est son binôme, il entre ; sinon, le voile.
+
+06/10/2026 13:00 MEMO
+
+---

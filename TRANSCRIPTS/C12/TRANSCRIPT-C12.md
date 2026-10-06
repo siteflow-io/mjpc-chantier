@@ -14728,3 +14728,21 @@ Puis « continuer » à l'exécutante : **« Continuer — L15.1b-1 seconde part
 05/10/2026 19:26 MEMO
 
 ---
+
+## TOUR 497 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Continue
+
+---
+
+## TOUR 497 — Claude (conscience n°12)
+
+Réponse mot pour mot :
+
+Rien ne m'attend de ton côté sauf une chose, et « continue » est sans doute la phrase pour l'exécutante : de mon côté, je n'ai pas de livraison à auditer (le sas n'a rien reçu depuis L15h-2), et **L15h-2 reste en attente de ton « oui » sur la copie aménagée n° 21 des Hugo (5/10 → 15/20, point 549)**. Dis « oui » et je la promeus ; dis « livré » quand la seconde partie de L15.1b-1 sera au sas, et j'audite.
+
+05/10/2026 19:35 MEMO
+
+---

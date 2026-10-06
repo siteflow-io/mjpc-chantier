@@ -15289,3 +15289,33 @@ Inscrit au registre (154, cause et réglage) ; les deux bancs de reproduction so
 06/10/2026 16:15 MEMO
 
 ---
+
+## TOUR 521 — Paul
+
+Texte de Paul, mot pour mot :
+
+> En fait une fois que des binômes sont fixés, si je fais une correction en classe ( ce qui n'est pas censé arriver en soi, j'ai annulé une erreur chez Khaïs et chez une autre élève, le 2 de "le 2, à Saint Laurent", parce que leur clavier d'app n'a pas les chiffres! C'est ça la dette qui m'a poussé à annuler l'erreur en classe, sinon ils ne pouvaient jamais terminer leur correction faute de chiffres dans leur clavier, il faut donc un clavier avec un seul bouton qui ouvre les chiffres et quand ils recliquent sur le bouton, ça revient à l'azerty) il faut que les binomes qui ont commencé à corriger ensemble ne changent plus durant une session d'autocorrection. Une fois la session finie, les binômes sont libérés parce qu'ils sont constitués par le nombre d'erreurs. Réponds moi avant tout codage
+
+---
+
+## TOUR 521 — Claude (conscience n°12)
+
+Mesuré : ClavierTablette sans chiffres (dette 155). Règle des binômes reformulée (fixés pendant la séance, libérés à la fin, exceptions absents du jour et copies tardives) ; question : figer dès la première tablette à deux ; télescopages.
+
+Réponse mot pour mot :
+
+Compris, et rien n'est codé.
+
+607. **Le clavier, mesuré** : celui des élèves (en correction) a l'AZERTY, les accents, la ponctuation et l'espace — **aucun chiffre**. Un mot attendu comme « 2 » est donc **impossible à retrouver** : l'élève ne peut jamais finir. C'est la vraie cause de tes deux annulations en classe. Inscrit (dette 155). Ta règle : **un seul bouton « 123 »** sur le clavier ; touché, il remplace les lettres par les chiffres ; touché à nouveau (« abc »), il revient à l'AZERTY. Rien d'autre ne change sur le clavier.
+608. **Les binômes — ta règle, telle que je la comprends** :
+   - **Pendant une séance d'autocorrection** (de « Lancer » à la fin de l'heure) : les binômes **ne changent plus**. Quand tu cliques « Lancer », ta console fixe les paires (celles que les tablettes affichent déjà, calculées d'après les erreurs) et les écrit ; **toutes les tablettes lisent ces paires-là**, en direct. Si tu corriges une copie pendant la séance (comme aujourd'hui), **la note change, les paires non**.
+   - **Seules exceptions pendant la séance** : un absent du jour que tu coches (son binôme seul est réapparié avec un autre élève seul, les autres paires ne bougent pas) ; une copie qui arrive pendant la séance (l'élève rejoint un élève seul s'il y en a un, sinon il est seul).
+   - **La séance finie** (fin de l'heure, ou clôture), **les binômes sont libérés** : la séance suivante les reforme d'après le nombre d'erreurs **du moment** (donc en tenant compte de tes corrections).
+   - **Avant « Lancer »** (quand tu fais connecter les élèves en avance) : les tablettes calculent les paires d'après les erreurs, exactement comme ta console ; « Lancer » fige celles-là. Si tu corriges une copie entre la connexion des élèves et « Lancer », deux élèves déjà assis pourraient se voir proposer un autre binôme ; je propose donc que **les paires soient aussi figées dès que la première tablette a deux élèves assis**, même avant « Lancer ». D'accord ?
+609. **Télescopages vérifiés** : la clôture de l'heure (L13) libère les binômes — rien d'autre ne bouge ; les absents du jour (les orphelins seuls) ; le voile « Revenir » (il compare au binôme fixé, donc plus de refus à tort) ; le Suivi (étape 2) affiche les paires fixées ; les élèves hors classe (seuls) ne sont pas concernés ; la séance suivante d'une même dictée part de paires neuves.
+
+Réponds à la question de 608 (figer dès la première tablette à deux, ou seulement à « Lancer ») ; ensuite, dis « micro » pour le clavier et les binômes ensemble.
+
+06/10/2026 18:35 MEMO
+
+---

@@ -14974,3 +14974,27 @@ Réponse mot pour mot :
 06/10/2026 13:05 MEMO
 
 ---
+
+## TOUR 508 — Paul
+
+Texte de Paul, mot pour mot :
+
+> le binome ne marche pas quand le premier a entré ses codes. par ailleurs, une fois un mauvais code entré dans la deuxième partie, l'élève est b
+
+---
+
+## TOUR 508 — Claude (conscience n°12)
+
+Retour immédiat à 6.7.0-L15.1b-1g (13:22, commit 5914255248cb, bit à bit) : le micro L15k-a bloquait (voile sans sortie, binômes du hub asymétriques des Turing — mesurés). Dette 153, journal. Reprise en livraison L15k.
+
+Réponse mot pour mot :
+
+575. **J'ai retiré mon micro, tout de suite : la production est revenue à la version de ce matin (6.7.0-L15.1b-1g), à 13:22, bit à bit.** **Fais recharger les tablettes** : elles se connectent comme ce matin (n'importe qui sur la seconde moitié, comme avant — mais plus aucun élève bloqué). C'est ma faute : le voile de refus **n'avait aucune sortie**, et la tablette lisait des binômes des Turing **déjà faussés ce matin** (Quentin → Pauline alors que Pauline → Ethan ; Corentin → Alexandre alors qu'Alexandre → Lou) — donc un premier élève pouvait se voir proposer un binôme qui en avait déjà un autre. Mon banc n'avait joué que « bon binôme » et « mauvais binôme refusé », jamais « mauvais code, puis on repart ». Dette 153 au registre, journal à jour.
+576. **Un élève déjà bloqué** : recharge sa tablette (la version de ce matin ne bloque pas).
+577. **La reprise se fera en livraison, pas en micro** (L15k) : le voile aura un bouton **« Revenir »** qui libère la moitié ; la tablette calculera les binômes **d'après les copies**, jamais d'après le hub ; « Lancer » réécrira les binômes ; le banc jouera le mauvais code puis la sortie.
+
+Ton message s'est coupé (« l'élève est b… ») : si ce n'était pas « bloqué », dis-le-moi.
+
+06/10/2026 13:25 MEMO
+
+---

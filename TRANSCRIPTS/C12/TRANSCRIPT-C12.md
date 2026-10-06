@@ -14903,3 +14903,29 @@ L15.1b-2 (l'onglet Correspondances, dans `index.html`) : à confier au couple du
 06/10/2026 11:35 MEMO
 
 ---
+
+## TOUR 505 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Attention je n'ai pas à faire les binômes car ceci sont constitués par les copies et les erreurs. De plus un élève ne vient jamais me voir « va voir ton professeur » mais lève la main. Sinon tout le reste me va , vérifie qu'il n'y a pas de télescopage.
+
+---
+
+## TOUR 505 — Claude (conscience n°12)
+
+Mesuré : calculerBinomes à « Lancer » (copies et erreurs), écrasé ensuite par l'effet de la tablette (asymétries). L15k corrigé au complément : la moitié 2 n'accepte que le binôme constitué ; la tablette n'écrit plus binomes ; « Ce n'est pas ta tablette : lève la main. » ; télescopages vérifiés (L15f-b ordre + id de tablette, L15i, frappe par moitié, L13/L13b, peerHelp, aménagés, Lot 2c, L15j).
+
+Réponse mot pour mot :
+
+Pris, et mesuré avant d'écrire :
+
+567. **Les binômes, tu ne les fais pas — c'est vrai, et c'est même la source du problème** : l'app les constitue **à « Lancer »** d'après les copies et les erreurs (le moins d'erreurs avec le plus d'erreurs, absents exclus, un élève seul si le nombre est impair), et les écrit au hub. **Puis la tablette les écrase** d'après les deux élèves qui s'y connectent — c'est ça qui a produit les asymétries des Turing. Donc la règle devient : **la seconde moitié n'accepte que le binôme constitué par l'app** (elle l'annonce déjà : « ton binôme : … ») ; un autre code y est refusé, rien de l'autre moitié n'apparaît ; **la tablette n'écrit plus jamais les binômes** (seul « Lancer » le fait) ; si le binôme est absent, l'élève choisit « 1 élève », comme aujourd'hui. Plus de désignation de ta part, plus de bouton à ajouter.
+568. **Le texte de refus** : **« Ce n'est pas ta tablette : lève la main. »** — proposé ; change les mots si tu veux.
+569. **Les télescopages, vérifiés un par un** (écrits au complément, L15k) : **la déconnexion de L15f-b** — « un élève = un écran » réutilise le même ordre, mais la tablette qui le pose porte son identifiant et l'ignore (sinon elle se déconnecterait elle-même) ; **L15i** (pause / fermeture) vaut pour les deux moitiés, rien à ajouter ; **la frappe gardée par moitié** est vidée quand une moitié refuse ou se déconnecte ; **L13 / L13b** : « Lancer » reste le seul moment où les binômes s'écrivent ; **l'aide entre pairs** n'ouvre pas de moitié ; **les aménagés** sont déjà dans le calcul des binômes, chacun garde sa version ; **le zéro erreur** (« Terminé » d'office) avance l'existant sans le doubler ; **L15j** (la note) : rien. **Aucun télescopage bloquant.**
+
+L15k est prêt au complément (avant L15i) ; je ne fais pas de maquette pour ça — ce sont des refus et un nettoyage, pas un écran nouveau — sauf si tu en veux une. Ta phrase pour l'exécutante, quand elle aura fini sa livraison en cours : **« Continuer — L15k (les binômes et les moitiés), puis L15i, L15j ; L15.1b-2 (Correspondances) passe au couple du déroulé. »**
+
+06/10/2026 11:55 MEMO
+
+---

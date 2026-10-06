@@ -631,3 +631,33 @@ Tests pour toi : aucun. Ton geste : lancer, puis « livré ».
 
 06/10/2026 06:30 (heure de mon espace de travail, non vérifiée)
 MEMO
+
+---
+
+## TOUR 16 — Paul
+
+Texte de Paul, mot pour mot :
+
+> mjpc prod: [jeton de production — non archivé] j'ai lancé l'exécutant claude code
+
+---
+
+## TOUR 16 — Claude (conscience n°13)
+
+Jeton de production reçu, jamais écrit dans un fichier. Production : `docs/MJPC6-OU-TROUVER-QUOI.md` (commit 3ab4fc5) et `docs/MJPC6-plan-de-travail.md` (commit eb269da) complétés et relus au blob. Sas : branches = `main` seulement ; aucune livraison de l'exécutant encore.
+
+Réponse mot pour mot :
+
+Jeton de production reçu. Il ne va dans aucun fichier : le transcript le consigne comme « [jeton de production — non archivé] ».
+
+69. **Le suivi en production est écrit**, et chaque fichier relu juste après son envoi : identique octet pour octet.
+    - « où trouver quoi » : le mandat, la décision sur les schémas, la carte de l'existant, le moteur des schémas, le téléphone. https://github.com/siteflow-io/monsieurjaipascompris/blob/main/docs/MJPC6-OU-TROUVER-QUOI.md
+    - le plan de travail : la ligne de la décision du 05/10. https://github.com/siteflow-io/monsieurjaipascompris/blob/main/docs/MJPC6-plan-de-travail.md
+70. **L'exécutant** : au moment où j'écris, le sas n'a encore que `main`, aucune branche `deroule/p8-…`. C'est normal au démarrage : il lit d'abord le mandat et installe ses outils.
+
+Quand la session s'est arrêtée, écris-moi « livré ». Je vérifie alors p8-1, puis p8-2, puis p8-3.
+
+Tests pour toi : aucun.
+
+06/10/2026 08:15 (heure de mon espace de travail, non vérifiée)
+MEMO

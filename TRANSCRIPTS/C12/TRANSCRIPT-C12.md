@@ -15431,3 +15431,27 @@ Trois maquettes sur l'app réelle (une tablette en deux moitiés, 1 280 × 800),
 06/10/2026 19:45 MEMO
 
 ---
+
+## TOUR 526 — Paul
+
+Texte de Paul, mot pour mot :
+
+> montre moi l'attestation d'un binome avec un aménagé. par ailleurs, 💡doit être activable ou non à mon usage. je peux l'activer ou la désactiver en séance (à l'oral je dis: je vous donne 30 secondes d'aide" puis je désactive). l'infobulle doit contenir ce flow précis.
+
+---
+
+## TOUR 526 — Claude (conscience n°12)
+
+Maquettes T526 : l'engagement d'un binôme avec un aménagé (classique en cours, 5 s ; aménagé tout coché) ; le bouton « 💡 Astuces » au Suivi avec l'infobulle du déroulé. Dette 165. Reste : teinte de C, mots de l'engagement ; puis un mandat unique.
+
+Réponse mot pour mot :
+
+Deux captures ci-dessous :
+
+627. **L'engagement d'un binôme avec un aménagé** : à gauche, **l'élève classique** — la phrase d'en-tête lui dit « Ton binôme a une dictée aménagée » ; il a coché les cinq premières phrases, et **« ⏳ La phrase suivante apparaît dans 3 s »** ; la sixième, qui va venir, est la sienne : « Mon voisin a une dictée aménagée : je ne regarde jamais sa copie papier. Si je le fais, j'ai zéro à l'autocorrection. » À droite, **l'aménagé** — « Tu as une dictée aménagée » ; tout est coché, la dernière phrase (encadrée en rouge, en gras) est la sienne : « Je retourne ma copie papier à chaque fois que je l'ai lue, et je ne la montre jamais à mon voisin. S'il la regarde, il a zéro à l'autocorrection. » ; « Commencer » est allumé. **Les mots sont les miens : corrige-les.** (Deux élèves classiques ensemble n'ont pas ces phrases-là.)
+628. **💡 activable en séance, par toi** : un bouton au Suivi, au-dessus des tablettes — **« 💡 Astuces : ACTIVÉES / désactivées »**, avec le nombre d'élèves concernés (ceux qui ont plus de 20 erreurs) et le temps depuis lequel elles sont allumées ; les tablettes suivent **aussitôt**, sans rechargement. **L'infobulle** (ouverte sur la capture) dit le déroulé : « 1. Tu annonces à l'oral : « je vous donne 30 secondes d'aide ». 2. Tu touches ce bouton : les astuces s'allument aussitôt sur toutes les tablettes — seuls les élèves qui ont plus de 20 erreurs les voient, en ouvrant un mot. 3. Le compteur te dit depuis combien de temps elles sont allumées. 4. Tu touches à nouveau : elles s'éteignent partout. Une astuce pose une question qui oriente ; elle ne donne jamais la réponse et ne coûte aucun point. » Désactivées par défaut. (Sur la capture, « 9 élèves concernés » est un chiffre de maquette ; le vrai sera compté.) Côté élève, quand elles sont allumées, l'astuce **s'ouvre d'office** au-dessus de la saisie (la version de gauche de la maquette d'avant).
+629. Il me reste tes choix : **la teinte de « Accent, majuscule »** (or ou ardoise), et tes corrections éventuelles sur **les phrases de l'engagement**. Ensuite, tout ce qui est cadré aujourd'hui part en un seul mandat pour l'exécutante (binômes fixés par séance, garde, mode binôme, aménagés, engagement case par case, bandeau resserré, clavier « 123 », « sdp », Inès, astuces, bouton de la note).
+
+06/10/2026 19:55 MEMO
+
+---

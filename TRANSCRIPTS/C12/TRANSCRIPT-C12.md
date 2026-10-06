@@ -15455,3 +15455,29 @@ Deux captures ci-dessous :
 06/10/2026 19:55 MEMO
 
 ---
+
+## TOUR 527 — Paul
+
+Texte de Paul, mot pour mot :
+
+> "s'il regarde ma copie, il a zéro à l'autocorrection". ok pour les astuces. le bouton doit être juste 💡et je veux la liste des prénoms (untel, untel et untel voient la question guide). au premier clic, c'est un message sur leur écran perso (comme ça je n'ai pas besoin de dire à l'oral, donc adapter le texte de l'infobulle) et au deuxième clic, l'aide s'active. puis au troisième clic, QUAND JE VEUX, l'aide s'éteint.
+
+---
+
+## TOUR 527 — Claude (conscience n°12)
+
+Phrase de l'aménagé corrigée ; bouton « 💡 » à trois clics (annonce sur les écrans concernés, activation, extinction), la liste des prénoms, l'infobulle ; dette 165 précisée ; question en attente (teinte de C) reposée.
+
+Réponse mot pour mot :
+
+630. **La phrase de l'aménagé** devient : « Je retourne ma copie papier à chaque fois que je l'ai lue, et je ne la montre jamais à mon voisin. **S'il regarde ma copie, il a zéro à l'autocorrection.** »
+631. **Le bouton « 💡 »** — pris tel que tu le dis : le bouton est **juste « 💡 »** ; à côté, **la liste des prénoms** : « Gabin, Lilly-Rose et Justin voient la question-guide » ; et **trois clics** :
+   - **1er clic** → un message s'affiche sur l'écran de **chacun de ces élèves seulement**. Je propose : « 💡 Dans un instant, une aide va s'ouvrir quand tu toucheras un mot : une question pour te guider, pas la réponse. » (**tes mots** si tu préfères) ; à côté du bouton : « annoncée ».
+   - **2e clic** → l'aide s'active : en ouvrant un mot, ils voient la question-guide ; à côté du bouton : « active depuis 0:12 ».
+   - **3e clic, quand tu veux** → l'aide s'éteint partout, et le message disparaît. Un 4e clic recommence au 1er.
+   **L'infobulle** : « 💡 Les astuces, en trois clics. Ils ne concernent que les élèves nommés à côté (plus de 20 erreurs). 1er clic : un message les prévient sur leur écran qu'une aide arrive. 2e clic : l'aide s'ouvre — en touchant un mot, ils voient une question qui les oriente, jamais la réponse, sans perdre de point. 3e clic, quand tu veux : l'aide s'éteint partout. Les tablettes suivent aussitôt. »
+632. Ta question en attente, telle quelle : **la teinte de « Accent, majuscule » — or ou ardoise ?**
+
+06/10/2026 20:00 MEMO
+
+---

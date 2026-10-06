@@ -14815,3 +14815,25 @@ Mesuré au hub, à l'instant :
 06/10/2026 08:35 MEMO
 
 ---
+
+## TOUR 501 — Paul
+
+Texte de Paul, mot pour mot :
+
+> oui il faut que ça passe en micro car je lance ma séance de correction dans quelques minutes. pour la couleur, du vert? ou déjà pris? parce que bleu, ça va se confondre avec lexique. ou alors un bleu très pâle, mais avec un tour du surlignage en trait épais (pas trop épais pour ne pas cacher de lettre)
+
+---
+
+## TOUR 501 — Claude (conscience n°12)
+
+Micro L15.1b-1e promu (badge Acc., bleu très pâle + contour 2 px, badge 1,5 px, carte de message persistante) ; dettes 144 ✔, 143 en partie ; journal, point de retour ; sas.
+
+Réponse mot pour mot :
+
+Fait, promu : **6.7.0-L15.1b-1e** (commit `fae9148d430a`, bit à bit, 973 106 o). Le vert est pris (l'élision E est vert-bleu, et le vert plein marque « juste ») — j'ai pris ta seconde idée : **C = « Acc. »**, **bleu très pâle** (fond `#f0f9ff`, texte `#0369a1`) **avec un contour épais** (un liseré de 2 px à l'intérieur du cadre du mot, qui ne couvre aucune lettre ; 1,5 px sur le badge) — distinct du bleu plein de L ; et **le message du reclassement est une carte en bas à gauche qui reste jusqu'à ce que tu la fermes (✕)**. La touche clavier reste C. Bancs : la règle de style mesurée dans la page, L15h-1 vert (menu, texte, rapide, forfait, fiche). Registre 144 ✔, 143 en partie (reste : l'écran qui suit le reclassement sans geste — pas pour ce matin), journal, point de retour.
+
+**Pour ta séance** : recharge l'app (https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?v=6.7.0), ouvre la dictée : les mots « Acc. » ont leur cadre bleu dans le texte et la légende dit « Acc. ». Bonne séance.
+
+06/10/2026 08:35 MEMO
+
+---

@@ -1,0 +1,26 @@
+date : 2026-10-06 06:25:15 +0000
+node : v22.22.0 · playwright : 1.56.1 · chromium : 141.0.7390.37
+maquette jouée : epreuve/maquette-p7-cassee-sans-couper-la-diapo.html
+md5 de la maquette jouée : 8d636475c27267b6b6ec12af58e8a68e
+bancs : 1
+
+===== test-p3-p7 =====
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+page.click: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for locator('#menu [data-a="b-couper-diapo"]')[22m
+
+    at clicItem (/home/user/mjpc-chantier/LIVRAISONS/DEROULE/p8-1/bancs/test-p3-p7.mjs:6:44)
+    at /home/user/mjpc-chantier/LIVRAISONS/DEROULE/p8-1/bancs/test-p3-p7.mjs:41:139 {
+  name: 'TimeoutError'
+}
+
+Node.js v22.22.0
+(code de sortie : 1)
+
+===== RÉSUMÉ =====
+test-p3-p7 : 
+ÉCHEC

@@ -1,0 +1,25 @@
+banc · taille avant (T265) → après · ok( avant → après · lignes du diff
+audit-affichage-p7.mjs · 4118 → 4031 o · 7 → 7 · 6
+regression-p7.mjs · 10979 → 10892 o · 24 → 24 · 6
+test-a0-p7.mjs · 6023 → 5941 o · 10 → 10 · 8
+test-b-p7.mjs · 11732 → 11645 o · 31 → 31 · 6
+test-b2-apercu-p7.mjs · 4815 → 4733 o · 10 → 10 · 8
+test-b3-p7.mjs · 8374 → 8239 o · 18 → 18 · 8
+test-b4-p7.mjs · 7277 → 7190 o · 12 → 12 · 6
+test-b5-p7.mjs · 9095 → 8960 o · 17 → 17 · 8
+test-c-p7.mjs · 9601 → 9471 o · 23 → 23 · 10
+test-cahier-p7.mjs · 9578 → 9443 o · 23 → 23 · 8
+test-d-p7.mjs · 11543 → 11456 o · 33 → 33 · 6
+test-e-p7.mjs · 4265 → 4188 o · 9 → 9 · 8
+test-f-p7.mjs · 5278 → 5196 o · 8 → 8 · 8
+test-g1-p7.mjs · 7971 → 7836 o · 15 → 15 · 8
+test-g2-p7.mjs · 9526 → 9348 o · 17 → 17 · 12
+test-p1-p7.mjs · 7514 → 7427 o · 16 → 16 · 6
+test-p2-p7.mjs · 9332 → 9245 o · 22 → 22 · 6
+test-p3-p7.mjs · 12431 → 12344 o · 27 → 27 · 6
+test-p4a-p7.mjs · 12482 → 12395 o · 28 → 28 · 6
+test-p4b-p7.mjs · 11995 → 11908 o · 25 → 25 · 6
+test-p5-p7.mjs · 11360 → 11273 o · 28 → 28 · 6
+test-p6-p7.mjs · 8013 → 7926 o · 15 → 15 · 6
+test-p7-schema-envoi.mjs · 9781 → 9694 o · 16 → 16 · 6
+tout-cliquer-p7.mjs · 26098 → 26016 o · 38 → 38 · 8

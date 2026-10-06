@@ -1,0 +1,14 @@
+date : 2026-10-06 06:26:05 +0000
+node : v22.22.0 · playwright : 1.56.1 · chromium : 141.0.7390.37
+maquette jouée : ../../../TRANSCRIPTS/C12/pieces/T265-maquette-pilotage-ordi-v9c15p7-manipulable.html
+md5 de la maquette jouée : 5045f337d930faaa9cb073e203cf44eb
+bancs : 1
+
+===== test-p3-p7 =====
+aucun défaut
+--- fin : 0 défaut(s)
+(code de sortie : 0)
+
+===== RÉSUMÉ =====
+test-p3-p7 : --- fin : 0 défaut(s)
+TOUS LES BANCS : 0 défaut

@@ -15580,3 +15580,32 @@ Réponse mot pour mot :
 06/10/2026 20:25 MEMO
 
 ---
+
+## TOUR 532 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok maintenant, si je modifie un absent pendant l'heure, que se passe -t-il ? un élève qui revient
+
+---
+
+## TOUR 532 — Claude (conscience n°12)
+
+Mesuré (données Turing, binomesDuJourL15k) : décocher l'absent refait les binômes du départ — Léonie ↔ Mélody, Louane seule (le binôme Mélody–Louane au travail défait ; voile possible). Dette 168 ; règle proposée (retrouve son binôme s'il est encore seul, sinon un élève seul, sinon seul ; aucun binôme commencé défait).
+
+Réponse mot pour mot :
+
+Mesuré sur tes données des Turing, avec la version en ligne :
+
+644. **Aujourd'hui, ça casse un binôme au travail.** Exemple : tu coches **Léonie Augereau** absente → son binôme **Mélody Chalon** est réappariée avec **Louane Tanghe-Nouchet** (qui était seule) ; elles s'assoient ensemble et commencent. Léonie arrive, tu la décoches → l'app **refait les binômes du départ** : Léonie ↔ Mélody, et Louane redevient seule. **Mélody et Louane, déjà au travail, sont séparées**, et la tablette peut même mettre le voile « Ce n'est pas ta tablette » sur celle qui s'était assise en second. C'est contraire à ta règle (un binôme qui a commencé ne change plus). Inscrit (dette 168).
+645. **La règle que je propose pour un élève qui revient** :
+   - si **son binôme du départ est encore seul** (il n'a pas été réapparié, ou n'a pas commencé avec quelqu'un) → ils se retrouvent ;
+   - sinon, il **rejoint un élève seul**, s'il y en a un ;
+   - sinon, il est **seul** (« 1 élève ») ;
+   - **aucun binôme qui a commencé n'est défait**, et **le voile ne tombe jamais sur un élève déjà au travail**.
+   Dans l'exemple : Léonie revient, Mélody travaille déjà avec Louane → Léonie est seule (ou rejoint un autre élève seul). Ton Suivi montre la tablette de Léonie en orange, « seul ».
+   D'accord ? Ça part avec le reste.
+
+06/10/2026 20:30 MEMO
+
+---

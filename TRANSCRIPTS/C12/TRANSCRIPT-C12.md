@@ -14767,3 +14767,27 @@ Tes tests après promotion : 1) les Dylan → Réglages → « Les commentaires 
 06/10/2026 08:15 MEMO
 
 ---
+
+## TOUR 499 — Paul
+
+Texte de Paul, mot pour mot :
+
+> 554 oui c bon pour la copie aménagée! Promeus
+
+---
+
+## TOUR 499 — Claude (conscience n°12)
+
+Promotion 6.7.0-L15.1b-1d (chaîne L15h-2 → 1c → 1d, commit ef6604393fa5, bit à bit) ; protocole : dettes 126/142/107 ✔, journal, point de retour, où-trouver-quoi. Tests ; L15.1b-2 (onglet Correspondances, index.html) : un seul couple doit le livrer — proposé : le déroulé (n°13).
+
+Réponse mot pour mot :
+
+Promu : `correction_dictee.html` **6.7.0-L15.1b-1d** — la chaîne L15h-2 → 1c → 1d en une écriture — commit `ef6604393fa5`, **bit à bit** (971 626 o, md5 `61a96af8…`) ; registre n°12 · **126, 142, 107 ✔ en entier** ; journal, point de retour (L15.1b-1), où-trouver-quoi à jour.
+
+**Tes tests, avant la séance** (https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?v=6.7.0) : 1) ouvre **les Hugo** : le message « 9 erreurs reclassées en C … dans 5 copies ; l'état d'avant est dans la corbeille » (une fois) ; puis Préparation → ré-enregistre la « Note sur » 20 de la version aménagée (les quatre aménagées sur 20) ; 2) les Dylan, Franklin, Turing : le même message à l'ouverture (10 / 4 / 2) ; 3) Réglages → « Les commentaires de l'analyse » : l'écran de la maquette, l'aperçu sur une vraie erreur ; 4) Copies → une copie : « À recopier » dit un engagement qui va avec ses erreurs ; 5) côté élève, pendant la séance : les commentaires sous ses erreurs — et après, dans le hub, `profil/<élève>/events` se remplit.
+
+Puis « continuer » à l'exécutante : **« Continuer — L15.1b-2 (le site : l'onglet Correspondances), puis L15i (reprise), L15j. »** — la n°13 travaille sur `index.html` : L15.1b-2 touche le Panneau prof, **tu dois le dire aux deux** (elle, et la n°13) pour que l'onglet Correspondances soit livré par un seul des deux couples ; je propose que ce soit **le couple du déroulé** (c'est son fichier), avec la règle écrite dans mon complément (L15.1 ⑦ bis et (d) ②).
+
+06/10/2026 08:04 MEMO
+
+---

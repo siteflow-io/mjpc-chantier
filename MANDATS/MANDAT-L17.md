@@ -71,6 +71,9 @@ Bancs (deux navigateurs) : les trois états ; seuls les élèves nommés voient 
 2. **Préparation** : chaque mot surligné porte **son mode** (A / B / C, grisé s'il suit le défaut) (dette 138) ; la fenêtre d'un mot a **« Si l'élève se trompe, l'erreur compte en : G / L / Acc. »** (dette 139, confirmé par Paul).
 Bancs : le bouton de la note (avant / après la fin de tous) ; les badges de mode suivent le défaut ; le type choisi est celui de l'erreur à la correction.
 
+### L17-7 bis — Le bouton « ↗ Correspondances » (ajout du 06/10, tour 539 — dette 172)
+Mesuré : il ouvre `index.html?panneau=taxonomie&onglet=correspondances&app=correction_dictee` dans un nouvel onglet, et Paul tombe sur « Lien invalide — Utilise le lien fourni par M. Meney » : (1) le site ne relit la session du professeur que dans la mémoire de l'onglet (`sessionStorage`) — un nouvel onglet ne l'a pas ; (2) le site n'a **pas encore** l'onglet « Correspondances » ni le paramètre `panneau=` (c'est L15.1b-2, dans `index.html`, confié à l'autre couple). **Dans la dictée** : tant que le site ne sait pas l'ouvrir, le bouton **n'ouvre rien** : il affiche « La validation des correspondances se fera dans le Panneau prof de MJPC ; l'onglet n'existe pas encore. n rattachement(s) en attente. » ; il ouvrira le lien le jour où le site répond (une constante dans le code, à basculer). Banc : le bouton n'ouvre aucun onglet ; le message et le compte.
+
 ## L17-8 — Suspendre / fermer une séance
 *Le cadrage et la maquette validés le 05/10 : `TRANSCRIPTS/C12/pieces/T459-maquette-132-app-reelle.html` (dette 132 ; complément L15, section L15i).* Fidèle geste par geste ; le stylo vert est gelé pendant la pause et l'heure de fin repoussée du temps de pause ; banc à deux navigateurs.
 

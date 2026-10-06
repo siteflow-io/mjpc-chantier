@@ -15559,3 +15559,24 @@ Réponse mot pour mot :
 06/10/2026 20:15 MEMO
 
 ---
+
+## TOUR 531 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok le prolbème c'est que maintenant tu vas compter le nombre d'élèves qui ont plus de 20 erreurs (choisit la classe où ce nombre est le plus grand) et produis la capture d'écran complète, avec le bouton dans son état initial.
+
+---
+
+## TOUR 531 — Claude (conscience n°12)
+
+Compté au hub (lecture seule) : Turing 10, Hugo 10, 3E CdG 2, Dylan 1, Franklin 0 ; capture complète du Suivi des Turing (copie locale), bouton 💡 au départ avec les dix prénoms (pièce T531).
+
+Réponse mot pour mot :
+
+642. **Compté au hub, dictée par dictée** (élèves à plus de 20 erreurs, absents à la dictée exclus) : **Turing 10** · **Hugo 10** · 3E Charles de Gaulle 2 · Dylan 1 · Franklin 0. J'ai pris **les Turing** (égalité avec les Hugo).
+643. **La capture complète** (ci-dessous) : ton Suivi des Turing pendant l'heure (une copie locale de tes données, rien n'est écrit au hub), le bouton **« 💡 » dans son état de départ**, et sa phrase : « Aide possible pour **Léonie, Lylou, Jahlie, Léona, Lysandre, Thaddée, Yanis, Phydéline, Corentin et Pauline** (plus de 20 erreurs). » — dix prénoms, un tiers de la classe, rangés dans l'ordre de ta liste ; ça tient sur une ligne. Dessous, les quinze tablettes avec leurs binômes réels.
+
+06/10/2026 20:25 MEMO
+
+---

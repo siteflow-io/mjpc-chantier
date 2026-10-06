@@ -15148,3 +15148,25 @@ Réponse mot pour mot :
 06/10/2026 14:35 MEMO
 
 ---
+
+## TOUR 515 — Paul
+
+Texte de Paul, mot pour mot :
+
+> L'organisation visuelle et l'UI des absentts et des binômes, c'est ta capture?
+
+---
+
+## TOUR 515 — Claude (conscience n°12)
+
+Capture regardée et confirmée (écran réel, kit) ; « seul » vérifié par le calcul (pair − 1 absent) ; pas de maquette (micro d'urgence) — proposition d'affiner dans L15k.
+
+Réponse mot pour mot :
+
+592. **Oui, c'est elle** : la capture est l'écran réel de la version en ligne (6.7.0-L15.1b-1i), sur le kit anonymisé, onglet **Données → Suivi**, en haut de la carte de « Lancer ». Deux boutons repliables : **« ▾ Absents aujourd'hui (1) »** — la classe en cases à cocher, à la suite (l'absent à la dictée grisé et coché d'office) — et **« ▾ Binômes (14) »** — une ligne par paire : « NOM Prénom (n erreurs) ↔ NOM Prénom (m erreurs) », et « — seul » pour un élève sans binôme.
+593. **Une chose à savoir en la lisant** : sur la capture, un élève est « seul » — c'est juste : la classe avait un nombre pair d'élèves présents, j'en ai coché un absent aujourd'hui, son binôme se retrouve donc seul (il prendra « 1 élève »). Vérifié par le calcul.
+594. **Ce n'est pas passé par une maquette** (c'était un micro d'urgence) : l'organisation est fonctionnelle, pas dessinée. Si tu veux autre chose (un tableau à deux colonnes, les paires triées par nombre d'erreurs, l'élève seul mis en évidence, les cases en colonnes alphabétiques), dis-le : ça entrera dans la livraison L15k, avec une maquette avant.
+
+06/10/2026 14:40 MEMO
+
+---

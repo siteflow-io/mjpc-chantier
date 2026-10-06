@@ -15635,3 +15635,28 @@ Réponse mot pour mot :
 06/10/2026 20:30 MEMO
 
 ---
+
+## TOUR 534 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok c'est bon. les aides, comment sont-elles calculées? par ailleurs, l'export en un seul html doit être la première livraison. dès maintenant si possible.
+
+---
+
+## TOUR 534 — Claude (conscience n°12)
+
+Micro « toutes les copies en un fichier » promu (6.7.0-L15.1b-1k, commit 32f7fc0dea85, bit à bit ; banc VERT ; 30 sections, 60 pages A4) ; dette 166 ✔ ; les aides : question-guide par catégorie de l'analyse, éditable dans Réglages, repli par type, jamais la réponse.
+
+Réponse mot pour mot :
+
+649. **Toutes les copies en un fichier — fait et promu : 6.7.0-L15.1b-1k** (commit `32f7fc0dea85`, bit à bit, 988 611 o). Dans **Copies**, sous « 📦 Archive ZIP (n) » : **« 📄 Toutes les copies en un fichier (n) »**. Il contient **exactement les copies du ZIP** (les bilans validés, les options d'affichage que tu as cochées), l'une après l'autre, **une par page à l'impression**. Banc par le geste : vert (le bouton sous le ZIP ; sur 30 copies, le fichier en contient 30, avec les 30 noms) ; le fichier s'ouvre et s'imprime (60 pages A4 pour 30 copies). Registre 166 ✔, journal, point de retour. **Test** : recharge, Données → Copies → le nouveau bouton → ouvre le fichier, puis Ctrl+P.
+650. **Les aides (la question-guide) : comment elles seraient calculées** — rien n'est codé, voici ce qui est prévu :
+   - **Elles partent de la catégorie de l'erreur**, celle que l'analyse d'hier calcule (41 catégories : « pluriel en trop », « -nt manquant », « homophone a / à », « consonne double »…). **Chaque catégorie reçoit une question-guide**, rangée à côté de son commentaire, et **modifiable par toi dans Réglages** comme les commentaires. Exemples : pluriel → « Avec quel mot s'accorde-t-il ? Cherche le nom qu'il complète. » ; -nt → « Qui fait l'action ? Combien sont-ils ? » ; a / à → « Peux-tu dire « avait » à la place ? » ; consonne double → « Pense à un mot de la même famille. »
+   - **Quand la forme fautive n'a pas été recopiée** (la catégorie est alors inconnue), la question vient **du type de l'erreur** : G → l'accord ; L → la famille du mot ; Acc. → accents et majuscule ; P → « sdp ».
+   - **Jamais la réponse** ; elle ne coûte aucun point ; elle n'apparaît que pour les élèves nommés (plus de 20 erreurs) et seulement quand tu l'allumes.
+   - La version précise (« qui est-ce qui est farci ? », avec le vrai nom de la phrase) demanderait d'analyser la phrase : c'est pour plus tard.
+
+06/10/2026 20:40 MEMO
+
+---

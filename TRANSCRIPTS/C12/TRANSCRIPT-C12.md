@@ -14856,3 +14856,25 @@ Réponse mot pour mot :
 06/10/2026 08:45 MEMO
 
 ---
+
+## TOUR 503 — Paul
+
+Texte de Paul, mot pour mot :
+
+> il y a un souci sur la formation des binomes: en effet, des élèves ont réussi à se connecter sur la deuxième partie d'un écran d'un élève sans être désigné en tant que binome, et sans passer par le bouton "élève absent" de l'écran d'accueil. par ailleurs, les écrans ne semblent pas étanches, notamment en cas de lag (quentin a eu un instant l'écran de victoire et norah, puis le rechargement a réglé le problème). Enfin, 2 minutes pour recopier les erreurs, c'est long. on ne modifie rien ce matin car les dylan commencent leur autocorrection dans quelques minutes. par ailleurs dans ma console, un élève qui n'a aucune erreur (inès crosnier) reste en "corrige" indéfiniment. la seule chose à modifier, c'est le temps de recopie des corrections sur la copie, ce matin. il faudra par la suite que je puisse modifier ce temps moi même, afin de l'adapter à la réussite de la dictée ou non (si beaucoup d'erreurs générales, je mettrai un temps de recopie plus long). enfin, assure moi que si j'enlève une erreur (erreur de ma part à la correction) après que l'autocorrection soit faite, un élève retrouve bien le point de cette erreur comptée faux.
+
+---
+
+## TOUR 503 — Claude (conscience n°12)
+
+Micro L15.1b-1f promu (temps de recopie réglable, défaut 60 s ; banc VERT) ; mesuré : erreur retirée → note recalculée et autocorrection réalignée (errorRefs, remap, solved/score) ; dettes 146-148 inscrites.
+
+Réponse mot pour mot :
+
+560. **Le temps de recopie — fait et promu, 6.7.0-L15.1b-1f** (commit `83b9a688e53d`, bit à bit, 974 561 o) : **réglable par toi, dès maintenant**, dans **Préparation → « Recopie en vert : n s »** (de 15 à 600 secondes, **60 par défaut** ce matin au lieu de 120) ; l'élève qui finit reçoit ce temps (sa fenêtre le dit : « Tu as 45 secondes pour écrire ta correction en vert… », son chrono le suit) ; les questions de regain demandent toujours 2 minutes de plus. Banc par le geste : réglé à 45 → enregistré, l'élève voit « 45 secondes », chrono ≈ 45 s. Registre 145 ✔, journal, point de retour. **Pour les Dylan** : ouvre Préparation, mets le temps que tu veux, Enregistrer — ceux qui finissent après le prennent.
+561. **Le point d'une erreur retirée après l'autocorrection — mesuré dans le code, assurance donnée** : quand tu enregistres une copie, **la note de dictée est recalculée** sur les erreurs qui restent (la seule fonction de note) : le point revient à l'élève, sur sa copie, son bilan, le Suivi et la fiche. **Et l'autocorrection suit** : l'app compare les erreurs d'avant (`errorRefs`) aux erreurs d'après, **réaligne les résultats et les essais sur les bons mots** (pas de décalage), remet `total` au nombre d'erreurs corrigibles qui restent, et **recalcule « trouvées » et la note d'autocorrection** sur la copie telle qu'elle est maintenant — un essai raté sur l'erreur que tu as retirée ne coûte plus rien. Rien à faire de ton côté : tu retires l'erreur, tu enregistres.
+562. **Le reste, inscrit au registre pour après** (rien ce matin) : **146** les binômes (des élèves entrés sur la seconde moitié d'un écran sans être désignés ni passer par « élève absent ») ; **147** l'étanchéité (Quentin a vu l'écran de Norah un instant, en cas de lag) ; **148** Inès sans erreur reste « corrige » au Suivi. Je les mesurerai sur les données de ta séance (les sessions, les moitiés, les statuts) dès que tu dis « mesure », et on cadrera avant L15i.
+
+06/10/2026 10:20 MEMO
+
+---

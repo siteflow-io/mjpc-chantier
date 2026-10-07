@@ -15995,3 +15995,24 @@ Réponse mot pour mot :
 07/10/2026 12:58 MEMO
 
 ---
+
+## TOUR 548 — Paul
+
+Texte de Paul, mot pour mot :
+
+> oui évidemment une garde pour éviter les faux gestes comme axel....
+
+---
+
+## TOUR 548 — Claude (conscience n°12)
+
+Micro 177 promu (6.7.0-L15.1b-1q, commit 0263d2c6a6e3, bit à bit) : confirmation avant de garder sa note ; banc VERT, L15f-b accordé ; mandat prévenu.
+
+Réponse mot pour mot :
+
+680. **Fait et promu : 6.7.0-L15.1b-1q** (commit `0263d2c6a6e3`, bit à bit). « Je garde ma note » n'enregistre plus rien d'un seul geste : il ouvre un encadré **« Tu ne pourras plus répondre aux questions. Tu gardes ta note (2,09/5) ? »** avec **« Non, je continue »** (retour aux questions) et **« Oui, je garde ma note »** — seul ce « Oui » arrête les questions. Banc sur les données d'Axel : vert (rouge sur la version d'avant) ; l'ancien banc du côté élève, accordé pour toucher « Oui », vert ; la phrase sans identifiants, verte. Registre 177 ✔, journal, point de retour ; le mandat de l'exécutante est prévenu. Capture ci-dessous.
+   **Test** : sur une tablette, un élève qui a des questions à faire touche « Je garde ma note » → l'encadré ; « Non » → les questions reviennent ; « Oui » → c'est fini.
+
+07/10/2026 13:25 MEMO
+
+---

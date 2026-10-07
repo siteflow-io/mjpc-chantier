@@ -16222,3 +16222,35 @@ Réponse mot pour mot :
 07/10/2026 22:29 MEMO
 
 ---
+
+## TOUR 556 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Ok termine. Pas besoin de captures pour l'instant.
+
+---
+
+## TOUR 556 — Claude (conscience n°12)
+
+QCM : mode d'emploi intégré lu ; séance rejouée (prof + tablette, faux hub complété : onDisconnect, ServerValue.TIMESTAMP) : session lancée, check-in, Q1 réflexion → réponse → attente ; connexion élève par empreinte ou par la session MJPC ; composants lus écran par écran (correction, autoévaluation, saisie papier, résultats, bilan, scoresheet, student report, vue tableau, téléphone, test, éditeur, impression, versions, pondération, niveaux, sauvegarde). Déposé : MANDATS/QCM-CONNAISSANCE.md.
+
+Réponse mot pour mot :
+
+708. **C'est fait : j'ai la connaissance complète de l'app QCM.** Je l'ai lue (7.7.1, le code et son propre mode d'emploi), je l'ai vue écran par écran, et j'ai **rejoué une séance** : toi et une tablette d'élève sur une copie de ton hub, rien n'est écrit. Tout est rangé ici : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/QCM-CONNAISSANCE.md. L'essentiel :
+   - **Le principe** : le papier d'abord. L'élève rédige sa réponse en entier sur sa feuille, choix cachés et chrono selon le niveau. Tu cliques « Autoriser la réponse » : les lettres apparaissent, il pose son stylo et touche sa lettre. À la fin : la correction en classe, des questions les plus ratées aux moins ratées, au stylo vert / rouge. Le soir, tu scannes les copies ; à la maison, l'élève recopie ses lettres papier, et cela débloque ses résultats.
+   - **Les scores** : le score app (pour information), le score papier, et le **score officiel** = papier + « bonus écart isolé favorable » (une erreur de recopie isolée ne lui coûte pas le point). Quatre niveaux, chacun avec sa couleur, sa durée de réflexion et sa pondération (1 / 2 / 3 / 4).
+   - **Ton côté** :
+     - Pilotage : préparer, imprimer la feuille, dupliquer ; une évaluation modifiée devient une nouvelle version, sans toucher aux résultats passés ; le « Prompt IA » ; lancer avec l'appel des absents ; le poste de pilotage en direct ; l'autoévaluation, la correction, le bilan de la classe, « Terminer ».
+     - Données : le tableau des scores (export CSV), la fiche de chaque élève avec son scan, la sauvegarde.
+     - Réglages : les phrases des tablettes.
+     - En plus : la vue tableau pour la projection, le pilotage au téléphone par QR, le mode test.
+   - **Le côté élève** : choisir sa classe → s'identifier (code vérifié comme sur le site, ou directement s'il est déjà connecté à MJPC) → l'attente → les questions → « combien penses-tu en avoir de justes ? » → la correction → à la maison, « Mes évaluations », la saisie papier, les résultats et un bilan (« Tu te connais bien ! », « Tu te sous-estimais ! »…). Si le réseau coupe, ses réponses restent sur le poste.
+709. **Deux choses vues au passage, à te soumettre** (non tranchées) :
+   - l'élève sans code lit « **Viens me voir** pour qu'on le mette en place », alors que ta règle d'hier dit qu'il lève la main ;
+   - l'écran « Choisis ta classe » montre **toutes** les classes, y compris les classes de test (une ancienne dette le disait déjà).
+710. **Ma question pour cadrer, telle que je l'ai posée** : sur le QCM, qu'est-ce qui doit changer pour ta classe ?
+
+07/10/2026 22:50 MEMO
+
+---

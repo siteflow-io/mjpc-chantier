@@ -1,39 +1,39 @@
-# COMPLÉMENT — MAQUETTE p8 · livraison p8-4 : écrire directement dans la diapo
-*Conscience n°13, 07/10/2026 (C13, tour 24). Soumis à Paul avant tout dépôt. Se lit après le mandat (version 3) et les compléments p8-3b et p8-3c, qui restent en vigueur. Règle la dette n°13 · 3 et cadre la dette n°13 · 6.*
+# COMPLÉMENT — MAQUETTE p8 · livraison p8-4 : écrire directement dans la diapo (atelier et répétition)
+*Conscience n°13, 07/10/2026 — version 2 (C13, tour 28), réécrite après l'audit de faisabilité. Elle remplace la version du tour 24. Se lit après le mandat (version 3) et les compléments p8-3b, p8-3c et p8-3d.*
 
 ## CE QUE ÇA CHANGE POUR LA CLASSE
-Paul, 06/10 (tour 23) : « c'est très fastidieux de devoir passer par un menu pour entrer des choses dans la diapo. J'aimerais pouvoir écrire directement dedans. […] c'est en fait ma façon de travailler habituelle » ; « en flux normal de classe, je suis censé pouvoir toujours modifier des choses au tableau, d'autant plus quand ce sont des réponses élèves que je note, ou alors une modif ».
-Paul, 07/10 (tour 24) : « l'idée est aussi que le contrat visuel de chaque type soit utilisé à chaque fois. ainsi, je n'ai plus de question à me poser sur la disposition ».
-**Pour qui** : Paul, en préparation et devant la classe. **Le geste** : il clique dans la diapo et il écrit ; la disposition se fait seule, selon le type du bloc.
+Paul, 06/10 : « c'est très fastidieux de devoir passer par un menu pour entrer des choses dans la diapo. J'aimerais pouvoir écrire directement dedans. […] c'est en fait ma façon de travailler habituelle. »
+Paul, 07/10 : « l'idée est aussi que le contrat visuel de chaque type soit utilisé à chaque fois. ainsi, je n'ai plus de question à me poser sur la disposition ».
 
-## CE QUE PAUL A TRANCHÉ (tour 24, « ok » sur la proposition du tour 23, point 90)
-1. **Tout texte de la diapo s'écrit d'un clic**, comme dans le site actuel (« Clic dans un texte pour l'écrire », joué le 05/10, carte de l'existant Z1) :
-   - dans l'atelier, il va dans la trame ;
-   - en classe, il va dans la copie de la classe, et à la clôture le site propose le versement dans la trame, diapo par diapo, oui ou non (cadrage 1 §8.4) ;
-   - en répétition, il est oublié à l'arrêt (cadrage 4 §1.5).
-2. **Sous le dernier bloc, on clique et on écrit** : c'est un bloc de type « texte », sans menu. **Entrée ouvre une nouvelle ligne**, qui est un nouvel élément et se dévoilera à son tour.
-3. **« + bloc » ne propose plus que ce qui n'est pas du texte libre** : question, schéma, image, fiche, vidéo, document (la consigne aussi, si elle a sa propre disposition dans la maquette ; la NOTE le dit).
-4. **Clic droit sur un bloc → « Changer de type »**. Le bloc prend **en entier le contrat visuel de son nouveau type** : la disposition, les chevrons, les champs de réponse, la taille, exactement comme un bloc de ce type créé par le menu. Paul n'a aucun réglage de disposition à faire.
-   - **Une ligne = un élément**, dans tous les types : chaque ligne garde son texte et devient un élément du nouveau type, à sa place (une ligne devient une question, une étape, une famille de schéma…).
-   - Si le nouveau type a une règle d'écriture (le schéma : « famille : notions »), le panneau du type la montre, comme pour un schéma créé par le menu.
-   - Les règles déjà tranchées tiennent : un seul schéma par diapo ; une diapo à schéma, c'est son titre, une consigne d'une ligne et le schéma.
-5. **La notion d'objet ne se perd pas** : un bloc tapé a son identité dès sa première lettre, comme un bloc créé par le menu.
+## CE QUI A ÉTÉ TRANCHÉ (C13, tours 23 à 25)
+1. **Tout texte de la diapo s'écrit d'un clic**, comme dans le site actuel (« Clic dans un texte pour l'écrire »).
+2. **Sous le dernier bloc, on clique et on écrit** : c'est un bloc « texte ». Entrée ouvre une nouvelle ligne, c'est-à-dire un nouvel élément, qui se dévoilera à son tour.
+3. **« + bloc » ne propose plus que ce qui n'est pas du texte libre.**
+4. **Clic droit → « Changer de type »** : le bloc prend en entier le contrat visuel de son type, comme s'il avait été créé par le menu. Une ligne reste un élément, dans tous les types.
+5. **Un bloc tapé a son identité dès sa première lettre.**
 
-## LES RÈGLES QUI S'APPLIQUENT (déjà payées)
-- **Un redessin n'efface jamais une saisie en cours.** Il ne touche pas à l'élément qui a le focus, attend qu'on l'ait quitté et garde le défilement (règle permanente, 04/10).
-- **Jamais de perte silencieuse** : l'enregistrement est instantané à chaque geste dans l'atelier ; en classe, la copie reçoit chaque frappe.
-- **Rien ne se coupe seul** (cadrage 4 §0.4) : si un bloc tapé ne tient plus, « À régler » le dit et propose « Couper la diapo ici ».
-- **Infobulles écrites pour Paul**, sans « Grisé », sur chaque geste ajouté.
+## L'AUDIT DE FAISABILITÉ (conscience n°13, sur la maquette p8-3c)
+- **Faisable tel quel** :
+  - l'écriture d'un clic : la maquette sait déjà écrire dans la diapo, pour les champs de réponse (mesuré : 2 champs éditables) ;
+  - le bloc tapé et le changement de type : les types et leur rendu existent.
+- **Faisable, à compléter : l'instantané de la répétition.** `lancerRepetition` prend déjà un instantané de l'état du jeu (`S`, `vuMax`, `parDiapo`, la longueur du journal), et `arreterRepetition` le restaure. Mais **le contenu des diapos n'y est pas** : tant qu'on ne pouvait rien modifier en répétition, il n'y était pas utile. **Tu étends l'instantané à la séance** (ses diapos et leurs blocs). Cadrage 4 §1.5 : à l'arrêt, tout ce qui a été joué est oublié.
+- **Pas dans cette livraison : la copie de la classe.** La maquette n'a qu'une seule séance : rien ne sépare la copie d'une classe de la trame. Le versement proposé à la fin de l'heure (cadrage 1 §8.4) n'existe donc pas. Il fait l'objet de p8-5. **En p8-4, pendant une heure lancée, l'écriture du texte des blocs reste fermée, comme aujourd'hui** ; les réponses s'écrivent comme avant.
+- **Pas faisable tel qu'il était écrit : le banc « un autre onglet modifie la trame ».** La maquette ne fait rien circuler entre onglets. Tu le remplaces par un redessin que la maquette provoque vraiment, par exemple un ▶ joué depuis la fenêtre du tableau. La NOTE dit lequel.
 
 ## LA LIVRAISON p8-4
-Branche `deroule/p8-4`, partie de `deroule/p8-3c`. Jamais `main`.
-1. Le patch `patch-p8-4.py` sur le gabarit de p8-3c. La NOTE donne chaque fonction touchée, avec sa taille avant et après.
-2. **Bancs par le geste** (`test-p8-4-ecrire.mjs`) :
-   - **atelier** : cliquer sous le dernier bloc, taper deux lignes avec Entrée → un bloc « texte » de deux éléments, enregistré ;
-   - **atelier** : clic dans le texte d'une consigne existante, corriger un mot → enregistré dans la trame ;
+Branche `deroule/p8-4`, partie de `deroule/p8-3d`. Jamais `main`.
+1. Les décisions 1 à 5 dans l'atelier, et en répétition, avec l'instantané étendu. Le patch `patch-p8-4.py` ; la NOTE donne chaque fonction touchée, avec sa taille avant et après.
+2. **Les règles déjà payées** :
+   - un redessin n'efface jamais une saisie en cours, ne touche pas à l'élément qui a le focus, et garde le défilement ;
+   - l'enregistrement est instantané dans l'atelier (« ✔ enregistré ») ;
+   - rien ne se coupe seul : si un bloc tapé ne tient plus, « À régler » le dit ;
+   - chaque geste ajouté a son infobulle, écrite pour Paul, sans « Grisé ».
+3. **Bancs par le geste** (`test-p8-4-ecrire.mjs`) :
+   - **atelier** : sous le dernier bloc, taper deux lignes avec Entrée → un bloc « texte » de deux éléments, enregistré ;
+   - **atelier** : corriger un mot dans une consigne existante → enregistré ;
    - **changer de type** : « Changer de type » → question. Le bloc a la même structure et les mêmes classes qu'une question créée par le menu (comparées) ; ses deux lignes sont deux questions ; au pilote, ▶ les dévoile une à une ;
-   - **répétition** : corriger un mot dans une consigne, puis « ■ Arrêter » → la trame n'a pas changé ;
-   - **classe** (heure lancée) : corriger un mot → la copie de la classe a changé, la trame non. Si la clôture de la maquette propose déjà le versement, il est joué ; sinon, la NOTE le dit ;
-   - **la saisie tient** : taper pendant un redessin provoqué (un autre onglet modifie la trame) → rien n'est effacé, le curseur reste.
-3. Les bancs de p8-3c rejoués, puis le banc unique à 0.
-4. `LIVRAISONS/DEROULE/p8-4/` : la NOTE, les bancs, les sorties, des captures d'écran entier (un bloc tapé, puis changé en question, au pilote et au tableau), le gabarit, les patches, la maquette, les empreintes. **Puis tu t'arrêtes.**
+   - **répétition** : corriger un mot, le voir au tableau, puis « ■ Arrêter » → la trame est identique à ce qu'elle était avant la répétition (comparée) ;
+   - **la saisie tient** : taper pendant le redessin choisi → rien n'est effacé, le curseur reste ;
+   - **heure lancée** : le texte des blocs reste fermé, les réponses s'écrivent.
+4. Les 27 bancs rejoués, puis le banc unique à 0.
+5. `LIVRAISONS/DEROULE/p8-4/` : la NOTE, les bancs, les sorties, des captures d'écran entier, le gabarit, les patches, la maquette, les empreintes. Puis tu enchaînes p8-5.

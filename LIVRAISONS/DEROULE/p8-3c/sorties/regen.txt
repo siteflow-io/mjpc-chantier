@@ -1,0 +1,34 @@
+TYPES : « cahier » parmi les objets connus (rendre et alertesForme) : 100 → 156 o (×2)
+simulation : b-sim-schema retirée, la diapo plausible juste après : 288 → 1521 o
+p8GardeObjet : les raisons, écrites pour Paul : 257 → 465 o
+p8GardeColler : la raison, écrite pour Paul : 46 → 124 o
+p8GardesBarre : les raisons, écrites pour Paul : 171 → 756 o
+p8GardesBarre : sans « Grisé » : 70 → 33 o
+choixObjet : la carte grisée dit quoi faire : 111 → 79 o
+poserBarreBloc : « + étape », sans « Grisé » : 90 → 149 o
+menuAtelierMur : « Dupliquer le bloc », sans « grisé » : 79 → 182 o
+menuAtelierMur : la taille d'un schéma, sans « grisé » : 277 → 288 o
+menuAtelierMur : « Coller ici », sans « grisé » : 85 → 71 o
+p8MenuBulle : « Couper le schéma ici », ce qui empêche puis quoi faire : 221 → 362 o
+elements : la question est un élément : 116 → 279 o
+rendre : la question porte son élément : 150 → 342 o
+rendre : les réponses suivent leur question : 151 → 270 o
+rendre : la ligne de réponse libre suit sa question : 43 → 64 o
+récit : la réponse attendue vue, sans la question : 95 → 158 o
+ouvrirFin : la question pâle si elle n'a pas été dévoilée : 111 → 144 o
+style : ligne vide, question non dévoilée : 99 → 466 o
+rendre : 17071 o / 52 lignes → 17459 o / 52 lignes
+alertesForme : 7977 o / 1 lignes → 8033 o / 1 lignes
+elements : 803 o / 3 lignes → 966 o / 3 lignes
+p8GardeObjet : 257 o / 1 lignes → 465 o / 1 lignes
+p8GardeColler : 207 o / 1 lignes → 285 o / 1 lignes
+p8GardesBarre : 763 o / 1 lignes → 1311 o / 1 lignes
+p8MenuBulle : 1231 o / 3 lignes → 1372 o / 3 lignes
+menuAtelierMur : 6748 o / 4 lignes → 6848 o / 4 lignes
+poserBarreBloc : 1849 o / 1 lignes → 1908 o / 1 lignes
+choixObjet : 1279 o / 1 lignes → 1247 o / 1 lignes
+ouvrirFin : 17695 o / 56 lignes → 17728 o / 56 lignes
+recitHtml0 : 16363 o / 63 lignes → 16426 o / 63 lignes
+généré maquette-pilotage-ordi-v9c15p8-manipulable.html 553190 octets · bloc repris 92432
+65d123c91a7c99aaa99e44df9f212969  v9c15p8-template.html
+ce10a90c74111b70239487df1d3bebe2  maquette-pilotage-ordi-v9c15p8-manipulable.html

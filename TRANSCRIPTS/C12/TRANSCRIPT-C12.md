@@ -15873,3 +15873,26 @@ Réponse mot pour mot :
 07/10/2026 07:00 MEMO
 
 ---
+
+## TOUR 543 — Paul
+
+Texte de Paul, mot pour mot :
+
+> d'accord, donc tu vas me coder en micro la règle d'exclusion 665. et je donnerai comme consigne orale: cliquer sur 2 élèves obligatoirement. pour ceux qui n'auront pas écouté, il y a donc le bouton retour, pas de souci c'est une porte de sortie donc on n'est pas bloqué.
+
+---
+
+## TOUR 543 — Claude (conscience n°12)
+
+Micro L17-1 bis promu (6.7.0-L15.1b-1m, commit 13ab607d885d, bit à bit) : places au hub, seconde arrivée exclue avec le message de Paul, « J'ai compris ». Banc à deux tablettes VERT ; non-régression ; mandat L17 averti du changement de base.
+
+Réponse mot pour mot :
+
+667. **Fait et promu : 6.7.0-L15.1b-1m** (commit `13ab607d885d`, bit à bit, 993 662 o). **Ce qui se passe maintenant** : Lou se connecte sur la tablette A (sa seconde moitié : « Ton binôme : GUYON Thais ») ; Thaïs se connecte sur la tablette B **une seconde après** → sa moitié affiche **« Tu es avec Lou : laisse cette tablette à quelqu'un d'autre et rejoins Lou. »** et sa correction ne s'ouvre pas ; **« J'ai compris »** libère la moitié (jamais bloquant) ; Thaïs va taper son code sur la moitié libre de Lou → elle entre normalement. **La première arrivée garde toujours sa tablette** (c'est l'heure de connexion qui départage, même à une seconde ; à égalité, l'ordre alphabétique). Capture ci-dessous : la tablette de Thaïs.
+   **Banc, à deux tablettes en même temps** (deux navigateurs sur un même hub, tes données des Hugo) : vert — Thaïs reçoit le message, la tablette de Lou n'est pas touchée, « J'ai compris » libère, Thaïs entre sur la tablette de Lou sans message. La déconnexion à deux navigateurs et l'écran des tablettes du Suivi : verts. Registre 173 ✔, journal, point de retour.
+668. **Pour ce matin** : recharge les tablettes avant de les distribuer ; consigne « 2 élèves » obligatoire, comme tu l'as dit ; « ← Retour » pour ceux qui auraient choisi « 1 élève ».
+669. **L'exécutante** travaille sur la version d'hier soir : j'ai mis en tête du mandat que la production a bougé et qu'elle doit **reprendre ce micro avant de déposer** ; je le vérifierai à l'audit.
+
+07/10/2026 07:15 MEMO
+
+---

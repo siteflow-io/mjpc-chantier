@@ -1,0 +1,3 @@
+{"avant": [false, 1], "eleve_se_deconnecte": [true, true, "DéconnecterDéconnecté"], "reconnexion": [false, "Dictée brevet blanc 3E 3E Charles de Gaulle · corrigée le 07/10/2026 À faire 9/10 Ouvrir →"], "bouton_fixe": 1, "prof_deconnecte": [true, true], "tous": true, "avant_cloture": false, "cloture": true, "erreurs": []}
+conditions : {'eleve_se_deconnecte': True, 'reconnexion_par_code': True, 'bouton_sur_la_copie': True, 'prof_deconnecter': True, 'deconnecter_tous': True, 'cloture': True, 'propre': True}
+BANC L15f-b DÉCONNEXION (deux navigateurs) : VERT

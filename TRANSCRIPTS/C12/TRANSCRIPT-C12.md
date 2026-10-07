@@ -15896,3 +15896,31 @@ Réponse mot pour mot :
 07/10/2026 07:15 MEMO
 
 ---
+
+## TOUR 544 — Paul
+
+Texte de Paul, mot pour mot :
+
+> donne moi les captures pour d'autres binomes, notamment des binomes mixtes (garçon fille, ou garçon garçon). je veux voir les émoji. sachant que ta cpature me fait peur: on a l'impression que c'est lou qui doit rejoindre thais dans ta capture! mesure.
+
+---
+
+## TOUR 544 — Claude (conscience n°12)
+
+Mesuré : la moitié libre de la tablette exclue annonçait le binôme de l'exclue (Lou). Correctif promu (6.7.0-L15.1b-1n, commit bb637650d277, bit à bit) : moitié exclue = vide, émoji 👥. Banc sur trois binômes (Lou–Thaïs, Philippine–Evan, Jules–Amauri) VERT ; captures ; dette 174 (« viens me le demander ») ajoutée au mandat.
+
+Réponse mot pour mot :
+
+670. **Ta peur était juste — mesuré** : sur la tablette de Thaïs (la seconde arrivée), la moitié de gauche disait bien « Tu es avec Lou… rejoins Lou », **mais la moitié de droite affichait « Ton binôme : DEKENS Lou — Lou, tape ton code »**, comme si c'était Lou qui devait venir. **Corrigé et promu : 6.7.0-L15.1b-1n** (commit `bb637650d277`, bit à bit) : la moitié de l'élève qui doit partir **compte pour vide**, sa voisine affiche l'écran de code ordinaire, sans nom. Et l'émoji est maintenant **neutre : 👥** (au lieu de 👭, deux filles).
+671. **Trois binômes des Hugo, rejoués à deux tablettes** (captures ci-dessous, chaque fois la tablette A de la première arrivée et la tablette B de la seconde) :
+   - **fille-fille** — Lou, puis Thaïs : B dit « 👥 Tu es avec Lou : laisse cette tablette à quelqu'un d'autre et rejoins Lou. » ; A dit « Ton binôme : GUYON Thais » ;
+   - **fille-garçon** — Philippine, puis Evan : B dit « Tu es avec Philippine… » ; A dit « Ton binôme : PHILIAS Evan » ;
+   - **garçon-garçon** — Jules, puis Amauri : B dit « Tu es avec Jules… » ; A dit « Ton binôme : BOUTON Amauri ».
+   Dans les trois cas, **la moitié libre de B n'annonce personne**. Banc vert ; la déconnexion à deux navigateurs aussi.
+672. **Vu sur ces captures** : l'écran du code dit encore « Si tu as oublié ton code, **viens me le demander** » — contraire à ta règle (l'élève lève la main). Inscrit (174) et ajouté au mandat L17 : « **Si tu as oublié ton code, lève la main.** » (tes mots si tu préfères).
+
+Recharge les tablettes avant les Hugo.
+
+07/10/2026 07:25 MEMO
+
+---

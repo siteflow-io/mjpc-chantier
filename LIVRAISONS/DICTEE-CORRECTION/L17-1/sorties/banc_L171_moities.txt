@@ -1,0 +1,2 @@
+{"avant": ["Mes dictées |  | BZZETIL Tzzix |  | Se déconnecter | Dictée brevet blanc 3E | 3E Charles de ", "Mes dictées |  | BZZINAM Ezzal |  | Se déconnecter | Dictée brevet blanc 3E | 3E Charles de "], "gauche_ouvre": true, "droite_liste": true, "droite_ouvre": true, "gauche_intacte": true, "erreurs": []}
+BANC 152 (DEUX MOITIÉS) PAR LE GESTE : VERT

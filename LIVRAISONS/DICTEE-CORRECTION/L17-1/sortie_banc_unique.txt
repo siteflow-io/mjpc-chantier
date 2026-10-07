@@ -1,0 +1,50 @@
+[banc_unhtml] code 0 — 6 s
+[banc_L171_geste] code 0 — 47 s
+[banc_L171_moities] code 0 — 11 s
+  OK    modes
+  OK    fc1
+  OK    fc2
+  OK    fr
+  OK    gr
+  OK    banc_L1_geste
+  OK    banc_L2_geste
+  OK    banc_L3_geste
+  OK    banc_L5_geste
+  OK    banc_L6_geste
+  OK    banc_L6b_geste
+  OK    banc_L7_geste
+  OK    banc_L8_geste
+  OK    banc_L10_geste
+  OK    banc_L9_geste
+  OK    banc_L11_geste
+  OK    banc_L12_geste
+  OK    banc_L13_geste
+  OK    banc_L14_geste
+  OK    banc_L150_geste
+  OK    banc_L150b_geste
+  OK    banc_L15a_geste
+  OK    banc_L13b_geste
+  OK    banc_L15b_geste
+  OK    banc_L15c_geste
+  OK    banc_L15cb_accueil
+  OK    banc_L15cc_depliants
+  OK    banc_L15cd_rapide_onglet
+  OK    banc_L15d_geste
+  OK    banc_L15e_geste
+  OK    banc_L16a_geste
+  OK    banc_L15fb_geste
+  OK    banc_L15fb5_deconnexion
+  OK    banc_L15g_geste
+  OK    banc_L15h1_geste
+  OK    banc_L151b1_geste
+  OK    banc_L15h2_reel
+  OK    banc_L151c_477
+  OK    banc_L151d_geste
+  OK    banc_L15ka_moities
+  OK    banc_L15kc
+  OK    banc_traitunion
+  OK    banc_unhtml
+  OK    banc_L171_geste
+  OK    banc_L171_moities
+  OK    eleve
+BANC UNIQUE : VERT (0 échec)

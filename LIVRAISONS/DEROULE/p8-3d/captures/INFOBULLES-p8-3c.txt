@@ -1,0 +1,62 @@
+diapo à schéma et consigne d'une ligne · + bloc : Cette diapo a son schéma : écris la suite dans la diapo suivante, ou coupe : clic droit sur le schéma → Couper la diapo ici.
+diapo à schéma et consigne d'une ligne · + étape : Cette diapo a son schéma : une étape de plus va dans la diapo suivante — écris-la là, ou insère une diapo (Ctrl + Entrée).
+diapo à schéma et consigne d'une ligne · + image : Cette diapo a son schéma : pose l'image dans la diapo suivante, ou insère une diapo (Ctrl + Entrée) pour elle.
+diapo à schéma et consigne d'une ligne · + fiche… : Cette diapo a son schéma : pose la fiche dans la diapo suivante, ou insère une diapo (Ctrl + Entrée) pour elle.
+diapo à schéma et consigne d'une ligne · + vidéo… : Cette diapo a son schéma : pose la vidéo dans la diapo suivante, ou insère une diapo (Ctrl + Entrée) pour elle.
+diapo à schéma et consigne d'une ligne · + document… : Cette diapo a son schéma : pose le document dans la diapo suivante, ou insère une diapo (Ctrl + Entrée) pour lui.
+diapo à schéma, bloc consigne choisi · ▲ : Monte ce bloc d'un cran dans la diapo (Alt + ↑)
+diapo à schéma, bloc consigne choisi · + étape : Cette diapo a son schéma : une étape de plus va dans la diapo suivante — écris-la là, ou insère une diapo (Ctrl + Entrée).
+diapo à schéma, bloc consigne choisi · + bloc : Cette diapo a son schéma : écris la suite dans la diapo suivante, ou coupe : clic droit sur le schéma → Couper la diapo ici.
+diapo à schéma, bloc consigne choisi · + étape : Cette diapo a son schéma : une étape de plus va dans la diapo suivante — écris-la là, ou insère une diapo (Ctrl + Entrée).
+diapo à schéma, bloc consigne choisi · + image : Cette diapo a son schéma : pose l'image dans la diapo suivante, ou insère une diapo (Ctrl + Entrée) pour elle.
+diapo à schéma, bloc consigne choisi · + fiche… : Cette diapo a son schéma : pose la fiche dans la diapo suivante, ou insère une diapo (Ctrl + Entrée) pour elle.
+diapo à schéma, bloc consigne choisi · + vidéo… : Cette diapo a son schéma : pose la vidéo dans la diapo suivante, ou insère une diapo (Ctrl + Entrée) pour elle.
+diapo à schéma, bloc consigne choisi · + document… : Cette diapo a son schéma : pose le document dans la diapo suivante, ou insère une diapo (Ctrl + Entrée) pour lui.
+clic droit sur la consigne d'une diapo à schéma · ▲ : Monte ce bloc d'un cran dans la diapo (Alt + ↑)
+clic droit sur la consigne d'une diapo à schéma · + étape : Cette diapo a son schéma : une étape de plus va dans la diapo suivante — écris-la là, ou insère une diapo (Ctrl + Entrée).
+clic droit sur la consigne d'une diapo à schéma · + bloc : Cette diapo a son schéma : écris la suite dans la diapo suivante, ou coupe : clic droit sur le schéma → Couper la diapo ici.
+clic droit sur la consigne d'une diapo à schéma · + étape : Cette diapo a son schéma : une étape de plus va dans la diapo suivante — écris-la là, ou insère une diapo (Ctrl + Entrée).
+clic droit sur la consigne d'une diapo à schéma · + image : Cette diapo a son schéma : pose l'image dans la diapo suivante, ou insère une diapo (Ctrl + Entrée) pour elle.
+clic droit sur la consigne d'une diapo à schéma · + fiche… : Cette diapo a son schéma : pose la fiche dans la diapo suivante, ou insère une diapo (Ctrl + Entrée) pour elle.
+clic droit sur la consigne d'une diapo à schéma · + vidéo… : Cette diapo a son schéma : pose la vidéo dans la diapo suivante, ou insère une diapo (Ctrl + Entrée) pour elle.
+clic droit sur la consigne d'une diapo à schéma · + document… : Cette diapo a son schéma : pose le document dans la diapo suivante, ou insère une diapo (Ctrl + Entrée) pour lui.
+clic droit sur la consigne d'une diapo à schéma · Dupliquer le bloc : Cette diapo a son schéma : un second bloc n'y entre pas — copie ce bloc (Ctrl + C) et colle-le dans la diapo suivante
+clic droit sur la consigne d'une diapo à schéma · Monter : Alt + ↑
+clic droit sur la consigne d'une diapo à schéma · Coller ici : rien dans le presse-papiers
+clic droit sur la consigne d'une diapo à schéma · Couper la diapo ici : la diapo se coupe avant un bloc qui n'est pas le premier
+« + bloc » sur une diapo à schéma seul · + étape : Cette diapo a son schéma : une étape de plus va dans la diapo suivante — écris-la là, ou insère une diapo (Ctrl + Entrée).
+« + bloc » sur une diapo à schéma seul · + image : Cette diapo a son schéma : pose l'image dans la diapo suivante, ou insère une diapo (Ctrl + Entrée) pour elle.
+« + bloc » sur une diapo à schéma seul · + fiche… : Cette diapo a son schéma : pose la fiche dans la diapo suivante, ou insère une diapo (Ctrl + Entrée) pour elle.
+« + bloc » sur une diapo à schéma seul · + vidéo… : Cette diapo a son schéma : pose la vidéo dans la diapo suivante, ou insère une diapo (Ctrl + Entrée) pour elle.
+« + bloc » sur une diapo à schéma seul · + document… : Cette diapo a son schéma : pose le document dans la diapo suivante, ou insère une diapo (Ctrl + Entrée) pour lui.
+« + bloc » sur une diapo à schéma seul · Texte : Cette diapo a son schéma : écris ce contenu dans la diapo suivante, ou insère une diapo (Ctrl + Entrée) pour lui. [Cette diapo a son schéma : écris ce contenu dans la diapo suivante, ou insère une diapo (Ctrl + Entrée) pour lui]
+« + bloc » sur une diapo à schéma seul · Question : Cette diapo a son schéma : écris ce contenu dans la diapo suivante, ou insère une diapo (Ctrl + Entrée) pour lui. [Cette diapo a son schéma : écris ce contenu dans la diapo suivante, ou insère une diapo (Ctrl + Entrée) pour lui]
+« + bloc » sur une diapo à schéma seul · Fiche… : Cette diapo a son schéma : écris ce contenu dans la diapo suivante, ou insère une diapo (Ctrl + Entrée) pour lui. [Cette diapo a son schéma : écris ce contenu dans la diapo suivante, ou insère une diapo (Ctrl + Entrée) pour lui]
+« + bloc » sur une diapo à schéma seul · Schéma… : Cette diapo a déjà son schéma, et une diapo n'a qu'un schéma : pose le nouveau dans la diapo suivante, ou insère une diapo (Ctrl + Entrée) et pose-le là. [Cette diapo a déjà son schéma, et une diapo n'a qu'un schéma : pose le nouveau dans la diapo suivante, ou insère une diapo (Ctrl + Entrée) et pose-le là]
+« + bloc » sur une diapo à schéma seul · Image… : Cette diapo a son schéma : écris ce contenu dans la diapo suivante, ou insère une diapo (Ctrl + Entrée) pour lui. [Cette diapo a son schéma : écris ce contenu dans la diapo suivante, ou insère une diapo (Ctrl + Entrée) pour lui]
+« + bloc » sur une diapo à schéma seul · Vidéo… : Cette diapo a son schéma : écris ce contenu dans la diapo suivante, ou insère une diapo (Ctrl + Entrée) pour lui. [Cette diapo a son schéma : écris ce contenu dans la diapo suivante, ou insère une diapo (Ctrl + Entrée) pour lui]
+« + bloc » sur une diapo à schéma seul · Document… : Cette diapo a son schéma : écris ce contenu dans la diapo suivante, ou insère une diapo (Ctrl + Entrée) pour lui. [Cette diapo a son schéma : écris ce contenu dans la diapo suivante, ou insère une diapo (Ctrl + Entrée) pour lui]
+« + bloc » sur une diapo à schéma seul · Page HTML… : Cette diapo a son schéma : écris ce contenu dans la diapo suivante, ou insère une diapo (Ctrl + Entrée) pour lui. [Cette diapo a son schéma : écris ce contenu dans la diapo suivante, ou insère une diapo (Ctrl + Entrée) pour lui]
+clic droit sur la première famille · + étape : Cette diapo a son schéma : une étape de plus va dans la diapo suivante — écris-la là, ou insère une diapo (Ctrl + Entrée).
+clic droit sur la première famille · + image : Cette diapo a son schéma : pose l'image dans la diapo suivante, ou insère une diapo (Ctrl + Entrée) pour elle.
+clic droit sur la première famille · + fiche… : Cette diapo a son schéma : pose la fiche dans la diapo suivante, ou insère une diapo (Ctrl + Entrée) pour elle.
+clic droit sur la première famille · + vidéo… : Cette diapo a son schéma : pose la vidéo dans la diapo suivante, ou insère une diapo (Ctrl + Entrée) pour elle.
+clic droit sur la première famille · + document… : Cette diapo a son schéma : pose le document dans la diapo suivante, ou insère une diapo (Ctrl + Entrée) pour lui.
+clic droit sur la première famille · Couper le schéma ici : rien avant : rien à couper — fais le clic droit sur une famille plus loin : elle et la suite partiront dans un second schéma
+clic droit sur une notion · + étape : Cette diapo a son schéma : une étape de plus va dans la diapo suivante — écris-la là, ou insère une diapo (Ctrl + Entrée).
+clic droit sur une notion · + image : Cette diapo a son schéma : pose l'image dans la diapo suivante, ou insère une diapo (Ctrl + Entrée) pour elle.
+clic droit sur une notion · + fiche… : Cette diapo a son schéma : pose la fiche dans la diapo suivante, ou insère une diapo (Ctrl + Entrée) pour elle.
+clic droit sur une notion · + vidéo… : Cette diapo a son schéma : pose la vidéo dans la diapo suivante, ou insère une diapo (Ctrl + Entrée) pour elle.
+clic droit sur une notion · + document… : Cette diapo a son schéma : pose le document dans la diapo suivante, ou insère une diapo (Ctrl + Entrée) pour lui.
+clic droit sur une notion · Couper le schéma ici : Cette bulle n'est pas une bulle de tête : le schéma se coupe sur une famille, un repère, un nœud de premier niveau, une étape ou une rangée — fais le clic droit sur l'une d'elles
+clic droit sur le schéma, une consigne de plusieurs lignes copiée · + étape : Cette diapo a son schéma : une étape de plus va dans la diapo suivante — écris-la là, ou insère une diapo (Ctrl + Entrée).
+clic droit sur le schéma, une consigne de plusieurs lignes copiée · + image : Cette diapo a son schéma : pose l'image dans la diapo suivante, ou insère une diapo (Ctrl + Entrée) pour elle.
+clic droit sur le schéma, une consigne de plusieurs lignes copiée · + fiche… : Cette diapo a son schéma : pose la fiche dans la diapo suivante, ou insère une diapo (Ctrl + Entrée) pour elle.
+clic droit sur le schéma, une consigne de plusieurs lignes copiée · + vidéo… : Cette diapo a son schéma : pose la vidéo dans la diapo suivante, ou insère une diapo (Ctrl + Entrée) pour elle.
+clic droit sur le schéma, une consigne de plusieurs lignes copiée · + document… : Cette diapo a son schéma : pose le document dans la diapo suivante, ou insère une diapo (Ctrl + Entrée) pour lui.
+clic droit sur le schéma, une consigne de plusieurs lignes copiée · Monter : Alt + ↑
+clic droit sur le schéma, une consigne de plusieurs lignes copiée · Descendre : Alt + ↓
+clic droit sur le schéma, une consigne de plusieurs lignes copiée · Couper : Ctrl + X
+clic droit sur le schéma, une consigne de plusieurs lignes copiée · Coller ici : Cette diapo a son schéma : colle ce bloc dans la diapo suivante, ou insère une diapo (Ctrl + Entrée) pour lui
+clic droit sur le schéma, une consigne de plusieurs lignes copiée · Couper la diapo ici : la diapo se coupe avant un bloc qui n'est pas le premier
+clic droit sur le schéma · taille : Taille : [normal] · grand : Un schéma garde ses libellés à 32 et 26 pt pour être lu du fond : il n'a pas de taille « petit » — ce geste passe de normal à grand, et retour

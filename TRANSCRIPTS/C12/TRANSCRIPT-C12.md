@@ -15973,3 +15973,25 @@ Mesuré au hub, sur la séance des Hugo de ce matin :
 07/10/2026 09:00 MEMO
 
 ---
+
+## TOUR 547 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Pour axel, il m'a dit qu'il n'avait eu que 2 questions et que ça s'était arrêté après. ( Je ne sais pas ce qu'il a vu exactement ). Et oui pour Hortense, il ne faut jamais que des bruts soient affichés à l'élève.
+
+---
+
+## TOUR 547 — Claude (conscience n°12)
+
+Mesuré : Axel garderNote true après sa 2e question (08:45), heure fin 08:55 → dette 177 (trois options). Micro 175 promu (6.7.0-L15.1b-1p, commit 22b866013d8b, bit à bit) : noms de la taxonomie, jamais d'identifiant ; banc sur les données d'Hortense VERT.
+
+Réponse mot pour mot :
+
+678. **Axel — mesuré, ce qui s'est passé** : après sa 2e question (réussie, à 8 h 45), **il a touché « Je garde ma note (2,09/5) »**, le bouton à côté de « Répondre à une question » — c'est enregistré au hub. Ce bouton arrête les questions **d'un seul geste, sans confirmation et sans retour** : d'où « ça s'est arrêté ». L'heure finissait à 8 h 55 : il lui restait du temps. Inscrit (177). À trancher : **(a)** une confirmation (« Tu ne pourras plus répondre aux questions. Tu gardes ta note ? Oui / Non ») ; **(b)** ou le bouton n'apparaît qu'après quelques questions ; **(c)** ou on peut revenir sur ce choix jusqu'à la fin de l'heure. Dis laquelle (ou une combinaison).
+679. **Hortense — corrigé et promu : 6.7.0-L15.1b-1p** (commit `22b866013d8b`, bit à bit). **Plus jamais d'identifiant vu par un élève** : la phrase prend les noms que ta taxonomie donne aux élèves, sans doublon — « … j'ai regagné 1,87 point en répondant sur **l'accord du verbe avec le sujet, les mots qui se prononcent pareil et le passé simple**, et pour la prochaine… » ; et le détail de ses questions dit « Question regagnée : **choisir entre « son » et « sont »** » au lieu de « ortho-gram-027 ». Un identifiant inconnu ne s'affiche jamais. Banc sur les vraies données d'Hortense : vert (rouge sur la version d'avant). Registre 175 ✔, journal, point de retour ; le mandat de l'exécutante est prévenu.
+   **Test** : recharge une tablette, ouvre la dictée d'Hortense (ou d'un élève qui a répondu à des questions) : la phrase et le détail en clair.
+
+07/10/2026 12:58 MEMO
+
+---

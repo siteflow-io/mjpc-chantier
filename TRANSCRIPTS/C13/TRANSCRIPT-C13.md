@@ -974,3 +974,43 @@ Tests pour toi : aucun.
 
 07/10/2026 06:42 (heure de mon espace de travail, non vérifiée)
 MEMO
+
+---
+
+## TOUR 26 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Vérifie où il en est..
+
+---
+
+## TOUR 26 — Claude (conscience n°13)
+
+Mesuré au sas (12 h 56) : branches `deroule/p8-3c` (c6f57886, 07/10 05:33 UTC, 62 fichiers) ; pas de `deroule/p8-4`. Lu dans la NOTE de p8-3c : arrêt déclaré (la diapo « consigne d'une ligne + carte de trois familles » ne tient pas : 2 · 0 · 1 · 0 · 0), tableau de six cartes mesurées, banc unique 27 bancs dont `test-p8-3c` à 1 défaut, « ÉCHEC », p8-4 non commencée. Capture `p8-3c-diapo-plausible.png` regardée (pièce `T26-p8-3c-consigne-plus-carte.png`). p8-3c non auditée.
+
+Réponse mot pour mot :
+
+101. **Où il en est.** Il a livré p8-3c ce matin à 7 h 33, puis il s'est arrêté, volontairement. Une consigne du complément ne tient pas, et la règle lui interdit d'enchaîner sur un défaut. p8-4 n'est pas commencée : il attend.
+102. **Ce que p8-3c dit avoir fait** (je ne l'ai pas encore vérifié) :
+    - le cahier de textes n'est plus dans « À régler » ;
+    - la diapo 6 a retrouvé sa consigne seule ;
+    - les infobulles ne disent plus « Grisé » ;
+    - au tableau, les questions se dévoilent une à une, sans chevron recouvert.
+
+    Sur 27 bancs, 26 sont à zéro.
+103. **Ce qui bloque** : la diapo « consigne d'une ligne + carte de trois familles » ne tient pas lisible. Il y a 2 chevauchements et 1 trait qui traverse un mot (capture jointe).
+    - Il a mesuré six cartes tirées de ta vraie carte. Avec une consigne d'une ligne au-dessus, aucune carte de deux ou trois familles ne tient à 32/26 pt dans le moteur repris.
+    - Sans consigne, plusieurs cartes de trois familles tiennent.
+104. **Ce que je vois en plus sur la capture** : l'ancien moteur place mal. « Pléonasme » est collé à l'analogie, loin de sa famille (l'insistance), et un long trait traverse la diapo pour le rejoindre. La place libre à gauche et à droite n'est pas utilisée.
+105. **Ta décision.** Trois possibilités :
+    - (a) la diapo sans consigne, avec trois familles qui tiennent ;
+    - (b) une consigne d'une ligne et deux familles, à mesurer ;
+    - (c) mieux placer les bulles : chaque notion reste près de sa famille, et la place libre de la diapo est utilisée. On remesure ensuite ta carte de trois familles avec sa consigne. C'est une retouche de plus du moteur repris, du même ordre que les précédentes.
+
+    **Ma proposition : (c).** Sans elle, tes vraies cartes avec une consigne devront presque toujours être coupées en morceaux de deux familles. Et le défaut « une notion loin de sa famille » se produit de toute façon. Si, après (c), ça ne tient toujours pas : (b).
+
+Tests pour toi : aucun ; regarde la capture.
+
+07/10/2026 12:57 (heure de mon espace de travail, non vérifiée)
+MEMO

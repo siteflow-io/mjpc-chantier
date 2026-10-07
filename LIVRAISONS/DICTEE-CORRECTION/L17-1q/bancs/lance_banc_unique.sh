@@ -1,0 +1,5 @@
+#!/bin/bash
+cd /home/claude/KIT/anon/bench
+export FICHIER=../live_fusion.html R=/tmp/bu_fusion BASE=../live_663.html
+export BANCS_LIVRAISONS="banc_L1_geste banc_L2_geste banc_L3_geste banc_L5_geste banc_L6_geste banc_L6b_geste banc_L7_geste banc_L8_geste banc_L10_geste banc_L9_geste banc_L11_geste banc_L12_geste banc_L13_geste banc_L14_geste banc_L150_geste banc_L150b_geste banc_L15a_geste banc_L13b_geste banc_L15b_geste banc_L15c_geste banc_L15cb_accueil banc_L15cc_depliants banc_L15cd_rapide_onglet banc_L15d_geste banc_L15e_geste banc_L16a_geste banc_L15fb_geste banc_L15fb5_deconnexion banc_L15g_geste banc_L15h1_geste banc_L151b1_geste banc_L15h2_reel banc_L151c_477 banc_L151d_geste banc_L15ka_moities banc_L15kc banc_traitunion banc_unhtml banc_L171_geste banc_L171_moities banc_l17bis banc_l17bisb banc_l17bisc banc_175 banc_177 banc_trouvees banc_revient"
+ETAPES="$1" bash banc_unique_dictee.sh

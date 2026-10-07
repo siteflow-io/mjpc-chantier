@@ -16181,3 +16181,44 @@ Réponse mot pour mot :
 07/10/2026 22:04 MEMO
 
 ---
+
+## TOUR 555 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Sur la dictée tu peux rajouter aussi qu'une séance dautocorrection doit être horodatée, qu'elle devra pouvoir être branchée à terme dans le déroulé mjpc afin de pouvoir lancer l'autocorrection directement depuis le calendrier mjpc. 
+> Pour QCM : mesure déjà ce que c'est, prends connaissance de l'App, visualise. Il te faut une connaissance complète.
+
+---
+
+## TOUR 555 — Claude (conscience n°12)
+
+Dictée : dette 178 + pause §2 bis (mesuré : heure {debut, fin, cloture, classe, source, seanceId vide}, emplacement du branchement dans heureDeLaDictee, aucune trace des séances passées). QCM : app récupérée (7.7.1, 533 Ko, 43 composants, 271 fonctions, modes prof/élève/partiel, paramètres mode/qr/view) ; hub local en lecture seule (7 évaluations, 4 sessions) ; écrans professeur capturés (QCM/vues/01-07) ; séance lancée côté prof (fenêtre de présence) ; côté élève bloqué par le faux hub (onDisconnect) ; documents : journal 39 lignes, où-trouver-quoi, dettes.
+
+Réponse mot pour mot :
+
+705. **Dictée — c'est inscrit** (registre, dette 178 ; document de pause, section 2 bis). J'ai mesuré ce qui existe déjà :
+   - l'heure d'une séance porte déjà son début, sa fin, sa clôture, la classe, une « source » (aujourd'hui « dictee ») et une case vide prévue pour le numéro de la séance MJPC ;
+   - le code a déjà l'emplacement du branchement (« si la séance vient de MJPC, lire la séance du calendrier ») ;
+   - **mais chaque « Lancer » écrase la séance précédente** : il n'y a aucune trace des séances passées.
+
+   À la reprise, il faudra donc : un registre des séances d'autocorrection, horodatées et jamais effacées ; puis le lancement depuis une séance du calendrier MJPC, à cadrer avec la conscience du déroulé.
+706. **QCM — ce que j'ai déjà mesuré et vu** (app `evaluation-qcm.html` 7.7.1, 533 Ko, 8 800 lignes, 43 écrans, 271 fonctions ; une copie de ton hub en lecture seule, rien n'est écrit) :
+   - **côté professeur**, trois onglets :
+     - **Pilotage**, avec trois sous-onglets : « Préparation » (tes 7 évaluations : modifier, imprimer, dupliquer, « Prompt IA », « Nouvelle évaluation ») ; « Évaluations » ; « Pilotage classe » (choisir la classe et l'évaluation, « Lancer la session », puis une fenêtre de présence : « Tout le monde présent ») ;
+     - **Données** : « Résultats » (les sessions passées : 07/10 classe test ; 17, 18 et 19/06 Les Misérables) et « Sauvegarde » ;
+     - **Réglages** : les classes (renvoi à la console MJPC) et « Ce que lisent les élèves », l'éditeur des phrases des tablettes ;
+     - en haut : « Mode d'emploi », « Ouvrir vue tableau », « QR pilotage », « Mode test » ;
+   - **au hub** : 7 évaluations (10 à 21 questions), 4 sessions, la présence, 9 scans de QR, les réglages, les sexes des élèves ;
+   - **dans tes documents** : 39 entrées de journal, dont la dernière promotion (01/10 : l'app lit le sexe dans la fiche de la classe et ne crée plus jamais de classe) ; dans le registre, quelques dettes anciennes (l'écran « Choisis ta classe », le modèle d'absence à reprendre pour le déroulé).
+707. **Ce qui me manque encore pour une connaissance complète** — je le fais au prochain tour :
+   - le côté élève : la tablette s'est arrêtée sur mon banc, faute d'un outil (le faux hub ne sait pas encore simuler « l'élève s'est déconnecté »), ce n'est pas un défaut de l'app ;
+   - une séance en direct d'un bout à l'autre, avec les phases, la correction projetée et les résultats d'un élève ;
+   - la vue tableau, le pilotage au téléphone, le mode test, l'éditeur d'une évaluation, l'impression ;
+   - et le mode d'emploi écrit dans l'app.
+
+   Ensuite, je te rends l'ensemble avec des captures d'écran entier.
+
+07/10/2026 22:29 MEMO
+
+---

@@ -1126,3 +1126,39 @@ Tests pour toi : aucun.
 
 07/10/2026 14:27 (heure de mon espace de travail, non vérifiée)
 MEMO
+
+---
+
+## TOUR 30 — Paul
+
+Texte de Paul, mot pour mot :
+
+> à l'arrêt
+
+---
+
+## TOUR 30 — Claude (conscience n°13)
+
+Branches livrées : `deroule/p8-3d` (95b5e480), `deroule/p8-4` (ff51f3a3), `deroule/p8-5` (a5449334), chacune « TOUS LES BANCS : 0 défaut » (27, 28, 29 bancs). Audit : `regen.sh` de p8-5 identique (3d8ba32d) ; banc unique de p8-5 rejoué chez la conscience en quatre lots (6 + 8 + 8 + 7) : 29 × 0. NOTE de p8-5 : le récit se fonde sur la trame (dette n°13 · 8). Registre mis à jour. Maquette p8-5 jointe pour Paul.
+
+Réponse mot pour mot :
+
+Vérifié : les trois livraisons sont là.
+
+119. **p8-3d, p8-4, p8-5 : ça va.** J'ai rejoué chez moi les 29 bancs de la dernière livraison (ils couvrent les trois) : tous à zéro. La maquette se reconstruit à l'identique depuis son modèle.
+    - **p8-3d** : la carte de démonstration est analogie + amplification, et elle tient.
+    - **p8-4** : tu écris d'un clic dans la diapo ; sous le dernier bloc, ce que tu tapes devient un bloc ; « Changer de type » donne au bloc la disposition de son type ; en répétition, tu écris, et tout est effacé à l'arrêt.
+    - **p8-5** : en classe, tu écris dans la copie de la classe ; à « Fin de l'heure », le site te propose, diapo par diapo, de verser dans la trame (oui / non).
+120. **Il reste un défaut, que l'exécutant a signalé lui-même** : le récit de la séance se fabrique à partir de la trame, pas de ce que la classe a réellement vu dans sa copie. Si tu corriges une phrase en classe, le récit garde l'ancienne. C'est faisable, puisque la copie existe maintenant dans la maquette, et c'est déjà cadré : le récit dit ce qui s'est passé. Je l'inscris au registre (n°13 · 8). Un petit complément, **p8-5b**, le corrige : ton « ok » et je l'écris, je le dépose, et je te donne la phrase de relance.
+121. **Le registre est à jour** : les dettes n°13 · 1 à 7 sont réglées dans la maquette ; il reste la n°13 · 8.
+122. Cette conversation est devenue très longue. Je propose d'écrire la passation à la conscience n°14 dès que tu auras validé la maquette p8.
+
+Tests pour toi, sur la maquette jointe :
+- Dans l'atelier, clique sous le dernier bloc d'une diapo et tape deux lignes : un bloc apparaît. Clic droit, « Changer de type », question : il prend la disposition d'une question.
+- Clique dans le texte d'une consigne et corrige un mot.
+- « Jouer en avance » : corrige un mot, regarde le tableau, puis « ■ Arrêter » : le mot d'origine est revenu.
+- Lance une heure, corrige un mot en classe, puis « Fin de l'heure » : le site te propose de verser la diapo dans la trame. Dis oui une fois et non une autre.
+- À l'heure 2, la diapo qui suit « Les mouvements du siècle » : une consigne d'une ligne et une carte de deux familles, lisible.
+
+07/10/2026 19:28 (heure de mon espace de travail, non vérifiée)
+MEMO

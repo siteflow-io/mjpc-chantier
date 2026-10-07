@@ -1,0 +1,20 @@
+insertion des fonctions p8-5 : 20 → 5523 o
+tout : la copie de la classe au rendu : 106 → 240 o
+tout : brancher en classe : 115 → 168 o
+brancherAtelier : en classe : 134 → 184 o
+brancherAtelier : l'infobulle en classe : 25 → 221 o
+brancherAtelier : pas de barre du bloc hors de l'atelier : 83 → 99 o
+brancherAtelier : en classe, la structure ne change pas : 58 → 447 o
+ecrireDansDiapo : en classe, la copie : 30 → 92 o
+clotureHtml : la liste du versement : 255 → 206 o
+clotureHtml : l'ancienne liste, retirée : 172 → 23 o
+« Fin de l'heure » : la liste du versement s'ouvre : 42 → 130 o
+style : le versement : 47 → 488 o
+tout : 5267 o / 13 lignes → 5454 o / 13 lignes
+brancherAtelier : 3192 o / 6 lignes → 3843 o / 6 lignes
+ecrireDansDiapo : 443 o / 1 lignes → 505 o / 1 lignes
+clotureHtml : 2308 o / 7 lignes → 2110 o / 7 lignes
+p8-5-classe.js : 5503 o, 8 fonctions (p8EnClasse 88 o, p8CopieDiapo 128 o, p8EcrireCopie 427 o, p8DiffCopie 504 o, p8TextesCopie 356 o, p8Verser 326 o, p8CopieDiffere 98 o, p8ListeVersement 1343 o)
+généré maquette-pilotage-ordi-v9c15p8-manipulable.html 568915 octets · bloc repris 92432
+b1b229d76ff790459d4dbd0cab9bc7bb  v9c15p8-template.html
+3d8ba32d65dee7b3928f5caadfb14008  maquette-pilotage-ordi-v9c15p8-manipulable.html

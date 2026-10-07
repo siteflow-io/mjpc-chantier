@@ -1,0 +1,5 @@
+p8-5-classe-pilote.png / p8-5-classe-tableau.png · heure lancée : « Observe, échange, … » au pilote et au tableau ; la trame dit encore « Observe, discute, fais une hypothèse sur le Romantisme. »
+p8-5-fin-liste.png · « Fin de l'heure » : Diapo 1 · « Analyse d'images : la routine » — 1 texte écrit en classe : / la classe a vu « Observe, échange, fais une hypothèse sur le Romantisme. » — la trame dit « Observe, discute, fais une hypothèse sur le Romantisme. » / Verser dans la trame ? Oui, verser Non, garder la trame
+p8-5-fin-oui.png · après « Oui, verser » : la trame dit « Observe, échange, fais une hypothèse sur le Romantisme. »
+p8-5-fin-non.png · après « Non, garder la trame » : la trame dit « Observe, échange, fais une hypothèse sur le Romantisme. », la copie de la classe garde « … fais une idée … »
+la répétition : après « ■ Arrêter », copie {}, trame identique : true

@@ -854,3 +854,52 @@ Tests pour toi : aucun pour l'instant.
 
 06/10/2026 21:21 (heure de mon espace de travail, non vérifiée)
 MEMO
+
+---
+
+## TOUR 23 — Paul
+
+Capture jointe (pièce `pieces/T23-paul-repetition-question.png` : la maquette p8 en « Jouer en avance — répétition », diapo 8 de l'heure 2, bloc question à deux questions, le tableau à droite). Texte de Paul, mot pour mot :
+
+> j'ai juste une question: pourquoi quand je fais la répétition, je ne peux plus modifier le texte au tableau? en effet, en flux normal de classe, je suis censé pouvoir toujours modifier des choses au tableau, d'autant plus quand ce sont des réponses élèves que je note, ou alors une modif etc. J'ai déjà cadré beaucoup de choses, donc il y a peut-être une raison (et peut etre dans mes mots) donc je veux savoir. Enfin, un défaut de chevauchement sur des questions. regarde la vue tableau, tant qu'il n'y a pas de réponse élève, le chevron est mangé par la deuxième question, d'ailleurs, celle ci apparait tout de suite, seules les réponses sont dévoilées, or, cela va à l'encontre du dévoilement au fur et à mesure. Enfin, je reviens à ma question initiale: en fait, c'est très fastidieux de devoir passer par un menu pour entrer des choses dans la diapo. J'aimerais pouvoir écrire directement dedans. Je sais que cela peut perturber la notion d'objet etc, mais c'est en fait ma façon de travailler habituelle. Pour ce qui est des schémas, je veux en fait des exemples plausibles, pas des choses impossibles comme présentées dans ton message précédent.
+
+---
+
+## TOUR 23 — Claude (conscience n°13)
+
+Cherché dans les cadrages : cadrage 1 §2.5, §8.4, §9.1 ; cadrage 4 §0.1, §1.5. Mesuré dans la maquette p8-3b (`rep2.mjs`) : éditables dans la diapo, en atelier comme en répétition = 2 (champs de réponse « ini » et « dit ») ; frappe dans la question : rien écrit ; frappe dans une réponse en répétition : écrit (pièce `T23-mesure-repetition-reponse.png`). Registre des dettes (production) : section n°13 ouverte, dettes 1 à 7.
+
+Réponse mot pour mot :
+
+88. **Ta question sur la répétition : il n'y a pas de raison dans tes mots, c'est un manque de la maquette.** J'ai vérifié dans la maquette p8 :
+    - seules les réponses (les initiales et ce qui a été dit) s'écrivent. En répétition, j'en ai tapé une : elle s'écrit bien ;
+    - le texte de la diapo lui-même (la question, la consigne) ne s'écrit nulle part directement, ni en répétition, ni dans l'atelier.
+
+    Or ton cadrage dit le contraire. D'une part, le cadrage 1 §8.4 : ce que tu modifies en séance vit dans la copie de la classe, et à la fin de l'heure le site te propose de le verser dans la trame, diapo par diapo. D'autre part, le cadrage 4 §1.5 : la répétition est le même écran que la classe, et tout est oublié à l'arrêt. Le site actuel, lui, le fait : « Clic dans un texte pour l'écrire ».
+89. **Les questions au tableau** : sur ta capture, je vois les deux défauts :
+    - le chevron de la réponse vide est recouvert par la question suivante ;
+    - la question suivante paraît d'emblée, alors que seules les réponses se dévoilent.
+90. **Écrire directement dans la diapo.** Ma proposition, en partant du site actuel et de tes cadrages :
+    - tout texte de la diapo s'écrit d'un clic, comme dans le site actuel. Dans l'atelier, ça va dans la trame. En classe, ça va dans la copie, versée à la fin de l'heure si tu dis oui. En répétition, c'est oublié à l'arrêt ;
+    - sous le dernier bloc, tu cliques et tu écris : ça devient un bloc de texte, sans passer par un menu. Entrée ouvre une nouvelle ligne, qui se dévoilera à son tour ;
+    - le menu « + bloc » ne sert plus qu'à ce qui n'est pas du texte libre : question, schéma, image, fiche, vidéo, document ;
+    - la notion d'objet ne se perd pas : ce que tu tapes devient un bloc, avec son identité, et un clic droit en change le type (en question, par exemple).
+
+    **Ton mot.**
+91. **Les schémas : des exemples plausibles**, tirés de ton chapitre et avec tes mots, chacun sur sa diapo :
+    - ta vraie carte des figures de style ;
+    - une frise du siècle, pour l'activité « La frise du siècle » ;
+    - un tableau des quatre mouvements (classicisme, romantisme, Parnasse, symbolisme), avec les phrases de ta consigne.
+
+    Je l'ajoute au complément p8-3c.
+92. **Le registre des dettes** a maintenant sa section n°13, avec les 7 dettes de cette conscience : https://github.com/siteflow-io/monsieurjaipascompris/blob/main/docs/MJPC6-DETTES.md
+93. **La suite, en une seule relance de l'exécutant**, après ton mot sur 90 :
+    - p8-3c, les corrections : le cahier, la simulation remplacée par les exemples plausibles, les infobulles, les questions au tableau ;
+    - puis p8-4 : écrire directement dans la diapo, et pouvoir modifier en répétition et en classe.
+
+    Je t'écris les deux compléments et je te les soumets ensemble.
+
+Tests pour toi : aucun.
+
+07/10/2026 06:34 (heure de mon espace de travail, non vérifiée)
+MEMO

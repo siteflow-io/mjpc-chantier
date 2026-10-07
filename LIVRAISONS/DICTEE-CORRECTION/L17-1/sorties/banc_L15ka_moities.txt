@@ -1,0 +1,2 @@
+{"bon": [false, false], "binomes_inchanges_bon": true, "mauvais": [false, true], "texte": true, "binomes_inchanges_mauvais": true}
+BANC L15k-a : VERT

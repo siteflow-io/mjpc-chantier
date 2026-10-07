@@ -1050,3 +1050,44 @@ Tests pour toi : aucun.
 
 07/10/2026 13:12 (heure de mon espace de travail, non vérifiée)
 MEMO
+
+---
+
+## TOUR 28 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Ok
+
+---
+
+## TOUR 28 — Claude (conscience n°13)
+
+Audit de p8-3c : `regen.sh` identique (ce10a90c) ; banc unique rejoué chez la conscience en quatre lots (7 + 7 + 7 + 6) : 26 × 0, `test-p8-3c` 1 défaut (déclaré). Faisabilité mesurée (`faisab.mjs`, `p8MesureDiapo`, diapo 15) : 8 familles seules tiennent ; 5 paires sur 28 (an+am, an+at, op+at, in+at, am+at). Lu dans le gabarit p8-3c : pas de `BroadcastChannel` ; `lancerRepetition` / `arreterRepetition` gardent et restaurent l'état du jeu, pas le contenu ; pas de copie de classe. Écrits et soumis, non déposés (`C13/soumis2/`) : compléments p8-3d, p8-4 (version 2), p8-5, ajout au dispositif. Registre : ligne d'état ajoutée à la section n°13.
+
+Réponse mot pour mot :
+
+Voici les trois vérifications. Le tout est joint, et rien n'est déposé.
+
+109. **p8-3c : vérifiée.** J'ai rejoué ses 27 bancs chez moi : 26 sont à zéro. Le 27e échoue sur la consigne que j'avais mal posée. Tout le reste est bon : le cahier, la diapo 6, les infobulles, les questions au tableau.
+110. **Ce qui tient sous une consigne d'une ligne**, mesuré par moi sur 36 cartes tirées de ta vraie carte :
+    - chaque famille seule tient ;
+    - 5 paires sur 28 tiennent ;
+    - aucune carte de trois familles ne tient.
+
+    Pour tes vraies cartes, ça veut dire : avec une consigne au-dessus, deux familles au plus, et pas n'importe lesquelles ; sans consigne, trois peuvent tenir. Le complément **p8-3d** pose donc sur la diapo de démonstration la plus grande carte qui tient : analogie + amplification.
+111. **p8-4 (écrire dans la diapo), vérifiée point par point :**
+    - **faisable tel quel** : écrire d'un clic, le bloc tapé sous le dernier bloc, « Changer de type » ;
+    - **à compléter** : la répétition garde déjà l'état du jeu et le restaure à l'arrêt, mais pas le texte des diapos. Il faut l'étendre ;
+    - **pas faisable tel que je l'avais écrit** : le test « un autre onglet modifie la diapo », car la maquette ne fait rien circuler entre onglets. Il est remplacé par un redessin que la maquette fait vraiment ;
+    - **la copie de la classe n'existe pas dans la maquette** : il n'y a qu'une séance. Écrire en classe, puis te proposer à la fin de l'heure de verser chaque diapo dans la trame (ton cadrage 1 §8.4), passe donc dans une livraison à part, **p8-5**. C'est déjà cadré, il n'y a rien à trancher.
+112. **Le placement des bulles** (la notion loin de sa famille) : je ne l'ai pas essayé ce tour-ci. Ce n'est pas bloquant. Je ne te le proposerai que si un essai fait tenir davantage.
+113. **Le dispositif** reçoit la règle « audit de faisabilité avant tout mandat » (texte joint).
+114. **À ton « ok »**, je dépose les trois compléments et la règle, et tu relances l'exécutant avec cette phrase :
+
+> Tu es l'exécutant de MJPC sur le déroulé. Lis en entier `MANDATS/MANDAT-DEROULE-MAQUETTE-P8.md`, puis `MANDATS/COMPLEMENT-DEROULE-P8-3d.md`, `MANDATS/COMPLEMENT-DEROULE-P8-4.md` et `MANDATS/COMPLEMENT-DEROULE-P8-5.md` dans ce dépôt, et fais : les livraisons p8-3d, p8-4 et p8-5, chacune sur sa branche, puis arrête-toi.
+
+Tests pour toi : aucun.
+
+07/10/2026 13:46 (heure de mon espace de travail, non vérifiée)
+MEMO

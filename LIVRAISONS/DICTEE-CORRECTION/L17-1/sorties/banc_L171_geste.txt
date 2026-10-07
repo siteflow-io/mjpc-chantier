@@ -1,0 +1,3 @@
+{"garde": [["Lance d’abord la séance, puis modifie ta correction si tu veux."], true], "lancer": [true, true, true], "amenage": ["azzoset_gzzov", "rzzetek_gzzov"], "amenage_ok": true, "annonce": true, "assis": [["bzzetil_tzzix", null]], "copie_corrigee": true, "absent": [true, true, true, []], "parti": [true, true, "parti"], "parti_decoche": true, "revient": ["azzuram_ezzam", "azzuram_ezzam", null, true], "ines": true, "liberes": true, "erreurs": []}
+conditions : {'garde': True, 'lancer': True, 'amenage': True, 'annonce': True, 'assis': True, 'copie_corrigee': True, 'absent': True, 'parti': True, 'parti_decoche': True, 'revient': True, 'ines': True, 'liberes': True, 'propre': True}
+BANC L17-1 PAR LE GESTE : VERT

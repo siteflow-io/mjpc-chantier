@@ -1014,3 +1014,39 @@ Tests pour toi : aucun ; regarde la capture.
 
 07/10/2026 12:57 (heure de mon espace de travail, non vérifiée)
 MEMO
+
+---
+
+## TOUR 27 — Paul
+
+Texte de Paul, mot pour mot :
+
+> En fait je ne devrais pas avoir à donner des consignes aussi précises. Il faut faire un audit de ce qui est faisable ou non, et cadrer le mandat en ce sens. C'est aussi simple que ça. Que proposes-tu ?
+
+---
+
+## TOUR 27 — Claude (conscience n°13)
+
+Aucune mesure ce tour : une proposition de méthode (audit de faisabilité avant tout mandat), son application immédiate (p8-3c, placement, p8-4) et une règle à écrire au dispositif — en attente du « ok » de Paul.
+
+Réponse mot pour mot :
+
+Tu as raison, et la faute est de mon côté. J'ai écrit « une carte de trois familles, mesure à zéro » sans l'avoir mesurée, alors que j'avais les outils pour le faire : je l'avais fait pour ta carte entière au tour 10. Ce n'était pas à toi de trancher un exemple.
+
+106. **Ma proposition de méthode, à partir de maintenant :**
+    - avant d'écrire un mandat ou un complément, je joue ou je mesure moi-même chaque consigne sur la maquette du moment ;
+    - le mandat ne demande que des résultats que j'ai vus possibles, avec leur mesure ;
+    - quand un résultat dépend d'une mesure que je ne peux pas faire avant, le mandat donne le but, la façon de mesurer, et ce que l'exécutant fait si ça ne passe pas. C'est une issue déjà tranchée, et jamais un arrêt pour te demander ;
+    - toi, tu ne tranches que le pédagogique : jamais un exemple, une disposition ou un réglage.
+107. **Appliqué tout de suite :**
+    - **p8-3c** : je l'audite. Je mesure moi-même quelles cartes tirées de ta vraie carte tiennent sous une consigne d'une ligne. Le complément dira alors : « la plus grande carte qui tient », choisie par la mesure ;
+    - **le placement des bulles** (la notion loin de sa famille) : avant de te le proposer, je l'essaie moi-même sur ta vraie carte. Je ne te le proposerai, captures à l'appui, que s'il fait tenir davantage sans rien casser ;
+    - **p8-4** (écrire dans la diapo) : avant toute relance, je vérifie point par point ce que la maquette permet. Par exemple : sait-elle déjà garder une copie de la classe, et proposer le versement à la fin de l'heure ? Je réécris le complément sur ce qui est faisable.
+108. **La règle s'écrit aussi dans le dispositif**, pour les consciences suivantes : « avant tout mandat, la conscience mesure la faisabilité de chaque consigne ; un mandat ne demande que ce qu'elle a vu possible ».
+
+Ton « ok » : je fais les trois vérifications, je réécris, et je te présente le tout en un seul message.
+
+Tests pour toi : aucun.
+
+07/10/2026 13:12 (heure de mon espace de travail, non vérifiée)
+MEMO

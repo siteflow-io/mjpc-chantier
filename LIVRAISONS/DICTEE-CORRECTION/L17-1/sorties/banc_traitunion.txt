@@ -1,0 +1,2 @@
+{"leto_extras": [["-", "C"], ["-", "C"]], "leto_note": 0, "notes_diff": [], "notes_identiques": true, "corbeille": 0, "la_bas": true, "saint_laurent": true, "trop": ["« - » | TRAIT D’UNION EN TROP | au forfait", "« - » | TRAIT D’UNION EN TROP | au forfait"], "moins05_sur_tiret": false}
+BANC TRAIT D'UNION : VERT | erreurs : []

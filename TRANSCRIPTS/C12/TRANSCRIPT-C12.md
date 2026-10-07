@@ -16047,3 +16047,58 @@ Réponse mot pour mot :
 07/10/2026 14:45 MEMO
 
 ---
+
+## TOUR 550 — Paul
+
+Texte de Paul, mot pour mot :
+
+> non, tu dois en fait voir ce qui est bon à prendre d'elle, garder tes micros, et promouvoir une version d'ensemble. Dis moi, je ne dis pas promeus pour l'instant.
+
+---
+
+## TOUR 550 — Claude (conscience n°12)
+
+Fusion à trois (base 1l, prod 1q, L17-1) : un seul conflit (la version). Registre unique « places/ » (tablettes/ retiré) ; défaut trouvé chez elle : « parti » décoché par le battement d'une moitié restée ouverte → décoché seulement sur une nouvelle arrivée ; banc L17-1 accordé. Banc unique lancé (outils de banc récupérés au sas).
+
+Réponse mot pour mot :
+
+684. **La version d'ensemble est faite, en local : 6.7.0-L17-1q.** Rien n'est déposé ni promu. Je suis parti de la production d'aujourd'hui (tes cinq micros de ce matin) et j'ai fusionné dessus la livraison L17-1 de l'exécutante. Un seul conflit de texte est apparu (le numéro de version) ; tout le reste s'est assemblé sans heurt.
+685. **Ce que je garde d'elle : tout L17-1.** (binômes fixés pour la séance puis libérés ; la garde ; absent / parti / revient ; « Binômes imposés » ; l'aménagé sur les mêmes mots ; Inès et le « 12 / 11 » plafonné ; le banc des deux moitiés ; ses bancs mis d'accord avec mes micros d'hier.)
+686. **Ce que j'ai corrigé chez elle.** Un seul registre « qui est assis où » (celui de la production, qui connaît l'heure d'arrivée) ; un vrai défaut : « parti » aurait été décoché tout seul en moins d'une minute par une moitié restée ouverte — maintenant seulement quand il revient vraiment (il retape son code).
+687. **Ce qui n'est pas prouvé** (je ne sais pas) : le plafond « 12 / 11 » sur le cas réel d'Emma Danard ; son contrôle de l'élève qui revient, écrit pour réussir à tous les coups.
+688. **Un changement pour ta classe** : avec L17-1, une tablette n'annonce le binôme qu'une fois la séance lancée… Ça te va ?
+689. **Le banc unique tourne** : les 20 premières étapes vertes, aucune rouge ; il reste 27 bancs.
+
+07/10/2026 15:10 MEMO
+
+---
+
+## TOUR 551 — Paul
+
+Texte de Paul, mot pour mot :
+
+> 688, non, ça va contre ce qu'on a cadré hier. POurquoi c'est changé? Explique moi. et 687 doit être élucidé et testé.
+
+---
+
+## TOUR 551 — Claude (conscience n°12)
+
+688 : cause = mon mandat (la phrase « avant Lancer » omise) ; corrigé (aperçu avant Lancer = binomesSeanceL17, comme la console). Mesuré : peerHelp au hub par dictée (cochée : Franklin, Baudelaire/Dylan ; décochée : Hugo, Turing, Fritz/Dylan, brevet blanc 3E). 687 : « 12/11 » = un mot A compté à l'écriture (le Suivi affichait 11/11 ; mon « 12/11 au Suivi » d'hier était faux) ; dégât prouvé : « Terminée » à tort dans « Mes dictées » ; corrigé (cinq écritures + la lecture) ; banc_trouvees rouge en ligne, vert en fusion. Revient : banc à trois cas ; le cas 2 manquait (rouge sur L17-1) ; complété (vert). Versions 1q2, 1q3.
+
+Réponse mot pour mot :
+
+690. **Pourquoi c'est changé (688) : c'est ma faute, pas celle de l'exécutante.** (le cadrage du tour 521 ; mon mandat a omis « avant Lancer » ; corrigé dans la version d'ensemble ; la case « Binômes imposés » cochée/décochée selon les dictées — à cocher où tu veux les binômes.)
+691. **687, élucidé et testé.** (le « 12 / 11 » : un mot « Attention graphie » compté par la tablette ; le vrai dégât prouvé : « Terminée » à tort dans « Mes dictées » ; corrigé, rouge en ligne / vert ; l'élève qui revient : trois cas, le cas 2 manquait, complété et vert.)
+692. **Où j'en suis** : version 6.7.0-L17-1q3 ; bancs « deux tablettes » et émojis verts ; le banc de la moitié libre de la tablette exclue rouge (diagnostic à finir) ; banc unique à rejouer ; captures ; dépôt.
+
+07/10/2026 16:40 MEMO
+
+---
+
+## TOUR 552 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Continuer
+
+---

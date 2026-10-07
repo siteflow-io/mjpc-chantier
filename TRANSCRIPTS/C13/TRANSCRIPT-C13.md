@@ -942,3 +942,35 @@ Tests pour toi : aucun.
 
 07/10/2026 06:40 (heure de mon espace de travail, non vérifiée)
 MEMO
+
+---
+
+## TOUR 25 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok
+
+---
+
+## TOUR 25 — Claude (conscience n°13)
+
+Déposés au sas : `MANDATS/COMPLEMENT-DEROULE-P8-3c.md`, `MANDATS/COMPLEMENT-DEROULE-P8-4.md` ; une ligne à `docs/MJPC6-OU-TROUVER-QUOI.md` (production). Relus au blob.
+
+Réponse mot pour mot :
+
+Les deux compléments sont déposés. Je les ai relus juste après l'envoi : identiques octet pour octet.
+
+97. **Le complément p8-3c** : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/COMPLEMENT-DEROULE-P8-3c.md
+98. **Le complément p8-4** : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/COMPLEMENT-DEROULE-P8-4.md
+99. **« Où trouver quoi »**, en production, les mentionne.
+100. **Relance** : dans la même session ou dans une nouvelle (environnement « CODE BOULOT », dépôt `mjpc-chantier`, mode « Accept edits »), colle cette phrase :
+
+> Tu es l'exécutant de MJPC sur le déroulé. Lis en entier `MANDATS/MANDAT-DEROULE-MAQUETTE-P8.md`, puis `MANDATS/COMPLEMENT-DEROULE-P8-3c.md`, puis `MANDATS/COMPLEMENT-DEROULE-P8-4.md` dans ce dépôt, et fais : la livraison p8-3c, puis la livraison p8-4, chacune sur sa branche, puis arrête-toi.
+
+Quand il s'est arrêté : « livré ».
+
+Tests pour toi : aucun.
+
+07/10/2026 06:42 (heure de mon espace de travail, non vérifiée)
+MEMO

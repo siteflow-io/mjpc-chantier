@@ -903,3 +903,42 @@ Tests pour toi : aucun.
 
 07/10/2026 06:34 (heure de mon espace de travail, non vérifiée)
 MEMO
+
+---
+
+## TOUR 24 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok pour ta proposition: mais du coup, au clic droit si je choisis le type, l'UI change. ce n'est pas grave, mais l'idée est aussi que le contrat visuel de chaque type soit utilisé à chaque fois. ainsi, je n'ai plus de question à me poser sur la disposition etc. pour les schémas, plausible voulait dire schéma qui rentre dans une diapo normale, et schéma précédé d'une phrase de consigne, c'est tout.
+
+---
+
+## TOUR 24 — Claude (conscience n°13)
+
+« ok » sur le point 90. Complément p8-3c mis à jour (schéma plausible selon Paul, bloc question au tableau) et complément p8-4 écrit (écrire directement dans la diapo ; « Changer de type » = contrat visuel du type) — tous deux dans `C13/soumis/`, soumis, non déposés.
+
+Réponse mot pour mot :
+
+Compris :
+- **le type décide de la disposition**. Quand tu changes le type d'un bloc, il prend en entier la disposition de ce type, exactement comme s'il avait été créé par le menu. Tu n'as rien à régler ;
+- **un schéma plausible**, c'est un schéma qui tient dans une diapo normale, précédé d'une phrase de consigne, rien de plus.
+
+94. **Le complément p8-3c** (joint, mis à jour) fait corriger :
+    - le cahier de textes ;
+    - la diapo 6 de l'heure 2, qui redevient sa consigne seule. Juste après, une diapo nouvelle porte une consigne d'une ligne prise dans ton chapitre, puis une carte de trois familles de ta vraie carte, qui tient lisible ;
+    - les infobulles sans « Grisé » ;
+    - les questions au tableau : plus de chevron recouvert, et chaque question se dévoile à son tour.
+95. **Le complément p8-4** (joint) : écrire directement dans la diapo.
+    - Un clic dans un texte, et tu l'écris : dans l'atelier, ça va dans la trame ; en classe, dans la copie, versée à la fin de l'heure si tu dis oui ; en répétition, c'est oublié à l'arrêt.
+    - Sous le dernier bloc, tu cliques et tu écris : c'est un bloc de texte. Entrée ouvre une nouvelle ligne, qui se dévoilera à son tour.
+    - Clic droit, puis « Changer de type » : le bloc prend la disposition de son type. Chaque ligne devient un élément du nouveau type.
+    - Les bancs vérifient tout ça par le geste, et vérifient aussi que rien ne s'efface pendant que tu tapes.
+96. **À ton « ok »**, je dépose les deux, et tu relances l'exécutant, dans la même session ou une nouvelle, avec cette phrase :
+
+> Tu es l'exécutant de MJPC sur le déroulé. Lis en entier `MANDATS/MANDAT-DEROULE-MAQUETTE-P8.md`, puis `MANDATS/COMPLEMENT-DEROULE-P8-3c.md`, puis `MANDATS/COMPLEMENT-DEROULE-P8-4.md` dans ce dépôt, et fais : la livraison p8-3c, puis la livraison p8-4, chacune sur sa branche, puis arrête-toi.
+
+Tests pour toi : aucun.
+
+07/10/2026 06:40 (heure de mon espace de travail, non vérifiée)
+MEMO

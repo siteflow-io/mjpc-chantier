@@ -16125,3 +16125,31 @@ Texte de Paul, mot pour mot :
 > Continuer
 
 ---
+
+## TOUR 553 — Claude (conscience n°12)
+
+Banc unique terminé (l'étape « eleve » demandait BASE=6.6.3) : 53 étapes vertes, 0 échec. Dépôt au sas LIVRAISONS/DICTEE-CORRECTION/L17-1q/ (fichier 1 009 469 o md5 084deaf433405197a2041b22dc4e7f26, NOTE, sortie, bancs, captures). Présenté pour « promeus ».
+
+Réponse mot pour mot :
+
+697. **Le banc unique complet est vert sur la version d'ensemble 6.7.0-L17-1q3 : 53 étapes, 0 échec.** Il couvre tout le kit, toutes les livraisons, L17-1 accordé, mes micros du 07/10, les deux nouveaux bancs (« trouvées » sur la copie réelle de Danard, « revient » avec les trois cas de ta règle) et la vue élève, identique à la référence.
+698. **Déposé au sas** (rien n'est promu) : https://github.com/siteflow-io/mjpc-chantier/blob/main/LIVRAISONS/DICTEE-CORRECTION/L17-1q/NOTE.md. Le dossier contient le fichier (1 009 469 o, md5 `084deaf433405197a2041b22dc4e7f26`), la NOTE, la sortie du banc unique, les bancs et les captures. Deux captures d'écran entier ci-dessous :
+   - ton Suivi pendant l'heure, à l'étape 1, avec un élève **« parti »** (orange) et un **« absent »** (rouge) ;
+   - une tablette en deux moitiés : à gauche l'élève connecté, « Ton binôme : HZZINOS Czzov » ; à droite, la place qui attend ce binôme.
+699. **Ce que la promotion changera pour toi** :
+   - les binômes sont annoncés dès la connexion, et figés au clic sur « Lancer » ;
+   - « absent » se coche pour un élève qui n'a pas commencé, « parti » pour un élève qui avait commencé ; un élève parti qui revient retape son code, et sa case se décoche seule ;
+   - **la case « Binômes imposés » (Préparation) décide, dictée par dictée.** Aujourd'hui elle est cochée pour les Franklin et la Baudelaire des Dylan, décochée pour les Hugo, les Turing, la Fritz des Dylan et le brevet blanc des 3E (là : placement libre) ;
+   - le reste de L17 (L17-2 à L17-8) n'est pas dedans : l'exécutante devra repartir de cette version d'ensemble.
+700. **Si tu dis « promeus »**, je promeus ce fichier tel quel (bit à bit), avec le journal et le point de retour. Ensuite j'écris en tête du mandat que l'exécutante part de cette version pour L17-2.
+
+**Tests après promotion** (recharge d'abord) :
+   1. Ouvre le Suivi d'une dictée où la case est cochée, **sans lancer** : l'étape 1 montre « Binômes imposés (d'après les erreurs) ».
+   2. Sur une tablette en « 2 élèves », connecte un élève : « Ton binôme : … » s'affiche **avant** « Lancer ».
+   3. Connecte son binôme sur une **autre** tablette : il lit « Tu es avec … : … rejoins … ».
+   4. Clique « Lancer » : les paires ne changent pas.
+   5. Coche « absent » un élève qui n'a pas commencé : son binôme est réapparié ou reste seul ; décoche-le : il retrouve son binôme si celui-ci n'a pas commencé avec un autre.
+
+07/10/2026 19:18 MEMO
+
+---

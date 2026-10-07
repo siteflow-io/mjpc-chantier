@@ -15947,3 +15947,29 @@ Recharge les tablettes avant les Hugo.
 07/10/2026 07:30 MEMO
 
 ---
+
+## TOUR 546 — Paul
+
+Texte de Paul, mot pour mot :
+
+> voilà trois écrans: les deux premiers, j'ai des questions sur axel et adèle, et la troisième, hortense voit les intitulés bruts de la taxo.
+
+(captures : le Suivi des Hugo — Axel « Corrige 41/43 », Adèle « Tuteur de Axel », puis Axel « Questions 2/27 » ; la tablette d'Hortense : « en répondant sur ortho-gram-008 et … »)
+
+---
+
+## TOUR 546 — Claude (conscience n°12)
+
+Mesuré au hub : Adèle (1) ↔ Axel (43), « Tuteur de » = fini avec binôme pas fini ; Axel 28 ratés → 27 questions à 0,12 pt, la moitié des ratés = un autre mot du texte ; Hortense : regain.notions = identifiants (taxonomie : noms de famille disponibles). Dettes 175, 176 ; micro proposé pour 175.
+
+Réponse mot pour mot :
+
+Mesuré au hub, sur la séance des Hugo de ce matin :
+
+675. **Adèle « Tuteur de Axel »** : c'est leur binôme (le moins d'erreurs avec le plus d'erreurs : **Adèle 1 erreur, Axel 43** — le plus grand écart de la classe). « Tuteur de … » est l'étiquette que ton Suivi donne à un élève **qui a fini alors que son binôme n'a pas fini** ; dès qu'Axel a terminé sa correction, Adèle est passée à « Terminé » (ta deuxième capture).
+676. **Axel** : 43 erreurs, toutes retrouvées, mais **28 essais ratés** → **27 questions** à faire (une par essai raté, le premier offert), chacune ne rend que **0,12 point** (5 ÷ 43) ; il en a fait 2, réussies (+0,23) → « Questions 2/27 ». Et ce qui frappe dans ses essais : **la moitié ne sont pas des fautes d'orthographe, c'est un autre mot du texte** — pour « façades » il a tapé « avenus », « avenues » ; pour « travail », « logement » deux fois ; pour « avaient », « perdu » : **il ne retrouvait pas, sur sa copie, la place du mot caché**, et il essayait les mots voisins. Deux choses à trancher (inscrites, 176) : **(a)** plafonner le nombre de questions (par exemple 10, ou ce que tu veux) ; **(b)** pour un tel élève, l'astuce 💡 (déjà prévue au-delà de 20 erreurs) aide à trouver la place — ou autre chose selon toi.
+677. **Hortense : « en répondant sur ortho-gram-008 et ortho-gram-027… »** — un vrai défaut (175) : la phrase reprend **les identifiants** des notions de ses questions réussies, au lieu de leurs noms. Ce qu'elle devrait lire, avec les noms que ta taxonomie donne aux élèves, sans doublon : « … j'ai regagné 1,87 point en répondant sur **l'accord du verbe avec le sujet, le passé simple et les mots qui se prononcent pareil**, et pour la prochaine… ». **Dis « micro »** et je le corrige tout de suite (je ne touche que cette phrase) ; sinon, il part dans L17-5, qui refait déjà cette phrase.
+
+07/10/2026 09:00 MEMO
+
+---

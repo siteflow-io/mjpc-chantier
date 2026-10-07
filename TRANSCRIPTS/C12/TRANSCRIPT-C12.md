@@ -15851,3 +15851,25 @@ Rejoué ce matin sur une copie de tes données des Hugo, avec la version en lign
 07/10/2026 06:55 MEMO
 
 ---
+
+## TOUR 542 — Paul
+
+Texte de Paul, mot pour mot :
+
+> 663, oui c'est ce que j'ai déjà fait: mais je ne veux pas avoir à le faire, parce que ça prend encore du temps d'annoncer les binomes. Je veux ce que j'ai dit juste avant. pour ta question liée: non, pas besoin parce qu'il suffit de recharger l'écran pour voir apparaitre le combien etes vous, normalement. mesure et réponds sur preuve.
+
+---
+
+## TOUR 542 — Claude (conscience n°12)
+
+Mesuré (banc https, copie Franklin, code de test) : « 1 élève » → code → rechargement → écran du code (cd_places {n:1} retenu), pas la question ; « ← Retour » la ramène. Mandat L17-1 bis tranché : la question reste ; L17-2 doit faire revenir la question au rechargement.
+
+Réponse mot pour mot :
+
+665. **Ta règle (« Tu es avec Lou : laisse cette tablette à quelqu'un d'autre et rejoins Lou. ») est bien dans le mandat** (L17-1 bis) — tu n'auras plus à annoncer les binômes. Elle arrivera avec la livraison L17 ; pour ce matin, la version en ligne ne l'a pas.
+666. **« Il suffit de recharger pour revoir « Combien êtes-vous ? » » — mesuré, ce n'est pas le cas aujourd'hui.** Preuve, sur une copie de tes données des Franklin (Emma Danard, code de test) : « 1 élève » → code → « Mes dictées » ; **rechargement → l'écran du code revient, pas la question** ; la tablette **retient le choix « 1 élève »** (elle le garde en mémoire : `cd_places = {n:1}`) ; il faut toucher **« ← Retour »** pour revoir « Combien êtes-vous ? ». **Ce sera vrai avec L17** : la remise à zéro au rechargement (L17-2) ne garde plus rien, donc le rechargement ramènera toujours à la question — je l'ai écrit noir sur blanc dans le mandat, avec son banc. Donc d'accord : la question reste, pas de changement de plus.
+   **Ce matin** : une élève qui a choisi « 1 élève » par erreur touche **« ← Retour »** sur l'écran du code (pas besoin de recharger).
+
+07/10/2026 07:00 MEMO
+
+---

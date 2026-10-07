@@ -16153,3 +16153,31 @@ Réponse mot pour mot :
 07/10/2026 19:18 MEMO
 
 ---
+
+## TOUR 554 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Promeus puis on s'arrête sur correction dictée. Il faudra bien finaliser cette pause. On doit partir sur QCM maintenant.
+
+---
+
+## TOUR 554 — Claude (conscience n°12)
+
+Promu 6.7.0-L17-1q3 (commit 87414d97e88c, bit à bit) ; journal, point de retour, dettes ✔ ; pause : MANDATS/PAUSE-CORRECTION-DICTEE.md, MANDAT-L17 « EN PAUSE » ; QCM : evaluation-qcm.html et le nœud qcm du hub ; une question.
+
+Réponse mot pour mot :
+
+701. **Promu : correction_dictee 6.7.0-L17-1q3** (commit `87414d97e88c`, contrôlé bit à bit, 1 009 469 o). Journal, point de retour (6.7.0-L15.1b-1q), registre : dettes 146, 152, 154, 156, 157, 158, 168, 169 ✔ ; 160 en partie.
+702. **La pause est finalisée** :
+   - **un document de reprise au sas** : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/PAUSE-CORRECTION-DICTEE.md. Il contient la version en ligne et son point de retour ; ce qui est fait et ce qui reste de L17 (L17-2 à L17-8, à reprendre depuis cette version) ; ta question en attente ; les dettes ouvertes ; comment rejouer les bancs (avec les leçons d'hier et d'aujourd'hui) ; où sont le transcript et les maquettes ;
+   - **le mandat L17 porte en tête « EN PAUSE »** : l'exécutante ne doit pas continuer ;
+   - **ta question en attente, telle quelle (176)** : pour un élève comme Axel (27 questions dues), plafonner le nombre de questions ? et à combien ?
+703. **Ta phrase pour l'exécutante** : **« Pause sur la correction de dictée : ne continue pas L17 tant que je ne te le redis pas. »**
+704. **Le QCM** — avant de cadrer quoi que ce soit, ce qui existe : l'app **`evaluation-qcm.html`** en production, et au hub un nœud **`qcm`** (sessions, présence, évaluations, scans de QR, réglages, sexes des élèves). **Ma question, une seule : sur le QCM, qu'est-ce qui doit changer pour ta classe** — une chose qui ne marche pas en séance, ou une nouvelle façon de faire ?
+
+**Test après promotion** (recharge d'abord) : ouvre le Suivi d'une dictée où « Binômes imposés » est cochée, puis une tablette en « 2 élèves » : le binôme s'annonce avant « Lancer ».
+
+07/10/2026 22:04 MEMO
+
+---

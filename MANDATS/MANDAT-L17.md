@@ -1,4 +1,4 @@
-> **⚠ 07/10, 07:15 — la production a bougé pendant ton mandat : 6.7.0-L15.1b-1m** (micro L17-1 bis fait par la conscience : deux binômes sur deux tablettes ; diff au sas `LIVRAISONS/DICTEE-CORRECTION/L15.1b-1d/correction_dictee_L15.1b-1m.html`, banc `bancs/banc_l17bis.py`). **Reprends ce micro dans ta base avant de déposer L17-1** (garde-le tel quel ; L17-1 bis est fait — ne le refais pas, ajoute seulement « l'élève qui choisit « 1 élève » puis recharge revoit la question » avec L17-2).
+> **⚠ 07/10, 07:20 — la production a bougé pendant ton mandat : 6.7.0-L15.1b-1n** (1m puis 1n : la moitié de la seconde arrivée compte pour vide, émoji 👥 ; fichier `correction_dictee_L15.1b-1n.html`, banc `banc_l17bisb.py`) — et avant : **6.7.0-L15.1b-1m** (micro L17-1 bis fait par la conscience : deux binômes sur deux tablettes ; diff au sas `LIVRAISONS/DICTEE-CORRECTION/L15.1b-1d/correction_dictee_L15.1b-1m.html`, banc `bancs/banc_l17bis.py`). **Reprends ce micro dans ta base avant de déposer L17-1** (garde-le tel quel ; L17-1 bis est fait — ne le refais pas, ajoute seulement « l'élève qui choisit « 1 élève » puis recharge revoit la question » avec L17-2).
 
 # MANDAT L17 — correction_dictee : tout ce qui a été cadré le 06/10/2026, en une seule fois, par morceaux
 *Conscience n°12, 06/10/2026, tour 538. Base : la production **6.7.0-L15.1b-1l** (`correction_dictee.html`, 989 974 o, md5 `328fa0a108d97c59954f1120edcc82cf`). Vérifie ce md5 avant tout.*
@@ -50,6 +50,7 @@ Bancs : un élève au milieu d'un mot (« devin ») → rechargement → code �
 Bancs : chaque case dévoile la suivante après 5 s (pas avant) ; les deux variantes ; « Commencer » grisé jusqu'à la dernière.
 
 ## L17-4 — L'écran de correction élève, et le type « Acc. » partout
+*(ajout 07/10, dette 174)* sur l'écran du code, « Si tu as oublié ton code, viens me le demander. » devient « **Si tu as oublié ton code, lève la main.** »
 *Ce que ça change pour la classe : plus de texte visible sur les vieilles tablettes, la légende toujours sous les yeux, « Acc. » lisible partout.*
 1. **Le bandeau resserré** (dette 161, maquette `T525-A-bandeau-serre-legende.png`) : la note, le nom, « n/m corrigé · n essai raté » sur **une ligne** ; la légende en **une bande de petites pastilles**, toujours visible (≈ 88 px au lieu de 178). Le reste de l'écran inchangé.
 2. **« Accent, majuscule » en ardoise** (dette 163, choisi par Paul ; captures `T528-1` à `T528-4`) : `#334155`, fond `#e2e8f0`, contour épais ; libellé court « Acc. », libellé long « Accent, majuscule » ; **sur la grille de correction du professeur, le mot C est encadré** (la classe `err-c` manquait — dette 144 rouverte) ; **sur la copie rendue, le badge dit « Acc. »** et reste lisible (dette 167).

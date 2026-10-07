@@ -1,0 +1,34 @@
+insertion des fonctions p8-4 : 20 → 6274 o
+rendre : texte et consigne sans ligne de tête : 108 → 232 o
+rendre : la zone sous le dernier bloc : 74 → 208 o
+tout : l'écriture ouverte : 60 → 106 o
+tout : brancher en répétition : 63 → 179 o
+brancherAtelier : en répétition : 81 → 134 o
+brancherAtelier : quels textes, et leur infobulle : 346 → 669 o
+brancherAtelier : pas de barre du bloc en répétition : 79 → 163 o
+ecrireDansDiapo : le tableau suit la frappe en répétition : 64 → 192 o
+lancerRepetition : l'instantané de la séance : 27 → 121 o
+arreterRepetition : la séance restaurée : 43 → 206 o
+choixObjet : sans « Texte » : 28 → 124 o
+l'infobulle de « + bloc » : 106 → 177 o
+menuAtelierMur : « Changer de type… » : 122 → 355 o
+menuAtelierMur : ouvre le choix du type : 77 → 165 o
+menuAtelierMur : « Changer de type » depuis une ligne : 52 → 373 o
+menuAtelierMur : le choix du type depuis une ligne : 86 → 174 o
+morph : le nœud qui a le focus garde ses attributs : 103 → 225 o
+le tableau : les fonctions p8-4 du rendu : 30 → 81 o
+le tableau : p8DiapoASchema : 48 → 64 o
+style : la zone sous le dernier bloc : 53 → 634 o
+morph : 1258 o / 13 lignes → 1380 o / 13 lignes
+rendre : 17459 o / 52 lignes → 17717 o / 53 lignes
+tout : 5105 o / 13 lignes → 5267 o / 13 lignes
+brancherAtelier : 2732 o / 6 lignes → 3192 o / 6 lignes
+ecrireDansDiapo : 315 o / 1 lignes → 443 o / 1 lignes
+lancerRepetition : 1526 o / 1 lignes → 1620 o / 1 lignes
+arreterRepetition : 697 o / 1 lignes → 860 o / 1 lignes
+choixObjet : 1247 o / 1 lignes → 1343 o / 1 lignes
+menuAtelierMur : 6848 o / 4 lignes → 7578 o / 4 lignes
+p8-4-ecrire.js : 6254 o, 9 fonctions (p8EcritureOuverte 69 o, p8PeutEcrireSous 85 o, p8ZoneEcrire 342 o, p8EcrireSous 615 o, p8LignesDe 161 o, p8GardeType 393 o, p8GardeVers 415 o, p8MenuType 674 o, p8ChangerType 1648 o)
+généré maquette-pilotage-ordi-v9c15p8-manipulable.html 562254 octets · bloc repris 92432
+c1190046607ec2d21b22ab67623198c0  v9c15p8-template.html
+cc4d1017ad8dfc56811594d069026353  maquette-pilotage-ordi-v9c15p8-manipulable.html

@@ -1,0 +1,5 @@
+p8-4-bloc-tape.png · « Le siècle des inventions » : le bloc tapé sous la consigne, ["Première ligne","Seconde ligne"], identité bmuy49b5zothf, « ✔ enregistré »
+« Changer de type » → question : structure bid,el,t,txt:string:true ; rendu « p.q ul.etapes li. div.libre.rep span.ini.vide span.dit » — identiques à la question créée par le menu
+p8-4-questions-pilote.png / p8-4-questions-tableau.png · les questions vues au tableau à chaque ▶ (0 0 0 Q:1 1 Q:2 2 Q:3 3) : 0,0,0,0,1,1,2,2,3,3
+la saisie tient : 12 frappes en répétition, 12 redessins du tableau constatés (le tableau suit la frappe : à chaque frappe, le pilote et le tableau sont redessinés) ; le texte et le curseur restent
+p8-4-heure-lancee.png · heure lancée : le texte de la consigne n'est pas écrivable, pas de zone sous le dernier bloc ; la réponse « Une nature immense. » s'écrit

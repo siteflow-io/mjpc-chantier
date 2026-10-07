@@ -1,0 +1,25 @@
+// (p8-3c) les captures « avant », sur la maquette p8-3b (MJPC_MAQUETTE=../p8-3b/maquette-pilotage-ordi-v9c15p8-manipulable.html) — un relevé, pas un banc du banc unique :
+// « À régler » au chargement, la diapo 6 de l'heure 2 et l'infobulle de « + bloc », le cas de Paul (T23 : la ligne vide et la seconde question) au tableau, avec les chevauchements comptés.
+import { chromium, CHROMIUM, MAQUETTE, capture } from './env.mjs';
+import fs from 'node:fs';
+const nav = await chromium.launch({ executablePath: CHROMIUM, args: ['--no-sandbox','--allow-file-access-from-files'], headless: true });
+const ctx = await nav.newContext({ viewport: { width: 1536, height: 864 } }); const page = await ctx.newPage(); page.on('dialog', d => d.dismiss());
+const p = ms => page.waitForTimeout(ms); const ev = (f, a) => page.evaluate(f, a); const MES = [];
+const allerA = async i => { await page.click('#volet .at-chap .d[data-at-di="' + i + '"]'); await p(450); };
+const chevauchementsQ = (pg, sel) => pg.evaluate(sel => { const mur = document.querySelector(sel); const L = Array.from(mur.querySelectorAll('.bloc .q, .bloc ul.etapes li, .bloc .rep')).filter(x => { const cs = getComputedStyle(x); return cs.display !== 'none' && cs.visibility !== 'hidden' && x.getBoundingClientRect().width > 0; }).map(x => { const r = x.getBoundingClientRect(); let bas = r.bottom; if (x.tagName === 'LI' && !x.textContent.trim()) { /* une ligne vide : son chevron a la hauteur d'une ligne écrite — mesurée sur une ligne témoin, posée puis retirée */ const t = x.cloneNode(false); t.textContent = 'x'; t.style.visibility = 'hidden'; x.parentElement.appendChild(t); const ht = t.getBoundingClientRect().height; t.remove(); bas = Math.max(bas, r.top + ht); } return { nom: (x.className.split(' ')[0] || x.tagName.toLowerCase()) + ' « ' + x.textContent.trim().slice(0, 24) + ' »', l: r.left, r: r.right, t: r.top, b: bas }; });
+  const out = []; for (let i = 0; i < L.length; i++) for (let j = i + 1; j < L.length; j++) { const a = L[i], b = L[j]; const h = Math.min(a.b, b.b) - Math.max(a.t, b.t), w = Math.min(a.r, b.r) - Math.max(a.l, b.l); if (h > 1 && w > 1) out.push(a.nom + ' × ' + b.nom); } return out; }, sel);
+await page.goto(MAQUETTE); await p(600); await page.click('#edt-cases [data-atelier="1"]'); await p(500); await page.click('#at-aide .x'); await p(200);
+MES.push('maquette jouée : ' + MAQUETTE.split('/').slice(-2).join('/'));
+await page.click('#at-regler'); await p(400); const L = await ev(() => document.querySelector('.choix-obj').innerText.split('\n').filter(x => / — diapo \d+/.test(x)));
+await page.screenshot({ path: capture('p8-3c-a-regler-avant.png') }); await page.click('.choix-obj .x'); await p(200);
+MES.push('p8-3c-a-regler-avant.png · « À régler » au chargement : ' + L.length + ' lignes — ' + L.map(x => x.split(' — ')[0]).join(' | '));
+const iM = await ev(() => seance().ecrans.findIndex(e => e.act === 'Les mouvements du siècle')); await allerA(iM); await page.screenshot({ path: capture('p8-3c-diapo6-H2-avant.png') });
+MES.push('p8-3c-diapo6-H2-avant.png · « Les mouvements du siècle » : blocs ' + await ev(() => ecran().blocs.map(b => b.t).join(', ')) + ' ; « + bloc » ' + (await ev(() => document.getElementById('at-bloc').disabled) ? 'désactivé' : 'actif') + ', infobulle : « ' + await ev(() => document.getElementById('at-bloc').title) + ' »');
+const iU = await ev(() => seance().ecrans.findIndex(e => e.act === 'Un poète spécial…')); await allerA(iU);
+const li0 = await ev(() => { const li = document.querySelector('#mur .bloc ul.etapes li'); const r = li.getBoundingClientRect(); return { x: r.right - 4, y: r.bottom - 8 }; }); await page.mouse.click(li0.x, li0.y); await page.keyboard.press('End'); await page.keyboard.press('Enter'); await p(500);
+await page.click('#mur .corpsd .act'); await p(200); await page.click('#at-bloc'); await p(300); await page.click('.choix-obj .c[data-t="question"]'); await p(300); await page.fill('#of-q', 'que doit-on faire ?'); await page.fill('#of-r', 'manger du pain'); await page.click('#of-ok'); await p(500);
+await page.click('#at-jouer'); await p(500); const [tab] = await Promise.all([ctx.waitForEvent('page'), page.click('#bvideoproj')]); await tab.waitForLoadState(); await tab.setViewportSize({ width: 1280, height: 720 }); await p(700);
+const N = await ev(() => elements(ecran()).length); const vu = [];
+for (let s = 0; s <= N; s++) { const ct = await chevauchementsQ(tab, '#mur2'); const qs = await tab.evaluate(() => Array.from(document.querySelectorAll('#mur2 .bloc .q')).filter(x => getComputedStyle(x).display !== 'none').length); vu.push(s + ' ▶ : ' + qs + ' question(s) au tableau, ' + ct.length + ' chevauchement(s)' + (ct.length ? ' (' + ct.join(' / ') + ')' : '')); if (s === N) await tab.screenshot({ path: capture('p8-3c-ligne-vide-tableau-avant.png') }); if (s < N) { await page.keyboard.press('ArrowRight'); await p(450); } }
+MES.push('p8-3c-ligne-vide-tableau-avant.png · le cas de Paul (T23), ' + N + ' éléments — ' + vu.join(' ; '));
+fs.writeFileSync(capture('MESURES-avant-p8-3c.txt'), MES.join('\n') + '\n'); console.log(MES.join('\n')); await nav.close();

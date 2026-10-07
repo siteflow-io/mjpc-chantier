@@ -16016,3 +16016,34 @@ Réponse mot pour mot :
 07/10/2026 13:25 MEMO
 
 ---
+
+## TOUR 549 — Paul
+
+Texte de Paul, mot pour mot :
+
+> que reste t-il à coder? il y a une livraison de l'instance au sas.
+
+---
+
+## TOUR 549 — Claude (conscience n°12)
+
+Mesuré au sas : seul L17-1 (05:10, base 1l, banc unique vert 46 étapes, registre tablettes/ parallèle à places/). Consigne de reprise en tête du mandat (refaire L17-1 sur 1q, un seul registre places/, puis L17-2..8). Reste à coder listé ; question 176 reposée.
+
+Réponse mot pour mot :
+
+681. **Ce que l'exécutante a livré** : un seul morceau, **L17-1** (à 5 h 10 ce matin) — les binômes fixés pour la séance, la garde avant « Lancer », l'élève qui part / qui revient, la case « Binômes imposés » (placement libre sinon, fin du « va aider untel »), l'aménagé apparié sur les mêmes mots, Inès, le « 12 / 11 », le banc des deux moitiés. Son banc unique est vert (46 étapes). **Je ne l'ai pas encore audité** (tu as choisi l'audit à la fin). **Un problème** : elle est partie de la version d'hier soir ; depuis, **j'ai fait cinq micros ce matin** (deux binômes sur deux tablettes et ses émojis, la phrase sans identifiants, la garde de « Je garde ma note ») — son L17-1 ne les contient pas, et elle a créé de son côté un second registre « qui est assis où », alors que la production en a déjà un.
+682. **Ce qui reste à coder** :
+   - **refaire L17-1 sur la version d'aujourd'hui**, avec mes cinq micros, et **un seul registre** (celui de la production, qui sait qui est arrivé le premier) ;
+   - **L17-2** la tablette élève : rechargement = remise à zéro (« Combien êtes-vous ? » revient), reprise exacte au hub, un élève = un écran ;
+   - **L17-3** l'engagement case par case (5 s), avec les phrases du binôme aménagé ;
+   - **L17-4** le bandeau resserré avec la légende, « Acc. » en ardoise partout (et encadré sur ta grille), le clavier « 123 », « sdp », « lève la main » ;
+   - **L17-5** les commentaires en trois temps et les 30 paires d'homophones, la nouvelle consigne à recopier, deux phrases différentes par tablette ;
+   - **L17-6** les astuces 💡 ;
+   - **L17-7** la note (un réglage + le bouton « Afficher la note »), les badges et le type dans la Préparation ; **L17-7 bis** le bouton « Correspondances » qui ne mène plus à « Lien invalide » ;
+   - **L17-8** suspendre / fermer une séance.
+   **Hors de ce mandat** : la partie « site » des correspondances (la conscience n°13) ; et **une question à toi, en attente** (176) : pour un élève comme Axel (27 questions dues), **plafonner le nombre de questions ?** et à combien ?
+683. **J'ai écrit la reprise en tête du mandat.** Ta phrase pour l'exécutante : **« Relis le haut du mandat L17 (la consigne de 14 h 40) : refais L17-1 sur la production d'aujourd'hui avec un seul registre, puis livre L17-2 à L17-8 sans t'arrêter. »**
+
+07/10/2026 14:45 MEMO
+
+---

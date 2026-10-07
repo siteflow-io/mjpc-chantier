@@ -15924,3 +15924,26 @@ Recharge les tablettes avant les Hugo.
 07/10/2026 07:25 MEMO
 
 ---
+
+## TOUR 545 — Paul
+
+Texte de Paul, mot pour mot :
+
+> pour les emojis, on peut les garder en respectant les sexes, c'est une information connue car elle est sur mjpc. dans tes captures, on est d'accord que la tablette B est à chaque fois l'élève qui doit rejoindre la tablette A (donc thaïs, Evan, et amauri?)
+
+---
+
+## TOUR 545 — Claude (conscience n°12)
+
+Mesuré : sexe dans classes/<classe>/profils/<clé>/sexe (f/m). Micro L17-1 bis-c promu (6.7.0-L15.1b-1o, commit 206302f5bac4, bit à bit) : 👭 👫 👬, 👥 si inconnu ; banc VERT ; confirmation : tablette B = Thaïs, Evan, Amauri.
+
+Réponse mot pour mot :
+
+673. **Oui** : sur mes captures, **la tablette B est chaque fois celle de l'élève qui doit partir et rejoindre la tablette A** — **Thaïs** (rejoint Lou), **Evan** (rejoint Philippine), **Amauri** (rejoint Jules). La tablette A est celle de la première arrivée, qui garde sa place.
+674. **Les émojis selon les sexes — fait et promu : 6.7.0-L15.1b-1o** (commit `206302f5bac4`, bit à bit). Le sexe vient de MJPC (la fiche de la classe : « f » ou « m » pour chaque élève) : **deux filles 👭, une fille et un garçon 👫, deux garçons 👬** ; si l'un des deux n'est pas renseigné, 👥. Banc sur les trois binômes des Hugo : Lou–Thaïs 👭, Philippine–Evan 👫, Jules–Amauri 👬 — vert. Capture ci-dessous : les trois tablettes B. Journal, point de retour ; le mandat de l'exécutante est prévenu que la base a changé.
+
+Recharge les tablettes avant les Hugo.
+
+07/10/2026 07:30 MEMO
+
+---

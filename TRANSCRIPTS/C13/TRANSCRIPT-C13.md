@@ -1091,3 +1091,38 @@ Tests pour toi : aucun.
 
 07/10/2026 13:46 (heure de mon espace de travail, non vérifiée)
 MEMO
+
+---
+
+## TOUR 29 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok
+
+---
+
+## TOUR 29 — Claude (conscience n°13)
+
+Déposés : au sas, `MANDATS/COMPLEMENT-DEROULE-P8-3d.md`, `-P8-4.md` (version 2, remplace la première), `-P8-5.md` ; en production, l'addendum du 07/10 à `docs/MJPC6-1-DISPOSITIF.md` et une ligne à `docs/MJPC6-OU-TROUVER-QUOI.md`. Relus au blob.
+
+Réponse mot pour mot :
+
+Tout est déposé, et chaque fichier relu juste après son envoi : identique octet pour octet.
+
+115. **Les trois compléments** (le p8-4 remplace sa première version) :
+    - https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/COMPLEMENT-DEROULE-P8-3d.md
+    - https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/COMPLEMENT-DEROULE-P8-4.md
+    - https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/COMPLEMENT-DEROULE-P8-5.md
+116. **La règle « audit de faisabilité »** est à la fin du dispositif : https://github.com/siteflow-io/monsieurjaipascompris/blob/main/docs/MJPC6-1-DISPOSITIF.md
+117. **« Où trouver quoi »** mentionne les trois compléments.
+118. **Relance** : dans la même session ou dans une nouvelle (environnement « CODE BOULOT », dépôt `mjpc-chantier`, mode « Accept edits »), colle cette phrase :
+
+> Tu es l'exécutant de MJPC sur le déroulé. Lis en entier `MANDATS/MANDAT-DEROULE-MAQUETTE-P8.md`, puis `MANDATS/COMPLEMENT-DEROULE-P8-3d.md`, `MANDATS/COMPLEMENT-DEROULE-P8-4.md` et `MANDATS/COMPLEMENT-DEROULE-P8-5.md` dans ce dépôt, et fais : les livraisons p8-3d, p8-4 et p8-5, chacune sur sa branche, puis arrête-toi.
+
+Quand il s'est arrêté : « livré ».
+
+Tests pour toi : aucun.
+
+07/10/2026 14:27 (heure de mon espace de travail, non vérifiée)
+MEMO

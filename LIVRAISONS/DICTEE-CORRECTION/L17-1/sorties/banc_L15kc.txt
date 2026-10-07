@@ -1,0 +1,2 @@
+{"etape1": true, "absent_ecrit": true, "tuile_rouge": true, "etape2": true, "tablettes": 15, "pas_de_bouton_absent": true, "vue_directe": true, "retour_etape1": true, "heure_etape2": true, "erreurs": []}
+BANC L15k-c : VERT

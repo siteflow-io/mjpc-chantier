@@ -15827,3 +15827,27 @@ Réponse mot pour mot :
 06/10/2026 21:25 MEMO
 
 ---
+
+## TOUR 541 — Paul
+
+Texte de Paul, mot pour mot :
+
+> question: ce matin je vais corriger avec les hugo (l'exécutant n'aura jamais fini l17 d'ici une heure, enfin je ne sais pas). Un angle mort qu'on n'a pas traité: quand je distribue mes tablettes au début de l'heure, je ne fais pas attention à qui je distribue. je dis aux élèves: allez sur l'url, puis connectez vous. Concrètement: lou se connecte, et thaîs se connecte sur une autre tablette. que se passe-t-il? elles voient chacune leur binome s'afficher sur leur tablette? imaginons que lou se connecte une seconde avant thais, elle voit donc thais sur la deuxième partie de sa tablette, et dans ce cas, si thais se connecte sur l'autre tablette, elle doit voir "tu es avec lou, laisse cette tablette pour quelqu'un d'autre et rejoins lou". audit et réponds
+
+---
+
+## TOUR 541 — Claude (conscience n°12)
+
+Rejoué (Hugo, copie locale, 1l) : A « Ton binôme : GUYON Thais », B « Ton binôme : DEKENS Lou », aucune coordination. Consigne orale pour ce matin ; règle ajoutée au mandat (L17-1 bis) ; dette 173 ; question : supprimer « Combien êtes-vous ? » en mode binôme.
+
+Réponse mot pour mot :
+
+Rejoué ce matin sur une copie de tes données des Hugo, avec la version en ligne :
+
+662. **Aujourd'hui, ce qui se passe** : Lou Dekens et Thaïs Guyon **sont bien binômes** (d'après les erreurs). Lou se connecte sur la tablette A : sa seconde moitié affiche « Ton binôme : GUYON Thais ». Thaïs se connecte sur la tablette B : sa seconde moitié affiche « Ton binôme : DEKENS Lou ». **Aucune tablette ne sait que l'autre élève est déjà assise ailleurs** : rien ne dit à Thaïs de rejoindre Lou ; elles peuvent corriger chacune seule, sur deux tablettes. Si Thaïs vient taper son code sur la moitié libre de Lou, ça marche.
+663. **Pour ce matin** (je ne touche pas au code : l'exécutante y travaille, et elle n'a encore rien déposé de L17) : une consigne orale suffit — « **Si ta tablette affiche « Ton binôme : … » et que cet élève est déjà assis ailleurs, laisse ta tablette et va taper ton code sur la moitié libre de la sienne.** » Ou, plus sûr : avant de distribuer, ouvre ton Suivi → étape 2, et **lis les paires à voix haute** (« Tablette 1 : Lou et Thaïs… »).
+664. **Ta règle, ajoutée au mandat (L17-1 bis)** : quand une élève tape son code et que **son binôme est déjà assis sur une autre tablette**, sa correction ne s'ouvre pas et sa tablette affiche « **Tu es avec Lou : laisse cette tablette à quelqu'un d'autre et rejoins Lou.** » (bouton « J'ai compris », qui libère la tablette) ; **la première arrivée garde sa tablette** (même à une seconde près ; à égalité, l'ordre alphabétique). **Une question liée** : si Lou, arrivée la première, choisit « 1 élève », elle ferme la place de Thaïs. Je propose qu'**en mode binôme, la question « Combien êtes-vous ? » disparaisse** : la tablette s'ouvre toujours en deux moitiés, et passe en plein écran seulement si le binôme est absent ou si l'élève est seule. D'accord ?
+
+07/10/2026 06:55 MEMO
+
+---

@@ -19,7 +19,7 @@ Binômes fixés pour la séance (`binomesSeanceL17`, « Lancer ») puis libéré
 - **`banc_trouvees.py`** (nouveau, la copie réelle de Danard et sa variante) : vert ; **rouge sur la production** (« Terminée » à tort).
 - **`banc_L171_geste.py`** accordé : le registre unique ; « parti » tient tant qu'il n'est pas revenu ; le retour = une nouvelle arrivée ; après la séance, l'aperçu — vert (15 conditions).
 - Les bancs des micros du 07/10 (`banc_l17bis`, `-b`, `-c` sur les paires réelles de la séance, la case « Binômes imposés » cochée ; `banc_175`, `banc_177`) : verts.
-- **Banc unique** : voir `sortie_banc_unique.txt`.
+- **Banc unique : 53 étapes, toutes vertes** (`sortie_banc_unique.txt`) — le kit, toutes les livraisons, L17-1 accordé, les micros du 07/10, `banc_trouvees`, `banc_revient`, la vue élève (écran identique à la référence).
 
 ## À savoir pour Paul
 La case « Binômes imposés » est aujourd'hui **cochée** pour les Franklin et la dictée Baudelaire des Dylan ; **décochée** pour les Hugo, les Turing, la Fritz des Dylan et le brevet blanc des 3E : là, placement libre tant qu'elle n'est pas cochée (Préparation).

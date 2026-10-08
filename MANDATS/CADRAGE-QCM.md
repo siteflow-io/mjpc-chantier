@@ -616,3 +616,21 @@ Voici l'évaluation :
 174. **Ma proposition, côté console** : la fenêtre « Que dit la feuille ? » (168) a, elle aussi, « Aucun des choix ». Dans l'autre sens, si l'élève a coché « aucun » alors que sa phrase dit la bonne réponse avec d'autres mots, c'est toi qui tranches : tu touches B, et la question compte juste.
 
 175. **Ma question** : es-tu d'accord pour que « aucun des choix » compte toujours 0, même si la lettre touchée en classe était la bonne ?
+
+---
+
+## Tour 568 — Paul (08/10, 11:25), mot pour mot
+
+> non, c'est le bénéfice du doute: un élève, in extremis au moment de répondre en classe, peut donner la bonne réponse alors qu'il avait écrit quelque chose de faux. Et donc il garde son point. d'expérience, en réalité cela arrive rarement, et les gains sont marginaux sur une évaluation entière. tension?
+
+## Tour 568 — le bénéfice du doute (points 176 à 180)
+
+176. **C'est retenu : le bénéfice du doute.** Si la lettre touchée en classe est juste, l'élève garde le point, même si sa feuille dit faux ou ne dit « aucun des choix ». C'est la règle du meilleur des deux, celle que le code applique déjà (139). C'est le mode d'emploi qu'il faut corriger : il annonce « 1-2 questions isolées », alors qu'il n'y a pas de limite. Le compte se fait en points (111).
+
+177. **Mesuré, et cela te donne raison**, mais sur peu de données : la seule séance avec des saisies (19/06, 4 élèves, 52 réponses). La tablette juste et la feuille fausse : 0 fois. L'inverse, la feuille juste et la tablette fausse (une erreur en touchant la lettre) : 5 fois. Là aussi l'élève garde son point, puisque sa feuille compte.
+
+178. **Tension 1, avec le but de l'app.** Ton mode d'emploi dit : « sans qu'il puisse se reposer sur la reconnaissance des choix ». Le bénéfice du doute, c'est justement une reconnaissance des choix. Tu l'acceptes parce que c'est rare et que le gain est marginal ; les mesures vont dans ton sens, donc ça va.
+
+179. **Tension 2, avec ta vérification (154, 168).** Avec le meilleur des deux, ta correction « la feuille dit autre chose » ne change la note que si la tablette était fausse elle aussi. Un seul cas mérite donc ton regard : la saisie est juste et la tablette fausse. L'élève a-t-il vraiment écrit juste, ou a-t-il arrangé sa saisie ? Dans les autres cas d'écart, mentir ne lui rapporte rien.
+
+180. **Ma proposition, qui affine 154** : ton Suivi ne te signale que ce cas-là, « saisie juste, tablette fausse », et rien d'autre. Tu as moins de feuilles à regarder. Ça te va ?

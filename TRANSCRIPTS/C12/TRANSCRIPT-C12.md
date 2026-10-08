@@ -16507,3 +16507,85 @@ Le cadrage QCM repart à 1 : ces numéros remplacent 711 à 718. Chaque point a 
 08/10/2026 07:58 MEMO
 
 ---
+
+## TOUR 559 — Paul
+
+Texte de Paul, mot pour mot :
+
+> 1. oui, mais elle est figée sur le ratio "niveau/temps". Or, je veux pouvoir décorréler les deux données. 2. Pareil, il se règle en amont, au prompt. Et 30 secondes max, ce n'est pas du tout suffisant, d'où l'importance de pouvoir régler. Par ailleurs, il faut une garde de débordement: Si je demande 20 questions à l'instance et que les questions sont très complexes, et que je ne mets que 30 secondes d'écriture, elle doit me dire que ça ne rentre pas. Pareil, si le nombre des questions fait déborder la séance (sachant qu'une séance est TOUJOURS la phase de questions + la correction dans la foulée, 45 minutes utiles). 3. oui c'est bon, mais pour le réglage, la console actuelle n'a aucun bouton. 4. Donc prompt à établir une fois l'app complètement cadrée. 5. attention, tu raisonnes comme si les moitiés existaient, ce n'est pas le cas. par ailleurs, oui correction à faire (par anticipation du coup). 6. oui donc le temps de l'heure, l'élève n'a jamais besoin d'entrer son code. En revanche, à la déconnexion de fin d'heure (soit chrono, soit par moi), la tablette se libère et oublie l'élève. 7. Donc zéro raccourci MJPC sur les tablettes. Mais à ne pas désactiver, pour l'instant, autre part (téléphone perso de l'élève, ordi au cdi, ordi maison etc). 8. oui, horloge commune Hub. 9. Donc étanchéifier, et de fait, les sessions sont archivées il me semble, avec pour l'instant des données très sommaires (les réussites élèves et l'écart papier écran). ll faudra voir ce qu'on peut y ajouter et qui me serait utile (notmment pour rentrer notes et compétences sur ED). 10. Pas compris. 11. Déjà répondu, non? 12. En fait, ils sont deux par tablette. pas besoin de choix de départ en réalité (d'ailleurs pareil en dictée). ON part du principe qu'ils sont deux, et si l'élève est seul, c'est déjà réglé par la constitution des binômes. 13. oui absolument. jamais de choisis ta classe. 14. oui ok, mais alors je veux pouvoir déplacer des élèves (par glisser remplacer/interchanger) de binômes. 15. oui. 16. oui, mais attention, car contrairement à la dictée, ma console est très importante car c'est elle qui pilote la séance: donc attention aux priorités visuelles en termes d'UI. à me proposer sur captures. 17. ok. 18. ok. 19. oui  très bien. 20. oui. 21. oui, mais petite différence, les réponses ne sont pas dans le même ordre que sur la partie du précédent! comme ça même s'il a regardé l'autre répondre et qu'il répond les mêmes lettres, il se trompe (à voir comment ça télescope la collecte des bonnes réponses). par ailleurs, il faut que lorsque michel répond, julien ait le même message "laisse la tablette à Julien poour qu'il réponde sans que tu regardes". 22. ok. 23. ok. 24. ok. 25. oui alternance, et non, le second n'a pas plus de temps de réflexion, ils ont le même tous les deux en soi. 26. ok. 27. ok. 28. attends pour le reste, je finis d'y répondre après.
+
+---
+
+## TOUR 559 — Claude (conscience n°12)
+
+Mesuré : NiveauxEditor rendu seulement dans SessionLive (replié, séance lancée), réflexion 1-120 s ; PonderationEditor dans OngletSnapshot (Données → Sauvegarde) ; réponse 3-30 s dans la case « ✋ Réponse » du pilotage ; séances de juin au hub (lecture seule) : 44/42/34 ajouts de temps (≈ 11 min, 8 min, 5 min 30), phase des questions 20/16/13 min pour 13 questions, aucune heure pendant la correction ; archive mjpcProfils (champs relevés) ; feuille imprimée = lettres sans contenu, saisie papier à la maison = énoncé + lettres seules ; aucune heure de fin de séance dans le QCM. Écrits : MANDATS/CADRAGE-QCM.md (points 1 à 86, réponses de Paul 1 à 27 mot pour mot) ; dettes 183 mise à jour et 185 à 189 (commit local production, poussée refusée 403 ; reportées au sas). Rien écrit au hub, aucun code.
+
+Réponse mot pour mot :
+
+55. **Tes réponses 1 à 27 sont inscrites mot pour mot** dans le document de cadrage du QCM : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/CADRAGE-QCM.md. J'attends tes réponses de 28 à 54. Je ne reprends ci-dessous que ce qui demande une réponse ou une mise en tension.
+
+56. **Sur 1 et 2 (décorréler)** : compris. Chaque question porte ses propres temps, réflexion et réponse, que l'IA donne dans le JSON ; le niveau ne sert plus qu'aux points, à la couleur et au bilan. Conséquence : mes points 34 à 37 changent. Les durées par niveau ne restent qu'en valeurs par défaut, pour les évaluations déjà écrites ; tes deux évaluations de demain n'ont aucun temps par question.
+
+57. **Mesuré, et cela te donne raison sur 2** : dans tes trois séances de juin (13 questions chacune), tu as ajouté du temps 44, 42 et 34 fois (« +5 s », « +10 s », « +30 s »). Cela fait 11 min, 8 min et 5 min 30 ajoutées par séance.
+
+58. **La garde de débordement, ma proposition : deux gardes.** Dans le prompt, l'IA estime le temps d'écriture de chaque question et te répond « ça ne rentre pas » si le temps demandé est trop court ; elle vérifie aussi que le total tient dans 45 minutes, correction comprise. Dans l'app, au collage de l'évaluation puis au lancement, la séance est comptée (questions, passages de tablette, correction), avec par exemple : « Cette évaluation dure 52 min : elle déborde des 45 minutes utiles. »
+
+59. **Pour compter la correction, il me manque une mesure** : le hub ne garde aucune heure pendant la correction, donc je ne peux pas la mesurer sur juin. Ma proposition : 1 minute par question corrigée en attendant, et l'app note désormais le début et la fin de chaque correction, pour remplacer cette estimation par ta vraie durée. Dis-moi si 1 minute te paraît juste.
+
+60. **Mesuré aussi : la phase des questions a pris en juin entre 1 min et 1 min 30 par question** (20, 16 et 13 min pour 13 questions), temps ajoutés compris. À ce rythme, ta 4e de demain (21 questions) prend 21 à 32 min de questions, avant la correction.
+
+61. **Sur 3 : les boutons existent, mais ils sont cachés.** « ⚙️ Durées des niveaux » n'apparaît que dans le poste de pilotage, replié, une fois la séance lancée ; « ⚖️ Pondération des niveaux » est dans Données → Sauvegarde, sous l'export. Ma proposition : réunir les deux dans Réglages, sous « Les niveaux », et mettre les temps de chaque question dans l'éditeur de l'évaluation, à côté de la pastille de niveau.
+
+62. **Sur 4** : c'est noté, le prompt s'écrit en dernier, quand l'app est entièrement cadrée.
+
+63. **Sur 5** : tu as raison, les moitiés n'existent pas encore dans le QCM, et ce défaut ne se voit pas aujourd'hui. Je le corrige par anticipation, dans le même lot.
+
+64. **Sur 6 : le QCM n'a pas d'heure de fin.** Une séance ne finit que par « Terminer la session ». Ma proposition, sur le modèle de ta règle de la dictée du 03/10 (« heure de fin + 10 minutes ») : au lancement, la séance reçoit une heure de fin (lancement + 55 min, modifiable dans la fenêtre de l'appel) ; la tablette oublie ses deux élèves à « Terminer la session », ou à l'heure de fin + 10 min si tu as oublié de terminer.
+
+65. **Sur 7 et 12 : l'app doit savoir qu'elle est sur une tablette de classe.** Le même QCM s'ouvre aussi sur le téléphone de l'élève, au CDI ou à la maison (pour « Mes évaluations » et la saisie papier) : là, il n'y a qu'une personne, et le raccourci MJPC reste. Ma proposition : une adresse à part pour les tablettes (…/evaluation-qcm.html?tablette), mise une fois pour toutes en icône sur l'écran d'accueil de chaque tablette de classe. Elle ouvre directement les deux moitiés, sans raccourci MJPC et sans choix de classe ; l'adresse habituelle reste comme aujourd'hui.
+
+66. **Ma question, pour 65** : aujourd'hui, comment tes élèves ouvrent-ils le QCM sur les tablettes : une adresse tapée, un favori, un QR au tableau, un lien depuis le site ?
+
+67. **Sur 9 : oui, la séance est archivée, et c'est sommaire.** Mesuré, pour chaque élève et chaque séance, l'archive garde : la date, le titre et la version ; le score app, brut et pondéré ; la fourchette estimée, la fourchette réelle et la calibration ; question par question, le niveau, les points, juste ou faux ; la page de bilan. L'écart papier/écran n'est pas dans l'archive : il vit dans la séance (la saisie papier) et dans l'export CSV. L'étanchéité (9) entre dans le lot 1. Ce qu'il faut ajouter pour École Directe (notes, compétences) est inscrit comme dette, à cadrer après.
+
+68. **Sur 10, redit simplement.** Aujourd'hui, c'est la page de pilotage ouverte sur ton ordinateur qui fait tout passer : à la fin du chrono de réflexion, elle fait passer les tablettes à la réponse, et à la fin du chrono de réponse, elle ferme. Si cette page n'est pas ouverte (tu pilotes seulement au téléphone), le chrono arrive à 0 et rien ne se passe : les tablettes restent bloquées. Ma proposition : avec l'horloge commune du hub (8), n'importe quel écran ouvert (ton poste, le tableau, ton téléphone) fait passer la phase, le premier qui arrive à 0. Plus aucun écran n'est indispensable.
+
+69. **Sur 11** : oui, ton 6 y répond. Le 11 n'était qu'une précision, il n'y avait rien à trancher.
+
+70. **Sur 12, une tension avec la dictée** : le 07/10 (tour 542), tu avais décidé que « Combien êtes-vous ? » restait dans la dictée, et tu dis maintenant « pareil en dictée ». Je l'inscris pour la reprise de la dictée, sans y toucher pendant la pause. Dans le QCM : toujours deux moitiés, et une moitié vide veut dire que l'élève est seul (27).
+
+71. **Sur 12, au premier QCM** : en placement libre, il n'y a pas encore de constitution. L'élève seul (classe impaire) a une moitié vide, qui reste sur l'écran du code ; un retardataire peut s'y asseoir.
+
+72. **Sur 14 : déplacer des élèves, ma proposition.** Sur ta console, chaque tablette montre ses deux moitiés. Tu glisses un nom sur un autre : les deux élèves s'échangent ; tu le glisses sur une moitié vide : il s'y déplace. Avant la question 1, c'est libre. Pendant la séance aussi, mais les deux élèves déplacés changent de tablette : leurs moitiés affichent « Julien, va sur la tablette de Léa et Tom », et ils retapent leur code sur leur nouvelle moitié (c'est la seule exception au 6). Leurs réponses déjà données les suivent.
+
+73. **Sur 16** : je te fais les captures de ta console dès que tu as répondu de 28 à 54, parce que 29 à 33, 36, 43 et 72 touchent ta console.
+
+74. **Sur 21 : l'ordre mélangé, ma proposition.** Celui qui répond en premier voit l'ordre de l'évaluation, celui du tableau. Le second voit un autre ordre, où aucune bonne réponse ne garde sa lettre : s'il recopie les lettres de son voisin, il se trompe à coup sûr (et en mode partiel, chaque case en trop lui coûte un point). Comme on alterne (25), chacun est second une question sur deux.
+
+75. **Sur 21 : la collecte des réponses ne pose aucun problème.** La tablette enregistre le choix lui-même, pas sa lettre : le score app, la correction, le bilan et le tableau des scores restent justes.
+
+76. **Sur 21 : le problème, c'est la feuille.** La feuille imprimée porte des lettres sans contenu, et la saisie papier à la maison ne montre que l'énoncé et les lettres. Si l'élève entoure sur sa feuille la lettre de **son** ordre mélangé, sa saisie à la maison est fausse, et avec elle l'écart papier/écran et le score officiel.
+
+77. **Ma question, pour 76** : à quel moment tes élèves entourent-ils la lettre sur leur feuille, pendant la réponse ou pendant la correction (avec les lettres projetées) ?
+
+78. **Si c'est pendant la correction**, rien ne casse.
+
+79. **Si c'est pendant la réponse, ma proposition** : l'app retient l'ordre que chaque élève a vu. Partout où il revoit la question, sur sa moitié pendant la correction, dans la saisie à la maison et dans ses résultats, il la revoit dans son ordre. Le tableau, lui, garde l'ordre de l'évaluation : en correction, tu dis la bonne réponse par son contenu (« la bonne réponse, c'est … »), pas par sa lettre.
+
+80. **Sur 21 : la phrase du second tour.** Pour la moitié de Julien, tu as écrit « laisse la tablette à Julien » : je comprends « à Michel ». Tu as aussi écrit « laisse » au lieu de « donne ». Je propose la même phrase des deux côtés : « Donne la tablette à X pour qu'il réponde sans que tu regardes. » Dis-moi quel verbe tu veux.
+
+81. **Sur 25 : ils n'ont le même temps de réflexion que si le second pose son stylo dès le début de la réponse.** Sinon, pendant le tour du premier (3 s, 5 s, puis 3 s), il peut continuer à écrire sur sa feuille. Aujourd'hui, « POSE TON STYLO » ne s'affiche que sur l'écran de celui qui répond. Ma proposition : au début de la réponse, les deux moitiés affichent « POSE TON STYLO » (la phrase est déjà dans l'app), avec le voile.
+
+82. **Pour demain, mon verdict 47 ne tient plus.** Le lot 1 a grandi avec 1, 2, 14, 16 et 21 ; ta console doit passer par des captures à valider ; et je ne peux toujours pas écrire en production (51). Demain se fait donc avec l'app actuelle, un élève par tablette (49).
+
+83. **Pour demain, avec l'app actuelle, premier geste** : garde la page de pilotage ouverte sur l'ordinateur (68).
+
+84. **Pour demain, deuxième geste** : règle les durées avant la question 1. Lance la séance, déplie « ⚙️ Durées des niveaux » en haut du pilotage, mets tes temps, puis « 💾 Sauvegarder » (c'est gardé pour toutes les séances). Le temps de réponse se règle dans la case « ✋ Réponse » du pilotage, entre deux questions, de 3 à 30 s.
+
+85. **Pour demain, troisième geste** : compte tes 45 minutes. Au rythme de juin, ta 4e (21 questions) prend 21 à 32 min avant la correction, et ta 3e (11 questions) 11 à 17 min (60).
+
+86. **Registre** : la dette 183 est mise à jour (décorréler les temps du niveau), et cinq dettes sont ajoutées : 185, les temps par question et la garde de débordement ; 186, l'archive pour École Directe ; 187, la dictée sans « Combien êtes-vous ? » ; 188, déplacer des élèves entre binômes ; 189, l'ordre mélangé du second. La production est toujours fermée, donc elles sont au sas : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/DETTES-QCM-179-184-A-REPORTER.md
+
+08/10/2026 08:21 MEMO
+
+---

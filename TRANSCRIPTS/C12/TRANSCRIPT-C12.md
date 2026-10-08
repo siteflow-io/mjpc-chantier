@@ -17560,3 +17560,30 @@ Réponse mot pour mot :
 265. **Mesuré en relisant : trois textes de l'app contredisent son code.** L'infobulle du « Mode de scoring », dans ton éditeur, dit : « Une question vaut toujours autant de points qu'elle compte de bonnes cases », ce qui est faux en tout ou rien. L'aide de tes Réglages annonce « Facile 5 secondes · Standard 10 secondes · Approfondi 15 secondes · Expert 20 secondes » et « rien n'enchaîne tout seul » ; or tes réglages sont de 10, 15, 20 et 30 secondes, et la réflexion passe toute seule à la réponse. Le prompt donne lui aussi 5, 10, 15 et 20 secondes. Je les inscris en dette 200.
 
 08/10/2026 14:58 MEMO
+
+---
+
+## TOUR 584 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Non stop tu derapes. Le mode strict = tout ou rien, donc un point par question ( ce que je faisais sur plickers) . Le mode partiel = un pt par bonne case. 
+> Pour le passage automatique c'est normal, et ça ne va pas contre autoriser la réponse : en effet, quand je vois que ça prend du temps à répondre, j'ajoute du temps et après si je me rends compte quils ont fini avant le temps que j'ai rajouté, je clique sur autoriser la réponse. Ce bouton, c'est juste pour ne pas être bloqué par le chrono et garder la main. On reprend sur le cas Théo.
+
+---
+
+## TOUR 584 — Claude (conscience n°12)
+
+Théo recompté en 1 point par question sur les données de la fausse classe (feuille réelle 6/11, saisie arrangée 7/11, tablette 7/11). Dettes 199 et 200 complétées avec les mots de Paul. CADRAGE-QCM.md complété (tour 584). Rien écrit au hub, aucun code.
+
+Réponse mot pour mot :
+
+266. **Compris : strict = tout ou rien, 1 point par question ; partiel = 1 point par bonne case.**
+
+267. **Compris aussi pour le chrono** : le passage automatique est normal, et « ✋ Autoriser la réponse » te sert à garder la main quand les élèves ont fini avant le temps que tu as ajouté.
+
+268. **Théo, avec 1 point par question.** Sa feuille vaut 6 sur 11. S'il recopie honnêtement, il a 6, plus le point bonus de la question 3 « Trouvée au dernier moment » : 7. S'il triche, la question 3 compte, mais il n'a plus de bonus : 7 aussi. Tricher ne lui rapporte rien. Seule exception : s'il a touché juste au dernier moment sur deux questions ou plus.
+
+269. **Le cas de Théo ne pose donc problème que si une question vaut plus d'un point dans la note.** C'est le cas du « Points pour la note » d'aujourd'hui, où sa question 3 vaut 3 points : 16 s'il est honnête, 18 s'il triche. Ma seule question : dans la note, une question juste vaut-elle 1 point, ou les points de son niveau ?
+
+08/10/2026 15:06 MEMO

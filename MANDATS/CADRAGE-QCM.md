@@ -3,7 +3,7 @@
 
 **Ce que ça change pour la classe** : deux élèves par tablette, qui répondent l'un après l'autre sans voir la réponse de l'autre ; des temps de réflexion et de réponse réglés question par question ; une séance (questions + correction) qui tient dans 45 minutes ; la console de Paul, qui pilote la séance, lisible d'abord.
 
-**Méthode depuis le tour 563 (Paul) : on séquence, un sujet à la fois, en réponses courtes.** **État au 08/10, 18:10 (tour 593, après la secousse — https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/CADRAGE-QCM-SECOUSSE.md).** Règle de note (288 à 293) : la note, c'est la feuille ; une question vaut au plus 1 point (strict : tout ou rien ; partiel : une fraction du point par bonne case, autant de retiré par mauvaise, plancher 0) ; une fois par évaluation, une question dont la feuille est fausse et la tablette entièrement juste compte comme juste et se marque « Trouvée au dernier moment » avec un + vert (282, 303) ; sans saisie, pas de note ; aucune note visible avant la saisie (223). Niveaux : « difficulté » pour les questions, « maîtrise » pour École Directe (304) ; la maîtrise se calcule par compétence, une ou deux compétences par question, prises dans celles du chapitre (305 à 315). Méthode de livraison (Paul, 578) : une exécutante code tout d'un coup, audit final, push de Paul après la livraison complète. À trancher : 323 à 340 et 341 — une proposition pour chacun au tour 594, en attente du mot de Paul ; préalables : 73, 148. Tour 598 : la maquette du flux binôme, 44 captures dans l'ordre de la séance (https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/MAQUETTE-QCM-FLUX/README.md) ; elle montre comme retenus 360, 334, 313, 339, 327, 331, 323, 64 et 332, encore à trancher, et les textes provisoires y sont soulignés en orange. Tour 600 (Paul : « Ok ») : 375 à 384 retenus (« clique » partout dans les textes de l'élève ; consigne de saisie sans négation, qui dit le rapprochement ; saisie forcée par un chrono vert, orange, rouge et « Révéler » fermé tant qu'un présent n'a pas cliqué ; « Départ d'un élève » visible pendant la correction (388) ; tu commentes après la révélation ; compétences fines jusqu'au PDF) ; maquette refaite ; proposé 390 (au moins trois questions par compétence). L'ancienne ligne d'état est archivée en fin de document.
+**Méthode depuis le tour 563 (Paul) : on séquence, un sujet à la fois, en réponses courtes.** **État au 08/10, 18:10 (tour 593, après la secousse — https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/CADRAGE-QCM-SECOUSSE.md).** Règle de note (288 à 293) : la note, c'est la feuille ; une question vaut au plus 1 point (strict : tout ou rien ; partiel : une fraction du point par bonne case, autant de retiré par mauvaise, plancher 0) ; une fois par évaluation, une question dont la feuille est fausse et la tablette entièrement juste compte comme juste et se marque « Trouvée au dernier moment » avec un + vert (282, 303) ; sans saisie, pas de note ; aucune note visible avant la saisie (223). Niveaux : « difficulté » pour les questions, « maîtrise » pour École Directe (304) ; la maîtrise se calcule par compétence, une ou deux compétences par question, prises dans celles du chapitre (305 à 315). Méthode de livraison (Paul, 578) : une exécutante code tout d'un coup, audit final, push de Paul après la livraison complète. À trancher : 323 à 340 et 341 — une proposition pour chacun au tour 594, en attente du mot de Paul ; préalables : 73, 148. Tour 598 : la maquette du flux binôme, 44 captures dans l'ordre de la séance (https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/MAQUETTE-QCM-FLUX/README.md) ; elle montre comme retenus 360, 334, 313, 339, 327, 331, 323, 64 et 332, encore à trancher, et les textes provisoires y sont soulignés en orange. Tour 600 (Paul : « Ok ») : 375 à 384 retenus (« clique » partout dans les textes de l'élève ; consigne de saisie sans négation, qui dit le rapprochement ; saisie forcée par un chrono vert, orange, rouge et « Révéler » fermé tant qu'un présent n'a pas cliqué ; « Départ d'un élève » visible pendant la correction (388) ; tu commentes après la révélation ; compétences fines jusqu'au PDF) ; maquette refaite ; proposé 390 (au moins trois questions par compétence). Tour 601 (Paul) : « recopie » remplace « saisie » pour le geste où l'élève reporte sa feuille sur la tablette (392) ; les points à trancher sont redonnés en entier au tour 601. L'ancienne ligne d'état est archivée en fin de document.
 
 **Points remplacés — à ne pas coder (passe de propreté, tour 593)** :
 la ligne d'état de 14:31 → 288 à 293 et 282 · 173 et 181 (« aucun des choix » vaut 0) → 176, 290 · 237 (« 1 point fixe », sur chaque question concernée) → 275, 290, et 332 à trancher · 19 (binômes après l'appel) → 109 · le découpage en lots (45 à 50, « lot 2 » de la dette 181, « après le lot 1 » de 67 et de la dette 186) → Paul, 578 · 40 (le score app pondéré) → 273, et 323 à trancher · ce que 35, 36, 56 et 61 disent des points des niveaux → 273, 295 · l'exemple chiffré de 169 → 1 point par question · le motif de 234 (l'encadré du tout ou rien redevient juste avec 273 ; c'est celui du partiel qui est faux) · les mesures 105, 106 et 113, fausses → corrigées en 320.
@@ -1485,6 +1485,110 @@ Deux choses mesurées par la fausse classe touchent ta séance de demain. Je te 
 390. **Mesuré sur ces captures : avec deux questions par compétence, « Maîtrise fragile » n'arrive jamais.** En tout ou rien, une compétence vaut alors 0, 10 ou 20 sur 20 (0/2, 1/2 ou 2/2). Il faut trois questions pour que les quatre niveaux soient possibles. Ma proposition : au moins trois questions par compétence, dans le prompt et dans la garde du collage, au lieu des deux de 339.
 
 391. **Restent à ton mot dans la maquette** : 360, 334, 313 et 339, 327, 331, 323, 64 et 332, plus les mots provisoires soulignés en orange (la liste est en tête du README).
+
+---
+
+## Tour 601 — Paul (08/10, 22:36 et 22:37), mot pour mot
+
+> (22:36) Remets moi les points à trancher
+>
+> (22:37, après interruption) Par ailleurs pour "saisie" il vaut mieux que ce soit "recopie" ou quelque chose dans la même idée. Saisie, c'est trop vague.
+
+## Tour 601 — « recopie », et les points à trancher redonnés en entier (points 392 à 400)
+
+392. **« Recopie » : oui, c'est le mot juste.** L'élève recopie sa feuille sur la tablette. Il ne voit pas ce mot (il lit « Qu'as-tu écrit sur ta feuille ? ») : c'est celui de ta console et du cadrage, par exemple « recopie juste, tablette fausse » ou « pas encore recopié ». Une précaution : « recopie » veut dire maintenant un clic, et plus la phrase tapée de 155 à 164, abandonnée (330). Je l'applique ci-dessous, puis à la maquette avec tes réponses.
+
+**Les points à trancher, redonnés en entier (avec « recopie » ; ce qui a changé depuis est en italique)**
+
+*Ce que la maquette montre déjà*
+
+360. **La recopie se fait dans la correction, question par question, juste avant que tu révèles.** Tu affiches la question, sans la réponse. Chaque moitié demande : « Qu'as-tu écrit sur ta feuille ? » L'élève clique, ton Suivi montre qui l'a fait, puis tu révèles. Sa tablette lui dit alors, d'après sa feuille, « V vert » ou « Barre ta réponse en rouge et écris la bonne réponse en vert », avec « Trouvée au dernier moment » si c'est le cas. C'est l'autocorrection de la dictée (110). *Depuis : la recopie est forcée, et tu commentes après la révélation (378, 381). Si tu valides 360, il remplace 249, 326 et 343 à 348 (365).*
+
+349. **L'élève dont la feuille ne dit aucun des choix clique sur « Ma feuille ne dit aucun de ces choix ».** La question compte alors 0, sauf si sa tablette était entièrement juste : elle est alors « Trouvée au dernier moment » (290).
+
+351. **Ton Suivi signale chaque « aucun de ces choix ».** Tu vois tout de suite les feuilles à lire, en plus des cas « recopie juste, tablette fausse » (180).
+
+362. **Les « aucun de ces choix » et les écarts « recopie juste, tablette fausse », tu ne les traites pas en classe.** Tu les lis le soir, sur les feuilles ramassées. Pour un « aucun », ta lecture ne peut que faire monter la note ; pour un écart, elle peut la faire baisser (« corrigé d'après ta feuille »). Plus de mains levées pendant la correction : 352 tombe.
+
+334. **Les lettres : on les supprime partout.** L'argument de 118 (« tu ne pourrais plus dire la B ») ne tient plus, puisque le tableau ne montre déjà plus de lettres (21, 95). Chaque choix est un bouton avec son texte, sur la tablette, dans la recopie et dans ta fiche. Dans ton tableau des scores, chaque question s'affiche ✓ ou ✗, et le détail en texte s'ouvre dans la fiche de l'élève. Le mélange garde sa force, puisqu'il change les places. 117, 118 et 195 tombent. *Depuis : une phrase d'aujourd'hui parle encore de lettres (399).*
+
+313. **Le lexique des quatre niveaux de maîtrise, partout** : 🔴 Maîtrise insuffisante, 🟠 Maîtrise fragile, 🔵 Maîtrise satisfaisante, 🟢 Très bonne maîtrise. C'est l'échelle du socle, déjà cadrée dans la doctrine (K0). Aujourd'hui, l'app dit « Faible », « Moyen », « Bien » et « Très bien ».
+
+339. **Les compétences.** Une question « Trouvée au dernier moment » compte comme juste pour sa compétence aussi. Chaque compétence évaluée l'est par au moins deux questions : le prompt le respecte, et l'app avertit au collage. La part des points d'une compétence se met sur l'échelle de la note, puis passe dans les mêmes tranches (131). L'estimation suit, elle aussi, ces tranches et ces mots (313) : une seule échelle partout. *Depuis : 390.*
+
+390. **Avec deux questions par compétence, « Maîtrise fragile » n'arrive jamais.** En tout ou rien, une compétence vaut alors 0, 10 ou 20 sur 20. Il faut trois questions pour que les quatre niveaux soient possibles. Ma proposition : au moins trois questions par compétence, dans le prompt et dans la vérification au collage, au lieu des deux de 339.
+
+327. **Les temps.** Chaque question a ses deux temps, réflexion et réponse, donnés au JSON (56) ; la case « ✋ Réponse » disparaît. Les deux élèves ont le même temps de réponse (25). « +5 / +10 / +30 s » vaut pour le tour en cours. « ✋ Autoriser la réponse » coupe la réflexion ; un bouton « Tour suivant » coupe le tour 1, et « 🔒 Clore la question » coupe le tour 2. « Changer le niveau en direct » disparaît, puisque le niveau ne fixe plus le temps. *Depuis : à la correction, le temps pour recopier sa feuille est le temps de réponse de la question (378).*
+
+331. **La réouverture.** Une réponse donnée est définitive. Rouvrir, pour tous ou pour un seul, ne rouvre que pour ceux qui n'ont pas répondu, une seule fois par question, et c'est la même règle au poste, au téléphone et au tableau. Pendant ce tour rouvert, son voisin porte le voile ordinaire. Cela remplace 105 et règle ta crainte de 30 : « il n'avait pas pu répondre ».
+
+323. **Les binômes.** On les forme sur la note de la feuille du QCM précédent. Un élève sans note est traité comme un absent (42) : les élèves sans note sont mis ensemble.
+
+64. **L'heure de fin.** Lancement + 55 minutes, modifiable à l'appel. La tablette oublie ses élèves à « Terminer », ou à l'heure de fin + 10 minutes.
+
+332. **Le + vert, quand un élève a plusieurs questions dans le cas de « Trouvée au dernier moment ».** Il va sur la seule question qui compte. Les autres questions dans le même cas restent fausses, comme la feuille. En tout ou rien, s'il y en a plusieurs, c'est la première dans l'ordre de l'évaluation.
+
+*Les autres points ouverts*
+
+324. **L'archive, « Mes évaluations » et le profil longitudinal se calculent aujourd'hui sur la tablette.** Ma proposition : ils s'écrivent d'après la note (la feuille, avec « Trouvée au dernier moment »), et plus d'après la tablette. Quand tu corriges une feuille (168) ou fixes une note (338), l'archive se met à jour, et l'ancienne valeur reste gardée (170). Un élève sans recopie est archivé « sans note » jusqu'à ce que tu la fixes.
+
+325. **« Aucune note avant la recopie » : aujourd'hui, quatre écrans montrent déjà un score** : le compteur de la correction ; en fin de séance, l'estimation, la comparaison à la classe et les 5 dernières évaluations ; et « Mes évaluations » montre un pourcentage. Ma proposition : plus rien à masquer, puisque la recopie se fait avant que le moindre score s'affiche. *Depuis : avec 360 et 378, tous les présents recopient en classe. La phrase que j'avais prévue (« Ta note s'ouvrira quand tu auras fait ta recopie ») ne sert plus : l'élève parti avant la correction n'a pas recopié, et c'est toi qui fixes sa note d'après sa feuille (338).*
+
+328. **Les questions « BONUS »** (la Q21 de ta 4e de demain, la Q10 de l'interro de 3e) : avec 1 point par question, elles comptent dans le total. Ma proposition : une question marquée « bonus » dans le JSON compte dans les points gagnés, pas dans le total. La note ne dépasse jamais le maximum (20 sur 20). Le mot « bonus » reste pour ces questions ; c'est seulement « Trouvée au dernier moment » qui ne s'appelle plus ainsi (282).
+
+329. **L'ordre mélangé (74) ne protège pas en réponses multiples.** Si A et C sont bonnes et qu'on les échange, les lettres justes restent A et C, et recopier son voisin donne juste. Ma proposition : « les bonnes réponses du second ne sont jamais à la même place que celles du premier ». Seule exception : quand tous les choix sont bons.
+
+330. **Ce que l'élève recopie pour « Sur ta copie, écris une phrase… » (258).** Ma proposition : seulement ses réponses, en cliquant sur les choix, sans phrase à taper (160 et 164 tombent). Pour ce type de question, la feuille porte la phrase et, en dessous, la réponse courte à la question ; seule la réponse se recopie. Le prompt écrit chaque question pour qu'on puisse y répondre en quelques mots sur la feuille.
+
+353. **En amont, le prompt réduit les « aucun de ces choix »** : chaque question appelle une réponse courte, qui correspond nettement à un choix (330).
+
+333. **« 1 élève » cliqué par erreur sur une tablette** : l'élève retombe sur le raccourci MJPC (contre ton 7) ou sur « Choisis ta classe » (contre ton 13). Ma proposition : « Choisis ta classe » disparaît partout ; l'élève donne son code, son prénom et son nom, et l'app trouve sa classe (13). En « 1 élève », le raccourci MJPC reste (7), mais il demande d'abord « Tu es bien Julien ? » : « Oui » entre, « Non » ouvre l'écran du code (89). L'app ne peut pas distinguer une tablette de classe d'un ordi du CDI ; c'est donc le moyen le plus simple. Même chose dans la dictée, qui a le même risque (126, dette 194).
+
+335. **Le rattrapage** : une séance de rattrapage à deux élèves deviendrait « le QCM précédent » de toute la classe (41) ; et un élève qui passe deux fois la même évaluation ? Ma proposition : une évaluation déjà passée par la classe se relance en « rattrapage » (l'app le sait déjà, elle t'avertit). Un rattrapage ne sert jamais de « QCM précédent » pour les binômes. Une évaluation donne une note par élève : celle de la première séance où il était présent.
+
+336. **L'élève parti en cours, ou arrivé en retard** : les questions manquées comptent-elles 0, ou sortent-elles du total ? Ma proposition : elles sortent du total ; la note porte sur les questions auxquelles il était là, ramenée sur 20. Sa ligne dans ta console le dit (« noté sur 7 questions sur 11 »), et tu peux toujours fixer sa note (338).
+
+337. **La séance interrompue, ou terminée avant la fin de la correction** : aujourd'hui, aucune archive n'est écrite. Ma proposition : « Terminer » écrit toujours l'archive, avec les notes telles qu'elles sont, quelle que soit la phase. À la reprise d'une séance interrompue, le tour en cours recommence au début, voile compris. *Depuis : avec 360, une question pas encore corrigée n'a pas de recopie ; tu la fixes d'après la feuille (338).*
+
+338. **Fixer une note** (l'élève sans recopie, l'évaluation sans connexion) : aujourd'hui, aucun geste ne le permet. Ma proposition : la fenêtre « Que dit la feuille ? » (168) marche aussi sans recopie ; tu cliques, question par question, sur ce que dit la feuille, et cela vaut recopie. C'est aussi la voie de l'évaluation sans connexion (120).
+
+340. **L'arrondi de la note**, en partiel et ramenée sur 20, face à des paliers comme « de 5 à 5,99 ». Ma proposition : la note s'arrondit au dixième, au plus proche. Les tranches s'écrivent « de 5 à moins de 6 » : aucune note ne tombe entre deux.
+
+97 et 142. **Ce que montre la recopie** : le texte des choix, dans l'ordre que l'élève a vu (avec 334, sans lettres), plus la case « Ma feuille ne dit aucun de ces choix » (173). *Depuis : c'est ce que montre la maquette (capture 29).*
+
+115. **Le scan des copies** (dans la fiche de l'élève, jamais servi) : on le retire ; la feuille ramassée suffit (168).
+
+120. **L'évaluation sans connexion** : on imprime les énoncés seuls (119), puis tu fixes chaque note par 338.
+
+121. **Les binômes au JSON** : rien dans le JSON, puisqu'une même évaluation sert à plusieurs classes ; l'app décide classe par classe. C'est le placement libre au premier QCM de la classe, sinon d'après le précédent (323).
+
+165. **Quand ta copie ramassée ne dit pas la même chose que la recopie** : aucune sanction dans l'app. La question corrigée compte d'après la feuille, et le reste est ton affaire, hors de l'app.
+
+234. **L'attestation** : reprise de la dictée, sur chaque moitié, avant la question 1. Elle dit la règle de 288 à 290 et sa raison, avec tes mots (577). *Depuis : son texte provisoire est en 393.*
+
+317. **Le chapitre** : l'évaluation porte son chapitre, le prompt reçoit ses compétences, et l'app refuse au collage une compétence hors du chapitre.
+
+*Les mots vus par l'élève, à donner (169, 173, 230, 202)*
+
+393. **L'attestation** (captures 5 et 6) : « Pour chaque question, tu écris d'abord ta réponse en entier sur ta feuille, sans voir les choix. » ; « Quand « POSE TON STYLO » s'affiche, tu poses ton stylo. Chacun votre tour, vous cliquez sur votre réponse ; l'autre ne regarde pas. » ; « C'est ce que tu as écrit qui fait foi. À la correction, avant de voir la réponse, tu cliques sur le ou les choix qui disent la même chose que ta feuille. Les mots ne sont pas forcément les mêmes : c'est à toi de faire le rapprochement. Si c'est faux à l'écrit, le point ne t'est pas compté. » ; « Chaque question vaut 1 point. » ; « Les choix t'aident, par rapport à une question sans choix : on te laisse une chance. Une fois par évaluation, si ta feuille est fausse mais que tu as cliqué sur exactement la bonne réponse, la question compte quand même : elle est « Trouvée au dernier moment ». » ; « Je ramasse les feuilles à la fin. » ; et le bouton « Je commence ».
+
+394. **L'écran de la recopie** (capture 29) : « Qu'as-tu écrit sur ta feuille ? », puis « Clique sur le ou les choix qui disent la même chose que ta feuille. Les mots ne sont pas forcément les mêmes : c'est à toi de faire le rapprochement. »
+
+395. **La case de 173** : « Ma feuille ne dit aucun de ces choix ». Elle vaut aussi pour une feuille vide (380).
+
+396. **Sous « Trouvée au dernier moment »** (230, capture 32) : « Ta feuille disait autre chose, mais tu as cliqué sur la bonne réponse : la question compte. Cela n'arrive qu'une fois par évaluation. », puis « Sur la tablette, tu avais cliqué sur : … ».
+
+397. **Le bilan** (capture 38) : « Ta note : », « Question par question », « juste », « faux », « ta feuille ne dit aucun de ces choix », « → 1 point » et « Tes compétences ».
+
+398. **La phrase de 169**, que l'élève lit sous une question que tu as changée par « Que dit la feuille ? » : elle n'est pas encore écrite.
+
+399. **La phrase d'aujourd'hui qui parle encore de lettres** (334) : « 💡 Clique sur la (ou les) lettre(s) qui correspond(ent) à ta réponse ».
+
+400. **Le message d'un code non enregistré** (202) : aujourd'hui, « Ton code n'est pas encore enregistré. Viens me voir pour qu'on le mette en place. » Ta règle est « lève la main ».
+
+*Les préalables au mandat*
+
+73 et 148. **Les captures de ta console sont faites** : ce sont les 18 captures de console de la maquette, à valider avec le reste. **L'inventaire « tout visible » (148) est à moi** : je le fais quand tu auras tranché.
 
 ---
 

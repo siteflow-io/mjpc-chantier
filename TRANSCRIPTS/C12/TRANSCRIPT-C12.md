@@ -16944,3 +16944,31 @@ Réponse mot pour mot :
 08/10/2026 11:17 MEMO
 
 ---
+
+## TOUR 566 — Paul
+
+Texte de Paul, mot pour mot (l'extrait cité vient de la réponse 165) :
+
+> « tu marques la question « la feuille dit autre chose », la note se recalcule d'après la feuille » c'est à dire, concrètement?
+
+---
+
+## TOUR 566 — Claude (conscience n°12)
+
+Paul cite un extrait de 165 (pièce jointe) et demande le geste concret. CADRAGE-QCM.md complété (tour 566). Rien écrit au hub, aucun code.
+
+Réponse mot pour mot :
+
+166. **Concrètement, sur ta console.** Dans le Suivi du QCM, tu touches la ligne de Julien et sa fiche s'ouvre. Pour chaque question, elle montre côte à côte ce qu'il a touché en classe, ce qu'il a saisi (avec sa phrase recopiée) et la bonne réponse. Les questions où la saisie diffère de la tablette sont en orange.
+
+167. **Tu as sa feuille en main.** Prenons la question 7. Julien a saisi B (« une relative »), qui est la bonne réponse ; mais sa feuille dit « une complétive ».
+
+168. **Sur la ligne de la question 7, un bouton : « La feuille dit autre chose ».** Tu le touches, une petite fenêtre demande « Que dit la feuille ? » et montre les choix avec leur texte. Tu touches C, celui qui correspond à ce qui est écrit.
+
+169. **L'app recompte aussitôt.** La question 7 compte maintenant C, qui est faux : par exemple, sa note passe de 14 à 11 points (de 12,7 à 10 sur 20). Dans le Suivi, sa ligne porte « 1 question corrigée par toi ». Dans son récapitulatif, l'élève lit sous la question 7 que sa note a été corrigée d'après sa feuille, avec tes mots pour cette phrase.
+
+170. **Tu peux revenir en arrière** : un deuxième bouton, « Annuler ma correction », remet la saisie de l'élève et la note d'avant. Rien n'est effacé : ta correction et sa saisie restent gardées toutes les deux.
+
+08/10/2026 11:21 MEMO
+
+---

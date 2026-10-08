@@ -580,3 +580,21 @@ Voici l'évaluation :
 164. **Ta réponse à 160, telle que je la comprends** : l'élève recopie toute sa feuille, pour toutes les questions. Le temps (158) dépend donc du moment de la saisie (143) : à la maison, la longueur ne coûte rien ; en classe, elle prend sur l'heure.
 
 165. **Une seule chose à trancher maintenant : que se passe-t-il quand ta copie ramassée ne dit pas la même chose que la saisie ?** Ma proposition : la feuille fait foi. Dans ton Suivi, tu marques la question « la feuille dit autre chose », la note se recalcule d'après la feuille, et l'élève lit « corrigé d'après ta feuille ». Est-ce que tu ajoutes une sanction, comme le zéro de la dictée, ou non ?
+
+---
+
+## Tour 566 — Paul (08/10, 11:19), mot pour mot
+
+> « tu marques la question « la feuille dit autre chose », la note se recalcule d'après la feuille » c'est à dire, concrètement?
+
+## Tour 566 — « la feuille dit autre chose », concrètement (points 166 à 170)
+
+166. **Concrètement, sur ta console.** Dans le Suivi du QCM, tu touches la ligne de Julien et sa fiche s'ouvre. Pour chaque question, elle montre côte à côte ce qu'il a touché en classe, ce qu'il a saisi (avec sa phrase recopiée) et la bonne réponse. Les questions où la saisie diffère de la tablette sont en orange.
+
+167. **Tu as sa feuille en main.** Prenons la question 7. Julien a saisi B (« une relative »), qui est la bonne réponse ; mais sa feuille dit « une complétive ».
+
+168. **Sur la ligne de la question 7, un bouton : « La feuille dit autre chose ».** Tu le touches, une petite fenêtre demande « Que dit la feuille ? » et montre les choix avec leur texte. Tu touches C, celui qui correspond à ce qui est écrit.
+
+169. **L'app recompte aussitôt.** La question 7 compte maintenant C, qui est faux : par exemple, sa note passe de 14 à 11 points (de 12,7 à 10 sur 20). Dans le Suivi, sa ligne porte « 1 question corrigée par toi ». Dans son récapitulatif, l'élève lit sous la question 7 que sa note a été corrigée d'après sa feuille, avec tes mots pour cette phrase.
+
+170. **Tu peux revenir en arrière** : un deuxième bouton, « Annuler ma correction », remet la saisie de l'élève et la note d'avant. Rien n'est effacé : ta correction et sa saisie restent gardées toutes les deux.

@@ -17803,3 +17803,37 @@ Réponse mot pour mot :
 310. **Ma troisième question** : as-tu un exemple du PDF que tu donnes aujourd'hui à ton extension ? La sortie de l'app aurait alors exactement la même forme.
 
 08/10/2026 17:02 MEMO
+
+---
+
+## TOUR 592 — Paul
+
+Texte de Paul, mot pour mot :
+
+> 303. Évidemment, et c'est comme pour un élève classique. Il n'a que les points de ce qu'il a coché en fait. Pour les niveaux oui, la distinction est la bonne mais du coup il faut aussi changer le lexique des 4 niveaux. Oui 305 à 307 c'était une des choses que je voulais ajouter au cadrage. Les compétences et la taxo c'est la façon pour la maîtrise de l'élève d'entrer au profil longitudinal. 308 oui, déjà cadré il y a longtemps arrête de poser des questions dont les réponses sont sur github. 309. Oui mais pas non plus trop. Deux max et surtout les compétences sont celles travaillées pendant le chapitre ( donc prompt et instance doivent être alignés et connaître le chapitre ). 310. Non. Il faudra le faire.
+
+---
+
+## TOUR 592 — Claude (conscience n°12)
+
+Cherché au dépôt avant de répondre : `docs/MJPC6-2-DOCTRINE.md` (K0 : échelle du socle ; D : Concordance) ; libellés actuels du QCM (`FOURCHETTES_DEF`, `BilanClasse` l. 7306-7309, autoévaluation l. 7680-7683) ; hub (lecture seule) `/site` et `/site/3e/chapitres/0` (compétences majeures, mineures, par séance). Dette 186 complétée, CADRAGE-QCM.md (ligne d'état, tour 592). Rien écrit au hub, aucun code.
+
+Réponse mot pour mot :
+
+311. **Compris pour 308 : je cherche d'abord au dépôt avant de te poser une question.** Je l'ai fait pour la suite.
+
+312. **303 est retenu** : une question n'est « Trouvée au dernier moment » que si la tablette est entièrement juste ; sinon, l'élève n'a que les points de ce que dit sa feuille.
+
+313. **Le lexique des 4 niveaux de maîtrise : je reprends celui qui est déjà cadré**, celui de l'échelle officielle du socle (doctrine, K0) : 🔴 Maîtrise insuffisante, 🟠 Maîtrise fragile, 🔵 Maîtrise satisfaisante, 🟢 Très bonne maîtrise. Aujourd'hui, l'app dit « Faible », « Moyen », « Bien » et « Très bien » (bilan de classe, autoévaluation).
+
+314. **305 à 307 sont retenus**, avec ta raison : par les compétences et la taxonomie, la maîtrise de l'élève entre dans son profil longitudinal.
+
+315. **309 est retenu : une ou deux compétences par question, pas plus, prises parmi celles travaillées pendant le chapitre.**
+
+316. **Mesuré au hub : chaque chapitre porte déjà ses compétences.** Ton chapitre 1 de 3e, « Poésie et peinture au XIXe siècle », a une compétence majeure (c4-lire-04), 11 mineures, et la liste de chaque séance (9 séances).
+
+317. **Une tension : aujourd'hui, une évaluation QCM ne sait pas de quel chapitre elle est.** Elle n'a qu'un titre, ses questions, ses dates et sa version. Ma proposition : l'évaluation porte son chapitre ; le prompt reçoit la liste des compétences de ce chapitre ; et au collage du JSON, l'app refuse une question dont une compétence n'est pas dans le chapitre, en disant laquelle.
+
+318. **310 est noté : le PDF « notes et compétences » est à créer.** Il entre au cadrage, et je t'en proposerai la forme quand on y arrivera.
+
+08/10/2026 17:55 MEMO

@@ -1,3 +1,5 @@
+> **⛔ RETIRÉ le 08/10/2026, 09:35 (Paul, tour 561)** : « pas de propositions dégradées de ta part, comme ce "prompt de transition" ». Ne pas utiliser ; gardé pour mémoire (cadrage QCM, point 128).
+
 # Prompt de transition — adapter une évaluation QCM pour l'app d'aujourd'hui (7.7.1)
 *Conscience n°12, 08/10/2026, tour 560 (cadrage QCM, points 101 à 103). Pour le QCM du 09/10, avant le nouveau prompt (qui s'écrira en dernier, point 62). Mode d'emploi : coller ce texte dans une IA, puis le JSON de l'évaluation (✏️ Modifier, le texte du haut) ; recoller le JSON rendu au même endroit, « 🔍 Vérifier le format » ; régler les durées données dans « ⚙️ Durées des niveaux » (visible une fois la séance lancée), « 💾 Sauvegarder », et le temps de réponse dans la case « ✋ Réponse ». Les durées des niveaux sont communes à toutes les évaluations.*
 

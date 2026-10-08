@@ -17448,3 +17448,31 @@ Réponse mot pour mot :
 *238 : c'est le cas de Théo, réexpliqué en 241 à 245. À toi de dire si le ramassage des feuilles suffit à l'en dissuader.*
 
 08/10/2026 14:40 MEMO
+
+---
+
+## TOUR 580 — Paul
+
+Texte de Paul, mot pour mot :
+
+> attends, on reste sur théo pour l'instant. quand peut-il recopier la bonne réponse?
+
+---
+
+## TOUR 580 — Claude (conscience n°12)
+
+Lu dans le code (7.7.1) : `EleveSession` ne liste que les séances `etat === "terminee"` (l. 2817) ; la consigne de `EleveCorrection` (l. 4385-4404) dépend de `juste`, calculé sur la réponse touchée. Dette 196 complétée, CADRAGE-QCM.md (tour 580). Rien écrit au hub, aucun code.
+
+Réponse mot pour mot :
+
+246. **À la saisie, donc après la correction.** Mesuré : la saisie ne s'ouvre qu'une fois la séance terminée, puisque « Tes évaluations passées » ne montre que les séances terminées. À ce moment-là, la bonne réponse a déjà été révélée, au tableau et sur sa tablette.
+
+247. **Il l'a même sous les yeux, sur sa feuille.** À la correction, quand il avait faux, l'app lui dit : « Barre ta réponse en rouge et écris la bonne réponse en entier en vert à côté. » Il lui suffit de recopier la ligne verte au lieu de sa réponse barrée (156).
+
+248. **Mesuré, et c'est pire pour Théo : la consigne de correction suit la tablette, pas la feuille.** Comme il a touché juste, sa tablette lui dit : « ✅ Bravo ! Sur ta feuille, mets simplement un V vert dans la marge à côté de ta réponse. » Il met donc un V vert à côté d'une réponse fausse. À la saisie, il peut recopier la bonne réponse de bonne foi : l'app lui a dit qu'il avait juste.
+
+249. **Ma proposition : la saisie avant la correction.** Les questions, puis la saisie, puis la correction. Au moment de sa saisie, Théo ne sait pas encore quelle est la bonne réponse : arranger sa saisie ne lui sert à rien. Et à la correction, l'app connaît sa feuille : elle lui dit « Barre ta réponse en rouge… » d'après ce qu'il a écrit, et lui montre « Trouvée au dernier moment ». Ce que ça coûte : la saisie prend du temps avant la correction, dans les 45 minutes (2, 158). Cela tranche aussi 143.
+
+250. **Si la saisie reste après la correction**, il faut au moins que la consigne de correction ne juge plus la tablette, par exemple : « Compare ta feuille à la bonne réponse. » Mais Théo pourra toujours recopier sa ligne verte.
+
+08/10/2026 14:44 MEMO

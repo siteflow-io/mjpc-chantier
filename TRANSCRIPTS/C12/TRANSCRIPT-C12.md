@@ -16589,3 +16589,142 @@ Réponse mot pour mot :
 08/10/2026 08:21 MEMO
 
 ---
+
+## TOUR 560 — Paul
+
+Texte de Paul, mot pour mot :
+
+> 65. Non, pas de favori sur les tablettes. Je leur donne l'adresse siteflow etc mode élève. On doit faire comme la dictée. Sinon, on garde le choix 1 ou 2 élèves, comme ça en 2 élèves l'App sait que c'est tablette et ça régle la question ( 1 c'est pour tout le reste). 2 élèves, je le dis à l'oral systématiquement. Et retour possible, toujours, si un élève se trompe et sélectionne 1. 9. Oui à cadrer. 10. Normalement j'ai toujours le pilotage ouvert sur l'ordi mais effectivement il faut prévoir le cas où je ne l'ai pas ( mais bon, la vue tableau je l'ouvre sur mon ordi... Donc via le pilotage de toute façon ). 12. Non, du coup on garde bien le choix 1 ou 2 élèves. Ça règle la question. Sur 12. Ok. 14. Ok c'est une bonne fonctionnalité. Il faut être sûr et certain que ça suive bien. 16. Il faudra me redonner les questions 28 à 54 pour que j'y reponde. 21. Je n'avais effectivement pas pensé que les réponses s'affichaient au tableau en phase de réponse. Dans ce cas, les réponses ne s'affichent jamais au tableau. Uniquement sur les tablettes. A mesurer et voir pour télescopage ou pas. 21. La feuille: j'avais codé cette fonctionnalité pour si jamais un jour pas de connexion, quand même faire l'évaluation sur papier. D'ailleurs, c'est à revoir aussi, parce qu'actuellement ça imprime 6 feuilles par élève, ça ne va pas. 76. Du coup c'est à cadrer. 21. Le verbe laisse. Et oui j'ai peut-être interverti les élèves d'exemple. Oui sur 25. 82. Non, le codage sera fait par une exécutante de Claude code, la totalité des livraisons, puis audit final.  Pour demain: je vais adapter les QCM actuellement en place en les repassant dans une ia avec le nouveau prompt.
+
+---
+
+## TOUR 560 — Claude (conscience n°12)
+
+Mesuré : vue tableau (réponse : énoncé, choix avec lettres, chrono, « n / N ont répondu » ; correction : choix avec lettres, bonnes en vert, « ✅ Bonne réponse : … », explication) ; correction sur tablette (choix avec lettres) ; feuille imprimée reproduite avec le style de 7.7.1 et imprimée en PDF A4 par Chromium : 7 pages (4e, 21 questions), 4 pages (3e, 11 questions) ; collage d'évaluation : aucun champ inconnu refusé ; réflexion 1-120 s, réponse 3-30 s. Écrits : prompt de transition (MANDATS/PROMPT-QCM-TRANSITION-09-10.md) ; CADRAGE-QCM.md complété (tour 560) ; dettes 187 close, 185 et 189 complétées, 190 et 191 ajoutées (commit local production, poussée refusée 403 ; reportées au sas). Rien écrit au hub, aucun code.
+
+Réponse mot pour mot :
+
+87. **Tes réponses sont inscrites mot pour mot** dans le document de cadrage, sous chaque point : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/CADRAGE-QCM.md
+
+**Les questions 28 à 54, redonnées (mêmes numéros, mises à jour d'après tes réponses)**
+
+28. **Le coût en temps** de l'alternance, mesuré sur tes deux évaluations de demain (réponse 5 s, passage 3 s) : 16 s par question au lieu de 5, soit +4 min en 4e (21 questions) et +2 min en 3e (11 questions). C'est une mesure, rien à trancher, sauf si tu veux réagir.
+
+29. **« Rouvrir pour tous »** : les deux tours recommencent ; celui qui a déjà répondu reste voilé, avec « Ta réponse est enregistrée ».
+
+30. **La réouverture pour un seul élève** : sa moitié s'ouvre sans chrono, et l'autre est voilée avec « Laisse la tablette à X pour qu'il réponde sans que tu regardes. »
+
+31. **La pause** gèle le tour en cours, voile compris.
+
+32. **L'autoévaluation et la correction** se font sur les deux moitiés en même temps, sans voile : il n'y a plus rien à copier.
+
+33. **La vue tableau** affiche « 1er tour » ou « 2e tour » à côté du chrono, sans jamais les choix (ton 21).
+
+34. **Le temps de réponse (mis à jour par 56)** se règle question par question, comme la réflexion, dans le JSON donné par l'IA. Il n'a plus de plafond à 30 s : la seule limite, c'est la garde de débordement (58).
+
+35. **Les niveaux (mis à jour par 56)** restent quatre, avec leurs noms ; ils ne donnent plus que les points, la couleur et le bilan.
+
+36. **Le panneau « Les niveaux », dans Réglages (mis à jour par 56 et 61)** : pour chaque niveau, les points et les temps par défaut d'une question qui n'a pas les siens (tes évaluations déjà écrites) ; en plus, le temps de passage de la tablette (26).
+
+37. **Le prompt (mis à jour par 62)** s'écrit en dernier : il donnera les deux temps de chaque question et fera la première garde de débordement (58).
+
+38. **Le rechargement pendant le QCM** : tu y as répondu par ton 6 (l'élève ne retape jamais son code pendant l'heure, la tablette l'oublie à la fin de l'heure). Rien à trancher.
+
+39. **La constitution** : au premier QCM, placement libre (aucune annonce, aucun refus) ; ensuite, d'après le QCM précédent, un classement, puis les binômes 1-2, 3-4, 5-6…
+
+40. **Le résultat retenu** : le score app pondéré, connu dès la fin de la séance et pour tous. Le score officiel n'existe qu'après la saisie à la maison, que tous ne font pas.
+
+41. **Le QCM précédent** : la dernière séance terminée de la classe, quelle que soit l'évaluation.
+
+42. **Sans résultat, et nombre impair** : les absents du QCM précédent sont appariés entre eux ; s'il reste un élève, c'est le dernier du classement qui est seul, avec une moitié vide.
+
+43. **Le choix du mode** est automatique : placement libre s'il n'y a pas de QCM précédent, sinon d'après les résultats. Tu peux le changer au lancement, dans la fenêtre de l'appel.
+
+44. **L'élève sans code** lit aujourd'hui « Viens me voir pour qu'on le mette en place » : cela devient « lève la main ».
+
+45 à 50 (le verdict pour demain) : **sans objet**. Tu as tranché en 82 : tout passe par une exécutante, puis un audit final, et demain se fait avec tes QCM adaptés (voir 100 à 102).
+
+51 à 54 (l'écriture en production) : rien n'a changé, je ne peux toujours pas écrire en production. Cela ne bloque pas le cadrage ni le mandat, seulement la promotion. Le seul geste est le tien (53) : sur GitHub, réglages de l'organisation siteflow-io → GitHub Apps → Claude → Configure → Repository access → ajouter `monsieurjaipascompris`.
+
+**Restent aussi à trancher, de ma réponse précédente (mêmes numéros)**
+
+58. **Deux gardes de débordement.** Dans le prompt, l'IA estime le temps d'écriture de chaque question et te dit « ça ne rentre pas » si le temps est trop court, et elle vérifie que le total tient dans 45 minutes, correction comprise. Dans l'app, au collage puis au lancement : « Cette évaluation dure 52 min : elle déborde des 45 minutes utiles. »
+
+59. **Le temps de correction** : 1 minute par question en attendant ; l'app note désormais le début et la fin de chaque correction, pour qu'on le remplace par ta vraie durée. Est-ce qu'1 minute te paraît juste ?
+
+61. **Où régler** : « Durées des niveaux » (aujourd'hui caché dans le pilotage, séance lancée) et « Pondération » (aujourd'hui dans Données → Sauvegarde) réunis dans Réglages, sous « Les niveaux » ; les temps de chaque question dans l'éditeur de l'évaluation, à côté de la pastille de niveau.
+
+64. **La fin de l'heure** : le QCM n'en a pas aujourd'hui. Au lancement, la séance reçoit une heure de fin (lancement + 55 min, modifiable dans la fenêtre de l'appel). La tablette oublie ses deux élèves à « Terminer la session », ou à l'heure de fin + 10 min si tu as oublié de terminer.
+
+74. **L'ordre mélangé (mis à jour par ton 21 : jamais de choix au tableau)** : celui qui répond en premier voit l'ordre de l'évaluation ; le second voit un autre ordre, où aucune bonne réponse ne garde sa lettre. S'il recopie les lettres de son voisin, il se trompe à coup sûr ; en mode partiel, chaque case en trop lui coûte un point.
+
+**Suite à tes réponses**
+
+88. **Sur 65 : c'est retenu.** On garde « Combien êtes-vous ? ». « 2 élèves », c'est la tablette de classe : deux moitiés, sans raccourci MJPC et sans choix de classe. « 1 élève », c'est tout le reste (téléphone, CDI, maison). Le « ← Retour » vers la question est toujours là, si un élève touche 1 par erreur. En classe, tu dis toujours « 2 » ; l'élève seul choisit 2 et garde une moitié vide.
+
+89. **Sur 65, une tension avec ton 7.** Sur une tablette de classe, l'élève qui touche « 1 » par erreur retombe sur le raccourci MJPC. Si un autre élève s'est connecté au site sur cette tablette dans les 12 dernières heures, il entre sous son nom. Ma proposition : en « 1 élève », le raccourci n'entre plus directement. Il affiche d'abord le nom, avec deux boutons : « C'est moi » et « Ce n'est pas moi », qui ouvre l'écran du code. Ce sont des mots vus par l'élève : donne-moi les tiens, ou dis « ok » pour ceux-là.
+
+90. **Sur 12 et 70** : la dictée garde aussi « Combien êtes-vous ? ». Il n'y a plus de tension avec ta décision du 07/10, et la dette 187 est close, sans objet. Ton « sur 12 : ok » vaut pour 71 (l'élève seul a une moitié vide, un retardataire peut s'y asseoir).
+
+91. **Sur 10** : c'est retenu (68). N'importe quel écran ouvert fait passer la phase, ton poste, la vue tableau ou ton téléphone. Plus aucun écran n'est indispensable.
+
+92. **Sur 14, « sûr et certain que ça suive »** : il aura son banc propre, à deux navigateurs et sur deux tablettes. On y déplace un élève avant la question 1, pendant la réflexion, pendant le tour de réponse, puis on recharge une tablette entre deux déplacements. Le banc vérifie à chaque fois que les réponses déjà données suivent l'élève, que les quatre moitiés changent sans rechargement, et qu'aucune réponse n'est perdue ni comptée deux fois.
+
+93. **Sur 21, mesuré : ce que la vue tableau montre aujourd'hui.** En réponse, l'énoncé, les choix avec leurs lettres, le chrono et « n / N ont répondu ». En correction, l'énoncé, les choix avec leurs lettres, les bonnes réponses en vert, « ✅ Bonne réponse : B, D » et l'explication. Sur la tablette, la correction montre les choix avec leurs lettres, la réponse de l'élève et la bonne.
+
+94. **Sur 21, le télescopage : la correction.** En réponse, retirer les choix du tableau ne casse rien. Mais en correction, tes élèves corrigent en regardant le tableau, et les lettres n'y veulent plus rien dire pour celui qui avait l'ordre mélangé. Ma question : « jamais au tableau », est-ce aussi pendant la correction ?
+
+95. **Ma proposition, pour 94** : en correction, le tableau montre les choix **sans lettres**, les bonnes en vert, et l'explication ; il n'affiche plus « Bonne réponse : B, D ». Chaque tablette montre à l'élève la question dans l'ordre qu'il a vu, avec sa réponse et la bonne (79).
+
+96. **Sur 21 et 76, la feuille : mesuré.** J'ai imprimé en PDF la feuille de tes deux évaluations de demain, avec la mise en page de l'app : 7 pages par élève pour ta 4e (21 questions) et 4 pages pour ta 3e (11 questions). Chaque question prend tout un cadre (énoncé, cadre d'écriture, lettres), et aucun cadre n'est coupé entre deux pages. Ma question : combien de pages au plus par élève veux-tu pour cette feuille de secours ?
+
+97. **Sur 76, ma proposition** : la saisie papier à la maison montre le **texte** des choix, dans l'ordre que l'élève a vu en classe, et plus seulement les lettres. Il retrouve sa réponse d'après ce qu'il a rédigé sur sa feuille, sans avoir besoin d'une lettre sur le papier. Cela règle à la fois l'ordre mélangé et la feuille libre, qui n'a pas de lettres.
+
+98. **Sur 80** : c'est retenu, le verbe « laisse », des deux côtés : « Laisse la tablette à X pour qu'il réponde sans que tu regardes. »
+
+99. **Sur 81** : c'est retenu. Au début de la réponse, les deux moitiés affichent « POSE TON STYLO », puis le voile tombe sur celle qui attend.
+
+100. **Sur 82 : c'est retenu.** Une exécutante en session cloud fait toutes les livraisons à la suite, puis je fais un audit final, puis tu promeus. J'écris le mandat quand le cadrage est fini, captures de ta console validées comprises (73).
+
+101. **Pour demain, « le nouveau prompt » n'existe pas encore** : il s'écrit en dernier (62), et l'app de demain (7.7.1) ne sait pas lire un temps par question. Dans l'app d'aujourd'hui, le temps de réflexion vient seulement du niveau (de 1 à 120 s, le même pour toutes les questions d'un niveau) et le temps de réponse est le même pour toutes les questions (de 3 à 30 s). Un niveau changé change aussi les points. Je te donne donc un **prompt de transition**, fait pour l'app d'aujourd'hui. L'IA estime le temps d'écriture de chaque question ; elle te donne les durées à régler pour chaque niveau et le temps de réponse ; elle dit si la séance tient dans 45 minutes, correction comprise ; s'il le faut, elle propose quoi retirer et attend ton accord ; enfin, elle te rend le JSON au format exact de l'app, sans champ nouveau.
+
+102. **Le prompt de transition**, à coller dans une IA avec le JSON de ton évaluation (✏️ Modifier, le texte du haut). Ensuite, tu recolles le JSON rendu au même endroit, puis « 🔍 Vérifier le format » : cela crée une nouvelle version, sans risque, car aucune séance n'a encore utilisé ces deux évaluations. Puis tu règles les durées données : lance la séance, déplie « ⚙️ Durées des niveaux », « 💾 Sauvegarder » ; le temps de réponse va dans la case « ✋ Réponse » (84). Le prompt est aussi au sas : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/PROMPT-QCM-TRANSITION-09-10.md
+
+```
+Tu vas vérifier et ajuster une évaluation QCM existante pour mon application, telle qu'elle fonctionne aujourd'hui. Je te colle son JSON à la fin.
+
+COMMENT SE PASSE UNE SÉANCE (respecte-le dans tous tes calculs)
+- Une séance dure 45 minutes utiles en tout : la phase des questions, puis la correction collective dans la foulée.
+- Pour chaque question : 1) réflexion : l'élève voit l'énoncé seul (les choix sont cachés) et rédige sa réponse EN ENTIER, à la main, sur sa feuille ; 2) réponse : les choix apparaissent, l'élève pose son stylo, relit sa feuille et touche la ou les lettres.
+- Le temps de réflexion dépend UNIQUEMENT du niveau de la question : il est le même pour toutes les questions d'un même niveau, et se règle entre 1 et 120 secondes par niveau.
+- Le temps de réponse est le même pour toutes les questions de l'évaluation, entre 3 et 30 secondes.
+- Le niveau donne aussi les points : facile 1, standard 2, approfondi 3, expert 4. Changer le niveau d'une question change donc ses points : ne le fais jamais sans me le demander.
+- Entre deux questions, compte 15 secondes (je lance la suivante).
+- Correction : compte 1 minute par question, sauf si je te donne un autre chiffre.
+- Repère réel : dans mes séances de juin, une question a pris en classe entre 1 minute et 1 minute 30 (réflexion, réponse et temps ajoutés compris). Si ton calcul donne beaucoup moins, dis-le.
+
+CE QUE TU FAIS, DANS CET ORDRE
+1. Pose-moi d'abord ces questions et attends mes réponses : la classe (4e ou 3e) ; combien de minutes je garde pour l'installation et la consigne (par défaut 5) ; si 1 minute de correction par question me convient.
+2. Pour chaque question, estime le temps qu'un élève de cette classe met à lire l'énoncé et à rédiger sa réponse complète à la main (base : 10 mots par minute en rédigeant, plus le temps de lecture). Donne-le dans un tableau : numéro, niveau, réponse attendue en quelques mots, temps estimé.
+3. Pour chaque niveau, propose le temps de réflexion à régler : celui de la question la plus longue de ce niveau, arrondi aux 5 secondes au-dessus. Si une question dépasse 120 secondes, écris : « La question n ne rentre pas dans le temps de réflexion maximal », et propose de la scinder ou de la raccourcir.
+4. Propose le temps de réponse : le temps de lire tous les choix de la question la plus chargée et de toucher les lettres (base : 2,5 mots par seconde en lecture, plus 2 secondes par lettre à toucher), arrondi aux 5 secondes au-dessus. S'il dépasse 30 secondes, écris : « La question n ne rentre pas dans le temps de réponse maximal », et propose de raccourcir ses choix.
+5. Calcule le total : installation + somme des temps de réflexion de toutes les questions + (temps de réponse + 15 s) × nombre de questions + correction. Écris clairement « Ça rentre dans 45 minutes (total : … min) » ou « Ça ne rentre pas : il manque … minutes ».
+6. Si ça ne rentre pas, propose une solution SANS l'appliquer : les questions à retirer (d'abord celles qui coûtent le plus de temps pour le moins de points), ou les choix à raccourcir. Attends mon accord.
+7. Quand je t'ai répondu, rends-moi le JSON corrigé au même format exact que celui que je t'ai donné (titre, mode, questions avec enonce, choix, bonnes, niveau, explication), sans aucun autre champ, dans un seul bloc ; puis, en dessous, le récapitulatif : « Durées des niveaux : facile … s, standard … s, approfondi … s, expert … s. Temps de réponse : … s. Durée totale : … min. »
+
+RÈGLES
+- Ne change jamais un énoncé, un choix, une bonne réponse, un niveau ou une explication sans mon accord.
+- Si tu raccourcis des choix (avec mon accord), garde exactement le même sens et la même bonne réponse, au même rang.
+- Réponds en français simple.
+
+Voici l'évaluation :
+[colle ici le JSON]
+```
+
+103. **Ce que ce prompt ne fait pas** : il ne règle rien dans l'app. Les durées des niveaux sont communes à toutes tes évaluations : celles que tu règles pour la 4e restent pour la 3e, si tu ne les changes pas entre les deux séances.
+
+104. **Registre** : la dette 187 est close (sans objet, 90). La dette 189 reçoit tes décisions (« laisse », jamais au tableau, 76 à cadrer). Deux dettes sont ajoutées : 190, la feuille de secours (7 et 4 pages par élève) ; 191, plus aucun choix au tableau, et ce que cela change à la correction. Elles sont au sas, la production étant toujours fermée : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/DETTES-QCM-179-184-A-REPORTER.md
+
+08/10/2026 09:22 MEMO
+
+---

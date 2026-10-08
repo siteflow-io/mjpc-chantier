@@ -998,3 +998,21 @@ Deux choses mesurées par la fausse classe touchent ta séance de demain. Je te 
 259. **Une tension avec 111, 112 et 133.** Tu dis « 1 question = 1 point ». Nous avions retenu des points selon le niveau (1, 2, 3 ou 4), et une note en points totaux, au prorata sur 20. Avec 1 point par question, le cas de Théo disparaît : la question et le bonus valent tous deux 1 point, et tricher ne lui rapporte plus rien (sauf s'il a touché juste au dernier moment sur deux questions ou plus).
 
 260. **Mes deux questions.** Une seule bonne réponse par question, toujours ? Et 1 point par question, ou des points selon le niveau ?
+
+---
+
+## Tour 583 — Paul (08/10, 14:51), mot pour mot
+
+> tu n'as pas relu l'app qcm depuis la compression, donc tu ne sais plus ce qu'est mode strict/mode partiel.
+
+## Tour 583 — mode strict, mode partiel, points selon le niveau : 256 et 259 corrigés (points 261 à 265)
+
+261. **Tu as raison. Je l'ai relu, et j'avais confondu deux choses en 256 et en 259.**
+
+262. **Le mode, c'est la façon de juger une question.** En mode strict (« 🎯 Tout ou rien », le mode par défaut), la question est juste si l'élève coche exactement les bonnes cases, ni plus ni moins ; une question peut avoir plusieurs bonnes cases. En mode partiel (« ✨ Points par bonne case »), chaque bonne case cochée rapporte 1 point, chaque mauvaise case en retire 1, sans descendre sous 0.
+
+263. **Les points selon le niveau (1, 2, 3 ou 4), c'est autre chose, qui s'ajoute par-dessus.** En strict, une question juste rapporte les points de son niveau, une question fausse 0 : c'est le « Points pour la note : 15 / 29 » de Sacha. Donc 259 est faux : « 1 question = 1 point » (le tout ou rien) et les points selon le niveau ne s'opposent pas, l'app fait déjà les deux. Et le cas de Théo reste entier (238).
+
+264. **256 est faux aussi** : ton mode strict n'a jamais voulu dire « une seule bonne réponse ». En juin, tes 26 questions avaient plusieurs bonnes réponses, en tout ou rien. De 255 à 258, il ne reste donc que 258 : sur tes questions 5 à 10 de demain, la feuille porte une phrase, pas une réponse, et je ne sais pas ce que l'élève devrait y saisir.
+
+265. **Mesuré en relisant : trois textes de l'app contredisent son code.** L'infobulle du « Mode de scoring », dans ton éditeur, dit : « Une question vaut toujours autant de points qu'elle compte de bonnes cases », ce qui est faux en tout ou rien. L'aide de tes Réglages annonce « Facile 5 secondes · Standard 10 secondes · Approfondi 15 secondes · Expert 20 secondes » et « rien n'enchaîne tout seul » ; or tes réglages sont de 10, 15, 20 et 30 secondes, et la réflexion passe toute seule à la réponse. Le prompt donne lui aussi 5, 10, 15 et 20 secondes. Je les inscris en dette 200.

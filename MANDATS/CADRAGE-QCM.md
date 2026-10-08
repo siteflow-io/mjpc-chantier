@@ -3,7 +3,7 @@
 
 **Ce que ça change pour la classe** : deux élèves par tablette, qui répondent l'un après l'autre sans voir la réponse de l'autre ; des temps de réflexion et de réponse réglés question par question ; une séance (questions + correction) qui tient dans 45 minutes ; la console de Paul, qui pilote la séance, lisible d'abord.
 
-**Méthode depuis le tour 563 (Paul) : on séquence, un sujet à la fois, en réponses courtes.** **État au 08/10, 18:10 (tour 593, après la secousse — https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/CADRAGE-QCM-SECOUSSE.md).** Règle de note (288 à 293) : la note, c'est la feuille ; une question vaut au plus 1 point (strict : tout ou rien ; partiel : une fraction du point par bonne case, autant de retiré par mauvaise, plancher 0) ; une fois par évaluation, une question dont la feuille est fausse et la tablette entièrement juste compte comme juste et se marque « Trouvée au dernier moment » avec un + vert (282, 303) ; sans saisie, pas de note ; aucune note visible avant la saisie (223). Niveaux : « difficulté » pour les questions, « maîtrise » pour École Directe (304) ; la maîtrise se calcule par compétence, une ou deux compétences par question, prises dans celles du chapitre (305 à 315). Méthode de livraison (Paul, 578) : une exécutante code tout d'un coup, audit final, push de Paul après la livraison complète. À trancher : 323 à 340 ; sans réponse : 341 ; préalables : 73, 148. L'ancienne ligne d'état est archivée en fin de document.
+**Méthode depuis le tour 563 (Paul) : on séquence, un sujet à la fois, en réponses courtes.** **État au 08/10, 18:10 (tour 593, après la secousse — https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/CADRAGE-QCM-SECOUSSE.md).** Règle de note (288 à 293) : la note, c'est la feuille ; une question vaut au plus 1 point (strict : tout ou rien ; partiel : une fraction du point par bonne case, autant de retiré par mauvaise, plancher 0) ; une fois par évaluation, une question dont la feuille est fausse et la tablette entièrement juste compte comme juste et se marque « Trouvée au dernier moment » avec un + vert (282, 303) ; sans saisie, pas de note ; aucune note visible avant la saisie (223). Niveaux : « difficulté » pour les questions, « maîtrise » pour École Directe (304) ; la maîtrise se calcule par compétence, une ou deux compétences par question, prises dans celles du chapitre (305 à 315). Méthode de livraison (Paul, 578) : une exécutante code tout d'un coup, audit final, push de Paul après la livraison complète. À trancher : 323 à 340 et 341 — une proposition pour chacun au tour 594, en attente du mot de Paul ; préalables : 73, 148. L'ancienne ligne d'état est archivée en fin de document.
 
 **Points remplacés — à ne pas coder (passe de propreté, tour 593)** :
 la ligne d'état de 14:31 → 288 à 293 et 282 · 173 et 181 (« aucun des choix » vaut 0) → 176, 290 · 237 (« 1 point fixe », sur chaque question concernée) → 275, 290, et 332 à trancher · 19 (binômes après l'appel) → 109 · le découpage en lots (45 à 50, « lot 2 » de la dette 181, « après le lot 1 » de 67 et de la dette 186) → Paul, 578 · 40 (le score app pondéré) → 273, et 323 à trancher · ce que 35, 36, 56 et 61 disent des points des niveaux → 273, 295 · l'exemple chiffré de 169 → 1 point par question · le motif de 234 (l'encadré du tout ou rien redevient juste avec 273 ; c'est celui du partiel qui est faux) · les mesures 105, 106 et 113, fausses → corrigées en 320.
@@ -1264,6 +1264,74 @@ Deux choses mesurées par la fausse classe touchent ta séance de demain. Je te 
 341. **Restent aussi sans réponse** : 64, 97 et 142, 115, 120, 121, 165, 234, 313, 317, les mots vus par l'élève (169, 173, 230), et les préalables au mandat : les captures de ta console (73) et l'inventaire « tout visible » (148).
 
 342. **On les prend un par un, en commençant par 323 ?**
+
+---
+
+## Tour 594 — Paul (08/10, 18:06), mot pour mot
+
+> fais tes propositions pour chaque. logique et simple.
+
+## Tour 594 — une proposition pour chaque point ouvert (323 à 341)
+
+**Le fil qui rend tout simple : la saisie avant la correction (326).** La séance devient : les questions (deux tours, l'un après l'autre) ; la saisie, chacun sur sa moitié ; l'estimation ; la correction ; la note. Au moment de la correction, l'app connaît déjà toutes les feuilles. Plusieurs points se règlent d'eux-mêmes.
+
+**323 — Les binômes.** On les forme sur la note de la feuille du QCM précédent. Un élève sans note est traité comme un absent (42) : les élèves sans note sont mis ensemble.
+
+**324 — L'archive.** Elle s'écrit d'après la note (la feuille, avec « Trouvée au dernier moment »), plus d'après la tablette. Quand tu corriges une feuille (168) ou fixes une note (338), l'archive se met à jour, et l'ancienne valeur reste gardée (170). Un élève sans saisie est archivé « sans note » jusqu'à ce que tu la fixes.
+
+**325 — Ce qu'on masque.** Avec 326, plus rien : la saisie est faite avant que le moindre score s'affiche. Seul l'élève qui n'a pas fait sa saisie voit, à la place de sa note : « Ta note s'ouvrira quand tu auras fait ta saisie. »
+
+**326 — Le moment de la saisie.** En classe, juste après la dernière question, avant l'estimation et la correction (249). La tablette garde ses deux élèves jusqu'à « Terminer », donc plus de télescopage avec 64. Je ne sais pas combien de temps prend la saisie : la garde de débordement (58) part de 10 secondes par question, puis prend la durée mesurée dès ta première séance.
+
+**327 — Les temps.** Chaque question a ses deux temps, réflexion et réponse, donnés au JSON (56) ; la case « ✋ Réponse » disparaît. Les deux élèves ont le même temps de réponse (25). « +5 / +10 / +30 s » vaut pour le tour en cours. « ✋ Autoriser la réponse » coupe la réflexion ; un bouton « Tour suivant » coupe le tour 1, et « 🔒 Clore la question » coupe le tour 2. « Changer le niveau en direct » disparaît, puisque le niveau ne fixe plus le temps.
+
+**328 — Les questions BONUS.** Une question marquée « bonus » dans le JSON compte dans les points gagnés, pas dans le total. La note ne dépasse jamais le maximum (20 sur 20). Le mot « bonus » reste pour ces questions ; c'est seulement « Trouvée au dernier moment » qui ne s'appelle plus ainsi (282).
+
+**329 — L'ordre mélangé.** La règle devient : « les bonnes réponses du second ne sont jamais à la même place que celles du premier ». Seule exception : quand tous les choix sont bons.
+
+**330 — Ce que l'élève saisit.** Seulement ses réponses, en touchant les choix, sans phrase à recopier (160 et 164 tombent). Pour une question « Sur ta copie, écris une phrase… », la feuille porte la phrase et, en dessous, la réponse courte à la question ; seule la réponse se saisit. Le prompt écrit chaque question pour qu'on puisse y répondre en quelques mots sur la feuille.
+
+**331 — La réouverture.** Une réponse donnée est définitive. Rouvrir, pour tous ou pour un seul, ne rouvre que pour ceux qui n'ont pas répondu, une seule fois par question, et c'est la même règle au poste, au téléphone et au tableau. Pendant ce tour rouvert, son voisin porte le voile ordinaire. Cela remplace 105 et règle ta crainte de 30 : « il n'avait pas pu répondre ».
+
+**332 — Le + vert.** Sur la seule question qui compte. Les autres questions dans le même cas restent fausses, comme la feuille. En tout ou rien, s'il y en a plusieurs, c'est la première dans l'ordre de l'évaluation.
+
+**333 — « 1 élève » sur une tablette.** « Choisis ta classe » disparaît partout : l'élève donne son code, son prénom et son nom, et l'app trouve sa classe (13). En « 1 élève », le raccourci MJPC reste (7), mais il demande d'abord « Tu es bien Julien ? » : « Oui » entre, « Non » ouvre l'écran du code (89). L'app ne peut pas distinguer une tablette de classe d'un ordi du CDI ; c'est donc le moyen le plus simple. Même chose dans la dictée, qui a le même risque (126, dette 194).
+
+**334 — Les lettres.** On les supprime partout. Chaque choix est un bouton avec son texte, sur la tablette, dans la saisie et dans ta fiche ; le tableau n'en a déjà plus (21, 95). Dans ton tableau des scores, chaque question s'affiche ✓ ou ✗, et le détail en texte s'ouvre dans la fiche de l'élève. Le mélange garde sa force, puisqu'il change les places. 117, 118 et 195 tombent.
+
+**335 — Le rattrapage.** Une évaluation déjà passée par la classe se relance en « rattrapage » (l'app le sait déjà, elle t'avertit). Un rattrapage ne sert jamais de « QCM précédent » pour les binômes. Une évaluation donne une note par élève : celle de la première séance où il était présent.
+
+**336 — Parti ou en retard.** Les questions manquées sortent du total : la note porte sur les questions auxquelles il était là, ramenée sur 20. Sa ligne dans ta console le dit (« noté sur 7 questions sur 11 »), et tu peux toujours fixer sa note (338).
+
+**337 — Séance interrompue ou terminée tôt.** « Terminer » écrit toujours l'archive, avec les notes telles qu'elles sont, quelle que soit la phase. À la reprise d'une séance interrompue, le tour en cours recommence au début, voile compris.
+
+**338 — Fixer une note.** La fenêtre « Que dit la feuille ? » (168) marche aussi sans saisie : tu touches, question par question, ce que dit la feuille, et cela vaut saisie. C'est aussi la voie de l'évaluation sans connexion (120).
+
+**339 — Les compétences.** Une question « Trouvée au dernier moment » compte comme juste pour sa compétence aussi. Chaque compétence évaluée l'est par au moins deux questions : le prompt le respecte, et l'app avertit au collage. La part des points d'une compétence se met sur l'échelle de la note, puis passe dans les mêmes tranches (131). L'estimation suit, elle aussi, ces tranches et ces mots (313) : une seule échelle partout.
+
+**340 — L'arrondi.** La note s'arrondit au dixième, au plus proche. Les tranches s'écrivent « de 5 à moins de 6 » : aucune note ne tombe entre deux.
+
+**64 — L'heure de fin.** Lancement + 55 minutes, modifiable à l'appel. La tablette oublie ses élèves à « Terminer », ou à l'heure de fin + 10 minutes.
+
+**97 et 142 — La saisie.** Elle montre le texte des choix, dans l'ordre que l'élève a vu (avec 334, sans lettres), plus la case « Ma feuille ne dit aucun de ces choix » (173).
+
+**115 — Le scan.** On le retire : il n'a jamais servi, et la feuille ramassée suffit (168).
+
+**120 — Sans connexion.** On imprime les énoncés seuls (119), puis tu fixes chaque note par 338.
+
+**121 — Les binômes au JSON.** Rien dans le JSON, puisqu'une même évaluation sert à plusieurs classes : l'app décide classe par classe. C'est le placement libre au premier QCM de la classe, sinon d'après le précédent (323).
+
+**165 — La sanction.** Aucune dans l'app : la question corrigée compte d'après la feuille, et le reste est ton affaire, hors de l'app.
+
+**234 — L'attestation.** Oui, reprise de la dictée, sur chaque moitié, avant la question 1. Elle dit la règle de 288 à 290 et sa raison, avec tes mots (577).
+
+**313 — Le lexique.** 🔴 Maîtrise insuffisante, 🟠 Maîtrise fragile, 🔵 Maîtrise satisfaisante, 🟢 Très bonne maîtrise, partout.
+
+**317 — Le chapitre.** Oui : l'évaluation porte son chapitre, le prompt reçoit ses compétences, et l'app refuse au collage une compétence hors du chapitre.
+
+**169, 173 et 230 — Les mots vus par l'élève.** Je te les proposerai tous d'un bloc, sur les captures, pour que tu donnes les tiens.
+
+**73 et 148 — Les préalables.** Dès que tu as tranché ces points, je fais l'inventaire « tout visible » et les captures de ta console.
 
 ---
 

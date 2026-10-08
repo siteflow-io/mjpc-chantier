@@ -17611,3 +17611,31 @@ Réponse mot pour mot :
 272. **Si la note compte 1 point par question juste, comme en mode strict, les niveaux ne jouent plus aucun rôle dans la note**, et le cas de Théo est réglé (268). Est-ce bien cela ?
 
 08/10/2026 15:10 MEMO
+
+---
+
+## TOUR 586 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Et si on se dit qu'une question n'est jamais supérieure à 1 point, et qu'en mode partiel ce sont des tranches de ce point?
+
+---
+
+## TOUR 586 — Claude (conscience n°12)
+
+Dette 192 complétée avec la proposition de Paul et le verdict. CADRAGE-QCM.md complété (tour 586). Rien écrit au hub, aucun code.
+
+Réponse mot pour mot :
+
+273. **Verdict : ça va, et ça simplifie.** Une question vaut au plus 1 point, partout : la pastille, la note et le récapitulatif disent la même chose. Les niveaux sortent de la note : ils ne servent plus qu'à la couleur et au bilan (56). Le réglage « ⚖️ Pondération des niveaux » n'a plus d'objet et se retire ; les séances passées gardent leurs chiffres dans l'archive.
+
+274. **En mode partiel, les tranches.** Prenons une question à 3 bonnes cases : chaque bonne case cochée rapporte 1/3 de point, chaque mauvaise case en retire 1/3, sans descendre sous 0. Par exemple, 2 bonnes cases et 1 en trop donnent 1/3 de point.
+
+275. **Le bonus doit alors changer de forme, sinon il déborde.** Aujourd'hui (237), c'est +1 point fixe. En partiel, un élève qui a 1/3 de point sur sa feuille et qui a touché juste aurait 1/3 + 1, soit 1 point et 1/3 : plus qu'un élève qui a tout écrit juste. Ma proposition : la question « Trouvée au dernier moment » compte comme juste, c'est-à-dire 1 point. En strict, cela revient exactement à ton point fixe ; en partiel, la question est complétée jusqu'à 1.
+
+276. **Théo : réglé, dans les deux modes.** S'il est honnête, sa question 3 est complétée à 1 point ; s'il triche, elle vaut 1 point aussi. Seule exception, toujours : s'il a touché juste au dernier moment sur deux questions ou plus (268).
+
+277. **D'accord pour 275 ?**
+
+08/10/2026 15:14 MEMO

@@ -17318,3 +17318,29 @@ Réponse mot pour mot :
 236. **Il reste aussi la décision 214** (voie A ou voie B pour demain ?).
 
 08/10/2026 14:28 MEMO
+
+---
+
+## TOUR 578 — Paul
+
+Texte de Paul, mot pour mot :
+
+> 1 point fixe, mais j'ai pas compris ce que tu entends par point fixe. et pour demain, arrête avec A ou B. Je t'ai dit qu'une exécutante allait tout coder d'un coup, je ferai un push après sa livraison complète et c'est tout. D'où le cadrage ultra précis qu'on est en train de faire. si tout est cadré maintenant, après ce n'est que de l'exécution donc ça ne peut pas planter. il y aura quand même un audit final avant promotion. je te redonnerai la production à ce moment là. ce sera bon pour demain matin je pense.
+
+---
+
+## TOUR 578 — Claude (conscience n°12)
+
+Décisions inscrites : CADRAGE-QCM.md (tour 578, ligne d'état refaite avec la liste de ce qui reste) ; dettes 196 et 198 complétées. Rien écrit au hub, aucun code.
+
+Réponse mot pour mot :
+
+237. **« 1 point fixe », c'est : le bonus vaut toujours 1 point, quelle que soit la question, et une seule fois par évaluation.** Exemple : la question 11 d'Emma vaut 4 points ; sa feuille est fausse, mais elle a touché la bonne réponse. Avec 1 point fixe, elle gagne 1 point, pas 4 : elle passe de 17 à 18. Sacha, avec ses quatre questions dans ce cas, gagne lui aussi 1 point en tout : il passe de 3 à 4. L'élève voit « Trouvée au dernier moment » sur chaque question concernée. C'est retenu ainsi, sauf si l'exemple d'Emma te fait changer d'avis.
+
+238. **Une tension : la saisie arrangée de Théo (186) se remet à payer.** Il a écrit faux et touché juste à la question 3 (3 points). S'il saisit honnêtement, il a 15 points, plus le point bonus, soit 16. S'il saisit la bonne réponse, il a 18, et ton Suivi ne le signale pas, puisque sa saisie et sa tablette disent la même chose. Avec le bonus égal aux points de la question, ce mensonge ne lui rapportait rien. Avec 1 point fixe, seul le ramassage des feuilles l'en dissuade, comme tu le disais en 165.
+
+239. **Compris pour demain, je ne parle plus de A ou de B.** 192 (la correction qui plante), 193 (le chrono de réponse) et 208 (la saisie effacée) entrent dans la livraison de l'exécutante.
+
+240. **Pour que le mandat parte, il reste à trancher** : 106, 115, 117, 120, 121, 127, 143, 148, 154/180, 160/164, 165, 234 et 238, puis les captures de ta console (73). Ce qui est réglé aujourd'hui : 144, 145, 146, 175 et 187 (la note, le bonus, pas de note sans saisie), 227 et 231.
+
+08/10/2026 14:31 MEMO

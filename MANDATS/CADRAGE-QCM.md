@@ -1355,6 +1355,24 @@ Deux choses mesurées par la fausse classe touchent ta séance de demain. Je te 
 
 ---
 
+## Tour 596 — Paul (08/10, 18:45), mot pour mot
+
+> si l'élève a formulé quelque chose sur sa feuille et qu'il pense que ce qu'il y a sur l'app ne correspond pas à ce qu'il a écrit?
+
+## Tour 596 — quand la feuille ne correspond à aucun choix (points 349 à 353)
+
+349. **Il touche « Ma feuille ne dit aucun de ces choix ».** C'est fait pour ça (173). La question compte alors 0, sauf si sa tablette était entièrement juste : elle est alors « Trouvée au dernier moment » (290).
+
+350. **S'il hésite, il touche le choix le plus proche de ce qu'il a écrit.** C'est son jugement honnête, et c'est justement le travail de la saisie. Sa feuille reste la preuve.
+
+351. **Ton Suivi signale chaque « aucun de ces choix ».** Tu vois tout de suite les feuilles à lire, en plus des cas « saisie juste, tablette fausse » (180).
+
+352. **À la correction, s'il pense que sa phrase dit la bonne réponse avec d'autres mots, il lève la main.** Tu lis sa feuille et tu tranches sur-le-champ avec « Que dit la feuille ? » (168) : tu touches la bonne réponse, et la question compte juste (174).
+
+353. **En amont, le prompt réduit ces cas** : chaque question appelle une réponse courte, qui correspond nettement à un choix (330).
+
+---
+
 ## Archive des lignes d'état (remplacées au tour 593)
 
 **Méthode depuis le tour 563 (Paul) : on séquence, un sujet à la fois, en réponses courtes.** **État au 08/10, 16:23 — terminologie (Paul, tour 588) : on ne dit plus que « Trouvée au dernier moment », avec un + vert, partout (élève et console) ; « bonus » et « bénéfice du doute » ne s'emploient plus.** **Retenu (tour 589) : une question vaut au plus 1 point ; en partiel, 1/n de point par bonne case, −1/n par mauvaise, plancher 0 (273, 274) ; une question « Trouvée au dernier moment » compte comme juste, 1 point, une fois par évaluation (275) ; le cas de Théo est fermé (238, 285). Prochain point proposé : 249 (la saisie avant la correction, qui règle 248).** **Tour 590 : la règle de note redite d'un bloc (288 à 293) ; ce qu'elle change dans le cadré (295 à 300) ; à trancher : 300 (le + vert sur la seule question qui compte) et 301 (en partiel, « Trouvée » seulement si la tablette est entièrement juste ?).** **Tour 591 : 301 redit (302, 303) ; niveaux de maîtrise par compétence (Paul) : mesuré, aucune compétence dans le QCM, référentiel au hub (`/taxonomie/competences` : 18 Français C4 en 5 domaines + 10 transversales) ; proposé 304 (« difficulté » / « maîtrise ») et 307 ; questions 308 à 310.** **Tour 592 (Paul) : 303 retenu (« Trouvée » seulement si la tablette est entièrement juste) ; lexique des 4 niveaux de maîtrise : échelle du socle (doctrine K0 : insuffisante / fragile / satisfaisante / très bonne maîtrise), 313 ; 305 à 307 retenus (la maîtrise entre au profil longitudinal par compétences et taxonomie) ; 308 oui (déjà cadré) ; 309 : une ou deux compétences par question, prises dans celles du chapitre ; 310 : le PDF « notes et compétences » est à créer. Proposé : 317 (l'évaluation porte son chapitre, garde au collage du JSON).** **État au 08/10, 14:31 — tranché par Paul : la note est la carotte, aucune note avant la saisie, sans saisie pas de note (223) ; la feuille fait foi, en points, avec un bonus de 1 point fixe une fois par évaluation quand une question est « Trouvée au dernier moment » (feuille fausse, tablette juste), marquée sur chaque question concernée côté élève, « bénéfice du doute » dans la console seulement (229, 233, 237). Méthode (Paul, tour 578) : tout cadrer maintenant, une exécutante code tout d'un coup, audit final, push de Paul après la livraison complète ; plus de voie A ou B (239). Reste à trancher : 106, 115, 117, 120, 121, 127, 143, 148, 154/180, 160/164, 165, 234, 238 ; captures de la console (73).** **État au 08/10, 12:57** : réponses de Paul aux tours 559 à 571. Questions ouvertes : 106, 115, 117, 120, 121, 127, 143, 144, 145, 146, 148, 154/180, 160/164, 165, 175/187 (Paul « réfléchit encore » sur le bénéfice du doute ; le mélange des choix n'y joue pas, 188-191 ; données de la fausse classe, 195-206) ; captures de la console (73) avec l'inventaire « tout visible » (147-148). Pour la séance du 09/10 : 192/207 (la correction plante sur les tablettes : corriger au tableau, recharger à la fin) et 193 (appuyer une fois sur « ✋ Autoriser la réponse »). Correction : 137 était faux (196). Retirés : 44 (122), 89 (127), le prompt de transition (128), la suppression de la saisie papier (114, abandonnée au tour 562). Sans objet : 45 à 50. 51 à 54 : production fermée, geste de Paul (53).

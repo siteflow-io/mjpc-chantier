@@ -18013,3 +18013,31 @@ Réponse mot pour mot :
 348. **Les deux élèves d'une tablette saisissent en même temps, chacun sur sa moitié.** Chacun recopie sa propre feuille. Si l'un recopie la saisie de l'autre, ton Suivi le signale dès que sa saisie est juste et sa tablette fausse (180), et la feuille ramassée tranche.
 
 08/10/2026 18:50 MEMO
+
+---
+
+## TOUR 596 — Paul
+
+Texte de Paul, mot pour mot :
+
+> si l'élève a formulé quelque chose sur sa feuille et qu'il pense que ce qu'il y a sur l'app ne correspond pas à ce qu'il a écrit?
+
+---
+
+## TOUR 596 — Claude (conscience n°12)
+
+CADRAGE-QCM.md complété (tour 596). Rien écrit au hub, aucun code.
+
+Réponse mot pour mot :
+
+349. **Il touche « Ma feuille ne dit aucun de ces choix ».** C'est fait pour ça (173). La question compte alors 0, sauf si sa tablette était entièrement juste : elle est alors « Trouvée au dernier moment » (290).
+
+350. **S'il hésite, il touche le choix le plus proche de ce qu'il a écrit.** C'est son jugement honnête, et c'est justement le travail de la saisie. Sa feuille reste la preuve.
+
+351. **Ton Suivi signale chaque « aucun de ces choix ».** Tu vois tout de suite les feuilles à lire, en plus des cas « saisie juste, tablette fausse » (180).
+
+352. **À la correction, s'il pense que sa phrase dit la bonne réponse avec d'autres mots, il lève la main.** Tu lis sa feuille et tu tranches sur-le-champ avec « Que dit la feuille ? » (168) : tu touches la bonne réponse, et la question compte juste (174).
+
+353. **En amont, le prompt réduit ces cas** : chaque question appelle une réponse courte, qui correspond nettement à un choix (330).
+
+08/10/2026 18:53 MEMO

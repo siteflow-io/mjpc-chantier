@@ -17028,3 +17028,35 @@ Réponse mot pour mot :
 08/10/2026 11:28 MEMO
 
 ---
+
+## TOUR 569 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Bon, faisons maintenant sans le bénéfice du doute. ça donne quoi?
+
+---
+
+## TOUR 569 — Claude (conscience n°12)
+
+Comparaison des deux règles sur la mesure du tour 568 (séance du 19/06, 52 réponses). CADRAGE-QCM.md complété (tour 569). Rien écrit au hub, aucun code.
+
+Réponse mot pour mot :
+
+181. **La règle devient : la feuille fait foi, toujours.** La note, c'est ce que dit la feuille, d'après la saisie et ta vérification. La lettre touchée en classe ne compte plus pour la note, et « aucun des choix » vaut 0 sans exception (175).
+
+182. **Sur tes données, la note ne change pas.** Les deux règles ne diffèrent que dans un cas : la tablette juste et la feuille fausse. Il est arrivé 0 fois sur les 52 réponses du 19/06 (177). Les 5 élèves dont la feuille était juste et la tablette fausse gardent leur point dans les deux cas.
+
+183. **Ce qui change vraiment : le rôle de la tablette.** Elle ne fait plus la note. Elle sert à la classe, en direct : tes bulles, la correction triée par taux d'erreur, l'autoévaluation, le bilan de classe. Elle sert aussi de témoin pour repérer une saisie arrangée (179).
+
+184. **Grosse tension avec l'anti-triche (21 à 33).** Sans le bénéfice du doute, recopier la lettre de son voisin sur la tablette ne rapporte plus rien pour la note. L'alternance et l'ordre mélangé ne protègent plus que tes chiffres de classe. La seule triche qui paie encore se fait sur la feuille, pendant la réflexion, et aucune tablette ne l'empêche.
+
+185. **Tension avec 146** : l'élève qui ne fait pas sa saisie n'a plus de note tirée de sa feuille. Si sa note reste celle de la tablette, comme je l'avais proposé, la tablette refait la note pour lui, et la triche sur la tablette recommence à payer. Sans le bénéfice du doute, il faut donc : pas de saisie, pas de note, tant que tu n'as pas tranché sur sa feuille.
+
+186. **Un cas échappe à ton Suivi** : la tablette juste, la feuille fausse et une saisie arrangée en juste. La saisie et la tablette disent la même chose, donc rien ne t'alerte. Il n'est jamais arrivé dans les mesures (0 sur 52).
+
+187. **Ma question** : avec ou sans le bénéfice du doute ? Sans lui, la règle est plus pure, mais l'anti-triche des tablettes ne sert plus la note (184), et un élève sans saisie n'a pas de note (185).
+
+08/10/2026 11:46 MEMO
+
+---

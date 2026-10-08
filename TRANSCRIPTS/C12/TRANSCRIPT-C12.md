@@ -16266,7 +16266,7 @@ Texte de Paul, mot pour mot :
 
 ## TOUR 557 — Claude (conscience n°12)
 
-Session reprise dans un conteneur neuf (dépôts reclonés : production 7063a88, sas d3dad41 ; QCM 7.7.1 md5 ecae6562… et dictée L17-1q3 md5 084deaf4… vérifiés). Mesuré dans le QCM : NIVEAUX_DEFAULT 5/10/15/20, settings/niveaux au hub 10/15/20/30 (chronos seuls) ; chronoReponse 5 s par défaut, réglable 3-30 s dans SessionLive, non gardé d'une séance à l'autre ; PROMPT_IA_DEFAUT règle 5 en dur (5/10/15/20) ; qcmVocabulaireNiveaux non branché ; off() sans argument 33/38 (dictée 9/47) — effet prouvé avec firebase 8.10.1 (node, hors ligne : une écoute retirée sans argument coupe l'autre moitié) ; identité élève en mémoire de page ; raccourci lireSessionMJPC 12 h dans AppEleve et EleveLogin ; aucune heure du hub (serverTimeOffset 0) ; seule SessionLive fait avancer les phases ; écoute sessions/<sid> jamais retirée dans EleveSession ; évaluations de demain mesurées au hub (lecture seule) : 4e 21 questions (réflexion 360 s), 3e 11 questions (Q3 : 6 choix, 3 bonnes, 402 caractères). Rien écrit au hub, aucun code.
+Session reprise dans un conteneur neuf (dépôts reclonés : production 7063a88, sas d3dad41 ; QCM 7.7.1 md5 ecae6562… et dictée L17-1q3 md5 084deaf4… vérifiés). Mesuré dans le QCM : NIVEAUX_DEFAULT 5/10/15/20, settings/niveaux au hub 10/15/20/30 (chronos seuls) ; chronoReponse 5 s par défaut, réglable 3-30 s dans SessionLive, non gardé d'une séance à l'autre ; PROMPT_IA_DEFAUT règle 5 en dur (5/10/15/20) ; qcmVocabulaireNiveaux non branché ; off() sans argument 33/38 (dictée 9/47) — effet prouvé avec firebase 8.10.1 (node, hors ligne : une écoute retirée sans argument coupe l'autre moitié) ; identité élève en mémoire de page ; raccourci lireSessionMJPC 12 h dans AppEleve et EleveLogin ; aucune heure du hub (serverTimeOffset 0) ; seule SessionLive fait avancer les phases ; écoute sessions/<sid> jamais retirée dans EleveSession ; évaluations de demain mesurées au hub (lecture seule) : 4e 21 questions (réflexion 360 s), 3e 11 questions (Q3 : 6 choix, 3 bonnes, 402 caractères). Rien écrit au hub, aucun code. Écriture en production refusée (git push : 403 « Claude doesn't have GitHub access… » ; API contents : 403 du proxy) : dettes 179 à 184 commitées en local, non poussées, déposées au sas (MANDATS/DETTES-QCM-179-184-A-REPORTER.md). Transcript poussé au sas par git.
 
 Réponse mot pour mot :
 
@@ -16351,11 +16351,17 @@ Réponse mot pour mot :
      - le panneau des niveaux, avec la réponse par niveau (h, i) ;
      - le prompt (j) ;
      - sur ton écran, la liste de qui est avec qui.
-   - **C'est faisable aujourd'hui en micro, sur ton ordre**, si tu tranches ce matin. Par mandat, l'aller-retour (exécutante, puis audit, puis promotion sur captures) ne tient pas sûrement dans la journée.
+   - **C'est faisable aujourd'hui en micro, sur ton ordre**, si tu tranches ce matin **et si l'écriture en production revient (718)**. Par mandat, l'aller-retour (exécutante, puis audit, puis promotion sur captures) ne tient pas sûrement dans la journée.
    - **Mon banc** : une copie de ton hub, ton poste, une tablette en deux moitiés et une tablette à un seul élève, et une séance entière de ta 3e de demain. Je mesure aussi la question 3 (6 choix) sur une demi-tablette de 1 280 × 800.
    - **Si ce n'est pas promu ce soir**, demain se fait avec l'app actuelle, un élève par tablette.
    - **J'ai besoin de tes heures de QCM demain** (quelle 4e, quelle 3e, à quelle heure) pour caler la promotion et tes tests.
 
-08/10/2026 06:39 MEMO
+718. **Un blocage à lever de ton côté, avant toute promotion.** Ce matin, la session a repris sur une machine neuve, et **je ne peux plus écrire dans la production** (`siteflow-io/monsieurjaipascompris`). GitHub répond : « Claude doesn't have GitHub access to siteflow-io/monsieurjaipascompris for your organization ». Le sas, lui, fonctionne.
+   - **Les dettes 179 à 184** sont écrites, et déposées au sas en attendant : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/DETTES-QCM-179-184-A-REPORTER.md
+   - **Aucune promotion n'est possible d'ici** tant que ce n'est pas réglé, donc pas de QCM promu pour demain.
+   - **Le remède, donné par GitHub** : installer l'app Claude GitHub sur l'organisation siteflow-io (https://github.com/apps/claude/installations/select_target), ou reconnecter GitHub dans les réglages de claude.ai (https://claude.ai/customize/connectors?auth_start=github&auth_start_force=1).
+   - **Sinon**, tu promeus toi-même : je dépose le fichier au sas, et tu le téléverses dans la production.
+
+08/10/2026 06:40 MEMO
 
 ---

@@ -16886,3 +16886,33 @@ Réponse mot pour mot :
 08/10/2026 10:52 MEMO
 
 ---
+
+## TOUR 564 — Paul
+
+Texte de Paul, mot pour mot :
+
+> 154. Oui ce serait déjà une première possibilité. Mais il y en a une deuxième : que l'élève recopie les réponses de sa feuille papier dans l'App directement, toujours en ayant indiqué les lettres des réponses, pour que l'App puisse avoir ET les lettres des réponses ET la vraie copie de l'élève en numérique. A mettre en tension
+
+---
+
+## TOUR 564 — Claude (conscience n°12)
+
+Mesuré : longueur des bonnes réponses des deux évaluations du 09/10 (4e : 181 mots, 1 007 caractères ; 3e : 161 mots, 885 caractères) ; historique de frappe de l'autocorrection de dictée (mots isolés horodatés, sans mesure possible d'une vitesse de frappe de phrases). CADRAGE-QCM.md complété (tour 564). Rien écrit au hub, aucun code.
+
+Réponse mot pour mot :
+
+155. **Ce que ta deuxième possibilité apporte.** Pour chaque question, l'app aurait la lettre **et** la phrase de l'élève. Tu pourrais lire côte à côte toutes les réponses à une question, garder une trace écrite dans l'archive (186) et voir l'écart en clair : « il a écrit : … ; il a touché : B ».
+
+156. **Tension 1 : la phrase tapée ne prouve rien de plus.** Ce que l'élève tape, c'est encore ce qu'il déclare. Il peut taper autre chose que sa feuille, ou recopier sa réponse corrigée en vert au lieu de sa première réponse. Seule la feuille fait foi, donc ta vérification de 154 reste nécessaire. La phrase tapée la rend plus rapide, puisque tu l'as sous les yeux, mais elle ne la remplace pas.
+
+157. **Tension 2 : l'app ne peut pas juger la phrase.** Elle ne sait pas dire si « subordonnée relative » et « une relative » sont la même réponse (150). Sans IA dans l'app, comme tu le veux, la phrase tapée sert à ta lecture, jamais à la note.
+
+158. **Tension 3 : le temps.** Mesuré sur tes deux évaluations de demain : si chaque réponse était aussi longue que la bonne réponse, l'élève aurait 181 mots à taper en 4e et 161 en 3e. Combien de temps cela prend sur une demi-tablette, avec le clavier de l'app, je ne sais pas : en dictée, les élèves ne tapent que des mots isolés, je n'ai aucune mesure pour des phrases.
+
+159. **Tension 4 : la lassitude.** La saisie n'a servi que 4 fois en tout (138). La rendre plus longue risque de la faire abandonner, surtout si elle se fait en classe dans l'heure (143).
+
+160. **Mon verdict : tes deux possibilités vont ensemble, pas l'une contre l'autre ; la feuille reste la seule preuve.** Ma question pour trancher : la phrase tapée, tu la veux pour toutes les questions, ou seulement pour celles où la saisie diffère de la tablette ? La seconde voie fait moins à taper, et c'est justement là que tu en as besoin.
+
+08/10/2026 10:57 MEMO
+
+---

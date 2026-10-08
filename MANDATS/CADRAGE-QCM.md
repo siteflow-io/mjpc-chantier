@@ -3,7 +3,7 @@
 
 **Ce que ça change pour la classe** : deux élèves par tablette, qui répondent l'un après l'autre sans voir la réponse de l'autre ; des temps de réflexion et de réponse réglés question par question ; une séance (questions + correction) qui tient dans 45 minutes ; la console de Paul, qui pilote la séance, lisible d'abord.
 
-**Méthode depuis le tour 563 (Paul) : on séquence, un sujet à la fois, en réponses courtes.** **État au 08/10, 16:23 — terminologie (Paul, tour 588) : on ne dit plus que « Trouvée au dernier moment », avec un + vert, partout (élève et console) ; « bonus » et « bénéfice du doute » ne s'emploient plus.** **Retenu (tour 589) : une question vaut au plus 1 point ; en partiel, 1/n de point par bonne case, −1/n par mauvaise, plancher 0 (273, 274) ; une question « Trouvée au dernier moment » compte comme juste, 1 point, une fois par évaluation (275) ; le cas de Théo est fermé (238, 285). Prochain point proposé : 249 (la saisie avant la correction, qui règle 248).** **État au 08/10, 14:31 — tranché par Paul : la note est la carotte, aucune note avant la saisie, sans saisie pas de note (223) ; la feuille fait foi, en points, avec un bonus de 1 point fixe une fois par évaluation quand une question est « Trouvée au dernier moment » (feuille fausse, tablette juste), marquée sur chaque question concernée côté élève, « bénéfice du doute » dans la console seulement (229, 233, 237). Méthode (Paul, tour 578) : tout cadrer maintenant, une exécutante code tout d'un coup, audit final, push de Paul après la livraison complète ; plus de voie A ou B (239). Reste à trancher : 106, 115, 117, 120, 121, 127, 143, 148, 154/180, 160/164, 165, 234, 238 ; captures de la console (73).** **État au 08/10, 12:57** : réponses de Paul aux tours 559 à 571. Questions ouvertes : 106, 115, 117, 120, 121, 127, 143, 144, 145, 146, 148, 154/180, 160/164, 165, 175/187 (Paul « réfléchit encore » sur le bénéfice du doute ; le mélange des choix n'y joue pas, 188-191 ; données de la fausse classe, 195-206) ; captures de la console (73) avec l'inventaire « tout visible » (147-148). Pour la séance du 09/10 : 192/207 (la correction plante sur les tablettes : corriger au tableau, recharger à la fin) et 193 (appuyer une fois sur « ✋ Autoriser la réponse »). Correction : 137 était faux (196). Retirés : 44 (122), 89 (127), le prompt de transition (128), la suppression de la saisie papier (114, abandonnée au tour 562). Sans objet : 45 à 50. 51 à 54 : production fermée, geste de Paul (53).
+**Méthode depuis le tour 563 (Paul) : on séquence, un sujet à la fois, en réponses courtes.** **État au 08/10, 16:23 — terminologie (Paul, tour 588) : on ne dit plus que « Trouvée au dernier moment », avec un + vert, partout (élève et console) ; « bonus » et « bénéfice du doute » ne s'emploient plus.** **Retenu (tour 589) : une question vaut au plus 1 point ; en partiel, 1/n de point par bonne case, −1/n par mauvaise, plancher 0 (273, 274) ; une question « Trouvée au dernier moment » compte comme juste, 1 point, une fois par évaluation (275) ; le cas de Théo est fermé (238, 285). Prochain point proposé : 249 (la saisie avant la correction, qui règle 248).** **Tour 590 : la règle de note redite d'un bloc (288 à 293) ; ce qu'elle change dans le cadré (295 à 300) ; à trancher : 300 (le + vert sur la seule question qui compte) et 301 (en partiel, « Trouvée » seulement si la tablette est entièrement juste ?).** **État au 08/10, 14:31 — tranché par Paul : la note est la carotte, aucune note avant la saisie, sans saisie pas de note (223) ; la feuille fait foi, en points, avec un bonus de 1 point fixe une fois par évaluation quand une question est « Trouvée au dernier moment » (feuille fausse, tablette juste), marquée sur chaque question concernée côté élève, « bénéfice du doute » dans la console seulement (229, 233, 237). Méthode (Paul, tour 578) : tout cadrer maintenant, une exécutante code tout d'un coup, audit final, push de Paul après la livraison complète ; plus de voie A ou B (239). Reste à trancher : 106, 115, 117, 120, 121, 127, 143, 148, 154/180, 160/164, 165, 234, 238 ; captures de la console (73).** **État au 08/10, 12:57** : réponses de Paul aux tours 559 à 571. Questions ouvertes : 106, 115, 117, 120, 121, 127, 143, 144, 145, 146, 148, 154/180, 160/164, 165, 175/187 (Paul « réfléchit encore » sur le bénéfice du doute ; le mélange des choix n'y joue pas, 188-191 ; données de la fausse classe, 195-206) ; captures de la console (73) avec l'inventaire « tout visible » (147-148). Pour la séance du 09/10 : 192/207 (la correction plante sur les tablettes : corriger au tableau, recharger à la fin) et 193 (appuyer une fois sur « ✋ Autoriser la réponse »). Correction : 137 était faux (196). Retirés : 44 (122), 89 (127), le prompt de transition (128), la suppression de la saisie papier (114, abandonnée au tour 562). Sans objet : 45 à 50. 51 à 54 : production fermée, geste de Paul (53).
 
 ---
 
@@ -1107,3 +1107,45 @@ Deux choses mesurées par la fausse classe touchent ta séance de demain. Je te 
 285. **Le cas de Théo est donc fermé (238, 276).** Tricher à la saisie ne lui rapporte plus rien, sauf s'il a deux questions « Trouvée au dernier moment » ou plus.
 
 286. **Il reste 248** : la consigne de correction suit la tablette, et Théo met un V vert à côté d'une réponse fausse. Ma proposition reste 249 : la saisie avant la correction. On passe à 249 ?
+
+---
+
+## Tour 590 — Paul (08/10, 16:40), mot pour mot
+
+> 284. redis moi la logique de la chose. parce que ça fait plusieur tours que tu sembles illogique (problème IA? lags claude? claude status?) et donc je ne veux pas être perdu et coder quelque chose d'illogique juste parce que tu t'es emmêlé les pinceaux. 286. En fait maintenant, tout est à revoir vu qu'on a cadré qu'une question ne dépasse jamais un point, et que les cases sont des fractions de points.
+
+## Tour 590 — la logique redite depuis le début, et ce que « 1 point au plus » change (points 287 à 301)
+
+287. **Le statut : je n'ai pas pu ouvrir la page officielle d'ici, donc je ne sais pas s'il y a un incident aujourd'hui.** Mais les tours illogiques viennent de moi, pas d'un décalage. En 256 et 259, j'ai mélangé le tout ou rien et les points par niveau. J'ai employé « bonus » sans le redéfinir. Et quand la règle a changé (237, puis 273), je n'ai pas tout repris depuis le début. Je le fais maintenant.
+
+**La logique, depuis le début (284)**
+
+288. **La note, c'est la feuille** (181, 223).
+
+289. **Une question vaut au plus 1 point.** En strict, c'est tout ou rien. En partiel, chaque bonne case cochée rapporte une fraction du point (1/3 pour une question à 3 bonnes cases), chaque mauvaise case en retire autant, sans descendre sous 0 (273, 274).
+
+290. **Une exception, une seule fois par évaluation.** Si la feuille est fausse mais que l'élève a touché la bonne réponse sur la tablette, la question compte comme juste : 1 point. Elle est marquée « Trouvée au dernier moment », avec un + vert (210, 275, 282).
+
+291. **Pourquoi « compte comme juste », et pas « + 1 point ».** En partiel, + 1 point donnerait 1/3 + 1, soit plus qu'une réponse entièrement juste. « Compte comme juste » ne dépasse jamais 1 point. En strict, les deux reviennent au même : la question passe de 0 à 1.
+
+292. **La conséquence pour la triche.** Recopier la bonne réponse au lieu de sa feuille ne rapporte rien sur une question touchée juste, puisqu'elle vaut déjà 1 point : c'est Théo. La seule triche qui paie, c'est saisir juste là où la tablette était fausse, et ton Suivi la signale (180) : c'est Camille.
+
+293. **Sans saisie, pas de note, et aucune note n'est visible avant la saisie** (221 à 223).
+
+294. **Sur la fausse classe, avec cette règle** (notes sur 11) : Tom 9 (16,4 sur 20), Anna 6 (10,9), Hugo 5 (9,1), Emma 8 (14,5), Nathan 6 (10,9), Sacha 2 (3,6). Les 17 autres ont la note de leur feuille. Camille a 2 au lieu de 1, et elle est signalée. Théo a 7, qu'il triche ou non. Michel et Noah n'ont pas de note.
+
+**Ce que 273 et 274 changent dans ce qui est déjà cadré (286)**
+
+295. **3 et 61** : les points des niveaux disparaissent, et le réglage de la pondération se retire (273).
+
+296. **111 et 112** : la pastille dit toujours « 1 point ». Le récapitulatif dit par exemple : « Question 4 · juste → 1 point », ou « Question 7 · 2 bonnes cases, 1 en trop → 1/3 de point ».
+
+297. **133** : la note, c'est le nombre de points sur le nombre de questions (sur 11 pour ta 3e), ramené sur 20.
+
+298. **74 et 125** : en partiel, une case recopiée en trop coûte une fraction du point, et non plus 1 point.
+
+299. **144 et 196** : la note officielle, c'est désormais 288 à 290.
+
+300. **225, 231 et 237 sont à reprendre.** 225 gardait « la question qui rapporte le plus » ; en strict, elles rapportent toutes 1 point. 237 marquait « Trouvée au dernier moment » sur chaque question concernée. Ma proposition : le + vert sur la seule question qui compte, celle qui rapporte le plus, et à égalité la première ; les autres restent fausses, comme la feuille.
+
+301. **À trancher, en partiel seulement** : « Trouvée au dernier moment » ne vaut-elle que si la tablette est entièrement juste ?

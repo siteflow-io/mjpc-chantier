@@ -17711,3 +17711,55 @@ Réponse mot pour mot :
 286. **Il reste 248** : la consigne de correction suit la tablette, et Théo met un V vert à côté d'une réponse fausse. Ma proposition reste 249 : la saisie avant la correction. On passe à 249 ?
 
 08/10/2026 16:39 MEMO
+
+---
+
+## TOUR 590 — Paul
+
+Texte de Paul, mot pour mot :
+
+> 284. redis moi la logique de la chose. parce que ça fait plusieur tours que tu sembles illogique (problème IA? lags claude? claude status?) et donc je ne veux pas être perdu et coder quelque chose d'illogique juste parce que tu t'es emmêlé les pinceaux. 286. En fait maintenant, tout est à revoir vu qu'on a cadré qu'une question ne dépasse jamais un point, et que les cases sont des fractions de points.
+
+---
+
+## TOUR 590 — Claude (conscience n°12)
+
+Statut du service : la page officielle n'a pas pu être ouverte (WebFetch refusé, adresse hors provenance) ; une recherche n'a rien donné pour le 08/10 — incident non déclaré, statut inconnu. Fausse classe recomptée avec la règle retenue (feuille saisie + une question « Trouvée », sur 11). Règle consolidée inscrite (dette 192, CADRAGE-QCM.md ligne d'état et tour 590). Rien écrit au hub, aucun code.
+
+Réponse mot pour mot :
+
+287. **Le statut : je n'ai pas pu ouvrir la page officielle d'ici, donc je ne sais pas s'il y a un incident aujourd'hui.** Mais les tours illogiques viennent de moi, pas d'un décalage. En 256 et 259, j'ai mélangé le tout ou rien et les points par niveau. J'ai employé « bonus » sans le redéfinir. Et quand la règle a changé (237, puis 273), je n'ai pas tout repris depuis le début. Je le fais maintenant.
+
+**La logique, depuis le début (284)**
+
+288. **La note, c'est la feuille** (181, 223).
+
+289. **Une question vaut au plus 1 point.** En strict, c'est tout ou rien. En partiel, chaque bonne case cochée rapporte une fraction du point (1/3 pour une question à 3 bonnes cases), chaque mauvaise case en retire autant, sans descendre sous 0 (273, 274).
+
+290. **Une exception, une seule fois par évaluation.** Si la feuille est fausse mais que l'élève a touché la bonne réponse sur la tablette, la question compte comme juste : 1 point. Elle est marquée « Trouvée au dernier moment », avec un + vert (210, 275, 282).
+
+291. **Pourquoi « compte comme juste », et pas « + 1 point ».** En partiel, + 1 point donnerait 1/3 + 1, soit plus qu'une réponse entièrement juste. « Compte comme juste » ne dépasse jamais 1 point. En strict, les deux reviennent au même : la question passe de 0 à 1.
+
+292. **La conséquence pour la triche.** Recopier la bonne réponse au lieu de sa feuille ne rapporte rien sur une question touchée juste, puisqu'elle vaut déjà 1 point : c'est Théo. La seule triche qui paie, c'est saisir juste là où la tablette était fausse, et ton Suivi la signale (180) : c'est Camille.
+
+293. **Sans saisie, pas de note, et aucune note n'est visible avant la saisie** (221 à 223).
+
+294. **Sur la fausse classe, avec cette règle** (notes sur 11) : Tom 9 (16,4 sur 20), Anna 6 (10,9), Hugo 5 (9,1), Emma 8 (14,5), Nathan 6 (10,9), Sacha 2 (3,6). Les 17 autres ont la note de leur feuille. Camille a 2 au lieu de 1, et elle est signalée. Théo a 7, qu'il triche ou non. Michel et Noah n'ont pas de note.
+
+**Ce que 273 et 274 changent dans ce qui est déjà cadré (286)**
+
+295. **3 et 61** : les points des niveaux disparaissent, et le réglage de la pondération se retire (273).
+
+296. **111 et 112** : la pastille dit toujours « 1 point ». Le récapitulatif dit par exemple : « Question 4 · juste → 1 point », ou « Question 7 · 2 bonnes cases, 1 en trop → 1/3 de point ».
+
+297. **133** : la note, c'est le nombre de points sur le nombre de questions (sur 11 pour ta 3e), ramené sur 20.
+
+298. **74 et 125** : en partiel, une case recopiée en trop coûte une fraction du point, et non plus 1 point.
+
+299. **144 et 196** : la note officielle, c'est désormais 288 à 290.
+
+300. **225, 231 et 237 sont à reprendre.** 225 gardait « la question qui rapporte le plus » ; en strict, elles rapportent toutes 1 point. 237 marquait « Trouvée au dernier moment » sur chaque question concernée. Ma proposition : le + vert sur la seule question qui compte, celle qui rapporte le plus, et à égalité la première ; les autres restent fausses, comme la feuille.
+
+301. **À trancher, en partiel seulement** : « Trouvée au dernier moment » ne vaut-elle que si la tablette est entièrement juste ?
+
+08/10/2026 16:52 MEMO

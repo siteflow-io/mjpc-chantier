@@ -598,3 +598,21 @@ Voici l'évaluation :
 169. **L'app recompte aussitôt.** La question 7 compte maintenant C, qui est faux : par exemple, sa note passe de 14 à 11 points (de 12,7 à 10 sur 20). Dans le Suivi, sa ligne porte « 1 question corrigée par toi ». Dans son récapitulatif, l'élève lit sous la question 7 que sa note a été corrigée d'après sa feuille, avec tes mots pour cette phrase.
 
 170. **Tu peux revenir en arrière** : un deuxième bouton, « Annuler ma correction », remet la saisie de l'élève et la note d'avant. Rien n'est effacé : ta correction et sa saisie restent gardées toutes les deux.
+
+---
+
+## Tour 567 — Paul (08/10, 11:21), mot pour mot
+
+> ok. il y a le cas où l'élève a écrit quelque chose qui ne correspond à aucune des propositions initiales de l'app.
+
+## Tour 567 — une feuille qui ne correspond à aucun choix (points 171 à 175)
+
+171. **Mesuré : aujourd'hui, rien ne prévoit ce cas.** À la saisie, l'élève ne peut que laisser la question vide, et l'app lui demande « Envoyer quand même ? ». Sur la tablette, il a pu toucher une lettre au hasard.
+
+172. **Le danger, mesuré : avec la règle actuelle, il garde le point.** L'app retient le meilleur des deux (139) : s'il a touché la bonne lettre au hasard, la question lui rapporte ses points, alors que sa feuille dit autre chose. C'est exactement la reconnaissance des choix que le papier devait empêcher.
+
+173. **Ma proposition, côté élève** : à la saisie, sous les choix, une case de plus, « Ma feuille ne dit aucun de ces choix ». Il recopie alors sa phrase (164), et la question compte 0, sans aucun bonus, puisqu'il n'y a pas d'erreur de recopie possible. Les mots de cette case sont à toi.
+
+174. **Ma proposition, côté console** : la fenêtre « Que dit la feuille ? » (168) a, elle aussi, « Aucun des choix ». Dans l'autre sens, si l'élève a coché « aucun » alors que sa phrase dit la bonne réponse avec d'autres mots, c'est toi qui tranches : tu touches B, et la question compte juste.
+
+175. **Ma question** : es-tu d'accord pour que « aucun des choix » compte toujours 0, même si la lettre touchée en classe était la bonne ?

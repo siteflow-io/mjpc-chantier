@@ -17502,3 +17502,33 @@ Réponse mot pour mot :
 254. **Mais ce travail passe dans la correction, et il y gagne.** L'app connaît alors la feuille, la tablette et la bonne réponse. Théo lit « Trouvée au dernier moment » et la bonne consigne (« Barre ta réponse en rouge… »), et tu es là pendant ce temps. Mon verdict reste donc 249.
 
 08/10/2026 14:47 MEMO
+
+---
+
+## TOUR 582 — Paul
+
+Texte de Paul, mot pour mot :
+
+> donc en fait c'est sur la conception des questions qu'il faut travailler. afin qu'on réduise de beaucoup le gap entre "j'écris une réponse fleuve sur ma feuille et je n'ai pas le temps/la flemme/ ne vois pas l'intérêt de la "recopier" dans l'app, et ce qu'on écrit réellement dans l'app. D'où le fait que jusqu'à maintenant je passais par les lettres des réponses, qui permettaient de "synthétiser" en une lettre une réponse complète d'élève. enfin, jusqu'à maintenant, je faisais du mode strict tout le temps. 1 question = un point, parce que j'utilisais plickers, où une seule bonne réponse est possible (vrai qcm).
+
+---
+
+## TOUR 582 — Claude (conscience n°12)
+
+Mesuré au hub (lecture seule) : questions à plusieurs bonnes réponses par évaluation (jambon-beurre 0/10, pronoms relatifs 0/10, Misérables 13/13 et 13/13, poésie 4/10, 4e du 09/10 10/21, 3e du 09/10 6/11 ; questions « Sur ta copie » : 6 en 3e) ; toutes sans champ `mode` (strict). Prompt par défaut relu (`PROMPT_IA_DEFAUT`, question 3 sur les réponses multiples). CADRAGE-QCM.md complété (tour 582). Rien écrit au hub, aucun code.
+
+Réponse mot pour mot :
+
+255. **D'accord : c'est la conception des questions qui décide si une lettre peut résumer la feuille.** Cela se règle dans le prompt, qu'on écrit en dernier (4, 62).
+
+256. **Mesuré, une tension avec « une seule bonne réponse ».** Dans l'app, tes deux évaluations de juin (Les Misérables) avaient 13 questions sur 13 à plusieurs bonnes réponses. Demain, c'est 6 questions sur 11 en 3e, et 10 sur 21 en 4e. Ton prompt actuel demande même : « combien doivent être à réponses multiples ? ». Toutes ces évaluations sont bien en mode strict, comme tu le dis.
+
+257. **Avec une seule bonne réponse par question, la feuille se résume en une lettre.** La saisie devient une lettre par question : 11 touches pour ta 3e de demain, sans phrase à recopier. Le coût de 249 (la saisie avant la correction) devient faible, et la phrase recopiée de 160 et 164 n'a plus lieu d'être.
+
+258. **Tes questions 5 à 10 de demain sont d'un autre type.** Sur la copie, l'élève écrit une phrase (« Sur ta copie, écris une phrase P.P + PSR… »), puis la lettre répond à une question sur cette phrase. Sa feuille porte une phrase, pas une réponse : je ne sais pas ce qu'il devrait y saisir. C'est à cadrer dans le prompt : garde-t-on ce type de question, et comment ?
+
+259. **Une tension avec 111, 112 et 133.** Tu dis « 1 question = 1 point ». Nous avions retenu des points selon le niveau (1, 2, 3 ou 4), et une note en points totaux, au prorata sur 20. Avec 1 point par question, le cas de Théo disparaît : la question et le bonus valent tous deux 1 point, et tricher ne lui rapporte plus rien (sauf s'il a touché juste au dernier moment sur deux questions ou plus).
+
+260. **Mes deux questions.** Une seule bonne réponse par question, toujours ? Et 1 point par question, ou des points selon le niveau ?
+
+08/10/2026 14:54 MEMO

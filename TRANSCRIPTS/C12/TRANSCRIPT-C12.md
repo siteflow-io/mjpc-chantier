@@ -17240,3 +17240,29 @@ Réponse mot pour mot :
 224. **Il reste deux décisions** : 210 (une seule question pour le bénéfice du doute ?) et 214 (voie A ou voie B pour demain ?).
 
 08/10/2026 14:19 MEMO
+
+---
+
+## TOUR 575 — Paul
+
+Texte de Paul, mot pour mot :
+
+> oui pour la seule question, mais du coup l'app la sélectionne en fonction de ce qu'a fait l'élève bien sûr, ce n'est pas sur une question arbitraire (la même pour tout le monde)?
+
+---
+
+## TOUR 575 — Claude (conscience n°12)
+
+Décision de Paul inscrite (210 tranché, 187 fermé) : CADRAGE-QCM.md (tour 575, ligne d'état) et dette 196 complétée. Questions gardées relues sur les données de la fausse classe. Rien écrit au hub, aucun code.
+
+Réponse mot pour mot :
+
+225. **Oui, élève par élève.** Pour chaque élève, l'app regarde les questions où sa feuille est fausse et sa tablette juste, puis elle garde celle qui lui rapporte le plus. Ce n'est jamais une question fixée d'avance pour toute la classe. Si deux questions rapportent autant, la note est la même quelle que soit celle qui est gardée.
+
+226. **Dans la fausse classe, cela donne** : Tom, la question 9 ; Anna, la 1 ; Hugo, la 4 ; Emma et Nathan, la 11. Pour Sacha, ses quatre questions sont la 2, la 6, la 7 et la 8, et l'app garde la 7, qui vaut 4 points.
+
+227. **Ma proposition, pour que ce soit visible** : dans le récapitulatif de l'élève et dans ta console, cette question porte une mention, par exemple « bénéfice du doute : +4 ». Les mots sont à toi.
+
+228. **Il reste une décision** : 214 (voie A ou voie B pour demain ?).
+
+08/10/2026 14:21 MEMO

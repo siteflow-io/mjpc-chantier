@@ -3,7 +3,7 @@
 
 **Ce que ça change pour la classe** : deux élèves par tablette, qui répondent l'un après l'autre sans voir la réponse de l'autre ; des temps de réflexion et de réponse réglés question par question ; une séance (questions + correction) qui tient dans 45 minutes ; la console de Paul, qui pilote la séance, lisible d'abord.
 
-**Méthode depuis le tour 563 (Paul) : on séquence, un sujet à la fois, en réponses courtes.** **État au 08/10, 14:19 — tranché par Paul (tour 574) : la note est la carotte, aucune note avant la saisie, sans saisie pas de note (223). Décisions attendues : 210 (bénéfice du doute limité à une question) et 214 (voie A ou B pour la correction du 09/10).** **État au 08/10, 12:57** : réponses de Paul aux tours 559 à 571. Questions ouvertes : 106, 115, 117, 120, 121, 127, 143, 144, 145, 146, 148, 154/180, 160/164, 165, 175/187 (Paul « réfléchit encore » sur le bénéfice du doute ; le mélange des choix n'y joue pas, 188-191 ; données de la fausse classe, 195-206) ; captures de la console (73) avec l'inventaire « tout visible » (147-148). Pour la séance du 09/10 : 192/207 (la correction plante sur les tablettes : corriger au tableau, recharger à la fin) et 193 (appuyer une fois sur « ✋ Autoriser la réponse »). Correction : 137 était faux (196). Retirés : 44 (122), 89 (127), le prompt de transition (128), la suppression de la saisie papier (114, abandonnée au tour 562). Sans objet : 45 à 50. 51 à 54 : production fermée, geste de Paul (53).
+**Méthode depuis le tour 563 (Paul) : on séquence, un sujet à la fois, en réponses courtes.** **État au 08/10, 14:21 — tranché par Paul : la note est la carotte, aucune note avant la saisie, sans saisie pas de note (223, tour 574) ; le bénéfice du doute sur une seule question, choisie élève par élève, celle qui lui rapporte le plus (225, tour 575 ; ferme 187). À valider : 227 (la mention visible). Décision attendue : 214 (voie A ou B pour la correction du 09/10).** **État au 08/10, 12:57** : réponses de Paul aux tours 559 à 571. Questions ouvertes : 106, 115, 117, 120, 121, 127, 143, 144, 145, 146, 148, 154/180, 160/164, 165, 175/187 (Paul « réfléchit encore » sur le bénéfice du doute ; le mélange des choix n'y joue pas, 188-191 ; données de la fausse classe, 195-206) ; captures de la console (73) avec l'inventaire « tout visible » (147-148). Pour la séance du 09/10 : 192/207 (la correction plante sur les tablettes : corriger au tableau, recharger à la fin) et 193 (appuyer une fois sur « ✋ Autoriser la réponse »). Correction : 137 était faux (196). Retirés : 44 (122), 89 (127), le prompt de transition (128), la suppression de la saisie papier (114, abandonnée au tour 562). Sans objet : 45 à 50. 51 à 54 : production fermée, geste de Paul (53).
 
 ---
 
@@ -786,3 +786,19 @@ Deux choses mesurées par la fausse classe touchent ta séance de demain. Je te 
 223. **C'est retenu : la note, c'est la carotte.** Aucune note n'est visible avant la saisie, nulle part : ni à la fin de la séance, ni dans « Mes évaluations », ni dans le bilan imprimable. Sans saisie, l'élève n'a pas de note, et c'est toi qui la fixes d'après sa feuille (161, 163, 221, 222).
 
 224. **Il reste deux décisions** : 210 (une seule question pour le bénéfice du doute ?) et 214 (voie A ou voie B pour demain ?).
+
+---
+
+## Tour 575 — Paul (08/10, 14:18), mot pour mot
+
+> oui pour la seule question, mais du coup l'app la sélectionne en fonction de ce qu'a fait l'élève bien sûr, ce n'est pas sur une question arbitraire (la même pour tout le monde)?
+
+## Tour 575 — la question gardée, élève par élève (points 225 à 228)
+
+225. **Oui, élève par élève.** Pour chaque élève, l'app regarde les questions où sa feuille est fausse et sa tablette juste, puis elle garde celle qui lui rapporte le plus. Ce n'est jamais une question fixée d'avance pour toute la classe. Si deux questions rapportent autant, la note est la même quelle que soit celle qui est gardée.
+
+226. **Dans la fausse classe, cela donne** : Tom, la question 9 ; Anna, la 1 ; Hugo, la 4 ; Emma et Nathan, la 11. Pour Sacha, ses quatre questions sont la 2, la 6, la 7 et la 8, et l'app garde la 7, qui vaut 4 points.
+
+227. **Ma proposition, pour que ce soit visible** : dans le récapitulatif de l'élève et dans ta console, cette question porte une mention, par exemple « bénéfice du doute : +4 ». Les mots sont à toi.
+
+228. **Il reste une décision** : 214 (voie A ou voie B pour demain ?).

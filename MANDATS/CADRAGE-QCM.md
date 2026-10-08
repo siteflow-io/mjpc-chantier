@@ -3,7 +3,7 @@
 
 **Ce que ça change pour la classe** : deux élèves par tablette, qui répondent l'un après l'autre sans voir la réponse de l'autre ; des temps de réflexion et de réponse réglés question par question ; une séance (questions + correction) qui tient dans 45 minutes ; la console de Paul, qui pilote la séance, lisible d'abord.
 
-**Méthode depuis le tour 563 (Paul) : on séquence, un sujet à la fois, en réponses courtes.** **État au 08/10, 10:45** : réponses de Paul aux tours 559 à 562. Questions ouvertes après le tour 562 : 106, 112 (forme du récapitulatif), 114 → remplacé par 140-146, 115, 117, 120, 121, 127, 143, 144, 145, 146, 148 ; captures de la console (73) avec l'inventaire « tout visible » (147-148). Retirés : 44 (122), 89 (127), le prompt de transition (128), la suppression de la saisie papier (114, abandonnée au tour 562). Sans objet : 45 à 50. 51 à 54 : production fermée, geste de Paul (53).
+**Méthode depuis le tour 563 (Paul) : on séquence, un sujet à la fois, en réponses courtes.** **État au 08/10, 11:52** : réponses de Paul aux tours 559 à 570. Questions ouvertes : 106, 115, 117, 120, 121, 127, 143, 144, 145, 146, 148, 154/180, 160/164, 165, 175/187 (Paul « réfléchit encore » sur le bénéfice du doute ; le mélange des choix n'y joue pas, 188-191) ; captures de la console (73) avec l'inventaire « tout visible » (147-148). Retirés : 44 (122), 89 (127), le prompt de transition (128), la suppression de la saisie papier (114, abandonnée au tour 562). Sans objet : 45 à 50. 51 à 54 : production fermée, geste de Paul (53).
 
 ---
 
@@ -656,3 +656,19 @@ Voici l'évaluation :
 186. **Un cas échappe à ton Suivi** : la tablette juste, la feuille fausse et une saisie arrangée en juste. La saisie et la tablette disent la même chose, donc rien ne t'alerte. Il n'est jamais arrivé dans les mesures (0 sur 52).
 
 187. **Ma question** : avec ou sans le bénéfice du doute ? Sans lui, la règle est plus pure, mais l'anti-triche des tablettes ne sert plus la note (184), et un élève sans saisie n'a pas de note (185).
+
+---
+
+## Tour 570 — Paul (08/10, 11:48), mot pour mot
+
+> je réfléchis encore. Sachant que tout cela demande que les lettres des réponses soient ce qui permet de savoir si tout est aligné, non? donc le mélange télescope forcément ce flux, qu'il soit avec bénéfice ou sans bénéfice du doute?
+
+## Tour 570 — le mélange et l'alignement (points 188 à 191)
+
+188. **Non. Mesuré : l'app n'aligne jamais des lettres.** Quand l'élève touche une case, elle enregistre le choix lui-même (par exemple « le 2e choix de l'évaluation »), pas la lettre affichée. La saisie papier enregistre la même chose, et la bonne réponse aussi. La note compare ces choix entre eux ; la lettre n'est qu'une étiquette posée à l'écran.
+
+189. **Avec le mélange, ça reste vrai.** Quand Julien touche sa lettre B, l'app enregistre le choix de l'évaluation qui est derrière, par exemple le 4e. La tablette, la saisie et la bonne réponse parlent toujours de choix, donc tout reste aligné. C'est pareil avec ou sans bénéfice du doute : la règle de 187 dit lequel des deux choix compte, pas comment ils sont enregistrés. Tu peux donc trancher 187 sans tenir compte du mélange.
+
+190. **Le mélange ne casse qu'une chose : comparer deux lettres qui viennent de deux ordres différents.** C'est le cas à trois endroits. Quand tu dis « la B » à l'oral en correction (117, encore ouvert). Quand tu compares une lettre écrite sur la feuille de Julien à une lettre de ta console. Et si la saisie montrait à l'élève d'autres lettres que celles de sa tablette.
+
+191. **Ce qui règle ces trois endroits est déjà prévu.** La saisie montre à l'élève le texte des choix, dans son ordre et avec ses lettres (142). Ta fiche (166) et ta fenêtre « Que dit la feuille ? » (168) montrent le texte des choix, avec à côté les lettres de l'élève. Au tableau, en correction, il n'y a pas de lettres (95). Pour tout cela, l'app garde seulement l'ordre que chaque élève a vu (118).

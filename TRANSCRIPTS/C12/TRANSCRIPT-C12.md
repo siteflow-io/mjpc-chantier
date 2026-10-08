@@ -17060,3 +17060,29 @@ Réponse mot pour mot :
 08/10/2026 11:46 MEMO
 
 ---
+
+---
+
+## TOUR 570 — Paul
+
+Texte de Paul, mot pour mot :
+
+> je réfléchis encore. Sachant que tout cela demande que les lettres des réponses soient ce qui permet de savoir si tout est aligné, non? donc le mélange télescope forcément ce flux, qu'il soit avec bénéfice ou sans bénéfice du doute?
+
+---
+
+## TOUR 570 — Claude (conscience n°12)
+
+Vérifié dans le code (7.7.1) : la tablette enregistre `reponses/<q>/<élève> = {choix:[indices]}`, la saisie `papier/<élève> = {choix:[...]}`, et `calculerScoreQuestion` compare ces indices à `bonnes` ; la lettre ne sort que de `lettreFromIndex`, à l'affichage. CADRAGE-QCM.md complété (tour 570, ligne d'état mise à jour). Rien écrit au hub, aucun code.
+
+Réponse mot pour mot :
+
+188. **Non. Mesuré : l'app n'aligne jamais des lettres.** Quand l'élève touche une case, elle enregistre le choix lui-même (par exemple « le 2e choix de l'évaluation »), pas la lettre affichée. La saisie papier enregistre la même chose, et la bonne réponse aussi. La note compare ces choix entre eux ; la lettre n'est qu'une étiquette posée à l'écran.
+
+189. **Avec le mélange, ça reste vrai.** Quand Julien touche sa lettre B, l'app enregistre le choix de l'évaluation qui est derrière, par exemple le 4e. La tablette, la saisie et la bonne réponse parlent toujours de choix, donc tout reste aligné. C'est pareil avec ou sans bénéfice du doute : la règle de 187 dit lequel des deux choix compte, pas comment ils sont enregistrés. Tu peux donc trancher 187 sans tenir compte du mélange.
+
+190. **Le mélange ne casse qu'une chose : comparer deux lettres qui viennent de deux ordres différents.** C'est le cas à trois endroits. Quand tu dis « la B » à l'oral en correction (117, encore ouvert). Quand tu compares une lettre écrite sur la feuille de Julien à une lettre de ta console. Et si la saisie montrait à l'élève d'autres lettres que celles de sa tablette.
+
+191. **Ce qui règle ces trois endroits est déjà prévu.** La saisie montre à l'élève le texte des choix, dans son ordre et avec ses lettres (142). Ta fiche (166) et ta fenêtre « Que dit la feuille ? » (168) montrent le texte des choix, avec à côté les lettres de l'élève. Au tableau, en correction, il n'y a pas de lettres (95). Pour tout cela, l'app garde seulement l'ordre que chaque élève a vu (118).
+
+08/10/2026 11:52 MEMO

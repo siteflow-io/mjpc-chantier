@@ -17837,3 +17837,71 @@ Réponse mot pour mot :
 318. **310 est noté : le PDF « notes et compétences » est à créer.** Il entre au cadrage, et je t'en proposerai la forme quand on y arrivera.
 
 08/10/2026 17:55 MEMO
+
+---
+
+## TOUR 593 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok c'est bon. maintenant, il faut secouer le cadrage et vérifier que tout tient.
+
+---
+
+## TOUR 593 — Claude (conscience n°12)
+
+Relecture complète du cadrage par la conscience et par un agent indépendant (lecture seule, 1205 lignes, registre et rapport du banc) ; constats revérifiés dans evaluation-qcm.html 7.7.1 (MesEvaluations l. 2615-2682, EleveEval l. 3184-3252, VuePhone l. 5745, rouvrirIndividuel l. 3899-3911, parseEvaluation l. 2273-2316, EleveLogin l. 2748, isJuste l. 8282-8286, et lignes 2634, 7518, 7598, 3948, 7035, 7099, 8052, 7621) ; questions BONUS relues dans les évaluations du hub. Écrit au sas : MANDATS/CADRAGE-QCM-SECOUSSE.md ; CADRAGE-QCM.md (ligne d'état refaite, liste des points remplacés, ancienne ligne archivée en fin de document, tour 593) ; dettes 181, 186, 193, 196 alignées, 201 à 204 ajoutées. Rien écrit au hub, aucun code.
+
+Réponse mot pour mot :
+
+319. **Verdict : ça ne tient pas encore.** J'ai relu tout le cadrage (points 1 à 318), et un relecteur indépendant, qui n'avait pas suivi la journée, l'a relu aussi. J'ai revérifié dans le code chacun de ses constats. Le détail, avec les lignes du code : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/CADRAGE-QCM-SECOUSSE.md
+
+320. **Trois de mes mesures étaient fausses.** En 105 : à « Rouvrir pour tous », l'élève qui avait répondu ne retrouve pas sa réponse ; il voit les choix vides, et un toucher remplace toute sa réponse (en réponses multiples, il perd ses autres cases). En 106 : la limite « un élève sans réponse, une fois » n'existe qu'au poste ; au téléphone, tu rouvres pour n'importe qui, sans limite. En 113 : « Mes évaluations » ouvre le bilan détaillé sans aucune saisie ; seul « Tes évaluations passées » l'exige.
+
+321. **J'ai fait la passe de propreté au cadrage.** En tête du document, la liste des points remplacés, à ne pas coder : l'ancienne ligne d'état, 173 et 181 (« aucun des choix » vaut 0), 237 (1 point fixe), 19, le découpage en lots, 40 (le score pondéré), ce que 35, 36, 56 et 61 disaient des points des niveaux, le motif de 234, et les trois mesures de 320.
+
+322. **Trois défauts vont au mandat sans décision de ta part.** Le collage du JSON jette sans message tout champ nouveau (les temps, les compétences, le chapitre) : il doit les garder. L'écran de connexion dit « Viens me voir » : contraire à ta règle (l'élève lève la main), et tes mots sont à donner. En mode partiel, ta console compte en tout ou rien, pas comme la page de l'élève. Dettes 201 à 204.
+
+**À trancher, dans l'ordre de gravité**
+
+323. **Les binômes : sur quel résultat classer ?** 40 visait le score pondéré, qui disparaît. Ma proposition : la note de la feuille, et la tablette pour qui n'a pas fait sa saisie.
+
+324. **L'archive, « Mes évaluations » et le profil longitudinal se calculent sur la tablette.** Ils doivent suivre la note (la feuille), après la saisie puis après ta correction (168). Et que gardent-ils pour un élève sans saisie ?
+
+325. **« Aucune note avant la saisie » : quatre écrans montrent déjà un score.** Le compteur de la correction (« x bonnes réponses »), et en fin de séance l'estimation (« tu en as eu 5 sur 11 »), la comparaison à la classe et les 5 dernières évaluations ; « Mes évaluations » montre un pourcentage. Que masque-t-on ?
+
+326. **Le moment de la saisie (143, 249).** Si elle vient après « Terminer », la tablette a déjà oublié ses deux élèves (64, 38). 249 (la saisie avant la correction) règle ce point.
+
+327. **Les temps.** Le temps de réponse est-il celui de la question (56) ou celui de la case « ✋ Réponse » (199) ? Avec deux tours, « +10 s » vaut-il pour les deux ? Quel geste coupe un tour de réponse ?
+
+328. **Les questions « BONUS »** (la Q21 de ta 4e de demain, la Q10 de l'interro de 3e). Avec 1 point par question, elles comptent dans le total. Les sort-on du total ?
+
+329. **L'ordre mélangé (74) ne protège pas en réponses multiples.** Si A et C sont bonnes et qu'on les échange, les lettres justes restent A et C, et recopier son voisin donne juste. La règle qui tient : « les lettres justes du second ne sont pas celles du premier ».
+
+330. **Ce que l'élève saisit pour « Sur ta copie, écris une phrase… » (258)**, et la phrase recopiée (160, 164) : lettres seules, ou texte ?
+
+331. **La réouverture (après 320)** : que retrouve l'élève qui avait déjà répondu, et la même limite partout, poste et téléphone ?
+
+332. **Le + vert « Trouvée au dernier moment »** : sur la seule question qui compte, ou sur chaque question concernée (300) ?
+
+333. **« 1 élève » touché par erreur sur une tablette** : il retombe sur le raccourci MJPC (contre ton 7) ou sur « Choisis ta classe » (contre ton 13).
+
+334. **Les lettres (117).** L'argument de 118 (« tu ne pourrais plus dire la B ») ne tient plus : le tableau ne montre déjà plus de lettres (21, 95). Les supprimer partout redevient possible.
+
+335. **Le rattrapage** : une séance de rattrapage à deux élèves deviendrait « le QCM précédent » de toute la classe (41). Et un élève qui passe deux fois la même évaluation ?
+
+336. **L'élève parti en cours, ou arrivé en retard** : les questions manquées comptent-elles 0, ou sortent-elles du total ?
+
+337. **La séance interrompue, ou terminée avant la fin de la correction** : aujourd'hui, aucune archive n'est écrite.
+
+338. **Aucun geste ne te permet de fixer une note** (l'élève sans saisie, 223 ; l'évaluation sans connexion, 120). Ma proposition : la fenêtre « Que dit la feuille ? » (168) marche aussi sans saisie.
+
+339. **Les compétences.** Une question « Trouvée au dernier moment » compte-t-elle pour sa compétence ? Une compétence portée par une seule question donne 0 % ou 100 %. Et l'autoévaluation garde ses seuils fixes (25, 50, 75 %).
+
+340. **L'arrondi de la note**, en partiel et ramenée sur 20, face à des paliers comme « de 5 à 5,99 ».
+
+341. **Restent aussi sans réponse** : 64, 97 et 142, 115, 120, 121, 165, 234, 313, 317, les mots vus par l'élève (169, 173, 230), et les préalables au mandat : les captures de ta console (73) et l'inventaire « tout visible » (148).
+
+342. **On les prend un par un, en commençant par 323 ?**
+
+08/10/2026 18:12 MEMO

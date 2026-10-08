@@ -17983,3 +17983,33 @@ Réponse mot pour mot :
 **73 et 148 — Les préalables.** Dès que tu as tranché ces points, je fais l'inventaire « tout visible » et les captures de ta console.
 
 08/10/2026 18:28 MEMO
+
+---
+
+## TOUR 595 — Paul
+
+Texte de Paul, mot pour mot :
+
+> si saisie avant correction, quel est le contenu de la saisie? parce que c'est ça qui détermine tout en fait.
+
+---
+
+## TOUR 595 — Claude (conscience n°12)
+
+Mesure reprise du tour 568 (séance du 19/06, 52 réponses : 5 écarts, tous feuille juste et tablette fausse). CADRAGE-QCM.md complété (tour 595). Rien écrit au hub, aucun code.
+
+Réponse mot pour mot :
+
+343. **Le contenu de la saisie.** Pour chaque question : l'énoncé, les choix avec leur texte, dans l'ordre que l'élève a vu, et une consigne : « Touche ce qui est écrit sur ta feuille, pas ce que tu crois juste. » Il touche le ou les choix qui correspondent à sa feuille, ou « Ma feuille ne dit aucun de ces choix ». Rien n'est prérempli, et il n'y a pas de phrase à recopier. C'est le même geste que pendant la question, mais sans chrono et feuille sous les yeux.
+
+344. **Pourquoi rien de prérempli.** Si la saisie reprenait les réponses de la tablette, il suffirait de tout valider : la note deviendrait la tablette, « Trouvée au dernier moment » disparaîtrait, et la feuille ne servirait plus à rien.
+
+345. **Ce que ça donne.** Pour presque toutes les questions, l'élève retouche la même chose que sur la tablette. La saisie ne diffère de la tablette que là où il a changé d'avis au dernier moment, mal touché, ou écrit autre chose que les choix. Mesuré le 19/06 : 5 écarts sur 52 réponses, tous des erreurs en touchant.
+
+346. **Pourquoi avant la correction, c'est plus sûr.** L'élève ne sait pas encore ce qui est juste. Recopier sa tablette au lieu de sa feuille devient un pari : s'il avait mal touché, il perd le point que sa feuille lui donnait.
+
+347. **La saisie se ferme quand tu lances la correction.** Une question non saisie compte comme « pas de saisie » ; tu la fixes d'après la feuille (338).
+
+348. **Les deux élèves d'une tablette saisissent en même temps, chacun sur sa moitié.** Chacun recopie sa propre feuille. Si l'un recopie la saisie de l'autre, ton Suivi le signale dès que sa saisie est juste et sa tablette fausse (180), et la feuille ramassée tranche.
+
+08/10/2026 18:50 MEMO

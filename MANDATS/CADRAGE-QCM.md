@@ -1335,6 +1335,26 @@ Deux choses mesurées par la fausse classe touchent ta séance de demain. Je te 
 
 ---
 
+## Tour 595 — Paul (08/10, 18:42), mot pour mot
+
+> si saisie avant correction, quel est le contenu de la saisie? parce que c'est ça qui détermine tout en fait.
+
+## Tour 595 — le contenu de la saisie, faite avant la correction (points 343 à 348)
+
+343. **Le contenu de la saisie.** Pour chaque question : l'énoncé, les choix avec leur texte, dans l'ordre que l'élève a vu, et une consigne : « Touche ce qui est écrit sur ta feuille, pas ce que tu crois juste. » Il touche le ou les choix qui correspondent à sa feuille, ou « Ma feuille ne dit aucun de ces choix ». Rien n'est prérempli, et il n'y a pas de phrase à recopier. C'est le même geste que pendant la question, mais sans chrono et feuille sous les yeux.
+
+344. **Pourquoi rien de prérempli.** Si la saisie reprenait les réponses de la tablette, il suffirait de tout valider : la note deviendrait la tablette, « Trouvée au dernier moment » disparaîtrait, et la feuille ne servirait plus à rien.
+
+345. **Ce que ça donne.** Pour presque toutes les questions, l'élève retouche la même chose que sur la tablette. La saisie ne diffère de la tablette que là où il a changé d'avis au dernier moment, mal touché, ou écrit autre chose que les choix. Mesuré le 19/06 : 5 écarts sur 52 réponses, tous des erreurs en touchant.
+
+346. **Pourquoi avant la correction, c'est plus sûr.** L'élève ne sait pas encore ce qui est juste. Recopier sa tablette au lieu de sa feuille devient un pari : s'il avait mal touché, il perd le point que sa feuille lui donnait.
+
+347. **La saisie se ferme quand tu lances la correction.** Une question non saisie compte comme « pas de saisie » ; tu la fixes d'après la feuille (338).
+
+348. **Les deux élèves d'une tablette saisissent en même temps, chacun sur sa moitié.** Chacun recopie sa propre feuille. Si l'un recopie la saisie de l'autre, ton Suivi le signale dès que sa saisie est juste et sa tablette fausse (180), et la feuille ramassée tranche.
+
+---
+
 ## Archive des lignes d'état (remplacées au tour 593)
 
 **Méthode depuis le tour 563 (Paul) : on séquence, un sujet à la fois, en réponses courtes.** **État au 08/10, 16:23 — terminologie (Paul, tour 588) : on ne dit plus que « Trouvée au dernier moment », avec un + vert, partout (élève et console) ; « bonus » et « bénéfice du doute » ne s'emploient plus.** **Retenu (tour 589) : une question vaut au plus 1 point ; en partiel, 1/n de point par bonne case, −1/n par mauvaise, plancher 0 (273, 274) ; une question « Trouvée au dernier moment » compte comme juste, 1 point, une fois par évaluation (275) ; le cas de Théo est fermé (238, 285). Prochain point proposé : 249 (la saisie avant la correction, qui règle 248).** **Tour 590 : la règle de note redite d'un bloc (288 à 293) ; ce qu'elle change dans le cadré (295 à 300) ; à trancher : 300 (le + vert sur la seule question qui compte) et 301 (en partiel, « Trouvée » seulement si la tablette est entièrement juste ?).** **Tour 591 : 301 redit (302, 303) ; niveaux de maîtrise par compétence (Paul) : mesuré, aucune compétence dans le QCM, référentiel au hub (`/taxonomie/competences` : 18 Français C4 en 5 domaines + 10 transversales) ; proposé 304 (« difficulté » / « maîtrise ») et 307 ; questions 308 à 310.** **Tour 592 (Paul) : 303 retenu (« Trouvée » seulement si la tablette est entièrement juste) ; lexique des 4 niveaux de maîtrise : échelle du socle (doctrine K0 : insuffisante / fragile / satisfaisante / très bonne maîtrise), 313 ; 305 à 307 retenus (la maîtrise entre au profil longitudinal par compétences et taxonomie) ; 308 oui (déjà cadré) ; 309 : une ou deux compétences par question, prises dans celles du chapitre ; 310 : le PDF « notes et compétences » est à créer. Proposé : 317 (l'évaluation porte son chapitre, garde au collage du JSON).** **État au 08/10, 14:31 — tranché par Paul : la note est la carotte, aucune note avant la saisie, sans saisie pas de note (223) ; la feuille fait foi, en points, avec un bonus de 1 point fixe une fois par évaluation quand une question est « Trouvée au dernier moment » (feuille fausse, tablette juste), marquée sur chaque question concernée côté élève, « bénéfice du doute » dans la console seulement (229, 233, 237). Méthode (Paul, tour 578) : tout cadrer maintenant, une exécutante code tout d'un coup, audit final, push de Paul après la livraison complète ; plus de voie A ou B (239). Reste à trancher : 106, 115, 117, 120, 121, 127, 143, 148, 154/180, 160/164, 165, 234, 238 ; captures de la console (73).** **État au 08/10, 12:57** : réponses de Paul aux tours 559 à 571. Questions ouvertes : 106, 115, 117, 120, 121, 127, 143, 144, 145, 146, 148, 154/180, 160/164, 165, 175/187 (Paul « réfléchit encore » sur le bénéfice du doute ; le mélange des choix n'y joue pas, 188-191 ; données de la fausse classe, 195-206) ; captures de la console (73) avec l'inventaire « tout visible » (147-148). Pour la séance du 09/10 : 192/207 (la correction plante sur les tablettes : corriger au tableau, recharger à la fin) et 193 (appuyer une fois sur « ✋ Autoriser la réponse »). Correction : 137 était faux (196). Retirés : 44 (122), 89 (127), le prompt de transition (128), la suppression de la saisie papier (114, abandonnée au tour 562). Sans objet : 45 à 50. 51 à 54 : production fermée, geste de Paul (53).

@@ -17665,3 +17665,25 @@ Réponse mot pour mot :
 281. **Ce que je te demande en 275** : puisqu'une question vaut au plus 1 point, le bonus devient « la question compte comme juste », donc 1 point, jamais plus que si l'élève avait tout écrit juste. D'accord ?
 
 08/10/2026 16:18 MEMO
+
+---
+
+## TOUR 588 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok donc déjà, on va faire un alignement de terminologie: on ne dit plus que "trouvée au dernier moment" et agrémentée d'un signe + en vert visuel. et du coup, j'avais dit 1 pt fixe parce qu'on était encore sur l'idée de 1 pt par case, en mode partiel. là, le fait de faire par fraction de point par case, ça change la donne.
+
+---
+
+## TOUR 588 — Claude (conscience n°12)
+
+Terminologie inscrite : CADRAGE-QCM.md (ligne d'état, tour 588) et dette 192. Rien écrit au hub, aucun code.
+
+Réponse mot pour mot :
+
+282. **C'est retenu : on ne dit plus que « Trouvée au dernier moment », avec un + vert.** Partout, sur l'écran de l'élève comme dans ta console, où « bénéfice du doute » disparaît : cela remplace 229. De mon côté, je n'emploie plus « bonus » ni « bénéfice du doute ».
+
+283. **Je comprends donc que 275 est retenu** : une question « Trouvée au dernier moment » compte comme juste, soit 1 point, en strict comme en partiel, une seule fois par évaluation (210). C'est bien ça ?
+
+08/10/2026 16:23 MEMO

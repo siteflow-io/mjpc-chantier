@@ -17266,3 +17266,29 @@ Réponse mot pour mot :
 228. **Il reste une décision** : 214 (voie A ou voie B pour demain ?).
 
 08/10/2026 14:21 MEMO
+
+---
+
+## TOUR 576 — Paul
+
+Texte de Paul, mot pour mot :
+
+> uniquement dans ma console. ET pour l'élève, on la marque avec un terme plus pédagogique (gratuit? non... offert? non... je ne sais pas)
+
+---
+
+## TOUR 576 — Claude (conscience n°12)
+
+Décision inscrite (mention « bénéfice du doute » dans la console seulement) : CADRAGE-QCM.md (tour 576, ligne d'état) et dette 196 complétée. Rien écrit au hub, aucun code.
+
+Réponse mot pour mot :
+
+229. **C'est retenu : « bénéfice du doute » n'apparaît que dans ta console.**
+
+230. **Pour l'élève, ma proposition : « Reconnue, pas écrite ».** C'est exactement ce qui s'est passé : il a reconnu la bonne réponse parmi les choix, mais il ne l'avait pas écrite sur sa feuille. Et c'est justement ce que l'app veut lui faire travailler. Sous la question, une phrase : « Tu as touché la bonne réponse, mais ta feuille disait autre chose. Tu gardes le point ; cette question est à retravailler. » Si tu préfères un autre ton : « Trouvée au dernier moment », ou « Point sauvé ».
+
+231. **Une tension.** Sacha a quatre questions dans ce cas, et le point ne lui reste que sur une. Sur les trois autres aussi, il a reconnu la bonne réponse sans l'écrire. Ma proposition : la même mention sur les quatre questions, parce que c'est le même travail à faire, et « Tu gardes le point » seulement sur la question gardée. L'autre voie : la mention seulement sur la question gardée, et les trois autres comptées fausses, comme sur la feuille, sans rien de plus. Laquelle choisis-tu ?
+
+232. **Il reste aussi la décision 214** (voie A ou voie B pour demain ?).
+
+08/10/2026 14:23 MEMO

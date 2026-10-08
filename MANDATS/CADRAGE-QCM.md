@@ -3,7 +3,7 @@
 
 **Ce que ça change pour la classe** : deux élèves par tablette, qui répondent l'un après l'autre sans voir la réponse de l'autre ; des temps de réflexion et de réponse réglés question par question ; une séance (questions + correction) qui tient dans 45 minutes ; la console de Paul, qui pilote la séance, lisible d'abord.
 
-**Méthode depuis le tour 563 (Paul) : on séquence, un sujet à la fois, en réponses courtes.** **État au 08/10, 14:21 — tranché par Paul : la note est la carotte, aucune note avant la saisie, sans saisie pas de note (223, tour 574) ; le bénéfice du doute sur une seule question, choisie élève par élève, celle qui lui rapporte le plus (225, tour 575 ; ferme 187). À valider : 227 (la mention visible). Décision attendue : 214 (voie A ou B pour la correction du 09/10).** **État au 08/10, 12:57** : réponses de Paul aux tours 559 à 571. Questions ouvertes : 106, 115, 117, 120, 121, 127, 143, 144, 145, 146, 148, 154/180, 160/164, 165, 175/187 (Paul « réfléchit encore » sur le bénéfice du doute ; le mélange des choix n'y joue pas, 188-191 ; données de la fausse classe, 195-206) ; captures de la console (73) avec l'inventaire « tout visible » (147-148). Pour la séance du 09/10 : 192/207 (la correction plante sur les tablettes : corriger au tableau, recharger à la fin) et 193 (appuyer une fois sur « ✋ Autoriser la réponse »). Correction : 137 était faux (196). Retirés : 44 (122), 89 (127), le prompt de transition (128), la suppression de la saisie papier (114, abandonnée au tour 562). Sans objet : 45 à 50. 51 à 54 : production fermée, geste de Paul (53).
+**Méthode depuis le tour 563 (Paul) : on séquence, un sujet à la fois, en réponses courtes.** **État au 08/10, 14:21 — tranché par Paul : la note est la carotte, aucune note avant la saisie, sans saisie pas de note (223, tour 574) ; le bénéfice du doute sur une seule question, choisie élève par élève, celle qui lui rapporte le plus (225, tour 575 ; ferme 187). « Bénéfice du doute : +n » dans la console seulement (229, tour 576). À trancher : 230 (le terme pour l'élève : « Reconnue, pas écrite » proposé) et 231 (la mention sur toutes les questions reconnues ou sur la seule gardée). Décision attendue : 214 (voie A ou B pour la correction du 09/10).** **État au 08/10, 12:57** : réponses de Paul aux tours 559 à 571. Questions ouvertes : 106, 115, 117, 120, 121, 127, 143, 144, 145, 146, 148, 154/180, 160/164, 165, 175/187 (Paul « réfléchit encore » sur le bénéfice du doute ; le mélange des choix n'y joue pas, 188-191 ; données de la fausse classe, 195-206) ; captures de la console (73) avec l'inventaire « tout visible » (147-148). Pour la séance du 09/10 : 192/207 (la correction plante sur les tablettes : corriger au tableau, recharger à la fin) et 193 (appuyer une fois sur « ✋ Autoriser la réponse »). Correction : 137 était faux (196). Retirés : 44 (122), 89 (127), le prompt de transition (128), la suppression de la saisie papier (114, abandonnée au tour 562). Sans objet : 45 à 50. 51 à 54 : production fermée, geste de Paul (53).
 
 ---
 
@@ -802,3 +802,19 @@ Deux choses mesurées par la fausse classe touchent ta séance de demain. Je te 
 227. **Ma proposition, pour que ce soit visible** : dans le récapitulatif de l'élève et dans ta console, cette question porte une mention, par exemple « bénéfice du doute : +4 ». Les mots sont à toi.
 
 228. **Il reste une décision** : 214 (voie A ou voie B pour demain ?).
+
+---
+
+## Tour 576 — Paul (08/10, 14:19), mot pour mot
+
+> uniquement dans ma console. ET pour l'élève, on la marque avec un terme plus pédagogique (gratuit? non... offert? non... je ne sais pas)
+
+## Tour 576 — le mot pour l'élève (points 229 à 232)
+
+229. **C'est retenu : « bénéfice du doute » n'apparaît que dans ta console.**
+
+230. **Pour l'élève, ma proposition : « Reconnue, pas écrite ».** C'est exactement ce qui s'est passé : il a reconnu la bonne réponse parmi les choix, mais il ne l'avait pas écrite sur sa feuille. Et c'est justement ce que l'app veut lui faire travailler. Sous la question, une phrase : « Tu as touché la bonne réponse, mais ta feuille disait autre chose. Tu gardes le point ; cette question est à retravailler. » Si tu préfères un autre ton : « Trouvée au dernier moment », ou « Point sauvé ».
+
+231. **Une tension.** Sacha a quatre questions dans ce cas, et le point ne lui reste que sur une. Sur les trois autres aussi, il a reconnu la bonne réponse sans l'écrire. Ma proposition : la même mention sur les quatre questions, parce que c'est le même travail à faire, et « Tu gardes le point » seulement sur la question gardée. L'autre voie : la mention seulement sur la question gardée, et les trois autres comptées fausses, comme sur la feuille, sans rien de plus. Laquelle choisis-tu ?
+
+232. **Il reste aussi la décision 214** (voie A ou voie B pour demain ?).

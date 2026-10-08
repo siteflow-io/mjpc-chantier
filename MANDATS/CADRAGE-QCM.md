@@ -962,3 +962,19 @@ Deux choses mesurées par la fausse classe touchent ta séance de demain. Je te 
 249. **Ma proposition : la saisie avant la correction.** Les questions, puis la saisie, puis la correction. Au moment de sa saisie, Théo ne sait pas encore quelle est la bonne réponse : arranger sa saisie ne lui sert à rien. Et à la correction, l'app connaît sa feuille : elle lui dit « Barre ta réponse en rouge… » d'après ce qu'il a écrit, et lui montre « Trouvée au dernier moment ». Ce que ça coûte : la saisie prend du temps avant la correction, dans les 45 minutes (2, 158). Cela tranche aussi 143.
 
 250. **Si la saisie reste après la correction**, il faut au moins que la consigne de correction ne juge plus la tablette, par exemple : « Compare ta feuille à la bonne réponse. » Mais Théo pourra toujours recopier sa ligne verte.
+
+---
+
+## Tour 581 — Paul (08/10, 14:40), mot pour mot
+
+> 249, mais du coup écrire sur papier perd de son intérêt. non?
+
+## Tour 581 — le papier garde son intérêt (points 251 à 254)
+
+251. **Non, le papier garde tout son intérêt.** Mesuré sur ton évaluation de demain : 6 de tes 11 questions (de la 5 à la 10) commencent par « Sur ta copie, écris une phrase… ». La feuille, c'est l'exercice lui-même : l'élève y produit sa réponse sans voir les choix. Avec 249, rien ne change à ce moment-là : il écrit d'abord, sans les choix, puis il touche.
+
+252. **La feuille reste aussi la preuve.** Ramassée, elle seule fait foi (181, 223), et c'est sur elle que l'élève corrige au stylo.
+
+253. **Ce qui perd son intérêt, c'est la saisie vue comme une deuxième correction.** Aujourd'hui, l'app la présente ainsi : « Cette étape te permet de refaire activement ta correction ». Faite avant la correction, la saisie n'est plus qu'une recopie.
+
+254. **Mais ce travail passe dans la correction, et il y gagne.** L'app connaît alors la feuille, la tablette et la bonne réponse. Théo lit « Trouvée au dernier moment » et la bonne consigne (« Barre ta réponse en rouge… »), et tu es là pendant ce temps. Mon verdict reste donc 249.

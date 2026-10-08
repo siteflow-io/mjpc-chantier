@@ -16365,3 +16365,145 @@ Réponse mot pour mot :
 08/10/2026 06:40 MEMO
 
 ---
+
+## TOUR 558 — Paul
+
+Texte de Paul, mot pour mot :
+
+> mjpc chantiers: [jeton du sas — non archivé] mjpc prod: [jeton de production — non archivé]mjpc chantiers: [jeton du sas — non archivé] mjpc prod: [jeton de production — non archivé] Par ailleurs pour tous les points, je veux des références par numéros, plutot que par points dans les numéros. Enfin, on recommence à 1, vu que c'est le cadrage qcm. Remets moi tout.
+
+---
+
+## TOUR 558 — Claude (conscience n°12)
+
+Écriture en production retentée après les jetons (git push du commit des dettes 179-184, renvoyées aux numéros du cadrage QCM) : toujours 403 « Claude doesn't have GitHub access… ». Voie des jetons : l'API d'écriture reste fermée par le proxy (déjà constaté au tour 557 sur le sas). Dettes au sas mises à jour (nouvelles références). Cadrage QCM renuméroté à partir de 1 (remplace 711-718), un numéro par point, plus aucune lettre ; lots recomposés par numéros (lot 1 : 5, 7, 8, 9, 12-14, 16 liste, 20-38, 44 ; lot 2 : 15, 16 clic, 17-19, 39-43). Rien écrit au hub, aucun code.
+
+Réponse mot pour mot :
+
+Le cadrage QCM repart à 1 : ces numéros remplacent 711 à 718. Chaque point a son propre numéro ; tu peux répondre par exemple « 25 ok, 38 non : … ».
+
+**Ce que j'ai mesuré : les chronos, les niveaux, le prompt**
+
+1. **La réflexion** est déjà réglable niveau par niveau, dans ton poste de pilotage (« Durées des niveaux »), et gardée au hub pour toutes les séances. Chez toi : Facile 10 s · Standard 15 s · Approfondi 20 s · Expert 30 s.
+
+2. **La réponse** n'a qu'un seul chrono pour toutes les questions. Il se règle pendant la séance (de 3 à 30 s), mais il repart à 5 s à chaque nouvelle séance. C'est le même pour 4 choix courts que pour ta question 3 de 3e demain (6 choix, 3 bonnes, 402 caractères à lire).
+
+3. **Les niveaux** sont quatre ; leurs noms et leurs couleurs sont fixés dans le code, leurs points (1/2/3/4) se règlent.
+
+4. **Le prompt, lui, est en dur, et il est faux.** Sa règle 5 écrit « facile (5 secondes de réflexion), standard (10s), approfondi (15s), expert (20s) », alors que tu as réglé 10/15/20/30. Le bouton « Réinitialiser » parle aussi de 5/10/15/20. L'app sait déjà écrire la liste des niveaux d'après tes réglages, mais ce n'est pas branché sur le prompt.
+
+**Ce que j'ai mesuré : ce qui casserait avec deux élèves sur une tablette (le « consolider »)**
+
+5. **Le redessin.** Quand un écran du QCM arrête d'écouter le hub, il ne dit pas quelle écoute il arrête : c'est le cas 33 fois sur 38, alors que la dictée le dit 38 fois sur 47. Je l'ai prouvé avec le vrai Firebase de l'app (8.10.1). Deux moitiés écoutent la séance ; la moitié 1 se ferme ; **la moitié 2 ne reçoit plus rien** et la question suivante n'arrive pas : il faudrait recharger. Avec un élève par tablette, c'est sans effet ; avec deux, c'est bloquant. C'est à corriger partout, avant tout le reste.
+
+6. **Le rechargement.** L'élève n'est gardé que dans la page : un rechargement le renvoie à « Choisis ta classe », et il retape son code, son prénom et son nom. Ensuite, il retombe bien sur la question en cours, avec sa réponse. Ce qui coûte, c'est la ressaisie pendant un chrono de 5 s.
+
+7. **Le raccourci MJPC.** Si un élève s'est connecté au site sur cette tablette dans les 12 dernières heures, le QCM s'ouvre directement à son nom, sans code. Sur des tablettes de classe, un élève se retrouve alors sous le nom d'un autre ; avec deux moitiés, ce seraient les deux moitiés à son nom. La dictée coupe ce raccourci sur les moitiés.
+
+8. **Les horloges.** Chaque tablette compte le chrono avec sa propre horloge, alors que c'est ton poste qui ferme la phase. Si une vieille tablette retarde de 4 s, Michel perd 4 s de son tour ; avec un gel « instantané », ça se verra. Je cale toutes les tablettes sur l'heure du hub.
+
+9. **Une fuite.** À chaque nouvelle séance, la tablette ajoute une écoute sans retirer l'ancienne : une séance terminée peut revenir à l'écran si elle est réécrite.
+
+10. **À savoir pour demain, quoi qu'on décide** : seul ton poste de pilotage, sur l'ordinateur, fait passer les phases à la fin du chrono. Le pilotage au téléphone ne le fait pas : laisse le poste ouvert sur l'ordinateur.
+
+11. **Une précision sur « comme on a fait en dictée ».** Aujourd'hui, en dictée, chaque moitié se souvient de son élève après un rechargement, sans code ; le raccourci MJPC est coupé sur les moitiés ; l'écran suit en direct. **Le retour exact est cadré, mais pas codé** (L17-2 : un rechargement ramène « Combien êtes-vous ? », chacun retape son code et retrouve son mot) : il est dans le mandat en pause. Pour le QCM, je pars donc de ce qui tourne.
+
+**Le clonage : ce que je reprends de la dictée, à l'identique**
+
+12. **L'entrée** : « Combien êtes-vous sur cette tablette ? », puis, sur chaque moitié, le code, le nom et le prénom, tapés avec le clavier de l'app (celui de la tablette couvrirait les deux moitiés).
+
+13. **Plus de « Choisis ta classe » sur les tablettes** : l'élève est trouvé dans les listes, comme en dictée. Cela règle au passage les classes de test visibles par les élèves, que j'avais relevées au tour 556.
+
+14. **Le registre « qui est assis où »**, avec l'heure d'arrivée.
+
+15. **En binômes imposés** : « Ton binôme : X » sur la moitié libre, et « Tu es avec Lou : laisse cette tablette à quelqu'un d'autre et rejoins Lou. » sur l'autre tablette. La première arrivée garde la tablette. L'émoji suit les sexes (👭 👫 👬, ou 👥 si on ne sait pas).
+
+16. **Ton écran** : les tablettes (qui est avec qui) ; un clic montre les deux moitiés en direct.
+
+17. **Absent, parti, revient** : ce sont les règles de L17-1. Les binômes sont fixés pour la séance. Celui qui part n'est remplacé par personne, et son binôme continue seul. Celui qui revient reprend sa moitié. Un retardataire rejoint un élève seul ; s'il n'y en a pas, il est seul.
+
+18. **« Départ d'un élève »** range aujourd'hui l'élève avec les absents : je sépare « parti » et « absent », comme en dictée.
+
+19. **Une différence qui simplifie** : le QCM fait déjà l'appel au lancement (« qui est absent aujourd'hui ? »). Les binômes se forment donc **après** l'appel, entre les présents seulement.
+
+**L'anti-triche, tel que je le comprends**
+
+20. **La réflexion** ne change pas : les deux moitiés montrent l'énoncé et le chrono, et chacun rédige sur sa feuille.
+
+21. **La réponse, tour 1** : la moitié de Michel est voilée, avec « Donne la tablette à Julien pour qu'il réponde sans que tu regardes. » ; la moitié de Julien montre le chrono et les réponses possibles.
+
+22. **À la fin du chrono**, Julien est gelé aussitôt, qu'il ait répondu ou non. Il n'y a pas de bouton « J'ai fini » : il peut changer d'avis jusqu'au bout, comme aujourd'hui.
+
+23. **Le tour 2** est l'inverse, avec « Donne la tablette à Michel pour qu'il réponde sans que tu regardes. »
+
+24. **Ensuite**, les deux moitiés affichent « Attends la prochaine question », sans montrer les réponses.
+
+**Ce qui reste à cadrer : mes propositions (réponds par numéro, « ok » ou ta correction)**
+
+25. **Qui commence** : on alterne à chaque question (question 1, la moitié de gauche ; question 2, celle de droite, et ainsi de suite). Sinon, le second a toujours plus de temps de réflexion.
+
+26. **Le passage de la tablette** : 3 s voilées avant chaque tour, avec « Julien, à toi dans 3 s ». Sinon, le temps de passer la tablette est pris sur son chrono. Ces 3 s sont réglables.
+
+27. **Un élève seul sur sa tablette** n'a pas de voile : il répond au tour 1, puis il attend.
+
+28. **Le coût en temps**, mesuré sur tes deux évaluations de demain (réponse 5 s, passage 3 s) : 16 s par question au lieu de 5, soit **+4 min en 4e** (21 questions) et **+2 min en 3e** (11 questions).
+
+29. **« Rouvrir pour tous »** : les deux tours recommencent ; celui qui a déjà répondu reste voilé, avec « Ta réponse est enregistrée ».
+
+30. **La réouverture pour un seul élève** : sa moitié s'ouvre sans chrono, et l'autre est voilée avec la phrase du point 21.
+
+31. **La pause** gèle le tour en cours, voile compris.
+
+32. **L'autoévaluation et la correction** se font sur les deux moitiés en même temps, sans voile : il n'y a plus rien à copier.
+
+33. **La vue tableau** affiche « 1er tour » ou « 2e tour » à côté du chrono.
+
+34. **Le temps de réponse** devient réglable **par niveau**, comme la réflexion : une question Expert à 6 choix longs ne se lit pas en 5 s.
+
+35. **« Les niveaux éditables »**, je le comprends comme « leurs durées et leurs points ». Ils restent quatre, avec leurs noms : le bilan, les couleurs, la pondération et tes évaluations déjà écrites reposent sur ces quatre-là.
+
+36. **Un seul panneau, « Les niveaux »**, gardé au hub pour toutes les séances. Pour chaque niveau, on y règle la réflexion, la réponse et les points, et en plus le temps de passage du point 26. Le chrono de réponse ne repart plus à 5 s à chaque séance.
+
+37. **Le prompt** : sa règle 5 s'écrit d'après tes réglages au moment où tu copies (noms, réflexion, réponse), et il demande en plus que chaque choix se lise dans le temps de réponse. Si tu modifies le prompt, un repère garde la place de cette liste.
+
+38. **Le rechargement pendant le QCM** : la tablette garde ses deux élèves **jusqu'à la fin de la séance**, sans code, parce que le chrono tourne et qu'il n'y a pas le temps de retaper. À la séance suivante, elle redemande « Combien êtes-vous ? ». C'est différent de ta règle L17-2 pour la dictée, à cause du chrono ; dis-moi si tu préfères la règle de la dictée.
+
+39. **La constitution** : au premier QCM, placement libre (aucune annonce, aucun refus) ; ensuite, d'après le QCM précédent : un classement, puis les binômes 1-2, 3-4, 5-6…
+
+40. **Le résultat retenu** : le score app pondéré, connu dès la fin de la séance et pour tous. Le score officiel n'existe qu'après la saisie à la maison, que tous ne font pas.
+
+41. **Le QCM précédent** : la dernière séance terminée de la classe, quelle que soit l'évaluation.
+
+42. **Sans résultat, et nombre impair** : les absents du QCM précédent sont appariés entre eux ; s'il reste un élève, c'est le dernier du classement qui est seul.
+
+43. **Le choix du mode** est automatique : placement libre s'il n'y a pas de QCM précédent, sinon d'après les résultats. Tu peux le changer au lancement, dans la fenêtre de l'appel.
+
+44. **L'élève sans code** lit « Viens me voir pour qu'on le mette en place » : cela devient « lève la main ».
+
+**Mon verdict pour demain**
+
+45. Demain, c'est le premier QCM, donc **placement libre**, par ta propre règle. Les points 15, 17 à 19 et 39 à 43, et le clic en direct du point 16, ne servent qu'au **deuxième QCM** : c'est un **lot 2**, après demain.
+
+46. **Pour demain, il faut le lot 1** : les points 5, 7, 8, 9, 12 à 14, 16 (seulement la liste de qui est avec qui), 20 à 38 et 44.
+
+47. **C'est faisable aujourd'hui en micro, sur ton ordre**, si tu tranches ce matin **et si l'écriture en production revient** (points 51 à 54). Par mandat, l'aller-retour (exécutante, puis audit, puis promotion sur captures) ne tient pas sûrement dans la journée.
+
+48. **Mon banc** : une copie de ton hub, ton poste, une tablette en deux moitiés et une tablette à un seul élève, pour une séance entière de ta 3e de demain. Je mesure aussi la question 3 (6 choix) sur une demi-tablette de 1 280 × 800.
+
+49. **Si ce n'est pas promu ce soir**, demain se fait avec l'app actuelle, un élève par tablette.
+
+50. **J'ai besoin de tes heures de QCM demain** (quelle 4e, quelle 3e, à quelle heure) pour caler la promotion et tes tests.
+
+**Le blocage de la production**
+
+51. **Je ne peux toujours pas écrire dans la production** (`siteflow-io/monsieurjaipascompris`). Je viens de réessayer après tes jetons ; GitHub répond encore : « Claude doesn't have GitHub access to siteflow-io/monsieurjaipascompris for your organization ». **Les jetons n'y changent rien** : depuis ce matin, tout passe par l'accès GitHub de la session, et la voie des jetons est fermée en écriture, même pour le sas. Le sas passe par cet accès ; la production, non.
+
+52. **Les dettes 179 à 184** sont écrites, renvoyées aux numéros de ce cadrage, et prêtes dans la production en local ; en attendant, elles sont au sas : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/DETTES-QCM-179-184-A-REPORTER.md
+
+53. **Le remède, de ton côté.** Puisque le sas passe et pas la production, l'app Claude installée sur siteflow-io n'a pas la production dans ses dépôts autorisés. Sur GitHub : réglages de l'organisation siteflow-io → GitHub Apps → Claude → Configure → Repository access → ajouter `monsieurjaipascompris`. Sinon, GitHub donne ces deux liens : https://github.com/apps/claude/installations/select_target et https://claude.ai/customize/connectors?auth_start=github&auth_start_force=1
+
+54. **Tant que ce n'est pas fait, aucune promotion n'est possible d'ici.** L'autre voie : tu promeus toi-même. Je dépose le fichier au sas, et tu le téléverses dans la production.
+
+08/10/2026 07:58 MEMO
+
+---

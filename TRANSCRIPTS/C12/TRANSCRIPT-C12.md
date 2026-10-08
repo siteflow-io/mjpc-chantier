@@ -16254,3 +16254,108 @@ Réponse mot pour mot :
 07/10/2026 22:50 MEMO
 
 ---
+
+
+## TOUR 557 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Je fais un QCM demain, celui de 4e et 3e. Il va falloir avoir le même principe de binôme qu'en dictée, vraiment c'est du clonage. Il va falloir aussi consolider ( redessin d'écran, retour à l'endroit où on en était sans subir le rechargement, comme on a fait en dictée en fait ). Pour les binômes, la différence de constitution du binôme c'est qu'on a pas encore les résultats du QCM. Donc on les mets en libre par défaut, et ensuite au deuxième QCM on les mettra par résultats du QCM précédent, mais avec une différence : les meilleurs ensemble, les moins bons ensemble. Ce qui m'amène au point suivant : la triche. Lors du QCM, les élèves auront donc chacun leur partie d'écran. Pour éviter qu'ils donnent les mêmes réponses, on va les faire répondre l'un après l'autre. Donc on gèle le demi écran de Michel avec l'instruction " donne la tablette à julien pour qu'il réponde sans que tu regardes." et sur l'écran de julien, le chrono et les réponses possibles. Puis à la fin du chrono, julien est instantanément gelé ( quand je dis gel c'est un voile qui masque le contenu bien sûr ), répondu ou non, et on passe à Michel. De ce fait, les temps de chrono et les niveaux: actuellement en dur, doivent devenir éditables, et il faut adapter le prompt en conséquence. Il reste des choses à cadrer je pense, à toi.
+
+---
+
+## TOUR 557 — Claude (conscience n°12)
+
+Session reprise dans un conteneur neuf (dépôts reclonés : production 7063a88, sas d3dad41 ; QCM 7.7.1 md5 ecae6562… et dictée L17-1q3 md5 084deaf4… vérifiés). Mesuré dans le QCM : NIVEAUX_DEFAULT 5/10/15/20, settings/niveaux au hub 10/15/20/30 (chronos seuls) ; chronoReponse 5 s par défaut, réglable 3-30 s dans SessionLive, non gardé d'une séance à l'autre ; PROMPT_IA_DEFAUT règle 5 en dur (5/10/15/20) ; qcmVocabulaireNiveaux non branché ; off() sans argument 33/38 (dictée 9/47) — effet prouvé avec firebase 8.10.1 (node, hors ligne : une écoute retirée sans argument coupe l'autre moitié) ; identité élève en mémoire de page ; raccourci lireSessionMJPC 12 h dans AppEleve et EleveLogin ; aucune heure du hub (serverTimeOffset 0) ; seule SessionLive fait avancer les phases ; écoute sessions/<sid> jamais retirée dans EleveSession ; évaluations de demain mesurées au hub (lecture seule) : 4e 21 questions (réflexion 360 s), 3e 11 questions (Q3 : 6 choix, 3 bonnes, 402 caractères). Rien écrit au hub, aucun code.
+
+Réponse mot pour mot :
+
+711. **Mesuré d'abord : « les chronos et les niveaux en dur », c'est vrai en partie seulement.**
+   - **La réflexion** est déjà réglable niveau par niveau, dans ton poste de pilotage (« Durées des niveaux »), et gardée au hub pour toutes les séances. Chez toi : Facile 10 s · Standard 15 s · Approfondi 20 s · Expert 30 s.
+   - **La réponse** : un seul chrono pour toutes les questions. Il se règle pendant la séance (de 3 à 30 s), mais il repart à 5 s à chaque nouvelle séance. Et c'est le même pour 4 choix courts que pour ta question 3 de 3e demain (6 choix, 3 bonnes, 402 caractères à lire).
+   - **Les niveaux** : ils sont quatre, et leurs noms et leurs couleurs sont fixés dans le code ; leurs points (1/2/3/4) se règlent.
+   - **Le prompt : là, c'est en dur, et c'est faux.** Sa règle 5 écrit « facile (5 secondes de réflexion), standard (10s), approfondi (15s), expert (20s) », alors que tu as réglé 10/15/20/30. Le bouton « Réinitialiser » parle aussi de 5/10/15/20. L'app sait déjà écrire la liste des niveaux d'après tes réglages, mais ce n'est pas branché sur le prompt.
+
+712. **Mesuré : ce qui casserait aujourd'hui avec deux élèves sur une tablette** (c'est le « consolider »).
+   - **Le redessin.** Quand un écran du QCM arrête d'écouter le hub, il ne dit pas quelle écoute il arrête (33 fois sur 38 ; la dictée, elle, le dit 38 fois sur 47). Je l'ai prouvé avec le vrai Firebase de l'app (8.10.1) : deux moitiés écoutent la séance, la moitié 1 se ferme, et **la moitié 2 ne reçoit plus rien** : la question suivante n'arrive pas, il faudrait recharger. Avec un élève par tablette, c'est sans effet ; avec deux, c'est bloquant. C'est à corriger partout, avant tout le reste.
+   - **Le rechargement.** L'élève n'est gardé que dans la page : un rechargement le renvoie à « Choisis ta classe », et il retape son code, son prénom et son nom. Ensuite il retombe bien sur la question en cours, avec sa réponse. Ce qui coûte, c'est la ressaisie pendant un chrono de 5 s.
+   - **Le raccourci MJPC.** Si un élève s'est connecté au site sur cette tablette dans les 12 dernières heures, le QCM s'ouvre directement à son nom, sans code. Sur des tablettes de classe, c'est un élève sous le nom d'un autre ; avec deux moitiés, ce seraient les deux moitiés à son nom. La dictée coupe ce raccourci sur les moitiés.
+   - **Les horloges.** Chaque tablette compte le chrono avec sa propre horloge, mais c'est ton poste qui ferme la phase. Si une vieille tablette retarde de 4 s, Michel perd 4 s de son tour, et avec un gel « instantané », ça se verra. Je cale toutes les tablettes sur l'heure du hub.
+   - **Une fuite.** À chaque nouvelle séance, la tablette ajoute une écoute sans retirer l'ancienne : une séance terminée peut revenir à l'écran si elle est réécrite.
+   - **À savoir pour demain, quoi qu'on décide** : seul ton poste de pilotage, sur l'ordinateur, fait passer les phases à la fin du chrono. Le pilotage au téléphone ne le fait pas : laisse le poste ouvert sur l'ordinateur.
+
+713. **Une précision sur « comme on a fait en dictée ».** Voici ce qui tourne aujourd'hui en dictée :
+   - chaque moitié se souvient de son élève après un rechargement, sans code ;
+   - le raccourci MJPC est coupé sur les moitiés ;
+   - l'écran suit en direct.
+
+   **Le retour exact est cadré, mais pas codé** (L17-2 : un rechargement ramène « Combien êtes-vous ? », chacun retape son code et retrouve son mot) ; il est dans le mandat en pause. Pour le QCM, je pars donc de ce qui tourne.
+
+714. **Le clonage : ce que je reprends de la dictée, à l'identique.**
+   - **L'entrée.** « Combien êtes-vous sur cette tablette ? », puis, sur chaque moitié, le code, le nom et le prénom, tapés avec le clavier de l'app (celui de la tablette couvrirait les deux moitiés).
+   - **Plus de « Choisis ta classe »** sur les tablettes : l'élève est trouvé dans les listes, comme en dictée. Cela règle au passage les classes de test visibles (709).
+   - **Le registre** « qui est assis où », avec l'heure d'arrivée.
+   - **En binômes imposés** :
+     - « Ton binôme : X » sur la moitié libre ;
+     - « Tu es avec Lou : laisse cette tablette à quelqu'un d'autre et rejoins Lou. » ;
+     - la première arrivée garde la tablette ;
+     - l'émoji selon les sexes (👭 👫 👬, 👥 si on ne sait pas).
+   - **Ton écran** : les tablettes (qui est avec qui) ; un clic montre les deux moitiés en direct.
+   - **Absent, parti, revient** : les règles de L17-1.
+     - Les binômes sont fixés pour la séance.
+     - Celui qui part n'est remplacé par personne, et son binôme continue seul.
+     - Celui qui revient reprend sa moitié.
+     - Un retardataire rejoint un élève seul, sinon il est seul.
+     - Aujourd'hui, « Départ d'un élève » le range avec les absents : je sépare « parti » et « absent », comme en dictée.
+   - **Une différence qui simplifie** : le QCM fait déjà l'appel au lancement (« qui est absent aujourd'hui ? »). Les binômes se forment donc **après** l'appel, entre les présents seulement.
+
+715. **L'anti-triche, tel que je le comprends :**
+   - **Réflexion** : rien ne change. Les deux moitiés montrent l'énoncé et le chrono ; chacun rédige sur sa feuille.
+   - **Réponse, tour 1** : la moitié de Michel est voilée, avec « Donne la tablette à Julien pour qu'il réponde sans que tu regardes. » ; la moitié de Julien montre le chrono et les réponses possibles.
+   - **Fin du chrono** : Julien est gelé aussitôt, répondu ou non. Il n'y a pas de bouton « J'ai fini » : il peut changer d'avis jusqu'au bout, comme aujourd'hui.
+   - **Tour 2** : l'inverse, avec « Donne la tablette à Michel pour qu'il réponde sans que tu regardes. »
+   - **Ensuite** : « Attends la prochaine question » sur les deux moitiés, sans montrer les réponses.
+
+716. **Ce qui reste à cadrer.** Pour chaque point, je donne ma proposition ; réponds « ok », ou corrige la lettre.
+   - **a. Qui commence** : on alterne à chaque question (question 1, la moitié de gauche ; question 2, celle de droite, et ainsi de suite). Sinon, le second a toujours plus de temps de réflexion.
+   - **b. Le passage de la tablette** : 3 s voilées avant chaque tour, avec « Julien, à toi dans 3 s ». Sinon, le temps de passer la tablette est pris sur son chrono. Ces 3 s sont réglables.
+   - **c. Un élève seul sur sa tablette** : il n'a pas de voile ; il répond au tour 1, puis il attend.
+   - **d. Le coût en temps**, mesuré sur tes deux évaluations de demain (réponse 5 s, passage 3 s) : 16 s par question au lieu de 5, donc **+4 min en 4e** (21 questions) et **+2 min en 3e** (11 questions).
+   - **e. « Rouvrir pour tous »** : les deux tours recommencent ; celui qui a déjà répondu reste voilé (« Ta réponse est enregistrée »). **La réouverture pour un seul élève** : sa moitié s'ouvre sans chrono, et l'autre est voilée avec la phrase.
+   - **f. La pause** gèle le tour en cours, voile compris. **L'autoévaluation et la correction** se font sur les deux moitiés en même temps, sans voile : il n'y a plus rien à copier.
+   - **g. La vue tableau** : « 1er tour » ou « 2e tour » s'affiche à côté du chrono.
+   - **h. Le temps de réponse** devient réglable **par niveau**, comme la réflexion : une question Expert à 6 choix longs ne se lit pas en 5 s.
+   - **i. « Les niveaux éditables »** : je comprends « leurs durées et leurs points ». Ils restent quatre, avec leurs noms, parce que le bilan, les couleurs, la pondération et tes évaluations déjà écrites reposent sur ces quatre-là.
+     - Un seul panneau, « Les niveaux », gardé au hub pour toutes les séances : pour chaque niveau, la réflexion, la réponse et les points ; en plus, le temps de passage.
+     - Le chrono de réponse ne repart plus à 5 s à chaque séance.
+   - **j. Le prompt** :
+     - sa règle 5 s'écrit d'après tes réglages, au moment où tu copies (noms, réflexion, réponse) ;
+     - il demande en plus que chaque choix se lise dans le temps de réponse ;
+     - si tu modifies le prompt, un repère garde la place de cette liste.
+   - **k. Le rechargement pendant le QCM** : la tablette garde ses deux élèves **jusqu'à la fin de la séance**, sans code, car le chrono tourne et il n'y a pas le temps de retaper. À la séance suivante, elle redemande « Combien êtes-vous ? ». C'est différent de ta règle L17-2 pour la dictée, à cause du chrono. Dis-moi si tu préfères la règle de la dictée.
+   - **l. La constitution** :
+     - au premier QCM, placement libre : aucune annonce, aucun refus ;
+     - ensuite, d'après le QCM précédent : un classement, puis 1-2, 3-4, 5-6… ;
+     - **quel résultat** : le score app pondéré, connu dès la fin de la séance et pour tous (le score officiel n'existe qu'après la saisie à la maison, que tous ne font pas) ;
+     - **quel QCM précédent** : la dernière séance terminée de la classe, quelle que soit l'évaluation.
+   - **m. Sans résultat, et nombre impair** : les absents du QCM précédent sont appariés entre eux ; s'il reste un élève, c'est le dernier du classement qui est seul.
+   - **n. Le choix du mode** est automatique : libre s'il n'y a pas de QCM précédent, sinon d'après les résultats. Tu peux le changer au lancement, dans la fenêtre de l'appel.
+   - **o. L'élève sans code** : « Viens me voir pour qu'on le mette en place » devient « lève la main » (709).
+
+717. **Mon verdict pour demain.**
+   - Demain, c'est le premier QCM, donc **placement libre**, par ta propre règle. La constitution d'après les résultats, l'annonce, « rejoins … », les émojis et la vue des tablettes en direct ne servent qu'au **deuxième QCM** : c'est un **lot 2**, après demain.
+   - **Pour demain, il faut le lot 1** :
+     - les deux moitiés : « Combien êtes-vous ? », le code au clavier de l'app, pas de raccourci MJPC, la mémoire de la séance ;
+     - les écoutes corrigées et l'heure du hub ;
+     - l'alternance (a à g) ;
+     - le panneau des niveaux, avec la réponse par niveau (h, i) ;
+     - le prompt (j) ;
+     - sur ton écran, la liste de qui est avec qui.
+   - **C'est faisable aujourd'hui en micro, sur ton ordre**, si tu tranches ce matin. Par mandat, l'aller-retour (exécutante, puis audit, puis promotion sur captures) ne tient pas sûrement dans la journée.
+   - **Mon banc** : une copie de ton hub, ton poste, une tablette en deux moitiés et une tablette à un seul élève, et une séance entière de ta 3e de demain. Je mesure aussi la question 3 (6 choix) sur une demi-tablette de 1 280 × 800.
+   - **Si ce n'est pas promu ce soir**, demain se fait avec l'app actuelle, un élève par tablette.
+   - **J'ai besoin de tes heures de QCM demain** (quelle 4e, quelle 3e, à quelle heure) pour caler la promotion et tes tests.
+
+08/10/2026 06:39 MEMO
+
+---

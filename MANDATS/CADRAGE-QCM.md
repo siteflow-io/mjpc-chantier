@@ -3,7 +3,7 @@
 
 **Ce que ça change pour la classe** : deux élèves par tablette, qui répondent l'un après l'autre sans voir la réponse de l'autre ; des temps de réflexion et de réponse réglés question par question ; une séance (questions + correction) qui tient dans 45 minutes ; la console de Paul, qui pilote la séance, lisible d'abord.
 
-**État au 08/10, 09:45** : Paul a répondu de 1 à 27 (tour 559) ; à 65, 67, 68, 70-73, 74-82 (tour 560) ; à 28 à 44, 58 à 62 (son « 62 » = 74), 65, 76, 96, 101 (tour 561). Questions ouvertes après le tour 561 : 106, 108, 109, 112, 114, 115, 117, 120, 121, 127 ; captures de la console (73). Retirés : 44 (122), 89 (127), le prompt de transition (128). Sans objet : 45 à 50. 51 à 54 : production fermée, geste de Paul (53).
+**État au 08/10, 10:45** : réponses de Paul aux tours 559 à 562. Questions ouvertes après le tour 562 : 106, 112 (forme du récapitulatif), 114 → remplacé par 140-146, 115, 117, 120, 121, 127, 143, 144, 145, 146, 148 ; captures de la console (73) avec l'inventaire « tout visible » (147-148). Retirés : 44 (122), 89 (127), le prompt de transition (128), la suppression de la saisie papier (114, abandonnée au tour 562). Sans objet : 45 à 50. 51 à 54 : production fermée, geste de Paul (53).
 
 ---
 
@@ -474,3 +474,53 @@ Voici l'évaluation :
 129. **Pour demain, le nouveau système ne sera pas en classe.** Le cadrage a encore des points ouverts dans ce message (106, 108, 109, 112, 114, 115, 117, 120, 121, 127), plus les captures de ta console (73). Ensuite viennent le mandat, les livraisons, l'audit, puis la promotion, qui reste fermée de mon côté (53).
 
 130. **Registre** : la dette 185 reçoit les règles du prompt (123), et la dette 186 les niveaux de maîtrise (107, 108). Quatre dettes sont ajoutées : 192, un seul compte de points et le récapitulatif ; 193, la saisie papier, le score « officiel » et le scan, jamais utilisés ; 194, le raccourci MJPC en « 1 élève », commun à la dictée et au QCM ; 195, les lettres dans deux ordres. Tout est au sas, puisque la production est toujours fermée : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/DETTES-QCM-179-184-A-REPORTER.md
+
+---
+
+## Tour 562 — réponses de Paul (08/10, 10:38), mot pour mot
+
+> 108. Les bornes portent sur la note finale. Que ce soit 20 ou autre. 109. Ok. 110. Oui effectivement, mais il faut me réexpliquer le principe et surtout je dois avoir un suivi de ça. Sinon je suis aveugle sur ce que font les élèves et je ne sais pas s'ils ont des bugs ou pas . Par comparaison avec correction dictée ça pourrait être en fait la phase d'autocorrection de dictée ( saisie papier sur évaluation qcm = phase d'autocorrection dictée onglet suivi , tu comprends?)111 et 112. Ok oui. La note finale en points totaux et le prorata sur 20. Le gros point à cadrer reste l'histoire du papier. Regarde mes explications pédagogiques à l'instance qui a codé cette partie. Et surtout, la première chose c'est de le faire apparaître vraiment dans la console. Comme tout. Une fonctionnalité = un visuel, un bouton, un champ, etc. Tout visible.
+
+## Tour 562 — suite (points 131 à 149)
+
+131. **Sur 108 : c'est retenu.** Les bornes des niveaux de maîtrise portent sur la note finale, quelle que soit son échelle. Dans Réglages, l'échelle se règle (« Note sur : 20 », modifiable), et les bornes s'écrivent sur cette échelle.
+
+132. **Sur 109** : c'est retenu.
+
+133. **Sur 111 et 112 : c'est retenu.** La note finale est donnée en points totaux, puis ramenée au prorata sur 20 (ou sur l'échelle de 131).
+
+**Le papier**
+
+134. **Ce que j'ai retrouvé de tes explications.** Je n'ai pas retrouvé la conversation où la saisie papier a été codée : elle existait déjà le 08/05. Si tu en as le titre, je la lis en entier. J'ai retrouvé trois choses. D'abord ton cadrage du « projet 1 », recopié le 08/05 dans la conversation « app de révision prompt » (https://claude.ai/chat/034ade42-aa87-482c-9c3a-058b68f64f2a) : « correction stylo vert/rouge en fin de séance, scan + saisie élève à domicile + correction app ». Le « à la maison » vient donc de ce cadrage, et l'app l'a repris tel quel. Ensuite ta philosophie du 08/05 (conversation « MJPC prompt », https://claude.ai/chat/e3e4b968-615f-4171-94d8-fd84b4939f66) : le papier est roi pour la production et le numérique pour le retour ; tu n'écris jamais sur la copie, c'est l'élève qui l'annote ; la note ne se débloque qu'après ce travail. Enfin le mode d'emploi de l'app : « Évaluer ce que l'élève sait vraiment, sans qu'il puisse se reposer sur la reconnaissance des choix. »
+
+135. **Le principe, réexpliqué en six temps.** Un : pendant la réflexion, l'élève écrit sa réponse en entier sur sa feuille, sans voir les choix. Deux : pendant la réponse, il pose son stylo et touche la lettre qui correspond à ce qu'il a écrit. Trois : à la correction en classe, il corrige sa feuille au stylo, comme l'app le lui dit (« V vert » si c'est juste ; sinon, il barre en rouge et écrit la bonne réponse en vert). Quatre : après la séance, la saisie ; pour chaque question, il indique dans l'app ce que sa feuille disait, et c'est ce qui lui ouvre ses résultats détaillés. Cinq : l'app compare alors la feuille et la tablette, question par question, et l'écart (« j'ai touché B, mais j'avais écrit C ») devient l'objet de son travail. Six : la note officielle, c'est la feuille, plus le point gardé quand la tablette était juste et la feuille fausse, où l'app voit une erreur de recopie.
+
+136. **Ta comparaison avec la dictée tient.** En dictée, tu corriges la copie, l'élève retrouve ses erreurs pendant l'autocorrection, puis la note s'ouvre. En QCM, l'élève a écrit sa feuille, il retrouve ce qu'il avait écrit pendant la saisie, puis ses résultats et sa note s'ouvrent. Mais en dictée, tu as l'onglet Suivi ; en QCM, tu n'as rien.
+
+137. **Mesuré : ce que ta console montre aujourd'hui de la saisie**, c'est seulement après coup, dans Données → Résultats → la séance : une colonne « Papier », une colonne « Officiel » et l'écart. Rien ne montre qui a commencé, qui est bloqué, ni quand.
+
+138. **Mesuré : trois défauts, qui expliquent peut-être qu'il n'y ait eu que 4 saisies en tout.** Le premier : la saisie ne s'enregistre qu'au bouton « Envoyer » ; avant, rien n'est gardé, et un rechargement efface tout. Le deuxième : après « Envoyer », l'app recharge la page ; comme l'élève n'est gardé que dans la page, il retombe sur « Choisis ta classe » (ou sur l'accueil, par le raccourci MJPC) au lieu de voir ses résultats. Le troisième : la saisie ne montre que les lettres, alors que sa feuille n'en porte pas, puisqu'il y a écrit ses réponses en entier ; il doit donc se souvenir de la lettre.
+
+139. **Mesuré : une contradiction sur la note officielle.** Ton mode d'emploi parle de « 1-2 questions isolées ». Le code, lui, garde sur **chaque** question le meilleur des deux (tablette ou feuille), sans aucune limite. Et cette note officielle compte les bonnes réponses, pas les points de 111 (1, 2, 3 ou 4 selon le niveau). Cela fait encore deux comptes différents.
+
+140. **Ma proposition : la saisie devient une phase visible, comme l'autocorrection de la dictée.** Tu la lances depuis ta console. Chaque QCM a un onglet Suivi, avec une ligne par élève : « pas commencé », « en cours (n questions sur N) » ou « envoyée à 10 h 12, en 6 min », le nombre d'écarts entre sa feuille et sa tablette, et sa note. Le Suivi se met à jour en direct, sans rechargement, et montre aussi les absents et les élèves partis.
+
+141. **Pour que ce Suivi existe** : chaque geste de la saisie s'enregistre aussitôt (plus rien n'attend la fin) ; l'élève reprend où il en était ; après l'envoi, ses résultats s'ouvrent sans rechargement (138).
+
+142. **La saisie montre le texte des choix**, dans l'ordre que l'élève a vu (97, 117). Il retrouve, d'après ce qu'il a écrit en entier, le choix qui correspond. C'est le vrai travail de la saisie.
+
+143. **À trancher : le moment de la saisie.** Ma proposition : en classe, juste après la correction, sur les tablettes, comme l'autocorrection de la dictée. Tu vois le Suivi en direct et tu repères aussitôt un élève bloqué ou un défaut. Ensuite, la saisie reste ouverte jusqu'à une date, pour les absents.
+
+144. **À trancher : la règle de la note officielle.** Ma proposition : la note, c'est la feuille, en points (111). S'y ajoute le point gardé quand la tablette est juste et la feuille fausse, sur 2 questions au plus, comme le dit ton mode d'emploi ; au-delà, la feuille fait foi. Quand la feuille est juste et la tablette fausse, la feuille compte, et l'élève honnête ne perd rien.
+
+145. **Une tension entre 112 et le principe du papier.** En 112, l'élève voit son récapitulatif « à la fin de l'évaluation ». Or ton principe dit que la note ne s'ouvre qu'après le travail sur la copie. Ma proposition : à la fin de la séance, pas de note, mais la phrase « Ta note s'ouvrira quand tu auras fait ta saisie » ; le récapitulatif de 112 vient après la saisie, avec la note officielle.
+
+146. **À trancher : l'élève qui ne fait pas sa saisie.** Ma proposition : sa note reste celle de la tablette, marquée « sans saisie » dans ton Suivi, pour que tu décides.
+
+**« Une fonctionnalité = un visuel »**
+
+147. **Mesuré : ce qui n'a aujourd'hui aucune place visible dans ta console** : la saisie papier et la note officielle (seulement dans un tableau, après coup) ; les durées des niveaux (seulement repliées, une fois la séance lancée) ; la pondération (dans Sauvegarde) ; la réouverture pour un élève (un clic sur sa bulle, sans bouton ni indication) ; le scan des copies (dans la fiche d'un élève). Côté élève, ses évaluations sont dans deux listes différentes : « Mes évaluations » et « Tes évaluations passées ».
+
+148. **Ma proposition, pour 147** : avant le mandat, je fais l'inventaire complet de l'app. Pour chaque fonction, je relève où elle se voit dans ta console et par quel bouton ou quel champ. Les captures de ta console (73) montrent ensuite chacune à sa place. Rien ne part au mandat sans sa place visible.
+
+149. **Registre.** J'ai mis à jour quatre dettes : 186 (les bornes sur la note finale, l'échelle réglable) ; 192 (les points et le prorata) ; 193 (la saisie papier n'est plus à retirer : elle devient une phase avec son Suivi, et ses trois défauts sont mesurés) ; 189 (le texte des choix dans la saisie). J'en ai ajouté deux : 196, la note officielle (contradiction 139) ; 197, tout visible dans la console (147). Tout est au sas, la production est toujours fermée : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/DETTES-QCM-179-184-A-REPORTER.md

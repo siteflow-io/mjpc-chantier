@@ -1138,6 +1138,47 @@ html{height:auto!important}
 body.vue-console{height:auto!important;min-height:100vh;overflow:visible!important}
 body.vue-tablette{height:100vh}
 
+/* ══ Tour 600 : chrono de la saisie, Révéler fermé, compétences fines ══ */
+.moitie .eleve-chrono.saisie{padding:.35rem;margin:.35rem 0 .2rem}
+.moitie .eleve-chrono.saisie .v{font-size:2.2rem}
+.eleve-chrono.saisie-vert{background:linear-gradient(135deg,#22C55E,#15803D)}
+.eleve-chrono.saisie-orange{background:linear-gradient(135deg,#FB923C,#EA580C)}
+.eleve-chrono.saisie-rouge{background:linear-gradient(135deg,#EF4444,#B91C1C)}
+.m-pasdit{background:#FEE2E2!important;color:#B91C1C!important;box-shadow:inset 0 0 0 2px #EF4444}
+.m-pasdit .st{background:#fff;color:#B91C1C;border:1px solid #EF4444}
+.saisie-carte{margin-top:.7rem;border-color:#EA580C!important;background:linear-gradient(135deg,#FFF7ED,#fff)!important}
+.saisie-carte .label.actif{color:#EA580C!important}
+.saisie-carte .v{color:#EA580C}
+.saisie-carte .desc{color:#9A3412!important}
+.btn.ferme{opacity:.45;cursor:not-allowed}
+.manquent{margin-top:.6rem;padding:.6rem .8rem;border:2px solid #EF4444;background:#FEF2F2;border-radius:12px;font-size:.84rem}
+.manquent .tt{font-weight:900;color:#B91C1C}
+.manquent .noms{font-weight:800;color:#B91C1C;margin:.25rem 0}
+.manquent .ss{color:var(--gris)}
+.info-i{position:relative}
+.info-i.ouvert .info-tip{display:block;width:380px;left:auto;right:-190px;transform:none;text-align:left}
+.info-i.ouvert .info-tip::before{display:none}
+.recap-comp{display:block;font-size:.7rem;color:var(--gris);font-weight:600;margin-top:1px}
+.comp-q{display:block;font-size:.72rem;color:var(--gris);font-weight:700;margin-top:1px}
+.comp-det{font-size:.68rem;color:var(--gris);font-weight:700;margin-top:2px;white-space:nowrap}
+.scoresheet th.comp-col,.bilan-classe-table th.comp-col{min-width:170px;text-align:left}
+.thq{font-size:.62rem;font-weight:600;opacity:.92;text-transform:none;letter-spacing:0;margin-top:1px}
+.scoresheet td.comp-cell{text-align:left}
+.scoresheet .maitrise-pill,.bilan-classe-table .maitrise-pill{font-size:.68rem}
+.par-comp{margin:.2rem 0 .5rem}
+.par-comp .pc-t{font-size:.8rem;font-weight:800;color:var(--violet);margin-bottom:.25rem}
+.par-comp .pc-d{margin:0}
+.par-comp .pc-d .bilan-classe-distrib-cell{padding:.4rem .3rem}
+.par-comp .pc-d .bilan-classe-distrib-cell strong{font-size:1.2rem}
+.fiche-comp{font-size:.7rem;color:var(--violet);font-weight:800;margin-top:2px}
+.fiche-comps{margin-top:.6rem;background:#fff;border-radius:8px;padding:.5rem .7rem}
+.fiche-comps .tt{font-weight:900;color:var(--violet);font-size:.88rem;margin-bottom:.3rem}
+.fiche-comp-l{display:grid;grid-template-columns:7.5rem 1fr 11rem 12rem;gap:.5rem;align-items:center;font-size:.82rem;padding:.25rem 0;border-top:1px solid var(--bordure)}
+.fiche-comp-l .c{font-weight:900;color:var(--violet)}
+.fiche-comp-l .d{font-weight:800;color:var(--gris)}
+.moitie .decl-consigne{line-height:1.4;margin-bottom:.5rem}
+.moitie .eleve-chrono.saisie{margin-top:.5rem}
+
 </style>
 </head>
 <body>
@@ -1148,7 +1189,7 @@ body.vue-tablette{height:100vh}
 var h = React.createElement, F = React.Fragment;
 var DECO = ["⭐","🎯","✨","💡","🎲","🔥"];
 function P(t){ return h("span", {className:"prov"}, t); }          // texte provisoire (mots à donner par Paul)
-function InfoI(){ return h("span", {className:"info-i"}, "i"); }
+function InfoI(texte, ouvert){ return h("span", {className:"info-i" + (ouvert ? " ouvert" : "")}, "i", texte ? h("span", {className:"info-tip"}, texte) : null); }
 
 var CLASSE = "3 ESSAI";
 var EV = {titre:"Évaluation d'essai — 3 questions", mode:"strict", questions:[
@@ -1164,6 +1205,14 @@ var COMP = {
   "c4-culture-01":"Mobiliser des références culturelles pour interpréter les textes…",
   "c4-lire-01":"Contrôler sa compréhension, devenir un lecteur autonome"
 };
+var COMP_COURT = {"c4-culture-01":"Mobiliser des références culturelles…", "c4-lire-01":"Contrôler sa compréhension…"};
+function compQuestions(c){ var l = []; EV.questions.forEach(function(q, i){ if(q.competences.indexOf(c) >= 0) l.push(i); }); return l; }
+var COMPS = ["c4-culture-01", "c4-lire-01"];
+function niveauComp(r, c){ var x = r.comp[c]; return maitriseDe(x.n * 20 / x.max); }
+function detailComp(r, c){ return compQuestions(c).map(function(i){ return "Q" + (i+1) + " " + marque(r.st[i]); }).join(" · "); }
+function PillComp(r, c){ var m = niveauComp(r, c); return h("span", null, h("span", {className:"maitrise-pill " + m.cls}, m.em + " " + m.lib), h("div", {className:"comp-det"}, detailComp(r, c))); }
+function EnteteComp(c){ return h("th", {key:c, className:"comp-col"}, "🧩 " + c, h("div", {className:"thq"}, COMP_COURT[c] + " · " + compQuestions(c).map(function(i){ return "Q" + (i+1); }).join(", "))); }
+function marque(s){ return s === "j" ? "✓" : s === "t" ? "＋" : "✗"; }
 var MAITRISE = [
   {k:"vert", em:"🟢", lib:"Très bonne maîtrise", cls:"mt-vert"},
   {k:"bleu", em:"🔵", lib:"Maîtrise satisfaisante", cls:"mt-bleu"},
@@ -1178,7 +1227,7 @@ var J = {cle:"J", nom:"ABRIAL Julien", prenom:"Julien"};
 var M = {cle:"M", nom:"DUVERNAY Michel", prenom:"Michel"};
 var ORD = [ {J:[0,1,2,3], M:[3,2,0,1]}, {M:[0,1,2,3], J:[1,0,3,2]}, {J:[0,1,2,3], M:[3,2,1,0]} ];   // ordre vu par chacun (74, 329)
 var PREMIER = ["J","M","J"];                                                                   // alternance (25)
-var TABL = {J:[[2],[0,2],[0]], M:[[3],[0,1,2],[2]]};                                           // ce qu'ils touchent sur la tablette
+var TABL = {J:[[2],[0,2],[0]], M:[[3],[0,1,2],[2]]};                                           // ce sur quoi ils cliquent sur la tablette
 var FEUI = {J:[[2],[0],[0]], M:[[2],[0,1,2],"aucun"]};                                         // ce que dit leur feuille
 
 /* ── La classe (24 présents, Adam absent) ── */
@@ -1191,7 +1240,7 @@ function pre(n){ return n ? n.split(" ").slice(1).join(" ") : ""; }
 var RT = {Julien:"JJF", Michel:"FYF", "Léa":"JJJ", Tom:"FOJ", "Inès":"JJJ", Hugo:"JYJ", Manon:"JJF", Nathan:"JOJ", "Chloé":"JJJ", Louis:"JOJ", Emma:"JJJ", Noah:"JFF",
   "Zoé":"JJJ", Sacha:"FOF", Jade:"JYJ", Enzo:"JOF", Lina:"JJJ", Malo:"JFJ", Anna:"JOF", Rayan:"JYF", Clara:"JJJ", Camille:"JOF", "Théo":"JOJ", Lou:"JYF"};
 // feuille, dite à la correction : J juste, F faux, A « aucun de ces choix », - rien dit avant la révélation
-var RF = {Julien:"JFF", Michel:"JFA", "Léa":"JJJ", Tom:"FFJ", "Inès":"JJJ", Hugo:"JFJ", Manon:"JJF", Nathan:"JFJ", "Chloé":"JJJ", Louis:"JFJ", Emma:"JJJ", Noah:"JF-",
+var RF = {Julien:"JFF", Michel:"JFA", "Léa":"JJJ", Tom:"FFJ", "Inès":"JJJ", Hugo:"JFJ", Manon:"JJF", Nathan:"JFJ", "Chloé":"JJJ", Louis:"JFJ", Emma:"JJJ", Noah:"JFF",
   "Zoé":"JFJ", Sacha:"FFF", Jade:"JFJ", Enzo:"AFF", Lina:"JJJ", Malo:"JFJ", Anna:"JFF", Rayan:"JFF", Clara:"JJJ", Camille:"JJF", "Théo":"JFF", Lou:"JFJ"};
 var ESTIM = {Julien:"bleu", Michel:"vert"};
 var ORDRE_CORR = [1, 2, 0];   // la correction commence par la question la plus ratée sur les tablettes (l'app d'aujourd'hui)
@@ -1276,10 +1325,10 @@ function EcrBinome(e, code){
 }
 var ATTEST = [
   "Pour chaque question, tu écris d'abord ta réponse en entier sur ta feuille, sans voir les choix.",
-  "Quand « POSE TON STYLO » s'affiche, tu poses ton stylo. Chacun votre tour, vous touchez votre réponse sur la tablette ; l'autre ne regarde pas.",
-  "C'est ce que tu as écrit qui fait foi. À la correction, avant de voir la réponse, tu touches ce qui est écrit sur ta feuille. Si c'est faux à l'écrit, le point ne t'est pas compté.",
+  "Quand « POSE TON STYLO » s'affiche, tu poses ton stylo. Chacun votre tour, vous cliquez sur votre réponse ; l'autre ne regarde pas.",
+  "C'est ce que tu as écrit qui fait foi. À la correction, avant de voir la réponse, tu cliques sur le ou les choix qui disent la même chose que ta feuille. Les mots ne sont pas forcément les mêmes : c'est à toi de faire le rapprochement. Si c'est faux à l'écrit, le point ne t'est pas compté.",
   "Chaque question vaut 1 point.",
-  "Les choix t'aident, par rapport à une question sans choix : on te laisse une chance. Une fois par évaluation, si ta feuille est fausse mais que tu as touché exactement la bonne réponse sur la tablette, la question compte quand même : elle est « Trouvée au dernier moment ».",
+  "Les choix t'aident, par rapport à une question sans choix : on te laisse une chance. Une fois par évaluation, si ta feuille est fausse mais que tu as cliqué sur exactement la bonne réponse, la question compte quand même : elle est « Trouvée au dernier moment ».",
   "Je ramasse les feuilles à la fin."
 ];
 function EcrAttest(e, coche){
@@ -1354,7 +1403,11 @@ function pastillesDe(e, nbRev){
     return s === "j" ? {cls:"juste", t:"✅"} : s === "t" ? {cls:"trouvee-p", t:"＋"} : s === "pasdit" ? {cls:"nonrep", t:"⚪"} : {cls:"faux", t:"❌"};
   });
 }
-function EcrCorr(e, qi, etape){   // etape : "vide" | "dit" | "revele"
+function ChronoSaisie(v, total){
+  var c = v <= 5 ? "rouge" : v <= total / 2 ? "orange" : "vert";
+  return h("div", {className:"eleve-chrono saisie saisie-" + c}, h("div", {className:"label"}, "Temps de réponse"), h("div", {className:"v"}, v));
+}
+function EcrCorr(e, qi, etape, chrono){   // etape : "vide" | "dit" | "revele"
   var q = EV.questions[qi], ordre = ORD[qi][e.cle], decl = FEUI[e.cle][qi], tab = TABL[e.cle][qi];
   var pos = ORDRE_CORR.indexOf(qi);
   var nbRev = pos + (etape === "revele" ? 1 : 0);
@@ -1367,7 +1420,8 @@ function EcrCorr(e, qi, etape){   // etape : "vide" | "dit" | "revele"
     var dit = etape === "dit";
     zone = h(F, null,
       h("div", {className:"decl-titre"}, P("Qu'as-tu écrit sur ta feuille ?")),
-      h("div", {className:"decl-consigne"}, P("Touche ce qui est écrit sur ta feuille, pas ce que tu crois juste.")),
+      h("div", {className:"decl-consigne"}, P("Clique sur le ou les choix qui disent la même chose que ta feuille. Les mots ne sont pas forcément les mêmes : c'est à toi de faire le rapprochement.")),
+      chrono != null && ChronoSaisie(chrono, q.reponse),
       h("div", {className:"eleve-choix"},
         ordre.map(function(i){ return h("button", {key:i, className:"eleve-choix-btn" + (dit && declArr.indexOf(i) >= 0 ? " selected" : "")}, h("span", null, q.choix[i])); }),
         h("button", {className:"eleve-choix-btn aucun" + (dit && decl === "aucun" ? " selected" : "")}, P("Ma feuille ne dit aucun de ces choix"))),
@@ -1377,7 +1431,7 @@ function EcrCorr(e, qi, etape){   // etape : "vide" | "dit" | "revele"
     var juste = st === "j", trouvee = st === "t";
     zone = h(F, null,
       trouvee ? h("div", {className:"trouvee"}, h("span", {className:"plus"}, "+"),
-          h("span", null, "Trouvée au dernier moment", h("span", {className:"sous"}, P("Ta feuille disait autre chose, mais tu as touché la bonne réponse sur la tablette : la question compte. Cela n'arrive qu'une fois par évaluation."))))
+          h("span", null, "Trouvée au dernier moment", h("span", {className:"sous"}, P("Ta feuille disait autre chose, mais tu as cliqué sur la bonne réponse : la question compte. Cela n'arrive qu'une fois par évaluation."))))
         : h("div", {className:"correction-resultat " + (juste ? "juste" : "faux")}, juste ? "✅ Tu avais juste !" : "❌ Tu avais faux."),
       h("div", {className:"correction-choix"}, ordre.map(function(i){
         var bon = q.bonnes.indexOf(i) >= 0, moi = declArr.indexOf(i) >= 0;
@@ -1388,7 +1442,7 @@ function EcrCorr(e, qi, etape){   // etape : "vide" | "dit" | "revele"
           moi && h("span", {className:"correction-tag tag-tienne"}, "Ta réponse")));
       })),
       decl === "aucun" && h("div", {className:"tablette-ligne"}, "Ta réponse : ", P("Ma feuille ne dit aucun de ces choix")),
-      trouvee && h("div", {className:"tablette-ligne"}, P("Sur la tablette, tu avais touché : " + tab.map(function(i){ return q.choix[i]; }).join(", "))),
+      trouvee && h("div", {className:"tablette-ligne"}, P("Sur la tablette, tu avais cliqué sur : " + tab.map(function(i){ return q.choix[i]; }).join(", "))),
       h("div", {className:"correction-consigne " + (juste ? "juste" : "faux")}, juste
         ? h(F, null, h("strong", null, "✅ Bravo ! "), "Sur ta feuille, mets simplement un ", h("span", {className:"stylo-vert"}, "V vert"), " dans la marge à côté de ta réponse.")
         : h(F, null, !trouvee && h("strong", null, "❌ Tu avais faux. "), h("span", {className:"stylo-rouge"}, "Barre ta réponse en rouge"), " et écris la bonne réponse en entier en ", h("span", {className:"stylo-vert"}, "vert"), " à côté.")),
@@ -1426,13 +1480,16 @@ function EcrBilan(e){
         var s = r.st[i];
         var txt = s === "j" ? "juste" : s === "t" ? null : s === "a" ? "ta feuille ne dit aucun de ces choix" : "faux";
         return h("div", {key:i, className:"recap-l " + (s === "j" || s === "t" ? "j" : "f")},
-          h("span", null, "Question " + (i+1) + " · ", s === "t" ? h("span", {className:"plus"}, "＋ Trouvée au dernier moment") : P(txt)),
+          h("span", null, "Question " + (i+1) + " · ", s === "t" ? h("span", {className:"plus"}, "＋ Trouvée au dernier moment") : P(txt),
+            h("span", {className:"recap-comp"}, q.competences.map(function(c){ return COMP_COURT[c]; }).join(" · "))),
           h("span", {className:"pt"}, P("→ " + r.pts[i] + " point")));
       }))),
     h("div", {className:"bilan-bloc"}, h("h3", null, P("Tes compétences")),
       Object.keys(r.comp).map(function(c){
         var x = r.comp[c], s20 = x.n * 20 / x.max, mm = maitriseDe(s20);
-        return h("div", {key:c, className:"comp-l"}, h("span", null, COMP[c]), h("span", {className:"mt"}, mm.em + " ", P(mm.lib)));
+        return h("div", {key:c, className:"comp-l"},
+          h("span", null, COMP[c], h("span", {className:"comp-q"}, compQuestions(c).map(function(i){ return "Q" + (i+1) + " " + marque(r.st[i]); }).join(" · ") + " → " + x.n + "/" + x.max)),
+          h("span", {className:"mt"}, mm.em + " ", P(mm.lib)));
       })),
     h("div", {className:"bilan-calibration bilan-calib-" + calib.type},
       h("h3", null, "🎯 Ton estimation", InfoI()),
@@ -1637,7 +1694,7 @@ function etatCorrection(qi, revele, nonDit){
   return function(p){
     var r = calc(p), s = r.st[qi], flag = null;
     r.flags.forEach(function(f){ if(f.q === qi) flag = f.txt; });
-    if(!revele) return (nonDit.indexOf(p) >= 0 || s === "pasdit") ? {cls:"m-pasdit", st:"… pas encore"} : {cls:"m-dit", st:"✍️ a dit"};
+    if(!revele) return (nonDit.indexOf(p) >= 0) ? {cls:"m-pasdit", st:"⏳ pas encore cliqué"} : {cls:"m-dit", st:"✍️ a cliqué"};
     if(s === "pasdit") return {cls:"m-pasdit", st:"rien dit", flag:"pas de saisie"};
     if(s === "j") return {cls:"m-juste", st:"✓ 1 pt", flag:flag};
     if(s === "t") return {cls:"m-trouvee", st:"＋ Trouvée", flag:flag};
@@ -1652,14 +1709,15 @@ function aLire(jusqua){
 function nomDe(p){ var n = null; PAIRES.forEach(function(pp){ pp.forEach(function(x){ if(x && pre(x) === p) n = x; }); }); return n; }
 function PilotCorrection(qi, revele){
   var q = EV.questions[qi], pos = ORDRE_CORR.indexOf(qi);
-  var nonDit = revele ? [] : ["Tom", "Hugo", "Noah", "Sacha", "Rayan", "Théo"];
+  var nonDit = revele ? [] : ["Michel", "Tom", "Hugo", "Sacha", "Rayan", "Théo"];
   var nbDit = 24 - nonDit.length;
   var tabJ = Object.keys(RT).filter(function(p){ return RT[p][qi] === "J"; }).length;
   var res = Object.keys(RF).map(function(p){ return calc(p).st[qi]; });
   var nbF = res.filter(function(s){ return s === "j"; }).length, nbT = res.filter(function(s){ return s === "t"; }).length;
   var lire = revele ? aLire(pos) : aLire(pos - 1);
   return Console("pilotage", "pilot", h("div", {className:"card"},
-    TitreCarte(h(F, null, "📝 Correction — " + EV.titre + " — " + CLASSE, InfoI()), [h("button", {key:1, className:"btn btn-rouge btn-sm"}, "🛑 Terminer la session")]),
+    TitreCarte(h(F, null, "📝 Correction — " + EV.titre + " — " + CLASSE, InfoI("Pour chaque question, les élèves cliquent d'abord sur ce que dit leur feuille. « 💡 Révéler » s'ouvre quand tous les présents l'ont fait. Tu commentes la question après la révélation, jamais avant : sinon, ils cliqueraient ce que tu dis. Les questions sont triées de la plus ratée à la mieux réussie.", !revele && qi === 1)),
+      [h("button", {key:0, className:"btn btn-ghost btn-sm"}, "🚫 Départ d'un élève"), h("button", {key:1, className:"btn btn-rouge btn-sm"}, "🛑 Terminer la session")]),
     h("div", {className:"pilot-status correction"}, "Question " + (pos+1) + " / 3 — Q" + (qi+1)),
     h("div", {className:"corr-grid"},
       h("div", null,
@@ -1668,19 +1726,26 @@ function PilotCorrection(qi, revele){
           h("div", {className:"enonce"}, q.enonce),
           h("div", {className:"pilot-q-bonne"}, h("span", {style:{fontWeight:900}}, "✓ Bonne" + (q.bonnes.length > 1 ? "s" : "") + " réponse" + (q.bonnes.length > 1 ? "s" : "") + " : "), q.bonnes.map(function(i){ return q.choix[i]; }).join("  /  ")),
           h("div", {className:"niv-row"}, h("span", {className:"niv-bulle"}, "Difficulté : " + NIV[q.niveau].label), h("span", {className:"niv-bulle"}, tabJ + " / 24 justes sur la tablette (" + Math.round(tabJ * 100 / 24) + "%)"))),
+        !revele && h("div", {className:"pilot-chrono-card actif saisie-carte"},
+          h("div", {className:"label actif"}, "✍️ Temps pour cliquer sa feuille"),
+          h("div", {className:"v"}, "7s"),
+          h("div", {className:"desc"}, "sur " + q.reponse + " s, le temps de réponse de la question · orange à la moitié, rouge les 5 dernières secondes")),
         h("div", {className:"row", style:{marginTop:".8rem"}},
           h("button", {className:"btn btn-ghost", disabled:pos <= 0}, "← Question précédente"),
-          h("button", {className:"btn " + (revele ? "btn-ghost" : "btn-or")}, revele ? "💡 Révélée" : "💡 Révéler"),
+          h("button", {className:"btn " + (revele ? "btn-ghost" : "btn-or ferme"), disabled:!revele ? true : false}, revele ? "💡 Révélée" : "🔒 Révéler"),
           h("button", {className:"btn btn-primary"}, "Question suivante →")),
-        !revele && h("div", {className:"pilot-eleve-help"}, "Ceux qui n'ont rien touché quand tu révèles n'ont pas de saisie pour cette question : tu la fixeras d'après la feuille."),
+        !revele && h("div", {className:"manquent"},
+          h("div", {className:"tt"}, "« 💡 Révéler » s'ouvre quand les 24 présents ont cliqué. Il en manque " + nonDit.length + " :"),
+          h("div", {className:"noms"}, nonDit.map(function(p){ return nomDe(p); }).join(" · ")),
+          h("div", {className:"ss"}, "Une tablette en panne : « 🚫 Départ d'un élève », en haut ; il ne bloque plus, ses questions sortent du total et tu fixes sa note d'après sa feuille.")),
         lire.length > 0 && h("div", {className:"alire"}, h("div", {className:"tt"}, "📌 À lire sur les feuilles, ce soir (" + lire.length + ")"),
           lire.map(function(x, i){ return h("div", {key:i}, nomDe(x.p) + " — Q" + (x.q+1) + " : " + x.txt); }))),
       h("div", {className:"suivi-box"},
         h("h3", null, revele ? "✍️ Leur feuille, d'après ce qu'ils ont dit" : "✍️ Qu'ont-ils écrit sur leur feuille ?", InfoI()),
-        h("div", {className:"ss"}, revele ? ("Feuilles justes : " + nbF + " / 24 · Trouvées au dernier moment : " + nbT) : (nbDit + " / 24 ont dit leur feuille — " + (24 - nbDit) + " pas encore")),
+        h("div", {className:"ss"}, revele ? ("Feuilles justes : " + nbF + " / 24 · Trouvées au dernier moment : " + nbT) : (nbDit + " / 24 ont cliqué sur ce que dit leur feuille — " + (24 - nbDit) + " pas encore")),
         GrilleTablettes(PAIRES, etatCorrection(qi, revele, nonDit)),
         Legende(revele ? [["#22C55E","juste d'après la feuille"],["#EF4444","faux d'après la feuille"],["#16A34A","＋ Trouvée au dernier moment"],["#FFEDD5","à lire sur la feuille","1px solid #FDBA74"]]
-                       : [["#EDE9FE","a dit sa feuille"],["#fff","pas encore","1px dashed #64748B"]])))), true);
+                       : [["#EDE9FE","a cliqué"],["#FEE2E2","pas encore cliqué","1px solid #EF4444"]])))), true);
 }
 
 function tauxQ(qi){ var ok = 0, n = 0; Object.keys(RF).forEach(function(p){ var x = calc(p).pts[qi]; if(x != null){ n++; ok += x; } }); return Math.round(ok * 100 / n); }
@@ -1702,6 +1767,14 @@ function BilanClasse(){
       h("div", null,
         h("h3", {style:{marginTop:".4rem"}}, "📊 Distribution", InfoI()),
         h("div", {className:"bilan-classe-distrib"}, MAITRISE.map(function(m){ return h("div", {key:m.k, className:"bilan-classe-distrib-cell fourchette-" + m.k}, h("strong", null, dist[m.k]), h("span", null, m.em + " " + m.lib)); })),
+        h("h3", null, "🧩 Par compétence", InfoI()),
+        COMPS.map(function(c){
+          var d = {vert:0, bleu:0, orange:0, rouge:0};
+          lignes.forEach(function(l){ d[niveauComp(l.r, c).k]++; });
+          return h("div", {key:c, className:"par-comp"},
+            h("div", {className:"pc-t"}, c + " · " + COMP_COURT[c] + " · " + compQuestions(c).map(function(i){ return "Q" + (i+1); }).join(", ")),
+            h("div", {className:"bilan-classe-distrib pc-d"}, MAITRISE.map(function(m){ return h("div", {key:m.k, className:"bilan-classe-distrib-cell fourchette-" + m.k}, h("strong", null, d[m.k]), h("span", null, m.em + " " + m.lib)); })));
+        }),
         h("h3", null, "🎯 Calibration de l'autoévaluation", InfoI()),
         h("div", {className:"bilan-classe-calib"},
           h("div", {className:"bilan-classe-calib-cell calib-ok"}, h("strong", null, 11), h("span", null, "✅ Bien évalués")),
@@ -1714,13 +1787,14 @@ function BilanClasse(){
           h("div", {className:"bilan-classe-insight insight-felicitations"}, h("div", {className:"bilan-classe-insight-titre"}, "🟢 La mieux réussie — Q1 (" + tauxQ(0) + "% de réussite)"), h("div", {className:"bilan-classe-insight-enonce"}, EV.questions[0].enonce)))),
       h("div", null,
         h("div", {className:"alire", style:{marginTop:".4rem"}}, h("div", {className:"tt"}, "📌 À lire sur les feuilles, ce soir (" + lire.length + ")"),
-          lire.map(function(x, i){ return h("div", {key:i}, nomDe(x.p) + " — Q" + (x.q+1) + " : " + x.txt); })),
-        h("h3", null, "👥 Détail par élève (trié par note)", InfoI()),
-        h("div", {className:"bilan-classe-table-wrap"}, h("table", {className:"bilan-classe-table"},
-          h("thead", null, h("tr", null, ["Élève", "Note", "Sur 20", "Maîtrise"].map(function(t){ return h("th", {key:t}, t); }))),
-          h("tbody", null, lignes.map(function(l){ var m = maitriseDe(l.r.sur20);
-            return h("tr", {key:l.p}, h("td", null, l.nom), h("td", null, l.r.complet ? l.r.n + " / 3" : "Q3 à fixer"), h("td", null, l.r.complet ? fr1(l.r.sur20) : "—"),
-              h("td", null, l.r.complet ? h("span", {className:"maitrise-pill " + m.cls}, m.em + " " + m.lib) : "—")); }))))))), true);
+          lire.map(function(x, i){ return h("div", {key:i}, nomDe(x.p) + " — Q" + (x.q+1) + " : " + x.txt); })))),
+    h("h3", null, "👥 Détail par élève (trié par note)", InfoI()),
+    h("div", {className:"bilan-classe-table-wrap"}, h("table", {className:"bilan-classe-table"},
+      h("thead", null, h("tr", null, ["Élève", "Note", "Sur 20", "Maîtrise de la note"].map(function(t){ return h("th", {key:t}, t); }), COMPS.map(EnteteComp))),
+      h("tbody", null, lignes.map(function(l){ var m = maitriseDe(l.r.sur20);
+        return h("tr", {key:l.p}, h("td", null, l.nom), h("td", null, l.r.n + " / 3"), h("td", null, fr1(l.r.sur20)),
+          h("td", null, h("span", {className:"maitrise-pill " + m.cls}, m.em + " " + m.lib)),
+          COMPS.map(function(c){ return h("td", {key:c}, PillComp(l.r, c)); })); }))))), true);
 }
 
 /* Le soir : Données → Résultats → la séance */
@@ -1731,7 +1805,8 @@ function Resultats(fiche, modale, sansTableau){
     h("thead", null, h("tr", null,
       h("th", {className:"eleve-col"}, "Élève", h("span", {className:"sort-arrow"}, "↕")),
       EV.questions.map(function(q, i){ return h("th", {key:i, title:q.enonce}, "Q" + (i+1)); }),
-      h("th", null, "Note", h("span", {className:"sort-arrow"}, "↕")), h("th", null, "Sur 20"), h("th", null, "Maîtrise"),
+      h("th", null, "Note", h("span", {className:"sort-arrow"}, "↕")), h("th", null, "Sur 20"), h("th", null, "Maîtrise de la note"),
+      COMPS.map(EnteteComp),
       h("th", null, "À lire sur la feuille", h("span", {className:"sort-arrow"}, "↕")))),
     h("tbody", null, lignes.map(function(l){
       var m = maitriseDe(l.r.sur20);
@@ -1743,6 +1818,7 @@ function Resultats(fiche, modale, sansTableau){
         h("td", {className:"score-cell"}, l.r.complet ? l.r.n + "/3" : "—"),
         h("td", {className:"score-cell"}, l.r.complet ? fr1(l.r.sur20) : "—"),
         h("td", null, l.r.complet ? h("span", {className:"maitrise-pill " + m.cls}, m.em + " " + m.lib) : "à fixer"),
+        COMPS.map(function(c){ return h("td", {key:c, className:"comp-cell"}, PillComp(l.r, c)); }),
         h("td", {className:"alire-cell" + (l.r.flags.length ? "" : " vide")}, l.r.flags.map(function(f){ return "Q" + (f.q+1) + " : " + f.txt; }).join(" · ")));
     }))));
   var r = calc("Michel");
@@ -1757,18 +1833,20 @@ function Resultats(fiche, modale, sansTableau){
       var tJ = JSON.stringify(t.slice().sort()) === JSON.stringify(q.bonnes.slice().sort());
       return h("div", {key:qi, className:"fiche-q"},
         h("span", {className:"num"}, "Q" + (qi+1)),
-        h("span", null, q.enonce, fl && h("div", null, h("span", {className:"flag"}, fl.txt))),
+        h("span", null, q.enonce, h("div", {className:"fiche-comp"}, "🧩 " + q.competences.join(" · ")), fl && h("div", null, h("span", {className:"flag"}, fl.txt))),
         h("span", {className:"val " + (s === "j" ? "j" : "f")}, txt(f)),
         h("span", {className:"val " + (tJ ? "j" : "f")}, txt(t)),
         h("span", {className:"val"}, txt(q.bonnes)),
         h("span", {className:"pts"}, r.pts[qi] + " pt"),
         h("button", {className:"btn btn-ghost btn-sm"}, "La feuille dit autre chose"));
     }),
-    h("div", {style:{marginTop:".6rem", fontSize:".84rem"}}, h("strong", null, "Compétences : "), "c4-culture-01 🔵 Maîtrise satisfaisante · c4-lire-01 🔴 Maîtrise insuffisante"));
+    h("div", {className:"fiche-comps"}, h("div", {className:"tt"}, "🧩 Ses compétences"),
+      COMPS.map(function(c){ var m = niveauComp(r, c), x = r.comp[c];
+        return h("div", {key:c, className:"fiche-comp-l"}, h("span", {className:"c"}, c), h("span", null, COMP[c]), h("span", {className:"d"}, detailComp(r, c) + " → " + x.n + "/" + x.max), h("span", {className:"maitrise-pill " + m.cls}, m.em + " " + m.lib)); })));
   var mod = modale && h("div", {className:"checkin-overlay"},
     h("div", {className:"checkin-modal", style:{maxWidth:"460px"}},
       h("div", {className:"checkin-header"}, h("h3", null, "Que dit la feuille ?"), h("div", {className:"checkin-sub"}, "DUVERNAY Michel — Q3 · " + EV.questions[2].enonce)),
-      h("div", {style:{padding:".6rem 1.2rem 0", fontSize:".85rem", color:"var(--gris)"}}, "Michel a dit : « Ma feuille ne dit aucun de ces choix ». Touche ce que dit sa feuille."),
+      h("div", {style:{padding:".6rem 1.2rem 0", fontSize:".85rem", color:"var(--gris)"}}, "Michel a cliqué sur « Ma feuille ne dit aucun de ces choix ». Clique sur ce que dit sa feuille."),
       h("div", {className:"qdf-choix"},
         EV.questions[2].choix.map(function(c, i){ return h("div", {key:i, className:"qdf-c"}, h("span", null, c), h("span", {className:"tg"}, EV.questions[2].bonnes.indexOf(i) >= 0 ? "bonne réponse" : "")); }),
         h("div", {className:"qdf-c aucun sel"}, h("span", null, "Aucun des choix"), h("span", {className:"tg"}, "ce qu'il a dit"))),
@@ -1836,11 +1914,11 @@ var SCENES = [
   {id:"c-estim", vue:"console", render:function(){ return PilotEstimation(); }},
   // Correction : Q2, puis Q3, puis Q1 (de la plus ratée à la mieux réussie)
   {id:"c-corr-q2-avant", vue:"console", render:function(){ return PilotCorrection(1, false); }},
-  {id:"t-corr-q2-decl", vue:"tablette", render:function(){ return Tablette(EcrCorr(J, 1, "dit"), EcrCorr(M, 1, "vide")); }},
-  {id:"t-corr-q2-attente", vue:"tablette", render:function(){ return Tablette(EcrCorr(J, 1, "dit"), EcrCorr(M, 1, "dit")); }},
+  {id:"t-corr-q2-decl", vue:"tablette", render:function(){ return Tablette(EcrCorr(J, 1, "dit", 7), EcrCorr(M, 1, "vide", 7)); }},
+  {id:"t-corr-q2-attente", vue:"tablette", render:function(){ return Tablette(EcrCorr(J, 1, "dit", 3), EcrCorr(M, 1, "dit", 3)); }},
   {id:"c-corr-q2-apres", vue:"console", render:function(){ return PilotCorrection(1, true); }},
   {id:"t-corr-q2-apres", vue:"tablette", render:function(){ return Tablette(EcrCorr(J, 1, "revele"), EcrCorr(M, 1, "revele")); }},
-  {id:"t-corr-q3-decl", vue:"tablette", render:function(){ return Tablette(EcrCorr(J, 2, "dit"), EcrCorr(M, 2, "dit")); }},
+  {id:"t-corr-q3-decl", vue:"tablette", render:function(){ return Tablette(EcrCorr(J, 2, "dit", 11), EcrCorr(M, 2, "dit", 11)); }},
   {id:"c-corr-q3-apres", vue:"console", render:function(){ return PilotCorrection(2, true); }},
   {id:"t-corr-q3-apres", vue:"tablette", render:function(){ return Tablette(EcrCorr(J, 2, "revele"), EcrCorr(M, 2, "revele")); }},
   {id:"t-corr-q1-apres", vue:"tablette", render:function(){ return Tablette(EcrCorr(J, 0, "revele"), EcrCorr(M, 0, "revele")); }},

@@ -3,7 +3,7 @@
 
 **Ce que ça change pour la classe** : deux élèves par tablette, qui répondent l'un après l'autre sans voir la réponse de l'autre ; des temps de réflexion et de réponse réglés question par question ; une séance (questions + correction) qui tient dans 45 minutes ; la console de Paul, qui pilote la séance, lisible d'abord.
 
-**Méthode depuis le tour 563 (Paul) : on séquence, un sujet à la fois, en réponses courtes.** **État au 08/10, 18:10 (tour 593, après la secousse — https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/CADRAGE-QCM-SECOUSSE.md).** Règle de note (288 à 293) : la note, c'est la feuille ; une question vaut au plus 1 point (strict : tout ou rien ; partiel : une fraction du point par bonne case, autant de retiré par mauvaise, plancher 0) ; une fois par évaluation, une question dont la feuille est fausse et la tablette entièrement juste compte comme juste et se marque « Trouvée au dernier moment » avec un + vert (282, 303) ; sans saisie, pas de note ; aucune note visible avant la saisie (223). Niveaux : « difficulté » pour les questions, « maîtrise » pour École Directe (304) ; la maîtrise se calcule par compétence, une ou deux compétences par question, prises dans celles du chapitre (305 à 315). Méthode de livraison (Paul, 578) : une exécutante code tout d'un coup, audit final, push de Paul après la livraison complète. À trancher : 323 à 340 et 341 — une proposition pour chacun au tour 594, en attente du mot de Paul ; préalables : 73, 148. Tour 598 : la maquette du flux binôme, 44 captures dans l'ordre de la séance (https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/MAQUETTE-QCM-FLUX/README.md) ; elle montre comme retenus 360, 334, 313, 339, 327, 331, 323, 64 et 332, encore à trancher, et les textes provisoires y sont soulignés en orange. L'ancienne ligne d'état est archivée en fin de document.
+**Méthode depuis le tour 563 (Paul) : on séquence, un sujet à la fois, en réponses courtes.** **État au 08/10, 18:10 (tour 593, après la secousse — https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/CADRAGE-QCM-SECOUSSE.md).** Règle de note (288 à 293) : la note, c'est la feuille ; une question vaut au plus 1 point (strict : tout ou rien ; partiel : une fraction du point par bonne case, autant de retiré par mauvaise, plancher 0) ; une fois par évaluation, une question dont la feuille est fausse et la tablette entièrement juste compte comme juste et se marque « Trouvée au dernier moment » avec un + vert (282, 303) ; sans saisie, pas de note ; aucune note visible avant la saisie (223). Niveaux : « difficulté » pour les questions, « maîtrise » pour École Directe (304) ; la maîtrise se calcule par compétence, une ou deux compétences par question, prises dans celles du chapitre (305 à 315). Méthode de livraison (Paul, 578) : une exécutante code tout d'un coup, audit final, push de Paul après la livraison complète. À trancher : 323 à 340 et 341 — une proposition pour chacun au tour 594, en attente du mot de Paul ; préalables : 73, 148. Tour 598 : la maquette du flux binôme, 44 captures dans l'ordre de la séance (https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/MAQUETTE-QCM-FLUX/README.md) ; elle montre comme retenus 360, 334, 313, 339, 327, 331, 323, 64 et 332, encore à trancher, et les textes provisoires y sont soulignés en orange. Tour 600 (Paul : « Ok ») : 375 à 384 retenus (« clique » partout dans les textes de l'élève ; consigne de saisie sans négation, qui dit le rapprochement ; saisie forcée par un chrono vert, orange, rouge et « Révéler » fermé tant qu'un présent n'a pas cliqué ; « Départ d'un élève » visible pendant la correction (388) ; tu commentes après la révélation ; compétences fines jusqu'au PDF) ; maquette refaite ; proposé 390 (au moins trois questions par compétence). L'ancienne ligne d'état est archivée en fin de document.
 
 **Points remplacés — à ne pas coder (passe de propreté, tour 593)** :
 la ligne d'état de 14:31 → 288 à 293 et 282 · 173 et 181 (« aucun des choix » vaut 0) → 176, 290 · 237 (« 1 point fixe », sur chaque question concernée) → 275, 290, et 332 à trancher · 19 (binômes après l'appel) → 109 · le découpage en lots (45 à 50, « lot 2 » de la dette 181, « après le lot 1 » de 67 et de la dette 186) → Paul, 578 · 40 (le score app pondéré) → 273, et 323 à trancher · ce que 35, 36, 56 et 61 disent des points des niveaux → 273, 295 · l'exemple chiffré de 169 → 1 point par question · le motif de 234 (l'encadré du tout ou rien redevient juste avec 273 ; c'est celui du partiel qui est faux) · les mesures 105, 106 et 113, fausses → corrigées en 320.
@@ -1461,6 +1461,30 @@ Deux choses mesurées par la fausse classe touchent ta séance de demain. Je te 
 383. **Ma proposition, pour que ce soit fin jusqu'au bout.** Chaque question affiche sa ou ses compétences, dans la fiche et dans le récapitulatif de l'élève. Dans Résultats, une colonne par compétence : l'en-tête dit ses questions (« c4-lire-01 · Q2, Q3 »), et chaque case donne le niveau de l'élève, avec d'où il vient (« Q2 ✓, Q3 ✗ »). Le bilan de classe donne la répartition par compétence, en plus de celle de la note. Et c'est ce tableau que sort le PDF pour École Directe.
 
 384. **Sur ton oui, je refais les captures concernées** : 5, 6, 28 à 39 et 41 à 43.
+
+---
+
+## Tour 600 — Paul (08/10, 20:52), mot pour mot
+
+> Ok
+
+*375 à 384 retenus.*
+
+## Tour 600 — la maquette refaite (points 385 à 391)
+
+385. **Les captures sont refaites, au même endroit** : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/MAQUETTE-QCM-FLUX/README.md. Le PDF mis à jour t'est envoyé ici. Ont changé les captures 5, 6, 28 à 34, 37 à 39 et 41 à 43 ; les autres sont les mêmes.
+
+386. **« Clique » partout**, et la consigne de la saisie dit le rapprochement, sans négation (capture 29). L'attestation le dit aussi (capture 6).
+
+387. **La saisie est forcée** (captures 28 à 30 et 33). Le chrono passe du vert à l'orange puis au rouge, « 🔒 Révéler » reste fermé tant qu'il manque un élève présent, et ta console écrit en rouge les noms qui manquent. Noah n'est plus « sans saisie ».
+
+388. **Je me suis trompé en 379 : pendant la correction, l'app d'aujourd'hui n'a pas de bouton « 🚫 Départ d'un élève ».** Il n'existe que pendant les questions. Sans lui, une tablette en panne bloquerait la classe sans recours ; je l'ai donc mis dans la correction (capture 28).
+
+389. **Les compétences sont fines jusqu'au bout** (captures 38, 39, 41 et 42). Chaque question dit ses compétences, chaque compétence dit les questions qui font son niveau, et ta console a une colonne par compétence.
+
+390. **Mesuré sur ces captures : avec deux questions par compétence, « Maîtrise fragile » n'arrive jamais.** En tout ou rien, une compétence vaut alors 0, 10 ou 20 sur 20 (0/2, 1/2 ou 2/2). Il faut trois questions pour que les quatre niveaux soient possibles. Ma proposition : au moins trois questions par compétence, dans le prompt et dans la garde du collage, au lieu des deux de 339.
+
+391. **Restent à ton mot dans la maquette** : 360, 334, 313 et 339, 327, 331, 323, 64 et 332, plus les mots provisoires soulignés en orange (la liste est en tête du README).
 
 ---
 

@@ -18162,3 +18162,35 @@ Réponse mot pour mot :
 384. **Sur ton oui, je refais les captures concernées** : 5, 6, 28 à 39 et 41 à 43.
 
 08/10/2026 20:21 MEMO
+
+---
+
+## TOUR 600 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Ok
+
+---
+
+## TOUR 600 — Claude (conscience n°12)
+
+Maquette refaite selon 375 à 384 (version du tour 598 gardée : maquette_tour598.js et .css) ; 44 scènes recapturées et contrôlées, 15 captures changées ; README et PDF régénérés, PDF envoyé à Paul. Mesuré en lisant le code 7.7.1 (l. 7697-7741) : la correction n'a pas de « Départ d'un élève » (379 corrigé en 388). CADRAGE-QCM.md complété (tour 600, ligne d'état). Rien écrit au hub, aucun code dans l'app.
+
+Réponse mot pour mot :
+
+385. **Les captures sont refaites, au même endroit** : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/MAQUETTE-QCM-FLUX/README.md. Le PDF mis à jour t'est envoyé ici. Ont changé les captures 5, 6, 28 à 34, 37 à 39 et 41 à 43 ; les autres sont les mêmes.
+
+386. **« Clique » partout**, et la consigne de la saisie dit le rapprochement, sans négation (capture 29). L'attestation le dit aussi (capture 6).
+
+387. **La saisie est forcée** (captures 28 à 30 et 33). Le chrono passe du vert à l'orange puis au rouge, « 🔒 Révéler » reste fermé tant qu'il manque un élève présent, et ta console écrit en rouge les noms qui manquent. Noah n'est plus « sans saisie ».
+
+388. **Je me suis trompé en 379 : pendant la correction, l'app d'aujourd'hui n'a pas de bouton « 🚫 Départ d'un élève ».** Il n'existe que pendant les questions. Sans lui, une tablette en panne bloquerait la classe sans recours ; je l'ai donc mis dans la correction (capture 28).
+
+389. **Les compétences sont fines jusqu'au bout** (captures 38, 39, 41 et 42). Chaque question dit ses compétences, chaque compétence dit les questions qui font son niveau, et ta console a une colonne par compétence.
+
+390. **Mesuré sur ces captures : avec deux questions par compétence, « Maîtrise fragile » n'arrive jamais.** En tout ou rien, une compétence vaut alors 0, 10 ou 20 sur 20 (0/2, 1/2 ou 2/2). Il faut trois questions pour que les quatre niveaux soient possibles. Ma proposition : au moins trois questions par compétence, dans le prompt et dans la garde du collage, au lieu des deux de 339.
+
+391. **Restent à ton mot dans la maquette** : 360, 334, 313 et 339, 327, 331, 323, 64 et 332, plus les mots provisoires soulignés en orange (la liste est en tête du README).
+
+08/10/2026 20:59 MEMO

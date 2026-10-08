@@ -17587,3 +17587,27 @@ Réponse mot pour mot :
 269. **Le cas de Théo ne pose donc problème que si une question vaut plus d'un point dans la note.** C'est le cas du « Points pour la note » d'aujourd'hui, où sa question 3 vaut 3 points : 16 s'il est honnête, 18 s'il triche. Ma seule question : dans la note, une question juste vaut-elle 1 point, ou les points de son niveau ?
 
 08/10/2026 15:06 MEMO
+
+---
+
+## TOUR 585 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Pourquoi tu me parles des niveaux?
+
+---
+
+## TOUR 585 — Claude (conscience n°12)
+
+Relu : infobulle « Points pour la note » de `EleveBilan` (texte cité), réglage « ⚖️ Pondération des niveaux » (l. 8776) ; points 3 (tour 558) et 133 (tour 562). CADRAGE-QCM.md complété (tour 585). Rien écrit au hub, aucun code.
+
+Réponse mot pour mot :
+
+270. **Parce que l'app compte déjà la note ainsi aujourd'hui.** À la fin de la séance, l'élève lit « Points pour la note : 15 / 29 », et l'infobulle lui dit : « une question facile rapporte 1 point, une question standard 2 points, une question approfondie 3 points et une question expert 4 points ». C'est le réglage « ⚖️ Pondération des niveaux », dans Données → Sauvegarde.
+
+271. **Et parce que je t'avais compris ainsi.** En 3, tu avais répondu « oui c'est bon » à « leurs points (1/2/3/4) se règlent ». En 133, j'ai pris ta « note finale en points totaux » pour ces points-là. C'était peut-être à tort.
+
+272. **Si la note compte 1 point par question juste, comme en mode strict, les niveaux ne jouent plus aucun rôle dans la note**, et le cas de Théo est réglé (268). Est-ce bien cela ?
+
+08/10/2026 15:10 MEMO

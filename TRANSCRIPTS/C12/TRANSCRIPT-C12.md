@@ -17687,3 +17687,27 @@ Réponse mot pour mot :
 283. **Je comprends donc que 275 est retenu** : une question « Trouvée au dernier moment » compte comme juste, soit 1 point, en strict comme en partiel, une seule fois par évaluation (210). C'est bien ça ?
 
 08/10/2026 16:23 MEMO
+
+---
+
+## TOUR 589 — Paul
+
+Texte de Paul, mot pour mot :
+
+> 283. pourquoi me demandes-tu confirmation?
+
+---
+
+## TOUR 589 — Claude (conscience n°12)
+
+275 inscrit comme retenu, 238 fermé : CADRAGE-QCM.md (ligne d'état, tour 589) et dette 192. Rien écrit au hub, aucun code.
+
+Réponse mot pour mot :
+
+284. **Parce que ton message disait que les fractions « changent la donne », sans dire dans quel sens.** Comme c'est une règle de note, je n'ai pas voulu l'inscrire sur une déduction. Ton message suffisait : 275 est inscrit comme retenu.
+
+285. **Le cas de Théo est donc fermé (238, 276).** Tricher à la saisie ne lui rapporte plus rien, sauf s'il a deux questions « Trouvée au dernier moment » ou plus.
+
+286. **Il reste 248** : la consigne de correction suit la tablette, et Théo met un V vert à côté d'une réponse fausse. Ma proposition reste 249 : la saisie avant la correction. On passe à 249 ?
+
+08/10/2026 16:39 MEMO

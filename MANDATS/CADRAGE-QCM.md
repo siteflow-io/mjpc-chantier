@@ -3,7 +3,7 @@
 
 **Ce que ça change pour la classe** : deux élèves par tablette, qui répondent l'un après l'autre sans voir la réponse de l'autre ; des temps de réflexion et de réponse réglés question par question ; une séance (questions + correction) qui tient dans 45 minutes ; la console de Paul, qui pilote la séance, lisible d'abord.
 
-**Méthode depuis le tour 563 (Paul) : on séquence, un sujet à la fois, en réponses courtes.** **État au 08/10, 18:10 (tour 593, après la secousse — https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/CADRAGE-QCM-SECOUSSE.md).** Règle de note (288 à 293) : la note, c'est la feuille ; une question vaut au plus 1 point (strict : tout ou rien ; partiel : une fraction du point par bonne case, autant de retiré par mauvaise, plancher 0) ; une fois par évaluation, une question dont la feuille est fausse et la tablette entièrement juste compte comme juste et se marque « Trouvée au dernier moment » avec un + vert (282, 303) ; sans saisie, pas de note ; aucune note visible avant la saisie (223). Niveaux : « difficulté » pour les questions, « maîtrise » pour École Directe (304) ; la maîtrise se calcule par compétence, une ou deux compétences par question, prises dans celles du chapitre (305 à 315). Méthode de livraison (Paul, 578) : une exécutante code tout d'un coup, audit final, push de Paul après la livraison complète. À trancher : 323 à 340 et 341 — une proposition pour chacun au tour 594, en attente du mot de Paul ; préalables : 73, 148. L'ancienne ligne d'état est archivée en fin de document.
+**Méthode depuis le tour 563 (Paul) : on séquence, un sujet à la fois, en réponses courtes.** **État au 08/10, 18:10 (tour 593, après la secousse — https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/CADRAGE-QCM-SECOUSSE.md).** Règle de note (288 à 293) : la note, c'est la feuille ; une question vaut au plus 1 point (strict : tout ou rien ; partiel : une fraction du point par bonne case, autant de retiré par mauvaise, plancher 0) ; une fois par évaluation, une question dont la feuille est fausse et la tablette entièrement juste compte comme juste et se marque « Trouvée au dernier moment » avec un + vert (282, 303) ; sans saisie, pas de note ; aucune note visible avant la saisie (223). Niveaux : « difficulté » pour les questions, « maîtrise » pour École Directe (304) ; la maîtrise se calcule par compétence, une ou deux compétences par question, prises dans celles du chapitre (305 à 315). Méthode de livraison (Paul, 578) : une exécutante code tout d'un coup, audit final, push de Paul après la livraison complète. À trancher : 323 à 340 et 341 — une proposition pour chacun au tour 594, en attente du mot de Paul ; préalables : 73, 148. Tour 598 : la maquette du flux binôme, 44 captures dans l'ordre de la séance (https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/MAQUETTE-QCM-FLUX/README.md) ; elle montre comme retenus 360, 334, 313, 339, 327, 331, 323, 64 et 332, encore à trancher, et les textes provisoires y sont soulignés en orange. L'ancienne ligne d'état est archivée en fin de document.
 
 **Points remplacés — à ne pas coder (passe de propreté, tour 593)** :
 la ligne d'état de 14:31 → 288 à 293 et 282 · 173 et 181 (« aucun des choix » vaut 0) → 176, 290 · 237 (« 1 point fixe », sur chaque question concernée) → 275, 290, et 332 à trancher · 19 (binômes après l'appel) → 109 · le découpage en lots (45 à 50, « lot 2 » de la dette 181, « après le lot 1 » de 67 et de la dette 186) → Paul, 578 · 40 (le score app pondéré) → 273, et 323 à trancher · ce que 35, 36, 56 et 61 disent des points des niveaux → 273, 295 · l'exemple chiffré de 169 → 1 point par question · le motif de 234 (l'encadré du tout ou rien redevient juste avec 273 ; c'est celui du partiel qui est faux) · les mesures 105, 106 et 113, fausses → corrigées en 320.
@@ -1406,6 +1406,32 @@ Deux choses mesurées par la fausse classe touchent ta séance de demain. Je te 
 364. **À vérifier sur la maquette : la demi-tablette.** Ta question 3 de demain a 6 choix longs. Sur une moitié d'écran, je ne sais pas si ça se lit.
 
 365. **Si tu valides 360, il remplace 249, 326 et 343 à 348.**
+
+---
+
+## Tour 598 — Paul (08/10, 19:11), mot pour mot
+
+> je veux toutes les captures d'écran de ce que ça donne pour deux élèves en binôme, tout au long de la séance. pour ne pas multiplier les captures, on part sur une évaluation de 3 questions bidons. et je veux mes cpatures de console. et je veux que ce soit dans l'ordre du flux.
+
+## Tour 598 — la maquette du flux binôme (points 366 à 374)
+
+366. **Les 44 captures sont au sas, dans l'ordre de la séance, avec une phrase sous chacune** : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/MAQUETTE-QCM-FLUX/README.md. Le même contenu, en un seul PDF, t'est envoyé ici.
+
+367. **Ce qu'elles montrent.** Julien à gauche, Michel à droite, de « Combien êtes-vous ? » jusqu'au retour à cet écran après « Terminer » : 26 captures de la tablette. Ta console aux mêmes moments : 18 captures, de la préparation avant l'heure jusqu'à la fiche de Michel, le soir.
+
+368. **Les deux feuilles sont choisies pour faire apparaître chaque cas.** Julien a « Trouvée au dernier moment » à la question 2. Michel touche Venise alors que sa feuille dit Rome (saisie juste, tablette fausse), et à la question 3, sa feuille ne dit aucun des choix.
+
+369. **Tout texte vu par l'élève souligné en pointillés orange est provisoire** : ce sont des mots que tu n'as pas encore donnés (l'attestation, la saisie dans la correction, le bilan). La liste est en tête du README.
+
+370. **La maquette montre comme retenus des points encore à trancher** : 360 (la saisie dans la correction), 334 (plus de lettres), 313 et 339 (les mots du socle, partout), 327, 331, 323, 64 et 332. Chaque capture dit lequel elle suppose.
+
+371. **Toute la console est une proposition (73).** Elle part de l'existant. Ce qui change le plus : les 12 tablettes à la place des bulles, un gros bouton pour l'action suivante, le Suivi de la feuille pendant la correction, et « À lire sur les feuilles, ce soir ».
+
+372. **364 est mesuré : ta vraie question 3 de demain tient sur une demi-tablette** (capture 44). En une colonne, la carte s'arrête à 733 px sur 800, avec des choix un peu plus petits (14,7 px au lieu de 16).
+
+373. **J'ai retiré deux choses de l'existant, à toi de dire.** Sur « Combien êtes-vous ? », la phrase de la dictée « Si ton binôme est absent, choisis « 1 élève » », qui contredit ta règle (88). Dans le bilan de l'élève, le bloc « Par rapport à la classe », qui ne tient pas sur une demi-tablette.
+
+374. **Rien n'est codé dans l'app** : c'est une maquette à part, faite sur le CSS de la 7.7.1.
 
 ---
 

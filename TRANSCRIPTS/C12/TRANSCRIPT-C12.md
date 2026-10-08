@@ -18087,3 +18087,39 @@ Réponse mot pour mot :
 365. **Si tu valides 360, il remplace 249, 326 et 343 à 348.**
 
 08/10/2026 19:08 MEMO
+
+---
+
+## TOUR 598 — Paul
+
+Texte de Paul, mot pour mot :
+
+> je veux toutes les captures d'écran de ce que ça donne pour deux élèves en binôme, tout au long de la séance. pour ne pas multiplier les captures, on part sur une évaluation de 3 questions bidons. et je veux mes cpatures de console. et je veux que ce soit dans l'ordre du flux.
+
+---
+
+## TOUR 598 — Claude (conscience n°12)
+
+Maquette à part (CSS de evaluation-qcm.html 7.7.1, React 17 local), 44 scènes capturées avec Playwright (tablette 1280 × 800, console 1440 de large en page entière), chaque PNG contrôlé ; mesure de 364 sur la vraie question 3 de la 3e du 09/10. Déposé au sas : MANDATS/MAQUETTE-QCM-FLUX/ (README.md, LIVRET-FLUX-BINOME.pdf, captures/, maquette/). PDF envoyé à Paul. CADRAGE-QCM.md complété (tour 598, ligne d'état). Rien écrit au hub (lecture seule de /taxonomie/competences), aucun code dans l'app.
+
+Réponse mot pour mot :
+
+366. **Les 44 captures sont au sas, dans l'ordre de la séance, avec une phrase sous chacune** : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/MAQUETTE-QCM-FLUX/README.md. Le même contenu, en un seul PDF, t'est envoyé ici.
+
+367. **Ce qu'elles montrent.** Julien à gauche, Michel à droite, de « Combien êtes-vous ? » jusqu'au retour à cet écran après « Terminer » : 26 captures de la tablette. Ta console aux mêmes moments : 18 captures, de la préparation avant l'heure jusqu'à la fiche de Michel, le soir.
+
+368. **Les deux feuilles sont choisies pour faire apparaître chaque cas.** Julien a « Trouvée au dernier moment » à la question 2. Michel touche Venise alors que sa feuille dit Rome (saisie juste, tablette fausse), et à la question 3, sa feuille ne dit aucun des choix.
+
+369. **Tout texte vu par l'élève souligné en pointillés orange est provisoire** : ce sont des mots que tu n'as pas encore donnés (l'attestation, la saisie dans la correction, le bilan). La liste est en tête du README.
+
+370. **La maquette montre comme retenus des points encore à trancher** : 360 (la saisie dans la correction), 334 (plus de lettres), 313 et 339 (les mots du socle, partout), 327, 331, 323, 64 et 332. Chaque capture dit lequel elle suppose.
+
+371. **Toute la console est une proposition (73).** Elle part de l'existant. Ce qui change le plus : les 12 tablettes à la place des bulles, un gros bouton pour l'action suivante, le Suivi de la feuille pendant la correction, et « À lire sur les feuilles, ce soir ».
+
+372. **364 est mesuré : ta vraie question 3 de demain tient sur une demi-tablette** (capture 44). En une colonne, la carte s'arrête à 733 px sur 800, avec des choix un peu plus petits (14,7 px au lieu de 16).
+
+373. **J'ai retiré deux choses de l'existant, à toi de dire.** Sur « Combien êtes-vous ? », la phrase de la dictée « Si ton binôme est absent, choisis « 1 élève » », qui contredit ta règle (88). Dans le bilan de l'élève, le bloc « Par rapport à la classe », qui ne tient pas sur une demi-tablette.
+
+374. **Rien n'est codé dans l'app** : c'est une maquette à part, faite sur le CSS de la 7.7.1.
+
+08/10/2026 19:35 MEMO

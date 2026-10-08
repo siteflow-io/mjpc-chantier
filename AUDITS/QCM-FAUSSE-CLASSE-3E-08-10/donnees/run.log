@@ -1,0 +1,254 @@
+[   0.0s] app servie telle quelle, md5 ecae65624855a1a877708986a8e984e5
+[  22.9s] 25 tablettes connectées ; présence au hub : 25
+[  25.4s] session lancée : sess_1791455819801
+[  25.5s] chrono de réponse réglé à 20 s
+[  26.2s] Q1 réflexion
+[  40.3s] Q1 : « ✋ Autoriser la réponse » appuyé à la fin de la réflexion
+[  40.5s] Q1 réponse ouverte, chronoReponse=20
+[  60.7s] Q1 close : 25 réponses au hub
+[  61.2s] Q2 réflexion
+[  76.7s] Q2 réponse ouverte, chronoReponse=20
+[  96.7s] Q2 close : 25 réponses au hub
+[  97.2s] Q3 réflexion
+[ 117.7s] Q3 réponse ouverte, chronoReponse=20
+[ 137.7s] Q3 close : 25 réponses au hub
+[ 138.3s] Q4 réflexion
+[ 158.6s] Q4 réponse ouverte, chronoReponse=20
+[ 178.7s] Q4 close : 25 réponses au hub
+[ 179.0s] Q5 réflexion
+[ 194.2s] Q5 réponse ouverte, chronoReponse=20
+[ 214.2s] Q5 close : 24 réponses au hub
+[ 214.6s] Q6 réflexion
+[ 234.7s] Q6 réponse ouverte, chronoReponse=20
+[ 254.7s] Q6 close : 25 réponses au hub
+[ 255.3s] Q7 réflexion
+[ 285.7s] Q7 réponse ouverte, chronoReponse=20
+[ 305.7s] Q7 close : 25 réponses au hub
+[ 306.2s] Q8 réflexion
+[ 326.6s] Q8 réponse ouverte, chronoReponse=20
+[ 346.7s] Q8 close : 25 réponses au hub
+[ 347.2s] Q9 réflexion
+[ 362.7s] Q9 réponse ouverte, chronoReponse=20
+[ 383.2s] Q9 close : 25 réponses au hub
+[ 384.1s] Q10 réflexion
+[ 394.1s] Q10 réponse ouverte, chronoReponse=20
+[ 414.1s] Q10 close : 24 réponses au hub
+[ 415.0s] Q11 réflexion
+[ 445.1s] Q11 réponse ouverte, chronoReponse=20
+[ 465.2s] Q11 close : 25 réponses au hub
+[ 468.3s] autoévaluation : 25 votes
+[ 468.7s] BAUDRY Léa console ReferenceError: bonnes is not defined
+    at http://localhost:8765/evaluation-qcm.html?mode=eleve:4365:23
+    at Array.map (<anonymous>)
+    at EleveCorrection (http://localhost:8765/evaluation-qcm.ht
+[ 468.7s] BAUDRY Léa console fakefb listener ReferenceError: bonnes is not defined
+    at http://localhost:8765/evaluation-qcm.html?mode=eleve:4365:23
+    at Array.map (<anonymous>)
+    at EleveCorrection (http://localhost:8765/e
+[ 468.7s] HÉBRARD Nathan console ReferenceError: bonnes is not defined
+    at http://localhost:8765/evaluation-qcm.html?mode=eleve:4365:23
+    at Array.map (<anonymous>)
+    at EleveCorrection (http://localhost:8765/evaluation-qcm.ht
+[ 468.7s] HÉBRARD Nathan console fakefb listener ReferenceError: bonnes is not defined
+    at http://localhost:8765/evaluation-qcm.html?mode=eleve:4365:23
+    at Array.map (<anonymous>)
+    at EleveCorrection (http://localhost:8765/e
+[ 468.7s] CHEVALLIER Théo console ReferenceError: bonnes is not defined
+    at http://localhost:8765/evaluation-qcm.html?mode=eleve:4365:23
+    at Array.map (<anonymous>)
+    at EleveCorrection (http://localhost:8765/evaluation-qcm.ht
+[ 468.7s] CHEVALLIER Théo console fakefb listener ReferenceError: bonnes is not defined
+    at http://localhost:8765/evaluation-qcm.html?mode=eleve:4365:23
+    at Array.map (<anonymous>)
+    at EleveCorrection (http://localhost:8765/e
+[ 468.8s] CARRÉ Tom console ReferenceError: bonnes is not defined
+    at http://localhost:8765/evaluation-qcm.html?mode=eleve:4365:23
+    at Array.map (<anonymous>)
+    at EleveCorrection (http://localhost:8765/evaluation-qcm.ht
+[ 468.8s] CARRÉ Tom console fakefb listener ReferenceError: bonnes is not defined
+    at http://localhost:8765/evaluation-qcm.html?mode=eleve:4365:23
+    at Array.map (<anonymous>)
+    at EleveCorrection (http://localhost:8765/e
+[ 468.8s] PERRAUD Jade console ReferenceError: bonnes is not defined
+    at http://localhost:8765/evaluation-qcm.html?mode=eleve:4365:23
+    at Array.map (<anonymous>)
+    at EleveCorrection (http://localhost:8765/evaluation-qcm.ht
+[ 468.8s] PERRAUD Jade console fakefb listener ReferenceError: bonnes is not defined
+    at http://localhost:8765/evaluation-qcm.html?mode=eleve:4365:23
+    at Array.map (<anonymous>)
+    at EleveCorrection (http://localhost:8765/e
+[ 468.8s] BRUNEAU Camille console ReferenceError: bonnes is not defined
+    at http://localhost:8765/evaluation-qcm.html?mode=eleve:4365:23
+    at Array.map (<anonymous>)
+    at EleveCorrection (http://localhost:8765/evaluation-qcm.ht
+[ 468.8s] BRUNEAU Camille console fakefb listener ReferenceError: bonnes is not defined
+    at http://localhost:8765/evaluation-qcm.html?mode=eleve:4365:23
+    at Array.map (<anonymous>)
+    at EleveCorrection (http://localhost:8765/e
+[ 468.8s] WEBER Clara console ReferenceError: bonnes is not defined
+    at http://localhost:8765/evaluation-qcm.html?mode=eleve:4365:23
+    at Array.map (<anonymous>)
+    at EleveCorrection (http://localhost:8765/evaluation-qcm.ht
+[ 468.8s] ESNAULT Inès console ReferenceError: bonnes is not defined
+    at http://localhost:8765/evaluation-qcm.html?mode=eleve:4365:23
+    at Array.map (<anonymous>)
+    at EleveCorrection (http://localhost:8765/evaluation-qcm.ht
+[ 468.8s] ESNAULT Inès console fakefb listener ReferenceError: bonnes is not defined
+    at http://localhost:8765/evaluation-qcm.html?mode=eleve:4365:23
+    at Array.map (<anonymous>)
+    at EleveCorrection (http://localhost:8765/e
+[ 468.8s] WEBER Clara console fakefb listener ReferenceError: bonnes is not defined
+    at http://localhost:8765/evaluation-qcm.html?mode=eleve:4365:23
+    at Array.map (<anonymous>)
+    at EleveCorrection (http://localhost:8765/e
+[ 468.8s] QUINTON Enzo console ReferenceError: bonnes is not defined
+    at http://localhost:8765/evaluation-qcm.html?mode=eleve:4365:23
+    at Array.map (<anonymous>)
+    at EleveCorrection (http://localhost:8765/evaluation-qcm.ht
+[ 468.8s] QUINTON Enzo console fakefb listener ReferenceError: bonnes is not defined
+    at http://localhost:8765/evaluation-qcm.html?mode=eleve:4365:23
+    at Array.map (<anonymous>)
+    at EleveCorrection (http://localhost:8765/e
+[ 468.8s] VALLÉE Rayan console ReferenceError: bonnes is not defined
+    at http://localhost:8765/evaluation-qcm.html?mode=eleve:4365:23
+    at Array.map (<anonymous>)
+    at EleveCorrection (http://localhost:8765/evaluation-qcm.ht
+[ 468.8s] JOUBERT Louis console ReferenceError: bonnes is not defined
+    at http://localhost:8765/evaluation-qcm.html?mode=eleve:4365:23
+    at Array.map (<anonymous>)
+    at EleveCorrection (http://localhost:8765/evaluation-qcm.ht
+[ 468.8s] JOUBERT Louis console fakefb listener ReferenceError: bonnes is not defined
+    at http://localhost:8765/evaluation-qcm.html?mode=eleve:4365:23
+    at Array.map (<anonymous>)
+    at EleveCorrection (http://localhost:8765/e
+[ 468.8s] ABRIAL Julien console ReferenceError: bonnes is not defined
+    at http://localhost:8765/evaluation-qcm.html?mode=eleve:4365:23
+    at Array.map (<anonymous>)
+    at EleveCorrection (http://localhost:8765/evaluation-qcm.ht
+[ 468.8s] ABRIAL Julien console fakefb listener ReferenceError: bonnes is not defined
+    at http://localhost:8765/evaluation-qcm.html?mode=eleve:4365:23
+    at Array.map (<anonymous>)
+    at EleveCorrection (http://localhost:8765/e
+[ 468.8s] DUVERNAY Michel console ReferenceError: bonnes is not defined
+    at http://localhost:8765/evaluation-qcm.html?mode=eleve:4365:23
+    at Array.map (<anonymous>)
+    at EleveCorrection (http://localhost:8765/evaluation-qcm.ht
+[ 468.8s] DUVERNAY Michel console fakefb listener ReferenceError: bonnes is not defined
+    at http://localhost:8765/evaluation-qcm.html?mode=eleve:4365:23
+    at Array.map (<anonymous>)
+    at EleveCorrection (http://localhost:8765/e
+[ 468.8s] ISAMBERT Chloé console ReferenceError: bonnes is not defined
+    at http://localhost:8765/evaluation-qcm.html?mode=eleve:4365:23
+    at Array.map (<anonymous>)
+    at EleveCorrection (http://localhost:8765/evaluation-qcm.ht
+[ 468.8s] GALLOIS Manon console ReferenceError: bonnes is not defined
+    at http://localhost:8765/evaluation-qcm.html?mode=eleve:4365:23
+    at Array.map (<anonymous>)
+    at EleveCorrection (http://localhost:8765/evaluation-qcm.ht
+[ 468.8s] VALLÉE Rayan console fakefb listener ReferenceError: bonnes is not defined
+    at http://localhost:8765/evaluation-qcm.html?mode=eleve:4365:23
+    at Array.map (<anonymous>)
+    at EleveCorrection (http://localhost:8765/e
+[ 468.8s] GALLOIS Manon console fakefb listener ReferenceError: bonnes is not defined
+    at http://localhost:8765/evaluation-qcm.html?mode=eleve:4365:23
+    at Array.map (<anonymous>)
+    at EleveCorrection (http://localhost:8765/e
+[ 468.8s] TESSIER Anna console ReferenceError: bonnes is not defined
+    at http://localhost:8765/evaluation-qcm.html?mode=eleve:4365:23
+    at Array.map (<anonymous>)
+    at EleveCorrection (http://localhost:8765/evaluation-qcm.ht
+[ 468.8s] RAMBAUD Lina console ReferenceError: bonnes is not defined
+    at http://localhost:8765/evaluation-qcm.html?mode=eleve:4365:23
+    at Array.map (<anonymous>)
+    at EleveCorrection (http://localhost:8765/evaluation-qcm.ht
+[ 468.8s] ISAMBERT Chloé console fakefb listener ReferenceError: bonnes is not defined
+    at http://localhost:8765/evaluation-qcm.html?mode=eleve:4365:23
+    at Array.map (<anonymous>)
+    at EleveCorrection (http://localhost:8765/e
+[ 468.8s] SABATIER Malo console ReferenceError: bonnes is not defined
+    at http://localhost:8765/evaluation-qcm.html?mode=eleve:4365:23
+    at Array.map (<anonymous>)
+    at EleveCorrection (http://localhost:8765/evaluation-qcm.ht
+[ 468.8s] RAMBAUD Lina console fakefb listener ReferenceError: bonnes is not defined
+    at http://localhost:8765/evaluation-qcm.html?mode=eleve:4365:23
+    at Array.map (<anonymous>)
+    at EleveCorrection (http://localhost:8765/e
+[ 468.8s] YVON Adam console ReferenceError: bonnes is not defined
+    at http://localhost:8765/evaluation-qcm.html?mode=eleve:4365:23
+    at Array.map (<anonymous>)
+    at EleveCorrection (http://localhost:8765/evaluation-qcm.ht
+[ 468.8s] TESSIER Anna console fakefb listener ReferenceError: bonnes is not defined
+    at http://localhost:8765/evaluation-qcm.html?mode=eleve:4365:23
+    at Array.map (<anonymous>)
+    at EleveCorrection (http://localhost:8765/e
+[ 468.8s] YVON Adam console fakefb listener ReferenceError: bonnes is not defined
+    at http://localhost:8765/evaluation-qcm.html?mode=eleve:4365:23
+    at Array.map (<anonymous>)
+    at EleveCorrection (http://localhost:8765/e
+[ 468.8s] OLLIVIER Sacha console ReferenceError: bonnes is not defined
+    at http://localhost:8765/evaluation-qcm.html?mode=eleve:4365:23
+    at Array.map (<anonymous>)
+    at EleveCorrection (http://localhost:8765/evaluation-qcm.ht
+[ 468.8s] ZELLER Lou console ReferenceError: bonnes is not defined
+    at http://localhost:8765/evaluation-qcm.html?mode=eleve:4365:23
+    at Array.map (<anonymous>)
+    at EleveCorrection (http://localhost:8765/evaluation-qcm.ht
+[ 468.8s] SABATIER Malo console fakefb listener ReferenceError: bonnes is not defined
+    at http://localhost:8765/evaluation-qcm.html?mode=eleve:4365:23
+    at Array.map (<anonymous>)
+    at EleveCorrection (http://localhost:8765/e
+[ 468.8s] OLLIVIER Sacha console fakefb listener ReferenceError: bonnes is not defined
+    at http://localhost:8765/evaluation-qcm.html?mode=eleve:4365:23
+    at Array.map (<anonymous>)
+    at EleveCorrection (http://localhost:8765/e
+[ 468.8s] FOUCHER Hugo console ReferenceError: bonnes is not defined
+    at http://localhost:8765/evaluation-qcm.html?mode=eleve:4365:23
+    at Array.map (<anonymous>)
+    at EleveCorrection (http://localhost:8765/evaluation-qcm.ht
+[ 468.8s] NOGARET Zoé console ReferenceError: bonnes is not defined
+    at http://localhost:8765/evaluation-qcm.html?mode=eleve:4365:23
+    at Array.map (<anonymous>)
+    at EleveCorrection (http://localhost:8765/evaluation-qcm.ht
+[ 468.8s] ZELLER Lou console fakefb listener ReferenceError: bonnes is not defined
+    at http://localhost:8765/evaluation-qcm.html?mode=eleve:4365:23
+    at Array.map (<anonymous>)
+    at EleveCorrection (http://localhost:8765/e
+[ 468.8s] LACOMBE Emma console ReferenceError: bonnes is not defined
+    at http://localhost:8765/evaluation-qcm.html?mode=eleve:4365:23
+    at Array.map (<anonymous>)
+    at EleveCorrection (http://localhost:8765/evaluation-qcm.ht
+[ 468.8s] NOGARET Zoé console fakefb listener ReferenceError: bonnes is not defined
+    at http://localhost:8765/evaluation-qcm.html?mode=eleve:4365:23
+    at Array.map (<anonymous>)
+    at EleveCorrection (http://localhost:8765/e
+[ 468.8s] FOUCHER Hugo console fakefb listener ReferenceError: bonnes is not defined
+    at http://localhost:8765/evaluation-qcm.html?mode=eleve:4365:23
+    at Array.map (<anonymous>)
+    at EleveCorrection (http://localhost:8765/e
+[ 468.9s] LACOMBE Emma console fakefb listener ReferenceError: bonnes is not defined
+    at http://localhost:8765/evaluation-qcm.html?mode=eleve:4365:23
+    at Array.map (<anonymous>)
+    at EleveCorrection (http://localhost:8765/e
+[ 468.9s] MAILLARD Noah console ReferenceError: bonnes is not defined
+    at http://localhost:8765/evaluation-qcm.html?mode=eleve:4365:23
+    at Array.map (<anonymous>)
+    at EleveCorrection (http://localhost:8765/evaluation-qcm.ht
+[ 468.9s] MAILLARD Noah console fakefb listener ReferenceError: bonnes is not defined
+    at http://localhost:8765/evaluation-qcm.html?mode=eleve:4365:23
+    at Array.map (<anonymous>)
+    at EleveCorrection (http://localhost:8765/e
+[ 473.1s] correction, 1re question révélée : 25 tablettes sur 25 à l'écran vide ; le tableau affiche 1211 caractères
+[ 494.6s] PROF fenêtre « Correction terminée ! » → OK
+[ 495.5s] phase finie ; tablettes à l'écran vide : 25
+[ 514.4s] tablettes rechargées en fin de séance ; écrans vides : 0
+[ 515.5s] bilans de fin de séance relevés
+[ 515.9s] PROF fenêtre « Terminer la session ? Les élèves verront un écran de fin. » → OK
+[ 515.9s] session terminée (etat=terminee)
+[ 519.1s] après « Terminer la session », écrans vides : 0
+[ 522.7s] DUVERNAY Michel : ne fait pas sa saisie
+[ 522.7s] MAILLARD Noah : ne fait pas sa saisie
+[ 561.4s] ÉTAPE EN ÉCHEC (la séance est gardée) : locator.click: Timeout 30000ms exceeded. | Call log: | [2m  - waiting for locator('.beta-q').nth(7).locator('.lettre-pick').nth(4)[22m
+[ 561.5s] état du faux hub enregistré ; la console reste ouverte pour la suite
+[ 693.1s] HÉBRARD Nathan fenêtre « Tu n'as pas saisi de réponse pour 1 question(s). Envoyer quand même ? » → OK
+[ 744.7s] VALLÉE Rayan fenêtre « Tu n'as pas saisi de réponse pour 1 question(s). Envoyer quand même ? » → OK
+[ 764.0s] YVON Adam fenêtre « Tu n'as pas saisi de réponse pour 1 question(s). Envoyer quand même ? » → OK

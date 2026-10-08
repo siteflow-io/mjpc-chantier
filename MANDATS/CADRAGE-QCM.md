@@ -3,7 +3,7 @@
 
 **Ce que ça change pour la classe** : deux élèves par tablette, qui répondent l'un après l'autre sans voir la réponse de l'autre ; des temps de réflexion et de réponse réglés question par question ; une séance (questions + correction) qui tient dans 45 minutes ; la console de Paul, qui pilote la séance, lisible d'abord.
 
-**Méthode depuis le tour 563 (Paul) : on séquence, un sujet à la fois, en réponses courtes.** **État au 08/10, 11:52** : réponses de Paul aux tours 559 à 570. Questions ouvertes : 106, 115, 117, 120, 121, 127, 143, 144, 145, 146, 148, 154/180, 160/164, 165, 175/187 (Paul « réfléchit encore » sur le bénéfice du doute ; le mélange des choix n'y joue pas, 188-191) ; captures de la console (73) avec l'inventaire « tout visible » (147-148). Retirés : 44 (122), 89 (127), le prompt de transition (128), la suppression de la saisie papier (114, abandonnée au tour 562). Sans objet : 45 à 50. 51 à 54 : production fermée, geste de Paul (53).
+**Méthode depuis le tour 563 (Paul) : on séquence, un sujet à la fois, en réponses courtes.** **État au 08/10, 12:57** : réponses de Paul aux tours 559 à 571. Questions ouvertes : 106, 115, 117, 120, 121, 127, 143, 144, 145, 146, 148, 154/180, 160/164, 165, 175/187 (Paul « réfléchit encore » sur le bénéfice du doute ; le mélange des choix n'y joue pas, 188-191 ; données de la fausse classe, 195-206) ; captures de la console (73) avec l'inventaire « tout visible » (147-148). Pour la séance du 09/10 : 192/207 (la correction plante sur les tablettes : corriger au tableau, recharger à la fin) et 193 (appuyer une fois sur « ✋ Autoriser la réponse »). Correction : 137 était faux (196). Retirés : 44 (122), 89 (127), le prompt de transition (128), la suppression de la saisie papier (114, abandonnée au tour 562). Sans objet : 45 à 50. 51 à 54 : production fermée, geste de Paul (53).
 
 ---
 
@@ -672,3 +672,57 @@ Voici l'évaluation :
 190. **Le mélange ne casse qu'une chose : comparer deux lettres qui viennent de deux ordres différents.** C'est le cas à trois endroits. Quand tu dis « la B » à l'oral en correction (117, encore ouvert). Quand tu compares une lettre écrite sur la feuille de Julien à une lettre de ta console. Et si la saisie montrait à l'élève d'autres lettres que celles de sa tablette.
 
 191. **Ce qui règle ces trois endroits est déjà prévu.** La saisie montre à l'élève le texte des choix, dans son ordre et avec ses lettres (142). Ta fiche (166) et ta fenêtre « Que dit la feuille ? » (168) montrent le texte des choix, avec à côté les lettres de l'élève. Au tableau, en correction, il n'y a pas de lettres (95). Pour tout cela, l'app garde seulement l'ordre que chaque élève a vu (118).
+
+---
+
+## Tour 571 — Paul (08/10, 11:56), mot pour mot
+
+> Ok donc maintenant tu vas faire tourner une fausse classe sur l'évaluation de 3e de demain dans son format actuel, et tu vas me sortir des données précises qui exemplifient 1. Le bénéfice du doute. 2. Sans le bénéfice du doute.
+
+## Tour 571 — message envoyé pendant le banc (12:25), points 192 à 194
+
+Deux choses mesurées par la fausse classe touchent ta séance de demain. Je te les donne tout de suite, sans attendre la fin.
+
+192. **La correction plante sur les tablettes, dans la version en ligne (7.7.1).** Dès que tu lances la correction, chaque tablette devient un écran vide. Dans le code, l'écran de correction de l'élève utilise une liste des bonnes réponses qu'il n'a jamais définie. C'est une ligne. Je l'ai reproduit sur les 25 tablettes. Au hub, aucune séance n'est passée par la correction depuis juin : ça ne s'était donc jamais vu.
+
+193. **La case « ✋ Réponse » n'est prise que si tu appuies sur « ✋ Autoriser la réponse ».** Mesuré avec la case à 20 s. Aux questions 1 et 2, la réflexion s'est finie toute seule, et la réponse a duré 5 s. À la question 3, j'ai appuyé sur « ✋ Autoriser la réponse », et elle a duré 20 s. À la question 4, laissée au chrono, elle a encore duré 20 s : ta valeur reste ensuite pour toute la séance. **Ton geste pour demain** : règle la case, puis, à la question 1, appuie toi-même sur « ✋ Autoriser la réponse » à la fin de la réflexion.
+
+194. **Pour 192, je ne peux rien changer en ligne** : la production m'est toujours fermée (53). Je relance la fausse classe pour mesurer deux choses : si la correction tient au tableau, et ce que les élèves retrouvent après « Terminer la session ». Puis je te donne les chiffres du bénéfice du doute.
+
+## Tour 571 — la fausse classe : avec et sans le bénéfice du doute (points 195 à 209)
+
+195. **Ce qui a tourné.** L'app en ligne (7.7.1), à l'octet près, avec ton évaluation de 3e de demain telle qu'elle est au hub : 11 questions, mode strict, 29 points. 25 élèves fictifs, un par tablette, sur un faux hub ; le vrai n'a pas été touché. Ce que chacun a écrit sur sa feuille, touché sur la tablette et saisi ensuite, c'est moi qui l'ai fixé, pour faire apparaître chaque cas. Les notes, elles, sont celles que l'app a calculées et affichées, et mon recompte donne les mêmes chiffres pour les 25 élèves.
+
+196. **Je corrige 137, je m'étais trompé.** Ta console n'a pas de colonne « Officiel ». Elle montre « App », « Papier » et « Écart », et son infobulle dit du Papier : « C'est le score qui compte ». Le bénéfice du doute (le « Score officiel ») n'existe que sur la page de résultats de l'élève. Aujourd'hui, l'élève lit donc sa note avec le bénéfice du doute, et toi sans.
+
+**1. Avec le bénéfice du doute** : 6 élèves sur les 23 qui ont fait leur saisie y gagnent. Ce sont les seuls dont la note change.
+
+197. **Tom** : à la question 9 (2 points), sa feuille est fausse, mais il a touché la bonne lettre. Il passe de 19 à 21 points sur 29 (de 13,1 à 14,5 sur 20).
+
+198. **Anna** : même cas à la question 1 (2 points). Elle passe de 13 à 15 points (de 9 à 10,3 sur 20).
+
+199. **Hugo** : même cas à la question 4 (3 points). Il passe de 10 à 13 points (de 6,9 à 9 sur 20).
+
+200. **Emma** : même cas à la question 11 (4 points). Elle passe de 17 à 21 points (de 11,7 à 14,5 sur 20).
+
+201. **Nathan** : à la question 11, sa feuille ne dit aucun des choix, mais il a touché la bonne lettre. Il passe de 14 à 18 points (de 9,7 à 12,4 sur 20).
+
+202. **Sacha** : sa feuille est fausse aux questions 2, 6, 7 et 8, et il a touché juste les quatre fois. Il passe de 3 à 15 points (de 2,1 à 10,3 sur 20). Sa page affiche « Score officiel 5/11 », « Score papier 1/11 » et « Score app 5/11 ». La règle n'a pas de limite : c'est exactement la reconnaissance des choix que le papier devait empêcher (178).
+
+**2. Sans le bénéfice du doute**
+
+203. Ces six élèves gardent la note de leur feuille : Tom 19, Anna 13, Hugo 10, Emma 17, Nathan 14 et Sacha 3 points sur 29. C'est ta colonne « Papier ». Les 17 autres ont la même note avec les deux règles. Sur la classe, le bénéfice du doute ajoute 27 points, dont 12 pour Sacha seul.
+
+204. **Avec les deux règles**, l'élève qui a écrit juste mais touché faux garde son point, puisque sa feuille compte. C'est le cas de Léa, Inès, Louis, Zoé, Lina et Clara, et d'Enzo, qui n'a rien touché à temps.
+
+205. **Ce qu'aucune des deux règles ne voit : la saisie arrangée.** À la question 7, Camille a écrit faux, touché faux, puis saisi la bonne réponse. Elle a 6 points au lieu de 2, avec les deux règles. Ta vérification de 180 (« saisie juste, tablette fausse ») la signale, mais elle signale aussi les sept élèves honnêtes de 204 : 8 feuilles à regarder pour un seul mensonge. À la question 3, Théo a écrit faux, touché juste et saisi juste. Avec le bénéfice du doute, ses 18 points sont sa vraie note. Sans lui, sa vraie note serait 15, et rien ne te le signale (186).
+
+206. **Sans saisie** (Michel, Noah), ta console montre la tablette (7/11 et 4/11) et un tiret dans « Papier ». Aucune note officielle n'existe pour eux, avec ou sans le bénéfice du doute.
+
+**Le reste, mesuré au passage**
+
+207. **Sur 192, mesuré sur les 25 tablettes** : à la correction, les 25 tablettes ont un écran vide, mais le tableau affiche la correction. Après la dernière question, une tablette rechargée (code retapé) retrouve son bilan : plus aucun écran vide. **Ton geste pour demain** : corrige au tableau, puis fais recharger les tablettes à la fin.
+
+208. **La saisie faite en classe s'efface.** Mesuré sur trois tablettes restées ouvertes depuis la séance : Léa avait coché 4 lettres ; quand Julien a appuyé sur « Envoyer → », elle n'en avait plus aucune, et elle est revenue, comme Tom, à « ⏳ Attends la prochaine question... ». Seul un rechargement les en sort. C'est la fuite d'écoute de la dette 180, et cela touche 143 (la saisie en classe). Après « Envoyer », les 23 élèves sont aussi tous retombés sur « Choisis ta classe » (138).
+
+209. **Registre** : deux dettes ajoutées, 198 (la correction plante sur les tablettes) et 199 (la case « ✋ Réponse ») ; deux complétées, 180 (la saisie effacée) et 196 (pas d'« Officiel » dans ta console). Le rapport complet, avec les 25 élèves question par question, les captures et le banc pour le rejouer : https://github.com/siteflow-io/mjpc-chantier/blob/main/AUDITS/QCM-FAUSSE-CLASSE-3E-08-10/README.md

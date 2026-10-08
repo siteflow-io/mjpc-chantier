@@ -1,0 +1,3266 @@
+{
+ "MAXP": 29,
+ "W": [
+  2,
+  2,
+  3,
+  3,
+  2,
+  3,
+  4,
+  3,
+  2,
+  1,
+  4
+ ],
+ "lignes": [
+  {
+   "nom": "ABRIAL Julien",
+   "saisie": true,
+   "app_n": 9,
+   "app_pts": 22,
+   "pap_n": 9,
+   "pap_pts": 22,
+   "avec_n": 9,
+   "avec_pts": 22,
+   "benef": [],
+   "ecart": 0,
+   "flag180": [],
+   "vrai_n": 9,
+   "vrai_pts": 22,
+   "cas": [],
+   "detail": [
+    [
+     1,
+     "D",
+     "D",
+     "D",
+     "D",
+     2
+    ],
+    [
+     2,
+     "CDF",
+     "CDF",
+     "CDF",
+     "CDF",
+     2
+    ],
+    [
+     3,
+     "CE",
+     "CE",
+     "CE",
+     "BCE",
+     3
+    ],
+    [
+     4,
+     "ABD",
+     "ABD",
+     "ABD",
+     "ABD",
+     3
+    ],
+    [
+     5,
+     "A",
+     "A",
+     "A",
+     "A",
+     2
+    ],
+    [
+     6,
+     "BDF",
+     "BDF",
+     "BDF",
+     "BDF",
+     3
+    ],
+    [
+     7,
+     "ABCE",
+     "ABCE",
+     "ABCE",
+     "ACE",
+     4
+    ],
+    [
+     8,
+     "ADE",
+     "ADE",
+     "ADE",
+     "ADE",
+     3
+    ],
+    [
+     9,
+     "C",
+     "C",
+     "C",
+     "C",
+     2
+    ],
+    [
+     10,
+     "B",
+     "B",
+     "B",
+     "B",
+     1
+    ],
+    [
+     11,
+     "D",
+     "D",
+     "D",
+     "D",
+     4
+    ]
+   ],
+   "app_affiche": [
+    [
+     "SCORE OFFICIEL",
+     "9 / 11"
+    ],
+    [
+     "SCORE PAPIER",
+     "9 / 11"
+    ],
+    [
+     "SCORE APP",
+     "9 / 11"
+    ]
+   ],
+   "bilan_fin": {
+    "bonnes": 9,
+    "sur": 11,
+    "points": 22,
+    "maxPoints": 29
+   }
+  },
+  {
+   "nom": "BAUDRY Léa",
+   "saisie": true,
+   "app_n": 6,
+   "app_pts": 15,
+   "pap_n": 7,
+   "pap_pts": 18,
+   "avec_n": 7,
+   "avec_pts": 18,
+   "benef": [],
+   "ecart": 1,
+   "flag180": [
+    3
+   ],
+   "vrai_n": 7,
+   "vrai_pts": 18,
+   "cas": [
+    [
+     3,
+     "toucher"
+    ]
+   ],
+   "detail": [
+    [
+     1,
+     "D",
+     "D",
+     "D",
+     "D",
+     2
+    ],
+    [
+     2,
+     "BCF",
+     "BCF",
+     "BCF",
+     "CDF",
+     2
+    ],
+    [
+     3,
+     "BCE",
+     "BC",
+     "BCE",
+     "BCE",
+     3
+    ],
+    [
+     4,
+     "AB",
+     "AB",
+     "AB",
+     "ABD",
+     3
+    ],
+    [
+     5,
+     "A",
+     "A",
+     "A",
+     "A",
+     2
+    ],
+    [
+     6,
+     "BDF",
+     "BDF",
+     "BDF",
+     "BDF",
+     3
+    ],
+    [
+     7,
+     "ACE",
+     "ACE",
+     "ACE",
+     "ACE",
+     4
+    ],
+    [
+     8,
+     "ADE",
+     "ADE",
+     "ADE",
+     "ADE",
+     3
+    ],
+    [
+     9,
+     "D",
+     "D",
+     "D",
+     "C",
+     2
+    ],
+    [
+     10,
+     "B",
+     "B",
+     "B",
+     "B",
+     1
+    ],
+    [
+     11,
+     "B",
+     "B",
+     "B",
+     "D",
+     4
+    ]
+   ],
+   "app_affiche": [
+    [
+     "SCORE OFFICIEL",
+     "7 / 11"
+    ],
+    [
+     "SCORE PAPIER",
+     "7 / 11"
+    ],
+    [
+     "SCORE APP",
+     "6 / 11"
+    ]
+   ],
+   "bilan_fin": {
+    "bonnes": 6,
+    "sur": 11,
+    "points": 15,
+    "maxPoints": 29
+   }
+  },
+  {
+   "nom": "CARRÉ Tom",
+   "saisie": true,
+   "app_n": 9,
+   "app_pts": 21,
+   "pap_n": 8,
+   "pap_pts": 19,
+   "avec_n": 9,
+   "avec_pts": 21,
+   "benef": [
+    9
+   ],
+   "ecart": 1,
+   "flag180": [],
+   "vrai_n": 8,
+   "vrai_pts": 19,
+   "cas": [
+    [
+     9,
+     "extremis"
+    ]
+   ],
+   "detail": [
+    [
+     1,
+     "D",
+     "D",
+     "D",
+     "D",
+     2
+    ],
+    [
+     2,
+     "CDF",
+     "CDF",
+     "CDF",
+     "CDF",
+     2
+    ],
+    [
+     3,
+     "BCE",
+     "BCE",
+     "BCE",
+     "BCE",
+     3
+    ],
+    [
+     4,
+     "ABD",
+     "ABD",
+     "ABD",
+     "ABD",
+     3
+    ],
+    [
+     5,
+     "A",
+     "A",
+     "A",
+     "A",
+     2
+    ],
+    [
+     6,
+     "BDF",
+     "BDF",
+     "BDF",
+     "BDF",
+     3
+    ],
+    [
+     7,
+     "AC",
+     "AC",
+     "AC",
+     "ACE",
+     4
+    ],
+    [
+     8,
+     "ADE",
+     "ADE",
+     "ADE",
+     "ADE",
+     3
+    ],
+    [
+     9,
+     "B",
+     "C",
+     "B",
+     "C",
+     2
+    ],
+    [
+     10,
+     "B",
+     "B",
+     "B",
+     "B",
+     1
+    ],
+    [
+     11,
+     "A",
+     "A",
+     "A",
+     "D",
+     4
+    ]
+   ],
+   "app_affiche": [
+    [
+     "SCORE OFFICIEL",
+     "9 / 11"
+    ],
+    [
+     "SCORE PAPIER",
+     "8 / 11"
+    ],
+    [
+     "SCORE APP",
+     "9 / 11"
+    ]
+   ],
+   "bilan_fin": {
+    "bonnes": 9,
+    "sur": 11,
+    "points": 21,
+    "maxPoints": 29
+   }
+  },
+  {
+   "nom": "DUVERNAY Michel",
+   "saisie": false,
+   "app_n": 7,
+   "app_pts": 15,
+   "vrai_n": 6,
+   "vrai_pts": 14,
+   "cas": [
+    [
+     10,
+     "extremis"
+    ]
+   ],
+   "detail": [
+    [
+     1,
+     "D",
+     "D",
+     null,
+     "D",
+     2
+    ],
+    [
+     2,
+     "CDF",
+     "CDF",
+     null,
+     "CDF",
+     2
+    ],
+    [
+     3,
+     "ABCE",
+     "ABCE",
+     null,
+     "BCE",
+     3
+    ],
+    [
+     4,
+     "ABD",
+     "ABD",
+     null,
+     "ABD",
+     3
+    ],
+    [
+     5,
+     "A",
+     "A",
+     null,
+     "A",
+     2
+    ],
+    [
+     6,
+     "BDF",
+     "BDF",
+     null,
+     "BDF",
+     3
+    ],
+    [
+     7,
+     "AE",
+     "AE",
+     null,
+     "ACE",
+     4
+    ],
+    [
+     8,
+     "ACDE",
+     "ACDE",
+     null,
+     "ADE",
+     3
+    ],
+    [
+     9,
+     "C",
+     "C",
+     null,
+     "C",
+     2
+    ],
+    [
+     10,
+     "C",
+     "B",
+     null,
+     "B",
+     1
+    ],
+    [
+     11,
+     "C",
+     "C",
+     null,
+     "D",
+     4
+    ]
+   ],
+   "app_affiche": null,
+   "bilan_fin": {
+    "bonnes": 7,
+    "sur": 11,
+    "points": 15,
+    "maxPoints": 29
+   }
+  },
+  {
+   "nom": "ESNAULT Inès",
+   "saisie": true,
+   "app_n": 6,
+   "app_pts": 14,
+   "pap_n": 7,
+   "pap_pts": 16,
+   "avec_n": 7,
+   "avec_pts": 16,
+   "benef": [],
+   "ecart": 1,
+   "flag180": [
+    9
+   ],
+   "vrai_n": 7,
+   "vrai_pts": 16,
+   "cas": [
+    [
+     9,
+     "toucher"
+    ]
+   ],
+   "detail": [
+    [
+     1,
+     "D",
+     "D",
+     "D",
+     "D",
+     2
+    ],
+    [
+     2,
+     "CDF",
+     "CDF",
+     "CDF",
+     "CDF",
+     2
+    ],
+    [
+     3,
+     "BCE",
+     "BCE",
+     "BCE",
+     "BCE",
+     3
+    ],
+    [
+     4,
+     "BCD",
+     "BCD",
+     "BCD",
+     "ABD",
+     3
+    ],
+    [
+     5,
+     "A",
+     "A",
+     "A",
+     "A",
+     2
+    ],
+    [
+     6,
+     "BF",
+     "BF",
+     "BF",
+     "BDF",
+     3
+    ],
+    [
+     7,
+     "ACE",
+     "ACE",
+     "ACE",
+     "ACE",
+     4
+    ],
+    [
+     8,
+     "ADEF",
+     "ADEF",
+     "ADEF",
+     "ADE",
+     3
+    ],
+    [
+     9,
+     "C",
+     "D",
+     "C",
+     "C",
+     2
+    ],
+    [
+     10,
+     "B",
+     "B",
+     "B",
+     "B",
+     1
+    ],
+    [
+     11,
+     "A",
+     "A",
+     "A",
+     "D",
+     4
+    ]
+   ],
+   "app_affiche": [
+    [
+     "SCORE OFFICIEL",
+     "7 / 11"
+    ],
+    [
+     "SCORE PAPIER",
+     "7 / 11"
+    ],
+    [
+     "SCORE APP",
+     "6 / 11"
+    ]
+   ],
+   "bilan_fin": {
+    "bonnes": 6,
+    "sur": 11,
+    "points": 14,
+    "maxPoints": 29
+   }
+  },
+  {
+   "nom": "FOUCHER Hugo",
+   "saisie": true,
+   "app_n": 5,
+   "app_pts": 13,
+   "pap_n": 4,
+   "pap_pts": 10,
+   "avec_n": 5,
+   "avec_pts": 13,
+   "benef": [
+    4
+   ],
+   "ecart": 1,
+   "flag180": [],
+   "vrai_n": 4,
+   "vrai_pts": 10,
+   "cas": [
+    [
+     4,
+     "extremis"
+    ]
+   ],
+   "detail": [
+    [
+     1,
+     "D",
+     "D",
+     "D",
+     "D",
+     2
+    ],
+    [
+     2,
+     "CDF",
+     "CDF",
+     "CDF",
+     "CDF",
+     2
+    ],
+    [
+     3,
+     "BE",
+     "BE",
+     "BE",
+     "BCE",
+     3
+    ],
+    [
+     4,
+     "AB",
+     "ABD",
+     "AB",
+     "ABD",
+     3
+    ],
+    [
+     5,
+     "A",
+     "A",
+     "A",
+     "A",
+     2
+    ],
+    [
+     6,
+     "BDEF",
+     "BDEF",
+     "BDEF",
+     "BDF",
+     3
+    ],
+    [
+     7,
+     "ACE",
+     "ACE",
+     "ACE",
+     "ACE",
+     4
+    ],
+    [
+     8,
+     "ABDE",
+     "ABDE",
+     "ABDE",
+     "ADE",
+     3
+    ],
+    [
+     9,
+     "D",
+     "D",
+     "D",
+     "C",
+     2
+    ],
+    [
+     10,
+     "D",
+     "D",
+     "D",
+     "B",
+     1
+    ],
+    [
+     11,
+     "B",
+     "B",
+     "B",
+     "D",
+     4
+    ]
+   ],
+   "app_affiche": [
+    [
+     "SCORE OFFICIEL",
+     "5 / 11"
+    ],
+    [
+     "SCORE PAPIER",
+     "4 / 11"
+    ],
+    [
+     "SCORE APP",
+     "5 / 11"
+    ]
+   ],
+   "bilan_fin": {
+    "bonnes": 5,
+    "sur": 11,
+    "points": 13,
+    "maxPoints": 29
+   }
+  },
+  {
+   "nom": "GALLOIS Manon",
+   "saisie": true,
+   "app_n": 9,
+   "app_pts": 24,
+   "pap_n": 9,
+   "pap_pts": 24,
+   "avec_n": 9,
+   "avec_pts": 24,
+   "benef": [],
+   "ecart": 0,
+   "flag180": [],
+   "vrai_n": 9,
+   "vrai_pts": 24,
+   "cas": [],
+   "detail": [
+    [
+     1,
+     "D",
+     "D",
+     "D",
+     "D",
+     2
+    ],
+    [
+     2,
+     "CDF",
+     "CDF",
+     "CDF",
+     "CDF",
+     2
+    ],
+    [
+     3,
+     "BC",
+     "BC",
+     "BC",
+     "BCE",
+     3
+    ],
+    [
+     4,
+     "ABD",
+     "ABD",
+     "ABD",
+     "ABD",
+     3
+    ],
+    [
+     5,
+     "B",
+     "B",
+     "B",
+     "A",
+     2
+    ],
+    [
+     6,
+     "BDF",
+     "BDF",
+     "BDF",
+     "BDF",
+     3
+    ],
+    [
+     7,
+     "ACE",
+     "ACE",
+     "ACE",
+     "ACE",
+     4
+    ],
+    [
+     8,
+     "ADE",
+     "ADE",
+     "ADE",
+     "ADE",
+     3
+    ],
+    [
+     9,
+     "C",
+     "C",
+     "C",
+     "C",
+     2
+    ],
+    [
+     10,
+     "B",
+     "B",
+     "B",
+     "B",
+     1
+    ],
+    [
+     11,
+     "D",
+     "D",
+     "D",
+     "D",
+     4
+    ]
+   ],
+   "app_affiche": [
+    [
+     "SCORE OFFICIEL",
+     "9 / 11"
+    ],
+    [
+     "SCORE PAPIER",
+     "9 / 11"
+    ],
+    [
+     "SCORE APP",
+     "9 / 11"
+    ]
+   ],
+   "bilan_fin": {
+    "bonnes": 9,
+    "sur": 11,
+    "points": 24,
+    "maxPoints": 29
+   }
+  },
+  {
+   "nom": "HÉBRARD Nathan",
+   "saisie": true,
+   "app_n": 6,
+   "app_pts": 18,
+   "pap_n": 5,
+   "pap_pts": 14,
+   "avec_n": 6,
+   "avec_pts": 18,
+   "benef": [
+    11
+   ],
+   "ecart": 1,
+   "flag180": [],
+   "vrai_n": 5,
+   "vrai_pts": 14,
+   "cas": [
+    [
+     11,
+     "aucun_tab_juste"
+    ]
+   ],
+   "detail": [
+    [
+     1,
+     "D",
+     "D",
+     "D",
+     "D",
+     2
+    ],
+    [
+     2,
+     "CDF",
+     "CDF",
+     "CDF",
+     "CDF",
+     2
+    ],
+    [
+     3,
+     "BCE",
+     "BCE",
+     "BCE",
+     "BCE",
+     3
+    ],
+    [
+     4,
+     "ABD",
+     "ABD",
+     "ABD",
+     "ABD",
+     3
+    ],
+    [
+     5,
+     "D",
+     "D",
+     "D",
+     "A",
+     2
+    ],
+    [
+     6,
+     "DF",
+     "DF",
+     "DF",
+     "BDF",
+     3
+    ],
+    [
+     7,
+     "ACE",
+     "ACE",
+     "ACE",
+     "ACE",
+     4
+    ],
+    [
+     8,
+     "ACDE",
+     "ACDE",
+     "ACDE",
+     "ADE",
+     3
+    ],
+    [
+     9,
+     "D",
+     "D",
+     "D",
+     "C",
+     2
+    ],
+    [
+     10,
+     "A",
+     "A",
+     "A",
+     "B",
+     1
+    ],
+    [
+     11,
+     "aucun",
+     "D",
+     "—",
+     "D",
+     4
+    ]
+   ],
+   "app_affiche": [
+    [
+     "SCORE OFFICIEL",
+     "6 / 11"
+    ],
+    [
+     "SCORE PAPIER",
+     "5 / 11"
+    ],
+    [
+     "SCORE APP",
+     "6 / 11"
+    ]
+   ],
+   "bilan_fin": {
+    "bonnes": 6,
+    "sur": 11,
+    "points": 18,
+    "maxPoints": 29
+   }
+  },
+  {
+   "nom": "ISAMBERT Chloé",
+   "saisie": true,
+   "app_n": 9,
+   "app_pts": 23,
+   "pap_n": 9,
+   "pap_pts": 23,
+   "avec_n": 9,
+   "avec_pts": 23,
+   "benef": [],
+   "ecart": 0,
+   "flag180": [],
+   "vrai_n": 9,
+   "vrai_pts": 23,
+   "cas": [],
+   "detail": [
+    [
+     1,
+     "D",
+     "D",
+     "D",
+     "D",
+     2
+    ],
+    [
+     2,
+     "CDF",
+     "CDF",
+     "CDF",
+     "CDF",
+     2
+    ],
+    [
+     3,
+     "CE",
+     "CE",
+     "CE",
+     "BCE",
+     3
+    ],
+    [
+     4,
+     "ABD",
+     "ABD",
+     "ABD",
+     "ABD",
+     3
+    ],
+    [
+     5,
+     "A",
+     "A",
+     "A",
+     "A",
+     2
+    ],
+    [
+     6,
+     "BDF",
+     "BDF",
+     "BDF",
+     "BDF",
+     3
+    ],
+    [
+     7,
+     "ACE",
+     "ACE",
+     "ACE",
+     "ACE",
+     4
+    ],
+    [
+     8,
+     "DEF",
+     "DEF",
+     "DEF",
+     "ADE",
+     3
+    ],
+    [
+     9,
+     "C",
+     "C",
+     "C",
+     "C",
+     2
+    ],
+    [
+     10,
+     "B",
+     "B",
+     "B",
+     "B",
+     1
+    ],
+    [
+     11,
+     "D",
+     "D",
+     "D",
+     "D",
+     4
+    ]
+   ],
+   "app_affiche": [
+    [
+     "SCORE OFFICIEL",
+     "9 / 11"
+    ],
+    [
+     "SCORE PAPIER",
+     "9 / 11"
+    ],
+    [
+     "SCORE APP",
+     "9 / 11"
+    ]
+   ],
+   "bilan_fin": {
+    "bonnes": 9,
+    "sur": 11,
+    "points": 23,
+    "maxPoints": 29
+   }
+  },
+  {
+   "nom": "JOUBERT Louis",
+   "saisie": true,
+   "app_n": 7,
+   "app_pts": 17,
+   "pap_n": 8,
+   "pap_pts": 21,
+   "avec_n": 8,
+   "avec_pts": 21,
+   "benef": [],
+   "ecart": 1,
+   "flag180": [
+    7
+   ],
+   "vrai_n": 8,
+   "vrai_pts": 21,
+   "cas": [
+    [
+     7,
+     "toucher"
+    ]
+   ],
+   "detail": [
+    [
+     1,
+     "D",
+     "D",
+     "D",
+     "D",
+     2
+    ],
+    [
+     2,
+     "CDF",
+     "CDF",
+     "CDF",
+     "CDF",
+     2
+    ],
+    [
+     3,
+     "CE",
+     "CE",
+     "CE",
+     "BCE",
+     3
+    ],
+    [
+     4,
+     "ABD",
+     "ABD",
+     "ABD",
+     "ABD",
+     3
+    ],
+    [
+     5,
+     "B",
+     "B",
+     "B",
+     "A",
+     2
+    ],
+    [
+     6,
+     "BCD",
+     "BCD",
+     "BCD",
+     "BDF",
+     3
+    ],
+    [
+     7,
+     "ACE",
+     "AC",
+     "ACE",
+     "ACE",
+     4
+    ],
+    [
+     8,
+     "ADE",
+     "ADE",
+     "ADE",
+     "ADE",
+     3
+    ],
+    [
+     9,
+     "C",
+     "C",
+     "C",
+     "C",
+     2
+    ],
+    [
+     10,
+     "B",
+     "B",
+     "B",
+     "B",
+     1
+    ],
+    [
+     11,
+     "D",
+     "D",
+     "D",
+     "D",
+     4
+    ]
+   ],
+   "app_affiche": [
+    [
+     "SCORE OFFICIEL",
+     "8 / 11"
+    ],
+    [
+     "SCORE PAPIER",
+     "8 / 11"
+    ],
+    [
+     "SCORE APP",
+     "7 / 11"
+    ]
+   ],
+   "bilan_fin": {
+    "bonnes": 7,
+    "sur": 11,
+    "points": 17,
+    "maxPoints": 29
+   }
+  },
+  {
+   "nom": "LACOMBE Emma",
+   "saisie": true,
+   "app_n": 8,
+   "app_pts": 21,
+   "pap_n": 7,
+   "pap_pts": 17,
+   "avec_n": 8,
+   "avec_pts": 21,
+   "benef": [
+    11
+   ],
+   "ecart": 1,
+   "flag180": [],
+   "vrai_n": 7,
+   "vrai_pts": 17,
+   "cas": [
+    [
+     11,
+     "extremis"
+    ]
+   ],
+   "detail": [
+    [
+     1,
+     "D",
+     "D",
+     "D",
+     "D",
+     2
+    ],
+    [
+     2,
+     "CDF",
+     "CDF",
+     "CDF",
+     "CDF",
+     2
+    ],
+    [
+     3,
+     "ABCE",
+     "ABCE",
+     "ABCE",
+     "BCE",
+     3
+    ],
+    [
+     4,
+     "AB",
+     "AB",
+     "AB",
+     "ABD",
+     3
+    ],
+    [
+     5,
+     "B",
+     "B",
+     "B",
+     "A",
+     2
+    ],
+    [
+     6,
+     "BDF",
+     "BDF",
+     "BDF",
+     "BDF",
+     3
+    ],
+    [
+     7,
+     "ACE",
+     "ACE",
+     "ACE",
+     "ACE",
+     4
+    ],
+    [
+     8,
+     "ADE",
+     "ADE",
+     "ADE",
+     "ADE",
+     3
+    ],
+    [
+     9,
+     "C",
+     "C",
+     "C",
+     "C",
+     2
+    ],
+    [
+     10,
+     "B",
+     "B",
+     "B",
+     "B",
+     1
+    ],
+    [
+     11,
+     "A",
+     "D",
+     "A",
+     "D",
+     4
+    ]
+   ],
+   "app_affiche": [
+    [
+     "SCORE OFFICIEL",
+     "8 / 11"
+    ],
+    [
+     "SCORE PAPIER",
+     "7 / 11"
+    ],
+    [
+     "SCORE APP",
+     "8 / 11"
+    ]
+   ],
+   "bilan_fin": {
+    "bonnes": 8,
+    "sur": 11,
+    "points": 21,
+    "maxPoints": 29
+   }
+  },
+  {
+   "nom": "MAILLARD Noah",
+   "saisie": false,
+   "app_n": 4,
+   "app_pts": 12,
+   "vrai_n": 4,
+   "vrai_pts": 12,
+   "cas": [],
+   "detail": [
+    [
+     1,
+     "A",
+     "A",
+     null,
+     "D",
+     2
+    ],
+    [
+     2,
+     "CDF",
+     "CDF",
+     null,
+     "CDF",
+     2
+    ],
+    [
+     3,
+     "BC",
+     "BC",
+     null,
+     "BCE",
+     3
+    ],
+    [
+     4,
+     "BCD",
+     "BCD",
+     null,
+     "ABD",
+     3
+    ],
+    [
+     5,
+     "B",
+     "B",
+     null,
+     "A",
+     2
+    ],
+    [
+     6,
+     "BD",
+     "BD",
+     null,
+     "BDF",
+     3
+    ],
+    [
+     7,
+     "ACE",
+     "ACE",
+     null,
+     "ACE",
+     4
+    ],
+    [
+     8,
+     "AD",
+     "AD",
+     null,
+     "ADE",
+     3
+    ],
+    [
+     9,
+     "C",
+     "C",
+     null,
+     "C",
+     2
+    ],
+    [
+     10,
+     "C",
+     "C",
+     null,
+     "B",
+     1
+    ],
+    [
+     11,
+     "D",
+     "D",
+     null,
+     "D",
+     4
+    ]
+   ],
+   "app_affiche": null,
+   "bilan_fin": {
+    "bonnes": 4,
+    "sur": 11,
+    "points": 12,
+    "maxPoints": 29
+   }
+  },
+  {
+   "nom": "NOGARET Zoé",
+   "saisie": true,
+   "app_n": 5,
+   "app_pts": 12,
+   "pap_n": 6,
+   "pap_pts": 14,
+   "avec_n": 6,
+   "avec_pts": 14,
+   "benef": [],
+   "ecart": 1,
+   "flag180": [
+    1
+   ],
+   "vrai_n": 6,
+   "vrai_pts": 14,
+   "cas": [
+    [
+     1,
+     "toucher"
+    ]
+   ],
+   "detail": [
+    [
+     1,
+     "D",
+     "C",
+     "D",
+     "D",
+     2
+    ],
+    [
+     2,
+     "CD",
+     "CD",
+     "CD",
+     "CDF",
+     2
+    ],
+    [
+     3,
+     "BE",
+     "BE",
+     "BE",
+     "BCE",
+     3
+    ],
+    [
+     4,
+     "ABD",
+     "ABD",
+     "ABD",
+     "ABD",
+     3
+    ],
+    [
+     5,
+     "A",
+     "A",
+     "A",
+     "A",
+     2
+    ],
+    [
+     6,
+     "BDF",
+     "BDF",
+     "BDF",
+     "BDF",
+     3
+    ],
+    [
+     7,
+     "ABC",
+     "ABC",
+     "ABC",
+     "ACE",
+     4
+    ],
+    [
+     8,
+     "ADE",
+     "ADE",
+     "ADE",
+     "ADE",
+     3
+    ],
+    [
+     9,
+     "B",
+     "B",
+     "B",
+     "C",
+     2
+    ],
+    [
+     10,
+     "B",
+     "B",
+     "B",
+     "B",
+     1
+    ],
+    [
+     11,
+     "B",
+     "B",
+     "B",
+     "D",
+     4
+    ]
+   ],
+   "app_affiche": [
+    [
+     "SCORE OFFICIEL",
+     "6 / 11"
+    ],
+    [
+     "SCORE PAPIER",
+     "6 / 11"
+    ],
+    [
+     "SCORE APP",
+     "5 / 11"
+    ]
+   ],
+   "bilan_fin": {
+    "bonnes": 5,
+    "sur": 11,
+    "points": 12,
+    "maxPoints": 29
+   }
+  },
+  {
+   "nom": "OLLIVIER Sacha",
+   "saisie": true,
+   "app_n": 5,
+   "app_pts": 15,
+   "pap_n": 1,
+   "pap_pts": 3,
+   "avec_n": 5,
+   "avec_pts": 15,
+   "benef": [
+    2,
+    6,
+    7,
+    8
+   ],
+   "ecart": 4,
+   "flag180": [],
+   "vrai_n": 1,
+   "vrai_pts": 3,
+   "cas": [
+    [
+     2,
+     "extremis"
+    ],
+    [
+     6,
+     "extremis"
+    ],
+    [
+     7,
+     "extremis"
+    ],
+    [
+     8,
+     "extremis"
+    ]
+   ],
+   "detail": [
+    [
+     1,
+     "B",
+     "B",
+     "B",
+     "D",
+     2
+    ],
+    [
+     2,
+     "CD",
+     "CDF",
+     "CD",
+     "CDF",
+     2
+    ],
+    [
+     3,
+     "BCE",
+     "BCE",
+     "BCE",
+     "BCE",
+     3
+    ],
+    [
+     4,
+     "BCD",
+     "BCD",
+     "BCD",
+     "ABD",
+     3
+    ],
+    [
+     5,
+     "D",
+     "D",
+     "D",
+     "A",
+     2
+    ],
+    [
+     6,
+     "BCDF",
+     "BDF",
+     "BCDF",
+     "BDF",
+     3
+    ],
+    [
+     7,
+     "ACEF",
+     "ACE",
+     "ACEF",
+     "ACE",
+     4
+    ],
+    [
+     8,
+     "AE",
+     "ADE",
+     "AE",
+     "ADE",
+     3
+    ],
+    [
+     9,
+     "B",
+     "B",
+     "B",
+     "C",
+     2
+    ],
+    [
+     10,
+     "C",
+     "C",
+     "C",
+     "B",
+     1
+    ],
+    [
+     11,
+     "B",
+     "B",
+     "B",
+     "D",
+     4
+    ]
+   ],
+   "app_affiche": [
+    [
+     "SCORE OFFICIEL",
+     "5 / 11"
+    ],
+    [
+     "SCORE PAPIER",
+     "1 / 11"
+    ],
+    [
+     "SCORE APP",
+     "5 / 11"
+    ]
+   ],
+   "bilan_fin": {
+    "bonnes": 5,
+    "sur": 11,
+    "points": 15,
+    "maxPoints": 29
+   }
+  },
+  {
+   "nom": "PERRAUD Jade",
+   "saisie": true,
+   "app_n": 7,
+   "app_pts": 19,
+   "pap_n": 7,
+   "pap_pts": 19,
+   "avec_n": 7,
+   "avec_pts": 19,
+   "benef": [],
+   "ecart": 0,
+   "flag180": [],
+   "vrai_n": 7,
+   "vrai_pts": 19,
+   "cas": [],
+   "detail": [
+    [
+     1,
+     "D",
+     "D",
+     "D",
+     "D",
+     2
+    ],
+    [
+     2,
+     "CF",
+     "CF",
+     "CF",
+     "CDF",
+     2
+    ],
+    [
+     3,
+     "BCE",
+     "BCE",
+     "BCE",
+     "BCE",
+     3
+    ],
+    [
+     4,
+     "AB",
+     "AB",
+     "AB",
+     "ABD",
+     3
+    ],
+    [
+     5,
+     "D",
+     "D",
+     "D",
+     "A",
+     2
+    ],
+    [
+     6,
+     "BDF",
+     "BDF",
+     "BDF",
+     "BDF",
+     3
+    ],
+    [
+     7,
+     "ACE",
+     "ACE",
+     "ACE",
+     "ACE",
+     4
+    ],
+    [
+     8,
+     "ACDE",
+     "ACDE",
+     "ACDE",
+     "ADE",
+     3
+    ],
+    [
+     9,
+     "C",
+     "C",
+     "C",
+     "C",
+     2
+    ],
+    [
+     10,
+     "B",
+     "B",
+     "B",
+     "B",
+     1
+    ],
+    [
+     11,
+     "D",
+     "D",
+     "D",
+     "D",
+     4
+    ]
+   ],
+   "app_affiche": [
+    [
+     "SCORE OFFICIEL",
+     "7 / 11"
+    ],
+    [
+     "SCORE PAPIER",
+     "7 / 11"
+    ],
+    [
+     "SCORE APP",
+     "7 / 11"
+    ]
+   ],
+   "bilan_fin": {
+    "bonnes": 7,
+    "sur": 11,
+    "points": 19,
+    "maxPoints": 29
+   }
+  },
+  {
+   "nom": "QUINTON Enzo",
+   "saisie": true,
+   "app_n": 8,
+   "app_pts": 21,
+   "pap_n": 9,
+   "pap_pts": 23,
+   "avec_n": 9,
+   "avec_pts": 23,
+   "benef": [],
+   "ecart": 1,
+   "flag180": [
+    5
+   ],
+   "vrai_n": 9,
+   "vrai_pts": 23,
+   "cas": [
+    [
+     5,
+     "vide_feuille_juste"
+    ]
+   ],
+   "detail": [
+    [
+     1,
+     "B",
+     "B",
+     "B",
+     "D",
+     2
+    ],
+    [
+     2,
+     "CDF",
+     "CDF",
+     "CDF",
+     "CDF",
+     2
+    ],
+    [
+     3,
+     "BCE",
+     "BCE",
+     "BCE",
+     "BCE",
+     3
+    ],
+    [
+     4,
+     "ABD",
+     "ABD",
+     "ABD",
+     "ABD",
+     3
+    ],
+    [
+     5,
+     "A",
+     "—",
+     "A",
+     "A",
+     2
+    ],
+    [
+     6,
+     "BDF",
+     "BDF",
+     "BDF",
+     "BDF",
+     3
+    ],
+    [
+     7,
+     "ACE",
+     "ACE",
+     "ACE",
+     "ACE",
+     4
+    ],
+    [
+     8,
+     "ADE",
+     "ADE",
+     "ADE",
+     "ADE",
+     3
+    ],
+    [
+     9,
+     "C",
+     "C",
+     "C",
+     "C",
+     2
+    ],
+    [
+     10,
+     "B",
+     "B",
+     "B",
+     "B",
+     1
+    ],
+    [
+     11,
+     "A",
+     "A",
+     "A",
+     "D",
+     4
+    ]
+   ],
+   "app_affiche": [
+    [
+     "SCORE OFFICIEL",
+     "9 / 11"
+    ],
+    [
+     "SCORE PAPIER",
+     "9 / 11"
+    ],
+    [
+     "SCORE APP",
+     "8 / 11"
+    ]
+   ],
+   "bilan_fin": {
+    "bonnes": 8,
+    "sur": 11,
+    "points": 21,
+    "maxPoints": 29
+   }
+  },
+  {
+   "nom": "RAMBAUD Lina",
+   "saisie": true,
+   "app_n": 5,
+   "app_pts": 12,
+   "pap_n": 6,
+   "pap_pts": 15,
+   "avec_n": 6,
+   "avec_pts": 15,
+   "benef": [],
+   "ecart": 1,
+   "flag180": [
+    8
+   ],
+   "vrai_n": 6,
+   "vrai_pts": 15,
+   "cas": [
+    [
+     8,
+     "toucher"
+    ]
+   ],
+   "detail": [
+    [
+     1,
+     "D",
+     "D",
+     "D",
+     "D",
+     2
+    ],
+    [
+     2,
+     "BCF",
+     "BCF",
+     "BCF",
+     "CDF",
+     2
+    ],
+    [
+     3,
+     "BCE",
+     "BCE",
+     "BCE",
+     "BCE",
+     3
+    ],
+    [
+     4,
+     "ABCD",
+     "ABCD",
+     "ABCD",
+     "ABD",
+     3
+    ],
+    [
+     5,
+     "A",
+     "A",
+     "A",
+     "A",
+     2
+    ],
+    [
+     6,
+     "CDF",
+     "CDF",
+     "CDF",
+     "BDF",
+     3
+    ],
+    [
+     7,
+     "ACE",
+     "ACE",
+     "ACE",
+     "ACE",
+     4
+    ],
+    [
+     8,
+     "ADE",
+     "AD",
+     "ADE",
+     "ADE",
+     3
+    ],
+    [
+     9,
+     "B",
+     "B",
+     "B",
+     "C",
+     2
+    ],
+    [
+     10,
+     "B",
+     "B",
+     "B",
+     "B",
+     1
+    ],
+    [
+     11,
+     "B",
+     "B",
+     "B",
+     "D",
+     4
+    ]
+   ],
+   "app_affiche": [
+    [
+     "SCORE OFFICIEL",
+     "6 / 11"
+    ],
+    [
+     "SCORE PAPIER",
+     "6 / 11"
+    ],
+    [
+     "SCORE APP",
+     "5 / 11"
+    ]
+   ],
+   "bilan_fin": {
+    "bonnes": 5,
+    "sur": 11,
+    "points": 12,
+    "maxPoints": 29
+   }
+  },
+  {
+   "nom": "SABATIER Malo",
+   "saisie": true,
+   "app_n": 7,
+   "app_pts": 15,
+   "pap_n": 7,
+   "pap_pts": 15,
+   "avec_n": 7,
+   "avec_pts": 15,
+   "benef": [],
+   "ecart": 0,
+   "flag180": [],
+   "vrai_n": 7,
+   "vrai_pts": 15,
+   "cas": [],
+   "detail": [
+    [
+     1,
+     "D",
+     "D",
+     "D",
+     "D",
+     2
+    ],
+    [
+     2,
+     "CDF",
+     "CDF",
+     "CDF",
+     "CDF",
+     2
+    ],
+    [
+     3,
+     "BCE",
+     "BCE",
+     "BCE",
+     "BCE",
+     3
+    ],
+    [
+     4,
+     "ABD",
+     "ABD",
+     "ABD",
+     "ABD",
+     3
+    ],
+    [
+     5,
+     "A",
+     "A",
+     "A",
+     "A",
+     2
+    ],
+    [
+     6,
+     "DF",
+     "DF",
+     "DF",
+     "BDF",
+     3
+    ],
+    [
+     7,
+     "ACD",
+     "ACD",
+     "ACD",
+     "ACE",
+     4
+    ],
+    [
+     8,
+     "ADEF",
+     "ADEF",
+     "ADEF",
+     "ADE",
+     3
+    ],
+    [
+     9,
+     "C",
+     "C",
+     "C",
+     "C",
+     2
+    ],
+    [
+     10,
+     "B",
+     "B",
+     "B",
+     "B",
+     1
+    ],
+    [
+     11,
+     "C",
+     "C",
+     "C",
+     "D",
+     4
+    ]
+   ],
+   "app_affiche": [
+    [
+     "SCORE OFFICIEL",
+     "7 / 11"
+    ],
+    [
+     "SCORE PAPIER",
+     "7 / 11"
+    ],
+    [
+     "SCORE APP",
+     "7 / 11"
+    ]
+   ],
+   "bilan_fin": {
+    "bonnes": 7,
+    "sur": 11,
+    "points": 15,
+    "maxPoints": 29
+   }
+  },
+  {
+   "nom": "TESSIER Anna",
+   "saisie": true,
+   "app_n": 6,
+   "app_pts": 15,
+   "pap_n": 5,
+   "pap_pts": 13,
+   "avec_n": 6,
+   "avec_pts": 15,
+   "benef": [
+    1
+   ],
+   "ecart": 1,
+   "flag180": [],
+   "vrai_n": 5,
+   "vrai_pts": 13,
+   "cas": [
+    [
+     1,
+     "extremis"
+    ]
+   ],
+   "detail": [
+    [
+     1,
+     "A",
+     "D",
+     "A",
+     "D",
+     2
+    ],
+    [
+     2,
+     "CD",
+     "CD",
+     "CD",
+     "CDF",
+     2
+    ],
+    [
+     3,
+     "ABCE",
+     "ABCE",
+     "ABCE",
+     "BCE",
+     3
+    ],
+    [
+     4,
+     "ABD",
+     "ABD",
+     "ABD",
+     "ABD",
+     3
+    ],
+    [
+     5,
+     "B",
+     "B",
+     "B",
+     "A",
+     2
+    ],
+    [
+     6,
+     "BDF",
+     "BDF",
+     "BDF",
+     "BDF",
+     3
+    ],
+    [
+     7,
+     "ACE",
+     "ACE",
+     "ACE",
+     "ACE",
+     4
+    ],
+    [
+     8,
+     "DE",
+     "DE",
+     "DE",
+     "ADE",
+     3
+    ],
+    [
+     9,
+     "C",
+     "C",
+     "C",
+     "C",
+     2
+    ],
+    [
+     10,
+     "B",
+     "B",
+     "B",
+     "B",
+     1
+    ],
+    [
+     11,
+     "A",
+     "A",
+     "A",
+     "D",
+     4
+    ]
+   ],
+   "app_affiche": [
+    [
+     "SCORE OFFICIEL",
+     "6 / 11"
+    ],
+    [
+     "SCORE PAPIER",
+     "5 / 11"
+    ],
+    [
+     "SCORE APP",
+     "6 / 11"
+    ]
+   ],
+   "bilan_fin": {
+    "bonnes": 6,
+    "sur": 11,
+    "points": 15,
+    "maxPoints": 29
+   }
+  },
+  {
+   "nom": "VALLÉE Rayan",
+   "saisie": true,
+   "app_n": 4,
+   "app_pts": 8,
+   "pap_n": 4,
+   "pap_pts": 8,
+   "avec_n": 4,
+   "avec_pts": 8,
+   "benef": [],
+   "ecart": 1,
+   "flag180": [],
+   "vrai_n": 4,
+   "vrai_pts": 8,
+   "cas": [
+    [
+     3,
+     "aucun_tab_faux"
+    ]
+   ],
+   "detail": [
+    [
+     1,
+     "D",
+     "D",
+     "D",
+     "D",
+     2
+    ],
+    [
+     2,
+     "CDF",
+     "CDF",
+     "CDF",
+     "CDF",
+     2
+    ],
+    [
+     3,
+     "aucun",
+     "CE",
+     "—",
+     "BCE",
+     3
+    ],
+    [
+     4,
+     "ADF",
+     "ADF",
+     "ADF",
+     "ABD",
+     3
+    ],
+    [
+     5,
+     "A",
+     "A",
+     "A",
+     "A",
+     2
+    ],
+    [
+     6,
+     "DF",
+     "DF",
+     "DF",
+     "BDF",
+     3
+    ],
+    [
+     7,
+     "ABCE",
+     "ABCE",
+     "ABCE",
+     "ACE",
+     4
+    ],
+    [
+     8,
+     "AE",
+     "AE",
+     "AE",
+     "ADE",
+     3
+    ],
+    [
+     9,
+     "C",
+     "C",
+     "C",
+     "C",
+     2
+    ],
+    [
+     10,
+     "D",
+     "D",
+     "D",
+     "B",
+     1
+    ],
+    [
+     11,
+     "C",
+     "C",
+     "C",
+     "D",
+     4
+    ]
+   ],
+   "app_affiche": [
+    [
+     "SCORE OFFICIEL",
+     "4 / 11"
+    ],
+    [
+     "SCORE PAPIER",
+     "4 / 11"
+    ],
+    [
+     "SCORE APP",
+     "4 / 11"
+    ]
+   ],
+   "bilan_fin": {
+    "bonnes": 4,
+    "sur": 11,
+    "points": 8,
+    "maxPoints": 29
+   }
+  },
+  {
+   "nom": "WEBER Clara",
+   "saisie": true,
+   "app_n": 4,
+   "app_pts": 12,
+   "pap_n": 5,
+   "pap_pts": 14,
+   "avec_n": 5,
+   "avec_pts": 14,
+   "benef": [],
+   "ecart": 1,
+   "flag180": [
+    2
+   ],
+   "vrai_n": 5,
+   "vrai_pts": 14,
+   "cas": [
+    [
+     2,
+     "toucher"
+    ]
+   ],
+   "detail": [
+    [
+     1,
+     "A",
+     "A",
+     "A",
+     "D",
+     2
+    ],
+    [
+     2,
+     "CDF",
+     "CD",
+     "CDF",
+     "CDF",
+     2
+    ],
+    [
+     3,
+     "CE",
+     "CE",
+     "CE",
+     "BCE",
+     3
+    ],
+    [
+     4,
+     "ABD",
+     "ABD",
+     "ABD",
+     "ABD",
+     3
+    ],
+    [
+     5,
+     "A",
+     "A",
+     "A",
+     "A",
+     2
+    ],
+    [
+     6,
+     "BDF",
+     "BDF",
+     "BDF",
+     "BDF",
+     3
+    ],
+    [
+     7,
+     "ACDE",
+     "ACDE",
+     "ACDE",
+     "ACE",
+     4
+    ],
+    [
+     8,
+     "ACE",
+     "ACE",
+     "ACE",
+     "ADE",
+     3
+    ],
+    [
+     9,
+     "A",
+     "A",
+     "A",
+     "C",
+     2
+    ],
+    [
+     10,
+     "C",
+     "C",
+     "C",
+     "B",
+     1
+    ],
+    [
+     11,
+     "D",
+     "D",
+     "D",
+     "D",
+     4
+    ]
+   ],
+   "app_affiche": [
+    [
+     "SCORE OFFICIEL",
+     "5 / 11"
+    ],
+    [
+     "SCORE PAPIER",
+     "5 / 11"
+    ],
+    [
+     "SCORE APP",
+     "4 / 11"
+    ]
+   ],
+   "bilan_fin": {
+    "bonnes": 4,
+    "sur": 11,
+    "points": 12,
+    "maxPoints": 29
+   }
+  },
+  {
+   "nom": "YVON Adam",
+   "saisie": true,
+   "app_n": 5,
+   "app_pts": 15,
+   "pap_n": 5,
+   "pap_pts": 15,
+   "avec_n": 5,
+   "avec_pts": 15,
+   "benef": [],
+   "ecart": 1,
+   "flag180": [],
+   "vrai_n": 5,
+   "vrai_pts": 15,
+   "cas": [
+    [
+     10,
+     "aucun_tab_faux"
+    ]
+   ],
+   "detail": [
+    [
+     1,
+     "D",
+     "D",
+     "D",
+     "D",
+     2
+    ],
+    [
+     2,
+     "CEF",
+     "CEF",
+     "CEF",
+     "CDF",
+     2
+    ],
+    [
+     3,
+     "BCE",
+     "BCE",
+     "BCE",
+     "BCE",
+     3
+    ],
+    [
+     4,
+     "ABE",
+     "ABE",
+     "ABE",
+     "ABD",
+     3
+    ],
+    [
+     5,
+     "A",
+     "A",
+     "A",
+     "A",
+     2
+    ],
+    [
+     6,
+     "BEF",
+     "BEF",
+     "BEF",
+     "BDF",
+     3
+    ],
+    [
+     7,
+     "ACE",
+     "ACE",
+     "ACE",
+     "ACE",
+     4
+    ],
+    [
+     8,
+     "CDE",
+     "CDE",
+     "CDE",
+     "ADE",
+     3
+    ],
+    [
+     9,
+     "A",
+     "A",
+     "A",
+     "C",
+     2
+    ],
+    [
+     10,
+     "aucun",
+     "C",
+     "—",
+     "B",
+     1
+    ],
+    [
+     11,
+     "D",
+     "D",
+     "D",
+     "D",
+     4
+    ]
+   ],
+   "app_affiche": [
+    [
+     "SCORE OFFICIEL",
+     "5 / 11"
+    ],
+    [
+     "SCORE PAPIER",
+     "5 / 11"
+    ],
+    [
+     "SCORE APP",
+     "5 / 11"
+    ]
+   ],
+   "bilan_fin": {
+    "bonnes": 5,
+    "sur": 11,
+    "points": 15,
+    "maxPoints": 29
+   }
+  },
+  {
+   "nom": "ZELLER Lou",
+   "saisie": true,
+   "app_n": 3,
+   "app_pts": 8,
+   "pap_n": 3,
+   "pap_pts": 8,
+   "avec_n": 3,
+   "avec_pts": 8,
+   "benef": [],
+   "ecart": 1,
+   "flag180": [],
+   "vrai_n": 3,
+   "vrai_pts": 8,
+   "cas": [
+    [
+     10,
+     "vide_feuille_faux"
+    ]
+   ],
+   "detail": [
+    [
+     1,
+     "B",
+     "B",
+     "B",
+     "D",
+     2
+    ],
+    [
+     2,
+     "CF",
+     "CF",
+     "CF",
+     "CDF",
+     2
+    ],
+    [
+     3,
+     "ABCE",
+     "ABCE",
+     "ABCE",
+     "BCE",
+     3
+    ],
+    [
+     4,
+     "ABD",
+     "ABD",
+     "ABD",
+     "ABD",
+     3
+    ],
+    [
+     5,
+     "C",
+     "C",
+     "C",
+     "A",
+     2
+    ],
+    [
+     6,
+     "BCDF",
+     "BCDF",
+     "BCDF",
+     "BDF",
+     3
+    ],
+    [
+     7,
+     "AC",
+     "AC",
+     "AC",
+     "ACE",
+     4
+    ],
+    [
+     8,
+     "ADE",
+     "ADE",
+     "ADE",
+     "ADE",
+     3
+    ],
+    [
+     9,
+     "C",
+     "C",
+     "C",
+     "C",
+     2
+    ],
+    [
+     10,
+     "D",
+     "—",
+     "D",
+     "B",
+     1
+    ],
+    [
+     11,
+     "A",
+     "A",
+     "A",
+     "D",
+     4
+    ]
+   ],
+   "app_affiche": [
+    [
+     "SCORE OFFICIEL",
+     "3 / 11"
+    ],
+    [
+     "SCORE PAPIER",
+     "3 / 11"
+    ],
+    [
+     "SCORE APP",
+     "3 / 11"
+    ]
+   ],
+   "bilan_fin": {
+    "bonnes": 3,
+    "sur": 11,
+    "points": 8,
+    "maxPoints": 29
+   }
+  },
+  {
+   "nom": "BRUNEAU Camille",
+   "saisie": true,
+   "app_n": 1,
+   "app_pts": 2,
+   "pap_n": 2,
+   "pap_pts": 6,
+   "avec_n": 2,
+   "avec_pts": 6,
+   "benef": [],
+   "ecart": 1,
+   "flag180": [
+    7
+   ],
+   "vrai_n": 1,
+   "vrai_pts": 2,
+   "cas": [
+    [
+     7,
+     "arrangee_tab_faux"
+    ]
+   ],
+   "detail": [
+    [
+     1,
+     "D",
+     "D",
+     "D",
+     "D",
+     2
+    ],
+    [
+     2,
+     "ACDF",
+     "ACDF",
+     "ACDF",
+     "CDF",
+     2
+    ],
+    [
+     3,
+     "ABC",
+     "ABC",
+     "ABC",
+     "BCE",
+     3
+    ],
+    [
+     4,
+     "BD",
+     "BD",
+     "BD",
+     "ABD",
+     3
+    ],
+    [
+     5,
+     "B",
+     "B",
+     "B",
+     "A",
+     2
+    ],
+    [
+     6,
+     "DF",
+     "DF",
+     "DF",
+     "BDF",
+     3
+    ],
+    [
+     7,
+     "AC",
+     "AC",
+     "ACE",
+     "ACE",
+     4
+    ],
+    [
+     8,
+     "ADEF",
+     "ADEF",
+     "ADEF",
+     "ADE",
+     3
+    ],
+    [
+     9,
+     "B",
+     "B",
+     "B",
+     "C",
+     2
+    ],
+    [
+     10,
+     "C",
+     "C",
+     "C",
+     "B",
+     1
+    ],
+    [
+     11,
+     "B",
+     "B",
+     "B",
+     "D",
+     4
+    ]
+   ],
+   "app_affiche": [
+    [
+     "SCORE OFFICIEL",
+     "2 / 11"
+    ],
+    [
+     "SCORE PAPIER",
+     "2 / 11"
+    ],
+    [
+     "SCORE APP",
+     "1 / 11"
+    ]
+   ],
+   "bilan_fin": {
+    "bonnes": 1,
+    "sur": 11,
+    "points": 2,
+    "maxPoints": 29
+   }
+  },
+  {
+   "nom": "CHEVALLIER Théo",
+   "saisie": true,
+   "app_n": 7,
+   "app_pts": 18,
+   "pap_n": 7,
+   "pap_pts": 18,
+   "avec_n": 7,
+   "avec_pts": 18,
+   "benef": [],
+   "ecart": 0,
+   "flag180": [],
+   "vrai_n": 6,
+   "vrai_pts": 15,
+   "cas": [
+    [
+     3,
+     "arrangee_tab_juste"
+    ]
+   ],
+   "detail": [
+    [
+     1,
+     "C",
+     "C",
+     "C",
+     "D",
+     2
+    ],
+    [
+     2,
+     "CDF",
+     "CDF",
+     "CDF",
+     "CDF",
+     2
+    ],
+    [
+     3,
+     "ABCE",
+     "BCE",
+     "BCE",
+     "BCE",
+     3
+    ],
+    [
+     4,
+     "ABD",
+     "ABD",
+     "ABD",
+     "ABD",
+     3
+    ],
+    [
+     5,
+     "A",
+     "A",
+     "A",
+     "A",
+     2
+    ],
+    [
+     6,
+     "ABDF",
+     "ABDF",
+     "ABDF",
+     "BDF",
+     3
+    ],
+    [
+     7,
+     "ACE",
+     "ACE",
+     "ACE",
+     "ACE",
+     4
+    ],
+    [
+     8,
+     "ADE",
+     "ADE",
+     "ADE",
+     "ADE",
+     3
+    ],
+    [
+     9,
+     "A",
+     "A",
+     "A",
+     "C",
+     2
+    ],
+    [
+     10,
+     "B",
+     "B",
+     "B",
+     "B",
+     1
+    ],
+    [
+     11,
+     "B",
+     "B",
+     "B",
+     "D",
+     4
+    ]
+   ],
+   "app_affiche": [
+    [
+     "SCORE OFFICIEL",
+     "7 / 11"
+    ],
+    [
+     "SCORE PAPIER",
+     "7 / 11"
+    ],
+    [
+     "SCORE APP",
+     "7 / 11"
+    ]
+   ],
+   "bilan_fin": {
+    "bonnes": 7,
+    "sur": 11,
+    "points": 18,
+    "maxPoints": 29
+   }
+  }
+ ]
+}

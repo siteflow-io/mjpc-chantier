@@ -1,0 +1,4409 @@
+{
+ "eleves": [
+  {
+   "nomComplet": "ABRIAL Julien",
+   "nom": "ABRIAL",
+   "prenom": "Julien",
+   "saisie_faite": true,
+   "questions": [
+    {
+     "feuille": [
+      3
+     ],
+     "tablette": [
+      3
+     ],
+     "saisie": [
+      3
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      2,
+      3,
+      5
+     ],
+     "tablette": [
+      2,
+      3,
+      5
+     ],
+     "saisie": [
+      2,
+      3,
+      5
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      2,
+      4
+     ],
+     "tablette": [
+      2,
+      4
+     ],
+     "saisie": [
+      2,
+      4
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      1,
+      3
+     ],
+     "tablette": [
+      0,
+      1,
+      3
+     ],
+     "saisie": [
+      0,
+      1,
+      3
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0
+     ],
+     "tablette": [
+      0
+     ],
+     "saisie": [
+      0
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      1,
+      3,
+      5
+     ],
+     "tablette": [
+      1,
+      3,
+      5
+     ],
+     "saisie": [
+      1,
+      3,
+      5
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      1,
+      2,
+      4
+     ],
+     "tablette": [
+      0,
+      1,
+      2,
+      4
+     ],
+     "saisie": [
+      0,
+      1,
+      2,
+      4
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      3,
+      4
+     ],
+     "tablette": [
+      0,
+      3,
+      4
+     ],
+     "saisie": [
+      0,
+      3,
+      4
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      2
+     ],
+     "tablette": [
+      2
+     ],
+     "saisie": [
+      2
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      1
+     ],
+     "tablette": [
+      1
+     ],
+     "saisie": [
+      1
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      3
+     ],
+     "tablette": [
+      3
+     ],
+     "saisie": [
+      3
+     ],
+     "cas": null
+    }
+   ]
+  },
+  {
+   "nomComplet": "BAUDRY Léa",
+   "nom": "BAUDRY",
+   "prenom": "Léa",
+   "saisie_faite": true,
+   "questions": [
+    {
+     "feuille": [
+      3
+     ],
+     "tablette": [
+      3
+     ],
+     "saisie": [
+      3
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      1,
+      2,
+      5
+     ],
+     "tablette": [
+      1,
+      2,
+      5
+     ],
+     "saisie": [
+      1,
+      2,
+      5
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      1,
+      2,
+      4
+     ],
+     "tablette": [
+      1,
+      2
+     ],
+     "saisie": [
+      1,
+      2,
+      4
+     ],
+     "cas": "toucher"
+    },
+    {
+     "feuille": [
+      0,
+      1
+     ],
+     "tablette": [
+      0,
+      1
+     ],
+     "saisie": [
+      0,
+      1
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0
+     ],
+     "tablette": [
+      0
+     ],
+     "saisie": [
+      0
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      1,
+      3,
+      5
+     ],
+     "tablette": [
+      1,
+      3,
+      5
+     ],
+     "saisie": [
+      1,
+      3,
+      5
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      2,
+      4
+     ],
+     "tablette": [
+      0,
+      2,
+      4
+     ],
+     "saisie": [
+      0,
+      2,
+      4
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      3,
+      4
+     ],
+     "tablette": [
+      0,
+      3,
+      4
+     ],
+     "saisie": [
+      0,
+      3,
+      4
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      3
+     ],
+     "tablette": [
+      3
+     ],
+     "saisie": [
+      3
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      1
+     ],
+     "tablette": [
+      1
+     ],
+     "saisie": [
+      1
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      1
+     ],
+     "tablette": [
+      1
+     ],
+     "saisie": [
+      1
+     ],
+     "cas": null
+    }
+   ]
+  },
+  {
+   "nomComplet": "CARRÉ Tom",
+   "nom": "CARRÉ",
+   "prenom": "Tom",
+   "saisie_faite": true,
+   "questions": [
+    {
+     "feuille": [
+      3
+     ],
+     "tablette": [
+      3
+     ],
+     "saisie": [
+      3
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      2,
+      3,
+      5
+     ],
+     "tablette": [
+      2,
+      3,
+      5
+     ],
+     "saisie": [
+      2,
+      3,
+      5
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      1,
+      2,
+      4
+     ],
+     "tablette": [
+      1,
+      2,
+      4
+     ],
+     "saisie": [
+      1,
+      2,
+      4
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      1,
+      3
+     ],
+     "tablette": [
+      0,
+      1,
+      3
+     ],
+     "saisie": [
+      0,
+      1,
+      3
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0
+     ],
+     "tablette": [
+      0
+     ],
+     "saisie": [
+      0
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      1,
+      3,
+      5
+     ],
+     "tablette": [
+      1,
+      3,
+      5
+     ],
+     "saisie": [
+      1,
+      3,
+      5
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      2
+     ],
+     "tablette": [
+      0,
+      2
+     ],
+     "saisie": [
+      0,
+      2
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      3,
+      4
+     ],
+     "tablette": [
+      0,
+      3,
+      4
+     ],
+     "saisie": [
+      0,
+      3,
+      4
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      1
+     ],
+     "tablette": [
+      2
+     ],
+     "saisie": [
+      1
+     ],
+     "cas": "extremis"
+    },
+    {
+     "feuille": [
+      1
+     ],
+     "tablette": [
+      1
+     ],
+     "saisie": [
+      1
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0
+     ],
+     "tablette": [
+      0
+     ],
+     "saisie": [
+      0
+     ],
+     "cas": null
+    }
+   ]
+  },
+  {
+   "nomComplet": "DUVERNAY Michel",
+   "nom": "DUVERNAY",
+   "prenom": "Michel",
+   "saisie_faite": false,
+   "questions": [
+    {
+     "feuille": [
+      3
+     ],
+     "tablette": [
+      3
+     ],
+     "saisie": [
+      3
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      2,
+      3,
+      5
+     ],
+     "tablette": [
+      2,
+      3,
+      5
+     ],
+     "saisie": [
+      2,
+      3,
+      5
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      1,
+      2,
+      4
+     ],
+     "tablette": [
+      0,
+      1,
+      2,
+      4
+     ],
+     "saisie": [
+      0,
+      1,
+      2,
+      4
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      1,
+      3
+     ],
+     "tablette": [
+      0,
+      1,
+      3
+     ],
+     "saisie": [
+      0,
+      1,
+      3
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0
+     ],
+     "tablette": [
+      0
+     ],
+     "saisie": [
+      0
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      1,
+      3,
+      5
+     ],
+     "tablette": [
+      1,
+      3,
+      5
+     ],
+     "saisie": [
+      1,
+      3,
+      5
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      4
+     ],
+     "tablette": [
+      0,
+      4
+     ],
+     "saisie": [
+      0,
+      4
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      2,
+      3,
+      4
+     ],
+     "tablette": [
+      0,
+      2,
+      3,
+      4
+     ],
+     "saisie": [
+      0,
+      2,
+      3,
+      4
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      2
+     ],
+     "tablette": [
+      2
+     ],
+     "saisie": [
+      2
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      2
+     ],
+     "tablette": [
+      1
+     ],
+     "saisie": [
+      2
+     ],
+     "cas": "extremis"
+    },
+    {
+     "feuille": [
+      2
+     ],
+     "tablette": [
+      2
+     ],
+     "saisie": [
+      2
+     ],
+     "cas": null
+    }
+   ]
+  },
+  {
+   "nomComplet": "ESNAULT Inès",
+   "nom": "ESNAULT",
+   "prenom": "Inès",
+   "saisie_faite": true,
+   "questions": [
+    {
+     "feuille": [
+      3
+     ],
+     "tablette": [
+      3
+     ],
+     "saisie": [
+      3
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      2,
+      3,
+      5
+     ],
+     "tablette": [
+      2,
+      3,
+      5
+     ],
+     "saisie": [
+      2,
+      3,
+      5
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      1,
+      2,
+      4
+     ],
+     "tablette": [
+      1,
+      2,
+      4
+     ],
+     "saisie": [
+      1,
+      2,
+      4
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      1,
+      2,
+      3
+     ],
+     "tablette": [
+      1,
+      2,
+      3
+     ],
+     "saisie": [
+      1,
+      2,
+      3
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0
+     ],
+     "tablette": [
+      0
+     ],
+     "saisie": [
+      0
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      1,
+      5
+     ],
+     "tablette": [
+      1,
+      5
+     ],
+     "saisie": [
+      1,
+      5
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      2,
+      4
+     ],
+     "tablette": [
+      0,
+      2,
+      4
+     ],
+     "saisie": [
+      0,
+      2,
+      4
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      3,
+      4,
+      5
+     ],
+     "tablette": [
+      0,
+      3,
+      4,
+      5
+     ],
+     "saisie": [
+      0,
+      3,
+      4,
+      5
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      2
+     ],
+     "tablette": [
+      3
+     ],
+     "saisie": [
+      2
+     ],
+     "cas": "toucher"
+    },
+    {
+     "feuille": [
+      1
+     ],
+     "tablette": [
+      1
+     ],
+     "saisie": [
+      1
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0
+     ],
+     "tablette": [
+      0
+     ],
+     "saisie": [
+      0
+     ],
+     "cas": null
+    }
+   ]
+  },
+  {
+   "nomComplet": "FOUCHER Hugo",
+   "nom": "FOUCHER",
+   "prenom": "Hugo",
+   "saisie_faite": true,
+   "questions": [
+    {
+     "feuille": [
+      3
+     ],
+     "tablette": [
+      3
+     ],
+     "saisie": [
+      3
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      2,
+      3,
+      5
+     ],
+     "tablette": [
+      2,
+      3,
+      5
+     ],
+     "saisie": [
+      2,
+      3,
+      5
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      1,
+      4
+     ],
+     "tablette": [
+      1,
+      4
+     ],
+     "saisie": [
+      1,
+      4
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      1
+     ],
+     "tablette": [
+      0,
+      1,
+      3
+     ],
+     "saisie": [
+      0,
+      1
+     ],
+     "cas": "extremis"
+    },
+    {
+     "feuille": [
+      0
+     ],
+     "tablette": [
+      0
+     ],
+     "saisie": [
+      0
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      1,
+      3,
+      4,
+      5
+     ],
+     "tablette": [
+      1,
+      3,
+      4,
+      5
+     ],
+     "saisie": [
+      1,
+      3,
+      4,
+      5
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      2,
+      4
+     ],
+     "tablette": [
+      0,
+      2,
+      4
+     ],
+     "saisie": [
+      0,
+      2,
+      4
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      1,
+      3,
+      4
+     ],
+     "tablette": [
+      0,
+      1,
+      3,
+      4
+     ],
+     "saisie": [
+      0,
+      1,
+      3,
+      4
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      3
+     ],
+     "tablette": [
+      3
+     ],
+     "saisie": [
+      3
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      3
+     ],
+     "tablette": [
+      3
+     ],
+     "saisie": [
+      3
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      1
+     ],
+     "tablette": [
+      1
+     ],
+     "saisie": [
+      1
+     ],
+     "cas": null
+    }
+   ]
+  },
+  {
+   "nomComplet": "GALLOIS Manon",
+   "nom": "GALLOIS",
+   "prenom": "Manon",
+   "saisie_faite": true,
+   "questions": [
+    {
+     "feuille": [
+      3
+     ],
+     "tablette": [
+      3
+     ],
+     "saisie": [
+      3
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      2,
+      3,
+      5
+     ],
+     "tablette": [
+      2,
+      3,
+      5
+     ],
+     "saisie": [
+      2,
+      3,
+      5
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      1,
+      2
+     ],
+     "tablette": [
+      1,
+      2
+     ],
+     "saisie": [
+      1,
+      2
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      1,
+      3
+     ],
+     "tablette": [
+      0,
+      1,
+      3
+     ],
+     "saisie": [
+      0,
+      1,
+      3
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      1
+     ],
+     "tablette": [
+      1
+     ],
+     "saisie": [
+      1
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      1,
+      3,
+      5
+     ],
+     "tablette": [
+      1,
+      3,
+      5
+     ],
+     "saisie": [
+      1,
+      3,
+      5
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      2,
+      4
+     ],
+     "tablette": [
+      0,
+      2,
+      4
+     ],
+     "saisie": [
+      0,
+      2,
+      4
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      3,
+      4
+     ],
+     "tablette": [
+      0,
+      3,
+      4
+     ],
+     "saisie": [
+      0,
+      3,
+      4
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      2
+     ],
+     "tablette": [
+      2
+     ],
+     "saisie": [
+      2
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      1
+     ],
+     "tablette": [
+      1
+     ],
+     "saisie": [
+      1
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      3
+     ],
+     "tablette": [
+      3
+     ],
+     "saisie": [
+      3
+     ],
+     "cas": null
+    }
+   ]
+  },
+  {
+   "nomComplet": "HÉBRARD Nathan",
+   "nom": "HÉBRARD",
+   "prenom": "Nathan",
+   "saisie_faite": true,
+   "questions": [
+    {
+     "feuille": [
+      3
+     ],
+     "tablette": [
+      3
+     ],
+     "saisie": [
+      3
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      2,
+      3,
+      5
+     ],
+     "tablette": [
+      2,
+      3,
+      5
+     ],
+     "saisie": [
+      2,
+      3,
+      5
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      1,
+      2,
+      4
+     ],
+     "tablette": [
+      1,
+      2,
+      4
+     ],
+     "saisie": [
+      1,
+      2,
+      4
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      1,
+      3
+     ],
+     "tablette": [
+      0,
+      1,
+      3
+     ],
+     "saisie": [
+      0,
+      1,
+      3
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      3
+     ],
+     "tablette": [
+      3
+     ],
+     "saisie": [
+      3
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      3,
+      5
+     ],
+     "tablette": [
+      3,
+      5
+     ],
+     "saisie": [
+      3,
+      5
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      2,
+      4
+     ],
+     "tablette": [
+      0,
+      2,
+      4
+     ],
+     "saisie": [
+      0,
+      2,
+      4
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      2,
+      3,
+      4
+     ],
+     "tablette": [
+      0,
+      2,
+      3,
+      4
+     ],
+     "saisie": [
+      0,
+      2,
+      3,
+      4
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      3
+     ],
+     "tablette": [
+      3
+     ],
+     "saisie": [
+      3
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0
+     ],
+     "tablette": [
+      0
+     ],
+     "saisie": [
+      0
+     ],
+     "cas": null
+    },
+    {
+     "feuille": "aucun",
+     "tablette": [
+      3
+     ],
+     "saisie": [],
+     "cas": "aucun_tab_juste"
+    }
+   ]
+  },
+  {
+   "nomComplet": "ISAMBERT Chloé",
+   "nom": "ISAMBERT",
+   "prenom": "Chloé",
+   "saisie_faite": true,
+   "questions": [
+    {
+     "feuille": [
+      3
+     ],
+     "tablette": [
+      3
+     ],
+     "saisie": [
+      3
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      2,
+      3,
+      5
+     ],
+     "tablette": [
+      2,
+      3,
+      5
+     ],
+     "saisie": [
+      2,
+      3,
+      5
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      2,
+      4
+     ],
+     "tablette": [
+      2,
+      4
+     ],
+     "saisie": [
+      2,
+      4
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      1,
+      3
+     ],
+     "tablette": [
+      0,
+      1,
+      3
+     ],
+     "saisie": [
+      0,
+      1,
+      3
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0
+     ],
+     "tablette": [
+      0
+     ],
+     "saisie": [
+      0
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      1,
+      3,
+      5
+     ],
+     "tablette": [
+      1,
+      3,
+      5
+     ],
+     "saisie": [
+      1,
+      3,
+      5
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      2,
+      4
+     ],
+     "tablette": [
+      0,
+      2,
+      4
+     ],
+     "saisie": [
+      0,
+      2,
+      4
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      3,
+      4,
+      5
+     ],
+     "tablette": [
+      3,
+      4,
+      5
+     ],
+     "saisie": [
+      3,
+      4,
+      5
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      2
+     ],
+     "tablette": [
+      2
+     ],
+     "saisie": [
+      2
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      1
+     ],
+     "tablette": [
+      1
+     ],
+     "saisie": [
+      1
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      3
+     ],
+     "tablette": [
+      3
+     ],
+     "saisie": [
+      3
+     ],
+     "cas": null
+    }
+   ]
+  },
+  {
+   "nomComplet": "JOUBERT Louis",
+   "nom": "JOUBERT",
+   "prenom": "Louis",
+   "saisie_faite": true,
+   "questions": [
+    {
+     "feuille": [
+      3
+     ],
+     "tablette": [
+      3
+     ],
+     "saisie": [
+      3
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      2,
+      3,
+      5
+     ],
+     "tablette": [
+      2,
+      3,
+      5
+     ],
+     "saisie": [
+      2,
+      3,
+      5
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      2,
+      4
+     ],
+     "tablette": [
+      2,
+      4
+     ],
+     "saisie": [
+      2,
+      4
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      1,
+      3
+     ],
+     "tablette": [
+      0,
+      1,
+      3
+     ],
+     "saisie": [
+      0,
+      1,
+      3
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      1
+     ],
+     "tablette": [
+      1
+     ],
+     "saisie": [
+      1
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      1,
+      2,
+      3
+     ],
+     "tablette": [
+      1,
+      2,
+      3
+     ],
+     "saisie": [
+      1,
+      2,
+      3
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      2,
+      4
+     ],
+     "tablette": [
+      0,
+      2
+     ],
+     "saisie": [
+      0,
+      2,
+      4
+     ],
+     "cas": "toucher"
+    },
+    {
+     "feuille": [
+      0,
+      3,
+      4
+     ],
+     "tablette": [
+      0,
+      3,
+      4
+     ],
+     "saisie": [
+      0,
+      3,
+      4
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      2
+     ],
+     "tablette": [
+      2
+     ],
+     "saisie": [
+      2
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      1
+     ],
+     "tablette": [
+      1
+     ],
+     "saisie": [
+      1
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      3
+     ],
+     "tablette": [
+      3
+     ],
+     "saisie": [
+      3
+     ],
+     "cas": null
+    }
+   ]
+  },
+  {
+   "nomComplet": "LACOMBE Emma",
+   "nom": "LACOMBE",
+   "prenom": "Emma",
+   "saisie_faite": true,
+   "questions": [
+    {
+     "feuille": [
+      3
+     ],
+     "tablette": [
+      3
+     ],
+     "saisie": [
+      3
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      2,
+      3,
+      5
+     ],
+     "tablette": [
+      2,
+      3,
+      5
+     ],
+     "saisie": [
+      2,
+      3,
+      5
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      1,
+      2,
+      4
+     ],
+     "tablette": [
+      0,
+      1,
+      2,
+      4
+     ],
+     "saisie": [
+      0,
+      1,
+      2,
+      4
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      1
+     ],
+     "tablette": [
+      0,
+      1
+     ],
+     "saisie": [
+      0,
+      1
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      1
+     ],
+     "tablette": [
+      1
+     ],
+     "saisie": [
+      1
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      1,
+      3,
+      5
+     ],
+     "tablette": [
+      1,
+      3,
+      5
+     ],
+     "saisie": [
+      1,
+      3,
+      5
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      2,
+      4
+     ],
+     "tablette": [
+      0,
+      2,
+      4
+     ],
+     "saisie": [
+      0,
+      2,
+      4
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      3,
+      4
+     ],
+     "tablette": [
+      0,
+      3,
+      4
+     ],
+     "saisie": [
+      0,
+      3,
+      4
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      2
+     ],
+     "tablette": [
+      2
+     ],
+     "saisie": [
+      2
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      1
+     ],
+     "tablette": [
+      1
+     ],
+     "saisie": [
+      1
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0
+     ],
+     "tablette": [
+      3
+     ],
+     "saisie": [
+      0
+     ],
+     "cas": "extremis"
+    }
+   ]
+  },
+  {
+   "nomComplet": "MAILLARD Noah",
+   "nom": "MAILLARD",
+   "prenom": "Noah",
+   "saisie_faite": false,
+   "questions": [
+    {
+     "feuille": [
+      0
+     ],
+     "tablette": [
+      0
+     ],
+     "saisie": [
+      0
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      2,
+      3,
+      5
+     ],
+     "tablette": [
+      2,
+      3,
+      5
+     ],
+     "saisie": [
+      2,
+      3,
+      5
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      1,
+      2
+     ],
+     "tablette": [
+      1,
+      2
+     ],
+     "saisie": [
+      1,
+      2
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      1,
+      2,
+      3
+     ],
+     "tablette": [
+      1,
+      2,
+      3
+     ],
+     "saisie": [
+      1,
+      2,
+      3
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      1
+     ],
+     "tablette": [
+      1
+     ],
+     "saisie": [
+      1
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      1,
+      3
+     ],
+     "tablette": [
+      1,
+      3
+     ],
+     "saisie": [
+      1,
+      3
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      2,
+      4
+     ],
+     "tablette": [
+      0,
+      2,
+      4
+     ],
+     "saisie": [
+      0,
+      2,
+      4
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      3
+     ],
+     "tablette": [
+      0,
+      3
+     ],
+     "saisie": [
+      0,
+      3
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      2
+     ],
+     "tablette": [
+      2
+     ],
+     "saisie": [
+      2
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      2
+     ],
+     "tablette": [
+      2
+     ],
+     "saisie": [
+      2
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      3
+     ],
+     "tablette": [
+      3
+     ],
+     "saisie": [
+      3
+     ],
+     "cas": null
+    }
+   ]
+  },
+  {
+   "nomComplet": "NOGARET Zoé",
+   "nom": "NOGARET",
+   "prenom": "Zoé",
+   "saisie_faite": true,
+   "questions": [
+    {
+     "feuille": [
+      3
+     ],
+     "tablette": [
+      2
+     ],
+     "saisie": [
+      3
+     ],
+     "cas": "toucher"
+    },
+    {
+     "feuille": [
+      2,
+      3
+     ],
+     "tablette": [
+      2,
+      3
+     ],
+     "saisie": [
+      2,
+      3
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      1,
+      4
+     ],
+     "tablette": [
+      1,
+      4
+     ],
+     "saisie": [
+      1,
+      4
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      1,
+      3
+     ],
+     "tablette": [
+      0,
+      1,
+      3
+     ],
+     "saisie": [
+      0,
+      1,
+      3
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0
+     ],
+     "tablette": [
+      0
+     ],
+     "saisie": [
+      0
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      1,
+      3,
+      5
+     ],
+     "tablette": [
+      1,
+      3,
+      5
+     ],
+     "saisie": [
+      1,
+      3,
+      5
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      1,
+      2
+     ],
+     "tablette": [
+      0,
+      1,
+      2
+     ],
+     "saisie": [
+      0,
+      1,
+      2
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      3,
+      4
+     ],
+     "tablette": [
+      0,
+      3,
+      4
+     ],
+     "saisie": [
+      0,
+      3,
+      4
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      1
+     ],
+     "tablette": [
+      1
+     ],
+     "saisie": [
+      1
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      1
+     ],
+     "tablette": [
+      1
+     ],
+     "saisie": [
+      1
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      1
+     ],
+     "tablette": [
+      1
+     ],
+     "saisie": [
+      1
+     ],
+     "cas": null
+    }
+   ]
+  },
+  {
+   "nomComplet": "OLLIVIER Sacha",
+   "nom": "OLLIVIER",
+   "prenom": "Sacha",
+   "saisie_faite": true,
+   "questions": [
+    {
+     "feuille": [
+      1
+     ],
+     "tablette": [
+      1
+     ],
+     "saisie": [
+      1
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      2,
+      3
+     ],
+     "tablette": [
+      2,
+      3,
+      5
+     ],
+     "saisie": [
+      2,
+      3
+     ],
+     "cas": "extremis"
+    },
+    {
+     "feuille": [
+      1,
+      2,
+      4
+     ],
+     "tablette": [
+      1,
+      2,
+      4
+     ],
+     "saisie": [
+      1,
+      2,
+      4
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      1,
+      2,
+      3
+     ],
+     "tablette": [
+      1,
+      2,
+      3
+     ],
+     "saisie": [
+      1,
+      2,
+      3
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      3
+     ],
+     "tablette": [
+      3
+     ],
+     "saisie": [
+      3
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      1,
+      2,
+      3,
+      5
+     ],
+     "tablette": [
+      1,
+      3,
+      5
+     ],
+     "saisie": [
+      1,
+      2,
+      3,
+      5
+     ],
+     "cas": "extremis"
+    },
+    {
+     "feuille": [
+      0,
+      2,
+      4,
+      5
+     ],
+     "tablette": [
+      0,
+      2,
+      4
+     ],
+     "saisie": [
+      0,
+      2,
+      4,
+      5
+     ],
+     "cas": "extremis"
+    },
+    {
+     "feuille": [
+      0,
+      4
+     ],
+     "tablette": [
+      0,
+      3,
+      4
+     ],
+     "saisie": [
+      0,
+      4
+     ],
+     "cas": "extremis"
+    },
+    {
+     "feuille": [
+      1
+     ],
+     "tablette": [
+      1
+     ],
+     "saisie": [
+      1
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      2
+     ],
+     "tablette": [
+      2
+     ],
+     "saisie": [
+      2
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      1
+     ],
+     "tablette": [
+      1
+     ],
+     "saisie": [
+      1
+     ],
+     "cas": null
+    }
+   ]
+  },
+  {
+   "nomComplet": "PERRAUD Jade",
+   "nom": "PERRAUD",
+   "prenom": "Jade",
+   "saisie_faite": true,
+   "questions": [
+    {
+     "feuille": [
+      3
+     ],
+     "tablette": [
+      3
+     ],
+     "saisie": [
+      3
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      2,
+      5
+     ],
+     "tablette": [
+      2,
+      5
+     ],
+     "saisie": [
+      2,
+      5
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      1,
+      2,
+      4
+     ],
+     "tablette": [
+      1,
+      2,
+      4
+     ],
+     "saisie": [
+      1,
+      2,
+      4
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      1
+     ],
+     "tablette": [
+      0,
+      1
+     ],
+     "saisie": [
+      0,
+      1
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      3
+     ],
+     "tablette": [
+      3
+     ],
+     "saisie": [
+      3
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      1,
+      3,
+      5
+     ],
+     "tablette": [
+      1,
+      3,
+      5
+     ],
+     "saisie": [
+      1,
+      3,
+      5
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      2,
+      4
+     ],
+     "tablette": [
+      0,
+      2,
+      4
+     ],
+     "saisie": [
+      0,
+      2,
+      4
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      2,
+      3,
+      4
+     ],
+     "tablette": [
+      0,
+      2,
+      3,
+      4
+     ],
+     "saisie": [
+      0,
+      2,
+      3,
+      4
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      2
+     ],
+     "tablette": [
+      2
+     ],
+     "saisie": [
+      2
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      1
+     ],
+     "tablette": [
+      1
+     ],
+     "saisie": [
+      1
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      3
+     ],
+     "tablette": [
+      3
+     ],
+     "saisie": [
+      3
+     ],
+     "cas": null
+    }
+   ]
+  },
+  {
+   "nomComplet": "QUINTON Enzo",
+   "nom": "QUINTON",
+   "prenom": "Enzo",
+   "saisie_faite": true,
+   "questions": [
+    {
+     "feuille": [
+      1
+     ],
+     "tablette": [
+      1
+     ],
+     "saisie": [
+      1
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      2,
+      3,
+      5
+     ],
+     "tablette": [
+      2,
+      3,
+      5
+     ],
+     "saisie": [
+      2,
+      3,
+      5
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      1,
+      2,
+      4
+     ],
+     "tablette": [
+      1,
+      2,
+      4
+     ],
+     "saisie": [
+      1,
+      2,
+      4
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      1,
+      3
+     ],
+     "tablette": [
+      0,
+      1,
+      3
+     ],
+     "saisie": [
+      0,
+      1,
+      3
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0
+     ],
+     "tablette": null,
+     "saisie": [
+      0
+     ],
+     "cas": "vide_feuille_juste"
+    },
+    {
+     "feuille": [
+      1,
+      3,
+      5
+     ],
+     "tablette": [
+      1,
+      3,
+      5
+     ],
+     "saisie": [
+      1,
+      3,
+      5
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      2,
+      4
+     ],
+     "tablette": [
+      0,
+      2,
+      4
+     ],
+     "saisie": [
+      0,
+      2,
+      4
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      3,
+      4
+     ],
+     "tablette": [
+      0,
+      3,
+      4
+     ],
+     "saisie": [
+      0,
+      3,
+      4
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      2
+     ],
+     "tablette": [
+      2
+     ],
+     "saisie": [
+      2
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      1
+     ],
+     "tablette": [
+      1
+     ],
+     "saisie": [
+      1
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0
+     ],
+     "tablette": [
+      0
+     ],
+     "saisie": [
+      0
+     ],
+     "cas": null
+    }
+   ]
+  },
+  {
+   "nomComplet": "RAMBAUD Lina",
+   "nom": "RAMBAUD",
+   "prenom": "Lina",
+   "saisie_faite": true,
+   "questions": [
+    {
+     "feuille": [
+      3
+     ],
+     "tablette": [
+      3
+     ],
+     "saisie": [
+      3
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      1,
+      2,
+      5
+     ],
+     "tablette": [
+      1,
+      2,
+      5
+     ],
+     "saisie": [
+      1,
+      2,
+      5
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      1,
+      2,
+      4
+     ],
+     "tablette": [
+      1,
+      2,
+      4
+     ],
+     "saisie": [
+      1,
+      2,
+      4
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      1,
+      2,
+      3
+     ],
+     "tablette": [
+      0,
+      1,
+      2,
+      3
+     ],
+     "saisie": [
+      0,
+      1,
+      2,
+      3
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0
+     ],
+     "tablette": [
+      0
+     ],
+     "saisie": [
+      0
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      2,
+      3,
+      5
+     ],
+     "tablette": [
+      2,
+      3,
+      5
+     ],
+     "saisie": [
+      2,
+      3,
+      5
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      2,
+      4
+     ],
+     "tablette": [
+      0,
+      2,
+      4
+     ],
+     "saisie": [
+      0,
+      2,
+      4
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      3,
+      4
+     ],
+     "tablette": [
+      0,
+      3
+     ],
+     "saisie": [
+      0,
+      3,
+      4
+     ],
+     "cas": "toucher"
+    },
+    {
+     "feuille": [
+      1
+     ],
+     "tablette": [
+      1
+     ],
+     "saisie": [
+      1
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      1
+     ],
+     "tablette": [
+      1
+     ],
+     "saisie": [
+      1
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      1
+     ],
+     "tablette": [
+      1
+     ],
+     "saisie": [
+      1
+     ],
+     "cas": null
+    }
+   ]
+  },
+  {
+   "nomComplet": "SABATIER Malo",
+   "nom": "SABATIER",
+   "prenom": "Malo",
+   "saisie_faite": true,
+   "questions": [
+    {
+     "feuille": [
+      3
+     ],
+     "tablette": [
+      3
+     ],
+     "saisie": [
+      3
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      2,
+      3,
+      5
+     ],
+     "tablette": [
+      2,
+      3,
+      5
+     ],
+     "saisie": [
+      2,
+      3,
+      5
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      1,
+      2,
+      4
+     ],
+     "tablette": [
+      1,
+      2,
+      4
+     ],
+     "saisie": [
+      1,
+      2,
+      4
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      1,
+      3
+     ],
+     "tablette": [
+      0,
+      1,
+      3
+     ],
+     "saisie": [
+      0,
+      1,
+      3
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0
+     ],
+     "tablette": [
+      0
+     ],
+     "saisie": [
+      0
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      3,
+      5
+     ],
+     "tablette": [
+      3,
+      5
+     ],
+     "saisie": [
+      3,
+      5
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      2,
+      3
+     ],
+     "tablette": [
+      0,
+      2,
+      3
+     ],
+     "saisie": [
+      0,
+      2,
+      3
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      3,
+      4,
+      5
+     ],
+     "tablette": [
+      0,
+      3,
+      4,
+      5
+     ],
+     "saisie": [
+      0,
+      3,
+      4,
+      5
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      2
+     ],
+     "tablette": [
+      2
+     ],
+     "saisie": [
+      2
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      1
+     ],
+     "tablette": [
+      1
+     ],
+     "saisie": [
+      1
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      2
+     ],
+     "tablette": [
+      2
+     ],
+     "saisie": [
+      2
+     ],
+     "cas": null
+    }
+   ]
+  },
+  {
+   "nomComplet": "TESSIER Anna",
+   "nom": "TESSIER",
+   "prenom": "Anna",
+   "saisie_faite": true,
+   "questions": [
+    {
+     "feuille": [
+      0
+     ],
+     "tablette": [
+      3
+     ],
+     "saisie": [
+      0
+     ],
+     "cas": "extremis"
+    },
+    {
+     "feuille": [
+      2,
+      3
+     ],
+     "tablette": [
+      2,
+      3
+     ],
+     "saisie": [
+      2,
+      3
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      1,
+      2,
+      4
+     ],
+     "tablette": [
+      0,
+      1,
+      2,
+      4
+     ],
+     "saisie": [
+      0,
+      1,
+      2,
+      4
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      1,
+      3
+     ],
+     "tablette": [
+      0,
+      1,
+      3
+     ],
+     "saisie": [
+      0,
+      1,
+      3
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      1
+     ],
+     "tablette": [
+      1
+     ],
+     "saisie": [
+      1
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      1,
+      3,
+      5
+     ],
+     "tablette": [
+      1,
+      3,
+      5
+     ],
+     "saisie": [
+      1,
+      3,
+      5
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      2,
+      4
+     ],
+     "tablette": [
+      0,
+      2,
+      4
+     ],
+     "saisie": [
+      0,
+      2,
+      4
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      3,
+      4
+     ],
+     "tablette": [
+      3,
+      4
+     ],
+     "saisie": [
+      3,
+      4
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      2
+     ],
+     "tablette": [
+      2
+     ],
+     "saisie": [
+      2
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      1
+     ],
+     "tablette": [
+      1
+     ],
+     "saisie": [
+      1
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0
+     ],
+     "tablette": [
+      0
+     ],
+     "saisie": [
+      0
+     ],
+     "cas": null
+    }
+   ]
+  },
+  {
+   "nomComplet": "VALLÉE Rayan",
+   "nom": "VALLÉE",
+   "prenom": "Rayan",
+   "saisie_faite": true,
+   "questions": [
+    {
+     "feuille": [
+      3
+     ],
+     "tablette": [
+      3
+     ],
+     "saisie": [
+      3
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      2,
+      3,
+      5
+     ],
+     "tablette": [
+      2,
+      3,
+      5
+     ],
+     "saisie": [
+      2,
+      3,
+      5
+     ],
+     "cas": null
+    },
+    {
+     "feuille": "aucun",
+     "tablette": [
+      2,
+      4
+     ],
+     "saisie": [],
+     "cas": "aucun_tab_faux"
+    },
+    {
+     "feuille": [
+      0,
+      3,
+      5
+     ],
+     "tablette": [
+      0,
+      3,
+      5
+     ],
+     "saisie": [
+      0,
+      3,
+      5
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0
+     ],
+     "tablette": [
+      0
+     ],
+     "saisie": [
+      0
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      3,
+      5
+     ],
+     "tablette": [
+      3,
+      5
+     ],
+     "saisie": [
+      3,
+      5
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      1,
+      2,
+      4
+     ],
+     "tablette": [
+      0,
+      1,
+      2,
+      4
+     ],
+     "saisie": [
+      0,
+      1,
+      2,
+      4
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      4
+     ],
+     "tablette": [
+      0,
+      4
+     ],
+     "saisie": [
+      0,
+      4
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      2
+     ],
+     "tablette": [
+      2
+     ],
+     "saisie": [
+      2
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      3
+     ],
+     "tablette": [
+      3
+     ],
+     "saisie": [
+      3
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      2
+     ],
+     "tablette": [
+      2
+     ],
+     "saisie": [
+      2
+     ],
+     "cas": null
+    }
+   ]
+  },
+  {
+   "nomComplet": "WEBER Clara",
+   "nom": "WEBER",
+   "prenom": "Clara",
+   "saisie_faite": true,
+   "questions": [
+    {
+     "feuille": [
+      0
+     ],
+     "tablette": [
+      0
+     ],
+     "saisie": [
+      0
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      2,
+      3,
+      5
+     ],
+     "tablette": [
+      2,
+      3
+     ],
+     "saisie": [
+      2,
+      3,
+      5
+     ],
+     "cas": "toucher"
+    },
+    {
+     "feuille": [
+      2,
+      4
+     ],
+     "tablette": [
+      2,
+      4
+     ],
+     "saisie": [
+      2,
+      4
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      1,
+      3
+     ],
+     "tablette": [
+      0,
+      1,
+      3
+     ],
+     "saisie": [
+      0,
+      1,
+      3
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0
+     ],
+     "tablette": [
+      0
+     ],
+     "saisie": [
+      0
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      1,
+      3,
+      5
+     ],
+     "tablette": [
+      1,
+      3,
+      5
+     ],
+     "saisie": [
+      1,
+      3,
+      5
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      2,
+      3,
+      4
+     ],
+     "tablette": [
+      0,
+      2,
+      3,
+      4
+     ],
+     "saisie": [
+      0,
+      2,
+      3,
+      4
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      2,
+      4
+     ],
+     "tablette": [
+      0,
+      2,
+      4
+     ],
+     "saisie": [
+      0,
+      2,
+      4
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0
+     ],
+     "tablette": [
+      0
+     ],
+     "saisie": [
+      0
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      2
+     ],
+     "tablette": [
+      2
+     ],
+     "saisie": [
+      2
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      3
+     ],
+     "tablette": [
+      3
+     ],
+     "saisie": [
+      3
+     ],
+     "cas": null
+    }
+   ]
+  },
+  {
+   "nomComplet": "YVON Adam",
+   "nom": "YVON",
+   "prenom": "Adam",
+   "saisie_faite": true,
+   "questions": [
+    {
+     "feuille": [
+      3
+     ],
+     "tablette": [
+      3
+     ],
+     "saisie": [
+      3
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      2,
+      4,
+      5
+     ],
+     "tablette": [
+      2,
+      4,
+      5
+     ],
+     "saisie": [
+      2,
+      4,
+      5
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      1,
+      2,
+      4
+     ],
+     "tablette": [
+      1,
+      2,
+      4
+     ],
+     "saisie": [
+      1,
+      2,
+      4
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      1,
+      4
+     ],
+     "tablette": [
+      0,
+      1,
+      4
+     ],
+     "saisie": [
+      0,
+      1,
+      4
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0
+     ],
+     "tablette": [
+      0
+     ],
+     "saisie": [
+      0
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      1,
+      4,
+      5
+     ],
+     "tablette": [
+      1,
+      4,
+      5
+     ],
+     "saisie": [
+      1,
+      4,
+      5
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      2,
+      4
+     ],
+     "tablette": [
+      0,
+      2,
+      4
+     ],
+     "saisie": [
+      0,
+      2,
+      4
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      2,
+      3,
+      4
+     ],
+     "tablette": [
+      2,
+      3,
+      4
+     ],
+     "saisie": [
+      2,
+      3,
+      4
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0
+     ],
+     "tablette": [
+      0
+     ],
+     "saisie": [
+      0
+     ],
+     "cas": null
+    },
+    {
+     "feuille": "aucun",
+     "tablette": [
+      2
+     ],
+     "saisie": [],
+     "cas": "aucun_tab_faux"
+    },
+    {
+     "feuille": [
+      3
+     ],
+     "tablette": [
+      3
+     ],
+     "saisie": [
+      3
+     ],
+     "cas": null
+    }
+   ]
+  },
+  {
+   "nomComplet": "ZELLER Lou",
+   "nom": "ZELLER",
+   "prenom": "Lou",
+   "saisie_faite": true,
+   "questions": [
+    {
+     "feuille": [
+      1
+     ],
+     "tablette": [
+      1
+     ],
+     "saisie": [
+      1
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      2,
+      5
+     ],
+     "tablette": [
+      2,
+      5
+     ],
+     "saisie": [
+      2,
+      5
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      1,
+      2,
+      4
+     ],
+     "tablette": [
+      0,
+      1,
+      2,
+      4
+     ],
+     "saisie": [
+      0,
+      1,
+      2,
+      4
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      1,
+      3
+     ],
+     "tablette": [
+      0,
+      1,
+      3
+     ],
+     "saisie": [
+      0,
+      1,
+      3
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      2
+     ],
+     "tablette": [
+      2
+     ],
+     "saisie": [
+      2
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      1,
+      2,
+      3,
+      5
+     ],
+     "tablette": [
+      1,
+      2,
+      3,
+      5
+     ],
+     "saisie": [
+      1,
+      2,
+      3,
+      5
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      2
+     ],
+     "tablette": [
+      0,
+      2
+     ],
+     "saisie": [
+      0,
+      2
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      3,
+      4
+     ],
+     "tablette": [
+      0,
+      3,
+      4
+     ],
+     "saisie": [
+      0,
+      3,
+      4
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      2
+     ],
+     "tablette": [
+      2
+     ],
+     "saisie": [
+      2
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      3
+     ],
+     "tablette": null,
+     "saisie": [
+      3
+     ],
+     "cas": "vide_feuille_faux"
+    },
+    {
+     "feuille": [
+      0
+     ],
+     "tablette": [
+      0
+     ],
+     "saisie": [
+      0
+     ],
+     "cas": null
+    }
+   ]
+  },
+  {
+   "nomComplet": "BRUNEAU Camille",
+   "nom": "BRUNEAU",
+   "prenom": "Camille",
+   "saisie_faite": true,
+   "questions": [
+    {
+     "feuille": [
+      3
+     ],
+     "tablette": [
+      3
+     ],
+     "saisie": [
+      3
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      2,
+      3,
+      5
+     ],
+     "tablette": [
+      0,
+      2,
+      3,
+      5
+     ],
+     "saisie": [
+      0,
+      2,
+      3,
+      5
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      1,
+      2
+     ],
+     "tablette": [
+      0,
+      1,
+      2
+     ],
+     "saisie": [
+      0,
+      1,
+      2
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      1,
+      3
+     ],
+     "tablette": [
+      1,
+      3
+     ],
+     "saisie": [
+      1,
+      3
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      1
+     ],
+     "tablette": [
+      1
+     ],
+     "saisie": [
+      1
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      3,
+      5
+     ],
+     "tablette": [
+      3,
+      5
+     ],
+     "saisie": [
+      3,
+      5
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      2
+     ],
+     "tablette": [
+      0,
+      2
+     ],
+     "saisie": [
+      0,
+      2,
+      4
+     ],
+     "cas": "arrangee_tab_faux"
+    },
+    {
+     "feuille": [
+      0,
+      3,
+      4,
+      5
+     ],
+     "tablette": [
+      0,
+      3,
+      4,
+      5
+     ],
+     "saisie": [
+      0,
+      3,
+      4,
+      5
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      1
+     ],
+     "tablette": [
+      1
+     ],
+     "saisie": [
+      1
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      2
+     ],
+     "tablette": [
+      2
+     ],
+     "saisie": [
+      2
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      1
+     ],
+     "tablette": [
+      1
+     ],
+     "saisie": [
+      1
+     ],
+     "cas": null
+    }
+   ]
+  },
+  {
+   "nomComplet": "CHEVALLIER Théo",
+   "nom": "CHEVALLIER",
+   "prenom": "Théo",
+   "saisie_faite": true,
+   "questions": [
+    {
+     "feuille": [
+      2
+     ],
+     "tablette": [
+      2
+     ],
+     "saisie": [
+      2
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      2,
+      3,
+      5
+     ],
+     "tablette": [
+      2,
+      3,
+      5
+     ],
+     "saisie": [
+      2,
+      3,
+      5
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      1,
+      2,
+      4
+     ],
+     "tablette": [
+      1,
+      2,
+      4
+     ],
+     "saisie": [
+      1,
+      2,
+      4
+     ],
+     "cas": "arrangee_tab_juste"
+    },
+    {
+     "feuille": [
+      0,
+      1,
+      3
+     ],
+     "tablette": [
+      0,
+      1,
+      3
+     ],
+     "saisie": [
+      0,
+      1,
+      3
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0
+     ],
+     "tablette": [
+      0
+     ],
+     "saisie": [
+      0
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      1,
+      3,
+      5
+     ],
+     "tablette": [
+      0,
+      1,
+      3,
+      5
+     ],
+     "saisie": [
+      0,
+      1,
+      3,
+      5
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      2,
+      4
+     ],
+     "tablette": [
+      0,
+      2,
+      4
+     ],
+     "saisie": [
+      0,
+      2,
+      4
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0,
+      3,
+      4
+     ],
+     "tablette": [
+      0,
+      3,
+      4
+     ],
+     "saisie": [
+      0,
+      3,
+      4
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      0
+     ],
+     "tablette": [
+      0
+     ],
+     "saisie": [
+      0
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      1
+     ],
+     "tablette": [
+      1
+     ],
+     "saisie": [
+      1
+     ],
+     "cas": null
+    },
+    {
+     "feuille": [
+      1
+     ],
+     "tablette": [
+      1
+     ],
+     "saisie": [
+      1
+     ],
+     "cas": null
+    }
+   ]
+  }
+ ],
+ "bonnes": [
+  [
+   3
+  ],
+  [
+   2,
+   3,
+   5
+  ],
+  [
+   1,
+   2,
+   4
+  ],
+  [
+   0,
+   1,
+   3
+  ],
+  [
+   0
+  ],
+  [
+   1,
+   3,
+   5
+  ],
+  [
+   0,
+   2,
+   4
+  ],
+  [
+   0,
+   3,
+   4
+  ],
+  [
+   2
+  ],
+  [
+   1
+  ],
+  [
+   3
+  ]
+ ],
+ "niveaux": [
+  "standard",
+  "standard",
+  "approfondi",
+  "approfondi",
+  "standard",
+  "approfondi",
+  "expert",
+  "approfondi",
+  "standard",
+  "facile",
+  "expert"
+ ]
+}

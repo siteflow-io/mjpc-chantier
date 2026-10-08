@@ -17292,3 +17292,29 @@ Réponse mot pour mot :
 232. **Il reste aussi la décision 214** (voie A ou voie B pour demain ?).
 
 08/10/2026 14:23 MEMO
+
+---
+
+## TOUR 577 — Paul
+
+Texte de Paul, mot pour mot :
+
+> 230. trouvée au dernier moment. et dans les règles de l'attestation au début, l'élève doit avoir une explcation claire et compréhensible de ce mécanisme, et la raison pédagogique. En gros, qu'on lui laisse une chance sur "l'aide" donnée par les choix qcm (par rapport à une réponse classique sans voir de réponses possibles), et en revanche que c'est ce qu'il a écrit qui fait foi, donc si c'est faux à l'écrit, le point ne lui est pas compté sur l'app et c'est bien sa note écrite qui vaut. on peut considérer aussi ça comme un point bonus en soi, sans complexifier le système.
+
+---
+
+## TOUR 577 — Claude (conscience n°12)
+
+Lu dans le code : aucune attestation dans evaluation-qcm.html (seul l'encadré « Comment ça marche pour cette évaluation », phase idle, l. 3263-3295) ; l'attestation de correction_dictee.html (`ecranAttestation`, l. 11233-11248). Décision inscrite : CADRAGE-QCM.md (tour 577, ligne d'état) et dette 196 complétée. Rien écrit au hub, aucun code.
+
+Réponse mot pour mot :
+
+233. **Sur 230, c'est retenu : « Trouvée au dernier moment ».**
+
+234. **Mesuré : le QCM n'a pas d'attestation.** La correction de dictée en a une : « Avant de commencer, Julien », les règles, la case « J'ai lu et compris », puis l'heure gardée et visible dans ta console. Le QCM n'a qu'un encadré avant la question 1, « Comment ça marche pour cette évaluation », qui dit encore « Chaque question rapporte 1 point », ce qui est faux depuis 112. Ma proposition : on reprend l'attestation de la dictée, sur chaque moitié de tablette, avant la question 1, avec ta règle et sa raison.
+
+235. **Avant d'écrire ce texte, une question sur ton « point bonus ».** Est-ce 1 point fixe, ou les points de la question (de 1 à 4) ? Avec 1 point fixe, Emma passe de 17 à 18 points, et Sacha de 3 à 4. Avec les points de la question, Emma passe de 17 à 21, et Sacha de 3 à 7. Avec 1 point fixe, l'app n'a plus de question à choisir : elle marque « Trouvée au dernier moment » sur chaque question concernée et ajoute un seul point. Cela règlerait aussi 231.
+
+236. **Il reste aussi la décision 214** (voie A ou voie B pour demain ?).
+
+08/10/2026 14:28 MEMO

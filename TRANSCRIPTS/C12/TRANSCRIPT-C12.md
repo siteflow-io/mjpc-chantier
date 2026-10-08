@@ -18123,3 +18123,42 @@ Réponse mot pour mot :
 374. **Rien n'est codé dans l'app** : c'est une maquette à part, faite sur le CSS de la 7.7.1.
 
 08/10/2026 19:35 MEMO
+
+---
+
+## TOUR 599 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Bon ça m'a l'air vraiment bien. En revanche quelques améliorations à faire je pense, à me dire si oui ou non: formulation de "touche ce qui est écrit sur ta feuille, pas ce que tu crois juste ". Déjà, jamais touche mais clique. Ensuite, l'élève qui a écrit ce qui est juste, il est perturbé par cette formulation... Forcément. Il va cliquer sur quelque chose de faux, vu qu'on lui dit de ne pas cliquer quelque chose de juste. À mesurer. 
+> Deuxio, un élève qui ne fait pas de saisie, ça ne doit pas arriver. Il faut le forcer à le faire. Chrono qui devient orange puis rouge. Enfin, il faut que l'élève comprenne qu'on n'attend pas forcément une réponse similaire entre sa copie et l'écran, mais que c'est à lui de faire le rapprochement. Dernière chose, les compétences : dans ton pdf il n'y a quun niveau pour toutes les compétences, or chaque question ayant une compétence, ça doit se retrouver finement à la fin
+
+---
+
+## TOUR 599 — Claude (conscience n°12)
+
+Mesuré : textes de evaluation-qcm.html 7.7.1 (« clique » 23 fois, « touche » 0 ; infobulle de la correction, l. 7701) ; hub en lecture seule, séance du 19/06 (sess_1781849801061, 4 saisies, 48 réponses justes sur 52). Maquette non modifiée, en attente du oui de Paul. CADRAGE-QCM.md complété (tour 599). Rien écrit au hub, aucun code.
+
+Réponse mot pour mot :
+
+375. **« Clique », oui, partout.** Mesuré : l'app dit toujours « clique » à l'élève, jamais « touche ». C'est moi qui ai mis « touche » dans la maquette, dans six phrases de l'élève et deux de ta console. Je les remets toutes en « clique ».
+
+376. **« Pas ce que tu crois juste » : oui, ça trouble, la phrase sort.** Mesuré au hub, sur la seule séance qui a des saisies (19/06, 4 élèves) : 48 des 52 réponses saisies étaient justes sur la feuille. Neuf fois sur dix, la phrase s'adresse donc à un élève qui a écrit juste, et lui dit de ne pas cliquer le juste. Ce que l'élève en fait vraiment, je ne sais pas le mesurer sans élèves ; mais la phrase est négative, et c'est elle le problème.
+
+377. **Ta remarque sur le rapprochement règle aussi celle-ci : on ne dit plus ce qu'il ne faut pas faire, on dit le rapprochement.** Ma proposition, pour l'écran de la saisie : « Clique sur le ou les choix qui disent la même chose que ta feuille. Les mots ne sont pas forcément les mêmes : c'est à toi de faire le rapprochement. » La même idée entre dans l'attestation. Les mots sont à toi.
+
+378. **Forcer la saisie : oui.** Chaque question de la correction a un chrono de saisie, du même temps que sa réponse (56). Il passe à l'orange à la moitié, puis au rouge pour les 5 dernières secondes. « 💡 Révéler » reste fermé tant qu'un élève présent n'a pas cliqué, et ta console montre son nom en rouge. Le cas de Noah (« pas de saisie ») disparaît, et 347 tombe.
+
+379. **Ce qui pourrait alors bloquer la classe : une tablette en panne.** Le geste existe déjà : « 🚫 Départ d'un élève ». L'élève parti ne bloque plus la révélation, ses questions sortent du total (336), et tu fixes sa note d'après sa feuille (338). Je ne propose pas de bouton « révéler quand même ».
+
+380. **L'élève qui n'a rien écrit doit pouvoir cliquer aussi** : « Ma feuille ne dit aucun de ces choix » vaut pour une feuille vide. Les mots de cette case restent à toi (173).
+
+381. **Un télescopage avec ta façon de corriger.** Aujourd'hui, l'infobulle de ta correction dit : « tu commentes, puis tu cliques sur « 💡 Révéler » ». Avec la saisie dans la correction, si tu commentes avant, les élèves cliquent ce que tu dis. Tu commentes donc après la révélation, et l'infobulle change.
+
+382. **Les compétences : oui, ta console n'en montre qu'un niveau.** Sur les captures, le bilan de l'élève a bien un niveau par compétence (38), mais ta console n'a qu'une colonne « Maîtrise », celle de la note (39, 41), et la fiche met les compétences sur une seule ligne (42).
+
+383. **Ma proposition, pour que ce soit fin jusqu'au bout.** Chaque question affiche sa ou ses compétences, dans la fiche et dans le récapitulatif de l'élève. Dans Résultats, une colonne par compétence : l'en-tête dit ses questions (« c4-lire-01 · Q2, Q3 »), et chaque case donne le niveau de l'élève, avec d'où il vient (« Q2 ✓, Q3 ✗ »). Le bilan de classe donne la répartition par compétence, en plus de celle de la note. Et c'est ce tableau que sort le PDF pour École Directe.
+
+384. **Sur ton oui, je refais les captures concernées** : 5, 6, 28 à 39 et 41 à 43.
+
+08/10/2026 20:21 MEMO

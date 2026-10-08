@@ -562,3 +562,21 @@ Voici l'évaluation :
 159. **Tension 4 : la lassitude.** La saisie n'a servi que 4 fois en tout (138). La rendre plus longue risque de la faire abandonner, surtout si elle se fait en classe dans l'heure (143).
 
 160. **Mon verdict : tes deux possibilités vont ensemble, pas l'une contre l'autre ; la feuille reste la seule preuve.** Ma question pour trancher : la phrase tapée, tu la veux pour toutes les questions, ou seulement pour celles où la saisie diffère de la tablette ? La seconde voie fait moins à taper, et c'est justement là que tu en as besoin.
+
+---
+
+## Tour 565 — Paul (08/10, 11:15), mot pour mot
+
+> En fait, et d'où l'accès à la note, je comptais sur le fait que les élèves voudraient voir leur note, et donc que pour la débloquer ils taperaient exactement ce qu'il y a sur leur copie. en leur disant que je rammasse aussi les copies, donc s'ils tapent quelque chose de différent, je le verrai (mais c'est juste de la coercition positive, en soi si un élève le fait, je ne sais pas ce que je fais ensuite). Vu qu'ils marchent à la note, je me disais que la seule "carotte" de voir la note suffisait à ce qu'ils fassent le flux tel que demandé.
+
+## Tour 565 — la note comme carotte (points 161 à 165)
+
+161. **Compris.** La note sert de carotte, le ramassage des copies dissuade de tricher, et la saisie de la copie ouvre la porte.
+
+162. **Mesuré : aujourd'hui, la carotte est déjà mangée avant la saisie.** À la fin de la séance, en classe, l'élève voit « x bonnes réponses sur n » et « Points pour la note ». Ensuite, dans « Mes évaluations », chaque évaluation affiche son pourcentage. Il ne lui reste plus rien à débloquer, et cela explique les 4 saisies mieux encore que les défauts de 138.
+
+163. **Pour que ta carotte marche**, aucune note, aucun score ni aucun pourcentage ne doit être visible avant la saisie, nulle part : ni à la fin de la séance, ni dans « Mes évaluations », ni dans le bilan imprimable. C'est 145, étendu à tout l'écran de l'élève.
+
+164. **Ta réponse à 160, telle que je la comprends** : l'élève recopie toute sa feuille, pour toutes les questions. Le temps (158) dépend donc du moment de la saisie (143) : à la maison, la longueur ne coûte rien ; en classe, elle prend sur l'heure.
+
+165. **Une seule chose à trancher maintenant : que se passe-t-il quand ta copie ramassée ne dit pas la même chose que la saisie ?** Ma proposition : la feuille fait foi. Dans ton Suivi, tu marques la question « la feuille dit autre chose », la note se recalcule d'après la feuille, et l'élève lit « corrigé d'après ta feuille ». Est-ce que tu ajoutes une sanction, comme le zéro de la dictée, ou non ?

@@ -16916,3 +16916,31 @@ Réponse mot pour mot :
 08/10/2026 10:57 MEMO
 
 ---
+
+## TOUR 565 — Paul
+
+Texte de Paul, mot pour mot :
+
+> En fait, et d'où l'accès à la note, je comptais sur le fait que les élèves voudraient voir leur note, et donc que pour la débloquer ils taperaient exactement ce qu'il y a sur leur copie. en leur disant que je rammasse aussi les copies, donc s'ils tapent quelque chose de différent, je le verrai (mais c'est juste de la coercition positive, en soi si un élève le fait, je ne sais pas ce que je fais ensuite). Vu qu'ils marchent à la note, je me disais que la seule "carotte" de voir la note suffisait à ce qu'ils fassent le flux tel que demandé.
+
+---
+
+## TOUR 565 — Claude (conscience n°12)
+
+Relu dans le code : EleveBilan (fin de séance : « x bonne(s) réponse(s) sur n », « Points pour la note »), MesEvaluations (pourcentage pondéré par évaluation), bilan imprimable (« x / n »). CADRAGE-QCM.md complété (tour 565). Rien écrit au hub, aucun code.
+
+Réponse mot pour mot :
+
+161. **Compris.** La note sert de carotte, le ramassage des copies dissuade de tricher, et la saisie de la copie ouvre la porte.
+
+162. **Mesuré : aujourd'hui, la carotte est déjà mangée avant la saisie.** À la fin de la séance, en classe, l'élève voit « x bonnes réponses sur n » et « Points pour la note ». Ensuite, dans « Mes évaluations », chaque évaluation affiche son pourcentage. Il ne lui reste plus rien à débloquer, et cela explique les 4 saisies mieux encore que les défauts de 138.
+
+163. **Pour que ta carotte marche**, aucune note, aucun score ni aucun pourcentage ne doit être visible avant la saisie, nulle part : ni à la fin de la séance, ni dans « Mes évaluations », ni dans le bilan imprimable. C'est 145, étendu à tout l'écran de l'élève.
+
+164. **Ta réponse à 160, telle que je la comprends** : l'élève recopie toute sa feuille, pour toutes les questions. Le temps (158) dépend donc du moment de la saisie (143) : à la maison, la longueur ne coûte rien ; en classe, elle prend sur l'heure.
+
+165. **Une seule chose à trancher maintenant : que se passe-t-il quand ta copie ramassée ne dit pas la même chose que la saisie ?** Ma proposition : la feuille fait foi. Dans ton Suivi, tu marques la question « la feuille dit autre chose », la note se recalcule d'après la feuille, et l'élève lit « corrigé d'après ta feuille ». Est-ce que tu ajoutes une sanction, comme le zéro de la dictée, ou non ?
+
+08/10/2026 11:17 MEMO
+
+---

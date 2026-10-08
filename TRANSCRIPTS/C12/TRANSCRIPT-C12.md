@@ -18041,3 +18041,49 @@ Réponse mot pour mot :
 353. **En amont, le prompt réduit ces cas** : chaque question appelle une réponse courte, qui correspond nettement à un choix (330).
 
 08/10/2026 18:53 MEMO
+
+---
+
+## TOUR 597 — Paul
+
+Texte de Paul, mot pour mot :
+
+> imagines en classe. le flux.
+
+---
+
+## TOUR 597 — Claude (conscience n°12)
+
+Flux déroulé sur la 3e du 09/10 ; durées estimées à partir du point 60 (juin : 1 à 1,5 min par question) et du point 59 (1 min par question corrigée, estimation) — non mesurées. CADRAGE-QCM.md complété (tour 597). Rien écrit au hub, aucun code.
+
+Réponse mot pour mot :
+
+**Le flux tel que cadré aujourd'hui, en classe, pour ta 3e (11 questions)**
+
+354. **L'entrée.** Les binômes s'assoient, touchent « 2 élèves », chacun tape son code sur sa moitié et coche l'attestation. Toi, tu fais l'appel, puis tu lances.
+
+355. **Chaque question.** L'énoncé s'affiche, sans les choix, et chacun écrit sa réponse sur sa feuille. Puis « Pose ton stylo » : au tour 1, Julien touche sa réponse pendant que Michel, voilé, lui laisse la tablette ; au tour 2, c'est l'inverse, avec les choix mélangés.
+
+356. **Après la question 11, la saisie.** Chacun reprend sa feuille et retouche, question par question, ce qu'il a écrit : 11 questions, sur une demi-tablette, en même temps que son voisin.
+
+357. **L'estimation, puis la correction.** Tu révèles les questions une par une, et chacun corrige sa feuille au stylo.
+
+358. **La fin.** La note s'affiche, tu termines la séance et tu ramasses les feuilles. Le soir, tu lis celles que ton Suivi signale.
+
+**Ce que le flux montre**
+
+359. **La saisie refait le geste de la tablette.** Pendant chaque question, l'élève a déjà touché « ce qu'il a écrit ». À la saisie, il le retouche, pour les 11 questions, et c'est la même chose presque à chaque fois (5 écarts sur 52 réponses le 19/06). C'est une phase de plus, longue, sur une demi-tablette, pour quelques écarts.
+
+360. **Ma proposition, plus simple : la saisie se fait dans la correction, question par question, juste avant que tu révèles.** Tu affiches la question, sans la réponse. Chaque moitié demande : « Qu'as-tu écrit sur ta feuille ? » L'élève touche, ton Suivi montre qui a répondu, puis tu révèles. Sa tablette lui dit alors, d'après sa feuille, « V vert » ou « Barre ta réponse en rouge et écris la bonne réponse en vert », avec « Trouvée au dernier moment » si c'est le cas. C'est l'autocorrection de la dictée (110).
+
+361. **Ce que ça règle.** Il n'y a plus de phase de saisie à part. L'élève déclare sa feuille avant de connaître la réponse. La consigne suit sa feuille, et non plus la tablette (248). La note se construit pendant la correction et s'affiche à la fin : c'est la carotte.
+
+362. **Les « aucun de ces choix » et les écarts « saisie juste, tablette fausse », tu ne les traites pas en classe.** Tu les lis le soir, sur les feuilles ramassées. Pour un « aucun », ta lecture ne peut que faire monter la note ; pour un écart, elle peut la faire baisser (« corrigé d'après ta feuille »). Plus de mains levées pendant la correction : 352 tombe.
+
+363. **Le temps, estimé, pas mesuré.** Pour ta 3e : l'entrée 3 min, les questions 15 à 21 min (1 à 1,5 min par question en juin, plus le second tour), l'estimation 1 min, la correction 11 min. Cela fait 30 à 36 min, donc ça tient dans les 45. Ta 4e (21 questions), elle, dépasse 50 min : la garde de débordement (58) te le dira au collage.
+
+364. **À vérifier sur la maquette : la demi-tablette.** Ta question 3 de demain a 6 choix longs. Sur une moitié d'écran, je ne sais pas si ça se lit.
+
+365. **Si tu valides 360, il remplace 249, 326 et 343 à 348.**
+
+08/10/2026 19:08 MEMO

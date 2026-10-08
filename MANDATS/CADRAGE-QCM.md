@@ -1373,6 +1373,42 @@ Deux choses mesurées par la fausse classe touchent ta séance de demain. Je te 
 
 ---
 
+## Tour 597 — Paul (08/10, 18:59), mot pour mot
+
+> imagines en classe. le flux.
+
+## Tour 597 — le flux en classe (points 354 à 365)
+
+**Le flux tel que cadré aujourd'hui, en classe, pour ta 3e (11 questions)**
+
+354. **L'entrée.** Les binômes s'assoient, touchent « 2 élèves », chacun tape son code sur sa moitié et coche l'attestation. Toi, tu fais l'appel, puis tu lances.
+
+355. **Chaque question.** L'énoncé s'affiche, sans les choix, et chacun écrit sa réponse sur sa feuille. Puis « Pose ton stylo » : au tour 1, Julien touche sa réponse pendant que Michel, voilé, lui laisse la tablette ; au tour 2, c'est l'inverse, avec les choix mélangés.
+
+356. **Après la question 11, la saisie.** Chacun reprend sa feuille et retouche, question par question, ce qu'il a écrit : 11 questions, sur une demi-tablette, en même temps que son voisin.
+
+357. **L'estimation, puis la correction.** Tu révèles les questions une par une, et chacun corrige sa feuille au stylo.
+
+358. **La fin.** La note s'affiche, tu termines la séance et tu ramasses les feuilles. Le soir, tu lis celles que ton Suivi signale.
+
+**Ce que le flux montre**
+
+359. **La saisie refait le geste de la tablette.** Pendant chaque question, l'élève a déjà touché « ce qu'il a écrit ». À la saisie, il le retouche, pour les 11 questions, et c'est la même chose presque à chaque fois (5 écarts sur 52 réponses le 19/06). C'est une phase de plus, longue, sur une demi-tablette, pour quelques écarts.
+
+360. **Ma proposition, plus simple : la saisie se fait dans la correction, question par question, juste avant que tu révèles.** Tu affiches la question, sans la réponse. Chaque moitié demande : « Qu'as-tu écrit sur ta feuille ? » L'élève touche, ton Suivi montre qui a répondu, puis tu révèles. Sa tablette lui dit alors, d'après sa feuille, « V vert » ou « Barre ta réponse en rouge et écris la bonne réponse en vert », avec « Trouvée au dernier moment » si c'est le cas. C'est l'autocorrection de la dictée (110).
+
+361. **Ce que ça règle.** Il n'y a plus de phase de saisie à part. L'élève déclare sa feuille avant de connaître la réponse. La consigne suit sa feuille, et non plus la tablette (248). La note se construit pendant la correction et s'affiche à la fin : c'est la carotte.
+
+362. **Les « aucun de ces choix » et les écarts « saisie juste, tablette fausse », tu ne les traites pas en classe.** Tu les lis le soir, sur les feuilles ramassées. Pour un « aucun », ta lecture ne peut que faire monter la note ; pour un écart, elle peut la faire baisser (« corrigé d'après ta feuille »). Plus de mains levées pendant la correction : 352 tombe.
+
+363. **Le temps, estimé, pas mesuré.** Pour ta 3e : l'entrée 3 min, les questions 15 à 21 min (1 à 1,5 min par question en juin, plus le second tour), l'estimation 1 min, la correction 11 min. Cela fait 30 à 36 min, donc ça tient dans les 45. Ta 4e (21 questions), elle, dépasse 50 min : la garde de débordement (58) te le dira au collage.
+
+364. **À vérifier sur la maquette : la demi-tablette.** Ta question 3 de demain a 6 choix longs. Sur une moitié d'écran, je ne sais pas si ça se lit.
+
+365. **Si tu valides 360, il remplace 249, 326 et 343 à 348.**
+
+---
+
 ## Archive des lignes d'état (remplacées au tour 593)
 
 **Méthode depuis le tour 563 (Paul) : on séquence, un sujet à la fois, en réponses courtes.** **État au 08/10, 16:23 — terminologie (Paul, tour 588) : on ne dit plus que « Trouvée au dernier moment », avec un + vert, partout (élève et console) ; « bonus » et « bénéfice du doute » ne s'emploient plus.** **Retenu (tour 589) : une question vaut au plus 1 point ; en partiel, 1/n de point par bonne case, −1/n par mauvaise, plancher 0 (273, 274) ; une question « Trouvée au dernier moment » compte comme juste, 1 point, une fois par évaluation (275) ; le cas de Théo est fermé (238, 285). Prochain point proposé : 249 (la saisie avant la correction, qui règle 248).** **Tour 590 : la règle de note redite d'un bloc (288 à 293) ; ce qu'elle change dans le cadré (295 à 300) ; à trancher : 300 (le + vert sur la seule question qui compte) et 301 (en partiel, « Trouvée » seulement si la tablette est entièrement juste ?).** **Tour 591 : 301 redit (302, 303) ; niveaux de maîtrise par compétence (Paul) : mesuré, aucune compétence dans le QCM, référentiel au hub (`/taxonomie/competences` : 18 Français C4 en 5 domaines + 10 transversales) ; proposé 304 (« difficulté » / « maîtrise ») et 307 ; questions 308 à 310.** **Tour 592 (Paul) : 303 retenu (« Trouvée » seulement si la tablette est entièrement juste) ; lexique des 4 niveaux de maîtrise : échelle du socle (doctrine K0 : insuffisante / fragile / satisfaisante / très bonne maîtrise), 313 ; 305 à 307 retenus (la maîtrise entre au profil longitudinal par compétences et taxonomie) ; 308 oui (déjà cadré) ; 309 : une ou deux compétences par question, prises dans celles du chapitre ; 310 : le PDF « notes et compétences » est à créer. Proposé : 317 (l'évaluation porte son chapitre, garde au collage du JSON).** **État au 08/10, 14:31 — tranché par Paul : la note est la carotte, aucune note avant la saisie, sans saisie pas de note (223) ; la feuille fait foi, en points, avec un bonus de 1 point fixe une fois par évaluation quand une question est « Trouvée au dernier moment » (feuille fausse, tablette juste), marquée sur chaque question concernée côté élève, « bénéfice du doute » dans la console seulement (229, 233, 237). Méthode (Paul, tour 578) : tout cadrer maintenant, une exécutante code tout d'un coup, audit final, push de Paul après la livraison complète ; plus de voie A ou B (239). Reste à trancher : 106, 115, 117, 120, 121, 127, 143, 148, 154/180, 160/164, 165, 234, 238 ; captures de la console (73).** **État au 08/10, 12:57** : réponses de Paul aux tours 559 à 571. Questions ouvertes : 106, 115, 117, 120, 121, 127, 143, 144, 145, 146, 148, 154/180, 160/164, 165, 175/187 (Paul « réfléchit encore » sur le bénéfice du doute ; le mélange des choix n'y joue pas, 188-191 ; données de la fausse classe, 195-206) ; captures de la console (73) avec l'inventaire « tout visible » (147-148). Pour la séance du 09/10 : 192/207 (la correction plante sur les tablettes : corriger au tableau, recharger à la fin) et 193 (appuyer une fois sur « ✋ Autoriser la réponse »). Correction : 137 était faux (196). Retirés : 44 (122), 89 (127), le prompt de transition (128), la suppression de la saisie papier (114, abandonnée au tour 562). Sans objet : 45 à 50. 51 à 54 : production fermée, geste de Paul (53).

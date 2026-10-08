@@ -17192,3 +17192,29 @@ Réponse mot pour mot :
 218. **Deux décisions te reviennent** : 210 (une seule question pour le bénéfice du doute ?) et 214 (voie A ou voie B pour demain ?).
 
 08/10/2026 14:12 MEMO
+
+---
+
+## TOUR 573 — Paul
+
+Texte de Paul, mot pour mot :
+
+> 212, pas compris.
+
+---
+
+## TOUR 573 — Claude (conscience n°12)
+
+Réexplication de 212 sur l'exemple de Sacha (chiffres de la fausse classe : tablette 15 points, saisie avec limite à une question 7 points). CADRAGE-QCM.md complété (tour 573). Rien écrit au hub, aucun code.
+
+Réponse mot pour mot :
+
+219. **Le point 212 parle de l'élève qui ne fait pas sa saisie.** J'avais proposé (146) que sa note soit alors celle de sa tablette.
+
+220. **Prends Sacha.** Sur sa tablette, il a 15 points. S'il fait sa saisie, avec le bénéfice du doute limité à une question, il tombe à 7 points. S'il ne la fait pas, il garde ses 15 points. Il a donc tout intérêt à ne pas faire sa saisie, et la limite ne sert plus à rien.
+
+221. **D'où la règle : sans saisie, l'élève n'a pas de note.** C'est toi qui la fixes, d'après sa feuille ramassée.
+
+222. **Pour la même raison, la tablette ne doit afficher aucune note avant la saisie.** Aujourd'hui, à la fin de la séance, Sacha lit déjà « Points pour la note : 15 / 29 ». Il sait donc, avant même de commencer, que sa saisie va lui faire perdre des points.
+
+08/10/2026 14:18 MEMO

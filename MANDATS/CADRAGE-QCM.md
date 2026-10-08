@@ -758,3 +758,19 @@ Deux choses mesurées par la fausse classe touchent ta séance de demain. Je te 
 217. **Les dettes 198, 199 et 180 entrent dans le lot de consolidation du mandat.** La fausse classe, qui est maintenant au sas, sert de banc pour les rejouer.
 
 218. **Deux décisions te reviennent** : 210 (une seule question pour le bénéfice du doute ?) et 214 (voie A ou voie B pour demain ?).
+
+---
+
+## Tour 573 — Paul (08/10, 14:16), mot pour mot
+
+> 212, pas compris.
+
+## Tour 573 — le point 212 réexpliqué (points 219 à 222)
+
+219. **Le point 212 parle de l'élève qui ne fait pas sa saisie.** J'avais proposé (146) que sa note soit alors celle de sa tablette.
+
+220. **Prends Sacha.** Sur sa tablette, il a 15 points. S'il fait sa saisie, avec le bénéfice du doute limité à une question, il tombe à 7 points. S'il ne la fait pas, il garde ses 15 points. Il a donc tout intérêt à ne pas faire sa saisie, et la limite ne sert plus à rien.
+
+221. **D'où la règle : sans saisie, l'élève n'a pas de note.** C'est toi qui la fixes, d'après sa feuille ramassée.
+
+222. **Pour la même raison, la tablette ne doit afficher aucune note avant la saisie.** Aujourd'hui, à la fin de la séance, Sacha lit déjà « Points pour la note : 15 / 29 ». Il sait donc, avant même de commencer, que sa saisie va lui faire perdre des points.

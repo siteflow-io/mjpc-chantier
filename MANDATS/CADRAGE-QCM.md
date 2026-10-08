@@ -1065,3 +1065,19 @@ Deux choses mesurées par la fausse classe touchent ta séance de demain. Je te 
 276. **Théo : réglé, dans les deux modes.** S'il est honnête, sa question 3 est complétée à 1 point ; s'il triche, elle vaut 1 point aussi. Seule exception, toujours : s'il a touché juste au dernier moment sur deux questions ou plus (268).
 
 277. **D'accord pour 275 ?**
+
+---
+
+## Tour 587 — Paul (08/10, 16:16), mot pour mot
+
+> le bonus c'est quoi?
+
+## Tour 587 — le bonus, c'est quoi (points 278 à 281)
+
+278. **Le bonus, c'est ton bénéfice du doute.** Quand la feuille d'un élève est fausse mais qu'il a touché la bonne réponse sur la tablette, au dernier moment, on lui compte quand même la question, une seule fois par évaluation (210, 225). L'élève voit « Trouvée au dernier moment » (233), et toi « bénéfice du doute » dans ta console (229).
+
+279. **Le mot « bonus » vient de toi**, à 14:24 : « on peut considérer aussi ça comme un point bonus en soi, sans complexifier le système ». Tu as ensuite choisi « 1 point fixe » (237).
+
+280. **Exemple : Tom, question 9.** Sa feuille dit faux, mais il a touché la bonne lettre. Sans le bonus, sa question 9 vaut 0 ; avec le bonus, elle vaut 1 point.
+
+281. **Ce que je te demande en 275** : puisqu'une question vaut au plus 1 point, le bonus devient « la question compte comme juste », donc 1 point, jamais plus que si l'élève avait tout écrit juste. D'accord ?

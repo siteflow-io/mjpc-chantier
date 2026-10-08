@@ -17763,3 +17763,43 @@ Réponse mot pour mot :
 301. **À trancher, en partiel seulement** : « Trouvée au dernier moment » ne vaut-elle que si la tablette est entièrement juste ?
 
 08/10/2026 16:52 MEMO
+
+---
+
+## TOUR 591 — Paul
+
+Texte de Paul, mot pour mot :
+
+> pas compris 301. par ailleurs, les niveaux: il faut qu'ils se calculent grâce à la note et surtout aux compétences évaluées à travers chaque question. car sur ED, c'est à ça que servent les niveaux: je t'avais dit qu'ils correspondaient à des tranches de points, mais c'est parce que je parle d'un autre système sur ED, qui permet de convertir des tranches de points en couleur de compétence. sauf que si on cale bien ce que je viens de dire (les compétences évaluées à travers chaque question), je pourrais ainsi avoir des compétences vraiment parlantes à entrer sur ED. et de toute façon, je rentre mes notes avec claude extension, je lui fourgues le pdf des notes et compétences, et c'est lui qui rentre tout sur ED.
+
+---
+
+## TOUR 591 — Claude (conscience n°12)
+
+Mesuré : `grep -i compétence` dans evaluation-qcm.html = 0 ; hub `/taxonomie` (lecture seule) : clés domaines, alias, meta, competences, typesErreur ; `competences` = francaisC4 (5 domaines, 18) + transversales (3 domaines, 10). Mémoire relue : /areas/competences-transversales.md, /areas/mjpc.md. Dette 186 complétée, CADRAGE-QCM.md (ligne d'état, tour 591). Rien écrit au hub, aucun code.
+
+Réponse mot pour mot :
+
+**301, redit avec un exemple**
+
+302. **En mode partiel, prenons une question à 3 bonnes cases.** Sur sa feuille, l'élève en a 1 sur 3. Sur la tablette, il en a touché 2 sur 3 : c'est mieux que sa feuille, mais pas entièrement juste.
+
+303. **Faut-il marquer cette question « Trouvée au dernier moment » ?** Si oui, elle compterait comme juste, soit 1 point, alors que même sa tablette ne valait que 2/3. Ma proposition : non. « Trouvée au dernier moment » seulement quand la tablette est entièrement juste ; sinon la question vaut ce que dit la feuille, ici 1/3. En strict, la question ne se pose pas, et tu es tout le temps en strict.
+
+**Les niveaux de maîtrise**
+
+304. **Compris : les niveaux dont tu parles sont les niveaux de maîtrise d'École Directe, les couleurs.** Ce ne sont pas les niveaux de difficulté des questions (facile à expert). Comme l'app emploie le même mot pour les deux, je propose de dire « difficulté » pour les questions et « maîtrise » pour École Directe.
+
+305. **Mesuré : aujourd'hui, le QCM ne connaît aucune compétence.** Le mot n'apparaît pas une seule fois dans l'app. Les quatre couleurs 🔴🟠🔵🟢 se calculent sur le pourcentage de bonnes réponses de toute l'évaluation (107).
+
+306. **Mesuré : le référentiel existe déjà au hub, dans la taxonomie du site.** Il compte 18 compétences de français du cycle 4, en 5 domaines (l'oral, lire, écrire, la langue, la culture), et 10 compétences transversales.
+
+307. **Ma proposition.** Chaque question porte la compétence qu'elle évalue, prise dans ce référentiel ; c'est le prompt qui la met dans le JSON, avec toi. Pour chaque élève, l'app calcule, compétence par compétence, la part des points obtenus sur les questions de cette compétence, et la convertit en couleur de maîtrise avec tes tranches (108). La note donne aussi une couleur pour l'évaluation entière. À la fin, ta console sort un PDF « notes et compétences » par classe, que ton extension Claude entre sur École Directe.
+
+308. **Ma première question** : ces 18 compétences sont-elles exactement celles que tu as sur École Directe ?
+
+309. **Ma deuxième question** : une question peut-elle évaluer plusieurs compétences ?
+
+310. **Ma troisième question** : as-tu un exemple du PDF que tu donnes aujourd'hui à ton extension ? La sortie de l'app aurait alors exactement la même forme.
+
+08/10/2026 17:02 MEMO

@@ -17218,3 +17218,25 @@ Réponse mot pour mot :
 222. **Pour la même raison, la tablette ne doit afficher aucune note avant la saisie.** Aujourd'hui, à la fin de la séance, Sacha lit déjà « Points pour la note : 15 / 29 ». Il sait donc, avant même de commencer, que sa saisie va lui faire perdre des points.
 
 08/10/2026 14:18 MEMO
+
+---
+
+## TOUR 574 — Paul
+
+Texte de Paul, mot pour mot :
+
+> oui d'accord. la note carotte quoi.
+
+---
+
+## TOUR 574 — Claude (conscience n°12)
+
+Décision de Paul inscrite : CADRAGE-QCM.md (tour 574, ligne d'état) et dette 196 complétée. Rien écrit au hub, aucun code.
+
+Réponse mot pour mot :
+
+223. **C'est retenu : la note, c'est la carotte.** Aucune note n'est visible avant la saisie, nulle part : ni à la fin de la séance, ni dans « Mes évaluations », ni dans le bilan imprimable. Sans saisie, l'élève n'a pas de note, et c'est toi qui la fixes d'après sa feuille (161, 163, 221, 222).
+
+224. **Il reste deux décisions** : 210 (une seule question pour le bénéfice du doute ?) et 214 (voie A ou voie B pour demain ?).
+
+08/10/2026 14:19 MEMO

@@ -3,7 +3,7 @@
 
 **Ce que ça change pour la classe** : deux élèves par tablette, qui répondent l'un après l'autre sans voir la réponse de l'autre ; des temps de réflexion et de réponse réglés question par question ; une séance (questions + correction) qui tient dans 45 minutes ; la console de Paul, qui pilote la séance, lisible d'abord.
 
-**Méthode depuis le tour 563 (Paul) : on séquence, un sujet à la fois, en réponses courtes.** **État au 08/10, 14:12 — décisions attendues de Paul : 210 (bénéfice du doute limité à une question) et 214 (voie A ou B pour la correction du 09/10).** **État au 08/10, 12:57** : réponses de Paul aux tours 559 à 571. Questions ouvertes : 106, 115, 117, 120, 121, 127, 143, 144, 145, 146, 148, 154/180, 160/164, 165, 175/187 (Paul « réfléchit encore » sur le bénéfice du doute ; le mélange des choix n'y joue pas, 188-191 ; données de la fausse classe, 195-206) ; captures de la console (73) avec l'inventaire « tout visible » (147-148). Pour la séance du 09/10 : 192/207 (la correction plante sur les tablettes : corriger au tableau, recharger à la fin) et 193 (appuyer une fois sur « ✋ Autoriser la réponse »). Correction : 137 était faux (196). Retirés : 44 (122), 89 (127), le prompt de transition (128), la suppression de la saisie papier (114, abandonnée au tour 562). Sans objet : 45 à 50. 51 à 54 : production fermée, geste de Paul (53).
+**Méthode depuis le tour 563 (Paul) : on séquence, un sujet à la fois, en réponses courtes.** **État au 08/10, 14:19 — tranché par Paul (tour 574) : la note est la carotte, aucune note avant la saisie, sans saisie pas de note (223). Décisions attendues : 210 (bénéfice du doute limité à une question) et 214 (voie A ou B pour la correction du 09/10).** **État au 08/10, 12:57** : réponses de Paul aux tours 559 à 571. Questions ouvertes : 106, 115, 117, 120, 121, 127, 143, 144, 145, 146, 148, 154/180, 160/164, 165, 175/187 (Paul « réfléchit encore » sur le bénéfice du doute ; le mélange des choix n'y joue pas, 188-191 ; données de la fausse classe, 195-206) ; captures de la console (73) avec l'inventaire « tout visible » (147-148). Pour la séance du 09/10 : 192/207 (la correction plante sur les tablettes : corriger au tableau, recharger à la fin) et 193 (appuyer une fois sur « ✋ Autoriser la réponse »). Correction : 137 était faux (196). Retirés : 44 (122), 89 (127), le prompt de transition (128), la suppression de la saisie papier (114, abandonnée au tour 562). Sans objet : 45 à 50. 51 à 54 : production fermée, geste de Paul (53).
 
 ---
 
@@ -774,3 +774,15 @@ Deux choses mesurées par la fausse classe touchent ta séance de demain. Je te 
 221. **D'où la règle : sans saisie, l'élève n'a pas de note.** C'est toi qui la fixes, d'après sa feuille ramassée.
 
 222. **Pour la même raison, la tablette ne doit afficher aucune note avant la saisie.** Aujourd'hui, à la fin de la séance, Sacha lit déjà « Points pour la note : 15 / 29 ». Il sait donc, avant même de commencer, que sa saisie va lui faire perdre des points.
+
+---
+
+## Tour 574 — Paul (08/10, 14:17), mot pour mot
+
+> oui d'accord. la note carotte quoi.
+
+## Tour 574 — la note carotte (points 223 et 224)
+
+223. **C'est retenu : la note, c'est la carotte.** Aucune note n'est visible avant la saisie, nulle part : ni à la fin de la séance, ni dans « Mes évaluations », ni dans le bilan imprimable. Sans saisie, l'élève n'a pas de note, et c'est toi qui la fixes d'après sa feuille (161, 163, 221, 222).
+
+224. **Il reste deux décisions** : 210 (une seule question pour le bénéfice du doute ?) et 214 (voie A ou voie B pour demain ?).

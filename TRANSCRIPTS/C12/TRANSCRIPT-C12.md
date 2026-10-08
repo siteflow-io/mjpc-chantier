@@ -18308,3 +18308,53 @@ Réponse mot pour mot :
 73 et 148. **Les captures de ta console sont faites** : ce sont les 18 captures de console de la maquette, à valider avec le reste. **L'inventaire « tout visible » (148) est à moi** : je le fais quand tu auras tranché.
 
 08/10/2026 22:41 MEMO
+
+---
+
+## TOUR 602 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (22:46) Ok tout est bon je pense
+
+---
+
+## TOUR 602 — Claude (conscience n°12)
+
+Tout ce qui était à trancher est inscrit comme retenu (401) ; trois textes proposés (402). Inventaire « tout visible » (148) : evaluation-qcm.html 7.7.1 relu écran par écran (165 gestes du côté professeur, écrans élève hors séance, mode test, mode d'emploi, Sauvegarde, Réglages) ; hub lu en lecture seule (qcm/evaluations : aucun champ mode ; qcm/textes et qcm/settings/promptIa vides ; settings/niveaux 10/15/20/30). Déposé : MANDATS/INVENTAIRE-QCM-TOUT-VISIBLE.md (95 fonctions). Registre : dettes 205 à 209. CADRAGE-QCM.md complété (tour 602, ligne d'état). Rien écrit au hub, aucun code.
+
+Premier message, mot pour mot (22:46) :
+
+401. **C'est inscrit : tout est retenu.** Ce sont 323 à 340, 349, 351, 353, 360, 362, 390, 64, 97 et 142, 115, 120, 121, 165, 234, 313 et 317, ainsi que les textes 393 à 397.
+
+402. **Trois textes n'existent pas encore ; voici mes propositions, à toi de dire.** Pour 398 (sous une question que tu as changée) : « Corrigé d'après ta feuille. » Pour 399 (à la place de la phrase sur les lettres) : « 💡 Clique sur le ou les choix qui correspondent à ta réponse. » Pour 400 (code non enregistré) : « Ton code n'est pas encore enregistré : lève la main. »
+
+403. **Ce qui reste avant le mandat, dans l'ordre.** D'abord l'inventaire « tout visible » (148), que je commence maintenant. Ensuite la forme du PDF « notes et compétences » (318), que je te propose ; puis le prompt (62, 123), qui s'écrit en dernier, avec toi. Enfin, la maquette à jour (« recopie », textes retenus) et le mandat, qui comprend les dettes 179 à 204.
+
+08/10/2026 22:46 MEMO
+
+Réponse de fin de tour, mot pour mot :
+
+404. **L'inventaire « tout visible » est au sas** : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/INVENTAIRE-QCM-TOUT-VISIBLE.md. Il compte 95 fonctions, chacune avec sa place aujourd'hui, sa place après le cadrage (avec la capture) et un verdict : 21 gardées, 46 changées par le cadrage, 7 nouvelles, 6 retirées et 15 propositions à trancher.
+
+405. **Mesuré : le mode partiel n'est jamais enregistré.** L'éditeur propose le choix, mais « Enregistrer » n'écrit pas le mode. Tes 7 évaluations du hub sont donc toutes comptées en tout ou rien (dette 205).
+
+406. **Mesuré : six gestes effacent sans corbeille** : la 🗑️ d'une évaluation, l'effacement d'une séance, le scan, « Purger les évaluations », « Tout purger », et « Importer snapshot », qui remplace tout. Ils passeront par la corbeille, qui existe déjà dans l'app (dette 206).
+
+407. **Mesuré : l'adresse #mode=prof ouvre ta console sans code ni clé.** Le QR du téléphone porte cette adresse et la donne à un site extérieur, pour fabriquer son image. Je ne sais pas si c'est voulu. À toi de dire si on le traite dans ce mandat (dette 208).
+
+408. **Des textes pour toi sont faux** : presque tout le mode d'emploi (Plickers, le bonus sur 1 ou 2 questions, la saisie à la maison, le scan), l'aide des Réglages et trois infobulles. Je les réécris d'après le cadrage (dette 207).
+
+409. **Ma proposition : côté élève, il ne reste que « Mes évaluations ».** La recopie se fait en classe (360). « Tes évaluations passées », la saisie à la maison et la page « Score officiel, papier, app » n'ont donc plus d'usage. « Mes évaluations » montre le bilan de la capture 38.
+
+410. **Tes 7 évaluations du hub n'ont ni temps, ni compétences, ni chapitre.** Ma proposition : l'app refuse de les lancer tant que tu ne les as pas complétées dans l'éditeur, et la liste dit ce qui manque.
+
+411. **La réouverture pour un seul élève n'a pas de place sur la maquette.** Aujourd'hui, c'est un clic sur sa bulle (147). Ma proposition : un bouton « 🔓 Rouvrir pour un élève », en haut, à côté de « 🚫 Départ d'un élève ». Il ne liste que ceux qui n'ont pas répondu (331).
+
+412. **« ← Q préc. » et « Q suiv. → » pendant la séance : ma proposition est de les retirer.** Revenir en arrière relance la question pour toute la classe, ce que 331 interdit. Sauter une question la laisse sans réponse pour tous.
+
+413. **Les autres propositions** (une ligne chacune dans l'inventaire) : un seul onglet pour la liste des évaluations, au lieu de « Préparation » et « Évaluations » (209). L'export CSV reprend les colonnes de la capture 41. Le mode test passe au nouveau flux. Les boutons qui ne servent plus sont retirés : « Ranger l'ancien carnet », « Purger les classes » et les outils P2 du mode test. Chaque séance passée de la classe ouvre ses résultats.
+
+414. **Quatorze écrans changent et n'ont pas encore de capture** (partie 17) : l'éditeur, le collage, la feuille imprimée, le téléphone, le tableau, la reprise, le rattrapage, Sauvegarde, le mode test, « Mes évaluations », entre autres. Ta règle de 148 : rien ne part au mandat sans sa place visible. Je les ajoute à la maquette quand tu auras répondu à 407 et à 409 jusqu'à 413. Ensuite viendront le PDF (318) et le prompt. Tes mots pour 398 à 400 (402) sont aussi attendus.
+
+08/10/2026 23:05 MEMO

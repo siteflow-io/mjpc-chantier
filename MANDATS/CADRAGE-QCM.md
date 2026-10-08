@@ -3,7 +3,7 @@
 
 **Ce que ça change pour la classe** : deux élèves par tablette, qui répondent l'un après l'autre sans voir la réponse de l'autre ; des temps de réflexion et de réponse réglés question par question ; une séance (questions + correction) qui tient dans 45 minutes ; la console de Paul, qui pilote la séance, lisible d'abord.
 
-**Méthode depuis le tour 563 (Paul) : on séquence, un sujet à la fois, en réponses courtes.** **État au 08/10, 12:57** : réponses de Paul aux tours 559 à 571. Questions ouvertes : 106, 115, 117, 120, 121, 127, 143, 144, 145, 146, 148, 154/180, 160/164, 165, 175/187 (Paul « réfléchit encore » sur le bénéfice du doute ; le mélange des choix n'y joue pas, 188-191 ; données de la fausse classe, 195-206) ; captures de la console (73) avec l'inventaire « tout visible » (147-148). Pour la séance du 09/10 : 192/207 (la correction plante sur les tablettes : corriger au tableau, recharger à la fin) et 193 (appuyer une fois sur « ✋ Autoriser la réponse »). Correction : 137 était faux (196). Retirés : 44 (122), 89 (127), le prompt de transition (128), la suppression de la saisie papier (114, abandonnée au tour 562). Sans objet : 45 à 50. 51 à 54 : production fermée, geste de Paul (53).
+**Méthode depuis le tour 563 (Paul) : on séquence, un sujet à la fois, en réponses courtes.** **État au 08/10, 14:12 — décisions attendues de Paul : 210 (bénéfice du doute limité à une question) et 214 (voie A ou B pour la correction du 09/10).** **État au 08/10, 12:57** : réponses de Paul aux tours 559 à 571. Questions ouvertes : 106, 115, 117, 120, 121, 127, 143, 144, 145, 146, 148, 154/180, 160/164, 165, 175/187 (Paul « réfléchit encore » sur le bénéfice du doute ; le mélange des choix n'y joue pas, 188-191 ; données de la fausse classe, 195-206) ; captures de la console (73) avec l'inventaire « tout visible » (147-148). Pour la séance du 09/10 : 192/207 (la correction plante sur les tablettes : corriger au tableau, recharger à la fin) et 193 (appuyer une fois sur « ✋ Autoriser la réponse »). Correction : 137 était faux (196). Retirés : 44 (122), 89 (127), le prompt de transition (128), la suppression de la saisie papier (114, abandonnée au tour 562). Sans objet : 45 à 50. 51 à 54 : production fermée, geste de Paul (53).
 
 ---
 
@@ -726,3 +726,35 @@ Deux choses mesurées par la fausse classe touchent ta séance de demain. Je te 
 208. **La saisie faite en classe s'efface.** Mesuré sur trois tablettes restées ouvertes depuis la séance : Léa avait coché 4 lettres ; quand Julien a appuyé sur « Envoyer → », elle n'en avait plus aucune, et elle est revenue, comme Tom, à « ⏳ Attends la prochaine question... ». Seul un rechargement les en sort. C'est la fuite d'écoute de la dette 180, et cela touche 143 (la saisie en classe). Après « Envoyer », les 23 élèves sont aussi tous retombés sur « Choisis ta classe » (138).
 
 209. **Registre** : deux dettes ajoutées, 198 (la correction plante sur les tablettes) et 199 (la case « ✋ Réponse ») ; deux complétées, 180 (la saisie effacée) et 196 (pas d'« Officiel » dans ta console). Le rapport complet, avec les 25 élèves question par question, les captures et le banc pour le rejouer : https://github.com/siteflow-io/mjpc-chantier/blob/main/AUDITS/QCM-FAUSSE-CLASSE-3E-08-10/README.md
+
+---
+
+## Tour 572 — Paul (08/10, 14:09), mot pour mot
+
+> ok donc conclusion? que faut-il faire?
+
+## Tour 572 — conclusion et ce qu'il faut faire (points 210 à 218)
+
+**Pour le cadrage**
+
+210. **Ma conclusion : on garde le bénéfice du doute, mais sur une seule question par évaluation.** Sans limite, il fait ce que ton mode d'emploi interdit : Sacha passe de 2,1 à 10,3 sur 20 alors qu'il n'a rien écrit de juste aux quatre questions concernées. Avec une seule question, les cinq élèves du « cas rare » gardent tout leur gain (Tom, Anna, Hugo, Emma, Nathan), et Sacha n'a plus que 4,8 sur 20. Avec deux questions (ce que dit ton mode d'emploi, et ma proposition 144), Sacha aurait encore 6,9. La question gardée est celle qui vaut le plus de points.
+
+211. **Pourquoi pas sans lui** : le bénéfice du doute rend inutile la saisie arrangée sur une question où l'élève avait touché juste (Théo, 205). La seule saisie arrangée qui paie encore est celle que ton Suivi signale (« saisie juste, tablette fausse », Camille). Sans le bénéfice du doute, le mensonge de Théo lui rapporte 3 points, et rien ne te le signale (186). Avec la limite, il ne rapporte que si l'élève a déjà utilisé son bénéfice du doute ailleurs.
+
+212. **À une condition : pas de saisie, pas de note** (185). Sinon, Sacha garde ses 15 points de tablette en ne faisant pas sa saisie, et la limite ne sert à rien. Cela suppose aussi qu'aucune note ne soit visible avant la saisie (163) : aujourd'hui, la fin de séance lui affiche « Points pour la note : 15 / 29 ».
+
+213. **Une seule note, la même partout** (112, 196) : en points, et identique sur la page de l'élève et dans ta console.
+
+**Pour demain**
+
+214. **La correction plante sur les tablettes (192). Il y a deux voies, et c'est à toi de choisir.** Voie A : tu me rouvres la production (le geste de 53), et tu m'ordonnes la correction d'une ligne. Je la fais passer par la fausse classe avant de la pousser, puis tu promeus. Voie B : on ne touche à rien. Tu corriges au tableau ; les tablettes restent vides pendant la correction.
+
+215. **Avec la voie B, l'ordre des gestes compte à la fin.** Tu appuies d'abord sur « Terminer la session », et ensuite seulement les élèves rechargent leur tablette et retapent leur code. Mesuré : quand les tablettes avaient été rechargées avant « Terminer », une seule saisie sur 23 est passée, parce que chaque envoi effaçait les autres (208). Rechargées après, les 23 saisies sont passées.
+
+216. **Le chrono de réponse** : règle la case, puis appuie toi-même une fois sur « ✋ Autoriser la réponse » à la question 1 (193).
+
+**Après demain**
+
+217. **Les dettes 198, 199 et 180 entrent dans le lot de consolidation du mandat.** La fausse classe, qui est maintenant au sas, sert de banc pour les rejouer.
+
+218. **Deux décisions te reviennent** : 210 (une seule question pour le bénéfice du doute ?) et 214 (voie A ou voie B pour demain ?).

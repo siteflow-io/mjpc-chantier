@@ -17150,3 +17150,45 @@ Réponse mot pour mot :
 209. **Registre** : deux dettes ajoutées, 198 (la correction plante sur les tablettes) et 199 (la case « ✋ Réponse ») ; deux complétées, 180 (la saisie effacée) et 196 (pas d'« Officiel » dans ta console). Le rapport complet, avec les 25 élèves question par question, les captures et le banc pour le rejouer : https://github.com/siteflow-io/mjpc-chantier/blob/main/AUDITS/QCM-FAUSSE-CLASSE-3E-08-10/README.md
 
 08/10/2026 12:57 MEMO
+
+---
+
+## TOUR 572 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok donc conclusion? que faut-il faire?
+
+---
+
+## TOUR 572 — Claude (conscience n°12)
+
+Recompte des limites du bénéfice du doute sur les données de la fausse classe (limite 1 : +19 points sur la classe, Sacha 4,8/20 ; limite 2 : +22, Sacha 6,9/20 ; sans limite : +27, Sacha 10,3/20). CADRAGE-QCM.md complété (tour 572, ligne d'état). Rien écrit au hub, aucun code.
+
+Réponse mot pour mot :
+
+**Pour le cadrage**
+
+210. **Ma conclusion : on garde le bénéfice du doute, mais sur une seule question par évaluation.** Sans limite, il fait ce que ton mode d'emploi interdit : Sacha passe de 2,1 à 10,3 sur 20 alors qu'il n'a rien écrit de juste aux quatre questions concernées. Avec une seule question, les cinq élèves du « cas rare » gardent tout leur gain (Tom, Anna, Hugo, Emma, Nathan), et Sacha n'a plus que 4,8 sur 20. Avec deux questions (ce que dit ton mode d'emploi, et ma proposition 144), Sacha aurait encore 6,9. La question gardée est celle qui vaut le plus de points.
+
+211. **Pourquoi pas sans lui** : le bénéfice du doute rend inutile la saisie arrangée sur une question où l'élève avait touché juste (Théo, 205). La seule saisie arrangée qui paie encore est celle que ton Suivi signale (« saisie juste, tablette fausse », Camille). Sans le bénéfice du doute, le mensonge de Théo lui rapporte 3 points, et rien ne te le signale (186). Avec la limite, il ne rapporte que si l'élève a déjà utilisé son bénéfice du doute ailleurs.
+
+212. **À une condition : pas de saisie, pas de note** (185). Sinon, Sacha garde ses 15 points de tablette en ne faisant pas sa saisie, et la limite ne sert à rien. Cela suppose aussi qu'aucune note ne soit visible avant la saisie (163) : aujourd'hui, la fin de séance lui affiche « Points pour la note : 15 / 29 ».
+
+213. **Une seule note, la même partout** (112, 196) : en points, et identique sur la page de l'élève et dans ta console.
+
+**Pour demain**
+
+214. **La correction plante sur les tablettes (192). Il y a deux voies, et c'est à toi de choisir.** Voie A : tu me rouvres la production (le geste de 53), et tu m'ordonnes la correction d'une ligne. Je la fais passer par la fausse classe avant de la pousser, puis tu promeus. Voie B : on ne touche à rien. Tu corriges au tableau ; les tablettes restent vides pendant la correction.
+
+215. **Avec la voie B, l'ordre des gestes compte à la fin.** Tu appuies d'abord sur « Terminer la session », et ensuite seulement les élèves rechargent leur tablette et retapent leur code. Mesuré : quand les tablettes avaient été rechargées avant « Terminer », une seule saisie sur 23 est passée, parce que chaque envoi effaçait les autres (208). Rechargées après, les 23 saisies sont passées.
+
+216. **Le chrono de réponse** : règle la case, puis appuie toi-même une fois sur « ✋ Autoriser la réponse » à la question 1 (193).
+
+**Après demain**
+
+217. **Les dettes 198, 199 et 180 entrent dans le lot de consolidation du mandat.** La fausse classe, qui est maintenant au sas, sert de banc pour les rejouer.
+
+218. **Deux décisions te reviennent** : 210 (une seule question pour le bénéfice du doute ?) et 214 (voie A ou voie B pour demain ?).
+
+08/10/2026 14:12 MEMO

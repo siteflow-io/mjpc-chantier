@@ -16858,3 +16858,31 @@ Réponse mot pour mot :
 08/10/2026 10:47 MEMO
 
 ---
+
+## TOUR 563 — Paul
+
+Texte de Paul, mot pour mot :
+
+> Attends donc là il faut qu'on séquence. Tu me fais des pavés, je n'arrive pas à tout envisager d'un coup. Déjà, il faut s'arrêter sur le principe de comparaison entre le papier et la bonne réponse. Comment l'App fait la comparaison? Un élève peut donner une réponse juste sans que la formulation soit la même.
+
+---
+
+## TOUR 563 — Claude (conscience n°12)
+
+Mesuré : aucun champ de texte côté élève (EleveSession à EleveCorrection), aucune comparaison de texte dans le code ; la saisie papier et la tablette ne portent que des indices de choix (calculerScoreQuestion). CADRAGE-QCM.md complété (tour 563, méthode : un sujet à la fois). Rien écrit au hub, aucun code.
+
+Réponse mot pour mot :
+
+150. **Mesuré : l'app ne lit jamais ce que l'élève a écrit.** Elle ne compare aucune phrase : côté élève, il n'y a aucun champ de texte, et le code ne compare aucun mot.
+
+151. **Elle ne compare que des choix.** C'est l'élève qui traduit sa réponse écrite en choix, et il le fait trois fois. Pendant la réponse, il touche la lettre qui correspond à ce qu'il a écrit. À la correction, il met son V vert ou barre en rouge, en comparant sa phrase à la bonne réponse. À la saisie, il indique quel choix sa feuille disait.
+
+152. **Une bonne réponse formulée autrement ne gêne donc pas l'app** : c'est l'élève qui reconnaît que sa phrase et le choix disent la même chose. L'app compare ensuite trois choix : celui qu'il a touché, celui qu'il a saisi et le bon.
+
+153. **Le vrai point, c'est que personne ne vérifie que la saisie dit vrai.** Un élève peut saisir le bon choix alors que sa feuille dit autre chose. La seule vérification prévue, c'était le scan des copies, qui n'a jamais servi (115).
+
+154. **Ma question : qui vérifie ?** Ma proposition : tu ramasses les feuilles, et le Suivi (140) te montre seulement les questions où la saisie diffère de la tablette. Tu ne vérifies que celles-là sur la feuille, en quelques secondes par élève. Ça te va, ou tu vois autrement ?
+
+08/10/2026 10:52 MEMO
+
+---

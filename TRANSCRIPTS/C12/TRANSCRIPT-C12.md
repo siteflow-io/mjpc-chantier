@@ -17344,3 +17344,107 @@ Réponse mot pour mot :
 240. **Pour que le mandat parte, il reste à trancher** : 106, 115, 117, 120, 121, 127, 143, 148, 154/180, 160/164, 165, 234 et 238, puis les captures de ta console (73). Ce qui est réglé aujourd'hui : 144, 145, 146, 175 et 187 (la note, le bonus, pas de note sans saisie), 227 et 231.
 
 08/10/2026 14:31 MEMO
+
+---
+
+## TOUR 579 — Paul
+
+Texte de Paul, mot pour mot :
+
+> je n'ai pas compris le cas de théo. et pour les points encore à trancher, il faut me les redonner, sans les synthétiser sinon je ne sais plus de quoi on parle.
+
+---
+
+## TOUR 579 — Claude (conscience n°12)
+
+Points ouverts recopiés mot pour mot depuis les réponses des tours 560 à 578, avec les réponses de Paul qu'ils concernent ; ajouts marqués « Depuis ». CADRAGE-QCM.md complété (tour 579). Rien écrit au hub, aucun code.
+
+Réponse mot pour mot :
+
+**Théo, pas à pas**
+
+241. **Théo, à la question 3, qui vaut 3 points.** Sur sa feuille, il a écrit une réponse fausse. Sur la tablette, au dernier moment, il a touché la bonne.
+
+242. **S'il recopie sa feuille honnêtement**, l'app voit : feuille fausse, tablette juste. La question 3 ne lui rapporte rien, mais elle est « Trouvée au dernier moment » : il a son point bonus. Sa note : 15 + 1 = 16 points.
+
+243. **S'il triche, en recopiant la bonne réponse au lieu de ce qu'il a écrit**, l'app croit que sa feuille était juste et lui compte les 3 points de la question. Sa note : 18 points. Son mensonge lui rapporte 2 points.
+
+244. **Ton Suivi ne le voit pas.** Il ne te signale que les questions où la saisie dit juste et la tablette dit faux (180). Chez Théo, les deux disent juste. Seule sa feuille ramassée montre qu'il a menti.
+
+245. **Camille, elle, est signalée** : elle a triché de la même façon, mais sa tablette était fausse. Avec le bonus égal aux points de la question (avant ton choix de 237), Théo aurait eu 18 en recopiant honnêtement, et tricher ne lui aurait rien rapporté.
+
+**Les points encore à trancher, tels que je te les avais écrits**
+
+> Ta réponse à 30 : « ok, mais à voir parce que jusqu'à maintenant les élèves étaient seuls sur leur tablette. si je réouvre pour un seul, l'autre voit l'asymétrie de traitement et peut récriminer. à voir, pas fini de réfléchir, j'attends ton avis. »
+
+106. **Sur 30, mon avis : garder la réouverture pour un seul élève telle qu'elle est.** Mesuré : aujourd'hui, tu ne peux rouvrir que pour un élève qui n'a **aucune** réponse à cette question (un clic sur sa bulle ne fait rien s'il a répondu), une seule fois par question, et sans chrono. Son voisin a donc déjà répondu dans son temps : il ne perd rien, et personne n'a de seconde chance sur une réponse déjà donnée. L'asymétrie est juste, et elle se dit en une phrase : « il n'avait pas pu répondre ». Pendant la réouverture, la moitié du voisin porte le même voile qu'à un tour ordinaire (« Laisse la tablette à X… »), sans autre message. Je retire aussi le mot « RÉOUVERTE » de l'écran de l'élève, pour que rien ne la distingue d'un tour ordinaire.
+
+115. **Même question pour le scan des copies**, prévu dans ton tableau des scores (fiche de l'élève, image de 2 Mo au plus) : mesuré, aucun scan au hub, jamais. Le garder ou le retirer ?
+
+*Depuis : la saisie papier n'est plus retirée (140, 223). « Même question » voulait dire : le garder ou le retirer.*
+
+> Ta réponse sur 21 : « voilà, je savais bien que l'ordre mélangé télescoperait. Donc en fait, en correction, les réponses au tableau s'affichent dans un ordre, pas forcément celui que les élèves ont vu (ce qui va avec le mélange quand ils ont répondu), mais en revanche sur leur tablette ils gardent chacun les lettres qu'ils avaient répondu. ou alors, on supprime totalement les références par lettre, mais ça a des conséquences qu'il faut cadrer. ça va avec ta proposition de 95, mais à bien cadrer pour être sûr. »
+
+116. **Sur 21 : ce qu'il faut cadrer pour les lettres.** Mesuré : les lettres des choix apparaissent à dix endroits : la tablette en réponse ; la tablette en correction ; la saisie papier ; le bilan imprimable de l'élève ; la vue tableau, en réponse et en correction ; ton pilotage ; ton téléphone ; l'aperçu de l'éditeur ; la feuille imprimée ; le tableau des scores et son export.
+
+117. **Ma proposition, pour 116 : deux ordres, jamais mélangés sur un même écran.** Ce que voit l'élève (sa tablette en réponse et en correction, son récapitulatif, ses résultats) suit **son** ordre et **ses** lettres : il retrouve toujours la lettre qu'il a touchée. Ce que voient la classe et toi (le tableau, ton pilotage, ton téléphone, l'éditeur, le tableau des scores, l'export) suit l'ordre de l'évaluation. Au tableau, en correction, les choix s'affichent sans lettre, les bonnes en vert (95) : personne ne peut confondre les deux ordres.
+
+118. **Ce que coûte 117** : l'app garde, pour chaque élève et chaque question, l'ordre qu'il a vu. Ton tableau des scores donne les lettres dans l'ordre de l'évaluation, qui ne sont pas toujours celles que l'élève a touchées. Si un élève te dit « j'ai mis C », tu le vérifies sur sa fiche, qui montre son ordre. Supprimer toutes les lettres (ton autre piste) coûte plus : à l'oral, tu ne pourrais plus dire « la B », ni en classe, ni en correction.
+
+*Depuis : le mélange ne gêne pas le calcul des notes (188 à 191).*
+
+> Ta réponse à 96 : « en fait, pour l'impression je serai presque à faire une impression uniquement des questions, l'élève répond sur une feuille simple (ce qu'il fait déjà en évaluation actuelle), et après?... à continuer de cadrer. »
+
+119. **Sur 96, mesuré : les énoncés seuls**, sans choix ni cadre, avec les points de chaque question, tiennent sur **une page** pour chacune de tes deux évaluations de demain. L'élève répond sur sa feuille simple, comme aujourd'hui.
+
+120. **Sur 96, « et après ? »** : sans connexion, l'élève n'a pas de tablette pour toucher une lettre ; il répond en entier sur sa feuille. Deux propositions. Soit la copie se corrige à la main, comme un devoir écrit, hors de l'app. Soit, après coup, tu coches juste ou faux question par question dans ton tableau des scores, et l'app calcule la note, le récapitulatif (112) et l'archive (dette 186), comme pour une séance sur tablette. Je recommande la seconde : sinon, cette évaluation manque à l'archive et à École Directe. Laquelle ?
+
+> Ta réponse à 43 : « plutot à cadrer au json. l'instance me demande s'il y a déjà eu une ou des évals avant, et si oui, elle coche la case et l'app prend le relais ensuite. »
+
+121. **Sur 43, au JSON : une tension.** Mesuré : une même évaluation sert à plusieurs classes. En juin, « Les Misérables — évaluation d'entraînement » a été passée par la 4e Pythagore le 17/06, puis par la 4e Banksy le 19/06 ; la Pythagore avait déjà un QCM derrière elle le 18/06, la Banksy aucun. Une case dans le JSON ne peut pas dire « premier QCM ou pas » pour deux classes à la fois. Ma proposition : l'IA te demande ce que tu veux, et le JSON porte ton choix (« binômes d'après le QCM précédent ») ; l'app l'applique classe par classe : placement libre pour une classe qui n'a encore aucun QCM, et d'après les résultats pour les autres.
+
+89. **Sur 65, une tension avec ton 7.** Sur une tablette de classe, l'élève qui touche « 1 » par erreur retombe sur le raccourci MJPC. Si un autre élève s'est connecté au site sur cette tablette dans les 12 dernières heures, il entre sous son nom. Ma proposition : en « 1 élève », le raccourci n'entre plus directement. Il affiche d'abord le nom, avec deux boutons : « C'est moi » et « Ce n'est pas moi », qui ouvre l'écran du code. Ce sont des mots vus par l'élève : donne-moi les tiens, ou dis « ok » pour ceux-là.
+
+> Ta réponse à 65 : « je ne vois pas pourquoi on ne fait pas exactement comme dictée, car dans dictée il n'y a pas de tension. mesure la différence actuelle entre les deux apps, sur ce point précis. »
+
+126. **Sur 65, mesuré : la dictée fait exactement ce que je décrivais.** Dans la dictée, « Combien êtes-vous ? » ne paraît que sur un grand écran (au moins 880 pixels de large), ouvert sans lien direct ; un téléphone va droit à « 1 élève ». « 2 élèves » ouvre les deux moitiés, sans raccourci MJPC, et chaque moitié garde son élève 70 minutes. « 1 élève » ouvre l'app ordinaire, **avec** le raccourci MJPC, sans aucune confirmation. La tension de 89 existe donc aussi dans la dictée : elle ne s'est jamais vue, parce qu'il faut qu'un autre élève se soit connecté au site sur cette tablette dans les 12 heures.
+
+127. **Mon verdict, pour 126** : on fait exactement comme la dictée, et je retire 89 du QCM. Le risque, identique dans les deux apps, devient une dette commune ; tu décides si on la traite, et quand.
+
+*Le risque commun est la dette 194.*
+
+143. **À trancher : le moment de la saisie.** Ma proposition : en classe, juste après la correction, sur les tablettes, comme l'autocorrection de la dictée. Tu vois le Suivi en direct et tu repères aussitôt un élève bloqué ou un défaut. Ensuite, la saisie reste ouverte jusqu'à une date, pour les absents.
+
+*Depuis : la saisie en classe s'efface aujourd'hui quand un autre élève envoie la sienne (208) ; la livraison le corrige.*
+
+147. **Mesuré : ce qui n'a aujourd'hui aucune place visible dans ta console** : la saisie papier et la note officielle (seulement dans un tableau, après coup) ; les durées des niveaux (seulement repliées, une fois la séance lancée) ; la pondération (dans Sauvegarde) ; la réouverture pour un élève (un clic sur sa bulle, sans bouton ni indication) ; le scan des copies (dans la fiche d'un élève). Côté élève, ses évaluations sont dans deux listes différentes : « Mes évaluations » et « Tes évaluations passées ».
+
+148. **Ma proposition, pour 147** : avant le mandat, je fais l'inventaire complet de l'app. Pour chaque fonction, je relève où elle se voit dans ta console et par quel bouton ou quel champ. Les captures de ta console (73) montrent ensuite chacune à sa place. Rien ne part au mandat sans sa place visible.
+
+153. **Le vrai point, c'est que personne ne vérifie que la saisie dit vrai.** Un élève peut saisir le bon choix alors que sa feuille dit autre chose. La seule vérification prévue, c'était le scan des copies, qui n'a jamais servi (115).
+
+154. **Ma question : qui vérifie ?** Ma proposition : tu ramasses les feuilles, et le Suivi (140) te montre seulement les questions où la saisie diffère de la tablette. Tu ne vérifies que celles-là sur la feuille, en quelques secondes par élève. Ça te va, ou tu vois autrement ?
+
+> Ta réponse à 154 : « Oui ce serait déjà une première possibilité. Mais il y en a une deuxième : que l'élève recopie les réponses de sa feuille papier dans l'App directement, toujours en ayant indiqué les lettres des réponses, pour que l'App puisse avoir ET les lettres des réponses ET la vraie copie de l'élève en numérique. A mettre en tension »
+
+160. **Mon verdict : tes deux possibilités vont ensemble, pas l'une contre l'autre ; la feuille reste la seule preuve.** Ma question pour trancher : la phrase tapée, tu la veux pour toutes les questions, ou seulement pour celles où la saisie diffère de la tablette ? La seconde voie fait moins à taper, et c'est justement là que tu en as besoin.
+
+> Ton message de 11:15 : « En fait, et d'où l'accès à la note, je comptais sur le fait que les élèves voudraient voir leur note, et donc que pour la débloquer ils taperaient exactement ce qu'il y a sur leur copie. en leur disant que je rammasse aussi les copies, donc s'ils tapent quelque chose de différent, je le verrai (mais c'est juste de la coercition positive, en soi si un élève le fait, je ne sais pas ce que je fais ensuite). Vu qu'ils marchent à la note, je me disais que la seule "carotte" de voir la note suffisait à ce qu'ils fassent le flux tel que demandé. »
+
+164. **Ta réponse à 160, telle que je la comprends** : l'élève recopie toute sa feuille, pour toutes les questions. Le temps (158) dépend donc du moment de la saisie (143) : à la maison, la longueur ne coûte rien ; en classe, elle prend sur l'heure.
+
+165. **Une seule chose à trancher maintenant : que se passe-t-il quand ta copie ramassée ne dit pas la même chose que la saisie ?** Ma proposition : la feuille fait foi. Dans ton Suivi, tu marques la question « la feuille dit autre chose », la note se recalcule d'après la feuille, et l'élève lit « corrigé d'après ta feuille ». Est-ce que tu ajoutes une sanction, comme le zéro de la dictée, ou non ?
+
+179. **Tension 2, avec ta vérification (154, 168).** Avec le meilleur des deux, ta correction « la feuille dit autre chose » ne change la note que si la tablette était fausse elle aussi. Un seul cas mérite donc ton regard : la saisie est juste et la tablette fausse. L'élève a-t-il vraiment écrit juste, ou a-t-il arrangé sa saisie ? Dans les autres cas d'écart, mentir ne lui rapporte rien.
+
+180. **Ma proposition, qui affine 154** : ton Suivi ne te signale que ce cas-là, « saisie juste, tablette fausse », et rien d'autre. Tu as moins de feuilles à regarder. Ça te va ?
+
+*Depuis : 179 était écrit pour l'ancienne règle (le meilleur des deux). Avec ton point fixe (237), le Suivi de 180 signale toujours Camille, mais plus Théo (241 à 244).*
+
+> Ton message de 14:24 : « dans les règles de l'attestation au début, l'élève doit avoir une explcation claire et compréhensible de ce mécanisme, et la raison pédagogique. En gros, qu'on lui laisse une chance sur "l'aide" donnée par les choix qcm (par rapport à une réponse classique sans voir de réponses possibles), et en revanche que c'est ce qu'il a écrit qui fait foi, donc si c'est faux à l'écrit, le point ne lui est pas compté sur l'app et c'est bien sa note écrite qui vaut. on peut considérer aussi ça comme un point bonus en soi, sans complexifier le système. »
+
+234. **Mesuré : le QCM n'a pas d'attestation.** La correction de dictée en a une : « Avant de commencer, Julien », les règles, la case « J'ai lu et compris », puis l'heure gardée et visible dans ta console. Le QCM n'a qu'un encadré avant la question 1, « Comment ça marche pour cette évaluation », qui dit encore « Chaque question rapporte 1 point », ce qui est faux depuis 112. Ma proposition : on reprend l'attestation de la dictée, sur chaque moitié de tablette, avant la question 1, avec ta règle et sa raison.
+
+*238 : c'est le cas de Théo, réexpliqué en 241 à 245. À toi de dire si le ramassage des feuilles suffit à l'en dissuader.*
+
+08/10/2026 14:40 MEMO

@@ -18722,3 +18722,42 @@ Réponse mot pour mot :
 509. **La suite** : quand 502 à 508 te vont, je refais les captures 610-1 à 610-5.
 
 09/10/2026 14:01 MEMO
+
+---
+
+## TOUR 612 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (09/10, 14:11) La phrase " à la fin tu verras ta note etc. " Ne concerne plus l'élève en soi, vu qu'il est le recopieur de l'autre. 
+> Enfin, il faudra un écran de coevaluation de la correction, qui me remonte instantanément à la fin de la correction. Cet écran, c'est Michel qui évalue julien sur sa lecture de sa copie. Il peut cliquer sur " pour moi Michel a bien lu ma copie" ou alors l'inverse et il doit préciser la question sur laquelle il n'est pas d'accord, ou un cas intermédiaire, et pareil il précise la question. Il n'a le droit qu'à un désaccord sur une seule question. L'explication pédagogique : à trouver par toi. Le cas mal lu m'alerte immédiatement sur la console et j'appelle les élèves à la fin de l'heure pour trancher. Et j'ai deux choix, ou un intermédiaire : je tranche en faveur de Michel, en faveur de julien, ou intermédiaire:  je relis ce soir la question tant.
+
+---
+
+## TOUR 612 — Claude (conscience n°12)
+
+Relus : 471, 474, 485, 491, 496, 497, 500, 504, la capture 43. Rien mesuré de neuf. Captures non refaites. CADRAGE-QCM.md complété (tour 612, ligne d'état). Rien écrit au hub, ni en production.
+
+Réponse mot pour mot :
+
+510. **La phrase sur la note : oui, elle ne tient plus**, puisque la note de Julien dépend maintenant de la lecture de Michel. Ma proposition : la remplacer par « À la fin, Michel dira si tu as bien lu sa feuille. » C'est la nouvelle pression, et elle annonce l'écran de 511. « Ta note, c'est ta feuille » reste dans la première attestation.
+
+511. **L'écran de co-évaluation, ma proposition.** Dans ton exemple, les prénoms sont inversés : je les remets dans ton sens, c'est Michel qui évalue la lecture de Julien, dans sa propre moitié, et Julien fait de même pour Michel, en même temps. Titre : « Michel, Julien a-t-il bien lu ta feuille ? » Dessous, la liste des questions, chacune avec ce que Julien a cliqué pour lui, par exemple « Question 2 · Julien a lu : Madrid ». Puis trois boutons : « ✅ Oui, il a bien lu ma feuille », « 🤔 Il a peut-être mal lu ma feuille, à une question », « ❌ Il a mal lu ma feuille, à une question ». Pour les deux derniers, Michel clique la question dans la liste. Un seul désaccord en tout.
+
+512. **Côté élève, je garde « feuille », pas « copie »** : c'est le mot de toutes les attestations, et « copie » sert déjà à « rendre les copies » (471).
+
+513. **L'explication pédagogique.** Pour toi : contester, c'est affirmer ce qu'on peut prouver. N'avoir droit qu'à un désaccord oblige l'élève à trier et à ne garder que celui dont il est sûr : c'est « Être autonome et responsable », assumer ce qu'on affirme. Pour l'élève, ma proposition : « Un désaccord, c'est sérieux : tu n'en signales qu'un, celui dont tu es le plus sûr. Il se vérifie sur ta feuille. »
+
+514. **Une tension** : à ce moment, Michel connaît les bonnes réponses. Il peut être tenté de signaler la question où Julien a lu une réponse fausse. « Il se vérifie sur ta feuille » le décourage, et tu tranches feuille en main : la correction en vert se distingue de ce qui a été écrit pendant l'évaluation.
+
+515. **Ta console, ma proposition.** À l'instant où Michel clique « ❌ », un bandeau rouge s'affiche en haut du pilotage et sur ton téléphone : « ❌ Michel : Julien a mal lu sa feuille à la question 2 ». Il montre ce que Michel avait cliqué et dit pendant la question (B), et ce que Julien a lu. Trois boutons : « Donner raison à Michel » (tu cliques ce que dit sa feuille, comme le soir, capture 43, et sa note se recalcule) ; « Donner raison à Julien » (rien ne change) ; « Je relis ce soir la question 2 » (elle passe « ⚠️ À relire »). Aucun point d'autonomie n'est retiré tout seul : « ⛔ Retirer le point d'autonomie » est à côté, pour chacun des deux, et c'est toi qui décides.
+
+516. **Le cas « 🤔 peut-être », ma proposition** : pas d'alerte, la question passe directement « ⚠️ À relire » ce soir. Ce que ça coûte : l'élève inquiet le cochera par prudence ; au pire, une question par élève à relire.
+
+517. **Le déroulé** : fin de la correction, puis co-évaluation, puis bilan. « 🏁 Afficher leur bilan aux élèves » attend que tous aient répondu, comme « Révéler » attend la recopie, et ton suivi montre qui n'a pas encore répondu. Pas de co-évaluation pour l'élève seul (500), ni sur papier, où c'est toi qui as lu les feuilles.
+
+518. **Le cas qui échappait à B (504) est maintenant couvert** : celui dont la feuille a été mal lue le signale à la fin.
+
+519. **La suite** : quand 510 à 518 te vont, je refais les captures 610, avec en plus l'écran de co-évaluation et le bandeau de ta console.
+
+09/10/2026 14:13 MEMO

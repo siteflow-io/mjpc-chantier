@@ -18358,3 +18358,31 @@ Réponse de fin de tour, mot pour mot :
 414. **Quatorze écrans changent et n'ont pas encore de capture** (partie 17) : l'éditeur, le collage, la feuille imprimée, le téléphone, le tableau, la reprise, le rattrapage, Sauvegarde, le mode test, « Mes évaluations », entre autres. Ta règle de 148 : rien ne part au mandat sans sa place visible. Je les ajoute à la maquette quand tu auras répondu à 407 et à 409 jusqu'à 413. Ensuite viendront le PDF (318) et le prompt. Tes mots pour 398 à 400 (402) sont aussi attendus.
 
 08/10/2026 23:05 MEMO
+
+---
+
+## TOUR 603 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (09/10, 06:29) ok pour toutes tes propositions. le qr code et le téléphone on laisse exactement ainsi. mon téléphone me sert de télécommande, il faut que j'aie dessus ce qui me permet de piloter l'évaluation en ayant toutes les infos.
+
+---
+
+## TOUR 603 — Claude (conscience n°12)
+
+VuePhone relu en entier (evaluation-qcm.html 7.7.1, l. 5372-5760) ; production relue en ligne (md5 identique à la copie locale). Banc au geste sur le faux hub (banc_phone.js) : le téléphone devient vide dès la première réponse d'un élève (ReferenceError, l. 5698), rechargé de même, poste intact ; preuve déposée : AUDITS/QCM-TELEPHONE-09-10/. Registre : 208 close (décision de Paul), 210 ajoutée. Inventaire : propositions marquées « Retenu (Paul, 603) ». CADRAGE-QCM.md complété (tour 603, ligne d'état). Rien écrit au hub, aucun code dans l'app.
+
+Premier message, mot pour mot (06:34), suivi des captures 2-telephone-reponse-sans-reponse.png et 3-telephone-apres-une-reponse.png :
+
+415. **Noté : toutes mes propositions sont retenues** (409 à 413), et je compte aussi les trois textes de 402 (398 à 400). Le QR et l'accès par le téléphone restent exactement tels quels : la dette 208 est close.
+
+416. **Mesuré ce matin, sur la production 7.7.1 : ton téléphone devient un écran vide dès qu'un élève répond.** Une variable manque dans la liste des élèves du téléphone (ligne 5698). Si tu le recharges, il redevient vide tant que la question en cours a une réponse. Ton ordinateur n'est pas touché. Pour la séance d'aujourd'hui, pilote depuis l'ordinateur. Rappel : la correction plante aussi sur les tablettes (198). C'est inscrit en dette 210, réglée dans la livraison complète, comme 198. Les deux captures du banc suivent.
+
+417. **« Le téléphone, on laisse exactement ainsi » : je le comprends pour l'accès.** Si c'était aussi pour l'écran, ton téléphone ne pourrait pas piloter la nouvelle séance : il n'a ni « Tour suivant » ni la recopie. Je pars donc de ta phrase « il faut que j'aie dessus ce qui me permet de piloter l'évaluation en ayant toutes les infos » : l'écran garde tout ce qu'il a, et il reçoit ce que le nouveau flux ajoute.
+
+418. **Ma proposition pour l'écran du téléphone, à voir sur les captures.** Il garde la question, la bonne réponse, le chrono, la question suivante, la bande des questions, les boutons de la phase et la liste des élèves. Il reçoit en plus le tour en cours et les moitiés qui répondent, « ⏭️ Tour suivant » et l'heure de fin. À la correction, il reçoit le chrono de la recopie, les noms qui n'ont pas recopié en rouge, « 🔒 Révéler » fermé, puis le Suivi de la feuille (＋ Trouvée, recopie juste et tablette fausse, aucun de ces choix). Un clic sur un nom donne « 🚫 Départ », « ↩️ Retour » et « 🔓 Rouvrir », avec la règle de 331. La liste n'a plus de lettres (✓ ou ✗), et elle est rangée par tablette. Le lancement (binômes, appel) et les résultats restent sur l'ordinateur.
+
+419. **Je fais maintenant les captures qui manquent** : les 14 écrans de 414, avec le téléphone en séance et en correction. Viendront ensuite le PDF (318), puis le prompt.
+
+09/10/2026 06:34 MEMO

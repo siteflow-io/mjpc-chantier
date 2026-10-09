@@ -1,0 +1,24 @@
+téléphone, avant Q1 : 3 ESSAI 3e- éval 1 Analyse logique - Construire une phrase complexe Phase : idle — Q —/11 🚀 Lancer Q1 ÉLÈVES — tap pour actions ABRIAL Julien ⏳ BAUDRY Léa ⏳ BR
+téléphone, phase réponse, aucune réponse : 0 erreur(s) de page
+un élève répond à Q1 : ABRIAL Julien (abrial_julien)
+TÉLÉPHONE console.error ReferenceError: mode is not defined
+    at http://localhost:8767/evaluation-qcm.html:5698:90
+    at Array.map (<anonymous>)
+    at VuePhone (http://localhost:8767/evaluation-qcm.html:5691:116)
+    at 
+TÉLÉPHONE console.error fakefb listener ReferenceError: mode is not defined
+    at http://localhost:8767/evaluation-qcm.html:5698:90
+    at Array.map (<anonymous>)
+    at VuePhone (http://localhost:8767/evaluation-qcm.html:5
+téléphone, après la réponse : 2 erreur(s) de page ; texte affiché : «  » (0 caractères)
+TÉLÉPHONE console.error ReferenceError: mode is not defined
+    at http://localhost:8767/evaluation-qcm.html:5698:90
+    at Array.map (<anonymous>)
+    at VuePhone (http://localhost:8767/evaluation-qcm.html:5691:116)
+    at 
+TÉLÉPHONE console.error fakefb on ReferenceError: mode is not defined
+    at http://localhost:8767/evaluation-qcm.html:5698:90
+    at Array.map (<anonymous>)
+    at VuePhone (http://localhost:8767/evaluation-qcm.html:5691:11
+téléphone rechargé : 2 erreur(s) de page de plus ; texte affiché : 0 caractères
+poste : 3102 caractères affichés

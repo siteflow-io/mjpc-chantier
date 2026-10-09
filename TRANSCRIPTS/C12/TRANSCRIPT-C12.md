@@ -18688,3 +18688,37 @@ https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/MAQUETTE-QCM-FLUX
 Dis-moi ce qui ne va pas sur les captures et en 500 ; puis je refais la maquette en une fois.
 
 09/10/2026 13:53 MEMO
+
+---
+
+## TOUR 611 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (09/10, 13:59) Le texte de l'attestation est compliqué pour un élève, surtout un élève déjà en difficulté. De plus, le bouton " je ne suis pas sûr" risque d'être spammé: un élève pas sûr choisira toujours cette option, même s'il voit que les réponses concordent. Discutons avant de refaire les captures
+
+---
+
+## TOUR 611 — Claude (conscience n°12)
+
+Relus : les captures 610-3 à 610-5, 450, 477, 478, 479, 485, 496, 497. Mots comptés : attestations du tour 610, 224 et 195 mots ; propositions, 114 et 117. Captures non refaites, à la demande de Paul. CADRAGE-QCM.md complété (tour 611, ligne d'état). Rien écrit au hub, ni en production.
+
+Réponse mot pour mot :
+
+502. **« Je ne suis pas sûr » : tu as raison, ce serait le refuge de l'élève inquiet, à chaque question. Ma proposition : le retirer.** B fait déjà ce travail, sans bouton : si Michel lit mal la feuille de Julien, sa lecture ne colle pas avec le « Oui » ou le « Non » de Julien, et la question passe « ⚠️ À relire » toute seule (497).
+
+503. **Une feuille illisible** : Michel clique « Sa feuille ne dit aucun de ces choix ». Ce cas est déjà dans ta lecture du soir (477, capture 43). Le lecteur qui cliquerait « aucun » partout pour se protéger est freiné deux fois : Julien le voit cliquer pour lui (496), et ta lecture montre une lecture sans soin, qui engage le point d'autonomie du lecteur.
+
+504. **Si les deux ne sont pas d'accord**, Michel clique ce qu'il lit, et c'est la feuille qui tranche. B signale tous ces cas sauf un : Julien a dit « Non », et Michel lit une troisième réponse, qui n'est ni son clic ni ce que dit sa feuille.
+
+505. **Les attestations : oui, trop longues (224 et 195 mots).** Ma méthode : une ligne pour une action, dans l'ordre où elle arrive ; des mots courts, toujours les mêmes (feuille, clic, clique) ; et chaque consigne dite sur l'écran où elle sert, pas d'avance. Résultat : 114 et 117 mots.
+
+506. **La première attestation, ma proposition** : « Pour chaque question, écris ta réponse sur ta feuille, avec les mots du cours. Plusieurs réponses : une par ligne. » ; « Écris lisiblement : Michel lira ta feuille à la correction. » ; « Si tu sais ton cours, tu retrouveras ta réponse parmi les choix. » ; « Quand « POSE TON STYLO » s'affiche, pose ton stylo et clique ta réponse. Quand c'est le tour de Michel, ne regarde pas. » ; « À la fin du temps, dis si ta feuille dit la même chose que ton clic. » ; « Ta note, c'est ta feuille. Chaque question vaut 1 point. » ; « Une fois par évaluation, si ta feuille est fausse mais que ton clic est juste, la question compte quand même. » ; « Je ramasse les feuilles à la fin. » Ce qui tombe, et où ça passe : « sans voir les choix » (l'écran les cache déjà) ; « écris d'abord la réponse courte » (dans l'énoncé, 478) ; « les mots ne sont pas forcément les mêmes » (sur l'écran de lecture) ; « on te laisse une chance » et le nom « Trouvée au dernier moment » (son bandeau le dit quand elle arrive, 396).
+
+507. **La seconde attestation, ma proposition** : « Maintenant, la correction. Montre ta feuille à Michel. » ; « Pour chaque question, Michel clique ce que dit ta feuille. Toi, tu cliques ce que dit la feuille de Michel. » ; « Lis avec soin, et clique ce que tu lis. » ; « À la fin, tu verras une note. Si la correction est faite avec soin, elle sera proche de ta note définitive. Sinon, attends-toi à une note très différente. » ; « Deux compétences sont évaluées : « Être autonome et responsable » et « S'impliquer dans les activités en classe et dans son travail personnel ». Tu gardes ton point d'autonomie si tu as dit la vérité pendant les questions, et si tu lis avec soin la feuille de Michel. Sinon, ces deux compétences ne sont pas atteintes. »
+
+508. **450, sous la consigne de l'écran de lecture, se réduit à** : « Lis avec soin : c'est ton point d'autonomie. » Les deux compétences restent nommées dans la seconde attestation.
+
+509. **La suite** : quand 502 à 508 te vont, je refais les captures 610-1 à 610-5.
+
+09/10/2026 14:01 MEMO

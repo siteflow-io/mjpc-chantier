@@ -18927,3 +18927,39 @@ Réponse mot pour mot :
 556. **La suite** : ta réponse à 550, et ce qui ne va pas dans 549 à 555 ; puis je mets les deux dans la maquette refaite.
 
 09/10/2026 17:39 MEMO
+
+---
+
+## TOUR 618 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (09/10, 18:10) Oui c'est bon. Mais tu oublies pour le cadrage l'identification élève. Je veux que les élèves jouent l'évaluation de test tous sur leurs tablettes. Afin qu'ils comprennent comment ça fonctionne. Par ailleurs, je veux pouvoir jouer en mode test tout ce qu'on a cadré. Simuler des désaccords, des tentatives de triche etc. La différence du mode test c'est qu'il n'y a pas de feuille papier.
+
+---
+
+## TOUR 618 — Claude (conscience n°12)
+
+Relus : 470, 500, 543, 550 à 555, et dans la 7.7.1 la purge des codes de test (l. 4673). Rien mesuré de neuf. Captures non refaites. CADRAGE-QCM.md complété (tour 618, ligne d'état). Rien écrit au hub, ni en production.
+
+Réponse mot pour mot :
+
+557. **Noté : 549 à 555 sont acquis, et 550 est tranché** : la démo se joue sur les tablettes, par toute la classe.
+
+558. **L'identification : tu as raison, je l'avais oubliée en 550.** La démo commence comme une vraie évaluation : « Combien êtes-vous sur cette tablette ? », le code à 4 chiffres, le prénom et le nom, puis le code du binôme, avec « Pas là ? Choisir un autre élève ». Chacun entre avec son vrai code, pour apprendre celui qui servira ensuite. Les traces de connexion s'effacent avec la séance (551).
+
+559. **Le mode test, ce que je comprends** : tu joues seul, sur ton ordinateur, tout ce qui est cadré, avec ta vraie console, ton vrai téléphone et des tablettes côte à côte, dont chaque moitié se clique comme une vraie (470). Il joue la démo par défaut, ou n'importe quelle évaluation de la liste, par exemple celle de 3e avant de la donner.
+
+560. **La feuille, puisqu'il n'y en a pas : ma proposition.** En mode test seulement, chaque moitié reçoit, pendant la réflexion, une case « 📝 Feuille (mode test) » où tu tapes ce que l'élève a écrit, avec ses mots, par exemple la phrase de Michel (543). Si tu ne tapes rien, la feuille dit ce que l'élève clique. Cette feuille simulée s'affiche partout où, en classe, tu regarderais le papier : au-dessus des choix quand le voisin la lit, dans l'alerte (« regarde la feuille de Michel »), dans ta lecture du soir, et dans le flux papier seul.
+
+561. **La classe de test, ma proposition** : 7 élèves, soit trois tablettes de deux et une tablette d'un élève seul (500), pour que tous les cas se jouent. Les codes de test existent déjà dans la 7.7.1, et s'effacent à la sortie (mesuré, l. 4673).
+
+562. **Ce que tu pourras jouer à la main** : un faux « Oui », ou rien de dit à la fin du temps ; un lecteur qui lit à la lettre, qui lit mal, ou qui clique « aucun » partout ; un élève qui conteste après la révélation en ajoutant la bonne réponse ; le cas ambigu (543) ; deux élèves d'accord pour mentir ; « Trouvée au dernier moment » ; un départ, un retour, une tablette en panne, « Rouvrir » ; « ⏸️ Finir à une autre heure » et la reprise ; le flux papier seul. Un seul cas ne se joue pas : l'élève qui regarde la moitié de l'autre, puisque tu vois les deux.
+
+563. **Pour aller plus vite, ma proposition : « 🎬 Préparer un cas ».** Il remplit les tablettes, les feuilles simulées et les clics d'un cas connu, jusqu'au moment qui t'intéresse, puis il te laisse jouer la suite : par exemple « le cas ambigu », « deux élèves d'accord pour mentir », « un lecteur qui clique aucun partout ». Ce n'est pas du faux : il écrit au hub exactement ce qu'écriraient les clics.
+
+564. **Ce que le mode test garde de 470** : à la sortie, tout ce qui a été joué s'efface (la classe de test, ses séances, ses codes), sauf la démo, qui est permanente (552).
+
+565. **La suite** : quand 557 à 564 te vont, je refais la maquette entière en une fois, avec la démo et le mode test.
+
+09/10/2026 18:12 MEMO

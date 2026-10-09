@@ -18512,3 +18512,61 @@ Réponse mot pour mot :
 452. **La suite** : les captures 36 à 66, quand tu veux.
 
 09/10/2026 10:43 MEMO
+
+---
+
+## TOUR 607 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (09/10, 11:01) Capt35.le symbole + en vert pour une question dernier moment va troubler les élèves s'ils voient l'enchainement: 1 + X . Il faut trouver quelque chose qui entre mieux dans cette UI. Capt36. Du coup Michel dans cette capture, c'est précisément ce que tu avais dit et qui ne va pas: il met vert sur sa feuille alors qu'il avait faux sur sa feuille. Non? Capt 37. question suivante doit devenir "afficher leur bilan aux élèves" vu que c'est la fin et qu'il n'y a pas de question suivante. capt La fin: le "ta note" est trop assertif, vu qu'il y a relecture de ma part derrière. Il faut que l'élève sache d'emblée que les écarts mesurés (copie, app, recopie) impactent sa note. j'attends ta proposition, et envisage tous les cas. capt 43: si je confirme aucun de ces choix, c'est traduit comment ensuite? capt 44: il faut une garde de longueur de question et de nombre de réponses du coup, à cadrer au prompt. Sachant que je vois encore de l'espace en bas. et sinon, l'élève peut scroller vers le bas (utiliser le même système que worktrack pour shunter le scroll natif et le remplacer par deux scrolls, un pour chaque partie d'écran). mais le scroll doit vraiment être une dernière solution, et c'est moi qui dit à l'instance json que j'assume la longueur. 414. il faut organiser, comme on a fait pour correction dictée. par classe, date, etc. avec sélecteur pour trier. Capt 46. il faut que je puisse copier en un clic les détections pour rebalancer à l'instance json et qu'elle se corrige. capt 48. on n'a pas suffisamment cadré le flux papier seul. 51. ça me fait penser à un cas: si j'ai pas eu le temps de finir une session pendant l'heure déclarée, je dois pouvoir la reprendre EXACTEMENT à l'endroit où j'en étais, sur une heure suivante. Ainsi, chaque session est potentiellement réouvrable. à cadrer. capt 64. vérifier que le mode test est exacement la réplique d'un flux normal. pas de mode test fake. Capt 65. installer le même principe que dans corr. dictee. publication de l'évaluation, et rendre les copies. Afin que j'aie le temps de relire et que l'élève voie que ce n'est pas rendu. ça fonctionne bien dans correction dictée, donc ne rien oublier dans le clonage, et adapter à qcm, évidemment.
+
+---
+
+## TOUR 607 — Claude (conscience n°12)
+
+Relus : captures 35 et 36 de la maquette ; correction_dictee.html 6.7.0-L17-1q3 (production, md5 identique au fichier en ligne) : la liste « Mes dictées » rangée par niveau puis date (l. 3431-3460), « publiée / non publiée », le statut des copies et « rendre les copies ▸ » (l. 3449-3452), `publierCopies` et sa garde, `depublierCopies` (l. 7513-7538), les états côté élève `etatDicteeEleve` (l. 8458-8481) et les textes `attente_copie`, `invitation_rattrapage` (l. 8375-8377) ; worktrack.html (production) : `touch-action:pan-x pan-y` sur la page, un défilement par moitié (`.lanebody{overflow-y:auto}`, l. 31-32, 133) ; evaluation-qcm.html 7.7.1 : le mode test (`AppTest`, `OngletPilotageTest`, `EleveSimule`, l. 4599-4945) ; CADRAGE-QCM.md (41, 42, 64, 119, 168, 186, 336, 337, 338, 580). Maquette non modifiée. CADRAGE-QCM.md complété (tour 607, ligne d'état). Rien écrit au hub, aucun code.
+
+Réponse mot pour mot :
+
+453. **Capture 35 : le « + » s'en va.** Ma proposition : un sablier ⌛ sur fond orange, pour « Trouvée au dernier moment », partout côté élève. On le voit dans le compteur (« ✅ ⌛ ❌ »), sur le bandeau (orange, liseré rouge, 439) et dans le bilan. Ta console garde « ⛔ Dernier moment » (439).
+
+454. **Capture 36 : non, ça va.** Michel a écrit Rome sur sa feuille, ce qui est juste ; c'est sa tablette qui disait Venise. La tablette corrige d'après sa recopie, donc le V vert est juste. Le cas qui n'allait pas (580) est l'inverse, feuille fausse et tablette juste : c'est Julien à la question 2 (capture 32), qui barre en rouge. Si Michel avait recopié Rome alors que sa feuille disait Venise, c'est ta lecture du soir qui le verrait (458).
+
+455. **Capture 37** : à la dernière question, « Question suivante → » devient « 🏁 Afficher leur bilan aux élèves ».
+
+456. **La fin : ma proposition.** Sur la tablette, « Ta note : » devient « Ta note provisoire : 2 / 3 », suivie de : « Elle peut encore changer : ta feuille, tes clics pendant les questions et tes clics à la correction sont comparés. Elle devient définitive quand ta copie t'est rendue. » La première attestation (393) le dit dès le début, avec une phrase de plus : « Ta feuille, tes clics pendant les questions et tes clics à la correction sont comparés : un écart peut changer ta note. »
+
+457. **Tous les cas, 1 : la recopie dit la même chose que la feuille.** La note provisoire est la bonne. Feuille juste : 1 point. Feuille fausse, mais tablette entièrement juste : « Trouvée au dernier moment », une fois par évaluation. Sinon : 0.
+
+458. **Cas 2 : « recopie juste, tablette fausse ».** C'est signalé « à lire ». Si la feuille dit juste, rien ne change. Si elle dit faux, la question passe à 0, avec « Corrigé d'après ta feuille » (398), et c'est toi qui décides pour le point d'autonomie (449).
+
+459. **Cas 3 : recopie juste, tablette juste, feuille fausse.** Rien ne le signale (186) : seule la lecture de la feuille le voit. Ma proposition : ta console tire au hasard trois feuilles par séance, à lire en plus des signalées. C'est ce qui rend vraie la phrase « ta feuille et tes clics sont comparés ».
+
+460. **Cas 4 : « aucun de ces choix ».** C'est signalé. Si tu confirmes, la question reste à 0, ou « Trouvée au dernier moment » si la tablette était entièrement juste et que l'élève n'en avait pas encore. Si tu cliques ce que dit la feuille, la question se recalcule, avec « Corrigé d'après ta feuille ».
+
+461. **Cas 5 : recopie fausse alors que la feuille est juste** (le rapprochement raté). La note provisoire perd le point, sauf « Trouvée au dernier moment ». Rien ne le signale : l'élève le voit quand sa copie lui est rendue, il lève la main, et tu corriges par « La feuille dit autre chose » (168).
+
+462. **Cas 6 : pas de recopie** (parti avant la correction, tablette en panne). Ces questions n'ont pas de note tant que tu ne l'as pas fixée d'après la feuille (338). S'il est parti avant de répondre, elles sortent du total (336).
+
+463. **Capture 43 : c'est le cas 460.** Tu confirmes « Aucun des choix » : la question reste à 0 (ou « Trouvée au dernier moment »), le signalement passe à « lu », et l'élève lit dans son bilan « ta feuille ne dit aucun de ces choix → 0 point ».
+
+464. **Capture 44 : la garde de longueur, ma proposition.** Au collage, l'app mesure chaque question sur une vraie demi-tablette, choix compris. Elle refuse celle qui dépasse, en le disant (« Question 7 : 60 px de trop sur une demi-tablette »). Le prompt reçoit des limites mesurées : longueur de l'énoncé, nombre et longueur des choix. Je les mesure sur la maquette en la refaisant : je ne les connais pas encore. Ta vraie question 3, avec ses 6 choix longs, tient avec 67 px de reste. Si tu dis à l'instance JSON que tu assumes la longueur, la question porte la marque « longueur assumée » : elle passe, et sa moitié défile seule, comme dans worktrack. Relevé dans worktrack : chaque moitié a son propre défilement, la page ne bouge pas, et le zoom à deux doigts est bloqué.
+
+465. **« 414 » : je le lis comme la capture 45** (la liste des évaluations), et je l'applique aussi à la capture 61 (la liste des séances). Comme dans la correction de dictée, elles sont rangées par niveau, chaque niveau se replie, puis par date. En plus, un sélecteur de tri : date, titre, chapitre ; pour les séances, classe, date, évaluation.
+
+466. **Capture 46** : un bouton « 📋 Copier pour l'IA » copie les messages, prêts à coller à l'instance JSON : « Corrige ton JSON : 1. … 2. … Renvoie le JSON complet. »
+
+467. **Capture 48 : le flux papier seul, ma proposition.** Tu choisis « 📄 Séance sur papier » au lancement. L'élève a les énoncés seuls (119) et répond sur sa feuille, seul, sans tablette ni estimation. Le soir, tu saisis les feuilles dans une grille : un élève par ligne, une question par case, un clic pour ✓ ou ✗ (en partiel, un clic sur ce que dit la feuille). La note et les compétences se calculent à partir de là, puis tu rends les copies comme d'habitude (471).
+
+468. **Ma question sur 467.** Sur papier, il n'y a pas de correction sur tablette : les deux compétences d'autonomie sont-elles évaluées ?
+
+469. **Capture 51 : reprendre une séance à une autre heure, ma proposition.** À côté de « 🛑 Terminer », un bouton « ⏸️ Finir à une autre heure » : la séance garde son état exact (question, tour, recopies, notes provisoires). Les tablettes oublient leurs élèves à la fin de l'heure, comme d'habitude (64). À l'heure suivante, « Pilotage classe » propose « ▶️ Reprendre la séance du 09/10 — question 7, 2e tour ». Il y a l'appel, les mêmes binômes (un absent se remplace comme au début, 42), les élèves entrent, et le tour en cours recommence au début, voile compris (337). Tant qu'elle n'est pas terminée, cette séance ne compte pas comme « QCM précédent » (41). Une séance terminée se rouvre aussi, par « 🔓 Rouvrir » dans les séances précédentes, avec une confirmation. Si ses copies étaient rendues, elles sont masquées jusqu'au prochain « Rendre les copies ».
+
+470. **Capture 64 : mesuré, le mode test d'aujourd'hui n'est pas la réplique d'un flux normal.** Ses panneaux d'élève reprennent les vrais écrans de question, de correction, d'estimation et de bilan. Mais il n'y a pas l'entrée (ni « Combien êtes-vous ? », ni code), et la séance se lance sans appel. Ma proposition : ta vraie console, avec l'appel et les binômes, sur la classe de test, et trois vraies tablettes côte à côte (l'app élève entière, en deux moitiés, avec les codes de test). La seule différence : les données vivent sous des noms de test et sont purgées à la sortie.
+
+471. **Capture 65 : le principe de la correction de dictée, cloné, relevé dans son code (6.7.0-L17-1q3).** Côté console, chaque séance a « publiée / non publiée », qui agit sur-le-champ. Son statut dit « copies non rendues », puis « rendre les copies ▸ », qui pulse quand toutes les feuilles à lire sont lues, puis « copies rendues le … ». « Rendre les copies » a sa garde (feuilles à lire pas encore lues, présents sans recopie), et « Masquer les copies » la défait. Côté élève, « Mes évaluations » se met à jour en direct, et chaque évaluation dit son état : « Tu étais absent(e) », puis « En relecture : ta note sera visible quand ta copie te sera rendue », puis le bilan, avec la note définitive. Ces textes vus par l'élève restent à te faire valider.
+
+472. **La suite** : tu as relu jusqu'à la capture 65. Quand tu auras répondu à 468 et aux propositions, je refais la maquette en une fois.
+
+09/10/2026 11:06 MEMO

@@ -18404,3 +18404,49 @@ Réponse de fin de tour, mot pour mot, avec le fichier LIVRET-FLUX-BINOME.pdf :
 425. **Ensuite** : la forme du PDF « notes et compétences » (318), puis le prompt (62, 123), puis le mandat.
 
 09/10/2026 06:53 MEMO
+
+---
+
+## TOUR 604 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (09/10, 07:35) capture 8, je ne peux pas modifier les chronos en direct. Or, c'est exactement ce qui se passe en classe: un lag, un élève qui perturbe etc, même si j'ai le bouton rouvrir je veux pouvoir modifier le temps en live. donc réflexion et réponse sont deux valeurs éditables, avec les boutons rapides juste à coté (+5 +10 etc) (et qui tiennent au rechargenement évidemment comme d'hab). ça décalera certes, j'aurai mon alerte certes, mais au moins je pourrais choisir dans la suite de la séance si je supprime une question par exemple. D'où l'intérêt de la question bonus: elle peut être fusible si besoin. Du coup ça impacte pas mal de choses, notamment sur les affichages, et il faut un bouton par question (avec garde bien sûr), pour écarter une question du déroulé de l'évaluation. c'est le même principe que le déroulé mjpc: on s'adapte à la classe qu'on a en face de soi. capture 11: l'émoji pose ton stylo, ça doit être un stylo, pas un livre. et la phrase doit être dans l'autre sens: pose ton stylo, Julien. Tu es prêt? à toi dans 3,2,1 secondes (avec le chiffre des secondes qui s'actualise). Dans l'autre partie, il faut le nom: "Michel, laisse la tablette à Julien pour qu'il réponde sans que tu regardes". capture 14 moitié gauche: machin, pose ton stylo. On nomme toujours l'élève. capture 25: le bouton "question close passer à la suivante" doit se changer en "évaluation finie" et se griser, ou alors on le remplace par "lancer l'autoévaluation. à voir ta propostion, le plus simple par rapport à l'existant. caputre 26: la phrase "choisis la fourchette qui correspond à ton estimation" ne veut rien dire pour l'élève. Il faut simplifier la formulation, et surtout je veux voir le contenu de l'infobulle. capture 29: il faut que l'élève ait une phrase qui lui dit de bien faire son "qu'as tu écrit sur ta feuille". afin de décourager tout "n'importe quoi". D'ailleurs, est ce qu'on ne peut pas coder un "point autonomie" qui évalue la compétence transversale: être Etre autonome et responsable (la formation de la personne et du citoyen) et S'impliquer dans les activités en classe et dans son travail personnel (les méthodes et outils pour apprendre). ces compétences sont toujours évaluées en eval qcm. et on l'explique clairement à l'élève avant la phase de correction (une re-attestation) et l'évaluation se fait par deux voies: en direct (je vois un élève qui fait de la merde, je clique sur son nom, il perd un point d'autonomie et il a ses compétences transversales en rouge), ou à la relecture le soir, si je vois qu'il y a triche ou trop d'écarts entre le papier et l'app. capture 31: l'abréviation "trouvée" sur les tablettes ne dit pas "dernier moment". Il faudrait la faire apparaitre non pas en vert sur le fond vert, mais dans une autre couleur qui montre que ça ne va pas. avec un ⛔capture 32: trop de vert, qui ne souligne pas assez qu'il avait trouvé au dernier moment. Donc mettre les encadrés verts avec un liseré rouge? je ne sais pas, à voir. je n'ai pas fini la relecture du pdf, je pars en cours. donc ne considère pas que c'est terminé. je continuerai plus tard. j'en suis à la cpature 35.
+
+---
+
+## TOUR 604 — Claude (conscience n°12)
+
+Relus : CADRAGE-QCM.md (25, 58, 64, 165, 327, 336, 378, 390) ; evaluation-qcm.html 7.7.1 (texte du bandeau de pilotage, l. 7846-7858 ; consigne et infobulle de l'estimation, `EleveAutoeval`, l. 3973-3975) ; au hub, en lecture : la taxonomie des compétences transversales (tr-personne-03, tr-methodes-02) et `qcm/eleveSexes` (seule la 3E Charles de Gaulle a des sexes). Maquette non modifiée : Paul n'a pas fini sa relecture. CADRAGE-QCM.md complété (tour 604, ligne d'état). Rien écrit au hub, aucun code.
+
+Réponse mot pour mot :
+
+426. **Noté mot pour mot, jusqu'à la capture 35.** Je ne refais rien avant la fin de ta relecture : ensuite, je refais la maquette d'un coup.
+
+427. **Les temps en direct (capture 8), ma proposition.** Sur ta console et sur ton téléphone, la réflexion et la réponse de la question en cours sont deux valeurs que tu peux taper, chacune avec « +5 », « +10 » et « +30 » à côté. Le chrono en cours suit tout de suite. La valeur vaut pour toute la question : les deux tours gardent le même temps (25), et la recopie aussi (378). Cela remplace « +5 vaut pour le tour en cours » (327). Les questions à venir se modifient de la même façon, dans « Toutes les questions ». Ces valeurs sont celles de la séance : l'évaluation elle-même ne change pas. Tout tient au rechargement.
+
+428. **Ton alerte, ma proposition.** Aujourd'hui, la garde de débordement (58) ne joue qu'au collage et au lancement. Pendant la séance, ta console et ton téléphone affichent en plus la fin prévue, recalculée à chaque changement : par exemple « Fin prévue 11:02, 5 min après la fin de l'heure », en rouge quand elle déborde.
+
+429. **Écarter une question, ma proposition.** Chaque question pas encore lancée a un bouton « ⏭️ Écarter », avec une confirmation ; « ↩️ Remettre » l'annule tant que son tour n'est pas passé. Une question écartée ne se pose pas et ne se corrige pas. Elle sort du total de la note et des compétences, comme une question manquée par un absent (336). Les tablettes et le tableau comptent sans elle (« Question 4 / 10 »). Ta console te prévient si une compétence passe sous 3 questions (390). Une question bonus ne compte pas dans le total (328) : l'écarter ne change rien à la note, c'est bien ton fusible.
+
+430. **Ma question sur 429.** Une question déjà posée ne s'écarte pas, puisque ses réponses sont données. Veux-tu aussi pouvoir annuler une question déjà posée, par exemple mal formulée ?
+
+431. **Captures 11 et 14 : tes mots.** Le livre devient un stylo 🖊️. La moitié qui va répondre : « Pose ton stylo, Julien. Tu es prêt ? À toi dans 3 secondes », et le chiffre descend. L'autre moitié : « Michel, pose ton stylo. », puis « Michel, laisse la tablette à Julien pour qu'il réponde sans que tu regardes. » On nomme toujours l'élève, aussi sur l'écran des choix : « Julien, pose ton stylo. Sélectionne maintenant ta réponse. »
+
+432. **Une tension sur « pour qu'il réponde ».** Pour une fille, il faut « qu'elle ». Mesuré au hub : l'app ne connaît le sexe des élèves que pour la 3E Charles de Gaulle. Ma proposition, qui ne s'accorde pas : « Michel, laisse la tablette à Léa : c'est son tour, ne regarde pas. » À toi de dire.
+
+433. **Capture 25, le plus simple par rapport à l'existant.** Aujourd'hui, ce bandeau est un texte, pas un bouton, et il dit « Question close — passe à la suivante » même après la dernière question. Ma proposition : après la dernière, il dit « ✅ Dernière question close — lance l'autoévaluation », et le gros bouton reste « 📊 Lancer l'autoévaluation ».
+
+434. **Capture 26 : l'infobulle d'aujourd'hui, mot pour mot.** « C'est ton estimation, pas ton vrai score. À la fin de la correction, tu compareras ce que tu pensais avec ce que tu as vraiment obtenu. C'est utile pour apprendre à mieux te connaître : sais-tu juger ton propre travail avant de voir la correction ? » Elle va contre ta règle : côté élève, jamais de consigne en infobulle. Ma proposition, écrite en clair sous le titre, à la place de la phrase et de l'infobulle : « Combien de bonnes réponses penses-tu avoir ? Clique sur ta réponse. Ce n'est pas ta note : à la fin, tu verras si tu avais vu juste. »
+
+435. **Capture 29, ma proposition de phrase**, sous la consigne : « Recopie sérieusement : je relis ta feuille ce soir. »
+
+436. **Le point d'autonomie : c'est faisable, et tes deux compétences sont déjà au hub, mot pour mot.** « Être autonome et responsable » et « S'impliquer dans les activités en classe et dans son travail personnel ». Ma proposition : chaque élève commence l'évaluation avec son point, les deux compétences en 🟢. Il n'y a qu'un point : le retirer met les deux compétences en 🔴, et la note ne bouge pas, puisque la note, c'est la feuille (288). En direct, un clic sur son nom, à la console ou au téléphone, donne « ⛔ Retirer le point d'autonomie », avec une confirmation, et « ↩️ Rendre » l'annule. Le soir, le même bouton est dans sa fiche (capture 42). L'élève ne le voit pas en direct, puisque son binôme regarde la tablette ; il le voit dans son bilan et dans « Mes évaluations ». Ton PDF « notes et compétences » (318) porte aussi ces deux compétences.
+
+437. **Une tension : 165 tombe.** Tu avais retenu « aucune sanction dans l'app » quand la feuille ramassée ne dit pas la même chose que la recopie (165). Le point d'autonomie en est une : je l'inscris à la place de 165.
+
+438. **L'écran avant la correction, ma proposition de texte.** Quand tu lances la correction, chaque moitié l'affiche d'abord : « Maintenant, tu recopies ta feuille sur la tablette, question par question. Recopie sérieusement : je relis vos feuilles ce soir. Si tu recopies n'importe quoi, ou si tu triches, tu perds ton point d'autonomie : deux compétences passent au rouge, « Être autonome et responsable » et « S'impliquer dans les activités en classe et dans son travail personnel ». Ta note, elle, reste celle de ta feuille. », puis « J'ai lu et compris » et « Je commence la correction ». Ta console attend que tous les présents l'aient validé, comme au début.
+
+439. **Captures 31 et 32, ma proposition pour « Trouvée au dernier moment ».** Dans ta console et sur ton téléphone : « ⛔ Dernier moment », en orange, plus jamais en vert. Sur la tablette : le bandeau passe en orange, avec un liseré rouge ; le « + » reste vert dans son rond blanc, comme tu l'avais voulu au tour 588. Tu jugeras sur la capture.
+
+09/10/2026 07:39 MEMO

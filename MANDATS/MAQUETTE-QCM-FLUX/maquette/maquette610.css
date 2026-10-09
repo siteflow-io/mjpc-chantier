@@ -55,3 +55,31 @@
 .moitie .montre ~ .decl-consigne{margin-bottom:.1rem}
 .co-attente{text-align:center;font-weight:900;color:var(--violet);font-size:1.05rem;margin-top:.5rem}
 .moitie .co-btn{padding:.7rem .9rem;font-size:.97rem}
+/* Tour 616 : l'évaluation de 3e, le cas ambigu */
+.co-liste.serree{gap:.25rem}
+.co-liste.serree .co-l{padding:.38rem .7rem;font-size:.86rem;font-weight:600;border-width:2px}
+.co-titre.co-mal{color:#B91C1C}
+.co-titre.co-peut{color:#92400E}
+.tag-lu{display:inline-block;margin-left:.4rem;font-size:.7rem;font-weight:900;padding:.1rem .5rem;border-radius:6px;background:#0EA5E9;color:#fff;vertical-align:middle}
+.eleve-choix-btn.selected .tag-lu{background:#fff;color:#0369A1}
+.al-choix{display:grid;grid-template-columns:1fr 1fr;gap:.2rem .8rem;margin:.3rem 0 .4rem;font-size:.8rem}
+.al-choix.tel{grid-template-columns:1fr;font-size:.7rem}
+.al-ch{color:var(--gris)}
+.al-ch.bon{color:#15803D}
+.al-tab{width:100%;border-collapse:collapse;font-size:.85rem;margin:.3rem 0 .4rem;background:#fff}
+.al-tab th{background:#FEE2E2;color:#991B1B;text-align:left;padding:.3rem .5rem;font-size:.78rem}
+.al-tab td{border-top:1px solid #FECACA;padding:.3rem .5rem;vertical-align:top}
+.al-tab td.lt{font-weight:900;white-space:nowrap}
+.al-tab td.pt{font-weight:900;text-align:center;width:3rem}
+.al-tab tr.apres td{background:#FFF7ED}
+.al-tab tr.bonne td{background:#DCFCE7;color:#15803D;font-weight:800}
+.al-y{color:#1E3A8A;font-weight:800}
+.alerte-co.al3{grid-template-columns:1.6fr 1fr}
+.al-auto-t{font-size:.8rem;font-weight:900;color:#B91C1C;margin-top:.2rem}
+.btn-aux-deux{background:#B91C1C;color:#fff}
+.tel-alerte .g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.3rem}
+.tel-alerte .al-tab{font-size:.68rem}
+.tel-alerte .al-tab th{font-size:.62rem}
+.tb-rougeclair{background:#B91C1C}
+.tel-al-note{font-size:.66rem;color:var(--gris);text-align:center}
+.al-choix{height:auto!important;min-height:0!important;align-content:start}

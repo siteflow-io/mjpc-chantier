@@ -352,23 +352,25 @@ La maquette est dans `maquette/` : `maquette.html` s'ouvre dans un navigateur (`
 
 ---
 
-## Tours 610 à 614 — « ceinture et bretelles » contre le réflexe du clic, puis la co-évaluation de la lecture (points 494 à 531)
+## Tours 610 à 616 — « ceinture et bretelles » contre le réflexe du clic, la co-évaluation de la lecture, le cas ambigu (points 494 à 548)
 
-Demandes de Paul : au tour 610 (09/10, 13:45), « B, mais à quel moment précisément ? Et je veux voir la capture que ça donnerait. Et A en plus » ; au tour 613 (14:18), « Captures. », après ses réponses des tours 611 à 613 ; au tour 614 (16:05), « Envoyer ne veut rien dire », les suppositions, et la ligne du ⚠️ « incompréhensible » : captures 610-6 à 610-9 refaites. Neuf captures à part, dans `captures-610/`, sur la même maquette (`maquette/maquette610.js` et `maquette610.css`, assemblés par `build610.py`, pris par `capture610.js`). Les textes que Paul a validés ne sont plus soulignés ; seuls les textes vus par l'élève qui ne sont pas mot pour mot de Paul sont soulignés en pointillés orange. La maquette entière sera refaite en une fois après les réponses de Paul.
+Demandes de Paul : au tour 610 (09/10, 13:45), « B, mais à quel moment précisément ? Et je veux voir la capture que ça donnerait. Et A en plus » ; au tour 613 (14:18), « Captures. » ; au tour 614 (16:05), plus de « Envoyer », les suppositions, la ligne du ⚠️ ; au tour 615 (16:32), « … c'est laquelle ? » puis « Qu'avais-tu écrit sur ta feuille ? » ; au tour 616 (16:37), « ⛔ aux deux », le cas ambigu, et l'exemple pris dans l'évaluation de 3e d'analyse logique. Neuf captures à part, dans `captures-610/`, sur la même maquette (`maquette/maquette610.js`, `maquette610.css` et `ev3e.js`, assemblés par `build610.py`, pris par `capture610.js`). Les textes que Paul a validés ne sont pas soulignés ; ceux qui ne sont pas mot pour mot de lui sont soulignés en pointillés orange. La maquette entière sera refaite en une fois après les réponses de Paul.
 
-**Capture 610-1 — Tablette.** B, premier tour de la question 1 : le temps de Julien est fini, son clic (Rome) est figé ; il dit si sa feuille dit la même chose, en 5 secondes. Michel reste sous le voile (495).
+**L'exemple (tour 616).** La vraie évaluation « 3e- éval 1 Analyse logique - Construire une phrase complexe » (hub, 08/10), 11 questions, en tout ou rien ; la question 3 : « Comment trouves-tu l'antécédent d'un Pronom Relatif, et dans quel sens va la flèche à l'étape 4 ? », six choix, trois bons (B, C, E ; les lettres du tableau projeté). **Le cas ambigu.** La feuille de Michel dit : « Je pose la question sur la relative. La réponse est avant le pronom relatif : la flèche va vers la gauche. » C'est C (sans « avec son Verbe Conjugué ») et E. Pendant la question, il clique C et E et dit « Oui, la même chose ». À la correction, Julien ne lit que E. Après la correction, Michel conteste la question 3 et dit avoir écrit B, C et E. Chacun a à moitié raison (C est sur la feuille ; B n'y est pas), et chacun est à moitié de mauvaise foi.
+
+**Capture 610-1 — Tablette.** B, premier tour de la question 3 : le temps de Julien est fini, son clic (B, C, E) est figé ; il dit si sa feuille dit la même chose. Michel reste sous le voile (495).
 
 ![Capture 610-1](captures-610/610-1-b-julien.png)
 
-**Capture 610-2 — Tablette.** B, second tour : Michel a cliqué Venise, sa feuille dit Rome ; il doit répondre « Non ». Julien reste sous le voile (495).
+**Capture 610-2 — Tablette.** B, second tour : Michel a cliqué C et E, ce que dit sa feuille ; il va répondre « Oui ». Julien reste sous le voile.
 
 ![Capture 610-2](captures-610/610-2-b-michel.png)
 
-**Capture 610-3 — Tablette.** A, correction de la question 2 : chacun garde sa feuille et sa moitié ; Michel a cliqué pour Julien (Madrid), Julien n'a pas encore cliqué pour Michel. Plus de « Je ne suis pas sûr » (502) ; « Les mots ne sont pas forcément les mêmes » (506) et « Lis avec soin : c'est ton point d'autonomie » (508).
+**Capture 610-3 — Tablette, 1060 de haut.** A, correction de la question 3 : à gauche, Michel a lu B, C, E sur la feuille de Julien ; à droite, Julien n'a lu que E sur celle de Michel. Sur une vraie tablette (800 de haut), chaque moitié déborde de 202 pixels et défile (546).
 
 ![Capture 610-3](captures-610/610-3-a-correction.png)
 
-**Capture 610-4 — Tablette.** La première attestation, texte de Paul (506) : elle tient dans l'écran.
+**Capture 610-4 — Tablette.** La première attestation, texte de Paul (506).
 
 ![Capture 610-4](captures-610/610-4-attestation-1.png)
 
@@ -376,18 +378,18 @@ Demandes de Paul : au tour 610 (09/10, 13:45), « B, mais à quel moment précis
 
 ![Capture 610-5](captures-610/610-5-attestation-2.png)
 
-**Capture 610-6 — Tablette.** La co-évaluation de la lecture (511 à 513), en suppositions (527). À gauche, Julien n'a encore rien cliqué. À droite, Michel a cliqué « ❌ Je pense que Julien a mal lu ma feuille, à une question » : il doit cliquer la question. La liste ne dit pas si chaque question était juste (523).
+**Capture 610-6 — Tablette.** La co-évaluation. À gauche, Julien n'a encore rien cliqué : les trois choix, sans liste (547). À droite, Michel a cliqué « ❌ » : « Michel, tu penses que Julien a mal lu ta feuille pour une question : c'est laquelle ? », puis le début des 11 énoncés (546).
 
-![Capture 610-6](captures-610/610-6-coeval-choix.png)
+![Capture 610-6](captures-610/610-6-coeval-laquelle.png)
 
-**Capture 610-7 — Tablette.** À gauche, Julien a cliqué « ✅ ». À droite, Michel a cliqué la question 1 : les deux autres ont disparu (précision de Paul, tour 613), et sa phrase est complète. Plus de « Envoyer » : le choix est enregistré dès le clic et se change jusqu'au bilan (526).
+**Capture 610-7 — Tablette.** À gauche, Julien a cliqué « ✅ ». À droite, Michel a cliqué la question 3 : les autres ont disparu ; « Qu'avais-tu écrit sur ta feuille ? », avec les choix de la question, « Julien a lu » sur E, et Michel clique B, C, E.
 
-![Capture 610-7](captures-610/610-7-coeval-une.png)
+![Capture 610-7](captures-610/610-7-coeval-ecrit.png)
 
-**Capture 610-8 — Console.** À l'instant où Michel clique la question 1 : l'alerte en haut, en faits et dans l'ordre (529), avec les trois arbitrages de Paul (515) ; « 🏁 Afficher leur bilan aux élèves » attend les 4 derniers (517) ; la liste du soir, réécrite de même (530).
+**Capture 610-8 — Console.** L'alerte du cas ambigu : les choix A à F, le tableau des trois lectures et de leurs points, la phrase de Paul, la ligne d'aide, quatre arbitrages et « ⛔ » à Michel, à Julien, aux deux (541 à 545).
 
 ![Capture 610-8](captures-610/610-8-console-alerte.png)
 
-**Capture 610-9 — Téléphone.** Le même moment, sur le téléphone de Paul (515).
+**Capture 610-9 — Téléphone.** Le même moment, sur le téléphone de Paul.
 
 ![Capture 610-9](captures-610/610-9-telephone-alerte.png)

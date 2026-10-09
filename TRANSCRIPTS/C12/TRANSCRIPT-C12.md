@@ -18859,3 +18859,37 @@ Réponse mot pour mot :
 540. **La suite** : quand 532 à 539 te vont, je refais les captures 610-6 à 610-9, avec en plus l'écran « Qu'avais-tu écrit sur ta feuille ? ».
 
 09/10/2026 16:33 MEMO
+
+---
+
+## TOUR 616 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (09/10, 16:37) Enfin, les points d'autonomie sur téléphone: je dois pouvoir retirer aux deux en même temps, notamment si aucun n'a joué le jeu correctement. Un litige est légitime , mais ça n'empêche pas d'avoir une attitude responsable ( notamment s'ils sont de mauvaise foi tous les deux, et surtout dans le cas où c'est à moitié vrai pour chacun, d'ailleurs, fais ce scénario, je veux pouvoir l'anticiper, le cas ambigu). De ce fait, il faut que tu changes ton exemple de question et de réponses possibles: en effet, c'est de là que vont venir tous les cas litigieux. Fais avec l'évaluation des 3e d'analyse logique justement.
+
+---
+
+## TOUR 616 — Claude (conscience n°12)
+
+Relu au sas : l'évaluation « 3e- éval 1 Analyse logique - Construire une phrase complexe » (AUDITS/QCM-FAUSSE-CLASSE-3E-08-10/donnees/evaluations_hub_08-10.json : 11 questions, pas de mode enregistré, donc tout ou rien). Données reprises telles quelles dans maquette/ev3e.js. Captures 610-1 à 610-3 et 610-6 à 610-9 refaites sur la question 3, avec le scénario ambigu ; mesuré à 800 de haut : seule la lecture de la correction (610-3) déborde, de 202 pixels par moitié. Déposé au sas (captures-610/, maquette/, README de la maquette, section « Tours 610 à 616 »). CADRAGE-QCM.md complété (tour 616, ligne d'état). Rien écrit au hub, ni en production.
+
+Réponse mot pour mot, avec les sept captures refaites envoyées dans la conversation :
+
+541. **« ⛔ aux deux » : fait.** Sur ton téléphone et ta console, « Retirer le point d'autonomie » a trois boutons : à Michel, à Julien, aux deux. Chacun a sa confirmation et son retour. Captures 610-8 et 610-9.
+
+542. **L'exemple vient maintenant de ton évaluation de 3e d'analyse logique**, la question 3 : « Comment trouves-tu l'antécédent d'un Pronom Relatif, et dans quel sens va la flèche à l'étape 4 ? », six choix, trois bons (B, C, E), en tout ou rien. Les lettres sont celles du tableau projeté. Toutes les captures où paraît une question sont refaites : 610-1 à 610-3, et 610-6 à 610-9.
+
+543. **Le cas ambigu, ma proposition de scénario.** La feuille de Michel dit : « Je pose la question sur la relative. La réponse est avant le pronom relatif : la flèche va vers la gauche. » C'est C, sans « avec son Verbe Conjugué », et E. Pendant la question, il clique C et E, et dit « Oui, la même chose » : c'est vrai (610-2). À la correction, Julien ne lit que E, parce que Michel n'a pas écrit « Verbe Conjugué » (610-3, à droite). Après la correction, Michel conteste la question 3 et dit avoir écrit B, C et E (610-6, 610-7). Chacun a à moitié raison : C est bien sur la feuille, comme le dit Michel ; B n'y est pas, comme le dit Julien. Et chacun est à moitié de mauvaise foi : Julien a lu à la lettre, Michel a ajouté B après avoir vu la réponse.
+
+544. **Ce que ton alerte en fait** (610-8). Un tableau des trois lectures de la feuille de Michel, avec qui, quand, et ce qu'elle vaut : Michel pendant la question, C, E, 0 point ; Julien à la correction, E, 0 point ; Michel après la correction, B, C, E, 1 point. Puis ta phrase, « ⚠️ Les deux ne peuvent pas être vrais : regarde la feuille de Michel. », et la ligne d'aide : « 👉 Avant de connaître la réponse, Michel disait C, E : ni ce que Julien a lu, ni ce que Michel dit maintenant. Seule la lecture faite après la réponse donne le point. »
+
+545. **Un quatrième bouton, pour ce cas** : « La feuille dit autre chose : je clique ce qu'elle dit ». Ici, tu cliques C et E, et la question reste à 0. Puis « ⛔ aux deux » si tu juges qu'aucun n'a joué le jeu.
+
+546. **Deux conséquences de l'exemple de 3e.** La liste « c'est laquelle ? » montre le début de chaque énoncé, pas ce que Julien a lu : sur 11 questions à choix longs, ce serait illisible. Ce que Julien a lu paraît à l'étape suivante, sur les choix : « Julien a lu » (souligné, à valider). Et l'écran de lecture de la correction (610-3) déborde de 202 pixels sur cette question : la moitié défile, ton dernier recours (44). C'est mesuré ; les autres écrans tiennent dans la tablette.
+
+547. **La première étape de la co-évaluation n'a plus de liste** (610-6, à gauche) : d'abord les trois choix, puis « c'est laquelle ? » et les questions, dans ton ordre.
+
+548. **La suite** : les captures sont au sas, https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/MAQUETTE-QCM-FLUX/README.md (section « Tours 610 à 616 »). Quand elles te vont, je refais la maquette entière en une fois.
+
+09/10/2026 16:43 MEMO

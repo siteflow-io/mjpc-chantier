@@ -18761,3 +18761,35 @@ Réponse mot pour mot :
 519. **La suite** : quand 510 à 518 te vont, je refais les captures 610, avec en plus l'écran de co-évaluation et le bandeau de ta console.
 
 09/10/2026 14:13 MEMO
+
+---
+
+## TOUR 613 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (09/10, 14:18) Ok pour tout sauf une précision sur la liste de questions: une fois qu'une est cliquée, les autres disparaissent. Et il voit sur l'écran qu'il n'a qu'une question pour exprimer son désaccord. 
+>
+> Captures.
+
+---
+
+## TOUR 613 — Claude (conscience n°12)
+
+Relus dans la maquette : la console de correction (PilotCorrection, BilanClasse) et le téléphone (TelCorrApres), pour cloner leur style. Captures 610-1 à 610-5 refaites avec les textes validés, 610-6 à 610-9 nouvelles (scratchpad maquette/maquette610.js et maquette610.css ; la version du tour 610 est gardée à côté). Aucune capture ne déborde de l'écran. Déposé au sas : MANDATS/MAQUETTE-QCM-FLUX/captures-610/, les sources dans maquette/, le README de la maquette (section « Tours 610 à 613 »). CADRAGE-QCM.md complété (tour 613, ligne d'état). Rien écrit au hub, ni en production.
+
+Réponse mot pour mot, avec les neuf captures envoyées dans la conversation :
+
+520. **Ta précision est appliquée** : dès qu'une question est cliquée, les deux autres disparaissent, et l'écran dit qu'il n'a qu'une question pour son désaccord. Captures 610-6 et 610-7.
+
+521. **Les neuf captures, refaites avec tout ce que tu as validé aux tours 611 à 613.** 610-1 et 610-2 : B, inchangées. 610-3 : la lecture, sans « Je ne suis pas sûr », avec « Les mots ne sont pas forcément les mêmes. » et « Lis avec soin : c'est ton point d'autonomie. » 610-4 et 610-5 : tes deux attestations ; elles tiennent maintenant dans l'écran, sans défiler. 610-6 : Julien n'a encore rien cliqué ; Michel a cliqué « ❌ » et doit cliquer la question. 610-7 : Julien a envoyé « ✅ » ; Michel a cliqué la question 1, les deux autres ont disparu. 610-8 : ta console à l'instant où Michel envoie, avec l'alerte en haut, le bilan qui attend les 4 derniers et la liste du soir. 610-9 : ton téléphone au même moment.
+
+522. **Ce que j'ai ajouté côté élève, souligné en orange, à valider** : « 👇 Clique la question où Julien a mal lu ta feuille. » ; « ☝️ C'est ta seule question de désaccord. » ; « ↩️ Changer » et « 📨 Envoyer » : l'alerte ne part qu'à « Envoyer », pour qu'un clic de travers se rattrape ; « C'est envoyé : … » et « ⏳ Attends ton bilan... ».
+
+523. **Un choix fait sans toi, à valider** : la liste ne dit pas si chaque question était juste, pour ne pas pousser Michel à contester la question ratée (514).
+
+524. **Pour la scène, Julien a lu « Venise » à la question 1 de Michel** : c'est le clic de Michel, que Julien n'a jamais vu. Ta console le relève : « ⚠️ Ça ne colle pas : Michel avait dit que sa feuille ne disait pas son clic. »
+
+525. **Tout est au sas**, captures et explications : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/MAQUETTE-QCM-FLUX/README.md (section « Tours 610 à 613 »). Quand ces neuf captures te vont, je refais la maquette entière en une fois.
+
+09/10/2026 14:24 MEMO

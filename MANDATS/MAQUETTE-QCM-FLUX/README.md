@@ -352,9 +352,9 @@ La maquette est dans `maquette/` : `maquette.html` s'ouvre dans un navigateur (`
 
 ---
 
-## Tour 610 — « ceinture et bretelles » contre le réflexe du clic (475, points 494 à 501)
+## Tours 610 à 613 — « ceinture et bretelles » contre le réflexe du clic, puis la co-évaluation de la lecture (points 494 à 525)
 
-Demande de Paul (09/10, 13:45) : « B, mais à quel moment précisément ? Et je veux voir la capture que ça donnerait. Et A en plus ». Cinq captures à part, dans `captures-610/`, sur la même maquette (`maquette/maquette610.js` et `maquette610.css`, assemblés par `build610.py`, pris par `capture610.js`). Les textes nouveaux vus par l'élève sont des propositions : soulignés en pointillés orange. La maquette entière sera refaite en une fois après les réponses de Paul.
+Demandes de Paul : au tour 610 (09/10, 13:45), « B, mais à quel moment précisément ? Et je veux voir la capture que ça donnerait. Et A en plus » ; au tour 613 (14:18), « Captures. », après ses réponses des tours 611 à 613. Neuf captures à part, dans `captures-610/`, sur la même maquette (`maquette/maquette610.js` et `maquette610.css`, assemblés par `build610.py`, pris par `capture610.js`). Les textes que Paul a validés ne sont plus soulignés ; seuls les textes nouveaux vus par l'élève, proposés au tour 613, sont soulignés en pointillés orange. La maquette entière sera refaite en une fois après les réponses de Paul.
 
 **Capture 610-1 — Tablette.** B, premier tour de la question 1 : le temps de Julien est fini, son clic (Rome) est figé ; il dit si sa feuille dit la même chose, en 5 secondes. Michel reste sous le voile (495).
 
@@ -364,15 +364,30 @@ Demande de Paul (09/10, 13:45) : « B, mais à quel moment précisément ? Et je
 
 ![Capture 610-2](captures-610/610-2-b-michel.png)
 
-**Capture 610-3 — Tablette.** A, correction de la question 2 : chacun garde sa feuille et sa moitié ; Michel a cliqué pour Julien (Madrid), Julien n'a pas encore cliqué pour Michel. « Je ne suis pas sûr » est toujours là (496, 498).
+**Capture 610-3 — Tablette.** A, correction de la question 2 : chacun garde sa feuille et sa moitié ; Michel a cliqué pour Julien (Madrid), Julien n'a pas encore cliqué pour Michel. Plus de « Je ne suis pas sûr » (502) ; « Les mots ne sont pas forcément les mêmes » (506) et « Lis avec soin : c'est ton point d'autonomie » (508).
 
 ![Capture 610-3](captures-610/610-3-a-correction.png)
 
-**Capture 610-4 — Tablette.** La première attestation, version A + B (499). Écran de 960 de haut pour la lire en entier.
+**Capture 610-4 — Tablette.** La première attestation, texte de Paul (506) : elle tient dans l'écran.
 
 ![Capture 610-4](captures-610/610-4-attestation-1.png)
 
-**Capture 610-5 — Tablette.** La seconde attestation, version A + B, qui remplace 485 (499). Écran de 900 de haut.
+**Capture 610-5 — Tablette.** La seconde attestation, texte de Paul (507, avec 510).
 
 ![Capture 610-5](captures-610/610-5-attestation-2.png)
 
+**Capture 610-6 — Tablette.** La co-évaluation de la lecture (511 à 513). À gauche, Julien n'a encore rien cliqué. À droite, Michel a cliqué « ❌ » : il doit cliquer la question. La liste ne dit pas si chaque question était juste (523).
+
+![Capture 610-6](captures-610/610-6-coeval-choix.png)
+
+**Capture 610-7 — Tablette.** À gauche, Julien a envoyé « ✅ ». À droite, Michel a cliqué la question 1 : les deux autres ont disparu (précision de Paul, tour 613) ; l'alerte ne part qu'à « Envoyer » (522).
+
+![Capture 610-7](captures-610/610-7-coeval-une.png)
+
+**Capture 610-8 — Console.** À l'instant où Michel envoie : l'alerte en haut, avec ce que Michel avait cliqué et dit, ce que Julien a lu, et les trois arbitrages de Paul (515) ; « 🏁 Afficher leur bilan aux élèves » attend les 4 derniers (517) ; la liste du soir.
+
+![Capture 610-8](captures-610/610-8-console-alerte.png)
+
+**Capture 610-9 — Téléphone.** Le même moment, sur le téléphone de Paul (515).
+
+![Capture 610-9](captures-610/610-9-telephone-alerte.png)

@@ -53,3 +53,5 @@
 .tp-mal{background:#fff;color:#B91C1C!important;border:1px solid #EF4444}
 .moitie .soin + .eleve-chrono{margin-top:.25rem}
 .moitie .montre ~ .decl-consigne{margin-bottom:.1rem}
+.co-attente{text-align:center;font-weight:900;color:var(--violet);font-size:1.05rem;margin-top:.5rem}
+.moitie .co-btn{padding:.7rem .9rem;font-size:.97rem}

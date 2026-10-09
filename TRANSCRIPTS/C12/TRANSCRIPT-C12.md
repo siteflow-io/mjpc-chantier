@@ -18793,3 +18793,33 @@ Réponse mot pour mot, avec les neuf captures envoyées dans la conversation :
 525. **Tout est au sas**, captures et explications : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/MAQUETTE-QCM-FLUX/README.md (section « Tours 610 à 613 »). Quand ces neuf captures te vont, je refais la maquette entière en une fois.
 
 09/10/2026 14:24 MEMO
+
+---
+
+## TOUR 614 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (09/10, 16:05) Envoyer ne veut rien dire. Je suis dans la salle avec eux. Par ailleurs il faut formuler en suppositions " je pense que Julien a mal lu ma feuille à la question tant ". Enfin, ma console quand j'ai les alertes.. ta formulation qui suit le ⚠️ est incompréhensible.
+
+---
+
+## TOUR 614 — Claude (conscience n°12)
+
+Captures 610-6 à 610-9 refaites (scratchpad maquette/maquette610.js et maquette610.css ; la version du tour 613 est gardée à côté) : plus de « Envoyer », la phrase de l'app « Réponse enregistrée — tu peux encore la changer », les suppositions, l'alerte et la liste du soir en faits. Aucune capture ne déborde. Déposé au sas (captures-610/, maquette/, README de la maquette). CADRAGE-QCM.md complété (tour 614, ligne d'état). Rien écrit au hub, ni en production.
+
+Réponse mot pour mot, avec les quatre captures envoyées dans la conversation :
+
+526. **« Envoyer » est retiré.** Le choix est enregistré dès le clic, comme partout dans l'app : « ✅ Réponse enregistrée — tu peux encore la changer », jusqu'à « 🏁 Afficher leur bilan aux élèves ». L'alerte apparaît sur ta console dès que Michel clique la question, et disparaît s'il change d'avis. « C'est envoyé » disparaît aussi. Captures 610-6 et 610-7.
+
+527. **En suppositions, à la première personne, avec le prénom** : « ✅ Je pense que Julien a bien lu ma feuille », « 🤔 Je pense que Julien a peut-être mal lu ma feuille, à une question », « ❌ Je pense que Julien a mal lu ma feuille, à une question ». Une fois la question cliquée, c'est ta phrase : « ❌ Je pense que Julien a mal lu ma feuille à la question 1 ». La consigne suit : « 👇 Clique la question où tu penses que Julien a mal lu ta feuille. » Est souligné ce qui n'est pas mot pour mot de toi.
+
+528. **Ta console parle de même** : « ❌ DUVERNAY Michel pense qu'ABRIAL Julien a mal lu sa feuille à la question 1 », et ton suivi devient « Ce que chacun pense de la lecture de sa feuille ».
+
+529. **La ligne du ⚠️, réécrite en faits, dans l'ordre où ils sont arrivés** : « Pendant la question, Michel a cliqué Venise, puis il a dit que sa feuille ne disait pas Venise. » ; « À la correction, Julien a lu Venise sur la feuille de Michel. » ; « ⚠️ Les deux ne peuvent pas être vrais : la feuille de Michel tranche. » Cette ligne n'apparaît que quand les deux se contredisent. Capture 610-8, et 610-9 sur ton téléphone.
+
+530. **La liste du soir avait le même défaut, corrigé de même** : « TESSIER Anna — Q2 : a dit que sa feuille disait son clic, Madrid ; Rayan y a lu Madrid et Genève » ; « CARRÉ Tom — Q1 : n'a pas dit si sa feuille disait son clic ».
+
+531. **Les quatre captures refaites sont au sas** : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/MAQUETTE-QCM-FLUX/README.md (section « Tours 610 à 614 »). Quand elles te vont, je refais la maquette entière en une fois.
+
+09/10/2026 16:09 MEMO

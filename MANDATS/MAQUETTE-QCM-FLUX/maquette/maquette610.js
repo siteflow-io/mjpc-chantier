@@ -101,37 +101,44 @@ function EcrAttest2AB(e, coche){
 // la feuille de Michel dit Rome, Julien a lu Venise (le clic de Michel sur la tablette, qu'il n'a jamais vu).
 var LU = {J:[[2],[0],[0]], M:[[3],[0,1,2],"aucun"]};
 function luTexte(qi, x){ var q = EV.questions[qi]; return x === "aucun" ? "aucun de ces choix" : x.map(function(i){ return q.choix[i]; }).join(", "); }
-var BTN_CO = [
-  {k:"ok", em:"✅", t:"Oui, il a bien lu ma feuille"},
-  {k:"peut", em:"🤔", t:"Il a peut-être mal lu ma feuille, à une question"},
-  {k:"mal", em:"❌", t:"Il a mal lu ma feuille, à une question"}
-];
-// etape : "choix" (rien cliqué) | "question" (❌ ou 🤔 cliqué : il clique la question) | "une" (la question cliquée : les autres ont disparu) | "envoye"
+// Tour 614 : en suppositions, à la première personne, avec le prénom du voisin ; plus de « Envoyer » :
+// le choix est enregistré dès le clic, comme partout dans l'app, et se change jusqu'au bilan.
+function txtCo(k, v, qi){
+  if(k === "ok") return "Je pense que " + v.prenom + " a bien lu ma feuille";
+  var peut = k === "peut" ? "peut-être " : "";
+  return "Je pense que " + v.prenom + " a " + peut + "mal lu ma feuille" + (qi == null ? ", à une question" : " à la question " + (qi+1));
+}
+var EM_CO = {ok:"✅", peut:"🤔", mal:"❌"};
+function BtnCo(k, v, on, qi){
+  var t = txtCo(k, v, qi);
+  return h("button", {key:k, className:"co-btn " + k + (on ? " on" : "")}, EM_CO[k] + " ", k === "mal" ? t : Pz(t));
+}
+var REGLE_CO = "Un désaccord, c'est sérieux : tu n'en signales qu'un, celui dont tu es le plus sûr. Il se vérifie sur ta feuille.";
+var ENREG = "✅ Réponse enregistrée — tu peux encore la changer";
+// etape : "choix" (rien cliqué) | "question" (❌ ou 🤔 cliqué : il clique la question) | "une" (question cliquée : les autres ont disparu) | "okfait" (✅ cliqué)
 function EcrCoeval(e, etape, k, qChoisie){
-  var v = autreDe(e), b = k && BTN_CO.filter(function(x){ return x.k === k; })[0];
+  var v = autreDe(e);
   var lignes = EV.questions.map(function(q, qi){ return {qi:qi, txt:"Question " + (qi+1) + " · " + v.prenom + " a lu : " + luTexte(qi, LU[e.cle][qi])}; });
-  if(etape === "envoye"){
-    return Page(badgeDe(e), "📝 Correction", h(F, null,
-      h("div", {className:"co-envoye " + k}, b.em + " ", Pz(k === "ok" ? "C'est envoyé : " + v.prenom + " a bien lu ta feuille." : "C'est envoyé : ton désaccord porte sur la question " + (qChoisie+1) + ".")),
-      h("div", {className:"etat-attente"}, "⏳ ", Pz("Attends ton bilan..."))));
-  }
   var zone = [];
   zone.push(h("div", {key:"t", className:"decl-titre co-titre"}, e.prenom + ", " + v.prenom + " a-t-" + il(v) + " bien lu ta feuille ?"));
   if(etape === "une"){
-    // le bouton choisi, puis la seule question, les autres ont disparu
-    zone.push(h("button", {key:"b", className:"co-btn " + k + " on"}, b.em + " " + b.t.replace("il a", il(v) + " a").replace("Il a", (il(v) === "elle" ? "Elle" : "Il") + " a")));
+    zone.push(h("div", {key:"b"}, BtnCo(k, v, true, qChoisie)));
     zone.push(h("div", {key:"l", className:"co-liste"}, h("div", {className:"co-l choisie"}, lignes[qChoisie].txt)));
-    zone.push(h("div", {key:"seule", className:"co-seule"}, "☝️ ", Pz("C'est ta seule question de désaccord.")));
-    zone.push(h("div", {key:"r", className:"co-regle"}, "Un désaccord, c'est sérieux : tu n'en signales qu'un, celui dont tu es le plus sûr. Il se vérifie sur ta feuille."));
-    zone.push(h("div", {key:"a", className:"co-actions"}, h("button", {className:"btn btn-ghost"}, "↩️ ", Pz("Changer")), h("button", {className:"btn btn-primary"}, "📨 ", Pz("Envoyer"))));
+    zone.push(h("div", {key:"seule", className:"co-seule"}, "☝️ C'est ta seule question de désaccord."));
+    zone.push(h("div", {key:"r", className:"co-regle"}, REGLE_CO));
+    zone.push(h("div", {key:"f", className:"eleve-feedback valide"}, ENREG));
+    zone.push(h("div", {key:"a", className:"co-actions"}, h("button", {className:"btn btn-ghost"}, "↩️ Changer")));
+    zone.push(h("div", {key:"w", className:"co-attente"}, "⏳ Attends ton bilan..."));
   } else {
     var cliquable = etape === "question";
-    if(cliquable) zone.push(h("button", {key:"b", className:"co-btn " + k + " on"}, b.em + " " + b.t));
-    if(cliquable) zone.push(h("div", {key:"p", className:"co-prompt"}, "👇 ", Pz("Clique la question où " + v.prenom + " a " + (k === "peut" ? "peut-être " : "") + "mal lu ta feuille.")));
+    if(cliquable) zone.push(h("div", {key:"b"}, BtnCo(k, v, true)));
+    if(cliquable) zone.push(h("div", {key:"p", className:"co-prompt"}, "👇 ", Pz("Clique la question où tu penses que " + v.prenom + " a " + (k === "peut" ? "peut-être " : "") + "mal lu ta feuille.")));
     zone.push(h("div", {key:"l", className:"co-liste" + (cliquable ? " cliquable" : "")}, lignes.map(function(l){ return h("div", {key:l.qi, className:"co-l"}, l.txt); })));
-    zone.push(h("div", {key:"r", className:"co-regle"}, "☝️ Un désaccord, c'est sérieux : tu n'en signales qu'un, celui dont tu es le plus sûr. Il se vérifie sur ta feuille."));
-    if(!cliquable) zone.push(h("div", {key:"bs", className:"co-btns"}, BTN_CO.map(function(x){ return h("button", {key:x.k, className:"co-btn " + x.k}, x.em + " " + x.t); })));
-    if(cliquable) zone.push(h("div", {key:"a", className:"co-actions"}, h("button", {className:"btn btn-ghost"}, "↩️ ", Pz("Changer"))));
+    zone.push(h("div", {key:"r", className:"co-regle"}, "☝️ " + REGLE_CO));
+    if(!cliquable) zone.push(h("div", {key:"bs", className:"co-btns"}, ["ok", "peut", "mal"].map(function(x){ return BtnCo(x, v, etape === "okfait" && x === "ok"); })));
+    if(etape === "okfait") zone.push(h("div", {key:"f", className:"eleve-feedback valide"}, ENREG));
+    if(etape === "okfait") zone.push(h("div", {key:"w", className:"co-attente"}, "⏳ Attends ton bilan..."));
+    if(cliquable) zone.push(h("div", {key:"a", className:"co-actions"}, h("button", {className:"btn btn-ghost"}, "↩️ Changer")));
   }
   return Page(badgeDe(e), "📝 Correction", h("div", {className:"eleve-q-zone"}, zone));
 }
@@ -147,22 +154,22 @@ function etatCo(p){
   return {cls:"m-coq", st:"🤔 peut-être Q" + c.slice(4), flag:"à relire ce soir"};
 }
 var LIRE_CO = [
-  ["PERRAUD Jade", "Q2 : 🤔 Enzo a peut-être mal lu sa feuille"],
-  ["MAILLARD Noah", "Q3 : 🤔 Emma a peut-être mal lu sa feuille"],
+  ["PERRAUD Jade", "Q2 : 🤔 pense qu'Enzo a peut-être mal lu sa feuille"],
+  ["MAILLARD Noah", "Q3 : 🤔 pense qu'Emma a peut-être mal lu sa feuille"],
   ["DUVERNAY Michel", "Q3 : aucun de ces choix"],
   ["QUINTON Enzo", "Q1 : aucun de ces choix"],
-  ["TESSIER Anna", "Q2 : a dit « Oui », Rayan a lu autre chose que son clic"],
-  ["CARRÉ Tom", "Q1 : n'a rien dit à la fin de son temps"]
+  ["TESSIER Anna", "Q2 : a dit que sa feuille disait son clic, Madrid ; Rayan y a lu Madrid et Genève"],
+  ["CARRÉ Tom", "Q1 : n'a pas dit si sa feuille disait son clic"]
 ];
 var ATT_CO = ["CARRÉ Tom", "OLLIVIER Sacha", "VALLÉE Rayan", "ZELLER Lou"];
 function AlerteCo(tel){
   var q = EV.questions[0];
   var corps = [
-    h("div", {key:"t", className:"al-t"}, "❌ DUVERNAY Michel : ABRIAL Julien a mal lu sa feuille à la question 1"),
+    h("div", {key:"t", className:"al-t"}, "❌ DUVERNAY Michel pense qu'ABRIAL Julien a mal lu sa feuille à la question 1"),
     h("div", {key:"q", className:"al-l"}, "Q1 · " + q.enonce + " — bonne réponse : Rome"),
-    h("div", {key:"b", className:"al-l"}, "Pendant la question, Michel a cliqué ", h("strong", null, "Venise"), " et a dit « Non, autre chose »."),
-    h("div", {key:"a", className:"al-l"}, "À la correction, Julien a lu sur sa feuille : ", h("strong", null, "Venise"), "."),
-    h("div", {key:"x", className:"al-l al-b"}, "⚠️ Ça ne colle pas : Michel avait dit que sa feuille ne disait pas son clic."),
+    h("div", {key:"b", className:"al-l"}, "Pendant la question, Michel a cliqué ", h("strong", null, "Venise"), ", puis il a dit que sa feuille ne disait pas Venise."),
+    h("div", {key:"a", className:"al-l"}, "À la correction, Julien a lu ", h("strong", null, "Venise"), " sur la feuille de Michel."),
+    h("div", {key:"x", className:"al-l al-b"}, "⚠️ Les deux ne peuvent pas être vrais : la feuille de Michel tranche."),
     h("div", {key:"c", className:"al-l al-c"}, "Appelle-les à la fin de l'heure, la feuille de Michel en main.")
   ];
   if(tel) return h("div", {className:"tel-alerte"}, corps,
@@ -176,26 +183,26 @@ function AlerteCo(tel){
       h("div", {className:"al-auto"},
         h("button", {className:"btn btn-ghost btn-sm"}, "⛔ Retirer le point d'autonomie — Michel"),
         h("button", {className:"btn btn-ghost btn-sm"}, "⛔ Retirer le point d'autonomie — Julien")),
-      h("div", {className:"al-note"}, "« Donner raison à Michel » : tu cliques ce que dit sa feuille, comme le soir (capture 43), et sa note se recalcule. « Donner raison à Julien » : rien ne change.")));
+      h("div", {className:"al-note"}, "L'alerte est apparue au clic de Michel ; elle disparaît s'il change d'avis avant le bilan. « Donner raison à Michel » : tu cliques ce que dit sa feuille, comme le soir (capture 43), et sa note se recalcule. « Donner raison à Julien » : rien ne change.")));
 }
 function PilotCoeval(){
   return Console("pilotage", "pilot", h("div", {className:"card"},
     AlerteCo(false),
     TitreCarte(h(F, null, "🤝 Co-évaluation de la lecture — " + EV.titre + " — " + CLASSE, InfoI()),
       [h("button", {key:0, className:"btn btn-ghost btn-sm"}, "🚫 Départ d'un élève"), h("button", {key:1, className:"btn btn-rouge btn-sm"}, "🛑 Terminer la session")]),
-    h("div", {className:"pilot-status correction"}, "Fin de la correction — chacun dit si son voisin a bien lu sa feuille · 20 / 24 ont répondu"),
+    h("div", {className:"pilot-status correction"}, "Fin de la correction — chacun dit ce qu'il pense de la lecture de sa feuille · 20 / 24 ont répondu"),
     h("div", {className:"corr-grid"},
       h("div", null,
         h("div", {className:"row", style:{marginTop:".2rem"}}, h("button", {className:"btn btn-or ferme", disabled:true}, "🔒 🏁 Afficher leur bilan aux élèves")),
         h("div", {className:"manquent"},
           h("div", {className:"tt"}, "« 🏁 Afficher leur bilan aux élèves » s'ouvre quand les 24 présents ont répondu. Il en manque " + ATT_CO.length + " :"),
           h("div", {className:"noms"}, ATT_CO.join(" · "))),
-        h("div", {className:"co-compte"}, h("div", null, "✅ ", h("strong", null, String(Object.keys(CO).filter(function(p){ return CO[p] === "ok"; }).length)), " ont dit : bien lu"), h("div", null, "🤔 ", h("strong", null, "2"), " ont dit : peut-être mal lu (à relire ce soir)"), h("div", null, "❌ ", h("strong", null, "1"), " a dit : mal lu (alerte, en haut)")),
+        h("div", {className:"co-compte"}, h("div", null, "✅ ", h("strong", null, String(Object.keys(CO).filter(function(p){ return CO[p] === "ok"; }).length)), " pensent : bien lu"), h("div", null, "🤔 ", h("strong", null, "2"), " pensent : peut-être mal lu (à relire ce soir)"), h("div", null, "❌ ", h("strong", null, "1"), " pense : mal lu (alerte, en haut)")),
         h("div", {className:"alire"}, h("div", {className:"tt"}, "📌 À lire sur les feuilles, ce soir (" + LIRE_CO.length + ")"),
           LIRE_CO.map(function(x, i){ return h("div", {key:i}, x[0] + " — " + x[1]); }))),
       h("div", {className:"suivi-box"},
-        h("h3", null, "🤝 Ce que chacun dit de la lecture de sa feuille", InfoI()),
-        h("div", {className:"ss"}, "Chaque moitié dit si le voisin a bien lu la feuille de cet élève."),
+        h("h3", null, "🤝 Ce que chacun pense de la lecture de sa feuille", InfoI()),
+        h("div", {className:"ss"}, "Chaque moitié dit ce que cet élève pense de la lecture de sa feuille par son voisin."),
         GrilleTablettes(PAIRES, etatCo),
         Legende([["#22C55E","✅ bien lu"],["#FDE68A","🤔 peut-être mal lu : à relire ce soir"],["#EF4444","❌ mal lu : alerte"],["#FEE2E2","⏳ pas encore répondu","1px solid #EF4444"]])))), true);
 }
@@ -216,7 +223,7 @@ function TelCoeval(){
     h("div", {key:"a", className:"tel-actions"}, TelBtn("🔒 🏁 Afficher leur bilan — il en manque 4", "or", "large", true)),
     h("div", {key:"m", className:"tel-manquent"}, h("strong", null, "Pas encore répondu : "), ATT_CO.join(" · ")),
     h("div", {key:"lr", className:"tel-lire"}, h("strong", null, "📌 À lire ce soir (" + LIRE_CO.length + ") : "), LIRE_CO.map(function(x){ return x[0] + " — " + x[1]; }).join(" · ")),
-    h("div", {key:"l", className:"tel-liste"}, h("div", {className:"tel-liste-h"}, "TABLETTES — ce que chacun dit de la lecture de sa feuille"), lignes),
+    h("div", {key:"l", className:"tel-liste"}, h("div", {className:"tel-liste-h"}, "TABLETTES — ce que chacun pense de la lecture de sa feuille"), lignes),
     h("div", {key:"lg"}, TelLegende(["✅ bien lu", "🤔 peut-être mal lu : ce soir", "❌ mal lu : alerte", "⏳ pas encore"])),
     h("div", {key:"t"}, TelBtn("🛑 Terminer la session", "rouge", "small"))]);
 }
@@ -233,9 +240,9 @@ var SCENES_610 = [
   {id:"x610-5-attestation-2", vue:"tablette", render:function(){ return Tablette(EcrAttest2AB(J, true), EcrAttest2AB(M, false)); }},
   // La co-évaluation : Julien n'a encore rien cliqué ; Michel a cliqué « ❌ » et doit cliquer la question
   {id:"x610-6-coeval-choix", vue:"tablette", render:function(){ return Tablette(EcrCoeval(J, "choix"), EcrCoeval(M, "question", "mal")); }},
-  // Julien a envoyé « ✅ » ; Michel a cliqué la question 1 : les autres ont disparu
-  {id:"x610-7-coeval-une", vue:"tablette", render:function(){ return Tablette(EcrCoeval(J, "envoye", "ok"), EcrCoeval(M, "une", "mal", 0)); }},
-  // Ta console et ton téléphone, à l'instant où Michel envoie
+  // Julien a cliqué « ✅ » ; Michel a cliqué la question 1 : les autres ont disparu ; les deux choix sont enregistrés, et se changent jusqu'au bilan
+  {id:"x610-7-coeval-une", vue:"tablette", render:function(){ return Tablette(EcrCoeval(J, "okfait", "ok"), EcrCoeval(M, "une", "mal", 0)); }},
+  // Ta console et ton téléphone, à l'instant où Michel clique la question 1
   {id:"x610-8-console-alerte", vue:"console", render:PilotCoeval},
   {id:"x610-9-telephone-alerte", vue:"telephone", render:TelCoeval}
 ];

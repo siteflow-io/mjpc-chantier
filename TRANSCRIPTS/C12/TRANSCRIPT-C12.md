@@ -18893,3 +18893,37 @@ Réponse mot pour mot, avec les sept captures refaites envoyées dans la convers
 548. **La suite** : les captures sont au sas, https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/MAQUETTE-QCM-FLUX/README.md (section « Tours 610 à 616 »). Quand elles te vont, je refais la maquette entière en une fois.
 
 09/10/2026 16:43 MEMO
+
+---
+
+## TOUR 617 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (09/10, 17:37) L'attestation ( les 2), une coche par élément. Pas une coche pour tout, sinon ils ne lisent pas. Par ailleurs, il faudra une eval de test pour les élèves, un mode demo que je joue, une éval qui reste dans les évaluations en permanence et qui survit à toute purge. A cadrer.
+
+---
+
+## TOUR 617 — Claude (conscience n°12)
+
+Mesuré dans evaluation-qcm.html 7.7.1 : les gestes qui effacent une évaluation (supprimer, l. 6342 ; purgerEvaluations, l. 8601 ; purgerTout, l. 8610 ; snapshotImport, qui fait set() sur la racine qcm, l. 2384 ; la sortie du mode test, qui efface _eval_test, l. 4672) ; le contrat de purge MJPC garde qcm/evaluations (l. 1950) ; « Dupliquer » existe (l. 6330). Relus : 39, 318, 470. Captures non refaites. CADRAGE-QCM.md complété (tour 617, ligne d'état). Rien écrit au hub, ni en production.
+
+Réponse mot pour mot :
+
+549. **Les deux attestations : une coche par ligne.** « J'ai lu et compris » disparaît ; chaque ligne a sa case, et « Je commence » ne s'ouvre que quand toutes sont cochées. Ma proposition en plus : chaque ligne n'apparaît qu'une fois la précédente cochée, pour qu'il ne puisse pas tout cocher d'un coup sans voir chaque ligne. Coût : 8 cases avant de commencer, 5 avant la correction. Ton suivi montre où en est chacun (« attestation 5/8 »), et l'heure de la dernière coche est gardée, comme sur la capture 7.
+
+550. **L'évaluation de démo, ce que je comprends** : une évaluation fixe, pour apprendre le déroulé aux élèves avant une vraie. Tu la lances avec la classe comme une vraie, avec l'appel, les binômes, les attestations, la correction et la co-évaluation, et rien ne compte. Ma question : pendant la démo, les élèves sont-ils sur les tablettes, ou regardent-ils au tableau pendant que tu joues seul ? Ma proposition couvre les deux : la même démo sert aussi au mode test (470), où tu la joues seul.
+
+551. **« Rien ne compte », confronté à ce qui est cadré** : pas de note, pas de compétence, pas de point d'autonomie, rien vers MJPC ; jamais dans « Mes évaluations » de l'élève, ni dans tes Résultats, ni dans le PDF « notes et compétences » (318) ; et jamais « le QCM précédent » qui sert à former les binômes (39). La séance s'efface à « Terminer » ; il ne reste qu'une ligne, par exemple « 🎓 Démo faite le 10/10 · 3 HUGO · 24 présents ». Côté élève, un bandeau du début à la fin, ma proposition : « 🎓 Évaluation d'entraînement : elle ne compte pas. »
+
+552. **Survivre à toute purge : mesuré dans la 7.7.1, cinq gestes effacent une évaluation** : « 🗑️ Supprimer » (sans corbeille, dette 206), « Purger les évaluations », « Tout purger », « Importer » une sauvegarde (qui remplace tout le QCM), et la sortie du mode test (qui efface son évaluation). Ma proposition : la démo est écrite dans le code de l'app, pas seulement au hub. À chaque ouverture, l'app la remet au hub si elle manque ou a changé : quelle que soit la purge, elle revient à l'ouverture suivante. Elle n'a ni « Supprimer » ni corbeille, et elle porte « 🔒 Permanente ».
+
+553. **La tension** : pour survivre à tout, elle ne se modifie pas dans l'éditeur ; un changement passe par le code, donc par un mandat. Pour une variante, « 📄 Dupliquer », qui existe déjà, en fait une évaluation ordinaire, modifiable et supprimable.
+
+554. **Sa place** : en tête de la liste des évaluations, pour tous les niveaux, sous le nom « 🎓 Démo — apprendre le déroulé ».
+
+555. **Son contenu, ma proposition** : les trois questions de la maquette, la troisième mise en phrase pour apprendre à lire une formulation : « Quelle est la capitale de l'Italie ? » (une bonne réponse) ; « Lesquelles sont des capitales européennes ? » (deux bonnes réponses) ; « Pourquoi l'araignée n'est-elle pas un insecte ? » (bonne réponse : « Parce qu'elle a huit pattes »). La durée estimée reste celle de la maquette : 11 minutes.
+
+556. **La suite** : ta réponse à 550, et ce qui ne va pas dans 549 à 555 ; puis je mets les deux dans la maquette refaite.
+
+09/10/2026 17:39 MEMO

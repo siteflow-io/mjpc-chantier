@@ -18648,3 +18648,43 @@ Réponse mot pour mot :
 493. **La suite** : quand tu auras répondu à 489 et 492, je refais la maquette en une fois.
 
 09/10/2026 13:27 MEMO
+
+---
+
+## TOUR 610 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (09/10, 13:45) Ok pour tout. Pour 475 seulement : ceintures et bretelles. B, mais à quel moment précisément ? Et je veux voir  la capture que ça donnerait. Et A en plus: comme ça, la pression se déplace. On devient garant de sa recopie, mais le problème c'est les élèves qui auront peur et paniqueront sans savoir quoi mettre.
+
+---
+
+## TOUR 610 — Claude (conscience n°12)
+
+Relus dans la maquette : les écrans du tour, du passage, de l'attente et de la correction (captures 12, 14, 15, 17, 29), les attestations (393, 485). Cinq captures nouvelles faites sur la maquette (scratchpad maquette/maquette610.js et maquette610.css), déposées au sas dans MANDATS/MAQUETTE-QCM-FLUX/captures-610/ avec leurs sources dans maquette/, et décrites dans le README de la maquette (section « Tour 610 »). Maquette d'ensemble non modifiée. CADRAGE-QCM.md complété (tour 610, ligne d'état). Rien écrit au hub, ni en production.
+
+Réponse mot pour mot, avec les cinq captures envoyées dans la conversation :
+
+494. **Noté : 484 à 493 sont acquis**, et pour 492, sur papier, l'élève corrige sa propre feuille au stylo : c'est ce soin qui porte l'autonomie. Avec A + B, 485 et 489 changent : ci-dessous.
+
+495. **B, le moment précis : juste à la fin de son temps de réponse.** Son clic est alors figé : il se prononce donc sur son dernier clic, celui qui compte. Sa moitié montre son clic et demande « Julien, regarde ta feuille : dit-elle la même chose que ton clic ? », avec « Oui, la même chose » et « Non, autre chose », de la même couleur pour ne pas souffler la réponse. Il a 5 secondes, réglables comme tes deux autres temps. Le voile de Michel reste en place pendant ces 5 secondes : son compte à rebours ne démarre qu'après. Au second tour, c'est pareil pour Michel, avant « Attends la prochaine question ». Sans réponse en 5 secondes, c'est « pas dit ». Coût : chaque question dure 10 secondes de plus. Captures 1 et 2 (Michel a cliqué Venise, sa feuille dit Rome : il doit répondre « Non »).
+
+496. **A : chacun garde sa feuille et sa moitié ; seul le clic du rapprochement change de main.** À la correction, avant la révélation, Michel lit la feuille de Julien et clique dans la moitié de Julien ; en même temps, Julien fait de même dans celle de Michel. Julien voit Michel cliquer pour lui : s'ils ne sont pas d'accord, Michel clique « Je ne suis pas sûr ». Après la révélation, rien ne change : chacun lit son résultat dans sa moitié et corrige sa propre feuille au stylo. Capture 3.
+
+497. **Avec A, B ne bloque plus rien : il sert à trouver les feuilles à relire.** Le blocage de 488 n'a plus d'objet : Michel n'a jamais vu le clic de Julien, et le bloquer lui apprendrait ce clic. À la place, ta console et ton téléphone marquent « ⚠️ À relire » une question dans quatre cas : Julien a dit « Oui », mais Michel lit autre chose que son clic ; Julien a dit « Non », mais Michel lit exactement son clic ; Julien n'a rien dit ; Michel a cliqué « Je ne suis pas sûr ». Le soir, tu ne lis que ces feuilles-là. Un seul cas échappe : les deux s'entendent pour mentir ; pour ce cas, le seul filet est le tirage de trois feuilles (459).
+
+498. **La peur de ne pas savoir quoi mettre : il y a toujours un bouton juste.** « Sa feuille ne dit aucun de ces choix » si elle dit autre chose ; « 🤔 Je ne suis pas sûr » s'il ne peut pas lire, s'il hésite, ou s'ils ne sont pas d'accord (« sûre » pour une élève). La question attend alors ta lecture, comme une question pas dite (⚪), et ce n'est jamais compté contre lui. Et chacun ne répond que de ce qui dépend de lui : ses « Oui » et ses « Non », et ce qu'il clique pour l'autre. Si Michel lit mal la feuille de Julien, c'est le point d'autonomie de Michel qui est en jeu, jamais celui de Julien.
+
+499. **Les deux attestations, refaites pour A + B : captures 4 et 5**, ce qui change est souligné. La première ajoute « Écris lisiblement : à la correction, c'est Michel qui lira ta feuille. » et « Quand ton temps est fini, tu dis si ta feuille dit la même chose que ton clic. » La seconde remplace 485 ; sa fin « à toi de le retrouver, en autonomie » tombe, puisque c'est le voisin qui retrouve.
+
+500. **Un élève seul sur sa tablette n'a pas de voisin pour lire sa feuille** (nombre impair, ou voisin parti en cours de séance). Ma proposition : il fait lui-même le rapprochement, et B reprend pour lui la règle de 488 : s'il a dit « Non », il ne peut pas valider exactement son clic.
+
+501. **Les captures**, au sas :
+https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/MAQUETTE-QCM-FLUX/captures-610/610-1-b-julien.png
+https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/MAQUETTE-QCM-FLUX/captures-610/610-2-b-michel.png
+https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/MAQUETTE-QCM-FLUX/captures-610/610-3-a-correction.png
+https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/MAQUETTE-QCM-FLUX/captures-610/610-4-attestation-1.png
+https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/MAQUETTE-QCM-FLUX/captures-610/610-5-attestation-2.png
+Dis-moi ce qui ne va pas sur les captures et en 500 ; puis je refais la maquette en une fois.
+
+09/10/2026 13:53 MEMO

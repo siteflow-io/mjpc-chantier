@@ -1,0 +1,11 @@
+/* Tour 610 — B : la phrase de l'élève à la fin de son temps de réponse ; A : le rapprochement fait par le voisin */
+.fige{background:#475569;color:#fff;border-radius:12px;padding:.55rem .9rem;font-weight:900;font-size:.95rem;text-align:center;margin:.2rem 0 .4rem}
+.fige-choix .eleve-choix-btn:disabled{opacity:.35}
+.decl-b-titre{font-size:1.2rem;font-weight:900;color:var(--violet);text-align:center;margin:.9rem 0 .6rem;line-height:1.35}
+.decl-b-btns{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+.decl-b-btn{padding:1rem .8rem;border-radius:14px;border:3px solid var(--violet);background:#fff;color:var(--violet);font-family:inherit;font-size:1.08rem;font-weight:900;cursor:pointer}
+.decl-b-chrono{margin:.7rem auto 0;width:max-content;padding:.35rem .9rem;border-radius:999px;background:rgba(106,76,224,.1);color:var(--violet);font-weight:900;font-size:1rem}
+.montre{background:#FEF3C7;color:#92400E;border-radius:10px;padding:.3rem .8rem;font-weight:900;font-size:.92rem;text-align:center;margin:0 0 .15rem}
+.eleve-choix-btn.aucun.pas-sur{border-color:#94A3B8;color:#475569;background:#F8FAFC}
+.moitie .eleve-choix-btn.aucun.duo{grid-column:auto;padding:.6rem .6rem;font-size:.9rem;text-align:center;line-height:1.25}
+.moitie .montre + .decl-titre{margin-top:.3rem}

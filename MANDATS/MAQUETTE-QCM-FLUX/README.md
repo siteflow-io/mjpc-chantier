@@ -349,3 +349,30 @@ Le même contenu en un seul PDF : [LIVRET-FLUX-BINOME.pdf](LIVRET-FLUX-BINOME.pd
 ## Pour rejouer
 
 La maquette est dans `maquette/` : `maquette.html` s'ouvre dans un navigateur (`#scene=t-q1-tour1`, par exemple), et `capture.js` refait toutes les captures avec Playwright, qu'il prend dans `../banc/node_modules` (celui du banc de la fausse classe, https://github.com/siteflow-io/mjpc-chantier/tree/main/AUDITS/QCM-FAUSSE-CLASSE-3E-08-10/banc, après `npm install`). Les écrans du tour 603 sont dans `maquette2.js`. Les versions précédentes restent dans `maquette_tour598.js`, `maquette_tour600.js` et leurs `.css`. Elle repose sur le CSS de `evaluation-qcm.html` 7.7.1, recopié tel quel, et sur React 17 en local.
+
+---
+
+## Tour 610 — « ceinture et bretelles » contre le réflexe du clic (475, points 494 à 501)
+
+Demande de Paul (09/10, 13:45) : « B, mais à quel moment précisément ? Et je veux voir la capture que ça donnerait. Et A en plus ». Cinq captures à part, dans `captures-610/`, sur la même maquette (`maquette/maquette610.js` et `maquette610.css`, assemblés par `build610.py`, pris par `capture610.js`). Les textes nouveaux vus par l'élève sont des propositions : soulignés en pointillés orange. La maquette entière sera refaite en une fois après les réponses de Paul.
+
+**Capture 610-1 — Tablette.** B, premier tour de la question 1 : le temps de Julien est fini, son clic (Rome) est figé ; il dit si sa feuille dit la même chose, en 5 secondes. Michel reste sous le voile (495).
+
+![Capture 610-1](captures-610/610-1-b-julien.png)
+
+**Capture 610-2 — Tablette.** B, second tour : Michel a cliqué Venise, sa feuille dit Rome ; il doit répondre « Non ». Julien reste sous le voile (495).
+
+![Capture 610-2](captures-610/610-2-b-michel.png)
+
+**Capture 610-3 — Tablette.** A, correction de la question 2 : chacun garde sa feuille et sa moitié ; Michel a cliqué pour Julien (Madrid), Julien n'a pas encore cliqué pour Michel. « Je ne suis pas sûr » est toujours là (496, 498).
+
+![Capture 610-3](captures-610/610-3-a-correction.png)
+
+**Capture 610-4 — Tablette.** La première attestation, version A + B (499). Écran de 960 de haut pour la lire en entier.
+
+![Capture 610-4](captures-610/610-4-attestation-1.png)
+
+**Capture 610-5 — Tablette.** La seconde attestation, version A + B, qui remplace 485 (499). Écran de 900 de haut.
+
+![Capture 610-5](captures-610/610-5-attestation-2.png)
+

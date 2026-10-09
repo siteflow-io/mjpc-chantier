@@ -21,6 +21,7 @@ html = """<!DOCTYPE html>
 <div id="root"></div>
 <script>
 """ + lire("maquette.js") + """
+""" + lire("maquette2.js") + """
 </script>
 </body>
 </html>

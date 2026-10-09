@@ -16,27 +16,27 @@
 |---|---|---|---|
 | Entrer comme professeur | Accueil : « Accès professeur », puis le code ou la clé (l. 2477-2499) ; ou le bandeau « Ouvrir la session professeur » quand la clé est gardée sur l'appareil (l. 1856-1871) | Pareil. Pas de capture | Garder |
 | Entrer par l'adresse | `#mode=prof` dans l'adresse ouvre la console, sans code ni clé (l. 2457) | Pareil (Paul, 603 : « le qr code et le téléphone on laisse exactement ainsi ») | Garder (dette 208 close) |
-| Les sessions en cours | Pastille « 🔴 n sessions en cours », puis une fenêtre : « 🎯 Aller au pilotage » ou « 🛑 Terminer » (l. 6008-6015, 6044-6090) | Pareil ; « Terminer » écrit l'archive (337). Pas de capture | Changer (337) |
+| Les sessions en cours | Pastille « 🔴 n sessions en cours », puis une fenêtre : « 🎯 Aller au pilotage » ou « 🛑 Terminer » (l. 6008-6015, 6044-6090) | Pareil ; « Terminer » écrit l'archive (337). Tour 603 : capture 53 | Changer (337) |
 | Le mode d'emploi | « 📖 Mode d'emploi » et « ? » ouvrent la même fenêtre (l. 6016, 5868) | Voir la partie 13 | Changer |
 | La vue tableau | « 📺 Ouvrir vue tableau » : une fenêtre à part, à glisser sur le vidéoprojecteur (l. 6017-6024) | Pareil ; ce qu'elle montre : partie 8 | Garder |
 | Le pilotage au téléphone | « 📱 QR pilotage » (l. 6025) | Pareil ; ce qu'il montre : partie 7 | Garder |
 | Le mode test | « 🧪 Mode test » (l. 6026) | Partie 12 | Changer |
-| Les onglets | Pilotage (📄 Préparation, 📝 Évaluations, 🎯 Pilotage classe), Données (📊 Résultats, 💾 Sauvegarde), Réglages (l. 5842-5846). « 📄 Préparation » et « 📝 Évaluations » montrent la même liste : Préparation, c'est une phrase, puis « Évaluations » en entier (l. 5881-5891, 6035-6036) | Un seul onglet. Pas de capture | Retenu (Paul, 603) (dette 209) |
+| Les onglets | Pilotage (📄 Préparation, 📝 Évaluations, 🎯 Pilotage classe), Données (📊 Résultats, 💾 Sauvegarde), Réglages (l. 5842-5846). « 📄 Préparation » et « 📝 Évaluations » montrent la même liste : Préparation, c'est une phrase, puis « Évaluations » en entier (l. 5881-5891, 6035-6036) | Un seul onglet. Tour 603 : capture 45 | Retenu (Paul, 603) (dette 209) |
 
 ## 2. Préparation : les évaluations
 
 | Fonction | Aujourd'hui | Après le cadrage | Verdict |
 |---|---|---|---|
-| La liste | Titre, « version n », nombre de questions, date de création (l. 6385-6420) | En plus : le chapitre (317) et le mode. Pas de capture | Changer (317) |
-| Créer | « ➕ Nouvelle évaluation » : coller le JSON, « 🔍 Vérifier le format », l'éditeur, « 💾 Enregistrer l'évaluation » (l. 6390, 6587-6606) | Pareil ; le collage garde et vérifie les deux temps, les compétences (au moins trois par compétence), le chapitre et « bonus », avec un message qui cite la question fautive (201 ; 317, 327, 328, 390). Pas de capture | Changer |
+| La liste | Titre, « version n », nombre de questions, date de création (l. 6385-6420) | En plus : le chapitre (317) et le mode. Tour 603 : capture 45 | Changer (317) |
+| Créer | « ➕ Nouvelle évaluation » : coller le JSON, « 🔍 Vérifier le format », l'éditeur, « 💾 Enregistrer l'évaluation » (l. 6390, 6587-6606) | Pareil ; le collage garde et vérifie les deux temps, les compétences (au moins trois par compétence), le chapitre et « bonus », avec un message qui cite la question fautive (201 ; 317, 327, 328, 390). Tour 603 : captures 46 et 47 | Changer |
 | Strict ou partiel | Un choix dans l'éditeur (l. 6672, 6696-6700), **jamais enregistré** : « Enregistrer » écrit le titre, les questions, la version et les dates, pas le mode (l. 6571-6579). Au hub, aucune des 7 évaluations n'a de mode : toutes sont comptées en tout ou rien | Le mode s'enregistre, et se voit dans la liste | Changer (dette 205) |
 | Modifier | « ✏️ Modifier » ; une évaluation qui a servi devient « version n+1 » (l. 6411, 6559-6570) | Pareil | Garder |
 | Dupliquer | « 📋 Dupliquer » (l. 6413) | Pareil | Garder |
 | Supprimer | « 🗑️ » : une confirmation, puis l'effacement définitif (l. 6340-6343, 6414) | En corbeille d'abord | Changer (dette 206) |
-| Éditer une question | Énoncé, choix, case des bonnes réponses, ↑ ↓ 🗑, « ➕ Ajouter un choix », « 💡 Explication », « ➕ Ajouter une question » (l. 6693-6764) | Pareil, sans lettres (334) ; en plus, les deux temps (327), les compétences (305-315) et « bonus » (328). Pas de capture | Changer |
+| Éditer une question | Énoncé, choix, case des bonnes réponses, ↑ ↓ 🗑, « ➕ Ajouter un choix », « 💡 Explication », « ➕ Ajouter une question » (l. 6693-6764) | Pareil, sans lettres (334) ; en plus, les deux temps (327), les compétences (305-315) et « bonus » (328). Tour 603 : capture 47 | Changer |
 | Le niveau d'une question | Des pastilles de couleur, chacune avec son temps (éditeur, l. 6613-6769 ; l. 6536) | Le niveau reste (304), sans temps (327) | Changer (327) |
 | Le prompt | « 🤖 Prompt IA » : « 📋 Copier le prompt », « ✏️ Modifier le prompt », « 💾 Enregistrer », « ↩️ Annuler », « 🔄 Restaurer le prompt par défaut » (l. 6483-6499). Au hub, jamais modifié (`qcm/settings/promptIa` vide) | Il s'écrit en dernier, avec toi (62, 123) | Changer |
-| La feuille imprimée | « 🖨️ Imprimer » : énoncés, cadres de rédaction, lettres (l. 6412, 6770-6827) ; 7 pages par élève pour la 4e du 09/10 (dette 190) | Les énoncés seuls (119), sans lettres (334) ; le nombre de pages reste à trancher (96). Pas de capture | Changer |
+| La feuille imprimée | « 🖨️ Imprimer » : énoncés, cadres de rédaction, lettres (l. 6412, 6770-6827) ; 7 pages par élève pour la 4e du 09/10 (dette 190) | Les énoncés seuls, avec les points, sur une page (119, 120), sans lettres (334). Tour 603 : capture 48 | Changer |
 
 ## 3. Pilotage classe, avant la séance
 
@@ -45,9 +45,9 @@
 | Choisir la classe et l'évaluation | Deux listes, puis « 🚀 Lancer la session » (l. 7023-7050) | Pareil, avec la durée comptée et les binômes proposés (capture 1 ; 58) | Changer |
 | Les binômes | Rien | Proposés d'après le QCM précédent ; tu glisses un nom sur un autre pour échanger (capture 1 ; 323, 72) | Nouveau |
 | L'appel | « 📋 Check-in : qui est absent aujourd'hui ? » : « Tout le monde présent », « Annuler », « 🚀 Lancer la session » (l. 7089-7091) | Pareil ; l'absent laisse son binôme à un autre seul (42, 109) ; l'heure de fin s'y règle (capture 2 ; 64) | Changer |
-| Le rattrapage | Une évaluation déjà passée est marquée 🔁 et demande une confirmation (l. 7042, 6920) | Pareil, en « rattrapage » ; il ne sert jamais de QCM précédent (335). Pas de capture | Changer (335) |
-| Une séance interrompue | « ⚠️ Session interrompue détectée » : « 🔄 Reprendre la session » ou « 🛑 Terminer définitivement » (l. 7007-7008) | Pareil ; à la reprise, le tour recommence au début, voile compris ; « Terminer » écrit l'archive (337). Pas de capture | Changer (337) |
-| Les séances passées de la classe | « 📚 Sessions précédentes » : titre, date, état. L'infobulle promet « relancer » et « consulter le bilan classe », mais aucune ligne n'a de bouton (l. 7097-7117) | Chaque ligne ouvre ses résultats. Pas de capture | Retenu (Paul, 603) (dette 207) |
+| Le rattrapage | Une évaluation déjà passée est marquée 🔁 et demande une confirmation (l. 7042, 6920) | Pareil, en « rattrapage » ; il ne sert jamais de QCM précédent (335). Tour 603 : capture 52 | Changer (335) |
+| Une séance interrompue | « ⚠️ Session interrompue détectée » : « 🔄 Reprendre la session » ou « 🛑 Terminer définitivement » (l. 7007-7008) | Pareil ; à la reprise, le tour recommence au début, voile compris ; « Terminer » écrit l'archive (337). Tour 603 : capture 51 | Changer (337) |
+| Les séances passées de la classe | « 📚 Sessions précédentes » : titre, date, état. L'infobulle promet « relancer » et « consulter le bilan classe », mais aucune ligne n'a de bouton (l. 7097-7117) | Chaque ligne ouvre ses résultats. Tour 603 : captures 1 et 52 | Retenu (Paul, 603) (dette 207) |
 
 ## 4. Pendant la séance, sur ton poste
 
@@ -64,7 +64,7 @@
 | Les durées des niveaux | « ⚙️ Durées des niveaux », replié sous le pilotage (l. 7131-7217, 7841) | Retirées (327) | Retirer |
 | Changer le niveau en direct | Des pastilles sous la question en cours et sous la suivante (l. 7575, 7919, 7957) | Retiré (327) | Retirer |
 | Rouvrir pour tous | « 🔓 Rouvrir pour tous » (l. 7933) | Ne rouvre que pour ceux qui n'ont pas répondu, une fois par question (captures 18, 25 ; 331) | Changer (331) |
-| Rouvrir pour un seul élève | Un clic sur sa bulle, sans bouton ni indication (l. 7612-7630 ; 147) | **Pas de place sur la maquette.** Un bouton « 🔓 Rouvrir pour un élève », en haut, à côté de « 🚫 Départ d'un élève », qui ne liste que ceux qui n'ont pas répondu (331). Pas de capture | Retenu (Paul, 603) |
+| Rouvrir pour un seul élève | Un clic sur sa bulle, sans bouton ni indication (l. 7612-7630 ; 147) | Un bouton « 🔓 Rouvrir pour un élève », en haut, à côté de « 🚫 Départ d'un élève », qui ne liste que ceux qui n'ont pas répondu (331). Tour 603 : captures 49 et 50 | Retenu (Paul, 603) |
 | Revenir à une question, en sauter une | « ← Q préc. » relance la question précédente en réflexion, pour toute la classe ; « Q suiv. → » saute à la suivante (l. 7559-7573, 7969-7970) | Absents de la maquette. Revenir rouvre une question à laquelle on a répondu, ce que 331 interdit ; sauter laisse une question sans réponse pour tous | Retenu (Paul, 603) : retirer |
 | Départ, retour d'un élève | « 🚫 Départ d'un élève », « ↩️ Retour d'un élève » (l. 7749-7750), absents de la correction (l. 7697-7741) | En haut, pendant toute la séance, correction comprise ; ses questions manquées sortent du total (captures 8 à 37 ; 336, 388) | Changer |
 | Terminer | « 🛑 Terminer la session » (l. 7671, 7703, 7751) | Pareil, en haut ; écrit toujours l'archive (337) | Changer (337) |
@@ -93,23 +93,23 @@
 | Fonction | Aujourd'hui | Après le cadrage | Verdict |
 |---|---|---|---|
 | Entrer | Le QR de « 📱 QR pilotage » (l. 5338-5367). Son image est fabriquée par un site extérieur, api.qrserver.com, qui reçoit l'adresse ; cette adresse contient `#mode=prof` et ouvre la console sans clé (l. 5342-5343, 2457) | Pareil (Paul, 603) | Garder (dette 208 close) |
-| Piloter | Les mêmes gestes qu'au poste, en petit : « 🚀 Lancer Q », « ✋ Autoriser la réponse », « ⏸️ Pause », « 🛑 Clore », « 🔄 Chrono », « +5s / +10s / +30s », « 🔒 Clore la question », « 🔓 Rouvrir », « ← Q préc. », « 📊 Lancer l'autoévaluation », « 📝 Lancer la correction », « 💡 Révéler la bonne réponse », « Question suivante → », « 🛑 Terminer la session » (35 gestes, l. 5574-5737) | Ta télécommande, avec toutes les infos (Paul, 603). Il garde tout ce qu'il montre, et reçoit ce que le nouveau flux ajoute : le tour en cours et les moitiés qui répondent, « ⏭️ Tour suivant », l'heure de fin ; à la correction, le chrono de la recopie, les noms qui n'ont pas recopié en rouge, « 🔒 Révéler » fermé, puis le Suivi de la feuille ; sans « ← Q préc. » (412). Le lancement et les résultats restent sur l'ordinateur (418). Pas de capture | Changer |
-| La liste des élèves | Chaque nom, avec la lettre qu'il a cochée (l. 5700-5735). **Dès qu'un élève a répondu, le téléphone devient un écran vide** (l. 5698 ; dette 210) | Sans lettres (334), par tablette. Pas de capture | Changer (334) |
-| La fiche d'un élève | Un clic sur son nom : « 🔁 Rouvrir Qn pour cet élève uniquement », même s'il a répondu, sans limite (dette 204) ; « 🚫 Marquer comme parti en cours de séance », dans toutes les phases ; « ↩️ Marquer comme revenu » (l. 5743-5760) | 331 ; le départ, comme au poste (336). Pas de capture | Changer (331) |
+| Piloter | Les mêmes gestes qu'au poste, en petit : « 🚀 Lancer Q », « ✋ Autoriser la réponse », « ⏸️ Pause », « 🛑 Clore », « 🔄 Chrono », « +5s / +10s / +30s », « 🔒 Clore la question », « 🔓 Rouvrir », « ← Q préc. », « 📊 Lancer l'autoévaluation », « 📝 Lancer la correction », « 💡 Révéler la bonne réponse », « Question suivante → », « 🛑 Terminer la session » (35 gestes, l. 5574-5737) | Ta télécommande, avec toutes les infos (Paul, 603). Il garde tout ce qu'il montre, et reçoit ce que le nouveau flux ajoute : le tour en cours et les moitiés qui répondent, « ⏭️ Tour suivant », l'heure de fin ; à la correction, le chrono de la recopie, les noms qui n'ont pas recopié en rouge, « 🔒 Révéler » fermé, puis le Suivi de la feuille ; sans « ← Q préc. » (412). Le lancement et les résultats restent sur l'ordinateur (418). Tour 603 : captures 54 à 57 | Changer |
+| La liste des élèves | Chaque nom, avec la lettre qu'il a cochée (l. 5700-5735). **Dès qu'un élève a répondu, le téléphone devient un écran vide** (l. 5698 ; dette 210) | Sans lettres (334), par tablette. Tour 603 : captures 54 à 57 | Changer (334) |
+| La fiche d'un élève | Un clic sur son nom : « 🔁 Rouvrir Qn pour cet élève uniquement », même s'il a répondu, sans limite (dette 204) ; « 🚫 Marquer comme parti en cours de séance », dans toutes les phases ; « ↩️ Marquer comme revenu » (l. 5743-5760) | 331 ; le départ, comme au poste (336). Tour 603 : capture 55 | Changer (331) |
 
 ## 8. Le tableau (la vue projetée)
 
 | Fonction | Aujourd'hui | Après le cadrage | Verdict |
 |---|---|---|---|
 | La question | L'énoncé en grand, le chrono, « n / N ont répondu » (l. 4984-5337) | Pareil | Garder |
-| Les choix | Montrés en réponse avec leurs lettres ; en correction, « ✅ Bonne réponse : B, D » (dette 191) | Jamais en réponse ; en correction, après la révélation, sans lettres, les bonnes en vert, et l'explication (93 à 95, 334). Pas de capture | Changer |
-| La liste de la classe | Chaque prénom : a répondu, en attente, absent (l. 4946-4982) | Pareil. Pas de capture | Garder |
+| Les choix | Montrés en réponse avec leurs lettres ; en correction, « ✅ Bonne réponse : B, D » (dette 191) | Jamais en réponse ; en correction, après la révélation, sans lettres, les bonnes en vert, et l'explication (93 à 95, 334). Tour 603 : captures 58 à 60 | Changer |
+| La liste de la classe | Chaque prénom : a répondu, en attente, absent (l. 4946-4982) | Pareil. Tour 603 : captures 58 à 60 | Garder |
 
 ## 9. Données → Résultats
 
 | Fonction | Aujourd'hui | Après le cadrage | Verdict |
 |---|---|---|---|
-| La liste des séances | Toutes les séances, classes confondues ; un clic ouvre le tableau (l. 8141-8259) | Pareil. Pas de capture | Garder |
+| La liste des séances | Toutes les séances, classes confondues ; un clic ouvre le tableau (l. 8141-8259) | Pareil. Tour 603 : capture 61 | Garder |
 | Le tableau d'une séance | Lettres de la tablette et lettres « papier », « Score app », « Score papier », « Écart », tri (l. 8260-8456) ; en partiel, il compte en tout ou rien (dette 203) | ✓, ✗ ou ＋ par question, la note et sa maîtrise, une colonne par compétence, « À lire sur la feuille » (capture 41 ; 334, 383) | Changer |
 | L'export CSV | « 📥 Export CSV » : lettres, scores, écart (l. 8392) | Le bouton reste (capture 41) ; ce qu'il contient n'est pas cadré. Les colonnes du tableau de la capture 41 | Retenu (Paul, 603) |
 | Le PDF notes et compétences | Rien | « 📄 PDF notes et compétences » (capture 41 ; 310, 318) ; sa forme est à te proposer | Nouveau |
@@ -125,7 +125,7 @@
 | Exporter | « 📥 Exporter snapshot » : un fichier de tout le QCM et des classes (l. 2359-2383, 8750) | Pareil | Garder |
 | Importer | « 📤 Importer snapshot » : remplace tout le QCM par le fichier (l. 2403, 8751) | Le QCM d'avant part d'abord en corbeille | Changer (dette 206) |
 | Les sessions zombies | « 🧹 Nettoyer les sessions zombies » : un rapport, puis seuls les marqueurs « en cours » sont nettoyés (l. 8620-8726, 8766) | Pareil | Garder |
-| L'ancien carnet de classes | « 🧹 Ranger l'ancien carnet de classes » : en corbeille, puis effacé (l. 8728-8740, 8769) ; au hub, `qcm/classes` n'existe plus : il est déjà rangé | Le bouton ne sert plus | Retenu (Paul, 603) : retirer |
+| L'ancien carnet de classes | « 🧹 Ranger l'ancien carnet de classes » : en corbeille, puis effacé (l. 8728-8740, 8769) ; au hub, `qcm/classes` n'existe plus : il est déjà rangé | Le bouton ne sert plus | Retenu (Paul, 603) : retirer (capture 63) |
 | La pondération des niveaux | « ⚖️ Pondération des niveaux » : quatre cases, 1, 2, 3, 4 par défaut (l. 8538-8590, 8776-8780) ; au hub, jamais modifiée | Retirée, l'archive gardée (273 ; dette 192) | Retirer |
 | Purger les classes | Renvoie à la console MJPC (l. 8594-8600) ; son infobulle dit « Supprime DÉFINITIVEMENT toutes les classes » (l. 8789) | Le bouton ne fait rien ici | Retenu (Paul, 603) : retirer (dette 207) |
 | Purger les évaluations | Deux confirmations, puis l'effacement définitif (l. 8601-8609, 8790) | En corbeille d'abord | Changer (dette 206) |
@@ -144,7 +144,7 @@
 
 | Fonction | Aujourd'hui | Après le cadrage | Verdict |
 |---|---|---|---|
-| L'ouvrir | « 🧪 Mode test » : une classe de test, une évaluation « Capitales » avec des lettres et des niveaux, un panneau par élève simulé sous ton pilotage (l. 4599-4822) | Sur le nouveau flux : des tablettes à deux moitiés, l'attestation, la recopie. Pas de capture | Retenu (Paul, 603) |
+| L'ouvrir | « 🧪 Mode test » : une classe de test, une évaluation « Capitales » avec des lettres et des niveaux, un panneau par élève simulé sous ton pilotage (l. 4599-4822) | Sur le nouveau flux : des tablettes à deux moitiés, l'attestation, la recopie. Tour 603 : capture 64 | Retenu (Paul, 603) |
 | Où il écrit | Au hub, sous des noms de test : une classe dans `/classes` (commune à toutes les apps pendant le test), des codes dans `/codes`, l'évaluation et les séances dans `qcm/` ; tout est effacé à la sortie (l. 4615-4680). Rien de réel n'est touché | Pareil | Garder |
 | « 🎲 Tous les élèves répondent » | Des réponses au hasard (l. 4697-4760) | Pour les deux moitiés, et pour la recopie | Retenu (Paul, 603) |
 | « 📥 Exporter snapshot test », « 📱 QR pilotage », « 🗑️ Sortir et purger » | En haut du mode test (l. 4768-4785) | Pareil | Garder |
@@ -198,21 +198,23 @@ Registre : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/DETTES
 
 210. **Tour 603 : le téléphone devient un écran vide dès qu'un élève répond** (l. 5698 : `mode` n'existe pas à cet endroit). Preuve : https://github.com/siteflow-io/mjpc-chantier/blob/main/AUDITS/QCM-TELEPHONE-09-10/README.md
 
-## 17. Ce qui n'a pas encore de capture
+## 17. Les captures des écrans hors du flux (tour 603)
 
-Ta règle de 148 : rien ne part au mandat sans sa place visible. Ces écrans changent avec le cadrage et n'ont pas encore de capture :
+Ta règle de 148 : rien ne part au mandat sans sa place visible. Les quatorze écrans qui n'avaient pas de capture au tour 602 en ont une depuis le tour 603, dans la même maquette : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/MAQUETTE-QCM-FLUX/README.md
 
-1. La liste des évaluations, avec le chapitre et le mode.
-2. L'éditeur d'une question : les deux temps, les compétences, « bonus », sans lettres.
-3. Le collage du JSON et ses messages.
-4. La feuille imprimée, énoncés seuls.
-5. « 🔓 Rouvrir pour un élève ».
-6. La séance interrompue et sa reprise.
-7. Le rattrapage.
-8. Le téléphone, pendant la séance et pendant la correction.
-9. Le tableau, en réponse et en correction.
-10. La liste des séances et l'effacement en corbeille.
-11. Sauvegarde, sans la pondération, avec la corbeille.
-12. Le mode test sur le nouveau flux.
-13. « Mes évaluations », côté élève.
-14. La fenêtre des sessions en cours.
+1. La liste des évaluations, avec le chapitre et le mode : capture 45.
+2. Le collage du JSON et ses messages : capture 46.
+3. L'éditeur d'une question (temps, compétences, « bonus », sans lettres) : capture 47.
+4. La feuille imprimée, énoncés seuls, sur une page : capture 48.
+5. « 🔓 Rouvrir pour un élève » : captures 49 (ta console) et 50 (sa tablette).
+6. La séance interrompue et sa reprise : capture 51.
+7. Le rattrapage : capture 52.
+8. La fenêtre des sessions en cours : capture 53.
+9. Le téléphone, en séance, sur la fiche d'un élève, et en correction avant et après la révélation : captures 54 à 57.
+10. Le tableau, en réponse, pendant la recopie et après la révélation : captures 58 à 60.
+11. La liste des séances et la corbeille : captures 61 et 62.
+12. Sauvegarde, sans la pondération, avec la corbeille : capture 63.
+13. Le mode test sur le nouveau flux : capture 64.
+14. « Mes évaluations », côté élève, et le bilan avec ta phrase de 398 : captures 65 et 66.
+
+Restent sans capture, parce qu'ils ne sont que du texte pour toi : le mode d'emploi et l'aide des Réglages, réécrits d'après le cadrage (207).

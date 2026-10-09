@@ -18386,3 +18386,21 @@ Premier message, mot pour mot (06:34), suivi des captures 2-telephone-reponse-sa
 419. **Je fais maintenant les captures qui manquent** : les 14 écrans de 414, avec le téléphone en séance et en correction. Viendront ensuite le PDF (318), puis le prompt.
 
 09/10/2026 06:34 MEMO
+
+Travail de la suite du tour : maquette mise à jour (textes retenus sans souligné, « recopie » dans la console, un seul onglet, « Rouvrir pour un élève », séances passées qui ouvrent leurs résultats, compétences de l'évaluation d'essai sur 3 questions) ; 22 écrans nouveaux (maquette2.js) ; 66 captures contrôlées une à une ; README et livret PDF (67 pages) régénérés ; inventaire mis à jour (numéros de capture, feuille sur une page). Déposé au sas : MANDATS/MAQUETTE-QCM-FLUX/. Rien écrit au hub, aucun code dans l'app.
+
+Réponse de fin de tour, mot pour mot, avec le fichier LIVRET-FLUX-BINOME.pdf :
+
+420. **Les captures qui manquaient sont faites** : 22 de plus, de la capture 45 à la 66, dans la même maquette : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/MAQUETTE-QCM-FLUX/README.md. Le livret PDF complet t'est envoyé ici.
+
+421. **Ton téléphone (captures 54 à 57).** Il garde ses boutons d'aujourd'hui, avec leurs mots. Il reçoit le tour en cours, « ⏭️ Tour suivant », l'heure de fin et les 12 tablettes, sans lettres. À la correction, il montre la recopie, les noms qui manquent en rouge, puis le Suivi de la feuille et les feuilles à lire ce soir. Dis-moi s'il manque quelque chose pour piloter sans l'ordinateur.
+
+422. **Trois choses que le cadrage ne disait pas : ce sont mes propositions.** Pendant la recopie, le tableau montre l'énoncé et ta question « Qu'as-tu écrit sur ta feuille ? », sans les choix (capture 59). Au rattrapage, placement libre, sans proposition de binômes (capture 52). La corbeille se voit dans Sauvegarde, avec « ↩️ Restaurer » (capture 63).
+
+423. **Les 44 premières captures sont mises à jour.** Plus rien n'est souligné, puisque tous les textes sont les tiens. Ta console dit « recopie ». Il n'y a plus qu'un onglet « 📝 Évaluations ». « 🔓 Rouvrir pour un élève » est en haut du pilotage, et les séances passées ouvrent leurs résultats (capture 1).
+
+424. **Une conséquence de 390, visible sur les captures 38 à 42.** Avec 3 questions, chaque compétence de l'évaluation d'essai porte sur les 3 questions. Ses deux compétences ont donc le même niveau.
+
+425. **Ensuite** : la forme du PDF « notes et compétences » (318), puis le prompt (62, 123), puis le mandat.
+
+09/10/2026 06:53 MEMO

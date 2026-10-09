@@ -1,32 +1,22 @@
-# Le flux en classe, pour un binôme — maquette du QCM (tour 598)
+# Le flux en classe, pour un binôme — maquette du QCM (tour 598, mise à jour au tour 603)
 
-*Conscience n°12, 08/10/2026, mise à jour au tour 600 (points 375 à 384). Demande de Paul (tour 598) : « je veux toutes les captures d'écran de ce que ça donne pour deux élèves en binôme, tout au long de la séance. pour ne pas multiplier les captures, on part sur une évaluation de 3 questions bidons. et je veux mes cpatures de console. et je veux que ce soit dans l'ordre du flux. »*
+*Conscience n°12, 08/10/2026, mises à jour au tour 600 (points 375 à 384) et au tour 603, le 09/10 (inventaire « tout visible », points 404 à 419). Demande de Paul (tour 598) : « je veux toutes les captures d'écran de ce que ça donne pour deux élèves en binôme, tout au long de la séance. pour ne pas multiplier les captures, on part sur une évaluation de 3 questions bidons. et je veux mes cpatures de console. et je veux que ce soit dans l'ordre du flux. »*
 
 Le même contenu en un seul PDF : [LIVRET-FLUX-BINOME.pdf](LIVRET-FLUX-BINOME.pdf).
 
-**Ce que c'est.** La séance entière, telle qu'elle est cadrée au 08/10 au soir, pour un binôme : Julien ABRIAL à gauche, Michel DUVERNAY à droite, sur une évaluation inventée de 3 questions, en tout ou rien. Les écrans de ta console sont pris au même moment, avec la classe de la fausse classe (« 3 ESSAI », 24 présents, Adam absent). C'est une maquette à part, construite sur le CSS de l'app 7.7.1 : rien n'est codé dans l'app.
+**Ce que c'est.** La séance entière, telle qu'elle est cadrée au 09/10 au matin, pour un binôme : Julien ABRIAL à gauche, Michel DUVERNAY à droite, sur une évaluation inventée de 3 questions, en tout ou rien. Les écrans de ta console sont pris au même moment, avec la classe de la fausse classe (« 3 ESSAI », 24 présents, Adam absent). Puis, à partir de la capture 45, les écrans hors du flux qui changent avec le cadrage (inventaire « tout visible », 414) : préparer une évaluation, les gestes rares de la séance, ton téléphone (418), le tableau, Données, le mode test et « Mes évaluations » de l'élève. C'est une maquette à part, construite sur le CSS de l'app 7.7.1 : rien n'est codé dans l'app.
 
-**Comment lire.** Les tablettes sont en 1280 × 800, l'écran entier. La console est en 1440 de large, toute la page. Tout texte vu par l'élève souligné en pointillés orange est provisoire : ce sont des mots que tu n'as pas encore donnés. Toute la console est une proposition (73), à corriger sur ces captures.
+**Comment lire.** Les tablettes sont en 1280 × 800, l'écran entier. La console est en 1440 de large, toute la page ; quand une fenêtre est ouverte, toute la fenêtre. Le téléphone est en 390 de large, toute la page : sur l'écran, la liste défile. Le tableau est en 1280 × 800. Toute la console est une proposition, à corriger sur ces captures.
 
-**Montré sans être tranché.** La saisie dans la correction (360), les choix sans lettre (334), les mots du socle et l'estimation sur la même échelle (313, 339), les temps et « Tour suivant » (327), la réouverture (331), les binômes d'après le QCM précédent (323), l'heure de fin (64), le + vert sur la seule question qui compte (332). Retenus au tour 600 : 375 à 384 (« clique », le rapprochement, la saisie forcée, les compétences fines).
+**Ce qui a changé au tour 603.** Tous les textes vus par l'élève sont maintenant les tiens (393 à 400) : plus rien n'est souligné. Dans la console, « recopie » remplace « saisie » (392). Un seul onglet « 📝 Évaluations » (209). « 🔓 Rouvrir pour un élève » en haut du pilotage (411). Les séances passées ouvrent leurs résultats (413). Chaque compétence de l'évaluation d'essai porte sur ses 3 questions (390). Les captures 45 à 66 sont nouvelles : ce sont des propositions, comme l'ont été les 44 premières.
 
 **Les deux feuilles.** Julien : Q1 « Rome » (juste), Q2 « Madrid » seulement (faux, mais il clique sur Madrid et Berlin : Trouvée au dernier moment), Q3 « 6 » (faux). Michel : Q1 « Rome » (juste, mais il clique sur Venise), Q2 « Madrid, Genève, Berlin » (faux), Q3 « 16 pattes » (aucun de ces choix).
-
-**Les textes provisoires, à remplacer par tes mots.**
-
-1. L'attestation : les six phrases et le bouton « Je commence » (captures 5 et 6).
-2. « Qu'as-tu écrit sur ta feuille ? » et « Clique sur le ou les choix qui disent la même chose que ta feuille. Les mots ne sont pas forcément les mêmes : c'est à toi de faire le rapprochement. » (capture 29).
-3. « Ma feuille ne dit aucun de ces choix » (captures 29 et 33).
-4. Sous « Trouvée au dernier moment » : « Ta feuille disait autre chose, mais tu as cliqué sur la bonne réponse : la question compte. Cela n'arrive qu'une fois par évaluation. », puis « Sur la tablette, tu avais cliqué sur : … » (capture 32).
-5. Le bilan : « Ta note : », « Question par question », « juste », « faux », « ta feuille ne dit aucun de ces choix », « → 1 point », « Tes compétences » ; sous chaque question et chaque compétence, les libellés du hub coupés et les questions (capture 38).
-6. Les mots du socle sous les quatre couleurs (captures 26 et 38).
-7. Si 334 est retenu, une phrase d'aujourd'hui parle encore de lettres : « 💡 Clique sur la (ou les) lettre(s) qui correspond(ent) à ta réponse ». Elle n'apparaît pas sur ces captures, mais elle est à redonner.
 
 ---
 
 ## Avant l'heure, sur ta console
 
-**Capture 1 — Console.** « Pilotage classe », avant l'heure. Tu choisis la classe et l'évaluation : la durée est comptée tout de suite (58), et les binômes sont proposés d'après le QCM précédent (39, 109). Tu glisses un nom sur un autre pour échanger deux élèves (72). Au premier QCM d'une classe, il n'y a pas de proposition : placement libre.
+**Capture 1 — Console.** « Pilotage classe », avant l'heure. Tu choisis la classe et l'évaluation : la durée est comptée tout de suite (58), et les binômes sont proposés d'après le QCM précédent (39, 109). Tu glisses un nom sur un autre pour échanger deux élèves (72). Au premier QCM d'une classe, il n'y a pas de proposition : placement libre. En bas, les séances passées de la classe : chacune ouvre ses résultats (413), et celle qui sert aux binômes est marquée (41).
 
 ![Capture 1](captures/01-c-lancer.png)
 
@@ -50,7 +40,7 @@ Le même contenu en un seul PDF : [LIVRET-FLUX-BINOME.pdf](LIVRET-FLUX-BINOME.pd
 
 ![Capture 5](captures/05-t-binome.png)
 
-**Capture 6 — Tablette.** L'attestation, sur chaque moitié (234). Tout le texte est provisoire : je l'ai écrit d'après ton message de 14:24 (577), la règle 288 à 290 et le rapprochement (377). Julien a coché ; Michel lit.
+**Capture 6 — Tablette.** L'attestation, sur chaque moitié (234), avec tes mots (393). Julien a coché ; Michel lit.
 
 ![Capture 6](captures/06-t-attest.png)
 
@@ -78,7 +68,7 @@ Le même contenu en un seul PDF : [LIVRET-FLUX-BINOME.pdf](LIVRET-FLUX-BINOME.pd
 
 ![Capture 11](captures/11-t-q1-passage1.png)
 
-**Capture 12 — Tablette.** 1er tour : Julien répond, dans l'ordre de l'évaluation (74). Les choix n'ont plus de lettre (334, à trancher). Michel ne voit rien.
+**Capture 12 — Tablette.** 1er tour : Julien répond, dans l'ordre de l'évaluation (74). Les choix n'ont plus de lettre (334). Michel ne voit rien.
 
 ![Capture 12](captures/12-t-q1-tour1.png)
 
@@ -102,7 +92,7 @@ Le même contenu en un seul PDF : [LIVRET-FLUX-BINOME.pdf](LIVRET-FLUX-BINOME.pd
 
 ![Capture 17](captures/17-t-q1-attente.png)
 
-**Capture 18 — Console.** Question close. Nouveau : un gros « ▶️ Lancer Q2 ». « 🔓 Rouvrir pour tous » ne rouvre que pour ceux qui n'ont pas répondu, une fois (331, à trancher).
+**Capture 18 — Console.** Question close. Nouveau : un gros « ▶️ Lancer Q2 ». « 🔓 Rouvrir pour tous » ne rouvre que pour ceux qui n'ont pas répondu, une fois (331). En haut, depuis le tour 603 : « 🔓 Rouvrir pour un élève » (411, captures 49 et 50).
 
 ![Capture 18](captures/18-c-q1-close.png)
 
@@ -146,7 +136,7 @@ Le même contenu en un seul PDF : [LIVRET-FLUX-BINOME.pdf](LIVRET-FLUX-BINOME.pd
 
 ## L'estimation
 
-**Capture 26 — Tablette.** L'estimation, sur les deux moitiés en même temps, sans voile (32). Les quatre couleurs portent les mots du socle (313, 339, à trancher). Julien a choisi ; Michel choisit.
+**Capture 26 — Tablette.** L'estimation, sur les deux moitiés en même temps, sans voile (32). Les quatre couleurs portent les mots du socle (313, 339). Julien a choisi ; Michel choisit.
 
 ![Capture 26](captures/26-t-estim.png)
 
@@ -156,9 +146,9 @@ Le même contenu en un seul PDF : [LIVRET-FLUX-BINOME.pdf](LIVRET-FLUX-BINOME.pd
 
 ---
 
-## La correction, avec la saisie de la feuille (proposition 360)
+## La correction, avec la recopie de la feuille (360)
 
-**Capture 28 — Console.** La correction commence par la question la plus ratée sur les tablettes, comme aujourd'hui : la question 2. Chacun clique d'abord sur ce que dit sa feuille (360). Le temps pour cliquer est le temps de réponse de la question, ici 20 s : orange à la moitié, rouge les 5 dernières secondes (378). « 🔒 Révéler » reste fermé tant qu'il manque un élève présent, et les noms qui manquent sont en rouge. « 🚫 Départ d'un élève » est maintenant visible ici, pour une tablette en panne (379). L'infobulle, ouverte sur la capture, dit que tu commentes après la révélation (381).
+**Capture 28 — Console.** La correction commence par la question la plus ratée sur les tablettes, comme aujourd'hui : la question 2. Chacun recopie d'abord sa feuille, d'un clic sur ce qu'elle dit (360). Le temps pour recopier est le temps de réponse de la question, ici 20 s : orange à la moitié, rouge les 5 dernières secondes (378). « 🔒 Révéler » reste fermé tant qu'il manque un élève présent, et les noms qui manquent sont en rouge. « 🚫 Départ d'un élève » est maintenant visible ici, pour une tablette en panne (379). L'infobulle, ouverte sur la capture, dit que tu commentes après la révélation (381).
 
 ![Capture 28](captures/28-c-corr-q2-avant.png)
 
@@ -170,7 +160,7 @@ Le même contenu en un seul PDF : [LIVRET-FLUX-BINOME.pdf](LIVRET-FLUX-BINOME.pd
 
 ![Capture 30](captures/30-t-corr-q2-attente.png)
 
-**Capture 31 — Console.** Tous ont cliqué, tu as révélé. Ton Suivi montre le résultat d'après la feuille. Julien et Zoé : « ＋ Trouvée ». Camille : saisie juste, tablette fausse ; elle va dans « À lire sur les feuilles, ce soir » (180, 362).
+**Capture 31 — Console.** Tous ont cliqué, tu as révélé. Ton Suivi montre le résultat d'après la feuille. Julien et Zoé : « ＋ Trouvée ». Camille : recopie juste, tablette fausse ; elle va dans « À lire sur les feuilles, ce soir » (180, 362).
 
 ![Capture 31](captures/31-c-corr-q2-apres.png)
 
@@ -182,7 +172,7 @@ Le même contenu en un seul PDF : [LIVRET-FLUX-BINOME.pdf](LIVRET-FLUX-BINOME.pd
 
 ![Capture 33](captures/33-t-corr-q3-decl.png)
 
-**Capture 34 — Console.** Après la révélation : Michel « aucun de ces choix », Lou « saisie juste, tablette fausse », Théo « Trouvée ». Plus personne n'est sans saisie : la révélation attend que tous aient cliqué (378).
+**Capture 34 — Console.** Après la révélation : Michel « aucun de ces choix », Lou « recopie juste, tablette fausse », Théo « Trouvée ». Plus personne n'est sans recopie : la révélation attend que tous aient recopié (378).
 
 ![Capture 34](captures/34-c-corr-q3-apres.png)
 
@@ -202,7 +192,7 @@ Le même contenu en un seul PDF : [LIVRET-FLUX-BINOME.pdf](LIVRET-FLUX-BINOME.pd
 
 ## La fin
 
-**Capture 38 — Tablette.** La note s'affiche à la fin (223). Julien : 2/3, 13,3/20 ; Michel : 1/3, 6,7/20. Chaque question dit sa ou ses compétences, et chaque compétence dit les questions qui font son niveau, par exemple « Q2 ＋ · Q3 ✗ → 1/2 » (382, 383). Puis l'estimation comparée. J'ai retiré le bloc « Par rapport à la classe » d'aujourd'hui : il ne tient pas sur une demi-tablette.
+**Capture 38 — Tablette.** La note s'affiche à la fin (223). Julien : 2/3, 13,3/20 ; Michel : 1/3, 6,7/20. Chaque question dit sa ou ses compétences, et chaque compétence dit les questions qui font son niveau, par exemple « Q1 ✓ · Q2 ＋ · Q3 ✗ → 2/3 » (382, 383). Avec 3 questions, la règle de 390 (au moins 3 questions par compétence) met chaque compétence sur les 3 questions : leurs niveaux sont donc les mêmes ici. Puis l'estimation comparée. J'ai retiré le bloc « Par rapport à la classe » d'aujourd'hui : il ne tient pas sur une demi-tablette.
 
 ![Capture 38](captures/38-t-bilan.png)
 
@@ -240,6 +230,122 @@ Le même contenu en un seul PDF : [LIVRET-FLUX-BINOME.pdf](LIVRET-FLUX-BINOME.pd
 
 ---
 
+## Hors du flux (414) — préparer une évaluation
+
+**Capture 45 — Console.** Pilotage → 📝 Évaluations : un seul onglet, au lieu de « Préparation » et « Évaluations » (209). Chaque évaluation dit son chapitre (317), son mode, qui s'enregistre enfin (205), ses compétences, et si elle est prête. Tes 7 évaluations du hub n'ont ni temps, ni compétences, ni chapitre : « ✏️ Compléter » avant de les lancer (410). La 🗑️ met à la corbeille (206).
+
+![Capture 45](captures/45-c-evals.png)
+
+**Capture 46 — Console.** « ➕ Nouvelle évaluation », le JSON collé, puis « 🔍 Vérifier le format ». Le collage garde et vérifie les champs nouveaux (201) : chaque message dit la question fautive (317, 315, 390), et rien n'est enregistré tant qu'il en reste un. Les noms des champs du JSON (« chapitre », « reflexion », « reponse », « competences ») se fixeront avec le prompt (62, 123).
+
+![Capture 46](captures/46-c-collage.png)
+
+**Capture 47 — Console.** « ✏️ Compléter » sur ton interro de 3e : le chapitre ; le mode ; les compétences de l'évaluation, avec le nombre de questions de chacune, au moins 3 (390) ; puis, pour chaque question, la difficulté sans temps, les deux temps (327), une ou deux compétences (315), « bonus » (328) et les choix sans lettres (334). Q3 à Q9 sont repliées pour la capture. Q10, la question bonus, n'a encore ni ses temps ni sa compétence : « Enregistrer » attend.
+
+![Capture 47](captures/47-c-editeur.png)
+
+**Capture 48 — Console.** « 🖨️ Imprimer » : les énoncés seuls, avec les points, sans choix ni cadre (119, 120). Ton interro de 3e tient sur une page A4, à l'échelle. L'élève répond sur sa feuille simple.
+
+![Capture 48](captures/48-c-feuille.png)
+
+---
+
+## Les gestes rares de la séance
+
+**Capture 49 — Console.** Question 2 close : Théo n'a pas répondu (tablette 12, cadre rouge). « 🔓 Rouvrir pour un élève », en haut, ne liste que ceux qui n'ont pas répondu, une fois par question (331, 411).
+
+![Capture 49](captures/49-c-rouvrir-un.png)
+
+**Capture 50 — Tablette.** Sa tablette : Théo répond, avec le temps de réponse de la question ; Lou porte le voile ordinaire (331). Sous les choix, ta phrase de 399.
+
+![Capture 50](captures/50-t-rouvrir-un.png)
+
+**Capture 51 — Console.** La séance interrompue (337). « 🔄 Reprendre » recommence le tour en cours, voile compris. « 🛑 Terminer définitivement » écrit l'archive avec les notes telles qu'elles sont ; les questions pas encore corrigées, tu les fixes d'après les feuilles (338).
+
+![Capture 51](captures/51-c-interrompue.png)
+
+**Capture 52 — Console.** Le rattrapage (335) : l'évaluation déjà passée est marquée 🔁, et l'encadré dit la règle. Pas de proposition de binômes, placement libre : c'est ma proposition, le cadrage n'en disait rien. La séance du 08/10 est maintenant le QCM précédent.
+
+![Capture 52](captures/52-c-rattrapage.png)
+
+**Capture 53 — Console.** « 🔴 1 session en cours », en haut de ta console : « 🎯 Aller au pilotage » ou « 🛑 Terminer », qui écrit l'archive (337).
+
+![Capture 53](captures/53-c-sessions.png)
+
+---
+
+## Ton téléphone, ta télécommande (418)
+
+**Capture 54 — Console.** Ton téléphone au 1er tour de la question 1, en page entière (sur l'écran, la liste défile). Il garde tout ce qu'il a aujourd'hui, et reçoit le tour en cours, « ⏭️ Tour suivant », l'heure de fin et les 12 tablettes, sans lettres (418).
+
+![Capture 54](captures/54-p-reponse.png)
+
+**Capture 55 — Console.** Question 2 close : un clic sur Théo ouvre sa fiche, avec les boutons d'aujourd'hui. « 🔁 Rouvrir » ne vaut qu'une fois, et seulement s'il n'a pas répondu (331). « ← Q préc. » a disparu (412).
+
+![Capture 55](captures/55-p-eleve.png)
+
+**Capture 56 — Console.** La correction, avant la révélation : le chrono de la recopie, « 🔒 Révéler » fermé, et les noms qui n'ont pas recopié, en rouge (378).
+
+![Capture 56](captures/56-p-corr-avant.png)
+
+**Capture 57 — Console.** Après la révélation : l'explication, le Suivi de la feuille (juste, ＋ Trouvée, faux, « ≠ tablette » pour recopie juste et tablette fausse) et les feuilles à lire ce soir (351, 362).
+
+![Capture 57](captures/57-p-corr-apres.png)
+
+---
+
+## Le tableau (la vue projetée)
+
+**Capture 58 — Console.** Le tableau en réponse : l'énoncé et le chrono, jamais les choix (191, 93).
+
+![Capture 58](captures/58-b-reponse.png)
+
+**Capture 59 — Console.** Le tableau pendant la recopie : l'énoncé, ta question « Qu'as-tu écrit sur ta feuille ? » (394) et le chrono, sans les choix. C'est ma proposition : le cadrage ne disait pas ce qu'il montre à ce moment.
+
+![Capture 59](captures/59-b-recopie.png)
+
+**Capture 60 — Console.** Après la révélation : les choix sans lettres, les bonnes en vert, « Bonnes réponses : Madrid, Berlin » et l'explication (95, 334).
+
+![Capture 60](captures/60-b-correction.png)
+
+---
+
+## Données
+
+**Capture 61 — Console.** Données → Résultats : la liste des séances, avec les feuilles à lire de chacune ; « 📊 Ouvrir » ou la 🗑️.
+
+![Capture 61](captures/61-c-seances.png)
+
+**Capture 62 — Console.** La 🗑️ d'une séance la met à la corbeille, gardée un an : rien n'est effacé (206).
+
+![Capture 62](captures/62-c-corbeille.png)
+
+**Capture 63 — Console.** Sauvegarde. La corbeille du QCM, avec « ↩️ Restaurer » : c'est ma proposition, sans elle la corbeille ne se voit nulle part. L'import met d'abord le QCM d'aujourd'hui à la corbeille, les purges aussi (206). Retirés : la pondération (273), « Ranger l'ancien carnet » et « Purger les classes » (413).
+
+![Capture 63](captures/63-c-sauvegarde.png)
+
+---
+
+## Le mode test
+
+**Capture 64 — Console.** Le mode test sur le nouveau flux : 6 élèves simulés, 3 tablettes à deux moitiés, ton pilotage au-dessus, « 🎲 Toutes les moitiés répondent ». Les outils P2 sont retirés (413).
+
+![Capture 64](captures/64-c-test.png)
+
+---
+
+## Côté élève, après la séance
+
+**Capture 65 — Console.** Chez elle, Lou ouvre « 📊 Mes évaluations » : une seule liste (409), avec sa note et sa maîtrise d'après la feuille (324).
+
+![Capture 65](captures/65-e-mes-evals.png)
+
+**Capture 66 — Console.** Le soir, tu as lu la feuille de Lou : à la question 3, elle avait recopié la bonne réponse, mais sa feuille disait 6. Tu l'as corrigée par « La feuille dit autre chose » (168) : sa note passe à 1/3, et la question porte ta phrase de 398.
+
+![Capture 66](captures/66-e-bilan-lou.png)
+
+---
+
 ## Pour rejouer
 
-La maquette est dans `maquette/` : `maquette.html` s'ouvre dans un navigateur (`#scene=t-q1-tour1`, par exemple), et `capture.js` refait toutes les captures avec Playwright, qu'il prend dans `../banc/node_modules` (celui du banc de la fausse classe, https://github.com/siteflow-io/mjpc-chantier/tree/main/AUDITS/QCM-FAUSSE-CLASSE-3E-08-10/banc, après `npm install`). La version du tour 598 reste dans `maquette_tour598.js` et `maquette_tour598.css`. Elle repose sur le CSS de `evaluation-qcm.html` 7.7.1, recopié tel quel, et sur React 17 en local.
+La maquette est dans `maquette/` : `maquette.html` s'ouvre dans un navigateur (`#scene=t-q1-tour1`, par exemple), et `capture.js` refait toutes les captures avec Playwright, qu'il prend dans `../banc/node_modules` (celui du banc de la fausse classe, https://github.com/siteflow-io/mjpc-chantier/tree/main/AUDITS/QCM-FAUSSE-CLASSE-3E-08-10/banc, après `npm install`). Les écrans du tour 603 sont dans `maquette2.js`. Les versions précédentes restent dans `maquette_tour598.js`, `maquette_tour600.js` et leurs `.css`. Elle repose sur le CSS de `evaluation-qcm.html` 7.7.1, recopié tel quel, et sur React 17 en local.

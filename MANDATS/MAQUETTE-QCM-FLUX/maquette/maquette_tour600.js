@@ -2,17 +2,17 @@
    Données inventées : une évaluation de 3 questions, la classe « 3 ESSAI » de la fausse classe. */
 var h = React.createElement, F = React.Fragment;
 var DECO = ["⭐","🎯","✨","💡","🎲","🔥"];
-function P(t){ return t; }          // tour 603 : tous les textes vus par l'élève sont donnés par Paul (393 à 400) ; plus de souligné provisoire
+function P(t){ return h("span", {className:"prov"}, t); }          // texte provisoire (mots à donner par Paul)
 function InfoI(texte, ouvert){ return h("span", {className:"info-i" + (ouvert ? " ouvert" : "")}, "i", texte ? h("span", {className:"info-tip"}, texte) : null); }
 
 var CLASSE = "3 ESSAI";
 var EV = {titre:"Évaluation d'essai — 3 questions", mode:"strict", questions:[
   {enonce:"Quelle est la capitale de l'Italie ?", choix:["Milan","Naples","Rome","Venise"], bonnes:[2], niveau:"facile", reflexion:20, reponse:15,
-   competences:["c4-culture-01","c4-lire-01"], explication:"Rome est la capitale de l'Italie depuis 1871."},
+   competences:["c4-culture-01"], explication:"Rome est la capitale de l'Italie depuis 1871."},
   {enonce:"Lesquelles sont des capitales européennes ?", choix:["Madrid","Genève","Berlin","Sydney"], bonnes:[0,2], niveau:"standard", reflexion:30, reponse:20,
    competences:["c4-culture-01","c4-lire-01"], explication:"Madrid (Espagne) et Berlin (Allemagne) sont des capitales. Genève n'est pas la capitale de la Suisse (c'est Berne), et Sydney est en Australie."},
   {enonce:"Combien de pattes a une araignée ?", choix:["6","8","10","4"], bonnes:[1], niveau:"facile", reflexion:20, reponse:15,
-   competences:["c4-culture-01","c4-lire-01"], explication:"Une araignée a 8 pattes : ce n'est pas un insecte (les insectes en ont 6)."}
+   competences:["c4-lire-01"], explication:"Une araignée a 8 pattes : ce n'est pas un insecte (les insectes en ont 6)."}
 ]};
 var NIV = {facile:{label:"Facile",color:"#FFE066"}, standard:{label:"Standard",color:"#FF9933"}, approfondi:{label:"Approfondi",color:"#E63946"}, expert:{label:"Expert",color:"#6B0F1A"}};
 var COMP = {
@@ -64,8 +64,8 @@ function calc(p){
   var t = RT[p], f = RF[p], used = false, pts = [], st = [], flags = [];
   for(var q = 0; q < 3; q++){
     var fc = f[q], tc = t[q];
-    if(fc === "-"){ pts.push(null); st.push("pasdit"); flags.push({q:q, txt:"pas de recopie"}); continue; }
-    if(fc === "J"){ pts.push(1); st.push("j"); if(tc !== "J") flags.push({q:q, txt:"recopie juste, tablette fausse"}); continue; }
+    if(fc === "-"){ pts.push(null); st.push("pasdit"); flags.push({q:q, txt:"pas de saisie"}); continue; }
+    if(fc === "J"){ pts.push(1); st.push("j"); if(tc !== "J") flags.push({q:q, txt:"saisie juste, tablette fausse"}); continue; }
     if(fc === "A") flags.push({q:q, txt:"aucun de ces choix"});
     if(tc === "J" && !used){ used = true; pts.push(1); st.push("t"); continue; }
     pts.push(0); st.push(fc === "A" ? "a" : "f");
@@ -184,7 +184,7 @@ function EcrReponse(e, qi, ordre, sel, chrono, ev){
     h("div", {className:"eleve-choix" + (long ? " long" : "")}, ordre.map(function(i){
       return h("button", {key:i, className:"eleve-choix-btn" + (sel.indexOf(i) >= 0 ? " selected" : "")}, h("span", null, q.choix[i]));
     })),
-    h("div", {className:"eleve-feedback" + (sel.length ? " valide" : "")}, sel.length ? "✅ Réponse enregistrée — tu peux encore la changer" : "💡 Clique sur le ou les choix qui correspondent à ta réponse.")));
+    h("div", {className:"eleve-feedback" + (sel.length ? " valide" : "")}, sel.length ? "✅ Réponse enregistrée — tu peux encore la changer" : "💡 Clique sur la (ou les) lettre(s) qui correspond(ent) à ta réponse")));
 }
 function EcrAttente(e){ return Page(badgeDe(e), EV.titre, h("div", {className:"etat-attente"}, "⏳ Attends la prochaine question...")); }
 
@@ -321,7 +321,7 @@ var EV3E = {titre:"3e- éval 1 Analyse logique - Construire une phrase complexe"
 /* ════════════════════════ CONSOLE ════════════════════════ */
 function Console(groupe, tab, contenu, session){
   var groupes = [["pilotage","Pilotage"],["donnees","Données"],["reglages","Réglages"]];
-  var sous = {pilotage:[["evals","📝 Évaluations"],["pilot","🎯 Pilotage classe"]], donnees:[["results","📊 Résultats"],["snapshot","💾 Sauvegarde"]], reglages:[]};
+  var sous = {pilotage:[["preparation","📄 Préparation"],["evals","📝 Évaluations"],["pilot","🎯 Pilotage classe"]], donnees:[["results","📊 Résultats"],["snapshot","💾 Sauvegarde"]], reglages:[]};
   return h("div", {className:"prof-wrap cons"},
     DECO.map(function(e, i){ return h("span", {key:i, className:"deco"}, e); }),
     h("div", {className:"prof full"},
@@ -454,7 +454,6 @@ function Pilot(s){
       h("span", {key:0, style:{fontSize:".8rem", color:"var(--gris)", fontWeight:700}}, "🕙 Fin de l'heure : 10:57"),
       h("button", {key:1, className:"btn btn-ghost btn-sm"}, "🚫 Départ d'un élève"),
       h("button", {key:2, className:"btn btn-ghost btn-sm"}, "↩️ Retour d'un élève"),
-      h("button", {key:4, className:"btn btn-ghost btn-sm"}, "🔓 Rouvrir pour un élève"),
       h("button", {key:3, className:"btn btn-rouge btn-sm"}, "🛑 Terminer la session")]),
     h("div", {className:"pilot-stats"}, s.stats.map(function(x, i){ return h("div", {key:i, className:"pilot-stat"}, h("div", {className:"v"}, x[0]), h("div", {className:"l"}, x[1])); })),
     h("div", {className:"pilot-grid v2"}, colG, colM, Overview(s.qi, s.passees || []))), true);
@@ -489,24 +488,7 @@ function Lancement(appel){
           h("span", {style:{color:"var(--gris)"}}, "lancement + 55 min ; les tablettes oublient leurs élèves à « Terminer », ou 10 min après."))),
       h("div", {className:"checkin-summary"}, "🚫 1 absent sur 25"),
       h("div", {className:"checkin-actions"}, h("button", {className:"btn btn-ghost"}, "Annuler"), h("button", {className:"btn btn-ghost"}, "Tout le monde présent"), h("button", {className:"btn btn-primary"}, "🚀 Lancer la session"))));
-  var precedentes = SessionsPrecedentes();
-  return Console("pilotage", "pilot", h(F, null, carte, precedentes, modale), false);
-}
-/* 413 (retenu au tour 603) : chaque séance passée de la classe ouvre ses résultats */
-function SessionsPrecedentes(){
-  var lignes = [
-    ["3e Chapitre 1 — Poésie et peinture au XIXème siècle · Interro de cours (séance 3)", "24/09/2026 10:04", "✅ terminée", "23 présents · 2 feuilles à lire", "↳ c'est le QCM précédent : il sert aux binômes"],
-    ["QCM — Le jambon-beurre", "15/09/2026 10:03", "✅ terminée", "25 présents", null]
-  ];
-  return h("div", {className:"card"},
-    h("h2", null, "📚 Sessions précédentes — " + CLASSE, InfoI()),
-    h("div", {className:"results-eval-list"}, lignes.map(function(l, i){
-      return h("div", {key:i, className:"results-eval-row"},
-        h("div", null, h("div", {className:"titre"}, l[0]),
-          h("div", {className:"meta"}, l[1] + " · " + l[2] + " · " + l[3]),
-          l[4] && h("div", {className:"meta", style:{color:"var(--violet)", fontWeight:700}}, l[4])),
-        h("button", {className:"btn btn-ghost btn-sm"}, "📊 Résultats"));
-    })));
+  return Console("pilotage", "pilot", h(F, null, carte, modale), false);
 }
 
 function PilotEstimation(){
@@ -526,8 +508,8 @@ function etatCorrection(qi, revele, nonDit){
   return function(p){
     var r = calc(p), s = r.st[qi], flag = null;
     r.flags.forEach(function(f){ if(f.q === qi) flag = f.txt; });
-    if(!revele) return (nonDit.indexOf(p) >= 0) ? {cls:"m-pasdit", st:"⏳ pas encore recopié"} : {cls:"m-dit", st:"✍️ a recopié"};
-    if(s === "pasdit") return {cls:"m-pasdit", st:"rien recopié", flag:"pas de recopie"};
+    if(!revele) return (nonDit.indexOf(p) >= 0) ? {cls:"m-pasdit", st:"⏳ pas encore cliqué"} : {cls:"m-dit", st:"✍️ a cliqué"};
+    if(s === "pasdit") return {cls:"m-pasdit", st:"rien dit", flag:"pas de saisie"};
     if(s === "j") return {cls:"m-juste", st:"✓ 1 pt", flag:flag};
     if(s === "t") return {cls:"m-trouvee", st:"＋ Trouvée", flag:flag};
     return {cls:"m-faux", st:"✗ 0", flag:flag};
@@ -548,7 +530,7 @@ function PilotCorrection(qi, revele){
   var nbF = res.filter(function(s){ return s === "j"; }).length, nbT = res.filter(function(s){ return s === "t"; }).length;
   var lire = revele ? aLire(pos) : aLire(pos - 1);
   return Console("pilotage", "pilot", h("div", {className:"card"},
-    TitreCarte(h(F, null, "📝 Correction — " + EV.titre + " — " + CLASSE, InfoI("Pour chaque question, les élèves recopient d'abord leur feuille : un clic sur ce qu'elle dit. « 💡 Révéler » s'ouvre quand tous les présents l'ont fait. Tu commentes la question après la révélation, jamais avant : sinon, ils cliqueraient ce que tu dis. Les questions sont triées de la plus ratée à la mieux réussie.", !revele && qi === 1)),
+    TitreCarte(h(F, null, "📝 Correction — " + EV.titre + " — " + CLASSE, InfoI("Pour chaque question, les élèves cliquent d'abord sur ce que dit leur feuille. « 💡 Révéler » s'ouvre quand tous les présents l'ont fait. Tu commentes la question après la révélation, jamais avant : sinon, ils cliqueraient ce que tu dis. Les questions sont triées de la plus ratée à la mieux réussie.", !revele && qi === 1)),
       [h("button", {key:0, className:"btn btn-ghost btn-sm"}, "🚫 Départ d'un élève"), h("button", {key:1, className:"btn btn-rouge btn-sm"}, "🛑 Terminer la session")]),
     h("div", {className:"pilot-status correction"}, "Question " + (pos+1) + " / 3 — Q" + (qi+1)),
     h("div", {className:"corr-grid"},
@@ -559,7 +541,7 @@ function PilotCorrection(qi, revele){
           h("div", {className:"pilot-q-bonne"}, h("span", {style:{fontWeight:900}}, "✓ Bonne" + (q.bonnes.length > 1 ? "s" : "") + " réponse" + (q.bonnes.length > 1 ? "s" : "") + " : "), q.bonnes.map(function(i){ return q.choix[i]; }).join("  /  ")),
           h("div", {className:"niv-row"}, h("span", {className:"niv-bulle"}, "Difficulté : " + NIV[q.niveau].label), h("span", {className:"niv-bulle"}, tabJ + " / 24 justes sur la tablette (" + Math.round(tabJ * 100 / 24) + "%)"))),
         !revele && h("div", {className:"pilot-chrono-card actif saisie-carte"},
-          h("div", {className:"label actif"}, "✍️ Temps pour recopier sa feuille"),
+          h("div", {className:"label actif"}, "✍️ Temps pour cliquer sa feuille"),
           h("div", {className:"v"}, "7s"),
           h("div", {className:"desc"}, "sur " + q.reponse + " s, le temps de réponse de la question · orange à la moitié, rouge les 5 dernières secondes")),
         h("div", {className:"row", style:{marginTop:".8rem"}},
@@ -567,17 +549,17 @@ function PilotCorrection(qi, revele){
           h("button", {className:"btn " + (revele ? "btn-ghost" : "btn-or ferme"), disabled:!revele ? true : false}, revele ? "💡 Révélée" : "🔒 Révéler"),
           h("button", {className:"btn btn-primary"}, "Question suivante →")),
         !revele && h("div", {className:"manquent"},
-          h("div", {className:"tt"}, "« 💡 Révéler » s'ouvre quand les 24 présents ont recopié leur feuille. Il en manque " + nonDit.length + " :"),
+          h("div", {className:"tt"}, "« 💡 Révéler » s'ouvre quand les 24 présents ont cliqué. Il en manque " + nonDit.length + " :"),
           h("div", {className:"noms"}, nonDit.map(function(p){ return nomDe(p); }).join(" · ")),
           h("div", {className:"ss"}, "Une tablette en panne : « 🚫 Départ d'un élève », en haut ; il ne bloque plus, ses questions sortent du total et tu fixes sa note d'après sa feuille.")),
         lire.length > 0 && h("div", {className:"alire"}, h("div", {className:"tt"}, "📌 À lire sur les feuilles, ce soir (" + lire.length + ")"),
           lire.map(function(x, i){ return h("div", {key:i}, nomDe(x.p) + " — Q" + (x.q+1) + " : " + x.txt); }))),
       h("div", {className:"suivi-box"},
-        h("h3", null, revele ? "✍️ Leur feuille, d'après leur recopie" : "✍️ La recopie de leur feuille", InfoI()),
-        h("div", {className:"ss"}, revele ? ("Feuilles justes : " + nbF + " / 24 · Trouvées au dernier moment : " + nbT) : (nbDit + " / 24 ont recopié leur feuille — " + (24 - nbDit) + " pas encore")),
+        h("h3", null, revele ? "✍️ Leur feuille, d'après ce qu'ils ont dit" : "✍️ Qu'ont-ils écrit sur leur feuille ?", InfoI()),
+        h("div", {className:"ss"}, revele ? ("Feuilles justes : " + nbF + " / 24 · Trouvées au dernier moment : " + nbT) : (nbDit + " / 24 ont cliqué sur ce que dit leur feuille — " + (24 - nbDit) + " pas encore")),
         GrilleTablettes(PAIRES, etatCorrection(qi, revele, nonDit)),
         Legende(revele ? [["#22C55E","juste d'après la feuille"],["#EF4444","faux d'après la feuille"],["#16A34A","＋ Trouvée au dernier moment"],["#FFEDD5","à lire sur la feuille","1px solid #FDBA74"]]
-                       : [["#EDE9FE","a recopié"],["#FEE2E2","pas encore recopié","1px solid #EF4444"]])))), true);
+                       : [["#EDE9FE","a cliqué"],["#FEE2E2","pas encore cliqué","1px solid #EF4444"]])))), true);
 }
 
 function tauxQ(qi){ var ok = 0, n = 0; Object.keys(RF).forEach(function(p){ var x = calc(p).pts[qi]; if(x != null){ n++; ok += x; } }); return Math.round(ok * 100 / n); }
@@ -658,7 +640,7 @@ function Resultats(fiche, modale, sansTableau){
     h("div", {style:{display:"flex", justifyContent:"space-between", alignItems:"center", flexWrap:"wrap"}},
       h("h3", null, "👤 DUVERNAY Michel — 1 / 3 · 6,7 / 20 · 🟠 Maîtrise fragile", InfoI()),
       h("button", {className:"btn btn-ghost btn-sm"}, "✕ Fermer")),
-    h("div", {className:"fiche-head"}, h("span", null, ""), h("span", null, "Question"), h("span", null, "Sa feuille (recopiée)"), h("span", null, "Sa tablette"), h("span", null, "Bonne réponse"), h("span", null, "Points"), h("span", null, "")),
+    h("div", {className:"fiche-head"}, h("span", null, ""), h("span", null, "Question"), h("span", null, "Sa feuille (dite)"), h("span", null, "Sa tablette"), h("span", null, "Bonne réponse"), h("span", null, "Points"), h("span", null, "")),
     EV.questions.map(function(q, qi){
       var f = FEUI.M[qi], t = TABL.M[qi], s = r.st[qi], fl = r.flags.filter(function(x){ return x.q === qi; })[0];
       function txt(a){ return a === "aucun" ? "aucun de ces choix" : a.map(function(i){ return q.choix[i]; }).join(", "); }
@@ -678,10 +660,10 @@ function Resultats(fiche, modale, sansTableau){
   var mod = modale && h("div", {className:"checkin-overlay"},
     h("div", {className:"checkin-modal", style:{maxWidth:"460px"}},
       h("div", {className:"checkin-header"}, h("h3", null, "Que dit la feuille ?"), h("div", {className:"checkin-sub"}, "DUVERNAY Michel — Q3 · " + EV.questions[2].enonce)),
-      h("div", {style:{padding:".6rem 1.2rem 0", fontSize:".85rem", color:"var(--gris)"}}, "Michel a recopié « Ma feuille ne dit aucun de ces choix ». Clique sur ce que dit sa feuille."),
+      h("div", {style:{padding:".6rem 1.2rem 0", fontSize:".85rem", color:"var(--gris)"}}, "Michel a cliqué sur « Ma feuille ne dit aucun de ces choix ». Clique sur ce que dit sa feuille."),
       h("div", {className:"qdf-choix"},
         EV.questions[2].choix.map(function(c, i){ return h("div", {key:i, className:"qdf-c"}, h("span", null, c), h("span", {className:"tg"}, EV.questions[2].bonnes.indexOf(i) >= 0 ? "bonne réponse" : "")); }),
-        h("div", {className:"qdf-c aucun sel"}, h("span", null, "Aucun des choix"), h("span", {className:"tg"}, "sa recopie"))),
+        h("div", {className:"qdf-c aucun sel"}, h("span", null, "Aucun des choix"), h("span", {className:"tg"}, "ce qu'il a dit"))),
       h("div", {className:"checkin-actions"}, h("button", {className:"btn btn-ghost"}, "Annuler"), h("button", {className:"btn btn-primary"}, "Valider"))));
   return Console("donnees", "results", h(F, null, h("div", {className:"card"},
     TitreCarte("📊 " + EV.titre + " — " + CLASSE, [
@@ -766,4 +748,14 @@ var SCENES = [
   // Annexe (364)
   {id:"t-annexe", vue:"tablette", render:function(){ return Tablette(EcrReponse(J, 2, [0, 1, 2, 3, 4, 5], [1, 2, 4], 18, EV3E), Voile(J, false)); }}
 ];
-/* la liste des scènes et le rendu sont à la fin de maquette2.js (tour 603) */
+window.LISTE_SCENES = SCENES.map(function(s){ return {id:s.id, vue:s.vue}; });
+
+function lireScene(){ var m = /scene=([^&]+)/.exec(location.hash || ""); return m ? m[1] : SCENES[0].id; }
+function rendre(){
+  var id = lireScene(), sc = SCENES.filter(function(s){ return s.id === id; })[0] || SCENES[0];
+  document.body.className = "vue-" + sc.vue;
+  ReactDOM.render(sc.render(), document.getElementById("root"));
+  window.SCENE_PRETE = id;
+}
+window.addEventListener("hashchange", rendre);
+rendre();

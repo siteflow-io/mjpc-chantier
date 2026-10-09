@@ -18610,3 +18610,41 @@ Réponse mot pour mot, avec le fichier signes-453.png :
 483. **Le reste est acquis** : 454, 455, 457, 458, 462 à 465, 467, 469 à 472. Quand tu auras répondu à 473, 477 et 482, je refais la maquette en une fois.
 
 09/10/2026 13:11 MEMO
+
+---
+
+## TOUR 609 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (09/10, 13:21) 473. Le v orange. 474. La motivation, à mettre dans l'attestation de la correction : tu auras ta note à la fin de la correction. Plus tu corriges bien, et plus la note que tu verras à la fin correspondra à la réalité. Si tu corriges mal, attends toi à un résultat qui pourra être très différent, et tes compétences d'autonomie ne seront pas validées. " À reformuler. Comme ça on cadre l'élève par la coercition et la motivation. La triche ou le par dessus la jambe devient vraiment une stragegie perdante. 475. C'est un vrai problème. Il faut trouver une solution, parce qu'un élève stressé ou scrupuleux peut très bien cliquer ce qu'il avait cliqué au dernier moment, à chaque fois, en ignorant totalement sa copie. Griser les choix? Je ne sais pas...477. oui, parce que sinon on nest pas dans du trouvé au dernier moment, si? 468. Oui elle est évaluée quand on fait la correction, parce que dans le cas du papier unique, il faut que la correction soit mise après la recopie ( vu que c'est moi qui aie fait la recopie). Ainsi, on passe par reprendre la session et on fait la correction sur l'ensemble des questions, toutes les corrections à la suite. Ça marche comme flux?
+
+---
+
+## TOUR 609 — Claude (conscience n°12)
+
+Relus dans CADRAGE-QCM.md : 360, 393, 394, 439, 451, 453, 480. Rien mesuré de neuf. Maquette non modifiée. CADRAGE-QCM.md complété (tour 609, ligne d'état). Rien écrit au hub, ni en production.
+
+Réponse mot pour mot :
+
+484. **473 : le ✓ orange.** Côté élève, il remplace partout le signe de « Trouvée au dernier moment » : dans le compteur (« ✅ ✓ ❌ », le ✓ en orange), sur le bandeau orange à liseré rouge (439) et dans le bilan. Ta console et ton téléphone gardent « ⛔ Dernier moment ».
+
+485. **474 : ta motivation, reformulée et fondue dans la seconde attestation (451 et 480).** « Maintenant, la correction. Pour chaque question, avant de voir la réponse, tu cliques sur le ou les choix qui disent la même chose que ta feuille. C'est toi qui fais le rapprochement, avec soin. » ; « Tu verras ta note à la fin de la correction. Plus tu corriges avec soin, plus cette note sera proche de ta note définitive. Si tu corriges mal, attends-toi à une note définitive très différente. » ; « Pendant la correction, deux compétences sont évaluées : « Être autonome et responsable » et « S'impliquer dans les activités en classe et dans son travail personnel ». Pour les atteindre, tu dois garder ton point d'autonomie : ta feuille et tes clics sont comparés, question par question. S'ils ne disent pas la même chose, ces deux compétences ne sont pas atteintes. » ; « Si tu sais ton cours et que tu es sûr de toi, ta feuille dira toujours la même chose que l'un des choix : à toi de le retrouver, en autonomie. » (« sûre » pour une élève, d'après MJPC). Puis « J'ai lu et compris » et « Je commence la correction ».
+
+486. **475 : griser les choix ne marche pas.** Presque toujours, la feuille dit ce que l'élève a cliqué pendant la question. Si on grise ce clic à la correction, l'élève honnête ne peut plus cliquer ce que dit sa feuille. On bloquerait la majorité pour gêner quelques-uns.
+
+487. **Solution A : chacun fait le rapprochement pour la feuille de l'autre.** À la correction, Julien lit la feuille de Michel et clique, dans la moitié de Michel, ce qu'elle dit ; Michel fait de même pour Julien. Le voile garantit que Julien n'a jamais vu le clic de Michel : il ne peut que lire la feuille. Le réflexe disparaît, puisque personne ne clique pour lui-même. Coût : les feuilles s'échangent à la correction, il faut lire l'écriture de l'autre, deux amis peuvent s'entendre, et l'autonomie porte alors sur la feuille de l'autre. Cela change 360, 393, 394 et les deux attestations.
+
+488. **Solution B : l'élève le dit au moment où il clique.** Pendant la question, juste après son clic, sa moitié demande, ma proposition : « Ta feuille dit-elle la même chose que ton clic ? », avec « Oui » et « Non ». S'il clique « Non », il ne pourra pas, à la correction, valider exactement la même réponse que ce clic : il devra cliquer ce que dit sa feuille, ou « Ma feuille ne dit aucun de ces choix ». S'il clique « Oui », rien ne change, puisque sa feuille dit ce qu'il a cliqué. Coût : un clic de plus par question, dans le temps de réponse. Un « Oui » faux reste invisible pour l'app, mais ta lecture le voit alors comme un choix de l'élève, et plus comme un réflexe.
+
+489. **Mon avis : B.** L'élève stressé ou scrupuleux n'est pas malhonnête : au moment où il change d'avis, il le sait, et il le dit. B le protège ensuite de son propre réflexe. A protège mieux, mais coûte beaucoup plus et change le sens de l'autonomie. Dans les deux cas, le tirage de trois feuilles (459), si tu le retiens, reste le filet pour celui qui ment. Dis-moi A, B, ou autre chose.
+
+490. **477 : oui, tu as raison.** « Trouvée au dernier moment », c'est une feuille qui dit un choix faux, et une tablette qui trouve le bon au dernier moment. Une feuille vide, ou qui ne dit aucun des choix, n'a rien trouvé : sinon, une feuille vide et un clic au hasard gagneraient le point. Retenu : « Ma feuille ne dit aucun de ces choix » vaut toujours 0 ; seule ta lecture du soir peut le faire monter. La première attestation (393) le précise, ma proposition : « Une fois par évaluation, si ta feuille dit d'autres choix que la bonne réponse, mais que tu as cliqué sur exactement la bonne réponse, la question compte quand même : elle est « Trouvée au dernier moment ». »
+
+491. **468 : oui, le flux marche.** En classe, l'évaluation se fait sur papier seul ; tu ramasses les feuilles, et la séance se met en pause sans être finie. Le soir, tu remplis la grille d'après les feuilles : c'est ta recopie, et c'est elle qui fait la note. À l'heure suivante, tu rends les feuilles et tu cliques « ▶️ Reprendre » : les binômes reprennent les tablettes, font l'estimation, lisent la seconde attestation, puis la correction enchaîne toutes les questions, dans l'ordre des erreurs de ta grille. Pour chaque question, chaque moitié montre ce que ta grille a retenu de la feuille, puis la réponse quand tu révèles.
+
+492. **Ce qui change par rapport aux tablettes** : pas d'étape de rapprochement pour l'élève, donc « Révéler » tout de suite ; jamais « Trouvée au dernier moment », puisqu'il n'y a pas eu de clic pendant la question ; le point d'autonomie se retire seulement en direct, avec « ⛔ Retirer le point d'autonomie », puisqu'il n'y a pas de clics à comparer à la feuille. La seconde attestation a donc une variante papier. Ma question : pendant cette correction, l'élève corrige-t-il sa feuille au stylo, comme sur tablette (« Barre ta réponse en rouge et écris la bonne réponse en vert »), et c'est ce soin qui porte l'autonomie ? Si oui, je rédige la variante sur ce modèle.
+
+493. **La suite** : quand tu auras répondu à 489 et 492, je refais la maquette en une fois.
+
+09/10/2026 13:27 MEMO

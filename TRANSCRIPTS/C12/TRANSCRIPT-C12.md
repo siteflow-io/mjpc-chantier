@@ -18823,3 +18823,39 @@ Réponse mot pour mot, avec les quatre captures envoyées dans la conversation :
 531. **Les quatre captures refaites sont au sas** : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/MAQUETTE-QCM-FLUX/README.md (section « Tours 610 à 614 »). Quand elles te vont, je refais la maquette entière en une fois.
 
 09/10/2026 16:09 MEMO
+
+---
+
+## TOUR 615 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (09/10, 16:32) Il faut mettre "julien, tu penses que Michel a mal lu ta feuille pour une question: c'est laquelle ?" Et ensuite les questions. Puis, et c'est important, Julien se voit poser la question : quavais tu écrit sur ta feuille? Et à nouveau les choix de la question. Pour l'alerte console: les deux ne peuvent pas être vrais, regarde la feuille de untel. Et du coup, avec le rechoix de Julien, ça doit m'aider pour trancher. Que proposes tu?
+
+---
+
+## TOUR 615 — Claude (conscience n°12)
+
+Relus : 495, 497, 513, 514, 515, 526 à 530, les captures 610-6 à 610-9. Rien mesuré de neuf. Captures non refaites (Paul demande des propositions). CADRAGE-QCM.md complété (tour 615, ligne d'état). Rien écrit au hub, ni en production.
+
+Réponse mot pour mot :
+
+532. **Ta phrase, appliquée à la scène, où c'est Michel qui conteste** : après « ❌ », l'écran demande « Michel, tu penses que Julien a mal lu ta feuille pour une question : c'est laquelle ? », puis les trois questions. Pour « 🤔 » : « Michel, tu penses que Julien a peut-être mal lu ta feuille pour une question : c'est laquelle ? »
+
+533. **La question cliquée, les autres disparaissent, et l'écran demande « Qu'avais-tu écrit sur ta feuille ? »**, avec les choix de la question et « Ma feuille ne dit aucun de ces choix ». « Un désaccord, c'est sérieux… Il se vérifie sur ta feuille. » reste juste au-dessus. L'alerte part quand Michel a cliqué ce qu'il avait écrit : tu la reçois complète. Ma proposition : la même question pour « 🤔 », dont la réponse t'aide le soir.
+
+534. **La limite du rechoix** : Michel le fait après la révélation, il connaît la bonne réponse. Seul, il ne prouve rien. Il devient utile comparé à ce que Michel a dit pendant la question, avant de connaître la réponse.
+
+535. **L'alerte, ma proposition, dans cet ordre** : « Q1 · Quelle est la capitale de l'Italie ? — bonne réponse : Rome » ; « À la correction, Julien a lu Venise sur la feuille de Michel. » ; « Après la correction, Michel dit avoir écrit Rome. Il connaissait alors la bonne réponse. » ; puis ta phrase : « ⚠️ Les deux ne peuvent pas être vrais : regarde la feuille de Michel. »
+
+536. **Puis une ligne qui t'aide à trancher, que l'app écrit d'après ce que Michel a dit pendant la question.** S'il disait déjà la même chose : « 👉 Pendant la question, avant de connaître la réponse, Michel avait cliqué Venise et dit que sa feuille ne disait pas Venise : ça va dans son sens. » S'il disait le contraire : « 👉 … : ça va dans le sens de Julien. » S'il n'avait rien dit : « 👉 Michel n'avait rien dit pendant la question : seule sa feuille tranche. »
+
+537. **Et une ligne sur l'enjeu** : « Si Michel a raison, sa question 1 passe de 0 à 1 point. » Quand sa note baisserait, la ligne le dit : « Michel conteste contre son intérêt. » C'est un signe fort de bonne foi.
+
+538. **Les trois boutons profitent du rechoix.** « Donner raison à Michel » applique directement Rome : tu n'as plus à cliquer ce que dit sa feuille. « Donner raison à Julien » : rien ne change. Si la feuille dit encore autre chose : « 📌 Je relis ce soir la question 1 ».
+
+539. **Un cas à régler : Michel clique exactement ce que Julien avait lu.** Il n'y a alors plus de désaccord. Ma proposition : l'écran le lui dit tout de suite, « Tu as cliqué ce que Julien avait lu : vous êtes d'accord. », il revient aux trois choix, et l'alerte ne part pas.
+
+540. **La suite** : quand 532 à 539 te vont, je refais les captures 610-6 à 610-9, avec en plus l'écran « Qu'avais-tu écrit sur ta feuille ? ».
+
+09/10/2026 16:33 MEMO

@@ -18450,3 +18450,39 @@ Réponse mot pour mot :
 439. **Captures 31 et 32, ma proposition pour « Trouvée au dernier moment ».** Dans ta console et sur ton téléphone : « ⛔ Dernier moment », en orange, plus jamais en vert. Sur la tablette : le bandeau passe en orange, avec un liseré rouge ; le « + » reste vert dans son rond blanc, comme tu l'avais voulu au tour 588. Tu jugeras sur la capture.
 
 09/10/2026 07:39 MEMO
+
+---
+
+## TOUR 605 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (09/10, 10:28) Je ne fais des remarques que sur les points que je veux préciser. Considère ce que je ne commente pas comme acquis. 429. L'emoticone n'est pas parlant. Une croix rouge plutôt, toujours avec garde et un retour possible. 430. Oui option intéressante mais doit être fléchée comme telle. Sinon je ne peux pas différencier la raison pour laquelle j'avais écarté la question. 432. Non, tu as faux : le sexe est déclaré sur mjpc. 434. Il faut mettre ce que je dis toujours à l'oral : cette estimation sert à savoir si on se surévalue, sous évalue ou évalue correctement. 435. Non, rien qui mette en cause le prof. Et recopie ne va pas pour l'élève car il ne fait que cliquer. 437. Ce n'est pas une sanction, c'est une compétence non atteinte. Pour que l'élève soit prévenu, ça doit donc faire partie de la seconde attestation, celle de la correction. Et expliqué comme tel, jamais comme une sanction( et ne pas dire que ce n'est pas une sanction ). Du coup 438 à recadrer. On continuera les autres captures après.
+
+---
+
+## TOUR 605 — Claude (conscience n°12)
+
+Mesuré au hub, en lecture : /classes/{classe}/amenagements/{élève}/sexe et /classes/{classe}/profils/{élève}/sexe renseignés pour 30, 30, 25 et 30 élèves (4 HUGO, 4 TURING, 3 DYLAN BOB, 3 FRANKLIN ARETHA) ; le QCM les lit déjà (`surveillerClassesAvecSexes`, evaluation-qcm.html l. 2168-2174). Le point 432 était faux (seul l'ancien nœud qcm/eleveSexes avait été regardé). Maquette non modifiée : la relecture continue. CADRAGE-QCM.md complété (tour 605, ligne d'état). Rien écrit au hub, aucun code.
+
+Réponse mot pour mot :
+
+440. **Noté : ce que tu ne commentes pas est acquis.** Ce sont 427, 428, 431, 433, 436 (avec les mots corrigés en 446) et 439.
+
+441. **429 : une croix rouge.** Le bouton devient « ❌ Écarter », avec une confirmation, et « ↩️ Remettre » le défait.
+
+442. **430 : deux gestes, deux marques.** Avant qu'elle soit posée : « ❌ Écartée — pas posée ». Après : « ⚠️ Annulée — posée, puis annulée ». Les deux ont une confirmation et un retour. Les deux marques restent dans ta console et dans tes résultats, pour que tu voies toujours la raison. Dans le bilan de l'élève, une question annulée dit, si tu es d'accord : « Question 4 · annulée : elle ne compte pas. » Une question écartée n'y paraît pas, puisqu'elle n'a pas été posée.
+
+443. **432 : tu as raison, je me suis trompé.** Je n'avais regardé que l'ancien nœud du QCM. Mesuré au hub : le sexe est déclaré dans MJPC pour les 115 élèves de 4 HUGO, 4 TURING, 3 DYLAN BOB et 3 FRANKLIN ARETHA, et le QCM le lit déjà. Ta phrase reste donc telle quelle, avec « qu'il » ou « qu'elle ».
+
+444. **434, avec ta phrase de l'oral** : « Combien de bonnes réponses penses-tu avoir ? Clique sur ta réponse. Cette estimation sert à savoir si tu te surévalues, si tu te sous-évalues ou si tu t'évalues correctement. »
+
+445. **435, sans le professeur et sans « recopie »** : « Ce rapprochement, fais-le avec soin : c'est là que tu montres que tu es autonome et responsable. »
+
+446. **437 : compris, c'est une compétence non atteinte.** Dans ta console et sur ton téléphone, le bouton devient « 🔴 Autonomie non atteinte », et « ↩️ Atteinte » le défait. Pour la note, 165 reste vrai : seule l'évaluation de ces deux compétences entre dans l'app.
+
+447. **438 recadré : la seconde attestation, avant la correction.** « Maintenant, la correction. Pour chaque question, avant de voir la réponse, tu cliques sur le ou les choix qui disent la même chose que ta feuille. Pendant la correction, deux compétences sont évaluées : « Être autonome et responsable » et « S'impliquer dans les activités en classe et dans son travail personnel ». Tu les atteins si tu fais ce travail avec soin : tu cliques sur ce que dit ta feuille, et tu fais toi-même le rapprochement. Sinon, ces deux compétences ne sont pas atteintes. » Puis « J'ai lu et compris » et « Je commence la correction ».
+
+448. **La suite** : quand tu auras relu les captures 36 à 66, je refais la maquette d'un coup.
+
+09/10/2026 10:31 MEMO

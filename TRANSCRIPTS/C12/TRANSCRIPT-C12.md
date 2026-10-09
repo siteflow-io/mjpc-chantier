@@ -18570,3 +18570,43 @@ Réponse mot pour mot :
 472. **La suite** : tu as relu jusqu'à la capture 65. Quand tu auras répondu à 468 et aux propositions, je refais la maquette en une fois.
 
 09/10/2026 11:06 MEMO
+
+---
+
+## TOUR 608 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (09/10, 13:08) 453. Ça ne va pas le sablier. Propose plusieurs possibilités. 456. Oui, et ajouter : quelle que soit ta correction, c'est ce que tu as écrit lors de l'évaluation qui correspondra à ta note définitive. 459. Je croyais que ce cas ne se présentait plus? 460. Il y a un mélange, et je ne sais pas si c'est la bonne solution. 461. Alors il faudrait dire à l'élève que ce cas ne peut pas se présenter s'il sait son cours et qu'il est sûr de lui. Et rappeler l'autonomie. Et en fait, il faut que l'instance arrive à rédiger des questions et des réponses dont la formulation est la plus probable de celle qu'emploiera l'élève. De l'autre côté, on peut cadrer la formulation en disant à l'élève de respecter une certaine organisation par exemple de sa réponse, qui fait qu'il n'aura pas l'impression, à lautocorrection, de cliquer sur des choses qui n'ont aucun rapport avec le contenu de sa feuille. Tu vois l'idée ? À cadrer. 466. "Copier les erreurs pour l'instance de création d'éval". Le reste ok.
+
+---
+
+## TOUR 608 — Claude (conscience n°12)
+
+Relus dans CADRAGE-QCM.md : 186, 330, 332, 349, 360. Image des quatre signes faite sur le CSS de la maquette (scratchpad maquette/signes/), déposée au sas : MANDATS/MAQUETTE-QCM-FLUX/signes-453.png. Maquette non modifiée. CADRAGE-QCM.md complété (tour 608, ligne d'état). Rien écrit au hub, aucun code.
+
+Réponse mot pour mot, avec le fichier signes-453.png :
+
+473. **453 : quatre autres signes, montrés sur l'image jointe** (signes-453.png), chacun dans le compteur, sur le bandeau orange à liseré rouge (439) et dans le bilan. A, le trèfle 🍀 : c'est la « chance » de ton attestation (393, « on te laisse une chance »). B, la bouée 🛟 : rattrapé de justesse. C, le ✓ orange : comptée, mais la feuille n'était pas juste. D, le losange orange 🔶 : ni vert ni rouge. Dis-moi lequel, ou aucun.
+
+474. **456 : ajouté.** Le bilan dit : « Ta note provisoire : 2 / 3. Elle peut encore changer, jusqu'à ce que ta copie te soit rendue : ta feuille, tes clics pendant les questions et tes clics à la correction sont comparés. Quelle que soit ta correction, c'est ce que tu as écrit lors de l'évaluation qui correspondra à ta note définitive. »
+
+475. **459 : non, le cas se présente encore, autrement.** Avant (186), l'élève arrangeait sa saisie après avoir vu la correction. Avec la recopie avant la révélation (360), il ne sait plus ce qui est juste. Mais celui qui a écrit une chose et cliqué une autre pendant la question peut, à la recopie, cliquer encore ce qu'il avait cliqué sur la tablette au lieu de ce que dit sa feuille. Quand la tablette était juste, il gagne le point à chaque fois, au lieu d'une seule « Trouvée au dernier moment ». L'app ne le voit pas, puisque la recopie et la tablette disent la même chose : seule la lecture de la feuille le voit. Ce n'est jamais arrivé dans tes mesures (0 sur 52, 186). C'est pour ce cas que je propose le tirage de trois feuilles (459).
+
+476. **460 : je démêle, en deux moments séparés.** En classe, « Ma feuille ne dit aucun de ces choix » compte comme une feuille fausse, avec la règle de toutes les feuilles fausses (349) : 0, ou « Trouvée au dernier moment » si la tablette était entièrement juste et que c'est la première. Le soir, ta lecture ne sert qu'à une chose : si la feuille dit la bonne réponse avec d'autres mots, tu cliques dessus et la question compte juste ; sinon, tu confirmes et rien ne bouge. Quand ta lecture change une question, tout se recalcule, y compris la place de « Trouvée au dernier moment » (332).
+
+477. **L'autre solution, si tu préfères** : « aucun de ces choix » vaut toujours 0, sans jamais « Trouvée au dernier moment » ; seule ta lecture du soir peut le faire monter. Dis-moi laquelle, 476 ou 477.
+
+478. **461 : oui, je vois l'idée : que la feuille et les choix parlent la même langue. D'abord, le prompt.** Chaque choix est écrit comme l'élève l'écrirait, la bonne réponse avec les mots exacts du cours. Chaque énoncé dit la forme attendue de la réponse, par exemple « (le nom de la figure) » ou « (en un mot) », mais jamais le nombre de bonnes réponses, qui aiderait en tout ou rien.
+
+479. **Ensuite, la première attestation donne la règle d'écriture**, ma proposition : « Écris ta réponse avec les mots du cours, en quelques mots. S'il y a plusieurs réponses, écris-en une par ligne. Si on te demande une phrase, écris d'abord la réponse courte. » (330)
+
+480. **Enfin, la seconde attestation ajoute**, ma proposition : « Si tu sais ton cours et que tu es sûr de toi, ta feuille dira toujours la même chose que l'un des choix : à toi de le retrouver, en autonomie. »
+
+481. **466 : le bouton s'appelle « Copier les erreurs pour l'instance de création d'éval ».**
+
+482. **468, ma question reste ouverte** : sur papier, il n'y a pas de correction sur tablette : les deux compétences d'autonomie sont-elles évaluées ?
+
+483. **Le reste est acquis** : 454, 455, 457, 458, 462 à 465, 467, 469 à 472. Quand tu auras répondu à 473, 477 et 482, je refais la maquette en une fois.
+
+09/10/2026 13:11 MEMO

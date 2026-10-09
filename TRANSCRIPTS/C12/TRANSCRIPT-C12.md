@@ -18486,3 +18486,29 @@ Réponse mot pour mot :
 448. **La suite** : quand tu auras relu les captures 36 à 66, je refais la maquette d'un coup.
 
 09/10/2026 10:31 MEMO
+
+---
+
+## TOUR 606 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (09/10, 10:41) 435. Il faut une formulation plus coercitive, pour décourager toute triche (sans formuler tel quel, ni utiliser le mot triche). et la compétence doit être nommée, avec le fait de garder le point de ces compétences. 437. du côté de l'élève, la formulation doit être celle là. de mon coté, on garde ta précédente proposition, qui était? 438. ah bah voilà du coup ton message est le bon. un poil plus coercitif et c'est bon.
+
+---
+
+## TOUR 606 — Claude (conscience n°12)
+
+Relus : les points 436, 446 et 447 du tour précédent (CADRAGE-QCM.md). Textes reformulés, maquette non modifiée (la relecture continue). CADRAGE-QCM.md complété (tour 606, ligne d'état). Rien écrit au hub, aucun code.
+
+Réponse mot pour mot :
+
+449. **437, ta question : ma proposition précédente (436) était « ⛔ Retirer le point d'autonomie »,** avec une confirmation, et « ↩️ Rendre » pour l'annuler. On la garde pour ta console et ton téléphone. Côté élève, on parle de compétences atteintes ou non atteintes.
+
+450. **435, plus ferme, avec les compétences nommées.** Sous la consigne de chaque question : « Chaque clic doit dire la même chose que ta feuille : c'est la condition pour garder ton point d'autonomie, et atteindre « Être autonome et responsable » et « S'impliquer dans les activités en classe et dans son travail personnel ». »
+
+451. **447 (438 recadré), un poil plus coercitif.** « Maintenant, la correction. Pour chaque question, avant de voir la réponse, tu cliques sur le ou les choix qui disent la même chose que ta feuille. Pendant la correction, deux compétences sont évaluées : « Être autonome et responsable » et « S'impliquer dans les activités en classe et dans son travail personnel ». Pour les atteindre, tu dois garder ton point d'autonomie : chaque clic dit la même chose que ta feuille, et c'est toi qui fais le rapprochement, avec soin. Ta feuille et tes clics sont comparés, question par question : s'ils ne disent pas la même chose, ces deux compétences ne sont pas atteintes. » Puis « J'ai lu et compris » et « Je commence la correction ».
+
+452. **La suite** : les captures 36 à 66, quand tu veux.
+
+09/10/2026 10:43 MEMO

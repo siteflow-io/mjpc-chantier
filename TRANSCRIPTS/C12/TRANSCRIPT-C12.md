@@ -18963,3 +18963,31 @@ Réponse mot pour mot :
 565. **La suite** : quand 557 à 564 te vont, je refais la maquette entière en une fois, avec la démo et le mode test.
 
 09/10/2026 18:12 MEMO
+
+---
+
+## TOUR 619 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (09/10, 21:18) 559. Va regarder le mode test actuel.
+
+---
+
+## TOUR 619 — Claude (conscience n°12)
+
+Lu dans evaluation-qcm.html 7.7.1 : le mode test (l. 1020-1074, 4415-4925, 6026). Joué au banc sur le faux hub (banc_modetest.js) : ouverture, Q1 lancée, « Tous les élèves répondent », « Ouvrir le portail élève » ; aucune erreur de page ; 30 panneaux. Déposé au sas : AUDITS/QCM-MODE-TEST-09-10/ (README, captures, banc). Dette 211 ajoutée au registre (en-tête « 179 à 211 »). CADRAGE-QCM.md complété (tour 619, ligne d'état). Rien écrit au hub, ni en production.
+
+Réponse mot pour mot, avec trois captures envoyées dans la conversation :
+
+566. **J'ai regardé le mode test de la 7.7.1, en vrai, sur le faux hub, sans erreur de page.** Il a, en haut, « 📥 Exporter snapshot test », « 📱 QR pilotage » (ton téléphone le pilote) et « 🗑️ Sortir et purger » ; puis « 🔬 Éprouver les mécanismes livrés », cinq boutons qui appellent les vraies fonctions de l'app (clôturer, modifier l'éval après coup, vérifier que les notes n'ont pas bougé, faire expirer le chrono, relire l'état) ; puis « 🎓 Entrer comme un élève », qui ouvre le vrai portail élève (choix de la classe, puis code), avec les 30 codes de test ; puis ta vraie console de séance ; enfin 30 élèves fictifs, chacun dans son panneau cliquable, avec « 🎲 Tous les élèves répondent » au hasard. À la sortie, tout est effacé. Captures jointes.
+
+567. **Ce que ça corrige dans 559 et 561.** Il n'y a pas de tablettes : un panneau par élève, sans binôme. Et la classe de test a déjà 30 élèves, une vraie taille de classe : ma classe de 7 (561) est à retirer. L'élève seul se joue par l'appel : tu marques un absent, et son voisin est seul.
+
+568. **Ce qui manque pour jouer tout le cadrage, ma proposition, en partant de l'existant** : la séance passe par ta vraie console d'avant l'heure, avec l'appel et les binômes (470), au lieu de démarrer d'office ; les 30 panneaux se rangent en 15 tablettes à deux moitiés ; « Entrer comme un élève » passe par « Combien êtes-vous sur cette tablette ? » et le code du binôme ; l'évaluation est la démo par défaut, ou une autre de la liste, au lieu de « Évaluation TEST — Capitales », créée puis effacée à chaque fois ; chaque moitié reçoit la feuille simulée (560) ; « 🎲 Tous les élèves répondent » joue aussi les nouvelles étapes, le « Oui / Non », la lecture du voisin et la co-évaluation ; et « 🎬 Préparer un cas » (563) rejoint les outils 🔬. Tout le reste est gardé tel quel.
+
+569. **Un texte faux, au passage** : l'infobulle du bouton « 🧪 Mode test » annonce « 3 élèves simulés » et « les 3 panneaux élèves » ; il y en a 30 (l. 6026). Je l'ajoute au registre des dettes (211).
+
+570. **La suite** : les captures et le banc sont au sas, https://github.com/siteflow-io/mjpc-chantier/blob/main/AUDITS/QCM-MODE-TEST-09-10/README.md. Quand 566 à 569 te vont, je refais la maquette entière en une fois.
+
+09/10/2026 21:21 MEMO

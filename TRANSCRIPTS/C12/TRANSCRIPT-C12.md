@@ -19023,3 +19023,33 @@ Réponse mot pour mot, avec les trois captures envoyées dans la conversation :
 577. **La suite** : les captures sont au sas, https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/MAQUETTE-QCM-FLUX/README.md (section « Tour 620 »). Quand 571 à 576 te vont, je refais la maquette entière en une fois ; ces trois captures y remplacent la 64.
 
 10/10/2026 07:05 MEMO
+
+---
+
+## TOUR 621 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (10/10, 07:12) Ok. Je crois qu'on a fini le cadrage.
+
+---
+
+## TOUR 621 — Claude (conscience n°12)
+
+Relus dans CADRAGE-QCM.md : la ligne d'état des tours 600 à 620, et les points 62, 123, 310, 317, 318, 403, 459, 464, 478, 479, 489, 497. Rien mesuré de neuf. CADRAGE-QCM.md complété (tour 621, ligne d'état). Rien écrit au hub, ni en production.
+
+Réponse mot pour mot :
+
+578. **Pas tout à fait.** Le déroulé est entièrement cadré, et 571 à 576 sont acquis. Mais deux sujets restent ouverts, que tu avais mis toi-même pour la fin, et une question.
+
+579. **La question, 459, telle quelle** : « ta console tire au hasard trois feuilles par séance, à lire en plus des signalées. » Tu la retiens ? Avec A, B et la co-évaluation, c'est le seul filet quand deux élèves s'entendent pour mentir (497).
+
+580. **Premier sujet : la forme du PDF « notes et compétences » (318).** Tu m'as dit qu'il est à créer, sans modèle existant (310). Je te la propose au prochain tour.
+
+581. **Second sujet : le prompt de l'instance qui crée les évaluations (62, 123)**, qui s'écrit en dernier, avec toi : les compétences du chapitre (317), la règle d'écriture (478, 479), la garde de longueur (464), avec des limites que je mesure sur la maquette.
+
+582. **Ensuite** : la maquette entière en une fois, avec le PDF et le mode test, que tu valides sur captures ; puis le mandat, avec les dettes 179 à 211.
+
+583. **Un blocage hors cadrage** : les dettes 179 à 211 ne sont toujours pas dans le registre de la production, dont l'écriture m'est refusée depuis le 08/10. Avant le mandat, il me faudra un jeton de production qui écrive.
+
+10/10/2026 07:13 MEMO

@@ -19491,3 +19491,33 @@ Réponse mot pour mot :
 673. **La phrase à coller ne change pas** (668).
 
 10/10/2026 10:12 MEMO
+
+---
+
+## TOUR 636 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (10/10, 10:16) j'attends le message du coup pour l'exécutant claude code. d'ailleurs, il tavaille sur mjpc chantier on est d'accord? et on est sûr que ça ne télescope pas le travail fait par le claude code qui s'occupe de déroulé mjpc?
+
+---
+
+## TOUR 636 — Claude (conscience n°12)
+
+Mesuré : `git fetch --all` au sas et en production, une seule branche (`main`) de chaque côté ; derniers dépôts du déroulé au sas le 07/10 ; gabarit du déroulé (`MANDATS/PROMPT-EXECUTANT-CLOUD-DEROULE.md`) : branches `deroule/Ln` ; `DEROULE/CADRAGE-3-LES-NOTIONS.md`, point 5.1 : l'éditeur de taxonomie du panneau prof.
+
+Réponse mot pour mot :
+
+674. **Le message pour l'exécutant**, à coller dans une nouvelle session cloud de claude.ai/code, ouverte sur le dépôt siteflow-io/mjpc-chantier :
+
+```
+Tu es l'exécutant du mandat « Maquette complète du QCM » de MJPC. Lis en entier MANDATS/MANDAT-MAQUETTE-QCM-COMPLETE.md dans ce dépôt, applique-le à la lettre, et fais tout le mandat d'une traite, sans t'arrêter avant la fin de l'étape 5.
+```
+
+675. **Oui, il travaille sur mjpc-chantier**, le sas, et seulement là : sur sa propre branche, « maquette-qcm », dans son propre dossier, MANDATS/MAQUETTE-QCM-COMPLETE. Il ne touche ni à la branche principale du sas, ni à la production, qu'il lit seulement.
+
+676. **Pas de télescope avec le déroulé : mesuré au sas à 10:17.** Il n'y a aucune branche du déroulé, et aucun dépôt du déroulé depuis le 07/10. Son gabarit lui donne des branches « deroule/… » : les deux exécutants n'écrivent jamais au même endroit. Les deux lisent l'index.html de la production, mais sans l'écrire. Si un exécutant du déroulé tourne en ce moment sans avoir encore rien poussé, je ne peux pas le voir.
+
+677. **Le télescope existe plus tard, au code, et je te le signale dès maintenant.** Le QCM mettra deux choses dans l'index.html de MJPC : les exclusions sur la fiche de la classe, et le libellé élève des compétences dans l'éditeur de taxonomie. Or le déroulé passe aussi par cet éditeur, pour ses notions (son cadrage 3, point 5.1). Ma proposition : au mandat de code, cette partie de MJPC part de l'index.html tel qu'il sera après la promotion du déroulé, et pas avant.
+
+10/10/2026 10:17 MEMO

@@ -1,0 +1,8 @@
+7 lignes
+b-reponse | 👥 Classe (25)
+b-recopie | 👥 Classe (25)
+b-correction | 👥 Classe (25)
+c-reglages | Le prompt du cadrage (tour 630). Il ne devine jamais un temps : il te demande chaque temps, te dit « ça ne rentre pas », et ne produit le JSON qu'à ton « produis le JSON ».
+c-reglages | Les tranches s'écrivent « de 5 à moins de 6 » : aucune note ne tombe entre deux (340).
+c-reglages-prompt | Le prompt du cadrage (tour 630). Il ne devine jamais un temps : il te demande chaque temps, te dit « ça ne rentre pas », et ne produit le JSON qu'à ton « produis le JSON ».
+c-reglages-prompt | Les tranches s'écrivent « de 5 à moins de 6 » : aucune note ne tombe entre deux (340).

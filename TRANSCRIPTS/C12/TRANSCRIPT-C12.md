@@ -19547,3 +19547,82 @@ Tu es l'exécutant du mandat « Maquette complète du QCM » de MJPC. Lis en ent
 679. **Quand il a fini**, dis-le-moi : je fais l'audit final de sa branche « maquette-qcm ».
 
 10/10/2026 10:19 MEMO
+
+---
+
+## TOUR 638 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (10/10, 13:21) Fini
+
+---
+
+## TOUR 638 — Claude (conscience n°12)
+
+Audit de la branche `maquette-qcm` (commit `50b1efee`) : md5 de la maquette vérifié ; banc de l'exécutant rejoué (15 712 vérifications, 0 échec) ; textes visibles et infobulles des 159 scènes relevés dans Chromium ; écrans de MJPC comparés à `index.html` (l. 5518, 5522, 5529, 2605) et au hub ; mesures relues ; dix captures regardées. Découvert en relisant les références distantes : les branches `deroule/p8-*` du sas, que la copie locale ne suivait pas. Rapport au sas.
+
+Réponse mot pour mot :
+
+680. **Audit final fait : la livraison ne va pas encore.** Le travail est sérieux : 159 écrans dans l'ordre de la séance, 35 défauts trouvés et corrigés par l'exécutant lui-même. Son banc, que j'ai rejoué moi-même, passe : 15 712 vérifications, zéro échec. Mais j'ai trouvé quatre défauts que son banc ne voit pas ; tant qu'ils y sont, je ne te la donne pas à valider.
+
+681. **Défaut 1, le plus grave : les deux écrans de MJPC ne partent pas de l'existant.** « Élèves & codes » a perdu la zone d'import, « + Importer / compléter », et sur chaque élève ↻ (régénérer le code) et ✕ (retirer) ; un clic sur un nom n'ouvre plus sa fiche, là où sont ses aménagements. « Taxonomie » a perdu l'arbre des notions et « Ouvrir l'éditeur », et affiche des chiffres inventés, « Version 3.2 · 5 domaines · 142 notions », alors que le hub dit version 1.4.0, 7 domaines, 210 notions. Les autres entrées du menu ont l'air cliquables et ne font rien.
+
+682. **Défaut 2 : des renvois au cadrage à l'écran de ta console.** « Le prompt du cadrage (tour 630) » et « (340) » dans Réglages ; dans les infobulles, « réécrit d'après le cadrage » sur « 📖 Mode d'emploi », à chaque écran de console, et « Remet le prompt du cadrage (tour 630) ».
+
+683. **Défaut 3 : les limites de longueur pour le prompt se contredisent.** Mesurées ainsi, 5 choix tiendraient moins de texte que 6 (410 caractères contre 480), parce que la mesure à 5 choix garde le choix le plus long de ta question 3. L'instance recevrait une règle absurde.
+
+684. **Défaut 4 : une phrase d'élève de l'app d'aujourd'hui a été retirée sans cadrage** : « 👀 Écoute le prof — la correction sera révélée. » L'exécutant a cru qu'elle allait contre ta règle sur le professeur. Elle n'y va pas, puisque ta règle vise « va voir ton professeur » : elle revient.
+
+685. **Ma proposition : un complément sur la même branche, fait d'une traite comme le mandat.** Il corrige les quatre défauts, et ajoute au banc les gardes qui les auraient vus : pour chaque écran qui existe déjà en production, la liste de ses boutons et de ses champs, relevée dans le vrai écran, et le banc refuse un écran qui en perd un ; aucun numéro de point ni « cadrage » dans un texte ou une infobulle ; un chiffre affiché qui vient de la vraie donnée ; des limites qui ne se contredisent pas. Je l'écris à ton mot, avec la phrase à coller.
+
+686. **Une tension de cadrage, la mienne, vue pendant l'audit.** Dans le bilan de Michel, le bloc « 🎯 Ton estimation » dit « Tu as un peu surestimé », pendant que son bilan général dit « nettement surestimé » : le bloc a gardé la phrase de l'app d'aujourd'hui. Ma proposition : le bloc suit la même règle que le bilan général, « nettement » quand l'écart est de deux niveaux ou plus.
+
+687. **Une correction sur mon point 676.** Il existe au sas huit branches du déroulé (deroule/p8-1 à p8-5), la dernière du 07/10 à 13:36 : ma copie ne suivait que la branche principale, et je ne les avais pas vues. Rien ne change sur le fond : elles sont à part, et j'ai vérifié que l'exécutant de la maquette n'a écrit que dans son propre dossier.
+
+688. **Le rapport d'audit est au sas** : https://github.com/siteflow-io/mjpc-chantier/blob/main/AUDITS/MAQUETTE-QCM-COMPLETE-10-10/README.md
+
+10/10/2026 13:36 MEMO
+
+---
+
+## TOUR 639 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (10/10, 13:44) Ok fais le mandat qui règle tout. Puis dis moi quand je relance l'exécutant
+
+---
+
+## TOUR 639 — Claude (conscience n°12)
+
+Relu le rapport d'audit et le mandat d'origine ; relu dans la production (md5 inchangés, `main` à `d873f69`) la section « Élèves & codes » (l. 5505 à 5532), la fiche de l'élève (l. 5917), le menu du panneau prof (l. 1627 à 1646), la Taxonomie (l. 2084, 2484 à 2605), et `taxonomie_atelier.json` (1.4.0, 2026-08-02, 7 domaines, 51 familles, 210 notions, 28 compétences) ; relu dans la 7.7.1 la place de « 👀 Écoute le prof… » (l. 4362) et les infobulles du mode d'emploi (l. 6016) et du prompt (l. 6491 à 6499). Relevé neuf des 159 scènes de la v5, cadres compris : l'écran du PDF (`x632-pdf`) montre l'encadré de validation et 121 soulignés orange, cinquième défaut, manqué à l'audit. Écrit `MANDATS/COMPLEMENT-MAQUETTE-QCM-COMPLETE-1.md` ; ajouté au rapport d'audit la section du cinquième défaut.
+
+Réponse mot pour mot :
+
+689. **Le complément est au sas** : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/COMPLEMENT-MAQUETTE-QCM-COMPLETE-1.md. Il se fait d'une traite, sur la même branche « maquette-qcm », et livre une maquette v6.
+
+690. **Ce qu'il règle.** Il règle les quatre défauts de l'audit (681 à 684) et la tension 686 : je la prends pour acquise, puisque tu dis « tout ». Le bloc « 🎯 Ton estimation » dira donc « nettement » comme le bilan général, quand l'écart est de deux niveaux ou plus. Le banc reçoit cinq gardes de plus : l'existant, le méta, les chiffres, les limites et l'estimation.
+
+691. **Ta règle sur le professeur, telle que je l'écris pour l'exécutant.** Elle vise « va voir ton professeur » et ce qui te met en cause, pas le mot « prof ». « 👀 Écoute le prof — la correction sera révélée. » revient donc là où l'app d'aujourd'hui la montre. Le banc n'interdit plus que « va voir ».
+
+692. **Un cinquième défaut, trouvé en écrivant le complément, et c'est le mien.** L'écran du PDF « notes et compétences » montre encore mes marques de validation du tour 632 : l'encadré « Exemple de la maquette… » et 121 soulignés orange. C'est arrivé parce que mon mandat disait de reprendre mon PDF « mot pour mot ». Mon audit ne l'a pas vu, parce que mon relevé ne lisait pas l'intérieur de ce cadre. Le complément les retire, et sa garde du méta lit aussi l'intérieur des cadres. Le rapport d'audit est corrigé.
+
+693. **Trois choix faits pour que l'exécutant n'ait rien à décider.**
+- « 🚫 Jamais avec… » se place dans la vraie ligne de l'élève, juste après le ◆ de ses aménagements (585), et la ligne garde tout le reste.
+- Les 12 autres entrées du menu de MJPC sont grisées, avec l'infobulle « Inchangé : cet écran reste celui d'aujourd'hui. ».
+- Les limites se mesurent avec tous les choix à la même longueur, comme ton prompt l'exige déjà. Ta question 3 tient, mais pourrait dépasser cette limite prudente : le README le dira, chiffres à l'appui.
+
+694. **Une garde de plus sur les gardes.** Avant de corriger, l'exécutant joue chaque nouvelle garde sur la v5, et elle doit y trouver le défaut connu. Sinon, il la refait.
+
+695. **Tu peux relancer l'exécutant maintenant.** Le mieux est dans la même session que la première fois, si elle est encore ouverte : il connaît déjà sa maquette, et ça te coûte moins de crédits. Sinon, ouvre une nouvelle session cloud sur siteflow-io/mjpc-chantier. Le message à coller est le même dans les deux cas :
+
+```
+Tu es l'exécutant du complément 1 de la maquette complète du QCM de MJPC. Lis en entier MANDATS/COMPLEMENT-MAQUETTE-QCM-COMPLETE-1.md sur la branche main de ce dépôt, applique-le à la lettre, et fais tout le complément d'une traite sur la branche maquette-qcm, sans t'arrêter avant la fin de l'étape D.
+```
+
+Je ne sais pas combien de temps il prendra. Le premier passage a pris trois heures, et celui-ci est plus court.
+
+696. **Quand il a fini, dis-le-moi** : je fais l'audit final du complément.
+
+10/10/2026 14:00 MEMO

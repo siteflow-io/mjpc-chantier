@@ -23,23 +23,32 @@ function retraits(){
   return fs.existsSync(f) ? JSON.parse(lire(f)).retraits : [];
 }
 // Chaque retrait cite le cadrage mot pour mot : la citation doit s'y trouver telle quelle, et le point cité doit la contenir.
+const CADRAGE_LIGNES = lire(path.join(SAS, "MANDATS", "CADRAGE-QCM.md")).split("\n");
 function verifierRetraits(verif){
   const R = retraits();
   for(const r of R){
     const cit = C.normEsp(r.citation || "");
     verif(cit.length >= 12 && CADRAGE.includes(cit), "garde 1. retrait « " + r.element + " » (" + r.ecran + ") : la citation est dans CADRAGE-QCM.md, mot pour mot", "« " + cit.slice(0, 90) + " »");
-    const re = new RegExp("(^|\\s)" + r.point + "\\. ");
-    const debut = CADRAGE.search(re);
-    const suite = debut >= 0 ? CADRAGE.slice(debut + 1).search(/\s\d{2,3}\. \*\*/) : -1;
-    const texte = debut >= 0 ? CADRAGE.slice(debut, suite > 0 ? debut + 1 + suite : undefined) : "";
-    verif(debut >= 0 && texte.includes(cit), "garde 1. retrait « " + r.element + " » : la citation est bien du point " + r.point);
+    // le point cité : une ligne du cadrage qui commence par « N. » et contient la citation (un point redonné plus loin compte aussi)
+    const ok = CADRAGE_LIGNES.some(l => l.startsWith(r.point + ". ") && C.normEsp(l).includes(cit));
+    verif(ok, "garde 1. retrait « " + r.element + " » : la citation est bien du point " + r.point);
   }
   return R.length;
 }
 const nrm = s => C.norm(String(s || ""));
+// Les formes que la 7.7.1 calcule d'après les données de la séance : comparées à leur forme, pas à leurs valeurs.
+//  - les fourchettes (l. 3965–3966) : « Entre a et b bonnes réponses sur n », ou « a bonne réponse sur n » quand a = b ;
+//  - le singulier ou le pluriel selon le compte (« 1 question déjà corrigée », « 2 questions déjà corrigées », l. 4338–4341) ;
+//  - le niveau d'une question (Facile, Standard, Approfondi, Expert) et sa couleur (🔴 🟠 🔵 🟢) ;
+//  - les noms des élèves, les nombres et les libellés (déjà mis à part par controles.norm).
+const NIVEAUX_Q = /(?<![\p{L}])(Facile|Standard|Approfondi|Expert|FACILE|STANDARD|APPROFONDI|EXPERT)(?![\p{L}])/gu;
+function forme(s){
+  return nrm(s).replace(NIVEAUX_Q, "‹niveau›").replace(/[🔴🟠🔵🟢]/gu, "◍").replace(/[Ee]ntre # et #/g, "#").replace(/\(s\)/g, "")
+    .replace(/(?<=\p{L}{2})[sx](?![\p{L}])/gu, "").replace(/\s+/g, " ").trim();
+}
 // Une phrase de la 7.7.1 qui n'est qu'une donnée de la séance jouée (le titre de l'évaluation du faux hub, un nom, un nombre) n'est pas comparée.
 function phraseComparable(p){
-  if(/jambon|Le jambon-beurre/i.test(p) || DONNEES_HUB.has(C.normEsp(p))) return false;
+  if(/jambon|Le jambon-beurre/i.test(p) || donnee(p)) return false;
   const t = nrm(p).replace(/[§#¤ɸ]/g, "");
   return (t.match(/\p{L}/gu) || []).length >= 3;
 }
@@ -48,28 +57,30 @@ const DONNEES_HUB = (() => { const o = new Set(); const f = path.join(__dirname,
   if(fs.existsSync(f)){ const E = JSON.parse(lire(f)); for(const k in E){ const e = E[k]; if(e.titre) o.add(C.normEsp(e.titre)); (e.questions || []).forEach(q => { o.add(C.normEsp(q.enonce || "")); (q.choix || []).forEach(c => o.add(C.normEsp(c))); if(q.explication) o.add(C.normEsp(q.explication)); }); } }
   return o; })();
 // Un bouton ou une infobulle qui n'est qu'une donnée : un nom d'élève (« AUDEBERT Élise »), un mot seul tiré de l'évaluation (« Rome »)
-const NOM_PRENOM = /^[A-ZÀ-ÖØ-Ý][A-ZÀ-ÖØ-Ý'’ -]+ [A-ZÀ-ÖØ-Ý][a-zà-öø-ÿ-]+$/;
-function donnee(x){ const t = nrm(x).replace(/[§#¤ɸ]/g, ""); return DONNEES_HUB.has(C.normEsp(x)) || NOM_PRENOM.test(String(x).trim()) || (t.match(/\p{L}/gu) || []).length < 1 || /^\p{Lu}[\p{Ll}'’-]+$/u.test(String(x).trim()); }
+const NOM_PRENOM = /^[A-ZÀ-ÖØ-Ý][A-ZÀ-ÖØ-Ý'’ -]+ [A-ZÀ-ÖØ-Ý][a-zà-öø-ÿ-]+…?\s*[⏳✓✗✅❌⚪🟡]?$/u;
+const CLASSES_DONNEES = ["3 ESSAI"];
+function donnee(x){ const t = nrm(x).replace(/[§#¤ɸ]/g, ""); const n = C.normEsp(x);
+  return DONNEES_HUB.has(n) || [...DONNEES_HUB].some(d => d.length > 12 && n.startsWith(d)) || CLASSES_DONNEES.includes(n) || /^\p{Lu}[\p{Ll}'’]+(-\p{Lu}[\p{Ll}'’]+)+$/u.test(n) || NOM_PRENOM.test(String(x).trim()) || (t.match(/\p{L}/gu) || []).length < 1 || /^\p{Lu}[\p{Ll}'’-]+$/u.test(String(x).trim()); }
 function retire(R, inv, sc, type, element){
-  return R.some(r => (r.ecran === inv.ecran || r.ecran === "*") && r.type === type && nrm(r.element) === nrm(element) && (!r.scenes || r.scenes.includes(sc)));
+  return R.some(r => (r.ecran === inv.ecran || r.ecran === "*") && r.type === type && forme(r.element) === forme(element) && (!r.scenes || r.scenes.includes(sc)));
 }
 // Compare un inventaire de l'existant et ce que montre une scène (la même extraction : extraction.js)
 function garde1(sc, inv, vu, R){
   const pertes = [];
   const perdre = (type, element, detail) => { if(!retire(R, inv, sc, type, element)) pertes.push("garde 1. " + sc + " (de « " + inv.ecran + " ») : " + type + " « " + element + " » perdu" + (detail ? " — " + detail : "")); };
-  const btn = new Map(); vu.boutons.forEach(b => { const k = nrm(b.l); if(!btn.has(k)) btn.set(k, []); btn.get(k).push(C.normEsp(b.t)); });
+  const btn = new Map(); vu.boutons.forEach(b => { const k = forme(b.l); if(!btn.has(k)) btn.set(k, []); btn.get(k).push(C.normEsp(b.t)); });
   const vus = new Set();
   for(const b of inv.boutons || []){
-    const k = nrm(b.l); if(vus.has(k + "|" + b.t)) continue; vus.add(k + "|" + b.t);
-    if(NOM_PRENOM.test(b.l.trim())) continue;
+    const k = forme(b.l); if(vus.has(k + "|" + b.t)) continue; vus.add(k + "|" + b.t);
+    if(donnee(b.l)) continue;
     if(!btn.has(k)){ perdre("bouton", b.l); continue; }
     if(b.t && !btn.get(k).includes(C.normEsp(b.t)) && !retire(R, inv, sc, "infobulle", b.l))
       pertes.push("garde 1. " + sc + " (de « " + inv.ecran + " ») : l'infobulle de « " + b.l + " » n'est pas celle de l'existant — « " + b.t.slice(0, 120) + " » ; la scène dit « " + (btn.get(k)[0] || "rien").slice(0, 120) + " »");
   }
-  const champs = new Set(vu.champs.map(nrm));
-  for(const c of [...new Set((inv.champs || []).map(x => typeof x === "string" ? x : x.l))]) if(!champs.has(nrm(c))) perdre("champ", c);
-  const cases = new Set(vu.cases.map(nrm));
-  for(const c of [...new Set((inv.cases || []).map(x => typeof x === "string" ? x : x.l))]) if(!cases.has(nrm(c))) perdre("case", c);
+  const champs = new Set(vu.champs.map(forme));
+  for(const c of [...new Set((inv.champs || []).map(x => typeof x === "string" ? x : x.l))]) if(!champs.has(forme(c))) perdre("champ", c);
+  const cases = new Set(vu.cases.map(forme));
+  for(const c of [...new Set((inv.cases || []).map(x => typeof x === "string" ? x : x.l))]) if(!cases.has(forme(c))) perdre("case", c);
   const titres = new Set(vu.titres.concat(vu.boutons.map(b => b.t)).map(C.normEsp));
   for(const t of [...new Set((inv.titres || []).map(x => typeof x === "string" ? x : x.t))]) if(!donnee(t) && !titres.has(C.normEsp(t))) perdre("infobulle", t);
   if(inv.classes){
@@ -79,10 +90,10 @@ function garde1(sc, inv, vu, R){
     for(let i = 1; i < pos.length; i++) if(pos[i] < pos[i - 1]){ perdre("structure", "ordre", "l'ordre de l'existant n'est pas suivi : " + ordre.join(" › ")); break; }
   }
   if((inv.phrases || []).length){
-    const tout = nrm(vu.phrases.join(" ")).replace(/\s+/g, " ");
+    const tout = forme(vu.phrases.join(" "));
     for(const x of [...new Set(inv.phrases.map(p => typeof p === "string" ? p : p.p))]){
       if(!phraseComparable(x)) continue;
-      if(!tout.includes(nrm(x))) perdre("phrase", x);
+      if(!tout.includes(forme(x))) perdre("phrase", x);
     }
   }
   return pertes;
@@ -117,7 +128,9 @@ function lireMeta(){
       if((el.tagName === "TEXTAREA" || el.tagName === "INPUT") && el.value && visible(el)) out.push({ou, quoi: "champ", t: el.value}); });
     doc.body.querySelectorAll("*").forEach(el => { if(!hors(el) || !visible(el)) return;
       const cs = win.getComputedStyle(el);
-      const souligne = (/underline/.test(cs.textDecorationLine) && /dotted|dashed/.test(cs.textDecorationStyle) && orange(cs.textDecorationColor)) || (/dotted|dashed/.test(cs.borderBottomStyle) && parseFloat(cs.borderBottomWidth) > 0 && orange(cs.borderBottomColor));
+      // un souligné : le trait sous le texte (text-decoration), ou une bordure du bas seule, en pointillés ; pas un cadre en tirets
+      const seulBas = parseFloat(cs.borderTopWidth) === 0 && parseFloat(cs.borderLeftWidth) === 0 && parseFloat(cs.borderRightWidth) === 0;
+      const souligne = (/underline/.test(cs.textDecorationLine) && /dotted|dashed/.test(cs.textDecorationStyle) && orange(cs.textDecorationColor)) || (seulBas && /dotted|dashed/.test(cs.borderBottomStyle) && parseFloat(cs.borderBottomWidth) > 0 && orange(cs.borderBottomColor));
       if(el.classList.contains("prov") || souligne) marques.push(ou + " : " + (el.className ? "." + String(el.className).split(" ")[0] + " " : "") + "« " + (el.textContent || "").trim().slice(0, 50) + " »"); });
   });
   return {textes: out, marques};

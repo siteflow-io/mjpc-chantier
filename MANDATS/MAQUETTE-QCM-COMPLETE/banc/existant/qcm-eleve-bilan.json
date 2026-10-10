@@ -4,7 +4,6 @@
  "comment": "",
  "scenes": [
   "t-bilan",
-  "t-bilan-imprime",
   "t-bilan-annulee",
   "t-bilan-non-atteinte"
  ],

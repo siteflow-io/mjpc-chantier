@@ -1,0 +1,31 @@
+/* Ce que le cadrage ajoute aux écrans de MJPC : « 🚫 Jamais avec… » dans la ligne de l'élève (585, 590), la section « Les compétences » (637). Le reste vient d'index.html (mjpc.css). */
+.tprof-content .ex-btn{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.75);border-radius:8px;padding:5px 10px;cursor:pointer;font-family:inherit;font-size:.86rem}
+.tprof-content .ex-btn.a{border-color:rgba(248,113,113,.55);color:#fca5a5}
+.tprof-content .ex-btn.ouv{background:rgba(124,58,237,.25);color:#fff}
+.tprof-content .ex-panneau{margin:4px 0 8px 38px;padding:10px 12px;border:1px dashed rgba(248,113,113,.4);border-radius:10px;background:rgba(248,113,113,.05)}
+.tprof-content .ex-t{font-weight:700;color:#fff;margin-bottom:8px}
+.tprof-content .ex-c{font-weight:400;color:#fca5a5;margin-left:6px}
+.tprof-content .ex-grille{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px 10px}
+.tprof-content .ex-case{display:flex;align-items:center;gap:6px;background:none;border:none;color:rgba(255,255,255,.85);font-family:inherit;font-size:.86rem;text-align:left;cursor:pointer;padding:3px 0}
+.tprof-content .ex-case .ck{border-color:rgba(255,255,255,.4);background:transparent}
+.tprof-content .ex-case.on{color:#fca5a5;font-weight:700}
+.tprof-content .ex-case.on .ck{background:#f87171;border-color:#f87171}
+.tprof-content .ex-refus{margin-top:8px;border:1px solid rgba(248,113,113,.6);background:rgba(248,113,113,.12);border-radius:8px;padding:8px 10px;color:#fecaca;font-size:.86rem;line-height:1.5}
+.tprof-content .ex-note{margin-top:8px;font-size:.78rem;color:rgba(255,255,255,.5)}
+.tprof-content .ex-entete{font-size:.86rem;color:rgba(255,255,255,.72);margin:0 0 10px;line-height:1.5}
+/* La ligne de l'élève reçoit « 🚫 Jamais avec… » après le ◆ (585) : une colonne de plus que la grille d'index.html (l. 609) */
+.tprof-content .el-row{grid-template-columns:28px minmax(0,1fr) auto auto 96px auto}
+.tprof-content .ex-panneau{margin:4px 0 8px 38px}
+/* « Les compétences » (637) : après l'arbre des notions, mêmes classes */
+.m8tx-comps{margin-top:16px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.08)}
+.m8tx-comp-cat-t{margin:10px 0 4px;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,0.45)}
+/* La page des codes, telle que _printCodesClasse l'écrit (l. 6114), dans une fenêtre de la console */
+.codes-imprimes{border-collapse:collapse;width:100%;margin:12px 0;background:#fff;color:#111;font-family:sans-serif}
+.codes-imprimes td,.codes-imprimes th{border:1px solid #bbb;padding:7px 12px;text-align:left}
+.codes-imprimes td.c{font:700 18px ui-monospace,monospace;letter-spacing:.1em}
+/* La boîte système « alert » de la vraie app, dessinée dans la page */
+.alerte-native{position:fixed;inset:0;z-index:10050;background:rgba(0,0,0,.35);display:flex;align-items:flex-start;justify-content:center;padding-top:60px}
+.alerte-boite{background:#fff;color:#111;min-width:340px;max-width:460px;border-radius:10px;box-shadow:0 12px 40px rgba(0,0,0,.45);padding:18px 20px 12px;font:15px system-ui,sans-serif}
+.alerte-texte{margin-bottom:14px;line-height:1.45}
+.alerte-pied{display:flex;justify-content:flex-end}
+.alerte-ok{background:#2563eb;color:#fff;border:none;border-radius:6px;padding:7px 18px;font:600 14px system-ui,sans-serif;cursor:pointer}

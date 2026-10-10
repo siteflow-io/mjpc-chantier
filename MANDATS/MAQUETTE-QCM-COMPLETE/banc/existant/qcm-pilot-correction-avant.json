@@ -4,10 +4,7 @@
  "comment": "",
  "scenes": [
   "c-corr-q2-avant",
-  "c-corr-q2-lu",
-  "c-coeval-attente",
-  "c-coeval-feuille",
-  "x610-8-console-alerte"
+  "c-corr-q2-lu"
  ],
  "eleve": false,
  "boutons": [

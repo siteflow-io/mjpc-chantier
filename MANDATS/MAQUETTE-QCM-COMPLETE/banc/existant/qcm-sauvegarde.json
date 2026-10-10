@@ -5,8 +5,7 @@
  "scenes": [
   "c-sauvegarde",
   "c-importer",
-  "c-purger",
-  "c-corbeille"
+  "c-purger"
  ],
  "eleve": false,
  "boutons": [

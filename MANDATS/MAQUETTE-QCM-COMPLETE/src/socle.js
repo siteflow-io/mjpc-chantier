@@ -186,9 +186,15 @@ var ORDRE = [
   ["Réglages, et MJPC", [
     ["c-reglages", 4, "Réglages, en cartes : la classe, le prompt, les durées de la séance, les niveaux de maîtrise, les textes."],
     ["c-reglages-prompt", 4, "Le prompt de création d'éval."],
-    ["m-classe-exclusions", 4, "MJPC, Élèves & codes : « 🚫 Jamais avec… », pour chaque élève."],
+    ["m-classe-exclusions", 4, "MJPC, Élèves & codes, comme dans le site : la clé saisie, l'import, chaque élève avec « 🚫 Jamais avec… » après le ◆."],
     ["m-exclusion-refusee", 4, "Une quatrième exclusion : refusée, avec la raison."],
-    ["m-taxonomie-competences", 4, "MJPC, Taxonomie : les compétences et leur libellé élève."]]],
+    ["m-fiche-eleve", 4, "Un clic sur un nom : la fiche de l'élève, telle qu'elle est dans le site (sexe, dispositif, cases PAP)."],
+    ["m-taxonomie", 4, "MJPC, Taxonomie : le référentiel, l'éditeur fermé."],
+    ["m-taxonomie-editeur", 4, "« Ouvrir l'éditeur » : la vraie taxonomie, version 1.4.0, ses 7 domaines ; puis « Les compétences »."],
+    ["m-taxonomie-domaine", 4, "Un domaine ouvert, une famille ouverte : ses notions, « ✏️ Modifier », « Désactiver », « + Nouvelle notion »."],
+    ["m-taxonomie-notion", 4, "« ✏️ Modifier » une notion : ses libellés, ses niveaux, son exemple."],
+    ["m-taxonomie-competences", 4, "« Les compétences » : les 28, sous leurs groupes, avec leur libellé élève."],
+    ["m-taxonomie-competence", 4, "« ✏️ Modifier » une compétence : le même formulaire, avec son libellé élève."]]],
   // O. Une autre séance
   ["Une autre séance", [
     ["c-rattrapage", 3, "Le rattrapage."]]],

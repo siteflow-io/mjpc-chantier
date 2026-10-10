@@ -4,11 +4,10 @@
  "comment": "",
  "scenes": [
   "c-seances",
-  "c-resultats",
   "c-seances-lues",
   "c-rendre",
   "c-copies-rendues",
-  "c-resultats-rendues"
+  "c-corbeille"
  ],
  "eleve": false,
  "boutons": [

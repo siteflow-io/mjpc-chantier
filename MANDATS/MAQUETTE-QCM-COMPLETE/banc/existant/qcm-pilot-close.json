@@ -6,7 +6,8 @@
   "c-q1-close",
   "c-q2-close",
   "c-ecartee",
-  "c-annulee"
+  "c-annulee",
+  "c-deplacer"
  ],
  "eleve": false,
  "boutons": [

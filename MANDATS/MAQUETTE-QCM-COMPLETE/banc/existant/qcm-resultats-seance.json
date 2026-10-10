@@ -4,7 +4,6 @@
  "comment": "",
  "scenes": [
   "c-resultats",
-  "c-bilan",
   "c-resultats-rendues"
  ],
  "eleve": false,

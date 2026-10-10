@@ -1,10 +1,8 @@
 {
  "ecran": "telephone-reflexion",
  "source": "evaluation-qcm.html (7.7.1, md5 ecae65624855a1a877708986a8e984e5), jouée sur le faux hub",
- "comment": "",
- "scenes": [
-  "p-reponse"
- ],
+ "comment": "Aucune scène n’en part : la maquette ne montre pas le téléphone pendant la réflexion.",
+ "scenes": [],
  "eleve": false,
  "boutons": [
   {

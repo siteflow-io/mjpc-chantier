@@ -1,0 +1,33 @@
+{
+ "ecran": "prompt-ia-edition",
+ "source": "evaluation-qcm.html (7.7.1, md5 ecae65624855a1a877708986a8e984e5), jouée sur le faux hub",
+ "comment": "Le prompt en modification : « 💾 Enregistrer », « ↩️ Annuler », « 🔄 Restaurer le prompt par défaut » (l. 6496–6500).",
+ "scenes": [
+  "c-reglages-prompt"
+ ],
+ "eleve": false,
+ "boutons": [
+  {
+   "l": "✕",
+   "t": ""
+  },
+  {
+   "l": "💾 Enregistrer",
+   "t": "Enregistre ce prompt dans Firebase. Il sera réutilisé à chaque ouverture du modal, sur tous les appareils."
+  },
+  {
+   "l": "↩️ Annuler",
+   "t": "Annule les modifications et revient au prompt enregistré."
+  },
+  {
+   "l": "🔄 Restaurer le prompt par défaut",
+   "t": "Remplace le brouillon par le prompt fourni par défaut avec l'app. Tu pourras ensuite cliquer sur « Enregistrer » pour le rendre actif."
+  }
+ ],
+ "champs": [
+  "textarea"
+ ],
+ "cases": [],
+ "titres": [],
+ "phrases": []
+}

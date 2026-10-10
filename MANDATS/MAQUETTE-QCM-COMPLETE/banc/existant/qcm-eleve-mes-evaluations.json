@@ -4,8 +4,7 @@
  "comment": "",
  "scenes": [
   "e-mes-evals",
-  "e-mes-evals-rendue",
-  "e-bilan-lou"
+  "e-mes-evals-rendue"
  ],
  "eleve": true,
  "boutons": [

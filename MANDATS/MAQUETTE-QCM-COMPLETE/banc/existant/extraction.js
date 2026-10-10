@@ -31,7 +31,8 @@ function extraireEcran(opts){
       if(/^(BUTTON|INPUT|SELECT|TEXTAREA|IFRAME)$/.test(el.tagName) || !visible(el) || !horsSommaire(el)) return;
       const t = el.getAttribute("title"); if(t && t.trim()) out.titres.push(t.trim());
     });
-    racine.querySelectorAll("[class]").forEach(el => { if(visible(el) && horsSommaire(el)) String(el.className).split(/\s+/).forEach(c => { if(c) out.classes.push(c); }); });
+    // la structure : les classes du balisage, dans l'ordre du document, visibles ou non (une règle CSS de l'existant peut en cacher une)
+    racine.querySelectorAll("[class]").forEach(el => { if(horsSommaire(el)) String(el.className).split(/\s+/).forEach(c => { if(c) out.classes.push(c); }); });
     if(opts.phrases){
       const tw = doc.createTreeWalker(racine, win.NodeFilter.SHOW_TEXT); let n;
       while((n = tw.nextNode())){

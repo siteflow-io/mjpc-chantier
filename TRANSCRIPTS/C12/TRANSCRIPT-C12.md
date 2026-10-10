@@ -19403,3 +19403,33 @@ Réponse mot pour mot :
 658. **Le PDF refait est joint** (Léa, Tom et Sacha montrent les trois cas). Au sas : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/MAQUETTE-QCM-FLUX/README.md (section « Tour 632 »). Le prompt (647 à 651) attend toujours ton mot.
 
 10/10/2026 09:55 MEMO
+
+---
+
+## TOUR 633 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (10/10, 09:58) VOilà, c'est bon. On peut lancer.
+
+---
+
+## TOUR 633 — Claude (conscience n°12)
+
+Relu `PROTOCOLE-MAQUETTE.md` (production) et le gabarit de lancement en session cloud (`MANDATS/PROMPT-EXECUTANT-CLOUD-DEROULE.md`). Constaté qu'il manquait au sas `qcm.css`, React et le faux hub du banc : déposés (chemins du banc rendus relatifs). Relevé les md5 de la production (`main` à `d873f69`). Écrit `MANDATS/MANDAT-MAQUETTE-QCM-COMPLETE.md`.
+
+Réponse mot pour mot :
+
+659. **Acquis : 647 à 658**, le prompt et le commentaire compris.
+
+660. **Le mandat de la maquette est au sas** : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/MANDAT-MAQUETTE-QCM-COMPLETE.md. Il s'ouvre par ce que ça change pour la classe, donne l'existant à reprendre (les 66 captures du tour 603, puis 610, 620 et 624 à 632, le commentaire et le PDF finaux), la liste de tout ce qui a changé depuis le tour 603, ce qu'il faut mesurer (les limites de longueur pour le prompt), et cinq livraisons courtes qui s'arrêtent chacune. L'exécutant n'écrit aucune phrase d'élève que tu n'as pas donnée : s'il en manque une, il laisse un trou marqué, et le liste.
+
+661. **Ce qui manquait au sas pour qu'il parte seul y est maintenant** : le CSS de la 7.7.1, React, et le faux hub du banc, qui sert la vraie 7.7.1.
+
+662. **Ton geste** : sur claude.ai/code, ouvre une nouvelle session cloud sur le dépôt siteflow-io/mjpc-chantier, et colle cette phrase :
+
+> Tu es l'exécutant du mandat « Maquette complète du QCM » de MJPC. Lis en entier MANDATS/MANDAT-MAQUETTE-QCM-COMPLETE.md dans ce dépôt, applique-le à la lettre, et fais la livraison L1, puis arrête-toi.
+
+663. **Ensuite** : quand il s'arrête, dis-le-moi ; j'audite sa branche, puis tu lui dis « continuer, fais la livraison L2 », et ainsi de suite jusqu'à L5.
+
+10/10/2026 10:02 MEMO

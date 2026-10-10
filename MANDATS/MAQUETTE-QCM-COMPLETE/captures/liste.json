@@ -1205,68 +1205,124 @@
   "fichier": "151-c-reglages-prompt.png",
   "vue": "console",
   "section": "Réglages, et MJPC",
-  "titre": "Le prompt de création d'éval."
+  "titre": "Le prompt de création d'éval, tel que l'app le copie : le chapitre et ses compétences, les difficultés, les durées et les limites de longueur à la place des jetons."
  },
  {
   "n": 152,
-  "id": "m-classe-exclusions",
-  "fichier": "152-m-classe-exclusions.png",
+  "id": "c-reglages-prompt-modifier",
+  "fichier": "152-c-reglages-prompt-modifier.png",
   "vue": "console",
   "section": "Réglages, et MJPC",
-  "titre": "MJPC, Élèves & codes : « 🚫 Jamais avec… », pour chaque élève."
+  "titre": "Le prompt en modification : le gabarit enregistré, jetons compris ; « 💾 Enregistrer », « ↩️ Annuler », « 🔄 Restaurer le prompt par défaut »."
  },
  {
   "n": 153,
+  "id": "m-classe-exclusions",
+  "fichier": "153-m-classe-exclusions.png",
+  "vue": "console",
+  "section": "Réglages, et MJPC",
+  "titre": "MJPC, Élèves & codes, comme dans le site : la clé saisie, l'import, chaque élève avec « 🚫 Jamais avec… » après le ◆."
+ },
+ {
+  "n": 154,
   "id": "m-exclusion-refusee",
-  "fichier": "153-m-exclusion-refusee.png",
+  "fichier": "154-m-exclusion-refusee.png",
   "vue": "console",
   "section": "Réglages, et MJPC",
   "titre": "Une quatrième exclusion : refusée, avec la raison."
  },
  {
-  "n": 154,
-  "id": "m-taxonomie-competences",
-  "fichier": "154-m-taxonomie-competences.png",
+  "n": 155,
+  "id": "m-fiche-eleve",
+  "fichier": "155-m-fiche-eleve.png",
   "vue": "console",
   "section": "Réglages, et MJPC",
-  "titre": "MJPC, Taxonomie : les compétences et leur libellé élève."
+  "titre": "Un clic sur un nom : la fiche de l'élève, telle qu'elle est dans le site (sexe, dispositif, cases PAP)."
  },
  {
-  "n": 155,
+  "n": 156,
+  "id": "m-taxonomie",
+  "fichier": "156-m-taxonomie.png",
+  "vue": "console",
+  "section": "Réglages, et MJPC",
+  "titre": "MJPC, Taxonomie : le référentiel, l'éditeur fermé."
+ },
+ {
+  "n": 157,
+  "id": "m-taxonomie-editeur",
+  "fichier": "157-m-taxonomie-editeur.png",
+  "vue": "console",
+  "section": "Réglages, et MJPC",
+  "titre": "« Ouvrir l'éditeur » : la vraie taxonomie, version 1.4.0, ses 7 domaines ; puis « Les compétences »."
+ },
+ {
+  "n": 158,
+  "id": "m-taxonomie-domaine",
+  "fichier": "158-m-taxonomie-domaine.png",
+  "vue": "console",
+  "section": "Réglages, et MJPC",
+  "titre": "Un domaine ouvert, une famille ouverte : ses notions, « ✏️ Modifier », « Désactiver », « + Nouvelle notion »."
+ },
+ {
+  "n": 159,
+  "id": "m-taxonomie-notion",
+  "fichier": "159-m-taxonomie-notion.png",
+  "vue": "console",
+  "section": "Réglages, et MJPC",
+  "titre": "« ✏️ Modifier » une notion : ses libellés, ses niveaux, son exemple."
+ },
+ {
+  "n": 160,
+  "id": "m-taxonomie-competences",
+  "fichier": "160-m-taxonomie-competences.png",
+  "vue": "console",
+  "section": "Réglages, et MJPC",
+  "titre": "« Les compétences » : les 28, sous leurs groupes, avec leur libellé élève."
+ },
+ {
+  "n": 161,
+  "id": "m-taxonomie-competence",
+  "fichier": "161-m-taxonomie-competence.png",
+  "vue": "console",
+  "section": "Réglages, et MJPC",
+  "titre": "« ✏️ Modifier » une compétence : le même formulaire, avec son libellé élève."
+ },
+ {
+  "n": 162,
   "id": "c-rattrapage",
-  "fichier": "155-c-rattrapage.png",
+  "fichier": "162-c-rattrapage.png",
   "vue": "console",
   "section": "Une autre séance",
   "titre": "Le rattrapage."
  },
  {
-  "n": 156,
+  "n": 163,
   "id": "x620-1-mode-test-ouverture",
-  "fichier": "156-x620-1-mode-test-ouverture.png",
+  "fichier": "163-x620-1-mode-test-ouverture.png",
   "vue": "console",
   "section": "Le mode test",
   "titre": "Le mode test, à l'ouverture : ta vraie console d'avant l'heure, 15 tablettes."
  },
  {
-  "n": 157,
+  "n": 164,
   "id": "x620-2-mode-test-reflexion",
-  "fichier": "157-x620-2-mode-test-reflexion.png",
+  "fichier": "164-x620-2-mode-test-reflexion.png",
   "vue": "console",
   "section": "Le mode test",
   "titre": "Le mode test, pendant la réflexion."
  },
  {
-  "n": 158,
+  "n": 165,
   "id": "x620-3-mode-test-en-grand",
-  "fichier": "158-x620-3-mode-test-en-grand.png",
+  "fichier": "165-x620-3-mode-test-en-grand.png",
   "vue": "console",
   "section": "Le mode test",
   "titre": "« 🔍 Jouer en grand »."
  },
  {
-  "n": 159,
+  "n": 166,
   "id": "t-annexe",
-  "fichier": "159-t-annexe.png",
+  "fichier": "166-t-annexe.png",
   "vue": "tablette",
   "section": "Annexe : la demi-tablette",
   "titre": "L'étalon des mesures : la vraie question 3 de l'évaluation de 3e (6 choix longs), sur une demi-tablette : 67 px de reste."

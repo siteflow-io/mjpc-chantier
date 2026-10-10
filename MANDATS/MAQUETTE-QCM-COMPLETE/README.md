@@ -2,11 +2,66 @@
 
 *Mandat : `MANDATS/MANDAT-MAQUETTE-QCM-COMPLETE.md`, fait d'une traite, étapes 1 à 5. Branche `maquette-qcm` (et `claude/bold-bohr-zxodms`, la même), dossier `MANDATS/MAQUETTE-QCM-COMPLETE/`.*
 
-## Complément 1 — en cours
+## Complément 1 — fait
 
-*Complément : `MANDATS/COMPLEMENT-MAQUETTE-QCM-COMPLETE-1.md` (md5 `37e0b18a532c9a0558a220d58377101a`), fait d'une traite sur `maquette-qcm`, étapes A à D. La v1 à la v5 restent telles quelles ; la livraison sera `maquette-qcm-v6.html`.*
+*Complément : `MANDATS/COMPLEMENT-MAQUETTE-QCM-COMPLETE-1.md` (md5 `37e0b18a532c9a0558a220d58377101a`), fait d'une traite sur `maquette-qcm`, étapes A à D. La v1 à la v5 restent telles quelles, avec leurs md5. **La livraison : `maquette-qcm-v6.html`** (md5 `60778845d3ccf68e0b4fdd4a9ce7db30`), **166 scènes** ; banc final `sorties/banc-final-v6.txt` : **18 245 vérifications, zéro défaut**, les vérifications 1 à 9 et les cinq gardes, tout sur tout ; captures refaites et regardées (`captures/`, 166) ; livret `livret-maquette-qcm-v6.pdf`.*
+
+### Les six défauts du §3, et la scène qui les montre corrigés
+
+| Défaut | Ce qui est fait | Scènes |
+| --- | --- | --- |
+| **D1** — MJPC ne partait pas de l'existant | Le balisage, les classes CSS et les textes d'`index.html` (`src/mjpc.js`, `src/mjpc.css` extrait par `outils/css-mjpc.py`), chaque élément avec sa ligne dans l'inventaire (`banc/existant/mjpc-*.json`). Le menu du panneau prof : les 14 entrées sous leurs quatre titres, les 12 sans scène grisées (« Inchangé : cet écran reste celui d'aujourd'hui. »). « Élèves & codes » dans l'ordre du vrai écran : l'encart de la clé saisie, l'import du fichier de classe, la barre des classes, la zone d'import, la barre d'outils (« Générer 1 code manquant », « 🖨 Imprimer », « Tout régénérer »), chaque ligne avec son numéro, le nom cliquable qui ouvre la fiche, le ◆, « 🚫 Jamais avec… » juste après, le code, ↻ et ✕. La fiche de l'élève. La Taxonomie sur la vraie taxonomie (`src/donnees/taxonomie_atelier.json`, md5 `26128f95…`) : « Version 1.4.0 · 2026-08-02 · 7 domaines · 210 notions », un domaine ouvert, une notion en modification, la section « 🧩 Les compétences » (les 28, sous leurs 8 groupes, libellé officiel et « Élève : … »), une compétence en modification. | `m-classe-exclusions`, `m-exclusion-refusee`, `m-fiche-eleve`, `m-taxonomie`, `m-taxonomie-editeur`, `m-taxonomie-domaine`, `m-taxonomie-notion`, `m-taxonomie-competences`, `m-taxonomie-competence` |
+| **D2** — des renvois au cadrage à l'écran | « Le prompt du cadrage (tour 630). » et « (340) » retirés. Les infobulles des gestes qui existent déjà sont celles de la 7.7.1, mot pour mot (« 📖 Mode d'emploi », « 🔄 Restaurer le prompt par défaut » et une centaine d'autres) ; seul ce que le cadrage change garde un autre texte, avec son point cité dans `banc/existant/retraits.json`. Le prompt a la fenêtre de la 7.7.1 : à la lecture, tel que l'app le copie (les jetons remplis) ; en modification (scène nouvelle), le gabarit, « 💾 Enregistrer », « ↩️ Annuler » et « 🔄 Restaurer le prompt par défaut » avec sa boîte « confirm » dessinée. | `c-reglages`, `c-reglages-prompt`, `c-reglages-prompt-modifier`, toute la console |
+| **D3** — les limites de longueur se contredisaient | La mesure refaite : tous les choix à la même longueur, la limite d'un choix, l'énoncé de 40 à 300 par pas de 20, le choix par pas de 5 ; elle ne croît jamais ; l'étalon reste à 67 px. Ci-dessous. | `c-reglages-prompt`, `t-annexe` |
+| **D4** — « 👀 Écoute le prof — la correction sera révélée. » retirée sans cadrage | Rétablie sous les choix, à la lecture du voisin, tant que la réponse n'est pas révélée ; « ✅ Réponse enregistrée — tu peux encore la changer » reste là où 526 la met. La vérification 4 n'interdit plus que « va voir », « viens me voir », « venez me voir ». | `t-corr-q2-lecture`, `t-corr-q3-lecture`, `t-corr-q1-lecture`, `t-corr-seul`, `x610-3-a-correction` |
+| **D5** — le PDF portait les marques de validation | `build.py` retire l'encadré « Exemple de la maquette… » et le style des propositions : le même texte, sans encadré ni souligné. La vérification 9 compare le texte à celui de `gen632.js`, l'encadré mis à part. | `x632-pdf` |
+| **D6** — « un peu » dans le bloc, « nettement » dans le bilan | Le bloc « 🎯 Ton estimation » suit l'écart : deux niveaux ou plus, « Tu as nettement surestimé ce que tu avais réussi. » (632) ; un niveau, « Tu as un peu surestimé… » (la 7.7.1). Partout où il paraît. | `t-bilan`, `t-bilan-non-atteinte`, `t-bilan-imprime`, `e-mes-evals`, `c-fiche` |
+
+### Ce que les nouvelles gardes ont trouvé d'autre, et sa correction
+
+Jouées sur la v5 avant toute correction (`sorties/gardes-sur-v5.txt`, rejouée à la fin de l'étape B avec les gardes finales : chaque défaut connu y est trouvé par sa garde ; 898 échecs en tout, contre 2 078 à l'étape A : les gardes ont été affinées depuis (n° 44 et 45), et les retraits cités ne comptent plus). Le détail est au journal (`DEFAUTS.md`, n° 36 à 47).
+- **Des éléments de la 7.7.1 perdus sans point du cadrage**, rétablis avec leurs mots : les infobulles des compteurs du pilotage, du bandeau d'état, des cartes « Question en cours / passée », de la correction (position, niveau, taux), de la bande des questions du téléphone (et la bande elle-même, au téléphone avant la révélation) ; « Nombre de points que vaut cette question » ; « ✓ J'ai compris » ; « 📊 Mes évaluations » sur la tablette, à côté du nom de l'élève (sur une demi-tablette, la place sous la carte est celle des choix ; l'étalon reste à 67 px) ; dans l'éditeur, le champ JSON et « 🔍 Vérifier le format », les indications des champs, la case des bonnes réponses, « ➕ Ajouter une question » ; l'indication du JSON au collage ; « Question suivante → » ouvert avant la révélation, comme dans la 7.7.1 ; « 🔓 Rouvrir Q2 » au téléphone.
+- **Les retraits** (`banc/existant/retraits.json`, 107) : chaque élément que le cadrage retire ou remplace, avec son point cité mot pour mot (les niveaux à temps, « Q suiv. → », les lettres, la pondération, les purges, « 📄 Préparation », l'encadré « Comment ça marche », « ← Changer de classe »…).
+- **Le prompt** n'avait ni la fenêtre ni les gestes de la 7.7.1, et ses jetons restaient visibles (n° 38).
+- **Les gardes elles-mêmes**, affinées : la garde 3 lit la section « Les compétences » groupe par groupe (elle croyait la lire dans l'éditeur d'évaluation) ; la garde 1 compare les infobulles calculées à leur forme (« Q10 est la 1e question révélée » et « Q2 est la 1e question révélée »), comme les libellés.
+- **Le banc entier, à la fin de l'étape B** : un chevauchement du nom de l'élève, une phrase du degré collée à celle de la 7.7.1, l'indication « ex : DUPONT Marie » d'`index.html` prise pour un élève, « ✏️ Modifier » d'une notion ouverte inerte (n° 46).
+
+### Les mesures, et le texte de `{{LIMITES}}`
+
+Détail : `mesures/README.md` ; sortie brute : `mesures/limites.json` (`node mesures/mesurer.js maquette-qcm-v6.html mesures/limites.json`). La limite est la longueur d'un choix, tous les choix à la même longueur, la plus longue qui tient sur la réponse, B et la lecture du voisin ; toutes les plus courtes tiennent aussi (la garde 4 en rejoue un échantillon dans la maquette).
+
+| Énoncé (caractères, au plus) | 4 choix ou moins | 5 choix | 6 choix |
+| --- | --- | --- | --- |
+| 40 | 165 | 80 | 70 |
+| 60 | 165 | 80 | 70 |
+| 80 | 155 | 75 | 70 |
+| 100 | 155 | 75 | 70 |
+| 120 | 155 | 75 | 70 |
+| 140 | 130 | 25 | 25 |
+| 160 | 130 | 25 | 25 |
+| 180 | 130 | 25 | 25 |
+| 200 | 120 | 25 | 25 |
+| 220 | 80 | 25 | 25 |
+| 240 | 80 | 25 | 25 |
+| 260 | 80 | 25 | 25 |
+| 280 | 80 | ne tient pas | ne tient pas |
+| 300 | 70 | ne tient pas | ne tient pas |
+
+**L'étalon** : la vraie question 3 de 3e garde 67 px sur l'écran de réponse ; elle tient sur les trois écrans (51 px sur la réponse, 20 sur B, 4 sur la lecture du voisin, au-delà de la marge), mais **ne respecte pas la nouvelle limite** : son plus long choix fait 137 caractères, la limite à 6 choix et 96 caractères d'énoncé est 70. Elle tient parce que ses autres choix sont courts ; une limite suffisante est prudente.
+
+**Le texte exact qui remplace `{{LIMITES}}`** (le prompt de Réglages le porte) :
+
+> chaque question doit tenir sur une demi-tablette, choix compris. Compte les caractères, espaces comprises. L'énoncé fait 300 caractères au plus. Les choix d'une question ont tous à peu près la même longueur, et aucun ne dépasse la limite. Avec 4 choix ou moins : 165 caractères par choix si l'énoncé fait 60 caractères ou moins, 155 caractères par choix jusqu'à 120, 130 caractères par choix jusqu'à 180, 120 caractères par choix jusqu'à 200, 80 caractères par choix jusqu'à 280, 70 caractères par choix jusqu'à 300. Avec 5 choix : 80 caractères par choix si l'énoncé fait 60 caractères ou moins, 75 caractères par choix jusqu'à 120, 25 caractères par choix jusqu'à 260 ; au-delà de 260 caractères d'énoncé, pas de 5 choix. Avec 6 choix : 70 caractères par choix si l'énoncé fait 120 caractères ou moins, 25 caractères par choix jusqu'à 260 ; au-delà de 260 caractères d'énoncé, pas de 6 choix.
+
+### Ce que la maquette simule dans MJPC
+
+- **Rien n'est lu ni écrit au hub** : la classe « 3 ESSAI », ses codes, ses exclusions, les fiches de Michel et de Lina sont des données de la maquette ; la taxonomie est la vraie, copiée avec son md5, et ses modifications ne vivent que dans la scène.
+- **Chaque geste fait ce que sa fonction fait dans `index.html`**, sur place : importer et compléter la liste (avec ses alertes), générer les codes manquants, imprimer (la page des codes de `_printCodesClasse`), tout régénérer (le mot « CODES » à taper), ↻ et ✕ (avec la fenêtre de confirmation), ouvrir la fiche, cocher les cases PAP, enregistrer la fiche ; ouvrir et fermer l'éditeur de taxonomie, déplier un domaine, une famille, un groupe de compétences, modifier, désactiver ou réactiver une notion, en créer une, avec les alertes de validation ; un enregistrement fait avancer la version d'un cran et met la date du jour. « Modifier » recharge le référentiel (« Chargement du référentiel… »), comme `taxoRafraichir(true)`.
+- **Les boîtes système** (`alert`, `confirm`) et les fenêtres de `_modaleConfirme` sont dessinées dans la page, avec leur texte exact.
+- **L'encart de la clé** est dans l'état « clé saisie » ; « Code professeur » et les 12 autres écrans du panneau sont grisés, avec leur raison.
 
 ### Étape A — les gardes
+
 
 **Ce que j'ai lu, avec les md5.** `main` fusionné dans `maquette-qcm` (`495296f`) ; production clonée en lecture, `main` à `d873f69`, md5 vérifiés avant tout.
 
@@ -41,15 +96,22 @@
 
 **Jouées sur la v5** (`sorties/gardes-sur-v5.txt`, `GARDES=seules node banc/banc.js maquette-qcm-v5.html 5`, puis `python3 banc/synthese-gardes.py`) : chaque défaut connu du §3 est trouvé par sa garde — D1 par les gardes 1 et 3, D2 par les gardes 2 et 1, D3 par la garde 4, D4 par la garde 1, D5 par la garde 2, D6 par la garde 5 — et 2 078 échecs en tout, la matière de l'étape B. **Les vérifications 1 à 9 passent toujours sur la v5** : `sorties/banc-v5-verifications-1-a-9.txt`, 15 712 vérifications, zéro défaut (`GARDES=0` ; la vérification 4 a perdu l'interdit « le professeur », D4).
 
+### Étapes B à D — les sorties
+
+- **B** (`sorties/banc-etape-B.txt`) : le banc entier, à zéro, sans la garde 4 et le texte de `{{LIMITES}}` (`MESURES=0` : la mesure se refait à l'étape C) ; `sorties/gardes-sur-v5.txt` rejoué avec les gardes finales.
+- **C** (`sorties/banc-etape-C.txt`) : le banc entier, à zéro, avec la garde 4 et son échantillon.
+- **D** (`sorties/banc-final-v6.txt`) : le banc final sur `maquette-qcm-v6.html`, tout sur tout, à zéro.
+
 ## En bref
 
-- **La maquette** : `maquette-qcm-v5.html` (md5 `940531e53cb7163c35eeaa4df3c562ef`), un fichier HTML autonome, sans réseau, **159 scènes dans l'ordre de la séance**, chacune ouvrable par `#scene=ID` ; le sommaire derrière ⚙ « Scènes de la maquette ».
-- **Le banc final** : `sorties/banc-final.txt` — **15 712 vérifications, zéro défaut** ; tout porte sur tout (vérifications 1 à 9, sur les 159 scènes, à toutes les tailles). Les sorties de chaque étape : `sorties/banc-etape1.txt` à `banc-etape5.txt`.
-- **Les captures** : `captures/` (159, toutes regardées) ; **le livret** : `livret-maquette-qcm-v5.pdf` (une capture et une phrase par scène).
-- **Les mesures** : `mesures/README.md` ; le texte de `{{LIMITES}}` pour le prompt y est, et plus bas.
+- **La maquette** : `maquette-qcm-v6.html` (md5 `60778845d3ccf68e0b4fdd4a9ce7db30`), un fichier HTML autonome, sans réseau, **166 scènes dans l'ordre de la séance**, chacune ouvrable par `#scene=ID` ; le sommaire derrière ⚙ « Scènes de la maquette ». La v1 à la v5 restent dans le dossier, telles quelles, avec leurs md5.
+- **Le banc final** : `sorties/banc-final-v6.txt` — **18 245 vérifications, zéro défaut** ; tout porte sur tout (vérifications 1 à 9 et les cinq gardes du complément 1, sur les 166 scènes, à toutes les tailles). Les sorties de chaque étape : `sorties/banc-etape1.txt` à `banc-etape5.txt`, `banc-etape-B.txt`, `banc-etape-C.txt` ; celle de la v5 : `sorties/banc-final.txt`.
+- **Les captures** : `captures/` (166, toutes regardées) ; **le livret** : `livret-maquette-qcm-v6.pdf` (une capture et une phrase par scène). Le livret de la v5 reste : `livret-maquette-qcm-v5.pdf`.
+- **Les mesures** : `mesures/README.md` ; le texte de `{{LIMITES}}` pour le prompt y est, et en tête de ce README.
+- **L'existant** : `banc/existant/` (les inventaires de la 7.7.1 et de MJPC, `retraits.json` et ses citations).
 - **Le tableau « point → scène »** : plus bas (et `POINT-SCENE.md`).
-- **Le journal des défauts** : `DEFAUTS.md` (35 défauts trouvés et corrigés), repris plus bas.
-- **Rejouer** : `python3 build.py dev` (assemble `maquette-qcm-vdev.html`), `node banc/banc.js maquette-qcm-v5.html 5 sortie.txt` (le banc, 4 min environ), `node capture.js maquette-qcm-v5.html`, `node mesures/mesurer.js maquette-qcm-v5.html`, `python3 livret.py`.
+- **Le journal des défauts** : `DEFAUTS.md` (47 défauts trouvés et corrigés : 35 au mandat, 12 au complément), repris plus bas.
+- **Rejouer** : `python3 build.py dev` (assemble `maquette-qcm-vdev.html`), `node banc/banc.js maquette-qcm-v6.html 5 sortie.txt` (le banc, 6 min environ ; `GARDES=0` sans les gardes du complément, `GARDES=seules` elles seules, `SEUL=id` une scène), `node capture.js maquette-qcm-v6.html`, `node mesures/mesurer.js maquette-qcm-v6.html mesures/limites.json`, `python3 outils/mesures-readme.py mesures/limites.json mesures/README.md`, `python3 livret.py`, `node banc/existant/releve.js` (relève la 7.7.1 sur le faux hub).
 
 ## Ce que la maquette simule (déclaré, mandat §3)
 
@@ -58,7 +120,7 @@
 - **Le hub** : rien n'est lu ni écrit ; un geste qui écrirait au hub mène à la scène qui montre ce qui se passe ensuite, ou change l'écran sur place (coches, choix, binômes, exclusions, bilan général, libellés élève). Aucun réseau, aucun stockage, aucune boîte système : le banc le vérifie au source et à chaque clic.
 - **Les fichiers** : « 📥 Export CSV », « 📥 Exporter snapshot », « 📋 Copier les erreurs… » disent ce qu'ils ont fait, sans écrire de fichier ni toucher au presse-papiers. L'impression ouvre l'aperçu (le PDF de gen632.js, tel quel ; le bilan de l'élève tel qu'il s'imprime ; les énoncés seuls).
 - **Le QR** : un dessin, qui ne mène à rien d'autre que la scène du téléphone.
-- **MJPC** : le panneau prof est redessiné avec les couleurs et les mesures d'index.html (fiche de classe, éditeur de taxonomie) ; il n'en charge rien.
+- **MJPC** : le balisage, les classes et les textes d'`index.html`, avec la vraie taxonomie ; rien n'est lu ni écrit au hub, chaque geste fait sur place ce que sa fonction fait (voir « Ce que la maquette simule dans MJPC », en tête).
 - **Le seul écran de simulation** est le sommaire ⚙ (protocole §2).
 
 
@@ -158,7 +220,7 @@ Le banc a grandi : la vérification 9 compare chaque commentaire affiché à cel
 - **La lecture du voisin** prend la mise en page resserrée de la question 3 de 3e (le chrono à côté de « Lis avec soin »), et un choix par ligne quand les choix sont longs, comme l'écran de réponse : c'est elle qui donnait les limites les plus serrées.
 - **Le tableau « point → scène »**, **le livret**, **ce README**.
 
-### Le texte exact qui remplace `{{LIMITES}}` dans le prompt
+### Le texte de `{{LIMITES}}` de la v5 (remplacé au complément 1, défaut 3 : le nouveau est en tête)
 
 > chaque question doit tenir sur une demi-tablette, choix compris. Compte les caractères, espaces comprises. Énoncé : 250 caractères au plus. Avec 4 choix : 640 caractères pour l'ensemble des choix si l'énoncé fait 120 caractères ou moins, 530 jusqu'à 150, 440 jusqu'à 200, 410 jusqu'à 250. Avec 5 choix : 410 si l'énoncé fait 120 caractères ou moins, 330 jusqu'à 150, 270 jusqu'à 200, 210 jusqu'à 250. Avec 6 choix : l'énoncé fait 120 caractères au plus, et l'ensemble des choix 480. Aucun choix ne dépasse 160 caractères.
 
@@ -257,6 +319,18 @@ Le banc a grandi : la vérification 9 compare chaque commentaire affiché à cel
 | 108, 131 | les niveaux de maîtrise et l'échelle de la note | `c-reglages` |
 
 
+### Complément 1 (tours 638 et 639, points 680 à 696)
+
+| Point | Ce qui se voit | Scène(s) |
+| --- | --- | --- |
+| 681 (D1) | MJPC tel qu'`index.html` le dessine : le menu du panneau prof (12 entrées grisées), « Élèves & codes » avec la clé, l'import, ↻, ✕ et « 🚫 Jamais avec… » après le ◆ ; la fiche de l'élève ; la Taxonomie sur la vraie taxonomie (1.4.0, 7 domaines, 210 notions), un domaine ouvert, une notion et une compétence en modification | `m-classe-exclusions`, `m-exclusion-refusee`, `m-fiche-eleve`, `m-taxonomie`, `m-taxonomie-editeur`, `m-taxonomie-domaine`, `m-taxonomie-notion`, `m-taxonomie-competences`, `m-taxonomie-competence` |
+| 682 (D2) | aucun renvoi au cadrage dans la console ; les infobulles de la 7.7.1 ; le prompt tel que l'app le copie, et en modification avec « 🔄 Restaurer le prompt par défaut » | `c-reglages`, `c-reglages-prompt`, `c-reglages-prompt-modifier`, toutes les scènes de console |
+| 683 (D3) | le prompt porte les nouvelles limites de longueur | `c-reglages-prompt` |
+| 684, 691 (D4) | « 👀 Écoute le prof — la correction sera révélée. » avant la révélation | `t-corr-q2-lecture`, `t-corr-q3-lecture`, `t-corr-q1-lecture`, `t-corr-seul`, `x610-3-a-correction` |
+| 692 (D5) | le PDF « notes et compétences » sans encadré ni souligné | `x632-pdf` |
+| 686 (D6) | « Tu as nettement surestimé ce que tu avais réussi. » dans le bloc « 🎯 Ton estimation » de Michel, comme son bilan général | `t-bilan`, `t-bilan-non-atteinte`, `c-fiche` |
+
+
 ## Le journal des défauts
 
 
@@ -301,9 +375,29 @@ Le banc a grandi : la vérification 9 compare chaque commentaire affiché à cel
 | 35 | 4 | L'éditeur coupé avant la question 11 (« longueur assumée ») sur la capture. | Hauteur de la scène trop courte. | Scène à 3 250 px. | relu sur capture |
 
 
+### Complément 1 (`MANDATS/COMPLEMENT-MAQUETTE-QCM-COMPLETE-1.md`)
+
+*Les défauts du §3 (D1 à D6) et tout ce que les cinq nouvelles gardes ont trouvé sur la v5 (`sorties/gardes-sur-v5.txt`), à partir du n° 36. La colonne « garde » nomme la garde du complément qui le trouve désormais.*
+
+| N° | Étape | Défaut | Cause | Correction | Garde |
+| --- | --- | --- | --- | --- | --- |
+| 36 | B | D1 — « Élèves & codes », la fiche de l'élève et « Taxonomie » étaient redessinés, avec des chiffres inventés. | La v5 disait « le panneau prof est redessiné » : rien n'était tiré d'`index.html`. | `src/mjpc.js` reprend le balisage, les classes CSS (`src/mjpc.css`, extraites par `outils/css-mjpc.py`) et les textes d'`index.html`, ligne par ligne ; la vraie taxonomie copiée avec son md5 (`src/donnees/`) ; les 12 entrées de menu sans scène grisées avec leur raison ; six scènes nouvelles (`m-fiche-eleve`, `m-taxonomie`, `m-taxonomie-editeur`, `m-taxonomie-domaine`, `m-taxonomie-notion`, `m-taxonomie-competence`). | 1 et 3 |
+| 37 | B | D2 — « Le prompt du cadrage (tour 630). » et « (340) » dans Réglages ; l'infobulle de « 📖 Mode d'emploi » (« réécrit d'après le cadrage »), dans 85 scènes ; « Remet le prompt du cadrage (tour 630)… ». | Des renvois au cadrage écrits pour Paul, dans la console. | Les deux phrases sans renvoi ; les infobulles de la 7.7.1 mot pour mot. | 2 |
+| 38 | B | Le prompt n'avait ni la fenêtre ni les gestes de la 7.7.1 : « 📋 Copier », « 💾 Enregistrer » et « Annuler » menaient tous aux Réglages ; « 🔄 Restaurer » ne demandait rien ; les jetons `{{…}}` restaient visibles. | La fenêtre était une maquette du texte, pas de la fenêtre. | `c-reglages-prompt` : la fenêtre de la 7.7.1 (l. 6431 à 6505), le prompt tel que l'app le copie, chaque jeton rempli d'après les vraies données (le chapitre 1 de 3e et ses 12 compétences, les libellés élève, les difficultés sans temps, les durées de 649, les limites des mesures) ; « 📋 Copier » dit « ✅ Prompt copié dans le presse-papiers ». Scène nouvelle `c-reglages-prompt-modifier` : le gabarit modifiable, jetons compris, « 💾 Enregistrer » (« ✅ Consignes enregistrées — elles te suivent d'un appareil à l'autre. »), « ↩️ Annuler », « 🔄 Restaurer le prompt par défaut » avec la boîte « confirm » de la 7.7.1 dessinée, son texte exact. | 1 et 3 |
+| 39 | B | Une centaine d'infobulles de gestes qui existent déjà n'étaient pas celles de la 7.7.1 (l'en-tête de la console, le pilotage, la correction, le collage, l'éditeur, Sauvegarde, le mode test). | Réécrites pour Paul à chaque étape, sans distinguer ce que le cadrage change. | Les infobulles de la 7.7.1, mot pour mot (`TITRES_771`, `src/complement1.js`, posées par `poserGestes`) ; celles que le cadrage change gardent leur texte, avec le point cité dans `banc/existant/retraits.json`. | 1 |
+| 40 | B | Des éléments de la 7.7.1 perdus sans point du cadrage : les infobulles des compteurs du pilotage, du bandeau d'état, des cartes « Question en cours / passée », de la correction (position, niveau, taux), de la bande des questions du téléphone ; « Nombre de points que vaut cette question » ; « ✓ J'ai compris » ; « 📊 Mes évaluations » côté élève ; dans l'éditeur, le champ JSON et « 🔍 Vérifier le format », les indications des champs, la case des bonnes réponses, « ➕ Ajouter une question » ; l'indication du JSON au collage ; « Question suivante → » fermé avant la révélation ; « 🔓 Rouvrir Q2 » du téléphone devenu « … pour tous » ; la bande des questions absente du téléphone avant la révélation. | Les écrans refaits sans inventaire de l'existant. | Tous rétablis, avec les mots de la 7.7.1. « 📊 Mes évaluations » se place à côté du nom de l'élève et pas sous la carte : sur une demi-tablette, la place sous la carte est celle des choix (464) ; l'étalon reste à 67 px. | 1 |
+| 41 | B | D4 — « 👀 Écoute le prof — la correction sera révélée. » absente (défaut 19 de la v5). | Le banc interdisait « le prof » côté élève. | Rétablie sous les choix, à la lecture du voisin, dans toutes les scènes d'avant la révélation (`t-corr-q1/q2/q3-lecture`, `t-corr-seul`, `x610-3-a-correction`) ; « ✅ Réponse enregistrée — tu peux encore la changer » reste là où 526 la met. La vérification 4 n'interdit plus que « va voir », « viens me voir », « venez me voir ». Sur la vraie question 3 de 3e, l'écran de lecture est resserré pour tenir (20 px de reste). | 1 et 4 |
+| 42 | B | D5 — le PDF portait l'encadré « Exemple de la maquette… » et 121 soulignés orange. | `pdf632.html` est la sortie de relecture de `gen632.js`. | `build.py` retire l'encadré et le style `.prov` ; la vérification 9 compare le texte, encadré mis à part. | 2 et 9 |
+| 43 | B | D6 — le bloc « 🎯 Ton estimation » de Michel disait « un peu surestimé » pour deux niveaux d'écart. | La phrase de la 7.7.1 gardée telle quelle. | `degreSurestime(écart)` : deux niveaux ou plus, « nettement » (632) ; un niveau, « un peu ». Partout où le bloc paraît. Le bloc disait aussi « sur 3 » avec une question annulée : il dit le vrai total. | 5 |
+| 44 | B | La garde 3 croyait lire la liste des compétences dans l'éditeur d'évaluation, et exigeait les 28 là où leurs groupes sont fermés. | Elle cherchait des codes dans toute la page. | Elle lit la section « 🧩 Les compétences » : les 8 groupes et leur compte, chaque groupe ouvert en entier, et les 28 quand tous sont ouverts. | 3 |
+| 45 | B | La garde 1 comparait les infobulles calculées mot pour mot (« Q10 est la 1e question révélée »). | Les données de la séance jouée sur le faux hub ne sont pas celles de la maquette. | Infobulles comparées à leur forme, comme les libellés (nombres, noms, « pas de réponse » ou « a/b bonnes (x %) »). | 1 |
+| 46 | B | Le banc entier, après les corrections : le nom de l'élève chevauchait le titre (élève seul, bilan imprimé) ; la phrase du degré, collée à celle de la 7.7.1, était introuvable dans ce que Paul a validé ; « ex : DUPONT Marie » (l'indication d'`index.html`) pris pour un élève ; « ✏️ Modifier » d'une notion déjà ouverte ne faisait rien. | L'en-tête de l'élève avait perdu sa marge ; deux phrases validées séparément ne faisaient qu'un texte ; l'indication n'était pas déclarée ; `taxoEditerOuvrir` recharge le référentiel (l. 2598), la maquette ne le faisait pas. | La marge rendue ; les deux phrases en deux morceaux ; l'indication déclarée dans le banc avec sa ligne ; « ✏️ Modifier » montre « Chargement du référentiel… » puis le formulaire, comme `taxoRafraichir(true)`. | 3, 5, 7, 8 |
+| 47 | C | D3 — les limites de longueur se contredisaient : à énoncé court, 5 choix tenaient 410 caractères et 6 choix 480 ; à 6 choix, la limite tombait de 480 à 120 entre 120 et 150 caractères d'énoncé. | La mesure répartissait les longueurs comme la vraie question 3, autrement à chaque nombre de choix, et donnait un total de choix. | La mesure refaite (`mesures/mesurer.js`, `mesures/mesure-page.js`) : tous les choix à la même longueur, la limite d'un choix, l'énoncé de 40 à 300 par pas de 20, le choix par pas de 5 ; elle ne croît jamais ; l'étalon reste à 67 px ; le texte de `{{LIMITES}}` est dans `limites.json`, et le prompt de Réglages le porte. La vraie question 3 tient, sans respecter la nouvelle limite (137 caractères pour son plus long choix, 70 permis) : `mesures/README.md` le dit. | 4 (et son échantillon rejoué dans la maquette) |
+
+
 ## Scène par scène : ce que Paul peut regarder
 
-*Dans `maquette-qcm-v5.html`, `#scene=ID`, ou le sommaire ⚙. La colonne « Étape » dit quelle étape du mandat a fini la scène. Les mêmes, en images : `captures/NNN-ID.png` et le livret.*
+*Dans `maquette-qcm-v6.html`, `#scene=ID`, ou le sommaire ⚙. La colonne « Étape » dit quelle étape a fini la scène (1 à 5 : le mandat ; C1 : le complément 1, qui l'a créée). Les mêmes, en images : `captures/NNN-ID.png` et le livret.*
 
 ### Préparer l'évaluation
 
@@ -539,27 +633,34 @@ Le banc a grandi : la vérification 9 compare chaque commentaire affiché à cel
 | N° | Scène | Ce que Paul peut regarder | Étape |
 | --- | --- | --- | --- |
 | 150 | `#scene=c-reglages` | Réglages, en cartes : la classe, le prompt, les durées de la séance, les niveaux de maîtrise, les textes. | 4 |
-| 151 | `#scene=c-reglages-prompt` | Le prompt de création d'éval. | 4 |
-| 152 | `#scene=m-classe-exclusions` | MJPC, Élèves & codes : « 🚫 Jamais avec… », pour chaque élève. | 4 |
-| 153 | `#scene=m-exclusion-refusee` | Une quatrième exclusion : refusée, avec la raison. | 4 |
-| 154 | `#scene=m-taxonomie-competences` | MJPC, Taxonomie : les compétences et leur libellé élève. | 4 |
+| 151 | `#scene=c-reglages-prompt` | Le prompt de création d'éval, tel que l'app le copie : le chapitre et ses compétences, les difficultés, les durées et les limites de longueur à la place des jetons. | 4 |
+| 152 | `#scene=c-reglages-prompt-modifier` | Le prompt en modification : le gabarit enregistré, jetons compris ; « 💾 Enregistrer », « ↩️ Annuler », « 🔄 Restaurer le prompt par défaut ». | C1 |
+| 153 | `#scene=m-classe-exclusions` | MJPC, Élèves & codes, comme dans le site : la clé saisie, l'import, chaque élève avec « 🚫 Jamais avec… » après le ◆. | 4 |
+| 154 | `#scene=m-exclusion-refusee` | Une quatrième exclusion : refusée, avec la raison. | 4 |
+| 155 | `#scene=m-fiche-eleve` | Un clic sur un nom : la fiche de l'élève, telle qu'elle est dans le site (sexe, dispositif, cases PAP). | C1 |
+| 156 | `#scene=m-taxonomie` | MJPC, Taxonomie : le référentiel, l'éditeur fermé. | C1 |
+| 157 | `#scene=m-taxonomie-editeur` | « Ouvrir l'éditeur » : la vraie taxonomie, version 1.4.0, ses 7 domaines ; puis « Les compétences ». | C1 |
+| 158 | `#scene=m-taxonomie-domaine` | Un domaine ouvert, une famille ouverte : ses notions, « ✏️ Modifier », « Désactiver », « + Nouvelle notion ». | C1 |
+| 159 | `#scene=m-taxonomie-notion` | « ✏️ Modifier » une notion : ses libellés, ses niveaux, son exemple. | C1 |
+| 160 | `#scene=m-taxonomie-competences` | « Les compétences » : les 28, sous leurs groupes, avec leur libellé élève. | 4 |
+| 161 | `#scene=m-taxonomie-competence` | « ✏️ Modifier » une compétence : le même formulaire, avec son libellé élève. | C1 |
 
 ### Une autre séance
 
 | N° | Scène | Ce que Paul peut regarder | Étape |
 | --- | --- | --- | --- |
-| 155 | `#scene=c-rattrapage` | Le rattrapage. | 3 |
+| 162 | `#scene=c-rattrapage` | Le rattrapage. | 3 |
 
 ### Le mode test
 
 | N° | Scène | Ce que Paul peut regarder | Étape |
 | --- | --- | --- | --- |
-| 156 | `#scene=x620-1-mode-test-ouverture` | Le mode test, à l'ouverture : ta vraie console d'avant l'heure, 15 tablettes. | 4 |
-| 157 | `#scene=x620-2-mode-test-reflexion` | Le mode test, pendant la réflexion. | 4 |
-| 158 | `#scene=x620-3-mode-test-en-grand` | « 🔍 Jouer en grand ». | 4 |
+| 163 | `#scene=x620-1-mode-test-ouverture` | Le mode test, à l'ouverture : ta vraie console d'avant l'heure, 15 tablettes. | 4 |
+| 164 | `#scene=x620-2-mode-test-reflexion` | Le mode test, pendant la réflexion. | 4 |
+| 165 | `#scene=x620-3-mode-test-en-grand` | « 🔍 Jouer en grand ». | 4 |
 
 ### Annexe : la demi-tablette
 
 | N° | Scène | Ce que Paul peut regarder | Étape |
 | --- | --- | --- | --- |
-| 159 | `#scene=t-annexe` | L'étalon des mesures : la vraie question 3 de l'évaluation de 3e (6 choix longs), sur une demi-tablette : 67 px de reste. | 5 |
+| 166 | `#scene=t-annexe` | L'étalon des mesures : la vraie question 3 de l'évaluation de 3e (6 choix longs), sur une demi-tablette : 67 px de reste. | 5 |

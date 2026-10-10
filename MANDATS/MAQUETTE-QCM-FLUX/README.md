@@ -393,3 +393,22 @@ Demandes de Paul : au tour 610 (09/10, 13:45), « B, mais à quel moment précis
 **Capture 610-9 — Téléphone.** Le même moment, sur le téléphone de Paul.
 
 ![Capture 610-9](captures-610/610-9-telephone-alerte.png)
+
+---
+
+## Tour 620 — le mode test, la même chose que le réel (points 571 à 577)
+
+Demande de Paul (10/10, 07:00) : « Ok donc mets à jour le mode test pour qu'il soit la même chose que le réel. » Après l'audit du mode test de la 7.7.1 (https://github.com/siteflow-io/mjpc-chantier/blob/main/AUDITS/QCM-MODE-TEST-09-10/README.md). Trois captures à part, dans `captures-620/` (`maquette/maquette620.js` et `maquette620.css`, assemblés par `build620.py`, pris par `capture620.js`). Elles remplacent la capture 64, qui ne partait pas de l'existant. Tout ce que la 7.7.1 a est gardé, avec ses mots ; ce qui change est souligné en pointillés orange.
+
+**Capture 620-1 — Console, page entière.** À l'ouverture : l'en-tête, « 🔬 Éprouver les mécanismes livrés » et ses cinq boutons, « 🎬 Préparer un cas » (nouveau, huit cas), « 🎓 Entrer comme un élève », l'encadré ; le panneau prof est la console d'avant l'heure, sur la classe de test (30 élèves) et la démo, avec les 15 binômes ; en bas, les 15 tablettes simulées attendent à « Combien êtes-vous sur cette tablette ? ».
+
+![Capture 620-1](captures-620/620-1-mode-test-ouverture.png)
+
+**Capture 620-2 — Console, page entière.** Pendant la réflexion de la question 3 de la démo : le panneau prof est la vraie console de séance ; sous chaque tablette, la feuille simulée de chaque élève, tapée par Paul, posée à côté de la tablette.
+
+![Capture 620-2](captures-620/620-2-mode-test-reflexion.png)
+
+**Capture 620-3 — Console, 1150 de haut.** « 🔍 Jouer en grand » : la tablette 1 à la taille d'une vraie, au « Oui / Non » d'Élise, avec les deux feuilles dessous.
+
+![Capture 620-3](captures-620/620-3-mode-test-en-grand.png)
+

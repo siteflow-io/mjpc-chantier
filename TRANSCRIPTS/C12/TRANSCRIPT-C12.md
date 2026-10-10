@@ -18991,3 +18991,35 @@ Réponse mot pour mot, avec trois captures envoyées dans la conversation :
 570. **La suite** : les captures et le banc sont au sas, https://github.com/siteflow-io/mjpc-chantier/blob/main/AUDITS/QCM-MODE-TEST-09-10/README.md. Quand 566 à 569 te vont, je refais la maquette entière en une fois.
 
 09/10/2026 21:21 MEMO
+
+---
+
+## TOUR 620 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (10/10, 07:00) Ok donc mets à jour le mode test pour qu'il soit la même chose que le réel.
+
+---
+
+## TOUR 620 — Claude (conscience n°12)
+
+Relus : la capture 64 et sa scène (maquette2.js, ModeTest), l'audit du tour 619. Trois scènes nouvelles faites sur la maquette (scratchpad maquette/maquette620.js et maquette620.css), à partir du mode test de la 7.7.1 : les 30 élèves fictifs et leurs noms, ses boutons et ses mots ; la vraie console d'avant l'heure et de séance de la maquette. Déposé au sas : MANDATS/MAQUETTE-QCM-FLUX/captures-620/, les sources dans maquette/, le README de la maquette (section « Tour 620 »). Rien codé dans l'app. CADRAGE-QCM.md complété (tour 620, ligne d'état). Rien écrit au hub, ni en production.
+
+Réponse mot pour mot, avec les trois captures envoyées dans la conversation :
+
+571. **« Mets à jour le mode test » : fait dans la maquette, pas dans l'app**, puisque le code vient avec le mandat, comme tout le cadrage. Trois captures refont la capture 64, qui était fausse : je l'avais faite sans partir de l'existant, avec 6 élèves inventés, et elle avait perdu « 🔬 Éprouver les mécanismes livrés ».
+
+572. **La règle, ma proposition pour le mandat** : le mode test monte les vrais composants, comme la 7.7.1 le fait déjà (« on réutilise, on ne copie jamais », l. 4419) : ta vraie console d'avant l'heure, ta vraie console de séance, ton vrai téléphone, la vraie tablette élève en deux moitiés. Il n'ajoute que six choses : la classe fictive de 30 élèves, la feuille simulée, les outils 🔬, « 🎲 Tous les élèves répondent », « 🎬 Préparer un cas », et la purge à la sortie. Un banc le vérifie : il joue tout le déroulé réel dans le mode test, geste par geste.
+
+573. **Capture 620-1, à l'ouverture.** Tout le haut de la 7.7.1 est gardé, avec ses mots. « 🎬 Préparer un cas » s'ajoute, avec huit cas. Le panneau prof est ta console d'avant l'heure, sur la classe de test et la démo, avec les 15 binômes. En bas, les 15 tablettes attendent à « Combien êtes-vous sur cette tablette ? ».
+
+574. **Capture 620-2, pendant la réflexion.** Le panneau prof est ta vraie console de séance. Sous chaque tablette, la feuille de chaque élève, que tu tapes : elle est posée à côté de la tablette, comme en classe, et pas dedans.
+
+575. **Capture 620-3, « 🔍 Jouer en grand ».** Une tablette s'ouvre à la taille d'une vraie, avec ses deux feuilles dessous : en petit, les 15 tablettes servent à regarder ; en grand, à jouer. Dans l'exemple, Élise a écrit « 6 pattes » et cliqué « huit pattes » au dernier moment : à toi de jouer son « Oui » ou son « Non ».
+
+576. **Ce que ça coûte** : 30 élèves vivent en même temps sur ta page, comme les 30 panneaux d'aujourd'hui, que la 7.7.1 fait tourner sans erreur (mesuré au banc, tour 619).
+
+577. **La suite** : les captures sont au sas, https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/MAQUETTE-QCM-FLUX/README.md (section « Tour 620 »). Quand 571 à 576 te vont, je refais la maquette entière en une fois ; ces trois captures y remplacent la 64.
+
+10/10/2026 07:05 MEMO

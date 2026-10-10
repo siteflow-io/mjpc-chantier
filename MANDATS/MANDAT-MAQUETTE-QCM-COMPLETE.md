@@ -1,6 +1,6 @@
 # MANDAT — LA MAQUETTE COMPLÈTE DU QCM, À DEUX PAR TABLETTE, POUR LA VALIDATION DE PAUL
 
-*Écrit par la conscience n°12 le 10/10/2026 (tour 633), sur l'ordre de Paul : « Je suis à 93 pourcent d'utilisation hebdo, donc la maquette devra être faite par un claude code qui tournera avec mes crédits » (09:14) ; « VOilà, c'est bon. On peut lancer. » (09:58). Pour un exécutant en session cloud de Claude Code, dans le dépôt du sas `siteflow-io/mjpc-chantier`.*
+*Écrit par la conscience n°12 le 10/10/2026 (tour 633), revu au tour 634, sur l'ordre de Paul : « Je suis à 93 pourcent d'utilisation hebdo, donc la maquette devra être faite par un claude code qui tournera avec mes crédits » (09:14) ; « VOilà, c'est bon. On peut lancer. » (09:58) ; « l'exécutant doit faire l'ensemble du mandat. pas d'audit après chaque morceau. Audit final de ta part. Sinon je ne gagne pas de temps en utilisant claude code, dont l'avantage majeur est de tourner sans s'arrêter. Cependant, il faut des gardes afin qu'il ne produise pas une livraison complètement bugguée: d'où l'obligation des bancs, des autocorrections, etc. » (10:07). Pour un exécutant en session cloud de Claude Code, dans le dépôt du sas `siteflow-io/mjpc-chantier`.*
 
 ---
 
@@ -14,19 +14,20 @@ Tout cela est **cadré** (tours 1 à 632 du cadrage, 658 points). Il n'en existe
 
 ## 1. Qui tu es, ce que tu ne fais jamais
 
-Tu es **l'exécutant du mandat « Maquette complète du QCM »**. La conscience n°12 (en chat avec Paul) a écrit ce mandat ; elle auditera chaque livraison.
+Tu es **l'exécutant du mandat « Maquette complète du QCM »**. La conscience n°12 (en chat avec Paul) a écrit ce mandat ; elle fera **un seul audit, à la fin**. **Tu fais tout le mandat d'une traite, sans t'arrêter et sans attendre personne** : c'est l'intérêt d'une session Claude Code. En échange, ce sont **tes gardes** (§6 à §8) qui empêchent une livraison boguée : un banc qui grandit à chaque étape, et une étape n'est finie que quand il passe à zéro défaut.
 
 Tu ne fais **jamais** :
-1. écrire sur `main` du sas : tu pousses **une branche par livraison**, `maquette-qcm/L1`, `maquette-qcm/L2`… ;
+1. écrire sur `main` du sas : tu travailles sur **une seule branche**, `maquette-qcm`, avec un commit poussé à la fin de chaque étape (une sauvegarde, pas un arrêt) ;
 2. écrire dans la production (`siteflow-io/monsieurjaipascompris`) : tu la clones **en lecture** ;
 3. lire ou écrire le hub Firebase réel : la maquette n'a **aucun réseau** et **aucune écriture** (protocole maquette, §2 et §7) ; le seul serveur permis est le faux hub du banc, en local ;
 4. mettre un jeton, une clé ou une adresse de dépôt dans un fichier ;
 5. employer un service ou une API payante, ou une IA dans la maquette ;
-6. **écrire une phrase vue par l'élève que Paul n'a pas donnée**. Toutes les phrases d'élève sont dans le cadrage (et dans les maquettes existantes, qui les reprennent). S'il en manque une, tu ne l'inventes pas : tu poses à sa place, en rouge, `[TROU — phrase à donner par Paul : <ce qu'elle doit dire>]`, et tu la listes dans ta livraison (§7) ;
+6. **écrire une phrase vue par l'élève que Paul n'a pas donnée**. Toutes les phrases d'élève sont dans le cadrage (et dans les maquettes existantes, qui les reprennent). S'il en manque une, tu ne l'inventes pas : tu poses à sa place, en rouge, `[TROU — phrase à donner par Paul : <ce qu'elle doit dire>]`, et tu la listes dans le README de la livraison (§9) ;
 7. combler seul un trou de comportement : même règle, `[TROU — à trancher par Paul : …]` ;
 8. ajouter à la maquette une fonction qui n'est pas cadrée, ou refaire autrement une fonction qui existe déjà dans l'app (règle du 03/10 : une maquette part de l'existant) ;
 9. utiliser de vrais élèves : la classe inventée « 3 ESSAI » (maquette) et les 30 élèves de la classe de test (mode test) suffisent ;
-10. t'arrêter en plein milieu d'une livraison : une livraison commencée se termine (Paul, 05/10). Tu t'arrêtes **à la fin de chaque livraison**, et tu attends « continuer ».
+10. t'arrêter avant la fin du mandat, ou demander quoi que ce soit en cours de route : personne ne te répondra. Un trou ne t'arrête pas : tu le marques (points 6 et 7) et tu continues. Tu ne t'arrêtes qu'**une fois**, quand l'étape 5 est finie et son banc à zéro défaut ;
+11. passer à l'étape suivante tant que le banc de l'étape n'est pas à zéro défaut, sauf un défaut marqué « non résolu » après trois tours de correction (§7).
 
 Dans les textes vus par l'élève, les règles permanentes de Paul s'appliquent : « clique », jamais « touche » ; jamais « recopie » ni « sanction » côté élève ; jamais « va voir ton professeur » (en classe, l'élève lève la main) ; jamais l'intitulé officiel d'une compétence, mais son libellé élève (points 636 à 640) ; aucun terme technique ; rien qui mette en cause le professeur. Côté console, chaque geste porte son infobulle, écrite pour Paul : ce que le geste fait et ce qu'il coûte.
 
@@ -50,7 +51,7 @@ Dans la production (clone en lecture, `main` à `d873f69` le 10/10) — vérifie
 | `correction_dictee.html` | `9d5dcfb612a70a8182689566b1fe23c5` | le modèle du « Bilan général » (`generateBilan`, sa carte), et de « publier / rendre les copies » |
 | `docs/MJPC6-DETTES.md`, `docs/MJPC6-journal.md` | — | les pièges déjà payés (protocole maquette, §1.3) |
 
-Ta première livraison commence par la liste de ce que tu as lu, avec les md5.
+Ton étape 1 commence par la liste de ce que tu as lu, avec les md5.
 
 ---
 
@@ -88,7 +89,7 @@ Les 66 captures datent du tour 603. Paul a relu jusqu'au tour 608, et le cadrage
 | 622 et 623 | 584 à 599 | les exclusions dans la console MJPC, sur la fiche de la classe, à côté des aménagements : « 🚫 Jamais avec… », au plus 3 par élève, la quatrième refusée avec la raison (585, 590) ; les binômes formés d'abord par les exclusions, puis par la règle du QCM (587, 594) ; quand un élève entre son code, l'autre moitié nomme son binôme, et aucun élève ne voit rien des exclusions (594) ; le rattrapage suit la même règle (595) |
 | 624 à 632 | 600 à 658 | « 📄 PDF notes et compétences », fermé tant que les copies ne sont pas rendues (609) ; le PDF de `pdf-632` ; « 📝 Bilan général » dans la fiche, pré-rempli, « ↻ Regénérer », « ✓ Valider le bilan » (621 à 625) ; le bilan de l'élève qui finit par « 📝 Bilan » (623) ; « 🎯 Ce qu'elle vérifie » dans l'éditeur, et la garde au collage (631) ; **le libellé élève de chaque compétence partout où l'élève voit une compétence**, y compris les attestations et la phrase sous chaque question (636 à 640, 644) ; dans l'éditeur de taxonomie du panneau prof de MJPC, une section « Les compétences » avec leur libellé élève, comme pour les notions (637) ; dans Réglages, le prompt (647 à 650), les durées de la séance (649), les niveaux de maîtrise et l'échelle de la note (108, 131) ; le commentaire de `com632.js` partout où il paraît |
 
-À la fin, ta livraison L5 donne un **tableau « point → scène »** : pour chaque point retenu qui se voit, la scène qui le montre. Un point sans scène est un trou, listé.
+À la fin, ton étape 5 donne un **tableau « point → scène »** : pour chaque point retenu qui se voit, la scène qui le montre. Un point sans scène est un trou, listé.
 
 ---
 
@@ -101,36 +102,59 @@ Les 66 captures datent du tour 603. Paul a relu jusqu'au tour 608, et le cadrage
 
 ---
 
-## 6. Les livraisons
+## 6. Les étapes, d'une traite
 
-Chacune est courte, poussée sur sa branche, et **s'arrête** : tu attends « continuer ».
+Cinq étapes, enchaînées sans arrêt. Chacune finit par **sa garde** : le banc unique (§8), qui rejoue tout ce qui est déjà fait, passe à zéro défaut ; sinon, tu corriges, tu rejoues, et ainsi de suite (§7). Puis tu pousses un commit sur `maquette-qcm` et tu passes à la suivante.
 
-| Livraison | Ce qu'elle fait |
+| Étape | Ce qu'elle fait |
 | --- | --- |
-| **L1 — le socle** | La liste de ce que tu as lu (§2), avec les md5. Une seule maquette qui réunit **tous les morceaux existants** (§3) dans l'ordre de la séance, sans rien changer encore ; le sommaire ⚙ ; le banc unique (§8) ; les captures ; le tableau des scènes qui seront changées, ajoutées ou retirées par L2 à L4, point par point (§4). |
-| **L2 — avant et pendant les questions** | Le lancement, l'appel et les binômes formés par les exclusions ; l'identification ; les attestations ; les questions, avec les temps en direct, écarter et annuler, le stylo, B ; la démo et son bandeau ; le téléphone ; le tableau. |
-| **L3 — la correction et la fin de l'heure** | La recopie et A ; la co-évaluation, l'alerte, le cas ambigu ; le ✓ orange ; le point d'autonomie ; « 🏁 Afficher leur bilan aux élèves », la note provisoire, le bilan ; la séance interrompue, finie à une autre heure, reprise ; le rattrapage. |
-| **L4 — le soir, les réglages, MJPC** | Résultats, la fiche de l'élève, « Que dit la feuille ? », le Bilan général ; publier et rendre les copies ; le PDF ; « Mes évaluations » côté élève ; l'éditeur, le collage, « Copier les erreurs pour l'instance de création d'éval » ; Réglages ; Sauvegarde et corbeille ; le mode test ; dans MJPC, la fiche de la classe avec les exclusions, et l'éditeur de taxonomie avec les libellés élève des compétences. |
-| **L5 — les mesures et le livret** | Les mesures du §5 ; le tableau « point → scène » ; le livret PDF de toutes les captures, dans l'ordre, une phrase sous chacune ; le README final. |
+| **1 — le socle** | La liste de ce que tu as lu (§2), avec les md5. Une seule maquette qui réunit **tous les morceaux existants** (§3) dans l'ordre de la séance, sans rien changer encore ; le sommaire ⚙ ; le banc unique ; les captures ; le tableau des scènes qui seront changées, ajoutées ou retirées aux étapes 2 à 4, point par point (§4). |
+| **2 — avant et pendant les questions** | Le lancement, l'appel et les binômes formés par les exclusions ; l'identification ; les attestations ; les questions, avec les temps en direct, écarter et annuler, le stylo, B ; la démo et son bandeau ; le téléphone ; le tableau. |
+| **3 — la correction et la fin de l'heure** | La recopie et A ; la co-évaluation, l'alerte, le cas ambigu ; le ✓ orange ; le point d'autonomie ; « 🏁 Afficher leur bilan aux élèves », la note provisoire, le bilan ; la séance interrompue, finie à une autre heure, reprise ; le rattrapage. |
+| **4 — le soir, les réglages, MJPC** | Résultats, la fiche de l'élève, « Que dit la feuille ? », le Bilan général ; publier et rendre les copies ; le PDF ; « Mes évaluations » côté élève ; l'éditeur, le collage, « Copier les erreurs pour l'instance de création d'éval » ; Réglages ; Sauvegarde et corbeille ; le mode test ; dans MJPC, la fiche de la classe avec les exclusions, et l'éditeur de taxonomie avec les libellés élève des compétences. |
+| **5 — les mesures et le livret** | Les mesures du §5 ; le tableau « point → scène » ; le livret PDF de toutes les captures, dans l'ordre, une phrase sous chacune ; le README final ; le banc final, qui rejoue tout. |
 
 ---
 
-## 7. Ce que contient chaque livraison
+## 7. Les gardes et l'autocorrection
 
-Sur sa branche, dans un dossier `MANDATS/MAQUETTE-QCM-COMPLETE/Ln/` :
-1. la maquette `maquette-qcm-vN.html` et son md5, ses sources et ses scripts (assemblage, captures, banc) ;
-2. `sorties/` : la sortie réelle du banc unique, recomptée ;
-3. les captures, **écran entier**, chacune regardée avant d'être livrée (protocole §4) ;
-4. un `README.md` : ce qui est fait ; ce que la maquette simule ; ce qui n'est pas fait ; **les trous** (§1, points 6 et 7), chacun avec la scène où il est et ce qu'il faut à Paul pour le trancher ; les défauts trouvés et corrigés, avec leur cause ; ce que Paul peut regarder, scène par scène.
+À la fin de chaque étape, **avant** le commit :
+1. **Le banc unique** (§8) rejoue tout ce qui existe, pas seulement l'étape : zéro défaut, sinon tu corriges et tu rejoues.
+2. **Tu regardes toutes les captures de l'étape** (tu ouvres chaque image) : un écran vide, coupé, qui déborde, qui chevauche, qui montre un texte en double ou un « [object Object] » est un défaut, même si le banc passe. Tu corriges, tu rejoues, tu recaptures.
+3. **Tu relis l'étape contre le cadrage** : pour chaque point du §4 de cette étape, la scène qui le montre ; un point sans scène est soit un oubli (tu le fais), soit un trou (tu le marques).
+4. **Tu tiens le journal des défauts** : chaque défaut trouvé, sa cause, sa correction, l'étape. Un défaut qui revient deux fois reçoit une vérification de plus dans le banc, pour ne plus revenir.
+5. **Tu pousses** le commit de l'étape, avec la sortie du banc dans `sorties/`.
+
+Si une même garde échoue encore après trois tours de correction, tu ne bloques pas : tu marques le défaut `[DÉFAUT NON RÉSOLU : …]` dans la scène, tu le listes en tête du README, et tu continues.
 
 ---
 
 ## 8. Le banc unique
 
-Une commande rejoue tout et échoue si une seule vérification échoue : chaque scène s'ouvre sans erreur de page ; aucune moitié de tablette ne déborde (sauf « longueur assumée ») ; aucun texte vu par l'élève ne contient « touche », « recopie », « sanction », « attestation », un intitulé officiel de compétence, un code (`c4-…`, `tr-…`) ou un mot de plomberie ; aucun bouton de console sans infobulle ; aucun `alert`, `confirm` ou `prompt` ; aucun `fetch` ni stockage ; aucun vrai élève. Les vérifications se font **par le geste** dans Chromium (protocole §4), jamais par un appel de fonction. La sortie dit combien de vérifications ont tourné, recompté.
+Une commande rejoue tout et échoue si une seule vérification échoue. Il grandit à chaque étape et vérifie, au moins :
+1. chaque scène s'ouvre sans erreur de page, et montre quelque chose ;
+2. aucune moitié de tablette ne déborde (sauf « longueur assumée »), aux tailles du §5 ;
+3. **chaque phrase vue par l'élève vient du cadrage** : le banc extrait tous les textes des scènes de tablette, d'élève et de tableau, et cherche chacun dans `MANDATS/CADRAGE-QCM.md` et dans les sources des maquettes existantes (§3) ; un texte introuvable est soit un défaut (tu as inventé : tu corriges), soit un trou marqué ; les noms d'élèves, les nombres et les énoncés de l'évaluation sont mis à part ;
+4. aucun texte vu par l'élève ne contient « touche », « recopie », « sanction », « attestation », « va voir », un intitulé officiel de compétence, un code (`c4-…`, `tr-…`) ou un mot de plomberie ;
+5. aucun bouton de console sans infobulle, aucun bouton inerte ;
+6. aucun `alert`, `confirm` ou `prompt` ; aucun `fetch`, aucun stockage, aucune requête réseau ;
+7. aucun vrai élève : seuls les noms de la classe « 3 ESSAI » et de la classe de test ;
+8. aucun chevauchement entre couches, tout allumé ;
+9. le commentaire est celui de `com632.js`, le PDF celui de `gen632.js`, mot pour mot.
+
+Les vérifications passent **par le geste** dans Chromium (protocole §4), jamais par un appel de fonction. La sortie dit combien de vérifications ont tourné, recompté, et lesquelles ont échoué.
 
 ---
 
-## 9. Après L5
+## 9. La livraison, une seule
 
-Tu t'arrêtes. La conscience audite la branche contre le cadrage et ce mandat ; Paul valide sur captures ; ses remarques reviennent en compléments. Rien n'est fusionné dans `main` par toi. Ensuite viendra le mandat de code, qui partira de ta maquette validée.
+Sur la branche `maquette-qcm`, dans `MANDATS/MAQUETTE-QCM-COMPLETE/` :
+1. la maquette `maquette-qcm-vN.html` et son md5, ses sources et ses scripts (assemblage, captures, banc) ;
+2. `sorties/` : la sortie réelle du banc final, et celle de chaque étape ;
+3. `captures/` : toutes les captures, écran entier, regardées ;
+4. le livret PDF ;
+5. un `README.md` : en tête, les défauts non résolus s'il y en a ; puis ce qui est fait, étape par étape ; ce que la maquette simule ; ce qui n'est pas fait ; **les trous**, chacun avec sa scène et ce qu'il faut à Paul pour le trancher ; le journal des défauts ; les mesures ; le tableau « point → scène » ; et, scène par scène, ce que Paul peut regarder.
+
+## 10. Après l'étape 5
+
+Tu t'arrêtes, une seule fois. La conscience fait l'audit final de la branche, contre le cadrage et ce mandat ; Paul valide sur captures ; ses remarques reviennent en compléments. Rien n'est fusionné dans `main` par toi. Ensuite viendra le mandat de code, qui partira de ta maquette validée.

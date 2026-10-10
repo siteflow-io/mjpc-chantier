@@ -19433,3 +19433,35 @@ Réponse mot pour mot :
 663. **Ensuite** : quand il s'arrête, dis-le-moi ; j'audite sa branche, puis tu lui dis « continuer, fais la livraison L2 », et ainsi de suite jusqu'à L5.
 
 10/10/2026 10:02 MEMO
+
+---
+
+## TOUR 634 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (10/10, 10:07) non, l'exécutant doit faire l'ensemble du mandat. pas d'audit après chaque morceau. Audit final de ta part. Sinon je ne gagne pas de temps en utilisant claude code, dont l'avantage majeur est de tourner sans s'arrêter. Cependant, il faut des gardes afin qu'il ne produise pas une livraison complètement bugguée: d'où l'obligation des bancs, des autocorrections, etc.
+
+---
+
+## TOUR 634 — Claude (conscience n°12)
+
+Refait `MANDATS/MANDAT-MAQUETTE-QCM-COMPLETE.md` : une seule branche, cinq étapes enchaînées sans arrêt, une garde à la fin de chaque étape (banc qui rejoue tout, captures regardées, relecture contre le cadrage, journal des défauts), la vérification des phrases d'élève contre le cadrage, une seule livraison et un seul audit.
+
+Réponse mot pour mot :
+
+664. **Compris, et le mandat est refait** : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/MANDAT-MAQUETTE-QCM-COMPLETE.md. L'exécutant fait tout d'une traite, cinq étapes enchaînées sans s'arrêter et sans rien demander ; un trou ne l'arrête pas, il le marque et continue. Il ne s'arrête qu'une fois, à la fin, et je fais un seul audit. Cela remplace, pour les sessions Claude Code, la règle des arrêts relancés par « continuer ».
+
+665. **Les gardes, à la fin de chaque étape, avant d'aller plus loin.** Le banc rejoue tout ce qui est déjà fait, pas seulement l'étape, et doit être à zéro défaut ; sinon il corrige et rejoue. Il ouvre et regarde chacune de ses captures. Il relit l'étape contre le cadrage, point par point. Il tient un journal des défauts, et un défaut qui revient deux fois reçoit une vérification de plus. Il pousse son travail à chaque étape, pour que rien ne se perde si la session tombe.
+
+666. **La garde la plus forte, contre l'invention** : le banc relève chaque phrase vue par l'élève et la cherche dans le cadrage et dans les maquettes déjà validées. Une phrase introuvable est soit corrigée, soit marquée comme trou à te faire trancher.
+
+667. **Un seul cas où il continue malgré un défaut** : après trois tours de correction sans succès, il marque le défaut dans la scène, le met en tête de son compte rendu, et continue.
+
+668. **La phrase à coller change** : sur claude.ai/code, nouvelle session cloud sur siteflow-io/mjpc-chantier :
+
+> Tu es l'exécutant du mandat « Maquette complète du QCM » de MJPC. Lis en entier MANDATS/MANDAT-MAQUETTE-QCM-COMPLETE.md dans ce dépôt, applique-le à la lettre, et fais tout le mandat d'une traite, sans t'arrêter avant la fin de l'étape 5.
+
+669. **Ensuite** : quand il a fini, dis-le-moi ; je fais l'audit final de sa branche, puis tu valides sur captures.
+
+10/10/2026 10:09 MEMO

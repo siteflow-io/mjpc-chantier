@@ -19521,3 +19521,29 @@ Tu es l'exécutant du mandat « Maquette complète du QCM » de MJPC. Lis en ent
 677. **Le télescope existe plus tard, au code, et je te le signale dès maintenant.** Le QCM mettra deux choses dans l'index.html de MJPC : les exclusions sur la fiche de la classe, et le libellé élève des compétences dans l'éditeur de taxonomie. Or le déroulé passe aussi par cet éditeur, pour ses notions (son cadrage 3, point 5.1). Ma proposition : au mandat de code, cette partie de MJPC part de l'index.html tel qu'il sera après la promotion du déroulé, et pas avant.
 
 10/10/2026 10:17 MEMO
+
+---
+
+## TOUR 637 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (10/10, 10:19) ok parfait. donne le message pour l'instance. je la lance.
+
+---
+
+## TOUR 637 — Claude (conscience n°12)
+
+Redonné le message à coller.
+
+Réponse mot pour mot :
+
+678. **Acquis : 674 à 677.** Le message, à coller tel quel dans la session cloud ouverte sur siteflow-io/mjpc-chantier :
+
+```
+Tu es l'exécutant du mandat « Maquette complète du QCM » de MJPC. Lis en entier MANDATS/MANDAT-MAQUETTE-QCM-COMPLETE.md dans ce dépôt, applique-le à la lettre, et fais tout le mandat d'une traite, sans t'arrêter avant la fin de l'étape 5.
+```
+
+679. **Quand il a fini**, dis-le-moi : je fais l'audit final de sa branche « maquette-qcm ».
+
+10/10/2026 10:19 MEMO

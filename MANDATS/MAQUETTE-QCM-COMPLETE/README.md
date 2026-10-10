@@ -2,6 +2,45 @@
 
 *Mandat : `MANDATS/MANDAT-MAQUETTE-QCM-COMPLETE.md`, fait d'une traite, étapes 1 à 5. Branche `maquette-qcm` (et `claude/bold-bohr-zxodms`, la même), dossier `MANDATS/MAQUETTE-QCM-COMPLETE/`.*
 
+## Complément 1 — en cours
+
+*Complément : `MANDATS/COMPLEMENT-MAQUETTE-QCM-COMPLETE-1.md` (md5 `37e0b18a532c9a0558a220d58377101a`), fait d'une traite sur `maquette-qcm`, étapes A à D. La v1 à la v5 restent telles quelles ; la livraison sera `maquette-qcm-v6.html`.*
+
+### Étape A — les gardes
+
+**Ce que j'ai lu, avec les md5.** `main` fusionné dans `maquette-qcm` (`495296f`) ; production clonée en lecture, `main` à `d873f69`, md5 vérifiés avant tout.
+
+| Fichier | md5 | Lu |
+| --- | --- | --- |
+| `MANDATS/COMPLEMENT-MAQUETTE-QCM-COMPLETE-1.md` | `37e0b18a532c9a0558a220d58377101a` | en entier |
+| `AUDITS/MAQUETTE-QCM-COMPLETE-10-10/README.md` et ses `sorties/` (`meta.txt`, `meta-infobulles.txt`, `meta-cadres.txt`, `banc-audit.txt`) | `f3593d9332c15d9333fcf52a685e64e9` | en entier |
+| `MANDATS/CADRAGE-QCM.md` | `91bec05621d8fd6893251a5100b84a89` | la ligne d'état, les tours 638 et 639 (points 680 à 696) ; cherché à chaque retrait |
+| `MANDATS/PROMPT-QCM-CREATION/README.md` | `ab11646beec84e8bd659d56d76cc8c0d` | le texte du prompt et ses jetons |
+| `MANDATS/LIBELLES-ELEVE-COMPETENCES/libelles_eleve.json` | `17e9a9876c0372bd7716e5a5acb542b0` | les 28 libellés élève |
+| `MANDATS/MAQUETTE-QCM-FLUX/maquette/com632.js` | `63f215d08ab814df819021f3425343f7` | l'estimation (« nettement » à deux niveaux d'écart) |
+| `AUDITS/QCM-TELEPHONE-09-10/README.md` | `c7541016ef7f8ed6d559174870863891` | le téléphone qui s'éteint (« mode is not defined ») |
+| `AUDITS/QCM-FAUSSE-CLASSE-3E-08-10/README.md` | `4a0faeee61e2caf17fd567d0cad199bb` | la correction de l'élève vide (« bonnes is not defined », dette 198) |
+| production : `PROTOCOLE-MAQUETTE.md` | `cea75531c1caf46e566ef45b5a9f3d17` | en entier |
+| production : `evaluation-qcm.html` (7.7.1) | `ecae65624855a1a877708986a8e984e5` | jouée écran par écran sur le faux hub, et lue là où l'écran plante |
+| production : `index.html` (MJPC) | `ac792b28f40d3a0510e725fc4a6b6985` | le panneau prof (l. 1620–1650), « Élèves & codes » (l. 5495–5606, 14740–14780), la fiche (l. 5884–6014), la taxonomie (l. 2080–2110, 2330–2612), `_modaleConfirme` (l. 6986) |
+| production : `taxonomie_atelier.json` | `26128f95a0c0b59f45f6cc672218497b` | en entier (7 domaines, 51 familles, 210 notions, 28 compétences) |
+| production : `correction_dictee.html` | `9d5dcfb612a70a8182689566b1fe23c5` | md5 vérifié |
+
+**Les inventaires de l'existant** (`banc/existant/`, garde 1) :
+- **52 écrans de la 7.7.1 relevés sur le faux hub** (`banc/fauxhub/` : le serveur, le faux Firebase et la fausse classe « 3 ESSAI » du banc de l'audit du mode test). `node banc/existant/releve.js` joue la vraie app dans Chromium : l'accueil, l'identification, la console (mode d'emploi, QR, évaluations, prompt IA, nouvelle évaluation, éditeur, impression, préparation, données, réglages), l'appel, l'attente, la réflexion, la réponse, la question close, la dernière question, l'autoévaluation, la correction avant et après « 💡 Révéler », le bilan de la classe et celui de l'élève, la fin, les résultats, la sauvegarde, « Mes évaluations », le tableau et le téléphone à chaque phase, le mode test. Chaque écran : ses boutons et leurs infobulles, ses champs, ses cases, les infobulles posées ailleurs, et pour un écran d'élève ses phrases ; avec les scènes de la maquette qui en partent (`qcm-<écran>.json`).
+- **Deux écrans de la 7.7.1 restent vides à l'écran** : la correction de l'élève, avant et après « 💡 Révéler » (`ReferenceError: bonnes is not defined`, l. 4365, la dette 198 de l'audit de la fausse classe). Le relevé le constate (`vides.json`) ; leur inventaire est tiré du code, ligne par ligne (`code-eleve-correction-*.json`). Le téléphone s'éteint de même dès qu'un élève affiché a répondu (`mode is not defined`) : il est relevé dans une seconde séance où personne ne répond.
+- **Sept écrans de MJPC tirés du code d'`index.html`**, chaque élément avec sa ligne (`node banc/existant/code.js` vérifie que chaque ligne citée contient ce qu'il en dit) : le panneau et son menu, « Élèves & codes » (clé saisie), la fiche de l'élève, la taxonomie fermée, l'éditeur ouvert, un domaine ouvert, une notion en modification (`mjpc-<écran>.json`) ; avec leur structure (les classes CSS, dans l'ordre du vrai écran).
+- **`banc/existant/retraits.json`** : ce qu'une scène ne montre plus, chacun avec le point du cadrage qui le retire, cité mot pour mot (le banc vérifie que la citation est dans `CADRAGE-QCM.md`, dans le point cité).
+
+**Les cinq gardes** (`banc/gardes.js`, branchées dans `banc/banc.js` ; elles lisent la scène ouverte, et dans ses iframes) :
+1. **L'existant** : chaque scène est comparée aux écrans dont elle part, par la même extraction (`banc/existant/extraction.js`) ; un bouton, un champ, une case, une infobulle, une phrase d'élève ou (pour MJPC) une classe de la structure qui manque est refusé, sauf retrait cité ; l'infobulle d'un geste qui existe est celle de l'existant, mot pour mot. Une scène nommée par un inventaire doit exister.
+2. **Le méta** : aucun « tour N », « point N », nombre entre parenthèses (sauf les données déclarées, « 👥 Classe (25) »), « cadrage », « mandat », « conscience », « exécutant », « à valider », « pas encore validé », « souligné en pointillés », « maquette » hors du sommaire, ni souligné orange en pointillés ou `.prov` visible ; dans les textes, les infobulles, les indications et les champs, iframes comprises (le texte du prompt de Paul est une donnée).
+3. **Les chiffres** : la ligne d'état et les domaines de la taxonomie, les notions et les compétences (libellé, « Élève : … ») d'après `taxonomie_atelier.json` et `libelles_eleve.json` ; les 28 compétences là où la liste « Les compétences » s'affiche ; les durées de la séance (649) dans Réglages ; le prompt, texte du README avec ses jetons remplacés, `{{LIMITES}}` par le texte de `mesures/limites.json`.
+4. **Les mesures** : `limites.json` donne la limite d'un choix pour 4, 5 et 6 choix ; elle ne monte jamais avec le nombre de choix ni avec l'énoncé ; chaque limite tient sur les trois écrans, la limite plus un pas non ; l'étalon reste à 67 px.
+5. **L'estimation** : le degré du bloc « 🎯 Ton estimation » suit l'écart de niveaux (com632.js : « nettement » à deux niveaux ou plus) ; pour chaque élève, le bloc et le bilan général disent le même degré.
+
+**Jouées sur la v5** (`sorties/gardes-sur-v5.txt`, `GARDES=seules node banc/banc.js maquette-qcm-v5.html 5`, puis `python3 banc/synthese-gardes.py`) : chaque défaut connu du §3 est trouvé par sa garde — D1 par les gardes 1 et 3, D2 par les gardes 2 et 1, D3 par la garde 4, D4 par la garde 1, D5 par la garde 2, D6 par la garde 5 — et 2 078 échecs en tout, la matière de l'étape B. **Les vérifications 1 à 9 passent toujours sur la v5** : `sorties/banc-v5-verifications-1-a-9.txt`, 15 712 vérifications, zéro défaut (`GARDES=0` ; la vérification 4 a perdu l'interdit « le professeur », D4).
+
 ## En bref
 
 - **La maquette** : `maquette-qcm-v5.html` (md5 `940531e53cb7163c35eeaa4df3c562ef`), un fichier HTML autonome, sans réseau, **159 scènes dans l'ordre de la séance**, chacune ouvrable par `#scene=ID` ; le sommaire derrière ⚙ « Scènes de la maquette ».

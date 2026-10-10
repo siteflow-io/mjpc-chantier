@@ -7,6 +7,9 @@
 const path = require("path"), fs = require("fs");
 const { chromium } = require("/opt/node22/lib/node_modules/playwright");
 const C = require("./controles.js");
+const G = require("./gardes.js");
+// GARDES=0 : sans les gardes du complément 1 ; GARDES=seules : les gardes seules (ni clics, ni vérifications 1 à 9 par scène)
+const GARDES = process.env.GARDES || "oui";
 const RACINE = path.join(__dirname, "..");
 const FICHIER = path.resolve(process.argv[2]);
 const ETAPE = +process.argv[3] || 1;
@@ -83,10 +86,30 @@ if(SORTIE && fs.existsSync(SORTIE)) fs.unlinkSync(SORTIE);   // (garde, défaut 
   }
 
   const relu = s => s.etape <= ETAPE;
+  // Les gardes du complément 1 : les inventaires de l'existant, par scène ; les retraits et leurs citations ; les mesures
+  const INV = GARDES !== "0" ? G.inventaires() : [];
+  const parScene = {}; INV.forEach(v => v.scenes.forEach(s => { (parScene[s] = parScene[s] || []).push(v); }));
+  const RETRAITS = G.retraits(), ESTIMATIONS = [];
+  if(GARDES !== "0"){
+    journal.push(INV.length + " écrans de l'existant · " + G.verifierRetraits(verif) + " retraits");
+    for(const v of INV) for(const s of v.scenes) verif(scenes.some(x => x.id === s), "garde 1. la scène « " + s + " », qui part de « " + v.ecran + " » (" + v.fichier + "), existe");
+    G.garde4(verif);
+  }
   async function verifierScene(sc){
     const R = {n:0, echecs:[]};
     const verif = (ok, quoi, detail) => { R.n++; if(!ok) R.echecs.push(quoi + (detail ? " — " + detail : "")); return ok; };
     const tailles = VUES[sc.vue];
+    if(GARDES !== "0" && relu(sc)){
+      const T = tailles[0], H = (sc.vh && sc.vue === "console") ? Math.max(sc.vh, T.h) : T.h;
+      const g = await ouvrir(T.w, H, sc.id, "&cap=1");
+      const vu = await g.page.evaluate(G.extraireEcran, {phrases: true});
+      for(const inv of parScene[sc.id] || []){ const pertes = G.garde1(sc.id, inv, vu, RETRAITS); verif(pertes.length === 0, "garde 1. " + sc.id + " : rien de « " + inv.ecran + " » ne se perd", pertes.length + " perte(s)"); pertes.forEach(x => verif(false, x)); }
+      G.garde2(sc.id, await g.page.evaluate(G.lireMeta)).forEach(x => verif(false, x)); verif(true, "garde 2. " + sc.id + " : le méta cherché");
+      G.garde3(sc.id, await g.page.evaluate(G.lireChiffres)).forEach(x => verif(false, x)); verif(true, "garde 3. " + sc.id + " : les chiffres cherchés");
+      G.garde5Scene(sc.id, await g.page.evaluate(G.lireEstimation), ESTIMATIONS).forEach(x => verif(false, x));
+      await g.ctx.close();
+    }
+    if(GARDES === "seules") return R;
     for(let ti = 0; ti < tailles.length; ti++){
       const T = tailles[ti], H = (sc.vh && sc.vue === "console") ? Math.max(sc.vh, T.h) : T.h;
       const o = await ouvrir(T.w, H, sc.id, "&cap=1");
@@ -169,11 +192,12 @@ if(SORTIE && fs.existsSync(SORTIE)) fs.unlinkSync(SORTIE);   // (garde, défaut 
   async function ouvrier(){ while(suivant < aFaire.length){ const k = suivant++; resultats[k] = await verifierScene(aFaire[k]); } }
   await Promise.all([ouvrier(), ouvrier(), ouvrier(), ouvrier()]);
   for(const r of resultats){ nb += r.n; echecs.push(...r.echecs); }
+  if(GARDES !== "0") G.garde5Final(ESTIMATIONS, verif);
   await navig.close();
 
   const lignes = [];
   lignes.push("Banc unique — maquette complète du QCM");
-  lignes.push("Fichier : " + path.basename(FICHIER) + " · étape jouée : " + ETAPE + " · " + new Date().toISOString());
+  lignes.push("Fichier : " + path.basename(FICHIER) + " · étape jouée : " + ETAPE + (GARDES === "0" ? " · sans les gardes du complément 1" : GARDES === "seules" ? " · les gardes du complément 1 seules" : " · avec les gardes du complément 1") + " · " + new Date().toISOString());
   lignes.push(journal.join(" · "));
   lignes.push("Vérifications : " + nb + " · échecs : " + echecs.length);
   if(echecs.length) lignes.push("", "ÉCHECS :", ...echecs.map((e, i) => (i + 1) + ". " + e));

@@ -41,3 +41,10 @@
 | 33 | 4 | « 💾 Enregistrer » des Réglages, et les cases d'exclusion après un refus, ne changeaient rien. | Retour à la même scène ; refus affiché à nouveau. | Un enregistrement dit « ✅ Enregistré » ; un second clic sur la case refusée ferme le refus. | 5 |
 | 34 | 4 | Exclusions dissymétriques dans la scène du refus (Inès exclue de Sacha, mais pas Sacha d'Inès). | Les trois exclusions n'étaient posées que d'un côté. | Posées dans les deux sens ; le compte de la classe suit. | relu sur capture |
 | 35 | 4 | L'éditeur coupé avant la question 11 (« longueur assumée ») sur la capture. | Hauteur de la scène trop courte. | Scène à 3 250 px. | relu sur capture |
+
+## Complément 1 (`MANDATS/COMPLEMENT-MAQUETTE-QCM-COMPLETE-1.md`)
+
+*Les défauts du §3 (D1 à D6) et tout ce que les cinq nouvelles gardes ont trouvé sur la v5 (`sorties/gardes-sur-v5.txt`), à partir du n° 36. La colonne « garde » nomme la garde du complément qui le trouve désormais.*
+
+| N° | Étape | Défaut | Cause | Correction | Garde |
+| --- | --- | --- | --- | --- | --- |

@@ -1,0 +1,87 @@
+{
+ "ecran": "pilot-correction-avant",
+ "source": "evaluation-qcm.html (7.7.1, md5 ecae65624855a1a877708986a8e984e5), jouée sur le faux hub",
+ "comment": "",
+ "scenes": [
+  "c-corr-q2-avant",
+  "c-corr-q2-lu",
+  "c-coeval-attente",
+  "c-coeval-feuille",
+  "x610-8-console-alerte"
+ ],
+ "eleve": false,
+ "boutons": [
+  {
+   "l": "📖 Mode d'emploi",
+   "t": "Ouvre le mode d'emploi avec toutes les explications de l'app."
+  },
+  {
+   "l": "📺 Ouvrir vue tableau",
+   "t": "Ouvre la vue tableau dans une NOUVELLE FENÊTRE (pas un onglet) que tu peux glisser sur l'écran qui projette. Utilise W+P en mode \"Étendre\" sur Windows pour avoir un bureau virtuel sur le vidéoprojecteur, puis F11 pour plein écran. Cette vue n'affiche QUE la question (sans contrôles), garantissant que le pilotage ne peut jamais être projeté par erreur."
+  },
+  {
+   "l": "📱 QR pilotage",
+   "t": "Affiche un QR code à scanner avec ton téléphone pour piloter la classe à distance (depuis le fond de la salle par exemple). La fenêtre se ferme automatiquement dès que le scan est détecté."
+  },
+  {
+   "l": "🧪 Mode test",
+   "t": "Ouvre un environnement de test isolé : une classe fictive avec 3 élèves simulés et une éval test pré-remplie. Tu pilotes côté prof en haut, et tu vois et contrôles les 3 panneaux élèves en dessous, le tout dans la même fenêtre. Pratique pour découvrir l'app, tester un changement, ou former un collègue. À la sortie, tout est purgé automatiquement."
+  },
+  {
+   "l": "← Retour",
+   "t": ""
+  },
+  {
+   "l": "Pilotage",
+   "t": ""
+  },
+  {
+   "l": "Données",
+   "t": ""
+  },
+  {
+   "l": "Réglages",
+   "t": ""
+  },
+  {
+   "l": "?",
+   "t": "Aide et nouveautés"
+  },
+  {
+   "l": "📄 Préparation",
+   "t": ""
+  },
+  {
+   "l": "📝 Évaluations",
+   "t": ""
+  },
+  {
+   "l": "🎯 Pilotage classe",
+   "t": ""
+  },
+  {
+   "l": "🛑 Terminer la session",
+   "t": "Termine la session définitivement. Les élèves verront un écran de fin. Tu peux toujours consulter les résultats dans l'onglet Résultats."
+  },
+  {
+   "l": "← Question précédente",
+   "t": "Revenir à la question précédente dans l'ordre de correction (utile si tu veux retraiter une question avec la classe)."
+  },
+  {
+   "l": "💡 Révéler",
+   "t": "Révèle la bonne réponse aux élèves. Tant que tu n'as pas cliqué, ils ne voient pas si leur réponse est juste ou fausse. Permet de commenter la question avant la révélation."
+  },
+  {
+   "l": "Question suivante →",
+   "t": "Passer à la question suivante dans l'ordre trié par taux d'erreur."
+  }
+ ],
+ "champs": [],
+ "cases": [],
+ "titres": [
+  "Position dans l'ordre de correction (trié par taux d'erreur décroissant). Q10 est la 1e question révélée.",
+  "Niveau de la question (info indicative pendant la correction).",
+  "Taux de réussite de la classe sur cette question. Sert au tri par difficulté."
+ ],
+ "phrases": []
+}

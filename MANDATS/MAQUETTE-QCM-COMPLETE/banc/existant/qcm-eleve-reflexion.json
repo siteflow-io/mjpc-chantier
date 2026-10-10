@@ -1,0 +1,32 @@
+{
+ "ecran": "eleve-reflexion",
+ "source": "evaluation-qcm.html (7.7.1, md5 ecae65624855a1a877708986a8e984e5), jouée sur le faux hub",
+ "comment": "",
+ "scenes": [
+  "t-q1-reflexion",
+  "t-q2-reflexion",
+  "t-demo-q",
+  "t-q2-ecartee"
+ ],
+ "eleve": true,
+ "boutons": [
+  {
+   "l": "📊 Mes évaluations",
+   "t": ""
+  }
+ ],
+ "champs": [],
+ "cases": [],
+ "titres": [
+  "Nombre de points que vaut cette question"
+ ],
+ "phrases": [
+  "3 ESSAI · ABRIAL Julien",
+  "QCM — Le jambon-beurre",
+  "Question 1 / 10",
+  "Facile",
+  "1 pt",
+  "✍️ RÉDIGE TA RÉPONSE EN ENTIER SUR TA FEUILLE",
+  "Temps de réflexion"
+ ]
+}

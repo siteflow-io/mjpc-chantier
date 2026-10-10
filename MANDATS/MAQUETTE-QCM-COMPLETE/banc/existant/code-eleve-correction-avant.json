@@ -1,0 +1,40 @@
+{
+ "ecran": "eleve-correction-avant",
+ "source": "evaluation-qcm.html (md5 ecae65624855a1a877708986a8e984e5), lu dans le code",
+ "comment": "La correction, avant « 💡 Révéler » : l'écran plante dans la 7.7.1 (« bonnes is not defined », l.4365 ; dette 198), il est lu dans le code.",
+ "eleve": true,
+ "scenes": [
+  "t-corr-q2-lecture",
+  "t-corr-q3-lecture",
+  "t-corr-q1-lecture",
+  "x610-3-a-correction",
+  "t-corr-seul"
+ ],
+ "boutons": [],
+ "phrases": [
+  {
+   "p": "📝 Correction",
+   "ligne": 4333
+  },
+  {
+   "p": "💡 On corrige d'abord les questions les plus ratées par la classe.",
+   "ligne": 4334
+  },
+  {
+   "p": "bonne réponse",
+   "ligne": 4338
+  },
+  {
+   "p": "sur",
+   "ligne": 4339
+  },
+  {
+   "p": "question déjà corrigée",
+   "ligne": 4341
+  },
+  {
+   "p": "👀 Écoute le prof — la correction sera révélée.",
+   "ligne": 4362
+  }
+ ]
+}

@@ -1,0 +1,31 @@
+{
+ "ecran": "eleve-fin",
+ "source": "evaluation-qcm.html (7.7.1, md5 ecae65624855a1a877708986a8e984e5), jouée sur le faux hub",
+ "comment": "",
+ "scenes": [
+  "t-fin"
+ ],
+ "eleve": true,
+ "boutons": [
+  {
+   "l": "← Retour",
+   "t": ""
+  },
+  {
+   "l": "📊 Mes évaluations",
+   "t": ""
+  }
+ ],
+ "champs": [],
+ "cases": [],
+ "titres": [],
+ "phrases": [
+  "3 ESSAI",
+  "👋 Salut ABRIAL Julien !",
+  "Tu es bien connecté.",
+  "⏳ En attente d'une évaluation...",
+  "📊 Tes évaluations passées",
+  "QCM — Le jambon-beurre",
+  "📝 Saisie papier à faire"
+ ]
+}

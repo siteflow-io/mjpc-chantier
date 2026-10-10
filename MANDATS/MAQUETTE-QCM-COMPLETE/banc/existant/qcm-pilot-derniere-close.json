@@ -1,0 +1,276 @@
+{
+ "ecran": "pilot-derniere-close",
+ "source": "evaluation-qcm.html (7.7.1, md5 ecae65624855a1a877708986a8e984e5), jouée sur le faux hub",
+ "comment": "",
+ "scenes": [
+  "c-q3-close"
+ ],
+ "eleve": false,
+ "boutons": [
+  {
+   "l": "📖 Mode d'emploi",
+   "t": "Ouvre le mode d'emploi avec toutes les explications de l'app."
+  },
+  {
+   "l": "📺 Ouvrir vue tableau",
+   "t": "Ouvre la vue tableau dans une NOUVELLE FENÊTRE (pas un onglet) que tu peux glisser sur l'écran qui projette. Utilise W+P en mode \"Étendre\" sur Windows pour avoir un bureau virtuel sur le vidéoprojecteur, puis F11 pour plein écran. Cette vue n'affiche QUE la question (sans contrôles), garantissant que le pilotage ne peut jamais être projeté par erreur."
+  },
+  {
+   "l": "📱 QR pilotage",
+   "t": "Affiche un QR code à scanner avec ton téléphone pour piloter la classe à distance (depuis le fond de la salle par exemple). La fenêtre se ferme automatiquement dès que le scan est détecté."
+  },
+  {
+   "l": "🧪 Mode test",
+   "t": "Ouvre un environnement de test isolé : une classe fictive avec 3 élèves simulés et une éval test pré-remplie. Tu pilotes côté prof en haut, et tu vois et contrôles les 3 panneaux élèves en dessous, le tout dans la même fenêtre. Pratique pour découvrir l'app, tester un changement, ou former un collègue. À la sortie, tout est purgé automatiquement."
+  },
+  {
+   "l": "← Retour",
+   "t": ""
+  },
+  {
+   "l": "Pilotage",
+   "t": ""
+  },
+  {
+   "l": "Données",
+   "t": ""
+  },
+  {
+   "l": "Réglages",
+   "t": ""
+  },
+  {
+   "l": "?",
+   "t": "Aide et nouveautés"
+  },
+  {
+   "l": "📄 Préparation",
+   "t": ""
+  },
+  {
+   "l": "📝 Évaluations",
+   "t": ""
+  },
+  {
+   "l": "🎯 Pilotage classe",
+   "t": ""
+  },
+  {
+   "l": "🚫 Départ d'un élève",
+   "t": "Marque un élève comme parti en cours de session. Ses réponses déjà données restent enregistrées (sa note sera calculée au prorata des questions auxquelles il a participé). L'absence est tracée pour le suivi longitudinal MJPC."
+  },
+  {
+   "l": "🛑 Terminer la session",
+   "t": "Termine la session immédiatement. Les élèves verront un écran de fin. Utile si tu dois interrompre l'évaluation (cours coupé, problème technique). Les résultats restent consultables dans l'onglet Résultats."
+  },
+  {
+   "l": "💾 Sauvegarder",
+   "t": "Sauvegarde les nouvelles durées globalement (toutes évaluations confondues)."
+  },
+  {
+   "l": "🔄 Par défaut",
+   "t": "Réinitialiser aux valeurs par défaut (5/10/15/20s)."
+  },
+  {
+   "l": "Facile 10s",
+   "t": "Passer cette question en niveau Facile (10s de réflexion)"
+  },
+  {
+   "l": "Standard 15s",
+   "t": "Passer cette question en niveau Standard (15s de réflexion)"
+  },
+  {
+   "l": "Approfondi 20s",
+   "t": "Passer cette question en niveau Approfondi (20s de réflexion)"
+  },
+  {
+   "l": "Expert 30s",
+   "t": "Passer cette question en niveau Expert (30s de réflexion)"
+  },
+  {
+   "l": "🔓 Rouvrir pour tous",
+   "t": "Rouvre la phase de réponse pour TOUS les élèves qui n'ont pas encore répondu (utile si beaucoup n'ont pas eu le temps). Les élèves qui ont déjà répondu ne sont pas affectés. Pour rouvrir à un seul élève, clique sur son nom dans la liste."
+  },
+  {
+   "l": "📊 Lancer l'autoévaluation",
+   "t": "Lance la phase d'autoévaluation : les élèves estiment leur score avant la correction."
+  },
+  {
+   "l": "← Q préc.",
+   "t": "Revenir à la question précédente. La phase actuelle sera coupée."
+  },
+  {
+   "l": "Q suiv. →",
+   "t": "Avancer à la question suivante (saut direct)."
+  },
+  {
+   "l": "ABRIAL Julien",
+   "t": "ABRIAL Julien — 🔴 A répondu A — Aucune bonne lettre. (Plus modifiable.)"
+  },
+  {
+   "l": "BAUDRY Léa",
+   "t": "BAUDRY Léa — ⏳ Élève pas encore connecté à l'app. S'il est physiquement absent, marque-le via « 🚫 Départ d'un élève » pour que sa présence soit tracée."
+  },
+  {
+   "l": "CARRÉ Tom",
+   "t": "CARRÉ Tom — ⏳ Élève pas encore connecté à l'app. S'il est physiquement absent, marque-le via « 🚫 Départ d'un élève » pour que sa présence soit tracée."
+  },
+  {
+   "l": "DUVERNAY Michel",
+   "t": "DUVERNAY Michel — ⏳ Élève pas encore connecté à l'app. S'il est physiquement absent, marque-le via « 🚫 Départ d'un élève » pour que sa présence soit tracée."
+  },
+  {
+   "l": "ESNAULT Inès",
+   "t": "ESNAULT Inès — ⏳ Élève pas encore connecté à l'app. S'il est physiquement absent, marque-le via « 🚫 Départ d'un élève » pour que sa présence soit tracée."
+  },
+  {
+   "l": "FOUCHER Hugo",
+   "t": "FOUCHER Hugo — ⏳ Élève pas encore connecté à l'app. S'il est physiquement absent, marque-le via « 🚫 Départ d'un élève » pour que sa présence soit tracée."
+  },
+  {
+   "l": "GALLOIS Manon",
+   "t": "GALLOIS Manon — ⏳ Élève pas encore connecté à l'app. S'il est physiquement absent, marque-le via « 🚫 Départ d'un élève » pour que sa présence soit tracée."
+  },
+  {
+   "l": "HÉBRARD Nathan",
+   "t": "HÉBRARD Nathan — ⏳ Élève pas encore connecté à l'app. S'il est physiquement absent, marque-le via « 🚫 Départ d'un élève » pour que sa présence soit tracée."
+  },
+  {
+   "l": "ISAMBERT Chloé",
+   "t": "ISAMBERT Chloé — ⏳ Élève pas encore connecté à l'app. S'il est physiquement absent, marque-le via « 🚫 Départ d'un élève » pour que sa présence soit tracée."
+  },
+  {
+   "l": "JOUBERT Louis",
+   "t": "JOUBERT Louis — ⏳ Élève pas encore connecté à l'app. S'il est physiquement absent, marque-le via « 🚫 Départ d'un élève » pour que sa présence soit tracée."
+  },
+  {
+   "l": "LACOMBE Emma",
+   "t": "LACOMBE Emma — ⏳ Élève pas encore connecté à l'app. S'il est physiquement absent, marque-le via « 🚫 Départ d'un élève » pour que sa présence soit tracée."
+  },
+  {
+   "l": "MAILLARD Noah",
+   "t": "MAILLARD Noah — ⏳ Élève pas encore connecté à l'app. S'il est physiquement absent, marque-le via « 🚫 Départ d'un élève » pour que sa présence soit tracée."
+  },
+  {
+   "l": "NOGARET Zoé",
+   "t": "NOGARET Zoé — ⏳ Élève pas encore connecté à l'app. S'il est physiquement absent, marque-le via « 🚫 Départ d'un élève » pour que sa présence soit tracée."
+  },
+  {
+   "l": "OLLIVIER Sacha",
+   "t": "OLLIVIER Sacha — ⏳ Élève pas encore connecté à l'app. S'il est physiquement absent, marque-le via « 🚫 Départ d'un élève » pour que sa présence soit tracée."
+  },
+  {
+   "l": "PERRAUD Jade",
+   "t": "PERRAUD Jade — ⏳ Élève pas encore connecté à l'app. S'il est physiquement absent, marque-le via « 🚫 Départ d'un élève » pour que sa présence soit tracée."
+  },
+  {
+   "l": "QUINTON Enzo",
+   "t": "QUINTON Enzo — ⏳ Élève pas encore connecté à l'app. S'il est physiquement absent, marque-le via « 🚫 Départ d'un élève » pour que sa présence soit tracée."
+  },
+  {
+   "l": "RAMBAUD Lina",
+   "t": "RAMBAUD Lina — ⏳ Élève pas encore connecté à l'app. S'il est physiquement absent, marque-le via « 🚫 Départ d'un élève » pour que sa présence soit tracée."
+  },
+  {
+   "l": "SABATIER Malo",
+   "t": "SABATIER Malo — ⏳ Élève pas encore connecté à l'app. S'il est physiquement absent, marque-le via « 🚫 Départ d'un élève » pour que sa présence soit tracée."
+  },
+  {
+   "l": "TESSIER Anna",
+   "t": "TESSIER Anna — ⏳ Élève pas encore connecté à l'app. S'il est physiquement absent, marque-le via « 🚫 Départ d'un élève » pour que sa présence soit tracée."
+  },
+  {
+   "l": "VALLÉE Rayan",
+   "t": "VALLÉE Rayan — ⏳ Élève pas encore connecté à l'app. S'il est physiquement absent, marque-le via « 🚫 Départ d'un élève » pour que sa présence soit tracée."
+  },
+  {
+   "l": "WEBER Clara",
+   "t": "WEBER Clara — ⏳ Élève pas encore connecté à l'app. S'il est physiquement absent, marque-le via « 🚫 Départ d'un élève » pour que sa présence soit tracée."
+  },
+  {
+   "l": "YVON Adam",
+   "t": "YVON Adam — ⏳ Élève pas encore connecté à l'app. S'il est physiquement absent, marque-le via « 🚫 Départ d'un élève » pour que sa présence soit tracée."
+  },
+  {
+   "l": "ZELLER Lou",
+   "t": "ZELLER Lou — ⏳ Élève pas encore connecté à l'app. S'il est physiquement absent, marque-le via « 🚫 Départ d'un élève » pour que sa présence soit tracée."
+  },
+  {
+   "l": "BRUNEAU Camille",
+   "t": "BRUNEAU Camille — ⏳ Élève pas encore connecté à l'app. S'il est physiquement absent, marque-le via « 🚫 Départ d'un élève » pour que sa présence soit tracée."
+  },
+  {
+   "l": "CHEVALLIER Théo",
+   "t": "CHEVALLIER Théo — ⏳ Élève pas encore connecté à l'app. S'il est physiquement absent, marque-le via « 🚫 Départ d'un élève » pour que sa présence soit tracée."
+  }
+ ],
+ "champs": [
+  "input",
+  "input",
+  "input",
+  "input",
+  "input"
+ ],
+ "cases": [],
+ "titres": [
+  "Nombre d'élèves actuellement connectés à l'app sur leur poste vs. nombre total d'élèves de la classe.",
+  "Nombre d'élèves qui ont validé une réponse à la question en cours vs. nombre total. Te permet de voir d'un coup d'œil si tu peux clore.",
+  "Nombre d'élèves ayant répondu juste vs. nombre d'élèves ayant répondu (pas vs. total). Indicateur du taux de réussite en direct.",
+  "Question en cours vs. nombre total de questions de l'évaluation.",
+  "La question est close. Les élèves attendent. Clique 'Question suivante' pour continuer ou 'Lancer la correction' si c'était la dernière.",
+  "Chrono RÉFLEXION : durée pendant laquelle l'élève rédige sa réponse au stylo (choix masqués). Défini par le niveau de la question — clique sur les pastilles colorées ci-dessous pour le changer.",
+  "Chrono RÉPONSE : durée pendant laquelle l'élève voit les choix et clique sa lettre. Réglable directement ici.",
+  "Ajuste le niveau (et donc le chrono de réflexion) de cette question en direct.",
+  "Question passée — 1/25 justes",
+  "Pain de mie, crème et jambon cru",
+  "Baguette, beurre et jambon blanc",
+  "Brioche, fromage et jambon blanc",
+  "Baguette, mayonnaise et jambon sec",
+  "Question passée — 0/25 justes",
+  "Le pain pita",
+  "Le pain complet sucré",
+  "La baguette",
+  "La focaccia",
+  "Question passée — 0/25 justes",
+  "Le jambon cru",
+  "Le jambon fumé sec",
+  "Le jambon pané",
+  "Le jambon blanc",
+  "Question passée — 0/25 justes",
+  "Il remplace totalement le pain",
+  "Il apporte du fondant et lie les saveurs",
+  "Il rend le jambon croustillant",
+  "Il transforme le sandwich en dessert",
+  "Question passée — 0/25 justes",
+  "Parce qu’il vient d’une recette officielle imposée par l’État",
+  "Parce qu’il contient toujours une sauce chaude obligatoire",
+  "Parce qu’il associe des produits simples de la tradition boulangère française",
+  "Parce qu’il se prépare uniquement dans les restaurants gastronomiques",
+  "Question passée — 0/25 justes",
+  "Une accumulation maximale de sauces, d’épices et de garnitures",
+  "Une absence complète de matière grasse et de sel",
+  "Une cuisson longue du sandwich avant le service",
+  "Un équilibre entre pain croustillant, beurre régulier et jambon de qualité",
+  "Question passée — 0/25 justes",
+  "Le beurre",
+  "La baguette",
+  "Le jambon",
+  "Le sel",
+  "Question passée — 0/25 justes",
+  "La baguette",
+  "Le jambon blanc",
+  "Le beurre",
+  "La croûte du pain",
+  "Question passée — 0/25 justes",
+  "Le laisser au soleil pour ramollir le beurre",
+  "Le congeler systématiquement après assemblage",
+  "Le garder plusieurs jours à température ambiante",
+  "Le maintenir au frais si la consommation n’est pas immédiate",
+  "Question en cours — 0/25 justes pour le moment",
+  "Couper la baguette dans le sens de la longueur",
+  "Ajouter du fromage, des cornichons ou de la salade",
+  "Étaler le beurre sur une face du pain",
+  "Utiliser du jambon blanc en tranches fines"
+ ],
+ "phrases": []
+}

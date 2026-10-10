@@ -1,0 +1,1376 @@
+{
+ "eval_1778247436064": {
+  "createdAt": 1778247436064,
+  "questions": [
+   {
+    "bonnes": [
+     1
+    ],
+    "choix": [
+     "Pain de mie, crème et jambon cru",
+     "Baguette, beurre et jambon blanc",
+     "Brioche, fromage et jambon blanc",
+     "Baguette, mayonnaise et jambon sec"
+    ],
+    "enonce": "Quels sont les trois éléments principaux d’un jambon-beurre classique ?",
+    "niveau": "facile"
+   },
+   {
+    "bonnes": [
+     2
+    ],
+    "choix": [
+     "Le pain pita",
+     "Le pain complet sucré",
+     "La baguette",
+     "La focaccia"
+    ],
+    "enonce": "Quel type de pain est le plus associé au jambon-beurre traditionnel ?",
+    "niveau": "facile"
+   },
+   {
+    "bonnes": [
+     3
+    ],
+    "choix": [
+     "Le jambon cru",
+     "Le jambon fumé sec",
+     "Le jambon pané",
+     "Le jambon blanc"
+    ],
+    "enonce": "Quel jambon est généralement utilisé dans un jambon-beurre français classique ?",
+    "niveau": "facile"
+   },
+   {
+    "bonnes": [
+     1
+    ],
+    "choix": [
+     "Il remplace totalement le pain",
+     "Il apporte du fondant et lie les saveurs",
+     "Il rend le jambon croustillant",
+     "Il transforme le sandwich en dessert"
+    ],
+    "enonce": "Quel rôle joue principalement le beurre dans un jambon-beurre ?",
+    "niveau": "standard"
+   },
+   {
+    "bonnes": [
+     2
+    ],
+    "choix": [
+     "Parce qu’il vient d’une recette officielle imposée par l’État",
+     "Parce qu’il contient toujours une sauce chaude obligatoire",
+     "Parce qu’il associe des produits simples de la tradition boulangère française",
+     "Parce qu’il se prépare uniquement dans les restaurants gastronomiques"
+    ],
+    "enonce": "Pourquoi le jambon-beurre est-il souvent considéré comme un sandwich emblématique en France ?",
+    "niveau": "standard"
+   },
+   {
+    "bonnes": [
+     3
+    ],
+    "choix": [
+     "Une accumulation maximale de sauces, d’épices et de garnitures",
+     "Une absence complète de matière grasse et de sel",
+     "Une cuisson longue du sandwich avant le service",
+     "Un équilibre entre pain croustillant, beurre régulier et jambon de qualité"
+    ],
+    "enonce": "Quelle caractéristique distingue le mieux un bon jambon-beurre ?",
+    "niveau": "approfondi"
+   },
+   {
+    "bonnes": [
+     1
+    ],
+    "choix": [
+     "Le beurre",
+     "La baguette",
+     "Le jambon",
+     "Le sel"
+    ],
+    "enonce": "Dans une analyse nutritionnelle simple, quel élément du jambon-beurre apporte principalement des glucides ?",
+    "niveau": "standard"
+   },
+   {
+    "bonnes": [
+     2
+    ],
+    "choix": [
+     "La baguette",
+     "Le jambon blanc",
+     "Le beurre",
+     "La croûte du pain"
+    ],
+    "enonce": "Dans une analyse nutritionnelle simple, quel élément du jambon-beurre apporte principalement des lipides ?",
+    "niveau": "standard"
+   },
+   {
+    "bonnes": [
+     3
+    ],
+    "choix": [
+     "Le laisser au soleil pour ramollir le beurre",
+     "Le congeler systématiquement après assemblage",
+     "Le garder plusieurs jours à température ambiante",
+     "Le maintenir au frais si la consommation n’est pas immédiate"
+    ],
+    "enonce": "Quelle précaution est la plus pertinente pour conserver un jambon-beurre avant consommation ?",
+    "niveau": "standard"
+   },
+   {
+    "bonnes": [
+     1
+    ],
+    "choix": [
+     "Couper la baguette dans le sens de la longueur",
+     "Ajouter du fromage, des cornichons ou de la salade",
+     "Étaler le beurre sur une face du pain",
+     "Utiliser du jambon blanc en tranches fines"
+    ],
+    "enonce": "Quelle modification transforme le plus nettement un jambon-beurre en variante plutôt qu’en version classique ?",
+    "niveau": "approfondi"
+   }
+  ],
+  "titre": "QCM — Le jambon-beurre",
+  "updatedAt": 1778247436064
+ },
+ "eval_1779946950077": {
+  "createdAt": 1779946950077,
+  "questions": [
+   {
+    "bonnes": [
+     2
+    ],
+    "choix": [
+     "3",
+     "4",
+     "5",
+     "6"
+    ],
+    "enonce": "Combien de pronoms relatifs simples comporte la liste à connaître ?",
+    "niveau": "expert"
+   },
+   {
+    "bonnes": [
+     1
+    ],
+    "choix": [
+     "ou",
+     "où",
+     "que",
+     "dont"
+    ],
+    "enonce": "Quel pronom relatif simple s'écrit avec un accent grave ?",
+    "niveau": "expert"
+   },
+   {
+    "bonnes": [
+     2
+    ],
+    "choix": [
+     "qui",
+     "que",
+     "dont",
+     "où"
+    ],
+    "enonce": "Quel pronom relatif simple remplace un complément introduit par la préposition « de » ?",
+    "explication": "Il répond à la question \"de qui ou de quoi\". Ex: La personne dont je parle est gentille. De qui je parle? De la personne.",
+    "niveau": "expert"
+   },
+   {
+    "bonnes": [
+     0
+    ],
+    "choix": [
+     "lequel",
+     "laquelle",
+     "lesquels",
+     "auquel"
+    ],
+    "enonce": "Quel est le pronom relatif composé au masculin singulier, formé à partir de l'article et de « quel » ?",
+    "niveau": "expert"
+   },
+   {
+    "bonnes": [
+     1
+    ],
+    "choix": [
+     "duquel",
+     "auquel",
+     "auxquels",
+     "à laquelle"
+    ],
+    "enonce": "Quelle est la forme contractée de « à » + « lequel » ?",
+    "niveau": "expert"
+   },
+   {
+    "bonnes": [
+     1
+    ],
+    "choix": [
+     "auquel",
+     "duquel",
+     "desquels",
+     "de laquelle"
+    ],
+    "enonce": "Quelle est la forme contractée de « de » + « lequel » ?",
+    "niveau": "expert"
+   },
+   {
+    "bonnes": [
+     2
+    ],
+    "choix": [
+     "laquelle",
+     "lesquels",
+     "lesquelles",
+     "desquelles"
+    ],
+    "enonce": "Quel est le pronom relatif composé au féminin pluriel ?",
+    "niveau": "expert"
+   },
+   {
+    "bonnes": [
+     1
+    ],
+    "choix": [
+     "que",
+     "qui",
+     "dont",
+     "où"
+    ],
+    "enonce": "Quel pronom relatif simple s'emploie le plus souvent comme sujet du verbe de la relative ?",
+    "niveau": "expert"
+   },
+   {
+    "bonnes": [
+     1
+    ],
+    "choix": [
+     "auquel",
+     "auxquels",
+     "desquels",
+     "auxquelles"
+    ],
+    "enonce": "Quelle est la forme contractée de « à » + « lesquels » ?",
+    "niveau": "expert"
+   },
+   {
+    "bonnes": [
+     2
+    ],
+    "choix": [
+     "qui",
+     "que",
+     "quoi",
+     "dont"
+    ],
+    "enonce": "Quel pronom relatif simple s'emploie après une préposition pour renvoyer à une chose, comme dans « ce à ___ je pense » ?",
+    "niveau": "expert"
+   }
+  ],
+  "titre": "Évaluation — Les pronoms relatifs : la liste (5e)",
+  "updatedAt": 1779946950077
+ },
+ "eval_1781670681003": {
+  "createdAt": 1781670681003,
+  "questions": [
+   {
+    "bonnes": [
+     0,
+     2
+    ],
+    "choix": [
+     "Jean Valjean",
+     "D'Artagnan",
+     "Cosette",
+     "Edmond Dantès"
+    ],
+    "enonce": "Quels personnages appartiennent au roman Les Misérables? Cite au moins trois noms. ",
+    "explication": "Ne pas oublier Gavroche. Tu as lu le livre. ",
+    "niveau": "facile"
+   },
+   {
+    "bonnes": [
+     2,
+     3
+    ],
+    "choix": [
+     "Le pain de la table",
+     "Une bourse de pièces d'or",
+     "L'argenterie de la maison, c'est-à-dire les couverts en argent.",
+     "Les chandeliers d'argent"
+    ],
+    "enonce": "Quels objets l'évêque Myriel laisse-t-il à Jean Valjean lors de son passage chez lui ?",
+    "niveau": "facile"
+   },
+   {
+    "bonnes": [
+     1,
+     3
+    ],
+    "choix": [
+     "Il devient roi",
+     "Il vole un pain",
+     "Il part en voyage à l'étranger",
+     "Il est envoyé au bagne"
+    ],
+    "enonce": "Quelles épreuves Jean Valjean subit-il au début du roman ?",
+    "niveau": "facile"
+   },
+   {
+    "bonnes": [
+     0,
+     2
+    ],
+    "choix": [
+     "Il est condamné à cinq ans au départ",
+     "Il a commis un meurtre",
+     "Chaque tentative d'évasion alourdit sa peine",
+     "Il a demandé lui-même à rester"
+    ],
+    "enonce": "Pourquoi la peine de Jean Valjean s'allonge-t-elle jusqu'à dix-neuf ans de bagne ?",
+    "niveau": "standard"
+   },
+   {
+    "bonnes": [
+     2,
+     3
+    ],
+    "choix": [
+     "Il est gardien de prison",
+     "Il est l'avocat de Valjean",
+     "Il est inspecteur de police",
+     "Il poursuit Valjean au nom de la loi"
+    ],
+    "enonce": "Quel est le métier de Javert et quel rôle joue-t-il face à Jean Valjean ?",
+    "niveau": "standard"
+   },
+   {
+    "bonnes": [
+     1,
+     3
+    ],
+    "choix": [
+     "C'est une scène comique et joyeuse",
+     "Les Thénardier l'envoient chercher de l'eau",
+     "Elle part rejoindre des amis",
+     "Parce qu'Hugo met en scène une jeune enfant seule dans le froid et le noir"
+    ],
+    "enonce": "Pourquoi la scène où Cosette est envoyée seule la nuit est-elle pathétique ?",
+    "niveau": "standard"
+   },
+   {
+    "bonnes": [
+     0,
+     2
+    ],
+    "choix": [
+     "L'auteur lui-même",
+     "Le narrateur de l'histoire",
+     "Le lecteur est son destinataire",
+     "Un personnage du roman"
+    ],
+    "enonce": "Dans une préface, qui prend la parole et à qui s'adresse-t-il ?",
+    "niveau": "approfondi"
+   },
+   {
+    "bonnes": [
+     2,
+     3
+    ],
+    "choix": [
+     "Qu'il veut que Valjean travaille pour lui",
+     "Qu'il a payé une rançon pour le libérer",
+     "Qu'il attend de lui qu'il devienne un honnête homme",
+     "Que son geste l'engage à changer de vie"
+    ],
+    "enonce": "Que veut dire l'évêque Myriel lorsqu'il affirme avoir « acheté l'âme » de Jean Valjean ?",
+    "niveau": "approfondi"
+   },
+   {
+    "bonnes": [
+     1,
+     3
+    ],
+    "choix": [
+     "Montrer qu'il connaît l'histoire de France",
+     "Justifier l'utilité de son livre",
+     "Faire la liste de ses romans précédents",
+     "Appeler à changer la société"
+    ],
+    "enonce": "Quelles intentions Hugo poursuit-il en énumérant les « trois problèmes du siècle » dans sa préface ?",
+    "niveau": "approfondi"
+   },
+   {
+    "bonnes": [
+     2,
+     3
+    ],
+    "choix": [
+     "Il tourne leurs malheurs en dérision",
+     "Il reste totalement neutre et distant",
+     "Il insiste sur la solitude des victimes",
+     "Il montre leur faiblesse face à un monde hostile"
+    ],
+    "enonce": "Par quels procédés Hugo cherche-t-il à émouvoir le lecteur dans les scènes de misère ?",
+    "niveau": "approfondi"
+   },
+   {
+    "bonnes": [
+     0,
+     2
+    ],
+    "choix": [
+     "La loi qui punit face à la bonté qui pardonne",
+     "L'Église contre l'État",
+     "La rigueur de la justice face à la charité",
+     "La richesse contre la pauvreté"
+    ],
+    "enonce": "À travers Javert et l'évêque Myriel, quelle opposition Victor Hugo met-il en scène ?",
+    "niveau": "expert"
+   },
+   {
+    "bonnes": [
+     1,
+     3
+    ],
+    "choix": [
+     "Que les prisons étaient mal surveillées",
+     "Que la peine est démesurée par rapport à la faute",
+     "Que Valjean était un criminel dangereux",
+     "Que la justice punit la misère plus qu'elle ne la comprend"
+    ],
+    "enonce": "Que cherche surtout à faire comprendre Hugo en montrant Valjean au bagne dix-neuf ans pour un pain volé ?",
+    "niveau": "expert"
+   },
+   {
+    "bonnes": [
+     2,
+     3
+    ],
+    "choix": [
+     "Il se contente de distraire par l'aventure",
+     "Il défend surtout les intérêts des puissants",
+     "Il dénonce l'injustice sociale de son époque",
+     "Il invite le lecteur à la compassion et à la réforme"
+    ],
+    "enonce": "Pourquoi peut-on dire que Les Misérables est un roman engagé qui défend les plus faibles ?",
+    "niveau": "expert"
+   }
+  ],
+  "titre": "Les Misérables — évaluation d'entraînement",
+  "updatedAt": 1781849779701
+ },
+ "eval_1781760503989": {
+  "createdAt": 1781760503989,
+  "questions": [
+   {
+    "bonnes": [
+     0,
+     2,
+     4,
+     6,
+     7
+    ],
+    "choix": [
+     "Jean Valjean",
+     "D'Artagnan",
+     "Cosette",
+     "Quasimodo",
+     "Gavroche",
+     "Edmond Dantès",
+     "Fantine",
+     "Javert"
+    ],
+    "enonce": "Quels personnages appartiennent au roman Les Misérables ?",
+    "explication": "Valjean, Cosette, Gavroche, Fantine et Javert sont des personnages des Misérables. D'Artagnan vient des Trois Mousquetaires et Edmond Dantès du Comte de Monte-Cristo ; Quasimodo est bien un héros de Victor Hugo, mais dans Notre-Dame de Paris.",
+    "niveau": "facile"
+   },
+   {
+    "bonnes": [
+     2,
+     4
+    ],
+    "choix": [
+     "Le pain de la table",
+     "Une bourse de pièces d'or",
+     "Les couverts en argent",
+     "Une lettre de recommandation",
+     "Les chandeliers d'argent"
+    ],
+    "enonce": "Quels objets l'évêque Myriel laisse-t-il à Jean Valjean lors de son passage chez lui ?",
+    "explication": "L'évêque déclare avoir donné les couverts en argent, puis ajoute les chandeliers d'argent en disant qu'il « achète l'âme » de Valjean. Le pain, la bourse et la lettre n'apparaissent pas dans la scène.",
+    "niveau": "facile"
+   },
+   {
+    "bonnes": [
+     0,
+     2,
+     4,
+     5
+    ],
+    "choix": [
+     "Il vole un pain pour nourrir les enfants de sa sœur",
+     "Il hérite d'une fortune",
+     "Il est envoyé au bagne",
+     "Il part vivre à l'étranger",
+     "Il perd son nom, réduit à un numéro",
+     "À sa sortie, un passeport jaune le fait chasser partout"
+    ],
+    "enonce": "Au début du roman, par quelles épreuves Jean Valjean passe-t-il ?",
+    "explication": "Poussé par la misère, Valjean vole un pain, est envoyé au bagne, y perd son nom (un simple matricule), puis, libéré, son passeport jaune le fait rejeter partout. Il n'hérite de rien et ne part pas à l'étranger.",
+    "niveau": "facile"
+   },
+   {
+    "bonnes": [
+     0,
+     2,
+     4
+    ],
+    "choix": [
+     "Il est d'abord condamné à cinq ans de bagne",
+     "Il a commis un meurtre pendant sa détention",
+     "Ses tentatives d'évasion allongent sa peine",
+     "Il a demandé lui-même à rester au bagne",
+     "Il y passe finalement dix-neuf ans"
+    ],
+    "enonce": "Comment la peine de bagne de Jean Valjean évolue-t-elle, de sa condamnation à sa sortie ?",
+    "explication": "Valjean est d'abord condamné à cinq ans ; ses tentatives d'évasion allongent la peine, si bien qu'il passe dix-neuf ans au bagne. Il n'a ni tué, ni demandé à rester.",
+    "niveau": "standard"
+   },
+   {
+    "bonnes": [
+     2,
+     3,
+     4
+    ],
+    "choix": [
+     "Avocat de Valjean",
+     "Gardien de prison",
+     "Inspecteur de police",
+     "Il poursuit Valjean au nom de la loi",
+     "Il fait arrêter Fantine sans pitié",
+     "Il finit par pardonner à Valjean"
+    ],
+    "enonce": "Quel est le métier de Javert et quel rôle joue-t-il face à Jean Valjean ?",
+    "explication": "Javert est inspecteur de police : il fait appliquer la loi sans exception. Il traque Valjean et n'épargne personne, pas même Fantine, qu'il fait arrêter malgré sa misère.",
+    "niveau": "standard"
+   },
+   {
+    "bonnes": [
+     1,
+     3,
+     4
+    ],
+    "choix": [
+     "La scène est comique et joyeuse",
+     "Une enfant sans défense est seule dans le froid et le noir",
+     "Cosette part gaiement retrouver des amis",
+     "Hugo insiste sur sa petitesse et son épuisement",
+     "Sa peur et ses sanglots émeuvent le lecteur"
+    ],
+    "enonce": "Pourquoi la scène où Cosette est envoyée seule la nuit est-elle pathétique ?",
+    "explication": "Le registre pathétique cherche à émouvoir : une enfant seule, petite et terrorisée dans la nuit suscite la pitié du lecteur. La scène n'a rien de joyeux.",
+    "niveau": "standard"
+   },
+   {
+    "bonnes": [
+     1,
+     3
+    ],
+    "choix": [
+     "Un personnage du roman",
+     "L'auteur lui-même, Victor Hugo",
+     "Un narrateur inventé qui raconte l'histoire",
+     "Il s'adresse directement au lecteur",
+     "Il s'adresse à un autre écrivain"
+    ],
+    "enonce": "Dans une préface, qui prend la parole et à qui s'adresse-t-il ?",
+    "explication": "Dans une préface, l'auteur parle en son nom (le « je », le présent) et s'adresse au lecteur. Ce n'est ni un narrateur ni un personnage du roman.",
+    "niveau": "approfondi"
+   },
+   {
+    "bonnes": [
+     1,
+     3
+    ],
+    "choix": [
+     "Qu'il veut que Valjean travaille pour lui",
+     "Qu'il offre à Valjean une seconde chance de devenir honnête",
+     "Qu'il a payé une rançon pour le libérer",
+     "Que ce don engage Valjean à changer de vie",
+     "Qu'il a seulement récupéré son argenterie"
+    ],
+    "enonce": "Que veut dire l'évêque Myriel lorsqu'il affirme avoir « acheté l'âme » de Jean Valjean ?",
+    "explication": "C'est une image religieuse : par son don, Myriel rachète Valjean pour le bien et l'engage à devenir honnête. Il ne s'agit ni d'un travail ni d'une rançon.",
+    "niveau": "approfondi"
+   },
+   {
+    "bonnes": [
+     1,
+     3,
+     4
+    ],
+    "choix": [
+     "Montrer qu'il connaît l'histoire de France",
+     "Justifier l'utilité de son livre",
+     "Énumérer ses romans précédents",
+     "Appeler à changer la société",
+     "Montrer que la misère frappe l'homme, la femme et l'enfant"
+    ],
+    "enonce": "Quelles intentions Hugo poursuit-il en énumérant les « trois problèmes du siècle » dans sa préface ?",
+    "explication": "Hugo justifie l'utilité de son livre et appelle à réformer une société où la misère détruit l'homme (le prolétariat), la femme (la faim) et l'enfant (la nuit).",
+    "niveau": "approfondi"
+   },
+   {
+    "bonnes": [
+     2,
+     3,
+     4
+    ],
+    "choix": [
+     "Il tourne leurs malheurs en dérision",
+     "Il reste neutre et distant",
+     "Il insiste sur la solitude des victimes",
+     "Il montre leur faiblesse face à un monde hostile",
+     "Il s'attarde sur des détails du corps (mains gelées, sanglots)",
+     "Il multiplie les scènes d'action"
+    ],
+    "enonce": "Par quels procédés d'écriture (les moyens qu'il choisit pour écrire) Hugo cherche-t-il à émouvoir le lecteur dans les scènes de misère ?",
+    "explication": "Le registre pathétique consiste à insister sur la solitude, la faiblesse et les détails du corps qui souffre pour provoquer la pitié. Hugo ne se moque jamais de ses personnages.",
+    "niveau": "approfondi"
+   },
+   {
+    "bonnes": [
+     0,
+     2
+    ],
+    "choix": [
+     "La loi qui punit, face à la bonté qui pardonne",
+     "L'Église contre l'État",
+     "La règle, face à l'humanité",
+     "La richesse contre la pauvreté",
+     "La ville contre la campagne"
+    ],
+    "enonce": "À travers Javert et l'évêque Myriel, quelle opposition Victor Hugo met-il en scène ?",
+    "explication": "Javert incarne la loi rigide qui punit, Myriel la charité qui pardonne. C'est l'opposition centrale du chapitre : choisir entre la règle et l'humanité.",
+    "niveau": "expert"
+   },
+   {
+    "bonnes": [
+     1,
+     3
+    ],
+    "choix": [
+     "Que les prisons étaient mal surveillées",
+     "Que la peine est démesurée par rapport à la faute",
+     "Que Valjean était un criminel dangereux",
+     "Que la justice punit la misère au lieu de la comprendre",
+     "Que Valjean aimait l'aventure de l'évasion"
+    ],
+    "enonce": "Que cherche surtout à faire comprendre Hugo en montrant Valjean au bagne dix-neuf ans pour un pain volé ?",
+    "explication": "Hugo dénonce la disproportion : un pain volé par faim conduit à dix-neuf ans de bagne. La loi écrase la misère au lieu de chercher à la comprendre.",
+    "niveau": "expert"
+   },
+   {
+    "bonnes": [
+     2,
+     3,
+     4
+    ],
+    "choix": [
+     "Il cherche seulement à distraire par l'aventure",
+     "Il défend surtout les intérêts des puissants",
+     "Il dénonce l'injustice sociale de son époque",
+     "Il invite le lecteur à la compassion et à la réforme",
+     "Il prend la défense des misérables : Valjean, Fantine, Cosette",
+     "Il reste neutre face à la misère"
+    ],
+    "enonce": "Pourquoi peut-on dire que Les Misérables est un roman engagé qui défend les plus faibles ?",
+    "explication": "Un roman engagé prend parti : Hugo dénonce l'injustice, défend les plus faibles (Valjean, Fantine, Cosette) et invite le lecteur à la compassion et à la réforme de la société.",
+    "niveau": "expert"
+   }
+  ],
+  "titre": "Les Misérables — évaluation 2",
+  "updatedAt": 1781760562528
+ },
+ "eval_1785934338415": {
+  "createdAt": 1785934338415,
+  "questions": [
+   {
+    "bonnes": [
+     0
+    ],
+    "choix": [
+     "Le romantisme",
+     "Le classicisme",
+     "Le Parnasse",
+     "Le symbolisme"
+    ],
+    "enonce": "Quel mouvement du XIXe siècle met en avant les sentiments personnels et la nature sauvage ?",
+    "explication": "Le romantisme met en avant les sentiments du poète et les paysages qui les reflètent, comme dans les tableaux étudiés en début de chapitre.",
+    "niveau": "facile"
+   },
+   {
+    "bonnes": [
+     0,
+     1,
+     3
+    ],
+    "choix": [
+     "Deux quatrains",
+     "Deux tercets",
+     "Trois quintils",
+     "D'alexandrins",
+     "De vers libres"
+    ],
+    "enonce": "De quoi un sonnet classique est-il composé ?",
+    "explication": "Le sonnet classique compte deux quatrains puis deux tercets, écrits en alexandrins (vers de 12 syllabes). Le vers libre, lui, ne suit aucune règle fixe.",
+    "niveau": "standard"
+   },
+   {
+    "bonnes": [
+     1
+    ],
+    "choix": [
+     "Le registre tragique",
+     "Le registre lyrique",
+     "Le registre comique",
+     "Le registre satirique"
+    ],
+    "enonce": "Quel registre exprime les sentiments personnels du poète au moyen de rythmes et d'images ?",
+    "explication": "Le registre lyrique vient du mot « lyre », l'instrument qui accompagnait autrefois la poésie chantée. Il communique au lecteur l'émotion de l'auteur.",
+    "niveau": "standard"
+   },
+   {
+    "bonnes": [
+     3
+    ],
+    "choix": [
+     "Une anaphore",
+     "Une assonance en [a]",
+     "Une allitération en [m]",
+     "Une allitération en [s]"
+    ],
+    "enonce": "Dans le vers « Souvent, pour s'amuser, les hommes d'équipage », quelle figure sonore entend-on ?",
+    "explication": "Le son [s] revient dans « souvent », « s'amuser » et « équipage » : c'est une allitération, la répétition d'un son de consonne. L'assonance répète un son de voyelle.",
+    "niveau": "approfondi"
+   },
+   {
+    "bonnes": [
+     2
+    ],
+    "choix": [
+     "Non, car il est en fin de vers",
+     "Oui, car le mot suivant commence par une voyelle",
+     "Oui, car le mot suivant commence par une consonne",
+     "Non, car le mot suivant commence par une consonne"
+    ],
+    "enonce": "Dans le vers « Le navire glissant sur les gouffres amers », le e final de « navire » se prononce-t-il, et pourquoi ?",
+    "explication": "En milieu de vers, le e compte comme une syllabe quand le mot suivant commence par une consonne : na-vi-re-glis-sant. C'est ce qui donne les 12 syllabes de l'alexandrin.",
+    "niveau": "approfondi"
+   },
+   {
+    "bonnes": [
+     2
+    ],
+    "choix": [
+     "Une comparaison",
+     "Une personnification",
+     "Une métaphore",
+     "Une périphrase"
+    ],
+    "enonce": "« La mer, ce grand miroir, brille de mille feux » : quelle figure de style rapproche ici la mer et le miroir ?",
+    "explication": "La mer est rapprochée du miroir sans outil de comparaison (« comme », « tel que ») : c'est une métaphore. Avec un outil, ce serait une comparaison.",
+    "niveau": "approfondi"
+   },
+   {
+    "bonnes": [
+     0,
+     2
+    ],
+    "choix": [
+     "Il emprunte au romantisme et au Parnasse sans appartenir à un seul mouvement",
+     "Il refuse d'écrire des sonnets",
+     "Il écrit aussi bien en vers réguliers qu'en poèmes en prose",
+     "Il n'écrit que des vers libres"
+    ],
+    "enonce": "Pourquoi dit-on que Baudelaire est un poète inclassable ?",
+    "explication": "Baudelaire hérite des règles (il écrit des sonnets) et s'en libère (il invente le poème en prose) : il traverse les mouvements sans se laisser enfermer dans un seul.",
+    "niveau": "approfondi"
+   },
+   {
+    "bonnes": [
+     1,
+     2,
+     4
+    ],
+    "choix": [
+     "Rimes parallèles",
+     "Rimes croisées",
+     "Rimes plates",
+     "Rimes circulaires",
+     "Rimes embrassées"
+    ],
+    "enonce": "Quelles sont les dispositions régulières des rimes dans la poésie classique ?",
+    "explication": "Les trois dispositions régulières sont les rimes plates (AABB), croisées (ABAB) et embrassées (ABBA). « Parallèles » et « circulaires » n'existent pas.",
+    "niveau": "standard"
+   },
+   {
+    "bonnes": [
+     1
+    ],
+    "choix": [
+     "Une césure",
+     "Un enjambement",
+     "Une assonance",
+     "Une gradation"
+    ],
+    "enonce": "Dans les vers « Laissent piteusement leurs grandes ailes blanches / Comme des avirons traîner à côté d'eux », la phrase continue d'un vers à l'autre. Comment s'appelle ce procédé ?",
+    "explication": "Quand une phrase commencée dans un vers se termine dans le suivant, c'est un enjambement. La césure, elle, est la pause au milieu de l'alexandrin.",
+    "niveau": "approfondi"
+   },
+   {
+    "bonnes": [
+     1,
+     3
+    ],
+    "choix": [
+     "C'est un sonnet irrégulier",
+     "C'est un poème en prose",
+     "Ce texte n'est pas de la poésie",
+     "La poésie peut exister sans les règles de la versification"
+    ],
+    "enonce": "BONUS — Un poème de Baudelaire ne comporte ni vers ni rimes. Quel est le type de ce poème, et que montre-t-il sur les règles de la poésie ?",
+    "explication": "Sans vers ni rimes, la poésie reste possible : rythme, images et sonorités suffisent. C'est le poème en prose, la grande liberté prise par Baudelaire avec les règles classiques.",
+    "niveau": "expert"
+   }
+  ],
+  "titre": "3e Chapitre 1 — Poésie et peinture au XIXème siècle · Interro de cours (séance 3)",
+  "updatedAt": 1791380813808,
+  "version": 1
+ },
+ "eval_1791380799497": {
+  "createdAt": 1791380799497,
+  "questions": [
+   {
+    "bonnes": [
+     1
+    ],
+    "choix": [
+     "Accuser quelqu'un devant un tribunal",
+     "Se présenter devant un tribunal",
+     "Défendre quelqu'un devant un tribunal",
+     "Juger quelqu'un devant un tribunal"
+    ],
+    "enonce": "Que veut dire « comparaître » ?",
+    "explication": "Comparaître, c'est se présenter devant un tribunal. Au début du chapitre, Paris est citée à comparaître.",
+    "niveau": "facile"
+   },
+   {
+    "bonnes": [
+     0,
+     2
+    ],
+    "choix": [
+     "Un juré",
+     "La barre",
+     "Un avocat",
+     "Un dossier d'instruction",
+     "Une plaidoirie",
+     "Une accusation"
+    ],
+    "enonce": "Quels mots du procès désignent des personnes ?",
+    "explication": "L'avocat parle pour accuser ou pour défendre ; le juré écoute, note et vote. La barre est un endroit, la plaidoirie un discours, le dossier d'instruction ce qu'on a réuni avant le procès.",
+    "niveau": "standard"
+   },
+   {
+    "bonnes": [
+     3
+    ],
+    "choix": [
+     "Une preuve qui est fausse",
+     "Une preuve qui accuse",
+     "Une preuve qui est oubliée",
+     "Une preuve qui défend"
+    ],
+    "enonce": "Qu'est-ce qu'une preuve « à décharge » ?",
+    "explication": "À charge, la preuve accuse ; à décharge, elle défend.",
+    "niveau": "standard"
+   },
+   {
+    "bonnes": [
+     1,
+     3,
+     4
+    ],
+    "choix": [
+     "Paris coûte-t-elle trop cher à ses habitants ?",
+     "Paris abandonne-t-elle ses habitants les plus pauvres ?",
+     "Paris est-elle trop grande pour être gouvernée ?",
+     "Paris cache-t-elle sa misère derrière ses lumières ?",
+     "Paris détruit-elle ce qu'elle a de plus beau ?",
+     "Paris oublie-t-elle les écrivains qui l'ont aimée ?"
+    ],
+    "enonce": "Quelles sont les trois accusations portées contre Paris dans notre procès ?",
+    "explication": "Ce sont les trois questions sur lesquelles la classe votera à la fin du procès.",
+    "niveau": "standard"
+   },
+   {
+    "bonnes": [
+     2,
+     3
+    ],
+    "choix": [
+     "Des pauvres restés au centre",
+     "Des quartiers anciens conservés",
+     "La lumière (L'éclairage au gaz)",
+     "De grandes avenues larges et droites",
+     "Des ruelles plus étroites"
+    ],
+    "enonce": "Qu'est-ce que Paris a gagné avec les grands travaux du XIXe siècle ? deux choses.",
+    "explication": "Avec les grands travaux, Paris s'éclaire au gaz et s'ouvre de grandes avenues larges et droites : elle devient la « Ville Lumière ».",
+    "niveau": "approfondi"
+   },
+   {
+    "bonnes": [
+     3,
+     4
+    ],
+    "choix": [
+     "Ses grandes avenues, rétrécies",
+     "Sa cathédrale, rasée",
+     "Son éclairage, supprimé",
+     "Des quartiers entiers, démolis",
+     "Ses habitants les plus pauvres, chassés du centre"
+    ],
+    "enonce": "Qu'est-ce que Paris a perdu avec les grands travaux du XIXe siècle ?",
+    "explication": "Des quartiers entiers ont été démolis et les plus pauvres ont été chassés loin du centre. L'éclairage et les grandes avenues, au contraire, sont ce que Paris a gagné.",
+    "niveau": "approfondi"
+   },
+   {
+    "bonnes": [
+     2
+    ],
+    "choix": [
+     "Victor Hugo",
+     "Guy de Maupassant",
+     "Le baron Haussmann",
+     "Émile Zola"
+    ],
+    "enonce": "Qui fait démolir des quartiers entiers de Paris, à partir de 1853, pour ouvrir de grandes avenues ?",
+    "explication": "C'est le baron Haussmann. Hugo, Zola et Maupassant sont des écrivains qui ont écrit sur cette ville.",
+    "niveau": "facile"
+   },
+   {
+    "bonnes": [
+     0
+    ],
+    "choix": [
+     "Une comparaison",
+     "Un oxymore",
+     "Une métaphore",
+     "Une personnification"
+    ],
+    "enonce": "Quelle figure de style trouve-t-on dans « La grande rose flamboie comme un œil de cyclope » ?",
+    "explication": "Le mot-outil « comme » est là : c'est une comparaison. Sans lui, ce serait une métaphore.",
+    "niveau": "standard"
+   },
+   {
+    "bonnes": [
+     1,
+     4
+    ],
+    "choix": [
+     "Une métaphore",
+     "Une personnification",
+     "Une hyperbole",
+     "Un oxymore",
+     "Une accumulation"
+    ],
+    "enonce": "Quelles figures de style trouve-t-on dans « Il y avait des guivres qui avaient l'air de rire, des gargouilles qu'on croyait entendre japper, des salamandres qui soufflaient dans le feu, des tarasques qui éternuaient dans la fumée » ?",
+    "explication": "Les monstres sont énumérés les uns après les autres : c'est une accumulation. Des sculptures de pierre qui rient : on leur donne un geste humain, c'est une personnification.",
+    "niveau": "approfondi"
+   },
+   {
+    "bonnes": [
+     2
+    ],
+    "choix": [
+     "Une métaphore",
+     "Une hyperbole",
+     "Un oxymore",
+     "Une comparaison"
+    ],
+    "enonce": "Quelle figure de style trouve-t-on dans « cette pluie ardente » ?",
+    "explication": "La pluie et l'ardeur, l'eau et le feu, deux contraires sont réunis dans le même groupe de mots : c'est un oxymore.",
+    "niveau": "standard"
+   },
+   {
+    "bonnes": [
+     1
+    ],
+    "choix": [
+     "Une hyperbole",
+     "Une métaphore",
+     "Une comparaison",
+     "Une accumulation"
+    ],
+    "enonce": "Quelle figure de style trouve-t-on dans « deux gouttières en gueules de monstres » ?",
+    "explication": "Les gouttières sont rapprochées des gueules de monstres sans mot-outil : c'est une métaphore.",
+    "niveau": "standard"
+   },
+   {
+    "bonnes": [
+     2
+    ],
+    "choix": [
+     "« Perdu » est ici un adjectif invariable",
+     "Avec être, le participe ne s'accorde jamais",
+     "Avec avoir, le complément est placé après le verbe",
+     "« Beaucoup » est un nom masculin singulier"
+    ],
+    "enonce": "Dans « Beaucoup avaient perdu leur logement », pourquoi le participe passé « perdu » ne s'accorde-t-il pas ?",
+    "explication": "Avec l'auxiliaire avoir, quand le complément est placé après le verbe, le participe passé ne s'accorde pas. C'était l'un des deux pièges de la dictée.",
+    "niveau": "approfondi"
+   },
+   {
+    "bonnes": [
+     2
+    ],
+    "choix": [
+     "Une",
+     "Deux",
+     "Trois",
+     "Quatre"
+    ],
+    "enonce": "Une phrase contient trois verbes conjugués. Combien a-t-elle de propositions ?",
+    "explication": "Autant de propositions que de verbes conjugués : trois verbes conjugués, trois propositions.",
+    "niveau": "facile"
+   },
+   {
+    "bonnes": [
+     0,
+     3
+    ],
+    "choix": [
+     "Les crochets de la proposition principale",
+     "Le rond autour des mots subordonnants",
+     "Les crochets des propositions subordonnées",
+     "Le cadre autour de l'antécédent",
+     "Le trait sous les verbes conjugués",
+     ""
+    ],
+    "enonce": "Dans la méthode d'analyse logique, qu'est-ce qui se repère en vert (geste) ?",
+    "explication": "En vert : les crochets de la P.P et les cadres de l'antécédent et du verbe complété. Les crochets des P.S sont rouges, les verbes conjugués soulignés en noir, les mots subordonnants entourés en bleu.",
+    "niveau": "approfondi"
+   },
+   {
+    "bonnes": [
+     0
+    ],
+    "choix": [
+     "Souligner les verbes conjugués en noir",
+     "Encadrer les antécédents en vert",
+     "Entourer les mots subordonnants en bleu",
+     "Mettre les propositions entre crochets"
+    ],
+    "enonce": "Quelle est l'étape 1 de la méthode d'analyse logique ?",
+    "explication": "Étape 1 : les verbes conjugués, soulignés en noir. On sait alors combien la phrase a de propositions.",
+    "niveau": "facile"
+   },
+   {
+    "bonnes": [
+     1,
+     3,
+     5
+    ],
+    "choix": [
+     "Une PSCc : « que je lis »",
+     "Un DPP : « Le livre »",
+     "Une P.I : toute la phrase",
+     "Une FPP : « est passionnant »",
+     "Une PSR : « je lis est passionnant »",
+     "Une PSR : « que je lis »"
+    ],
+    "enonce": "Quelles propositions trouve-t-on dans « Le livre que je lis est passionnant » ?",
+    "explication": "Deux verbes conjugués, deux propositions. La relative « que je lis » se glisse entre le sujet et le verbe : elle coupe la principale en deux, le début (DPP) et la fin (FPP).",
+    "niveau": "approfondi"
+   },
+   {
+    "bonnes": [
+     3
+    ],
+    "choix": [
+     "Qui est-ce qui est fatigué?",
+     "Où est-ce qu'il travaille ?",
+     "Comment est-ce qu'il travaille ?",
+     "Qui est-ce qui travaille ?"
+    ],
+    "enonce": "Dans « L'homme qui travaille est fatigué », quelle question pose-t-on pour trouver l'antécédent de « qui » ?",
+    "explication": "Pour « qui », on pose « Qui est-ce qui » suivi du verbe de la relative, jamais de question en dehors de la relative. La réponse, l'homme, est l'antécédent, toujours en dehors de la relative.",
+    "niveau": "standard"
+   },
+   {
+    "bonnes": [
+     0,
+     1,
+     4
+    ],
+    "choix": [
+     "Un nom",
+     "Un pronom",
+     "Une conjonction de subordination",
+     "Un verbe conjugué",
+     "Un groupe nominal",
+     "Un adjectif"
+    ],
+    "enonce": "Qu'est-ce qui peut être un antécédent ?",
+    "explication": "L'antécédent est un nom, un pronom ou un groupe nominal : la relative complète un nom.",
+    "niveau": "standard"
+   },
+   {
+    "bonnes": [
+     2
+    ],
+    "choix": [
+     "Pour une PSR, de l'antécédent vers le pronom relatif",
+     "Pour une PSCc, de « que » vers le verbe complété",
+     "Pour une PSR, du pronom relatif vers l'antécédent",
+     "Pour une P.I, du verbe conjugué vers le sujet"
+    ],
+    "enonce": "À l'étape 4, dans quel sens vont les flèches ?",
+    "explication": "Pour une relative, la flèche part du pronom relatif et va vers l'antécédent. Pour une complétive, elle part du verbe complété, là où l'on pose la question, et va vers « que » (on verra cette partie après les vacances).",
+    "niveau": "approfondi"
+   },
+   {
+    "bonnes": [
+     2,
+     3,
+     5
+    ],
+    "choix": [
+     "L'antécédent de « que » est « je »",
+     "La subordonnée est une PSR",
+     "« Que » est une conjonction de subordination",
+     "Le verbe complété est « crois »",
+     "« Que » est un pronom relatif",
+     "La subordonnée est une PSCc"
+    ],
+    "enonce": "Dans « Je crois que tu as raison », que peut-on dire de « que » et de la subordonnée ?",
+    "explication": "« Qu'est-ce que tu as ? » n'a pas de réponse avant « que » : pas d'antécédent. « Que » est une conjonction de subordination. « Je crois quoi ? » — que tu as raison : la subordonnée complète « crois », c'est une PSCc.",
+    "niveau": "expert"
+   },
+   {
+    "bonnes": [
+     0,
+     1,
+     3
+    ],
+    "choix": [
+     "Son antécédent est « un immense atelier de putréfaction »",
+     "C'est un pronom relatif",
+     "Il introduit une PSCc",
+     "Il introduit une PSR",
+     "Son antécédent est « Paris »",
+     "C'est une conjonction de subordination"
+    ],
+    "enonce": "BONUS — Dans « Paris, c'est un immense atelier de putréfaction, où la misère, la peste et les maladies travaillent de concert », que peut-on dire de « où » ?",
+    "explication": "« Où est-ce que la misère et la peste travaillent ? » — dans un immense atelier de putréfaction : c'est l'antécédent, un groupe nominal juste avant « où ». « Où » est un pronom relatif, il introduit une PSR. C'est la phrase de Victor Considérant, la preuve à charge de la séance 1.",
+    "niveau": "expert"
+   }
+  ],
+  "titre": "4e- Chapitre 1 - Paris à la barre et analyse logique ·",
+  "updatedAt": 1791380799497,
+  "version": 1
+ },
+ "eval_1791393134857": {
+  "createdAt": 1791393134857,
+  "questions": [
+   {
+    "bonnes": [
+     3
+    ],
+    "choix": [
+     "Quand l'antécédent est dans une relative",
+     "Quand l'antécédent est en fin de phrase",
+     "Quand l'antécédent est un complément",
+     "Quand l'antécédent est le sujet du verbe dans la PP"
+    ],
+    "enonce": "Quand est-ce qu'une Proposition Principale se coupe en deux, en DPP et en FPP ?",
+    "explication": "Si l'antécédent est le sujet, la relative vient juste derrière lui : la principale se coupe en deux. S'il est un complément, la relative vient après et la principale reste entière.",
+    "niveau": "standard"
+   },
+   {
+    "bonnes": [
+     2,
+     3,
+     5
+    ],
+    "choix": [
+     "Un adjectif",
+     "Un Verbe Conjugué",
+     "Un groupe nominal",
+     "Un pronom",
+     "Une Conjonction De Coordination",
+     "Un nom"
+    ],
+    "enonce": "Qu'est-ce qui peut être un antécédent ?",
+    "explication": "L'antécédent est un nom, un pronom ou un groupe nominal : la relative le complète.",
+    "niveau": "standard"
+   },
+   {
+    "bonnes": [
+     1,
+     2,
+     4
+    ],
+    "choix": [
+     "Je pose la question sur la Proposition Principale",
+     "Ma question dépend du Pronom Relatif employé",
+     "Je pose la question sur la relative, avec son Verbe Conjugué",
+     "Je prends toujours le nom le plus proche du Pronom Relatif",
+     "La réponse est l'antécédent, toujours écrit avant le Pronom Relatif, et la flèche va de droite à gauche, du Pronom Relatif à l'antécédent",
+     "La réponse est toujours écrite après le Pronom Relatif"
+    ],
+    "enonce": "Comment trouves-tu l'antécédent d'un Pronom Relatif, et dans quel sens va la flèche à l'étape 4?",
+    "explication": "On pose la question sur la relative, et la question dépend du Pronom Relatif. La réponse est l'antécédent, toujours avant : la flèche part du Pronom Relatif et va de la droite vers la gauche.",
+    "niveau": "approfondi"
+   },
+   {
+    "bonnes": [
+     0,
+     1,
+     3
+    ],
+    "choix": [
+     "Je le mets dans le crochet de la seconde relative",
+     "Je l'entoure en bleu et je l'étiquette CDC",
+     "Je le laisse dans la Proposition Principale",
+     "Je vérifie que les deux subordonnées sont de même nature",
+     "Je le mets dans le crochet de la première relative",
+     "Je l'étiquette MS/PR"
+    ],
+    "enonce": "Deux relatives sont coordonnées par « et ». Que fais-tu de « et » quand tu les écris et les repères ?",
+    "explication": "« Et » est une Conjonction De Coordination : il relie deux subordonnées de même nature. Il entre dans le crochet de la seconde, parce que c'est lui qui l'introduit ; laissé dehors, il tombe dans la principale, ce qui est faux.",
+    "niveau": "approfondi"
+   },
+   {
+    "bonnes": [
+     0
+    ],
+    "choix": [
+     "Non. Elle reste entière, tes relatives viennent après elle",
+     "Oui. Elle est coupée en deux par la PSR 2",
+     "Oui. Elle se place entre tes deux relatives",
+     "Oui. Elle est coupée en deux par la PSR 1"
+    ],
+    "enonce": "Sur ta copie, écris une phrase P.P + PSR 1 + PSR 2. Thème : un lieu sur le front, en 1914. Est-ce que ta Proposition Principale subit des modifications ?",
+    "explication": "L'architecture écrit P.P, et non DPP et FPP : la principale reste entière, son antécédent est un complément et tes relatives viennent après elle. Ta PSR 2 peut porter sur le même antécédent ou sur un mot de la PSR 1.",
+    "niveau": "standard"
+   },
+   {
+    "bonnes": [
+     1,
+     3,
+     5
+    ],
+    "choix": [
+     "Quatre Verbes Conjugués",
+     "Trois Verbes Conjugués",
+     "Une virgule avant la Proposition Indépendante",
+     "Deux points avant la Proposition Indépendante",
+     "Une relative accrochée à la Proposition Indépendante",
+     "Une relative entre le DPP et la FPP"
+    ],
+    "enonce": "Sur ta copie, écris une phrase DPP + PSR + FPP : P.I sur un camarade dans les tranchées. Que contient ta phrase ?",
+    "explication": "Trois propositions, donc trois Verbes Conjugués. La relative se glisse entre le DPP et la FPP : elle coupe la principale. Les deux points annoncent la Proposition Indépendante, qui ne reçoit aucune relative.",
+    "niveau": "approfondi"
+   },
+   {
+    "bonnes": [
+     0,
+     2,
+     4
+    ],
+    "choix": [
+     "Deux points entre la P.I et la P.P",
+     "Une relative accrochée à la P.I",
+     "Une relative accrochée à la P.P",
+     "Deux Propositions Principales",
+     "Trois Verbes Conjugués",
+     "Quatre Verbes Conjugués"
+    ],
+    "enonce": "Sur ta copie, écris une phrase P.I : P.P + PSR sur une information censurée sur le front, que tu ne mettras jamais dans une lettre. Que contient ta phrase ?",
+    "explication": "Trois propositions : une indépendante, une principale et sa relative. Si la relative s'accrochait à la première proposition, celle-ci deviendrait une principale : elle s'accroche donc à la P.P.",
+    "niveau": "expert"
+   },
+   {
+    "bonnes": [
+     0,
+     3,
+     4
+    ],
+    "choix": [
+     "Un Pronom Relatif accordé avec son antécédent",
+     "Un Pronom Relatif accordé avec le sujet de la relative",
+     "Une Proposition Principale entière",
+     "Deux Verbes Conjugués",
+     "Un Pronom Relatif composé, comme auquel ou duquel",
+     "Trois Verbes Conjugués"
+    ],
+    "enonce": "Sur ta copie, écris une phrase DPP + PSR + FPP sur ce que tu penses de la suite de la guerre, avec un Pronom Relatif composé. Que contient ta phrase ?",
+    "explication": "Deux propositions : la principale coupée et sa relative. Le Pronom Relatif composé s'accorde avec son antécédent : c'est l'accord qui montre à quel mot la relative se relie.",
+    "niveau": "approfondi"
+   },
+   {
+    "bonnes": [
+     2
+    ],
+    "choix": [
+     "Une virgule",
+     "Un point",
+     "Un point-virgule",
+     "Deux points"
+    ],
+    "enonce": "Sur ta copie, écris une phrase P.P + PSR ; P.I sur le paysage au matin. Quel signe sépare ta Proposition Principale de ta Proposition Indépendante ?",
+    "explication": "Le point-virgule, signe de ponctuation de corps de phrase, a le rôle d'un point : ce qui vient après repart à zéro. C'est une proposition qui tient toute seule, une P.I.",
+    "niveau": "standard"
+   },
+   {
+    "bonnes": [
+     1
+    ],
+    "choix": [
+     "Deux",
+     "Trois",
+     "Quatre",
+     "Cinq"
+    ],
+    "enonce": "Sur ta copie, écris une phrase P.I , P.P + PSR sur le bruit, puis sur la lettre que tu écris. Combien de Verbes Conjugués compte ta phrase ?",
+    "explication": "Une indépendante, une principale et sa relative : trois propositions, trois Verbes Conjugués.",
+    "niveau": "facile"
+   },
+   {
+    "bonnes": [
+     3
+    ],
+    "choix": [
+     "P.P + PSR 1 + PSR 2 : P.I",
+     "DPP + PSR 1 + FPP : P.P 2 + PSR 2",
+     "DPP + PSR 1 + PSR 2 + FPP : P.P 2",
+     "DPP + PSR 1 + PSR 2 + FPP : P.I"
+    ],
+    "enonce": "Quelle est l'architecture de « La lettre que ma mère m'a envoyée et dont je connais chaque mot dort dans ma poche : je la relis chaque soir » ?",
+    "explication": "Quatre Verbes Conjugués : a envoyée, connais, dort, relis. « La lettre » est le sujet : les deux relatives, coordonnées par « et », coupent la principale ; les deux points annoncent une indépendante.",
+    "niveau": "expert"
+   }
+  ],
+  "titre": "3e- éval 1 Analyse logique - Construire une phrase complexe",
+  "updatedAt": 1791393134857,
+  "version": 1
+ }
+}

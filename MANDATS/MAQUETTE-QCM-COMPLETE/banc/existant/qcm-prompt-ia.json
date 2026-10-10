@@ -1,0 +1,27 @@
+{
+ "ecran": "prompt-ia",
+ "source": "evaluation-qcm.html (7.7.1, md5 ecae65624855a1a877708986a8e984e5), jouée sur le faux hub",
+ "comment": "",
+ "scenes": [
+  "c-reglages-prompt"
+ ],
+ "eleve": false,
+ "boutons": [
+  {
+   "l": "✕",
+   "t": ""
+  },
+  {
+   "l": "📋 Copier le prompt",
+   "t": "Copie le prompt actuel dans le presse-papiers."
+  },
+  {
+   "l": "✏️ Modifier le prompt",
+   "t": "Ouvre l'éditeur pour modifier le prompt. Les modifications sont enregistrées dans Firebase et réutilisées la prochaine fois."
+  }
+ ],
+ "champs": [],
+ "cases": [],
+ "titres": [],
+ "phrases": []
+}

@@ -74,8 +74,9 @@ function provenance(etat, corpus){
 /* ── 4. Les mots interdits côté élève ── */
 const INTERDITS_ELEVE = [
   [/touche|touché|touchez/i, "« touche »"], [/recopi/i, "« recopie »"], [/sanction/i, "« sanction »"], [/attestation/i, "« attestation »"],
+  // (complément 1, D4) « le professeur », « le prof », « ton prof » ne sont plus interdits ; « va voir », « viens me voir », « venez me voir » le restent
   [/va voir|viens me voir|venez me voir/i, "« va voir »"], [/\b(c4|tr)-[a-z]+-\d\d\b/, "un code de compétence"],
-  [/\b(json|hub|eid|firebase|undefined|null|NaN)\b|\[object/i, "un mot de plomberie"], [/le professeur|ton professeur|le prof\b|ton prof\b/i, "le professeur nommé"]
+  [/\b(json|hub|eid|firebase|undefined|null|NaN)\b|\[object/i, "un mot de plomberie"]
 ];
 function motsInterdits(etat){
   const out = [];

@@ -1,0 +1,158 @@
+{
+ "ecran": "panneau-menu",
+ "source": "index.html (md5 ac792b28f40d3a0510e725fc4a6b6985), lu dans le code",
+ "comment": "Le panneau prof : l'en-tête et les 14 entrées du menu, sous « Vue d'ensemble », « Personnes », « Contenu », « Système ».",
+ "scenes": [
+  "m-classe-exclusions",
+  "m-exclusion-refusee",
+  "m-fiche-eleve",
+  "m-taxonomie",
+  "m-taxonomie-editeur",
+  "m-taxonomie-domaine",
+  "m-taxonomie-notion",
+  "m-taxonomie-competences",
+  "m-taxonomie-competence"
+ ],
+ "boutons": [
+  {
+   "l": "🧪 Mode test",
+   "t": "",
+   "ligne": 2069
+  },
+  {
+   "l": "✕",
+   "t": "",
+   "ligne": 1624
+  },
+  {
+   "l": "🏠Tableau de bord",
+   "t": "",
+   "ligne": 1629
+  },
+  {
+   "l": "🏫Classes",
+   "t": "",
+   "ligne": 1631
+  },
+  {
+   "l": "👥Élèves & codes",
+   "t": "",
+   "ligne": 1632
+  },
+  {
+   "l": "🧪Profil test",
+   "t": "",
+   "ligne": 1633
+  },
+  {
+   "l": "📂Architecture",
+   "t": "",
+   "ligne": 1635
+  },
+  {
+   "l": "📦Archives",
+   "t": "",
+   "ligne": 1636
+  },
+  {
+   "l": "🗑Corbeille",
+   "t": "",
+   "ligne": 1637
+  },
+  {
+   "l": "📢Annonces aux élèves",
+   "t": "",
+   "ligne": 1638
+  },
+  {
+   "l": "🎓Dates de l’année",
+   "t": "",
+   "ligne": 1639
+  },
+  {
+   "l": "📚Taxonomie",
+   "t": "",
+   "ligne": 1640
+  },
+  {
+   "l": "📅Emploi du temps",
+   "t": "",
+   "ligne": 1641
+  },
+  {
+   "l": "🛠Atelier",
+   "t": "",
+   "ligne": 1642
+  },
+  {
+   "l": "⚙Configuration & Firebase",
+   "t": "",
+   "ligne": 1644
+  },
+  {
+   "l": "📡Présence live",
+   "t": "",
+   "ligne": 1645
+  }
+ ],
+ "classes": [
+  {
+   "c": "tprof-overlay",
+   "ligne": 1620
+  },
+  {
+   "c": "tprof-box",
+   "ligne": 1621
+  },
+  {
+   "c": "tprof-header",
+   "ligne": 1622
+  },
+  {
+   "c": "tprof-sidebar",
+   "ligne": 1627
+  },
+  {
+   "c": "tprof-sidebar-label",
+   "ligne": 1628
+  },
+  {
+   "c": "tprof-section-btn",
+   "ligne": 1629
+  },
+  {
+   "c": "tps-icon",
+   "ligne": 1629
+  },
+  {
+   "c": "tprof-content",
+   "ligne": 1647
+  }
+ ],
+ "phrases": [
+  {
+   "p": "🛠 Panneau prof",
+   "ligne": 1623
+  },
+  {
+   "p": "— configuration du site",
+   "ligne": 1623
+  },
+  {
+   "p": "Vue d'ensemble",
+   "ligne": 1628
+  },
+  {
+   "p": "Personnes",
+   "ligne": 1630
+  },
+  {
+   "p": "Contenu",
+   "ligne": 1634
+  },
+  {
+   "p": "Système",
+   "ligne": 1643
+  }
+ ]
+}

@@ -1,0 +1,29 @@
+{
+ "ecran": "nouvelle-evaluation",
+ "source": "evaluation-qcm.html (7.7.1, md5 ecae65624855a1a877708986a8e984e5), jouée sur le faux hub",
+ "comment": "",
+ "scenes": [
+  "c-collage"
+ ],
+ "eleve": false,
+ "boutons": [
+  {
+   "l": "✕",
+   "t": ""
+  },
+  {
+   "l": "🔍 Vérifier le format",
+   "t": "Parse le JSON ci-dessus et l'affiche en mode éditable ci-dessous."
+  },
+  {
+   "l": "✨ Démarrer à blanc",
+   "t": "Crée une évaluation vide pour la construire directement dans l'éditeur visuel ci-dessous (sans passer par l'IA)."
+  }
+ ],
+ "champs": [
+  "{\n  \"titre\": \"Mon évaluation\",\n  \"questions\": [\n    {\"enonce\":\"...\",\"choix\":[...],\"bonnes\":[0],\"niveau\":\"standard\"}\n  ]\n}"
+ ],
+ "cases": [],
+ "titres": [],
+ "phrases": []
+}

@@ -1,0 +1,86 @@
+{
+ "ecran": "taxonomie-notion",
+ "source": "index.html (md5 ac792b28f40d3a0510e725fc4a6b6985), lu dans le code",
+ "comment": "Une notion en cours de modification (_taxoFormEdition, l.2496–2506).",
+ "scenes": [
+  "m-taxonomie-notion"
+ ],
+ "boutons": [
+  {
+   "l": "Enregistrer",
+   "t": "",
+   "ligne": 2502
+  },
+  {
+   "l": "Annuler",
+   "t": "",
+   "ligne": 2503
+  }
+ ],
+ "champs": [
+  {
+   "l": "Libellé professeur",
+   "ligne": 2498
+  },
+  {
+   "l": "Libellé élève",
+   "ligne": 2499
+  },
+  {
+   "l": "6e-3e",
+   "ligne": 2500
+  },
+  {
+   "l": "« … »",
+   "ligne": 2501
+  }
+ ],
+ "classes": [
+  {
+   "c": "m8tx-form",
+   "ligne": 2497
+  },
+  {
+   "c": "m8tx-champ",
+   "ligne": 2493
+  },
+  {
+   "c": "m8tx-lab",
+   "ligne": 2493
+  },
+  {
+   "c": "m8-input",
+   "ligne": 2494
+  },
+  {
+   "c": "m8tx-actions",
+   "ligne": 2502
+  },
+  {
+   "c": "m8tx-note",
+   "ligne": 2504
+  }
+ ],
+ "phrases": [
+  {
+   "p": "Libellé professeur",
+   "ligne": 2498
+  },
+  {
+   "p": "Libellé élève",
+   "ligne": 2499
+  },
+  {
+   "p": "Niveaux",
+   "ligne": 2500
+  },
+  {
+   "p": "Exemple (facultatif)",
+   "ligne": 2501
+  },
+  {
+   "p": "ne change jamais : c’est lui qui étiquette le travail des élèves.",
+   "ligne": 2504
+  }
+ ]
+}

@@ -1,0 +1,26 @@
+{
+ "ecran": "eleve-autoeval-fait",
+ "source": "evaluation-qcm.html (7.7.1, md5 ecae65624855a1a877708986a8e984e5), jouée sur le faux hub",
+ "comment": "",
+ "scenes": [
+  "t-estim"
+ ],
+ "eleve": true,
+ "boutons": [
+  {
+   "l": "📊 Mes évaluations",
+   "t": ""
+  }
+ ],
+ "champs": [],
+ "cases": [],
+ "titres": [],
+ "phrases": [
+  "3 ESSAI · ABRIAL Julien",
+  "🎯 Ton estimation",
+  "Combien de bonnes réponses penses-tu avoir données ? Choisis la fourchette qui correspond à ton estimation.",
+  "Ton estimation est enregistrée",
+  "Entre 8 et 10 bonnes réponses sur 10",
+  "La correction s'ouvrira dans un instant."
+ ]
+}

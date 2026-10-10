@@ -1,0 +1,43 @@
+{
+ "ecran": "taxonomie",
+ "source": "index.html (md5 ac792b28f40d3a0510e725fc4a6b6985), lu dans le code",
+ "comment": "« 📚 Taxonomie », l'éditeur fermé.",
+ "scenes": [
+  "m-taxonomie"
+ ],
+ "boutons": [
+  {
+   "l": "Ouvrir l’éditeur",
+   "t": "",
+   "ligne": 2609
+  }
+ ],
+ "classes": [
+  {
+   "c": "m8-bloc",
+   "ligne": 2607
+  },
+  {
+   "c": "m8-titre",
+   "ligne": 2607
+  },
+  {
+   "c": "m8-p",
+   "ligne": 2608
+  },
+  {
+   "c": "m8-btn",
+   "ligne": 2609
+  }
+ ],
+ "phrases": [
+  {
+   "p": "📚 Taxonomie — le référentiel des notions",
+   "ligne": 2085
+  },
+  {
+   "p": "L’arbre Domaine › Famille › Notion que lisent les applications. Ici tu peux créer une notion, corriger ses libellés, ses niveaux et son exemple, ou la désactiver.",
+   "ligne": 2608
+  }
+ ]
+}

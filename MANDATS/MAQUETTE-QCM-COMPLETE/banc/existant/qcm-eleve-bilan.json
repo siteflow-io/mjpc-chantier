@@ -1,0 +1,34 @@
+{
+ "ecran": "eleve-bilan",
+ "source": "evaluation-qcm.html (7.7.1, md5 ecae65624855a1a877708986a8e984e5), jouée sur le faux hub",
+ "comment": "",
+ "scenes": [
+  "t-bilan",
+  "t-bilan-imprime",
+  "t-bilan-annulee",
+  "t-bilan-non-atteinte"
+ ],
+ "eleve": true,
+ "boutons": [
+  {
+   "l": "📄 Imprimer / Exporter mon bilan",
+   "t": "Ouvre une version imprimable de ton bilan (format copie corrigée), que tu peux imprimer ou montrer à tes parents."
+  },
+  {
+   "l": "📊 Mes évaluations",
+   "t": ""
+  }
+ ],
+ "champs": [],
+ "cases": [],
+ "titres": [],
+ "phrases": [
+  "3 ESSAI · ABRIAL Julien",
+  "🎯 Bilan personnel",
+  "1 / 10 bonnes réponses",
+  "Points pour la note :",
+  "🎯 Ton estimation",
+  "⚠️ Tu pensais avoir mieux fait",
+  "Tu pensais avoir entre 8 et 10 bonnes réponses 🟢 mais tu en as eu 1 sur 10 (entre 0 et 2 bonnes réponses 🔴). Tu as un peu surestimé ce que tu avais réussi."
+ ]
+}

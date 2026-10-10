@@ -1,0 +1,30 @@
+{
+ "ecran": "eleve-correction-apres",
+ "source": "evaluation-qcm.html (md5 ecae65624855a1a877708986a8e984e5), lu dans le code",
+ "comment": "La correction, après « 💡 Révéler » : même écran, la réponse révélée et la consigne au stylo (l.4358–4441).",
+ "eleve": true,
+ "scenes": [
+  "t-corr-q2-apres",
+  "t-corr-q3-apres",
+  "t-corr-q1-apres"
+ ],
+ "boutons": [],
+ "phrases": [
+  {
+   "p": "📝 Correction",
+   "ligne": 4333
+  },
+  {
+   "p": "💡 On corrige d'abord les questions les plus ratées par la classe.",
+   "ligne": 4334
+  },
+  {
+   "p": "bonne réponse",
+   "ligne": 4338
+  },
+  {
+   "p": "question déjà corrigée",
+   "ligne": 4341
+  }
+ ]
+}

@@ -1,0 +1,288 @@
+{
+ "ecran": "fiche-eleve",
+ "source": "index.html (md5 ac792b28f40d3a0510e725fc4a6b6985), lu dans le code",
+ "comment": "La fiche de l'élève, ouverte d'un clic sur son nom, la clé saisie : l'encart de la clé au-dessus (l.5509).",
+ "scenes": [
+  "m-fiche-eleve"
+ ],
+ "boutons": [
+  {
+   "l": "Oublier la clé sur cet appareil",
+   "t": "",
+   "ligne": 14757
+  },
+  {
+   "l": "Où la clé est mémorisée",
+   "t": "",
+   "ligne": 14758
+  },
+  {
+   "l": "Relancer la préparation",
+   "t": "",
+   "ligne": 14759
+  },
+  {
+   "l": "Retirer les codes en clair",
+   "t": "",
+   "ligne": 14760
+  },
+  {
+   "l": "Code professeur",
+   "t": "",
+   "ligne": 14761
+  },
+  {
+   "l": "← 3 ESSAI · Élèves & codes",
+   "t": "Revient à la liste de la classe. Ce qui n’est pas enregistré est perdu.",
+   "ligne": 5942
+  },
+  {
+   "l": "F",
+   "t": "",
+   "ligne": 5946
+  },
+  {
+   "l": "M",
+   "t": "",
+   "ligne": 5946
+  },
+  {
+   "l": "oui",
+   "t": "",
+   "ligne": 5948
+  },
+  {
+   "l": "non",
+   "t": "",
+   "ligne": 5948
+  },
+  {
+   "l": "Enregistrer la fiche",
+   "t": "Chiffre avec ta clé et écrit : le dispositif, les cases, les remarques, la synthèse et la date du jour ; publie pour les apps « dictée aménagée » (la case pap-15). Ta clé est nécessaire.",
+   "ligne": 5963
+  },
+  {
+   "l": "Fermer",
+   "t": "Revient à la liste de la classe. Ce qui n’est pas enregistré est perdu.",
+   "ligne": 5964
+  }
+ ],
+ "cases": [
+  {
+   "l": "Proposer des supports écrits aérés et agrandis (exemple : ARIAL 14) pap-01",
+   "ligne": 5889
+  },
+  {
+   "l": "Limiter la copie (synthèse du cours photocopiée, placée sur École Directe…) pap-02",
+   "ligne": 5890
+  },
+  {
+   "l": "Lecture par un tiers ou lecture immersive (prévoir MPA) pap-03",
+   "ligne": 5891
+  },
+  {
+   "l": "Décomposer les consignes, hiérarchiser pap-04",
+   "ligne": 5892
+  },
+  {
+   "l": "Aider à la mise en place de méthodes de travail (systèmes d'organisation répétitifs, accompagnement personnalisé) pap-05",
+   "ligne": 5893
+  },
+  {
+   "l": "Prendre en compte les contraintes associées (fatigue, lenteur…) pap-06",
+   "ligne": 5894
+  },
+  {
+   "l": "Utilisation de l'informatique : MPA pap-07",
+   "ligne": 5895
+  },
+  {
+   "l": "Accorder un temps majoré pap-08",
+   "ligne": 5896
+  },
+  {
+   "l": "Privilégier les évaluations sur le mode oral pap-09",
+   "ligne": 5897
+  },
+  {
+   "l": "Diminuer le nombre d'exercices, de questions quand la mise en place du temps majoré n'est pas possible ou peu souhaitable pap-10",
+   "ligne": 5898
+  },
+  {
+   "l": "Limiter la quantité d'écrit (recours possible aux QCM, exercices à trous, schémas…) pap-11",
+   "ligne": 5899
+  },
+  {
+   "l": "Ne pas pénaliser les erreurs (orthographe grammaticale, d'usage) et le soin dans les travaux écrits pap-12",
+   "ligne": 5900
+  },
+  {
+   "l": "Ne pas pénaliser le manque de participation à l'oral pap-13",
+   "ligne": 5901
+  },
+  {
+   "l": "Limiter le « par cœur », demander à ce que les notions clés uniquement soient retenues pap-14",
+   "ligne": 5902
+  },
+  {
+   "l": "Proposer des dictées aménagées (à trous, avec un choix parmi plusieurs propositions…) pap-15",
+   "ligne": 5903
+  }
+ ],
+ "champs": [
+  {
+   "l": "remarque (facultatif)",
+   "ligne": 5957
+  },
+  {
+   "l": "remarque (facultatif)",
+   "ligne": 5957
+  },
+  {
+   "l": "remarque (facultatif)",
+   "ligne": 5957
+  },
+  {
+   "l": "remarque (facultatif)",
+   "ligne": 5957
+  },
+  {
+   "l": "remarque (facultatif)",
+   "ligne": 5957
+  },
+  {
+   "l": "remarque (facultatif)",
+   "ligne": 5957
+  },
+  {
+   "l": "remarque (facultatif)",
+   "ligne": 5957
+  },
+  {
+   "l": "remarque (facultatif)",
+   "ligne": 5957
+  },
+  {
+   "l": "remarque (facultatif)",
+   "ligne": 5957
+  },
+  {
+   "l": "remarque (facultatif)",
+   "ligne": 5957
+  },
+  {
+   "l": "remarque (facultatif)",
+   "ligne": 5957
+  },
+  {
+   "l": "remarque (facultatif)",
+   "ligne": 5957
+  },
+  {
+   "l": "remarque (facultatif)",
+   "ligne": 5957
+  },
+  {
+   "l": "remarque (facultatif)",
+   "ligne": 5957
+  },
+  {
+   "l": "remarque (facultatif)",
+   "ligne": 5957
+  },
+  {
+   "l": "synthèse (facultatif)",
+   "ligne": 5960
+  }
+ ],
+ "titres": [
+  {
+   "t": "Le sexe, lu par les apps (le QCM). Un clic l’enregistre aussitôt, sans ta clé : il n’est pas chiffré.",
+   "ligne": 5945
+  },
+  {
+   "t": "Élève à dispositif (PAP). Le choix s’écrit quand tu enregistres la fiche ; le nombre de la classe suit.",
+   "ligne": 5947
+  },
+  {
+   "t": "Réservé : rien ne s’y écrit encore.",
+   "ligne": 5965
+  }
+ ],
+ "classes": [
+  {
+   "c": "secu-encart",
+   "ligne": 14750
+  },
+  {
+   "c": "elf",
+   "ligne": 5941
+  },
+  {
+   "c": "elf-retour",
+   "ligne": 5942
+  },
+  {
+   "c": "elf-tete",
+   "ligne": 5943
+  },
+  {
+   "c": "elf-sous",
+   "ligne": 5950
+  },
+  {
+   "c": "elf-bloc",
+   "ligne": 5954
+  },
+  {
+   "c": "elf-ligne",
+   "ligne": 5956
+  },
+  {
+   "c": "elf-syn",
+   "ligne": 5960
+  },
+  {
+   "c": "elf-apps",
+   "ligne": 5961
+  },
+  {
+   "c": "elf-pied",
+   "ligne": 5963
+  },
+  {
+   "c": "elf-reserve",
+   "ligne": 5965
+  }
+ ],
+ "phrases": [
+  {
+   "p": "Fiche élève · né le",
+   "ligne": 5950
+  },
+  {
+   "p": "Pour toutes les disciplines — la fiche PAP de l’établissement, ligne à ligne",
+   "ligne": 5953
+  },
+  {
+   "p": "Évaluations",
+   "ligne": 5953
+  },
+  {
+   "p": "Synthèse — remarques, points de vigilance",
+   "ligne": 5960
+  },
+  {
+   "p": "Ce que les apps liront : dictée aménagée",
+   "ligne": 5961
+  },
+  {
+   "p": "Historique et progression de l’élève",
+   "ligne": 5965
+  },
+  {
+   "p": "Cette partie arrivera avec le profil de l’élève : ses dictées et résultats, ses évaluations, ses carnets d’erreurs, sa progression notion par notion — dans l’année seulement.",
+   "ligne": 5965
+  }
+ ]
+}

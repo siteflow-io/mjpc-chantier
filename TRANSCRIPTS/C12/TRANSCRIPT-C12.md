@@ -19267,3 +19267,35 @@ Réponse mot pour mot :
 635. **Au sas** : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/MAQUETTE-QCM-FLUX/README.md (section « Tour 627 »). Ensuite : le prompt (62, 123).
 
 10/10/2026 08:49 MEMO
+
+---
+
+## TOUR 628 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (10/10, 08:54) les coméptences ne doivent pas être mentionnées telles quelle. il faut utiliser la reformulation élève (normalement elle est sur mjpc il me semble)
+
+---
+
+## TOUR 628 — Claude (conscience n°12)
+
+Cherché la reformulation élève des compétences : au hub en lecture seule (`/taxonomie`, `/site`, lus le 10/10 à 08:55), dans la production (`taxonomie_atelier.json`, `index.html` et les apps) et au sas : seules les notions ont un `libelleEleve` (éditeur de taxonomie du panneau prof). Écrit 28 libellés élève proposés, refait le commentaire (`com628.js`), le PDF et le bilan de Lou. Fichiers au sas, envoyés à Paul.
+
+Réponse mot pour mot :
+
+636. **Mesuré : la reformulation élève n'existe pas pour les compétences.** Au hub, chacune des 28 compétences n'a qu'un code et son libellé officiel. Il n'y a rien non plus dans le code de la production, ni au sas. La reformulation élève existe pour les notions : c'est le « Libellé élève » de l'éditeur de taxonomie, dans ton panneau prof de MJPC. C'est peut-être celle-là que tu as en tête.
+
+637. **Ma proposition : chaque compétence reçoit un libellé élève, réglé dans le même éditeur, comme pour une notion.** Le libellé officiel reste pour École Directe et pour le PDF ; tout ce que voit l'élève prend le libellé élève. Cela entre au mandat avec MJPC, comme les exclusions.
+
+638. **Les 28 libellés, proposés par moi, à corriger** : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/LIBELLES-ELEVE-COMPETENCES/README.md. Ceux de nos exemples : « Travailler seul et de façon responsable » (Être autonome et responsable) ; « S'investir dans son travail, en classe et à la maison » (S'impliquer dans les activités en classe et dans son travail personnel) ; « Connaître la grammaire pour analyser et construire des phrases » (c4-langue-04) ; « Préparer, écrire et relire son texte » (c4-ecrire-02) ; « Se servir de sa culture pour comprendre les textes et les œuvres » (c4-culture-01) ; « Vérifier que l'on a bien compris ce qu'on lit » (c4-lire-01).
+
+639. **Le commentaire, refait.** La phrase du point d'autonomie devient : « Pour cette évaluation, deux compétences ne sont pas atteintes : « Travailler seul et de façon responsable » et « S'investir dans son travail, en classe et à la maison ». » Tu la vois chez Julien et Michel, dans le PDF joint. Dans le bilan de l'élève, « Tes compétences » et « Question par question » prennent aussi le libellé élève (capture jointe, le bilan de Lou).
+
+640. **Une tension** : tes attestations (451) et la phrase sous chaque question (450) nomment ces deux compétences telles quelles, avec tes mots. Ma proposition : là aussi, le libellé élève.
+
+641. **618 reste ouverte, telle quelle** : dans École Directe, ton extension doit-elle entrer autre chose qu'une note et un niveau par compétence ?
+
+642. **Au sas** : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/MAQUETTE-QCM-FLUX/README.md (section « Tour 628 »). Ensuite : le prompt (62, 123).
+
+10/10/2026 08:58 MEMO

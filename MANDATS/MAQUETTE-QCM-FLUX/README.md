@@ -486,3 +486,19 @@ Chaque question porte « ce qu'elle vérifie » (une courte phrase à l'infiniti
 **Capture 627-4 — le PDF, page 1.** Pages 2 et 3 : `pdf-627/627-pdf-page-2.png`, `pdf-627/627-pdf-page-3.png`.
 
 ![Capture 627-4](pdf-627/627-pdf-page-1.png)
+
+---
+
+## Tour 628 — les compétences par leur libellé élève (points 636 à 642)
+
+Demande de Paul (10/10, 08:54) : « les compétences ne doivent pas être mentionnées telles quelle. il faut utiliser la reformulation élève (normalement elle est sur mjpc il me semble) ».
+
+Mesuré : aucun libellé élève des compétences, ni au hub, ni en production, ni au sas ; il n'existe que pour les notions. Proposés : 28 libellés élève (https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/LIBELLES-ELEVE-COMPETENCES/README.md, `maquette/libelles_eleve.json`). Le commentaire (`maquette/com628.js`) nomme les compétences du point d'autonomie par leur libellé élève ; le bilan de l'élève aussi (« Tes compétences », « Question par question »). Le PDF garde les codes et les libellés officiels pour École Directe. Scène : `maquette/maquette628.js`, `build628.py`, `capture628.js` ; le PDF : `pdf-628/` (`gen628.js`).
+
+**Capture 628-1 — Élève, le bilan de Lou, avec les libellés élève (soulignés : proposés).**
+
+![Capture 628-1](captures-628/628-1-eleve-bilan.png)
+
+**Capture 628-2 — le PDF, page 1 : la phrase du point d'autonomie de Julien et de Michel, avec les libellés élève.** Pages 2 et 3 : `pdf-628/628-pdf-page-2.png`, `pdf-628/628-pdf-page-3.png`.
+
+![Capture 628-2](pdf-628/628-pdf-page-1.png)

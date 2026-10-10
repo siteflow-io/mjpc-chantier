@@ -19353,3 +19353,29 @@ Réponse mot pour mot :
 651. **La maquette par une session Claude Code sur tes crédits : compris.** Dès que le prompt te va, j'écris son mandat au sas. Elle partira de la maquette actuelle et des captures 610 à 628, refera tout d'un coup, mesurera les limites de longueur, et livrera les captures pour que tu les valides.
 
 10/10/2026 09:17 MEMO
+
+---
+
+## TOUR 631 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (10/10, 09:41) sur les commentaires: un élève qui a tout bon n'a pas besoin de "à revoir en priorité". il a une formulation du style: même si ta maîtrise est bonne, tu peux encore t'améliorer sur...
+
+---
+
+## TOUR 631 — Claude (conscience n°12)
+
+Refait le commentaire (`com629.js`) et le PDF, vérifié avec `pdftotext` (Léa, Inès, Manon). Fichiers au sas, PDF envoyé à Paul.
+
+Réponse mot pour mot :
+
+652. **Compris, et refait.** Pour une Très bonne maîtrise, plus de « À revoir en priorité » : après le « Bravo », ta phrase, « Même si ta maîtrise est bonne, tu peux encore t'améliorer : … ». J'ai seulement retiré « sur », parce que la suite est à l'infinitif. Léa, dans le PDF joint : « Très belle évaluation, qui reflète une maîtrise solide. Bravo, tu sais trouver l'architecture d'une phrase complexe et trouver l'antécédent d'un pronom relatif. Même si ta maîtrise est bonne, tu peux encore t'améliorer : écrire une phrase P.I : P.P + PSR. Ton estimation correspond à ton vrai résultat : tu te connais bien ! »
+
+653. **Un élève qui a tout juste n'a ni l'une ni l'autre phrase**, puisqu'il n'a rien raté. Inès : « Très belle évaluation, qui reflète une maîtrise solide. Bravo, tu sais trouver l'architecture d'une phrase complexe et écrire une phrase P.I : P.P + PSR. Tu as fait mieux que ce que tu croyais. »
+
+654. **Ma proposition pour les autres niveaux** : « À revoir en priorité : » reste pour une Maîtrise satisfaisante, fragile ou insuffisante.
+
+655. **Au sas** : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/MAQUETTE-QCM-FLUX/README.md (section « Tour 631 »). Le prompt (647 à 651) attend ton mot ; ensuite, le mandat de la maquette.
+
+10/10/2026 09:42 MEMO

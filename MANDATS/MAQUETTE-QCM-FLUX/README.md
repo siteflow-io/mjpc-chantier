@@ -502,3 +502,15 @@ Mesuré : aucun libellé élève des compétences, ni au hub, ni en production, 
 **Capture 628-2 — le PDF, page 1 : la phrase du point d'autonomie de Julien et de Michel, avec les libellés élève.** Pages 2 et 3 : `pdf-628/628-pdf-page-2.png`, `pdf-628/628-pdf-page-3.png`.
 
 ![Capture 628-2](pdf-628/628-pdf-page-1.png)
+
+---
+
+## Tour 631 — la Très bonne maîtrise : « Même si ta maîtrise est bonne, tu peux encore t'améliorer » (points 652 à 655)
+
+Demande de Paul (10/10, 09:41) : « un élève qui a tout bon n'a pas besoin de "à revoir en priorité". il a une formulation du style: même si ta maîtrise est bonne, tu peux encore t'améliorer sur... »
+
+`maquette/com629.js` : pour une Très bonne maîtrise, la phrase des questions ratées devient « Même si ta maîtrise est bonne, tu peux encore t'améliorer : … », après le « Bravo » ; « À revoir en priorité : » reste pour les autres niveaux. Le PDF : `pdf-631/` (`gen629.js`).
+
+**Capture 631 — le PDF, page 1.** Pages 2 et 3 : `pdf-631/631-pdf-page-2.png`, `pdf-631/631-pdf-page-3.png`.
+
+![Capture 631](pdf-631/631-pdf-page-1.png)

@@ -87,7 +87,7 @@ function motsInterdits(etat){
 }
 
 /* ── 7. Aucun vrai élève ── */
-const MAJ_PERMIS = new Set(["QCM", "PDF", "BONUS", "MODE", "TEST", "POSE", "TON", "STYLO", "JSON", "CSV", "RÉPONSE", "RÉPONSES", "RÉFLEXION", "ESSAI", "DPP", "FPP", "PSR", "CDC", "MS", "PR", "EN", "COURS", "MULTIPLES", "TABLETTES", "EXPLICATION", "MJPC", "RÉDIGE", "TA", "SUR", "FEUILLE", "ENTIER", "A4", "OK", "CLASSE", "ED", "P.P", "P.I", "DE", "LA", "ET", "TOUT", "UN", "UNE", "PP", "PI", "SRP", "HUGO"]);
+const MAJ_PERMIS = new Set(["QCM", "PDF", "BONUS", "MODE", "TEST", "POSE", "TON", "STYLO", "JSON", "CSV", "RÉPONSE", "RÉPONSES", "RÉFLEXION", "ESSAI", "DPP", "FPP", "PSR", "CDC", "MS", "PR", "EN", "COURS", "MULTIPLES", "TABLETTES", "EXPLICATION", "MJPC", "RÉDIGE", "TA", "SUR", "FEUILLE", "ENTIER", "A4", "OK", "CLASSE", "ED", "P.P", "P.I", "DE", "LA", "ET", "TOUT", "UN", "UNE", "PP", "PI", "SRP", "HUGO", "NOM"]);
 function nomsInconnus(texte){
   const re = /(?<![\p{L}])((?:[A-ZÀ-ÖØ-Ý][A-ZÀ-ÖØ-Ý'’-]+)(?: [A-ZÀ-ÖØ-Ý][A-ZÀ-ÖØ-Ý'’-]+)*) ([A-ZÀ-ÖØ-Ý][a-zà-öø-ÿ]+(?:-[A-ZÀ-ÖØ-Ý][a-zà-öø-ÿ]+)?)(?![\p{L}])/gu;
   const permis = new Set(PERMIS.tous), out = new Set(); let m;
@@ -113,9 +113,13 @@ const INTERDITS_SOURCE = [
 ];
 
 /* ── 9. Le PDF de gen632.js : son texte ── */
+function texteCom632(entree){   // le commentaire de com632.js, la version finale (mandat §8.9)
+  const {commentaireQCM} = require(path.join(FLUX, "maquette", "com632.js"));
+  return commentaireQCM(entree).map(x => x.t).join("");
+}
 function textePdf632(){
   const html = lire(path.join(FLUX, "pdf-632", "notes-competences-3-ESSAI.html"));
-  return html.replace(/<style[\s\S]*?<\/style>/g, "").replace(/<br>/g, "\n").replace(/<[^>]+>/g, " ").replace(/&lt;/g, "<").replace(/&amp;/g, "&");
+  return html.replace(/<style[\s\S]*?<\/style>/g, "").replace(/<title>[\s\S]*?<\/title>/g, "").replace(/<br>/g, "\n").replace(/<[^>]+>/g, " ").replace(/&lt;/g, "<").replace(/&amp;/g, "&");
 }
 
 /* ── Ce qui se lit dans la page (fonctions sérialisées) ── */
@@ -128,7 +132,7 @@ function lireScene(){
   let n;
   while((n = tw.nextNode())){
     const v = n.nodeValue.trim(); if(!v) continue;
-    const el = n.parentElement; if(!el || el.closest(".deco") || dansTip(el) || el.closest("style,script")) continue;
+    const el = n.parentElement; if(!el || el.closest(".deco") || dansTip(el) || el.closest("style,script") || el.closest("[data-com]")) continue;
     if(!visible(el)) continue;
     textes.push({t: v});
   }
@@ -211,8 +215,10 @@ function lireScene(){
   const sansGeste = Array.from(root.querySelectorAll("button")).filter(b => !b.disabled && visible(b) && (!dessusG || dessusG.contains(b))
     && !b.hasAttribute("data-va") && !b.hasAttribute("data-local") && !b.closest(".eleve-choix,.decl-b-btns,.co-btns,.qdf-choix,.autoeval-fourchettes")
     && !(b.classList.contains("actif") || b.getAttribute("aria-pressed") === "true")).map(b => (b.innerText || "").trim().slice(0, 40));
+  // 9. les commentaires (bilan général) : l'entrée donnée à com632.js, et le texte affiché
+  const commentaires = Array.from(root.querySelectorAll("[data-com]")).map(el => ({entree: el.getAttribute("data-com"), texte: el.tagName === "TEXTAREA" ? el.value : el.innerText}));
   const infoEleve = (vue === "tablette" || vue === "eleve" || vue === "tableau") ? root.querySelectorAll(".info-i").length : 0;
-  return {sansGeste, cibles, longueurTexte: (root.innerText || "").length, iframe: !!fr, textesIframe, interdits: window.__INTERDITS || [], textes, enonces, debords, chevauchements, coupes, boutons, infoEleve};
+  return {commentaires, sansGeste, cibles, longueurTexte: (root.innerText || "").length, iframe: !!fr, textesIframe, interdits: window.__INTERDITS || [], textes, enonces, debords, chevauchements, coupes, boutons, infoEleve};
 }
 function marquerBoutons(){
   // Les boutons que l'élève ou Paul peuvent cliquer sur cette scène : ni grisés, ni cachés, ni recouverts par la fenêtre ouverte ;
@@ -235,4 +241,4 @@ function empreinte(){
   let h = 0; for(let i = 0; i < s.length; i++){ h = (h * 31 + s.charCodeAt(i)) | 0; } return h + ":" + s.length;
 }
 
-module.exports = {corpus, provenance, motsInterdits, nomsInconnus, vueEleve, vueProf, INTERDITS_SOURCE, textePdf632, lireScene, marquerBoutons, empreinte, normEsp, norm, PERMIS, LIB_OFFICIELS, LIB_ELEVE};
+module.exports = {texteCom632, corpus, provenance, motsInterdits, nomsInconnus, vueEleve, vueProf, INTERDITS_SOURCE, textePdf632, lireScene, marquerBoutons, empreinte, normEsp, norm, PERMIS, LIB_OFFICIELS, LIB_ELEVE};

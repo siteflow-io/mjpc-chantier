@@ -10,7 +10,7 @@ CSS = ["qcm.css", "maquette.css", "maquette610.css", "maquette620.css", "maquett
 JS = ["maquette.js", "maquette2.js", "ev3e.js", "maquette610.js", "maquette620.js",
       "com626.js", "maquette626.js", "com627.js", "maquette627.js", "com628.js", "maquette628.js", "com632.js"]
 EXTRA_JS = json.load(open(os.path.join(S, "ordre_js.json"))) if os.path.exists(os.path.join(S, "ordre_js.json")) else []
-JS += EXTRA_JS + ["gestes.js", "etape2.js", "etape3.js", "socle.js"]
+JS += EXTRA_JS + ["gestes.js", "etape2.js", "etape3.js", "etape4.js", "socle.js"]
 
 def js(nom):
     t = lire(S, nom)
@@ -34,6 +34,14 @@ html = ("<!DOCTYPE html>\n<html lang=\"fr\">\n<head>\n<meta charset=\"UTF-8\">\n
         "</head>\n<body>\n<div id=\"root\"></div>\n<div id=\"som-racine\"></div>\n"
         "<script>\nvar PROMPT_TEXTE = " + json.dumps(prompt, ensure_ascii=False).replace("</", "<\\/") + ";\nwindow.PDF632_HTML = " + json.dumps(pdf, ensure_ascii=False).replace("</", "<\\/") + ";\n"
         + "\n".join(js(n) for n in JS) + "\n</script>\n</body>\n</html>\n")
+
+# garde (étape 4, défaut 27) : le script assemblé se compile, sinon rien n'est écrit
+import subprocess, tempfile
+with tempfile.NamedTemporaryFile("w", suffix=".js", delete=False, encoding="utf-8") as f:
+    f.write("\n".join(js(n) for n in JS)); essai = f.name
+r = subprocess.run(["node", "--check", essai], capture_output=True, text=True)
+os.unlink(essai)
+if r.returncode: sys.exit("refus : le script assemblé ne se compile pas\n" + r.stderr[:800])
 
 n = sys.argv[1] if len(sys.argv) > 1 else "dev"
 nom = "maquette-qcm-v%s.html" % n

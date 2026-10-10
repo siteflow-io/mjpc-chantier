@@ -5,10 +5,10 @@
 var ORDRE = [
   // A. Préparer l'évaluation, avant le jour
   ["Préparer l'évaluation", [
-    ["c-evals", 4, "Pilotage → 📝 Évaluations : la liste, avec le chapitre, le mode, les compétences, l'état."],
-    ["c-collage", 4, "« ➕ Nouvelle évaluation » : le JSON collé, et les messages de la vérification."],
-    ["c-editeur", 4, "« ✏️ Compléter » une évaluation du hub : chapitre, mode, compétences, temps, bonus."],
-    ["x627-3-editeur", 4, "L'éditeur avec « 🎯 Ce qu'elle vérifie, pour le bilan de l'élève »."],
+    ["c-evals", 4, "Pilotage → 📝 Évaluations : rangées par niveau, un tri ; la démo en tête, « 🔒 Permanente »."],
+    ["c-eval-corbeille", 4, "« 🗑️ » une évaluation : la corbeille, gardée un an."],
+    ["c-collage", 4, "« ➕ Nouvelle évaluation » : les messages, la garde de longueur, « ce qu'elle vérifie », la durée ; « Copier les erreurs pour l'instance de création d'éval »."],
+    ["x627-3-editeur", 4, "L'éditeur : « 🎯 Ce qu'elle vérifie », « 📏 longueur assumée » ; chaque geste marque l'évaluation modifiée."],
     ["c-feuille", 4, "« 🖨️ Imprimer » : les énoncés seuls, sur une page."]]],
   // B. Avant l'heure
   ["Avant l'heure, sur ta console", [
@@ -162,33 +162,39 @@ var ORDRE = [
     ["t-papier-correction", 3, "Chaque moitié montre ce que ta grille a retenu de la feuille, puis la réponse."]]],
   // L. Le soir
   ["Le soir, sur ta console", [
-    ["c-seances", 4, "Données → Résultats : la liste des séances."],
-    ["c-resultats", 4, "Le tableau d'une séance : ✓, ✗ ou ＋, la note, une colonne par compétence."],
-    ["c-fiche", 4, "La fiche de Michel."],
-    ["x626-1-fiche-bilan", 4, "La fiche de Michel avec « 📝 Bilan général » (tour 626)."],
-    ["x627-1-fiche-bilan", 4, "La fiche de Michel avec « 📝 Bilan général » (tour 627)."],
+    ["c-seances", 4, "Données → Résultats : les séances rangées par classe, un tri ; « publiée », « copies non rendues »."],
+    ["c-resultats", 4, "Le tableau d'une séance : ✓, ✗, ⛔ ou ∅, la note, les compétences, l'autonomie, les feuilles à lire ; le PDF fermé."],
+    ["c-fiche", 4, "La fiche de Michel : sa feuille lue par Julien, sa tablette, ce qu'il a dit ; « ⛔ Retirer le point d'autonomie » ; « 📝 Bilan général »."],
+    ["c-fiche-garde", 4, "« ⛔ Retirer le point d'autonomie », le soir : la garde."],
+    ["c-fiche-retire", 4, "Le point retiré, dans la fiche : « ↩️ Rendre »."],
     ["c-que-dit-la-feuille", 4, "« Que dit la feuille ? »."],
+    ["c-seances-lues", 4, "Toutes les feuilles lues : « rendre les copies ▸ »."],
+    ["c-rendre", 4, "« Rendre les copies » : la garde."],
+    ["c-copies-rendues", 4, "« copies rendues le 10/10 », « 🙈 Masquer les copies »."],
+    ["c-resultats-rendues", 4, "Les copies rendues : le PDF s'ouvre."],
+    ["x632-pdf", 4, "Le PDF « notes et compétences » (gen632.js)."],
     ["c-corbeille", 4, "Mettre une séance à la corbeille."],
-    ["c-sauvegarde", 4, "Sauvegarde, avec la corbeille."],
-    ["x632-pdf", 4, "Le PDF « notes et compétences » (tour 632)."]]],
+    ["c-sauvegarde", 4, "Sauvegarde, avec la corbeille et les purges."],
+    ["c-importer", 4, "« 📤 Importer snapshot » : la garde."],
+    ["c-purger", 4, "« Purger les évaluations » : la démo reste."]]],
   // M. L'élève, après
   ["Côté élève, après la séance", [
-    ["e-mes-evals", 4, "« 📊 Mes évaluations », chez elle."],
-    ["e-bilan-lou", 4, "Le bilan de Lou, corrigé d'après sa feuille."],
-    ["x626-2-eleve-bilan", 4, "Le bilan de Lou, qui finit par « 📝 Bilan » (tour 626)."],
-    ["x627-2-eleve-bilan", 4, "Le bilan de Lou (tour 627)."],
-    ["x628-1-eleve-bilan", 4, "Le bilan de Lou, avec les libellés élève (tour 628)."]]],
-  // N. Réglages
-  ["Réglages", [
+    ["e-mes-evals", 4, "« 📊 Mes évaluations », chez elle : « En relecture », « Tu étais absente »."],
+    ["e-mes-evals-rendue", 4, "Sa copie rendue : la note définitive."],
+    ["e-bilan-lou", 4, "Le bilan de Lou, corrigé d'après sa feuille, qui finit par « 📝 Bilan »."]]],
+  // N. Réglages, MJPC
+  ["Réglages, et MJPC", [
     ["c-reglages", 4, "Réglages, en cartes : la classe, le prompt, les durées de la séance, les niveaux de maîtrise, les textes."],
-    ["c-reglages-prompt", 4, "Le prompt de création d'éval."]]],
+    ["c-reglages-prompt", 4, "Le prompt de création d'éval."],
+    ["m-classe-exclusions", 4, "MJPC, Élèves & codes : « 🚫 Jamais avec… », pour chaque élève."],
+    ["m-exclusion-refusee", 4, "Une quatrième exclusion : refusée, avec la raison."],
+    ["m-taxonomie-competences", 4, "MJPC, Taxonomie : les compétences et leur libellé élève."]]],
   // O. Une autre séance
   ["Une autre séance", [
     ["c-rattrapage", 3, "Le rattrapage."]]],
   // P. Le mode test
   ["Le mode test", [
-    ["c-test", 4, "Le mode test (capture 64, à retirer)."],
-    ["x620-1-mode-test-ouverture", 4, "Le mode test, à l'ouverture."],
+    ["x620-1-mode-test-ouverture", 4, "Le mode test, à l'ouverture : ta vraie console d'avant l'heure, 15 tablettes."],
     ["x620-2-mode-test-reflexion", 4, "Le mode test, pendant la réflexion."],
     ["x620-3-mode-test-en-grand", 4, "« 🔍 Jouer en grand »."]]],
   // Q. Annexe

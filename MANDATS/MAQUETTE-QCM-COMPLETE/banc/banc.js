@@ -24,6 +24,7 @@ const VUES = {
 let nb = 0; const echecs = []; const journal = [];
 function verif(ok, quoi, detail){ nb++; if(!ok) echecs.push(quoi + (detail ? " — " + detail : "")); return ok; }
 
+if(SORTIE && fs.existsSync(SORTIE)) fs.unlinkSync(SORTIE);   // (garde, défaut 28) jamais une sortie d'un banc précédent
 (async () => {
   const corpus = C.corpus(RACINE);
   const navig = await chromium.launch({executablePath: "/opt/pw-browsers/chromium"});
@@ -124,6 +125,8 @@ function verif(ok, quoi, detail){ nb++; if(!ok) echecs.push(quoi + (detail ? " �
           verif(etat.sansGeste.length === 0, "5. " + sc.id + " : chaque bouton déclare son geste", etat.sansGeste.join(" · "));
           // 5. chaque bouton qui mène ailleurs mène à une scène qui existe
           for(const c of [...new Set(etat.cibles)]) verif(scenes.some(x => x.id === c), "5. " + sc.id + " : la scène « " + c + " » où mène un bouton existe");
+          // 9. le commentaire, mot pour mot : celui que com632.js écrit pour la même entrée
+          for(const c of etat.commentaires) verif(C.normEsp(c.texte) === C.normEsp(C.texteCom632(JSON.parse(c.entree))), "9. " + sc.id + " : le commentaire est celui de com632.js, mot pour mot", "« " + C.normEsp(c.texte).slice(0, 80) + "… »");
           // 9. le PDF, mot pour mot
           if(sc.id === "x632-pdf") verif(etat.textesIframe.replace(/\s+/g, "") === C.textePdf632(RACINE).replace(/\s+/g, ""), "9. le PDF est celui de gen632.js, mot pour mot");
         }
@@ -179,4 +182,4 @@ function verif(ok, quoi, detail){ nb++; if(!ok) echecs.push(quoi + (detail ? " �
   if(SORTIE) fs.writeFileSync(SORTIE, txt);
   console.log(txt.length > 20000 ? txt.slice(0, 20000) + "\n… (" + echecs.length + " échecs, voir la sortie)" : txt);
   process.exit(echecs.length ? 1 : 0);
-})().catch(e => { console.error(e); process.exit(2); });
+})().catch(e => { console.error(e); if(SORTIE) fs.writeFileSync(SORTIE, "Banc unique — ÉCHEC FATAL : " + e.message + "\n"); process.exit(2); });

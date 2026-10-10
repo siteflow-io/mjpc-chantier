@@ -534,14 +534,14 @@ function Reglages(){
 function DureesSeance(){
   var lignes = [["Installation et consignes", 5, "min"], ["Correction, par question", 1, "min"], ["Co-évaluation et bilan", 2, "min"], ["Passage de la tablette, avant chaque tour", 3, "s"], ["« Ta feuille dit-elle la même chose que ton clic ? »", 5, "s"], ["Entre deux questions", 15, "s"]];
   return h("div", {className:"reg-grille"}, lignes.map(function(l, i){ return h("label", {key:i, className:"reg-l"}, h("span", null, l[0]), h("input", {type:"number", defaultValue:l[1], min:0, title:"Tape la durée ; elle vaut pour toutes les séances à venir."}), h("span", null, l[2])); }),
-    h("button", {className:"btn btn-primary btn-sm", "data-va":"c-reglages"}, "💾 Enregistrer"));
+    h(BoutonLocal, {cls:"btn btn-primary btn-sm", txt:"💾 Enregistrer", titre:"Enregistre les durées : elles valent pour le prompt, la garde au collage et au lancement, et la fin prévue.", fait:"✅ Enregistré"}));
 }
 function NiveauxMaitrise(){
   return h("div", null,
     h("label", {className:"reg-l"}, h("span", null, "Note sur :"), h("input", {type:"number", defaultValue:20, title:"L'échelle de la note : la note est le nombre de points sur le nombre de questions, ramené sur cette échelle, au dixième."})),
     NIVEAUX_MAITRISE.map(function(n, i){ return h("div", {key:i, className:"reg-niv"}, h("span", null, n[0] + " "), h("input", {defaultValue:n[1], title:"Le nom du niveau, tel qu'il s'affiche partout."}), h("span", null, " de "), h("input", {type:"number", defaultValue:n[2], title:"La borne basse du niveau, comprise."}), h("span", null, i === 0 ? " à " : " à moins de "), h("input", {type:"number", defaultValue:n[3], title:"La borne haute : elle appartient au niveau du dessus."})); }),
     h("p", {className:"reg-p"}, "Les tranches s'écrivent « de 5 à moins de 6 » : aucune note ne tombe entre deux (340)."),
-    h("button", {className:"btn btn-primary btn-sm", "data-va":"c-reglages"}, "💾 Enregistrer"));
+    h(BoutonLocal, {cls:"btn btn-primary btn-sm", txt:"💾 Enregistrer", titre:"Enregistre l'échelle et les tranches ; l'app refuse un réglage qui laisse un trou ou fait se chevaucher deux paliers.", fait:"✅ Enregistré"}));
 }
 var TEXTES_ELEVE = [
   ["Avant le lancement de l'évaluation", "L'évaluation n'a pas encore commencé. Elle s'ouvrira quand nous la lancerons ensemble.", "Vu par l'élève qui ouvre l'application alors qu'aucune évaluation n'est lancée pour sa classe."],

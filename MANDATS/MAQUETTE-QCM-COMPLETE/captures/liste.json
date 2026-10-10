@@ -5,23 +5,23 @@
   "fichier": "001-c-evals.png",
   "vue": "console",
   "section": "Préparer l'évaluation",
-  "titre": "Pilotage → 📝 Évaluations : la liste, avec le chapitre, le mode, les compétences, l'état."
+  "titre": "Pilotage → 📝 Évaluations : rangées par niveau, un tri ; la démo en tête, « 🔒 Permanente »."
  },
  {
   "n": 2,
-  "id": "c-collage",
-  "fichier": "002-c-collage.png",
+  "id": "c-eval-corbeille",
+  "fichier": "002-c-eval-corbeille.png",
   "vue": "console",
   "section": "Préparer l'évaluation",
-  "titre": "« ➕ Nouvelle évaluation » : le JSON collé, et les messages de la vérification."
+  "titre": "« 🗑️ » une évaluation : la corbeille, gardée un an."
  },
  {
   "n": 3,
-  "id": "c-editeur",
-  "fichier": "003-c-editeur.png",
+  "id": "c-collage",
+  "fichier": "003-c-collage.png",
   "vue": "console",
   "section": "Préparer l'évaluation",
-  "titre": "« ✏️ Compléter » une évaluation du hub : chapitre, mode, compétences, temps, bonus."
+  "titre": "« ➕ Nouvelle évaluation » : les messages, la garde de longueur, « ce qu'elle vérifie », la durée ; « Copier les erreurs pour l'instance de création d'éval »."
  },
  {
   "n": 4,
@@ -29,7 +29,7 @@
   "fichier": "004-x627-3-editeur.png",
   "vue": "console",
   "section": "Préparer l'évaluation",
-  "titre": "L'éditeur avec « 🎯 Ce qu'elle vérifie, pour le bilan de l'élève »."
+  "titre": "L'éditeur : « 🎯 Ce qu'elle vérifie », « 📏 longueur assumée » ; chaque geste marque l'évaluation modifiée."
  },
  {
   "n": 5,
@@ -1053,7 +1053,7 @@
   "fichier": "132-c-seances.png",
   "vue": "console",
   "section": "Le soir, sur ta console",
-  "titre": "Données → Résultats : la liste des séances."
+  "titre": "Données → Résultats : les séances rangées par classe, un tri ; « publiée », « copies non rendues »."
  },
  {
   "n": 133,
@@ -1061,7 +1061,7 @@
   "fichier": "133-c-resultats.png",
   "vue": "console",
   "section": "Le soir, sur ta console",
-  "titre": "Le tableau d'une séance : ✓, ✗ ou ＋, la note, une colonne par compétence."
+  "titre": "Le tableau d'une séance : ✓, ✗, ⛔ ou ∅, la note, les compétences, l'autonomie, les feuilles à lire ; le PDF fermé."
  },
  {
   "n": 134,
@@ -1069,23 +1069,23 @@
   "fichier": "134-c-fiche.png",
   "vue": "console",
   "section": "Le soir, sur ta console",
-  "titre": "La fiche de Michel."
+  "titre": "La fiche de Michel : sa feuille lue par Julien, sa tablette, ce qu'il a dit ; « ⛔ Retirer le point d'autonomie » ; « 📝 Bilan général »."
  },
  {
   "n": 135,
-  "id": "x626-1-fiche-bilan",
-  "fichier": "135-x626-1-fiche-bilan.png",
+  "id": "c-fiche-garde",
+  "fichier": "135-c-fiche-garde.png",
   "vue": "console",
   "section": "Le soir, sur ta console",
-  "titre": "La fiche de Michel avec « 📝 Bilan général » (tour 626)."
+  "titre": "« ⛔ Retirer le point d'autonomie », le soir : la garde."
  },
  {
   "n": 136,
-  "id": "x627-1-fiche-bilan",
-  "fichier": "136-x627-1-fiche-bilan.png",
+  "id": "c-fiche-retire",
+  "fichier": "136-c-fiche-retire.png",
   "vue": "console",
   "section": "Le soir, sur ta console",
-  "titre": "La fiche de Michel avec « 📝 Bilan général » (tour 627)."
+  "titre": "Le point retiré, dans la fiche : « ↩️ Rendre »."
  },
  {
   "n": 137,
@@ -1097,128 +1097,176 @@
  },
  {
   "n": 138,
+  "id": "c-seances-lues",
+  "fichier": "138-c-seances-lues.png",
+  "vue": "console",
+  "section": "Le soir, sur ta console",
+  "titre": "Toutes les feuilles lues : « rendre les copies ▸ »."
+ },
+ {
+  "n": 139,
+  "id": "c-rendre",
+  "fichier": "139-c-rendre.png",
+  "vue": "console",
+  "section": "Le soir, sur ta console",
+  "titre": "« Rendre les copies » : la garde."
+ },
+ {
+  "n": 140,
+  "id": "c-copies-rendues",
+  "fichier": "140-c-copies-rendues.png",
+  "vue": "console",
+  "section": "Le soir, sur ta console",
+  "titre": "« copies rendues le 10/10 », « 🙈 Masquer les copies »."
+ },
+ {
+  "n": 141,
+  "id": "c-resultats-rendues",
+  "fichier": "141-c-resultats-rendues.png",
+  "vue": "console",
+  "section": "Le soir, sur ta console",
+  "titre": "Les copies rendues : le PDF s'ouvre."
+ },
+ {
+  "n": 142,
+  "id": "x632-pdf",
+  "fichier": "142-x632-pdf.png",
+  "vue": "console",
+  "section": "Le soir, sur ta console",
+  "titre": "Le PDF « notes et compétences » (gen632.js)."
+ },
+ {
+  "n": 143,
   "id": "c-corbeille",
-  "fichier": "138-c-corbeille.png",
+  "fichier": "143-c-corbeille.png",
   "vue": "console",
   "section": "Le soir, sur ta console",
   "titre": "Mettre une séance à la corbeille."
  },
  {
-  "n": 139,
-  "id": "c-sauvegarde",
-  "fichier": "139-c-sauvegarde.png",
-  "vue": "console",
-  "section": "Le soir, sur ta console",
-  "titre": "Sauvegarde, avec la corbeille."
- },
- {
-  "n": 140,
-  "id": "x632-pdf",
-  "fichier": "140-x632-pdf.png",
-  "vue": "console",
-  "section": "Le soir, sur ta console",
-  "titre": "Le PDF « notes et compétences » (tour 632)."
- },
- {
-  "n": 141,
-  "id": "e-mes-evals",
-  "fichier": "141-e-mes-evals.png",
-  "vue": "eleve",
-  "section": "Côté élève, après la séance",
-  "titre": "« 📊 Mes évaluations », chez elle."
- },
- {
-  "n": 142,
-  "id": "e-bilan-lou",
-  "fichier": "142-e-bilan-lou.png",
-  "vue": "eleve",
-  "section": "Côté élève, après la séance",
-  "titre": "Le bilan de Lou, corrigé d'après sa feuille."
- },
- {
-  "n": 143,
-  "id": "x626-2-eleve-bilan",
-  "fichier": "143-x626-2-eleve-bilan.png",
-  "vue": "eleve",
-  "section": "Côté élève, après la séance",
-  "titre": "Le bilan de Lou, qui finit par « 📝 Bilan » (tour 626)."
- },
- {
   "n": 144,
-  "id": "x627-2-eleve-bilan",
-  "fichier": "144-x627-2-eleve-bilan.png",
-  "vue": "eleve",
-  "section": "Côté élève, après la séance",
-  "titre": "Le bilan de Lou (tour 627)."
+  "id": "c-sauvegarde",
+  "fichier": "144-c-sauvegarde.png",
+  "vue": "console",
+  "section": "Le soir, sur ta console",
+  "titre": "Sauvegarde, avec la corbeille et les purges."
  },
  {
   "n": 145,
-  "id": "x628-1-eleve-bilan",
-  "fichier": "145-x628-1-eleve-bilan.png",
-  "vue": "eleve",
-  "section": "Côté élève, après la séance",
-  "titre": "Le bilan de Lou, avec les libellés élève (tour 628)."
+  "id": "c-importer",
+  "fichier": "145-c-importer.png",
+  "vue": "console",
+  "section": "Le soir, sur ta console",
+  "titre": "« 📤 Importer snapshot » : la garde."
  },
  {
   "n": 146,
-  "id": "c-reglages",
-  "fichier": "146-c-reglages.png",
+  "id": "c-purger",
+  "fichier": "146-c-purger.png",
   "vue": "console",
-  "section": "Réglages",
-  "titre": "Réglages, en cartes : la classe, le prompt, les durées de la séance, les niveaux de maîtrise, les textes."
+  "section": "Le soir, sur ta console",
+  "titre": "« Purger les évaluations » : la démo reste."
  },
  {
   "n": 147,
-  "id": "c-reglages-prompt",
-  "fichier": "147-c-reglages-prompt.png",
-  "vue": "console",
-  "section": "Réglages",
-  "titre": "Le prompt de création d'éval."
+  "id": "e-mes-evals",
+  "fichier": "147-e-mes-evals.png",
+  "vue": "eleve",
+  "section": "Côté élève, après la séance",
+  "titre": "« 📊 Mes évaluations », chez elle : « En relecture », « Tu étais absente »."
  },
  {
   "n": 148,
+  "id": "e-mes-evals-rendue",
+  "fichier": "148-e-mes-evals-rendue.png",
+  "vue": "eleve",
+  "section": "Côté élève, après la séance",
+  "titre": "Sa copie rendue : la note définitive."
+ },
+ {
+  "n": 149,
+  "id": "e-bilan-lou",
+  "fichier": "149-e-bilan-lou.png",
+  "vue": "eleve",
+  "section": "Côté élève, après la séance",
+  "titre": "Le bilan de Lou, corrigé d'après sa feuille, qui finit par « 📝 Bilan »."
+ },
+ {
+  "n": 150,
+  "id": "c-reglages",
+  "fichier": "150-c-reglages.png",
+  "vue": "console",
+  "section": "Réglages, et MJPC",
+  "titre": "Réglages, en cartes : la classe, le prompt, les durées de la séance, les niveaux de maîtrise, les textes."
+ },
+ {
+  "n": 151,
+  "id": "c-reglages-prompt",
+  "fichier": "151-c-reglages-prompt.png",
+  "vue": "console",
+  "section": "Réglages, et MJPC",
+  "titre": "Le prompt de création d'éval."
+ },
+ {
+  "n": 152,
+  "id": "m-classe-exclusions",
+  "fichier": "152-m-classe-exclusions.png",
+  "vue": "console",
+  "section": "Réglages, et MJPC",
+  "titre": "MJPC, Élèves & codes : « 🚫 Jamais avec… », pour chaque élève."
+ },
+ {
+  "n": 153,
+  "id": "m-exclusion-refusee",
+  "fichier": "153-m-exclusion-refusee.png",
+  "vue": "console",
+  "section": "Réglages, et MJPC",
+  "titre": "Une quatrième exclusion : refusée, avec la raison."
+ },
+ {
+  "n": 154,
+  "id": "m-taxonomie-competences",
+  "fichier": "154-m-taxonomie-competences.png",
+  "vue": "console",
+  "section": "Réglages, et MJPC",
+  "titre": "MJPC, Taxonomie : les compétences et leur libellé élève."
+ },
+ {
+  "n": 155,
   "id": "c-rattrapage",
-  "fichier": "148-c-rattrapage.png",
+  "fichier": "155-c-rattrapage.png",
   "vue": "console",
   "section": "Une autre séance",
   "titre": "Le rattrapage."
  },
  {
-  "n": 149,
-  "id": "c-test",
-  "fichier": "149-c-test.png",
-  "vue": "console",
-  "section": "Le mode test",
-  "titre": "Le mode test (capture 64, à retirer)."
- },
- {
-  "n": 150,
+  "n": 156,
   "id": "x620-1-mode-test-ouverture",
-  "fichier": "150-x620-1-mode-test-ouverture.png",
+  "fichier": "156-x620-1-mode-test-ouverture.png",
   "vue": "console",
   "section": "Le mode test",
-  "titre": "Le mode test, à l'ouverture."
+  "titre": "Le mode test, à l'ouverture : ta vraie console d'avant l'heure, 15 tablettes."
  },
  {
-  "n": 151,
+  "n": 157,
   "id": "x620-2-mode-test-reflexion",
-  "fichier": "151-x620-2-mode-test-reflexion.png",
+  "fichier": "157-x620-2-mode-test-reflexion.png",
   "vue": "console",
   "section": "Le mode test",
   "titre": "Le mode test, pendant la réflexion."
  },
  {
-  "n": 152,
+  "n": 158,
   "id": "x620-3-mode-test-en-grand",
-  "fichier": "152-x620-3-mode-test-en-grand.png",
+  "fichier": "158-x620-3-mode-test-en-grand.png",
   "vue": "console",
   "section": "Le mode test",
   "titre": "« 🔍 Jouer en grand »."
  },
  {
-  "n": 153,
+  "n": 159,
   "id": "t-annexe",
-  "fichier": "153-t-annexe.png",
+  "fichier": "159-t-annexe.png",
   "vue": "tablette",
   "section": "Annexe : la demi-tablette",
   "titre": "La vraie question 3 de l'évaluation de 3e, sur une demi-tablette."

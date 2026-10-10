@@ -1,4 +1,4 @@
-# La maquette complète du QCM — livraison de l'exécutant (en cours : étapes 1 à 3 faites)
+# La maquette complète du QCM — livraison de l'exécutant (en cours : étapes 1 à 4 faites)
 
 *Mandat : `MANDATS/MANDAT-MAQUETTE-QCM-COMPLETE.md`. Ce README grandit à chaque étape ; sa forme finale est écrite à l'étape 5.*
 
@@ -73,3 +73,19 @@ Le banc a grandi (défauts 5 à 16 du journal) : il remet la scène à neuf avan
 - **La co-évaluation** (511 à 539) : chaque moitié a son état — les trois choix, « c'est laquelle ? », « Qu'avais-tu écrit sur ta feuille ? », « vous êtes d'accord » ; ta console : l'alerte dans l'ordre de 535 à 538, les quatre boutons (545), « ⛔ à Michel / à Julien / aux deux » (541) et leurs gardes ; le cas ambigu sur l'évaluation de 3e, tranchable de bout en bout.
 - **Le bilan** : « Ta note provisoire » et la phrase de 474 ; les libellés élève ; le ✓ orange ; « Corrigé d'après ta feuille » ; les deux compétences d'autonomie « atteinte » ou « non atteinte » ; une question annulée (442) ; l'impression.
 - **« ⏸️ Finir à une autre heure »**, la reprise, « 🔓 Rouvrir » une séance terminée (469) ; **le papier seul** de bout en bout (467, 491, 492), avec la variante papier de la seconde attestation, faite de phrases déjà validées ; **le rattrapage** par les exclusions (595) ; **l'élève seul** qui lit sa propre feuille (500).
+
+## Étape 4 — le soir, les réglages, MJPC
+
+*Maquette : `maquette-qcm-v4.html` (md5 `2e35941495321aadde38f2b147d1006a`). Banc : `sorties/banc-etape4.txt` — **15 686 vérifications, zéro défaut**, sur les 159 scènes. Captures regardées. Journal : défauts 27 à 35.*
+
+- **📝 Évaluations** rangées par niveau, chaque niveau se replie, un tri (date, titre, chapitre) ; la démo en tête, « 🔒 Permanente », sans corbeille (465, 552 à 554) ; « 📋 Dupliquer » agit ; la corbeille d'une évaluation.
+- **Le collage** : les messages numérotés, dont la garde de longueur (« 60 px de trop sur une demi-tablette »), « ce qu'elle vérifie » manquant, la durée qui déborde ; « 📋 Copier les erreurs pour l'instance de création d'éval » (466, 481, 464, 631).
+- **L'éditeur** : « 🎯 Ce qu'elle vérifie », la marque « 📏 longueur assumée » ; chaque geste marque l'évaluation modifiée.
+- **Résultats** : les séances rangées par classe, un tri ; la coche « publiée » ; « copies non rendues » → « rendre les copies ▸ » qui pulse → sa garde → « copies rendues le 10/10 », « 🙈 Masquer les copies » (471) ; le tableau avec ⛔ et ∅, la colonne d'autonomie ; « 📄 PDF notes et compétences » fermé tant que les copies ne sont pas rendues (609), puis le PDF de gen632.js.
+- **La fiche** : la feuille lue par Julien, la tablette, ce qu'il a dit (B), « ✔ Marquer lue », « La feuille dit autre chose », ses compétences et les deux du point d'autonomie, « ⛔ Retirer le point d'autonomie » et « ↩️ Rendre » le soir ; « 📝 Bilan général » pré-rempli par **com632.js**, « ↻ Regénérer », « ✓ Valider le bilan » (621 à 633).
+- **Côté élève** : « Mes évaluations » avec « En relecture : ta note sera visible quand ta copie te sera rendue », « Tu étais absente », puis la note ; le bilan de Lou qui finit par « 📝 Bilan » (com632.js).
+- **Sauvegarde** : export, import (garde), corbeille avec « ↩️ Restaurer », nettoyage, purges (la démo reste).
+- **Le mode test** : la capture 64 retirée ; les gestes 🔬 et 🎬 disent ce qu'ils font ; la feuille simulée se tape ; « 🔍 Jouer en grand ».
+- **MJPC**, dans le panneau prof (les couleurs et les mesures d'index.html) : « Élèves & codes » avec « 🚫 Jamais avec… » pour chaque élève, au plus 3, la quatrième refusée avec la raison (585, 590) ; « Taxonomie » avec une section « Les compétences » et leur libellé élève, modifiable (637).
+
+Le banc a grandi : la vérification 9 compare chaque commentaire affiché à celui de com632.js pour la même entrée ; l'assemblage refuse un script qui ne compile pas.

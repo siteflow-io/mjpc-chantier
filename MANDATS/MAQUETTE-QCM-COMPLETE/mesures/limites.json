@@ -1,295 +1,613 @@
 {
  "etalon_q3_reste_px": 67,
- "ecrans": {
-  "reponse": {
-   "4": [
-    {
-     "enonce": 60,
-     "choix_max": 218
-    },
-    {
-     "enonce": 120,
-     "choix_max": 215
-    },
-    {
-     "enonce": 180,
-     "choix_max": 209
-    },
-    {
-     "enonce": 240,
-     "choix_max": 142
-    },
-    {
-     "enonce": 300,
-     "choix_max": 140
-    }
-   ],
-   "5": [
-    {
-     "enonce": 60,
-     "choix_max": 142
-    },
-    {
-     "enonce": 120,
-     "choix_max": 140
-    },
-    {
-     "enonce": 180,
-     "choix_max": 139
-    },
-    {
-     "enonce": 240,
-     "choix_max": 74
-    },
-    {
-     "enonce": 300,
-     "choix_max": 74
-    }
-   ],
-   "6": [
-    {
-     "enonce": 60,
-     "choix_max": 77
-    },
-    {
-     "enonce": 120,
-     "choix_max": 74
-    },
-    {
-     "enonce": 180,
-     "choix_max": 74
-    },
-    {
-     "enonce": 240,
-     "choix_max": 71
-    },
-    {
-     "enonce": 300,
-     "choix_max": 41
-    }
-   ]
-  },
-  "b": {
-   "4": [
-    {
-     "enonce": 60,
-     "choix_max": 182
-    },
-    {
-     "enonce": 120,
-     "choix_max": 158
-    },
-    {
-     "enonce": 180,
-     "choix_max": 136
-    },
-    {
-     "enonce": 240,
-     "choix_max": 127
-    },
-    {
-     "enonce": 300,
-     "choix_max": 104
-    }
-   ],
-   "5": [
-    {
-     "enonce": 60,
-     "choix_max": 104
-    },
-    {
-     "enonce": 120,
-     "choix_max": 86
-    },
-    {
-     "enonce": 180,
-     "choix_max": 79
-    },
-    {
-     "enonce": 240,
-     "choix_max": 65
-    },
-    {
-     "enonce": 300,
-     "choix_max": 55
-    }
-   ],
-   "6": [
-    {
-     "enonce": 60,
-     "choix_max": 100
-    },
-    {
-     "enonce": 120,
-     "choix_max": 80
-    },
-    {
-     "enonce": 180,
-     "choix_max": 77
-    },
-    {
-     "enonce": 240,
-     "choix_max": 59
-    },
-    {
-     "enonce": 300,
-     "choix_max": 55
-    }
-   ]
-  },
-  "lecture": {
-   "4": [
-    {
-     "enonce": 60,
-     "choix_max": 173
-    },
-    {
-     "enonce": 120,
-     "choix_max": 173
-    },
-    {
-     "enonce": 180,
-     "choix_max": 165
-    },
-    {
-     "enonce": 240,
-     "choix_max": 89
-    },
-    {
-     "enonce": 300,
-     "choix_max": 86
-    }
-   ],
-   "5": [
-    {
-     "enonce": 60,
-     "choix_max": 165
-    },
-    {
-     "enonce": 120,
-     "choix_max": 86
-    },
-    {
-     "enonce": 180,
-     "choix_max": 86
-    },
-    {
-     "enonce": 240,
-     "choix_max": 83
-    },
-    {
-     "enonce": 300,
-     "choix_max": 30
-    }
-   ],
-   "6": [
-    {
-     "enonce": 60,
-     "choix_max": 86
-    },
-    {
-     "enonce": 120,
-     "choix_max": 83
-    },
-    {
-     "enonce": 180,
-     "choix_max": 41
-    },
-    {
-     "enonce": 240,
-     "choix_max": 32
-    },
-    {
-     "enonce": 300,
-     "choix_max": 30
-    }
-   ]
-  }
- },
- "total": {
+ "marge_px": 16,
+ "pas_enonce": 20,
+ "pas_choix": 5,
+ "ecrans": [
+  "reponse",
+  "b",
+  "lecture"
+ ],
+ "par_choix": {
   "4": [
    {
+    "enonce": 40,
+    "limite": 165,
+    "reste": {
+     "reponse": 60,
+     "b": 12,
+     "lecture": 36
+    },
+    "reste_plus_pas": {
+     "reponse": 60,
+     "b": 12,
+     "lecture": -12
+    }
+   },
+   {
+    "enonce": 60,
+    "limite": 165,
+    "reste": {
+     "reponse": 60,
+     "b": 12,
+     "lecture": 36
+    },
+    "reste_plus_pas": {
+     "reponse": 60,
+     "b": 12,
+     "lecture": -12
+    }
+   },
+   {
     "enonce": 80,
-    "total_max": 640
+    "limite": 155,
+    "reste": {
+     "reponse": 35,
+     "b": 5,
+     "lecture": 30
+    },
+    "reste_plus_pas": {
+     "reponse": 35,
+     "b": -13,
+     "lecture": 30
+    }
    },
    {
     "enonce": 100,
-    "total_max": 640
+    "limite": 155,
+    "reste": {
+     "reponse": 35,
+     "b": 5,
+     "lecture": 30
+    },
+    "reste_plus_pas": {
+     "reponse": 35,
+     "b": -13,
+     "lecture": 30
+    }
    },
    {
     "enonce": 120,
-    "total_max": 640
+    "limite": 155,
+    "reste": {
+     "reponse": 35,
+     "b": 5,
+     "lecture": 30
+    },
+    "reste_plus_pas": {
+     "reponse": 35,
+     "b": -13,
+     "lecture": 30
+    }
    },
    {
-    "enonce": 150,
-    "total_max": 530
+    "enonce": 140,
+    "limite": 130,
+    "reste": {
+     "reponse": 74,
+     "b": 16,
+     "lecture": 7
+    },
+    "reste_plus_pas": {
+     "reponse": 74,
+     "b": -2,
+     "lecture": 7
+    }
+   },
+   {
+    "enonce": 160,
+    "limite": 130,
+    "reste": {
+     "reponse": 74,
+     "b": 16,
+     "lecture": 7
+    },
+    "reste_plus_pas": {
+     "reponse": 74,
+     "b": -2,
+     "lecture": 7
+    }
+   },
+   {
+    "enonce": 180,
+    "limite": 130,
+    "reste": {
+     "reponse": 74,
+     "b": 16,
+     "lecture": 7
+    },
+    "reste_plus_pas": {
+     "reponse": 74,
+     "b": -2,
+     "lecture": 7
+    }
    },
    {
     "enonce": 200,
-    "total_max": 440
+    "limite": 120,
+    "reste": {
+     "reponse": 48,
+     "b": 9,
+     "lecture": 7
+    },
+    "reste_plus_pas": {
+     "reponse": 48,
+     "b": -9,
+     "lecture": 7
+    }
    },
    {
-    "enonce": 250,
-    "total_max": 410
+    "enonce": 220,
+    "limite": 80,
+    "reste": {
+     "reponse": 48,
+     "b": 45,
+     "lecture": 49
+    },
+    "reste_plus_pas": {
+     "reponse": 48,
+     "b": 45,
+     "lecture": -15
+    }
+   },
+   {
+    "enonce": 240,
+    "limite": 80,
+    "reste": {
+     "reponse": 23,
+     "b": 20,
+     "lecture": 49
+    },
+    "reste_plus_pas": {
+     "reponse": 23,
+     "b": 20,
+     "lecture": -15
+    }
+   },
+   {
+    "enonce": 260,
+    "limite": 80,
+    "reste": {
+     "reponse": 23,
+     "b": 20,
+     "lecture": 49
+    },
+    "reste_plus_pas": {
+     "reponse": 23,
+     "b": 20,
+     "lecture": -15
+    }
+   },
+   {
+    "enonce": 280,
+    "limite": 80,
+    "reste": {
+     "reponse": 23,
+     "b": 20,
+     "lecture": 26
+    },
+    "reste_plus_pas": {
+     "reponse": 23,
+     "b": 20,
+     "lecture": -37
+    }
+   },
+   {
+    "enonce": 300,
+    "limite": 70,
+    "reste": {
+     "reponse": 30,
+     "b": 31,
+     "lecture": 26
+    },
+    "reste_plus_pas": {
+     "reponse": -2,
+     "b": 13,
+     "lecture": 26
+    }
    }
   ],
   "5": [
    {
+    "enonce": 40,
+    "limite": 80,
+    "reste": {
+     "reponse": 60,
+     "b": 9,
+     "lecture": 79
+    },
+    "reste_plus_pas": {
+     "reponse": 60,
+     "b": 9,
+     "lecture": -1
+    }
+   },
+   {
+    "enonce": 60,
+    "limite": 80,
+    "reste": {
+     "reponse": 60,
+     "b": 9,
+     "lecture": 79
+    },
+    "reste_plus_pas": {
+     "reponse": 60,
+     "b": 9,
+     "lecture": -1
+    }
+   },
+   {
     "enonce": 80,
-    "total_max": 410
+    "limite": 75,
+    "reste": {
+     "reponse": 35,
+     "b": 20,
+     "lecture": 57
+    },
+    "reste_plus_pas": {
+     "reponse": 35,
+     "b": -16,
+     "lecture": 57
+    }
    },
    {
     "enonce": 100,
-    "total_max": 410
+    "limite": 75,
+    "reste": {
+     "reponse": 35,
+     "b": 20,
+     "lecture": 57
+    },
+    "reste_plus_pas": {
+     "reponse": 35,
+     "b": -16,
+     "lecture": 57
+    }
    },
    {
     "enonce": 120,
-    "total_max": 410
+    "limite": 75,
+    "reste": {
+     "reponse": 35,
+     "b": 20,
+     "lecture": 57
+    },
+    "reste_plus_pas": {
+     "reponse": 35,
+     "b": -16,
+     "lecture": 57
+    }
    },
    {
-    "enonce": 150,
-    "total_max": 330
+    "enonce": 140,
+    "limite": 25,
+    "reste": {
+     "reponse": 155,
+     "b": 120,
+     "lecture": 41
+    },
+    "reste_plus_pas": {
+     "reponse": 101,
+     "b": 66,
+     "lecture": -13
+    }
+   },
+   {
+    "enonce": 160,
+    "limite": 25,
+    "reste": {
+     "reponse": 155,
+     "b": 120,
+     "lecture": 41
+    },
+    "reste_plus_pas": {
+     "reponse": 101,
+     "b": 66,
+     "lecture": -13
+    }
+   },
+   {
+    "enonce": 180,
+    "limite": 25,
+    "reste": {
+     "reponse": 155,
+     "b": 120,
+     "lecture": 41
+    },
+    "reste_plus_pas": {
+     "reponse": 101,
+     "b": 66,
+     "lecture": -13
+    }
    },
    {
     "enonce": 200,
-    "total_max": 270
+    "limite": 25,
+    "reste": {
+     "reponse": 130,
+     "b": 95,
+     "lecture": 41
+    },
+    "reste_plus_pas": {
+     "reponse": 76,
+     "b": 41,
+     "lecture": -13
+    }
    },
    {
-    "enonce": 250,
-    "total_max": 210
+    "enonce": 220,
+    "limite": 25,
+    "reste": {
+     "reponse": 130,
+     "b": 95,
+     "lecture": 18
+    },
+    "reste_plus_pas": {
+     "reponse": 76,
+     "b": 41,
+     "lecture": -36
+    }
+   },
+   {
+    "enonce": 240,
+    "limite": 25,
+    "reste": {
+     "reponse": 105,
+     "b": 70,
+     "lecture": 18
+    },
+    "reste_plus_pas": {
+     "reponse": 51,
+     "b": 16,
+     "lecture": -36
+    }
+   },
+   {
+    "enonce": 260,
+    "limite": 25,
+    "reste": {
+     "reponse": 105,
+     "b": 70,
+     "lecture": 18
+    },
+    "reste_plus_pas": {
+     "reponse": 51,
+     "b": 16,
+     "lecture": -36
+    }
+   },
+   {
+    "enonce": 280,
+    "limite": 0,
+    "reste": {
+     "reponse": null,
+     "b": null,
+     "lecture": null
+    },
+    "reste_plus_pas": {
+     "reponse": 105,
+     "b": 70,
+     "lecture": -4
+    }
+   },
+   {
+    "enonce": 300,
+    "limite": 0,
+    "reste": {
+     "reponse": null,
+     "b": null,
+     "lecture": null
+    },
+    "reste_plus_pas": {
+     "reponse": 80,
+     "b": 45,
+     "lecture": -4
+    }
    }
   ],
   "6": [
    {
+    "enonce": 40,
+    "limite": 70,
+    "reste": {
+     "reponse": 60,
+     "b": 63,
+     "lecture": 42
+    },
+    "reste_plus_pas": {
+     "reponse": -4,
+     "b": 45,
+     "lecture": 42
+    }
+   },
+   {
+    "enonce": 60,
+    "limite": 70,
+    "reste": {
+     "reponse": 60,
+     "b": 63,
+     "lecture": 42
+    },
+    "reste_plus_pas": {
+     "reponse": -4,
+     "b": 45,
+     "lecture": 42
+    }
+   },
+   {
     "enonce": 80,
-    "total_max": 480
+    "limite": 70,
+    "reste": {
+     "reponse": 35,
+     "b": 38,
+     "lecture": 20
+    },
+    "reste_plus_pas": {
+     "reponse": -29,
+     "b": 20,
+     "lecture": 20
+    }
    },
    {
     "enonce": 100,
-    "total_max": 480
+    "limite": 70,
+    "reste": {
+     "reponse": 35,
+     "b": 38,
+     "lecture": 20
+    },
+    "reste_plus_pas": {
+     "reponse": -29,
+     "b": 20,
+     "lecture": 20
+    }
    },
    {
     "enonce": 120,
-    "total_max": 480
+    "limite": 70,
+    "reste": {
+     "reponse": 35,
+     "b": 38,
+     "lecture": 20
+    },
+    "reste_plus_pas": {
+     "reponse": -29,
+     "b": 20,
+     "lecture": 20
+    }
    },
    {
-    "enonce": 150,
-    "total_max": 120
+    "enonce": 140,
+    "limite": 25,
+    "reste": {
+     "reponse": 155,
+     "b": 120,
+     "lecture": 41
+    },
+    "reste_plus_pas": {
+     "reponse": 101,
+     "b": 66,
+     "lecture": -13
+    }
+   },
+   {
+    "enonce": 160,
+    "limite": 25,
+    "reste": {
+     "reponse": 155,
+     "b": 120,
+     "lecture": 41
+    },
+    "reste_plus_pas": {
+     "reponse": 101,
+     "b": 66,
+     "lecture": -13
+    }
+   },
+   {
+    "enonce": 180,
+    "limite": 25,
+    "reste": {
+     "reponse": 155,
+     "b": 120,
+     "lecture": 41
+    },
+    "reste_plus_pas": {
+     "reponse": 101,
+     "b": 66,
+     "lecture": -13
+    }
    },
    {
     "enonce": 200,
-    "total_max": 120
+    "limite": 25,
+    "reste": {
+     "reponse": 130,
+     "b": 95,
+     "lecture": 41
+    },
+    "reste_plus_pas": {
+     "reponse": 76,
+     "b": 41,
+     "lecture": -13
+    }
    },
    {
-    "enonce": 250,
-    "total_max": 120
+    "enonce": 220,
+    "limite": 25,
+    "reste": {
+     "reponse": 130,
+     "b": 95,
+     "lecture": 18
+    },
+    "reste_plus_pas": {
+     "reponse": 76,
+     "b": 41,
+     "lecture": -36
+    }
+   },
+   {
+    "enonce": 240,
+    "limite": 25,
+    "reste": {
+     "reponse": 105,
+     "b": 70,
+     "lecture": 18
+    },
+    "reste_plus_pas": {
+     "reponse": 51,
+     "b": 16,
+     "lecture": -36
+    }
+   },
+   {
+    "enonce": 260,
+    "limite": 25,
+    "reste": {
+     "reponse": 105,
+     "b": 70,
+     "lecture": 18
+    },
+    "reste_plus_pas": {
+     "reponse": 51,
+     "b": 16,
+     "lecture": -36
+    }
+   },
+   {
+    "enonce": 280,
+    "limite": 0,
+    "reste": {
+     "reponse": null,
+     "b": null,
+     "lecture": null
+    },
+    "reste_plus_pas": {
+     "reponse": 105,
+     "b": 70,
+     "lecture": -4
+    }
+   },
+   {
+    "enonce": 300,
+    "limite": 0,
+    "reste": {
+     "reponse": null,
+     "b": null,
+     "lecture": null
+    },
+    "reste_plus_pas": {
+     "reponse": 80,
+     "b": 45,
+     "lecture": -4
+    }
    }
   ]
  },
  "q3_reel": {
   "reponse": 51,
   "b": 20,
-  "lecture": 3
+  "lecture": 4
  },
  "q3_longueurs": {
   "enonce": 96,
@@ -301,6 +619,7 @@
    137,
    54
   ],
-  "total_choix": 402
- }
+  "plus_long": 137
+ },
+ "texte_limites": "chaque question doit tenir sur une demi-tablette, choix compris. Compte les caractères, espaces comprises. L'énoncé fait 300 caractères au plus. Les choix d'une question ont tous à peu près la même longueur, et aucun ne dépasse la limite. Avec 4 choix ou moins : 165 caractères par choix si l'énoncé fait 60 caractères ou moins, 155 caractères par choix jusqu'à 120, 130 caractères par choix jusqu'à 180, 120 caractères par choix jusqu'à 200, 80 caractères par choix jusqu'à 280, 70 caractères par choix jusqu'à 300. Avec 5 choix : 80 caractères par choix si l'énoncé fait 60 caractères ou moins, 75 caractères par choix jusqu'à 120, 25 caractères par choix jusqu'à 260 ; au-delà de 260 caractères d'énoncé, pas de 5 choix. Avec 6 choix : 70 caractères par choix si l'énoncé fait 120 caractères ou moins, 25 caractères par choix jusqu'à 260 ; au-delà de 260 caractères d'énoncé, pas de 6 choix."
 }

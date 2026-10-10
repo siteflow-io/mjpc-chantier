@@ -19053,3 +19053,39 @@ Réponse mot pour mot :
 583. **Un blocage hors cadrage** : les dettes 179 à 211 ne sont toujours pas dans le registre de la production, dont l'écriture m'est refusée depuis le 08/10. Avant le mandat, il me faudra un jeton de production qui écrive.
 
 10/10/2026 07:13 MEMO
+
+---
+
+## TOUR 622 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (10/10, 07:50) 579. ce qu'on va faire c'est qu'on va coder des exclusions. celles-ci devront être étendues à l'ensemble des apps qui partagent une tablette en deux. Donc ces exclusions doivent se coder dans mjpc. une exclusion, c'est quand j'empêche certains élèves d'être ensemble. la constitution des binômes respectera donc ça, et proposera des combinaisons en fonction. j'utilise déjà ce mode depuis longtemps sur classroom screen, dont je me sers pour faire mes groupes. dans l'édition, on peut faire en sorte d'exclure des élèves entre eux, et ils ne se retrouvent ainsi jamais dans le même groupe. ça a une limite: si trop d'exclusions, les combinaisons peuvent devenir nulles et ça coince. Donc il faut une garde minimum. que proposes tu? et ça règlera la question 459, et pas besoin de tirer trois feuilles au hasard, je le ferai de toute façon naturellement, et sur les premières évals je vérifierai les feuilles une par une, afin de coincer les éventuels tricheurs et qu'ils se disent que pour la suite ils ne pourront pas passer entre les mailles du filet. ok pour 580. 581. oui.
+
+---
+
+## TOUR 622 — Claude (conscience n°12)
+
+Mesuré dans le clone de production : aucune exclusion entre élèves n'existe (seuls « exclureReserve » et l'exclusion L17 d'une moitié en double) ; les binômes de correction_dictee.html (calculerBinomes, binomesSeanceL17, l. 319-343 : le moins d'erreurs avec le plus d'erreurs, écrits au hub à « Lancer ») ; la distribution de dictee_universelle.html (startDistribution, l. 2840 ; son aide dit déjà « éviter les binomes impossibles » à la main, l. 7920) ; worktrack.html, deux élèves par tablette, sans constitution de binômes trouvée. CADRAGE-QCM.md complété (tour 622, ligne d'état). Rien écrit au hub, ni en production.
+
+Réponse mot pour mot :
+
+584. **459 est réglé** : pas de tirage ; tu lis les feuilles toi-même, une par une sur les premières évaluations. 580 et 581 sont acquis.
+
+585. **Les exclusions, ma proposition.** Une exclusion, c'est deux élèves de la même classe qui ne sont jamais ensemble sur une tablette. Elle se règle dans ta console MJPC, sur la fiche de la classe, à côté des aménagements : pour chaque élève, « 🚫 Jamais avec… » et ses camarades à cocher. Elle vaut dans les deux sens, et elle est rangée au hub avec la classe, pour toutes les apps. Aucun écran d'élève ne la montre.
+
+586. **Les apps concernées, mesuré dans la production.** La correction de dictée forme ses binômes à « Lancer » (le moins d'erreurs avec le plus d'erreurs), et le QCM d'après le QCM précédent (cadré). Worktrack partage une tablette en deux sans former de binômes : les élèves s'assoient librement. La dictée universelle forme des binômes correcteur et dicté, sans moitiés de tablette ; je propose de l'y mettre aussi. La règle commune va dans le socle MJPC que chaque app embarque, et les quatre l'appliquent.
+
+587. **Comment les binômes la respectent.** Chaque app garde sa règle ; puis la règle commune défait chaque paire exclue en échangeant l'un des deux avec le binôme le plus proche dans le classement, sans créer d'autre paire exclue. Ta règle pédagogique bouge le moins possible. Si les échanges ne suffisent pas, l'app cherche une solution complète.
+
+588. **Quand les élèves s'assoient librement** (worktrack, et le rattrapage du QCM, 422) : la tablette refuse le second code si les deux sont exclus. Le texte, ma proposition : « Ce binôme n'est pas possible : lève la main. » Il ne dit pas pourquoi.
+
+589. **Quand tu échanges deux élèves à la main** (72) : l'échange qui créerait une paire exclue est refusé, avec la raison, pour toi seul : « Michel et Julien ne sont jamais ensemble (exclusion MJPC). » Pour les remettre ensemble, tu retires l'exclusion dans MJPC.
+
+590. **La garde minimum, ma proposition : au plus 3 exclusions par élève.** Avec cette limite, il existe toujours une solution, absents compris, dès que 8 élèves sont présents : c'est démontré (théorème de Dirac), pas estimé. La quatrième exclusion d'un élève est refusée dans MJPC, avec la raison. Sous 8 présents, l'app vérifie elle-même ; si rien n'est possible, ta console dit quelle exclusion bloque, et laisse un élève seul de plus. Si 3 ne te suffit pas pour un élève : à 5, la garantie tient dès 12 présents.
+
+591. **Une tension** : la console MJPC, c'est index.html. Les exclusions entrent donc au mandat avec index.html, que tu promeus toi-même, comme toujours.
+
+592. **La suite** : au prochain tour, la forme du PDF « notes et compétences » (318).
+
+10/10/2026 07:52 MEMO

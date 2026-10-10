@@ -31,10 +31,10 @@ function Attest2(e, n){ var v = autreDe(e); return h(AttestCoches, {e:e, lignes:
 function LignesAttest2Papier(){
   return [
     "Maintenant, la correction.",
-    "Sur ta feuille, mets simplement un V vert dans la marge à côté de ta réponse.",
-    "Barre ta réponse en rouge et écris la bonne réponse en entier en vert à côté.",
+    [h("strong", {key:"b"}, "✅ Bravo ! "), "Sur ta feuille, mets simplement un V vert dans la marge à côté de ta réponse."],
+    [h("strong", {key:"f"}, "❌ Tu avais faux. "), "Barre ta réponse en rouge et écris la bonne réponse en entier en vert à côté."],
     "Pendant la correction, deux compétences sont évaluées : « " + AUTO[0] + " » et « " + AUTO[1] + " ».",
-    "Tu les atteins si tu fais ce travail avec soin. Sinon, ces deux compétences ne sont pas atteintes."
+    ["Tu les atteins si tu fais ce travail avec soin", ". ", "Sinon, ces deux compétences ne sont pas atteintes."]   // 447, mot pour mot
   ];
 }
 function Attest2Papier(e, n){ return h(AttestCoches, {e:e, lignes:LignesAttest2Papier(), n0:n, titre:"Avant la correction, " + e.prenom, bouton:"Je commence la correction", va:"t-papier-correction", titrePage:"📝 Correction"}); }
@@ -103,7 +103,7 @@ function EcrCorrA3(e, dit){
 var ADAM = {cle:"A", nom:"YVON Adam", prenom:"Adam", sexe:"M"};
 function EcrLectureSeul(){
   var q = EV.questions[1], ordre = ORD[1].J;
-  return Page(badgeDe(ADAM), "📝 Correction", h(F, null,
+  return Page(badgeDe(ADAM), "📝 Correction", h("div", {className:"seul-c"},
     h("div", {className:"correction-banner-peda"}, "💡 On corrige d'abord les questions les plus ratées par la classe."),
     Compteur(EV.questions.map(function(x, i){ return {cls:"vide", t:String(i+1)}; }), 0),
     h("div", {className:"eleve-q-zone"}, QHead(1, true), h("div", {className:"eleve-q-enonce"}, q.enonce),
@@ -290,7 +290,7 @@ function ScAutonomieGarde(qui, retour){
       h("p", null, (noms.length > 1 ? "Leurs deux compétences d'autonomie passent" : "Ses deux compétences d'autonomie passent") + " en Maîtrise insuffisante, pour cette évaluation : « Être autonome et responsable » et « S'impliquer dans les activités en classe et dans son travail personnel ». La note ne bouge pas."),
       h("p", {className:"fen-note"}, "Côté élève, son bilan dira : « " + AUTO[0] + " » et « " + AUTO[1] + " » non atteintes. « ↩️ Rendre » le défait, en direct ou le soir, dans sa fiche.")),
     [h("button", {key:1, className:"btn btn-ghost", "data-va":retour || "c-autonomie", title:"Ne retire rien."}, "Annuler"),
-     h("button", {key:2, className:"btn btn-rouge", "data-va":retour === "c-coeval-attente" ? "c-coeval-tranche" : "c-autonomie-retiree", title:"Retire le point d'autonomie, tout de suite. « ↩️ Rendre » le défait."}, "⛔ Retirer le point d'autonomie")], retour || "c-autonomie");
+     h("button", {key:2, className:"btn btn-rouge", "data-va":retour === "c-coeval-attente" ? "c-coeval-retire-" + (noms.length > 1 ? "deux" : pre(noms[0]).toLowerCase()) : "c-autonomie-retiree", title:"Retire le point d'autonomie, tout de suite. « ↩️ Rendre » le défait."}, "⛔ Retirer le point d'autonomie")], retour || "c-autonomie");
 }
 /* Le téléphone : un clic sur un nom, le même geste (436) */
 function TelAutonomie(){
@@ -342,7 +342,7 @@ function TelCorrApres(){
     TelBandeau("Phase : correction — Q2 (1re sur 3)", "révélée"),
     h("div", {key:"q"}, TelQ(1)),
     h("div", {key:"a", className:"tel-actions"},
-      h("button", {className:"tel-btn tb-primary tb-large", "data-va":"t-corr-q3-lecture"}, "Question suivante →"),
+      h("button", {className:"tel-btn tb-primary tb-large", "data-va":"t-corr-q3-lecture", title:"Passe à la question suivante de la correction : chacun lit d'abord la feuille de son voisin."}, "Question suivante →"),
       h("button", {className:"tel-btn tb-ghost tb-small ferme", disabled:true, title:"C'est la première question corrigée : il n'y a pas de question précédente."}, "← Question précédente")),
     h("div", {key:"x", className:"tel-expl"}, h("div", {className:"t"}, "💡 EXPLICATION"), q.explication),
     h("div", {key:"su", className:"tel-suivi"}, "D'après la feuille : ", h("strong", null, res.filter(function(s){ return s === "j"; }).length + " / 24 justes"), " · ⛔ Dernier moment : ", h("strong", null, res.filter(function(s){ return s === "t"; }).length)),
@@ -396,7 +396,8 @@ function Board(mode){
    la question cliquée, les autres disparaissent : « Qu'avais-tu écrit sur ta feuille ? » ; s'il clique ce que l'autre avait lu : « vous êtes d'accord » (539). */
 var RECHOIX = {M:[[2], null, null], J:[null, null, null]};   // Michel dit avoir écrit Rome à la question 1
 function Coeval(p){
-  var e = p.e, v = autreDe(e);
+  var e = p.e, v = autreDe(e), EVx = p.ev || EV;
+  var ordreDe = p.ordre || function(qc){ return ORD[qc][e.cle]; }, luDe = p.lu || function(qc){ return LU[e.cle][qc]; };
   var s = useState(p.k || null), k = s[0], setK = s[1];
   var s2 = useState(p.q == null ? null : p.q), qc = s2[0], setQ = s2[1];
   var s3 = useState(p.ecrit || null), ecrit = s3[0], setEcrit = s3[1];
@@ -404,13 +405,13 @@ function Coeval(p){
   function choisir(x){ setDaccord(false); setK(x); setQ(null); setEcrit(null); }
   function ecrire(i){
     var n = i === "aucun" ? "aucun" : (ecrit && ecrit !== "aucun" ? (ecrit.indexOf(i) >= 0 ? ecrit.filter(function(y){ return y !== i; }) : ecrit.concat([i])) : [i]);
-    var lu = LU[e.cle][qc];
+    var lu = luDe(qc);
     var meme = n === "aucun" ? lu === "aucun" : (lu !== "aucun" && n.length === lu.length && n.every(function(y){ return lu.indexOf(y) >= 0; }));
     if(meme){ setDaccord(true); setK(null); setQ(null); setEcrit(null); return; }
     setEcrit(n);
   }
   var zone = [];
-  var btn = function(x){ return h("button", {key:x, className:"co-btn " + x + (k === x ? " on" : ""), "data-local":"1", onClick:function(){ choisir(x); }}, EM_CO[x] + " ", txtCo(x, v)); };
+  var btn = function(x){ return h("button", {key:x, className:"co-btn " + x + (k === x ? " on" : ""), "data-local":"1", "aria-pressed":k === x, onClick:function(){ choisir(x); }}, EM_CO[x] + " ", txtCo(x, v)); };
   if(!k || k === "ok"){
     zone.push(h("div", {key:"t", className:"decl-titre co-titre"}, e.prenom + ", " + v.prenom + " a-t-" + il(v) + " bien lu ta feuille ?"));
     if(daccord) zone.push(h("div", {key:"d", className:"eleve-feedback valide"}, "Tu as cliqué ce que " + v.prenom + " avait lu : vous êtes d'accord."));
@@ -419,18 +420,18 @@ function Coeval(p){
     if(k === "ok"){ zone.push(h("div", {key:"f", className:"eleve-feedback valide"}, ENREG)); zone.push(h("div", {key:"w", className:"co-attente"}, "⏳ Attends ton bilan...")); }
   } else if(qc == null){
     zone.push(h("div", {key:"t", className:"decl-titre co-titre co-" + k}, EM_CO[k] + " " + e.prenom + ", tu penses que " + v.prenom + " a " + (k === "peut" ? "peut-être " : "") + "mal lu ta feuille pour une question : c'est laquelle ?"));
-    zone.push(h("div", {key:"l", className:"co-liste cliquable"}, EV.questions.map(function(q, i){
-      return h("button", {key:i, className:"co-l co-lb", "data-local":"1", onClick:function(){ setQ(i); setEcrit(null); }}, h("strong", null, "Question " + (i+1)), " · " + q.enonce);
+    zone.push(h("div", {key:"l", className:"co-liste cliquable" + (EVx.questions.length > 5 ? " serree" : "")}, EVx.questions.map(function(q, i){
+      return h("button", {key:i, className:"co-l co-lb", "data-local":"1", onClick:function(){ setQ(i); setEcrit(null); }}, h("strong", null, "Question " + (i+1)), " · ", p.liste ? p.liste(q) : q.enonce);
     })));
     zone.push(h("div", {key:"r", className:"co-regle"}, "☝️ " + REGLE_CO));
     zone.push(h("div", {key:"a", className:"co-actions"}, h("button", {className:"btn btn-ghost", "data-local":"1", onClick:function(){ setK(null); }}, "↩️ Changer")));
   } else {
-    var q = EV.questions[qc], lu = LU[e.cle][qc];
+    var q = EVx.questions[qc], lu = luDe(qc);
     zone.push(h("div", {key:"q", className:"co-l choisie"}, EM_CO[k] + " " + txtCo(k, v, qc)));
     zone.push(h("div", {key:"seule", className:"co-seule"}, "☝️ C'est ta seule question de désaccord."));
     zone.push(h("div", {key:"t", className:"decl-titre"}, "Qu'avais-tu écrit sur ta feuille ?"));
-    zone.push(h("div", {key:"c", className:"eleve-choix"},
-      ORD[qc][e.cle].map(function(i){
+    zone.push(h("div", {key:"c", className:"eleve-choix" + (p.long ? " long" : "")},
+      ordreDe(qc).map(function(i){
         var on = ecrit && ecrit !== "aucun" && ecrit.indexOf(i) >= 0;
         return h("button", {key:i, className:"eleve-choix-btn" + (on ? " selected" : ""), "data-local":"1", onClick:function(){ ecrire(i); }},
           h("span", null, q.choix[i], lu !== "aucun" && lu.indexOf(i) >= 0 && h("span", {className:"tag-lu"}, v.prenom + " a lu")));
@@ -444,6 +445,12 @@ function Coeval(p){
   return Page(badgeDe(e), "📝 Correction", h("div", {className:"eleve-q-zone"}, zone));
 }
 function CoevalE(e, o){ o = o || {}; return h(Coeval, {key:e.cle + JSON.stringify(o), e:e, k:o.k, q:o.q, ecrit:o.ecrit, daccord:o.daccord}); }
+function Coeval3(e, o){   // sur l'évaluation de 3e : la liste montre le début de chaque énoncé (546) ; seule la question 3 a ses choix dans la maquette
+  o = o || {};
+  return h(Coeval, {key:"3" + e.cle + JSON.stringify(o), e:e, k:o.k, q:o.q, ecrit:o.ecrit, ev:EV3, long:true,
+    liste:function(q){ return tronque(q.enonce.replace(/^Sur ta copie, /, ""), 58); },
+    ordre:function(qc){ return qc === QI3 ? ORD3[e.cle] : []; }, lu:function(qc){ return qc === QI3 ? S3[e.cle].lu : []; }});
+}
 
 /* ── Ta console pendant la co-évaluation : l'alerte, dans l'ordre de 535 à 538, les ⛔ de 541, le quatrième bouton de 545 ── */
 function AlerteCoE(tel){
@@ -478,7 +485,8 @@ function AlerteCoE(tel){
     h("div", {className:"al-actions"}, boutons, auto,
       h("div", {className:"al-note"}, "L'alerte est apparue quand Michel a cliqué ce qu'il avait écrit ; elle disparaît s'il change d'avis avant le bilan. Aucun point d'autonomie n'est retiré tout seul : c'est toi qui décides.")));
 }
-function PilotCoevalE(tranche){
+function PilotCoevalE(tranche, retire){
+  retire = retire || [];
   var att = tranche ? [] : ATT_CO;
   var co = Object.assign({}, CO); if(tranche) Object.keys(co).forEach(function(p){ if(co[p] === "att") co[p] = "ok"; });
   var nOk = Object.keys(co).filter(function(p){ return co[p] === "ok"; }).length;
@@ -511,7 +519,7 @@ function PilotCoevalE(tranche){
       h("div", {className:"suivi-box"},
         h("h3", null, "🤝 Ce que chacun pense de la lecture de sa feuille", InfoI("Chaque moitié dit ce que cet élève pense de la lecture de sa feuille par son voisin. Un clic sur un nom agit sur l'élève, par exemple « ⛔ Retirer le point d'autonomie ».")),
         h("div", {className:"ss"}, "Chaque moitié dit ce que cet élève pense de la lecture de sa feuille par son voisin."),
-        GrilleTablettes(PAIRES, function(p){ var r = etat(p); r.va = "c-autonomie"; r.titre = "Clique sur le nom : « ⛔ Retirer le point d'autonomie », ou « 🚫 Marquer comme parti »."; return r; }),
+        GrilleTablettes(PAIRES, function(p){ var r = etat(p); if(retire.indexOf(p) >= 0) r.flag = "🔴 point d'autonomie retiré"; r.va = "c-autonomie"; r.titre = "Clique sur le nom : « ⛔ Retirer le point d'autonomie », ou « 🚫 Marquer comme parti »."; return r; }),
         Legende([["#22C55E","✅ bien lu"],["#FDE68A","🤔 peut-être mal lu : à relire ce soir"],["#EF4444","❌ mal lu : alerte"],["#FEE2E2","⏳ pas encore répondu","1px solid #EF4444"]])))), true);
 }
 function ScCoevalFeuille(){   // « La feuille dit autre chose : je clique ce qu'elle dit » (545), comme le soir (capture 43)
@@ -786,6 +794,9 @@ SCENES = SCENES.concat([
   {id:"c-autonomie-michel", vue:"console", vh:1250, render:function(){ return ScAutonomieGarde(["DUVERNAY Michel"], "c-coeval-attente"); }},
   {id:"c-autonomie-julien", vue:"console", vh:1250, render:function(){ return ScAutonomieGarde(["ABRIAL Julien"], "c-coeval-attente"); }},
   {id:"c-autonomie-deux", vue:"console", vh:1250, render:function(){ return ScAutonomieGarde(["DUVERNAY Michel", "ABRIAL Julien"], "c-coeval-attente"); }},
+  {id:"c-coeval-retire-michel", vue:"console", vh:1250, render:function(){ return PilotCoevalE(false, ["Michel"]); }},
+  {id:"c-coeval-retire-julien", vue:"console", vh:1250, render:function(){ return PilotCoevalE(false, ["Julien"]); }},
+  {id:"c-coeval-retire-deux", vue:"console", vh:1250, render:function(){ return PilotCoevalE(false, ["Michel", "Julien"]); }},
   {id:"c-coeval-tranche", vue:"console", render:function(){ return PilotCoevalE(true); }},
   {id:"t-bilan-imprime", vue:"eleve", render:BilanImprime},
   {id:"t-bilan-annulee", vue:"tablette", render:function(){ return Tablette(EcrBilan(J, {annulee:1}), EcrBilan(M, {annulee:1})); }},
@@ -837,3 +848,86 @@ function TelChrono(p){
   useEffect(function(){ function f(){ setV(p.total); } document.addEventListener("maquette-relancer", f); return function(){ document.removeEventListener("maquette-relancer", f); }; });
   return h("div", {className:"tel-chrono"}, v + "s");
 }
+
+/* ── Les gestes de l'étape 3 : où mène chaque bouton, et son infobulle pour Paul ── */
+BULLES["⏸️ Finir à une autre heure"] = "Met la séance en pause, avec son état exact, pour la reprendre à une heure suivante : « ▶️ Reprendre » dans « 🎯 Pilotage classe ». Demande une confirmation.";
+ALLER["*"]["⏸️ Finir à une autre heure"] = "c-finir-autre-heure";
+BULLES["Question suivante →"] = "Passe à la question suivante de la correction : chacun lit d'abord la feuille de son voisin.";
+// Le cas ambigu, sur l'évaluation de 3e (541 à 545)
+var GESTES_610 = {
+  "Donner raison à Michel : B, C, E → 1 point": ["x610-tranche", "Applique ce que Michel dit avoir écrit, B, C, E : sa question 3 passe à 1 point, et sa note se recalcule. L'alerte se ferme ; « ↩️ Défaire » la rouvre."],
+  "Donner raison à Julien : E → 0 point": ["x610-tranche", "Garde la lecture de Julien, E : rien ne change. L'alerte se ferme."],
+  "La feuille dit autre chose : je clique ce qu'elle dit": ["x610-feuille", "Ouvre les choix de la question 3 : tu cliques ce que dit la feuille de Michel, et sa note se recalcule."],
+  "📌 Je relis ce soir la question 3": ["x610-tranche", "La question 3 de Michel passe « ⚠️ À relire » : elle t'attend ce soir dans Résultats. L'alerte se ferme."],
+  "⛔ à Michel": ["x610-autonomie-michel", "Retire le point d'autonomie à Michel, après une confirmation. « ↩️ Rendre » le défait."],
+  "⛔ Michel": ["x610-autonomie-michel", "Retire le point d'autonomie à Michel, après une confirmation. « ↩️ Rendre » le défait."],
+  "⛔ à Julien": ["x610-autonomie-julien", "Retire le point d'autonomie à Julien, après une confirmation. « ↩️ Rendre » le défait."],
+  "⛔ Julien": ["x610-autonomie-julien", "Retire le point d'autonomie à Julien, après une confirmation. « ↩️ Rendre » le défait."],
+  "⛔ aux deux": ["x610-autonomie-deux", "Retire le point d'autonomie aux deux, après une confirmation : ici, aucun n'a joué le jeu. « ↩️ Rendre » le défait."],
+  "⛔ Aux deux": ["x610-autonomie-deux", "Retire le point d'autonomie aux deux, après une confirmation : ici, aucun n'a joué le jeu. « ↩️ Rendre » le défait."]
+};
+["x610-8-console-alerte", "x610-9-telephone-alerte"].forEach(function(sc){ ALLER[sc] = {}; Object.keys(GESTES_610).forEach(function(l){ ALLER[sc][l] = GESTES_610[l][0]; }); });
+Object.keys(GESTES_610).forEach(function(l){ BULLES[l] = GESTES_610[l][1]; });
+BULLES["🔒 🏁 Afficher leur bilan aux élèves"] = "« 🏁 Afficher leur bilan aux élèves » s'ouvre quand les 24 présents ont répondu à la co-évaluation. Il en manque 4.";
+BULLES["🔒 🏁 Afficher leur bilan — il en manque 4"] = "S'ouvre quand les 24 présents ont répondu à la co-évaluation. Il en manque 4.";
+function ScFeuille3(){
+  var q = EV3.questions[QI3];
+  return h(F, null, PilotCoeval3(), h("div", {className:"checkin-overlay", "data-echap":"x610-8-console-alerte"},
+    h("div", {className:"checkin-modal", style:{maxWidth:"620px"}},
+      h("div", {className:"checkin-header"}, h("h3", null, "Que dit la feuille ?"), h("div", {className:"checkin-sub"}, "DUVERNAY Michel — Q3 · " + q.enonce)),
+      h("div", {style:{padding:".6rem 1.2rem 0", fontSize:".85rem", color:"var(--gris)"}}, "Julien y a lu E ; Michel dit avoir écrit B, C, E. Clique sur ce que dit sa feuille : ici, C et E."),
+      h("div", {className:"qdf-choix"},
+        q.choix.map(function(c, i){ return h("div", {key:i, className:"qdf-c" + (i === 2 || i === 4 ? " sel" : ""), title:"Clique si la feuille de Michel dit « " + c + " »."}, h("span", null, LET[i] + " · " + c), h("span", {className:"tg"}, q.bonnes.indexOf(i) >= 0 ? "bonne réponse" : "")); }),
+        h("div", {className:"qdf-c aucun", title:"Clique si la feuille de Michel ne dit aucun de ces choix."}, h("span", null, "Aucun des choix"), h("span", {className:"tg"}, ""))),
+      h("div", {className:"checkin-actions"}, h("button", {className:"btn btn-ghost", "data-va":"x610-8-console-alerte", title:"Ferme sans rien changer : l'alerte reste ouverte."}, "Annuler"), h("button", {className:"btn btn-primary", "data-va":"x610-tranche", title:"Applique ce que dit la feuille, C et E : la question 3 de Michel reste à 0, et l'alerte se ferme."}, "Valider")))));
+}
+function ScGarde3(noms){
+  return Fenetre(PilotCoeval3(), "⛔ Retirer le point d'autonomie " + (noms.length > 1 ? "aux deux" : "à " + noms[0]) + " ?", noms.join(" et "),
+    h(F, null,
+      h("p", null, (noms.length > 1 ? "Leurs deux compétences d'autonomie passent" : "Ses deux compétences d'autonomie passent") + " en Maîtrise insuffisante, pour cette évaluation : « Être autonome et responsable » et « S'impliquer dans les activités en classe et dans son travail personnel ». La note ne bouge pas."),
+      h("p", {className:"fen-note"}, "Un litige est légitime ; « aux deux » est pour le cas où aucun n'a joué le jeu, par exemple chacun à moitié de bonne foi. « ↩️ Rendre » le défait, en direct ou le soir.")),
+    [h("button", {key:1, className:"btn btn-ghost", "data-va":"x610-8-console-alerte", title:"Ne retire rien."}, "Annuler"),
+     h("button", {key:2, className:"btn btn-rouge", "data-va":"x610-tranche", title:"Retire le point d'autonomie, tout de suite. « ↩️ Rendre » le défait."}, "⛔ Retirer le point d'autonomie")], "x610-8-console-alerte");
+}
+SCENES = SCENES.concat([
+  {id:"x610-feuille", vue:"console", vh:1300, render:ScFeuille3},
+  {id:"x610-autonomie-michel", vue:"console", vh:1300, render:function(){ return ScGarde3(["DUVERNAY Michel"]); }},
+  {id:"x610-autonomie-julien", vue:"console", vh:1300, render:function(){ return ScGarde3(["ABRIAL Julien"]); }},
+  {id:"x610-autonomie-deux", vue:"console", vh:1300, render:function(){ return ScGarde3(["DUVERNAY Michel", "ABRIAL Julien"]); }},
+  {id:"x610-tranche", vue:"console", render:function(){ return PilotCoeval3(true); }}
+]);
+refaire("x610-6-coeval-laquelle", function(){ return Tablette(Coeval3(J), Coeval3(M, {k:"mal"})); });
+refaire("x610-7-coeval-ecrit", function(){ return Tablette(Coeval3(J, {k:"ok"}), Coeval3(M, {k:"mal", q:QI3, ecrit:[1, 2, 4]})); });
+/* La console du cas ambigu (610-8) : l'alerte, ou, une fois tranchée, ce que tu as décidé */
+function PilotCoeval3(tranche){
+  var nOk = Object.keys(CO3).filter(function(p){ return CO3[p] === "ok"; }).length + (tranche ? 4 : 0), att = tranche ? [] : ATT_CO;
+  var etat = function(p){ var c = CO3[p]; if(tranche && c === "att") c = "ok";
+    var r = c === "att" ? {cls:"m-pasdit", st:"⏳ pas encore répondu"} : c === "ok" ? {cls:"m-juste", st:"✅ bien lu"} : c.indexOf("mal") === 0 ? (tranche ? {cls:"m-juste", st:"❌ Q" + c.slice(3) + " · tranché"} : {cls:"m-faux m-co", st:"❌ mal lu Q" + c.slice(3), flag:"alerte : à trancher"}) : {cls:"m-coq", st:"🤔 peut-être Q" + c.slice(4), flag:"à relire ce soir"};
+    r.va = "c-autonomie"; r.titre = "Clique sur le nom : « ⛔ Retirer le point d'autonomie », ou « 🚫 Marquer comme parti »."; return r; };
+  return Console("pilotage", "pilot", h("div", {className:"card"},
+    tranche ? h("div", {className:"alerte-co tranchee"}, h("div", {className:"al-corps"}, h("div", {className:"al-t"}, "✅ Alerte tranchée : la question 3 de DUVERNAY Michel"), h("div", {className:"al-l"}, "Ce que tu as décidé est appliqué ; sa note se recalcule, et son bilan le dira.")),
+      h("div", {className:"al-actions"}, h("button", {className:"btn btn-ghost btn-sm", "data-va":"x610-8-console-alerte", title:"Rouvre l'alerte, telle qu'elle était : rien n'est appliqué."}, "↩️ Défaire")))
+      : AlerteCo3(false),
+    TitreCarte(h(F, null, "🤝 Co-évaluation de la lecture — " + EV3.titre + " — " + CLASSE, InfoI("À la fin de la correction, chacun dit, dans sa moitié, s'il pense que son voisin a bien lu sa feuille. Un « ❌ » t'alerte aussitôt, en haut ; un « 🤔 » passe la question « ⚠️ À relire » ce soir. Le bilan s'affiche quand tous les présents ont répondu.")),
+      [h("button", {key:0, className:"btn btn-ghost btn-sm"}, "🚫 Départ d'un élève"), h("button", {key:5, className:"btn btn-ghost btn-sm"}, "⏸️ Finir à une autre heure"), h("button", {key:1, className:"btn btn-rouge btn-sm"}, "🛑 Terminer la session")]),
+    h("div", {className:"pilot-status correction"}, "Fin de la correction — chacun dit ce qu'il pense de la lecture de sa feuille · " + (24 - att.length) + " / 24 ont répondu"),
+    h("div", {className:"corr-grid"},
+      h("div", null,
+        h("div", {className:"row", style:{marginTop:".2rem"}}, tranche
+          ? h("button", {className:"btn btn-or", "data-va":"t-bilan", title:"Affiche sur chaque moitié le bilan de l'élève : sa note provisoire, question par question, ses compétences, son estimation."}, "🏁 Afficher leur bilan aux élèves")
+          : h("button", {className:"btn btn-or ferme", disabled:true}, "🔒 🏁 Afficher leur bilan aux élèves")),
+        att.length > 0 && h("div", {className:"manquent"},
+          h("div", {className:"tt"}, "« 🏁 Afficher leur bilan aux élèves » s'ouvre quand les 24 présents ont répondu. Il en manque " + att.length + " :"),
+          h("div", {className:"noms"}, att.join(" · "))),
+        h("div", {className:"co-compte"}, h("div", null, "✅ ", h("strong", null, String(nOk)), " pensent : bien lu"), h("div", null, "🤔 ", h("strong", null, "2"), " pensent : peut-être mal lu (à relire ce soir)"), h("div", null, "❌ ", h("strong", null, "1"), tranche ? " pense : mal lu (tranché)" : " pense : mal lu (alerte, en haut)")),
+        h("div", {className:"alire"}, h("div", {className:"tt"}, "📌 À lire sur les feuilles, ce soir (" + LIRE_CO3.length + ")"),
+          LIRE_CO3.map(function(x, i){ return h("div", {key:i}, x[0] + " — " + x[1]); }))),
+      h("div", {className:"suivi-box"},
+        h("h3", null, "🤝 Ce que chacun pense de la lecture de sa feuille", InfoI("Chaque moitié dit ce que cet élève pense de la lecture de sa feuille par son voisin. Un clic sur un nom agit sur l'élève.")),
+        h("div", {className:"ss"}, "Chaque moitié dit ce que cet élève pense de la lecture de sa feuille par son voisin."),
+        GrilleTablettes(PAIRES, etat),
+        Legende([["#22C55E","✅ bien lu"],["#FDE68A","🤔 peut-être mal lu : à relire ce soir"],["#EF4444","❌ mal lu : alerte"],["#FEE2E2","⏳ pas encore répondu","1px solid #EF4444"]])))), true);
+}
+
+/* Les boutons du téléphone : un bouton fermé (🔒) est grisé, avec sa raison dans l'infobulle */
+function TelBtn(txt, variant, taille, ferme){ return h("button", {className:"tel-btn tb-" + variant + (taille ? " tb-" + taille : "") + (ferme ? " ferme" : ""), disabled:!!ferme}, txt); }

@@ -153,6 +153,8 @@ function lireScene(){
       debords.push({ok: trop <= 1 || m.classList.contains("longueur-assumee"), quoi: "la moitié " + (i === 0 ? "de gauche" : "de droite") + " tient dans l'écran", detail: trop + " px de trop"});
     });
   }
+  // (garde ajoutée à l'étape 3) une tablette d'un seul élève, sans moitiés, tient aussi dans l'écran
+  if(vue === "tablette" && !root.querySelector(".moitie")) debords.push({ok: de.scrollHeight <= innerHeight + 1, quoi: "la tablette d'un seul élève tient dans l'écran", detail: (de.scrollHeight - innerHeight) + " px de trop"});
   if(vue === "tableau") debords.push({ok: de.scrollHeight <= innerHeight + 1, quoi: "le tableau tient dans l'écran", detail: (de.scrollHeight - innerHeight) + " px de trop"});
   // chevauchements et textes coupés
   const feuillesTxt = [];
@@ -204,7 +206,7 @@ function lireScene(){
   try { textesIframe = fr && fr.contentDocument && fr.contentDocument.body ? fr.contentDocument.body.innerText : ""; } catch(e){}
   const cibles = Array.from(root.querySelectorAll("[data-va]")).map(b => b.getAttribute("data-va")).filter(Boolean);
   // un bouton actif sans geste déclaré : ni destination (data-va), ni composant à état (data-local), ni case qui se coche sur place
-  const couchesG = Array.from(root.querySelectorAll(".modal-back,.checkin-overlay,.tel-sheet-fond,.grand-fond,.fen-fond"));
+  const couchesG = Array.from(root.querySelectorAll(".modal-back,.checkin-overlay,.sessions-menu-overlay,.tel-sheet-fond,.grand-fond,.fen-fond"));
   const dessusG = couchesG.length ? couchesG[couchesG.length - 1] : null;
   const sansGeste = Array.from(root.querySelectorAll("button")).filter(b => !b.disabled && visible(b) && (!dessusG || dessusG.contains(b))
     && !b.hasAttribute("data-va") && !b.hasAttribute("data-local") && !b.closest(".eleve-choix,.decl-b-btns,.co-btns,.qdf-choix,.autoeval-fourchettes")
@@ -216,13 +218,14 @@ function marquerBoutons(){
   // Les boutons que l'élève ou Paul peuvent cliquer sur cette scène : ni grisés, ni cachés, ni recouverts par la fenêtre ouverte ;
   // l'onglet ou le mode déjà en cours (qui ramène à la scène elle-même) n'est pas un geste.
   const root = document.getElementById("root"); let i = 0;
-  const couches = Array.from(root.querySelectorAll(".modal-back,.checkin-overlay,.tel-sheet-fond,.grand-fond,.fen-fond"));
+  const couches = Array.from(root.querySelectorAll(".modal-back,.checkin-overlay,.sessions-menu-overlay,.tel-sheet-fond,.grand-fond,.fen-fond"));
   const dessus = couches.length ? couches[couches.length - 1] : null;
   root.querySelectorAll("button").forEach(b => {
     const r = b.getBoundingClientRect(); if(b.disabled || r.width < 1 || r.height < 1) return;
     if(dessus && !dessus.contains(b)) return;
     const va = b.getAttribute("data-va");
-    if(va && va === window.SCENE_COURANTE && (b.classList.contains("actif") || b.getAttribute("aria-pressed") === "true")) return;
+    if(b.getAttribute("aria-pressed") === "true") return;                     // le choix déjà fait : le recliquer ne change rien, et c'est voulu
+    if(va && va === window.SCENE_COURANTE && b.classList.contains("actif")) return;
     b.setAttribute("data-banc-b", String(i++));
   });
   return i;

@@ -248,17 +248,17 @@ function SessionsPrecedentesRatt(){
 /* ── La fenêtre des sessions en cours (337) ── */
 function SessionsEnCours(){
   var fond = Pilot({phase:"reponse", qi:0, tour:1, chrono:9, stats:statsQ("24/24", "10/12", "10/10", "1/3"), etat:etatQuestion({qi:0, tour:1, nonRep:["Jade", "Anna"]})});
-  var menu = h("div", {className:"sessions-menu-overlay"},
+  var menu = h("div", {className:"sessions-menu-overlay", "data-echap":"c-q1-tour1"},
     h("div", {className:"sessions-menu"},
-      h("div", {className:"sessions-menu-header"}, h("h3", null, "🔴 Sessions actuellement en cours"), h("button", {className:"sessions-menu-close"}, "✕")),
+      h("div", {className:"sessions-menu-header"}, h("h3", null, "🔴 Sessions actuellement en cours"), h("button", {className:"sessions-menu-close", "data-va":"c-q1-tour1", title:"Ferme la liste ; rien ne change."}, "✕")),
       h("p", {className:"sessions-menu-intro"}, "Voici toutes les sessions qui sont actuellement actives quelque part. Tu peux aller au pilotage de chacune ou la terminer si elle n'a plus de raison d'être active."),
       h("div", {className:"sessions-menu-liste"},
         h("div", {className:"session-menu-row"},
           h("div", {className:"session-menu-info"}, h("div", {className:"session-menu-nom"}, CLASSE),
             h("div", {className:"session-menu-meta"}, "Phase : ", h("strong", null, "réponse"), " · Q 1 · 1er tour · fin de l'heure 10:57")),
           h("div", {className:"session-menu-actions"},
-            h("button", {className:"btn btn-sm btn-primary"}, "🎯 Aller au pilotage"),
-            h("button", {className:"btn btn-sm btn-rouge"}, "🛑 Terminer"))),
+            h("button", {className:"btn btn-sm btn-primary", "data-va":"c-q1-tour1", title:"Ouvre le pilotage de cette séance, là où elle en est."}, "🎯 Aller au pilotage"),
+            h("button", {className:"btn btn-sm btn-rouge", "data-va":"c-terminer", title:"Termine cette séance, après une confirmation : l'archive s'écrit avec les notes telles qu'elles sont."}, "🛑 Terminer"))),
         h("div", {className:"sessions-note"}, "🛑 Terminer : la séance est close, et l'archive s'écrit avec les notes telles qu'elles sont, quelle que soit la phase. Les élèves voient l'écran de fin."))));
   return h(F, null, fond, menu);
 }

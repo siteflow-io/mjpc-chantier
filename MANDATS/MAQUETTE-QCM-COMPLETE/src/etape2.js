@@ -271,7 +271,7 @@ function AttestCoches(p){   // p : e, lignes, n0, titre, bouton, va, titrePage
       var on = i < n;
       return h("div", {key:i, className:"li-c" + (on ? " on" : "")},
         h("button", {className:"case-b" + (on ? " on" : ""), "data-local":"1", disabled:on || i !== n, title:on ? "Cette ligne est déjà cochée." : "Coche cette ligne quand tu l'as lue.", onClick:function(){ setN(n + 1); }}, on ? "✓" : ""),
-        h("span", null, l));
+        h.apply(null, ["span", null].concat(l)));
     }),
     h("button", {className:"btn btn-primary attest-go", disabled:!tout, "data-va":tout ? p.va : null,
       title:tout ? "C'est parti." : "« " + p.bouton + " » ne s'ouvre que quand toutes sont cochées."}, p.bouton)));

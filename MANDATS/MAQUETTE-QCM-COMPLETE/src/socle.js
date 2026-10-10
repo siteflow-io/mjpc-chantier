@@ -128,10 +128,18 @@ var ORDRE = [
     ["c-autonomie-michel", 3, "« ⛔ à Michel » : la garde."],
     ["c-autonomie-julien", 3, "« ⛔ à Julien » : la garde."],
     ["c-autonomie-deux", 3, "« ⛔ aux deux » : la garde."],
+    ["c-coeval-retire-michel", 3, "Le point d'autonomie retiré à Michel : l'alerte reste à trancher."],
+    ["c-coeval-retire-julien", 3, "Le point d'autonomie retiré à Julien : l'alerte reste à trancher."],
+    ["c-coeval-retire-deux", 3, "« ⛔ aux deux » : les deux points retirés ; l'alerte reste à trancher."],
     ["c-coeval-tranche", 3, "L'alerte tranchée, tous ont répondu : « 🏁 Afficher leur bilan aux élèves » s'ouvre."],
     ["x610-6-coeval-laquelle", 3, "Le cas ambigu, sur l'évaluation de 3e : Michel a cliqué « ❌ » : « c'est laquelle ? »."],
     ["x610-7-coeval-ecrit", 3, "Michel a cliqué la question 3 : « Qu'avais-tu écrit sur ta feuille ? »."],
     ["x610-8-console-alerte", 3, "Ta console : l'alerte du cas ambigu, les trois lectures de la feuille."],
+    ["x610-feuille", 3, "Le cas ambigu : « La feuille dit autre chose : je clique ce qu'elle dit » — C et E."],
+    ["x610-autonomie-michel", 3, "« ⛔ à Michel » : la garde."],
+    ["x610-autonomie-julien", 3, "« ⛔ à Julien » : la garde."],
+    ["x610-autonomie-deux", 3, "« ⛔ aux deux », pour le cas où aucun n'a joué le jeu : la garde."],
+    ["x610-tranche", 3, "Le cas ambigu tranché : « 🏁 Afficher leur bilan aux élèves » s'ouvre."],
     ["x610-9-telephone-alerte", 3, "Ton téléphone, au même moment."]]],
   // K. La fin
   ["La fin de l'heure", [

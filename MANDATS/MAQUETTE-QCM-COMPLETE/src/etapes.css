@@ -158,3 +158,11 @@
 .recap-l.annulee{border-left-color:#F59E0B;background:#FFFBEB;color:#92400E;font-weight:700}
 .fige-choix .eleve-choix-btn.selected:disabled{opacity:1}
 .modal > h2{margin-right:2.8rem}
+/* L'élève seul (500) : la tablette entière, resserrée pour tenir dans l'écran */
+.seul-c .correction-banner-peda{margin:0 0 .4rem}
+.seul-c .correction-compteur{padding:.35rem .8rem;margin-bottom:.5rem}
+.seul-c .eleve-q-zone{padding:.8rem 1.2rem}
+.seul-c .eleve-q-enonce{margin:.3rem 0 .5rem}
+.seul-c .eleve-chrono{padding:.3rem 1rem;margin:.4rem 0}
+.seul-c .eleve-chrono .v{font-size:2rem;line-height:1.1}
+.seul-c .eleve-choix-btn{padding:.6rem .8rem}

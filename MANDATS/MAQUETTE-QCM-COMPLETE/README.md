@@ -1,4 +1,4 @@
-# La maquette complète du QCM — livraison de l'exécutant (en cours : étapes 1 et 2 faites)
+# La maquette complète du QCM — livraison de l'exécutant (en cours : étapes 1 à 3 faites)
 
 *Mandat : `MANDATS/MANDAT-MAQUETTE-QCM-COMPLETE.md`. Ce README grandit à chaque étape ; sa forme finale est écrite à l'étape 5.*
 
@@ -61,3 +61,15 @@ Ce qui change, point par point (le détail : `PLAN-ETAPES-2-4.md`, section « É
 - **Les gestes** : chaque bouton de la console et du téléphone a son infobulle (ce qu'il fait, ce qu'il coûte) ; chaque bouton mène à sa scène, ou agit sur place (temps, coches, appel, binômes, pause) ; Échap ferme une fenêtre.
 
 Le banc a grandi (défauts 5 à 16 du journal) : il remet la scène à neuf avant chaque clic au lieu d'ouvrir un navigateur (4 min 42 pour tout), ne clique que la couche du dessus, et vérifie que **chaque bouton déclare son geste**.
+
+## Étape 3 — la correction et la fin de l'heure
+
+*Maquette : `maquette-qcm-v3.html` (md5 `57deff216b2cbfe42c441c8a923f2500`). Banc : `sorties/banc-etape3.txt` — **12 313 vérifications, zéro défaut**, sur les 153 scènes. Captures : `captures/`, toutes regardées. Journal : défauts 17 à 26.*
+
+- **L'estimation** sans infobulle, avec la phrase de 444 ; « 📝 Lancer la correction » ouvre **la seconde attestation**, une coche par ligne, les deux compétences par leur libellé élève (507, 510, 549, 640) ; ta console attend que tous l'aient cochée.
+- **A, la lecture du voisin** (496) : Michel clique ce que dit la feuille de Julien, dans la moitié de Julien, et l'inverse ; « Lis avec soin : c'est ton point d'autonomie. » ; « 🔒 Révéler » attend toutes les feuilles lues, avec les noms qui manquent ; Julien lit « Venise » sur la feuille de Michel, qui dit Rome. La vraie question 3 de 3e tient dans sa moitié (0 px).
+- **Après la révélation** : le ✓ orange et le bandeau orange à liseré rouge (484, 439) ; « ⛔ Dernier moment » en orange et « ⚠️ À relire » d'après B dans ta console et ton téléphone (497) ; à la dernière question, « 🏁 Afficher leur bilan aux élèves » (455).
+- **Le point d'autonomie** : un clic sur un nom, « ⛔ Retirer le point d'autonomie », sa garde, « ↩️ Rendre » (436, 449), aussi au téléphone.
+- **La co-évaluation** (511 à 539) : chaque moitié a son état — les trois choix, « c'est laquelle ? », « Qu'avais-tu écrit sur ta feuille ? », « vous êtes d'accord » ; ta console : l'alerte dans l'ordre de 535 à 538, les quatre boutons (545), « ⛔ à Michel / à Julien / aux deux » (541) et leurs gardes ; le cas ambigu sur l'évaluation de 3e, tranchable de bout en bout.
+- **Le bilan** : « Ta note provisoire » et la phrase de 474 ; les libellés élève ; le ✓ orange ; « Corrigé d'après ta feuille » ; les deux compétences d'autonomie « atteinte » ou « non atteinte » ; une question annulée (442) ; l'impression.
+- **« ⏸️ Finir à une autre heure »**, la reprise, « 🔓 Rouvrir » une séance terminée (469) ; **le papier seul** de bout en bout (467, 491, 492), avec la variante papier de la seconde attestation, faite de phrases déjà validées ; **le rattrapage** par les exclusions (595) ; **l'élève seul** qui lit sa propre feuille (500).

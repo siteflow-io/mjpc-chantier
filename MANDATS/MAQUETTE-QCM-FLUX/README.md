@@ -412,3 +412,17 @@ Demande de Paul (10/10, 07:00) : « Ok donc mets à jour le mode test pour qu'il
 
 ![Capture 620-3](captures-620/620-3-mode-test-en-grand.png)
 
+
+---
+
+## Tour 624 — le PDF « notes et compétences » (points 600 à 611)
+
+Demande de Paul (10/10, 08:03) : « vas y pour le pdf. » Le PDF est lu par l'extension Claude de Paul, qui entre tout sur École Directe (Paul, tour 591). Un exemple rendu, dans `pdf-624/` : `notes-competences-3-ESSAI.pdf` (le PDF, A4 paysage, en texte), `notes-competences-3-ESSAI.html` (la page qu'imprime le navigateur), `gen624.js` (qui la fabrique et l'imprime, par Chromium, comme le fera le navigateur de Paul).
+
+Données de l'exemple : la vraie évaluation de 3e d'analyse logique (11 questions, tout ou rien) ; la classe inventée « 3 ESSAI », 24 présents, Adam absent, Noah parti après la question 7 ; Julien et Michel sans point d'autonomie (« ⛔ aux deux », le cas ambigu). Compétences posées pour l'exemple, prises dans le chapitre 1 de 3e (hub) : c4-langue-04 sur Q1 à Q11, c4-ecrire-02 sur Q5 à Q10. Règles appliquées : 288, 336, 339, 340, 131, 436.
+
+Mesuré : `pdftotext` rend une ligne par élève, dans l'ordre ; 25 élèves tiennent sur une page avec la légende ; 30 élèves tiennent leur tableau sur une page, la légende passe en page 2, avec l'en-tête du tableau répété.
+
+**Capture 624 — le PDF, page 1.**
+
+![Capture 624](pdf-624/624-pdf-notes-competences.png)

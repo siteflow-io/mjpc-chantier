@@ -1,0 +1,402 @@
+From c5998c19eb603243379c7dbc2498b1bd95c2a5f7 Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Sat, 10 Oct 2026 08:00:53 +0200
+Subject: [PATCH 6/7] EN-TETES - a coder : la tablette partagee en deux et les
+ binomes formes par les exclusions MJPC, dans 11 apps (Paul, 10/10) - cadrage
+ QCM tour 623
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_017qdZF5NLwz2zUz2W2TVAYN
+---
+ Console_ateliers_revisions.html | 25 +++++++++++++++++++++++++
+ analyse_logique.html            | 25 +++++++++++++++++++++++++
+ applause_meter.html             | 25 +++++++++++++++++++++++++
+ correction_dictee.html          | 29 +++++++++++++++++++++++++++++
+ dictee_universelle.html         | 28 ++++++++++++++++++++++++++++
+ etude_dugain.html               | 25 +++++++++++++++++++++++++
+ pilotage_debat_s3.html          | 25 +++++++++++++++++++++++++
+ redaction_dugain_v3.html        | 25 +++++++++++++++++++++++++
+ reecriture.html                 | 18 ++++++++++++++++++
+ reecriture_bb4e.html            | 25 +++++++++++++++++++++++++
+ worktrack.html                  | 25 +++++++++++++++++++++++++
+ 11 files changed, 275 insertions(+)
+
+diff --git a/Console_ateliers_revisions.html b/Console_ateliers_revisions.html
+index fd329b5..9e831f0 100644
+--- a/Console_ateliers_revisions.html
++++ b/Console_ateliers_revisions.html
+@@ -1,4 +1,29 @@
+ <!doctype html>
++<!--
++═══════════════════════════════════════════════════════════════════════════
++ À CODER — Fonctionnalités prévues pour des sessions futures
++═══════════════════════════════════════════════════════════════════════════
++
++ 1. LA TABLETTE PARTAGÉE EN DEUX, ET LES BINÔMES (Paul, 10/10/2026)
++    À terme, toutes les apps MJPC partagent l'écran de la tablette en deux :
++    deux élèves par tablette, une moitié chacun.
++    À faire dans cette app, exactement comme dans correction_dictee.html et
++    evaluation-qcm.html :
++    - la console reçoit la vue des tablettes et la connexion à deux
++      (« Combien êtes-vous sur cette tablette ? », le code de l'élève, puis
++      l'autre moitié nomme son binôme, qui entre son code à son tour) ;
++    - la console forme les binômes : d'abord la règle d'exclusion de MJPC
++      (deux élèves exclus l'un de l'autre ne sont jamais ensemble, et aucun
++      élève ne voit jamais de message à ce sujet), puis les règles d'entraide
++      propres à cette app, que Paul définira.
++    Les exclusions se règlent dans la console MJPC (fiche de la classe,
++    « 🚫 Jamais avec… », au plus 3 exclusions par élève) et se lisent par le
++    socle MJPC (MJPC-CORE).
++    Règles d'entraide de cette app : à définir par Paul.
++    Référence : cadrage du QCM au sas (MANDATS/CADRAGE-QCM.md), points 585 à 597.
++
++═══════════════════════════════════════════════════════════════════════════
++-->
+ <html lang="fr">
+ <head>
+ <meta charset="utf-8">
+diff --git a/analyse_logique.html b/analyse_logique.html
+index 35d9c50..6761a76 100644
+--- a/analyse_logique.html
++++ b/analyse_logique.html
+@@ -1,4 +1,29 @@
+ <!DOCTYPE html>
++<!--
++═══════════════════════════════════════════════════════════════════════════
++ À CODER — Fonctionnalités prévues pour des sessions futures
++═══════════════════════════════════════════════════════════════════════════
++
++ 1. LA TABLETTE PARTAGÉE EN DEUX, ET LES BINÔMES (Paul, 10/10/2026)
++    À terme, toutes les apps MJPC partagent l'écran de la tablette en deux :
++    deux élèves par tablette, une moitié chacun.
++    À faire dans cette app, exactement comme dans correction_dictee.html et
++    evaluation-qcm.html :
++    - la console reçoit la vue des tablettes et la connexion à deux
++      (« Combien êtes-vous sur cette tablette ? », le code de l'élève, puis
++      l'autre moitié nomme son binôme, qui entre son code à son tour) ;
++    - la console forme les binômes : d'abord la règle d'exclusion de MJPC
++      (deux élèves exclus l'un de l'autre ne sont jamais ensemble, et aucun
++      élève ne voit jamais de message à ce sujet), puis les règles d'entraide
++      propres à cette app, que Paul définira.
++    Les exclusions se règlent dans la console MJPC (fiche de la classe,
++    « 🚫 Jamais avec… », au plus 3 exclusions par élève) et se lisent par le
++    socle MJPC (MJPC-CORE).
++    Règles d'entraide de cette app : à définir par Paul.
++    Référence : cadrage du QCM au sas (MANDATS/CADRAGE-QCM.md), points 585 à 597.
++
++═══════════════════════════════════════════════════════════════════════════
++-->
+ <html lang="fr">
+ <head>
+ <meta charset="utf-8">
+diff --git a/applause_meter.html b/applause_meter.html
+index 56b78ce..eb7adab 100644
+--- a/applause_meter.html
++++ b/applause_meter.html
+@@ -1,4 +1,29 @@
+ <!DOCTYPE html>
++<!--
++═══════════════════════════════════════════════════════════════════════════
++ À CODER — Fonctionnalités prévues pour des sessions futures
++═══════════════════════════════════════════════════════════════════════════
++
++ 1. LA TABLETTE PARTAGÉE EN DEUX, ET LES BINÔMES (Paul, 10/10/2026)
++    À terme, toutes les apps MJPC partagent l'écran de la tablette en deux :
++    deux élèves par tablette, une moitié chacun.
++    À faire dans cette app, exactement comme dans correction_dictee.html et
++    evaluation-qcm.html :
++    - la console reçoit la vue des tablettes et la connexion à deux
++      (« Combien êtes-vous sur cette tablette ? », le code de l'élève, puis
++      l'autre moitié nomme son binôme, qui entre son code à son tour) ;
++    - la console forme les binômes : d'abord la règle d'exclusion de MJPC
++      (deux élèves exclus l'un de l'autre ne sont jamais ensemble, et aucun
++      élève ne voit jamais de message à ce sujet), puis les règles d'entraide
++      propres à cette app, que Paul définira.
++    Les exclusions se règlent dans la console MJPC (fiche de la classe,
++    « 🚫 Jamais avec… », au plus 3 exclusions par élève) et se lisent par le
++    socle MJPC (MJPC-CORE).
++    Règles d'entraide de cette app : à définir par Paul.
++    Référence : cadrage du QCM au sas (MANDATS/CADRAGE-QCM.md), points 585 à 597.
++
++═══════════════════════════════════════════════════════════════════════════
++-->
+ <html lang="fr">
+ <head>
+ <meta charset="UTF-8">
+diff --git a/correction_dictee.html b/correction_dictee.html
+index c690941..c46a514 100644
+--- a/correction_dictee.html
++++ b/correction_dictee.html
+@@ -1,4 +1,33 @@
+ <!DOCTYPE html>
++<!--
++═══════════════════════════════════════════════════════════════════════════
++ À CODER — Fonctionnalités prévues pour des sessions futures
++═══════════════════════════════════════════════════════════════════════════
++
++ 1. LA TABLETTE PARTAGÉE EN DEUX, ET LES BINÔMES (Paul, 10/10/2026)
++    À terme, toutes les apps MJPC partagent l'écran de la tablette en deux :
++    deux élèves par tablette, une moitié chacun.
++    À faire dans cette app, exactement comme dans evaluation-qcm.html :
++    - la console reçoit la vue des tablettes et la connexion à deux
++      (« Combien êtes-vous sur cette tablette ? », le code de l'élève, puis
++      l'autre moitié nomme son binôme, qui entre son code à son tour) ;
++    - la console forme les binômes : d'abord la règle d'exclusion de MJPC
++      (deux élèves exclus l'un de l'autre ne sont jamais ensemble, et aucun
++      élève ne voit jamais de message à ce sujet), puis les règles d'entraide
++      propres à cette app, que Paul définira.
++    Ici, la tablette en deux et la connexion existent déjà, et la console forme
++    ses binômes à « Lancer » (calculerBinomes, binomesSeanceL17 : le moins
++    d'erreurs avec le plus d'erreurs ; un aménagé avec l'élève classique qui
++    s'est trompé sur les mêmes mots). Reste à faire : la règle d'exclusion de
++    MJPC passe avant cette règle.
++    Les exclusions se règlent dans la console MJPC (fiche de la classe,
++    « 🚫 Jamais avec… », au plus 3 exclusions par élève) et se lisent par le
++    socle MJPC (MJPC-CORE).
++    Règles d'entraide de cette app : à définir par Paul.
++    Référence : cadrage du QCM au sas (MANDATS/CADRAGE-QCM.md), points 585 à 597.
++
++═══════════════════════════════════════════════════════════════════════════
++-->
+ <html lang="fr">
+ <head>
+ <meta charset="UTF-8">
+diff --git a/dictee_universelle.html b/dictee_universelle.html
+index 7e53a81..ea4f8a3 100644
+--- a/dictee_universelle.html
++++ b/dictee_universelle.html
+@@ -1,4 +1,32 @@
+ <!DOCTYPE html>
++<!--
++═══════════════════════════════════════════════════════════════════════════
++ À CODER — Fonctionnalités prévues pour des sessions futures
++═══════════════════════════════════════════════════════════════════════════
++
++ 1. LA TABLETTE PARTAGÉE EN DEUX, ET LES BINÔMES (Paul, 10/10/2026)
++    À terme, toutes les apps MJPC partagent l'écran de la tablette en deux :
++    deux élèves par tablette, une moitié chacun.
++    À faire dans cette app, exactement comme dans correction_dictee.html et
++    evaluation-qcm.html :
++    - la console reçoit la vue des tablettes et la connexion à deux
++      (« Combien êtes-vous sur cette tablette ? », le code de l'élève, puis
++      l'autre moitié nomme son binôme, qui entre son code à son tour) ;
++    - la console forme les binômes : d'abord la règle d'exclusion de MJPC
++      (deux élèves exclus l'un de l'autre ne sont jamais ensemble, et aucun
++      élève ne voit jamais de message à ce sujet), puis les règles d'entraide
++      propres à cette app, que Paul définira.
++    Ici, la console forme déjà des binômes correcteur et dicté
++    (startDistribution), sans moitiés de tablette. Reste à faire : la tablette
++    en deux, et la règle d'exclusion de MJPC avant la distribution.
++    Les exclusions se règlent dans la console MJPC (fiche de la classe,
++    « 🚫 Jamais avec… », au plus 3 exclusions par élève) et se lisent par le
++    socle MJPC (MJPC-CORE).
++    Règles d'entraide de cette app : à définir par Paul.
++    Référence : cadrage du QCM au sas (MANDATS/CADRAGE-QCM.md), points 585 à 597.
++
++═══════════════════════════════════════════════════════════════════════════
++-->
+ <html lang="fr">
+ <head>
+ <meta charset="UTF-8">
+diff --git a/etude_dugain.html b/etude_dugain.html
+index f76f1c6..018f9c9 100644
+--- a/etude_dugain.html
++++ b/etude_dugain.html
+@@ -1,4 +1,29 @@
+ <!DOCTYPE html>
++<!--
++═══════════════════════════════════════════════════════════════════════════
++ À CODER — Fonctionnalités prévues pour des sessions futures
++═══════════════════════════════════════════════════════════════════════════
++
++ 1. LA TABLETTE PARTAGÉE EN DEUX, ET LES BINÔMES (Paul, 10/10/2026)
++    À terme, toutes les apps MJPC partagent l'écran de la tablette en deux :
++    deux élèves par tablette, une moitié chacun.
++    À faire dans cette app, exactement comme dans correction_dictee.html et
++    evaluation-qcm.html :
++    - la console reçoit la vue des tablettes et la connexion à deux
++      (« Combien êtes-vous sur cette tablette ? », le code de l'élève, puis
++      l'autre moitié nomme son binôme, qui entre son code à son tour) ;
++    - la console forme les binômes : d'abord la règle d'exclusion de MJPC
++      (deux élèves exclus l'un de l'autre ne sont jamais ensemble, et aucun
++      élève ne voit jamais de message à ce sujet), puis les règles d'entraide
++      propres à cette app, que Paul définira.
++    Les exclusions se règlent dans la console MJPC (fiche de la classe,
++    « 🚫 Jamais avec… », au plus 3 exclusions par élève) et se lisent par le
++    socle MJPC (MJPC-CORE).
++    Règles d'entraide de cette app : à définir par Paul.
++    Référence : cadrage du QCM au sas (MANDATS/CADRAGE-QCM.md), points 585 à 597.
++
++═══════════════════════════════════════════════════════════════════════════
++-->
+ <html lang="fr">
+ <head>
+ <meta charset="UTF-8">
+diff --git a/pilotage_debat_s3.html b/pilotage_debat_s3.html
+index f77bc74..ec47392 100644
+--- a/pilotage_debat_s3.html
++++ b/pilotage_debat_s3.html
+@@ -1,4 +1,29 @@
+ <!DOCTYPE html>
++<!--
++═══════════════════════════════════════════════════════════════════════════
++ À CODER — Fonctionnalités prévues pour des sessions futures
++═══════════════════════════════════════════════════════════════════════════
++
++ 1. LA TABLETTE PARTAGÉE EN DEUX, ET LES BINÔMES (Paul, 10/10/2026)
++    À terme, toutes les apps MJPC partagent l'écran de la tablette en deux :
++    deux élèves par tablette, une moitié chacun.
++    À faire dans cette app, exactement comme dans correction_dictee.html et
++    evaluation-qcm.html :
++    - la console reçoit la vue des tablettes et la connexion à deux
++      (« Combien êtes-vous sur cette tablette ? », le code de l'élève, puis
++      l'autre moitié nomme son binôme, qui entre son code à son tour) ;
++    - la console forme les binômes : d'abord la règle d'exclusion de MJPC
++      (deux élèves exclus l'un de l'autre ne sont jamais ensemble, et aucun
++      élève ne voit jamais de message à ce sujet), puis les règles d'entraide
++      propres à cette app, que Paul définira.
++    Les exclusions se règlent dans la console MJPC (fiche de la classe,
++    « 🚫 Jamais avec… », au plus 3 exclusions par élève) et se lisent par le
++    socle MJPC (MJPC-CORE).
++    Règles d'entraide de cette app : à définir par Paul.
++    Référence : cadrage du QCM au sas (MANDATS/CADRAGE-QCM.md), points 585 à 597.
++
++═══════════════════════════════════════════════════════════════════════════
++-->
+ <html lang="fr">
+ <head>
+ <meta charset="UTF-8">
+diff --git a/redaction_dugain_v3.html b/redaction_dugain_v3.html
+index 5f72eeb..1800f28 100644
+--- a/redaction_dugain_v3.html
++++ b/redaction_dugain_v3.html
+@@ -1,4 +1,29 @@
+ <!DOCTYPE html>
++<!--
++═══════════════════════════════════════════════════════════════════════════
++ À CODER — Fonctionnalités prévues pour des sessions futures
++═══════════════════════════════════════════════════════════════════════════
++
++ 1. LA TABLETTE PARTAGÉE EN DEUX, ET LES BINÔMES (Paul, 10/10/2026)
++    À terme, toutes les apps MJPC partagent l'écran de la tablette en deux :
++    deux élèves par tablette, une moitié chacun.
++    À faire dans cette app, exactement comme dans correction_dictee.html et
++    evaluation-qcm.html :
++    - la console reçoit la vue des tablettes et la connexion à deux
++      (« Combien êtes-vous sur cette tablette ? », le code de l'élève, puis
++      l'autre moitié nomme son binôme, qui entre son code à son tour) ;
++    - la console forme les binômes : d'abord la règle d'exclusion de MJPC
++      (deux élèves exclus l'un de l'autre ne sont jamais ensemble, et aucun
++      élève ne voit jamais de message à ce sujet), puis les règles d'entraide
++      propres à cette app, que Paul définira.
++    Les exclusions se règlent dans la console MJPC (fiche de la classe,
++    « 🚫 Jamais avec… », au plus 3 exclusions par élève) et se lisent par le
++    socle MJPC (MJPC-CORE).
++    Règles d'entraide de cette app : à définir par Paul.
++    Référence : cadrage du QCM au sas (MANDATS/CADRAGE-QCM.md), points 585 à 597.
++
++═══════════════════════════════════════════════════════════════════════════
++-->
+ <html lang="fr">
+ <head>
+ <meta charset="UTF-8">
+diff --git a/reecriture.html b/reecriture.html
+index c28a1a5..e630683 100644
+--- a/reecriture.html
++++ b/reecriture.html
+@@ -16,6 +16,24 @@
+     Questions ouvertes : autorisation prof, anonymat ou pas, durée d'aide,
+     valorisation du tuteur (points, badge ?)
+ 
++ 2. LA TABLETTE PARTAGÉE EN DEUX, ET LES BINÔMES (Paul, 10/10/2026)
++    À terme, toutes les apps MJPC partagent l'écran de la tablette en deux :
++    deux élèves par tablette, une moitié chacun.
++    À faire dans cette app, exactement comme dans correction_dictee.html et
++    evaluation-qcm.html :
++    - la console reçoit la vue des tablettes et la connexion à deux
++      (« Combien êtes-vous sur cette tablette ? », le code de l'élève, puis
++      l'autre moitié nomme son binôme, qui entre son code à son tour) ;
++    - la console forme les binômes : d'abord la règle d'exclusion de MJPC
++      (deux élèves exclus l'un de l'autre ne sont jamais ensemble, et aucun
++      élève ne voit jamais de message à ce sujet), puis les règles d'entraide
++      propres à cette app, que Paul définira.
++    Les exclusions se règlent dans la console MJPC (fiche de la classe,
++    « 🚫 Jamais avec… », au plus 3 exclusions par élève) et se lisent par le
++    socle MJPC (MJPC-CORE).
++    Règles d'entraide de cette app : à définir par Paul.
++    Référence : cadrage du QCM au sas (MANDATS/CADRAGE-QCM.md), points 585 à 597.
++
+ ═══════════════════════════════════════════════════════════════════════════════
+ -->
+ <html lang="fr">
+diff --git a/reecriture_bb4e.html b/reecriture_bb4e.html
+index 1560615..6887d54 100644
+--- a/reecriture_bb4e.html
++++ b/reecriture_bb4e.html
+@@ -1,4 +1,29 @@
+ <!DOCTYPE html>
++<!--
++═══════════════════════════════════════════════════════════════════════════
++ À CODER — Fonctionnalités prévues pour des sessions futures
++═══════════════════════════════════════════════════════════════════════════
++
++ 1. LA TABLETTE PARTAGÉE EN DEUX, ET LES BINÔMES (Paul, 10/10/2026)
++    À terme, toutes les apps MJPC partagent l'écran de la tablette en deux :
++    deux élèves par tablette, une moitié chacun.
++    À faire dans cette app, exactement comme dans correction_dictee.html et
++    evaluation-qcm.html :
++    - la console reçoit la vue des tablettes et la connexion à deux
++      (« Combien êtes-vous sur cette tablette ? », le code de l'élève, puis
++      l'autre moitié nomme son binôme, qui entre son code à son tour) ;
++    - la console forme les binômes : d'abord la règle d'exclusion de MJPC
++      (deux élèves exclus l'un de l'autre ne sont jamais ensemble, et aucun
++      élève ne voit jamais de message à ce sujet), puis les règles d'entraide
++      propres à cette app, que Paul définira.
++    Les exclusions se règlent dans la console MJPC (fiche de la classe,
++    « 🚫 Jamais avec… », au plus 3 exclusions par élève) et se lisent par le
++    socle MJPC (MJPC-CORE).
++    Règles d'entraide de cette app : à définir par Paul.
++    Référence : cadrage du QCM au sas (MANDATS/CADRAGE-QCM.md), points 585 à 597.
++
++═══════════════════════════════════════════════════════════════════════════
++-->
+ <html lang="fr">
+ <head>
+ <meta charset="UTF-8">
+diff --git a/worktrack.html b/worktrack.html
+index b939d1d..2dcfeab 100644
+--- a/worktrack.html
++++ b/worktrack.html
+@@ -1,4 +1,29 @@
+ <!DOCTYPE html>
++<!--
++═══════════════════════════════════════════════════════════════════════════
++ À CODER — Fonctionnalités prévues pour des sessions futures
++═══════════════════════════════════════════════════════════════════════════
++
++ 1. LA TABLETTE PARTAGÉE EN DEUX, ET LES BINÔMES (Paul, 10/10/2026)
++    À terme, toutes les apps MJPC partagent l'écran de la tablette en deux :
++    deux élèves par tablette, une moitié chacun.
++    À faire dans cette app, exactement comme dans correction_dictee.html et
++    evaluation-qcm.html :
++    - la console reçoit la vue des tablettes et la connexion à deux
++      (« Combien êtes-vous sur cette tablette ? », le code de l'élève, puis
++      l'autre moitié nomme son binôme, qui entre son code à son tour) ;
++    - la console forme les binômes : d'abord la règle d'exclusion de MJPC
++      (deux élèves exclus l'un de l'autre ne sont jamais ensemble, et aucun
++      élève ne voit jamais de message à ce sujet), puis les règles d'entraide
++      propres à cette app, que Paul définira.
++    Les exclusions se règlent dans la console MJPC (fiche de la classe,
++    « 🚫 Jamais avec… », au plus 3 exclusions par élève) et se lisent par le
++    socle MJPC (MJPC-CORE).
++    Règles d'entraide de cette app : à définir par Paul.
++    Référence : cadrage du QCM au sas (MANDATS/CADRAGE-QCM.md), points 585 à 597.
++
++═══════════════════════════════════════════════════════════════════════════
++-->
+ <html lang="fr">
+ <head>
+ <meta charset="UTF-8">
+-- 
+2.43.0
+

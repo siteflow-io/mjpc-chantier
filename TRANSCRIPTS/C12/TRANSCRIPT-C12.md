@@ -19625,4 +19625,4 @@ Je ne sais pas combien de temps il prendra. Le premier passage a pris trois heur
 
 696. **Quand il a fini, dis-le-moi** : je fais l'audit final du complément.
 
-10/10/2026 14:02 MEMO
+10/10/2026 14:00 MEMO

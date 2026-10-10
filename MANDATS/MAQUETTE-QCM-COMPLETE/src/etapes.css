@@ -210,3 +210,15 @@ button.mode-choix{font-family:inherit;text-align:left;cursor:pointer}
 input.simt-fi{width:100%;border:1px dashed #93C5FD;border-radius:6px;padding:.2rem .35rem;background:#fff}
 .simt-titre > span:first-child{white-space:normal;overflow:visible;line-height:1.25}
 .fiche-head-b,.fiche-q-b{grid-template-columns:2.2rem 1.5fr 1fr 1fr .9fr 1fr 3.6rem 12.5rem}
+/* (complément 1) « 📊 Mes évaluations » à côté du nom de l'élève ; jamais sur le bilan imprimé */
+.eleve-tete{display:flex;justify-content:center;align-items:center;gap:.6rem;flex-wrap:wrap}
+.eleve-tete{margin-bottom:1rem}
+.eleve-tete .eleve-classe-badge{margin-bottom:0}
+.eleve-tete .mes-evals{padding:.1rem .6rem;font-size:.68rem;line-height:1.3}
+.moitie .eleve-tete{margin-bottom:.4rem}
+.bilan-imprime .mes-evals{display:none}
+/* (complément 1, défaut 4) « 👀 Écoute le prof — la correction sera révélée. » à la lecture du voisin, sous le choix enregistré */
+.moitie .correction-resultat.ecoute-prof{padding:.45rem .8rem;margin:.4rem 0 0;font-size:.9rem;text-align:center}
+.moitie .serre-3e .eleve-feedback{margin-top:.25rem;padding:.3rem .6rem;font-size:.82rem}
+.moitie .serre-3e .correction-resultat.ecoute-prof{padding:.3rem .6rem;margin-top:.25rem;font-size:.82rem}
+.moitie .serre-3e .eleve-choix.long .eleve-choix-btn{padding:.32rem .6rem}

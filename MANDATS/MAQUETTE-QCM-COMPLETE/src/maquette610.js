@@ -248,7 +248,7 @@ function QHead3(qi, sansTotal){
   return h("div", {className:"eleve-q-header"},
     h("span", {className:"eleve-q-num"}, "Question " + (qi+1) + (sansTotal ? "" : " / " + EV3.questions.length)),
     h("span", {className:"eleve-q-pastille", style:{background:NIV[q.niveau].color, color:q.niveau === "facile" ? "#5C4500" : "#fff"}}, NIV[q.niveau].label),
-    !sansTotal && h("span", {className:"eleve-q-points-badge"}, "1 pt"));
+    !sansTotal && h("span", {className:"eleve-q-points-badge", title:"Nombre de points que vaut cette question"}, "1 pt"));
 }
 /* B, sur la question 3 */
 function EcrDeclare3(e, chrono){

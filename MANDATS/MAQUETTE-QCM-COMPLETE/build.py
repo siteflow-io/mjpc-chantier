@@ -23,10 +23,22 @@ def js(nom):
     return "/* ═════ " + nom + " ═════ */\n" + t
 
 pdf = lire(S, "pdf632.html")
+# (complément 1, défaut 5) le PDF tel que le code le produira : le même texte, sans l'encadré « Exemple de la maquette… »
+# et sans aucun souligné de proposition (les marques de validation de gen632.js, faites pour la relecture de Paul)
+pdf = re.sub(r'<div class="exemple">.*?</div>\n?', "", pdf, count=1, flags=re.S)
+pdf = re.sub(r"\.prov\{[^}]*\}", "", pdf).replace('<span class="prov">', "<span>")
+assert "Exemple de la maquette" not in pdf and 'class="prov"' not in pdf
 # (complément 1, D1) la vraie taxonomie de la production, copiée dans les sources avec son md5 (src/donnees/MD5.txt)
 taxo = lire(S, "donnees", "taxonomie_atelier.json")
 # le prompt de création d'éval, tel qu'il est au sas (tour 630, acquis au tour 633)
 prompt = re.search(r"## Le texte proposé\s*```\n(.*?)\n```", lire(D, "..", "PROMPT-QCM-CREATION", "README.md"), re.S).group(1)
+# (complément 1) ce qui remplit les jetons du prompt : le chapitre de 3e et ses compétences (copie du sas, md5 dans src/donnees/MD5.txt),
+# les libellés élève, et le texte de {{LIMITES}} des mesures (mesures/limites.json, « texte_limites »)
+chap = json.loads(lire(S, "donnees", "chapitre-3e-poesie-peinture-final.json"))["chapitre"]
+chapitre = {"titre": chap["title"], "majeures": chap["competencesMajeures"], "mineures": chap["competencesMineures"]}
+libel = json.loads(lire(S, "donnees", "libelles_eleve.json"))
+limites = json.loads(lire(D, "mesures", "limites.json"))
+texte_limites = limites.get("texte_limites") or re.search(r"(?m)^> (.*)$", lire(D, "mesures", "README.md")).group(1)
 html = ("<!DOCTYPE html>\n<html lang=\"fr\">\n<head>\n<meta charset=\"UTF-8\">\n"
         "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n"
         "<title>Maquette complète du QCM</title>\n"
@@ -35,6 +47,7 @@ html = ("<!DOCTYPE html>\n<html lang=\"fr\">\n<head>\n<meta charset=\"UTF-8\">\n
         + "".join("<style>\n/* ═════ " + c + " ═════ */\n" + lire(S, c) + "\n</style>\n" for c in CSS) +
         "</head>\n<body>\n<div id=\"root\"></div>\n<div id=\"som-racine\"></div>\n"
         "<script>\nvar PROMPT_TEXTE = " + json.dumps(prompt, ensure_ascii=False).replace("</", "<\\/") + ";\nwindow.PDF632_HTML = " + json.dumps(pdf, ensure_ascii=False).replace("</", "<\\/") + ";\nvar TAXO = " + json.dumps(json.loads(taxo), ensure_ascii=False).replace("</", "<\\/") + ";\n"
+        + "var CHAPITRE_3E = " + json.dumps(chapitre, ensure_ascii=False) + ";\nvar LIBELLES_ELEVE = " + json.dumps(libel, ensure_ascii=False) + ";\nvar LIMITES_TEXTE = " + json.dumps(texte_limites, ensure_ascii=False) + ";\n"
         + "\n".join(js(n) for n in JS) + "\n</script>\n</body>\n</html>\n")
 
 # garde (étape 4, défaut 27) : le script assemblé se compile, sinon rien n'est écrit

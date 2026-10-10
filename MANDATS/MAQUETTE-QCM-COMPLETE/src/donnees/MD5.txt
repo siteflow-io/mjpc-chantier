@@ -1,2 +1,3 @@
 26128f95a0c0b59f45f6cc672218497b  taxonomie_atelier.json
 17e9a9876c0372bd7716e5a5acb542b0  libelles_eleve.json
+490b40b5d7a5b24cb303109f42484ae4  chapitre-3e-poesie-peinture-final.json   (sas : CONSULTANT/CHAPITRE-1/, le chapitre 1 de 3e et ses compétences, point 316)

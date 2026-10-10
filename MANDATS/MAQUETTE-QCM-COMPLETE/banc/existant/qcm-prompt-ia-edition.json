@@ -3,7 +3,7 @@
  "source": "evaluation-qcm.html (7.7.1, md5 ecae65624855a1a877708986a8e984e5), jouée sur le faux hub",
  "comment": "Le prompt en modification : « 💾 Enregistrer », « ↩️ Annuler », « 🔄 Restaurer le prompt par défaut » (l. 6496–6500).",
  "scenes": [
-  "c-reglages-prompt"
+  "c-reglages-prompt-modifier"
  ],
  "eleve": false,
  "boutons": [

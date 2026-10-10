@@ -29,3 +29,5 @@
 .alerte-texte{margin-bottom:14px;line-height:1.45}
 .alerte-pied{display:flex;justify-content:flex-end}
 .alerte-ok{background:#2563eb;color:#fff;border:none;border-radius:6px;padding:7px 18px;font:600 14px system-ui,sans-serif;cursor:pointer}
+/* (complément 1) la boîte « confirm » de la 7.7.1, dessinée : « Annuler » à côté de « OK » */
+.alerte-non{background:#e5e7eb;color:#111;border:none;border-radius:6px;padding:7px 18px;font:600 14px system-ui,sans-serif;cursor:pointer;margin-right:8px}

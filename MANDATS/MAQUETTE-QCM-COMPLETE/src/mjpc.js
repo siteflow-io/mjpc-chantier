@@ -302,6 +302,9 @@ function Taxonomie(p){
   var s6 = useState(TAXO), t = s6[0], setT = s6[1];
   var s7 = useState(p.groupes || {}), groupes = s7[0], setGroupes = s7[1];
   var s8 = useState(LIB_ELEVE), libs = s8[0], setLibs = s8[1];
+  var s9 = useState(0), charge = s9[0], setCharge = s9[1];
+  // taxoEditerOuvrir, l. 2425 : le formulaire s'ouvre après un rechargement forcé du référentiel (taxoRafraichir(true), l. 2598)
+  function ouvrirEdition(id){ setEdit(id); setCreation(null); setCharge(charge + 1); setTimeout(function(){ setCharge(0); }, 350); }
   function ecrire(modifier){ var n = JSON.parse(JSON.stringify(t)); modifier(n); n.meta = Object.assign({}, n.meta, {version: taxoVersionSuivante(n.meta.version), date: TAXO_JOUR}); setT(n); }   // _taxoMetaSuivant, l. 2348
   function lireChamps(racine){ var l = function(s){ var e = racine.querySelector("[id$='" + s + "']"); return e ? e.value.trim() : ""; }; return {libelleProf: l("-prof"), libelleEleve: l("-eleve"), niveaux: l("-niveaux"), exemple: l("-exemple")}; }
   function valider(v, comp){   // _taxoValiderChamps, l. 2419 : les trois alert de la vraie app
@@ -352,7 +355,7 @@ function Taxonomie(p){
       h("div", {className: "m8tx-n-l1"}, h("span", {className: "m8tx-id"}, n.id), h("span", {className: "m8tx-prof"}, comp ? n.libelle : (n.libelleProf || "")), inactif ? h("span", {className: "m8tx-badge"}, "désactivée") : null),
       h("div", {className: "m8tx-n-l2"}, comp ? "Élève : " + (libs[n.id] || "") : "Élève : " + (n.libelleEleve || "") + " · " + (n.niveaux || "") + (n.exemple ? " · " + n.exemple : "")),
       h("div", {className: "m8tx-n-actions"},
-        h("button", {className: "m8-btn m8-btn-min", "data-local": "1", title: "Ouvre le formulaire : corriger les libellés" + (comp ? "" : ", les niveaux et l’exemple") + ".", onClick: function(){ setEdit(n.id); setCreation(null); }}, "✏️ Modifier"),
+        h("button", {className: "m8-btn m8-btn-min", "data-local": "1", title: "Ouvre le formulaire : corriger les libellés" + (comp ? "" : ", les niveaux et l’exemple") + ".", onClick: function(){ ouvrirEdition(n.id); }}, "✏️ Modifier"),
         h("button", {className: "m8-btn m8-btn-min" + (inactif ? "" : " m8-btn-rouge"), "data-local": "1", title: inactif ? "Réactive : elle revient dans les choix des applications." : "Désactive : elle sort des choix des applications ; l’historique reste lisible.", onClick: function(){ basculer(n); }}, inactif ? "Réactiver" : "Désactiver")),
       edit === n.id ? formEdition(n, comp) : null);
   }
@@ -398,7 +401,7 @@ function Taxonomie(p){
         h("p", {className: "m8-p"}, "L’arbre Domaine › Famille › Notion que lisent les applications. Ici tu peux créer une notion, corriger ses libellés, ses niveaux et son exemple, ou la désactiver."),
         // taxoOuvrirEditeur, l. 2484
         h("button", {className: "m8-btn", "data-va": ouvert ? "m-taxonomie" : "m-taxonomie-editeur", title: ouvert ? "Ferme l’éditeur du référentiel." : "Ouvre l’éditeur du référentiel : les domaines, les familles, les notions, les compétences."}, ouvert ? "Fermer l’éditeur" : "Ouvrir l’éditeur"),
-        h("div", {id: "m8tx-editeur", className: "m8tx-editeur"}, ouvert && h(F, null,
+        h("div", {id: "m8tx-editeur", className: "m8tx-editeur"}, ouvert && charge > 0 && h("p", {className: "m8-vide"}, "Chargement du référentiel…"), ouvert && !charge && h(F, null,
           o.test && h("div", {className: "m8tx-bandeau-test"}, "🧪 MODE TEST — tu édites une COPIE de la taxonomie. Rien n’est enregistré au référentiel : toutes tes modifications disparaîtront en quittant le mode test."),
           h("div", {className: "m8tx-etat"}, "Version " + t.meta.version + " · " + t.meta.date + " · " + t.domaines.length + " domaines · " + total + " notions"),
           h("p", {className: "m8tx-regle"}, "Une notion ne se supprime jamais et son identifiant ne change jamais : le travail des élèves est étiqueté par ces identifiants, une étiquette qui disparaît ou change de numéro décrocherait des années de travail. Une notion qui ne sert plus se ", h("strong", null, "désactive"), " — elle sort des choix des applications, l’historique reste lisible."),

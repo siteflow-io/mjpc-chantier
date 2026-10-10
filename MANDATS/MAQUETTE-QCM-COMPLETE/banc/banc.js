@@ -93,7 +93,8 @@ if(SORTIE && fs.existsSync(SORTIE)) fs.unlinkSync(SORTIE);   // (garde, défaut 
   if(GARDES !== "0"){
     journal.push(INV.length + " écrans de l'existant · " + G.verifierRetraits(verif) + " retraits");
     for(const v of INV) for(const s of v.scenes) verif(scenes.some(x => x.id === s), "garde 1. la scène « " + s + " », qui part de « " + v.ecran + " » (" + v.fichier + "), existe");
-    G.garde4(verif);
+    if(G.MESURES){ G.garde4(verif); const pm = await navig.newPage({viewport: {width: 1280, height: 800}}); await G.garde4Echantillon(pm, FICHIER, verif); await pm.close(); }
+    else journal.push("sans la garde 4 (MESURES=0)");
   }
   async function verifierScene(sc){
     const R = {n:0, echecs:[]};
@@ -197,7 +198,7 @@ if(SORTIE && fs.existsSync(SORTIE)) fs.unlinkSync(SORTIE);   // (garde, défaut 
 
   const lignes = [];
   lignes.push("Banc unique — maquette complète du QCM");
-  lignes.push("Fichier : " + path.basename(FICHIER) + " · étape jouée : " + ETAPE + (GARDES === "0" ? " · sans les gardes du complément 1" : GARDES === "seules" ? " · les gardes du complément 1 seules" : " · avec les gardes du complément 1") + " · " + new Date().toISOString());
+  lignes.push("Fichier : " + path.basename(FICHIER) + " · étape jouée : " + ETAPE + (GARDES === "0" ? " · sans les gardes du complément 1" : GARDES === "seules" ? " · les gardes du complément 1 seules" : " · avec les gardes du complément 1") + (GARDES !== "0" && !G.MESURES ? ", sans les mesures (garde 4 et texte de {{LIMITES}} : étape C)" : "") + " · " + new Date().toISOString());
   lignes.push(journal.join(" · "));
   lignes.push("Vérifications : " + nb + " · échecs : " + echecs.length);
   if(echecs.length) lignes.push("", "ÉCHECS :", ...echecs.map((e, i) => (i + 1) + ". " + e));

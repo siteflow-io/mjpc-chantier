@@ -463,11 +463,12 @@ function TelQ(qi, bonnes){
 function TelBtn(txt, variant, taille, ferme){ return h("button", {className:"tel-btn tb-" + variant + (taille ? " tb-" + taille : "") + (ferme ? " ferme" : "")}, txt); }
 function TelStats(courante, connues){
   // connues : les questions déjà closes, dont le taux est connu ; la question courante dit « en cours » tant qu'elle n'est pas close
-  var tx = [88, 38, 58];
-  return h("div", {className:"tel-stats"}, EV.questions.map(function(q, i){
+  // les infobulles de la 7.7.1 (l. 5672 et 5680) : la bande, puis chaque question, « pas de réponse » ou « a/b bonnes (x%) »
+  var tx = [88, 38, 58], bon = [21, 9, 14];
+  return h("div", {className:"tel-stats", title:"Aperçu de la classe par question. Vert = >75% bonnes, Bleu = >50%, Orange = >25%, Rouge = <25%. Les rouges sortiront en premier à la correction."}, EV.questions.map(function(q, i){
     var connu = connues.indexOf(i) >= 0;
     var c = i === courante ? "cur" : !connu ? "vide" : tx[i] >= 75 ? "v" : tx[i] >= 50 ? "b" : tx[i] >= 25 ? "o" : "r";
-    return h("div", {key:i, className:"tel-st " + c}, h("div", null, "Q" + (i+1)), h("div", {style:{fontSize:".62rem", opacity:.9}}, connu ? tx[i] + "%" : (i === courante ? "en cours" : "—")));
+    return h("div", {key:i, className:"tel-st " + c, title:"Q" + (i+1) + (connu ? " — " + bon[i] + "/24 bonnes (" + tx[i] + "%)" : " — pas de réponse")}, h("div", null, "Q" + (i+1)), h("div", {style:{fontSize:".62rem", opacity:.9}}, connu ? tx[i] + "%" : (i === courante ? "en cours" : "—")));
   }));
 }
 function TelLegende(items){ return h("div", {className:"tel-leg"}, items.join(" · ")); }
@@ -531,7 +532,7 @@ function TelEleve(){
     h("div", {key:"s", className:"tel-suiv"}, h("span", {style:{fontWeight:900, color:"var(--violet)"}}, "Suiv. Q3 : "), EV.questions[2].enonce),
     h("div", {key:"a", className:"tel-actions"},
       h("button", {className:"tel-btn tb-primary tb-large", "data-va":"t-q3-tour1"}, "🚀 Lancer Q3"),
-      h("button", {className:"tel-btn tb-ghost tb-small", "data-va":"c-rouvrir-tous"}, "🔓 Rouvrir Q2 pour tous")),
+      h("button", {className:"tel-btn tb-ghost tb-small", "data-va":"c-rouvrir-tous"}, "🔓 Rouvrir Q2")),   // le libellé de la 7.7.1 (l. 5616)
     h("div", {key:"st"}, TelStats(1, [0, 1])),
     h("div", {key:"l"}, TelListe("TABLETTES — 23 / 24 ont répondu · clic sur un nom pour agir", modeDe)),
     h("div", {key:"t"}, h("button", {className:"tel-btn tb-rouge tb-small", "data-va":"c-terminer"}, "🛑 Terminer la session"))]);

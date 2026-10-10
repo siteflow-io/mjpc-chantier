@@ -1,6 +1,6 @@
 # Le tableau « point → scène » (mandat §4 et §6, étape 5)
 
-*Pour chaque point retenu du cadrage qui se voit, la scène qui le montre (`#scene=ID` dans `maquette-qcm-v5.html`). Les points sont ceux du §4 du mandat (tours 604 à 632), plus les points plus anciens que ces scènes rendent visibles. Un point sans scène serait un oubli : il n'y en a pas.*
+*Pour chaque point retenu du cadrage qui se voit, la scène qui le montre (`#scene=ID` dans `maquette-qcm-v6.html`). Les points sont ceux du §4 du mandat (tours 604 à 632), plus les points plus anciens que ces scènes rendent visibles. Un point sans scène serait un oubli : il n'y en a pas.*
 
 ## Tours 604 à 606 (points 427 à 451)
 
@@ -88,7 +88,18 @@
 | 623 | le bilan de l'élève qui finit par « 📝 Bilan » | `e-bilan-lou` |
 | 629, 631, 633 | « 🎯 Ce qu'elle vérifie » dans l'éditeur ; la garde au collage | `x627-3-editeur`, `c-collage` |
 | 636 à 640, 644 | le libellé élève partout où l'élève voit une compétence (bilans, attestations, phrase sous la question) | `t-bilan`, `e-bilan-lou`, `x610-5-attestation-2`, `t-papier-attest` |
-| 637 | l'éditeur de taxonomie avec « Les compétences » et leur libellé élève | `m-taxonomie-competences` |
+| 637 | l'éditeur de taxonomie avec « Les compétences » et leur libellé élève ; une compétence en modification | `m-taxonomie-competences`, `m-taxonomie-competence` |
 | 647 à 650 | le prompt dans Réglages ; les jetons remplis à la copie | `c-reglages`, `c-reglages-prompt` |
 | 649 | les durées de la séance (Réglages, la durée estimée) | `c-reglages`, `c-lancer` |
 | 108, 131 | les niveaux de maîtrise et l'échelle de la note | `c-reglages` |
+
+## Complément 1 (tours 638 et 639, points 680 à 696)
+
+| Point | Ce qui se voit | Scène(s) |
+| --- | --- | --- |
+| 681 (D1) | MJPC tel qu'`index.html` le dessine : le menu du panneau prof (12 entrées grisées), « Élèves & codes » avec la clé, l'import, ↻, ✕ et « 🚫 Jamais avec… » après le ◆ ; la fiche de l'élève ; la Taxonomie sur la vraie taxonomie (1.4.0, 7 domaines, 210 notions), un domaine ouvert, une notion et une compétence en modification | `m-classe-exclusions`, `m-exclusion-refusee`, `m-fiche-eleve`, `m-taxonomie`, `m-taxonomie-editeur`, `m-taxonomie-domaine`, `m-taxonomie-notion`, `m-taxonomie-competences`, `m-taxonomie-competence` |
+| 682 (D2) | aucun renvoi au cadrage dans la console ; les infobulles de la 7.7.1 ; le prompt tel que l'app le copie, et en modification avec « 🔄 Restaurer le prompt par défaut » | `c-reglages`, `c-reglages-prompt`, `c-reglages-prompt-modifier`, toutes les scènes de console |
+| 683 (D3) | le prompt porte les nouvelles limites de longueur | `c-reglages-prompt` |
+| 684, 691 (D4) | « 👀 Écoute le prof — la correction sera révélée. » avant la révélation | `t-corr-q2-lecture`, `t-corr-q3-lecture`, `t-corr-q1-lecture`, `t-corr-seul`, `x610-3-a-correction` |
+| 692 (D5) | le PDF « notes et compétences » sans encadré ni souligné | `x632-pdf` |
+| 686 (D6) | « Tu as nettement surestimé ce que tu avais réussi. » dans le bloc « 🎯 Ton estimation » de Michel, comme son bilan général | `t-bilan`, `t-bilan-non-atteinte`, `c-fiche` |

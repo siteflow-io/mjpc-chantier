@@ -89,6 +89,8 @@ function motsInterdits(etat){
 
 /* ── 7. Aucun vrai élève ── */
 const MAJ_PERMIS = new Set(["QCM", "PDF", "BONUS", "MODE", "TEST", "POSE", "TON", "STYLO", "JSON", "CSV", "RÉPONSE", "RÉPONSES", "RÉFLEXION", "ESSAI", "DPP", "FPP", "PSR", "CDC", "MS", "PR", "EN", "COURS", "MULTIPLES", "TABLETTES", "EXPLICATION", "MJPC", "RÉDIGE", "TA", "SUR", "FEUILLE", "ENTIER", "A4", "OK", "CLASSE", "ED", "P.P", "P.I", "DE", "LA", "ET", "TOUT", "UN", "UNE", "PP", "PI", "SRP", "HUGO", "NOM"]);
+// (complément 1) un nom d'exemple de l'existant, pas un élève : l'indication du champ d'import d'« Élèves & codes » (index.html, l. 5518)
+const EXEMPLES_EXISTANT = new Set(["DUPONT Marie"]);
 function nomsInconnus(texte){
   const re = /(?<![\p{L}])((?:[A-ZÀ-ÖØ-Ý][A-ZÀ-ÖØ-Ý'’-]+)(?: [A-ZÀ-ÖØ-Ý][A-ZÀ-ÖØ-Ý'’-]+)*) ([A-ZÀ-ÖØ-Ý][a-zà-öø-ÿ]+(?:-[A-ZÀ-ÖØ-Ý][a-zà-öø-ÿ]+)?)(?![\p{L}])/gu;
   const permis = new Set(PERMIS.tous), out = new Set(); let m;
@@ -96,7 +98,7 @@ function nomsInconnus(texte){
     const nom = m[1], mots = nom.split(" ");
     if(mots.every(w => MAJ_PERMIS.has(w)) || mots.some(w => w.length < 2)) continue;
     const complet = nom + " " + m[2];
-    if(permis.has(complet)) continue;
+    if(permis.has(complet) || EXEMPLES_EXISTANT.has(complet)) continue;
     if(mots.some(w => MAJ_PERMIS.has(w))) continue;
     out.add(complet);
   }
@@ -120,7 +122,8 @@ function texteCom632(entree){   // le commentaire de com632.js, la version final
 }
 function textePdf632(){
   const html = lire(path.join(FLUX, "pdf-632", "notes-competences-3-ESSAI.html"));
-  return html.replace(/<style[\s\S]*?<\/style>/g, "").replace(/<title>[\s\S]*?<\/title>/g, "").replace(/<br>/g, "\n").replace(/<[^>]+>/g, " ").replace(/&lt;/g, "<").replace(/&amp;/g, "&");
+  // (complément 1, défaut 5) l'encadré « Exemple de la maquette… » mis à part : le PDF se montre tel que le code le produira
+  return html.replace(/<div class="exemple">[\s\S]*?<\/div>/, "").replace(/<style[\s\S]*?<\/style>/g, "").replace(/<title>[\s\S]*?<\/title>/g, "").replace(/<br>/g, "\n").replace(/<[^>]+>/g, " ").replace(/&lt;/g, "<").replace(/&amp;/g, "&");
 }
 
 /* ── Ce qui se lit dans la page (fonctions sérialisées) ── */

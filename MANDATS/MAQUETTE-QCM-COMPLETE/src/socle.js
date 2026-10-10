@@ -185,7 +185,8 @@ var ORDRE = [
   // N. Réglages, MJPC
   ["Réglages, et MJPC", [
     ["c-reglages", 4, "Réglages, en cartes : la classe, le prompt, les durées de la séance, les niveaux de maîtrise, les textes."],
-    ["c-reglages-prompt", 4, "Le prompt de création d'éval."],
+    ["c-reglages-prompt", 4, "Le prompt de création d'éval, tel que l'app le copie : le chapitre et ses compétences, les difficultés, les durées et les limites de longueur à la place des jetons."],
+    ["c-reglages-prompt-modifier", 4, "Le prompt en modification : le gabarit enregistré, jetons compris ; « 💾 Enregistrer », « ↩️ Annuler », « 🔄 Restaurer le prompt par défaut »."],
     ["m-classe-exclusions", 4, "MJPC, Élèves & codes, comme dans le site : la clé saisie, l'import, chaque élève avec « 🚫 Jamais avec… » après le ◆."],
     ["m-exclusion-refusee", 4, "Une quatrième exclusion : refusée, avec la raison."],
     ["m-fiche-eleve", 4, "Un clic sur un nom : la fiche de l'élève, telle qu'elle est dans le site (sexe, dispositif, cases PAP)."],

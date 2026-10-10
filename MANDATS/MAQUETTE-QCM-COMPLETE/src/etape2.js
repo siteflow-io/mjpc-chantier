@@ -70,7 +70,8 @@ function Overview(qCur, passees, opts){
       var current = qi === qCur, passee = passees.indexOf(qi) >= 0, avenir = !current && !passee;
       var nb = Object.keys(RT).filter(function(p){ return RT[p][qi] === "J"; }).length;
       var marque = ec[qi] ? h("div", {className:"q-marque ecartee"}, "❌ Écartée — pas posée") : an[qi] ? h("div", {className:"q-marque annulee"}, "⚠️ Annulée — posée, puis annulée") : null;
-      return h("div", {key:qi, className:"pilot-q-mini" + (current ? " current" : "") + (passee ? " passee" : "") + (ec[qi] || an[qi] ? " retiree" : "")},
+      var titre = current ? "Question en cours — " + nb + "/24 justes pour le moment" : passee ? "Question passée — " + nb + "/24 justes" : null;   // la 7.7.1, l. 8114
+      return h("div", {key:qi, className:"pilot-q-mini" + (current ? " current" : "") + (passee ? " passee" : "") + (ec[qi] || an[qi] ? " retiree" : ""), title:titre},
         h("div", {className:"pilot-q-mini-head"}, h("span", {className:"pilot-q-mini-num"}, "Q" + (qi+1)), h("span", {className:"pilot-q-mini-niv niv-" + q.niveau}, NIV[q.niveau].label)),
         h("div", {className:"pilot-q-mini-enonce"}, q.enonce),
         h("div", {className:"pilot-q-mini-bonnes"}, ChoixTexte(q)),
@@ -86,6 +87,18 @@ function Overview(qCur, passees, opts){
 }
 
 /* ════════ Le pilotage pendant les questions (refait sur l'existant, avec 427 à 442) ════════ */
+// Les infobulles des compteurs et du bandeau : celles de la 7.7.1, mot pour mot (l. 7834 à 7837)
+var TITRES_STATS = {
+  "connectés": "Nombre d'élèves actuellement connectés à l'app sur leur poste vs. nombre total d'élèves de la classe.",
+  "ont répondu": "Nombre d'élèves qui ont validé une réponse à la question en cours vs. nombre total. Te permet de voir d'un coup d'œil si tu peux clore.",
+  "justes": "Nombre d'élèves ayant répondu juste vs. nombre d'élèves ayant répondu (pas vs. total). Indicateur du taux de réussite en direct.",
+  "question": "Question en cours vs. nombre total de questions de l'évaluation.",
+  "attestations": "Nombre d'élèves présents qui ont coché toute leur attestation vs. nombre d'élèves présents."
+};
+var TITRES_STATUT = {
+  idle: "Aucune question lancée pour l'instant. Clique sur 'Lancer Q1' pour démarrer.",
+  reflexion: "Les élèves voient l'énoncé et rédigent leur réponse au stylo. Les choix sont masqués. Quand tu juges qu'ils ont assez réfléchi, clique sur 'Autoriser la réponse'."
+};
 function nonRepondus(s){ return s.qi === 1 ? 1 : 0; }   // à la question 2, Théo n'a pas répondu (capture 49)
 function Pilot(s){
   var q = s.qi != null ? EV.questions[s.qi] : EV.questions[0];
@@ -109,7 +122,7 @@ function Pilot(s){
   }
   var enCours = s.phase === "reflexion" || s.phase === "reponse";
   var colG = h("div", null,
-    h("div", {className:"pilot-status " + statusCls}, st),
+    h("div", {className:"pilot-status " + statusCls, title:TITRES_STATUT[s.phase]}, st),
     h(ColonneTemps, {key:"t" + s.qi + s.phase + (s.tour || ""), qi:s.qi == null ? 0 : s.qi, phase:enCours ? s.phase : null, tour:s.tour, reste:s.chrono, finMin:s.finMin || (10 * 60 + 39)}),
     s.qi != null && QCourante(s.qi),
     h("div", {className:"pilot-actions"}, actions),
@@ -130,7 +143,7 @@ function Pilot(s){
       h("button", {key:4, className:"btn btn-ghost btn-sm"}, "🔓 Rouvrir pour un élève"),
       h("button", {key:5, className:"btn btn-ghost btn-sm", "data-va":"c-finir-autre-heure", title:"Met la séance en pause, avec son état exact, pour la reprendre à une heure suivante : « ▶️ Reprendre » dans « 🎯 Pilotage classe ». Demande une confirmation."}, "⏸️ Finir à une autre heure"),
       h("button", {key:3, className:"btn btn-rouge btn-sm"}, "🛑 Terminer la session")]),
-    h("div", {className:"pilot-stats"}, s.stats.map(function(x, i){ return h("div", {key:i, className:"pilot-stat"}, h("div", {className:"v"}, x[0]), h("div", {className:"l"}, x[1])); })),
+    h("div", {className:"pilot-stats"}, s.stats.map(function(x, i){ return h("div", {key:i, className:"pilot-stat", title:TITRES_STATS[x[1]]}, h("div", {className:"v"}, x[0]), h("div", {className:"l"}, x[1])); })),
     h("div", {className:"pilot-grid v2"}, colG, colM, Overview(s.qi, s.passees || [], s))), true);
 }
 /* Les tablettes de la console : « 👁 » devient un bouton (16 : un clic montre les deux moitiés en direct) */
@@ -511,7 +524,8 @@ function ModeEmploi(){
     h("div", {className:"modal", style:{maxWidth:"760px"}},
       h("button", {className:"modal-close", "data-va":"c-lancer"}, "✕"),
       h("h2", null, "📖 Mode d'emploi"),
-      MODE_EMPLOI.map(function(x, i){ return h("div", {key:i, className:"me-bloc"}, h("h3", null, x[0]), h("p", null, x[1])); }))));
+      MODE_EMPLOI.map(function(x, i){ return h("div", {key:i, className:"me-bloc"}, h("h3", null, x[0]), h("p", null, x[1])); }),
+      h("div", {style:{marginTop:"1.5rem", textAlign:"center"}}, h("button", {className:"btn btn-primary", "data-va":"c-lancer"}, "✓ J'ai compris")))));   // la 7.7.1, l. 6283
 }
 var NIVEAUX_MAITRISE = [["🟢", "Très bonne maîtrise", "15", "20"], ["🔵", "Maîtrise satisfaisante", "10", "15"], ["🟠", "Maîtrise fragile", "5", "10"], ["🔴", "Maîtrise insuffisante", "0", "5"]];
 function Reglages(){
@@ -521,8 +535,8 @@ function Reglages(){
       h(F, null, h("p", {style:{opacity:.85}}, "Les listes d'élèves, leurs codes, leurs aménagements et leurs exclusions appartiennent au site MJPC, qui les partage avec toutes les applications."),
         h("button", {className:"btn", "data-va":"m-classe-exclusions"}, "Ouvrir la console MJPC →"))),
     carte("🤖 Le prompt de création d'éval", "Le texte à coller dans l'instance de création d'éval. À la copie, l'app y met ton chapitre, ses compétences avec leur libellé élève, les quatre difficultés et les limites de longueur mesurées sur une demi-tablette.",
-      h(F, null, h("p", {style:{opacity:.85}}, "Le prompt du cadrage (tour 630). Il ne devine jamais un temps : il te demande chaque temps, te dit « ça ne rentre pas », et ne produit le JSON qu'à ton « produis le JSON »."),
-        h("div", {className:"row"}, h("button", {className:"btn btn-or", "data-va":"c-reglages-prompt"}, "📋 Copier le prompt"), h("button", {className:"btn btn-ghost", "data-va":"c-reglages-prompt"}, "✏️ Modifier le prompt"), h("button", {className:"btn btn-ghost", "data-va":"c-reglages-prompt"}, "🔄 Restaurer le prompt par défaut")))),
+      h(F, null, h("p", {style:{opacity:.85}}, "Il ne devine jamais un temps : il te demande chaque temps, te dit « ça ne rentre pas », et ne produit le JSON qu'à ton « produis le JSON »."),
+        h("div", {className:"row"}, h("button", {className:"btn btn-or", "data-va":"c-reglages-prompt", title:"Ouvre le prompt de création d'éval, à copier dans l'instance qui écrit le JSON."}, "🤖 Prompt IA"), h("button", {className:"btn btn-ghost", "data-va":"c-reglages-prompt-modifier"}, "✏️ Modifier le prompt")))),
     carte("⏱️ Les durées de la séance", "Les mêmes pour le prompt et pour la garde de l'app : elles comptent la durée d'une évaluation au collage, au lancement et pendant la séance (la fin prévue). L'app note tes vraies durées pour les corriger.",
       h(DureesSeance)),
     carte("🎚️ Les niveaux de maîtrise et la note", "Les bornes portent sur la note, quelle que soit son échelle ; une compétence se met sur la même échelle, puis passe dans les mêmes tranches. L'app refuse un réglage qui laisse un trou ou fait se chevaucher deux paliers.",
@@ -540,7 +554,7 @@ function NiveauxMaitrise(){
   return h("div", null,
     h("label", {className:"reg-l"}, h("span", null, "Note sur :"), h("input", {type:"number", defaultValue:20, title:"L'échelle de la note : la note est le nombre de points sur le nombre de questions, ramené sur cette échelle, au dixième."})),
     NIVEAUX_MAITRISE.map(function(n, i){ return h("div", {key:i, className:"reg-niv"}, h("span", null, n[0] + " "), h("input", {defaultValue:n[1], title:"Le nom du niveau, tel qu'il s'affiche partout."}), h("span", null, " de "), h("input", {type:"number", defaultValue:n[2], title:"La borne basse du niveau, comprise."}), h("span", null, i === 0 ? " à " : " à moins de "), h("input", {type:"number", defaultValue:n[3], title:"La borne haute : elle appartient au niveau du dessus."})); }),
-    h("p", {className:"reg-p"}, "Les tranches s'écrivent « de 5 à moins de 6 » : aucune note ne tombe entre deux (340)."),
+    h("p", {className:"reg-p"}, "Les tranches s'écrivent « de 5 à moins de 6 » : aucune note ne tombe entre deux."),
     h(BoutonLocal, {cls:"btn btn-primary btn-sm", txt:"💾 Enregistrer", titre:"Enregistre l'échelle et les tranches ; l'app refuse un réglage qui laisse un trou ou fait se chevaucher deux paliers.", fait:"✅ Enregistré"}));
 }
 var TEXTES_ELEVE = [
@@ -556,15 +570,63 @@ function EditeurTextesQCM(){
       h("textarea", {rows:2, defaultValue:c[1], title:"Modifie le texte ; il s'enregistre quand tu quittes le champ.", style:{width:"100%", fontFamily:"inherit", fontSize:".9rem", padding:".5rem", borderRadius:"8px"}}),
       h("p", {style:{fontSize:".78rem", opacity:.7, margin:".2rem 0 0"}}, c[2])); }));
 }
-function ReglagesPrompt(){
-  var lignes = (typeof PROMPT_TEXTE === "string" ? PROMPT_TEXTE : "").split("\n");
+/* Le prompt de création d'éval : la fenêtre de la 7.7.1 (ModalPromptIA, l. 6431 à 6505), avec ses gestes et ses messages.
+   À la lecture, le prompt est celui que l'app copie : les jetons remplis pour le chapitre choisi ; à la modification,
+   le gabarit enregistré, jetons compris (c'est lui que Paul modifie et que l'app remplit à chaque copie). */
+function PromptFenetre(enfants){
   return h(F, null, Reglages(), h("div", {className:"modal-back", "data-echap":"c-reglages"},
     h("div", {className:"modal", style:{maxWidth:"900px"}},
       h("button", {className:"modal-close", "data-va":"c-reglages"}, "✕"),
-      h("h2", null, "🤖 Le prompt de création d'éval"),
-      h("p", {style:{fontSize:".85rem", color:"var(--gris)"}}, "Chapitre choisi : 3e · Chapitre 1 — Poésie et peinture au XIXe siècle. Les jetons {{…}} sont remplis à la copie."),
-      h("textarea", {className:"json", readOnly:true, value:lignes.join("\n"), style:{minHeight:"420px", fontSize:".78rem"}}),
-      h("div", {className:"row", style:{marginTop:".6rem"}}, h("button", {className:"btn btn-or", "data-va":"c-reglages"}, "📋 Copier le prompt"), h("button", {className:"btn btn-ghost", "data-va":"c-reglages"}, "💾 Enregistrer"), h("button", {className:"btn btn-ghost", "data-va":"c-reglages"}, "Annuler")))));
+      h("h2", null, "🤖 Le prompt de création d'éval", InfoI("Ce prompt guide l'instance de création d'éval, pour qu'elle t'aide à écrire l'évaluation puis te rende le JSON à coller dans « ➕ Nouvelle évaluation ». Tu peux le modifier (« ✏️ Modifier le prompt ») : tes modifications te suivent d'un appareil à l'autre, et l'app y remet ton chapitre à chaque copie.")),
+      enfants)));
+}
+function MessagePrompt(p){ return p.msg ? h("div", {className:"prompt-msg", style:{marginTop:".7rem", padding:".5rem .8rem", borderRadius:"8px", background:"#E8F6EE", color:"var(--noir)", fontSize:".9rem", fontWeight:600}}, p.msg) : null; }   // le message de la 7.7.1, l. 6501
+function ReglagesPrompt(){
+  var s = useState(""), msg = s[0], setMsg = s[1];
+  return PromptFenetre(h(F, null,
+    h("p", {style:{fontSize:".85rem", color:"var(--gris)"}}, "Chapitre choisi : " + CHAPITRE_PROMPT.libelle + ". Copie ce prompt et colle-le dans l'instance de création d'éval : elle te posera ses questions, puis te rendra le JSON."),
+    h("div", {className:"row", style:{gap:".5rem", flexWrap:"wrap"}},
+      h("button", {className:"btn btn-primary", "data-local":"1", onClick:function(){ setMsg("✅ Prompt copié dans le presse-papiers"); }}, "📋 Copier le prompt"),
+      h("button", {className:"btn btn-ghost", "data-va":"c-reglages-prompt-modifier"}, "✏️ Modifier le prompt")),
+    h(MessagePrompt, {msg:msg}),
+    h("div", {className:"codeblock prompt-rempli", "data-prompt":"rempli"}, promptRempli())));
+}
+function ReglagesPromptModifier(){
+  var s = useState(""), msg = s[0], setMsg = s[1];
+  var s2 = useState(PROMPT_TEXTE), brouillon = s2[0], setBrouillon = s2[1];
+  var s3 = useState(false), confirme = s3[0], setConfirme = s3[1];
+  return h(F, null, PromptFenetre(h(F, null,
+    h("p", {style:{fontSize:".85rem", color:"var(--gris)"}}, "Les jetons entre doubles accolades sont remplis par l'app à chaque copie : le chapitre, ses compétences, les difficultés, les durées et les limites de longueur."),
+    h("textarea", {value:brouillon, onChange:function(e){ setBrouillon(e.target.value); }, title:"Le prompt enregistré, jetons compris : modifie-le librement, rien n'est gardé avant « 💾 Enregistrer ».", style:{width:"100%", minHeight:"420px", fontFamily:"ui-monospace,monospace", fontSize:".8rem", padding:".7rem", border:"2px solid var(--violet)", borderRadius:"8px", boxSizing:"border-box"}}),   // le champ de la 7.7.1, l. 6495
+    h("div", {className:"row", style:{gap:".5rem", flexWrap:"wrap", marginTop:".7rem"}},
+      h("button", {className:"btn btn-primary", "data-local":"1", onClick:function(){ setMsg("✅ Consignes enregistrées — elles te suivent d'un appareil à l'autre."); }}, "💾 Enregistrer"),
+      h("button", {className:"btn btn-ghost", "data-va":"c-reglages-prompt"}, "↩️ Annuler"),
+      h("button", {className:"btn btn-ghost", "data-local":"1", onClick:function(){ setConfirme(true); }}, "🔄 Restaurer le prompt par défaut")),
+    h(MessagePrompt, {msg:msg}))),
+    confirme && h(BoiteConfirmeNative, {texte:"Restaurer le prompt par défaut ? Tes modifications actuelles seront perdues (le prompt enregistré dans Firebase sera écrasé après ton clic sur « Enregistrer »).",
+      oui:function(){ setBrouillon(PROMPT_TEXTE); setConfirme(false); }, non:function(){ setConfirme(false); }}));
+}
+// La boîte système « confirm » de la 7.7.1, dessinée : son texte exact, « Annuler » et « OK »
+function BoiteConfirmeNative(p){
+  return h("div", {className:"fen-fond alerte-native"},
+    h("div", {className:"alerte-boite"}, h("div", {className:"alerte-texte"}, p.texte),
+      h("div", {className:"alerte-pied"},
+        h("button", {className:"alerte-non", "data-local":"1", title:"Ferme le message sans rien changer.", onClick:p.non}, "Annuler"),
+        h("button", {className:"alerte-ok", "data-local":"1", title:"Remet le prompt fourni par défaut dans le brouillon ; rien n'est gardé avant « 💾 Enregistrer ».", onClick:p.oui}, "OK"))));
+}
+/* Ce que l'app met à la place des jetons (MANDATS/PROMPT-QCM-CREATION/README.md), pour le chapitre choisi */
+var CHAPITRE_PROMPT = {libelle:"3e · Chapitre 1 — " + CHAPITRE_3E.titre, id:"3e-ch1"};
+function libelleOfficiel(code){ var r = null; Object.keys(TAXO.competences).forEach(function(k){ TAXO.competences[k].forEach(function(g){ g.items.forEach(function(it){ if(it.id === code) r = it.libelle; }); }); }); return r; }
+function promptRempli(){
+  var comps = CHAPITRE_3E.majeures.map(function(c){ return [c, "majeure"]; }).concat(CHAPITRE_3E.mineures.map(function(c){ return [c, "mineure"]; }));
+  var jetons = {
+    CHAPITRE: CHAPITRE_PROMPT.libelle + " (identifiant : " + CHAPITRE_PROMPT.id + ")",
+    COMPETENCES_CHAPITRE: comps.map(function(x){ return "- " + x[0] + " (" + x[1] + ") : " + libelleOfficiel(x[0]) + " — pour l'élève : " + LIBELLES_ELEVE[x[0]]; }).join("\n"),
+    NIVEAUX: ["facile", "standard", "approfondi", "expert"].map(function(k){ return "- \"" + k + "\" (" + NIV[k].label + ")"; }).join("\n"),
+    DUREES: "Pour chaque question : la réflexion, puis deux tours, chacun fait de 3 secondes de décompte, du temps de réponse et de 5 secondes où l'élève dit si sa feuille dit la même chose que son clic ; puis 15 secondes avant la question suivante.\nPour la séance : 5 minutes d'installation et de consignes, 1 minute de correction par question, 2 minutes pour la co-évaluation et le bilan.",
+    LIMITES: LIMITES_TEXTE
+  };
+  return PROMPT_TEXTE.replace(/\{\{([A-Z_]+)\}\}/g, function(t, k){ return jetons[k] != null ? jetons[k] : t; });
 }
 
 /* ════════ Les scènes de l'étape 2 ════════ */
@@ -598,7 +660,8 @@ SCENES = SCENES.concat([
   {id:"c-qr", vue:"console", vh:900, render:ScQR},
   {id:"c-mode-emploi", vue:"console", vh:1100, render:ModeEmploi},
   {id:"c-reglages", vue:"console", render:Reglages},
-  {id:"c-reglages-prompt", vue:"console", vh:1000, render:ReglagesPrompt}
+  {id:"c-reglages-prompt", vue:"console", vh:1000, render:function(){ return h(ReglagesPrompt); }},
+  {id:"c-reglages-prompt-modifier", vue:"console", vh:1000, render:function(){ return h(ReglagesPromptModifier); }}
 ]);
 /* la question 2 posée sur deux questions (la 3 écartée) : « Question 2 / 2 » */
 (function(){ var sc = SCENES.filter(function(s){ return s.id === "t-q2-ecartee"; })[0];
@@ -611,7 +674,7 @@ refaire("t-binome", function(){ return Tablette(Attest1(J, 0), EcrBinome(M, "48"
 refaire("c-lancer", function(){ return Lancement(false); });
 refaire("c-appel", function(){ return Lancement(true); });
 SCENES.filter(function(s){ return s.id === "c-appel"; })[0].vh = 900;
-refaire("c-pret", function(){ return Pilot({phase:"idle", qi:null, stats:[["23/24", "connectés"], ["22/24", "attestations"], ["0/3", "questions"]],
+refaire("c-pret", function(){ return Pilot({phase:"idle", qi:null, stats:[["23/24", "connectés"], ["22/24", "attestations"], ["0/24", "ont répondu"], ["—", "justes"], ["—", "question"]],
   sousTitre:"qui est assis où, et où en est son attestation",
   legende:[["#E8F5E9","✓ prêt : toutes les lignes cochées"],["#FEF3C7","attestation en cours : lignes cochées sur 8"],["#F1F5F9","pas encore entré"]],
   etat:function(p){ return p === "Enzo" ? {cls:"m-attest", st:"attestation 5/8"} : p === "Lou" ? {cls:"m-connexion", st:"pas encore entrée"} : {cls:"m-pret", st:"✓ prêt · 10:0" + ((p === "Julien" || p === "Michel") ? 4 : (p.length % 5 + 3))}; }}); });

@@ -13,7 +13,7 @@ function etiquetteDe(b){
 var BULLES = {
   // L'en-tête et les onglets de la console
   "🔴1 session en cours": "Les séances encore ouvertes, ici ou ailleurs : tu vas au pilotage de chacune, ou tu la termines. Ne coûte rien.",
-  "📖 Mode d'emploi": "Ouvre le mode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la correction. Ne change rien.",
+  "📖 Mode d'emploi": "Ouvre le mode d'emploi avec toutes les explications de l'app.",
   "📺 Ouvrir vue tableau": "Ouvre la vue tableau, à glisser sur le vidéoprojecteur : l'énoncé et le chrono, jamais les choix. Ne change rien à la séance.",
   "📱 QR pilotage": "Montre le QR de ton téléphone : il devient ta télécommande, avec tous les boutons de la séance. Ne change rien.",
   "🧪 Mode test": "Ouvre le mode test : la même chose que le réel, sur la classe de test et la démo ; tout est effacé à la sortie, sauf la démo. Ne touche à aucune vraie classe.",
@@ -70,11 +70,11 @@ var BULLES = {
   "🚫 Marquer comme parti en cours de séance": "Marque l'élève parti : il ne bloque plus la classe ; ses questions manquées sortent de son total.",
   "🔄 Chrono": "Repart du début du temps en cours.",
   "🚀 Lancer Q3": "Lance la question 3 sur toutes les tablettes.",
-  "🔓 Rouvrir Q2 pour tous": "Rouvre la question 2 pour ceux qui n'ont pas répondu, une seule fois.",
+  "🔓 Rouvrir Q2": "Rouvre la question 2 pour ceux qui n'ont pas répondu, une seule fois.",
   // Réglages, mode d'emploi, QR, accueil
   "📋 Copier le prompt": "Copie le prompt, avec ton chapitre, ses compétences et les limites de longueur, pour le coller dans l'instance de création d'éval. Ne change rien ici.",
   "✏️ Modifier le prompt": "Ouvre le prompt pour le modifier. Rien n'est gardé avant « 💾 Enregistrer ».",
-  "🔄 Restaurer le prompt par défaut": "Remet le prompt du cadrage (tour 630) à la place du tien. Une confirmation d'abord ; le tien part à la corbeille.",
+  "🔄 Restaurer le prompt par défaut": "Remplace le brouillon par le prompt fourni par défaut avec l'app. Tu pourras ensuite cliquer sur « Enregistrer » pour le rendre actif.",
   "💾 Enregistrer": "Garde ces réglages pour toutes les séances ; une séance déjà lancée garde les siens.",
   "Ouvrir la console MJPC →": "Ouvre la console MJPC : les classes, les élèves, leurs codes, les aménagements et les exclusions.",
   "👩‍🏫 Accès professeur": "Ouvre la console avec ton code ou ta clé.",
@@ -115,7 +115,9 @@ function poserGestes(){
   var scene = window.SCENE_COURANTE;
   Array.prototype.forEach.call(racine.querySelectorAll("button"), function(b){
     var lib = etiquetteDe(b);
-    if(!b.getAttribute("title")){ var t = bulleDe(lib, b); if(t) b.setAttribute("title", t); }
+    var t771 = titre771(scene || "", lib);   // (complément 1) l'infobulle de la 7.7.1 d'un geste qui existe déjà : complement1.js
+    if(t771 && !b.disabled) b.setAttribute("title", t771);
+    else if(!b.getAttribute("title")){ var t = bulleDe(lib, b); if(t) b.setAttribute("title", t); }
     if(!b.hasAttribute("data-va") && !b.hasAttribute("data-local")){ var v = allerDe(scene, lib); if(v) b.setAttribute("data-va", v); }
   });
 }

@@ -1,4 +1,787 @@
 {
- "explication": "Les éléments de l’existant (la 7.7.1, MJPC) qu’une scène ne montre plus, chacun avec le point du cadrage qui le retire, cité mot pour mot. Le banc vérifie que chaque citation est dans MANDATS/CADRAGE-QCM.md, dans le point cité.",
- "retraits": []
+ "explication": "Les éléments de l’existant (la 7.7.1, MJPC) qu’une scène ne montre plus, chacun avec le point du cadrage qui le retire ou le remplace, cité mot pour mot. Le banc vérifie que chaque citation est dans MANDATS/CADRAGE-QCM.md, dans le point cité. « ecran » : l’inventaire (« * » : tous) ; « scenes » : seulement ces scènes.",
+ "retraits": [
+  {
+   "ecran": "*",
+   "type": "bouton",
+   "element": "📄 Préparation",
+   "point": 423,
+   "citation": "Il n'y a plus qu'un onglet « 📝 Évaluations »."
+  },
+  {
+   "ecran": "*",
+   "type": "bouton",
+   "element": "Q suiv. →",
+   "point": 412,
+   "citation": "« ← Q préc. » et « Q suiv. → » pendant la séance : ma proposition est de les retirer."
+  },
+  {
+   "ecran": "*",
+   "type": "bouton",
+   "element": "← Q préc.",
+   "point": 412,
+   "citation": "« ← Q préc. » et « Q suiv. → » pendant la séance : ma proposition est de les retirer."
+  },
+  {
+   "ecran": "*",
+   "type": "bouton",
+   "element": "Facile 10s",
+   "point": 327,
+   "citation": "« Changer le niveau en direct » disparaît, puisque le niveau ne fixe plus le temps."
+  },
+  {
+   "ecran": "*",
+   "type": "bouton",
+   "element": "Standard 15s",
+   "point": 327,
+   "citation": "« Changer le niveau en direct » disparaît, puisque le niveau ne fixe plus le temps."
+  },
+  {
+   "ecran": "*",
+   "type": "bouton",
+   "element": "Approfondi 20s",
+   "point": 327,
+   "citation": "« Changer le niveau en direct » disparaît, puisque le niveau ne fixe plus le temps."
+  },
+  {
+   "ecran": "*",
+   "type": "bouton",
+   "element": "Expert 30s",
+   "point": 327,
+   "citation": "« Changer le niveau en direct » disparaît, puisque le niveau ne fixe plus le temps."
+  },
+  {
+   "ecran": "*",
+   "type": "bouton",
+   "element": "+5s",
+   "point": 427,
+   "citation": "chacune avec « +5 », « +10 » et « +30 » à côté"
+  },
+  {
+   "ecran": "*",
+   "type": "bouton",
+   "element": "+10s",
+   "point": 427,
+   "citation": "chacune avec « +5 », « +10 » et « +30 » à côté"
+  },
+  {
+   "ecran": "*",
+   "type": "bouton",
+   "element": "+30s",
+   "point": 427,
+   "citation": "chacune avec « +5 », « +10 » et « +30 » à côté"
+  },
+  {
+   "ecran": "*",
+   "type": "bouton",
+   "element": "🔒 Clore la question",
+   "point": 327,
+   "citation": "un bouton « Tour suivant » coupe le tour 1, et « 🔒 Clore la question » coupe le tour 2.",
+   "scenes": [
+    "c-q1-tour1",
+    "c-fin-prevue",
+    "c-parti",
+    "p-reponse"
+   ]
+  },
+  {
+   "ecran": "*",
+   "type": "bouton",
+   "element": "💾 Sauvegarder",
+   "point": 56,
+   "citation": "Chaque question porte ses propres temps, réflexion et réponse, que l'IA donne dans le JSON ; le niveau ne sert plus qu'aux points, à la couleur et au bilan."
+  },
+  {
+   "ecran": "*",
+   "type": "bouton",
+   "element": "🔄 Par défaut",
+   "point": 56,
+   "citation": "Chaque question porte ses propres temps, réflexion et réponse, que l'IA donne dans le JSON ; le niveau ne sert plus qu'aux points, à la couleur et au bilan."
+  },
+  {
+   "ecran": "pilot-attente",
+   "type": "champ",
+   "element": "input",
+   "point": 56,
+   "citation": "Chaque question porte ses propres temps, réflexion et réponse, que l'IA donne dans le JSON ; le niveau ne sert plus qu'aux points, à la couleur et au bilan."
+  },
+  {
+   "ecran": "pilot-close",
+   "type": "champ",
+   "element": "input",
+   "point": 56,
+   "citation": "Chaque question porte ses propres temps, réflexion et réponse, que l'IA donne dans le JSON ; le niveau ne sert plus qu'aux points, à la couleur et au bilan."
+  },
+  {
+   "ecran": "pilot-derniere-close",
+   "type": "champ",
+   "element": "input",
+   "point": 56,
+   "citation": "Chaque question porte ses propres temps, réflexion et réponse, que l'IA donne dans le JSON ; le niveau ne sert plus qu'aux points, à la couleur et au bilan."
+  },
+  {
+   "ecran": "pilot-reflexion",
+   "type": "champ",
+   "element": "input",
+   "point": 56,
+   "citation": "Chaque question porte ses propres temps, réflexion et réponse, que l'IA donne dans le JSON ; le niveau ne sert plus qu'aux points, à la couleur et au bilan."
+  },
+  {
+   "ecran": "pilot-reponse",
+   "type": "champ",
+   "element": "input",
+   "point": 56,
+   "citation": "Chaque question porte ses propres temps, réflexion et réponse, que l'IA donne dans le JSON ; le niveau ne sert plus qu'aux points, à la couleur et au bilan."
+  },
+  {
+   "ecran": "mode-test",
+   "type": "champ",
+   "element": "input",
+   "point": 56,
+   "citation": "Chaque question porte ses propres temps, réflexion et réponse, que l'IA donne dans le JSON ; le niveau ne sert plus qu'aux points, à la couleur et au bilan."
+  },
+  {
+   "ecran": "sauvegarde",
+   "type": "bouton",
+   "element": "💾 Enregistrer",
+   "point": 289,
+   "citation": "Une question vaut au plus 1 point."
+  },
+  {
+   "ecran": "sauvegarde",
+   "type": "bouton",
+   "element": "🔄 Restaurer par défaut",
+   "point": 289,
+   "citation": "Une question vaut au plus 1 point."
+  },
+  {
+   "ecran": "sauvegarde",
+   "type": "champ",
+   "element": "input",
+   "point": 289,
+   "citation": "Une question vaut au plus 1 point."
+  },
+  {
+   "ecran": "*",
+   "type": "bouton",
+   "element": "🧹 Ranger l’ancien carnet de classes",
+   "point": 413,
+   "citation": "Les boutons qui ne servent plus sont retirés : « Ranger l'ancien carnet », « Purger les classes » et les outils P2 du mode test."
+  },
+  {
+   "ecran": "*",
+   "type": "bouton",
+   "element": "🗑️ Purger les classes",
+   "point": 413,
+   "citation": "Les boutons qui ne servent plus sont retirés : « Ranger l'ancien carnet », « Purger les classes » et les outils P2 du mode test."
+  },
+  {
+   "ecran": "*",
+   "type": "bouton",
+   "element": "← Changer de classe",
+   "point": 13,
+   "citation": "Plus de « Choisis ta classe » sur les tablettes"
+  },
+  {
+   "ecran": "eleve-fin",
+   "type": "bouton",
+   "element": "← Retour",
+   "point": 64,
+   "citation": "La tablette oublie ses élèves à « Terminer », ou à l'heure de fin + 10 minutes."
+  },
+  {
+   "ecran": "eleve-fin",
+   "type": "bouton",
+   "element": "📊 Mes évaluations",
+   "point": 64,
+   "citation": "La tablette oublie ses élèves à « Terminer », ou à l'heure de fin + 10 minutes."
+  },
+  {
+   "ecran": "mode-test",
+   "type": "bouton",
+   "element": "▶️ Lancer Q1",
+   "point": 568,
+   "citation": "la séance passe par ta vraie console d'avant l'heure, avec l'appel et les binômes (470), au lieu de démarrer d'office"
+  },
+  {
+   "ecran": "mode-test",
+   "type": "bouton",
+   "element": "🚫 Départ d'un élève",
+   "point": 568,
+   "citation": "la séance passe par ta vraie console d'avant l'heure, avec l'appel et les binômes (470), au lieu de démarrer d'office"
+  },
+  {
+   "ecran": "mode-test",
+   "type": "bouton",
+   "element": "🛑 Terminer la session",
+   "point": 568,
+   "citation": "la séance passe par ta vraie console d'avant l'heure, avec l'appel et les binômes (470), au lieu de démarrer d'office"
+  },
+  {
+   "ecran": "pilot-correction-avant",
+   "type": "bouton",
+   "element": "💡 Révéler",
+   "point": 378,
+   "citation": "« 💡 Révéler » reste fermé tant qu'un élève présent n'a pas cliqué"
+  },
+  {
+   "ecran": "*",
+   "type": "bouton",
+   "element": "💡 Révéler la bonne réponse",
+   "point": 418,
+   "citation": "« 🔒 Révéler » fermé"
+  },
+  {
+   "ecran": "telephone-reponse",
+   "type": "bouton",
+   "element": "🔓 Rouvrir",
+   "point": 418,
+   "citation": "Un clic sur un nom donne « 🚫 Départ », « ↩️ Retour » et « 🔓 Rouvrir », avec la règle de 331."
+  },
+  {
+   "ecran": "console-lancer",
+   "type": "bouton",
+   "element": "🚀 Lancer la session",
+   "point": 550,
+   "citation": "Tu la lances avec la classe comme une vraie, avec l'appel, les binômes, les attestations, la correction et la co-évaluation, et rien ne compte.",
+   "scenes": [
+    "c-demo-lancer"
+   ]
+  },
+  {
+   "ecran": "console-lancer",
+   "type": "bouton",
+   "element": "🚀 Lancer la session",
+   "point": 467,
+   "citation": "Tu choisis « 📄 Séance sur papier » au lancement.",
+   "scenes": [
+    "c-papier-lancer"
+   ]
+  },
+  {
+   "ecran": "console-lancer",
+   "type": "bouton",
+   "element": "🚀 Lancer la session",
+   "point": 595,
+   "citation": "Ma proposition : il suit la même règle, binômes formés par les exclusions, puis par celle du QCM.",
+   "scenes": [
+    "c-rattrapage"
+   ]
+  },
+  {
+   "ecran": "*",
+   "type": "bouton",
+   "element": "🟢Entre 8 et 10 bonnes réponses sur 10",
+   "point": 444,
+   "citation": "Combien de bonnes réponses penses-tu avoir ? Clique sur ta réponse."
+  },
+  {
+   "ecran": "editeur",
+   "type": "bouton",
+   "element": "Facile 10s",
+   "point": 56,
+   "citation": "le niveau ne sert plus qu'aux points, à la couleur et au bilan"
+  },
+  {
+   "ecran": "editeur",
+   "type": "bouton",
+   "element": "Standard 15s",
+   "point": 56,
+   "citation": "le niveau ne sert plus qu'aux points, à la couleur et au bilan"
+  },
+  {
+   "ecran": "editeur",
+   "type": "bouton",
+   "element": "Approfondi 20s",
+   "point": 56,
+   "citation": "le niveau ne sert plus qu'aux points, à la couleur et au bilan"
+  },
+  {
+   "ecran": "editeur",
+   "type": "bouton",
+   "element": "Expert 30s",
+   "point": 56,
+   "citation": "le niveau ne sert plus qu'aux points, à la couleur et au bilan"
+  },
+  {
+   "ecran": "editeur",
+   "type": "case",
+   "element": "✨ Points par bonne case+1 par bonne ; −1 par mauvaise (plancher 0)",
+   "point": 289,
+   "citation": "En strict, c'est tout ou rien. En partiel, chaque bonne case cochée rapporte une fraction du point"
+  },
+  {
+   "ecran": "editeur",
+   "type": "case",
+   "element": "🎯 Tout ou rienRéponse exacte = max ; sinon 0",
+   "point": 289,
+   "citation": "En strict, c'est tout ou rien. En partiel, chaque bonne case cochée rapporte une fraction du point"
+  },
+  {
+   "ecran": "*",
+   "type": "infobulle",
+   "element": "✋ Autoriser la réponse",
+   "point": 99,
+   "citation": "Au début de la réponse, les deux moitiés affichent « POSE TON STYLO », puis le voile tombe sur celle qui attend."
+  },
+  {
+   "ecran": "*",
+   "type": "infobulle",
+   "element": "📝 Lancer la correction",
+   "point": 447,
+   "citation": "la seconde attestation, avant la correction"
+  },
+  {
+   "ecran": "*",
+   "type": "infobulle",
+   "element": "💡 Révéler",
+   "point": 378,
+   "citation": "« 💡 Révéler » reste fermé tant qu'un élève présent n'a pas cliqué"
+  },
+  {
+   "ecran": "*",
+   "type": "infobulle",
+   "element": "💡 Révélée",
+   "point": 378,
+   "citation": "« 💡 Révéler » reste fermé tant qu'un élève présent n'a pas cliqué"
+  },
+  {
+   "ecran": "*",
+   "type": "infobulle",
+   "element": "🔓 Rouvrir pour tous",
+   "point": 411,
+   "citation": "Ma proposition : un bouton « 🔓 Rouvrir pour un élève », en haut, à côté de « 🚫 Départ d'un élève »."
+  },
+  {
+   "ecran": "*",
+   "type": "infobulle",
+   "element": "🛑 Terminer la session",
+   "point": 64,
+   "citation": "La tablette oublie ses deux élèves à « Terminer la session »"
+  },
+  {
+   "ecran": "*",
+   "type": "infobulle",
+   "element": "🧪 Mode test",
+   "point": 569,
+   "citation": "l'infobulle du bouton « 🧪 Mode test » annonce « 3 élèves simulés » et « les 3 panneaux élèves » ; il y en a 30 (l. 6026)."
+  },
+  {
+   "ecran": "*",
+   "type": "infobulle",
+   "element": "🔒 Clore la question",
+   "point": 327,
+   "citation": "un bouton « Tour suivant » coupe le tour 1, et « 🔒 Clore la question » coupe le tour 2."
+  },
+  {
+   "ecran": "*",
+   "type": "infobulle",
+   "element": "🖨️ Imprimer",
+   "point": 334,
+   "citation": "Les lettres : on les supprime partout."
+  },
+  {
+   "ecran": "*",
+   "type": "infobulle",
+   "element": "🗑️",
+   "point": 406,
+   "citation": "Ils passeront par la corbeille, qui existe déjà dans l'app (dette 206)."
+  },
+  {
+   "ecran": "*",
+   "type": "infobulle",
+   "element": "📤 Importer snapshot",
+   "point": 406,
+   "citation": "Ils passeront par la corbeille, qui existe déjà dans l'app (dette 206)."
+  },
+  {
+   "ecran": "*",
+   "type": "infobulle",
+   "element": "🗑️ Purger les évaluations",
+   "point": 406,
+   "citation": "Ils passeront par la corbeille, qui existe déjà dans l'app (dette 206)."
+  },
+  {
+   "ecran": "*",
+   "type": "infobulle",
+   "element": "🗑️ Tout purger",
+   "point": 406,
+   "citation": "Ils passeront par la corbeille, qui existe déjà dans l'app (dette 206)."
+  },
+  {
+   "ecran": "*",
+   "type": "infobulle",
+   "element": "📥 Export CSV",
+   "point": 413,
+   "citation": "L'export CSV reprend les colonnes de la capture 41."
+  },
+  {
+   "ecran": "*",
+   "type": "infobulle",
+   "element": "Ajuste le niveau (et donc le chrono de réflexion) de cette question en direct.",
+   "point": 327,
+   "citation": "« Changer le niveau en direct » disparaît, puisque le niveau ne fixe plus le temps."
+  },
+  {
+   "ecran": "*",
+   "type": "infobulle",
+   "element": "Préparamètre le niveau de la question suivante. Le changement est sauvegardé immédiatement.",
+   "point": 327,
+   "citation": "« Changer le niveau en direct » disparaît, puisque le niveau ne fixe plus le temps."
+  },
+  {
+   "ecran": "*",
+   "type": "infobulle",
+   "element": "Chrono RÉFLEXION : durée pendant laquelle l'élève rédige sa réponse au stylo (choix masqués). Défini par le niveau de la question — clique sur les pastilles colorées ci-dessous pour le changer.",
+   "point": 327,
+   "citation": "« Changer le niveau en direct » disparaît, puisque le niveau ne fixe plus le temps."
+  },
+  {
+   "ecran": "*",
+   "type": "infobulle",
+   "element": "Chrono RÉPONSE : durée pendant laquelle l'élève voit les choix et clique sa lettre. Réglable directement ici.",
+   "point": 327,
+   "citation": "la case « ✋ Réponse » disparaît"
+  },
+  {
+   "ecran": "*",
+   "type": "infobulle",
+   "element": "Cliquer pour sauter à la question 1",
+   "point": 412,
+   "citation": "Sauter une question la laisse sans réponse pour tous."
+  },
+  {
+   "ecran": "*",
+   "type": "infobulle",
+   "element": "La question est close. Les élèves attendent. Clique 'Question suivante' pour continuer ou 'Lancer la correction' si c'était la dernière.",
+   "point": 433,
+   "citation": "Aujourd'hui, ce bandeau est un texte, pas un bouton, et il dit « Question close — passe à la suivante » même après la dernière question."
+  },
+  {
+   "ecran": "*",
+   "type": "infobulle",
+   "element": "Les choix sont visibles côté élève. Ils doivent poser leur stylo et cliquer la lettre. Le chrono court tourne — il se ferme automatiquement à la fin.",
+   "point": 334,
+   "citation": "Les lettres : on les supprime partout."
+  },
+  {
+   "ecran": "*",
+   "type": "infobulle",
+   "element": "Ta réponse est enregistrée automatiquement dès que tu cliques sur une lettre. Tu peux changer d'avis tant que le chrono tourne.",
+   "point": 334,
+   "citation": "Les lettres : on les supprime partout."
+  },
+  {
+   "ecran": "*",
+   "type": "infobulle",
+   "element": "Plusieurs bonnes réponses définies. L'élève devra cocher exactement les bonnes lettres.",
+   "point": 334,
+   "citation": "Les lettres : on les supprime partout."
+  },
+  {
+   "ecran": "resultats-seance",
+   "type": "infobulle",
+   "element": "Nombre de questions où la réponse app diffère de la réponse papier saisie. Indicateur d'observation, pas de jugement automatique. Cliquer pour trier.",
+   "point": 288,
+   "citation": "La note, c'est la feuille"
+  },
+  {
+   "ecran": "resultats-seance",
+   "type": "infobulle",
+   "element": "Score sur les réponses cliquées dans l'app (informatif). Cliquer pour trier.",
+   "point": 288,
+   "citation": "La note, c'est la feuille"
+  },
+  {
+   "ecran": "resultats-seance",
+   "type": "infobulle",
+   "element": "Score sur les réponses saisies par l'élève à la maison (= ce qu'il dit avoir écrit sur sa copie papier). C'est le score qui compte. Cliquer pour trier.",
+   "point": 288,
+   "citation": "La note, c'est la feuille"
+  },
+  {
+   "ecran": "resultats-seance",
+   "type": "infobulle",
+   "element": "Pour chaque question : pourcentage d'élèves ayant répondu juste sur le total de réponses (sur l'app). Vert ≥ 70%, orange entre 50% et 70%, rouge < 50%. Indicateur du niveau de difficulté ressenti par la classe.",
+   "point": 288,
+   "citation": "La note, c'est la feuille"
+  },
+  {
+   "ecran": "resultats-seance",
+   "type": "infobulle",
+   "element": "Q1 : 1 justes sur 1 réponses (100%)",
+   "point": 288,
+   "citation": "La note, c'est la feuille"
+  },
+  {
+   "ecran": "eleve-attente-depart",
+   "type": "phrase",
+   "element": ". Tu trouves les 3 sans erreur →",
+   "point": 234,
+   "citation": "reprise de la dictée, sur chaque moitié, avant la question 1. Elle dit la règle de 288 à 290 et sa raison, avec tes mots (577)."
+  },
+  {
+   "ecran": "eleve-attente-depart",
+   "type": "phrase",
+   "element": "0 point",
+   "point": 234,
+   "citation": "reprise de la dictée, sur chaque moitié, avant la question 1. Elle dit la règle de 288 à 290 et sa raison, avec tes mots (577)."
+  },
+  {
+   "ecran": "eleve-attente-depart",
+   "type": "phrase",
+   "element": "1 point",
+   "point": 234,
+   "citation": "reprise de la dictée, sur chaque moitié, avant la question 1. Elle dit la règle de 288 à 290 et sa raison, avec tes mots (577)."
+  },
+  {
+   "ecran": "eleve-attente-depart",
+   "type": "phrase",
+   "element": "10 points",
+   "point": 234,
+   "citation": "reprise de la dictée, sur chaque moitié, avant la question 1. Elle dit la règle de 288 à 290 et sa raison, avec tes mots (577)."
+  },
+  {
+   "ecran": "eleve-attente-depart",
+   "type": "phrase",
+   "element": "Cette éval contient",
+   "point": 234,
+   "citation": "reprise de la dictée, sur chaque moitié, avant la question 1. Elle dit la règle de 288 à 290 et sa raison, avec tes mots (577)."
+  },
+  {
+   "ecran": "eleve-attente-depart",
+   "type": "phrase",
+   "element": "Chaque question rapporte",
+   "point": 234,
+   "citation": "reprise de la dictée, sur chaque moitié, avant la question 1. Elle dit la règle de 288 à 290 et sa raison, avec tes mots (577)."
+  },
+  {
+   "ecran": "eleve-attente-depart",
+   "type": "phrase",
+   "element": "Exemple :",
+   "point": 234,
+   "citation": "reprise de la dictée, sur chaque moitié, avant la question 1. Elle dit la règle de 288 à 290 et sa raison, avec tes mots (577)."
+  },
+  {
+   "ecran": "eleve-attente-depart",
+   "type": "phrase",
+   "element": "Tu dois cocher",
+   "point": 234,
+   "citation": "reprise de la dictée, sur chaque moitié, avant la question 1. Elle dit la règle de 288 à 290 et sa raison, avec tes mots (577)."
+  },
+  {
+   "ecran": "eleve-attente-depart",
+   "type": "phrase",
+   "element": "Un oubli, une case en trop, et la question entière vaut",
+   "point": 234,
+   "citation": "reprise de la dictée, sur chaque moitié, avant la question 1. Elle dit la règle de 288 à 290 et sa raison, avec tes mots (577)."
+  },
+  {
+   "ecran": "eleve-attente-depart",
+   "type": "phrase",
+   "element": "exacte",
+   "point": 234,
+   "citation": "reprise de la dictée, sur chaque moitié, avant la question 1. Elle dit la règle de 288 à 290 et sa raison, avec tes mots (577)."
+  },
+  {
+   "ecran": "eleve-attente-depart",
+   "type": "phrase",
+   "element": "pour un total de",
+   "point": 234,
+   "citation": "reprise de la dictée, sur chaque moitié, avant la question 1. Elle dit la règle de 288 à 290 et sa raison, avec tes mots (577)."
+  },
+  {
+   "ecran": "eleve-attente-depart",
+   "type": "phrase",
+   "element": "seulement celles-là",
+   "point": 234,
+   "citation": "reprise de la dictée, sur chaque moitié, avant la question 1. Elle dit la règle de 288 à 290 et sa raison, avec tes mots (577)."
+  },
+  {
+   "ecran": "eleve-attente-depart",
+   "type": "phrase",
+   "element": "si la réponse est",
+   "point": 234,
+   "citation": "reprise de la dictée, sur chaque moitié, avant la question 1. Elle dit la règle de 288 à 290 et sa raison, avec tes mots (577)."
+  },
+  {
+   "ecran": "eleve-attente-depart",
+   "type": "phrase",
+   "element": "toutes les bonnes cases",
+   "point": 234,
+   "citation": "reprise de la dictée, sur chaque moitié, avant la question 1. Elle dit la règle de 288 à 290 et sa raison, avec tes mots (577)."
+  },
+  {
+   "ecran": "eleve-attente-depart",
+   "type": "phrase",
+   "element": "une question avec 3 bonnes cases à trouver. Tu en trouves 2 →",
+   "point": 234,
+   "citation": "reprise de la dictée, sur chaque moitié, avant la question 1. Elle dit la règle de 288 à 290 et sa raison, avec tes mots (577)."
+  },
+  {
+   "ecran": "eleve-attente-depart",
+   "type": "phrase",
+   "element": "⏳ En attente du démarrage...",
+   "point": 234,
+   "citation": "reprise de la dictée, sur chaque moitié, avant la question 1. Elle dit la règle de 288 à 290 et sa raison, avec tes mots (577)."
+  },
+  {
+   "ecran": "eleve-attente-depart",
+   "type": "phrase",
+   "element": "📋 Comment ça marche pour cette évaluation",
+   "point": 234,
+   "citation": "reprise de la dictée, sur chaque moitié, avant la question 1. Elle dit la règle de 288 à 290 et sa raison, avec tes mots (577)."
+  },
+  {
+   "ecran": "eleve-bilan",
+   "type": "phrase",
+   "element": "1 / 10 bonnes réponses",
+   "point": 456,
+   "citation": "« Ta note : » devient « Ta note provisoire : 2 / 3 »"
+  },
+  {
+   "ecran": "eleve-bilan",
+   "type": "phrase",
+   "element": "Points pour la note :",
+   "point": 456,
+   "citation": "« Ta note : » devient « Ta note provisoire : 2 / 3 »"
+  },
+  {
+   "ecran": "*",
+   "type": "phrase",
+   "element": "Combien de bonnes réponses penses-tu avoir données ? Choisis la fourchette qui correspond à ton estimation.",
+   "point": 444,
+   "citation": "Combien de bonnes réponses penses-tu avoir ? Clique sur ta réponse."
+  },
+  {
+   "ecran": "*",
+   "type": "phrase",
+   "element": "POSE TON STYLO. Sélectionne maintenant ta réponse.",
+   "point": 431,
+   "citation": "On nomme toujours l'élève, aussi sur l'écran des choix : « Julien, pose ton stylo. Sélectionne maintenant ta réponse. »"
+  },
+  {
+   "ecran": "eleve-fin",
+   "type": "phrase",
+   "element": "Tu es bien connecté.",
+   "point": 64,
+   "citation": "La tablette oublie ses élèves à « Terminer », ou à l'heure de fin + 10 minutes."
+  },
+  {
+   "ecran": "eleve-fin",
+   "type": "phrase",
+   "element": "⏳ En attente d'une évaluation...",
+   "point": 64,
+   "citation": "La tablette oublie ses élèves à « Terminer », ou à l'heure de fin + 10 minutes."
+  },
+  {
+   "ecran": "eleve-fin",
+   "type": "phrase",
+   "element": "👋 Salut ABRIAL Julien !",
+   "point": 64,
+   "citation": "La tablette oublie ses élèves à « Terminer », ou à l'heure de fin + 10 minutes."
+  },
+  {
+   "ecran": "eleve-fin",
+   "type": "phrase",
+   "element": "📊 Tes évaluations passées",
+   "point": 64,
+   "citation": "La tablette oublie ses élèves à « Terminer », ou à l'heure de fin + 10 minutes."
+  },
+  {
+   "ecran": "eleve-fin",
+   "type": "phrase",
+   "element": "📝 Saisie papier à faire",
+   "point": 64,
+   "citation": "La tablette oublie ses élèves à « Terminer », ou à l'heure de fin + 10 minutes."
+  },
+  {
+   "ecran": "*",
+   "type": "phrase",
+   "element": "✅ Bonne réponse : B",
+   "point": 95,
+   "citation": "il n'affiche plus « Bonne réponse : B, D »"
+  },
+  {
+   "ecran": "*",
+   "type": "phrase",
+   "element": "💡 Clique sur la (ou les) lettre(s) qui correspond(ent) à ta réponse",
+   "point": 402,
+   "citation": "Pour 399 (à la place de la phrase sur les lettres) : « 💡 Clique sur le ou les choix qui correspondent à ta réponse. »"
+  },
+  {
+   "ecran": "*",
+   "type": "phrase",
+   "element": "💡 Écoute l'explication — la réponse va être révélée.",
+   "point": 422,
+   "citation": "Pendant la recopie, le tableau montre l'énoncé et ta question « Qu'as-tu écrit sur ta feuille ? », sans les choix (capture 59)."
+  },
+  {
+   "ecran": "eleve-bilan",
+   "type": "phrase",
+   "element": "Tu pensais avoir entre 8 et 10 bonnes réponses 🟢 mais tu en as eu 1 sur 10 (entre 0 et 2 bonnes réponses 🔴). Tu as un peu surestimé ce que tu avais réussi.",
+   "point": 686,
+   "citation": "Ma proposition : le bloc suit la même règle que le bilan général, « nettement » quand l'écart est de deux niveaux ou plus."
+  },
+  {
+   "ecran": "pilot-correction-apres",
+   "type": "bouton",
+   "element": "Question suivante →",
+   "point": 455,
+   "citation": "à la dernière question, « Question suivante → » devient « 🏁 Afficher leur bilan aux élèves ».",
+   "scenes": [
+    "c-corr-q1-apres",
+    "c-autonomie",
+    "c-autonomie-garde",
+    "c-autonomie-retiree"
+   ]
+  },
+  {
+   "ecran": "mode-test",
+   "type": "infobulle",
+   "element": "Aucune question lancée pour l'instant. Clique sur 'Lancer Q1' pour démarrer.",
+   "point": 568,
+   "citation": "la séance passe par ta vraie console d'avant l'heure, avec l'appel et les binômes (470), au lieu de démarrer d'office"
+  },
+  {
+   "ecran": "mode-test",
+   "type": "infobulle",
+   "element": "Nombre d'élèves actuellement connectés à l'app sur leur poste vs. nombre total d'élèves de la classe.",
+   "point": 568,
+   "citation": "la séance passe par ta vraie console d'avant l'heure, avec l'appel et les binômes (470), au lieu de démarrer d'office",
+   "scenes": [
+    "x620-1-mode-test-ouverture"
+   ]
+  },
+  {
+   "ecran": "mode-test",
+   "type": "infobulle",
+   "element": "Nombre d'élèves qui ont validé une réponse à la question en cours vs. nombre total. Te permet de voir d'un coup d'œil si tu peux clore.",
+   "point": 568,
+   "citation": "la séance passe par ta vraie console d'avant l'heure, avec l'appel et les binômes (470), au lieu de démarrer d'office",
+   "scenes": [
+    "x620-1-mode-test-ouverture"
+   ]
+  },
+  {
+   "ecran": "mode-test",
+   "type": "infobulle",
+   "element": "Nombre d'élèves ayant répondu juste vs. nombre d'élèves ayant répondu (pas vs. total). Indicateur du taux de réussite en direct.",
+   "point": 568,
+   "citation": "la séance passe par ta vraie console d'avant l'heure, avec l'appel et les binômes (470), au lieu de démarrer d'office",
+   "scenes": [
+    "x620-1-mode-test-ouverture"
+   ]
+  },
+  {
+   "ecran": "mode-test",
+   "type": "infobulle",
+   "element": "Question en cours vs. nombre total de questions de l'évaluation.",
+   "point": 568,
+   "citation": "la séance passe par ta vraie console d'avant l'heure, avec l'appel et les binômes (470), au lieu de démarrer d'office",
+   "scenes": [
+    "x620-1-mode-test-ouverture"
+   ]
+  }
+ ]
 }

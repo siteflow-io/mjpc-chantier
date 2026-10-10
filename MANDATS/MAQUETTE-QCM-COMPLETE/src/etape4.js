@@ -86,6 +86,8 @@ function CopierErreurs(){
     h("button", {className:"btn btn-or", "data-local":"1", title:"Copie les messages, numérotés, prêts à coller dans l'instance de création d'éval : « Corrige ton JSON : 1. … Renvoie le JSON complet. »", onClick:function(){ setCopie(true); }}, "📋 Copier les erreurs pour l'instance de création d'éval"),
     copie && h("div", {className:"copie-ok"}, h("strong", null, "✅ Copié. "), "À coller dans l'instance de création d'éval : ", h("span", {className:"copie-t"}, texte)));
 }
+// L'indication du champ JSON de la 7.7.1 (l. 6594), mot pour mot
+var JSON_INDICATION = '{\n  "titre": "Mon évaluation",\n  "questions": [\n    {"enonce":"...","choix":[...],"bonnes":[0],"niveau":"standard"}\n  ]\n}';
 function CollageQCM(){
   var s = useState(false), refait = s[0], setRefait = s[1];
   return h("div", {className:"modal"},
@@ -93,7 +95,7 @@ function CollageQCM(){
     h("h2", null, "➕ Nouvelle évaluation"),
     h("div", {className:"field"},
       h("label", null, "Coller le JSON de l'évaluation", InfoI("Le JSON que l'instance de création d'éval t'a rendu. L'app le vérifie : le format, le chapitre et ses compétences, chaque question sur une demi-tablette, ce qu'elle vérifie, la durée de la séance.")),
-      h("textarea", {className:"json", readOnly:true, value:JSON_EX, style:{minHeight:"260px"}})),
+      h("textarea", {className:"json", readOnly:true, value:JSON_EX, placeholder:JSON_INDICATION, style:{minHeight:"260px"}})),
     h("div", {className:"row"},
       h("button", {className:"btn btn-ghost", "data-local":"1", title:"Revérifie le JSON collé.", onClick:function(){ setRefait(true); }}, "🔍 Vérifier le format"),
       h("button", {className:"btn btn-ghost", "data-va":"x627-3-editeur", title:"Ouvre l'éditeur sur une évaluation vide, sans JSON."}, "✨ Démarrer à blanc")),
@@ -120,7 +122,7 @@ function QuestionEditeeQCM(q, marquer){
       h("div", {className:"preview-q-niveau-row"},
         h("span", {className:"ed-lbl"}, "Difficulté :"),
         ["facile","standard","approfondi","expert"].map(function(n){ return h("button", {key:n, className:"niv-pastille niv-" + n + (q.niveau === n ? "" : " inactif"), "data-local":"1", "aria-pressed":q.niveau === n, title:"Met la question en difficulté « " + NIV[n].label + " ».", onClick:marquer}, NIV[n].label); }))),
-    h("textarea", {className:"preview-q-enonce-input", defaultValue:q.enonce, title:"L'énoncé, tel que l'élève le lit.", onChange:marquer}),
+    h("textarea", {className:"preview-q-enonce-input", defaultValue:q.enonce, placeholder:"Énoncé de la question (autonome : l'élève doit pouvoir répondre sans voir les choix)", title:"L'énoncé, tel que l'élève le lit.", onChange:marquer}),
     h("div", {className:"ed-verif" + (q.verifie ? "" : " manque")},
       h("span", {className:"ed-lbl"}, "🎯 Ce qu'elle vérifie, pour le bilan de l'élève :", InfoI("Une courte phrase à l'infinitif, dans les mots de l'élève. Le bilan général s'en sert : « À revoir en priorité : … » quand l'élève rate la question, « Bravo, tu sais … » quand il réussit une question difficile. L'instance la remplit avec le prompt ; tu la corriges ici.")),
       h("input", {defaultValue:q.verifie || "", placeholder:"par exemple : trouver l'antécédent d'un pronom relatif", title:"Ce que vérifie la question, à l'infinitif.", onChange:marquer})),
@@ -135,13 +137,13 @@ function QuestionEditeeQCM(q, marquer){
     h("div", {className:"preview-q-choix-edit"},
       q.choix.map(function(c, j){ var bon = q.bonnes.indexOf(j) >= 0;
         return h("div", {key:j, className:"preview-choix-edit" + (bon ? " bon" : "")},
-          h("button", {className:"ck" + (bon ? " on" : ""), "data-local":"1", title:bon ? "Bonne réponse : un clic la décoche." : "Coche si c'est une bonne réponse.", onClick:marquer}, bon ? "✓" : ""),
-          h("input", {className:"preview-choix-input", defaultValue:c, title:"Le choix, tel que l'élève le lit.", onChange:marquer}),
-          B("btn-mini btn-mini-supp", "✕", "Retire ce choix.")); }),
+          h("input", {type:"checkbox", className:"preview-choix-check", defaultChecked:bon, title:bon ? "Bonne réponse : un clic la décoche." : "Coche si c'est une bonne réponse.", onChange:marquer}),   // la case de la 7.7.1
+          h("input", {className:"preview-choix-input", defaultValue:c, placeholder:"Texte du choix", title:"Le choix, tel que l'élève le lit.", onChange:marquer}),
+          B("btn-mini btn-mini-supp", "✕", "Supprimer ce choix (minimum 2 choix par question).")); }),
       h("button", {className:"btn btn-ghost btn-sm", "data-local":"1", style:{marginTop:".4rem", alignSelf:"flex-start"}, title:"Ajoute un choix à la question.", onClick:marquer}, "➕ Ajouter un choix")),
     h("div", {className:"preview-q-explication-zone"},
       h("label", {className:"preview-q-explication-label"}, "💡 Explication (affichée aux élèves lors de la correction)", InfoI("L'explication que l'élève lit après la révélation, sous la bonne réponse.")),
-      h("textarea", {className:"preview-q-explication-input", defaultValue:q.expl, title:"L'explication de la correction.", onChange:marquer})));
+      h("textarea", {className:"preview-q-explication-input", defaultValue:q.expl, placeholder:"Explication de la bonne réponse (1-3 phrases)", title:"L'explication de la correction.", onChange:marquer})));
 }
 var Q_ASSUMEE = {n:11, enonce:"Quelle est l'architecture de « La lettre que ma mère m'a écrite, et que j'ai relue tous les soirs, me rappelle la maison où j'ai grandi » ?", choix:["P.P + PSR + PSR coordonnées, dans la P.P","Deux P.I juxtaposées","P.P + une seule PSR","P.P + PSR, puis une P.I"], bonnes:[0], niveau:"approfondi", ref:30, rep:25, comps:["c4-langue-04"], verifie:"trouver l'architecture d'une phrase complexe", assumee:true, expl:"Les deux relatives, coordonnées par « et », complètent « La lettre », dans la proposition principale."};
 function EditeurQCM(){
@@ -151,9 +153,13 @@ function EditeurQCM(){
   return h("div", {className:"modal", style:{maxWidth:"980px"}},
     h("button", {className:"modal-close", "data-va":"c-evals", title:"Ferme l'éditeur ; ce qui n'est pas enregistré est perdu."}, "✕"),
     h("h2", null, "✏️ Compléter l'évaluation"),
+    // le JSON, puis « 🔍 Vérifier le format », au-dessus de l'éditeur visuel, comme dans la 7.7.1 (l. 6594 à 6597)
+    h("div", {className:"field"}, h("label", null, "JSON de l'évaluation"),
+      h("textarea", {className:"json", placeholder:JSON_INDICATION, title:"Colle ici un JSON corrigé : « 🔍 Vérifier le format » le recharge dans l'éditeur.", style:{minHeight:"70px"}, onChange:marquer})),
+    h("div", {className:"row"}, h("button", {className:"btn btn-ghost", "data-local":"1", onClick:marquer}, "🔍 Vérifier le format")),
     h("div", {className:"preview"},
       h("div", {className:"preview-titre-row"},
-        h("input", {className:"preview-titre-input", defaultValue:"3e Chapitre 1 — Poésie et peinture au XIXème siècle · Interro de cours (séance 3)", title:"Le titre de l'évaluation.", onChange:marquer}),
+        h("input", {className:"preview-titre-input", defaultValue:"3e Chapitre 1 — Poésie et peinture au XIXème siècle · Interro de cours (séance 3)", placeholder:"Titre de l'évaluation", title:"Le titre de l'évaluation.", onChange:marquer}),
         h("span", {className:"preview-titre-meta"}, "11 questions · 10 points + 1 bonus")),
       h("div", {className:"ed-chap"}, h("span", {className:"ed-lbl"}, "📚 Chapitre", InfoI("Le chapitre donne le niveau et les compétences permises : une compétence hors du chapitre est refusée.")),
         h("select", {defaultValue:"c", title:"Le chapitre de l'évaluation.", onChange:marquer}, h("option", {value:"c"}, "3e · Chapitre 1 — Poésie et peinture au XIXe siècle"))),
@@ -173,7 +179,8 @@ function EditeurQCM(){
       QuestionEditeeQCM(INTERRO[1], marquer),
       h("div", {className:"ed-replie"}, "Q3 à Q9 : complètes (repliées pour la capture)"),
       QuestionEditeeQCM(INTERRO[2], marquer),
-      QuestionEditeeQCM(Q_ASSUMEE, marquer)),
+      QuestionEditeeQCM(Q_ASSUMEE, marquer),
+      h("button", {className:"btn btn-ghost", "data-local":"1", style:{marginTop:".6rem"}, onClick:marquer}, "➕ Ajouter une question")),
     h("div", {className:"row", style:{marginTop:"1rem", alignItems:"center"}},
       h("button", {className:"btn btn-primary ferme", disabled:true, title:"S'ouvre quand il ne reste rien à compléter."}, "💾 Enregistrer l'évaluation"),
       h("span", {className:"ed-reste"}, "⚠️ Il reste à compléter : Q10, les deux temps, au moins une compétence et ce qu'elle vérifie.")));
@@ -265,7 +272,7 @@ function ResultatsQCM(p){
       p.rendues ? h("strong", {style:{color:"#15803D"}}, "copies rendues le 10/10") : h("strong", {style:{color:"#9A3412"}}, LIRE_SOIR.length + " feuilles à lire")),
     h("div", {className:"scoresheet-wrap"}, h("table", {className:"scoresheet"},
       h("thead", null, h("tr", null,
-        h("th", {className:"eleve-col"}, "Élève"),
+        h("th", {className:"eleve-col", title:"Cliquer pour trier par nom (asc/desc). Cliquer sur un nom d'élève dans le tableau ouvre son Student Report (drill-down)."}, "Élève"),   // la 7.7.1, l. 8403
         EV.questions.map(function(q, i){ return h("th", {key:i, title:q.enonce}, "Q" + (i+1)); }),
         h("th", null, "Note"), h("th", null, "Sur 20"), h("th", null, "Maîtrise de la note"),
         COMPS.map(EnteteComp),
@@ -425,7 +432,7 @@ function BilanLou(){
       h("div", {className:"bilan-calibration bilan-calib-sur"},
         h("h3", null, "🎯 Ton estimation"),
         h("div", {className:"bilan-calib-msg"}, "⚠️ Tu pensais avoir mieux fait"),
-        h("div", {className:"bilan-calib-detail"}, "Tu pensais avoir 2 bonnes réponses 🔵 mais tu en as eu 1 sur 3 (1 bonne réponse 🟠). Tu as un peu surestimé ce que tu avais réussi.")),
+        h("div", {className:"bilan-calib-detail"}, "Tu pensais avoir 2 bonnes réponses 🔵 mais tu en as eu 1 sur 3 (1 bonne réponse 🟠). " + degreSurestime(1))),   // un niveau d'écart
       h("div", {className:"bilan-bloc bilan628-eleve"}, h("h3", null, "📝 Bilan"), h("p", {"data-com":JSON.stringify(entree)}, texteBilan(entree)))));
 }
 

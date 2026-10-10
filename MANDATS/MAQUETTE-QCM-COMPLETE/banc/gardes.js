@@ -42,8 +42,9 @@ const nrm = s => C.norm(String(s || ""));
 //  - le niveau d'une question (Facile, Standard, Approfondi, Expert) et sa couleur (🔴 🟠 🔵 🟢) ;
 //  - les noms des élèves, les nombres et les libellés (déjà mis à part par controles.norm).
 const NIVEAUX_Q = /(?<![\p{L}])(Facile|Standard|Approfondi|Expert|FACILE|STANDARD|APPROFONDI|EXPERT)(?![\p{L}])/gu;
+//  - la bande des questions du téléphone (l. 5680) : « Qn — pas de réponse » ou « Qn — a/b bonnes (x%) », selon les réponses de la séance.
 function forme(s){
-  return nrm(s).replace(NIVEAUX_Q, "‹niveau›").replace(/[🔴🟠🔵🟢]/gu, "◍").replace(/[Ee]ntre # et #/g, "#").replace(/\(s\)/g, "")
+  return nrm(s).replace(/ — (pas de réponse|#\/# bonnes \(#%\))$/, " — ‹taux›").replace(NIVEAUX_Q, "‹niveau›").replace(/[🔴🟠🔵🟢]/gu, "◍").replace(/[Ee]ntre # et #/g, "#").replace(/\(s\)/g, "")
     .replace(/(?<=\p{L}{2})[sx](?![\p{L}])/gu, "").replace(/\s+/g, " ").trim();
 }
 // Une phrase de la 7.7.1 qui n'est qu'une donnée de la séance jouée (le titre de l'évaluation du faux hub, un nom, un nombre) n'est pas comparée.
@@ -68,21 +69,22 @@ function retire(R, inv, sc, type, element){
 function garde1(sc, inv, vu, R){
   const pertes = [];
   const perdre = (type, element, detail) => { if(!retire(R, inv, sc, type, element)) pertes.push("garde 1. " + sc + " (de « " + inv.ecran + " ») : " + type + " « " + element + " » perdu" + (detail ? " — " + detail : "")); };
-  const btn = new Map(); vu.boutons.forEach(b => { const k = forme(b.l); if(!btn.has(k)) btn.set(k, []); btn.get(k).push(C.normEsp(b.t)); });
+  // les infobulles se comparent à leur forme, comme les libellés : « Q10 est la 1e question révélée » et « Q2 est la 1e question révélée » sont la même infobulle
+  const btn = new Map(); vu.boutons.forEach(b => { const k = forme(b.l); if(!btn.has(k)) btn.set(k, []); btn.get(k).push(forme(b.t)); });
   const vus = new Set();
   for(const b of inv.boutons || []){
     const k = forme(b.l); if(vus.has(k + "|" + b.t)) continue; vus.add(k + "|" + b.t);
     if(donnee(b.l)) continue;
     if(!btn.has(k)){ perdre("bouton", b.l); continue; }
-    if(b.t && !btn.get(k).includes(C.normEsp(b.t)) && !retire(R, inv, sc, "infobulle", b.l))
+    if(b.t && !btn.get(k).includes(forme(b.t)) && !retire(R, inv, sc, "infobulle", b.l))
       pertes.push("garde 1. " + sc + " (de « " + inv.ecran + " ») : l'infobulle de « " + b.l + " » n'est pas celle de l'existant — « " + b.t.slice(0, 120) + " » ; la scène dit « " + (btn.get(k)[0] || "rien").slice(0, 120) + " »");
   }
   const champs = new Set(vu.champs.map(forme));
   for(const c of [...new Set((inv.champs || []).map(x => typeof x === "string" ? x : x.l))]) if(!champs.has(forme(c))) perdre("champ", c);
   const cases = new Set(vu.cases.map(forme));
   for(const c of [...new Set((inv.cases || []).map(x => typeof x === "string" ? x : x.l))]) if(!cases.has(forme(c))) perdre("case", c);
-  const titres = new Set(vu.titres.concat(vu.boutons.map(b => b.t)).map(C.normEsp));
-  for(const t of [...new Set((inv.titres || []).map(x => typeof x === "string" ? x : x.t))]) if(!donnee(t) && !titres.has(C.normEsp(t))) perdre("infobulle", t);
+  const titres = new Set(vu.titres.concat(vu.boutons.map(b => b.t)).map(forme));
+  for(const t of [...new Set((inv.titres || []).map(x => typeof x === "string" ? x : x.t))]) if(!donnee(t) && !titres.has(forme(t))) perdre("infobulle", t);
   if(inv.classes){
     const ordre = inv.classes.map(x => x.c);
     ordre.forEach(c => { if(!vu.classes.includes(c)) perdre("structure", c, "la classe n'est pas dans la scène"); });
@@ -121,7 +123,7 @@ function lireMeta(){
     const visible = el => { const r = el.getBoundingClientRect(); if(r.width < 1 || r.height < 1) return false; const cs = win.getComputedStyle(el); return cs.visibility !== "hidden" && cs.display !== "none"; };
     const tw = doc.createTreeWalker(doc.body, win.NodeFilter.SHOW_TEXT); let n;
     while((n = tw.nextNode())){ const v = n.nodeValue.replace(/\s+/g, " ").trim(); const el = n.parentElement; if(!v || !el || el.closest("style,script,title") || !hors(el)) continue;
-      if(!visible(el) && !el.closest(".info-tip")) continue; out.push({ou, quoi: "texte", t: v}); }
+      if(!visible(el) && !el.closest(".info-tip")) continue; out.push({ou, quoi: "texte", t: v, prompt: !!el.closest("[data-prompt]")}); }
     doc.body.querySelectorAll("[title],[placeholder],input,textarea").forEach(el => { if(!hors(el)) return;
       if(el.getAttribute("title")) out.push({ou, quoi: "infobulle", t: el.getAttribute("title")});
       if(el.getAttribute("placeholder")) out.push({ou, quoi: "indication", t: el.getAttribute("placeholder")});
@@ -138,7 +140,8 @@ function lireMeta(){
 function garde2(sc, lu){
   const out = [];
   const gab = C.normEsp(promptAttendu()), tete = gab.slice(0, 80);
-  const duPrompt = x => (x.quoi === "champ" && C.normEsp(x.t).includes(tete)) || (C.normEsp(x.t).length > 20 && gab.includes(C.normEsp(x.t)));   // le texte du prompt (README), donnée de Paul
+  // le texte du prompt (README), donnée de Paul : le gabarit, ou le prompt rempli que l'app copie (garde 3 le compare au README)
+  const duPrompt = x => x.prompt || (x.quoi === "champ" && C.normEsp(x.t).includes(tete)) || (C.normEsp(x.t).length > 20 && gab.includes(C.normEsp(x.t)));
   const vus = new Set();
   for(const x of lu.textes){
     if(duPrompt(x)) continue;
@@ -157,7 +160,7 @@ function garde2(sc, lu){
 
 /* ════════ Garde 3 — les chiffres ════════ */
 const PROD = process.env.PROD || "/home/user/siteflow-io/monsieurjaipascompris";
-const TAXO_SRC = path.join(RACINE, "sources", "taxonomie_atelier.json");
+const TAXO_SRC = path.join(RACINE, "src", "donnees", "taxonomie_atelier.json");   // la copie de la production, avec son md5 (src/donnees/MD5.txt)
 function taxo(){ return JSON.parse(lire(fs.existsSync(TAXO_SRC) ? TAXO_SRC : path.join(PROD, "taxonomie_atelier.json"))); }
 function attenduTaxo(){
   const t = taxo();
@@ -165,7 +168,8 @@ function attenduTaxo(){
   const total = doms.reduce((a, d) => a + d.notions, 0);
   const notions = {}; t.domaines.forEach(d => d.familles.forEach(f => (f.notions || []).forEach(n => { notions[n.id] = n; })));
   const comps = {}; for(const k in t.competences) t.competences[k].forEach(g => g.items.forEach(it => { comps[it.id] = {libelle: it.libelle, eleve: C.LIB_ELEVE[it.id]}; }));
-  return {etat: "Version " + t.meta.version + " · " + t.meta.date + " · " + t.domaines.length + " domaines · " + total + " notions", doms, notions, comps};
+  const groupes = []; for(const k in t.competences) t.competences[k].forEach(g => groupes.push({libelle: g.libelle, items: g.items}));
+  return {groupes, etat: "Version " + t.meta.version + " · " + t.meta.date + " · " + t.domaines.length + " domaines · " + total + " notions", doms, notions, comps};
 }
 function lireChiffres(){
   const root = document.getElementById("root");
@@ -177,10 +181,17 @@ function lireChiffres(){
     etatsLibres: (tout.match(/Version [^\n]*?domaines[^\n]*?notions/g) || []),
     doms: q(".m8tx-dom-titre").map(txt),
     notions: q(".m8tx-notion").map(n => ({id: txt(n.querySelector(".m8tx-id") || n).split(" ")[0], prof: n.querySelector(".m8tx-prof") ? txt(n.querySelector(".m8tx-prof")) : null, l2: n.querySelector(".m8tx-n-l2") ? txt(n.querySelector(".m8tx-n-l2")) : null})),
-    ids: (tout.match(/\b(c4|tr)-[a-z]+-\d\d\b/g) || []),
+    // la section « Les compétences » de l'éditeur de la taxonomie (637) : ses identifiants, ses libellés
+    comps: (() => { const sec = root.querySelector(".m8tx-comps"); if(!sec) return null; const t = sec.innerText || "";
+      const groupes = Array.from(sec.querySelectorAll(".m8tx-fam")).map(g => { const ti = g.querySelector(".m8tx-fam-titre"); const it = g.innerText || "";
+        return {titre: ti ? txt(ti) : "", ouvert: !!g.querySelector(".m8tx-notion"), ids: (it.match(/\b(c4|tr)-[a-z]+-\d\d\b/g) || [])}; });
+      return {ids: t.match(/\b(c4|tr)-[a-z]+-\d\d\b/g) || [], texte: t.replace(/\s+/g, " "), groupes}; })(),
     texte: tout.replace(/\s+/g, " "),
     durees: Array.from(root.querySelectorAll("input")).filter(i => i.getBoundingClientRect().width > 0).map(i => ({v: i.value, lab: txt(i.closest("label,.reg-l,.reg-d,div") || i)})),
-    prompt: (Array.from(root.querySelectorAll("textarea")).filter(t => /Tu es|tu es/.test(t.value) && t.value.length > 500)[0] || {}).value || null
+    // le prompt : rempli (à la lecture, ce que l'app copie) ou modifiable (le gabarit enregistré, jetons compris)
+    prompts: Array.from(root.querySelectorAll("textarea,[data-prompt]")).filter(el => el.getBoundingClientRect().width > 0)
+      .map(el => ({texte: el.tagName === "TEXTAREA" ? el.value : el.textContent, modifiable: el.tagName === "TEXTAREA" && !el.readOnly}))
+      .filter(x => /Tu vas m'aider|Tu es|tu es/.test(x.texte) && x.texte.length > 500)
   };
 }
 // Les durées fixes de la séance (649)
@@ -192,6 +203,10 @@ const DUREES_649 = [
   {lab: /dit-elle la même chose/, v: "5", quoi: "5 secondes où l'élève dit si sa feuille dit la même chose"},
   {lab: /Entre deux questions/, v: "15", quoi: "15 secondes avant la suivante"}
 ];
+// MESURES=0 : sans la garde 4 ni le texte de {{LIMITES}} (le banc de l'étape B, avant que la mesure soit refaite à l'étape C)
+const MESURES = process.env.MESURES !== "0";
+// le chapitre de 3e et ses compétences (copie du sas, CONSULTANT/CHAPITRE-1/, md5 dans src/donnees/MD5.txt)
+function chapitre(){ const c = JSON.parse(lire(path.join(RACINE, "src", "donnees", "chapitre-3e-poesie-peinture-final.json"))).chapitre; return {majeures: c.competencesMajeures, mineures: c.competencesMineures}; }
 function promptAttendu(){
   const readme = lire(path.join(SAS, "MANDATS", "PROMPT-QCM-CREATION", "README.md"));
   return /## Le texte proposé\s*```\n([\s\S]*?)\n```/.exec(readme)[1];
@@ -218,26 +233,48 @@ function garde3(sc, lu){
     if(n.prof !== null && C.normEsp(n.prof) !== C.normEsp(prof)) pb("« " + n.id + " » dit « " + n.prof + " » ; le référentiel dit « " + prof + " »");
     if(n.l2 !== null && C.normEsp(n.l2) !== C.normEsp(l2)) pb("« " + n.id + " » : « " + n.l2 + " » ; attendu « " + l2 + " »");
   }
-  // Les compétences : si la scène les liste, les 28, chacune avec son libellé et son libellé élève
-  const ids = [...new Set(lu.ids)];
-  if(ids.length >= 10 && /Les compétences/.test(lu.texte)){
-    Object.keys(A.comps).forEach(id => { if(!ids.includes(id)) pb("la compétence « " + id + " » manque à la liste"); });
-    ids.forEach(id => { const c = A.comps[id]; if(!c) return; if(!lu.texte.includes(C.normEsp(c.libelle)) && !lu.texte.includes(c.libelle)) pb("le libellé de « " + id + " » n'est pas « " + c.libelle + " »");
-      if(c.eleve && !lu.texte.includes(c.eleve) && !lu.texte.includes(C.normEsp(c.eleve))) pb("le libellé élève de « " + id + " » n'est pas « " + c.eleve + " »"); });
+  // Les compétences : là où la section « Les compétences » s'affiche, les 28, chacune avec son libellé et son libellé élève
+  // chaque groupe avec son nombre de compétences ; un groupe ouvert les montre toutes ; tous ouverts, ce sont les 28
+  if(lu.comps){
+    const ids = [...new Set(lu.comps.ids)], t = lu.comps.texte;
+    if(lu.comps.groupes.length !== A.groupes.length) pb(lu.comps.groupes.length + " groupes de compétences montrés ; taxonomie_atelier.json en a " + A.groupes.length);
+    A.groupes.forEach(g => { const vu = lu.comps.groupes.filter(x => C.normEsp(x.titre).includes(C.normEsp(g.libelle)))[0];
+      if(!vu){ pb("le groupe « " + g.libelle + " » manque"); return; }
+      const n = g.items.length + " compétence" + (g.items.length > 1 ? "s" : "");
+      if(!vu.titre.includes(n)) pb("le groupe « " + g.libelle + " » dit « " + vu.titre + " » ; attendu « " + n + " »");
+      if(vu.ouvert) g.items.forEach(it => { if(!vu.ids.includes(it.id)) pb("la compétence « " + it.id + " » manque au groupe ouvert « " + g.libelle + " »"); }); });
+    if(lu.comps.groupes.length && lu.comps.groupes.every(g => g.ouvert)) Object.keys(A.comps).forEach(id => { if(!ids.includes(id)) pb("la compétence « " + id + " » manque à la liste"); });
+    ids.forEach(id => { const c = A.comps[id]; if(!c){ pb("« " + id + " » n'est pas une compétence du référentiel"); return; } if(!t.includes(C.normEsp(c.libelle))) pb("le libellé de « " + id + " » n'est pas « " + c.libelle + " »");
+      if(c.eleve && !t.includes(C.normEsp(c.eleve))) pb("le libellé élève de « " + id + " » n'est pas « " + c.eleve + " »"); });
   }
   // Les durées de la séance (649) : là où Réglages les montre
   if(/Les durées de la séance/.test(lu.texte)){
     for(const d of DUREES_649){ const ch = lu.durees.filter(x => d.lab.test(x.lab)); if(!ch.length || !ch.some(x => x.v === d.v)) pb("la durée « " + d.quoi + " » (649) : la scène dit « " + (ch[0] ? ch[0].v : "rien") + " »"); }
   }
-  // Le prompt : le texte du README, chaque jeton remplacé ; {{LIMITES}} par le texte des mesures
-  if(lu.prompt !== null){
-    const p = lu.prompt, gab = promptAttendu();
+  // Le prompt : modifiable, c'est le gabarit du README mot pour mot, jetons compris ; rempli (ce que l'app copie), c'est le texte
+  // du README, chaque jeton remplacé : le chapitre et ses compétences d'après les vraies données, {{LIMITES}} par le texte des mesures
+  for(const x of lu.prompts){
+    const p = x.texte, gab = promptAttendu();
+    if(x.modifiable){ if(C.normEsp(p) !== C.normEsp(gab)) pb("le prompt à modifier n'est pas le gabarit du README, jetons compris"); continue; }
     const restes = p.match(/\{\{[A-Z_]+\}\}/g); if(restes) pb("le prompt garde ses jetons non remplacés : " + [...new Set(restes)].join(" "));
     const morceaux = gab.split(/\{\{[A-Z_]+\}\}/); let pos = 0;
     for(const m of morceaux){ const t = m.trim(); if(!t) continue; const i = p.indexOf(t, pos); if(i < 0){ pb("le prompt n'a pas, à sa place, le texte du README « " + t.slice(0, 70) + "… »"); break; } pos = i + t.length; }
-    const lt = limitesTexte();
-    if(!lt) pb("mesures/limites.json ne donne pas le texte de {{LIMITES}}");
-    else if(!p.includes(lt)) pb("le prompt ne porte pas, pour {{LIMITES}}, le texte de mesures/limites.json");
+    // {{COMPETENCES_CHAPITRE}} : chaque compétence du chapitre, une par ligne, avec son code, son libellé officiel et son libellé élève
+    const ch = chapitre();
+    ch.majeures.concat(ch.mineures).forEach(code => { const c = A.comps[code];
+      const l = p.split("\n").filter(x => x.includes(code))[0];
+      if(!l) pb("le prompt n'a pas la compétence « " + code + " » du chapitre");
+      else if(!l.includes(c.libelle) || !l.includes(c.eleve)) pb("la ligne de « " + code + " » n'a pas son libellé officiel et son libellé élève : « " + l.slice(0, 120) + " »"); });
+    const ids = [...new Set(p.match(/\b(c4|tr)-[a-z]+-\d\d\b/g) || [])].filter(id => !ch.majeures.concat(ch.mineures).includes(id));
+    if(ids.length) pb("le prompt donne des compétences hors du chapitre : " + ids.join(" "));
+    // {{DUREES}} : les durées fixes du point 649, avec ses mots
+    for(const d of ["3 secondes de décompte", "5 secondes où l'élève dit si sa feuille dit la même chose", "15 secondes avant la question suivante", "5 minutes d'installation et de consignes", "1 minute de correction par question", "2 minutes pour la co-évaluation et le bilan"])
+      if(!C.normEsp(p).includes(d)) pb("le prompt ne dit pas, pour {{DUREES}}, « " + d + " » (649)");
+    if(MESURES){
+      const lt = limitesTexte();
+      if(!lt) pb("mesures/limites.json ne donne pas le texte de {{LIMITES}}");
+      else if(!p.includes(lt)) pb("le prompt ne porte pas, pour {{LIMITES}}, le texte de mesures/limites.json");
+    }
   }
   return out;
 }
@@ -263,7 +300,7 @@ function garde4(verif){
     const pts = L[n] || [];
     verif(pts.length && pts[0].enonce === 40 && pts[pts.length - 1].enonce === 300, "garde 4. " + n + " choix : l'énoncé de 40 à 300 caractères", pts.length + " points");
     pts.forEach((p, k) => {
-      for(const ec of ["reponse", "b", "lecture"]){
+      if(p.limite > 0) for(const ec of ["reponse", "b", "lecture"]){
         verif(p.reste[ec] >= 0, "garde 4. " + n + " choix, énoncé " + p.enonce + ", choix de " + p.limite + " : tient sur l'écran « " + ec + " »", p.reste[ec] + " px");
       }
       verif(["reponse", "b", "lecture"].some(ec => p.reste_plus_pas[ec] < 0) || p.limite === 0, "garde 4. " + n + " choix, énoncé " + p.enonce + " : un choix de " + (p.limite + l.pas_choix) + " ne tient plus (la limite est la plus grande)", JSON.stringify(p.reste_plus_pas));
@@ -272,6 +309,22 @@ function garde4(verif){
   });
   for(let a = 0; a < ns.length - 1; a++) (L[ns[a]] || []).forEach((p, k) => { const q = (L[ns[a + 1]] || [])[k];
     if(q) verif(q.limite <= p.limite, "garde 4. énoncé " + p.enonce + " : la limite ne monte pas de " + ns[a] + " à " + ns[a + 1] + " choix", p.limite + " → " + q.limite); });
+}
+
+// L'échantillon : la limite est suffisante, rejouée dans la maquette elle-même (la page du banc) : à quelques points du tableau,
+// la limite tient sur les trois écrans, et les longueurs plus courtes aussi (la moitié de la limite, 5 caractères), avec un énoncé plus court aussi.
+async function garde4Echantillon(page, fichier, verif){
+  const M = require("../mesures/mesure-page.js");
+  const l = JSON.parse(lire(path.join(RACINE, "mesures", "limites.json")));
+  const et = await M.etalon(page, fichier);
+  verif(et === 67, "garde 4. l'étalon, remesuré dans la maquette : la vraie question 3 de 3e garde 67 px sur l'écran de réponse", et + " px");
+  for(const n of ["4", "5", "6"]){
+    const pts = (l.par_choix || {})[n] || [];
+    for(const k of [0, Math.floor(pts.length / 2), pts.length - 1]){ const x = pts[k]; if(!x || !x.limite) continue;
+      for(const lc of [...new Set([x.limite, Math.max(5, Math.round(x.limite / 10) * 5), 5])]) for(const e of [...new Set([x.enonce, 40])]){
+        const r = await M.restes(page, e, +n, lc);
+        verif(M.tient(r), "garde 4. échantillon : " + n + " choix de " + lc + " caractères, énoncé de " + e + " (limite " + x.limite + " à " + x.enonce + ") : tient sur les trois écrans", JSON.stringify(r)); } }
+  }
 }
 
 /* ════════ Garde 5 — l'estimation ════════ */
@@ -320,4 +373,4 @@ function garde5Final(tous, verif){
   }
 }
 
-module.exports = {inventaires, retraits, verifierRetraits, garde1, lireMeta, garde2, lireChiffres, garde3, garde4, lireEstimation, garde5Scene, garde5Final, extraireEcran, attenduTaxo, PARENTHESES_DONNEES};
+module.exports = {MESURES, garde4Echantillon, inventaires, retraits, verifierRetraits, garde1, lireMeta, garde2, lireChiffres, garde3, garde4, lireEstimation, garde5Scene, garde5Final, extraireEcran, attenduTaxo, PARENTHESES_DONNEES};

@@ -59,6 +59,8 @@ function pastilles3(e, nbRev){
     return s === "j" ? {cls:"juste", t:"✅"} : s === "t" ? {cls:"trouvee-p", t:"✓"} : s === "pasdit" ? {cls:"nonrep", t:"⚪"} : {cls:"faux", t:"❌"};   // le ✓ orange (484)
   });
 }
+/* Avant la révélation, la phrase de la 7.7.1 (l. 4362), à sa place : sous les choix, tant que la réponse n'est pas révélée (684, 691) */
+function EcouteProf(){ return h("div", {className:"correction-resultat non-rep ecoute-prof", style:{background:"rgba(106,76,224,.08)", color:"var(--violet)", borderColor:"var(--violet)"}}, "👀 Écoute le prof — la correction sera révélée."); }
 function EcrLecture(e, qi, dit, chrono){
   var q = EV.questions[qi], ordre = ORD[qi][e.cle], lu = LU[e.cle][qi], v = autreDe(e);
   var luArr = lu === "aucun" ? [] : lu, pos = ORDRE_CORR.indexOf(qi);
@@ -74,7 +76,8 @@ function EcrLecture(e, qi, dit, chrono){
       h("div", {className:"eleve-choix" + (long ? " long" : "")},
         ordre.map(function(i){ return h("button", {key:i, className:"eleve-choix-btn" + (dit && luArr.indexOf(i) >= 0 ? " selected" : "")}, h("span", null, q.choix[i])); }),
         h("button", {className:"eleve-choix-btn aucun" + (dit && lu === "aucun" ? " selected" : "")}, "Sa feuille ne dit aucun de ces choix")),
-      dit && h("div", {className:"eleve-feedback valide"}, "✅ Réponse enregistrée — tu peux encore la changer"))));
+      dit && h("div", {className:"eleve-feedback valide"}, "✅ Réponse enregistrée — tu peux encore la changer"),
+      EcouteProf())));
 }
 /* La même, sur la question 3 de l'évaluation de 3e (610-3) : elle tient dans la demi-tablette (464 : seule une question
    « longueur assumée » défile) — le compteur des 11 questions et la consigne sont resserrés, rien n'est retiré. */
@@ -96,7 +99,8 @@ function EcrCorrA3(e, dit){
       h("div", {className:"eleve-choix long"},
         ORD3[e.cle].map(function(i){ return h("button", {key:i, className:"eleve-choix-btn" + (dit && lu.indexOf(i) >= 0 ? " selected" : "")}, h("span", null, q.choix[i])); }),
         h("button", {className:"eleve-choix-btn aucun"}, "Sa feuille ne dit aucun de ces choix")),
-      dit && h("div", {className:"eleve-feedback valide"}, ENREG))));
+      dit && h("div", {className:"eleve-feedback valide"}, ENREG),
+      EcouteProf())));
 }
 
 /* L'élève seul sur sa tablette (500) : pas de voisin pour lire sa feuille ; il la lit lui-même, avec les mots du tour 603 */
@@ -113,7 +117,8 @@ function EcrLectureSeul(){
       h("div", {className:"eleve-choix"},
         ordre.map(function(i){ return h("button", {key:i, className:"eleve-choix-btn" + (i === 0 || i === 2 ? " selected" : "")}, h("span", null, q.choix[i])); }),
         h("button", {className:"eleve-choix-btn aucun"}, "Ma feuille ne dit aucun de ces choix")),
-      h("div", {className:"eleve-feedback valide"}, "✅ Réponse enregistrée — tu peux encore la changer"))));
+      h("div", {className:"eleve-feedback valide"}, "✅ Réponse enregistrée — tu peux encore la changer"),
+      EcouteProf())));
 }
 
 /* ════════ Après la révélation (439, 484) : le ✓ orange, le bandeau orange à liseré rouge ; plus d'infobulle ════════ */
@@ -200,27 +205,27 @@ function PilotCorrection(qi, revele, opts){
   var lire = lireJusqua(revele ? pos : pos - 1);
   var suivant = derniere
     ? h("button", {className:"btn btn-primary", disabled:!revele, "data-va":revele ? "c-coeval-attente" : null, title:revele ? "Ouvre d'abord, sur chaque tablette, la co-évaluation de la lecture ; le bilan s'affiche quand tous les présents y ont répondu." : "S'ouvre quand la dernière question est révélée."}, "🏁 Afficher leur bilan aux élèves")
-    : h("button", {className:"btn btn-primary", disabled:!revele, "data-va":revele ? NOMS_SUIV[qi] : null, title:revele ? "Passe à la question suivante : chacun lit d'abord la feuille de son voisin." : "S'ouvre quand cette question est révélée."}, "Question suivante →");
+    : h("button", {className:"btn btn-primary", "data-va":NOMS_SUIV[qi], title:"Passer à la question suivante dans l'ordre trié par taux d'erreur."}, "Question suivante →");
   var reveler = revele ? h("button", {className:"btn btn-ghost", disabled:true, title:"Cette question est déjà révélée sur toutes les tablettes."}, "💡 Révélée")
     : pasLu.length ? h("button", {className:"btn btn-or ferme", disabled:true, title:"« 💡 Révéler » s'ouvre quand les " + 24 + " présents ont lu la feuille de leur voisin. Il en manque " + pasLu.length + "."}, "🔒 Révéler")
     : h("button", {className:"btn btn-or", "data-va":opts.revelerVers || "t-corr-q2-apres", title:"Montre la bonne réponse et l'explication sur toutes les tablettes et au tableau. Commente la question après, jamais avant."}, "💡 Révéler");
   return Console("pilotage", "pilot", h("div", {className:"card"},
     TitreCarte(h(F, null, "📝 Correction — " + EV.titre + " — " + CLASSE, InfoI("Pour chaque question, chacun lit d'abord la feuille de son voisin et clique ce qu'elle dit, dans la moitié du voisin. « 💡 Révéler » s'ouvre quand tous les présents l'ont fait. Tu commentes la question après la révélation, jamais avant : sinon, ils cliqueraient ce que tu dis. Les questions vont de la plus ratée à la mieux réussie. Un clic sur un nom agit sur l'élève.")),
       [h("button", {key:0, className:"btn btn-ghost btn-sm"}, "🚫 Départ d'un élève"), h("button", {key:5, className:"btn btn-ghost btn-sm"}, "⏸️ Finir à une autre heure"), h("button", {key:1, className:"btn btn-rouge btn-sm"}, "🛑 Terminer la session")]),
-    h("div", {className:"pilot-status correction"}, "Question " + (pos+1) + " / 3 — Q" + (qi+1) + (revele ? " · révélée" : " · lecture de la feuille du voisin")),
+    h("div", {className:"pilot-status correction", title:"Position dans l'ordre de correction (trié par taux d'erreur décroissant). Q" + (qi+1) + " est la " + (pos+1) + "e question révélée."}, "Question " + (pos+1) + " / 3 — Q" + (qi+1) + (revele ? " · révélée" : " · lecture de la feuille du voisin")),
     h("div", {className:"corr-grid"},
       h("div", null,
         h("div", {className:"pilot-q-current"},
           h("div", {className:"num"}, "Question " + (qi+1)),
           h("div", {className:"enonce"}, q.enonce),
           h("div", {className:"pilot-q-bonne"}, h("span", {style:{fontWeight:900}}, "✓ Bonne" + (q.bonnes.length > 1 ? "s" : "") + " réponse" + (q.bonnes.length > 1 ? "s" : "") + " : "), q.bonnes.map(function(i){ return q.choix[i]; }).join("  /  ")),
-          h("div", {className:"niv-row"}, h("span", {className:"niv-bulle"}, "Difficulté : " + NIV[q.niveau].label), h("span", {className:"niv-bulle"}, tabJ + " / 24 justes sur la tablette (" + Math.round(tabJ * 100 / 24) + "%)"))),
+          h("div", {className:"niv-row"}, h("span", {className:"niv-bulle", title:"Niveau de la question (info indicative pendant la correction)."}, "Difficulté : " + NIV[q.niveau].label), h("span", {className:"niv-bulle", title:"Taux de réussite de la classe sur cette question. Sert au tri par difficulté."}, tabJ + " / 24 justes sur la tablette (" + Math.round(tabJ * 100 / 24) + "%)"))),
         !revele && h("div", {className:"pilot-chrono-card actif saisie-carte"},
           h("div", {className:"label actif"}, "📄 Temps pour lire la feuille du voisin"),
           h("div", {className:"v"}, opts.toutLu ? "3s" : "7s"),
           h("div", {className:"desc"}, "sur " + q.reponse + " s, le temps de réponse de la question · orange à la moitié, rouge les 5 dernières secondes")),
         h("div", {className:"row", style:{marginTop:".8rem"}},
-          h("button", {className:"btn btn-ghost", disabled:pos <= 0, "data-va":pos > 0 ? "t-corr-q2-apres" : null, title:pos <= 0 ? "C'est la première question corrigée : il n'y a pas de question précédente." : "Revient à la question corrigée juste avant, telle qu'elle a été révélée."}, "← Question précédente"),
+          h("button", {className:"btn btn-ghost", disabled:pos <= 0, "data-va":pos > 0 ? "t-corr-q2-apres" : null, title:"Revenir à la question précédente dans l'ordre de correction (utile si tu veux retraiter une question avec la classe)."}, "← Question précédente"),
           reveler, suivant),
         !revele && pasLu.length > 0 && h("div", {className:"manquent"},
           h("div", {className:"tt"}, "« 💡 Révéler » s'ouvre quand les 24 présents ont lu la feuille de leur voisin. Il en manque " + pasLu.length + " :"),
@@ -317,6 +322,7 @@ function TelCorrAvant(){
       h("button", {className:"tel-btn tb-ghost tb-small ferme", disabled:true, title:"C'est la première question corrigée : il n'y a pas de question précédente."}, "← Question précédente")),
     h("div", {key:"m", className:"tel-manquent"}, h("strong", null, "Feuille pas encore lue : "), PAS_LU.map(function(p){ return nomDe(p); }).join(" · "),
       h("div", {className:"ss"}, "Une tablette en panne : un clic sur le nom, puis « 🚫 Marquer comme parti ».")),
+    h("div", {key:"st"}, TelStats(1, [0, 1, 2])),   // la bande des questions, comme dans la 7.7.1 à la correction (l. 5672)
     h("div", {key:"l"}, TelListe("TABLETTES — 18 / 24 feuilles lues · clic sur un nom pour agir", modeDe)),
     h("div", {key:"lg"}, TelLegende(["📄 feuille lue", "⏳ pas encore lue"])),
     h("div", {key:"t"}, h("button", {className:"tel-btn tb-rouge tb-small", "data-va":"c-terminer"}, "🛑 Terminer la session"))]);
@@ -535,6 +541,8 @@ function ScCoevalFeuille(){   // « La feuille dit autre chose : je clique ce qu
 }
 
 /* ════════ La fin : le bilan de l'élève (442, 456, 474, 484, 639) ════════ */
+// Le degré de la surestimation suit la règle du bilan général (com632.js, 686) : deux niveaux d'écart ou plus, « nettement » (632) ; un niveau, « un peu » (la 7.7.1)
+function degreSurestime(ecart){ return ecart >= 2 ? "Tu as nettement surestimé ce que tu avais réussi." : "Tu as un peu surestimé ce que tu avais réussi."; }
 function EcrBilan(e, opts){
   opts = opts || {};
   var st = stDe(e, true), pts = st.map(function(s){ return s === "j" || s === "t" ? 1 : 0; });
@@ -545,7 +553,7 @@ function EcrBilan(e, opts){
   var nE = FOURCH.filter(function(f){ return f.k === est; })[0].n, emE = MAITRISE.filter(function(x){ return x.k === est; })[0].em;
   var calib = idxE === idxR
     ? {type:"ok", msg:"✅ Tu te connais bien !", detail:"Tu pensais avoir " + libFourchette(nE).replace(" sur 3", "") + " " + emE + " et tu en as effectivement obtenu " + n + " sur " + tot + ". Ton estimation correspond à ton vrai résultat."}
-    : (idxE > idxR ? {type:"sur", msg:"⚠️ Tu pensais avoir mieux fait", detail:"Tu pensais avoir " + libFourchette(nE).replace(" sur 3", "") + " " + emE + " mais tu en as eu " + n + " sur 3 (" + libFourchette(n).replace(" sur 3", "") + " " + m.em + "). Tu as un peu surestimé ce que tu avais réussi."}
+    : (idxE > idxR ? {type:"sur", msg:"⚠️ Tu pensais avoir mieux fait", detail:"Tu pensais avoir " + libFourchette(nE).replace(" sur 3", "") + " " + emE + " mais tu en as eu " + n + " sur " + tot + " (" + libFourchette(n).replace(" sur 3", "") + " " + m.em + ").", degre:degreSurestime(idxE - idxR)}
                   : {type:"sous", msg:"🌟 Tu te sous-estimais !", detail:""});
   var corrige = e.cle === "M" ? 0 : -1;   // la question 1 de Michel, tranchée en sa faveur (538)
   var compQ = function(c){ return compQuestions(c).filter(function(i){ return i !== an; }).map(function(i, k){ return h(F, {key:i}, k ? " · " : "", "Q" + (i+1) + " ", st[i] === "t" ? h("span", {className:"v-orange"}, "✓") : st[i] === "j" ? "✓" : "✗"); }); };
@@ -580,7 +588,7 @@ function EcrBilan(e, opts){
     h("div", {className:"bilan-calibration bilan-calib-" + calib.type},
       h("h3", null, "🎯 Ton estimation"),
       h("div", {className:"bilan-calib-msg"}, calib.msg),
-      an < 0 && h("div", {className:"bilan-calib-detail"}, calib.detail))));
+      an < 0 && h("div", {className:"bilan-calib-detail"}, calib.detail, calib.degre && " ", calib.degre))));   // deux phrases : celle de la 7.7.1, puis le degré (686)
 }
 function BilanImprime(){ return h("div", {className:"bilan-imprime"}, h("div", {className:"bilan-imprime-page"}, EcrBilan(J, {imprime:true}))); }
 
@@ -736,7 +744,7 @@ function PilotCorrPapier(){
         h("div", {className:"pilot-q-current"}, h("div", {className:"num"}, "Question 2"), h("div", {className:"enonce"}, q.enonce),
           h("div", {className:"pilot-q-bonne"}, h("span", {style:{fontWeight:900}}, "✓ Bonnes réponses : "), q.bonnes.map(function(i){ return q.choix[i]; }).join("  /  "))),
         h("div", {className:"row", style:{marginTop:".8rem"}},
-          h("button", {className:"btn btn-ghost", disabled:true, title:"C'est la première question corrigée : il n'y a pas de question précédente."}, "← Question précédente"),
+          h("button", {className:"btn btn-ghost", disabled:true, title:"Revenir à la question précédente dans l'ordre de correction (utile si tu veux retraiter une question avec la classe)."}, "← Question précédente"),
           h("button", {className:"btn btn-or", "data-va":"t-papier-correction", title:"Sur papier, « Révéler » s'ouvre tout de suite : il n'y a pas de lecture du voisin."}, "💡 Révéler"),
           h("button", {className:"btn btn-primary", disabled:true, title:"S'ouvre quand cette question est révélée."}, "Question suivante →"))),
       h("div", {className:"suivi-box"}, h("h3", null, "📄 D'après ta grille", InfoI("Chaque moitié : la question d'après ta grille du soir. Un clic sur un nom agit sur l'élève.")),
@@ -852,7 +860,7 @@ function TelChrono(p){
 /* ── Les gestes de l'étape 3 : où mène chaque bouton, et son infobulle pour Paul ── */
 BULLES["⏸️ Finir à une autre heure"] = "Met la séance en pause, avec son état exact, pour la reprendre à une heure suivante : « ▶️ Reprendre » dans « 🎯 Pilotage classe ». Demande une confirmation.";
 ALLER["*"]["⏸️ Finir à une autre heure"] = "c-finir-autre-heure";
-BULLES["Question suivante →"] = "Passe à la question suivante de la correction : chacun lit d'abord la feuille de son voisin.";
+BULLES["Question suivante →"] = "Passer à la question suivante dans l'ordre trié par taux d'erreur.";
 // Le cas ambigu, sur l'évaluation de 3e (541 à 545)
 var GESTES_610 = {
   "Donner raison à Michel : B, C, E → 1 point": ["x610-tranche", "Applique ce que Michel dit avoir écrit, B, C, E : sa question 3 passe à 1 point, et sa note se recalcule. L'alerte se ferme ; « ↩️ Défaire » la rouvre."],

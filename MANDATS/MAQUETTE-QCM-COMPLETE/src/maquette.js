@@ -79,10 +79,14 @@ function calc(p){
 
 /* ════════════════════════ TABLETTE ════════════════════════ */
 function Page(badge, titre, enfants){
+  // (complément 1) « 📊 Mes évaluations » de la 7.7.1 (l. 2601 à 2603), sur chaque moitié où un élève est entré ; à côté de son nom,
+  // et pas sous la séance comme dans la 7.7.1 : sur une demi-tablette, la place sous la carte est celle des choix (464)
+  var mesEvals = badge && /^t-/.test(window.SCENE_COURANTE || "");
   return h("div", {className:"eleve-page"},
     DECO.map(function(e, i){ return h("span", {key:i, className:"deco"}, e); }),
     h("div", {className:"eleve-card"},
-      badge && h("div", {className:"eleve-classe-badge"}, badge),
+      badge && (mesEvals ? h("div", {className:"eleve-tete"}, h("div", {className:"eleve-classe-badge"}, badge), h("button", {className:"btn btn-ghost btn-sm mes-evals"}, "📊 Mes évaluations"))
+                         : h("div", {className:"eleve-classe-badge"}, badge)),
       titre && h("h1", null, titre),
       enfants));
 }
@@ -103,7 +107,7 @@ function QHead(qi, sansPts){
   return h("div", {className:"eleve-q-header"},
     h("span", {className:"eleve-q-num"}, "Question " + (qi+1) + (sansPts ? "" : " / " + EV.questions.length)),
     h("span", {className:"eleve-q-pastille", style:{background:NIV[q.niveau].color, color:q.niveau === "facile" ? "#5C4500" : "#fff"}}, NIV[q.niveau].label),
-    !sansPts && h("span", {className:"eleve-q-points-badge"}, "1 pt"));
+    !sansPts && h("span", {className:"eleve-q-points-badge", title:"Nombre de points que vaut cette question"}, "1 pt"));
 }
 function Clavier(chiffres){
   function t(c, cls, w){ return h("span", {key:c + (cls||""), className:"tc" + (cls ? " " + cls : ""), style:w ? {minWidth:w} : null}, c); }
@@ -182,7 +186,7 @@ function EcrReponse(e, qi, ordre, sel, chrono, ev){
     h("div", {className:"eleve-q-header"},
       h("span", {className:"eleve-q-num"}, "Question " + (qi+1) + " / " + (ev || EV).questions.length),
       h("span", {className:"eleve-q-pastille", style:{background:NIV[q.niveau].color, color:q.niveau === "facile" ? "#5C4500" : "#fff"}}, NIV[q.niveau].label),
-      h("span", {className:"eleve-q-points-badge"}, "1 pt")),
+      h("span", {className:"eleve-q-points-badge", title:"Nombre de points que vaut cette question"}, "1 pt")),
     h("div", {className:"eleve-q-enonce"}, q.enonce),
     h("div", {className:"eleve-pose-stylo"}, h("span", {className:"ic"}, "🖊️"), h("span", null, e.prenom + ", pose ton stylo. Sélectionne maintenant ta réponse.")),
     h("div", {className:"eleve-chrono" + (chrono <= 2 ? " urgent" : "")}, h("div", {className:"label"}, "Temps de réponse"), h("div", {className:"v"}, chrono)),

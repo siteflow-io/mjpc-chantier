@@ -442,3 +442,23 @@ Dans `pdf-625/` : `notes-competences-3-ESSAI.pdf`, sa page HTML, `gen625.js`. Le
 **Capture 625-2 — le PDF, page 2.**
 
 ![Capture 625-2](pdf-625/625-pdf-page-2.png)
+
+---
+
+## Tour 626 — le bilan général de l'élève, sur le modèle de la correction de dictée (points 620 à 628)
+
+Demande de Paul (10/10, 08:37) : « Il faut des commentaires personnalisés. regarde comment correction dictée génère son commentaire final, c'est lui qui doit servir de modèle. »
+
+Le modèle : `generateBilan` de `correction_dictee.html` (une ouverture selon la note, les points à travailler, un conseil ciblé) et sa carte « Bilan général » (pré-remplie, modifiable, « ↻ Regénérer », « ✓ Valider le bilan »). Le QCM : `maquette/com626.js` (`commentaireQCM`), la même forme ; les phrases qui ne sont ni dans la dictée ni dans la 7.7.1, mot pour mot, sont soulignées en pointillés orange. Scènes : `maquette/maquette626.js` et `maquette626.css`, assemblés par `build626.py`, pris par `capture626.js`. Le PDF : `pdf-626/` (`gen626.js`).
+
+**Capture 626-1 — Console, la fiche de Michel (capture 42) avec « 📝 Bilan général ».**
+
+![Capture 626-1](captures-626/626-1-fiche-bilan.png)
+
+**Capture 626-2 — Élève, le bilan de Lou (capture 66), qui finit par « 📝 Bilan ».**
+
+![Capture 626-2](captures-626/626-2-eleve-bilan.png)
+
+**Capture 626-3 — le PDF, page 1 : la ligne « Commentaire » porte le bilan général.** Pages 2 et 3 : `pdf-626/626-pdf-page-2.png`, `pdf-626/626-pdf-page-3.png`.
+
+![Capture 626-3](pdf-626/626-pdf-page-1.png)

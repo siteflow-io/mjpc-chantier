@@ -19199,3 +19199,39 @@ Réponse mot pour mot :
 619. **Au sas** : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/MAQUETTE-QCM-FLUX/README.md (section « Tour 625 »). Ensuite : le prompt (62, 123).
 
 10/10/2026 08:34 MEMO
+
+---
+
+## TOUR 626 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (10/10, 08:37) c'est bon là? POur les commentaires: Non. Il faut des commentaires personnalisés. regarde comment correction dictée génère son commentaire final, c'est lui qui doit servir de modèle.
+
+---
+
+## TOUR 626 — Claude (conscience n°12)
+
+Repoussé une fois les sept commits en production : accepté, `origin/main` = `d873f69`, en phase avec la copie locale. Lu dans `correction_dictee.html` (production) : `generateBilan` (ouverture selon la note, points à travailler, conseil ciblé), la carte « Bilan général » (`saveBilan`, `bilanComment`, « ↻ Regénérer », « ✓ Valider le bilan »), la copie qui affiche le bilan sous « Bilan », le ZIP qui prend le bilan validé sinon généré ; et dans la 7.7.1 les blocs « À revoir en priorité », « Bravo pour ces questions difficiles », `construireCalibrationBilan`. Écrit `commentaireQCM` sur la même forme, refait le PDF (trois pages pour 25 élèves, un élève jamais séparé de son commentaire, vérifié avec `pdftotext`), deux scènes de console et d'élève. Fichiers au sas, envoyés à Paul.
+
+Réponse mot pour mot :
+
+620. **Oui, c'est bon : la production est à jour.** Les sept commits sont partis du premier coup, sans nouvelle session : la production est maintenant à `d873f69`, identique à ma copie. Leur copie au sas est marquée « poussés ».
+
+621. **Le modèle, lu dans le code de la correction de dictée.** Dans l'onglet des copies, la carte « Bilan général » est remplie par l'app à partir des erreurs de l'élève, en trois ou quatre phrases : une ouverture selon la note, les points à travailler (le domaine dominant), puis un conseil ciblé. Tu la modifies si tu veux, avec « ↻ Regénérer » et « ✓ Valider le bilan ». C'est ce texte qui va sur sa copie, sous le titre « Bilan ».
+
+622. **Le QCM, ma proposition, sur la même forme.** D'abord une ouverture selon la maîtrise de la note, avec les phrases de la dictée (« dictée » devient « évaluation »). Ensuite ses compétences en Maîtrise fragile ou insuffisante, en « Points à travailler » ; s'il n'y en a pas, celles en Maîtrise satisfaisante, en « À consolider ». Puis une phrase ciblée, la première qui s'applique : le point d'autonomie retiré ; au moins deux questions ratées alors qu'elles étaient faciles ou réussies par la plupart de la classe ; au moins deux questions difficiles réussies. Enfin son estimation, avec les phrases de l'app.
+
+623. **Où il vit.** La même carte « 📝 Bilan général » est dans sa fiche (capture 42), avec « ↻ Regénérer » et « ✓ Valider le bilan ». Le texte finit son bilan, sous « 📝 Bilan », quand sa copie lui est rendue. Il est aussi dans la ligne « Commentaire » du PDF. Le PDF prend le bilan validé, sinon celui de l'app, comme le ZIP des copies de la dictée. Joints ici : la fiche de Michel, le bilan de Lou, le PDF.
+
+624. **À valider, soulignés en orange.** « À consolider : … » ; « Les compétences « Être autonome et responsable » et « S'impliquer dans les activités en classe et dans son travail personnel » ne sont pas atteintes pour cette évaluation. » ; « Conseil : commence par revoir les questions que tu as ratées alors qu'elles étaient faciles ou réussies par la plupart de la classe. » ; « Bravo pour les questions difficiles que tu as réussies. » ; « Évaluation difficile. Reprends les notions essentielles point par point. » (la dictée dit « les règles ») ; « Tu as nettement surestimé ce que tu avais réussi. », quand l'écart est de deux niveaux ou plus (615).
+
+625. **L'infobulle de « Bilan général »**, écrite pour toi : « Texte pré-rempli automatiquement à partir de ses résultats : sa note, ses compétences, son point d'autonomie, ses questions ratées ou réussies, son estimation. Modifie-le si tu veux, puis valide. C'est ce texte qui finit son bilan quand sa copie lui est rendue, et qui va dans la ligne « Commentaire » du PDF « notes et compétences ». »
+
+626. **Mesuré sur l'exemple : les commentaires sont longs**, jusqu'à quatre phrases, parce que les libellés des compétences sont longs. Pour 25 élèves, le PDF passe à trois pages ; un élève n'est jamais séparé de son commentaire. Je ne sais pas si École Directe limite la longueur d'un commentaire.
+
+627. **618 reste ouverte, telle quelle** : dans École Directe, ton extension doit-elle entrer autre chose qu'une note et un niveau par compétence ?
+
+628. **Au sas** : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/MAQUETTE-QCM-FLUX/README.md (section « Tour 626 »). Ensuite : le prompt (62, 123).
+
+10/10/2026 08:44 MEMO

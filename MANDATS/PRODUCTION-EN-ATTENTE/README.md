@@ -1,4 +1,6 @@
-# Production en attente — 7 commits prêts, non poussés (10/10/2026)
+# Production en attente — 7 commits prêts (10/10/2026) — POUSSÉS le 10/10 à 08:38
+
+**Poussés le 10/10/2026 à 08:38**, après le réglage de l'app Claude GitHub par Paul : la production (`main`) est à `d873f69`, identique à la copie de la conscience n°12. Ce dossier reste comme trace ; ne pas réappliquer les patchs.
 
 Dépôt de production : https://github.com/siteflow-io/monsieurjaipascompris (branche `main`, en ligne à `7063a88`).
 

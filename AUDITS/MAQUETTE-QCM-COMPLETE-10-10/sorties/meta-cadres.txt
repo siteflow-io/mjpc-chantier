@@ -1,0 +1,19 @@
+85 scènes (c-evals, c-eval-corbeille, c-collage) : INFOBULLE | Ouvre le mode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la correction. Ne change rien.
+159 scènes (c-evals, c-eval-corbeille, c-collage) : INFOBULLE | ⚙ Scènes de la maquette : le sommaire de toutes les scènes (simulation)
+1 scènes (x627-3-editeur) : TEXTE | Les deux relatives, coordonnées par « et », complètent « La lettre », dans la proposition principale.
+12 scènes (c-lancer, c-echange-refuse, c-appel) : TEXTE | 📱 Binômes proposés — d'après les exclusions, puis le QCM précédent
+3 scènes (b-reponse, b-recopie, b-correction) : TEXTE | 👥 Classe (25)
+11 scènes (x610-1-b-julien, x610-2-b-michel, x610-3-a-correction) : TEXTE | Je pose la question sur la Proposition Principale
+1 scènes (c-mode-emploi) : TEXTE | Deux élèves par tablette, une moitié chacun. Tu lances depuis « 🎯 Pilotage classe » : la classe, l'évaluation, la durée comptée, les binômes proposés (d'abord 
+1 scènes (x610-6-coeval-laquelle) : TEXTE | Quand est-ce qu'une Proposition Principale se coupe en…
+1 scènes (x610-feuille) : TEXTE | A · Je pose la question sur la Proposition Principale
+1 scènes (x610-feuille) : INFOBULLE | Clique si la feuille de Michel dit « Je pose la question sur la Proposition Principale ».
+1 scènes (x610-9-telephone-alerte) : TEXTE | Je pose la question sur la Proposition…
+1 scènes (x632-pdf) : TEXTE | Exemple de la maquette.
+1 scènes (x632-pdf) : TEXTE | Dans les commentaires, souligné en pointillés orange : une phrase proposée, pas encore validée par toi. Le reste vient mot pour mot de la correction de dictée (
+2 scènes (c-reglages, c-reglages-prompt) : TEXTE | Le prompt du cadrage (tour 630). Il ne devine jamais un temps : il te demande chaque temps, te dit « ça ne rentre pas », et ne produit le JSON qu'à ton « produi
+2 scènes (c-reglages, c-reglages-prompt) : TEXTE | Les tranches s'écrivent « de 5 à moins de 6 » : aucune note ne tombe entre deux (340).
+2 scènes (c-reglages, c-reglages-prompt) : INFOBULLE | Remet le prompt du cadrage (tour 630) à la place du tien. Une confirmation d'abord ; le tien part à la corbeille.
+1 scènes (c-reglages-prompt) : TEXTE | Tu vas m'aider à écrire une évaluation QCM pour ma classe. Elle se passe dans mon application, en classe, deux élèves par tablette. Voici comment elle se déroul
+1 scènes (c-rattrapage) : INFOBULLE | Ouvre l'appel du rattrapage : seuls les élèves pas encore notés sont proposés.
+1 scènes (x620-1-mode-test-ouverture) : TEXTE | 📱 Binômes proposés — dans l'ordre de la liste : la classe de test n'a pas de QCM précédent

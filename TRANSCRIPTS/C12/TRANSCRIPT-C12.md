@@ -19583,3 +19583,46 @@ Réponse mot pour mot :
 688. **Le rapport d'audit est au sas** : https://github.com/siteflow-io/mjpc-chantier/blob/main/AUDITS/MAQUETTE-QCM-COMPLETE-10-10/README.md
 
 10/10/2026 13:36 MEMO
+
+---
+
+## TOUR 639 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (10/10, 13:44) Ok fais le mandat qui règle tout. Puis dis moi quand je relance l'exécutant
+
+---
+
+## TOUR 639 — Claude (conscience n°12)
+
+Relu le rapport d'audit et le mandat d'origine ; relu dans la production (md5 inchangés, `main` à `d873f69`) la section « Élèves & codes » (l. 5505 à 5532), la fiche de l'élève (l. 5917), le menu du panneau prof (l. 1627 à 1646), la Taxonomie (l. 2084, 2484 à 2605), et `taxonomie_atelier.json` (1.4.0, 2026-08-02, 7 domaines, 51 familles, 210 notions, 28 compétences) ; relu dans la 7.7.1 la place de « 👀 Écoute le prof… » (l. 4362) et les infobulles du mode d'emploi (l. 6016) et du prompt (l. 6491 à 6499). Relevé neuf des 159 scènes de la v5, cadres compris : l'écran du PDF (`x632-pdf`) montre l'encadré de validation et 121 soulignés orange, cinquième défaut, manqué à l'audit. Écrit `MANDATS/COMPLEMENT-MAQUETTE-QCM-COMPLETE-1.md` ; ajouté au rapport d'audit la section du cinquième défaut.
+
+Réponse mot pour mot :
+
+689. **Le complément est au sas** : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/COMPLEMENT-MAQUETTE-QCM-COMPLETE-1.md. Il se fait d'une traite, sur la même branche « maquette-qcm », et livre une maquette v6.
+
+690. **Ce qu'il règle.** Il règle les quatre défauts de l'audit (681 à 684) et la tension 686 : je la prends pour acquise, puisque tu dis « tout ». Le bloc « 🎯 Ton estimation » dira donc « nettement » comme le bilan général, quand l'écart est de deux niveaux ou plus. Le banc reçoit cinq gardes de plus : l'existant, le méta, les chiffres, les limites et l'estimation.
+
+691. **Ta règle sur le professeur, telle que je l'écris pour l'exécutant.** Elle vise « va voir ton professeur » et ce qui te met en cause, pas le mot « prof ». « 👀 Écoute le prof — la correction sera révélée. » revient donc là où l'app d'aujourd'hui la montre. Le banc n'interdit plus que « va voir ».
+
+692. **Un cinquième défaut, trouvé en écrivant le complément, et c'est le mien.** L'écran du PDF « notes et compétences » montre encore mes marques de validation du tour 632 : l'encadré « Exemple de la maquette… » et 121 soulignés orange. C'est arrivé parce que mon mandat disait de reprendre mon PDF « mot pour mot ». Mon audit ne l'a pas vu, parce que mon relevé ne lisait pas l'intérieur de ce cadre. Le complément les retire, et sa garde du méta lit aussi l'intérieur des cadres. Le rapport d'audit est corrigé.
+
+693. **Trois choix faits pour que l'exécutant n'ait rien à décider.**
+- « 🚫 Jamais avec… » se place dans la vraie ligne de l'élève, juste après le ◆ de ses aménagements (585), et la ligne garde tout le reste.
+- Les 12 autres entrées du menu de MJPC sont grisées, avec l'infobulle « Inchangé : cet écran reste celui d'aujourd'hui. ».
+- Les limites se mesurent avec tous les choix à la même longueur, comme ton prompt l'exige déjà. Ta question 3 tient, mais pourrait dépasser cette limite prudente : le README le dira, chiffres à l'appui.
+
+694. **Une garde de plus sur les gardes.** Avant de corriger, l'exécutant joue chaque nouvelle garde sur la v5, et elle doit y trouver le défaut connu. Sinon, il la refait.
+
+695. **Tu peux relancer l'exécutant maintenant.** Le mieux est dans la même session que la première fois, si elle est encore ouverte : il connaît déjà sa maquette, et ça te coûte moins de crédits. Sinon, ouvre une nouvelle session cloud sur siteflow-io/mjpc-chantier. Le message à coller est le même dans les deux cas :
+
+```
+Tu es l'exécutant du complément 1 de la maquette complète du QCM de MJPC. Lis en entier MANDATS/COMPLEMENT-MAQUETTE-QCM-COMPLETE-1.md sur la branche main de ce dépôt, applique-le à la lettre, et fais tout le complément d'une traite sur la branche maquette-qcm, sans t'arrêter avant la fin de l'étape D.
+```
+
+Je ne sais pas combien de temps il prendra. Le premier passage a pris trois heures, et celui-ci est plus court.
+
+696. **Quand il a fini, dis-le-moi** : je fais l'audit final du complément.
+
+10/10/2026 14:02 MEMO

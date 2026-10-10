@@ -31,3 +31,15 @@ Ce qui a été vérifié : la branche n'écrit que dans `MANDATS/MAQUETTE-QCM-CO
 ## Une tension de cadrage, vue pendant l'audit (pas un défaut de l'exécutant)
 
 Dans le bilan de Michel (`t-bilan`), le bloc « 🎯 Ton estimation » dit « Tu as un peu surestimé ce que tu avais réussi » (la phrase de la 7.7.1, écart vert → orange), pendant que son bilan général (`c-fiche`) dit « tu as nettement surestimé ce que tu avais réussi » (point 657). Proposé à Paul : le bloc suit la même règle.
+
+## Ajout du 10/10, 14:00 (tour 639) : un cinquième défaut, manqué à l'audit
+
+**5. L'écran du PDF porte les marques de validation** (`x632-pdf`). On y voit l'encadré « Exemple de la maquette. Dans les commentaires, souligné en pointillés orange : une phrase proposée, pas encore validée par toi. … » et 121 soulignés orange. Ce sont les marques que `gen632.js` mettait pour la relecture de Paul au tour 632 ; tout est acquis depuis (point 659).
+
+La cause est double, et elle est de la conscience : le mandat demandait le PDF de `gen632.js` « mot pour mot » sans exclure ces marques, et le relevé de l'audit (`scripts/meta.js`) ne lisait pas l'intérieur des cadres (`iframe`).
+
+Le défaut a été trouvé en écrivant le complément, par un relevé neuf des 159 scènes, cadres compris :
+- textes et infobulles : `scripts/meta-cadres.js`, sortie `sorties/meta-cadres.txt`. Les autres lignes de cette sortie sont soit les défauts déjà relevés, soit de faux positifs : « Proposition Principale », « Binômes proposés », « 👥 Classe (25) », et le sommaire ⚙, qui est permis ;
+- soulignés : `scripts/soulignes.js`.
+
+La correction et sa garde sont dans le complément : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/COMPLEMENT-MAQUETTE-QCM-COMPLETE-1.md (défaut 5, garde 2).

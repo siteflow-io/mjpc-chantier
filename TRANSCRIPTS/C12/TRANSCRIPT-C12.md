@@ -19379,3 +19379,27 @@ Réponse mot pour mot :
 655. **Au sas** : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/MAQUETTE-QCM-FLUX/README.md (section « Tour 631 »). Le prompt (647 à 651) attend ton mot ; ensuite, le mandat de la maquette.
 
 10/10/2026 09:42 MEMO
+
+---
+
+## TOUR 632 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (10/10, 09:54) pour "ton estimation": ça doit être introduit par le contexte et vient toujours en dernier, donc avec un "enfin" "Enfin, ton estimation de ton nombre de bonnes réponses correspond etc."
+
+---
+
+## TOUR 632 — Claude (conscience n°12)
+
+Refait la phrase d'estimation (`com632.js`) et le PDF, vérifié avec `pdftotext` (Léa, Tom, Sacha). Fichiers au sas, PDF envoyé à Paul.
+
+Réponse mot pour mot :
+
+656. **Compris, et refait : l'estimation vient toujours en dernier, introduite par ta phrase.** Quand elle est juste : « Enfin, ton estimation de ton nombre de bonnes réponses correspond à ton vrai résultat : tu te connais bien ! »
+
+657. **Les deux autres cas, ma proposition, sur le même début** : « Enfin, ton estimation de ton nombre de bonnes réponses était trop haute : tu as un peu surestimé ce que tu avais réussi. » (« bien trop haute » et « nettement » quand l'écart est de deux niveaux ou plus) ; « Enfin, ton estimation de ton nombre de bonnes réponses était trop basse : tu as fait mieux que ce que tu croyais. » En partiel, « de tes points » remplace « de ton nombre de bonnes réponses ».
+
+658. **Le PDF refait est joint** (Léa, Tom et Sacha montrent les trois cas). Au sas : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/MAQUETTE-QCM-FLUX/README.md (section « Tour 632 »). Le prompt (647 à 651) attend toujours ton mot.
+
+10/10/2026 09:55 MEMO

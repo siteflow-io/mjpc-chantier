@@ -514,3 +514,15 @@ Demande de Paul (10/10, 09:41) : « un élève qui a tout bon n'a pas besoin de 
 **Capture 631 — le PDF, page 1.** Pages 2 et 3 : `pdf-631/631-pdf-page-2.png`, `pdf-631/631-pdf-page-3.png`.
 
 ![Capture 631](pdf-631/631-pdf-page-1.png)
+
+---
+
+## Tour 632 — l'estimation en dernier, avec « Enfin » (points 656 à 658)
+
+Demande de Paul (10/10, 09:54) : « pour "ton estimation": ça doit être introduit par le contexte et vient toujours en dernier, donc avec un "enfin" "Enfin, ton estimation de ton nombre de bonnes réponses correspond etc." »
+
+`maquette/com632.js` : la phrase d'estimation commence par « Enfin, ton estimation de ton nombre de bonnes réponses » (« de tes points » en partiel), toujours en dernier ; « était trop haute », « était bien trop haute », « était trop basse » sont proposés (soulignés). Le PDF : `pdf-632/` (`gen632.js`).
+
+**Capture 632 — le PDF, page 1.** Pages 2 et 3 : `pdf-632/632-pdf-page-2.png`, `pdf-632/632-pdf-page-3.png`.
+
+![Capture 632](pdf-632/632-pdf-page-1.png)

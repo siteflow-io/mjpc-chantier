@@ -426,3 +426,19 @@ Mesuré : `pdftotext` rend une ligne par élève, dans l'ordre ; 25 élèves tie
 **Capture 624 — le PDF, page 1.**
 
 ![Capture 624](pdf-624/624-pdf-notes-competences.png)
+
+---
+
+## Tour 625 — la colonne « Remarque » remplacée par une ligne « Commentaire » (points 612 à 619)
+
+Demande de Paul (10/10, 08:27) : École Directe a une zone commentaires pour chaque évaluation ; l'extension pourrait y mettre la remarque. À la place, une zone « Commentaire », qui permet à l'extension d'intégrer le commentaire final de l'élève sur son évaluation. « montre moi ».
+
+Dans `pdf-625/` : `notes-competences-3-ESSAI.pdf`, sa page HTML, `gen625.js`. Le commentaire est le dernier bloc du bilan de l'élève, « 🎯 Ton estimation », mot pour mot (textes de `construireCalibrationBilan`, 7.7.1), sans l'émoji. Il est sur sa propre ligne, sous l'élève : mesuré avec `pdftotext`, une colonne de trois lignes se collait à l'élève du dessus. Ce que disait la remarque (parti, absent) passe dans un cadre « À savoir — ne s'entre pas dans École Directe ». Deux pages pour 25 élèves ; l'en-tête du tableau se répète ; un élève n'est jamais séparé de son commentaire.
+
+**Capture 625-1 — le PDF, page 1.**
+
+![Capture 625-1](pdf-625/625-pdf-page-1.png)
+
+**Capture 625-2 — le PDF, page 2.**
+
+![Capture 625-2](pdf-625/625-pdf-page-2.png)

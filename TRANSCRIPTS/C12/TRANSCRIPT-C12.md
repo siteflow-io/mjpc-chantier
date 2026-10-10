@@ -19163,3 +19163,39 @@ Réponse mot pour mot :
 611. **Le PDF et sa capture sont au sas** : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/MAQUETTE-QCM-FLUX/README.md (section « Tour 624 »). Ensuite : le prompt (62, 123).
 
 10/10/2026 08:21 MEMO
+
+---
+
+## TOUR 625 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (10/10, 08:27) pour le pdf ok, en revanche dans les remarques attention, car ed a une zone commentaires pour chaque évaluation. l'extension pourrait prendre ça pour la zone remarque. au lieu de cette zone remarques, il pourrait y avoir plutot, justement, une zone commentaire, qui permet à l'extension  d'intégrer le commentaire final que l'élève a sur son évaluation. montre moi. Sinon, voilà le connecteur github ( capture)
+
+Pièce jointe : `pieces/T625-connecteur-github.png` — capture de la page « Intégration GitHub » de claude.ai — Compte GitHub connecté ; Application Claude GitHub, « Sessions cloud uniquement », siteflow-io « Installé », « Personnel » ; « Vérifier l'état du dépôt » : « Les sessions cloud de Claude Code peuvent fonctionner dans siteflow-io/mjpc-chantier. »
+
+---
+
+## TOUR 625 — Claude (conscience n°12)
+
+Cherché ce qu'est le commentaire final de l'élève : rien au cadrage sous ce nom ; dans la 7.7.1 et la maquette, le bilan de l'élève finit par « 🎯 Ton estimation » (textes de `construireCalibrationBilan`, `libelleFourchette`). Refait l'exemple du PDF avec ce texte, d'abord en colonne (mesuré avec `pdftotext` : trois lignes, la première collée à l'élève du dessus), puis sur une ligne sous chaque élève (une ligne, toujours sous son élève ; deux pages pour 25 élèves, l'en-tête répété). Mesuré avec la liste des dépôts de la session : monsieurjaipascompris visible, droit d'écrire du compte (`can_push`) ; pas de nouvelle tentative de push. PDF et captures au sas, envoyés à Paul.
+
+Réponse mot pour mot :
+
+612. **Compris : la colonne « Remarque » disparaît, et une ligne « Commentaire » la remplace, sous chaque élève.** J'ai pris pour commentaire final le dernier bloc de son bilan, « 🎯 Ton estimation », mot pour mot, tel que l'app l'écrit aujourd'hui, sans l'émoji. Par exemple : « Tu pensais avoir entre 9 et 11 bonnes réponses mais tu en as eu 6 sur 11. Tu as un peu surestimé ce que tu avais réussi. » Le nouvel exemple est joint ici.
+
+613. **Pourquoi une ligne sous l'élève, et pas une colonne.** Mesuré : dans une colonne, le commentaire tient sur trois lignes, et à la lecture du texte, sa première ligne se colle à l'élève du dessus. Sur sa propre ligne, il suit toujours son élève. Le PDF passe à deux pages pour 25 élèves, l'en-tête du tableau est répété, et un élève n'est jamais séparé de son commentaire.
+
+614. **Ce que disait la remarque va dans un cadre « À savoir — ne s'entre pas dans École Directe »**, sous le tableau : Noah, parti après la question 7, noté sur 7 questions ; Adam, absent, pas encore de rattrapage. Le haut du PDF dit à ton extension que ce cadre ne s'entre pas. Un absent, ou un élève parti avant l'estimation, a « Commentaire : — ».
+
+615. **Mesuré sur l'exemple : la phrase de l'app dit « un peu surestimé » quel que soit l'écart.** Sacha pensait avoir entre 6 et 8 bonnes réponses, il en a eu 1, et lit : « Tu as un peu surestimé ce que tu avais réussi. » Dans École Directe, sa famille la lira aussi. C'est la phrase de l'app aujourd'hui : je n'y touche pas sans la tienne.
+
+616. **Le connecteur de ta capture** : l'app Claude est bien installée sur siteflow-io, et le dépôt vérifié est mjpc-chantier, celui qui marche. Mesuré de mon côté : ton compte a le droit d'écrire dans monsieurjaipascompris. C'est donc l'app qui n'y a pas accès, je pense parce qu'elle n'a reçu qu'une partie de tes dépôts.
+
+617. **Ton geste** : sur cette même page, dans le menu de « Vérifier l'état du dépôt », choisis siteflow-io/monsieurjaipascompris. S'il n'est pas vert, va sur https://github.com/settings/installations, clique « Configure » à côté de Claude, puis, dans « Repository access », ajoute monsieurjaipascompris (ou choisis « All repositories ») et enregistre. Dis-moi quand c'est fait : je repousse une fois les sept commits. Je ne sais pas si cette session le verra sans en ouvrir une nouvelle.
+
+618. **Le commentaire répond en partie à 610 ; le reste, tel quel** : dans École Directe, ton extension doit-elle entrer autre chose qu'une note et un niveau par compétence ? Le plus sûr est de lui montrer ce PDF d'exemple, sans rien entrer, et de lui demander ce qui lui manque.
+
+619. **Au sas** : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/MAQUETTE-QCM-FLUX/README.md (section « Tour 625 »). Ensuite : le prompt (62, 123).
+
+10/10/2026 08:34 MEMO

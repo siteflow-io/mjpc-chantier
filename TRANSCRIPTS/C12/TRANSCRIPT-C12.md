@@ -19089,3 +19089,35 @@ Réponse mot pour mot :
 592. **La suite** : au prochain tour, la forme du PDF « notes et compétences » (318).
 
 10/10/2026 07:52 MEMO
+
+---
+
+## TOUR 623 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (10/10, 07:59) ok. non non, tu confonds index.html des conventions de stage avec index.html de mjpc. pour les apps à placement libre, en réalité, il faudra compléter leur console en faisant exactement la même chose que pour correection dictée et qcm: la vue tablette, la connexion etc. et formation des binomes par d'abord la règle d'exclusion (donc l'élève n'a mêem pas de message "ce binome n'est pas possible") qui fait que quand l'un rentre son code, la deuxième partie de sa tablette nomme le binome, et des règles d'entraide que je définirai moi même pour chaque app en fonction de sa spécificité. en revanche, vu que c'est du prévu et que ça ne va pas être codé dans la foulée ici (sauf pour mjpc et qcm), je ne veux pas que ça se perde dans la masse des données sur github. à inscrire en entête du code de chaque app  (à terme, elles partageront toutes leur écran en deux).
+
+---
+
+## TOUR 623 — Claude (conscience n°12)
+
+Lu dans la copie de la production (à jour : `git fetch` sans changement, `7063a88`) : la tête de chaque app, et le bloc « À CODER » qui existait en tête de reecriture.html. Écrit le bloc dans 11 apps, vérifié dans Chromium (mode standard, titres), commité en local (6 commits d'avance, non poussés : écriture refusée depuis le 08/10, sans nouvelle tentative). Patch et README déposés au sas : MANDATS/EN-TETES-APPS-BINOMES/. CADRAGE-QCM.md complété (tour 623, ligne d'état). Rien écrit au hub.
+
+Réponse mot pour mot :
+
+593. **591 : compris, je confondais.** L'index.html que tu promeus toi-même est celui des conventions de stage ; celui de MJPC entre au mandat comme les autres fichiers.
+
+594. **588 est remplacé : plus de placement libre.** Chaque app qui partage une tablette recevra exactement le mécanisme de la correction de dictée et du QCM : dans sa console, la vue des tablettes et la connexion à deux ; des binômes formés d'abord par les exclusions, puis par les règles d'entraide de l'app, que tu définiras pour chacune. Quand un élève entre son code, l'autre moitié nomme son binôme ; aucun élève ne voit jamais rien des exclusions.
+
+595. **Une tension pour le QCM** : son rattrapage était prévu en placement libre (422). Ma proposition : il suit la même règle, binômes formés par les exclusions, puis par celle du QCM.
+
+596. **Ce que code ce mandat** : les exclusions dans MJPC, et le QCM. Le reste est prévu, et maintenant écrit en tête du code de chaque app, dans un bloc « À CODER — Fonctionnalités prévues pour des sessions futures ». Ce bloc existe déjà dans reecriture.html : j'ai repris sa forme, et ajouté un point 2 au sien.
+
+597. **Les 11 apps qui ont reçu le bloc** : Console_ateliers_revisions, analyse_logique, applause_meter, correction_dictee, dictee_universelle, etude_dugain, pilotage_debat_s3, redaction_dugain_v3, reecriture, reecriture_bb4e, worktrack. Pour la correction de dictée, il dit que tout existe déjà sauf la règle d'exclusion, qui passera avant sa règle des erreurs ; pour la dictée universelle, qu'il reste la tablette en deux et l'exclusion avant la distribution. Pas de bloc dans deploy-monitor, outil de déploiement et non app de classe, ni dans index.html et le QCM, codés par le mandat. Vérifié : les 11 pages s'ouvrent comme avant (mode standard, titres intacts) ; seul le commentaire de tête change.
+
+598. **Où c'est** : enregistré dans ma copie de la production, mais pas encore en ligne, puisque l'écriture m'y est refusée (583). Pour ne rien perdre, le même changement est au sas : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/EN-TETES-APPS-BINOMES/README.md. Il partira en production avec un jeton qui écrit, avant le mandat.
+
+599. **La suite** : au prochain tour, la forme du PDF « notes et compétences » (318).
+
+10/10/2026 08:01 MEMO

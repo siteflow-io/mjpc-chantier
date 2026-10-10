@@ -199,7 +199,7 @@ var ORDRE = [
     ["x620-3-mode-test-en-grand", 4, "« 🔍 Jouer en grand »."]]],
   // Q. Annexe
   ["Annexe : la demi-tablette", [
-    ["t-annexe", 5, "La vraie question 3 de l'évaluation de 3e, sur une demi-tablette."]]]
+    ["t-annexe", 5, "L'étalon des mesures : la vraie question 3 de l'évaluation de 3e (6 choix longs), sur une demi-tablette : 67 px de reste."]]]
 ];
 
 /* Le PDF « notes et compétences » de gen632.js, tel quel, dans l'aperçu d'impression du navigateur */

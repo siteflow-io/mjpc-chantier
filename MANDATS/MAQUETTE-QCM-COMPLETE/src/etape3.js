@@ -62,16 +62,16 @@ function pastilles3(e, nbRev){
 function EcrLecture(e, qi, dit, chrono){
   var q = EV.questions[qi], ordre = ORD[qi][e.cle], lu = LU[e.cle][qi], v = autreDe(e);
   var luArr = lu === "aucun" ? [] : lu, pos = ORDRE_CORR.indexOf(qi);
-  return Page(badgeDe(e), "📝 Correction", h(F, null,
+  var long = q.choix.some(function(c){ return c.length > 40; });   // comme l'écran de réponse : les choix longs, un par ligne
+  return Page(badgeDe(e), "📝 Correction", h("div", {className:"serre-3e"},
     h("div", {className:"correction-banner-peda"}, "💡 On corrige d'abord les questions les plus ratées par la classe."),
     Compteur(pastilles3(e, pos), pos),
     h("div", {className:"eleve-q-zone"}, QHead(qi, true), h("div", {className:"eleve-q-enonce"}, q.enonce),
       h("div", {className:"montre"}, "📄 " + e.prenom + ", montre ta feuille à " + v.prenom + "."),
       h("div", {className:"decl-titre"}, v.prenom + ", lis la feuille de " + e.prenom + " : qu'a-t-" + il(e) + " écrit ?"),
       h("div", {className:"decl-consigne"}, "Clique sur le ou les choix qui disent la même chose que sa feuille. Les mots ne sont pas forcément les mêmes."),
-      h("div", {className:"soin"}, "Lis avec soin : c'est ton point d'autonomie."),
-      chrono != null && ChronoSaisie(chrono, q.reponse),
-      h("div", {className:"eleve-choix"},
+      h("div", {className:"lecture-l"}, h("div", {className:"soin"}, "Lis avec soin : c'est ton point d'autonomie."), chrono != null && ChronoSaisie(chrono, q.reponse)),
+      h("div", {className:"eleve-choix" + (long ? " long" : "")},
         ordre.map(function(i){ return h("button", {key:i, className:"eleve-choix-btn" + (dit && luArr.indexOf(i) >= 0 ? " selected" : "")}, h("span", null, q.choix[i])); }),
         h("button", {className:"eleve-choix-btn aucun" + (dit && lu === "aucun" ? " selected" : "")}, "Sa feuille ne dit aucun de ces choix")),
       dit && h("div", {className:"eleve-feedback valide"}, "✅ Réponse enregistrée — tu peux encore la changer"))));

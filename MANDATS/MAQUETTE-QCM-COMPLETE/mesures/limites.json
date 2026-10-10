@@ -1,0 +1,306 @@
+{
+ "etalon_q3_reste_px": 67,
+ "ecrans": {
+  "reponse": {
+   "4": [
+    {
+     "enonce": 60,
+     "choix_max": 218
+    },
+    {
+     "enonce": 120,
+     "choix_max": 215
+    },
+    {
+     "enonce": 180,
+     "choix_max": 209
+    },
+    {
+     "enonce": 240,
+     "choix_max": 142
+    },
+    {
+     "enonce": 300,
+     "choix_max": 140
+    }
+   ],
+   "5": [
+    {
+     "enonce": 60,
+     "choix_max": 142
+    },
+    {
+     "enonce": 120,
+     "choix_max": 140
+    },
+    {
+     "enonce": 180,
+     "choix_max": 139
+    },
+    {
+     "enonce": 240,
+     "choix_max": 74
+    },
+    {
+     "enonce": 300,
+     "choix_max": 74
+    }
+   ],
+   "6": [
+    {
+     "enonce": 60,
+     "choix_max": 77
+    },
+    {
+     "enonce": 120,
+     "choix_max": 74
+    },
+    {
+     "enonce": 180,
+     "choix_max": 74
+    },
+    {
+     "enonce": 240,
+     "choix_max": 71
+    },
+    {
+     "enonce": 300,
+     "choix_max": 41
+    }
+   ]
+  },
+  "b": {
+   "4": [
+    {
+     "enonce": 60,
+     "choix_max": 182
+    },
+    {
+     "enonce": 120,
+     "choix_max": 158
+    },
+    {
+     "enonce": 180,
+     "choix_max": 136
+    },
+    {
+     "enonce": 240,
+     "choix_max": 127
+    },
+    {
+     "enonce": 300,
+     "choix_max": 104
+    }
+   ],
+   "5": [
+    {
+     "enonce": 60,
+     "choix_max": 104
+    },
+    {
+     "enonce": 120,
+     "choix_max": 86
+    },
+    {
+     "enonce": 180,
+     "choix_max": 79
+    },
+    {
+     "enonce": 240,
+     "choix_max": 65
+    },
+    {
+     "enonce": 300,
+     "choix_max": 55
+    }
+   ],
+   "6": [
+    {
+     "enonce": 60,
+     "choix_max": 100
+    },
+    {
+     "enonce": 120,
+     "choix_max": 80
+    },
+    {
+     "enonce": 180,
+     "choix_max": 77
+    },
+    {
+     "enonce": 240,
+     "choix_max": 59
+    },
+    {
+     "enonce": 300,
+     "choix_max": 55
+    }
+   ]
+  },
+  "lecture": {
+   "4": [
+    {
+     "enonce": 60,
+     "choix_max": 173
+    },
+    {
+     "enonce": 120,
+     "choix_max": 173
+    },
+    {
+     "enonce": 180,
+     "choix_max": 165
+    },
+    {
+     "enonce": 240,
+     "choix_max": 89
+    },
+    {
+     "enonce": 300,
+     "choix_max": 86
+    }
+   ],
+   "5": [
+    {
+     "enonce": 60,
+     "choix_max": 165
+    },
+    {
+     "enonce": 120,
+     "choix_max": 86
+    },
+    {
+     "enonce": 180,
+     "choix_max": 86
+    },
+    {
+     "enonce": 240,
+     "choix_max": 83
+    },
+    {
+     "enonce": 300,
+     "choix_max": 30
+    }
+   ],
+   "6": [
+    {
+     "enonce": 60,
+     "choix_max": 86
+    },
+    {
+     "enonce": 120,
+     "choix_max": 83
+    },
+    {
+     "enonce": 180,
+     "choix_max": 41
+    },
+    {
+     "enonce": 240,
+     "choix_max": 32
+    },
+    {
+     "enonce": 300,
+     "choix_max": 30
+    }
+   ]
+  }
+ },
+ "total": {
+  "4": [
+   {
+    "enonce": 80,
+    "total_max": 640
+   },
+   {
+    "enonce": 100,
+    "total_max": 640
+   },
+   {
+    "enonce": 120,
+    "total_max": 640
+   },
+   {
+    "enonce": 150,
+    "total_max": 530
+   },
+   {
+    "enonce": 200,
+    "total_max": 440
+   },
+   {
+    "enonce": 250,
+    "total_max": 410
+   }
+  ],
+  "5": [
+   {
+    "enonce": 80,
+    "total_max": 410
+   },
+   {
+    "enonce": 100,
+    "total_max": 410
+   },
+   {
+    "enonce": 120,
+    "total_max": 410
+   },
+   {
+    "enonce": 150,
+    "total_max": 330
+   },
+   {
+    "enonce": 200,
+    "total_max": 270
+   },
+   {
+    "enonce": 250,
+    "total_max": 210
+   }
+  ],
+  "6": [
+   {
+    "enonce": 80,
+    "total_max": 480
+   },
+   {
+    "enonce": 100,
+    "total_max": 480
+   },
+   {
+    "enonce": 120,
+    "total_max": 480
+   },
+   {
+    "enonce": 150,
+    "total_max": 120
+   },
+   {
+    "enonce": 200,
+    "total_max": 120
+   },
+   {
+    "enonce": 250,
+    "total_max": 120
+   }
+  ]
+ },
+ "q3_reel": {
+  "reponse": 51,
+  "b": 20,
+  "lecture": 3
+ },
+ "q3_longueurs": {
+  "enonce": 96,
+  "choix": [
+   49,
+   44,
+   60,
+   58,
+   137,
+   54
+  ],
+  "total_choix": 402
+ }
+}

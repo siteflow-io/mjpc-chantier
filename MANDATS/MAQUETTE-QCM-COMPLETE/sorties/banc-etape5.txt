@@ -1,0 +1,5 @@
+Banc unique — maquette complète du QCM
+Fichier : maquette-qcm-v5.html · étape jouée : 5 · 2026-10-10T10:50:38.972Z
+159 scènes
+Vérifications : 15712 · échecs : 0
+Zéro défaut.

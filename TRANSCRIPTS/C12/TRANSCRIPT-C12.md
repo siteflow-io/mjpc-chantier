@@ -19465,3 +19465,29 @@ Réponse mot pour mot :
 669. **Ensuite** : quand il a fini, dis-le-moi ; je fais l'audit final de sa branche, puis tu valides sur captures.
 
 10/10/2026 10:09 MEMO
+
+---
+
+## TOUR 635 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (10/10, 10:11) 666. Non, corrigée. une livraison ne doit jamais avoir de trous ou de dettes.
+
+---
+
+## TOUR 635 — Claude (conscience n°12)
+
+Corrigé `MANDATS/MANDAT-MAQUETTE-QCM-COMPLETE.md` : retirés les marques de trou et le défaut toléré après trois essais ; les phrases d'élève reprises mot pour mot du cadrage, des maquettes existantes et de la 7.7.1, cherchées par le banc dans ces trois sources.
+
+Réponse mot pour mot :
+
+670. **Compris : une phrase introuvable se corrige, et une livraison n'a jamais ni trou ni dette.** Le mandat est corrigé : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/MANDAT-MAQUETTE-QCM-COMPLETE.md
+
+671. **Ce qui a changé dans le mandat.** Plus aucune marque de trou. Chaque phrase d'élève se reprend mot pour mot de ce que tu as déjà validé : le cadrage, les maquettes existantes, et l'app d'aujourd'hui pour ce qu'elle a déjà. Le banc la cherche dans ces trois sources ; s'il ne la trouve pas, c'est un défaut, et l'exécutant la corrige en reprenant la phrase validée. Un point du cadrage sans écran est un oubli, qu'il fait avant de livrer.
+
+672. **667 est retiré** : plus de défaut laissé de côté après trois essais. Tant qu'une garde échoue, il corrige et rejoue ; si une correction résiste, il reprend l'écran depuis l'existant plutôt que de le rafistoler. Il ne livre qu'à zéro trou, zéro dette, zéro défaut, et le banc final le prouve.
+
+673. **La phrase à coller ne change pas** (668).
+
+10/10/2026 10:12 MEMO

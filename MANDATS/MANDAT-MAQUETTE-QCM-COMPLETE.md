@@ -1,6 +1,6 @@
 # MANDAT — LA MAQUETTE COMPLÈTE DU QCM, À DEUX PAR TABLETTE, POUR LA VALIDATION DE PAUL
 
-*Écrit par la conscience n°12 le 10/10/2026 (tour 633), revu au tour 634, sur l'ordre de Paul : « Je suis à 93 pourcent d'utilisation hebdo, donc la maquette devra être faite par un claude code qui tournera avec mes crédits » (09:14) ; « VOilà, c'est bon. On peut lancer. » (09:58) ; « l'exécutant doit faire l'ensemble du mandat. pas d'audit après chaque morceau. Audit final de ta part. Sinon je ne gagne pas de temps en utilisant claude code, dont l'avantage majeur est de tourner sans s'arrêter. Cependant, il faut des gardes afin qu'il ne produise pas une livraison complètement bugguée: d'où l'obligation des bancs, des autocorrections, etc. » (10:07). Pour un exécutant en session cloud de Claude Code, dans le dépôt du sas `siteflow-io/mjpc-chantier`.*
+*Écrit par la conscience n°12 le 10/10/2026 (tour 633), revu aux tours 634 et 635, sur l'ordre de Paul : « Je suis à 93 pourcent d'utilisation hebdo, donc la maquette devra être faite par un claude code qui tournera avec mes crédits » (09:14) ; « VOilà, c'est bon. On peut lancer. » (09:58) ; « l'exécutant doit faire l'ensemble du mandat. pas d'audit après chaque morceau. Audit final de ta part. Sinon je ne gagne pas de temps en utilisant claude code, dont l'avantage majeur est de tourner sans s'arrêter. Cependant, il faut des gardes afin qu'il ne produise pas une livraison complètement bugguée: d'où l'obligation des bancs, des autocorrections, etc. » (10:07) ; « Non, corrigée. une livraison ne doit jamais avoir de trous ou de dettes. » (10:11). Pour un exécutant en session cloud de Claude Code, dans le dépôt du sas `siteflow-io/mjpc-chantier`.*
 
 ---
 
@@ -22,12 +22,12 @@ Tu ne fais **jamais** :
 3. lire ou écrire le hub Firebase réel : la maquette n'a **aucun réseau** et **aucune écriture** (protocole maquette, §2 et §7) ; le seul serveur permis est le faux hub du banc, en local ;
 4. mettre un jeton, une clé ou une adresse de dépôt dans un fichier ;
 5. employer un service ou une API payante, ou une IA dans la maquette ;
-6. **écrire une phrase vue par l'élève que Paul n'a pas donnée**. Toutes les phrases d'élève sont dans le cadrage (et dans les maquettes existantes, qui les reprennent). S'il en manque une, tu ne l'inventes pas : tu poses à sa place, en rouge, `[TROU — phrase à donner par Paul : <ce qu'elle doit dire>]`, et tu la listes dans le README de la livraison (§9) ;
-7. combler seul un trou de comportement : même règle, `[TROU — à trancher par Paul : …]` ;
+6. **écrire une phrase vue par l'élève que Paul n'a pas donnée**. Chaque phrase d'élève se reprend **mot pour mot** de ce que Paul a déjà validé : le cadrage, les maquettes existantes (§3), et l'app d'aujourd'hui (la 7.7.1, pour ce qu'elle a déjà). Le cadrage est fini (Paul, tour 621) : la phrase existe. Si tu ne la trouves pas, c'est que tu ne l'as pas encore trouvée ou que tu l'as mal reprise : tu cherches, et tu la reprends telle quelle ;
+7. décider seul d'un comportement : chaque comportement vient du cadrage, de l'app d'aujourd'hui ou des maquettes existantes, dans cet ordre de priorité (le cadrage le plus récent l'emporte) ;
 8. ajouter à la maquette une fonction qui n'est pas cadrée, ou refaire autrement une fonction qui existe déjà dans l'app (règle du 03/10 : une maquette part de l'existant) ;
 9. utiliser de vrais élèves : la classe inventée « 3 ESSAI » (maquette) et les 30 élèves de la classe de test (mode test) suffisent ;
-10. t'arrêter avant la fin du mandat, ou demander quoi que ce soit en cours de route : personne ne te répondra. Un trou ne t'arrête pas : tu le marques (points 6 et 7) et tu continues. Tu ne t'arrêtes qu'**une fois**, quand l'étape 5 est finie et son banc à zéro défaut ;
-11. passer à l'étape suivante tant que le banc de l'étape n'est pas à zéro défaut, sauf un défaut marqué « non résolu » après trois tours de correction (§7).
+10. t'arrêter avant la fin du mandat, ou demander quoi que ce soit en cours de route : personne ne te répondra. Tu ne t'arrêtes qu'**une fois**, quand l'étape 5 est finie et son banc à zéro défaut ;
+11. livrer avec un trou, une dette ou un défaut : **une livraison n'a jamais ni trou ni dette** (Paul, tour 635). Un défaut se corrige, toujours ; tu ne passes à l'étape suivante qu'à zéro défaut.
 
 Dans les textes vus par l'élève, les règles permanentes de Paul s'appliquent : « clique », jamais « touche » ; jamais « recopie » ni « sanction » côté élève ; jamais « va voir ton professeur » (en classe, l'élève lève la main) ; jamais l'intitulé officiel d'une compétence, mais son libellé élève (points 636 à 640) ; aucun terme technique ; rien qui mette en cause le professeur. Côté console, chaque geste porte son infobulle, écrite pour Paul : ce que le geste fait et ce qu'il coûte.
 
@@ -89,7 +89,7 @@ Les 66 captures datent du tour 603. Paul a relu jusqu'au tour 608, et le cadrage
 | 622 et 623 | 584 à 599 | les exclusions dans la console MJPC, sur la fiche de la classe, à côté des aménagements : « 🚫 Jamais avec… », au plus 3 par élève, la quatrième refusée avec la raison (585, 590) ; les binômes formés d'abord par les exclusions, puis par la règle du QCM (587, 594) ; quand un élève entre son code, l'autre moitié nomme son binôme, et aucun élève ne voit rien des exclusions (594) ; le rattrapage suit la même règle (595) |
 | 624 à 632 | 600 à 658 | « 📄 PDF notes et compétences », fermé tant que les copies ne sont pas rendues (609) ; le PDF de `pdf-632` ; « 📝 Bilan général » dans la fiche, pré-rempli, « ↻ Regénérer », « ✓ Valider le bilan » (621 à 625) ; le bilan de l'élève qui finit par « 📝 Bilan » (623) ; « 🎯 Ce qu'elle vérifie » dans l'éditeur, et la garde au collage (631) ; **le libellé élève de chaque compétence partout où l'élève voit une compétence**, y compris les attestations et la phrase sous chaque question (636 à 640, 644) ; dans l'éditeur de taxonomie du panneau prof de MJPC, une section « Les compétences » avec leur libellé élève, comme pour les notions (637) ; dans Réglages, le prompt (647 à 650), les durées de la séance (649), les niveaux de maîtrise et l'échelle de la note (108, 131) ; le commentaire de `com632.js` partout où il paraît |
 
-À la fin, ton étape 5 donne un **tableau « point → scène »** : pour chaque point retenu qui se voit, la scène qui le montre. Un point sans scène est un trou, listé.
+À la fin, ton étape 5 donne un **tableau « point → scène »** : pour chaque point retenu qui se voit, la scène qui le montre. Un point sans scène est un oubli : tu le fais avant de livrer.
 
 ---
 
@@ -121,11 +121,11 @@ Cinq étapes, enchaînées sans arrêt. Chacune finit par **sa garde** : le banc
 À la fin de chaque étape, **avant** le commit :
 1. **Le banc unique** (§8) rejoue tout ce qui existe, pas seulement l'étape : zéro défaut, sinon tu corriges et tu rejoues.
 2. **Tu regardes toutes les captures de l'étape** (tu ouvres chaque image) : un écran vide, coupé, qui déborde, qui chevauche, qui montre un texte en double ou un « [object Object] » est un défaut, même si le banc passe. Tu corriges, tu rejoues, tu recaptures.
-3. **Tu relis l'étape contre le cadrage** : pour chaque point du §4 de cette étape, la scène qui le montre ; un point sans scène est soit un oubli (tu le fais), soit un trou (tu le marques).
+3. **Tu relis l'étape contre le cadrage** : pour chaque point du §4 de cette étape, la scène qui le montre ; un point sans scène est un oubli : tu le fais.
 4. **Tu tiens le journal des défauts** : chaque défaut trouvé, sa cause, sa correction, l'étape. Un défaut qui revient deux fois reçoit une vérification de plus dans le banc, pour ne plus revenir.
 5. **Tu pousses** le commit de l'étape, avec la sortie du banc dans `sorties/`.
 
-Si une même garde échoue encore après trois tours de correction, tu ne bloques pas : tu marques le défaut `[DÉFAUT NON RÉSOLU : …]` dans la scène, tu le listes en tête du README, et tu continues.
+Tant qu'une garde échoue, tu corriges et tu rejoues : il n'y a pas d'exception, pas de défaut laissé « pour plus tard ». Si une correction résiste, tu reprends l'écran depuis l'existant (§3) plutôt que de le rafistoler.
 
 ---
 
@@ -134,7 +134,7 @@ Si une même garde échoue encore après trois tours de correction, tu ne bloque
 Une commande rejoue tout et échoue si une seule vérification échoue. Il grandit à chaque étape et vérifie, au moins :
 1. chaque scène s'ouvre sans erreur de page, et montre quelque chose ;
 2. aucune moitié de tablette ne déborde (sauf « longueur assumée »), aux tailles du §5 ;
-3. **chaque phrase vue par l'élève vient du cadrage** : le banc extrait tous les textes des scènes de tablette, d'élève et de tableau, et cherche chacun dans `MANDATS/CADRAGE-QCM.md` et dans les sources des maquettes existantes (§3) ; un texte introuvable est soit un défaut (tu as inventé : tu corriges), soit un trou marqué ; les noms d'élèves, les nombres et les énoncés de l'évaluation sont mis à part ;
+3. **chaque phrase vue par l'élève vient de ce que Paul a validé** : le banc extrait tous les textes des scènes de tablette, d'élève et de tableau, et cherche chacun, mot pour mot, dans `MANDATS/CADRAGE-QCM.md`, dans les sources des maquettes existantes (§3) et dans `evaluation-qcm.html` de la production ; un texte introuvable est un défaut, que tu corriges en reprenant la phrase validée ; les noms d'élèves, les nombres et les énoncés de l'évaluation sont mis à part ;
 4. aucun texte vu par l'élève ne contient « touche », « recopie », « sanction », « attestation », « va voir », un intitulé officiel de compétence, un code (`c4-…`, `tr-…`) ou un mot de plomberie ;
 5. aucun bouton de console sans infobulle, aucun bouton inerte ;
 6. aucun `alert`, `confirm` ou `prompt` ; aucun `fetch`, aucun stockage, aucune requête réseau ;
@@ -153,7 +153,7 @@ Sur la branche `maquette-qcm`, dans `MANDATS/MAQUETTE-QCM-COMPLETE/` :
 2. `sorties/` : la sortie réelle du banc final, et celle de chaque étape ;
 3. `captures/` : toutes les captures, écran entier, regardées ;
 4. le livret PDF ;
-5. un `README.md` : en tête, les défauts non résolus s'il y en a ; puis ce qui est fait, étape par étape ; ce que la maquette simule ; ce qui n'est pas fait ; **les trous**, chacun avec sa scène et ce qu'il faut à Paul pour le trancher ; le journal des défauts ; les mesures ; le tableau « point → scène » ; et, scène par scène, ce que Paul peut regarder.
+5. un `README.md` : ce qui est fait, étape par étape ; ce que la maquette simule ; le journal des défauts trouvés et corrigés ; les mesures ; le tableau « point → scène » ; et, scène par scène, ce que Paul peut regarder. Zéro trou, zéro dette, zéro défaut : le banc final le prouve.
 
 ## 10. Après l'étape 5
 

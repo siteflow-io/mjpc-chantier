@@ -1,0 +1,3 @@
+     85 Ouvre le mode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la correction. Ne change rien.
+      2 Remet le prompt du cadrage (tour 630) à la place du tien. Une confirmation d'abord ; le tien part à la corbeille.
+      1 246 lignes

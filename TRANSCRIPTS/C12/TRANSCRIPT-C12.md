@@ -19547,3 +19547,39 @@ Tu es l'exécutant du mandat « Maquette complète du QCM » de MJPC. Lis en ent
 679. **Quand il a fini**, dis-le-moi : je fais l'audit final de sa branche « maquette-qcm ».
 
 10/10/2026 10:19 MEMO
+
+---
+
+## TOUR 638 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (10/10, 13:21) Fini
+
+---
+
+## TOUR 638 — Claude (conscience n°12)
+
+Audit de la branche `maquette-qcm` (commit `50b1efee`) : md5 de la maquette vérifié ; banc de l'exécutant rejoué (15 712 vérifications, 0 échec) ; textes visibles et infobulles des 159 scènes relevés dans Chromium ; écrans de MJPC comparés à `index.html` (l. 5518, 5522, 5529, 2605) et au hub ; mesures relues ; dix captures regardées. Découvert en relisant les références distantes : les branches `deroule/p8-*` du sas, que la copie locale ne suivait pas. Rapport au sas.
+
+Réponse mot pour mot :
+
+680. **Audit final fait : la livraison ne va pas encore.** Le travail est sérieux : 159 écrans dans l'ordre de la séance, 35 défauts trouvés et corrigés par l'exécutant lui-même. Son banc, que j'ai rejoué moi-même, passe : 15 712 vérifications, zéro échec. Mais j'ai trouvé quatre défauts que son banc ne voit pas ; tant qu'ils y sont, je ne te la donne pas à valider.
+
+681. **Défaut 1, le plus grave : les deux écrans de MJPC ne partent pas de l'existant.** « Élèves & codes » a perdu la zone d'import, « + Importer / compléter », et sur chaque élève ↻ (régénérer le code) et ✕ (retirer) ; un clic sur un nom n'ouvre plus sa fiche, là où sont ses aménagements. « Taxonomie » a perdu l'arbre des notions et « Ouvrir l'éditeur », et affiche des chiffres inventés, « Version 3.2 · 5 domaines · 142 notions », alors que le hub dit version 1.4.0, 7 domaines, 210 notions. Les autres entrées du menu ont l'air cliquables et ne font rien.
+
+682. **Défaut 2 : des renvois au cadrage à l'écran de ta console.** « Le prompt du cadrage (tour 630) » et « (340) » dans Réglages ; dans les infobulles, « réécrit d'après le cadrage » sur « 📖 Mode d'emploi », à chaque écran de console, et « Remet le prompt du cadrage (tour 630) ».
+
+683. **Défaut 3 : les limites de longueur pour le prompt se contredisent.** Mesurées ainsi, 5 choix tiendraient moins de texte que 6 (410 caractères contre 480), parce que la mesure à 5 choix garde le choix le plus long de ta question 3. L'instance recevrait une règle absurde.
+
+684. **Défaut 4 : une phrase d'élève de l'app d'aujourd'hui a été retirée sans cadrage** : « 👀 Écoute le prof — la correction sera révélée. » L'exécutant a cru qu'elle allait contre ta règle sur le professeur. Elle n'y va pas, puisque ta règle vise « va voir ton professeur » : elle revient.
+
+685. **Ma proposition : un complément sur la même branche, fait d'une traite comme le mandat.** Il corrige les quatre défauts, et ajoute au banc les gardes qui les auraient vus : pour chaque écran qui existe déjà en production, la liste de ses boutons et de ses champs, relevée dans le vrai écran, et le banc refuse un écran qui en perd un ; aucun numéro de point ni « cadrage » dans un texte ou une infobulle ; un chiffre affiché qui vient de la vraie donnée ; des limites qui ne se contredisent pas. Je l'écris à ton mot, avec la phrase à coller.
+
+686. **Une tension de cadrage, la mienne, vue pendant l'audit.** Dans le bilan de Michel, le bloc « 🎯 Ton estimation » dit « Tu as un peu surestimé », pendant que son bilan général dit « nettement surestimé » : le bloc a gardé la phrase de l'app d'aujourd'hui. Ma proposition : le bloc suit la même règle que le bilan général, « nettement » quand l'écart est de deux niveaux ou plus.
+
+687. **Une correction sur mon point 676.** Il existe au sas huit branches du déroulé (deroule/p8-1 à p8-5), la dernière du 07/10 à 13:36 : ma copie ne suivait que la branche principale, et je ne les avais pas vues. Rien ne change sur le fond : elles sont à part, et j'ai vérifié que l'exécutant de la maquette n'a écrit que dans son propre dossier.
+
+688. **Le rapport d'audit est au sas** : https://github.com/siteflow-io/mjpc-chantier/blob/main/AUDITS/MAQUETTE-QCM-COMPLETE-10-10/README.md
+
+10/10/2026 13:36 MEMO

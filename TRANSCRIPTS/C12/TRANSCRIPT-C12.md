@@ -19235,3 +19235,35 @@ Réponse mot pour mot :
 628. **Au sas** : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/MAQUETTE-QCM-FLUX/README.md (section « Tour 626 »). Ensuite : le prompt (62, 123).
 
 10/10/2026 08:44 MEMO
+
+---
+
+## TOUR 627 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (10/10, 08:46) non, la personnalisation ne peut pas passer par le collage de l'intitulé d'une compétence imbuvable. on doit se servir des questions précises.
+
+---
+
+## TOUR 627 — Claude (conscience n°12)
+
+Cherché dans la taxonomie de production une notion par question : les notions d'analyse logique sont générales (« La proposition subordonnée relative (qui, que, dont...) ») et ne distinguent pas les 11 questions. Choisi une phrase par question, « ce qu'elle vérifie ». Réécrit `commentaireQCM` (`com627.js`), refait le PDF (vérifié avec `pdftotext`), trois scènes (fiche, bilan de Lou, éditeur avec le nouveau champ). Fichiers au sas, envoyés à Paul.
+
+Réponse mot pour mot :
+
+629. **Compris : plus aucun intitulé de compétence dans le commentaire.** Il se personnalise par les questions précises. Chaque question porte « ce qu'elle vérifie » : une courte phrase à l'infinitif, dans les mots de l'élève, par exemple « trouver l'antécédent d'un pronom relatif ».
+
+630. **Le commentaire garde la forme de la dictée.** L'ouverture selon la note ; « À revoir en priorité : » (le titre d'un bloc de son bilan aujourd'hui), avec trois questions ratées au plus, d'abord celles qui étaient faciles ou réussies par la plupart de la classe ; « Bravo, tu sais … », avec deux questions difficiles réussies au plus, les plus rares d'abord ; le point d'autonomie retiré ; l'estimation. L'exemple de Hugo, dans le PDF joint : « Bonne évaluation, avec quelques points isolés à surveiller. À revoir en priorité : trouver l'antécédent d'un pronom relatif, écrire une phrase P.I : P.P + PSR et trouver l'architecture d'une phrase complexe. Bravo, tu sais écrire une phrase DPP + PSR + FPP et employer un pronom relatif composé. Ton estimation correspond à ton vrai résultat : tu te connais bien ! »
+
+631. **D'où vient la phrase de chaque question.** Le prompt la fait écrire par l'instance dans le JSON, avec les compétences. Dans l'éditeur, un champ « 🎯 Ce qu'elle vérifie, pour le bilan de l'élève » est sous l'énoncé, et tu la corriges là (capture jointe). Au collage, une question sans elle est refusée, avec la raison, comme une compétence hors du chapitre (317). Tes évaluations déjà au hub ne l'ont pas : elles la recevront avec leur chapitre et leurs compétences. Pour l'exemple, j'ai écrit les 11 phrases de ton évaluation de 3e : elles sont soulignées, à corriger.
+
+632. **À valider, soulignés en orange** : « Bravo, tu sais … » ; la phrase du point d'autonomie ; « Évaluation difficile. Reprends les notions essentielles point par point. » ; « Tu as nettement surestimé ce que tu avais réussi. » (615). Les autres phrases viennent mot pour mot de la dictée ou de l'app. 622 et 624 sont remplacés : plus de « Points à travailler », de « À consolider » ni de « Conseil ».
+
+633. **L'infobulle du nouveau champ**, pour toi : « Une courte phrase à l'infinitif, dans les mots de l'élève. Le bilan général s'en sert : « À revoir en priorité : … » quand l'élève rate la question, « Bravo, tu sais … » quand il réussit une question difficile. L'instance la remplit avec le prompt ; tu la corriges ici. » Celle de « Bilan général » dit maintenant « les questions qu'il a ratées et les questions difficiles qu'il a réussies (avec ce que chacune vérifie) », au lieu de « ses compétences ».
+
+634. **618 reste ouverte, telle quelle** : dans École Directe, ton extension doit-elle entrer autre chose qu'une note et un niveau par compétence ?
+
+635. **Au sas** : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/MAQUETTE-QCM-FLUX/README.md (section « Tour 627 »). Ensuite : le prompt (62, 123).
+
+10/10/2026 08:49 MEMO

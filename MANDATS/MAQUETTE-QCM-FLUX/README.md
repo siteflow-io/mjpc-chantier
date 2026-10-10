@@ -462,3 +462,27 @@ Le modèle : `generateBilan` de `correction_dictee.html` (une ouverture selon la
 **Capture 626-3 — le PDF, page 1 : la ligne « Commentaire » porte le bilan général.** Pages 2 et 3 : `pdf-626/626-pdf-page-2.png`, `pdf-626/626-pdf-page-3.png`.
 
 ![Capture 626-3](pdf-626/626-pdf-page-1.png)
+
+---
+
+## Tour 627 — le bilan général personnalisé par les questions précises (points 629 à 635)
+
+Demande de Paul (10/10, 08:46) : « la personnalisation ne peut pas passer par le collage de l'intitulé d'une compétence imbuvable. on doit se servir des questions précises. »
+
+Chaque question porte « ce qu'elle vérifie » (une courte phrase à l'infinitif, dans les mots de l'élève). Le bilan général (`maquette/com627.js`, `commentaireQCM`) : l'ouverture de la dictée, « À revoir en priorité : » avec trois questions ratées au plus, « Bravo, tu sais … » avec deux questions difficiles réussies au plus, le point d'autonomie, l'estimation. Remplace les tours 625 et 626. Scènes : `maquette/maquette627.js` et `maquette627.css`, `build627.py`, `capture627.js` ; le PDF : `pdf-627/` (`gen627.js`). Souligné en pointillés orange : proposé, à valider, dont les 11 phrases « ce qu'elle vérifie » de l'exemple, écrites par la conscience.
+
+**Capture 627-1 — Console, la fiche de Michel avec « 📝 Bilan général ».**
+
+![Capture 627-1](captures-627/627-1-fiche-bilan.png)
+
+**Capture 627-2 — Élève, le bilan de Lou, qui finit par « 📝 Bilan ».**
+
+![Capture 627-2](captures-627/627-2-eleve-bilan.png)
+
+**Capture 627-3 — Console, l'éditeur (capture 47) avec « 🎯 Ce qu'elle vérifie, pour le bilan de l'élève » sous chaque énoncé ; Q10 ne l'a pas encore, en rouge, et « Il reste à compléter » le dit.**
+
+![Capture 627-3](captures-627/627-3-editeur.png)
+
+**Capture 627-4 — le PDF, page 1.** Pages 2 et 3 : `pdf-627/627-pdf-page-2.png`, `pdf-627/627-pdf-page-3.png`.
+
+![Capture 627-4](pdf-627/627-pdf-page-1.png)

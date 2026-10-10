@@ -19626,3 +19626,40 @@ Je ne sais pas combien de temps il prendra. Le premier passage a pris trois heur
 696. **Quand il a fini, dis-le-moi** : je fais l'audit final du complément.
 
 10/10/2026 14:00 MEMO
+
+---
+
+## TOUR 640 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (10/10, 19:11) Livré
+
+---
+
+## TOUR 640 — Claude (conscience n°12)
+
+Audit de la branche `maquette-qcm` (commit `5d1c204d`) : périmètre (rien hors du dossier), v1 à v5 intactes, md5 de la v6 vérifié ; banc de l'exécutant rejoué (18 245 vérifications, 0 échec) ; relevés indépendants sur les 166 scènes, cadres compris : méta, soulignés, boutons fermés ; MJPC comparé à `index.html` et à `taxonomie_atelier.json` ; limites relues ; une cinquantaine de retraits relus ; captures 7, 45, 75, 117, 142, 150, 151, 153, 155, 157, 161 regardées. Un défaut trouvé : les 13 boutons grisés de MJPC ne se voient pas grisés. Rapport `AUDITS/MAQUETTE-QCM-COMPLEMENT-1-10-10/`.
+
+Réponse mot pour mot :
+
+697. **Audit final du complément fait : ça ne va pas encore, pour un seul défaut.** J'ai vérifié moi-même, sans me fier à son banc, que les six défauts sont corrigés :
+- MJPC part maintenant du vrai écran : l'import, ↻ et ✕, la fiche de l'élève avec ses aménagements, l'arbre des notions, « Version 1.4.0 · 7 domaines · 210 notions » ;
+- plus aucun renvoi au cadrage, même à l'intérieur des cadres ;
+- le PDF n'a plus mes marques ;
+- « 👀 Écoute le prof… » est revenue ;
+- le bloc « Ton estimation » dit « nettement », comme le bilan général.
+
+Son banc, que j'ai rejoué moi-même, passe : 18 245 vérifications, zéro échec.
+
+698. **Les nouvelles gardes ont servi.** Elles ont fait trouver à l'exécutant une centaine d'infobulles et des éléments de l'app d'aujourd'hui perdus sans raison, et il les a rétablis. Les 107 éléments qu'il a retirés citent chacun un point du cadrage. J'en ai relu une cinquantaine : tous les retraits sont justifiés.
+
+699. **Le défaut : dans MJPC, les 12 entrées du menu qui ne s'ouvrent pas, et « Code professeur », ne se voient pas grisées.** Elles sont bien fermées, mais elles ont la même couleur que « 📚 Taxonomie », qui marche, et la même main au survol. Sur les captures, tu ne peux pas voir lesquelles fonctionnent : c'est le bouton mort qui passe pour vrai. Son banc les croyait grises parce qu'elles sont fermées, sans regarder leur aspect.
+
+700. **Ma proposition : un complément 2, très court, d'une traite.** Ces 13 boutons prennent l'aspect qu'index.html donne déjà à un bouton fermé : estompé, avec la souris barrée. Leur raison reste lisible au survol. Le banc reçoit une garde : un bouton fermé de ta console doit se voir fermé. Puis la v7, les captures et le livret. À ton mot, je l'écris et tu relances l'exécutant, dans la même session.
+
+701. **Ce que disent maintenant les limites de longueur, pour tes évaluations** : avec 4 choix, jusqu'à 155 caractères par choix pour un énoncé de 120 caractères ou moins ; avec 5 choix, 75 ; avec 6 choix, 70. Au-delà de 120 caractères d'énoncé, 5 ou 6 choix ne tiennent qu'à 25 caractères chacun. Ta question 3 dépasse la limite (137 caractères pour 70), comme annoncé (693).
+
+702. **Le rapport d'audit** : https://github.com/siteflow-io/mjpc-chantier/blob/main/AUDITS/MAQUETTE-QCM-COMPLEMENT-1-10-10/README.md
+
+10/10/2026 19:27 MEMO

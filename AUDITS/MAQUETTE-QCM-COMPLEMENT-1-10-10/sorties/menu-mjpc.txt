@@ -1,0 +1,11 @@
+🏠Tableau de bord | disabled=true | aria-disabled=null | opacity=1 | color=rgba(255, 255, 255, 0.7) | cursor=pointer | title=Inchangé : cet écran reste celui d'aujourd'hui.
+🏫Classes | disabled=true | aria-disabled=null | opacity=1 | color=rgba(255, 255, 255, 0.7) | cursor=pointer | title=Inchangé : cet écran reste celui d'aujourd'hui.
+👥Élèves & codes | disabled=false | aria-disabled=null | opacity=1 | color=rgb(255, 255, 255) | cursor=pointer | title=Ouvre la section « Élèves & codes » du panneau prof.
+🧪Profil test | disabled=true | aria-disabled=null | opacity=1 | color=rgba(255, 255, 255, 0.7) | cursor=pointer | title=Inchangé : cet écran reste celui d'aujourd'hui.
+📂Architecture | disabled=true | aria-disabled=null | opacity=1 | color=rgba(255, 255, 255, 0.7) | cursor=pointer | title=Inchangé : cet écran reste celui d'aujourd'hui.
+🗑Corbeille | disabled=true | aria-disabled=null | opacity=1 | color=rgba(255, 255, 255, 0.7) | cursor=pointer | title=Inchangé : cet écran reste celui d'aujourd'hui.
+📚Taxonomie | disabled=false | aria-disabled=null | opacity=1 | color=rgba(255, 255, 255, 0.7) | cursor=pointer | title=Ouvre la section « Taxonomie » du panneau prof.
+🛠Atelier | disabled=true | aria-disabled=null | opacity=1 | color=rgba(255, 255, 255, 0.7) | cursor=pointer | title=Inchangé : cet écran reste celui d'aujourd'hui.
+📡Présence live | disabled=true | aria-disabled=null | opacity=1 | color=rgba(255, 255, 255, 0.7) | cursor=pointer | title=Inchangé : cet écran reste celui d'aujourd'hui.
+Oublier la clé sur cet apparei | disabled=false | aria-disabled=null | opacity=1 | color=rgb(255, 255, 255) | cursor=pointer | title=Les codes redeviennent illisibles ici, jusqu’à la prochaine saisie de la clé.
+Code professeur | disabled=true | aria-disabled=null | opacity=1 | color=rgb(255, 255, 255) | cursor=pointer | title=Inchangé : cet écran reste celui d'aujourd'hui.

@@ -19325,3 +19325,31 @@ Réponse mot pour mot :
 646. **La suite** : le prompt. Je le commence à ton mot.
 
 10/10/2026 09:10 MEMO
+
+---
+
+## TOUR 630 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (10/10, 09:14) ok pour le prompt. Je suis à 93 pourcent d'utilisation hebdo, donc la maquette devra être faite par un claude code qui tournera avec mes crédits us.
+
+---
+
+## TOUR 630 — Claude (conscience n°12)
+
+Lu : le prompt de la 7.7.1 (`PROMPT_IA_DEFAUT`, l. 2321), le canon des prompts du socle (§12, `mjpcPromptComposer`, `MJPC_PROMPT_CADRAGE`), le prompt enregistré au hub (`qcm/settings/promptIa` : vide), le prompt de transition retiré (point 102) et les points du cadrage qui touchent le prompt. Écrit le prompt et son tableau de provenance au sas.
+
+Réponse mot pour mot :
+
+647. **Le prompt est écrit, au sas** : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/PROMPT-QCM-CREATION/README.md. Il remplace celui de la 7.7.1, qui ne connaît ni les temps par question, ni les compétences, ni le chapitre, ni la règle de note d'aujourd'hui. Il reste modifiable dans Réglages.
+
+648. **Ce qu'il fait faire à l'instance.** Elle te pose d'abord six questions numérotées : ton cours, le nombre de questions, combien à réponses multiples, l'équilibre des difficultés, le mode, une question bonus. Elle propose les questions par petits groupes. Elle te demande chaque temps sans jamais le deviner, et te dit « ça ne rentre pas » quand un temps est trop court. Elle calcule la durée de la séance, tient un cadrage mémorisé, et ne produit le JSON qu'à ton « produis le JSON ». Chaque règle vient du cadrage : leurs numéros sont dans le tableau en bas de la page.
+
+649. **Une proposition : les durées fixes de la séance**, les mêmes pour le prompt et pour la garde de l'app (58). Pour chaque question : la réflexion, puis deux tours de 3 secondes de décompte, de réponse et de 5 secondes où l'élève dit si sa feuille dit la même chose (495), puis 15 secondes avant la suivante. Pour la séance : 5 minutes d'installation et de consignes, 1 minute de correction par question (59), 2 minutes pour la co-évaluation et le bilan. Je ne sais pas si ces trois derniers chiffres sont justes : ils se règlent dans Réglages, et l'app note tes vraies durées pour les corriger.
+
+650. **Ce que l'app met elle-même dans le prompt quand tu le copies** : le chapitre que tu as choisi, ses compétences avec leur libellé élève, les quatre difficultés sans temps, et les limites de longueur. Ces limites ne sont pas encore mesurées : elles le seront sur la maquette.
+
+651. **La maquette par une session Claude Code sur tes crédits : compris.** Dès que le prompt te va, j'écris son mandat au sas. Elle partira de la maquette actuelle et des captures 610 à 628, refera tout d'un coup, mesurera les limites de longueur, et livrera les captures pour que tu les valides.
+
+10/10/2026 09:17 MEMO

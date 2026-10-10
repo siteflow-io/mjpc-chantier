@@ -7,7 +7,6 @@
 function Pz(t){ return h("span", {className:"prov"}, t); }
 function il(e){ return e.sexe === "F" ? "elle" : "il"; }
 J.sexe = "M"; M.sexe = "M";
-function autreDe(e){ return e.cle === "J" ? M : J; }
 
 /* Le voile, avec la phrase retenue au tour 604 (on nomme toujours l'élève) */
 function VoileN(moi, autre){

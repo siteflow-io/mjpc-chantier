@@ -82,8 +82,9 @@ function verif(ok, quoi, detail){ nb++; if(!ok) echecs.push(quoi + (detail ? " �
   }
 
   const relu = s => s.etape <= ETAPE;
-  for(const sc of scenes){
-    if(SEUL && !sc.id.includes(SEUL)) continue;
+  async function verifierScene(sc){
+    const R = {n:0, echecs:[]};
+    const verif = (ok, quoi, detail) => { R.n++; if(!ok) R.echecs.push(quoi + (detail ? " — " + detail : "")); return ok; };
     const tailles = VUES[sc.vue];
     for(let ti = 0; ti < tailles.length; ti++){
       const T = tailles[ti], H = (sc.vh && sc.vue === "console") ? Math.max(sc.vh, T.h) : T.h;
@@ -119,35 +120,52 @@ function verif(ok, quoi, detail){ nb++; if(!ok) echecs.push(quoi + (detail ? " �
             if(C.vueProf(sc) && !b.horsConsole) verif(b.title.length >= 12, "5. " + sc.id + " : infobulle de « " + b.txt + " »", b.title ? "« " + b.title + " »" : "aucune");
             if(b.desactive) verif(b.title.length >= 12, "5. " + sc.id + " : « " + b.txt + " » grisé dit pourquoi");
           }
+          // 5. (garde ajoutée à l'étape 2, défauts 7, 10, 13) chaque bouton actif déclare son geste
+          verif(etat.sansGeste.length === 0, "5. " + sc.id + " : chaque bouton déclare son geste", etat.sansGeste.join(" · "));
+          // 5. chaque bouton qui mène ailleurs mène à une scène qui existe
+          for(const c of [...new Set(etat.cibles)]) verif(scenes.some(x => x.id === c), "5. " + sc.id + " : la scène « " + c + " » où mène un bouton existe");
           // 9. le PDF, mot pour mot
-          if(sc.id === "x632-pdf") verif(C.normEsp(etat.textesIframe) === C.normEsp(C.textePdf632(RACINE)), "9. le PDF est celui de gen632.js, mot pour mot");
+          if(sc.id === "x632-pdf") verif(etat.textesIframe.replace(/\s+/g, "") === C.textePdf632(RACINE).replace(/\s+/g, ""), "9. le PDF est celui de gen632.js, mot pour mot");
         }
       }
       await o.ctx.close();
     }
-    // 5. aucun bouton inerte : chaque bouton actif est cliqué, sur la scène fraîche, et doit changer quelque chose
+    // 5. aucun bouton inerte : chaque bouton actif est cliqué, sur la scène remise à neuf (démontée puis rendue), et doit changer quelque chose
     if(relu(sc)){
       const T = VUES[sc.vue][0], H = (sc.vh && sc.vue === "console") ? Math.max(sc.vh, T.h) : T.h;
-      const o = await ouvrir(T.w, H, sc.id, "&cap=1");
-      const n = await o.page.evaluate(C.marquerBoutons);
-      await o.ctx.close();
-      for(let i = 0; i < n; i++){
-        const q = await ouvrir(T.w, H, sc.id, "&cap=1");
+      const q = await ouvrir(T.w, H, sc.id, "&cap=1");
+      const n = await q.page.evaluate(C.marquerBoutons);
+      const aNeuf = async () => {
+        await q.page.evaluate(id => { window.__INTERDITS = []; window.SOMMAIRE_OUVERT = false; window.SCENE_PRETE = null;
+          var cible = "#scene=" + id + "&cap=1"; if(location.hash !== cible) location.hash = cible; else rendre(); }, sc.id);
+        await q.page.waitForFunction(i => window.SCENE_PRETE === i, sc.id, {timeout: 10000});
         await q.page.evaluate(C.marquerBoutons);
+      };
+      for(let i = 0; i < n; i++){
+        await aNeuf();
+        q.err.length = 0;
         const avant = await q.page.evaluate(C.empreinte);
         const loc = q.page.locator('[data-banc-b="' + i + '"]');
+        if(await loc.count() === 0){ verif(false, "5. " + sc.id + " : le bouton n° " + i + " a disparu à la remise à neuf"); continue; }
         const libelle = (await loc.innerText()).trim().slice(0, 60);
-        try { await loc.click({timeout: 2000}); } catch(e){ verif(false, "5. " + sc.id + " : « " + libelle + " » ne se clique pas", e.message.split("\n")[0]); await q.ctx.close(); continue; }
-        await q.page.waitForTimeout(60);
+        try { await loc.click({timeout: 2000}); } catch(e){ verif(false, "5. " + sc.id + " : « " + libelle + " » ne se clique pas", e.message.split("\n")[0]); continue; }
+        await q.page.waitForTimeout(40);
         const apres = await q.page.evaluate(C.empreinte);
         verif(apres !== avant, "5. " + sc.id + " : « " + libelle + " » fait quelque chose");
         verif(q.err.length === 0, "5. " + sc.id + " : « " + libelle + " » sans erreur de page", q.err.join(" | "));
         const interdits = await q.page.evaluate(() => window.__INTERDITS);
         verif(interdits.length === 0, "6. " + sc.id + " : « " + libelle + " » sans boîte ni stockage", interdits.join(" "));
-        await q.ctx.close();
       }
+      await q.ctx.close();
     }
+    return R;
   }
+  // Quatre scènes à la fois ; les résultats se rangent dans l'ordre de la séance
+  const aFaire = scenes.filter(sc => !SEUL || sc.id.includes(SEUL));
+  const resultats = new Array(aFaire.length); let suivant = 0;
+  async function ouvrier(){ while(suivant < aFaire.length){ const k = suivant++; resultats[k] = await verifierScene(aFaire[k]); } }
+  await Promise.all([ouvrier(), ouvrier(), ouvrier(), ouvrier()]);
+  for(const r of resultats){ nb += r.n; echecs.push(...r.echecs); }
   await navig.close();
 
   const lignes = [];

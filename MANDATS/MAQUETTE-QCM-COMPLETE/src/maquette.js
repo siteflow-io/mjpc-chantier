@@ -37,8 +37,8 @@ function maitriseDe(sur20){ return sur20 >= 15 ? MAITRISE[0] : sur20 >= 10 ? MAI
 function fr1(x){ return (Math.round(x*10)/10).toFixed(1).replace(".", ",").replace(",0", ""); }
 
 /* ── Le binôme suivi ── */
-var J = {cle:"J", nom:"ABRIAL Julien", prenom:"Julien"};
-var M = {cle:"M", nom:"DUVERNAY Michel", prenom:"Michel"};
+var J = {cle:"J", nom:"ABRIAL Julien", prenom:"Julien", sexe:"M"};
+var M = {cle:"M", nom:"DUVERNAY Michel", prenom:"Michel", sexe:"M"};
 var ORD = [ {J:[0,1,2,3], M:[3,2,0,1]}, {M:[0,1,2,3], J:[1,0,3,2]}, {J:[0,1,2,3], M:[3,2,1,0]} ];   // ordre vu par chacun (74, 329)
 var PREMIER = ["J","M","J"];                                                                   // alternance (25)
 var TABL = {J:[[2],[0,2],[0]], M:[[3],[0,1,2],[2]]};                                           // ce sur quoi ils cliquent sur la tablette
@@ -66,7 +66,7 @@ function calc(p){
     var fc = f[q], tc = t[q];
     if(fc === "-"){ pts.push(null); st.push("pasdit"); flags.push({q:q, txt:"pas de recopie"}); continue; }
     if(fc === "J"){ pts.push(1); st.push("j"); if(tc !== "J") flags.push({q:q, txt:"recopie juste, tablette fausse"}); continue; }
-    if(fc === "A") flags.push({q:q, txt:"aucun de ces choix"});
+    if(fc === "A"){ flags.push({q:q, txt:"aucun de ces choix"}); pts.push(0); st.push("a"); continue; }   // « aucun de ces choix » vaut toujours 0 (477, 490)
     if(tc === "J" && !used){ used = true; pts.push(1); st.push("t"); continue; }
     pts.push(0); st.push(fc === "A" ? "a" : "f");
   }
@@ -88,12 +88,16 @@ function Page(badge, titre, enfants){
 }
 function badgeDe(e){ return CLASSE + " · " + e.nom; }
 function Tablette(g, d){ return h("div", {className:"tablette"}, h("div", {className:"moitie g"}, g), h("div", {className:"moitie d"}, d)); }
-function Voile(autre, stylo){
+/* Le voile (431) : on nomme toujours l'élève ; « qu'il » ou « qu'elle », d'après le sexe déclaré dans MJPC (443).
+   Au passage de la tablette (stylo), la moitié voilée dit d'abord « Michel, pose ton stylo. » */
+function Voile(autre, stylo, moi){
+  moi = moi || autreDe(autre);
   return h("div", {className:"voile"},
-    stylo && h("div", {className:"eleve-pose-stylo"}, h("span", {className:"ic"}, "📕"), h("span", null, "POSE TON STYLO.")),
+    stylo && h("div", {className:"eleve-pose-stylo"}, h("span", {className:"ic"}, "🖊️"), h("span", null, moi.prenom + ", pose ton stylo.")),
     h("div", {className:"vic"}, "🙈"),
-    h("div", {className:"phr"}, "Laisse la tablette à " + autre.prenom + " pour qu'il réponde sans que tu regardes."));
+    h("div", {className:"phr"}, moi.prenom + ", laisse la tablette à " + autre.prenom + " pour qu'" + (autre.sexe === "F" ? "elle" : "il") + " réponde sans que tu regardes."));
 }
+function autreDe(e){ return e.cle === "J" ? M : e.cle === "M" ? J : (e.voisin || M); }
 function QHead(qi, sansPts){
   var q = EV.questions[qi];
   return h("div", {className:"eleve-q-header"},
@@ -164,11 +168,12 @@ function EcrReflexion(e, qi, chrono){
     h("div", {className:"eleve-q-consigne"}, "✍️ RÉDIGE TA RÉPONSE EN ENTIER SUR TA FEUILLE"),
     h("div", {className:"eleve-chrono"}, h("div", {className:"label"}, "Temps de réflexion"), h("div", {className:"v"}, chrono))));
 }
-function EcrPassage(e, qi){
+/* Le passage (431) : « Pose ton stylo, Julien. Tu es prêt ? À toi dans 3 secondes », et le chiffre descend */
+function EcrPassage(e, qi, sec){
   return Page(badgeDe(e), EV.titre, h("div", {className:"eleve-q-zone"},
     QHead(qi), h("div", {className:"eleve-q-enonce"}, EV.questions[qi].enonce),
-    h("div", {className:"eleve-pose-stylo"}, h("span", {className:"ic"}, "📕"), h("span", null, "POSE TON STYLO.")),
-    h("div", {className:"passage"}, h("div", {className:"v"}, e.prenom + ", à toi dans 3 s"))));
+    h("div", {className:"eleve-pose-stylo"}, h("span", {className:"ic"}, "🖊️"), h("span", null, "Pose ton stylo, " + e.prenom + ".")),
+    h("div", {className:"passage"}, h("div", {className:"v"}, "Tu es prêt ? À toi dans " + (sec || 3) + " secondes"))));
 }
 function EcrReponse(e, qi, ordre, sel, chrono, ev){
   var q = (ev || EV).questions[qi];
@@ -179,7 +184,7 @@ function EcrReponse(e, qi, ordre, sel, chrono, ev){
       h("span", {className:"eleve-q-pastille", style:{background:NIV[q.niveau].color, color:q.niveau === "facile" ? "#5C4500" : "#fff"}}, NIV[q.niveau].label),
       h("span", {className:"eleve-q-points-badge"}, "1 pt")),
     h("div", {className:"eleve-q-enonce"}, q.enonce),
-    h("div", {className:"eleve-pose-stylo"}, h("span", {className:"ic"}, "📕"), h("span", null, "POSE TON STYLO. Sélectionne maintenant ta réponse.")),
+    h("div", {className:"eleve-pose-stylo"}, h("span", {className:"ic"}, "🖊️"), h("span", null, e.prenom + ", pose ton stylo. Sélectionne maintenant ta réponse.")),
     h("div", {className:"eleve-chrono" + (chrono <= 2 ? " urgent" : "")}, h("div", {className:"label"}, "Temps de réponse"), h("div", {className:"v"}, chrono)),
     h("div", {className:"eleve-choix" + (long ? " long" : "")}, ordre.map(function(i){
       return h("button", {key:i, className:"eleve-choix-btn" + (sel.indexOf(i) >= 0 ? " selected" : "")}, h("span", null, q.choix[i]));
@@ -194,7 +199,7 @@ function EcrEstim(e, choix){
   var mt = function(k){ return MAITRISE.filter(function(m){ return m.k === k; })[0]; };
   var sel = choix && FOURCH.filter(function(f){ return f.k === choix; })[0];
   return Page(badgeDe(e), "🎯 Ton estimation", h(F, null,
-    h("p", {className:"autoeval-intro"}, "Combien de bonnes réponses penses-tu avoir données ? Choisis la fourchette qui correspond à ton estimation.", InfoI()),
+    h("p", {className:"autoeval-intro"}, "Combien de bonnes réponses penses-tu avoir ? Clique sur ta réponse. Cette estimation sert à savoir si tu te surévalues, si tu te sous-évalues ou si tu t'évalues correctement."),
     !sel ? h("div", {className:"autoeval-fourchettes"}, FOURCH.map(function(f){
       return h("button", {key:f.k, className:"autoeval-fourchette fourchette-" + f.k},
         h("div", {className:"autoeval-fourchette-emoji"}, mt(f.k).em),
@@ -214,7 +219,7 @@ function pastillesDe(e, nbRev){
     var pos = ORDRE_CORR.indexOf(i);
     if(pos >= nbRev) return {cls:"vide", t:String(i+1)};
     var s = p.st[i];
-    return s === "j" ? {cls:"juste", t:"✅"} : s === "t" ? {cls:"trouvee-p", t:"＋"} : s === "pasdit" ? {cls:"nonrep", t:"⚪"} : {cls:"faux", t:"❌"};
+    return s === "j" ? {cls:"juste", t:"✅"} : s === "t" ? {cls:"trouvee-p", t:"✓"} : s === "pasdit" ? {cls:"nonrep", t:"⚪"} : {cls:"faux", t:"❌"};   // le ✓ orange (484)
   });
 }
 function ChronoSaisie(v, total){
@@ -244,7 +249,7 @@ function EcrCorr(e, qi, etape, chrono){   // etape : "vide" | "dit" | "revele"
   } else {
     var juste = st === "j", trouvee = st === "t";
     zone = h(F, null,
-      trouvee ? h("div", {className:"trouvee"}, h("span", {className:"plus"}, "+"),
+      trouvee ? h("div", {className:"trouvee"}, h("span", {className:"plus"}, "✓"),
           h("span", null, "Trouvée au dernier moment", h("span", {className:"sous"}, P("Ta feuille disait autre chose, mais tu as cliqué sur la bonne réponse : la question compte. Cela n'arrive qu'une fois par évaluation."))))
         : h("div", {className:"correction-resultat " + (juste ? "juste" : "faux")}, juste ? "✅ Tu avais juste !" : "❌ Tu avais faux."),
       h("div", {className:"correction-choix"}, ordre.map(function(i){
@@ -268,7 +273,7 @@ function EcrCorr(e, qi, etape, chrono){   // etape : "vide" | "dit" | "revele"
       h("div", {className:"correction-compteur-score"},
         h("span", {className:"correction-compteur-num"}, nbJ), h("span", {className:"correction-compteur-lbl"}, nbJ > 1 ? " bonnes réponses" : " bonne réponse"),
         h("span", {className:"correction-compteur-sep-text"}, " sur "), h("span", {className:"correction-compteur-tot"}, nbRev),
-        h("span", {className:"correction-compteur-lbl"}, nbRev > 1 ? " questions déjà corrigées" : " question déjà corrigée"), InfoI()),
+        h("span", {className:"correction-compteur-lbl"}, nbRev > 1 ? " questions déjà corrigées" : " question déjà corrigée")),
       h("div", {className:"correction-compteur-pastilles"}, pa.map(function(x, i){ return h("span", {key:i, className:"correction-compteur-pastille " + x.cls}, x.t); }))),
     h("div", {className:"eleve-q-zone"}, QHead(qi, true), h("div", {className:"eleve-q-enonce"}, q.enonce), zone)));
 }
@@ -699,12 +704,12 @@ function tourScene(qi, tour, chrono, selPremier, selSecond){
   var p = PREMIER[qi], s = p === "J" ? "M" : "J";
   var qui = tour === 1 ? p : s;
   var ecran = EcrReponse(E[qui], qi, ORD[qi][qui], tour === 1 ? selPremier : selSecond, chrono);
-  var voile = Voile(E[qui], false);
+  var voile = Voile(E[qui], false, E[qui === "J" ? "M" : "J"]);
   return qui === "J" ? Tablette(ecran, voile) : Tablette(voile, ecran);
 }
 function passageScene(qi, tour){
   var p = PREMIER[qi], s = p === "J" ? "M" : "J", qui = tour === 1 ? p : s;
-  var ecran = EcrPassage(E[qui], qi), voile = Voile(E[qui], true);
+  var ecran = EcrPassage(E[qui], qi), voile = Voile(E[qui], true, E[qui === "J" ? "M" : "J"]);
   return qui === "J" ? Tablette(ecran, voile) : Tablette(voile, ecran);
 }
 function statsQ(c, r, j, q){ return [[c, "connectés"], [r, "ont répondu"], [j, "justes"], [q, "question"]]; }

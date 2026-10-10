@@ -41,640 +41,1120 @@
  },
  {
   "n": 6,
-  "id": "c-lancer",
-  "fichier": "006-c-lancer.png",
-  "vue": "console",
+  "id": "c-accueil",
+  "fichier": "006-c-accueil.png",
+  "vue": "eleve",
   "section": "Avant l'heure, sur ta console",
-  "titre": "« Pilotage classe » : la classe, l'évaluation, la durée, les binômes proposés."
+  "titre": "L'accueil de l'app : « 🎓 Mode élève » ou « Accès professeur »."
  },
  {
   "n": 7,
+  "id": "c-lancer",
+  "fichier": "007-c-lancer.png",
+  "vue": "console",
+  "section": "Avant l'heure, sur ta console",
+  "titre": "« Pilotage classe » : la classe, l'évaluation, la durée, les binômes formés par les exclusions, puis par le QCM précédent."
+ },
+ {
+  "n": 8,
+  "id": "c-echange-refuse",
+  "fichier": "008-c-echange-refuse.png",
+  "vue": "console",
+  "section": "Avant l'heure, sur ta console",
+  "titre": "Un échange qui mettrait ensemble deux élèves exclus : refusé, avec la raison, pour toi seul."
+ },
+ {
+  "n": 9,
   "id": "c-appel",
-  "fichier": "007-c-appel.png",
+  "fichier": "009-c-appel.png",
   "vue": "console",
   "section": "Avant l'heure, sur ta console",
   "titre": "L'appel : l'absent sort, son binôme est réapparié ; l'heure de fin."
  },
  {
-  "n": 8,
+  "n": 10,
+  "id": "c-demo-lancer",
+  "fichier": "010-c-demo-lancer.png",
+  "vue": "console",
+  "section": "Avant l'heure, sur ta console",
+  "titre": "La démo, lancée avec la classe : rien ne compte."
+ },
+ {
+  "n": 11,
+  "id": "c-demo-faite",
+  "fichier": "011-c-demo-faite.png",
+  "vue": "console",
+  "section": "Avant l'heure, sur ta console",
+  "titre": "La démo faite : il n'en reste qu'une ligne."
+ },
+ {
+  "n": 12,
   "id": "t-combien",
-  "fichier": "008-t-combien.png",
+  "fichier": "012-t-combien.png",
   "vue": "tablette",
   "section": "L'entrée",
   "titre": "« Combien êtes-vous sur cette tablette ? »"
  },
  {
-  "n": 9,
+  "n": 13,
+  "id": "t-un-eleve",
+  "fichier": "013-t-un-eleve.png",
+  "vue": "tablette",
+  "section": "L'entrée",
+  "titre": "« 1 élève » : le raccourci MJPC demande d'abord « Tu es bien Julien ? »."
+ },
+ {
+  "n": 14,
   "id": "t-login",
-  "fichier": "009-t-login.png",
+  "fichier": "014-t-login.png",
   "vue": "tablette",
   "section": "L'entrée",
   "titre": "Le code, le prénom et le nom, au clavier de l'app, sur chaque moitié."
  },
  {
-  "n": 10,
+  "n": 15,
+  "id": "t-login-inconnu",
+  "fichier": "015-t-login-inconnu.png",
+  "vue": "tablette",
+  "section": "L'entrée",
+  "titre": "Un code pas encore enregistré : « lève la main »."
+ },
+ {
+  "n": 16,
   "id": "t-binome",
-  "fichier": "010-t-binome.png",
+  "fichier": "016-t-binome.png",
   "vue": "tablette",
   "section": "L'entrée",
   "titre": "Julien est entré ; l'autre moitié nomme son binôme."
  },
  {
-  "n": 11,
-  "id": "t-attest",
-  "fichier": "011-t-attest.png",
+  "n": 17,
+  "id": "t-rejoins",
+  "fichier": "017-t-rejoins.png",
   "vue": "tablette",
   "section": "L'entrée",
-  "titre": "L'attestation (version du tour 603)."
+  "titre": "Michel s'est assis à la mauvaise tablette : « Tu es avec Julien… rejoins Julien. »"
  },
  {
-  "n": 12,
-  "id": "x610-4-attestation-1",
-  "fichier": "012-x610-4-attestation-1.png",
+  "n": 18,
+  "id": "t-attest-1",
+  "fichier": "018-t-attest-1.png",
   "vue": "tablette",
   "section": "L'entrée",
-  "titre": "La première attestation, texte de Paul (506)."
+  "titre": "L'attestation, une coche par ligne : chaque ligne n'apparaît qu'après la précédente."
  },
  {
-  "n": 13,
+  "n": 19,
+  "id": "t-attest-2",
+  "fichier": "019-t-attest-2.png",
+  "vue": "tablette",
+  "section": "L'entrée",
+  "titre": "Julien a tout coché : « Je commence » s'ouvre ; Michel en est à 5 lignes sur 8."
+ },
+ {
+  "n": 20,
   "id": "t-pret",
-  "fichier": "013-t-pret.png",
+  "fichier": "020-t-pret.png",
   "vue": "tablette",
   "section": "L'entrée",
   "titre": "Les deux ont coché : ils attendent le départ."
  },
  {
-  "n": 14,
+  "n": 21,
   "id": "c-pret",
-  "fichier": "014-c-pret.png",
+  "fichier": "021-c-pret.png",
   "vue": "console",
   "section": "L'entrée",
-  "titre": "Ta console avant la question 1 : les 12 tablettes, qui a coché."
+  "titre": "Ta console avant la question 1 : les 12 tablettes, qui est assis où, où en est chaque attestation."
  },
  {
-  "n": 15,
+  "n": 22,
+  "id": "t-demo-q",
+  "fichier": "022-t-demo-q.png",
+  "vue": "tablette",
+  "section": "La démo, sur les tablettes",
+  "titre": "La démo : le bandeau « 🎓 Évaluation d'entraînement : elle ne compte pas. », du début à la fin."
+ },
+ {
+  "n": 23,
   "id": "t-q1-reflexion",
-  "fichier": "015-t-q1-reflexion.png",
+  "fichier": "023-t-q1-reflexion.png",
   "vue": "tablette",
   "section": "Question 1 — Julien commence",
   "titre": "Réflexion : l'énoncé sans les choix, le chrono."
  },
  {
-  "n": 16,
+  "n": 24,
   "id": "c-q1-reflexion",
-  "fichier": "016-c-q1-reflexion.png",
+  "fichier": "024-c-q1-reflexion.png",
   "vue": "console",
   "section": "Question 1 — Julien commence",
-  "titre": "Ta console pendant la réflexion."
+  "titre": "Ta console pendant la réflexion : les deux temps à taper, la fin prévue, « ❌ Écarter »."
  },
  {
-  "n": 17,
+  "n": 25,
   "id": "t-q1-passage1",
-  "fichier": "017-t-q1-passage1.png",
+  "fichier": "025-t-q1-passage1.png",
   "vue": "tablette",
   "section": "Question 1 — Julien commence",
-  "titre": "Fin de la réflexion : « POSE TON STYLO », 3 s pour passer la tablette."
+  "titre": "Fin de la réflexion : « Pose ton stylo, Julien. Tu es prêt ? À toi dans 3 secondes » ; Michel est voilé, nommé."
  },
  {
-  "n": 18,
+  "n": 26,
   "id": "t-q1-tour1",
-  "fichier": "018-t-q1-tour1.png",
+  "fichier": "026-t-q1-tour1.png",
   "vue": "tablette",
   "section": "Question 1 — Julien commence",
   "titre": "1er tour : Julien répond ; Michel est voilé."
  },
  {
-  "n": 19,
+  "n": 27,
   "id": "c-q1-tour1",
-  "fichier": "019-c-q1-tour1.png",
+  "fichier": "027-c-q1-tour1.png",
   "vue": "console",
   "section": "Question 1 — Julien commence",
   "titre": "Ta console au 1er tour."
  },
  {
-  "n": 20,
+  "n": 28,
+  "id": "c-voir-tablette",
+  "fichier": "028-c-voir-tablette.png",
+  "vue": "console",
+  "section": "Question 1 — Julien commence",
+  "titre": "« 👁 » : les deux moitiés d'une tablette, en direct."
+ },
+ {
+  "n": 29,
   "id": "p-reponse",
-  "fichier": "020-p-reponse.png",
+  "fichier": "029-p-reponse.png",
   "vue": "telephone",
   "section": "Question 1 — Julien commence",
-  "titre": "Ton téléphone au 1er tour."
+  "titre": "Ton téléphone au 1er tour : les temps en direct, la fin prévue."
  },
  {
-  "n": 21,
+  "n": 30,
+  "id": "c-qr",
+  "fichier": "030-c-qr.png",
+  "vue": "console",
+  "section": "Question 1 — Julien commence",
+  "titre": "« 📱 QR pilotage »."
+ },
+ {
+  "n": 31,
   "id": "b-reponse",
-  "fichier": "021-b-reponse.png",
+  "fichier": "031-b-reponse.png",
   "vue": "tableau",
   "section": "Question 1 — Julien commence",
-  "titre": "Le tableau en réponse : l'énoncé et le chrono, jamais les choix."
+  "titre": "Le tableau en réponse : l'énoncé, le chrono, « 1er tour », jamais les choix."
  },
  {
-  "n": 22,
+  "n": 32,
+  "id": "c-fin-prevue",
+  "fichier": "032-c-fin-prevue.png",
+  "vue": "console",
+  "section": "Question 1 — Julien commence",
+  "titre": "Du temps ajouté : la fin prévue déborde, en rouge."
+ },
+ {
+  "n": 33,
   "id": "t-q1-passage2",
-  "fichier": "022-t-q1-passage2.png",
+  "fichier": "033-t-q1-passage2.png",
   "vue": "tablette",
   "section": "Question 1 — Julien commence",
   "titre": "Le passage, dans l'autre sens."
  },
  {
-  "n": 23,
+  "n": 34,
   "id": "t-q1-tour2",
-  "fichier": "023-t-q1-tour2.png",
+  "fichier": "034-t-q1-tour2.png",
   "vue": "tablette",
   "section": "Question 1 — Julien commence",
   "titre": "2e tour : Michel répond, choix mélangés ; il clique Venise."
  },
  {
-  "n": 24,
+  "n": 35,
+  "id": "t-q1-b-michel",
+  "fichier": "035-t-q1-b-michel.png",
+  "vue": "tablette",
+  "section": "Question 1 — Julien commence",
+  "titre": "Son temps fini, Michel dit si sa feuille dit la même chose que son clic : sa feuille dit Rome."
+ },
+ {
+  "n": 36,
   "id": "c-q1-tour2",
-  "fichier": "024-c-q1-tour2.png",
+  "fichier": "036-c-q1-tour2.png",
   "vue": "console",
   "section": "Question 1 — Julien commence",
   "titre": "Ta console au 2e tour : « 🔒 Clore la question »."
  },
  {
-  "n": 25,
+  "n": 37,
   "id": "t-q1-attente",
-  "fichier": "025-t-q1-attente.png",
+  "fichier": "037-t-q1-attente.png",
   "vue": "tablette",
   "section": "Question 1 — Julien commence",
   "titre": "Les deux tours sont finis : « Attends la prochaine question »."
  },
  {
-  "n": 26,
+  "n": 38,
   "id": "c-q1-close",
-  "fichier": "026-c-q1-close.png",
+  "fichier": "038-c-q1-close.png",
   "vue": "console",
   "section": "Question 1 — Julien commence",
-  "titre": "Question close : « ▶️ Lancer Q2 », « 🔓 Rouvrir pour tous »."
+  "titre": "Question close : « ▶️ Lancer Q2 »."
  },
  {
-  "n": 27,
+  "n": 39,
+  "id": "c-ecarter",
+  "fichier": "039-c-ecarter.png",
+  "vue": "console",
+  "section": "Question 1 — Julien commence",
+  "titre": "« ❌ Écarter » la question 3 : la garde."
+ },
+ {
+  "n": 40,
+  "id": "c-ecartee",
+  "fichier": "040-c-ecartee.png",
+  "vue": "console",
+  "section": "Question 1 — Julien commence",
+  "titre": "La question 3 écartée : « ❌ Écartée — pas posée », « ↩️ Remettre »."
+ },
+ {
+  "n": 41,
+  "id": "t-q2-ecartee",
+  "fichier": "041-t-q2-ecartee.png",
+  "vue": "tablette",
+  "section": "Question 1 — Julien commence",
+  "titre": "Les tablettes comptent sans elle : « Question 2 / 2 »."
+ },
+ {
+  "n": 42,
   "id": "t-q2-reflexion",
-  "fichier": "027-t-q2-reflexion.png",
+  "fichier": "042-t-q2-reflexion.png",
   "vue": "tablette",
   "section": "Question 2 — Michel commence",
   "titre": "Question 2 : deux bonnes réponses, en tout ou rien."
  },
  {
-  "n": 28,
+  "n": 43,
   "id": "t-q2-tour1",
-  "fichier": "028-t-q2-tour1.png",
+  "fichier": "043-t-q2-tour1.png",
   "vue": "tablette",
   "section": "Question 2 — Michel commence",
   "titre": "Michel répond le premier."
  },
  {
-  "n": 29,
+  "n": 44,
   "id": "t-q2-tour2",
-  "fichier": "029-t-q2-tour2.png",
+  "fichier": "044-t-q2-tour2.png",
   "vue": "tablette",
   "section": "Question 2 — Michel commence",
   "titre": "Julien répond en second, dans un autre ordre."
  },
  {
-  "n": 30,
+  "n": 45,
   "id": "c-q2-tour2",
-  "fichier": "030-c-q2-tour2.png",
+  "fichier": "045-c-q2-tour2.png",
   "vue": "console",
   "section": "Question 2 — Michel commence",
   "titre": "Ta console au 2e tour de la question 2."
  },
  {
-  "n": 31,
-  "id": "c-rouvrir-un",
-  "fichier": "031-c-rouvrir-un.png",
+  "n": 46,
+  "id": "c-q2-close",
+  "fichier": "046-c-q2-close.png",
   "vue": "console",
   "section": "Question 2 — Michel commence",
-  "titre": "« 🔓 Rouvrir pour un élève » : Théo n'a pas répondu."
+  "titre": "Question 2 close : Théo n'a pas répondu."
  },
  {
-  "n": 32,
+  "n": 47,
+  "id": "c-annuler",
+  "fichier": "047-c-annuler.png",
+  "vue": "console",
+  "section": "Question 2 — Michel commence",
+  "titre": "« ⚠️ Annuler » une question déjà posée : la garde."
+ },
+ {
+  "n": 48,
+  "id": "c-annulee",
+  "fichier": "048-c-annulee.png",
+  "vue": "console",
+  "section": "Question 2 — Michel commence",
+  "titre": "La question 2 annulée : « ⚠️ Annulée — posée, puis annulée »."
+ },
+ {
+  "n": 49,
+  "id": "c-rouvrir-tous",
+  "fichier": "049-c-rouvrir-tous.png",
+  "vue": "console",
+  "section": "Question 2 — Michel commence",
+  "titre": "« 🔓 Rouvrir pour tous » : seulement ceux qui n'ont pas répondu."
+ },
+ {
+  "n": 50,
+  "id": "c-rouvrir-un",
+  "fichier": "050-c-rouvrir-un.png",
+  "vue": "console",
+  "section": "Question 2 — Michel commence",
+  "titre": "« 🔓 Rouvrir pour un élève » : Théo."
+ },
+ {
+  "n": 51,
   "id": "t-rouvrir-un",
-  "fichier": "032-t-rouvrir-un.png",
+  "fichier": "051-t-rouvrir-un.png",
   "vue": "tablette",
   "section": "Question 2 — Michel commence",
   "titre": "La tablette de Théo, rouverte ; Lou porte le voile."
  },
  {
-  "n": 33,
+  "n": 52,
   "id": "p-eleve",
-  "fichier": "033-p-eleve.png",
+  "fichier": "052-p-eleve.png",
   "vue": "telephone",
   "section": "Question 2 — Michel commence",
   "titre": "Ton téléphone : un clic sur Théo ouvre sa fiche."
  },
  {
-  "n": 34,
+  "n": 53,
   "id": "t-q3-tour1",
-  "fichier": "034-t-q3-tour1.png",
+  "fichier": "053-t-q3-tour1.png",
   "vue": "tablette",
   "section": "Question 3 — Julien commence",
   "titre": "Julien clique sur 6."
  },
  {
-  "n": 35,
+  "n": 54,
   "id": "x610-1-b-julien",
-  "fichier": "035-x610-1-b-julien.png",
+  "fichier": "054-x610-1-b-julien.png",
   "vue": "tablette",
   "section": "Question 3 — Julien commence",
-  "titre": "B : son temps est fini, il dit si sa feuille dit la même chose que son clic (évaluation de 3e)."
+  "titre": "B sur la vraie question 3 de l'évaluation de 3e : Julien dit si sa feuille dit la même chose que son clic."
  },
  {
-  "n": 36,
+  "n": 55,
   "id": "t-q3-tour2",
-  "fichier": "036-t-q3-tour2.png",
+  "fichier": "055-t-q3-tour2.png",
   "vue": "tablette",
   "section": "Question 3 — Julien commence",
   "titre": "Michel clique sur 10 ; sa feuille dit « 16 pattes »."
  },
  {
-  "n": 37,
+  "n": 56,
   "id": "x610-2-b-michel",
-  "fichier": "037-x610-2-b-michel.png",
+  "fichier": "056-x610-2-b-michel.png",
   "vue": "tablette",
   "section": "Question 3 — Julien commence",
-  "titre": "B, second tour : Michel (évaluation de 3e)."
+  "titre": "B, second tour, sur l'évaluation de 3e : Michel."
  },
  {
-  "n": 38,
+  "n": 57,
   "id": "c-q3-close",
-  "fichier": "038-c-q3-close.png",
+  "fichier": "057-c-q3-close.png",
   "vue": "console",
   "section": "Question 3 — Julien commence",
-  "titre": "Dernière question close : « 📊 Lancer l'autoévaluation »."
+  "titre": "Dernière question close : « ✅ Dernière question close — lance l'autoévaluation »."
  },
  {
-  "n": 39,
+  "n": 58,
+  "id": "c-depart",
+  "fichier": "058-c-depart.png",
+  "vue": "console",
+  "section": "Les gestes rares de la séance",
+  "titre": "« 🚫 Départ d'un élève »."
+ },
+ {
+  "n": 59,
+  "id": "c-parti",
+  "fichier": "059-c-parti.png",
+  "vue": "console",
+  "section": "Les gestes rares de la séance",
+  "titre": "Noah est parti : il ne bloque plus ; son binôme continue seul."
+ },
+ {
+  "n": 60,
+  "id": "c-retour",
+  "fichier": "060-c-retour.png",
+  "vue": "console",
+  "section": "Les gestes rares de la séance",
+  "titre": "« ↩️ Retour d'un élève »."
+ },
+ {
+  "n": 61,
+  "id": "c-deplacer",
+  "fichier": "061-c-deplacer.png",
+  "vue": "console",
+  "section": "Les gestes rares de la séance",
+  "titre": "Deux élèves échangés pendant la séance : leurs réponses les suivent."
+ },
+ {
+  "n": 62,
+  "id": "t-deplace",
+  "fichier": "062-t-deplace.png",
+  "vue": "tablette",
+  "section": "Les gestes rares de la séance",
+  "titre": "La moitié de l'élève déplacé : « Julien, va sur la tablette de Lou »."
+ },
+ {
+  "n": 63,
+  "id": "c-terminer",
+  "fichier": "063-c-terminer.png",
+  "vue": "console",
+  "section": "Les gestes rares de la séance",
+  "titre": "« 🛑 Terminer la session » : la garde."
+ },
+ {
+  "n": 64,
+  "id": "c-mode-emploi",
+  "fichier": "064-c-mode-emploi.png",
+  "vue": "console",
+  "section": "Les gestes rares de la séance",
+  "titre": "« 📖 Mode d'emploi », réécrit d'après le cadrage."
+ },
+ {
+  "n": 65,
+  "id": "c-finir-autre-heure",
+  "fichier": "065-c-finir-autre-heure.png",
+  "vue": "console",
+  "section": "Les gestes rares de la séance",
+  "titre": "« ⏸️ Finir à une autre heure » : la séance garde son état exact."
+ },
+ {
+  "n": 66,
+  "id": "c-reprendre",
+  "fichier": "066-c-reprendre.png",
+  "vue": "console",
+  "section": "Les gestes rares de la séance",
+  "titre": "À l'heure suivante : « ▶️ Reprendre la séance du 09/10 — question 1, 1er tour »."
+ },
+ {
+  "n": 67,
+  "id": "c-rouvrir-seance",
+  "fichier": "067-c-rouvrir-seance.png",
+  "vue": "console",
+  "section": "Les gestes rares de la séance",
+  "titre": "« 🔓 Rouvrir » une séance terminée : la garde."
+ },
+ {
+  "n": 68,
   "id": "c-sessions",
-  "fichier": "039-c-sessions.png",
+  "fichier": "068-c-sessions.png",
   "vue": "console",
   "section": "Les gestes rares de la séance",
   "titre": "« 🔴 1 session en cours » : aller au pilotage, ou terminer."
  },
  {
-  "n": 40,
+  "n": 69,
   "id": "c-interrompue",
-  "fichier": "040-c-interrompue.png",
+  "fichier": "069-c-interrompue.png",
   "vue": "console",
   "section": "Les gestes rares de la séance",
-  "titre": "La séance interrompue : reprendre, ou terminer définitivement."
+  "titre": "La séance interrompue : reprendre, finir à une autre heure, ou terminer définitivement."
  },
  {
-  "n": 41,
+  "n": 70,
   "id": "t-estim",
-  "fichier": "041-t-estim.png",
+  "fichier": "070-t-estim.png",
   "vue": "tablette",
   "section": "L'estimation",
-  "titre": "L'estimation, sur les deux moitiés en même temps."
+  "titre": "L'estimation : « Combien de bonnes réponses penses-tu avoir ? … », sans infobulle."
  },
  {
-  "n": 42,
+  "n": 71,
   "id": "c-estim",
-  "fichier": "042-c-estim.png",
+  "fichier": "071-c-estim.png",
   "vue": "console",
   "section": "L'estimation",
-  "titre": "Ta console pendant l'estimation."
+  "titre": "Ta console pendant l'estimation : « 📝 Lancer la correction »."
  },
  {
-  "n": 43,
+  "n": 72,
   "id": "x610-5-attestation-2",
-  "fichier": "043-x610-5-attestation-2.png",
+  "fichier": "072-x610-5-attestation-2.png",
   "vue": "tablette",
   "section": "La correction",
-  "titre": "La seconde attestation, avant la correction (507, 510)."
+  "titre": "La seconde attestation, une coche par ligne, les compétences par leur libellé élève."
  },
  {
-  "n": 44,
-  "id": "c-corr-q2-avant",
-  "fichier": "044-c-corr-q2-avant.png",
+  "n": 73,
+  "id": "t-attest-corr-fait",
+  "fichier": "073-t-attest-corr-fait.png",
+  "vue": "tablette",
+  "section": "La correction",
+  "titre": "Julien a tout coché : il attend ; Michel en est à 4 lignes sur 5."
+ },
+ {
+  "n": 74,
+  "id": "c-attest2",
+  "fichier": "074-c-attest2.png",
   "vue": "console",
   "section": "La correction",
-  "titre": "La correction commence par la question la plus ratée ; « 🔒 Révéler » fermé."
+  "titre": "Ta console attend que tous les présents aient coché la seconde attestation."
  },
  {
-  "n": 45,
+  "n": 75,
+  "id": "t-corr-q2-lecture",
+  "fichier": "075-t-corr-q2-lecture.png",
+  "vue": "tablette",
+  "section": "La correction",
+  "titre": "A : Michel lit la feuille de Julien et clique, dans la moitié de Julien ; Julien n'a pas encore lu celle de Michel."
+ },
+ {
+  "n": 76,
+  "id": "c-corr-q2-avant",
+  "fichier": "076-c-corr-q2-avant.png",
+  "vue": "console",
+  "section": "La correction",
+  "titre": "La correction commence par la question la plus ratée ; « 🔒 Révéler » attend que toutes les feuilles soient lues."
+ },
+ {
+  "n": 77,
   "id": "p-corr-avant",
-  "fichier": "045-p-corr-avant.png",
+  "fichier": "077-p-corr-avant.png",
   "vue": "telephone",
   "section": "La correction",
-  "titre": "Ton téléphone, avant la révélation."
+  "titre": "Ton téléphone, avant la révélation : les feuilles pas encore lues."
  },
  {
-  "n": 46,
+  "n": 78,
   "id": "b-recopie",
-  "fichier": "046-b-recopie.png",
+  "fichier": "078-b-recopie.png",
   "vue": "tableau",
   "section": "La correction",
-  "titre": "Le tableau pendant la recopie."
+  "titre": "Le tableau pendant la lecture : l'énoncé, sans les choix."
  },
  {
-  "n": 47,
-  "id": "t-corr-q2-decl",
-  "fichier": "047-t-corr-q2-decl.png",
-  "vue": "tablette",
-  "section": "La correction",
-  "titre": "« Qu'as-tu écrit sur ta feuille ? » (version du tour 603)."
- },
- {
-  "n": 48,
-  "id": "t-corr-q2-attente",
-  "fichier": "048-t-corr-q2-attente.png",
-  "vue": "tablette",
-  "section": "La correction",
-  "titre": "Les deux ont cliqué ; le chrono est rouge."
- },
- {
-  "n": 49,
-  "id": "x610-3-a-correction",
-  "fichier": "049-x610-3-a-correction.png",
-  "vue": "tablette",
-  "section": "La correction",
-  "titre": "A : chacun lit la feuille de l'autre (évaluation de 3e)."
- },
- {
-  "n": 50,
-  "id": "c-corr-q2-apres",
-  "fichier": "050-c-corr-q2-apres.png",
+  "n": 79,
+  "id": "c-corr-q2-lu",
+  "fichier": "079-c-corr-q2-lu.png",
   "vue": "console",
   "section": "La correction",
-  "titre": "Ta console après la révélation : le suivi de la feuille."
+  "titre": "Toutes les feuilles sont lues : « 💡 Révéler » s'ouvre."
  },
  {
-  "n": 51,
+  "n": 80,
+  "id": "c-corr-q2-apres",
+  "fichier": "080-c-corr-q2-apres.png",
+  "vue": "console",
+  "section": "La correction",
+  "titre": "Après la révélation : « ⛔ Dernier moment » en orange, « ⚠️ À relire » d'après B ; un clic sur un nom agit sur l'élève."
+ },
+ {
+  "n": 81,
   "id": "p-corr-apres",
-  "fichier": "051-p-corr-apres.png",
+  "fichier": "081-p-corr-apres.png",
   "vue": "telephone",
   "section": "La correction",
   "titre": "Ton téléphone après la révélation."
  },
  {
-  "n": 52,
+  "n": 82,
   "id": "b-correction",
-  "fichier": "052-b-correction.png",
+  "fichier": "082-b-correction.png",
   "vue": "tableau",
   "section": "La correction",
-  "titre": "Le tableau après la révélation : les choix sans lettres, les bonnes en vert."
+  "titre": "Le tableau après la révélation : les choix, les bonnes en vert."
  },
  {
-  "n": 53,
+  "n": 83,
   "id": "t-corr-q2-apres",
-  "fichier": "053-t-corr-q2-apres.png",
+  "fichier": "083-t-corr-q2-apres.png",
   "vue": "tablette",
   "section": "La correction",
-  "titre": "La tablette corrige d'après la feuille : « Trouvée au dernier moment »."
+  "titre": "La tablette corrige d'après la lecture du voisin : Julien, « Trouvée au dernier moment », le ✓ orange."
  },
  {
-  "n": 54,
-  "id": "t-corr-q3-decl",
-  "fichier": "054-t-corr-q3-decl.png",
+  "n": 84,
+  "id": "t-corr-q3-lecture",
+  "fichier": "084-t-corr-q3-lecture.png",
   "vue": "tablette",
   "section": "La correction",
-  "titre": "Question 3 : « Ma feuille ne dit aucun de ces choix »."
+  "titre": "Question 3 : Julien lit « aucun de ces choix » sur la feuille de Michel."
  },
  {
-  "n": 55,
+  "n": 85,
   "id": "c-corr-q3-apres",
-  "fichier": "055-c-corr-q3-apres.png",
+  "fichier": "085-c-corr-q3-apres.png",
   "vue": "console",
   "section": "La correction",
   "titre": "Ta console après la révélation de la question 3."
  },
  {
-  "n": 56,
+  "n": 86,
   "id": "t-corr-q3-apres",
-  "fichier": "056-t-corr-q3-apres.png",
+  "fichier": "086-t-corr-q3-apres.png",
   "vue": "tablette",
   "section": "La correction",
   "titre": "Julien et Michel ont faux."
  },
  {
-  "n": 57,
-  "id": "t-corr-q1-apres",
-  "fichier": "057-t-corr-q1-apres.png",
+  "n": 87,
+  "id": "t-corr-q1-lecture",
+  "fichier": "087-t-corr-q1-lecture.png",
   "vue": "tablette",
   "section": "La correction",
-  "titre": "Question 1 : juste pour les deux, d'après leur feuille."
+  "titre": "Question 1 : Julien lit Venise sur la feuille de Michel, qui dit Rome."
  },
  {
-  "n": 58,
+  "n": 88,
+  "id": "t-corr-q1-apres",
+  "fichier": "088-t-corr-q1-apres.png",
+  "vue": "tablette",
+  "section": "La correction",
+  "titre": "Question 1 révélée : Michel a faux, d'après la lecture de Julien."
+ },
+ {
+  "n": 89,
   "id": "c-corr-q1-apres",
-  "fichier": "058-c-corr-q1-apres.png",
+  "fichier": "089-c-corr-q1-apres.png",
   "vue": "console",
   "section": "La correction",
-  "titre": "Dernière question corrigée."
+  "titre": "Dernière question révélée : « 🏁 Afficher leur bilan aux élèves »."
  },
  {
-  "n": 59,
-  "id": "x610-6-coeval-laquelle",
-  "fichier": "059-x610-6-coeval-laquelle.png",
+  "n": 90,
+  "id": "x610-3-a-correction",
+  "fichier": "090-x610-3-a-correction.png",
+  "vue": "tablette",
+  "section": "La correction",
+  "titre": "A sur la vraie question 3 de l'évaluation de 3e : la moitié tient dans l'écran."
+ },
+ {
+  "n": 91,
+  "id": "t-corr-seul",
+  "fichier": "091-t-corr-seul.png",
+  "vue": "tablette",
+  "section": "La correction",
+  "titre": "Un élève seul sur sa tablette (rattrapage) : il lit lui-même sa feuille ; pas de co-évaluation."
+ },
+ {
+  "n": 92,
+  "id": "c-autonomie",
+  "fichier": "092-c-autonomie.png",
+  "vue": "console",
+  "section": "Le point d'autonomie",
+  "titre": "Un clic sur un nom : « ⛔ Retirer le point d'autonomie »."
+ },
+ {
+  "n": 93,
+  "id": "c-autonomie-garde",
+  "fichier": "093-c-autonomie-garde.png",
+  "vue": "console",
+  "section": "Le point d'autonomie",
+  "titre": "La garde : ses deux compétences d'autonomie passent en Maîtrise insuffisante ; la note ne bouge pas."
+ },
+ {
+  "n": 94,
+  "id": "c-autonomie-retiree",
+  "fichier": "094-c-autonomie-retiree.png",
+  "vue": "console",
+  "section": "Le point d'autonomie",
+  "titre": "Le point retiré : « ↩️ Rendre » le défait."
+ },
+ {
+  "n": 95,
+  "id": "p-autonomie",
+  "fichier": "095-p-autonomie.png",
+  "vue": "telephone",
+  "section": "Le point d'autonomie",
+  "titre": "Le même geste, sur ton téléphone."
+ },
+ {
+  "n": 96,
+  "id": "t-coeval",
+  "fichier": "096-t-coeval.png",
   "vue": "tablette",
   "section": "La co-évaluation de la lecture",
   "titre": "Julien n'a rien cliqué ; Michel a cliqué « ❌ » : « c'est laquelle ? »."
  },
  {
-  "n": 60,
+  "n": 97,
+  "id": "t-coeval-ecrit",
+  "fichier": "097-t-coeval-ecrit.png",
+  "vue": "tablette",
+  "section": "La co-évaluation de la lecture",
+  "titre": "Michel a cliqué la question 1 : « Qu'avais-tu écrit sur ta feuille ? » ; Julien a répondu « ✅ »."
+ },
+ {
+  "n": 98,
+  "id": "t-coeval-daccord",
+  "fichier": "098-t-coeval-daccord.png",
+  "vue": "tablette",
+  "section": "La co-évaluation de la lecture",
+  "titre": "Michel a cliqué ce que Julien avait lu : « vous êtes d'accord », retour aux trois choix."
+ },
+ {
+  "n": 99,
+  "id": "c-coeval-attente",
+  "fichier": "099-c-coeval-attente.png",
+  "vue": "console",
+  "section": "La co-évaluation de la lecture",
+  "titre": "Ta console : l'alerte, dans l'ordre des faits ; « 🏁 » attend les 4 derniers."
+ },
+ {
+  "n": 100,
+  "id": "c-coeval-feuille",
+  "fichier": "100-c-coeval-feuille.png",
+  "vue": "console",
+  "section": "La co-évaluation de la lecture",
+  "titre": "« La feuille dit autre chose : je clique ce qu'elle dit »."
+ },
+ {
+  "n": 101,
+  "id": "c-autonomie-michel",
+  "fichier": "101-c-autonomie-michel.png",
+  "vue": "console",
+  "section": "La co-évaluation de la lecture",
+  "titre": "« ⛔ à Michel » : la garde."
+ },
+ {
+  "n": 102,
+  "id": "c-autonomie-julien",
+  "fichier": "102-c-autonomie-julien.png",
+  "vue": "console",
+  "section": "La co-évaluation de la lecture",
+  "titre": "« ⛔ à Julien » : la garde."
+ },
+ {
+  "n": 103,
+  "id": "c-autonomie-deux",
+  "fichier": "103-c-autonomie-deux.png",
+  "vue": "console",
+  "section": "La co-évaluation de la lecture",
+  "titre": "« ⛔ aux deux » : la garde."
+ },
+ {
+  "n": 104,
+  "id": "c-coeval-tranche",
+  "fichier": "104-c-coeval-tranche.png",
+  "vue": "console",
+  "section": "La co-évaluation de la lecture",
+  "titre": "L'alerte tranchée, tous ont répondu : « 🏁 Afficher leur bilan aux élèves » s'ouvre."
+ },
+ {
+  "n": 105,
+  "id": "x610-6-coeval-laquelle",
+  "fichier": "105-x610-6-coeval-laquelle.png",
+  "vue": "tablette",
+  "section": "La co-évaluation de la lecture",
+  "titre": "Le cas ambigu, sur l'évaluation de 3e : Michel a cliqué « ❌ » : « c'est laquelle ? »."
+ },
+ {
+  "n": 106,
   "id": "x610-7-coeval-ecrit",
-  "fichier": "060-x610-7-coeval-ecrit.png",
+  "fichier": "106-x610-7-coeval-ecrit.png",
   "vue": "tablette",
   "section": "La co-évaluation de la lecture",
   "titre": "Michel a cliqué la question 3 : « Qu'avais-tu écrit sur ta feuille ? »."
  },
  {
-  "n": 61,
+  "n": 107,
   "id": "x610-8-console-alerte",
-  "fichier": "061-x610-8-console-alerte.png",
+  "fichier": "107-x610-8-console-alerte.png",
   "vue": "console",
   "section": "La co-évaluation de la lecture",
-  "titre": "Ta console : l'alerte du cas ambigu."
+  "titre": "Ta console : l'alerte du cas ambigu, les trois lectures de la feuille."
  },
  {
-  "n": 62,
+  "n": 108,
   "id": "x610-9-telephone-alerte",
-  "fichier": "062-x610-9-telephone-alerte.png",
+  "fichier": "108-x610-9-telephone-alerte.png",
   "vue": "telephone",
   "section": "La co-évaluation de la lecture",
   "titre": "Ton téléphone, au même moment."
  },
  {
-  "n": 63,
+  "n": 109,
   "id": "t-bilan",
-  "fichier": "063-t-bilan.png",
+  "fichier": "109-t-bilan.png",
   "vue": "tablette",
   "section": "La fin de l'heure",
-  "titre": "Le bilan de chacun."
+  "titre": "Le bilan de chacun : « Ta note provisoire », les libellés élève, le ✓ orange, l'autonomie atteinte."
  },
  {
-  "n": 64,
+  "n": 110,
+  "id": "t-bilan-imprime",
+  "fichier": "110-t-bilan-imprime.png",
+  "vue": "eleve",
+  "section": "La fin de l'heure",
+  "titre": "« 📄 Imprimer / Exporter mon bilan » : le bilan, tel qu'il s'imprime."
+ },
+ {
+  "n": 111,
+  "id": "t-bilan-annulee",
+  "fichier": "111-t-bilan-annulee.png",
+  "vue": "tablette",
+  "section": "La fin de l'heure",
+  "titre": "Si la question 2 avait été annulée : « Question 2 · annulée : elle ne compte pas. », la note sur 2."
+ },
+ {
+  "n": 112,
+  "id": "t-bilan-non-atteinte",
+  "fichier": "112-t-bilan-non-atteinte.png",
+  "vue": "tablette",
+  "section": "La fin de l'heure",
+  "titre": "Après « ⛔ aux deux » : les deux compétences d'autonomie « non atteinte »."
+ },
+ {
+  "n": 113,
   "id": "c-bilan",
-  "fichier": "064-c-bilan.png",
+  "fichier": "113-c-bilan.png",
   "vue": "console",
   "section": "La fin de l'heure",
   "titre": "Ton bilan de classe."
  },
  {
-  "n": 65,
+  "n": 114,
   "id": "t-fin",
-  "fichier": "065-t-fin.png",
+  "fichier": "114-t-fin.png",
   "vue": "tablette",
   "section": "La fin de l'heure",
   "titre": "Tu as terminé : la tablette revient à « Combien êtes-vous ? »."
  },
  {
-  "n": 66,
+  "n": 115,
+  "id": "c-papier-lancer",
+  "fichier": "115-c-papier-lancer.png",
+  "vue": "console",
+  "section": "La séance sur papier",
+  "titre": "« 📄 Séance sur papier » au lancement."
+ },
+ {
+  "n": 116,
+  "id": "c-papier-seance",
+  "fichier": "116-c-papier-seance.png",
+  "vue": "console",
+  "section": "La séance sur papier",
+  "titre": "La séance sur papier : les énoncés imprimés, puis « ⏸️ Feuilles ramassées »."
+ },
+ {
+  "n": 117,
+  "id": "e-papier-enonces",
+  "fichier": "117-e-papier-enonces.png",
+  "vue": "eleve",
+  "section": "La séance sur papier",
+  "titre": "Les énoncés seuls, sur une page, avec les points."
+ },
+ {
+  "n": 118,
+  "id": "c-papier-grille",
+  "fichier": "118-c-papier-grille.png",
+  "vue": "console",
+  "section": "La séance sur papier",
+  "titre": "Le soir : la grille, un élève par ligne, un clic pour ✓ ou ✗."
+ },
+ {
+  "n": 119,
+  "id": "c-papier-reprendre",
+  "fichier": "119-c-papier-reprendre.png",
+  "vue": "console",
+  "section": "La séance sur papier",
+  "titre": "L'heure suivante : « ▶️ Reprendre la séance du 09/10 — correction »."
+ },
+ {
+  "n": 120,
+  "id": "t-papier-estim",
+  "fichier": "120-t-papier-estim.png",
+  "vue": "tablette",
+  "section": "La séance sur papier",
+  "titre": "Les binômes reprennent les tablettes : l'estimation."
+ },
+ {
+  "n": 121,
+  "id": "t-papier-attest",
+  "fichier": "121-t-papier-attest.png",
+  "vue": "tablette",
+  "section": "La séance sur papier",
+  "titre": "La seconde attestation, variante papier : chacun corrige sa feuille au stylo."
+ },
+ {
+  "n": 122,
+  "id": "c-papier-correction",
+  "fichier": "122-c-papier-correction.png",
+  "vue": "console",
+  "section": "La séance sur papier",
+  "titre": "Ta console : « 💡 Révéler » tout de suite, d'après ta grille."
+ },
+ {
+  "n": 123,
+  "id": "t-papier-correction",
+  "fichier": "123-t-papier-correction.png",
+  "vue": "tablette",
+  "section": "La séance sur papier",
+  "titre": "Chaque moitié montre ce que ta grille a retenu de la feuille, puis la réponse."
+ },
+ {
+  "n": 124,
   "id": "c-seances",
-  "fichier": "066-c-seances.png",
+  "fichier": "124-c-seances.png",
   "vue": "console",
   "section": "Le soir, sur ta console",
   "titre": "Données → Résultats : la liste des séances."
  },
  {
-  "n": 67,
+  "n": 125,
   "id": "c-resultats",
-  "fichier": "067-c-resultats.png",
+  "fichier": "125-c-resultats.png",
   "vue": "console",
   "section": "Le soir, sur ta console",
   "titre": "Le tableau d'une séance : ✓, ✗ ou ＋, la note, une colonne par compétence."
  },
  {
-  "n": 68,
+  "n": 126,
   "id": "c-fiche",
-  "fichier": "068-c-fiche.png",
+  "fichier": "126-c-fiche.png",
   "vue": "console",
   "section": "Le soir, sur ta console",
   "titre": "La fiche de Michel."
  },
  {
-  "n": 69,
+  "n": 127,
   "id": "x626-1-fiche-bilan",
-  "fichier": "069-x626-1-fiche-bilan.png",
+  "fichier": "127-x626-1-fiche-bilan.png",
   "vue": "console",
   "section": "Le soir, sur ta console",
   "titre": "La fiche de Michel avec « 📝 Bilan général » (tour 626)."
  },
  {
-  "n": 70,
+  "n": 128,
   "id": "x627-1-fiche-bilan",
-  "fichier": "070-x627-1-fiche-bilan.png",
+  "fichier": "128-x627-1-fiche-bilan.png",
   "vue": "console",
   "section": "Le soir, sur ta console",
   "titre": "La fiche de Michel avec « 📝 Bilan général » (tour 627)."
  },
  {
-  "n": 71,
+  "n": 129,
   "id": "c-que-dit-la-feuille",
-  "fichier": "071-c-que-dit-la-feuille.png",
+  "fichier": "129-c-que-dit-la-feuille.png",
   "vue": "console",
   "section": "Le soir, sur ta console",
   "titre": "« Que dit la feuille ? »."
  },
  {
-  "n": 72,
+  "n": 130,
   "id": "c-corbeille",
-  "fichier": "072-c-corbeille.png",
+  "fichier": "130-c-corbeille.png",
   "vue": "console",
   "section": "Le soir, sur ta console",
   "titre": "Mettre une séance à la corbeille."
  },
  {
-  "n": 73,
+  "n": 131,
   "id": "c-sauvegarde",
-  "fichier": "073-c-sauvegarde.png",
+  "fichier": "131-c-sauvegarde.png",
   "vue": "console",
   "section": "Le soir, sur ta console",
   "titre": "Sauvegarde, avec la corbeille."
  },
  {
-  "n": 74,
+  "n": 132,
   "id": "x632-pdf",
-  "fichier": "074-x632-pdf.png",
+  "fichier": "132-x632-pdf.png",
   "vue": "console",
   "section": "Le soir, sur ta console",
   "titre": "Le PDF « notes et compétences » (tour 632)."
  },
  {
-  "n": 75,
+  "n": 133,
   "id": "e-mes-evals",
-  "fichier": "075-e-mes-evals.png",
+  "fichier": "133-e-mes-evals.png",
   "vue": "eleve",
   "section": "Côté élève, après la séance",
   "titre": "« 📊 Mes évaluations », chez elle."
  },
  {
-  "n": 76,
+  "n": 134,
   "id": "e-bilan-lou",
-  "fichier": "076-e-bilan-lou.png",
+  "fichier": "134-e-bilan-lou.png",
   "vue": "eleve",
   "section": "Côté élève, après la séance",
   "titre": "Le bilan de Lou, corrigé d'après sa feuille."
  },
  {
-  "n": 77,
+  "n": 135,
   "id": "x626-2-eleve-bilan",
-  "fichier": "077-x626-2-eleve-bilan.png",
+  "fichier": "135-x626-2-eleve-bilan.png",
   "vue": "eleve",
   "section": "Côté élève, après la séance",
   "titre": "Le bilan de Lou, qui finit par « 📝 Bilan » (tour 626)."
  },
  {
-  "n": 78,
+  "n": 136,
   "id": "x627-2-eleve-bilan",
-  "fichier": "078-x627-2-eleve-bilan.png",
+  "fichier": "136-x627-2-eleve-bilan.png",
   "vue": "eleve",
   "section": "Côté élève, après la séance",
   "titre": "Le bilan de Lou (tour 627)."
  },
  {
-  "n": 79,
+  "n": 137,
   "id": "x628-1-eleve-bilan",
-  "fichier": "079-x628-1-eleve-bilan.png",
+  "fichier": "137-x628-1-eleve-bilan.png",
   "vue": "eleve",
   "section": "Côté élève, après la séance",
   "titre": "Le bilan de Lou, avec les libellés élève (tour 628)."
  },
  {
-  "n": 80,
+  "n": 138,
+  "id": "c-reglages",
+  "fichier": "138-c-reglages.png",
+  "vue": "console",
+  "section": "Réglages",
+  "titre": "Réglages, en cartes : la classe, le prompt, les durées de la séance, les niveaux de maîtrise, les textes."
+ },
+ {
+  "n": 139,
+  "id": "c-reglages-prompt",
+  "fichier": "139-c-reglages-prompt.png",
+  "vue": "console",
+  "section": "Réglages",
+  "titre": "Le prompt de création d'éval."
+ },
+ {
+  "n": 140,
   "id": "c-rattrapage",
-  "fichier": "080-c-rattrapage.png",
+  "fichier": "140-c-rattrapage.png",
   "vue": "console",
   "section": "Une autre séance",
   "titre": "Le rattrapage."
  },
  {
-  "n": 81,
+  "n": 141,
   "id": "c-test",
-  "fichier": "081-c-test.png",
+  "fichier": "141-c-test.png",
   "vue": "console",
   "section": "Le mode test",
   "titre": "Le mode test (capture 64, à retirer)."
  },
  {
-  "n": 82,
+  "n": 142,
   "id": "x620-1-mode-test-ouverture",
-  "fichier": "082-x620-1-mode-test-ouverture.png",
+  "fichier": "142-x620-1-mode-test-ouverture.png",
   "vue": "console",
   "section": "Le mode test",
   "titre": "Le mode test, à l'ouverture."
  },
  {
-  "n": 83,
+  "n": 143,
   "id": "x620-2-mode-test-reflexion",
-  "fichier": "083-x620-2-mode-test-reflexion.png",
+  "fichier": "143-x620-2-mode-test-reflexion.png",
   "vue": "console",
   "section": "Le mode test",
   "titre": "Le mode test, pendant la réflexion."
  },
  {
-  "n": 84,
+  "n": 144,
   "id": "x620-3-mode-test-en-grand",
-  "fichier": "084-x620-3-mode-test-en-grand.png",
+  "fichier": "144-x620-3-mode-test-en-grand.png",
   "vue": "console",
   "section": "Le mode test",
   "titre": "« 🔍 Jouer en grand »."
  },
  {
-  "n": 85,
+  "n": 145,
   "id": "t-annexe",
-  "fichier": "085-t-annexe.png",
+  "fichier": "145-t-annexe.png",
   "vue": "tablette",
   "section": "Annexe : la demi-tablette",
   "titre": "La vraie question 3 de l'évaluation de 3e, sur une demi-tablette."

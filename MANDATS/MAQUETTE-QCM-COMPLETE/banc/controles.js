@@ -168,7 +168,12 @@ function lireScene(){
       const hit = document.elementFromPoint(cx, cy);
       if(hit && hit !== el && !el.contains(hit) && !hit.contains(el) && hit.closest(".modal-back,.checkin-overlay,.sessions-menu-overlay,.tel-sheet-fond,.grand-fond,.som-fond,.fen-fond") && !el.closest(".modal-back,.checkin-overlay,.sessions-menu-overlay,.tel-sheet-fond,.grand-fond,.som-fond,.fen-fond")) return;
     }
-    els.push({el, r});
+    // caché par le défilement d'une liste (la liste défile : ce n'est ni un chevauchement ni un texte coupé)
+    let anc = el.parentElement, cache = false;
+    while(anc && anc !== root){ const ca = getComputedStyle(anc); if(/(auto|scroll|hidden)/.test(ca.overflowY + ca.overflowX) && anc.scrollHeight > anc.clientHeight + 1){ const ra = anc.getBoundingClientRect(); const cy = r.top + r.height / 2; if(cy < ra.top || cy > ra.bottom) { cache = true; break; } } anc = anc.parentElement; }
+    if(cache) return;
+    const rs = getComputedStyle(el).display === "inline" ? Array.from(el.getClientRects()).filter(x => x.width > 0 && x.height > 0) : [r];
+    els.push({el, r, rs});
   });
   const chevauchements = [], coupes = [];
   const nomEl = e => (e.className && typeof e.className === "string" ? "." + e.className.split(" ")[0] : e.tagName) + " « " + (e.textContent || "").trim().slice(0, 30) + " »";
@@ -177,8 +182,12 @@ function lireScene(){
     for(let j = i + 1; j < els.length; j++){
       const b = els[j];
       if(a.el.contains(b.el) || b.el.contains(a.el)) continue;
-      const ox = Math.min(a.r.right, b.r.right) - Math.max(a.r.left, b.r.left), oy = Math.min(a.r.bottom, b.r.bottom) - Math.max(a.r.top, b.r.top);
-      if(ox > 3 && oy > 3) chevauchements.push(nomEl(a.el) + " ⟂ " + nomEl(b.el));
+      let touche = false;
+      for(const ra of a.rs){ for(const rb of b.rs){
+        const ox = Math.min(ra.right, rb.right) - Math.max(ra.left, rb.left), oy = Math.min(ra.bottom, rb.bottom) - Math.max(ra.top, rb.top);
+        if(ox > 3 && oy > 3) touche = true;
+      } }
+      if(touche) chevauchements.push(nomEl(a.el) + " ⟂ " + nomEl(b.el));
     }
     const cs = getComputedStyle(a.el);
     if(cs.display !== "inline" && (cs.overflowX !== "visible" || cs.textOverflow === "ellipsis") && a.el.scrollWidth > a.el.clientWidth + 1 && !/^(INPUT|TEXTAREA|SELECT)$/.test(a.el.tagName)) coupes.push(nomEl(a.el));
@@ -193,12 +202,29 @@ function lireScene(){
   const fr = document.querySelector("iframe");
   let textesIframe = "";
   try { textesIframe = fr && fr.contentDocument && fr.contentDocument.body ? fr.contentDocument.body.innerText : ""; } catch(e){}
+  const cibles = Array.from(root.querySelectorAll("[data-va]")).map(b => b.getAttribute("data-va")).filter(Boolean);
+  // un bouton actif sans geste déclaré : ni destination (data-va), ni composant à état (data-local), ni case qui se coche sur place
+  const couchesG = Array.from(root.querySelectorAll(".modal-back,.checkin-overlay,.tel-sheet-fond,.grand-fond,.fen-fond"));
+  const dessusG = couchesG.length ? couchesG[couchesG.length - 1] : null;
+  const sansGeste = Array.from(root.querySelectorAll("button")).filter(b => !b.disabled && visible(b) && (!dessusG || dessusG.contains(b))
+    && !b.hasAttribute("data-va") && !b.hasAttribute("data-local") && !b.closest(".eleve-choix,.decl-b-btns,.co-btns,.qdf-choix,.autoeval-fourchettes")
+    && !(b.classList.contains("actif") || b.getAttribute("aria-pressed") === "true")).map(b => (b.innerText || "").trim().slice(0, 40));
   const infoEleve = (vue === "tablette" || vue === "eleve" || vue === "tableau") ? root.querySelectorAll(".info-i").length : 0;
-  return {longueurTexte: (root.innerText || "").length, iframe: !!fr, textesIframe, interdits: window.__INTERDITS || [], textes, enonces, debords, chevauchements, coupes, boutons, infoEleve};
+  return {sansGeste, cibles, longueurTexte: (root.innerText || "").length, iframe: !!fr, textesIframe, interdits: window.__INTERDITS || [], textes, enonces, debords, chevauchements, coupes, boutons, infoEleve};
 }
 function marquerBoutons(){
+  // Les boutons que l'élève ou Paul peuvent cliquer sur cette scène : ni grisés, ni cachés, ni recouverts par la fenêtre ouverte ;
+  // l'onglet ou le mode déjà en cours (qui ramène à la scène elle-même) n'est pas un geste.
   const root = document.getElementById("root"); let i = 0;
-  root.querySelectorAll("button").forEach(b => { const r = b.getBoundingClientRect(); if(b.disabled || r.width < 1 || r.height < 1) return; b.setAttribute("data-banc-b", String(i++)); });
+  const couches = Array.from(root.querySelectorAll(".modal-back,.checkin-overlay,.tel-sheet-fond,.grand-fond,.fen-fond"));
+  const dessus = couches.length ? couches[couches.length - 1] : null;
+  root.querySelectorAll("button").forEach(b => {
+    const r = b.getBoundingClientRect(); if(b.disabled || r.width < 1 || r.height < 1) return;
+    if(dessus && !dessus.contains(b)) return;
+    const va = b.getAttribute("data-va");
+    if(va && va === window.SCENE_COURANTE && (b.classList.contains("actif") || b.getAttribute("aria-pressed") === "true")) return;
+    b.setAttribute("data-banc-b", String(i++));
+  });
   return i;
 }
 function empreinte(){

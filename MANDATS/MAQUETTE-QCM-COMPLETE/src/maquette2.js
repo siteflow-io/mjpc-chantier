@@ -184,18 +184,19 @@ function etatQ2SansTheo(p){ if(p === "Théo") return {cls:"m-pasrep", st:"⏳ pa
 function RouvrirUn(){
   var fond = Pilot({phase:"attente", qi:1, stats:statsQ("24/24", "23/24", "9/23", "2/3"), passees:[0, 1], etat:etatQ2SansTheo,
     legende:LEG_Q.slice(0, 4).concat([["#fff","pas de réponse","2px dashed #EF4444"]])});
-  var modal = h("div", {className:"checkin-overlay"},
+  var modal = h("div", {className:"checkin-overlay", "data-echap":"c-q2-close"},
     h("div", {className:"checkin-modal", style:{maxWidth:"560px"}},
       h("div", {className:"checkin-header"}, h("h3", null, "🔓 Rouvrir pour un élève — Q2", InfoI()), h("div", {className:"checkin-sub"}, "Seuls les élèves sans réponse à la question 2 sont listés.")),
       h("div", {className:"rouvrir-l"},
         h("div", null, h("div", {style:{fontWeight:900}}, "CHEVALLIER Théo"), h("div", {style:{fontSize:".8rem", color:"var(--gris)"}}, "tablette 12, moitié de gauche · avec ZELLER Lou")),
-        h("button", {className:"btn btn-primary btn-sm"}, "🔓 Rouvrir pour Théo")),
+        h("button", {className:"btn btn-primary btn-sm", "data-va":"t-rouvrir-un"}, "🔓 Rouvrir pour Théo")),
       h("div", {style:{padding:".2rem 1.2rem .8rem", fontSize:".84rem", lineHeight:1.5, color:"var(--noir)"}},
         "Une seule fois par question. Il a le temps de réponse de la question (20 s). Pendant son tour, ZELLER Lou porte le voile, comme d'habitude."),
-      h("div", {className:"checkin-actions"}, h("button", {className:"btn btn-ghost"}, "Annuler"))));
+      h("div", {className:"checkin-actions"}, h("button", {className:"btn btn-ghost", "data-va":"c-q2-close", title:"Ferme la fenêtre sans rien rouvrir."}, "Annuler"))));
   return h(F, null, fond, modal);
 }
-function TabletteTheo(){ return Tablette(EcrReponse(THEO, 1, ORD[1].J, [], 14), Voile(THEO, false)); }
+var LOU_T = {cle:"L", nom:"ZELLER Lou", prenom:"Lou", sexe:"F"}; THEO.sexe = "M"; THEO.voisin = LOU_T;
+function TabletteTheo(){ return Tablette(EcrReponse(THEO, 1, ORD[1].J, [], 14), Voile(THEO, false, LOU_T)); }
 
 /* ── La séance interrompue et sa reprise (337) ── */
 function Interrompue(){
@@ -529,17 +530,17 @@ function TelEleve(){
     h("div", {key:"q"}, TelQ(1)),
     h("div", {key:"s", className:"tel-suiv"}, h("span", {style:{fontWeight:900, color:"var(--violet)"}}, "Suiv. Q3 : "), EV.questions[2].enonce),
     h("div", {key:"a", className:"tel-actions"},
-      TelBtn("🚀 Lancer Q3", "primary", "large"),
-      TelBtn("🔓 Rouvrir Q2 pour tous", "ghost", "small")),
+      h("button", {className:"tel-btn tb-primary tb-large", "data-va":"t-q3-tour1"}, "🚀 Lancer Q3"),
+      h("button", {className:"tel-btn tb-ghost tb-small", "data-va":"c-rouvrir-tous"}, "🔓 Rouvrir Q2 pour tous")),
     h("div", {key:"st"}, TelStats(1, [0, 1])),
     h("div", {key:"l"}, TelListe("TABLETTES — 23 / 24 ont répondu · clic sur un nom pour agir", modeDe)),
-    h("div", {key:"t"}, TelBtn("🛑 Terminer la session", "rouge", "small"))]);
-  var feuille = h("div", {className:"tel-sheet-fond"},
+    h("div", {key:"t"}, h("button", {className:"tel-btn tb-rouge tb-small", "data-va":"c-terminer"}, "🛑 Terminer la session"))]);
+  var feuille = h("div", {className:"tel-sheet-fond", "data-echap":"c-q2-close"},
     h("div", {className:"tel-sheet"},
-      h("div", {style:{display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:".5rem"}}, h("strong", {style:{fontSize:"1rem"}}, "CHEVALLIER Théo"), h("span", {style:{fontSize:"1.4rem"}}, "✕")),
+      h("div", {style:{display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:".5rem"}}, h("strong", {style:{fontSize:"1rem"}}, "CHEVALLIER Théo"), h("button", {className:"tel-x", "data-va":"c-q2-close", title:"Ferme la fiche de l'élève sans rien changer."}, "✕")),
       h("div", {style:{fontSize:".78rem", opacity:.85, marginBottom:".6rem"}}, "Tablette 12, moitié de gauche · avec ZELLER Lou"),
-      TelBtn("🔁 Rouvrir Q2 pour cet élève uniquement (une seule fois)", "turq"),
-      TelBtn("🚫 Marquer comme parti en cours de séance", "rouge"),
+      h("button", {className:"tel-btn tb-turq", "data-va":"t-rouvrir-un"}, "🔁 Rouvrir Q2 pour cet élève uniquement (une seule fois)"),
+      h("button", {className:"tel-btn tb-rouge", "data-va":"c-parti"}, "🚫 Marquer comme parti en cours de séance"),
       h("div", {className:"tel-etat"}, "État actuel : n'a pas encore répondu. Pendant son tour, Lou porte le voile.")));
   return h(F, null, fond, feuille);
 }

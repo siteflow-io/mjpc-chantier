@@ -1,4 +1,4 @@
-# La maquette complète du QCM — livraison de l'exécutant (en cours : étape 1 faite)
+# La maquette complète du QCM — livraison de l'exécutant (en cours : étapes 1 et 2 faites)
 
 *Mandat : `MANDATS/MANDAT-MAQUETTE-QCM-COMPLETE.md`. Ce README grandit à chaque étape ; sa forme finale est écrite à l'étape 5.*
 
@@ -46,3 +46,18 @@ Dans la production (`siteflow-io/monsieurjaipascompris`, clonée en lecture, `ma
 ### Le banc, et comment il grandit
 
 Les vérifications 1 (chaque scène s'ouvre sans erreur et montre quelque chose, le sommaire marche), 6 (aucune boîte système, aucun réseau, aucun stockage : dans le source et à l'exécution) et 7 (aucun vrai élève) portent sur **toutes** les scènes dès l'étape 1. Les vérifications 2 (débordement), 3 (chaque phrase de l'élève retrouvée mot pour mot dans le cadrage, les sources des maquettes, les textes rendus des maquettes existantes ou la 7.7.1), 4 (les mots interdits côté élève, dont les infobulles côté élève), 5 (infobulles et boutons inertes, chaque bouton cliqué sur la scène fraîche), 8 (chevauchements et textes coupés) et 9 (le commentaire de com632, le PDF de gen632) portent sur les scènes déjà relues par une étape (la colonne « étape » du sommaire) ; à l'étape 5, tout porte sur tout. Le banc a été éprouvé contre un piège : un nom inventé (« DUPONT Marie ») est bien refusé, et une phrase de l'existant est bien retrouvée.
+
+## Étape 2 — avant et pendant les questions
+
+*Maquette : `maquette-qcm-v2.html` (md5 `d3b487940ff9a76d0cf8667df9815538`). Banc : `sorties/banc-etape2.txt` — **5 878 vérifications, zéro défaut**, sur les 145 scènes (vérifications 1, 6, 7 partout ; toutes les autres sur les scènes des étapes 1 et 2). Captures : `captures/`, toutes regardées.*
+
+Ce qui change, point par point (le détail : `PLAN-ETAPES-2-4.md`, section « Étape 2 ») :
+
+- **Avant l'heure** : l'accueil (« 🎓 Mode élève », « Accès professeur ») ; « Pilotage classe » avec la durée comptée d'après les durées fixes (649), le mode (« 📱 Sur tablettes » / « 📄 Séance sur papier », 467), les binômes formés d'abord par les exclusions de MJPC (585, 587) ; un échange qui mettrait deux exclus ensemble est refusé, avec la raison, pour toi seul (589) ; l'appel, où un clic marque un absent ; la démo « 🎓 », lancée comme une vraie, et la ligne qui en reste (550 à 558).
+- **L'entrée** : « Tu es bien Julien ? » (333) ; le code inconnu, « lève la main » (402) ; l'élève à la mauvaise tablette, « rejoins Julien » (15) ; l'attestation, une coche par ligne, chaque ligne après la précédente, « Je commence » fermé jusqu'à la dernière (506, 549) ; ta console, « attestation 5/8 ».
+- **Pendant les questions** : les deux temps à taper en direct, « +5 », « +10 », « +30 », qui agissent vraiment, et la fin prévue, rouge quand elle déborde (427, 428) ; « ❌ Écarter », « ⚠️ Annuler », « ↩️ Remettre », leurs gardes et leurs marques (429, 441, 442) ; « Question 2 / 2 » sur les tablettes ; le stylo 🖊️ et les phrases qui nomment l'élève (431) ; B, « dit-elle la même chose que ton clic ? », 5 s (495) ; « ✅ Dernière question close — lance l'autoévaluation » (433) ; « 🔓 Rouvrir pour tous » grisé, avec la raison, quand tout le monde a répondu.
+- **Les gestes rares** : départ, parti, retour (Noah), déplacer deux élèves pendant la séance (72), « Terminer », « 👁 » (la tablette en direct), le QR, le mode d'emploi réécrit d'après le cadrage ; « ⏸️ Finir à une autre heure » est dans le pilotage (sa scène est à l'étape 3).
+- **Ton téléphone** : les temps en direct, la fin prévue, « ❌ Écarter », un chrono que « 🔄 Chrono » relance.
+- **Les gestes** : chaque bouton de la console et du téléphone a son infobulle (ce qu'il fait, ce qu'il coûte) ; chaque bouton mène à sa scène, ou agit sur place (temps, coches, appel, binômes, pause) ; Échap ferme une fenêtre.
+
+Le banc a grandi (défauts 5 à 16 du journal) : il remet la scène à neuf avant chaque clic au lieu d'ouvrir un navigateur (4 min 42 pour tout), ne clique que la couche du dessus, et vérifie que **chaque bouton déclare son geste**.

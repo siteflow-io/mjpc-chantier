@@ -6,7 +6,7 @@ const path = require("path"), fs = require("fs"), crypto = require("crypto");
 const { chromium } = require("/opt/node22/lib/node_modules/playwright");
 const FICHIER = path.resolve(process.argv[2]);
 const seul = process.argv[3] || null;
-const OUT = path.join(__dirname, "captures");
+const OUT = process.env.OUT || path.join(__dirname, "captures");
 // Les écrans identiques voulus : t-fin est, par définition, le retour à « Combien êtes-vous ? » (cadrage 64)
 const VOULU = {"t-fin": true};
 const VUES = {

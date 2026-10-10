@@ -19299,3 +19299,29 @@ Réponse mot pour mot :
 642. **Au sas** : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/MAQUETTE-QCM-FLUX/README.md (section « Tour 628 »). Ensuite : le prompt (62, 123).
 
 10/10/2026 08:58 MEMO
+
+---
+
+## TOUR 629 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (10/10, 09:09) 618. le commentaire, du coup. Sinon tout est ok.
+
+---
+
+## TOUR 629 — Claude (conscience n°12)
+
+Pris acte : 618 fermée, 636 à 642 acquis. Cadrage, ligne d'état et transcript mis à jour, poussés au sas.
+
+Réponse mot pour mot :
+
+643. **618 est fermée** : ton extension entre la note, le niveau de chaque compétence et le commentaire, rien d'autre. La forme du PDF « notes et compétences » est donc arrêtée, telle qu'elle est dans l'exemple du tour 628 : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/MAQUETTE-QCM-FLUX/pdf-628/notes-competences-3-ESSAI.pdf
+
+644. **Acquis : 636 à 642**, dont les 28 libellés élève et 640 : le libellé élève remplace aussi les intitulés dans tes attestations et dans la phrase sous chaque question.
+
+645. **Ce qui reste avant le mandat, dans l'ordre** : le prompt (62, 123) ; puis la maquette entière, d'un coup, que tu valides sur captures ; puis le mandat, avec les exclusions et les libellés élève des compétences dans MJPC, le QCM et les dettes 179 à 211.
+
+646. **La suite** : le prompt. Je le commence à ton mot.
+
+10/10/2026 09:10 MEMO

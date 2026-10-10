@@ -1,0 +1,85 @@
+/* Tour 610 — B : la phrase de l'élève à la fin de son temps de réponse ; A : le rapprochement fait par le voisin */
+.fige{background:#475569;color:#fff;border-radius:12px;padding:.55rem .9rem;font-weight:900;font-size:.95rem;text-align:center;margin:.2rem 0 .4rem}
+.fige-choix .eleve-choix-btn:disabled{opacity:.35}
+.decl-b-titre{font-size:1.2rem;font-weight:900;color:var(--violet);text-align:center;margin:.9rem 0 .6rem;line-height:1.35}
+.decl-b-btns{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+.decl-b-btn{padding:1rem .8rem;border-radius:14px;border:3px solid var(--violet);background:#fff;color:var(--violet);font-family:inherit;font-size:1.08rem;font-weight:900;cursor:pointer}
+.decl-b-chrono{margin:.7rem auto 0;width:max-content;padding:.35rem .9rem;border-radius:999px;background:rgba(106,76,224,.1);color:var(--violet);font-weight:900;font-size:1rem}
+.montre{background:#FEF3C7;color:#92400E;border-radius:10px;padding:.3rem .8rem;font-weight:900;font-size:.92rem;text-align:center;margin:0 0 .15rem}
+.moitie .montre + .decl-titre{margin-top:.3rem}
+/* Tour 611 : la phrase de 450 réduite, sous la consigne de lecture */
+.soin{font-size:.88rem;font-weight:900;color:#9A3412;text-align:center;margin:0}
+/* Tour 613 : la co-évaluation de la lecture, côté élève */
+.co-titre{font-size:1.25rem;margin:.2rem 0 .7rem}
+.co-liste{display:flex;flex-direction:column;gap:.4rem;margin:.3rem 0 .6rem}
+.co-l{padding:.65rem .9rem;border:2px solid var(--bordure);border-radius:12px;background:#fff;font-weight:700;font-size:1rem}
+.co-liste.cliquable .co-l{border:3px dashed var(--violet);color:var(--violet)}
+.co-l.choisie{border:3px solid #EF4444;background:#FEF2F2;color:#991B1B;font-weight:900}
+.co-regle{background:#FFF7ED;border:2px solid #FDBA74;color:#9A3412;border-radius:12px;padding:.55rem .8rem;font-weight:800;font-size:.92rem;line-height:1.4;margin:.2rem 0 .6rem}
+.co-btns{display:flex;flex-direction:column;gap:.45rem}
+.co-btn{width:100%;padding:.8rem 1rem;border-radius:14px;border:3px solid var(--bordure);background:#fff;font-family:inherit;font-size:1rem;font-weight:900;text-align:left;cursor:pointer;color:var(--noir)}
+.co-btn.ok{border-color:#22C55E;color:#15803D}
+.co-btn.peut{border-color:#F59E0B;color:#92400E}
+.co-btn.mal{border-color:#EF4444;color:#B91C1C}
+.co-btn.on{border-width:4px;box-shadow:0 6px 16px rgba(0,0,0,.15)}
+.co-btn.on.ok{background:#DCFCE7}
+.co-btn.on.peut{background:#FEF3C7}
+.co-btn.on.mal{background:#FEE2E2}
+.co-prompt{font-weight:900;color:var(--violet);text-align:center;margin:.6rem 0 .1rem;font-size:1.02rem}
+.co-seule{font-weight:900;color:#B91C1C;text-align:center;font-size:1.05rem;margin:.1rem 0 .5rem}
+.co-actions{display:flex;justify-content:center;gap:.6rem;margin-top:.3rem}
+.co-envoye{border-radius:14px;padding:1rem 1.1rem;font-weight:900;font-size:1.1rem;text-align:center;margin:.4rem 0 .6rem}
+.co-envoye.ok{background:#DCFCE7;color:#15803D;border:2px solid #22C55E}
+.co-envoye.mal,.co-envoye.peut{background:#FEF2F2;color:#B91C1C;border:2px solid #EF4444}
+/* Tour 613 : l'alerte de ta console et de ton téléphone */
+.alerte-co{display:grid;grid-template-columns:1.3fr 1fr;gap:1rem;background:#FEF2F2;border:3px solid #EF4444;border-radius:14px;padding:.8rem 1rem;margin-bottom:.9rem;box-shadow:0 6px 18px rgba(239,68,68,.25)}
+.al-t{font-weight:900;color:#B91C1C;font-size:1.08rem;margin-bottom:.35rem}
+.al-l{font-size:.9rem;margin:.18rem 0;color:var(--noir)}
+.al-b{color:#9A3412;font-weight:800}
+.al-c{color:#B91C1C;font-weight:900;margin-top:.4rem}
+.al-actions{display:flex;flex-direction:column;gap:.4rem;justify-content:center}
+.al-auto{display:flex;gap:.4rem;flex-wrap:wrap}
+.al-note{font-size:.76rem;color:var(--gris);line-height:1.35}
+.m-coq{background:#FDE68A!important;color:#78350F!important}
+.m-coq .st{background:rgba(255,255,255,.6);color:#78350F}
+.co-compte{margin-top:.7rem;font-size:.86rem;line-height:1.6;background:#fff;border:2px solid var(--bordure);border-radius:12px;padding:.5rem .8rem}
+.tel-alerte{background:#FEF2F2;color:var(--noir);border:3px solid #EF4444;border-radius:12px;padding:.55rem .65rem;display:flex;flex-direction:column;gap:.35rem}
+.tel-alerte .al-t{font-size:.86rem}
+.tel-alerte .al-l{font-size:.74rem}
+.tel-alerte .g2{display:grid;grid-template-columns:1fr 1fr;gap:.3rem}
+.tel-alerte .tb-ghost{background:#475569;border:none!important}
+.tp-coq{background:#FDE68A;color:#78350F!important}
+.m-co .st{background:#fff!important;color:#B91C1C!important}
+.tp-mal{background:#fff;color:#B91C1C!important;border:1px solid #EF4444}
+.moitie .soin + .eleve-chrono{margin-top:.25rem}
+.moitie .montre ~ .decl-consigne{margin-bottom:.1rem}
+.co-attente{text-align:center;font-weight:900;color:var(--violet);font-size:1.05rem;margin-top:.5rem}
+.moitie .co-btn{padding:.7rem .9rem;font-size:.97rem}
+/* Tour 616 : l'évaluation de 3e, le cas ambigu */
+.co-liste.serree{gap:.25rem}
+.co-liste.serree .co-l{padding:.38rem .7rem;font-size:.86rem;font-weight:600;border-width:2px}
+.co-titre.co-mal{color:#B91C1C}
+.co-titre.co-peut{color:#92400E}
+.tag-lu{display:inline-block;margin-left:.4rem;font-size:.7rem;font-weight:900;padding:.1rem .5rem;border-radius:6px;background:#0EA5E9;color:#fff;vertical-align:middle}
+.eleve-choix-btn.selected .tag-lu{background:#fff;color:#0369A1}
+.al-choix{display:grid;grid-template-columns:1fr 1fr;gap:.2rem .8rem;margin:.3rem 0 .4rem;font-size:.8rem}
+.al-choix.tel{grid-template-columns:1fr;font-size:.7rem}
+.al-ch{color:var(--gris)}
+.al-ch.bon{color:#15803D}
+.al-tab{width:100%;border-collapse:collapse;font-size:.85rem;margin:.3rem 0 .4rem;background:#fff}
+.al-tab th{background:#FEE2E2;color:#991B1B;text-align:left;padding:.3rem .5rem;font-size:.78rem}
+.al-tab td{border-top:1px solid #FECACA;padding:.3rem .5rem;vertical-align:top}
+.al-tab td.lt{font-weight:900;white-space:nowrap}
+.al-tab td.pt{font-weight:900;text-align:center;width:3rem}
+.al-tab tr.apres td{background:#FFF7ED}
+.al-tab tr.bonne td{background:#DCFCE7;color:#15803D;font-weight:800}
+.al-y{color:#1E3A8A;font-weight:800}
+.alerte-co.al3{grid-template-columns:1.6fr 1fr}
+.al-auto-t{font-size:.8rem;font-weight:900;color:#B91C1C;margin-top:.2rem}
+.btn-aux-deux{background:#B91C1C;color:#fff}
+.tel-alerte .g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.3rem}
+.tel-alerte .al-tab{font-size:.68rem}
+.tel-alerte .al-tab th{font-size:.62rem}
+.tb-rougeclair{background:#B91C1C}
+.tel-al-note{font-size:.66rem;color:var(--gris);text-align:center}
+.al-choix{height:auto!important;min-height:0!important;align-content:start}

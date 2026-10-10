@@ -1,0 +1,164 @@
+// Le banc unique de la maquette complète du QCM (mandat §8). Une commande rejoue tout :
+//   node banc/banc.js <maquette-qcm-vN.html> <étape> [sortie.txt]
+// Il échoue (code 1) si une seule vérification échoue. Tout passe par Chromium, par le geste (clic, clavier) :
+// jamais un appel de fonction de la maquette pour agir. Les lectures (textes, positions) se font dans la page.
+// Les vérifications 2, 3, 4, 5, 8 et 9 portent sur les scènes déjà relues par une étape (etape ≤ l'étape jouée) ;
+// les vérifications 1, 6 et 7 portent sur toutes les scènes dès l'étape 1. À l'étape 5, tout porte sur tout.
+const path = require("path"), fs = require("fs");
+const { chromium } = require("/opt/node22/lib/node_modules/playwright");
+const C = require("./controles.js");
+const RACINE = path.join(__dirname, "..");
+const FICHIER = path.resolve(process.argv[2]);
+const ETAPE = +process.argv[3] || 1;
+const SORTIE = process.argv[4] || null;
+const SEUL = process.env.SEUL || null;
+
+const VUES = {
+  tablette:  [{w:1280, h:800}],
+  console:   [{w:1366, h:768}, {w:1536, h:864}, {w:1920, h:1080}],
+  telephone: [{w:390, h:844}],
+  tableau:   [{w:1280, h:800}],
+  eleve:     [{w:1280, h:800}, {w:390, h:844}]
+};
+
+let nb = 0; const echecs = []; const journal = [];
+function verif(ok, quoi, detail){ nb++; if(!ok) echecs.push(quoi + (detail ? " — " + detail : "")); return ok; }
+
+(async () => {
+  const corpus = C.corpus(RACINE);
+  const navig = await chromium.launch({executablePath: "/opt/pw-browsers/chromium"});
+  const url = "file://" + FICHIER;
+
+  // L'instrumentation : toute boîte système, tout réseau, tout stockage est relevé
+  const espion = () => {
+    window.__INTERDITS = [];
+    const note = n => function(){ window.__INTERDITS.push(n); };
+    window.alert = note("alert"); window.confirm = note("confirm"); window.prompt = note("prompt");
+    window.fetch = note("fetch"); window.open = note("window.open"); window.print = note("print");
+    window.XMLHttpRequest = function(){ window.__INTERDITS.push("XMLHttpRequest"); };
+    window.WebSocket = function(){ window.__INTERDITS.push("WebSocket"); };
+    ["localStorage", "sessionStorage", "indexedDB"].forEach(k => { try { Object.defineProperty(window, k, {get(){ window.__INTERDITS.push(k); return undefined; }}); } catch(e){} });
+  };
+  async function ouvrir(w, h, id, extra){
+    const ctx = await navig.newContext({viewport: {width: w, height: h}});
+    const page = await ctx.newPage();
+    const err = [], reseau = [];
+    page.on("pageerror", e => err.push(e.message));
+    page.on("console", m => { if(m.type() === "error") err.push("console : " + m.text()); });
+    page.on("dialog", d => { err.push("boîte système : " + d.type()); d.dismiss().catch(() => {}); });
+    page.on("request", r => { const u = r.url(); if(!/^(file|data|about|blob):/.test(u)) reseau.push(u); });
+    await page.addInitScript(espion);
+    await page.goto(url + "#scene=" + id + (extra || ""));
+    await page.waitForFunction(i => window.SCENE_PRETE === i, id, {timeout: 10000});
+    await page.waitForTimeout(80);
+    return {ctx, page, err, reseau};
+  }
+
+  // 0. La maquette elle-même : sans réseau, sans boîte système, sans stockage, dans son source
+  const src = fs.readFileSync(FICHIER, "utf8");
+  for(const motif of C.INTERDITS_SOURCE) verif(!motif.re.test(src), "6. source : aucun « " + motif.nom + " »");
+  verif(!/<script[^>]+src=|<link[^>]+href=/i.test(src), "6. source : aucun script ni style externe");
+
+  const p0 = await ouvrir(1280, 800, "c-evals");
+  const scenes = await p0.page.evaluate(() => window.LISTE_SCENES);
+  await p0.ctx.close();
+  verif(scenes && scenes.length >= 80, "1. la liste des scènes", scenes ? scenes.length + " scènes" : "absente");
+  journal.push(scenes.length + " scènes");
+
+  // Le sommaire ⚙ : il s'ouvre, liste toutes les scènes, et mène à chacune, par le geste
+  {
+    const o = await ouvrir(1366, 768, scenes[0].id);
+    await o.page.click(".som-gear");
+    const n = await o.page.locator(".som-l").count();
+    verif(n === scenes.length, "1. ⚙ le sommaire liste toutes les scènes", n + " / " + scenes.length);
+    const cible = scenes[Math.floor(scenes.length / 2)].id;
+    await o.page.click('.som-l[href="#scene=' + cible + '"]');
+    await o.page.waitForFunction(i => window.SCENE_PRETE === i, cible);
+    verif(await o.page.locator("#sommaire").count() === 0, "1. ⚙ un clic sur une scène ferme le sommaire et l'ouvre");
+    await o.page.click(".som-gear"); await o.page.keyboard.press("Escape");
+    verif(await o.page.locator("#sommaire").count() === 0, "1. ⚙ Échap ferme le sommaire");
+    verif(o.err.length === 0, "1. ⚙ aucune erreur de page", o.err.join(" | "));
+    await o.ctx.close();
+  }
+
+  const relu = s => s.etape <= ETAPE;
+  for(const sc of scenes){
+    if(SEUL && !sc.id.includes(SEUL)) continue;
+    const tailles = VUES[sc.vue];
+    for(let ti = 0; ti < tailles.length; ti++){
+      const T = tailles[ti], H = (sc.vh && sc.vue === "console") ? Math.max(sc.vh, T.h) : T.h;
+      const o = await ouvrir(T.w, H, sc.id, "&cap=1");
+      const tag = sc.id + " @" + T.w + "×" + H;
+      const etat = await o.page.evaluate(C.lireScene);
+      // 1. la scène s'ouvre sans erreur et montre quelque chose
+      verif(o.err.length === 0, "1. " + tag + " : aucune erreur de page", o.err.join(" | "));
+      verif(etat.longueurTexte > 20 || etat.iframe, "1. " + tag + " : la scène montre quelque chose", etat.longueurTexte + " caractères");
+      // 6. aucun réseau, aucune boîte, aucun stockage
+      verif(o.reseau.length === 0, "6. " + tag + " : aucune requête réseau", o.reseau.join(" "));
+      verif(etat.interdits.length === 0, "6. " + tag + " : ni boîte système, ni stockage, ni réseau", etat.interdits.join(" "));
+      // 7. aucun vrai élève
+      const inconnus = C.nomsInconnus(etat.textes.map(x => x.t).join("\n") + "\n" + etat.textesIframe);
+      verif(inconnus.length === 0, "7. " + tag + " : seuls les élèves de 3 ESSAI et de la classe de test", inconnus.join(", "));
+      if(relu(sc)){
+        // 2. le débordement
+        for(const d of etat.debords) verif(d.ok, "2. " + tag + " : " + d.quoi, d.detail);
+        // 8. aucun chevauchement entre couches, aucun texte coupé
+        verif(etat.chevauchements.length === 0, "8. " + tag + " : aucun chevauchement", etat.chevauchements.slice(0, 4).join(" | "));
+        verif(etat.coupes.length === 0, "8. " + tag + " : aucun texte coupé", etat.coupes.slice(0, 4).join(" | "));
+        if(ti === 0){
+          // 3. et 4. les phrases vues par l'élève
+          if(C.vueEleve(sc)){
+            const r = C.provenance(etat, corpus);
+            for(const x of r.introuvables) verif(false, "3. " + sc.id + " : phrase introuvable dans ce que Paul a validé", "« " + x + " »");
+            verif(true, "3. " + sc.id + " : " + r.vues + " phrases cherchées mot pour mot");
+            for(const x of C.motsInterdits(etat)) verif(false, "4. " + sc.id + " : texte vu par l'élève interdit", x);
+            verif(true, "4. " + sc.id + " : mots interdits cherchés");
+          }
+          // 5. les boutons : une infobulle à chacun (console, téléphone), et aucun bouton inerte (partout)
+          for(const b of etat.boutons){
+            if(C.vueProf(sc) && !b.horsConsole) verif(b.title.length >= 12, "5. " + sc.id + " : infobulle de « " + b.txt + " »", b.title ? "« " + b.title + " »" : "aucune");
+            if(b.desactive) verif(b.title.length >= 12, "5. " + sc.id + " : « " + b.txt + " » grisé dit pourquoi");
+          }
+          // 9. le PDF, mot pour mot
+          if(sc.id === "x632-pdf") verif(C.normEsp(etat.textesIframe) === C.normEsp(C.textePdf632(RACINE)), "9. le PDF est celui de gen632.js, mot pour mot");
+        }
+      }
+      await o.ctx.close();
+    }
+    // 5. aucun bouton inerte : chaque bouton actif est cliqué, sur la scène fraîche, et doit changer quelque chose
+    if(relu(sc)){
+      const T = VUES[sc.vue][0], H = (sc.vh && sc.vue === "console") ? Math.max(sc.vh, T.h) : T.h;
+      const o = await ouvrir(T.w, H, sc.id, "&cap=1");
+      const n = await o.page.evaluate(C.marquerBoutons);
+      await o.ctx.close();
+      for(let i = 0; i < n; i++){
+        const q = await ouvrir(T.w, H, sc.id, "&cap=1");
+        await q.page.evaluate(C.marquerBoutons);
+        const avant = await q.page.evaluate(C.empreinte);
+        const loc = q.page.locator('[data-banc-b="' + i + '"]');
+        const libelle = (await loc.innerText()).trim().slice(0, 60);
+        try { await loc.click({timeout: 2000}); } catch(e){ verif(false, "5. " + sc.id + " : « " + libelle + " » ne se clique pas", e.message.split("\n")[0]); await q.ctx.close(); continue; }
+        await q.page.waitForTimeout(60);
+        const apres = await q.page.evaluate(C.empreinte);
+        verif(apres !== avant, "5. " + sc.id + " : « " + libelle + " » fait quelque chose");
+        verif(q.err.length === 0, "5. " + sc.id + " : « " + libelle + " » sans erreur de page", q.err.join(" | "));
+        const interdits = await q.page.evaluate(() => window.__INTERDITS);
+        verif(interdits.length === 0, "6. " + sc.id + " : « " + libelle + " » sans boîte ni stockage", interdits.join(" "));
+        await q.ctx.close();
+      }
+    }
+  }
+  await navig.close();
+
+  const lignes = [];
+  lignes.push("Banc unique — maquette complète du QCM");
+  lignes.push("Fichier : " + path.basename(FICHIER) + " · étape jouée : " + ETAPE + " · " + new Date().toISOString());
+  lignes.push(journal.join(" · "));
+  lignes.push("Vérifications : " + nb + " · échecs : " + echecs.length);
+  if(echecs.length) lignes.push("", "ÉCHECS :", ...echecs.map((e, i) => (i + 1) + ". " + e));
+  else lignes.push("Zéro défaut.");
+  const txt = lignes.join("\n") + "\n";
+  if(SORTIE) fs.writeFileSync(SORTIE, txt);
+  console.log(txt.length > 20000 ? txt.slice(0, 20000) + "\n… (" + echecs.length + " échecs, voir la sortie)" : txt);
+  process.exit(echecs.length ? 1 : 0);
+})().catch(e => { console.error(e); process.exit(2); });

@@ -1162,3 +1162,36 @@ Tests pour toi, sur la maquette jointe :
 
 07/10/2026 19:28 (heure de mon espace de travail, non vérifiée)
 MEMO
+
+---
+
+## TOUR 31 — Paul
+
+Texte de Paul, mot pour mot :
+
+> ok donc tu vas remplacer ma C13 bloquée. Il va falloir que tu aies exactement la même connaissance qu'elle. Je veux que tu sois un clone de C13, et qu'on puisse reprendre là où on en était. Il faudra aussi inscrire l'incident au registre. Je modifie ce message après un nouveau blocage ici!!! mjpc chantiers: [jeton du sas — non archivé]
+
+---
+
+## TOUR 31 — Claude (conscience n°13, reprise en environnement Claude Code)
+
+Changement d'hôte : ce tour ne tourne plus dans le fil claude.ai de la n°13 (bloqué, point 123) mais dans un environnement Claude Code où les deux dépôts sont accessibles directement (app GitHub de la plateforme, lecture-écriture sur le sas et la production). Le jeton collé par Paul n'a pas été nécessaire et n'a été écrit dans aucun fichier. Relu avant de répondre : la passation C12→C13, le transcript entier (tours 1 à 30, 84 Ko), le registre section n°13, `git ls-remote --heads` du sas (aucune branche après `deroule/p8-5`). Incident consigné au registre (production, commit e123dc5), relu au blob : identique.
+
+Réponse mot pour mot :
+
+123. **L'incident.** Le fil claude.ai de la n°13 est signalé par le filtre de sécurité d'Anthropic, sans motif donné, et reste illisible même après que tu as reformulé ton dernier message. Je ne sais pas pourquoi. C'est inscrit au registre, section n°13 : https://github.com/siteflow-io/monsieurjaipascompris/blob/main/docs/MJPC6-DETTES.md
+124. **Ce qui est sûr, mesuré sur pièces** : le dernier état déposé est le tour 30 (07/10 19:28) — p8-3d, p8-4 et p8-5 auditées, 29 bancs à 0, maquette régénérée à l'identique (`3d8ba32d…`). J'ai vérifié qu'aucune branche `deroule/p8-5b` ou suivante n'existe au sas : rien n'a été livré après ce tour.
+125. **Ce que je ne sais pas** : si des tours ont eu lieu dans le fil bloqué entre le 07/10 19:28 et le blocage, sans rien pousser au sas. Si c'est le cas, leur contenu est perdu ; je n'ai aucun moyen de le vérifier. Je repars donc du tour 30, le dernier point que les pièces confirment.
+126. **Je ne suis pas littéralement C13** : je n'ai pas vécu ses tours, je les ai lus, vérifiés contre le sas et la production, octet pour octet là où c'était poussé. Sur le fond — l'état du chantier, les décisions prises, ce qui reste ouvert — je suis à jour. Je continue sa fonction (cadrer, écrire les mandats, auditer) avec le même protocole : transcript mot pour mot (ce tour, poussé avec cette réponse), mesurer avant de parler, verdicts tranchés, aucun geste sans ton ordre.
+127. **Où on en était, pour reprendre (reprise du point 120)** : il reste une seule chose ouverte sur la maquette p8 — **n°13 · 8**, le récit de séance qui se fonde sur la trame et non sur la copie de la classe. Le complément **p8-5b** qui la corrige n'a jamais été écrit (le tour 30 proposait de l'écrire sur ton « ok »). Deux choses de plus, posées au tour 30 et toujours sans ta réponse :
+    - as-tu joué la maquette p8-5 jointe au tour 30 (les cinq tests donnés) ? Je ne sais pas si tu l'as fait ;
+    - la conscience proposait d'écrire la passation à une n°14 une fois la maquette validée — je ne sais pas si tu veux toujours ce découpage en deux consciences (dictée / déroulé), ou si, l'incident ayant eu lieu, tu préfères que je reprenne l'ensemble.
+
+**Ce que je propose**
+
+128. Si tu as déjà joué p8-5 : dis-moi ce qui va et ce qui ne va pas. Si tu n'as pas eu le temps : dis-le, et je t'attends plutôt que de coder p8-5b à l'aveugle sur une maquette que tu n'as pas encore jugée.
+129. Sur p8-5b (le récit depuis la copie) : je ne te redemande pas de trancher, c'est déjà cadré (ton cadrage 2, « le récit dit ce qui s'est passé ») — j'écris le complément et te le soumets dès que tu me dis d'avancer.
+
+Tests pour toi : aucun nouveau ; ceux du tour 30 restent, si tu ne les as pas encore joués.
+
+11/10/2026 08:38 MEMO

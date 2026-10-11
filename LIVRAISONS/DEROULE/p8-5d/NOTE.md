@@ -51,7 +51,10 @@ Rien d'autre de p8-5c n'est touché : ni la répétition, ni les ancres, ni la m
 
 ## Le banc unique, résultat
 `sh bancs/tous-les-bancs.sh` → `sorties/tous-les-bancs.txt`
-RÉSULTAT_BANC_UNIQUE
+- Lancé le 2026-10-11 à 13:57 UTC : node v22.22.0, Playwright 1.56.1, Chromium 141.0.7390.37.
+- Maquette jouée : md5 `da37e0f02091399a6b3b1750814d9034`.
+- **31 bancs, 31 × « fin : 0 défaut(s) », « TOUS LES BANCS : 0 défaut »**, en un seul passage.
+- Le blocage de chargement (`page.goto` à 30 s) signalé dans la NOTE p8-5c ne s'est pas produit.
 
 ## Les captures (toutes regardées, écran entier) — les chiffres sont dans `captures/MESURES-p8-5d.txt`
 | capture | ce qu'elle prouve |
@@ -70,5 +73,6 @@ Rien de nouveau. Le seul changement de diapo sans clic que la maquette sait prov
 - Avec l'animation accélérée, une frappe qui continue après le changement de diapo n'arrive plus dans une note : la note a rendu le focus, et les touches vont à la page, où certaines lettres sont des raccourcis de classe. C'est la conséquence voulue de « une note suit sa diapo, toujours ». Je le signale, sans y toucher.
 
 ## Les empreintes
-EMPREINTES_MAQUETTE
+- maquette `maquette-pilotage-ordi-v9c15p8-manipulable.html` : `da37e0f02091399a6b3b1750814d9034`
+- gabarit `v9c15p8-template.html` : `f4a3f4c14124041279fef059b5a429b6`
 - tous les fichiers livrés : `EMPREINTES.md5`, vérifié par `md5sum -c` avant l'envoi.

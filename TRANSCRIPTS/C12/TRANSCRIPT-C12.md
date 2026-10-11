@@ -19871,3 +19871,35 @@ Réponse mot pour mot :
 737. **La suite, c'est le mandat de code.** Il a deux parties. La partie QCM (evaluation-qcm.html) peut partir tout de suite. La partie MJPC (index.html) attend que le déroulé soit promu (677). Ma proposition : je l'écris en commençant par la partie QCM, quand tu me le dis.
 
 11/10/2026 13:17 MEMO
+
+---
+
+## TOUR 648 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (11/10, 13:19) C'est quoi les 3 dettes restantes? Et oui on distingue QCM et mjpc bien sûr
+
+---
+
+## TOUR 648 — Claude (conscience n°12)
+
+Registre relu : n°12 · 179 à 211, 31 ouvertes (187 et 208 closes). Hub relu en lecture seule : `qcm/evaluations` (7, aucune avec chapitre, compétences ni « verifie »), `qcm/sessions` (3 séances de juin, 4e-pythagore ×2 et 4e-banksy, 13 copies chacune ; une séance de test le 07/10), `qcm/settings` (les niveaux seulement), `taxonomie/competences` (code et libellé officiel, pas de libellé élève), `classes` (aucune exclusion). Cadrage relu sur les évaluations déjà écrites (36, 56, 61, 631).
+
+Réponse mot pour mot :
+
+738. **Les trois dettes qui restent dans ton site sont celles de MJPC** : 87, le panneau prof est une fenêtre de 1 100 px au milieu de l'écran, au lieu de prendre tout l'écran ; 88, dans « Élèves & codes », ↻ et ✕ sortent de la carte de chaque élève ; 212, dans « Emploi du temps », les dix boutons d'export et de prompt sont écrasés sur une seule rangée. La maquette les montre réglées ; ton site, lui, les garde jusqu'à la partie MJPC du code, après le déroulé (677).
+
+739. **Côté QCM, il y a en plus 31 dettes ouvertes au registre** (n°12 · 179 à 211, sauf 187 et 208, qui sont closes). Elles sont toutes cadrées, et la maquette validée montre chacune réglée. La partie QCM du code doit toutes les régler : une livraison n'a jamais ni trou ni dette.
+
+740. **Compris : deux mandats de code, le QCM d'abord.** Avant de l'écrire, j'ai regardé dans la base du site ce que le nouveau QCM va y trouver. Trois points demandent ton accord.
+
+741. **Tes 7 évaluations n'ont ni chapitre, ni compétences, ni « ce qu'elle vérifie »**, donc le nouveau QCM ne peut pas en faire le bilan. Ma proposition : elles s'ouvrent dans l'éditeur avec la mention « À compléter », et « Lancer » reste fermé, avec la raison, tant qu'il manque quelque chose. Tu les complètes avec l'instance (« Corrige ton JSON ») ou à la main.
+
+742. **Tes 3 séances de juin** (deux en 4e Pythagore, une en 4e Banksy, 39 copies) ont été notées avec l'ancienne règle, de 1 à 4 points par question selon le niveau. Ma proposition : elles restent lisibles telles qu'elles ont été notées, sans être recalculées. Il n'y a encore aucune séance de cette année avec de vrais élèves.
+
+743. **Les 28 libellés élève des compétences** doivent être dans la base avant que le QCM s'en serve, alors que leur éditeur n'arrive qu'avec la partie MJPC. Ma proposition : je les écris dans la base, à côté de chaque libellé officiel, après une photo de l'existant pour que rien ne se perde, quand tu me le dis. L'éditeur de MJPC permettra ensuite de les modifier.
+
+744. **Les exclusions, rien à décider** : elles n'existent pas encore dans la base, puisqu'elles se règlent dans MJPC. Le QCM les lira dès qu'elles existeront, et forme ses binômes sans elles d'ici là.
+
+11/10/2026 13:22 MEMO

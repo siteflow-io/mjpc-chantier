@@ -28,3 +28,7 @@ Rien n'a changé dans le vrai site. Les dettes n°12 · 87, 88 et 212 s'y règle
 ## Remarques de Paul après la validation (11/10, 14:04, tour 650)
 
 Paul a quatre remarques sur la v7 : les textes explicatifs, le rangement des évaluations par niveau et par classe, le niveau d'une évaluation, et les infobulles sur tout élément. Les mesures sont dans https://github.com/siteflow-io/mjpc-chantier/blob/main/AUDITS/MAQUETTE-QCM-REMARQUES-11-10/README.md. Elles feront l'objet d'un complément 3 de la maquette, avant les mandats de code.
+
+## La lecture complète de la v7 (11/10, tour 654)
+
+À la demande de Paul (14:29), la conscience a relu la v7 entière, geste par geste, avec quatre relecteurs séparés : https://github.com/siteflow-io/mjpc-chantier/blob/main/AUDITS/MAQUETTE-QCM-LECTURE-11-10/README.md. La v7 a deux défauts bloquants (la note de Lou, la fenêtre « 🔍 Jouer en grand » du mode test) et des défauts de six sortes. Le mandat de code ne part pas de la v7 : il partira de la v8, celle du complément 3 refait, après l'audit final de la conscience et la validation de Paul.

@@ -1,0 +1,235 @@
+
+###### MAJUSCULES [ELEVE/ecran] — 12 textes
+  [16,18,19,20,22,23,25,26,37,41,42,44…(38)] 3 ESSAI · ABRIAL JULIEN
+  [17] 3 ESSAI · BAUDRY LÉA
+  [18,19] Quand « POSE TON STYLO » s'affiche, pose ton stylo et clique ta réponse. Quand c'est le tour de Michel, ne regarde pas.
+  [18,19,20,22,23,33,34,35,37,41,42,43…(36)] 3 ESSAI · DUVERNAY MICHEL
+  [19] Quand « POSE TON STYLO » s'affiche, pose ton stylo et clique ta réponse. Quand c'est le tour de Julien, ne regarde pas.
+  [22,23,41,42] ✍️ RÉDIGE TA RÉPONSE EN ENTIER SUR TA FEUILLE
+  [31] 🖊️ POSE TON STYLO.
+  [51] 3 ESSAI · CHEVALLIER THÉO
+  [83,131] MadridBONNE RÉPONSETA RÉPONSE
+  [83,131] BerlinBONNE RÉPONSETA RÉPONSE
+  [88] RomeBONNE RÉPONSETA RÉPONSE
+  [91] 3 ESSAI · YVON ADAM
+
+###### MAJUSCULES [PAUL/bulle] — 1 textes
+  [24,167] Coupe la réflexion : « POSE TON STYLO » sur les deux moitiés, puis le 1er tour. Sert quand tous ont fini d'écrire avant la fin du temps.
+
+###### MAJUSCULES [PAUL/ecran] — 42 textes
+  [1,2,3,4,7,8,9,10,11,21,24,27…(86)] 📝 Évaluation QCMMODE PROF
+  [4] Q11📏 LONGUEUR ASSUMÉE
+  [28] 3 ESSAI · ABRIAL JULIEN
+  [64] Réflexion : l'énoncé sans les choix, chacun écrit sa réponse en entier sur sa feuille. Puis « POSE TON STYLO » : au 1er tour, l'un répond pendant que l'autre, v
+  [76,79] 📄 TEMPS POUR LIRE LA FEUILLE DU VOISIN
+  [134,135,136,137] BONNE RÉPONSE
+  [151] COMMENT SE PASSE UNE QUESTION EN CLASSE
+  [151] CE QUE TU FAIS, DANS CET ORDRE
+  [151] RÈGLES POUR CHAQUE QUESTION
+  [155] POUR TOUTES LES DISCIPLINES — LA FICHE PAP DE L’ÉTABLISSEMENT, LIGNE À LIGNE
+  [157,158,159,160,161] COMPÉTENCES TRANSVERSALES
+  [166,167,168] 🧪 Évaluation QCMMODE TEST
+  [167,168] _TEST_EVALUATION-QCM · AUDEBERT ÉLISE
+  [167,168] ✍️ RÉDIGE TA RÉPONSE EN ENTIER SUR TA FEUILLE
+  [167,168] _TEST_EVALUATION-QCM · AUGEREAU GATIEN
+  [167,168] _TEST_EVALUATION-QCM · BOIVIN EDEN
+  [167,168] _TEST_EVALUATION-QCM · BOURREAU CÉLESTE
+  [167,168] _TEST_EVALUATION-QCM · BRESSIN TITOUAN
+  [167,168] _TEST_EVALUATION-QCM · CALDEIRA TIAGO
+  [167,168] _TEST_EVALUATION-QCM · CESBRON LILI
+  [167,168] _TEST_EVALUATION-QCM · CHALUMEAU JULES
+  [167,168] _TEST_EVALUATION-QCM · CHAN AYMERIC
+  [167,168] _TEST_EVALUATION-QCM · CHARRIER LINE
+  [167,168] _TEST_EVALUATION-QCM · CHOLET PIERRE
+  [167,168] _TEST_EVALUATION-QCM · CHOUTEAU BAPTISTINE
+  [167,168] _TEST_EVALUATION-QCM · DELACROIX ROMAIN
+  [167,168] _TEST_EVALUATION-QCM · DESBOIS AURIANE
+  [167,168] _TEST_EVALUATION-QCM · DESLIN LUCAS
+  [167,168] _TEST_EVALUATION-QCM · DITTIERE ROMANE
+  [167,168] _TEST_EVALUATION-QCM · HEINRICH CLOVIS
+  [167,168] _TEST_EVALUATION-QCM · JAMIN NOÉ
+  [167,168] _TEST_EVALUATION-QCM · JUIN ANGÈLE
+  [167,168] _TEST_EVALUATION-QCM · KOCK ELISA
+  [167,168] _TEST_EVALUATION-QCM · PAGEOT ELIE
+  [167,168] _TEST_EVALUATION-QCM · PINET CHARLOTTE
+  [167,168] _TEST_EVALUATION-QCM · POULAIN ZÉLIA
+  [167,168] _TEST_EVALUATION-QCM · REVET LUCAS
+  [167,168] _TEST_EVALUATION-QCM · ROLLAND GABRIEL
+  [167,168] _TEST_EVALUATION-QCM · ROULLEAU CANDICE
+  [167,168] _TEST_EVALUATION-QCM · TENNEGUIN ARTHUR
+  [167,168] _TEST_EVALUATION-QCM · XAVIER CAPUCINE
+  [167,168] _TEST_EVALUATION-QCM · VINET ÉMILE
+
+###### camelCase [PAUL/bulle] — 4 textes
+  [144,145,146] Détecte et nettoie les sessions « zombies » : entrées sessionActive qui pointent vers une session inexistante, classe disparue, ou session encore marquée « en_c
+  [162,163,164] Le rappel se tait trente jours (edtRappelPlusTard) ; rien d’autre ne change.
+  [166,167,168] Appelle cloturerSession() — le chemin exact du bouton « Terminer la session ».
+  [166,167,168] Repousse le départ du chrono dans le passé : peutRepondre refuse immédiatement, sans attendre.
+
+###### camelCase [PAUL/ecran] — 2 textes
+  [151] 12. La longueur : chaque question doit tenir sur une demi-tablette, choix compris. Compte les caractères, espaces comprises. L'énoncé fait 300 caractères au plu
+  [151] "longueurAssumee": false
+
+###### date ISO [PAUL/ecran] — 1 textes
+  [157,158,159,160,161] Version 1.4.0 · 2026-08-02 · 7 domaines · 210 notions
+
+###### double espace / mot manquant [PAUL/bulle] — 1 textes
+  [21,24,27,28,30,32,36,38,39,40,45,46…(25)] Le temps de  de cette question, pour cette séance : l'évaluation elle-même ne change pas.
+
+###### guillemets droits [PAUL/bulle] — 1 textes
+  [1,2,3,4,7,8,9,10,11,21,24,27…(86)] Ouvre la vue tableau dans une NOUVELLE FENÊTRE (pas un onglet) que tu peux glisser sur l'écran qui projette. Utilise W+P en mode "Étendre" sur Windows pour avoi
+
+###### guillemets droits [PAUL/ecran] — 22 textes
+  [151] 12. La longueur : chaque question doit tenir sur une demi-tablette, choix compris. Compte les caractères, espaces comprises. L'énoncé fait 300 caractères au plu
+  [151] 13. La question bonus, si je t'en demande une, porte "bonus": true : elle compte dans les points gagnés, pas dans le total.
+  [151] "titre": "Titre de l'évaluation",
+  [151] "chapitre": "identifiant du chapitre, celui donné plus haut",
+  [151] "mode": "strict",
+  [151] "questions": [
+  [151] "enonce": "Énoncé autonome (forme attendue de la réponse)",
+  [151] "choix": ["…", "…", "…", "…"],
+  [151] "bonnes": [0],
+  [151] "niveau": "standard",
+  [151] "reflexion": 40,
+  [151] "reponse": 15,
+  [151] "competences": ["code de la compétence"],
+  [151] "verifie": "ce qu'elle vérifie, à l'infinitif",
+  [151] "explication": "1 à 3 phrases pour l'élève.",
+  [151] "bonus": false,
+  [151] "longueurAssumee": false
+  [151] "mode" vaut "strict" (tout ou rien) ou "partiel". "bonnes" donne la place des bonnes réponses, en comptant à partir de 0. "reflexion" et "reponse" sont en secon
+  [151] - "facile" (Facile)
+  [151] - "standard" (Standard)
+  [151] - "approfondi" (Approfondi)
+  [151] - "expert" (Expert)
+
+###### jargon [PAUL/bulle-i] — 2 textes
+  [3] Le JSON que l'instance de création d'éval t'a rendu. L'app le vérifie : le format, le chapitre et ses compétences, chaque question sur une demi-tablette, ce qu'
+  [151,152] Ce prompt guide l'instance de création d'éval, pour qu'elle t'aide à écrire l'évaluation puis te rende le JSON à coller dans « ➕ Nouvelle évaluation ». Tu peux 
+
+###### jargon [PAUL/bulle] — 17 textes
+  [1,2,3,4,7,8,9,10,11,21,24,27…(86)] Ouvre la vue tableau dans une NOUVELLE FENÊTRE (pas un onglet) que tu peux glisser sur l'écran qui projette. Utilise W+P en mode "Étendre" sur Windows pour avoi
+  [1,2,3,4,150,151,152] Ouvre le prompt de création d'éval, à copier dans l'instance qui écrit le JSON.
+  [1,2] Créer une nouvelle évaluation. Tu colles un JSON (généré par l'IA via le bouton Prompt IA) et l'app parse automatiquement les questions, choix, bonnes réponses 
+  [3,4] Colle le JSON d'une nouvelle évaluation : l'app le vérifie avant de l'enregistrer.
+  [3,4] Parse le JSON ci-dessus et l'affiche en mode éditable ci-dessous.
+  [3] Copie les messages, numérotés, prêts à coller dans l'instance de création d'éval : « Corrige ton JSON : 1. … Renvoie le JSON complet. »
+  [3] S'ouvre quand le JSON n'a plus rien à corriger.
+  [4] Colle ici un JSON corrigé : « 🔍 Vérifier le format » le recharge dans l'éditeur.
+  [133,141] Cliquer pour trier par nom (asc/desc). Cliquer sur un nom d'élève dans le tableau ouvre son Student Report (drill-down).
+  [144,145,146] Télécharge un fichier JSON contenant l'intégralité des données. À garder précieusement.
+  [150,151,152] Ouvre l'éditeur pour modifier le prompt. Les modifications sont enregistrées dans Firebase et réutilisées la prochaine fois.
+  [152] Enregistre ce prompt dans Firebase. Il sera réutilisé à chaque ouverture du modal, sur tous les appareils.
+  [162,163,164] Coche pour sortir le JSON de cet objet, tel qu’il est au hub.
+  [162,163] Coche tous les objets : un seul JSON les rangera chacun sous son identifiant.
+  [162,163,164] Copie la consigne pour l’IA et le JSON en service, en un seul bloc : un seul collage suffit. Ne change rien au hub.
+  [163,164] Copie le JSON des objets cochés : un seul objet, tel qu’il est au hub ; plusieurs, chacun rangé sous son identifiant. Ne change rien au hub.
+  [166,167,168] Exporte un snapshot complet de la base de données (incluant la session de test) au format JSON. Utile pour partager l'état exact en cas de bug à investiguer.
+
+###### jargon [PAUL/ecran] — 24 textes
+  [3] Coller le JSON de l'évaluationi
+  [3] ❌ Rien n'est enregistré : 7 choses à corriger dans le JSON.
+  [4] JSON de l'évaluation
+  [4] 📊 Mode de scoringi
+  [4] 📏 Longueur assumée : 60 px de trop sur une demi-tablette ; tu l'as dit à l'instance JSON. Sa moitié défilera seule, la page ne bouge pas.
+  [9] 📋 Check-in : qui est absent aujourd'hui ?
+  [144,145,146] 📥 Exporter snapshot
+  [144,145,146] 📤 Importer snapshot
+  [144,145,146] Tout part d'abord à la corbeille, gardé un an. Pense quand même à exporter un snapshot.
+  [145] 📤 Importer un snapshot ?
+  [146] Pense à exporter un snapshot avant.
+  [150,151,152] Il ne devine jamais un temps : il te demande chaque temps, te dit « ça ne rentre pas », et ne produit le JSON qu'à ton « produis le JSON ».
+  [151] Chapitre choisi : 3e · Chapitre 1 — Poésie et peinture au XIXe siècle. Copie ce prompt et colle-le dans l'instance de création d'éval : elle te posera ses quest
+  [151] 5. Tout au long de la discussion, tiens un cadrage mémorisé : à chaque étape, redonne en quelques lignes ce qui est décidé (questions validées, temps, compétenc
+  [151] 6. Si je te colle un message de mon application qui commence par « Corrige ton JSON », corrige seulement ce qu'il cite et renvoie le JSON complet.
+  [153,154,155,156,157,158,159,160,161,162,163,164] Configuration & Firebase
+  [162,163,164] Année 2026-2027. Les objets vivent au hub sous /site/edt/. Rien n’est obligatoire : ce qui manque manque, le site marche comme avant.
+  [162,163,164] ⤓ Sortir le JSON
+  [162,163,164] ⤓ Sortir les JSON cochés
+  [163] JSON de « calendrier » copié — 19717 caractères.
+  [164] JSON de « calendrier », « grille », « creneaux », « periodes », « photos » et « reglages » copié — 33349 caractères.
+  [166,167,168] 📥 Exporter snapshot test
+  [166] 🧪 _test_evaluation-qcm (30 élèves)
+  [167,168] 🎯 🎓 Démo — apprendre le déroulé — _test_evaluation-qcm
+
+###### pluriel bricolé [PAUL/ecran] — 2 textes
+  [21,45,46,47,48,49,50] Difficulté Facile · réflexion 20 s · réponse 15 s par tour · 1 bonne(s) réponse(s)
+  [24,27,28,30,32,36,38,39,40,58,59,60…(16)] Difficulté Standard · réflexion 30 s · réponse 20 s par tour · 2 bonne(s) réponse(s)
+
+###### ponctuation sans espace avant [ELEVE/ecran] — 1 textes
+  [54,56,90,169] Comment trouves-tu l'antécédent d'un Pronom Relatif, et dans quel sens va la flèche à l'étape 4?
+
+###### ponctuation sans espace avant [PAUL/ecran] — 2 textes
+  [110,111,112,113,114,116] Q3 · Comment trouves-tu l'antécédent d'un Pronom Relatif, et dans quel sens va la flèche à l'étape 4?
+  [111] DUVERNAY Michel — Q3 · Comment trouves-tu l'antécédent d'un Pronom Relatif, et dans quel sens va la flèche à l'étape 4?
+
+###### session [ELEVE/bulle] — 1 textes
+  [147,148] Revient à l'écran précédent. Une séance en cours continue : elle se retrouve par « 🔴 sessions en cours ».
+
+###### session [PAUL/bulle-i] — 2 textes
+  [7,8,9,10,11,64,66,67,69,123,127] Choisis la classe et l'évaluation : la durée se compte tout de suite, et les binômes sont proposés. « 🚀 Lancer la session » ouvre l'appel.
+  [144,145,146] Pour les sessions restées ouvertes par erreur.
+
+###### session [PAUL/bulle] — 10 textes
+  [1,2,3,4,7,8,9,10,11,21,24,27…(84)] Revient à l'écran précédent. Une séance en cours continue : elle se retrouve par « 🔴 sessions en cours ».
+  [9] Démarrer la session avec les absents marqués
+  [21,24,27,28,30,32,36,38,39,40,45,46…(51)] Marque un élève comme parti en cours de session. Ses réponses déjà données restent enregistrées (sa note sera calculée au prorata des questions auxquelles il a 
+  [21] Démarre la session : la question 1 s'affiche côté élève en phase réflexion.
+  [133,141] Retour à la liste des sessions.
+  [144,145,146] Détecte et nettoie les sessions « zombies » : entrées sessionActive qui pointent vers une session inexistante, classe disparue, ou session encore marquée « en_c
+  [166,167,168] Exporte un snapshot complet de la base de données (incluant la session de test) au format JSON. Utile pour partager l'état exact en cas de bug à investiguer.
+  [166,167,168] Affiche un QR code à scanner avec ton téléphone pour piloter la session de test à distance. Pour vérifier que la VuePhone fonctionne en mode test.
+  [166,167,168] Termine le mode test : supprime la classe _TEST, l'éval test et toutes les sessions associées. Aucune donnée réelle n'est affectée.
+  [166,167,168] Appelle cloturerSession() — le chemin exact du bouton « Terminer la session ».
+
+###### session [PAUL/ecran] — 15 textes
+  [7,8,9,11,64,66,67,69,127,166] 🚀 Lancer la session
+  [7,8,9,10,11,64,66,67,69,123,127,165] 📚 Sessions précédentes — 3 ESSAIi
+  [21,24,27,28,30,32,36,38,39,40,45,46…(52)] 1 session en cours
+  [21,24,27,28,29,30,32,36,38,39,40,45…(60)] 🛑 Terminer la session
+  [63] 🛑 Terminer la session ?
+  [68] 🔴 Sessions actuellement en cours
+  [68] Voici toutes les sessions qui sont actuellement actives quelque part. Tu peux aller au pilotage de chacune ou la terminer si elle n'a plus de raison d'être acti
+  [69] ⚠️ Session interrompue détectée
+  [69] 🔄 Reprendre la session
+  [144,145,146] Exporte ou importe l'ensemble de la base QCM (évaluations, sessions, réponses), avec les classes.
+  [144,145,146] Si la vue tableau ou le pilotage te montrent des sessions fantômes (anciennes évaluations qui n'auraient pas dû rester actives), utilise le nettoyage ci-dessous
+  [144,145,146] 🧹 Nettoyer les sessions zombies
+  [150,151,152] Vu quand tu as terminé la session. Ce texte s'affiche quel que soit le résultat : il parle du travail fait, jamais de la réussite.
+  [166] Session : pas encore lancée · énoncé non conservé
+  [167,168] Session : en_cours · énoncé non conservé
+
+###### trois points [ELEVE/ecran] — 3 textes
+  [20] ⏳ En attente du démarrage...
+  [37,62] ⏳ Attends la prochaine question...
+  [97,98,109] ⏳ Attends ton bilan...
+
+###### trois points [PAUL/ecran] — 1 textes
+  [158,159] Élève : Mots avec deux consonnes (femme, donner, aller...) · 6e-3e · « comme » / « homme » / « femme »
+
+###### ÉLÈVE mot interdit — 1 textes
+  [6] Accès professeur
+
+###### ème [ELEVE/ecran] — 1 textes
+  [147,148] 3e Chapitre 1 — Poésie et peinture au XIXème siècle · Interro de cours (séance 3)
+
+###### ème [PAUL/ecran] — 1 textes
+  [1,2,3,4,5,7,8,9,10,11,64,66…(22)] 3e Chapitre 1 — Poésie et peinture au XIXème siècle · Interro de cours (séance 3)
+
+###### élision manquante [PAUL/bulle] — 13 textes
+  [126] La feuille de Inès, question 1 : un clic bascule entre ✓ (juste) et ✗ (faux).
+  [126] La feuille de Inès, question 2 : un clic bascule entre ✓ (juste) et ✗ (faux).
+  [126] La feuille de Inès, question 3 : un clic bascule entre ✓ (juste) et ✗ (faux).
+  [126] La feuille de Emma, question 1 : un clic bascule entre ✓ (juste) et ✗ (faux).
+  [126] La feuille de Emma, question 2 : un clic bascule entre ✓ (juste) et ✗ (faux).
+  [126] La feuille de Emma, question 3 : un clic bascule entre ✓ (juste) et ✗ (faux).
+  [126] La feuille de Enzo, question 1 : un clic bascule entre ✓ (juste) et ✗ (faux).
+  [126] La feuille de Enzo, question 2 : un clic bascule entre ✓ (juste) et ✗ (faux).
+  [126] La feuille de Enzo, question 3 : un clic bascule entre ✓ (juste) et ✗ (faux).
+  [126] La feuille de Anna, question 1 : un clic bascule entre ✓ (juste) et ✗ (faux).
+  [126] La feuille de Anna, question 2 : un clic bascule entre ✓ (juste) et ✗ (faux).
+  [126] La feuille de Anna, question 3 : un clic bascule entre ✓ (juste) et ✗ (faux).
+  [167,168] Ce que Élise écrit sur sa feuille, avec ses mots : tu le tapes ici.
+
+###### élision manquante [PAUL/ecran] — 1 textes
+  [167,168] 📝 Feuille de Élise

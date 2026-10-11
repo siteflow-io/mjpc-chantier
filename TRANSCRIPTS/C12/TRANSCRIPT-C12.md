@@ -20045,3 +20045,49 @@ Réponse mot pour mot :
 769. **Pour la relance** : rien n'est encore poussé sur la branche de l'exécutant. S'il n'est pas lancé, le message du point 762 vaut tel quel. S'il tourne déjà, il a lu l'ancienne version : dis-le-moi, et je vérifierai à l'audit ce qu'il en a fait.
 
 11/10/2026 14:26 MEMO
+
+---
+
+## TOUR 654 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (11/10, 14:29) Bon. Je pense qu'il faut également que tu fasses une vraie lecture de la maquette, dans tous les sens, car beaucoup de choses te sont passées sous le nez, comme cette histoire d'infobulle mal calibrée. Le mandat ne part pas à l'exécutant tant que ton "ça va" n'est pas fiable.
+
+---
+
+## TOUR 654 — Claude (conscience n°12)
+
+Lu la v7 entière (169 scènes, md5 6be84ea1…) : carte des gestes, chacun des 5 489 éléments cliquables cliqué dans une page neuve (`AUDITS/MAQUETTE-QCM-LECTURE-11-10/scripts/carte.js`) ; 384 relevés de mise en page aux tailles de chaque vue (`mise.js`, `atteinte.js`) ; textes et infobulles de chaque scène, rapportés au site d'aujourd'hui (`textes.js`) ; chaque capture regardée, en tuiles, comptes refaits tuile par tuile (`sorties/notes-visuelles.md`). Quatre relecteurs séparés (agents sans accès au travail de la conscience, consigne `relecteurs/CONSIGNE-RELECTEUR.md`) : 325 trouvailles, revérifiées et rangées dans `DEFAUTS-RELECTEURS.md` (266 confirmées, 13 en partie, 34 existantes, 12 à trancher). Mesures ciblées : note de Lou forcée dans `src/maquette626.js` à `628.js` ; fenêtre de `x620-3-mode-test-en-grand` fixe, 960 px, champs à y = 892 ; boutons B à pixels identiques ; clavier en `span` ; fin prévue immobile quand la réflexion de Q3 passe à 90 s ; tableau des résultats à 1 274 px pour 1 248 à 1366 ; glisser-déposer rejoué. Complément 3 refait (huit changements, gardes 12 à 15, étapes A à E) ; rapport `AUDITS/MAQUETTE-QCM-LECTURE-11-10/README.md`. Branche de l'exécutant vérifiée : rien de poussé depuis `c6611fb3`.
+
+Réponse mot pour mot (le point 770 envoyé d'abord, en message, avant la lecture) :
+
+770. Compris. Je fais maintenant la lecture complète de la v7, dans tous les sens : chaque écran regardé moi-même, chaque geste cliqué, les textes, les bulles, la mise en page aux trois tailles, et le cadrage point par point. En parallèle, des relecteurs séparés, qui n'ont pas vu mon travail, liront les mêmes écrans. Chacune de leurs trouvailles sera revérifiée par moi. Tout ce qui ne va pas entrera dans le complément 3. Il ne part pas avant mon « ça va », et je te dirai sur quoi il repose. Ne relance pas l'exécutant d'ici là.
+
+771. **Verdict : la v7 ne va pas, et mon « ça va » du tour 645 était faux.** Je n'avais cliqué que les gestes ajoutés et lu que les textes neufs. Cette fois, j'ai tout lu : la v7 a deux défauts bloquants, et des défauts de six sortes.
+
+772. **Sur quoi repose ce que je te dis.** Sur les 169 écrans, j'ai cliqué chacun des 5 489 éléments cliquables et relevé ce qu'il fait. J'ai mesuré la mise en page à toutes les tailles, passé au crible tous les textes et toutes les infobulles, et regardé moi-même chaque capture. Quatre relecteurs séparés, qui n'avaient pas vu mon travail, ont rendu 325 trouvailles, et je les ai toutes revérifiées. 279 sont confirmées ; 34 sont des textes de ton site d'aujourd'hui ou tes propres données, qui restent tels quels ; 12 attendent ta décision (776 à 778).
+
+773. **Les deux bloquants.** Lou a 1 / 3 dans son bilan et 2 / 3 dans ton tableau, parce que son bilan est écrit à la main. Et en mode test, « 🔍 Jouer en grand » cache sous le bord de l'écran les deux champs où tu tapes la feuille, sans moyen d'y aller, sauf en 1920.
+
+774. **Les six sortes.** Un clic mène ailleurs que là où il le dit : n'importe quel nom ouvre la fiche de Hugo, n'importe quel « 👁 » la tablette 1, « Écarter » la question 1 ouvre la garde de la question 3, et le téléphone bascule dans la console. Un clic ne change rien : l'éditeur ne bouge qu'un compteur, « Oui, la même chose » ne s'allume pas, le clavier de l'app ne tape rien. Les chiffres se contredisent : le point d'autonomie de Hugo, retiré à 10:41, revient ensuite, et la démo est datée d'après la séance. Des écrans ne se lisent pas en entier, comme la liste de la classe au tableau. Restent les infobulles et les textes.
+
+775. **La cause principale est simple.** Dans la maquette, un bouton trouve où aller par son seul libellé, si bien qu'un même libellé mène partout au même écran figé. Et chaque écran écrit ses chiffres lui-même. Le complément 3 demande donc une seule séance écrite une fois, d'où chaque écran calcule ses chiffres, et des gestes qui ouvrent l'écran de leur élève, de leur question, au bon moment.
+
+776. **Ma proposition : « séance » partout.** Les boutons de ton site disent « session » (« Terminer la session »), alors que les textes que tu as validés dans la maquette disent « séance ». C'est le mot de la classe. La maquette dira « séance » partout, et le mandat de code fera de même dans le site.
+
+777. **Ma proposition : « ⛔ » ne veut plus dire qu'une chose, le point d'autonomie retiré.** Dans ton tableau des résultats, il marque aussi « trouvée au dernier moment ». Chez toi, celle-ci prend le ✓ orange qu'elle a déjà chez l'élève (484).
+
+778. **Ma proposition : quatre retouches côté élève, sans mot nouveau.** « ❌ Tu avais faux. » n'est plus répété juste en dessous ; la règle du désaccord n'est dite qu'une fois ; pendant la lecture, le chrono s'appelle « Temps pour lire la feuille du voisin », comme chez toi ; « Ta réponse : Ma feuille ne dit aucun de ces choix » devient « Ta réponse : aucun de ces choix ».
+
+779. **Le complément 3 est refait** : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/COMPLEMENT-MAQUETTE-QCM-COMPLETE-3.md. Il passe de trois à huit changements, avec une garde par sorte de défaut. Chaque garde doit d'abord retrouver sur la v7 les défauts que j'ai mesurés, sinon elle ne compte pas. La lecture complète et la liste des 325 sont ici : https://github.com/siteflow-io/mjpc-chantier/blob/main/AUDITS/MAQUETTE-QCM-LECTURE-11-10/README.md.
+
+780. **Ça va pour le mandat : il couvre tout ce que j'ai trouvé, et rien n'est resté sans mesure.** Si 776 à 778 te vont, relance l'exécutant ; sinon, dis-moi lequel change avant de relancer. Ouvre une nouvelle session cloud sur siteflow-io/mjpc-chantier, et colle :
+
+```
+Tu es l'exécutant du complément 3 de la maquette complète du QCM de MJPC. Lis en entier MANDATS/COMPLEMENT-MAQUETTE-QCM-COMPLETE-3.md sur la branche main de ce dépôt, applique-le à la lettre, et fais tout le complément d'une traite sur la branche maquette-qcm, sans t'arrêter avant la fin de l'étape E.
+```
+
+À son retour, je refais toute cette lecture sur la v8 avant de te dire si elle va.
+
+11/10/2026 16:44 MEMO

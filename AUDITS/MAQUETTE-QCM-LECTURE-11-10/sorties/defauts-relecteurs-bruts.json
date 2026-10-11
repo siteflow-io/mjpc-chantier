@@ -1,0 +1,2927 @@
+[
+{
+"src": "r1",
+"scene": "#1 — 4 (x627-3-editeur)",
+"type": "infobulle",
+"quoi": "Les « i » de « 📚 Chapitre » et des quatre « 🎯 Ce qu'elle vérifie, pour le bilan de l'élève : » ont un texte sur une seule ligne (`white-space: nowrap`). Le texte sort de la bulle noire et s'écrit en blanc sur la page : « Le chapitre donne le niveau et les compétences permises : une compétence hors du chapitre est refusée. » passe par-dessus « 📊 Mode de scoring » ; « Une courte phrase à l'infinitif, dans les mots de l'élève. Le bilan général s'en sert… » passe par-dessus « Compétences (1 ou 2) : c4-culture-01 » et va jusqu'à x = 1760 px dans une fenêtre de 1366 px (1845 px pour 1536, 2037 px pour 1920). Le texte de la bulle est aussi en Georgia, pas dans la police de l'app.",
+"ou": "éditeur, sous le titre (Chapitre) et à droite de chaque « Ce qu'elle vérifie »",
+"grav": "gênant",
+"repro": "1366×768, survoler le « i » à droite de « 📚 Chapitre », puis celui de « 🎯 Ce qu'elle vérifie » de Q1 ; captures `out/x627-3-editeur-1366x768-i2.png` et `-i5.png`"
+},
+{
+"src": "r1",
+"scene": "#2 — 21, 24, 27, 32, 36, 38, 40",
+"type": "infobulle",
+"quoi": "La bulle du « i » de « 📋 Toutes les questions » est coupée à droite à toutes les tailles : à 1366, elle sort de la fenêtre (bord droit à 1407 px) ; à 1536 et à 1920, le cadre de la console la rogne. On lit : « Les temps des questions à venir se / pour cette séance seulement. « ❌ / retire une question pas encore pos / Annuler » retire une question déjà / deux se défont par « ↩️ Remettre ».",
+"ou": "colonne de droite, en-tête « 📋 Toutes les questions »",
+"grav": "gênant",
+"repro": "#scene=c-pret à 1536×864, survoler le « i » ; captures `out/c-pret-1536x864-i3.png` et `out/crop8.png` (1920)"
+},
+{
+"src": "r1",
+"scene": "#3 — 7, 8, 10, 11",
+"type": "infobulle",
+"quoi": "À 1366×768, la bulle des « i » de « Classe » (bord gauche à −23 px) et de « Mode » (−31 px) sort de l'écran par la gauche : on lit « r tablettes : deux élèves par tablette, le / roulé complet. Sur papier : chacun répond / il sur sa feuille… ». La bulle cache aussi le bouton « 📱 Sur tablettes ».",
+"ou": "colonne de gauche, labels « Classe » et « Mode »",
+"grav": "gênant",
+"repro": "#scene=c-lancer à 1366×768, survoler le « i » de « Mode » ; capture `out/c-lancer-1366x768-i4.png`"
+},
+{
+"src": "r1",
+"scene": "#4 — 7, 10, 11 ; 24, 27, 32, 36, 38, 40",
+"type": "infobulle",
+"quoi": "À 1366 et à 1536, la bulle du « i » de « 📚 Sessions précédentes » (bas à 877 px pour 768, à 886 px pour 864) et, à 1536, celle du « i » de « 🔮 À venir » (bas entre 909 et 927 px pour 864) s'ouvrent sous le bord de la fenêtre. On ne les lit qu'en faisant défiler la page.",
+"ou": "bas de la page, et bas de la colonne de gauche",
+"grav": "mineur",
+"repro": "#scene=c-q1-tour1 à 1536×864, faire défiler juste assez pour voir le « i » de « 🔮 À venir », le survoler"
+},
+{
+"src": "r1",
+"scene": "#5 — 1 à 4, 7 à 11, 21, 24, 27, 28, 30, 32, 36, 38 à 40",
+"type": "infobulle",
+"quoi": "Le « i » jaune du bouton « 🧪 Mode test » n'a pas de bulle à lui (il n'y a pas de `.info-tip`). Au survol, seul le `title` natif du bouton apparaît, après un délai. Les autres « i » jaunes ouvrent une bulle noire tout de suite.",
+"ou": "en-tête, bouton « 🧪 Mode test »",
+"grav": "mineur",
+"repro": "n'importe quelle scène console, survoler le « i » de « 🧪 Mode test »"
+},
+{
+"src": "r1",
+"scene": "#6 — 1 à 4, 7 à 11, 21 à 40 (console)",
+"type": "infobulle",
+"quoi": "L'infobulle de « 📺 Ouvrir vue tableau » est un mode d'emploi en capitales : « Ouvre la vue tableau dans une NOUVELLE FENÊTRE (pas un onglet)… Utilise W+P en mode \"Étendre\" sur Windows… puis F11 pour plein écran. Cette vue n'affiche QUE la question… ». Elle contient des guillemets droits \"Étendre\" et donne le raccourci « W+P » (c'est Windows + P).",
+"ou": "en-tête",
+"grav": "mineur",
+"repro": "survoler « 📺 Ouvrir vue tableau »"
+},
+{
+"src": "r1",
+"scene": "#7 — 1, 2 puis 3, 4",
+"type": "infobulle",
+"quoi": "Les mêmes boutons de la liste ont une infobulle différente selon la scène. « ➕ Nouvelle évaluation » : « Créer une nouvelle évaluation. Tu colles un JSON (généré par l'IA via le bouton Prompt IA) et l'app parse automatiquement les questions… » (scènes 1 et 2), puis « Colle le JSON d'une nouvelle évaluation : l'app le vérifie avant de l'enregistrer. » (3 et 4). « ✏️ Modifier » : « Modifier le titre, les questions, les choix ou le niveau de difficulté. » puis « Ouvre l'éditeur : énoncés, choix, temps, compétences… ». « 📋 Dupliquer » : « Créer une copie modifiable. Pratique pour adapter une éval… » puis « Fait une copie de cette évaluation, modifiable et supprimable, en tête de sa liste. » Le mot « parse » est du jargon.",
+"ou": "barre de la liste, boutons des lignes",
+"grav": "mineur",
+"repro": "survoler ces boutons dans #scene=c-evals, puis dans #scene=c-collage (derrière la fenêtre, en relevant les `title`)"
+},
+{
+"src": "r1",
+"scene": "#8 — 1 à 4",
+"type": "infobulle",
+"quoi": "Des pastilles et des états n'ont pas d'infobulle : « MODE PROF », « 🔒 Permanente », « ✅ Prête à lancer · rien ne compte… », « ⚠️ À compléter avant de la lancer : … », « 11 minutes », « 🧩 2 compétences », « Créée le … ».",
+"ou": "liste des évaluations",
+"grav": "mineur",
+"repro": "#scene=c-evals, survoler ces éléments : rien ne s'affiche"
+},
+{
+"src": "r1",
+"scene": "#9 — 1",
+"type": "texte",
+"quoi": "Un paragraphe sur la page explique une règle au lieu de montrer un état : « Prépare ici tes évaluations : rédaction, relecture, impression. Le lancement en classe se fait dans « Pilotage classe ». »",
+"ou": "sous le titre « 📝 Évaluations »",
+"grav": "mineur",
+"repro": "#scene=c-evals"
+},
+{
+"src": "r1",
+"scene": "#10 — 1, 4, 5",
+"type": "logique",
+"quoi": "La même évaluation, « 3e Chapitre 1 — Poésie et peinture au XIXème siècle · Interro de cours (séance 3) », se contredit d'un écran à l'autre. Dans la liste (1) : « 📚 chapitre : — », « 10 questions », « ⚠️ À compléter avant de la lancer : le chapitre, les deux temps de chaque question, les compétences, ce que chaque question vérifie ». Dans l'éditeur (4) : chapitre « 3e · Chapitre 1 — Poésie et peinture au XIXe siècle » déjà choisi, « 11 questions · 10 points + 1 bonus », et en bas « ⚠️ Il reste à compléter : Q10, les deux temps, au moins une compétence et ce qu'elle vérifie. » Sur la feuille (5) : 10 questions, et la Q11 de l'éditeur (« Quelle est l'architecture de « La lettre que ma mère m'a écrite… » ? ») n'y est pas.",
+"ou": "ligne de la liste, en-tête de l'éditeur, feuille",
+"grav": "gênant",
+"repro": "comparer #scene=c-evals, #scene=x627-3-editeur (faire défiler la fenêtre jusqu'en bas) et #scene=c-feuille"
+},
+{
+"src": "r1",
+"scene": "#11 — 1, 7",
+"type": "logique",
+"quoi": "Dans la liste (1), « 3e Chapitre 1 — … (séance 3) » et « QCM — Le jambon-beurre » sont « ⚠️ À compléter avant de la lancer » et sans chapitre, et aucune ligne ne dit qu'elles ont été passées. Or « Sessions précédentes » (7) les montre passées par 3 ESSAI : « 24/09/2026 10:04 · ✅ terminée · 23 présents · 2 feuilles à lire ↳ c'est le QCM précédent » et « 15/09/2026 10:03 · ✅ terminée · 25 présents ».",
+"ou": "liste (1) ; bas de la page (7)",
+"grav": "mineur",
+"repro": "comparer #scene=c-evals et #scene=c-lancer"
+},
+{
+"src": "r1",
+"scene": "#12 — 1",
+"type": "logique",
+"quoi": "« 📋 Dupliquer » sur « Évaluation d'essai — 3 questions » crée « Évaluation d'essai — 3 questions (copie) ». La copie affiche « 📚 3e · Ch. 1 — Poésie et peinture au XIXe siècle » et « 🧩 2 compétences », mais aussi « ⚠️ À compléter avant de la lancer : le chapitre, les deux temps de chaque question, les compétences, ce que chaque question vérifie ».",
+"ou": "groupe « ▾ 3e », première ligne après le clic",
+"grav": "mineur",
+"repro": "#scene=c-evals, cliquer le 2e « 📋 Dupliquer » ; capture `out/crop10.png`"
+},
+{
+"src": "r1",
+"scene": "#13 — 1, 11, 20 (et 2)",
+"type": "logique",
+"quoi": "Les dates ne se suivent pas. La séance jouée dans les scènes 7 à 43 est du 08/10 (scène 20 : « Tu as lu et compris les consignes le 08/10/2026 à 10:04 » ; la corbeille de la scène 2 contient « Évaluation d'essai — 3 questions — 3 ESSAI — 08/10/2026 10:02 »). Mais la démo, faite avant cette séance, est datée « 🎓 Démo faite le 10/10 · 3 ESSAI · 24 présents » (11), une copie faite en préparation est « Créée le 10/10/2026 » (1), et la liste (1) dit déjà « ✅ Prête à lancer · passée par 3 ESSAI le 08/10 ».",
+"ou": "ligne de la démo (11) ; bas des moitiés (20) ; liste (1)",
+"grav": "gênant",
+"repro": "comparer #scene=c-demo-faite, #scene=t-pret et #scene=c-evals"
+},
+{
+"src": "r1",
+"scene": "#14 — 1 à 4, 7 à 11, 21, 24",
+"type": "geste",
+"quoi": "Sans séance en cours (scènes 1 à 11 : pas de « 🔴 session en cours »), « 📺 Ouvrir vue tableau » mène au tableau d'une question en cours (b-reponse : « Question 1 / 3 », « ✋ 10 / 12 ont répondu », « 1er tour »). « 📱 QR pilotage » mène au pilotage du 1er tour de Q1 (c-qr), et sa croix « ✕ » ramène toujours à c-q1-tour1. Avant Q1 (21) ou pendant la réflexion (24), on arrive aussi au 1er tour.",
+"ou": "en-tête",
+"grav": "mineur",
+"repro": "#scene=c-evals, cliquer « 📺 Ouvrir vue tableau », puis « 📱 QR pilotage » et « ✕ »"
+},
+{
+"src": "r1",
+"scene": "#15 — toutes les scènes console",
+"type": "geste",
+"quoi": "L'infobulle de « ← Retour » dit « Revient à l'écran précédent. Une séance en cours continue : elle se retrouve par « 🔴 sessions en cours ». ». Le bouton mène pourtant toujours à l'accueil de l'app (c-accueil : « 🎓 Mode élève » / « Accès professeur »), même depuis le pilotage.",
+"ou": "en-tête, à droite",
+"grav": "mineur",
+"repro": "#scene=c-q1-tour1, cliquer « ← Retour »"
+},
+{
+"src": "r1",
+"scene": "#16 — 21 à 40",
+"type": "geste",
+"quoi": "Pendant la séance, l'onglet actif « 🎯 Pilotage classe » mène à c-lancer, « 🎯 Lancer une nouvelle session » : on quitte le pilotage de la séance en cours.",
+"ou": "onglets",
+"grav": "mineur",
+"repro": "#scene=c-pret, cliquer « 🎯 Pilotage classe »"
+},
+{
+"src": "r1",
+"scene": "#17 — 2",
+"type": "geste",
+"quoi": "N'importe quel « 🗑️ » (par exemple celui de « Évaluation d'essai — 3 questions ») ouvre la confirmation de « Les Misérables — évaluation d'entraînement · 13 questions ».",
+"ou": "fenêtre de confirmation",
+"grav": "mineur",
+"repro": "#scene=c-evals, cliquer le premier « 🗑️ »"
+},
+{
+"src": "r1",
+"scene": "#18 — 2",
+"type": "logique",
+"quoi": "« 🗑️ Mettre à la corbeille » mène à « 💾 Sauvegarde » (c-sauvegarde). La corbeille de cet écran ne contient pas l'évaluation qu'on vient de jeter : on y voit « SÉANCE Évaluation d'essai — 3 questions — 3 ESSAI — 08/10/2026 10:02 » et « ÉVALUATION Brouillon — Les figures de style ». On ne voit nulle part l'effet du geste.",
+"ou": "après le clic, écran Sauvegarde",
+"grav": "gênant",
+"repro": "#scene=c-eval-corbeille, cliquer « 🗑️ Mettre à la corbeille », lire la carte « 🗑️ Corbeille »"
+},
+{
+"src": "r1",
+"scene": "#19 — 2",
+"type": "texte",
+"quoi": "La confirmation pour « Les Misérables… » contient une règle qui ne la concerne pas : « La démo, elle, n'a pas de corbeille : elle est permanente. »",
+"ou": "corps de la fenêtre",
+"grav": "mineur",
+"repro": "#scene=c-eval-corbeille"
+},
+{
+"src": "r1",
+"scene": "#20 — 3",
+"type": "geste",
+"quoi": "L'infobulle de « ✨ Démarrer à blanc » dit « Crée une évaluation vide pour la construire directement dans l'éditeur visuel ci-dessous (sans passer par l'IA). ». Le bouton ouvre en fait « ✏️ Compléter l'évaluation » déjà rempli : « 3e Chapitre 1 — … Interro de cours (séance 3) », 11 questions.",
+"ou": "sous le champ JSON",
+"grav": "gênant",
+"repro": "#scene=c-collage, cliquer « ✨ Démarrer à blanc »"
+},
+{
+"src": "r1",
+"scene": "#21 — 3",
+"type": "infobulle",
+"quoi": "L'infobulle de « 🔍 Vérifier le format » dit « Parse le JSON ci-dessus et l'affiche en mode éditable ci-dessous. ». Le clic n'affiche que « 🔍 Vérification refaite : les mêmes 7 points. » ; rien d'éditable n'apparaît. « Parse » est du jargon.",
+"ou": "sous le champ JSON",
+"grav": "mineur",
+"repro": "#scene=c-collage, survoler puis cliquer « 🔍 Vérifier le format »"
+},
+{
+"src": "r1",
+"scene": "#22 — 3, 4",
+"type": "texte",
+"quoi": "Le message 3 dit « Raccourcis l'énoncé ou les choix, ou dis-moi que j'assume la longueur. » : sur l'écran de Paul, on ne sait pas qui parle. La même instance a deux noms : « l'instance de création d'éval » (3) et « l'instance JSON » (4 : « tu l'as dit à l'instance JSON »).",
+"ou": "liste des erreurs (3) ; bandeau « 📏 Longueur assumée » de Q11 (4)",
+"grav": "mineur",
+"repro": "#scene=c-collage ; #scene=x627-3-editeur, Q11"
+},
+{
+"src": "r1",
+"scene": "#23 — 4",
+"type": "geste",
+"quoi": "Dans l'éditeur, les gestes ne font pas ce qu'ils disent. Seul le compteur « ⚠ Modifications non enregistrées (n) » augmente. « Expert » sur Q1 : Q1 reste « Facile ». « ✨ Partiel » : le bouton radio reste sur « 🎯 Tout ou rien ». « ➕ Ajouter une question » : l'en-tête reste « 11 questions ». « 🗑 » ne supprime rien. « + ajouter ▾ » n'ouvre aucune liste. « ↑ » sur Q1, la première question, compte aussi une modification. « 🔍 Vérifier le format » compte aussi comme une modification.",
+"ou": "toute la fenêtre de l'éditeur",
+"grav": "gênant",
+"repro": "#scene=x627-3-editeur, cliquer « Expert » de Q1 puis « ✨ Partiel » ; capture `out/x627-3-editeur-partiel2.png`"
+},
+{
+"src": "r1",
+"scene": "#24 — 4",
+"type": "logique",
+"quoi": "« ✕ » (infobulle « Ferme l'éditeur ; ce qui n'est pas enregistré est perdu. ») et Échap ferment l'éditeur et reviennent à la liste sans rien demander, même quand l'écran affiche « ⚠ Modifications non enregistrées (3) ».",
+"ou": "croix rouge en haut à droite",
+"grav": "gênant",
+"repro": "#scene=x627-3-editeur, cliquer trois gestes, puis « ✕ »"
+},
+{
+"src": "r1",
+"scene": "#25 — 4",
+"type": "affichage",
+"quoi": "Le titre est coupé dans son champ : « 3e Chapitre 1 — Poésie et peinture au XIXème siècle · Interro de cours (sé ».",
+"ou": "1re ligne du cadre pointillé",
+"grav": "mineur",
+"repro": "#scene=x627-3-editeur, aux trois tailles"
+},
+{
+"src": "r1",
+"scene": "#26 — 4",
+"type": "affichage",
+"quoi": "La fenêtre affiche un texte de maquette : « Q3 à Q9 : complètes (repliées pour la capture) ». La capture 004 s'arrête au milieu de Q11 (« P.P + PSR, puis une P.I » coupé) : le contenu fait 3410 px pour une capture de 3250 px. On n'y voit ni « ➕ Ajouter une question », ni « 💾 Enregistrer l'évaluation », ni « ⚠️ Il reste à compléter … ».",
+"ou": "milieu et bas de l'éditeur",
+"grav": "mineur",
+"repro": "capture 004 ; #scene=x627-3-editeur"
+},
+{
+"src": "r1",
+"scene": "#27 — 4",
+"type": "texte",
+"quoi": "Sur l'écran de Paul : l'anglicisme « 📊 Mode de scoring » ; un paragraphe de règle, « Édite directement chaque champ. Coche les bonnes réponses. Le niveau dit la difficulté ; les deux temps se règlent pour chaque question. » ; des mots techniques dans « 📏 Longueur assumée : 60 px de trop sur une demi-tablette… Sa moitié défilera seule, la page ne bouge pas. »",
+"ou": "haut de l'éditeur ; Q11",
+"grav": "mineur",
+"repro": "#scene=x627-3-editeur"
+},
+{
+"src": "r1",
+"scene": "#28 — 4 ; 21 à 43",
+"type": "affichage",
+"quoi": "Les pastilles de difficulté inactives « Standard » et « Approfondi » sont en blanc sur fond pâle et presque illisibles. La pastille « Standard » active est en blanc sur orange, contraste 2,13 : 1 (éditeur, cartes « Toutes les questions », tablettes 22, 41 à 43).",
+"ou": "ligne « Difficulté : » ; pastille de niveau",
+"grav": "mineur",
+"repro": "#scene=x627-3-editeur ; #scene=t-q2-reflexion"
+},
+{
+"src": "r1",
+"scene": "#29 — 1, 4",
+"type": "geste",
+"quoi": "« ✏️ Modifier » de « Évaluation d'essai — 3 questions » (évaluation prête) et chaque « ✏️ Compléter » ouvrent le même éditeur, intitulé « ✏️ Compléter l'évaluation », sur une autre évaluation : « 3e Chapitre 1 — … ».",
+"ou": "boutons de la liste",
+"grav": "mineur",
+"repro": "#scene=c-evals, cliquer « ✏️ Modifier »"
+},
+{
+"src": "r1",
+"scene": "#30 — 1, 5",
+"type": "geste",
+"quoi": "Chaque « 🖨️ Imprimer » montre la feuille de « 3e Chapitre 1 — … Interro de cours (séance 3) ». C'est vrai aussi pour la démo, dont l'infobulle dit « Montre la feuille des énoncés de la démo, à imprimer. ».",
+"ou": "boutons de la liste → feuille",
+"grav": "mineur",
+"repro": "#scene=c-evals, cliquer « 🖨️ Imprimer » de la démo"
+},
+{
+"src": "r1",
+"scene": "#31 — 5",
+"type": "texte",
+"quoi": "Sur la feuille imprimée, des coupures de ligne tombent au milieu d'une inversion : « entend- / on ? » (Question 4) et « se prononce-t- / il, et pourquoi ? » (Question 5).",
+"ou": "questions 4 et 5",
+"grav": "mineur",
+"repro": "#scene=c-feuille, 1536×864"
+},
+{
+"src": "r1",
+"scene": "#32 — 6 (vue élève)",
+"type": "infobulle",
+"quoi": "L'accueil, côté élève, porte des infobulles : « 🎓 Mode élève » → « Ouvre l'écran des élèves : « Combien êtes-vous sur cette tablette ? ». » et « Accès professeur » → « Ouvre la console avec ton code ou ta clé. »",
+"ou": "les deux boutons",
+"grav": "mineur",
+"repro": "#scene=c-accueil, survoler les boutons"
+},
+{
+"src": "r1",
+"scene": "#33 — 6",
+"type": "geste",
+"quoi": "« Accès professeur » ouvre directement la console (c-evals). Aucun code n'est demandé, alors que son infobulle parle de « ton code ou ta clé ».",
+"ou": "lien sous « 🎓 Mode élève »",
+"grav": "mineur",
+"repro": "#scene=c-accueil, cliquer « Accès professeur »"
+},
+{
+"src": "r1",
+"scene": "#34 — 7 à 11, 21 à 40, 29",
+"type": "texte",
+"quoi": "Deux mots pour une même chose, « session » et « séance ». À l'écran : « 🎯 Lancer une nouvelle session », « 🚀 Lancer la session », « 📚 Sessions précédentes », « 🔴 1 session en cours », « 🛑 Terminer la session », mais aussi « 📄 Séance sur papier » et « La séance s'efface à « Terminer » ». Dans les infobulles : « La classe de la séance. », « Les séances passées de la classe », « Termine la séance », « Démarre la session », « Démarrer la session avec les absents marqués ».",
+"ou": "titres de cartes, boutons, infobulles",
+"grav": "gênant",
+"repro": "#scene=c-lancer, lire puis survoler"
+},
+{
+"src": "r1",
+"scene": "#35 — 7",
+"type": "logique",
+"quoi": "La liste « Évaluation » n'a qu'un choix, « Évaluation d'essai — 3 questions (3 questions) », et « Classe » n'en a qu'un aussi. La démo n'y est pas, alors que le « i » dit « la démo est toujours en tête ». Depuis la scène 7, on ne peut donc pas passer à la démo (scène 10). Le libellé répète « 3 questions » deux fois.",
+"ou": "champs « Classe » et « Évaluation »",
+"grav": "mineur",
+"repro": "#scene=c-lancer, ouvrir la liste « Évaluation »"
+},
+{
+"src": "r1",
+"scene": "#36 — 7",
+"type": "geste",
+"quoi": "Glisser « ABRIAL Julien » sur la moitié vide de « Tablette 13 » laisse « Tablette 1 » avec un seul élève (« 1 élève » / « DUVERNAY Michel »), mais sans l'en-tête orange « seul ». Tablette 13, elle, perd le sien.",
+"ou": "grille des binômes",
+"grav": "mineur",
+"repro": "#scene=c-lancer, glisser ABRIAL Julien sur la moitié « 1 élève » ; capture `out/crop4.png`"
+},
+{
+"src": "r1",
+"scene": "#37 — 7 à 11",
+"type": "texte",
+"quoi": "La moitié vide de « Tablette 13 » porte le mot « 1 élève » (en orange italique), comme si un élève y était assis. L'en-tête « 📱 Tablette 13 · seul » est écrit en blanc sur orange, contraste 2,15 : 1.",
+"ou": "dernière tablette de la grille",
+"grav": "mineur",
+"repro": "#scene=c-lancer"
+},
+{
+"src": "r1",
+"scene": "#38 — 7 à 11",
+"type": "affichage",
+"quoi": "À 1366×768, « ⠿ CHEVALLIER » touche le bord droit de sa moitié (texte de 1126 à 1199 px, moitié de 1108 à 1197 px).",
+"ou": "Tablette 12",
+"grav": "mineur",
+"repro": "#scene=c-lancer à 1366×768 ; capture `out/crop6.png`"
+},
+{
+"src": "r1",
+"scene": "#39 — 7, 9, 10, 11",
+"type": "texte",
+"quoi": "Sur l'écran de Paul, des paragraphes expliquent des règles. « Classement du QCM précédent, puis 1-2, 3-4… Glisse un nom sur un autre pour échanger deux élèves, ou sur une moitié vide pour l'y déplacer. Tu peux le faire jusqu'au bout de l'heure. » ; la durée « (pour chacune : la réflexion, puis deux tours de 3 s de décompte, de réponse et de 5 s où l'élève dit si sa feuille dit la même chose, puis 15 s) » ; l'encadré de la démo (10) « Tu la joues avec la classe… La séance s'efface à « Terminer » ; il reste une ligne dans les séances précédentes. » ; l'appel (9) « lancement + 55 min ; les tablettes oublient leurs élèves à « Terminer », ou 10 min après. »",
+"ou": "carte des binômes ; encadré de durée ou de démo ; bas de l'appel",
+"grav": "mineur",
+"repro": "#scene=c-lancer, #scene=c-demo-lancer, #scene=c-appel"
+},
+{
+"src": "r1",
+"scene": "#40 — 9",
+"type": "texte",
+"quoi": "L'appel s'intitule « 📋 Check-in : qui est absent aujourd'hui ? », un anglicisme, alors que l'infobulle de « 🚀 Lancer la session » parle de « l'appel ». Le guillemet ouvrant « reste seul en fin de ligne, séparé de « Terminer ».",
+"ou": "titre de la fenêtre ; ligne « Fin de l'heure »",
+"grav": "mineur",
+"repro": "#scene=c-appel"
+},
+{
+"src": "r1",
+"scene": "#41 — 9",
+"type": "logique",
+"quoi": "Après un clic sur « ABRIAL Julien » (« 🚫 2 absents sur 25 ») ou sur « Tout le monde présent » (« 🚫 0 absent sur 25 »), le message ne change pas : « 📱 CHEVALLIER Théo (binôme d'Adam) et ZELLER Lou (seule) sont mis ensemble : tablette 12. » Adam n'est pourtant plus absent, et Michel, resté seul, n'est pas mentionné.",
+"ou": "bas de la fenêtre de l'appel",
+"grav": "gênant",
+"repro": "#scene=c-appel, cliquer « Tout le monde présent »"
+},
+{
+"src": "r1",
+"scene": "#42 — 10",
+"type": "geste",
+"quoi": "« 🎓 Lancer la démo » (infobulle « …comme une vraie séance : appel, binômes, attestations, questions, correction… ») mène directement aux tablettes en « QUESTION 3 / 3 » (t-demo-q), sans l'appel ni les attestations.",
+"ou": "bouton sous l'encadré de la démo",
+"grav": "mineur",
+"repro": "#scene=c-demo-lancer, cliquer « 🎓 Lancer la démo »"
+},
+{
+"src": "r1",
+"scene": "#43 — 13",
+"type": "geste",
+"quoi": "Après « 👤 1 élève », l'écran « Tu es bien Julien ? » envoie, par « Oui », vers deux moitiés (t-attest-1 : Julien à gauche, Michel à droite) et, par « Non », vers l'identification sur deux moitiés (t-login). Ce n'est pas une tablette à un seul élève.",
+"ou": "boutons « Oui » / « Non »",
+"grav": "gênant",
+"repro": "#scene=t-un-eleve, cliquer « Oui »"
+},
+{
+"src": "r1",
+"scene": "#44 — 14, 15, 16",
+"type": "geste",
+"quoi": "Les touches du clavier de l'app (lettres, chiffres, ⌫, ✓) ne font rien quand on les clique : les champs ne changent pas (même résultat au clavier physique). Le clavier est pourtant le sujet de la scène 14.",
+"ou": "claviers des deux moitiés",
+"grav": "gênant",
+"repro": "#scene=t-login, cliquer « a » ou « 7 » ; script `touche.js`"
+},
+{
+"src": "r1",
+"scene": "#45 — 14, 15, 16",
+"type": "geste",
+"quoi": "« Entrer » fait toujours entrer, quels que soient les champs. Moitié droite vide (14) : « Entrer → » mène à t-binome. Code inconnu (15) : « Entrer → » mène à t-binome. Code de Michel à 2 chiffres sur 4 (16) : « Entrer » mène à t-attest-1. Il y a en plus deux boutons pour valider : la touche bleue « ✓ » et « Entrer ».",
+"ou": "sous les claviers",
+"grav": "mineur",
+"repro": "#scene=t-login, cliquer « Entrer → » de la moitié droite"
+},
+{
+"src": "r1",
+"scene": "#46 — 14, 15",
+"type": "affichage",
+"quoi": "Le texte indicatif « Mon code (4 chiffres) » est espacé lettre par lettre (« M o n  c o d e  ( 4  c h i f f r e s ) »).",
+"ou": "1er champ des moitiés vides",
+"grav": "mineur",
+"repro": "#scene=t-login, moitié droite"
+},
+{
+"src": "r1",
+"scene": "#47 — 12",
+"type": "infobulle",
+"quoi": "Sur un écran d'élève, les deux boutons portent une infobulle, et elle parle de la maquette : « Sur la tablette simulée : un seul élève sur cette tablette. » et « Sur la tablette simulée : deux élèves, une moitié chacun. »",
+"ou": "« 👤 1 élève » / « 👥 2 élèves »",
+"grav": "mineur",
+"repro": "#scene=t-combien, survoler les boutons"
+},
+{
+"src": "r1",
+"scene": "#48 — 16 à 20, 22, 23, 25, 26, 33 à 35, 37, 41 à 43",
+"type": "infobulle",
+"quoi": "Les écrans d'élève portent des infobulles. « 📊 Mes évaluations » : « Ouvre « Mes évaluations » : tes évaluations passées et leur bilan. » Cases de l'attestation (16 à 19) : « Coche cette ligne quand tu l'as lue. » et « Cette ligne est déjà cochée. » « Je commence » : « « Je commence » ne s'ouvre que quand toutes sont cochées. » ou « C'est parti. » Pastille « 1 pt » : « Nombre de points que vaut cette question ». Choix figés (35) : « Ton clic, figé : le temps de réponse est fini. »",
+"ou": "en-têtes des moitiés, cases, pastille « 1 pt », choix",
+"grav": "mineur",
+"repro": "#scene=t-attest-1, survoler une case et « 📊 Mes évaluations »"
+},
+{
+"src": "r1",
+"scene": "#49 — 16 à 20, 22, 23, 25, 26, 33 à 35, 37, 41 à 43",
+"type": "geste",
+"quoi": "« 📊 Mes évaluations », sur la moitié de Julien ou de Michel, ouvre « 📊 Mes évaluations » de « ZELLER Lou » (e-mes-evals), un autre élève. Le bouton reste là pendant les tours de réponse chronométrés (25, 26, 33, 34, 35, 43) et fait sortir l'élève de la question.",
+"ou": "en haut de chaque moitié",
+"grav": "gênant",
+"repro": "#scene=t-q1-tour1, cliquer « 📊 Mes évaluations » de Julien"
+},
+{
+"src": "r1",
+"scene": "#50 — 16 à 20, 22, 23, 25, 26, 33 à 35, 37, 41 à 43",
+"type": "affichage",
+"quoi": "Le bouton « 📊 Mes évaluations » est écrit en 10,9 px sur la tablette.",
+"ou": "à côté du nom de l'élève",
+"grav": "mineur",
+"repro": "#scene=t-pret"
+},
+{
+"src": "r1",
+"scene": "#51 — 1 à 4, 7 à 11, 21 à 40 (console) ; 12, 19 (tablette)",
+"type": "affichage",
+"quoi": "Un emoji décoratif est à moitié caché par un bord. En console, « 🎲 » dépasse en gris sous la bordure rose à gauche du cadre (vers x = 46 à 86 px, au milieu de la hauteur), comme une pièce cassée. Sur la tablette, « 🔥 » est à moitié sous le bord droit de la carte (12) et « 🎲 » sous le bas de la carte de droite (19).",
+"ou": "bord gauche du cadre console ; bords des cartes",
+"grav": "mineur",
+"repro": "#scene=c-evals à 1536×864, regarder le bord gauche vers y = 625 ; capture `out/g1.png`"
+},
+{
+"src": "r1",
+"scene": "#52 — 20, 37",
+"type": "texte",
+"quoi": "Trois points au lieu de points de suspension : « ⏳ En attente du démarrage... » et « ⏳ Attends la prochaine question... ».",
+"ou": "bandeau bleu des deux moitiés",
+"grav": "mineur",
+"repro": "#scene=t-pret ; #scene=t-q1-attente"
+},
+{
+"src": "r1",
+"scene": "#53 — 25, 26, 33, 34, 43",
+"type": "texte",
+"quoi": "Le même geste porte deux mots : l'attestation dit « pose ton stylo et clique ta réponse », les tours disent « Julien, pose ton stylo. Sélectionne maintenant ta réponse. ». La formule change aussi d'ordre selon les écrans : « Pose ton stylo, Julien. », « Michel, pose ton stylo. ».",
+"ou": "bandeau rouge",
+"grav": "mineur",
+"repro": "#scene=t-q1-tour1, comparer avec #scene=t-attest-2"
+},
+{
+"src": "r1",
+"scene": "#54 — 25, 33",
+"type": "texte",
+"quoi": "Dans « Tu es prêt ? À toi dans 3 secondes », le nombre est séparé de son unité par le retour à la ligne : « 3 » d'un côté, « secondes » de l'autre.",
+"ou": "grand encadré violet",
+"grav": "mineur",
+"repro": "#scene=t-q1-passage1"
+},
+{
+"src": "r1",
+"scene": "#55 — 26, 34, 43",
+"type": "logique",
+"quoi": "Si l'élève décoche tous ses choix, « ✅ Réponse enregistrée — tu peux encore la changer » reste affiché alors qu'aucun choix n'est coché.",
+"ou": "bandeau vert sous les choix",
+"grav": "mineur",
+"repro": "#scene=t-q1-tour1, cliquer « Rome » pour le décocher"
+},
+{
+"src": "r1",
+"scene": "#56 — 35",
+"type": "geste",
+"quoi": "Un clic sur « Oui, la même chose » ou « Non, autre chose » ne change rien de visible : les deux boutons restent blancs, avec le même cadre. Michel ne voit pas ce qu'il a répondu.",
+"ou": "sous « Michel, regarde ta feuille : dit-elle la même chose que ton clic ? »",
+"grav": "gênant",
+"repro": "#scene=t-q1-b-michel, cliquer « Non, autre chose » ; capture `out/crop11.png`"
+},
+{
+"src": "r1",
+"scene": "#57 — 21, 24, 27, 28, 30, 32, 36, 38 à 40",
+"type": "texte",
+"quoi": "Des pluriels bricolés : « 1 bonne(s) réponse(s) », « 2 bonne(s) réponse(s) » (« 🔮 À venir ») et « QUESTION 1 / 3 — 1 BONNE(S) RÉP. » (carte de la question en cours, avec en plus l'abréviation « RÉP. »).",
+"ou": "colonne de gauche",
+"grav": "mineur",
+"repro": "#scene=c-q1-tour1"
+},
+{
+"src": "r1",
+"scene": "#58 — 21 à 40",
+"type": "infobulle",
+"quoi": "Un mot manque dans l'infobulle des champs de temps de « Toutes les questions » : « Le temps de  de cette question, pour cette séance : l'évaluation elle-même ne change pas. » (on ne sait pas si c'est la réflexion ou la réponse ; deux espaces). Les libellés « 🧠 s » et « ✋ s » n'ont pas d'infobulle.",
+"ou": "cartes Q2 et Q3, champs 🧠 et ✋",
+"grav": "mineur",
+"repro": "#scene=c-pret, survoler le champ « 30 » de Q2"
+},
+{
+"src": "r1",
+"scene": "#59 — 24, 27, 28, 30, 32, 36, 39, 40",
+"type": "logique",
+"quoi": "L'infobulle de la carte Q1 dit « Question en cours — 21/24 justes pour le moment » à tous les moments, alors que les compteurs montrent « 0/24 ONT RÉPONDU » (24), « 10/10 JUSTES » (27, 28, 30, 32) et « 20/23 JUSTES » (36).",
+"ou": "carte Q1 de « Toutes les questions »",
+"grav": "mineur",
+"repro": "#scene=c-q1-reflexion, survoler la carte Q1"
+},
+{
+"src": "r1",
+"scene": "#60 — 21 à 40",
+"type": "infobulle",
+"quoi": "Les infobulles des compteurs ne correspondent pas aux chiffres. « Nombre d'élèves actuellement connectés… vs. nombre total d'élèves de la classe. » : le compteur divise par 24, les présents, alors que la classe compte 25 élèves. « ONT RÉPONDU : … vs. nombre total » : au 1er tour, le compteur affiche « 10/12 ». « vs. » est un anglicisme.",
+"ou": "rangée de compteurs",
+"grav": "mineur",
+"repro": "#scene=c-q1-tour1, survoler « 24/24 » et « 10/12 »"
+},
+{
+"src": "r1",
+"scene": "#61 — 21, 24, 27 à 40",
+"type": "infobulle",
+"quoi": "Plusieurs infobulles de pilotage sont mal écrites ou se contredisent. Guillemets droits : « Clique sur 'Lancer Q1' pour démarrer. » (21) et « clique sur 'Autoriser la réponse'. » (24). « 🔄 Relancer chrono » : « Remet le chrono à zéro pour la phase en cours (durée pleine ré-injectée). » : le chrono repart pourtant à 20 s, pas à zéro. « 🚫 Départ d'un élève » : « …au prorata… L'absence est tracée pour le suivi longitudinal MJPC. » (jargon). « ▶️ Lancer Q1 » : « Démarre la session… » alors que la séance est déjà ouverte.",
+"ou": "bandeau d'état ; boutons",
+"grav": "mineur",
+"repro": "survoler ces éléments dans #scene=c-pret et #scene=c-q1-reflexion"
+},
+{
+"src": "r1",
+"scene": "#62 — 21 à 40",
+"type": "infobulle",
+"quoi": "Les pastilles et états du pilotage n'ont pas d'infobulle. Moitiés des tablettes : « ✓ prêt · 10:04 », « attestation 5/8 », « pas encore entrée », « juste », « faux », « 🙈 attend son tour », « ✋ répond… ». Chronos : « 20s », « 9s ». Bandeaux : « ✋ Phase RÉPONSE — 1er tour », « moitiés de gauche », « ⏸️ Question close — passe à la suivante ». Aussi « QUESTION 1 / 3 — … », « Difficulté : Facile », « c4-culture-01 », « 🕙 Fin de l'heure : 10:57 » et la légende.",
+"ou": "grille des tablettes ; colonne de gauche",
+"grav": "mineur",
+"repro": "#scene=c-q1-tour1, survoler ces éléments : rien ne s'affiche"
+},
+{
+"src": "r1",
+"scene": "#63 — 21, 24, 27, 38",
+"type": "logique",
+"quoi": "Avant toute question close (21, 24, 27), « 🔓 Rouvrir pour un élève » et « ↩️ Retour d'un élève » sont actifs, alors que personne n'est parti. « Rouvrir pour un élève » ouvre « 🔓 Rouvrir pour un élève — Q2 », une question pas encore posée. Même chose en 38 : Q1 est close, « 24/24 ONT RÉPONDU », « 🔓 Rouvrir pour tous » est grisé avec la raison « Tous les présents ont répondu », mais « Rouvrir pour un élève » reste actif et ouvre « — Q2 ».",
+"ou": "barre de boutons sous le titre de la séance",
+"grav": "gênant",
+"repro": "#scene=c-pret ou #scene=c-q1-close, cliquer « 🔓 Rouvrir pour un élève »"
+},
+{
+"src": "r1",
+"scene": "#64 — 21, 24, 27, 38, 40",
+"type": "geste",
+"quoi": "Les gardes portent sur la mauvaise question. « ❌ Écarter » de Q1 (21) ou de Q2 (21, 24, 27, 40) ouvre « ❌ Écarter la question 3 ? ». « ⚠️ Annuler » de Q1, une fois close (38, 40), ouvre « ⚠️ Annuler la question 2 ? ».",
+"ou": "cartes de « Toutes les questions »",
+"grav": "gênant",
+"repro": "#scene=c-pret, cliquer « ❌ Écarter » de Q1 ; #scene=c-q1-close, cliquer « ⚠️ Annuler »"
+},
+{
+"src": "r1",
+"scene": "#65 — 40, 42, 43",
+"type": "logique",
+"quoi": "Q3 est écartée (40 : « 1/2 QUESTION », « 🔮 À VENIR — Q 2 / 2 »), mais « ▶️ Lancer Q2 » mène à t-q2-reflexion, où les tablettes affichent « QUESTION 2 / 3 ». Juste après « Question 2 / 2 » (41), les scènes 42 et 43 repassent à « QUESTION 2 / 3 ». Je ne sais pas si les scènes 39 à 41 sont une branche à part ; si l'écart fait partie du déroulé, le compteur ne suit pas.",
+"ou": "en-tête de la question, sur chaque moitié",
+"grav": "gênant",
+"repro": "#scene=c-ecartee, cliquer « ▶️ Lancer Q2 »"
+},
+{
+"src": "r1",
+"scene": "#66 — 40, 41",
+"type": "texte",
+"quoi": "Le titre « Évaluation d'essai — 3 questions » reste affiché à côté de « 1/2 QUESTION » (40) et de « QUESTION 2 / 2 » (41).",
+"ou": "titre de la séance et des moitiés",
+"grav": "mineur",
+"repro": "#scene=t-q2-ecartee"
+},
+{
+"src": "r1",
+"scene": "#67 — 21 à 40 ; 29",
+"type": "texte",
+"quoi": "L'heure de fin est affichée deux fois : « 🕙 Fin de l'heure : 10:57 » et « 🏁 Fin prévue 10:39 · fin de l'heure 10:57 » (sur le téléphone : « 🕙 Fin 10:57 » et « …fin de l'heure 10:57 »). Dans la scène 21, les deux temps de Q1 se tapent aussi à deux endroits : les cartes RÉFLEXION et RÉPONSE (20 et 15), et la carte Q1 de « Toutes les questions » (20 et 15).",
+"ou": "barre sous le titre ; colonnes de gauche et de droite",
+"grav": "mineur",
+"repro": "#scene=c-pret"
+},
+{
+"src": "r1",
+"scene": "#68 — 21",
+"type": "affichage",
+"quoi": "Dans la légende, « pas encore entré » n'a pas de carré de couleur, et le carré de « ✓ prêt » est presque invisible (vert très pâle sur blanc). L'emoji « 🛑 » de « Terminer la session » est rouge sur fond rouge et ne se voit pas (aussi 24 à 40).",
+"ou": "sous la grille ; barre de boutons",
+"grav": "mineur",
+"repro": "#scene=c-pret"
+},
+{
+"src": "r1",
+"scene": "#69 — 21, 24, 27, 32, 36, 38, 40",
+"type": "affichage",
+"quoi": "À 1366×768, des retours à la ligne cassent la mise en page. Dans la carte Q1, le « ? » de « Quelle est la capitale de l'Italie ? » part seul à la ligne. En 24, les pastilles des tablettes « ✍️ écrit sur sa / feuille » passent sur deux lignes, et « 🔄 Relancer chrono » se retrouve seul sur une 2e rangée, sous « ✋ Autoriser la réponse » et « ⏸️ Pause ».",
+"ou": "carte Q1 ; grille ; boutons de phase",
+"grav": "mineur",
+"repro": "#scene=c-q1-reflexion à 1366×768 ; capture `out/c-q1-reflexion-1366x768.png`"
+},
+{
+"src": "r1",
+"scene": "#70 — 27, 32, 36, 38",
+"type": "logique",
+"quoi": "Pendant les tours de réponse et après la clôture, les boutons « +5 / +10 / +30 » de la RÉFLEXION restent actifs alors que la réflexion est finie. Dans la scène 27, « +30 » sur la réflexion fait passer « 🏁 Fin prévue 10:39 » à « 10:40 ».",
+"ou": "carte « 🧠 RÉFLEXION »",
+"grav": "mineur",
+"repro": "#scene=c-q1-tour1, cliquer « +30 » de la réflexion"
+},
+{
+"src": "r1",
+"scene": "#71 — 21 à 40",
+"type": "texte",
+"quoi": "La même icône ⏸️ sert à trois choses : « ⏸️ Pause », « ⏸️ Finir à une autre heure » et l'état « ⏸️ Question close — passe à la suivante ».",
+"ou": "barre de boutons ; bandeau d'état",
+"grav": "mineur",
+"repro": "#scene=c-q1-close"
+},
+{
+"src": "r1",
+"scene": "#72 — 28",
+"type": "geste",
+"quoi": "Dans la vue « 👁 » (infobulle « …Ne change rien. »), un clic sur un choix de la moitié de Julien le coche : « Venise » s'ajoute à « Rome ». Paul peut ainsi modifier la réponse d'un élève.",
+"ou": "moitié gauche, dans la fenêtre",
+"grav": "gênant",
+"repro": "#scene=c-voir-tablette, cliquer « Venise » ; capture `out/c-voir-tablette-clicvenise.png`"
+},
+{
+"src": "r1",
+"scene": "#73 — 21, 24, 27, 28, 32, 36, 38, 40",
+"type": "geste",
+"quoi": "Les douze « 👁 » ouvrent tous « 📱 Tablette 1 · ABRIAL Julien · DUVERNAY Michel — en direct », même celui de la tablette 7.",
+"ou": "en-tête de chaque tablette",
+"grav": "mineur",
+"repro": "#scene=c-q1-tour1, cliquer le « 👁 » de la tablette 7"
+},
+{
+"src": "r1",
+"scene": "#74 — 28",
+"type": "affichage",
+"quoi": "À 1366×768, le corps de la fenêtre (`.fen-corps`) fait 543 px pour 558 px de contenu : il défile de 15 px et le bas du cadre de la tablette est rogné.",
+"ou": "fenêtre « Tablette 1 »",
+"grav": "mineur",
+"repro": "#scene=c-voir-tablette à 1366×768"
+},
+{
+"src": "r1",
+"scene": "#75 — 29",
+"type": "affichage",
+"quoi": "Sur le téléphone, des textes sont minuscules : les noms des élèves « ABRIAL Julien » en 10,7 px, « T1 » en 9,6 px, « en cours » en 9,9 px, « Q1 · Facile · réflexion 20 s · réponse 15 s par tour » en 10,6 px, le titre « TABLETTES — 10 / 12 ont répondu… » en 10,2 px. « ❌ Écarter » passe seul à la ligne sous « Suiv. Q2 : … ».",
+"ou": "liste des tablettes ; carte de la question ; ligne « Suiv. Q2 »",
+"grav": "mineur",
+"repro": "#scene=p-reponse à 390×844"
+},
+{
+"src": "r1",
+"scene": "#76 — 29",
+"type": "geste",
+"quoi": "Sur le téléphone, des boutons font basculer vers un autre appareil : « ⏭️ Tour suivant » mène aux tablettes (t-q1-passage2), « ❌ Écarter » et « 🛑 Terminer la session » mènent à la console (c-ecarter, c-terminer).",
+"ou": "boutons du téléphone",
+"grav": "mineur",
+"repro": "#scene=p-reponse, cliquer « ⏭️ Tour suivant »"
+},
+{
+"src": "r1",
+"scene": "#77 — 29",
+"type": "infobulle",
+"quoi": "Sur le téléphone, la case « Q1 en cours » a pour infobulle « Q1 — pas de réponse », alors que « 10 / 12 ont répondu ». Les noms des élèves (« ABRIAL Julien ✓ »…), le chrono « 9s » et « 🕙 Fin 10:57 » n'ont pas d'infobulle.",
+"ou": "rangée Q1/Q2/Q3 ; liste",
+"grav": "mineur",
+"repro": "#scene=p-reponse, survoler « Q1 en cours »"
+},
+{
+"src": "r1",
+"scene": "#78 — 31 (tableau)",
+"type": "affichage",
+"quoi": "La liste « 👥 Classe (25) » dépasse de l'écran du tableau : elle fait 828 px pour 754 px visibles. « Adam YVON » et « Lou ZELLER » sont sous le bord, et au tableau personne ne peut faire défiler la liste.",
+"ou": "colonne de droite",
+"grav": "gênant",
+"repro": "#scene=b-reponse à 1280×800 ; capture `out/b-reponse-bas.png` (après défilement)"
+},
+{
+"src": "r1",
+"scene": "#79 — 31",
+"type": "affichage",
+"quoi": "Le bandeau du haut s'arrête à x = 953 px alors que la zone principale va jusqu'à 1000 px : il reste une encoche de 47 px avant la liste, qui a l'air d'un vide cassé.",
+"ou": "haut, entre « ✋ 10 / 12 ont répondu » et « 👥 Classe (25) »",
+"grav": "mineur",
+"repro": "#scene=b-reponse ; capture `out/crop9.png`"
+},
+{
+"src": "r1",
+"scene": "#80 — 32",
+"type": "logique",
+"quoi": "La fin prévue passe de « 🏁 Fin prévue 10:39 · fin de l'heure 10:57 » (27) à « 🏁 Fin prévue 11:02, 5 min après la fin de l'heure », soit 23 minutes de plus, sans qu'aucun temps affiché ait changé. Le texte de la scène 32 est identique à celui de la scène 27, sauf cette ligne (réflexion 20 s, réponse 9 s, Q2 30/20, Q3 20/15).",
+"ou": "ligne « 🏁 Fin prévue »",
+"grav": "gênant",
+"repro": "comparer le texte de #scene=c-q1-tour1 et de #scene=c-fin-prevue (`diff out/c-q1-tour1.texte.txt out/c-fin-prevue.texte.txt`)"
+},
+{
+"src": "r1",
+"scene": "#81 — 39",
+"type": "texte",
+"quoi": "La garde contient une règle qui ne s'applique pas ici : « Une question bonus écartée ne change rien à la note : c'est ton fusible. » (la Q3 n'est pas une question bonus). L'infobulle de « ❌ Écarter la question 3 » dit « la note et la compétence comptent sans elle », au singulier, alors que deux compétences sont touchées (« c4-culture-01 et c4-lire-01 »).",
+"ou": "bas de la fenêtre ; bouton rouge",
+"grav": "mineur",
+"repro": "#scene=c-ecarter"
+},
+{
+"src": "r1",
+"scene": "#82 — 22, 1",
+"type": "texte",
+"quoi": "Un même mot pour deux choses. Les tablettes appellent la démo « 🎓 Évaluation d'entraînement : elle ne compte pas. », alors que la liste de Paul contient une vraie évaluation, qui compte, nommée « Les Misérables — évaluation d'entraînement ». Côté console, la démo s'appelle « Démo ».",
+"ou": "bandeau jaune des moitiés (22) ; liste (1)",
+"grav": "mineur",
+"repro": "#scene=t-demo-q ; #scene=c-evals"
+},
+{
+"src": "r1",
+"scene": "#83 — 19",
+"type": "geste",
+"quoi": "« Je commence » de Julien mène à t-pret, où Michel est prêt lui aussi, alors qu'il en était à 5 lignes sur 8.",
+"ou": "moitié gauche",
+"grav": "mineur",
+"repro": "#scene=t-attest-2, cliquer « Je commence »"
+},
+{
+"src": "r2",
+"scene": "[1] 44 (aussi 51, 53, 55, 62, 70, 73, 75, 83, 84, 86 ; « 1 pt » aussi 54, 56)",
+"type": "infobulle",
+"quoi": "Il y a des infobulles sur un écran d'élève : « 📊 Mes évaluations » → « Ouvre « Mes évaluations » : tes évaluations passées et leur bilan. » ; pastille « 1 pt » → « Nombre de points que vaut cette question ».",
+"ou": "en-tête de chaque moitié ; pastille en haut à droite de la carte",
+"grav": "gênant",
+"repro": "1280×800, `#scene=t-q2-tour2`, survoler « 📊 Mes évaluations » puis « 1 pt »"
+},
+{
+"src": "r2",
+"scene": "[2] 44 (mêmes scènes que [1])",
+"type": "geste",
+"quoi": "En pleine question, « 📊 Mes évaluations » mène à `e-mes-evals`, la page de ZELLER Lou (« Tu étais absente »), même depuis la moitié de Julien ou de Michel.",
+"ou": "en-tête de la moitié",
+"grav": "mineur",
+"repro": "cliquer « 📊 Mes évaluations » sur la moitié de Julien"
+},
+{
+"src": "r2",
+"scene": "[3] 44 (aussi 53, 55)",
+"type": "geste",
+"quoi": "Quand on éteint tous les choix, « ✅ Réponse enregistrée — tu peux encore la changer » reste affiché alors qu'aucun choix n'est allumé (capture `caps/clic-044-rien.png`).",
+"ou": "bas de la carte de Julien",
+"grav": "mineur",
+"repro": "`#scene=t-q2-tour2`, cliquer Madrid puis Berlin (allumés au départ)"
+},
+{
+"src": "r2",
+"scene": "[4] 44 (aussi 51, 53, 55)",
+"type": "texte",
+"quoi": "Deux verbes pour le même geste : le bandeau dit « Julien, pose ton stylo. Sélectionne maintenant ta réponse. », la consigne en 51 dit « 💡 Clique sur le ou les choix qui correspondent à ta réponse. »",
+"ou": "bandeau rouge",
+"grav": "mineur",
+"repro": "lire les deux scènes"
+},
+{
+"src": "r2",
+"scene": "[5] 44 (aussi 51, 75, 83)",
+"type": "affichage",
+"quoi": "« Standard » en blanc sur orange clair : contraste mesuré 2,1.",
+"ou": "pastille au centre de l'en-tête de la carte",
+"grav": "mineur",
+"repro": "mesure de couleur sur la pastille"
+},
+{
+"src": "r2",
+"scene": "[6] 45 (aussi 46 à 69, 71, 74, 76, 79, 80, 85)",
+"type": "texte",
+"quoi": "Deux mots pour la même chose, « session » et « séance » : « 🔴 1 session en cours », « 🛑 Terminer la session », « Lancer une nouvelle session », « Sessions précédentes », « Session interrompue détectée », « 🔄 Reprendre la session », contre « séance » dans les fenêtres et les infobulles. En 63, la fenêtre s'intitule « Terminer la session ? » et son bouton dit « 🛑 Terminer la séance » ; en 68, « Sessions actuellement en cours » puis « la séance est close ».",
+"ou": "en-tête, boutons, titres des fenêtres",
+"grav": "gênant",
+"repro": "lire 45, 63, 66, 68, 69"
+},
+{
+"src": "r2",
+"scene": "[7] 45 (aussi 46, 48 à 50, 57 à 61, 63, 65, 68)",
+"type": "texte",
+"quoi": "Pluriels bricolés : « QUESTION 2 / 3 — 2 BONNE(S) RÉP. », « QUESTION 3 / 3 — 1 BONNE(S) RÉP. », « Difficulté Facile · réflexion 20 s · réponse 15 s par tour · 1 bonne(s) réponse(s) ».",
+"ou": "carte violette de la question ; encadré « 🔮 À venir »",
+"grav": "mineur",
+"repro": "lire"
+},
+{
+"src": "r2",
+"scene": "[8] 45 (aussi 46 à 61)",
+"type": "infobulle",
+"quoi": "Infobulle cassée, un mot manque : « Le temps de  de cette question, pour cette séance : l'évaluation elle-même ne change pas. »",
+"ou": "champs de temps 🧠 et ✋ des questions à venir, colonne « 📋 Toutes les questions »",
+"grav": "gênant",
+"repro": "1536×864, survoler le champ « 20 » à côté de 🧠 sous Q3"
+},
+{
+"src": "r2",
+"scene": "[9] 45 (aussi 46 à 61)",
+"type": "infobulle",
+"quoi": "Le champ et les boutons +5/+10/+30 de la carte « 🧠 RÉFLEXION » portent l'infobulle du temps de réponse : « Tape le temps de cette question, en secondes : il vaut pour les deux tours et pour la lecture à la correction. », « les deux tours ont le même temps, et la lecture à la correction aussi » : c'est faux pour la réflexion.",
+"ou": "carte RÉFLEXION",
+"grav": "gênant",
+"repro": "survoler le champ « 30 » ou « +5 » de la réflexion"
+},
+{
+"src": "r2",
+"scene": "[10] 45 (aussi 46, 48, 57, 59, 61)",
+"type": "infobulle",
+"quoi": "La bulle du « i » de « 📋 Toutes les questions » est coupée par le bord droit de la carte, aux trois tailles : on lit « Les temps des questions à venir se / pour cette séance seulement. « ❌ / retire une question pas encore pos / Annuler » retire une question déjà / deux se défont par « ↩️ Remettre » (capture `bulles/045-c-q2-tour2-1536x864-i3.png`).",
+"ou": "haut de la colonne de droite",
+"grav": "gênant",
+"repro": "1536×864, survoler le « i » jaune de « 📋 Toutes les questions »"
+},
+{
+"src": "r2",
+"scene": "[11] 45 (aussi 46, 48, 59, 61)",
+"type": "infobulle",
+"quoi": "La bulle du « i » de « 🔮 À venir » est écrite en capitales espacées et à empattements : « LA QUESTION SUIVANTE, AVEC SES DEUX TEMPS : ILS SE CHANGENT DANS « 📋 TOUTES LES QUESTIONS / », À DROITE. », avec le « » » rejeté en début de ligne ; à 1536×864 elle sort par le bas de l'écran (bulle de y = 815 à 916 pour une fenêtre de 864).",
+"ou": "encadré pointillé en bas de la colonne de gauche",
+"grav": "mineur",
+"repro": "1536×864 puis 1920×1080, survoler ce « i » (`caps/zoom-046-avenir-1920.png`)"
+},
+{
+"src": "r2",
+"scene": "[12] 45 (aussi 46 à 61)",
+"type": "infobulle",
+"quoi": "« 24/24 CONNECTÉS » : « Nombre d'élèves actuellement connectés à l'app sur leur poste vs. nombre total d'élèves de la classe. » : la classe compte 25 élèves, le compteur divise par les présents ; « vs. » (anglicisme) dans les quatre infobulles des compteurs.",
+"ou": "les quatre compteurs",
+"grav": "gênant",
+"repro": "survoler « 24/24 CONNECTÉS »"
+},
+{
+"src": "r2",
+"scene": "[13] 59",
+"type": "infobulle",
+"quoi": "« ONT RÉPONDU » : « … vs. nombre total. » alors que le compteur affiche « 10/12 » (les moitiés du tour, pas le total).",
+"ou": "compteur « ONT RÉPONDU »",
+"grav": "mineur",
+"repro": "`#scene=c-parti`, survoler « 10/12 »"
+},
+{
+"src": "r2",
+"scene": "[14] 45 (aussi toutes les consoles de séance de ma part)",
+"type": "infobulle",
+"quoi": "Infobulles techniques ou qui expliquent une règle : « 📺 Ouvrir vue tableau » → « … dans une NOUVELLE FENÊTRE (pas un onglet) … Utilise W+P en mode \"Étendre\" sur Windows … puis F11 pour plein écran. Cette vue n'affiche QUE la question (sans contrôles), garantissant que le pilotage ne peut jamais être projeté par erreur. » (guillemets droits) ; « 🚫 Départ d'un élève » → « … en cours de session … au prorata … L'absence est tracée pour le suivi longitudinal MJPC. » (la fenêtre 58 dit au contraire « tu fixes sa note d'après sa feuille ») ; « 🔄 Relancer chrono » → « Remet le chrono à zéro pour la phase en cours (durée pleine ré-injectée). » ; « ? » → « Aide et nouveautés » (ne dit pas qu'il ouvre le mode d'emploi).",
+"ou": "en-tête et rangée de boutons",
+"grav": "mineur",
+"repro": "survoler ces boutons"
+},
+{
+"src": "r2",
+"scene": "[15] 45 (aussi 46 à 61)",
+"type": "infobulle",
+"quoi": "Sans infobulle : les noms des élèves, les statuts (« juste », « une en trop · 🙈 », « ✋ répond… »), le bandeau « ✋ Phase RÉPONSE — 2e tour », la pastille « moitiés de gauche », les chronos « 30s » et « 4s », « 🕙 Fin de l'heure : 10:57 », les étiquettes « c4-culture-01 » et « c4-lire-01 » (codes bruts que rien n'explique).",
+"ou": "grille des tablettes, colonne de gauche",
+"grav": "mineur",
+"repro": "survoler ces éléments"
+},
+{
+"src": "r2",
+"scene": "[16] 45 (aussi 46 à 61)",
+"type": "geste",
+"quoi": "Les cartes Q1, Q2, Q3 de « 📋 Toutes les questions » ont le curseur en main, mais un clic ne fait rien.",
+"ou": "colonne de droite",
+"grav": "mineur",
+"repro": "cliquer le titre d'une carte"
+},
+{
+"src": "r2",
+"scene": "[17] 45 (aussi 46 à 61, 71, 74, 76 à 85)",
+"type": "geste",
+"quoi": "Des boutons mènent à une scène figée à un autre moment de la séance : « 👁 » de n'importe quelle tablette → « 📱 Tablette 1 … 1er tour de la question 1 » ; « 📺 Ouvrir vue tableau » → le tableau de la question 1 ; « 🔴 1 session en cours » → « Phase : réponse · Q 1 · 1er tour » ; « 🛑 Terminer la session » (console et téléphone) → fenêtre « question 1, 1er tour » ; l'onglet actif « 🎯 Pilotage classe » → le formulaire « Lancer une nouvelle session », sans la séance en cours.",
+"ou": "en-tête, onglets, grille",
+"grav": "mineur",
+"repro": "`#scene=c-corr-q3-apres`, cliquer « 👁 » de la tablette 12, puis « 🔴 1 session en cours »"
+},
+{
+"src": "r2",
+"scene": "[18] 45 (aussi 46, 59, 63, 65, 68)",
+"type": "logique",
+"quoi": "« 🔓 Rouvrir pour un élève » reste actif pendant une question en cours et ouvre toujours la fenêtre « Q2 » de Théo, même en 59 (question 1 en cours) ; « ↩️ Retour d'un élève » est actif alors que personne n'est parti et ouvre « MAILLARD Noah — parti à 10:14 ».",
+"ou": "rangée de boutons du haut",
+"grav": "mineur",
+"repro": "`#scene=c-parti` puis `#scene=c-q2-tour2`, cliquer ces deux boutons"
+},
+{
+"src": "r2",
+"scene": "[19] 57 (aussi 61)",
+"type": "logique",
+"quoi": "Sur le même écran : « 🔓 Rouvrir pour tous » est grisé (« Tous les présents ont répondu à cette question : il n'y a personne à rouvrir. ») mais « 🔓 Rouvrir pour un élève », en haut, est actif et ouvre la fenêtre de la question 2 pour Théo.",
+"ou": "rangée du haut et bouton sous la carte",
+"grav": "gênant",
+"repro": "`#scene=c-q3-close`, cliquer « 🔓 Rouvrir pour un élève »"
+},
+{
+"src": "r2",
+"scene": "[20] 45 (aussi 46 à 61)",
+"type": "affichage",
+"quoi": "À 1366×768 : « 🔄 Relancer chrono » passe seul sur une deuxième rangée, à demi-largeur ; dans la carte Q1, « Quelle est la capitale de l'Italie » puis « ? » seul sur sa ligne.",
+"ou": "sous la carte violette ; colonne de droite",
+"grav": "mineur",
+"repro": "1366×768, `#scene=c-q2-tour2` (`caps/045-c-q2-tour2-1366x768-full.png`)"
+},
+{
+"src": "r2",
+"scene": "[21] 45 (aussi 46 à 61, 71, 74, 76 à 80, 85)",
+"type": "affichage",
+"quoi": "Textes minuscules et peu contrastés : pastilles et lignes de 10,4 à 10,9 px (« juste », « une sur deux · 🙈 », « Réflexion 30 s · Réponse 20 s par tour », « connectés ») ; « juste » blanc sur vert : contraste 2,3 ; « une sur deux » blanc sur orange : 2,8.",
+"ou": "grille des tablettes, compteurs, cartes",
+"grav": "mineur",
+"repro": "mesure (`out/c-q2-tour2.analyse.txt`)"
+},
+{
+"src": "r2",
+"scene": "[22] 45 (toutes les consoles à 1536×864)",
+"type": "affichage",
+"quoi": "Un 🎲 décoratif est coupé par le cadre : une bosse grise sur le bord gauche (x ≈ 50, y ≈ 500) qui a l'air d'un élément cassé.",
+"ou": "bord gauche du cadre",
+"grav": "mineur",
+"repro": "1536×864, regarder le bord gauche (`caps/zoom-gauche.png`)"
+},
+{
+"src": "r2",
+"scene": "[23] 46 (aussi 48 à 50, 57, 61)",
+"type": "infobulle",
+"quoi": "La carte d'une question close dit : « Question en cours — 9/24 justes pour le moment » (Q2 close en 46 ; « Question en cours — 14/24 justes pour le moment » pour Q3 close en 57 ; Q1 close en 61).",
+"ou": "carte de la question, colonne de droite",
+"grav": "mineur",
+"repro": "`#scene=c-q2-close`, survoler la carte Q2"
+},
+{
+"src": "r2",
+"scene": "[24] 46 (aussi 47 à 50)",
+"type": "texte",
+"quoi": "Note en italique qui explique une règle : « « Rouvrir pour tous » ne rouvre que pour ceux qui n'ont pas répondu, une fois par question. »",
+"ou": "sous « ▶️ Lancer Q3 »",
+"grav": "mineur",
+"repro": "lire"
+},
+{
+"src": "r2",
+"scene": "[25] 47",
+"type": "texte",
+"quoi": "Un même mot pour deux gestes côte à côte : « Annuler » (fermer sans rien faire) et « ⚠️ Annuler la question 2 ».",
+"ou": "pied de la fenêtre",
+"grav": "gênant",
+"repro": "`#scene=c-annuler`"
+},
+{
+"src": "r2",
+"scene": "[26] 50",
+"type": "infobulle",
+"quoi": "Le « i » jaune du titre « 🔓 Rouvrir pour un élève — Q2 » ne montre rien au survol : ni bulle, ni infobulle.",
+"ou": "titre de la fenêtre",
+"grav": "gênant",
+"repro": "`#scene=c-rouvrir-un`, survoler ce « i »"
+},
+{
+"src": "r2",
+"scene": "[27] 51",
+"type": "geste",
+"quoi": "Après un clic sur les choix, aucun retour : la ligne reste « 💡 Clique sur le ou les choix qui correspondent à ta réponse. », alors qu'en 44, 53 et 55 elle devient « ✅ Réponse enregistrée — tu peux encore la changer » (`caps/clic-051-madrid-berlin.png`).",
+"ou": "bas de la carte de Théo",
+"grav": "mineur",
+"repro": "`#scene=t-rouvrir-un`, cliquer Madrid et Berlin"
+},
+{
+"src": "r2",
+"scene": "[28] 52",
+"type": "geste",
+"quoi": "Dans la fiche de Théo, « 🚫 Marquer comme parti en cours de séance » mène à `c-parti`, où c'est MAILLARD Noah (tablette 6) qui est parti.",
+"ou": "fiche en bas de l'écran",
+"grav": "mineur",
+"repro": "390×844, `#scene=p-eleve`, cliquer ce bouton"
+},
+{
+"src": "r2",
+"scene": "[29] 52",
+"type": "texte",
+"quoi": "Même geste, autre icône que sur la console : « 🔁 Rouvrir Q2 pour cet élève uniquement (une seule fois) » (console : « 🔓 »), « 🚀 Lancer Q3 » (console : « ▶️ Lancer Q3 »).",
+"ou": "fiche ; bouton du haut",
+"grav": "mineur",
+"repro": "comparer avec 46"
+},
+{
+"src": "r2",
+"scene": "[30] 52 (aussi 77, 81)",
+"type": "infobulle",
+"quoi": "Aperçu Q1/Q2/Q3 : « Aperçu de la classe par question. Vert = >75% bonnes, Bleu = >50%, Orange = >25%, Rouge = <25%. Les rouges sortiront en premier à la correction. » : une règle ; Q2 (38 %) n'est pas orange mais violet-rose ; la correction suit le taux d'erreur de toutes les questions, pas seulement « les rouges ».",
+"ou": "les trois pavés Q1, Q2, Q3",
+"grav": "mineur",
+"repro": "survoler le pavé"
+},
+{
+"src": "r2",
+"scene": "[31] 52 (aussi 77, 81)",
+"type": "infobulle",
+"quoi": "Sans infobulle : les noms des élèves, « Phase : … », le chrono « 7s », les pastilles ✓, ✗, ½, ⏳, 📄.",
+"ou": "tout l'écran",
+"grav": "mineur",
+"repro": "lire les attributs (`out/p-corr-avant.analyse.txt`)"
+},
+{
+"src": "r2",
+"scene": "[32] 54 (aussi 56)",
+"type": "geste",
+"quoi": "« Oui, la même chose » et « Non, autre chose » : le clic ne change rien à l'écran (aucun bouton ne s'allume) ; l'élève ne voit pas ce qu'il a dit.",
+"ou": "bas de la moitié",
+"grav": "gênant",
+"repro": "`#scene=x610-1-b-julien`, cliquer « Non, autre chose » (`caps/clic-x610-1-b-julien-Non__autre_chose.png`)"
+},
+{
+"src": "r2",
+"scene": "[33] 54 (aussi 56)",
+"type": "infobulle",
+"quoi": "Les choix figés portent des infobulles côté élève, et deux textes pour le même état : « Ton clic, figé : le temps de réponse est fini. » et « Le temps de réponse est fini : ton clic ne change plus. »",
+"ou": "les six choix",
+"grav": "gênant",
+"repro": "survoler un choix allumé puis un choix éteint"
+},
+{
+"src": "r2",
+"scene": "[34] 54 (aussi 56)",
+"type": "texte",
+"quoi": "« … et dans quel sens va la flèche à l'étape 4? » (pas d'espace avant « ? ») ; titre « 3e- éval 1 Analyse logique - Construire une phrase complexe » (« 3e- », traits d'union à la place de tirets).",
+"ou": "énoncé ; titre de la moitié",
+"grav": "mineur",
+"repro": "lire"
+},
+{
+"src": "r2",
+"scene": "[35] 54 (aussi 56, 72)",
+"type": "affichage",
+"quoi": "Pas de bouton « 📊 Mes évaluations » dans l'en-tête de la moitié, contrairement à 53, 55 et 73.",
+"ou": "en-tête de la moitié",
+"grav": "mineur",
+"repro": "comparer 53 et 54"
+},
+{
+"src": "r2",
+"scene": "[36] 58",
+"type": "logique",
+"quoi": "« … ses questions manquées sortent de son total (« noté sur 7 questions sur 11 »), et tu fixes sa note d'après sa feuille. » dans une évaluation de 3 questions.",
+"ou": "haut de la fenêtre",
+"grav": "gênant",
+"repro": "`#scene=c-depart`"
+},
+{
+"src": "r2",
+"scene": "[37] 58",
+"type": "geste",
+"quoi": "Chacun des 24 « 🚫 Parti » mène à `c-parti`, où c'est MAILLARD Noah qui est parti, quel que soit l'élève cliqué.",
+"ou": "liste de la fenêtre",
+"grav": "mineur",
+"repro": "cliquer « 🚫 Parti » à côté de ABRIAL Julien"
+},
+{
+"src": "r2",
+"scene": "[38] 61",
+"type": "affichage",
+"quoi": "Pastille coupée au mauvais endroit : « ↔️ va sur la tablette 1 » / « : retape son code » (deux-points en début de ligne) ; tablette 12 : « va sur la tablette » / « 12 : retape son code ».",
+"ou": "cases de Théo (T1) et de Julien (T12)",
+"grav": "mineur",
+"repro": "`#scene=c-deplacer`"
+},
+{
+"src": "r2",
+"scene": "[39] 61",
+"type": "affichage",
+"quoi": "« ABRIAL Julien et CHEVALLIER Théo échangés : leurs réponses déjà données les suivent » est accolé au titre « 📱 Tablettes » et replié à la ligne sous l'icône.",
+"ou": "au-dessus de la grille",
+"grav": "mineur",
+"repro": "1366×768 et 1536×864 (`caps/zoom-061-1366.png`)"
+},
+{
+"src": "r2",
+"scene": "[40] 62",
+"type": "texte",
+"quoi": "« Julien, va sur la tablette de Lou » sans point final ; « ⏳ Attends la prochaine question... » (trois points) ; la tablette ne dit pas à Julien de retaper son code, alors que la console (61) dit « retape son code ».",
+"ou": "bandeaux des deux moitiés",
+"grav": "mineur",
+"repro": "`#scene=t-deplace`"
+},
+{
+"src": "r2",
+"scene": "[41] 63",
+"type": "texte",
+"quoi": "« Les questions pas encore corrigées n'ont pas de recopie » : « recopie », alors que la fenêtre 69 dit, pour le même cas, « n'ont pas de lecture ».",
+"ou": "corps de la fenêtre",
+"grav": "gênant",
+"repro": "`#scene=c-terminer`"
+},
+{
+"src": "r2",
+"scene": "[42] 64",
+"type": "affichage",
+"quoi": "À 1366×768 et 1536×864, la fenêtre est plus haute que l'écran : à 1366, le titre « Le point d'autonomie » est coupé à mi-hauteur par le bas de la fenêtre ; « ✓ J'ai compris » n'est visible qu'en faisant défiler l'intérieur (contenu 909 px pour 722 et 812 visibles).",
+"ou": "bas de la fenêtre",
+"grav": "mineur",
+"repro": "1366×768, `#scene=c-mode-emploi`"
+},
+{
+"src": "r2",
+"scene": "[43] 64 (aussi 65 ; bulle de [11])",
+"type": "affichage",
+"quoi": "Guillemet fermant rejeté en début de ligne : « « POSE TON STYLO » / « » : au 1er tour », « « aucun de ces choix » / « », « Non » au clic) » ; en 65 : « « QCM précédent » / « » pour les binômes. »",
+"ou": "paragraphes « Une question » et « Le soir » ; dernier paragraphe de 65",
+"grav": "mineur",
+"repro": "1366×768 et 1536×864"
+},
+{
+"src": "r2",
+"scene": "[44] 64",
+"type": "geste",
+"quoi": "« ✕ » et « ✓ J'ai compris » mènent à `c-lancer` (« Lancer une nouvelle session »), même quand le mode d'emploi a été ouvert en pleine séance (« 📖 Mode d'emploi » des scènes 45 à 61 et 71 à 85) : on ne retrouve pas son pilotage.",
+"ou": "haut et bas de la fenêtre",
+"grav": "gênant",
+"repro": "`#scene=c-q2-tour2`, cliquer « 📖 Mode d'emploi » puis « ✕ »"
+},
+{
+"src": "r2",
+"scene": "[45] 66 (aussi 64 et 67 en arrière-plan)",
+"type": "infobulle",
+"quoi": "À 1366×768, les bulles des « i » de « Classe » et de « Mode » sortent de l'écran à gauche (x = −23 et −31) : on lit « r tablettes : deux élèves par tablette, le / roulé complet. Sur papier : chacun répond… ».",
+"ou": "colonne de gauche du formulaire",
+"grav": "gênant",
+"repro": "1366×768, `#scene=c-reprendre`, survoler le « i » de « Mode » (`bulles/066-c-reprendre-1366x768-i5.png`)"
+},
+{
+"src": "r2",
+"scene": "[46] 66 (aussi 64, 67, 69 en arrière-plan)",
+"type": "texte",
+"quoi": "Paragraphes qui expliquent une règle au lieu de montrer une donnée : « ⏱️ Durée estimée : 15 min — installation et consignes 5 min ; questions 4 min 30 (pour chacune : la réflexion, puis deux tours de 3 s de décompte, de réponse et de 5 s où l'élève dit si sa feuille dit la même chose, puis 15 s) ; correction 3 min (1 min par question) ; co-évaluation et bilan 2 min. » ; « ↳ pas encore « QCM précédent » : elle ne sert pas aux binômes tant qu'elle n'est pas terminée ».",
+"ou": "encadré vert ; carte « Séance à reprendre »",
+"grav": "mineur",
+"repro": "lire"
+},
+{
+"src": "r2",
+"scene": "[47] 66 (aussi 67, 69)",
+"type": "texte",
+"quoi": "« 3e Chapitre 1 — Poésie et peinture au XIXème siècle » (« XIXe »).",
+"ou": "« 📚 Sessions précédentes » ; sous-titre de la fenêtre 67",
+"grav": "mineur",
+"repro": "lire"
+},
+{
+"src": "r2",
+"scene": "[48] 66 (aussi 64, 67, 69)",
+"type": "affichage",
+"quoi": "À 1366×768, « ⠿ CHEVALLIER » touche le bord droit de sa case (tablette 12 des binômes proposés).",
+"ou": "grille des binômes",
+"grav": "mineur",
+"repro": "1366×768 (`caps/zoom-066-t12-1366.png`)"
+},
+{
+"src": "r2",
+"scene": "[49] 66 et 45",
+"type": "logique",
+"quoi": "« 🏁 Fin prévue 10:39 » (45 à 61) pour une séance démarrée à 10:02 (66 : « 09/10/2026 10:02 ») dont la durée estimée est de 15 min. Je ne suis pas sûr du calcul attendu.",
+"ou": "bandeau vert « Fin prévue » ; carte « Séance à reprendre »",
+"grav": "mineur",
+"repro": "comparer 45 et 66"
+},
+{
+"src": "r2",
+"scene": "[50] 67",
+"type": "logique",
+"quoi": "« Ses copies étaient rendues : elles sont masquées aux élèves… » alors que la ligne de cette séance dit « 24/09/2026 10:04 · ✅ terminée · 23 présents · 2 feuilles à lire », et que « rendre les copies » ne s'ouvre qu'une fois toutes les feuilles lues (titre de la scène 138).",
+"ou": "corps de la fenêtre",
+"grav": "gênant",
+"repro": "`#scene=c-rouvrir-seance`"
+},
+{
+"src": "r2",
+"scene": "[51] 67",
+"type": "geste",
+"quoi": "« 🔓 Rouvrir la séance » (Poésie, 24/09) mène à `c-appel`, « Check-in : qui est absent aujourd'hui ? » de l'Évaluation d'essai : une scène sans rapport.",
+"ou": "pied de la fenêtre",
+"grav": "gênant",
+"repro": "cliquer « 🔓 Rouvrir la séance »"
+},
+{
+"src": "r2",
+"scene": "[52] 68",
+"type": "texte",
+"quoi": "Paragraphes de règle : « Voici toutes les sessions qui sont actuellement actives quelque part. Tu peux aller au pilotage de chacune ou la terminer si elle n'a plus de raison d'être active. » et « 🛑 Terminer : … Les élèves voient l'écran de fin. », qui contredit 63 : « Les tablettes oublient leurs élèves et reviennent à « Combien êtes-vous sur cette tablette ? ». »",
+"ou": "haut et bas de la fenêtre",
+"grav": "mineur",
+"repro": "`#scene=c-sessions`"
+},
+{
+"src": "r2",
+"scene": "[53] 68",
+"type": "affichage",
+"quoi": "« Phase : réponse · Q 1 · 1er tour · fin de l'heure » puis « 10:57 » seul sur la ligne suivante.",
+"ou": "ligne de la séance",
+"grav": "mineur",
+"repro": "1536×864"
+},
+{
+"src": "r2",
+"scene": "[54] 69",
+"type": "logique",
+"quoi": "La même séance (3 ESSAI, Évaluation d'essai) est « Démarrée le 08/10/2026 à 10:02 », « Dernière déconnexion : 08/10/2026 à 10:09 », à « question 2, 2e tour » ; ailleurs elle est du 09/10 (65 : « Reprendre la séance du 09/10 », 66 : « 09/10/2026 10:02 »), et Noah est parti à 10:14 pendant la question 1 (59, 60), donc après la question 2.",
+"ou": "haut de la fenêtre",
+"grav": "gênant",
+"repro": "comparer 59, 66 et 69"
+},
+{
+"src": "r2",
+"scene": "[55] 69",
+"type": "geste",
+"quoi": "« ⏸️ Finir à une autre heure » mène à `c-reprendre`, qui affiche « en pause à la question 1, 1er tour » et « ▶️ Reprendre la séance du 09/10 — question 1, 1er tour », pas la question 2, 2e tour ; « 🛑 Terminer définitivement » mène à la fenêtre « question 1, 1er tour ».",
+"ou": "pied de la fenêtre",
+"grav": "gênant",
+"repro": "`#scene=c-interrompue`, cliquer ces deux boutons"
+},
+{
+"src": "r2",
+"scene": "[56] 69",
+"type": "affichage",
+"quoi": "Boutons sur deux rangées : « 🛑 Terminer définitivement » et « ⏸️ Finir à une autre heure » en haut, « 🔄 Reprendre la session » seul en dessous ; le bouton rouge est écrit plus petit que les deux autres.",
+"ou": "pied de la fenêtre",
+"grav": "mineur",
+"repro": "aux trois tailles"
+},
+{
+"src": "r2",
+"scene": "[57] 69",
+"type": "texte",
+"quoi": "Trois paragraphes qui expliquent chaque choix ; la bulle du « i » ne cite que deux issues : « Elle se reprend là où elle était, ou se termine. » (il manque « Finir à une autre heure »).",
+"ou": "corps de la fenêtre ; « i » du titre",
+"grav": "mineur",
+"repro": "survoler le « i »"
+},
+{
+"src": "r2",
+"scene": "[58] 69",
+"type": "logique",
+"quoi": "« 35 réponses enregistrées » : 24 à la question 1 et 12 au 1er tour de la question 2 font 36. Je ne suis pas sûr de la façon de compter.",
+"ou": "ligne « 📝 État »",
+"grav": "mineur",
+"repro": "lire"
+},
+{
+"src": "r2",
+"scene": "[59] 70",
+"type": "geste",
+"quoi": "Les quatre choix de Michel (« 3 bonnes réponses sur 3 » … « 0 bonne réponse sur 3 ») : le clic ne change rien à l'écran (`caps/clic-t-estim-1_bonne_r_ponse_sur_.png`).",
+"ou": "moitié de Michel",
+"grav": "gênant",
+"repro": "`#scene=t-estim`, cliquer « 1 bonne réponse sur 3 »"
+},
+{
+"src": "r2",
+"scene": "[60] 71",
+"type": "logique",
+"quoi": "« Pas encore : PERRAUD Jade, QUINTON Enzo. » alors qu'à la scène voisine (70) Michel, tablette 1, n'a pas encore choisi.",
+"ou": "sous les quatre compteurs",
+"grav": "gênant",
+"repro": "comparer 70 et 71"
+},
+{
+"src": "r2",
+"scene": "[61] 71",
+"type": "texte",
+"quoi": "Règle au lieu d'un état : « Les élèves choisissent dans quelle fourchette ils estiment avoir réussi. Clique sur 📝 Lancer la correction quand tu es prêt. » ; « fourchette » alors que les tablettes demandent un nombre de bonnes réponses ; deux mots pour la même étape : « Autoévaluation » (titre, bandeau, bouton de 57) et « estimation » (tablettes, infobulles).",
+"ou": "sous le bandeau",
+"grav": "mineur",
+"repro": "lire 57, 70, 71"
+},
+{
+"src": "r2",
+"scene": "[62] 71",
+"type": "infobulle",
+"quoi": "Sans infobulle : les compteurs 6, 9, 5, 2, le bandeau « Phase autoévaluation — 22 / 24 élèves », la ligne « Pas encore : … ».",
+"ou": "milieu de l'écran",
+"grav": "mineur",
+"repro": "survoler"
+},
+{
+"src": "r2",
+"scene": "[63] 72 (aussi 73)",
+"type": "infobulle",
+"quoi": "Infobulles côté élève sur les cases et le bouton : « Coche cette ligne quand tu l'as lue. », « Cette ligne est déjà cochée. », « « Je commence la correction » ne s'ouvre que quand toutes sont cochées. »",
+"ou": "cases à cocher ; bouton",
+"grav": "gênant",
+"repro": "`#scene=x610-5-attestation-2`, survoler une case"
+},
+{
+"src": "r2",
+"scene": "[64] 72",
+"type": "logique",
+"quoi": "Le titre annonce « les compétences par leur libellé élève », mais l'écran ne montre que les lignes 1 et 2 (Julien) et 1 (Michel) : les compétences n'apparaissent qu'à la 5e coche.",
+"ou": "les deux moitiés",
+"grav": "mineur",
+"repro": "regarder la capture 072"
+},
+{
+"src": "r2",
+"scene": "[65] 72",
+"type": "geste",
+"quoi": "Côté Michel : tout cocher puis « Je commence la correction » mène à 73, où Michel est revenu à 4 lignes sur 5 avec le bouton grisé (`caps/clic-072-michel-commence.png`).",
+"ou": "bouton de la moitié de Michel",
+"grav": "mineur",
+"repro": "cocher les cinq lignes de Michel, cliquer le bouton"
+},
+{
+"src": "r2",
+"scene": "[66] 73",
+"type": "geste",
+"quoi": "Cocher la 5e ligne de Michel puis cliquer « Je commence la correction » : rien ne change (même scène, même écran).",
+"ou": "bouton de la moitié de Michel",
+"grav": "gênant",
+"repro": "`#scene=t-attest-corr-fait`, cocher la dernière case, cliquer le bouton"
+},
+{
+"src": "r2",
+"scene": "[67] 74",
+"type": "logique",
+"quoi": "« DUVERNAY Michel ✓ prêt · 10:32 » alors que sa moitié, à la scène voisine 73, en est à 4 lignes sur 5.",
+"ou": "grille « ✍️ La seconde attestation », tablette 1",
+"grav": "gênant",
+"repro": "comparer 73 et 74"
+},
+{
+"src": "r2",
+"scene": "[68] 74",
+"type": "infobulle",
+"quoi": "Sans infobulle : « ✓ prêt · 10:32 », « attestation 3/5 », le bandeau « ✍️ Seconde attestation — 20 / 24 prêts », les noms, la ligne « CARRÉ Tom · OLLIVIER Sacha · CHEVALLIER Théo · ZELLER Lou ».",
+"ou": "grille et encadré rouge",
+"grav": "mineur",
+"repro": "survoler"
+},
+{
+"src": "r2",
+"scene": "[69] 75 (aussi 78, 84)",
+"type": "texte",
+"quoi": "Deux noms pour le même temps : « TEMPS DE RÉPONSE » sur les tablettes et « Temps de réponse » au tableau pendant la lecture, « 📄 TEMPS POUR LIRE LA FEUILLE DU VOISIN » sur la console et le téléphone ; « ✅ Réponse enregistrée — tu peux encore la changer » après une lecture.",
+"ou": "chrono de chaque moitié ; sous le chrono du tableau",
+"grav": "mineur",
+"repro": "lire 75, 76, 78"
+},
+{
+"src": "r2",
+"scene": "[70] 76 (aussi 79, 80)",
+"type": "infobulle",
+"quoi": "« ← Question précédente » est grisé, et son infobulle ne dit pas pourquoi : « Revenir à la question précédente dans l'ordre de correction (utile si tu veux retraiter une question avec la classe). » (le téléphone, lui, dit « C'est la première question corrigée »).",
+"ou": "sous la carte violette",
+"grav": "mineur",
+"repro": "survoler le bouton grisé"
+},
+{
+"src": "r2",
+"scene": "[71] 76 (aussi 79)",
+"type": "infobulle",
+"quoi": "« Question 1 / 3 — Q2 · lecture de la feuille du voisin » : « … Q2 est la 1e question révélée. » alors qu'elle n'est pas encore révélée ; « 1e » au lieu de « 1re ».",
+"ou": "bandeau rose",
+"grav": "mineur",
+"repro": "survoler le bandeau"
+},
+{
+"src": "r2",
+"scene": "[72] 76 (aussi 79, 80, 85)",
+"type": "geste",
+"quoi": "Un clic sur n'importe quel nom ouvre la fiche de FOUCHER Hugo (`c-autonomie`).",
+"ou": "noms de la grille",
+"grav": "mineur",
+"repro": "cliquer « ABRIAL Julien »"
+},
+{
+"src": "r2",
+"scene": "[73] 76 (aussi 79)",
+"type": "texte",
+"quoi": "Paragraphes de règle : « Le nom est celui dont la feuille n'est pas encore lue. Une tablette en panne : « 🚫 Départ d'un élève », en haut ; il ne bloque plus, ses questions sortent du total et tu fixes sa note d'après sa feuille. » ; sous le chrono : « sur 20 s, le temps de réponse de la question · orange à la moitié, rouge les 5 dernières secondes » (en 11 px).",
+"ou": "encadré rouge ; encadré du chrono",
+"grav": "mineur",
+"repro": "lire"
+},
+{
+"src": "r2",
+"scene": "[74] 76",
+"type": "logique",
+"quoi": "« Question suivante → » est actif avant la révélation, alors que « 🔒 Révéler » attend toutes les feuilles : on peut passer à la question 3 sans révéler la question 2. Je ne sais pas si c'est voulu.",
+"ou": "sous la carte violette",
+"grav": "mineur",
+"repro": "cliquer « Question suivante → »"
+},
+{
+"src": "r2",
+"scene": "[75] 77 (aussi 81)",
+"type": "geste",
+"quoi": "Un clic sur un nom ouvre la fiche de CHEVALLIER Théo du temps des questions (« 🔁 Rouvrir Q2 pour cet élève uniquement (une seule fois) », « État actuel : n'a pas encore répondu. »), pas un geste de correction, quel que soit le nom cliqué.",
+"ou": "liste « TABLETTES »",
+"grav": "gênant",
+"repro": "390×844, `#scene=p-corr-apres`, cliquer « ABRIAL Julien »"
+},
+{
+"src": "r2",
+"scene": "[76] 78 (aussi 82)",
+"type": "affichage",
+"quoi": "La liste « 👥 Classe (25) » est plus haute que l'écran : YVON Adam et ZELLER Lou passent sous le bas, dans une barre de défilement interne (754 px visibles pour 828), alors que personne ne fait défiler un tableau projeté.",
+"ou": "colonne de droite",
+"grav": "gênant",
+"repro": "1280×800, `#scene=b-recopie`"
+},
+{
+"src": "r2",
+"scene": "[77] 78",
+"type": "logique",
+"quoi": "Pendant la lecture, le tableau dit « ✍️ 18 / 24 ont répondu » et grise Tom, Théo, Michel, Hugo, Sacha, Rayan : ce sont ceux dont la feuille n'est pas lue (console 76) ; ce n'est pas à eux d'agir, c'est à leur voisin. La classe lit qu'ils n'ont pas répondu.",
+"ou": "en haut à droite ; liste de la classe",
+"grav": "gênant",
+"repro": "comparer 76 et 78"
+},
+{
+"src": "r2",
+"scene": "[78] 82",
+"type": "affichage",
+"quoi": "L'en-tête n'est pas disposé comme en 78 : « STANDARD » au centre et « Correction — Q2 / 3 » à droite, au lieu d'être alignés à gauche à côté de « 3 ESSAI ».",
+"ou": "bande du haut",
+"grav": "mineur",
+"repro": "comparer 78 et 82"
+},
+{
+"src": "r2",
+"scene": "[79] 83 (aussi 86)",
+"type": "texte",
+"quoi": "Doublon : « ❌ Tu avais faux. » dans la bannière rouge, puis encore « ❌ Tu avais faux. Barre ta réponse en rouge… » dans l'encadré juste en dessous.",
+"ou": "moitié de Michel (83), les deux moitiés (86)",
+"grav": "mineur",
+"repro": "`#scene=t-corr-q2-apres`"
+},
+{
+"src": "r2",
+"scene": "[80] 83 (aussi 84, 86)",
+"type": "affichage",
+"quoi": "La pastille d'une question fausse est un ❌ rouge sur un disque rouge : la croix est presque invisible.",
+"ou": "rangée « 1 · 2 · 3 » sous « bonne réponse sur … »",
+"grav": "mineur",
+"repro": "zoom (`caps/zoom-083-pastille.png`)"
+},
+{
+"src": "r2",
+"scene": "[81] 86",
+"type": "texte",
+"quoi": "« Ta réponse : Ma feuille ne dit aucun de ces choix » (« Ta » puis « Ma ») ; le bouton de lecture disait « Sa feuille ne dit aucun de ces choix ».",
+"ou": "sous les choix de Michel",
+"grav": "mineur",
+"repro": "`#scene=t-corr-q3-apres`"
+},
+{
+"src": "r3",
+"scene": "89, 92 à 94, 99 à 107, 110 à 115, 121, 124 (console) ; 95, 116 (téléphone) ; 123, 127",
+"type": "texte",
+"quoi": "« Séance » et « session » désignent la même chose. Les boutons disent « 🔴 1 session en cours » et « 🛑 Terminer la session », mais leurs infobulles disent « Les séances encore ouvertes… » et « Termine la séance… ». En 124, le bandeau dit « Séance sur papier en cours » à côté de « Terminer la session ». En 123 et 127, un même écran dit « 🎯 Lancer une nouvelle session », « 📚 Sessions précédentes » et « 🚀 Lancer la session », mais aussi « 📄 Lancer la séance sur papier » ; la bulle du « i » dit « Les séances passées de la classe ».",
+"ou": "en-tête, barre d'actions, titres des cadres",
+"grav": "gênant",
+"repro": "`#scene=c-papier-seance` : lire le bandeau et le bouton rouge ; `#scene=c-papier-lancer` : lire les titres des deux cadres"
+},
+{
+"src": "r3",
+"scene": "89",
+"type": "geste",
+"quoi": "« ← Question précédente » mène à `t-corr-q2-apres`, une scène de **tablette** sur la question 2. Il ne mène pas à la console de la question précédente dans l'ordre de correction (Q3, scène `c-corr-q3-apres`).",
+"ou": "sous la carte de la question",
+"grav": "gênant",
+"repro": "`#scene=c-corr-q1-apres` en 1536×864 : cliquer « ← Question précédente »"
+},
+{
+"src": "r3",
+"scene": "89",
+"type": "texte",
+"quoi": "Le bouton s'appelle « 🏁 Afficher leur bilan aux élèves », mais son infobulle dit « Ouvre d'abord, sur chaque tablette, la co-évaluation de la lecture ; le bilan s'affiche quand tous les présents y ont répondu. » Le clic mène à la co-évaluation (`c-coeval-attente`), pas au bilan. Le même libellé affiche le bilan en 107 (→ `t-bilan`). Un même libellé fait donc deux gestes différents.",
+"ou": "bouton violet sous « 💡 Révélée »",
+"grav": "gênant",
+"repro": "`#scene=c-corr-q1-apres` : survoler, puis cliquer le bouton ; comparer avec `#scene=c-coeval-tranche`"
+},
+{
+"src": "r3",
+"scene": "89, 99, 104 à 107, 110, 115",
+"type": "geste",
+"quoi": "Un clic sur n'importe quel nom de la grille ouvre toujours `c-autonomie`, c'est-à-dire la fiche de **FOUCHER Hugo** pendant la correction de la question 2 (« Question 1 / 3 — Q2 · révélée »). Le nom cliqué et la phase en cours n'y changent rien. Exemple : en 99, un clic sur « DUVERNAY Michel » ouvre la fiche de Hugo.",
+"ou": "noms soulignés dans les tuiles des tablettes",
+"grav": "gênant",
+"repro": "`#scene=c-coeval-attente` : cliquer « DUVERNAY Michel » (tablette 1)"
+},
+{
+"src": "r3",
+"scene": "89, 99, 104 à 107, 110, 115",
+"type": "geste",
+"quoi": "Le « 👁 » de n'importe quelle tablette mène à `c-voir-tablette`. Son infobulle dit pourtant « Montre les deux moitiés de la tablette 12 en direct ». Cette scène montre la question 1 au 1er tour (« Phase RÉPONSE — 1er tour »), pas ce que la tablette affiche à ce moment de la séance.",
+"ou": "œil en haut à droite de chaque tuile",
+"grav": "gênant",
+"repro": "`#scene=c-coeval-tranche` : cliquer le 👁 de la tablette 12"
+},
+{
+"src": "r3",
+"scene": "toutes les scènes console (89 à 127)",
+"type": "geste",
+"quoi": "« 📺 Ouvrir vue tableau » mène toujours à `b-reponse` (« Question 1 / 3 … POSE TON STYLO … 1er tour »), y compris pendant la correction, la co-évaluation, le bilan de classe et la séance sur papier.",
+"ou": "en-tête",
+"grav": "gênant",
+"repro": "`#scene=c-bilan` : cliquer « 📺 Ouvrir vue tableau »"
+},
+{
+"src": "r3",
+"scene": "116",
+"type": "geste",
+"quoi": "Sur le téléphone, un clic sur un nom mène toujours à `p-eleve`, c'est-à-dire la fiche de Théo à la question 2 close (« Phase : question close — Q 2/3 »). Le nom cliqué n'y change rien. Exemple : « DUVERNAY Michel ❌ Q3 ».",
+"ou": "liste « TABLETTES »",
+"grav": "gênant",
+"repro": "`#scene=x610-9-telephone-alerte` en 390×844 : cliquer « DUVERNAY Michel »"
+},
+{
+"src": "r3",
+"scene": "95, 116",
+"type": "geste",
+"quoi": "Les boutons du téléphone mènent à des scènes de la **console**. En 95 (« Le même geste, sur ton téléphone »), « ⛔ Retirer le point d'autonomie » mène à `c-autonomie-garde` et « 🚫 Marquer comme parti en cours de séance » à `c-depart`. En 116, « ⛔ Michel » mène à `x610-autonomie-michel`, « La feuille dit autre chose… » à `x610-feuille` et « Donner raison… » à `x610-tranche`. On ne voit jamais la garde ni le résultat sur le téléphone.",
+"ou": "feuille du bas (95) ; boutons de l'alerte (116)",
+"grav": "gênant",
+"repro": "`#scene=p-autonomie` en 390×844 : cliquer « ⛔ Retirer le point d'autonomie »"
+},
+{
+"src": "r3",
+"scene": "95",
+"type": "logique",
+"quoi": "La fiche de Hugo dit « État actuel : Q2 juste d'après sa feuille · point d'autonomie gardé. » Pourtant, sur la même page, sa pastille T3 est « ✕ ». La console (92) dit « FOUCHER Hugo ✗ 0 » et le bilan de classe (121) dit « Q2 ✗ ».",
+"ou": "feuille du bas, dernière ligne",
+"grav": "gênant",
+"repro": "`#scene=p-autonomie` : lire « État actuel », puis la pastille de Hugo derrière la feuille"
+},
+{
+"src": "r3",
+"scene": "95",
+"type": "logique",
+"quoi": "Deux comptes différents pour la question 2 sont affichés côte à côte, sans dire que le second vient de la tablette : « D'après la feuille : 8 / 24 justes » et, juste en dessous, la pastille « Q2 38% » (infobulle « Q2 — 9/24 bonnes (38%) »).",
+"ou": "milieu de l'écran du téléphone",
+"grav": "mineur",
+"repro": "`#scene=p-autonomie`"
+},
+{
+"src": "r3",
+"scene": "94 → 99, 107, 121",
+"type": "logique",
+"quoi": "En 94, le point de Hugo est retiré (« 🔴 Point d'autonomie retiré à 10:41 »). Dans la co-évaluation (99 à 107), sa tuile ne le dit plus. Le bilan de classe (121) dit « 24 / 24 l'ont gardé : Très bonne maîtrise · 0 retiré ». Aucune scène ne montre « ↩️ Rendre » entre-temps. Je ne suis pas sûr que ces scènes racontent une seule et même séance.",
+"ou": "tuile de FOUCHER Hugo ; ligne « 🤝 Le point d'autonomie » de 121",
+"grav": "mineur",
+"repro": "`#scene=c-autonomie-retiree`, puis `#scene=c-coeval-attente` et `#scene=c-bilan`"
+},
+{
+"src": "r3",
+"scene": "99, 100, 104, 105, 106 → 107",
+"type": "geste",
+"quoi": "« Donner raison à Julien : Venise → 0 point » (infobulle : « Garde la lecture de Julien, Venise : rien ne change ») et « 📌 Je relis ce soir la question 1 » (infobulle : « …passe « ⚠️ À relire »… ») mènent tous deux à `c-coeval-tranche`. Cette scène affiche « ✅ Alerte tranchée : raison donnée à Michel … passe à 1 point ». En 100, « Valider » mène au même écran alors que le choix coché est « Venise · lu par Julien ».",
+"ou": "boutons de l'alerte ; fenêtre « Que dit la feuille ? »",
+"grav": "gênant",
+"repro": "`#scene=c-coeval-attente` : cliquer « Donner raison à Julien : Venise → 0 point »"
+},
+{
+"src": "r3",
+"scene": "110 → 115",
+"type": "logique",
+"quoi": "« 📌 Je relis ce soir la question 3 » mène à `x610-tranche`. On y lit « ✅ Alerte tranchée », la tuile de Michel affiche « ❌ Q3 · tranché », et la liste « 📌 À lire sur les feuilles, ce soir (5) » ne contient pas la question 3 de Michel.",
+"ou": "cadre vert du haut ; liste « À lire »",
+"grav": "gênant",
+"repro": "`#scene=x610-8-console-alerte` : cliquer « 📌 Je relis ce soir la question 3 »"
+},
+{
+"src": "r3",
+"scene": "112, 113, 114 → 115",
+"type": "logique",
+"quoi": "Dans la garde, « ⛔ Retirer le point d'autonomie » mène à `x610-tranche` : « ✅ Alerte tranchée : la question 3 de DUVERNAY Michel — Ce que tu as décidé est appliqué ». Aucune tuile n'affiche « point d'autonomie retiré ». Dans le cas de l'évaluation d'essai (101 à 103), le même geste laisse au contraire l'alerte « à trancher » (104 à 106).",
+"ou": "bouton rouge de la garde",
+"grav": "gênant",
+"repro": "`#scene=x610-autonomie-michel` : cliquer « ⛔ Retirer le point d'autonomie »"
+},
+{
+"src": "r3",
+"scene": "104, 105, 106",
+"type": "geste",
+"quoi": "Le point est retiré, mais « ⛔ à Michel » (104), « ⛔ à Julien » (105) et « ⛔ aux deux » (106) restent actifs et rouvrent la garde. Aucun « ↩️ Rendre » n'apparaît, alors que les infobulles disent « « ↩️ Rendre » le défait ». L'alerte ne dit nulle part que le point est déjà retiré.",
+"ou": "ligne « ⛔ Retirer le point d'autonomie : »",
+"grav": "gênant",
+"repro": "`#scene=c-coeval-retire-michel` : cliquer « ⛔ à Michel »"
+},
+{
+"src": "r3",
+"scene": "104, 106",
+"type": "affichage",
+"quoi": "Sur la tuile de Michel, « alerte : à trancher » est remplacé par « 🔴 point d'autonomie retiré », alors que l'alerte est toujours ouverte en haut. En 105, la tuile de Michel garde « alerte : à trancher ».",
+"ou": "tuile tablette 1, moitié de droite",
+"grav": "mineur",
+"repro": "comparer `#scene=c-coeval-retire-michel` et `#scene=c-coeval-retire-julien`"
+},
+{
+"src": "r3",
+"scene": "115",
+"type": "texte",
+"quoi": "« Ce que tu as décidé est appliqué ; sa note se recalcule, et son bilan le dira. » Ce texte ne dit ni quelle décision a été appliquée ni la note obtenue. En 107, l'écran équivalent le disait : « raison donnée à Michel … sa note provisoire passe à 1 / 3 ».",
+"ou": "cadre vert du haut",
+"grav": "gênant",
+"repro": "`#scene=x610-tranche`"
+},
+{
+"src": "r3",
+"scene": "111",
+"type": "texte",
+"quoi": "La fenêtre dit à Paul ce que dit la feuille : « Clique sur ce que dit sa feuille : ici, C et E. ». L'infobulle de « Valider » dit « Applique ce que dit la feuille, C et E : la question 3 de Michel reste à 0 » quels que soient les choix cliqués.",
+"ou": "phrase sous le titre de la fenêtre ; « Valider »",
+"grav": "gênant",
+"repro": "`#scene=x610-feuille` : cliquer A, puis survoler « Valider »"
+},
+{
+"src": "r3",
+"scene": "111",
+"type": "affichage",
+"quoi": "Les choix portent seulement « bonne réponse ». Il n'y a ni « lu par Julien » sur E, ni « Michel » sur B, C, E. En 100, la même fenêtre marque « lu par Julien » et « bonne réponse · Michel ».",
+"ou": "étiquettes à droite des choix",
+"grav": "mineur",
+"repro": "comparer `#scene=x610-feuille` et `#scene=c-coeval-feuille`"
+},
+{
+"src": "r3",
+"scene": "110",
+"type": "texte",
+"quoi": "« Chaque bouton a sa confirmation et son retour. » est faux : « Donner raison à Michel : B, C, E → 1 point » s'applique tout de suite, sans garde (→ `x610-tranche`).",
+"ou": "petite ligne grise sous « ⛔ aux deux »",
+"grav": "mineur",
+"repro": "`#scene=x610-8-console-alerte` : cliquer « Donner raison à Michel… »"
+},
+{
+"src": "r3",
+"scene": "99 à 106, 110 à 114",
+"type": "texte",
+"quoi": "Des paragraphes de règle s'affichent sur l'écran de Paul : « L'alerte est apparue quand Michel a cliqué ce qu'il avait écrit ; elle disparaît s'il change d'avis avant le bilan. Aucun point d'autonomie n'est retiré tout seul : c'est toi qui décides. » En 110 : « Seule la lecture faite après la réponse donne le point. »",
+"ou": "bas de l'alerte",
+"grav": "mineur",
+"repro": "`#scene=c-coeval-attente`"
+},
+{
+"src": "r3",
+"scene": "92, 94",
+"type": "texte",
+"quoi": "Paragraphes de règle dans la fiche : « Le retirer les met en Maîtrise insuffisante ; sa note ne bouge pas, puisque la note, c'est la feuille. » et « Il ne le voit pas en direct : son voisin regarde la tablette. Il le lit dans son bilan et dans « Mes évaluations », en compétences atteintes ou non atteintes. »",
+"ou": "corps de la fiche",
+"grav": "mineur",
+"repro": "`#scene=c-autonomie`"
+},
+{
+"src": "r3",
+"scene": "93, 101 à 103, 112 à 114",
+"type": "texte",
+"quoi": "Paragraphes de règle dans les gardes : « Côté élève, son bilan dira : … « ↩️ Rendre » le défait, en direct ou le soir, dans sa fiche. » En 114 : « Un litige est légitime ; « aux deux » est pour le cas où aucun n'a joué le jeu, par exemple chacun à moitié de bonne foi. »",
+"ou": "texte gris de la garde",
+"grav": "mineur",
+"repro": "`#scene=x610-autonomie-deux`"
+},
+{
+"src": "r3",
+"scene": "93, 101, 102, 112, 113",
+"type": "affichage",
+"quoi": "Doublon : le nom est répété juste sous le titre (« Retirer le point d'autonomie à FOUCHER Hugo ? », puis « FOUCHER Hugo »).",
+"ou": "en-tête de la garde",
+"grav": "mineur",
+"repro": "`#scene=c-autonomie-garde`"
+},
+{
+"src": "r3",
+"scene": "123, 124 contre 123, 128",
+"type": "logique",
+"quoi": "Contradiction sur l'estimation. On lit « sans tablette ni estimation » (cadre Mode de 123 et infobulle de « 📄 Séance sur papier ») et « pas de tablette, pas d'estimation » (« i » de 124). Mais le même cadre de 123 dit « à l'heure suivante, « ▶️ Reprendre » : l'estimation, la seconde attestation… », et la scène 128 montre bien l'estimation.",
+"ou": "cadre vert « Sur papier » ; « i » du titre de 124",
+"grav": "gênant",
+"repro": "`#scene=c-papier-lancer` : lire le cadre vert ; `#scene=t-papier-estim`"
+},
+{
+"src": "r3",
+"scene": "123, 126, 127",
+"type": "texte",
+"quoi": "Paragraphes de règle. En 123 : « 📄 Sur papier : les énoncés seuls, imprimés ; chacun répond seul sur sa feuille … avec ces binômes. » (six lignes). En 126 : « ta grille, d'après les feuilles : c'est elle qui fait la note. Un clic sur une case bascule ✓ / ✗. » En 127 : « ↳ pas encore « QCM précédent » : elle ne sert pas aux binômes tant qu'elle n'est pas terminée ».",
+"ou": "cadre Mode ; sous-titre de la grille ; cadre « Séance à reprendre »",
+"grav": "mineur",
+"repro": "`#scene=c-papier-lancer`, `#scene=c-papier-grille`, `#scene=c-papier-reprendre`"
+},
+{
+"src": "r3",
+"scene": "123, 127 (1366×768)",
+"type": "infobulle",
+"quoi": "La bulle du « i » de « Classe » sort à gauche de la fenêtre (bord gauche à −23 px) ; on lit « es classes de la console MJPC. ». La bulle du « i » de « Mode » sort aussi (bord à −31 px) : le début de chaque ligne est coupé (« r tablettes : deux élèves par tablette, le… »).",
+"ou": "colonne de gauche, « Classe » et « Mode »",
+"grav": "gênant",
+"repro": "`#scene=c-papier-lancer` en 1366×768 : survoler le « i » de « Mode »"
+},
+{
+"src": "r3",
+"scene": "124 (les trois tailles)",
+"type": "infobulle",
+"quoi": "La bulle du « i » de « 📋 Toutes les questions » sort à droite et passe sous le cadre de la console. Au lieu de « Les questions de l'évaluation, avec leurs bonnes réponses : sur papier, elles ne se posent pas une à une. », on lit « Les questions de l'évaluation / bonnes réponses : sur papier / pas une à une. »",
+"ou": "« i » en haut à droite de la liste des questions",
+"grav": "gênant",
+"repro": "`#scene=c-papier-seance` en 1536×864 : survoler le « i » à droite"
+},
+{
+"src": "r3",
+"scene": "toutes les scènes console",
+"type": "infobulle",
+"quoi": "Le « i » jaune du bouton « 🧪 Mode test » n'a pas de bulle à lui (pas de `.info-tip`) : au survol, seule l'infobulle du bouton s'affiche.",
+"ou": "en-tête, bouton turquoise",
+"grav": "mineur",
+"repro": "survoler le « i » de « 🧪 Mode test »"
+},
+{
+"src": "r3",
+"scene": "89, 99 à 106, 121, 126",
+"type": "infobulle",
+"quoi": "Compteurs et pastilles sans infobulle (ni sur l'élément ni sur ses parents). En 89 : « Feuilles justes : 20 / 24 · ⛔ Dernier moment : 0 », « 📱 Tablette 1 », « ✓ 1 pt », « ⚠️ À relire ». En 99 à 106 : « ✅ 17 pensent : bien lu », « ✅ bien lu », « alerte : à trancher », « ⏳ pas encore répondu », « 🔴 point d'autonomie retiré ». En 121 : « MOYENNE », « 🔵 Maîtrise satisfaisante », « ✅ Bien évalués », « 📌 À lire sur les feuilles, ce soir (7) ». En 126 : « Note », « 1/3 ».",
+"ou": "grille des tablettes, compteurs, listes",
+"grav": "mineur",
+"repro": "`#scene=c-coeval-attente` : survoler « alerte : à trancher »"
+},
+{
+"src": "r3",
+"scene": "95, 116",
+"type": "infobulle",
+"quoi": "Sur le téléphone, les noms (« ABRIAL Julien ✅ »…) n'ont pas d'infobulle. Sur la console, les mêmes noms en ont une (« Clique sur le nom : … »).",
+"ou": "liste « TABLETTES »",
+"grav": "mineur",
+"repro": "`#scene=x610-9-telephone-alerte`"
+},
+{
+"src": "r3",
+"scene": "toutes les scènes console",
+"type": "infobulle",
+"quoi": "Infobulle de « 📺 Ouvrir vue tableau » : « Ouvre la vue tableau dans une NOUVELLE FENÊTRE (pas un onglet) … Utilise W+P en mode \"Étendre\" sur Windows … Cette vue n'affiche QUE la question… ». Guillemets droits, mots en majuscules, et un mode d'emploi au lieu de ce que fait le bouton.",
+"ou": "en-tête",
+"grav": "mineur",
+"repro": "survoler « 📺 Ouvrir vue tableau »"
+},
+{
+"src": "r3",
+"scene": "89, 92 à 94, 99 à 107, 110 à 115",
+"type": "infobulle",
+"quoi": "Infobulle de « 🚫 Départ d'un élève » : « Marque un élève comme parti en cours de session … au prorata des questions auxquelles il a participé … L'absence est tracée pour le suivi longitudinal MJPC. » On y trouve un mot technique et « session ».",
+"ou": "barre d'actions",
+"grav": "mineur",
+"repro": "survoler « 🚫 Départ d'un élève »"
+},
+{
+"src": "r3",
+"scene": "87, 88, 91, 96 à 98, 117, 119, 120, 122, 128, 129 (élève)",
+"type": "infobulle",
+"quoi": "Des infobulles apparaissent sur les écrans d'élève. « 📊 Mes évaluations » : « Ouvre « Mes évaluations » : tes évaluations passées et leur bilan. » « 📄 Imprimer / Exporter mon bilan » : « …que tu peux imprimer ou montrer à tes parents. » (117, 119, 120). En 129, les cases : « Cette ligne est déjà cochée. », « Coche cette ligne quand tu l'as lue. » ; « Je commence la correction » : « C'est parti. » / « « Je commence la correction » ne s'ouvre que quand toutes sont cochées. ». En 122, « 👤 1 élève » : « Sur la tablette simulée : un seul élève sur cette tablette. » (mot de maquette).",
+"ou": "boutons des moitiés",
+"grav": "gênant",
+"repro": "`#scene=t-fin` : survoler « 👤 1 élève » ; `#scene=t-papier-attest` : survoler une case"
+},
+{
+"src": "r3",
+"scene": "87, 88, 91, 96 à 98, 117, 119, 120, 128, 129",
+"type": "geste",
+"quoi": "Dans la moitié de Julien ou de Michel, « 📊 Mes évaluations » mène à `e-mes-evals`, la page de **ZELLER Lou** (« Tu étais absente »).",
+"ou": "à droite du nom, en haut de chaque moitié",
+"grav": "gênant",
+"repro": "`#scene=t-bilan` : cliquer « 📊 Mes évaluations » de Julien"
+},
+{
+"src": "r3",
+"scene": "90, 108, 109 contre 87, 96 à 98",
+"type": "logique",
+"quoi": "Les scènes de l'évaluation de 3e (x610) n'ont pas de bouton « 📊 Mes évaluations » à côté du nom. Les scènes de l'évaluation d'essai l'ont, à la même phase.",
+"ou": "en haut de chaque moitié",
+"grav": "mineur",
+"repro": "comparer `#scene=x610-6-coeval-laquelle` et `#scene=t-coeval`"
+},
+{
+"src": "r3",
+"scene": "91",
+"type": "affichage",
+"quoi": "La carte dépasse en bas de l'écran : son bas est à 829 px pour un écran de 800 px, et la page de la tablette défile (853 px). Le bord inférieur de la carte est coupé, sur la capture comme dans la maquette.",
+"ou": "bas de l'écran",
+"grav": "gênant",
+"repro": "`#scene=t-corr-seul` en 1280×800 : faire défiler vers le bas"
+},
+{
+"src": "r3",
+"scene": "128",
+"type": "geste",
+"quoi": "Dans la moitié de Julien, un clic sur « 🔵 2 bonnes réponses sur 3 » (ou sur un autre choix) ne change rien de visible : les captures avant et après sont identiques au pixel près. Dans la moitié de Michel, l'estimation enregistrée s'affiche.",
+"ou": "quatre choix de la moitié gauche",
+"grav": "gênant",
+"repro": "`#scene=t-papier-estim` : cliquer « 2 bonnes réponses sur 3 »"
+},
+{
+"src": "r3",
+"scene": "117, 119, 120",
+"type": "affichage",
+"quoi": "Texte minuscule. Sous chaque question, la ligne des compétences (« Se servir de sa culture pour comprendre les textes et les œuvres · Vérifier que l'on a bien compris ce qu'on lit ») est en 9,9 px, en gris. Le détail « Q1 ✓ · Q2 ✓ · Q3 ✗ → 2/3 » est aussi en 9,9 px.",
+"ou": "« Question par question », « Tes compétences »",
+"grav": "mineur",
+"repro": "`#scene=t-bilan`"
+},
+{
+"src": "r3",
+"scene": "119",
+"type": "logique",
+"quoi": "Julien lit « Ton estimation ✅ Tu te connais bien ! ». Or il pensait avoir 2 bonnes réponses (117), et sa note est « 1 / 2 ». La phrase d'explication présente en 117 a disparu. Je ne sais pas si l'estimation est ramenée sur 2.",
+"ou": "cadre « Ton estimation », moitié de gauche",
+"grav": "mineur",
+"repro": "comparer `#scene=t-bilan` et `#scene=t-bilan-annulee`"
+},
+{
+"src": "r3",
+"scene": "118",
+"type": "logique",
+"quoi": "Le bilan imprimé ne dit ni de quelle évaluation il s'agit, ni sa date : on lit seulement « 3 ESSAI · ABRIAL JULIEN » et « Bilan personnel ».",
+"ou": "haut de la page",
+"grav": "mineur",
+"repro": "`#scene=t-bilan-imprime`"
+},
+{
+"src": "r3",
+"scene": "118 (390×844)",
+"type": "affichage",
+"quoi": "À 390 px, les noms des compétences sont serrés dans une colonne étroite (« Se servir de / sa culture / pour / comprendre… »), à côté de « 🔵 Maîtrise satisfaisante ».",
+"ou": "« Tes compétences »",
+"grav": "mineur",
+"repro": "`#scene=t-bilan-imprime` en 390×844"
+},
+{
+"src": "r3",
+"scene": "108",
+"type": "affichage",
+"quoi": "Les questions proposées pour signaler un désaccord sont tronquées : « Question 1 · Quand est-ce qu'une Proposition Principale se coupe en… », « Question 3 · Comment trouves-tu l'antécédent d'un Pronom Relatif, et… », etc. L'élève choisit à partir d'un énoncé coupé.",
+"ou": "moitié de Michel",
+"grav": "mineur",
+"repro": "`#scene=x610-6-coeval-laquelle`"
+},
+{
+"src": "r3",
+"scene": "116",
+"type": "affichage",
+"quoi": "Les choix sont tronqués sur le téléphone : « A Je pose la question sur la Proposition… », « C ✓ Je pose la question sur la relative, avec son… », « E ✓ La réponse est l'antécédent, toujours écrit… ».",
+"ou": "haut de l'alerte",
+"grav": "mineur",
+"repro": "`#scene=x610-9-telephone-alerte`"
+},
+{
+"src": "r3",
+"scene": "116",
+"type": "texte",
+"quoi": "Le même geste a deux libellés : « ⛔ Michel », « ⛔ Julien », « ⛔ Aux deux » sur le téléphone, contre « ⛔ à Michel », « ⛔ à Julien », « ⛔ aux deux » sur la console.",
+"ou": "boutons gris et rouge de l'alerte",
+"grav": "mineur",
+"repro": "comparer avec `#scene=x610-8-console-alerte`"
+},
+{
+"src": "r3",
+"scene": "97, 109",
+"type": "texte",
+"quoi": "La même règle est donnée deux fois dans la moitié de Michel : « ☝️ C'est ta seule question de désaccord. », puis, plus bas, « Un désaccord, c'est sérieux : tu n'en signales qu'un, celui dont tu es le plus sûr. Il se vérifie sur ta feuille. ».",
+"ou": "moitié de Michel",
+"grav": "mineur",
+"repro": "`#scene=t-coeval-ecrit`"
+},
+{
+"src": "r3",
+"scene": "97, 98, 109",
+"type": "texte",
+"quoi": "« ⏳ Attends ton bilan... » est écrit avec trois points au lieu de « … ».",
+"ou": "sous « Réponse enregistrée »",
+"grav": "mineur",
+"repro": "`#scene=t-coeval-ecrit`"
+},
+{
+"src": "r3",
+"scene": "90, 110 à 114, 116",
+"type": "texte",
+"quoi": "« …dans quel sens va la flèche à l'étape 4? » : il manque l'espace avant « ? ».",
+"ou": "énoncé de la question 3",
+"grav": "mineur",
+"repro": "`#scene=x610-8-console-alerte`"
+},
+{
+"src": "r3",
+"scene": "126",
+"type": "texte",
+"quoi": "Élision manquante dans les infobulles des cases : « La feuille de Inès », « de Emma », « de Enzo », « de Anna ».",
+"ou": "cases ✓/✗ de la grille",
+"grav": "mineur",
+"repro": "`#scene=c-papier-grille` : survoler une case d'ESNAULT Inès"
+},
+{
+"src": "r3",
+"scene": "126",
+"type": "texte",
+"quoi": "La colonne « Note » écrit « 1/3 », « 3/3 » sans espaces ; partout ailleurs, c'est « 1 / 3 ».",
+"ou": "colonne Note",
+"grav": "mineur",
+"repro": "`#scene=c-papier-grille`"
+},
+{
+"src": "r3",
+"scene": "123, 124, 126, 127",
+"type": "geste",
+"quoi": "Des éléments ont le curseur main mais ne font rien au clic. En 126 : les en-têtes « Élève », « Q1 »… « Sur 20 » et les noms de la grille. En 123 et 127 : les lignes « 3e Chapitre 1 — Poésie et peinture… » et « QCM — Le jambon-beurre… ». En 127 : « 📄 Évaluation d'essai — 3 questions — sur papier ». En 124 : les cartes « Q1 Facile… ».",
+"ou": "grille ; listes de séances ; cartes des questions",
+"grav": "mineur",
+"repro": "`#scene=c-papier-grille` : cliquer « ABRIAL Julien »"
+},
+{
+"src": "r3",
+"scene": "121",
+"type": "texte",
+"quoi": "« — Pas d'autoeval » : abréviation, sans accent. Le titre dit « 🎯 Calibration de l'autoévaluation », alors que l'infobulle et l'élève disent « estimation ».",
+"ou": "cadre de calibration",
+"grav": "mineur",
+"repro": "`#scene=c-bilan`"
+},
+{
+"src": "r3",
+"scene": "121",
+"type": "affichage",
+"quoi": "Les intitulés de compétences sont tronqués et accompagnés de codes techniques : « c4-culture-01 · Mobiliser des références culturelles… », « 🧩 C4-CULTURE-01 », « c4-lire-01 · Contrôler sa compréhension… ».",
+"ou": "« Par compétence » ; en-têtes du détail",
+"grav": "mineur",
+"repro": "`#scene=c-bilan`"
+},
+{
+"src": "r3",
+"scene": "121",
+"type": "texte",
+"quoi": "« PLAGE 0—3 » : un tiret cadratin sert d'intervalle.",
+"ou": "bandeau des chiffres",
+"grav": "mineur",
+"repro": "`#scene=c-bilan`"
+},
+{
+"src": "r3",
+"scene": "107, 121",
+"type": "logique",
+"quoi": "La liste « 📌 À lire sur les feuilles, ce soir (7) » garde « DUVERNAY Michel — Q1 : a dit que sa feuille ne disait pas son clic, Venise ; Julien y a lu Venise », alors que l'alerte a été tranchée la feuille en main (« raison donnée à Michel »).",
+"ou": "liste « À lire »",
+"grav": "mineur",
+"repro": "`#scene=c-coeval-tranche`"
+},
+{
+"src": "r3",
+"scene": "123, 127",
+"type": "texte",
+"quoi": "« au XIXème siècle » au lieu de « XIXe ».",
+"ou": "« Sessions précédentes »",
+"grav": "mineur",
+"repro": "`#scene=c-papier-lancer`"
+},
+{
+"src": "r3",
+"scene": "100",
+"type": "texte",
+"quoi": "La fenêtre dit « Aucun des choix », alors que partout ailleurs on lit « aucun de ces choix » (« Sa feuille ne dit aucun de ces choix », « QUINTON Enzo — Q1 : aucun de ces choix »).",
+"ou": "dernier choix de la fenêtre",
+"grav": "mineur",
+"repro": "`#scene=c-coeval-feuille`"
+},
+{
+"src": "r3",
+"scene": "92 à 94, 123",
+"type": "texte",
+"quoi": "Le verbe « Rendre » sert à deux gestes : « ↩️ Rendre » (le point d'autonomie) et « Rendre les copies » (infobulle de « 🔓 Rouvrir » en 123).",
+"ou": "fiche, garde ; liste des séances",
+"grav": "mineur",
+"repro": "`#scene=c-autonomie-retiree`"
+},
+{
+"src": "r3",
+"scene": "toutes les scènes console ; 91, 96",
+"type": "affichage",
+"quoi": "Une forme grise à demi cachée dépasse à gauche du cadre de la console : c'est l'émoji décoratif 🎲 (`span.deco` à x = 46 px), recouvert par le cadre. Sur les tablettes aussi, des émojis sont à demi cachés : en 96 sous la carte de Julien (x ≈ 35, y ≈ 428), en 91 l'étoile derrière le bord de la carte, en haut à gauche.",
+"ou": "bord gauche",
+"grav": "mineur",
+"repro": "`#scene=c-corr-q1-apres` en 1536×864, à x ≈ 50, y ≈ 450"
+},
+{
+"src": "r3",
+"scene": "89, 94, 99 à 107, 110 à 115, 121",
+"type": "affichage",
+"quoi": "Contraste faible. Dans les tuiles, les noms sont en blanc sur vert (#22c55e), en 12 px, avec un contraste de 2,3:1. Les pastilles « ✓ 1 pt » et « ✅ bien lu » sont en blanc sur blanc translucide, en 10,6 px, avec un contraste de 1,9:1. « ⚠️ À relire » et « alerte : à trancher » sont en 9,9 px. En 121, les chiffres « 11 » et « 7 » ont un contraste de 2,1:1.",
+"ou": "tuiles des tablettes ; calibration",
+"grav": "mineur",
+"repro": "`#scene=c-coeval-attente`"
+},
+{
+"src": "r3",
+"scene": "95, 116",
+"type": "affichage",
+"quoi": "Texte minuscule sur le téléphone : « T1 » en 9,6 px ; la légende et les en-têtes du tableau (« Qui, et quand ») en 9,9 px.",
+"ou": "liste et tableau",
+"grav": "mineur",
+"repro": "`#scene=x610-9-telephone-alerte`"
+},
+{
+"src": "r3",
+"scene": "92",
+"type": "affichage",
+"quoi": "Les boutons de la fiche sont mal alignés : « ✕ Fermer » et « 🚫 Marquer comme parti » sont sur une ligne, « ⛔ Retirer le point d'autonomie » est seul sur une seconde ligne.",
+"ou": "pied de la fiche",
+"grav": "mineur",
+"repro": "`#scene=c-autonomie`"
+},
+{
+"src": "r3",
+"scene": "98",
+"type": "affichage",
+"quoi": "Le bandeau vert « Tu as cliqué ce que Julien avait lu : vous êtes d'accord. » est collé au cadre orange qui le suit (3 px d'écart).",
+"ou": "moitié de Michel, en haut",
+"grav": "mineur",
+"repro": "`#scene=t-coeval-daccord`"
+},
+{
+"src": "r3",
+"scene": "88",
+"type": "affichage",
+"quoi": "Dans la case « Rome » de Julien, l'étiquette « TA RÉPONSE » passe seule sur une seconde ligne, sous « BONNE RÉPONSE ».",
+"ou": "moitié de gauche, case Rome",
+"grav": "mineur",
+"repro": "`#scene=t-corr-q1-apres`"
+},
+{
+"src": "r4",
+"scene": "148, 149 (contre 133, 141)",
+"type": "logique",
+"quoi": "Lou n'a pas la même note sur deux écrans. Son bilan dit « Ta note : 1 / 3 », « 6,7 / 20 », « Maîtrise fragile », « Question 3 · faux · Corrigé d'après ta feuille. ». Le tableau de la console dit « ZELLER Lou · 2/3 · 13,3 · Maîtrise satisfaisante », avec Q3 ✓ et rien dans « À lire sur la feuille ». Le tableau d'après le rendu des copies (141) dit la même chose.",
+"ou": "149 : carte orange de la note ; 148 : carte « Évaluation d'essai » ; 133 et 141 : ligne ZELLER Lou",
+"grav": "bloquant",
+"repro": "Ouvrir `#scene=e-bilan-lou`, puis `#scene=c-resultats-rendues` : comparer la ligne ZELLER Lou."
+},
+{
+"src": "r4",
+"scene": "168",
+"type": "affichage",
+"quoi": "À 1536×864, l'écran de Paul, la fenêtre « en grand » est fixe et ne défile pas. Les champs « 📝 Feuille de Élise » et « 📝 Feuille de Gatien » (où Paul tape la feuille) sont hors de l'écran, sans moyen d'y aller : ils sont à y = 892 à 920 pour une fenêtre de 864. Même chose pour la phrase « Élise a écrit « 6 pattes »… ». Même chose à 1366×768. La capture, haute de 1150 px, ne le montre pas.",
+"ou": "bas de la fenêtre « Tablette 1 · … en grand »",
+"grav": "bloquant",
+"repro": "Ouvrir `#scene=x620-3-mode-test-en-grand` en 1536×864 et faire défiler : rien ne bouge, les deux champs restent invisibles."
+},
+{
+"src": "r4",
+"scene": "130 (et toutes les consoles QCM de ma part : 130 à 146, 150 à 152, 165 à 168)",
+"type": "texte",
+"quoi": "Deux mots pour une même chose. Les boutons disent « 🔴 1 session en cours », « 🛑 Terminer la session », « Lancer une nouvelle session », « Sessions précédentes ». Leurs infobulles disent « Les séances encore ouvertes… », « Termine la séance… ». L'infobulle de « 🚫 Départ d'un élève » dit « parti en cours de session ».",
+"ou": "en-tête, boutons du pilotage",
+"grav": "gênant",
+"repro": "Survoler « 🛑 Terminer la session » dans `#scene=c-papier-correction`."
+},
+{
+"src": "r4",
+"scene": "130 (toutes les consoles QCM)",
+"type": "infobulle",
+"quoi": "« 📺 Ouvrir vue tableau » : « Utilise W+P en mode \"Étendre\" sur Windows… ». Le raccourci est faux (c'est Windows+P), les guillemets sont droits, il y a des majuscules (« NOUVELLE FENÊTRE », « QUE ») et quatre phrases qui expliquent une règle.",
+"ou": "en-tête",
+"grav": "gênant",
+"repro": "Survoler « 📺 Ouvrir vue tableau »."
+},
+{
+"src": "r4",
+"scene": "130",
+"type": "geste",
+"quoi": "Chacun des 24 noms soulignés mène à `c-autonomie`. Cette scène ouvre toujours la fenêtre de « FOUCHER Hugo », dans la correction sur tablettes (« Question 1 / 3 — Q2 · révélée »). C'est sans rapport avec le nom cliqué et avec la séance sur papier.",
+"ou": "grille « D'après ta grille »",
+"grav": "gênant",
+"repro": "Cliquer « ABRIAL Julien » dans `#scene=c-papier-correction`."
+},
+{
+"src": "r4",
+"scene": "130",
+"type": "logique",
+"quoi": "Le « i » du titre dit : « Le point d'autonomie ne se retire qu'en direct, d'un clic sur le nom. ». Or les scènes 134 à 136 montrent « ⛔ Retirer le point d'autonomie » le soir, dans la fiche. Je ne suis pas sûr : la phrase vise peut-être la seule séance sur papier.",
+"ou": "« i » à droite de « 3 ESSAI »",
+"grav": "gênant",
+"repro": "Survoler le « i » du titre, puis ouvrir `#scene=c-fiche-garde`."
+},
+{
+"src": "r4",
+"scene": "131",
+"type": "infobulle",
+"quoi": "Sur un écran d'élève, « 📊 Mes évaluations » porte une infobulle : « Ouvre « Mes évaluations » : tes évaluations passées et leur bilan. ». C'est vrai sur les deux moitiés.",
+"ou": "haut de chaque moitié",
+"grav": "gênant",
+"repro": "Survoler « 📊 Mes évaluations » dans `#scene=t-papier-correction`."
+},
+{
+"src": "r4",
+"scene": "131",
+"type": "geste",
+"quoi": "Sur la moitié de Julien et sur celle de Michel, « 📊 Mes évaluations » ouvre la page de « ZELLER Lou » (`e-mes-evals`). Ce bouton reste là en pleine correction.",
+"ou": "haut de chaque moitié",
+"grav": "gênant",
+"repro": "Cliquer « 📊 Mes évaluations » sur la moitié « ABRIAL JULIEN »."
+},
+{
+"src": "r4",
+"scene": "132 (et 138, 140)",
+"type": "geste",
+"quoi": "Pour « 3e Chapitre 1 … (séance 3) » et « QCM — Le jambon-beurre », « 📊 Ouvrir » et « copies rendues le 26/09 » ou « le 17/09 » ouvrent le tableau d'« Évaluation d'essai — 3 questions » (`c-resultats-rendues`). Leur « 🗑️ » ouvre la garde « Mettre cette séance à la corbeille ? … Évaluation d'essai — 3 questions » (scène 143).",
+"ou": "boutons à droite des 2e et 3e séances",
+"grav": "gênant",
+"repro": "Dans `#scene=c-seances`, cliquer le « 📊 Ouvrir » de « QCM — Le jambon-beurre »."
+},
+{
+"src": "r4",
+"scene": "133, 141",
+"type": "affichage",
+"quoi": "À 1366×768, le tableau est plus large que son cadre (1274 px pour 1248). Une barre de défilement horizontale apparaît et la colonne « À lire sur la feuille » est coupée à droite (« À lire sur la feu », « Q1 : a dit que sa feuille ne disait pas son clic… » rogné).",
+"ou": "colonne de droite du tableau",
+"grav": "gênant",
+"repro": "Ouvrir `#scene=c-resultats` en 1366×768."
+},
+{
+"src": "r4",
+"scene": "133, 141",
+"type": "geste",
+"quoi": "Les 24 noms sont violets et le curseur devient une main, mais seul « DUVERNAY Michel » ouvre une fiche : « ABRIAL Julien » et les autres ne font rien. L'en-tête « Élève » annonce « Cliquer pour trier par nom (asc/desc) » et ne trie pas.",
+"ou": "colonne « Élève »",
+"grav": "gênant",
+"repro": "Cliquer « ABRIAL Julien », puis l'en-tête « Élève » : rien ne change."
+},
+{
+"src": "r4",
+"scene": "133",
+"type": "logique",
+"quoi": "La console affiche « 5 feuilles à lire ». Le bilan de classe de la fin de l'heure (121) annonçait « À lire sur les feuilles, ce soir (7) » : « PERRAUD Jade — Q2 » et « MAILLARD Noah — Q3 » ont disparu de la colonne « À lire sur la feuille ». Et « 5 feuilles » compte 5 questions réparties sur 4 élèves (Michel en a deux).",
+"ou": "ligne sous le titre, colonne de droite",
+"grav": "gênant",
+"repro": "Comparer `#scene=c-bilan` (cadre orange) et `#scene=c-resultats`."
+},
+{
+"src": "r4",
+"scene": "134 (et 135 à 137)",
+"type": "logique",
+"quoi": "Dans la colonne « SA FEUILLE, LUE PAR JULIEN », la ligne Q1 dit « Rome ». Or la pastille dit « Julien y a lu Venise », et le « i » dit que la colonne montre « ce que Julien a lu sur sa feuille à la correction ».",
+"ou": "ligne Q1 de la fiche",
+"grav": "gênant",
+"repro": "Ouvrir `#scene=c-fiche`."
+},
+{
+"src": "r4",
+"scene": "134",
+"type": "geste",
+"quoi": "Les trois « La feuille dit autre chose » (Q1, Q2 et Q3) ouvrent la même fenêtre : « Que dit la feuille ? DUVERNAY Michel — Q3 · Combien de pattes a une araignée ? ». Q1 et Q2 ouvrent donc la question 3.",
+"ou": "boutons à droite des lignes Q1, Q2",
+"grav": "gênant",
+"repro": "Cliquer « La feuille dit autre chose » de la ligne Q1."
+},
+{
+"src": "r4",
+"scene": "136",
+"type": "logique",
+"quoi": "Le point est retiré (« 🔴 Point d'autonomie retiré le 10/10 à 19:12. »), mais le « 📝 Bilan général » ne change pas : il ne parle toujours pas d'autonomie. Et « ↻ Regénérer » reste grisé, avec « Le texte est déjà celui de l'app. ». Or la garde (135) annonçait « Son bilan général le dira ».",
+"ou": "Bilan général",
+"grav": "gênant",
+"repro": "Ouvrir `#scene=c-fiche-retire` et lire le bilan."
+},
+{
+"src": "r4",
+"scene": "142",
+"type": "logique",
+"quoi": "Le PDF ouvert depuis « Évaluation d'essai — 3 questions » du 08/10 (141) est celui d'une autre évaluation : « 3e- éval 1 Analyse logique - Construire une phrase complexe », « 09/10/2026 · 11 questions », compétences c4-langue-04 et c4-ecrire-02. Les notes ne sont pas les mêmes : ABRIAL Julien 10,9 au lieu de 13,3, DUVERNAY Michel 10,9 au lieu de 6,7, ZELLER Lou 10,9.",
+"ou": "toute la page",
+"grav": "gênant",
+"repro": "Dans `#scene=c-resultats-rendues`, cliquer « 📄 PDF notes et compétences »."
+},
+{
+"src": "r4",
+"scene": "144 (et 145, 146)",
+"type": "geste",
+"quoi": "« 🗑️ Tout purger » ouvre la même garde que « Purger les évaluations » : « Purger les évaluations ? Toutes les évaluations partent à la corbeille, gardées un an. ».",
+"ou": "Zone dangereuse",
+"grav": "gênant",
+"repro": "Cliquer « 🗑️ Tout purger » dans `#scene=c-sauvegarde`."
+},
+{
+"src": "r4",
+"scene": "144 (et 145, 146)",
+"type": "infobulle",
+"quoi": "L'infobulle de « 🧹 Nettoyer les sessions zombies » est écrite avec les noms du code : « entrées sessionActive qui pointent vers une session inexistante … « en_cours » … corrigé en « termine » … (réponses, scans) … AVANT exécution … 24h ».",
+"ou": "Maintenance",
+"grav": "gênant",
+"repro": "Survoler le bouton."
+},
+{
+"src": "r4",
+"scene": "147, 148",
+"type": "infobulle",
+"quoi": "Sur un écran d'élève, les cartes portent des infobulles : « Ta copie n'est pas encore rendue. », « Tu n'as pas passé cette évaluation. », « Ouvre ton bilan. ». « ← Retour » porte même l'infobulle écrite pour Paul : « Revient à l'écran précédent. Une séance en cours continue : elle se retrouve par « 🔴 sessions en cours ». ».",
+"ou": "cartes, bouton « ← Retour »",
+"grav": "gênant",
+"repro": "Survoler les cartes et « ← Retour » dans `#scene=e-mes-evals`."
+},
+{
+"src": "r4",
+"scene": "147, 148",
+"type": "geste",
+"quoi": "La carte « QCM — Le jambon-beurre · 15/09/2026 · 6 / 10 · 12 / 20 », dont la copie est rendue, montre un curseur en main mais ne s'ouvre pas. La carte « Évaluation d'essai », rendue elle aussi, ouvre bien le bilan (148).",
+"ou": "3e carte",
+"grav": "gênant",
+"repro": "Cliquer la carte « QCM — Le jambon-beurre »."
+},
+{
+"src": "r4",
+"scene": "151, 152",
+"type": "logique",
+"quoi": "Le prompt dit : « 3. Correction, après toutes les questions : l'élève recopie sur la tablette ce que dit sa feuille, puis je révèle la réponse et je commente. ». Or à la correction, c'est le voisin qui lit la feuille et clique (« Michel lit la feuille de Julien »).",
+"ou": "bloc du prompt, « COMMENT SE PASSE UNE QUESTION EN CLASSE »",
+"grav": "gênant",
+"repro": "Ouvrir `#scene=c-reglages-prompt` et lire le point 3."
+},
+{
+"src": "r4",
+"scene": "165",
+"type": "geste",
+"quoi": "« 🚀 Lancer le rattrapage » ne concerne que YVON Adam. Il mène pourtant à `c-appel`, l'appel de toute la classe du 08/10 (« 3 ESSAI — 25 élèves », YVON Adam marqué absent). Son infobulle dit : « seuls les élèves pas encore notés sont proposés ».",
+"ou": "bouton violet",
+"grav": "gênant",
+"repro": "Cliquer « 🚀 Lancer le rattrapage » dans `#scene=c-rattrapage`."
+},
+{
+"src": "r4",
+"scene": "165",
+"type": "logique",
+"quoi": "La liste dit « 3e Chapitre 1 … (séance 3) · 24/09/2026 · 23 présents · 2 feuilles à lire ». À 132, la même séance a ses « copies rendues le 26/09 ». Or rendre les copies suppose toutes les feuilles lues (139 : « Les 5 feuilles à lire sont lues »). La liste affiche aussi « Évaluation d'essai … 5 feuilles à lire », alors que 138 à 140 montraient « 5 feuilles lues » et les copies rendues.",
+"ou": "Sessions précédentes",
+"grav": "gênant",
+"repro": "Comparer `#scene=c-rattrapage` et `#scene=c-seances`."
+},
+{
+"src": "r4",
+"scene": "165",
+"type": "geste",
+"quoi": "Le 2e « 📊 Résultats » (« 3e Chapitre 1 ») ouvre le tableau d'« Évaluation d'essai — 3 questions » (`c-resultats`).",
+"ou": "Sessions précédentes, 2e ligne",
+"grav": "gênant",
+"repro": "Cliquer le 2e « 📊 Résultats »."
+},
+{
+"src": "r4",
+"scene": "165, 166",
+"type": "infobulle",
+"quoi": "À 1366×768, la bulle du « i » de « Classe » sort de l'écran à gauche : son bord est à x = −23 (−13 à la scène 166). On lit « es classes de la console MJPC. ».",
+"ou": "« i » à droite de « Classe »",
+"grav": "gênant",
+"repro": "En 1366×768, survoler le « i » de « Classe » dans `#scene=c-rattrapage`."
+},
+{
+"src": "r4",
+"scene": "166, 167",
+"type": "geste",
+"quoi": "Les 15 « 🔍 Jouer en grand » ouvrent tous la même scène, « Tablette 1 · AUDEBERT Élise · AUGEREAU Gatien », déjà au 1er tour (« Temps fini : ton clic est enregistré. »). C'est vrai même depuis 166, où les tablettes en sont à « Combien êtes-vous sur cette tablette ? ». Les « 👤 1 élève » et « 👥 2 élèves » des tablettes simulées mènent à `t-un-eleve` et `t-login`, les tablettes de la vraie classe (« Tu es bien Julien ? »).",
+"ou": "tablettes simulées",
+"grav": "gênant",
+"repro": "Cliquer « 🔍 Jouer en grand » de la tablette 15 dans `#scene=x620-1-mode-test-ouverture`."
+},
+{
+"src": "r4",
+"scene": "167, 168",
+"type": "geste",
+"quoi": "En mode test, les boutons de la console mènent aux scènes de la vraie séance de 3 ESSAI : « ✋ Autoriser la réponse » ouvre `c-q1-tour1` (question 1, Julien), « ⏭️ Tour suivant » (168) ouvre `c-q1-tour2`, « ❌ Écarter » ouvre la garde de la question 3 de l'éval d'essai. Même chose pour « 👁 », « 🚫 Départ d'un élève » et « 🛑 Terminer la session ».",
+"ou": "Panneau prof",
+"grav": "gênant",
+"repro": "Cliquer « ✋ Autoriser la réponse » dans `#scene=x620-2-mode-test-reflexion`."
+},
+{
+"src": "r4",
+"scene": "167",
+"type": "infobulle",
+"quoi": "La bulle du « i » de « 📋 Toutes les questions » est rognée par le cadre de droite, aux trois tailles : « Les temps des questions à venir s… », « retire une question pas encore po… ». Les cartes passent par-dessus.",
+"ou": "« i » de « Toutes les questions »",
+"grav": "gênant",
+"repro": "Survoler ce « i » en 1536×864 (photo : `r4/cap/167-…-1536-i2.png`)."
+},
+{
+"src": "r4",
+"scene": "167, 168",
+"type": "texte",
+"quoi": "« QUESTION 3 / 3 — 1 BONNE(S) RÉP. » : pluriel bricolé et abréviation.",
+"ou": "carte violette de la question en cours",
+"grav": "gênant",
+"repro": "Ouvrir `#scene=x620-2-mode-test-reflexion`."
+},
+{
+"src": "r4",
+"scene": "167",
+"type": "logique",
+"quoi": "Les temps de la question en cours se contredisent. À gauche : « RÉFLEXION … 20 s » et « RÉPONSE … 15 s ». Sur la carte Q3 de « Toutes les questions » : « Réflexion 30 s · Réponse 20 s par tour ».",
+"ou": "colonne de gauche, carte Q3",
+"grav": "gênant",
+"repro": "Ouvrir la scène et comparer."
+},
+{
+"src": "r4",
+"scene": "167",
+"type": "logique",
+"quoi": "La question 3 / 3 est en réflexion, alors que Q1 et Q2 portent encore « ❌ Écarter », geste réservé à une question « pas encore posée ».",
+"ou": "« Toutes les questions »",
+"grav": "gênant",
+"repro": "Ouvrir la scène."
+},
+{
+"src": "r4",
+"scene": "167, 168",
+"type": "infobulle",
+"quoi": "Champs de temps des cartes Q1 et Q2 : « Le temps de  de cette question, pour cette séance : l'évaluation elle-même ne change pas. ». Il manque un mot (double espace après « de »).",
+"ou": "champs 🧠 et ✋ des cartes Q1, Q2",
+"grav": "gênant",
+"repro": "Survoler le champ « 20 » de la carte Q1."
+},
+{
+"src": "r4",
+"scene": "167, 168",
+"type": "logique",
+"quoi": "L'infobulle de la carte Q3 dit « Question en cours — 14/24 justes pour le moment ». Or la classe de test a 30 élèves, et la scène affiche « 0/30 ONT RÉPONDU » et « — JUSTES ».",
+"ou": "carte Q3",
+"grav": "gênant",
+"repro": "Survoler la carte Q3."
+},
+{
+"src": "r4",
+"scene": "166, 167, 168",
+"type": "infobulle",
+"quoi": "Infobulles écrites avec les mots du code : « Appelle cloturerSession() — le chemin exact du bouton… », « peutRepondre refuse immédiatement », « Monte le VRAI composant élève (AppEleve → EleveLogin) », « supprime la classe _TEST », « (200-1500ms) … ET en phase « autoeval » », « Exporte un snapshot complet de la base de données … en cas de bug à investiguer », « le geste qui causait le recalcul rétroactif ».",
+"ou": "bandeaux du haut, « 🎲 Tous les élèves répondent »",
+"grav": "gênant",
+"repro": "Survoler « 🔒 Clôturer (chemin réel) »."
+},
+{
+"src": "r4",
+"scene": "169",
+"type": "infobulle",
+"quoi": "Sur un écran d'élève, « 📊 Mes évaluations » porte une infobulle (« Ouvre « Mes évaluations »… »), et la pastille « 1 pt » aussi (« Nombre de points que vaut cette question »). En plein milieu d'une question, « 📊 Mes évaluations » mène à la page de Lou.",
+"ou": "haut de la moitié, pastille « 1 pt »",
+"grav": "gênant",
+"repro": "Survoler « 1 pt » dans `#scene=t-annexe`."
+},
+{
+"src": "r4",
+"scene": "130",
+"type": "affichage",
+"quoi": "À 1366×768, la page défile de 34 px (802 px pour 768).",
+"ou": "toute la page",
+"grav": "mineur",
+"repro": "Ouvrir la scène en 1366×768."
+},
+{
+"src": "r4",
+"scene": "130 (et toutes les consoles QCM)",
+"type": "infobulle",
+"quoi": "Le « i » jaune placé dans « 🧪 Mode test » n'a pas de bulle noire : seule l'infobulle du bouton apparaît.",
+"ou": "en-tête",
+"grav": "mineur",
+"repro": "Survoler le « i » du bouton."
+},
+{
+"src": "r4",
+"scene": "130 (et toutes les bulles « i »)",
+"type": "affichage",
+"quoi": "Le texte des bulles noires s'écrit en police à empattements (Georgia), différente du reste de l'app.",
+"ou": "toutes les bulles",
+"grav": "mineur",
+"repro": "Survoler n'importe quel « i » (photo : `r4/cap/134-c-fiche-1366-i1.png`)."
+},
+{
+"src": "r4",
+"scene": "130",
+"type": "geste",
+"quoi": "« ← Question précédente » est grisé, mais son infobulle ne dit pas pourquoi : « Revenir à la question précédente dans l'ordre de correction (utile si…) ». On est à la question 1/3.",
+"ou": "sous la carte de la question",
+"grav": "mineur",
+"repro": "Survoler le bouton."
+},
+{
+"src": "r4",
+"scene": "130",
+"type": "texte",
+"quoi": "Le bandeau dit « Question 1 / 3 — Q2 · toutes les corrections à la suite, dans l'ordre des erreurs de ta grille » : deux numéros pour la même question, et une règle au lieu d'un état.",
+"ou": "bandeau rose",
+"grav": "mineur",
+"repro": "Ouvrir la scène."
+},
+{
+"src": "r4",
+"scene": "130, 131, 165, 167",
+"type": "affichage",
+"quoi": "Contraste faible. Texte blanc sur vert vif (noms et « ✓ 1 pt » de la grille, « Bonne réponse », « vert », « Rome ✓ ») : rapport d'environ 2,3. « Standard », blanc sur orange : environ 2,1. En-tête « 📱 Tablette 1 · seul » : environ 2,2.",
+"ou": "",
+"grav": "mineur",
+"repro": "Mesuré dans `r4/out/*.json` (contraste)."
+},
+{
+"src": "r4",
+"scene": "130",
+"type": "affichage",
+"quoi": "« ✗ 0 » et « ✓ 1 pt » s'écrivent en 10,6 px.",
+"ou": "pastilles de la grille",
+"grav": "mineur",
+"repro": ""
+},
+{
+"src": "r4",
+"scene": "131",
+"type": "texte",
+"quoi": "Doublon : « ❌ Tu avais faux. » en bandeau, puis juste dessous « ❌ Tu avais faux. Barre ta réponse en rouge… ».",
+"ou": "les deux moitiés",
+"grav": "mineur",
+"repro": "Ouvrir `#scene=t-papier-correction`."
+},
+{
+"src": "r4",
+"scene": "131",
+"type": "affichage",
+"quoi": "Les étiquettes « BONNE RÉPONSE » et « TA RÉPONSE » font 9,9 px.",
+"ou": "choix",
+"grav": "mineur",
+"repro": ""
+},
+{
+"src": "r4",
+"scene": "132 (et 138, 140, 143, 147, 148, 165)",
+"type": "texte",
+"quoi": "« Poésie et peinture au XIXème siècle » : il faut écrire « XIXe ».",
+"ou": "titre de la séance « 3e Chapitre 1 »",
+"grav": "mineur",
+"repro": ""
+},
+{
+"src": "r4",
+"scene": "132",
+"type": "geste",
+"quoi": "La pastille « copies non rendues » n'est pas cliquable, alors que « copies rendues le 26/09 » l'est.",
+"ou": "1re séance",
+"grav": "mineur",
+"repro": "Cliquer la pastille."
+},
+{
+"src": "r4",
+"scene": "132 (et 138, 140)",
+"type": "texte",
+"quoi": "Une phrase de règle sous le titre : « Un clic sur « 📊 Ouvrir » ouvre le tableau de la séance. ».",
+"ou": "sous « 📊 Résultats »",
+"grav": "mineur",
+"repro": ""
+},
+{
+"src": "r4",
+"scene": "133, 141",
+"type": "texte",
+"quoi": "Les en-têtes des compétences sont tronqués : « Mobiliser des références culturelles… », « Contrôler sa compréhension… », en 9,9 px. Aucune infobulle ne donne le libellé entier.",
+"ou": "en-têtes de colonnes",
+"grav": "mineur",
+"repro": "Survoler l'en-tête « c4-culture-01 » : rien."
+},
+{
+"src": "r4",
+"scene": "133, 141",
+"type": "infobulle",
+"quoi": "L'infobulle de l'en-tête « Élève » contient de l'anglais technique : « … ouvre son Student Report (drill-down) », « (asc/desc) ».",
+"ou": "en-tête « Élève »",
+"grav": "mineur",
+"repro": ""
+},
+{
+"src": "r4",
+"scene": "133, 141",
+"type": "infobulle",
+"quoi": "Le « ← Retour » de l'en-tête dit « Retour à la liste des sessions. » (le mot « sessions »), mais il mène à l'accueil de l'app (`c-accueil`).",
+"ou": "en-tête",
+"grav": "mineur",
+"repro": "Cliquer « ← Retour » en haut à droite."
+},
+{
+"src": "r4",
+"scene": "133",
+"type": "affichage",
+"quoi": "Le « ✓ » vert sur fond vert pâle a un contraste d'environ 1,9.",
+"ou": "colonnes Q1 à Q3",
+"grav": "mineur",
+"repro": ""
+},
+{
+"src": "r4",
+"scene": "134 (et 135 à 137)",
+"type": "texte",
+"quoi": "« ↻ Regénérer » : il faut écrire « Régénérer ».",
+"ou": "sous le bilan",
+"grav": "mineur",
+"repro": ""
+},
+{
+"src": "r4",
+"scene": "134",
+"type": "texte",
+"quoi": "« CE QU'IL A DIT (B) » et le « (B) » du « i » : c'est la lettre d'une phase interne.",
+"ou": "en-tête de colonne",
+"grav": "mineur",
+"repro": ""
+},
+{
+"src": "r4",
+"scene": "134, 149",
+"type": "texte",
+"quoi": "Le bilan pré-rempli dit « Évaluation fragile. », alors que c'est la maîtrise qui est fragile. Il dit aussi « ton estimation de ton nombre de bonnes réponses ».",
+"ou": "Bilan général (134), « 📝 Bilan » (149)",
+"grav": "mineur",
+"repro": ""
+},
+{
+"src": "r4",
+"scene": "134",
+"type": "geste",
+"quoi": "Je ne suis pas sûr de ce défaut. « ✔ Marquer lue » devient bien « ✔ lue », mais la pastille orange « ⚠️ a dit que sa feuille… » ne change pas, alors que l'infobulle annonce que « le signalement passe à « lu » ».",
+"ou": "ligne Q1",
+"grav": "mineur",
+"repro": "Cliquer « ✔ Marquer lue » de la ligne Q1."
+},
+{
+"src": "r4",
+"scene": "137 (et 151, 152)",
+"type": "texte",
+"quoi": "La même case a deux noms : « Aucun des choix » (le choix de la fenêtre), et « aucun de ces choix » dans la même fenêtre (« Julien a lu « Sa feuille ne dit aucun de ces choix » »), dans le tableau et dans le prompt.",
+"ou": "dernier choix",
+"grav": "mineur",
+"repro": ""
+},
+{
+"src": "r4",
+"scene": "138",
+"type": "logique",
+"quoi": "« 📊 Ouvrir », une fois les 5 feuilles lues, ouvre le tableau `c-resultats`, qui affiche encore « 5 feuilles à lire » et aucun « ✔ lue ».",
+"ou": "1re séance",
+"grav": "mineur",
+"repro": "Cliquer « 📊 Ouvrir » dans `#scene=c-seances-lues`."
+},
+{
+"src": "r4",
+"scene": "139",
+"type": "affichage",
+"quoi": "Un guillemet ouvrant reste seul en fin de ligne : « son bilan et le « », puis à la ligne « 📝 Bilan » de sa fiche ».",
+"ou": "texte de la garde",
+"grav": "mineur",
+"repro": ""
+},
+{
+"src": "r4",
+"scene": "140",
+"type": "logique",
+"quoi": "Je ne suis pas sûr que ce soit un défaut. « 🙈 Masquer les copies » n'existe que pour la dernière séance : les séances aux « copies rendues le 26/09 » et « le 17/09 » n'en ont pas.",
+"ou": "liste",
+"grav": "mineur",
+"repro": ""
+},
+{
+"src": "r4",
+"scene": "143",
+"type": "logique",
+"quoi": "Derrière la garde, la liste est revenue à « copies non rendues » et « 📌 5 feuilles à lire ». Les scènes 138 à 141 montraient « 5 feuilles lues » et « copies rendues le 10/10 ».",
+"ou": "fond de la fenêtre",
+"grav": "mineur",
+"repro": ""
+},
+{
+"src": "r4",
+"scene": "144 (et 145, 146)",
+"type": "logique",
+"quoi": "La corbeille dit « Évaluation d'essai — 3 questions … mise à la corbeille le 08/10 à 18:40 ». Or la séance est encore dans Résultats le 10/10 : point retiré le 10/10 à 19:12, copies rendues le 10/10.",
+"ou": "Corbeille",
+"grav": "mineur",
+"repro": ""
+},
+{
+"src": "r4",
+"scene": "144 (et 145, 146)",
+"type": "texte",
+"quoi": "Deux mots pour une même chose : « sessions fantômes » puis « sessions zombies ». La page dit « base QCM (évaluations, sessions, réponses) », la garde 145 dit « évaluations, séances, réponses ». Et « snapshot » est un mot anglais.",
+"ou": "Sauvegarde, Maintenance",
+"grav": "mineur",
+"repro": ""
+},
+{
+"src": "r4",
+"scene": "144",
+"type": "texte",
+"quoi": "Paragraphes qui expliquent une règle : « Avant d'importer, le QCM d'aujourd'hui part à la corbeille : rien n'est perdu. », « Si la vue tableau ou le pilotage te montrent des sessions fantômes … utilise le nettoyage ci-dessous. », « Tout part d'abord à la corbeille, gardé un an. Pense quand même à exporter un snapshot. ».",
+"ou": "",
+"grav": "mineur",
+"repro": ""
+},
+{
+"src": "r4",
+"scene": "146",
+"type": "affichage",
+"quoi": "Un guillemet fermant commence seul une ligne : « La démo « 🎓 Démo — apprendre le déroulé », puis à la ligne « » n'est pas touchée ».",
+"ou": "texte de la garde",
+"grav": "mineur",
+"repro": ""
+},
+{
+"src": "r4",
+"scene": "147, 148",
+"type": "affichage",
+"quoi": "« Tu étais absente » s'écrit en blanc sur un gris clair, peu lisible.",
+"ou": "2e carte",
+"grav": "mineur",
+"repro": ""
+},
+{
+"src": "r4",
+"scene": "149",
+"type": "texte",
+"quoi": "« ⚠️ Tu pensais avoir mieux fait », puis « Tu pensais avoir 2 bonnes réponses 🔵 mais tu en as eu 1 sur 3 (1 bonne réponse 🟠) » : « Tu pensais » répété, et des pastilles de couleur au milieu de la phrase.",
+"ou": "Ton estimation",
+"grav": "mineur",
+"repro": ""
+},
+{
+"src": "r4",
+"scene": "150",
+"type": "affichage",
+"quoi": "Les deux « 💾 Enregistrer » n'ont pas la même forme : une barre pleine largeur (durées), un petit bouton (niveaux).",
+"ou": "cartes durées et niveaux",
+"grav": "mineur",
+"repro": ""
+},
+{
+"src": "r4",
+"scene": "150",
+"type": "texte",
+"quoi": "« Les tranches s'écrivent « de 5 à moins de 6 » » : l'exemple ne correspond à aucune tranche affichée (la grille dit « de 5 à moins de 10 »).",
+"ou": "sous les niveaux",
+"grav": "mineur",
+"repro": ""
+},
+{
+"src": "r4",
+"scene": "150",
+"type": "texte",
+"quoi": "« Évaluations QCM — version de la livraison · socle MJPC-CORE » : la version n'a pas de numéro.",
+"ou": "carte Version",
+"grav": "mineur",
+"repro": ""
+},
+{
+"src": "r4",
+"scene": "150",
+"type": "affichage",
+"quoi": "Une bande vide sous « Pilotage Données Réglages ? », à la place des sous-onglets.",
+"ou": "haut de page",
+"grav": "mineur",
+"repro": ""
+},
+{
+"src": "r4",
+"scene": "150",
+"type": "texte",
+"quoi": "Paragraphes qui expliquent une règle : « Les listes d'élèves… appartiennent au site MJPC… », « Il ne devine jamais un temps : … ne produit le JSON qu'à ton « produis le JSON » », « Éditeur des messages élève. Ces phrases s'affichent… », « Vu quand tu as terminé la session. Ce texte s'affiche quel que soit le résultat… » (avec le mot « session »).",
+"ou": "cartes",
+"grav": "mineur",
+"repro": ""
+},
+{
+"src": "r4",
+"scene": "150, 151, 152",
+"type": "infobulle",
+"quoi": "Mots techniques. « ✏️ Modifier le prompt » : « enregistrées dans Firebase ». « 💾 Enregistrer » (152) : « … dans Firebase. Il sera réutilisé à chaque ouverture du modal ».",
+"ou": "",
+"grav": "mineur",
+"repro": ""
+},
+{
+"src": "r4",
+"scene": "150 à 152",
+"type": "texte",
+"quoi": "Un même geste porte trois noms : « 🤖 Prompt IA » sur la carte, « 📋 Copier le prompt » dans la fenêtre, « Le prompt de création d'éval » en titre.",
+"ou": "",
+"grav": "mineur",
+"repro": ""
+},
+{
+"src": "r4",
+"scene": "151, 152",
+"type": "affichage",
+"quoi": "La phrase d'en-tête touche ce qui est dessous : « …puis te rendra le JSON. » est collée au bouton « 📋 Copier le prompt », « …limites de longueur. » est collée au cadre du prompt.",
+"ou": "haut de la fenêtre",
+"grav": "mineur",
+"repro": ""
+},
+{
+"src": "r4",
+"scene": "153 (et 154, 155)",
+"type": "texte",
+"quoi": "Jargon de chantier : « Le clair reste en place tant que les applications en ont besoin — la protection sera effective au 3e temps du chantier sécurité. ».",
+"ou": "Codes déverrouillés",
+"grav": "mineur",
+"repro": ""
+},
+{
+"src": "r4",
+"scene": "153",
+"type": "logique",
+"quoi": "Je ne suis pas sûr de ce défaut. La page dit « 25 codes préparés », et « Retirer les codes en clair » dit « 25 codes portent encore leur clair ». Or YVON Adam n'a pas de code (« — ») et le bouton dit « Générer 1 code manquant ».",
+"ou": "",
+"grav": "mineur",
+"repro": "Cliquer « Retirer les codes en clair »."
+},
+{
+"src": "r4",
+"scene": "153",
+"type": "infobulle",
+"quoi": "« Où la clé est mémorisée » : « Les appareils où la clé est mémorisée. ». L'infobulle ne dit pas ce que fait le bouton.",
+"ou": "",
+"grav": "mineur",
+"repro": ""
+},
+{
+"src": "r4",
+"scene": "154",
+"type": "texte",
+"quoi": "« Refusé : pas d'exclusion entre Inès et Jade : ESNAULT Inès a déjà 3 exclusions… Retire d'abord une exclusion de ESNAULT Inès. » : « de ESNAULT » au lieu de « d'ESNAULT », deux deux-points dans la même phrase. Et une phrase de règle : « Avec 3 au plus, il existe toujours des binômes possibles, absents compris, dès 8 présents. ».",
+"ou": "message rouge",
+"grav": "mineur",
+"repro": ""
+},
+{
+"src": "r4",
+"scene": "155",
+"type": "affichage",
+"quoi": "Le champ « synthèse (facultatif) » s'écrit en police à chasse fixe, différente du reste de la fiche.",
+"ou": "Synthèse",
+"grav": "mineur",
+"repro": ""
+},
+{
+"src": "r4",
+"scene": "156",
+"type": "affichage",
+"quoi": "L'écran est presque vide : un titre, une phrase et « Ouvrir l'éditeur ». Le référentiel annoncé par le titre de la scène n'apparaît pas (ni la version, ni le nombre de domaines).",
+"ou": "toute la page",
+"grav": "mineur",
+"repro": ""
+},
+{
+"src": "r4",
+"scene": "157 à 161",
+"type": "texte",
+"quoi": "« Version 1.4.0 · 2026-08-02 » : date à l'anglaise, ailleurs on écrit 02/08/2026. Et de longs paragraphes de règle : « Une notion ne se supprime jamais et son identifiant ne change jamais… », « Les 28 compétences du référentiel. Le libellé officiel reste pour École Directe… ».",
+"ou": "haut de la page",
+"grav": "mineur",
+"repro": ""
+},
+{
+"src": "r4",
+"scene": "159, 161",
+"type": "texte",
+"quoi": "Le formulaire dit « Libellé professeur », le paragraphe dit « Le libellé officiel ».",
+"ou": "formulaire",
+"grav": "mineur",
+"repro": ""
+},
+{
+"src": "r4",
+"scene": "160",
+"type": "affichage",
+"quoi": "La capture (2600 px) s'arrête à « tr-langages-01 ». Il en manque 9 des 28 compétences, et les groupes « Les méthodes… » et « La formation de la personne… ». Le titre dit pourtant « les 28 ». Les 28 sont bien dans la maquette, en faisant défiler.",
+"ou": "bas de la capture",
+"grav": "mineur",
+"repro": ""
+},
+{
+"src": "r4",
+"scene": "162 à 164",
+"type": "texte",
+"quoi": "Vocabulaire technique : « Les objets vivent au hub sous /site/edt/ », « injecté le jeudi 3 septembre », « Sortir le JSON », « Réinjecter maintenant… ». L'infobulle de « Plus tard » contient « (edtRappelPlusTard) ».",
+"ou": "",
+"grav": "mineur",
+"repro": ""
+},
+{
+"src": "r4",
+"scene": "163, 164",
+"type": "texte",
+"quoi": "« JSON de « calendrier » copié — 19717 caractères. », « « creneaux », « periodes », « reglages » … copié — 33349 caractères. » : identifiants sans accents, nombres sans espace des milliers.",
+"ou": "message",
+"grav": "mineur",
+"repro": ""
+},
+{
+"src": "r4",
+"scene": "163, 164",
+"type": "geste",
+"quoi": "Échap ne ferme pas ce message, alors que les autres fenêtres se ferment à Échap. Seul « Compris » le ferme.",
+"ou": "message",
+"grav": "mineur",
+"repro": "Ouvrir `#scene=m-emploi-du-temps-un`, appuyer sur Échap."
+},
+{
+"src": "r4",
+"scene": "165",
+"type": "logique",
+"quoi": "« Durée estimée : 15 min » compte « deux tours » et « co-évaluation et bilan 2 min » pour un élève seul. La carte dit pourtant « il n'a pas de co-évaluation ».",
+"ou": "encadré vert",
+"grav": "mineur",
+"repro": ""
+},
+{
+"src": "r4",
+"scene": "165",
+"type": "logique",
+"quoi": "Je ne suis pas sûr que la liste doive être complète. « Sessions précédentes — 3 ESSAI » ne montre que 2 séances : « QCM — Le jambon-beurre » (15/09), présent dans Résultats (132), manque.",
+"ou": "",
+"grav": "mineur",
+"repro": ""
+},
+{
+"src": "r4",
+"scene": "166, 167",
+"type": "affichage",
+"quoi": "Le contenu des tablettes simulées est rogné à droite et en bas (cadre de 402 à 424 px pour 430). Les boutons « 1 élève » et « 2 élèves » et les textes font environ 7 px, illisibles.",
+"ou": "tablettes simulées",
+"grav": "mineur",
+"repro": ""
+},
+{
+"src": "r4",
+"scene": "166",
+"type": "affichage",
+"quoi": "À 1366×768, des noms sont coupés dans les binômes : « CHALUMEAU » devient « CHALUMEA », « BOURREAU » et « DELACROIX » touchent le bord.",
+"ou": "Binômes proposés",
+"grav": "mineur",
+"repro": ""
+},
+{
+"src": "r4",
+"scene": "166 à 168",
+"type": "texte",
+"quoi": "Identifiant technique visible : « 🧪 _test_evaluation-qcm (30 élèves) », « Démo — … — _test_evaluation-qcm », « _TEST_EVALUATION-QCM · AUDEBERT ÉLISE » sur la moitié d'élève. Jargon : « Session : pas encore lancée · énoncé non conservé ». Trois noms pour le même mode : « mode test », « bac à sable », « Environnement de test isolé ».",
+"ou": "",
+"grav": "mineur",
+"repro": ""
+},
+{
+"src": "r4",
+"scene": "167, 168",
+"type": "texte",
+"quoi": "Élisions manquantes : « 📝 Feuille de Élise », « Feuille de Eden », « Feuille de Aymeric », « Feuille de Angèle », « Ce que Élise écrit sur sa feuille ».",
+"ou": "sous les tablettes simulées",
+"grav": "mineur",
+"repro": ""
+},
+{
+"src": "r4",
+"scene": "167, 168",
+"type": "infobulle",
+"quoi": "Infobulles des compteurs : « … vs. nombre total », « 'Autoriser la réponse' » entre guillemets droits simples, « Remet le chrono à zéro … (durée pleine ré-injectée) ».",
+"ou": "compteurs, « 🔄 Relancer chrono »",
+"grav": "mineur",
+"repro": ""
+},
+{
+"src": "r4",
+"scene": "167",
+"type": "geste",
+"quoi": "Je ne suis pas sûr de ce défaut. « 🔓 Rouvrir pour un élève » reste actif pendant la réflexion de Q3, alors qu'aucune question n'est close.",
+"ou": "barre des boutons",
+"grav": "mineur",
+"repro": ""
+},
+{
+"src": "r4",
+"scene": "168",
+"type": "logique",
+"quoi": "Le compteur dit « 14/15 ONT RÉPONDU », alors que la scène 167 affichait « 0/30 ONT RÉPONDU » et que l'infobulle parle du « nombre total ». Et la scène est au 1er tour, alors qu'on l'ouvre depuis la réflexion (167).",
+"ou": "compteurs",
+"grav": "mineur",
+"repro": ""
+},
+{
+"src": "r4",
+"scene": "168",
+"type": "infobulle",
+"quoi": "Je ne suis pas sûr de ce défaut. Sur la moitié d'élève simulée, les choix portent une infobulle écrite à l'élève : « Le temps de réponse est fini : ton clic ne change plus. ». Si c'est le vrai composant élève, cette infobulle sera aussi sur la tablette.",
+"ou": "choix de la moitié d'Élise",
+"grav": "mineur",
+"repro": ""
+},
+{
+"src": "r4",
+"scene": "169",
+"type": "texte",
+"quoi": "« … dans quel sens va la flèche à l'étape 4? » : il manque l'espace avant « ? ». Dans « 3e- éval 1 Analyse logique - Construire une phrase complexe », les tirets sont mal placés.",
+"ou": "énoncé, titre",
+"grav": "mineur",
+"repro": ""
+}
+]

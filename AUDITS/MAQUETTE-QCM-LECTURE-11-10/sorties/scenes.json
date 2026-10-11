@@ -1,0 +1,1354 @@
+[
+ {
+  "n": 1,
+  "id": "c-evals",
+  "vue": "console",
+  "section": "Préparer l'évaluation",
+  "titre": "Pilotage → 📝 Évaluations : rangées par niveau, un tri ; la démo en tête, « 🔒 Permanente ».",
+  "vh": null
+ },
+ {
+  "n": 2,
+  "id": "c-eval-corbeille",
+  "vue": "console",
+  "section": "Préparer l'évaluation",
+  "titre": "« 🗑️ » une évaluation : la corbeille, gardée un an.",
+  "vh": 900
+ },
+ {
+  "n": 3,
+  "id": "c-collage",
+  "vue": "console",
+  "section": "Préparer l'évaluation",
+  "titre": "« ➕ Nouvelle évaluation » : les messages, la garde de longueur, « ce qu'elle vérifie », la durée ; « Copier les erreurs pour l'instance de création d'éval ».",
+  "vh": 1060
+ },
+ {
+  "n": 4,
+  "id": "x627-3-editeur",
+  "vue": "console",
+  "section": "Préparer l'évaluation",
+  "titre": "L'éditeur : « 🎯 Ce qu'elle vérifie », « 📏 longueur assumée » ; chaque geste marque l'évaluation modifiée.",
+  "vh": 3250
+ },
+ {
+  "n": 5,
+  "id": "c-feuille",
+  "vue": "console",
+  "section": "Préparer l'évaluation",
+  "titre": "« 🖨️ Imprimer » : les énoncés seuls, sur une page.",
+  "vh": null
+ },
+ {
+  "n": 6,
+  "id": "c-accueil",
+  "vue": "eleve",
+  "section": "Avant l'heure, sur ta console",
+  "titre": "L'accueil de l'app : « 🎓 Mode élève » ou « Accès professeur ».",
+  "vh": null
+ },
+ {
+  "n": 7,
+  "id": "c-lancer",
+  "vue": "console",
+  "section": "Avant l'heure, sur ta console",
+  "titre": "« Pilotage classe » : la classe, l'évaluation, la durée, les binômes formés par les exclusions, puis par le QCM précédent.",
+  "vh": null
+ },
+ {
+  "n": 8,
+  "id": "c-echange-refuse",
+  "vue": "console",
+  "section": "Avant l'heure, sur ta console",
+  "titre": "Un échange qui mettrait ensemble deux élèves exclus : refusé, avec la raison, pour toi seul.",
+  "vh": null
+ },
+ {
+  "n": 9,
+  "id": "c-appel",
+  "vue": "console",
+  "section": "Avant l'heure, sur ta console",
+  "titre": "L'appel : l'absent sort, son binôme est réapparié ; l'heure de fin.",
+  "vh": 900
+ },
+ {
+  "n": 10,
+  "id": "c-demo-lancer",
+  "vue": "console",
+  "section": "Avant l'heure, sur ta console",
+  "titre": "La démo, lancée avec la classe : rien ne compte.",
+  "vh": null
+ },
+ {
+  "n": 11,
+  "id": "c-demo-faite",
+  "vue": "console",
+  "section": "Avant l'heure, sur ta console",
+  "titre": "La démo faite : il n'en reste qu'une ligne.",
+  "vh": null
+ },
+ {
+  "n": 12,
+  "id": "t-combien",
+  "vue": "tablette",
+  "section": "L'entrée",
+  "titre": "« Combien êtes-vous sur cette tablette ? »",
+  "vh": null
+ },
+ {
+  "n": 13,
+  "id": "t-un-eleve",
+  "vue": "tablette",
+  "section": "L'entrée",
+  "titre": "« 1 élève » : le raccourci MJPC demande d'abord « Tu es bien Julien ? ».",
+  "vh": null
+ },
+ {
+  "n": 14,
+  "id": "t-login",
+  "vue": "tablette",
+  "section": "L'entrée",
+  "titre": "Le code, le prénom et le nom, au clavier de l'app, sur chaque moitié.",
+  "vh": null
+ },
+ {
+  "n": 15,
+  "id": "t-login-inconnu",
+  "vue": "tablette",
+  "section": "L'entrée",
+  "titre": "Un code pas encore enregistré : « lève la main ».",
+  "vh": null
+ },
+ {
+  "n": 16,
+  "id": "t-binome",
+  "vue": "tablette",
+  "section": "L'entrée",
+  "titre": "Julien est entré ; l'autre moitié nomme son binôme.",
+  "vh": null
+ },
+ {
+  "n": 17,
+  "id": "t-rejoins",
+  "vue": "tablette",
+  "section": "L'entrée",
+  "titre": "Michel s'est assis à la mauvaise tablette : « Tu es avec Julien… rejoins Julien. »",
+  "vh": null
+ },
+ {
+  "n": 18,
+  "id": "t-attest-1",
+  "vue": "tablette",
+  "section": "L'entrée",
+  "titre": "L'attestation, une coche par ligne : chaque ligne n'apparaît qu'après la précédente.",
+  "vh": null
+ },
+ {
+  "n": 19,
+  "id": "t-attest-2",
+  "vue": "tablette",
+  "section": "L'entrée",
+  "titre": "Julien a tout coché : « Je commence » s'ouvre ; Michel en est à 5 lignes sur 8.",
+  "vh": null
+ },
+ {
+  "n": 20,
+  "id": "t-pret",
+  "vue": "tablette",
+  "section": "L'entrée",
+  "titre": "Les deux ont coché : ils attendent le départ.",
+  "vh": null
+ },
+ {
+  "n": 21,
+  "id": "c-pret",
+  "vue": "console",
+  "section": "L'entrée",
+  "titre": "Ta console avant la question 1 : les 12 tablettes, qui est assis où, où en est chaque attestation.",
+  "vh": null
+ },
+ {
+  "n": 22,
+  "id": "t-demo-q",
+  "vue": "tablette",
+  "section": "La démo, sur les tablettes",
+  "titre": "La démo : le bandeau « 🎓 Évaluation d'entraînement : elle ne compte pas. », du début à la fin.",
+  "vh": null
+ },
+ {
+  "n": 23,
+  "id": "t-q1-reflexion",
+  "vue": "tablette",
+  "section": "Question 1 — Julien commence",
+  "titre": "Réflexion : l'énoncé sans les choix, le chrono.",
+  "vh": null
+ },
+ {
+  "n": 24,
+  "id": "c-q1-reflexion",
+  "vue": "console",
+  "section": "Question 1 — Julien commence",
+  "titre": "Ta console pendant la réflexion : les deux temps à taper, la fin prévue, « ❌ Écarter ».",
+  "vh": null
+ },
+ {
+  "n": 25,
+  "id": "t-q1-passage1",
+  "vue": "tablette",
+  "section": "Question 1 — Julien commence",
+  "titre": "Fin de la réflexion : « Pose ton stylo, Julien. Tu es prêt ? À toi dans 3 secondes » ; Michel est voilé, nommé.",
+  "vh": null
+ },
+ {
+  "n": 26,
+  "id": "t-q1-tour1",
+  "vue": "tablette",
+  "section": "Question 1 — Julien commence",
+  "titre": "1er tour : Julien répond ; Michel est voilé.",
+  "vh": null
+ },
+ {
+  "n": 27,
+  "id": "c-q1-tour1",
+  "vue": "console",
+  "section": "Question 1 — Julien commence",
+  "titre": "Ta console au 1er tour.",
+  "vh": null
+ },
+ {
+  "n": 28,
+  "id": "c-voir-tablette",
+  "vue": "console",
+  "section": "Question 1 — Julien commence",
+  "titre": "« 👁 » : les deux moitiés d'une tablette, en direct.",
+  "vh": 1000
+ },
+ {
+  "n": 29,
+  "id": "p-reponse",
+  "vue": "telephone",
+  "section": "Question 1 — Julien commence",
+  "titre": "Ton téléphone au 1er tour : les temps en direct, la fin prévue.",
+  "vh": null
+ },
+ {
+  "n": 30,
+  "id": "c-qr",
+  "vue": "console",
+  "section": "Question 1 — Julien commence",
+  "titre": "« 📱 QR pilotage ».",
+  "vh": 900
+ },
+ {
+  "n": 31,
+  "id": "b-reponse",
+  "vue": "tableau",
+  "section": "Question 1 — Julien commence",
+  "titre": "Le tableau en réponse : l'énoncé, le chrono, « 1er tour », jamais les choix.",
+  "vh": null
+ },
+ {
+  "n": 32,
+  "id": "c-fin-prevue",
+  "vue": "console",
+  "section": "Question 1 — Julien commence",
+  "titre": "Du temps ajouté : la fin prévue déborde, en rouge.",
+  "vh": null
+ },
+ {
+  "n": 33,
+  "id": "t-q1-passage2",
+  "vue": "tablette",
+  "section": "Question 1 — Julien commence",
+  "titre": "Le passage, dans l'autre sens.",
+  "vh": null
+ },
+ {
+  "n": 34,
+  "id": "t-q1-tour2",
+  "vue": "tablette",
+  "section": "Question 1 — Julien commence",
+  "titre": "2e tour : Michel répond, choix mélangés ; il clique Venise.",
+  "vh": null
+ },
+ {
+  "n": 35,
+  "id": "t-q1-b-michel",
+  "vue": "tablette",
+  "section": "Question 1 — Julien commence",
+  "titre": "Son temps fini, Michel dit si sa feuille dit la même chose que son clic : sa feuille dit Rome.",
+  "vh": null
+ },
+ {
+  "n": 36,
+  "id": "c-q1-tour2",
+  "vue": "console",
+  "section": "Question 1 — Julien commence",
+  "titre": "Ta console au 2e tour : « 🔒 Clore la question ».",
+  "vh": null
+ },
+ {
+  "n": 37,
+  "id": "t-q1-attente",
+  "vue": "tablette",
+  "section": "Question 1 — Julien commence",
+  "titre": "Les deux tours sont finis : « Attends la prochaine question ».",
+  "vh": null
+ },
+ {
+  "n": 38,
+  "id": "c-q1-close",
+  "vue": "console",
+  "section": "Question 1 — Julien commence",
+  "titre": "Question close : « ▶️ Lancer Q2 ».",
+  "vh": null
+ },
+ {
+  "n": 39,
+  "id": "c-ecarter",
+  "vue": "console",
+  "section": "Question 1 — Julien commence",
+  "titre": "« ❌ Écarter » la question 3 : la garde.",
+  "vh": 900
+ },
+ {
+  "n": 40,
+  "id": "c-ecartee",
+  "vue": "console",
+  "section": "Question 1 — Julien commence",
+  "titre": "La question 3 écartée : « ❌ Écartée — pas posée », « ↩️ Remettre ».",
+  "vh": null
+ },
+ {
+  "n": 41,
+  "id": "t-q2-ecartee",
+  "vue": "tablette",
+  "section": "Question 1 — Julien commence",
+  "titre": "Les tablettes comptent sans elle : « Question 2 / 2 ».",
+  "vh": null
+ },
+ {
+  "n": 42,
+  "id": "t-q2-reflexion",
+  "vue": "tablette",
+  "section": "Question 2 — Michel commence",
+  "titre": "Question 2 : deux bonnes réponses, en tout ou rien.",
+  "vh": null
+ },
+ {
+  "n": 43,
+  "id": "t-q2-tour1",
+  "vue": "tablette",
+  "section": "Question 2 — Michel commence",
+  "titre": "Michel répond le premier.",
+  "vh": null
+ },
+ {
+  "n": 44,
+  "id": "t-q2-tour2",
+  "vue": "tablette",
+  "section": "Question 2 — Michel commence",
+  "titre": "Julien répond en second, dans un autre ordre.",
+  "vh": null
+ },
+ {
+  "n": 45,
+  "id": "c-q2-tour2",
+  "vue": "console",
+  "section": "Question 2 — Michel commence",
+  "titre": "Ta console au 2e tour de la question 2.",
+  "vh": null
+ },
+ {
+  "n": 46,
+  "id": "c-q2-close",
+  "vue": "console",
+  "section": "Question 2 — Michel commence",
+  "titre": "Question 2 close : Théo n'a pas répondu.",
+  "vh": null
+ },
+ {
+  "n": 47,
+  "id": "c-annuler",
+  "vue": "console",
+  "section": "Question 2 — Michel commence",
+  "titre": "« ⚠️ Annuler » une question déjà posée : la garde.",
+  "vh": 900
+ },
+ {
+  "n": 48,
+  "id": "c-annulee",
+  "vue": "console",
+  "section": "Question 2 — Michel commence",
+  "titre": "La question 2 annulée : « ⚠️ Annulée — posée, puis annulée ».",
+  "vh": null
+ },
+ {
+  "n": 49,
+  "id": "c-rouvrir-tous",
+  "vue": "console",
+  "section": "Question 2 — Michel commence",
+  "titre": "« 🔓 Rouvrir pour tous » : seulement ceux qui n'ont pas répondu.",
+  "vh": 900
+ },
+ {
+  "n": 50,
+  "id": "c-rouvrir-un",
+  "vue": "console",
+  "section": "Question 2 — Michel commence",
+  "titre": "« 🔓 Rouvrir pour un élève » : Théo.",
+  "vh": 920
+ },
+ {
+  "n": 51,
+  "id": "t-rouvrir-un",
+  "vue": "tablette",
+  "section": "Question 2 — Michel commence",
+  "titre": "La tablette de Théo, rouverte ; Lou porte le voile.",
+  "vh": null
+ },
+ {
+  "n": 52,
+  "id": "p-eleve",
+  "vue": "telephone",
+  "section": "Question 2 — Michel commence",
+  "titre": "Ton téléphone : un clic sur Théo ouvre sa fiche.",
+  "vh": null
+ },
+ {
+  "n": 53,
+  "id": "t-q3-tour1",
+  "vue": "tablette",
+  "section": "Question 3 — Julien commence",
+  "titre": "Julien clique sur 6.",
+  "vh": null
+ },
+ {
+  "n": 54,
+  "id": "x610-1-b-julien",
+  "vue": "tablette",
+  "section": "Question 3 — Julien commence",
+  "titre": "B sur la vraie question 3 de l'évaluation de 3e : Julien dit si sa feuille dit la même chose que son clic.",
+  "vh": null
+ },
+ {
+  "n": 55,
+  "id": "t-q3-tour2",
+  "vue": "tablette",
+  "section": "Question 3 — Julien commence",
+  "titre": "Michel clique sur 10 ; sa feuille dit « 16 pattes ».",
+  "vh": null
+ },
+ {
+  "n": 56,
+  "id": "x610-2-b-michel",
+  "vue": "tablette",
+  "section": "Question 3 — Julien commence",
+  "titre": "B, second tour, sur l'évaluation de 3e : Michel.",
+  "vh": null
+ },
+ {
+  "n": 57,
+  "id": "c-q3-close",
+  "vue": "console",
+  "section": "Question 3 — Julien commence",
+  "titre": "Dernière question close : « ✅ Dernière question close — lance l'autoévaluation ».",
+  "vh": null
+ },
+ {
+  "n": 58,
+  "id": "c-depart",
+  "vue": "console",
+  "section": "Les gestes rares de la séance",
+  "titre": "« 🚫 Départ d'un élève ».",
+  "vh": 1000
+ },
+ {
+  "n": 59,
+  "id": "c-parti",
+  "vue": "console",
+  "section": "Les gestes rares de la séance",
+  "titre": "Noah est parti : il ne bloque plus ; son binôme continue seul.",
+  "vh": null
+ },
+ {
+  "n": 60,
+  "id": "c-retour",
+  "vue": "console",
+  "section": "Les gestes rares de la séance",
+  "titre": "« ↩️ Retour d'un élève ».",
+  "vh": 900
+ },
+ {
+  "n": 61,
+  "id": "c-deplacer",
+  "vue": "console",
+  "section": "Les gestes rares de la séance",
+  "titre": "Deux élèves échangés pendant la séance : leurs réponses les suivent.",
+  "vh": null
+ },
+ {
+  "n": 62,
+  "id": "t-deplace",
+  "vue": "tablette",
+  "section": "Les gestes rares de la séance",
+  "titre": "La moitié de l'élève déplacé : « Julien, va sur la tablette de Lou ».",
+  "vh": null
+ },
+ {
+  "n": 63,
+  "id": "c-terminer",
+  "vue": "console",
+  "section": "Les gestes rares de la séance",
+  "titre": "« 🛑 Terminer la session » : la garde.",
+  "vh": 900
+ },
+ {
+  "n": 64,
+  "id": "c-mode-emploi",
+  "vue": "console",
+  "section": "Les gestes rares de la séance",
+  "titre": "« 📖 Mode d'emploi », réécrit d'après le cadrage.",
+  "vh": 1100
+ },
+ {
+  "n": 65,
+  "id": "c-finir-autre-heure",
+  "vue": "console",
+  "section": "Les gestes rares de la séance",
+  "titre": "« ⏸️ Finir à une autre heure » : la séance garde son état exact.",
+  "vh": 900
+ },
+ {
+  "n": 66,
+  "id": "c-reprendre",
+  "vue": "console",
+  "section": "Les gestes rares de la séance",
+  "titre": "À l'heure suivante : « ▶️ Reprendre la séance du 09/10 — question 1, 1er tour ».",
+  "vh": null
+ },
+ {
+  "n": 67,
+  "id": "c-rouvrir-seance",
+  "vue": "console",
+  "section": "Les gestes rares de la séance",
+  "titre": "« 🔓 Rouvrir » une séance terminée : la garde.",
+  "vh": 900
+ },
+ {
+  "n": 68,
+  "id": "c-sessions",
+  "vue": "console",
+  "section": "Les gestes rares de la séance",
+  "titre": "« 🔴 1 session en cours » : aller au pilotage, ou terminer.",
+  "vh": 920
+ },
+ {
+  "n": 69,
+  "id": "c-interrompue",
+  "vue": "console",
+  "section": "Les gestes rares de la séance",
+  "titre": "La séance interrompue : reprendre, finir à une autre heure, ou terminer définitivement.",
+  "vh": 1000
+ },
+ {
+  "n": 70,
+  "id": "t-estim",
+  "vue": "tablette",
+  "section": "L'estimation",
+  "titre": "L'estimation : « Combien de bonnes réponses penses-tu avoir ? … », sans infobulle.",
+  "vh": null
+ },
+ {
+  "n": 71,
+  "id": "c-estim",
+  "vue": "console",
+  "section": "L'estimation",
+  "titre": "Ta console pendant l'estimation : « 📝 Lancer la correction ».",
+  "vh": null
+ },
+ {
+  "n": 72,
+  "id": "x610-5-attestation-2",
+  "vue": "tablette",
+  "section": "La correction",
+  "titre": "La seconde attestation, une coche par ligne, les compétences par leur libellé élève.",
+  "vh": null
+ },
+ {
+  "n": 73,
+  "id": "t-attest-corr-fait",
+  "vue": "tablette",
+  "section": "La correction",
+  "titre": "Julien a tout coché : il attend ; Michel en est à 4 lignes sur 5.",
+  "vh": null
+ },
+ {
+  "n": 74,
+  "id": "c-attest2",
+  "vue": "console",
+  "section": "La correction",
+  "titre": "Ta console attend que tous les présents aient coché la seconde attestation.",
+  "vh": null
+ },
+ {
+  "n": 75,
+  "id": "t-corr-q2-lecture",
+  "vue": "tablette",
+  "section": "La correction",
+  "titre": "A : Michel lit la feuille de Julien et clique, dans la moitié de Julien ; Julien n'a pas encore lu celle de Michel.",
+  "vh": null
+ },
+ {
+  "n": 76,
+  "id": "c-corr-q2-avant",
+  "vue": "console",
+  "section": "La correction",
+  "titre": "La correction commence par la question la plus ratée ; « 🔒 Révéler » attend que toutes les feuilles soient lues.",
+  "vh": null
+ },
+ {
+  "n": 77,
+  "id": "p-corr-avant",
+  "vue": "telephone",
+  "section": "La correction",
+  "titre": "Ton téléphone, avant la révélation : les feuilles pas encore lues.",
+  "vh": null
+ },
+ {
+  "n": 78,
+  "id": "b-recopie",
+  "vue": "tableau",
+  "section": "La correction",
+  "titre": "Le tableau pendant la lecture : l'énoncé, sans les choix.",
+  "vh": null
+ },
+ {
+  "n": 79,
+  "id": "c-corr-q2-lu",
+  "vue": "console",
+  "section": "La correction",
+  "titre": "Toutes les feuilles sont lues : « 💡 Révéler » s'ouvre.",
+  "vh": null
+ },
+ {
+  "n": 80,
+  "id": "c-corr-q2-apres",
+  "vue": "console",
+  "section": "La correction",
+  "titre": "Après la révélation : « ⛔ Dernier moment » en orange, « ⚠️ À relire » d'après B ; un clic sur un nom agit sur l'élève.",
+  "vh": null
+ },
+ {
+  "n": 81,
+  "id": "p-corr-apres",
+  "vue": "telephone",
+  "section": "La correction",
+  "titre": "Ton téléphone après la révélation.",
+  "vh": null
+ },
+ {
+  "n": 82,
+  "id": "b-correction",
+  "vue": "tableau",
+  "section": "La correction",
+  "titre": "Le tableau après la révélation : les choix, les bonnes en vert.",
+  "vh": null
+ },
+ {
+  "n": 83,
+  "id": "t-corr-q2-apres",
+  "vue": "tablette",
+  "section": "La correction",
+  "titre": "La tablette corrige d'après la lecture du voisin : Julien, « Trouvée au dernier moment », le ✓ orange.",
+  "vh": null
+ },
+ {
+  "n": 84,
+  "id": "t-corr-q3-lecture",
+  "vue": "tablette",
+  "section": "La correction",
+  "titre": "Question 3 : Julien lit « aucun de ces choix » sur la feuille de Michel.",
+  "vh": null
+ },
+ {
+  "n": 85,
+  "id": "c-corr-q3-apres",
+  "vue": "console",
+  "section": "La correction",
+  "titre": "Ta console après la révélation de la question 3.",
+  "vh": null
+ },
+ {
+  "n": 86,
+  "id": "t-corr-q3-apres",
+  "vue": "tablette",
+  "section": "La correction",
+  "titre": "Julien et Michel ont faux.",
+  "vh": null
+ },
+ {
+  "n": 87,
+  "id": "t-corr-q1-lecture",
+  "vue": "tablette",
+  "section": "La correction",
+  "titre": "Question 1 : Julien lit Venise sur la feuille de Michel, qui dit Rome.",
+  "vh": null
+ },
+ {
+  "n": 88,
+  "id": "t-corr-q1-apres",
+  "vue": "tablette",
+  "section": "La correction",
+  "titre": "Question 1 révélée : Michel a faux, d'après la lecture de Julien.",
+  "vh": null
+ },
+ {
+  "n": 89,
+  "id": "c-corr-q1-apres",
+  "vue": "console",
+  "section": "La correction",
+  "titre": "Dernière question révélée : « 🏁 Afficher leur bilan aux élèves ».",
+  "vh": null
+ },
+ {
+  "n": 90,
+  "id": "x610-3-a-correction",
+  "vue": "tablette",
+  "section": "La correction",
+  "titre": "A sur la vraie question 3 de l'évaluation de 3e : la moitié tient dans l'écran.",
+  "vh": null
+ },
+ {
+  "n": 91,
+  "id": "t-corr-seul",
+  "vue": "tablette",
+  "section": "La correction",
+  "titre": "Un élève seul sur sa tablette (rattrapage) : il lit lui-même sa feuille ; pas de co-évaluation.",
+  "vh": null
+ },
+ {
+  "n": 92,
+  "id": "c-autonomie",
+  "vue": "console",
+  "section": "Le point d'autonomie",
+  "titre": "Un clic sur un nom : « ⛔ Retirer le point d'autonomie ».",
+  "vh": 900
+ },
+ {
+  "n": 93,
+  "id": "c-autonomie-garde",
+  "vue": "console",
+  "section": "Le point d'autonomie",
+  "titre": "La garde : ses deux compétences d'autonomie passent en Maîtrise insuffisante ; la note ne bouge pas.",
+  "vh": 900
+ },
+ {
+  "n": 94,
+  "id": "c-autonomie-retiree",
+  "vue": "console",
+  "section": "Le point d'autonomie",
+  "titre": "Le point retiré : « ↩️ Rendre » le défait.",
+  "vh": 900
+ },
+ {
+  "n": 95,
+  "id": "p-autonomie",
+  "vue": "telephone",
+  "section": "Le point d'autonomie",
+  "titre": "Le même geste, sur ton téléphone.",
+  "vh": null
+ },
+ {
+  "n": 96,
+  "id": "t-coeval",
+  "vue": "tablette",
+  "section": "La co-évaluation de la lecture",
+  "titre": "Julien n'a rien cliqué ; Michel a cliqué « ❌ » : « c'est laquelle ? ».",
+  "vh": null
+ },
+ {
+  "n": 97,
+  "id": "t-coeval-ecrit",
+  "vue": "tablette",
+  "section": "La co-évaluation de la lecture",
+  "titre": "Michel a cliqué la question 1 : « Qu'avais-tu écrit sur ta feuille ? » ; Julien a répondu « ✅ ».",
+  "vh": null
+ },
+ {
+  "n": 98,
+  "id": "t-coeval-daccord",
+  "vue": "tablette",
+  "section": "La co-évaluation de la lecture",
+  "titre": "Michel a cliqué ce que Julien avait lu : « vous êtes d'accord », retour aux trois choix.",
+  "vh": null
+ },
+ {
+  "n": 99,
+  "id": "c-coeval-attente",
+  "vue": "console",
+  "section": "La co-évaluation de la lecture",
+  "titre": "Ta console : l'alerte, dans l'ordre des faits ; « 🏁 » attend les 4 derniers.",
+  "vh": 1250
+ },
+ {
+  "n": 100,
+  "id": "c-coeval-feuille",
+  "vue": "console",
+  "section": "La co-évaluation de la lecture",
+  "titre": "« La feuille dit autre chose : je clique ce qu'elle dit ».",
+  "vh": 1250
+ },
+ {
+  "n": 101,
+  "id": "c-autonomie-michel",
+  "vue": "console",
+  "section": "La co-évaluation de la lecture",
+  "titre": "« ⛔ à Michel » : la garde.",
+  "vh": 1250
+ },
+ {
+  "n": 102,
+  "id": "c-autonomie-julien",
+  "vue": "console",
+  "section": "La co-évaluation de la lecture",
+  "titre": "« ⛔ à Julien » : la garde.",
+  "vh": 1250
+ },
+ {
+  "n": 103,
+  "id": "c-autonomie-deux",
+  "vue": "console",
+  "section": "La co-évaluation de la lecture",
+  "titre": "« ⛔ aux deux » : la garde.",
+  "vh": 1250
+ },
+ {
+  "n": 104,
+  "id": "c-coeval-retire-michel",
+  "vue": "console",
+  "section": "La co-évaluation de la lecture",
+  "titre": "Le point d'autonomie retiré à Michel : l'alerte reste à trancher.",
+  "vh": 1250
+ },
+ {
+  "n": 105,
+  "id": "c-coeval-retire-julien",
+  "vue": "console",
+  "section": "La co-évaluation de la lecture",
+  "titre": "Le point d'autonomie retiré à Julien : l'alerte reste à trancher.",
+  "vh": 1250
+ },
+ {
+  "n": 106,
+  "id": "c-coeval-retire-deux",
+  "vue": "console",
+  "section": "La co-évaluation de la lecture",
+  "titre": "« ⛔ aux deux » : les deux points retirés ; l'alerte reste à trancher.",
+  "vh": 1250
+ },
+ {
+  "n": 107,
+  "id": "c-coeval-tranche",
+  "vue": "console",
+  "section": "La co-évaluation de la lecture",
+  "titre": "L'alerte tranchée, tous ont répondu : « 🏁 Afficher leur bilan aux élèves » s'ouvre.",
+  "vh": null
+ },
+ {
+  "n": 108,
+  "id": "x610-6-coeval-laquelle",
+  "vue": "tablette",
+  "section": "La co-évaluation de la lecture",
+  "titre": "Le cas ambigu, sur l'évaluation de 3e : Michel a cliqué « ❌ » : « c'est laquelle ? ».",
+  "vh": null
+ },
+ {
+  "n": 109,
+  "id": "x610-7-coeval-ecrit",
+  "vue": "tablette",
+  "section": "La co-évaluation de la lecture",
+  "titre": "Michel a cliqué la question 3 : « Qu'avais-tu écrit sur ta feuille ? ».",
+  "vh": null
+ },
+ {
+  "n": 110,
+  "id": "x610-8-console-alerte",
+  "vue": "console",
+  "section": "La co-évaluation de la lecture",
+  "titre": "Ta console : l'alerte du cas ambigu, les trois lectures de la feuille.",
+  "vh": null
+ },
+ {
+  "n": 111,
+  "id": "x610-feuille",
+  "vue": "console",
+  "section": "La co-évaluation de la lecture",
+  "titre": "Le cas ambigu : « La feuille dit autre chose : je clique ce qu'elle dit » — C et E.",
+  "vh": 1300
+ },
+ {
+  "n": 112,
+  "id": "x610-autonomie-michel",
+  "vue": "console",
+  "section": "La co-évaluation de la lecture",
+  "titre": "« ⛔ à Michel » : la garde.",
+  "vh": 1300
+ },
+ {
+  "n": 113,
+  "id": "x610-autonomie-julien",
+  "vue": "console",
+  "section": "La co-évaluation de la lecture",
+  "titre": "« ⛔ à Julien » : la garde.",
+  "vh": 1300
+ },
+ {
+  "n": 114,
+  "id": "x610-autonomie-deux",
+  "vue": "console",
+  "section": "La co-évaluation de la lecture",
+  "titre": "« ⛔ aux deux », pour le cas où aucun n'a joué le jeu : la garde.",
+  "vh": 1300
+ },
+ {
+  "n": 115,
+  "id": "x610-tranche",
+  "vue": "console",
+  "section": "La co-évaluation de la lecture",
+  "titre": "Le cas ambigu tranché : « 🏁 Afficher leur bilan aux élèves » s'ouvre.",
+  "vh": null
+ },
+ {
+  "n": 116,
+  "id": "x610-9-telephone-alerte",
+  "vue": "telephone",
+  "section": "La co-évaluation de la lecture",
+  "titre": "Ton téléphone, au même moment.",
+  "vh": null
+ },
+ {
+  "n": 117,
+  "id": "t-bilan",
+  "vue": "tablette",
+  "section": "La fin de l'heure",
+  "titre": "Le bilan de chacun : « Ta note provisoire », les libellés élève, le ✓ orange, l'autonomie atteinte.",
+  "vh": null
+ },
+ {
+  "n": 118,
+  "id": "t-bilan-imprime",
+  "vue": "eleve",
+  "section": "La fin de l'heure",
+  "titre": "« 📄 Imprimer / Exporter mon bilan » : le bilan, tel qu'il s'imprime.",
+  "vh": null
+ },
+ {
+  "n": 119,
+  "id": "t-bilan-annulee",
+  "vue": "tablette",
+  "section": "La fin de l'heure",
+  "titre": "Si la question 2 avait été annulée : « Question 2 · annulée : elle ne compte pas. », la note sur 2.",
+  "vh": null
+ },
+ {
+  "n": 120,
+  "id": "t-bilan-non-atteinte",
+  "vue": "tablette",
+  "section": "La fin de l'heure",
+  "titre": "Après « ⛔ aux deux » : les deux compétences d'autonomie « non atteinte ».",
+  "vh": null
+ },
+ {
+  "n": 121,
+  "id": "c-bilan",
+  "vue": "console",
+  "section": "La fin de l'heure",
+  "titre": "Ton bilan de classe.",
+  "vh": null
+ },
+ {
+  "n": 122,
+  "id": "t-fin",
+  "vue": "tablette",
+  "section": "La fin de l'heure",
+  "titre": "Tu as terminé : la tablette revient à « Combien êtes-vous ? ».",
+  "vh": null
+ },
+ {
+  "n": 123,
+  "id": "c-papier-lancer",
+  "vue": "console",
+  "section": "La séance sur papier",
+  "titre": "« 📄 Séance sur papier » au lancement.",
+  "vh": null
+ },
+ {
+  "n": 124,
+  "id": "c-papier-seance",
+  "vue": "console",
+  "section": "La séance sur papier",
+  "titre": "La séance sur papier : les énoncés imprimés, puis « ⏸️ Feuilles ramassées ».",
+  "vh": null
+ },
+ {
+  "n": 125,
+  "id": "e-papier-enonces",
+  "vue": "eleve",
+  "section": "La séance sur papier",
+  "titre": "Les énoncés seuls, sur une page, avec les points.",
+  "vh": null
+ },
+ {
+  "n": 126,
+  "id": "c-papier-grille",
+  "vue": "console",
+  "section": "La séance sur papier",
+  "titre": "Le soir : la grille, un élève par ligne, un clic pour ✓ ou ✗.",
+  "vh": 1100
+ },
+ {
+  "n": 127,
+  "id": "c-papier-reprendre",
+  "vue": "console",
+  "section": "La séance sur papier",
+  "titre": "L'heure suivante : « ▶️ Reprendre la séance du 09/10 — correction ».",
+  "vh": null
+ },
+ {
+  "n": 128,
+  "id": "t-papier-estim",
+  "vue": "tablette",
+  "section": "La séance sur papier",
+  "titre": "Les binômes reprennent les tablettes : l'estimation.",
+  "vh": null
+ },
+ {
+  "n": 129,
+  "id": "t-papier-attest",
+  "vue": "tablette",
+  "section": "La séance sur papier",
+  "titre": "La seconde attestation, variante papier : chacun corrige sa feuille au stylo.",
+  "vh": null
+ },
+ {
+  "n": 130,
+  "id": "c-papier-correction",
+  "vue": "console",
+  "section": "La séance sur papier",
+  "titre": "Ta console : « 💡 Révéler » tout de suite, d'après ta grille.",
+  "vh": null
+ },
+ {
+  "n": 131,
+  "id": "t-papier-correction",
+  "vue": "tablette",
+  "section": "La séance sur papier",
+  "titre": "Chaque moitié montre ce que ta grille a retenu de la feuille, puis la réponse.",
+  "vh": null
+ },
+ {
+  "n": 132,
+  "id": "c-seances",
+  "vue": "console",
+  "section": "Le soir, sur ta console",
+  "titre": "Données → Résultats : les séances rangées par classe, un tri ; « publiée », « copies non rendues ».",
+  "vh": null
+ },
+ {
+  "n": 133,
+  "id": "c-resultats",
+  "vue": "console",
+  "section": "Le soir, sur ta console",
+  "titre": "Le tableau d'une séance : ✓, ✗, ⛔ ou ∅, la note, les compétences, l'autonomie, les feuilles à lire ; le PDF fermé.",
+  "vh": null
+ },
+ {
+  "n": 134,
+  "id": "c-fiche",
+  "vue": "console",
+  "section": "Le soir, sur ta console",
+  "titre": "La fiche de Michel : sa feuille lue par Julien, sa tablette, ce qu'il a dit ; « ⛔ Retirer le point d'autonomie » ; « 📝 Bilan général ».",
+  "vh": 1300
+ },
+ {
+  "n": 135,
+  "id": "c-fiche-garde",
+  "vue": "console",
+  "section": "Le soir, sur ta console",
+  "titre": "« ⛔ Retirer le point d'autonomie », le soir : la garde.",
+  "vh": 1100
+ },
+ {
+  "n": 136,
+  "id": "c-fiche-retire",
+  "vue": "console",
+  "section": "Le soir, sur ta console",
+  "titre": "Le point retiré, dans la fiche : « ↩️ Rendre ».",
+  "vh": null
+ },
+ {
+  "n": 137,
+  "id": "c-que-dit-la-feuille",
+  "vue": "console",
+  "section": "Le soir, sur ta console",
+  "titre": "« Que dit la feuille ? ».",
+  "vh": 1300
+ },
+ {
+  "n": 138,
+  "id": "c-seances-lues",
+  "vue": "console",
+  "section": "Le soir, sur ta console",
+  "titre": "Toutes les feuilles lues : « rendre les copies ▸ ».",
+  "vh": null
+ },
+ {
+  "n": 139,
+  "id": "c-rendre",
+  "vue": "console",
+  "section": "Le soir, sur ta console",
+  "titre": "« Rendre les copies » : la garde.",
+  "vh": 900
+ },
+ {
+  "n": 140,
+  "id": "c-copies-rendues",
+  "vue": "console",
+  "section": "Le soir, sur ta console",
+  "titre": "« copies rendues le 10/10 », « 🙈 Masquer les copies ».",
+  "vh": null
+ },
+ {
+  "n": 141,
+  "id": "c-resultats-rendues",
+  "vue": "console",
+  "section": "Le soir, sur ta console",
+  "titre": "Les copies rendues : le PDF s'ouvre.",
+  "vh": null
+ },
+ {
+  "n": 142,
+  "id": "x632-pdf",
+  "vue": "console",
+  "section": "Le soir, sur ta console",
+  "titre": "Le PDF « notes et compétences » (gen632.js).",
+  "vh": null
+ },
+ {
+  "n": 143,
+  "id": "c-corbeille",
+  "vue": "console",
+  "section": "Le soir, sur ta console",
+  "titre": "Mettre une séance à la corbeille.",
+  "vh": 900
+ },
+ {
+  "n": 144,
+  "id": "c-sauvegarde",
+  "vue": "console",
+  "section": "Le soir, sur ta console",
+  "titre": "Sauvegarde, avec la corbeille et les purges.",
+  "vh": null
+ },
+ {
+  "n": 145,
+  "id": "c-importer",
+  "vue": "console",
+  "section": "Le soir, sur ta console",
+  "titre": "« 📤 Importer snapshot » : la garde.",
+  "vh": 900
+ },
+ {
+  "n": 146,
+  "id": "c-purger",
+  "vue": "console",
+  "section": "Le soir, sur ta console",
+  "titre": "« Purger les évaluations » : la démo reste.",
+  "vh": 900
+ },
+ {
+  "n": 147,
+  "id": "e-mes-evals",
+  "vue": "eleve",
+  "section": "Côté élève, après la séance",
+  "titre": "« 📊 Mes évaluations », chez elle : « En relecture », « Tu étais absente ».",
+  "vh": null
+ },
+ {
+  "n": 148,
+  "id": "e-mes-evals-rendue",
+  "vue": "eleve",
+  "section": "Côté élève, après la séance",
+  "titre": "Sa copie rendue : la note définitive.",
+  "vh": null
+ },
+ {
+  "n": 149,
+  "id": "e-bilan-lou",
+  "vue": "eleve",
+  "section": "Côté élève, après la séance",
+  "titre": "Le bilan de Lou, corrigé d'après sa feuille, qui finit par « 📝 Bilan ».",
+  "vh": null
+ },
+ {
+  "n": 150,
+  "id": "c-reglages",
+  "vue": "console",
+  "section": "Réglages, et MJPC",
+  "titre": "Réglages, en cartes : la classe, le prompt, les durées de la séance, les niveaux de maîtrise, les textes.",
+  "vh": null
+ },
+ {
+  "n": 151,
+  "id": "c-reglages-prompt",
+  "vue": "console",
+  "section": "Réglages, et MJPC",
+  "titre": "Le prompt de création d'éval, tel que l'app le copie : le chapitre et ses compétences, les difficultés, les durées et les limites de longueur à la place des jetons.",
+  "vh": 1000
+ },
+ {
+  "n": 152,
+  "id": "c-reglages-prompt-modifier",
+  "vue": "console",
+  "section": "Réglages, et MJPC",
+  "titre": "Le prompt en modification : le gabarit enregistré, jetons compris ; « 💾 Enregistrer », « ↩️ Annuler », « 🔄 Restaurer le prompt par défaut ».",
+  "vh": 1000
+ },
+ {
+  "n": 153,
+  "id": "m-classe-exclusions",
+  "vue": "console",
+  "section": "Réglages, et MJPC",
+  "titre": "MJPC, Élèves & codes, comme dans le site : la clé saisie, l'import, chaque élève avec « 🚫 Jamais avec… » après le ◆.",
+  "vh": 1900
+ },
+ {
+  "n": 154,
+  "id": "m-exclusion-refusee",
+  "vue": "console",
+  "section": "Réglages, et MJPC",
+  "titre": "Une quatrième exclusion : refusée, avec la raison.",
+  "vh": 1900
+ },
+ {
+  "n": 155,
+  "id": "m-fiche-eleve",
+  "vue": "console",
+  "section": "Réglages, et MJPC",
+  "titre": "Un clic sur un nom : la fiche de l'élève, telle qu'elle est dans le site (sexe, dispositif, cases PAP).",
+  "vh": 1500
+ },
+ {
+  "n": 156,
+  "id": "m-taxonomie",
+  "vue": "console",
+  "section": "Réglages, et MJPC",
+  "titre": "MJPC, Taxonomie : le référentiel, l'éditeur fermé.",
+  "vh": null
+ },
+ {
+  "n": 157,
+  "id": "m-taxonomie-editeur",
+  "vue": "console",
+  "section": "Réglages, et MJPC",
+  "titre": "« Ouvrir l'éditeur » : la vraie taxonomie, version 1.4.0, ses 7 domaines ; puis « Les compétences ».",
+  "vh": 1100
+ },
+ {
+  "n": 158,
+  "id": "m-taxonomie-domaine",
+  "vue": "console",
+  "section": "Réglages, et MJPC",
+  "titre": "Un domaine ouvert, une famille ouverte : ses notions, « ✏️ Modifier », « Désactiver », « + Nouvelle notion ».",
+  "vh": 1500
+ },
+ {
+  "n": 159,
+  "id": "m-taxonomie-notion",
+  "vue": "console",
+  "section": "Réglages, et MJPC",
+  "titre": "« ✏️ Modifier » une notion : ses libellés, ses niveaux, son exemple.",
+  "vh": 1500
+ },
+ {
+  "n": 160,
+  "id": "m-taxonomie-competences",
+  "vue": "console",
+  "section": "Réglages, et MJPC",
+  "titre": "« Les compétences » : les 28, sous leurs groupes, avec leur libellé élève.",
+  "vh": 2600
+ },
+ {
+  "n": 161,
+  "id": "m-taxonomie-competence",
+  "vue": "console",
+  "section": "Réglages, et MJPC",
+  "titre": "« ✏️ Modifier » une compétence : le même formulaire, avec son libellé élève.",
+  "vh": 1500
+ },
+ {
+  "n": 162,
+  "id": "m-emploi-du-temps",
+  "vue": "console",
+  "section": "Réglages, et MJPC",
+  "titre": "MJPC, Emploi du temps, avec les objets de l'année : la rangée d'aujourd'hui en trois groupes, l'un sous l'autre.",
+  "vh": 1200
+ },
+ {
+  "n": 163,
+  "id": "m-emploi-du-temps-un",
+  "vue": "console",
+  "section": "Réglages, et MJPC",
+  "titre": "« ⤓ Sortir le JSON », un objet coché : le geste d'aujourd'hui, le même message.",
+  "vh": 1200
+ },
+ {
+  "n": 164,
+  "id": "m-emploi-du-temps-tous",
+  "vue": "console",
+  "section": "Réglages, et MJPC",
+  "titre": "Tous les objets cochés : un seul JSON, chacun sous son identifiant.",
+  "vh": 1200
+ },
+ {
+  "n": 165,
+  "id": "c-rattrapage",
+  "vue": "console",
+  "section": "Une autre séance",
+  "titre": "Le rattrapage.",
+  "vh": null
+ },
+ {
+  "n": 166,
+  "id": "x620-1-mode-test-ouverture",
+  "vue": "console",
+  "section": "Le mode test",
+  "titre": "Le mode test, à l'ouverture : ta vraie console d'avant l'heure, 15 tablettes.",
+  "vh": null
+ },
+ {
+  "n": 167,
+  "id": "x620-2-mode-test-reflexion",
+  "vue": "console",
+  "section": "Le mode test",
+  "titre": "Le mode test, pendant la réflexion.",
+  "vh": null
+ },
+ {
+  "n": 168,
+  "id": "x620-3-mode-test-en-grand",
+  "vue": "console",
+  "section": "Le mode test",
+  "titre": "« 🔍 Jouer en grand ».",
+  "vh": 1150
+ },
+ {
+  "n": 169,
+  "id": "t-annexe",
+  "vue": "tablette",
+  "section": "Annexe : la demi-tablette",
+  "titre": "L'étalon des mesures : la vraie question 3 de l'évaluation de 3e (6 choix longs), sur une demi-tablette : 67 px de reste.",
+  "vh": null
+ }
+]

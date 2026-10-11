@@ -1,0 +1,573 @@
+«📖 Mode d'emploi»
+   → c-mode-emploi [console n64] ← 1,2,3,4,7,8,9,10,11,21,24,27,28,30,32,36,38,39,40,45,46,47,48,49,50,57,58,59,60,61,63,64,65,66,67,68,69,71,74,76,79,80,85,89,92,93,94,99,100,101,102,103,104,105,106,107,110,111,112,113,114,115,121,123,124,126,127,130,132,133,134,135,136,137,138,139,140,141,143,144,145,146,150,151,152,165
+«📺 Ouvrir vue tableau»
+   → b-reponse [tableau n31] ← 1,2,3,4,7,8,9,10,11,21,24,27,28,30,32,36,38,39,40,45,46,47,48,49,50,57,58,59,60,61,63,64,65,66,67,68,69,71,74,76,79,80,85,89,92,93,94,99,100,101,102,103,104,105,106,107,110,111,112,113,114,115,121,123,124,126,127,130,132,133,134,135,136,137,138,139,140,141,143,144,145,146,150,151,152,165
+«📱 QR pilotage»
+   → c-qr [console n30] ← 1,2,3,4,7,8,9,10,11,21,24,27,28,30,32,36,38,39,40,45,46,47,48,49,50,57,58,59,60,61,63,64,65,66,67,68,69,71,74,76,79,80,85,89,92,93,94,99,100,101,102,103,104,105,106,107,110,111,112,113,114,115,121,123,124,126,127,130,132,133,134,135,136,137,138,139,140,141,143,144,145,146,150,151,152,165,166,167,168
+«🧪 Mode test»
+   → x620-1-mode-test-ouverture [console n166] ← 1,2,3,4,7,8,9,10,11,21,24,27,28,30,32,36,38,39,40,45,46,47,48,49,50,57,58,59,60,61,63,64,65,66,67,68,69,71,74,76,79,80,85,89,92,93,94,99,100,101,102,103,104,105,106,107,110,111,112,113,114,115,121,123,124,126,127,130,132,133,134,135,136,137,138,139,140,141,143,144,145,146,150,151,152,165
+«← Retour»
+   → c-accueil [eleve n6] ← 1,2,3,4,7,8,9,10,11,21,24,27,28,30,32,36,38,39,40,45,46,47,48,49,50,57,58,59,60,61,63,64,65,66,67,68,69,71,74,76,79,80,85,89,92,93,94,99,100,101,102,103,104,105,106,107,110,111,112,113,114,115,121,123,124,126,127,130,132,133,134,135,136,137,138,139,140,141,143,144,145,146,147,148,150,151,152,165
+   → c-seances [console n132] ← 126,133
+   → c-copies-rendues [console n140] ← 141
+«Pilotage»
+   → c-lancer [console n7] ← 1,2,3,4,7,8,9,10,11,21,24,27,28,30,32,36,38,39,40,45,46,47,48,49,50,57,58,59,60,61,63,64,65,66,67,68,69,71,74,76,79,80,85,89,92,93,94,99,100,101,102,103,104,105,106,107,110,111,112,113,114,115,121,123,124,126,127,130,132,133,134,135,136,137,138,139,140,141,143,144,145,146,150,151,152,165
+«Données»
+   → c-seances [console n132] ← 1,2,3,4,7,8,9,10,11,21,24,27,28,30,32,36,38,39,40,45,46,47,48,49,50,57,58,59,60,61,63,64,65,66,67,68,69,71,74,76,79,80,85,89,92,93,94,99,100,101,102,103,104,105,106,107,110,111,112,113,114,115,121,123,124,126,127,130,132,133,134,135,136,137,138,139,140,141,143,144,145,146,150,151,152,165
+«Réglages»
+   → c-reglages [console n150] ← 1,2,3,4,7,8,9,10,11,21,24,27,28,30,32,36,38,39,40,45,46,47,48,49,50,57,58,59,60,61,63,64,65,66,67,68,69,71,74,76,79,80,85,89,92,93,94,99,100,101,102,103,104,105,106,107,110,111,112,113,114,115,121,123,124,126,127,130,132,133,134,135,136,137,138,139,140,141,143,144,145,146,150,151,152,165
+«?»
+   → c-mode-emploi [console n64] ← 1,2,3,4,7,8,9,10,11,21,24,27,28,30,32,36,38,39,40,45,46,47,48,49,50,57,58,59,60,61,63,64,65,66,67,68,69,71,74,76,79,80,85,89,92,93,94,99,100,101,102,103,104,105,106,107,110,111,112,113,114,115,121,123,124,126,127,130,132,133,134,135,136,137,138,139,140,141,143,144,145,146,150,151,152,165
+«📝 Évaluations»
+   → c-evals [console n1] ← 1,2,3,4,7,8,9,10,11,21,24,27,28,30,32,36,38,39,40,45,46,47,48,49,50,57,58,59,60,61,63,64,65,66,67,68,69,71,74,76,79,80,85,89,92,93,94,99,100,101,102,103,104,105,106,107,110,111,112,113,114,115,121,123,124,127,130,165
+«🎯 Pilotage classe»
+   → c-lancer [console n7] ← 1,2,3,4,7,8,9,10,11,21,24,27,28,30,32,36,38,39,40,45,46,47,48,49,50,57,58,59,60,61,63,64,65,66,67,68,69,71,74,76,79,80,85,89,92,93,94,99,100,101,102,103,104,105,106,107,110,111,112,113,114,115,121,123,124,127,130,165
+«🤖 Prompt IA»
+   → c-reglages-prompt [console n151] ← 1,2,3,4,150,151,152
+«➕ Nouvelle évaluation»
+   → c-collage [console n3] ← 1,2,3,4
+«🖨️ Imprimer»
+   → c-feuille [console n5] ← 1,2,3,4
+«✏️ Modifier»
+   → x627-3-editeur [console n4] ← 1,2,3,4
+«🗑️»
+   → c-eval-corbeille [console n2] ← 1,2,3,4
+   → c-corbeille [console n143] ← 132,138,139,140,143
+«✏️ Compléter»
+   → x627-3-editeur [console n4] ← 1,2,3,4
+«Annuler»
+   → c-evals [console n1] ← 2
+   → c-lancer [console n7] ← 9,67
+   → c-q1-close [console n38] ← 39
+   → c-q2-close [console n46] ← 47,49,50
+   → c-q1-tour1 [console n27] ← 58,63,65
+   → c-parti [console n59] ← 60
+   → c-autonomie [console n92] ← 93
+   → c-coeval-attente [console n99] ← 100,101,102,103
+   → x610-8-console-alerte [console n110] ← 111,112,113,114
+   → c-fiche [console n134] ← 135,137
+   → c-seances-lues [console n138] ← 139
+   → c-seances [console n132] ← 143
+   → c-sauvegarde [console n144] ← 145,146
+«🗑️ Mettre à la corbeille»
+   → c-sauvegarde [console n144] ← 2,143
+«✕»
+   → c-evals [console n1] ← 3,4
+   → c-q1-tour1 [console n27] ← 30,68
+   → c-q2-close [console n46] ← 52
+   → c-lancer [console n7] ← 64
+   → p-corr-apres [telephone n81] ← 95
+   → c-reglages [console n150] ← 151,152,153,154,155,156,157,158,159,160,161,162,163,164
+«✨ Démarrer à blanc»
+   → x627-3-editeur [console n4] ← 3
+«✕ Fermer»
+   → c-evals [console n1] ← 5
+   → c-q1-tour1 [console n27] ← 28
+   → c-corr-q2-apres [console n80] ← 92,94
+   → c-resultats [console n133] ← 134,135,136,137
+«🎓 Mode élève»
+   → t-combien [tablette n12] ← 6
+«Accès professeur»
+   → c-evals [console n1] ← 6
+«📱 Sur tablettes»
+   → c-lancer [console n7] ← 7,8,9,11,64,66,67,69,123,127
+«📄 Séance sur papier»
+   → c-papier-lancer [console n123] ← 7,8,9,11,64,66,67,69,123,127
+«🚀 Lancer la session»
+   → c-appel [console n9] ← 7,8,9,11,64,66,67,69,127
+   → c-pret [console n21] ← 9
+   → x620-2-mode-test-reflexion [console n167] ← 166
+«🔓 Rouvrir»
+   → c-rouvrir-seance [console n67] ← 7,8,9,10,11,64,66,67,69,123,127
+«📊 Résultats»
+   → c-resultats [console n133] ← 7,8,9,10,11,64,66,67,69,123,127,165
+   → c-seances [console n132] ← 126,132,133,134,135,136,137,138,139,140,141,143,144,145,146
+«🎓 Lancer la démo»
+   → t-demo-q [tablette n22] ← 10
+«👤 1 élève»
+   → t-un-eleve [tablette n13] ← 12,122,166
+«👥 2 élèves»
+   → t-login [tablette n14] ← 12,122,166
+«Oui»
+   → t-attest-1 [tablette n18] ← 13
+«Non»
+   → t-login [tablette n14] ← 13
+«Entrer →»
+   → t-binome [tablette n16] ← 14,15
+«📊 Mes évaluations»
+   → e-mes-evals [eleve n147] ← 16,17,18,19,20,22,23,25,26,33,34,35,37,41,42,43,44,51,53,55,62,70,73,75,83,84,86,87,88,91,96,97,98,117,119,120,128,129,131,169
+«Entrer»
+   → t-attest-1 [tablette n18] ← 16
+«Pas là ? Choisir un autre élève»
+   → t-login [tablette n14] ← 16
+«Je commence»
+   → t-pret [tablette n20] ← 19
+«🔴1 session en cours»
+   → c-sessions [console n68] ← 21,24,27,28,30,32,36,38,39,40,45,46,47,48,49,50,57,58,59,60,61,63,65,68,71,74,76,79,80,85,89,92,93,94,99,100,101,102,103,104,105,106,107,110,111,112,113,114,115,121,124,130
+«🚫 Départ d'un élève»
+   → c-depart [console n58] ← 21,24,27,28,30,32,36,38,39,40,45,46,47,48,49,50,57,58,59,60,61,63,65,68,74,76,79,80,85,89,92,93,94,99,100,101,102,103,104,105,106,107,110,111,112,113,114,115,130,167,168
+«↩️ Retour d'un élève»
+   → c-retour [console n60] ← 21,24,27,28,30,32,36,38,39,40,45,46,47,48,49,50,57,58,59,60,61,63,65,68,167,168
+«🔓 Rouvrir pour un élève»
+   → c-rouvrir-un [console n50] ← 21,24,27,28,30,32,36,38,39,40,45,46,47,48,49,50,57,58,59,60,61,63,65,68,167,168
+«⏸️ Finir à une autre heure»
+   → c-finir-autre-heure [console n65] ← 21,24,27,28,30,32,36,38,39,40,45,46,47,48,49,50,57,58,59,60,61,63,65,68,71,74,76,79,80,85,89,92,93,94,99,100,101,102,103,104,105,106,107,110,111,112,113,114,115,167,168
+   → c-reprendre [console n66] ← 65,69
+«🛑 Terminer la session»
+   → c-terminer [console n63] ← 21,24,27,28,29,30,32,36,38,39,40,45,46,47,48,49,50,52,57,58,59,60,61,63,65,68,71,74,76,77,79,80,81,85,89,92,93,94,95,99,100,101,102,103,104,105,106,107,110,111,112,113,114,115,116,121,124,130,167,168
+«▶️ Lancer Q1»
+   → c-q1-reflexion [console n24] ← 21
+«👁»
+   → c-voir-tablette [console n28] ← 21,24,27,28,30,32,36,38,39,40,45,46,47,48,49,50,57,58,59,60,61,63,65,68,74,76,79,80,85,89,92,93,94,99,100,101,102,103,104,105,106,107,110,111,112,113,114,115,130,167,168
+«❌ Écarter»
+   → c-ecarter [console n39] ← 21,24,27,28,29,30,32,36,38,39,40,45,46,47,48,49,50,58,59,60,61,63,65,68,167,168
+«✋ Autoriser la réponse»
+   → c-q1-tour1 [console n27] ← 24,167
+«⏭️ Tour suivant»
+   → c-q1-tour2 [console n36] ← 27,28,30,32,58,59,60,63,65,68,168
+   → t-q1-passage2 [tablette n33] ← 29
+«ABRIAL Julien✓»
+   → p-eleve [telephone n52] ← 29
+«DUVERNAY Michel🙈»
+   → p-eleve [telephone n52] ← 29
+«BAUDRY Léa✓»
+   → p-eleve [telephone n52] ← 29,81
+«CARRÉ Tom🙈»
+   → p-eleve [telephone n52] ← 29
+«ESNAULT Inès✓»
+   → p-eleve [telephone n52] ← 29,81
+«FOUCHER Hugo🙈»
+   → p-eleve [telephone n52] ← 29
+«GALLOIS Manon✓»
+   → p-eleve [telephone n52] ← 29,81
+«HÉBRARD Nathan🙈»
+   → p-eleve [telephone n52] ← 29
+«ISAMBERT Chloé✓»
+   → p-eleve [telephone n52] ← 29,81
+«JOUBERT Louis🙈»
+   → p-eleve [telephone n52] ← 29
+«LACOMBE Emma✓»
+   → p-eleve [telephone n52] ← 29,81
+«MAILLARD Noah🙈»
+   → p-eleve [telephone n52] ← 29
+«NOGARET Zoé✓»
+   → p-eleve [telephone n52] ← 29
+«OLLIVIER Sacha🙈»
+   → p-eleve [telephone n52] ← 29
+«PERRAUD Jade⏳»
+   → p-eleve [telephone n52] ← 29
+«QUINTON Enzo🙈»
+   → p-eleve [telephone n52] ← 29
+«RAMBAUD Lina✓»
+   → p-eleve [telephone n52] ← 29,81
+«SABATIER Malo🙈»
+   → p-eleve [telephone n52] ← 29
+«TESSIER Anna⏳»
+   → p-eleve [telephone n52] ← 29
+«VALLÉE Rayan🙈»
+   → p-eleve [telephone n52] ← 29
+«WEBER Clara✓»
+   → p-eleve [telephone n52] ← 29,81
+«BRUNEAU Camille🙈»
+   → p-eleve [telephone n52] ← 29
+«CHEVALLIER Théo✓»
+   → p-eleve [telephone n52] ← 29
+«ZELLER Lou🙈»
+   → p-eleve [telephone n52] ← 29
+«📱 Voir le téléphone»
+   → p-reponse [telephone n29] ← 30
+«🔒 Clore la question»
+   → c-q1-close [console n38] ← 36
+   → c-q2-close [console n46] ← 45
+«▶️ Lancer Q2»
+   → t-q2-reflexion [tablette n42] ← 38,39,40,61
+«⚠️ Annuler»
+   → c-annuler [console n47] ← 38,39,40,45,46,47,48,49,50,57,61
+«❌ Écarter la question 3»
+   → c-ecartee [console n40] ← 39
+«↩️ Remettre»
+   → c-q1-close [console n38] ← 40
+   → c-q2-close [console n46] ← 48
+«▶️ Lancer Q3»
+   → t-q3-tour1 [tablette n53] ← 46,47,48,49,50
+«🔓 Rouvrir pour tous»
+   → c-rouvrir-tous [console n49] ← 46,47,48,49,50
+«⚠️ Annuler la question 2»
+   → c-annulee [console n48] ← 47
+«🔓 Rouvrir pour ceux qui n'ont pas répondu»
+   → t-rouvrir-un [tablette n51] ← 49
+«🔓 Rouvrir pour Théo»
+   → t-rouvrir-un [tablette n51] ← 50
+«🚀 Lancer Q3»
+   → t-q3-tour1 [tablette n53] ← 52
+«🔓 Rouvrir Q2»
+   → c-rouvrir-tous [console n49] ← 52
+«🔁 Rouvrir Q2 pour cet élève uniquement (une seule fois)»
+   → t-rouvrir-un [tablette n51] ← 52
+«🚫 Marquer comme parti en cours de séance»
+   → c-parti [console n59] ← 52
+   → c-depart [console n58] ← 95
+«📊 Lancer l'autoévaluation»
+   → c-estim [console n71] ← 57
+«🚫 Parti»
+   → c-parti [console n59] ← 58
+«↩️ Revenu»
+   → c-q1-tour1 [console n27] ← 60
+«🛑 Terminer la séance»
+   → t-fin [tablette n122] ← 63
+«✓ J'ai compris»
+   → c-lancer [console n7] ← 64
+«▶️ Reprendre la séance du 09/10 — question 1, 1er tour»
+   → c-appel [console n9] ← 66
+«🔓 Rouvrir la séance»
+   → c-appel [console n9] ← 67
+«🎯 Aller au pilotage»
+   → c-q1-tour1 [console n27] ← 68
+«🛑 Terminer»
+   → c-terminer [console n63] ← 68
+«🛑 Terminer définitivement»
+   → c-terminer [console n63] ← 69
+«🔄 Reprendre la session»
+   → c-q2-tour2 [console n45] ← 69
+«📝 Lancer la correction»
+   → c-attest2 [console n74] ← 71
+«Question suivante →»
+   → t-corr-q3-lecture [tablette n84] ← 76,79,80,81,92,93,94,95
+   → t-corr-q1-lecture [tablette n87] ← 85
+«ABRIAL Julien»
+   → c-autonomie [console n92] ← 76,79,80,85,89,92,93,94,99,100,101,102,103,104,105,106,107,110,111,112,113,114,115,130
+   → m-fiche-eleve [console n155] ← 153,154
+«DUVERNAY Michel»
+   → c-autonomie [console n92] ← 76,79,80,85,89,92,93,94,99,100,101,102,103,104,105,106,107,110,111,112,113,114,115,130
+   → c-fiche [console n134] ← 133,141
+   → m-fiche-eleve [console n155] ← 153,154
+«BAUDRY Léa»
+   → c-autonomie [console n92] ← 76,79,80,85,89,92,93,94,99,100,101,102,103,104,105,106,107,110,111,112,113,114,115,130
+   → m-fiche-eleve [console n155] ← 153,154
+«CARRÉ Tom»
+   → c-autonomie [console n92] ← 76,79,80,85,89,92,93,94,99,100,101,102,103,104,105,106,107,110,111,112,113,114,115,130
+   → m-fiche-eleve [console n155] ← 153,154
+«ESNAULT Inès»
+   → c-autonomie [console n92] ← 76,79,80,85,89,92,93,94,99,100,101,102,103,104,105,106,107,110,111,112,113,114,115,130
+   → m-fiche-eleve [console n155] ← 153,154
+«FOUCHER Hugo»
+   → c-autonomie [console n92] ← 76,79,80,85,89,92,93,94,99,100,101,102,103,104,105,106,107,110,111,112,113,114,115,130
+   → m-fiche-eleve [console n155] ← 153,154
+«GALLOIS Manon»
+   → c-autonomie [console n92] ← 76,79,80,85,89,92,93,94,99,100,101,102,103,104,105,106,107,110,111,112,113,114,115,130
+   → m-fiche-eleve [console n155] ← 153,154
+«HÉBRARD Nathan»
+   → c-autonomie [console n92] ← 76,79,80,85,89,92,93,94,99,100,101,102,103,104,105,106,107,110,111,112,113,114,115,130
+   → m-fiche-eleve [console n155] ← 153,154
+«ISAMBERT Chloé»
+   → c-autonomie [console n92] ← 76,79,80,85,89,92,93,94,99,100,101,102,103,104,105,106,107,110,111,112,113,114,115,130
+   → m-fiche-eleve [console n155] ← 153,154
+«JOUBERT Louis»
+   → c-autonomie [console n92] ← 76,79,80,85,89,92,93,94,99,100,101,102,103,104,105,106,107,110,111,112,113,114,115,130
+   → m-fiche-eleve [console n155] ← 153,154
+«LACOMBE Emma»
+   → c-autonomie [console n92] ← 76,79,80,85,89,92,93,94,99,100,101,102,103,104,105,106,107,110,111,112,113,114,115,130
+   → m-fiche-eleve [console n155] ← 153,154
+«MAILLARD Noah»
+   → c-autonomie [console n92] ← 76,79,80,85,89,92,93,94,99,100,101,102,103,104,105,106,107,110,111,112,113,114,115,130
+   → m-fiche-eleve [console n155] ← 153,154
+«NOGARET Zoé»
+   → c-autonomie [console n92] ← 76,79,80,85,89,92,93,94,99,100,101,102,103,104,105,106,107,110,111,112,113,114,115,130
+   → m-fiche-eleve [console n155] ← 153,154
+«OLLIVIER Sacha»
+   → c-autonomie [console n92] ← 76,79,80,85,89,92,93,94,99,100,101,102,103,104,105,106,107,110,111,112,113,114,115,130
+   → m-fiche-eleve [console n155] ← 153,154
+«PERRAUD Jade»
+   → c-autonomie [console n92] ← 76,79,80,85,89,92,93,94,99,100,101,102,103,104,105,106,107,110,111,112,113,114,115,130
+   → m-fiche-eleve [console n155] ← 153,154
+«QUINTON Enzo»
+   → c-autonomie [console n92] ← 76,79,80,85,89,92,93,94,99,100,101,102,103,104,105,106,107,110,111,112,113,114,115,130
+   → m-fiche-eleve [console n155] ← 153,154
+«RAMBAUD Lina»
+   → c-autonomie [console n92] ← 76,79,80,85,89,92,93,94,99,100,101,102,103,104,105,106,107,110,111,112,113,114,115,130
+   → m-fiche-eleve [console n155] ← 153,154
+«SABATIER Malo»
+   → c-autonomie [console n92] ← 76,79,80,85,89,92,93,94,99,100,101,102,103,104,105,106,107,110,111,112,113,114,115,130
+   → m-fiche-eleve [console n155] ← 153,154
+«TESSIER Anna»
+   → c-autonomie [console n92] ← 76,79,80,85,89,92,93,94,99,100,101,102,103,104,105,106,107,110,111,112,113,114,115,130
+   → m-fiche-eleve [console n155] ← 153,154
+«VALLÉE Rayan»
+   → c-autonomie [console n92] ← 76,79,80,85,89,92,93,94,99,100,101,102,103,104,105,106,107,110,111,112,113,114,115,130
+   → m-fiche-eleve [console n155] ← 153,154
+«WEBER Clara»
+   → c-autonomie [console n92] ← 76,79,80,85,89,92,93,94,99,100,101,102,103,104,105,106,107,110,111,112,113,114,115,130
+   → m-fiche-eleve [console n155] ← 153,154
+«BRUNEAU Camille»
+   → c-autonomie [console n92] ← 76,79,80,85,89,92,93,94,99,100,101,102,103,104,105,106,107,110,111,112,113,114,115,130
+   → m-fiche-eleve [console n155] ← 153,154
+«CHEVALLIER Théo»
+   → c-autonomie [console n92] ← 76,79,80,85,89,92,93,94,99,100,101,102,103,104,105,106,107,110,111,112,113,114,115,130
+   → m-fiche-eleve [console n155] ← 153,154
+«ZELLER Lou»
+   → c-autonomie [console n92] ← 76,79,80,85,89,92,93,94,99,100,101,102,103,104,105,106,107,110,111,112,113,114,115,130
+   → m-fiche-eleve [console n155] ← 153,154
+«ABRIAL Julien📄»
+   → p-eleve [telephone n52] ← 77
+«DUVERNAY Michel⏳»
+   → p-eleve [telephone n52] ← 77
+«BAUDRY Léa📄»
+   → p-eleve [telephone n52] ← 77
+«CARRÉ Tom⏳»
+   → p-eleve [telephone n52] ← 77,116
+«ESNAULT Inès📄»
+   → p-eleve [telephone n52] ← 77
+«FOUCHER Hugo⏳»
+   → p-eleve [telephone n52] ← 77
+«GALLOIS Manon📄»
+   → p-eleve [telephone n52] ← 77
+«HÉBRARD Nathan📄»
+   → p-eleve [telephone n52] ← 77
+«ISAMBERT Chloé📄»
+   → p-eleve [telephone n52] ← 77
+«JOUBERT Louis📄»
+   → p-eleve [telephone n52] ← 77
+«LACOMBE Emma📄»
+   → p-eleve [telephone n52] ← 77
+«MAILLARD Noah📄»
+   → p-eleve [telephone n52] ← 77
+«NOGARET Zoé📄»
+   → p-eleve [telephone n52] ← 77
+«OLLIVIER Sacha⏳»
+   → p-eleve [telephone n52] ← 77,116
+«PERRAUD Jade📄»
+   → p-eleve [telephone n52] ← 77
+«QUINTON Enzo📄»
+   → p-eleve [telephone n52] ← 77
+«RAMBAUD Lina📄»
+   → p-eleve [telephone n52] ← 77
+«SABATIER Malo📄»
+   → p-eleve [telephone n52] ← 77
+«TESSIER Anna📄»
+   → p-eleve [telephone n52] ← 77
+«VALLÉE Rayan⏳»
+   → p-eleve [telephone n52] ← 77,116
+«WEBER Clara📄»
+   → p-eleve [telephone n52] ← 77
+«BRUNEAU Camille📄»
+   → p-eleve [telephone n52] ← 77
+«CHEVALLIER Théo⏳»
+   → p-eleve [telephone n52] ← 77
+«ZELLER Lou📄»
+   → p-eleve [telephone n52] ← 77
+«💡 Révéler»
+   → t-corr-q2-apres [tablette n83] ← 79
+   → t-papier-correction [tablette n131] ← 130
+«ABRIAL Julien⛔»
+   → p-eleve [telephone n52] ← 81
+«DUVERNAY Michel✗»
+   → p-eleve [telephone n52] ← 81
+«CARRÉ Tom✗»
+   → p-eleve [telephone n52] ← 81
+«FOUCHER Hugo✗»
+   → p-eleve [telephone n52] ← 81
+«HÉBRARD Nathan✗»
+   → p-eleve [telephone n52] ← 81
+«JOUBERT Louis✗»
+   → p-eleve [telephone n52] ← 81
+«MAILLARD Noah✗»
+   → p-eleve [telephone n52] ← 81
+«NOGARET Zoé⛔»
+   → p-eleve [telephone n52] ← 81
+«OLLIVIER Sacha✗»
+   → p-eleve [telephone n52] ← 81
+«PERRAUD Jade✗»
+   → p-eleve [telephone n52] ← 81
+«QUINTON Enzo✗»
+   → p-eleve [telephone n52] ← 81
+«SABATIER Malo✗»
+   → p-eleve [telephone n52] ← 81
+«TESSIER Anna⚠️✗»
+   → p-eleve [telephone n52] ← 81
+«VALLÉE Rayan✗»
+   → p-eleve [telephone n52] ← 81
+«BRUNEAU Camille✓»
+   → p-eleve [telephone n52] ← 81
+«CHEVALLIER Théo✗»
+   → p-eleve [telephone n52] ← 81
+«ZELLER Lou✗»
+   → p-eleve [telephone n52] ← 81
+«← Question précédente»
+   → t-corr-q2-apres [tablette n83] ← 85,89
+«🏁 Afficher leur bilan aux élèves»
+   → c-coeval-attente [console n99] ← 89
+   → t-bilan [tablette n117] ← 107,115
+«🚫 Marquer comme parti»
+   → c-depart [console n58] ← 92
+«⛔ Retirer le point d'autonomie»
+   → c-autonomie-garde [console n93] ← 92,95
+   → c-autonomie-retiree [console n94] ← 93
+   → c-coeval-retire-michel [console n104] ← 101
+   → c-coeval-retire-julien [console n105] ← 102
+   → c-coeval-retire-deux [console n106] ← 103
+   → x610-tranche [console n115] ← 112,113,114
+   → c-fiche-garde [console n135] ← 134,135,137
+   → c-fiche-retire [console n136] ← 135
+«↩️ Rendre»
+   → c-corr-q2-apres [console n80] ← 94
+   → c-fiche [console n134] ← 136
+«Donner raison à Michel : Rome → 1 point»
+   → c-coeval-tranche [console n107] ← 99,100,101,102,103,104,105,106
+«Donner raison à Julien : Venise → 0 point»
+   → c-coeval-tranche [console n107] ← 99,100,101,102,103,104,105,106
+«La feuille dit autre chose : je clique ce qu'elle dit»
+   → c-coeval-feuille [console n100] ← 99,100,101,102,103,104,105,106
+   → x610-feuille [console n111] ← 110,116
+«📌 Je relis ce soir la question 1»
+   → c-coeval-tranche [console n107] ← 99,100,101,102,103,104,105,106
+«⛔ à Michel»
+   → c-autonomie-michel [console n101] ← 99,100,101,102,103,104,105,106
+   → x610-autonomie-michel [console n112] ← 110
+«⛔ à Julien»
+   → c-autonomie-julien [console n102] ← 99,100,101,102,103,104,105,106
+   → x610-autonomie-julien [console n113] ← 110
+«⛔ aux deux»
+   → c-autonomie-deux [console n103] ← 99,100,101,102,103,104,105,106
+   → x610-autonomie-deux [console n114] ← 110
+«Valider»
+   → c-coeval-tranche [console n107] ← 100
+   → x610-tranche [console n115] ← 111
+   → c-fiche [console n134] ← 137
+«↩️ Défaire»
+   → c-coeval-attente [console n99] ← 107
+   → x610-8-console-alerte [console n110] ← 115
+«Donner raison à Michel : B, C, E → 1 point»
+   → x610-tranche [console n115] ← 110,116
+«Donner raison à Julien : E → 0 point»
+   → x610-tranche [console n115] ← 110,116
+«📌 Je relis ce soir la question 3»
+   → x610-tranche [console n115] ← 110,116
+«⛔ Michel»
+   → x610-autonomie-michel [console n112] ← 116
+«⛔ Julien»
+   → x610-autonomie-julien [console n113] ← 116
+«⛔ Aux deux»
+   → x610-autonomie-deux [console n114] ← 116
+«ABRIAL Julien✅»
+   → p-eleve [telephone n52] ← 116
+«DUVERNAY Michel❌ Q3»
+   → p-eleve [telephone n52] ← 116
+«BAUDRY Léa✅»
+   → p-eleve [telephone n52] ← 116
+«ESNAULT Inès✅»
+   → p-eleve [telephone n52] ← 116
+«FOUCHER Hugo✅»
+   → p-eleve [telephone n52] ← 116
+«GALLOIS Manon✅»
+   → p-eleve [telephone n52] ← 116
+«HÉBRARD Nathan✅»
+   → p-eleve [telephone n52] ← 116
+«ISAMBERT Chloé✅»
+   → p-eleve [telephone n52] ← 116
+«JOUBERT Louis✅»
+   → p-eleve [telephone n52] ← 116
+«LACOMBE Emma✅»
+   → p-eleve [telephone n52] ← 116
+«MAILLARD Noah🤔 Q10»
+   → p-eleve [telephone n52] ← 116
+«NOGARET Zoé✅»
+   → p-eleve [telephone n52] ← 116
+«PERRAUD Jade🤔 Q9»
+   → p-eleve [telephone n52] ← 116
+«QUINTON Enzo✅»
+   → p-eleve [telephone n52] ← 116
+«RAMBAUD Lina✅»
+   → p-eleve [telephone n52] ← 116
+«SABATIER Malo✅»
+   → p-eleve [telephone n52] ← 116
+«TESSIER Anna✅»
+   → p-eleve [telephone n52] ← 116
+«WEBER Clara✅»
+   → p-eleve [telephone n52] ← 116
+«BRUNEAU Camille✅»
+   → p-eleve [telephone n52] ← 116
+«CHEVALLIER Théo✅»
+   → p-eleve [telephone n52] ← 116
+«ZELLER Lou⏳»
+   → p-eleve [telephone n52] ← 116
+«📄 Imprimer / Exporter mon bilan»
+   → t-bilan-imprime [eleve n118] ← 117,119,120
+«📄 Lancer la séance sur papier»
+   → c-papier-seance [console n124] ← 123
+«🖨️ Les énoncés à imprimer»
+   → e-papier-enonces [eleve n125] ← 124
+«⏸️ Feuilles ramassées : finir à une autre heure»
+   → c-papier-grille [console n126] ← 124
+«💾 Sauvegarde»
+   → c-sauvegarde [console n144] ← 126,132,133,134,135,136,137,138,139,140,141,143,144,145,146
+«💾 Grille remplie»
+   → c-papier-reprendre [console n127] ← 126
+«▶️ Reprendre la séance du 09/10 — correction»
+   → t-papier-estim [tablette n128] ← 127
+«Je commence la correction»
+   → t-papier-correction [tablette n131] ← 129
+«📊 Ouvrir»
+   → c-resultats [console n133] ← 132,138,139,143
+   → c-resultats-rendues [console n141] ← 132,138,139,140,143
+«copies rendues le 26/09»
+   → c-resultats-rendues [console n141] ← 132,138,139,140,143
+«copies rendues le 17/09»
+   → c-resultats-rendues [console n141] ← 132,138,139,140,143
+«La feuille dit autre chose»
+   → c-que-dit-la-feuille [console n137] ← 134,135,136,137
+«rendre les copies ▸»
+   → c-rendre [console n139] ← 138,139
+«📤 Rendre les copies»
+   → c-copies-rendues [console n140] ← 139
+«copies rendues le 10/10»
+   → c-resultats-rendues [console n141] ← 140
+«🙈 Masquer les copies»
+   → c-seances-lues [console n138] ← 140
+«📄 PDF notes et compétences»
+   → x632-pdf [console n142] ← 141
+«📤 Importer snapshot»
+   → c-importer [console n145] ← 144,145,146
+«🗑️ Purger les évaluations»
+   → c-purger [console n146] ← 144,145,146
+«🗑️ Tout purger»
+   → c-purger [console n146] ← 144,145,146
+«📤 Choisir le fichier et importer»
+   → c-sauvegarde [console n144] ← 145
+«🗑️ Purger»
+   → c-sauvegarde [console n144] ← 146
+«Évaluation d'essai — 3 questions08/10/2026 · 1 / 3 · 6,7 / 20 · 🟠 Maît»
+   → e-bilan-lou [eleve n149] ← 148
+«← Mes évaluations»
+   → e-mes-evals-rendue [eleve n148] ← 149
+«Ouvrir la console MJPC →»
+   → m-classe-exclusions [console n153] ← 150,151,152
+«✏️ Modifier le prompt»
+   → c-reglages-prompt-modifier [console n152] ← 150,151,152
+«↩️ Annuler»
+   → c-reglages-prompt [console n151] ← 152
+«👥Élèves & codes»
+   → m-classe-exclusions [console n153] ← 153,154,155,156,157,158,159,160,161,162,163,164
+«📚Taxonomie»
+   → m-taxonomie [console n156] ← 153,154,155,156,157,158,159,160,161,162,163,164
+«📅Emploi du temps»
+   → m-emploi-du-temps [console n162] ← 153,154,155,156,157,158,159,160,161,162,163,164
+«YVON Adam»
+   → m-fiche-eleve [console n155] ← 153,154
+«← 3 ESSAI · Élèves & codes»
+   → m-classe-exclusions [console n153] ← 155
+«Fermer»
+   → m-classe-exclusions [console n153] ← 155
+«Ouvrir l’éditeur»
+   → m-taxonomie-editeur [console n157] ← 156
+«Fermer l’éditeur»
+   → m-taxonomie [console n156] ← 157,158,159,160,161
+«🚀 Lancer le rattrapage»
+   → c-appel [console n9] ← 165
+«🗑️ Sortir et purger»
+   → c-evals [console n1] ← 166,167,168
+«👋 Ouvrir le portail élève»
+   → t-combien [tablette n12] ← 166,167,168
+«🔍 Jouer en grand»
+   → x620-3-mode-test-en-grand [console n168] ← 166,167,168
+«✕ Revenir aux 15 tablettes»
+   → x620-2-mode-test-reflexion [console n167] ← 168

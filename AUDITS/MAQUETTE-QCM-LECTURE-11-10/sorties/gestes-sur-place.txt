@@ -1,0 +1,575 @@
+[1, 2, 3] «datetitrechapitre» {"plus": [], "moins": []}
+[1] «📋 Dupliquer» {"plus": ["▾ Sans chapitre · 8 évaluations", "🎓 Démo — apprendre le déroulé (copie)", "Créée le 10/10/2026"], "moins": ["▾ Sans chapitre · 7 évaluations"]}
+[1] «▾ 3e · 1 évaluation» {"plus": ["▸ 3e · 1 évaluation"], "moins": ["▾ 3e · 1 évaluation", "Évaluation d'essai — 3 questions", "📚 3e · Ch. 1 — Poésie et peinture au XIXe siècle", "🧩 2 compétences"]}
+[1] «📋 Dupliquer» {"plus": ["▾ 3e · 2 évaluations", "Évaluation d'essai — 3 questions (copie)", "Créée le 10/10/2026"], "moins": ["▾ 3e · 1 évaluation"]}
+[1] «▾ Sans chapitre · 7 évaluations» {"plus": ["▸ Sans chapitre · 7 évaluations"], "moins": ["▾ Sans chapitre · 7 évaluations", "3e- éval 1 Analyse logique - Construire une phrase complexe", "📚 chapitre : —", "11 questions"]}
+[1] «📋 Dupliquer» {"plus": ["▾ Sans chapitre · 8 évaluations", "3e- éval 1 Analyse logique - Construire une phrase complexe (copie)", "Créée le 10/10/2026"], "moins": ["▾ Sans chapitre · 7 évaluations"]}
+[1] «📋 Dupliquer» {"plus": ["▾ Sans chapitre · 8 évaluations", "4e- Chapitre 1 - Paris à la barre et analyse logique · (copie)", "Créée le 10/10/2026"], "moins": ["▾ Sans chapitre · 7 évaluations"]}
+[1] «📋 Dupliquer» {"plus": ["▾ Sans chapitre · 8 évaluations", "3e Chapitre 1 — Poésie et peinture au XIXème siècle · Interro de cours (séance 3) (copie)", "Créée le 10/10/2026"], "moins": ["▾ Sans chapitre · 7 évaluations"]}
+[1] «📋 Dupliquer» {"plus": ["▾ Sans chapitre · 8 évaluations", "Les Misérables — évaluation 2 (copie)", "Créée le 10/10/2026"], "moins": ["▾ Sans chapitre · 7 évaluations"]}
+[1] «📋 Dupliquer» {"plus": ["▾ Sans chapitre · 8 évaluations", "Les Misérables — évaluation d'entraînement (copie)", "Créée le 10/10/2026"], "moins": ["▾ Sans chapitre · 7 évaluations"]}
+[1] «📋 Dupliquer» {"plus": ["▾ Sans chapitre · 8 évaluations", "Évaluation — Les pronoms relatifs : la liste (5e) (copie)", "Créée le 10/10/2026"], "moins": ["▾ Sans chapitre · 7 évaluations"]}
+[1] «📋 Dupliquer» {"plus": ["▾ Sans chapitre · 8 évaluations", "QCM — Le jambon-beurre (copie)", "Créée le 10/10/2026"], "moins": ["▾ Sans chapitre · 7 évaluations"]}
+[3] «🔍 Vérifier le format» {"plus": ["🔍 Vérification refaite : les mêmes 7 points."], "moins": []}
+[3] «📋 Copier les erreurs pour l'instance de création d» {"plus": ["✅ Copié. À coller dans l'instance de création d'éval : Corrige ton JSON : 1. Question 4 : il manque le temps de réponse "], "moins": []}
+[8] «✕ Fermer» {"plus": [], "moins": ["🚫 Échange refusé.", "CARRÉ Tom et ESNAULT Inès ne sont jamais ensemble (exclusion MJPC). Pour les remettre ensemble, retire l'exclusion dans ", "✕ Fermer"]}
+[9] «✓ABRIAL Julien» {"plus": ["🚫 2 absents sur 25Tout le monde présent"], "moins": ["🚫 1 absent sur 25Tout le monde présent"]}
+[9] «✓BAUDRY Léa» {"plus": ["🚫 2 absents sur 25Tout le monde présent"], "moins": ["🚫 1 absent sur 25Tout le monde présent"]}
+[9] «✓BRUNEAU Camille» {"plus": ["🚫 2 absents sur 25Tout le monde présent"], "moins": ["🚫 1 absent sur 25Tout le monde présent"]}
+[9] «✓CARRÉ Tom» {"plus": ["🚫 2 absents sur 25Tout le monde présent"], "moins": ["🚫 1 absent sur 25Tout le monde présent"]}
+[9] «✓CHEVALLIER Théo» {"plus": ["🚫 2 absents sur 25Tout le monde présent"], "moins": ["🚫 1 absent sur 25Tout le monde présent"]}
+[9] «✓DUVERNAY Michel» {"plus": ["🚫 2 absents sur 25Tout le monde présent"], "moins": ["🚫 1 absent sur 25Tout le monde présent"]}
+[9] «✓ESNAULT Inès» {"plus": ["🚫 2 absents sur 25Tout le monde présent"], "moins": ["🚫 1 absent sur 25Tout le monde présent"]}
+[9] «✓FOUCHER Hugo» {"plus": ["🚫 2 absents sur 25Tout le monde présent"], "moins": ["🚫 1 absent sur 25Tout le monde présent"]}
+[9] «✓GALLOIS Manon» {"plus": ["🚫 2 absents sur 25Tout le monde présent"], "moins": ["🚫 1 absent sur 25Tout le monde présent"]}
+[9] «✓HÉBRARD Nathan» {"plus": ["🚫 2 absents sur 25Tout le monde présent"], "moins": ["🚫 1 absent sur 25Tout le monde présent"]}
+[9] «✓ISAMBERT Chloé» {"plus": ["🚫 2 absents sur 25Tout le monde présent"], "moins": ["🚫 1 absent sur 25Tout le monde présent"]}
+[9] «✓JOUBERT Louis» {"plus": ["🚫 2 absents sur 25Tout le monde présent"], "moins": ["🚫 1 absent sur 25Tout le monde présent"]}
+[9] «✓LACOMBE Emma» {"plus": ["🚫 2 absents sur 25Tout le monde présent"], "moins": ["🚫 1 absent sur 25Tout le monde présent"]}
+[9] «✓MAILLARD Noah» {"plus": ["🚫 2 absents sur 25Tout le monde présent"], "moins": ["🚫 1 absent sur 25Tout le monde présent"]}
+[9] «✓NOGARET Zoé» {"plus": ["🚫 2 absents sur 25Tout le monde présent"], "moins": ["🚫 1 absent sur 25Tout le monde présent"]}
+[9] «✓OLLIVIER Sacha» {"plus": ["🚫 2 absents sur 25Tout le monde présent"], "moins": ["🚫 1 absent sur 25Tout le monde présent"]}
+[9] «✓PERRAUD Jade» {"plus": ["🚫 2 absents sur 25Tout le monde présent"], "moins": ["🚫 1 absent sur 25Tout le monde présent"]}
+[9] «✓QUINTON Enzo» {"plus": ["🚫 2 absents sur 25Tout le monde présent"], "moins": ["🚫 1 absent sur 25Tout le monde présent"]}
+[9] «✓RAMBAUD Lina» {"plus": ["🚫 2 absents sur 25Tout le monde présent"], "moins": ["🚫 1 absent sur 25Tout le monde présent"]}
+[9] «✓SABATIER Malo» {"plus": ["🚫 2 absents sur 25Tout le monde présent"], "moins": ["🚫 1 absent sur 25Tout le monde présent"]}
+[9] «✓TESSIER Anna» {"plus": ["🚫 2 absents sur 25Tout le monde présent"], "moins": ["🚫 1 absent sur 25Tout le monde présent"]}
+[9] «✓VALLÉE Rayan» {"plus": ["🚫 2 absents sur 25Tout le monde présent"], "moins": ["🚫 1 absent sur 25Tout le monde présent"]}
+[9] «✓WEBER Clara» {"plus": ["🚫 2 absents sur 25Tout le monde présent"], "moins": ["🚫 1 absent sur 25Tout le monde présent"]}
+[9] «🚫YVON Adam» {"plus": ["🚫 0 absent sur 25Tout le monde présent"], "moins": ["🚫", "🚫 1 absent sur 25Tout le monde présent"]}
+[9] «✓ZELLER Lou» {"plus": ["🚫 2 absents sur 25Tout le monde présent"], "moins": ["🚫 1 absent sur 25Tout le monde présent"]}
+[9] «Tout le monde présent» {"plus": ["🚫 0 absent sur 25Tout le monde présent"], "moins": ["🚫", "🚫 1 absent sur 25Tout le monde présent"]}
+[9] «10:57» {"plus": [], "moins": []}
+[16] «» {"plus": ["Écris lisiblement : Michel lira ta feuille à la correction."], "moins": []}
+[17] «» {"plus": ["Quand « POSE TON STYLO » s'affiche, pose ton stylo et clique ta réponse. Quand c'est le tour de Tom, ne regarde pas."], "moins": []}
+[18] «» {"plus": ["À la fin du temps, dis si ta feuille dit la même chose que ton clic."], "moins": []}
+[18] «» {"plus": ["Écris lisiblement : Julien lira ta feuille à la correction."], "moins": []}
+[19, 73, 129] «» {"plus": [], "moins": []}
+[21, 27, 36, 38, 57, 59, 61] «20» {"plus": ["207s", "🏁 Fin prévue 10:42 · fin de l'heure 10:57"], "moins": ["20s", "🏁 Fin prévue 10:39 · fin de l'heure 10:57"]}
+[21, 27, 32, 36, 38, 40, 46, 48, 57, 59, 61] «+5» {"plus": ["25s"], "moins": ["20s"]}
+[21, 27, 32, 36, 38, 40, 57, 59, 61] «+10» {"plus": ["30s"], "moins": ["20s"]}
+[21, 27, 36, 38, 46, 48, 57, 59, 61] «+30» {"plus": ["50s", "🏁 Fin prévue 10:40 · fin de l'heure 10:57"], "moins": ["20s", "🏁 Fin prévue 10:39 · fin de l'heure 10:57"]}
+[21, 24, 38, 57, 61, 167] «15» {"plus": ["157s", "🏁 Fin prévue 10:44 · fin de l'heure 10:57"], "moins": ["15s", "🏁 Fin prévue 10:39 · fin de l'heure 10:57"]}
+[21, 38, 40, 57, 61] «+5» {"plus": [], "moins": ["15s"]}
+[21, 24, 38, 40, 57, 61, 167] «+10» {"plus": ["25s"], "moins": ["15s"]}
+[21, 24, 38, 57, 61, 167] «+30» {"plus": ["45s", "🏁 Fin prévue 10:40 · fin de l'heure 10:57"], "moins": ["15s", "🏁 Fin prévue 10:39 · fin de l'heure 10:57"]}
+[21, 24, 27, 32, 36, 38, 40, 45, 46, 48, 59, 61] «20» {"plus": [], "moins": []}
+[21, 24, 27, 32, 36, 38, 45, 46, 48, 59, 61, 150] «15» {"plus": [], "moins": []}
+[21, 24, 27, 32, 36, 38, 40, 59, 61, 167] «30» {"plus": [], "moins": []}
+[24] «20» {"plus": ["201s", "🏁 Fin prévue 10:42 · fin de l'heure 10:57"], "moins": ["14s", "🏁 Fin prévue 10:39 · fin de l'heure 10:57"]}
+[24] «+5» {"plus": ["19s"], "moins": ["14s"]}
+[24] «+10» {"plus": ["24s"], "moins": ["14s"]}
+[24] «+30» {"plus": ["44s", "🏁 Fin prévue 10:40 · fin de l'heure 10:57"], "moins": ["14s", "🏁 Fin prévue 10:39 · fin de l'heure 10:57"]}
+[24, 167] «+5» {"plus": ["20s"], "moins": ["15s"]}
+[24, 27, 29, 32, 36, 45, 59, 167] «⏸️ Pause» {"plus": ["▶️ Reprendre"], "moins": ["⏸️ Pause"]}
+[24] «🔄 Relancer chrono» {"plus": ["20s"], "moins": ["14s"]}
+[26, 28, 34, 87, 97, 100] «Milan» {"plus": [], "moins": []}
+[26, 28, 34, 87, 97, 100] «Naples» {"plus": [], "moins": []}
+[26, 28, 34, 87, 97] «Rome» {"plus": [], "moins": []}
+[26, 28, 34, 87] «Venise» {"plus": [], "moins": []}
+[27, 59] «15» {"plus": ["151s", "🏁 Fin prévue 10:44 · fin de l'heure 10:57"], "moins": ["9s", "🏁 Fin prévue 10:39 · fin de l'heure 10:57"]}
+[27, 32, 59] «+5» {"plus": ["14s"], "moins": ["9s"]}
+[27, 32, 59] «+10» {"plus": ["19s"], "moins": ["9s"]}
+[27, 59] «+30» {"plus": ["39s", "🏁 Fin prévue 10:40 · fin de l'heure 10:57"], "moins": ["9s", "🏁 Fin prévue 10:39 · fin de l'heure 10:57"]}
+[27, 32, 59] «🔄 Relancer chrono» {"plus": ["15s"], "moins": ["9s"]}
+[29] «+5» {"plus": ["🧠 Réflexion 25 s"], "moins": ["🧠 Réflexion 20 s"]}
+[29] «+10» {"plus": ["🧠 Réflexion 30 s"], "moins": ["🧠 Réflexion 20 s"]}
+[29] «+30» {"plus": ["🧠 Réflexion 50 s", "🏁 Fin prévue 10:40 · fin de l'heure 10:57"], "moins": ["🧠 Réflexion 20 s", "🏁 Fin prévue 10:39 · fin de l'heure 10:57"]}
+[29] «+5» {"plus": ["✋ Réponse 20 s"], "moins": ["✋ Réponse 15 s"]}
+[29] «+10» {"plus": ["✋ Réponse 25 s"], "moins": ["✋ Réponse 15 s"]}
+[29] «+30» {"plus": ["✋ Réponse 45 s", "🏁 Fin prévue 10:40 · fin de l'heure 10:57"], "moins": ["✋ Réponse 15 s", "🏁 Fin prévue 10:39 · fin de l'heure 10:57"]}
+[29] «🔄 Chrono» {"plus": ["15s"], "moins": ["9s"]}
+[32] «20» {"plus": ["207s", "🏁 Fin prévue 11:05, 8 min après la fin de l'heure"], "moins": ["20s", "🏁 Fin prévue 11:02, 5 min après la fin de l'heure"]}
+[32] «+30» {"plus": ["50s", "🏁 Fin prévue 11:03, 6 min après la fin de l'heure"], "moins": ["20s", "🏁 Fin prévue 11:02, 5 min après la fin de l'heure"]}
+[32] «15» {"plus": ["151s", "🏁 Fin prévue 11:07, 10 min après la fin de l'heure"], "moins": ["9s", "🏁 Fin prévue 11:02, 5 min après la fin de l'heure"]}
+[32] «+30» {"plus": ["39s", "🏁 Fin prévue 11:03, 6 min après la fin de l'heure"], "moins": ["9s", "🏁 Fin prévue 11:02, 5 min après la fin de l'heure"]}
+[35, 54, 56, 168] «Non, autre chose» {"plus": [], "moins": []}
+[36] «15» {"plus": ["148s", "🏁 Fin prévue 10:44 · fin de l'heure 10:57"], "moins": ["6s", "🏁 Fin prévue 10:39 · fin de l'heure 10:57"]}
+[36] «+5» {"plus": ["11s"], "moins": ["6s"]}
+[36] «+10» {"plus": ["16s"], "moins": ["6s"]}
+[36] «+30» {"plus": ["36s", "🏁 Fin prévue 10:40 · fin de l'heure 10:57"], "moins": ["6s", "🏁 Fin prévue 10:39 · fin de l'heure 10:57"]}
+[36] «🔄 Relancer chrono» {"plus": ["15s"], "moins": ["6s"]}
+[40] «20» {"plus": ["207s", "🏁 Fin prévue 10:40 · fin de l'heure 10:57"], "moins": ["20s", "🏁 Fin prévue 10:37 · fin de l'heure 10:57"]}
+[40] «+30» {"plus": ["50s", "🏁 Fin prévue 10:38 · fin de l'heure 10:57"], "moins": ["20s", "🏁 Fin prévue 10:37 · fin de l'heure 10:57"]}
+[40] «15» {"plus": ["157s", "🏁 Fin prévue 10:42 · fin de l'heure 10:57"], "moins": ["15s", "🏁 Fin prévue 10:37 · fin de l'heure 10:57"]}
+[40] «+30» {"plus": ["45s", "🏁 Fin prévue 10:38 · fin de l'heure 10:57"], "moins": ["15s", "🏁 Fin prévue 10:37 · fin de l'heure 10:57"]}
+[43, 44, 51, 75, 91] «Madrid» {"plus": [], "moins": []}
+[43, 44, 51, 75, 91] «Genève» {"plus": [], "moins": []}
+[43, 44, 51, 75, 91] «Berlin» {"plus": [], "moins": []}
+[43, 44, 51, 75, 91] «Sydney» {"plus": [], "moins": []}
+[45, 46, 48] «30» {"plus": ["307s", "🏁 Fin prévue 10:44 · fin de l'heure 10:57"], "moins": ["30s", "🏁 Fin prévue 10:39 · fin de l'heure 10:57"]}
+[45, 46, 48] «+5» {"plus": ["35s"], "moins": ["30s"]}
+[45, 46, 48] «+10» {"plus": ["40s"], "moins": ["30s"]}
+[45, 46, 48] «+30» {"plus": ["60s", "🏁 Fin prévue 10:40 · fin de l'heure 10:57"], "moins": ["30s", "🏁 Fin prévue 10:39 · fin de l'heure 10:57"]}
+[45] «20» {"plus": ["191s", "🏁 Fin prévue 10:45 · fin de l'heure 10:57"], "moins": ["4s", "🏁 Fin prévue 10:39 · fin de l'heure 10:57"]}
+[45] «+5» {"plus": ["9s"], "moins": ["4s"]}
+[45] «+10» {"plus": ["14s"], "moins": ["4s"]}
+[45] «+30» {"plus": ["34s", "🏁 Fin prévue 10:40 · fin de l'heure 10:57"], "moins": ["4s", "🏁 Fin prévue 10:39 · fin de l'heure 10:57"]}
+[45] «🔄 Relancer chrono» {"plus": ["20s"], "moins": ["4s"]}
+[46, 48] «20» {"plus": ["207s", "🏁 Fin prévue 10:45 · fin de l'heure 10:57"], "moins": ["20s", "🏁 Fin prévue 10:39 · fin de l'heure 10:57"]}
+[46, 48] «+10» {"plus": [], "moins": ["20s"]}
+[53, 55, 84, 137] «6» {"plus": [], "moins": []}
+[53, 55, 84] «8» {"plus": [], "moins": []}
+[53, 55, 84, 137, 150] «10» {"plus": [], "moins": []}
+[53, 55, 84, 137] «4» {"plus": [], "moins": []}
+[54, 56, 168] «Oui, la même chose» {"plus": [], "moins": []}
+[70, 128] «🟢3 bonnes réponses sur 3Très bonne maîtrise» {"plus": [], "moins": []}
+[70, 128] «🔵2 bonnes réponses sur 3Maîtrise satisfaisante» {"plus": [], "moins": []}
+[70, 128] «🟠1 bonne réponse sur 3Maîtrise fragile» {"plus": [], "moins": []}
+[70, 128] «🔴0 bonne réponse sur 3Maîtrise insuffisante» {"plus": [], "moins": []}
+[72] «» {"plus": ["Lis avec soin, et clique ce que tu lis."], "moins": []}
+[75, 84, 87, 90] «Sa feuille ne dit aucun de ces choix» {"plus": [], "moins": []}
+[90, 109, 169] «La réponse est l'antécédent, toujours écrit avant » {"plus": [], "moins": []}
+[90, 109, 169] «Ma question dépend du Pronom Relatif employé» {"plus": [], "moins": []}
+[90, 109, 169] «Je pose la question sur la Proposition Principale» {"plus": [], "moins": []}
+[90, 109, 169] «La réponse est toujours écrite après le Pronom Rel» {"plus": [], "moins": []}
+[90, 109, 169] «Je pose la question sur la relative, avec son Verb» {"plus": [], "moins": []}
+[90, 169] «Je prends toujours le nom le plus proche du Pronom» {"plus": [], "moins": []}
+[91, 97, 109] «Ma feuille ne dit aucun de ces choix» {"plus": [], "moins": []}
+[96, 108] «✅ Je pense que Michel a bien lu ma feuille» {"plus": ["✅ Réponse enregistrée — tu peux encore la changer", "⏳ Attends ton bilan..."], "moins": []}
+[96, 108] «🤔 Je pense que Michel a peut-être mal lu ma feuill» {"plus": ["🤔 Julien, tu penses que Michel a peut-être mal lu ta feuille pour une question : c'est laquelle ?"], "moins": ["Julien, Michel a-t-il bien lu ta feuille ?", "✅ Je pense que Michel a bien lu ma feuille", "🤔 Je pense que Michel a peut-être mal lu ma f
+[96, 108] «❌ Je pense que Michel a mal lu ma feuille, à une q» {"plus": ["❌ Julien, tu penses que Michel a mal lu ta feuille pour une question : c'est laquelle ?"], "moins": ["Julien, Michel a-t-il bien lu ta feuille ?", "✅ Je pense que Michel a bien lu ma feuille", "🤔 Je pense que Michel a peut-être mal lu ma feuille, à 
+[96] «Question 1 · Quelle est la capitale de l'Italie ?» {"plus": ["❌ Je pense que Julien a mal lu ma feuille à la question 1", "☝️ C'est ta seule question de désaccord.", "Qu'avais-tu écrit sur ta feuille ?", "VeniseJulien a lu"], "moins": ["❌ Michel, tu penses que Julien a mal lu ta feuille pour une question : c'e
+[96] «Question 2 · Lesquelles sont des capitales europée» {"plus": ["❌ Je pense que Julien a mal lu ma feuille à la question 2", "☝️ C'est ta seule question de désaccord.", "Qu'avais-tu écrit sur ta feuille ?", "MadridJulien a lu"], "moins": ["❌ Michel, tu penses que Julien a mal lu ta feuille pour une question : c'e
+[96] «Question 3 · Combien de pattes a une araignée ?» {"plus": ["❌ Je pense que Julien a mal lu ma feuille à la question 3", "☝️ C'est ta seule question de désaccord.", "Qu'avais-tu écrit sur ta feuille ?", "4"], "moins": ["❌ Michel, tu penses que Julien a mal lu ta feuille pour une question : c'est laquelle ?", 
+[96, 108] «↩️ Changer» {"plus": ["Michel, Julien a-t-il bien lu ta feuille ?", "✅ Je pense que Julien a bien lu ma feuille", "🤔 Je pense que Julien a peut-être mal lu ma feuille, à une question", "❌ Je pense que Julien a mal lu ma feuille, à une question"], "moins": ["❌ Michel, tu p
+[97, 98] «🤔 Je pense que Michel a peut-être mal lu ma feuill» {"plus": ["🤔 Julien, tu penses que Michel a peut-être mal lu ta feuille pour une question : c'est laquelle ?", "Question 1 · Quelle est la capitale de l'Italie ?", "Question 2 · Lesquelles sont des capitales européennes ?", "Question 3 · Combien de pattes a un
+[97, 98] «❌ Je pense que Michel a mal lu ma feuille, à une q» {"plus": ["❌ Julien, tu penses que Michel a mal lu ta feuille pour une question : c'est laquelle ?", "Question 1 · Quelle est la capitale de l'Italie ?", "Question 2 · Lesquelles sont des capitales européennes ?", "Question 3 · Combien de pattes a une araignée
+[97] «VeniseJulien a lu» {"plus": [], "moins": []}
+[97] «↩️ Changer» {"plus": ["❌ Michel, tu penses que Julien a mal lu ta feuille pour une question : c'est laquelle ?", "Question 1 · Quelle est la capitale de l'Italie ?", "Question 2 · Lesquelles sont des capitales européennes ?", "Question 3 · Combien de pattes a une araignée
+[98] «✅ Je pense que Julien a bien lu ma feuille» {"plus": [], "moins": ["Tu as cliqué ce que Julien avait lu : vous êtes d'accord."]}
+[98] «🤔 Je pense que Julien a peut-être mal lu ma feuill» {"plus": ["🤔 Michel, tu penses que Julien a peut-être mal lu ta feuille pour une question : c'est laquelle ?", "Question 1 · Quelle est la capitale de l'Italie ?", "Question 2 · Lesquelles sont des capitales européennes ?", "Question 3 · Combien de pattes a un
+[98] «❌ Je pense que Julien a mal lu ma feuille, à une q» {"plus": ["❌ Michel, tu penses que Julien a mal lu ta feuille pour une question : c'est laquelle ?", "Question 1 · Quelle est la capitale de l'Italie ?", "Question 2 · Lesquelles sont des capitales européennes ?", "Question 3 · Combien de pattes a une araignée
+[100] «Romebonne réponse · Michel» {"plus": [], "moins": []}
+[100, 111] «Aucun des choix» {"plus": [], "moins": []}
+[108] «Question 1 · Quand est-ce qu'une Proposition Princ» {"plus": ["❌ Je pense que Julien a mal lu ma feuille à la question 1", "☝️ C'est ta seule question de désaccord.", "Qu'avais-tu écrit sur ta feuille ?", "Ma feuille ne dit aucun de ces choix"], "moins": ["❌ Michel, tu penses que Julien a mal lu ta feuille pour
+[108] «Question 2 · Qu'est-ce qui peut être un antécédent» {"plus": ["❌ Je pense que Julien a mal lu ma feuille à la question 2", "☝️ C'est ta seule question de désaccord.", "Qu'avais-tu écrit sur ta feuille ?", "Ma feuille ne dit aucun de ces choix"], "moins": ["❌ Michel, tu penses que Julien a mal lu ta feuille pour
+[108] «Question 3 · Comment trouves-tu l'antécédent d'un » {"plus": ["❌ Je pense que Julien a mal lu ma feuille à la question 3", "☝️ C'est ta seule question de désaccord.", "Qu'avais-tu écrit sur ta feuille ?", "Je pose la question sur la relative, avec son Verbe Conjugué"], "moins": ["❌ Michel, tu penses que Julien 
+[108] «Question 4 · Deux relatives sont coordonnées par «» {"plus": ["❌ Je pense que Julien a mal lu ma feuille à la question 4", "☝️ C'est ta seule question de désaccord.", "Qu'avais-tu écrit sur ta feuille ?", "Ma feuille ne dit aucun de ces choix"], "moins": ["❌ Michel, tu penses que Julien a mal lu ta feuille pour
+[108] «Question 5 · écris une phrase P.P + PSR 1 + PSR 2.» {"plus": ["❌ Je pense que Julien a mal lu ma feuille à la question 5", "☝️ C'est ta seule question de désaccord.", "Qu'avais-tu écrit sur ta feuille ?", "Ma feuille ne dit aucun de ces choix"], "moins": ["❌ Michel, tu penses que Julien a mal lu ta feuille pour
+[108] «Question 6 · écris une phrase DPP + PSR + FPP : P.» {"plus": ["❌ Je pense que Julien a mal lu ma feuille à la question 6", "☝️ C'est ta seule question de désaccord.", "Qu'avais-tu écrit sur ta feuille ?", "Ma feuille ne dit aucun de ces choix"], "moins": ["❌ Michel, tu penses que Julien a mal lu ta feuille pour
+[108] «Question 7 · écris une phrase P.I : P.P + PSR sur » {"plus": ["❌ Je pense que Julien a mal lu ma feuille à la question 7", "☝️ C'est ta seule question de désaccord.", "Qu'avais-tu écrit sur ta feuille ?", "Ma feuille ne dit aucun de ces choix"], "moins": ["❌ Michel, tu penses que Julien a mal lu ta feuille pour
+[108] «Question 8 · écris une phrase DPP + PSR + FPP sur » {"plus": ["❌ Je pense que Julien a mal lu ma feuille à la question 8", "☝️ C'est ta seule question de désaccord.", "Qu'avais-tu écrit sur ta feuille ?", "Ma feuille ne dit aucun de ces choix"], "moins": ["❌ Michel, tu penses que Julien a mal lu ta feuille pour
+[108] «Question 9 · écris une phrase P.P + PSR ; P.I sur » {"plus": ["❌ Je pense que Julien a mal lu ma feuille à la question 9", "☝️ C'est ta seule question de désaccord.", "Qu'avais-tu écrit sur ta feuille ?", "Ma feuille ne dit aucun de ces choix"], "moins": ["❌ Michel, tu penses que Julien a mal lu ta feuille pour
+[108] «Question 10 · écris une phrase P.I , P.P + PSR sur» {"plus": ["❌ Je pense que Julien a mal lu ma feuille à la question 10", "☝️ C'est ta seule question de désaccord.", "Qu'avais-tu écrit sur ta feuille ?", "Ma feuille ne dit aucun de ces choix"], "moins": ["❌ Michel, tu penses que Julien a mal lu ta feuille pou
+[108] «Question 11 · Quelle est l'architecture de « La le» {"plus": ["❌ Je pense que Julien a mal lu ma feuille à la question 11", "☝️ C'est ta seule question de désaccord.", "Qu'avais-tu écrit sur ta feuille ?", "Ma feuille ne dit aucun de ces choix"], "moins": ["❌ Michel, tu penses que Julien a mal lu ta feuille pou
+[109] «🤔 Je pense que Michel a peut-être mal lu ma feuill» {"plus": ["🤔 Julien, tu penses que Michel a peut-être mal lu ta feuille pour une question : c'est laquelle ?", "Question 1 · Quand est-ce qu'une Proposition Principale se coupe en…", "Question 2 · Qu'est-ce qui peut être un antécédent ?", "Question 3 · Comment
+[109] «❌ Je pense que Michel a mal lu ma feuille, à une q» {"plus": ["❌ Julien, tu penses que Michel a mal lu ta feuille pour une question : c'est laquelle ?", "Question 1 · Quand est-ce qu'une Proposition Principale se coupe en…", "Question 2 · Qu'est-ce qui peut être un antécédent ?", "Question 3 · Comment trouves-t
+[109] «↩️ Changer» {"plus": ["❌ Michel, tu penses que Julien a mal lu ta feuille pour une question : c'est laquelle ?", "Question 1 · Quand est-ce qu'une Proposition Principale se coupe en…", "Question 2 · Qu'est-ce qui peut être un antécédent ?", "Question 3 · Comment trouves-t
+[111] «A · Je pose la question sur la Proposition Princip» {"plus": [], "moins": []}
+[111] «B · Ma question dépend du Pronom Relatif employébo» {"plus": [], "moins": []}
+[111] «C · Je pose la question sur la relative, avec son » {"plus": [], "moins": []}
+[111] «D · Je prends toujours le nom le plus proche du Pr» {"plus": [], "moins": []}
+[111] «E · La réponse est l'antécédent, toujours écrit av» {"plus": [], "moins": []}
+[111] «F · La réponse est toujours écrite après le Pronom» {"plus": [], "moins": []}
+[126] «✓» {"plus": ["ABRIAL Julien\t✗\t✗\t✗\t0/3\t0"], "moins": ["ABRIAL Julien\t✓\t✗\t✗\t1/3\t6,7"]}
+[126] «✗» {"plus": ["ABRIAL Julien\t✓\t✓\t✗\t2/3\t13,3"], "moins": ["ABRIAL Julien\t✓\t✗\t✗\t1/3\t6,7"]}
+[126] «✗» {"plus": ["ABRIAL Julien\t✓\t✗\t✓\t2/3\t13,3"], "moins": ["ABRIAL Julien\t✓\t✗\t✗\t1/3\t6,7"]}
+[126] «✓» {"plus": ["BAUDRY Léa\t✗\t✓\t✓\t2/3\t13,3"], "moins": ["BAUDRY Léa\t✓\t✓\t✓\t3/3\t20"]}
+[126] «✓» {"plus": ["BAUDRY Léa\t✓\t✗\t✓\t2/3\t13,3"], "moins": ["BAUDRY Léa\t✓\t✓\t✓\t3/3\t20"]}
+[126] «✓» {"plus": ["BAUDRY Léa\t✓\t✓\t✗\t2/3\t13,3"], "moins": ["BAUDRY Léa\t✓\t✓\t✓\t3/3\t20"]}
+[126] «✓» {"plus": ["BRUNEAU Camille\t✗\t✓\t✗\t1/3\t6,7"], "moins": ["BRUNEAU Camille\t✓\t✓\t✗\t2/3\t13,3"]}
+[126] «✓» {"plus": ["BRUNEAU Camille\t✓\t✗\t✗\t1/3\t6,7"], "moins": ["BRUNEAU Camille\t✓\t✓\t✗\t2/3\t13,3"]}
+[126] «✗» {"plus": ["BRUNEAU Camille\t✓\t✓\t✓\t3/3\t20"], "moins": ["BRUNEAU Camille\t✓\t✓\t✗\t2/3\t13,3"]}
+[126] «✗» {"plus": ["CARRÉ Tom\t✓\t✗\t✓\t2/3\t13,3"], "moins": ["CARRÉ Tom\t✗\t✗\t✓\t1/3\t6,7"]}
+[126] «✗» {"plus": ["CARRÉ Tom\t✗\t✓\t✓\t2/3\t13,3"], "moins": ["CARRÉ Tom\t✗\t✗\t✓\t1/3\t6,7"]}
+[126] «✓» {"plus": ["CARRÉ Tom\t✗\t✗\t✗\t0/3\t0"], "moins": ["CARRÉ Tom\t✗\t✗\t✓\t1/3\t6,7"]}
+[126] «✓» {"plus": ["CHEVALLIER Théo\t✗\t✗\t✗\t0/3\t0"], "moins": ["CHEVALLIER Théo\t✓\t✗\t✗\t1/3\t6,7"]}
+[126] «✗» {"plus": ["CHEVALLIER Théo\t✓\t✓\t✗\t2/3\t13,3"], "moins": ["CHEVALLIER Théo\t✓\t✗\t✗\t1/3\t6,7"]}
+[126] «✗» {"plus": ["CHEVALLIER Théo\t✓\t✗\t✓\t2/3\t13,3"], "moins": ["CHEVALLIER Théo\t✓\t✗\t✗\t1/3\t6,7"]}
+[126] «✓» {"plus": ["DUVERNAY Michel\t✗\t✗\t✗\t0/3\t0"], "moins": ["DUVERNAY Michel\t✓\t✗\t✗\t1/3\t6,7"]}
+[126] «✗» {"plus": ["DUVERNAY Michel\t✓\t✓\t✗\t2/3\t13,3"], "moins": ["DUVERNAY Michel\t✓\t✗\t✗\t1/3\t6,7"]}
+[126] «✗» {"plus": ["DUVERNAY Michel\t✓\t✗\t✓\t2/3\t13,3"], "moins": ["DUVERNAY Michel\t✓\t✗\t✗\t1/3\t6,7"]}
+[126] «✓» {"plus": ["ESNAULT Inès\t✗\t✓\t✓\t2/3\t13,3"], "moins": ["ESNAULT Inès\t✓\t✓\t✓\t3/3\t20"]}
+[126] «✓» {"plus": ["ESNAULT Inès\t✓\t✗\t✓\t2/3\t13,3"], "moins": ["ESNAULT Inès\t✓\t✓\t✓\t3/3\t20"]}
+[126] «✓» {"plus": ["ESNAULT Inès\t✓\t✓\t✗\t2/3\t13,3"], "moins": ["ESNAULT Inès\t✓\t✓\t✓\t3/3\t20"]}
+[126] «✓» {"plus": ["FOUCHER Hugo\t✗\t✗\t✓\t1/3\t6,7"], "moins": ["FOUCHER Hugo\t✓\t✗\t✓\t2/3\t13,3"]}
+[126] «✗» {"plus": ["FOUCHER Hugo\t✓\t✓\t✓\t3/3\t20"], "moins": ["FOUCHER Hugo\t✓\t✗\t✓\t2/3\t13,3"]}
+[126] «✓» {"plus": ["FOUCHER Hugo\t✓\t✗\t✗\t1/3\t6,7"], "moins": ["FOUCHER Hugo\t✓\t✗\t✓\t2/3\t13,3"]}
+[126] «✓» {"plus": ["GALLOIS Manon\t✗\t✓\t✗\t1/3\t6,7"], "moins": ["GALLOIS Manon\t✓\t✓\t✗\t2/3\t13,3"]}
+[126] «✓» {"plus": ["GALLOIS Manon\t✓\t✗\t✗\t1/3\t6,7"], "moins": ["GALLOIS Manon\t✓\t✓\t✗\t2/3\t13,3"]}
+[126] «✗» {"plus": ["GALLOIS Manon\t✓\t✓\t✓\t3/3\t20"], "moins": ["GALLOIS Manon\t✓\t✓\t✗\t2/3\t13,3"]}
+[126] «✓» {"plus": ["HÉBRARD Nathan\t✗\t✗\t✓\t1/3\t6,7"], "moins": ["HÉBRARD Nathan\t✓\t✗\t✓\t2/3\t13,3"]}
+[126] «✗» {"plus": ["HÉBRARD Nathan\t✓\t✓\t✓\t3/3\t20"], "moins": ["HÉBRARD Nathan\t✓\t✗\t✓\t2/3\t13,3"]}
+[126] «✓» {"plus": ["HÉBRARD Nathan\t✓\t✗\t✗\t1/3\t6,7"], "moins": ["HÉBRARD Nathan\t✓\t✗\t✓\t2/3\t13,3"]}
+[126] «✓» {"plus": ["ISAMBERT Chloé\t✗\t✓\t✓\t2/3\t13,3"], "moins": ["ISAMBERT Chloé\t✓\t✓\t✓\t3/3\t20"]}
+[126] «✓» {"plus": ["ISAMBERT Chloé\t✓\t✗\t✓\t2/3\t13,3"], "moins": ["ISAMBERT Chloé\t✓\t✓\t✓\t3/3\t20"]}
+[126] «✓» {"plus": ["ISAMBERT Chloé\t✓\t✓\t✗\t2/3\t13,3"], "moins": ["ISAMBERT Chloé\t✓\t✓\t✓\t3/3\t20"]}
+[126] «✓» {"plus": ["JOUBERT Louis\t✗\t✗\t✓\t1/3\t6,7"], "moins": ["JOUBERT Louis\t✓\t✗\t✓\t2/3\t13,3"]}
+[126] «✗» {"plus": ["JOUBERT Louis\t✓\t✓\t✓\t3/3\t20"], "moins": ["JOUBERT Louis\t✓\t✗\t✓\t2/3\t13,3"]}
+[126] «✓» {"plus": ["JOUBERT Louis\t✓\t✗\t✗\t1/3\t6,7"], "moins": ["JOUBERT Louis\t✓\t✗\t✓\t2/3\t13,3"]}
+[126] «✓» {"plus": ["LACOMBE Emma\t✗\t✓\t✓\t2/3\t13,3"], "moins": ["LACOMBE Emma\t✓\t✓\t✓\t3/3\t20"]}
+[126] «✓» {"plus": ["LACOMBE Emma\t✓\t✗\t✓\t2/3\t13,3"], "moins": ["LACOMBE Emma\t✓\t✓\t✓\t3/3\t20"]}
+[126] «✓» {"plus": ["LACOMBE Emma\t✓\t✓\t✗\t2/3\t13,3"], "moins": ["LACOMBE Emma\t✓\t✓\t✓\t3/3\t20"]}
+[126] «✓» {"plus": ["MAILLARD Noah\t✗\t✗\t✗\t0/3\t0"], "moins": ["MAILLARD Noah\t✓\t✗\t✗\t1/3\t6,7"]}
+[126] «✗» {"plus": ["MAILLARD Noah\t✓\t✓\t✗\t2/3\t13,3"], "moins": ["MAILLARD Noah\t✓\t✗\t✗\t1/3\t6,7"]}
+[126] «✗» {"plus": ["MAILLARD Noah\t✓\t✗\t✓\t2/3\t13,3"], "moins": ["MAILLARD Noah\t✓\t✗\t✗\t1/3\t6,7"]}
+[126] «✓» {"plus": ["NOGARET Zoé\t✗\t✗\t✓\t1/3\t6,7"], "moins": ["NOGARET Zoé\t✓\t✗\t✓\t2/3\t13,3"]}
+[126] «✗» {"plus": ["NOGARET Zoé\t✓\t✓\t✓\t3/3\t20"], "moins": ["NOGARET Zoé\t✓\t✗\t✓\t2/3\t13,3"]}
+[126] «✓» {"plus": ["NOGARET Zoé\t✓\t✗\t✗\t1/3\t6,7"], "moins": ["NOGARET Zoé\t✓\t✗\t✓\t2/3\t13,3"]}
+[126] «✗» {"plus": ["OLLIVIER Sacha\t✓\t✗\t✗\t1/3\t6,7"], "moins": ["OLLIVIER Sacha\t✗\t✗\t✗\t0/3\t0"]}
+[126] «✗» {"plus": ["OLLIVIER Sacha\t✗\t✓\t✗\t1/3\t6,7"], "moins": ["OLLIVIER Sacha\t✗\t✗\t✗\t0/3\t0"]}
+[126] «✗» {"plus": ["OLLIVIER Sacha\t✗\t✗\t✓\t1/3\t6,7"], "moins": ["OLLIVIER Sacha\t✗\t✗\t✗\t0/3\t0"]}
+[126] «✓» {"plus": ["PERRAUD Jade\t✗\t✗\t✓\t1/3\t6,7"], "moins": ["PERRAUD Jade\t✓\t✗\t✓\t2/3\t13,3"]}
+[126] «✗» {"plus": ["PERRAUD Jade\t✓\t✓\t✓\t3/3\t20"], "moins": ["PERRAUD Jade\t✓\t✗\t✓\t2/3\t13,3"]}
+[126] «✓» {"plus": ["PERRAUD Jade\t✓\t✗\t✗\t1/3\t6,7"], "moins": ["PERRAUD Jade\t✓\t✗\t✓\t2/3\t13,3"]}
+[126] «✗» {"plus": ["QUINTON Enzo\t✓\t✗\t✗\t1/3\t6,7"], "moins": ["QUINTON Enzo\t✗\t✗\t✗\t0/3\t0"]}
+[126] «✗» {"plus": ["QUINTON Enzo\t✗\t✓\t✗\t1/3\t6,7"], "moins": ["QUINTON Enzo\t✗\t✗\t✗\t0/3\t0"]}
+[126] «✗» {"plus": ["QUINTON Enzo\t✗\t✗\t✓\t1/3\t6,7"], "moins": ["QUINTON Enzo\t✗\t✗\t✗\t0/3\t0"]}
+[126] «✓» {"plus": ["RAMBAUD Lina\t✗\t✓\t✓\t2/3\t13,3"], "moins": ["RAMBAUD Lina\t✓\t✓\t✓\t3/3\t20"]}
+[126] «✓» {"plus": ["RAMBAUD Lina\t✓\t✗\t✓\t2/3\t13,3"], "moins": ["RAMBAUD Lina\t✓\t✓\t✓\t3/3\t20"]}
+[126] «✓» {"plus": ["RAMBAUD Lina\t✓\t✓\t✗\t2/3\t13,3"], "moins": ["RAMBAUD Lina\t✓\t✓\t✓\t3/3\t20"]}
+[126] «✓» {"plus": ["SABATIER Malo\t✗\t✗\t✓\t1/3\t6,7"], "moins": ["SABATIER Malo\t✓\t✗\t✓\t2/3\t13,3"]}
+[126] «✗» {"plus": ["SABATIER Malo\t✓\t✓\t✓\t3/3\t20"], "moins": ["SABATIER Malo\t✓\t✗\t✓\t2/3\t13,3"]}
+[126] «✓» {"plus": ["SABATIER Malo\t✓\t✗\t✗\t1/3\t6,7"], "moins": ["SABATIER Malo\t✓\t✗\t✓\t2/3\t13,3"]}
+[126] «✓» {"plus": ["TESSIER Anna\t✗\t✗\t✗\t0/3\t0"], "moins": ["TESSIER Anna\t✓\t✗\t✗\t1/3\t6,7"]}
+[126] «✗» {"plus": ["TESSIER Anna\t✓\t✓\t✗\t2/3\t13,3"], "moins": ["TESSIER Anna\t✓\t✗\t✗\t1/3\t6,7"]}
+[126] «✗» {"plus": ["TESSIER Anna\t✓\t✗\t✓\t2/3\t13,3"], "moins": ["TESSIER Anna\t✓\t✗\t✗\t1/3\t6,7"]}
+[126] «✓» {"plus": ["VALLÉE Rayan\t✗\t✗\t✗\t0/3\t0"], "moins": ["VALLÉE Rayan\t✓\t✗\t✗\t1/3\t6,7"]}
+[126] «✗» {"plus": ["VALLÉE Rayan\t✓\t✓\t✗\t2/3\t13,3"], "moins": ["VALLÉE Rayan\t✓\t✗\t✗\t1/3\t6,7"]}
+[126] «✗» {"plus": ["VALLÉE Rayan\t✓\t✗\t✓\t2/3\t13,3"], "moins": ["VALLÉE Rayan\t✓\t✗\t✗\t1/3\t6,7"]}
+[126] «✓» {"plus": ["WEBER Clara\t✗\t✓\t✓\t2/3\t13,3"], "moins": ["WEBER Clara\t✓\t✓\t✓\t3/3\t20"]}
+[126] «✓» {"plus": ["WEBER Clara\t✓\t✗\t✓\t2/3\t13,3"], "moins": ["WEBER Clara\t✓\t✓\t✓\t3/3\t20"]}
+[126] «✓» {"plus": ["WEBER Clara\t✓\t✓\t✗\t2/3\t13,3"], "moins": ["WEBER Clara\t✓\t✓\t✓\t3/3\t20"]}
+[126] «✓» {"plus": ["ZELLER Lou\t✗\t✗\t✓\t1/3\t6,7"], "moins": ["ZELLER Lou\t✓\t✗\t✓\t2/3\t13,3"]}
+[126] «✗» {"plus": ["ZELLER Lou\t✓\t✓\t✓\t3/3\t20"], "moins": ["ZELLER Lou\t✓\t✗\t✓\t2/3\t13,3"]}
+[126] «✓» {"plus": ["ZELLER Lou\t✓\t✗\t✗\t1/3\t6,7"], "moins": ["ZELLER Lou\t✓\t✗\t✓\t2/3\t13,3"]}
+[132, 138, 139, 140, 143] «classedateévaluation» {"plus": [], "moins": []}
+[132, 138, 140] «✓publiée» {"plus": ["non publiée"], "moins": []}
+[133, 141] «📥 Export CSV» {"plus": ["📥 resultats-3-ESSAI-08-10-2026.csv téléchargé."], "moins": []}
+[134, 136] «✔ Marquer lue» {"plus": ["✔ lue"], "moins": []}
+[134, 136] «Évaluation fragile. Il faut consolider les bases a» {"plus": ["⚠ Modifications non validées"], "moins": ["Pré-rempli par l'app"]}
+[134, 136] «✓ Valider le bilan» {"plus": ["✅ Bilan validé le 10/10"], "moins": ["Pré-rempli par l'app"]}
+[137] «8bonne réponse» {"plus": [], "moins": []}
+[144] «📥 Exporter snapshot» {"plus": ["📥 qcm-snapshot-2026-10-10.json téléchargé."], "moins": []}
+[144] «↩️ Restaurer» {"plus": ["✔ restaurée"], "moins": []}
+[144] «🧹 Nettoyer les sessions zombies» {"plus": ["🧹 Aucune session zombie : rien à fermer."], "moins": []}
+[150] «5» {"plus": [], "moins": []}
+[150] «1» {"plus": [], "moins": []}
+[150] «2» {"plus": [], "moins": []}
+[150] «3» {"plus": [], "moins": []}
+[150] «💾 Enregistrer» {"plus": ["✅ Enregistré"], "moins": []}
+[150] «Très bonne maîtrise» {"plus": [], "moins": []}
+[150] «Maîtrise satisfaisante» {"plus": [], "moins": []}
+[150] «Maîtrise fragile» {"plus": [], "moins": []}
+[150] «Maîtrise insuffisante» {"plus": [], "moins": []}
+[150] «0» {"plus": [], "moins": []}
+[150] «L'évaluation n'a pas encore commencé. Elle s'ouvri» {"plus": [], "moins": []}
+[150] «La correction s'ouvrira dans un instant.» {"plus": [], "moins": []}
+[150] «C'est terminé. Tes réponses sont enregistrées.» {"plus": [], "moins": []}
+[151] «📋 Copier le prompt» {"plus": ["✅ Prompt copié dans le presse-papiers"], "moins": []}
+[152] «Tu vas m'aider à écrire une évaluation QCM pour ma» {"plus": [], "moins": []}
+[152] «💾 Enregistrer» {"plus": ["✅ Consignes enregistrées — elles te suivent d'un appareil à l'autre."], "moins": []}
+[152] «🔄 Restaurer le prompt par défaut» {"plus": ["Restaurer le prompt par défaut ? Tes modifications actuelles seront perdues (le prompt enregistré dans Firebase sera écr", "Annuler", "OK"], "moins": []}
+[153, 154, 155, 156, 162] «🧪 Mode test» {"plus": ["Mode test actif", "— rien n’est enregistré"], "moins": ["🧪 Mode test"]}
+[153, 154, 155] «Oublier la clé sur cet appareil» {"plus": ["Les codes redeviendront illisibles ici jusqu’à la prochaine saisie. Les données ne bougent pas.", "À faire en quittant un poste partagé (salle de classe, CDI) : la clé mémorisée y afficherait les codes à quiconque s’ass", "Annuler", "Oui, continuer"
+[153, 154, 155] «Où la clé est mémorisée» {"plus": ["Sur chacun de ces appareils, les codes s’affichent SANS saisie. Un poste de salle laissé avec la clé montre tous les cod", "Poste de la salle 12 (cet appareil) — clé mémorisée depuis le 02/10/2026", "Ordinateur portable — clé mémorisée depuis le 15/
+[153, 154, 155] «Relancer la préparation» {"plus": ["0 code à préparer, 25 déjà prêts, 0 entrée ancienne ignorée."], "moins": ["25 codes préparés, 0 refusé, 0 en panne, 0 entrée ancienne ignorée. Le clair reste en place tant que les applications en"]}
+[153, 154, 155] «Retirer les codes en clair» {"plus": ["25 codes portent encore leur clair — tous vérifiés conformes (chiffrés et vérifiables).", "Après ce geste, un code ne se lit plus qu’avec la clé de chiffrement. Rien n’est perdu : le chiffré reste, et une archiv", "Cette action s’exécute une fois, a
+[153, 154] «Un élève par ligne 
+ex : DUPONT Marie» {"plus": [], "moins": []}
+[153, 154] «+ Importer / compléter» {"plus": ["Colle au moins un nom.", "OK"], "moins": []}
+[153, 154] «Générer 1 code manquant» {"plus": ["9187"], "moins": ["Générer 1 code manquant", "—"]}
+[153, 154] «🖨 Imprimer» {"plus": ["Codes — 3 ESSAI", "Élève\tCode", "ABRIAL Julien\t2101", "BAUDRY Léa\t2108"], "moins": []}
+[153, 154] «Tout régénérer» {"plus": ["Régénérer tous les codes", "⚠ TOUS les codes de cette classe seront remplacés. Les anciens ne fonctionneront plus — chaque élève devra recevoir son ", "Pour confirmer, tape CODES :", "Annuler"], "moins": []}
+[153] «🚫 Jamais avec…» {"plus": ["🚫 ABRIAL Julien n'est jamais sur une tablette avec… 0 / 3"], "moins": ["🚫 ESNAULT Inès n'est jamais sur une tablette avec… 1 / 3", "✓"]}
+[153, 154] «↻» {"plus": ["4243"], "moins": ["2101"]}
+[153, 154] «✕» {"plus": ["Retirer un élève", "Retirer ABRIAL Julien de la classe ? Une copie (élève + code) part d’abord en corbeille.", "Annuler", "Oui, continuer"], "moins": []}
+[153] «🚫 Jamais avec…» {"plus": ["🚫 BAUDRY Léa n'est jamais sur une tablette avec… 0 / 3"], "moins": ["🚫 ESNAULT Inès n'est jamais sur une tablette avec… 1 / 3", "✓"]}
+[153, 154] «↻» {"plus": ["1810"], "moins": ["2108"]}
+[153, 154] «✕» {"plus": ["Retirer un élève", "Retirer BAUDRY Léa de la classe ? Une copie (élève + code) part d’abord en corbeille.", "Annuler", "Oui, continuer"], "moins": []}
+[153] «🚫 Jamais avec…» {"plus": ["🚫 BRUNEAU Camille n'est jamais sur une tablette avec… 0 / 3"], "moins": ["🚫 ESNAULT Inès n'est jamais sur une tablette avec… 1 / 3", "✓"]}
+[153, 154] «↻» {"plus": ["5865"], "moins": ["2115"]}
+[153, 154] «✕» {"plus": ["Retirer un élève", "Retirer BRUNEAU Camille de la classe ? Une copie (élève + code) part d’abord en corbeille.", "Annuler", "Oui, continuer"], "moins": []}
+[153] «🚫 Jamais avec… · 1» {"plus": ["🚫 CARRÉ Tom n'est jamais sur une tablette avec… 1 / 3"], "moins": ["🚫 ESNAULT Inès n'est jamais sur une tablette avec… 1 / 3"]}
+[153, 154] «↻» {"plus": ["9998"], "moins": ["2122"]}
+[153, 154] «✕» {"plus": ["Retirer un élève", "Retirer CARRÉ Tom de la classe ? Une copie (élève + code) part d’abord en corbeille.", "Annuler", "Oui, continuer"], "moins": []}
+[153] «🚫 Jamais avec…» {"plus": ["🚫 CHEVALLIER Théo n'est jamais sur une tablette avec… 0 / 3"], "moins": ["🚫 ESNAULT Inès n'est jamais sur une tablette avec… 1 / 3", "✓"]}
+[153, 154] «↻» {"plus": ["5865"], "moins": ["2129"]}
+[153, 154] «✕» {"plus": ["Retirer un élève", "Retirer CHEVALLIER Théo de la classe ? Une copie (élève + code) part d’abord en corbeille.", "Annuler", "Oui, continuer"], "moins": []}
+[153] «🚫 Jamais avec…» {"plus": ["🚫 DUVERNAY Michel n'est jamais sur une tablette avec… 0 / 3"], "moins": ["🚫 ESNAULT Inès n'est jamais sur une tablette avec… 1 / 3", "✓"]}
+[153, 154] «↻» {"plus": ["5865"], "moins": ["2136"]}
+[153, 154] «✕» {"plus": ["Retirer un élève", "Retirer DUVERNAY Michel de la classe ? Une copie (élève + code) part d’abord en corbeille.", "Annuler", "Oui, continuer"], "moins": []}
+[153] «🚫 Jamais avec… · 1» {"plus": [], "moins": ["🚫 ESNAULT Inès n'est jamais sur une tablette avec… 1 / 3", "✓", "Elle vaut dans les deux sens, et pour toutes les apps qui partagent une tablette (le QCM, la correction de dictée…). Auc"]}
+[153, 154] «↻» {"plus": ["3432"], "moins": ["2143"]}
+[153, 154] «✕» {"plus": ["Retirer un élève", "Retirer ESNAULT Inès de la classe ? Une copie (élève + code) part d’abord en corbeille.", "Annuler", "Oui, continuer"], "moins": []}
+[153] «ABRIAL Julien» {"plus": ["🚫 Les exclusions de la classe : deux élèves exclus ne sont jamais sur la même tablette. Elles passent avant toute règle", "🚫 Jamais avec… · 2", "🚫 ESNAULT Inès n'est jamais sur une tablette avec… 2 / 3"], "moins": ["🚫 Les exclusions de la classe : d
+[153] «BAUDRY Léa» {"plus": ["🚫 Les exclusions de la classe : deux élèves exclus ne sont jamais sur la même tablette. Elles passent avant toute règle", "🚫 Jamais avec… · 2", "🚫 ESNAULT Inès n'est jamais sur une tablette avec… 2 / 3"], "moins": ["🚫 Les exclusions de la classe : d
+[153] «BRUNEAU Camille» {"plus": ["🚫 Les exclusions de la classe : deux élèves exclus ne sont jamais sur la même tablette. Elles passent avant toute règle", "🚫 Jamais avec… · 2", "🚫 ESNAULT Inès n'est jamais sur une tablette avec… 2 / 3"], "moins": ["🚫 Les exclusions de la classe : d
+[153] «✓CARRÉ Tom» {"plus": ["🚫 Les exclusions de la classe : deux élèves exclus ne sont jamais sur la même tablette. Elles passent avant toute règle", "🚫 ESNAULT Inès n'est jamais sur une tablette avec… 0 / 3"], "moins": ["🚫 Les exclusions de la classe : deux élèves exclus ne s
+[153] «CHEVALLIER Théo» {"plus": ["🚫 Les exclusions de la classe : deux élèves exclus ne sont jamais sur la même tablette. Elles passent avant toute règle", "🚫 Jamais avec… · 2", "🚫 ESNAULT Inès n'est jamais sur une tablette avec… 2 / 3"], "moins": ["🚫 Les exclusions de la classe : d
+[153] «DUVERNAY Michel» {"plus": ["🚫 Les exclusions de la classe : deux élèves exclus ne sont jamais sur la même tablette. Elles passent avant toute règle", "🚫 Jamais avec… · 2", "🚫 ESNAULT Inès n'est jamais sur une tablette avec… 2 / 3"], "moins": ["🚫 Les exclusions de la classe : d
+[153] «FOUCHER Hugo» {"plus": ["🚫 Les exclusions de la classe : deux élèves exclus ne sont jamais sur la même tablette. Elles passent avant toute règle", "🚫 Jamais avec… · 2", "🚫 ESNAULT Inès n'est jamais sur une tablette avec… 2 / 3"], "moins": ["🚫 Les exclusions de la classe : d
+[153] «GALLOIS Manon» {"plus": ["🚫 Les exclusions de la classe : deux élèves exclus ne sont jamais sur la même tablette. Elles passent avant toute règle", "🚫 Jamais avec… · 2", "🚫 ESNAULT Inès n'est jamais sur une tablette avec… 2 / 3"], "moins": ["🚫 Les exclusions de la classe : d
+[153] «HÉBRARD Nathan» {"plus": ["🚫 Les exclusions de la classe : deux élèves exclus ne sont jamais sur la même tablette. Elles passent avant toute règle", "🚫 Jamais avec… · 2", "🚫 ESNAULT Inès n'est jamais sur une tablette avec… 2 / 3"], "moins": ["🚫 Les exclusions de la classe : d
+[153] «ISAMBERT Chloé» {"plus": ["🚫 Les exclusions de la classe : deux élèves exclus ne sont jamais sur la même tablette. Elles passent avant toute règle", "🚫 Jamais avec… · 2", "🚫 ESNAULT Inès n'est jamais sur une tablette avec… 2 / 3"], "moins": ["🚫 Les exclusions de la classe : d
+[153] «JOUBERT Louis» {"plus": ["🚫 Les exclusions de la classe : deux élèves exclus ne sont jamais sur la même tablette. Elles passent avant toute règle", "🚫 Jamais avec… · 2", "🚫 ESNAULT Inès n'est jamais sur une tablette avec… 2 / 3"], "moins": ["🚫 Les exclusions de la classe : d
+[153] «LACOMBE Emma» {"plus": ["🚫 Les exclusions de la classe : deux élèves exclus ne sont jamais sur la même tablette. Elles passent avant toute règle", "🚫 Jamais avec… · 2", "🚫 ESNAULT Inès n'est jamais sur une tablette avec… 2 / 3"], "moins": ["🚫 Les exclusions de la classe : d
+[153] «MAILLARD Noah» {"plus": ["🚫 Les exclusions de la classe : deux élèves exclus ne sont jamais sur la même tablette. Elles passent avant toute règle", "🚫 Jamais avec… · 2", "🚫 ESNAULT Inès n'est jamais sur une tablette avec… 2 / 3"], "moins": ["🚫 Les exclusions de la classe : d
+[153] «NOGARET Zoé» {"plus": ["🚫 Les exclusions de la classe : deux élèves exclus ne sont jamais sur la même tablette. Elles passent avant toute règle", "🚫 Jamais avec… · 2", "🚫 ESNAULT Inès n'est jamais sur une tablette avec… 2 / 3"], "moins": ["🚫 Les exclusions de la classe : d
+[153] «OLLIVIER Sacha» {"plus": ["🚫 Les exclusions de la classe : deux élèves exclus ne sont jamais sur la même tablette. Elles passent avant toute règle", "🚫 Jamais avec… · 2", "🚫 ESNAULT Inès n'est jamais sur une tablette avec… 2 / 3", "🚫 Jamais avec… · 2"], "moins": ["🚫 Les exclu
+[153] «PERRAUD Jade» {"plus": ["🚫 Les exclusions de la classe : deux élèves exclus ne sont jamais sur la même tablette. Elles passent avant toute règle", "🚫 Jamais avec… · 2", "🚫 ESNAULT Inès n'est jamais sur une tablette avec… 2 / 3"], "moins": ["🚫 Les exclusions de la classe : d
+[153] «QUINTON Enzo» {"plus": ["🚫 Les exclusions de la classe : deux élèves exclus ne sont jamais sur la même tablette. Elles passent avant toute règle", "🚫 Jamais avec… · 2", "🚫 ESNAULT Inès n'est jamais sur une tablette avec… 2 / 3", "🚫 Jamais avec… · 2"], "moins": ["🚫 Les exclu
+[153] «RAMBAUD Lina» {"plus": ["🚫 Les exclusions de la classe : deux élèves exclus ne sont jamais sur la même tablette. Elles passent avant toute règle", "🚫 Jamais avec… · 2", "🚫 ESNAULT Inès n'est jamais sur une tablette avec… 2 / 3"], "moins": ["🚫 Les exclusions de la classe : d
+[153] «SABATIER Malo» {"plus": ["🚫 Les exclusions de la classe : deux élèves exclus ne sont jamais sur la même tablette. Elles passent avant toute règle", "🚫 Jamais avec… · 2", "🚫 ESNAULT Inès n'est jamais sur une tablette avec… 2 / 3"], "moins": ["🚫 Les exclusions de la classe : d
+[153] «TESSIER Anna» {"plus": ["🚫 Les exclusions de la classe : deux élèves exclus ne sont jamais sur la même tablette. Elles passent avant toute règle", "🚫 Jamais avec… · 2", "🚫 ESNAULT Inès n'est jamais sur une tablette avec… 2 / 3"], "moins": ["🚫 Les exclusions de la classe : d
+[153] «VALLÉE Rayan» {"plus": ["🚫 Les exclusions de la classe : deux élèves exclus ne sont jamais sur la même tablette. Elles passent avant toute règle", "🚫 Jamais avec… · 2", "🚫 ESNAULT Inès n'est jamais sur une tablette avec… 2 / 3"], "moins": ["🚫 Les exclusions de la classe : d
+[153] «WEBER Clara» {"plus": ["🚫 Les exclusions de la classe : deux élèves exclus ne sont jamais sur la même tablette. Elles passent avant toute règle", "🚫 Jamais avec… · 2", "🚫 ESNAULT Inès n'est jamais sur une tablette avec… 2 / 3"], "moins": ["🚫 Les exclusions de la classe : d
+[153] «YVON Adam» {"plus": ["🚫 Les exclusions de la classe : deux élèves exclus ne sont jamais sur la même tablette. Elles passent avant toute règle", "🚫 Jamais avec… · 2", "🚫 ESNAULT Inès n'est jamais sur une tablette avec… 2 / 3"], "moins": ["🚫 Les exclusions de la classe : d
+[153] «ZELLER Lou» {"plus": ["🚫 Les exclusions de la classe : deux élèves exclus ne sont jamais sur la même tablette. Elles passent avant toute règle", "🚫 Jamais avec… · 2", "🚫 ESNAULT Inès n'est jamais sur une tablette avec… 2 / 3"], "moins": ["🚫 Les exclusions de la classe : d
+[153] «🚫 Jamais avec…» {"plus": ["🚫 FOUCHER Hugo n'est jamais sur une tablette avec… 0 / 3"], "moins": ["🚫 ESNAULT Inès n'est jamais sur une tablette avec… 1 / 3", "✓"]}
+[153, 154] «↻» {"plus": ["3432"], "moins": ["2150"]}
+[153, 154] «✕» {"plus": ["Retirer un élève", "Retirer FOUCHER Hugo de la classe ? Une copie (élève + code) part d’abord en corbeille.", "Annuler", "Oui, continuer"], "moins": []}
+[153] «🚫 Jamais avec…» {"plus": ["🚫 GALLOIS Manon n'est jamais sur une tablette avec… 0 / 3"], "moins": ["🚫 ESNAULT Inès n'est jamais sur une tablette avec… 1 / 3", "✓"]}
+[153, 154] «↻» {"plus": ["4243"], "moins": ["2157"]}
+[153, 154] «✕» {"plus": ["Retirer un élève", "Retirer GALLOIS Manon de la classe ? Une copie (élève + code) part d’abord en corbeille.", "Annuler", "Oui, continuer"], "moins": []}
+[153] «🚫 Jamais avec…» {"plus": ["🚫 HÉBRARD Nathan n'est jamais sur une tablette avec… 0 / 3"], "moins": ["🚫 ESNAULT Inès n'est jamais sur une tablette avec… 1 / 3", "✓"]}
+[153, 154] «↻» {"plus": ["5054"], "moins": ["2164"]}
+[153, 154] «✕» {"plus": ["Retirer un élève", "Retirer HÉBRARD Nathan de la classe ? Une copie (élève + code) part d’abord en corbeille.", "Annuler", "Oui, continuer"], "moins": []}
+[153] «🚫 Jamais avec…» {"plus": ["🚫 ISAMBERT Chloé n'est jamais sur une tablette avec… 0 / 3"], "moins": ["🚫 ESNAULT Inès n'est jamais sur une tablette avec… 1 / 3", "✓"]}
+[153, 154] «↻» {"plus": ["5054"], "moins": ["2171"]}
+[153, 154] «✕» {"plus": ["Retirer un élève", "Retirer ISAMBERT Chloé de la classe ? Une copie (élève + code) part d’abord en corbeille.", "Annuler", "Oui, continuer"], "moins": []}
+[153] «🚫 Jamais avec…» {"plus": ["🚫 JOUBERT Louis n'est jamais sur une tablette avec… 0 / 3"], "moins": ["🚫 ESNAULT Inès n'est jamais sur une tablette avec… 1 / 3", "✓"]}
+[153, 154] «↻» {"plus": ["4243"], "moins": ["2178"]}
+[153, 154] «✕» {"plus": ["Retirer un élève", "Retirer JOUBERT Louis de la classe ? Une copie (élève + code) part d’abord en corbeille.", "Annuler", "Oui, continuer"], "moins": []}
+[153] «🚫 Jamais avec…» {"plus": ["🚫 LACOMBE Emma n'est jamais sur une tablette avec… 0 / 3"], "moins": ["🚫 ESNAULT Inès n'est jamais sur une tablette avec… 1 / 3", "✓"]}
+[153, 154] «↻» {"plus": ["3432"], "moins": ["2185"]}
+[153, 154] «✕» {"plus": ["Retirer un élève", "Retirer LACOMBE Emma de la classe ? Une copie (élève + code) part d’abord en corbeille.", "Annuler", "Oui, continuer"], "moins": []}
+[153] «🚫 Jamais avec…» {"plus": ["🚫 MAILLARD Noah n'est jamais sur une tablette avec… 0 / 3"], "moins": ["🚫 ESNAULT Inès n'est jamais sur une tablette avec… 1 / 3", "✓"]}
+[153, 154] «↻» {"plus": ["4243"], "moins": ["2192"]}
+[153, 154] «✕» {"plus": ["Retirer un élève", "Retirer MAILLARD Noah de la classe ? Une copie (élève + code) part d’abord en corbeille.", "Annuler", "Oui, continuer"], "moins": []}
+[153] «🚫 Jamais avec…» {"plus": ["🚫 NOGARET Zoé n'est jamais sur une tablette avec… 0 / 3"], "moins": ["🚫 ESNAULT Inès n'est jamais sur une tablette avec… 1 / 3", "✓"]}
+[153, 154] «↻» {"plus": ["2621"], "moins": ["2199"]}
+[153, 154] «✕» {"plus": ["Retirer un élève", "Retirer NOGARET Zoé de la classe ? Une copie (élève + code) part d’abord en corbeille.", "Annuler", "Oui, continuer"], "moins": []}
+[153] «🚫 Jamais avec… · 1» {"plus": ["🚫 OLLIVIER Sacha n'est jamais sur une tablette avec… 1 / 3"], "moins": ["🚫 ESNAULT Inès n'est jamais sur une tablette avec… 1 / 3"]}
+[153, 154] «↻» {"plus": ["5054"], "moins": ["2206"]}
+[153, 154] «✕» {"plus": ["Retirer un élève", "Retirer OLLIVIER Sacha de la classe ? Une copie (élève + code) part d’abord en corbeille.", "Annuler", "Oui, continuer"], "moins": []}
+[153] «🚫 Jamais avec…» {"plus": ["🚫 PERRAUD Jade n'est jamais sur une tablette avec… 0 / 3"], "moins": ["🚫 ESNAULT Inès n'est jamais sur une tablette avec… 1 / 3", "✓"]}
+[153, 154] «↻» {"plus": ["3432"], "moins": ["2213"]}
+[153, 154] «✕» {"plus": ["Retirer un élève", "Retirer PERRAUD Jade de la classe ? Une copie (élève + code) part d’abord en corbeille.", "Annuler", "Oui, continuer"], "moins": []}
+[153] «🚫 Jamais avec… · 1» {"plus": ["🚫 QUINTON Enzo n'est jamais sur une tablette avec… 1 / 3"], "moins": ["🚫 ESNAULT Inès n'est jamais sur une tablette avec… 1 / 3"]}
+[153, 154] «↻» {"plus": ["3432"], "moins": ["2220"]}
+[153, 154] «✕» {"plus": ["Retirer un élève", "Retirer QUINTON Enzo de la classe ? Une copie (élève + code) part d’abord en corbeille.", "Annuler", "Oui, continuer"], "moins": []}
+[153] «🚫 Jamais avec…» {"plus": ["🚫 RAMBAUD Lina n'est jamais sur une tablette avec… 0 / 3"], "moins": ["🚫 ESNAULT Inès n'est jamais sur une tablette avec… 1 / 3", "✓"]}
+[153, 154] «↻» {"plus": ["3432"], "moins": ["2227"]}
+[153, 154] «✕» {"plus": ["Retirer un élève", "Retirer RAMBAUD Lina de la classe ? Une copie (élève + code) part d’abord en corbeille.", "Annuler", "Oui, continuer"], "moins": []}
+[153] «🚫 Jamais avec…» {"plus": ["🚫 SABATIER Malo n'est jamais sur une tablette avec… 0 / 3"], "moins": ["🚫 ESNAULT Inès n'est jamais sur une tablette avec… 1 / 3", "✓"]}
+[153, 154] «↻» {"plus": ["4243"], "moins": ["2234"]}
+[153, 154] «✕» {"plus": ["Retirer un élève", "Retirer SABATIER Malo de la classe ? Une copie (élève + code) part d’abord en corbeille.", "Annuler", "Oui, continuer"], "moins": []}
+[153] «🚫 Jamais avec…» {"plus": ["🚫 TESSIER Anna n'est jamais sur une tablette avec… 0 / 3"], "moins": ["🚫 ESNAULT Inès n'est jamais sur une tablette avec… 1 / 3", "✓"]}
+[153, 154] «↻» {"plus": ["3432"], "moins": ["2241"]}
+[153, 154] «✕» {"plus": ["Retirer un élève", "Retirer TESSIER Anna de la classe ? Une copie (élève + code) part d’abord en corbeille.", "Annuler", "Oui, continuer"], "moins": []}
+[153] «🚫 Jamais avec…» {"plus": ["🚫 VALLÉE Rayan n'est jamais sur une tablette avec… 0 / 3"], "moins": ["🚫 ESNAULT Inès n'est jamais sur une tablette avec… 1 / 3", "✓"]}
+[153, 154] «↻» {"plus": ["3432"], "moins": ["2248"]}
+[153, 154] «✕» {"plus": ["Retirer un élève", "Retirer VALLÉE Rayan de la classe ? Une copie (élève + code) part d’abord en corbeille.", "Annuler", "Oui, continuer"], "moins": []}
+[153] «🚫 Jamais avec…» {"plus": ["🚫 WEBER Clara n'est jamais sur une tablette avec… 0 / 3"], "moins": ["🚫 ESNAULT Inès n'est jamais sur une tablette avec… 1 / 3", "✓"]}
+[153, 154] «↻» {"plus": ["2621"], "moins": ["2255"]}
+[153, 154] «✕» {"plus": ["Retirer un élève", "Retirer WEBER Clara de la classe ? Une copie (élève + code) part d’abord en corbeille.", "Annuler", "Oui, continuer"], "moins": []}
+[153] «🚫 Jamais avec…» {"plus": ["🚫 YVON Adam n'est jamais sur une tablette avec… 0 / 3"], "moins": ["🚫 ESNAULT Inès n'est jamais sur une tablette avec… 1 / 3", "✓"]}
+[153, 154] «↻» {"plus": ["9998"], "moins": ["Générer 1 code manquant", "—"]}
+[153, 154] «✕» {"plus": ["Retirer un élève", "Retirer YVON Adam de la classe ? Une copie (élève + code) part d’abord en corbeille.", "Annuler", "Oui, continuer"], "moins": []}
+[153] «🚫 Jamais avec…» {"plus": ["🚫 ZELLER Lou n'est jamais sur une tablette avec… 0 / 3"], "moins": ["🚫 ESNAULT Inès n'est jamais sur une tablette avec… 1 / 3", "✓"]}
+[153, 154] «↻» {"plus": ["1810"], "moins": ["2269"]}
+[153, 154] «✕» {"plus": ["Retirer un élève", "Retirer ZELLER Lou de la classe ? Une copie (élève + code) part d’abord en corbeille.", "Annuler", "Oui, continuer"], "moins": []}
+[154] «🚫 Jamais avec…» {"plus": ["🚫 ABRIAL Julien n'est jamais sur une tablette avec… 0 / 3"], "moins": ["🚫 ESNAULT Inès n'est jamais sur une tablette avec… 3 / 3", "✓", "✓", "✓"]}
+[154] «🚫 Jamais avec…» {"plus": ["🚫 BAUDRY Léa n'est jamais sur une tablette avec… 0 / 3"], "moins": ["🚫 ESNAULT Inès n'est jamais sur une tablette avec… 3 / 3", "✓", "✓", "✓"]}
+[154] «🚫 Jamais avec…» {"plus": ["🚫 BRUNEAU Camille n'est jamais sur une tablette avec… 0 / 3"], "moins": ["🚫 ESNAULT Inès n'est jamais sur une tablette avec… 3 / 3", "✓", "✓", "✓"]}
+[154] «🚫 Jamais avec… · 1» {"plus": ["🚫 CARRÉ Tom n'est jamais sur une tablette avec… 1 / 3"], "moins": ["🚫 ESNAULT Inès n'est jamais sur une tablette avec… 3 / 3", "🚫 Refusé : pas d'exclusion entre Inès et Jade : ESNAULT Inès a déjà 3 exclusions, le plus que permet MJPC. Avec 3 au pl"]
+[154] «🚫 Jamais avec…» {"plus": ["🚫 CHEVALLIER Théo n'est jamais sur une tablette avec… 0 / 3"], "moins": ["🚫 ESNAULT Inès n'est jamais sur une tablette avec… 3 / 3", "✓", "✓", "✓"]}
+[154] «🚫 Jamais avec…» {"plus": ["🚫 DUVERNAY Michel n'est jamais sur une tablette avec… 0 / 3"], "moins": ["🚫 ESNAULT Inès n'est jamais sur une tablette avec… 3 / 3", "✓", "✓", "✓"]}
+[154] «🚫 Jamais avec… · 3» {"plus": [], "moins": ["🚫 ESNAULT Inès n'est jamais sur une tablette avec… 3 / 3", "✓", "✓", "✓"]}
+[154] «ABRIAL Julien» {"plus": ["🚫 Refusé : pas d'exclusion entre Inès et Julien : ESNAULT Inès a déjà 3 exclusions, le plus que permet MJPC. Avec 3 au "], "moins": ["🚫 Refusé : pas d'exclusion entre Inès et Jade : ESNAULT Inès a déjà 3 exclusions, le plus que permet MJPC. Avec 3 a
+[154] «BAUDRY Léa» {"plus": ["🚫 Refusé : pas d'exclusion entre Inès et Léa : ESNAULT Inès a déjà 3 exclusions, le plus que permet MJPC. Avec 3 au plu"], "moins": ["🚫 Refusé : pas d'exclusion entre Inès et Jade : ESNAULT Inès a déjà 3 exclusions, le plus que permet MJPC. Avec 3 a
+[154] «BRUNEAU Camille» {"plus": ["🚫 Refusé : pas d'exclusion entre Inès et Camille : ESNAULT Inès a déjà 3 exclusions, le plus que permet MJPC. Avec 3 au"], "moins": ["🚫 Refusé : pas d'exclusion entre Inès et Jade : ESNAULT Inès a déjà 3 exclusions, le plus que permet MJPC. Avec 3 a
+[154] «✓CARRÉ Tom» {"plus": ["🚫 Les exclusions de la classe : deux élèves exclus ne sont jamais sur la même tablette. Elles passent avant toute règle", "🚫 ESNAULT Inès n'est jamais sur une tablette avec… 2 / 3"], "moins": ["🚫 Les exclusions de la classe : deux élèves exclus ne s
+[154] «CHEVALLIER Théo» {"plus": ["🚫 Refusé : pas d'exclusion entre Inès et Théo : ESNAULT Inès a déjà 3 exclusions, le plus que permet MJPC. Avec 3 au pl"], "moins": ["🚫 Refusé : pas d'exclusion entre Inès et Jade : ESNAULT Inès a déjà 3 exclusions, le plus que permet MJPC. Avec 3 a
+[154] «DUVERNAY Michel» {"plus": ["🚫 Refusé : pas d'exclusion entre Inès et Michel : ESNAULT Inès a déjà 3 exclusions, le plus que permet MJPC. Avec 3 au "], "moins": ["🚫 Refusé : pas d'exclusion entre Inès et Jade : ESNAULT Inès a déjà 3 exclusions, le plus que permet MJPC. Avec 3 a
+[154] «FOUCHER Hugo» {"plus": ["🚫 Refusé : pas d'exclusion entre Inès et Hugo : ESNAULT Inès a déjà 3 exclusions, le plus que permet MJPC. Avec 3 au pl"], "moins": ["🚫 Refusé : pas d'exclusion entre Inès et Jade : ESNAULT Inès a déjà 3 exclusions, le plus que permet MJPC. Avec 3 a
+[154] «GALLOIS Manon» {"plus": ["🚫 Refusé : pas d'exclusion entre Inès et Manon : ESNAULT Inès a déjà 3 exclusions, le plus que permet MJPC. Avec 3 au p"], "moins": ["🚫 Refusé : pas d'exclusion entre Inès et Jade : ESNAULT Inès a déjà 3 exclusions, le plus que permet MJPC. Avec 3 a
+[154] «HÉBRARD Nathan» {"plus": ["🚫 Refusé : pas d'exclusion entre Inès et Nathan : ESNAULT Inès a déjà 3 exclusions, le plus que permet MJPC. Avec 3 au "], "moins": ["🚫 Refusé : pas d'exclusion entre Inès et Jade : ESNAULT Inès a déjà 3 exclusions, le plus que permet MJPC. Avec 3 a
+[154] «ISAMBERT Chloé» {"plus": ["🚫 Refusé : pas d'exclusion entre Inès et Chloé : ESNAULT Inès a déjà 3 exclusions, le plus que permet MJPC. Avec 3 au p"], "moins": ["🚫 Refusé : pas d'exclusion entre Inès et Jade : ESNAULT Inès a déjà 3 exclusions, le plus que permet MJPC. Avec 3 a
+[154] «JOUBERT Louis» {"plus": ["🚫 Refusé : pas d'exclusion entre Inès et Louis : ESNAULT Inès a déjà 3 exclusions, le plus que permet MJPC. Avec 3 au p"], "moins": ["🚫 Refusé : pas d'exclusion entre Inès et Jade : ESNAULT Inès a déjà 3 exclusions, le plus que permet MJPC. Avec 3 a
+[154] «LACOMBE Emma» {"plus": ["🚫 Refusé : pas d'exclusion entre Inès et Emma : ESNAULT Inès a déjà 3 exclusions, le plus que permet MJPC. Avec 3 au pl"], "moins": ["🚫 Refusé : pas d'exclusion entre Inès et Jade : ESNAULT Inès a déjà 3 exclusions, le plus que permet MJPC. Avec 3 a
+[154] «MAILLARD Noah» {"plus": ["🚫 Refusé : pas d'exclusion entre Inès et Noah : ESNAULT Inès a déjà 3 exclusions, le plus que permet MJPC. Avec 3 au pl"], "moins": ["🚫 Refusé : pas d'exclusion entre Inès et Jade : ESNAULT Inès a déjà 3 exclusions, le plus que permet MJPC. Avec 3 a
+[154] «NOGARET Zoé» {"plus": ["🚫 Refusé : pas d'exclusion entre Inès et Zoé : ESNAULT Inès a déjà 3 exclusions, le plus que permet MJPC. Avec 3 au plu"], "moins": ["🚫 Refusé : pas d'exclusion entre Inès et Jade : ESNAULT Inès a déjà 3 exclusions, le plus que permet MJPC. Avec 3 a
+[154] «✓OLLIVIER Sacha» {"plus": ["🚫 Les exclusions de la classe : deux élèves exclus ne sont jamais sur la même tablette. Elles passent avant toute règle", "🚫 ESNAULT Inès n'est jamais sur une tablette avec… 2 / 3"], "moins": ["🚫 Les exclusions de la classe : deux élèves exclus ne s
+[154] «PERRAUD Jade» {"plus": [], "moins": ["🚫 Refusé : pas d'exclusion entre Inès et Jade : ESNAULT Inès a déjà 3 exclusions, le plus que permet MJPC. Avec 3 au pl"]}
+[154] «✓QUINTON Enzo» {"plus": ["🚫 Les exclusions de la classe : deux élèves exclus ne sont jamais sur la même tablette. Elles passent avant toute règle", "🚫 ESNAULT Inès n'est jamais sur une tablette avec… 2 / 3"], "moins": ["🚫 Les exclusions de la classe : deux élèves exclus ne s
+[154] «RAMBAUD Lina» {"plus": ["🚫 Refusé : pas d'exclusion entre Inès et Lina : ESNAULT Inès a déjà 3 exclusions, le plus que permet MJPC. Avec 3 au pl"], "moins": ["🚫 Refusé : pas d'exclusion entre Inès et Jade : ESNAULT Inès a déjà 3 exclusions, le plus que permet MJPC. Avec 3 a
+[154] «SABATIER Malo» {"plus": ["🚫 Refusé : pas d'exclusion entre Inès et Malo : ESNAULT Inès a déjà 3 exclusions, le plus que permet MJPC. Avec 3 au pl"], "moins": ["🚫 Refusé : pas d'exclusion entre Inès et Jade : ESNAULT Inès a déjà 3 exclusions, le plus que permet MJPC. Avec 3 a
+[154] «TESSIER Anna» {"plus": ["🚫 Refusé : pas d'exclusion entre Inès et Anna : ESNAULT Inès a déjà 3 exclusions, le plus que permet MJPC. Avec 3 au pl"], "moins": ["🚫 Refusé : pas d'exclusion entre Inès et Jade : ESNAULT Inès a déjà 3 exclusions, le plus que permet MJPC. Avec 3 a
+[154] «VALLÉE Rayan» {"plus": ["🚫 Refusé : pas d'exclusion entre Inès et Rayan : ESNAULT Inès a déjà 3 exclusions, le plus que permet MJPC. Avec 3 au p"], "moins": ["🚫 Refusé : pas d'exclusion entre Inès et Jade : ESNAULT Inès a déjà 3 exclusions, le plus que permet MJPC. Avec 3 a
+[154] «WEBER Clara» {"plus": ["🚫 Refusé : pas d'exclusion entre Inès et Clara : ESNAULT Inès a déjà 3 exclusions, le plus que permet MJPC. Avec 3 au p"], "moins": ["🚫 Refusé : pas d'exclusion entre Inès et Jade : ESNAULT Inès a déjà 3 exclusions, le plus que permet MJPC. Avec 3 a
+[154] «YVON Adam» {"plus": ["🚫 Refusé : pas d'exclusion entre Inès et Adam : ESNAULT Inès a déjà 3 exclusions, le plus que permet MJPC. Avec 3 au pl"], "moins": ["🚫 Refusé : pas d'exclusion entre Inès et Jade : ESNAULT Inès a déjà 3 exclusions, le plus que permet MJPC. Avec 3 a
+[154] «ZELLER Lou» {"plus": ["🚫 Refusé : pas d'exclusion entre Inès et Lou : ESNAULT Inès a déjà 3 exclusions, le plus que permet MJPC. Avec 3 au plu"], "moins": ["🚫 Refusé : pas d'exclusion entre Inès et Jade : ESNAULT Inès a déjà 3 exclusions, le plus que permet MJPC. Avec 3 a
+[154] «🚫 Jamais avec…» {"plus": ["🚫 FOUCHER Hugo n'est jamais sur une tablette avec… 0 / 3"], "moins": ["🚫 ESNAULT Inès n'est jamais sur une tablette avec… 3 / 3", "✓", "✓", "✓"]}
+[154] «🚫 Jamais avec…» {"plus": ["🚫 GALLOIS Manon n'est jamais sur une tablette avec… 0 / 3"], "moins": ["🚫 ESNAULT Inès n'est jamais sur une tablette avec… 3 / 3", "✓", "✓", "✓"]}
+[154] «🚫 Jamais avec…» {"plus": ["🚫 HÉBRARD Nathan n'est jamais sur une tablette avec… 0 / 3"], "moins": ["🚫 ESNAULT Inès n'est jamais sur une tablette avec… 3 / 3", "✓", "✓", "✓"]}
+[154] «🚫 Jamais avec…» {"plus": ["🚫 ISAMBERT Chloé n'est jamais sur une tablette avec… 0 / 3"], "moins": ["🚫 ESNAULT Inès n'est jamais sur une tablette avec… 3 / 3", "✓", "✓", "✓"]}
+[154] «🚫 Jamais avec…» {"plus": ["🚫 JOUBERT Louis n'est jamais sur une tablette avec… 0 / 3"], "moins": ["🚫 ESNAULT Inès n'est jamais sur une tablette avec… 3 / 3", "✓", "✓", "✓"]}
+[154] «🚫 Jamais avec…» {"plus": ["🚫 LACOMBE Emma n'est jamais sur une tablette avec… 0 / 3"], "moins": ["🚫 ESNAULT Inès n'est jamais sur une tablette avec… 3 / 3", "✓", "✓", "✓"]}
+[154] «🚫 Jamais avec…» {"plus": ["🚫 MAILLARD Noah n'est jamais sur une tablette avec… 0 / 3"], "moins": ["🚫 ESNAULT Inès n'est jamais sur une tablette avec… 3 / 3", "✓", "✓", "✓"]}
+[154] «🚫 Jamais avec…» {"plus": ["🚫 NOGARET Zoé n'est jamais sur une tablette avec… 0 / 3"], "moins": ["🚫 ESNAULT Inès n'est jamais sur une tablette avec… 3 / 3", "✓", "✓", "✓"]}
+[154] «🚫 Jamais avec… · 2» {"plus": ["🚫 OLLIVIER Sacha n'est jamais sur une tablette avec… 2 / 3"], "moins": ["🚫 ESNAULT Inès n'est jamais sur une tablette avec… 3 / 3", "🚫 Refusé : pas d'exclusion entre Inès et Jade : ESNAULT Inès a déjà 3 exclusions, le plus que permet MJPC. Avec 3 au
+[154] «🚫 Jamais avec…» {"plus": ["🚫 PERRAUD Jade n'est jamais sur une tablette avec… 0 / 3"], "moins": ["🚫 ESNAULT Inès n'est jamais sur une tablette avec… 3 / 3", "✓", "✓", "✓"]}
+[154] «🚫 Jamais avec… · 2» {"plus": ["🚫 QUINTON Enzo n'est jamais sur une tablette avec… 2 / 3"], "moins": ["🚫 ESNAULT Inès n'est jamais sur une tablette avec… 3 / 3", "🚫 Refusé : pas d'exclusion entre Inès et Jade : ESNAULT Inès a déjà 3 exclusions, le plus que permet MJPC. Avec 3 au p
+[154] «🚫 Jamais avec…» {"plus": ["🚫 RAMBAUD Lina n'est jamais sur une tablette avec… 0 / 3"], "moins": ["🚫 ESNAULT Inès n'est jamais sur une tablette avec… 3 / 3", "✓", "✓", "✓"]}
+[154] «🚫 Jamais avec…» {"plus": ["🚫 SABATIER Malo n'est jamais sur une tablette avec… 0 / 3"], "moins": ["🚫 ESNAULT Inès n'est jamais sur une tablette avec… 3 / 3", "✓", "✓", "✓"]}
+[154] «🚫 Jamais avec…» {"plus": ["🚫 TESSIER Anna n'est jamais sur une tablette avec… 0 / 3"], "moins": ["🚫 ESNAULT Inès n'est jamais sur une tablette avec… 3 / 3", "✓", "✓", "✓"]}
+[154] «🚫 Jamais avec…» {"plus": ["🚫 VALLÉE Rayan n'est jamais sur une tablette avec… 0 / 3"], "moins": ["🚫 ESNAULT Inès n'est jamais sur une tablette avec… 3 / 3", "✓", "✓", "✓"]}
+[154] «🚫 Jamais avec…» {"plus": ["🚫 WEBER Clara n'est jamais sur une tablette avec… 0 / 3"], "moins": ["🚫 ESNAULT Inès n'est jamais sur une tablette avec… 3 / 3", "✓", "✓", "✓"]}
+[154] «🚫 Jamais avec…» {"plus": ["🚫 YVON Adam n'est jamais sur une tablette avec… 0 / 3"], "moins": ["🚫 ESNAULT Inès n'est jamais sur une tablette avec… 3 / 3", "✓", "✓", "✓"]}
+[154] «🚫 Jamais avec…» {"plus": ["🚫 ZELLER Lou n'est jamais sur une tablette avec… 0 / 3"], "moins": ["🚫 ESNAULT Inès n'est jamais sur une tablette avec… 3 / 3", "✓", "✓", "✓"]}
+[155] «F» {"plus": ["Ce que les apps liront : dictée aménagée non, sexe F — jamais la fiche."], "moins": ["Ce que les apps liront : dictée aménagée non, sexe M — jamais la fiche."]}
+[155] «non» {"plus": ["DUVERNAY Michel — 3 ESSAI"], "moins": ["◆ DUVERNAY Michel — 3 ESSAI"]}
+[155, 162] «on» {"plus": [], "moins": []}
+[155] «remarque (facultatif)» {"plus": [], "moins": []}
+[155] «on» {"plus": ["Ce que les apps liront : dictée aménagée oui, sexe M — jamais la fiche."], "moins": ["Ce que les apps liront : dictée aménagée non, sexe M — jamais la fiche."]}
+[155] «synthèse (facultatif)» {"plus": [], "moins": []}
+[155] «Enregistrer la fiche» {"plus": [" · cases cochées le 10/10/2026 · 🔒 la fiche est chiffrée avec ta clé — saisie ✔", "✔ Fiche enregistrée — cases cochées le 10/10/2026 ; les apps liront : dictée aménagée non."], "moins": [" · cases cochées le 15/09/2026 · 🔒 la fiche est chiffrée avec
+[155] «Proposer des supports écrits aérés et agrandis (ex» {"plus": [], "moins": []}
+[155] «Limiter la copie (synthèse du cours photocopiée, p» {"plus": [], "moins": []}
+[155] «Lecture par un tiers ou lecture immersive (prévoir» {"plus": [], "moins": []}
+[155] «Décomposer les consignes, hiérarchiser pap-04» {"plus": [], "moins": []}
+[155] «Aider à la mise en place de méthodes de travail (s» {"plus": [], "moins": []}
+[155] «Prendre en compte les contraintes associées (fatig» {"plus": [], "moins": []}
+[155] «Utilisation de l'informatique : MPA pap-07» {"plus": [], "moins": []}
+[155] «Accorder un temps majoré pap-08» {"plus": [], "moins": []}
+[155] «Privilégier les évaluations sur le mode oral pap-0» {"plus": [], "moins": []}
+[155] «Diminuer le nombre d'exercices, de questions quand» {"plus": [], "moins": []}
+[155] «Limiter la quantité d'écrit (recours possible aux » {"plus": [], "moins": []}
+[155] «Ne pas pénaliser les erreurs (orthographe grammati» {"plus": [], "moins": []}
+[155] «Ne pas pénaliser le manque de participation à l'or» {"plus": [], "moins": []}
+[155] «Limiter le « par cœur », demander à ce que les not» {"plus": [], "moins": []}
+[155] «Proposer des dictées aménagées (à trous, avec un c» {"plus": ["Ce que les apps liront : dictée aménagée oui, sexe M — jamais la fiche."], "moins": ["Ce que les apps liront : dictée aménagée non, sexe M — jamais la fiche."]}
+[157, 158, 159, 160, 161] «🧪 Mode test» {"plus": ["Mode test actif", "— rien n’est enregistré", "🧪 MODE TEST — tu édites une COPIE de la taxonomie. Rien n’est enregistré au référentiel : toutes tes modifications disp"], "moins": ["🧪 Mode test"]}
+[157, 160, 161] «▶ Orthographe lexicale (élève : L'orthographe des » {"plus": ["▼ Orthographe lexicale (élève : L'orthographe des mots) 8 familles · 28 notions", "▶ Doubles consonnes 4 notions", "▶ Accents 4 notions", "▶ Lettres muettes 3 notions"], "moins": ["▶ Orthographe lexicale (élève : L'orthographe des mots) 8 familles ·
+[157, 158, 159, 160, 161] «▶ Orthographe grammaticale (élève : Les accords et» {"plus": ["▼ Orthographe grammaticale (élève : Les accords et les terminaisons) 6 familles · 42 notions", "▶ Accords dans le groupe nominal 6 notions", "▶ Accords sujet-verbe 6 notions", "▶ Accords du participe passé 5 notions"], "moins": ["▶ Orthographe gramm
+[157, 158, 159, 160, 161] «▶ Grammaire (élève : La grammaire de la phrase) 7 » {"plus": ["▼ Grammaire (élève : La grammaire de la phrase) 7 familles · 43 notions", "▶ Nature des mots (classes grammaticales) 9 notions", "▶ Fonctions dans la phrase 9 notions", "▶ Types et formes de phrase 6 notions"], "moins": ["▶ Grammaire (élève : La gra
+[157, 158, 159, 160, 161] «▶ Conjugaison (élève : La conjugaison) 11 familles» {"plus": ["▼ Conjugaison (élève : La conjugaison) 11 familles · 29 notions", "▶ Présent 5 notions", "▶ Imparfait 2 notions", "▶ Passé simple 4 notions"], "moins": ["▶ Conjugaison (élève : La conjugaison) 11 familles · 29 notions"]}
+[157, 158, 159, 160, 161] «▶ Lexique (élève : Le vocabulaire) 8 familles · 12» {"plus": ["▼ Lexique (élève : Le vocabulaire) 8 familles · 12 notions", "▶ Synonymes et antonymes 2 notions", "▶ Familles de mots 1 notion", "▶ Préfixes et suffixes 2 notions"], "moins": ["▶ Lexique (élève : Le vocabulaire) 8 familles · 12 notions"]}
+[157, 158, 159, 160, 161] «▶ Le texte et ses formes (élève : Comprendre comme» {"plus": ["▼ Le texte et ses formes (élève : Comprendre comment un texte est fait) 7 familles · 39 notions", "▶ Genres et formes littéraires 6 notions", "▶ Énonciation et voix narrative 5 notions", "▶ La construction du récit 2 notions"], "moins": ["▶ Le texte
+[157, 158, 159, 160, 161] «▶ Le vers et les sons (élève : Lire et dire la poé» {"plus": ["▼ Le vers et les sons (élève : Lire et dire la poésie) 4 familles · 17 notions", "▶ Le vers et le mètre 9 notions", "▶ Les rimes 3 notions", "▶ Strophes et formes 2 notions"], "moins": ["▶ Le vers et les sons (élève : Lire et dire la poésie) 4 famil
+[157, 158, 159, 161] «▶ Comprendre et s'exprimer à l'oral 4 compétences» {"plus": ["▼ Comprendre et s'exprimer à l'oral 4 compétences", "c4-oral-01", "Comprendre et interpréter des messages et des discours oraux complexes", "Élève : Comprendre et interpréter ce qu'on entend"], "moins": ["▶ Comprendre et s'exprimer à l'oral 4 compét
+[157, 158, 159, 161] «▶ Lire 4 compétences» {"plus": ["▼ Lire 4 compétences", "c4-lire-01", "Contrôler sa compréhension, devenir un lecteur autonome", "Élève : Vérifier que l'on a bien compris ce qu'on lit"], "moins": ["▶ Lire 4 compétences"]}
+[157, 158, 159, 161] «▶ Écrire 4 compétences» {"plus": ["▼ Écrire 4 compétences", "c4-ecrire-01", "Exploiter les principales fonctions de l'écrit", "Élève : Écrire pour réfléchir, garder une trace, communiquer"], "moins": ["▶ Écrire 4 compétences"]}
+[157, 158, 159, 161] «▶ Comprendre le fonctionnement de la langue 4 comp» {"plus": ["▼ Comprendre le fonctionnement de la langue 4 compétences", "c4-langue-01", "Consolider l'orthographe lexicale et grammaticale", "Élève : Écrire les mots et les accords sans fautes"], "moins": ["▶ Comprendre le fonctionnement de la langue 4 compéten
+[157, 158, 159, 161] «▶ Acquérir des éléments de culture littéraire et a» {"plus": ["▼ Acquérir des éléments de culture littéraire et artistique 2 compétences", "c4-culture-01", "Mobiliser des références culturelles pour interpréter les textes et les créations artistiques et littéraires et pour enr", "Élève : Se servir de sa culture
+[157, 158, 159, 161] «▶ Les langages pour penser et communiquer 4 compét» {"plus": ["▼ Les langages pour penser et communiquer 4 compétences", "tr-langages-01", "Comprendre les informations à l'écrit", "Élève : Comprendre une information écrite"], "moins": ["▶ Les langages pour penser et communiquer 4 compétences"]}
+[157, 158, 159, 161] «▶ Les méthodes et les outils pour apprendre 3 comp» {"plus": ["▼ Les méthodes et les outils pour apprendre 3 compétences", "tr-methodes-01", "Mémoriser", "Élève : Apprendre et retenir"], "moins": ["▶ Les méthodes et les outils pour apprendre 3 compétences"]}
+[157, 158, 159] «▶ La formation de la personne et du citoyen 3 comp» {"plus": ["▼ La formation de la personne et du citoyen 3 compétences", "tr-personne-01", "Adopter une attitude respectueuse", "Élève : Respecter les autres"], "moins": ["▶ La formation de la personne et du citoyen 3 compétences"]}
+[158] «✏️ Modifier» {"plus": ["Libellé professeur", "Libellé élève", "Niveaux", "Exemple (facultatif)"], "moins": []}
+[158] «Désactiver» {"plus": ["Désactiver la notion", "Désactiver « Écrire les doubles consonnes courantes (mm, nn, ll, tt, rr, ss, ff, pp) » ?", "Elle sortira des choix proposés par les applications. L’historique des élèves qui portent cette étiquette reste lisible,", "Annuler"]
+[158] «Désactiver» {"plus": ["Désactiver la notion", "Désactiver « Conjuguer les verbes en -eler / -eter (alternance ll/l et tt/t) » ?", "Elle sortira des choix proposés par les applications. L’historique des élèves qui portent cette étiquette reste lisible,", "Annuler"], "moins
+[158] «Désactiver» {"plus": ["Désactiver la notion", "Désactiver « Écrire les préfixes en double consonne (in-, im-, ir-, il-) » ?", "Elle sortira des choix proposés par les applications. L’historique des élèves qui portent cette étiquette reste lisible,", "Annuler"], "moins": [
+[158] «Désactiver» {"plus": ["Désactiver la notion", "Désactiver « Écrire les mots fréquemment surdoublés ou sous-doublés » ?", "Elle sortira des choix proposés par les applications. L’historique des élèves qui portent cette étiquette reste lisible,", "Annuler"], "moins": []}
+[158] «+ Nouvelle notion» {"plus": ["Nouvelle notion", "Libellé professeur", "Libellé élève", "Niveaux"], "moins": ["+ Nouvelle notion"]}
+[158, 159] «▼ Orthographe lexicale (élève : L'orthographe des » {"plus": ["▶ Orthographe lexicale (élève : L'orthographe des mots) 8 familles · 28 notions"], "moins": ["▼ Orthographe lexicale (élève : L'orthographe des mots) 8 familles · 28 notions", "▼ Doubles consonnes 4 notions", "ortho-lex-001", "Écrire les doubles con
+[158, 159] «▼ Doubles consonnes 4 notions» {"plus": ["▶ Doubles consonnes 4 notions"], "moins": ["▼ Doubles consonnes 4 notions", "ortho-lex-001", "Écrire les doubles consonnes courantes (mm, nn, ll, tt, rr, ss, ff, pp)", "Élève : Mots avec deux consonnes (femme, donner, aller...) · 6e-3e · « comme » /
+[158, 159] «▶ Accents 4 notions» {"plus": ["▼ Accents 4 notions", "ortho-lex-005", "Choisir entre accent aigu et accent grave sur le e", "Élève : Choisir entre é et è · 6e-3e · « élève » / « régulier » / « frère »"], "moins": ["▶ Accents 4 notions"]}
+[158, 159] «▶ Lettres muettes 3 notions» {"plus": ["▼ Lettres muettes 3 notions", "ortho-lex-010", "Écrire les consonnes finales muettes (s, t, d, p, x...)", "Élève : La consonne qu'on n'entend pas à la fin du mot · 6e-3e · « tabac », « sport », « blanc », « longtemps »"], "moins": ["▶ Lettres muette
+[158, 159] «▶ Confusions phonétiques 10 notions» {"plus": ["▼ Confusions phonétiques 10 notions", "ortho-lex-013", "Écrire le son [s] : s, ss, c, ç, sc, t (devant i + voyelle)", "Élève : Comment écrire le son « ss » · 6e-3e · « passion », « leçon », « patience », « scène »"], "moins": ["▶ Confusions phonétiq
+[158, 159] «▶ Mots composés et trait d'union 2 notions» {"plus": ["▼ Mots composés et trait d'union 2 notions", "ortho-lex-023", "Choisir la présence ou l'absence du trait d'union", "Élève : Quand mettre un trait d'union dans un mot composé · 5e-3e · « porte-monnaie », « pomme de terre », « arc-en-ciel"], "moins": 
+[158, 159] «▶ Apostrophes et élisions 2 notions» {"plus": ["▼ Apostrophes et élisions 2 notions", "ortho-lex-025", "Faire l'élision devant voyelle ou h muet (le, la, je, me, te, se, ce, ne, de, que, si)", "Élève : L'apostrophe quand le mot suivant commence par une voyelle ou un h · 6e-3e · « l'arbre », « j'a
+[158, 159] «▶ Mots invariables 2 notions» {"plus": ["▼ Mots invariables 2 notions", "ortho-lex-027", "Mémoriser l'orthographe des mots invariables fréquents (adverbes, prépositions, conjonctions)", "Élève : Écrire sans faute les petits mots qui ne changent jamais · 6e-3e · « toujours », « beaucoup », 
+[158, 159] «▶ Majuscules 1 notion» {"plus": ["▼ Majuscules 1 notion", "ortho-lex-029", "Employer la majuscule (début de phrase, noms propres)", "Élève : Mettre les majuscules au bon endroit · 6e-3e · « Paris », « la Loire », majuscule après le point"], "moins": ["▶ Majuscules 1 notion"]}
+[159, 161] «✏️ Modifier» {"plus": [], "moins": []}
+[159] «Désactiver» {"plus": ["Désactiver la notion", "Désactiver « Écrire les doubles consonnes courantes (mm, nn, ll, tt, rr, ss, ff, pp) » ?", "Elle sortira des choix proposés par les applications. L’historique des élèves qui portent cette étiquette reste lisible,", "Oui, cont
+[159] «Écrire les doubles consonnes courantes (mm, nn, ll» {"plus": [], "moins": []}
+[159] «Mots avec deux consonnes (femme, donner, aller...)» {"plus": [], "moins": []}
+[159] «6e-3e» {"plus": [], "moins": []}
+[159] «« comme » / « homme » / « femme »» {"plus": [], "moins": []}
+[159] «Enregistrer» {"plus": ["Version 1.4.1 · 2026-10-10 · 7 domaines · 210 notions"], "moins": ["Version 1.4.0 · 2026-08-02 · 7 domaines · 210 notions", "Libellé professeur", "Libellé élève", "Niveaux"]}
+[159] «Annuler» {"plus": [], "moins": ["Libellé professeur", "Libellé élève", "Niveaux", "Exemple (facultatif)"]}
+[159] «✏️ Modifier» {"plus": ["L’identifiant ortho-lex-002 ne change jamais : c’est lui qui étiquette le travail des élèves."], "moins": ["L’identifiant ortho-lex-001 ne change jamais : c’est lui qui étiquette le travail des élèves."]}
+[159] «Désactiver» {"plus": ["Désactiver la notion", "Désactiver « Conjuguer les verbes en -eler / -eter (alternance ll/l et tt/t) » ?", "Elle sortira des choix proposés par les applications. L’historique des élèves qui portent cette étiquette reste lisible,", "Oui, continuer"],
+[159] «✏️ Modifier» {"plus": ["L’identifiant ortho-lex-003 ne change jamais : c’est lui qui étiquette le travail des élèves."], "moins": ["L’identifiant ortho-lex-001 ne change jamais : c’est lui qui étiquette le travail des élèves."]}
+[159] «Désactiver» {"plus": ["Désactiver la notion", "Désactiver « Écrire les préfixes en double consonne (in-, im-, ir-, il-) » ?", "Elle sortira des choix proposés par les applications. L’historique des élèves qui portent cette étiquette reste lisible,", "Oui, continuer"], "mo
+[159] «✏️ Modifier» {"plus": ["L’identifiant ortho-lex-004 ne change jamais : c’est lui qui étiquette le travail des élèves."], "moins": ["L’identifiant ortho-lex-001 ne change jamais : c’est lui qui étiquette le travail des élèves."]}
+[159] «Désactiver» {"plus": ["Désactiver la notion", "Désactiver « Écrire les mots fréquemment surdoublés ou sous-doublés » ?", "Elle sortira des choix proposés par les applications. L’historique des élèves qui portent cette étiquette reste lisible,", "Oui, continuer"], "moins":
+[159] «+ Nouvelle notion» {"plus": ["Nouvelle notion", "Créer la notion", "L’identifiant sera fabriqué automatiquement (numéro suivant du domaine) et ne changera jamais."], "moins": ["Enregistrer", "L’identifiant ortho-lex-001 ne change jamais : c’est lui qui étiquette le travail des é
+[160] «✏️ Modifier» {"plus": ["Libellé professeur", "Libellé élève", "Enregistrer", "Annuler"], "moins": []}
+[160] «Désactiver» {"plus": ["Désactiver la notion", "Désactiver « c4-oral-01 » ?", "Elle sortira des choix proposés par les applications. L’historique des élèves qui portent cette étiquette reste lisible,", "Annuler"], "moins": []}
+[160] «Désactiver» {"plus": ["Désactiver la notion", "Désactiver « c4-oral-02 » ?", "Elle sortira des choix proposés par les applications. L’historique des élèves qui portent cette étiquette reste lisible,", "Annuler"], "moins": []}
+[160] «Désactiver» {"plus": ["Désactiver la notion", "Désactiver « c4-oral-03 » ?", "Elle sortira des choix proposés par les applications. L’historique des élèves qui portent cette étiquette reste lisible,", "Annuler"], "moins": []}
+[160] «Désactiver» {"plus": ["Désactiver la notion", "Désactiver « c4-oral-04 » ?", "Elle sortira des choix proposés par les applications. L’historique des élèves qui portent cette étiquette reste lisible,", "Annuler"], "moins": []}
+[160] «Désactiver» {"plus": ["Désactiver la notion", "Désactiver « c4-lire-01 » ?", "Elle sortira des choix proposés par les applications. L’historique des élèves qui portent cette étiquette reste lisible,", "Annuler"], "moins": []}
+[160] «Désactiver» {"plus": ["Désactiver la notion", "Désactiver « c4-lire-02 » ?", "Elle sortira des choix proposés par les applications. L’historique des élèves qui portent cette étiquette reste lisible,", "Annuler"], "moins": []}
+[160] «Désactiver» {"plus": ["Désactiver la notion", "Désactiver « c4-lire-03 » ?", "Elle sortira des choix proposés par les applications. L’historique des élèves qui portent cette étiquette reste lisible,", "Annuler"], "moins": []}
+[160] «Désactiver» {"plus": ["Désactiver la notion", "Désactiver « c4-lire-04 » ?", "Elle sortira des choix proposés par les applications. L’historique des élèves qui portent cette étiquette reste lisible,", "Annuler"], "moins": []}
+[160] «Désactiver» {"plus": ["Désactiver la notion", "Désactiver « c4-ecrire-01 » ?", "Elle sortira des choix proposés par les applications. L’historique des élèves qui portent cette étiquette reste lisible,", "Annuler"], "moins": []}
+[160] «Désactiver» {"plus": ["Désactiver la notion", "Désactiver « c4-ecrire-02 » ?", "Elle sortira des choix proposés par les applications. L’historique des élèves qui portent cette étiquette reste lisible,", "Annuler"], "moins": []}
+[160] «Désactiver» {"plus": ["Désactiver la notion", "Désactiver « c4-ecrire-03 » ?", "Elle sortira des choix proposés par les applications. L’historique des élèves qui portent cette étiquette reste lisible,", "Annuler"], "moins": []}
+[160] «Désactiver» {"plus": ["Désactiver la notion", "Désactiver « c4-ecrire-04 » ?", "Elle sortira des choix proposés par les applications. L’historique des élèves qui portent cette étiquette reste lisible,", "Annuler"], "moins": []}
+[160] «Désactiver» {"plus": ["Désactiver la notion", "Désactiver « c4-langue-01 » ?", "Elle sortira des choix proposés par les applications. L’historique des élèves qui portent cette étiquette reste lisible,", "Annuler"], "moins": []}
+[160] «Désactiver» {"plus": ["Désactiver la notion", "Désactiver « c4-langue-02 » ?", "Elle sortira des choix proposés par les applications. L’historique des élèves qui portent cette étiquette reste lisible,", "Annuler"], "moins": []}
+[160] «Désactiver» {"plus": ["Désactiver la notion", "Désactiver « c4-langue-03 » ?", "Elle sortira des choix proposés par les applications. L’historique des élèves qui portent cette étiquette reste lisible,", "Annuler"], "moins": []}
+[160] «Désactiver» {"plus": ["Désactiver la notion", "Désactiver « c4-langue-04 » ?", "Elle sortira des choix proposés par les applications. L’historique des élèves qui portent cette étiquette reste lisible,", "Annuler"], "moins": []}
+[160] «Désactiver» {"plus": ["Désactiver la notion", "Désactiver « c4-culture-01 » ?", "Elle sortira des choix proposés par les applications. L’historique des élèves qui portent cette étiquette reste lisible,", "Annuler"], "moins": []}
+[160] «Désactiver» {"plus": ["Désactiver la notion", "Désactiver « c4-culture-02 » ?", "Elle sortira des choix proposés par les applications. L’historique des élèves qui portent cette étiquette reste lisible,", "Annuler"], "moins": []}
+[160] «Désactiver» {"plus": ["Désactiver la notion", "Désactiver « tr-langages-01 » ?", "Elle sortira des choix proposés par les applications. L’historique des élèves qui portent cette étiquette reste lisible,", "Annuler"], "moins": []}
+[160] «Désactiver» {"plus": ["Désactiver la notion", "Désactiver « tr-langages-02 » ?", "Elle sortira des choix proposés par les applications. L’historique des élèves qui portent cette étiquette reste lisible,", "Annuler"], "moins": []}
+[160] «Désactiver» {"plus": ["Désactiver la notion", "Désactiver « tr-langages-03 » ?", "Elle sortira des choix proposés par les applications. L’historique des élèves qui portent cette étiquette reste lisible,", "Annuler"], "moins": []}
+[160] «Désactiver» {"plus": ["Désactiver la notion", "Désactiver « tr-langages-04 » ?", "Elle sortira des choix proposés par les applications. L’historique des élèves qui portent cette étiquette reste lisible,", "Annuler"], "moins": []}
+[160] «Désactiver» {"plus": ["Désactiver la notion", "Désactiver « tr-methodes-01 » ?", "Elle sortira des choix proposés par les applications. L’historique des élèves qui portent cette étiquette reste lisible,", "Annuler"], "moins": []}
+[160] «Désactiver» {"plus": ["Désactiver la notion", "Désactiver « tr-methodes-02 » ?", "Elle sortira des choix proposés par les applications. L’historique des élèves qui portent cette étiquette reste lisible,", "Annuler"], "moins": []}
+[160] «Désactiver» {"plus": ["Désactiver la notion", "Désactiver « tr-methodes-03 » ?", "Elle sortira des choix proposés par les applications. L’historique des élèves qui portent cette étiquette reste lisible,", "Annuler"], "moins": []}
+[160] «Désactiver» {"plus": ["Désactiver la notion", "Désactiver « tr-personne-01 » ?", "Elle sortira des choix proposés par les applications. L’historique des élèves qui portent cette étiquette reste lisible,", "Annuler"], "moins": []}
+[160] «Désactiver» {"plus": ["Désactiver la notion", "Désactiver « tr-personne-02 » ?", "Elle sortira des choix proposés par les applications. L’historique des élèves qui portent cette étiquette reste lisible,", "Annuler"], "moins": []}
+[160] «Désactiver» {"plus": ["Désactiver la notion", "Désactiver « tr-personne-03 » ?", "Elle sortira des choix proposés par les applications. L’historique des élèves qui portent cette étiquette reste lisible,", "Annuler"], "moins": []}
+[160] «▼ Comprendre et s'exprimer à l'oral 4 compétences» {"plus": ["▶ Comprendre et s'exprimer à l'oral 4 compétences"], "moins": ["▼ Comprendre et s'exprimer à l'oral 4 compétences", "c4-oral-01", "Comprendre et interpréter des messages et des discours oraux complexes", "Élève : Comprendre et interpréter ce qu'on e
+[160] «▼ Lire 4 compétences» {"plus": ["▶ Lire 4 compétences"], "moins": ["▼ Lire 4 compétences", "c4-lire-01", "Contrôler sa compréhension, devenir un lecteur autonome", "Élève : Vérifier que l'on a bien compris ce qu'on lit"]}
+[160] «▼ Écrire 4 compétences» {"plus": ["▶ Écrire 4 compétences"], "moins": ["▼ Écrire 4 compétences", "c4-ecrire-01", "Exploiter les principales fonctions de l'écrit", "Élève : Écrire pour réfléchir, garder une trace, communiquer"]}
+[160] «▼ Comprendre le fonctionnement de la langue 4 comp» {"plus": ["▶ Comprendre le fonctionnement de la langue 4 compétences"], "moins": ["▼ Comprendre le fonctionnement de la langue 4 compétences", "c4-langue-01", "Consolider l'orthographe lexicale et grammaticale", "Élève : Écrire les mots et les accords sans fau
+[160] «▼ Acquérir des éléments de culture littéraire et a» {"plus": ["▶ Acquérir des éléments de culture littéraire et artistique 2 compétences"], "moins": ["▼ Acquérir des éléments de culture littéraire et artistique 2 compétences", "c4-culture-01", "Mobiliser des références culturelles pour interpréter les textes et
+[160] «▼ Les langages pour penser et communiquer 4 compét» {"plus": ["▶ Les langages pour penser et communiquer 4 compétences"], "moins": ["▼ Les langages pour penser et communiquer 4 compétences", "tr-langages-01", "Comprendre les informations à l'écrit", "Élève : Comprendre une information écrite"]}
+[160] «▼ Les méthodes et les outils pour apprendre 3 comp» {"plus": ["▶ Les méthodes et les outils pour apprendre 3 compétences"], "moins": ["▼ Les méthodes et les outils pour apprendre 3 compétences", "tr-methodes-01", "Mémoriser", "Élève : Apprendre et retenir"]}
+[160, 161] «▼ La formation de la personne et du citoyen 3 comp» {"plus": ["▶ La formation de la personne et du citoyen 3 compétences"], "moins": ["▼ La formation de la personne et du citoyen 3 compétences", "tr-personne-01", "Adopter une attitude respectueuse", "Élève : Respecter les autres"]}
+[161] «✏️ Modifier» {"plus": ["L’identifiant tr-personne-01 ne change jamais : c’est lui qui étiquette le travail des élèves."], "moins": ["L’identifiant tr-personne-03 ne change jamais : c’est lui qui étiquette le travail des élèves."]}
+[161] «Désactiver» {"plus": ["Désactiver la notion", "Désactiver « tr-personne-01 » ?", "Elle sortira des choix proposés par les applications. L’historique des élèves qui portent cette étiquette reste lisible,", "Oui, continuer"], "moins": []}
+[161] «✏️ Modifier» {"plus": ["L’identifiant tr-personne-02 ne change jamais : c’est lui qui étiquette le travail des élèves."], "moins": ["L’identifiant tr-personne-03 ne change jamais : c’est lui qui étiquette le travail des élèves."]}
+[161] «Désactiver» {"plus": ["Désactiver la notion", "Désactiver « tr-personne-02 » ?", "Elle sortira des choix proposés par les applications. L’historique des élèves qui portent cette étiquette reste lisible,", "Oui, continuer"], "moins": []}
+[161] «Désactiver» {"plus": ["Désactiver la notion", "Désactiver « tr-personne-03 » ?", "Elle sortira des choix proposés par les applications. L’historique des élèves qui portent cette étiquette reste lisible,", "Oui, continuer"], "moins": []}
+[161] «Être autonome et responsable» {"plus": [], "moins": []}
+[161] «Travailler seul et de façon responsable» {"plus": [], "moins": []}
+[161] «Enregistrer» {"plus": ["Version 1.4.1 · 2026-10-10 · 7 domaines · 210 notions"], "moins": ["Version 1.4.0 · 2026-08-02 · 7 domaines · 210 notions", "Libellé professeur", "Libellé élève", "Enregistrer"]}
+[161] «Annuler» {"plus": [], "moins": ["Libellé professeur", "Libellé élève", "Enregistrer", "Annuler"]}
+[162] «Tout cocher» {"plus": ["Tout décocher"], "moins": ["Tout cocher"]}
+[162] «Calendrier de l’année» {"plus": ["Prompt copié — 28168 caractères, consigne et JSON ensemble. Un seul collage suffit.", "Compris"], "moins": []}
+[162] «Grille de l’emploi du temps» {"plus": ["Prompt copié — 18649 caractères, consigne et JSON ensemble. Un seul collage suffit.", "Compris"], "moins": []}
+[162] «Plus tard» {"plus": [], "moins": ["Le calendrier de l’année a été injecté il y a un mois — pense à le réinjecter s’il a bougé.", "Réinjecter maintenant…", "Plus tard"]}
+[162] «Calendrier de l’année — injecté le jeudi 3 septemb» {"plus": [], "moins": []}
+[162] «Grille de l’emploi du temps — injecté le jeudi 3 s» {"plus": [], "moins": []}
+[162] «Créneaux horaires — injecté le jeudi 3 septembre» {"plus": [], "moins": []}
+[162] «Découpage en périodes — injecté le vendredi 4 sept» {"plus": [], "moins": []}
+[162] «Photos du prévu — injecté le vendredi 4 septembre» {"plus": [], "moins": []}
+[162] «Réglages de l’emploi du temps — injecté le vendred» {"plus": [], "moins": []}
+[163] «Compris» {"plus": [], "moins": ["JSON de « calendrier » copié — 19717 caractères.", "Compris"]}
+[164] «Compris» {"plus": [], "moins": ["JSON de « calendrier », « grille », « creneaux », « periodes », « photos » et « reglages » copié — 33349 caractères.", "Compris"]}
+[166, 167] «📥 Exporter snapshot test» {"plus": ["📥 Exporté"], "moins": ["📥 Exporter snapshot test"]}
+[166, 167] «🔒 Clôturer (chemin réel)» {"plus": ["🔒 Séance de test close par le chemin réel ; l'archive est écrite."], "moins": []}
+[166, 167] «✏️ Modifier l'éval après coup» {"plus": ["✏️ Évaluation modifiée : les notes de la séance ne bougent pas."], "moins": []}
+[166, 167] «⚖️ Vérifier que les notes n'ont pas bougé» {"plus": ["⚖️ Les 30 notes sont identiques."], "moins": []}
+[166, 167] «⏱️ Faire expirer le chrono» {"plus": ["⏱️ Le temps en cours a expiré."], "moins": []}
+[166, 167] «🔄 Relire l'état» {"plus": ["🔄 État relu : question 3, réflexion."], "moins": []}
+[166, 167] «🎬 Le cas ambigu» {"plus": ["🎬 Cas préparé : « Le cas ambigu ». À toi de jouer la suite."], "moins": []}
+[166, 167] «🎬 Un faux « Oui »» {"plus": ["🎬 Cas préparé : « Un faux « Oui » ». À toi de jouer la suite."], "moins": []}
+[166, 167] «🎬 Rien de dit à la fin du temps» {"plus": ["🎬 Cas préparé : « Rien de dit à la fin du temps ». À toi de jouer la suite."], "moins": []}
+[166, 167] «🎬 Un lecteur qui clique « aucun » partout» {"plus": ["🎬 Cas préparé : « Un lecteur qui clique « aucun » partout ». À toi de jouer la suite."], "moins": []}
+[166, 167] «🎬 Deux élèves d'accord pour mentir» {"plus": ["🎬 Cas préparé : « Deux élèves d'accord pour mentir ». À toi de jouer la suite."], "moins": []}
+[166, 167] «🎬 Trouvée au dernier moment» {"plus": ["🎬 Cas préparé : « Trouvée au dernier moment ». À toi de jouer la suite."], "moins": []}
+[166, 167] «🎬 Une tablette en panne» {"plus": ["🎬 Cas préparé : « Une tablette en panne ». À toi de jouer la suite."], "moins": []}
+[166, 167] «🎬 Un départ en cours de séance» {"plus": ["🎬 Cas préparé : « Un départ en cours de séance ». À toi de jouer la suite."], "moins": []}
+[166, 167] «🎲 Tous les élèves répondent» {"plus": ["🎲 Les 30 élèves ont répondu"], "moins": ["🎲 Tous les élèves répondent"]}
+[167] «20» {"plus": ["205s", "🏁 Fin prévue 10:42 · fin de l'heure 10:57"], "moins": ["18s", "🏁 Fin prévue 10:39 · fin de l'heure 10:57"]}
+[167] «+5» {"plus": ["23s"], "moins": ["18s"]}
+[167] «+10» {"plus": ["28s"], "moins": ["18s"]}
+[167] «+30» {"plus": ["48s", "🏁 Fin prévue 10:40 · fin de l'heure 10:57"], "moins": ["18s", "🏁 Fin prévue 10:39 · fin de l'heure 10:57"]}
+[167] «🔄 Relancer chrono» {"plus": ["20s"], "moins": ["18s"]}
+[167] «parce qu'elle a 6 pattes» {"plus": [], "moins": []}
+[167] «elle a 8 pattes» {"plus": [], "moins": []}
+[167] «l'araignée a huit pattes, l'insecte six» {"plus": [], "moins": []}
+[167] «vide : sa feuille dira ce qu'elle clique» {"plus": [], "moins": []}
+[167] «vide : sa feuille dira ce qu'il clique» {"plus": [], "moins": []}
+[167] «8 pattes» {"plus": [], "moins": []}
+[167] «car elle a 8 pates» {"plus": [], "moins": []}

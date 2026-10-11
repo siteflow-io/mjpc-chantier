@@ -1,0 +1,15 @@
+167 x620-2-mode-test-reflexion 1366x768 1 
+   caché par sim : « 🔥 »
+168 x620-3-mode-test-en-grand 1366x768 6 
+   caché par sim : « 🔥 »
+   sous le bas de l'écran (y=874) : « 📝 Feuille de Élise »
+   sous le bas de l'écran (y=892) : « parce qu'elle a 6 pattes »
+   sous le bas de l'écran (y=874) : « 📝 Feuille de Gatien »
+   sous le bas de l'écran (y=892) : « elle a 8 pattes »
+   sous le bas de l'écran (y=935) : « Élise a écrit « 6 pattes » et cliqué « huit pattes »
+168 x620-3-mode-test-en-grand 1536x864 5 
+   sous le bas de l'écran (y=874) : « 📝 Feuille de Élise »
+   sous le bas de l'écran (y=892) : « parce qu'elle a 6 pattes »
+   sous le bas de l'écran (y=874) : « 📝 Feuille de Gatien »
+   sous le bas de l'écran (y=892) : « elle a 8 pattes »
+   sous le bas de l'écran (y=935) : « Élise a écrit « 6 pattes » et cliqué « huit pattes »

@@ -44,7 +44,7 @@ function PilotCorrection(){
   var prec = pos > 0 ? SCN.ORDRE_CORR[pos - 1] : null;
   return Console("pilotage", "pilot", h("div", {className:"card"},
     TitreCarte(h(F, null, "📝 Correction — " + EV.titre + " — " + CLASSE, InfoI("Pour chaque question, chacun lit d'abord la feuille de son voisin et clique ce qu'elle dit, dans la moitié du voisin. « 💡 Révéler » s'ouvre quand tous les présents l'ont fait. Tu commentes la question après la révélation, jamais avant : sinon, ils cliqueraient ce que tu dis. Les questions vont de la plus ratée à la mieux réussie. Un clic sur un nom agit sur l'élève.")),
-      [h("button", {key:0, className:"btn btn-ghost btn-sm"}, "🚫 Départ d'un élève"), h("button", {key:5, className:"btn btn-ghost btn-sm"}, "⏸️ Finir à une autre heure"), h("button", {key:1, className:"btn btn-rouge btn-sm"}, "🛑 Terminer la séance")]),
+      [h("button", {key:0, className:"btn btn-ghost btn-sm", "data-va":"c-depart"}, "🚫 Départ d'un élève"), h("button", {key:5, className:"btn btn-ghost btn-sm", "data-va":"c-finir-autre-heure"}, "⏸️ Finir à une autre heure"), h("button", {key:1, className:"btn btn-rouge btn-sm", "data-va":"c-terminer"}, "🛑 Terminer la séance")]),
     h("div", {className:"pilot-status correction", title:"Position dans l'ordre de correction (trié par taux d'erreur décroissant). Q" + (qi+1) + " est la " + (pos === 0 ? "1re" : (pos+1) + "e") + " question révélée."}, "Question " + (pos+1) + " / 3 — Q" + (qi+1) + (revele ? " · révélée" : " · lecture de la feuille du voisin")),
     h("div", {className:"corr-grid"},
       h("div", null,
@@ -106,13 +106,20 @@ function PilotCoevalE(){
     if(SCN.autonomie(p, k).retire) r.flag = FLAG_RETIRE;
     r.va = "c-autonomie"; r.titre = "Clique sur le nom : « ⛔ Retirer le point d'autonomie », ou « 🚫 Marquer comme parti »."; return r;
   };
-  var lire = lireSoir(k), nM = calc("Michel");
+  var dec = paramHash("dec") || "michel", lire = lireSoir(tranche && dec === "soir" ? "S08:coeval" : k), nM = calc("Michel"), n0 = SCN.note("Michel", "S08:coeval");
+  // (changement 5.10, relecteur n°175) ce que dit la phrase d'état : la décision prise, et la note qui en sort
+  function decTexte(){
+    if(dec === "julien") return ["✅ Alerte tranchée : raison donnée à Julien", "La lecture de Julien, Venise, est gardée : la question 1 de DUVERNAY Michel reste à 0 ; sa note provisoire reste à " + n0.n + " / " + n0.total + "."];
+    if(dec === "soir") return ["📌 La question 1 de DUVERNAY Michel est à relire ce soir", "L'alerte se ferme : la question t'attend ce soir dans Résultats, « ⚠️ À relire » ; sa note provisoire reste à " + n0.n + " / " + n0.total + "."];
+    if(dec === "feuille") return ["✅ Alerte tranchée : la feuille de Michel dit Rome", "La question 1 de DUVERNAY Michel passe à 1 point, « Corrigé d'après ta feuille » dans son bilan : sa note provisoire passe à " + nM.n + " / " + nM.total + "."];
+    return ["✅ Alerte tranchée : raison donnée à Michel", "La question 1 de DUVERNAY Michel passe à 1 point, « Corrigé d'après ta feuille » dans son bilan : sa note provisoire passe à " + nM.n + " / " + nM.total + "."];
+  }
   return Console("pilotage", "pilot", h("div", {className:"card"},
-    tranche ? h("div", {className:"alerte-co tranchee"}, h("div", {className:"al-corps"}, h("div", {className:"al-t"}, "✅ Alerte tranchée : raison donnée à Michel"), h("div", {className:"al-l"}, "La question 1 de DUVERNAY Michel passe à 1 point, « Corrigé d'après ta feuille » dans son bilan : sa note provisoire passe à " + nM.n + " / " + nM.total + ".")),
+    tranche ? h("div", {className:"alerte-co tranchee"}, h("div", {className:"al-corps"}, h("div", {className:"al-t"}, decTexte()[0]), h("div", {className:"al-l"}, decTexte()[1])),
       h("div", {className:"al-actions"}, h("button", {className:"btn btn-ghost btn-sm", "data-va":"c-coeval-attente", title:"Rouvre l'alerte, telle qu'elle était : rien n'est appliqué."}, "↩️ Défaire")))
       : AlerteCoE(false),
     TitreCarte(h(F, null, "🤝 Co-évaluation de la lecture — " + EV.titre + " — " + CLASSE, InfoI("À la fin de la correction, chacun dit, dans sa moitié, s'il pense que son voisin a bien lu sa feuille. Un « ❌ » t'alerte aussitôt, en haut ; un « 🤔 » passe la question « ⚠️ À relire » ce soir. Le bilan s'affiche quand tous les présents ont répondu.")),
-      [h("button", {key:0, className:"btn btn-ghost btn-sm"}, "🚫 Départ d'un élève"), h("button", {key:5, className:"btn btn-ghost btn-sm"}, "⏸️ Finir à une autre heure"), h("button", {key:1, className:"btn btn-rouge btn-sm"}, "🛑 Terminer la séance")]),
+      [h("button", {key:0, className:"btn btn-ghost btn-sm", "data-va":"c-depart"}, "🚫 Départ d'un élève"), h("button", {key:5, className:"btn btn-ghost btn-sm", "data-va":"c-finir-autre-heure"}, "⏸️ Finir à une autre heure"), h("button", {key:1, className:"btn btn-rouge btn-sm", "data-va":"c-terminer"}, "🛑 Terminer la séance")]),
     h("div", {className:"pilot-status correction"}, "Fin de la correction — chacun dit ce qu'il pense de la lecture de sa feuille · " + c.coeval[0] + " / " + c.coeval[1] + " ont répondu"),
     h("div", {className:"corr-grid"},
       h("div", null,
@@ -155,7 +162,7 @@ function BilanClasse(){
   var taux = [0, 1, 2].map(tauxQ), rate = taux.indexOf(Math.min.apply(null, taux)), reussie = taux.indexOf(Math.max.apply(null, taux));
   var lire = lireSoir(k);
   return Console("pilotage", "pilot", h("div", {className:"card"},
-    TitreCarte(h(F, null, "🏁 Bilan classe — " + EV.titre + " — " + CLASSE, InfoI("Les notes provisoires de la classe, d'après la lecture des feuilles à la correction. Elles deviennent définitives quand tu rends les copies, après ta lecture du soir.")), [h("button", {key:1, className:"btn btn-rouge btn-sm"}, "🛑 Terminer la séance")]),
+    TitreCarte(h(F, null, "🏁 Bilan classe — " + EV.titre + " — " + CLASSE, InfoI("Les notes provisoires de la classe, d'après la lecture des feuilles à la correction. Elles deviennent définitives quand tu rends les copies, après ta lecture du soir.")), [h("button", {key:1, className:"btn btn-rouge btn-sm", "data-va":"c-terminer"}, "🛑 Terminer la séance")]),
     h("div", {className:"bilan-classe-synthese"},
       h("div", {className:"bilan-classe-stat"}, h("div", {className:"bilan-classe-stat-label"}, "Moyenne"), h("div", {className:"bilan-classe-stat-num"}, fr1(moy) + " / " + total), h("div", {style:{opacity:.9}}, fr1(moy * 20 / total) + " / 20")),
       h("div", {className:"bilan-classe-stat"}, h("div", {className:"bilan-classe-stat-label"}, "Médiane"), h("div", {className:"bilan-classe-stat-num"}, med + " / " + total)),
@@ -215,7 +222,8 @@ function EcrBilan(e, opts){
   var compQ = function(cp){ return compQuestions(cp).filter(function(i){ return i !== an; }).map(function(i, j){ return h(F, {key:i}, j ? " · " : "", "Q" + (i+1) + " ", st[i] === "t" ? h("span", {className:"v-orange"}, "✓") : st[i] === "j" ? "✓" : "✗"); }); };
   var autoOk = !SCN.autonomie(e.prenom, k).retire;
   return Page(badgeDe(e), "🎯 Bilan personnel", h("div", {className:"bilan-c"},
-    !opts.imprime && h("button", {className:"bilan-export-btn", "data-va":"t-bilan-imprime"}, "📄 Imprimer / Exporter mon bilan"),
+    // la version imprimable de son bilan s'ouvre à part, pour l'élève de cette moitié (l'infobulle de la 7.7.1 : « Ouvre une version imprimable… »)
+    !opts.imprime && h("button", {className:"bilan-export-btn", "data-local":"1", onClick:function(){ window.open(location.pathname + "#scene=t-bilan-imprime&m=" + encodeURIComponent(MO()) + "&eleve=" + encodeURIComponent(e.prenom), "bilan-" + e.prenom); }}, "📄 Imprimer / Exporter mon bilan"),
     // (relecteur n°204) le bilan imprimé dit de quelle évaluation il s'agit, et sa date : deux données
     opts.imprime && h("div", {className:"bilan-imprime-eval"}, h("span", null, EV.titre), " · ", h("span", null, SCN.seance(MOM().seance || "S08").date)),
     h("div", {className:"bilan-score fourchette-" + mt.k},
@@ -248,3 +256,6 @@ function EcrBilan(e, opts){
       h("div", {className:"bilan-calib-msg"}, calib.msg),
       an < 0 && h("div", {className:"bilan-calib-detail"}, calib.detail, calib.degre && " ", calib.degre))));
 }
+
+// le bilan imprimable de l'élève demandé (« &eleve= »)
+function BilanImprime(){ var p = paramHash("eleve"), e = p ? (p === "Julien" ? J : p === "Michel" ? M : eleveObjet(nomDe(p))) : J; return h("div", {className:"bilan-imprime"}, h("div", {className:"bilan-imprime-page"}, EcrBilan(e, {imprime:true}))); }

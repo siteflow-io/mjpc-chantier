@@ -461,10 +461,10 @@ function Pilot(s){
   return Console("pilotage", "pilot", h("div", {className:"card"},
     TitreCarte("🎯 " + EV.titre + " — " + CLASSE, [
       h("span", {key:0, style:{fontSize:".8rem", color:"var(--gris)", fontWeight:700}}, "🕙 Fin de l'heure : 10:57"),
-      h("button", {key:1, className:"btn btn-ghost btn-sm"}, "🚫 Départ d'un élève"),
+      h("button", {key:1, className:"btn btn-ghost btn-sm", "data-va":"c-depart"}, "🚫 Départ d'un élève"),
       h("button", {key:2, className:"btn btn-ghost btn-sm"}, "↩️ Retour d'un élève"),
       h("button", {key:4, className:"btn btn-ghost btn-sm"}, "🔓 Rouvrir pour un élève"),
-      h("button", {key:3, className:"btn btn-rouge btn-sm"}, "🛑 Terminer la séance")]),
+      h("button", {key:3, className:"btn btn-rouge btn-sm", "data-va":"c-terminer"}, "🛑 Terminer la séance")]),
     h("div", {className:"pilot-stats"}, s.stats.map(function(x, i){ return h("div", {key:i, className:"pilot-stat"}, h("div", {className:"v"}, x[0]), h("div", {className:"l"}, x[1])); })),
     h("div", {className:"pilot-grid v2"}, colG, colM, Overview(s.qi, s.passees || []))), true);
 }
@@ -521,7 +521,7 @@ function SessionsPrecedentes(){
 function PilotEstimation(){
   var distrib = [["vert", 6], ["bleu", 9], ["orange", 5], ["rouge", 2]];
   return Console("pilotage", "pilot", h("div", {className:"card"},
-    TitreCarte(h(F, null, "📊 Autoévaluation — " + EV.titre + " — " + CLASSE, InfoI()), [h("button", {key:1, className:"btn btn-rouge btn-sm"}, "🛑 Terminer la séance")]),
+    TitreCarte(h(F, null, "📊 Autoévaluation — " + EV.titre + " — " + CLASSE, InfoI()), [h("button", {key:1, className:"btn btn-rouge btn-sm", "data-va":"c-terminer"}, "🛑 Terminer la séance")]),
     h("div", {className:"pilot-status autoeval"}, "Phase autoévaluation — 22 / 24 élèves"),
     h("p", {style:{margin:".8rem 0", color:"var(--gris)"}}, "Les élèves choisissent dans quelle fourchette ils estiment avoir réussi. Clique sur ", h("strong", null, "📝 Lancer la correction"), " quand tu es prêt."),
     h("div", {className:"autoeval-prof-distrib"}, distrib.map(function(d){ var m = MAITRISE.filter(function(x){ return x.k === d[0]; })[0];
@@ -558,7 +558,7 @@ function PilotCorrection(qi, revele){
   var lire = revele ? aLire(pos) : aLire(pos - 1);
   return Console("pilotage", "pilot", h("div", {className:"card"},
     TitreCarte(h(F, null, "📝 Correction — " + EV.titre + " — " + CLASSE, InfoI("Pour chaque question, les élèves recopient d'abord leur feuille : un clic sur ce qu'elle dit. « 💡 Révéler » s'ouvre quand tous les présents l'ont fait. Tu commentes la question après la révélation, jamais avant : sinon, ils cliqueraient ce que tu dis. Les questions sont triées de la plus ratée à la mieux réussie.", !revele && qi === 1)),
-      [h("button", {key:0, className:"btn btn-ghost btn-sm"}, "🚫 Départ d'un élève"), h("button", {key:1, className:"btn btn-rouge btn-sm"}, "🛑 Terminer la séance")]),
+      [h("button", {key:0, className:"btn btn-ghost btn-sm", "data-va":"c-depart"}, "🚫 Départ d'un élève"), h("button", {key:1, className:"btn btn-rouge btn-sm", "data-va":"c-terminer"}, "🛑 Terminer la séance")]),
     h("div", {className:"pilot-status correction"}, "Question " + (pos+1) + " / 3 — Q" + (qi+1)),
     h("div", {className:"corr-grid"},
       h("div", null,
@@ -599,7 +599,7 @@ function BilanClasse(){
   lignes.sort(function(a, b){ return (b.r.complet ? b.r.n : -1) - (a.r.complet ? a.r.n : -1) || a.nom.localeCompare(b.nom, "fr"); });
   var lire = aLire(2);
   return Console("pilotage", "pilot", h("div", {className:"card"},
-    TitreCarte(h(F, null, "🏁 Bilan classe — " + EV.titre + " — " + CLASSE, InfoI()), [h("button", {key:1, className:"btn btn-rouge btn-sm"}, "🛑 Terminer la séance")]),
+    TitreCarte(h(F, null, "🏁 Bilan classe — " + EV.titre + " — " + CLASSE, InfoI()), [h("button", {key:1, className:"btn btn-rouge btn-sm", "data-va":"c-terminer"}, "🛑 Terminer la séance")]),
     h("div", {className:"bilan-classe-synthese"},
       h("div", {className:"bilan-classe-stat"}, h("div", {className:"bilan-classe-stat-label"}, "Moyenne"), h("div", {className:"bilan-classe-stat-num"}, fr1(moy) + " / 3"), h("div", {style:{opacity:.9}}, fr1(moy * 20 / 3) + " / 20")),
       h("div", {className:"bilan-classe-stat"}, h("div", {className:"bilan-classe-stat-label"}, "Médiane"), h("div", {className:"bilan-classe-stat-num"}, med + " / 3")),

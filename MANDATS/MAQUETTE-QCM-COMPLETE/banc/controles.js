@@ -243,7 +243,7 @@ function marquerBoutons(){
     if(dessus && !dessus.contains(b)) return;
     const va = b.getAttribute("data-va");
     if(b.getAttribute("aria-pressed") === "true") return;                     // le choix déjà fait : le recliquer ne change rien, et c'est voulu
-    if(va && va === window.SCENE_COURANTE && b.classList.contains("actif")) return;
+    if(va && va.split("&")[0] === window.SCENE_COURANTE && b.classList.contains("actif")) return;
     b.setAttribute("data-banc-b", String(i++));
   });
   return i;

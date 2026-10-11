@@ -57,9 +57,9 @@ function Overview(qCur, passees, opts){
         avenir && !ec[qi] ? h(TempsMini, {qi:qi}) : h("div", {className:"pilot-q-mini-status"}, "Réflexion " + t.reflexion + " s · Réponse " + t.reponse + " s par tour",
           (passee || (current && opts.phase === "attente")) && !an[qi] && h("span", null, " — ", h("span", {className:"score-pct " + (taux >= .7 ? "score-vert" : taux >= .5 ? "score-orange" : "score-rouge")}, b.justes + "/" + b.repondu + " justes"))),
         h("div", {className:"q-gestes"},
-          ec[qi] || an[qi] ? h("button", {className:"btn btn-ghost btn-sm", "data-va":opts.remettre || "c-q1-close"}, "↩️ Remettre")
-            : avenir ? h("button", {className:"btn btn-ghost btn-sm btn-ecarter", "data-va":"c-ecarter", title:"Écarte la question " + (qi + 1) + ", après une confirmation : elle ne sera ni posée ni corrigée, et sort du total, comme une question manquée par un absent ; les tablettes et le tableau comptent sans elle. « ↩️ Remettre » la défait, tant que son tour n'est pas passé."}, "❌ Écarter")
-            : passee || (current && opts.phase === "attente") ? h("button", {className:"btn btn-ghost btn-sm", "data-va":"c-annuler"}, "⚠️ Annuler") : null));
+          ec[qi] || an[qi] ? h("button", {className:"btn btn-ghost btn-sm", "data-va":opts.remettre || "c-q1-close", "data-moment":momentDefaut(opts.remettre || "c-q1-close")}, "↩️ Remettre")
+            : avenir ? h("button", {className:"btn btn-ghost btn-sm btn-ecarter", "data-va":"c-ecarter&q=" + (qi + 1), title:"Écarte la question " + (qi + 1) + ", après une confirmation : elle ne sera ni posée ni corrigée, et sort du total, comme une question manquée par un absent ; les tablettes et le tableau comptent sans elle. « ↩️ Remettre » la défait, tant que son tour n'est pas passé."}, "❌ Écarter")
+            : passee || (current && opts.phase === "attente") ? h("button", {className:"btn btn-ghost btn-sm", "data-va":"c-annuler&q=" + (qi + 1)}, "⚠️ Annuler") : null));
     }),
     opts.alerteComp && h("div", {className:"q-alerte"}, opts.alerteComp));
 }
@@ -108,14 +108,14 @@ function Pilot(s){
   return Console("pilotage", "pilot", h("div", {className:"card"},
     TitreCarte("🎯 " + EV.titre + " — " + CLASSE, [
       h("span", {key:0, style:{fontSize:".8rem", color:"var(--gris)", fontWeight:700}}, "🕙 Fin de l'heure : " + SCN.finHeure(k)),
-      h("button", {key:1, className:"btn btn-ghost btn-sm"}, "🚫 Départ d'un élève"),
+      h("button", {key:1, className:"btn btn-ghost btn-sm", "data-va":"c-depart"}, "🚫 Départ d'un élève"),
       // (relecteurs n°62, 100, 101) un geste qui n'a personne sur qui agir est fermé, et dit pourquoi
       Object.keys(m.partis || {}).length ? h("button", {key:2, className:"btn btn-ghost btn-sm", "data-va":"c-retour"}, "↩️ Retour d'un élève")
         : h("button", {key:2, className:"btn btn-ghost btn-sm", disabled:true, title:"Personne n'est parti pendant cette séance : il n'y a personne à faire revenir."}, "↩️ Retour d'un élève"),
       s.phase === "attente" && nonRepondus() > 0 ? h("button", {key:4, className:"btn btn-ghost btn-sm", "data-va":"c-rouvrir-un"}, "🔓 Rouvrir pour un élève")
         : h("button", {key:4, className:"btn btn-ghost btn-sm", disabled:true, title:enCours ? "La question en cours n'est pas close : « 🔓 Rouvrir pour un élève » s'ouvre une fois close, pour ceux qui n'ont pas répondu." : s.phase === "attente" ? "Tous les présents ont répondu à cette question : il n'y a personne à rouvrir." : "Aucune question n'est encore close : il n'y a rien à rouvrir."}, "🔓 Rouvrir pour un élève"),
       h("button", {key:5, className:"btn btn-ghost btn-sm", "data-va":"c-finir-autre-heure"}, "⏸️ Finir à une autre heure"),
-      h("button", {key:3, className:"btn btn-rouge btn-sm"}, "🛑 Terminer la séance")]),
+      h("button", {key:3, className:"btn btn-rouge btn-sm", "data-va":"c-terminer"}, "🛑 Terminer la séance")]),
     h("div", {className:"pilot-stats"}, s.stats.map(function(x, i){ return h("div", {key:i, className:"pilot-stat", title:TITRES_STATS[x[1]]}, h("div", {className:"v"}, x[0]), h("div", {className:"l"}, x[1])); })),
     h("div", {className:"pilot-grid v2"}, colG, colM, Overview(s.qi, s.passees || [], s))), true);
 }
@@ -138,7 +138,7 @@ function PilotAttest2(){
   var q2 = SCN.ORDRE_CORR[0], b = bilanQ(q2, k);
   return Console("pilotage", "pilot", h("div", {className:"card"},
     TitreCarte(h(F, null, "📝 Correction — " + EV.titre + " — " + CLASSE, InfoI("Avant la correction, chaque moitié montre la seconde attestation, une coche par ligne. La correction commence quand tous les présents l'ont cochée en entier, comme au début.")),
-      [h("button", {key:0, className:"btn btn-ghost btn-sm"}, "🚫 Départ d'un élève"), h("button", {key:5, className:"btn btn-ghost btn-sm"}, "⏸️ Finir à une autre heure"), h("button", {key:1, className:"btn btn-rouge btn-sm"}, "🛑 Terminer la séance")]),
+      [h("button", {key:0, className:"btn btn-ghost btn-sm", "data-va":"c-depart"}, "🚫 Départ d'un élève"), h("button", {key:5, className:"btn btn-ghost btn-sm", "data-va":"c-finir-autre-heure"}, "⏸️ Finir à une autre heure"), h("button", {key:1, className:"btn btn-rouge btn-sm", "data-va":"c-terminer"}, "🛑 Terminer la séance")]),
     h("div", {className:"pilot-status correction"}, "✍️ Seconde attestation — " + c.prets[0] + " / " + c.prets[1] + " prêts"),
     h("div", {className:"corr-grid"},
       h("div", null,
@@ -161,7 +161,7 @@ function PilotEstimation(){
   SCN.presents(k).forEach(function(p){ if(pas.indexOf(p) < 0 && SCN.ESTIM[p]) dist[SCN.ESTIM[p]]++; });
   return Console("pilotage", "pilot", h("div", {className:"card"},
     TitreCarte(h(F, null, "📊 Autoévaluation — " + EV.titre + " — " + CLASSE, InfoI("Chaque élève dit combien de bonnes réponses il pense avoir. Cette estimation sert à savoir s'il se surévalue, se sous-évalue ou s'évalue correctement ; son bilan la compare à sa note.")),
-      [h("button", {key:5, className:"btn btn-ghost btn-sm"}, "⏸️ Finir à une autre heure"), h("button", {key:1, className:"btn btn-rouge btn-sm"}, "🛑 Terminer la séance")]),
+      [h("button", {key:5, className:"btn btn-ghost btn-sm", "data-va":"c-finir-autre-heure"}, "⏸️ Finir à une autre heure"), h("button", {key:1, className:"btn btn-rouge btn-sm", "data-va":"c-terminer"}, "🛑 Terminer la séance")]),
     h("div", {className:"pilot-status autoeval"}, "Phase autoévaluation — " + c.estime[0] + " / " + c.estime[1] + " élèves", InfoIB("Phase autoévaluation", "Les élèves choisissent dans quelle fourchette ils estiment avoir réussi.")),
     h("div", {className:"autoeval-prof-distrib"}, MAITRISE.map(function(mt){
       return h("div", {key:mt.k, className:"autoeval-prof-cell fourchette-" + mt.k}, h("span", null, mt.em + " " + mt.lib), h("strong", null, dist[mt.k])); })),

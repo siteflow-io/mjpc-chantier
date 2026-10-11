@@ -83,22 +83,34 @@ function CopierErreurs(){
   var s = useState(false), copie = s[0], setCopie = s[1];
   var texte = "Corrige ton JSON : " + ERREURS_COLLAGE.map(function(e, i){ return (i + 1) + ". " + e; }).join(" ") + " Renvoie le JSON complet.";
   return h("div", {className:"copier-z"},
-    h("button", {className:"btn btn-or", "data-local":"1", title:"Copie les messages, numérotés, prêts à coller dans l'instance de création d'éval : « Corrige ton JSON : 1. … Renvoie le JSON complet. »", onClick:function(){ setCopie(true); }}, "📋 Copier les erreurs pour l'instance de création d'éval"),
+    h("button", {className:"btn btn-or", "data-local":"1", title:"Copie les messages, numérotés, prêts à coller dans l'instance de création d'éval : « Corrige ton JSON : 1. … Renvoie le JSON complet. »", onClick:function(){ setCopie(true); }}, copie ? "✅ Copié" : "📋 Copier les erreurs pour l'instance de création d'éval"),
     copie && h("div", {className:"copie-ok"}, h("strong", null, "✅ Copié. "), "À coller dans l'instance de création d'éval : ", h("span", {className:"copie-t"}, texte)));
 }
 // L'indication du champ JSON de la 7.7.1 (l. 6594), mot pour mot
 var JSON_INDICATION = '{\n  "titre": "Mon évaluation",\n  "questions": [\n    {"enonce":"…","choix":[…],"bonnes":[0],"niveau":"standard"}\n  ]\n}';
 function CollageQCM(){
   var s = useState(false), refait = s[0], setRefait = s[1];
+  // (garde 15.5) un JSON collé ou retouché ne se perd pas sans garde : « ✕ » et Échap la demandent
+  var s2 = useState(false), modifie = s2[0], setModifie = s2[1], s3 = useState(false), garde = s3[0], setGarde = s3[1];
+  function fermer(){ if(modifie) setGarde(true); else fermerVers("c-evals"); }
+  useEffect(function(){
+    function f(e){ if(e.key === "Escape" && !window.SOMMAIRE_OUVERT && !garde){ e.stopImmediatePropagation(); fermer(); } }
+    window.addEventListener("keydown", f, true); return function(){ window.removeEventListener("keydown", f, true); };
+  });
   return h("div", {className:"modal"},
-    h("button", {className:"modal-close", "data-va":"c-evals", title:"Ferme sans rien enregistrer."}, "✕"),
+    h("button", {className:"modal-close", "data-local":"1", title:modifie ? "Ferme la fenêtre : une garde te demande d'abord si tu perds le JSON collé." : "Ferme sans rien enregistrer.", onClick:fermer}, "✕"),
+    garde && h("div", {className:"fen-fond alerte-native"}, h("div", {className:"alerte-boite"},
+      h("div", {className:"alerte-texte"}, "Fermer sans enregistrer ? Le JSON collé sera perdu."),
+      h("div", {className:"alerte-pied"},
+        h("button", {className:"alerte-non", "data-local":"1", title:"Revient au JSON collé, tel qu'il est.", onClick:function(){ setGarde(false); }}, "Continuer à modifier"),
+        h("button", {className:"alerte-ok", "data-local":"1", title:"Ferme la fenêtre : le JSON collé est perdu.", onClick:function(){ setGarde(false); fermerVers("c-evals"); }}, "Fermer sans enregistrer")))),
     h("h2", null, "➕ Nouvelle évaluation"),
     h("div", {className:"field"},
       h("label", null, "Coller le JSON de l'évaluation", InfoI("Le JSON que l'instance de création d'éval t'a rendu. L'app le vérifie : le format, le chapitre et ses compétences, chaque question sur une demi-tablette, ce qu'elle vérifie, la durée de la séance.")),
-      h("textarea", {className:"json", readOnly:true, value:JSON_EX, placeholder:JSON_INDICATION, style:{minHeight:"260px"}})),
+      h(ChampCollage, {placeholder:JSON_INDICATION, style:{minHeight:"260px"}, surModif:function(){ setModifie(true); }})),
     h("div", {className:"row"},
       h("button", {className:"btn btn-ghost", "data-local":"1", title:"Revérifie le JSON collé.", onClick:function(){ setRefait(true); }}, "🔍 Vérifier le format"),
-      h("button", {className:"btn btn-ghost", "data-va":"x627-3-editeur", title:"Ouvre l'éditeur sur une évaluation vide, sans JSON."}, "✨ Démarrer à blanc")),
+      h("button", {className:"btn btn-ghost", "data-va":"x627-3-editeur&eval=vide", title:"Ouvre l'éditeur sur une évaluation vide, sans JSON."}, "✨ Démarrer à blanc")),
     refait && h("div", {className:"fen-note"}, "🔍 Vérification refaite : les mêmes " + ERREURS_COLLAGE.length + " points."),
     h("div", {className:"preview-error"},
       h("div", {style:{marginBottom:".35rem"}}, "❌ Rien n'est enregistré : " + ERREURS_COLLAGE.length + " choses à corriger dans le JSON."),
@@ -107,7 +119,7 @@ function CollageQCM(){
     h("div", {className:"preview-ok"}, "✅ Le reste est bon : chapitre « " + CHAP1 + " », mode tout ou rien, 12 questions, 4 compétences du chapitre ; la question 11 porte « longueur assumée » : elle passe, et sa moitié défilera seule."),
     h("div", {className:"row", style:{marginTop:"1rem"}}, h("button", {className:"btn btn-primary ferme", disabled:true, title:"S'ouvre quand le JSON n'a plus rien à corriger."}, "💾 Enregistrer l'évaluation")));
 }
-function Collage(){ return Evaluations(h("div", {className:"modal-back", "data-echap":"c-evals"}, h(CollageQCM))); }
+function Collage(){ return Evaluations(h("div", {className:"modal-back"}, h(CollageQCM))); }
 
 /* ════════ L'éditeur : « 🎯 Ce qu'elle vérifie » (631), « longueur assumée » (464) ; chaque geste marque l'évaluation modifiée ════════ */
 function QuestionEditeeQCM(q, marquer){
@@ -532,7 +544,7 @@ function BoutonLocal(p){
 function TabSimT(num, a, b, contenu, feuilles){
   return h("div", {key:num, className:"sim-cadre simt"},
     h("div", {className:"sim-titre simt-titre"}, h("span", null, "📱 Tablette " + num + " · " + a + (b ? " · " + b : "")),
-      h("button", {className:"btn btn-ghost btn-sm simt-grand", "data-va":"x620-3-mode-test-en-grand", title:"Ouvre cette tablette à la taille d'une vraie, avec ses deux feuilles dessous : en grand, on joue."}, "🔍 Jouer en grand")),
+      h("button", {className:"btn btn-ghost btn-sm simt-grand", "data-va":"x620-3-mode-test-en-grand&tab=" + num, title:"Ouvre cette tablette à la taille d'une vraie, avec ses deux feuilles dessous : en grand, on joue."}, "🔍 Jouer en grand")),
     h("div", {className:"sim"}, h("div", {className:"sim-in"}, contenu)),
     feuilles && h("div", {className:"simt-feuilles"}, feuilles));
 }
@@ -746,3 +758,6 @@ refaire("x627-3-editeur", Editeur);
 SCENES.filter(function(s){ return s.id === "c-fiche"; })[0].vh = 1300;
 SCENES.filter(function(s){ return s.id === "c-que-dit-la-feuille"; })[0].vh = 1300;
 SCENES.filter(function(s){ return s.id === "x627-3-editeur"; })[0].vh = 3250;
+
+// le champ de collage : il se tape et se colle ; il montre le JSON collé de la scène
+function ChampCollage(p){ var s = useState(JSON_EX), v = s[0], set = s[1]; return h("textarea", {className:"json", value:v, placeholder:p.placeholder, title:"Colle ici le JSON que l'instance de création d'éval t'a rendu.", style:p.style, onChange:function(e){ set(e.target.value); if(p.surModif) p.surModif(); }}); }

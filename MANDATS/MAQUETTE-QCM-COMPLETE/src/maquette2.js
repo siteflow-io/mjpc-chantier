@@ -189,7 +189,7 @@ function RouvrirUn(){
       h("div", {className:"checkin-header"}, h("h3", null, "🔓 Rouvrir pour un élève — Q2", InfoI()), h("div", {className:"checkin-sub"}, "Seuls les élèves sans réponse à la question 2 sont listés.")),
       h("div", {className:"rouvrir-l"},
         h("div", null, h("div", {style:{fontWeight:900}}, "CHEVALLIER Théo"), h("div", {style:{fontSize:".8rem", color:"var(--gris)"}}, "tablette 12, moitié de gauche · avec ZELLER Lou")),
-        h("button", {className:"btn btn-primary btn-sm", "data-va":"t-rouvrir-un"}, "🔓 Rouvrir pour Théo")),
+        h("button", {className:"btn btn-primary btn-sm", "data-va":"c-q2-close", "data-moment":"S08:Q2:R1"}, "🔓 Rouvrir pour Théo")),
       h("div", {className:"checkin-actions"}, h("button", {className:"btn btn-ghost", "data-va":"c-q2-close", title:"Ferme la fenêtre sans rien rouvrir."}, "Annuler"))));
   return h(F, null, fond, modal);
 }

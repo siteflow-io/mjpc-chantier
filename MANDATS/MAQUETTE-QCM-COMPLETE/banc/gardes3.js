@@ -426,7 +426,7 @@ function listerGestes(a){
       fen: couches.some(c => c.contains(e)), editeur: !!(e.closest(".preview") || (e.closest(".modal") && e.closest(".modal").querySelector(".preview"))),
       eleve: !!e.closest(".tablette,.eleve-page,.sim,.grand-tab,.voir-tab-in"), va: e.getAttribute("data-va"),
       moment: decl ? decl.getAttribute("data-moment") : null, appareil: decl ? decl.getAttribute("data-appareil") : null,
-      valeurSeule: e.hasAttribute("data-valeur-seule"), x: Math.round(r.left), y: Math.round(r.top), w: Math.round(r.width), h: Math.round(r.height)};
+      valeurSeule: e.hasAttribute("data-valeur-seule"), fichier: !!(e.querySelector("input[type=file]") || (e.closest("label") && e.closest("label").querySelector("input[type=file]"))), x: Math.round(r.left), y: Math.round(r.top), w: Math.round(r.width), h: Math.round(r.height)};
   });
 }
 // Dans la page : l'état de l'écran (où l'on est, ce qui est ouvert, ce qu'on lit, l'évaluation de l'éditeur)
@@ -494,14 +494,17 @@ async function carteScene(page, url, sc, A){
     r.change = apres.empreinte !== avant.empreinte; r.pixels = !img0.equals(img1); r.ouvert = apres.ouvert.length ? apres.ouvert : null;
     r.cle = apres.cle; r.contientObjet = objetDansTexte(apres.couches ? apres.coucheTexte : apres.texte, c.objet);
     r.evChange = avant.ev !== apres.ev; r.valeurChange = avant.valeurs !== apres.valeurs;
-    if(r.choisi !== undefined) r.persiste = await loc.evaluate((s, v) => s.value === v, r.choisi).catch(() => false);
+    // un menu qui mène à l'écran du choix l'applique aussi : l'écran atteint montre le choix dans son menu
+    if(r.choisi !== undefined) r.persiste = r.navigue ? await page.evaluate(v => Array.from(document.querySelectorAll("#root select")).some(s => s.value === v), r.choisi).catch(() => false)
+      : await loc.evaluate((s, v) => s.value === v, r.choisi).catch(() => false);
     r.couchesApres = apres.couches;
     // 12.3 : une fenêtre ouverte par ce geste (sur place, ou dans une autre scène qui l'a ouverte) se ferme sur l'écran de départ
     const ouvreFenetre = r.ouvre || (r.navigue && apres.couches > 0 && depart.couches === 0);
     if(ouvreFenetre){
       r.fermetures = [];
       const fermeurs = await page.evaluate(a => { const root = document.getElementById("root"); const cs = Array.from(root.querySelectorAll(a.sel)).filter(e => e.getBoundingClientRect().width > 1); const c = cs[cs.length - 1];
-        return c ? Array.from(c.querySelectorAll("button")).filter(b => b.getBoundingClientRect().width > 1 && !b.disabled).map((b, i) => ({i, l: (b.innerText || "").replace(/\s+/g, " ").trim()})).filter(x => a.re.test(x.l)) : []; }, {sel: COUCHES, re: FERMER}).catch(() => []);
+        // le « ✕ » d'un choix, dans l'éditeur, retire le choix : ce n'est pas un bouton qui ferme la fenêtre
+        return c ? Array.from(c.querySelectorAll("button")).filter(b => b.getBoundingClientRect().width > 1 && !b.disabled).map((b, i) => ({i, l: (b.innerText || "").replace(/\s+/g, " ").trim(), dedans: !!b.closest(".preview")})).filter(x => a.re.test(x.l) && !x.dedans) : []; }, {sel: COUCHES, re: FERMER}).catch(() => []);
       const essais = [{par: "Échap"}].concat(fermeurs.map(f => ({par: f.l, i: f.i})));
       for(const es of essais){
         await recharger(page, url, sc.id); await page.evaluate(listerGestes, A);
@@ -570,9 +573,11 @@ function garde15Scene(sc, carte){
     else if(c.tag === "select"){ if(!r.persiste) pb = "le menu « " + c.lib.slice(0, 40) + " » n'applique pas le choix « " + r.choisi + " »";
       else if(!r.navigue && !r.ouvre && r.change === false && !c.valeurSeule && !r.pixels) pb = "le menu « " + c.lib.slice(0, 40) + " » : le choix ne change rien à l'écran"; }
     else {
-      const effet = r.navigue || r.ouvre || r.ferme || r.pixels || r.ouvert;
+      // un sélecteur de fichier ouvre la fenêtre du système, hors de la page
+      const effet = r.navigue || r.ouvre || r.ferme || r.pixels || r.ouvert || c.fichier;
       if(!effet) pb = c.eleve ? "côté élève, « " + c.lib + " » cliqué ne se voit pas (pixels identiques)" : (!c.geste && c.ptr) ? "« " + c.lib + " » a la main au survol mais n'agit pas" : c.clv ? "la touche « " + c.lib + " » du clavier de l'app ne tape pas" : "« " + c.lib + " » ne change rien à l'écran (pixels identiques)";
-      else if(c.editeur && !r.navigue && !r.ouvre && !r.ferme && !r.evChange) pb = "dans l'éditeur, « " + c.lib + " » ne change pas l'évaluation (seul le compteur bouge)";
+      // les gestes de l'éditeur qui changent l'évaluation (changement 7.1) ; « 🔍 Vérifier », « Copier », « Enregistrer » la relisent ou la gardent
+      else if(c.editeur && !/Vérifier|Copier|Enregistrer|Imprimer/.test(c.lib) && !r.navigue && !r.ouvre && !r.ferme && !r.evChange) pb = "dans l'éditeur, « " + c.lib + " » ne change pas l'évaluation (seul le compteur bouge)";
     }
     if(pb){ const k = pb.replace(/« [^»]* »/g, "«…»"); (rang[k] = rang[k] || []).push(pb); }
   }
@@ -600,7 +605,9 @@ async function garde15Gestes(page, url, sc){
     if(v1 === v0) out.push(tag + " : le clavier de l'app n° " + (i + 1) + " : la touche « " + lettre + " » n'écrit rien dans le champ en cours");
     else { await cliquer("⌫"); await page.waitForTimeout(40); const v2 = await valeurs(); if(v2 !== v0) out.push(tag + " : le clavier de l'app n° " + (i + 1) + " : « ⌫ » n'efface pas la dernière touche"); }
     if(info.libs.includes("✓")){
-      const fin = async l => { await recharger(page, url, sc.id); const ok = l === "✓" ? await cliquer("✓") : await page.evaluate(() => { const b = Array.from(document.querySelectorAll("#root button")).find(x => /^Entrer/.test(x.textContent.trim())); if(b){ b.click(); return true; } return false; });
+      const fin = async l => { await recharger(page, url, sc.id); // « Entrer » : celui de la moitié du clavier (une tablette a deux moitiés, chacune son clavier et son « Entrer »)
+        const ok = l === "✓" ? await cliquer("✓") : await page.evaluate(i => { const c = Array.from(document.querySelectorAll("#root .clv,#root [data-clavier]")).filter(c => c.getBoundingClientRect().width > 1)[i];
+          const zone = c.closest(".moitie,.eleve-card,.eleve-page") || document; const b = Array.from(zone.querySelectorAll("button")).find(x => /^Entrer/.test(x.textContent.trim())); if(b){ b.click(); return true; } return false; }, i);
         await page.waitForTimeout(80); return ok ? (await page.evaluate(lireEtat, COUCHES)).cle : null; };
       const a = await fin("✓"), b = await fin("Entrer");
       if(b !== null && a !== b) out.push(tag + " : le clavier de l'app n° " + (i + 1) + " : « ✓ » ne fait pas la même chose que « Entrer → »");

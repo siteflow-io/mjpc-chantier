@@ -8,3 +8,22 @@
 .niv-vide{color:var(--gris);font-style:italic;padding:.3rem .7rem}
 .tel-st-l{font-size:.75rem;font-weight:800;color:var(--gris);margin:.3rem 0 .15rem}
 .bilan-imprime-eval{font-weight:800;color:var(--violet);margin:.2rem 0 .6rem;font-size:.95rem}
+.tablette.seule .moitie{flex:1 1 100%;max-width:none}
+div.eleve-btn{cursor:default}
+.clv .tc.on{background:#c7d2fe;border-color:#6366f1}
+.ed-titre-ouvert{font-weight:800;color:var(--violet);margin:-.3rem 0 .6rem}
+.sim-fige button:disabled{opacity:.55}
+/* Côté élève, le choix cliqué s'allume (changement 7.2) */
+.decl-b-btn.on{background:var(--violet);color:#fff;box-shadow:0 0 0 3px #c4b5fd}
+.co-btn.on{border-color:var(--violet);background:#EDE9FE}
+.autoeval-fourchette.on{outline:4px solid #1e293b;outline-offset:2px;transform:scale(1.03)}
+.qdf-c.sel{outline:3px solid var(--violet)}
+th.trie{cursor:pointer}
+/* (changement 7.4) seul ce qui agit a la main au survol */
+.results-eval-row,.pilot-q-mini,.scoresheet th:not(.trie),.grille-papier th,.lens-pill{cursor:default}
+/* (changement 6.1) la tablette « en grand » défile à l'intérieur : ses feuilles restent à portée */
+.grand-fond{overflow:auto}
+.grand-boite{max-height:calc(100vh - 24px);overflow:auto}
+button.deja-choisi{box-shadow:0 0 0 3px #f59e0b !important}
+span.niv-pastille{cursor:default}
+.scoresheet td.eleve-cell:not(:has(button)){cursor:default}

@@ -20,7 +20,7 @@ function ScEcarter(){
       h("p", null, "Elle ne sera ni posée ni corrigée, et sort du total de la note et des compétences."),
       restent.some(function(n){ return n < 3; }) && h("p", {className:"fen-alerte"}, "⚠️ " + (comps.length > 1 ? "Les compétences " + listeFr(comps) + " ne seront plus évaluées" : "La compétence " + comps[0] + " ne sera plus évaluée") + " que par " + Math.min.apply(null, restent) + " questions : il en faut 3 pour que les quatre niveaux soient possibles."),
       q.bonus && h("p", null, "C'est une question bonus : l'écarter ne change rien à la note.")),
-    [h("button", {key:1, className:"btn btn-ghost", "data-va":"c-q1-close"}, "Annuler"), h("button", {key:2, className:"btn btn-rouge", "data-va":"c-ecartee"}, "❌ Écarter la question " + (qi + 1))], "c-q1-close");
+    [h("button", {key:1, className:"btn btn-ghost", "data-va":"c-q1-close"}, "Annuler"), h("button", {key:2, className:"btn btn-rouge", "data-va":"c-ecartee&q=" + (qi + 1), "data-moment":momentDefaut("c-ecartee")}, "❌ Écarter la question " + (qi + 1))], "c-q1-close");
 }
 function ScEcartee(){
   var st = etatPilot(); st.remettre = "c-q1-close";
@@ -33,7 +33,7 @@ function ScParti(){ return Pilot(etatPilot()); }
 function ScDepart(){
   var noms = SCN.presents(MO()).map(nomDe).sort(function(a, b){ return a.localeCompare(b, "fr"); });
   return Fenetre(Pilot(etatPilot()), "🚫 Départ d'un élève", "Qui part en cours de séance ? (infirmerie, tablette en panne…)",
-    h(F, null, h("div", {className:"depart-grille"}, noms.map(function(n){ return h("div", {key:n, className:"depart-l"}, h("span", null, n), h("button", {className:"btn btn-ghost btn-sm", "data-va":"c-parti"}, "🚫 Parti")); }))),
+    h(F, null, h("div", {className:"depart-grille"}, noms.map(function(n){ return h("div", {key:n, className:"depart-l"}, h("span", null, n), h("button", {className:"btn btn-ghost btn-sm", "data-va":"c-parti&parti=" + encodeURIComponent(pre(n)), title:"Marque " + n + " comme parti en cours de séance : il ne bloque plus la classe, ses questions manquées sortent de son total."}, "🚫 Parti")); }))),
     [h("button", {key:1, className:"btn btn-ghost", "data-va":"c-q1-tour1"}, "Annuler")], "c-q1-tour1", 760);
 }
 function ScRetour(){
@@ -48,7 +48,7 @@ function ScTerminer(){
   return Fenetre(Pilot(etatPilot()), "🛑 Terminer la séance ?", CLASSE + " — " + EV.titre + " · " + ouEnEst(m),
     h(F, null, h("p", null, "La séance est close, et l'archive s'écrit avec les notes telles qu'elles sont, quelle que soit la phase."),
       h("p", null, "Les tablettes oublient leurs élèves et reviennent à « Combien êtes-vous sur cette tablette ? ».")),
-    [h("button", {key:1, className:"btn btn-ghost", "data-va":"c-q1-tour1"}, "Annuler"), h("button", {key:2, className:"btn btn-rouge", "data-va":"t-fin"}, "🛑 Terminer la séance")], "c-q1-tour1");
+    [h("button", {key:1, className:"btn btn-ghost", "data-va":"c-q1-tour1"}, "Annuler"), h("button", {key:2, className:"btn btn-rouge", "data-va":"c-lancer", "data-moment":"S08:fin", title:"Termine la séance, tout de suite : l'archive s'écrit, les tablettes oublient leurs élèves."}, "🛑 Terminer la séance")], "c-q1-tour1");
 }
 function ScVoirTablette(){
   var m = MOM(), n = 1, pa = PAIRES[n - 1];
@@ -81,17 +81,17 @@ function SessionsEnCours(){
 }
 function ScFinirAutreHeure(){
   var m = MOM(), lendemain = SCN.moment("S08:finir");
-  return Fenetre(Pilot(etatPilot()), "⏸️ Finir à une autre heure ?", CLASSE + " — " + EV.titre + " · " + ouEnEst(m),
+  return Fenetre(fondDuMoment(), "⏸️ Finir à une autre heure ?", CLASSE + " — " + EV.titre + " · " + ouEnEst(m),
     h(F, null,
       h("p", null, "La séance garde son état exact : la question, le tour, les lectures, les notes provisoires."),
-      h("p", null, "À l'heure suivante, « 🎯 Pilotage classe » propose « ▶️ Reprendre la séance du " + jjmm(SCN.seance(m.seance).date) + " — " + ouEnEst(m) + " ».")),
+      h("p", null, "À l'heure suivante, « 🎯 Pilotage classe » propose « ▶️ Reprendre la séance du " + jjmm((SCN.seance(m.seance) || m).date) + " — " + ouEnEst(m) + " ».")),
     [h("button", {key:1, className:"btn btn-ghost", "data-va":"c-q1-tour1", title:"Ne change rien : la séance continue."}, "Annuler"), h("button", {key:2, className:"btn btn-or", "data-va":"c-reprendre", title:"Met la séance en pause, telle qu'elle est, jusqu'à une heure suivante."}, "⏸️ Finir à une autre heure")], "c-q1-tour1");
 }
 function ScRouvrirSeance(){
-  var k = MO(), se = SCN.qcmPrecedent(k), ev = evalDeSeance(se), rendue = SCN.rendueAu(se.id, k);
-  return Fenetre(Lancement(false), "🔓 Rouvrir la séance du " + jjmm(se.date) + " ?", ev.titre,
+  var k = MO(), se = paramHash("seance") ? SCN.seance(paramHash("seance")) : SCN.qcmPrecedent(k), ev = evalDeSeance(se), rendue = SCN.rendueAu(se.id, k);
+  return Fenetre(Lancement(false), "🔓 Rouvrir la séance du " + jjmm(se.date) + " ?", ev.titre + " · " + presentsTexte(se),
     rendue ? h("p", null, "Ses copies, rendues le " + jjmm(se.rendues) + ", seront masquées aux élèves jusqu'au prochain « Rendre les copies ».") : null,
-    [h("button", {key:1, className:"btn btn-ghost", "data-va":"c-lancer", title:"Ne rouvre rien."}, "Annuler"), h("button", {key:2, className:"btn btn-primary", "data-va":"c-appel", title:"Rouvre la séance : l'appel, les mêmes binômes, puis elle reprend là où elle s'était terminée."}, "🔓 Rouvrir la séance")], "c-lancer");
+    [h("button", {key:1, className:"btn btn-ghost", "data-va":"c-lancer", title:"Ne rouvre rien."}, "Annuler"), h("button", {key:2, className:"btn btn-primary", "data-va":"c-appel&seance=" + se.id, title:"Rouvre la séance : l'appel, les mêmes binômes, puis elle reprend là où elle s'était terminée."}, "🔓 Rouvrir la séance")], "c-lancer");
 }
 function Interrompue(){
   var k = MO(), m = MOM(), se = SCN.seance(m.seance), c = SCN.compteurs(k), cote = PREMIER[m.qi] === "J" ? "gauche" : "droite";
@@ -129,12 +129,12 @@ function PapierSeance(){
   var k = MO(), se = SCN.seance("PAP");
   return Console("pilotage", "pilot", h("div", {className:"card"},
     TitreCarte(h(F, null, "📄 Séance sur papier — " + EV.titre + " — " + CLASSE, InfoI("Sur papier, chacun répond seul sur sa feuille, avec les énoncés imprimés, sans tablette. Tu ramasses les feuilles ; la séance se met en pause sans être finie. Le soir, tu remplis la grille ; à l'heure suivante, l'estimation, la seconde attestation et la correction se font sur les tablettes.")),
-      [h("button", {key:1, className:"btn btn-rouge btn-sm"}, "🛑 Terminer la séance")]),
+      [h("button", {key:1, className:"btn btn-rouge btn-sm", "data-va":"c-terminer"}, "🛑 Terminer la séance")]),
     h("div", {className:"pilot-status reflexion"}, "📄 Séance sur papier en cours — " + presentsTexte(se), InfoIB("📄 Séance sur papier en cours", "Les élèves ont les énoncés seuls, sans les choix, et répondent sur leur feuille, seuls.")),
     h("div", {className:"papier-grid"},
       h("div", null,
         h("div", {className:"row"},
-          h("button", {className:"btn btn-ghost", "data-va":"e-papier-enonces", title:"Montre la page des énoncés seuls, avec les points de chaque question, à imprimer pour la classe."}, "🖨️ Les énoncés à imprimer"),
+          h("button", {className:"btn btn-ghost", "data-local":"1", onClick:function(){ window.open(location.pathname + "#scene=e-papier-enonces&m=" + encodeURIComponent(MO()), "enonces-qcm"); }, title:"Montre la page des énoncés seuls, avec les points de chaque question, à imprimer pour la classe."}, "🖨️ Les énoncés à imprimer"),
           h("button", {className:"btn btn-or", "data-va":"c-papier-grille", title:"Tu as ramassé les feuilles : la séance se met en pause sans être finie. Le soir, tu remplis la grille d'après les feuilles."}, "⏸️ Feuilles ramassées : finir à une autre heure"))),
       h("div", {className:"pilot-overview"}, h("h3", null, "📋 Toutes les questions", InfoI("Les questions de l'évaluation, avec leurs bonnes réponses : sur papier, elles ne se posent pas une à une.")),
         EV.questions.map(function(q, qi){ return h("div", {key:qi, className:"pilot-q-mini"}, h("div", {className:"pilot-q-mini-head"}, h("span", {className:"pilot-q-mini-num"}, "Q" + (qi+1)), h("span", {className:"pilot-q-mini-niv niv-" + q.niveau}, NIV[q.niveau].label)), h("div", {className:"pilot-q-mini-enonce"}, q.enonce), h("div", {className:"pilot-q-mini-bonnes"}, ChoixTexte(q))); })))), true);
@@ -172,7 +172,7 @@ function PilotCorrPapier(){
   var k = MO(), m = MOM(), qi = m.qi, q = EV.questions[qi];
   return Console("pilotage", "pilot", h("div", {className:"card"},
     TitreCarte(h(F, null, "📝 Correction sur papier — " + EV.titre + " — " + CLASSE, InfoI("Sur papier, il n'y a pas de lecture du voisin : chaque moitié montre ce que ta grille a retenu de la feuille, puis la réponse quand tu révèles. Jamais « Trouvée au dernier moment ». Le point d'autonomie se retire d'un clic sur le nom.")),
-      [h("button", {key:0, className:"btn btn-ghost btn-sm"}, "🚫 Départ d'un élève"), h("button", {key:1, className:"btn btn-rouge btn-sm"}, "🛑 Terminer la séance")]),
+      [h("button", {key:0, className:"btn btn-ghost btn-sm", "data-va":"c-depart"}, "🚫 Départ d'un élève"), h("button", {key:1, className:"btn btn-rouge btn-sm", "data-va":"c-terminer"}, "🛑 Terminer la séance")]),
     h("div", {className:"pilot-status correction"}, "Question " + (SCN.ORDRE_CORR.indexOf(qi) + 1) + " / 3 — Q" + (qi + 1), InfoIB("Question " + (SCN.ORDRE_CORR.indexOf(qi) + 1) + " / 3", "Toutes les corrections se font à la suite, dans l'ordre des erreurs de ta grille.")),
     h("div", {className:"corr-grid"},
       h("div", null,
@@ -196,7 +196,7 @@ function Rattrapage(){
         h("div", {className:"field"}, h("label", null, "Évaluation", InfoI("L'évaluation déjà passée par la classe : « 🔁 » la marque comme rattrapage.")), h("select", {value:"e", readOnly:true, title:"L'évaluation de la séance."}, h("option", {value:"e"}, "🔁 " + EV.titre))),
         h("div", {className:"rattrapage-box"}, h("strong", null, "🔁 Rattrapage."), " " + CLASSE + " a déjà passé cette évaluation le " + jjmm(se.date) + ".", InfoIB("🔁 Rattrapage", "Cette séance ne servira jamais de « QCM précédent » pour les binômes. Un élève déjà noté garde la note de sa première séance.")),
         h("div", {className:"duree-box"}, texteDuree(EV, true)),
-        h("button", {className:"btn btn-primary", "data-va":"c-appel", title:"Ouvre l'appel du rattrapage : seuls les élèves pas encore notés sont proposés."}, "🚀 Lancer le rattrapage")),
+        h("button", {className:"btn btn-primary", "data-va":"c-appel&seance=RATT", title:"Ouvre l'appel du rattrapage : seuls les élèves pas encore notés sont proposés."}, "🚀 Lancer le rattrapage")),
       h("div", {className:"binomes-box"},
         h("div", {className:"tt"}, "📱 Binômes proposés — d'après les exclusions, puis le QCM précédent", InfoI("Comme pour une séance : d'abord les exclusions de MJPC, puis la règle du QCM. Plus de placement libre.")),
         h("div", {className:"ss"}, "Pas encore noté à cette évaluation : " + seuls.join(", ") + " (absent le " + jjmm(se.date) + ").", InfoIB(seuls[0], "Seul, il fait lui-même la lecture de sa feuille à la correction ; il n'a pas de co-évaluation.")),

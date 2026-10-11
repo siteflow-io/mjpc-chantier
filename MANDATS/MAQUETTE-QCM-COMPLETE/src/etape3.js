@@ -211,7 +211,7 @@ function PilotCorrection(qi, revele, opts){
     : h("button", {className:"btn btn-or", "data-va":opts.revelerVers || "t-corr-q2-apres", title:"Montre la bonne réponse et l'explication sur toutes les tablettes et au tableau. Commente la question après, jamais avant."}, "💡 Révéler");
   return Console("pilotage", "pilot", h("div", {className:"card"},
     TitreCarte(h(F, null, "📝 Correction — " + EV.titre + " — " + CLASSE, InfoI("Pour chaque question, chacun lit d'abord la feuille de son voisin et clique ce qu'elle dit, dans la moitié du voisin. « 💡 Révéler » s'ouvre quand tous les présents l'ont fait. Tu commentes la question après la révélation, jamais avant : sinon, ils cliqueraient ce que tu dis. Les questions vont de la plus ratée à la mieux réussie. Un clic sur un nom agit sur l'élève.")),
-      [h("button", {key:0, className:"btn btn-ghost btn-sm"}, "🚫 Départ d'un élève"), h("button", {key:5, className:"btn btn-ghost btn-sm"}, "⏸️ Finir à une autre heure"), h("button", {key:1, className:"btn btn-rouge btn-sm"}, "🛑 Terminer la séance")]),
+      [h("button", {key:0, className:"btn btn-ghost btn-sm", "data-va":"c-depart"}, "🚫 Départ d'un élève"), h("button", {key:5, className:"btn btn-ghost btn-sm", "data-va":"c-finir-autre-heure"}, "⏸️ Finir à une autre heure"), h("button", {key:1, className:"btn btn-rouge btn-sm", "data-va":"c-terminer"}, "🛑 Terminer la séance")]),
     h("div", {className:"pilot-status correction", title:"Position dans l'ordre de correction (trié par taux d'erreur décroissant). Q" + (qi+1) + " est la " + (pos+1) + "e question révélée."}, "Question " + (pos+1) + " / 3 — Q" + (qi+1) + (revele ? " · révélée" : " · lecture de la feuille du voisin")),
     h("div", {className:"corr-grid"},
       h("div", null,
@@ -246,7 +246,7 @@ function PilotAttest2(){
   var etat = function(p){ return enCours[p] ? {cls:"m-attest", st:"attestation " + enCours[p]} : {cls:"m-pret", st:"✓ prêt · 10:3" + (p.length % 5 + 1)}; };
   return Console("pilotage", "pilot", h("div", {className:"card"},
     TitreCarte(h(F, null, "📝 Correction — " + EV.titre + " — " + CLASSE, InfoI("Avant la correction, chaque moitié montre la seconde attestation, une coche par ligne. La correction commence quand tous les présents l'ont cochée en entier, comme au début.")),
-      [h("button", {key:0, className:"btn btn-ghost btn-sm"}, "🚫 Départ d'un élève"), h("button", {key:5, className:"btn btn-ghost btn-sm"}, "⏸️ Finir à une autre heure"), h("button", {key:1, className:"btn btn-rouge btn-sm"}, "🛑 Terminer la séance")]),
+      [h("button", {key:0, className:"btn btn-ghost btn-sm", "data-va":"c-depart"}, "🚫 Départ d'un élève"), h("button", {key:5, className:"btn btn-ghost btn-sm", "data-va":"c-finir-autre-heure"}, "⏸️ Finir à une autre heure"), h("button", {key:1, className:"btn btn-rouge btn-sm", "data-va":"c-terminer"}, "🛑 Terminer la séance")]),
     h("div", {className:"pilot-status correction"}, "✍️ Seconde attestation — 20 / 24 prêts"),
     h("div", {className:"corr-grid"},
       h("div", null,
@@ -267,7 +267,7 @@ function PilotEstimation(){
   var distrib = [["vert", 6], ["bleu", 9], ["orange", 5], ["rouge", 2]];
   return Console("pilotage", "pilot", h("div", {className:"card"},
     TitreCarte(h(F, null, "📊 Autoévaluation — " + EV.titre + " — " + CLASSE, InfoI("Chaque élève dit combien de bonnes réponses il pense avoir. Cette estimation sert à savoir s'il se surévalue, se sous-évalue ou s'évalue correctement ; son bilan la compare à sa note.")),
-      [h("button", {key:5, className:"btn btn-ghost btn-sm"}, "⏸️ Finir à une autre heure"), h("button", {key:1, className:"btn btn-rouge btn-sm"}, "🛑 Terminer la séance")]),
+      [h("button", {key:5, className:"btn btn-ghost btn-sm", "data-va":"c-finir-autre-heure"}, "⏸️ Finir à une autre heure"), h("button", {key:1, className:"btn btn-rouge btn-sm", "data-va":"c-terminer"}, "🛑 Terminer la séance")]),
     h("div", {className:"pilot-status autoeval"}, "Phase autoévaluation — 22 / 24 élèves"),
     h("p", {style:{margin:".8rem 0", color:"var(--gris)"}}, "Les élèves choisissent dans quelle fourchette ils estiment avoir réussi. Clique sur ", h("strong", null, "📝 Lancer la correction"), " quand tu es prêt."),
     h("div", {className:"autoeval-prof-distrib"}, distrib.map(function(d){ var m = MAITRISE.filter(function(x){ return x.k === d[0]; })[0];
@@ -474,18 +474,20 @@ function AlerteCoE(tel){
   var B = tel ? function(t, v, va, ti){ return h("button", {key:t, className:"tel-btn tb-" + v, "data-va":va, title:ti}, t); }
               : function(t, v, va, ti){ return h("button", {key:t, className:"btn btn-" + v, "data-va":va, title:ti}, t); };
   var boutons = [
-    B("Donner raison à Michel : Rome → 1 point", tel ? "vert" : "vert", "c-coeval-tranche", "Applique ce que Michel dit avoir écrit, Rome : sa question 1 passe à 1 point, et sa note se recalcule. L'alerte se ferme ; « ↩️ Défaire » la rouvre."),
-    B("Donner raison à Julien : Venise → 0 point", tel ? "turq" : "turquoise", "c-coeval-tranche", "Garde la lecture de Julien, Venise : rien ne change. L'alerte se ferme."),
+    B("Donner raison à Michel : Rome → 1 point", tel ? "vert" : "vert", "c-coeval-tranche&dec=michel", "Applique ce que Michel dit avoir écrit, Rome : sa question 1 passe à 1 point, et sa note se recalcule. L'alerte se ferme ; « ↩️ Défaire » la rouvre."),
+    B("Donner raison à Julien : Venise → 0 point", tel ? "turq" : "turquoise", "c-coeval-tranche&dec=julien", "Garde la lecture de Julien, Venise : rien ne change. L'alerte se ferme."),
     B("La feuille dit autre chose : je clique ce qu'elle dit", "primary", "c-coeval-feuille", "Ouvre les choix de la question 1 : tu cliques ce que dit la feuille de Michel, et sa note se recalcule."),
-    B("📌 Je relis ce soir la question 1", tel ? "or" : "or", "c-coeval-tranche", "La question 1 de Michel passe « ⚠️ À relire » : elle t'attend ce soir dans Résultats. L'alerte se ferme.")
+    B("📌 Je relis ce soir la question 1", tel ? "or" : "or", "c-coeval-tranche&dec=soir", "La question 1 de Michel passe « ⚠️ À relire » : elle t'attend ce soir dans Résultats. L'alerte se ferme.")
   ];
   var auto = tel
     ? h("div", {key:"au", className:"g3"}, h("button", {className:"tel-btn tb-ghost tb-small", "data-va":"c-autonomie-michel", title:"Retire le point d'autonomie à Michel, après une confirmation."}, "⛔ Michel"), h("button", {className:"tel-btn tb-ghost tb-small", "data-va":"c-autonomie-julien", title:"Retire le point d'autonomie à Julien, après une confirmation."}, "⛔ Julien"), h("button", {className:"tel-btn tb-rougeclair tb-small", "data-va":"c-autonomie-deux", title:"Retire le point d'autonomie aux deux, après une confirmation."}, "⛔ Aux deux"))
     : h(F, {key:"au"}, h("div", {className:"al-auto-t"}, "⛔ Retirer le point d'autonomie :"),
-        h("div", {className:"al-auto"},
-          h("button", {className:"btn btn-ghost btn-sm", "data-va":"c-autonomie-michel", title:"Retire le point d'autonomie à Michel, après une confirmation. « ↩️ Rendre » le défait."}, "⛔ à Michel"),
-          h("button", {className:"btn btn-ghost btn-sm", "data-va":"c-autonomie-julien", title:"Retire le point d'autonomie à Julien, après une confirmation. « ↩️ Rendre » le défait."}, "⛔ à Julien"),
-          h("button", {className:"btn btn-sm btn-aux-deux", "data-va":"c-autonomie-deux", title:"Retire le point d'autonomie aux deux, après une confirmation : par exemple si aucun n'a joué le jeu. « ↩️ Rendre » le défait."}, "⛔ aux deux")));
+        // (relecteur n°178) un point déjà retiré : son bouton est fermé, et « ↩️ Rendre » le défait
+        h("div", {className:"al-auto"}, [["Michel", "⛔ à Michel", "btn-ghost", "c-autonomie-michel"], ["Julien", "⛔ à Julien", "btn-ghost", "c-autonomie-julien"], ["deux", "⛔ aux deux", "btn-aux-deux", "c-autonomie-deux"]].map(function(x){
+          var ret = x[0] === "deux" ? SCN.autonomie("Michel", MO()).retire && SCN.autonomie("Julien", MO()).retire : SCN.autonomie(x[0], MO()).retire;
+          return ret ? h("button", {key:x[1], className:"btn btn-sm " + x[2], disabled:true, title:"Ce point d'autonomie est déjà retiré : « ↩️ Rendre » le défait."}, x[1])
+            : h("button", {key:x[1], className:"btn btn-sm " + x[2], "data-va":x[3], title:"Retire le point d'autonomie " + (x[0] === "deux" ? "aux deux" : "à " + x[0]) + ", après une confirmation. « ↩️ Rendre » le défait."}, x[1]); }),
+          (SCN.autonomie("Michel", MO()).retire || SCN.autonomie("Julien", MO()).retire) && h("button", {className:"btn btn-vert btn-sm", "data-va":"c-coeval-attente", "data-moment":"S08:coeval", title:"Rend le point d'autonomie retiré : les compétences d'autonomie repassent en Très bonne maîtrise."}, "↩️ Rendre")));
   if(tel) return h("div", {className:"tel-alerte"}, corps, boutons, auto, h("div", {className:"tel-al-note"}, "⛔ : retirer le point d'autonomie."));
   return h("div", {className:"alerte-co"}, h("div", {className:"al-corps"}, corps),
     h("div", {className:"al-actions"}, boutons, auto,
@@ -509,7 +511,7 @@ function PilotCoevalE(tranche, retire){
       h("div", {className:"al-actions"}, h("button", {className:"btn btn-ghost btn-sm", "data-va":"c-coeval-attente", title:"Rouvre l'alerte, telle qu'elle était : rien n'est appliqué."}, "↩️ Défaire")))
       : AlerteCoE(false),
     TitreCarte(h(F, null, "🤝 Co-évaluation de la lecture — " + EV.titre + " — " + CLASSE, InfoI("À la fin de la correction, chacun dit, dans sa moitié, s'il pense que son voisin a bien lu sa feuille. Un « ❌ » t'alerte aussitôt, en haut ; un « 🤔 » passe la question « ⚠️ À relire » ce soir. Le bilan s'affiche quand tous les présents ont répondu.")),
-      [h("button", {key:0, className:"btn btn-ghost btn-sm"}, "🚫 Départ d'un élève"), h("button", {key:5, className:"btn btn-ghost btn-sm"}, "⏸️ Finir à une autre heure"), h("button", {key:1, className:"btn btn-rouge btn-sm"}, "🛑 Terminer la séance")]),
+      [h("button", {key:0, className:"btn btn-ghost btn-sm", "data-va":"c-depart"}, "🚫 Départ d'un élève"), h("button", {key:5, className:"btn btn-ghost btn-sm", "data-va":"c-finir-autre-heure"}, "⏸️ Finir à une autre heure"), h("button", {key:1, className:"btn btn-rouge btn-sm", "data-va":"c-terminer"}, "🛑 Terminer la séance")]),
     h("div", {className:"pilot-status correction"}, "Fin de la correction — chacun dit ce qu'il pense de la lecture de sa feuille · " + (24 - att.length) + " / 24 ont répondu"),
     h("div", {className:"corr-grid"},
       h("div", null,
@@ -536,7 +538,7 @@ function ScCoevalFeuille(){   // « La feuille dit autre chose : je clique ce qu
       h("div", {className:"qdf-choix"},
         q.choix.map(function(c, i){ return h("div", {key:i, className:"qdf-c" + (i === 3 ? " sel" : ""), title:"Clique si la feuille de Michel dit « " + c + " »."}, h("span", null, c), h("span", {className:"tg"}, i === 2 ? "bonne réponse · Michel" : i === 3 ? "lu par Julien" : "")); }),
         h("div", {className:"qdf-c aucun", title:"Clique si la feuille de Michel ne dit aucun de ces choix."}, h("span", null, "Aucun des choix"), h("span", {className:"tg"}, ""))),
-      h("div", {className:"checkin-actions"}, h("button", {className:"btn btn-ghost", "data-va":"c-coeval-attente", title:"Ferme sans rien changer : l'alerte reste ouverte."}, "Annuler"), h("button", {className:"btn btn-primary", "data-va":"c-coeval-tranche", title:"Applique ce que dit la feuille : la question 1 de Michel se recalcule, et l'alerte se ferme."}, "Valider")))));
+      h("div", {className:"checkin-actions"}, h("button", {className:"btn btn-ghost", "data-va":"c-coeval-attente", title:"Ferme sans rien changer : l'alerte reste ouverte."}, "Annuler"), h("button", {className:"btn btn-primary", "data-va":"c-coeval-tranche&dec=feuille", title:"Applique ce que dit la feuille : la question 1 de Michel se recalcule, et l'alerte se ferme."}, "Valider")))));
 }
 
 /* ════════ La fin : le bilan de l'élève (442, 456, 474, 484, 639) ════════ */
@@ -601,7 +603,7 @@ function BilanClasse(){
   lignes.sort(function(a, b){ return (b.r.complet ? b.r.n : -1) - (a.r.complet ? a.r.n : -1) || a.nom.localeCompare(b.nom, "fr"); });
   var lire = LIRE_SOIR.concat([["PERRAUD Jade", 1, "🤔 pense qu'Enzo a peut-être mal lu sa feuille"], ["MAILLARD Noah", 2, "🤔 pense qu'Emma a peut-être mal lu sa feuille"]]);
   return Console("pilotage", "pilot", h("div", {className:"card"},
-    TitreCarte(h(F, null, "🏁 Bilan classe — " + EV.titre + " — " + CLASSE, InfoI("Les notes provisoires de la classe, d'après la lecture des feuilles à la correction. Elles deviennent définitives quand tu rends les copies, après ta lecture du soir.")), [h("button", {key:1, className:"btn btn-rouge btn-sm"}, "🛑 Terminer la séance")]),
+    TitreCarte(h(F, null, "🏁 Bilan classe — " + EV.titre + " — " + CLASSE, InfoI("Les notes provisoires de la classe, d'après la lecture des feuilles à la correction. Elles deviennent définitives quand tu rends les copies, après ta lecture du soir.")), [h("button", {key:1, className:"btn btn-rouge btn-sm", "data-va":"c-terminer"}, "🛑 Terminer la séance")]),
     h("div", {className:"bilan-classe-synthese"},
       h("div", {className:"bilan-classe-stat"}, h("div", {className:"bilan-classe-stat-label"}, "Moyenne"), h("div", {className:"bilan-classe-stat-num"}, fr1(moy) + " / 3"), h("div", {style:{opacity:.9}}, fr1(moy * 20 / 3) + " / 20")),
       h("div", {className:"bilan-classe-stat"}, h("div", {className:"bilan-classe-stat-label"}, "Médiane"), h("div", {className:"bilan-classe-stat-num"}, med + " / 3")),
@@ -694,7 +696,7 @@ function PapierLancer(){ return Lancement(false, {papier:true}); }
 function PapierSeance(){
   return Console("pilotage", "pilot", h("div", {className:"card"},
     TitreCarte(h(F, null, "📄 Séance sur papier — " + EV.titre + " — " + CLASSE, InfoI("Sur papier, chacun répond seul sur sa feuille, avec les énoncés imprimés : pas de tablette, pas d'estimation. Tu ramasses les feuilles ; la séance se met en pause sans être finie. Le soir, tu remplis la grille ; à l'heure suivante, la correction se fait sur les tablettes.")),
-      [h("button", {key:1, className:"btn btn-rouge btn-sm"}, "🛑 Terminer la séance")]),
+      [h("button", {key:1, className:"btn btn-rouge btn-sm", "data-va":"c-terminer"}, "🛑 Terminer la séance")]),
     h("div", {className:"pilot-status reflexion"}, "📄 Séance sur papier en cours — 24 présents, 1 absent (YVON Adam)"),
     h("div", {className:"papier-grid"},
       h("div", null,
@@ -736,7 +738,7 @@ function PilotCorrPapier(){
   var q = EV.questions[1];
   return Console("pilotage", "pilot", h("div", {className:"card"},
     TitreCarte(h(F, null, "📝 Correction sur papier — " + EV.titre + " — " + CLASSE, InfoI("Sur papier, il n'y a pas de lecture du voisin : chaque moitié montre ce que ta grille a retenu de la feuille, puis la réponse quand tu révèles. Jamais « Trouvée au dernier moment ». Le point d'autonomie ne se retire qu'en direct, d'un clic sur le nom.")),
-      [h("button", {key:0, className:"btn btn-ghost btn-sm"}, "🚫 Départ d'un élève"), h("button", {key:1, className:"btn btn-rouge btn-sm"}, "🛑 Terminer la séance")]),
+      [h("button", {key:0, className:"btn btn-ghost btn-sm", "data-va":"c-depart"}, "🚫 Départ d'un élève"), h("button", {key:1, className:"btn btn-rouge btn-sm", "data-va":"c-terminer"}, "🛑 Terminer la séance")]),
     h("div", {className:"pilot-status correction"}, "Question 1 / 3 — Q2 · toutes les corrections à la suite, dans l'ordre des erreurs de ta grille"),
     h("div", {className:"corr-grid"},
       h("div", null,
@@ -915,7 +917,7 @@ function PilotCoeval3(tranche){
       h("div", {className:"al-actions"}, h("button", {className:"btn btn-ghost btn-sm", "data-va":"x610-8-console-alerte", title:"Rouvre l'alerte, telle qu'elle était : rien n'est appliqué."}, "↩️ Défaire")))
       : AlerteCo3(false),
     TitreCarte(h(F, null, "🤝 Co-évaluation de la lecture — " + EV3.titre + " — " + CLASSE, InfoI("À la fin de la correction, chacun dit, dans sa moitié, s'il pense que son voisin a bien lu sa feuille. Un « ❌ » t'alerte aussitôt, en haut ; un « 🤔 » passe la question « ⚠️ À relire » ce soir. Le bilan s'affiche quand tous les présents ont répondu.")),
-      [h("button", {key:0, className:"btn btn-ghost btn-sm"}, "🚫 Départ d'un élève"), h("button", {key:5, className:"btn btn-ghost btn-sm"}, "⏸️ Finir à une autre heure"), h("button", {key:1, className:"btn btn-rouge btn-sm"}, "🛑 Terminer la séance")]),
+      [h("button", {key:0, className:"btn btn-ghost btn-sm", "data-va":"c-depart"}, "🚫 Départ d'un élève"), h("button", {key:5, className:"btn btn-ghost btn-sm", "data-va":"c-finir-autre-heure"}, "⏸️ Finir à une autre heure"), h("button", {key:1, className:"btn btn-rouge btn-sm", "data-va":"c-terminer"}, "🛑 Terminer la séance")]),
     h("div", {className:"pilot-status correction"}, "Fin de la correction — chacun dit ce qu'il pense de la lecture de sa feuille · " + (24 - att.length) + " / 24 ont répondu"),
     h("div", {className:"corr-grid"},
       h("div", null,

@@ -6336,6 +6336,73 @@
    ],
    "categorie": "donnée",
    "auto": false
+  },
+  {
+   "texte": "📝 3e Chapitre 1 — Poésie et peinture au XIXème siècle · Interro de cours (séance 3)",
+   "scenes": [
+    "x627-3-editeur"
+   ],
+   "categorie": "donnée",
+   "pourquoi": "le titre de l'évaluation ouverte, en tête de l'éditeur"
+  },
+  {
+   "texte": "1 point si la réponse est exacte ; sinon 0",
+   "scenes": [
+    "x627-3-editeur"
+   ],
+   "categorie": "donnée",
+   "pourquoi": "le sous-titre du mode, à la place de « Réponse exacte = max ; sinon 0 » de la 7.7.1 (l. 6704), au mot du cadrage"
+  },
+  {
+   "texte": "État actuel : n'a pas encore répondu.",
+   "scenes": [
+    "p-eleve"
+   ],
+   "categorie": "état"
+  },
+  {
+   "texte": "3e Chapitre 1 — Poésie et peinture au XIXème siècle · Interro de cours (séance 3) · 23 présents, 2 absents",
+   "scenes": [
+    "c-rouvrir-seance"
+   ],
+   "categorie": "donnée"
+  },
+  {
+   "texte": "✅ Alerte tranchée : la feuille de Michel dit C, E",
+   "scenes": [
+    "x610-tranche"
+   ],
+   "categorie": "état"
+  },
+  {
+   "texte": "La question 3 de DUVERNAY Michel reste à 0 point : sa feuille dit C et E, sans B.",
+   "scenes": [
+    "x610-tranche"
+   ],
+   "categorie": "état"
+  },
+  {
+   "texte": "Élève ▴",
+   "scenes": [
+    "c-resultats",
+    "c-resultats-rendues"
+   ],
+   "categorie": "donnée",
+   "pourquoi": "l'en-tête de colonne, avec le sens du tri en cours"
+  },
+  {
+   "texte": "Julien a lu « aucun de ces choix ». Clique sur ce que dit sa feuille.",
+   "scenes": [
+    "c-que-dit-la-feuille"
+   ],
+   "categorie": "alerte"
+  },
+  {
+   "texte": "Évaluation d'essai — 3 questions — 3 ESSAI — 08/10/2026 10:02 · 24 présents, 1 absent (YVON Adam)",
+   "scenes": [
+    "c-corbeille"
+   ],
+   "categorie": "donnée"
   }
  ],
  "motifs": [

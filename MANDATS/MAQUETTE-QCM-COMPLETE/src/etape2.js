@@ -138,11 +138,11 @@ function Pilot(s){
   return Console("pilotage", "pilot", h("div", {className:"card"},
     TitreCarte("🎯 " + EV.titre + " — " + CLASSE, [
       h("span", {key:0, style:{fontSize:".8rem", color:"var(--gris)", fontWeight:700}}, "🕙 Fin de l'heure : 10:57"),
-      h("button", {key:1, className:"btn btn-ghost btn-sm"}, "🚫 Départ d'un élève"),
+      h("button", {key:1, className:"btn btn-ghost btn-sm", "data-va":"c-depart"}, "🚫 Départ d'un élève"),
       h("button", {key:2, className:"btn btn-ghost btn-sm"}, "↩️ Retour d'un élève"),
       h("button", {key:4, className:"btn btn-ghost btn-sm"}, "🔓 Rouvrir pour un élève"),
       h("button", {key:5, className:"btn btn-ghost btn-sm", "data-va":"c-finir-autre-heure", title:"Met la séance en pause, avec son état exact, pour la reprendre à une heure suivante : « ▶️ Reprendre » dans « 🎯 Pilotage classe ». Demande une confirmation."}, "⏸️ Finir à une autre heure"),
-      h("button", {key:3, className:"btn btn-rouge btn-sm"}, "🛑 Terminer la séance")]),
+      h("button", {key:3, className:"btn btn-rouge btn-sm", "data-va":"c-terminer"}, "🛑 Terminer la séance")]),
     h("div", {className:"pilot-stats"}, s.stats.map(function(x, i){ return h("div", {key:i, className:"pilot-stat", title:TITRES_STATS[x[1]]}, h("div", {className:"v"}, x[0]), h("div", {className:"l"}, x[1])); })),
     h("div", {className:"pilot-grid v2"}, colG, colM, Overview(s.qi, s.passees || [], s))), true);
 }
@@ -180,8 +180,10 @@ function GrilleBinomes(p){   // glisser un nom sur un autre : les deux s'échang
   }
   return h("div", null,
     h("div", {className:"tabs-grid"}, paires.map(function(x, ti){
-      return h("div", {key:ti, className:"tab-mini" + (!x[1] ? " seul" : "")},
-        h("div", {className:"tab-mini-h"}, h("span", null, "📱 Tablette " + (ti + 1)), !x[1] ? h("span", null, "seul") : h("span", null, " ")),
+      // (changement 7.8, relecteur n°35) une tablette à un seul élève, à gauche ou à droite, prend l'en-tête orange « seul »
+      var seul = !!x[0] !== !!x[1];
+      return h("div", {key:ti, className:"tab-mini" + (seul ? " seul" : "")},
+        h("div", {className:"tab-mini-h"}, h("span", null, "📱 Tablette " + (ti + 1)), seul ? h("span", null, "seul") : h("span", null, " ")),
         h("div", {className:"tab-mini-b"}, [0, 1].map(function(ci){
           var n = x[ci];
           return h("div", {key:ci, className:"tab-mini-m" + (n ? "" : " vide") + (tenu && tenu[0] === ti && tenu[1] === ci ? " tenu" : ""), draggable:!!n,
@@ -196,20 +198,20 @@ function GrilleBinomes(p){   // glisser un nom sur un autre : les deux s'échang
 function Lancement(appel, opts){
   opts = opts || {};
   var demo = opts.demo;
-  var classe = [].concat.apply([], PAIRES_AVANT).filter(Boolean).sort(function(a, b){ return a.localeCompare(b, "fr"); });
+  var classe = opts.seance && SCN.seance(opts.seance) && SCN.seance(opts.seance).eleves ? SCN.seance(opts.seance).eleves.slice() : [].concat.apply([], PAIRES_AVANT).filter(Boolean).sort(function(a, b){ return a.localeCompare(b, "fr"); });   // (relecteur n°249) un rattrapage : ses seuls élèves
   var carte = h("div", {className:"card"},
     h("h2", null, "🎯 Lancer une nouvelle séance", InfoI("Choisis la classe et l'évaluation : la durée se compte tout de suite, et les binômes sont proposés. « 🚀 Lancer la séance » ouvre l'appel.")),
     h("div", {className:"lancer-grid"},
       h("div", null,
         h("div", {className:"field"}, h("label", null, "Classe", InfoI("Les classes de la console MJPC.")), h("select", {value:"c", readOnly:true, title:"La classe de la séance."}, h("option", {value:"c"}, CLASSE + " (25 élèves)"))),
-        h("div", {className:"field"}, h("label", null, "Évaluation", InfoI("Seules les évaluations prêtes à lancer sont proposées ; la démo est toujours en tête.")), h("select", {value:"e", readOnly:true, title:"L'évaluation de la séance."}, h("option", {value:"e"}, demo ? "🎓 Démo — apprendre le déroulé (3 questions)" : EV.titre + " (3 questions)"))),
+        h("div", {className:"field"}, h("label", null, "Évaluation", InfoI("Seules les évaluations prêtes à lancer sont proposées ; la démo est toujours en tête.")), h(ChoixEvaluation, {demo:demo, seance:opts.seance})),
         !demo && h("div", {className:"field"}, h("label", null, "Mode", InfoI("Sur tablettes : deux élèves par tablette, le déroulé complet. Sur papier : chacun répond seul sur sa feuille, avec les énoncés imprimés ; le soir, tu remplis la grille ; la correction se fait à l'heure suivante, sur les tablettes.")),
           h("div", {className:"mode-seance"},
             h("button", {className:"btn btn-sm " + (opts.papier ? "btn-ghost" : "btn-primary"), "data-va":"c-lancer", "aria-pressed":!opts.papier, title:"La séance sur tablettes, deux élèves par tablette."}, "📱 Sur tablettes"),
             h("button", {className:"btn btn-sm " + (opts.papier ? "btn-primary" : "btn-ghost"), "data-va":"c-papier-lancer", "aria-pressed":!!opts.papier, title:"La séance sur papier : chacun répond seul sur sa feuille, sans tablette ; l'estimation se fait à la reprise, sur les tablettes."}, "📄 Séance sur papier"))),
         opts.papier || demo ? null
              : h("div", {className:"duree-box"}, DUREE_TXT),
-        h("button", {className:"btn btn-primary", "data-va":opts.papier ? "c-papier-seance" : demo ? "t-demo-q" : "c-appel", title:opts.papier ? "Ouvre l'appel, puis la séance sur papier : les énoncés à imprimer, et « ⏸️ Feuilles ramassées »." : null}, opts.papier ? "📄 Lancer la séance sur papier" : demo ? "🎓 Lancer la démo" : "🚀 Lancer la séance")),
+        h("button", {className:"btn btn-primary", "data-va":opts.papier ? "c-papier-seance" : "c-appel", "data-moment":demo ? "DEMO:avant" : null, title:opts.papier ? "Ouvre l'appel, puis la séance sur papier : les énoncés à imprimer, et « ⏸️ Feuilles ramassées »." : null}, opts.papier ? "📄 Lancer la séance sur papier" : demo ? "🎓 Lancer la démo" : "🚀 Lancer la séance")),
       h("div", {className:"binomes-box"},
         h("div", {className:"tt"}, "📱 Binômes proposés — d'après les exclusions, puis le QCM précédent", InfoIB("📱 Binômes proposés", "D'abord les exclusions de MJPC : deux élèves exclus ne sont jamais ensemble. Puis la règle du QCM : le classement de la note du QCM précédent, puis 1-2, 3-4… Aucun élève ne voit rien des exclusions. Glisse un nom sur un autre pour échanger deux élèves, ou sur une moitié vide pour l'y déplacer, jusqu'au bout de l'heure.")),
         h("div", {className:"excl-note"}, "🚫 2 exclusions de MJPC respectées : le classement mettait CARRÉ Tom avec ESNAULT Inès, et QUINTON Enzo avec OLLIVIER Sacha ; chacun a été échangé avec le binôme le plus proche."),
@@ -223,7 +225,7 @@ function Lancement(appel, opts){
         h("div", {style:{display:"flex", alignItems:"center", gap:".5rem", marginTop:".35rem"}}, h("span", {style:{whiteSpace:"nowrap"}}, "🕙 Fin de l'heure :"),
           h("input", {defaultValue:"10:57", title:"L'heure de fin de la séance : lancement + 55 min. Les tablettes oublient leurs élèves à « Terminer », ou 10 min après cette heure.", style:{width:"70px", padding:".2rem .4rem", border:"2px solid var(--bordure)", borderRadius:"6px", fontWeight:900, textAlign:"center", fontFamily:"inherit"}}),
           InfoIB("🕙 Fin de l'heure", "Lancement + 55 min. Les tablettes oublient leurs élèves à « Terminer », ou 10 min après cette heure."))),
-      h("div", {className:"checkin-actions"}, h("button", {className:"btn btn-ghost", "data-va":"c-lancer"}, "Annuler"), h("button", {className:"btn btn-primary", "data-va":"c-pret"}, "🚀 Lancer la séance"))));
+      h("div", {className:"checkin-actions"}, h("button", {className:"btn btn-ghost", "data-va":"c-lancer"}, "Annuler"), h("button", {className:"btn btn-primary", "data-va":demo ? "c-q1-reflexion" : repriseVa() || "c-pret", "data-moment":demo ? "DEMO:Q1:R" : repriseMoment()}, "🚀 Lancer la séance"))));
   var precedentes = SessionsPrecedentes(opts.demoFaite);
   return Console("pilotage", "pilot", h(F, null, opts.reprise && CarteReprise(opts.reprise === "papier"), carte, precedentes, modale), false);
 }
@@ -371,7 +373,7 @@ function ScFinPrevue(){ var st = ST_Q1T1(); st.finMin = 11 * 60 + 2; return Pilo
 function ScRouvrirTous(){
   return Fenetre(Pilot(ST_Q2CL()), "🔓 Rouvrir la question 2 pour tous ?", "Seuls ceux qui n'ont pas répondu la retrouvent, une seule fois.",
     h(F, null, h("p", null, "Ici : ", h("strong", null, "CHEVALLIER Théo"), " (tablette 12).")),
-    [h("button", {key:1, className:"btn btn-ghost", "data-va":"c-q2-close"}, "Annuler"), h("button", {key:2, className:"btn btn-primary", "data-va":"t-rouvrir-un", title:"Rouvre la question 2 pour ceux qui n'ont pas répondu : ici, Théo. Une seule fois."}, "🔓 Rouvrir pour ceux qui n'ont pas répondu")], "c-q2-close");
+    [h("button", {key:1, className:"btn btn-ghost", "data-va":"c-q2-close"}, "Annuler"), h("button", {key:2, className:"btn btn-primary", "data-va":"c-q2-close", title:"Rouvre la question 2 pour ceux qui n'ont pas répondu : ici, Théo. Une seule fois.", "data-moment":"S08:Q2:R1"}, "🔓 Rouvrir pour ceux qui n'ont pas répondu")], "c-q2-close");
 }
 function ScDepart(){
   var noms = [].concat.apply([], PAIRES).filter(Boolean).sort(function(a, b){ return a.localeCompare(b, "fr"); });
@@ -422,7 +424,7 @@ function ScQR(){
       h("h2", null, "📱 Pilotage mobile"),
       h("p", {style:{marginBottom:"1rem", fontSize:".9rem", color:"var(--gris)"}}, "Scanne avec ton téléphone. La fenêtre se ferme automatiquement."),
       h("div", {className:"qr-dessin"}, cases.map(function(c, i){ return h("span", {key:i, className:c ? "on" : ""}); })),
-      h("button", {className:"btn btn-ghost btn-sm", style:{marginTop:".8rem"}, "data-va":"p-reponse", title:"Montre ce que ton téléphone affiche une fois le QR scanné : ta télécommande."}, "📱 Voir le téléphone"))));
+      h("button", {className:"btn btn-ghost btn-sm", style:{marginTop:".8rem"}, "data-local":"1", onClick:function(){ window.open(location.pathname + "#scene=p-reponse&m=" + encodeURIComponent(MO()), "telephone-qcm"); }, title:"Montre ce que ton téléphone affiche une fois le QR scanné : ta télécommande."}, "📱 Voir le téléphone"))));
 }
 
 /* ── Le téléphone, ta télécommande (418) : les temps en direct, la fin prévue, « ❌ Écarter » ── */

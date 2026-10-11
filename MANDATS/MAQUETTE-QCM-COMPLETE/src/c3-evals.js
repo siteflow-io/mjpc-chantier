@@ -5,7 +5,10 @@
    geste y change l'évaluation (changement 7.1). */
 var NIVEAUX_EV = ["6e", "5e", "4e", "3e"];
 var CHAP_EDITEUR = [{id:"3e-ch1", niveau:"3e", libelle:"3e · Chapitre 1 — Poésie et peinture au XIXe siècle", comps:CHAPITRE_3E.majeures.concat(CHAPITRE_3E.mineures)}];
-function evalCourante(){ var id = paramHash("eval") || SCN.ID_CH1; return id === "vide" ? {id:"vide", titre:"", mode:"strict", chap:null, niveau:null, competences:[], questions:[]} : SCN.evalParId(id); }
+function evalCourante(){ var id = paramHash("eval") || SCN.ID_CH1;
+  if(id === "vide") return {id:"vide", titre:"", mode:"strict", chap:null, niveau:null, competences:[], questions:[]};
+  var e = id === "demo" ? SCN.DEMO : SCN.evalParId(id);
+  return paramHash("copie") ? Object.assign({}, e, {titre:e.titre + " (copie)"}) : e; }
 function chapDe(e){ return e.chap ? CHAP_EDITEUR.filter(function(c){ return e.chap.indexOf("Poésie et peinture") >= 0; })[0] : null; }
 // ce qu'il reste à compléter avant de pouvoir la lancer
 function manquesDe(e){
@@ -30,6 +33,7 @@ function CarteEvaluations(){
   function trie(l){ return l.slice().sort(function(a, b){ var x = cleTri(a), y = cleTri(b); return tri === "date" ? y.localeCompare(x) : x.localeCompare(y); }); }
   function ligne(e, cl){
     var manques = manquesDe(e), pret = !manques.length, passees = e.copie ? [] : SCN.passees(e.id, k), comps = competencesDe(e);
+    var obj = "&eval=" + encodeURIComponent(e.copie ? e.de : e.id) + (e.copie ? "&copie=1" : "");   // (changement 4) l'évaluation cliquée
     return h("div", {key:e.id + (cl || ""), className:"eval-row", "data-eval":e.id},
       h("div", null,
         h("div", {className:"eval-titre"}, e.titre),
@@ -43,11 +47,11 @@ function CarteEvaluations(){
              : h("div", {className:"eval-etat manque"}, "⚠️ À compléter avant de la lancer : " + listeFr(manques)),
         h("div", {className:"eval-passee"}, passees.length ? passees.map(function(x){ return "passée par " + x.classe + " le " + x.date; }).join(" · ") : "pas encore passée")),
       h("div", {className:"eval-actions"},
-        h("button", {className:"btn btn-sm " + (pret ? "btn-ghost" : "btn-primary"), "data-va":"x627-3-editeur", title:pret ? "Ouvre l'éditeur sur « " + e.titre + " » : énoncés, choix, temps, compétences, ce que chaque question vérifie. Une évaluation déjà passée garde ses notes." : "Ouvre l'éditeur sur « " + e.titre + " », pour compléter ce qui manque avant de pouvoir la lancer : " + listeFr(manques) + "."}, pret ? "✏️ Modifier" : "✏️ Compléter"),
-        h("button", {className:"btn btn-sm btn-ghost", "data-va":"c-feuille", title:"Montre la feuille des énoncés seuls de « " + e.titre + " », avec les points, à imprimer pour la classe."}, "🖨️ Imprimer"),
+        h("button", {className:"btn btn-sm " + (pret ? "btn-ghost" : "btn-primary"), "data-va":"x627-3-editeur" + obj, title:pret ? "Ouvre l'éditeur sur « " + e.titre + " » : énoncés, choix, temps, compétences, ce que chaque question vérifie. Une évaluation déjà passée garde ses notes." : "Ouvre l'éditeur sur « " + e.titre + " », pour compléter ce qui manque avant de pouvoir la lancer : " + listeFr(manques) + "."}, pret ? "✏️ Modifier" : "✏️ Compléter"),
+        h("button", {className:"btn btn-sm btn-ghost", "data-va":"c-feuille" + obj, title:"Montre la feuille des énoncés seuls de « " + e.titre + " », avec les points, à imprimer pour la classe."}, "🖨️ Imprimer"),
         h("button", {className:"btn btn-sm btn-ghost", "data-local":"1", title:"Fait une copie de « " + e.titre + " », modifiable et supprimable, en tête de sa liste : elle garde tout ce qui est rempli.",
-          onClick:function(){ setCopies([Object.assign({}, e, {id:"copie-" + e.id + "-" + copies.length, titre:e.titre + " (copie)", cree:MOM().date, copie:true})].concat(copies)); }}, "📋 Dupliquer"),
-        h("button", {className:"btn btn-sm btn-rouge", "data-va":"c-eval-corbeille", title:"Met « " + e.titre + " » à la corbeille, après une confirmation : gardée un an, restaurable depuis 💾 Sauvegarde."}, "🗑️")));
+          onClick:function(){ setCopies([Object.assign({}, e, {id:"copie-" + e.id + "-" + copies.length, de:e.copie ? e.de : e.id, titre:e.titre + " (copie)", cree:MOM().date, copie:true})].concat(copies)); }}, "📋 Dupliquer"),
+        h("button", {className:"btn btn-sm btn-rouge", "data-va":"c-eval-corbeille" + obj, title:"Met « " + e.titre + " » à la corbeille, après une confirmation : gardée un an, restaurable depuis 💾 Sauvegarde."}, "🗑️")));
   }
   var parNiveau = {}; NIVEAUX_EV.concat(["Sans chapitre"]).forEach(function(n){ parNiveau[n] = []; });
   liste.forEach(function(e){ parNiveau[e.chap ? (e.niveau || chapDe(e).niveau) : "Sans chapitre"].push(e); });
@@ -81,8 +85,8 @@ function CarteEvaluations(){
         h("div", {className:"eval-meta"}, h("span", null, "📚 tous les niveaux"), h("span", null, "🎯 Tout ou rien"), h("span", null, demo.questions.length + " questions"), h("span", null, d.min + " minutes")),
         h("div", {className:"eval-etat ok"}, "✅ Prête à lancer")),
       h("div", {className:"eval-actions"},
-        h("button", {className:"btn btn-sm btn-ghost", "data-va":"c-feuille", title:"Montre la feuille des énoncés de la démo, à imprimer."}, "🖨️ Imprimer"),
-        h("button", {className:"btn btn-sm btn-ghost", "data-local":"1", title:"Fait de la démo une évaluation ordinaire, modifiable et supprimable : la démo elle-même ne change jamais.", onClick:function(){ setCopies([Object.assign({}, demo, {id:"copie-demo-" + copies.length, titre:demo.titre + " (copie)", demo:false, cree:MOM().date, copie:true})].concat(copies)); }}, "📋 Dupliquer"))),
+        h("button", {className:"btn btn-sm btn-ghost", "data-va":"c-feuille&eval=demo", title:"Montre la feuille des énoncés de la démo, à imprimer."}, "🖨️ Imprimer"),
+        h("button", {className:"btn btn-sm btn-ghost", "data-local":"1", title:"Fait de la démo une évaluation ordinaire, modifiable et supprimable : la démo elle-même ne change jamais.", onClick:function(){ setCopies([Object.assign({}, demo, {id:"copie-demo-" + copies.length, de:"demo", titre:demo.titre + " (copie)", demo:false, cree:MOM().date, copie:true})].concat(copies)); }}, "📋 Dupliquer"))),
     NIVEAUX_EV.map(groupe),
     parNiveau["Sans chapitre"].length > 0 && groupe("Sans chapitre"));
 }
@@ -91,7 +95,7 @@ function ScEvalCorbeille(){
   var e = evalCourante();
   return Fenetre(Evaluations(null), "🗑️ Mettre cette évaluation à la corbeille ?", e.titre + " · " + e.questions.length + " questions",
     h("p", null, "Elle part dans la corbeille du site, gardée un an, avec ses questions" + (SCN.passees(e.id, MO()).length ? " ; ses séances passées gardent leurs notes" : "") + "."),
-    [h("button", {key:1, className:"btn btn-ghost", "data-va":"c-evals", title:"Ne met rien à la corbeille."}, "Annuler"), h("button", {key:2, className:"btn btn-rouge", "data-va":"c-sauvegarde", title:"Met l'évaluation à la corbeille, restaurable un an depuis 💾 Sauvegarde → 🗑️ Corbeille."}, "🗑️ Mettre à la corbeille")], "c-evals");
+    [h("button", {key:1, className:"btn btn-ghost", "data-va":"c-evals", title:"Ne met rien à la corbeille."}, "Annuler"), h("button", {key:2, className:"btn btn-rouge", "data-va":"c-sauvegarde&jete=eval:" + e.id, title:"Met l'évaluation à la corbeille, restaurable un an depuis 💾 Sauvegarde → 🗑️ Corbeille."}, "🗑️ Mettre à la corbeille")], "c-evals");
 }
 
 /* ════════ L'éditeur : l'évaluation ouverte, et chaque geste la change ════════ */
@@ -120,7 +124,8 @@ function QuestionEditee(p){
           h("button", {className:"btn-mini btn-mini-supp", "data-local":"1", title:"Retire la question " + (i + 1) + " de l'évaluation.", onClick:function(){ p.retirer(i); }}, "🗑"))),
       !p.replie && h("div", {className:"preview-q-niveau-row"},
         h("span", {className:"ed-lbl"}, "Difficulté :"),
-        ["facile","standard","approfondi","expert"].map(function(nv){ return h("button", {key:nv, className:"niv-pastille niv-" + nv + (q.niveau === nv ? "" : " inactif"), "data-local":"1", "aria-pressed":q.niveau === nv, title:"Met la question " + (i + 1) + " en difficulté « " + NIV[nv].label + " ».", onClick:function(){ maj(i, function(qq){ qq.niveau = nv; }); }}, NIV[nv].label); }))),
+        ["facile","standard","approfondi","expert"].map(function(nv){ if(q.niveau === nv) return h("span", {key:nv, className:"niv-pastille niv-" + nv, title:"La difficulté de la question " + (i + 1) + " : « " + NIV[nv].label + " »."}, NIV[nv].label);   // la difficulté choisie : un état, pas un geste
+          return h("button", {key:nv, className:"niv-pastille niv-" + nv + (q.niveau === nv ? "" : " inactif"), "data-local":"1", "aria-pressed":q.niveau === nv, title:"Met la question " + (i + 1) + " en difficulté « " + NIV[nv].label + " ».", onClick:function(){ maj(i, function(qq){ qq.niveau = nv; }); }}, NIV[nv].label); }))),
     !p.replie && h(F, null,
       h("textarea", {className:"preview-q-enonce-input", value:q.enonce, placeholder:"Énoncé de la question (autonome : l'élève doit pouvoir répondre sans voir les choix)", title:"L'énoncé de la question " + (i + 1) + ", tel que l'élève le lit.", onChange:function(e){ var v = e.target.value; maj(i, function(qq){ qq.enonce = v; }); }}),
       h("div", {className:"ed-verif" + (q.verifie ? "" : " manque")},
@@ -161,14 +166,15 @@ function EditeurQCM(){
   var ch = chapDe(ev), manques = manquesDe(ev), bonus = ev.questions.filter(function(q){ return q.bonus; }).length, total = ev.questions.length - bonus;
   var comps = competencesDe(ev);
   useEffect(function(){
-    function echap(e){ if(e.key === "Escape" && !window.SOMMAIRE_OUVERT){ e.stopImmediatePropagation(); if(modifs > 0) setGarde(true); else versScene("c-evals"); } }
+    function echap(e){ if(e.key === "Escape" && !window.SOMMAIRE_OUVERT){ e.stopImmediatePropagation(); if(modifs > 0) setGarde(true); else fermerVers("c-evals"); } }
     document.addEventListener("keydown", echap, true); return function(){ document.removeEventListener("keydown", echap, true); };
   });
   return h("div", {className:"modal", style:{maxWidth:"980px"}},
-    h("button", {className:"modal-close", "data-local":"1", title:modifs ? "Ferme l'éditeur : une garde te demande d'abord si tu perds tes " + modifs + " modifications." : "Ferme l'éditeur et revient à la liste des évaluations.", onClick:function(){ if(modifs > 0) setGarde(true); else versScene("c-evals"); }}, "✕"),
+    h("button", {className:"modal-close", "data-local":"1", title:modifs ? "Ferme l'éditeur : une garde te demande d'abord si tu perds tes " + modifs + " modifications." : "Ferme l'éditeur et revient à la liste des évaluations.", onClick:function(){ if(modifs > 0) setGarde(true); else fermerVers("c-evals"); }}, "✕"),
     h("h2", null, manques.length ? "✏️ Compléter l'évaluation" : "✏️ Modifier l'évaluation"),
+    ev.titre && h("div", {className:"ed-titre-ouvert"}, "📝 " + ev.titre),
     h("div", {className:"field"}, h("label", null, "JSON de l'évaluation"),
-      h("textarea", {className:"json", value:jsonDe(ev), readOnly:true, placeholder:JSON_INDICATION, title:"Le JSON de l'évaluation ouverte, tel que l'éditeur le tient. « 🔍 Vérifier le format » le relit.", style:{minHeight:"110px"}})),
+      h(ChampJson, {ev:ev, placeholder:JSON_INDICATION, title:"Le JSON de l'évaluation ouverte, tel que l'éditeur le tient. « 🔍 Vérifier le format » le relit.", style:{minHeight:"110px"}})),
     h("div", {className:"row"}, h("button", {className:"btn btn-ghost", "data-local":"1", title:"Relit le JSON de l'évaluation et dit ce qu'il reste à compléter.", onClick:function(){ setVerif(manques.length ? "🔍 Le format est bon ; il reste à compléter : " + listeFr(manques) + "." : "🔍 Le format est bon : rien ne manque."); }}, "🔍 Vérifier le format")),
     verif && h("div", {className:"fen-note"}, verif),
     h("div", {className:"preview"},
@@ -183,7 +189,7 @@ function EditeurQCM(){
         h("div", {style:{fontWeight:900, fontSize:".9rem", color:"#8B6914", marginBottom:".4rem"}}, "📊 Mode de scoring", InfoI("Tout ou rien : 1 point si la réponse est exacte. Partiel : une part du point par bonne case, autant de retiré par mauvaise, plancher 0.")),
         h("div", {style:{display:"flex", gap:".5rem", flexWrap:"wrap"}},
           ["strict", "partiel"].map(function(md){ var on = (ev.mode || "strict") === md;
-            return h("button", {key:md, className:"mode-choix" + (on ? " on" : ""), "data-local":"1", "aria-pressed":on, title:on ? "Le mode de l'évaluation." : md === "partiel" ? "Passe l'évaluation en mode partiel." : "Passe l'évaluation en mode tout ou rien.", onClick:function(){ if(!on) changer(function(x){ x.mode = md; }); }},
+            return h(on ? "div" : "button", {key:md, className:"mode-choix" + (on ? " on" : ""), "data-local":"1", "aria-pressed":on, title:on ? "Le mode de l'évaluation." : md === "partiel" ? "Passe l'évaluation en mode partiel." : "Passe l'évaluation en mode tout ou rien.", onClick:function(){ if(!on) changer(function(x){ x.mode = md; }); }},
               h("span", {className:"rond" + (on ? " on" : "")}), h("span", null, md === "strict" ? "🎯 Tout ou rien" : "✨ Partiel", h("div", {className:"sous"}, md === "strict" ? "1 point si la réponse est exacte ; sinon 0" : "Une part du point par bonne case ; autant de retiré par mauvaise (plancher 0)"))); }))),
       h("div", {className:"ed-comp-box"},
         h("div", {className:"tt"}, "🧩 Les compétences de cette évaluation — chacune porte sur au moins 3 questions", InfoI("Chaque compétence doit porter sur au moins 3 questions, pour que les quatre niveaux de maîtrise soient possibles.")),
@@ -204,7 +210,7 @@ function EditeurQCM(){
       h("div", {className:"alerte-boite"}, h("div", {className:"alerte-texte"}, "Fermer l'éditeur sans enregistrer ? Tes " + modifs + " modifications seront perdues."),
         h("div", {className:"alerte-pied"},
           h("button", {className:"alerte-non", "data-local":"1", title:"Revient à l'éditeur, avec tes modifications.", onClick:function(){ setGarde(false); }}, "Continuer à modifier"),
-          h("button", {className:"alerte-ok", "data-local":"1", title:"Ferme l'éditeur : les modifications sont perdues.", onClick:function(){ versScene("c-evals"); }}, "Fermer sans enregistrer")))));
+          h("button", {className:"alerte-ok", "data-local":"1", title:"Ferme l'éditeur : les modifications sont perdues.", onClick:function(){ fermerVers("c-evals"); }}, "Fermer sans enregistrer")))));
 }
 function Editeur(){ return Evaluations(h("div", {className:"modal-back"}, h(EditeurQCM, {key:paramHash("eval") || "ch1"}))); }
 
@@ -225,4 +231,10 @@ function Feuille(){
           return h("div", {key:i, className:"feuille-q-seul"}, h("span", {className:"n"}, "Question " + (i+1)), h("span", {className:"pt"}, q.bonus || /^BONUS/.test(q.enonce) ? "bonus" : "1 pt"), h("div", {className:"e"}, q.enonce));
         }))),
     h("div", {className:"feuille-legende"}, "A4, à l'échelle : toute l'évaluation tient sur cette page."));
+}
+
+// le champ « JSON de l'évaluation » : le JSON de l'évaluation ouverte ; il se tape (un collage, une retouche), et « 🔍 Vérifier le format » le relit
+function ChampJson(p){
+  var s = useState(null), texte = s[0], set = s[1];
+  return h("textarea", {className:"json", value:texte == null ? jsonDe(p.ev) : texte, placeholder:p.placeholder, title:p.title, style:p.style, onChange:function(e){ set(e.target.value); }});
 }

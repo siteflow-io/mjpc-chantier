@@ -5,7 +5,10 @@
 
 /* ── Le moment de la scène ── */
 function MO(){ return window.MOMENT_COURANT || "PREP"; }
-function MOM(){ return SCN.moment(MO()) || {}; }
+function MOM(){ var m = SCN.moment(MO()) || {}, pt = paramHash("parti");
+  // (complément 3, changement 4) le départ montré est celui de l'élève cliqué (« &parti= »)
+  if(pt){ var o = {}; o[pt] = m.partis ? Object.values(m.partis)[0] : hhmm(m.heure); m = Object.assign({}, m, {partis:o}); }
+  return m; }
 function paramHash(n){ var m = new RegExp("[#&]" + n + "=([^&]+)").exec(location.hash || ""); return m ? decodeURIComponent(m[1]) : null; }
 // une date du scénario, écrite courte (« 08/10 ») ; une heure (« 10:23 »)
 function jjmm(d){ return String(d || "").slice(0, 5); }
@@ -18,7 +21,7 @@ PAIRES_AVANT = SCN.PAIRES_AVANT; PAIRES = SCN.PAIRES; CO = SCN.CO; DIT_B = SCN.D
 RF = {}; SCN.presents("S08:Q1:R").forEach(function(p){ RF[p] = ""; });
 function nomDe(p){ return SCN.nomDe(p); }
 // l'élision devant un nom (changement 8) : « de Inès » s'écrit « d'Inès », « que Émile », « qu'Émile »
-function voyelle(n){ return /^[AEIOUYÉÈÊÀÂÎÔÛaeiouyéèêàâîôû]/.test(String(n || "")); }
+function voyelle(n){ n = String(n || ""); return /^[AEIOUYÉÈÊÀÂÎÔÛaeiouyéèêàâîôû]/.test(n) || /^[Hh]/.test(n) && !/^(Hugo|haut|hors|huit|hasard|héros|hâte)/i.test(n); }
 function deNom(n){ return (voyelle(n) ? "d'" : "de ") + n; }
 function queNom(n){ return (voyelle(n) ? "qu'" : "que ") + n; }
 

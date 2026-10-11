@@ -237,7 +237,9 @@ var SCN = (function(){
     "c-rattrapage":"RATT:avant", "x620-1-mode-test-ouverture":"TEST:avant", "x620-2-mode-test-reflexion":"TEST:Q3:R", "x620-3-mode-test-en-grand":"TEST:Q3:B1", "t-annexe":"S3E:Q3:B1"
   };
   // l'appareil de chaque scène : sa vue, sauf MJPC et le mode test, qui sont les leurs
-  S.appareilDe = function(id, vue){ return /^m-/.test(id) ? "mjpc" : /^x620/.test(id) ? "test" : vue; };
+  // l'appareil d'une scène : celui de sa vue ; le mode test et la console MJPC sont sur l'ordinateur de Paul, comme la console
+  // l'accueil de l'app (« 🎓 Mode élève » ou « Accès professeur ») s'ouvre sur l'ordinateur de Paul : celui de la console
+  S.appareilDe = function(id, vue){ return id === "c-accueil" ? "console" : vue; };
 
   /* ── L'ordre des moments d'une séance, pour savoir ce qui est déjà arrivé ── */
   var ORDRE_S08 = ["S08:avant", "S08:appel", "S08:entree", "S08:pret", "S08:Q1:R", "S08:Q1:P1", "S08:Q1:T1", "S08:Q1:P2", "S08:Q1:T2", "S08:Q1:B2", "S08:Q1:C",

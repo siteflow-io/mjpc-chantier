@@ -128,7 +128,9 @@ function ImportFichier(p){
   return h("div", {className: "eli-bloc", id: "eli-bloc"},
     h("div", {className: "eli-titre"}, "Importer la liste d’une classe"),
     h("div", {className: "eli-sous"}, "Le fichier du logiciel de vie scolaire, tel quel — ou le tableau collé depuis Excel. Rien n’est envoyé ailleurs : le fichier est lu dans ce navigateur."),
-    h("div", {className: "eli-zone", id: "eli-zone", tabIndex: 0, title: "Dépose ou choisis le fichier de la classe : il est lu ici, dans ton navigateur. Rien n’est écrit tant que tu n’as pas validé l’aperçu."},
+    h("div", {className: "eli-zone", id: "eli-zone", tabIndex: 0, title: "Dépose ou choisis le fichier de la classe : il est lu ici, dans ton navigateur. Rien n’est écrit tant que tu n’as pas validé l’aperçu.",
+      onClick: function(e){ var f = e.currentTarget.querySelector("input[type=file]"); if(f && e.target !== f) f.click(); }},
+      h("input", {type: "file", accept: ".xlsx,.xls,.csv", style: {display: "none"}, "data-local": "1"}),
       h("div", {className: "eli-zone-t"}, "Dépose ici le fichier .xlsx de la classe"),
       h("div", {className: "eli-zone-s"}, "ou clique pour le choisir · ou colle le tableau (Ctrl + V) n’importe où sur cette page")),
     h("div", {id: "eli-apercu"}));

@@ -262,6 +262,9 @@ function rendre(){
   // (complément 3) le moment de la scène : celui que le scénario lui donne, ou celui où un geste y a mené (« &m= »)
   window.MOMENT_COURANT = paramHash("m") || sc.moment || SCN.MOMENT_DE[sc.id] || null;
   tempsRemettre();
+  // l'évaluation jouée au moment de la scène : la démo pour la démo et le mode test (src/scenario.js, evalDu)
+  if(typeof window.EV_BASE === "undefined") window.EV_BASE = EV;
+  EV = SCN.evalDu(window.MOMENT_COURANT) === SCN.DEMO && typeof DEMO !== "undefined" ? DEMO : window.EV_BASE;
   ReactDOM.unmountComponentAtNode(racine);
   ReactDOM.render(sc.render(), racine);
   poserGestes(); surveiller();

@@ -13,7 +13,7 @@ JS = ["scenario.js", "maquette.js", "maquette2.js", "ev3e.js", "maquette610.js",
 EXTRA_JS = json.load(open(os.path.join(S, "ordre_js.json"))) if os.path.exists(os.path.join(S, "ordre_js.json")) else []
 JS += EXTRA_JS + ["gestes.js", "etape2.js", "etape3.js", "etape4.js", "mjpc.js", "complement1.js", "complement2.js",
        # (complément 3) le scénario dans les écrans : chaque chiffre au moment de la scène
-       "c3-base.js", "c3-pilot.js", "c3-corr.js", "c3-appareils.js", "c3-soir.js", "c3-evals.js", "c3-scenes.js", "c3-textes.js", "socle.js"]
+       "c3-base.js", "c3-pilot.js", "c3-corr.js", "c3-appareils.js", "c3-soir.js", "c3-evals.js", "c3-scenes.js", "c3-objets.js", "c3-tablettes.js", "c3-telephone.js", "c3-x610.js", "c3-textes.js", "c3-gestes.js", "socle.js"]
 
 def js(nom):
     t = lire(S, nom)

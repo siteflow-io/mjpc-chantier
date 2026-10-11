@@ -43,7 +43,10 @@ if(SORTIE && fs.existsSync(SORTIE)) fs.unlinkSync(SORTIE);   // (garde, défaut 
     window.__INTERDITS = [];
     const note = n => function(){ window.__INTERDITS.push(n); };
     window.alert = note("alert"); window.confirm = note("confirm"); window.prompt = note("prompt");
-    window.fetch = note("fetch"); window.open = note("window.open"); window.print = note("print");
+    // (complément 3) une scène de la maquette ouverte dans une autre fenêtre (le tableau, le PDF, le téléphone) n'est ni une boîte ni un réseau
+    window.fetch = note("fetch"); window.print = note("print");
+    window.__OUVERTS = [];
+    window.open = function(u){ if(typeof u === "string" && u.indexOf(location.pathname + "#scene=") === 0){ window.__OUVERTS.push(u); return null; } window.__INTERDITS.push("window.open"); };
     window.XMLHttpRequest = function(){ window.__INTERDITS.push("XMLHttpRequest"); };
     window.WebSocket = function(){ window.__INTERDITS.push("WebSocket"); };
     ["localStorage", "sessionStorage", "indexedDB"].forEach(k => { try { Object.defineProperty(window, k, {get(){ window.__INTERDITS.push(k); return undefined; }}); } catch(e){} });
@@ -170,7 +173,8 @@ if(SORTIE && fs.existsSync(SORTIE)) fs.unlinkSync(SORTIE);   // (garde, défaut 
           // 5. (garde ajoutée à l'étape 2, défauts 7, 10, 13) chaque bouton actif déclare son geste
           verif(etat.sansGeste.length === 0, "5. " + sc.id + " : chaque bouton déclare son geste", etat.sansGeste.join(" · "));
           // 5. chaque bouton qui mène ailleurs mène à une scène qui existe
-          for(const c of [...new Set(etat.cibles)]) verif(scenes.some(x => x.id === c), "5. " + sc.id + " : la scène « " + c + " » où mène un bouton existe");
+          // (complément 3) une destination porte son objet après la scène (« c-fiche&eleve=Lou ») : la scène est ce qui précède le premier « & »
+          for(const c of [...new Set(etat.cibles)]) verif(scenes.some(x => x.id === c.split("&")[0]), "5. " + sc.id + " : la scène « " + c + " » où mène un bouton existe");
           // 9. le commentaire, mot pour mot : celui que com632.js écrit pour la même entrée
           for(const c of etat.commentaires) verif(C.normEsp(c.texte) === C.normEsp(C.texteCom632(JSON.parse(c.entree))), "9. " + sc.id + " : le commentaire est celui de com632.js, mot pour mot", "« " + C.normEsp(c.texte).slice(0, 80) + "… »");
           // 9. le PDF, mot pour mot
@@ -185,7 +189,7 @@ if(SORTIE && fs.existsSync(SORTIE)) fs.unlinkSync(SORTIE);   // (garde, défaut 
       const q = await ouvrir(T.w, H, sc.id, "&cap=1");
       const n = await q.page.evaluate(C.marquerBoutons);
       const aNeuf = async () => {
-        await q.page.evaluate(id => { window.__INTERDITS = []; window.SOMMAIRE_OUVERT = false; window.SCENE_PRETE = null;
+        await q.page.evaluate(id => { window.__INTERDITS = []; window.__OUVERTS = []; window.SOMMAIRE_OUVERT = false; window.SCENE_PRETE = null;
           var cible = "#scene=" + id + "&cap=1"; if(location.hash !== cible) location.hash = cible; else rendre(); }, sc.id);
         await q.page.waitForFunction(i => window.SCENE_PRETE === i, sc.id, {timeout: 10000});
         await q.page.evaluate(C.marquerBoutons);
@@ -200,7 +204,8 @@ if(SORTIE && fs.existsSync(SORTIE)) fs.unlinkSync(SORTIE);   // (garde, défaut 
         try { await loc.click({timeout: 2000}); } catch(e){ verif(false, "5. " + sc.id + " : « " + libelle + " » ne se clique pas", e.message.split("\n")[0]); continue; }
         await q.page.waitForTimeout(40);
         const apres = await q.page.evaluate(C.empreinte);
-        verif(apres !== avant, "5. " + sc.id + " : « " + libelle + " » fait quelque chose");
+        const ouverts = await q.page.evaluate(() => (window.__OUVERTS || []).length);   // (complément 3) une autre fenêtre de la maquette ouverte : un effet
+        verif(apres !== avant || ouverts > 0, "5. " + sc.id + " : « " + libelle + " » fait quelque chose");
         verif(q.err.length === 0, "5. " + sc.id + " : « " + libelle + " » sans erreur de page", q.err.join(" | "));
         const interdits = await q.page.evaluate(() => window.__INTERDITS);
         verif(interdits.length === 0, "6. " + sc.id + " : « " + libelle + " » sans boîte ni stockage", interdits.join(" "));

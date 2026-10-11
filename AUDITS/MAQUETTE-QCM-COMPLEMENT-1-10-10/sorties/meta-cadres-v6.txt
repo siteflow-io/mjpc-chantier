@@ -1,0 +1,15 @@
+166 scènes (c-evals, c-eval-corbeille, c-collage) : INFOBULLE | ⚙ Scènes de la maquette : le sommaire de toutes les scènes (simulation)
+1 scènes (x627-3-editeur) : TEXTE | Les deux relatives, coordonnées par « et », complètent « La lettre », dans la proposition principale.
+12 scènes (c-lancer, c-echange-refuse, c-appel) : TEXTE | 📱 Binômes proposés — d'après les exclusions, puis le QCM précédent
+3 scènes (b-reponse, b-recopie, b-correction) : TEXTE | 👥 Classe (25)
+11 scènes (x610-1-b-julien, x610-2-b-michel, x610-3-a-correction) : TEXTE | Je pose la question sur la Proposition Principale
+1 scènes (c-mode-emploi) : TEXTE | Deux élèves par tablette, une moitié chacun. Tu lances depuis « 🎯 Pilotage classe » : la classe, l'évaluation, la durée comptée, les binômes proposés (d'abord 
+1 scènes (x610-6-coeval-laquelle) : TEXTE | Quand est-ce qu'une Proposition Principale se coupe en…
+1 scènes (x610-feuille) : TEXTE | A · Je pose la question sur la Proposition Principale
+1 scènes (x610-feuille) : INFOBULLE | Clique si la feuille de Michel dit « Je pose la question sur la Proposition Principale ».
+1 scènes (x610-9-telephone-alerte) : TEXTE | Je pose la question sur la Proposition…
+2 scènes (c-reglages-prompt, c-reglages-prompt-modifier) : TEXTE | Tu vas m'aider à écrire une évaluation QCM pour ma classe. Elle se passe dans mon application, en classe, deux élèves par tablette. Voici comment elle se déroul
+1 scènes (m-fiche-eleve) : TEXTE | Proposer des dictées aménagées (à trous, avec un choix parmi plusieurs propositions…)
+1 scènes (m-fiche-eleve) : INFOBULLE | Proposer des dictées aménagées (à trous, avec un choix parmi plusieurs propositions…)
+1 scènes (c-rattrapage) : INFOBULLE | Ouvre l'appel du rattrapage : seuls les élèves pas encore notés sont proposés.
+1 scènes (x620-1-mode-test-ouverture) : TEXTE | 📱 Binômes proposés — dans l'ordre de la liste : la classe de test n'a pas de QCM précédent

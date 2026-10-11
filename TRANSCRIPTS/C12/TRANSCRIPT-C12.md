@@ -19626,3 +19626,154 @@ Je ne sais pas combien de temps il prendra. Le premier passage a pris trois heur
 696. **Quand il a fini, dis-le-moi** : je fais l'audit final du complément.
 
 10/10/2026 14:00 MEMO
+
+---
+
+## TOUR 640 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (10/10, 19:11) Livré
+
+---
+
+## TOUR 640 — Claude (conscience n°12)
+
+Audit de la branche `maquette-qcm` (commit `5d1c204d`) : périmètre (rien hors du dossier), v1 à v5 intactes, md5 de la v6 vérifié ; banc de l'exécutant rejoué (18 245 vérifications, 0 échec) ; relevés indépendants sur les 166 scènes, cadres compris : méta, soulignés, boutons fermés ; MJPC comparé à `index.html` et à `taxonomie_atelier.json` ; limites relues ; une cinquantaine de retraits relus ; captures 7, 45, 75, 117, 142, 150, 151, 153, 155, 157, 161 regardées. Un défaut trouvé : les 13 boutons grisés de MJPC ne se voient pas grisés. Rapport `AUDITS/MAQUETTE-QCM-COMPLEMENT-1-10-10/`.
+
+Réponse mot pour mot :
+
+697. **Audit final du complément fait : ça ne va pas encore, pour un seul défaut.** J'ai vérifié moi-même, sans me fier à son banc, que les six défauts sont corrigés :
+- MJPC part maintenant du vrai écran : l'import, ↻ et ✕, la fiche de l'élève avec ses aménagements, l'arbre des notions, « Version 1.4.0 · 7 domaines · 210 notions » ;
+- plus aucun renvoi au cadrage, même à l'intérieur des cadres ;
+- le PDF n'a plus mes marques ;
+- « 👀 Écoute le prof… » est revenue ;
+- le bloc « Ton estimation » dit « nettement », comme le bilan général.
+
+Son banc, que j'ai rejoué moi-même, passe : 18 245 vérifications, zéro échec.
+
+698. **Les nouvelles gardes ont servi.** Elles ont fait trouver à l'exécutant une centaine d'infobulles et des éléments de l'app d'aujourd'hui perdus sans raison, et il les a rétablis. Les 107 éléments qu'il a retirés citent chacun un point du cadrage. J'en ai relu une cinquantaine : tous les retraits sont justifiés.
+
+699. **Le défaut : dans MJPC, les 12 entrées du menu qui ne s'ouvrent pas, et « Code professeur », ne se voient pas grisées.** Elles sont bien fermées, mais elles ont la même couleur que « 📚 Taxonomie », qui marche, et la même main au survol. Sur les captures, tu ne peux pas voir lesquelles fonctionnent : c'est le bouton mort qui passe pour vrai. Son banc les croyait grises parce qu'elles sont fermées, sans regarder leur aspect.
+
+700. **Ma proposition : un complément 2, très court, d'une traite.** Ces 13 boutons prennent l'aspect qu'index.html donne déjà à un bouton fermé : estompé, avec la souris barrée. Leur raison reste lisible au survol. Le banc reçoit une garde : un bouton fermé de ta console doit se voir fermé. Puis la v7, les captures et le livret. À ton mot, je l'écris et tu relances l'exécutant, dans la même session.
+
+701. **Ce que disent maintenant les limites de longueur, pour tes évaluations** : avec 4 choix, jusqu'à 155 caractères par choix pour un énoncé de 120 caractères ou moins ; avec 5 choix, 75 ; avec 6 choix, 70. Au-delà de 120 caractères d'énoncé, 5 ou 6 choix ne tiennent qu'à 25 caractères chacun. Ta question 3 dépasse la limite (137 caractères pour 70), comme annoncé (693).
+
+702. **Le rapport d'audit** : https://github.com/siteflow-io/mjpc-chantier/blob/main/AUDITS/MAQUETTE-QCM-COMPLEMENT-1-10-10/README.md
+
+10/10/2026 19:23 MEMO
+
+---
+
+## TOUR 641 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (11/10, 07:54) Ok
+
+---
+
+## TOUR 641 — Claude (conscience n°12)
+
+Vérifié l'état du sas (`main` à `09ae7522`, `maquette-qcm` toujours à `5d1c204d`) et la forme d'un bouton fermé dans `index.html` (l. 860, `.eli-btn:disabled{opacity:.45;cursor:not-allowed}`, md5 de la production inchangé). Écrit `MANDATS/COMPLEMENT-MAQUETTE-QCM-COMPLETE-2.md`.
+
+Réponse mot pour mot :
+
+703. **Le complément 2 est au sas** : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/COMPLEMENT-MAQUETTE-QCM-COMPLETE-2.md
+
+704. **Ce qu'il fait, et rien d'autre.**
+- Les 13 boutons fermés de MJPC prennent l'aspect qu'index.html donne déjà à un bouton fermé : estompés, avec la souris barrée.
+- Leur raison reste lisible au survol.
+- Le banc reçoit une garde de plus : sur ta console, ton téléphone et dans MJPC, un bouton fermé doit se voir fermé. L'exécutant la joue d'abord sur la v6, où elle doit trouver les 13 boutons.
+- Puis il livre la v7, les captures et le livret.
+
+705. **Tu peux relancer l'exécutant maintenant**, dans la même session que les deux premières fois si elle est encore ouverte, sinon dans une nouvelle session cloud sur siteflow-io/mjpc-chantier. Le message à coller :
+
+```
+Tu es l'exécutant du complément 2 de la maquette complète du QCM de MJPC. Lis en entier MANDATS/COMPLEMENT-MAQUETTE-QCM-COMPLETE-2.md sur la branche main de ce dépôt, applique-le à la lettre, et fais tout le complément d'une traite sur la branche maquette-qcm, sans t'arrêter avant la fin de l'étape B.
+```
+
+706. **Quand il a fini, dis-le-moi** : je fais l'audit final du complément 2. Si ça va, je te donne le livret de la v7 à valider.
+
+11/10/2026 07:56 MEMO
+
+---
+
+## TOUR 642 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (11/10, 07:57) montre moiu une capture du défaut
+
+---
+
+## TOUR 642 — Claude (conscience n°12)
+
+Capture de la scène `m-classe-exclusions` de la v6 (md5 `60778845…`, relu sur la branche) dans Chromium ; à côté, la même scène où les 13 boutons fermés reçoivent l'aspect fermé d'`index.html` (l. 860), pour l'aperçu. Pièce jointe : `pieces/T642-defaut-boutons-fermes-mjpc.png`.
+
+Réponse mot pour mot :
+
+707. **La capture est jointe** (defaut-boutons-fermes-mjpc.png). À gauche, la v6 telle que l'exécutant l'a livrée. Dans le menu, seules « 👥 Élèves & codes » et « 📚 Taxonomie » s'ouvrent, et dans l'encart de la clé, tout s'ouvre sauf « Code professeur ». Les 12 autres entrées et « Code professeur » sont fermées, et rien ne le montre.
+
+708. **À droite, un aperçu de ce que le complément 2 doit donner**, fait par moi sur la même scène pour te le montrer : l'aspect fermé qu'index.html a déjà, estompé. Ce n'est pas la livraison : c'est l'exécutant qui la fera, avec sa garde.
+
+709. **Rien ne change pour la relance** : le message du point 705 vaut toujours. La capture est aussi au sas : https://github.com/siteflow-io/mjpc-chantier/blob/main/AUDITS/MAQUETTE-QCM-COMPLEMENT-1-10-10/captures/defaut-boutons-fermes-mjpc.png
+
+11/10/2026 07:59 MEMO
+
+---
+
+## TOUR 643 — Paul
+
+Texte de Paul, mot pour mot, avec deux captures (`pieces/T643-panneau-prof-1.png`, `pieces/T643-panneau-prof-2.png`) :
+
+> (11/10, 08:03) d'accord. au passage, elle peut régler aussi une dette qu'on traine depuis longtemps (vérifier la dette et sa registration bien sûr, avant de mandater quoique ce soit). la largeur du panneau (qui doit prendre la taille de l'écran en fait, au lieu que je doive scroller dans un encart minuscule), et le décalage des boutons (regarde les captures).
+
+---
+
+## TOUR 643 — Claude (conscience n°12)
+
+Registre de la production relu : n°12 · 87 et 88 inscrites le 01/10 (tour 321), ouvertes, jamais mandatées. Causes mesurées dans `index.html` (l. 223, 225 ; l. 609, 614, 5529), la ligne d'élève refaite avec le CSS de la production. Complément 2 complété ; registre mis à jour et poussé en production (commit `3bcb67b`). Aucune réponse envoyée à ce tour : le travail a continué au tour 644, qui répond aux deux messages.
+
+---
+
+## TOUR 644 — Paul
+
+Texte de Paul, mot pour mot, avec une capture (`pieces/T644-emploi-du-temps.png`) :
+
+> (11/10, 08:08) Et ça aussi: le bouton répété d'export du json, ou alors les ranger par type, ou faire un sélecteur pour exporter soit un, soit quelques un, soit tous.
+
+---
+
+## TOUR 644 — Claude (conscience n°12)
+
+Registre relu : rien sur la rangée « Sortir le JSON ». Mesuré dans `index.html` : la rangée `.edt-actions` (l. 19808-19820, CSS l. 20024), `edtSortirJson` (l. 20792), `edtCopierPrompt` (l. 20765), les noms en clair des objets dans le code. Objets de l'emploi du temps relus au hub en lecture seule (six objets, longueurs des JSON) et déposés au sas (`MANDATS/COMPLEMENT-MAQUETTE-QCM-COMPLETE-2-EDT/`). n°12 · 212 inscrite au registre de la production (commit `898746e`). Complément 2 complété (§4, garde 8). Branche de l'exécutant vérifiée : rien de poussé depuis `5d1c204d`.
+
+Réponse mot pour mot :
+
+710. **Les deux dettes sont vérifiées.** Elles sont inscrites au registre depuis le 01/10 : n°12 · 87, le panneau trop étroit, et n°12 · 88, ↻ et ✕ hors du cadre (https://github.com/siteflow-io/monsieurjaipascompris/blob/main/docs/MJPC6-DETTES.md, l. 2897 et 2899). Elles sont ouvertes, et aucun mandat ne les a reprises.
+
+711. **Les causes, mesurées dans index.html.**
+- 87 : le panneau est borné à 1 100 px de large, avec 30 px de marge autour.
+- 88 : la ligne d'élève est une grille de 4 colonnes. Depuis l'ajout du ◆ des aménagements, elle a 5 éléments : ↻ et ✕ passent à la ligne, dans la colonne étroite du numéro, et débordent à gauche. J'ai refait ta capture au pixel près avec le CSS du site.
+
+712. **La rangée de l'emploi du temps n'était pas au registre** : je l'ai inscrite (n°12 · 212). Mesuré : dix éléments sur une rangée qui ne passe jamais à la ligne. Parmi eux, six « Sortir le JSON », un par objet, nommés par leur nom de plomberie (creneaux, periodes, reglages…), et deux « Copier le prompt ».
+
+713. **Les trois entrent au complément 2, mis à jour au sas** : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/COMPLEMENT-MAQUETTE-QCM-COMPLETE-2.md. Dans la maquette :
+- le panneau couvre tout l'écran, bord à bord, et rien d'autre ne change ;
+- ↻ et ✕ sont dans chaque carte, à droite, sur la ligne du nom ;
+- l'emploi du temps devient un écran de la maquette, avec ses vraies données, que j'ai relues au hub.
+
+714. **Pour la rangée, mon tranchage entre tes trois voies, à valider sur la capture : trois groupes, l'un sous l'autre.**
+- « Ouvrir l'emploi du temps » et sa case, tels quels.
+- « ⤓ Sortir le JSON » : une case par objet, nommé en clair avec des noms qu'index.html emploie déjà (« Calendrier de l'année », « Créneaux horaires », « Découpage en périodes »…), « Tout cocher », et un seul bouton. Un objet coché, c'est le geste d'aujourd'hui ; plusieurs, un seul JSON qui range chacun sous son nom.
+- « 📋 Copier le prompt » : un bouton par voie, Calendrier et Grille.
+
+715. **Trouvé en passant** : la v6 avait déjà remis ↻ ✕ dans la carte, mais sans le dire. Désormais, chaque écart de la maquette avec le vrai MJPC est inscrit avec sa raison : c'est la liste que le code reprendra.
+
+716. **Le vrai site garde ces trois défauts jusqu'au code du QCM**, partie MJPC (677) : c'est là qu'index.html changera. Au registre, les trois dettes sont « en cours », avec ce chemin. Au code, il faudra aussi rejouer à pleine largeur toutes les sections du panneau, celles du déroulé comprises.
+
+717. **Pour la relance** : rien n'est encore poussé sur la branche de l'exécutant. S'il n'est pas relancé, le message du point 705 vaut tel quel, et il lira le complément à jour. S'il tourne déjà avec l'ancien complément, laisse-le finir : je ferai un complément 3 avec le reste.
+
+11/10/2026 08:15 MEMO

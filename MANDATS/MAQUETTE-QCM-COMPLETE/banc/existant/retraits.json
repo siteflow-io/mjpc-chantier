@@ -782,6 +782,62 @@
    "scenes": [
     "x620-1-mode-test-ouverture"
    ]
+  },
+  {
+   "ecran": "emploi-du-temps",
+   "type": "bouton",
+   "element": "⤓ Sortir le JSON — calendrier — injecté le jeudi 3 septembre",
+   "point": 714,
+   "citation": "Pour la rangée, mon tranchage entre tes trois voies, à valider sur la capture : trois groupes, l'un sous l'autre."
+  },
+  {
+   "ecran": "emploi-du-temps",
+   "type": "bouton",
+   "element": "⤓ Sortir le JSON — grille — injecté le jeudi 3 septembre",
+   "point": 714,
+   "citation": "Pour la rangée, mon tranchage entre tes trois voies, à valider sur la capture : trois groupes, l'un sous l'autre."
+  },
+  {
+   "ecran": "emploi-du-temps",
+   "type": "bouton",
+   "element": "⤓ Sortir le JSON — creneaux — injecté le jeudi 3 septembre",
+   "point": 714,
+   "citation": "Pour la rangée, mon tranchage entre tes trois voies, à valider sur la capture : trois groupes, l'un sous l'autre."
+  },
+  {
+   "ecran": "emploi-du-temps",
+   "type": "bouton",
+   "element": "⤓ Sortir le JSON — periodes — injecté le vendredi 4 septembre",
+   "point": 714,
+   "citation": "Pour la rangée, mon tranchage entre tes trois voies, à valider sur la capture : trois groupes, l'un sous l'autre."
+  },
+  {
+   "ecran": "emploi-du-temps",
+   "type": "bouton",
+   "element": "⤓ Sortir le JSON — photos — injecté le vendredi 4 septembre",
+   "point": 714,
+   "citation": "Pour la rangée, mon tranchage entre tes trois voies, à valider sur la capture : trois groupes, l'un sous l'autre."
+  },
+  {
+   "ecran": "emploi-du-temps",
+   "type": "bouton",
+   "element": "⤓ Sortir le JSON — reglages — injecté le vendredi 4 septembre",
+   "point": 714,
+   "citation": "Pour la rangée, mon tranchage entre tes trois voies, à valider sur la capture : trois groupes, l'un sous l'autre."
+  },
+  {
+   "ecran": "emploi-du-temps",
+   "type": "bouton",
+   "element": "📋 Copier le prompt — calendrier",
+   "point": 714,
+   "citation": "Pour la rangée, mon tranchage entre tes trois voies, à valider sur la capture : trois groupes, l'un sous l'autre."
+  },
+  {
+   "ecran": "emploi-du-temps",
+   "type": "bouton",
+   "element": "📋 Copier le prompt — grille",
+   "point": 714,
+   "citation": "Pour la rangée, mon tranchage entre tes trois voies, à valider sur la capture : trois groupes, l'un sous l'autre."
   }
  ]
 }

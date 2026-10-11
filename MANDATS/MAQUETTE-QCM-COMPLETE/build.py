@@ -6,11 +6,11 @@ D = os.path.dirname(os.path.abspath(__file__))
 S = os.path.join(D, "src")
 def lire(*p): return open(os.path.join(*p), encoding="utf-8").read()
 
-CSS = ["qcm.css", "maquette.css", "maquette610.css", "maquette620.css", "maquette626.css", "maquette627.css", "maquette628.css", "socle.css", "etapes.css", "mjpc.css", "mjpc-ajouts.css"]
+CSS = ["qcm.css", "maquette.css", "maquette610.css", "maquette620.css", "maquette626.css", "maquette627.css", "maquette628.css", "socle.css", "etapes.css", "mjpc.css", "mjpc-edt.css", "mjpc-ajouts.css", "complement2.css"]
 JS = ["maquette.js", "maquette2.js", "ev3e.js", "maquette610.js", "maquette620.js",
       "com626.js", "maquette626.js", "com627.js", "maquette627.js", "com628.js", "maquette628.js", "com632.js"]
 EXTRA_JS = json.load(open(os.path.join(S, "ordre_js.json"))) if os.path.exists(os.path.join(S, "ordre_js.json")) else []
-JS += EXTRA_JS + ["gestes.js", "etape2.js", "etape3.js", "etape4.js", "mjpc.js", "complement1.js", "socle.js"]
+JS += EXTRA_JS + ["gestes.js", "etape2.js", "etape3.js", "etape4.js", "mjpc.js", "complement1.js", "complement2.js", "socle.js"]
 
 def js(nom):
     t = lire(S, nom)
@@ -39,6 +39,16 @@ chapitre = {"titre": chap["title"], "majeures": chap["competencesMajeures"], "mi
 libel = json.loads(lire(S, "donnees", "libelles_eleve.json"))
 limites = json.loads(lire(D, "mesures", "limites.json"))
 texte_limites = limites.get("texte_limites") or re.search(r"(?m)^> (.*)$", lire(D, "mesures", "README.md")).group(1)
+# (complément 2, §4) les objets de l'emploi du temps relus au hub par la conscience (MANDATS/COMPLEMENT-MAQUETTE-QCM-COMPLETE-2-EDT/),
+# vérifiés contre leurs md5 ; et les deux consignes d'index.html (src/donnees/edt-prompts.json)
+EDT_DIR = os.path.join(D, "..", "COMPLEMENT-MAQUETTE-QCM-COMPLETE-2-EDT")
+edt = {}
+for l in open(os.path.join(EDT_DIR, "md5.txt"), encoding="utf-8").read().split("\n"):
+    if not l.strip(): continue
+    m5, f = l.split()[:2]
+    if hashlib.md5(open(os.path.join(EDT_DIR, f), "rb").read()).hexdigest() != m5: sys.exit("refus : " + f + " n'a pas son md5 (" + m5 + ")")
+    edt[f[:-5]] = json.loads(lire(EDT_DIR, f))
+edt_prompts = json.loads(lire(S, "donnees", "edt-prompts.json"))["prompts"]
 html = ("<!DOCTYPE html>\n<html lang=\"fr\">\n<head>\n<meta charset=\"UTF-8\">\n"
         "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n"
         "<title>Maquette complète du QCM</title>\n"
@@ -48,6 +58,7 @@ html = ("<!DOCTYPE html>\n<html lang=\"fr\">\n<head>\n<meta charset=\"UTF-8\">\n
         "</head>\n<body>\n<div id=\"root\"></div>\n<div id=\"som-racine\"></div>\n"
         "<script>\nvar PROMPT_TEXTE = " + json.dumps(prompt, ensure_ascii=False).replace("</", "<\\/") + ";\nwindow.PDF632_HTML = " + json.dumps(pdf, ensure_ascii=False).replace("</", "<\\/") + ";\nvar TAXO = " + json.dumps(json.loads(taxo), ensure_ascii=False).replace("</", "<\\/") + ";\n"
         + "var CHAPITRE_3E = " + json.dumps(chapitre, ensure_ascii=False) + ";\nvar LIBELLES_ELEVE = " + json.dumps(libel, ensure_ascii=False) + ";\nvar LIMITES_TEXTE = " + json.dumps(texte_limites, ensure_ascii=False) + ";\n"
+        + "var EDT_DONNEES = " + json.dumps(edt, ensure_ascii=False).replace("</", "<\\/") + ";\nvar EDT_PROMPTS_INDEX = " + json.dumps(edt_prompts, ensure_ascii=False).replace("</", "<\\/") + ";\n"
         + "\n".join(js(n) for n in JS) + "\n</script>\n</body>\n</html>\n")
 
 # garde (étape 4, défaut 27) : le script assemblé se compile, sinon rien n'est écrit

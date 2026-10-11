@@ -2,6 +2,52 @@
 
 *Mandat : `MANDATS/MANDAT-MAQUETTE-QCM-COMPLETE.md`, fait d'une traite, étapes 1 à 5. Branche `maquette-qcm` (et `claude/bold-bohr-zxodms`, la même), dossier `MANDATS/MAQUETTE-QCM-COMPLETE/`.*
 
+## Complément 2 — fait
+
+*Complément : `MANDATS/COMPLEMENT-MAQUETTE-QCM-COMPLETE-2.md`, fait d'une traite sur `maquette-qcm`, étapes A et B. La v1 à la v6 restent telles quelles, avec leurs md5. **La livraison : `maquette-qcm-v7.html`** (md5 `6be84ea1fb636017ce7225bfa3556082`), **169 scènes** ; banc final `sorties/banc-final-v7.txt` : **19 222 vérifications, zéro défaut**, les vérifications 1 à 9 et les gardes 1 à 8, tout sur tout ; captures refaites et regardées (`captures/`) ; livret `livret-maquette-qcm-v7.pdf`.*
+
+### Ce qui est corrigé, et la scène qui le montre
+
+| Quoi | Ce qui est fait | Scènes |
+| --- | --- | --- |
+| **Défaut 7** — les boutons fermés de MJPC ne se voyaient pas fermés | Les 11 entrées du menu sans scène et « Code professeur » prennent l'aspect qu'`index.html` donne déjà à un bouton fermé (`.eli-btn:disabled`, l. 860 : estompé, la souris barrée). Leur raison, « Inchangé : cet écran reste celui d'aujourd'hui. », est portée par une enveloppe qui reçoit la souris : le bouton fermé ne la prend pas. « 📅 Emploi du temps » s'ouvre désormais sur sa scène. | toutes les scènes `m-…` |
+| **Dette n°12 · 87** — le panneau prof borné à 1 100 px | Le panneau couvre toute la fenêtre, bord à bord, aux trois tailles de la console : ni marge, ni largeur bornée, ni coins arrondis. L'en-tête, le menu de 230 px et le contenu ne changent pas ; le contenu défile en hauteur. | toutes les scènes `m-…` |
+| **Dette n°12 · 88** — ↻ ✕ hors de la carte | La grille de la ligne d'élève a une colonne par élément (le numéro, le nom, le ◆, « 🚫 Jamais avec… », le code, ↻ ✕) : ↻ et ✕ sont dans la carte, à droite, sur la ligne du nom, avec ou sans ◆. La v6 le faisait déjà, sans le dire : l'écart est désormais inscrit. | `m-classe-exclusions`, `m-exclusion-refusee` |
+| **La rangée de l'emploi du temps** (n°12 · 212) | Une nouvelle scène, partie d'`index.html` (`edtPeindrePanneau`, l. 19794 à 19850, son CSS `edtPoserCss` copié dans `src/mjpc-edt.css`) avec les objets relus au hub (`MANDATS/COMPLEMENT-MAQUETTE-QCM-COMPLETE-2-EDT/`, md5 vérifiés à l'assemblage). Les lignes d'état sont recalculées avec les vraies fonctions : « 52 semaines · 7 périodes sans cours · 11 fériés · 30 jalons · 15 événements de classe », « 30 cases · 4 classes nommées », « 8 créneaux — … ». La rangée devient trois groupes, l'un sous l'autre : « Ouvrir l'emploi du temps » et sa case ; « ⤓ Sortir le JSON » (une case par objet, nommé en clair avec sa date, « Tout cocher », un seul bouton, fermé tant que rien n'est coché ; un objet : le geste d'aujourd'hui, « JSON de « calendrier » copié — 19717 caractères. » ; plusieurs : un seul JSON, chacun sous son identifiant) ; « 📋 Copier le prompt » (« Calendrier de l'année », « Grille de l'emploi du temps », avec le vrai nombre de caractères de la consigne et du JSON en service). Rien d'autre ne change dans la section. | `m-emploi-du-temps`, `m-emploi-du-temps-un`, `m-emploi-du-temps-tous` |
+
+### Ce que la maquette change dans MJPC par rapport au vrai site, écart par écart
+
+C'est la liste que le mandat de code reprendra. Elle est aussi dans `banc/existant/ecarts-mjpc.json`, que la garde 7 relit : toute règle de CSS de MJPC qui vise un élément du vrai site sans être sa règle d'`index.html` telle quelle doit y avoir son écart et sa raison.
+
+| N° | Écran | L'écart | Raison | Pourquoi |
+| --- | --- | --- | --- | --- |
+| 1 | Élèves & codes | « 🚫 Jamais avec… » dans la ligne de chaque élève, juste après le ◆, avec ses camarades à cocher (au plus 3, la quatrième refusée avec la raison) ; ses règles de CSS (classes ex-…) sont nouvelles | point 585 | Les exclusions se règlent dans la console MJPC, sur la fiche de la classe, à côté des aménagements : pour chaque élève, « 🚫 Jamais avec… » ; au plus 3 par élève, la quatrième refusée (590). |
+| 2 | Élèves & codes | La quatrième exclusion d'un élève refusée, avec la raison | point 590 | La garde minimum : au plus 3 exclusions par élève ; la quatrième est refusée dans MJPC, avec la raison. |
+| 3 | Taxonomie | La section « 🧩 Les compétences » dans l'éditeur de la taxonomie, après l'arbre : les 28 compétences sous leurs 8 groupes, libellé officiel et libellé élève, sur le modèle des notions (classes m8tx-comps, m8tx-comp-cat nouvelles) | point 637 | Chaque compétence reçoit un libellé élève, réglé dans le même éditeur que les notions ; le libellé officiel reste pour École Directe et pour le PDF. |
+| 4 | Panneau prof | Les 11 entrées du menu du panneau prof sans scène dans la maquette sont fermées (disabled), avec l'infobulle « Inchangé : cet écran reste celui d'aujourd'hui. » ; « 📅 Emploi du temps » s'ouvre sur sa scène | simulation déclarée | La maquette ne montre que les écrans que le cadrage change ; les autres restent ceux d'aujourd'hui, et un bouton qui ne mène à rien est fermé avec sa raison (protocole maquette, §2). |
+| 5 | Élèves & codes, fiche de l'élève | « Code professeur » fermé dans l'encart de la clé, avec l'infobulle « Inchangé : cet écran reste celui d'aujourd'hui. » | simulation déclarée | La section « Code professeur » ne change pas : la maquette ne la montre pas, et le bouton qui y mène est fermé avec sa raison (protocole maquette, §2). |
+| 6 | tous les écrans de MJPC | Les boîtes système de la vraie app (alert, confirm) et les fenêtres de _modaleConfirme sont dessinées dans la page, avec leur texte exact (classes alerte-… nouvelles) | simulation déclarée | La maquette n'ouvre aucune boîte système (vérification 6 du banc) : chacune est dessinée dans la page, avec son texte exact et ses boutons. |
+| 7 | Élèves & codes | « 🖨 Imprimer » ouvre la page des codes de _printCodesClasse dans une fenêtre de la console, au lieu d'une fenêtre d'impression (classe codes-imprimes nouvelle) | simulation déclarée | La maquette n'imprime rien et n'ouvre aucune fenêtre : la page des codes, telle que _printCodesClasse l'écrit, se montre dans la console. |
+| 8 | Panneau prof | « ✕ » du panneau prof revient aux Réglages du QCM | simulation déclarée | Dans la maquette, on entre dans MJPC par « Ouvrir la console MJPC → » des Réglages du QCM : la fermeture y revient. |
+| 9 | tous les écrans de MJPC | Les données : la classe « 3 ESSAI », ses codes, ses exclusions, les fiches de Michel et de Lina ; rien n'est lu ni écrit au hub, chaque geste agit sur place | simulation déclarée | La maquette n'a ni réseau ni hub (vérification 6 du banc) ; seuls de faux élèves y paraissent (vérification 7). La taxonomie, elle, est la vraie, copiée avec son md5. |
+| 10 | Panneau prof, Élèves & codes, fiche de l'élève | Les boutons fermés de la maquette (les 11 entrées du menu, « Code professeur ») prennent l'aspect qu'index.html donne déjà à un bouton fermé (.eli-btn:disabled, l. 860) : estompés, la souris barrée ; leur raison se lit au survol, sur une enveloppe qui reçoit la souris | simulation déclarée · CSS `.tprof-section-btn:disabled,.mjpc-act:disabled` | Dans le vrai site, ces boutons ne sont jamais fermés : ils ouvrent leurs écrans. La maquette les ferme (les écrans restent ceux d'aujourd'hui), et un bouton fermé doit se voir fermé, avec sa raison lisible (protocole maquette, §2 ; complément 2, défaut 7). |
+| 11 | Panneau prof | Le panneau prof couvre toute la fenêtre, bord à bord : sans la marge de 30 px autour (l. 223) | dette n°12 · 87 · CSS `.tprof-overlay` | « Il faudrait que mon pilotage prenne la largeur complète de l'écran, parce que la modale c'est bien mais tout est entassé, je dois scroller en permanence. » (Paul, 01/10) : le panneau prend toute la largeur et la hauteur de l'écran, sans changer ses sections. |
+| 12 | Panneau prof | Le panneau prof n'est plus borné à 1 100 px de large, ni arrondi (l. 225) | dette n°12 · 87 · CSS `.tprof-box` | Le panneau prend toute la largeur et la hauteur de l'écran, bord à bord ; l'en-tête, le menu de 230 px et le contenu ne changent pas, et le contenu défile toujours en hauteur. |
+| 13 | Élèves & codes | La ligne d'élève est une grille de 6 colonnes (le numéro, le nom, le ◆, « 🚫 Jamais avec… », le code, ↻ ✕) au lieu de 4 (l. 609) : ↻ et ✕ sont dans la carte, à droite, sur la ligne du nom | dette n°12 · 88 · CSS `.tprof-content .el-row` | Depuis le ◆ des aménagements, la ligne a un élément de plus que sa grille : ↻ et ✕ passent à la ligne, dans la colonne du numéro, et débordent à gauche, hors de la carte (Paul, 01/10). La grille reçoit une colonne par élément, et une de plus pour « 🚫 Jamais avec… » (585). |
+| 14 | Emploi du temps | La rangée de l'emploi du temps devient trois groupes, l'un sous l'autre, chacun avec son petit titre : « Ouvrir l'emploi du temps » et sa case ; « ⤓ Sortir le JSON » (une case par objet présent, nommé en clair avec sa date, « Tout cocher » et un seul bouton, fermé tant que rien n'est coché) ; « 📋 Copier le prompt » (un bouton par voie) (classes edt-groupe, edt-objets, edt-objet nouvelles) | dette n°12 · 212 | Dix éléments sur une rangée qui ne passe jamais à la ligne (.edt-actions, l. 20024) : ils s'écrasent en colonnes étroites, et la section défile de côté (capture de Paul du 11/10). Le tranchage entre les trois voies de Paul : trois groupes, l'un sous l'autre (714). |
+| 15 | Emploi du temps | Plusieurs objets cochés : un seul JSON, où chaque objet est rangé sous son identifiant, et le message « JSON de « calendrier », « grille » et « creneaux » copié — N caractères. » ; un seul objet coché, c'est exactement le geste d'aujourd'hui (edtSortirJson, l. 20792) | point 714 | Pour la rangée, le tranchage entre les trois voies de Paul : un sélecteur pour sortir le JSON (un objet, le geste d'aujourd'hui ; plusieurs, un seul JSON qui range chacun sous son nom), et les boutons rangés par type. |
+| 16 | Emploi du temps | Les copies (« ⤓ Sortir les JSON cochés », « 📋 Copier le prompt ») disent leur message dans la modale d'atInfo, avec le vrai nombre de caractères, sans toucher au presse-papiers | simulation déclarée | La maquette ne touche pas au presse-papiers : le message de la vraie fonction s'affiche, calculé sur les données relues au hub. |
+| 17 | Emploi du temps | « 📅 Ouvrir l'emploi du temps », « Réinjecter maintenant… » et les trois voies de « ✨ Injecter un objet » sont fermés, avec « Inchangé : cet écran reste celui d'aujourd'hui. » ; la case et « Plus tard » agissent sur place | simulation déclarée | Ces gestes ouvrent un autre écran, qui ne change pas ; la case et « Plus tard » écrivent un réglage au hub, que la maquette n'a pas : l'écran change sur place. |
+| 18 | Emploi du temps | Les boutons fermés de la section « Emploi du temps » (« 📅 Ouvrir l'emploi du temps », « ⤓ Sortir les JSON cochés » quand rien n'est coché, « Réinjecter maintenant… », les trois voies) prennent l'aspect qu'index.html donne déjà à un bouton fermé (.eli-btn:disabled, l. 860) | simulation déclarée · CSS `.edt-btn:disabled` | Dans le vrai site, ces boutons ne sont jamais fermés. La maquette ferme ceux qui ouvrent un écran inchangé, et « ⤓ Sortir les JSON cochés » tant que rien n'est coché ; un bouton fermé doit se voir fermé (protocole maquette, §2 ; garde 6). |
+
+### Ce que les gardes 6, 7 et 8 ont trouvé d'autre
+
+Jouées sur la v6 et sur les témoins avant toute correction (`sorties/gardes-6-7-8-sur-v6.txt`), elles trouvent chacune leur défaut connu : les 13 boutons du défaut 7 dans les 9 scènes ; le panneau borné (dette 87) ; la grille changée sans écart (dette 88) ; ↻ ✕ hors de la carte sur chaque ligne du témoin à la grille d'`index.html` (20 px à gauche, 30 px sous le nom, la mesure de l'audit) ; le défilement de côté et des boutons de 5 à 9 lignes sur le témoin de la vraie rangée. Elles ont trouvé aussi :
+- **12 boutons fermés de la console du QCM et du téléphone, dans 24 scènes** (« 🔒 Révéler », « ← Question précédente », « 💡 Révélée », « 🔓 Rouvrir pour tous », « 💾 Enregistrer l'évaluation », « 🔒 🏁 Afficher leur bilan… »…) : estompés, mais leur raison ne se lisait pas au survol. Ils reçoivent la même enveloppe (journal, n° 49).
+- **Mes propres classes** `edt-case` et `edt-cases`, qui étaient celles des cases de la semaine du vrai écran : renommées (n° 53).
+
+Le détail est au journal (`DEFAUTS.md`, n° 48 à 53).
+
 ## Complément 1 — fait
 
 *Complément : `MANDATS/COMPLEMENT-MAQUETTE-QCM-COMPLETE-1.md` (md5 `37e0b18a532c9a0558a220d58377101a`), fait d'une traite sur `maquette-qcm`, étapes A à D. La v1 à la v5 restent telles quelles, avec leurs md5. **La livraison : `maquette-qcm-v6.html`** (md5 `60778845d3ccf68e0b4fdd4a9ce7db30`), **166 scènes** ; banc final `sorties/banc-final-v6.txt` : **18 245 vérifications, zéro défaut**, les vérifications 1 à 9 et les cinq gardes, tout sur tout ; captures refaites et regardées (`captures/`, 166) ; livret `livret-maquette-qcm-v6.pdf`.*
@@ -58,7 +104,7 @@ Détail : `mesures/README.md` ; sortie brute : `mesures/limites.json` (`node mes
 - **Rien n'est lu ni écrit au hub** : la classe « 3 ESSAI », ses codes, ses exclusions, les fiches de Michel et de Lina sont des données de la maquette ; la taxonomie est la vraie, copiée avec son md5, et ses modifications ne vivent que dans la scène.
 - **Chaque geste fait ce que sa fonction fait dans `index.html`**, sur place : importer et compléter la liste (avec ses alertes), générer les codes manquants, imprimer (la page des codes de `_printCodesClasse`), tout régénérer (le mot « CODES » à taper), ↻ et ✕ (avec la fenêtre de confirmation), ouvrir la fiche, cocher les cases PAP, enregistrer la fiche ; ouvrir et fermer l'éditeur de taxonomie, déplier un domaine, une famille, un groupe de compétences, modifier, désactiver ou réactiver une notion, en créer une, avec les alertes de validation ; un enregistrement fait avancer la version d'un cran et met la date du jour. « Modifier » recharge le référentiel (« Chargement du référentiel… »), comme `taxoRafraichir(true)`.
 - **Les boîtes système** (`alert`, `confirm`) et les fenêtres de `_modaleConfirme` sont dessinées dans la page, avec leur texte exact.
-- **L'encart de la clé** est dans l'état « clé saisie » ; « Code professeur » et les 12 autres écrans du panneau sont grisés, avec leur raison.
+- **L'encart de la clé** est dans l'état « clé saisie » ; « Code professeur » et les autres écrans du panneau sont grisés, avec leur raison (12 dans la v6 ; 11 depuis le complément 2, qui ouvre « 📅 Emploi du temps », et estompés comme un bouton fermé d'`index.html`).
 
 ### Étape A — les gardes
 
@@ -104,14 +150,14 @@ Détail : `mesures/README.md` ; sortie brute : `mesures/limites.json` (`node mes
 
 ## En bref
 
-- **La maquette** : `maquette-qcm-v6.html` (md5 `60778845d3ccf68e0b4fdd4a9ce7db30`), un fichier HTML autonome, sans réseau, **166 scènes dans l'ordre de la séance**, chacune ouvrable par `#scene=ID` ; le sommaire derrière ⚙ « Scènes de la maquette ». La v1 à la v5 restent dans le dossier, telles quelles, avec leurs md5.
-- **Le banc final** : `sorties/banc-final-v6.txt` — **18 245 vérifications, zéro défaut** ; tout porte sur tout (vérifications 1 à 9 et les cinq gardes du complément 1, sur les 166 scènes, à toutes les tailles). Les sorties de chaque étape : `sorties/banc-etape1.txt` à `banc-etape5.txt`, `banc-etape-B.txt`, `banc-etape-C.txt` ; celle de la v5 : `sorties/banc-final.txt`.
-- **Les captures** : `captures/` (166, toutes regardées) ; **le livret** : `livret-maquette-qcm-v6.pdf` (une capture et une phrase par scène). Le livret de la v5 reste : `livret-maquette-qcm-v5.pdf`.
-- **Les mesures** : `mesures/README.md` ; le texte de `{{LIMITES}}` pour le prompt y est, et en tête de ce README.
-- **L'existant** : `banc/existant/` (les inventaires de la 7.7.1 et de MJPC, `retraits.json` et ses citations).
+- **La maquette** : `maquette-qcm-v7.html` (md5 `6be84ea1fb636017ce7225bfa3556082`), un fichier HTML autonome, sans réseau, **169 scènes dans l'ordre de la séance**, chacune ouvrable par `#scene=ID` ; le sommaire derrière ⚙ « Scènes de la maquette ». La v1 à la v6 restent dans le dossier, telles quelles, avec leurs md5.
+- **Le banc final** : `sorties/banc-final-v7.txt` — **19 222 vérifications, zéro défaut** ; tout porte sur tout (vérifications 1 à 9, gardes 1 à 5 du complément 1, gardes 6 à 8 du complément 2, sur les 169 scènes, à toutes les tailles). Les sorties précédentes : `sorties/banc-etape1.txt` à `banc-etape5.txt`, `banc-etape-B.txt`, `banc-etape-C.txt`, `banc-final-v6.txt` ; celle de la v5 : `sorties/banc-final.txt`.
+- **Les captures** : `captures/` (169, toutes regardées) ; **le livret** : `livret-maquette-qcm-v7.pdf` (une capture et une phrase par scène). Les livrets de la v5 et de la v6 restent.
+- **Les mesures** : `mesures/README.md` ; le texte de `{{LIMITES}}` pour le prompt y est, et dans la section du complément 1.
+- **L'existant** : `banc/existant/` (les inventaires de la 7.7.1 et de MJPC, `retraits.json` et ses citations, `ecarts-mjpc.json` et ses raisons).
 - **Le tableau « point → scène »** : plus bas (et `POINT-SCENE.md`).
-- **Le journal des défauts** : `DEFAUTS.md` (47 défauts trouvés et corrigés : 35 au mandat, 12 au complément), repris plus bas.
-- **Rejouer** : `python3 build.py dev` (assemble `maquette-qcm-vdev.html`), `node banc/banc.js maquette-qcm-v6.html 5 sortie.txt` (le banc, 6 min environ ; `GARDES=0` sans les gardes du complément, `GARDES=seules` elles seules, `SEUL=id` une scène), `node capture.js maquette-qcm-v6.html`, `node mesures/mesurer.js maquette-qcm-v6.html mesures/limites.json`, `python3 outils/mesures-readme.py mesures/limites.json mesures/README.md`, `python3 livret.py`, `node banc/existant/releve.js` (relève la 7.7.1 sur le faux hub).
+- **Le journal des défauts** : `DEFAUTS.md` (53 défauts trouvés et corrigés : 35 au mandat, 12 au complément 1, 6 au complément 2), repris plus bas.
+- **Rejouer** : `python3 build.py dev` (assemble `maquette-qcm-vdev.html`), `node banc/banc.js maquette-qcm-v7.html 5 sortie.txt` (le banc, 7 min environ ; `GARDES=0` sans les gardes des compléments, `GARDES=seules` elles seules, `GARDES=c2` les gardes 6 à 8 seules, `SEUL=id` une scène), `node banc/temoins.js maquette-qcm-v6.html` (les témoins des gardes 7 et 8), `node capture.js maquette-qcm-v7.html`, `node mesures/mesurer.js maquette-qcm-v7.html mesures/limites.json`, `python3 outils/mesures-readme.py mesures/limites.json mesures/README.md`, `python3 outils/css-mjpc.py` et `node outils/edt-prompts.js` (les copies d'`index.html`), `python3 livret.py`, `node banc/existant/releve.js` et `node banc/existant/code.js` (les inventaires de l'existant).
 
 ## Ce que la maquette simule (déclaré, mandat §3)
 
@@ -120,7 +166,7 @@ Détail : `mesures/README.md` ; sortie brute : `mesures/limites.json` (`node mes
 - **Le hub** : rien n'est lu ni écrit ; un geste qui écrirait au hub mène à la scène qui montre ce qui se passe ensuite, ou change l'écran sur place (coches, choix, binômes, exclusions, bilan général, libellés élève). Aucun réseau, aucun stockage, aucune boîte système : le banc le vérifie au source et à chaque clic.
 - **Les fichiers** : « 📥 Export CSV », « 📥 Exporter snapshot », « 📋 Copier les erreurs… » disent ce qu'ils ont fait, sans écrire de fichier ni toucher au presse-papiers. L'impression ouvre l'aperçu (le PDF de gen632.js, tel quel ; le bilan de l'élève tel qu'il s'imprime ; les énoncés seuls).
 - **Le QR** : un dessin, qui ne mène à rien d'autre que la scène du téléphone.
-- **MJPC** : le balisage, les classes et les textes d'`index.html`, avec la vraie taxonomie ; rien n'est lu ni écrit au hub, chaque geste fait sur place ce que sa fonction fait (voir « Ce que la maquette simule dans MJPC », en tête).
+- **MJPC** : le balisage, les classes et les textes d'`index.html`, avec la vraie taxonomie et les vrais objets de l'emploi du temps ; rien n'est lu ni écrit au hub, chaque geste fait sur place ce que sa fonction fait ; chaque écart avec le vrai site est inscrit avec sa raison (voir le complément 2, en tête, et « Ce que la maquette simule dans MJPC », au complément 1).
 - **Le seul écran de simulation** est le sommaire ⚙ (protocole §2).
 
 
@@ -331,6 +377,16 @@ Le banc a grandi : la vérification 9 compare chaque commentaire affiché à cel
 | 686 (D6) | « Tu as nettement surestimé ce que tu avais réussi. » dans le bloc « 🎯 Ton estimation » de Michel, comme son bilan général | `t-bilan`, `t-bilan-non-atteinte`, `c-fiche` |
 
 
+### Complément 2 (tours 640 à 644, points 700 à 717)
+
+| Point | Ce qui se voit | Scène(s) |
+| --- | --- | --- |
+| 700, 707, 708 (défaut 7) | les entrées fermées du menu et « Code professeur » estompées, la souris barrée, leur raison au survol | toutes les scènes `m-…` |
+| 710, 711, 713 (dette n°12 · 87) | le panneau prof bord à bord, à toutes les tailles de la console | toutes les scènes `m-…` |
+| 710, 711, 713, 715 (dette n°12 · 88) | ↻ et ✕ dans chaque carte, à droite, sur la ligne du nom | `m-classe-exclusions`, `m-exclusion-refusee` |
+| 712, 713, 714 (n°12 · 212) | « 📅 Emploi du temps » avec ses vraies données : la rangée en trois groupes, « ⤓ Sortir le JSON » en cases, un objet coché, tous les objets cochés | `m-emploi-du-temps`, `m-emploi-du-temps-un`, `m-emploi-du-temps-tous` |
+
+
 ## Le journal des défauts
 
 
@@ -395,9 +451,23 @@ Le banc a grandi : la vérification 9 compare chaque commentaire affiché à cel
 | 47 | C | D3 — les limites de longueur se contredisaient : à énoncé court, 5 choix tenaient 410 caractères et 6 choix 480 ; à 6 choix, la limite tombait de 480 à 120 entre 120 et 150 caractères d'énoncé. | La mesure répartissait les longueurs comme la vraie question 3, autrement à chaque nombre de choix, et donnait un total de choix. | La mesure refaite (`mesures/mesurer.js`, `mesures/mesure-page.js`) : tous les choix à la même longueur, la limite d'un choix, l'énoncé de 40 à 300 par pas de 20, le choix par pas de 5 ; elle ne croît jamais ; l'étalon reste à 67 px ; le texte de `{{LIMITES}}` est dans `limites.json`, et le prompt de Réglages le porte. La vraie question 3 tient, sans respecter la nouvelle limite (137 caractères pour son plus long choix, 70 permis) : `mesures/README.md` le dit. | 4 (et son échantillon rejoué dans la maquette) |
 
 
+### Complément 2 (`MANDATS/COMPLEMENT-MAQUETTE-QCM-COMPLETE-2.md`)
+
+*Le défaut 7 de l'audit du complément 1, les dettes n°12 · 87 et 88, la rangée de l'emploi du temps (n°12 · 212), et ce que les gardes 6, 7 et 8 ont trouvé sur la v6 (`sorties/gardes-6-7-8-sur-v6.txt`), à partir du n° 48.*
+
+| N° | Étape | Défaut | Cause | Correction | Garde |
+| --- | --- | --- | --- | --- | --- |
+| 48 | B | Défaut 7 — les 12 entrées du menu du panneau prof sans scène et « Code professeur » étaient fermés sans le montrer : opacité 1, la couleur d'un bouton qui marche, la main comme curseur ; et leur raison ne se lisait pas au survol (la souris tombe sur le bouton fermé). | Le banc tenait un bouton pour grisé dès qu'il portait `disabled`, sans regarder son aspect. | L'aspect qu'`index.html` donne déjà à un bouton fermé (`.eli-btn:disabled{opacity:.45;cursor:not-allowed}`, l. 860) ; la raison portée par une enveloppe qui reçoit la souris (`src/complement2.js`, `src/complement2.css`). « 📅 Emploi du temps » s'ouvre désormais sur sa scène : il en reste 11 fermés, et « Code professeur ». | 6 |
+| 49 | B | 12 boutons fermés de la console du QCM et du téléphone, dans 24 scènes (28 relevés ; « 🔒 Révéler », « ← Question précédente », « 💡 Révélée », « 🔓 Rouvrir pour tous », « 💾 Enregistrer l'évaluation », « 🔒 🏁 Afficher leur bilan… », « ↻ Regénérer », « 📄 PDF notes et compétences »…) : estompés, mais leur raison ne se lisait pas au survol. | Même cause : la souris tombait sur le bouton fermé. | Dans les vues de Paul, chaque bouton fermé est posé dans la même enveloppe, qui porte sa raison (posée aussi quand l'infobulle vient des gestes, `poserGestes`) ; une moitié d'élève montrée dans la console garde ses règles. | 6 |
+| 50 | B | Dette n°12 · 87 — le panneau prof était borné à 1 100 px, avec 30 px de marge et des coins arrondis, comme dans le vrai site. | `index.html`, l. 223 et 225, reproduit fidèlement. | Le panneau couvre toute la fenêtre, bord à bord, aux trois tailles de la console ; le reste ne change pas. Écart inscrit (`ecarts-mjpc.json`). | 7 |
+| 51 | B | Dette n°12 · 88 — la v6 avait remis ↻ ✕ dans la carte sans le dire : la grille de la ligne d'élève changeait celle d'`index.html` (l. 609) sans écart inscrit. | La v6 corrigeait la ligne sans déclarer l'écart. | Écart inscrit, avec sa raison (la dette 88, et la colonne de « 🚫 Jamais avec… », 585) ; ↻ ✕ dans la carte, sur la ligne du nom, sur chaque ligne. | 7 |
+| 52 | B | La rangée de l'emploi du temps (n°12 · 212) : dix éléments sur une rangée qui ne passe jamais à la ligne. | `.edt-actions{display:flex}` sans retour à la ligne (l. 20024), et un bouton par objet et par voie. | Nouvelle scène `m-emploi-du-temps` (et `-un`, `-tous`), partie d'`index.html` avec les données relues au hub : trois groupes, l'un sous l'autre ; « ⤓ Sortir le JSON » en cases, « Tout cocher » et un seul bouton, fermé tant que rien n'est coché ; « 📋 Copier le prompt » par voie. Les retraits citent le point 714. | 1, 8 |
+| 53 | B | Mes propres classes `edt-case` et `edt-cases` habillaient les cases de « Sortir le JSON » comme les cases de la semaine. | `edt-case` est une classe du vrai écran de la semaine (edtPoserCss). | Renommées `edt-objet`, `edt-objets`, absentes d'`index.html`. | relu sur capture |
+
+
 ## Scène par scène : ce que Paul peut regarder
 
-*Dans `maquette-qcm-v6.html`, `#scene=ID`, ou le sommaire ⚙. La colonne « Étape » dit quelle étape a fini la scène (1 à 5 : le mandat ; C1 : le complément 1, qui l'a créée). Les mêmes, en images : `captures/NNN-ID.png` et le livret.*
+*Dans `maquette-qcm-v7.html`, `#scene=ID`, ou le sommaire ⚙. La colonne « Étape » dit quelle étape a fini la scène (1 à 5 : le mandat ; C1 : le complément 1 ; C2 : le complément 2, qui l'a créée). Les mêmes, en images : `captures/NNN-ID.png` et le livret.*
 
 ### Préparer l'évaluation
 
@@ -644,23 +714,26 @@ Le banc a grandi : la vérification 9 compare chaque commentaire affiché à cel
 | 159 | `#scene=m-taxonomie-notion` | « ✏️ Modifier » une notion : ses libellés, ses niveaux, son exemple. | C1 |
 | 160 | `#scene=m-taxonomie-competences` | « Les compétences » : les 28, sous leurs groupes, avec leur libellé élève. | 4 |
 | 161 | `#scene=m-taxonomie-competence` | « ✏️ Modifier » une compétence : le même formulaire, avec son libellé élève. | C1 |
+| 162 | `#scene=m-emploi-du-temps` | MJPC, Emploi du temps, avec les objets de l'année : la rangée d'aujourd'hui en trois groupes, l'un sous l'autre. | C2 |
+| 163 | `#scene=m-emploi-du-temps-un` | « ⤓ Sortir le JSON », un objet coché : le geste d'aujourd'hui, le même message. | C2 |
+| 164 | `#scene=m-emploi-du-temps-tous` | Tous les objets cochés : un seul JSON, chacun sous son identifiant. | C2 |
 
 ### Une autre séance
 
 | N° | Scène | Ce que Paul peut regarder | Étape |
 | --- | --- | --- | --- |
-| 162 | `#scene=c-rattrapage` | Le rattrapage. | 3 |
+| 165 | `#scene=c-rattrapage` | Le rattrapage. | 3 |
 
 ### Le mode test
 
 | N° | Scène | Ce que Paul peut regarder | Étape |
 | --- | --- | --- | --- |
-| 163 | `#scene=x620-1-mode-test-ouverture` | Le mode test, à l'ouverture : ta vraie console d'avant l'heure, 15 tablettes. | 4 |
-| 164 | `#scene=x620-2-mode-test-reflexion` | Le mode test, pendant la réflexion. | 4 |
-| 165 | `#scene=x620-3-mode-test-en-grand` | « 🔍 Jouer en grand ». | 4 |
+| 166 | `#scene=x620-1-mode-test-ouverture` | Le mode test, à l'ouverture : ta vraie console d'avant l'heure, 15 tablettes. | 4 |
+| 167 | `#scene=x620-2-mode-test-reflexion` | Le mode test, pendant la réflexion. | 4 |
+| 168 | `#scene=x620-3-mode-test-en-grand` | « 🔍 Jouer en grand ». | 4 |
 
 ### Annexe : la demi-tablette
 
 | N° | Scène | Ce que Paul peut regarder | Étape |
 | --- | --- | --- | --- |
-| 166 | `#scene=t-annexe` | L'étalon des mesures : la vraie question 3 de l'évaluation de 3e (6 choix longs), sur une demi-tablette : 67 px de reste. | 5 |
+| 169 | `#scene=t-annexe` | L'étalon des mesures : la vraie question 3 de l'évaluation de 3e (6 choix longs), sur une demi-tablette : 67 px de reste. | 5 |

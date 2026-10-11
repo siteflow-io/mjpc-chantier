@@ -195,7 +195,10 @@ var ORDRE = [
     ["m-taxonomie-domaine", 4, "Un domaine ouvert, une famille ouverte : ses notions, « ✏️ Modifier », « Désactiver », « + Nouvelle notion »."],
     ["m-taxonomie-notion", 4, "« ✏️ Modifier » une notion : ses libellés, ses niveaux, son exemple."],
     ["m-taxonomie-competences", 4, "« Les compétences » : les 28, sous leurs groupes, avec leur libellé élève."],
-    ["m-taxonomie-competence", 4, "« ✏️ Modifier » une compétence : le même formulaire, avec son libellé élève."]]],
+    ["m-taxonomie-competence", 4, "« ✏️ Modifier » une compétence : le même formulaire, avec son libellé élève."],
+    ["m-emploi-du-temps", 4, "MJPC, Emploi du temps, avec les objets de l'année : la rangée d'aujourd'hui en trois groupes, l'un sous l'autre."],
+    ["m-emploi-du-temps-un", 4, "« ⤓ Sortir le JSON », un objet coché : le geste d'aujourd'hui, le même message."],
+    ["m-emploi-du-temps-tous", 4, "Tous les objets cochés : un seul JSON, chacun sous son identifiant."]]],
   // O. Une autre séance
   ["Une autre séance", [
     ["c-rattrapage", 3, "Le rattrapage."]]],

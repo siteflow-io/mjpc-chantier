@@ -31,3 +31,10 @@
 .alerte-ok{background:#2563eb;color:#fff;border:none;border-radius:6px;padding:7px 18px;font:600 14px system-ui,sans-serif;cursor:pointer}
 /* (complément 1) la boîte « confirm » de la 7.7.1, dessinée : « Annuler » à côté de « OK » */
 .alerte-non{background:#e5e7eb;color:#111;border:none;border-radius:6px;padding:7px 18px;font:600 14px system-ui,sans-serif;cursor:pointer;margin-right:8px}
+/* (complément 2, dette n°12 · 87) le panneau prof couvre toute la fenêtre, bord à bord : ni marge autour (l. 223 : padding 30px),
+   ni largeur bornée, ni coins arrondis (l. 225 : max-width 1100px, border-radius 16px) ; le reste du panneau ne change pas */
+.tprof-overlay{padding:0}
+.tprof-box{max-width:none;border-radius:0}
+/* (complément 2, défaut 7) les entrées et les boutons fermés de la maquette prennent l'aspect qu'index.html donne déjà à un bouton fermé
+   (.eli-btn:disabled, l. 860) : estompés, la souris barrée */
+.tprof-section-btn:disabled,.mjpc-act:disabled{opacity:.45;cursor:not-allowed}

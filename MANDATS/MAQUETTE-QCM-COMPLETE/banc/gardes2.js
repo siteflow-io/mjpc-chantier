@@ -24,7 +24,7 @@ function lireFermes(){
   const ferme = b => b.disabled || b.getAttribute("aria-disabled") === "true";
   const opacite = el => { let o = 1; for(let a = el; a && a.nodeType === 1; a = a.parentElement) o *= +getComputedStyle(a).opacity; return o; };
   // une fenêtre ouverte recouvre la page : seuls ses boutons sont à portée de la souris
-  const couches = Array.from(root.querySelectorAll(".modal-back,.checkin-overlay,.sessions-menu-overlay,.tel-sheet-fond,.grand-fond,.fen-fond"));
+  const couches = Array.from(root.querySelectorAll(".modal-back,.checkin-overlay,.sessions-menu-overlay,.tel-sheet-fond,.grand-fond,.fen-fond,.at-modale"));
   const dessus = couches.length ? couches[couches.length - 1] : null;
   const btns = Array.from(root.querySelectorAll("button")).filter(visible);
   btns.forEach(b => {
@@ -117,7 +117,7 @@ function cssIndex(){
   return {parSel, classes};
 }
 // Les fichiers de CSS des écrans de MJPC dans la maquette : la copie d'index.html, et ce qui s'y ajoute
-const CSS_MJPC = ["mjpc.css", "mjpc-ajouts.css", "mjpc-edt.css"];
+const CSS_MJPC = ["mjpc.css", "mjpc-ajouts.css", "mjpc-edt.css", "complement2.css"];
 function ecarts(){ const f = path.join(__dirname, "existant", "ecarts-mjpc.json"); return fs.existsSync(f) ? JSON.parse(lire(f)).ecarts : []; }
 // Une règle de la maquette change index.html quand elle vise des éléments du vrai site (toutes ses classes y existent)
 // sans être une règle d'index.html telle quelle (même sélecteur, mêmes déclarations). Les classes nouvelles (ex-…, m8tx-comps…)

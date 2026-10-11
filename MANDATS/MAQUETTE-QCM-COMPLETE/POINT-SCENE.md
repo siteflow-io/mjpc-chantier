@@ -1,6 +1,6 @@
 # Le tableau « point → scène » (mandat §4 et §6, étape 5)
 
-*Pour chaque point retenu du cadrage qui se voit, la scène qui le montre (`#scene=ID` dans `maquette-qcm-v6.html`). Les points sont ceux du §4 du mandat (tours 604 à 632), plus les points plus anciens que ces scènes rendent visibles. Un point sans scène serait un oubli : il n'y en a pas.*
+*Pour chaque point retenu du cadrage qui se voit, la scène qui le montre (`#scene=ID` dans `maquette-qcm-v7.html`). Les points sont ceux du §4 du mandat (tours 604 à 632), plus les points plus anciens que ces scènes rendent visibles. Un point sans scène serait un oubli : il n'y en a pas.*
 
 ## Tours 604 à 606 (points 427 à 451)
 
@@ -103,3 +103,12 @@
 | 684, 691 (D4) | « 👀 Écoute le prof — la correction sera révélée. » avant la révélation | `t-corr-q2-lecture`, `t-corr-q3-lecture`, `t-corr-q1-lecture`, `t-corr-seul`, `x610-3-a-correction` |
 | 692 (D5) | le PDF « notes et compétences » sans encadré ni souligné | `x632-pdf` |
 | 686 (D6) | « Tu as nettement surestimé ce que tu avais réussi. » dans le bloc « 🎯 Ton estimation » de Michel, comme son bilan général | `t-bilan`, `t-bilan-non-atteinte`, `c-fiche` |
+
+## Complément 2 (tours 640 à 644, points 700 à 717)
+
+| Point | Ce qui se voit | Scène(s) |
+| --- | --- | --- |
+| 700, 707, 708 (défaut 7) | les entrées fermées du menu et « Code professeur » estompées, la souris barrée, leur raison au survol | toutes les scènes `m-…` |
+| 710, 711, 713 (dette n°12 · 87) | le panneau prof bord à bord, à toutes les tailles de la console | toutes les scènes `m-…` |
+| 710, 711, 713, 715 (dette n°12 · 88) | ↻ et ✕ dans chaque carte, à droite, sur la ligne du nom | `m-classe-exclusions`, `m-exclusion-refusee` |
+| 712, 713, 714 (n°12 · 212) | « 📅 Emploi du temps » avec ses vraies données : la rangée en trois groupes, « ⤓ Sortir le JSON » en cases, un objet coché, tous les objets cochés | `m-emploi-du-temps`, `m-emploi-du-temps-un`, `m-emploi-du-temps-tous` |

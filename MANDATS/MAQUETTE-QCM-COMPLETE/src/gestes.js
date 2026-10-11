@@ -119,6 +119,9 @@ function poserGestes(){
     if(t771 && !b.disabled) b.setAttribute("title", t771);
     else if(!b.getAttribute("title")){ var t = bulleDe(lib, b); if(t) b.setAttribute("title", t); }
     if(!b.hasAttribute("data-va") && !b.hasAttribute("data-local")){ var v = allerDe(scene, lib); if(v) b.setAttribute("data-va", v); }
+    // (complément 2) l'enveloppe d'un bouton fermé porte sa raison, même posée ici
+    var env = b.parentElement;
+    if(env && env.classList.contains("ferme-env") && !env.getAttribute("title") && b.getAttribute("title")) env.setAttribute("title", b.getAttribute("title"));
   });
 }
 var GARDIEN = null;

@@ -1289,40 +1289,64 @@
  },
  {
   "n": 162,
+  "id": "m-emploi-du-temps",
+  "fichier": "162-m-emploi-du-temps.png",
+  "vue": "console",
+  "section": "Réglages, et MJPC",
+  "titre": "MJPC, Emploi du temps, avec les objets de l'année : la rangée d'aujourd'hui en trois groupes, l'un sous l'autre."
+ },
+ {
+  "n": 163,
+  "id": "m-emploi-du-temps-un",
+  "fichier": "163-m-emploi-du-temps-un.png",
+  "vue": "console",
+  "section": "Réglages, et MJPC",
+  "titre": "« ⤓ Sortir le JSON », un objet coché : le geste d'aujourd'hui, le même message."
+ },
+ {
+  "n": 164,
+  "id": "m-emploi-du-temps-tous",
+  "fichier": "164-m-emploi-du-temps-tous.png",
+  "vue": "console",
+  "section": "Réglages, et MJPC",
+  "titre": "Tous les objets cochés : un seul JSON, chacun sous son identifiant."
+ },
+ {
+  "n": 165,
   "id": "c-rattrapage",
-  "fichier": "162-c-rattrapage.png",
+  "fichier": "165-c-rattrapage.png",
   "vue": "console",
   "section": "Une autre séance",
   "titre": "Le rattrapage."
  },
  {
-  "n": 163,
+  "n": 166,
   "id": "x620-1-mode-test-ouverture",
-  "fichier": "163-x620-1-mode-test-ouverture.png",
+  "fichier": "166-x620-1-mode-test-ouverture.png",
   "vue": "console",
   "section": "Le mode test",
   "titre": "Le mode test, à l'ouverture : ta vraie console d'avant l'heure, 15 tablettes."
  },
  {
-  "n": 164,
+  "n": 167,
   "id": "x620-2-mode-test-reflexion",
-  "fichier": "164-x620-2-mode-test-reflexion.png",
+  "fichier": "167-x620-2-mode-test-reflexion.png",
   "vue": "console",
   "section": "Le mode test",
   "titre": "Le mode test, pendant la réflexion."
  },
  {
-  "n": 165,
+  "n": 168,
   "id": "x620-3-mode-test-en-grand",
-  "fichier": "165-x620-3-mode-test-en-grand.png",
+  "fichier": "168-x620-3-mode-test-en-grand.png",
   "vue": "console",
   "section": "Le mode test",
   "titre": "« 🔍 Jouer en grand »."
  },
  {
-  "n": 166,
+  "n": 169,
   "id": "t-annexe",
-  "fichier": "166-t-annexe.png",
+  "fichier": "169-t-annexe.png",
   "vue": "tablette",
   "section": "Annexe : la demi-tablette",
   "titre": "L'étalon des mesures : la vraie question 3 de l'évaluation de 3e (6 choix longs), sur une demi-tablette : 67 px de reste."

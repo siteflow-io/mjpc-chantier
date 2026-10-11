@@ -176,7 +176,7 @@ function lireScene(){
     if(r.top >= 0 && r.top < innerHeight && r.left >= 0 && r.left < innerWidth){
       const cx = Math.min(innerWidth - 1, r.left + Math.min(r.width / 2, 8)), cy = Math.min(innerHeight - 1, r.top + r.height / 2);
       const hit = document.elementFromPoint(cx, cy);
-      if(hit && hit !== el && !el.contains(hit) && !hit.contains(el) && hit.closest(".modal-back,.checkin-overlay,.sessions-menu-overlay,.tel-sheet-fond,.grand-fond,.som-fond,.fen-fond") && !el.closest(".modal-back,.checkin-overlay,.sessions-menu-overlay,.tel-sheet-fond,.grand-fond,.som-fond,.fen-fond")) return;
+      if(hit && hit !== el && !el.contains(hit) && !hit.contains(el) && hit.closest(".modal-back,.checkin-overlay,.sessions-menu-overlay,.tel-sheet-fond,.grand-fond,.som-fond,.fen-fond,.at-modale") && !el.closest(".modal-back,.checkin-overlay,.sessions-menu-overlay,.tel-sheet-fond,.grand-fond,.som-fond,.fen-fond,.at-modale")) return;
     }
     // caché par le défilement d'une liste (la liste défile : ce n'est ni un chevauchement ni un texte coupé)
     let anc = el.parentElement, cache = false;
@@ -214,7 +214,7 @@ function lireScene(){
   try { textesIframe = fr && fr.contentDocument && fr.contentDocument.body ? fr.contentDocument.body.innerText : ""; } catch(e){}
   const cibles = Array.from(root.querySelectorAll("[data-va]")).map(b => b.getAttribute("data-va")).filter(Boolean);
   // un bouton actif sans geste déclaré : ni destination (data-va), ni composant à état (data-local), ni case qui se coche sur place
-  const couchesG = Array.from(root.querySelectorAll(".modal-back,.checkin-overlay,.sessions-menu-overlay,.tel-sheet-fond,.grand-fond,.fen-fond"));
+  const couchesG = Array.from(root.querySelectorAll(".modal-back,.checkin-overlay,.sessions-menu-overlay,.tel-sheet-fond,.grand-fond,.fen-fond,.at-modale"));
   const dessusG = couchesG.length ? couchesG[couchesG.length - 1] : null;
   const sansGeste = Array.from(root.querySelectorAll("button")).filter(b => !b.disabled && visible(b) && (!dessusG || dessusG.contains(b))
     && !b.hasAttribute("data-va") && !b.hasAttribute("data-local") && !b.closest(".eleve-choix,.decl-b-btns,.co-btns,.qdf-choix,.autoeval-fourchettes")
@@ -228,7 +228,7 @@ function marquerBoutons(){
   // Les boutons que l'élève ou Paul peuvent cliquer sur cette scène : ni grisés, ni cachés, ni recouverts par la fenêtre ouverte ;
   // l'onglet ou le mode déjà en cours (qui ramène à la scène elle-même) n'est pas un geste.
   const root = document.getElementById("root"); let i = 0;
-  const couches = Array.from(root.querySelectorAll(".modal-back,.checkin-overlay,.sessions-menu-overlay,.tel-sheet-fond,.grand-fond,.fen-fond"));
+  const couches = Array.from(root.querySelectorAll(".modal-back,.checkin-overlay,.sessions-menu-overlay,.tel-sheet-fond,.grand-fond,.fen-fond,.at-modale"));
   const dessus = couches.length ? couches[couches.length - 1] : null;
   root.querySelectorAll("button").forEach(b => {
     const r = b.getBoundingClientRect(); if(b.disabled || r.width < 1 || r.height < 1) return;

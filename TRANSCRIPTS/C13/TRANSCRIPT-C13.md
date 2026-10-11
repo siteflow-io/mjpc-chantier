@@ -1288,3 +1288,11 @@ La transcription mot pour mot de ces six tours a été interrompue par un arrêt
 149. Tour 41 — Paul : « Non justement ça ne va pas. TU vois bien que l'ajout des boutons fait décaler les flèches de dévoilement. Donc il faut un bouton pour le surlignage, un bouton pour le texte couleur, et quand je clique dessus, je sélecitonne la couleur que je veux. comme dans word quoi ». **Faute de la conscience** : la barre débordait (« ◀ » et « ▶ Dévoiler » poussés hors du cadre), visible sur la capture envoyée, pas vue. Refait : deux boutons ronds « ab » (surligner, trait jaune) et « A » (couleur du texte, trait de la couleur courante), palette au clic (4 couleurs + ✕), Ctrl+H reste le jaune direct. Mesuré cette fois : bord droit de la scène 944 px, ◀ 784, ▶ Dévoiler 872, compteur 928 — dans le cadre (pièces `T41-couleurs-ecran.png`, `T41-couleurs-zoom.png`, montage `T41-montage-couleurs.mjs`).
 150. Tour 42 — Paul : « Voilà. » **Validé.** Les trois sujets du jour sont tranchés : la répétition propre (13·9), les notes de présentateur (13·10), la mise en forme à deux boutons et palette (13·11). Complément p8-5c à écrire et à soumettre à Paul avant dépôt.
 
+
+---
+
+## TOURS 43 et 44 (11/10/2026, 14:24 → 14:30)
+
+151. Tour 43 — Complément p8-5c écrit et envoyé à Paul en fichier avant dépôt (trois parties : la répétition propre, les notes de présentateur, la mise en forme ; neuf bancs par le geste ; captures T35 / T38 / T41 font foi). Deux points tranchés par la conscience, soumis : (15) notes écrites en classe directement dans la trame, lecture seule en répétition ; (16) couleur du texte au tableau = geste de classe (état de l'heure, journal), dans les notes = trame sans journal.
+152. Tour 44 — Paul : « la phrase pour l'exécutant? » — les points 15-16 ne sont pas commentés : acquis. Complément déposé : `MANDATS/COMPLEMENT-DEROULE-P8-5c.md`. Phrase donnée à Paul. En attente, hors de ce complément : n°13 · 8 (p8-5b) et n°13 · 12.
+

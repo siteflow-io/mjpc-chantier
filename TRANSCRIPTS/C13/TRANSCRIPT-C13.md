@@ -1265,3 +1265,17 @@ Réponse mot pour mot :
 Tests pour toi : aucun pour l'instant.
 
 11/10/2026 09:18 MEMO
+
+---
+
+## TOURS 34 à 39 — note d'incident (11/10/2026, 13:40)
+
+La transcription mot pour mot de ces six tours a été interrompue par un arrêt de sécurité de la plateforme (réponse coupée, contenu retenu) au moment où la conscience la rédigeait ; elle n'est pas reproduite. Ce qui s'est décidé, vérifié sur pièces :
+
+142. Tour 34 — Paul demande une capture de la proposition du point 141. Montage sur la maquette p8-5 (pièces `T34-avant-defaut.png`, `T34-apres-proposition-fausse.png`).
+143. Tour 35 — Paul : la proposition retirait « ⧉ Tableau » et « 🖥 Écran 2 », dont il se sert en répétition. Faute de la conscience (supposition non vérifiée). Corrigé : seul « Fin de l'heure » cède sa place à « ■ Arrêter » (pièce `T35-apres-proposition.png`, montage `T35-montage-bandeau.mjs`). **Paul : « ok c'est bon »** (tour 36) — direction validée, complément à écrire.
+144. Tour 36 — Paul demande si « la partie notes » s'écrit en préparation et en classe. Lu dans le code : « Notes pour cette diapo » (`#notesd`) n'est qu'un affichage de `DATA.notes`, jamais écrit par aucun geste ; « 📝 Notes au fil de l'eau » (`#bnotes`, `S.notesFil`) s'écrit dans tous les modes.
+145. Tour 37 — Paul précise : les notes sous la diapo sont des notes de présentateur (comme PowerPoint), à accrocher au dévoilement comme le récit : « quand j'affiche qqchose au tableau, je dois avoir le morceau de note correspondant qui s'affiche ». Point d'accroche existant : `elements(e)` / `nDev`.
+146. Tour 38 — Paul : « le plus ergonomique et lisible ». Proposition tranchée de la conscience (points 4-6 du cadrage « notes de présentateur », pièce `T38-notes-proposition.png`, montage `T38-montage-notes.mjs`) : toute la note visible, le paragraphe du dernier élément dévoilé en vif, repère d'accroche en marge (numéro d'élément, ⌂ = à l'arrivée), un seul texte par diapo, accroche automatique à l'élément où était le curseur, correction par clic sur le repère. **Paul : « Ok. »** (tour 39).
+147. Tour 39 — Paul : mise en forme des notes de présentateur avec les boutons de la barre sous la diapo, ajouter la couleur du texte, et vérifier que tous ces boutons fonctionnent. Banc par le geste `T39-banc-outils.mjs` (heure lancée, clics, sélections à la souris, glisser) : 19 ça va sur 20 — le seul « ça ne va pas » est le surlignage dans les notes, qui ne fait rien, sans message. Trouvé en passant : `policeReduite` est calculé mais jamais affiché (le curseur « texte au tableau » peut annoncer 44 pt quand la diapo pleine reste à ~33 pt).
+

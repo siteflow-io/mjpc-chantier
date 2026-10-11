@@ -1307,3 +1307,14 @@ La transcription mot pour mot de ces six tours a été interrompue par un arrêt
 156. **Deux choix de l'exécutant à valider par Paul** : pendant la frappe dans la note d'une autre diapo, le panneau attend la sortie du paragraphe pour montrer la nouvelle diapo (NOTE, décision 8) ; le titre « Notes pour cette diapo » défile hors de vue quand le panneau suit le vif (capture `p8-5c-notes-classe-3-6.png`).
 157. **Verdict** : je ne sais pas encore — la livraison n'est pas close. Demandé à Paul : la session de l'exécutant est-elle terminée ou encore en cours ?
 
+
+---
+
+## TOUR 46 (11/10/2026, 15:12 → 15:20)
+
+Paul, mot pour mot : « 20. Jamais la classe ne passe à la suivante si ce n'est pas moi qui clique sur suivant. Donc non, une note suit sa diapo, toujours. Sinon c'est un coup à écrire en pensant écrire sur la diapo concernée (alors que c'et la suivante). pour la fragilité, à régler. Effectivemnet, l'exécutant en est à d-p7. »
+
+158. La décision 8 de l'exécutant (le panneau attend la sortie du paragraphe) est **refusée** : le panneau des notes suit toujours la diapo courante ; un changement de diapo est le geste de Paul, pas un redessin automatique. Dette n°13 · 13. La fragilité du premier caractère après Entrée : dette n°13 · 14, « à régler ». Registre poussé.
+159. L'exécutant tourne encore (au banc `test-d-p7`) : il poussera la fin de p8-5c. Paul ne promeut jamais sur dette : complément correctif **p8-5d** écrit et envoyé à Paul en fichier, avant dépôt — le panneau suit la diapo (bancs par ▶, ◀, vignette, garde, atelier ; le banc « taper pendant l'animation accélérée » retiré, remplacé), le focus du paragraphe neuf posé avant la touche suivante. À lancer après la fin de p8-5c.
+160. Le titre « Notes pour cette diapo » qui défile hors de vue : non commenté par Paul — acquis tel quel.
+

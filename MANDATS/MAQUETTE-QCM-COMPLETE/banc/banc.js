@@ -8,8 +8,11 @@ const path = require("path"), fs = require("fs");
 const { chromium } = require("/opt/node22/lib/node_modules/playwright");
 const C = require("./controles.js");
 const G = require("./gardes.js");
-// GARDES=0 : sans les gardes du complément 1 ; GARDES=seules : les gardes seules (ni clics, ni vérifications 1 à 9 par scène)
+const G2 = require("./gardes2.js");
+// GARDES=0 : sans les gardes des compléments ; GARDES=seules : les gardes seules (ni clics, ni vérifications 1 à 9 par scène) ;
+// GARDES=c2 : les gardes 6, 7 et 8 du complément 2 seules
 const GARDES = process.env.GARDES || "oui";
+const C1 = GARDES !== "0" && GARDES !== "c2", C2 = GARDES !== "0";
 const RACINE = path.join(__dirname, "..");
 const FICHIER = path.resolve(process.argv[2]);
 const ETAPE = +process.argv[3] || 1;
@@ -87,10 +90,11 @@ if(SORTIE && fs.existsSync(SORTIE)) fs.unlinkSync(SORTIE);   // (garde, défaut 
 
   const relu = s => s.etape <= ETAPE;
   // Les gardes du complément 1 : les inventaires de l'existant, par scène ; les retraits et leurs citations ; les mesures
-  const INV = GARDES !== "0" ? G.inventaires() : [];
+  const INV = C1 ? G.inventaires() : [];
   const parScene = {}; INV.forEach(v => v.scenes.forEach(s => { (parScene[s] = parScene[s] || []).push(v); }));
   const RETRAITS = G.retraits(), ESTIMATIONS = [];
-  if(GARDES !== "0"){
+  if(C2) journal.push(G2.garde7Ecarts(verif) + " règles de CSS de MJPC qui visent le vrai site, comparées à index.html · " + require("./existant/ecarts-mjpc.json").ecarts.length + " écarts inscrits");
+  if(C1){
     journal.push(INV.length + " écrans de l'existant · " + G.verifierRetraits(verif) + " retraits");
     for(const v of INV) for(const s of v.scenes) verif(scenes.some(x => x.id === s), "garde 1. la scène « " + s + " », qui part de « " + v.ecran + " » (" + v.fichier + "), existe");
     if(G.MESURES){ G.garde4(verif); const pm = await navig.newPage({viewport: {width: 1280, height: 800}}); await G.garde4Echantillon(pm, FICHIER, verif); await pm.close(); }
@@ -100,7 +104,23 @@ if(SORTIE && fs.existsSync(SORTIE)) fs.unlinkSync(SORTIE);   // (garde, défaut 
     const R = {n:0, echecs:[]};
     const verif = (ok, quoi, detail) => { R.n++; if(!ok) R.echecs.push(quoi + (detail ? " — " + detail : "")); return ok; };
     const tailles = VUES[sc.vue];
-    if(GARDES !== "0" && relu(sc)){
+    if(C2 && relu(sc)){
+      // garde 7 (le panneau, aux trois tailles de la console) et garde 8 (la place de la section « Emploi du temps »)
+      if(/^m-/.test(sc.id)) for(const T of G2.TAILLES_CONSOLE){
+        const t = await ouvrir(T.w, T.h, sc.id, "&cap=1");
+        G2.garde7Panneau(sc.id, T, await t.page.evaluate(G2.lirePanneau)).forEach(x => verif(false, x)); verif(true, "garde 7. " + sc.id + " @" + T.w + " : le panneau mesuré");
+        if(/^m-emploi-du-temps/.test(sc.id)){ G2.garde8Place(sc.id, T, await t.page.evaluate(G2.lireEdt)).forEach(x => verif(false, x)); verif(true, "garde 8. " + sc.id + " @" + T.w + " : la place mesurée"); }
+        await t.ctx.close();
+      }
+      const T = tailles[0], H = (sc.vh && sc.vue === "console") ? Math.max(sc.vh, T.h) : T.h;
+      const g = await ouvrir(T.w, H, sc.id, "&cap=1");
+      if(G2.VUES_PAUL.includes(sc.vue)){ G2.garde6(sc.id, await g.page.evaluate(G2.lireFermes)).forEach(x => verif(false, x)); verif(true, "garde 6. " + sc.id + " : les boutons fermés regardés"); }
+      if(/^m-/.test(sc.id)){ G2.garde7Lignes(sc.id, await g.page.evaluate(G2.lireLignesEleves)).forEach(x => verif(false, x)); verif(true, "garde 7. " + sc.id + " : les lignes d'élève mesurées"); }
+      if(/^m-emploi-du-temps/.test(sc.id)) G2.garde8Etats(sc.id, await g.page.evaluate(G2.lireEdt)).forEach(x => verif(false, x));
+      if(sc.id === "m-emploi-du-temps") await G2.garde8Copies(g.page, sc.id, verif);
+      await g.ctx.close();
+    }
+    if(C1 && relu(sc)){
       const T = tailles[0], H = (sc.vh && sc.vue === "console") ? Math.max(sc.vh, T.h) : T.h;
       const g = await ouvrir(T.w, H, sc.id, "&cap=1");
       const vu = await g.page.evaluate(G.extraireEcran, {phrases: true});
@@ -110,7 +130,7 @@ if(SORTIE && fs.existsSync(SORTIE)) fs.unlinkSync(SORTIE);   // (garde, défaut 
       G.garde5Scene(sc.id, await g.page.evaluate(G.lireEstimation), ESTIMATIONS).forEach(x => verif(false, x));
       await g.ctx.close();
     }
-    if(GARDES === "seules") return R;
+    if(GARDES === "seules" || GARDES === "c2") return R;
     for(let ti = 0; ti < tailles.length; ti++){
       const T = tailles[ti], H = (sc.vh && sc.vue === "console") ? Math.max(sc.vh, T.h) : T.h;
       const o = await ouvrir(T.w, H, sc.id, "&cap=1");
@@ -193,12 +213,12 @@ if(SORTIE && fs.existsSync(SORTIE)) fs.unlinkSync(SORTIE);   // (garde, défaut 
   async function ouvrier(){ while(suivant < aFaire.length){ const k = suivant++; resultats[k] = await verifierScene(aFaire[k]); } }
   await Promise.all([ouvrier(), ouvrier(), ouvrier(), ouvrier()]);
   for(const r of resultats){ nb += r.n; echecs.push(...r.echecs); }
-  if(GARDES !== "0") G.garde5Final(ESTIMATIONS, verif);
+  if(C1) G.garde5Final(ESTIMATIONS, verif);
   await navig.close();
 
   const lignes = [];
   lignes.push("Banc unique — maquette complète du QCM");
-  lignes.push("Fichier : " + path.basename(FICHIER) + " · étape jouée : " + ETAPE + (GARDES === "0" ? " · sans les gardes du complément 1" : GARDES === "seules" ? " · les gardes du complément 1 seules" : " · avec les gardes du complément 1") + (GARDES !== "0" && !G.MESURES ? ", sans les mesures (garde 4 et texte de {{LIMITES}} : étape C)" : "") + " · " + new Date().toISOString());
+  lignes.push("Fichier : " + path.basename(FICHIER) + " · étape jouée : " + ETAPE + (GARDES === "0" ? " · sans les gardes des compléments" : GARDES === "seules" ? " · les gardes des compléments 1 et 2 seules" : GARDES === "c2" ? " · les gardes 6, 7 et 8 du complément 2 seules" : " · avec les gardes des compléments 1 et 2") + (C1 && !G.MESURES ? ", sans les mesures (garde 4 et texte de {{LIMITES}} : étape C)" : "") + " · " + new Date().toISOString());
   lignes.push(journal.join(" · "));
   lignes.push("Vérifications : " + nb + " · échecs : " + echecs.length);
   if(echecs.length) lignes.push("", "ÉCHECS :", ...echecs.map((e, i) => (i + 1) + ". " + e));

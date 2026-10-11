@@ -25,7 +25,8 @@ const i = "index";
 const MENU = [[1629, "🏠Tableau de bord"], [1631, "🏫Classes"], [1632, "👥Élèves & codes"], [1633, "🧪Profil test"], [1635, "📂Architecture"], [1636, "📦Archives"],
   [1637, "🗑Corbeille"], [1638, "📢Annonces aux élèves"], [1639, "🎓Dates de l’année"], [1640, "📚Taxonomie"], [1641, "📅Emploi du temps"], [1642, "🛠Atelier"],
   [1644, "⚙Configuration & Firebase"], [1645, "📡Présence live"]];
-const MENU_SCENES = ["m-classe-exclusions", "m-exclusion-refusee", "m-fiche-eleve", "m-taxonomie", "m-taxonomie-editeur", "m-taxonomie-domaine", "m-taxonomie-notion", "m-taxonomie-competences", "m-taxonomie-competence"];
+const EDT_SCENES = ["m-emploi-du-temps", "m-emploi-du-temps-un", "m-emploi-du-temps-tous"];
+const MENU_SCENES = ["m-classe-exclusions", "m-exclusion-refusee", "m-fiche-eleve", "m-taxonomie", "m-taxonomie-editeur", "m-taxonomie-domaine", "m-taxonomie-notion", "m-taxonomie-competences", "m-taxonomie-competence"].concat(EDT_SCENES);
 inv("panneau-menu", i, {comment: "Le panneau prof : l'en-tête et les 14 entrées du menu, sous « Vue d'ensemble », « Personnes », « Contenu », « Système ».", scenes: MENU_SCENES,
   boutons: [B(i, 2069, "🧪 Mode test", "", "🧪 Mode test"), B(i, 1624, "✕")].concat(MENU.map(m => B(i, m[0], m[1], "", m[1].replace(/^\S+?(?=[A-ZÉ])/u, "")))),
   classes: [K(i, 1620, "tprof-overlay"), K(i, 1621, "tprof-box"), K(i, 1622, "tprof-header"), K(i, 1627, "tprof-sidebar"), K(i, 1628, "tprof-sidebar-label"), K(i, 1629, "tprof-section-btn"), K(i, 1629, "tps-icon"), K(i, 1647, "tprof-content")],
@@ -81,6 +82,21 @@ inv("taxonomie-notion", i, {comment: "Une notion en cours de modification (_taxo
   champs: [CH(i, 2498, "Libellé professeur"), CH(i, 2499, "Libellé élève"), CH(i, 2500, "6e-3e"), CH(i, 2501, "« … »")],
   classes: [K(i, 2497, "m8tx-form"), K(i, 2493, "m8tx-champ"), K(i, 2493, "m8tx-lab"), K(i, 2494, "m8-input"), K(i, 2502, "m8tx-actions"), K(i, 2504, "m8tx-note")],
   phrases: [P(i, 2498, "Libellé professeur"), P(i, 2499, "Libellé élève"), P(i, 2500, "Niveaux"), P(i, 2501, "Exemple (facultatif)"), P(i, 2504, "ne change jamais : c’est lui qui étiquette le travail des élèves.")]});
+
+/* ── L'emploi du temps (complément 2, §4 : edtSectionPanneau l.19760–19768, edtPeindrePanneau l.19794–19850, EDT_VOIES l.19288–19295),
+      avec les objets présents au hub le 11/10 (MANDATS/COMPLEMENT-MAQUETTE-QCM-COMPLETE-2-EDT/) : six « ⤓ Sortir le JSON », deux « 📋 Copier le prompt » ── */
+const EDT_DATES = {calendrier: "jeudi 3 septembre", grille: "jeudi 3 septembre", creneaux: "jeudi 3 septembre", periodes: "vendredi 4 septembre", photos: "vendredi 4 septembre", reglages: "vendredi 4 septembre"};
+inv("emploi-du-temps", i, {comment: "« 📅 Emploi du temps », avec les objets de l'année 2026-2027 relus au hub : le paragraphe, les trois lignes d'état, la rangée (« Ouvrir », la case, un « Sortir le JSON » par objet, un « Copier le prompt » par voie), le rappel du calendrier, « ✨ Injecter un objet » et ses trois voies.",
+  scenes: EDT_SCENES,
+  boutons: [B(i, 19810, "📅 Ouvrir l’emploi du temps")]
+    .concat(Object.keys(EDT_DATES).map(o => ({l: "⤓ Sortir le JSON — " + o + " — injecté le " + EDT_DATES[o], t: "copier le JSON tel qu’il est au hub — injecté le " + EDT_DATES[o], ligne: voir(i, 19815, "copier le JSON tel qu’il est au hub") && voir(i, 19815, "Sortir le JSON")})))   // le libellé et l'infobulle portent l'objet et sa date (edtJourEnClair, l. 21823)
+    .concat(["calendrier", "grille"].map(k => B(i, 19819, "📋 Copier le prompt — " + k, "la consigne pour l’IA et le JSON en service, en un seul bloc", "Copier le prompt")))
+    .concat([B(i, 19826, "Réinjecter maintenant…"), B(i, 19827, "Plus tard"), B(i, 19289, "Calendrier de l’année"), B(i, 19291, "Grille de l’emploi du temps"), B(i, 19293, "Créneaux horaires")]),
+  cases: [{l: "arriver sur l’emploi du temps en me connectant", ligne: voir(i, 19812, "arriver sur l’emploi du temps en me connectant")}],
+  classes: [K(i, 19767, "edt-panneau"), K(i, 19798, "edt-p"), K(i, 19802, "edt-etats"), K(i, 19771, "edt-etat"), K(i, 19771, "edt-ok"), K(i, 19810, "edt-actions"), K(i, 19810, "edt-haut"), K(i, 19810, "edt-btn"), K(i, 19810, "edt-btn-prim"),
+    K(i, 19811, "edt-regl"), K(i, 19823, "edt-bloc"), K(i, 19823, "edt-rappel"), K(i, 19828, "edt-titre"), K(i, 19829, "edt-voies")],
+  phrases: [P(i, 19767, "📅 Emploi du temps"), P(i, 19798, "Les objets vivent au hub sous"), P(i, 19799, "Rien n’est obligatoire : ce qui manque manque, le site marche comme avant."),
+    P(i, 19803, "Calendrier de l’année"), P(i, 19804, "Grille de l’emploi du temps"), P(i, 19805, "Créneaux horaires"), P(i, 19825, "pense à le réinjecter s’il a bougé."), P(i, 19828, "✨ Injecter un objet")]});
 
 /* ── La correction de l'élève dans la 7.7.1 (EleveCorrection, l.4267–4445) : vide à l'écran, lue dans le code ── */
 const q = "qcm";

@@ -1,0 +1,485 @@
+Les gardes 6, 7 et 8 du complément 2, jouées sur maquette-qcm-v6.html (GARDES=c2 node banc/banc.js maquette-qcm-v6.html 5) et sur les témoins (node banc/temoins.js maquette-qcm-v6.html)
+
+✔ Défaut 7 — les 13 boutons fermés de MJPC (12 entrées du menu et « Code professeur ») ne se voient pas fermés, dans les 9 scènes — trouvé par la garde 6
+    13 boutons trouvés, dans 9 scènes
+    garde 6. m-classe-exclusions : « 🏠 Tableau de bord » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+    garde 6. m-classe-exclusions : « 🏠 Tableau de bord » (fermé) garde la main comme curseur
+    garde 6. m-classe-exclusions : « 🏠 Tableau de bord » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+    garde 6. m-classe-exclusions : « Code professeur » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+    garde 6. m-classe-exclusions : « Code professeur » (fermé) garde la main comme curseur
+✔ Dette 87 — le panneau borné à 1 100 px, avec sa marge — trouvé par la garde 7, partie 1
+    27 mesures, dans 9 scènes
+    garde 7. m-classe-exclusions @1366×768 : le panneau ne touche pas les bords de la fenêtre (dette 87) — gauche 133 au lieu de 0, haut 30 au lieu de 0, droite 1233 au lieu de 1366, bas 738 au lieu de 768
+    garde 7. m-classe-exclusions @1536×864 : le panneau ne touche pas les bords de la fenêtre (dette 87) — gauche 218 au lieu de 0, haut 30 au lieu de 0, droite 1318 au lieu de 1536, bas 834 au lieu de 864
+    garde 7. m-classe-exclusions @1920×1080 : le panneau ne touche pas les bords de la fenêtre (dette 87) — gauche 410 au lieu de 0, haut 30 au lieu de 0, droite 1510 au lieu de 1920, bas 1050 au lieu de 1080
+✔ Dette 88 — la grille de la ligne d'élève changée sans raison inscrite — trouvé par la garde 7, partie 3
+    garde 7. src/mjpc-ajouts.css : la règle « .tprof-content .el-row » est celle d'index.html, ou son écart est inscrit (ecarts-mjpc.json) — règle absente d'index.html
+✔ Dette 88 — sur le témoin (la grille d'index.html remise), ↻ ✕ hors de la carte sur chaque ligne — trouvé par la garde 7, partie 2
+      m-classe-exclusions : 25 lignes, ↻ ✕ hors de la carte sur 25 (chaque ligne) ✔
+      m-exclusion-refusee : 25 lignes, ↻ ✕ hors de la carte sur 25 (chaque ligne) ✔
+    garde 7. m-classe-exclusions : la ligne de « ABRIAL Julien » : ↻ ✕ sortent de la carte (dette 88) — à -20 px du bord gauche, 39 px sous le haut
+    garde 7. m-classe-exclusions : la ligne de « BAUDRY Léa » : ↻ ✕ sortent de la carte (dette 88) — à -20 px du bord gauche, 39 px sous le haut
+✔ Rangée de l'emploi du temps (n°12 · 212) — sur le témoin (la vraie rangée), le défilement de côté et des boutons sur plus de deux lignes — trouvé par la garde 8
+      défilement de côté : oui ✔ · boutons sur plus de deux lignes : 9 ✔
+    garde 8. rangee-index @1366×768 : le contenu défile de côté — .tprof-content 943 px pour 869
+    garde 8. rangee-index @1366×768 : le contenu défile de côté — .edt-panneau 913 px pour 809
+    garde 8. rangee-index @1366×768 : le contenu défile de côté — .edt-actions 913 px pour 809
+    garde 8. rangee-index @1366×768 : « 📅 Ouvrir l’emploi du temps » tient sur 5 lignes
+
+Ce que les gardes trouvent d'autre sur la v6 (des défauts, corrigés à l'étape B) : 28
+    garde 6. c-attest2 : « 🔒 ▶️ Commencer la correction » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+    garde 6. c-coeval-attente : « 🔒 🏁 Afficher leur bilan aux élèves » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+    garde 6. c-coeval-retire-deux : « 🔒 🏁 Afficher leur bilan aux élèves » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+    garde 6. c-coeval-retire-julien : « 🔒 🏁 Afficher leur bilan aux élèves » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+    garde 6. c-coeval-retire-michel : « 🔒 🏁 Afficher leur bilan aux élèves » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+    garde 6. c-collage : « 💾 Enregistrer l'évaluation » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+    garde 6. c-corr-q1-apres : « 💡 Révélée » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+    garde 6. c-corr-q2-apres : « ← Question précédente » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+    garde 6. c-corr-q2-apres : « 💡 Révélée » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+    garde 6. c-corr-q2-avant : « ← Question précédente » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+    garde 6. c-corr-q2-avant : « 🔒 Révéler » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+    garde 6. c-corr-q2-lu : « ← Question précédente » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+    garde 6. c-corr-q3-apres : « 💡 Révélée » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+    garde 6. c-deplacer : « 🔓 Rouvrir pour tous » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+    garde 6. c-ecartee : « 🔓 Rouvrir pour tous » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+    garde 6. c-fiche : « ↻ Regénérer » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+    garde 6. c-fiche-retire : « ↻ Regénérer » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+    garde 6. c-papier-correction : « Question suivante → » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+    garde 6. c-papier-correction : « ← Question précédente » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+    garde 6. c-q1-close : « 🔓 Rouvrir pour tous » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+    garde 6. c-q3-close : « 🔓 Rouvrir pour tous » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+    garde 6. c-resultats : « 📄 PDF notes et compétences » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+    garde 6. p-corr-apres : « ← Question précédente » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+    garde 6. p-corr-avant : « ← Question précédente » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+    garde 6. p-corr-avant : « 🔒 Révéler — il en manque 6 » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+    garde 6. x610-8-console-alerte : « 🔒 🏁 Afficher leur bilan aux élèves » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+    garde 6. x610-9-telephone-alerte : « 🔒 🏁 Afficher leur bilan — il en manque 4 » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+    garde 6. x627-3-editeur : « 💾 Enregistrer l'évaluation » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+
+Chaque défaut connu du §5 est trouvé par sa garde.
+
+════════ La sortie du banc (GARDES=c2, v6) ════════
+Banc unique — maquette complète du QCM
+Fichier : maquette-qcm-v6.html · étape jouée : 5 · les gardes 6, 7 et 8 du complément 2 seules · 2026-10-11T06:29:19.587Z
+166 scènes · 294 règles de CSS de MJPC qui visent le vrai site, comparées à index.html · 9 écarts inscrits
+Vérifications : 850 · échecs : 389
+
+ÉCHECS :
+1. garde 7. src/mjpc-ajouts.css : la règle « .tprof-content .el-row » est celle d'index.html, ou son écart est inscrit (ecarts-mjpc.json) — règle absente d'index.html
+2. garde 6. c-collage : « 💾 Enregistrer l'évaluation » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+3. garde 6. x627-3-editeur : « 💾 Enregistrer l'évaluation » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+4. garde 6. c-q1-close : « 🔓 Rouvrir pour tous » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+5. garde 6. c-ecartee : « 🔓 Rouvrir pour tous » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+6. garde 6. c-q3-close : « 🔓 Rouvrir pour tous » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+7. garde 6. c-deplacer : « 🔓 Rouvrir pour tous » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+8. garde 6. c-attest2 : « 🔒 ▶️ Commencer la correction » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+9. garde 6. c-corr-q2-avant : « ← Question précédente » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+10. garde 6. c-corr-q2-avant : « 🔒 Révéler » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+11. garde 6. p-corr-avant : « 🔒 Révéler — il en manque 6 » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+12. garde 6. p-corr-avant : « ← Question précédente » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+13. garde 6. c-corr-q2-lu : « ← Question précédente » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+14. garde 6. c-corr-q2-apres : « ← Question précédente » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+15. garde 6. c-corr-q2-apres : « 💡 Révélée » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+16. garde 6. p-corr-apres : « ← Question précédente » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+17. garde 6. c-corr-q3-apres : « 💡 Révélée » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+18. garde 6. c-corr-q1-apres : « 💡 Révélée » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+19. garde 6. c-coeval-attente : « 🔒 🏁 Afficher leur bilan aux élèves » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+20. garde 6. c-coeval-retire-michel : « 🔒 🏁 Afficher leur bilan aux élèves » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+21. garde 6. c-coeval-retire-julien : « 🔒 🏁 Afficher leur bilan aux élèves » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+22. garde 6. c-coeval-retire-deux : « 🔒 🏁 Afficher leur bilan aux élèves » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+23. garde 6. x610-8-console-alerte : « 🔒 🏁 Afficher leur bilan aux élèves » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+24. garde 6. x610-9-telephone-alerte : « 🔒 🏁 Afficher leur bilan — il en manque 4 » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+25. garde 6. c-papier-correction : « ← Question précédente » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+26. garde 6. c-papier-correction : « Question suivante → » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+27. garde 6. c-resultats : « 📄 PDF notes et compétences » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+28. garde 6. c-fiche : « ↻ Regénérer » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+29. garde 6. c-fiche-retire : « ↻ Regénérer » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+30. garde 7. m-classe-exclusions @1366×768 : le panneau ne touche pas les bords de la fenêtre (dette 87) — gauche 133 au lieu de 0, haut 30 au lieu de 0, droite 1233 au lieu de 1366, bas 738 au lieu de 768
+31. garde 7. m-classe-exclusions @1536×864 : le panneau ne touche pas les bords de la fenêtre (dette 87) — gauche 218 au lieu de 0, haut 30 au lieu de 0, droite 1318 au lieu de 1536, bas 834 au lieu de 864
+32. garde 7. m-classe-exclusions @1920×1080 : le panneau ne touche pas les bords de la fenêtre (dette 87) — gauche 410 au lieu de 0, haut 30 au lieu de 0, droite 1510 au lieu de 1920, bas 1050 au lieu de 1080
+33. garde 6. m-classe-exclusions : « 🏠 Tableau de bord » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+34. garde 6. m-classe-exclusions : « 🏠 Tableau de bord » (fermé) garde la main comme curseur
+35. garde 6. m-classe-exclusions : « 🏠 Tableau de bord » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+36. garde 6. m-classe-exclusions : « 🏫 Classes » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+37. garde 6. m-classe-exclusions : « 🏫 Classes » (fermé) garde la main comme curseur
+38. garde 6. m-classe-exclusions : « 🏫 Classes » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+39. garde 6. m-classe-exclusions : « 🧪 Profil test » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+40. garde 6. m-classe-exclusions : « 🧪 Profil test » (fermé) garde la main comme curseur
+41. garde 6. m-classe-exclusions : « 🧪 Profil test » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+42. garde 6. m-classe-exclusions : « 📂 Architecture » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+43. garde 6. m-classe-exclusions : « 📂 Architecture » (fermé) garde la main comme curseur
+44. garde 6. m-classe-exclusions : « 📂 Architecture » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+45. garde 6. m-classe-exclusions : « 📦 Archives » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+46. garde 6. m-classe-exclusions : « 📦 Archives » (fermé) garde la main comme curseur
+47. garde 6. m-classe-exclusions : « 📦 Archives » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+48. garde 6. m-classe-exclusions : « 🗑 Corbeille » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+49. garde 6. m-classe-exclusions : « 🗑 Corbeille » (fermé) garde la main comme curseur
+50. garde 6. m-classe-exclusions : « 🗑 Corbeille » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+51. garde 6. m-classe-exclusions : « 📢 Annonces aux élèves » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+52. garde 6. m-classe-exclusions : « 📢 Annonces aux élèves » (fermé) garde la main comme curseur
+53. garde 6. m-classe-exclusions : « 📢 Annonces aux élèves » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+54. garde 6. m-classe-exclusions : « 🎓 Dates de l’année » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+55. garde 6. m-classe-exclusions : « 🎓 Dates de l’année » (fermé) garde la main comme curseur
+56. garde 6. m-classe-exclusions : « 🎓 Dates de l’année » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+57. garde 6. m-classe-exclusions : « 📅 Emploi du temps » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+58. garde 6. m-classe-exclusions : « 📅 Emploi du temps » (fermé) garde la main comme curseur
+59. garde 6. m-classe-exclusions : « 📅 Emploi du temps » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+60. garde 6. m-classe-exclusions : « 🛠 Atelier » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+61. garde 6. m-classe-exclusions : « 🛠 Atelier » (fermé) garde la main comme curseur
+62. garde 6. m-classe-exclusions : « 🛠 Atelier » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+63. garde 6. m-classe-exclusions : « ⚙ Configuration & Firebase » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+64. garde 6. m-classe-exclusions : « ⚙ Configuration & Firebase » (fermé) garde la main comme curseur
+65. garde 6. m-classe-exclusions : « ⚙ Configuration & Firebase » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+66. garde 6. m-classe-exclusions : « 📡 Présence live » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+67. garde 6. m-classe-exclusions : « 📡 Présence live » (fermé) garde la main comme curseur
+68. garde 6. m-classe-exclusions : « 📡 Présence live » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+69. garde 6. m-classe-exclusions : « Code professeur » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+70. garde 6. m-classe-exclusions : « Code professeur » (fermé) garde la main comme curseur
+71. garde 6. m-classe-exclusions : « Code professeur » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+72. garde 7. m-exclusion-refusee @1366×768 : le panneau ne touche pas les bords de la fenêtre (dette 87) — gauche 133 au lieu de 0, haut 30 au lieu de 0, droite 1233 au lieu de 1366, bas 738 au lieu de 768
+73. garde 7. m-exclusion-refusee @1536×864 : le panneau ne touche pas les bords de la fenêtre (dette 87) — gauche 218 au lieu de 0, haut 30 au lieu de 0, droite 1318 au lieu de 1536, bas 834 au lieu de 864
+74. garde 7. m-exclusion-refusee @1920×1080 : le panneau ne touche pas les bords de la fenêtre (dette 87) — gauche 410 au lieu de 0, haut 30 au lieu de 0, droite 1510 au lieu de 1920, bas 1050 au lieu de 1080
+75. garde 6. m-exclusion-refusee : « 🏠 Tableau de bord » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+76. garde 6. m-exclusion-refusee : « 🏠 Tableau de bord » (fermé) garde la main comme curseur
+77. garde 6. m-exclusion-refusee : « 🏠 Tableau de bord » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+78. garde 6. m-exclusion-refusee : « 🏫 Classes » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+79. garde 6. m-exclusion-refusee : « 🏫 Classes » (fermé) garde la main comme curseur
+80. garde 6. m-exclusion-refusee : « 🏫 Classes » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+81. garde 6. m-exclusion-refusee : « 🧪 Profil test » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+82. garde 6. m-exclusion-refusee : « 🧪 Profil test » (fermé) garde la main comme curseur
+83. garde 6. m-exclusion-refusee : « 🧪 Profil test » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+84. garde 6. m-exclusion-refusee : « 📂 Architecture » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+85. garde 6. m-exclusion-refusee : « 📂 Architecture » (fermé) garde la main comme curseur
+86. garde 6. m-exclusion-refusee : « 📂 Architecture » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+87. garde 6. m-exclusion-refusee : « 📦 Archives » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+88. garde 6. m-exclusion-refusee : « 📦 Archives » (fermé) garde la main comme curseur
+89. garde 6. m-exclusion-refusee : « 📦 Archives » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+90. garde 6. m-exclusion-refusee : « 🗑 Corbeille » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+91. garde 6. m-exclusion-refusee : « 🗑 Corbeille » (fermé) garde la main comme curseur
+92. garde 6. m-exclusion-refusee : « 🗑 Corbeille » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+93. garde 6. m-exclusion-refusee : « 📢 Annonces aux élèves » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+94. garde 6. m-exclusion-refusee : « 📢 Annonces aux élèves » (fermé) garde la main comme curseur
+95. garde 6. m-exclusion-refusee : « 📢 Annonces aux élèves » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+96. garde 6. m-exclusion-refusee : « 🎓 Dates de l’année » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+97. garde 6. m-exclusion-refusee : « 🎓 Dates de l’année » (fermé) garde la main comme curseur
+98. garde 6. m-exclusion-refusee : « 🎓 Dates de l’année » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+99. garde 6. m-exclusion-refusee : « 📅 Emploi du temps » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+100. garde 6. m-exclusion-refusee : « 📅 Emploi du temps » (fermé) garde la main comme curseur
+101. garde 6. m-exclusion-refusee : « 📅 Emploi du temps » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+102. garde 6. m-exclusion-refusee : « 🛠 Atelier » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+103. garde 6. m-exclusion-refusee : « 🛠 Atelier » (fermé) garde la main comme curseur
+104. garde 6. m-exclusion-refusee : « 🛠 Atelier » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+105. garde 6. m-exclusion-refusee : « ⚙ Configuration & Firebase » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+106. garde 6. m-exclusion-refusee : « ⚙ Configuration & Firebase » (fermé) garde la main comme curseur
+107. garde 6. m-exclusion-refusee : « ⚙ Configuration & Firebase » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+108. garde 6. m-exclusion-refusee : « 📡 Présence live » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+109. garde 6. m-exclusion-refusee : « 📡 Présence live » (fermé) garde la main comme curseur
+110. garde 6. m-exclusion-refusee : « 📡 Présence live » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+111. garde 6. m-exclusion-refusee : « Code professeur » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+112. garde 6. m-exclusion-refusee : « Code professeur » (fermé) garde la main comme curseur
+113. garde 6. m-exclusion-refusee : « Code professeur » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+114. garde 7. m-fiche-eleve @1366×768 : le panneau ne touche pas les bords de la fenêtre (dette 87) — gauche 133 au lieu de 0, haut 30 au lieu de 0, droite 1233 au lieu de 1366, bas 738 au lieu de 768
+115. garde 7. m-fiche-eleve @1536×864 : le panneau ne touche pas les bords de la fenêtre (dette 87) — gauche 218 au lieu de 0, haut 30 au lieu de 0, droite 1318 au lieu de 1536, bas 834 au lieu de 864
+116. garde 7. m-fiche-eleve @1920×1080 : le panneau ne touche pas les bords de la fenêtre (dette 87) — gauche 410 au lieu de 0, haut 30 au lieu de 0, droite 1510 au lieu de 1920, bas 1050 au lieu de 1080
+117. garde 6. m-fiche-eleve : « 🏠 Tableau de bord » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+118. garde 6. m-fiche-eleve : « 🏠 Tableau de bord » (fermé) garde la main comme curseur
+119. garde 6. m-fiche-eleve : « 🏠 Tableau de bord » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+120. garde 6. m-fiche-eleve : « 🏫 Classes » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+121. garde 6. m-fiche-eleve : « 🏫 Classes » (fermé) garde la main comme curseur
+122. garde 6. m-fiche-eleve : « 🏫 Classes » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+123. garde 6. m-fiche-eleve : « 🧪 Profil test » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+124. garde 6. m-fiche-eleve : « 🧪 Profil test » (fermé) garde la main comme curseur
+125. garde 6. m-fiche-eleve : « 🧪 Profil test » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+126. garde 6. m-fiche-eleve : « 📂 Architecture » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+127. garde 6. m-fiche-eleve : « 📂 Architecture » (fermé) garde la main comme curseur
+128. garde 6. m-fiche-eleve : « 📂 Architecture » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+129. garde 6. m-fiche-eleve : « 📦 Archives » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+130. garde 6. m-fiche-eleve : « 📦 Archives » (fermé) garde la main comme curseur
+131. garde 6. m-fiche-eleve : « 📦 Archives » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+132. garde 6. m-fiche-eleve : « 🗑 Corbeille » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+133. garde 6. m-fiche-eleve : « 🗑 Corbeille » (fermé) garde la main comme curseur
+134. garde 6. m-fiche-eleve : « 🗑 Corbeille » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+135. garde 6. m-fiche-eleve : « 📢 Annonces aux élèves » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+136. garde 6. m-fiche-eleve : « 📢 Annonces aux élèves » (fermé) garde la main comme curseur
+137. garde 6. m-fiche-eleve : « 📢 Annonces aux élèves » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+138. garde 6. m-fiche-eleve : « 🎓 Dates de l’année » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+139. garde 6. m-fiche-eleve : « 🎓 Dates de l’année » (fermé) garde la main comme curseur
+140. garde 6. m-fiche-eleve : « 🎓 Dates de l’année » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+141. garde 6. m-fiche-eleve : « 📅 Emploi du temps » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+142. garde 6. m-fiche-eleve : « 📅 Emploi du temps » (fermé) garde la main comme curseur
+143. garde 6. m-fiche-eleve : « 📅 Emploi du temps » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+144. garde 6. m-fiche-eleve : « 🛠 Atelier » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+145. garde 6. m-fiche-eleve : « 🛠 Atelier » (fermé) garde la main comme curseur
+146. garde 6. m-fiche-eleve : « 🛠 Atelier » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+147. garde 6. m-fiche-eleve : « ⚙ Configuration & Firebase » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+148. garde 6. m-fiche-eleve : « ⚙ Configuration & Firebase » (fermé) garde la main comme curseur
+149. garde 6. m-fiche-eleve : « ⚙ Configuration & Firebase » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+150. garde 6. m-fiche-eleve : « 📡 Présence live » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+151. garde 6. m-fiche-eleve : « 📡 Présence live » (fermé) garde la main comme curseur
+152. garde 6. m-fiche-eleve : « 📡 Présence live » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+153. garde 6. m-fiche-eleve : « Code professeur » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+154. garde 6. m-fiche-eleve : « Code professeur » (fermé) garde la main comme curseur
+155. garde 6. m-fiche-eleve : « Code professeur » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+156. garde 7. m-taxonomie @1366×768 : le panneau ne touche pas les bords de la fenêtre (dette 87) — gauche 133 au lieu de 0, haut 30 au lieu de 0, droite 1233 au lieu de 1366, bas 738 au lieu de 768
+157. garde 7. m-taxonomie @1536×864 : le panneau ne touche pas les bords de la fenêtre (dette 87) — gauche 218 au lieu de 0, haut 30 au lieu de 0, droite 1318 au lieu de 1536, bas 834 au lieu de 864
+158. garde 7. m-taxonomie @1920×1080 : le panneau ne touche pas les bords de la fenêtre (dette 87) — gauche 410 au lieu de 0, haut 30 au lieu de 0, droite 1510 au lieu de 1920, bas 1050 au lieu de 1080
+159. garde 6. m-taxonomie : « 🏠 Tableau de bord » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+160. garde 6. m-taxonomie : « 🏠 Tableau de bord » (fermé) garde la main comme curseur
+161. garde 6. m-taxonomie : « 🏠 Tableau de bord » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+162. garde 6. m-taxonomie : « 🏫 Classes » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+163. garde 6. m-taxonomie : « 🏫 Classes » (fermé) garde la main comme curseur
+164. garde 6. m-taxonomie : « 🏫 Classes » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+165. garde 6. m-taxonomie : « 🧪 Profil test » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+166. garde 6. m-taxonomie : « 🧪 Profil test » (fermé) garde la main comme curseur
+167. garde 6. m-taxonomie : « 🧪 Profil test » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+168. garde 6. m-taxonomie : « 📂 Architecture » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+169. garde 6. m-taxonomie : « 📂 Architecture » (fermé) garde la main comme curseur
+170. garde 6. m-taxonomie : « 📂 Architecture » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+171. garde 6. m-taxonomie : « 📦 Archives » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+172. garde 6. m-taxonomie : « 📦 Archives » (fermé) garde la main comme curseur
+173. garde 6. m-taxonomie : « 📦 Archives » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+174. garde 6. m-taxonomie : « 🗑 Corbeille » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+175. garde 6. m-taxonomie : « 🗑 Corbeille » (fermé) garde la main comme curseur
+176. garde 6. m-taxonomie : « 🗑 Corbeille » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+177. garde 6. m-taxonomie : « 📢 Annonces aux élèves » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+178. garde 6. m-taxonomie : « 📢 Annonces aux élèves » (fermé) garde la main comme curseur
+179. garde 6. m-taxonomie : « 📢 Annonces aux élèves » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+180. garde 6. m-taxonomie : « 🎓 Dates de l’année » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+181. garde 6. m-taxonomie : « 🎓 Dates de l’année » (fermé) garde la main comme curseur
+182. garde 6. m-taxonomie : « 🎓 Dates de l’année » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+183. garde 6. m-taxonomie : « 📅 Emploi du temps » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+184. garde 6. m-taxonomie : « 📅 Emploi du temps » (fermé) garde la main comme curseur
+185. garde 6. m-taxonomie : « 📅 Emploi du temps » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+186. garde 6. m-taxonomie : « 🛠 Atelier » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+187. garde 6. m-taxonomie : « 🛠 Atelier » (fermé) garde la main comme curseur
+188. garde 6. m-taxonomie : « 🛠 Atelier » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+189. garde 6. m-taxonomie : « ⚙ Configuration & Firebase » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+190. garde 6. m-taxonomie : « ⚙ Configuration & Firebase » (fermé) garde la main comme curseur
+191. garde 6. m-taxonomie : « ⚙ Configuration & Firebase » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+192. garde 6. m-taxonomie : « 📡 Présence live » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+193. garde 6. m-taxonomie : « 📡 Présence live » (fermé) garde la main comme curseur
+194. garde 6. m-taxonomie : « 📡 Présence live » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+195. garde 7. m-taxonomie-editeur @1366×768 : le panneau ne touche pas les bords de la fenêtre (dette 87) — gauche 133 au lieu de 0, haut 30 au lieu de 0, droite 1233 au lieu de 1366, bas 738 au lieu de 768
+196. garde 7. m-taxonomie-editeur @1536×864 : le panneau ne touche pas les bords de la fenêtre (dette 87) — gauche 218 au lieu de 0, haut 30 au lieu de 0, droite 1318 au lieu de 1536, bas 834 au lieu de 864
+197. garde 7. m-taxonomie-editeur @1920×1080 : le panneau ne touche pas les bords de la fenêtre (dette 87) — gauche 410 au lieu de 0, haut 30 au lieu de 0, droite 1510 au lieu de 1920, bas 1050 au lieu de 1080
+198. garde 6. m-taxonomie-editeur : « 🏠 Tableau de bord » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+199. garde 6. m-taxonomie-editeur : « 🏠 Tableau de bord » (fermé) garde la main comme curseur
+200. garde 6. m-taxonomie-editeur : « 🏠 Tableau de bord » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+201. garde 6. m-taxonomie-editeur : « 🏫 Classes » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+202. garde 6. m-taxonomie-editeur : « 🏫 Classes » (fermé) garde la main comme curseur
+203. garde 6. m-taxonomie-editeur : « 🏫 Classes » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+204. garde 6. m-taxonomie-editeur : « 🧪 Profil test » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+205. garde 6. m-taxonomie-editeur : « 🧪 Profil test » (fermé) garde la main comme curseur
+206. garde 6. m-taxonomie-editeur : « 🧪 Profil test » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+207. garde 6. m-taxonomie-editeur : « 📂 Architecture » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+208. garde 6. m-taxonomie-editeur : « 📂 Architecture » (fermé) garde la main comme curseur
+209. garde 6. m-taxonomie-editeur : « 📂 Architecture » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+210. garde 6. m-taxonomie-editeur : « 📦 Archives » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+211. garde 6. m-taxonomie-editeur : « 📦 Archives » (fermé) garde la main comme curseur
+212. garde 6. m-taxonomie-editeur : « 📦 Archives » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+213. garde 6. m-taxonomie-editeur : « 🗑 Corbeille » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+214. garde 6. m-taxonomie-editeur : « 🗑 Corbeille » (fermé) garde la main comme curseur
+215. garde 6. m-taxonomie-editeur : « 🗑 Corbeille » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+216. garde 6. m-taxonomie-editeur : « 📢 Annonces aux élèves » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+217. garde 6. m-taxonomie-editeur : « 📢 Annonces aux élèves » (fermé) garde la main comme curseur
+218. garde 6. m-taxonomie-editeur : « 📢 Annonces aux élèves » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+219. garde 6. m-taxonomie-editeur : « 🎓 Dates de l’année » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+220. garde 6. m-taxonomie-editeur : « 🎓 Dates de l’année » (fermé) garde la main comme curseur
+221. garde 6. m-taxonomie-editeur : « 🎓 Dates de l’année » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+222. garde 6. m-taxonomie-editeur : « 📅 Emploi du temps » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+223. garde 6. m-taxonomie-editeur : « 📅 Emploi du temps » (fermé) garde la main comme curseur
+224. garde 6. m-taxonomie-editeur : « 📅 Emploi du temps » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+225. garde 6. m-taxonomie-editeur : « 🛠 Atelier » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+226. garde 6. m-taxonomie-editeur : « 🛠 Atelier » (fermé) garde la main comme curseur
+227. garde 6. m-taxonomie-editeur : « 🛠 Atelier » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+228. garde 6. m-taxonomie-editeur : « ⚙ Configuration & Firebase » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+229. garde 6. m-taxonomie-editeur : « ⚙ Configuration & Firebase » (fermé) garde la main comme curseur
+230. garde 6. m-taxonomie-editeur : « ⚙ Configuration & Firebase » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+231. garde 6. m-taxonomie-editeur : « 📡 Présence live » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+232. garde 6. m-taxonomie-editeur : « 📡 Présence live » (fermé) garde la main comme curseur
+233. garde 6. m-taxonomie-editeur : « 📡 Présence live » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+234. garde 7. m-taxonomie-domaine @1366×768 : le panneau ne touche pas les bords de la fenêtre (dette 87) — gauche 133 au lieu de 0, haut 30 au lieu de 0, droite 1233 au lieu de 1366, bas 738 au lieu de 768
+235. garde 7. m-taxonomie-domaine @1536×864 : le panneau ne touche pas les bords de la fenêtre (dette 87) — gauche 218 au lieu de 0, haut 30 au lieu de 0, droite 1318 au lieu de 1536, bas 834 au lieu de 864
+236. garde 7. m-taxonomie-domaine @1920×1080 : le panneau ne touche pas les bords de la fenêtre (dette 87) — gauche 410 au lieu de 0, haut 30 au lieu de 0, droite 1510 au lieu de 1920, bas 1050 au lieu de 1080
+237. garde 6. m-taxonomie-domaine : « 🏠 Tableau de bord » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+238. garde 6. m-taxonomie-domaine : « 🏠 Tableau de bord » (fermé) garde la main comme curseur
+239. garde 6. m-taxonomie-domaine : « 🏠 Tableau de bord » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+240. garde 6. m-taxonomie-domaine : « 🏫 Classes » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+241. garde 6. m-taxonomie-domaine : « 🏫 Classes » (fermé) garde la main comme curseur
+242. garde 6. m-taxonomie-domaine : « 🏫 Classes » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+243. garde 6. m-taxonomie-domaine : « 🧪 Profil test » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+244. garde 6. m-taxonomie-domaine : « 🧪 Profil test » (fermé) garde la main comme curseur
+245. garde 6. m-taxonomie-domaine : « 🧪 Profil test » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+246. garde 6. m-taxonomie-domaine : « 📂 Architecture » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+247. garde 6. m-taxonomie-domaine : « 📂 Architecture » (fermé) garde la main comme curseur
+248. garde 6. m-taxonomie-domaine : « 📂 Architecture » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+249. garde 6. m-taxonomie-domaine : « 📦 Archives » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+250. garde 6. m-taxonomie-domaine : « 📦 Archives » (fermé) garde la main comme curseur
+251. garde 6. m-taxonomie-domaine : « 📦 Archives » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+252. garde 6. m-taxonomie-domaine : « 🗑 Corbeille » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+253. garde 6. m-taxonomie-domaine : « 🗑 Corbeille » (fermé) garde la main comme curseur
+254. garde 6. m-taxonomie-domaine : « 🗑 Corbeille » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+255. garde 6. m-taxonomie-domaine : « 📢 Annonces aux élèves » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+256. garde 6. m-taxonomie-domaine : « 📢 Annonces aux élèves » (fermé) garde la main comme curseur
+257. garde 6. m-taxonomie-domaine : « 📢 Annonces aux élèves » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+258. garde 6. m-taxonomie-domaine : « 🎓 Dates de l’année » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+259. garde 6. m-taxonomie-domaine : « 🎓 Dates de l’année » (fermé) garde la main comme curseur
+260. garde 6. m-taxonomie-domaine : « 🎓 Dates de l’année » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+261. garde 6. m-taxonomie-domaine : « 📅 Emploi du temps » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+262. garde 6. m-taxonomie-domaine : « 📅 Emploi du temps » (fermé) garde la main comme curseur
+263. garde 6. m-taxonomie-domaine : « 📅 Emploi du temps » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+264. garde 6. m-taxonomie-domaine : « 🛠 Atelier » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+265. garde 6. m-taxonomie-domaine : « 🛠 Atelier » (fermé) garde la main comme curseur
+266. garde 6. m-taxonomie-domaine : « 🛠 Atelier » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+267. garde 6. m-taxonomie-domaine : « ⚙ Configuration & Firebase » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+268. garde 6. m-taxonomie-domaine : « ⚙ Configuration & Firebase » (fermé) garde la main comme curseur
+269. garde 6. m-taxonomie-domaine : « ⚙ Configuration & Firebase » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+270. garde 6. m-taxonomie-domaine : « 📡 Présence live » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+271. garde 6. m-taxonomie-domaine : « 📡 Présence live » (fermé) garde la main comme curseur
+272. garde 6. m-taxonomie-domaine : « 📡 Présence live » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+273. garde 7. m-taxonomie-notion @1366×768 : le panneau ne touche pas les bords de la fenêtre (dette 87) — gauche 133 au lieu de 0, haut 30 au lieu de 0, droite 1233 au lieu de 1366, bas 738 au lieu de 768
+274. garde 7. m-taxonomie-notion @1536×864 : le panneau ne touche pas les bords de la fenêtre (dette 87) — gauche 218 au lieu de 0, haut 30 au lieu de 0, droite 1318 au lieu de 1536, bas 834 au lieu de 864
+275. garde 7. m-taxonomie-notion @1920×1080 : le panneau ne touche pas les bords de la fenêtre (dette 87) — gauche 410 au lieu de 0, haut 30 au lieu de 0, droite 1510 au lieu de 1920, bas 1050 au lieu de 1080
+276. garde 6. m-taxonomie-notion : « 🏠 Tableau de bord » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+277. garde 6. m-taxonomie-notion : « 🏠 Tableau de bord » (fermé) garde la main comme curseur
+278. garde 6. m-taxonomie-notion : « 🏠 Tableau de bord » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+279. garde 6. m-taxonomie-notion : « 🏫 Classes » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+280. garde 6. m-taxonomie-notion : « 🏫 Classes » (fermé) garde la main comme curseur
+281. garde 6. m-taxonomie-notion : « 🏫 Classes » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+282. garde 6. m-taxonomie-notion : « 🧪 Profil test » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+283. garde 6. m-taxonomie-notion : « 🧪 Profil test » (fermé) garde la main comme curseur
+284. garde 6. m-taxonomie-notion : « 🧪 Profil test » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+285. garde 6. m-taxonomie-notion : « 📂 Architecture » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+286. garde 6. m-taxonomie-notion : « 📂 Architecture » (fermé) garde la main comme curseur
+287. garde 6. m-taxonomie-notion : « 📂 Architecture » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+288. garde 6. m-taxonomie-notion : « 📦 Archives » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+289. garde 6. m-taxonomie-notion : « 📦 Archives » (fermé) garde la main comme curseur
+290. garde 6. m-taxonomie-notion : « 📦 Archives » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+291. garde 6. m-taxonomie-notion : « 🗑 Corbeille » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+292. garde 6. m-taxonomie-notion : « 🗑 Corbeille » (fermé) garde la main comme curseur
+293. garde 6. m-taxonomie-notion : « 🗑 Corbeille » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+294. garde 6. m-taxonomie-notion : « 📢 Annonces aux élèves » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+295. garde 6. m-taxonomie-notion : « 📢 Annonces aux élèves » (fermé) garde la main comme curseur
+296. garde 6. m-taxonomie-notion : « 📢 Annonces aux élèves » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+297. garde 6. m-taxonomie-notion : « 🎓 Dates de l’année » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+298. garde 6. m-taxonomie-notion : « 🎓 Dates de l’année » (fermé) garde la main comme curseur
+299. garde 6. m-taxonomie-notion : « 🎓 Dates de l’année » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+300. garde 6. m-taxonomie-notion : « 📅 Emploi du temps » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+301. garde 6. m-taxonomie-notion : « 📅 Emploi du temps » (fermé) garde la main comme curseur
+302. garde 6. m-taxonomie-notion : « 📅 Emploi du temps » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+303. garde 6. m-taxonomie-notion : « 🛠 Atelier » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+304. garde 6. m-taxonomie-notion : « 🛠 Atelier » (fermé) garde la main comme curseur
+305. garde 6. m-taxonomie-notion : « 🛠 Atelier » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+306. garde 6. m-taxonomie-notion : « ⚙ Configuration & Firebase » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+307. garde 6. m-taxonomie-notion : « ⚙ Configuration & Firebase » (fermé) garde la main comme curseur
+308. garde 6. m-taxonomie-notion : « ⚙ Configuration & Firebase » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+309. garde 6. m-taxonomie-notion : « 📡 Présence live » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+310. garde 6. m-taxonomie-notion : « 📡 Présence live » (fermé) garde la main comme curseur
+311. garde 6. m-taxonomie-notion : « 📡 Présence live » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+312. garde 7. m-taxonomie-competences @1366×768 : le panneau ne touche pas les bords de la fenêtre (dette 87) — gauche 133 au lieu de 0, haut 30 au lieu de 0, droite 1233 au lieu de 1366, bas 738 au lieu de 768
+313. garde 7. m-taxonomie-competences @1536×864 : le panneau ne touche pas les bords de la fenêtre (dette 87) — gauche 218 au lieu de 0, haut 30 au lieu de 0, droite 1318 au lieu de 1536, bas 834 au lieu de 864
+314. garde 7. m-taxonomie-competences @1920×1080 : le panneau ne touche pas les bords de la fenêtre (dette 87) — gauche 410 au lieu de 0, haut 30 au lieu de 0, droite 1510 au lieu de 1920, bas 1050 au lieu de 1080
+315. garde 6. m-taxonomie-competences : « 🏠 Tableau de bord » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+316. garde 6. m-taxonomie-competences : « 🏠 Tableau de bord » (fermé) garde la main comme curseur
+317. garde 6. m-taxonomie-competences : « 🏠 Tableau de bord » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+318. garde 6. m-taxonomie-competences : « 🏫 Classes » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+319. garde 6. m-taxonomie-competences : « 🏫 Classes » (fermé) garde la main comme curseur
+320. garde 6. m-taxonomie-competences : « 🏫 Classes » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+321. garde 6. m-taxonomie-competences : « 🧪 Profil test » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+322. garde 6. m-taxonomie-competences : « 🧪 Profil test » (fermé) garde la main comme curseur
+323. garde 6. m-taxonomie-competences : « 🧪 Profil test » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+324. garde 6. m-taxonomie-competences : « 📂 Architecture » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+325. garde 6. m-taxonomie-competences : « 📂 Architecture » (fermé) garde la main comme curseur
+326. garde 6. m-taxonomie-competences : « 📂 Architecture » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+327. garde 6. m-taxonomie-competences : « 📦 Archives » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+328. garde 6. m-taxonomie-competences : « 📦 Archives » (fermé) garde la main comme curseur
+329. garde 6. m-taxonomie-competences : « 📦 Archives » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+330. garde 6. m-taxonomie-competences : « 🗑 Corbeille » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+331. garde 6. m-taxonomie-competences : « 🗑 Corbeille » (fermé) garde la main comme curseur
+332. garde 6. m-taxonomie-competences : « 🗑 Corbeille » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+333. garde 6. m-taxonomie-competences : « 📢 Annonces aux élèves » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+334. garde 6. m-taxonomie-competences : « 📢 Annonces aux élèves » (fermé) garde la main comme curseur
+335. garde 6. m-taxonomie-competences : « 📢 Annonces aux élèves » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+336. garde 6. m-taxonomie-competences : « 🎓 Dates de l’année » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+337. garde 6. m-taxonomie-competences : « 🎓 Dates de l’année » (fermé) garde la main comme curseur
+338. garde 6. m-taxonomie-competences : « 🎓 Dates de l’année » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+339. garde 6. m-taxonomie-competences : « 📅 Emploi du temps » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+340. garde 6. m-taxonomie-competences : « 📅 Emploi du temps » (fermé) garde la main comme curseur
+341. garde 6. m-taxonomie-competences : « 📅 Emploi du temps » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+342. garde 6. m-taxonomie-competences : « 🛠 Atelier » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+343. garde 6. m-taxonomie-competences : « 🛠 Atelier » (fermé) garde la main comme curseur
+344. garde 6. m-taxonomie-competences : « 🛠 Atelier » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+345. garde 6. m-taxonomie-competences : « ⚙ Configuration & Firebase » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+346. garde 6. m-taxonomie-competences : « ⚙ Configuration & Firebase » (fermé) garde la main comme curseur
+347. garde 6. m-taxonomie-competences : « ⚙ Configuration & Firebase » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+348. garde 6. m-taxonomie-competences : « 📡 Présence live » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+349. garde 6. m-taxonomie-competences : « 📡 Présence live » (fermé) garde la main comme curseur
+350. garde 6. m-taxonomie-competences : « 📡 Présence live » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+351. garde 7. m-taxonomie-competence @1366×768 : le panneau ne touche pas les bords de la fenêtre (dette 87) — gauche 133 au lieu de 0, haut 30 au lieu de 0, droite 1233 au lieu de 1366, bas 738 au lieu de 768
+352. garde 7. m-taxonomie-competence @1536×864 : le panneau ne touche pas les bords de la fenêtre (dette 87) — gauche 218 au lieu de 0, haut 30 au lieu de 0, droite 1318 au lieu de 1536, bas 834 au lieu de 864
+353. garde 7. m-taxonomie-competence @1920×1080 : le panneau ne touche pas les bords de la fenêtre (dette 87) — gauche 410 au lieu de 0, haut 30 au lieu de 0, droite 1510 au lieu de 1920, bas 1050 au lieu de 1080
+354. garde 6. m-taxonomie-competence : « 🏠 Tableau de bord » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+355. garde 6. m-taxonomie-competence : « 🏠 Tableau de bord » (fermé) garde la main comme curseur
+356. garde 6. m-taxonomie-competence : « 🏠 Tableau de bord » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+357. garde 6. m-taxonomie-competence : « 🏫 Classes » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+358. garde 6. m-taxonomie-competence : « 🏫 Classes » (fermé) garde la main comme curseur
+359. garde 6. m-taxonomie-competence : « 🏫 Classes » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+360. garde 6. m-taxonomie-competence : « 🧪 Profil test » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+361. garde 6. m-taxonomie-competence : « 🧪 Profil test » (fermé) garde la main comme curseur
+362. garde 6. m-taxonomie-competence : « 🧪 Profil test » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+363. garde 6. m-taxonomie-competence : « 📂 Architecture » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+364. garde 6. m-taxonomie-competence : « 📂 Architecture » (fermé) garde la main comme curseur
+365. garde 6. m-taxonomie-competence : « 📂 Architecture » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+366. garde 6. m-taxonomie-competence : « 📦 Archives » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+367. garde 6. m-taxonomie-competence : « 📦 Archives » (fermé) garde la main comme curseur
+368. garde 6. m-taxonomie-competence : « 📦 Archives » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+369. garde 6. m-taxonomie-competence : « 🗑 Corbeille » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+370. garde 6. m-taxonomie-competence : « 🗑 Corbeille » (fermé) garde la main comme curseur
+371. garde 6. m-taxonomie-competence : « 🗑 Corbeille » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+372. garde 6. m-taxonomie-competence : « 📢 Annonces aux élèves » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+373. garde 6. m-taxonomie-competence : « 📢 Annonces aux élèves » (fermé) garde la main comme curseur
+374. garde 6. m-taxonomie-competence : « 📢 Annonces aux élèves » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+375. garde 6. m-taxonomie-competence : « 🎓 Dates de l’année » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+376. garde 6. m-taxonomie-competence : « 🎓 Dates de l’année » (fermé) garde la main comme curseur
+377. garde 6. m-taxonomie-competence : « 🎓 Dates de l’année » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+378. garde 6. m-taxonomie-competence : « 📅 Emploi du temps » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+379. garde 6. m-taxonomie-competence : « 📅 Emploi du temps » (fermé) garde la main comme curseur
+380. garde 6. m-taxonomie-competence : « 📅 Emploi du temps » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+381. garde 6. m-taxonomie-competence : « 🛠 Atelier » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+382. garde 6. m-taxonomie-competence : « 🛠 Atelier » (fermé) garde la main comme curseur
+383. garde 6. m-taxonomie-competence : « 🛠 Atelier » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+384. garde 6. m-taxonomie-competence : « ⚙ Configuration & Firebase » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+385. garde 6. m-taxonomie-competence : « ⚙ Configuration & Firebase » (fermé) garde la main comme curseur
+386. garde 6. m-taxonomie-competence : « ⚙ Configuration & Firebase » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+387. garde 6. m-taxonomie-competence : « 📡 Présence live » (fermé) ne se voit pas fermé — opacité 1, même couleur et même fond qu'un bouton actif de même classe
+388. garde 6. m-taxonomie-competence : « 📡 Présence live » (fermé) garde la main comme curseur
+389. garde 6. m-taxonomie-competence : « 📡 Présence live » (fermé) : sa raison ne se lit pas au survol — la souris tombe sur le bouton fermé
+
+════════ La sortie des témoins ════════
+Les témoins des gardes 7 et 8, sur maquette-qcm-v6.html · 2026-10-11T06:28:42.279Z
+
+  m-classe-exclusions : 25 lignes, ↻ ✕ hors de la carte sur 25 (chaque ligne) ✔
+    garde 7. m-classe-exclusions : la ligne de « ABRIAL Julien » : ↻ ✕ sortent de la carte (dette 88) — à -20 px du bord gauche, 39 px sous le haut
+    garde 7. m-classe-exclusions : la ligne de « ABRIAL Julien » : ↻ ✕ ne sont pas sur la ligne du nom (dette 88) — 30 px d'écart
+    garde 7. m-classe-exclusions : la ligne de « BAUDRY Léa » : ↻ ✕ sortent de la carte (dette 88) — à -20 px du bord gauche, 39 px sous le haut
+  m-exclusion-refusee : 25 lignes, ↻ ✕ hors de la carte sur 25 (chaque ligne) ✔
+    garde 7. m-exclusion-refusee : la ligne de « ABRIAL Julien » : ↻ ✕ sortent de la carte (dette 88) — à -20 px du bord gauche, 39 px sous le haut
+    garde 7. m-exclusion-refusee : la ligne de « ABRIAL Julien » : ↻ ✕ ne sont pas sur la ligne du nom (dette 88) — 30 px d'écart
+    garde 7. m-exclusion-refusee : la ligne de « BAUDRY Léa » : ↻ ✕ sortent de la carte (dette 88) — à -20 px du bord gauche, 39 px sous le haut
+
+  défilement de côté : oui ✔ · boutons sur plus de deux lignes : 9 ✔
+    garde 8. rangee-index @1366×768 : le contenu défile de côté — .tprof-content 943 px pour 869
+    garde 8. rangee-index @1366×768 : le contenu défile de côté — .edt-panneau 913 px pour 809
+    garde 8. rangee-index @1366×768 : le contenu défile de côté — .edt-actions 913 px pour 809
+    garde 8. rangee-index @1366×768 : « 📅 Ouvrir l’emploi du temps » tient sur 5 lignes
+    garde 8. rangee-index @1366×768 : « ⤓ Sortir le JSON — calendrier — injecté le jeudi 3 septembre » tient sur 7 lignes
+    garde 8. rangee-index @1366×768 : « ⤓ Sortir le JSON — grille — injecté le jeudi 3 septembre » tient sur 6 lignes
+    garde 8. rangee-index @1366×768 : « ⤓ Sortir le JSON — creneaux — injecté le jeudi 3 septembre » tient sur 7 lignes
+    garde 8. rangee-index @1366×768 : « ⤓ Sortir le JSON — periodes — injecté le vendredi 4 septembr » tient sur 9 lignes
+    garde 8. rangee-index @1366×768 : « ⤓ Sortir le JSON — photos — injecté le vendredi 4 septembre » tient sur 8 lignes
+    garde 8. rangee-index @1366×768 : « ⤓ Sortir le JSON — reglages — injecté le vendredi 4 septembr » tient sur 9 lignes
+    garde 8. rangee-index @1366×768 : « 📋 Copier le prompt — calendrier » tient sur 5 lignes
+    garde 8. rangee-index @1366×768 : « 📋 Copier le prompt — grille » tient sur 6 lignes
+  les lignes d'état de la page témoin, recalculées : conformes
+
+

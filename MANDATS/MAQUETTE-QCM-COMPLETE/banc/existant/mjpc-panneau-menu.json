@@ -11,7 +11,10 @@
   "m-taxonomie-domaine",
   "m-taxonomie-notion",
   "m-taxonomie-competences",
-  "m-taxonomie-competence"
+  "m-taxonomie-competence",
+  "m-emploi-du-temps",
+  "m-emploi-du-temps-un",
+  "m-emploi-du-temps-tous"
  ],
  "boutons": [
   {

@@ -1,0 +1,180 @@
+{
+ "ecran": "emploi-du-temps",
+ "source": "index.html (md5 ac792b28f40d3a0510e725fc4a6b6985), lu dans le code",
+ "comment": "« 📅 Emploi du temps », avec les objets de l'année 2026-2027 relus au hub : le paragraphe, les trois lignes d'état, la rangée (« Ouvrir », la case, un « Sortir le JSON » par objet, un « Copier le prompt » par voie), le rappel du calendrier, « ✨ Injecter un objet » et ses trois voies.",
+ "scenes": [
+  "m-emploi-du-temps",
+  "m-emploi-du-temps-un",
+  "m-emploi-du-temps-tous"
+ ],
+ "boutons": [
+  {
+   "l": "📅 Ouvrir l’emploi du temps",
+   "t": "",
+   "ligne": 19810
+  },
+  {
+   "l": "⤓ Sortir le JSON — calendrier — injecté le jeudi 3 septembre",
+   "t": "copier le JSON tel qu’il est au hub — injecté le jeudi 3 septembre",
+   "ligne": 19815
+  },
+  {
+   "l": "⤓ Sortir le JSON — grille — injecté le jeudi 3 septembre",
+   "t": "copier le JSON tel qu’il est au hub — injecté le jeudi 3 septembre",
+   "ligne": 19815
+  },
+  {
+   "l": "⤓ Sortir le JSON — creneaux — injecté le jeudi 3 septembre",
+   "t": "copier le JSON tel qu’il est au hub — injecté le jeudi 3 septembre",
+   "ligne": 19815
+  },
+  {
+   "l": "⤓ Sortir le JSON — periodes — injecté le vendredi 4 septembre",
+   "t": "copier le JSON tel qu’il est au hub — injecté le vendredi 4 septembre",
+   "ligne": 19815
+  },
+  {
+   "l": "⤓ Sortir le JSON — photos — injecté le vendredi 4 septembre",
+   "t": "copier le JSON tel qu’il est au hub — injecté le vendredi 4 septembre",
+   "ligne": 19815
+  },
+  {
+   "l": "⤓ Sortir le JSON — reglages — injecté le vendredi 4 septembre",
+   "t": "copier le JSON tel qu’il est au hub — injecté le vendredi 4 septembre",
+   "ligne": 19815
+  },
+  {
+   "l": "📋 Copier le prompt — calendrier",
+   "t": "la consigne pour l’IA et le JSON en service, en un seul bloc",
+   "ligne": 19819
+  },
+  {
+   "l": "📋 Copier le prompt — grille",
+   "t": "la consigne pour l’IA et le JSON en service, en un seul bloc",
+   "ligne": 19819
+  },
+  {
+   "l": "Réinjecter maintenant…",
+   "t": "",
+   "ligne": 19826
+  },
+  {
+   "l": "Plus tard",
+   "t": "",
+   "ligne": 19827
+  },
+  {
+   "l": "Calendrier de l’année",
+   "t": "",
+   "ligne": 19289
+  },
+  {
+   "l": "Grille de l’emploi du temps",
+   "t": "",
+   "ligne": 19291
+  },
+  {
+   "l": "Créneaux horaires",
+   "t": "",
+   "ligne": 19293
+  }
+ ],
+ "cases": [
+  {
+   "l": "arriver sur l’emploi du temps en me connectant",
+   "ligne": 19812
+  }
+ ],
+ "classes": [
+  {
+   "c": "edt-panneau",
+   "ligne": 19767
+  },
+  {
+   "c": "edt-p",
+   "ligne": 19798
+  },
+  {
+   "c": "edt-etats",
+   "ligne": 19802
+  },
+  {
+   "c": "edt-etat",
+   "ligne": 19771
+  },
+  {
+   "c": "edt-ok",
+   "ligne": 19771
+  },
+  {
+   "c": "edt-actions",
+   "ligne": 19810
+  },
+  {
+   "c": "edt-haut",
+   "ligne": 19810
+  },
+  {
+   "c": "edt-btn",
+   "ligne": 19810
+  },
+  {
+   "c": "edt-btn-prim",
+   "ligne": 19810
+  },
+  {
+   "c": "edt-regl",
+   "ligne": 19811
+  },
+  {
+   "c": "edt-bloc",
+   "ligne": 19823
+  },
+  {
+   "c": "edt-rappel",
+   "ligne": 19823
+  },
+  {
+   "c": "edt-titre",
+   "ligne": 19828
+  },
+  {
+   "c": "edt-voies",
+   "ligne": 19829
+  }
+ ],
+ "phrases": [
+  {
+   "p": "📅 Emploi du temps",
+   "ligne": 19767
+  },
+  {
+   "p": "Les objets vivent au hub sous",
+   "ligne": 19798
+  },
+  {
+   "p": "Rien n’est obligatoire : ce qui manque manque, le site marche comme avant.",
+   "ligne": 19799
+  },
+  {
+   "p": "Calendrier de l’année",
+   "ligne": 19803
+  },
+  {
+   "p": "Grille de l’emploi du temps",
+   "ligne": 19804
+  },
+  {
+   "p": "Créneaux horaires",
+   "ligne": 19805
+  },
+  {
+   "p": "pense à le réinjecter s’il a bougé.",
+   "ligne": 19825
+  },
+  {
+   "p": "✨ Injecter un objet",
+   "ligne": 19828
+  }
+ ]
+}

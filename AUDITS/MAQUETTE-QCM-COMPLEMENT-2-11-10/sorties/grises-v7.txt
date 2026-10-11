@@ -1,0 +1,9 @@
+169 scènes ; boutons fermés visibles : 259
+30 scènes (t-rejoins, t-rejoins, t-attest-1) : ✓ | op=1.00 | cursor=default | frère actif identique=pas de frère
+1 scènes (t-q1-b-michel) : Venise | op=1.00 | cursor=not-allowed | frère actif identique=pas de frère
+2 scènes (x610-1-b-julien, x610-2-b-michel) : La réponse est l'antécédent, toujours éc | op=1.00 | cursor=not-allowed | frère actif identique=pas de frère
+1 scènes (x610-1-b-julien) : Ma question dépend du Pronom Relatif emp | op=1.00 | cursor=not-allowed | frère actif identique=pas de frère
+2 scènes (x610-1-b-julien, x610-2-b-michel) : Je pose la question sur la relative, ave | op=1.00 | cursor=not-allowed | frère actif identique=pas de frère
+1 scènes (e-mes-evals) : Évaluation d'essai — 3 questionsEn relec | op=1.00 | cursor=default | frère actif identique=pas de frère
+2 scènes (e-mes-evals, e-mes-evals-rendue) : 3e Chapitre 1 — Poésie et peinture au XI | op=1.00 | cursor=default | frère actif identique=pas de frère
+1 scènes (x620-3-mode-test-en-grand) : Parce qu'elle a huit pattes | op=1.00 | cursor=not-allowed | frère actif identique=pas de frère

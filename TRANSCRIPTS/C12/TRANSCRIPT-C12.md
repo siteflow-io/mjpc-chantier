@@ -19777,3 +19777,37 @@ Réponse mot pour mot :
 717. **Pour la relance** : rien n'est encore poussé sur la branche de l'exécutant. S'il n'est pas relancé, le message du point 705 vaut tel quel, et il lira le complément à jour. S'il tourne déjà avec l'ancien complément, laisse-le finir : je ferai un complément 3 avec le reste.
 
 11/10/2026 08:15 MEMO
+
+---
+
+## TOUR 645 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (11/10, 09:03) livré
+
+---
+
+## TOUR 645 — Claude (conscience n°12)
+
+Audit de la branche `maquette-qcm` (commit `c6611fb3`) : périmètre, v1 à v6 intactes, md5 de la v7 vérifié ; banc rejoué (19 222 vérifications, 0 échec) ; relevés indépendants sur les 12 scènes MJPC aux trois tailles (bords du panneau, lignes d'élèves, boutons fermés et survol, emploi du temps), sur les 169 scènes (méta, soulignés, boutons fermés) ; longueurs des copies recalculées sur les données relues au hub ; 8 nouveaux retraits relus ; captures 153 et 162 regardées. Livret et maquette v7 envoyés à Paul. Rapport `AUDITS/MAQUETTE-QCM-COMPLEMENT-2-11-10/`.
+
+Réponse mot pour mot :
+
+718. **J'ai fait l'audit final du complément 2 : ça va.** Je l'ai mesuré moi-même, aux trois tailles de ta console. Les 12 boutons fermés de MJPC se voient fermés et disent leur raison au survol. Le panneau touche les quatre bords de l'écran. ↻ et ✕ sont dans la carte, sur les 25 lignes. L'emploi du temps ne défile plus de côté, et ses chiffres, comme la longueur de chaque JSON sorti, sont ceux de tes vraies données. J'ai aussi rejoué son banc : 19 222 vérifications, zéro échec.
+
+719. **La maquette est à toi pour validation.** Je t'ai joint le livret de la v7 (livret-maquette-qcm-v7.pdf : 169 écrans dans l'ordre de la séance, une phrase sous chacun) et la maquette elle-même (maquette-qcm-v7.html), pour la manipuler. Tu commentes ce que tu veux préciser ; le reste est acquis.
+
+720. **Deux choses à regarder en particulier, pages 162 à 164 du livret.** L'emploi du temps suit mon choix entre tes trois pistes (714). Et le titre du premier groupe, « 📅 L'écran de la semaine », vient de l'exécutant : il l'a pris dans un commentaire du code, ce n'est pas un texte que ton site affiche aujourd'hui.
+
+721. **Test 1** : ouvre la maquette, clique sur ⚙ « Scènes de la maquette », puis sur l'écran 162. Coche « Calendrier de l'année » et clique sur « ⤓ Sortir les JSON cochés » : le message dit 19717 caractères.
+
+722. **Test 2** : sur le même écran, clique sur « Tout cocher », puis sur « ⤓ Sortir les JSON cochés » : un seul message pour les six objets, 33349 caractères.
+
+723. **Test 3** : dans « Élèves & codes » (écran 153), passe la souris sur « Tableau de bord » : il est estompé, le curseur est barré, et la raison s'affiche.
+
+724. **Test 4** : change la taille de la fenêtre : le panneau reste bord à bord, et ↻ ✕ restent dans chaque carte.
+
+725. **Le rapport d'audit** : https://github.com/siteflow-io/mjpc-chantier/blob/main/AUDITS/MAQUETTE-QCM-COMPLEMENT-2-11-10/README.md. Après ta validation viendra le mandat de code (677).
+
+11/10/2026 09:14 MEMO

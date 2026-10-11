@@ -1,0 +1,37 @@
+1366x768 m-classe-exclusions | bords [0,0,0,0] | défilement de côté false | lignes élèves 25 (hors carte 0) | fermés 12 (mal faits 0) | boutons > 2 lignes 0
+1366x768 m-exclusion-refusee | bords [0,0,0,0] | défilement de côté false | lignes élèves 25 (hors carte 0) | fermés 12 (mal faits 0) | boutons > 2 lignes 0
+1366x768 m-fiche-eleve | bords [0,0,0,0] | défilement de côté false | lignes élèves 0 (hors carte 0) | fermés 12 (mal faits 0) | boutons > 2 lignes 0
+1366x768 m-taxonomie | bords [0,0,0,0] | défilement de côté false | lignes élèves 0 (hors carte 0) | fermés 11 (mal faits 0) | boutons > 2 lignes 0
+1366x768 m-taxonomie-editeur | bords [0,0,0,0] | défilement de côté false | lignes élèves 0 (hors carte 0) | fermés 11 (mal faits 0) | boutons > 2 lignes 0
+1366x768 m-taxonomie-domaine | bords [0,0,0,0] | défilement de côté false | lignes élèves 0 (hors carte 0) | fermés 11 (mal faits 0) | boutons > 2 lignes 0
+1366x768 m-taxonomie-notion | bords [0,0,0,0] | défilement de côté false | lignes élèves 0 (hors carte 0) | fermés 11 (mal faits 0) | boutons > 2 lignes 0
+1366x768 m-taxonomie-competences | bords [0,0,0,0] | défilement de côté false | lignes élèves 0 (hors carte 0) | fermés 11 (mal faits 0) | boutons > 2 lignes 0
+1366x768 m-taxonomie-competence | bords [0,0,0,0] | défilement de côté false | lignes élèves 0 (hors carte 0) | fermés 11 (mal faits 0) | boutons > 2 lignes 0
+1366x768 m-emploi-du-temps | bords [0,0,0,0] | défilement de côté false | lignes élèves 0 (hors carte 0) | fermés 17 (mal faits 3 : [{"t":"Calendrier de l’année","op":0.45,"cur":"not-allowed","survol":null},{"t":"Grille de l’emploi du temps","op":0.45,"cur":"not-allowed","survol":null},{"t":"Créneaux horaires","op":0.45,"cur":"not-allowed","survol":null}]) | boutons > 2 lignes 0
+1366x768 m-emploi-du-temps-un | bords [0,0,0,0] | défilement de côté false | lignes élèves 0 (hors carte 0) | fermés 16 (mal faits 16 : [{"t":"🏠Tableau de bord","op":0.45,"cur":"not-allowed","survol":null},{"t":"🏫Classes","op":0.45,"cur":"not-allowed","survol":null},{"t":"🧪Profil test","op":0.45,"cur":"not-allowed","survol":null}]) | boutons > 2 lignes 0
+1366x768 m-emploi-du-temps-tous | bords [0,0,0,0] | défilement de côté false | lignes élèves 0 (hors carte 0) | fermés 16 (mal faits 16 : [{"t":"🏠Tableau de bord","op":0.45,"cur":"not-allowed","survol":null},{"t":"🏫Classes","op":0.45,"cur":"not-allowed","survol":null},{"t":"🧪Profil test","op":0.45,"cur":"not-allowed","survol":null}]) | boutons > 2 lignes 0
+1536x864 m-classe-exclusions | bords [0,0,0,0] | défilement de côté false | lignes élèves 25 (hors carte 0) | fermés 12 (mal faits 0) | boutons > 2 lignes 0
+1536x864 m-exclusion-refusee | bords [0,0,0,0] | défilement de côté false | lignes élèves 25 (hors carte 0) | fermés 12 (mal faits 0) | boutons > 2 lignes 0
+1536x864 m-fiche-eleve | bords [0,0,0,0] | défilement de côté false | lignes élèves 0 (hors carte 0) | fermés 12 (mal faits 0) | boutons > 2 lignes 0
+1536x864 m-taxonomie | bords [0,0,0,0] | défilement de côté false | lignes élèves 0 (hors carte 0) | fermés 11 (mal faits 0) | boutons > 2 lignes 0
+1536x864 m-taxonomie-editeur | bords [0,0,0,0] | défilement de côté false | lignes élèves 0 (hors carte 0) | fermés 11 (mal faits 0) | boutons > 2 lignes 0
+1536x864 m-taxonomie-domaine | bords [0,0,0,0] | défilement de côté false | lignes élèves 0 (hors carte 0) | fermés 11 (mal faits 0) | boutons > 2 lignes 0
+1536x864 m-taxonomie-notion | bords [0,0,0,0] | défilement de côté false | lignes élèves 0 (hors carte 0) | fermés 11 (mal faits 0) | boutons > 2 lignes 0
+1536x864 m-taxonomie-competences | bords [0,0,0,0] | défilement de côté false | lignes élèves 0 (hors carte 0) | fermés 11 (mal faits 0) | boutons > 2 lignes 0
+1536x864 m-taxonomie-competence | bords [0,0,0,0] | défilement de côté false | lignes élèves 0 (hors carte 0) | fermés 11 (mal faits 0) | boutons > 2 lignes 0
+1536x864 m-emploi-du-temps | bords [0,0,0,0] | défilement de côté false | lignes élèves 0 (hors carte 0) | fermés 17 (mal faits 0) | boutons > 2 lignes 0
+   états : ["Calendrier de l’année — 52 semaines · 7 périodes sans cours · 11 fériés · 30 jalons · 15 événements de classe","Grille de l’emploi du temps — 30 cases · 4 classes nommées","Créneaux horaires — 8 créneaux — 08:00-08:55 · 08:57-09:52 · 10:07-11:02 · 11:04-11:59 · 13:00-13:55 · 13:57-14:52 · 15:07-16:02 · 16:04-16:"]
+1536x864 m-emploi-du-temps-un | bords [0,0,0,0] | défilement de côté false | lignes élèves 0 (hors carte 0) | fermés 16 (mal faits 16 : [{"t":"🏠Tableau de bord","op":0.45,"cur":"not-allowed","survol":null},{"t":"🏫Classes","op":0.45,"cur":"not-allowed","survol":null},{"t":"🧪Profil test","op":0.45,"cur":"not-allowed","survol":null}]) | boutons > 2 lignes 0
+1536x864 m-emploi-du-temps-tous | bords [0,0,0,0] | défilement de côté false | lignes élèves 0 (hors carte 0) | fermés 16 (mal faits 16 : [{"t":"🏠Tableau de bord","op":0.45,"cur":"not-allowed","survol":null},{"t":"🏫Classes","op":0.45,"cur":"not-allowed","survol":null},{"t":"🧪Profil test","op":0.45,"cur":"not-allowed","survol":null}]) | boutons > 2 lignes 0
+1920x1080 m-classe-exclusions | bords [0,0,0,0] | défilement de côté false | lignes élèves 25 (hors carte 0) | fermés 12 (mal faits 0) | boutons > 2 lignes 0
+1920x1080 m-exclusion-refusee | bords [0,0,0,0] | défilement de côté false | lignes élèves 25 (hors carte 0) | fermés 12 (mal faits 0) | boutons > 2 lignes 0
+1920x1080 m-fiche-eleve | bords [0,0,0,0] | défilement de côté false | lignes élèves 0 (hors carte 0) | fermés 12 (mal faits 0) | boutons > 2 lignes 0
+1920x1080 m-taxonomie | bords [0,0,0,0] | défilement de côté false | lignes élèves 0 (hors carte 0) | fermés 11 (mal faits 0) | boutons > 2 lignes 0
+1920x1080 m-taxonomie-editeur | bords [0,0,0,0] | défilement de côté false | lignes élèves 0 (hors carte 0) | fermés 11 (mal faits 0) | boutons > 2 lignes 0
+1920x1080 m-taxonomie-domaine | bords [0,0,0,0] | défilement de côté false | lignes élèves 0 (hors carte 0) | fermés 11 (mal faits 0) | boutons > 2 lignes 0
+1920x1080 m-taxonomie-notion | bords [0,0,0,0] | défilement de côté false | lignes élèves 0 (hors carte 0) | fermés 11 (mal faits 0) | boutons > 2 lignes 0
+1920x1080 m-taxonomie-competences | bords [0,0,0,0] | défilement de côté false | lignes élèves 0 (hors carte 0) | fermés 11 (mal faits 0) | boutons > 2 lignes 0
+1920x1080 m-taxonomie-competence | bords [0,0,0,0] | défilement de côté false | lignes élèves 0 (hors carte 0) | fermés 11 (mal faits 0) | boutons > 2 lignes 0
+1920x1080 m-emploi-du-temps | bords [0,0,0,0] | défilement de côté false | lignes élèves 0 (hors carte 0) | fermés 17 (mal faits 0) | boutons > 2 lignes 0
+1920x1080 m-emploi-du-temps-un | bords [0,0,0,0] | défilement de côté false | lignes élèves 0 (hors carte 0) | fermés 16 (mal faits 16 : [{"t":"🏠Tableau de bord","op":0.45,"cur":"not-allowed","survol":null},{"t":"🏫Classes","op":0.45,"cur":"not-allowed","survol":null},{"t":"🧪Profil test","op":0.45,"cur":"not-allowed","survol":null}]) | boutons > 2 lignes 0
+1920x1080 m-emploi-du-temps-tous | bords [0,0,0,0] | défilement de côté false | lignes élèves 0 (hors carte 0) | fermés 16 (mal faits 16 : [{"t":"🏠Tableau de bord","op":0.45,"cur":"not-allowed","survol":null},{"t":"🏫Classes","op":0.45,"cur":"not-allowed","survol":null},{"t":"🧪Profil test","op":0.45,"cur":"not-allowed","survol":null}]) | boutons > 2 lignes 0

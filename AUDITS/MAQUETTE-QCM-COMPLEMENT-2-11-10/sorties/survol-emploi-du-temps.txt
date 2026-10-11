@@ -1,0 +1,55 @@
+== m-emploi-du-temps
+ modale ouverte : []
+ 🏠Tableau de bord → « Inchangé : cet écran reste celui d'aujourd'hui. »
+ 🏫Classes → « Inchangé : cet écran reste celui d'aujourd'hui. »
+ 🧪Profil test → « Inchangé : cet écran reste celui d'aujourd'hui. »
+ 📂Architecture → « Inchangé : cet écran reste celui d'aujourd'hui. »
+ 📦Archives → « Inchangé : cet écran reste celui d'aujourd'hui. »
+ 🗑Corbeille → « Inchangé : cet écran reste celui d'aujourd'hui. »
+ 📢Annonces aux élèves → « Inchangé : cet écran reste celui d'aujourd'hui. »
+ 🎓Dates de l’année → « Inchangé : cet écran reste celui d'aujourd'hui. »
+ 🛠Atelier → « Inchangé : cet écran reste celui d'aujourd'hui. »
+ ⚙Configuration & Firebase → « Inchangé : cet écran reste celui d'aujourd'hui. »
+ 📡Présence live → « Inchangé : cet écran reste celui d'aujourd'hui. »
+ 📅 Ouvrir l’emploi du temps → « Inchangé : cet écran reste celui d'aujourd'hui. »
+ ⤓ Sortir les JSON cochés → « Coche au moins un objet : rien n’est coché. »
+ Réinjecter maintenant… → « Inchangé : cet écran reste celui d'aujourd'hui. »
+ Calendrier de l’année → « Inchangé : cet écran reste celui d'aujourd'hui. »
+ Grille de l’emploi du temps → « Inchangé : cet écran reste celui d'aujourd'hui. »
+ Créneaux horaires → « Inchangé : cet écran reste celui d'aujourd'hui. »
+== m-emploi-du-temps-un
+ modale ouverte : ["at-modale : JSON de « calendrier » copié — 19717 caractères.\nCompris"]
+ 🏠Tableau de bord → RIEN (at-modale)
+ 🏫Classes → RIEN (at-modale)
+ 🧪Profil test → RIEN (at-modale)
+ 📂Architecture → RIEN (at-modale)
+ 📦Archives → RIEN (at-modale)
+ 🗑Corbeille → RIEN (at-modale)
+ 📢Annonces aux élèves → RIEN (at-modale)
+ 🎓Dates de l’année → RIEN (at-modale)
+ 🛠Atelier → RIEN (at-modale)
+ ⚙Configuration & Firebase → RIEN (at-modale)
+ 📡Présence live → RIEN (at-modale)
+ 📅 Ouvrir l’emploi du temps → RIEN (at-modale)
+ Réinjecter maintenant… → RIEN (at-modale)
+ Calendrier de l’année → RIEN (at-modale)
+ Grille de l’emploi du temps → RIEN (at-modale)
+ Créneaux horaires → RIEN (at-modale)
+== m-emploi-du-temps-tous
+ modale ouverte : ["at-modale : JSON de « calendrier », « grille », « creneaux », « periodes », « photos » et « reglages » copié — 33349 caractères.\nCompris"]
+ 🏠Tableau de bord → RIEN (at-modale)
+ 🏫Classes → RIEN (at-modale)
+ 🧪Profil test → RIEN (at-modale)
+ 📂Architecture → RIEN (at-modale)
+ 📦Archives → RIEN (at-modale)
+ 🗑Corbeille → RIEN (at-modale)
+ 📢Annonces aux élèves → RIEN (at-modale)
+ 🎓Dates de l’année → RIEN (at-modale)
+ 🛠Atelier → RIEN (at-modale)
+ ⚙Configuration & Firebase → RIEN (at-modale)
+ 📡Présence live → RIEN (at-modale)
+ 📅 Ouvrir l’emploi du temps → RIEN (at-modale)
+ Réinjecter maintenant… → RIEN (at-modale)
+ Calendrier de l’année → RIEN (at-modale)
+ Grille de l’emploi du temps → RIEN (at-modale)
+ Créneaux horaires → RIEN (at-modale)

@@ -19903,3 +19903,33 @@ Réponse mot pour mot :
 744. **Les exclusions, rien à décider** : elles n'existent pas encore dans la base, puisqu'elles se règlent dans MJPC. Le QCM les lira dès qu'elles existeront, et forme ses binômes sans elles d'ici là.
 
 11/10/2026 13:22 MEMO
+
+---
+
+## TOUR 649 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (11/10, 13:25) Ok c'est bon pour tout. Mais du coup ça m'enclins à penser qu'il faudrait coder mjpc avant, puis QCM ensuite. Comme ça celui ci ne se code pas sur un manque.
+
+---
+
+## TOUR 649 — Claude (conscience n°12)
+
+Relu le terrain du déroulé dans index.html : son cadrage 3 (point 5.1 : le geste de l'éditeur de taxonomie du panneau prof) et le transcript de la conscience n°13 (tour 33, 09:18 : encore en maquette p8, pas de mandat de code).
+
+Réponse mot pour mot :
+
+745. **Acquis : 741 à 744.** Un seul changement, qui vient de ta remarque : si MJPC passe d'abord, tes 28 libellés élève arrivent avec son code. Ils seront écrits dans la base à sa promotion, après une copie de l'existant, et son éditeur les montrera tout de suite. Je n'écris donc rien dans la base maintenant.
+
+746. **D'accord, et c'est plus sain.** Le QCM lit deux choses que seul MJPC écrit : les exclusions et les libellés élève. Codé après, il se teste sur de vraies données et de vrais écrans, sans rien simuler.
+
+747. **La tension : ça renverse le point 677.** index.html est aussi le terrain du déroulé (la conscience n°13). Il se sert du même éditeur de taxonomie (son cadrage 3, point 5.1) et de l'emploi du temps. Mesuré ce matin : le déroulé en est encore à sa maquette (p8), sans mandat de code en cours, donc aucun télescope aujourd'hui. Ma proposition : la partie MJPC passe d'abord, petite, et le code du déroulé partira de l'index.html qu'elle laissera.
+
+748. **Ce que contiendrait le mandat MJPC, et rien d'autre** : les exclusions (« 🚫 Jamais avec… », au plus 3, dans les deux sens, rangées avec la classe) ; la section « Les compétences » de l'éditeur de taxonomie, avec tes 28 libellés élève ; le panneau en plein écran (87) ; ↻ et ✕ dans la carte (88) ; la rangée de l'emploi du temps (212). Tout cela est déjà dans la maquette validée, dans ses 12 écrans de MJPC.
+
+749. **Une phrase à transmettre à la conscience du déroulé, si tu veux qu'elle le sache** : « Le mandat de code MJPC du QCM passe avant le code du déroulé (exclusions, compétences dans l'éditeur de taxonomie, panneau plein écran, Élèves & codes, rangée de l'emploi du temps) : ton mandat de code partira d'index.html après sa promotion. »
+
+750. **Si c'est bon pour toi, j'écris le mandat MJPC.**
+
+11/10/2026 13:26 MEMO

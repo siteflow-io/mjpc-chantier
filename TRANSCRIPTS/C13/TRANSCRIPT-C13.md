@@ -1338,3 +1338,15 @@ Paul, mot pour mot : « 20. Jamais la classe ne passe à la suivante si ce n'est
 167. **Verdict sur p8-5d : ça va.** Banc unique rejoué chez moi : en cours. Dettes n°13 · 13 et 14 réglées, à cocher au registre.
 168. Observation de l'exécutant, à garder pour le mandat de production : « une note suit sa diapo, toujours » vaut aussi pour un changement de diapo venu d'un autre onglet ou d'un autre poste ; la frappe qui continuerait après ce changement n'irait plus dans la note (le focus est rendu).
 
+
+---
+
+## TOURS 49 et 50 (11/10/2026, 16:59 → 17:40)
+
+Paul, tour 49, mot pour mot : « ça ne va pas. avant j'avais une poignée en bas de l'écran pour me permettre de remonter la partie notes. elle a disparu. »
+Paul, tour 50, mot pour mot : « oui. mais fais directement sur la maquette sinon, c'est un micro. »
+
+169. **Mesuré** (pièces `T49-poignee.mjs`, `T49b-poignee-prep.mjs`) : sur p8-5 comme sur p8-5d, `#poignee-mur` n'est visible que pendant la préparation du cahier (après le T-5), dans les trois modes elle est cachée, et elle règle la part de la diapo, pas les notes (réduites à 26 px). Pas une régression de p8-5c/d ; si Paul l'avait en classe, c'était une autre version — je ne sais pas laquelle. Dette n°13 · 15 : la poignée en permanence, pour régler la place des notes.
+170. **Proposition tranchée** (tour 49) : poignée permanente sous la barre des outils, vers le haut = les notes grandissent, vers le bas = la diapo, hauteur gardée d'une diapo et d'un mode à l'autre, double-clic = retour, préparation du cahier inchangée. **Validée par Paul (« oui »)**, à faire directement sur la maquette : **filière micro**, sur son ordre explicite.
+171. **Livraison p8-5e par la conscience** : branche `deroule/p8-5e` (partie de p8-5d), `patch-p8-5e.py` (7 remplacements : CSS visible partout, règle de la préparation retirée, infobulle pour Paul, double-clic, la hauteur survit à l'arrêt de la répétition, et `dimensionner` : hors préparation, la part s'applique à la hauteur obtenue), `regen.sh` étendu, `test-p8-5e.mjs` (18 vérifications par la souris, 0 défaut), captures avant / après, NOTE. Trouvé au premier passage du banc : une zone morte (à 1280 px, la diapo est bornée par la largeur ; la poignée ne faisait rien avant 30 % de course) — corrigée. Banc unique (32 bancs) lancé ; dépôt de la branche après son résultat.
+

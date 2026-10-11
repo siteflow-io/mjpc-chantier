@@ -147,10 +147,10 @@ function ResultatsQCM(){
       h("thead", null, h("tr", null,
         h("th", {className:"eleve-col trie", title:"Cliquer pour trier par nom (asc/desc). Cliquer sur un nom d'élève dans le tableau ouvre son Student Report (drill-down).", onClick:function(){ setSens(-sens); }}, "Élève" + (sens > 0 ? " ▴" : " ▾")),   // la 7.7.1, l. 8403
         EV.questions.map(function(q, i){ return h("th", {key:i, title:q.enonce}, "Q" + (i+1)); }),
-        h("th", null, "Note"), h("th", null, "Sur 20"), h("th", null, "Maîtrise de la note"),
+        h("th", null, "Note"), h("th", null, "Sur 20"), h("th", {className:"res-col-l"}, "Maîtrise de la note"),
         COMPS.map(EnteteComp),
-        h("th", null, "🤝 Autonomie"),
-        h("th", null, "À lire sur la feuille"))),
+        h("th", {className:"res-col-l"}, "🤝 Autonomie"),
+        h("th", {className:"res-col-alire"}, "À lire sur la feuille"))),
       h("tbody", null, lignes.map(function(l){
         var mt = maitriseDe(l.r.sur20), fl = lire.filter(function(x){ return x.p === l.p; }), au = SCN.autonomie(l.p, k);
         return h("tr", {key:l.p, "data-eleve":l.p},
@@ -170,13 +170,19 @@ function Resultats(){ return Console("donnees", "results", h(ResultatsQCM), fals
 /* ════════ La fiche d'un élève, le soir : sa feuille lue, sa tablette, ce qu'il a dit, son autonomie, son bilan général ════════ */
 function choixTexte(q, a){ return a === "aucun" ? "aucun de ces choix" : a.map(function(i){ return q.choix[i]; }).join(", "); }
 function FicheSeance(p){
-  var k = MO(), r = calc(p), mt = maitriseDe(r.sur20), nom = nomDe(p), voisin = SCN.voisinDe(p), au = autonomieDe(p, k), cle = p === "Julien" ? "J" : p === "Michel" ? "M" : null;
+  var k = MO(), r = calc(p), nom = nomDe(p), voisin = SCN.voisinDe(p), au = autonomieDe(p, k), cle = p === "Julien" ? "J" : p === "Michel" ? "M" : null;
+  // (changement 4.4) « Valider » de « Que dit la feuille ? » : la question cochée se recalcule d'après la feuille, et la note avec elle
+  var luV = luParam(), qV = luV ? paramQ(0) : -1;
+  if(luV && EV.questions[qV]){ var pv = memesChoix(luV, EV.questions[qV].bonnes) ? 1 : 0, pts = r.pts.slice(); pts[qV] = pv;
+    var nV = pts.reduce(function(a, b){ return a + (b || 0); }, 0);
+    r = Object.assign({}, r, {pts:pts, n:nV, sur20:Math.round(nV / r.total * 200) / 10, corrigees:(r.corrigees || []).concat([qV])}); }
+  var mt = maitriseDe(r.sur20);
   var lire = SCN.aLire(k).filter(function(x){ return x.p === p; });
   return h("div", {className:"student-report", "data-eleve":p},
     h("div", {style:{display:"flex", justifyContent:"space-between", alignItems:"center", flexWrap:"wrap"}},
-      h("h3", null, "👤 " + nom + " — " + r.n + " / " + r.total + " · " + fr1(r.sur20) + " / 20 · " + mt.em + " " + mt.lib, InfoI("Pour chaque question : ce que " + voisin + " a lu sur sa feuille à la correction, ce qu'" + (SCN.SEXE[p] === "F" ? "elle" : "il") + " a cliqué sur la tablette, ce qu'" + (SCN.SEXE[p] === "F" ? "elle" : "il") + " a dit à la fin de son temps (B). « La feuille dit autre chose » corrige une question d'après sa feuille.")),
+      h("h3", null, "👤 " + nom + " — " + r.n + " / " + r.total + " · " + fr1(r.sur20) + " / 20 · " + mt.em + " " + mt.lib, InfoI("Pour chaque question : ce que " + voisin + " a lu sur sa feuille à la correction, ce qu'" + (SCN.SEXE[p] === "F" ? "elle" : "il") + " a cliqué sur la tablette, ce qu'" + (SCN.SEXE[p] === "F" ? "elle" : "il") + " a dit à la fin de son temps de réponse, « Oui, la même chose » ou « Non, autre chose ». « La feuille dit autre chose » corrige une question d'après sa feuille.")),
       h("button", {className:"btn btn-ghost btn-sm", "data-va":"c-resultats", title:"Ferme la fiche et revient au tableau de la séance."}, "✕ Fermer")),
-    h("div", {className:"fiche-head fiche-head-b"}, h("span", null, ""), h("span", null, "Question"), h("span", null, "Sa feuille, lue par " + voisin), h("span", null, "Sa tablette"), h("span", null, "Ce qu'" + (SCN.SEXE[p] === "F" ? "elle" : "il") + " a dit (B)"), h("span", null, "Bonne réponse"), h("span", null, "Points"), h("span", null, "")),
+    h("div", {className:"fiche-head fiche-head-b"}, h("span", null, ""), h("span", null, "Question"), h("span", null, "Sa feuille, lue par " + voisin), h("span", null, "Sa tablette"), h("span", null, "Ce qu'" + (SCN.SEXE[p] === "F" ? "elle" : "il") + " a dit"), h("span", null, "Bonne réponse"), h("span", null, "Points"), h("span", null, "")),
     EV.questions.map(function(q, qi){
       var lu = cle ? SCN.LU_JM[cle][qi] : SCN.choixDe(SCN.LU[p][qi], qi), t = cle ? SCN.TABL[cle][qi] : SCN.choixDe(SCN.RT[p][qi], qi), s = r.st[qi];
       // (relecteur n°240) la colonne dit ce que le voisin a lu ; la correction de Paul se lit dans la pastille de la question
@@ -186,7 +192,7 @@ function FicheSeance(p){
       return h("div", {key:qi, className:"fiche-q fiche-q-b"},
         h("span", {className:"num"}, "Q" + (qi+1)),
         h("span", null, q.enonce, h("div", {className:"fiche-comp"}, "🧩 " + q.competences.join(" · ")),
-          (r.corrigees || []).indexOf(qi) >= 0 && h("div", null, h("span", {className:"flag ok"}, p === "Michel" && qi === 0 ? "corrigée en classe : raison donnée à Michel (Rome)" : "Corrigé d'après sa feuille")),
+          (r.corrigees || []).indexOf(qi) >= 0 && h("div", null, h("span", {className:"flag ok"}, qi === qV ? "Corrigé d'après sa feuille : " + feuilleDit(q, luV, false) : p === "Michel" && qi === 0 ? "corrigée en classe : raison donnée à Michel (Rome)" : "Corrigé d'après sa feuille")),
           fl && h(FlagLecture, {fl:fl, cle:p + qi})),
         h("span", {className:"val " + (luJ ? "j" : "f")}, choixTexte(q, lu)),
         h("span", {className:"val " + (tJ ? "j" : "f")}, choixTexte(q, t)),
@@ -324,3 +330,6 @@ function marquerLue(cle){ LUES.lues = Object.assign({}, LUES.lues); LUES.lues[cl
 function FlagLecture(p){ useLues(); var lue = p.fl.lue || LUES.lues[p.cle]; return h("div", null, h("span", {className:"flag" + (lue ? " ok" : "")}, (lue ? "✔ lue · " : "⚠️ ") + p.fl.txt)); }
 function LueBoutonC(p){ useLues(); var lue = !!LUES.lues[p.cle];
   return h("button", {className:"btn btn-ghost btn-sm", "data-local":"1", disabled:lue, title:lue ? "Feuille lue : le signalement est passé à « lu »." : "Tu as lu sa feuille et elle dit bien ce qui est compté : le signalement passe à « lu ».", onClick:function(){ marquerLue(p.cle); }}, lue ? "✔ lue" : "✔ Marquer lue"); }
+
+// (changement 6.4, relecteur n°275) l'en-tête d'une compétence du tableau : son libellé entier se lit au survol
+function EnteteComp(c){ return h("th", {key:c, className:"comp-col", title:"La compétence " + c + " : " + LIB_OFF[c] + ". Ses questions : " + compQuestions(c).map(function(i){ return "Q" + (i+1); }).join(", ") + "."}, "🧩 " + c, h("div", {className:"thq"}, COMP_COURT[c] + " · " + compQuestions(c).map(function(i){ return "Q" + (i+1); }).join(", "))); }

@@ -14,7 +14,8 @@ function etatCorr3(qi){
   return function(p){
     var s = calc(p).st[qi];
     var r = {va:"c-autonomie", titre:"Clique sur le nom : « ⛔ Retirer le point d'autonomie », ou « 🚫 Marquer comme parti »."};
-    if(SCN.autonomie(p, k).retire) r.flag = FLAG_RETIRE;
+    // (relecteur n°179) le point retiré ne cache pas l'alerte encore ouverte : la tuile dit les deux
+    if(SCN.autonomie(p, k).retire) r.flag = r.flag === "alerte : à trancher" ? r.flag + " · " + FLAG_RETIRE : FLAG_RETIRE;
     if(!revele){ r.cls = pasLu.indexOf(p) >= 0 ? "m-pasdit" : "m-dit"; r.st = pasLu.indexOf(p) >= 0 ? "⏳ sa feuille pas encore lue" : "📄 feuille lue"; return r; }
     if(s === "j"){ r.cls = "m-juste"; r.st = "✓ 1 pt"; }
     else if(s === "t"){ r.cls = "m-trouvee"; r.st = "✓ Trouvée au dernier moment"; }
@@ -103,7 +104,8 @@ function PilotCoevalE(){
     else if(x === "ok") r = {cls:"m-juste", st:"✅ bien lu"};
     else if(x.indexOf("mal") === 0) r = tranche ? {cls:"m-juste", st:"❌ Q" + x.slice(3) + " · tranché"} : {cls:"m-faux m-co", st:"❌ mal lu Q" + x.slice(3), flag:"alerte : à trancher"};
     else r = {cls:"m-coq", st:"🤔 peut-être Q" + x.slice(4), flag:"à relire ce soir"};
-    if(SCN.autonomie(p, k).retire) r.flag = FLAG_RETIRE;
+    // (relecteur n°179) le point retiré ne cache pas l'alerte encore ouverte : la tuile dit les deux
+    if(SCN.autonomie(p, k).retire) r.flag = r.flag === "alerte : à trancher" ? r.flag + " · " + FLAG_RETIRE : FLAG_RETIRE;
     r.va = "c-autonomie"; r.titre = "Clique sur le nom : « ⛔ Retirer le point d'autonomie », ou « 🚫 Marquer comme parti »."; return r;
   };
   var dec = paramHash("dec") || "michel", lire = lireSoir(tranche && dec === "soir" ? "S08:coeval" : k), nM = calc("Michel"), n0 = SCN.note("Michel", "S08:coeval");
@@ -111,6 +113,8 @@ function PilotCoevalE(){
   function decTexte(){
     if(dec === "julien") return ["✅ Alerte tranchée : raison donnée à Julien", "La lecture de Julien, Venise, est gardée : la question 1 de DUVERNAY Michel reste à 0 ; sa note provisoire reste à " + n0.n + " / " + n0.total + "."];
     if(dec === "soir") return ["📌 La question 1 de DUVERNAY Michel est à relire ce soir", "L'alerte se ferme : la question t'attend ce soir dans Résultats, « ⚠️ À relire » ; sa note provisoire reste à " + n0.n + " / " + n0.total + "."];
+    var luV = luParam();
+    if(dec === "feuille" && luV && !memesChoix(luV, EV.questions[0].bonnes)) return ["✅ Alerte tranchée : la feuille de Michel dit " + feuilleDit(EV.questions[0], luV, false), "La question 1 de DUVERNAY Michel reste à 0 ; sa note provisoire reste à " + n0.n + " / " + n0.total + "."];
     if(dec === "feuille") return ["✅ Alerte tranchée : la feuille de Michel dit Rome", "La question 1 de DUVERNAY Michel passe à 1 point, « Corrigé d'après ta feuille » dans son bilan : sa note provisoire passe à " + nM.n + " / " + nM.total + "."];
     return ["✅ Alerte tranchée : raison donnée à Michel", "La question 1 de DUVERNAY Michel passe à 1 point, « Corrigé d'après ta feuille » dans son bilan : sa note provisoire passe à " + nM.n + " / " + nM.total + "."];
   }
@@ -176,7 +180,8 @@ function BilanClasse(){
           var d = {vert:0, bleu:0, orange:0, rouge:0};
           lignes.forEach(function(l){ d[niveauComp(l.r, cp).k]++; });
           return h("div", {key:cp, className:"par-comp"},
-            h("div", {className:"pc-t"}, cp + " · " + COMP_COURT[cp] + " · " + compQuestions(cp).map(function(i){ return "Q" + (i+1); }).join(", ")),
+            // (relecteur n°216) le libellé entier, sans le code, qui reste au survol
+            h("div", {className:"pc-t", title:"La compétence " + cp + " du référentiel : " + LIB_OFF[cp] + "."}, LIB_OFF[cp] + " · " + compQuestions(cp).map(function(i){ return "Q" + (i+1); }).join(", ")),
             h("div", {className:"bilan-classe-distrib pc-d"}, MAITRISE.map(function(mt){ return h("div", {key:mt.k, className:"bilan-classe-distrib-cell fourchette-" + mt.k}, h("strong", null, d[mt.k]), h("span", null, mt.em + " " + mt.lib)); })));
         }),
         h("div", {className:"par-comp"}, h("div", {className:"pc-t"}, "🤝 Le point d'autonomie · Être autonome et responsable · S'impliquer dans les activités en classe et dans son travail personnel"),

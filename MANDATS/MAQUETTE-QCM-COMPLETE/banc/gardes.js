@@ -257,17 +257,18 @@ function garde3(sc, lu){
   // Le prompt : modifiable, c'est le gabarit du README mot pour mot, jetons compris ; rempli (ce que l'app copie), c'est le texte
   // du README, chaque jeton remplacé : le chapitre et ses compétences d'après les vraies données, {{LIMITES}} par le texte des mesures
   for(const x of lu.prompts){
-    const p = x.texte, gab = promptAttendu();
+    const nb = v => String(v).replace(/[\u00A0\u202F\u2009]/g, " ").replace(/[’‘]/g, "'");   // les espaces insécables ramenées à l'espace, les lignes gardées : le prompt affiché prend la typographie (changement 6.7)
+    const p = nb(x.texte), gab = promptAttendu();
     if(x.modifiable){ if(C.normEsp(p) !== C.normEsp(gab)) pb("le prompt à modifier n'est pas le gabarit du README, jetons compris"); continue; }
     const restes = p.match(/\{\{[A-Z_]+\}\}/g); if(restes) pb("le prompt garde ses jetons non remplacés : " + [...new Set(restes)].join(" "));
     const morceaux = gab.split(/\{\{[A-Z_]+\}\}/); let pos = 0;
-    for(const m of morceaux){ const t = m.trim(); if(!t) continue; const i = p.indexOf(t, pos); if(i < 0){ pb("le prompt n'a pas, à sa place, le texte du README « " + t.slice(0, 70) + "… »"); break; } pos = i + t.length; }
+    for(const m of morceaux){ const t = nb(m).trim(); if(!t) continue; const i = p.indexOf(t, pos); if(i < 0){ pb("le prompt n'a pas, à sa place, le texte du README « " + t.slice(0, 70) + "… »"); break; } pos = i + t.length; }
     // {{COMPETENCES_CHAPITRE}} : chaque compétence du chapitre, une par ligne, avec son code, son libellé officiel et son libellé élève
     const ch = chapitre();
     ch.majeures.concat(ch.mineures).forEach(code => { const c = A.comps[code];
       const l = p.split("\n").filter(x => x.includes(code))[0];
       if(!l) pb("le prompt n'a pas la compétence « " + code + " » du chapitre");
-      else if(!l.includes(c.libelle) || !l.includes(c.eleve)) pb("la ligne de « " + code + " » n'a pas son libellé officiel et son libellé élève : « " + l.slice(0, 120) + " »"); });
+      else if(!l.includes(nb(c.libelle)) || !l.includes(nb(c.eleve))) pb("la ligne de « " + code + " » n'a pas son libellé officiel et son libellé élève : « " + l.slice(0, 120) + " »"); });
     const ids = [...new Set(p.match(/\b(c4|tr)-[a-z]+-\d\d\b/g) || [])].filter(id => !ch.majeures.concat(ch.mineures).includes(id));
     if(ids.length) pb("le prompt donne des compétences hors du chapitre : " + ids.join(" "));
     // {{DUREES}} : les durées fixes du point 649, avec ses mots
@@ -276,7 +277,7 @@ function garde3(sc, lu){
     if(MESURES){
       const lt = limitesTexte();
       if(!lt) pb("mesures/limites.json ne donne pas le texte de {{LIMITES}}");
-      else if(!p.includes(lt)) pb("le prompt ne porte pas, pour {{LIMITES}}, le texte de mesures/limites.json");
+      else if(!p.includes(nb(lt))) pb("le prompt ne porte pas, pour {{LIMITES}}, le texte de mesures/limites.json");
     }
   }
   return out;

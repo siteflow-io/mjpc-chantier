@@ -211,7 +211,7 @@ function ElevesCodes(p){
             var on = l.indexOf(x) >= 0;
             return h("button", {key: x, className: "ex-case" + (on ? " on" : ""), "data-local": "1", title: on ? "Retire l'exclusion entre " + pre(n) + " et " + pre(x) + ", dans les deux sens. Un clic l'enregistre aussitôt." : "Exclut " + pre(n) + " et " + pre(x) + " : jamais ensemble sur une tablette, dans les deux sens, pour toutes les apps. Un clic l'enregistre aussitôt.", onClick: function(){ basculer(n, x); }}, h("span", {className: "ck"}, on ? "✓" : ""), x);
           })),
-          refus && h("div", {className: "ex-refus"}, h("strong", null, "🚫 Refusé : "), "pas d'exclusion entre " + pre(refus[0]) + " et " + pre(refus[1]) + " : " + refus[2] + " a déjà 3 exclusions, le plus que permet MJPC. Retire d'abord une exclusion " + deNom(refus[2]) + ".")));
+          refus && h("div", {className: "ex-refus"}, h("strong", null, "🚫 Refusé : "), "pas d'exclusion entre " + pre(refus[0]) + " et " + pre(refus[1]) + ", car " + refus[2] + " a déjà 3 exclusions, le plus que permet MJPC. Retire d'abord une exclusion " + deNom(refus[2]) + ".")));
     })));
 }
 function ScElevesCodes(trois){

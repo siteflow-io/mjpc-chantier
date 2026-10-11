@@ -58,3 +58,52 @@ function poserMoments(racine){
     if(!b.hasAttribute("data-appareil") && appT !== appIci && GESTES_APPAREIL.test(lib)) b.setAttribute("data-appareil", appT);
   });
 }
+
+/* (changement 6.7) la ponctuation ne reste jamais seule en début ou en fin de ligne : l'espace avant « : ; ! ? » et « », après « »,
+   entre un nombre et son unité, et dans « Q 1 / 3 », devient insécable. La typographie ne change aucun mot (§1.2) : seules les espaces
+   changent, dans le texte affiché (jamais dans un champ, ni dans une infobulle). Les textes rendus par React sont repris à chaque rendu. */
+var TYPO_NB = " ";
+function typoTexte(v){
+  return v.replace(/ ([?!;:»])/g, TYPO_NB + "$1").replace(/« /g, "«" + TYPO_NB)
+    .replace(/(\d) (s|min|h|px|pts?|%|€|élèves?|questions?|secondes?)(?![\p{L}])/gu, "$1" + TYPO_NB + "$2")
+    .replace(/(\d) \/ (\d)/g, "$1" + TYPO_NB + "/" + TYPO_NB + "$2").replace(/ (\d{1,2}:\d\d)(?!\d)/g, TYPO_NB + "$1").replace(/\bQ (\d)/g, "Q" + TYPO_NB + "$1");
+}
+function typoNoeud(n){
+  if(n.nodeType !== 3 || !n.nodeValue || !/[ ]/.test(n.nodeValue)) return;
+  var pe = n.parentElement; if(!pe || pe.closest("input,textarea,script,style,select,option,pre,code")) return;   // un champ garde ses espaces ; le prompt affiché les prend, il se copie d'après son texte (promptRempli)
+  var t = typoTexte(n.nodeValue); if(t !== n.nodeValue) n.nodeValue = t;
+}
+function typoArbre(racine){ var tw = document.createTreeWalker(racine, NodeFilter.SHOW_TEXT), n; while((n = tw.nextNode())) typoNoeud(n); }
+(function(){
+  var racine = document.getElementById("root"); if(!racine || !window.MutationObserver) return;
+  new MutationObserver(function(muts){
+    muts.forEach(function(m){
+      if(m.type === "characterData") typoNoeud(m.target);
+      else Array.prototype.forEach.call(m.addedNodes, function(x){ if(x.nodeType === 3) typoNoeud(x); else if(x.nodeType === 1) typoArbre(x); });
+    });
+  }).observe(racine, {childList:true, subtree:true, characterData:true});
+})();
+
+/* (changement 6.6, relecteurs n°50, 104, 222) un émoji décoratif est entier, ou il n'est pas là : celui qui touche un cadre voisin
+   (la console, la carte d'une moitié) est retiré de l'affichage, à chaque rendu et à chaque changement de taille */
+function decosEntiers(){
+  Array.prototype.forEach.call(document.querySelectorAll("#root .deco"), function(d){
+    d.style.visibility = "";
+    var r = d.getBoundingClientRect(); if(r.width < 1) return;
+    var touche = Array.prototype.some.call(d.parentElement ? d.parentElement.children : [], function(x){
+      if(x === d || x.classList.contains("deco")) return false;
+      var q = x.getBoundingClientRect(); return q.width > 0 && r.right > q.left && r.left < q.right && r.bottom > q.top && r.top < q.bottom; });
+    var horsEcran = r.left < 0 || r.right > innerWidth;
+    // un cadre qui coupe ce qui dépasse (une tablette simulée, une fenêtre) : l'émoji y est entier, ou il n'y est pas
+    for(var x = d.parentElement; x && x.id !== "root" && !horsEcran; x = x.parentElement){ var cs = getComputedStyle(x);
+      if(cs.overflowX !== "visible" || cs.overflowY !== "visible"){ var q = x.getBoundingClientRect(); if(r.left < q.left - 1 || r.right > q.right + 1 || r.top < q.top - 1 || r.bottom > q.bottom + 1) horsEcran = true; } }
+    if(touche || horsEcran) d.style.visibility = "hidden";
+  });
+}
+(function(){
+  var racine = document.getElementById("root"); if(!racine || !window.MutationObserver) return;
+  var prevu = false;
+  function plusTard(){ if(prevu) return; prevu = true; requestAnimationFrame(function(){ prevu = false; decosEntiers(); }); }
+  new MutationObserver(function(muts){ if(muts.some(function(m){ return m.type === "childList"; })) plusTard(); }).observe(racine, {childList:true, subtree:true});
+  window.addEventListener("resize", plusTard);
+})();

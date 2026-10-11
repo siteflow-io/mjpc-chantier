@@ -73,7 +73,7 @@ function ScEvalCorbeille(){
 var ERREURS_COLLAGE = [
   "Question 4 : il manque le temps de réponse (« reponse »).",
   "Question 5 : il manque ce qu'elle vérifie (« verifie »), la courte phrase à l'infinitif du bilan de l'élève.",
-  "Question 7 : 60 px de trop sur une demi-tablette. Raccourcis l'énoncé ou les choix, ou dis-moi que j'assume la longueur.",
+  "Question 7 : 60 px de trop sur une demi-tablette. Raccourcis l'énoncé ou les choix, sauf si je te dis que j'assume la longueur.",
   "Question 7 : la compétence « c4-oral-01 » n'est pas une compétence du chapitre (" + CHAP1 + ").",
   "Question 9 : 3 compétences ; une question en a une ou deux.",
   "La compétence « c4-culture-02 » n'est évaluée que par 2 questions (Q3, Q8) : il en faut au moins 3.",
@@ -138,7 +138,7 @@ function QuestionEditeeQCM(q, marquer){
     h("div", {className:"ed-verif" + (q.verifie ? "" : " manque")},
       h("span", {className:"ed-lbl"}, "🎯 Ce qu'elle vérifie, pour le bilan de l'élève :", InfoI("Une courte phrase à l'infinitif, dans les mots de l'élève. Le bilan général s'en sert : « À revoir en priorité : … » quand l'élève rate la question, « Bravo, tu sais … » quand il réussit une question difficile. L'instance la remplit avec le prompt ; tu la corriges ici.")),
       h("input", {defaultValue:q.verifie || "", placeholder:"par exemple : trouver l'antécédent d'un pronom relatif", title:"Ce que vérifie la question, à l'infinitif.", onChange:marquer})),
-    q.assumee && h("div", {className:"assumee-note"}, "📏 Longueur assumée : 60 px de trop sur une demi-tablette ; tu l'as dit à l'instance JSON. Sa moitié défilera seule, la page ne bouge pas."),
+    q.assumee && h("div", {className:"assumee-note"}, "📏 Longueur assumée : 60 px de trop sur une demi-tablette ; tu l'as dit à l'instance de création d'éval. Sa moitié défilera seule, la page ne bouge pas."),
     h("div", {className:"ed-ligne"},
       temps("🧠 Réflexion", q.ref, "s", "Le temps de réflexion de cette question, en secondes."),
       temps("✋ Réponse", q.rep, "s par tour", "Le temps de réponse de cette question, pour chaque tour, en secondes."),
@@ -676,7 +676,7 @@ function ListeExclusions(p){
           var on = l.indexOf(x) >= 0;
           return h("button", {key:x, className:"ex-case" + (on ? " on" : ""), "data-local":"1", title:on ? "Retire l'exclusion entre " + pre(n) + " et " + pre(x) + ", dans les deux sens. Un clic l'enregistre aussitôt." : "Exclut " + pre(n) + " et " + pre(x) + " : jamais ensemble sur une tablette, dans les deux sens, pour toutes les apps. Un clic l'enregistre aussitôt.", onClick:function(){ basculer(n, x); }}, h("span", {className:"ck"}, on ? "✓" : ""), x);
         })),
-        refus && h("div", {className:"ex-refus"}, h("strong", null, "🚫 Refusé : "), "pas d'exclusion entre " + pre(refus[0]) + " et " + pre(refus[1]) + " : " + refus[2] + " a déjà 3 exclusions, le plus que permet MJPC. Retire d'abord une exclusion " + deNom(refus[2]) + ".")));
+        refus && h("div", {className:"ex-refus"}, h("strong", null, "🚫 Refusé : "), "pas d'exclusion entre " + pre(refus[0]) + " et " + pre(refus[1]) + ", car " + refus[2] + " a déjà 3 exclusions, le plus que permet MJPC. Retire d'abord une exclusion " + deNom(refus[2]) + ".")));
   }));
 }
 function ScExclusions(trois){

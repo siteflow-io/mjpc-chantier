@@ -70,7 +70,8 @@ function Console(groupe, tab, contenu, séance){
           h("button", {className:"btn btn-ghost btn-sm", "data-local":"1", onClick:function(){ if(vientDUnGeste()) history.back(); else versScene("c-accueil"); }}, "← Retour"))),
       h("div", {className:"tabs"}, h("div", {className:"nav2"},
         h("div", {className:"nav2-groupes"}, groupes.map(function(g){ return h("button", {key:g[0], className:"nav2-groupe" + (g[0] === groupe ? " actif" : ""), "data-va":g[2]}, g[1]); }), h("button", {className:"nav2-aide", "data-va":"c-mode-emploi"}, "?")),
-        h("div", {className:"nav2-sous"}, sous[groupe].map(function(t){ return h("button", {key:t[0], className:"tab " + (t[0] === tab ? "actif" : ""), "data-va":t[2]}, t[1]); })))),
+        // (relecteur n°297) un groupe sans sous-onglets n'a pas de rangée vide
+        sous[groupe].length > 0 && h("div", {className:"nav2-sous"}, sous[groupe].map(function(t){ return h("button", {key:t[0], className:"tab " + (t[0] === tab ? "actif" : ""), "data-va":t[2]}, t[1]); })))),
       contenu));
 }
 // les gestes qui menaient par libellé seul ont désormais leur destination dans leur écran ; ALLER["*"] ne garde que les onglets
@@ -125,7 +126,7 @@ function AccueilC(){
 // (changement 7.2) un choix déjà allumé, cliqué, s'éteint : chaque clic se voit
 window.addEventListener("click", function(ev){
   var b = ev.target && ev.target.closest ? ev.target.closest("#root .decl-b-btns > button, #root .co-btns > button, #root .qdf-choix > *, #root .autoeval-fourchettes > button") : null;
-  if(!b || b.disabled || b.hasAttribute("data-local") || b.closest(".fige-choix")) return;
+  if(!b || b.disabled || b.hasAttribute("data-local") || b.closest(".fige-choix,.qdf-etat")) return;
   if(b.classList.contains("on") || b.classList.contains("sel") || b.classList.contains("choisi")){ b.classList.remove("on", "sel", "choisi"); ev.stopImmediatePropagation(); }
 }, true);
 
@@ -181,3 +182,54 @@ h = function(type, props){
   }
   return hAvantTest.apply(null, arguments);
 };
+/* La fenêtre de la console (etape2.js) : une rangée de trois boutons ou plus reste une rangée (changement 6.8, relecteur n°225),
+   et le nom déjà dit par le titre ne se répète pas dessous (relecteur n°187) */
+function Fenetre(fond, titre, sous, corps, actions, retour, large){
+  var n = Array.isArray(actions) ? actions.filter(Boolean).length : 0;
+  if(typeof sous === "string" && typeof titre === "string" && sous && titre.indexOf(sous) >= 0) sous = null;
+  return h(F, null, fond, h("div", {className:"checkin-overlay", "data-echap":retour},
+    h("div", {className:"checkin-modal", style:{maxWidth:Math.max(large || 560, n >= 3 ? 720 : 0) + "px"}},
+      h("div", {className:"checkin-header"}, h("h3", null, titre), sous && h("div", {className:"checkin-sub"}, sous)),
+      h("div", {className:"fen-corps"}, corps),
+      h("div", {className:"checkin-actions" + (n >= 3 ? " rangee-une" : "")}, actions))));
+}
+// (relecteur n°67) le 🛑 rouge d'un bouton rouge se voit : il prend un liseré blanc (le libellé ne change pas)
+var hAvantStop = h;
+h = function(type, props){
+  var args = Array.prototype.slice.call(arguments);
+  if(type === "button" && props && /btn-rouge/.test(props.className || "") && typeof args[2] === "string" && args[2].indexOf("🛑 ") === 0)
+    args.splice(2, 1, hAvantStop("span", {key:"e", className:"emo-liseret"}, "🛑"), args[2].slice(2));
+  return hAvantStop.apply(null, args);
+};
+// (relecteur n°67) chaque carré de la légende se voit, même pâle : il prend un liseré
+function Legende(items){
+  return h("div", {className:"legende-tab"}, items.map(function(it, i){ return h("span", {key:i}, h("span", {className:"c", style:{background:it[0], border:it[2] || "1px solid #64748B"}}), it[1]); }));
+}
+/* (relecteur n°40) l'appel : le message des tablettes suit les absences cochées. Un élève dont le binôme est absent, et l'élève seul
+   de la classe, sont mis ensemble, sur la tablette du premier ; un élève qui reste seul le reste sur sa tablette. */
+function messageAppel(abs){
+  var seuls = [];
+  PAIRES_AVANT.forEach(function(pa, i){
+    var a = pa[0] && !abs[pa[0]], b = pa[1] && !abs[pa[1]];
+    if(a && !b) seuls.push({nom:pa[0], t:i + 1, de:pa[1]}); else if(b && !a) seuls.push({nom:pa[1], t:i + 1, de:pa[0]});
+  });
+  var qui = function(s, reste){ var f = SCN.SEXE[pre(s.nom)] === "F"; return [h("strong", {key:"n"}, s.nom), s.de ? " (binôme " + deNom(pre(s.de)) + ")" : reste ? "" : " (seul" + (f ? "e" : "") + ")"]; };
+  var lignes = [];
+  for(var i = 0; i + 1 < seuls.length; i += 2) lignes.push(h("div", {key:i}, "📱 ", qui(seuls[i]), " et ", qui(seuls[i + 1]), " sont mis ensemble : tablette " + seuls[i].t + "."));
+  if(seuls.length % 2) { var s = seuls[seuls.length - 1]; lignes.push(h("div", {key:"r"}, "📱 ", qui(s, true), " reste seul" + (SCN.SEXE[pre(s.nom)] === "F" ? "e" : "") + " : tablette " + s.t + ".")); }
+  return lignes;
+}
+function ListeAppel(p){   // l'appel : un clic sur un nom le marque absent ; « Tout le monde présent » les décoche
+  var s = useState({"YVON Adam":true}), abs = s[0], setAbs = s[1];
+  var n = Object.keys(abs).filter(function(k){ return abs[k]; }).length;
+  return h(F, null,
+    h("div", {className:"checkin-list", style:{display:"grid", gridTemplateColumns:"1fr 1fr 1fr", columnGap:".4rem"}}, p.classe.map(function(nom){
+      var a = !!abs[nom];
+      return h("button", {key:nom, className:"checkin-item appel-b" + (a ? " coche" : ""), "data-local":"1", title:a ? "Marqué absent : clique pour le remettre présent." : "Clique pour le marquer absent aujourd'hui.",
+        onClick:function(){ var o = Object.assign({}, abs); o[nom] = !a; setAbs(o); }},
+        h("span", {className:"checkin-checkbox"}, a ? "🚫" : "✓"), h("span", {className:"checkin-nom"}, nom));
+    })),
+    h("div", {className:"checkin-summary"}, "🚫 " + n + " absent" + (n > 1 ? "s" : "") + " sur " + p.classe.length,
+      h("button", {className:"btn btn-ghost btn-sm", style:{marginLeft:".8rem"}, "data-local":"1", title:BULLES["Tout le monde présent"], onClick:function(){ setAbs({}); }}, "Tout le monde présent")),
+    p.message !== false && h("div", {className:"appel-tablettes", style:{padding:".55rem 1.2rem 0", fontSize:".86rem", lineHeight:1.5}}, messageAppel(abs)));
+}

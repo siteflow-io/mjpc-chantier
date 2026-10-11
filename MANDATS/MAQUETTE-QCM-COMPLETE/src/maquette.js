@@ -228,7 +228,7 @@ function pastillesDe(e, nbRev){
 }
 function ChronoSaisie(v, total){
   var c = v <= 5 ? "rouge" : v <= total / 2 ? "orange" : "vert";
-  return h("div", {className:"eleve-chrono saisie saisie-" + c}, h("div", {className:"label"}, "Temps de réponse"), h("div", {className:"v"}, v));
+  return h("div", {className:"eleve-chrono saisie saisie-" + c}, h("div", {className:"label"}, "📄 Temps pour lire la feuille du voisin"), h("div", {className:"v"}, v));   // (778) le nom que Paul lit
 }
 function EcrCorr(e, qi, etape, chrono){   // etape : "vide" | "dit" | "revele"
   var q = EV.questions[qi], ordre = ORD[qi][e.cle], decl = FEUI[e.cle][qi], tab = TABL[e.cle][qi];
@@ -261,14 +261,14 @@ function EcrCorr(e, qi, etape, chrono){   // etape : "vide" | "dit" | "revele"
         var cls = "correction-choix-item" + (bon ? " bonne" : (moi ? " eleve-faux" : ""));
         if(moi && bon) cls = "correction-choix-item eleve-juste";
         return h("div", {key:i, className:cls}, h("span", null, q.choix[i],
-          bon && h("span", {className:"correction-tag tag-bonne"}, "Bonne réponse"),
-          moi && h("span", {className:"correction-tag tag-tienne"}, "Ta réponse")));
+          (bon || moi) && h("span", {className:"tags-ens"}, bon && h("span", {className:"correction-tag tag-bonne"}, "Bonne réponse"),
+          moi && h("span", {className:"correction-tag tag-tienne"}, "Ta réponse"))));
       })),
       decl === "aucun" && h("div", {className:"tablette-ligne"}, "Ta réponse : ", P("Ma feuille ne dit aucun de ces choix")),
       trouvee && h("div", {className:"tablette-ligne"}, P("Sur la tablette, tu avais cliqué sur : " + tab.map(function(i){ return q.choix[i]; }).join(", "))),
       h("div", {className:"correction-consigne " + (juste ? "juste" : "faux")}, juste
         ? h(F, null, h("strong", null, "✅ Bravo ! "), "Sur ta feuille, mets simplement un ", h("span", {className:"stylo-vert"}, "V vert"), " dans la marge à côté de ta réponse.")
-        : h(F, null, !trouvee && h("strong", null, "❌ Tu avais faux. "), h("span", {className:"stylo-rouge"}, "Barre ta réponse en rouge"), " et écris la bonne réponse en entier en ", h("span", {className:"stylo-vert"}, "vert"), " à côté.")),
+        : h(F, null, h("span", {className:"stylo-rouge"}, "Barre ta réponse en rouge"), " et écris la bonne réponse en entier en ", h("span", {className:"stylo-vert"}, "vert"), " à côté.")),
       h("div", {className:"correction-explication"}, h("div", {className:"correction-explication-titre"}, "💡 Explication"), h("div", {className:"correction-explication-texte"}, q.explication)));
   }
   return Page(badgeDe(e), "📝 Correction", h(F, null,
@@ -351,7 +351,7 @@ function Console(groupe, tab, contenu, séance){
 function TabMini(num, a, b, etat, opts){
   opts = opts || {};
   function moitie(n, cote){
-    if(!n) return h("div", {className:"tab-mini-m vide"}, h("div", {className:"nm"}, "1 élève"));
+    if(!n) return h("div", {className:"tab-mini-m vide"}, h("div", {className:"nm"}, "moitié libre"));
     var e = etat ? etat(pre(n), cote) : {};
     return h("div", {className:"tab-mini-m " + (e.cls || "")},
       h("div", {className:"nm"}, opts.grip && h("span", {className:"grip"}, "⠿"), n),
@@ -392,7 +392,7 @@ var LEG_Q = [["#22C55E","juste"],["#FACC15","toutes les bonnes + une en trop"],[
 /* état des moitiés pendant les questions : s = {qi, tour (1|2), fini (bool), nonRep:[prénoms]} */
 function etatQuestion(s){
   return function(p, cote){
-    if(s.reflexion) return {cls:"m-ecrit", st:"✍️ écrit sur sa feuille"};
+    if(s.reflexion) return {cls:"m-ecrit", st:"✍️ écrit"};
     if(s.fini) return couleur(p, s.qi, false);
     var estPremier = cote === (PREMIER[s.qi] === "J" ? "g" : "d");
     if(s.tour === 1 && !estPremier) return {cls:"m-voile", st:"🙈 attend son tour"};

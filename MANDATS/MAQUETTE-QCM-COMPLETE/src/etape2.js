@@ -132,7 +132,7 @@ function Pilot(s){
       h("div", {className:"enonce-next"}, EV.questions[s.qi == null ? 0 : s.qi + 1].enonce),
       h("div", {style:{fontSize:".72rem", color:"var(--gris)", fontStyle:"italic"}}, (function(){ var n = EV.questions[s.qi == null ? 0 : s.qi + 1]; return "Difficulté " + NIV[n.niveau].label + " · réflexion " + n.reflexion + " s · réponse " + n.reponse + " s par tour · " + n.bonnes.length + " bonne(s) réponse(s)"; })())));
   var colM = h("div", null,
-    h("h3", {style:{margin:"0 0 .2rem"}}, "📱 Tablettes", InfoI("Chaque tablette, ses deux moitiés : qui est assis où, et où en est chacun. « 👁 » montre les deux moitiés en direct. Glisse un nom sur un autre pour échanger deux élèves : pendant la séance, ils changent de tablette et retapent leur code ; leurs réponses les suivent."), h("span", {style:{fontWeight:400, fontSize:".8rem", color:"var(--gris)", marginLeft:".5rem"}}, s.sousTitre || "")),
+    h("h3", {style:{margin:"0 0 .2rem"}}, "📱 Tablettes", InfoI("Chaque tablette, ses deux moitiés : qui est assis où, et où en est chacun. « 👁 » montre les deux moitiés en direct. Glisse un nom sur un autre pour échanger deux élèves : pendant la séance, ils changent de tablette et retapent leur code ; leurs réponses les suivent."), h("span", {style:{fontWeight:400, display:"block", fontSize:".8rem", color:"#475569", margin:".1rem 0 0"}}, s.sousTitre || "")),
     GrilleTablettes(s.paires || PAIRES, s.etat),
     Legende(s.legende || LEG_Q));
   return Console("pilotage", "pilot", h("div", {className:"card"},
@@ -150,7 +150,7 @@ function Pilot(s){
 function TabMini(num, a, b, etat, opts){
   opts = opts || {};
   function moitie(n, cote){
-    if(!n) return h("div", {className:"tab-mini-m vide"}, h("div", {className:"nm"}, "1 élève"));
+    if(!n) return h("div", {className:"tab-mini-m vide"}, h("div", {className:"nm"}, "moitié libre"));
     var e = etat ? etat(pre(n), cote) : {};
     return h("div", {className:"tab-mini-m " + (e.cls || "")},
       h("div", {className:"nm"}, opts.grip && h("span", {className:"grip"}, "⠿"), n),
@@ -188,7 +188,7 @@ function GrilleBinomes(p){   // glisser un nom sur un autre : les deux s'échang
           var n = x[ci];
           return h("div", {key:ci, className:"tab-mini-m" + (n ? "" : " vide") + (tenu && tenu[0] === ti && tenu[1] === ci ? " tenu" : ""), draggable:!!n,
             onDragStart:function(){ setTenu([ti, ci]); }, onDragOver:function(e){ e.preventDefault(); }, onDrop:function(e){ e.preventDefault(); poser(ti, ci); }},
-            h("div", {className:"nm"}, n ? h(F, null, h("span", {className:"grip"}, "⠿"), n) : "1 élève"));
+            h("div", {className:"nm"}, n ? h(F, null, h("span", {className:"grip"}, "⠿"), n) : "moitié libre"));
         })));
     })),
     refus && h("div", {className:"refus-excl"},
@@ -221,7 +221,6 @@ function Lancement(appel, opts){
       h("div", {className:"checkin-header"}, h("h3", null, "📋 Check-in : qui est absent aujourd'hui ?", InfoI("Clique un nom pour le marquer absent. Son binôme est mis avec un élève resté seul, sans jamais créer de paire exclue.")), h("div", {className:"checkin-sub"}, CLASSE + " — 25 élèves")),
       h(ListeAppel, {classe:classe}),
       h("div", {style:{padding:".55rem 1.2rem", borderTop:"1px solid var(--bordure)", fontSize:".86rem", lineHeight:1.5}},
-        h("div", null, "📱 ", h("strong", null, "CHEVALLIER Théo"), " (binôme d'Adam) et ", h("strong", null, "ZELLER Lou"), " (seule) sont mis ensemble : tablette 12."),
         h("div", {style:{display:"flex", alignItems:"center", gap:".5rem", marginTop:".35rem"}}, h("span", {style:{whiteSpace:"nowrap"}}, "🕙 Fin de l'heure :"),
           h("input", {defaultValue:"10:57", title:"L'heure de fin de la séance : lancement + 55 min. Les tablettes oublient leurs élèves à « Terminer », ou 10 min après cette heure.", style:{width:"70px", padding:".2rem .4rem", border:"2px solid var(--bordure)", borderRadius:"6px", fontWeight:900, textAlign:"center", fontFamily:"inherit"}}),
           InfoIB("🕙 Fin de l'heure", "Lancement + 55 min. Les tablettes oublient leurs élèves à « Terminer », ou 10 min après cette heure."))),
@@ -582,7 +581,7 @@ function MessagePrompt(p){ return p.msg ? h("div", {className:"prompt-msg", styl
 function ReglagesPrompt(){
   var s = useState(""), msg = s[0], setMsg = s[1];
   return PromptFenetre(h(F, null,
-    h("p", {style:{fontSize:".85rem", color:"var(--gris)"}}, "Chapitre choisi : " + CHAPITRE_PROMPT.libelle + "."),
+    h("p", {style:{fontSize:".85rem", color:"#475569", margin:"0 0 .7rem"}}, "Chapitre choisi : " + CHAPITRE_PROMPT.libelle + "."),
     h("div", {className:"row", style:{gap:".5rem", flexWrap:"wrap"}},
       h("button", {className:"btn btn-primary", "data-local":"1", onClick:function(){ setMsg("✅ Prompt copié dans le presse-papiers"); }}, "📋 Copier le prompt"),
       h("button", {className:"btn btn-ghost", "data-va":"c-reglages-prompt-modifier"}, "✏️ Modifier le prompt")),

@@ -7,6 +7,14 @@ var DEC_610 = {
   feuille:["✅ Alerte tranchée : la feuille de Michel dit C, E", "La question 3 de DUVERNAY Michel reste à 0 point : sa feuille dit C et E, sans B."],
   soir:["📌 La question 3 de DUVERNAY Michel est à relire ce soir", "L'alerte se ferme : la question t'attend ce soir dans Résultats, « ⚠️ À relire »."]
 };
+// « Valider » de « Que dit la feuille ? » (« &lu= ») : la phrase dit ce que la feuille dit, et le point qui en sort
+function dec610(dec){
+  var luV = dec === "feuille" ? luParam() : null, q = EV3.questions[QI3];
+  if(!luV) return DEC_610[dec];
+  var juste = memesChoix(luV, q.bonnes);
+  return ["✅ Alerte tranchée : la feuille de Michel dit " + (luV === "aucun" ? "aucun de ces choix" : lettres(luV)),
+    "La question 3 de DUVERNAY Michel " + (juste ? "passe à 1 point" : "reste à 0 point") + " : sa feuille dit " + feuilleDit(q, luV, true) + "."];
+}
 function retires610(){ var r = paramHash("retire"); return r === "deux" ? ["Michel", "Julien"] : r ? [r] : []; }
 var BOUTONS_610 = [
   ["Donner raison à Michel : B, C, E → 1 point", "btn btn-vert", "michel", "vert"], ["Donner raison à Julien : E → 0 point", "btn btn-turquoise", "julien", "turq"],
@@ -48,14 +56,14 @@ function AlerteCo3(tel){
 // sur le téléphone : la décision se prend là, et ce qu'elle a fait s'y lit
 function AlerteTel3(p){
   var s = useState(null), dec = s[0], setDec = s[1];
-  if(dec) return h("div", {className:"tel-alerte"}, h("div", {className:"al-t"}, DEC_610[dec][0]), h("div", {className:"al-l"}, DEC_610[dec][1]),
+  if(dec) return h("div", {className:"tel-alerte"}, h("div", {className:"al-t"}, dec610(dec)[0]), h("div", {className:"al-l"}, dec610(dec)[1]),
     h("button", {className:"tel-btn tb-ghost tb-small", "data-local":"1", title:"Rouvre l'alerte, telle qu'elle était : rien n'est appliqué.", onClick:function(){ setDec(null); }}, "↩️ Défaire"));
   return h("div", {className:"tel-alerte"}, p.corps,
     BOUTONS_610.map(function(b){ return h("button", {key:b[0], className:"tel-btn tb-" + b[3], "data-local":"1", title:BULLES[b[0]], onClick:function(){ setDec(b[2] || "feuille"); }}, b[0]); }),
     h("div", {className:"g3"},
-      h(TelGeste, {lib:"⛔ Michel", cls:"tb-ghost tb-small", titre:BULLES["⛔ Michel"], question:"⛔ Retirer le point d'autonomie à DUVERNAY Michel ?", corps:"Ses deux compétences d'autonomie passent en Maîtrise insuffisante, pour cette évaluation. La note ne bouge pas.", oui:"⛔ Retirer le point d'autonomie", fait:"⛔ Point d'autonomie retiré à Michel."}),
-      h(TelGeste, {lib:"⛔ Julien", cls:"tb-ghost tb-small", titre:BULLES["⛔ Julien"], question:"⛔ Retirer le point d'autonomie à ABRIAL Julien ?", corps:"Ses deux compétences d'autonomie passent en Maîtrise insuffisante, pour cette évaluation. La note ne bouge pas.", oui:"⛔ Retirer le point d'autonomie", fait:"⛔ Point d'autonomie retiré à Julien."}),
-      h(TelGeste, {lib:"⛔ Aux deux", cls:"tb-rougeclair tb-small", titre:BULLES["⛔ Aux deux"], question:"⛔ Retirer le point d'autonomie aux deux ?", corps:"Leurs deux compétences d'autonomie passent en Maîtrise insuffisante, pour cette évaluation. La note ne bouge pas.", oui:"⛔ Retirer le point d'autonomie", fait:"⛔ Point d'autonomie retiré aux deux."})),
+      h(TelGeste, {lib:"⛔ à Michel", cls:"tb-ghost tb-small", titre:BULLES["⛔ à Michel"] || BULLES["⛔ Michel"], question:"⛔ Retirer le point d'autonomie à DUVERNAY Michel ?", corps:"Ses deux compétences d'autonomie passent en Maîtrise insuffisante, pour cette évaluation. La note ne bouge pas.", oui:"⛔ Retirer le point d'autonomie", fait:"⛔ Point d'autonomie retiré à Michel."}),
+      h(TelGeste, {lib:"⛔ à Julien", cls:"tb-ghost tb-small", titre:BULLES["⛔ à Julien"] || BULLES["⛔ Julien"], question:"⛔ Retirer le point d'autonomie à ABRIAL Julien ?", corps:"Ses deux compétences d'autonomie passent en Maîtrise insuffisante, pour cette évaluation. La note ne bouge pas.", oui:"⛔ Retirer le point d'autonomie", fait:"⛔ Point d'autonomie retiré à Julien."}),
+      h(TelGeste, {lib:"⛔ aux deux", cls:"tb-rougeclair tb-small", titre:BULLES["⛔ aux deux"] || BULLES["⛔ Aux deux"], question:"⛔ Retirer le point d'autonomie aux deux ?", corps:"Leurs deux compétences d'autonomie passent en Maîtrise insuffisante, pour cette évaluation. La note ne bouge pas.", oui:"⛔ Retirer le point d'autonomie", fait:"⛔ Point d'autonomie retiré aux deux."})),
     h("div", {className:"tel-al-note"}, "⛔ : retirer le point d'autonomie."));
 }
 // les gardes du point d'autonomie : le point retiré se voit ensuite, et l'alerte reste à trancher (relecteur n°177)
@@ -76,10 +84,10 @@ function PilotCoeval3(tranche){
   var nOk = compte(function(c){ return c === "ok"; }), nPeut = compte(function(c){ return c.indexOf("peut") === 0; }), nMal = compte(function(c){ return c.indexOf("mal") === 0; });
   var etat = function(p){ var c = CO3[p]; if(dec && c === "att") c = "ok";
     var r = c === "att" ? {cls:"m-pasdit", st:"⏳ pas encore répondu"} : c === "ok" ? {cls:"m-juste", st:"✅ bien lu"} : c.indexOf("mal") === 0 ? (dec && dec !== "soir" ? {cls:"m-juste", st:"❌ Q" + c.slice(3) + " · tranché"} : {cls:"m-faux m-co", st:"❌ mal lu Q" + c.slice(3), flag:dec === "soir" ? "à relire ce soir" : "alerte : à trancher"}) : {cls:"m-coq", st:"🤔 peut-être Q" + c.slice(4), flag:"à relire ce soir"};
-    if(ret.indexOf(p) >= 0) r.flag = FLAG_RETIRE;
+    if(ret.indexOf(p) >= 0) r.flag = r.flag === "alerte : à trancher" ? r.flag + " · " + FLAG_RETIRE : FLAG_RETIRE;
     r.va = "c-autonomie"; r.titre = "Clique sur le nom : « ⛔ Retirer le point d'autonomie », ou « 🚫 Marquer comme parti »."; return r; };
   return Console("pilotage", "pilot", h("div", {className:"card"},
-    dec ? h("div", {className:"alerte-co tranchee"}, h("div", {className:"al-corps"}, h("div", {className:"al-t"}, DEC_610[dec][0]), h("div", {className:"al-l"}, DEC_610[dec][1])),
+    dec ? h("div", {className:"alerte-co tranchee"}, h("div", {className:"al-corps"}, h("div", {className:"al-t"}, dec610(dec)[0]), h("div", {className:"al-l"}, dec610(dec)[1])),
         h("div", {className:"al-actions"}, h("button", {className:"btn btn-ghost btn-sm", "data-va":"x610-8-console-alerte" + (ret.length ? "&retire=" + paramHash("retire") : ""), "data-moment":"S3E:coeval", title:"Rouvre l'alerte, telle qu'elle était : rien n'est appliqué."}, "↩️ Défaire")))
       : AlerteCo3(false),
     TitreCarte(h(F, null, "🤝 Co-évaluation de la lecture — " + EV3.titre + " — " + CLASSE, InfoI("À la fin de la correction, chacun dit, dans sa moitié, s'il pense que son voisin a bien lu sa feuille. Un « ❌ » t'alerte aussitôt, en haut ; un « 🤔 » passe la question « ⚠️ À relire » ce soir. Le bilan s'affiche quand tous les présents ont répondu.")),

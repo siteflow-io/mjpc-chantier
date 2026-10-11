@@ -124,7 +124,7 @@ function EcrCoeval(e, etape, k, qChoisie){
     zone.push(h("div", {key:"b"}, BtnCo(k, v, true, qChoisie)));
     zone.push(h("div", {key:"l", className:"co-liste"}, h("div", {className:"co-l choisie"}, lignes[qChoisie].txt)));
     zone.push(h("div", {key:"seule", className:"co-seule"}, "☝️ C'est ta seule question de désaccord."));
-    zone.push(h("div", {key:"r", className:"co-regle"}, REGLE_CO));
+    // (778) la règle du désaccord n\'est dite qu\'une fois : « ☝️ C\'est ta seule question de désaccord. » reste
     zone.push(h("div", {key:"f", className:"eleve-feedback valide"}, ENREG));
     zone.push(h("div", {key:"a", className:"co-actions"}, h("button", {className:"btn btn-ghost"}, "↩️ Changer")));
     zone.push(h("div", {key:"w", className:"co-attente"}, "⏳ Attends ton bilan…"));
@@ -133,7 +133,7 @@ function EcrCoeval(e, etape, k, qChoisie){
     if(cliquable) zone.push(h("div", {key:"b"}, BtnCo(k, v, true)));
     if(cliquable) zone.push(h("div", {key:"p", className:"co-prompt"}, "👇 ", Pz("Clique la question où tu penses que " + v.prenom + " a " + (k === "peut" ? "peut-être " : "") + "mal lu ta feuille.")));
     zone.push(h("div", {key:"l", className:"co-liste" + (cliquable ? " cliquable" : "")}, lignes.map(function(l){ return h("div", {key:l.qi, className:"co-l"}, l.txt); })));
-    zone.push(h("div", {key:"r", className:"co-regle"}, "☝️ " + REGLE_CO));
+    // (778) la règle du désaccord n\'est dite qu\'une fois : « ☝️ C\'est ta seule question de désaccord. » reste
     if(!cliquable) zone.push(h("div", {key:"bs", className:"co-btns"}, ["ok", "peut", "mal"].map(function(x){ return BtnCo(x, v, etape === "okfait" && x === "ok"); })));
     if(etape === "okfait") zone.push(h("div", {key:"f", className:"eleve-feedback valide"}, ENREG));
     if(etape === "okfait") zone.push(h("div", {key:"w", className:"co-attente"}, "⏳ Attends ton bilan…"));
@@ -291,12 +291,13 @@ function EcrCorrA3(e, dit){
 }
 /* La co-évaluation, sur l'évaluation de 3e. Tours 615 et 616 : d'abord les trois choix, sans liste ;
    puis « … c'est laquelle ? » et les questions ; puis « Qu'avais-tu écrit sur ta feuille ? » et les choix de la question. */
-function tronque(t, n){ return t.length > n ? t.slice(0, n - 1).replace(/\s+\S*$/, "") + "…" : t; }
+// (changement 6.4, relecteurs n°206, 207) un texte qui sert à décider se lit en entier : plus rien n'est tronqué
+function tronque(t, n){ return t; }
 function EcrCoeval3(e, etape, k){
   var v = autreDe(e), zone = [];
   if(etape === "choix" || etape === "okfait"){
     zone.push(h("div", {key:"t", className:"decl-titre co-titre"}, e.prenom + ", " + v.prenom + " a-t-" + il(v) + " bien lu ta feuille ?"));
-    zone.push(h("div", {key:"r", className:"co-regle"}, "☝️ " + REGLE_CO));
+    // (778) la règle du désaccord n\'est dite qu\'une fois : « ☝️ C\'est ta seule question de désaccord. » reste
     zone.push(h("div", {key:"bs", className:"co-btns"}, ["ok", "peut", "mal"].map(function(x){ return BtnCo(x, v, etape === "okfait" && x === "ok"); })));
     if(etape === "okfait"){
       zone.push(h("div", {key:"f", className:"eleve-feedback valide"}, ENREG));
@@ -307,7 +308,7 @@ function EcrCoeval3(e, etape, k){
     zone.push(h("div", {key:"l", className:"co-liste cliquable serree"}, EV3.questions.map(function(q, qi){
       return h("div", {key:qi, className:"co-l"}, h("strong", null, "Question " + (qi+1)), " · " + tronque(q.enonce.replace(/^Sur ta copie, /, ""), 58));
     })));
-    zone.push(h("div", {key:"r", className:"co-regle"}, "☝️ " + REGLE_CO));
+    // (778) la règle du désaccord n\'est dite qu\'une fois : « ☝️ C\'est ta seule question de désaccord. » reste
     zone.push(h("div", {key:"a", className:"co-actions"}, h("button", {className:"btn btn-ghost"}, "↩️ Changer")));
   } else { // "ecrit" : la question 3, les autres ont disparu ; il clique ce qu'il avait écrit
     var q = EV3.questions[QI3], S = S3[e.cle];
@@ -320,7 +321,7 @@ function EcrCoeval3(e, etape, k){
           h("span", null, q.choix[i], S.lu.indexOf(i) >= 0 && h("span", {className:"tag-lu"}, Pz(v.prenom + " a lu"))));
       }),
       h("button", {className:"eleve-choix-btn aucun"}, "Ma feuille ne dit aucun de ces choix")));
-    zone.push(h("div", {key:"r", className:"co-regle"}, REGLE_CO));
+    // (778) la règle du désaccord n\'est dite qu\'une fois : « ☝️ C\'est ta seule question de désaccord. » reste
     zone.push(h("div", {key:"f", className:"eleve-feedback valide"}, ENREG));
     zone.push(h("div", {key:"a", className:"co-actions"}, h("button", {className:"btn btn-ghost"}, "↩️ Changer"), h("span", {className:"co-attente", style:{margin:0, alignSelf:"center"}}, "⏳ Attends ton bilan…")));
   }

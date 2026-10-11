@@ -228,7 +228,7 @@ function Feuille(){
             h("div", {className:"champ"}, h("strong", null, "Classe :"), h("div", {className:"blanc"})),
             h("div", {className:"champ"}, h("strong", null, "Date :"), h("div", {className:"blanc"})))),
         e.questions.map(function(q, i){
-          return h("div", {key:i, className:"feuille-q-seul"}, h("span", {className:"n"}, "Question " + (i+1)), h("span", {className:"pt"}, q.bonus || /^BONUS/.test(q.enonce) ? "bonus" : "1 pt"), h("div", {className:"e"}, q.enonce));
+          return h("div", {key:i, className:"feuille-q-seul"}, h("span", {className:"n"}, "Question " + (i+1)), h("span", {className:"pt"}, q.bonus || /^BONUS/.test(q.enonce) ? "bonus" : "1 pt"), h("div", {className:"e"}, sansCoupe(q.enonce)));
         }))),
     h("div", {className:"feuille-legende"}, "A4, à l'échelle : toute l'évaluation tient sur cette page."));
 }
@@ -237,4 +237,12 @@ function Feuille(){
 function ChampJson(p){
   var s = useState(null), texte = s[0], set = s[1];
   return h("textarea", {className:"json", value:texte == null ? jsonDe(p.ev) : texte, placeholder:p.placeholder, title:p.title, style:p.style, onChange:function(e){ set(e.target.value); }});
+}
+
+// (relecteur n°30) sur la feuille, une inversion (« entend-on », « se prononce-t-il ») ne se coupe pas à son trait d'union ; le texte ne change pas
+function sansCoupe(t){
+  var re = /[\p{L}']+(?:-t)?-(?:il|elle|on|ils|elles|je|tu|nous|vous|ce)(?![\p{L}])/gu, out = [], i = 0, m;
+  while((m = re.exec(t))){ if(m.index > i) out.push(t.slice(i, m.index)); out.push(h("span", {key:m.index, style:{whiteSpace:"nowrap"}}, m[0])); i = m.index + m[0].length; }
+  if(i < t.length) out.push(t.slice(i));
+  return out.length > 1 ? out : t;
 }

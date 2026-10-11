@@ -144,7 +144,8 @@ var SCN = (function(){
   mom("S08:Q3:T2", "S08", "08/10/2026", "10:18:16", {ph:"reponse", qi:2, tour:2, reste:5, nonRep:[], etape:"Q3 · 2e tour"});
   mom("S08:Q3:B2", "S08", "08/10/2026", "10:18:24", {ph:"b", qi:2, tour:2, reste:3, etape:"Q3 · 2e tour, B"});
   mom("S08:Q3:C", "S08", "08/10/2026", "10:18:30", {ph:"close", qi:2, etape:"Q3 · close"});
-  mom("S08:estim", "S08", "08/10/2026", "10:19:10", {ph:"estim", pasEstime:["Jade", "Enzo"], etape:"l'estimation"});
+  // (relecteur n°142) Michel choisit son estimation sur la tablette (t-estim) : à ce moment, il ne l'a pas encore donnée
+  mom("S08:estim", "S08", "08/10/2026", "10:19:10", {ph:"estim", pasEstime:["Michel", "Jade", "Enzo"], etape:"l'estimation"});
   mom("S08:att2:0", "S08", "08/10/2026", "10:20:30", {ph:"att2", enCours:(function(){ var o = {}; [].concat.apply([], S.PAIRES).filter(Boolean).forEach(function(n){ o[pre(n)] = n === "DUVERNAY Michel" ? 0 : 1; }); return o; })(), etape:"la seconde attestation, au début"});
   mom("S08:att2", "S08", "08/10/2026", "10:21", {ph:"att2", enCours:{Michel:4, Tom:3, Sacha:4, Lou:2, "Théo":4}, etape:"la seconde attestation"});
   mom("S08:corr:Q2:L", "S08", "08/10/2026", "10:22:13", {ph:"lecture", qi:1, reste:7, pasLu:["Michel", "Tom", "Hugo", "Sacha", "Rayan", "Théo"], etape:"correction · Q2 · lecture"});

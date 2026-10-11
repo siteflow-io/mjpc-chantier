@@ -54,7 +54,7 @@ function etatQuestion(s){
   var m = MOM(), nonRep = s.nonRep || m.nonRep || [], sansRep = m.sansRep || [], partis = m.partis || {};
   return function(p, cote){
     if(partis[p]) return {cls:"m-parti", st:"🚪 parti à " + partis[p]};
-    if(s.reflexion) return {cls:"m-ecrit", st:"✍️ écrit sur sa feuille"};
+    if(s.reflexion) return {cls:"m-ecrit", st:"✍️ écrit"};
     if(s.fini) return sansRep.indexOf(p) >= 0 ? {cls:"m-pasrep", st:"⏳ pas de réponse"} : couleur(p, s.qi, false);
     var estPremier = cote === (PREMIER[s.qi] === "J" ? "g" : "d");
     if(s.tour === 1 && !estPremier) return {cls:"m-voile", st:"🙈 attend son tour"};
@@ -86,7 +86,7 @@ function FinPrevueC(p){
   if(!f) return null;
   var deb = Math.round(f.deborde / 60);
   return h("div", {className:"fin-prevue" + (deb > 0 ? " deborde" : ""), "data-fin-prevue":"1", title:"La fin prévue de la séance, recalculée à chaque temps changé ou question écartée : les questions qui restent, leurs deux tours, puis l'estimation, la correction, la co-évaluation et le bilan (durées de Réglages)."},
-    deb > 0 ? "🏁 Fin prévue " + f.hm + ", " + deb + " min après la fin de l'heure" : "🏁 Fin prévue " + f.hm + " · fin de l'heure " + fh);
+    deb > 0 ? "🏁 Fin prévue " + f.hm + ", " + deb + " min après la fin de l'heure" : "🏁 Fin prévue " + f.hm);
 }
 function FinPrevue(){ return h(FinPrevueC); }
 

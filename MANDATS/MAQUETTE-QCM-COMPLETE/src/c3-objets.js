@@ -11,7 +11,7 @@ function placeDe(p){ var t = SCN.tabletteDe(p) || {n:"?", cote:"g"}, v = SCN.voi
 function TabMini(num, a, b, etat, opts){
   opts = opts || {};
   function moitie(n, cote){
-    if(!n) return h("div", {className:"tab-mini-m vide"}, h("div", {className:"nm"}, "1 élève"));
+    if(!n) return h("div", {className:"tab-mini-m vide"}, h("div", {className:"nm"}, "moitié libre"));
     var e = etat ? etat(pre(n), cote) : {};
     return h("div", {className:"tab-mini-m " + (e.cls || "")},
       e.va ? h("button", {className:"nm tab-nom", "data-va":avecObjet(e.va, "eleve", pre(n)), title:e.titre || "Agit sur " + n + "."}, n) : h("div", {className:"nm"}, opts.grip && h("span", {className:"grip"}, "⠿"), n),
@@ -106,7 +106,8 @@ function ScAnnuler(){
   var qi = paramQ(2), q = EV.questions[qi], b = bilanQ(qi, MO());
   return Fenetre(Pilot(etatPilot()), "⚠️ Annuler la question " + (qi + 1) + " ?", q.enonce + " — posée, " + b.repondu + " réponses",
     h(F, null, h("p", null, "Elle a été posée, mais elle ne comptera pas : elle sort du total de la note et des compétences. Ses réponses restent gardées.")),
-    [h("button", {key:1, className:"btn btn-ghost", "data-va":"c-q2-close"}, "Annuler"), h("button", {key:2, className:"btn btn-rouge", "data-va":"c-annulee&q=" + (qi + 1), "data-moment":momentDefaut("c-annulee")}, "⚠️ Annuler la question " + (qi + 1))], "c-q2-close");
+    [h("button", {key:1, className:"btn btn-ghost", "data-va":"c-q2-close"}, "Fermer"),   // (changement 8.3, relecteur n°107) deux boutons côte à côte, deux mots
+     h("button", {key:2, className:"btn btn-rouge", "data-va":"c-annulee&q=" + (qi + 1), "data-moment":momentDefaut("c-annulee")}, "⚠️ Annuler la question " + (qi + 1))], "c-q2-close");
 }
 function ScAnnulee(){ var st = etatPilot(), qi = paramQ(2); st.remettre = "c-q2-close"; if(paramHash("q")){ st.annulees = {}; st.annulees[qi] = true; } return Pilot(st); }
 

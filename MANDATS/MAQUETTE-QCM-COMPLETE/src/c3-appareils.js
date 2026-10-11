@@ -106,7 +106,7 @@ function TelTemps(p){
   }
   var deb = f ? Math.round(f.deborde / 60) : 0;
   return h("div", {className:"tel-temps"}, ligne("🧠 Réflexion", "reflexion", 1, finiRef ? "La réflexion de cette question est finie : son temps ne se change plus." : null), ligne("✋ Réponse", "reponse", 2, null),
-    f && h("div", {className:"tel-fin" + (deb > 0 ? " deborde" : ""), "data-fin-prevue":"1"}, deb > 0 ? "🏁 Fin prévue " + f.hm + ", " + deb + " min après la fin de l'heure" : "🏁 Fin prévue " + f.hm + " · fin de l'heure " + SCN.finHeure(MO())));
+    f && h("div", {className:"tel-fin" + (deb > 0 ? " deborde" : ""), "data-fin-prevue":"1"}, deb > 0 ? "🏁 Fin prévue " + f.hm + ", " + deb + " min après la fin de l'heure" : "🏁 Fin prévue " + f.hm));
 }
 function TelReponse(){
   var k = MO(), m = MOM(), qi = m.qi, c = SCN.compteurs(k), rep = SCN.repondu(qi, k);

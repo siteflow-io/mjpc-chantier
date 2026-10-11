@@ -9,6 +9,7 @@
 const path = require("path"), fs = require("fs");
 const RACINE = path.join(__dirname, "..");
 const SAS = path.join(RACINE, "..", "..");
+const C = require("./controles.js");
 const PROD = process.env.PROD || "/home/user/siteflow-io/monsieurjaipascompris";
 const lire = p => fs.readFileSync(p, "utf8");
 const TAILLES_CONSOLE = [{w: 1366, h: 768}, {w: 1536, h: 864}, {w: 1920, h: 1080}];
@@ -216,7 +217,8 @@ async function garde8Copies(page, sc, verif){
     const n = edtLongueur(liste);
     const noms = liste.map(k => "« " + k + " »");
     const attendu = "JSON de " + (noms.length > 1 ? noms.slice(0, -1).join(", ") + " et " + noms[noms.length - 1] : noms[0]) + " copié — " + n + " caractères.";
-    verif((msg || "").trim() === attendu, "garde 8. " + sc + " : « ⤓ Sortir les JSON cochés » avec " + liste.join(", ") + " dit le nombre de caractères de JSON.stringify(…, null, 1)", "« " + (msg || "").trim() + " » ; attendu « " + attendu + " »");
+    // (complément 3) l'espace insécable de la typographie (changement 6.7) n'est pas une autre lettre
+    verif(C.normEsp(msg || "") === C.normEsp(attendu), "garde 8. " + sc + " : « ⤓ Sortir les JSON cochés » avec " + liste.join(", ") + " dit le nombre de caractères de JSON.stringify(…, null, 1)", "« " + (msg || "").trim() + " » ; attendu « " + attendu + " »");
     const ok = page.locator(".at-modale .at-btn"); if(await ok.count()) await ok.first().click();
   }
 }

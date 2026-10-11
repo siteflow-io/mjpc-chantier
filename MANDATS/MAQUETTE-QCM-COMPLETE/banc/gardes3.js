@@ -185,6 +185,7 @@ const RETOUCHES_778 = [
   {avant: /^☝️ Un désaccord, c'est sérieux/, contexte: "la règle du désaccord, dite une fois"}];
 // les exceptions du §1.2 : la typographie, et « séance » pour « session » (changement 8.1, la seule exception au mot pour mot)
 function typo(s){ return C.normEsp(String(s).replace(/\.\.\./g, "…").replace(/(?<![\p{L}])([Ss])ession(s?)(?![\p{L}])/gu, (m, a, b) => (a === "S" ? "Séance" : "séance") + b)).replace(/\s*([:;!?»])/g, " $1").replace(/«\s*/g, "« ").replace(/\s+/g, " ").trim(); }
+function entier7(texteV7, t){ const n = C.normEsp(t); return Object.values(texteV7).some(l => l.some(x => { const v = C.normEsp(x); return /…$/.test(v) && v.length > 12 && n.includes(v.replace(/…$/, "").trim()); })); }
 function garde95(texteV7, texteV8){
   // texteV7, texteV8 : {scène: [textes]} ; les données (énoncés, choix, noms, nombres) mises à part par formeTexte
   const out = [];
@@ -196,6 +197,8 @@ function garde95(texteV7, texteV8){
       if(estDonnee(t) || (t.match(/\p{L}/gu) || []).length < 3) continue;
       const f = formeTexte(typo(t));
       if(tous7.has(f)) continue;
+      // (changement 6.4) un texte que la v7 tronquait (« … ») se lit désormais en entier : c'est le même texte
+      if(entier7(texteV7, t)) continue;
       if(RETOUCHES_778.some(r => r.apres && C.normEsp(t).includes(r.apres))) continue;
       out.push("garde 9. " + sc + " : un texte vu par l'élève n'est pas dans la v7 — « " + t.slice(0, 110) + " »");
     }
@@ -207,6 +210,7 @@ function garde95(texteV7, texteV8){
       if(estDonnee(t) || (t.match(/\p{L}/gu) || []).length < 3) continue;
       const f = formeTexte(typo(t));
       if(ici.has(f) || tous8.has(f) && /^[\p{L} '’-]{1,40}$/u.test(t)) continue;
+      if(/…$/.test(t.trim()) && (texteV8[sc] || []).some(x => C.normEsp(x).includes(C.normEsp(t).replace(/…$/, "").trim()))) continue;
       if(RETOUCHES_778.some(r => r.avant.test(C.normEsp(t)))) continue;
       out.push("garde 9. " + sc + " : un texte vu par l'élève dans la v7 a disparu — « " + t.slice(0, 110) + " »");
     }
@@ -217,6 +221,7 @@ function garde95(texteV7, texteV8){
 /* ════════ Garde 10 — une infobulle par élément ════════ */
 // Les infobulles de l'existant (l'inventaire de la garde 1) : elles restent mot pour mot, et elles sont les seules permises côté élève
 let TITRES_EXISTANT = null, TITRES_ELEVE = null;
+let EX_FORMES = null;
 function titresExistant(){
   if(TITRES_EXISTANT) return TITRES_EXISTANT;
   const dir = path.join(__dirname, "existant"); TITRES_EXISTANT = new Set(); TITRES_ELEVE = new Set();
@@ -224,6 +229,9 @@ function titresExistant(){
     const eleve = /^(qcm-eleve|code-eleve)/.test(f);
     (v.titres || []).forEach(x => { const t = C.normEsp(typeof x === "string" ? x : x.t); TITRES_EXISTANT.add(t); if(eleve) TITRES_ELEVE.add(t); });
     (v.boutons || []).forEach(b => { if(b.t){ const t = C.normEsp(b.t); TITRES_EXISTANT.add(t); if(eleve) TITRES_ELEVE.add(t); } }); });
+  // (complément 3) les infobulles de ce que la maquette a cloné mot pour mot de correction_dictee.html (§1.4) : « Déplier ce niveau »…
+  const dictee = C.unjs ? C.unjs(lire(path.join(PROD, "correction_dictee.html"))) : lire(path.join(PROD, "correction_dictee.html")).replace(/\\u([0-9a-fA-F]{4})/g, (m, x) => String.fromCharCode(parseInt(x, 16)));
+  (dictee.match(/title\s*[:=]\s*[^,}>]+/g) || []).forEach(m => (m.match(/"([^"]+)"|'([^']+)'/g) || []).forEach(q => TITRES_EXISTANT.add(C.normEsp(q.slice(1, -1)))));
   return TITRES_EXISTANT;
 }
 // 10.1 et 10.2 : chaque geste, chaque élément qui porte son texte ou sa marque ; la souris posée en son centre
@@ -276,8 +284,10 @@ function garde10Scene(sc, lu){
   sans.forEach(x => { const k = x.sorte + " · " + x.raison; (parRaison[k] = parRaison[k] || []).push(x.lib); });
   Object.keys(parRaison).forEach(k => out.push(tag + " : " + parRaison[k].length + " × " + k + " — " + [...new Set(parRaison[k])].slice(0, 6).map(l => "« " + l + " »").join(", ")));
   // 10.3 : une infobulle écrite par la maquette : au moins une phrase complète qui finit par un point ; ni double espace, ni mot du code
+  if(!EX_FORMES) EX_FORMES = new Set([...EX].map(x => C.norm(x)));
   for(const t of new Set(lu.titres)){
-    const n = C.normEsp(t); if(EX.has(n)) continue;
+    // une infobulle de l'existant calculée (« Question en cours — 10/10 justes pour le moment ») : comparée à sa forme, comme à la garde 1
+    const n = C.normEsp(t); if(EX.has(n) || EX_FORMES.has(C.norm(n))) continue;
     if(!/[.!?»…)]$/.test(t.trim()) && !/\.\s/.test(t)) out.push(tag + " : une infobulle sans phrase complète — « " + t.slice(0, 100) + " »");
     if(/\S  \S/.test(t)) out.push(tag + " : une infobulle avec un double espace — « " + t.slice(0, 100) + " »");
     if(MOTS_CODE.test(t)) out.push(tag + " : une infobulle avec un mot du code — « " + t.slice(0, 100) + " »");
@@ -309,7 +319,7 @@ async function garde10Bulles(page, sc, T){
       if(cs.display === "none" || R.width < 2) return {ouvre: false};
       let couvert = 0; for(const fy of [0.25, 0.75]) for(const fx of [0.15, 0.5, 0.85]){ const x = R.left + R.width * fx, y = R.top + R.height * fy; const el = (x >= 0 && y >= 0 && x < innerWidth && y < innerHeight) ? document.elementFromPoint(x, y) : null; if(!el || !t.contains(el)) couvert++; }
       return {ouvre: true, deborde: t.scrollWidth > t.clientWidth + 1 || t.scrollHeight > t.clientHeight + 1, ws: cs.whiteSpace, hors: R.left < 0 || R.top < 0 || R.right > innerWidth + 0.5 || R.bottom > innerHeight + 0.5,
-        cote: [Math.round(R.left), Math.round(R.top), Math.round(R.right), Math.round(R.bottom)], couvert, police: cs.fontFamily, app: getComputedStyle(document.body).fontFamily, casse: cs.textTransform, espace: cs.letterSpacing, vide: !t.textContent.trim()};
+        cote: [Math.round(R.left), Math.round(R.top), Math.round(R.right), Math.round(R.bottom)], couvert, police: cs.fontFamily, app: getComputedStyle(i.closest(".tprof-box") || document.body).fontFamily, casse: cs.textTransform, espace: cs.letterSpacing, vide: !t.textContent.trim()};
     }, k);
     await page.mouse.move(0, 0);
     const nom = tag + " : la bulle de « " + pre.ctx + " »";
@@ -373,7 +383,8 @@ async function garde11Gestes(page, sc, lu, moment){
       const g = r.closest("[data-classe]"); return {titre, classe: g ? g.getAttribute("data-classe") : c ? (c.getAttribute("data-classe") || c.textContent.trim()) : null}; }));
     const evs = SCN.evals();
     for(const e of evs){
-      const passees = SCN.passees(e.id, moment).map(x => x.classe), ici = rang.filter(x => x.titre.startsWith(e.titre)).map(x => x.classe);
+      // (complément 3) l'espace insécable de la typographie (changement 6.7) n'est pas une autre lettre
+      const passees = SCN.passees(e.id, moment).map(x => x.classe), ici = rang.filter(x => C.normEsp(x.titre).startsWith(C.normEsp(e.titre))).map(x => x.classe && C.normEsp(x.classe));
       const attendu = passees.length ? passees : ["Pas encore passée"];
       for(const cl of attendu) if(!ici.some(x => x && x.indexOf(cl) >= 0)) out.push(tag + " : trié par classe, « " + e.titre.slice(0, 50) + " » n'est pas sous « " + cl + " »");
     }
@@ -876,10 +887,13 @@ function lireLisibilite(a){
   const maquette = e => { let x = e; while(x && x !== root){ const cl = typeof x.className === "string" ? x.className.trim().split(/\s+/).filter(Boolean) : []; if(cl.length) return cl.some(c => !site.has(c)) ? cl.filter(c => !site.has(c)).join(".") : null; x = x.parentElement; } return null; };
   const tw = document.createTreeWalker(root, NodeFilter.SHOW_TEXT); let n; const deja = new Set();
   while((n = tw.nextNode())){
-    const t = n.nodeValue.trim(); if(!t) continue; const pe = n.parentElement; if(!pe || !vis(pe) || pe.closest(".info-tip,.deco,style,script")) continue;
+    // (complément 3) les émojis décoratifs passent aussi par la vérification 14.4 (ils n'ont ni taille ni contraste à tenir)
+    const t = n.nodeValue.trim(); if(!t) continue; const pe = n.parentElement; if(!pe || !vis(pe) || pe.closest(".info-tip,style,script")) continue;
     const cl = maquette(pe), cs = getComputedStyle(pe);
-    if(cl && !deja.has(pe)){ deja.add(pe);
-      const echelle = pe.offsetWidth ? pe.getBoundingClientRect().width / pe.offsetWidth : 1, fsz = parseFloat(cs.fontSize) * (echelle > 0.2 ? echelle : 1);
+    if(cl && !deja.has(pe) && !pe.closest(".deco")){ deja.add(pe);
+      // l'échelle vient des transformations des ancêtres (les tablettes simulées en petit) : offsetWidth, arrondi au pixel, la faussait sur un petit texte
+      let echelle = 1; for(let x = pe; x && x !== document.documentElement; x = x.parentElement){ const cx = getComputedStyle(x); if(cx.transform && cx.transform !== "none"){ const mm = /matrix\(([-\d.e]+), ?([-\d.e]+)/.exec(cx.transform); if(mm) echelle *= Math.hypot(+mm[1], +mm[2]); } if(cx.zoom && cx.zoom !== "1" && cx.zoom !== "normal") echelle *= +cx.zoom || 1; }
+      const fsz = parseFloat(cs.fontSize) * (echelle > 0.2 ? echelle : 1);
       if(fsz < 11.95) R.petit.push(fsz.toFixed(1) + " px « " + court(t) + " » ." + cl);
       const col = (cs.color.match(/[\d.]+/g) || []).map(Number), fd = fondDe(pe);
       if(fd && col.length && !pe.closest("button:disabled,.ferme-env,[disabled],.ferme")){ const ac = col.length > 3 ? col[3] : 1; const c2 = [0, 1, 2].map(i => col[i] * ac + fd[i] * (1 - ac)); const l1 = lum(c2), l2 = lum(fd); const cr = (Math.max(l1, l2) + 0.05) / (Math.min(l1, l2) + 0.05);
@@ -889,6 +903,13 @@ function lireLisibilite(a){
     if(/\p{Extended_Pictographic}/u.test(t) && t.length <= 4){ const rg = document.createRange(); rg.selectNodeContents(n); const r = rg.getBoundingClientRect();
       if(r.width > 2){ let x = pe, coupe = null; while(x && x !== root){ const c = getComputedStyle(x); if(c.overflowX !== "visible" || c.overflowY !== "visible"){ const rx = x.getBoundingClientRect(); const dedans = r.left >= rx.left - 1 && r.right <= rx.right + 1 && r.top >= rx.top - 1 && r.bottom <= rx.bottom + 1; const touche = r.right > rx.left && r.left < rx.right && r.bottom > rx.top && r.top < rx.bottom; if(!dedans && touche){ coupe = nom(x); break; } } x = x.parentElement; }
         if(!coupe && (r.left < -1 || r.right > innerWidth + 1) && r.right > 0 && r.left < innerWidth) coupe = "le bord de l'écran";
+        // un émoji décoratif à demi recouvert par un cadre (la console, une carte) : une partie se voit, l'autre non
+        if(!coupe && pe.closest(".deco") && getComputedStyle(pe.closest(".deco")).visibility !== "hidden"){ const dd = pe.closest(".deco");
+          const pts = [[r.left + 2, r.top + 2], [r.right - 2, r.top + 2], [r.left + 2, r.bottom - 2], [r.right - 2, r.bottom - 2], [(r.left + r.right) / 2, (r.top + r.bottom) / 2]].filter(q => q[0] >= 0 && q[1] >= 0 && q[0] < innerWidth && q[1] < innerHeight);
+          const pev = dd.style.pointerEvents; dd.style.pointerEvents = "auto";   // un décor ne prend pas la souris : le temps de la mesure, si
+          const vus = pts.map(q => { const el = document.elementFromPoint(q[0], q[1]); return el ? (el === dd || dd.contains(el)) : null; }).filter(v => v !== null);   // hors de la page : ni vu ni caché
+          dd.style.pointerEvents = pev;
+          if(vus.some(Boolean) && vus.some(v => !v)){ const q = pts.find(q => { const el = document.elementFromPoint(q[0], q[1]); return el && el !== dd && !dd.contains(el); }) || pts[0]; dd.style.pointerEvents = "auto"; const el = document.elementFromPoint(q[0], q[1]); dd.style.pointerEvents = pev; coupe = el ? nom(el.closest("[class]") || el) : "un cadre"; } }
         if(coupe) R.emoji.push("« " + t + " » coupé par " + coupe); } }
     // 14.5 : la ponctuation seule en début ou en fin de ligne ; un nombre séparé de son unité
     if(/[»:;?!«]|\d\s+(s|min|h|px|pts?|%|€|élèves?|questions?|secondes?)\b/.test(t)){

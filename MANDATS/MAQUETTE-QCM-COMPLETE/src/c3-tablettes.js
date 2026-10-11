@@ -123,7 +123,8 @@ function PageMoitie(p){
       ouvert ? h(F, null, h("h1", null, "📊 Mes évaluations"), ListeMesEvals(prenom)) : h(F, null, p.titre && h("h1", null, p.titre), p.enfants)));
 }
 function Page(badge, titre, enfants){
-  var surTablette = badge && /^t-/.test(window.SCENE_COURANTE || "");
+  // (relecteurs n°117, 199) toute moitié de tablette porte « 📊 Mes évaluations », celles de la 3e (x610) comprises
+  var ici = sceneParId(window.SCENE_COURANTE || ""), surTablette = badge && ici && ici.vue === "tablette";
   if(surTablette) return h(PageMoitie, {badge:badge, titre:titre, enfants:enfants});
   return h("div", {className:"eleve-page"},
     DECO.map(function(e, i){ return h("span", {key:i, className:"deco"}, e); }),

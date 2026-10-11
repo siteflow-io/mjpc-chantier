@@ -141,14 +141,14 @@ function EcrRevele(e, qi, opts){
         var cls = "correction-choix-item" + (bon ? " bonne" : (moi ? " eleve-faux" : ""));
         if(moi && bon) cls = "correction-choix-item eleve-juste";
         return h("div", {key:i, className:cls}, h("span", null, q.choix[i],
-          bon && h("span", {className:"correction-tag tag-bonne"}, "Bonne réponse"),
-          moi && h("span", {className:"correction-tag tag-tienne"}, "Ta réponse")));
+          (bon || moi) && h("span", {className:"tags-ens"}, bon && h("span", {className:"correction-tag tag-bonne"}, "Bonne réponse"),
+          moi && h("span", {className:"correction-tag tag-tienne"}, "Ta réponse"))));
       })),
-      lu === "aucun" && h("div", {className:"tablette-ligne"}, "Ta réponse : ", "Ma feuille ne dit aucun de ces choix"),
+      lu === "aucun" && h("div", {className:"tablette-ligne"}, "Ta réponse : ", "aucun de ces choix"),
       trouvee && h("div", {className:"tablette-ligne"}, "Sur la tablette, tu avais cliqué sur : " + tab.map(function(i){ return q.choix[i]; }).join(", ")),
       h("div", {className:"correction-consigne " + (juste ? "juste" : "faux")}, juste
         ? h(F, null, h("strong", null, "✅ Bravo ! "), "Sur ta feuille, mets simplement un ", h("span", {className:"stylo-vert"}, "V vert"), " dans la marge à côté de ta réponse.")
-        : h(F, null, !trouvee && h("strong", null, "❌ Tu avais faux. "), h("span", {className:"stylo-rouge"}, "Barre ta réponse en rouge"), " et écris la bonne réponse en entier en ", h("span", {className:"stylo-vert"}, "vert"), " à côté.")),
+        : h(F, null, h("span", {className:"stylo-rouge"}, "Barre ta réponse en rouge"), " et écris la bonne réponse en entier en ", h("span", {className:"stylo-vert"}, "vert"), " à côté.")),
       h("div", {className:"correction-explication"}, h("div", {className:"correction-explication-titre"}, "💡 Explication"), h("div", {className:"correction-explication-texte"}, q.explication)))));
 }
 
@@ -181,7 +181,7 @@ function etatCorr3(qi, revele, pasLu, retire){
 function TabMini(num, a, b, etat, opts){   // un clic sur un nom agit sur l'élève (436, 449)
   opts = opts || {};
   function moitie(n, cote){
-    if(!n) return h("div", {className:"tab-mini-m vide"}, h("div", {className:"nm"}, "1 élève"));
+    if(!n) return h("div", {className:"tab-mini-m vide"}, h("div", {className:"nm"}, "moitié libre"));
     var e = etat ? etat(pre(n), cote) : {};
     return h("div", {className:"tab-mini-m " + (e.cls || "")},
       e.va ? h("button", {className:"nm tab-nom", "data-va":e.va, title:e.titre || "Agit sur cet élève."}, n) : h("div", {className:"nm"}, opts.grip && h("span", {className:"grip"}, "⠿"), n),
@@ -420,8 +420,8 @@ function Coeval(p){
   var btn = function(x){ return h("button", {key:x, className:"co-btn " + x + (k === x ? " on" : ""), "data-local":"1", "aria-pressed":k === x, onClick:function(){ choisir(x); }}, EM_CO[x] + " ", txtCo(x, v)); };
   if(!k || k === "ok"){
     zone.push(h("div", {key:"t", className:"decl-titre co-titre"}, e.prenom + ", " + v.prenom + " a-t-" + il(v) + " bien lu ta feuille ?"));
-    if(daccord) zone.push(h("div", {key:"d", className:"eleve-feedback valide"}, "Tu as cliqué ce que " + v.prenom + " avait lu : vous êtes d'accord."));
-    zone.push(h("div", {key:"r", className:"co-regle"}, "☝️ " + REGLE_CO));
+    if(daccord) zone.push(h("div", {key:"d", className:"eleve-feedback valide", style:{marginBottom:".6rem"}}, "Tu as cliqué ce que " + v.prenom + " avait lu : vous êtes d'accord."));
+    // (778) la règle du désaccord n\'est dite qu\'une fois : « ☝️ C\'est ta seule question de désaccord. » reste
     zone.push(h("div", {key:"bs", className:"co-btns"}, ["ok", "peut", "mal"].map(btn)));
     if(k === "ok"){ zone.push(h("div", {key:"f", className:"eleve-feedback valide"}, ENREG)); zone.push(h("div", {key:"w", className:"co-attente"}, "⏳ Attends ton bilan…")); }
   } else if(qc == null){
@@ -429,7 +429,7 @@ function Coeval(p){
     zone.push(h("div", {key:"l", className:"co-liste cliquable" + (EVx.questions.length > 5 ? " serree" : "")}, EVx.questions.map(function(q, i){
       return h("button", {key:i, className:"co-l co-lb", "data-local":"1", onClick:function(){ setQ(i); setEcrit(null); }}, h("strong", null, "Question " + (i+1)), " · ", p.liste ? p.liste(q) : q.enonce);
     })));
-    zone.push(h("div", {key:"r", className:"co-regle"}, "☝️ " + REGLE_CO));
+    // (778) la règle du désaccord n\'est dite qu\'une fois : « ☝️ C\'est ta seule question de désaccord. » reste
     zone.push(h("div", {key:"a", className:"co-actions"}, h("button", {className:"btn btn-ghost", "data-local":"1", onClick:function(){ setK(null); }}, "↩️ Changer")));
   } else {
     var q = EVx.questions[qc], lu = luDe(qc);
@@ -443,7 +443,7 @@ function Coeval(p){
           h("span", null, q.choix[i], lu !== "aucun" && lu.indexOf(i) >= 0 && h("span", {className:"tag-lu"}, v.prenom + " a lu")));
       }),
       h("button", {className:"eleve-choix-btn aucun" + (ecrit === "aucun" ? " selected" : ""), "data-local":"1", onClick:function(){ ecrire("aucun"); }}, "Ma feuille ne dit aucun de ces choix")));
-    zone.push(h("div", {key:"r", className:"co-regle"}, REGLE_CO));
+    // (778) la règle du désaccord n\'est dite qu\'une fois : « ☝️ C\'est ta seule question de désaccord. » reste
     if(ecrit) zone.push(h("div", {key:"f", className:"eleve-feedback valide"}, ENREG));
     zone.push(h("div", {key:"a", className:"co-actions"}, h("button", {className:"btn btn-ghost", "data-local":"1", onClick:function(){ setQ(null); setEcrit(null); }}, "↩️ Changer"),
       ecrit && h("span", {className:"co-attente", style:{margin:0, alignSelf:"center"}}, "⏳ Attends ton bilan…")));

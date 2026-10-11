@@ -57,7 +57,7 @@ var BULLES = {
   "✕": "Ferme cette fenêtre sans rien changer (Échap).",
   "✕ Fermer": "Ferme sans rien changer (Échap).",
   // Les gardes
-  "❌ Écarter la question 3": "Écarte la question 3 : elle ne sera ni posée ni corrigée ; la note et la compétence comptent sans elle. Se défait par « ↩️ Remettre ».",
+  "❌ Écarter la question 3": "Écarte la question 3 : elle ne sera ni posée ni corrigée ; la note et ses compétences comptent sans elle. Se défait par « ↩️ Remettre ».",
   "⚠️ Annuler la question 2": "Annule la question 2 : ses réponses restent gardées, mais elle sort du total de la note et des compétences ; les élèves liront qu'elle ne compte pas. Se défait par « ↩️ Remettre ».",
   "🛑 Terminer la séance": "Termine maintenant : l'archive s'écrit avec les notes telles qu'elles sont ; les tablettes oublient leurs élèves et reviennent à « Combien êtes-vous ? ».",
   "🚫 Parti": "Marque cet élève parti : son binôme continue seul ; ses questions manquées sortent de son total.",
@@ -134,6 +134,7 @@ function surveiller(){
 /* ── Les clics : aller à une scène, ou cocher sur place (les choix de l'élève, ses réponses) ── */
 document.addEventListener("click", function(ev){
   var b = ev.target.closest ? ev.target.closest("#root button, #root .tel-el, #root .qdf-c") : null;
+  if(b && b.closest(".qdf-etat")) return;   // (complément 3) « Que dit la feuille ? » tient son propre état (c3-feuille.js)
   if(!b || b.disabled) return;
   if(b.hasAttribute("data-va")){ ev.preventDefault(); versScene(b.getAttribute("data-va")); return; }
   if(b.hasAttribute("data-local")) return;                                   // un composant à état s'en occupe

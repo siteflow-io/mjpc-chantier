@@ -2323,7 +2323,7 @@
    "auto": true
   },
   {
-   "texte": "Question 7 : 60 px de trop sur une demi-tablette. Raccourcis l'énoncé ou les choix, ou dis-moi que j'assume la longueur.",
+   "texte": "Question 7 : 60 px de trop sur une demi-tablette. Raccourcis l'énoncé ou les choix, sauf si je te dis que j'assume la longueur.",
    "scenes": [
     "c-collage"
    ],
@@ -5169,7 +5169,7 @@
    "auto": true
   },
   {
-   "texte": "🚫 Refusé : pas d'exclusion entre Inès et Jade : ESNAULT Inès a déjà 3 exclusions, le plus que permet MJPC. Avec 3 au plus, il existe toujours des binômes possibles, absents compris, dès 8 présents. Retire d'abord une exclusion de ESNAULT Inès.",
+   "texte": "🚫 Refusé : pas d'exclusion entre Inès et Jade, car ESNAULT Inès a déjà 3 exclusions, le plus que permet MJPC. Avec 3 au plus, il existe toujours des binômes possibles, absents compris, dès 8 présents. Retire d'abord une exclusion de ESNAULT Inès.",
    "scenes": [
     "m-exclusion-refusee"
    ],
@@ -5182,7 +5182,7 @@
    "auto": true
   },
   {
-   "texte": "🚫 Refusé : pas d'exclusion entre Inès et Jade : ESNAULT Inès a déjà 3 exclusions, le plus que permet MJPC. Retire d'abord une exclusion d'ESNAULT Inès.",
+   "texte": "🚫 Refusé : pas d'exclusion entre Inès et Jade, car ESNAULT Inès a déjà 3 exclusions, le plus que permet MJPC. Retire d'abord une exclusion d'ESNAULT Inès.",
    "scenes": [
     "m-exclusion-refusee"
    ],
@@ -6284,7 +6284,7 @@
    "auto": true
   },
   {
-   "texte": "📏 Longueur assumée : 60 px de trop sur une demi-tablette ; tu l'as dit à l'instance JSON. Sa moitié défilera seule, la page ne bouge pas.",
+   "texte": "📏 Longueur assumée : 60 px de trop sur une demi-tablette ; tu l'as dit à l'instance de création d'éval. Sa moitié défilera seule, la page ne bouge pas.",
    "scenes": [
     "x627-3-editeur"
    ],
@@ -6403,6 +6403,43 @@
     "c-corbeille"
    ],
    "categorie": "donnée"
+  },
+  {
+   "texte": "moitié libre",
+   "scenes": [],
+   "categorie": "état"
+  },
+  {
+   "texte": "✍️ écrit",
+   "scenes": [],
+   "categorie": "état"
+  },
+  {
+   "texte": "✍️ écrit : la réponse, sur sa feuille, pendant la réflexion",
+   "scenes": [],
+   "categorie": "donnée",
+   "pourquoi": "une ligne de la légende des tuiles"
+  },
+  {
+   "texte": "alerte : à trancher · ⛔ point d'autonomie retiré",
+   "scenes": [],
+   "categorie": "état"
+  },
+  {
+   "texte": "Julien y a lu E ; Michel dit avoir écrit B, C, E. Clique sur ce que dit sa feuille.",
+   "scenes": [],
+   "categorie": "état"
+  },
+  {
+   "texte": "ABRIAL Julien et CHEVALLIER Théo échangés : leurs réponses déjà données les suivent",
+   "scenes": [],
+   "categorie": "état"
+  },
+  {
+   "texte": "Sa feuille ne dit aucun de ces choix",
+   "scenes": [],
+   "categorie": "donnée",
+   "pourquoi": "la dernière case de « Que dit la feuille ? », au mot des autres écrans (changement 8.3)"
   }
  ],
  "motifs": [
@@ -6430,6 +6467,41 @@
    "motif": "^[0-9][^ ]* [A-Z]+ — \\d\\d/\\d\\d/\\d{4} \\d\\d:\\d\\d · ",
    "categorie": "état",
    "pourquoi": "la ligne d'une séance dans « 📊 Résultats » : la classe, la date, l'état, les présents, les feuilles"
+  },
+  {
+   "motif": "^🏁 Fin prévue \\d\\d:\\d\\d$",
+   "categorie": "état",
+   "pourquoi": "la fin prévue de la séance, sans la fin de l'heure déjà dite à côté (relecteur n°66)"
+  },
+  {
+   "motif": "^.+ · Q\\d+(, Q\\d+)*$",
+   "categorie": "donnée",
+   "pourquoi": "une compétence et ses questions"
+  },
+  {
+   "motif": "^✅ Alerte tranchée : la feuille de Michel dit ",
+   "categorie": "état",
+   "pourquoi": "la décision prise d'après la feuille (« &lu= »)"
+  },
+  {
+   "motif": "^La question \\d de DUVERNAY Michel (passe à 1 point|reste à 0)",
+   "categorie": "état",
+   "pourquoi": "la note qui sort de la décision"
+  },
+  {
+   "motif": "^Corrigé d'après sa feuille : ",
+   "categorie": "état",
+   "pourquoi": "la question corrigée le soir, et ce que dit la feuille"
+  },
+  {
+   "motif": "^📱 .+ (sont mis ensemble|reste seule?) : tablette \\d+\\.$",
+   "categorie": "état",
+   "pourquoi": "l'appel : qui partage une tablette, d'après les absences cochées (relecteur n°40)"
+  },
+  {
+   "motif": "^Pas encore : .+\\.$",
+   "categorie": "état",
+   "pourquoi": "ceux qui n'ont pas encore donné leur estimation, au moment de la scène"
   }
  ]
 }

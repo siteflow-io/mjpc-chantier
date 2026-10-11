@@ -13,6 +13,8 @@ function etatPilot(k){
   var leg = LEG_Q.slice();
   if((m.sansRep || []).length) leg = LEG_Q.slice(0, 4).concat([["#fff", "pas de réponse", "2px dashed #EF4444"]]);
   if(m.partis) leg = leg.concat([["#E2E8F0", "🚪 parti : ne bloque plus"]]);
+  // (relecteur n°68) pendant la réflexion, la tuile dit « ✍️ écrit » ; la légende dit le reste
+  if(phase === "reflexion") leg = [["#E0F2FE", "✍️ écrit : la réponse, sur sa feuille, pendant la réflexion"]];
   return {k:k, phase:phase, qi:qi, tour:m.tour, chrono:m.reste, stats:statsQ(), passees:passees, ecartees:obj(m.ecartees), annulees:obj(m.annulees),
     etat:etatQuestion({qi:qi, tour:m.tour, fini:phase === "attente", reflexion:phase === "reflexion"}), legende:leg, nbQ:c.nbQ};
 }
@@ -86,7 +88,7 @@ function Pilot(s){
     var nr = nonRepondus();
     var rouvrir = nr ? h("button", {key:2, className:"btn btn-ghost", "data-va":"c-rouvrir-tous"}, "🔓 Rouvrir pour tous")
                      : h("button", {key:2, className:"btn btn-ghost", disabled:true, title:"Tous les présents ont répondu à cette question : il n'y a personne à rouvrir. Une réponse donnée est définitive."}, "🔓 Rouvrir pour tous");
-    actions = !derniere ? [h("button", {key:1, className:"btn btn-primary", "data-va":suivante === 1 ? "t-q2-reflexion" : "t-q3-tour1"}, "▶️ Lancer Q" + (suivante + 1)), rouvrir]
+    actions = !derniere ? [h("button", {key:1, className:"btn btn-primary", "data-va":suivante === 1 ? (Object.keys(s.ecartees || {}).length ? "t-q2-ecartee" : "t-q2-reflexion") : "t-q3-tour1"}, "▶️ Lancer Q" + (suivante + 1)), rouvrir]   // (relecteur n°64) après l'écart de Q3, la suite compte sans elle
                         : [h("button", {key:1, className:"btn btn-or", "data-va":"c-estim"}, "📊 Lancer l'autoévaluation"), rouvrir];
   }
   var enCours = s.phase === "reflexion" || s.phase === "reponse";
@@ -102,7 +104,7 @@ function Pilot(s){
       h("div", {className:"enonce-next"}, qn.enonce),
       h("div", {style:{fontSize:".72rem", color:"var(--gris)", fontStyle:"italic"}}, "Difficulté " + NIV[qn.niveau].label + " · réflexion " + tn.reflexion + " s · réponse " + tn.reponse + " s par tour · " + bonnesRep(qn.bonnes.length))));
   var colM = h("div", null,
-    h("h3", {style:{margin:"0 0 .2rem"}}, "📱 Tablettes", InfoI("Chaque tablette, ses deux moitiés : qui est assis où, et où en est chacun. « 👁 » montre les deux moitiés en direct. Glisse un nom sur un autre pour échanger deux élèves : pendant la séance, ils changent de tablette et retapent leur code ; leurs réponses les suivent."), h("span", {style:{fontWeight:400, fontSize:".8rem", color:"var(--gris)", marginLeft:".5rem"}}, s.sousTitre || "")),
+    h("h3", {style:{margin:"0 0 .2rem"}}, "📱 Tablettes", InfoI("Chaque tablette, ses deux moitiés : qui est assis où, et où en est chacun. « 👁 » montre les deux moitiés en direct. Glisse un nom sur un autre pour échanger deux élèves : pendant la séance, ils changent de tablette et retapent leur code ; leurs réponses les suivent."), h("span", {style:{fontWeight:400, display:"block", fontSize:".8rem", color:"#475569", margin:".1rem 0 0"}}, s.sousTitre || "")),
     GrilleTablettes(s.paires || PAIRES, s.etat),
     Legende(s.legende || LEG_Q));
   return Console("pilotage", "pilot", h("div", {className:"card"},
@@ -125,7 +127,7 @@ function PilotPret(){
   var m = MOM(), c = SCN.compteurs(MO());
   var pe = m.pasEntres || [], ae = m.attestEnCours || {};
   return Pilot({phase:"idle", qi:null, stats:[[fr2(c.connectes), "connectés"], [fr2(c.attestations), "attestations"], [fr2(c.repondu), "ont répondu"], ["—", "justes"], ["—", "question"]],
-    sousTitre:"qui est assis où, et où en est son attestation",
+    // (changement 1) « qui est assis où… » est dit par le « i » des tablettes : plus de sous-titre qui l'explique
     legende:[["#E8F5E9","✓ prêt : toutes les lignes cochées"],["#FEF3C7","attestation en cours : lignes cochées sur 8"],["#F1F5F9","pas encore entré"]],
     etat:function(p){ return ae[p] ? {cls:"m-attest", st:"attestation " + ae[p] + "/8"} : pe.indexOf(p) >= 0 ? {cls:"m-connexion", st:"pas encore " + (SCN.SEXE[p] === "F" ? "entrée" : "entré")} : {cls:"m-pret", st:"✓ prêt · " + SCN.heureAttest(p, 1)}; }});
 }

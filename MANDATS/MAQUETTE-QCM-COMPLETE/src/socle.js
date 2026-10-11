@@ -93,7 +93,7 @@ var ORDRE = [
     ["c-estim", 3, "Ta console pendant l'estimation : « 📝 Lancer la correction »."]]],
   // I. La correction
   ["La correction", [
-    ["x610-5-attestation-2", 3, "La seconde attestation, une coche par ligne, les compétences par leur libellé élève."],
+    ["x610-5-attestation-2", 3, "La seconde attestation, une coche par ligne : Julien en est à la 2e, Michel à la 1re ; les compétences, par leur libellé élève, viennent à la 5e ligne."],
     ["t-attest-corr-fait", 3, "Julien a tout coché : il attend ; Michel en est à 4 lignes sur 5."],
     ["c-attest2", 3, "Ta console attend que tous les présents aient coché la seconde attestation."],
     ["t-corr-q2-lecture", 3, "A : Michel lit la feuille de Julien et clique, dans la moitié de Julien ; Julien n'a pas encore lu celle de Michel."],
@@ -190,7 +190,7 @@ var ORDRE = [
     ["m-classe-exclusions", 4, "MJPC, Élèves & codes, comme dans le site : la clé saisie, l'import, chaque élève avec « 🚫 Jamais avec… » après le ◆."],
     ["m-exclusion-refusee", 4, "Une quatrième exclusion : refusée, avec la raison."],
     ["m-fiche-eleve", 4, "Un clic sur un nom : la fiche de l'élève, telle qu'elle est dans le site (sexe, dispositif, cases PAP)."],
-    ["m-taxonomie", 4, "MJPC, Taxonomie : le référentiel, l'éditeur fermé."],
+    ["m-taxonomie", 4, "MJPC, Taxonomie : la section telle qu'elle s'ouvre, l'éditeur fermé ; le référentiel paraît à « Ouvrir l'éditeur » (scène suivante)."],
     ["m-taxonomie-editeur", 4, "« Ouvrir l'éditeur » : la vraie taxonomie, version 1.4.0, ses 7 domaines ; puis « Les compétences »."],
     ["m-taxonomie-domaine", 4, "Un domaine ouvert, une famille ouverte : ses notions, « ✏️ Modifier », « Désactiver », « + Nouvelle notion »."],
     ["m-taxonomie-notion", 4, "« ✏️ Modifier » une notion : ses libellés, ses niveaux, son exemple."],

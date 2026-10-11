@@ -96,16 +96,16 @@ function ScRouvrirSeance(){
 function Interrompue(){
   var k = MO(), m = MOM(), se = SCN.seance(m.seance), c = SCN.compteurs(k), cote = PREMIER[m.qi] === "J" ? "gauche" : "droite";
   var modal = h("div", {className:"checkin-overlay", "data-echap":"c-lancer"},
-    h("div", {className:"checkin-modal", style:{maxWidth:"620px"}},
-      h("div", {className:"checkin-header"}, h("h3", null, "⚠️ Séance interrompue détectée", InfoI("La console a perdu la séance en cours (page fermée, panne). Elle se reprend là où elle était, ou se termine.")), h("div", {className:"checkin-sub"}, CLASSE + " — " + EV.titre)),
+    h("div", {className:"checkin-modal", style:{maxWidth:"720px"}},
+      h("div", {className:"checkin-header"}, h("h3", null, "⚠️ Séance interrompue détectée", InfoI("La console a perdu la séance en cours (page fermée, panne). Elle se reprend là où elle était, se met en pause pour une autre heure, ou se termine.")), h("div", {className:"checkin-sub"}, CLASSE + " — " + EV.titre)),
       h("div", {style:{padding:"1rem 1.2rem", fontSize:".9rem", color:"var(--noir)"}},
         h("div", {style:{marginBottom:".4rem"}}, "📅 Démarrée le " + se.date + " à " + se.heure),
         h("div", {style:{marginBottom:".4rem"}}, "🔌 Dernière déconnexion : " + m.date + " à " + m.deconnexion),
         h("div", {style:{marginBottom:".8rem"}}, "📝 État : question " + (m.qi + 1) + ", " + (m.tour === 1 ? "1er" : "2e") + " tour (moitiés de " + cote + ") ; " + c.reponses + " réponses enregistrées")),
-      h("div", {className:"checkin-actions"},
+      h("div", {className:"checkin-actions rangee-une"},
         h("button", {className:"btn btn-rouge btn-sm", "data-va":"c-terminer", title:"Clôt la séance, après une confirmation : l'archive s'écrit avec les notes telles qu'elles sont."}, "🛑 Terminer définitivement"),
-        h("button", {className:"btn btn-ghost", "data-va":"c-reprendre", title:"Met la séance en pause, telle qu'elle est, pour la reprendre à une heure suivante."}, "⏸️ Finir à une autre heure"),
-        h("button", {className:"btn btn-primary", "data-va":"c-q2-tour2", title:"Reprend tout de suite : le tour en cours recommence au début, voile compris."}, "🔄 Reprendre la séance"))));
+        h("button", {className:"btn btn-ghost btn-sm", "data-va":"c-reprendre", title:"Met la séance en pause, telle qu'elle est, pour la reprendre à une heure suivante."}, "⏸️ Finir à une autre heure"),
+        h("button", {className:"btn btn-primary btn-sm", "data-va":"c-q2-tour2", title:"Reprend tout de suite : le tour en cours recommence au début, voile compris."}, "🔄 Reprendre la séance"))));
   return h(F, null, Lancement(false), modal);
 }
 

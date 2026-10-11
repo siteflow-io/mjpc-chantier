@@ -1,0 +1,27 @@
+{
+ "ecran": "checkin",
+ "source": "evaluation-qcm.html (7.7.1, md5 ecae65624855a1a877708986a8e984e5), jouée sur le faux hub",
+ "comment": "",
+ "scenes": [
+  "c-appel"
+ ],
+ "eleve": false,
+ "boutons": [
+  {
+   "l": "Annuler",
+   "t": ""
+  },
+  {
+   "l": "Tout le monde présent",
+   "t": "Décocher tout : aucun absent"
+  },
+  {
+   "l": "🚀 Lancer la session",
+   "t": "Démarrer la session avec les absents marqués"
+  }
+ ],
+ "champs": [],
+ "cases": [],
+ "titres": [],
+ "phrases": []
+}

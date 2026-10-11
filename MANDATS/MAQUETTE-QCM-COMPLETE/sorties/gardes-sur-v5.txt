@@ -1,0 +1,948 @@
+Les cinq gardes du complément 1, jouées sur maquette-qcm-v5.html (GARDES=seules node banc/banc.js maquette-qcm-v5.html 5)
+
+✔ D1 — les écrans de MJPC ne partent pas de l'existant — trouvé par la garde 1 (4 / 4 signes cherchés)
+    garde 1. la scène « m-fiche-eleve », qui part de « fiche-eleve » (mjpc-fiche-eleve.json), existe
+    garde 1. m-classe-exclusions (de « eleves-codes ») : structure « secu-encart » perdu — la classe n'est pas dans la scène
+    garde 1. m-classe-exclusions (de « panneau-menu ») : bouton « 🏠Tableau de bord » perdu
+    garde 1. la scène « m-taxonomie », qui part de « panneau-menu » (mjpc-panneau-menu.json), existe
+✔ D1 — la taxonomie inventée — trouvé par la garde 3 (1 / 1 signes cherchés)
+    garde 3. m-taxonomie-competences : l'état du référentiel dit « Version 3.2 · 10/10/2026 · 5 domaines · 142 notions » ; taxonomie_atelier.json dit « Version 1.4.0 · 2026-08-02 · 7 domaines · 210 notions »
+✔ D2 — des renvois au cadrage à l'écran — trouvé par la garde 2 (4 / 4 signes cherchés)
+    garde 2. c-reglages : « tour N » dans texte — « …Le prompt du cadrage (tour 630). Il ne devine jamais un temps : il te de… »
+    garde 2. c-reglages : un nombre entre parenthèses (340) dans texte — « …e 6 » : aucune note ne tombe entre deux (340).… »
+    garde 2. c-evals : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+    garde 2. c-reglages : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+✔ D2 — l'infobulle de « 📖 Mode d'emploi » n'est pas celle de la 7.7.1 — trouvé par la garde 1 (1 / 1 signes cherchés)
+    garde 1. c-lancer (de « console-lancer ») : l'infobulle de « 📖 Mode d'emploi » n'est pas celle de l'existant — « Ouvre le mode d'emploi avec toutes les explications de l'app. » ; la scène dit « Ouvre le mode d'emploi du QCM, réécrit d'aprè le cadrage : le déro
+✔ D3 — les limites de longueur se contredisent — trouvé par la garde 4 (1 / 1 signes cherchés)
+    garde 4. limites.json donne la limite d'un choix (tous les choix de même longueur), pour 4, 5 et 6 choix — absente : etalon_q3_reste_px, ecrans, total, q3_reel, q3_longueurs
+✔ D4 — « 👀 Écoute le prof — la correction sera révélée. » a disparu — trouvé par la garde 1 (1 / 1 signes cherchés)
+    garde 1. t-corr-q2-lecture (de « eleve-correction-avant ») : phrase « 👀 Écoute le prof — la correction sera révélée. » perdu
+✔ D5 — le PDF garde les marques de validation — trouvé par la garde 2 (3 / 3 signes cherchés)
+    garde 2. x632-pdf : « maquette » dans l'iframe, texte — « …Exemple de la maquette.… »
+    garde 2. x632-pdf : « souligné en pointillés » dans l'iframe, texte — « …Dans les commentaires, souligné en pointillés orange : une phrase proposé… »
+    garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « dire ce qui peut être un antécédent »
+✔ D6 — le bloc « 🎯 Ton estimation » ne suit pas com632 — trouvé par la garde 5 (1 / 1 signes cherchés)
+    garde 5. t-bilan : DUVERNAY Michel — le bloc « 🎯 Ton estimation » dit « un peu surestimé » ; l'écart de niveaux veut « nettement » (com632.js) — « Tu pensais avoir 3 bonnes réponses 🟢 mais tu en as eu 1 sur 3 (1 bonne réponse 🟠). Tu as un peu surestimé ce… »
+
+Échecs par garde : garde 1 : 641 · garde 2 : 219 · garde 3 : 24 · garde 4 : 4 · garde 5 : 10
+Chaque défaut connu du §3 est trouvé par sa garde.
+
+──────── La sortie entière du banc ────────
+
+Banc unique — maquette complète du QCM
+Fichier : maquette-qcm-v5.html · étape jouée : 5 · les gardes du complément 1 seules · 2026-10-10T14:16:37.385Z
+159 scènes · 62 écrans de l'existant · 107 retraits
+Vérifications : 1584 · échecs : 898
+
+ÉCHECS :
+1. garde 1. la scène « m-fiche-eleve », qui part de « fiche-eleve » (mjpc-fiche-eleve.json), existe
+2. garde 1. la scène « m-fiche-eleve », qui part de « panneau-menu » (mjpc-panneau-menu.json), existe
+3. garde 1. la scène « m-taxonomie », qui part de « panneau-menu » (mjpc-panneau-menu.json), existe
+4. garde 1. la scène « m-taxonomie-editeur », qui part de « panneau-menu » (mjpc-panneau-menu.json), existe
+5. garde 1. la scène « m-taxonomie-domaine », qui part de « panneau-menu » (mjpc-panneau-menu.json), existe
+6. garde 1. la scène « m-taxonomie-notion », qui part de « panneau-menu » (mjpc-panneau-menu.json), existe
+7. garde 1. la scène « m-taxonomie-competence », qui part de « panneau-menu » (mjpc-panneau-menu.json), existe
+8. garde 1. la scène « m-taxonomie-domaine », qui part de « taxonomie-domaine » (mjpc-taxonomie-domaine.json), existe
+9. garde 1. la scène « m-taxonomie-editeur », qui part de « taxonomie-editeur » (mjpc-taxonomie-editeur.json), existe
+10. garde 1. la scène « m-taxonomie-domaine », qui part de « taxonomie-editeur » (mjpc-taxonomie-editeur.json), existe
+11. garde 1. la scène « m-taxonomie-notion », qui part de « taxonomie-editeur » (mjpc-taxonomie-editeur.json), existe
+12. garde 1. la scène « m-taxonomie-competence », qui part de « taxonomie-editeur » (mjpc-taxonomie-editeur.json), existe
+13. garde 1. la scène « m-taxonomie-notion », qui part de « taxonomie-notion » (mjpc-taxonomie-notion.json), existe
+14. garde 1. la scène « m-taxonomie », qui part de « taxonomie » (mjpc-taxonomie.json), existe
+15. garde 1. la scène « c-reglages-prompt-modifier », qui part de « prompt-ia-edition » (qcm-prompt-ia-edition.json), existe
+16. garde 4. limites.json donne la limite d'un choix (tous les choix de même longueur), pour 4, 5 et 6 choix — absente : etalon_q3_reste_px, ecrans, total, q3_reel, q3_longueurs
+17. garde 4. à 80 caractères d'énoncé, la limite ne monte pas de 5 à 6 choix — 410 → 480
+18. garde 4. à 100 caractères d'énoncé, la limite ne monte pas de 5 à 6 choix — 410 → 480
+19. garde 4. à 120 caractères d'énoncé, la limite ne monte pas de 5 à 6 choix — 410 → 480
+20. garde 1. c-evals : rien de « evaluations » ne se perd — 6 perte(s)
+21. garde 1. c-evals (de « evaluations ») : l'infobulle de « 📖 Mode d'emploi » n'est pas celle de l'existant — « Ouvre le mode d'emploi avec toutes les explications de l'app. » ; la scène dit « Ouvre le mode d'emploi du QCM, réécrit d'aprè le cadrage : le déroulé d'une séance, la note, la correction. Ne change ri »
+22. garde 1. c-evals (de « evaluations ») : l'infobulle de « 📺 Ouvrir vue tableau » n'est pas celle de l'existant — « Ouvre la vue tableau dans une NOUVELLE FENÊTRE (pas un onglet) que tu peux glisser sur l'écran qui projette. Utilise W+P » ; la scène dit « Ouvre la vue tableau, à glisser sur le vidéoprojecteur : l'énoncé et le chrono, jamai le choi. Ne change rien à la séanc »
+23. garde 1. c-evals (de « evaluations ») : l'infobulle de « 📱 QR pilotage » n'est pas celle de l'existant — « Affiche un QR code à scanner avec ton téléphone pour piloter la classe à distance (depuis le fond de la salle par exempl » ; la scène dit « Montre le QR de ton téléphone : ɸ devient ta télécommande, avec tou le bouton de la séance. Ne change rien. »
+24. garde 1. c-evals (de « evaluations ») : l'infobulle de « ➕ Nouvelle évaluation » n'est pas celle de l'existant — « Créer une nouvelle évaluation. Tu colles un JSON (généré par l'IA via le bouton Prompt IA) et l'app parse automatiquemen » ; la scène dit « Colle le JSON d'une nouvelle évaluation : l'app le vérifie avant de l'enregistrer. »
+25. garde 1. c-evals (de « evaluations ») : l'infobulle de « ✏️ Modifier » n'est pas celle de l'existant — « Modifier le titre, les questions, les choix ou le niveau de difficulté. » ; la scène dit « Ouvre l'éditeur : énoncé, choi, temp, compétence, ce que chaque question vérifie. Une évaluation déjà passée garde se no »
+26. garde 1. c-evals (de « evaluations ») : l'infobulle de « 📋 Dupliquer » n'est pas celle de l'existant — « Créer une copie modifiable. Pratique pour adapter une éval à un autre niveau ou faire des variantes. » ; la scène dit « Fait de la démo une évaluation ordinaire, modifiable et supprimable : la démo ɸ-même ne change jamai. »
+27. garde 2. c-evals : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+28. garde 1. c-eval-corbeille : rien de « evaluations » ne se perd — 6 perte(s)
+29. garde 1. c-eval-corbeille (de « evaluations ») : l'infobulle de « 📖 Mode d'emploi » n'est pas celle de l'existant — « Ouvre le mode d'emploi avec toutes les explications de l'app. » ; la scène dit « Ouvre le mode d'emploi du QCM, réécrit d'aprè le cadrage : le déroulé d'une séance, la note, la correction. Ne change ri »
+30. garde 1. c-eval-corbeille (de « evaluations ») : l'infobulle de « 📺 Ouvrir vue tableau » n'est pas celle de l'existant — « Ouvre la vue tableau dans une NOUVELLE FENÊTRE (pas un onglet) que tu peux glisser sur l'écran qui projette. Utilise W+P » ; la scène dit « Ouvre la vue tableau, à glisser sur le vidéoprojecteur : l'énoncé et le chrono, jamai le choi. Ne change rien à la séanc »
+31. garde 1. c-eval-corbeille (de « evaluations ») : l'infobulle de « 📱 QR pilotage » n'est pas celle de l'existant — « Affiche un QR code à scanner avec ton téléphone pour piloter la classe à distance (depuis le fond de la salle par exempl » ; la scène dit « Montre le QR de ton téléphone : ɸ devient ta télécommande, avec tou le bouton de la séance. Ne change rien. »
+32. garde 1. c-eval-corbeille (de « evaluations ») : l'infobulle de « ➕ Nouvelle évaluation » n'est pas celle de l'existant — « Créer une nouvelle évaluation. Tu colles un JSON (généré par l'IA via le bouton Prompt IA) et l'app parse automatiquemen » ; la scène dit « Colle le JSON d'une nouvelle évaluation : l'app le vérifie avant de l'enregistrer. »
+33. garde 1. c-eval-corbeille (de « evaluations ») : l'infobulle de « ✏️ Modifier » n'est pas celle de l'existant — « Modifier le titre, les questions, les choix ou le niveau de difficulté. » ; la scène dit « Ouvre l'éditeur : énoncé, choi, temp, compétence, ce que chaque question vérifie. Une évaluation déjà passée garde se no »
+34. garde 1. c-eval-corbeille (de « evaluations ») : l'infobulle de « 📋 Dupliquer » n'est pas celle de l'existant — « Créer une copie modifiable. Pratique pour adapter une éval à un autre niveau ou faire des variantes. » ; la scène dit « Fait de la démo une évaluation ordinaire, modifiable et supprimable : la démo ɸ-même ne change jamai. »
+35. garde 2. c-eval-corbeille : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+36. garde 1. c-collage : rien de « nouvelle-evaluation » ne se perd — 3 perte(s)
+37. garde 1. c-collage (de « nouvelle-evaluation ») : l'infobulle de « 🔍 Vérifier le format » n'est pas celle de l'existant — « Parse le JSON ci-dessus et l'affiche en mode éditable ci-dessous. » ; la scène dit « Revérifie le JSON collé. »
+38. garde 1. c-collage (de « nouvelle-evaluation ») : l'infobulle de « ✨ Démarrer à blanc » n'est pas celle de l'existant — « Crée une évaluation vide pour la construire directement dans l'éditeur visuel ci-dessous (sans passer par l'IA). » ; la scène dit « Ouvre l'éditeur sur une évaluation vide, san JSON. »
+39. garde 1. c-collage (de « nouvelle-evaluation ») : champ « {
+  "titre": "Mon évaluation",
+  "questions": [
+    {"enonce":"...","choix":[...],"bonnes":[0],"niveau":"standard"}
+  ]
+} » perdu
+40. garde 2. c-collage : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+41. garde 1. x627-3-editeur : rien de « editeur » ne se perd — 9 perte(s)
+42. garde 1. x627-3-editeur (de « editeur ») : bouton « 🔍 Vérifier le format » perdu
+43. garde 1. x627-3-editeur (de « editeur ») : l'infobulle de « ➕ Ajouter un choix » n'est pas celle de l'existant — « Ajouter un nouveau choix à cette question. » ; la scène dit « Ajoute un choi à la question. »
+44. garde 1. x627-3-editeur (de « editeur ») : bouton « ➕ Ajouter une question » perdu
+45. garde 1. x627-3-editeur (de « editeur ») : champ « {
+  "titre": "Mon évaluation",
+  "questions": [
+    {"enonce":"...","choix":[...],"bonnes":[0],"niveau":"standard"}
+  ]
+} » perdu
+46. garde 1. x627-3-editeur (de « editeur ») : champ « Titre de l'évaluation » perdu
+47. garde 1. x627-3-editeur (de « editeur ») : champ « Énoncé de la question (autonome : l'élève doit pouvoir répondre sans voir les choix) » perdu
+48. garde 1. x627-3-editeur (de « editeur ») : champ « Texte du choix » perdu
+49. garde 1. x627-3-editeur (de « editeur ») : champ « Explication de la bonne réponse (1-3 phrases) » perdu
+50. garde 1. x627-3-editeur (de « editeur ») : case «  » perdu
+51. garde 2. x627-3-editeur : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+52. garde 1. c-lancer : rien de « console-lancer » ne se perd — 3 perte(s)
+53. garde 1. c-lancer (de « console-lancer ») : l'infobulle de « 📖 Mode d'emploi » n'est pas celle de l'existant — « Ouvre le mode d'emploi avec toutes les explications de l'app. » ; la scène dit « Ouvre le mode d'emploi du QCM, réécrit d'aprè le cadrage : le déroulé d'une séance, la note, la correction. Ne change ri »
+54. garde 1. c-lancer (de « console-lancer ») : l'infobulle de « 📺 Ouvrir vue tableau » n'est pas celle de l'existant — « Ouvre la vue tableau dans une NOUVELLE FENÊTRE (pas un onglet) que tu peux glisser sur l'écran qui projette. Utilise W+P » ; la scène dit « Ouvre la vue tableau, à glisser sur le vidéoprojecteur : l'énoncé et le chrono, jamai le choi. Ne change rien à la séanc »
+55. garde 1. c-lancer (de « console-lancer ») : l'infobulle de « 📱 QR pilotage » n'est pas celle de l'existant — « Affiche un QR code à scanner avec ton téléphone pour piloter la classe à distance (depuis le fond de la salle par exempl » ; la scène dit « Montre le QR de ton téléphone : ɸ devient ta télécommande, avec tou le bouton de la séance. Ne change rien. »
+56. garde 2. c-lancer : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+57. garde 1. c-echange-refuse : rien de « console-lancer » ne se perd — 3 perte(s)
+58. garde 1. c-echange-refuse (de « console-lancer ») : l'infobulle de « 📖 Mode d'emploi » n'est pas celle de l'existant — « Ouvre le mode d'emploi avec toutes les explications de l'app. » ; la scène dit « Ouvre le mode d'emploi du QCM, réécrit d'aprè le cadrage : le déroulé d'une séance, la note, la correction. Ne change ri »
+59. garde 1. c-echange-refuse (de « console-lancer ») : l'infobulle de « 📺 Ouvrir vue tableau » n'est pas celle de l'existant — « Ouvre la vue tableau dans une NOUVELLE FENÊTRE (pas un onglet) que tu peux glisser sur l'écran qui projette. Utilise W+P » ; la scène dit « Ouvre la vue tableau, à glisser sur le vidéoprojecteur : l'énoncé et le chrono, jamai le choi. Ne change rien à la séanc »
+60. garde 1. c-echange-refuse (de « console-lancer ») : l'infobulle de « 📱 QR pilotage » n'est pas celle de l'existant — « Affiche un QR code à scanner avec ton téléphone pour piloter la classe à distance (depuis le fond de la salle par exempl » ; la scène dit « Montre le QR de ton téléphone : ɸ devient ta télécommande, avec tou le bouton de la séance. Ne change rien. »
+61. garde 2. c-echange-refuse : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+62. garde 1. c-appel : rien de « checkin » ne se perd — 2 perte(s)
+63. garde 1. c-appel (de « checkin ») : l'infobulle de « Tout le monde présent » n'est pas celle de l'existant — « Décocher tout : aucun absent » ; la scène dit « Décoche tou le absent d'un coup. La séance n'est pa encore lancée. »
+64. garde 1. c-appel (de « checkin ») : l'infobulle de « 🚀 Lancer la session » n'est pas celle de l'existant — « Démarrer la session avec les absents marqués » ; la scène dit « Ouvre l'appel : tu coche le absent, l'heure de fin se règle, pui la séance s'ouvre et le tablette passent à l'attestatio »
+65. garde 2. c-appel : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+66. garde 1. c-demo-lancer : rien de « console-lancer » ne se perd — 3 perte(s)
+67. garde 1. c-demo-lancer (de « console-lancer ») : l'infobulle de « 📖 Mode d'emploi » n'est pas celle de l'existant — « Ouvre le mode d'emploi avec toutes les explications de l'app. » ; la scène dit « Ouvre le mode d'emploi du QCM, réécrit d'aprè le cadrage : le déroulé d'une séance, la note, la correction. Ne change ri »
+68. garde 1. c-demo-lancer (de « console-lancer ») : l'infobulle de « 📺 Ouvrir vue tableau » n'est pas celle de l'existant — « Ouvre la vue tableau dans une NOUVELLE FENÊTRE (pas un onglet) que tu peux glisser sur l'écran qui projette. Utilise W+P » ; la scène dit « Ouvre la vue tableau, à glisser sur le vidéoprojecteur : l'énoncé et le chrono, jamai le choi. Ne change rien à la séanc »
+69. garde 1. c-demo-lancer (de « console-lancer ») : l'infobulle de « 📱 QR pilotage » n'est pas celle de l'existant — « Affiche un QR code à scanner avec ton téléphone pour piloter la classe à distance (depuis le fond de la salle par exempl » ; la scène dit « Montre le QR de ton téléphone : ɸ devient ta télécommande, avec tou le bouton de la séance. Ne change rien. »
+70. garde 2. c-demo-lancer : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+71. garde 1. c-demo-faite : rien de « console-lancer » ne se perd — 3 perte(s)
+72. garde 1. c-demo-faite (de « console-lancer ») : l'infobulle de « 📖 Mode d'emploi » n'est pas celle de l'existant — « Ouvre le mode d'emploi avec toutes les explications de l'app. » ; la scène dit « Ouvre le mode d'emploi du QCM, réécrit d'aprè le cadrage : le déroulé d'une séance, la note, la correction. Ne change ri »
+73. garde 1. c-demo-faite (de « console-lancer ») : l'infobulle de « 📺 Ouvrir vue tableau » n'est pas celle de l'existant — « Ouvre la vue tableau dans une NOUVELLE FENÊTRE (pas un onglet) que tu peux glisser sur l'écran qui projette. Utilise W+P » ; la scène dit « Ouvre la vue tableau, à glisser sur le vidéoprojecteur : l'énoncé et le chrono, jamai le choi. Ne change rien à la séanc »
+74. garde 1. c-demo-faite (de « console-lancer ») : l'infobulle de « 📱 QR pilotage » n'est pas celle de l'existant — « Affiche un QR code à scanner avec ton téléphone pour piloter la classe à distance (depuis le fond de la salle par exempl » ; la scène dit « Montre le QR de ton téléphone : ɸ devient ta télécommande, avec tou le bouton de la séance. Ne change rien. »
+75. garde 2. c-demo-faite : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+76. garde 1. t-binome : rien de « eleve-attente-depart » ne se perd — 1 perte(s)
+77. garde 1. t-binome (de « eleve-attente-depart ») : bouton « 📊 Mes évaluations » perdu
+78. garde 1. t-attest-1 : rien de « eleve-attente-depart » ne se perd — 1 perte(s)
+79. garde 1. t-attest-1 (de « eleve-attente-depart ») : bouton « 📊 Mes évaluations » perdu
+80. garde 1. t-attest-2 : rien de « eleve-attente-depart » ne se perd — 1 perte(s)
+81. garde 1. t-attest-2 (de « eleve-attente-depart ») : bouton « 📊 Mes évaluations » perdu
+82. garde 1. t-pret : rien de « eleve-attente-depart » ne se perd — 1 perte(s)
+83. garde 1. t-pret (de « eleve-attente-depart ») : bouton « 📊 Mes évaluations » perdu
+84. garde 1. c-pret : rien de « pilot-attente » ne se perd — 10 perte(s)
+85. garde 1. c-pret (de « pilot-attente ») : l'infobulle de « 📖 Mode d'emploi » n'est pas celle de l'existant — « Ouvre le mode d'emploi avec toutes les explications de l'app. » ; la scène dit « Ouvre le mode d'emploi du QCM, réécrit d'aprè le cadrage : le déroulé d'une séance, la note, la correction. Ne change ri »
+86. garde 1. c-pret (de « pilot-attente ») : l'infobulle de « 📺 Ouvrir vue tableau » n'est pas celle de l'existant — « Ouvre la vue tableau dans une NOUVELLE FENÊTRE (pas un onglet) que tu peux glisser sur l'écran qui projette. Utilise W+P » ; la scène dit « Ouvre la vue tableau, à glisser sur le vidéoprojecteur : l'énoncé et le chrono, jamai le choi. Ne change rien à la séanc »
+87. garde 1. c-pret (de « pilot-attente ») : l'infobulle de « 📱 QR pilotage » n'est pas celle de l'existant — « Affiche un QR code à scanner avec ton téléphone pour piloter la classe à distance (depuis le fond de la salle par exempl » ; la scène dit « Montre le QR de ton téléphone : ɸ devient ta télécommande, avec tou le bouton de la séance. Ne change rien. »
+88. garde 1. c-pret (de « pilot-attente ») : l'infobulle de « 🚫 Départ d'un élève » n'est pas celle de l'existant — « Marque un élève comme parti en cours de session. Ses réponses déjà données restent enregistrées (sa note sera calculée a » ; la scène dit « Marque un élève parti : ɸ ne bloque plu la classe, son binôme continue seul, se question manquée sortent de son total. I »
+89. garde 1. c-pret (de « pilot-attente ») : l'infobulle de « ▶️ Lancer Q1 » n'est pas celle de l'existant — « Démarre la session : la question 1 s'affiche côté élève en phase réflexion. » ; la scène dit « Lance la question # : la réflexion commence sur toute le tablette, l'énoncé san le choi. »
+90. garde 1. c-pret (de « pilot-attente ») : infobulle « Nombre d'élèves actuellement connectés à l'app sur leur poste vs. nombre total d'élèves de la classe. » perdu
+91. garde 1. c-pret (de « pilot-attente ») : infobulle « Nombre d'élèves qui ont validé une réponse à la question en cours vs. nombre total. Te permet de voir d'un coup d'œil si tu peux clore. » perdu
+92. garde 1. c-pret (de « pilot-attente ») : infobulle « Nombre d'élèves ayant répondu juste vs. nombre d'élèves ayant répondu (pas vs. total). Indicateur du taux de réussite en direct. » perdu
+93. garde 1. c-pret (de « pilot-attente ») : infobulle « Question en cours vs. nombre total de questions de l'évaluation. » perdu
+94. garde 1. c-pret (de « pilot-attente ») : infobulle « Aucune question lancée pour l'instant. Clique sur 'Lancer Q1' pour démarrer. » perdu
+95. garde 2. c-pret : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+96. garde 1. t-demo-q : rien de « eleve-reflexion » ne se perd — 2 perte(s)
+97. garde 1. t-demo-q (de « eleve-reflexion ») : bouton « 📊 Mes évaluations » perdu
+98. garde 1. t-demo-q (de « eleve-reflexion ») : infobulle « Nombre de points que vaut cette question » perdu
+99. garde 1. t-q1-reflexion : rien de « eleve-reflexion » ne se perd — 2 perte(s)
+100. garde 1. t-q1-reflexion (de « eleve-reflexion ») : bouton « 📊 Mes évaluations » perdu
+101. garde 1. t-q1-reflexion (de « eleve-reflexion ») : infobulle « Nombre de points que vaut cette question » perdu
+102. garde 1. c-q1-reflexion : rien de « pilot-reflexion » ne se perd — 12 perte(s)
+103. garde 1. c-q1-reflexion (de « pilot-reflexion ») : l'infobulle de « 📖 Mode d'emploi » n'est pas celle de l'existant — « Ouvre le mode d'emploi avec toutes les explications de l'app. » ; la scène dit « Ouvre le mode d'emploi du QCM, réécrit d'aprè le cadrage : le déroulé d'une séance, la note, la correction. Ne change ri »
+104. garde 1. c-q1-reflexion (de « pilot-reflexion ») : l'infobulle de « 📺 Ouvrir vue tableau » n'est pas celle de l'existant — « Ouvre la vue tableau dans une NOUVELLE FENÊTRE (pas un onglet) que tu peux glisser sur l'écran qui projette. Utilise W+P » ; la scène dit « Ouvre la vue tableau, à glisser sur le vidéoprojecteur : l'énoncé et le chrono, jamai le choi. Ne change rien à la séanc »
+105. garde 1. c-q1-reflexion (de « pilot-reflexion ») : l'infobulle de « 📱 QR pilotage » n'est pas celle de l'existant — « Affiche un QR code à scanner avec ton téléphone pour piloter la classe à distance (depuis le fond de la salle par exempl » ; la scène dit « Montre le QR de ton téléphone : ɸ devient ta télécommande, avec tou le bouton de la séance. Ne change rien. »
+106. garde 1. c-q1-reflexion (de « pilot-reflexion ») : l'infobulle de « 🚫 Départ d'un élève » n'est pas celle de l'existant — « Marque un élève comme parti en cours de session. Ses réponses déjà données restent enregistrées (sa note sera calculée a » ; la scène dit « Marque un élève parti : ɸ ne bloque plu la classe, son binôme continue seul, se question manquée sortent de son total. I »
+107. garde 1. c-q1-reflexion (de « pilot-reflexion ») : l'infobulle de « ⏸️ Pause » n'est pas celle de l'existant — « Fige tous les chronos immédiatement (utile en cas d'interruption en classe). Les élèves voient un bandeau de pause. » ; la scène dit « Gèle le tour en cour, voile compri. « ▶️ Reprendre » le relance là où ɸ en était. »
+108. garde 1. c-q1-reflexion (de « pilot-reflexion ») : l'infobulle de « 🔄 Relancer chrono » n'est pas celle de l'existant — « Remet le chrono à zéro pour la phase en cours (durée pleine ré-injectée). » ; la scène dit « Repart du début du temp en cour (réflexion ou tour de réponse). Le réponse déjà donnée restent. »
+109. garde 1. c-q1-reflexion (de « pilot-reflexion ») : infobulle « Nombre d'élèves actuellement connectés à l'app sur leur poste vs. nombre total d'élèves de la classe. » perdu
+110. garde 1. c-q1-reflexion (de « pilot-reflexion ») : infobulle « Nombre d'élèves qui ont validé une réponse à la question en cours vs. nombre total. Te permet de voir d'un coup d'œil si tu peux clore. » perdu
+111. garde 1. c-q1-reflexion (de « pilot-reflexion ») : infobulle « Nombre d'élèves ayant répondu juste vs. nombre d'élèves ayant répondu (pas vs. total). Indicateur du taux de réussite en direct. » perdu
+112. garde 1. c-q1-reflexion (de « pilot-reflexion ») : infobulle « Question en cours vs. nombre total de questions de l'évaluation. » perdu
+113. garde 1. c-q1-reflexion (de « pilot-reflexion ») : infobulle « Les élèves voient l'énoncé et rédigent leur réponse au stylo. Les choix sont masqués. Quand tu juges qu'ils ont assez réfléchi, clique sur 'Autoriser la réponse'. » perdu
+114. garde 1. c-q1-reflexion (de « pilot-reflexion ») : infobulle « Question en cours — 0/25 justes pour le moment » perdu
+115. garde 2. c-q1-reflexion : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+116. garde 1. t-q1-tour1 : rien de « eleve-reponse-donnee » ne se perd — 2 perte(s)
+117. garde 1. t-q1-tour1 (de « eleve-reponse-donnee ») : bouton « 📊 Mes évaluations » perdu
+118. garde 1. t-q1-tour1 (de « eleve-reponse-donnee ») : infobulle « Nombre de points que vaut cette question » perdu
+119. garde 1. t-q1-tour1 : rien de « eleve-reponse » ne se perd — 2 perte(s)
+120. garde 1. t-q1-tour1 (de « eleve-reponse ») : bouton « 📊 Mes évaluations » perdu
+121. garde 1. t-q1-tour1 (de « eleve-reponse ») : infobulle « Nombre de points que vaut cette question » perdu
+122. garde 1. c-q1-tour1 : rien de « pilot-reponse » ne se perd — 11 perte(s)
+123. garde 1. c-q1-tour1 (de « pilot-reponse ») : l'infobulle de « 📖 Mode d'emploi » n'est pas celle de l'existant — « Ouvre le mode d'emploi avec toutes les explications de l'app. » ; la scène dit « Ouvre le mode d'emploi du QCM, réécrit d'aprè le cadrage : le déroulé d'une séance, la note, la correction. Ne change ri »
+124. garde 1. c-q1-tour1 (de « pilot-reponse ») : l'infobulle de « 📺 Ouvrir vue tableau » n'est pas celle de l'existant — « Ouvre la vue tableau dans une NOUVELLE FENÊTRE (pas un onglet) que tu peux glisser sur l'écran qui projette. Utilise W+P » ; la scène dit « Ouvre la vue tableau, à glisser sur le vidéoprojecteur : l'énoncé et le chrono, jamai le choi. Ne change rien à la séanc »
+125. garde 1. c-q1-tour1 (de « pilot-reponse ») : l'infobulle de « 📱 QR pilotage » n'est pas celle de l'existant — « Affiche un QR code à scanner avec ton téléphone pour piloter la classe à distance (depuis le fond de la salle par exempl » ; la scène dit « Montre le QR de ton téléphone : ɸ devient ta télécommande, avec tou le bouton de la séance. Ne change rien. »
+126. garde 1. c-q1-tour1 (de « pilot-reponse ») : l'infobulle de « 🚫 Départ d'un élève » n'est pas celle de l'existant — « Marque un élève comme parti en cours de session. Ses réponses déjà données restent enregistrées (sa note sera calculée a » ; la scène dit « Marque un élève parti : ɸ ne bloque plu la classe, son binôme continue seul, se question manquée sortent de son total. I »
+127. garde 1. c-q1-tour1 (de « pilot-reponse ») : l'infobulle de « ⏸️ Pause » n'est pas celle de l'existant — « Fige tous les chronos immédiatement (utile en cas d'interruption en classe). Les élèves voient un bandeau de pause. » ; la scène dit « Gèle le tour en cour, voile compri. « ▶️ Reprendre » le relance là où ɸ en était. »
+128. garde 1. c-q1-tour1 (de « pilot-reponse ») : l'infobulle de « 🔄 Relancer chrono » n'est pas celle de l'existant — « Remet le chrono à zéro pour la phase en cours (durée pleine ré-injectée). » ; la scène dit « Repart du début du temp en cour (réflexion ou tour de réponse). Le réponse déjà donnée restent. »
+129. garde 1. c-q1-tour1 (de « pilot-reponse ») : infobulle « Nombre d'élèves actuellement connectés à l'app sur leur poste vs. nombre total d'élèves de la classe. » perdu
+130. garde 1. c-q1-tour1 (de « pilot-reponse ») : infobulle « Nombre d'élèves qui ont validé une réponse à la question en cours vs. nombre total. Te permet de voir d'un coup d'œil si tu peux clore. » perdu
+131. garde 1. c-q1-tour1 (de « pilot-reponse ») : infobulle « Nombre d'élèves ayant répondu juste vs. nombre d'élèves ayant répondu (pas vs. total). Indicateur du taux de réussite en direct. » perdu
+132. garde 1. c-q1-tour1 (de « pilot-reponse ») : infobulle « Question en cours vs. nombre total de questions de l'évaluation. » perdu
+133. garde 1. c-q1-tour1 (de « pilot-reponse ») : infobulle « Question en cours — 0/25 justes pour le moment » perdu
+134. garde 2. c-q1-tour1 : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+135. garde 2. c-voir-tablette : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+136. garde 1. p-reponse : rien de « telephone-reponse » ne se perd — 11 perte(s)
+137. garde 1. p-reponse (de « telephone-reponse ») : infobulle « Aperçu de la classe par question. Vert = >75% bonnes, Bleu = >50%, Orange = >25%, Rouge = <25%. Les rouges sortiront en premier à la correction. » perdu
+138. garde 1. p-reponse (de « telephone-reponse ») : infobulle « Q1 — pas de réponse » perdu
+139. garde 1. p-reponse (de « telephone-reponse ») : infobulle « Q2 — pas de réponse » perdu
+140. garde 1. p-reponse (de « telephone-reponse ») : infobulle « Q3 — pas de réponse » perdu
+141. garde 1. p-reponse (de « telephone-reponse ») : infobulle « Q4 — pas de réponse » perdu
+142. garde 1. p-reponse (de « telephone-reponse ») : infobulle « Q5 — pas de réponse » perdu
+143. garde 1. p-reponse (de « telephone-reponse ») : infobulle « Q6 — pas de réponse » perdu
+144. garde 1. p-reponse (de « telephone-reponse ») : infobulle « Q7 — pas de réponse » perdu
+145. garde 1. p-reponse (de « telephone-reponse ») : infobulle « Q8 — pas de réponse » perdu
+146. garde 1. p-reponse (de « telephone-reponse ») : infobulle « Q9 — pas de réponse » perdu
+147. garde 1. p-reponse (de « telephone-reponse ») : infobulle « Q10 — pas de réponse » perdu
+148. garde 2. c-qr : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+149. garde 1. c-fin-prevue : rien de « pilot-reponse » ne se perd — 11 perte(s)
+150. garde 1. c-fin-prevue (de « pilot-reponse ») : l'infobulle de « 📖 Mode d'emploi » n'est pas celle de l'existant — « Ouvre le mode d'emploi avec toutes les explications de l'app. » ; la scène dit « Ouvre le mode d'emploi du QCM, réécrit d'aprè le cadrage : le déroulé d'une séance, la note, la correction. Ne change ri »
+151. garde 1. c-fin-prevue (de « pilot-reponse ») : l'infobulle de « 📺 Ouvrir vue tableau » n'est pas celle de l'existant — « Ouvre la vue tableau dans une NOUVELLE FENÊTRE (pas un onglet) que tu peux glisser sur l'écran qui projette. Utilise W+P » ; la scène dit « Ouvre la vue tableau, à glisser sur le vidéoprojecteur : l'énoncé et le chrono, jamai le choi. Ne change rien à la séanc »
+152. garde 1. c-fin-prevue (de « pilot-reponse ») : l'infobulle de « 📱 QR pilotage » n'est pas celle de l'existant — « Affiche un QR code à scanner avec ton téléphone pour piloter la classe à distance (depuis le fond de la salle par exempl » ; la scène dit « Montre le QR de ton téléphone : ɸ devient ta télécommande, avec tou le bouton de la séance. Ne change rien. »
+153. garde 1. c-fin-prevue (de « pilot-reponse ») : l'infobulle de « 🚫 Départ d'un élève » n'est pas celle de l'existant — « Marque un élève comme parti en cours de session. Ses réponses déjà données restent enregistrées (sa note sera calculée a » ; la scène dit « Marque un élève parti : ɸ ne bloque plu la classe, son binôme continue seul, se question manquée sortent de son total. I »
+154. garde 1. c-fin-prevue (de « pilot-reponse ») : l'infobulle de « ⏸️ Pause » n'est pas celle de l'existant — « Fige tous les chronos immédiatement (utile en cas d'interruption en classe). Les élèves voient un bandeau de pause. » ; la scène dit « Gèle le tour en cour, voile compri. « ▶️ Reprendre » le relance là où ɸ en était. »
+155. garde 1. c-fin-prevue (de « pilot-reponse ») : l'infobulle de « 🔄 Relancer chrono » n'est pas celle de l'existant — « Remet le chrono à zéro pour la phase en cours (durée pleine ré-injectée). » ; la scène dit « Repart du début du temp en cour (réflexion ou tour de réponse). Le réponse déjà donnée restent. »
+156. garde 1. c-fin-prevue (de « pilot-reponse ») : infobulle « Nombre d'élèves actuellement connectés à l'app sur leur poste vs. nombre total d'élèves de la classe. » perdu
+157. garde 1. c-fin-prevue (de « pilot-reponse ») : infobulle « Nombre d'élèves qui ont validé une réponse à la question en cours vs. nombre total. Te permet de voir d'un coup d'œil si tu peux clore. » perdu
+158. garde 1. c-fin-prevue (de « pilot-reponse ») : infobulle « Nombre d'élèves ayant répondu juste vs. nombre d'élèves ayant répondu (pas vs. total). Indicateur du taux de réussite en direct. » perdu
+159. garde 1. c-fin-prevue (de « pilot-reponse ») : infobulle « Question en cours vs. nombre total de questions de l'évaluation. » perdu
+160. garde 1. c-fin-prevue (de « pilot-reponse ») : infobulle « Question en cours — 0/25 justes pour le moment » perdu
+161. garde 2. c-fin-prevue : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+162. garde 1. t-q1-tour2 : rien de « eleve-reponse » ne se perd — 2 perte(s)
+163. garde 1. t-q1-tour2 (de « eleve-reponse ») : bouton « 📊 Mes évaluations » perdu
+164. garde 1. t-q1-tour2 (de « eleve-reponse ») : infobulle « Nombre de points que vaut cette question » perdu
+165. garde 1. c-q1-tour2 : rien de « pilot-reponse » ne se perd — 11 perte(s)
+166. garde 1. c-q1-tour2 (de « pilot-reponse ») : l'infobulle de « 📖 Mode d'emploi » n'est pas celle de l'existant — « Ouvre le mode d'emploi avec toutes les explications de l'app. » ; la scène dit « Ouvre le mode d'emploi du QCM, réécrit d'aprè le cadrage : le déroulé d'une séance, la note, la correction. Ne change ri »
+167. garde 1. c-q1-tour2 (de « pilot-reponse ») : l'infobulle de « 📺 Ouvrir vue tableau » n'est pas celle de l'existant — « Ouvre la vue tableau dans une NOUVELLE FENÊTRE (pas un onglet) que tu peux glisser sur l'écran qui projette. Utilise W+P » ; la scène dit « Ouvre la vue tableau, à glisser sur le vidéoprojecteur : l'énoncé et le chrono, jamai le choi. Ne change rien à la séanc »
+168. garde 1. c-q1-tour2 (de « pilot-reponse ») : l'infobulle de « 📱 QR pilotage » n'est pas celle de l'existant — « Affiche un QR code à scanner avec ton téléphone pour piloter la classe à distance (depuis le fond de la salle par exempl » ; la scène dit « Montre le QR de ton téléphone : ɸ devient ta télécommande, avec tou le bouton de la séance. Ne change rien. »
+169. garde 1. c-q1-tour2 (de « pilot-reponse ») : l'infobulle de « 🚫 Départ d'un élève » n'est pas celle de l'existant — « Marque un élève comme parti en cours de session. Ses réponses déjà données restent enregistrées (sa note sera calculée a » ; la scène dit « Marque un élève parti : ɸ ne bloque plu la classe, son binôme continue seul, se question manquée sortent de son total. I »
+170. garde 1. c-q1-tour2 (de « pilot-reponse ») : l'infobulle de « ⏸️ Pause » n'est pas celle de l'existant — « Fige tous les chronos immédiatement (utile en cas d'interruption en classe). Les élèves voient un bandeau de pause. » ; la scène dit « Gèle le tour en cour, voile compri. « ▶️ Reprendre » le relance là où ɸ en était. »
+171. garde 1. c-q1-tour2 (de « pilot-reponse ») : l'infobulle de « 🔄 Relancer chrono » n'est pas celle de l'existant — « Remet le chrono à zéro pour la phase en cours (durée pleine ré-injectée). » ; la scène dit « Repart du début du temp en cour (réflexion ou tour de réponse). Le réponse déjà donnée restent. »
+172. garde 1. c-q1-tour2 (de « pilot-reponse ») : infobulle « Nombre d'élèves actuellement connectés à l'app sur leur poste vs. nombre total d'élèves de la classe. » perdu
+173. garde 1. c-q1-tour2 (de « pilot-reponse ») : infobulle « Nombre d'élèves qui ont validé une réponse à la question en cours vs. nombre total. Te permet de voir d'un coup d'œil si tu peux clore. » perdu
+174. garde 1. c-q1-tour2 (de « pilot-reponse ») : infobulle « Nombre d'élèves ayant répondu juste vs. nombre d'élèves ayant répondu (pas vs. total). Indicateur du taux de réussite en direct. » perdu
+175. garde 1. c-q1-tour2 (de « pilot-reponse ») : infobulle « Question en cours vs. nombre total de questions de l'évaluation. » perdu
+176. garde 1. c-q1-tour2 (de « pilot-reponse ») : infobulle « Question en cours — 0/25 justes pour le moment » perdu
+177. garde 2. c-q1-tour2 : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+178. garde 1. t-q1-attente : rien de « eleve-attente-question » ne se perd — 1 perte(s)
+179. garde 1. t-q1-attente (de « eleve-attente-question ») : bouton « 📊 Mes évaluations » perdu
+180. garde 1. c-q1-close : rien de « pilot-close » ne se perd — 9 perte(s)
+181. garde 1. c-q1-close (de « pilot-close ») : l'infobulle de « 📖 Mode d'emploi » n'est pas celle de l'existant — « Ouvre le mode d'emploi avec toutes les explications de l'app. » ; la scène dit « Ouvre le mode d'emploi du QCM, réécrit d'aprè le cadrage : le déroulé d'une séance, la note, la correction. Ne change ri »
+182. garde 1. c-q1-close (de « pilot-close ») : l'infobulle de « 📺 Ouvrir vue tableau » n'est pas celle de l'existant — « Ouvre la vue tableau dans une NOUVELLE FENÊTRE (pas un onglet) que tu peux glisser sur l'écran qui projette. Utilise W+P » ; la scène dit « Ouvre la vue tableau, à glisser sur le vidéoprojecteur : l'énoncé et le chrono, jamai le choi. Ne change rien à la séanc »
+183. garde 1. c-q1-close (de « pilot-close ») : l'infobulle de « 📱 QR pilotage » n'est pas celle de l'existant — « Affiche un QR code à scanner avec ton téléphone pour piloter la classe à distance (depuis le fond de la salle par exempl » ; la scène dit « Montre le QR de ton téléphone : ɸ devient ta télécommande, avec tou le bouton de la séance. Ne change rien. »
+184. garde 1. c-q1-close (de « pilot-close ») : l'infobulle de « 🚫 Départ d'un élève » n'est pas celle de l'existant — « Marque un élève comme parti en cours de session. Ses réponses déjà données restent enregistrées (sa note sera calculée a » ; la scène dit « Marque un élève parti : ɸ ne bloque plu la classe, son binôme continue seul, se question manquée sortent de son total. I »
+185. garde 1. c-q1-close (de « pilot-close ») : infobulle « Nombre d'élèves actuellement connectés à l'app sur leur poste vs. nombre total d'élèves de la classe. » perdu
+186. garde 1. c-q1-close (de « pilot-close ») : infobulle « Nombre d'élèves qui ont validé une réponse à la question en cours vs. nombre total. Te permet de voir d'un coup d'œil si tu peux clore. » perdu
+187. garde 1. c-q1-close (de « pilot-close ») : infobulle « Nombre d'élèves ayant répondu juste vs. nombre d'élèves ayant répondu (pas vs. total). Indicateur du taux de réussite en direct. » perdu
+188. garde 1. c-q1-close (de « pilot-close ») : infobulle « Question en cours vs. nombre total de questions de l'évaluation. » perdu
+189. garde 1. c-q1-close (de « pilot-close ») : infobulle « Question en cours — 1/25 justes pour le moment » perdu
+190. garde 2. c-q1-close : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+191. garde 2. c-ecarter : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+192. garde 1. c-ecartee : rien de « pilot-close » ne se perd — 9 perte(s)
+193. garde 1. c-ecartee (de « pilot-close ») : l'infobulle de « 📖 Mode d'emploi » n'est pas celle de l'existant — « Ouvre le mode d'emploi avec toutes les explications de l'app. » ; la scène dit « Ouvre le mode d'emploi du QCM, réécrit d'aprè le cadrage : le déroulé d'une séance, la note, la correction. Ne change ri »
+194. garde 1. c-ecartee (de « pilot-close ») : l'infobulle de « 📺 Ouvrir vue tableau » n'est pas celle de l'existant — « Ouvre la vue tableau dans une NOUVELLE FENÊTRE (pas un onglet) que tu peux glisser sur l'écran qui projette. Utilise W+P » ; la scène dit « Ouvre la vue tableau, à glisser sur le vidéoprojecteur : l'énoncé et le chrono, jamai le choi. Ne change rien à la séanc »
+195. garde 1. c-ecartee (de « pilot-close ») : l'infobulle de « 📱 QR pilotage » n'est pas celle de l'existant — « Affiche un QR code à scanner avec ton téléphone pour piloter la classe à distance (depuis le fond de la salle par exempl » ; la scène dit « Montre le QR de ton téléphone : ɸ devient ta télécommande, avec tou le bouton de la séance. Ne change rien. »
+196. garde 1. c-ecartee (de « pilot-close ») : l'infobulle de « 🚫 Départ d'un élève » n'est pas celle de l'existant — « Marque un élève comme parti en cours de session. Ses réponses déjà données restent enregistrées (sa note sera calculée a » ; la scène dit « Marque un élève parti : ɸ ne bloque plu la classe, son binôme continue seul, se question manquée sortent de son total. I »
+197. garde 1. c-ecartee (de « pilot-close ») : infobulle « Nombre d'élèves actuellement connectés à l'app sur leur poste vs. nombre total d'élèves de la classe. » perdu
+198. garde 1. c-ecartee (de « pilot-close ») : infobulle « Nombre d'élèves qui ont validé une réponse à la question en cours vs. nombre total. Te permet de voir d'un coup d'œil si tu peux clore. » perdu
+199. garde 1. c-ecartee (de « pilot-close ») : infobulle « Nombre d'élèves ayant répondu juste vs. nombre d'élèves ayant répondu (pas vs. total). Indicateur du taux de réussite en direct. » perdu
+200. garde 1. c-ecartee (de « pilot-close ») : infobulle « Question en cours vs. nombre total de questions de l'évaluation. » perdu
+201. garde 1. c-ecartee (de « pilot-close ») : infobulle « Question en cours — 1/25 justes pour le moment » perdu
+202. garde 2. c-ecartee : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+203. garde 1. t-q2-ecartee : rien de « eleve-reflexion » ne se perd — 2 perte(s)
+204. garde 1. t-q2-ecartee (de « eleve-reflexion ») : bouton « 📊 Mes évaluations » perdu
+205. garde 1. t-q2-ecartee (de « eleve-reflexion ») : infobulle « Nombre de points que vaut cette question » perdu
+206. garde 1. t-q2-reflexion : rien de « eleve-reflexion » ne se perd — 2 perte(s)
+207. garde 1. t-q2-reflexion (de « eleve-reflexion ») : bouton « 📊 Mes évaluations » perdu
+208. garde 1. t-q2-reflexion (de « eleve-reflexion ») : infobulle « Nombre de points que vaut cette question » perdu
+209. garde 1. t-q2-tour1 : rien de « eleve-reponse » ne se perd — 2 perte(s)
+210. garde 1. t-q2-tour1 (de « eleve-reponse ») : bouton « 📊 Mes évaluations » perdu
+211. garde 1. t-q2-tour1 (de « eleve-reponse ») : infobulle « Nombre de points que vaut cette question » perdu
+212. garde 1. t-q2-tour2 : rien de « eleve-reponse-donnee » ne se perd — 2 perte(s)
+213. garde 1. t-q2-tour2 (de « eleve-reponse-donnee ») : bouton « 📊 Mes évaluations » perdu
+214. garde 1. t-q2-tour2 (de « eleve-reponse-donnee ») : infobulle « Nombre de points que vaut cette question » perdu
+215. garde 1. t-q2-tour2 : rien de « eleve-reponse » ne se perd — 2 perte(s)
+216. garde 1. t-q2-tour2 (de « eleve-reponse ») : bouton « 📊 Mes évaluations » perdu
+217. garde 1. t-q2-tour2 (de « eleve-reponse ») : infobulle « Nombre de points que vaut cette question » perdu
+218. garde 1. c-q2-tour2 : rien de « pilot-reponse » ne se perd — 11 perte(s)
+219. garde 1. c-q2-tour2 (de « pilot-reponse ») : l'infobulle de « 📖 Mode d'emploi » n'est pas celle de l'existant — « Ouvre le mode d'emploi avec toutes les explications de l'app. » ; la scène dit « Ouvre le mode d'emploi du QCM, réécrit d'aprè le cadrage : le déroulé d'une séance, la note, la correction. Ne change ri »
+220. garde 1. c-q2-tour2 (de « pilot-reponse ») : l'infobulle de « 📺 Ouvrir vue tableau » n'est pas celle de l'existant — « Ouvre la vue tableau dans une NOUVELLE FENÊTRE (pas un onglet) que tu peux glisser sur l'écran qui projette. Utilise W+P » ; la scène dit « Ouvre la vue tableau, à glisser sur le vidéoprojecteur : l'énoncé et le chrono, jamai le choi. Ne change rien à la séanc »
+221. garde 1. c-q2-tour2 (de « pilot-reponse ») : l'infobulle de « 📱 QR pilotage » n'est pas celle de l'existant — « Affiche un QR code à scanner avec ton téléphone pour piloter la classe à distance (depuis le fond de la salle par exempl » ; la scène dit « Montre le QR de ton téléphone : ɸ devient ta télécommande, avec tou le bouton de la séance. Ne change rien. »
+222. garde 1. c-q2-tour2 (de « pilot-reponse ») : l'infobulle de « 🚫 Départ d'un élève » n'est pas celle de l'existant — « Marque un élève comme parti en cours de session. Ses réponses déjà données restent enregistrées (sa note sera calculée a » ; la scène dit « Marque un élève parti : ɸ ne bloque plu la classe, son binôme continue seul, se question manquée sortent de son total. I »
+223. garde 1. c-q2-tour2 (de « pilot-reponse ») : l'infobulle de « ⏸️ Pause » n'est pas celle de l'existant — « Fige tous les chronos immédiatement (utile en cas d'interruption en classe). Les élèves voient un bandeau de pause. » ; la scène dit « Gèle le tour en cour, voile compri. « ▶️ Reprendre » le relance là où ɸ en était. »
+224. garde 1. c-q2-tour2 (de « pilot-reponse ») : l'infobulle de « 🔄 Relancer chrono » n'est pas celle de l'existant — « Remet le chrono à zéro pour la phase en cours (durée pleine ré-injectée). » ; la scène dit « Repart du début du temp en cour (réflexion ou tour de réponse). Le réponse déjà donnée restent. »
+225. garde 1. c-q2-tour2 (de « pilot-reponse ») : infobulle « Nombre d'élèves actuellement connectés à l'app sur leur poste vs. nombre total d'élèves de la classe. » perdu
+226. garde 1. c-q2-tour2 (de « pilot-reponse ») : infobulle « Nombre d'élèves qui ont validé une réponse à la question en cours vs. nombre total. Te permet de voir d'un coup d'œil si tu peux clore. » perdu
+227. garde 1. c-q2-tour2 (de « pilot-reponse ») : infobulle « Nombre d'élèves ayant répondu juste vs. nombre d'élèves ayant répondu (pas vs. total). Indicateur du taux de réussite en direct. » perdu
+228. garde 1. c-q2-tour2 (de « pilot-reponse ») : infobulle « Question en cours vs. nombre total de questions de l'évaluation. » perdu
+229. garde 1. c-q2-tour2 (de « pilot-reponse ») : infobulle « Question en cours — 0/25 justes pour le moment » perdu
+230. garde 2. c-q2-tour2 : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+231. garde 1. c-q2-close : rien de « pilot-close » ne se perd — 9 perte(s)
+232. garde 1. c-q2-close (de « pilot-close ») : l'infobulle de « 📖 Mode d'emploi » n'est pas celle de l'existant — « Ouvre le mode d'emploi avec toutes les explications de l'app. » ; la scène dit « Ouvre le mode d'emploi du QCM, réécrit d'aprè le cadrage : le déroulé d'une séance, la note, la correction. Ne change ri »
+233. garde 1. c-q2-close (de « pilot-close ») : l'infobulle de « 📺 Ouvrir vue tableau » n'est pas celle de l'existant — « Ouvre la vue tableau dans une NOUVELLE FENÊTRE (pas un onglet) que tu peux glisser sur l'écran qui projette. Utilise W+P » ; la scène dit « Ouvre la vue tableau, à glisser sur le vidéoprojecteur : l'énoncé et le chrono, jamai le choi. Ne change rien à la séanc »
+234. garde 1. c-q2-close (de « pilot-close ») : l'infobulle de « 📱 QR pilotage » n'est pas celle de l'existant — « Affiche un QR code à scanner avec ton téléphone pour piloter la classe à distance (depuis le fond de la salle par exempl » ; la scène dit « Montre le QR de ton téléphone : ɸ devient ta télécommande, avec tou le bouton de la séance. Ne change rien. »
+235. garde 1. c-q2-close (de « pilot-close ») : l'infobulle de « 🚫 Départ d'un élève » n'est pas celle de l'existant — « Marque un élève comme parti en cours de session. Ses réponses déjà données restent enregistrées (sa note sera calculée a » ; la scène dit « Marque un élève parti : ɸ ne bloque plu la classe, son binôme continue seul, se question manquée sortent de son total. I »
+236. garde 1. c-q2-close (de « pilot-close ») : infobulle « Nombre d'élèves actuellement connectés à l'app sur leur poste vs. nombre total d'élèves de la classe. » perdu
+237. garde 1. c-q2-close (de « pilot-close ») : infobulle « Nombre d'élèves qui ont validé une réponse à la question en cours vs. nombre total. Te permet de voir d'un coup d'œil si tu peux clore. » perdu
+238. garde 1. c-q2-close (de « pilot-close ») : infobulle « Nombre d'élèves ayant répondu juste vs. nombre d'élèves ayant répondu (pas vs. total). Indicateur du taux de réussite en direct. » perdu
+239. garde 1. c-q2-close (de « pilot-close ») : infobulle « Question en cours vs. nombre total de questions de l'évaluation. » perdu
+240. garde 1. c-q2-close (de « pilot-close ») : infobulle « Question en cours — 1/25 justes pour le moment » perdu
+241. garde 2. c-q2-close : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+242. garde 2. c-annuler : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+243. garde 1. c-annulee : rien de « pilot-close » ne se perd — 9 perte(s)
+244. garde 1. c-annulee (de « pilot-close ») : l'infobulle de « 📖 Mode d'emploi » n'est pas celle de l'existant — « Ouvre le mode d'emploi avec toutes les explications de l'app. » ; la scène dit « Ouvre le mode d'emploi du QCM, réécrit d'aprè le cadrage : le déroulé d'une séance, la note, la correction. Ne change ri »
+245. garde 1. c-annulee (de « pilot-close ») : l'infobulle de « 📺 Ouvrir vue tableau » n'est pas celle de l'existant — « Ouvre la vue tableau dans une NOUVELLE FENÊTRE (pas un onglet) que tu peux glisser sur l'écran qui projette. Utilise W+P » ; la scène dit « Ouvre la vue tableau, à glisser sur le vidéoprojecteur : l'énoncé et le chrono, jamai le choi. Ne change rien à la séanc »
+246. garde 1. c-annulee (de « pilot-close ») : l'infobulle de « 📱 QR pilotage » n'est pas celle de l'existant — « Affiche un QR code à scanner avec ton téléphone pour piloter la classe à distance (depuis le fond de la salle par exempl » ; la scène dit « Montre le QR de ton téléphone : ɸ devient ta télécommande, avec tou le bouton de la séance. Ne change rien. »
+247. garde 1. c-annulee (de « pilot-close ») : l'infobulle de « 🚫 Départ d'un élève » n'est pas celle de l'existant — « Marque un élève comme parti en cours de session. Ses réponses déjà données restent enregistrées (sa note sera calculée a » ; la scène dit « Marque un élève parti : ɸ ne bloque plu la classe, son binôme continue seul, se question manquée sortent de son total. I »
+248. garde 1. c-annulee (de « pilot-close ») : infobulle « Nombre d'élèves actuellement connectés à l'app sur leur poste vs. nombre total d'élèves de la classe. » perdu
+249. garde 1. c-annulee (de « pilot-close ») : infobulle « Nombre d'élèves qui ont validé une réponse à la question en cours vs. nombre total. Te permet de voir d'un coup d'œil si tu peux clore. » perdu
+250. garde 1. c-annulee (de « pilot-close ») : infobulle « Nombre d'élèves ayant répondu juste vs. nombre d'élèves ayant répondu (pas vs. total). Indicateur du taux de réussite en direct. » perdu
+251. garde 1. c-annulee (de « pilot-close ») : infobulle « Question en cours vs. nombre total de questions de l'évaluation. » perdu
+252. garde 1. c-annulee (de « pilot-close ») : infobulle « Question en cours — 1/25 justes pour le moment » perdu
+253. garde 2. c-annulee : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+254. garde 2. c-rouvrir-tous : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+255. garde 2. c-rouvrir-un : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+256. garde 1. t-rouvrir-un : rien de « eleve-reponse » ne se perd — 2 perte(s)
+257. garde 1. t-rouvrir-un (de « eleve-reponse ») : bouton « 📊 Mes évaluations » perdu
+258. garde 1. t-rouvrir-un (de « eleve-reponse ») : infobulle « Nombre de points que vaut cette question » perdu
+259. garde 1. p-eleve : rien de « telephone-close » ne se perd — 12 perte(s)
+260. garde 1. p-eleve (de « telephone-close ») : bouton « 🔓 Rouvrir Q1 » perdu
+261. garde 1. p-eleve (de « telephone-close ») : infobulle « Aperçu de la classe par question. Vert = >75% bonnes, Bleu = >50%, Orange = >25%, Rouge = <25%. Les rouges sortiront en premier à la correction. » perdu
+262. garde 1. p-eleve (de « telephone-close ») : infobulle « Q1 — pas de réponse » perdu
+263. garde 1. p-eleve (de « telephone-close ») : infobulle « Q2 — pas de réponse » perdu
+264. garde 1. p-eleve (de « telephone-close ») : infobulle « Q3 — pas de réponse » perdu
+265. garde 1. p-eleve (de « telephone-close ») : infobulle « Q4 — pas de réponse » perdu
+266. garde 1. p-eleve (de « telephone-close ») : infobulle « Q5 — pas de réponse » perdu
+267. garde 1. p-eleve (de « telephone-close ») : infobulle « Q6 — pas de réponse » perdu
+268. garde 1. p-eleve (de « telephone-close ») : infobulle « Q7 — pas de réponse » perdu
+269. garde 1. p-eleve (de « telephone-close ») : infobulle « Q8 — pas de réponse » perdu
+270. garde 1. p-eleve (de « telephone-close ») : infobulle « Q9 — pas de réponse » perdu
+271. garde 1. p-eleve (de « telephone-close ») : infobulle « Q10 — pas de réponse » perdu
+272. garde 1. t-q3-tour1 : rien de « eleve-reponse » ne se perd — 2 perte(s)
+273. garde 1. t-q3-tour1 (de « eleve-reponse ») : bouton « 📊 Mes évaluations » perdu
+274. garde 1. t-q3-tour1 (de « eleve-reponse ») : infobulle « Nombre de points que vaut cette question » perdu
+275. garde 1. t-q3-tour2 : rien de « eleve-reponse-donnee » ne se perd — 2 perte(s)
+276. garde 1. t-q3-tour2 (de « eleve-reponse-donnee ») : bouton « 📊 Mes évaluations » perdu
+277. garde 1. t-q3-tour2 (de « eleve-reponse-donnee ») : infobulle « Nombre de points que vaut cette question » perdu
+278. garde 1. t-q3-tour2 : rien de « eleve-reponse » ne se perd — 2 perte(s)
+279. garde 1. t-q3-tour2 (de « eleve-reponse ») : bouton « 📊 Mes évaluations » perdu
+280. garde 1. t-q3-tour2 (de « eleve-reponse ») : infobulle « Nombre de points que vaut cette question » perdu
+281. garde 1. c-q3-close : rien de « pilot-derniere-close » ne se perd — 12 perte(s)
+282. garde 1. c-q3-close (de « pilot-derniere-close ») : l'infobulle de « 📖 Mode d'emploi » n'est pas celle de l'existant — « Ouvre le mode d'emploi avec toutes les explications de l'app. » ; la scène dit « Ouvre le mode d'emploi du QCM, réécrit d'aprè le cadrage : le déroulé d'une séance, la note, la correction. Ne change ri »
+283. garde 1. c-q3-close (de « pilot-derniere-close ») : l'infobulle de « 📺 Ouvrir vue tableau » n'est pas celle de l'existant — « Ouvre la vue tableau dans une NOUVELLE FENÊTRE (pas un onglet) que tu peux glisser sur l'écran qui projette. Utilise W+P » ; la scène dit « Ouvre la vue tableau, à glisser sur le vidéoprojecteur : l'énoncé et le chrono, jamai le choi. Ne change rien à la séanc »
+284. garde 1. c-q3-close (de « pilot-derniere-close ») : l'infobulle de « 📱 QR pilotage » n'est pas celle de l'existant — « Affiche un QR code à scanner avec ton téléphone pour piloter la classe à distance (depuis le fond de la salle par exempl » ; la scène dit « Montre le QR de ton téléphone : ɸ devient ta télécommande, avec tou le bouton de la séance. Ne change rien. »
+285. garde 1. c-q3-close (de « pilot-derniere-close ») : l'infobulle de « 🚫 Départ d'un élève » n'est pas celle de l'existant — « Marque un élève comme parti en cours de session. Ses réponses déjà données restent enregistrées (sa note sera calculée a » ; la scène dit « Marque un élève parti : ɸ ne bloque plu la classe, son binôme continue seul, se question manquée sortent de son total. I »
+286. garde 1. c-q3-close (de « pilot-derniere-close ») : l'infobulle de « 📊 Lancer l'autoévaluation » n'est pas celle de l'existant — « Lance la phase d'autoévaluation : les élèves estiment leur score avant la correction. » ; la scène dit « Ouvre l'estimation sur le deu moitié en même temp : chacun dit combien de bonne réponse ɸ pense avoir. »
+287. garde 1. c-q3-close (de « pilot-derniere-close ») : infobulle « Nombre d'élèves actuellement connectés à l'app sur leur poste vs. nombre total d'élèves de la classe. » perdu
+288. garde 1. c-q3-close (de « pilot-derniere-close ») : infobulle « Nombre d'élèves qui ont validé une réponse à la question en cours vs. nombre total. Te permet de voir d'un coup d'œil si tu peux clore. » perdu
+289. garde 1. c-q3-close (de « pilot-derniere-close ») : infobulle « Nombre d'élèves ayant répondu juste vs. nombre d'élèves ayant répondu (pas vs. total). Indicateur du taux de réussite en direct. » perdu
+290. garde 1. c-q3-close (de « pilot-derniere-close ») : infobulle « Question en cours vs. nombre total de questions de l'évaluation. » perdu
+291. garde 1. c-q3-close (de « pilot-derniere-close ») : infobulle « Question passée — 1/25 justes » perdu
+292. garde 1. c-q3-close (de « pilot-derniere-close ») : infobulle « Question passée — 0/25 justes » perdu
+293. garde 1. c-q3-close (de « pilot-derniere-close ») : infobulle « Question en cours — 0/25 justes pour le moment » perdu
+294. garde 2. c-q3-close : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+295. garde 2. c-depart : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+296. garde 1. c-parti : rien de « pilot-reponse » ne se perd — 11 perte(s)
+297. garde 1. c-parti (de « pilot-reponse ») : l'infobulle de « 📖 Mode d'emploi » n'est pas celle de l'existant — « Ouvre le mode d'emploi avec toutes les explications de l'app. » ; la scène dit « Ouvre le mode d'emploi du QCM, réécrit d'aprè le cadrage : le déroulé d'une séance, la note, la correction. Ne change ri »
+298. garde 1. c-parti (de « pilot-reponse ») : l'infobulle de « 📺 Ouvrir vue tableau » n'est pas celle de l'existant — « Ouvre la vue tableau dans une NOUVELLE FENÊTRE (pas un onglet) que tu peux glisser sur l'écran qui projette. Utilise W+P » ; la scène dit « Ouvre la vue tableau, à glisser sur le vidéoprojecteur : l'énoncé et le chrono, jamai le choi. Ne change rien à la séanc »
+299. garde 1. c-parti (de « pilot-reponse ») : l'infobulle de « 📱 QR pilotage » n'est pas celle de l'existant — « Affiche un QR code à scanner avec ton téléphone pour piloter la classe à distance (depuis le fond de la salle par exempl » ; la scène dit « Montre le QR de ton téléphone : ɸ devient ta télécommande, avec tou le bouton de la séance. Ne change rien. »
+300. garde 1. c-parti (de « pilot-reponse ») : l'infobulle de « 🚫 Départ d'un élève » n'est pas celle de l'existant — « Marque un élève comme parti en cours de session. Ses réponses déjà données restent enregistrées (sa note sera calculée a » ; la scène dit « Marque un élève parti : ɸ ne bloque plu la classe, son binôme continue seul, se question manquée sortent de son total. I »
+301. garde 1. c-parti (de « pilot-reponse ») : l'infobulle de « ⏸️ Pause » n'est pas celle de l'existant — « Fige tous les chronos immédiatement (utile en cas d'interruption en classe). Les élèves voient un bandeau de pause. » ; la scène dit « Gèle le tour en cour, voile compri. « ▶️ Reprendre » le relance là où ɸ en était. »
+302. garde 1. c-parti (de « pilot-reponse ») : l'infobulle de « 🔄 Relancer chrono » n'est pas celle de l'existant — « Remet le chrono à zéro pour la phase en cours (durée pleine ré-injectée). » ; la scène dit « Repart du début du temp en cour (réflexion ou tour de réponse). Le réponse déjà donnée restent. »
+303. garde 1. c-parti (de « pilot-reponse ») : infobulle « Nombre d'élèves actuellement connectés à l'app sur leur poste vs. nombre total d'élèves de la classe. » perdu
+304. garde 1. c-parti (de « pilot-reponse ») : infobulle « Nombre d'élèves qui ont validé une réponse à la question en cours vs. nombre total. Te permet de voir d'un coup d'œil si tu peux clore. » perdu
+305. garde 1. c-parti (de « pilot-reponse ») : infobulle « Nombre d'élèves ayant répondu juste vs. nombre d'élèves ayant répondu (pas vs. total). Indicateur du taux de réussite en direct. » perdu
+306. garde 1. c-parti (de « pilot-reponse ») : infobulle « Question en cours vs. nombre total de questions de l'évaluation. » perdu
+307. garde 1. c-parti (de « pilot-reponse ») : infobulle « Question en cours — 0/25 justes pour le moment » perdu
+308. garde 2. c-parti : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+309. garde 2. c-retour : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+310. garde 1. c-deplacer : rien de « pilot-close » ne se perd — 9 perte(s)
+311. garde 1. c-deplacer (de « pilot-close ») : l'infobulle de « 📖 Mode d'emploi » n'est pas celle de l'existant — « Ouvre le mode d'emploi avec toutes les explications de l'app. » ; la scène dit « Ouvre le mode d'emploi du QCM, réécrit d'aprè le cadrage : le déroulé d'une séance, la note, la correction. Ne change ri »
+312. garde 1. c-deplacer (de « pilot-close ») : l'infobulle de « 📺 Ouvrir vue tableau » n'est pas celle de l'existant — « Ouvre la vue tableau dans une NOUVELLE FENÊTRE (pas un onglet) que tu peux glisser sur l'écran qui projette. Utilise W+P » ; la scène dit « Ouvre la vue tableau, à glisser sur le vidéoprojecteur : l'énoncé et le chrono, jamai le choi. Ne change rien à la séanc »
+313. garde 1. c-deplacer (de « pilot-close ») : l'infobulle de « 📱 QR pilotage » n'est pas celle de l'existant — « Affiche un QR code à scanner avec ton téléphone pour piloter la classe à distance (depuis le fond de la salle par exempl » ; la scène dit « Montre le QR de ton téléphone : ɸ devient ta télécommande, avec tou le bouton de la séance. Ne change rien. »
+314. garde 1. c-deplacer (de « pilot-close ») : l'infobulle de « 🚫 Départ d'un élève » n'est pas celle de l'existant — « Marque un élève comme parti en cours de session. Ses réponses déjà données restent enregistrées (sa note sera calculée a » ; la scène dit « Marque un élève parti : ɸ ne bloque plu la classe, son binôme continue seul, se question manquée sortent de son total. I »
+315. garde 1. c-deplacer (de « pilot-close ») : infobulle « Nombre d'élèves actuellement connectés à l'app sur leur poste vs. nombre total d'élèves de la classe. » perdu
+316. garde 1. c-deplacer (de « pilot-close ») : infobulle « Nombre d'élèves qui ont validé une réponse à la question en cours vs. nombre total. Te permet de voir d'un coup d'œil si tu peux clore. » perdu
+317. garde 1. c-deplacer (de « pilot-close ») : infobulle « Nombre d'élèves ayant répondu juste vs. nombre d'élèves ayant répondu (pas vs. total). Indicateur du taux de réussite en direct. » perdu
+318. garde 1. c-deplacer (de « pilot-close ») : infobulle « Question en cours vs. nombre total de questions de l'évaluation. » perdu
+319. garde 1. c-deplacer (de « pilot-close ») : infobulle « Question en cours — 1/25 justes pour le moment » perdu
+320. garde 2. c-deplacer : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+321. garde 2. c-terminer : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+322. garde 1. c-mode-emploi : rien de « mode-emploi » ne se perd — 1 perte(s)
+323. garde 1. c-mode-emploi (de « mode-emploi ») : bouton « ✓ J'ai compris » perdu
+324. garde 2. c-mode-emploi : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+325. garde 2. c-finir-autre-heure : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+326. garde 1. c-reprendre : rien de « console-lancer » ne se perd — 3 perte(s)
+327. garde 1. c-reprendre (de « console-lancer ») : l'infobulle de « 📖 Mode d'emploi » n'est pas celle de l'existant — « Ouvre le mode d'emploi avec toutes les explications de l'app. » ; la scène dit « Ouvre le mode d'emploi du QCM, réécrit d'aprè le cadrage : le déroulé d'une séance, la note, la correction. Ne change ri »
+328. garde 1. c-reprendre (de « console-lancer ») : l'infobulle de « 📺 Ouvrir vue tableau » n'est pas celle de l'existant — « Ouvre la vue tableau dans une NOUVELLE FENÊTRE (pas un onglet) que tu peux glisser sur l'écran qui projette. Utilise W+P » ; la scène dit « Ouvre la vue tableau, à glisser sur le vidéoprojecteur : l'énoncé et le chrono, jamai le choi. Ne change rien à la séanc »
+329. garde 1. c-reprendre (de « console-lancer ») : l'infobulle de « 📱 QR pilotage » n'est pas celle de l'existant — « Affiche un QR code à scanner avec ton téléphone pour piloter la classe à distance (depuis le fond de la salle par exempl » ; la scène dit « Montre le QR de ton téléphone : ɸ devient ta télécommande, avec tou le bouton de la séance. Ne change rien. »
+330. garde 2. c-reprendre : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+331. garde 2. c-rouvrir-seance : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+332. garde 2. c-sessions : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+333. garde 2. c-interrompue : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+334. garde 1. t-estim : rien de « eleve-autoeval-fait » ne se perd — 1 perte(s)
+335. garde 1. t-estim (de « eleve-autoeval-fait ») : bouton « 📊 Mes évaluations » perdu
+336. garde 1. t-estim : rien de « eleve-autoeval » ne se perd — 1 perte(s)
+337. garde 1. t-estim (de « eleve-autoeval ») : bouton « 📊 Mes évaluations » perdu
+338. garde 1. c-estim : rien de « pilot-autoeval » ne se perd — 3 perte(s)
+339. garde 1. c-estim (de « pilot-autoeval ») : l'infobulle de « 📖 Mode d'emploi » n'est pas celle de l'existant — « Ouvre le mode d'emploi avec toutes les explications de l'app. » ; la scène dit « Ouvre le mode d'emploi du QCM, réécrit d'aprè le cadrage : le déroulé d'une séance, la note, la correction. Ne change ri »
+340. garde 1. c-estim (de « pilot-autoeval ») : l'infobulle de « 📺 Ouvrir vue tableau » n'est pas celle de l'existant — « Ouvre la vue tableau dans une NOUVELLE FENÊTRE (pas un onglet) que tu peux glisser sur l'écran qui projette. Utilise W+P » ; la scène dit « Ouvre la vue tableau, à glisser sur le vidéoprojecteur : l'énoncé et le chrono, jamai le choi. Ne change rien à la séanc »
+341. garde 1. c-estim (de « pilot-autoeval ») : l'infobulle de « 📱 QR pilotage » n'est pas celle de l'existant — « Affiche un QR code à scanner avec ton téléphone pour piloter la classe à distance (depuis le fond de la salle par exempl » ; la scène dit « Montre le QR de ton téléphone : ɸ devient ta télécommande, avec tou le bouton de la séance. Ne change rien. »
+342. garde 2. c-estim : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+343. garde 2. c-attest2 : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+344. garde 1. t-corr-q2-lecture : rien de « eleve-correction-avant » ne se perd — 1 perte(s)
+345. garde 1. t-corr-q2-lecture (de « eleve-correction-avant ») : phrase « 👀 Écoute le prof — la correction sera révélée. » perdu
+346. garde 1. c-corr-q2-avant : rien de « pilot-correction-avant » ne se perd — 8 perte(s)
+347. garde 1. c-corr-q2-avant (de « pilot-correction-avant ») : l'infobulle de « 📖 Mode d'emploi » n'est pas celle de l'existant — « Ouvre le mode d'emploi avec toutes les explications de l'app. » ; la scène dit « Ouvre le mode d'emploi du QCM, réécrit d'aprè le cadrage : le déroulé d'une séance, la note, la correction. Ne change ri »
+348. garde 1. c-corr-q2-avant (de « pilot-correction-avant ») : l'infobulle de « 📺 Ouvrir vue tableau » n'est pas celle de l'existant — « Ouvre la vue tableau dans une NOUVELLE FENÊTRE (pas un onglet) que tu peux glisser sur l'écran qui projette. Utilise W+P » ; la scène dit « Ouvre la vue tableau, à glisser sur le vidéoprojecteur : l'énoncé et le chrono, jamai le choi. Ne change rien à la séanc »
+349. garde 1. c-corr-q2-avant (de « pilot-correction-avant ») : l'infobulle de « 📱 QR pilotage » n'est pas celle de l'existant — « Affiche un QR code à scanner avec ton téléphone pour piloter la classe à distance (depuis le fond de la salle par exempl » ; la scène dit « Montre le QR de ton téléphone : ɸ devient ta télécommande, avec tou le bouton de la séance. Ne change rien. »
+350. garde 1. c-corr-q2-avant (de « pilot-correction-avant ») : l'infobulle de « ← Question précédente » n'est pas celle de l'existant — « Revenir à la question précédente dans l'ordre de correction (utile si tu veux retraiter une question avec la classe). » ; la scène dit « C'est la première question corrigée : ɸ n'y a pa de question précédente. »
+351. garde 1. c-corr-q2-avant (de « pilot-correction-avant ») : l'infobulle de « Question suivante → » n'est pas celle de l'existant — « Passer à la question suivante dans l'ordre trié par taux d'erreur. » ; la scène dit « S'ouvre quand cette question est révélée. »
+352. garde 1. c-corr-q2-avant (de « pilot-correction-avant ») : infobulle « Position dans l'ordre de correction (trié par taux d'erreur décroissant). Q10 est la 1e question révélée. » perdu
+353. garde 1. c-corr-q2-avant (de « pilot-correction-avant ») : infobulle « Niveau de la question (info indicative pendant la correction). » perdu
+354. garde 1. c-corr-q2-avant (de « pilot-correction-avant ») : infobulle « Taux de réussite de la classe sur cette question. Sert au tri par difficulté. » perdu
+355. garde 2. c-corr-q2-avant : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+356. garde 1. p-corr-avant : rien de « telephone-correction-avant » ne se perd — 11 perte(s)
+357. garde 1. p-corr-avant (de « telephone-correction-avant ») : infobulle « Aperçu de la classe par question. Vert = >75% bonnes, Bleu = >50%, Orange = >25%, Rouge = <25%. Les rouges sortiront en premier à la correction. » perdu
+358. garde 1. p-corr-avant (de « telephone-correction-avant ») : infobulle « Q1 — pas de réponse » perdu
+359. garde 1. p-corr-avant (de « telephone-correction-avant ») : infobulle « Q2 — pas de réponse » perdu
+360. garde 1. p-corr-avant (de « telephone-correction-avant ») : infobulle « Q3 — pas de réponse » perdu
+361. garde 1. p-corr-avant (de « telephone-correction-avant ») : infobulle « Q4 — pas de réponse » perdu
+362. garde 1. p-corr-avant (de « telephone-correction-avant ») : infobulle « Q5 — pas de réponse » perdu
+363. garde 1. p-corr-avant (de « telephone-correction-avant ») : infobulle « Q6 — pas de réponse » perdu
+364. garde 1. p-corr-avant (de « telephone-correction-avant ») : infobulle « Q7 — pas de réponse » perdu
+365. garde 1. p-corr-avant (de « telephone-correction-avant ») : infobulle « Q8 — pas de réponse » perdu
+366. garde 1. p-corr-avant (de « telephone-correction-avant ») : infobulle « Q9 — pas de réponse » perdu
+367. garde 1. p-corr-avant (de « telephone-correction-avant ») : infobulle « Q10 — pas de réponse » perdu
+368. garde 1. c-corr-q2-lu : rien de « pilot-correction-avant » ne se perd — 8 perte(s)
+369. garde 1. c-corr-q2-lu (de « pilot-correction-avant ») : l'infobulle de « 📖 Mode d'emploi » n'est pas celle de l'existant — « Ouvre le mode d'emploi avec toutes les explications de l'app. » ; la scène dit « Ouvre le mode d'emploi du QCM, réécrit d'aprè le cadrage : le déroulé d'une séance, la note, la correction. Ne change ri »
+370. garde 1. c-corr-q2-lu (de « pilot-correction-avant ») : l'infobulle de « 📺 Ouvrir vue tableau » n'est pas celle de l'existant — « Ouvre la vue tableau dans une NOUVELLE FENÊTRE (pas un onglet) que tu peux glisser sur l'écran qui projette. Utilise W+P » ; la scène dit « Ouvre la vue tableau, à glisser sur le vidéoprojecteur : l'énoncé et le chrono, jamai le choi. Ne change rien à la séanc »
+371. garde 1. c-corr-q2-lu (de « pilot-correction-avant ») : l'infobulle de « 📱 QR pilotage » n'est pas celle de l'existant — « Affiche un QR code à scanner avec ton téléphone pour piloter la classe à distance (depuis le fond de la salle par exempl » ; la scène dit « Montre le QR de ton téléphone : ɸ devient ta télécommande, avec tou le bouton de la séance. Ne change rien. »
+372. garde 1. c-corr-q2-lu (de « pilot-correction-avant ») : l'infobulle de « ← Question précédente » n'est pas celle de l'existant — « Revenir à la question précédente dans l'ordre de correction (utile si tu veux retraiter une question avec la classe). » ; la scène dit « C'est la première question corrigée : ɸ n'y a pa de question précédente. »
+373. garde 1. c-corr-q2-lu (de « pilot-correction-avant ») : l'infobulle de « Question suivante → » n'est pas celle de l'existant — « Passer à la question suivante dans l'ordre trié par taux d'erreur. » ; la scène dit « S'ouvre quand cette question est révélée. »
+374. garde 1. c-corr-q2-lu (de « pilot-correction-avant ») : infobulle « Position dans l'ordre de correction (trié par taux d'erreur décroissant). Q10 est la 1e question révélée. » perdu
+375. garde 1. c-corr-q2-lu (de « pilot-correction-avant ») : infobulle « Niveau de la question (info indicative pendant la correction). » perdu
+376. garde 1. c-corr-q2-lu (de « pilot-correction-avant ») : infobulle « Taux de réussite de la classe sur cette question. Sert au tri par difficulté. » perdu
+377. garde 2. c-corr-q2-lu : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+378. garde 1. c-corr-q2-apres : rien de « pilot-correction-apres » ne se perd — 8 perte(s)
+379. garde 1. c-corr-q2-apres (de « pilot-correction-apres ») : l'infobulle de « 📖 Mode d'emploi » n'est pas celle de l'existant — « Ouvre le mode d'emploi avec toutes les explications de l'app. » ; la scène dit « Ouvre le mode d'emploi du QCM, réécrit d'aprè le cadrage : le déroulé d'une séance, la note, la correction. Ne change ri »
+380. garde 1. c-corr-q2-apres (de « pilot-correction-apres ») : l'infobulle de « 📺 Ouvrir vue tableau » n'est pas celle de l'existant — « Ouvre la vue tableau dans une NOUVELLE FENÊTRE (pas un onglet) que tu peux glisser sur l'écran qui projette. Utilise W+P » ; la scène dit « Ouvre la vue tableau, à glisser sur le vidéoprojecteur : l'énoncé et le chrono, jamai le choi. Ne change rien à la séanc »
+381. garde 1. c-corr-q2-apres (de « pilot-correction-apres ») : l'infobulle de « 📱 QR pilotage » n'est pas celle de l'existant — « Affiche un QR code à scanner avec ton téléphone pour piloter la classe à distance (depuis le fond de la salle par exempl » ; la scène dit « Montre le QR de ton téléphone : ɸ devient ta télécommande, avec tou le bouton de la séance. Ne change rien. »
+382. garde 1. c-corr-q2-apres (de « pilot-correction-apres ») : l'infobulle de « ← Question précédente » n'est pas celle de l'existant — « Revenir à la question précédente dans l'ordre de correction (utile si tu veux retraiter une question avec la classe). » ; la scène dit « C'est la première question corrigée : ɸ n'y a pa de question précédente. »
+383. garde 1. c-corr-q2-apres (de « pilot-correction-apres ») : l'infobulle de « Question suivante → » n'est pas celle de l'existant — « Passer à la question suivante dans l'ordre trié par taux d'erreur. » ; la scène dit « Passe à la question suivante : chacun lit d'abord la feuille de son voisin. »
+384. garde 1. c-corr-q2-apres (de « pilot-correction-apres ») : infobulle « Position dans l'ordre de correction (trié par taux d'erreur décroissant). Q10 est la 1e question révélée. » perdu
+385. garde 1. c-corr-q2-apres (de « pilot-correction-apres ») : infobulle « Niveau de la question (info indicative pendant la correction). » perdu
+386. garde 1. c-corr-q2-apres (de « pilot-correction-apres ») : infobulle « Taux de réussite de la classe sur cette question. Sert au tri par difficulté. » perdu
+387. garde 2. c-corr-q2-apres : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+388. garde 1. p-corr-apres : rien de « telephone-correction-apres » ne se perd — 11 perte(s)
+389. garde 1. p-corr-apres (de « telephone-correction-apres ») : infobulle « Aperçu de la classe par question. Vert = >75% bonnes, Bleu = >50%, Orange = >25%, Rouge = <25%. Les rouges sortiront en premier à la correction. » perdu
+390. garde 1. p-corr-apres (de « telephone-correction-apres ») : infobulle « Q1 — pas de réponse » perdu
+391. garde 1. p-corr-apres (de « telephone-correction-apres ») : infobulle « Q2 — pas de réponse » perdu
+392. garde 1. p-corr-apres (de « telephone-correction-apres ») : infobulle « Q3 — pas de réponse » perdu
+393. garde 1. p-corr-apres (de « telephone-correction-apres ») : infobulle « Q4 — pas de réponse » perdu
+394. garde 1. p-corr-apres (de « telephone-correction-apres ») : infobulle « Q5 — pas de réponse » perdu
+395. garde 1. p-corr-apres (de « telephone-correction-apres ») : infobulle « Q6 — pas de réponse » perdu
+396. garde 1. p-corr-apres (de « telephone-correction-apres ») : infobulle « Q7 — pas de réponse » perdu
+397. garde 1. p-corr-apres (de « telephone-correction-apres ») : infobulle « Q8 — pas de réponse » perdu
+398. garde 1. p-corr-apres (de « telephone-correction-apres ») : infobulle « Q9 — pas de réponse » perdu
+399. garde 1. p-corr-apres (de « telephone-correction-apres ») : infobulle « Q10 — pas de réponse » perdu
+400. garde 1. t-corr-q3-lecture : rien de « eleve-correction-avant » ne se perd — 1 perte(s)
+401. garde 1. t-corr-q3-lecture (de « eleve-correction-avant ») : phrase « 👀 Écoute le prof — la correction sera révélée. » perdu
+402. garde 1. c-corr-q3-apres : rien de « pilot-correction-apres » ne se perd — 8 perte(s)
+403. garde 1. c-corr-q3-apres (de « pilot-correction-apres ») : l'infobulle de « 📖 Mode d'emploi » n'est pas celle de l'existant — « Ouvre le mode d'emploi avec toutes les explications de l'app. » ; la scène dit « Ouvre le mode d'emploi du QCM, réécrit d'aprè le cadrage : le déroulé d'une séance, la note, la correction. Ne change ri »
+404. garde 1. c-corr-q3-apres (de « pilot-correction-apres ») : l'infobulle de « 📺 Ouvrir vue tableau » n'est pas celle de l'existant — « Ouvre la vue tableau dans une NOUVELLE FENÊTRE (pas un onglet) que tu peux glisser sur l'écran qui projette. Utilise W+P » ; la scène dit « Ouvre la vue tableau, à glisser sur le vidéoprojecteur : l'énoncé et le chrono, jamai le choi. Ne change rien à la séanc »
+405. garde 1. c-corr-q3-apres (de « pilot-correction-apres ») : l'infobulle de « 📱 QR pilotage » n'est pas celle de l'existant — « Affiche un QR code à scanner avec ton téléphone pour piloter la classe à distance (depuis le fond de la salle par exempl » ; la scène dit « Montre le QR de ton téléphone : ɸ devient ta télécommande, avec tou le bouton de la séance. Ne change rien. »
+406. garde 1. c-corr-q3-apres (de « pilot-correction-apres ») : l'infobulle de « ← Question précédente » n'est pas celle de l'existant — « Revenir à la question précédente dans l'ordre de correction (utile si tu veux retraiter une question avec la classe). » ; la scène dit « Revient à la question corrigée juste avant, telle qu'ɸ a été révélée. »
+407. garde 1. c-corr-q3-apres (de « pilot-correction-apres ») : l'infobulle de « Question suivante → » n'est pas celle de l'existant — « Passer à la question suivante dans l'ordre trié par taux d'erreur. » ; la scène dit « Passe à la question suivante : chacun lit d'abord la feuille de son voisin. »
+408. garde 1. c-corr-q3-apres (de « pilot-correction-apres ») : infobulle « Position dans l'ordre de correction (trié par taux d'erreur décroissant). Q10 est la 1e question révélée. » perdu
+409. garde 1. c-corr-q3-apres (de « pilot-correction-apres ») : infobulle « Niveau de la question (info indicative pendant la correction). » perdu
+410. garde 1. c-corr-q3-apres (de « pilot-correction-apres ») : infobulle « Taux de réussite de la classe sur cette question. Sert au tri par difficulté. » perdu
+411. garde 2. c-corr-q3-apres : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+412. garde 1. t-corr-q1-lecture : rien de « eleve-correction-avant » ne se perd — 1 perte(s)
+413. garde 1. t-corr-q1-lecture (de « eleve-correction-avant ») : phrase « 👀 Écoute le prof — la correction sera révélée. » perdu
+414. garde 1. c-corr-q1-apres : rien de « pilot-correction-apres » ne se perd — 7 perte(s)
+415. garde 1. c-corr-q1-apres (de « pilot-correction-apres ») : l'infobulle de « 📖 Mode d'emploi » n'est pas celle de l'existant — « Ouvre le mode d'emploi avec toutes les explications de l'app. » ; la scène dit « Ouvre le mode d'emploi du QCM, réécrit d'aprè le cadrage : le déroulé d'une séance, la note, la correction. Ne change ri »
+416. garde 1. c-corr-q1-apres (de « pilot-correction-apres ») : l'infobulle de « 📺 Ouvrir vue tableau » n'est pas celle de l'existant — « Ouvre la vue tableau dans une NOUVELLE FENÊTRE (pas un onglet) que tu peux glisser sur l'écran qui projette. Utilise W+P » ; la scène dit « Ouvre la vue tableau, à glisser sur le vidéoprojecteur : l'énoncé et le chrono, jamai le choi. Ne change rien à la séanc »
+417. garde 1. c-corr-q1-apres (de « pilot-correction-apres ») : l'infobulle de « 📱 QR pilotage » n'est pas celle de l'existant — « Affiche un QR code à scanner avec ton téléphone pour piloter la classe à distance (depuis le fond de la salle par exempl » ; la scène dit « Montre le QR de ton téléphone : ɸ devient ta télécommande, avec tou le bouton de la séance. Ne change rien. »
+418. garde 1. c-corr-q1-apres (de « pilot-correction-apres ») : l'infobulle de « ← Question précédente » n'est pas celle de l'existant — « Revenir à la question précédente dans l'ordre de correction (utile si tu veux retraiter une question avec la classe). » ; la scène dit « Revient à la question corrigée juste avant, telle qu'ɸ a été révélée. »
+419. garde 1. c-corr-q1-apres (de « pilot-correction-apres ») : infobulle « Position dans l'ordre de correction (trié par taux d'erreur décroissant). Q10 est la 1e question révélée. » perdu
+420. garde 1. c-corr-q1-apres (de « pilot-correction-apres ») : infobulle « Niveau de la question (info indicative pendant la correction). » perdu
+421. garde 1. c-corr-q1-apres (de « pilot-correction-apres ») : infobulle « Taux de réussite de la classe sur cette question. Sert au tri par difficulté. » perdu
+422. garde 2. c-corr-q1-apres : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+423. garde 1. x610-3-a-correction : rien de « eleve-correction-avant » ne se perd — 1 perte(s)
+424. garde 1. x610-3-a-correction (de « eleve-correction-avant ») : phrase « 👀 Écoute le prof — la correction sera révélée. » perdu
+425. garde 1. t-corr-seul : rien de « eleve-correction-avant » ne se perd — 1 perte(s)
+426. garde 1. t-corr-seul (de « eleve-correction-avant ») : phrase « 👀 Écoute le prof — la correction sera révélée. » perdu
+427. garde 1. c-autonomie : rien de « pilot-correction-apres » ne se perd — 8 perte(s)
+428. garde 1. c-autonomie (de « pilot-correction-apres ») : l'infobulle de « 📖 Mode d'emploi » n'est pas celle de l'existant — « Ouvre le mode d'emploi avec toutes les explications de l'app. » ; la scène dit « Ouvre le mode d'emploi du QCM, réécrit d'aprè le cadrage : le déroulé d'une séance, la note, la correction. Ne change ri »
+429. garde 1. c-autonomie (de « pilot-correction-apres ») : l'infobulle de « 📺 Ouvrir vue tableau » n'est pas celle de l'existant — « Ouvre la vue tableau dans une NOUVELLE FENÊTRE (pas un onglet) que tu peux glisser sur l'écran qui projette. Utilise W+P » ; la scène dit « Ouvre la vue tableau, à glisser sur le vidéoprojecteur : l'énoncé et le chrono, jamai le choi. Ne change rien à la séanc »
+430. garde 1. c-autonomie (de « pilot-correction-apres ») : l'infobulle de « 📱 QR pilotage » n'est pas celle de l'existant — « Affiche un QR code à scanner avec ton téléphone pour piloter la classe à distance (depuis le fond de la salle par exempl » ; la scène dit « Montre le QR de ton téléphone : ɸ devient ta télécommande, avec tou le bouton de la séance. Ne change rien. »
+431. garde 1. c-autonomie (de « pilot-correction-apres ») : l'infobulle de « ← Question précédente » n'est pas celle de l'existant — « Revenir à la question précédente dans l'ordre de correction (utile si tu veux retraiter une question avec la classe). » ; la scène dit « C'est la première question corrigée : ɸ n'y a pa de question précédente. »
+432. garde 1. c-autonomie (de « pilot-correction-apres ») : l'infobulle de « Question suivante → » n'est pas celle de l'existant — « Passer à la question suivante dans l'ordre trié par taux d'erreur. » ; la scène dit « Passe à la question suivante : chacun lit d'abord la feuille de son voisin. »
+433. garde 1. c-autonomie (de « pilot-correction-apres ») : infobulle « Position dans l'ordre de correction (trié par taux d'erreur décroissant). Q10 est la 1e question révélée. » perdu
+434. garde 1. c-autonomie (de « pilot-correction-apres ») : infobulle « Niveau de la question (info indicative pendant la correction). » perdu
+435. garde 1. c-autonomie (de « pilot-correction-apres ») : infobulle « Taux de réussite de la classe sur cette question. Sert au tri par difficulté. » perdu
+436. garde 2. c-autonomie : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+437. garde 1. c-autonomie-garde : rien de « pilot-correction-apres » ne se perd — 8 perte(s)
+438. garde 1. c-autonomie-garde (de « pilot-correction-apres ») : l'infobulle de « 📖 Mode d'emploi » n'est pas celle de l'existant — « Ouvre le mode d'emploi avec toutes les explications de l'app. » ; la scène dit « Ouvre le mode d'emploi du QCM, réécrit d'aprè le cadrage : le déroulé d'une séance, la note, la correction. Ne change ri »
+439. garde 1. c-autonomie-garde (de « pilot-correction-apres ») : l'infobulle de « 📺 Ouvrir vue tableau » n'est pas celle de l'existant — « Ouvre la vue tableau dans une NOUVELLE FENÊTRE (pas un onglet) que tu peux glisser sur l'écran qui projette. Utilise W+P » ; la scène dit « Ouvre la vue tableau, à glisser sur le vidéoprojecteur : l'énoncé et le chrono, jamai le choi. Ne change rien à la séanc »
+440. garde 1. c-autonomie-garde (de « pilot-correction-apres ») : l'infobulle de « 📱 QR pilotage » n'est pas celle de l'existant — « Affiche un QR code à scanner avec ton téléphone pour piloter la classe à distance (depuis le fond de la salle par exempl » ; la scène dit « Montre le QR de ton téléphone : ɸ devient ta télécommande, avec tou le bouton de la séance. Ne change rien. »
+441. garde 1. c-autonomie-garde (de « pilot-correction-apres ») : l'infobulle de « ← Question précédente » n'est pas celle de l'existant — « Revenir à la question précédente dans l'ordre de correction (utile si tu veux retraiter une question avec la classe). » ; la scène dit « C'est la première question corrigée : ɸ n'y a pa de question précédente. »
+442. garde 1. c-autonomie-garde (de « pilot-correction-apres ») : l'infobulle de « Question suivante → » n'est pas celle de l'existant — « Passer à la question suivante dans l'ordre trié par taux d'erreur. » ; la scène dit « Passe à la question suivante : chacun lit d'abord la feuille de son voisin. »
+443. garde 1. c-autonomie-garde (de « pilot-correction-apres ») : infobulle « Position dans l'ordre de correction (trié par taux d'erreur décroissant). Q10 est la 1e question révélée. » perdu
+444. garde 1. c-autonomie-garde (de « pilot-correction-apres ») : infobulle « Niveau de la question (info indicative pendant la correction). » perdu
+445. garde 1. c-autonomie-garde (de « pilot-correction-apres ») : infobulle « Taux de réussite de la classe sur cette question. Sert au tri par difficulté. » perdu
+446. garde 2. c-autonomie-garde : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+447. garde 1. c-autonomie-retiree : rien de « pilot-correction-apres » ne se perd — 8 perte(s)
+448. garde 1. c-autonomie-retiree (de « pilot-correction-apres ») : l'infobulle de « 📖 Mode d'emploi » n'est pas celle de l'existant — « Ouvre le mode d'emploi avec toutes les explications de l'app. » ; la scène dit « Ouvre le mode d'emploi du QCM, réécrit d'aprè le cadrage : le déroulé d'une séance, la note, la correction. Ne change ri »
+449. garde 1. c-autonomie-retiree (de « pilot-correction-apres ») : l'infobulle de « 📺 Ouvrir vue tableau » n'est pas celle de l'existant — « Ouvre la vue tableau dans une NOUVELLE FENÊTRE (pas un onglet) que tu peux glisser sur l'écran qui projette. Utilise W+P » ; la scène dit « Ouvre la vue tableau, à glisser sur le vidéoprojecteur : l'énoncé et le chrono, jamai le choi. Ne change rien à la séanc »
+450. garde 1. c-autonomie-retiree (de « pilot-correction-apres ») : l'infobulle de « 📱 QR pilotage » n'est pas celle de l'existant — « Affiche un QR code à scanner avec ton téléphone pour piloter la classe à distance (depuis le fond de la salle par exempl » ; la scène dit « Montre le QR de ton téléphone : ɸ devient ta télécommande, avec tou le bouton de la séance. Ne change rien. »
+451. garde 1. c-autonomie-retiree (de « pilot-correction-apres ») : l'infobulle de « ← Question précédente » n'est pas celle de l'existant — « Revenir à la question précédente dans l'ordre de correction (utile si tu veux retraiter une question avec la classe). » ; la scène dit « C'est la première question corrigée : ɸ n'y a pa de question précédente. »
+452. garde 1. c-autonomie-retiree (de « pilot-correction-apres ») : l'infobulle de « Question suivante → » n'est pas celle de l'existant — « Passer à la question suivante dans l'ordre trié par taux d'erreur. » ; la scène dit « Passe à la question suivante : chacun lit d'abord la feuille de son voisin. »
+453. garde 1. c-autonomie-retiree (de « pilot-correction-apres ») : infobulle « Position dans l'ordre de correction (trié par taux d'erreur décroissant). Q10 est la 1e question révélée. » perdu
+454. garde 1. c-autonomie-retiree (de « pilot-correction-apres ») : infobulle « Niveau de la question (info indicative pendant la correction). » perdu
+455. garde 1. c-autonomie-retiree (de « pilot-correction-apres ») : infobulle « Taux de réussite de la classe sur cette question. Sert au tri par difficulté. » perdu
+456. garde 2. c-autonomie-retiree : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+457. garde 1. p-autonomie : rien de « telephone-correction-apres » ne se perd — 11 perte(s)
+458. garde 1. p-autonomie (de « telephone-correction-apres ») : infobulle « Aperçu de la classe par question. Vert = >75% bonnes, Bleu = >50%, Orange = >25%, Rouge = <25%. Les rouges sortiront en premier à la correction. » perdu
+459. garde 1. p-autonomie (de « telephone-correction-apres ») : infobulle « Q1 — pas de réponse » perdu
+460. garde 1. p-autonomie (de « telephone-correction-apres ») : infobulle « Q2 — pas de réponse » perdu
+461. garde 1. p-autonomie (de « telephone-correction-apres ») : infobulle « Q3 — pas de réponse » perdu
+462. garde 1. p-autonomie (de « telephone-correction-apres ») : infobulle « Q4 — pas de réponse » perdu
+463. garde 1. p-autonomie (de « telephone-correction-apres ») : infobulle « Q5 — pas de réponse » perdu
+464. garde 1. p-autonomie (de « telephone-correction-apres ») : infobulle « Q6 — pas de réponse » perdu
+465. garde 1. p-autonomie (de « telephone-correction-apres ») : infobulle « Q7 — pas de réponse » perdu
+466. garde 1. p-autonomie (de « telephone-correction-apres ») : infobulle « Q8 — pas de réponse » perdu
+467. garde 1. p-autonomie (de « telephone-correction-apres ») : infobulle « Q9 — pas de réponse » perdu
+468. garde 1. p-autonomie (de « telephone-correction-apres ») : infobulle « Q10 — pas de réponse » perdu
+469. garde 2. c-coeval-attente : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+470. garde 2. c-coeval-feuille : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+471. garde 2. c-autonomie-michel : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+472. garde 2. c-autonomie-julien : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+473. garde 2. c-autonomie-deux : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+474. garde 2. c-coeval-retire-michel : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+475. garde 2. c-coeval-retire-julien : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+476. garde 2. c-coeval-retire-deux : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+477. garde 2. c-coeval-tranche : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+478. garde 2. x610-8-console-alerte : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+479. garde 2. x610-feuille : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+480. garde 2. x610-autonomie-michel : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+481. garde 2. x610-autonomie-julien : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+482. garde 2. x610-autonomie-deux : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+483. garde 2. x610-tranche : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+484. garde 1. t-bilan : rien de « eleve-bilan » ne se perd — 2 perte(s)
+485. garde 1. t-bilan (de « eleve-bilan ») : l'infobulle de « 📄 Imprimer / Exporter mon bilan » n'est pas celle de l'existant — « Ouvre une version imprimable de ton bilan (format copie corrigée), que tu peux imprimer ou montrer à tes parents. » ; la scène dit « rien »
+486. garde 1. t-bilan (de « eleve-bilan ») : bouton « 📊 Mes évaluations » perdu
+487. garde 5. t-bilan : DUVERNAY Michel — le bloc « 🎯 Ton estimation » dit « un peu surestimé » ; l'écart de niveaux veut « nettement » (com632.js) — « Tu pensais avoir 3 bonnes réponses 🟢 mais tu en as eu 1 sur 3 (1 bonne réponse 🟠). Tu as un peu surestimé ce… »
+488. garde 1. t-bilan-annulee : rien de « eleve-bilan » ne se perd — 2 perte(s)
+489. garde 1. t-bilan-annulee (de « eleve-bilan ») : l'infobulle de « 📄 Imprimer / Exporter mon bilan » n'est pas celle de l'existant — « Ouvre une version imprimable de ton bilan (format copie corrigée), que tu peux imprimer ou montrer à tes parents. » ; la scène dit « rien »
+490. garde 1. t-bilan-annulee (de « eleve-bilan ») : bouton « 📊 Mes évaluations » perdu
+491. garde 1. t-bilan-non-atteinte : rien de « eleve-bilan » ne se perd — 2 perte(s)
+492. garde 1. t-bilan-non-atteinte (de « eleve-bilan ») : l'infobulle de « 📄 Imprimer / Exporter mon bilan » n'est pas celle de l'existant — « Ouvre une version imprimable de ton bilan (format copie corrigée), que tu peux imprimer ou montrer à tes parents. » ; la scène dit « rien »
+493. garde 1. t-bilan-non-atteinte (de « eleve-bilan ») : bouton « 📊 Mes évaluations » perdu
+494. garde 5. t-bilan-non-atteinte : DUVERNAY Michel — le bloc « 🎯 Ton estimation » dit « un peu surestimé » ; l'écart de niveaux veut « nettement » (com632.js) — « Tu pensais avoir 3 bonnes réponses 🟢 mais tu en as eu 1 sur 3 (1 bonne réponse 🟠). Tu as un peu surestimé ce… »
+495. garde 1. c-bilan : rien de « pilot-bilan » ne se perd — 3 perte(s)
+496. garde 1. c-bilan (de « pilot-bilan ») : l'infobulle de « 📖 Mode d'emploi » n'est pas celle de l'existant — « Ouvre le mode d'emploi avec toutes les explications de l'app. » ; la scène dit « Ouvre le mode d'emploi du QCM, réécrit d'aprè le cadrage : le déroulé d'une séance, la note, la correction. Ne change ri »
+497. garde 1. c-bilan (de « pilot-bilan ») : l'infobulle de « 📺 Ouvrir vue tableau » n'est pas celle de l'existant — « Ouvre la vue tableau dans une NOUVELLE FENÊTRE (pas un onglet) que tu peux glisser sur l'écran qui projette. Utilise W+P » ; la scène dit « Ouvre la vue tableau, à glisser sur le vidéoprojecteur : l'énoncé et le chrono, jamai le choi. Ne change rien à la séanc »
+498. garde 1. c-bilan (de « pilot-bilan ») : l'infobulle de « 📱 QR pilotage » n'est pas celle de l'existant — « Affiche un QR code à scanner avec ton téléphone pour piloter la classe à distance (depuis le fond de la salle par exempl » ; la scène dit « Montre le QR de ton téléphone : ɸ devient ta télécommande, avec tou le bouton de la séance. Ne change rien. »
+499. garde 2. c-bilan : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+500. garde 1. c-papier-lancer : rien de « console-lancer » ne se perd — 3 perte(s)
+501. garde 1. c-papier-lancer (de « console-lancer ») : l'infobulle de « 📖 Mode d'emploi » n'est pas celle de l'existant — « Ouvre le mode d'emploi avec toutes les explications de l'app. » ; la scène dit « Ouvre le mode d'emploi du QCM, réécrit d'aprè le cadrage : le déroulé d'une séance, la note, la correction. Ne change ri »
+502. garde 1. c-papier-lancer (de « console-lancer ») : l'infobulle de « 📺 Ouvrir vue tableau » n'est pas celle de l'existant — « Ouvre la vue tableau dans une NOUVELLE FENÊTRE (pas un onglet) que tu peux glisser sur l'écran qui projette. Utilise W+P » ; la scène dit « Ouvre la vue tableau, à glisser sur le vidéoprojecteur : l'énoncé et le chrono, jamai le choi. Ne change rien à la séanc »
+503. garde 1. c-papier-lancer (de « console-lancer ») : l'infobulle de « 📱 QR pilotage » n'est pas celle de l'existant — « Affiche un QR code à scanner avec ton téléphone pour piloter la classe à distance (depuis le fond de la salle par exempl » ; la scène dit « Montre le QR de ton téléphone : ɸ devient ta télécommande, avec tou le bouton de la séance. Ne change rien. »
+504. garde 2. c-papier-lancer : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+505. garde 2. c-papier-seance : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+506. garde 2. c-papier-grille : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+507. garde 2. c-papier-reprendre : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+508. garde 1. t-papier-estim : rien de « eleve-autoeval » ne se perd — 1 perte(s)
+509. garde 1. t-papier-estim (de « eleve-autoeval ») : bouton « 📊 Mes évaluations » perdu
+510. garde 2. c-papier-correction : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+511. garde 1. c-seances : rien de « donnees-resultats » ne se perd — 3 perte(s)
+512. garde 1. c-seances (de « donnees-resultats ») : l'infobulle de « 📖 Mode d'emploi » n'est pas celle de l'existant — « Ouvre le mode d'emploi avec toutes les explications de l'app. » ; la scène dit « Ouvre le mode d'emploi du QCM, réécrit d'aprè le cadrage : le déroulé d'une séance, la note, la correction. Ne change ri »
+513. garde 1. c-seances (de « donnees-resultats ») : l'infobulle de « 📺 Ouvrir vue tableau » n'est pas celle de l'existant — « Ouvre la vue tableau dans une NOUVELLE FENÊTRE (pas un onglet) que tu peux glisser sur l'écran qui projette. Utilise W+P » ; la scène dit « Ouvre la vue tableau, à glisser sur le vidéoprojecteur : l'énoncé et le chrono, jamai le choi. Ne change rien à la séanc »
+514. garde 1. c-seances (de « donnees-resultats ») : l'infobulle de « 📱 QR pilotage » n'est pas celle de l'existant — « Affiche un QR code à scanner avec ton téléphone pour piloter la classe à distance (depuis le fond de la salle par exempl » ; la scène dit « Montre le QR de ton téléphone : ɸ devient ta télécommande, avec tou le bouton de la séance. Ne change rien. »
+515. garde 2. c-seances : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+516. garde 1. c-resultats : rien de « resultats-seance » ne se perd — 5 perte(s)
+517. garde 1. c-resultats (de « resultats-seance ») : l'infobulle de « 📖 Mode d'emploi » n'est pas celle de l'existant — « Ouvre le mode d'emploi avec toutes les explications de l'app. » ; la scène dit « Ouvre le mode d'emploi du QCM, réécrit d'aprè le cadrage : le déroulé d'une séance, la note, la correction. Ne change ri »
+518. garde 1. c-resultats (de « resultats-seance ») : l'infobulle de « 📺 Ouvrir vue tableau » n'est pas celle de l'existant — « Ouvre la vue tableau dans une NOUVELLE FENÊTRE (pas un onglet) que tu peux glisser sur l'écran qui projette. Utilise W+P » ; la scène dit « Ouvre la vue tableau, à glisser sur le vidéoprojecteur : l'énoncé et le chrono, jamai le choi. Ne change rien à la séanc »
+519. garde 1. c-resultats (de « resultats-seance ») : l'infobulle de « 📱 QR pilotage » n'est pas celle de l'existant — « Affiche un QR code à scanner avec ton téléphone pour piloter la classe à distance (depuis le fond de la salle par exempl » ; la scène dit « Montre le QR de ton téléphone : ɸ devient ta télécommande, avec tou le bouton de la séance. Ne change rien. »
+520. garde 1. c-resultats (de « resultats-seance ») : l'infobulle de « ← Retour » n'est pas celle de l'existant — « Retour à la liste des sessions. » ; la scène dit « Revient à l'écran précédent. Une séance en cour continue : ɸ se retrouve par « ◍ session en cour ». »
+521. garde 1. c-resultats (de « resultats-seance ») : infobulle « Cliquer pour trier par nom (asc/desc). Cliquer sur un nom d'élève dans le tableau ouvre son Student Report (drill-down). » perdu
+522. garde 2. c-resultats : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+523. garde 2. c-fiche : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+524. garde 2. c-fiche-garde : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+525. garde 2. c-fiche-retire : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+526. garde 2. c-que-dit-la-feuille : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+527. garde 1. c-seances-lues : rien de « donnees-resultats » ne se perd — 3 perte(s)
+528. garde 1. c-seances-lues (de « donnees-resultats ») : l'infobulle de « 📖 Mode d'emploi » n'est pas celle de l'existant — « Ouvre le mode d'emploi avec toutes les explications de l'app. » ; la scène dit « Ouvre le mode d'emploi du QCM, réécrit d'aprè le cadrage : le déroulé d'une séance, la note, la correction. Ne change ri »
+529. garde 1. c-seances-lues (de « donnees-resultats ») : l'infobulle de « 📺 Ouvrir vue tableau » n'est pas celle de l'existant — « Ouvre la vue tableau dans une NOUVELLE FENÊTRE (pas un onglet) que tu peux glisser sur l'écran qui projette. Utilise W+P » ; la scène dit « Ouvre la vue tableau, à glisser sur le vidéoprojecteur : l'énoncé et le chrono, jamai le choi. Ne change rien à la séanc »
+530. garde 1. c-seances-lues (de « donnees-resultats ») : l'infobulle de « 📱 QR pilotage » n'est pas celle de l'existant — « Affiche un QR code à scanner avec ton téléphone pour piloter la classe à distance (depuis le fond de la salle par exempl » ; la scène dit « Montre le QR de ton téléphone : ɸ devient ta télécommande, avec tou le bouton de la séance. Ne change rien. »
+531. garde 2. c-seances-lues : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+532. garde 1. c-rendre : rien de « donnees-resultats » ne se perd — 3 perte(s)
+533. garde 1. c-rendre (de « donnees-resultats ») : l'infobulle de « 📖 Mode d'emploi » n'est pas celle de l'existant — « Ouvre le mode d'emploi avec toutes les explications de l'app. » ; la scène dit « Ouvre le mode d'emploi du QCM, réécrit d'aprè le cadrage : le déroulé d'une séance, la note, la correction. Ne change ri »
+534. garde 1. c-rendre (de « donnees-resultats ») : l'infobulle de « 📺 Ouvrir vue tableau » n'est pas celle de l'existant — « Ouvre la vue tableau dans une NOUVELLE FENÊTRE (pas un onglet) que tu peux glisser sur l'écran qui projette. Utilise W+P » ; la scène dit « Ouvre la vue tableau, à glisser sur le vidéoprojecteur : l'énoncé et le chrono, jamai le choi. Ne change rien à la séanc »
+535. garde 1. c-rendre (de « donnees-resultats ») : l'infobulle de « 📱 QR pilotage » n'est pas celle de l'existant — « Affiche un QR code à scanner avec ton téléphone pour piloter la classe à distance (depuis le fond de la salle par exempl » ; la scène dit « Montre le QR de ton téléphone : ɸ devient ta télécommande, avec tou le bouton de la séance. Ne change rien. »
+536. garde 2. c-rendre : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+537. garde 1. c-copies-rendues : rien de « donnees-resultats » ne se perd — 3 perte(s)
+538. garde 1. c-copies-rendues (de « donnees-resultats ») : l'infobulle de « 📖 Mode d'emploi » n'est pas celle de l'existant — « Ouvre le mode d'emploi avec toutes les explications de l'app. » ; la scène dit « Ouvre le mode d'emploi du QCM, réécrit d'aprè le cadrage : le déroulé d'une séance, la note, la correction. Ne change ri »
+539. garde 1. c-copies-rendues (de « donnees-resultats ») : l'infobulle de « 📺 Ouvrir vue tableau » n'est pas celle de l'existant — « Ouvre la vue tableau dans une NOUVELLE FENÊTRE (pas un onglet) que tu peux glisser sur l'écran qui projette. Utilise W+P » ; la scène dit « Ouvre la vue tableau, à glisser sur le vidéoprojecteur : l'énoncé et le chrono, jamai le choi. Ne change rien à la séanc »
+540. garde 1. c-copies-rendues (de « donnees-resultats ») : l'infobulle de « 📱 QR pilotage » n'est pas celle de l'existant — « Affiche un QR code à scanner avec ton téléphone pour piloter la classe à distance (depuis le fond de la salle par exempl » ; la scène dit « Montre le QR de ton téléphone : ɸ devient ta télécommande, avec tou le bouton de la séance. Ne change rien. »
+541. garde 2. c-copies-rendues : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+542. garde 1. c-resultats-rendues : rien de « resultats-seance » ne se perd — 5 perte(s)
+543. garde 1. c-resultats-rendues (de « resultats-seance ») : l'infobulle de « 📖 Mode d'emploi » n'est pas celle de l'existant — « Ouvre le mode d'emploi avec toutes les explications de l'app. » ; la scène dit « Ouvre le mode d'emploi du QCM, réécrit d'aprè le cadrage : le déroulé d'une séance, la note, la correction. Ne change ri »
+544. garde 1. c-resultats-rendues (de « resultats-seance ») : l'infobulle de « 📺 Ouvrir vue tableau » n'est pas celle de l'existant — « Ouvre la vue tableau dans une NOUVELLE FENÊTRE (pas un onglet) que tu peux glisser sur l'écran qui projette. Utilise W+P » ; la scène dit « Ouvre la vue tableau, à glisser sur le vidéoprojecteur : l'énoncé et le chrono, jamai le choi. Ne change rien à la séanc »
+545. garde 1. c-resultats-rendues (de « resultats-seance ») : l'infobulle de « 📱 QR pilotage » n'est pas celle de l'existant — « Affiche un QR code à scanner avec ton téléphone pour piloter la classe à distance (depuis le fond de la salle par exempl » ; la scène dit « Montre le QR de ton téléphone : ɸ devient ta télécommande, avec tou le bouton de la séance. Ne change rien. »
+546. garde 1. c-resultats-rendues (de « resultats-seance ») : l'infobulle de « ← Retour » n'est pas celle de l'existant — « Retour à la liste des sessions. » ; la scène dit « Revient à l'écran précédent. Une séance en cour continue : ɸ se retrouve par « ◍ session en cour ». »
+547. garde 1. c-resultats-rendues (de « resultats-seance ») : infobulle « Cliquer pour trier par nom (asc/desc). Cliquer sur un nom d'élève dans le tableau ouvre son Student Report (drill-down). » perdu
+548. garde 2. c-resultats-rendues : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+549. garde 2. x632-pdf : « maquette » dans l'iframe, texte — « …Exemple de la maquette.… »
+550. garde 2. x632-pdf : « pas encore validé » dans l'iframe, texte — « …ointillés orange : une phrase proposée, pas encore validée par toi. Le reste vient mot pou… »
+551. garde 2. x632-pdf : « souligné en pointillés » dans l'iframe, texte — « …Dans les commentaires, souligné en pointillés orange : une phrase proposé… »
+552. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « dire ce qui peut être un antécédent »
+553. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « dire que faire du « et » entre deux relatives coor »
+554. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « employer un pronom relatif composé »
+555. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « Bravo, tu sais »
+556. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « trouver l'antécédent d'un pronom relatif »
+557. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « écrire une phrase DPP + PSR + FPP »
+558. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « Pour cette évaluation, deux compétences ne sont pa »
+559. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « était trop haute : »
+560. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « Bravo, tu sais »
+561. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « trouver l'architecture d'une phrase complexe »
+562. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « trouver l'antécédent d'un pronom relatif »
+563. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « écrire une phrase P.I : P.P + PSR »
+564. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « dire ce qui peut être un antécédent »
+565. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « dire que faire du « et » entre deux relatives coor »
+566. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « employer un pronom relatif composé »
+567. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « était trop haute : »
+568. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « dire quand la principale se coupe en deux (DPP et  »
+569. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « écrire une phrase P.P + PSR 1 + PSR 2 »
+570. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « dire ce qui peut être un antécédent »
+571. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « Bravo, tu sais »
+572. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « trouver l'antécédent d'un pronom relatif »
+573. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « était trop basse : »
+574. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « écrire une phrase P.P + PSR 1 + PSR 2 »
+575. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « trouver l'antécédent d'un pronom relatif »
+576. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « écrire une phrase DPP + PSR + FPP »
+577. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « Bravo, tu sais »
+578. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « employer un pronom relatif composé »
+579. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « dire que faire du « et » entre deux relatives coor »
+580. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « dire ce qui peut être un antécédent »
+581. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « employer un pronom relatif composé »
+582. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « trouver l'antécédent d'un pronom relatif »
+583. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « Bravo, tu sais »
+584. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « écrire une phrase P.I : P.P + PSR »
+585. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « dire que faire du « et » entre deux relatives coor »
+586. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « Pour cette évaluation, deux compétences ne sont pa »
+587. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « était trop haute : »
+588. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « Bravo, tu sais »
+589. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « trouver l'architecture d'une phrase complexe »
+590. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « écrire une phrase P.I : P.P + PSR »
+591. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « était trop basse : »
+592. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « trouver l'antécédent d'un pronom relatif »
+593. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « écrire une phrase P.I : P.P + PSR »
+594. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « trouver l'architecture d'une phrase complexe »
+595. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « Bravo, tu sais »
+596. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « écrire une phrase DPP + PSR + FPP »
+597. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « employer un pronom relatif composé »
+598. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « Bravo, tu sais »
+599. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « trouver l'antécédent d'un pronom relatif »
+600. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « écrire une phrase DPP + PSR + FPP »
+601. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « écrire une phrase P.I : P.P + PSR »
+602. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « trouver l'architecture d'une phrase complexe »
+603. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « écrire une phrase P.P + PSR 1 + PSR 2 »
+604. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « dire ce qui peut être un antécédent »
+605. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « dire que faire du « et » entre deux relatives coor »
+606. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « Bravo, tu sais »
+607. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « trouver l'architecture d'une phrase complexe »
+608. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « écrire une phrase P.I : P.P + PSR »
+609. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « écrire une phrase DPP + PSR + FPP »
+610. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « Évaluation difficile. Reprends les notions essenti »
+611. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « séparer une principale d'une indépendante par le b »
+612. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « dire quand la principale se coupe en deux (DPP et  »
+613. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « dire ce qui peut être un antécédent »
+614. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « était trop haute : »
+615. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « Bravo, tu sais »
+616. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « écrire une phrase P.I : P.P + PSR »
+617. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « trouver l'antécédent d'un pronom relatif »
+618. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « trouver l'architecture d'une phrase complexe »
+619. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « écrire une phrase P.P + PSR 1 + PSR 2 »
+620. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « dire ce qui peut être un antécédent »
+621. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « trouver l'antécédent d'un pronom relatif »
+622. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « Bravo, tu sais »
+623. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « dire que faire du « et » entre deux relatives coor »
+624. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « Bravo, tu sais »
+625. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « trouver l'architecture d'une phrase complexe »
+626. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « écrire une phrase DPP + PSR + FPP »
+627. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « trouver l'antécédent d'un pronom relatif »
+628. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « écrire une phrase P.I : P.P + PSR »
+629. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « était trop basse : »
+630. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « Évaluation difficile. Reprends les notions essenti »
+631. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « compter les verbes conjugués d'une phrase complexe »
+632. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « dire quand la principale se coupe en deux (DPP et  »
+633. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « écrire une phrase P.P + PSR 1 + PSR 2 »
+634. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « était bien trop haute : tu as nettement surestimé  »
+635. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « employer un pronom relatif composé »
+636. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « écrire une phrase P.I : P.P + PSR »
+637. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « trouver l'architecture d'une phrase complexe »
+638. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « Bravo, tu sais »
+639. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « trouver l'antécédent d'un pronom relatif »
+640. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « écrire une phrase DPP + PSR + FPP »
+641. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « était trop haute : »
+642. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « dire ce qui peut être un antécédent »
+643. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « dire que faire du « et » entre deux relatives coor »
+644. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « employer un pronom relatif composé »
+645. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « Bravo, tu sais »
+646. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « trouver l'architecture d'une phrase complexe »
+647. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « écrire une phrase P.I : P.P + PSR »
+648. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « dire ce qui peut être un antécédent »
+649. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « dire que faire du « et » entre deux relatives coor »
+650. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « employer un pronom relatif composé »
+651. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « Bravo, tu sais »
+652. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « trouver l'antécédent d'un pronom relatif »
+653. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « était trop haute : »
+654. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « écrire une phrase P.P + PSR 1 + PSR 2 »
+655. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « dire ce qui peut être un antécédent »
+656. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « dire que faire du « et » entre deux relatives coor »
+657. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « était trop basse : »
+658. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « dire que faire du « et » entre deux relatives coor »
+659. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « trouver l'antécédent d'un pronom relatif »
+660. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « écrire une phrase DPP + PSR + FPP »
+661. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « Bravo, tu sais »
+662. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « employer un pronom relatif composé »
+663. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « Bravo, tu sais »
+664. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « écrire une phrase P.I : P.P + PSR »
+665. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « trouver l'antécédent d'un pronom relatif »
+666. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « trouver l'architecture d'une phrase complexe »
+667. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « dire que faire du « et » entre deux relatives coor »
+668. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « employer un pronom relatif composé »
+669. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « trouver l'antécédent d'un pronom relatif »
+670. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « Bravo, tu sais »
+671. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « écrire une phrase DPP + PSR + FPP »
+672. garde 2. x632-pdf : une marque de validation (souligné orange en pointillés, .prov) visible — iframe : .prov « était trop basse : »
+673. garde 1. c-corbeille : rien de « donnees-resultats » ne se perd — 3 perte(s)
+674. garde 1. c-corbeille (de « donnees-resultats ») : l'infobulle de « 📖 Mode d'emploi » n'est pas celle de l'existant — « Ouvre le mode d'emploi avec toutes les explications de l'app. » ; la scène dit « Ouvre le mode d'emploi du QCM, réécrit d'aprè le cadrage : le déroulé d'une séance, la note, la correction. Ne change ri »
+675. garde 1. c-corbeille (de « donnees-resultats ») : l'infobulle de « 📺 Ouvrir vue tableau » n'est pas celle de l'existant — « Ouvre la vue tableau dans une NOUVELLE FENÊTRE (pas un onglet) que tu peux glisser sur l'écran qui projette. Utilise W+P » ; la scène dit « Ouvre la vue tableau, à glisser sur le vidéoprojecteur : l'énoncé et le chrono, jamai le choi. Ne change rien à la séanc »
+676. garde 1. c-corbeille (de « donnees-resultats ») : l'infobulle de « 📱 QR pilotage » n'est pas celle de l'existant — « Affiche un QR code à scanner avec ton téléphone pour piloter la classe à distance (depuis le fond de la salle par exempl » ; la scène dit « Montre le QR de ton téléphone : ɸ devient ta télécommande, avec tou le bouton de la séance. Ne change rien. »
+677. garde 2. c-corbeille : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+678. garde 1. c-sauvegarde : rien de « sauvegarde » ne se perd — 5 perte(s)
+679. garde 1. c-sauvegarde (de « sauvegarde ») : l'infobulle de « 📖 Mode d'emploi » n'est pas celle de l'existant — « Ouvre le mode d'emploi avec toutes les explications de l'app. » ; la scène dit « Ouvre le mode d'emploi du QCM, réécrit d'aprè le cadrage : le déroulé d'une séance, la note, la correction. Ne change ri »
+680. garde 1. c-sauvegarde (de « sauvegarde ») : l'infobulle de « 📺 Ouvrir vue tableau » n'est pas celle de l'existant — « Ouvre la vue tableau dans une NOUVELLE FENÊTRE (pas un onglet) que tu peux glisser sur l'écran qui projette. Utilise W+P » ; la scène dit « Ouvre la vue tableau, à glisser sur le vidéoprojecteur : l'énoncé et le chrono, jamai le choi. Ne change rien à la séanc »
+681. garde 1. c-sauvegarde (de « sauvegarde ») : l'infobulle de « 📱 QR pilotage » n'est pas celle de l'existant — « Affiche un QR code à scanner avec ton téléphone pour piloter la classe à distance (depuis le fond de la salle par exempl » ; la scène dit « Montre le QR de ton téléphone : ɸ devient ta télécommande, avec tou le bouton de la séance. Ne change rien. »
+682. garde 1. c-sauvegarde (de « sauvegarde ») : l'infobulle de « 📥 Exporter snapshot » n'est pas celle de l'existant — « Télécharge un fichier JSON contenant l'intégralité des données. À garder précieusement. » ; la scène dit « Télécharge tout le QCM dan un fichier, à garder. »
+683. garde 1. c-sauvegarde (de « sauvegarde ») : l'infobulle de « 🧹 Nettoyer les sessions zombies » n'est pas celle de l'existant — « Détecte et nettoie les sessions « zombies » : entrées sessionActive qui pointent vers une session inexistante, classe di » ; la scène dit « Ferme le session restée active par erreur ; une séance en cour n'est pa touchée. »
+684. garde 2. c-sauvegarde : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+685. garde 1. c-importer : rien de « sauvegarde » ne se perd — 5 perte(s)
+686. garde 1. c-importer (de « sauvegarde ») : l'infobulle de « 📖 Mode d'emploi » n'est pas celle de l'existant — « Ouvre le mode d'emploi avec toutes les explications de l'app. » ; la scène dit « Ouvre le mode d'emploi du QCM, réécrit d'aprè le cadrage : le déroulé d'une séance, la note, la correction. Ne change ri »
+687. garde 1. c-importer (de « sauvegarde ») : l'infobulle de « 📺 Ouvrir vue tableau » n'est pas celle de l'existant — « Ouvre la vue tableau dans une NOUVELLE FENÊTRE (pas un onglet) que tu peux glisser sur l'écran qui projette. Utilise W+P » ; la scène dit « Ouvre la vue tableau, à glisser sur le vidéoprojecteur : l'énoncé et le chrono, jamai le choi. Ne change rien à la séanc »
+688. garde 1. c-importer (de « sauvegarde ») : l'infobulle de « 📱 QR pilotage » n'est pas celle de l'existant — « Affiche un QR code à scanner avec ton téléphone pour piloter la classe à distance (depuis le fond de la salle par exempl » ; la scène dit « Montre le QR de ton téléphone : ɸ devient ta télécommande, avec tou le bouton de la séance. Ne change rien. »
+689. garde 1. c-importer (de « sauvegarde ») : l'infobulle de « 📥 Exporter snapshot » n'est pas celle de l'existant — « Télécharge un fichier JSON contenant l'intégralité des données. À garder précieusement. » ; la scène dit « Télécharge tout le QCM dan un fichier, à garder. »
+690. garde 1. c-importer (de « sauvegarde ») : l'infobulle de « 🧹 Nettoyer les sessions zombies » n'est pas celle de l'existant — « Détecte et nettoie les sessions « zombies » : entrées sessionActive qui pointent vers une session inexistante, classe di » ; la scène dit « Ferme le session restée active par erreur ; une séance en cour n'est pa touchée. »
+691. garde 2. c-importer : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+692. garde 1. c-purger : rien de « sauvegarde » ne se perd — 5 perte(s)
+693. garde 1. c-purger (de « sauvegarde ») : l'infobulle de « 📖 Mode d'emploi » n'est pas celle de l'existant — « Ouvre le mode d'emploi avec toutes les explications de l'app. » ; la scène dit « Ouvre le mode d'emploi du QCM, réécrit d'aprè le cadrage : le déroulé d'une séance, la note, la correction. Ne change ri »
+694. garde 1. c-purger (de « sauvegarde ») : l'infobulle de « 📺 Ouvrir vue tableau » n'est pas celle de l'existant — « Ouvre la vue tableau dans une NOUVELLE FENÊTRE (pas un onglet) que tu peux glisser sur l'écran qui projette. Utilise W+P » ; la scène dit « Ouvre la vue tableau, à glisser sur le vidéoprojecteur : l'énoncé et le chrono, jamai le choi. Ne change rien à la séanc »
+695. garde 1. c-purger (de « sauvegarde ») : l'infobulle de « 📱 QR pilotage » n'est pas celle de l'existant — « Affiche un QR code à scanner avec ton téléphone pour piloter la classe à distance (depuis le fond de la salle par exempl » ; la scène dit « Montre le QR de ton téléphone : ɸ devient ta télécommande, avec tou le bouton de la séance. Ne change rien. »
+696. garde 1. c-purger (de « sauvegarde ») : l'infobulle de « 📥 Exporter snapshot » n'est pas celle de l'existant — « Télécharge un fichier JSON contenant l'intégralité des données. À garder précieusement. » ; la scène dit « Télécharge tout le QCM dan un fichier, à garder. »
+697. garde 1. c-purger (de « sauvegarde ») : l'infobulle de « 🧹 Nettoyer les sessions zombies » n'est pas celle de l'existant — « Détecte et nettoie les sessions « zombies » : entrées sessionActive qui pointent vers une session inexistante, classe di » ; la scène dit « Ferme le session restée active par erreur ; une séance en cour n'est pa touchée. »
+698. garde 2. c-purger : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+699. garde 1. c-reglages : rien de « reglages » ne se perd — 3 perte(s)
+700. garde 1. c-reglages (de « reglages ») : l'infobulle de « 📖 Mode d'emploi » n'est pas celle de l'existant — « Ouvre le mode d'emploi avec toutes les explications de l'app. » ; la scène dit « Ouvre le mode d'emploi du QCM, réécrit d'aprè le cadrage : le déroulé d'une séance, la note, la correction. Ne change ri »
+701. garde 1. c-reglages (de « reglages ») : l'infobulle de « 📺 Ouvrir vue tableau » n'est pas celle de l'existant — « Ouvre la vue tableau dans une NOUVELLE FENÊTRE (pas un onglet) que tu peux glisser sur l'écran qui projette. Utilise W+P » ; la scène dit « Ouvre la vue tableau, à glisser sur le vidéoprojecteur : l'énoncé et le chrono, jamai le choi. Ne change rien à la séanc »
+702. garde 1. c-reglages (de « reglages ») : l'infobulle de « 📱 QR pilotage » n'est pas celle de l'existant — « Affiche un QR code à scanner avec ton téléphone pour piloter la classe à distance (depuis le fond de la salle par exempl » ; la scène dit « Montre le QR de ton téléphone : ɸ devient ta télécommande, avec tou le bouton de la séance. Ne change rien. »
+703. garde 2. c-reglages : « tour N » dans texte — « …Le prompt du cadrage (tour 630). Il ne devine jamais un temps : il te de… »
+704. garde 2. c-reglages : « cadrage » dans texte — « …Le prompt du cadrage (tour 630). Il ne devine jamais un temps :… »
+705. garde 2. c-reglages : un nombre entre parenthèses (340) dans texte — « …e 6 » : aucune note ne tombe entre deux (340).… »
+706. garde 2. c-reglages : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+707. garde 2. c-reglages : « tour N » dans infobulle — « …Remet le prompt du cadrage (tour 630) à la place du tien. Une confirmation d'a… »
+708. garde 2. c-reglages : « cadrage » dans infobulle — « …Remet le prompt du cadrage (tour 630) à la place du tien. Une confirm… »
+709. garde 1. c-reglages-prompt : rien de « prompt-ia » ne se perd — 2 perte(s)
+710. garde 1. c-reglages-prompt (de « prompt-ia ») : l'infobulle de « 📋 Copier le prompt » n'est pas celle de l'existant — « Copie le prompt actuel dans le presse-papiers. » ; la scène dit « Copie le prompt, avec ton chapitre, se compétence et le limite de longueur, pour le coller dan l'instance de création d' »
+711. garde 1. c-reglages-prompt (de « prompt-ia ») : l'infobulle de « ✏️ Modifier le prompt » n'est pas celle de l'existant — « Ouvre l'éditeur pour modifier le prompt. Les modifications sont enregistrées dans Firebase et réutilisées la prochaine f » ; la scène dit « Ouvre le prompt pour le modifier. Rien n'est gardé avant « 💾 Enregistrer ». »
+712. garde 1. c-reglages-prompt : rien de « reglages » ne se perd — 3 perte(s)
+713. garde 1. c-reglages-prompt (de « reglages ») : l'infobulle de « 📖 Mode d'emploi » n'est pas celle de l'existant — « Ouvre le mode d'emploi avec toutes les explications de l'app. » ; la scène dit « Ouvre le mode d'emploi du QCM, réécrit d'aprè le cadrage : le déroulé d'une séance, la note, la correction. Ne change ri »
+714. garde 1. c-reglages-prompt (de « reglages ») : l'infobulle de « 📺 Ouvrir vue tableau » n'est pas celle de l'existant — « Ouvre la vue tableau dans une NOUVELLE FENÊTRE (pas un onglet) que tu peux glisser sur l'écran qui projette. Utilise W+P » ; la scène dit « Ouvre la vue tableau, à glisser sur le vidéoprojecteur : l'énoncé et le chrono, jamai le choi. Ne change rien à la séanc »
+715. garde 1. c-reglages-prompt (de « reglages ») : l'infobulle de « 📱 QR pilotage » n'est pas celle de l'existant — « Affiche un QR code à scanner avec ton téléphone pour piloter la classe à distance (depuis le fond de la salle par exempl » ; la scène dit « Montre le QR de ton téléphone : ɸ devient ta télécommande, avec tou le bouton de la séance. Ne change rien. »
+716. garde 2. c-reglages-prompt : « tour N » dans texte — « …Le prompt du cadrage (tour 630). Il ne devine jamais un temps : il te de… »
+717. garde 2. c-reglages-prompt : « cadrage » dans texte — « …Le prompt du cadrage (tour 630). Il ne devine jamais un temps :… »
+718. garde 2. c-reglages-prompt : un nombre entre parenthèses (340) dans texte — « …e 6 » : aucune note ne tombe entre deux (340).… »
+719. garde 2. c-reglages-prompt : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+720. garde 2. c-reglages-prompt : « tour N » dans infobulle — « …Remet le prompt du cadrage (tour 630) à la place du tien. Une confirmation d'a… »
+721. garde 2. c-reglages-prompt : « cadrage » dans infobulle — « …Remet le prompt du cadrage (tour 630) à la place du tien. Une confirm… »
+722. garde 3. c-reglages-prompt : le prompt garde ses jetons non remplacés : {{CHAPITRE}} {{COMPETENCES_CHAPITRE}} {{DUREES}} {{LIMITES}} {{NIVEAUX}}
+723. garde 3. c-reglages-prompt : le prompt n'a pas la compétence « c4-lire-04 » du chapitre
+724. garde 3. c-reglages-prompt : le prompt n'a pas la compétence « c4-lire-01 » du chapitre
+725. garde 3. c-reglages-prompt : le prompt n'a pas la compétence « c4-lire-02 » du chapitre
+726. garde 3. c-reglages-prompt : le prompt n'a pas la compétence « c4-lire-03 » du chapitre
+727. garde 3. c-reglages-prompt : le prompt n'a pas la compétence « c4-culture-01 » du chapitre
+728. garde 3. c-reglages-prompt : le prompt n'a pas la compétence « c4-culture-02 » du chapitre
+729. garde 3. c-reglages-prompt : le prompt n'a pas la compétence « c4-langue-01 » du chapitre
+730. garde 3. c-reglages-prompt : le prompt n'a pas la compétence « c4-langue-04 » du chapitre
+731. garde 3. c-reglages-prompt : le prompt n'a pas la compétence « c4-ecrire-02 » du chapitre
+732. garde 3. c-reglages-prompt : le prompt n'a pas la compétence « c4-ecrire-03 » du chapitre
+733. garde 3. c-reglages-prompt : le prompt n'a pas la compétence « c4-oral-02 » du chapitre
+734. garde 3. c-reglages-prompt : le prompt n'a pas la compétence « c4-oral-04 » du chapitre
+735. garde 3. c-reglages-prompt : le prompt ne dit pas, pour {{DUREES}}, « 3 secondes de décompte » (649)
+736. garde 3. c-reglages-prompt : le prompt ne dit pas, pour {{DUREES}}, « 5 secondes où l'élève dit si sa feuille dit la même chose » (649)
+737. garde 3. c-reglages-prompt : le prompt ne dit pas, pour {{DUREES}}, « 15 secondes avant la question suivante » (649)
+738. garde 3. c-reglages-prompt : le prompt ne dit pas, pour {{DUREES}}, « 5 minutes d'installation et de consignes » (649)
+739. garde 3. c-reglages-prompt : le prompt ne dit pas, pour {{DUREES}}, « 1 minute de correction par question » (649)
+740. garde 3. c-reglages-prompt : le prompt ne dit pas, pour {{DUREES}}, « 2 minutes pour la co-évaluation et le bilan » (649)
+741. garde 3. c-reglages-prompt : mesures/limites.json ne donne pas le texte de {{LIMITES}}
+742. garde 1. m-classe-exclusions : rien de « eleves-codes » ne se perd — 23 perte(s)
+743. garde 1. m-classe-exclusions (de « eleves-codes ») : bouton « Oublier la clé sur cet appareil » perdu
+744. garde 1. m-classe-exclusions (de « eleves-codes ») : bouton « Où la clé est mémorisée » perdu
+745. garde 1. m-classe-exclusions (de « eleves-codes ») : bouton « Relancer la préparation » perdu
+746. garde 1. m-classe-exclusions (de « eleves-codes ») : bouton « Retirer les codes en clair » perdu
+747. garde 1. m-classe-exclusions (de « eleves-codes ») : bouton « Code professeur » perdu
+748. garde 1. m-classe-exclusions (de « eleves-codes ») : bouton « + Importer / compléter » perdu
+749. garde 1. m-classe-exclusions (de « eleves-codes ») : bouton « Générer # codes manquants » perdu
+750. garde 1. m-classe-exclusions (de « eleves-codes ») : bouton « 🖨 Imprimer » perdu
+751. garde 1. m-classe-exclusions (de « eleves-codes ») : bouton « Tout régénérer » perdu
+752. garde 1. m-classe-exclusions (de « eleves-codes ») : champ « Un élève par ligne 
+ex : DUPONT Marie » perdu
+753. garde 1. m-classe-exclusions (de « eleves-codes ») : infobulle « Dépose ou choisis le fichier de la classe : il est lu ici, dans ton navigateur. Rien n’est écrit tant que tu n’as pas validé l’aperçu. » perdu
+754. garde 1. m-classe-exclusions (de « eleves-codes ») : infobulle « Ouvre la fiche de l’élève : sexe, dispositif, cases PAP. Rien n’est écrit tant que tu n’enregistres pas. » perdu
+755. garde 1. m-classe-exclusions (de « eleves-codes ») : structure « secu-encart » perdu — la classe n'est pas dans la scène
+756. garde 1. m-classe-exclusions (de « eleves-codes ») : structure « eli-bloc » perdu — la classe n'est pas dans la scène
+757. garde 1. m-classe-exclusions (de « eleves-codes ») : structure « el-import » perdu — la classe n'est pas dans la scène
+758. garde 1. m-classe-exclusions (de « eleves-codes ») : structure « el-toolbar » perdu — la classe n'est pas dans la scène
+759. garde 1. m-classe-exclusions (de « eleves-codes ») : structure « elf-flag » perdu — la classe n'est pas dans la scène
+760. garde 1. m-classe-exclusions (de « eleves-codes ») : structure « el-acts » perdu — la classe n'est pas dans la scène
+761. garde 1. m-classe-exclusions (de « eleves-codes ») : phrase « 🔓 Codes déverrouillés sur cet appareil » perdu
+762. garde 1. m-classe-exclusions (de « eleves-codes ») : phrase « Importer la liste d’une classe » perdu
+763. garde 1. m-classe-exclusions (de « eleves-codes ») : phrase « Le fichier du logiciel de vie scolaire, tel quel — ou le tableau collé depuis Excel. Rien n’est envoyé ailleurs : le fichier est lu dans ce navigateur. » perdu
+764. garde 1. m-classe-exclusions (de « eleves-codes ») : phrase « Dépose ici le fichier .xlsx de la classe » perdu
+765. garde 1. m-classe-exclusions (de « eleves-codes ») : phrase « ou clique pour le choisir · ou colle le tableau (Ctrl + V) n’importe où sur cette page » perdu
+766. garde 1. m-classe-exclusions : rien de « panneau-menu » ne se perd — 15 perte(s)
+767. garde 1. m-classe-exclusions (de « panneau-menu ») : bouton « 🧪 Mode test » perdu
+768. garde 1. m-classe-exclusions (de « panneau-menu ») : bouton « 🏠Tableau de bord » perdu
+769. garde 1. m-classe-exclusions (de « panneau-menu ») : bouton « 🏫Classes » perdu
+770. garde 1. m-classe-exclusions (de « panneau-menu ») : bouton « 🧪Profil test » perdu
+771. garde 1. m-classe-exclusions (de « panneau-menu ») : bouton « 📂Architecture » perdu
+772. garde 1. m-classe-exclusions (de « panneau-menu ») : bouton « 📦Archives » perdu
+773. garde 1. m-classe-exclusions (de « panneau-menu ») : bouton « 🗑Corbeille » perdu
+774. garde 1. m-classe-exclusions (de « panneau-menu ») : bouton « 📢Annonces aux élèves » perdu
+775. garde 1. m-classe-exclusions (de « panneau-menu ») : bouton « 🎓Dates de l’année » perdu
+776. garde 1. m-classe-exclusions (de « panneau-menu ») : bouton « 📅Emploi du temps » perdu
+777. garde 1. m-classe-exclusions (de « panneau-menu ») : bouton « 🛠Atelier » perdu
+778. garde 1. m-classe-exclusions (de « panneau-menu ») : bouton « ⚙Configuration & Firebase » perdu
+779. garde 1. m-classe-exclusions (de « panneau-menu ») : bouton « 📡Présence live » perdu
+780. garde 1. m-classe-exclusions (de « panneau-menu ») : structure « tprof-overlay » perdu — la classe n'est pas dans la scène
+781. garde 1. m-classe-exclusions (de « panneau-menu ») : structure « ordre » perdu — l'ordre de l'existant n'est pas suivi : tprof-overlay › tprof-box › tprof-header › tprof-sidebar › tprof-sidebar-label › tprof-section-btn › tps-icon › tprof-content
+782. garde 1. m-exclusion-refusee : rien de « eleves-codes » ne se perd — 23 perte(s)
+783. garde 1. m-exclusion-refusee (de « eleves-codes ») : bouton « Oublier la clé sur cet appareil » perdu
+784. garde 1. m-exclusion-refusee (de « eleves-codes ») : bouton « Où la clé est mémorisée » perdu
+785. garde 1. m-exclusion-refusee (de « eleves-codes ») : bouton « Relancer la préparation » perdu
+786. garde 1. m-exclusion-refusee (de « eleves-codes ») : bouton « Retirer les codes en clair » perdu
+787. garde 1. m-exclusion-refusee (de « eleves-codes ») : bouton « Code professeur » perdu
+788. garde 1. m-exclusion-refusee (de « eleves-codes ») : bouton « + Importer / compléter » perdu
+789. garde 1. m-exclusion-refusee (de « eleves-codes ») : bouton « Générer # codes manquants » perdu
+790. garde 1. m-exclusion-refusee (de « eleves-codes ») : bouton « 🖨 Imprimer » perdu
+791. garde 1. m-exclusion-refusee (de « eleves-codes ») : bouton « Tout régénérer » perdu
+792. garde 1. m-exclusion-refusee (de « eleves-codes ») : champ « Un élève par ligne 
+ex : DUPONT Marie » perdu
+793. garde 1. m-exclusion-refusee (de « eleves-codes ») : infobulle « Dépose ou choisis le fichier de la classe : il est lu ici, dans ton navigateur. Rien n’est écrit tant que tu n’as pas validé l’aperçu. » perdu
+794. garde 1. m-exclusion-refusee (de « eleves-codes ») : infobulle « Ouvre la fiche de l’élève : sexe, dispositif, cases PAP. Rien n’est écrit tant que tu n’enregistres pas. » perdu
+795. garde 1. m-exclusion-refusee (de « eleves-codes ») : structure « secu-encart » perdu — la classe n'est pas dans la scène
+796. garde 1. m-exclusion-refusee (de « eleves-codes ») : structure « eli-bloc » perdu — la classe n'est pas dans la scène
+797. garde 1. m-exclusion-refusee (de « eleves-codes ») : structure « el-import » perdu — la classe n'est pas dans la scène
+798. garde 1. m-exclusion-refusee (de « eleves-codes ») : structure « el-toolbar » perdu — la classe n'est pas dans la scène
+799. garde 1. m-exclusion-refusee (de « eleves-codes ») : structure « elf-flag » perdu — la classe n'est pas dans la scène
+800. garde 1. m-exclusion-refusee (de « eleves-codes ») : structure « el-acts » perdu — la classe n'est pas dans la scène
+801. garde 1. m-exclusion-refusee (de « eleves-codes ») : phrase « 🔓 Codes déverrouillés sur cet appareil » perdu
+802. garde 1. m-exclusion-refusee (de « eleves-codes ») : phrase « Importer la liste d’une classe » perdu
+803. garde 1. m-exclusion-refusee (de « eleves-codes ») : phrase « Le fichier du logiciel de vie scolaire, tel quel — ou le tableau collé depuis Excel. Rien n’est envoyé ailleurs : le fichier est lu dans ce navigateur. » perdu
+804. garde 1. m-exclusion-refusee (de « eleves-codes ») : phrase « Dépose ici le fichier .xlsx de la classe » perdu
+805. garde 1. m-exclusion-refusee (de « eleves-codes ») : phrase « ou clique pour le choisir · ou colle le tableau (Ctrl + V) n’importe où sur cette page » perdu
+806. garde 1. m-exclusion-refusee : rien de « panneau-menu » ne se perd — 15 perte(s)
+807. garde 1. m-exclusion-refusee (de « panneau-menu ») : bouton « 🧪 Mode test » perdu
+808. garde 1. m-exclusion-refusee (de « panneau-menu ») : bouton « 🏠Tableau de bord » perdu
+809. garde 1. m-exclusion-refusee (de « panneau-menu ») : bouton « 🏫Classes » perdu
+810. garde 1. m-exclusion-refusee (de « panneau-menu ») : bouton « 🧪Profil test » perdu
+811. garde 1. m-exclusion-refusee (de « panneau-menu ») : bouton « 📂Architecture » perdu
+812. garde 1. m-exclusion-refusee (de « panneau-menu ») : bouton « 📦Archives » perdu
+813. garde 1. m-exclusion-refusee (de « panneau-menu ») : bouton « 🗑Corbeille » perdu
+814. garde 1. m-exclusion-refusee (de « panneau-menu ») : bouton « 📢Annonces aux élèves » perdu
+815. garde 1. m-exclusion-refusee (de « panneau-menu ») : bouton « 🎓Dates de l’année » perdu
+816. garde 1. m-exclusion-refusee (de « panneau-menu ») : bouton « 📅Emploi du temps » perdu
+817. garde 1. m-exclusion-refusee (de « panneau-menu ») : bouton « 🛠Atelier » perdu
+818. garde 1. m-exclusion-refusee (de « panneau-menu ») : bouton « ⚙Configuration & Firebase » perdu
+819. garde 1. m-exclusion-refusee (de « panneau-menu ») : bouton « 📡Présence live » perdu
+820. garde 1. m-exclusion-refusee (de « panneau-menu ») : structure « tprof-overlay » perdu — la classe n'est pas dans la scène
+821. garde 1. m-exclusion-refusee (de « panneau-menu ») : structure « ordre » perdu — l'ordre de l'existant n'est pas suivi : tprof-overlay › tprof-box › tprof-header › tprof-sidebar › tprof-sidebar-label › tprof-section-btn › tps-icon › tprof-content
+822. garde 1. m-taxonomie-competences : rien de « panneau-menu » ne se perd — 15 perte(s)
+823. garde 1. m-taxonomie-competences (de « panneau-menu ») : bouton « 🧪 Mode test » perdu
+824. garde 1. m-taxonomie-competences (de « panneau-menu ») : bouton « 🏠Tableau de bord » perdu
+825. garde 1. m-taxonomie-competences (de « panneau-menu ») : bouton « 🏫Classes » perdu
+826. garde 1. m-taxonomie-competences (de « panneau-menu ») : bouton « 🧪Profil test » perdu
+827. garde 1. m-taxonomie-competences (de « panneau-menu ») : bouton « 📂Architecture » perdu
+828. garde 1. m-taxonomie-competences (de « panneau-menu ») : bouton « 📦Archives » perdu
+829. garde 1. m-taxonomie-competences (de « panneau-menu ») : bouton « 🗑Corbeille » perdu
+830. garde 1. m-taxonomie-competences (de « panneau-menu ») : bouton « 📢Annonces aux élèves » perdu
+831. garde 1. m-taxonomie-competences (de « panneau-menu ») : bouton « 🎓Dates de l’année » perdu
+832. garde 1. m-taxonomie-competences (de « panneau-menu ») : bouton « 📅Emploi du temps » perdu
+833. garde 1. m-taxonomie-competences (de « panneau-menu ») : bouton « 🛠Atelier » perdu
+834. garde 1. m-taxonomie-competences (de « panneau-menu ») : bouton « ⚙Configuration & Firebase » perdu
+835. garde 1. m-taxonomie-competences (de « panneau-menu ») : bouton « 📡Présence live » perdu
+836. garde 1. m-taxonomie-competences (de « panneau-menu ») : structure « tprof-overlay » perdu — la classe n'est pas dans la scène
+837. garde 1. m-taxonomie-competences (de « panneau-menu ») : structure « ordre » perdu — l'ordre de l'existant n'est pas suivi : tprof-overlay › tprof-box › tprof-header › tprof-sidebar › tprof-sidebar-label › tprof-section-btn › tps-icon › tprof-content
+838. garde 1. m-taxonomie-competences : rien de « taxonomie-editeur » ne se perd — 3 perte(s)
+839. garde 1. m-taxonomie-competences (de « taxonomie-editeur ») : bouton « Fermer l’éditeur » perdu
+840. garde 1. m-taxonomie-competences (de « taxonomie-editeur ») : structure « m8tx-editeur » perdu — la classe n'est pas dans la scène
+841. garde 1. m-taxonomie-competences (de « taxonomie-editeur ») : structure « m8tx-eleve-lab » perdu — la classe n'est pas dans la scène
+842. garde 3. m-taxonomie-competences : l'état du référentiel dit « Version 3.2 · 10/10/2026 · 5 domaines · 142 notions » ; taxonomie_atelier.json dit « Version 1.4.0 · 2026-08-02 · 7 domaines · 210 notions »
+843. garde 3. m-taxonomie-competences : 2 domaines montrés ; taxonomie_atelier.json en a 7
+844. garde 3. m-taxonomie-competences : le domaine 1 dit « ▼ Français · cycle 4 18 compétences » ; attendu « Orthographe lexicale (élève : L'orthographe des mots) 8 familles · 28 notions »
+845. garde 3. m-taxonomie-competences : le domaine 2 dit « ▼ Compétences transversales 10 compétences » ; attendu « Orthographe grammaticale (élève : Les accords et les terminaisons) 6 familles · 42 notions »
+846. garde 1. c-rattrapage : rien de « console-lancer » ne se perd — 3 perte(s)
+847. garde 1. c-rattrapage (de « console-lancer ») : l'infobulle de « 📖 Mode d'emploi » n'est pas celle de l'existant — « Ouvre le mode d'emploi avec toutes les explications de l'app. » ; la scène dit « Ouvre le mode d'emploi du QCM, réécrit d'aprè le cadrage : le déroulé d'une séance, la note, la correction. Ne change ri »
+848. garde 1. c-rattrapage (de « console-lancer ») : l'infobulle de « 📺 Ouvrir vue tableau » n'est pas celle de l'existant — « Ouvre la vue tableau dans une NOUVELLE FENÊTRE (pas un onglet) que tu peux glisser sur l'écran qui projette. Utilise W+P » ; la scène dit « Ouvre la vue tableau, à glisser sur le vidéoprojecteur : l'énoncé et le chrono, jamai le choi. Ne change rien à la séanc »
+849. garde 1. c-rattrapage (de « console-lancer ») : l'infobulle de « 📱 QR pilotage » n'est pas celle de l'existant — « Affiche un QR code à scanner avec ton téléphone pour piloter la classe à distance (depuis le fond de la salle par exempl » ; la scène dit « Montre le QR de ton téléphone : ɸ devient ta télécommande, avec tou le bouton de la séance. Ne change rien. »
+850. garde 2. c-rattrapage : « cadrage » dans infobulle — « …ode d'emploi du QCM, réécrit d'après le cadrage : le déroulé d'une séance, la note, la cor… »
+851. garde 1. x620-1-mode-test-ouverture : rien de « mode-test » ne se perd — 9 perte(s)
+852. garde 1. x620-1-mode-test-ouverture (de « mode-test ») : l'infobulle de « 📥 Exporter snapshot test » n'est pas celle de l'existant — « Exporte un snapshot complet de la base de données (incluant la session de test) au format JSON. Utile pour partager l'ét » ; la scène dit « Télécharge l'état du mode test dan un fichier. »
+853. garde 1. x620-1-mode-test-ouverture (de « mode-test ») : l'infobulle de « 📱 QR pilotage » n'est pas celle de l'existant — « Affiche un QR code à scanner avec ton téléphone pour piloter la session de test à distance. Pour vérifier que la VuePhon » ; la scène dit « Montre le QR de ton téléphone : ɸ pilote le mode test comme une vraie séance. »
+854. garde 1. x620-1-mode-test-ouverture (de « mode-test ») : l'infobulle de « 🗑️ Sortir et purger » n'est pas celle de l'existant — « Termine le mode test : supprime la classe _TEST, l'éval test et toutes les sessions associées. Aucune donnée réelle n'es » ; la scène dit « Sort du mode test : la classe de test, se séance et se code sont effacé ; la démo reste. »
+855. garde 1. x620-1-mode-test-ouverture (de « mode-test ») : l'infobulle de « 🔒 Clôturer (chemin réel) » n'est pas celle de l'existant — « Appelle cloturerSession() — le chemin exact du bouton « Terminer la session ». » ; la scène dit « Clôt la séance de test par la vraie fonction de l'app. »
+856. garde 1. x620-1-mode-test-ouverture (de « mode-test ») : l'infobulle de « ✏️ Modifier l'éval après coup » n'est pas celle de l'existant — « Change la bonne réponse de la question 1 après coup : le geste qui causait le recalcul rétroactif. » ; la scène dit « Modifie l'évaluation de test aprè la séance, comme le ferait l'éditeur. »
+857. garde 1. x620-1-mode-test-ouverture (de « mode-test ») : l'infobulle de « ⚖️ Vérifier que les notes n'ont pas bougé » n'est pas celle de l'existant — « Recompte les notes de la classe telles qu'elles étaient le jour de l'évaluation, puis telles qu'elles seraient avec l'én » ; la scène dit « Compare le note archivée à celle d'avant la modification. »
+858. garde 1. x620-1-mode-test-ouverture (de « mode-test ») : l'infobulle de « ⏱️ Faire expirer le chrono » n'est pas celle de l'existant — « Repousse le départ du chrono dans le passé : peutRepondre refuse immédiatement, sans attendre. » ; la scène dit « Fait expirer le temp en cour, quel qu'ɸ soit : réflexion, réponse, « Oui / Non », lecture du voisin. »
+859. garde 1. x620-1-mode-test-ouverture (de « mode-test ») : l'infobulle de « 👋 Ouvrir le portail élève » n'est pas celle de l'existant — « Monte le VRAI composant élève (AppEleve → EleveLogin), pas une simulation. » ; la scène dit « Ouvre le vrai portail élève, sur la classe de test. »
+860. garde 1. x620-1-mode-test-ouverture (de « mode-test ») : l'infobulle de « 🎲 Tous les élèves répondent » n'est pas celle de l'existant — « Simule les réponses de TOUS les élèves restants (qui n'ont pas encore répondu ou voté) avec un délai aléatoire entre cha » ; la scène dit « Fait répondre le # élève au hasard, à l'étape en cour : le clic, le « Oui / Non », la lecture du voisin, la co-évaluatio »
+861. garde 1. x620-2-mode-test-reflexion : rien de « mode-test » ne se perd — 14 perte(s)
+862. garde 1. x620-2-mode-test-reflexion (de « mode-test ») : l'infobulle de « 📥 Exporter snapshot test » n'est pas celle de l'existant — « Exporte un snapshot complet de la base de données (incluant la session de test) au format JSON. Utile pour partager l'ét » ; la scène dit « Télécharge l'état du mode test dan un fichier. »
+863. garde 1. x620-2-mode-test-reflexion (de « mode-test ») : l'infobulle de « 📱 QR pilotage » n'est pas celle de l'existant — « Affiche un QR code à scanner avec ton téléphone pour piloter la session de test à distance. Pour vérifier que la VuePhon » ; la scène dit « Montre le QR de ton téléphone : ɸ pilote le mode test comme une vraie séance. »
+864. garde 1. x620-2-mode-test-reflexion (de « mode-test ») : l'infobulle de « 🗑️ Sortir et purger » n'est pas celle de l'existant — « Termine le mode test : supprime la classe _TEST, l'éval test et toutes les sessions associées. Aucune donnée réelle n'es » ; la scène dit « Sort du mode test : la classe de test, se séance et se code sont effacé ; la démo reste. »
+865. garde 1. x620-2-mode-test-reflexion (de « mode-test ») : l'infobulle de « 🔒 Clôturer (chemin réel) » n'est pas celle de l'existant — « Appelle cloturerSession() — le chemin exact du bouton « Terminer la session ». » ; la scène dit « Clôt la séance de test par la vraie fonction de l'app. »
+866. garde 1. x620-2-mode-test-reflexion (de « mode-test ») : l'infobulle de « ✏️ Modifier l'éval après coup » n'est pas celle de l'existant — « Change la bonne réponse de la question 1 après coup : le geste qui causait le recalcul rétroactif. » ; la scène dit « Modifie l'évaluation de test aprè la séance, comme le ferait l'éditeur. »
+867. garde 1. x620-2-mode-test-reflexion (de « mode-test ») : l'infobulle de « ⚖️ Vérifier que les notes n'ont pas bougé » n'est pas celle de l'existant — « Recompte les notes de la classe telles qu'elles étaient le jour de l'évaluation, puis telles qu'elles seraient avec l'én » ; la scène dit « Compare le note archivée à celle d'avant la modification. »
+868. garde 1. x620-2-mode-test-reflexion (de « mode-test ») : l'infobulle de « ⏱️ Faire expirer le chrono » n'est pas celle de l'existant — « Repousse le départ du chrono dans le passé : peutRepondre refuse immédiatement, sans attendre. » ; la scène dit « Fait expirer le temp en cour, quel qu'ɸ soit : réflexion, réponse, « Oui / Non », lecture du voisin. »
+869. garde 1. x620-2-mode-test-reflexion (de « mode-test ») : l'infobulle de « 👋 Ouvrir le portail élève » n'est pas celle de l'existant — « Monte le VRAI composant élève (AppEleve → EleveLogin), pas une simulation. » ; la scène dit « Ouvre le vrai portail élève, sur la classe de test. »
+870. garde 1. x620-2-mode-test-reflexion (de « mode-test ») : l'infobulle de « 🚫 Départ d'un élève » n'est pas celle de l'existant — « Marque un élève comme parti en cours de session. Ses réponses déjà données restent enregistrées (sa note sera calculée a » ; la scène dit « Marque un élève parti : ɸ ne bloque plu la classe, son binôme continue seul, se question manquée sortent de son total. I »
+871. garde 1. x620-2-mode-test-reflexion (de « mode-test ») : l'infobulle de « 🎲 Tous les élèves répondent » n'est pas celle de l'existant — « Simule les réponses de TOUS les élèves restants (qui n'ont pas encore répondu ou voté) avec un délai aléatoire entre cha » ; la scène dit « Fait répondre le # élève au hasard, à l'étape en cour : le clic, le « Oui / Non », la lecture du voisin, la co-évaluatio »
+872. garde 1. x620-2-mode-test-reflexion (de « mode-test ») : infobulle « Nombre d'élèves actuellement connectés à l'app sur leur poste vs. nombre total d'élèves de la classe. » perdu
+873. garde 1. x620-2-mode-test-reflexion (de « mode-test ») : infobulle « Nombre d'élèves qui ont validé une réponse à la question en cours vs. nombre total. Te permet de voir d'un coup d'œil si tu peux clore. » perdu
+874. garde 1. x620-2-mode-test-reflexion (de « mode-test ») : infobulle « Nombre d'élèves ayant répondu juste vs. nombre d'élèves ayant répondu (pas vs. total). Indicateur du taux de réussite en direct. » perdu
+875. garde 1. x620-2-mode-test-reflexion (de « mode-test ») : infobulle « Question en cours vs. nombre total de questions de l'évaluation. » perdu
+876. garde 1. x620-3-mode-test-en-grand : rien de « mode-test » ne se perd — 14 perte(s)
+877. garde 1. x620-3-mode-test-en-grand (de « mode-test ») : l'infobulle de « 📥 Exporter snapshot test » n'est pas celle de l'existant — « Exporte un snapshot complet de la base de données (incluant la session de test) au format JSON. Utile pour partager l'ét » ; la scène dit « Télécharge l'état du mode test dan un fichier. »
+878. garde 1. x620-3-mode-test-en-grand (de « mode-test ») : l'infobulle de « 📱 QR pilotage » n'est pas celle de l'existant — « Affiche un QR code à scanner avec ton téléphone pour piloter la session de test à distance. Pour vérifier que la VuePhon » ; la scène dit « Montre le QR de ton téléphone : ɸ pilote le mode test comme une vraie séance. »
+879. garde 1. x620-3-mode-test-en-grand (de « mode-test ») : l'infobulle de « 🗑️ Sortir et purger » n'est pas celle de l'existant — « Termine le mode test : supprime la classe _TEST, l'éval test et toutes les sessions associées. Aucune donnée réelle n'es » ; la scène dit « Sort du mode test : la classe de test, se séance et se code sont effacé ; la démo reste. »
+880. garde 1. x620-3-mode-test-en-grand (de « mode-test ») : l'infobulle de « 🔒 Clôturer (chemin réel) » n'est pas celle de l'existant — « Appelle cloturerSession() — le chemin exact du bouton « Terminer la session ». » ; la scène dit « Clôt la séance de test par la vraie fonction de l'app. »
+881. garde 1. x620-3-mode-test-en-grand (de « mode-test ») : l'infobulle de « ✏️ Modifier l'éval après coup » n'est pas celle de l'existant — « Change la bonne réponse de la question 1 après coup : le geste qui causait le recalcul rétroactif. » ; la scène dit « Modifie l'évaluation de test aprè la séance, comme le ferait l'éditeur. »
+882. garde 1. x620-3-mode-test-en-grand (de « mode-test ») : l'infobulle de « ⚖️ Vérifier que les notes n'ont pas bougé » n'est pas celle de l'existant — « Recompte les notes de la classe telles qu'elles étaient le jour de l'évaluation, puis telles qu'elles seraient avec l'én » ; la scène dit « Compare le note archivée à celle d'avant la modification. »
+883. garde 1. x620-3-mode-test-en-grand (de « mode-test ») : l'infobulle de « ⏱️ Faire expirer le chrono » n'est pas celle de l'existant — « Repousse le départ du chrono dans le passé : peutRepondre refuse immédiatement, sans attendre. » ; la scène dit « Fait expirer le temp en cour, quel qu'ɸ soit : réflexion, réponse, « Oui / Non », lecture du voisin. »
+884. garde 1. x620-3-mode-test-en-grand (de « mode-test ») : l'infobulle de « 👋 Ouvrir le portail élève » n'est pas celle de l'existant — « Monte le VRAI composant élève (AppEleve → EleveLogin), pas une simulation. » ; la scène dit « Ouvre le vrai portail élève, sur la classe de test. »
+885. garde 1. x620-3-mode-test-en-grand (de « mode-test ») : l'infobulle de « 🚫 Départ d'un élève » n'est pas celle de l'existant — « Marque un élève comme parti en cours de session. Ses réponses déjà données restent enregistrées (sa note sera calculée a » ; la scène dit « Marque un élève parti : ɸ ne bloque plu la classe, son binôme continue seul, se question manquée sortent de son total. I »
+886. garde 1. x620-3-mode-test-en-grand (de « mode-test ») : l'infobulle de « 🎲 Tous les élèves répondent » n'est pas celle de l'existant — « Simule les réponses de TOUS les élèves restants (qui n'ont pas encore répondu ou voté) avec un délai aléatoire entre cha » ; la scène dit « Fait répondre le # élève au hasard, à l'étape en cour : le clic, le « Oui / Non », la lecture du voisin, la co-évaluatio »
+887. garde 1. x620-3-mode-test-en-grand (de « mode-test ») : infobulle « Nombre d'élèves actuellement connectés à l'app sur leur poste vs. nombre total d'élèves de la classe. » perdu
+888. garde 1. x620-3-mode-test-en-grand (de « mode-test ») : infobulle « Nombre d'élèves qui ont validé une réponse à la question en cours vs. nombre total. Te permet de voir d'un coup d'œil si tu peux clore. » perdu
+889. garde 1. x620-3-mode-test-en-grand (de « mode-test ») : infobulle « Nombre d'élèves ayant répondu juste vs. nombre d'élèves ayant répondu (pas vs. total). Indicateur du taux de réussite en direct. » perdu
+890. garde 1. x620-3-mode-test-en-grand (de « mode-test ») : infobulle « Question en cours vs. nombre total de questions de l'évaluation. » perdu
+891. garde 5. DUVERNAY Michel : le bloc de l'estimation (t-bilan) et le bilan général (c-fiche) disent le même degré — « un peu » / « nettement »
+892. garde 5. DUVERNAY Michel : le bloc de l'estimation (t-bilan) et le bilan général (c-fiche-retire) disent le même degré — « un peu » / « nettement »
+893. garde 5. DUVERNAY Michel : le bloc de l'estimation (t-bilan) et le bilan général (c-fiche-garde) disent le même degré — « un peu » / « nettement »
+894. garde 5. DUVERNAY Michel : le bloc de l'estimation (t-bilan) et le bilan général (c-que-dit-la-feuille) disent le même degré — « un peu » / « nettement »
+895. garde 5. DUVERNAY Michel : le bloc de l'estimation (t-bilan-non-atteinte) et le bilan général (c-fiche) disent le même degré — « un peu » / « nettement »
+896. garde 5. DUVERNAY Michel : le bloc de l'estimation (t-bilan-non-atteinte) et le bilan général (c-fiche-retire) disent le même degré — « un peu » / « nettement »
+897. garde 5. DUVERNAY Michel : le bloc de l'estimation (t-bilan-non-atteinte) et le bilan général (c-fiche-garde) disent le même degré — « un peu » / « nettement »
+898. garde 5. DUVERNAY Michel : le bloc de l'estimation (t-bilan-non-atteinte) et le bilan général (c-que-dit-la-feuille) disent le même degré — « un peu » / « nettement »

@@ -1,0 +1,5 @@
+Banc unique — maquette complète du QCM
+Fichier : maquette-qcm-vdev.html de l'étape C (md5 60778845d3ccf68e0b4fdd4a9ce7db30) · étape jouée : 5 · avec les gardes du complément 1 · 2026-10-10T14:28:53.763Z
+166 scènes · 62 écrans de l'existant · 107 retraits
+Vérifications : 18245 · échecs : 0
+Zéro défaut.

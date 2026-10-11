@@ -1,0 +1,26 @@
+/* Tour 620 — le mode test, la même chose que le réel */
+.simt-titre{display:flex;justify-content:space-between;align-items:center;gap:.4rem}
+.simt-grand{padding:.15rem .5rem!important;font-size:.7rem!important}
+.simt-feuilles{display:grid;grid-template-columns:1fr 1fr;gap:.3rem;margin-top:.35rem}
+.simt-f{background:#FFFBEB;border:2px dashed #F59E0B;border-radius:8px;padding:.25rem .4rem;font-size:.72rem;line-height:1.3}
+.simt-fl{display:block;font-weight:900;color:#92400E;font-size:.68rem}
+.simt-fi{display:block;font-family:"Comic Sans MS","Segoe Print",cursive;color:#1E3A8A;font-size:.8rem}
+.simt-fi.vide{font-family:inherit;color:var(--gris);font-style:italic;font-size:.7rem}
+.simt-aide,.simt-note{font-size:.84rem;color:var(--noir);background:#FFFBEB;border:2px dashed #F59E0B;border-radius:10px;padding:.4rem .7rem;margin:.4rem 0}
+.grand-fond{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:3000;display:flex;align-items:flex-start;justify-content:center;padding-top:14px}
+.grand-boite{background:#fff;border-radius:14px;padding:.6rem;box-shadow:0 20px 60px rgba(0,0,0,.5);width:1300px}
+.grand-h{display:flex;align-items:center;gap:.8rem;margin-bottom:.4rem;font-size:.95rem}
+.grand-h .btn{margin-left:auto}
+.grand-p{font-size:.8rem;color:var(--gris)}
+.grand-tab{width:1280px;height:800px;position:relative;overflow:hidden;margin:0 auto}
+.grand-tab .tablette{width:1280px;height:800px}
+.grand-tab .moitie{height:800px}
+.grand-tab .moitie .eleve-page{min-height:800px}
+.grand-f{margin-top:.5rem}
+.grand-f .simt-f{font-size:.9rem;padding:.4rem .6rem}
+.grand-f .simt-fl{font-size:.85rem}
+.grand-f .simt-fi{font-size:1.05rem}
+.grand-note{font-size:.85rem;margin-top:.4rem;color:#1E3A8A;font-weight:700}
+.simt-grand{white-space:nowrap;flex-shrink:0}
+.simt-titre > span:first-child{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sims{grid-template-columns:repeat(3,minmax(0,1fr))!important}

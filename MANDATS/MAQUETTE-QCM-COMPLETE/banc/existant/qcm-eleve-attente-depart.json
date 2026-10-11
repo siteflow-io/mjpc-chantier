@@ -1,0 +1,45 @@
+{
+ "ecran": "eleve-attente-depart",
+ "source": "evaluation-qcm.html (7.7.1, md5 ecae65624855a1a877708986a8e984e5), jouée sur le faux hub",
+ "comment": "",
+ "scenes": [
+  "t-pret",
+  "t-attest-1",
+  "t-attest-2",
+  "t-binome"
+ ],
+ "eleve": true,
+ "boutons": [
+  {
+   "l": "📊 Mes évaluations",
+   "t": ""
+  }
+ ],
+ "champs": [],
+ "cases": [],
+ "titres": [],
+ "phrases": [
+  "3 ESSAI · ABRIAL Julien",
+  "QCM — Le jambon-beurre",
+  "⏳ En attente du démarrage...",
+  "📋 Comment ça marche pour cette évaluation",
+  "Cette éval contient",
+  "10 questions",
+  "pour un total de",
+  "10 points",
+  "Chaque question rapporte",
+  "1 point",
+  "si la réponse est",
+  "exacte",
+  "Tu dois cocher",
+  "toutes les bonnes cases",
+  ", et",
+  "seulement celles-là",
+  "Un oubli, une case en trop, et la question entière vaut",
+  "Exemple :",
+  "une question avec 3 bonnes cases à trouver. Tu en trouves 2 →",
+  "0 point",
+  ". Tu trouves les 3 sans erreur →",
+  "1 point"
+ ]
+}

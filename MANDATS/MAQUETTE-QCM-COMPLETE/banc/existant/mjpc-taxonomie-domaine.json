@@ -1,0 +1,65 @@
+{
+ "ecran": "taxonomie-domaine",
+ "source": "index.html (md5 ac792b28f40d3a0510e725fc4a6b6985), lu dans le code",
+ "comment": "Un domaine ouvert, une famille ouverte : ses notions, « ✏️ Modifier », « Désactiver » ou « Réactiver », « + Nouvelle notion ».",
+ "scenes": [
+  "m-taxonomie-domaine"
+ ],
+ "boutons": [
+  {
+   "l": "✏️ Modifier",
+   "t": "",
+   "ligne": 2530
+  },
+  {
+   "l": "Désactiver",
+   "t": "",
+   "ligne": 2531
+  },
+  {
+   "l": "+ Nouvelle notion",
+   "t": "",
+   "ligne": 2551
+  }
+ ],
+ "classes": [
+  {
+   "c": "m8tx-fam",
+   "ligne": 2542
+  },
+  {
+   "c": "m8tx-fam-titre",
+   "ligne": 2543
+  },
+  {
+   "c": "m8tx-notion",
+   "ligne": 2521
+  },
+  {
+   "c": "m8tx-n-l1",
+   "ligne": 2522
+  },
+  {
+   "c": "m8tx-id",
+   "ligne": 2522
+  },
+  {
+   "c": "m8tx-prof",
+   "ligne": 2523
+  },
+  {
+   "c": "m8tx-n-l2",
+   "ligne": 2526
+  },
+  {
+   "c": "m8tx-n-actions",
+   "ligne": 2529
+  }
+ ],
+ "phrases": [
+  {
+   "p": "Élève :",
+   "ligne": 2526
+  }
+ ]
+}

@@ -1,0 +1,754 @@
+{
+ "ecran": "editeur",
+ "source": "evaluation-qcm.html (7.7.1, md5 ecae65624855a1a877708986a8e984e5), jouée sur le faux hub",
+ "comment": "",
+ "scenes": [
+  "x627-3-editeur"
+ ],
+ "eleve": false,
+ "boutons": [
+  {
+   "l": "✕",
+   "t": ""
+  },
+  {
+   "l": "🔍 Vérifier le format",
+   "t": "Parse le JSON ci-dessus et l'affiche en mode éditable ci-dessous."
+  },
+  {
+   "l": "↑",
+   "t": "Monter cette question d'un cran."
+  },
+  {
+   "l": "↓",
+   "t": "Descendre cette question d'un cran."
+  },
+  {
+   "l": "🗑",
+   "t": "Supprimer cette question."
+  },
+  {
+   "l": "Facile 10s",
+   "t": "Facile — 10s de réflexion."
+  },
+  {
+   "l": "Standard 15s",
+   "t": "Standard — 15s de réflexion."
+  },
+  {
+   "l": "Approfondi 20s",
+   "t": "Approfondi — 20s de réflexion."
+  },
+  {
+   "l": "Expert 30s",
+   "t": "Expert — 30s de réflexion."
+  },
+  {
+   "l": "✕",
+   "t": "Supprimer ce choix (minimum 2 choix par question)."
+  },
+  {
+   "l": "✕",
+   "t": "Supprimer ce choix (minimum 2 choix par question)."
+  },
+  {
+   "l": "✕",
+   "t": "Supprimer ce choix (minimum 2 choix par question)."
+  },
+  {
+   "l": "✕",
+   "t": "Supprimer ce choix (minimum 2 choix par question)."
+  },
+  {
+   "l": "➕ Ajouter un choix",
+   "t": "Ajouter un nouveau choix à cette question."
+  },
+  {
+   "l": "↑",
+   "t": "Monter cette question d'un cran."
+  },
+  {
+   "l": "↓",
+   "t": "Descendre cette question d'un cran."
+  },
+  {
+   "l": "🗑",
+   "t": "Supprimer cette question."
+  },
+  {
+   "l": "Facile 10s",
+   "t": "Facile — 10s de réflexion."
+  },
+  {
+   "l": "Standard 15s",
+   "t": "Standard — 15s de réflexion."
+  },
+  {
+   "l": "Approfondi 20s",
+   "t": "Approfondi — 20s de réflexion."
+  },
+  {
+   "l": "Expert 30s",
+   "t": "Expert — 30s de réflexion."
+  },
+  {
+   "l": "✕",
+   "t": "Supprimer ce choix (minimum 2 choix par question)."
+  },
+  {
+   "l": "✕",
+   "t": "Supprimer ce choix (minimum 2 choix par question)."
+  },
+  {
+   "l": "✕",
+   "t": "Supprimer ce choix (minimum 2 choix par question)."
+  },
+  {
+   "l": "✕",
+   "t": "Supprimer ce choix (minimum 2 choix par question)."
+  },
+  {
+   "l": "✕",
+   "t": "Supprimer ce choix (minimum 2 choix par question)."
+  },
+  {
+   "l": "✕",
+   "t": "Supprimer ce choix (minimum 2 choix par question)."
+  },
+  {
+   "l": "➕ Ajouter un choix",
+   "t": "Ajouter un nouveau choix à cette question."
+  },
+  {
+   "l": "↑",
+   "t": "Monter cette question d'un cran."
+  },
+  {
+   "l": "↓",
+   "t": "Descendre cette question d'un cran."
+  },
+  {
+   "l": "🗑",
+   "t": "Supprimer cette question."
+  },
+  {
+   "l": "Facile 10s",
+   "t": "Facile — 10s de réflexion."
+  },
+  {
+   "l": "Standard 15s",
+   "t": "Standard — 15s de réflexion."
+  },
+  {
+   "l": "Approfondi 20s",
+   "t": "Approfondi — 20s de réflexion."
+  },
+  {
+   "l": "Expert 30s",
+   "t": "Expert — 30s de réflexion."
+  },
+  {
+   "l": "✕",
+   "t": "Supprimer ce choix (minimum 2 choix par question)."
+  },
+  {
+   "l": "✕",
+   "t": "Supprimer ce choix (minimum 2 choix par question)."
+  },
+  {
+   "l": "✕",
+   "t": "Supprimer ce choix (minimum 2 choix par question)."
+  },
+  {
+   "l": "✕",
+   "t": "Supprimer ce choix (minimum 2 choix par question)."
+  },
+  {
+   "l": "✕",
+   "t": "Supprimer ce choix (minimum 2 choix par question)."
+  },
+  {
+   "l": "✕",
+   "t": "Supprimer ce choix (minimum 2 choix par question)."
+  },
+  {
+   "l": "➕ Ajouter un choix",
+   "t": "Ajouter un nouveau choix à cette question."
+  },
+  {
+   "l": "↑",
+   "t": "Monter cette question d'un cran."
+  },
+  {
+   "l": "↓",
+   "t": "Descendre cette question d'un cran."
+  },
+  {
+   "l": "🗑",
+   "t": "Supprimer cette question."
+  },
+  {
+   "l": "Facile 10s",
+   "t": "Facile — 10s de réflexion."
+  },
+  {
+   "l": "Standard 15s",
+   "t": "Standard — 15s de réflexion."
+  },
+  {
+   "l": "Approfondi 20s",
+   "t": "Approfondi — 20s de réflexion."
+  },
+  {
+   "l": "Expert 30s",
+   "t": "Expert — 30s de réflexion."
+  },
+  {
+   "l": "✕",
+   "t": "Supprimer ce choix (minimum 2 choix par question)."
+  },
+  {
+   "l": "✕",
+   "t": "Supprimer ce choix (minimum 2 choix par question)."
+  },
+  {
+   "l": "✕",
+   "t": "Supprimer ce choix (minimum 2 choix par question)."
+  },
+  {
+   "l": "✕",
+   "t": "Supprimer ce choix (minimum 2 choix par question)."
+  },
+  {
+   "l": "✕",
+   "t": "Supprimer ce choix (minimum 2 choix par question)."
+  },
+  {
+   "l": "✕",
+   "t": "Supprimer ce choix (minimum 2 choix par question)."
+  },
+  {
+   "l": "➕ Ajouter un choix",
+   "t": "Ajouter un nouveau choix à cette question."
+  },
+  {
+   "l": "↑",
+   "t": "Monter cette question d'un cran."
+  },
+  {
+   "l": "↓",
+   "t": "Descendre cette question d'un cran."
+  },
+  {
+   "l": "🗑",
+   "t": "Supprimer cette question."
+  },
+  {
+   "l": "Facile 10s",
+   "t": "Facile — 10s de réflexion."
+  },
+  {
+   "l": "Standard 15s",
+   "t": "Standard — 15s de réflexion."
+  },
+  {
+   "l": "Approfondi 20s",
+   "t": "Approfondi — 20s de réflexion."
+  },
+  {
+   "l": "Expert 30s",
+   "t": "Expert — 30s de réflexion."
+  },
+  {
+   "l": "✕",
+   "t": "Supprimer ce choix (minimum 2 choix par question)."
+  },
+  {
+   "l": "✕",
+   "t": "Supprimer ce choix (minimum 2 choix par question)."
+  },
+  {
+   "l": "✕",
+   "t": "Supprimer ce choix (minimum 2 choix par question)."
+  },
+  {
+   "l": "✕",
+   "t": "Supprimer ce choix (minimum 2 choix par question)."
+  },
+  {
+   "l": "➕ Ajouter un choix",
+   "t": "Ajouter un nouveau choix à cette question."
+  },
+  {
+   "l": "↑",
+   "t": "Monter cette question d'un cran."
+  },
+  {
+   "l": "↓",
+   "t": "Descendre cette question d'un cran."
+  },
+  {
+   "l": "🗑",
+   "t": "Supprimer cette question."
+  },
+  {
+   "l": "Facile 10s",
+   "t": "Facile — 10s de réflexion."
+  },
+  {
+   "l": "Standard 15s",
+   "t": "Standard — 15s de réflexion."
+  },
+  {
+   "l": "Approfondi 20s",
+   "t": "Approfondi — 20s de réflexion."
+  },
+  {
+   "l": "Expert 30s",
+   "t": "Expert — 30s de réflexion."
+  },
+  {
+   "l": "✕",
+   "t": "Supprimer ce choix (minimum 2 choix par question)."
+  },
+  {
+   "l": "✕",
+   "t": "Supprimer ce choix (minimum 2 choix par question)."
+  },
+  {
+   "l": "✕",
+   "t": "Supprimer ce choix (minimum 2 choix par question)."
+  },
+  {
+   "l": "✕",
+   "t": "Supprimer ce choix (minimum 2 choix par question)."
+  },
+  {
+   "l": "✕",
+   "t": "Supprimer ce choix (minimum 2 choix par question)."
+  },
+  {
+   "l": "✕",
+   "t": "Supprimer ce choix (minimum 2 choix par question)."
+  },
+  {
+   "l": "➕ Ajouter un choix",
+   "t": "Ajouter un nouveau choix à cette question."
+  },
+  {
+   "l": "↑",
+   "t": "Monter cette question d'un cran."
+  },
+  {
+   "l": "↓",
+   "t": "Descendre cette question d'un cran."
+  },
+  {
+   "l": "🗑",
+   "t": "Supprimer cette question."
+  },
+  {
+   "l": "Facile 10s",
+   "t": "Facile — 10s de réflexion."
+  },
+  {
+   "l": "Standard 15s",
+   "t": "Standard — 15s de réflexion."
+  },
+  {
+   "l": "Approfondi 20s",
+   "t": "Approfondi — 20s de réflexion."
+  },
+  {
+   "l": "Expert 30s",
+   "t": "Expert — 30s de réflexion."
+  },
+  {
+   "l": "✕",
+   "t": "Supprimer ce choix (minimum 2 choix par question)."
+  },
+  {
+   "l": "✕",
+   "t": "Supprimer ce choix (minimum 2 choix par question)."
+  },
+  {
+   "l": "✕",
+   "t": "Supprimer ce choix (minimum 2 choix par question)."
+  },
+  {
+   "l": "✕",
+   "t": "Supprimer ce choix (minimum 2 choix par question)."
+  },
+  {
+   "l": "✕",
+   "t": "Supprimer ce choix (minimum 2 choix par question)."
+  },
+  {
+   "l": "✕",
+   "t": "Supprimer ce choix (minimum 2 choix par question)."
+  },
+  {
+   "l": "➕ Ajouter un choix",
+   "t": "Ajouter un nouveau choix à cette question."
+  },
+  {
+   "l": "↑",
+   "t": "Monter cette question d'un cran."
+  },
+  {
+   "l": "↓",
+   "t": "Descendre cette question d'un cran."
+  },
+  {
+   "l": "🗑",
+   "t": "Supprimer cette question."
+  },
+  {
+   "l": "Facile 10s",
+   "t": "Facile — 10s de réflexion."
+  },
+  {
+   "l": "Standard 15s",
+   "t": "Standard — 15s de réflexion."
+  },
+  {
+   "l": "Approfondi 20s",
+   "t": "Approfondi — 20s de réflexion."
+  },
+  {
+   "l": "Expert 30s",
+   "t": "Expert — 30s de réflexion."
+  },
+  {
+   "l": "✕",
+   "t": "Supprimer ce choix (minimum 2 choix par question)."
+  },
+  {
+   "l": "✕",
+   "t": "Supprimer ce choix (minimum 2 choix par question)."
+  },
+  {
+   "l": "✕",
+   "t": "Supprimer ce choix (minimum 2 choix par question)."
+  },
+  {
+   "l": "✕",
+   "t": "Supprimer ce choix (minimum 2 choix par question)."
+  },
+  {
+   "l": "✕",
+   "t": "Supprimer ce choix (minimum 2 choix par question)."
+  },
+  {
+   "l": "✕",
+   "t": "Supprimer ce choix (minimum 2 choix par question)."
+  },
+  {
+   "l": "➕ Ajouter un choix",
+   "t": "Ajouter un nouveau choix à cette question."
+  },
+  {
+   "l": "↑",
+   "t": "Monter cette question d'un cran."
+  },
+  {
+   "l": "↓",
+   "t": "Descendre cette question d'un cran."
+  },
+  {
+   "l": "🗑",
+   "t": "Supprimer cette question."
+  },
+  {
+   "l": "Facile 10s",
+   "t": "Facile — 10s de réflexion."
+  },
+  {
+   "l": "Standard 15s",
+   "t": "Standard — 15s de réflexion."
+  },
+  {
+   "l": "Approfondi 20s",
+   "t": "Approfondi — 20s de réflexion."
+  },
+  {
+   "l": "Expert 30s",
+   "t": "Expert — 30s de réflexion."
+  },
+  {
+   "l": "✕",
+   "t": "Supprimer ce choix (minimum 2 choix par question)."
+  },
+  {
+   "l": "✕",
+   "t": "Supprimer ce choix (minimum 2 choix par question)."
+  },
+  {
+   "l": "✕",
+   "t": "Supprimer ce choix (minimum 2 choix par question)."
+  },
+  {
+   "l": "✕",
+   "t": "Supprimer ce choix (minimum 2 choix par question)."
+  },
+  {
+   "l": "➕ Ajouter un choix",
+   "t": "Ajouter un nouveau choix à cette question."
+  },
+  {
+   "l": "↑",
+   "t": "Monter cette question d'un cran."
+  },
+  {
+   "l": "↓",
+   "t": "Descendre cette question d'un cran."
+  },
+  {
+   "l": "🗑",
+   "t": "Supprimer cette question."
+  },
+  {
+   "l": "Facile 10s",
+   "t": "Facile — 10s de réflexion."
+  },
+  {
+   "l": "Standard 15s",
+   "t": "Standard — 15s de réflexion."
+  },
+  {
+   "l": "Approfondi 20s",
+   "t": "Approfondi — 20s de réflexion."
+  },
+  {
+   "l": "Expert 30s",
+   "t": "Expert — 30s de réflexion."
+  },
+  {
+   "l": "✕",
+   "t": "Supprimer ce choix (minimum 2 choix par question)."
+  },
+  {
+   "l": "✕",
+   "t": "Supprimer ce choix (minimum 2 choix par question)."
+  },
+  {
+   "l": "✕",
+   "t": "Supprimer ce choix (minimum 2 choix par question)."
+  },
+  {
+   "l": "✕",
+   "t": "Supprimer ce choix (minimum 2 choix par question)."
+  },
+  {
+   "l": "➕ Ajouter un choix",
+   "t": "Ajouter un nouveau choix à cette question."
+  },
+  {
+   "l": "↑",
+   "t": "Monter cette question d'un cran."
+  },
+  {
+   "l": "↓",
+   "t": "Descendre cette question d'un cran."
+  },
+  {
+   "l": "🗑",
+   "t": "Supprimer cette question."
+  },
+  {
+   "l": "Facile 10s",
+   "t": "Facile — 10s de réflexion."
+  },
+  {
+   "l": "Standard 15s",
+   "t": "Standard — 15s de réflexion."
+  },
+  {
+   "l": "Approfondi 20s",
+   "t": "Approfondi — 20s de réflexion."
+  },
+  {
+   "l": "Expert 30s",
+   "t": "Expert — 30s de réflexion."
+  },
+  {
+   "l": "✕",
+   "t": "Supprimer ce choix (minimum 2 choix par question)."
+  },
+  {
+   "l": "✕",
+   "t": "Supprimer ce choix (minimum 2 choix par question)."
+  },
+  {
+   "l": "✕",
+   "t": "Supprimer ce choix (minimum 2 choix par question)."
+  },
+  {
+   "l": "✕",
+   "t": "Supprimer ce choix (minimum 2 choix par question)."
+  },
+  {
+   "l": "➕ Ajouter un choix",
+   "t": "Ajouter un nouveau choix à cette question."
+  },
+  {
+   "l": "➕ Ajouter une question",
+   "t": "Ajouter une nouvelle question vide à la fin de l'évaluation."
+  },
+  {
+   "l": "💾 Enregistrer l'évaluation",
+   "t": ""
+  }
+ ],
+ "champs": [
+  "{\n  \"titre\": \"Mon évaluation\",\n  \"questions\": [\n    {\"enonce\":\"...\",\"choix\":[...],\"bonnes\":[0],\"niveau\":\"standard\"}\n  ]\n}",
+  "Titre de l'évaluation",
+  "Énoncé de la question (autonome : l'élève doit pouvoir répondre sans voir les choix)",
+  "Texte du choix",
+  "Texte du choix",
+  "Texte du choix",
+  "Texte du choix",
+  "Explication de la bonne réponse (1-3 phrases)",
+  "Énoncé de la question (autonome : l'élève doit pouvoir répondre sans voir les choix)",
+  "Texte du choix",
+  "Texte du choix",
+  "Texte du choix",
+  "Texte du choix",
+  "Texte du choix",
+  "Texte du choix",
+  "Explication de la bonne réponse (1-3 phrases)",
+  "Énoncé de la question (autonome : l'élève doit pouvoir répondre sans voir les choix)",
+  "Texte du choix",
+  "Texte du choix",
+  "Texte du choix",
+  "Texte du choix",
+  "Texte du choix",
+  "Texte du choix",
+  "Explication de la bonne réponse (1-3 phrases)",
+  "Énoncé de la question (autonome : l'élève doit pouvoir répondre sans voir les choix)",
+  "Texte du choix",
+  "Texte du choix",
+  "Texte du choix",
+  "Texte du choix",
+  "Texte du choix",
+  "Texte du choix",
+  "Explication de la bonne réponse (1-3 phrases)",
+  "Énoncé de la question (autonome : l'élève doit pouvoir répondre sans voir les choix)",
+  "Texte du choix",
+  "Texte du choix",
+  "Texte du choix",
+  "Texte du choix",
+  "Explication de la bonne réponse (1-3 phrases)",
+  "Énoncé de la question (autonome : l'élève doit pouvoir répondre sans voir les choix)",
+  "Texte du choix",
+  "Texte du choix",
+  "Texte du choix",
+  "Texte du choix",
+  "Texte du choix",
+  "Texte du choix",
+  "Explication de la bonne réponse (1-3 phrases)",
+  "Énoncé de la question (autonome : l'élève doit pouvoir répondre sans voir les choix)",
+  "Texte du choix",
+  "Texte du choix",
+  "Texte du choix",
+  "Texte du choix",
+  "Texte du choix",
+  "Texte du choix",
+  "Explication de la bonne réponse (1-3 phrases)",
+  "Énoncé de la question (autonome : l'élève doit pouvoir répondre sans voir les choix)",
+  "Texte du choix",
+  "Texte du choix",
+  "Texte du choix",
+  "Texte du choix",
+  "Texte du choix",
+  "Texte du choix",
+  "Explication de la bonne réponse (1-3 phrases)",
+  "Énoncé de la question (autonome : l'élève doit pouvoir répondre sans voir les choix)",
+  "Texte du choix",
+  "Texte du choix",
+  "Texte du choix",
+  "Texte du choix",
+  "Explication de la bonne réponse (1-3 phrases)",
+  "Énoncé de la question (autonome : l'élève doit pouvoir répondre sans voir les choix)",
+  "Texte du choix",
+  "Texte du choix",
+  "Texte du choix",
+  "Texte du choix",
+  "Explication de la bonne réponse (1-3 phrases)",
+  "Énoncé de la question (autonome : l'élève doit pouvoir répondre sans voir les choix)",
+  "Texte du choix",
+  "Texte du choix",
+  "Texte du choix",
+  "Texte du choix",
+  "Explication de la bonne réponse (1-3 phrases)"
+ ],
+ "cases": [
+  "🎯 Tout ou rienRéponse exacte = max ; sinon 0",
+  "✨ Points par bonne case+1 par bonne ; −1 par mauvaise (plancher 0)",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  ""
+ ],
+ "titres": [
+  "Plusieurs bonnes réponses définies. L'élève devra cocher exactement les bonnes lettres.",
+  "Plusieurs bonnes réponses définies. L'élève devra cocher exactement les bonnes lettres.",
+  "Plusieurs bonnes réponses définies. L'élève devra cocher exactement les bonnes lettres.",
+  "Plusieurs bonnes réponses définies. L'élève devra cocher exactement les bonnes lettres.",
+  "Plusieurs bonnes réponses définies. L'élève devra cocher exactement les bonnes lettres.",
+  "Plusieurs bonnes réponses définies. L'élève devra cocher exactement les bonnes lettres."
+ ],
+ "phrases": []
+}

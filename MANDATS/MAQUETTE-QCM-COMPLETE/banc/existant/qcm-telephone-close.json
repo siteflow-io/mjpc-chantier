@@ -1,0 +1,143 @@
+{
+ "ecran": "telephone-close",
+ "source": "evaluation-qcm.html (7.7.1, md5 ecae65624855a1a877708986a8e984e5), jouée sur le faux hub",
+ "comment": "",
+ "scenes": [
+  "p-eleve"
+ ],
+ "eleve": false,
+ "boutons": [
+  {
+   "l": "🚀 Lancer Q2",
+   "t": ""
+  },
+  {
+   "l": "🔓 Rouvrir Q1",
+   "t": ""
+  },
+  {
+   "l": "← Q préc.",
+   "t": ""
+  },
+  {
+   "l": "ABRIAL Julien⏳",
+   "t": "ABRIAL Julien — pas de réponse"
+  },
+  {
+   "l": "BAUDRY Léa⏳",
+   "t": "BAUDRY Léa — pas de réponse"
+  },
+  {
+   "l": "BRUNEAU Camil…⏳",
+   "t": "BRUNEAU Camille — pas de réponse"
+  },
+  {
+   "l": "CARRÉ Tom⏳",
+   "t": "CARRÉ Tom — pas de réponse"
+  },
+  {
+   "l": "CHEVALLIER Th…⏳",
+   "t": "CHEVALLIER Théo — pas de réponse"
+  },
+  {
+   "l": "DUVERNAY Mich…⏳",
+   "t": "DUVERNAY Michel — pas de réponse"
+  },
+  {
+   "l": "ESNAULT Inès⏳",
+   "t": "ESNAULT Inès — pas de réponse"
+  },
+  {
+   "l": "FOUCHER Hugo⏳",
+   "t": "FOUCHER Hugo — pas de réponse"
+  },
+  {
+   "l": "GALLOIS Manon⏳",
+   "t": "GALLOIS Manon — pas de réponse"
+  },
+  {
+   "l": "HÉBRARD Nathan⏳",
+   "t": "HÉBRARD Nathan — pas de réponse"
+  },
+  {
+   "l": "ISAMBERT Chloé⏳",
+   "t": "ISAMBERT Chloé — pas de réponse"
+  },
+  {
+   "l": "JOUBERT Louis⏳",
+   "t": "JOUBERT Louis — pas de réponse"
+  },
+  {
+   "l": "LACOMBE Emma⏳",
+   "t": "LACOMBE Emma — pas de réponse"
+  },
+  {
+   "l": "MAILLARD Noah⏳",
+   "t": "MAILLARD Noah — pas de réponse"
+  },
+  {
+   "l": "NOGARET Zoé⏳",
+   "t": "NOGARET Zoé — pas de réponse"
+  },
+  {
+   "l": "OLLIVIER Sacha⏳",
+   "t": "OLLIVIER Sacha — pas de réponse"
+  },
+  {
+   "l": "PERRAUD Jade⏳",
+   "t": "PERRAUD Jade — pas de réponse"
+  },
+  {
+   "l": "QUINTON Enzo⏳",
+   "t": "QUINTON Enzo — pas de réponse"
+  },
+  {
+   "l": "RAMBAUD Lina⏳",
+   "t": "RAMBAUD Lina — pas de réponse"
+  },
+  {
+   "l": "SABATIER Malo⏳",
+   "t": "SABATIER Malo — pas de réponse"
+  },
+  {
+   "l": "TESSIER Anna⏳",
+   "t": "TESSIER Anna — pas de réponse"
+  },
+  {
+   "l": "VALLÉE Rayan⏳",
+   "t": "VALLÉE Rayan — pas de réponse"
+  },
+  {
+   "l": "WEBER Clara⏳",
+   "t": "WEBER Clara — pas de réponse"
+  },
+  {
+   "l": "YVON Adam⏳",
+   "t": "YVON Adam — pas de réponse"
+  },
+  {
+   "l": "ZELLER Lou⏳",
+   "t": "ZELLER Lou — pas de réponse"
+  },
+  {
+   "l": "🛑 Terminer la session",
+   "t": ""
+  }
+ ],
+ "champs": [],
+ "cases": [],
+ "titres": [
+  "Aperçu de la classe par question. Vert = >75% bonnes, Bleu = >50%, Orange = >25%, Rouge = <25%. Les rouges sortiront en premier à la correction.",
+  "Q1 — pas de réponse",
+  "Q2 — pas de réponse",
+  "Q3 — pas de réponse",
+  "Q4 — pas de réponse",
+  "Q5 — pas de réponse",
+  "Q6 — pas de réponse",
+  "Q7 — pas de réponse",
+  "Q8 — pas de réponse",
+  "Q9 — pas de réponse",
+  "Q10 — pas de réponse"
+ ],
+ "phrases": []
+}

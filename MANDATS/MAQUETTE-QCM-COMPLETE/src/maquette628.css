@@ -1,0 +1,14 @@
+/* Tour 628 : le bilan général */
+.bilan628{margin-top:.9rem}
+.bilan628 h3{margin:0 0 .5rem 0;font-size:1rem;display:flex;align-items:center;gap:.4rem}
+.ta628{width:100%;min-height:90px;padding:10px 14px;font-size:.92rem;border-radius:8px;border:1.5px solid var(--bordure);line-height:1.7;background:#fff}
+.pied628{display:flex;justify-content:space-between;align-items:center;margin-top:8px;gap:8px;flex-wrap:wrap}
+.st628{font-size:.78rem;color:#E8590C;font-weight:700}
+.bilan628-eleve p{line-height:1.7;margin:.2rem 0 0;font-size:1rem}
+.bilan628 .info-tip{max-width:520px;white-space:normal}
+.ed-verif{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;margin:.45rem 0 .2rem}
+.ed-verif input{flex:1;min-width:320px;padding:.45rem .7rem;border:2px solid var(--bordure);border-radius:8px;font-family:inherit;font-size:.92rem}
+.ed-verif.manque input{border-color:#EF4444;background:#FEF2F2}
+.recap-comp{line-height:1.75!important}
+.recap-comp .prov{text-decoration-thickness:2px;text-underline-offset:2px}
+.comp-l .prov{display:inline-block;margin-bottom:5px}

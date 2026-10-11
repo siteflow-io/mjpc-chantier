@@ -1,0 +1,8 @@
+/* Tour 626 : le bilan général */
+.bilan626{margin-top:.9rem}
+.bilan626 h3{margin:0 0 .5rem 0;font-size:1rem;display:flex;align-items:center;gap:.4rem}
+.ta626{width:100%;min-height:90px;padding:10px 14px;font-size:.92rem;border-radius:8px;border:1.5px solid var(--bordure);line-height:1.7;background:#fff}
+.pied626{display:flex;justify-content:space-between;align-items:center;margin-top:8px;gap:8px;flex-wrap:wrap}
+.st626{font-size:.78rem;color:#E8590C;font-weight:700}
+.bilan626-eleve p{line-height:1.7;margin:.2rem 0 0;font-size:1rem}
+.bilan626 .info-tip{max-width:520px;white-space:normal}

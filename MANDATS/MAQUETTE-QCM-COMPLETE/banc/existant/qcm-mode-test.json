@@ -1,0 +1,231 @@
+{
+ "ecran": "mode-test",
+ "source": "evaluation-qcm.html (7.7.1, md5 ecae65624855a1a877708986a8e984e5), jouée sur le faux hub",
+ "comment": "",
+ "scenes": [
+  "x620-1-mode-test-ouverture",
+  "x620-2-mode-test-reflexion",
+  "x620-3-mode-test-en-grand"
+ ],
+ "eleve": false,
+ "boutons": [
+  {
+   "l": "📥 Exporter snapshot test",
+   "t": "Exporte un snapshot complet de la base de données (incluant la session de test) au format JSON. Utile pour partager l'état exact en cas de bug à investiguer."
+  },
+  {
+   "l": "📱 QR pilotage",
+   "t": "Affiche un QR code à scanner avec ton téléphone pour piloter la session de test à distance. Pour vérifier que la VuePhone fonctionne en mode test."
+  },
+  {
+   "l": "🗑️ Sortir et purger",
+   "t": "Termine le mode test : supprime la classe _TEST, l'éval test et toutes les sessions associées. Aucune donnée réelle n'est affectée."
+  },
+  {
+   "l": "🔒 Clôturer (chemin réel)",
+   "t": "Appelle cloturerSession() — le chemin exact du bouton « Terminer la session »."
+  },
+  {
+   "l": "✏️ Modifier l'éval après coup",
+   "t": "Change la bonne réponse de la question 1 après coup : le geste qui causait le recalcul rétroactif."
+  },
+  {
+   "l": "⚖️ Vérifier que les notes n'ont pas bougé",
+   "t": "Recompte les notes de la classe telles qu'elles étaient le jour de l'évaluation, puis telles qu'elles seraient avec l'énoncé actuel."
+  },
+  {
+   "l": "⏱️ Faire expirer le chrono",
+   "t": "Repousse le départ du chrono dans le passé : peutRepondre refuse immédiatement, sans attendre."
+  },
+  {
+   "l": "🔄 Relire l'état",
+   "t": ""
+  },
+  {
+   "l": "👋 Ouvrir le portail élève",
+   "t": "Monte le VRAI composant élève (AppEleve → EleveLogin), pas une simulation."
+  },
+  {
+   "l": "🚫 Départ d'un élève",
+   "t": "Marque un élève comme parti en cours de session. Ses réponses déjà données restent enregistrées (sa note sera calculée au prorata des questions auxquelles il a participé). L'absence est tracée pour le suivi longitudinal MJPC."
+  },
+  {
+   "l": "🛑 Terminer la session",
+   "t": "Termine la session immédiatement. Les élèves verront un écran de fin. Utile si tu dois interrompre l'évaluation (cours coupé, problème technique). Les résultats restent consultables dans l'onglet Résultats."
+  },
+  {
+   "l": "💾 Sauvegarder",
+   "t": "Sauvegarde les nouvelles durées globalement (toutes évaluations confondues)."
+  },
+  {
+   "l": "🔄 Par défaut",
+   "t": "Réinitialiser aux valeurs par défaut (5/10/15/20s)."
+  },
+  {
+   "l": "▶️ Lancer Q1",
+   "t": "Démarre la session : la question 1 s'affiche côté élève en phase réflexion."
+  },
+  {
+   "l": "AUDEBERT Élise",
+   "t": "AUDEBERT Élise — Connecté, n'a pas encore répondu."
+  },
+  {
+   "l": "AUGEREAU Gatien",
+   "t": "AUGEREAU Gatien — Connecté, n'a pas encore répondu."
+  },
+  {
+   "l": "BOIVIN Eden",
+   "t": "BOIVIN Eden — Connecté, n'a pas encore répondu."
+  },
+  {
+   "l": "BOURREAU Céleste",
+   "t": "BOURREAU Céleste — Connecté, n'a pas encore répondu."
+  },
+  {
+   "l": "BRESSIN Titouan",
+   "t": "BRESSIN Titouan — Connecté, n'a pas encore répondu."
+  },
+  {
+   "l": "CALDEIRA Tiago",
+   "t": "CALDEIRA Tiago — Connecté, n'a pas encore répondu."
+  },
+  {
+   "l": "CESBRON Lili",
+   "t": "CESBRON Lili — Connecté, n'a pas encore répondu."
+  },
+  {
+   "l": "CHALUMEAU Jules",
+   "t": "CHALUMEAU Jules — Connecté, n'a pas encore répondu."
+  },
+  {
+   "l": "CHAN Aymeric",
+   "t": "CHAN Aymeric — Connecté, n'a pas encore répondu."
+  },
+  {
+   "l": "CHARRIER Line",
+   "t": "CHARRIER Line — Connecté, n'a pas encore répondu."
+  },
+  {
+   "l": "CHOLET Pierre",
+   "t": "CHOLET Pierre — Connecté, n'a pas encore répondu."
+  },
+  {
+   "l": "CHOUTEAU Baptistine",
+   "t": "CHOUTEAU Baptistine — Connecté, n'a pas encore répondu."
+  },
+  {
+   "l": "DELACROIX Romain",
+   "t": "DELACROIX Romain — Connecté, n'a pas encore répondu."
+  },
+  {
+   "l": "DESBOIS Auriane",
+   "t": "DESBOIS Auriane — Connecté, n'a pas encore répondu."
+  },
+  {
+   "l": "DESLIN Lucas",
+   "t": "DESLIN Lucas — Connecté, n'a pas encore répondu."
+  },
+  {
+   "l": "DITTIERE Romane",
+   "t": "DITTIERE Romane — Connecté, n'a pas encore répondu."
+  },
+  {
+   "l": "HEINRICH Clovis",
+   "t": "HEINRICH Clovis — Connecté, n'a pas encore répondu."
+  },
+  {
+   "l": "JAMIN Noé",
+   "t": "JAMIN Noé — Connecté, n'a pas encore répondu."
+  },
+  {
+   "l": "JUIN Angèle",
+   "t": "JUIN Angèle — Connecté, n'a pas encore répondu."
+  },
+  {
+   "l": "KOCK Elisa",
+   "t": "KOCK Elisa — Connecté, n'a pas encore répondu."
+  },
+  {
+   "l": "LAURY Maël",
+   "t": "LAURY Maël — Connecté, n'a pas encore répondu."
+  },
+  {
+   "l": "PAGEOT Elie",
+   "t": "PAGEOT Elie — Connecté, n'a pas encore répondu."
+  },
+  {
+   "l": "PINET Charlotte",
+   "t": "PINET Charlotte — Connecté, n'a pas encore répondu."
+  },
+  {
+   "l": "POULAIN Zélia",
+   "t": "POULAIN Zélia — Connecté, n'a pas encore répondu."
+  },
+  {
+   "l": "REVET Lucas",
+   "t": "REVET Lucas — Connecté, n'a pas encore répondu."
+  },
+  {
+   "l": "ROLLAND Gabriel",
+   "t": "ROLLAND Gabriel — Connecté, n'a pas encore répondu."
+  },
+  {
+   "l": "ROULLEAU Candice",
+   "t": "ROULLEAU Candice — Connecté, n'a pas encore répondu."
+  },
+  {
+   "l": "TENNEGUIN Arthur",
+   "t": "TENNEGUIN Arthur — Connecté, n'a pas encore répondu."
+  },
+  {
+   "l": "XAVIER Capucine",
+   "t": "XAVIER Capucine — Connecté, n'a pas encore répondu."
+  },
+  {
+   "l": "VINET Émile",
+   "t": "VINET Émile — Connecté, n'a pas encore répondu."
+  },
+  {
+   "l": "🎲 Tous les élèves répondent",
+   "t": "Simule les réponses de TOUS les élèves restants (qui n'ont pas encore répondu ou voté) avec un délai aléatoire entre chaque (200-1500ms), pour reproduire une vraie situation de classe. Fonctionne en phase « réponse » (vote aléatoire parmi les choix de la question) ET en phase « autoeval » (vote aléatoire parmi les 4 fourchettes)."
+  }
+ ],
+ "champs": [
+  "input",
+  "input",
+  "input",
+  "input",
+  "input"
+ ],
+ "cases": [],
+ "titres": [
+  "Nombre d'élèves actuellement connectés à l'app sur leur poste vs. nombre total d'élèves de la classe.",
+  "Nombre d'élèves qui ont validé une réponse à la question en cours vs. nombre total. Te permet de voir d'un coup d'œil si tu peux clore.",
+  "Nombre d'élèves ayant répondu juste vs. nombre d'élèves ayant répondu (pas vs. total). Indicateur du taux de réussite en direct.",
+  "Question en cours vs. nombre total de questions de l'évaluation.",
+  "Aucune question lancée pour l'instant. Clique sur 'Lancer Q1' pour démarrer.",
+  "Chrono RÉFLEXION : durée pendant laquelle l'élève rédige sa réponse au stylo (choix masqués). Défini par le niveau de la question — clique sur les pastilles colorées ci-dessous pour le changer.",
+  "Chrono RÉPONSE : durée pendant laquelle l'élève voit les choix et clique sa lettre. Réglable directement ici.",
+  "Cliquer pour sauter à la question 1",
+  "Lyon",
+  "Paris",
+  "Marseille",
+  "Bordeaux",
+  "Cliquer pour sauter à la question 2",
+  "Milan",
+  "Naples",
+  "Rome",
+  "Venise",
+  "Cliquer pour sauter à la question 3",
+  "Madrid",
+  "Genève",
+  "Berlin",
+  "Athènes",
+  "Cliquer pour sauter à la question 4",
+  "Oulan-Bator",
+  "Pékin",
+  "Astana",
+  "Tachkent"
+ ],
+ "phrases": []
+}

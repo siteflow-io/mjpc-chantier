@@ -19843,3 +19843,31 @@ Réponse mot pour mot :
 732. **Les sorties et les captures des tests sont sur le sas** : https://github.com/siteflow-io/mjpc-chantier/blob/main/AUDITS/MAQUETTE-QCM-COMPLEMENT-2-11-10/README.md (section du tour 646). La maquette attend ta validation (719, 720).
 
 11/10/2026 13:12 MEMO
+
+---
+
+## TOUR 647 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (11/10, 13:15) Promeus
+
+---
+
+## TOUR 647 — Claude (conscience n°12)
+
+Relu le protocole maquette (§6 : après la validation, le mandat prend le relais) et les précédents de « promeus » (des promotions de code). Branche `maquette-qcm` (`c6611fb3`) fusionnée dans `main` du sas, 344 fichiers, tous dans `MANDATS/MAQUETTE-QCM-COMPLETE/`, et note `VALIDEE.md` (md5 de la v7 et du livret). En production : journal, où trouver quoi, et les dettes n°12 · 87, 88 et 212 mis à jour (commit `ad8d2c7`) ; `index.html` et `evaluation-qcm.html` inchangés.
+
+Réponse mot pour mot :
+
+733. **J'ai compris « Promeus » comme la validation de la maquette.** Une maquette ne va pas dans le site : elle devient la référence que le code devra suivre.
+
+734. **C'est fait.** La maquette v7 (md5 6be84ea1…) est fusionnée dans la branche principale du sas, avec une note de validation : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/MAQUETTE-QCM-COMPLETE/VALIDEE.md. C'est désormais elle qui fait foi pour le code, écran par écran.
+
+735. **Rien n'a changé dans le site** : index.html et evaluation-qcm.html sont identiques, md5 vérifiés. Les dettes 87, 88 et 212 indiquent maintenant « maquette validée » ; elles seront réglées avec le code.
+
+736. **Les documents de suivi sont à jour dans la production** : le journal, « où trouver quoi » et le registre.
+
+737. **La suite, c'est le mandat de code.** Il a deux parties. La partie QCM (evaluation-qcm.html) peut partir tout de suite. La partie MJPC (index.html) attend que le déroulé soit promu (677). Ma proposition : je l'écris en commençant par la partie QCM, quand tu me le dis.
+
+11/10/2026 13:17 MEMO

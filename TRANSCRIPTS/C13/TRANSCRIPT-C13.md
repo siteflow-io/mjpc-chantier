@@ -1227,3 +1227,5 @@ Réponse mot pour mot :
 Tests pour toi : aucun nouveau ; les cinq du point 130 sont maintenant vérifiés des deux côtés (toi et moi).
 
 11/10/2026 09:05 MEMO
+
+137. **Ma faute, déclarée** : pour jouer les tests, j'ai extrait les fichiers de la livraison p8-5 (`git checkout origin/deroule/p8-5 -- LIVRAISONS/DEROULE/p8-5`) directement dans ma copie de travail de `main`. Au moment de déposer ce tour, j'ai commis `TRANSCRIPTS/C13/TRANSCRIPT-C13.md` en pensant ne viser que ce fichier, mais ces 64 fichiers de la livraison, déjà présents dans l'index, sont partis avec — poussés sur `main` du sas par erreur (commit `30a72fa`). Je l'ai vu en relisant le résultat du push, et je l'ai corrigé tout de suite (commit `0c0d68b`, retrait de ces 64 fichiers de `main` — ils restent sur leur branche `deroule/p8-5`, où ils doivent être). Relu : `main` ne porte plus que les documents du sas.

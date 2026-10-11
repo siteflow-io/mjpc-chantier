@@ -19933,3 +19933,35 @@ Réponse mot pour mot :
 750. **Si c'est bon pour toi, j'écris le mandat MJPC.**
 
 11/10/2026 13:26 MEMO
+
+---
+
+## TOUR 650 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (11/10, 14:04) la maquette, il me semble qu'il y a encore tous les textes explicatifs maquette, non? par ailleurs, le filtre doit aussi afficher "par classe" afin que je puisse voir les évals par classe. comme dans dictée. ou alors des sections permanentes avec les niveaux. et d'ailleurs, les qcm doivent aussi déclarer un niveau, comme dans correction dictée parce que ça permet de les lier à un niveau dans mjpc. non? vérifie. enfin, sur la maquette, quand je passe ma souris sur un élément, je dois avoir l'infobulle pour savoir ce que c'est, ce que ça fait dans le contexte actuel de l'écran, etc. Dis moi.
+
+---
+
+## TOUR 650 — Claude (conscience n°12)
+
+Mesuré sur la v7, dans les 109 scènes de Paul : les textes longs absents du site d'aujourd'hui (`scripts/textes.js`), les infobulles au survol (`scripts/bulles.js`). Relu `correction_dictee.html` (liste « Mes dictées », l. 3460-3466 ; « Niveau » et « Classe » d'une dictée, l. 3500-3501 ; `config.niveau` et `config.classe` au hub) et `index.html` (le lien d'une ressource à un chapitre, l. 4295-4310, 3806). Rapport : `AUDITS/MAQUETTE-QCM-REMARQUES-11-10/`. Note de validation complétée.
+
+Réponse mot pour mot :
+
+751. **Les textes explicatifs : oui, mesuré.** Sur tes écrans (console, téléphone, MJPC), 220 textes longs n'existent pas dans ton site d'aujourd'hui. La plupart sont des données ou des états : noms, notes, alertes, erreurs de collage. Mais une soixantaine, comptés à la lecture, sont des explications de règles écrites pour la validation. Par exemple : « Tant qu'elle n'est pas terminée, cette séance ne compte pas comme « QCM précédent » pour les binômes. » ou « Elle vaut dans les deux sens, et pour toutes les apps qui partagent une tablette… ».
+
+752. **Ma proposition, qui règle aussi ton dernier point** : à l'écran, il ne reste que ce dont tu as besoin pour agir, c'est-à-dire les états, les données, les alertes et les erreurs. Chaque explication de règle va dans l'infobulle de l'élément qu'elle concerne, ou dans le mode d'emploi. Une fenêtre de confirmation ne garde qu'une phrase : ce que le geste fait et ce qu'il coûte.
+
+753. **Les infobulles : mesuré, il en manque beaucoup.** Sur tes 109 écrans, 269 gestes sur 4 893 n'en ont pas, et 866 affichages sur 1 095 non plus : les niveaux de maîtrise, les phases, les chronos, les compteurs, « MODE PROF »… Ma proposition : chaque élément de tes écrans porte son infobulle, celle que le code gardera, qui dit ce que c'est, ce qu'il fait ici et ce qu'il coûte. Le banc le vérifie au survol, élément par élément.
+
+754. **Une tension sur ce point** : côté élève, ta règle du 06/10 dit « jamais de consigne en infobulle ». Ma proposition : les écrans des tablettes et du tableau restent sans infobulle, puisqu'ils sont au tactile et que l'élève n'en a pas besoin. Pour toi, ce qu'ils font est dans la phrase de chaque écran du livret. Si tu veux aussi des infobulles sur les écrans d'élève, dis-le.
+
+755. **Le rangement des évaluations : mesuré, la maquette s'écarte de la dictée.** La dictée montre toujours ses quatre niveaux, même vides (« vide pour l'instant »), et chaque dictée y indique sa classe. La maquette n'affiche que les niveaux qui ont une évaluation : c'est contraire au point 465 (« comme dans la correction de dictée »). Ma proposition : les quatre niveaux en sections permanentes, comme dans la dictée, plus « Sans chapitre » tant qu'il reste des évaluations à compléter. Et, dans le tri, « classe » en plus de date, titre et chapitre : les évaluations sont alors rangées sous chaque classe qui les a passées.
+
+756. **Le niveau d'une évaluation : vérifié, c'est déjà le cas, et même un cran plus fin que dans la dictée.** Une évaluation déclare son chapitre de MJPC (le prompt le demande d'abord), et le chapitre porte son niveau : la maquette affiche « 3e · Ch. 1 » et range l'évaluation sous « 3e ». Dans MJPC, une évaluation se lie à un chapitre comme une dictée, par 🔗 en mode admin. Seules tes 7 anciennes évaluations n'ont pas encore de niveau : elles sont « Sans chapitre » jusqu'à ce que tu les complètes (741).
+
+757. **Tout cela fait un complément 3 de la maquette**, avant les deux mandats de code, puisqu'il touche aussi les écrans de MJPC. Dès que tu as tranché le point 754, je l'écris. Les mesures sont au sas : https://github.com/siteflow-io/mjpc-chantier/blob/main/AUDITS/MAQUETTE-QCM-REMARQUES-11-10/README.md
+
+11/10/2026 14:10 MEMO

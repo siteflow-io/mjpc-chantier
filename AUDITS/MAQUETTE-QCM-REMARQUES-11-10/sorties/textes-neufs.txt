@@ -1,0 +1,221 @@
+109 scènes de Paul ; 241 textes longs ; 220 absents du site d'aujourd'hui :
+  4 · c-evals · ✅ Prête à lancer · rien ne compte : ni note, ni compétence · revient d'elle-même après toute purge
+ 28 · c-evals · ⚠️ À compléter avant de la lancer : le chapitre, les deux temps de chaque question, les compétences, ce que chaque question vérifie
+ 22 · c-evals · 3e Chapitre 1 — Poésie et peinture au XIXème siècle · Interro de cours (séance 3)
+  1 · c-eval-corbeille · Elle part dans la corbeille du site, gardée un an, avec ses questions. Ses séances passées gardent leurs notes. Tu la restaures depuis 💾 Sauvegarde → 🗑️ Corbeille. La démo, elle, n'a pas de corbeille : elle est permanente.
+  1 · c-collage · Question 5 : il manque ce qu'elle vérifie (« verifie »), la courte phrase à l'infinitif du bilan de l'élève.
+  1 · c-collage · Question 7 : 60 px de trop sur une demi-tablette. Raccourcis l'énoncé ou les choix, ou dis-moi que j'assume la longueur.
+  1 · c-collage · Question 7 : la compétence « c4-oral-01 » n'est pas une compétence du chapitre (3e · Ch. 1 — Poésie et peinture au XIXe siècle).
+  1 · c-collage · La compétence « c4-culture-02 » n'est évaluée que par 2 questions (Q3, Q8) : il en faut au moins 3.
+  1 · c-collage · ✅ Le reste est bon : chapitre « 3e · Ch. 1 — Poésie et peinture au XIXe siècle », mode tout ou rien, 12 questions, 4 compétences du chapitre ; la question 11 porte « longueur assumée » : elle passe, et sa moitié défilera seule.
+  1 · x627-3-editeur · Une part du point par bonne case ; autant de retiré par mauvaise (plancher 0)
+  1 · x627-3-editeur · 🧩 Les compétences de cette évaluation — chacune porte sur au moins 3 questionsi
+  2 · x627-3-editeur · Construire les notions permettant l'analyse et l'élaboration des textes et des discours
+  6 · x627-3-editeur · Mobiliser des références culturelles pour interpréter les textes et les créations artistiques et littéraires et pour enrichir son expression personnelle
+  1 · x627-3-editeur · Les autres compétences du chapitre, pas évaluées ici : c4-lire-01 · c4-lire-02 · c4-lire-03 · c4-culture-02 · c4-langue-01 · c4-ecrire-02 · c4-ecrire-03 · c4-oral-02 · c4-oral-04
+  3 · x627-3-editeur · Question bonus : elle compte dans les points gagnés, pas dans le total
+  1 · x627-3-editeur · 📏 Longueur assumée : 60 px de trop sur une demi-tablette ; tu l'as dit à l'instance JSON. Sa moitié défilera seule, la page ne bouge pas.
+  1 · x627-3-editeur · ⚠️ Il reste à compléter : Q10, les deux temps, au moins une compétence et ce qu'elle vérifie.
+  1 · c-feuille · Quel mouvement du XIXe siècle met en avant les sentiments personnels et la nature sauvage ?
+  1 · c-feuille · Quel registre exprime les sentiments personnels du poète au moyen de rythmes et d'images ?
+  1 · c-feuille · Dans le vers « Souvent, pour s'amuser, les hommes d'équipage », quelle figure sonore entend-on ?
+  1 · c-feuille · Dans le vers « Le navire glissant sur les gouffres amers », le e final de « navire » se prononce-t-il, et pourquoi ?
+  1 · c-feuille · « La mer, ce grand miroir, brille de mille feux » : quelle figure de style rapproche ici la mer et le miroir ?
+  1 · c-feuille · Quelles sont les dispositions régulières des rimes dans la poésie classique ?
+  1 · c-feuille · Dans les vers « Laissent piteusement leurs grandes ailes blanches / Comme des avirons traîner à côté d'eux », la phrase continue d'un vers à l'autre. Comment appelle-t-on ce procédé ?
+  1 · c-feuille · BONUS — Un poème de Baudelaire ne comporte ni vers ni rimes. Quel est le type de ce poème, et que montre-t-il sur les règles de la poésie ?
+ 11 · c-lancer · ⏱️ Durée estimée : 15 min — installation et consignes 5 min ; questions 4 min 30 (pour chacune : la réflexion, puis deux tours de 3 s de décompte, de réponse et de 5 s où l'élève dit si sa feuille dit la même chose, puis 15 s) ; c
+ 11 · c-lancer · Classement du QCM précédent, puis 1-2, 3-4… Glisse un nom sur un autre pour échanger deux élèves, ou sur une moitié vide pour l'y déplacer. Tu peux le faire jusqu'au bout de l'heure.
+ 11 · c-lancer · 🚫 2 exclusions de MJPC respectées : le classement mettait CARRÉ Tom avec ESNAULT Inès, et QUINTON Enzo avec OLLIVIER Sacha ; chacun a été échangé avec le binôme le plus proche.
+  1 · c-appel · 📱 CHEVALLIER Théo (binôme d'Adam) et ZELLER Lou (seule) sont mis ensemble : tablette 12.
+  1 · c-appel · lancement + 55 min ; les tablettes oublient leurs élèves à « Terminer », ou 10 min après.
+  1 · c-demo-lancer · 🎓 La démo : rien ne compte. Tu la joues avec la classe, sur les tablettes, comme une vraie : l'identification avec les vrais codes, l'appel, les binômes, les attestations, les questions, la correction, la co-évaluation. Pas de no
+  1 · c-demo-faite · rien ne compte : ni note, ni compétence ; elle ne sert jamais aux binômes
+  7 · c-pret · Difficulté Facile · réflexion 20 s · réponse 15 s par tour · 1 bonne(s) réponse(s)
+ 16 · c-q1-reflexion · Difficulté Standard · réflexion 30 s · réponse 20 s par tour · 2 bonne(s) réponse(s)
+  1 · c-voir-tablette · Ce que montrent ses deux moitiés, maintenant : 1er tour de la question 1.
+  1 · c-voir-tablette · Michel, laisse la tablette à Julien pour qu'il réponde sans que tu regardes.
+  1 · p-reponse · ✓ juste · ✓+ une en trop · ½ une sur deux · ✗ faux · 🙈 attend son tour · ⏳ répond
+  1 · c-ecarter · Elle ne sera ni posée ni corrigée. Elle sort du total de la note et des compétences, comme une question manquée par un absent : les tablettes et le tableau comptent sans elle (« Question 2 / 2 »).
+  1 · c-ecarter · ⚠️ Les compétences c4-culture-01 et c4-lire-01 ne seront plus évaluées que par 2 questions : il en faut 3 pour que les quatre niveaux soient possibles.
+  1 · c-ecarter · « ↩️ Remettre » la défait, tant que son tour n'est pas passé. Une question bonus écartée ne change rien à la note : c'est ton fusible.
+  1 · c-ecartee · ⚠️ c4-culture-01 et c4-lire-01 ne sont plus évaluées que par 2 questions : leurs niveaux seront moins fins (il en faut 3).
+  5 · c-q2-close · « Rouvrir pour tous » ne rouvre que pour ceux qui n'ont pas répondu, une fois par question.
+  1 · c-annuler · Elle a été posée, mais elle ne comptera pas : elle sort du total de la note et des compétences. Ses réponses restent gardées.
+  1 · c-annuler · Dans leur bilan, les élèves liront : « Question 2 · annulée : elle ne compte pas. »
+  1 · c-annuler · Dans ta console et tes résultats, elle garde sa marque « ⚠️ Annulée — posée, puis annulée », pour que tu voies toujours la raison. « ↩️ Remettre » la défait.
+  1 · c-rouvrir-tous · Ici : CHEVALLIER Théo (tablette 12). Les deux tours reprennent pour lui seul, avec le temps de réponse de la question ; ZELLER Lou porte le voile ordinaire. Une réponse donnée est définitive : les 23 autres ne changent rien.
+  1 · c-rouvrir-un · Une seule fois par question. Il a le temps de réponse de la question (20 s). Pendant son tour, ZELLER Lou porte le voile, comme d'habitude.
+  1 · p-eleve · État actuel : n'a pas encore répondu. Pendant son tour, Lou porte le voile.
+  1 · c-depart · Il ne bloque plus la classe : son binôme continue seul ; ses questions manquées sortent de son total (« noté sur 7 questions sur 11 »), et tu fixes sa note d'après sa feuille.
+  1 · c-deplacer · ABRIAL Julien et CHEVALLIER Théo échangés : leurs réponses déjà données les suivent
+  1 · c-terminer · La séance est close, et l'archive s'écrit avec les notes telles qu'elles sont, quelle que soit la phase. Les questions pas encore corrigées n'ont pas de recopie : tu fixes ces notes d'après les feuilles, dans Données → Résultats.
+  1 · c-terminer · Les tablettes oublient leurs élèves et reviennent à « Combien êtes-vous sur cette tablette ? ».
+  1 · c-mode-emploi · Deux élèves par tablette, une moitié chacun. Tu lances depuis « 🎯 Pilotage classe » : la classe, l'évaluation, la durée comptée, les binômes proposés (d'abord les exclusions de MJPC, puis le classement du QCM précédent) ; l'appel
+  1 · c-mode-emploi · Réflexion : l'énoncé sans les choix, chacun écrit sa réponse en entier sur sa feuille. Puis « POSE TON STYLO » : au 1er tour, l'un répond pendant que l'autre, voilé, lui laisse la tablette ; au 2e tour, l'inverse, choix mélangés. 
+  1 · c-mode-emploi · Après l'estimation et la seconde attestation, chaque question, de la plus ratée à la mieux réussie : chacun lit la feuille de son voisin et clique ce qu'elle dit, avant la révélation (« 🔒 Révéler » attend tous les présents). Tu c
+  1 · c-mode-emploi · La note, c'est la feuille. Une question vaut au plus 1 point : en tout ou rien, 1 ou 0 ; en partiel, une part du point par bonne case, autant de retiré par mauvaise, sans descendre sous 0. Une fois par évaluation, une question don
+  1 · c-mode-emploi · Données → Résultats : les notes, les compétences, les feuilles à lire (lecture contestée, « aucun de ces choix », « Non » au clic). « Que dit la feuille ? » corrige une question ou fixe une note. Le bilan général de chaque élève e
+  1 · c-mode-emploi · Chaque élève commence avec son point : « Travailler seul et de façon responsable » et « S'investir dans son travail, en classe et à la maison », côté élève (les intitulés officiels dans le PDF). « ⛔ Retirer le point d'autonomie »,
+  1 · c-finir-autre-heure · La séance garde son état exact : la question, le tour, les lectures, les notes provisoires. Les tablettes oublient leurs élèves à la fin de l'heure, comme d'habitude.
+  1 · c-finir-autre-heure · À l'heure suivante, « 🎯 Pilotage classe » propose « ▶️ Reprendre la séance du 09/10 — question 1, 1er tour » : l'appel, les mêmes binômes (un absent se remplace comme au début), les élèves entrent, et le tour en cours recommence 
+  1 · c-finir-autre-heure · Tant qu'elle n'est pas terminée, cette séance ne compte pas comme « QCM précédent » pour les binômes.
+  2 · c-reprendre · ↳ pas encore « QCM précédent » : elle ne sert pas aux binômes tant qu'elle n'est pas terminée
+  1 · c-rouvrir-seance · Elle reprend exactement là où elle s'était terminée. Ses copies étaient rendues : elles sont masquées aux élèves jusqu'au prochain « Rendre les copies ».
+  1 · c-rouvrir-seance · Tant qu'elle est rouverte, elle ne compte plus comme « QCM précédent » pour les binômes.
+  1 · c-sessions · 🛑 Terminer : la séance est close, et l'archive s'écrit avec les notes telles qu'elles sont, quelle que soit la phase. Les élèves voient l'écran de fin.
+  1 · c-interrompue · 📝 État : question 2, 2e tour (moitiés de gauche) ; 35 réponses enregistrées
+  1 · c-interrompue · 🔄 Reprendre : le tour en cours recommence au début, voile compris : les moitiés de gauche repassent la question 2, avec tout leur temps. Une réponse déjà donnée reste.
+  1 · c-interrompue · 🛑 Terminer définitivement : la séance est close, et l'archive s'écrit avec les notes telles qu'elles sont. Les questions pas encore corrigées n'ont pas de lecture : tu fixes ces notes d'après les feuilles, dans Données → Résultat
+  1 · c-interrompue · ⏸️ Finir à une autre heure : la séance garde son état exact et se reprend à une heure suivante, depuis « 🎯 Pilotage classe ».
+  1 · c-attest2 · La correction commence quand les 24 présents ont coché la seconde attestation. Il en manque 4 :
+  1 · c-attest2 · La correction commence par Q2, la plus ratée sur les tablettes (9 / 24 justes).
+  2 · c-corr-q2-avant · sur 20 s, le temps de réponse de la question · orange à la moitié, rouge les 5 dernières secondes
+  1 · c-corr-q2-avant · « 💡 Révéler » s'ouvre quand les 24 présents ont lu la feuille de leur voisin. Il en manque 6 :
+  1 · c-corr-q2-avant · DUVERNAY Michel · CARRÉ Tom · FOUCHER Hugo · OLLIVIER Sacha · VALLÉE Rayan · CHEVALLIER Théo
+  1 · c-corr-q2-avant · Le nom est celui dont la feuille n'est pas encore lue. Une tablette en panne : « 🚫 Départ d'un élève », en haut ; il ne bloque plus, ses questions sortent du total et tu fixes sa note d'après sa feuille.
+  1 · p-corr-avant · Feuille pas encore lue : DUVERNAY Michel · CARRÉ Tom · FOUCHER Hugo · OLLIVIER Sacha · VALLÉE Rayan · CHEVALLIER Théo
+  1 · p-corr-avant · Une tablette en panne : un clic sur le nom, puis « 🚫 Marquer comme parti ».
+ 16 · c-corr-q2-apres · TESSIER Anna — Q2 : a dit que sa feuille disait son clic, Madrid ; Rayan y a lu Madrid et Genève
+  2 · p-corr-apres · 📌 À lire ce soir (1) : TESSIER Anna — Q2 : a dit que sa feuille disait son clic, Madrid ; Rayan y a lu Madrid et Genève
+ 11 · c-corr-q1-apres · DUVERNAY Michel — Q1 : a dit que sa feuille ne disait pas son clic, Venise ; Julien y a lu Venise
+  1 · c-autonomie · Il commence l'évaluation avec son point d'autonomie : ses deux compétences d'autonomie sont en Très bonne maîtrise. Le retirer les met en Maîtrise insuffisante ; sa note ne bouge pas, puisque la note, c'est la feuille.
+  2 · c-autonomie · Il ne le voit pas en direct : son voisin regarde la tablette. Il le lit dans son bilan et dans « Mes évaluations », en compétences atteintes ou non atteintes.
+  6 · c-autonomie-garde · Ses deux compétences d'autonomie passent en Maîtrise insuffisante, pour cette évaluation : « Être autonome et responsable » et « S'impliquer dans les activités en classe et dans son travail personnel ». La note ne bouge pas.
+  4 · c-autonomie-garde · Côté élève, son bilan dira : « Travailler seul et de façon responsable » et « S'investir dans son travail, en classe et à la maison » non atteintes. « ↩️ Rendre » le défait, en direct ou le soir, dans sa fiche.
+  1 · c-autonomie-retiree · 🔴 Point d'autonomie retiré à 10:41. Ses deux compétences d'autonomie sont en Maîtrise insuffisante ; sa note ne bouge pas.
+  8 · c-coeval-attente · ❌ DUVERNAY Michel pense qu'ABRIAL Julien a mal lu sa feuille à la question 1
+  8 · c-coeval-attente · Après la correction, Michel dit avoir écrit Rome. Il connaissait alors la bonne réponse.
+  8 · c-coeval-attente · 👉 Pendant la question, avant de connaître la réponse, Michel avait cliqué Venise et dit que sa feuille ne disait pas Venise : ça va dans son sens.
+  8 · c-coeval-attente · L'alerte est apparue quand Michel a cliqué ce qu'il avait écrit ; elle disparaît s'il change d'avis avant le bilan. Aucun point d'autonomie n'est retiré tout seul : c'est toi qui décides.
+ 13 · c-coeval-attente · Fin de la correction — chacun dit ce qu'il pense de la lecture de sa feuille · 20 / 24 ont répondu
+ 13 · c-coeval-attente · « 🏁 Afficher leur bilan aux élèves » s'ouvre quand les 24 présents ont répondu. Il en manque 4 :
+ 15 · c-coeval-attente · Chaque moitié dit ce que cet élève pense de la lecture de sa feuille par son voisin.
+  1 · c-coeval-feuille · Julien y a lu Venise ; Michel dit avoir écrit Rome. Clique sur ce que dit sa feuille.
+  2 · c-autonomie-deux · Leurs deux compétences d'autonomie passent en Maîtrise insuffisante, pour cette évaluation : « Être autonome et responsable » et « S'impliquer dans les activités en classe et dans son travail personnel ». La note ne bouge pas.
+  1 · c-coeval-tranche · La question 1 de DUVERNAY Michel passe à 1 point, « Corrigé d'après ta feuille » dans son bilan : sa note provisoire passe à 1 / 3.
+  2 · c-coeval-tranche · Fin de la correction — chacun dit ce qu'il pense de la lecture de sa feuille · 24 / 24 ont répondu
+  6 · x610-8-console-alerte · ❌ DUVERNAY Michel pense qu'ABRIAL Julien a mal lu sa feuille à la question 3
+  6 · x610-8-console-alerte · Q3 · Comment trouves-tu l'antécédent d'un Pronom Relatif, et dans quel sens va la flèche à l'étape 4?
+  5 · x610-8-console-alerte · E ✓ La réponse est l'antécédent, toujours écrit avant le Pronom Relatif, et la flèche va de droite à gauche, du Pronom Relatif à l'antécédent
+  6 · x610-8-console-alerte · Michel, pendant la question, avant la réponse : il a cliqué C, E et dit « Oui, la même chose »
+  6 · x610-8-console-alerte · 👉 Avant de connaître la réponse, Michel disait C, E : ni ce que Julien a lu, ni ce que Michel dit maintenant. Seule la lecture faite après la réponse donne le point.
+  5 · x610-8-console-alerte · L'alerte est apparue quand Michel a cliqué ce qu'il avait écrit ; elle disparaît s'il change d'avis avant le bilan. Chaque bouton a sa confirmation et son retour.
+  6 · x610-8-console-alerte · PERRAUD Jade — Q9 : 🤔 pense qu'Enzo a peut-être mal lu sa feuille ; elle dit avoir écrit : un point-virgule
+  6 · x610-8-console-alerte · MAILLARD Noah — Q10 : 🤔 pense qu'Emma a peut-être mal lu sa feuille ; il dit avoir écrit : trois
+  6 · x610-8-console-alerte · TESSIER Anna — Q2 : a dit que sa feuille disait son clic, un nom et un pronom ; Rayan y a lu : un nom
+  1 · x610-feuille · DUVERNAY Michel — Q3 · Comment trouves-tu l'antécédent d'un Pronom Relatif, et dans quel sens va la flèche à l'étape 4?
+  1 · x610-feuille · Julien y a lu E ; Michel dit avoir écrit B, C, E. Clique sur ce que dit sa feuille : ici, C et E.
+  1 · x610-feuille · E · La réponse est l'antécédent, toujours écrit avant le Pronom Relatif, et la flèche va de droite à gauche, du Pronom Relatif à l'antécédent
+  3 · x610-autonomie-michel · Un litige est légitime ; « aux deux » est pour le cas où aucun n'a joué le jeu, par exemple chacun à moitié de bonne foi. « ↩️ Rendre » le défait, en direct ou le soir.
+  1 · x610-tranche · Ce que tu as décidé est appliqué ; sa note se recalcule, et son bilan le dira.
+  1 · x610-9-telephone-alerte · Pas encore répondu : CARRÉ Tom · OLLIVIER Sacha · VALLÉE Rayan · ZELLER Lou
+  1 · x610-9-telephone-alerte · 📌 À lire ce soir (5) : PERRAUD Jade — Q9 : 🤔 pense qu'Enzo a peut-être mal lu sa feuille ; elle dit avoir écrit : un point-virgule · MAILLARD Noah — Q10 : 🤔 pense qu'Emma a peut-être mal lu sa feuille ; il dit avoir écrit : tro
+  1 · x610-9-telephone-alerte · ✅ bien lu · 🤔 peut-être mal lu : ce soir · ❌ mal lu : alerte · ⏳ pas encore
+  1 · c-bilan · 🤝 Le point d'autonomie · Être autonome et responsable · S'impliquer dans les activités en classe et dans son travail personnel
+  1 · c-papier-lancer · 📄 Sur papier : les énoncés seuls, imprimés ; chacun répond seul sur sa feuille, sans tablette ni estimation. Tu ramasses les feuilles : la séance se met en pause. Le soir, tu remplis la grille ; à l'heure suivante, « ▶️ Reprendre
+  1 · c-papier-seance · Les élèves ont les énoncés seuls, sans les choix, et répondent sur leur feuille, seuls.
+  1 · c-papier-grille · 09/10/2026 10:02 · sur papier · 24 présents, 1 absent (YVON Adam) · ta grille, d'après les feuilles : c'est elle qui fait la note. Un clic sur une case bascule ✓ / ✗.
+  1 · c-papier-reprendre · 09/10/2026 10:02 · feuilles ramassées · ta grille est remplie : 24 feuilles saisies
+  1 · c-papier-correction · Question 1 / 3 — Q2 · toutes les corrections à la suite, dans l'ordre des erreurs de ta grille
+  2 · c-seances · 3 ESSAI — 08/10/2026 10:02 · ✅ terminée · 24 présents, 1 absent · 📌 5 feuilles à lire
+  1 · c-resultats · 08/10/2026 10:02 · 24 présents, 1 absent (YVON Adam) · questions écartées ou annulées : aucune · 5 feuilles à lire
+  1 · c-resultats · Q1 : a dit que sa feuille ne disait pas son clic, Venise ; Julien y a lu Venise · Q3 : aucun de ces choix
+  1 · c-resultats · Q2 : a dit que sa feuille disait son clic, Madrid ; Rayan y a lu Madrid et Genève
+  2 · c-resultats · ✓ juste d'après la feuille · ⛔ Trouvée au dernier moment · ✗ faux · ∅ « aucun de ces choix » · ⚠️ Annulée ou ❌ Écartée : la question garde sa marque en tête de colonne
+  4 · c-fiche · ⚠️ a dit que sa feuille ne disait pas son clic, Venise ; Julien y a lu Venise
+  6 · c-fiche · S'impliquer dans les activités en classe et dans son travail personnel
+  1 · c-fiche-garde · Son bilan général le dira, et son bilan quand sa copie lui sera rendue : « Travailler seul et de façon responsable » et « S'investir dans son travail, en classe et à la maison » non atteintes.
+  1 · c-que-dit-la-feuille · Julien a lu « Sa feuille ne dit aucun de ces choix ». Clique sur ce que dit sa feuille.
+  3 · c-seances-lues · 3 ESSAI — 08/10/2026 10:02 · ✅ terminée · 24 présents, 1 absent · ✔ 5 feuilles lues
+  1 · c-rendre · ✔ Les 5 feuilles à lire sont lues. ✔ Aucun présent sans lecture de sa feuille.
+  1 · c-rendre · Chaque élève voit, dans « Mes évaluations », sa note définitive, son bilan et le « 📝 Bilan » de sa fiche (validé, sinon celui de l'app). Le PDF « notes et compétences » s'ouvre.
+  1 · c-rendre · « 🙈 Masquer les copies » les retire ensuite, jusqu'au prochain « Rendre les copies ».
+  1 · c-resultats-rendues · 08/10/2026 10:02 · 24 présents, 1 absent (YVON Adam) · questions écartées ou annulées : aucune · copies rendues le 10/10
+  1 · c-resultats-rendues · Q1 : a dit que sa feuille ne disait pas son clic, Venise ; Julien y a lu Venise · ✔ lue · Q3 : aucun de ces choix · ✔ lue
+  1 · c-resultats-rendues · Q2 : a dit que sa feuille disait son clic, Madrid ; Rayan y a lu Madrid et Genève · ✔ lue
+  1 · x632-pdf · Évaluation : 3e- éval 1 Analyse logique - Construire une phrase complexe
+  1 · x632-pdf · Pour École Directe. Une ligne par élève, dans l'ordre alphabétique. « Note » : la note sur 20 du devoir. Chaque colonne de compétence : le niveau de maîtrise de l'élève, en toutes lettres, parmi quatre : Très bonne maîtrise, Maîtr
+  1 · x632-pdf · Commentaire : Bonne évaluation, avec quelques points isolés à surveiller. À revoir en priorité : dire ce qui peut être un antécédent, dire que faire du « et » entre deux relatives coordonnées et employer un pronom relatif composé.
+  2 · x632-pdf · Pour cette évaluation, deux compétences ne sont pas atteintes : « Travailler seul et de façon responsable » et « S'investir dans son travail, en classe et à la maison ».
+  1 · x632-pdf · Commentaire : Très belle évaluation, qui reflète une maîtrise solide. Bravo, tu sais trouver l'architecture d'une phrase complexe et trouver l'antécédent d'un pronom relatif. Même si ta maîtrise est bonne, tu peux encore t'amélior
+  1 · x632-pdf · Commentaire : Évaluation fragile. Il faut consolider les bases avant la prochaine évaluation. À revoir en priorité : dire ce qui peut être un antécédent, dire que faire du « et » entre deux relatives coordonnées et employer un pro
+  1 · x632-pdf · Commentaire : Évaluation fragile. Il faut consolider les bases avant la prochaine évaluation. À revoir en priorité : dire quand la principale se coupe en deux (DPP et FPP), écrire une phrase P.P + PSR 1 + PSR 2 et dire ce qui peut
+  1 · x632-pdf · Commentaire : Bonne évaluation, avec quelques points isolés à surveiller. À revoir en priorité : écrire une phrase P.P + PSR 1 + PSR 2, trouver l'antécédent d'un pronom relatif et écrire une phrase DPP + PSR + FPP. Bravo, tu sais 
+  1 · x632-pdf · Commentaire : Bonne évaluation, avec quelques points isolés à surveiller. À revoir en priorité : dire ce qui peut être un antécédent, employer un pronom relatif composé et trouver l'antécédent d'un pronom relatif. Bravo, tu sais é
+  1 · x632-pdf · Commentaire : Très belle évaluation, qui reflète une maîtrise solide. Bravo, tu sais trouver l'architecture d'une phrase complexe et écrire une phrase P.I : P.P + PSR. Enfin, ton estimation de ton nombre de bonnes réponses était t
+  1 · x632-pdf · Commentaire : Bonne évaluation, avec quelques points isolés à surveiller. À revoir en priorité : trouver l'antécédent d'un pronom relatif, écrire une phrase P.I : P.P + PSR et trouver l'architecture d'une phrase complexe. Bravo, t
+  1 · x632-pdf · Commentaire : Très belle évaluation, qui reflète une maîtrise solide. Bravo, tu sais trouver l'antécédent d'un pronom relatif et écrire une phrase DPP + PSR + FPP. Même si ta maîtrise est bonne, tu peux encore t'améliorer : écrire
+  1 · x632-pdf · Commentaire : Évaluation fragile. Il faut consolider les bases avant la prochaine évaluation. À revoir en priorité : écrire une phrase P.P + PSR 1 + PSR 2, dire ce qui peut être un antécédent et dire que faire du « et » entre deux
+  1 · x632-pdf · Commentaire : Très belle évaluation, qui reflète une maîtrise solide. Bravo, tu sais trouver l'architecture d'une phrase complexe et écrire une phrase P.I : P.P + PSR. Même si ta maîtrise est bonne, tu peux encore t'améliorer : éc
+  1 · x632-pdf · Commentaire : Évaluation difficile. Reprends les notions essentielles point par point. À revoir en priorité : séparer une principale d'une indépendante par le bon signe, dire quand la principale se coupe en deux (DPP et FPP) et di
+  2 · x632-pdf · Évaluation difficile. Reprends les notions essentielles point par point.
+  2 · x632-pdf · Commentaire : Très belle évaluation, qui reflète une maîtrise solide. Bravo, tu sais écrire une phrase P.I : P.P + PSR et trouver l'antécédent d'un pronom relatif. Même si ta maîtrise est bonne, tu peux encore t'améliorer : trouve
+  1 · x632-pdf · Commentaire : Évaluation fragile. Il faut consolider les bases avant la prochaine évaluation. À revoir en priorité : écrire une phrase P.P + PSR 1 + PSR 2, dire ce qui peut être un antécédent et trouver l'antécédent d'un pronom re
+  1 · x632-pdf · Commentaire : Très belle évaluation, qui reflète une maîtrise solide. Bravo, tu sais trouver l'architecture d'une phrase complexe et écrire une phrase DPP + PSR + FPP. Même si ta maîtrise est bonne, tu peux encore t'améliorer : tr
+  1 · x632-pdf · Commentaire : Évaluation difficile. Reprends les notions essentielles point par point. À revoir en priorité : compter les verbes conjugués d'une phrase complexe, dire quand la principale se coupe en deux (DPP et FPP) et écrire une
+  1 · x632-pdf · était bien trop haute : tu as nettement surestimé ce que tu avais réussi.
+  1 · x632-pdf · Commentaire : Bonne évaluation, avec quelques points isolés à surveiller. À revoir en priorité : employer un pronom relatif composé, écrire une phrase P.I : P.P + PSR et trouver l'architecture d'une phrase complexe. Bravo, tu sais
+  1 · x632-pdf · Commentaire : Évaluation fragile. Il faut consolider les bases avant la prochaine évaluation. À revoir en priorité : dire ce qui peut être un antécédent, dire que faire du « et » entre deux relatives coordonnées et employer un pro
+  1 · x632-pdf · Commentaire : Très belle évaluation, qui reflète une maîtrise solide. Bravo, tu sais trouver l'architecture d'une phrase complexe et écrire une phrase P.I : P.P + PSR. Enfin, ton estimation de ton nombre de bonnes réponses corresp
+  1 · x632-pdf · Commentaire : Évaluation fragile. Il faut consolider les bases avant la prochaine évaluation. À revoir en priorité : dire ce qui peut être un antécédent, dire que faire du « et » entre deux relatives coordonnées et employer un pro
+  1 · x632-pdf · Commentaire : Évaluation fragile. Il faut consolider les bases avant la prochaine évaluation. À revoir en priorité : écrire une phrase P.P + PSR 1 + PSR 2, dire ce qui peut être un antécédent et dire que faire du « et » entre deux
+  1 · x632-pdf · Commentaire : Bonne évaluation, avec quelques points isolés à surveiller. À revoir en priorité : dire que faire du « et » entre deux relatives coordonnées, trouver l'antécédent d'un pronom relatif et écrire une phrase DPP + PSR + 
+  1 · x632-pdf · Commentaire : Bonne évaluation, avec quelques points isolés à surveiller. À revoir en priorité : dire que faire du « et » entre deux relatives coordonnées, employer un pronom relatif composé et trouver l'antécédent d'un pronom rel
+  1 · c-corbeille · Elle part dans la corbeille du site, gardée un an, avec ses réponses, ses lectures et ses notes. Elle sort de cette liste. Rien n'est effacé : tu la restaures depuis 💾 Sauvegarde → 🗑️ Corbeille.
+  3 · c-sauvegarde · Exporte ou importe l'ensemble de la base QCM (évaluations, sessions, réponses), avec les classes.
+  3 · c-sauvegarde · Avant d'importer, le QCM d'aujourd'hui part à la corbeille : rien n'est perdu.
+  3 · c-sauvegarde · Ce que tu supprimes dans le QCM part ici, gardé un an. ↩️ le remet à sa place.
+  3 · c-sauvegarde · Tout part d'abord à la corbeille, gardé un an. Pense quand même à exporter un snapshot.
+  1 · c-importer · Le QCM d'aujourd'hui part d'abord à la corbeille, gardé un an : rien n'est perdu. La démo revient d'elle-même à l'ouverture suivante.
+  1 · c-purger · Leurs séances gardent leurs notes. La démo « 🎓 Démo — apprendre le déroulé » n'est pas touchée : elle est écrite dans l'app, et revient d'elle-même si elle manque.
+  3 · c-reglages · Les listes d'élèves, leurs codes, leurs aménagements et leurs exclusions appartiennent au site MJPC, qui les partage avec toutes les applications.
+  3 · c-reglages · Il ne devine jamais un temps : il te demande chaque temps, te dit « ça ne rentre pas », et ne produit le JSON qu'à ton « produis le JSON ».
+  3 · c-reglages · Les tranches s'écrivent « de 5 à moins de 6 » : aucune note ne tombe entre deux.
+  3 · c-reglages · Éditeur des messages élève. Ces phrases s'affichent sur les tablettes de tes élèves. Modifie-les librement : un champ laissé vide revient au texte d'origine.
+  1 · c-reglages-prompt · Chapitre choisi : 3e · Chapitre 1 — Poésie et peinture au XIXe siècle. Copie ce prompt et colle-le dans l'instance de création d'éval : elle te posera ses questions, puis te rendra le JSON.
+  1 · c-reglages-prompt · Tu vas m'aider à écrire une évaluation QCM pour ma classe. Elle se passe dans mon application, en classe, deux élèves par tablette. Voici comment elle se déroule, puis les règles à respecter strictement.
+  1 · c-reglages-prompt-modifier · Les jetons entre doubles accolades sont remplis par l'app à chaque copie : le chapitre, ses compétences, les difficultés, les durées et les limites de longueur.
+  3 · m-classe-exclusions · 25 codes préparés, 0 refusé, 0 en panne, 0 entrée ancienne ignorée. Le clair reste en place tant que les applications en ont besoin — la protection sera effective au 3e temps du chantier sécurité.
+  1 · m-classe-exclusions · 🚫 Les exclusions de la classe : deux élèves exclus ne sont jamais sur la même tablette. Elles passent avant toute règle de binômes, dans chaque app. 2 exclusions dans 3 ESSAI.
+  2 · m-classe-exclusions · Elle vaut dans les deux sens, et pour toutes les apps qui partagent une tablette (le QCM, la correction de dictée…). Aucun écran d'élève ne la montre.
+  1 · m-exclusion-refusee · 🚫 Les exclusions de la classe : deux élèves exclus ne sont jamais sur la même tablette. Elles passent avant toute règle de binômes, dans chaque app. 4 exclusions dans 3 ESSAI.
+  1 · m-exclusion-refusee · 🚫 Refusé : pas d'exclusion entre Inès et Jade : ESNAULT Inès a déjà 3 exclusions, le plus que permet MJPC. Avec 3 au plus, il existe toujours des binômes possibles, absents compris, dès 8 présents. Retire d'abord une exclusion de
+  1 · m-fiche-eleve · POUR TOUTES LES DISCIPLINES — LA FICHE PAP DE L'ÉTABLISSEMENT, LIGNE À LIGNE
+  1 · m-fiche-eleve · Ce que les apps liront : dictée aménagée non, sexe M — jamais la fiche.
+  3 · m-taxonomie-editeur · ▶ Orthographe lexicale (élève : L'orthographe des mots) 8 familles · 28 notions
+  5 · m-taxonomie-editeur · ▶ Orthographe grammaticale (élève : Les accords et les terminaisons) 6 familles · 42 notions
+  5 · m-taxonomie-editeur · ▶ Le texte et ses formes (élève : Comprendre comment un texte est fait) 7 familles · 39 notions
+  5 · m-taxonomie-editeur · Les 28 compétences du référentiel. Le libellé officiel reste pour École Directe et le PDF « notes et compétences » ; tout ce que voit l'élève prend le libellé élève. L'identifiant ne change jamais.
+  4 · m-taxonomie-editeur · ▶ Acquérir des éléments de culture littéraire et artistique 2 compétences
+  2 · m-taxonomie-domaine · ▼ Orthographe lexicale (élève : L'orthographe des mots) 8 familles · 28 notions
+  2 · m-taxonomie-domaine · Écrire les doubles consonnes courantes (mm, nn, ll, tt, rr, ss, ff, pp)
+  2 · m-taxonomie-domaine · Élève : Mots avec deux consonnes (femme, donner, aller...) · 6e-3e · « comme » / « homme » / « femme »
+  2 · m-taxonomie-domaine · Élève : Verbes comme « appeler », « jeter » (j'appelle / nous appelons) · 5e-3e · « j'appelle » vs « nous appelons »
+  2 · m-taxonomie-domaine · Élève : Mots qui commencent par « in- », « im- », « ir- » · 4e-3e · « innombrable », « immobile », « irrégulier »
+  2 · m-taxonomie-domaine · Élève : Mots où on hésite à doubler la consonne · 6e-3e · « apercevoir » (un seul p) / « appartement » (deux p)
+  1 · m-taxonomie-notion · L'identifiant ortho-lex-001 ne change jamais : c'est lui qui étiquette le travail des élèves.
+  1 · m-taxonomie-competences · Comprendre et interpréter des messages et des discours oraux complexes
+  1 · m-taxonomie-competences · Lire des textes non littéraires, des images et des documents composites (y compris numériques)
+  1 · m-taxonomie-competences · Élève : Connaître la grammaire pour analyser et construire des phrases
+  1 · m-taxonomie-competences · ▼ Acquérir des éléments de culture littéraire et artistique 2 compétences
+  1 · m-taxonomie-competences · Élève : Se servir de sa culture pour comprendre les textes et les œuvres
+  1 · m-taxonomie-competences · Établir des liens entre des créations littéraires et artistiques issues de cultures et d'époques diverses
+  1 · m-taxonomie-competence · L'identifiant tr-personne-03 ne change jamais : c'est lui qui étiquette le travail des élèves.
+  3 · m-emploi-du-temps · Année 2026-2027. Les objets vivent au hub sous /site/edt/. Rien n'est obligatoire : ce qui manque manque, le site marche comme avant.
+  3 · m-emploi-du-temps · Calendrier de l'année — 52 semaines · 7 périodes sans cours · 11 fériés · 30 jalons · 15 événements de classe
+  3 · m-emploi-du-temps · Créneaux horaires — 8 créneaux — 08:00-08:55 · 08:57-09:52 · 10:07-11:02 · 11:04-11:59 · 13:00-13:55 · 13:57-14:52 · 15:07-16:02 · 16:04-16:59
+  3 · m-emploi-du-temps · Le calendrier de l'année a été injecté il y a un mois — pense à le réinjecter s'il a bougé.
+  1 · m-emploi-du-temps-tous · JSON de « calendrier », « grille », « creneaux », « periodes », « photos » et « reglages » copié — 33349 caractères.
+  1 · c-rattrapage · 🔁 Rattrapage. 3 ESSAI a déjà passé cette évaluation le 08/10. Cette séance ne servira jamais de « QCM précédent » pour les binômes. Un élève déjà noté garde la note de sa première séance.
+  1 · c-rattrapage · Pas encore noté à cette évaluation : YVON Adam (absent le 08/10). Seul, il fait lui-même la lecture de sa feuille à la correction ; il n'a pas de co-évaluation.
+  1 · c-rattrapage · 08/10/2026 10:02 · ✅ terminée · 24 présents, 1 absent · 5 feuilles à lire
+  3 · x620-1-mode-test-ouverture · Remplit les tablettes, les feuilles et les clics d'un cas connu, sur la démo, jusqu'au moment du cas ; tu joues la suite. Il écrit au hub ce qu'écriraient les clics.
+  3 · x620-1-mode-test-ouverture · Ouvre l'application élève telle qu'elle est : « Combien êtes-vous sur cette tablette ? », puis code, prénom et nom, puis le code du binôme. Exemple — AUDEBERT Élise · code 1000
+  3 · x620-1-mode-test-ouverture · Environnement de test isolé. Classe fictive (30 élèves simulés, 15 tablettes), la démo par défaut. Tu pilotes en haut comme en classe, et tu joues les tablettes en bas. À la sortie, tout est purgé automatiquement, sauf la démo.
+  1 · x620-1-mode-test-ouverture · Le même panneau qu'en classe, avant l'heure : choix de l'évaluation, binômes, puis l'appel au lancement.
+  1 · x620-1-mode-test-ouverture · 📱 Binômes proposés — dans l'ordre de la liste : la classe de test n'a pas de QCM précédent
+  1 · x620-1-mode-test-ouverture · Glisse un nom sur un autre pour échanger deux élèves, ou sur une moitié vide pour l'y déplacer. Tu peux le faire jusqu'au bout de l'heure.
+  2 · x620-2-mode-test-reflexion · Pendant la réflexion, tu tapes sous chaque tablette ce que chaque élève écrit sur sa feuille. La feuille est posée à côté de la tablette, comme en classe.
+  1 · x620-3-mode-test-en-grand · Gatien, laisse la tablette à Élise pour qu'elle réponde sans que tu regardes.
+  1 · x620-3-mode-test-en-grand · Élise a écrit « 6 pattes » et cliqué « huit pattes » au dernier moment : si elle répond « Oui », c'est un faux « Oui » ; ta console le relèvera à la correction.

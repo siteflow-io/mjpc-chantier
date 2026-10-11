@@ -24,3 +24,7 @@ Le mandat de code part de cette maquette, geste par geste (protocole maquette, �
 Ce que la maquette change dans MJPC est listé écart par écart dans le README (section « Complément 2 ») et dans `banc/existant/ecarts-mjpc.json`.
 
 Rien n'a changé dans le vrai site. Les dettes n°12 · 87, 88 et 212 s'y règleront avec le code.
+
+## Remarques de Paul après la validation (11/10, 14:04, tour 650)
+
+Paul a quatre remarques sur la v7 : les textes explicatifs, le rangement des évaluations par niveau et par classe, le niveau d'une évaluation, et les infobulles sur tout élément. Les mesures sont dans https://github.com/siteflow-io/mjpc-chantier/blob/main/AUDITS/MAQUETTE-QCM-REMARQUES-11-10/README.md. Elles feront l'objet d'un complément 3 de la maquette, avant les mandats de code.

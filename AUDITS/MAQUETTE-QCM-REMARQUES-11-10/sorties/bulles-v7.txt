@@ -1,0 +1,196 @@
+109 scènes de Paul (console, téléphone, MJPC)
+gestes visibles : 4893 ; sans infobulle au survol : 269
+affichages (pastilles, compteurs, états, en-têtes) : 1095 ; sans infobulle : 866
+--- les plus fréquents sans infobulle ---
+ 117 affichage · 🟢 Très bonne maîtrise
+  90 affichage · 🔵 Maîtrise satisfaisante
+  86 affichage · MODE PROF
+  61 affichage · Standard
+  60 affichage · TEMPS DE RÉFLEXION
+18
+  53 affichage · 🟠 Maîtrise fragile
+  44 geste · 🧠
+s
+  44 geste · ✋
+s
+  36 affichage · 🧠 RÉFLEXION
+20s
+pour cette question
+s
++
+  28 affichage · ⚠️ À compléter avant de la lancer : le c
+  20 affichage · 🔴 Maîtrise insuffisante
+  15 affichage · Fin de la correction — chacun dit ce qu'
+  13 geste · Classei
+  13 geste · Évaluationi
+  12 affichage · moitiés de gauche
+  12 affichage · 🧠 RÉFLEXION
+30s
+pour cette question
+s
++
+  11 affichage · ✋ Phase RÉPONSE — 1er tourmoitiés de gau
+  10 geste · Modei
+  10 affichage · ✋ RÉPONSE
+9s
+1er tour · EN COURS
+s
++5
++1
+   9 affichage · ⏸️ Question close — passe à la suivante
+   8 affichage · ✋ RÉPONSE
+15s
+par tour, et pour la lectu
+   8 affichage · 24/24
+CONNECTÉS
+10/12
+ONT RÉPONDU
+10/10
+
+   6 affichage · Qui, et quand
+   6 affichage · La feuille de Michel dit
+   6 affichage · Point
+   6 affichage · Calendrier de l’année — 52 semaines · 7 
+   5 affichage · 24/24
+CONNECTÉS
+23/24
+ONT RÉPONDU
+9/23
+J
+   5 affichage · ✋ RÉPONSE
+20s
+par tour, et pour la lectu
+   5 geste · Trier par
+classe
+date
+évaluation
+   5 affichage · ▾ 3 ESSAI · 3 séances
+   5 affichage · copies rendues le 26/09
+✓
+publiée
+   5 affichage · copies rendues le 17/09
+✓
+publiée
+   5 affichage · Version 1.4.0 · 2026-08-02 · 7 domaines 
+   4 geste · Trier par
+date
+titre
+chapitre
+   4 affichage · 🔒 Permanente
+   4 affichage · ✅ Prête à lancer · rien ne compte : ni n
+   4 affichage · ✅ Prête à lancer · passée par 3 ESSAI le
+   4 geste · 🧠 Réflexion
+s
+   4 geste · ✋ Réponse
+s par tour
+   4 geste · 💡 Explication (affichée aux élèves lors
+--- par scène ---
+c-evals : gestes 51 (sans infobulle 1) · affichages 11 (sans 11)
+c-eval-corbeille : gestes 53 (sans infobulle 1) · affichages 11 (sans 11)
+c-collage : gestes 58 (sans infobulle 3) · affichages 11 (sans 11)
+x627-3-editeur : gestes 191 (sans infobulle 18) · affichages 19 (sans 19)
+c-feuille : gestes 1 (sans infobulle 0) · affichages 0 (sans 0)
+c-lancer : gestes 23 (sans infobulle 3) · affichages 1 (sans 1)
+c-echange-refuse : gestes 24 (sans infobulle 3) · affichages 1 (sans 1)
+c-appel : gestes 52 (sans infobulle 3) · affichages 1 (sans 1)
+c-demo-lancer : gestes 20 (sans infobulle 2) · affichages 1 (sans 1)
+c-demo-faite : gestes 23 (sans infobulle 3) · affichages 1 (sans 1)
+c-pret : gestes 53 (sans infobulle 6) · affichages 11 (sans 5)
+c-q1-reflexion : gestes 50 (sans infobulle 4) · affichages 11 (sans 5)
+c-q1-tour1 : gestes 50 (sans infobulle 4) · affichages 12 (sans 7)
+c-voir-tablette : gestes 55 (sans infobulle 8) · affichages 16 (sans 10)
+p-reponse : gestes 11 (sans infobulle 0) · affichages 2 (sans 1)
+c-qr : gestes 52 (sans infobulle 4) · affichages 12 (sans 7)
+c-fin-prevue : gestes 50 (sans infobulle 4) · affichages 12 (sans 7)
+c-q1-tour2 : gestes 50 (sans infobulle 4) · affichages 12 (sans 7)
+c-q1-close : gestes 50 (sans infobulle 4) · affichages 11 (sans 6)
+c-ecarter : gestes 52 (sans infobulle 4) · affichages 11 (sans 6)
+c-ecartee : gestes 46 (sans infobulle 2) · affichages 12 (sans 7)
+c-q2-tour2 : gestes 46 (sans infobulle 2) · affichages 13 (sans 7)
+c-q2-close : gestes 46 (sans infobulle 2) · affichages 12 (sans 6)
+c-annuler : gestes 48 (sans infobulle 2) · affichages 12 (sans 6)
+c-annulee : gestes 46 (sans infobulle 2) · affichages 12 (sans 6)
+c-rouvrir-tous : gestes 48 (sans infobulle 2) · affichages 12 (sans 6)
+c-rouvrir-un : gestes 48 (sans infobulle 2) · affichages 12 (sans 6)
+p-eleve : gestes 6 (sans infobulle 0) · affichages 2 (sans 1)
+c-q3-close : gestes 42 (sans infobulle 0) · affichages 13 (sans 6)
+c-depart : gestes 75 (sans infobulle 4) · affichages 12 (sans 7)
+c-parti : gestes 50 (sans infobulle 4) · affichages 12 (sans 7)
+c-retour : gestes 52 (sans infobulle 4) · affichages 12 (sans 7)
+c-deplacer : gestes 50 (sans infobulle 4) · affichages 11 (sans 6)
+c-terminer : gestes 52 (sans infobulle 4) · affichages 12 (sans 7)
+c-mode-emploi : gestes 25 (sans infobulle 3) · affichages 1 (sans 1)
+c-finir-autre-heure : gestes 52 (sans infobulle 4) · affichages 12 (sans 7)
+c-reprendre : gestes 24 (sans infobulle 3) · affichages 1 (sans 1)
+c-rouvrir-seance : gestes 25 (sans infobulle 3) · affichages 1 (sans 1)
+c-sessions : gestes 53 (sans infobulle 4) · affichages 12 (sans 7)
+c-interrompue : gestes 26 (sans infobulle 3) · affichages 1 (sans 1)
+c-estim : gestes 15 (sans infobulle 0) · affichages 2 (sans 2)
+c-attest2 : gestes 28 (sans infobulle 0) · affichages 2 (sans 2)
+c-corr-q2-avant : gestes 54 (sans infobulle 0) · affichages 3 (sans 2)
+p-corr-avant : gestes 3 (sans infobulle 0) · affichages 2 (sans 1)
+c-corr-q2-lu : gestes 54 (sans infobulle 0) · affichages 3 (sans 2)
+c-corr-q2-apres : gestes 54 (sans infobulle 0) · affichages 2 (sans 1)
+p-corr-apres : gestes 3 (sans infobulle 0) · affichages 1 (sans 0)
+c-corr-q3-apres : gestes 54 (sans infobulle 0) · affichages 2 (sans 1)
+c-corr-q1-apres : gestes 54 (sans infobulle 0) · affichages 2 (sans 1)
+c-autonomie : gestes 57 (sans infobulle 0) · affichages 2 (sans 1)
+c-autonomie-garde : gestes 56 (sans infobulle 0) · affichages 2 (sans 1)
+c-autonomie-retiree : gestes 56 (sans infobulle 0) · affichages 2 (sans 1)
+p-autonomie : gestes 6 (sans infobulle 0) · affichages 2 (sans 1)
+c-coeval-attente : gestes 59 (sans infobulle 0) · affichages 2 (sans 2)
+c-coeval-feuille : gestes 61 (sans infobulle 0) · affichages 2 (sans 2)
+c-autonomie-michel : gestes 61 (sans infobulle 0) · affichages 2 (sans 2)
+c-autonomie-julien : gestes 61 (sans infobulle 0) · affichages 2 (sans 2)
+c-autonomie-deux : gestes 61 (sans infobulle 0) · affichages 2 (sans 2)
+c-coeval-retire-michel : gestes 59 (sans infobulle 0) · affichages 2 (sans 2)
+c-coeval-retire-julien : gestes 59 (sans infobulle 0) · affichages 2 (sans 2)
+c-coeval-retire-deux : gestes 59 (sans infobulle 0) · affichages 2 (sans 2)
+c-coeval-tranche : gestes 53 (sans infobulle 0) · affichages 2 (sans 2)
+x610-8-console-alerte : gestes 59 (sans infobulle 0) · affichages 5 (sans 5)
+x610-feuille : gestes 61 (sans infobulle 0) · affichages 5 (sans 5)
+x610-autonomie-michel : gestes 61 (sans infobulle 0) · affichages 5 (sans 5)
+x610-autonomie-julien : gestes 61 (sans infobulle 0) · affichages 5 (sans 5)
+x610-autonomie-deux : gestes 61 (sans infobulle 0) · affichages 5 (sans 5)
+x610-tranche : gestes 53 (sans infobulle 0) · affichages 2 (sans 2)
+x610-9-telephone-alerte : gestes 9 (sans infobulle 0) · affichages 3 (sans 3)
+c-bilan : gestes 13 (sans infobulle 0) · affichages 88 (sans 88)
+c-papier-lancer : gestes 23 (sans infobulle 3) · affichages 1 (sans 1)
+c-papier-seance : gestes 15 (sans infobulle 0) · affichages 2 (sans 2)
+c-papier-grille : gestes 85 (sans infobulle 0) · affichages 7 (sans 4)
+c-papier-reprendre : gestes 24 (sans infobulle 3) · affichages 1 (sans 1)
+c-papier-correction : gestes 53 (sans infobulle 0) · affichages 2 (sans 2)
+c-seances : gestes 24 (sans infobulle 1) · affichages 6 (sans 5)
+c-resultats : gestes 15 (sans infobulle 0) · affichages 108 (sans 104)
+c-fiche : gestes 21 (sans infobulle 0) · affichages 5 (sans 5)
+c-fiche-garde : gestes 23 (sans infobulle 0) · affichages 5 (sans 5)
+c-fiche-retire : gestes 21 (sans infobulle 0) · affichages 5 (sans 5)
+c-que-dit-la-feuille : gestes 23 (sans infobulle 0) · affichages 5 (sans 5)
+c-seances-lues : gestes 25 (sans infobulle 1) · affichages 5 (sans 5)
+c-rendre : gestes 27 (sans infobulle 1) · affichages 5 (sans 5)
+c-copies-rendues : gestes 26 (sans infobulle 1) · affichages 5 (sans 5)
+c-resultats-rendues : gestes 15 (sans infobulle 0) · affichages 108 (sans 104)
+x632-pdf : gestes 0 (sans infobulle 0) · affichages 8 (sans 8)
+c-corbeille : gestes 26 (sans infobulle 1) · affichages 6 (sans 5)
+c-sauvegarde : gestes 18 (sans infobulle 0) · affichages 1 (sans 1)
+c-importer : gestes 20 (sans infobulle 0) · affichages 1 (sans 1)
+c-purger : gestes 20 (sans infobulle 0) · affichages 1 (sans 1)
+c-reglages : gestes 46 (sans infobulle 10) · affichages 1 (sans 1)
+c-reglages-prompt : gestes 49 (sans infobulle 10) · affichages 1 (sans 1)
+c-reglages-prompt-modifier : gestes 51 (sans infobulle 10) · affichages 1 (sans 1)
+m-classe-exclusions : gestes 125 (sans infobulle 0) · affichages 1 (sans 1)
+m-exclusion-refusee : gestes 125 (sans infobulle 0) · affichages 1 (sans 1)
+m-fiche-eleve : gestes 74 (sans infobulle 15) · affichages 0 (sans 0)
+m-taxonomie : gestes 17 (sans infobulle 0) · affichages 0 (sans 0)
+m-taxonomie-editeur : gestes 17 (sans infobulle 0) · affichages 1 (sans 1)
+m-taxonomie-domaine : gestes 26 (sans infobulle 0) · affichages 1 (sans 1)
+m-taxonomie-notion : gestes 36 (sans infobulle 4) · affichages 1 (sans 1)
+m-taxonomie-competences : gestes 73 (sans infobulle 0) · affichages 1 (sans 1)
+m-taxonomie-competence : gestes 29 (sans infobulle 2) · affichages 1 (sans 1)
+m-emploi-du-temps : gestes 40 (sans infobulle 0) · affichages 4 (sans 4)
+m-emploi-du-temps-un : gestes 41 (sans infobulle 0) · affichages 4 (sans 4)
+m-emploi-du-temps-tous : gestes 41 (sans infobulle 0) · affichages 4 (sans 4)
+c-rattrapage : gestes 18 (sans infobulle 2) · affichages 1 (sans 1)
+x620-1-mode-test-ouverture : gestes 68 (sans infobulle 2) · affichages 1 (sans 1)
+x620-2-mode-test-reflexion : gestes 134 (sans infobulle 34) · affichages 131 (sans 95)
+x620-3-mode-test-en-grand : gestes 145 (sans infobulle 36) · affichages 136 (sans 100)

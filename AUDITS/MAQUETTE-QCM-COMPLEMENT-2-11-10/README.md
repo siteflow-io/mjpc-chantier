@@ -37,3 +37,19 @@ La maquette peut aller à Paul pour validation, sur le livret.
 
 1. La rangée de l'emploi du temps suit le tranchage de la conscience entre ses trois voies (point 714) : trois groupes et un sélecteur. Paul le valide ou le corrige sur la capture.
 2. Le titre du premier groupe, « 📅 L'écran de la semaine », vient de l'exécutant, tiré d'un commentaire du code d'`index.html` (l. 20039) : ce n'est pas un texte que le vrai site affiche aujourd'hui.
+
+## Ajout du 11/10, 13:15 (tour 646, Paul : « Vérifie ») : les quatre tests du tour 645, joués par la conscience
+
+Les quatre tests (points 721 à 724) ont été joués **par le geste** dans Chromium, comme Paul les ferait : clic sur ⚙, choix de l'écran dans le sommaire, cases, boutons, survol à la souris, puis taille de la fenêtre changée sans recharger. Script : `scripts/tests-645.js`. Sortie : `tests/tests-645-joues.txt`.
+
+Résultat : **12 vérifications, 0 échec.**
+- Test 1 : « ⤓ Sortir les JSON cochés » est fermé tant que rien n'est coché ; avec « Calendrier de l'année » coché, le message est « JSON de « calendrier » copié — 19717 caractères. ».
+- Test 2 : avec « Tout cocher », le message porte sur les six objets, 33349 caractères.
+- Test 3 : sous la souris, « Tableau de bord » est à l'opacité 0,45, le curseur est barré, et la raison est « Inchangé : cet écran reste celui d'aujourd'hui. ».
+- Test 4 : à 1920 × 1080, 1366 × 768, 1280 × 720, 1100 × 700 et 1536 × 864, le panneau touche les quatre bords et ↻ ✕ sont dans la carte sur les 25 lignes. Il n'y a aucun défilement de côté.
+
+Captures : `tests/test1-calendrier.png`, `test2-tous.png`, `test3-survol.png`, `test4-1366.png`.
+
+Le bouton ⚙ de la maquette, fixe en bas à droite, ne recouvre aucun bouton ni aucun champ du panneau. C'est vérifié à toutes les positions du défilement, dans 10 scènes `m-…`, aux trois tailles de la console (`scripts/gear-recouvrement.js`, `tests/gear-recouvre.txt`).
+
+Depuis l'audit, rien n'a bougé sur la branche `maquette-qcm` ni dans `index.html` (md5 `ac792b28…`). La conscience n°13 a écrit au registre de la production (`e123dc5`, `5d48b91`) et au sas, mais elle n'a fait qu'ajouter des lignes : les entrées n°12 · 87, 88 et 212 sont intactes.

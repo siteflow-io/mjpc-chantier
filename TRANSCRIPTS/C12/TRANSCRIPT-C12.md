@@ -19811,3 +19811,35 @@ Réponse mot pour mot :
 725. **Le rapport d'audit** : https://github.com/siteflow-io/mjpc-chantier/blob/main/AUDITS/MAQUETTE-QCM-COMPLEMENT-2-11-10/README.md. Après ta validation viendra le mandat de code (677).
 
 11/10/2026 09:14 MEMO
+
+---
+
+## TOUR 646 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (11/10, 13:09) Vérifie
+
+---
+
+## TOUR 646 — Claude (conscience n°12)
+
+Relevé de ce qui a changé depuis 09:14 au sas et en production : rien sur `maquette-qcm` ni dans `index.html` ; commits de la conscience n°13 relus, ajouts seulement. Les quatre tests du tour 645 joués par le geste sur la v7 (`AUDITS/MAQUETTE-QCM-COMPLEMENT-2-11-10/scripts/tests-645.js`), et le recouvrement du ⚙ mesuré dans 10 scènes à toutes les positions de défilement.
+
+Réponse mot pour mot :
+
+726. **J'ai vérifié en jouant moi-même tes quatre tests sur la v7, comme toi, en cliquant dans la maquette : 12 vérifications, aucun échec.**
+
+727. **Test 1** : l'écran 162 s'ouvre bien depuis ⚙. « ⤓ Sortir les JSON cochés » reste fermé tant que rien n'est coché. Avec « Calendrier de l'année » coché, le message dit « JSON de « calendrier » copié — 19717 caractères. ».
+
+728. **Test 2** : avec « Tout cocher », j'obtiens un seul message pour les six objets : 33349 caractères.
+
+729. **Test 3** : sous la souris, « Tableau de bord » est estompé, le curseur est barré, et la raison s'affiche : « Inchangé : cet écran reste celui d'aujourd'hui. ».
+
+730. **Test 4** : j'ai mis la fenêtre à 1920, 1536, 1366, 1280 puis 1100 pixels de large, sans recharger. Le panneau reste collé aux bords, ↻ ✕ restent dans la carte sur les 25 lignes, et rien ne défile sur le côté. Le bouton ⚙ de la maquette ne cache aucun bouton, quel que soit le défilement.
+
+731. **Depuis 09:14, rien n'a changé** ni sur la branche de la maquette, ni dans index.html. La conscience du déroulé (n°13) a écrit ce matin dans le registre et sur le sas, mais elle n'a fait qu'ajouter : mes entrées 87, 88 et 212 n'ont pas bougé.
+
+732. **Les sorties et les captures des tests sont sur le sas** : https://github.com/siteflow-io/mjpc-chantier/blob/main/AUDITS/MAQUETTE-QCM-COMPLEMENT-2-11-10/README.md (section du tour 646). La maquette attend ta validation (719, 720).
+
+11/10/2026 13:12 MEMO

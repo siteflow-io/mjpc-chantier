@@ -1,0 +1,15 @@
+✔ test 1 · l'écran 162 s'ouvre par le sommaire ⚙
+✔ test 1 · « ⤓ Sortir les JSON cochés » fermé tant que rien n'est coché
+✔ test 1 · message : JSON de « calendrier » copié — 19717 caractères.
+Compris
+✔ test 2 · message : JSON de « calendrier », « grille », « creneaux », « periodes », « photos » et « reglages » copié — 33349 caractères.
+Compris
+✔ test 3 · « Tableau de bord » fermé et estompé (opacité 0.45)
+✔ test 3 · sous la souris, le curseur est barré (not-allowed)
+✔ test 3 · la raison au survol : « Inchangé : cet écran reste celui d'aujourd'hui. »
+✔ test 4 · 1920×1080 : bords [0,0,0,0], 25 lignes, ↻ ✕ hors carte 0, défilement de côté false
+✔ test 4 · 1366×768 : bords [0,0,0,0], 25 lignes, ↻ ✕ hors carte 0, défilement de côté false
+✔ test 4 · 1280×720 : bords [0,0,0,0], 25 lignes, ↻ ✕ hors carte 0, défilement de côté false
+✔ test 4 · 1100×700 : bords [0,0,0,0], 25 lignes, ↻ ✕ hors carte 0, défilement de côté false
+✔ test 4 · 1536×864 : bords [0,0,0,0], 25 lignes, ↻ ✕ hors carte 0, défilement de côté false
+0 échec(s) sur 12

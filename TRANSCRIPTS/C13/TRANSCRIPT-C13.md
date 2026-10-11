@@ -1327,3 +1327,14 @@ Paul, mot pour mot : « 20. Jamais la classe ne passe à la suivante si ce n'est
 162. **Verdict sur p8-5c : ça va**, fidèle au complément et aux captures validées, avec deux dettes ouvertes à l'audit (n°13 · 13, 13 · 14) qui se règlent par p8-5d avant la validation de la maquette par Paul.
 163. **p8-5d déposé** : `MANDATS/COMPLEMENT-DEROULE-P8-5d.md` (non commenté par Paul depuis le tour 46 : acquis). Phrase donnée à Paul.
 
+
+---
+
+## TOUR 48 (11/10/2026, 16:43 → 17:05) — Paul : « livré »
+
+164. **p8-5d close** : branche `deroule/p8-5d`, partie de p8-5c, commit final `8536dc82` (16:13), NOTE complète, `EMPREINTES.md5` (70 fichiers, 70 OK chez moi), maquette md5 `da37e0f0…`, `p8-5c.js` repris identique (`cmp`), deux remplacements seulement (`p8RendreNotes` : `blur` du paragraphe d'une autre diapo avant le rendu, au lieu d'attendre ; `p8NouvelleNote` : le focus du paragraphe neuf dans le même geste, au lieu d'un `setTimeout`). Banc unique de l'exécutant : 31 bancs à 0 en un passage, sans blocage de chargement.
+165. **Vérifié par la conscience, par le geste** (pièces `T48*.mjs`) : Entrée puis frappe à 0 ms, trois diapos — plus aucun caractère perdu (avant : « yz 0 ») ; heure lancée, frappe dans la note ⌂ puis ▶ ×7 jusqu'à la diapo 2, aussitôt (100 ms) comme après 3,5 s → le panneau rend la diapo 2, aucun focus dans les notes, rien de la diapo 1 ne s'y voit, le texte est gardé dans la note de la diapo 1, ◀ (avec la garde « Y aller devant la classe ») la remontre ; écrire au milieu, en fin de ligne, en fin de texte, au début d'un paragraphe existant, en atelier et en classe, sur p8-5c et p8-5d : partout ça va ; « ■ Arrêter » rend l'entête d'avant. Mes 10 points de p8-5c rejoués sur p8-5d : ça va.
+166. **Faute de mesure de la conscience, corrigée** : deux « ça ne va pas » intermédiaires venaient de mes propres bancs — lecture des derniers caractères seulement (une frappe en fin de ligne 1 d'un paragraphe de trois lignes n'y apparaît pas) et la garde « La classe te suivrait » non répondue au ◀. Rien dans la maquette.
+167. **Verdict sur p8-5d : ça va.** Banc unique rejoué chez moi : en cours. Dettes n°13 · 13 et 14 réglées, à cocher au registre.
+168. Observation de l'exécutant, à garder pour le mandat de production : « une note suit sa diapo, toujours » vaut aussi pour un changement de diapo venu d'un autre onglet ou d'un autre poste ; la frappe qui continuerait après ce changement n'irait plus dans la note (le focus est rendu).
+

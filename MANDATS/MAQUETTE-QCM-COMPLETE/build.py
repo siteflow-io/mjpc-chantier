@@ -7,7 +7,8 @@ S = os.path.join(D, "src")
 def lire(*p): return open(os.path.join(*p), encoding="utf-8").read()
 
 CSS = ["qcm.css", "maquette.css", "maquette610.css", "maquette620.css", "maquette626.css", "maquette627.css", "maquette628.css", "socle.css", "etapes.css", "mjpc.css", "mjpc-edt.css", "mjpc-ajouts.css", "complement2.css"]
-JS = ["maquette.js", "maquette2.js", "ev3e.js", "maquette610.js", "maquette620.js",
+# (complément 3) le scénario, un seul : tout ce que montrent les scènes s'en calcule (src/scenario.js), avec les évaluations du hub lues le 08/10
+JS = ["scenario.js", "maquette.js", "maquette2.js", "ev3e.js", "maquette610.js", "maquette620.js",
       "com626.js", "maquette626.js", "com627.js", "maquette627.js", "com628.js", "maquette628.js", "com632.js"]
 EXTRA_JS = json.load(open(os.path.join(S, "ordre_js.json"))) if os.path.exists(os.path.join(S, "ordre_js.json")) else []
 JS += EXTRA_JS + ["gestes.js", "etape2.js", "etape3.js", "etape4.js", "mjpc.js", "complement1.js", "complement2.js", "socle.js"]
@@ -49,6 +50,10 @@ for l in open(os.path.join(EDT_DIR, "md5.txt"), encoding="utf-8").read().split("
     if hashlib.md5(open(os.path.join(EDT_DIR, f), "rb").read()).hexdigest() != m5: sys.exit("refus : " + f + " n'a pas son md5 (" + m5 + ")")
     edt[f[:-5]] = json.loads(lire(EDT_DIR, f))
 edt_prompts = json.loads(lire(S, "donnees", "edt-prompts.json"))["prompts"]
+# (complément 3) les évaluations du hub, lues le 08/10 (banc/fauxhub/evals_now.json), vérifiées contre leur md5 (src/donnees/MD5.txt)
+hub_brut = open(os.path.join(S, "donnees", "evaluations_hub.json"), "rb").read()
+if hashlib.md5(hub_brut).hexdigest() != "ae5860e47e633875e873d9d0190d798a": sys.exit("refus : evaluations_hub.json n'a pas son md5")
+hub = json.loads(hub_brut.decode("utf-8"))
 html = ("<!DOCTYPE html>\n<html lang=\"fr\">\n<head>\n<meta charset=\"UTF-8\">\n"
         "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n"
         "<title>Maquette complète du QCM</title>\n"
@@ -58,6 +63,7 @@ html = ("<!DOCTYPE html>\n<html lang=\"fr\">\n<head>\n<meta charset=\"UTF-8\">\n
         "</head>\n<body>\n<div id=\"root\"></div>\n<div id=\"som-racine\"></div>\n"
         "<script>\nvar PROMPT_TEXTE = " + json.dumps(prompt, ensure_ascii=False).replace("</", "<\\/") + ";\nwindow.PDF632_HTML = " + json.dumps(pdf, ensure_ascii=False).replace("</", "<\\/") + ";\nvar TAXO = " + json.dumps(json.loads(taxo), ensure_ascii=False).replace("</", "<\\/") + ";\n"
         + "var CHAPITRE_3E = " + json.dumps(chapitre, ensure_ascii=False) + ";\nvar LIBELLES_ELEVE = " + json.dumps(libel, ensure_ascii=False) + ";\nvar LIMITES_TEXTE = " + json.dumps(texte_limites, ensure_ascii=False) + ";\n"
+        + "var HUB_EVALS = " + json.dumps(hub, ensure_ascii=False).replace("</", "<\\/") + ";\n"
         + "var EDT_DONNEES = " + json.dumps(edt, ensure_ascii=False).replace("</", "<\\/") + ";\nvar EDT_PROMPTS_INDEX = " + json.dumps(edt_prompts, ensure_ascii=False).replace("</", "<\\/") + ";\n"
         + "\n".join(js(n) for n in JS) + "\n</script>\n</body>\n</html>\n")
 

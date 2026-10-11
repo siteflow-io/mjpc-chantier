@@ -9,10 +9,12 @@ const { chromium } = require("/opt/node22/lib/node_modules/playwright");
 const C = require("./controles.js");
 const G = require("./gardes.js");
 const G2 = require("./gardes2.js");
+const B3 = require("./banc3.js");
 // GARDES=0 : sans les gardes des compléments ; GARDES=seules : les gardes seules (ni clics, ni vérifications 1 à 9 par scène) ;
-// GARDES=c2 : les gardes 6, 7 et 8 du complément 2 seules
+// GARDES=c2 : les gardes 6, 7 et 8 du complément 2 seules ; GARDES=c3 : les gardes 9 à 15 du complément 3 seules
+// (complément 3) GARDES=oui joue tout : les vérifications 1 à 9, les gardes 1 à 8, puis les gardes 9 à 15
 const GARDES = process.env.GARDES || "oui";
-const C1 = GARDES !== "0" && GARDES !== "c2", C2 = GARDES !== "0";
+const C1 = !["0", "c2", "c3"].includes(GARDES), C2 = !["0", "c3"].includes(GARDES), C3 = GARDES !== "0" && GARDES !== "c2";
 const RACINE = path.join(__dirname, "..");
 const FICHIER = path.resolve(process.argv[2]);
 const ETAPE = +process.argv[3] || 1;
@@ -130,7 +132,7 @@ if(SORTIE && fs.existsSync(SORTIE)) fs.unlinkSync(SORTIE);   // (garde, défaut 
       G.garde5Scene(sc.id, await g.page.evaluate(G.lireEstimation), ESTIMATIONS).forEach(x => verif(false, x));
       await g.ctx.close();
     }
-    if(GARDES === "seules" || GARDES === "c2") return R;
+    if(GARDES === "seules" || GARDES === "c2" || GARDES === "c3") return R;
     for(let ti = 0; ti < tailles.length; ti++){
       const T = tailles[ti], H = (sc.vh && sc.vue === "console") ? Math.max(sc.vh, T.h) : T.h;
       const o = await ouvrir(T.w, H, sc.id, "&cap=1");
@@ -214,11 +216,13 @@ if(SORTIE && fs.existsSync(SORTIE)) fs.unlinkSync(SORTIE);   // (garde, défaut 
   await Promise.all([ouvrier(), ouvrier(), ouvrier(), ouvrier()]);
   for(const r of resultats){ nb += r.n; echecs.push(...r.echecs); }
   if(C1) G.garde5Final(ESTIMATIONS, verif);
+  // (complément 3) les gardes 9 à 15, sur toutes les scènes, aux tailles de chaque vue, par le geste
+  if(C3) await B3.gardes3(navig, FICHIER, scenes, verif, journal, {seul: SEUL ? SEUL : null});
   await navig.close();
 
   const lignes = [];
   lignes.push("Banc unique — maquette complète du QCM");
-  lignes.push("Fichier : " + path.basename(FICHIER) + " · étape jouée : " + ETAPE + (GARDES === "0" ? " · sans les gardes des compléments" : GARDES === "seules" ? " · les gardes des compléments 1 et 2 seules" : GARDES === "c2" ? " · les gardes 6, 7 et 8 du complément 2 seules" : " · avec les gardes des compléments 1 et 2") + (C1 && !G.MESURES ? ", sans les mesures (garde 4 et texte de {{LIMITES}} : étape C)" : "") + " · " + new Date().toISOString());
+  lignes.push("Fichier : " + path.basename(FICHIER) + " · étape jouée : " + ETAPE + (GARDES === "0" ? " · sans les gardes des compléments" : GARDES === "seules" ? " · les gardes 1 à 15 des compléments seules" : GARDES === "c2" ? " · les gardes 6, 7 et 8 du complément 2 seules" : GARDES === "c3" ? " · les gardes 9 à 15 du complément 3 seules" : " · avec les gardes 1 à 15 des compléments") + (C1 && !G.MESURES ? ", sans les mesures (garde 4 et texte de {{LIMITES}} : étape C)" : "") + " · " + new Date().toISOString());
   lignes.push(journal.join(" · "));
   lignes.push("Vérifications : " + nb + " · échecs : " + echecs.length);
   if(echecs.length) lignes.push("", "ÉCHECS :", ...echecs.map((e, i) => (i + 1) + ". " + e));

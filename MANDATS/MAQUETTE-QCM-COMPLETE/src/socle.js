@@ -232,7 +232,10 @@ SCENES.push({id:"x632-pdf", vue:"console", attendre:true, render:PdfApercu});
   }); });
   SCENES = liste;
 })();
-window.LISTE_SCENES = SCENES.map(function(s, i){ return {n:i + 1, id:s.id, vue:s.vue, vh:s.vh, section:s.section, etape:s.etape, titre:s.titre}; });
+// (complément 3, garde 12) le moment de chaque scène : l'appareil, la séance et son étape, tirés du scénario (src/scenario.js)
+window.LISTE_SCENES = SCENES.map(function(s, i){ var k = s.moment || SCN.MOMENT_DE[s.id] || null, m = k ? SCN.moment(k) : null;
+  return {n:i + 1, id:s.id, vue:s.vue, vh:s.vh, section:s.section, etape:s.etape, titre:s.titre,
+    moment:k, appareil:s.appareil || SCN.appareilDe(s.id, s.vue), seance:m ? m.seance : null, etapeSeance:m ? m.etape : null}; });
 
 /* ── Le sommaire ⚙ « Scènes de la maquette » : le seul écran de simulation ── */
 function Sommaire(courante){

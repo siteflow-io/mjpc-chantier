@@ -43,8 +43,10 @@ const nrm = s => C.norm(String(s || ""));
 //  - les noms des élèves, les nombres et les libellés (déjà mis à part par controles.norm).
 const NIVEAUX_Q = /(?<![\p{L}])(Facile|Standard|Approfondi|Expert|FACILE|STANDARD|APPROFONDI|EXPERT)(?![\p{L}])/gu;
 //  - la bande des questions du téléphone (l. 5680) : « Qn — pas de réponse » ou « Qn — a/b bonnes (x%) », selon les réponses de la séance.
+// (complément 3, §1.2 et changement 8) la seule exception au mot pour mot : « séance » pour « session » ; et la typographie (« … » pour « ... »,
+// les espaces insécables) : une phrase de l'existant qui ne diffère que par elles n'est pas perdue
 function forme(s){
-  return nrm(s).replace(/ — (pas de réponse|#\/# bonnes \(#%\))$/, " — ‹taux›").replace(NIVEAUX_Q, "‹niveau›").replace(/[🔴🟠🔵🟢]/gu, "◍").replace(/[Ee]ntre # et #/g, "#").replace(/\(s\)/g, "")
+  return nrm(String(s || "").replace(/(?<![\p{L}])([Ss])essions?(?![\p{L}])/gu, (m, a) => (a === "S" ? "S" : "s") + "éance" + (/s$/.test(m) ? "s" : "")).replace(/\.\.\./g, "…").replace(/[\u00a0\u202f]/g, " ").replace(/ ([:;!?»])/g, "$1").replace(/« /g, "«")).replace(/ — (pas de réponse|#\/# bonnes \(#%\))$/, " — ‹taux›").replace(NIVEAUX_Q, "‹niveau›").replace(/[🔴🟠🔵🟢]/gu, "◍").replace(/[Ee]ntre # et #/g, "#").replace(/\(s\)/g, "")
     .replace(/(?<=\p{L}{2})[sx](?![\p{L}])/gu, "").replace(/\s+/g, " ").trim();
 }
 // Une phrase de la 7.7.1 qui n'est qu'une donnée de la séance jouée (le titre de l'évaluation du faux hub, un nom, un nombre) n'est pas comparée.

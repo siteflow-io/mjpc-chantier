@@ -127,7 +127,7 @@ function EcrCoeval(e, etape, k, qChoisie){
     zone.push(h("div", {key:"r", className:"co-regle"}, REGLE_CO));
     zone.push(h("div", {key:"f", className:"eleve-feedback valide"}, ENREG));
     zone.push(h("div", {key:"a", className:"co-actions"}, h("button", {className:"btn btn-ghost"}, "↩️ Changer")));
-    zone.push(h("div", {key:"w", className:"co-attente"}, "⏳ Attends ton bilan..."));
+    zone.push(h("div", {key:"w", className:"co-attente"}, "⏳ Attends ton bilan…"));
   } else {
     var cliquable = etape === "question";
     if(cliquable) zone.push(h("div", {key:"b"}, BtnCo(k, v, true)));
@@ -136,7 +136,7 @@ function EcrCoeval(e, etape, k, qChoisie){
     zone.push(h("div", {key:"r", className:"co-regle"}, "☝️ " + REGLE_CO));
     if(!cliquable) zone.push(h("div", {key:"bs", className:"co-btns"}, ["ok", "peut", "mal"].map(function(x){ return BtnCo(x, v, etape === "okfait" && x === "ok"); })));
     if(etape === "okfait") zone.push(h("div", {key:"f", className:"eleve-feedback valide"}, ENREG));
-    if(etape === "okfait") zone.push(h("div", {key:"w", className:"co-attente"}, "⏳ Attends ton bilan..."));
+    if(etape === "okfait") zone.push(h("div", {key:"w", className:"co-attente"}, "⏳ Attends ton bilan…"));
     if(cliquable) zone.push(h("div", {key:"a", className:"co-actions"}, h("button", {className:"btn btn-ghost"}, "↩️ Changer")));
   }
   return Page(badgeDe(e), "📝 Correction", h("div", {className:"eleve-q-zone"}, zone));
@@ -188,7 +188,7 @@ function PilotCoeval(){
   return Console("pilotage", "pilot", h("div", {className:"card"},
     AlerteCo(false),
     TitreCarte(h(F, null, "🤝 Co-évaluation de la lecture — " + EV.titre + " — " + CLASSE, InfoI()),
-      [h("button", {key:0, className:"btn btn-ghost btn-sm"}, "🚫 Départ d'un élève"), h("button", {key:1, className:"btn btn-rouge btn-sm"}, "🛑 Terminer la session")]),
+      [h("button", {key:0, className:"btn btn-ghost btn-sm"}, "🚫 Départ d'un élève"), h("button", {key:1, className:"btn btn-rouge btn-sm"}, "🛑 Terminer la séance")]),
     h("div", {className:"pilot-status correction"}, "Fin de la correction — chacun dit ce qu'il pense de la lecture de sa feuille · 20 / 24 ont répondu"),
     h("div", {className:"corr-grid"},
       h("div", null,
@@ -201,7 +201,6 @@ function PilotCoeval(){
           LIRE_CO.map(function(x, i){ return h("div", {key:i}, x[0] + " — " + x[1]); }))),
       h("div", {className:"suivi-box"},
         h("h3", null, "🤝 Ce que chacun pense de la lecture de sa feuille", InfoI()),
-        h("div", {className:"ss"}, "Chaque moitié dit ce que cet élève pense de la lecture de sa feuille par son voisin."),
         GrilleTablettes(PAIRES, etatCo),
         Legende([["#22C55E","✅ bien lu"],["#FDE68A","🤔 peut-être mal lu : à relire ce soir"],["#EF4444","❌ mal lu : alerte"],["#FEE2E2","⏳ pas encore répondu","1px solid #EF4444"]])))), true);
 }
@@ -224,7 +223,7 @@ function TelCoeval(){
     h("div", {key:"lr", className:"tel-lire"}, h("strong", null, "📌 À lire ce soir (" + LIRE_CO.length + ") : "), LIRE_CO.map(function(x){ return x[0] + " — " + x[1]; }).join(" · ")),
     h("div", {key:"l", className:"tel-liste"}, h("div", {className:"tel-liste-h"}, "TABLETTES — ce que chacun pense de la lecture de sa feuille"), lignes),
     h("div", {key:"lg"}, TelLegende(["✅ bien lu", "🤔 peut-être mal lu : ce soir", "❌ mal lu : alerte", "⏳ pas encore"])),
-    h("div", {key:"t"}, TelBtn("🛑 Terminer la session", "rouge", "small"))]);
+    h("div", {key:"t"}, TelBtn("🛑 Terminer la séance", "rouge", "small"))]);
 }
 
 /* ════════ Tour 616 : la vraie évaluation de 3e (analyse logique), question 3, et le cas ambigu ════════
@@ -301,7 +300,7 @@ function EcrCoeval3(e, etape, k){
     zone.push(h("div", {key:"bs", className:"co-btns"}, ["ok", "peut", "mal"].map(function(x){ return BtnCo(x, v, etape === "okfait" && x === "ok"); })));
     if(etape === "okfait"){
       zone.push(h("div", {key:"f", className:"eleve-feedback valide"}, ENREG));
-      zone.push(h("div", {key:"w", className:"co-attente"}, "⏳ Attends ton bilan..."));
+      zone.push(h("div", {key:"w", className:"co-attente"}, "⏳ Attends ton bilan…"));
     }
   } else if(etape === "laquelle"){
     zone.push(h("div", {key:"t", className:"decl-titre co-titre co-" + k}, EM_CO[k] + " " + e.prenom + ", tu penses que " + v.prenom + " a " + (k === "peut" ? "peut-être " : "") + "mal lu ta feuille pour une question : c'est laquelle ?"));
@@ -323,7 +322,7 @@ function EcrCoeval3(e, etape, k){
       h("button", {className:"eleve-choix-btn aucun"}, "Ma feuille ne dit aucun de ces choix")));
     zone.push(h("div", {key:"r", className:"co-regle"}, REGLE_CO));
     zone.push(h("div", {key:"f", className:"eleve-feedback valide"}, ENREG));
-    zone.push(h("div", {key:"a", className:"co-actions"}, h("button", {className:"btn btn-ghost"}, "↩️ Changer"), h("span", {className:"co-attente", style:{margin:0, alignSelf:"center"}}, "⏳ Attends ton bilan...")));
+    zone.push(h("div", {key:"a", className:"co-actions"}, h("button", {className:"btn btn-ghost"}, "↩️ Changer"), h("span", {className:"co-attente", style:{margin:0, alignSelf:"center"}}, "⏳ Attends ton bilan…")));
   }
   return Page(badgeDe(e), "📝 Correction", h("div", {className:"eleve-q-zone"}, zone));
 }
@@ -369,7 +368,7 @@ function AlerteCo3(tel){
     h("div", {key:"c"}, ChoixLettres(tel)),
     h("div", {key:"tb"}, tableau),
     h("div", {key:"x", className:"al-l al-b"}, "⚠️ Les deux ne peuvent pas être vrais : regarde la feuille de Michel."),
-    h("div", {key:"y", className:"al-l al-y"}, "👉 Avant de connaître la réponse, Michel disait C, E : ni ce que Julien a lu, ni ce que Michel dit maintenant. Seule la lecture faite après la réponse donne le point."),
+    h("div", {key:"y", className:"al-l al-y"}, "👉 Avant de connaître la réponse, Michel disait C, E : ni ce que Julien a lu, ni ce que Michel dit maintenant."),
     h("div", {key:"z", className:"al-l al-c"}, "Appelle-les à la fin de l'heure, la feuille de Michel en main.")
   ];
   if(tel) return h("div", {className:"tel-alerte"}, corps,
@@ -388,14 +387,14 @@ function AlerteCo3(tel){
         h("button", {className:"btn btn-ghost btn-sm"}, "⛔ à Michel"),
         h("button", {className:"btn btn-ghost btn-sm"}, "⛔ à Julien"),
         h("button", {className:"btn btn-sm btn-aux-deux"}, "⛔ aux deux")),
-      h("div", {className:"al-note"}, "L'alerte est apparue quand Michel a cliqué ce qu'il avait écrit ; elle disparaît s'il change d'avis avant le bilan. Chaque bouton a sa confirmation et son retour.")));
+      InfoIB("❌ Alerte", "L'alerte est apparue quand Michel a cliqué ce qu'il avait écrit ; elle disparaît s'il change d'avis avant le bilan. Chaque bouton a sa confirmation et son retour.")));
 }
 function PilotCoeval3(){
   var nOk = Object.keys(CO3).filter(function(p){ return CO3[p] === "ok"; }).length;
   return Console("pilotage", "pilot", h("div", {className:"card"},
     AlerteCo3(false),
     TitreCarte(h(F, null, "🤝 Co-évaluation de la lecture — " + EV3.titre + " — " + CLASSE, InfoI()),
-      [h("button", {key:0, className:"btn btn-ghost btn-sm"}, "🚫 Départ d'un élève"), h("button", {key:1, className:"btn btn-rouge btn-sm"}, "🛑 Terminer la session")]),
+      [h("button", {key:0, className:"btn btn-ghost btn-sm"}, "🚫 Départ d'un élève"), h("button", {key:1, className:"btn btn-rouge btn-sm"}, "🛑 Terminer la séance")]),
     h("div", {className:"pilot-status correction"}, "Fin de la correction — chacun dit ce qu'il pense de la lecture de sa feuille · 20 / 24 ont répondu"),
     h("div", {className:"corr-grid"},
       h("div", null,
@@ -408,7 +407,6 @@ function PilotCoeval3(){
           LIRE_CO3.map(function(x, i){ return h("div", {key:i}, x[0] + " — " + x[1]); }))),
       h("div", {className:"suivi-box"},
         h("h3", null, "🤝 Ce que chacun pense de la lecture de sa feuille", InfoI()),
-        h("div", {className:"ss"}, "Chaque moitié dit ce que cet élève pense de la lecture de sa feuille par son voisin."),
         GrilleTablettes(PAIRES, etatCo3),
         Legende([["#22C55E","✅ bien lu"],["#FDE68A","🤔 peut-être mal lu : à relire ce soir"],["#EF4444","❌ mal lu : alerte"],["#FEE2E2","⏳ pas encore répondu","1px solid #EF4444"]])))), true);
 }
@@ -432,7 +430,7 @@ function TelCoeval3(){
     h("div", {key:"lr", className:"tel-lire"}, h("strong", null, "📌 À lire ce soir (" + LIRE_CO3.length + ") : "), LIRE_CO3.map(function(x){ return x[0] + " — " + x[1]; }).join(" · ")),
     h("div", {key:"l", className:"tel-liste"}, h("div", {className:"tel-liste-h"}, "TABLETTES — ce que chacun pense de la lecture de sa feuille"), lignes),
     h("div", {key:"lg"}, TelLegende(["✅ bien lu", "🤔 peut-être mal lu : ce soir", "❌ mal lu : alerte", "⏳ pas encore"])),
-    h("div", {key:"t"}, TelBtn("🛑 Terminer la session", "rouge", "small"))]);
+    h("div", {key:"t"}, TelBtn("🛑 Terminer la séance", "rouge", "small"))]);
 }
 
 var SCENES_610 = [

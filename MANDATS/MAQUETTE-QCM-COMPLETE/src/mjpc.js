@@ -115,7 +115,7 @@ function EncartCle(p){
       h("button", {className: "mjpc-act", "data-local": "1", title: "Recompte les codes à préparer avec la clé.", onClick: function(){ p.setCle({valide: true, bilan: SECU_BILAN_RELANCE}); }}, "Relancer la préparation"),
       // secuRetirerClair (l. 14400) : la vérification, puis le compte et « Retirer maintenant »
       h("button", {className: "mjpc-act secu-retrait", "data-local": "1", title: "Retire le clair des codes : ensuite, un code ne se lit plus qu’avec la clé.", onClick: function(){
-        o.boite({titre: "Retirer les codes en clair", corps: h("div", {className: "cm-sub"}, h("b", null, "25"), " codes portent encore leur clair — tous vérifiés conformes (chiffrés et vérifiables).", h("br"), h("br"), "Après ce geste, un code ne se lit plus qu’avec la clé de chiffrement. ", h("b", null, "Rien n’est perdu"), " : le chiffré reste, et une archive datée part en corbeille avant tout retrait.", h("br"), "Cette action s’exécute ", h("b", null, "une fois, après déploiement et vérification"), "."),
+        o.boite({titre: "Retirer les codes en clair", corps: h("div", {className: "cm-sub"}, h("b", null, String(Object.keys(CODES_ESSAI).length)), " codes portent encore leur clair — tous vérifiés conformes (chiffrés et vérifiables).", h("br"), h("br"), "Après ce geste, un code ne se lit plus qu’avec la clé de chiffrement. ", h("b", null, "Rien n’est perdu"), " : le chiffré reste, et une archive datée part en corbeille avant tout retrait.", h("br"), "Cette action s’exécute ", h("b", null, "une fois, après déploiement et vérification"), "."),
           actions: [{label: "Annuler", cls: "", titre: "Ferme la fenêtre sans rien retirer."},
             {label: "Retirer maintenant", cls: "primary", titre: "Archive les codes en corbeille, puis retire leur clair.", faire: function(){
               o.boite({titre: "Retrait terminé", corps: h("div", {className: "cm-sub"}, "Clair retiré : ", h("b", null, "25/25"), ". Archive en corbeille.", h("br"), h("br"), "✅ Terminé. Un code ne se lit plus qu’avec la clé."), actions: [{label: "Fermer", cls: "primary", titre: "Ferme la fenêtre."}]}); }}]}); }}, "Retirer les codes en clair"),
@@ -175,7 +175,7 @@ function ElevesCodes(p){
         var neufs = lus.filter(function(n){ return noms.indexOf(n) < 0; });
         if(!neufs.length){ o.alerte("Ces élèves sont déjà présents."); return; }
         setNoms(noms.concat(neufs)); setTa(""); }}, "+ Importer / compléter")),
-    h("div", {className: "ex-entete"}, "🚫 Les exclusions de la classe : deux élèves exclus ne sont jamais sur la même tablette. Elles passent avant toute règle de binômes, dans chaque app. ", h("strong", null, nbEx + " exclusion" + (nbEx > 1 ? "s" : "")), " dans " + CLASSE + "."),
+    h("div", {className: "ex-entete"}, "🚫 Les exclusions de la classe : ", h("strong", null, nbEx + " exclusion" + (nbEx > 1 ? "s" : "")), " dans " + CLASSE + ".", InfoIB("exclusions", "Deux élèves exclus ne sont jamais sur la même tablette. Elles passent avant toute règle de binômes, dans chaque app.")),
     h("div", {className: "el-toolbar"},
       // _genererCodesClasse (l. 6082)
       sansCode > 0 && h("button", {className: "mjpc-act", "data-local": "1", title: "Donne un code à 4 chiffres à chaque élève qui n’en a pas.", onClick: function(){ var c = Object.assign({}, codes); noms.forEach(function(n){ if(!c[n]){ c[n] = nouveauCode(n); } }); setCodes(c); }}, "Générer " + sansCode + " code" + (sansCode > 1 ? "s" : "") + " manquant" + (sansCode > 1 ? "s" : "")),
@@ -204,13 +204,12 @@ function ElevesCodes(p){
             h("button", {className: "admin-action-btn danger", "data-local": "1", title: "Retirer l’élève", onClick: function(){
               o.boite(confirmeMJPC("Retirer un élève", h(F, null, "Retirer ", h("b", null, n), " de la classe ? Une copie (élève + code) part d’abord en corbeille."), function(){ setNoms(noms.filter(function(x){ return x !== n; })); })); }}, "✕"))),
         ouv && h("div", {className: "ex-panneau"},
-          h("div", {className: "ex-t"}, "🚫 " + n + " n'est jamais sur une tablette avec… ", h("span", {className: "ex-c"}, l.length + " / 3")),
+          h("div", {className: "ex-t"}, "🚫 " + n + " n'est jamais sur une tablette avec… ", h("span", {className: "ex-c"}, l.length + " / 3"), InfoIB("🚫 Jamais avec…", "Elle vaut dans les deux sens, et pour toutes les apps qui partagent une tablette (le QCM, la correction de dictée…). Aucun écran d'élève ne la montre.")),
           h("div", {className: "ex-grille"}, NOMS_ESSAI.filter(function(x){ return x !== n; }).map(function(x){
             var on = l.indexOf(x) >= 0;
             return h("button", {key: x, className: "ex-case" + (on ? " on" : ""), "data-local": "1", title: on ? "Retire l'exclusion entre " + pre(n) + " et " + pre(x) + ", dans les deux sens. Un clic l'enregistre aussitôt." : "Exclut " + pre(n) + " et " + pre(x) + " : jamais ensemble sur une tablette, dans les deux sens, pour toutes les apps. Un clic l'enregistre aussitôt.", onClick: function(){ basculer(n, x); }}, h("span", {className: "ck"}, on ? "✓" : ""), x);
           })),
-          refus && h("div", {className: "ex-refus"}, h("strong", null, "🚫 Refusé : "), "pas d'exclusion entre " + pre(refus[0]) + " et " + pre(refus[1]) + " : " + refus[2] + " a déjà 3 exclusions, le plus que permet MJPC. Avec 3 au plus, il existe toujours des binômes possibles, absents compris, dès 8 présents. Retire d'abord une exclusion de " + refus[2] + "."),
-          h("div", {className: "ex-note"}, "Elle vaut dans les deux sens, et pour toutes les apps qui partagent une tablette (le QCM, la correction de dictée…). Aucun écran d'élève ne la montre.")));
+          refus && h("div", {className: "ex-refus"}, h("strong", null, "🚫 Refusé : "), "pas d'exclusion entre " + pre(refus[0]) + " et " + pre(refus[1]) + " : " + refus[2] + " a déjà 3 exclusions, le plus que permet MJPC. Retire d'abord une exclusion " + deNom(refus[2]) + ".")));
     })));
 }
 function ScElevesCodes(trois){
@@ -381,7 +380,7 @@ function Taxonomie(p){
   function sectionCompetences(){
     return h("div", {className: "m8tx-comps"},
       h("div", {className: "m8-titre"}, "🧩 Les compétences"),
-      h("p", {className: "m8-p"}, "Les 28 compétences du référentiel. Le libellé officiel reste pour École Directe et le PDF « notes et compétences » ; tout ce que voit l'élève prend le libellé élève. L'identifiant ne change jamais."),
+      h("p", {className: "m8-p"}, "Les 28 compétences du référentiel."),
       COMP_CATEGORIES.map(function(c){
         return h("div", {key: c[1], className: "m8tx-comp-cat"}, h("div", {className: "m8tx-comp-cat-t"}, c[0]),
           t.competences[c[1]].map(function(g){

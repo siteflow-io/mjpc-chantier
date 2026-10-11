@@ -12,12 +12,12 @@ function etiquetteDe(b){
 /* ── Les infobulles, pour Paul ── */
 var BULLES = {
   // L'en-tête et les onglets de la console
-  "🔴1 session en cours": "Les séances encore ouvertes, ici ou ailleurs : tu vas au pilotage de chacune, ou tu la termines. Ne coûte rien.",
+  "🔴1 séance en cours": "Les séances encore ouvertes, ici ou ailleurs : tu vas au pilotage de chacune, ou tu la termines. Ne coûte rien.",
   "📖 Mode d'emploi": "Ouvre le mode d'emploi avec toutes les explications de l'app.",
   "📺 Ouvrir vue tableau": "Ouvre la vue tableau, à glisser sur le vidéoprojecteur : l'énoncé et le chrono, jamais les choix. Ne change rien à la séance.",
   "📱 QR pilotage": "Montre le QR de ton téléphone : il devient ta télécommande, avec tous les boutons de la séance. Ne change rien.",
   "🧪 Mode test": "Ouvre le mode test : la même chose que le réel, sur la classe de test et la démo ; tout est effacé à la sortie, sauf la démo. Ne touche à aucune vraie classe.",
-  "← Retour": "Revient à l'écran précédent. Une séance en cours continue : elle se retrouve par « 🔴 sessions en cours ».",
+  "← Retour": "Revient à l'écran précédent. Une séance en cours continue : elle se retrouve par « 🔴 séances en cours ».",
   "Pilotage": "Le pilotage : préparer les évaluations et piloter la classe.",
   "Données": "Les données : les résultats des séances, la sauvegarde et la corbeille.",
   "Réglages": "Les réglages, en cartes, comme dans la correction de dictée : le prompt, les durées de la séance, les niveaux de maîtrise, les textes.",
@@ -27,8 +27,8 @@ var BULLES = {
   "📊 Résultats": "Les résultats des séances : les notes d'après la feuille, les compétences, les feuilles à lire.",
   "💾 Sauvegarde": "Exporter ou importer tout le QCM, et la corbeille.",
   // Avant l'heure
-  "🚀 Lancer la session": "Ouvre l'appel : tu coches les absents, l'heure de fin se règle, puis la séance s'ouvre et les tablettes passent à l'attestation. Les binômes restent ceux de la grille.",
-  "🚀 Lancer la session ": "Ouvre la séance avec cette liste d'absents et cette heure de fin : les tablettes passent à l'attestation. Les binômes restés seuls sont réappariés.",
+  "🚀 Lancer la séance": "Ouvre l'appel : tu coches les absents, l'heure de fin se règle, puis la séance s'ouvre et les tablettes passent à l'attestation. Les binômes restent ceux de la grille.",
+  "🚀 Lancer la séance ": "Ouvre la séance avec cette liste d'absents et cette heure de fin : les tablettes passent à l'attestation. Les binômes restés seuls sont réappariés.",
   "Annuler": "Ferme sans rien changer.",
   "Tout le monde présent": "Décoche tous les absents d'un coup. La séance n'est pas encore lancée.",
   "📊 Résultats ": "Ouvre les résultats de cette séance passée.",
@@ -37,7 +37,7 @@ var BULLES = {
   "🚫 Départ d'un élève": "Marque un élève parti : il ne bloque plus la classe, son binôme continue seul, ses questions manquées sortent de son total. Il revient par « ↩️ Retour d'un élève ».",
   "↩️ Retour d'un élève": "Un élève parti revient : il reprend sa moitié ; les questions qu'il a manquées restent hors de son total.",
   "🔓 Rouvrir pour un élève": "Rouvre la question close pour un élève qui n'a pas répondu, une seule fois par question, avec le temps de réponse de la question. Son voisin porte le voile ordinaire.",
-  "🛑 Terminer la session": "Termine la séance : l'archive s'écrit avec les notes telles qu'elles sont, quelle que soit la phase ; les tablettes oublient leurs élèves. Une confirmation d'abord.",
+  "🛑 Terminer la séance": "Termine la séance : l'archive s'écrit avec les notes telles qu'elles sont, quelle que soit la phase ; les tablettes oublient leurs élèves. Une confirmation d'abord.",
   "▶️ Lancer Q1": "Lance la question 1 : la réflexion commence sur toutes les tablettes, l'énoncé sans les choix.",
   "✋ Autoriser la réponse": "Coupe la réflexion : « POSE TON STYLO » sur les deux moitiés, puis le 1er tour. Sert quand tous ont fini d'écrire avant la fin du temps.",
   "⏭️ Tour suivant": "Coupe le 1er tour : les premiers sont figés et disent si leur feuille dit la même chose que leur clic, puis le 2e tour commence.",
@@ -79,7 +79,7 @@ var BULLES = {
   "Ouvrir la console MJPC →": "Ouvre la console MJPC : les classes, les élèves, leurs codes, les aménagements et les exclusions.",
   "👩‍🏫 Accès professeur": "Ouvre la console avec ton code ou ta clé.",
   "🎓 Mode élève": "Ouvre l'écran des élèves : « Combien êtes-vous sur cette tablette ? ».",
-  "Ouvrir la session professeur": "Ouvre la console avec la clé gardée sur cet appareil.",
+  "Ouvrir la séance professeur": "Ouvre la console avec la clé gardée sur cet appareil.",
   "Fermer": "Ferme sans rien changer (Échap)."
 };
 /* Les infobulles des boutons dont le libellé porte un nombre ou un nom */
@@ -96,11 +96,11 @@ function bulleDe(lib, b){
 
 /* ── Où mène chaque bouton : ALLER[scène][libellé], puis ALLER["*"][libellé] ── */
 var ALLER = {"*": {
-  "🔴1 session en cours": "c-sessions", "📖 Mode d'emploi": "c-mode-emploi", "?": "c-mode-emploi", "📺 Ouvrir vue tableau": "b-reponse",
+  "🔴1 séance en cours": "c-sessions", "📖 Mode d'emploi": "c-mode-emploi", "?": "c-mode-emploi", "📺 Ouvrir vue tableau": "b-reponse",
   "📱 QR pilotage": "c-qr", "🧪 Mode test": "x620-1-mode-test-ouverture", "← Retour": "c-accueil",
   "Pilotage": "c-lancer", "🎯 Pilotage classe": "c-lancer", "📝 Évaluations": "c-evals", "Données": "c-seances", "📊 Résultats": "c-seances",
   "💾 Sauvegarde": "c-sauvegarde", "Réglages": "c-reglages", "🚫 Départ d'un élève": "c-depart", "↩️ Retour d'un élève": "c-retour",
-  "🔓 Rouvrir pour un élève": "c-rouvrir-un", "🛑 Terminer la session": "c-terminer", "👁": "c-voir-tablette",
+  "🔓 Rouvrir pour un élève": "c-rouvrir-un", "🛑 Terminer la séance": "c-terminer", "👁": "c-voir-tablette",
   "👤 1 élève": "t-un-eleve", "👥 2 élèves": "t-login", "Entrer →": "t-binome", "Entrer": "t-attest-1", "Pas là ? Choisir un autre élève": "t-login"
 }};
 function allerDe(scene, lib){

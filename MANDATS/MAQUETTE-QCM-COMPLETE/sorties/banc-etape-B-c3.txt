@@ -1,0 +1,5 @@
+Banc unique — maquette complète du QCM
+Fichier : maquette-qcm-vdev.html · étape jouée : 5 · avec les gardes 1 à 15 des compléments · 2026-10-11T17:11:42.073Z
+169 scènes · 481 règles de CSS de MJPC qui visent le vrai site, comparées à index.html · 18 écarts inscrits · 63 écrans de l'existant · 115 retraits · 553 textes classés dans textes-console.json · gardes 9 à 15 : 169 scènes · 0 éléments cliquables cliqués · 0 éléments regardés pour leur infobulle
+Vérifications : 19790 · échecs : 0
+Zéro défaut.

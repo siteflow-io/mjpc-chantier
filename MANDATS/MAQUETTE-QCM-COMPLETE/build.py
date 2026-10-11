@@ -6,12 +6,14 @@ D = os.path.dirname(os.path.abspath(__file__))
 S = os.path.join(D, "src")
 def lire(*p): return open(os.path.join(*p), encoding="utf-8").read()
 
-CSS = ["qcm.css", "maquette.css", "maquette610.css", "maquette620.css", "maquette626.css", "maquette627.css", "maquette628.css", "socle.css", "etapes.css", "mjpc.css", "mjpc-edt.css", "mjpc-ajouts.css", "complement2.css"]
+CSS = ["qcm.css", "maquette.css", "maquette610.css", "maquette620.css", "maquette626.css", "maquette627.css", "maquette628.css", "socle.css", "etapes.css", "mjpc.css", "mjpc-edt.css", "mjpc-ajouts.css", "complement2.css", "c3.css"]
 # (complément 3) le scénario, un seul : tout ce que montrent les scènes s'en calcule (src/scenario.js), avec les évaluations du hub lues le 08/10
 JS = ["scenario.js", "maquette.js", "maquette2.js", "ev3e.js", "maquette610.js", "maquette620.js",
       "com626.js", "maquette626.js", "com627.js", "maquette627.js", "com628.js", "maquette628.js", "com632.js"]
 EXTRA_JS = json.load(open(os.path.join(S, "ordre_js.json"))) if os.path.exists(os.path.join(S, "ordre_js.json")) else []
-JS += EXTRA_JS + ["gestes.js", "etape2.js", "etape3.js", "etape4.js", "mjpc.js", "complement1.js", "complement2.js", "socle.js"]
+JS += EXTRA_JS + ["gestes.js", "etape2.js", "etape3.js", "etape4.js", "mjpc.js", "complement1.js", "complement2.js",
+       # (complément 3) le scénario dans les écrans : chaque chiffre au moment de la scène
+       "c3-base.js", "c3-pilot.js", "c3-corr.js", "c3-appareils.js", "c3-soir.js", "c3-evals.js", "c3-scenes.js", "c3-textes.js", "socle.js"]
 
 def js(nom):
     t = lire(S, nom)
@@ -33,6 +35,10 @@ assert "Exemple de la maquette" not in pdf and 'class="prov"' not in pdf
 taxo = lire(S, "donnees", "taxonomie_atelier.json")
 # le prompt de création d'éval, tel qu'il est au sas (tour 630, acquis au tour 633)
 prompt = re.search(r"## Le texte proposé\s*```\n(.*?)\n```", lire(D, "..", "PROMPT-QCM-CREATION", "README.md"), re.S).group(1)
+# (complément 3, relecteur n°248, changement 8) à la correction, c'est le voisin qui lit la feuille et clique ce qu'elle dit : le prompt le dit
+_avant = "3. Correction, après toutes les questions : l'élève recopie sur la tablette ce que dit sa feuille, puis je révèle la réponse et je commente."
+if _avant not in prompt: sys.exit("refus : la ligne 3 du prompt n'est plus celle du sas")
+prompt = prompt.replace(_avant, "3. Correction, après toutes les questions : chaque élève lit la feuille de son voisin et clique sur la tablette ce qu'elle dit, puis je révèle la réponse et je commente.")
 # (complément 1) ce qui remplit les jetons du prompt : le chapitre de 3e et ses compétences (copie du sas, md5 dans src/donnees/MD5.txt),
 # les libellés élève, et le texte de {{LIMITES}} des mesures (mesures/limites.json, « texte_limites »)
 chap = json.loads(lire(S, "donnees", "chapitre-3e-poesie-peinture-final.json"))["chapitre"]
@@ -54,6 +60,10 @@ edt_prompts = json.loads(lire(S, "donnees", "edt-prompts.json"))["prompts"]
 hub_brut = open(os.path.join(S, "donnees", "evaluations_hub.json"), "rb").read()
 if hashlib.md5(hub_brut).hexdigest() != "ae5860e47e633875e873d9d0190d798a": sys.exit("refus : evaluations_hub.json n'a pas son md5")
 hub = json.loads(hub_brut.decode("utf-8"))
+# (complément 3, changement 1) les explications retirées de l'écran, et leur place : l'infobulle de l'élément (banc/existant/textes-console.json)
+dest_c3 = [[x["destination"]["infobulle"], x["destination"]["place"], sorted(set(x.get("scenes", []) + [x["destination"]["scene"]]))]
+           for x in json.loads(lire(D, "banc", "existant", "textes-console.json"))["textes"]
+           if x.get("categorie") == "explication" and x.get("destination", {}).get("infobulle")]
 html = ("<!DOCTYPE html>\n<html lang=\"fr\">\n<head>\n<meta charset=\"UTF-8\">\n"
         "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n"
         "<title>Maquette complète du QCM</title>\n"
@@ -63,6 +73,7 @@ html = ("<!DOCTYPE html>\n<html lang=\"fr\">\n<head>\n<meta charset=\"UTF-8\">\n
         "</head>\n<body>\n<div id=\"root\"></div>\n<div id=\"som-racine\"></div>\n"
         "<script>\nvar PROMPT_TEXTE = " + json.dumps(prompt, ensure_ascii=False).replace("</", "<\\/") + ";\nwindow.PDF632_HTML = " + json.dumps(pdf, ensure_ascii=False).replace("</", "<\\/") + ";\nvar TAXO = " + json.dumps(json.loads(taxo), ensure_ascii=False).replace("</", "<\\/") + ";\n"
         + "var CHAPITRE_3E = " + json.dumps(chapitre, ensure_ascii=False) + ";\nvar LIBELLES_ELEVE = " + json.dumps(libel, ensure_ascii=False) + ";\nvar LIMITES_TEXTE = " + json.dumps(texte_limites, ensure_ascii=False) + ";\n"
+        + "var DEST_C3 = " + json.dumps(dest_c3, ensure_ascii=False).replace("</", "<\\/") + ";\n"
         + "var HUB_EVALS = " + json.dumps(hub, ensure_ascii=False).replace("</", "<\\/") + ";\n"
         + "var EDT_DONNEES = " + json.dumps(edt, ensure_ascii=False).replace("</", "<\\/") + ";\nvar EDT_PROMPTS_INDEX = " + json.dumps(edt_prompts, ensure_ascii=False).replace("</", "<\\/") + ";\n"
         + "\n".join(js(n) for n in JS) + "\n</script>\n</body>\n</html>\n")

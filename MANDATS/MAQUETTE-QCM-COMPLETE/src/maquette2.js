@@ -182,7 +182,7 @@ function Feuille(){
 var THEO = {cle:"T", nom:"CHEVALLIER Théo", prenom:"Théo"};
 function etatQ2SansTheo(p){ if(p === "Théo") return {cls:"m-pasrep", st:"⏳ pas de réponse"}; return couleur(p, 1, false); }
 function RouvrirUn(){
-  var fond = Pilot({phase:"attente", qi:1, stats:statsQ("24/24", "23/24", "9/23", "2/3"), passees:[0, 1], etat:etatQ2SansTheo,
+  var fond = Pilot({phase:"attente", qi:1, stats:statsQ(), passees:[0, 1], etat:etatQ2SansTheo,
     legende:LEG_Q.slice(0, 4).concat([["#fff","pas de réponse","2px dashed #EF4444"]])});
   var modal = h("div", {className:"checkin-overlay", "data-echap":"c-q2-close"},
     h("div", {className:"checkin-modal", style:{maxWidth:"560px"}},
@@ -190,8 +190,6 @@ function RouvrirUn(){
       h("div", {className:"rouvrir-l"},
         h("div", null, h("div", {style:{fontWeight:900}}, "CHEVALLIER Théo"), h("div", {style:{fontSize:".8rem", color:"var(--gris)"}}, "tablette 12, moitié de gauche · avec ZELLER Lou")),
         h("button", {className:"btn btn-primary btn-sm", "data-va":"t-rouvrir-un"}, "🔓 Rouvrir pour Théo")),
-      h("div", {style:{padding:".2rem 1.2rem .8rem", fontSize:".84rem", lineHeight:1.5, color:"var(--noir)"}},
-        "Une seule fois par question. Il a le temps de réponse de la question (20 s). Pendant son tour, ZELLER Lou porte le voile, comme d'habitude."),
       h("div", {className:"checkin-actions"}, h("button", {className:"btn btn-ghost", "data-va":"c-q2-close", title:"Ferme la fenêtre sans rien rouvrir."}, "Annuler"))));
   return h(F, null, fond, modal);
 }
@@ -202,7 +200,7 @@ function TabletteTheo(){ return Tablette(EcrReponse(THEO, 1, ORD[1].J, [], 14), 
 function Interrompue(){
   var modal = h("div", {className:"checkin-overlay"},
     h("div", {className:"checkin-modal", style:{maxWidth:"620px"}},
-      h("div", {className:"checkin-header"}, h("h3", null, "⚠️ Session interrompue détectée", InfoI()), h("div", {className:"checkin-sub"}, CLASSE + " — " + EV.titre)),
+      h("div", {className:"checkin-header"}, h("h3", null, "⚠️ Séance interrompue détectée", InfoI()), h("div", {className:"checkin-sub"}, CLASSE + " — " + EV.titre)),
       h("div", {style:{padding:"1rem 1.2rem", fontSize:".9rem", color:"var(--noir)"}},
         h("div", {style:{marginBottom:".4rem"}}, "📅 Démarrée le 08/10/2026 à 10:02"),
         h("div", {style:{marginBottom:".4rem"}}, "🔌 Dernière déconnexion : 08/10/2026 à 10:09"),
@@ -211,14 +209,14 @@ function Interrompue(){
           h("strong", null, "🔄 Reprendre"), " : le tour en cours recommence au début, voile compris : les moitiés de gauche repassent la question 2, avec tout leur temps. Une réponse déjà donnée reste."),
         h("div", {style:{padding:".7rem", background:"#FEE2E2", borderRadius:"8px", fontSize:".85rem", color:"#7F1D1D", marginTop:".5rem"}},
           h("strong", null, "🛑 Terminer définitivement"), " : la séance est close, et l'archive s'écrit avec les notes telles qu'elles sont. Les questions pas encore corrigées n'ont pas de recopie : tu fixes ces notes d'après les feuilles, dans Données → Résultats.")),
-      h("div", {className:"checkin-actions"}, h("button", {className:"btn btn-rouge btn-sm"}, "🛑 Terminer définitivement"), h("button", {className:"btn btn-primary"}, "🔄 Reprendre la session"))));
+      h("div", {className:"checkin-actions"}, h("button", {className:"btn btn-rouge btn-sm"}, "🛑 Terminer définitivement"), h("button", {className:"btn btn-primary"}, "🔄 Reprendre la séance"))));
   return h(F, null, Lancement(false), modal);
 }
 
 /* ── Le rattrapage (335) ── */
 function Rattrapage(){
   var carte = h("div", {className:"card"},
-    h("h2", null, "🎯 Lancer une nouvelle session", InfoI()),
+    h("h2", null, "🎯 Lancer une nouvelle séance", InfoI()),
     h("div", {className:"lancer-grid"},
       h("div", null,
         h("div", {className:"field"}, h("label", null, "Classe", InfoI()), h("select", {value:"c", readOnly:true}, h("option", {value:"c"}, CLASSE + " (25 élèves)"))),
@@ -234,7 +232,7 @@ function Rattrapage(){
 }
 function SessionsPrecedentesRatt(){
   return h("div", {className:"card"},
-    h("h2", null, "📚 Sessions précédentes — " + CLASSE, InfoI()),
+    h("h2", null, "📚 Séances précédentes — " + CLASSE, InfoI()),
     h("div", {className:"results-eval-list"},
       h("div", {className:"results-eval-row"},
         h("div", null, h("div", {className:"titre"}, EV.titre), h("div", {className:"meta"}, "08/10/2026 10:02 · ✅ terminée · 24 présents, 1 absent · " + aLire(2).length + " feuilles à lire"),
@@ -245,13 +243,13 @@ function SessionsPrecedentesRatt(){
         h("button", {className:"btn btn-ghost btn-sm"}, "📊 Résultats"))));
 }
 
-/* ── La fenêtre des sessions en cours (337) ── */
+/* ── La fenêtre des séances en cours (337) ── */
 function SessionsEnCours(){
-  var fond = Pilot({phase:"reponse", qi:0, tour:1, chrono:9, stats:statsQ("24/24", "10/12", "10/10", "1/3"), etat:etatQuestion({qi:0, tour:1, nonRep:["Jade", "Anna"]})});
+  var fond = Pilot({phase:"reponse", qi:0, tour:1, chrono:9, stats:statsQ(), etat:etatQuestion({qi:0, tour:1, nonRep:["Jade", "Anna"]})});
   var menu = h("div", {className:"sessions-menu-overlay", "data-echap":"c-q1-tour1"},
     h("div", {className:"sessions-menu"},
-      h("div", {className:"sessions-menu-header"}, h("h3", null, "🔴 Sessions actuellement en cours"), h("button", {className:"sessions-menu-close", "data-va":"c-q1-tour1", title:"Ferme la liste ; rien ne change."}, "✕")),
-      h("p", {className:"sessions-menu-intro"}, "Voici toutes les sessions qui sont actuellement actives quelque part. Tu peux aller au pilotage de chacune ou la terminer si elle n'a plus de raison d'être active."),
+      h("div", {className:"sessions-menu-header"}, h("h3", null, "🔴 Séances actuellement en cours"), h("button", {className:"sessions-menu-close", "data-va":"c-q1-tour1", title:"Ferme la liste ; rien ne change."}, "✕")),
+      h("p", {className:"sessions-menu-intro"}, "Voici toutes les séances qui sont actuellement actives quelque part. Tu peux aller au pilotage de chacune ou la terminer si elle n'a plus de raison d'être active."),
       h("div", {className:"sessions-menu-liste"},
         h("div", {className:"session-menu-row"},
           h("div", {className:"session-menu-info"}, h("div", {className:"session-menu-nom"}, CLASSE),
@@ -297,7 +295,7 @@ function Corbeille(){
 function Sauvegarde(){
   return Console("donnees", "snapshot", h("div", {className:"card"},
     h("h2", null, "💾 Sauvegarde", InfoI()),
-    h("p", {style:{marginBottom:".8rem", color:"var(--gris)", fontSize:".9rem"}}, "Exporte ou importe l'ensemble de la base QCM (évaluations, sessions, réponses), avec les classes."),
+    h("p", {style:{marginBottom:".8rem", color:"var(--gris)", fontSize:".9rem"}}, "Exporte ou importe l'ensemble de la base QCM (évaluations, séances, réponses), avec les classes."),
     h("div", {className:"snapshot-row"},
       h("button", {className:"btn btn-primary"}, "📥 Exporter snapshot"),
       h("button", {className:"btn btn-ghost"}, "📤 Importer snapshot")),
@@ -311,8 +309,8 @@ function Sauvegarde(){
       })),
     h("div", {className:"sauv-zone"},
       h("h3", {className:"sauv-h"}, "🧹 Maintenance", InfoI()),
-      h("p", {className:"sauv-p"}, "Si la vue tableau ou le pilotage te montrent des sessions fantômes (anciennes évaluations qui n'auraient pas dû rester actives), utilise le nettoyage ci-dessous."),
-      h("button", {className:"btn btn-ghost btn-sm"}, "🧹 Nettoyer les sessions zombies", InfoI())),
+      h("p", {className:"sauv-p"}, "Si la vue tableau ou le pilotage te montrent des séances fantômes (anciennes évaluations qui n'auraient pas dû rester actives), utilise le nettoyage ci-dessous."),
+      h("button", {className:"btn btn-ghost btn-sm"}, "🧹 Nettoyer les séances zombies", InfoI())),
     h("div", {className:"sauv-zone dashed"},
       h("h3", {className:"sauv-h rouge"}, "🗑️ Zone dangereuse", InfoI()),
       h("p", {className:"sauv-p"}, "Tout part d'abord à la corbeille, gardé un an. Pense quand même à exporter un snapshot."),
@@ -367,7 +365,7 @@ function ModeTest(){
 var LOU = {nom:"ZELLER Lou", prenom:"Lou"};
 function MesEvaluations(){
   var items = [
-    [EV.titre, "08/10/2026 · 1 / 3 · 6,7 / 20 · 🟠 Maîtrise fragile"],
+    [EV.titre, ligneNote("Lou")],
     ["3e Chapitre 1 — Poésie et peinture au XIXème siècle · Interro de cours (séance 3)", "24/09/2026 · 7 / 9 · 15,6 / 20 · 🟢 Très bonne maîtrise"],
     ["QCM — Le jambon-beurre", "15/09/2026 · 6 / 10 · 12 / 20 · 🔵 Maîtrise satisfaisante"]
   ];
@@ -487,7 +485,7 @@ function TelReponse(){
     h("div", {key:"st"}, TelStats(0, [])),
     h("div", {key:"l"}, TelListe("TABLETTES — 10 / 12 ont répondu · clic sur un nom pour agir", modeDe)),
     h("div", {key:"lg"}, TelLegende(["✓ juste", "✓+ une en trop", "½ une sur deux", "✗ faux", "🙈 attend son tour", "⏳ répond"])),
-    h("div", {key:"t"}, TelBtn("🛑 Terminer la session", "rouge", "small"))]);
+    h("div", {key:"t"}, TelBtn("🛑 Terminer la séance", "rouge", "small"))]);
 }
 function TelCorrAvant(){
   var nonDit = ["Michel", "Tom", "Hugo", "Sacha", "Rayan", "Théo"];
@@ -503,7 +501,7 @@ function TelCorrAvant(){
       h("div", {className:"ss"}, "Une tablette en panne : un clic sur le nom, puis « 🚫 Marquer comme parti »."),),
     h("div", {key:"l"}, TelListe("TABLETTES — 18 / 24 ont recopié leur feuille", modeDe)),
     h("div", {key:"lg"}, TelLegende(["✍️ a recopié", "⏳ pas encore recopié"])),
-    h("div", {key:"t"}, TelBtn("🛑 Terminer la session", "rouge", "small"))]);
+    h("div", {key:"t"}, TelBtn("🛑 Terminer la séance", "rouge", "small"))]);
 }
 function TelCorrApres(){
   var q = EV.questions[1];
@@ -522,7 +520,7 @@ function TelCorrApres(){
     h("div", {key:"st"}, TelStats(1, [0, 1, 2])),
     h("div", {key:"l"}, TelListe("TABLETTES — d'après la feuille", function(){ return {qi:1, mode:"corr"}; }, flagDe)),
     h("div", {key:"lg"}, TelLegende(["✓ juste", "＋ Trouvée au dernier moment", "✗ faux", "≠ tablette : recopie juste, tablette fausse"])),
-    h("div", {key:"t"}, TelBtn("🛑 Terminer la session", "rouge", "small"))]);
+    h("div", {key:"t"}, TelBtn("🛑 Terminer la séance", "rouge", "small"))]);
 }
 function TelEleve(){
   var modeDe = function(p){ return p === "Théo" ? {mode:"pasrep"} : {qi:1, mode:"q"}; };
@@ -535,7 +533,7 @@ function TelEleve(){
       h("button", {className:"tel-btn tb-ghost tb-small", "data-va":"c-rouvrir-tous"}, "🔓 Rouvrir Q2")),   // le libellé de la 7.7.1 (l. 5616)
     h("div", {key:"st"}, TelStats(1, [0, 1])),
     h("div", {key:"l"}, TelListe("TABLETTES — 23 / 24 ont répondu · clic sur un nom pour agir", modeDe)),
-    h("div", {key:"t"}, h("button", {className:"tel-btn tb-rouge tb-small", "data-va":"c-terminer"}, "🛑 Terminer la session"))]);
+    h("div", {key:"t"}, h("button", {className:"tel-btn tb-rouge tb-small", "data-va":"c-terminer"}, "🛑 Terminer la séance"))]);
   var feuille = h("div", {className:"tel-sheet-fond", "data-echap":"c-q2-close"},
     h("div", {className:"tel-sheet"},
       h("div", {style:{display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:".5rem"}}, h("strong", {style:{fontSize:"1rem"}}, "CHEVALLIER Théo"), h("button", {className:"tel-x", "data-va":"c-q2-close", title:"Ferme la fiche de l'élève sans rien changer."}, "✕")),

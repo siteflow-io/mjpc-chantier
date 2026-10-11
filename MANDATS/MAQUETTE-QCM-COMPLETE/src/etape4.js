@@ -87,7 +87,7 @@ function CopierErreurs(){
     copie && h("div", {className:"copie-ok"}, h("strong", null, "✅ Copié. "), "À coller dans l'instance de création d'éval : ", h("span", {className:"copie-t"}, texte)));
 }
 // L'indication du champ JSON de la 7.7.1 (l. 6594), mot pour mot
-var JSON_INDICATION = '{\n  "titre": "Mon évaluation",\n  "questions": [\n    {"enonce":"...","choix":[...],"bonnes":[0],"niveau":"standard"}\n  ]\n}';
+var JSON_INDICATION = '{\n  "titre": "Mon évaluation",\n  "questions": [\n    {"enonce":"…","choix":[…],"bonnes":[0],"niveau":"standard"}\n  ]\n}';
 function CollageQCM(){
   var s = useState(false), refait = s[0], setRefait = s[1];
   return h("div", {className:"modal"},
@@ -297,7 +297,6 @@ var DIT_M = ["Non, autre chose", "Oui, la même chose", "Non, autre chose"];
 function entreeBilan(p){   // ce que l'app donne à com632.js pour le bilan général d'un élève (626 à 632)
   var r = calc(p), m = maitriseDe(r.sur20), idx = ["rouge","orange","bleu","vert"], est = ESTIM[p];
   var pts = r.pts;
-  if(p === "Lou"){ pts = [1, 0, 0]; m = maitriseDe(20 / 3); est = "bleu"; }   // le bilan de Lou : sa question 3 corrigée d'après sa feuille
   var iE = idx.indexOf(est), iR = idx.indexOf(m.k);
   return {niveau:m.k, mode:"strict", autonomieRetiree:false, autonomieLibs:[LIB_ELEVE["tr-personne-03"], LIB_ELEVE["tr-methodes-02"]],
     questions:EV.questions.map(function(q, i){ return {n:i + 1, verifie:VERIF_M[i], pts:pts[i] || 0, niveau:q.niveau, taux:tauxQ(i)}; }),
@@ -325,7 +324,7 @@ function FicheMichel(retire){
   var r = calc("Michel");
   return h("div", {className:"student-report"},
     h("div", {style:{display:"flex", justifyContent:"space-between", alignItems:"center", flexWrap:"wrap"}},
-      h("h3", null, "👤 DUVERNAY Michel — 1 / 3 · 6,7 / 20 · 🟠 Maîtrise fragile", InfoI("Pour chaque question : ce que Julien a lu sur sa feuille à la correction, ce qu'il a cliqué sur la tablette, ce qu'il a dit à la fin de son temps (B). « La feuille dit autre chose » corrige une question d'après sa feuille.")),
+      h("h3", null, enteteFiche("Michel"), InfoI("Pour chaque question : ce que Julien a lu sur sa feuille à la correction, ce qu'il a cliqué sur la tablette, ce qu'il a dit à la fin de son temps (B). « La feuille dit autre chose » corrige une question d'après sa feuille.")),
       h("button", {className:"btn btn-ghost btn-sm", "data-va":"c-resultats", title:"Ferme la fiche et revient au tableau de la séance."}, "✕ Fermer")),
     h("div", {className:"fiche-head fiche-head-b"}, h("span", null, ""), h("span", null, "Question"), h("span", null, "Sa feuille, lue par Julien"), h("span", null, "Sa tablette"), h("span", null, "Ce qu'il a dit (B)"), h("span", null, "Bonne réponse"), h("span", null, "Points"), h("span", null, "")),
     EV.questions.map(function(q, qi){
@@ -363,8 +362,7 @@ function ScFiche(retire){
 }
 function ScFicheGarde(){
   return Fenetre(ScFiche(false), "⛔ Retirer le point d'autonomie à DUVERNAY Michel ?", "Le soir, d'après ta lecture de ses feuilles",
-    h(F, null, h("p", null, "Ses deux compétences d'autonomie passent en Maîtrise insuffisante, pour cette évaluation : « Être autonome et responsable » et « S'impliquer dans les activités en classe et dans son travail personnel ». La note ne bouge pas."),
-      h("p", {className:"fen-note"}, "Son bilan général le dira, et son bilan quand sa copie lui sera rendue : « " + AUTO[0] + " » et « " + AUTO[1] + " » non atteintes.")),
+    h(F, null, h("p", null, "Ses deux compétences d'autonomie passent en Maîtrise insuffisante, pour cette évaluation : « Être autonome et responsable » et « S'impliquer dans les activités en classe et dans son travail personnel ». La note ne bouge pas.")),
     [h("button", {key:1, className:"btn btn-ghost", "data-va":"c-fiche", title:"Ne retire rien."}, "Annuler"), h("button", {key:2, className:"btn btn-rouge", "data-va":"c-fiche-retire", title:"Retire le point d'autonomie, tout de suite. « ↩️ Rendre » le défait."}, "⛔ Retirer le point d'autonomie")], "c-fiche");
 }
 function ScQueDitLaFeuille(){
@@ -383,7 +381,7 @@ function ScQueDitLaFeuille(){
 var LOU = {nom:"ZELLER Lou", prenom:"Lou", sexe:"F"};
 function MesEvaluations(rendue){
   var items = [
-    {titre:EV.titre, l:rendue ? "08/10/2026 · 1 / 3 · 6,7 / 20 · 🟠 Maîtrise fragile" : null, etat:rendue ? "bilan" : "relecture"},
+    {titre:EV.titre, l:rendue ? ligneNote("Lou") : null, etat:rendue ? "bilan" : "relecture"},
     {titre:"3e Chapitre 1 — Poésie et peinture au XIXème siècle · Interro de cours (séance 3)", etat:"absente"},
     {titre:"QCM — Le jambon-beurre", l:"15/09/2026 · 6 / 10 · 12 / 20 · 🔵 Maîtrise satisfaisante", etat:"bilan2"}
   ];
@@ -446,7 +444,7 @@ function SauvegardeQCM(){
   var s2 = useState(false), net = s2[0], setNet = s2[1];
   return h("div", {className:"card"},
     h("h2", null, "💾 Sauvegarde", InfoI("Exporter ou importer tout le QCM, avec les classes ; la corbeille ; la maintenance ; les purges. La démo est permanente : aucune purge ne l'efface.")),
-    h("p", {style:{marginBottom:".8rem", color:"var(--gris)", fontSize:".9rem"}}, "Exporte ou importe l'ensemble de la base QCM (évaluations, sessions, réponses), avec les classes."),
+    h("p", {style:{marginBottom:".8rem", color:"var(--gris)", fontSize:".9rem"}}, "Exporte ou importe l'ensemble de la base QCM (évaluations, séances, réponses), avec les classes."),
     h("div", {className:"snapshot-row"},
       h("button", {className:"btn btn-primary", "data-local":"1", title:"Télécharge tout le QCM dans un fichier, à garder.", onClick:function(){ setExp(true); }}, "📥 Exporter snapshot"),
       h("button", {className:"btn btn-ghost", "data-va":"c-importer", title:"Remplace tout le QCM par un fichier exporté, après une confirmation : le QCM d'aujourd'hui part d'abord à la corbeille."}, "📤 Importer snapshot")),
@@ -460,10 +458,10 @@ function SauvegardeQCM(){
         return h("div", {key:i, className:"corb-l"}, h("span", {className:"k"}, c[0]), h("span", null, h("strong", null, c[1]), h("div", {className:"d"}, c[2])), h(Restaurer));
       })),
     h("div", {className:"sauv-zone"},
-      h("h3", {className:"sauv-h"}, "🧹 Maintenance", InfoI("Pour les sessions restées ouvertes par erreur.")),
-      h("p", {className:"sauv-p"}, "Si la vue tableau ou le pilotage te montrent des sessions fantômes (anciennes évaluations qui n'auraient pas dû rester actives), utilise le nettoyage ci-dessous."),
-      h("button", {className:"btn btn-ghost btn-sm", "data-local":"1", title:"Ferme les sessions restées actives par erreur ; une séance en cours n'est pas touchée.", onClick:function(){ setNet(true); }}, "🧹 Nettoyer les sessions zombies"),
-      net && h("div", {className:"fen-note"}, "🧹 Aucune session zombie : rien à fermer.")),
+      h("h3", {className:"sauv-h"}, "🧹 Maintenance", InfoI("Pour les séances restées ouvertes par erreur.")),
+      h("p", {className:"sauv-p"}, "Si la vue tableau ou le pilotage te montrent des séances fantômes (anciennes évaluations qui n'auraient pas dû rester actives), utilise le nettoyage ci-dessous."),
+      h("button", {className:"btn btn-ghost btn-sm", "data-local":"1", title:"Ferme les séances restées actives par erreur ; une séance en cours n'est pas touchée.", onClick:function(){ setNet(true); }}, "🧹 Nettoyer les séances zombies"),
+      net && h("div", {className:"fen-note"}, "🧹 Aucune séance zombie : rien à fermer.")),
     h("div", {className:"sauv-zone dashed"},
       h("h3", {className:"sauv-h rouge"}, "🗑️ Zone dangereuse", InfoI("Tout part d'abord à la corbeille, gardé un an. La démo revient à l'ouverture suivante, quelle que soit la purge.")),
       h("p", {className:"sauv-p"}, "Tout part d'abord à la corbeille, gardé un an. Pense quand même à exporter un snapshot."),
@@ -474,12 +472,12 @@ function SauvegardeQCM(){
 function Sauvegarde(){ return Console("donnees", "snapshot", h(SauvegardeQCM), false); }
 function ScImporter(){
   return Fenetre(Sauvegarde(), "📤 Importer un snapshot ?", "Il remplace tout le QCM : évaluations, séances, réponses.",
-    h(F, null, h("p", null, "Le QCM d'aujourd'hui part d'abord à la corbeille, gardé un an : rien n'est perdu. La démo revient d'elle-même à l'ouverture suivante.")),
+    h(F, null, h("p", null, "Le QCM d'aujourd'hui part d'abord à la corbeille, gardé un an : rien n'est perdu.")),
     [h("button", {key:1, className:"btn btn-ghost", "data-va":"c-sauvegarde", title:"N'importe rien."}, "Annuler"), h("button", {key:2, className:"btn btn-primary", "data-va":"c-sauvegarde", title:"Choisis le fichier, puis il remplace le QCM ; l'ancien part à la corbeille."}, "📤 Choisir le fichier et importer")], "c-sauvegarde");
 }
 function ScPurger(){
   return Fenetre(Sauvegarde(), "🗑️ Purger les évaluations ?", "Toutes les évaluations partent à la corbeille, gardées un an.",
-    h(F, null, h("p", null, "Leurs séances gardent leurs notes. La démo « 🎓 Démo — apprendre le déroulé » n'est pas touchée : elle est écrite dans l'app, et revient d'elle-même si elle manque."),
+    h(F, null, h("p", null, "Leurs séances gardent leurs notes."),
       h("p", {className:"fen-note"}, "Pense à exporter un snapshot avant.")),
     [h("button", {key:1, className:"btn btn-ghost", "data-va":"c-sauvegarde", title:"Ne purge rien."}, "Annuler"), h("button", {key:2, className:"btn btn-rouge", "data-va":"c-sauvegarde", title:"Met toutes les évaluations à la corbeille, sauf la démo."}, "🗑️ Purger")], "c-sauvegarde");
 }
@@ -515,19 +513,17 @@ function HautModeTest(phase){
       h("strong", null, "🔬 Éprouver les mécanismes livrés"),
       h("p", {style:{margin:".4rem 0", fontSize:".88rem"}}, "Ces boutons appellent les fonctions réelles de l'application, pas des copies."),
       h(MessageTest, {boutons:BOUTONS_EPROUVER}),
-      h("div", {style:{fontSize:".85rem"}}, "Session : ", h("strong", null, phase === "avant" ? "pas encore lancée" : "en_cours"), " · énoncé ", h("strong", null, "non conservé"))),
+      h("div", {style:{fontSize:".85rem"}}, "Séance : ", h("strong", null, phase === "avant" ? "pas encore lancée" : "en_cours"), " · énoncé ", h("strong", null, "non conservé"))),
     h("div", {className:"test-info"},
       h("strong", null, "🎬 Préparer un cas"),
-      h("p", {style:{margin:".4rem 0", fontSize:".88rem"}}, "Remplit les tablettes, les feuilles et les clics d'un cas connu, sur la démo, jusqu'au moment du cas ; tu joues la suite. Il écrit au hub ce qu'écriraient les clics."),
       h(MessageTest, {boutons:BOUTONS_CAS})),
     h("div", {className:"test-info"},
       h("strong", null, "🎓 Entrer comme un élève"),
-      h("p", {style:{margin:".4rem 0", fontSize:".88rem"}}, "Ouvre l'application élève telle qu'elle est : « Combien êtes-vous sur cette tablette ? », puis code, prénom et nom, puis le code du binôme. Exemple — ", h("strong", null, "AUDEBERT Élise"), " · code ", h("strong", null, "1000")),
+      h("p", {style:{margin:".4rem 0", fontSize:".88rem"}}, "Exemple — ", h("strong", null, "AUDEBERT Élise"), " · code ", h("strong", null, "1000")),
       h("button", {className:"btn btn-ghost btn-sm", "data-va":"t-combien", title:"Ouvre le vrai portail élève, sur la classe de test."}, "👋 Ouvrir le portail élève"),
       h("div", {style:{fontSize:".85rem", marginTop:".4rem"}}, "▸ Voir tous les codes du bac à sable")),
     h("div", {className:"test-info"},
-      h("strong", null, "Environnement de test isolé. "),
-      "Classe fictive (30 élèves simulés, 15 tablettes), la démo par défaut. Tu pilotes en haut comme en classe, et tu joues les tablettes en bas. À la sortie, tout est purgé automatiquement, sauf la démo."));
+      h("strong", null, "Environnement de test isolé.")));
 }
 function BoutonLocal(p){
   var s = useState(false), fait = s[0], setFait = s[1];
@@ -542,8 +538,8 @@ function TabSimT(num, a, b, contenu, feuilles){
 }
 function ChampFeuille(nom, texte){
   return h("label", {className:"simt-f"},
-    h("span", {className:"simt-fl"}, "📝 Feuille de " + pre(nom)),
-    h("input", {className:"simt-fi" + (texte ? "" : " vide"), defaultValue:texte || "", placeholder:"vide : sa feuille dira ce qu'" + (TEST_F[pre(nom)] ? "elle" : "il") + " clique", title:"Ce que " + pre(nom) + " écrit sur sa feuille, avec ses mots : tu le tapes ici."}));
+    h("span", {className:"simt-fl"}, "📝 Feuille " + deNom(pre(nom))),
+    h("input", {className:"simt-fi" + (texte ? "" : " vide"), defaultValue:texte || "", placeholder:"vide : sa feuille dira ce qu'" + (TEST_F[pre(nom)] ? "elle" : "il") + " clique", title:"Ce " + queNom(pre(nom)) + " écrit sur sa feuille, avec ses mots : tu le tapes ici."}));
 }
 function TablettesSimulees(etape){
   var feuillesQ3 = {"AUDEBERT Élise":"parce qu'elle a 6 pattes", "AUGEREAU Gatien":"elle a 8 pattes", "BOIVIN Eden":"l'araignée a huit pattes, l'insecte six", "CALDEIRA Tiago":"8 pattes", "CESBRON Lili":"car elle a 8 pates"};
@@ -551,7 +547,6 @@ function TablettesSimulees(etape){
     h("div", {style:{display:"flex", justifyContent:"space-between", alignItems:"center", flexWrap:"wrap", gap:".5rem", marginTop:".8rem"}},
       h("h2", {className:"test-section-title", style:{margin:0}}, "👥 Tablettes simulées", InfoI("Les 15 tablettes de la classe de test, chacune la vraie tablette en deux moitiés, en petit pour regarder ; « 🔍 Jouer en grand » pour jouer.")),
       h(BoutonLocal, {cls:"btn btn-primary btn-sm", txt:"🎲 Tous les élèves répondent", titre:"Fait répondre les 30 élèves au hasard, à l'étape en cours : les clics, le « Oui / Non », la lecture du voisin, la co-évaluation.", fait:"🎲 Les 30 élèves ont répondu"})),
-    etape === "reflexion" && h("div", {className:"simt-aide"}, "Pendant la réflexion, tu tapes sous chaque tablette ce que chaque élève écrit sur sa feuille. La feuille est posée à côté de la tablette, comme en classe."),
     h("div", {className:"sims"}, TEST_PAIRES30.map(function(p, i){
       var a = eleveT(p[0], "J"), b = eleveT(p[1], "M");
       var contenu = etape === "avant" ? EcrCombien() : Tablette(EcrReflexion(a, 2, 18), EcrReflexion(b, 2, 18));
@@ -562,16 +557,15 @@ function TablettesSimulees(etape){
 function ModeTestOuverture(){
   return avecTest(function(){
     var carte = h("div", {className:"card"},
-      h("h2", null, "🎯 Lancer une nouvelle session", InfoI("Ta vraie console d'avant l'heure, sur la classe de test et la démo.")),
+      h("h2", null, "🎯 Lancer une nouvelle séance", InfoI("Ta vraie console d'avant l'heure, sur la classe de test et la démo.")),
       h("div", {className:"lancer-grid"},
         h("div", null,
           h("div", {className:"field"}, h("label", null, "Classe", InfoI("La classe de test : 30 élèves fictifs, effacés à la sortie.")), h("select", {value:"c", readOnly:true, title:"La classe de test."}, h("option", {value:"c"}, "🧪 " + CLASSE_TEST + " (30 élèves)"))),
           h("div", {className:"field"}, h("label", null, "Évaluation", InfoI("La démo par défaut, ou n'importe quelle évaluation de ta liste.")), h("select", {value:"e", readOnly:true, title:"L'évaluation jouée en test."}, h("option", {value:"e"}, DEMO.titre + " (3 questions)"))),
           h("div", {className:"duree-box"}, DUREE_TXT),
-          h("button", {className:"btn btn-primary", "data-va":"x620-2-mode-test-reflexion", title:"Ouvre l'appel de la classe de test, puis la séance, comme en classe."}, "🚀 Lancer la session")),
+          h("button", {className:"btn btn-primary", "data-va":"x620-2-mode-test-reflexion", title:"Ouvre l'appel de la classe de test, puis la séance, comme en classe."}, "🚀 Lancer la séance")),
         h("div", {className:"binomes-box"},
-          h("div", {className:"tt"}, "📱 Binômes proposés — dans l'ordre de la liste : la classe de test n'a pas de QCM précédent"),
-          h("div", {className:"ss"}, "Glisse un nom sur un autre pour échanger deux élèves, ou sur une moitié vide pour l'y déplacer. Tu peux le faire jusqu'au bout de l'heure."),
+          h("div", {className:"tt"}, "📱 Binômes proposés — dans l'ordre de la liste : la classe de test n'a pas de QCM précédent", InfoIB("📱 Binômes proposés", "Glisse un nom sur un autre pour échanger deux élèves, ou sur une moitié vide pour l'y déplacer, jusqu'au bout de l'heure.")),
           GrilleTablettes(TEST_PAIRES30, null, {grip:true, coin:" "}))));
     return h("div", {className:"prof-wrap cons"},
       DECO.map(function(e, i){ return h("span", {key:i, className:"deco"}, e); }),
@@ -579,7 +573,6 @@ function ModeTestOuverture(){
         HautModeTest("avant"),
         h("div", {className:"test-prof-zone"},
           h("h2", {className:"test-section-title"}, "🎯 Panneau prof", InfoI("Le même panneau qu'en classe.")),
-          h("div", {className:"simt-note"}, "Le même panneau qu'en classe, avant l'heure : choix de l'évaluation, binômes, puis l'appel au lancement."),
           carte),
         TablettesSimulees("avant")));
   });
@@ -611,7 +604,7 @@ function EcrDeclareDemo(e, qi, ordre, sel, chrono){
 }
 function ModeTestGrand(){
   var a = eleveT(TEST_NOMS[0], "J"), b = eleveT(TEST_NOMS[1], "M");
-  var fond = ModeTestSeance({phase:"reponse", qi:2, tour:1, chrono:0, stats:statsQ("30/30", "14/15", "—", "3/3"), passees:[],
+  var fond = ModeTestSeance({phase:"reponse", qi:2, tour:1, chrono:0, stats:statsQ(), passees:[0, 1],
     etat:function(p, cote){ if(cote === "d") return {cls:"m-voile", st:"🙈 attend son tour"}; return p === "Élise" ? {cls:"m-repond", st:"✋ dit si sa feuille…"} : {cls:"m-dit", st:"a répondu"}; }}, "reflexion");
   var tab = avecTest(function(){ return Tablette(EcrDeclareDemo(a, 2, [2, 0, 3, 1], [1], 3), VoileN(b, a)); });
   return h(F, null, fond,
@@ -666,13 +659,12 @@ function ListeExclusions(p){
         h("button", {className:"ex-btn" + (l.length ? " a" : "") + (ouv ? " ouv" : ""), "data-local":"1", "aria-expanded":ouv, title:"Les camarades avec qui " + pre(n) + " n'est jamais sur une tablette : au plus 3. Un clic " + (ouv ? "replie la liste." : "ouvre la liste à cocher."), onClick:function(){ setOuvert(ouv ? null : n); setRefus(null); }},
           "🚫 Jamais avec…" + (l.length ? " (" + l.length + ")" : ""))),
       ouv && h("div", {className:"ex-panneau"},
-        h("div", {className:"ex-t"}, "🚫 " + n + " n'est jamais sur une tablette avec… ", h("span", {className:"ex-c"}, l.length + " / 3")),
+        h("div", {className:"ex-t"}, "🚫 " + n + " n'est jamais sur une tablette avec… ", h("span", {className:"ex-c"}, l.length + " / 3"), InfoIB("🚫 Jamais avec…", "Elle vaut dans les deux sens, et pour toutes les apps qui partagent une tablette (le QCM, la correction de dictée…). Aucun écran d'élève ne la montre.")),
         h("div", {className:"ex-grille"}, NOMS_ESSAI.filter(function(x){ return x !== n; }).map(function(x){
           var on = l.indexOf(x) >= 0;
           return h("button", {key:x, className:"ex-case" + (on ? " on" : ""), "data-local":"1", title:on ? "Retire l'exclusion entre " + pre(n) + " et " + pre(x) + ", dans les deux sens. Un clic l'enregistre aussitôt." : "Exclut " + pre(n) + " et " + pre(x) + " : jamais ensemble sur une tablette, dans les deux sens, pour toutes les apps. Un clic l'enregistre aussitôt.", onClick:function(){ basculer(n, x); }}, h("span", {className:"ck"}, on ? "✓" : ""), x);
         })),
-        refus && h("div", {className:"ex-refus"}, h("strong", null, "🚫 Refusé : "), "pas d'exclusion entre " + pre(refus[0]) + " et " + pre(refus[1]) + " : " + refus[2] + " a déjà 3 exclusions, le plus que permet MJPC. Avec 3 au plus, il existe toujours des binômes possibles, absents compris, dès 8 présents. Retire d'abord une exclusion de " + refus[2] + "."),
-        h("div", {className:"ex-note"}, "Elle vaut dans les deux sens, et pour toutes les apps qui partagent une tablette (le QCM, la correction de dictée…). Aucun écran d'élève ne la montre.")));
+        refus && h("div", {className:"ex-refus"}, h("strong", null, "🚫 Refusé : "), "pas d'exclusion entre " + pre(refus[0]) + " et " + pre(refus[1]) + " : " + refus[2] + " a déjà 3 exclusions, le plus que permet MJPC. Retire d'abord une exclusion " + deNom(refus[2]) + ".")));
   }));
 }
 function ScExclusions(trois){
@@ -680,7 +672,7 @@ function ScExclusions(trois){
     h("h2", null, "Élèves & codes"),
     h("div", {className:"tprof-section-sub"}, "Choisis une classe, colle ta liste (un élève par ligne, NOM Prénom), puis génère les codes. Liste partagée avec tes apps (dictée, etc.) ; code à 4 chiffres mutualisé (login rapide). Régénérable élève par élève."),
     h("div", {className:"lens-bar"}, h("span", {className:"lens-pill on", style:{background:"#a78bfa"}}, h("span", {className:"lpd", style:{background:"#10071a66"}}), CLASSE)),
-    h("div", {className:"ex-entete"}, "🚫 Les exclusions de la classe : deux élèves exclus ne sont jamais sur la même tablette. Elles passent avant toute règle de binômes, dans chaque app. ", h("strong", null, (trois ? 4 : EXCLUSIONS.length) + " exclusions"), " dans " + CLASSE + "."),
+    h("div", {className:"ex-entete"}, "🚫 Les exclusions de la classe : ", h("strong", null, (trois ? 4 : EXCLUSIONS.length) + " exclusions"), " dans " + CLASSE + ".", InfoIB("exclusions", "Deux élèves exclus ne sont jamais sur la même tablette. Elles passent avant toute règle de binômes, dans chaque app.")),
     h(ListeExclusions, {ouvert:trois ? "ESNAULT Inès" : "ESNAULT Inès", trois:trois, refus:trois ? ["ESNAULT Inès", "PERRAUD Jade", "ESNAULT Inès"] : null}));
   return PanneauProf("eleves", contenu);
 }
@@ -693,8 +685,8 @@ function EditeurCompetences(){
   var s2 = useState({0:true, 1:true}), dep = s2[0], setDep = s2[1];
   var s3 = useState({}), libs = s3[0], setLibs = s3[1];
   return h("div", {className:"m8-bloc"},
-    h("div", {className:"m8-titre"}, "🧩 Les compétences — leur libellé élève"),
-    h("p", {className:"m8-p"}, "Les 28 compétences du référentiel. Le libellé officiel reste pour École Directe et le PDF « notes et compétences » ; tout ce que voit l'élève prend le libellé élève. L'identifiant ne change jamais."),
+    h("div", {className:"m8-titre"}, "🧩 Les compétences — leur libellé élève", InfoIB("🧩 Les compétences", "Le libellé officiel reste pour École Directe et le PDF « notes et compétences » ; tout ce que voit l'élève prend le libellé élève. L'identifiant ne change jamais.")),
+    h("p", {className:"m8-p"}, "Les 28 compétences du référentiel."),
     DOMAINES_COMP.map(function(d, di){
       var ouvert = !!dep[di];
       return h("div", {key:di, className:"m8tx-dom"},

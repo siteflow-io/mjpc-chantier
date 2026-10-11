@@ -142,7 +142,7 @@ function Pilot(s){
       h("button", {key:2, className:"btn btn-ghost btn-sm"}, "↩️ Retour d'un élève"),
       h("button", {key:4, className:"btn btn-ghost btn-sm"}, "🔓 Rouvrir pour un élève"),
       h("button", {key:5, className:"btn btn-ghost btn-sm", "data-va":"c-finir-autre-heure", title:"Met la séance en pause, avec son état exact, pour la reprendre à une heure suivante : « ▶️ Reprendre » dans « 🎯 Pilotage classe ». Demande une confirmation."}, "⏸️ Finir à une autre heure"),
-      h("button", {key:3, className:"btn btn-rouge btn-sm"}, "🛑 Terminer la session")]),
+      h("button", {key:3, className:"btn btn-rouge btn-sm"}, "🛑 Terminer la séance")]),
     h("div", {className:"pilot-stats"}, s.stats.map(function(x, i){ return h("div", {key:i, className:"pilot-stat", title:TITRES_STATS[x[1]]}, h("div", {className:"v"}, x[0]), h("div", {className:"l"}, x[1])); })),
     h("div", {className:"pilot-grid v2"}, colG, colM, Overview(s.qi, s.passees || [], s))), true);
 }
@@ -198,7 +198,7 @@ function Lancement(appel, opts){
   var demo = opts.demo;
   var classe = [].concat.apply([], PAIRES_AVANT).filter(Boolean).sort(function(a, b){ return a.localeCompare(b, "fr"); });
   var carte = h("div", {className:"card"},
-    h("h2", null, "🎯 Lancer une nouvelle session", InfoI("Choisis la classe et l'évaluation : la durée se compte tout de suite, et les binômes sont proposés. « 🚀 Lancer la session » ouvre l'appel.")),
+    h("h2", null, "🎯 Lancer une nouvelle séance", InfoI("Choisis la classe et l'évaluation : la durée se compte tout de suite, et les binômes sont proposés. « 🚀 Lancer la séance » ouvre l'appel.")),
     h("div", {className:"lancer-grid"},
       h("div", null,
         h("div", {className:"field"}, h("label", null, "Classe", InfoI("Les classes de la console MJPC.")), h("select", {value:"c", readOnly:true, title:"La classe de la séance."}, h("option", {value:"c"}, CLASSE + " (25 élèves)"))),
@@ -206,14 +206,12 @@ function Lancement(appel, opts){
         !demo && h("div", {className:"field"}, h("label", null, "Mode", InfoI("Sur tablettes : deux élèves par tablette, le déroulé complet. Sur papier : chacun répond seul sur sa feuille, avec les énoncés imprimés ; le soir, tu remplis la grille ; la correction se fait à l'heure suivante, sur les tablettes.")),
           h("div", {className:"mode-seance"},
             h("button", {className:"btn btn-sm " + (opts.papier ? "btn-ghost" : "btn-primary"), "data-va":"c-lancer", "aria-pressed":!opts.papier, title:"La séance sur tablettes, deux élèves par tablette."}, "📱 Sur tablettes"),
-            h("button", {className:"btn btn-sm " + (opts.papier ? "btn-primary" : "btn-ghost"), "data-va":"c-papier-lancer", "aria-pressed":!!opts.papier, title:"La séance sur papier : chacun répond seul sur sa feuille, sans tablette ni estimation."}, "📄 Séance sur papier"))),
-        opts.papier ? h("div", {className:"duree-box"}, "📄 ", h("strong", null, "Sur papier"), " : les énoncés seuls, imprimés ; chacun répond seul sur sa feuille, sans tablette ni estimation. Tu ramasses les feuilles : la séance se met en pause. Le soir, tu remplis la grille ; à l'heure suivante, « ▶️ Reprendre » : l'estimation, la seconde attestation, puis toutes les corrections à la suite, sur les tablettes, avec ces binômes.")
-        : demo ? h("div", {className:"demo-box"}, h("strong", null, "🎓 La démo : rien ne compte. "), "Tu la joues avec la classe, sur les tablettes, comme une vraie : l'identification avec les vrais codes, l'appel, les binômes, les attestations, les questions, la correction, la co-évaluation. Pas de note, pas de compétence, pas de point d'autonomie, rien vers MJPC ; jamais dans « Mes évaluations », ni dans tes Résultats, ni dans le PDF ; jamais « le QCM précédent ». La séance s'efface à « Terminer » ; il reste une ligne dans les séances précédentes.")
+            h("button", {className:"btn btn-sm " + (opts.papier ? "btn-primary" : "btn-ghost"), "data-va":"c-papier-lancer", "aria-pressed":!!opts.papier, title:"La séance sur papier : chacun répond seul sur sa feuille, sans tablette ; l'estimation se fait à la reprise, sur les tablettes."}, "📄 Séance sur papier"))),
+        opts.papier || demo ? null
              : h("div", {className:"duree-box"}, DUREE_TXT),
-        h("button", {className:"btn btn-primary", "data-va":opts.papier ? "c-papier-seance" : demo ? "t-demo-q" : "c-appel", title:opts.papier ? "Ouvre l'appel, puis la séance sur papier : les énoncés à imprimer, et « ⏸️ Feuilles ramassées »." : null}, opts.papier ? "📄 Lancer la séance sur papier" : demo ? "🎓 Lancer la démo" : "🚀 Lancer la session")),
+        h("button", {className:"btn btn-primary", "data-va":opts.papier ? "c-papier-seance" : demo ? "t-demo-q" : "c-appel", title:opts.papier ? "Ouvre l'appel, puis la séance sur papier : les énoncés à imprimer, et « ⏸️ Feuilles ramassées »." : null}, opts.papier ? "📄 Lancer la séance sur papier" : demo ? "🎓 Lancer la démo" : "🚀 Lancer la séance")),
       h("div", {className:"binomes-box"},
-        h("div", {className:"tt"}, "📱 Binômes proposés — d'après les exclusions, puis le QCM précédent", InfoI("D'abord les exclusions de MJPC : deux élèves exclus ne sont jamais ensemble. Puis la règle du QCM : le classement de la note du QCM précédent, puis 1-2, 3-4… Aucun élève ne voit rien des exclusions.")),
-        h("div", {className:"ss"}, "Classement du QCM précédent, puis 1-2, 3-4… Glisse un nom sur un autre pour échanger deux élèves, ou sur une moitié vide pour l'y déplacer. Tu peux le faire jusqu'au bout de l'heure."),
+        h("div", {className:"tt"}, "📱 Binômes proposés — d'après les exclusions, puis le QCM précédent", InfoIB("📱 Binômes proposés", "D'abord les exclusions de MJPC : deux élèves exclus ne sont jamais ensemble. Puis la règle du QCM : le classement de la note du QCM précédent, puis 1-2, 3-4… Aucun élève ne voit rien des exclusions. Glisse un nom sur un autre pour échanger deux élèves, ou sur une moitié vide pour l'y déplacer, jusqu'au bout de l'heure.")),
         h("div", {className:"excl-note"}, "🚫 2 exclusions de MJPC respectées : le classement mettait CARRÉ Tom avec ESNAULT Inès, et QUINTON Enzo avec OLLIVIER Sacha ; chacun a été échangé avec le binôme le plus proche."),
         h(GrilleBinomes, {paires:PAIRES_AVANT, refus:opts.refus}))));
   var modale = appel && h("div", {className:"checkin-overlay", "data-echap":"c-lancer"},
@@ -224,8 +222,8 @@ function Lancement(appel, opts){
         h("div", null, "📱 ", h("strong", null, "CHEVALLIER Théo"), " (binôme d'Adam) et ", h("strong", null, "ZELLER Lou"), " (seule) sont mis ensemble : tablette 12."),
         h("div", {style:{display:"flex", alignItems:"center", gap:".5rem", marginTop:".35rem"}}, h("span", {style:{whiteSpace:"nowrap"}}, "🕙 Fin de l'heure :"),
           h("input", {defaultValue:"10:57", title:"L'heure de fin de la séance : lancement + 55 min. Les tablettes oublient leurs élèves à « Terminer », ou 10 min après cette heure.", style:{width:"70px", padding:".2rem .4rem", border:"2px solid var(--bordure)", borderRadius:"6px", fontWeight:900, textAlign:"center", fontFamily:"inherit"}}),
-          h("span", {style:{color:"var(--gris)"}}, "lancement + 55 min ; les tablettes oublient leurs élèves à « Terminer », ou 10 min après."))),
-      h("div", {className:"checkin-actions"}, h("button", {className:"btn btn-ghost", "data-va":"c-lancer"}, "Annuler"), h("button", {className:"btn btn-primary", "data-va":"c-pret"}, "🚀 Lancer la session"))));
+          InfoIB("🕙 Fin de l'heure", "Lancement + 55 min. Les tablettes oublient leurs élèves à « Terminer », ou 10 min après cette heure."))),
+      h("div", {className:"checkin-actions"}, h("button", {className:"btn btn-ghost", "data-va":"c-lancer"}, "Annuler"), h("button", {className:"btn btn-primary", "data-va":"c-pret"}, "🚀 Lancer la séance"))));
   var precedentes = SessionsPrecedentes(opts.demoFaite);
   return Console("pilotage", "pilot", h(F, null, opts.reprise && CarteReprise(opts.reprise === "papier"), carte, precedentes, modale), false);
 }
@@ -248,7 +246,7 @@ function SessionsPrecedentes(demoFaite){
     ["QCM — Le jambon-beurre", "15/09/2026 10:03", "✅ terminée", "25 présents", null]
   ];
   return h("div", {className:"card"},
-    h("h2", null, "📚 Sessions précédentes — " + CLASSE, InfoI("Les séances passées de la classe : chacune ouvre ses résultats. Celle qui sert de « QCM précédent » aux binômes est marquée. La démo ne laisse qu'une ligne.")),
+    h("h2", null, "📚 Séances précédentes — " + CLASSE, InfoI("Les séances passées de la classe : chacune ouvre ses résultats. Celle qui sert de « QCM précédent » aux binômes est marquée. La démo ne laisse qu'une ligne.")),
     h("div", {className:"results-eval-list"},
       demoFaite && h("div", {className:"results-eval-row demo-ligne"}, h("div", null, h("div", {className:"titre"}, "🎓 Démo faite le 10/10 · " + CLASSE + " · 24 présents"), h("div", {className:"meta"}, "rien ne compte : ni note, ni compétence ; elle ne sert jamais aux binômes"))),
       lignes.map(function(l, i){
@@ -344,9 +342,9 @@ function Fenetre(fond, titre, sous, corps, actions, retour, large){
       h("div", {className:"fen-corps"}, corps),
       h("div", {className:"checkin-actions"}, actions))));
 }
-var ST_Q1T1 = function(){ return {phase:"reponse", qi:0, tour:1, chrono:9, stats:statsQ("24/24", "10/12", "10/10", "1/3"), etat:etatQuestion({qi:0, tour:1, nonRep:["Jade", "Anna"]})}; };
-var ST_Q1CL = function(){ return {phase:"attente", qi:0, stats:statsQ("24/24", "24/24", "21/24", "1/3"), passees:[0], etat:etatQuestion({qi:0, fini:true})}; };
-var ST_Q2CL = function(){ return {phase:"attente", qi:1, stats:statsQ("24/24", "23/24", "9/23", "2/3"), passees:[0, 1], etat:etatQ2SansTheo, legende:LEG_Q.slice(0, 4).concat([["#fff","pas de réponse","2px dashed #EF4444"]]), remettre:"c-q2-close"}; };
+var ST_Q1T1 = function(){ return {phase:"reponse", qi:0, tour:1, chrono:9, stats:statsQ(), etat:etatQuestion({qi:0, tour:1, nonRep:["Jade", "Anna"]})}; };
+var ST_Q1CL = function(){ return {phase:"attente", qi:0, stats:statsQ(), passees:[0], etat:etatQuestion({qi:0, fini:true})}; };
+var ST_Q2CL = function(){ return {phase:"attente", qi:1, stats:statsQ(), passees:[0, 1], etat:etatQ2SansTheo, legende:LEG_Q.slice(0, 4).concat([["#fff","pas de réponse","2px dashed #EF4444"]]), remettre:"c-q2-close"}; };
 function ScEcarter(){
   return Fenetre(Pilot(ST_Q1CL()), "❌ Écarter la question 3 ?", "Combien de pattes a une araignée ?",
     h(F, null,
@@ -356,7 +354,7 @@ function ScEcarter(){
     [h("button", {key:1, className:"btn btn-ghost", "data-va":"c-q1-close"}, "Annuler"), h("button", {key:2, className:"btn btn-rouge", "data-va":"c-ecartee"}, "❌ Écarter la question 3")], "c-q1-close");
 }
 function ScEcartee(){
-  var st = ST_Q1CL(); st.ecartees = {2:true}; st.stats = statsQ("24/24", "24/24", "21/24", "1/2"); st.remettre = "c-q1-close";
+  var st = ST_Q1CL(); st.ecartees = {2:true}; st.stats = statsQ(); st.remettre = "c-q1-close";
   st.alerteComp = "⚠️ c4-culture-01 et c4-lire-01 ne sont plus évaluées que par 2 questions : leurs niveaux seront moins fins (il en faut 3).";
   st.finMin = 10 * 60 + 37;
   return Pilot(st);
@@ -365,15 +363,14 @@ function ScAnnuler(){
   return Fenetre(Pilot(ST_Q2CL()), "⚠️ Annuler la question 2 ?", "Lesquelles sont des capitales européennes ? — posée, 23 réponses",
     h(F, null,
       h("p", null, "Elle a été posée, mais elle ne comptera pas : elle sort du total de la note et des compétences. Ses réponses restent gardées."),
-      h("p", null, "Dans leur bilan, les élèves liront : « Question 2 · annulée : elle ne compte pas. »"),
-      h("p", {className:"fen-note"}, "Dans ta console et tes résultats, elle garde sa marque « ⚠️ Annulée — posée, puis annulée », pour que tu voies toujours la raison. « ↩️ Remettre » la défait.")),
+),
     [h("button", {key:1, className:"btn btn-ghost", "data-va":"c-q2-close"}, "Annuler"), h("button", {key:2, className:"btn btn-rouge", "data-va":"c-annulee"}, "⚠️ Annuler la question 2")], "c-q2-close");
 }
-function ScAnnulee(){ var st = ST_Q2CL(); st.annulees = {1:true}; st.stats = statsQ("24/24", "23/24", "—", "2/3"); return Pilot(st); }
+function ScAnnulee(){ var st = ST_Q2CL(); st.annulees = {1:true}; st.stats = statsQ(); return Pilot(st); }
 function ScFinPrevue(){ var st = ST_Q1T1(); st.finMin = 11 * 60 + 2; return Pilot(st); }
 function ScRouvrirTous(){
   return Fenetre(Pilot(ST_Q2CL()), "🔓 Rouvrir la question 2 pour tous ?", "Seuls ceux qui n'ont pas répondu la retrouvent, une seule fois.",
-    h(F, null, h("p", null, "Ici : ", h("strong", null, "CHEVALLIER Théo"), " (tablette 12). Les deux tours reprennent pour lui seul, avec le temps de réponse de la question ; ZELLER Lou porte le voile ordinaire. Une réponse donnée est définitive : les 23 autres ne changent rien.")),
+    h(F, null, h("p", null, "Ici : ", h("strong", null, "CHEVALLIER Théo"), " (tablette 12).")),
     [h("button", {key:1, className:"btn btn-ghost", "data-va":"c-q2-close"}, "Annuler"), h("button", {key:2, className:"btn btn-primary", "data-va":"t-rouvrir-un", title:"Rouvre la question 2 pour ceux qui n'ont pas répondu : ici, Théo. Une seule fois."}, "🔓 Rouvrir pour ceux qui n'ont pas répondu")], "c-q2-close");
 }
 function ScDepart(){
@@ -386,7 +383,7 @@ function ScDepart(){
 function ScParti(){
   var st = ST_Q1T1(); var base = st.etat;
   st.etat = function(p, c){ return p === "Noah" ? {cls:"m-parti", st:"🚪 parti à 10:14"} : base(p, c); };
-  st.stats = statsQ("23/23", "10/12", "10/10", "1/3");
+  st.stats = statsQ();
   st.legende = LEG_Q.concat([["#E2E8F0","🚪 parti : ne bloque plus"]]);
   return Pilot(st);
 }
@@ -396,7 +393,7 @@ function ScRetour(){
     [h("button", {key:1, className:"btn btn-ghost", "data-va":"c-parti"}, "Annuler")], "c-parti");
 }
 function ScTerminer(){
-  return Fenetre(Pilot(ST_Q1T1()), "🛑 Terminer la session ?", CLASSE + " — " + EV.titre + " · question 1, 1er tour",
+  return Fenetre(Pilot(ST_Q1T1()), "🛑 Terminer la séance ?", CLASSE + " — " + EV.titre + " · question 1, 1er tour",
     h(F, null, h("p", null, "La séance est close, et l'archive s'écrit avec les notes telles qu'elles sont, quelle que soit la phase. Les questions pas encore corrigées n'ont pas de recopie : tu fixes ces notes d'après les feuilles, dans Données → Résultats."),
       h("p", null, "Les tablettes oublient leurs élèves et reviennent à « Combien êtes-vous sur cette tablette ? ».")),
     [h("button", {key:1, className:"btn btn-ghost", "data-va":"c-q1-tour1"}, "Annuler"), h("button", {key:2, className:"btn btn-rouge", "data-va":"t-fin"}, "🛑 Terminer la séance")], "c-q1-tour1");
@@ -457,7 +454,7 @@ function TelReponse(){
     h("div", {key:"st"}, TelStats(0, [])),
     h("div", {key:"l"}, TelListe("TABLETTES — 10 / 12 ont répondu · clic sur un nom pour agir", modeDe)),
     h("div", {key:"lg"}, TelLegende(["✓ juste", "✓+ une en trop", "½ une sur deux", "✗ faux", "🙈 attend son tour", "⏳ répond"])),
-    h("div", {key:"t"}, h("button", {className:"tel-btn tb-rouge tb-small", "data-va":"c-terminer"}, "🛑 Terminer la session"))]);
+    h("div", {key:"t"}, h("button", {className:"tel-btn tb-rouge tb-small", "data-va":"c-terminer"}, "🛑 Terminer la séance"))]);
 }
 function BoutonPauseTel(){
   var s = useState(false), pause = s[0], setPause = s[1];
@@ -517,6 +514,8 @@ var MODE_EMPLOI = [
   ["La correction", "Après l'estimation et la seconde attestation, chaque question, de la plus ratée à la mieux réussie : chacun lit la feuille de son voisin et clique ce qu'elle dit, avant la révélation (« 🔒 Révéler » attend tous les présents). Tu commentes après la révélation, jamais avant. Puis la co-évaluation : chacun dit s'il pense que son voisin a bien lu sa feuille ; un désaccord t'alerte aussitôt."],
   ["La note", "La note, c'est la feuille. Une question vaut au plus 1 point : en tout ou rien, 1 ou 0 ; en partiel, une part du point par bonne case, autant de retiré par mauvaise, sans descendre sous 0. Une fois par évaluation, une question dont la feuille est fausse et la tablette entièrement juste compte comme juste : « Trouvée au dernier moment ». « Ma feuille ne dit aucun de ces choix » vaut 0. La note est provisoire jusqu'à ce que tu rendes les copies."],
   ["Le soir", "Données → Résultats : les notes, les compétences, les feuilles à lire (lecture contestée, « aucun de ces choix », « Non » au clic). « Que dit la feuille ? » corrige une question ou fixe une note. Le bilan général de chaque élève est pré-rempli : modifie-le, valide-le. Puis « rendre les copies », et le PDF « notes et compétences » pour École Directe."],
+  ["Préparer une évaluation", "Dans l'éditeur, chaque champ s'édite directement : coche les bonnes réponses ; la difficulté et les deux temps se règlent question par question. Une question « 📏 longueur assumée » dépasse la demi-tablette : sa moitié défilera seule, la page ne bouge pas."],
+  ["La démo", "La démo : rien ne compte. Tu la joues avec la classe, sur les tablettes, comme une vraie : l'identification avec les vrais codes, l'appel, les binômes, les attestations, les questions, la correction, la co-évaluation. Pas de note, pas de compétence, pas de point d'autonomie, rien vers MJPC ; jamais dans « Mes évaluations », ni dans tes Résultats, ni dans le PDF ; jamais « le QCM précédent ». La séance s'efface à « Terminer » ; il reste une ligne dans les séances précédentes."],
   ["Le point d'autonomie", "Chaque élève commence avec son point : « Travailler seul et de façon responsable » et « S'investir dans son travail, en classe et à la maison », côté élève (les intitulés officiels dans le PDF). « ⛔ Retirer le point d'autonomie », en direct ou le soir, met les deux compétences en Maîtrise insuffisante ; la note ne bouge pas. « ↩️ Rendre » le défait."]
 ];
 function ModeEmploi(){
@@ -532,11 +531,9 @@ function Reglages(){
   function carte(titre, aide, enfants){ return h("div", {className:"card"}, h("h2", null, titre, InfoI(aide)), enfants); }
   return Console("reglages", null, h(F, null,
     carte("👥 Classes et élèves", "Les classes sont communes à toutes les applications MJPC : elles se gèrent une seule fois, depuis la console MJPC. Les exclusions aussi (« 🚫 Jamais avec… », sur la fiche de la classe).",
-      h(F, null, h("p", {style:{opacity:.85}}, "Les listes d'élèves, leurs codes, leurs aménagements et leurs exclusions appartiennent au site MJPC, qui les partage avec toutes les applications."),
-        h("button", {className:"btn", "data-va":"m-classe-exclusions"}, "Ouvrir la console MJPC →"))),
+      h(F, null, h("button", {className:"btn", "data-va":"m-classe-exclusions"}, "Ouvrir la console MJPC →"))),
     carte("🤖 Le prompt de création d'éval", "Le texte à coller dans l'instance de création d'éval. À la copie, l'app y met ton chapitre, ses compétences avec leur libellé élève, les quatre difficultés et les limites de longueur mesurées sur une demi-tablette.",
-      h(F, null, h("p", {style:{opacity:.85}}, "Il ne devine jamais un temps : il te demande chaque temps, te dit « ça ne rentre pas », et ne produit le JSON qu'à ton « produis le JSON »."),
-        h("div", {className:"row"}, h("button", {className:"btn btn-or", "data-va":"c-reglages-prompt", title:"Ouvre le prompt de création d'éval, à copier dans l'instance qui écrit le JSON."}, "🤖 Prompt IA"), h("button", {className:"btn btn-ghost", "data-va":"c-reglages-prompt-modifier"}, "✏️ Modifier le prompt")))),
+      h(F, null, h("div", {className:"row"}, h("button", {className:"btn btn-or", "data-va":"c-reglages-prompt", title:"Ouvre le prompt de création d'éval, à copier dans l'instance qui écrit le JSON."}, "🤖 Prompt IA"), h("button", {className:"btn btn-ghost", "data-va":"c-reglages-prompt-modifier"}, "✏️ Modifier le prompt")))),
     carte("⏱️ Les durées de la séance", "Les mêmes pour le prompt et pour la garde de l'app : elles comptent la durée d'une évaluation au collage, au lancement et pendant la séance (la fin prévue). L'app note tes vraies durées pour les corriger.",
       h(DureesSeance)),
     carte("🎚️ Les niveaux de maîtrise et la note", "Les bornes portent sur la note, quelle que soit son échelle ; une compétence se met sur la même échelle, puis passe dans les mêmes tranches. L'app refuse un réglage qui laisse un trou ou fait se chevaucher deux paliers.",
@@ -554,13 +551,12 @@ function NiveauxMaitrise(){
   return h("div", null,
     h("label", {className:"reg-l"}, h("span", null, "Note sur :"), h("input", {type:"number", defaultValue:20, title:"L'échelle de la note : la note est le nombre de points sur le nombre de questions, ramené sur cette échelle, au dixième."})),
     NIVEAUX_MAITRISE.map(function(n, i){ return h("div", {key:i, className:"reg-niv"}, h("span", null, n[0] + " "), h("input", {defaultValue:n[1], title:"Le nom du niveau, tel qu'il s'affiche partout."}), h("span", null, " de "), h("input", {type:"number", defaultValue:n[2], title:"La borne basse du niveau, comprise."}), h("span", null, i === 0 ? " à " : " à moins de "), h("input", {type:"number", defaultValue:n[3], title:"La borne haute : elle appartient au niveau du dessus."})); }),
-    h("p", {className:"reg-p"}, "Les tranches s'écrivent « de 5 à moins de 6 » : aucune note ne tombe entre deux."),
     h(BoutonLocal, {cls:"btn btn-primary btn-sm", txt:"💾 Enregistrer", titre:"Enregistre l'échelle et les tranches ; l'app refuse un réglage qui laisse un trou ou fait se chevaucher deux paliers.", fait:"✅ Enregistré"}));
 }
 var TEXTES_ELEVE = [
   ["Avant le lancement de l'évaluation", "L'évaluation n'a pas encore commencé. Elle s'ouvrira quand nous la lancerons ensemble.", "Vu par l'élève qui ouvre l'application alors qu'aucune évaluation n'est lancée pour sa classe."],
   ["Avant la correction", "La correction s'ouvrira dans un instant.", "Vu quand la phase de réponse est close et que la correction n'est pas encore lancée."],
-  ["À la fin de l'évaluation", "C'est terminé. Tes réponses sont enregistrées.", "Vu quand tu as terminé la session. Ce texte s'affiche quel que soit le résultat : il parle du travail fait, jamais de la réussite."]];
+  ["À la fin de l'évaluation", "C'est terminé. Tes réponses sont enregistrées.", "Vu quand tu as terminé la séance. Ce texte s'affiche quel que soit le résultat : il parle du travail fait, jamais de la réussite."]];
 function EditeurTextesQCM(){
   return h("div", {className:"card"},
     h("h2", null, "💬 Ce que lisent les élèves", InfoI("Les messages qui CONSTATENT un état ne sont pas modifiables : ils sont vrais dans tous les cas. Seuls les messages qui ANNONCENT quelque chose sont ici, parce qu'eux dépendent de ton organisation.")),
@@ -584,7 +580,7 @@ function MessagePrompt(p){ return p.msg ? h("div", {className:"prompt-msg", styl
 function ReglagesPrompt(){
   var s = useState(""), msg = s[0], setMsg = s[1];
   return PromptFenetre(h(F, null,
-    h("p", {style:{fontSize:".85rem", color:"var(--gris)"}}, "Chapitre choisi : " + CHAPITRE_PROMPT.libelle + ". Copie ce prompt et colle-le dans l'instance de création d'éval : elle te posera ses questions, puis te rendra le JSON."),
+    h("p", {style:{fontSize:".85rem", color:"var(--gris)"}}, "Chapitre choisi : " + CHAPITRE_PROMPT.libelle + "."),
     h("div", {className:"row", style:{gap:".5rem", flexWrap:"wrap"}},
       h("button", {className:"btn btn-primary", "data-local":"1", onClick:function(){ setMsg("✅ Prompt copié dans le presse-papiers"); }}, "📋 Copier le prompt"),
       h("button", {className:"btn btn-ghost", "data-va":"c-reglages-prompt-modifier"}, "✏️ Modifier le prompt")),
@@ -596,7 +592,6 @@ function ReglagesPromptModifier(){
   var s2 = useState(PROMPT_TEXTE), brouillon = s2[0], setBrouillon = s2[1];
   var s3 = useState(false), confirme = s3[0], setConfirme = s3[1];
   return h(F, null, PromptFenetre(h(F, null,
-    h("p", {style:{fontSize:".85rem", color:"var(--gris)"}}, "Les jetons entre doubles accolades sont remplis par l'app à chaque copie : le chapitre, ses compétences, les difficultés, les durées et les limites de longueur."),
     h("textarea", {value:brouillon, onChange:function(e){ setBrouillon(e.target.value); }, title:"Le prompt enregistré, jetons compris : modifie-le librement, rien n'est gardé avant « 💾 Enregistrer ».", style:{width:"100%", minHeight:"420px", fontFamily:"ui-monospace,monospace", fontSize:".8rem", padding:".7rem", border:"2px solid var(--violet)", borderRadius:"8px", boxSizing:"border-box"}}),   // le champ de la 7.7.1, l. 6495
     h("div", {className:"row", style:{gap:".5rem", flexWrap:"wrap", marginTop:".7rem"}},
       h("button", {className:"btn btn-primary", "data-local":"1", onClick:function(){ setMsg("✅ Consignes enregistrées — elles te suivent d'un appareil à l'autre."); }}, "💾 Enregistrer"),

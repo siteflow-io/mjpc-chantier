@@ -36,7 +36,8 @@ function formeTexte(s){ return C.norm(String(s).replace(/\.\.\./g, "…")).repla
 function corpusSite(){
   if(CORPUS_SITE) return CORPUS_SITE;
   const t = ["evaluation-qcm.html", "index.html", "correction_dictee.html"].map(f => unhtml(unjs(lire(path.join(PROD, f))))).join("\n");
-  CORPUS_SITE = formeTexte(t.replace(/<\/?(strong|b|em|i|span|br|code)\b[^>]*>/g, ""));
+  // (changement 8.1) « séance » pour « session » : la seule exception au mot pour mot de l'existant
+  CORPUS_SITE = formeTexte(t.replace(/<\/?(strong|b|em|i|span|br|code)\b[^>]*>/g, "").replace(/(?<![\p{L}])([Ss])ession(s?)(?![\p{L}])/gu, (m, a, b) => (a === "S" ? "Séance" : "séance") + b));
   return CORPUS_SITE;
 }
 function dansSite(t){ const f = formeTexte(t); if(f.length < 3) return true; const c = corpusSite(); if(c.includes(f)) return true;
@@ -53,10 +54,12 @@ function donnees(){
   const tx = JSON.parse(lire(path.join(RACINE, "src", "donnees", "taxonomie_atelier.json")));
   (function parcours(x){ if(typeof x === "string") ajoute(x); else if(Array.isArray(x)) x.forEach(parcours); else if(x && typeof x === "object") Object.values(x).forEach(parcours); })(tx);
   Object.values(C.LIB_ELEVE).concat(Object.values(C.LIB_OFFICIELS)).forEach(ajoute);
-  const prompt = /## Le texte proposé\s*```\n([\s\S]*?)\n```/.exec(lire(path.join(SAS, "MANDATS", "PROMPT-QCM-CREATION", "README.md")))[1];
+  const prompt = C.promptCorrige(/## Le texte proposé\s*```\n([\s\S]*?)\n```/.exec(lire(path.join(SAS, "MANDATS", "PROMPT-QCM-CREATION", "README.md")))[1]);
   prompt.split("\n").forEach(ajoute);
   DONNEES = o; return o;
 }
+// « ... » dans une donnée du hub (la taxonomie : « Élève : … · 6e-3e · … », index.html _taxoLigneNotion) : la donnée reste telle quelle
+function pointsDansDonnee(t){ return estDonnee(t) || String(t).split(" · ").filter(s => /\.\.\./.test(s)).every(s => estDonnee(s.replace(/^Élève : /, ""))); }
 function estDonnee(t){ const n = C.normEsp(t); if(!n) return true; const D = donnees(); if(D.has(n)) return true;
   // une donnée précédée d'un repère (« Q3 · », « Question 2 · », « E · », « 📚 ») ou suivie de « ✓ »
   const sans = n.replace(/^(Q\d+ · |Question \d+ · |[A-F] (✓ )?· ?|[A-F] ✓ |📚 |DUVERNAY Michel — Q\d · )/, "").replace(/ ✓$/, "");
@@ -86,7 +89,7 @@ function lireTextes9(){
   blocs.forEach((parts, b) => {
     const t = parts.join("").replace(/\s+/g, " ").trim(); if(!t) return;
     out.push({t, geste: !!b.closest("button,a,select,option,label,.tel-el,.qdf-c,[role=button],.niv-titre,.m8tx-dom-titre,.m8tx-fam-titre"),
-      mode: !!b.closest("[data-mode-emploi],.me-bloc"), eleve: !!b.closest(ELEVE), cls: (typeof b.className === "string" ? b.className : "").slice(0, 40)});
+      mode: !!b.closest("[data-mode-emploi],.me-bloc"), eleve: !!b.closest(ELEVE), prompt: !!b.closest("[data-prompt],.codeblock,textarea"), cls: (typeof b.className === "string" ? b.className : "").slice(0, 40)});
   });
   const titres = Array.from(root.querySelectorAll("[title]")).filter(e => !e.closest("#som-racine")).map(e => ({t: e.getAttribute("title"), eleve: !!e.closest(ELEVE)})).filter(x => x.t && x.t.trim());
   const tips = Array.from(root.querySelectorAll(".info-tip")).map(e => ({t: (e.textContent || "").replace(/\s+/g, " ").trim(), eleve: !!e.closest(ELEVE)})).filter(x => x.t);
@@ -122,7 +125,7 @@ function garde9Scene(sc, lu, K, journal){
   for(const x of lu.textes){
     const site = dansSite(x.t), donnee = estDonnee(x.t) || (x.t.match(/\p{L}/gu) || []).length < 3;
     // 9.6 : les mots, partout (textes, élève compris, sauf les données du hub)
-    if(!donnee) for(const m of MOTS_9) if(m.re.test(x.t) && !(m.nom === "« ... »" && estDonnee(x.t))) out.push(tag + " : " + m.nom + " à l'écran — « " + x.t.slice(0, 110) + " »");
+    if(!donnee) for(const m of MOTS_9) if(m.re.test(x.t) && !(m.nom === "« ... »" && pointsDansDonnee(x.t))) out.push(tag + " : " + m.nom + " à l'écran — « " + x.t.slice(0, 110) + " »");
     if(!donnee && !site && ELISION.test(x.t)) out.push(tag + " : une élision manque — « " + x.t.slice(0, 110) + " »");
     if(!paul || x.eleve || x.geste || site || donnee) continue;
     // 9.1 et 9.2 : chaque texte de la maquette est classé ; aucune explication à l'écran, hors du mode d'emploi
@@ -180,7 +183,8 @@ const RETOUCHES_778 = [
   {avant: /^Temps de réponse$/i, apres: "📄 Temps pour lire la feuille du voisin", contexte: "le chrono de la lecture"},
   {avant: /^Ma feuille ne dit aucun de ces choix$/, apres: "aucun de ces choix", contexte: "« Ta réponse : … »"},
   {avant: /^☝️ Un désaccord, c'est sérieux/, contexte: "la règle du désaccord, dite une fois"}];
-function typo(s){ return C.normEsp(String(s).replace(/\.\.\./g, "…")).replace(/\s*([:;!?»])/g, " $1").replace(/«\s*/g, "« ").replace(/\s+/g, " ").trim(); }
+// les exceptions du §1.2 : la typographie, et « séance » pour « session » (changement 8.1, la seule exception au mot pour mot)
+function typo(s){ return C.normEsp(String(s).replace(/\.\.\./g, "…").replace(/(?<![\p{L}])([Ss])ession(s?)(?![\p{L}])/gu, (m, a, b) => (a === "S" ? "Séance" : "séance") + b)).replace(/\s*([:;!?»])/g, " $1").replace(/«\s*/g, "« ").replace(/\s+/g, " ").trim(); }
 function garde95(texteV7, texteV8){
   // texteV7, texteV8 : {scène: [textes]} ; les données (énoncés, choix, noms, nombres) mises à part par formeTexte
   const out = [];

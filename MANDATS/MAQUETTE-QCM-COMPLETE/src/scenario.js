@@ -378,7 +378,8 @@ var SCN = (function(){
   };
 
   /* ── Le mode test : sa classe de 30 élèves, ses 15 tablettes, la démo (src/maquette620.js) ── */
-  S.TEST = {presents:30, tablettes:15};
+  // Q1 et Q2 déjà jouées par « 🎲 Tous les élèves répondent » : leurs justes, sur les 30 (relecteurs n°258, 260)
+  S.TEST = {presents:30, tablettes:15, passees:{0:{repondu:30, justes:24}, 1:{repondu:30, justes:17}}};
   S.compteursTest = function(k){
     var m = M[k] || {}, n = S.TEST.presents, o = {presents:n, absents:0, inscrits:n, nbQ:3};
     if(m.qi != null){ o.question = [m.qi + 1, 3]; o.repondu = m.ph === "reflexion" ? [0, n] : m.tour === 1 ? [n / 2, n / 2] : [n, n]; o.justes = null; }
@@ -394,7 +395,8 @@ var SCN = (function(){
   S.DUREES = {installation:5 * 60, estimAttest:3 * 60, correctionParQ:60, coevalBilan:2 * 60, decompte:3, b:5, entre:15};
   // la durée estimée d'une séance, au lancement : la somme des mêmes temps (Réglages et temps des questions)
   S.dureeEstimee = function(ev, seul){
-    var D = S.DUREES, q = 0; ev.questions.forEach(function(x){ q += (x.reflexion || 0) + 2 * (D.decompte + (x.reponse || 0) + D.b) + D.entre; });
+    // un élève seul (rattrapage) n'a qu'un tour par question, et pas de co-évaluation (relecteur n°314)
+    var D = S.DUREES, q = 0, tours = seul ? 1 : 2; ev.questions.forEach(function(x){ q += (x.reflexion || 0) + tours * (D.decompte + (x.reponse || 0) + D.b) + D.entre; });
     var c = ev.questions.length * D.correctionParQ, total = D.installation + q + D.estimAttest + c + (seul ? 0 : D.coevalBilan);
     return {questions:q, correction:c, total:total, min:Math.round(total / 60)};
   };
@@ -437,7 +439,9 @@ var SCN = (function(){
   S.cle = cle;
   S.seancesAvant = function(k){
     var m = M[k] || {}; var t = cle(m.date, m.heure);
-    return S.SEANCES.filter(function(s){ return s.fin && cle(s.fin.split(" ")[0], s.fin.split(" ")[1]) <= t && s.id !== m.seance; })
+    // la séance du moment n'y est que le soir, une fois terminée (une branche en pause ne l'a pas finie)
+    var finie = m.ph === "soir" || m.ph === "fin";
+    return S.SEANCES.filter(function(s){ return s.fin && cle(s.fin.split(" ")[0], s.fin.split(" ")[1]) <= t && (s.id !== m.seance || finie); })
       .sort(function(a, b){ return cle(b.date, b.heure).localeCompare(cle(a.date, a.heure)); });
   };
   // les copies d'une séance sont-elles rendues au moment k ?

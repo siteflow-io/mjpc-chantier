@@ -162,7 +162,7 @@ function EcrAttest(e, coche){
 }
 function EcrPret(e){
   return Page(badgeDe(e), EV.titre, h(F, null,
-    h("div", {className:"etat-attente"}, "⏳ En attente du démarrage..."),
+    h("div", {className:"etat-attente"}, "⏳ En attente du démarrage…"),
     h("div", {style:{fontSize:".8rem", color:"var(--gris)", marginTop:12}}, "Tu as lu et compris les consignes le 08/10/2026 à 10:04.")));
 }
 function EcrReflexion(e, qi, chrono){
@@ -195,7 +195,7 @@ function EcrReponse(e, qi, ordre, sel, chrono, ev){
     })),
     h("div", {className:"eleve-feedback" + (sel.length ? " valide" : "")}, sel.length ? "✅ Réponse enregistrée — tu peux encore la changer" : "💡 Clique sur le ou les choix qui correspondent à ta réponse.")));
 }
-function EcrAttente(e){ return Page(badgeDe(e), EV.titre, h("div", {className:"etat-attente"}, "⏳ Attends la prochaine question...")); }
+function EcrAttente(e){ return Page(badgeDe(e), EV.titre, h("div", {className:"etat-attente"}, "⏳ Attends la prochaine question…")); }
 
 function libFourchette(n){ return n + " bonne" + (n > 1 ? "s" : "") + " réponse" + (n > 1 ? "s" : "") + " sur 3"; }
 var FOURCH = [{k:"vert", n:3}, {k:"bleu", n:2}, {k:"orange", n:1}, {k:"rouge", n:0}];
@@ -328,7 +328,7 @@ var EV3E = {titre:"3e- éval 1 Analyse logique - Construire une phrase complexe"
     "La réponse est toujours écrite après le Pronom Relatif"], bonnes:[1,2,4]}].concat(new Array(8).fill(null))};
 
 /* ════════════════════════ CONSOLE ════════════════════════ */
-function Console(groupe, tab, contenu, session){
+function Console(groupe, tab, contenu, séance){
   var groupes = [["pilotage","Pilotage"],["donnees","Données"],["reglages","Réglages"]];
   var sous = {pilotage:[["evals","📝 Évaluations"],["pilot","🎯 Pilotage classe"]], donnees:[["results","📊 Résultats"],["snapshot","💾 Sauvegarde"]], reglages:[]};
   return h("div", {className:"prof-wrap cons"},
@@ -337,7 +337,7 @@ function Console(groupe, tab, contenu, session){
       h("div", {className:"prof-header"},
         h("h1", null, "📝 Évaluation QCM", h("span", {className:"badge"}, "Mode prof")),
         h("div", {className:"row"},
-          session && h("button", {className:"badge-session-actives"}, h("span", {className:"badge-session-dot"}, "🔴"), "1 session en cours"),
+          séance && h("button", {className:"badge-session-actives"}, h("span", {className:"badge-session-dot"}, "🔴"), "1 séance en cours"),
           h("button", {className:"btn-help"}, "📖 Mode d'emploi"),
           h("button", {className:"btn btn-ghost btn-sm"}, "📺 Ouvrir vue tableau"),
           h("button", {className:"btn btn-ghost btn-sm"}, "📱 QR pilotage"),
@@ -464,7 +464,7 @@ function Pilot(s){
       h("button", {key:1, className:"btn btn-ghost btn-sm"}, "🚫 Départ d'un élève"),
       h("button", {key:2, className:"btn btn-ghost btn-sm"}, "↩️ Retour d'un élève"),
       h("button", {key:4, className:"btn btn-ghost btn-sm"}, "🔓 Rouvrir pour un élève"),
-      h("button", {key:3, className:"btn btn-rouge btn-sm"}, "🛑 Terminer la session")]),
+      h("button", {key:3, className:"btn btn-rouge btn-sm"}, "🛑 Terminer la séance")]),
     h("div", {className:"pilot-stats"}, s.stats.map(function(x, i){ return h("div", {key:i, className:"pilot-stat"}, h("div", {className:"v"}, x[0]), h("div", {className:"l"}, x[1])); })),
     h("div", {className:"pilot-grid v2"}, colG, colM, Overview(s.qi, s.passees || []))), true);
 }
@@ -473,13 +473,13 @@ function Pilot(s){
 function Lancement(appel){
   var classe = [].concat.apply([], PAIRES_AVANT).filter(Boolean).sort(function(a, b){ return a.localeCompare(b, "fr"); });
   var carte = h("div", {className:"card"},
-    h("h2", null, "🎯 Lancer une nouvelle session", InfoI()),
+    h("h2", null, "🎯 Lancer une nouvelle séance", InfoI()),
     h("div", {className:"lancer-grid"},
       h("div", null,
         h("div", {className:"field"}, h("label", null, "Classe", InfoI()), h("select", {value:"c", readOnly:true}, h("option", {value:"c"}, CLASSE + " (25 élèves)"))),
         h("div", {className:"field"}, h("label", null, "Évaluation", InfoI()), h("select", {value:"e", readOnly:true}, h("option", {value:"e"}, EV.titre + " (3 questions)"))),
         h("div", {className:"duree-box"}, "⏱️ ", h("strong", null, "Durée estimée : 11 min"), " — entrée 3 min, questions 4 min (deux tours par question), estimation 1 min, correction 3 min.", h("br"), "✅ Ça tient dans les 45 minutes utiles."),
-        h("button", {className:"btn btn-primary"}, "🚀 Lancer la session")),
+        h("button", {className:"btn btn-primary"}, "🚀 Lancer la séance")),
       h("div", {className:"binomes-box"},
         h("div", {className:"tt"}, "📱 Binômes proposés — d'après le QCM précédent"),
         h("div", {className:"ss"}, "Classement du QCM précédent, puis 1-2, 3-4… Glisse un nom sur un autre pour échanger deux élèves, ou sur une moitié vide pour l'y déplacer. Tu peux le faire jusqu'au bout de l'heure."),
@@ -497,7 +497,7 @@ function Lancement(appel){
           h("input", {readOnly:true, value:"10:57", style:{width:"70px", padding:".2rem .4rem", border:"2px solid var(--bordure)", borderRadius:"6px", fontWeight:900, textAlign:"center", fontFamily:"inherit"}}),
           h("span", {style:{color:"var(--gris)"}}, "lancement + 55 min ; les tablettes oublient leurs élèves à « Terminer », ou 10 min après."))),
       h("div", {className:"checkin-summary"}, "🚫 1 absent sur 25"),
-      h("div", {className:"checkin-actions"}, h("button", {className:"btn btn-ghost"}, "Annuler"), h("button", {className:"btn btn-ghost"}, "Tout le monde présent"), h("button", {className:"btn btn-primary"}, "🚀 Lancer la session"))));
+      h("div", {className:"checkin-actions"}, h("button", {className:"btn btn-ghost"}, "Annuler"), h("button", {className:"btn btn-ghost"}, "Tout le monde présent"), h("button", {className:"btn btn-primary"}, "🚀 Lancer la séance"))));
   var precedentes = SessionsPrecedentes();
   return Console("pilotage", "pilot", h(F, null, carte, precedentes, modale), false);
 }
@@ -508,7 +508,7 @@ function SessionsPrecedentes(){
     ["QCM — Le jambon-beurre", "15/09/2026 10:03", "✅ terminée", "25 présents", null]
   ];
   return h("div", {className:"card"},
-    h("h2", null, "📚 Sessions précédentes — " + CLASSE, InfoI()),
+    h("h2", null, "📚 Séances précédentes — " + CLASSE, InfoI()),
     h("div", {className:"results-eval-list"}, lignes.map(function(l, i){
       return h("div", {key:i, className:"results-eval-row"},
         h("div", null, h("div", {className:"titre"}, l[0]),
@@ -521,7 +521,7 @@ function SessionsPrecedentes(){
 function PilotEstimation(){
   var distrib = [["vert", 6], ["bleu", 9], ["orange", 5], ["rouge", 2]];
   return Console("pilotage", "pilot", h("div", {className:"card"},
-    TitreCarte(h(F, null, "📊 Autoévaluation — " + EV.titre + " — " + CLASSE, InfoI()), [h("button", {key:1, className:"btn btn-rouge btn-sm"}, "🛑 Terminer la session")]),
+    TitreCarte(h(F, null, "📊 Autoévaluation — " + EV.titre + " — " + CLASSE, InfoI()), [h("button", {key:1, className:"btn btn-rouge btn-sm"}, "🛑 Terminer la séance")]),
     h("div", {className:"pilot-status autoeval"}, "Phase autoévaluation — 22 / 24 élèves"),
     h("p", {style:{margin:".8rem 0", color:"var(--gris)"}}, "Les élèves choisissent dans quelle fourchette ils estiment avoir réussi. Clique sur ", h("strong", null, "📝 Lancer la correction"), " quand tu es prêt."),
     h("div", {className:"autoeval-prof-distrib"}, distrib.map(function(d){ var m = MAITRISE.filter(function(x){ return x.k === d[0]; })[0];
@@ -558,7 +558,7 @@ function PilotCorrection(qi, revele){
   var lire = revele ? aLire(pos) : aLire(pos - 1);
   return Console("pilotage", "pilot", h("div", {className:"card"},
     TitreCarte(h(F, null, "📝 Correction — " + EV.titre + " — " + CLASSE, InfoI("Pour chaque question, les élèves recopient d'abord leur feuille : un clic sur ce qu'elle dit. « 💡 Révéler » s'ouvre quand tous les présents l'ont fait. Tu commentes la question après la révélation, jamais avant : sinon, ils cliqueraient ce que tu dis. Les questions sont triées de la plus ratée à la mieux réussie.", !revele && qi === 1)),
-      [h("button", {key:0, className:"btn btn-ghost btn-sm"}, "🚫 Départ d'un élève"), h("button", {key:1, className:"btn btn-rouge btn-sm"}, "🛑 Terminer la session")]),
+      [h("button", {key:0, className:"btn btn-ghost btn-sm"}, "🚫 Départ d'un élève"), h("button", {key:1, className:"btn btn-rouge btn-sm"}, "🛑 Terminer la séance")]),
     h("div", {className:"pilot-status correction"}, "Question " + (pos+1) + " / 3 — Q" + (qi+1)),
     h("div", {className:"corr-grid"},
       h("div", null,
@@ -599,7 +599,7 @@ function BilanClasse(){
   lignes.sort(function(a, b){ return (b.r.complet ? b.r.n : -1) - (a.r.complet ? a.r.n : -1) || a.nom.localeCompare(b.nom, "fr"); });
   var lire = aLire(2);
   return Console("pilotage", "pilot", h("div", {className:"card"},
-    TitreCarte(h(F, null, "🏁 Bilan classe — " + EV.titre + " — " + CLASSE, InfoI()), [h("button", {key:1, className:"btn btn-rouge btn-sm"}, "🛑 Terminer la session")]),
+    TitreCarte(h(F, null, "🏁 Bilan classe — " + EV.titre + " — " + CLASSE, InfoI()), [h("button", {key:1, className:"btn btn-rouge btn-sm"}, "🛑 Terminer la séance")]),
     h("div", {className:"bilan-classe-synthese"},
       h("div", {className:"bilan-classe-stat"}, h("div", {className:"bilan-classe-stat-label"}, "Moyenne"), h("div", {className:"bilan-classe-stat-num"}, fr1(moy) + " / 3"), h("div", {style:{opacity:.9}}, fr1(moy * 20 / 3) + " / 20")),
       h("div", {className:"bilan-classe-stat"}, h("div", {className:"bilan-classe-stat-label"}, "Médiane"), h("div", {className:"bilan-classe-stat-num"}, med + " / 3")),
@@ -665,7 +665,7 @@ function Resultats(fiche, modale, sansTableau){
   var r = calc("Michel");
   var ficheEl = fiche && h("div", {className:"student-report"},
     h("div", {style:{display:"flex", justifyContent:"space-between", alignItems:"center", flexWrap:"wrap"}},
-      h("h3", null, "👤 DUVERNAY Michel — 1 / 3 · 6,7 / 20 · 🟠 Maîtrise fragile", InfoI()),
+      h("h3", null, enteteFiche("Michel"), InfoI()),
       h("button", {className:"btn btn-ghost btn-sm"}, "✕ Fermer")),
     h("div", {className:"fiche-head"}, h("span", null, ""), h("span", null, "Question"), h("span", null, "Sa feuille (recopiée)"), h("span", null, "Sa tablette"), h("span", null, "Bonne réponse"), h("span", null, "Points"), h("span", null, "")),
     EV.questions.map(function(q, qi){
@@ -732,24 +732,24 @@ var SCENES = [
       etat:function(p){ return p === "Enzo" ? {cls:"m-attest", st:"attestation…"} : p === "Lou" ? {cls:"m-connexion", st:"pas encore entrée"} : {cls:"m-pret", st:"✓ prêt · 10:0" + ((p === "Julien" || p === "Michel") ? 4 : (p.length % 5 + 3))}; }}); }},
   // Question 1 — Julien commence
   {id:"t-q1-reflexion", vue:"tablette", render:function(){ return Tablette(EcrReflexion(J, 0, 14), EcrReflexion(M, 0, 14)); }},
-  {id:"c-q1-reflexion", vue:"console", render:function(){ return Pilot({phase:"reflexion", qi:0, chrono:14, stats:statsQ("24/24", "0/24", "—", "1/3"), etat:etatQuestion({qi:0, reflexion:true})}); }},
+  {id:"c-q1-reflexion", vue:"console", render:function(){ return Pilot({phase:"reflexion", qi:0, chrono:14, stats:statsQ(), etat:etatQuestion({qi:0, reflexion:true})}); }},
   {id:"t-q1-passage1", vue:"tablette", render:function(){ return passageScene(0, 1); }},
   {id:"t-q1-tour1", vue:"tablette", render:function(){ return tourScene(0, 1, 9, [2], []); }},
-  {id:"c-q1-tour1", vue:"console", render:function(){ return Pilot({phase:"reponse", qi:0, tour:1, chrono:9, stats:statsQ("24/24", "10/12", "10/10", "1/3"), etat:etatQuestion({qi:0, tour:1, nonRep:["Jade", "Anna"]})}); }},
+  {id:"c-q1-tour1", vue:"console", render:function(){ return Pilot({phase:"reponse", qi:0, tour:1, chrono:9, stats:statsQ(), etat:etatQuestion({qi:0, tour:1, nonRep:["Jade", "Anna"]})}); }},
   {id:"t-q1-passage2", vue:"tablette", render:function(){ return passageScene(0, 2); }},
   {id:"t-q1-tour2", vue:"tablette", render:function(){ return tourScene(0, 2, 6, [2], [3]); }},
-  {id:"c-q1-tour2", vue:"console", render:function(){ return Pilot({phase:"reponse", qi:0, tour:2, chrono:6, stats:statsQ("24/24", "23/24", "20/23", "1/3"), etat:etatQuestion({qi:0, tour:2, nonRep:["Lou"]})}); }},
+  {id:"c-q1-tour2", vue:"console", render:function(){ return Pilot({phase:"reponse", qi:0, tour:2, chrono:6, stats:statsQ(), etat:etatQuestion({qi:0, tour:2, nonRep:["Lou"]})}); }},
   {id:"t-q1-attente", vue:"tablette", render:function(){ return Tablette(EcrAttente(J), EcrAttente(M)); }},
-  {id:"c-q1-close", vue:"console", render:function(){ return Pilot({phase:"attente", qi:0, stats:statsQ("24/24", "24/24", "21/24", "1/3"), passees:[0], etat:etatQuestion({qi:0, fini:true})}); }},
+  {id:"c-q1-close", vue:"console", render:function(){ return Pilot({phase:"attente", qi:0, stats:statsQ(), passees:[0], etat:etatQuestion({qi:0, fini:true})}); }},
   // Question 2 — Michel commence
   {id:"t-q2-reflexion", vue:"tablette", render:function(){ return Tablette(EcrReflexion(J, 1, 22), EcrReflexion(M, 1, 22)); }},
   {id:"t-q2-tour1", vue:"tablette", render:function(){ return tourScene(1, 1, 12, [0, 1, 2], []); }},
   {id:"t-q2-tour2", vue:"tablette", render:function(){ return tourScene(1, 2, 4, [0, 1, 2], [0, 2]); }},
-  {id:"c-q2-tour2", vue:"console", render:function(){ return Pilot({phase:"reponse", qi:1, tour:2, chrono:4, stats:statsQ("24/24", "23/24", "9/23", "2/3"), passees:[0], etat:etatQuestion({qi:1, tour:2, nonRep:["Théo"]})}); }},
+  {id:"c-q2-tour2", vue:"console", render:function(){ return Pilot({phase:"reponse", qi:1, tour:2, chrono:4, stats:statsQ(), passees:[0], etat:etatQuestion({qi:1, tour:2, nonRep:["Théo"]})}); }},
   // Question 3 — Julien commence
   {id:"t-q3-tour1", vue:"tablette", render:function(){ return tourScene(2, 1, 8, [0], []); }},
   {id:"t-q3-tour2", vue:"tablette", render:function(){ return tourScene(2, 2, 5, [0], [2]); }},
-  {id:"c-q3-close", vue:"console", render:function(){ return Pilot({phase:"attente", qi:2, stats:statsQ("24/24", "24/24", "14/24", "3/3"), passees:[0, 1, 2], etat:etatQuestion({qi:2, fini:true})}); }},
+  {id:"c-q3-close", vue:"console", render:function(){ return Pilot({phase:"attente", qi:2, stats:statsQ(), passees:[0, 1, 2], etat:etatQuestion({qi:2, fini:true})}); }},
   // Estimation
   {id:"t-estim", vue:"tablette", render:function(){ return Tablette(EcrEstim(J, "bleu"), EcrEstim(M, null)); }},
   {id:"c-estim", vue:"console", render:function(){ return PilotEstimation(); }},

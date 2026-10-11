@@ -1,0 +1,10 @@
+/* ═════ Complément 3 ═════ */
+/* Un bouton fermé du téléphone se voit fermé, comme ceux de la console (garde 6) */
+.tel-btn:disabled{opacity:.45;cursor:not-allowed}
+/* La liste des séances, par niveau puis par classe (changement 3) */
+.classe-groupe{margin:.2rem 0 .6rem}
+.classe-titre{font-weight:800;color:var(--violet);margin:.5rem 0 .3rem;font-size:.92rem}
+.niv-groupe{margin-bottom:.4rem}
+.niv-vide{color:var(--gris);font-style:italic;padding:.3rem .7rem}
+.tel-st-l{font-size:.75rem;font-weight:800;color:var(--gris);margin:.3rem 0 .15rem}
+.bilan-imprime-eval{font-weight:800;color:var(--violet);margin:.2rem 0 .6rem;font-size:.95rem}

@@ -120,9 +120,19 @@ MANUEL = [
   ("Chaque élève voit, dans « Mes évaluations »", "alerte"), ("✔ Les 5 feuilles à lire sont lues.", "état"), ("Les tablettes oublient leurs élèves et reviennent", "alerte"),
   ("Toutes les évaluations partent à la corbeille", "alerte"), ("Il remplace tout le QCM", "alerte"), ("Que dit la feuille ?", "donnée"),
   ("Seuls ceux qui n'ont pas répondu la retrouvent", "état"), ("Seuls les élèves sans réponse", "état"),
-  ("Q3 à Q9 : complètes (repliées pour la capture)", "état")]
+  ("Q3 à Q9 : complètes (repliées pour la capture)", "état"),
+  # (complément 3, étape B) les textes calculés du scénario, relus
+  ("Choisis d'abord le chapitre : il donne les compétences permises.", "alerte"), ("Elle ne sera ni posée ni corrigée, et sort du total", "alerte"),
+  ("La séance est close, et l'archive s'écrit avec les notes", "alerte"), ("La séance garde son état exact", "état"), ("À l'heure suivante, « 🎯 Pilotage classe » propose", "état"),
+  ("Ses copies, rendues le", "alerte"), ("✔ Les ", "état"), ("Chaque élève voit, dans « Mes évaluations »", "alerte"), ("Elle part dans la corbeille du site", "alerte"),
+  ("Le QCM d'aujourd'hui part d'abord à la corbeille", "alerte"), ("Leurs séances gardent leurs notes.", "alerte"), ("✓ juste", "donnée"), ("{", "donnée"),
+  ("Tu vas m'aider à écrire une évaluation QCM", "donnée"), ("Préparer une évaluation", "donnée"), ("La démo", "donnée"), ("Évaluation fragile.", "donnée"),
+  ("Il a son point d'autonomie", "état"), ("⛔ Point d'autonomie retiré", "état"), ("🚫 Refusé : pas d'exclusion", "alerte"),
+  ("Les 28 compétences du référentiel.", "donnée"), ("🔁 Rattrapage.", "état"), ("Pas encore noté à cette évaluation", "état"),
+  ("👉 Avant de connaître la réponse", "état"), ("Ce que montrent ses deux moitiés", "état"), ("État actuel :", "état")]
 # Le mode d'emploi : chaque texte de sa section (il y est à sa place)
-MODE = [("Deux élèves par tablette, une moitié chacun.", "La séance, en classe"), ("Réflexion : l'énoncé sans les choix", "Une question"),
+MODE = [("Dans l'éditeur, chaque champ s'édite directement", "Préparer une évaluation"), ("La démo : rien ne compte.", "La démo"),
+  ("Deux élèves par tablette, une moitié chacun.", "La séance, en classe"), ("Réflexion : l'énoncé sans les choix", "Une question"),
   ("Après l'estimation et la seconde attestation", "La correction"), ("La note, c'est la feuille.", "La note"), ("Données → Résultats : les notes", "Le soir"),
   ("Chaque élève commence avec son point", "Le point d'autonomie")]
 def defaut(t):

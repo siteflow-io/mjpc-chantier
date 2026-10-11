@@ -8,9 +8,7 @@ var COMP_LONG = {
 function phrasesDe626(p){
   var r = calc(p), m = maitriseDe(r.sur20), idx = ["rouge","orange","bleu","vert"];
   var est = ESTIM[p];
-  if(p === "Lou"){   // le bilan de Lou de la capture 66 : 1 / 3 (Q3 corrigée d'après sa feuille), elle pensait 2 bonnes réponses
-    r = {pts:[1, 0, 0], sur20:20/3, comp:{"c4-culture-01":{n:1, max:3}, "c4-lire-01":{n:1, max:3}}}; m = maitriseDe(r.sur20); est = "bleu";
-  }
+  // (complément 3) plus de résultat forcé : la note de Lou vient du scénario, au moment de la scène (calc)
   var iE = idx.indexOf(est), iR = idx.indexOf(m.k);
   return commentaireQCM({
     niveau: m.k,
@@ -62,7 +60,7 @@ function Resultats626(fiche, modale, sansTableau){
   var r = calc("Michel");
   var ficheEl = fiche && h("div", {className:"student-report"},
     h("div", {style:{display:"flex", justifyContent:"space-between", alignItems:"center", flexWrap:"wrap"}},
-      h("h3", null, "👤 DUVERNAY Michel — 1 / 3 · 6,7 / 20 · 🟠 Maîtrise fragile", InfoI()),
+      h("h3", null, enteteFiche("Michel"), InfoI()),
       h("button", {className:"btn btn-ghost btn-sm"}, "✕ Fermer")),
     h("div", {className:"fiche-head"}, h("span", null, ""), h("span", null, "Question"), h("span", null, "Sa feuille (recopiée)"), h("span", null, "Sa tablette"), h("span", null, "Bonne réponse"), h("span", null, "Points"), h("span", null, "")),
     EV.questions.map(function(q, qi){

@@ -80,12 +80,12 @@ var ORDRE = [
     ["c-retour", 2, "« ↩️ Retour d'un élève »."],
     ["c-deplacer", 2, "Deux élèves échangés pendant la séance : leurs réponses les suivent."],
     ["t-deplace", 2, "La moitié de l'élève déplacé : « Julien, va sur la tablette de Lou »."],
-    ["c-terminer", 2, "« 🛑 Terminer la session » : la garde."],
+    ["c-terminer", 2, "« 🛑 Terminer la séance » : la garde."],
     ["c-mode-emploi", 2, "« 📖 Mode d'emploi », réécrit d'après le cadrage."],
     ["c-finir-autre-heure", 3, "« ⏸️ Finir à une autre heure » : la séance garde son état exact."],
     ["c-reprendre", 3, "À l'heure suivante : « ▶️ Reprendre la séance du 09/10 — question 1, 1er tour »."],
     ["c-rouvrir-seance", 3, "« 🔓 Rouvrir » une séance terminée : la garde."],
-    ["c-sessions", 3, "« 🔴 1 session en cours » : aller au pilotage, ou terminer."],
+    ["c-sessions", 3, "« 🔴 1 séance en cours » : aller au pilotage, ou terminer."],
     ["c-interrompue", 3, "La séance interrompue : reprendre, finir à une autre heure, ou terminer définitivement."]]],
   // H. L'estimation
   ["L'estimation", [
@@ -259,6 +259,9 @@ function rendre(){
   document.body.className = "vue-" + sc.vue + (/[#&]cap=1/.test(location.hash) ? " capture" : "");
   var racine = document.getElementById("root");
   window.SCENE_COURANTE = sc.id;
+  // (complément 3) le moment de la scène : celui que le scénario lui donne, ou celui où un geste y a mené (« &m= »)
+  window.MOMENT_COURANT = paramHash("m") || sc.moment || SCN.MOMENT_DE[sc.id] || null;
+  tempsRemettre();
   ReactDOM.unmountComponentAtNode(racine);
   ReactDOM.render(sc.render(), racine);
   poserGestes(); surveiller();

@@ -35,7 +35,7 @@ function HautModeTest(phase){
       h("p", {style:{margin:".4rem 0", fontSize:".88rem"}}, "Ces boutons appellent les fonctions réelles de l'application, pas des copies."),
       h("div", null, ["🔒 Clôturer (chemin réel)", "✏️ Modifier l'éval après coup", "⚖️ Vérifier que les notes n'ont pas bougé", "⏱️ Faire expirer le chrono", "🔄 Relire l'état"].map(function(t, i){
         return h("button", {key:i, className:"btn btn-ghost btn-sm", style:{marginRight:".4rem", marginBottom:".4rem"}}, t); })),
-      h("div", {style:{fontSize:".85rem"}}, "Session : ", h("strong", null, phase === "avant" ? "pas encore lancée" : "en_cours"), " · énoncé ", h("strong", null, "non conservé")),
+      h("div", {style:{fontSize:".85rem"}}, "Séance : ", h("strong", null, phase === "avant" ? "pas encore lancée" : "en_cours"), " · énoncé ", h("strong", null, "non conservé")),
       h("div", {style:{fontSize:".82rem", marginTop:".3rem"}}, Pz("« ⏱️ Faire expirer le chrono » fait expirer le temps en cours, quel qu'il soit : réflexion, réponse, « Oui / Non », lecture du voisin."))),
     h("div", {className:"test-info"},
       h("strong", null, "🎬 ", Pz("Préparer un cas")),
@@ -61,7 +61,7 @@ function TabSimT(num, a, b, contenu, feuilles){
 }
 function ChampFeuille(nom, texte){
   return h("div", {className:"simt-f"},
-    h("span", {className:"simt-fl"}, "📝 ", Pz("Feuille de " + pre(nom))),
+    h("span", {className:"simt-fl"}, "📝 ", Pz("Feuille " + deNom(pre(nom)))),
     h("span", {className:"simt-fi" + (texte ? "" : " vide")}, texte || Pz("vide : sa feuille dira ce qu'" + (TEST_F[pre(nom)] ? "elle" : "il") + " clique")));
 }
 function TablettesSimulees(etape){
@@ -83,13 +83,13 @@ function TablettesSimulees(etape){
 function ModeTestOuverture(){
   return avecTest(function(){
     var carte = h("div", {className:"card"},
-      h("h2", null, "🎯 Lancer une nouvelle session", InfoI()),
+      h("h2", null, "🎯 Lancer une nouvelle séance", InfoI()),
       h("div", {className:"lancer-grid"},
         h("div", null,
           h("div", {className:"field"}, h("label", null, "Classe", InfoI()), h("select", {value:"c", readOnly:true}, h("option", {value:"c"}, "🧪 " + CLASSE_TEST + " (30 élèves)"))),
           h("div", {className:"field"}, h("label", null, "Évaluation", InfoI()), h("select", {value:"e", readOnly:true}, h("option", {value:"e"}, DEMO.titre + " (3 questions)"))),
           h("div", {className:"duree-box"}, "⏱️ ", h("strong", null, "Durée estimée : 11 min"), " — entrée 3 min, questions 4 min (deux tours par question), estimation 1 min, correction 3 min.", h("br"), "✅ Ça tient dans les 45 minutes utiles."),
-          h("button", {className:"btn btn-primary"}, "🚀 Lancer la session")),
+          h("button", {className:"btn btn-primary"}, "🚀 Lancer la séance")),
         h("div", {className:"binomes-box"},
           h("div", {className:"tt"}, "📱 Binômes proposés — ", Pz("dans l'ordre de la liste : la classe de test n'a pas de QCM précédent")),
           h("div", {className:"ss"}, "Glisse un nom sur un autre pour échanger deux élèves, ou sur une moitié vide pour l'y déplacer. Tu peux le faire jusqu'au bout de l'heure."),
@@ -119,7 +119,7 @@ function ModeTestSeance(st, etape){
   });
 }
 function ModeTestReflexion(){
-  return ModeTestSeance({phase:"reflexion", qi:2, chrono:18, stats:statsQ("30/30", "0/30", "—", "3/3"), passees:[], etat:etatQuestion({qi:2, reflexion:true})}, "reflexion");
+  return ModeTestSeance({phase:"reflexion", qi:2, chrono:18, stats:statsQ(), passees:[0, 1], etat:etatQuestion({qi:2, reflexion:true})}, "reflexion");
 }
 /* ── 620-3 : « 🔍 Jouer en grand » la tablette 1, au « Oui / Non » de la question 3 ── */
 function EcrDeclareDemo(e, qi, ordre, sel, chrono){
@@ -137,7 +137,7 @@ function EcrDeclareDemo(e, qi, ordre, sel, chrono){
 }
 function ModeTestGrand(){
   var a = eleveT(TEST_NOMS[0], "J"), b = eleveT(TEST_NOMS[1], "M");
-  var fond = ModeTestSeance({phase:"reponse", qi:2, tour:1, chrono:0, stats:statsQ("30/30", "14/15", "—", "3/3"), passees:[],
+  var fond = ModeTestSeance({phase:"reponse", qi:2, tour:1, chrono:0, stats:statsQ(), passees:[0, 1],
     etat:function(p, cote){ if(cote === "d") return {cls:"m-voile", st:"🙈 attend son tour"}; return p === "Élise" ? {cls:"m-repond", st:"✋ dit si sa feuille…"} : {cls:"m-dit", st:"a répondu"}; }}, "reflexion");
   var tab = avecTest(function(){ return Tablette(EcrDeclareDemo(a, 2, [2, 0, 3, 1], [1], 3), VoileN(b, a)); });
   return h(F, null, fond,

@@ -49,9 +49,17 @@ function corpus(racine){
   morceaux.push(unjs(lire(path.join(PROD, "evaluation-qcm.html"))));
   const v1 = path.join(__dirname, "corpus-v1.txt");                // les textes rendus des maquettes existantes, réunies telles quelles (v1)
   if(fs.existsSync(v1)) morceaux.push(lire(v1));
-  CORPUS = norm(morceaux.join("\n")).replace(/\s+/g, " ");
+  // (complément 3, point 778) les retouches que Paul a écrites lui-même dans le mandat : le chrono de la lecture, « Ta réponse : aucun de ces choix »
+  morceaux.push("📄 Temps pour lire la feuille du voisin", "Ta réponse : aucun de ces choix");
+  // la typographie (complément 3, §1.2) : « … » pour « ... »
+  CORPUS = norm(morceaux.join("\n").replace(/\.\.\./g, "…")).replace(/\s+/g, " ");
   return CORPUS;
 }
+
+/* ── Le prompt de création d'éval, tel que l'app l'affiche : le texte du sas, sa ligne 3 corrigée (complément 3, relecteur n°248 ; build.py) ── */
+const PROMPT_LIGNE3 = ["3. Correction, après toutes les questions : l'élève recopie sur la tablette ce que dit sa feuille, puis je révèle la réponse et je commente.",
+  "3. Correction, après toutes les questions : chaque élève lit la feuille de son voisin et clique sur la tablette ce qu'elle dit, puis je révèle la réponse et je commente."];
+function promptCorrige(p){ return p.replace(PROMPT_LIGNE3[0], PROMPT_LIGNE3[1]); }
 
 /* ── 3. Chaque phrase vue par l'élève vient de ce que Paul a validé ── */
 function provenance(etat, corpus){
@@ -245,4 +253,4 @@ function empreinte(){
   let h = 0; for(let i = 0; i < s.length; i++){ h = (h * 31 + s.charCodeAt(i)) | 0; } return h + ":" + s.length;
 }
 
-module.exports = {texteCom632, corpus, provenance, motsInterdits, nomsInconnus, vueEleve, vueProf, INTERDITS_SOURCE, textePdf632, lireScene, marquerBoutons, empreinte, normEsp, norm, PERMIS, LIB_OFFICIELS, LIB_ELEVE};
+module.exports = { promptCorrige,texteCom632, corpus, provenance, motsInterdits, nomsInconnus, vueEleve, vueProf, INTERDITS_SOURCE, textePdf632, lireScene, marquerBoutons, empreinte, normEsp, norm, PERMIS, LIB_OFFICIELS, LIB_ELEVE};

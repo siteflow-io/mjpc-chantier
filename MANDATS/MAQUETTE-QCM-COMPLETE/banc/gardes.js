@@ -47,6 +47,7 @@ const NIVEAUX_Q = /(?<![\p{L}])(Facile|Standard|Approfondi|Expert|FACILE|STANDAR
 // les espaces insécables) : une phrase de l'existant qui ne diffère que par elles n'est pas perdue
 function forme(s){
   return nrm(String(s || "").replace(/(?<![\p{L}])([Ss])essions?(?![\p{L}])/gu, (m, a) => (a === "S" ? "S" : "s") + "éance" + (/s$/.test(m) ? "s" : "")).replace(/\.\.\./g, "…").replace(/[\u00a0\u202f]/g, " ").replace(/ ([:;!?»])/g, "$1").replace(/« /g, "«")).replace(/ — (pas de réponse|#\/# bonnes \(#%\))$/, " — ‹taux›").replace(NIVEAUX_Q, "‹niveau›").replace(/[🔴🟠🔵🟢]/gu, "◍").replace(/[Ee]ntre # et #/g, "#").replace(/\(s\)/g, "")
+    .replace(/(?<=#)re(?![\p{L}])/gu, "e")   // (complément 3, changement 8) « 1re » pour « 1e » : la typographie
     .replace(/(?<=\p{L}{2})[sx](?![\p{L}])/gu, "").replace(/\s+/g, " ").trim();
 }
 // Une phrase de la 7.7.1 qui n'est qu'une donnée de la séance jouée (le titre de l'évaluation du faux hub, un nom, un nombre) n'est pas comparée.
@@ -211,7 +212,7 @@ const MESURES = process.env.MESURES !== "0";
 function chapitre(){ const c = JSON.parse(lire(path.join(RACINE, "src", "donnees", "chapitre-3e-poesie-peinture-final.json"))).chapitre; return {majeures: c.competencesMajeures, mineures: c.competencesMineures}; }
 function promptAttendu(){
   const readme = lire(path.join(SAS, "MANDATS", "PROMPT-QCM-CREATION", "README.md"));
-  return /## Le texte proposé\s*```\n([\s\S]*?)\n```/.exec(readme)[1];
+  return C.promptCorrige(/## Le texte proposé\s*```\n([\s\S]*?)\n```/.exec(readme)[1]);
 }
 function limitesTexte(){
   const f = path.join(RACINE, "mesures", "limites.json");

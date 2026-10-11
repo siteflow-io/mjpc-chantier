@@ -23,6 +23,20 @@
    "auto": true
   },
   {
+   "texte": "Difficulté Facile · réflexion 20 s · réponse 15 s par tour · 1 bonne réponse",
+   "scenes": [
+    "c-annulee",
+    "c-annuler",
+    "c-pret",
+    "c-q2-close",
+    "c-q2-tour2",
+    "c-rouvrir-tous",
+    "c-rouvrir-un"
+   ],
+   "categorie": "état",
+   "auto": true
+  },
+  {
    "texte": "Difficulté Facile · réflexion 20 s · réponse 15 s par tour · 1 bonne(s) réponse(s)",
    "scenes": [
     "c-annulee",
@@ -74,6 +88,26 @@
     "c-q3-close",
     "c-rouvrir-tous",
     "c-rouvrir-un"
+   ],
+   "categorie": "donnée",
+   "auto": true
+  },
+  {
+   "texte": "par tour",
+   "scenes": [
+    "c-annulee",
+    "c-annuler",
+    "c-deplacer",
+    "c-ecartee",
+    "c-ecarter",
+    "c-pret",
+    "c-q1-close",
+    "c-q1-reflexion",
+    "c-q2-close",
+    "c-q3-close",
+    "c-rouvrir-tous",
+    "c-rouvrir-un",
+    "x620-2-mode-test-reflexion"
    ],
    "categorie": "donnée",
    "auto": true
@@ -286,6 +320,39 @@
    "auto": true
   },
   {
+   "texte": "🏁 Fin prévue 10:25 · fin de l'heure 10:57",
+   "scenes": [
+    "c-annulee",
+    "c-annuler",
+    "c-depart",
+    "c-deplacer",
+    "c-ecartee",
+    "c-ecarter",
+    "c-finir-autre-heure",
+    "c-parti",
+    "c-pret",
+    "c-q1-close",
+    "c-q1-reflexion",
+    "c-q1-tour1",
+    "c-q1-tour2",
+    "c-q2-close",
+    "c-q2-tour2",
+    "c-q3-close",
+    "c-qr",
+    "c-retour",
+    "c-rouvrir-tous",
+    "c-rouvrir-un",
+    "c-sessions",
+    "c-terminer",
+    "c-voir-tablette",
+    "p-reponse",
+    "x620-2-mode-test-reflexion",
+    "x620-3-mode-test-en-grand"
+   ],
+   "categorie": "donnée",
+   "auto": true
+  },
+  {
    "texte": "🏁 Fin prévue 10:39 · fin de l'heure 10:57",
    "scenes": [
     "c-annulee",
@@ -451,7 +518,45 @@
    "auto": true
   },
   {
+   "texte": "15/09/2026 10:03 · ✅ terminée · 25 présents · copies rendues le 17/09",
+   "scenes": [
+    "c-appel",
+    "c-demo-faite",
+    "c-demo-lancer",
+    "c-echange-refuse",
+    "c-interrompue",
+    "c-lancer",
+    "c-mode-emploi",
+    "c-papier-lancer",
+    "c-papier-reprendre",
+    "c-rattrapage",
+    "c-reprendre",
+    "c-rouvrir-seance"
+   ],
+   "categorie": "donnée",
+   "auto": true
+  },
+  {
    "texte": "24/09/2026 10:04 · ✅ terminée · 23 présents · 2 feuilles à lire",
+   "scenes": [
+    "c-appel",
+    "c-demo-faite",
+    "c-demo-lancer",
+    "c-echange-refuse",
+    "c-interrompue",
+    "c-lancer",
+    "c-mode-emploi",
+    "c-papier-lancer",
+    "c-papier-reprendre",
+    "c-rattrapage",
+    "c-reprendre",
+    "c-rouvrir-seance"
+   ],
+   "categorie": "donnée",
+   "auto": true
+  },
+  {
+   "texte": "24/09/2026 10:04 · ✅ terminée · 23 présents, 2 absents · copies rendues le 26/09",
    "scenes": [
     "c-appel",
     "c-demo-faite",
@@ -543,8 +648,83 @@
    "destination": {
     "infobulle": "⏱️ Durée estimée",
     "scene": "c-lancer",
-    "place": "pour chacune : la réflexion, puis deux tours de 3 s de décompte, de réponse et de 5 s où l'élève dit si sa feuille dit la même chose, puis 15 s"
+    "place": "pour chacune : la réflexion, puis deux tours de 3 s de décompte, de réponse et de 5 s où l'élève dit si sa feuille dit la même chose que son clic, puis 15 s"
    },
+   "auto": false
+  },
+  {
+   "texte": "⏱️ Durée estimée : 17 min✅ Ça tient dans les 45 minutes utiles.",
+   "scenes": [
+    "c-appel",
+    "c-demo-faite",
+    "c-echange-refuse",
+    "c-interrompue",
+    "c-lancer",
+    "c-mode-emploi",
+    "c-papier-reprendre",
+    "c-rattrapage",
+    "c-reprendre",
+    "c-rouvrir-seance",
+    "x620-1-mode-test-ouverture"
+   ],
+   "categorie": "état",
+   "auto": true
+  },
+  {
+   "texte": "🎓 Démo faite le 07/10 · 3 ESSAI · 24 présents",
+   "scenes": [
+    "c-appel",
+    "c-demo-faite",
+    "c-echange-refuse",
+    "c-interrompue",
+    "c-lancer",
+    "c-mode-emploi",
+    "c-papier-lancer",
+    "c-papier-reprendre",
+    "c-rattrapage",
+    "c-reprendre",
+    "c-rouvrir-seance"
+   ],
+   "categorie": "donnée",
+   "auto": true
+  },
+  {
+   "texte": "🎯 Lancer une nouvelle séance",
+   "scenes": [
+    "c-appel",
+    "c-demo-faite",
+    "c-demo-lancer",
+    "c-echange-refuse",
+    "c-interrompue",
+    "c-lancer",
+    "c-mode-emploi",
+    "c-papier-lancer",
+    "c-papier-reprendre",
+    "c-rattrapage",
+    "c-reprendre",
+    "c-rouvrir-seance",
+    "x620-1-mode-test-ouverture"
+   ],
+   "categorie": "donnée",
+   "auto": true
+  },
+  {
+   "texte": "📚 Séances précédentes — 3 ESSAI",
+   "scenes": [
+    "c-appel",
+    "c-demo-faite",
+    "c-demo-lancer",
+    "c-echange-refuse",
+    "c-interrompue",
+    "c-lancer",
+    "c-mode-emploi",
+    "c-papier-lancer",
+    "c-papier-reprendre",
+    "c-rattrapage",
+    "c-reprendre",
+    "c-rouvrir-seance"
+   ],
+   "categorie": "donnée",
    "auto": true
   },
   {
@@ -630,6 +810,14 @@
    "auto": true
   },
   {
+   "texte": "DUVERNAY Michel · CARRÉ Tom · OLLIVIER Sacha · ZELLER Lou · CHEVALLIER Théo",
+   "scenes": [
+    "c-attest2"
+   ],
+   "categorie": "état",
+   "auto": true
+  },
+  {
    "texte": "La correction commence par Q2, la plus ratée sur les tablettes (9 / 24 justes).",
    "scenes": [
     "c-attest2"
@@ -639,6 +827,14 @@
   },
   {
    "texte": "La correction commence quand les 24 présents ont coché la seconde attestation. Il en manque 4 :",
+   "scenes": [
+    "c-attest2"
+   ],
+   "categorie": "alerte",
+   "auto": true
+  },
+  {
+   "texte": "La correction commence quand les 24 présents ont coché la seconde attestation. Il en manque 5 :",
    "scenes": [
     "c-attest2"
    ],
@@ -656,6 +852,14 @@
   },
   {
    "texte": "✍️ La seconde attestation",
+   "scenes": [
+    "c-attest2"
+   ],
+   "categorie": "donnée",
+   "auto": true
+  },
+  {
+   "texte": "✍️ Seconde attestation — 19 / 24 prêts",
    "scenes": [
     "c-attest2"
    ],
@@ -704,6 +908,21 @@
    "auto": true
   },
   {
+   "texte": "9 / 24 justes sur la tablette (38 %)",
+   "scenes": [
+    "c-autonomie",
+    "c-autonomie-garde",
+    "c-autonomie-retiree",
+    "c-corr-q1-apres",
+    "c-corr-q2-apres",
+    "c-corr-q2-avant",
+    "c-corr-q2-lu",
+    "c-corr-q3-apres"
+   ],
+   "categorie": "donnée",
+   "auto": true
+  },
+  {
    "texte": "9 / 24 justes sur la tablette (38%)",
    "scenes": [
     "c-autonomie",
@@ -729,6 +948,27 @@
     "c-corr-q3-apres"
    ],
    "categorie": "donnée",
+   "auto": true
+  },
+  {
+   "texte": "Feuilles justes : 8 / 24 · ✓ Trouvées au dernier moment : 2",
+   "scenes": [
+    "c-autonomie",
+    "c-autonomie-garde",
+    "c-autonomie-retiree",
+    "c-corr-q1-apres",
+    "c-corr-q2-apres",
+    "c-corr-q3-apres"
+   ],
+   "categorie": "donnée",
+   "auto": true
+  },
+  {
+   "texte": "Il a son point d'autonomie : ses deux compétences d'autonomie sont en Très bonne maîtrise.",
+   "scenes": [
+    "c-autonomie"
+   ],
+   "categorie": "état",
    "auto": true
   },
   {
@@ -832,6 +1072,19 @@
   },
   {
    "texte": "⛔ Dernier moment",
+   "scenes": [
+    "c-autonomie",
+    "c-autonomie-garde",
+    "c-autonomie-retiree",
+    "c-corr-q1-apres",
+    "c-corr-q2-apres",
+    "c-corr-q3-apres"
+   ],
+   "categorie": "donnée",
+   "auto": true
+  },
+  {
+   "texte": "✓ Trouvée au dernier moment",
    "scenes": [
     "c-autonomie",
     "c-autonomie-garde",
@@ -952,6 +1205,26 @@
     "c-coeval-retire-deux",
     "c-coeval-retire-julien",
     "c-coeval-retire-michel"
+   ],
+   "categorie": "état",
+   "auto": true
+  },
+  {
+   "texte": "CARRÉ Tom · OLLIVIER Sacha · VALLÉE Rayan · ZELLER Lou",
+   "scenes": [
+    "c-autonomie-deux",
+    "c-autonomie-julien",
+    "c-autonomie-michel",
+    "c-coeval-attente",
+    "c-coeval-feuille",
+    "c-coeval-retire-deux",
+    "c-coeval-retire-julien",
+    "c-coeval-retire-michel",
+    "x610-8-console-alerte",
+    "x610-autonomie-deux",
+    "x610-autonomie-julien",
+    "x610-autonomie-michel",
+    "x610-feuille"
    ],
    "categorie": "état",
    "auto": true
@@ -1174,6 +1447,25 @@
    "auto": true
   },
   {
+   "texte": "ZELLER Lou — Q3 : a dit que sa feuille disait son clic, 6 ; Théo y a lu 8",
+   "scenes": [
+    "c-autonomie-deux",
+    "c-autonomie-julien",
+    "c-autonomie-michel",
+    "c-bilan",
+    "c-coeval-attente",
+    "c-coeval-feuille",
+    "c-coeval-retire-deux",
+    "c-coeval-retire-julien",
+    "c-coeval-retire-michel",
+    "c-coeval-tranche",
+    "c-corr-q1-apres",
+    "c-corr-q3-apres"
+   ],
+   "categorie": "état",
+   "auto": true
+  },
+  {
    "texte": "alerte : à trancher",
    "scenes": [
     "c-autonomie-deux",
@@ -1316,6 +1608,25 @@
    "scenes": [
     "c-autonomie-deux",
     "x610-autonomie-deux"
+   ],
+   "categorie": "donnée",
+   "auto": true
+  },
+  {
+   "texte": "⛔ point d'autonomie retiré",
+   "scenes": [
+    "c-autonomie-deux",
+    "c-autonomie-julien",
+    "c-autonomie-michel",
+    "c-autonomie-retiree",
+    "c-coeval-attente",
+    "c-coeval-feuille",
+    "c-coeval-retire-deux",
+    "c-coeval-retire-julien",
+    "c-coeval-retire-michel",
+    "c-coeval-tranche",
+    "c-corr-q1-apres",
+    "c-corr-q3-apres"
    ],
    "categorie": "donnée",
    "auto": true
@@ -1593,6 +1904,14 @@
    "auto": true
   },
   {
+   "texte": "⛔ Point d'autonomie retiré le 08/10 à 10:23. Ses deux compétences d'autonomie sont en Maîtrise insuffisante ; sa note ne bouge pas.",
+   "scenes": [
+    "c-autonomie-retiree"
+   ],
+   "categorie": "état",
+   "auto": true
+  },
+  {
    "texte": "🔴 Point d'autonomie retiré à 10:41. Ses deux compétences d'autonomie sont en Maîtrise insuffisante ; sa note ne bouge pas.",
    "scenes": [
     "c-autonomie-retiree"
@@ -1609,6 +1928,14 @@
     "c-coeval-retire-michel"
    ],
    "categorie": "donnée",
+   "auto": true
+  },
+  {
+   "texte": "23 / 24 l'ont gardé : Très bonne maîtrise · 1 retiré (FOUCHER Hugo) : Maîtrise insuffisante",
+   "scenes": [
+    "c-bilan"
+   ],
+   "categorie": "état",
    "auto": true
   },
   {
@@ -1787,6 +2114,16 @@
    "auto": true
   },
   {
+   "texte": "⛔ retiré le 08/10 à 10:23",
+   "scenes": [
+    "c-bilan",
+    "c-resultats",
+    "c-resultats-rendues"
+   ],
+   "categorie": "donnée",
+   "auto": true
+  },
+  {
    "texte": "🏁 Bilan classe — Évaluation d'essai — 3 questions — 3 ESSAI",
    "scenes": [
     "c-bilan"
@@ -1808,6 +2145,7 @@
     "c-bilan",
     "c-estim",
     "c-fiche-retire",
+    "c-que-dit-la-feuille",
     "c-resultats",
     "c-resultats-rendues"
    ],
@@ -1848,6 +2186,16 @@
     "c-fiche",
     "c-fiche-garde",
     "c-que-dit-la-feuille",
+    "c-resultats",
+    "c-resultats-rendues"
+   ],
+   "categorie": "donnée",
+   "auto": true
+  },
+  {
+   "texte": "🤝 Autonomie",
+   "scenes": [
+    "c-bilan",
     "c-resultats",
     "c-resultats-rendues"
    ],
@@ -1999,11 +2347,44 @@
    "auto": true
   },
   {
+   "texte": "pas encore passée",
+   "scenes": [
+    "c-collage",
+    "c-eval-corbeille",
+    "c-evals",
+    "x627-3-editeur"
+   ],
+   "categorie": "donnée",
+   "auto": true
+  },
+  {
+   "texte": "passée par 3 ESSAI le 24/09",
+   "scenes": [
+    "c-collage",
+    "c-eval-corbeille",
+    "c-evals",
+    "x627-3-editeur"
+   ],
+   "categorie": "donnée",
+   "auto": true
+  },
+  {
    "texte": "{ \"titre\": \"3e — Poésie et peinture : le sonnet et ses règles\", \"chapitre\": \"3e-ch1\", \"mode\": \"strict\", \"questions\": [ { \"enonce\": \"De quoi un sonnet classique est-il composé ?\", \"choix\": [\"Deux quatrains\", \"Deux tercets\", \"Trois quintils\", \"D'alexandrins\"], \"bonnes\": [0, 1, 3], \"niveau\": \"standard\", \"reflexion\": 30, \"reponse\": 20, \"competences\": [\"c4-langue-04\"], \"explication\": \"Deux quatrains, puis deux tercets, en alexandrins.\" }, { \"enonce\": \"Quel registre exprime les sentiments personnels du poète ?\", \"choix\": [\"Le registre tragique\", \"Le registre lyrique\", \"Le registre comique\"], \"bonnes\": [1], \"niveau\": \"facile\", \"reflexion\": 20, \"reponse\": 15, \"competences\": [\"c4-culture-01\", \"c4-lire-04\"], \"explication\": \"Lyrique vient de « lyre », l'instrument de la poésie chantée.\" }, …",
    "scenes": [
     "c-collage"
    ],
-   "categorie": "état",
+   "categorie": "donnée",
+   "auto": true
+  },
+  {
+   "texte": "⚠️ À compléter avant de la lancer : le chapitre, les deux temps de chaque question, les compétences et ce que chaque question vérifie",
+   "scenes": [
+    "c-collage",
+    "c-eval-corbeille",
+    "c-evals",
+    "x627-3-editeur"
+   ],
+   "categorie": "alerte",
    "auto": true
   },
   {
@@ -2023,6 +2404,17 @@
     "c-collage"
    ],
    "categorie": "état",
+   "auto": true
+  },
+  {
+   "texte": "✅ Prête à lancer",
+   "scenes": [
+    "c-collage",
+    "c-eval-corbeille",
+    "c-evals",
+    "x627-3-editeur"
+   ],
+   "categorie": "donnée",
    "auto": true
   },
   {
@@ -2115,7 +2507,54 @@
    "auto": true
   },
   {
+   "texte": "3 ESSAI — 09/10/2026 10:02 · ✅ terminée · 24 présents, 1 absent (YVON Adam) · sur papier",
+   "scenes": [
+    "c-copies-rendues",
+    "c-corbeille",
+    "c-rendre",
+    "c-seances",
+    "c-seances-lues"
+   ],
+   "categorie": "état",
+   "auto": true
+  },
+  {
+   "texte": "3 ESSAI — 09/10/2026 15:07 · ✅ terminée · 24 présents, 1 absent (YVON Adam)",
+   "scenes": [
+    "c-copies-rendues",
+    "c-corbeille",
+    "c-rendre",
+    "c-seances-lues"
+   ],
+   "categorie": "donnée",
+   "auto": true
+  },
+  {
+   "texte": "3 ESSAI — 15/09/2026 10:03 · ✅ terminée · 25 présents",
+   "scenes": [
+    "c-copies-rendues",
+    "c-corbeille",
+    "c-rendre",
+    "c-seances",
+    "c-seances-lues"
+   ],
+   "categorie": "donnée",
+   "auto": true
+  },
+  {
    "texte": "3 ESSAI — 24/09/2026 10:04 · ✅ terminée · 23 présents",
+   "scenes": [
+    "c-copies-rendues",
+    "c-corbeille",
+    "c-rendre",
+    "c-seances",
+    "c-seances-lues"
+   ],
+   "categorie": "donnée",
+   "auto": true
+  },
+  {
+   "texte": "3 ESSAI — 24/09/2026 10:04 · ✅ terminée · 23 présents, 2 absents",
    "scenes": [
     "c-copies-rendues",
     "c-corbeille",
@@ -2144,12 +2583,32 @@
    "auto": true
   },
   {
+   "texte": "👥 3 ESSAI · 4 séances",
+   "scenes": [
+    "c-copies-rendues",
+    "c-corbeille",
+    "c-rendre",
+    "c-seances",
+    "c-seances-lues"
+   ],
+   "categorie": "donnée",
+   "auto": true
+  },
+  {
    "texte": "3 ESSAI — 08/10/2026 10:02 · ✅ terminée · 24 présents, 1 absent · 📌 5 feuilles à lire",
    "scenes": [
     "c-corbeille",
     "c-seances"
    ],
    "categorie": "état",
+   "auto": true
+  },
+  {
+   "texte": "Elle part dans la corbeille du site, gardée un an, avec ses réponses, ses lectures et ses notes, et sort de cette liste. Rien n'est effacé : tu la restaures depuis 💾 Sauvegarde → 🗑️ Corbeille.",
+   "scenes": [
+    "c-corbeille"
+   ],
+   "categorie": "alerte",
    "auto": true
   },
   {
@@ -2430,6 +2889,29 @@
    "auto": true
   },
   {
+   "texte": "Difficulté Standard · réflexion 30 s · réponse 20 s par tour · 2 bonnes réponses",
+   "scenes": [
+    "c-depart",
+    "c-deplacer",
+    "c-ecartee",
+    "c-ecarter",
+    "c-fin-prevue",
+    "c-finir-autre-heure",
+    "c-parti",
+    "c-q1-close",
+    "c-q1-reflexion",
+    "c-q1-tour1",
+    "c-q1-tour2",
+    "c-qr",
+    "c-retour",
+    "c-sessions",
+    "c-terminer",
+    "c-voir-tablette"
+   ],
+   "categorie": "état",
+   "auto": true
+  },
+  {
    "texte": "Il ne bloque plus la classe : son binôme continue seul ; ses questions manquées sortent de son total (« noté sur 7 questions sur 11 »), et tu fixes sa note d'après sa feuille.",
    "scenes": [
     "c-depart"
@@ -2611,6 +3093,14 @@
    "auto": true
   },
   {
+   "texte": "Elle ne sera ni posée ni corrigée, et sort du total de la note et des compétences.",
+   "scenes": [
+    "c-ecarter"
+   ],
+   "categorie": "alerte",
+   "auto": true
+  },
+  {
    "texte": "Elle ne sera ni posée ni corrigée. Elle sort du total de la note et des compétences, comme une question manquée par un absent : les tablettes et le tableau comptent sans elle (« Question 2 / 2 »).",
    "scenes": [
     "c-ecarter"
@@ -2690,6 +3180,22 @@
     "c-estim"
    ],
    "categorie": "état",
+   "auto": true
+  },
+  {
+   "texte": "3e Chapitre 1 — Poésie et peinture au XIXème siècle · Interro de cours (séance 3) · 10 questions",
+   "scenes": [
+    "c-eval-corbeille"
+   ],
+   "categorie": "état",
+   "auto": true
+  },
+  {
+   "texte": "Elle part dans la corbeille du site, gardée un an, avec ses questions ; ses séances passées gardent leurs notes.",
+   "scenes": [
+    "c-eval-corbeille"
+   ],
+   "categorie": "alerte",
    "auto": true
   },
   {
@@ -2879,7 +3385,7 @@
     "c-fiche-retire",
     "c-que-dit-la-feuille"
    ],
-   "categorie": "état",
+   "categorie": "donnée",
    "auto": true
   },
   {
@@ -2970,6 +3476,24 @@
    "auto": true
   },
   {
+   "texte": "Évaluation fragile. Il faut consolider les bases avant la prochaine évaluation. À revoir en priorité : dire combien de pattes a une araignée et reconnaître des capitales européennes. Pour cette évaluation, deux compétences ne sont pas atteintes : « Travailler seul et de façon responsable » et « S'investir dans son travail, en classe et à la maison ». Enfin, ton estimation de ton nombre de bonnes réponses était bien trop haute : tu as nettement surestimé ce que tu avais réussi.",
+   "scenes": [
+    "c-fiche-retire",
+    "c-que-dit-la-feuille"
+   ],
+   "categorie": "donnée",
+   "auto": true
+  },
+  {
+   "texte": "⛔ Point d'autonomie retiré le 10/10 à 19:12.",
+   "scenes": [
+    "c-fiche-retire",
+    "c-que-dit-la-feuille"
+   ],
+   "categorie": "état",
+   "auto": true
+  },
+  {
    "texte": "🔴 Point d'autonomie retiré le 10/10 à 19:12.",
    "scenes": [
     "c-fiche-retire"
@@ -2990,6 +3514,14 @@
    "scenes": [
     "c-finir-autre-heure",
     "c-terminer"
+   ],
+   "categorie": "état",
+   "auto": true
+  },
+  {
+   "texte": "La séance garde son état exact : la question, le tour, les lectures, les notes provisoires.",
+   "scenes": [
+    "c-finir-autre-heure"
    ],
    "categorie": "état",
    "auto": true
@@ -3018,6 +3550,14 @@
     "scene": "c-finir-autre-heure",
     "place": "Tant qu'elle n'est pas terminée, cette séance ne compte pas comme « QCM précédent » pour les binômes."
    },
+   "auto": true
+  },
+  {
+   "texte": "À l'heure suivante, « 🎯 Pilotage classe » propose « ▶️ Reprendre la séance du 08/10 — question 1, 1er tour ».",
+   "scenes": [
+    "c-finir-autre-heure"
+   ],
+   "categorie": "état",
    "auto": true
   },
   {
@@ -3092,7 +3632,25 @@
    "auto": true
   },
   {
+   "texte": "Exporte ou importe l'ensemble de la base QCM (évaluations, séances, réponses), avec les classes.",
+   "scenes": [
+    "c-importer",
+    "c-purger",
+    "c-sauvegarde"
+   ],
+   "categorie": "état",
+   "auto": true
+  },
+  {
    "texte": "Il remplace tout le QCM : évaluations, séances, réponses.",
+   "scenes": [
+    "c-importer"
+   ],
+   "categorie": "alerte",
+   "auto": true
+  },
+  {
+   "texte": "Le QCM d'aujourd'hui part d'abord à la corbeille, gardé un an : rien n'est perdu.",
    "scenes": [
     "c-importer"
    ],
@@ -3113,6 +3671,16 @@
    "auto": true
   },
   {
+   "texte": "Si la vue tableau ou le pilotage te montrent des séances fantômes (anciennes évaluations qui n'auraient pas dû rester actives), utilise le nettoyage ci-dessous.",
+   "scenes": [
+    "c-importer",
+    "c-purger",
+    "c-sauvegarde"
+   ],
+   "categorie": "état",
+   "auto": true
+  },
+  {
    "texte": "Tout part d'abord à la corbeille, gardé un an. Pense quand même à exporter un snapshot.",
    "scenes": [
     "c-importer",
@@ -3125,6 +3693,16 @@
     "scene": "c-sauvegarde",
     "place": "Tout part d'abord à la corbeille, gardé un an. Pense quand même à exporter un snapshot."
    },
+   "auto": true
+  },
+  {
+   "texte": "mise à la corbeille le 05/10 à 21:12",
+   "scenes": [
+    "c-importer",
+    "c-purger",
+    "c-sauvegarde"
+   ],
+   "categorie": "donnée",
    "auto": true
   },
   {
@@ -3174,6 +3752,22 @@
     "scene": "c-interrompue",
     "place": "La séance garde son état exact et se reprend à une heure suivante, depuis « 🎯 Pilotage classe »."
    },
+   "auto": true
+  },
+  {
+   "texte": "⚠️ Séance interrompue détectée",
+   "scenes": [
+    "c-interrompue"
+   ],
+   "categorie": "donnée",
+   "auto": true
+  },
+  {
+   "texte": "📝 État : question 2, 2e tour (moitiés de droite) ; 36 réponses enregistrées",
+   "scenes": [
+    "c-interrompue"
+   ],
+   "categorie": "état",
    "auto": true
   },
   {
@@ -3235,6 +3829,18 @@
    "auto": true
   },
   {
+   "texte": "Dans l'éditeur, chaque champ s'édite directement : coche les bonnes réponses ; la difficulté et les deux temps se règlent question par question. Une question « 📏 longueur assumée » dépasse la demi-tablette : sa moitié défilera seule, la page ne bouge pas.",
+   "scenes": [
+    "c-mode-emploi"
+   ],
+   "categorie": "explication",
+   "destination": {
+    "mode_emploi": "Préparer une évaluation",
+    "place": "Dans l'éditeur, chaque champ s'édite directement : coche les bonnes réponses ; la difficulté et les deux temps se règlen"
+   },
+   "auto": true
+  },
+  {
    "texte": "Deux élèves par tablette, une moitié chacun. Tu lances depuis « 🎯 Pilotage classe » : la classe, l'évaluation, la durée comptée, les binômes proposés (d'abord les exclusions de MJPC, puis le classement du QCM précédent) ; l'appel ; l'heure de fin. Chaque élève s'identifie avec son code, coche son attestation ligne par ligne.",
    "scenes": [
     "c-mode-emploi"
@@ -3255,6 +3861,26 @@
    "destination": {
     "mode_emploi": "Le soir",
     "place": "Données → Résultats : les notes, les compétences, les feuilles à lire (lecture contestée, « aucun de ces choix », « Non "
+   },
+   "auto": true
+  },
+  {
+   "texte": "La démo",
+   "scenes": [
+    "c-mode-emploi"
+   ],
+   "categorie": "donnée",
+   "auto": true
+  },
+  {
+   "texte": "La démo : rien ne compte. Tu la joues avec la classe, sur les tablettes, comme une vraie : l'identification avec les vrais codes, l'appel, les binômes, les attestations, les questions, la correction, la co-évaluation. Pas de note, pas de compétence, pas de point d'autonomie, rien vers MJPC ; jamais dans « Mes évaluations », ni dans tes Résultats, ni dans le PDF ; jamais « le QCM précédent ». La séance s'efface à « Terminer » ; il reste une ligne dans les séances précédentes.",
+   "scenes": [
+    "c-mode-emploi"
+   ],
+   "categorie": "explication",
+   "destination": {
+    "mode_emploi": "La démo",
+    "place": "La démo : rien ne compte. Tu la joues avec la classe, sur les tablettes, comme une vraie : l'identification avec les vra"
    },
    "auto": true
   },
@@ -3288,6 +3914,14 @@
   },
   {
    "texte": "Le point d'autonomie",
+   "scenes": [
+    "c-mode-emploi"
+   ],
+   "categorie": "donnée",
+   "auto": true
+  },
+  {
+   "texte": "Préparer une évaluation",
    "scenes": [
     "c-mode-emploi"
    ],
@@ -3352,6 +3986,14 @@
    "auto": true
   },
   {
+   "texte": "09/10/2026 10:02 · sur papier · 24 présents, 1 absent (YVON Adam)",
+   "scenes": [
+    "c-papier-grille"
+   ],
+   "categorie": "donnée",
+   "auto": true
+  },
+  {
    "texte": "09/10/2026 10:02 · sur papier · 24 présents, 1 absent (YVON Adam) · ta grille, d'après les feuilles : c'est elle qui fait la note. Un clic sur une case bascule ✓ / ✗.",
    "scenes": [
     "c-papier-grille"
@@ -3368,6 +4010,16 @@
    "texte": "📄 Évaluation d'essai — 3 questions — 3 ESSAI — sur papier",
    "scenes": [
     "c-papier-grille"
+   ],
+   "categorie": "donnée",
+   "auto": true
+  },
+  {
+   "texte": "08/10/2026 10:02 · ✅ terminée · 24 présents, 1 absent (YVON Adam)",
+   "scenes": [
+    "c-papier-lancer",
+    "c-papier-reprendre",
+    "c-rattrapage"
    ],
    "categorie": "donnée",
    "auto": true
@@ -3391,6 +4043,23 @@
     "c-papier-reprendre"
    ],
    "categorie": "état",
+   "auto": true
+  },
+  {
+   "texte": "09/10/2026 15:07 · ✅ terminée · 24 présents, 1 absent (YVON Adam) · 5 feuilles à lire",
+   "scenes": [
+    "c-papier-reprendre"
+   ],
+   "categorie": "état",
+   "auto": true
+  },
+  {
+   "texte": "↳ pas encore « QCM précédent »",
+   "scenes": [
+    "c-papier-reprendre",
+    "c-reprendre"
+   ],
+   "categorie": "donnée",
    "auto": true
   },
   {
@@ -3517,6 +4186,14 @@
     "c-pret"
    ],
    "categorie": "état",
+   "auto": true
+  },
+  {
+   "texte": "Leurs séances gardent leurs notes.",
+   "scenes": [
+    "c-purger"
+   ],
+   "categorie": "alerte",
    "auto": true
   },
   {
@@ -3648,6 +4325,22 @@
    "auto": true
   },
   {
+   "texte": "09/10/2026 15:07 · ✅ terminée · 24 présents, 1 absent (YVON Adam) · copies rendues le 10/10",
+   "scenes": [
+    "c-rattrapage"
+   ],
+   "categorie": "état",
+   "auto": true
+  },
+  {
+   "texte": "Pas encore noté à cette évaluation : YVON Adam (absent le 08/10).",
+   "scenes": [
+    "c-rattrapage"
+   ],
+   "categorie": "état",
+   "auto": true
+  },
+  {
    "texte": "Pas encore noté à cette évaluation : YVON Adam (absent le 08/10). Seul, il fait lui-même la lecture de sa feuille à la correction ; il n'a pas de co-évaluation.",
    "scenes": [
     "c-rattrapage"
@@ -3658,6 +4351,14 @@
     "scene": "c-rattrapage",
     "place": "Seul, il fait lui-même la lecture de sa feuille à la correction ; il n'a pas de co-évaluation."
    },
+   "auto": true
+  },
+  {
+   "texte": "🔁 Rattrapage. 3 ESSAI a déjà passé cette évaluation le 08/10.",
+   "scenes": [
+    "c-rattrapage"
+   ],
+   "categorie": "état",
    "auto": true
   },
   {
@@ -3719,19 +4420,25 @@
    "auto": true
   },
   {
+   "texte": "Vu quand tu as terminé la séance. Ce texte s'affiche quel que soit le résultat : il parle du travail fait, jamais de la réussite.",
+   "scenes": [
+    "c-reglages",
+    "c-reglages-prompt",
+    "c-reglages-prompt-modifier"
+   ],
+   "categorie": "état",
+   "auto": true
+  },
+  {
    "texte": "Éditeur des messages élève. Ces phrases s'affichent sur les tablettes de tes élèves. Modifie-les librement : un champ laissé vide revient au texte d'origine.",
    "scenes": [
     "c-reglages",
     "c-reglages-prompt",
     "c-reglages-prompt-modifier"
    ],
-   "categorie": "explication",
-   "destination": {
-    "infobulle": "💬 Ce que lisent les élèves",
-    "scene": "c-reglages",
-    "place": "Ces phrases s'affichent sur les tablettes de tes élèves. Un champ laissé vide revient au texte d'origine."
-   },
-   "auto": true
+   "categorie": "état",
+   "auto": false,
+   "existant": "evaluation-qcm.html, EditeurTextesQCM (l. 5819) : gardé tel quel"
   },
   {
    "texte": "Évaluations QCM — version de la livraison · socle MJPC-CORE",
@@ -3784,6 +4491,14 @@
    "auto": true
   },
   {
+   "texte": "Chapitre choisi : 3e · Chapitre 1 — Poésie et peinture au XIXe siècle.",
+   "scenes": [
+    "c-reglages-prompt"
+   ],
+   "categorie": "état",
+   "auto": true
+  },
+  {
    "texte": "Chapitre choisi : 3e · Chapitre 1 — Poésie et peinture au XIXe siècle. Copie ce prompt et colle-le dans l'instance de création d'éval : elle te posera ses questions, puis te rendra le JSON.",
    "scenes": [
     "c-reglages-prompt"
@@ -3805,6 +4520,14 @@
    "auto": true
   },
   {
+   "texte": "Tu vas m'aider à écrire une évaluation QCM pour ma classe. Elle se passe dans mon application, en classe, deux élèves par tablette. Voici comment elle se déroule, puis les règles à respecter strictement. LE CHAPITRE 3e · Chapitre 1 — Poésie et peinture au XIXe siècle (identifiant : 3e-ch1) Ses compétences, les seules que tu peux utiliser : - c4-lire-04 (majeure) : Élaborer une interprétation de textes littéraires — pour l'élève : Interpréter un texte littéraire - c4-lire-01 (mineure) : Contrôler sa compréhension, devenir un lecteur autonome — pour l'élève : Vérifier que l'on a bien compris ce qu'on lit - c4-lire-02 (mineure) : Lire des textes non littéraires, des images et des documents composites (y compris numériques) — pour l'élève : Lire des documents, des images et des pages numériques - c4-lire-03 (mineure) : Lire des œuvres littéraires et fréquenter des œuvres d'art — pour l'élève : Lire des œuvres et découvrir des œuvres d'art - c4-culture-01 (mineure) : Mobiliser des références culturelles pour interpréter les textes et les créations artistiques et littéraires et pour enrichir son expression personnelle — pour l'élève : Se servir de sa culture pour comprendre les textes et les œuvres - c4-culture-02 (mineure) : Établir des liens entre des créations littéraires et artistiques issues de cultures et d'époques diverses — pour l'élève : Relier des œuvres d'époques et de cultures différentes - c4-langue-01 (mineure) : Consolider l'orthographe lexicale et grammaticale — pour l'élève : Écrire les mots et les accords sans fautes - c4-langue-04 (mineure) : Construire les notions permettant l'analyse et l'élaboration des textes et des discours — pour l'élève : Connaître la grammaire pour analyser et construire des phrases - c4-ecrire-02 (mineure) : Adopter des stratégies et des procédures d'écriture efficaces — pour l'élève : Préparer, écrire et relire son texte - c4-ecrire-03 (mineure) : Exploiter des lectures pour enrichir son écrit — pour l'élève : Se servir de ses lectures pour mieux écrire - c4-oral-02 (mineure) : S'exprimer de façon maîtrisée en s'adressant à un auditoire — pour l'élève : Parler devant les autres de façon claire - c4-oral-04 (mineure) : Exploiter les ressources expressives et créatives de la parole — pour l'élève : Jouer avec sa voix : lire, réciter, mettre en scène COMMENT SE PASSE UNE QUESTION EN CLASSE 1. Réflexion : l'élève voit l'énoncé seul, sans les choix, et écrit sa réponse en entier, à la main, sur sa feuille. 2. Réponse : les choix apparaissent ; chacun son tour, l'élève pose son stylo, relit sa feuille et clique sur le ou les choix qui disent la même chose que ce qu'il a écrit. C'est sa feuille qui fait foi pour la note. 3. Correction, après toutes les questions : l'élève recopie sur la tablette ce que dit sa feuille, puis je révèle la réponse et je commente. La tablette ajoute toujours d'elle-même la case « Ma feuille ne dit aucun de ces choix ». LES DURÉES Pour chaque question : la réflexion, puis deux tours, chacun fait de 3 secondes de décompte, du temps de réponse et de 5 secondes où l'élève dit si sa feuille dit la même chose que son clic ; puis 15 secondes avant la question suivante. Pour la séance : 5 minutes d'installation et de consignes, 3 minutes pour l'estimation et la seconde attestation, 1 minute de correction par question, 2 minutes pour la co-évaluation et le bilan. La séance tient en 45 minutes utiles, questions et correction comprises. CE QUE TU FAIS, DANS CET ORDRE 1. Pose-moi d'abord ces questions, numérotées, et attends mes réponses : 1. Donne-moi le cours sur lequel porte l'évaluation (la leçon, les fiches, les séances) : les bonnes réponses en reprendront les mots exacts. 2. Combien de questions ? 3. Combien à réponses multiples ? 4. Quel équilibre de difficultés (facile, standard, approfondi, expert) ? 5. Tout ou rien, ou partiel ? 6. Veux-tu une question bonus ? 2. Propose-moi les questions, par petits groupes. Pour chacune : l'énoncé, les choix, la ou les bonnes réponses, la difficulté réelle, la ou les compétences, ce qu'elle vérifie, et la réponse que l'élève doit écrire sur sa feuille, en quelques mots. 3. Pour les temps, tu ne devines jamais. Pour chaque question, demande-moi le temps de réflexion et le temps de réponse. Appuie-toi sur la vraie difficulté de la question et sur la longueur de la réponse à écrire. Si un temps que je te donne te paraît trop court pour écrire cette réponse, dis-le : « La question 7 ne rentre pas : … ». Si tu ne sais pas, demande-moi. 4. Quand tous les temps sont donnés, calcule la durée de la séance avec les durées ci-dessus. Écris : « Ça rentre dans 45 minutes (total : … min) » ou « Ça ne rentre pas : il manque … minutes ». Si ça ne rentre pas, propose une solution sans l'appliquer (une question à retirer, des choix à raccourcir, la question bonus comme fusible) et attends mon accord. 5. Tout au long de la discussion, tiens un cadrage mémorisé : à chaque étape, redonne en quelques lignes ce qui est décidé (questions validées, temps, compétences). Pose toujours tes questions numérotées. Le JSON est le résultat de notre discussion : je ne dois jamais avoir à le reprendre. 6. Si je te colle un message de mon application qui commence par « Corrige ton JSON », corrige seulement ce qu'il cite et renvoie le JSON complet. RÈGLES POUR CHAQUE QUESTION 1. L'énoncé est autonome : l'élève doit pouvoir répondre de mémoire, sans voir les choix. Jamais « Laquelle des propositions suivantes… ». 2. L'énoncé dit la forme attendue de la réponse, par exemple « (le nom de la figure) » ou « (en un mot) », mais jamais le nombre de bonnes réponses. 3. On doit pouvoir répondre en quelques mots sur la feuille. Pour une question « Sur ta copie, écris une phrase… », la feuille porte la phrase et, en dessous, la réponse courte : c'est cette réponse courte que l'élève rapproche des choix. 4. Chaque choix est écrit comme l'élève l'écrirait. La bonne réponse reprend les mots exacts du cours. Les autres choix sont plausibles, mais clairement faux pour qui sait son cours. Les choix sont homogènes en longueur et en construction. 5. Jamais de choix « aucune de ces réponses » : la tablette l'ajoute d'elle-même. 6. Il n'y a pas de lettres : ne désigne jamais un choix par une lettre, ni dans l'énoncé, ni dans l'explication. Varie la place de la bonne réponse d'une question à l'autre. 7. Une question vaut au plus 1 point. En tout ou rien, elle vaut 1 si la réponse est exacte, sinon 0. En partiel, chaque bonne case cochée rapporte une part du point (1 divisé par le nombre de bonnes cases), chaque mauvaise case cochée en retire autant, sans descendre sous 0. 8. La difficulté dit la vraie difficulté de la question, rien d'autre : elle ne donne ni les points ni le temps. 9. Une ou deux compétences par question, prises seulement dans la liste du chapitre. Chaque compétence que tu utilises porte sur au moins 3 questions ; si ce n'est pas possible, dis-le-moi. 10. « Ce qu'elle vérifie » : une courte phrase à l'infinitif, dans les mots d'un élève, qui se lit après « À revoir en priorité : » comme après « Bravo, tu sais » ; par exemple « trouver l'antécédent d'un pronom relatif ». Jamais l'intitulé d'une compétence, jamais de jargon. 11. L'explication est pour l'élève, à la correction : 1 à 3 phrases claires, qui justifient la bonne réponse ; tu peux dire pourquoi un autre choix est faux. 12. La longueur : chaque question doit tenir sur une demi-tablette, choix compris. Compte les caractères, espaces comprises. L'énoncé fait 300 caractères au plus. Les choix d'une question ont tous à peu près la même longueur, et aucun ne dépasse la limite. Avec 4 choix ou moins : 165 caractères par choix si l'énoncé fait 60 caractères ou moins, 155 caractères par choix jusqu'à 120, 130 caractères par choix jusqu'à 180, 120 caractères par choix jusqu'à 200, 80 caractères par choix jusqu'à 280, 70 caractères par choix jusqu'à 300. Avec 5 choix : 80 caractères par choix si l'énoncé fait 60 caractères ou moins, 75 caractères par choix jusqu'à 120, 25 caractères par choix jusqu'à 260 ; au-delà de 260 caractères d'énoncé, pas de 5 choix. Avec 6 choix : 70 caractères par choix si l'énoncé fait 120 caractères ou moins, 25 caractères par choix jusqu'à 260 ; au-delà de 260 caractères d'énoncé, pas de 6 choix. Si une question dépasse et que je te dis que j'assume sa longueur, marque-la \"longueurAssumee\": true. 13. La question bonus, si je t'en demande une, porte \"bonus\": true : elle compte dans les points gagnés, pas dans le total. LE FORMAT { \"titre\": \"Titre de l'évaluation\", \"chapitre\": \"identifiant du chapitre, celui donné plus haut\", \"mode\": \"strict\", \"questions\": [ { \"enonce\": \"Énoncé autonome (forme attendue de la réponse)\", \"choix\": [\"…\", \"…\", \"…\", \"…\"], \"bonnes\": [0], \"niveau\": \"standard\", \"reflexion\": 40, \"reponse\": 15, \"competences\": [\"code de la compétence\"], \"verifie\": \"ce qu'elle vérifie, à l'infinitif\", \"explication\": \"1 à 3 phrases pour l'élève.\", \"bonus\": false, \"longueurAssumee\": false } ] } \"mode\" vaut \"strict\" (tout ou rien) ou \"partiel\". \"bonnes\" donne la place des bonnes réponses, en comptant à partir de 0. \"reflexion\" et \"reponse\" sont en secondes, ceux que je t'ai donnés. \"niveau\" prend l'une de ces valeurs : - \"facile\" (Facile) - \"standard\" (Standard) - \"approfondi\" (Approfondi) - \"expert\" (Expert)",
+   "scenes": [
+    "c-reglages-prompt"
+   ],
+   "categorie": "donnée",
+   "auto": true
+  },
+  {
    "texte": "Les jetons entre doubles accolades sont remplis par l'app à chaque copie : le chapitre, ses compétences, les difficultés, les durées et les limites de longueur.",
    "scenes": [
     "c-reglages-prompt-modifier"
@@ -3822,7 +4545,15 @@
    "scenes": [
     "c-reglages-prompt-modifier"
    ],
-   "categorie": "état",
+   "categorie": "donnée",
+   "auto": true
+  },
+  {
+   "texte": "Chaque élève voit, dans « Mes évaluations », sa note définitive, son bilan et le « 📝 Bilan » de sa fiche (validé, sinon celui de l'app) ; le PDF « notes et compétences » s'ouvre.",
+   "scenes": [
+    "c-rendre"
+   ],
+   "categorie": "alerte",
    "auto": true
   },
   {
@@ -3855,9 +4586,25 @@
    "auto": true
   },
   {
+   "texte": "✔ Les 7 feuilles à lire sont lues, et chaque présent a eu la lecture de sa feuille.",
+   "scenes": [
+    "c-rendre"
+   ],
+   "categorie": "état",
+   "auto": true
+  },
+  {
    "texte": "📤 Rendre les copies ?",
    "scenes": [
     "c-rendre"
+   ],
+   "categorie": "donnée",
+   "auto": true
+  },
+  {
+   "texte": "08/10/2026 10:02 · en pause à la question 1, 1er tour · 24 présents",
+   "scenes": [
+    "c-reprendre"
    ],
    "categorie": "donnée",
    "auto": true
@@ -3872,6 +4619,14 @@
   },
   {
    "texte": "08/10/2026 10:02 · 24 présents, 1 absent (YVON Adam) · questions écartées ou annulées : aucune · 5 feuilles à lire",
+   "scenes": [
+    "c-resultats"
+   ],
+   "categorie": "état",
+   "auto": true
+  },
+  {
+   "texte": "08/10/2026 10:02 · 24 présents, 1 absent (YVON Adam) · questions écartées ou annulées : aucune · 7 feuilles à lire",
    "scenes": [
     "c-resultats"
    ],
@@ -3911,6 +4666,30 @@
    "auto": true
   },
   {
+   "texte": "Q3 : a dit que sa feuille disait son clic, 6 ; Théo y a lu 8",
+   "scenes": [
+    "c-resultats"
+   ],
+   "categorie": "état",
+   "auto": true
+  },
+  {
+   "texte": "Q3 : aucun de ces choix",
+   "scenes": [
+    "c-resultats"
+   ],
+   "categorie": "donnée",
+   "auto": true
+  },
+  {
+   "texte": "Q3 : 🤔 pense qu'Emma a peut-être mal lu sa feuille",
+   "scenes": [
+    "c-resultats"
+   ],
+   "categorie": "état",
+   "auto": true
+  },
+  {
    "texte": "À lire sur la feuille",
    "scenes": [
     "c-resultats",
@@ -3929,7 +4708,7 @@
    "auto": true
   },
   {
-   "texte": "📊 Évaluation d'essai — 3 questions — 3 ESSAI",
+   "texte": "✓ juste d'après la feuille · ✓ orange : Trouvée au dernier moment · ✗ faux · ∅ « aucun de ces choix » · ⛔ : point d'autonomie retiré · ⚠️ Annulée ou ❌ Écartée : la question garde sa marque en tête de colonne",
    "scenes": [
     "c-resultats",
     "c-resultats-rendues"
@@ -3938,7 +4717,7 @@
    "auto": true
   },
   {
-   "texte": "🤝 Autonomie",
+   "texte": "📊 Évaluation d'essai — 3 questions — 3 ESSAI",
    "scenes": [
     "c-resultats",
     "c-resultats-rendues"
@@ -3987,6 +4766,30 @@
    "auto": true
   },
   {
+   "texte": "Q3 : a dit que sa feuille disait son clic, 6 ; Théo y a lu 8 · Corrigé d'après sa feuille · ✔ lue",
+   "scenes": [
+    "c-resultats-rendues"
+   ],
+   "categorie": "état",
+   "auto": true
+  },
+  {
+   "texte": "Q3 : aucun de ces choix · ✔ lue",
+   "scenes": [
+    "c-resultats-rendues"
+   ],
+   "categorie": "donnée",
+   "auto": true
+  },
+  {
+   "texte": "Q3 : 🤔 pense qu'Emma a peut-être mal lu sa feuille · ✔ lue",
+   "scenes": [
+    "c-resultats-rendues"
+   ],
+   "categorie": "état",
+   "auto": true
+  },
+  {
    "texte": "Les élèves partis pendant cette séance",
    "scenes": [
     "c-retour"
@@ -4013,6 +4816,14 @@
     "scene": "c-rouvrir-seance",
     "place": "Ses copies rendues sont masquées aux élèves jusqu'au prochain « Rendre les copies »."
    },
+   "auto": true
+  },
+  {
+   "texte": "Ses copies, rendues le 26/09, seront masquées aux élèves jusqu'au prochain « Rendre les copies ».",
+   "scenes": [
+    "c-rouvrir-seance"
+   ],
+   "categorie": "alerte",
    "auto": true
   },
   {
@@ -4103,7 +4914,31 @@
    "auto": true
   },
   {
+   "texte": "3 ESSAI — 09/10/2026 15:07 · ✅ terminée · 24 présents, 1 absent (YVON Adam) · 📌 5 feuilles à lire",
+   "scenes": [
+    "c-seances"
+   ],
+   "categorie": "état",
+   "auto": true
+  },
+  {
    "texte": "Phase : réponse · Q 1 · 1er tour · fin de l'heure 10:57",
+   "scenes": [
+    "c-sessions"
+   ],
+   "categorie": "donnée",
+   "auto": true
+  },
+  {
+   "texte": "Voici toutes les séances qui sont actuellement actives quelque part. Tu peux aller au pilotage de chacune ou la terminer si elle n'a plus de raison d'être active.",
+   "scenes": [
+    "c-sessions"
+   ],
+   "categorie": "état",
+   "auto": true
+  },
+  {
+   "texte": "🔴 Séances actuellement en cours",
    "scenes": [
     "c-sessions"
    ],
@@ -4121,6 +4956,14 @@
     "scene": "c-sessions",
     "place": "La séance est close, et l'archive s'écrit avec les notes telles qu'elles sont, quelle que soit la phase."
    },
+   "auto": true
+  },
+  {
+   "texte": "La séance est close, et l'archive s'écrit avec les notes telles qu'elles sont, quelle que soit la phase.",
+   "scenes": [
+    "c-terminer"
+   ],
+   "categorie": "alerte",
    "auto": true
   },
   {
@@ -4153,7 +4996,23 @@
    "auto": true
   },
   {
+   "texte": "🛑 Terminer la séance ?",
+   "scenes": [
+    "c-terminer"
+   ],
+   "categorie": "donnée",
+   "auto": true
+  },
+  {
    "texte": "Ce que montrent ses deux moitiés, maintenant : 1er tour de la question 1.",
+   "scenes": [
+    "c-voir-tablette"
+   ],
+   "categorie": "état",
+   "auto": true
+  },
+  {
+   "texte": "Ce que montrent ses deux moitiés, maintenant : question 1, 1er tour.",
    "scenes": [
     "c-voir-tablette"
    ],
@@ -4201,6 +5060,15 @@
    ],
    "categorie": "donnée",
    "existant": "texte de la section, gardé tel quel",
+   "auto": true
+  },
+  {
+   "texte": "🚫 Les exclusions de la classe : 2 exclusions dans 3 ESSAI.",
+   "scenes": [
+    "m-classe-exclusions",
+    "m-exclusion-refusee"
+   ],
+   "categorie": "état",
    "auto": true
   },
   {
@@ -4314,6 +5182,14 @@
    "auto": true
   },
   {
+   "texte": "🚫 Refusé : pas d'exclusion entre Inès et Jade : ESNAULT Inès a déjà 3 exclusions, le plus que permet MJPC. Retire d'abord une exclusion d'ESNAULT Inès.",
+   "scenes": [
+    "m-exclusion-refusee"
+   ],
+   "categorie": "alerte",
+   "auto": true
+  },
+  {
    "texte": "Ce que les apps liront : dictée aménagée non, sexe M — jamais la fiche.",
    "scenes": [
     "m-fiche-eleve"
@@ -4345,6 +5221,18 @@
   },
   {
    "texte": "Français — cycle 4",
+   "scenes": [
+    "m-taxonomie-competence",
+    "m-taxonomie-competences",
+    "m-taxonomie-domaine",
+    "m-taxonomie-editeur",
+    "m-taxonomie-notion"
+   ],
+   "categorie": "donnée",
+   "auto": true
+  },
+  {
+   "texte": "Les 28 compétences du référentiel.",
    "scenes": [
     "m-taxonomie-competence",
     "m-taxonomie-competences",
@@ -4452,6 +5340,15 @@
    "auto": true
   },
   {
+   "texte": "D'après la feuille : 8 / 24 justes · ✓ Trouvées au dernier moment : 2",
+   "scenes": [
+    "p-autonomie",
+    "p-corr-apres"
+   ],
+   "categorie": "état",
+   "auto": true
+  },
+  {
    "texte": "Phase : correction — Q2 (1re sur 3)",
    "scenes": [
     "p-autonomie",
@@ -4482,6 +5379,14 @@
    "auto": true
   },
   {
+   "texte": "État actuel : Q2 fausse d'après sa feuille · point d'autonomie gardé.",
+   "scenes": [
+    "p-autonomie"
+   ],
+   "categorie": "état",
+   "auto": true
+  },
+  {
    "texte": "État actuel : Q2 juste d'après sa feuille · point d'autonomie gardé.",
    "scenes": [
     "p-autonomie"
@@ -4491,6 +5396,15 @@
   },
   {
    "texte": "✓ juste · ⛔ Dernier moment · ✗ faux · ⚠️ À relire ce soir",
+   "scenes": [
+    "p-autonomie",
+    "p-corr-apres"
+   ],
+   "categorie": "donnée",
+   "auto": true
+  },
+  {
+   "texte": "✓ juste · ✓ orange : Trouvée au dernier moment · ✗ faux · ⚠️ À relire ce soir · ⛔ point d'autonomie retiré",
    "scenes": [
     "p-autonomie",
     "p-corr-apres"
@@ -4643,7 +5557,7 @@
    "scenes": [
     "p-reponse"
    ],
-   "categorie": "état",
+   "categorie": "donnée",
    "auto": true
   },
   {
@@ -4812,6 +5726,19 @@
     "x610-autonomie-michel",
     "x610-feuille",
     "x610-tranche"
+   ],
+   "categorie": "état",
+   "auto": true
+  },
+  {
+   "texte": "👉 Avant de connaître la réponse, Michel disait C, E : ni ce que Julien a lu, ni ce que Michel dit maintenant.",
+   "scenes": [
+    "x610-8-console-alerte",
+    "x610-9-telephone-alerte",
+    "x610-autonomie-deux",
+    "x610-autonomie-julien",
+    "x610-autonomie-michel",
+    "x610-feuille"
    ],
    "categorie": "état",
    "auto": true
@@ -5055,6 +5982,14 @@
    "auto": true
   },
   {
+   "texte": "Séance : pas encore lancée · énoncé non conservé",
+   "scenes": [
+    "x620-1-mode-test-ouverture"
+   ],
+   "categorie": "donnée",
+   "auto": true
+  },
+  {
    "texte": "▸ Voir tous les codes du bac à sable",
    "scenes": [
     "x620-1-mode-test-ouverture",
@@ -5118,6 +6053,15 @@
    "auto": true
   },
   {
+   "texte": "Séance : en_cours · énoncé non conservé",
+   "scenes": [
+    "x620-2-mode-test-reflexion",
+    "x620-3-mode-test-en-grand"
+   ],
+   "categorie": "donnée",
+   "auto": true
+  },
+  {
    "texte": "✓ Bonne réponse : Parce qu'elle a huit pattes",
    "scenes": [
     "x620-2-mode-test-reflexion",
@@ -5160,6 +6104,14 @@
    "auto": true
   },
   {
+   "texte": "10 questions · 10 points",
+   "scenes": [
+    "x627-3-editeur"
+   ],
+   "categorie": "donnée",
+   "auto": true
+  },
+  {
    "texte": "11 questions · 10 points + 1 bonus",
    "scenes": [
     "x627-3-editeur"
@@ -5173,6 +6125,14 @@
     "x627-3-editeur"
    ],
    "categorie": "donnée",
+   "auto": true
+  },
+  {
+   "texte": "Choisis d'abord le chapitre : il donne les compétences permises.",
+   "scenes": [
+    "x627-3-editeur"
+   ],
+   "categorie": "alerte",
    "auto": true
   },
   {
@@ -5264,6 +6224,14 @@
    "auto": true
   },
   {
+   "texte": "{ \"titre\": \"3e Chapitre 1 — Poésie et peinture au XIXème siècle · Interro de cours (séance 3)\", \"mode\": \"strict\", \"questions\": [ { \"enonce\": \"Quel mouvement du XIXe siècle met en avant les sentiments personnels et la nature sauvage ?\", \"choix\": [ \"Le romantisme\", \"Le classicisme\", \"Le Parnasse\", \"Le symbolisme\" ], \"bonnes\": [ 0 ], \"niveau\": \"facile\", \"explication\": \"Le romantisme met en avant les sentiments du poète et les paysages qui les reflètent, comme dans les tableaux étudiés en début de chapitre.\" }, { \"enonce\": \"De quoi un sonnet classique est-il composé ?\", \"choix\": [ \"Deux quatrains\", \"Deux tercets\", \"Trois quintils\", \"D'alexandrins\", \"De vers libres\" ], \"bonnes\": [ 0, 1, 3 ], \"niveau\": \"standard\", \"explication\": \"Le sonnet classique compte deux quatrains puis deux tercets, écrits en alexandrins (vers de 12 syllabes). Le vers libre, lui, ne suit aucune règle fixe.\" }, { \"enonce\": \"Quel registre exprime les sentiments personnels du poète au moyen de rythmes et d'images ?\", \"choix\": [ \"Le registre tragique\", \"Le registre lyrique\", \"Le registre comique\", \"Le registre satirique\" ], \"bonnes\": [ 1 ], \"niveau\": \"standard\", \"explication\": \"Le registre lyrique vient du mot « lyre », l'instrument qui accompagnait autrefois la poésie chantée. Il communique au lecteur l'émotion de l'auteur.\" }, { \"enonce\": \"Dans le vers « Souvent, pour s'amuser, les hommes d'équipage », quelle figure sonore entend-on ?\", \"choix\": [ \"Une anaphore\", \"Une assonance en [a]\", \"Une allitération en [m]\", \"Une allitération en [s]\" ], \"bonnes\": [ 3 ], \"niveau\": \"approfondi\", \"explication\": \"Le son [s] revient dans « souvent », « s'amuser » et « équipage » : c'est une allitération, la répétition d'un son de consonne. L'assonance répète un son de voyelle.\" }, { \"enonce\": \"Dans le vers « Le navire glissant sur les gouffres amers », le e final de « navire » se prononce-t-il, et pourquoi ?\", \"choix\": [ \"Non, car il est en fin de vers\", \"Oui, car le mot suivant commence par une voyelle\", \"Oui, car le mot suivant commence par une consonne\", \"Non, car le mot suivant commence par une consonne\" ], \"bonnes\": [ 2 ], \"niveau\": \"approfondi\", \"explication\": \"En milieu de vers, le e compte comme une syllabe quand le mot suivant commence par une consonne : na-vi-re-glis-sant. C'est ce qui donne les 12 syllabes de l'alexandrin.\" }, { \"enonce\": \"« La mer, ce grand miroir, brille de mille feux » : quelle figure de style rapproche ici la mer et le miroir ?\", \"choix\": [ \"Une comparaison\", \"Une personnification\", \"Une métaphore\", \"Une périphrase\" ], \"bonnes\": [ 2 ], \"niveau\": \"approfondi\", \"explication\": \"La mer est rapprochée du miroir sans outil de comparaison (« comme », « tel que ») : c'est une métaphore. Avec un outil, ce serait une comparaison.\" }, { \"enonce\": \"Pourquoi dit-on que Baudelaire est un poète inclassable ?\", \"choix\": [ \"Il emprunte au romantisme et au Parnasse sans appartenir à un seul mouvement\", \"Il refuse d'écrire des sonnets\", \"Il écrit aussi bien en vers réguliers qu'en poèmes en prose\", \"Il n'écrit que des vers libres\" ], \"bonnes\": [ 0, 2 ], \"niveau\": \"approfondi\", \"explication\": \"Baudelaire hérite des règles (il écrit des sonnets) et s'en libère (il invente le poème en prose) : il traverse les mouvements sans se laisser enfermer dans un seul.\" }, { \"enonce\": \"Quelles sont les dispositions régulières des rimes dans la poésie classique ?\", \"choix\": [ \"Rimes parallèles\", \"Rimes croisées\", \"Rimes plates\", \"Rimes circulaires\", \"Rimes embrassées\" ], \"bonnes\": [ 1, 2, 4 ], \"niveau\": \"standard\", \"explication\": \"Les trois dispositions régulières sont les rimes plates (AABB), croisées (ABAB) et embrassées (ABBA). « Parallèles » et « circulaires » n'existent pas.\" }, { \"enonce\": \"Dans les vers « Laissent piteusement leurs grandes ailes blanches / Comme des avirons traîner à côté d'eux », la phrase continue d'un vers à l'autre. Comment s'appelle ce procédé ?\", \"choix\": [ \"Une césure\", \"Un enjambement\", \"Une assonance\", \"Une gradation\" ], \"bonnes\": [ 1 ], \"niveau\": \"approfondi\", \"explication\": \"Quand une phrase commencée dans un vers se termine dans le suivant, c'est un enjambement. La césure, elle, est la pause au milieu de l'alexandrin.\" }, { \"enonce\": \"BONUS — Un poème de Baudelaire ne comporte ni vers ni rimes. Quel est le type de ce poème, et que montre-t-il sur les règles de la poésie ?\", \"choix\": [ \"C'est un sonnet irrégulier\", \"C'est un poème en prose\", \"Ce texte n'est pas de la poésie\", \"La poésie peut exister sans les règles de la versification\" ], \"bonnes\": [ 1, 3 ], \"niveau\": \"expert\", \"explication\": \"Sans vers ni rimes, la poésie reste possible : rythme, images et sonorités suffisent. C'est le poème en prose, la grande liberté prise par Baudelaire avec les règles classiques.\" } ] }",
+   "scenes": [
+    "x627-3-editeur"
+   ],
+   "categorie": "donnée",
+   "auto": true
+  },
+  {
    "texte": "Édite directement chaque champ. Coche les bonnes réponses. Le niveau dit la difficulté ; les deux temps se règlent pour chaque question.",
    "scenes": [
     "x627-3-editeur"
@@ -5277,6 +6245,14 @@
   },
   {
    "texte": "⚠️ Il reste à compléter : Q10, les deux temps, au moins une compétence et ce qu'elle vérifie.",
+   "scenes": [
+    "x627-3-editeur"
+   ],
+   "categorie": "alerte",
+   "auto": true
+  },
+  {
+   "texte": "⚠️ Il reste à compléter : le chapitre, les deux temps de chaque question, les compétences et ce que chaque question vérifie.",
    "scenes": [
     "x627-3-editeur"
    ],
@@ -5350,6 +6326,16 @@
    ],
    "categorie": "état",
    "auto": true
+  },
+  {
+   "texte": "📱 Sur les tablettes, avant la correction :",
+   "scenes": [
+    "p-corr-avant",
+    "p-corr-apres",
+    "p-autonomie"
+   ],
+   "categorie": "donnée",
+   "auto": false
   }
  ],
  "motifs": [
@@ -5367,6 +6353,16 @@
    "motif": "^(✓ prêt · \\d\\d:\\d\\d|attestation \\d/\\d|🚪 parti à \\d\\d:\\d\\d)$",
    "categorie": "état",
    "pourquoi": "l'état d'une moitié de tablette"
+  },
+  {
+   "motif": "^Tu vas m'aider à écrire une évaluation QCM pour ma classe\\.",
+   "categorie": "donnée",
+   "pourquoi": "le prompt de création d'éval (Réglages), rempli par l'app : son texte vient du sas (MANDATS/PROMPT-QCM-CREATION), sa ligne 3 corrigée (relecteur n°248)"
+  },
+  {
+   "motif": "^[0-9][^ ]* [A-Z]+ — \\d\\d/\\d\\d/\\d{4} \\d\\d:\\d\\d · ",
+   "categorie": "état",
+   "pourquoi": "la ligne d'une séance dans « 📊 Résultats » : la classe, la date, l'état, les présents, les feuilles"
   }
  ]
 }

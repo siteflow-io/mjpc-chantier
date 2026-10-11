@@ -211,7 +211,7 @@ function PilotCorrection(qi, revele, opts){
     : h("button", {className:"btn btn-or", "data-va":opts.revelerVers || "t-corr-q2-apres", title:"Montre la bonne réponse et l'explication sur toutes les tablettes et au tableau. Commente la question après, jamais avant."}, "💡 Révéler");
   return Console("pilotage", "pilot", h("div", {className:"card"},
     TitreCarte(h(F, null, "📝 Correction — " + EV.titre + " — " + CLASSE, InfoI("Pour chaque question, chacun lit d'abord la feuille de son voisin et clique ce qu'elle dit, dans la moitié du voisin. « 💡 Révéler » s'ouvre quand tous les présents l'ont fait. Tu commentes la question après la révélation, jamais avant : sinon, ils cliqueraient ce que tu dis. Les questions vont de la plus ratée à la mieux réussie. Un clic sur un nom agit sur l'élève.")),
-      [h("button", {key:0, className:"btn btn-ghost btn-sm"}, "🚫 Départ d'un élève"), h("button", {key:5, className:"btn btn-ghost btn-sm"}, "⏸️ Finir à une autre heure"), h("button", {key:1, className:"btn btn-rouge btn-sm"}, "🛑 Terminer la session")]),
+      [h("button", {key:0, className:"btn btn-ghost btn-sm"}, "🚫 Départ d'un élève"), h("button", {key:5, className:"btn btn-ghost btn-sm"}, "⏸️ Finir à une autre heure"), h("button", {key:1, className:"btn btn-rouge btn-sm"}, "🛑 Terminer la séance")]),
     h("div", {className:"pilot-status correction", title:"Position dans l'ordre de correction (trié par taux d'erreur décroissant). Q" + (qi+1) + " est la " + (pos+1) + "e question révélée."}, "Question " + (pos+1) + " / 3 — Q" + (qi+1) + (revele ? " · révélée" : " · lecture de la feuille du voisin")),
     h("div", {className:"corr-grid"},
       h("div", null,
@@ -246,7 +246,7 @@ function PilotAttest2(){
   var etat = function(p){ return enCours[p] ? {cls:"m-attest", st:"attestation " + enCours[p]} : {cls:"m-pret", st:"✓ prêt · 10:3" + (p.length % 5 + 1)}; };
   return Console("pilotage", "pilot", h("div", {className:"card"},
     TitreCarte(h(F, null, "📝 Correction — " + EV.titre + " — " + CLASSE, InfoI("Avant la correction, chaque moitié montre la seconde attestation, une coche par ligne. La correction commence quand tous les présents l'ont cochée en entier, comme au début.")),
-      [h("button", {key:0, className:"btn btn-ghost btn-sm"}, "🚫 Départ d'un élève"), h("button", {key:5, className:"btn btn-ghost btn-sm"}, "⏸️ Finir à une autre heure"), h("button", {key:1, className:"btn btn-rouge btn-sm"}, "🛑 Terminer la session")]),
+      [h("button", {key:0, className:"btn btn-ghost btn-sm"}, "🚫 Départ d'un élève"), h("button", {key:5, className:"btn btn-ghost btn-sm"}, "⏸️ Finir à une autre heure"), h("button", {key:1, className:"btn btn-rouge btn-sm"}, "🛑 Terminer la séance")]),
     h("div", {className:"pilot-status correction"}, "✍️ Seconde attestation — 20 / 24 prêts"),
     h("div", {className:"corr-grid"},
       h("div", null,
@@ -267,7 +267,7 @@ function PilotEstimation(){
   var distrib = [["vert", 6], ["bleu", 9], ["orange", 5], ["rouge", 2]];
   return Console("pilotage", "pilot", h("div", {className:"card"},
     TitreCarte(h(F, null, "📊 Autoévaluation — " + EV.titre + " — " + CLASSE, InfoI("Chaque élève dit combien de bonnes réponses il pense avoir. Cette estimation sert à savoir s'il se surévalue, se sous-évalue ou s'évalue correctement ; son bilan la compare à sa note.")),
-      [h("button", {key:5, className:"btn btn-ghost btn-sm"}, "⏸️ Finir à une autre heure"), h("button", {key:1, className:"btn btn-rouge btn-sm"}, "🛑 Terminer la session")]),
+      [h("button", {key:5, className:"btn btn-ghost btn-sm"}, "⏸️ Finir à une autre heure"), h("button", {key:1, className:"btn btn-rouge btn-sm"}, "🛑 Terminer la séance")]),
     h("div", {className:"pilot-status autoeval"}, "Phase autoévaluation — 22 / 24 élèves"),
     h("p", {style:{margin:".8rem 0", color:"var(--gris)"}}, "Les élèves choisissent dans quelle fourchette ils estiment avoir réussi. Clique sur ", h("strong", null, "📝 Lancer la correction"), " quand tu es prêt."),
     h("div", {className:"autoeval-prof-distrib"}, distrib.map(function(d){ var m = MAITRISE.filter(function(x){ return x.k === d[0]; })[0];
@@ -325,7 +325,7 @@ function TelCorrAvant(){
     h("div", {key:"st"}, TelStats(1, [0, 1, 2])),   // la bande des questions, comme dans la 7.7.1 à la correction (l. 5672)
     h("div", {key:"l"}, TelListe("TABLETTES — 18 / 24 feuilles lues · clic sur un nom pour agir", modeDe)),
     h("div", {key:"lg"}, TelLegende(["📄 feuille lue", "⏳ pas encore lue"])),
-    h("div", {key:"t"}, h("button", {className:"tel-btn tb-rouge tb-small", "data-va":"c-terminer"}, "🛑 Terminer la session"))]);
+    h("div", {key:"t"}, h("button", {className:"tel-btn tb-rouge tb-small", "data-va":"c-terminer"}, "🛑 Terminer la séance"))]);
 }
 function telPastille(p, qi, mode){
   if(mode === "voile") return {t:"🙈", cls:"tp-voile"};
@@ -356,7 +356,7 @@ function TelCorrApres(){
     h("div", {key:"st"}, TelStats(1, [0, 1, 2])),
     h("div", {key:"l"}, TelListe("TABLETTES — d'après la feuille · clic sur un nom pour agir", function(){ return {qi:1, mode:"corr"}; }, flagDe)),
     h("div", {key:"lg"}, TelLegende(["✓ juste", "⛔ Dernier moment", "✗ faux", "⚠️ À relire ce soir"])),
-    h("div", {key:"t"}, h("button", {className:"tel-btn tb-rouge tb-small", "data-va":"c-terminer"}, "🛑 Terminer la session"))]);
+    h("div", {key:"t"}, h("button", {className:"tel-btn tb-rouge tb-small", "data-va":"c-terminer"}, "🛑 Terminer la séance"))]);
 }
 
 /* ── Le tableau pendant la lecture (422, 496) : l'énoncé, sans les choix ── */
@@ -423,7 +423,7 @@ function Coeval(p){
     if(daccord) zone.push(h("div", {key:"d", className:"eleve-feedback valide"}, "Tu as cliqué ce que " + v.prenom + " avait lu : vous êtes d'accord."));
     zone.push(h("div", {key:"r", className:"co-regle"}, "☝️ " + REGLE_CO));
     zone.push(h("div", {key:"bs", className:"co-btns"}, ["ok", "peut", "mal"].map(btn)));
-    if(k === "ok"){ zone.push(h("div", {key:"f", className:"eleve-feedback valide"}, ENREG)); zone.push(h("div", {key:"w", className:"co-attente"}, "⏳ Attends ton bilan...")); }
+    if(k === "ok"){ zone.push(h("div", {key:"f", className:"eleve-feedback valide"}, ENREG)); zone.push(h("div", {key:"w", className:"co-attente"}, "⏳ Attends ton bilan…")); }
   } else if(qc == null){
     zone.push(h("div", {key:"t", className:"decl-titre co-titre co-" + k}, EM_CO[k] + " " + e.prenom + ", tu penses que " + v.prenom + " a " + (k === "peut" ? "peut-être " : "") + "mal lu ta feuille pour une question : c'est laquelle ?"));
     zone.push(h("div", {key:"l", className:"co-liste cliquable" + (EVx.questions.length > 5 ? " serree" : "")}, EVx.questions.map(function(q, i){
@@ -446,7 +446,7 @@ function Coeval(p){
     zone.push(h("div", {key:"r", className:"co-regle"}, REGLE_CO));
     if(ecrit) zone.push(h("div", {key:"f", className:"eleve-feedback valide"}, ENREG));
     zone.push(h("div", {key:"a", className:"co-actions"}, h("button", {className:"btn btn-ghost", "data-local":"1", onClick:function(){ setQ(null); setEcrit(null); }}, "↩️ Changer"),
-      ecrit && h("span", {className:"co-attente", style:{margin:0, alignSelf:"center"}}, "⏳ Attends ton bilan...")));
+      ecrit && h("span", {className:"co-attente", style:{margin:0, alignSelf:"center"}}, "⏳ Attends ton bilan…")));
   }
   return Page(badgeDe(e), "📝 Correction", h("div", {className:"eleve-q-zone"}, zone));
 }
@@ -489,7 +489,7 @@ function AlerteCoE(tel){
   if(tel) return h("div", {className:"tel-alerte"}, corps, boutons, auto, h("div", {className:"tel-al-note"}, "⛔ : retirer le point d'autonomie."));
   return h("div", {className:"alerte-co"}, h("div", {className:"al-corps"}, corps),
     h("div", {className:"al-actions"}, boutons, auto,
-      h("div", {className:"al-note"}, "L'alerte est apparue quand Michel a cliqué ce qu'il avait écrit ; elle disparaît s'il change d'avis avant le bilan. Aucun point d'autonomie n'est retiré tout seul : c'est toi qui décides.")));
+      InfoIB("❌ Alerte", "L'alerte est apparue quand Michel a cliqué ce qu'il avait écrit ; elle disparaît s'il change d'avis avant le bilan. Aucun point d'autonomie n'est retiré tout seul : c'est toi qui décides.")));
 }
 function PilotCoevalE(tranche, retire){
   retire = retire || [];
@@ -509,7 +509,7 @@ function PilotCoevalE(tranche, retire){
       h("div", {className:"al-actions"}, h("button", {className:"btn btn-ghost btn-sm", "data-va":"c-coeval-attente", title:"Rouvre l'alerte, telle qu'elle était : rien n'est appliqué."}, "↩️ Défaire")))
       : AlerteCoE(false),
     TitreCarte(h(F, null, "🤝 Co-évaluation de la lecture — " + EV.titre + " — " + CLASSE, InfoI("À la fin de la correction, chacun dit, dans sa moitié, s'il pense que son voisin a bien lu sa feuille. Un « ❌ » t'alerte aussitôt, en haut ; un « 🤔 » passe la question « ⚠️ À relire » ce soir. Le bilan s'affiche quand tous les présents ont répondu.")),
-      [h("button", {key:0, className:"btn btn-ghost btn-sm"}, "🚫 Départ d'un élève"), h("button", {key:5, className:"btn btn-ghost btn-sm"}, "⏸️ Finir à une autre heure"), h("button", {key:1, className:"btn btn-rouge btn-sm"}, "🛑 Terminer la session")]),
+      [h("button", {key:0, className:"btn btn-ghost btn-sm"}, "🚫 Départ d'un élève"), h("button", {key:5, className:"btn btn-ghost btn-sm"}, "⏸️ Finir à une autre heure"), h("button", {key:1, className:"btn btn-rouge btn-sm"}, "🛑 Terminer la séance")]),
     h("div", {className:"pilot-status correction"}, "Fin de la correction — chacun dit ce qu'il pense de la lecture de sa feuille · " + (24 - att.length) + " / 24 ont répondu"),
     h("div", {className:"corr-grid"},
       h("div", null,
@@ -524,7 +524,6 @@ function PilotCoevalE(tranche, retire){
           lire.map(function(x, i){ return h("div", {key:i}, x[0] + " — Q" + (x[1]+1) + " : " + x[2]); }))),
       h("div", {className:"suivi-box"},
         h("h3", null, "🤝 Ce que chacun pense de la lecture de sa feuille", InfoI("Chaque moitié dit ce que cet élève pense de la lecture de sa feuille par son voisin. Un clic sur un nom agit sur l'élève, par exemple « ⛔ Retirer le point d'autonomie ».")),
-        h("div", {className:"ss"}, "Chaque moitié dit ce que cet élève pense de la lecture de sa feuille par son voisin."),
         GrilleTablettes(PAIRES, function(p){ var r = etat(p); if(retire.indexOf(p) >= 0) r.flag = "🔴 point d'autonomie retiré"; r.va = "c-autonomie"; r.titre = "Clique sur le nom : « ⛔ Retirer le point d'autonomie », ou « 🚫 Marquer comme parti »."; return r; }),
         Legende([["#22C55E","✅ bien lu"],["#FDE68A","🤔 peut-être mal lu : à relire ce soir"],["#EF4444","❌ mal lu : alerte"],["#FEE2E2","⏳ pas encore répondu","1px solid #EF4444"]])))), true);
 }
@@ -602,7 +601,7 @@ function BilanClasse(){
   lignes.sort(function(a, b){ return (b.r.complet ? b.r.n : -1) - (a.r.complet ? a.r.n : -1) || a.nom.localeCompare(b.nom, "fr"); });
   var lire = LIRE_SOIR.concat([["PERRAUD Jade", 1, "🤔 pense qu'Enzo a peut-être mal lu sa feuille"], ["MAILLARD Noah", 2, "🤔 pense qu'Emma a peut-être mal lu sa feuille"]]);
   return Console("pilotage", "pilot", h("div", {className:"card"},
-    TitreCarte(h(F, null, "🏁 Bilan classe — " + EV.titre + " — " + CLASSE, InfoI("Les notes provisoires de la classe, d'après la lecture des feuilles à la correction. Elles deviennent définitives quand tu rends les copies, après ta lecture du soir.")), [h("button", {key:1, className:"btn btn-rouge btn-sm"}, "🛑 Terminer la session")]),
+    TitreCarte(h(F, null, "🏁 Bilan classe — " + EV.titre + " — " + CLASSE, InfoI("Les notes provisoires de la classe, d'après la lecture des feuilles à la correction. Elles deviennent définitives quand tu rends les copies, après ta lecture du soir.")), [h("button", {key:1, className:"btn btn-rouge btn-sm"}, "🛑 Terminer la séance")]),
     h("div", {className:"bilan-classe-synthese"},
       h("div", {className:"bilan-classe-stat"}, h("div", {className:"bilan-classe-stat-label"}, "Moyenne"), h("div", {className:"bilan-classe-stat-num"}, fr1(moy) + " / 3"), h("div", {style:{opacity:.9}}, fr1(moy * 20 / 3) + " / 20")),
       h("div", {className:"bilan-classe-stat"}, h("div", {className:"bilan-classe-stat-label"}, "Médiane"), h("div", {className:"bilan-classe-stat-num"}, med + " / 3")),
@@ -672,7 +671,7 @@ function ScRouvrirSeance(){
 function Interrompue(){
   var modal = h("div", {className:"checkin-overlay", "data-echap":"c-lancer"},
     h("div", {className:"checkin-modal", style:{maxWidth:"620px"}},
-      h("div", {className:"checkin-header"}, h("h3", null, "⚠️ Session interrompue détectée", InfoI("La console a perdu la séance en cours (page fermée, panne). Elle se reprend là où elle était, ou se termine.")), h("div", {className:"checkin-sub"}, CLASSE + " — " + EV.titre)),
+      h("div", {className:"checkin-header"}, h("h3", null, "⚠️ Séance interrompue détectée", InfoI("La console a perdu la séance en cours (page fermée, panne). Elle se reprend là où elle était, ou se termine.")), h("div", {className:"checkin-sub"}, CLASSE + " — " + EV.titre)),
       h("div", {style:{padding:"1rem 1.2rem", fontSize:".9rem", color:"var(--noir)"}},
         h("div", {style:{marginBottom:".4rem"}}, "📅 Démarrée le 08/10/2026 à 10:02"),
         h("div", {style:{marginBottom:".4rem"}}, "🔌 Dernière déconnexion : 08/10/2026 à 10:09"),
@@ -686,7 +685,7 @@ function Interrompue(){
       h("div", {className:"checkin-actions"},
         h("button", {className:"btn btn-rouge btn-sm", "data-va":"c-terminer", title:"Clôt la séance, après une confirmation : l'archive s'écrit avec les notes telles qu'elles sont."}, "🛑 Terminer définitivement"),
         h("button", {className:"btn btn-ghost", "data-va":"c-reprendre", title:"Met la séance en pause, telle qu'elle est, pour la reprendre à une heure suivante."}, "⏸️ Finir à une autre heure"),
-        h("button", {className:"btn btn-primary", "data-va":"c-q2-tour2", title:"Reprend tout de suite : le tour en cours recommence au début, voile compris."}, "🔄 Reprendre la session"))));
+        h("button", {className:"btn btn-primary", "data-va":"c-q2-tour2", title:"Reprend tout de suite : le tour en cours recommence au début, voile compris."}, "🔄 Reprendre la séance"))));
   return h(F, null, Lancement(false), modal);
 }
 
@@ -695,7 +694,7 @@ function PapierLancer(){ return Lancement(false, {papier:true}); }
 function PapierSeance(){
   return Console("pilotage", "pilot", h("div", {className:"card"},
     TitreCarte(h(F, null, "📄 Séance sur papier — " + EV.titre + " — " + CLASSE, InfoI("Sur papier, chacun répond seul sur sa feuille, avec les énoncés imprimés : pas de tablette, pas d'estimation. Tu ramasses les feuilles ; la séance se met en pause sans être finie. Le soir, tu remplis la grille ; à l'heure suivante, la correction se fait sur les tablettes.")),
-      [h("button", {key:1, className:"btn btn-rouge btn-sm"}, "🛑 Terminer la session")]),
+      [h("button", {key:1, className:"btn btn-rouge btn-sm"}, "🛑 Terminer la séance")]),
     h("div", {className:"pilot-status reflexion"}, "📄 Séance sur papier en cours — 24 présents, 1 absent (YVON Adam)"),
     h("div", {className:"papier-grid"},
       h("div", null,
@@ -721,7 +720,7 @@ function GrillePapier(){   // un élève par ligne, une question par case, un cl
     h("tbody", null, eleves.map(function(n){
       var p = pre(n), l = g[p], note = l.filter(function(x){ return x === "j"; }).length;
       return h("tr", {key:n}, h("td", {className:"eleve-cell"}, n),
-        l.map(function(x, i){ return h("td", {key:i, className:x === "j" ? "cell-juste" : "cell-faux"}, h("button", {className:"case-grille", "data-local":"1", title:"La feuille de " + p + ", question " + (i+1) + " : un clic bascule entre ✓ (juste) et ✗ (faux).", onClick:function(){ basculer(p, i); }}, x === "j" ? "✓" : "✗")); }),
+        l.map(function(x, i){ return h("td", {key:i, className:x === "j" ? "cell-juste" : "cell-faux"}, h("button", {className:"case-grille", "data-local":"1", title:"La feuille " + deNom(p) + ", question " + (i+1) + " : un clic bascule entre ✓ (juste) et ✗ (faux).", onClick:function(){ basculer(p, i); }}, x === "j" ? "✓" : "✗")); }),
         h("td", {className:"score-cell"}, note + "/3"), h("td", {className:"score-cell"}, fr1(note * 20 / 3)));
     }))));
 }
@@ -737,7 +736,7 @@ function PilotCorrPapier(){
   var q = EV.questions[1];
   return Console("pilotage", "pilot", h("div", {className:"card"},
     TitreCarte(h(F, null, "📝 Correction sur papier — " + EV.titre + " — " + CLASSE, InfoI("Sur papier, il n'y a pas de lecture du voisin : chaque moitié montre ce que ta grille a retenu de la feuille, puis la réponse quand tu révèles. Jamais « Trouvée au dernier moment ». Le point d'autonomie ne se retire qu'en direct, d'un clic sur le nom.")),
-      [h("button", {key:0, className:"btn btn-ghost btn-sm"}, "🚫 Départ d'un élève"), h("button", {key:1, className:"btn btn-rouge btn-sm"}, "🛑 Terminer la session")]),
+      [h("button", {key:0, className:"btn btn-ghost btn-sm"}, "🚫 Départ d'un élève"), h("button", {key:1, className:"btn btn-rouge btn-sm"}, "🛑 Terminer la séance")]),
     h("div", {className:"pilot-status correction"}, "Question 1 / 3 — Q2 · toutes les corrections à la suite, dans l'ordre des erreurs de ta grille"),
     h("div", {className:"corr-grid"},
       h("div", null,
@@ -755,7 +754,7 @@ function PilotCorrPapier(){
 /* ════════ Le rattrapage (335, 595) : les binômes par les exclusions, puis par la règle du QCM ════════ */
 function Rattrapage(){
   var carte = h("div", {className:"card"},
-    h("h2", null, "🎯 Lancer une nouvelle session", InfoI("Un rattrapage se lance comme une séance : la classe, la même évaluation ; seuls ceux qui ne sont pas encore notés la passent.")),
+    h("h2", null, "🎯 Lancer une nouvelle séance", InfoI("Un rattrapage se lance comme une séance : la classe, la même évaluation ; seuls ceux qui ne sont pas encore notés la passent.")),
     h("div", {className:"lancer-grid"},
       h("div", null,
         h("div", {className:"field"}, h("label", null, "Classe", InfoI("Les classes de la console MJPC.")), h("select", {value:"c", readOnly:true, title:"La classe de la séance."}, h("option", {value:"c"}, CLASSE + " (25 élèves)"))),
@@ -771,7 +770,7 @@ function Rattrapage(){
 }
 function SessionsPrecedentesRatt(){
   return h("div", {className:"card"},
-    h("h2", null, "📚 Sessions précédentes — " + CLASSE, InfoI("Les séances passées de la classe : chacune ouvre ses résultats.")),
+    h("h2", null, "📚 Séances précédentes — " + CLASSE, InfoI("Les séances passées de la classe : chacune ouvre ses résultats.")),
     h("div", {className:"results-eval-list"},
       h("div", {className:"results-eval-row"},
         h("div", null, h("div", {className:"titre"}, EV.titre), h("div", {className:"meta"}, "08/10/2026 10:02 · ✅ terminée · 24 présents, 1 absent · " + LIRE_SOIR.length + " feuilles à lire"),
@@ -892,8 +891,7 @@ function ScFeuille3(){
 function ScGarde3(noms){
   return Fenetre(PilotCoeval3(), "⛔ Retirer le point d'autonomie " + (noms.length > 1 ? "aux deux" : "à " + noms[0]) + " ?", noms.join(" et "),
     h(F, null,
-      h("p", null, (noms.length > 1 ? "Leurs deux compétences d'autonomie passent" : "Ses deux compétences d'autonomie passent") + " en Maîtrise insuffisante, pour cette évaluation : « Être autonome et responsable » et « S'impliquer dans les activités en classe et dans son travail personnel ». La note ne bouge pas."),
-      h("p", {className:"fen-note"}, "Un litige est légitime ; « aux deux » est pour le cas où aucun n'a joué le jeu, par exemple chacun à moitié de bonne foi. « ↩️ Rendre » le défait, en direct ou le soir.")),
+      h("p", null, (noms.length > 1 ? "Leurs deux compétences d'autonomie passent" : "Ses deux compétences d'autonomie passent") + " en Maîtrise insuffisante, pour cette évaluation : « Être autonome et responsable » et « S'impliquer dans les activités en classe et dans son travail personnel ». La note ne bouge pas.")),
     [h("button", {key:1, className:"btn btn-ghost", "data-va":"x610-8-console-alerte", title:"Ne retire rien."}, "Annuler"),
      h("button", {key:2, className:"btn btn-rouge", "data-va":"x610-tranche", title:"Retire le point d'autonomie, tout de suite. « ↩️ Rendre » le défait."}, "⛔ Retirer le point d'autonomie")], "x610-8-console-alerte");
 }
@@ -917,7 +915,7 @@ function PilotCoeval3(tranche){
       h("div", {className:"al-actions"}, h("button", {className:"btn btn-ghost btn-sm", "data-va":"x610-8-console-alerte", title:"Rouvre l'alerte, telle qu'elle était : rien n'est appliqué."}, "↩️ Défaire")))
       : AlerteCo3(false),
     TitreCarte(h(F, null, "🤝 Co-évaluation de la lecture — " + EV3.titre + " — " + CLASSE, InfoI("À la fin de la correction, chacun dit, dans sa moitié, s'il pense que son voisin a bien lu sa feuille. Un « ❌ » t'alerte aussitôt, en haut ; un « 🤔 » passe la question « ⚠️ À relire » ce soir. Le bilan s'affiche quand tous les présents ont répondu.")),
-      [h("button", {key:0, className:"btn btn-ghost btn-sm"}, "🚫 Départ d'un élève"), h("button", {key:5, className:"btn btn-ghost btn-sm"}, "⏸️ Finir à une autre heure"), h("button", {key:1, className:"btn btn-rouge btn-sm"}, "🛑 Terminer la session")]),
+      [h("button", {key:0, className:"btn btn-ghost btn-sm"}, "🚫 Départ d'un élève"), h("button", {key:5, className:"btn btn-ghost btn-sm"}, "⏸️ Finir à une autre heure"), h("button", {key:1, className:"btn btn-rouge btn-sm"}, "🛑 Terminer la séance")]),
     h("div", {className:"pilot-status correction"}, "Fin de la correction — chacun dit ce qu'il pense de la lecture de sa feuille · " + (24 - att.length) + " / 24 ont répondu"),
     h("div", {className:"corr-grid"},
       h("div", null,
@@ -932,7 +930,6 @@ function PilotCoeval3(tranche){
           LIRE_CO3.map(function(x, i){ return h("div", {key:i}, x[0] + " — " + x[1]); }))),
       h("div", {className:"suivi-box"},
         h("h3", null, "🤝 Ce que chacun pense de la lecture de sa feuille", InfoI("Chaque moitié dit ce que cet élève pense de la lecture de sa feuille par son voisin. Un clic sur un nom agit sur l'élève.")),
-        h("div", {className:"ss"}, "Chaque moitié dit ce que cet élève pense de la lecture de sa feuille par son voisin."),
         GrilleTablettes(PAIRES, etat),
         Legende([["#22C55E","✅ bien lu"],["#FDE68A","🤔 peut-être mal lu : à relire ce soir"],["#EF4444","❌ mal lu : alerte"],["#FEE2E2","⏳ pas encore répondu","1px solid #EF4444"]])))), true);
 }

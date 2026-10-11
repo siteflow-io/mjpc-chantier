@@ -19721,3 +19721,59 @@ Réponse mot pour mot :
 709. **Rien ne change pour la relance** : le message du point 705 vaut toujours. La capture est aussi au sas : https://github.com/siteflow-io/mjpc-chantier/blob/main/AUDITS/MAQUETTE-QCM-COMPLEMENT-1-10-10/captures/defaut-boutons-fermes-mjpc.png
 
 11/10/2026 07:59 MEMO
+
+---
+
+## TOUR 643 — Paul
+
+Texte de Paul, mot pour mot, avec deux captures (`pieces/T643-panneau-prof-1.png`, `pieces/T643-panneau-prof-2.png`) :
+
+> (11/10, 08:03) d'accord. au passage, elle peut régler aussi une dette qu'on traine depuis longtemps (vérifier la dette et sa registration bien sûr, avant de mandater quoique ce soit). la largeur du panneau (qui doit prendre la taille de l'écran en fait, au lieu que je doive scroller dans un encart minuscule), et le décalage des boutons (regarde les captures).
+
+---
+
+## TOUR 643 — Claude (conscience n°12)
+
+Registre de la production relu : n°12 · 87 et 88 inscrites le 01/10 (tour 321), ouvertes, jamais mandatées. Causes mesurées dans `index.html` (l. 223, 225 ; l. 609, 614, 5529), la ligne d'élève refaite avec le CSS de la production. Complément 2 complété ; registre mis à jour et poussé en production (commit `3bcb67b`). Aucune réponse envoyée à ce tour : le travail a continué au tour 644, qui répond aux deux messages.
+
+---
+
+## TOUR 644 — Paul
+
+Texte de Paul, mot pour mot, avec une capture (`pieces/T644-emploi-du-temps.png`) :
+
+> (11/10, 08:08) Et ça aussi: le bouton répété d'export du json, ou alors les ranger par type, ou faire un sélecteur pour exporter soit un, soit quelques un, soit tous.
+
+---
+
+## TOUR 644 — Claude (conscience n°12)
+
+Registre relu : rien sur la rangée « Sortir le JSON ». Mesuré dans `index.html` : la rangée `.edt-actions` (l. 19808-19820, CSS l. 20024), `edtSortirJson` (l. 20792), `edtCopierPrompt` (l. 20765), les noms en clair des objets dans le code. Objets de l'emploi du temps relus au hub en lecture seule (six objets, longueurs des JSON) et déposés au sas (`MANDATS/COMPLEMENT-MAQUETTE-QCM-COMPLETE-2-EDT/`). n°12 · 212 inscrite au registre de la production (commit `898746e`). Complément 2 complété (§4, garde 8). Branche de l'exécutant vérifiée : rien de poussé depuis `5d1c204d`.
+
+Réponse mot pour mot :
+
+710. **Les deux dettes sont vérifiées.** Elles sont inscrites au registre depuis le 01/10 : n°12 · 87, le panneau trop étroit, et n°12 · 88, ↻ et ✕ hors du cadre (https://github.com/siteflow-io/monsieurjaipascompris/blob/main/docs/MJPC6-DETTES.md, l. 2897 et 2899). Elles sont ouvertes, et aucun mandat ne les a reprises.
+
+711. **Les causes, mesurées dans index.html.**
+- 87 : le panneau est borné à 1 100 px de large, avec 30 px de marge autour.
+- 88 : la ligne d'élève est une grille de 4 colonnes. Depuis l'ajout du ◆ des aménagements, elle a 5 éléments : ↻ et ✕ passent à la ligne, dans la colonne étroite du numéro, et débordent à gauche. J'ai refait ta capture au pixel près avec le CSS du site.
+
+712. **La rangée de l'emploi du temps n'était pas au registre** : je l'ai inscrite (n°12 · 212). Mesuré : dix éléments sur une rangée qui ne passe jamais à la ligne. Parmi eux, six « Sortir le JSON », un par objet, nommés par leur nom de plomberie (creneaux, periodes, reglages…), et deux « Copier le prompt ».
+
+713. **Les trois entrent au complément 2, mis à jour au sas** : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/COMPLEMENT-MAQUETTE-QCM-COMPLETE-2.md. Dans la maquette :
+- le panneau couvre tout l'écran, bord à bord, et rien d'autre ne change ;
+- ↻ et ✕ sont dans chaque carte, à droite, sur la ligne du nom ;
+- l'emploi du temps devient un écran de la maquette, avec ses vraies données, que j'ai relues au hub.
+
+714. **Pour la rangée, mon tranchage entre tes trois voies, à valider sur la capture : trois groupes, l'un sous l'autre.**
+- « Ouvrir l'emploi du temps » et sa case, tels quels.
+- « ⤓ Sortir le JSON » : une case par objet, nommé en clair avec des noms qu'index.html emploie déjà (« Calendrier de l'année », « Créneaux horaires », « Découpage en périodes »…), « Tout cocher », et un seul bouton. Un objet coché, c'est le geste d'aujourd'hui ; plusieurs, un seul JSON qui range chacun sous son nom.
+- « 📋 Copier le prompt » : un bouton par voie, Calendrier et Grille.
+
+715. **Trouvé en passant** : la v6 avait déjà remis ↻ ✕ dans la carte, mais sans le dire. Désormais, chaque écart de la maquette avec le vrai MJPC est inscrit avec sa raison : c'est la liste que le code reprendra.
+
+716. **Le vrai site garde ces trois défauts jusqu'au code du QCM**, partie MJPC (677) : c'est là qu'index.html changera. Au registre, les trois dettes sont « en cours », avec ce chemin. Au code, il faudra aussi rejouer à pleine largeur toutes les sections du panneau, celles du déroulé comprises.
+
+717. **Pour la relance** : rien n'est encore poussé sur la branche de l'exécutant. S'il n'est pas relancé, le message du point 705 vaut tel quel, et il lira le complément à jour. S'il tourne déjà avec l'ancien complément, laisse-le finir : je ferai un complément 3 avec le reste.
+
+11/10/2026 08:15 MEMO

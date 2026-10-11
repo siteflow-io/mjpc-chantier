@@ -1318,3 +1318,12 @@ Paul, mot pour mot : « 20. Jamais la classe ne passe à la suivante si ce n'est
 159. L'exécutant tourne encore (au banc `test-d-p7`) : il poussera la fin de p8-5c. Paul ne promeut jamais sur dette : complément correctif **p8-5d** écrit et envoyé à Paul en fichier, avant dépôt — le panneau suit la diapo (bancs par ▶, ◀, vignette, garde, atelier ; le banc « taper pendant l'animation accélérée » retiré, remplacé), le focus du paragraphe neuf posé avant la touche suivante. À lancer après la fin de p8-5c.
 160. Le titre « Notes pour cette diapo » qui défile hors de vue : non commenté par Paul — acquis tel quel.
 
+
+---
+
+## TOUR 47 (11/10/2026, 15:48 → 15:58) — Paul : « livré »
+
+161. **p8-5c close** : commit final `a426cbc7` (15:46), NOTE complète, `EMPREINTES.md5` (71 fichiers, 71 OK chez moi), maquette md5 `abbf3d2f…` identique à celle auditée au tour 45. Banc unique de l'exécutant : **30 bancs à 0 au troisième passage** ; les deux premiers passages ont échoué chacun sur un banc différent (`test-d-p7`, puis `test-p5-p7`) bloqué à `page.goto` (30 s) avant tout geste, sorties gardées, cause non trouvée — déclaré dans la NOTE. Chez moi : 30 bancs à 0 (29 dans le banc unique, coupé par un redémarrage du conteneur pendant le trentième ; `tout-cliquer-p7` rejoué seul : 103 clics, 69 touches, 0 erreur JS, 0 défaut), sans aucun blocage de chargement. Je ne sais pas d'où vient le blocage sporadique chez l'exécutant ; il n'est pas dans la maquette.
+162. **Verdict sur p8-5c : ça va**, fidèle au complément et aux captures validées, avec deux dettes ouvertes à l'audit (n°13 · 13, 13 · 14) qui se règlent par p8-5d avant la validation de la maquette par Paul.
+163. **p8-5d déposé** : `MANDATS/COMPLEMENT-DEROULE-P8-5d.md` (non commenté par Paul depuis le tour 46 : acquis). Phrase donnée à Paul.
+

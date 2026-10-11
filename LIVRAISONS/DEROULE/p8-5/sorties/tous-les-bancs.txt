@@ -1,0 +1,194 @@
+date : 2026-10-07 13:21:48 +0000
+node : v22.22.0 · playwright : 1.56.1 · chromium : 141.0.7390.37
+maquette jouée : maquette-pilotage-ordi-v9c15p8-manipulable.html
+md5 de la maquette jouée : 3d8ba32d65dee7b3928f5caadfb14008
+bancs : 29
+
+===== test-p8-5-classe =====
+aucun défaut
+--- fin : 0 défaut(s)
+(code de sortie : 0)
+
+===== test-p8-4-ecrire =====
+aucun défaut
+--- fin : 0 défaut(s)
+(code de sortie : 0)
+
+===== test-p8-3c =====
+aucun défaut
+--- fin : 0 défaut(s)
+(code de sortie : 0)
+
+===== test-p8-3-gestes =====
+aucun défaut
+--- fin : 0 défaut(s)
+(code de sortie : 0)
+
+===== test-p8-2-formes =====
+la vraie carte : ne tient pas — chevauchements 77 · hors du cadre visible 0 · traits à travers un mot 203 · libellés sur deux lignes 0 · polices sous 26 pt 0
+aucun défaut
+--- fin : 0 défaut(s)
+(code de sortie : 0)
+
+===== audit-affichage-p7 =====
+aucun défaut
+--- fin : 0 défaut(s)
+(code de sortie : 0)
+
+===== test-p7-schema-envoi =====
+aucun défaut
+--- fin : 0 défaut(s)
+(code de sortie : 0)
+
+===== test-p6-p7 =====
+aucun défaut
+--- fin : 0 défaut(s)
+(code de sortie : 0)
+
+===== test-p5-p7 =====
+aucun défaut
+--- fin : 0 défaut(s)
+(code de sortie : 0)
+
+===== test-p4b-p7 =====
+aucun défaut
+--- fin : 0 défaut(s)
+(code de sortie : 0)
+
+===== test-p4a-p7 =====
+aucun défaut
+--- fin : 0 défaut(s)
+(code de sortie : 0)
+
+===== test-p3-p7 =====
+aucun défaut
+--- fin : 0 défaut(s)
+(code de sortie : 0)
+
+===== test-p2-p7 =====
+aucun défaut
+--- fin : 0 défaut(s)
+(code de sortie : 0)
+
+===== test-p1-p7 =====
+aucun défaut
+--- fin : 0 défaut(s)
+(code de sortie : 0)
+
+===== test-g2-p7 =====
+aucun défaut
+--- fin : 0 défaut(s)
+(code de sortie : 0)
+
+===== test-g1-p7 =====
+aucun défaut
+--- fin : 0 défaut(s)
+(code de sortie : 0)
+
+===== test-f-p7 =====
+aucun défaut
+--- fin : 0 défaut(s)
+(code de sortie : 0)
+
+===== test-e-p7 =====
+aucun défaut
+--- fin : 0 défaut(s)
+(code de sortie : 0)
+
+===== test-b5-p7 =====
+aucun défaut
+--- fin : 0 défaut(s)
+(code de sortie : 0)
+
+===== test-b4-p7 =====
+aucun défaut
+--- fin : 0 défaut(s)
+(code de sortie : 0)
+
+===== test-b3-p7 =====
+aucun défaut
+--- fin : 0 défaut(s)
+(code de sortie : 0)
+
+===== test-d-p7 =====
+aucun défaut
+--- fin : 0 défaut(s)
+(code de sortie : 0)
+
+===== test-c-p7 =====
+aucun défaut
+--- fin : 0 défaut(s)
+(code de sortie : 0)
+
+===== test-b2-apercu-p7 =====
+aucun défaut
+--- fin : 0 défaut(s)
+(code de sortie : 0)
+
+===== test-b-p7 =====
+aucun défaut
+--- fin : 0 défaut(s)
+(code de sortie : 0)
+
+===== test-cahier-p7 =====
+aucun défaut
+--- fin : 0 défaut(s)
+(code de sortie : 0)
+
+===== test-a0-p7 =====
+aucun défaut
+--- fin : 0 défaut(s)
+(code de sortie : 0)
+
+===== regression-p7 =====
+aucun défaut
+--- fin : 0 défaut(s)
+(code de sortie : 0)
+
+===== tout-cliquer-p7 =====
+19 diapos : d1:6/6·32pt d2:0/0·26pt d3:0/0·26pt d4:0/0·32pt d5:0/0·32pt d6:0/0·32pt d7:3/3·32pt d8:2/2·32pt d9:4/4·32pt d10:2/2·32pt d11:4/4·32pt d12:2/2·32pt d13:4/4·32pt d14:3/3·32pt d15:4/4·32pt d16:0/0·32pt d17:3/3·32pt d18:2/2·32pt d19:2/2·32pt d20:0/0 d21:0/0·32pt d22:1/1·32pt d23:4/4·32pt
+boutons du pilotage : 24 → ong-pilotage, ong-relecture, ong-atelier, bnotes, btableau, bvideoproj, bfin, bsimu, pg, pd, blum, becr, btoutes, coul:jaune, coul:vert, coul:rose, coul:bleu, coul:aucune, bloupe, bgel, bqui, bplus, bprec, bdev
+avant réponse : {
+  fen: [],
+  gel: false,
+  di: 7,
+  ini: true,
+  rect: [ 237, 287, 45 ],
+  dessus: 'ini vide'
+}
+clics : 106 · touches : 69 · erreurs JS : 0
+aucun défaut
+--- fin : 0 défaut(s)
+(code de sortie : 0)
+
+===== RÉSUMÉ =====
+test-p8-5-classe : --- fin : 0 défaut(s)
+test-p8-4-ecrire : --- fin : 0 défaut(s)
+test-p8-3c : --- fin : 0 défaut(s)
+test-p8-3-gestes : --- fin : 0 défaut(s)
+test-p8-2-formes : --- fin : 0 défaut(s)
+audit-affichage-p7 : --- fin : 0 défaut(s)
+test-p7-schema-envoi : --- fin : 0 défaut(s)
+test-p6-p7 : --- fin : 0 défaut(s)
+test-p5-p7 : --- fin : 0 défaut(s)
+test-p4b-p7 : --- fin : 0 défaut(s)
+test-p4a-p7 : --- fin : 0 défaut(s)
+test-p3-p7 : --- fin : 0 défaut(s)
+test-p2-p7 : --- fin : 0 défaut(s)
+test-p1-p7 : --- fin : 0 défaut(s)
+test-g2-p7 : --- fin : 0 défaut(s)
+test-g1-p7 : --- fin : 0 défaut(s)
+test-f-p7 : --- fin : 0 défaut(s)
+test-e-p7 : --- fin : 0 défaut(s)
+test-b5-p7 : --- fin : 0 défaut(s)
+test-b4-p7 : --- fin : 0 défaut(s)
+test-b3-p7 : --- fin : 0 défaut(s)
+test-d-p7 : --- fin : 0 défaut(s)
+test-c-p7 : --- fin : 0 défaut(s)
+test-b2-apercu-p7 : --- fin : 0 défaut(s)
+test-b-p7 : --- fin : 0 défaut(s)
+test-cahier-p7 : --- fin : 0 défaut(s)
+test-a0-p7 : --- fin : 0 défaut(s)
+regression-p7 : --- fin : 0 défaut(s)
+tout-cliquer-p7 : --- fin : 0 défaut(s)
+TOUS LES BANCS : 0 défaut

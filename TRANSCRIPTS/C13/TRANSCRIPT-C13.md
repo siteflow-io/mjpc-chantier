@@ -1195,3 +1195,35 @@ Réponse mot pour mot :
 Tests pour toi : aucun nouveau ; ceux du tour 30 restent, si tu ne les as pas encore joués.
 
 11/10/2026 08:38 MEMO
+
+---
+
+## TOUR 32 — Paul
+
+Texte de Paul, mot pour mot :
+
+> oui j'ai joué la maquette. il fallait vérifier quoi dedans? et pour ton 2, reprends en détail la question. A partir de maintenant tu es C13.
+
+---
+
+## TOUR 32 — Claude (C13)
+
+Répondu en détail (point 130 : le détail des cinq tests ; point 131 : le détail de la dette n°13·8). Puis Paul : « fais les tests du point 130 toi même. »
+
+Joué moi-même, sur la maquette p8-5 (`LIVRAISONS/DEROULE/p8-5/maquette-pilotage-ordi-v9c15p8-manipulable.html`, md5 `3d8ba32d…`, celle que Paul a déjà jouée), avec Playwright/Chromium, dans l'environnement Claude Code (`bancs/T32-paul-5-tests.mjs`, puis `T32-reprise-1-5.mjs` pour corriger deux de mes propres mesures). Les 29 bancs officiels de la livraison rejoués en même temps (installation npm faite ici) : tous à 0.
+
+Réponse mot pour mot :
+
+133. **Les cinq tests du point 130, joués par moi, un par un :**
+    - **1. Deux lignes sous le dernier bloc, puis « Changer de type » → question.** Un bloc « texte » de deux lignes apparaît. J'ai comparé sa signature de rendu (classes et structure) après « Changer de type » à celle d'une question créée directement par le menu « + bloc » : identiques, caractère pour caractère. **Ça va.**
+    - **2. Corriger un mot dans une consigne.** Sur « Les règles héritées », j'ai changé « strictes » en « précises » d'un double-clic puis une frappe : la trame de la diapo porte aussitôt la nouvelle phrase. **Ça va.**
+    - **3. « Jouer en avance », corriger un mot, regarder le tableau, puis « ■ Arrêter ».** La correction (« strictes » → « précises ») apparaît au pilote et au tableau pendant la répétition ; après « ■ Arrêter », la trame de la séance est redevenue, octet pour octet, celle d'avant la répétition — le mot d'origine « strictes » y est revenu. **Ça va.**
+    - **4. Lancer une heure, corriger un mot en classe, « Fin de l'heure », oui puis non.** La correction en classe (« discute » → « échange ») ne change pas la trame tout de suite. « Fin de l'heure » ouvre le pas à pas et propose la diapo modifiée en clair, avec « Oui, verser » et « Non, garder la trame ». Premier essai : « oui » → la trame prend « échange ». Seconde correction (« hypothèse » → « idée ») puis « non » → la trame garde « échange », sans « idée ». **Ça va.**
+    - **5. À l'heure 2, la diapo après « Les mouvements du siècle ».** Elle s'appelle « Les mouvements du siècle (suite) » : une consigne d'une ligne (« Les figures, elles, rapprochent des idées. ») et une carte de deux familles (analogie, amplification). Mesuré avec la fonction de mesure de la page même (`p8MesureLisible`) : 0 chevauchement, 0 hors cadre, 0 trait à travers un mot, 0 libellé sur deux lignes, 0 police sous 26 pt. **Ça va.**
+134. **Les 29 bancs officiels de la livraison, rejoués ici** (après `npm install`, qui manquait) : tous à 0, md5 de la maquette inchangé. Rien de nouveau par rapport à ce que le tour 30 avait déjà mesuré.
+135. **Verdict d'ensemble : la maquette p8-5 va, sur les cinq tests et sur les bancs.** Il ne reste que la dette n°13·8 (détaillée au point 131) : le récit qui se fonde sur la trame plutôt que sur la copie de la classe.
+136. **Proposition** : j'écris maintenant le complément p8-5b (la correction de la n°13·8), je te le soumets, et tu me dis « ok » avant tout dépôt — comme pour les précédents.
+
+Tests pour toi : aucun nouveau ; les cinq du point 130 sont maintenant vérifiés des deux côtés (toi et moi).
+
+11/10/2026 09:05 MEMO

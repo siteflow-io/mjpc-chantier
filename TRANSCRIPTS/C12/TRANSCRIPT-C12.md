@@ -19663,3 +19663,37 @@ Son banc, que j'ai rejoué moi-même, passe : 18 245 vérifications, zéro éche
 702. **Le rapport d'audit** : https://github.com/siteflow-io/mjpc-chantier/blob/main/AUDITS/MAQUETTE-QCM-COMPLEMENT-1-10-10/README.md
 
 10/10/2026 19:23 MEMO
+
+---
+
+## TOUR 641 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (11/10, 07:54) Ok
+
+---
+
+## TOUR 641 — Claude (conscience n°12)
+
+Vérifié l'état du sas (`main` à `09ae7522`, `maquette-qcm` toujours à `5d1c204d`) et la forme d'un bouton fermé dans `index.html` (l. 860, `.eli-btn:disabled{opacity:.45;cursor:not-allowed}`, md5 de la production inchangé). Écrit `MANDATS/COMPLEMENT-MAQUETTE-QCM-COMPLETE-2.md`.
+
+Réponse mot pour mot :
+
+703. **Le complément 2 est au sas** : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/COMPLEMENT-MAQUETTE-QCM-COMPLETE-2.md
+
+704. **Ce qu'il fait, et rien d'autre.**
+- Les 13 boutons fermés de MJPC prennent l'aspect qu'index.html donne déjà à un bouton fermé : estompés, avec la souris barrée.
+- Leur raison reste lisible au survol.
+- Le banc reçoit une garde de plus : sur ta console, ton téléphone et dans MJPC, un bouton fermé doit se voir fermé. L'exécutant la joue d'abord sur la v6, où elle doit trouver les 13 boutons.
+- Puis il livre la v7, les captures et le livret.
+
+705. **Tu peux relancer l'exécutant maintenant**, dans la même session que les deux premières fois si elle est encore ouverte, sinon dans une nouvelle session cloud sur siteflow-io/mjpc-chantier. Le message à coller :
+
+```
+Tu es l'exécutant du complément 2 de la maquette complète du QCM de MJPC. Lis en entier MANDATS/COMPLEMENT-MAQUETTE-QCM-COMPLETE-2.md sur la branche main de ce dépôt, applique-le à la lettre, et fais tout le complément d'une traite sur la branche maquette-qcm, sans t'arrêter avant la fin de l'étape B.
+```
+
+706. **Quand il a fini, dis-le-moi** : je fais l'audit final du complément 2. Si ça va, je te donne le livret de la v7 à valider.
+
+11/10/2026 07:58 MEMO

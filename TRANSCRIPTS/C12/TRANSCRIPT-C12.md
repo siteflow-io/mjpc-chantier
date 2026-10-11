@@ -19965,3 +19965,37 @@ Réponse mot pour mot :
 757. **Tout cela fait un complément 3 de la maquette**, avant les deux mandats de code, puisqu'il touche aussi les écrans de MJPC. Dès que tu as tranché le point 754, je l'écris. Les mesures sont au sas : https://github.com/siteflow-io/mjpc-chantier/blob/main/AUDITS/MAQUETTE-QCM-REMARQUES-11-10/README.md
 
 11/10/2026 14:10 MEMO
+
+---
+
+## TOUR 651 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (11/10, 14:14) ok
+
+---
+
+## TOUR 651 — Claude (conscience n°12)
+
+Regardé la capture 132 (`c-seances` : rangée par classe, sans niveau, contre le point 465). Écrit `MANDATS/COMPLEMENT-MAQUETTE-QCM-COMPLETE-3.md`.
+
+Réponse mot pour mot :
+
+758. **Acquis : 751 à 757**, sans infobulle sur les écrans d'élève (754).
+
+759. **Le complément 3 est au sas** : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/COMPLEMENT-MAQUETTE-QCM-COMPLETE-3.md. Il fait trois changements. Les explications quittent tes écrans pour aller dans les infobulles et le mode d'emploi, et chaque confirmation n'a plus qu'une phrase. Chaque élément de tes écrans reçoit son infobulle, qui dit ce que c'est et ce que ça fait là, maintenant. Les quatre niveaux sont toujours là, comme dans la dictée, et le tri reçoit « classe ».
+
+760. **Une chose de plus, trouvée en préparant** : dans « Résultats », la liste des séances est rangée par classe, sans niveau, alors que le point 465 la voulait aussi par niveau. Elle reçoit la même règle : les quatre niveaux, et dans chacun ses classes.
+
+761. **Pour que tu puisses relire les infobulles sans passer la souris partout**, le livret en donnera trois en clair sous chaque écran.
+
+762. **Tu peux relancer l'exécutant maintenant**, dans la même session si elle est encore ouverte, sinon dans une nouvelle session cloud sur siteflow-io/mjpc-chantier. Le message à coller :
+
+```
+Tu es l'exécutant du complément 3 de la maquette complète du QCM de MJPC. Lis en entier MANDATS/COMPLEMENT-MAQUETTE-QCM-COMPLETE-3.md sur la branche main de ce dépôt, applique-le à la lettre, et fais tout le complément d'une traite sur la branche maquette-qcm, sans t'arrêter avant la fin de l'étape C.
+```
+
+763. **Quand il a fini, dis-le-moi** : je fais l'audit final. Les deux mandats de code attendent la v8.
+
+11/10/2026 14:16 MEMO

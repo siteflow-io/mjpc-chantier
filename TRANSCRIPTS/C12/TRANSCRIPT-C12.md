@@ -19697,3 +19697,27 @@ Tu es l'exécutant du complément 2 de la maquette complète du QCM de MJPC. Lis
 706. **Quand il a fini, dis-le-moi** : je fais l'audit final du complément 2. Si ça va, je te donne le livret de la v7 à valider.
 
 11/10/2026 07:56 MEMO
+
+---
+
+## TOUR 642 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (11/10, 07:57) montre moiu une capture du défaut
+
+---
+
+## TOUR 642 — Claude (conscience n°12)
+
+Capture de la scène `m-classe-exclusions` de la v6 (md5 `60778845…`, relu sur la branche) dans Chromium ; à côté, la même scène où les 13 boutons fermés reçoivent l'aspect fermé d'`index.html` (l. 860), pour l'aperçu. Pièce jointe : `pieces/T642-defaut-boutons-fermes-mjpc.png`.
+
+Réponse mot pour mot :
+
+707. **La capture est jointe** (defaut-boutons-fermes-mjpc.png). À gauche, la v6 telle que l'exécutant l'a livrée. Dans le menu, seules « 👥 Élèves & codes » et « 📚 Taxonomie » s'ouvrent, et dans l'encart de la clé, tout s'ouvre sauf « Code professeur ». Les 12 autres entrées et « Code professeur » sont fermées, et rien ne le montre.
+
+708. **À droite, un aperçu de ce que le complément 2 doit donner**, fait par moi sur la même scène pour te le montrer : l'aspect fermé qu'index.html a déjà, estompé. Ce n'est pas la livraison : c'est l'exécutant qui la fera, avec sa garde.
+
+709. **Rien ne change pour la relance** : le message du point 705 vaut toujours. La capture est aussi au sas : https://github.com/siteflow-io/mjpc-chantier/blob/main/AUDITS/MAQUETTE-QCM-COMPLEMENT-1-10-10/captures/defaut-boutons-fermes-mjpc.png
+
+11/10/2026 07:59 MEMO

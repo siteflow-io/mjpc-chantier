@@ -1,0 +1,7 @@
+p8RendreNotes : le panneau suit la diapo, toujours : 234 → 256 o
+p8NouvelleNote : le focus dans le même geste : 142 → 202 o
+p8RendreNotes : 2883 o / 7 lignes → 2905 o / 7 lignes
+p8NouvelleNote : 670 o / 1 lignes → 730 o / 1 lignes
+généré maquette-pilotage-ordi-v9c15p8-manipulable.html 592212 octets · bloc repris 92432
+f4a3f4c14124041279fef059b5a429b6  v9c15p8-template.html
+da37e0f02091399a6b3b1750814d9034  maquette-pilotage-ordi-v9c15p8-manipulable.html

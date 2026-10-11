@@ -1,0 +1,4 @@
+focus dans la note à la fin de la frappe, diapo 1 : true
+tapé sur la diapo 1 avant le changement : « Silence, puis on observe. »
+{"diapo":2,"cle":"0|eabceb6cb","cles":["0|eabceb6cb"],"focus":false,"note1":"t trois lignes.Silence, puis on observe."}
+panneau = diapo courante : true · focus rendu : true · tapé entier dans la diapo 1 : true · erreurs JS : 0

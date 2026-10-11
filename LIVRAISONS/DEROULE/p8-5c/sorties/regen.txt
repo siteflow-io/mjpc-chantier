@@ -1,0 +1,40 @@
+insertion du code p8-5c : 20 → 17483 o
+entête : « RÉPÉTITION · » devant les onglets : 22 → 233 o
+entête : le chrono et le repère de la répétition, après l'horloge : 45 → 241 o
+entête : « ■ Arrêter » à la place de « Fin de l'heure » : 149 → 323 o
+lancerRepetition : l'entête change de classe : 592 → 235 o
+arreterRepetition : l'entête redevient normal : 83 → 100 o
+la barre : « ab » et « A » à la place des cinq carrés : 591 → 1738 o
+les branchements des carrés, retirés : 146 → 99 o
+Ctrl+H : le jaune direct, aux deux cibles : 100 → 170 o
+surligner : une sélection ailleurs le dit : 118 → 245 o
+surligne : la couleur du texte au rendu : 283 → 736 o
+l'état de la diapo : la couleur du texte : 29 → 65 o
+tout : le panneau des notes : 115 → 83 o
+menuAtelierMur : les notes suivent les éléments : 292 → 518 o
+brancherAtelier : Entrée, les notes suivent : 32 → 95 o
+brancherAtelier : Échap, les notes suivent : 24 → 85 o
+supprimerBloc : les notes du bloc reviennent à ⌂ : 80 → 130 o
+deplacerBloc : les notes suivent : 111 → 163 o
+couperDiapoIci : les notes suivent dans la diapo « (suite) » : 78 → 162 o
+menuAtelierMur : dupliquer un bloc, les notes suivent : 69 → 124 o
+menuAtelierMur : couper un bloc, ses notes reviennent à ⌂ : 97 → 147 o
+menuAtelierMur : coller un bloc, les notes suivent : 80 → 135 o
+p8ChangerType : le schéma part, ses notes reviennent à ⌂ : 53 → 100 o
+p8ChangerType : les notes suivent : 29 → 150 o
+le style : répétition, notes, mise en forme : 21 → 3230 o
+lancerRepetition : 1620 o / 1 lignes → 1263 o / 1 lignes
+arreterRepetition : 860 o / 1 lignes → 877 o / 1 lignes
+surligner : 789 o / 1 lignes → 916 o / 1 lignes
+surligne : 283 o / 1 lignes → 736 o / 1 lignes
+tout : 5454 o / 13 lignes → 5422 o / 13 lignes
+brancherAtelier : 3843 o / 6 lignes → 3967 o / 6 lignes
+menuAtelierMur : 7578 o / 4 lignes → 7964 o / 4 lignes
+supprimerBloc : 468 o / 1 lignes → 518 o / 1 lignes
+deplacerBloc : 348 o / 1 lignes → 400 o / 1 lignes
+couperDiapoIci : 617 o / 1 lignes → 701 o / 1 lignes
+p8ChangerType : 1648 o / 8 lignes → 1816 o / 8 lignes
+p8-5c.js : 17463 o, 26 fonctions (p8MigrerNotes 389 o, p8NotesDe 164 o, p8Ancres 241 o, p8RangDe 115 o, p8TrierNotes 140 o, p8Assainir 575 o, p8ModeNotes 98 o, p8RendreNotes 2883 o, p8NoteEnregistree 85 o, p8NoteCle 104 o, p8NoteRang 91 o, p8NoteEcran 101 o, p8EcrireNote 472 o, p8NouvelleNote 670 o, p8Reaccrocher 940 o, p8NotesMap 418 o, p8NotesElement 477 o, p8NotesBloc 406 o, p8NotesCouper 455 o, p8Dire 84 o, p8Cible 515 o, p8CouleurTexte 837 o, p8FormerNote 672 o, p8Former 879 o, p8TraitCouleur 205 o, p8FermerPalettes 114 o)
+généré maquette-pilotage-ordi-v9c15p8-manipulable.html 592132 octets · bloc repris 92432
+2b2f475aa21d539c3953f061a39fc1b9  v9c15p8-template.html
+abbf3d2f61e52cf64e33670c907e8983  maquette-pilotage-ordi-v9c15p8-manipulable.html

@@ -1,0 +1,38 @@
+p8-5c-repetition-avant.png · p8-5, 1280 px : le bandeau posé par-dessus l'entête ; ⧉ Tableau sous le doigt : false, 🖥 Écran 2 sous le doigt : true
+p8-5c-repetition-apres.png · p8-5c, 1280 px : RÉPÉTITION · … · répét. 00:02 · diapo 1, dévoilée 1 / 6 ; aucun bandeau ; ⧉ Tableau, 🖥 Écran 2, ■ Arrêter sous le doigt
+15 · 1280 px : position:fixed avant = après (gc-apercu,p8-banc,p8-mesureur,ppop,vif-palette) ; « Fin de l'heure » caché ; ⧉ Tableau false → true ; « ■ Arrêter » rend « rgb(20, 17, 16) »
+15 · 1920 px : position:fixed avant = après (gc-apercu,p8-banc,p8-mesureur,ppop,vif-palette) ; « Fin de l'heure » caché ; ⧉ Tableau false → true ; « ■ Arrêter » rend « rgb(20, 17, 16) »
+16 · la note d'avant de la diapo 1, une chaîne rangée « 0|0 » : lue comme le paragraphe ⌂ « Dire que le tableau des trois colonnes est au brouillon, pas… »
+p8-5c-notes-classe-3-6.png · heure lancée, dévoilée 3 / 6 : ⌂ estompé · 1 estompé · 3 vif · 5 lisible · 6 lisible
+16 · ◀ : ⌂ estompé · 1 vif · 3 lisible · 5 lisible · 6 lisible ; journal pendant la lecture : 4 entrée(s), sans note ; copie inchangée
+p8-5c-atelier-ancres.png · atelier, le repère du 3ᵉ paragraphe cliqué :  ⌂ à l'arrivée sur la diapo | 0.0 1 · Étape 1 : J'observe les images en silenc… | 0.1 2 · Étape 2 : Je discute en groupe de ce que… | 0.2 3 · Étape 3 : Au brouillon, dans un tableau … | 0.3 4 · Étape 4 : Je choisis de quel élément je … | 0.4 5 · Étape 5 : À partir de cet élément, je fa… | 0.5 6 · Étape 6 : J'expose mon hypothèse à l'ora…
+17 · Entrée après l'étape 3 : repère 3 ; réaccroché à 5 ; revenu sur la diapo : 3 paragraphes ; étape 5 supprimée : [{"p":null,"html":"Dire que le tableau "},{"p":null,"html":"Second."},{"p":"0.2","html":"Premier."}]
+17 · couper la diapo 11 après l'étape 3 : « Les règles héritées (suite) » ; reste [{"p":"0.2","html":"Trois."}] ; suit [{"p":"0.0","html":"Fiche."}]
+17 · taper pendant l'animation accélérée : 9 états vus, sur 3 diapo(s) (0|e9fcd9fc2 0, 0|e9fcd9fc2 1, 0|e9fcd9fc2 2, 0|e9fcd9fc2 3, 0|e9fcd9fc2 4, 0|e9fcd9fc2 5, 0|e9fcd9fc2 6, 0|eabceb6cb 0, 0|e0e7c113e 0) ; le paragraphe neuf dit « Silence, puis on observe les tableaux sans commenter. », le focus est resté
+p8-5c-palette.png · heure lancée, « A » cliqué, la sélection « en silence » gardée, palette de 5 boutons ouverte
+p8-5c-tableau-forme.png · la fenêtre du tableau : {"m":["MARK:rgb(255, 233, 74):observe les images"],"c":["SPAN:rgb(192, 57, 43):en silence"]}
+18 · au tableau, étape 1 : « ab » jaune, « A » rouge, ✕ ; Ctrl+H jaune sur l'étape 3 ; la fenêtre du tableau suit ; une sélection ailleurs : « sélectionne d'abord le texte à surligner — dans la diapo ou dans tes notes »
+p8-5c-notes-forme.png · le paragraphe : Attendu : <mark data-coul="vert">nature</mark>, solitude, <span data-coul="bleu">sublime</span>.
+19 · dans les notes : vert, bleu, ✕ → « Attendu : nature, solitude, sublime. » ; journal et mur inchangés
+20 · la barre à 1280 : avant 776 px, après 738 px ; scène à 944, ▶ à 884, compteur à 940
+21 · ça va       · ▶ Dévoiler (trois clics) — 3 / 6 dévoilés
+21 · ça va       · ◀ (un clic) — 2 / 6 dévoilés
+21 · ça va       · ✦ Mettre en lumière — armé=true, éléments allumés=1, outil reposé=true
+21 · ça va       · ✍ À écrire — marqués=["1"]
+21 · ça va       · ⊞ Toutes les diapos — ouvert=true, vignettes=23/23, Échap ferme=true
+21 · ça va       · Surligner en jaune — marques=["rgb(255, 233, 74)"]
+21 · ça va       · ✕ retirer le surlignage jaune — marques restantes=0
+21 · ça va       · Surligner en vert — marques=["rgb(182, 240, 194)"]
+21 · ça va       · ✕ retirer le surlignage vert — marques restantes=0
+21 · ça va       · Surligner en rose — marques=["rgb(255, 201, 214)"]
+21 · ça va       · ✕ retirer le surlignage rose — marques restantes=0
+21 · ça va       · Surligner en bleu — marques=["rgb(188, 217, 255)"]
+21 · ça va       · ✕ retirer le surlignage bleu — marques restantes=0
+21 · ça va       · 🔍 Loupe — armée=true, cadre pendant le tracé=true, zone agrandie=true, second clic remet la diapo=true
+21 · ça va       · ❄ Gel — gel=true, dégel=true
+21 · ça va       · 👥 Qui a participé — affiché=true, retiré=true
+21 · ça va       · ⋯ Menu + Chrono au tableau — menu=true, entrées=chrono,qui,reserve,docs,oral,notion,appel, chrono posé=true, retiré=true
+21 · ça va       · Texte au tableau (curseur) — diapo 8 « Question-bilan » : 32 pt 22.85px → 44 pt 31.42px
+21 · ça va       · Garde « La classe te suivrait » au changement de diapo — ouverte=true
+21 · ça va       · Surligner dans « Notes pour cette diapo » — marques dans les notes=1, message=«  »
+21 · bilan : 20 ça va, 0 ça ne va pas, sur 20

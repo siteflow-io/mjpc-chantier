@@ -1229,3 +1229,39 @@ Tests pour toi : aucun nouveau ; les cinq du point 130 sont maintenant vérifié
 11/10/2026 09:05 MEMO
 
 137. **Ma faute, déclarée** : pour jouer les tests, j'ai extrait les fichiers de la livraison p8-5 (`git checkout origin/deroule/p8-5 -- LIVRAISONS/DEROULE/p8-5`) directement dans ma copie de travail de `main`. Au moment de déposer ce tour, j'ai commis `TRANSCRIPTS/C13/TRANSCRIPT-C13.md` en pensant ne viser que ce fichier, mais ces 64 fichiers de la livraison, déjà présents dans l'index, sont partis avec — poussés sur `main` du sas par erreur (commit `30a72fa`). Je l'ai vu en relisant le résultat du push, et je l'ai corrigé tout de suite (commit `0c0d68b`, retrait de ces 64 fichiers de `main` — ils restent sur leur branche `deroule/p8-5`, où ils doivent être). Relu : `main` ne porte plus que les documents du sas.
+
+---
+
+## TOUR 33 — Paul
+
+[Capture jointe : le pilotage en répétition, maquette p8-5, sur « Analyse d'images : la routine ». On y voit le bandeau « JOUER EN AVANCE — RÉPÉTITION » recouvrir la zone des boutons « ⧉ Tableau », « 🖥 Écran 2 » et « Fin de l'heure », et un liseré doré fin tout en haut du cadre.]
+
+Texte de Paul, mot pour mot :
+
+> qquelque chose qui ne va pas, c'est le jeu en avance qui fait "dézoomer" la page (insertion d'un liseré autour du cadre de la page) et donc qui va jouer sur les positions, je pense, et surtout, le bandeau qui cache totalement des boutons dont j'ai besoin, et qui donne une version "brouilllon" du jeu en avance. il me faut quelque chose de propre.
+
+---
+
+## TOUR 33 — Claude (C13)
+
+Lu dans la maquette p8-5 (`.rep-bandeau`, `.rep-etat`, `lancerRepetition`) : un bandeau rayé (6 px, pleine largeur, fixe, z-index 99) tout en haut, et une pastille dorée centrée (position fixe, largeur propre au texte qu'elle porte), toutes deux ajoutées PAR-DESSUS l'entête existant, sans lui faire de place. Mesuré avec Playwright, plusieurs largeurs de fenêtre (1280 à 1920 px) : à 1280 px, la pastille chevauche réellement le bouton « ⧉ Tableau » ; à 1366 px et plus, elle n'empiète plus, de peu. Mesuré aussi : les dimensions du document, de `#mur`, et les styles `transform`/`zoom`/`border` de `html` et `body`, avant et pendant la répétition — strictement identiques, aucune mise à l'échelle, aucune barre de défilement ajoutée. Rien déposé.
+
+Réponse mot pour mot :
+
+138. **Le bandeau qui cache les boutons : confirmé, mesuré.** La pastille « JOUER EN AVANCE — RÉPÉTITION » est ajoutée par-dessus l'entête, sans lui réserver de place ; à la largeur de ta fenêtre (je ne la connais pas), elle peut recouvrir « ⧉ Tableau », « 🖥 Écran 2 » ou « Fin de l'heure ». Mesuré chez moi : ça arrive déjà à 1280 px de large. **Ça ne va pas.**
+139. **Le « dézoom » et le liseré : je ne l'ai pas retrouvé.** J'ai mesuré `#mur`, le document, et les styles de la page avant et pendant la répétition : rien ne change, au pixel près — ni échelle, ni bordure, ni barre de défilement. Je ne sais pas d'où vient ce que tu vois. Mon hypothèse, à vérifier avec toi : c'est le bandeau rayé doré/noir de 6 px tout en haut (`.rep-bandeau`), qui, ajouté à la pastille dorée juste en dessous, peut donner l'impression d'un cadre posé sur la page — sans qu'il y ait de mise à l'échelle réelle. Si je retire ce bandeau et la pastille flottante (proposition ci-dessous), dis-moi si l'impression de « dézoom » part avec.
+140. **Dette consignée** : registre, section n°13, n°13·9.
+141. **Ce que je propose, pour que ce soit propre** (rien codé, j'attends ton mot) :
+    - retirer le bandeau rayé du haut et la pastille flottante ;
+    - pendant la répétition, l'entête existant change de fond (teinte dorée sourde, comme les autres états « hors classe » du site) — un signal clair, sans rien ajouter par-dessus ;
+    - dans la bande de titre déjà là (« Diapo X sur Y · heure Z… »), un mot devant : « RÉPÉTITION · » ;
+    - les trois boutons qui ne servent à rien en répétition (« ⧉ Tableau », « 🖥 Écran 2 », « Fin de l'heure ») disparaissent de l'entête, remplacés par un seul bouton à leur place : « ■ Arrêter » ;
+    - le chrono et « diapo X, dévoilée Y/Z » rejoignent la même bande de titre, à la suite.
+
+    Rien ne flotte plus par-dessus l'existant ; rien n'est caché.
+
+    **Ton mot** : si tu valides cette direction, j'écris le complément et je te le soumets avant tout dépôt, comme d'habitude.
+
+Tests pour toi : aucun pour l'instant.
+
+11/10/2026 09:18 MEMO

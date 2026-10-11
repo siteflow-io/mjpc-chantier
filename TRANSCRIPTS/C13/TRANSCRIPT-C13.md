@@ -1279,3 +1279,12 @@ La transcription mot pour mot de ces six tours a été interrompue par un arrêt
 146. Tour 38 — Paul : « le plus ergonomique et lisible ». Proposition tranchée de la conscience (points 4-6 du cadrage « notes de présentateur », pièce `T38-notes-proposition.png`, montage `T38-montage-notes.mjs`) : toute la note visible, le paragraphe du dernier élément dévoilé en vif, repère d'accroche en marge (numéro d'élément, ⌂ = à l'arrivée), un seul texte par diapo, accroche automatique à l'élément où était le curseur, correction par clic sur le repère. **Paul : « Ok. »** (tour 39).
 147. Tour 39 — Paul : mise en forme des notes de présentateur avec les boutons de la barre sous la diapo, ajouter la couleur du texte, et vérifier que tous ces boutons fonctionnent. Banc par le geste `T39-banc-outils.mjs` (heure lancée, clics, sélections à la souris, glisser) : 19 ça va sur 20 — le seul « ça ne va pas » est le surlignage dans les notes, qui ne fait rien, sans message. Trouvé en passant : `policeReduite` est calculé mais jamais affiché (le curseur « texte au tableau » peut annoncer 44 pt quand la diapo pleine reste à ~33 pt).
 
+
+---
+
+## TOURS 40 à 42 (11/10/2026, 13:40 → 14:13)
+
+148. Tour 40 — Paul : « Je veux voir sur captures. » Montage sur la maquette : les 4 carrés de surlignage existants + 4 « A » colorés + ✕ dans la barre, surlignage et couleur de texte posés sur l'étape 3 au tableau et sur la note vive. Envoyé en écran entier et en zoom.
+149. Tour 41 — Paul : « Non justement ça ne va pas. TU vois bien que l'ajout des boutons fait décaler les flèches de dévoilement. Donc il faut un bouton pour le surlignage, un bouton pour le texte couleur, et quand je clique dessus, je sélecitonne la couleur que je veux. comme dans word quoi ». **Faute de la conscience** : la barre débordait (« ◀ » et « ▶ Dévoiler » poussés hors du cadre), visible sur la capture envoyée, pas vue. Refait : deux boutons ronds « ab » (surligner, trait jaune) et « A » (couleur du texte, trait de la couleur courante), palette au clic (4 couleurs + ✕), Ctrl+H reste le jaune direct. Mesuré cette fois : bord droit de la scène 944 px, ◀ 784, ▶ Dévoiler 872, compteur 928 — dans le cadre (pièces `T41-couleurs-ecran.png`, `T41-couleurs-zoom.png`, montage `T41-montage-couleurs.mjs`).
+150. Tour 42 — Paul : « Voilà. » **Validé.** Les trois sujets du jour sont tranchés : la répétition propre (13·9), les notes de présentateur (13·10), la mise en forme à deux boutons et palette (13·11). Complément p8-5c à écrire et à soumettre à Paul avant dépôt.
+

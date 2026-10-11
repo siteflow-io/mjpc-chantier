@@ -19696,4 +19696,4 @@ Tu es l'exécutant du complément 2 de la maquette complète du QCM de MJPC. Lis
 
 706. **Quand il a fini, dis-le-moi** : je fais l'audit final du complément 2. Si ça va, je te donne le livret de la v7 à valider.
 
-11/10/2026 07:58 MEMO
+11/10/2026 07:56 MEMO

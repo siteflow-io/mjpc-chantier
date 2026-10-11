@@ -6,6 +6,8 @@
 
 *Il a acquis les propositions de la conscience (points 751 à 757 du cadrage) par « ok » à 14:14.*
 
+*À 14:19, avec une capture de l'éditeur (`TRANSCRIPTS/C12/pieces/T653-infobulle-coupee.png`) : « Non mais le livret n'a plus de raison d'être maintenant qu'on a la maquette. par ailleurs regarde. » La capture montre l'infobulle de « 🎯 Ce qu'elle vérifie » : son texte sort de sa bulle noire, écrit en blanc par-dessus la ligne d'en dessous (§2, changement 2, « Une infobulle se lit en entier »).*
+
 *Ce complément s'adresse à l'exécutant de la maquette complète du QCM, en session cloud de Claude Code, dans le dépôt du sas `siteflow-io/mjpc-chantier`.*
 
 *Restent en vigueur en entier :*
@@ -88,7 +90,19 @@ Cela concerne aussi les vues de Paul : la console, le téléphone et MJPC.
 
 **Les infobulles d'aujourd'hui restent mot pour mot** (§1.4). Les explications déplacées par le changement 1 y prennent place.
 
-**Les écrans des élèves et le tableau restent sans infobulle** (règle de Paul du 06/10 : côté élève, jamais de consigne en infobulle ; point 754). Pour Paul, ce que fait chacun de ces écrans est dit dans la phrase du livret.
+**Une infobulle se lit en entier**, qu'elle soit celle du navigateur (`title`) ou une bulle « i » (`.info-i` / `.info-tip`, celles de l'app d'aujourd'hui) :
+- son texte passe à la ligne dans sa bulle et n'en sort jamais. Elle n'hérite jamais d'un `white-space: nowrap` ;
+- sa bulle tient tout entière dans la fenêtre : elle se décale vers la gauche ou vers la droite près d'un bord, et s'ouvre vers le haut quand la place manque en bas ;
+- rien ne la recouvre.
+
+**Ce qui a été mesuré dans la v7** : 365 bulles « i » ont été survolées dans toutes les scènes, à 1366 × 768 (`AUDITS/MAQUETTE-QCM-REMARQUES-11-10/sorties/info-i-v7.txt`).
+- **5 sortent de leur bulle**, celle que montre la capture de Paul : « 📚 Chapitre » et les quatre « 🎯 Ce qu'elle vérifie » de `x627-3-editeur`. La cause est que leur étiquette `.ed-lbl`, une classe de la maquette, porte `white-space: nowrap`, et que la bulle en hérite. Le texte de 269 caractères tient alors sur une ligne, qui sort de la bulle noire de 280 px et s'écrit en blanc sur la page.
+- **30 sont coupées par le bord de la fenêtre** : « Classe » et « Mode » de « Lancer une nouvelle session », « 📋 Toutes les questions »…
+- **13 sont coupées en bas.**
+
+Les autres relevés de ce fichier (« ne s'ouvre pas ») sont des bulles derrière une fenêtre ouverte, et ce n'est pas un défaut.
+
+**Les écrans des élèves et le tableau restent sans infobulle** (règle de Paul du 06/10 : côté élève, jamais de consigne en infobulle ; point 754). Pour Paul, ce que fait chacun de ces écrans est dit dans sa phrase du sommaire ⚙ « Scènes de la maquette ».
 
 ### Changement 3 — les évaluations et les séances rangées comme la dictée
 
@@ -135,6 +149,12 @@ Elles entrent dans le banc unique, avec les gardes 1 à 8. Elles lisent aussi l'
 3. Une infobulle a au moins une phrase complète, qui finit par un point.
 4. Les infobulles d'aujourd'hui, celles de l'inventaire de l'existant (garde 1), sont toujours là, mot pour mot.
 5. Dans les scènes de tablette, d'élève et de tableau, aucune infobulle.
+6. Par le geste, chaque bulle « i » des vues de Paul s'ouvre au survol, aux trois tailles de la console, et elle se lit en entier :
+   - son texte ne dépasse pas de sa bulle (`scrollWidth` ≤ `clientWidth`) ;
+   - sa bulle est tout entière dans la fenêtre ;
+   - en six points de la bulle, `document.elementFromPoint` rend la bulle.
+
+   Une bulle derrière une fenêtre ouverte de la scène n'est pas jouée.
 
 ### Garde 11 — les niveaux toujours là
 
@@ -147,7 +167,9 @@ Elles entrent dans le banc unique, avec les gardes 1 à 8. Elles lisent aussi l'
 
 Tu joues les gardes 9, 10 et 11 sur la v7. Elles doivent y trouver leurs défauts connus :
 - la garde 9, les trois explications citées au §2 ;
-- la garde 10, des centaines d'éléments sans infobulle : 866 affichages et 269 gestes au relevé de la conscience, avec sa propre définition ;
+- la garde 10 :
+  - des centaines d'éléments sans infobulle : 866 affichages et 269 gestes au relevé de la conscience, avec sa propre définition ;
+  - dans sa partie 6, les 5 bulles qui sortent de leur cadre, et des bulles coupées par la fenêtre ;
 - la garde 11, les niveaux absents de `c-evals` et de `c-seances`.
 
 La sortie va dans `sorties/gardes-9-10-11-sur-v7.txt`. Une garde qui ne trouve pas son défaut connu n'est pas une garde : tu la refais avant d'aller plus loin.
@@ -162,7 +184,7 @@ Chaque étape finit par sa garde, puis par un commit poussé sur `maquette-qcm` 
 | --- | --- | --- |
 | **A — les gardes** | La fusion de `main` ; les md5 ; les gardes 9, 10 et 11 dans le banc ; `textes-console.json`, le classement des textes. | Les gardes jouées sur la v7 trouvent leurs défauts connus (`sorties/gardes-9-10-11-sur-v7.txt`). |
 | **B — les textes et les listes** | Le changement 1 (les explications quittent l'écran, les fenêtres de confirmation resserrées) et le changement 3 (les niveaux, le tri « classe »). | Le banc entier, à zéro défaut, sauf la garde 10. |
-| **C — les infobulles et la livraison** | Le changement 2, scène par scène ; `maquette-qcm-v8.html` et son md5 ; toutes les captures refaites et regardées ; `livret-maquette-qcm-v8.pdf` ; le README (section « Complément 3 » en tête), `DEFAUTS.md` à partir du n°54, `POINT-SCENE.md`. | Le banc final, gardes 1 à 11 comprises, sur la v8, à zéro défaut (`sorties/banc-final-v8.txt`). |
+| **C — les infobulles et la livraison** | Le changement 2, scène par scène ; `maquette-qcm-v8.html` et son md5 ; toutes les captures refaites et regardées (elles servent au banc et à l'audit ; il n'y a plus de livret, Paul valide sur la maquette elle-même) ; le README (section « Complément 3 » en tête), `DEFAUTS.md` à partir du n°54, `POINT-SCENE.md`. | Le banc final, gardes 1 à 11 comprises, sur la v8, à zéro défaut (`sorties/banc-final-v8.txt`). |
 
 Pour les infobulles, écris-les par composant : chaque type d'élément (une pastille de niveau de maîtrise, une carte de tablette, un chrono, une ligne de séance…) reçoit sa fonction d'infobulle, qui lit l'état de la scène. Ainsi, la même pastille dit la bonne chose partout.
 
@@ -175,7 +197,7 @@ Elle va sur la branche `maquette-qcm`, dans `MANDATS/MAQUETTE-QCM-COMPLETE/` :
 2. `banc/existant/textes-console.json` ;
 3. `sorties/gardes-9-10-11-sur-v7.txt` et `sorties/banc-final-v8.txt` ;
 4. `captures/` refait ;
-5. `livret-maquette-qcm-v8.pdf`. Sous chaque capture d'une vue de Paul, en plus de la phrase, **trois infobulles de cet écran, écrites en clair**, pour qu'il les lise sans la souris ;
+5. **plus de livret** (Paul, 14:19 : « le livret n'a plus de raison d'être maintenant qu'on a la maquette ») ;
 6. le README, avec en tête la section « Complément 3 » :
    - les trois changements, avec des scènes qui les montrent ;
    - le compte des textes déplacés, et vers où ;
@@ -187,4 +209,4 @@ Zéro trou, zéro dette, zéro défaut : le banc final le prouve.
 
 ## 6. Après l'étape C
 
-Tu t'arrêtes, une seule fois. La conscience fait l'audit final du complément 3, puis Paul valide sur la maquette et le livret. Tu ne fusionnes rien dans `main`.
+Tu t'arrêtes, une seule fois. La conscience fait l'audit final du complément 3, puis Paul valide sur la maquette. Tu ne fusionnes rien dans `main`.

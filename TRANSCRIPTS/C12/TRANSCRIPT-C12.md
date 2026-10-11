@@ -20017,3 +20017,31 @@ Réponse mot pour mot :
 764. **761, dit autrement.** Le livret, c'est le PDF : une capture par écran, avec une phrase dessous. Or une capture ne peut pas montrer les infobulles, puisqu'elles n'apparaissent qu'au passage de la souris. Sous chaque capture de tes écrans, le livret écrira donc trois infobulles de cet écran en texte, par exemple : « Au survol de « +5 » : ajoute 5 secondes au temps de réponse du tour en cours, pour toutes les tablettes. » Tu peux ainsi juger leur style en lisant le PDF, sans ouvrir la maquette. Pour toutes les voir, il reste la maquette elle-même, à la souris.
 
 11/10/2026 14:19 MEMO
+
+---
+
+## TOUR 653 — Paul
+
+Texte de Paul, mot pour mot, avec une capture (`pieces/T653-infobulle-coupee.png`) :
+
+> (11/10, 14:19) Non mais le livret n'a plus de raison d'être maintenant qu'on a la maquette. par ailleurs regarde.
+
+---
+
+## TOUR 653 — Claude (conscience n°12)
+
+Reproduit la capture dans Chromium (`x627-3-editeur`, survol du « i » de « Ce qu'elle vérifie » : bulle de 280 × 42 px, `white-space: nowrap` hérité de `.ed-lbl`). Survolé les 365 bulles « i » des 169 scènes (`AUDITS/MAQUETTE-QCM-REMARQUES-11-10/scripts/bulles-i.js`) ; vérifié deux « ne s'ouvre pas » (fenêtres ouvertes). Complément 3 mis à jour : plus de livret, une bulle se lit en entier, garde 10.6. Branche de l'exécutant vérifiée : rien de poussé depuis `c6611fb3`.
+
+Réponse mot pour mot :
+
+765. **Compris : plus de livret.** Tu valides sur la maquette elle-même, donc le point 761 tombe, et je l'ai retiré du complément 3. Les captures restent, pour le banc et pour mon audit.
+
+766. **Ta capture : vu, et mesuré.** L'infobulle de « 🎯 Ce qu'elle vérifie » sort de sa bulle. Son texte tient sur une seule ligne, qui dépasse la bulle noire et s'écrit en blanc par-dessus la ligne d'en dessous : d'où le « dépétences » illisible. La cause : l'étiquette de ce champ, ajoutée par la maquette, interdit le retour à la ligne, et la bulle en hérite.
+
+767. **J'ai survolé une à une les 365 bulles « i » de la maquette.** 5 sortent ainsi de leur bulle : « Chapitre » et les quatre « Ce qu'elle vérifie » de l'éditeur. 30 sont coupées par le bord de la fenêtre, par exemple celle de « Classe » au lancement, qui perd sa première lettre. 13 sont coupées en bas.
+
+768. **Le complément 3 les règle ; il est mis à jour au sas** : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/COMPLEMENT-MAQUETTE-QCM-COMPLETE-3.md. Une infobulle se lit toujours en entier : son texte passe à la ligne dans sa bulle, et la bulle se décale ou s'ouvre vers le haut pour rester dans l'écran. Le banc survole chaque bulle de tes écrans aux trois tailles, et refuse celle qui ne se lit pas en entier.
+
+769. **Pour la relance** : rien n'est encore poussé sur la branche de l'exécutant. S'il n'est pas lancé, le message du point 762 vaut tel quel. S'il tourne déjà, il a lu l'ancienne version : dis-le-moi, et je vérifierai à l'audit ce qu'il en a fait.
+
+11/10/2026 14:26 MEMO

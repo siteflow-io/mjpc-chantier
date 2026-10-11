@@ -31,3 +31,16 @@ La maquette (`c-evals`, capture 1) n'affiche que les niveaux qui ont une évalua
 Une évaluation déclare son chapitre de MJPC (points 316, 317 ; le prompt, `{{CHAPITRE}}`), et ce chapitre porte son niveau. La maquette affiche « 3e · Ch. 1 » et range l'évaluation sous « 3e ».
 
 Dans `index.html`, une évaluation QCM se lie à un chapitre comme une dictée : par 🔗 en mode admin (l. 4295-4310, l. 3806). Les 7 évaluations du hub n'ont pas de chapitre : elles sont « Sans chapitre ».
+
+## 5. Les bulles « i » (ajout de 14:25, tour 653 : la capture de Paul, `TRANSCRIPTS/C12/pieces/T653-infobulle-coupee.png`)
+
+On a survolé, par le geste, les 365 bulles « i » (`.info-i` / `.info-tip`) de toutes les scènes, à 1366 × 768 (`scripts/bulles-i.js`, `sorties/info-i-v7.txt`).
+
+- **5 sortent de leur bulle** : « 📚 Chapitre » et les quatre « 🎯 Ce qu'elle vérifie » de `x627-3-editeur`, ce que montre la capture de Paul.
+  - La cause (`scripts/bulle-nowrap.js`) : l'étiquette `.ed-lbl`, une classe de la maquette, porte `white-space: nowrap`, et la bulle en hérite.
+  - Le texte de 269 caractères tient alors sur une ligne, qui sort de la bulle noire de 280 × 42 px et s'écrit en blanc sur la page.
+- **30 sont coupées par le bord de la fenêtre.** Par exemple, la bulle de « Classe » de « Lancer une nouvelle session » perd sa première lettre (`sorties/bulle-classe-coupee-c-lancer.png`) ; « Mode » et « 📋 Toutes les questions » sont coupées aussi.
+- **13 sont coupées en bas.**
+- Les 94 relevés « ne s'ouvre pas » sont des bulles derrière une fenêtre ouverte de la scène. Ce n'est pas un défaut : deux sont vérifiés, `c-voir-tablette` et `c-appel`.
+
+Je ne sais pas si la 7.7.1 coupe aussi la bulle de « Classe » : cela n'a pas été mesuré.

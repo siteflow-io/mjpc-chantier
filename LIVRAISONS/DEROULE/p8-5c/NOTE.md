@@ -142,18 +142,31 @@ Tailles relevées par le patch (`sorties/regen.txt`) ; j'ai relu chaque fonction
 
 ## Le banc unique, résultat
 `sh bancs/tous-les-bancs.sh` → `sorties/tous-les-bancs.txt`
-RÉSULTAT_BANC_UNIQUE
+Trois passages, sur la même maquette (md5 `abbf3d2f61e52cf64e33670c907e8983`). Node v22.22.0, Playwright 1.56.1, Chromium 141.0.7390.37.
+- **Passage 1** (12:56 UTC) : **ÉCHEC**, 29 bancs sur 30 à 0. `test-d-p7` n'a pas pu ouvrir la maquette : `page.goto: Timeout 30000ms exceeded`, à sa première ligne, avant tout geste. Sortie gardée : `sorties/tous-les-bancs-passage1-echec.txt`.
+- **Passage 2** (13:12 UTC) : **ÉCHEC**, 29 sur 30. Cette fois, c'est `test-p5-p7`, avec le même `page.goto` bloqué à sa première ligne. Sortie gardée : `sorties/tous-les-bancs-passage2-echec.txt`.
+- **Passage 3** (13:30 UTC) : **30 bancs, 30 × « fin : 0 défaut(s) », « TOUS LES BANCS : 0 défaut »**. Sortie : `sorties/tous-les-bancs.txt`.
+
+**Ce que j'ai cherché sur ce blocage, sans trouver la cause** :
+- Rejoués seuls, `test-d-p7` et `test-p5-p7` sont à 0.
+- Le chargement isolé ne bloque jamais :
+  - 25 chargements dans un même navigateur : 0,5 à 0,8 s ;
+  - 60 chargements, par 4 en parallèle, de p8-5c, puis 60 de p8-5 : aucun blocage ;
+  - 80 lancements neufs (un processus et un navigateur chacun, comme un banc) : de 0,57 à 0,88 s.
+- Aucune requête n'est en attente, la maquette ne charge rien au réseau, et ni la mémoire (15 Go libres) ni le disque ne sont en cause.
+- Les livraisons p8-1 à p8-5 n'ont jamais eu ce blocage dans leur banc unique. Le banc 19 l'a eu une fois pendant ma mise au point.
+- Je ne sais donc pas si p8-5c le provoque ou si c'est la machine d'aujourd'hui. **Je ne le classe pas comme un hasard** : je le déclare, avec les deux sorties, et je n'ai rien relancé de façon cachée.
 
 ## Les captures (toutes regardées, écran entier) — les chiffres sont dans `captures/MESURES-p8-5c.txt`
 | capture | ce qu'elle prouve |
 |---|---|
 | `p8-5c-repetition-avant.png` | p8-5, 1280 px. La pastille « JOUER EN AVANCE — RÉPÉTITION » est posée sur l'entête et couvre « ⧉ Tableau » : `elementFromPoint` rend la pastille |
-| `p8-5c-repetition-apres.png` | p8-5c, 1280 px. L'entête doré tient sur une ligne : « RÉPÉTITION · », les onglets, la classe, « · répét. 00:02 · diapo 1, dévoilée 1 / 6 », 📝 Notes, ⧉ Tableau, 🖥 Écran 2, ■ Arrêter et ⚙ sont tous visibles. La vue de droite a basculé sur « Le tableau, en ce moment » |
+| `p8-5c-repetition-apres.png` | p8-5c, 1280 px. L'entête doré tient sur une ligne : « RÉPÉTITION · », les onglets, la classe, « · répét. 00:02 · diapo 1, dévoilée 1 / 6 », 📝 Notes, ⧉ Tableau, 🖥 Écran 2, ■ Arrêter et ⚙ sont tous visibles. La vue de droite a basculé sur « Le tableau, en ce moment ». Dans les notes, la note d'avant de la diapo 1 se lit, vive, en ⌂ |
 | `p8-5c-notes-classe-3-6.png` | heure lancée, dévoilée 3 / 6. Le paragraphe 3 est vif (trait doré, repère doré). ⌂ (la note d'avant) et 1 sont estompés ; 5 et 6 sont lisibles en gris |
 | `p8-5c-atelier-ancres.png` | atelier, la liste ouverte par le repère du 3ᵉ paragraphe : « Accrocher ce paragraphe à… », ⌂, puis les six étapes tronquées à 40 caractères |
-| `p8-5c-palette.png` | heure lancée. « A » cliqué, la sélection « en silence » gardée, la palette sous le bouton : rouge, vert, bleu, or et ✕. Au mur, « observe les images » est déjà surligné en jaune |
+| `p8-5c-palette.png` | heure lancée. « A » cliqué, la sélection « en silence » gardée, la palette sous le bouton : rouge, vert, bleu, or et ✕. Au mur, « observe les images » est déjà surligné en jaune. Dans les notes, la note ⌂ d'avant |
 | `p8-5c-tableau-forme.png` | la fenêtre du tableau : « observe les images » surligné en jaune, « en silence » en rouge `#c0392b` |
-| `p8-5c-notes-forme.png` | le panneau des notes : « nature » surligné en vert, « sublime » en bleu clair `#8ab8ff` |
+| `p8-5c-notes-forme.png` | le panneau des notes, 0 / 6 dévoilés. Deux paragraphes ⌂ : la note d'avant, estompée, puis le paragraphe neuf, vif (le dernier ⌂ est le vif). Dans le paragraphe neuf, « nature » est surligné en vert et « sublime » est en bleu clair `#8ab8ff` |
 
 ## Les défauts trouvés et corrigés (avec leur cause)
 1. **Au tableau, le surlignage ne se voyait pas au pilote** : 16 « ça va » sur 20 au premier passage de T39. Les quatre surlignages manquaient au pilote, alors que la fenêtre du tableau les montrait.
@@ -171,7 +184,7 @@ RÉSULTAT_BANC_UNIQUE
 
 ## Ce qui est simulé
 - Les notes ne sont gardées que le temps de la page, comme toute la trame de la maquette. Le vrai site les enregistrera avec la trame.
-- Un essai de chargement de page a dépassé une fois 30 s pendant la mise au point (`page.goto`, banc 19). Je ne l'ai pas reproduit sur les passages suivants, ni dans le banc unique. Je le signale sans l'expliquer.
+- Le blocage de `page.goto` (voir « Le banc unique, résultat ») : 3 fois en tout, sans cause trouvée.
 
 ## Ce qui reste
 - Dans le pas à pas de fin d'heure, la case « Notes versées au récit — les garder aussi comme notes présentateur de la diapo ? » n'écrit toujours rien dans `DATA.notes`. Je n'y ai pas touché : c'est le récit (dette n°13 · 8, complément p8-5b à venir).
@@ -179,5 +192,6 @@ RÉSULTAT_BANC_UNIQUE
 - Pendant la frappe dans la note d'une autre diapo, le panneau ne montre pas la nouvelle diapo avant qu'on sorte du paragraphe. C'est voulu (décision 8) ; à valider par Paul.
 
 ## Les empreintes
-EMPREINTES_MAQUETTE
+- maquette `maquette-pilotage-ordi-v9c15p8-manipulable.html` : `abbf3d2f61e52cf64e33670c907e8983`
+- gabarit `v9c15p8-template.html` : `2b2f475aa21d539c3953f061a39fc1b9`
 - tous les fichiers livrés : `EMPREINTES.md5`, vérifié par `md5sum -c` avant l'envoi.

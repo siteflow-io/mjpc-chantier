@@ -19999,3 +19999,21 @@ Tu es l'exécutant du complément 3 de la maquette complète du QCM de MJPC. Lis
 763. **Quand il a fini, dis-le-moi** : je fais l'audit final. Les deux mandats de code attendent la v8.
 
 11/10/2026 14:16 MEMO
+
+---
+
+## TOUR 652 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (11/10, 14:18) 761. pas compris.
+
+---
+
+## TOUR 652 — Claude (conscience n°12)
+
+Réponse mot pour mot :
+
+764. **761, dit autrement.** Le livret, c'est le PDF : une capture par écran, avec une phrase dessous. Or une capture ne peut pas montrer les infobulles, puisqu'elles n'apparaissent qu'au passage de la souris. Sous chaque capture de tes écrans, le livret écrira donc trois infobulles de cet écran en texte, par exemple : « Au survol de « +5 » : ajoute 5 secondes au temps de réponse du tour en cours, pour toutes les tablettes. » Tu peux ainsi juger leur style en lisant le PDF, sans ouvrir la maquette. Pour toutes les voir, il reste la maquette elle-même, à la souris.
+
+11/10/2026 14:19 MEMO

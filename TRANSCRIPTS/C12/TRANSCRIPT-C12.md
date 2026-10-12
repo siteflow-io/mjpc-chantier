@@ -20195,3 +20195,29 @@ Tu es l'exécutant du complément 4 de la maquette complète du QCM de MJPC. Lis
 À son retour, je refais ma lecture sur la v9.
 
 12/10/2026 07:43 MEMO
+
+---
+
+## TOUR 658 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (12/10, 09:26) livré
+
+---
+
+## TOUR 658 — Claude (conscience n°12)
+
+Lu toutes les branches du sas (`git ls-remote`) : `maquette-qcm` à `4a29a6cd` (08:52, « C4-A (en cours) … (sauvegarde) », session de l'exécutant `01Ftfh…`), pas de v9, pas de `gardes-16-a-20-sur-v8.txt` ; aucune autre branche nouvelle. Production : 8 commits de C13 sur `docs/MJPC6-DETTES.md` seulement, `index.html` et `evaluation-qcm.html` inchangés (md5 vérifiés). La machine de la conscience était à « up 0 min » au début des tours 657 et 658 : elle s'éteint entre deux messages ; le banc de la v8, relancé au tour 657, est mort de nouveau sans sortie.
+
+Réponse mot pour mot :
+
+803. **Rien n'est livré au sas.** J'ai lu toutes les branches du sas, pas seulement main. Sur `maquette-qcm`, le dernier envoi de l'exécutant date de 08:52 : une sauvegarde de l'étape A, marquée « en cours ». Elle contient les nouvelles gardes et des corrections dans les sources, mais pas la v9, ni le passage des gardes sur la v8, ni sa lecture. Les étapes B et C ne sont pas poussées.
+
+804. **Je ne sais pas pourquoi il s'est arrêté** : je ne vois pas sa session. Regarde son dernier message sur claude.ai/code. S'il s'est arrêté en route, dis-lui « continuer » dans la même session : il repart de sa sauvegarde. S'il dit avoir fini, colle-moi son dernier message.
+
+805. **Je n'audite pas cette sauvegarde** : l'audit se fait une seule fois, sur la livraison finie.
+
+806. **Je corrige mon point 801.** Ma machine ne « redémarre » pas au hasard : elle s'éteint quand je ne travaille pas, entre deux de tes messages. Un banc lancé à la fin d'un tour meurt donc avant d'avoir fini. À l'audit de la v9, je le rejouerai pendant le tour, avant de te répondre.
+
+12/10/2026 09:28 MEMO

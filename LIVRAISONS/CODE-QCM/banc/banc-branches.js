@@ -126,6 +126,14 @@ async function scene(id, p, appareil){ if(!p) return; try { RELEVES[id] = Object
     if(await cliquer(tel, /CHEVALLIER Théo|Théo/)){ await pause(400); await scene("p-eleve", tel, "telephone"); await cliquer(tel, /Fermer|✕|Retour/); }
     else J.v(false, H2, "au téléphone, un clic sur Théo ouvre sa fiche (p-eleve)");
     const lab = EV.questions[0].choix;
+    // une tablette qui se recharge en pleine question (veille, doigt sur « actualiser ») : elle revient aux mêmes élèves et au moment présent, sans retaper les codes
+    const avantRech = await zoneTexte(t1, cJ);
+    await t1.reload().catch(() => {}); await pause(2500);
+    const apresRech = await texte(t1);
+    J.v(/ABRIAL JULIEN|ABRIAL Julien/i.test(apresRech) && !/Combien êtes-vous|Identifie-toi/.test(apresRech), H1, "une tablette rechargée en pleine question revient à Julien et à son binôme, sans retaper les codes", apresRech.slice(0, 200));
+    J.v(/Quelle est la capitale de l'Italie/.test(apresRech), H1, "… et au moment présent : l'énoncé de Q1", apresRech.slice(0, 200));
+    const telR = tel; await telR.reload().catch(() => {}); await pause(2000);
+    J.v(/Q1|Question 1|QUESTION 1/i.test(await texte(telR)), H1, "le téléphone rechargé revient à la séance, Q1", (await texte(telR)).slice(0, 200));
     for(const [p, c, ch] of [[t1, cJ, 2], [t1, cM, 3], [t2, cT, 2], [t2, cL, 2]]) if((await choixOuverts(p, c, lab)).length) await cliquer(p, new RegExp("^" + esc(lab[ch]) + "$"), c);
     await cliquer(prof, /Tour suivant/); await pause(3600);
     for(const [p, c, ch] of [[t1, cJ, 2], [t1, cM, 3], [t2, cT, 2], [t2, cL, 2]]) if((await choixOuverts(p, c, lab)).length) await cliquer(p, new RegExp("^" + esc(lab[ch]) + "$"), c);

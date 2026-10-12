@@ -842,9 +842,16 @@ var ELV = (function(){
     return n ? {slug:sanMJPC(n), nom:n, prenom:SCN.pre(sanMJPC(n))} : null;
   };
   E.entrerSansCode = function(cote, x){ var m = E.sessionMJPC(); if(!m || m.slug !== x) return Promise.resolve({ok:false, err:"Entre ton code personnel (4 chiffres)."}); return placer(cote, x); };
+  // l'élève de cette moitié a-t-il été placé sur une autre tablette (la fin de l'appel, « ↔️ » de Paul) ? → le numéro de sa tablette (t-deplace :
+  // « Julien, va sur la tablette 12 »), sinon null
+  E.ailleurs = function(cote){ var x = E.cotes[cote]; if(!x || !E.tab) return null; var t = SCN.tabletteDe(x); return t && t.n !== E.tab ? t.n : null; };
   // placer l'élève entré : sa tablette est celle des binômes ; l'autre moitié doit être son binôme (« rejoins … »)
   function placer(cote, x){
     var t = SCN.tabletteDe(x), id = sid();
+    // une moitié dont l'élève est parti sur une autre tablette se libère
+    ["g", "d"].forEach(function(c){ if(E.ailleurs(c)) delete E.cotes[c]; });
+    // l'élève placé ailleurs que cette tablette (et que la moitié vide accueille) : la tablette prend son numéro s'il n'y a personne d'autre
+    if(t && E.tab && t.n !== E.tab && !E.cotes.g && !E.cotes.d) E.tab = null;
     var autre = E.cotes[cote === "g" ? "d" : "g"];
     if(autre && SCN.voisinDe(autre) !== x && t){ return Promise.resolve({ok:false, rejoins:SCN.voisinDe(x), tablette:t.n, eleve:x}); }
     if(!t && id){ // pas dans la grille (arrivé après l'appel) : une moitié vide l'accueille

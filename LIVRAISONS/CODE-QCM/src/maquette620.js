@@ -199,7 +199,7 @@ function purgerModeTest(){
 }
 // quitter le mode test (un onglet, « Sortir et purger ») : la console revient à la séance qu'elle pilotait avant
 function quitterModeTest(){
-  MODE_TEST.actif = false; MODE_TEST.prepare = false;
+  MODE_TEST.actif = false; MODE_TEST.prepare = false; MODE_TEST.paires = null;
   if(typeof LIVE !== "undefined" && LIVE.classeSlug === CLASSE_TEST){ var a = MODE_TEST.avant || {}; LIVE.classeSlug = a.classeSlug || null; LIVE.sid = a.sid || null;
     if(typeof LANCEMENT !== "undefined" && LANCEMENT.classe === CLASSE_TEST){ LANCEMENT.classe = a.lancement ? a.lancement.classe : null; LANCEMENT.evalId = a.lancement ? a.lancement.evalId : null; } }
   MODE_TEST.avant = null;
@@ -339,6 +339,27 @@ function GrandTest(){
       h("div", {className:"simt-feuilles grand-f"}, t.g && h(FeuilleTest, {se:se, x:t.g, nom:nom(t.g)}), t.d && h(FeuilleTest, {se:se, x:t.d, nom:nom(t.d)}))));
 }
 function ModeTestV(){ MODE_TEST.actif = true; return h(ModeTestVC); }
+/* Avant l'heure, la carte de lancement du mode test (620-1) : la classe de test et sa copie de la démo, fixées (le lancement de la console
+   ne propose pas les classes et évaluations « _ ») ; les binômes de la classe de test, à glisser ; « 🚀 Lancer la séance » ouvre l'appel */
+function LancementTestV(){
+  useV3();
+  var ev = evalV(TEST_EVAL) || demoV(), cl = (typeof LIVE !== "undefined" && LIVE.d && LIVE.d.classes || {})[CLASSE_TEST];
+  if(!ev || !cl) return h("div", {className:"card"}, h("p", null, "Chargement…"));
+  if(!MODE_TEST.paires) MODE_TEST.paires = SCN.binomesProposes(CLASSE_TEST);
+  return h("div", {className:"card"},
+    h("h2", null, "🎯 Lancer une nouvelle séance", InfoI("La classe de test et la démo : la séance se lance comme en classe, puis l'appel.")),
+    h("div", {className:"lancer-grid"},
+      h("div", null,
+        h("div", {className:"field"}, h("label", null, "Classe", InfoI("La classe fictive du mode test.")), h("select", {value:"c", readOnly:true, title:"La classe de test."}, h("option", {value:"c"}, "🧪 " + CLASSE_TEST + " (" + SCN.roster(CLASSE_TEST).length + " élèves)"))),
+        h("div", {className:"field"}, h("label", null, "Évaluation", InfoI("La démo, copiée pour le mode test.")), h("select", {value:"e", readOnly:true, title:"L'évaluation de la séance de test."}, h("option", {value:"e"}, ev.titre + " (" + ev.questions.length + " questions)"))),
+        h("div", {className:"duree-box"}, texteDureeV(ev, false)),
+        h("button", surClic(function(){ LIVE.classeSlug = CLASSE_TEST; return Promise.resolve(ACT.lancerSeance(CLASSE_TEST, TEST_EVAL, {paires:MODE_TEST.paires})).then(function(){ MODE_TEST.paires = null; }); },
+          {className:"btn btn-primary", title:"Lance la séance de test : l'appel s'ouvre."}), "🚀 Lancer la séance")),
+      h("div", {className:"binomes-box"},
+        h("div", {className:"tt"}, "📱 Binômes proposés — dans l'ordre de la liste : la classe de test n'a pas de QCM précédent"),
+        h("div", {className:"ss"}, "Glisse un nom sur un autre pour échanger deux élèves, ou sur une moitié vide pour l'y déplacer. Tu peux le faire jusqu'au bout de l'heure."),
+        h(GrilleBinomes, {paires:MODE_TEST.paires, classe:CLASSE_TEST, surChange:function(np){ MODE_TEST.paires = np; }}))));
+}
 /* Le mode test reste ouvert pendant que sa séance avance : chaque geste de la console revient à « l'écran du moment » (src/live/pages.js) ;
    tant que le mode test est actif, l'écran du moment de la console est le mode test. Un onglet ouvert (Données, Réglages…) le quitte. */
 setTimeout(function(){
@@ -362,7 +383,7 @@ function ModeTestVC(){
   if(typeof LANCEMENT !== "undefined" && LANCEMENT.classe !== CLASSE_TEST){ LANCEMENT.classe = CLASSE_TEST; LANCEMENT.evalId = TEST_EVAL; }
   var panneau;
   if(se && typeof EcranConsoleHeure === "function") panneau = h("div", {className:"test-console"}, EcranConsoleHeure());
-  else panneau = h("div", {className:"test-console"}, Lancement(false));
+  else panneau = h("div", {className:"test-console"}, h(LancementTestV));
   return h("div", {className:"prof-wrap cons mode-test"},
     DECO.map(function(e, i){ return h("span", {key:i, className:"deco"}, e); }),
     h("div", {className:"prof full"},

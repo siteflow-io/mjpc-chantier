@@ -258,7 +258,7 @@ var FENETRES_H = {
       [boutonH("a", "btn btn-ghost", "Annuler", fermerFen, "Ne change rien : la séance continue."), boutonH("ok", "btn btn-or", "⏸️ Finir à une autre heure", fait("finirAutreHeure"), "Met la séance en pause, telle qu'elle est, jusqu'à une heure suivante.")], null); },
   voirTablette:function(n, fond){ var pa = PAIRES[n - 1] || [null, null], m = momH();
     return Fenetre(fond, "📱 Tablette " + n + " · " + [pa[0], pa[1]].filter(Boolean).map(affH).join(" · ") + " — en direct", "Ce que montrent ses deux moitiés, maintenant : " + ouH(m) + ".",
-      h("div", {className:"voir-tab fige-choix"}, h("div", {className:"voir-tab-in"}, h(FigerZone, null, TabletteVue(pa[0], pa[1])))),
+      h("div", {className:"voir-tab fige-choix"}, h("div", {className:"voir-tab-in", style:{pointerEvents:"none"}, "aria-hidden":true}, TabletteVue(pa[0], pa[1]))),
       [boutonH("f", "btn btn-ghost", "✕ Fermer", fermerFen)], null, 900); },
   // la fiche d'un élève (un clic sur son nom) : son point d'autonomie, son départ
   eleve:function(p, fond){ var k = MO(), au = SCN.autonomie(p, k), il = sexeH(p) === "F" ? "Elle" : "Il";

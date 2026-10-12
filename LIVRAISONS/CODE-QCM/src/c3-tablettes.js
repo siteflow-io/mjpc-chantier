@@ -349,9 +349,9 @@ function MoitieH(p, cote, autreP){
     var a2 = attestH(p, 2);
     return a2.fini ? EcrAttenteCorr(e) : h(AttestCoches, {key:"a2" + p, e:e, lignes:LignesAttest2(e, e.voisin), n0:a2.lignes, attest:2, fini:a2.fini, titre:"Avant la correction, " + e.prenom, bouton:"Je commence la correction", titrePage:"📝 Correction", pret:function(){ return EcrAttenteCorr(e); }});
   }
-  if(ph === "lecture") return v ? EcrLecture(e, qi, !!SCN.lecture(p, qi), reste) : EcrLectureSeulH(e, qi, reste);
+  if(ph === "lecture") return v && !seul ? EcrLecture(e, qi, !!SCN.lecture(p, qi), reste) : EcrLectureSeulH(e, qi, reste);
   if(ph === "revele") return EcrRevele(e, qi);
-  if(ph === "coeval") return v ? CoevalH(e) : Page(badgeDe(e), "📝 Correction", h("div", {className:"co-attente"}, "⏳ Attends ton bilan…"));
+  if(ph === "coeval") return v && !seul ? CoevalH(e) : Page(badgeDe(e), "📝 Correction", h("div", {className:"co-attente"}, "⏳ Attends ton bilan…"));
   if(ph === "bilan") return EcrBilan(e);
   return EcrAttente(e);
 }

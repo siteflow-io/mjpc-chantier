@@ -1350,3 +1350,17 @@ Paul, tour 50, mot pour mot : « oui. mais fais directement sur la maquette sino
 170. **Proposition tranchée** (tour 49) : poignée permanente sous la barre des outils, vers le haut = les notes grandissent, vers le bas = la diapo, hauteur gardée d'une diapo et d'un mode à l'autre, double-clic = retour, préparation du cahier inchangée. **Validée par Paul (« oui »)**, à faire directement sur la maquette : **filière micro**, sur son ordre explicite.
 171. **Livraison p8-5e par la conscience** : branche `deroule/p8-5e` (partie de p8-5d), `patch-p8-5e.py` (7 remplacements : CSS visible partout, règle de la préparation retirée, infobulle pour Paul, double-clic, la hauteur survit à l'arrêt de la répétition, et `dimensionner` : hors préparation, la part s'applique à la hauteur obtenue), `regen.sh` étendu, `test-p8-5e.mjs` (18 vérifications par la souris, 0 défaut), captures avant / après, NOTE. Trouvé au premier passage du banc : une zone morte (à 1280 px, la diapo est bornée par la largeur ; la poignée ne faisait rien avant 30 % de course) — corrigée. Banc unique (32 bancs) lancé ; dépôt de la branche après son résultat.
 
+
+---
+
+## TOURS 51 et 52 (11/10 20:19 → 12/10 06:30)
+
+Paul, tour 51, mot pour mot : « pourquoi quand j'écris dans une diapo, le texte sort par le haut? le comportement d'avant ne semble plus exister. la diapo qui se scinde automatiquement et qui va sur une deuxième diapo etc. »
+Paul, tour 52, mot pour mot : « Non ça doit partir en exécutant parce que c'est typiquement le genre de codage qui crée des bugs ( la scission automatique avait été codée sans exécutant, et ça avait buggé) »
+
+172. **Mesuré** (pièces `T51-deborde.mjs`, `T51b-pilotage.mjs`, `T51d-paginer.mjs`) : sur p8-5 (07/10) et p8-5e, identiques au pixel — huit lignes tapées sous le dernier bloc de la diapo 1 : police au plancher, aucune page, le texte centré sort par le haut (premier élément à −94 px, 4 éléments sur 15 hors du cadre), au pilote comme au tableau ; « À régler » dit « Diapo trop pleine … Couper la diapo ici ». Pas une régression de la journée.
+173. **La scission automatique** : retirée par Paul lui-même — cadrage 4, 0.4 (15/09) : « Ce qui plantait vient d'ici … Rien de tout ça ne revient. Une diapo ne se coupe que par le geste de Paul … en classe, jamais (seule la page change). » Non commenté au tour 52 : la règle reste.
+174. **La pagination (« seule la page change ») est cassée dès qu'une diapo a deux blocs** : `paginer` mesure `offsetTop` relatif au bloc (`.mur .bloc{position:relative}` depuis p7) ; les lignes du second bloc repartent de zéro (3 … 203), tout « tient », une seule page. Présent depuis p7, révélé par l'écriture directe (p8-4). Dette n°13 · 16.
+175. Proposition de la conscience (micro) **refusée par Paul** : « ça doit partir en exécutant ». Complément p8-5f écrit (la mesure par rapport au corps, rien hors du cadre, les pages dans l'atelier suivant le bloc où Paul écrit, règle 0.4 intacte, six bancs par le geste) et soumis à Paul avant dépôt.
+176. Le banc unique de p8-5e : coupé deux fois par les redémarrages du conteneur entre les tours (il dort quand Paul ne parle pas) ; relancé ce matin au premier plan.
+

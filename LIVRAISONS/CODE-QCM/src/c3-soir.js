@@ -2,7 +2,10 @@
    Les séances passées et leurs dates, la liste des résultats, le tableau d'une séance, la fiche d'un élève, la corbeille,
    « Mes évaluations » et le bilan rendu : tout vient du scénario et du calendrier (src/scenario.js). */
 
-function evalDeSeance(se){ return se.eval === "essai" ? SCN.EV_ESSAI : se.eval === "demo" ? SCN.DEMO : SCN.evalParId(se.eval); }
+// en direct, l'évaluation que la séance a servie (son instantané) ; « essai » est une évaluation de la base comme une autre
+function evalDeSeance(se){
+  if(SCN.LIVE && se && se.id && typeof SCN.evalDeSeance === "function"){ var e = SCN.evalDeSeance(se.id); if(e) return e; if(se.eval && SCN.evalParId(se.eval)) return SCN.evalParId(se.eval); return {titre:se.titre || "", questions:[]}; }
+  return se.eval === "essai" ? SCN.EV_ESSAI : se.eval === "demo" ? SCN.DEMO : SCN.evalParId(se.eval); }
 function presentsTexte(se){ var n = se.eleves ? se.eleves.length : 25 - se.absents.length; return n + " présent" + (n > 1 ? "s" : "") + (se.absents.length ? ", " + se.absents.length + " absent" + (se.absents.length > 1 ? "s" : "") + (se.absents.length === 1 ? " (" + se.absents[0] + ")" : "") : ""); }
 // les feuilles encore à lire d'une séance, au moment k : une séance rendue n'en a plus (rendre suppose toutes les feuilles lues)
 function lireDeSeance(se, k){ if(se.id === "S08") return SCN.aLire(k).filter(function(x){ return !x.lue; }).length; return SCN.rendueAu(se.id, k) ? 0 : (se.aLire || 0); }

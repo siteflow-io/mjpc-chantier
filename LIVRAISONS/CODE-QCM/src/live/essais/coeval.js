@@ -32,7 +32,7 @@ const pause = ms => new Promise(r => setTimeout(r, ms));
     await prof.evaluate(() => ACT.cloreQuestion()); await pause(200); }
   await prof.evaluate(() => ACT.lancerEstimation()); await prof.evaluate(() => ACT.lancerCorrection());
   for (const x of ["abrial_julien", "baudry_lea"]) await tab.evaluate(x => ELV.commencer(x, 2), x);
-  await pause(1200);
+  await pause(1200); await prof.evaluate(() => ACT.lancerCorrection()); await pause(300);
   for (let i = 0; i < 3; i++) { const q = await prof.evaluate(() => SCN.etat().qi); await tab.evaluate(q => { ELV.lire(q, SCN.ev().questions[q].bonnes, "abrial_julien"); ELV.lire(q, SCN.ev().questions[q].bonnes, "baudry_lea"); }, q);
     await pause(200); await prof.evaluate(() => ACT.reveler()); await pause(200); await prof.evaluate(() => ACT.questionSuivante()); await pause(300); }
   console.log("phase :", JSON.stringify(await prof.evaluate(() => SCN.etat())));

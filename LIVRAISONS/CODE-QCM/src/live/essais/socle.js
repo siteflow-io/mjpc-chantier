@@ -164,8 +164,10 @@ function verif(ok, quoi, detail){ nb++; if(!ok) ko++; R.push((ok ? "  ok     " :
     verif(oc[0] === 1, "l'ordre de la correction se fixe : Q2 d'abord (la plus ratée)", oc);
     await prof.evaluate(l => Promise.all(l.map(x => ELV.commencer(x, 2))), presents);
     await pause(1000);
+    verif(base("sessions/" + sid + "/deroule/ph") === "att2", "toutes les secondes attestations : la correction attend « ▶️ Commencer la correction » (c-attest2)", base("sessions/" + sid + "/deroule"));
+    await prof.evaluate(() => ACT.lancerCorrection()); await pause(300);
     d = base("sessions/" + sid + "/deroule");
-    verif(d.ph === "lecture" && d.qi === 1, "toutes les secondes attestations : la lecture de Q2 commence", d);
+    verif(d.ph === "lecture" && d.qi === 1, "« ▶️ Commencer la correction » : la lecture de Q2 commence", d);
     // Q2 lue : la feuille de Julien dit Genève (faux) ; celle de Léa, Genève (faux)
     await tab.evaluate(() => { ELV.lire(1, [1], "abrial_julien"); ELV.lire(1, [1], "baudry_lea"); });
     const lu = base("sessions/" + sid + "/lectures/1/abrial_julien");
@@ -217,6 +219,7 @@ function verif(ok, quoi, detail){ nb++; if(!ok) ko++; R.push((ok ? "  ok     " :
     verif(base("sessions/" + sid + "/etat") === "terminee" && !base("sessionActive/3 ESSAI"), "🛑 Terminer : etat « terminee », plus de séance active");
     await pause(800);
     verif(await tab.evaluate(() => !ELV.ici().g), "la séance terminée : la tablette oublie ses élèves", await tab.evaluate(() => ELV.ici()));
+    verif(/Combien êtes-vous sur cette tablette/.test(await tab.evaluate(() => document.body.innerText)), "la séance terminée : la tablette revient à « Combien êtes-vous ? » (t-fin)", (await tab.evaluate(() => document.body.innerText)).slice(0, 200));
     // le soir : rendre les copies, Mes évaluations
     await prof.evaluate(s => ACT.rendreCopies(s), sid);
     const me = await prof.evaluate(() => SCN.mesEvaluations("abrial_julien", null, "3 ESSAI"));

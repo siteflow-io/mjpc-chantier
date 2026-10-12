@@ -699,7 +699,11 @@ var ACT = (function(){
     maj[cheminS(id, "presence_history/" + x + "/h_" + now)] = {ts:now, etat:"present"}; return ecrireQCM(maj, "retour"); };
   // l'estimation, puis la seconde attestation, puis la correction (dans l'ordre fixé ici : de la plus ratée à la mieux réussie)
   A.lancerEstimation = function(){ var id = sid(); return id ? poserDeroule(id, {ph:"estim"}) : Promise.resolve(); };
-  A.lancerCorrection = function(){ var id = sid(); if(!id) return Promise.resolve(); var plus = {ordreCorr:SCN.ordreCorr()}; return poserDeroule(id, {ph:"att2"}, plus); };
+  // « ✍️ Lancer la correction » (après l'estimation) ouvre la seconde attestation ; en seconde attestation, « ▶️ Commencer la correction » (ouvert
+  // quand tous l'ont cochée, c-attest2 de la maquette) lit la première question de l'ordre
+  A.lancerCorrection = function(){ var id = sid(); if(!id) return Promise.resolve(); var e = SCN.etat(id) || {};
+    if(e.ph === "att2") return A.lireQuestion(null);
+    var plus = {ordreCorr:SCN.ordreCorr()}; return poserDeroule(id, {ph:"att2"}, plus); };
   // la lecture d'une question de la correction : le temps de réponse de la question
   A.lireQuestion = function(qi){ var id = sid(); if(!id) return Promise.resolve(); if(qi == null){ var o = SCN.ordreCorr(), rv = SCN.corrigeesAu(); qi = o.filter(function(q){ return rv.indexOf(q) < 0; })[0]; }
     if(qi == null) return A.ouvrirCoeval();
@@ -811,7 +815,7 @@ var ELV = (function(){
   function w(chemin, v, quoi){ var id = sid(); if(!id) return Promise.resolve(); var maj = {}; maj[cheminS(id, chemin)] = v; return ecrireQCM(maj, quoi); }
   E.choisirClasse = function(classe){ LIVE.classeSlug = classe; garder(); };
   // « Combien êtes-vous sur cette tablette ? »
-  E.combien = function(n){ E.n = n; garder(); };
+  E.combien = function(n){ E.n = n; E.fin = false; garder(); };
   // l'entrée : le code, vérifié contre l'empreinte de /codes (la 7.7.1 : mjpcEntreeCode, mjpcVerifierCode), le prénom et le nom
   E.entrer = function(cote, code, prenom, nom){
     var classe = LIVE.classeSlug || SCN.classe();
@@ -929,11 +933,8 @@ var MOTEUR = (function(){
   // l'entrée finie : quand tous les présents ont fini l'attestation, la console passe à « prêts »
   M.entree = function(){ var sid = SCN.sid(), e = SCN.etat(sid); if(!sid || !e || e.ph !== "entree") return; var c = SCN.compteurs(null, sid);
     if(c.attestations && c.attestations[1] > 0 && c.attestations[0] === c.attestations[1]) poserDeroule(sid, {ph:"pret", reprise:e.reprise || null}); };
-  // la seconde attestation finie : la lecture de la première question commence
-  M.att2 = function(){ var sid = SCN.sid(), e = SCN.etat(sid); if(!sid || !e || e.ph !== "att2") return; var c = SCN.compteurs(null, sid);
-    if(c.prets && c.prets[1] > 0 && c.prets[0] === c.prets[1]) ACT.lireQuestion(null); };
-  // la console, le téléphone et le tableau mènent ; une tablette relaie seulement les temps comptés (M.relais), jamais l'entrée ni la correction
+  // la console, le téléphone et le tableau mènent ; une tablette relaie seulement les temps comptés (M.relais), jamais l'entrée ; la correction commence au geste de Paul
   M.demarrer = function(relais){ if(M.actif) return; M.actif = true; M.relais = !!relais;
-    setInterval(function(){ try { M.tic(); if(!M.relais){ M.entree(); M.att2(); } } catch(e){ console.error(e); } }, relais ? 500 : 250); };
+    setInterval(function(){ try { M.tic(); if(!M.relais) M.entree(); } catch(e){ console.error(e); } }, relais ? 500 : 250); };
   return M;
 })();

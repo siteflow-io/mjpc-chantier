@@ -47,7 +47,7 @@ var GESTES = (function(){
     [/^▶️ Reprendre$/, null, function(){ return ACT.reprendre(); }],
     [/Relancer chrono|^🔄 Chrono$/, null, function(){ return ACT.relancerChrono(); }],
     [/Lancer l'autoévaluation|Lancer l’autoévaluation/, null, function(){ return apres(ACT.lancerEstimation()); }],
-    [/Lancer la correction/, null, function(){ return apres(ACT.lancerCorrection()); }],
+    [/Lancer la correction|^▶️ Commencer la correction/, null, function(){ return apres(ACT.lancerCorrection()); }],
     [/^💡 Révéler/, null, function(){ return apres(ACT.reveler()); }],
     [/^Question suivante/, null, function(){ return apres(ACT.questionSuivante()); }],
     [/co-évaluation/i, "bouton-console", function(){ return apres(ACT.ouvrirCoeval()); }],

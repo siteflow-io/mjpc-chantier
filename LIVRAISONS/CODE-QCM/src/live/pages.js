@@ -96,8 +96,11 @@ function TabletteLive(){
   if(!LIVE.pret) return Page(null, "Chargement...", null);
   var classe = classeTablette();
   // la séance de la classe s'est terminée : la tablette oublie ses élèves et revient à « Combien êtes-vous ? »
-  if(ELV.tab && ELV.sid && SCN.sid() !== ELV.sid){ ELV.oublier(); ELV.sid = SCN.sid(); }
+  if(ELV.tab && ELV.sid && SCN.sid() !== ELV.sid){ ELV.oublier(); ELV.fin = !SCN.sid(); ELV.sid = SCN.sid(); }
   if(!classe) return h(ChoixClasse);
+  // t-fin : la séance finie, « Combien êtes-vous ? » (puis, sans séance, l'entrée par le code)
+  if(ELV.fin && !SCN.sid()) return EcrCombienLive();
+  if(SCN.sid()) ELV.fin = false;
   /* Sans séance active (chez lui, ou avant le lancement) : l'élève entre par son code sur une demi-tablette, puis voit sa moitié, avec
      « 📊 Mes évaluations » ; au lancement d'une séance, la tablette l'oublie et revient à « Combien êtes-vous sur cette tablette ? » */
   if(!SCN.sid()){

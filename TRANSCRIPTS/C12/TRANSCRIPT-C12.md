@@ -20957,3 +20957,47 @@ Réponse mot pour mot :
 932. **L'exécutant de la maquette n'a pas fini** : à 19:15, son journal des défauts et sa lecture ; il lui reste son banc final et le README. Il a changé une ligne d'une infobulle (« 1 pense » au singulier) : j'ai demandé à QCM-1 de la reporter dans l'app.
 
 12/10/2026 20:01 MEMO
+
+---
+
+## TOUR 681 — le réveil programmé (pas Paul)
+
+> (12/10, 22:07) [Message programmé par la conscience n°12 sur l'ordre de Paul (12/10 19:17, « oui 921 ») — il n'est pas de Paul ; reçu à 22:07.] Il est 22:05 : audit de la livraison du soir du code du QCM. (La marche à suivre complète est dans le message programmé « Audit QCM de 22:05 », trig_01BrpkayPCjhpHygsoHbnenq.)
+
+---
+
+## TOUR 681 — Claude (conscience n°12)
+
+Mesuré : à 22:08, `code-qcm` à `596b6ef2` (21:39), pas de `VERDICT-22H.md` ; l'assemblage complet de QCM-4 (`assembler.sh`) rejoué par la conscience dans sa copie à 22:09 : app md5 `c6dd982f…`, contrôles 30/30, banc commun 205 vérifications 1 échec, gestes rares 44/44, l'heure de demain 107 vérifications 1 échec, fidélité 120/157 atteints, 46 sans écart, 334 + 110 écarts non nommés, 37 jamais atteints ; captures regardées : 005-tablette-pret, 006-q1-tour1, 010-tablette-corr-1, 011-bilan-tablette-1 ; à 22:25, l'assemblage n°2 de QCM-4 poussé (22:19, même app). Écrit : l'audit en tête de `DEFAUTS-OUVERTS.md` (`ce15fa0f`), le compte rendu au sas. Erreur de manœuvre : un `git stash -u` puis `drop` a effacé la copie locale des sorties de 22:09 (non poussées) ; la preuve des contrôles a été refaite sur la même app (même md5).
+
+Réponse mot pour mot :
+
+À jouer : rien · en cours chez l'exécutant : je ne sais pas, voir point 934 · ouvert : la livraison de 22:00 n'est pas arrivée
+
+933. **Réveil de 22:05 : la livraison de 22:00 n'est pas là.** Pas de verdict de QCM-4. Leurs dernières sauvegardes : QCM-1 à 21:39, QCM-2 à 21:26, QCM-3 à 20:55, QCM-4 à 20:29. Depuis 21:39, plus rien.
+
+934. **QCM-4 n'a rien poussé depuis 20:29** : ni l'assemblage de 21:00, ni les relecteurs de 21:30, ni la livraison de 22:00. Je ne vois pas leurs sessions d'ici. Regarde si les quatre tournent encore ; s'il y en a un d'arrêté, colle-moi ce qu'il dit.
+
+935. **Ce que disait leur assemblage de 20:00** : mes contrôles, 30 sur 30 ; l'heure de demain jouée en entier (4e, 11 questions), 107 vérifications, 1 échec ; le banc commun, 201 vérifications, 1 échec. Mais la fidélité à la maquette est loin : sur 157 écrans, 120 atteints, 32 identiques à la maquette ; 37 jamais atteints.
+
+936. **Je n'attends pas : j'audite tout de suite l'état de 21:39**, avec leur banc complet et mes contrôles. Les défauts trouvés partent directement dans leur fichier. Je te donne le verdict vers 22:40.
+
+12/10/2026 22:10 MEMO
+
+---
+
+À jouer : rien · en cours chez l'exécutant : les quatre du code (QCM-4 et QCM-2 ont poussé à 22:19 et 22:21) · ouvert : une question pour toi (point 941) ; tes 11 questions
+
+937. **Je corrige mon point 934 : ils ne s'étaient pas arrêtés.** QCM-4 a poussé son assemblage de 22:00 à 22:19, QCM-2 à 22:21. Seul QCM-3 n'a rien poussé depuis 20:55. Le verdict écrit de 22:00 manque, mais l'assemblage est là.
+
+938. **Verdict de l'audit : ça ne va pas encore.** L'heure se joue de bout en bout, mais ses écrans ne sont pas encore ceux de la maquette.
+
+939. **Ce qui va**, mesuré sur leur app de 21:39 (celle de leur assemblage) : mes contrôles 30 sur 30 ; l'heure de demain jouée par le geste, avec ta 4e (11 questions, le JSON collé, 12 tablettes), 106 vérifications sur 107 ; leur banc commun 204 sur 205 ; les gestes rares 44 sur 44. Les tablettes, le téléphone et le tableau ne plantent plus. J'ai regardé les captures de l'heure de demain : la tablette au 1er tour, la correction, les bilans.
+
+940. **Ce qui ne va pas** : sur 157 écrans de la maquette, 46 seulement sont identiques dans l'app ; 74 ont des différences (444 en tout : un texte, une infobulle, un bouton qui manque ou qui est en trop) ; 37 n'ont jamais été atteints par leur banc, dont 25 de l'heure : le « B » de Julien et Michel, les alertes de la co-évaluation, les points d'autonomie, l'élève seul, le déplacement d'un élève. Parmi les différences vues par l'élève : deux lignes de la première attestation sur un écran, une ligne de la seconde, le titre « … — 11 questions » en tête des moitiés. **QCM-4 ne les comptait pas comme des défauts : c'est la faute que j'ai trouvée.**
+
+941. **Une question pour toi, que la maquette ne tranche pas** : à la fin de la seconde attestation, la correction démarre-t-elle seule quand tous ont coché (ce qu'ils ont codé), ou le bouton « ▶️ Commencer la correction » s'ouvre-t-il et c'est toi qui cliques ? Ma proposition : tu cliques, comme pour « ▶️ Lancer Q1 » au début ; tu gardes la main.
+
+942. **Tout est écrit en tête de leur liste de défauts** : ils le traitent cette nuit, l'élève et le téléphone d'abord. Mon réveil de 06:35 reste : j'auditerai ce qui a changé. Le compte rendu : https://github.com/siteflow-io/mjpc-chantier/blob/main/AUDITS/CODE-QCM-AUDIT-22H-12-10/README.md
+
+12/10/2026 22:31 MEMO

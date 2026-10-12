@@ -2,7 +2,7 @@
 
 Format : `[QCM-4 → QCM-n] l'écran, le geste, ce qui est attendu (la scène de la maquette), ce qui est vu` — rayé par QCM-4 quand le banc le voit corrigé.
 
-## Audit de la conscience n°12 — 12/10 22:40, sur `596b6ef` (l'app de l'assemblage n°2, md5 `c6dd982f…`) — à traiter avant tout le reste (COMMUN §2.5)
+## Audit de la conscience n°12 — 12/10 22:28, sur `596b6ef` (l'app de l'assemblage n°2, md5 `c6dd982f…`) — à traiter avant tout le reste (COMMUN §2.5)
 
 Mesuré par la conscience, sur sa copie : ses contrôles 30 / 30 ; le banc commun 204 / 205, les gestes rares 44 / 44, l'heure de demain 106 / 107 (l'échec : « ▶️ Commencer la correction », question posée à Paul, ci-dessous) ; la fidélité, comme la tienne : 120 écrans atteints sur 157, 46 sans écart. **L'heure se joue de bout en bout ; ses écrans ne sont pas encore ceux de la maquette.**
 

@@ -694,7 +694,8 @@ refaire("c-rouvrir-un", function(){ return RouvrirUn(); });
    puis l'appel s'ouvre (la séance en phase « appel ») ; son « 🚀 Lancer la séance » ferme l'appel, avec les absents et l'heure de fin. */
 var LANCEMENT_H = {cle:null, paires:null, fin:null};
 function classeLancement(){ var cl = LIVE.d.classes || {}, l = SCN.classes(); var c = (typeof LANCEMENT !== "undefined" && LANCEMENT.classe && cl[LANCEMENT.classe]) ? LANCEMENT.classe : (LIVE.classeSlug && cl[LIVE.classeSlug] ? LIVE.classeSlug : l[0]); if(typeof LANCEMENT !== "undefined") LANCEMENT.classe = c; return c; }
-function evalsPretes(){ return SCN.evals().filter(function(e){ return !SCN.manques(e).length; }); }
+// les évaluations prêtes : celles que l'éditeur (QCM-3, manquesV) dit complètes, sinon la règle du socle (SCN.manques)
+function evalsPretes(){ return SCN.evals().filter(function(e){ return !(typeof manquesV === "function" ? manquesV(e) : SCN.manques(e)).length; }); }
 function evalLancement(){ var id = typeof LANCEMENT !== "undefined" ? LANCEMENT.evalId : null; if(id === "demo") return SCN.evalParId("demo"); var p = evalsPretes(); var e = id && p.filter(function(x){ return x.id === id; })[0]; e = e || p[0] || null; if(e && typeof LANCEMENT !== "undefined") LANCEMENT.evalId = e.id; return e; }
 // les binômes que le classement donnait avant les exclusions : ceux qu'une exclusion a fait échanger (la phrase « 🚫 … respectées »)
 function exclusionsRespectees(classe){

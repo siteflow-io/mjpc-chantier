@@ -234,10 +234,13 @@ function tempsAjouter(qi, champ, n, actif){
 // un champ qu'on tape garde ce qu'on y tape tant qu'il a le curseur ; la séance reçoit chaque valeur entière (règle du 04/10)
 function ChampTemps(p){   // p : v, qi, champ, actif, attrs
   var s = useState(null), brouillon = s[0], setB = s[1];
-  var aff = brouillon != null ? brouillon : String(p.v);
+  var aff = brouillon != null ? brouillon : String(p.v), a = Object.assign({}, p.attrs);
+  // (QCM-1, K6) un champ qui se ferme pendant qu'on y tape garde le curseur et sa valeur : il passe en lecture seule, et se ferme au départ du curseur
+  var ferme = !!a.disabled;
+  if(ferme && brouillon != null){ a.disabled = false; a.readOnly = true; }
   return h("input", Object.assign({type:"number", min:1, value:aff,
     onFocus:function(){ setB(String(p.v)); }, onBlur:function(){ setB(null); },
-    onChange:function(e){ setB(e.target.value); var x = parseInt(e.target.value, 10); if(x > 0 && x !== p.v) tempsAjouter(p.qi, p.champ, x - p.v, p.actif); }}, p.attrs));
+    onChange:function(e){ if(ferme) return; setB(e.target.value); var x = parseInt(e.target.value, 10); if(x > 0 && x !== p.v) tempsAjouter(p.qi, p.champ, x - p.v, p.actif); }}, a));
 }
 function TempsCarteH(p){   // p : lbl, champ, qi, reste, actif, fini, sous
   useTemps();

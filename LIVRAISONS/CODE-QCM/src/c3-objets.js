@@ -23,7 +23,7 @@ function TabMini(num, a, b, etat, opts){
     var p = cleH(n), nom = affH(n), e = etat ? etat(p, cote) : {};
     var ouvrir = enDirect() ? marqueH("NOM:" + p, function(){ ouvrirFen("eleve", p); }) : {"data-va":avecObjet(e.va, "eleve", p)};
     return h("div", Object.assign({className:"tab-mini-m " + (e.cls || ""), draggable:glisse || undefined, onDragStart:glisse ? function(){ TENU_H = p; } : undefined}, depotH(num, cote, p, glisse)),
-      e.va ? h("button", Object.assign({className:"nm tab-nom", title:e.titre || "Agit sur " + nom + "."}, ouvrir), nom) : h("div", {className:"nm"}, (opts.grip || glisse) && h("span", {className:"grip"}, "⠿"), nom),
+      e.va ? h("button", Object.assign({className:"nm tab-nom", title:e.titre || "Agit sur " + nom + "."}, ouvrir), nom) : h("div", {className:"nm"}, opts.grip && h("span", {className:"grip"}, "⠿"), nom),
       e.st && h("span", {className:"st"}, e.st),
       e.flag && h("span", {className:"flag"}, e.flag));
   }

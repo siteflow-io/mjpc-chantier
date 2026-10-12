@@ -277,7 +277,7 @@ function seanceV(sid){
     rendue:rendue, rendueMs:cop && cop.rendues ? cop.rendues : (!cop && rendue ? msFinSeance(S) : null), masquee:!!(cop && cop.masquees), publiee:S.publiee !== false,
     ecartees:v3Liste(S.ecartees).map(Number), annulees:v3Liste(S.annulees).map(Number)};
 }
-function seancesV(){ var X = v3Sessions(); return Object.keys(X).map(seanceV).filter(function(se){ return se && se.ev; }); }
+function seancesV(){ return memo3("seances", function(){ var X = v3Sessions(); return Object.keys(X).map(seanceV).filter(function(se){ return se && se.ev; }); }); }
 function nomEleveV(se, slug){ var e = se.eleves.filter(function(x){ return x.slug === slug; })[0]; return e ? e.nom : (v3("codes/" + slug) || {}).name || slug; }
 function prenomEleveV(se, slug){ return prenomDeNom(nomEleveV(se, slug)); }
 
@@ -323,7 +323,7 @@ function resultatLocalV(se, slug){
       return;
     }
     // une séance de la 7.7.1 : sa feuille saisie (papier/<slug>), sinon la tablette
-    var f = feuillePapierV(se, qi, slug), t = tabletteV(se, qi, slug), c = f || (t ? t.choix : null);
+    var lp = lectureV(se, qi, slug), f = feuillePapierV(se, qi, slug), t = tabletteV(se, qi, slug), c = lp && lp.par === "prof" ? lp.choix : f || (t ? t.choix : null);
     var p2 = ptsQuestionV(c, q, mode); st.push(c === "aucun" ? "a" : p2 === 1 ? "j" : "f"); pts.push(c ? p2 : 0);
   });
   var compte = ev.questions.map(function(q, i){ return i; }).filter(function(i){ return st[i] !== "x" && se.annulees.indexOf(i) < 0; });
@@ -335,8 +335,13 @@ function resultatLocalV(se, slug){
   Object.keys(S.lectures || {}).forEach(function(qi){ var l = (S.lectures[qi] || {})[slug]; if(l && l.par === "prof" && corrigees.indexOf(+qi) < 0) corrigees.push(+qi); });
   return {p:slug, st:st, pts:pts, n:Math.round(n * 100) / 100, total:total, complet:complet, sur20:sur20, maitrise:SCN.maitriseDe ? SCN.maitriseDe(Math.round(sur20 * 10) / 10) : null, comp:comp, corrigees:corrigees, annulees:se.annulees, ecartees:se.ecartees};
 }
-function resultatV(se, slug){
-  if(SCN.LIVE && typeof SCN.resultat === "function"){ try { var r = SCN.resultat(se.id, slug); if(r && r.st) return r; } catch(e){} }
+// un même rendu demande cent fois la note des mêmes élèves (le taux de chaque question pour chaque bilan) : elle se garde le temps du rendu
+var MEMO3 = {v:{}, prevu:false};
+function memo3(cle, f){ if(!MEMO3.prevu){ MEMO3.prevu = true; setTimeout(function(){ MEMO3.v = {}; MEMO3.prevu = false; }, 0); } if(!(cle in MEMO3.v)) MEMO3.v[cle] = f(); return MEMO3.v[cle]; }
+function resultatV(se, slug){ return memo3("r|" + se.id + "|" + slug, function(){ return resultatV0(se, slug); }); }
+function resultatV0(se, slug){
+  // une séance de la 7.7.1 se note ici : sa feuille recopiée, sinon la tablette, et les corrections du soir (« Que dit la feuille ? »)
+  if(SCN.LIVE && typeof SCN.resultat === "function" && se.nouvelle){ try { var r = SCN.resultat(se.id, slug); if(r && r.st && !r.ancienne) return r; } catch(e){} }
   return resultatLocalV(se, slug);
 }
 // ce que la marque d'une case montre : « n » (pas encore corrigée) se lit « ? » comme dans la maquette
@@ -348,7 +353,8 @@ function voisinV(se, slug){
   var P = se.S.places || {}, v = null;
   Object.keys(P).forEach(function(n){ var t = P[n] || {}; if(t.g === slug) v = t.d || null; if(t.d === slug) v = t.g || null; });
   return v; }
-function tauxV(se, qi){ var ok = 0, n = 0; se.presents.forEach(function(e){ var r = resultatV(se, e.slug); if(r && r.pts[qi] != null){ n++; ok += r.pts[qi]; } }); return n ? Math.round(ok * 100 / n) : 0; }
+function tauxV(se, qi){ return memo3("t|" + se.id + "|" + qi, function(){ return tauxV0(se, qi); }); }
+function tauxV0(se, qi){ var ok = 0, n = 0; se.presents.forEach(function(e){ var r = resultatV(se, e.slug); if(r && r.pts[qi] != null){ n++; ok += r.pts[qi]; } }); return n ? Math.round(ok * 100 / n) : 0; }
 function bilanValideV(se, slug){ var b = (se.S.bilans || {})[slug]; return b && b.texte ? b : null; }
 // l'entrée du bilan général (com632.js) pour un élève à une séance ; null tant que sa note n'est pas complète ou qu'une question n'a pas ce qu'elle vérifie
 function entreeV(se, slug){
@@ -577,7 +583,7 @@ function FicheV(p){
 function CarteBilanV(p){
   var se = p.se, slug = p.slug, entree = entreeV(se, slug), base = entree ? commentaireQCM(entree).map(function(x){ return x.t; }).join("") : "", v = bilanValideV(se, slug);
   var s1 = useState(null), texte = s1[0], setTexte = s1[1];
-  var t = texte == null ? (v ? v.texte : base) : texte, valide = !!v && t === v.texte && texte == null || !!v && texte === v.texte;
+  var t = texte == null ? (v ? v.texte : base) : texte, valide = !!v && t === v.texte;
   return h("div", {className:"card bilan628"},
     h("h3", null, "📝 Bilan général", InfoI("Texte pré-rempli automatiquement à partir de ses résultats : sa note, les questions qu'il a ratées et les questions difficiles qu'il a réussies (avec ce que chacune vérifie), son point d'autonomie, son estimation. Modifie-le si tu veux, puis valide. C'est ce texte qui finit son bilan quand sa copie lui est rendue, et qui va dans la ligne « Commentaire » du PDF « notes et compétences ».")),
     h("textarea", {className:"ta628 ta-bilan", value:t, "data-com":t === base && entree ? JSON.stringify(entree) : null, title:"Le bilan général de l'élève : modifie-le si tu veux.", onChange:function(ev){ setTexte(ev.target.value); }}),

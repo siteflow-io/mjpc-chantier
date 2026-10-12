@@ -36,7 +36,7 @@ function verif(ok, quoi, detail){ nb++; if(!ok) ko++; R.push((ok ? "  ok     " :
   const code = nom => B.eleves.find(e => e.nomComplet === nom).code;
   const t0 = Date.now();
   try {
-    const prof = await ouvrir("?mode=prof");
+    let prof = await ouvrir("?mode=prof");
     // le lancement : les binômes (pas de QCM précédent : l'ordre alphabétique), puis l'appel (Adam absent)
     // la séance de la 7.7.1 se lit avec ce qu'elle a : la tablette de Julien (2 / 3), la recopie de la feuille de Léa (3 / 3)
     const anc = await prof.evaluate(() => ({j: SCN.note("abrial_julien", null, "sess_1791000000000"), l: SCN.note("baudry_lea", null, "sess_1791000000000"), e: SCN.etat("sess_1791000000000"), se: SCN.seance("sess_1791000000000")}));
@@ -123,7 +123,12 @@ function verif(ok, quoi, detail){ nb++; if(!ok) ko++; R.push((ok ? "  ok     " :
     await prof.evaluate(() => ACT.cloreQuestion()); await pause(2400);
     await prof.evaluate(() => ACT.retour("maillard_noah"));
     // Q3 : Julien juste, Léa fausse ; l'annulation et le remettre
-    await prof.evaluate(() => ACT.lancerQuestion(2)); await prof.evaluate(() => ACT.autoriserReponse()); await pause(1800);
+    // la console fermée pendant Q3 : la tablette relaie les temps comptés (la réflexion, puis le passage, au bout de leur temps)
+    await prof.evaluate(() => ACT.lancerQuestion(2)); await prof.close();
+    await pause(2000 + 1500 + 1000 + 1500 + 2500);
+    d = base("sessions/" + sid + "/deroule");
+    verif(d.ph === "reponse" && d.qi === 2 && d.tour === 1, "la console fermée : la tablette fait passer la réflexion, puis le passage", d);
+    prof = await ouvrir("?mode=prof");
     await tab.evaluate(() => ELV.repondre(2, [1], "abrial_julien"));
     await prof.evaluate(() => ACT.tourSuivant()); await pause(3900);
     await tab.evaluate(() => ELV.repondre(2, [0], "baudry_lea"));
@@ -170,6 +175,7 @@ function verif(ok, quoi, detail){ nb++; if(!ok) ko++; R.push((ok ? "  ok     " :
     await prof.evaluate(() => ACT.questionSuivante());
     verif(base("sessions/" + sid + "/deroule/ph") === "coeval", "après la dernière question : la co-évaluation", base("sessions/" + sid + "/deroule"));
     await tab.evaluate(() => { ELV.coeval("ok", null, null, "abrial_julien"); ELV.coeval("mal", 0, [3], "baudry_lea"); });
+    await pause(400);
     const al = base("sessions/" + sid + "/alertes");
     verif(al && Object.keys(al).length === 1, "« ❌ » ouvre une alerte", al);
     const alid = Object.keys(al || {})[0];

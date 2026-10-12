@@ -101,6 +101,9 @@ var SCN = (function(){
   var DUREES_DEFAUT = {installation:5 * 60, estimAttest:3 * 60, correctionParQ:60, coevalBilan:2 * 60, decompte:3, b:5, entre:15};
   S.DUREES = Object.assign({}, DUREES_DEFAUT);
   function durees(){ var d = (LIVE.d.settings || {}).durees; S.DUREES = Object.assign({}, DUREES_DEFAUT, d || {}); return S.DUREES; }
+  S.durees = durees;
+  // SCN.DUREES se relit à chaque changement de la base (les Réglages peuvent changer pendant la séance)
+  LIVE.abonner(durees);
 
   /* ── Les classes et leurs élèves ── */
   function rosterDe(classe){
@@ -518,7 +521,7 @@ var ACT = (function(){
   var A = {};
   function sid(){ var s = SCN.sid(); if(!s) LIVE.log("ACT sans séance"); return s; }
   function e(){ return SCN.etat() || {}; }
-  function D(){ return SCN.DUREES; }
+  function D(){ return SCN.durees(); }
   // lancer : la séance s'écrit (la forme de la 7.7.1, plus « lancee », « places », « deroule ») ; l'appel s'ouvre
   A.lancerSeance = function(classe, evalId, o){
     o = o || {}; var now = LIVE.maintenant();
@@ -761,7 +764,7 @@ var ELV = (function(){
 var MOTEUR = (function(){
   var M = {actif:false};
   function suivant(e, sid){
-    var D = SCN.DUREES, t = SCN.tempsDe(e.qi, null, null, sid);
+    var D = SCN.durees(), t = SCN.tempsDe(e.qi, null, null, sid);
     if(e.ph === "reflexion") return {ph:"passage", qi:e.qi, tour:1, cote:SCN.coteDuTour(e.qi, 1, sid), duree:D.decompte, rouvert:e.rouvert || null};
     if(e.ph === "passage") return {ph:"reponse", qi:e.qi, tour:e.tour, cote:e.cote, duree:t.reponse, rouvert:e.rouvert || null};
     if(e.ph === "reponse") return {ph:"b", qi:e.qi, tour:e.tour, cote:e.cote, duree:D.b, rouvert:e.rouvert || null};
@@ -777,6 +780,8 @@ var MOTEUR = (function(){
     var sid = SCN.sid(), e = SCN.etat(sid); if(!sid || !e || !e.duree || e.legacy) return;
     if(["reflexion", "passage", "reponse", "b", "rouvert"].indexOf(e.ph) < 0) return;
     if(SCN.reste(e) > 0) return;
+    // une tablette ne passe la phase que si la console ne l'a pas fait 1,5 s après la fin du temps (console fermée, réseau perdu)
+    if(M.relais && LIVE.maintenant() - ((e.depuis || 0) + e.duree * 1000) < 1500) return;
     var n = suivant(e, sid); if(!n || !db) return;
     var attendu = e.depuis, ph = e.ph;
     db.ref(DB_ROOT + "/sessions/" + sid + "/deroule").transaction(function(cur){
@@ -790,6 +795,8 @@ var MOTEUR = (function(){
   // la seconde attestation finie : la lecture de la première question commence
   M.att2 = function(){ var sid = SCN.sid(), e = SCN.etat(sid); if(!sid || !e || e.ph !== "att2") return; var c = SCN.compteurs(null, sid);
     if(c.prets && c.prets[1] > 0 && c.prets[0] === c.prets[1]) ACT.lireQuestion(null); };
-  M.demarrer = function(){ if(M.actif) return; M.actif = true; setInterval(function(){ try { M.tic(); M.entree(); M.att2(); } catch(e){ console.error(e); } }, 250); };
+  // la console, le téléphone et le tableau mènent ; une tablette relaie seulement les temps comptés (M.relais), jamais l'entrée ni la correction
+  M.demarrer = function(relais){ if(M.actif) return; M.actif = true; M.relais = !!relais;
+    setInterval(function(){ try { M.tic(); if(!M.relais){ M.entree(); M.att2(); } } catch(e){ console.error(e); } }, relais ? 500 : 250); };
   return M;
 })();

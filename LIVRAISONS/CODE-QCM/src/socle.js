@@ -257,5 +257,5 @@ function rendre(){
 LIVE.abonner(rendre);
 window.addEventListener("hashchange", rendre);
 LIVE.demarrer();
-if(["console", "telephone", "tableau"].indexOf(LIVE.appareil()) >= 0) MOTEUR.demarrer();
+if(["console", "telephone", "tableau"].indexOf(LIVE.appareil()) >= 0) MOTEUR.demarrer(); else if(LIVE.appareil() === "tablette") MOTEUR.demarrer(true);
 rendre();

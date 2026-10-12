@@ -20789,3 +20789,89 @@ Lance les quatre en même temps. Le tableau est aussi au sas : https://github.co
 908. **Le retard** : ils partent vers 17:15 au lieu de 14:10, soit trois heures de moins sur la nuit. Je ne sais pas si tout tiendra d'ici 06:30. S'il manque du temps, ils font l'heure de classe d'abord, et le secours est déjà en ligne : la 7.7.2.
 
 12/10/2026 17:12 MEMO
+
+---
+
+## TOUR 675 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (12/10, 17:35) c'est normal si l'exécutant de l'étape A B et C n'a pas fini?
+
+---
+
+## TOUR 675 — Claude (conscience n°12)
+
+Mesuré : `maquette-qcm` à `1de90a20` (17:06, `eleve-v7-v9.json`) ; présents : la v9 et son md5, `controles-conscience-v9.txt` (110 vérifications, 0 échec), `lecture-v9.md`, `ecrans-changes-v8-v9.txt`, `destinations-v9.txt` ; absents : `banc-final-v9.txt`, la section « Complément 4 » du README, `DEFAUTS.md` à jour ; aucune source changée depuis `6fa8a9fe` ; `code-qcm` sans commit d'exécutant à 17:40. Commun corrigé (« la v9 », pas « finale »).
+
+Réponse mot pour mot :
+
+À jouer : rien · en cours chez l'exécutant : celui de la maquette (fin de l'étape C) ; les quatre du code (rien de poussé, ils lisent) · ouvert : tes 11 questions
+
+909. **Oui, c'est normal.** Il est dans la dernière étape, C. Ce qui est fait : la v9 (15:58), mes contrôles à zéro (110 vérifications), sa lecture des écrans changés, et, à 17:06, la liste des textes vus par l'élève, refaite sur toutes les pages. Ce qui lui reste : son banc final, le README et la liste des défauts. Ensuite, il s'arrête de lui-même.
+
+910. **Laisse-le finir.** Il ne gêne pas les quatre du code : il est sur une autre branche. Et son banc final est la dernière preuve que la v9 dont ils partent est juste.
+
+911. **Une correction de mon point 907** : j'ai écrit « la v9 finale ». C'est la v9 poussée à 15:58, mais sa livraison n'est pas close. Depuis, il n'a changé aucune source : les quatre partent bien du même code que lui. S'il en change encore, le commun leur dit déjà de reporter le changement ; je le vérifierai à son arrêt.
+
+912. **Les quatre du code n'ont encore rien poussé** : c'est normal à cette heure, ils lisent leurs mandats. QCM-1 doit pousser ses premiers noms dans sa première heure, donc vers 18:15. Je le vérifie à ton prochain message.
+
+12/10/2026 17:41 MEMO
+
+---
+
+## TOUR 676 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (12/10, 17:39) je viens de les lancer, les 4.
+
+---
+
+## TOUR 676 — Claude (conscience n°12)
+
+Mesuré : `code-qcm` à `2845c9d6` : `[QCM-2 · HEURE] fusion de origin/main` (17:37), puis ses quatre demandes à QCM-1 dans `DEMANDES.md` (17:38) ; rien encore de QCM-1, QCM-3, QCM-4 ; `maquette-qcm` inchangée depuis 17:06. Commun : « partis vers 17:35 ».
+
+Réponse mot pour mot :
+
+À jouer : rien · en cours chez l'exécutant : les quatre du code, et celui de la maquette (fin de l'étape C) · ouvert : tes 11 questions
+
+913. **Ils sont bien partis.** QCM-2 a déjà poussé à 17:37 et 17:38 : il a pris les dernières consignes de `main`, puis écrit à QCM-1 ses quatre premières demandes (les écrans de chaque appareil, l'état de la séance en direct, les gestes de chaque moitié de tablette). C'est exactement ce que prévoit le commun.
+
+914. **Les heures tiennent** : premier assemblage à 20:00, verdict à 06:30, mon audit à 07:00. QCM-1 doit pousser ses premiers noms dans sa première heure, donc vers 18:40.
+
+915. **Tu n'as plus rien à faire pour eux ce soir.** Ne leur colle rien. Si l'un d'eux s'arrête ou te pose une question, colle-moi ce qu'il dit.
+
+12/10/2026 17:45 MEMO
+
+---
+
+## TOUR 677 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (12/10, 18:48) quand est ce que tout sera fini et que qcm sera en ligne et sans bugs?
+
+---
+
+## TOUR 677 — Claude (conscience n°12)
+
+Mesuré : `code-qcm` à `b18e91e5` (18:47), une soixantaine de commits des quatre depuis 17:37 ; `DEFAUTS-OUVERTS.md` (essais de QCM-4 à 18:10 et 18:40) ; l'app assemblée par `build.py` dans ma copie (md5 `c04006f5…`) ; mes contrôles dessus : 30 vérifications, 2 échecs, tous deux dans K6 et dus à mes contrôles (clic avant la fin du passage ; focus pris par le clic de la console ; puis le compteur « ONT RÉPONDU » en capitales) ; corrigés : 30 vérifications, 0 échec ; nouvelles empreintes ; exécutants prévenus dans `DEMANDES.md`.
+
+Réponse mot pour mot :
+
+À jouer : rien · en cours chez l'exécutant : les quatre du code (une soixantaine de sauvegardes depuis 17:37) et celui de la maquette (fin de l'étape C) · ouvert : tes 11 questions ; ton « oui » au point 921
+
+916. **Le calendrier ne bouge pas.** À 06:30 au plus tard, ils livrent. À 07:00, mon audit commence. Avant 09:00, mon verdict : ça va ou ça ne va pas. Si ça va, je mets en ligne avant 09:00, donc avant ta limite de 10:30. Si ça ne va pas, tu fais cours avec la 7.7.2, déjà en ligne.
+
+917. **« Sans bugs », je ne peux pas te le promettre ce soir** : c'est l'audit de demain matin qui le dira, preuves à l'appui. Je ne mettrai rien en ligne avec un défaut connu.
+
+918. **Où ils en sont à 18:48, mesuré** : j'ai assemblé leur app et passé mes contrôles dessus. L'heure se joue de bout en bout sur une tablette partagée et 3 questions : le lancement, l'entrée par le code, les deux tours, la correction dans l'ordre des plus ratées, « Trouvée au dernier moment », la co-évaluation, le bilan et les notes justes. 30 vérifications, 0 échec.
+
+919. **Mais ce n'est pas fini.** À 18:40, le banc de QCM-4, avec 12 tablettes et l'évaluation de demain, trouvait encore quatre défauts : une tablette vide à chaque question, les élèves d'une question close tous marqués « pas de réponse », « Rouvrir pour un élève » qui ne se referme pas, le téléphone vide. Je ne sais pas s'ils sont déjà corrigés : on le saura à l'assemblage de 20:00. Le soir (résultats, PDF, copies) et le reste n'ont pas encore été éprouvés.
+
+920. **Une faute de ma part** : deux de mes contrôles étaient faux. Ils cliquaient trop tôt, et un champ perdait son curseur à cause de leur propre clic. Je les ai corrigés et j'ai prévenu les quatre. QCM-2 avait cherché dans l'app un défaut qui venait de moi.
+
+921. **Une chose à régler** : je ne travaille pas entre tes messages. Pour que mon audit commence à 06:35 même si tu dors, je peux me programmer un réveil dans cette conversation. Dis « oui » si tu le veux.
+
+12/10/2026 19:04 MEMO

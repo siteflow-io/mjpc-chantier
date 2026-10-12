@@ -16,6 +16,10 @@
 // K6  la diapo trop pleine se lit en pages, jamais hors du cadre, avec plusieurs blocs (n°13 · 16 ; p8-5f, points 2-5) — éprouvé sur p8-5e, p8-5f
 // K7  la fenêtre du tableau reçoit les pages dès son ouverture (n°13 · 17 ; p8-5g, point 1)           — éprouvé sur p8-5f, p8-5g
 // K8  une vignette par page dans la colonne de gauche (n°13 · 18 ; p8-5h, points 1-5)                  — éprouvé sur p8-5g (échoue : p8-5h n'est pas livrée)
+// K10 après « ■ Arrêter », la fenêtre du tableau revient à ce qu'elle montrait avant la répétition (n°13 · 19 ; p8-5h, point 11) — éprouvé sur p8-5g (échoue)
+// K11 la vue « ⧉ Tableau » porte le compteur de page et montre la même page (n°13 · 20 ; p8-5h, point 12) — éprouvé sur p8-5g (échoue)
+// K12 dans l'atelier, le curseur reste visible dans un paragraphe plus haut que la diapo (n°13 · 21 ; p8-5h, point 13) — éprouvé sur p8-5g (échoue)
+// K13 dans l'atelier, Échap sort de la ligne et Maj+← change de page (n°13 · 22 ; p8-5h, point 14) — éprouvé sur p8-5g (échoue)
 // K9  le parcours fixe, le même à chaque audit : atelier → écrire → note → lancer l'heure → dévoiler → changer de diapo → Écran 2 → mise en forme → répétition → arrêt → Fin de l'heure
 import path from 'node:path'; import fs from 'node:fs'; import { createRequire } from 'node:module'; import { createHash } from 'node:crypto';
 
@@ -171,6 +175,56 @@ await K('K8', 'une vignette par page dans la colonne de gauche (n°13 · 18)', a
   verif('K8', gardee && /page 1 \/ 2/.test(retour.page), 'clic sur « 1 · 1/2 » → la garde « La classe te suivrait », « Y aller » → le mur dit « page 1 / 2 »', `garde ${gardee} · « ${retour.page} »`);
   await finK('K8', o); });
 
+// K10 — à « ■ Arrêter » la répétition, la fenêtre du tableau revient à ce qu'elle montrait avant (p8-5h, point 11 ; cadrage 4, 1.5 : « à l'arrêt, tout ce qui a été joué est oublié » ;
+//       p8-5c, point 4 : « rien ne reste ») : rien au mur avant → la fenêtre redevient vide ; la diapo 1 à 3 dévoilés au mur avant → la fenêtre la remontre, même compteur, mêmes lignes
+await K('K10', 'après « ■ Arrêter », la fenêtre du tableau revient à ce qu\'elle montrait avant la répétition (n°13 · 19)', async () => {
+  const videTableau = fen => fen.evaluate(() => { const mur = document.querySelector('.mur.tableau'); if (!mur) return { lis: 0, page: '' }; return { lis: Array.from(mur.querySelectorAll('li')).filter(l => l.getBoundingClientRect().height > 0).length, page: ((mur.querySelector('.page') || {}).textContent || '').trim() }; });
+  { const o = await ouvrir(); const pg = o.pg; await atelier(pg); await huitLignes(pg); await pg.click('#at-jouer'); await pg.waitForTimeout(500); const fen = await ouvrirTableau(pg);
+    for (let i = 0; i < 10; i++) { await pg.click('#bdev'); await pg.waitForTimeout(60); } await pg.waitForTimeout(400); const r = await lireMur(fen);
+    await pg.click('#rep-stop'); await pg.waitForTimeout(700); const v = await videTableau(fen);
+    verif('K10', r.lignes.length >= 1 && v.lis === 0 && v.page === '', 'rien au mur avant la répétition : après « ■ Arrêter », la fenêtre ne montre plus rien de la répétition (aucune ligne, aucun compteur)', `en répétition « ${r.page} » ${r.lignes.length} l. · après l'arrêt ${v.lis} ligne(s) visible(s), compteur « ${v.page} »`);
+    await fen.close(); await finK('K10', o); }
+  { const o = await ouvrir(); const pg = o.pg; await lancer(pg); for (let i = 0; i < 3; i++) { await pg.click('#bdev'); await pg.waitForTimeout(100); } const fen = await ouvrirTableau(pg); const a = await lireMur(fen);
+    await pg.click('#ong-atelier'); await pg.waitForTimeout(300); if (await pg.$('#at-aide .x')) { await pg.click('#at-aide .x'); await pg.waitForTimeout(200); } await pg.click('#at-jouer'); await pg.waitForTimeout(500);
+    for (let i = 0; i < 10; i++) { await pg.click('#bdev'); await pg.waitForTimeout(60); } await pg.waitForTimeout(400); const r = await lireMur(fen); await pg.click('#rep-stop'); await pg.waitForTimeout(700); const b = await lireMur(fen);
+    verif('K10', a.lignes.length === 3 && !pareil(a, r) && pareil(a, b), 'la diapo 1 à 3 dévoilés au mur avant la répétition : après « ■ Arrêter », la fenêtre la remontre telle quelle', `avant ${a.lignes.length} l. « ${a.page} » · en répétition ${r.lignes.length} l. « ${r.page} » · après ${b.lignes.length} l. « ${b.page} »`);
+    await fen.close(); await finK('K10', o); } });
+
+// K11 — la vue « ⧉ Tableau » de la colonne de droite porte le compteur « page i / n » et montre la même page que le mur (p8-5h, point 12 ; p8-5f, point 5 : le tableau montre la même page que le pilote)
+await K('K11', 'la vue « ⧉ Tableau » porte le compteur de page et montre la même page (n°13 · 20)', async () => { const o = await ouvrir(); const pg = o.pg; await atelier(pg); await huitLignes(pg); await pg.click('#ong-pilotage'); await pg.waitForTimeout(300); await lancer(pg);
+  await pg.click('#btableau'); await pg.waitForTimeout(400);
+  const lireVue = () => pg.evaluate(() => { const mur = Array.from(document.querySelectorAll('.mur.tableau')).find(m => !m.closest('#volet') && m.id !== 'p8-banc' && m.getBoundingClientRect().width > 0); if (!mur) return null; const c = mur.querySelector('.corpsd') || mur; return { page: ((mur.querySelector('.page') || {}).textContent || '').replace(/[‹›]/g, '').trim(), lignes: Array.from(c.querySelectorAll('li')).filter(l => !l.classList.contains('hors') && !l.classList.contains('pas') && l.getBoundingClientRect().height > 0).map(l => l.getAttribute('data-p')) }; });
+  const v0 = await lireVue(), m0 = await lireMur(pg);
+  verif('K11', !!v0 && /page 1 \/ 2/.test(v0.page) && v0.page === m0.page, 'à 0 dévoilé : la vue dit « page 1 / 2 », comme le mur', `vue « ${v0 && v0.page} » · mur « ${m0.page} »`);
+  let n = 0; while (!/page 2 \/ 2/.test((await lireMur(pg)).page) && n < 15) { await pg.click('#bdev'); await pg.waitForTimeout(80); n++; } await pg.waitForTimeout(300); const v2 = await lireVue(), m2 = await lireMur(pg);
+  verif('K11', !!v2 && /page 2 \/ 2/.test(v2.page) && v2.page === m2.page && v2.lignes.length > 0 && JSON.stringify(v2.lignes) === JSON.stringify(m2.lignes), '▶ jusqu\'à la page 2 : la vue dit « page 2 / 2 » et montre les mêmes lignes que le mur', `vue « ${v2 && v2.page} » ${JSON.stringify(v2 && v2.lignes)} · mur « ${m2.page} » ${JSON.stringify(m2.lignes)}`);
+  await finK('K11', o); });
+
+// K12 — dans l'atelier, Paul voit toujours où il écrit (p8-5h, point 13) : un paragraphe de quinze lignes tapé sans Entrée → le curseur reste dans le cadre de la diapo,
+//       la zone « ✎ » et le compteur ne recouvrent pas la ligne active ; « À régler » dit « trop pleine » (cadrage 4, 0.4) ; rien ne sort par le haut (p8-5f, point 3)
+await K('K12', 'dans l\'atelier, le curseur reste visible dans un paragraphe plus haut que la diapo (n°13 · 21)', async () => { const o = await ouvrir(); const pg = o.pg; await atelier(pg);
+  const nbAvant = await pg.$$eval('#volet [data-at-di]', l => l.length); await pg.click('#mur .p8-ecrire');
+  const mesure = () => pg.evaluate(() => { const mb = document.getElementById('mur').getBoundingClientRect(); const sel = getSelection(); const r = sel.rangeCount ? sel.getRangeAt(0).getBoundingClientRect() : null; const a = document.activeElement; const lb = a && a.closest('#mur') ? a.getBoundingClientRect() : null; const ab = lb && r ? { left: lb.left, right: lb.right, top: r.top, bottom: r.bottom } : null; /* la bande de la ligne où le curseur est */
+    const chev = (x) => { if (!x || !ab) return false; const b = x.getBoundingClientRect(); return b.width > 0 && b.height > 0 && b.left < ab.right && b.right > ab.left && b.top < ab.bottom && b.bottom > ab.top; };
+    const corps = document.querySelector('#mur .corpsd'); const premier = corps ? Array.from(corps.querySelectorAll('li')).find(l => !l.classList.contains('hors') && l.getBoundingClientRect().height > 0) : null;
+    return { curseurDedans: !!r && r.height > 0 && r.top >= mb.top - 1 && r.bottom <= mb.bottom + 1, curseur: r && [Math.round(r.top), Math.round(r.bottom)], mur: [Math.round(mb.top), Math.round(mb.bottom)], chevZone: chev(document.querySelector('#mur .p8-ecrire')), chevCompteur: chev(document.querySelector('#mur .page')), sortHaut: !!premier && premier.getBoundingClientRect().top < mb.top - 1 }; });
+  let pire = null; for (let i = 1; i <= 15; i++) { await pg.keyboard.type(`Segment ${i} du long paragraphe tapé sans Entrée, qui finit par dépasser la hauteur de la diapo. `, { delay: 1 }); await pg.waitForTimeout(120); const m = await mesure(); if (!m.curseurDedans || m.chevZone || m.chevCompteur || m.sortHaut) { pire = { i, ...m }; break; } }
+  const nbApres = await pg.$$eval('#volet [data-at-di]', l => l.length); const regler = await pg.evaluate(() => document.body.innerText.replace(/\s+/g, ' ')).then(t => /trop pleine/i.test(t));
+  verif('K12', !pire, 'quinze segments tapés sans Entrée : à chaque segment, le curseur est dans le cadre, la zone « ✎ » et le compteur ne recouvrent pas la ligne du curseur, rien ne sort par le haut', pire ? `au segment ${pire.i} : curseur ${JSON.stringify(pire.curseur)} pour un cadre ${JSON.stringify(pire.mur)} · zone ✎ chevauche ${pire.chevZone} · compteur chevauche ${pire.chevCompteur} · sort par le haut ${pire.sortHaut}` : undefined);
+  verif('K12', nbApres === nbAvant && regler, 'aucune diapo créée, « À régler » dit « trop pleine »', `${nbAvant} → ${nbApres} diapos · trop pleine ${regler}`);
+  await finK('K12', o); });
+
+// K13 — dans l'atelier, Échap fait sortir de la ligne (p8-5h, point 14) : le curseur quitte le texte, le texte reste ; Maj+← change alors de page
+await K('K13', 'dans l\'atelier, Échap sort de la ligne et Maj+← change de page (n°13 · 22)', async () => { const o = await ouvrir(); const pg = o.pg; await atelier(pg);
+  await pg.click('#mur .p8-ecrire'); for (let i = 1; i <= 8; i++) { await pg.keyboard.type(`Ligne ajoutée numéro ${i}, assez longue pour prendre de la place dans la diapo.`, { delay: 2 }); if (i < 8) await pg.keyboard.press('Enter'); } await pg.keyboard.type(' FIN-HUIT'); await pg.waitForTimeout(300);
+  const avant = await pg.evaluate(() => ({ dansTexte: !!(document.activeElement && document.activeElement.closest('#mur') && document.activeElement.getAttribute('contenteditable')), page: ((document.querySelector('#mur .page') || {}).textContent || '').replace(/[‹›]/g, '').trim() }));
+  await pg.keyboard.press('Escape'); await pg.waitForTimeout(300);
+  const apres = await pg.evaluate(() => ({ dansTexte: !!(document.activeElement && document.activeElement.closest('#mur') && document.activeElement.getAttribute('contenteditable')), texte: document.getElementById('mur').textContent.includes('FIN-HUIT'), selection: String(getSelection()).length }));
+  verif('K13', avant.dansTexte && !apres.dansTexte && apres.texte && apres.selection === 0, 'Échap : le curseur quitte la ligne, le texte reste, aucune sélection', `avant : dans le texte ${avant.dansTexte} · après : dans le texte ${apres.dansTexte}, texte intact ${apres.texte}, sélection ${apres.selection} caractère(s)`);
+  await pg.keyboard.press('Shift+ArrowLeft'); await pg.waitForTimeout(300); const page = await pg.evaluate(() => ((document.querySelector('#mur .page') || {}).textContent || '').replace(/[‹›]/g, '').trim());
+  verif('K13', /page 2 \/ 2/.test(avant.page) && /page 1 \/ 2/.test(page), 'puis Maj+← : la page 1', `« ${avant.page} » → « ${page} »`);
+  await finK('K13', o); });
+
 // K9 — le parcours fixe (protocole du 12/10, obligation 4) : le même à chaque audit, par le geste, à 1280 × 800
 await K('K9', 'le parcours fixe', async () => { const o = await ouvrir(); const pg = o.pg;
   await atelier(pg); await pg.click('#volet [data-at-di="0"]'); await pg.waitForTimeout(300);
@@ -200,7 +254,7 @@ await K('K9', 'le parcours fixe', async () => { const o = await ouvrir(); const 
 
 await nav.close();
 R.push(''); R.push(`${nb} vérifications, ${echecs} échec(s)`); R.push(`--- fin : ${echecs} défaut(s)`);
-const md5 = createHash('md5').update(fs.readFileSync(MAQ)).digest('hex');
-const texte = `contrôles de la conscience n°13 (déroulé) · ${new Date().toISOString().slice(0, 16).replace('T', ' ')} UTC · maquette : ${MAQ} · md5 ${md5}\n` + R.join('\n') + '\n';
+const md5 = createHash('md5').update(fs.readFileSync(MAQ)).digest('hex'); const md5Ctl = createHash('md5').update(fs.readFileSync(new URL(import.meta.url))).digest('hex');
+const texte = `contrôles de la conscience n°13 (déroulé) · controles.mjs md5 ${md5Ctl} · ${new Date().toISOString().slice(0, 16).replace('T', ' ')} UTC · maquette : ${MAQ} · md5 ${md5}\n` + R.join('\n') + '\n';
 console.log(texte); if (SORTIE) fs.writeFileSync(SORTIE, texte);
 process.exit(echecs ? 1 : 0);

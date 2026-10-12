@@ -1,4 +1,4 @@
-# Audit de la livraison du soir du code du QCM — 12/10/2026, 22:05 à 22:45 (conscience n°12)
+# Audit de la livraison du soir du code du QCM — 12/10/2026, 22:08 à 22:30 (conscience n°12)
 
 *Ordre de Paul (12/10, 19:14) : « il faudrait qu'ils aient fini ce soir avant 22h, afin que tu fasses un audit avant la nuit et qu'on lance les correctifs si besoin ». Réveil programmé à 22:05 (« oui 921 »).*
 

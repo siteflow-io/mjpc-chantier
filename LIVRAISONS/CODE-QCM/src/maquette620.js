@@ -292,15 +292,14 @@ function HautModeTestV(){
       h(MessageTestV, {boutons:BOUTONS_CAS, agir:function(b){ var nom = b[0].replace(/^🎬 /, ""), s2 = testSession(); if(!s2) return false; var r = CAS_TEST[nom] ? CAS_TEST[nom](s2, deroule(s2.S) || {}) : false; return r === false ? false : Promise.resolve(r).then(function(){ return b[2]; }); }})),
     h("div", {className:"test-info"},
       h("strong", null, "🎓 Entrer comme un élève"),
-      h("p", {style:{margin:".4rem 0", fontSize:".88rem"}}, "Ouvre l'application élève telle qu'elle est : « Combien êtes-vous sur cette tablette ? », puis code, prénom et nom, puis le code du binôme. Exemple — ", h("strong", null, TEST_NOMS[0]), " · code ", h("strong", null, testCode(0))),
+      h("p", {style:{margin:".4rem 0", fontSize:".88rem"}}, "Exemple — ", h("strong", null, TEST_NOMS[0]), " · code ", h("strong", null, testCode(0))),
       h("button", {className:"btn btn-ghost btn-sm", "data-local":"1", title:"Ouvre le vrai portail élève, sur la classe de test.", onClick:function(){ window.open(location.pathname + "#mode=eleve", "tablette-test"); }}, "👋 Ouvrir le portail élève"),
       h(CodesTest)),
     h("div", {className:"test-info"},
-      h("strong", null, "Environnement de test isolé. "),
-      "Classe fictive (30 élèves simulés, 15 tablettes), la démo par défaut. Tu pilotes en haut comme en classe, et tu joues les tablettes en bas. À la sortie, tout est purgé automatiquement, sauf la démo."));
+      h("strong", null, "Environnement de test isolé.")));
 }
 function CodesTest(){ var s = useState(false), o = s[0], set = s[1];
-  return h("div", {style:{fontSize:".85rem", marginTop:".4rem"}}, h("button", {className:"lien-prof", "data-local":"1", onClick:function(){ set(!o); }, title:"Montre le code de chacun des 30 élèves fictifs."}, (o ? "▾" : "▸") + " Voir tous les codes du bac à sable"),
+  return h("div", {style:{fontSize:".85rem", marginTop:".4rem"}}, h("div", {style:{cursor:"pointer"}, onClick:function(){ set(!o); }}, (o ? "▾" : "▸") + " Voir tous les codes du bac à sable"),
     o && h("div", {className:"codes-test"}, TEST_NOMS.map(function(n, i){ return h("div", {key:n}, n + " · " + testCode(i)); }))); }
 // une tablette simulée : ses deux vraies moitiés ; ses clics passent par ELV, pour l'élève de la moitié
 function contenuTablette(se, t){
@@ -323,27 +322,28 @@ function TablettesSimuleesV(){
   function nom(x){ var i = testSlugs().indexOf(x); return i >= 0 ? TEST_NOMS[i] : x; }
   return h(F, null,
     h("div", {style:{display:"flex", justifyContent:"space-between", alignItems:"center", flexWrap:"wrap", gap:".5rem", marginTop:".8rem"}},
-      h("h2", {className:"test-section-title", style:{margin:0}}, "👥 Tablettes simulées", InfoI("Chaque tablette est la vraie tablette, en petit : ses deux moitiés, au moment de la séance. Un clic y est celui de l'élève de la moitié. « 🔍 Jouer en grand » l'ouvre à la taille d'une vraie tablette.")),
-      h("button", surClic(function(){ return tousRepondent(); }, {className:"btn btn-primary btn-sm", disabled:!se, title:"Chaque élève fait ce que le moment lui demande : coche son attestation, répond, dit si sa feuille dit son clic, estime, lit la feuille de son voisin, co-évalue."}), "🎲 Tous les élèves répondent")),
+      h("h2", {className:"test-section-title", style:{margin:0}}, "👥 Tablettes simulées", InfoI("Les 15 tablettes de la classe de test, chacune la vraie tablette en deux moitiés, en petit pour regarder ; « 🔍 Jouer en grand » pour jouer.")),
+      h("button", surClic(function(){ return tousRepondent(); }, {className:"btn btn-primary btn-sm"}), "🎲 Tous les élèves répondent")),
     d.ph === "reflexion" && h("div", {className:"simt-aide"}, "Pendant la réflexion, tu tapes sous chaque tablette ce que chaque élève écrit sur sa feuille. La feuille est posée à côté de la tablette, comme en classe."),
     h("div", {className:"sims"}, places.map(function(t){
       return h("div", {key:t.n, "data-sim-tab":t.n, "data-g":t.g || "", "data-d":t.d || ""},
         h("div", {className:"sim-cadre simt"},
           h("div", {className:"sim-titre simt-titre"}, h("span", null, "📱 Tablette " + t.n + " · " + nom(t.g) + (t.d ? " · " + nom(t.d) : "")),
-            h("button", {className:"btn btn-ghost btn-sm simt-grand", "data-local":"1", disabled:!se, onClick:function(){ MODE_TEST.grand = t.n; v3Avertir(); }}, "🔍 Jouer en grand")),
-          h("div", {className:"sim"}, h("div", {className:"sim-in"}, contenuTablette(se, se ? t : null))),
+            h("button", {className:"btn btn-ghost btn-sm simt-grand", "data-local":"1", title:"Ouvre cette tablette à la taille d'une vraie, avec ses deux feuilles dessous : en grand, on joue.", onClick:function(){ MODE_TEST.grand = t.n; v3Avertir(); }}, "🔍 Jouer en grand")),
+          h("div", {className:"sim"}, h("div", {className:"sim-in"}, h(FigerZone, null, contenuTablette(se, se ? t : null)))),
           d.ph === "reflexion" && h("div", {className:"simt-feuilles"}, t.g && h(FeuilleTest, {se:se, x:t.g, nom:nom(t.g)}), t.d && h(FeuilleTest, {se:se, x:t.d, nom:nom(t.d)}))));
     })));
 }
 function GrandTest(){
   var se = testSession(), n = MODE_TEST.grand, t = se && SCN.places ? SCN.places().filter(function(x){ return x.n === n; })[0] : null;
-  if(!se || !t) return null;
+  if(!t && n && TEST_PAIRES30[n - 1]) t = {n:n, g:v3Slug(TEST_PAIRES30[n - 1][0]), d:v3Slug(TEST_PAIRES30[n - 1][1])};
+  if(!t) return null;
   function nom(x){ var i = testSlugs().indexOf(x); return i >= 0 ? TEST_NOMS[i] : x; }
   return h("div", {className:"grand-fond"},
     h("div", {className:"grand-boite", "data-sim-tab":t.n, "data-g":t.g || "", "data-d":t.d || ""},
       h("div", {className:"grand-h"}, h("strong", null, "📱 Tablette " + t.n + " · " + nom(t.g) + (t.d ? " · " + nom(t.d) : "")), h("span", {className:"grand-p"}, "en grand, à la taille d'une vraie tablette"),
         h("button", {className:"btn btn-rouge btn-sm", "data-local":"1", onClick:function(){ MODE_TEST.grand = null; v3Avertir(); }}, "✕ ", "Revenir aux 15 tablettes")),
-      h("div", {className:"grand-tab"}, contenuTablette(se, t)),
+      h("div", {className:"grand-tab"}, se ? contenuTablette(se, t) : h(FigerZone, null, contenuTablette(null, null))),
       h("div", {className:"simt-feuilles grand-f"}, t.g && h(FeuilleTest, {se:se, x:t.g, nom:nom(t.g)}), t.d && h(FeuilleTest, {se:se, x:t.d, nom:nom(t.d)}))));
 }
 function ModeTestV(){ if(!MODE_TEST.sortie) MODE_TEST.actif = true; return h(ModeTestVC); }
@@ -353,19 +353,19 @@ function LancementTestV(){
   useV3();
   var ev = evalV(TEST_EVAL) || demoV(), cl = (typeof LIVE !== "undefined" && LIVE.d && LIVE.d.classes || {})[CLASSE_TEST];
   if(!ev || !cl) return h("div", {className:"card"}, h("p", null, "Chargement…"));
-  if(!MODE_TEST.paires) MODE_TEST.paires = SCN.binomesProposes(CLASSE_TEST);
+  // dans l'ordre de la liste (la classe de test n'a pas de QCM précédent)
+  if(!MODE_TEST.paires) MODE_TEST.paires = TEST_PAIRES30.map(function(p){ return [v3Slug(p[0]), p[1] ? v3Slug(p[1]) : null]; });
   return h("div", {className:"card"},
-    h("h2", null, "🎯 Lancer une nouvelle séance", InfoI("La classe de test et la démo : la séance se lance comme en classe, puis l'appel.")),
+    h("h2", null, "🎯 Lancer une nouvelle séance", InfoI("Ta vraie console d'avant l'heure, sur la classe de test et la démo.")),
     h("div", {className:"lancer-grid"},
       h("div", null,
-        h("div", {className:"field"}, h("label", null, "Classe", InfoI("La classe fictive du mode test.")), h("select", {value:"c", readOnly:true, title:"La classe de test."}, h("option", {value:"c"}, "🧪 " + CLASSE_TEST + " (" + SCN.roster(CLASSE_TEST).length + " élèves)"))),
-        h("div", {className:"field"}, h("label", null, "Évaluation", InfoI("La démo, copiée pour le mode test.")), h("select", {value:"e", readOnly:true, title:"L'évaluation de la séance de test."}, h("option", {value:"e"}, ev.titre + " (" + ev.questions.length + " questions)"))),
+        h("div", {className:"field"}, h("label", null, "Classe", InfoI("La classe de test : 30 élèves fictifs, effacés à la sortie.")), h("select", {value:"c", readOnly:true, title:"La classe de test."}, h("option", {value:"c"}, "🧪 " + CLASSE_TEST + " (" + SCN.roster(CLASSE_TEST).length + " élèves)"))),
+        h("div", {className:"field"}, h("label", null, "Évaluation", InfoI("La démo par défaut, ou n'importe quelle évaluation de ta liste.")), h("select", {value:"e", readOnly:true, title:"L'évaluation jouée en test."}, h("option", {value:"e"}, ev.titre + " (" + ev.questions.length + " questions)"))),
         h("div", {className:"duree-box"}, texteDureeV(ev, false)),
         h("button", surClic(function(){ LIVE.classeSlug = CLASSE_TEST; return Promise.resolve(ACT.lancerSeance(CLASSE_TEST, TEST_EVAL, {paires:MODE_TEST.paires})).then(function(){ MODE_TEST.paires = null; }); },
-          {className:"btn btn-primary", title:"Lance la séance de test : l'appel s'ouvre."}), "🚀 Lancer la séance")),
+          {className:"btn btn-primary", title:"Ouvre l'appel de la classe de test, puis la séance, comme en classe."}), "🚀 Lancer la séance")),
       h("div", {className:"binomes-box"},
-        h("div", {className:"tt"}, "📱 Binômes proposés — dans l'ordre de la liste : la classe de test n'a pas de QCM précédent"),
-        h("div", {className:"ss"}, "Glisse un nom sur un autre pour échanger deux élèves, ou sur une moitié vide pour l'y déplacer. Tu peux le faire jusqu'au bout de l'heure."),
+        h("div", {className:"tt"}, "📱 Binômes proposés — dans l'ordre de la liste : la classe de test n'a pas de QCM précédent", InfoIB("📱 Binômes proposés", "Glisse un nom sur un autre pour échanger deux élèves, ou sur une moitié vide pour l'y déplacer, jusqu'au bout de l'heure.")),
         h(GrilleBinomes, {paires:MODE_TEST.paires, classe:CLASSE_TEST, surChange:function(np){ MODE_TEST.paires = np; }}))));
 }
 /* Le mode test reste ouvert pendant que sa séance avance : chaque geste de la console revient à « l'écran du moment » (src/live/pages.js) ;
@@ -397,8 +397,7 @@ function ModeTestVC(){
     h("div", {className:"prof full"},
       HautModeTestV(),
       h("div", {className:"test-prof-zone"},
-        h("h2", {className:"test-section-title"}, "🎯 Panneau prof", InfoI("Le même panneau qu'en classe : avant l'heure, le choix de l'évaluation, les binômes et l'appel ; pendant la séance, la vraie console.")),
-        h("div", {className:"simt-note"}, se ? "La vraie console de la séance de test." : "Le même panneau qu'en classe, avant l'heure : choix de l'évaluation, binômes, puis l'appel au lancement."),
+        h("h2", {className:"test-section-title"}, "🎯 Panneau prof", InfoI(se ? "Ta vraie console de séance, sur la classe de test." : "Le même panneau qu'en classe.")),
         panneau),
       TablettesSimuleesV()),
     MODE_TEST.grand && h(GrandTest));

@@ -1,0 +1,13 @@
+CSS : la poignée visible partout : 98 → 98 o
+CSS : la règle de la préparation retirée : 38 → 0 o
+infobulle de la poignée : 120 → 338 o
+poigneeMur : le double-clic : 180 → 369 o
+arreterRepetition : garder murPart (1/2) : 124 → 216 o
+arreterRepetition : garder murPart (2/2) : 110 → 152 o
+dimensionner : la poignée agit dès le premier pixel hors préparation : 224 → 444 o
+poigneeMur : 801 o / 1 lignes → 990 o / 1 lignes
+arreterRepetition : 877 o / 1 lignes → 1011 o / 1 lignes
+dimensionner : 532 o / 1 lignes → 554 o / 1 lignes
+généré maquette-pilotage-ordi-v9c15p8-manipulable.html 592922 octets · bloc repris 92432
+e743e587dee5ddc9e473953eb61c45ff  v9c15p8-template.html
+f2f9a3215f211b7d85da40f76b36c3f2  maquette-pilotage-ordi-v9c15p8-manipulable.html

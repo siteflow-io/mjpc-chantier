@@ -335,7 +335,9 @@ function PilotCorrectionH(){
 /* ── Les alertes de la co-évaluation : celles de la séance (SCN.alertes), sinon chaque « ❌ » d'un élève ── */
 function alertesH(){
   var al = momH().alertes || (typeof SCN.alertes === "function" ? SCN.alertes() : null);
-  if(al) return al.map(function(a){ var el = Array.isArray(a.eleves) ? a.eleves : Object.values(a.eleves || {}); return Object.assign({}, a, {qi:Number(a.qi), auteur:a.auteur || el[0], lecteur:a.lecteur || el[1]}); });
+  if(al) return al.map(function(a){ var el = Array.isArray(a.eleves) ? a.eleves : Object.values(a.eleves || {}); return Object.assign({}, a, {qi:Number(a.qi), auteur:a.auteur || el[0], lecteur:a.lecteur || el[1]}); })
+    // une alerte tient tant que son auteur dit « ❌ » à cette question (il a pu finir d'accord, ou changer de question) ; tranchée, elle reste
+    .filter(function(a){ if(a.tranche) return true; var co = SCN.coevalDe(a.auteur); return !co || (co.statut === "mal" && Number(co.qi) === a.qi); });
   return HEURE.eleves.filter(function(p){ return /^mal/.test(CO[p] || ""); }).map(function(p){ var co = SCN.coevalDe(p) || {};
     return {id:p, qi:co.qi, auteur:p, lecteur:SCN.voisinDe(p), ecrit:co.ecrit, tranche:null}; });
 }

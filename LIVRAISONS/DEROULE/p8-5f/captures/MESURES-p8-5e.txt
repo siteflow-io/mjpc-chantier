@@ -1,0 +1,5 @@
+1-2 · atelier : poignée y=585 (outils 0+0, notes 604) ; tirée de 150 px vers le haut : diapo 408 → 278 px, notes 188 → 318 px, part 100 → 68 %
+2-4 · pilotage : gardée de l'atelier part 68 % ; vers le bas → 100 % (diapo 278 → 408) ; très haut → 30 % ; double-clic → 100 % (notes 493 → 207) ; tirée de 150 px → 68 % (notes 337) ; ▶ à 884 pour un cadre à 944
+1-3 · répétition : part 68 → 43 % ; après Arrêter : 43 %
+5 · préparation : part 58 → 84 %, notes réduites 26 → 26 px
+6 · relecture : poignée à l'écran = false

@@ -1,0 +1,28 @@
+paginer : la mesure par rapport au corps, chaque page vérifiée sur ses boîtes réelles : 300 → 1176 o
+p85fHaut, p85fSuivreFrappe et l'écoute du défilement (nouvelles) : 27 → 1763 o
+pageDeSuivi : l'atelier suit le curseur : 187 → 574 o
+rendre : garder l'état reçu (1/3) : 154 → 184 o
+rendre : ancré en haut, jamais défilé (2/3) : 171 → 383 o
+rendre : les pages reviennent à l'état reçu (3/3) : 41 → 242 o
+CSS : ancré en haut quand une page déborde : 171 → 223 o
+focaliser : la page de la ligne d'abord : 193 → 440 o
+ecrireDansDiapo : la frappe suit sa page : 88 → 144 o
+paginer : la police passe au tableau : 132 → 311 o
+rendre : le tableau applique les pages du pilote à sa police : 66 → 305 o
+pageDeSuivi : un champ de réponse ne compte que dévoilé : 99 → 190 o
+paginer : les pages par identité : 150 → 262 o
+rendre : le tableau retrouve les pages du pilote par identité : 179 → 355 o
+p85fCle (nouvelle) : 28 → 223 o
+tableau : p85fHaut et p85fCle passent : 37 → 56 o
+rendre : 17717 o / 53 lignes → 18575 o / 54 lignes
+paginer : 1633 o / 11 lignes → 2800 o / 12 lignes
+pageDeSuivi : 454 o / 3 lignes → 932 o / 4 lignes
+appliquerPages : 900 o / 4 lignes → 900 o / 4 lignes
+ecrireDansDiapo : 505 o / 1 lignes → 561 o / 1 lignes
+focaliser : 365 o / 1 lignes → 612 o / 1 lignes
+p85fHaut (nouvelle) : 412 o / 1 lignes
+p85fSuivreFrappe (nouvelle) : 960 o / 1 lignes
+p85fCle (nouvelle) : 194 o / 1 lignes
+généré maquette-pilotage-ordi-v9c15p8-manipulable.html 597703 octets · bloc repris 92432
+593d0709a8309cf1d4ad72aecb3a11e3  v9c15p8-template.html
+c298a93cc31b1aaae1ac7ab8fa87bcfd  maquette-pilotage-ordi-v9c15p8-manipulable.html

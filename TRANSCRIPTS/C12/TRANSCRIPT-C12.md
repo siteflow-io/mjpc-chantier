@@ -20307,3 +20307,31 @@ Réponse mot pour mot :
 822. **Si tu dis « ok »**, je l'écris dans le protocole au sas, avec une note pour C13, et je fais l'audit de la v9 ainsi.
 
 12/10/2026 09:53 MEMO
+
+---
+
+## TOUR 662 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (12/10, 11:26) Ok mais le seul truc qui me chiffonne c'est le "au hasard". Ce n'est pas suffisamment cadré parce que c'est typiquement là que des défauts pourront passer sans qu'ils soient vus. Non?
+
+---
+
+## TOUR 662 — Claude (conscience n°12)
+
+Pris comme un « ok » aux points 816 à 822, sauf l'échantillon au hasard, remplacé par une liste fixée d'avance ; le protocole n'est pas encore écrit, en attente du mot de Paul sur ce remplacement.
+
+Réponse mot pour mot :
+
+823. **Oui, tu as raison.** « Au hasard », c'est laisser des trous qu'on n'a pas choisis. Je le retire.
+
+824. **À la place, ce que je regarde est fixé avant l'audit, sans hasard.** D'abord tous les écrans que la livraison a changés. Ensuite tous les écrans qui y mènent et tous ceux où ils mènent, parce que c'est là que se cachaient les défauts de la v8. Enfin ton heure de classe jouée geste par geste, de l'appel au soir, la même à chaque audit, comparée à mes contrôles.
+
+825. **Ce que je ne regarde pas n'est pas pour autant laissé de côté.** Un écran qui n'a pas changé a déjà été lu en entier (la v8, ce matin), et tous les écrans, sans exception, passent par mes contrôles.
+
+826. **Ce que ce dispositif ne voit pas** : une sorte de défaut que ni toi ni moi n'avons encore rencontrée. Quand il en paraît une, elle devient un contrôle, et elle ne passe plus.
+
+827. **Si ça te va**, j'écris le protocole ainsi au sas, avec la note pour C13, et j'audite la v9 de cette façon.
+
+12/10/2026 11:27 MEMO

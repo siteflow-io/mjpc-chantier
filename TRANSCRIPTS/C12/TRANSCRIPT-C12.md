@@ -20621,3 +20621,69 @@ Réponse mot pour mot :
 879. **Si tu dis « ok »**, j'écris le contrat de la base, le mandat du second exécutant et la mise à jour du premier, et j'étends mes contrôles. Je te donne ensuite les deux phrases à coller, une par session. N'envoie rien à l'exécutant d'ici là.
 
 12/10/2026 13:58 MEMO
+
+---
+
+## TOUR 672 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (12/10, 14:04) et si je lance 4 exécutants? j'arrête celui là, tu me fais 4 mandats pour 4 exécutants différents qui s'occupent chacun d'une partie, puis audit, et push. en revanche ça demande de l'organisation, notamment au niveau des noms des exécutants.
+
+---
+
+## TOUR 672 — Claude (conscience n°12)
+
+Mesuré : `src/scenario.js` de la v9 candidate lu en entier (l'API que les écrans appellent, les tables écrites pour le scénario) ; le classement des 37 fichiers de `src/` par les écrans qu'ils montrent (les appareils mélangés dans `etape2.js`, `etape3.js`, `maquette.js`) ; `maquette-qcm` à `5852823d` (13:58, « v9 candidate, en cours de banc »). Écrits : `MANDATS/CODE-QCM/` (README, COMMUN, QCM-1 à QCM-4), la branche `code-qcm` (`575bb696`, les sources copiées dans `LIVRAISONS/CODE-QCM/`), `MANDAT-CODE-QCM.md` marqué remplacé, les contrôles K10 à K15. Les points 880 à 889 ont été envoyés en cours de tour, 890 et 891 à la fin.
+
+Réponse mot pour mot :
+
+880. **Oui, quatre exécutants, c'est mieux.** Je découpe en quatre parties qui ne se marchent pas dessus :
+- **QCM-1, le socle** : la base, l'état de la séance, les adresses, l'entrée des élèves, et l'assemblage du tout ;
+- **QCM-2, les tablettes** : tout ce que voient et font les élèves ;
+- **QCM-3, ton pilotage** : ta console, ton téléphone et le tableau pendant l'heure ;
+- **QCM-4, le soir et le reste** : résultats, PDF, copies rendues, éditeur, réglages, mode test, séance sur papier, rattrapage, démo.
+
+Ils se parlent par la base, selon une règle commune que j'écris avant eux. QCM-1 assemble le travail des quatre toutes les deux heures, et livre à 06:30 au plus tard.
+
+881. **Une tension avec ta règle du 05/10** (un exécutant ne s'arrête jamais en plein mandat). Tu peux arrêter celui-ci, mais il doit d'abord pousser ce qu'il a fait. Colle-lui ceci maintenant, dans sa session :
+
+```
+Paul t'arrête. Pousse tout de suite sur maquette-qcm tout ce que tu as fait, même en cours, avec un commit qui dit ce qui est fini et ce qui ne l'est pas dans le complément 4 et son avenant. Puis arrête-toi.
+```
+
+Ce qu'il n'a pas fini du complément 4 passera dans la partie qui le concerne.
+
+882. **Les noms** : chaque session porte son nom, de QCM-1 à QCM-4, et ses commits et sa branche aussi. Un tableau au sas dira qui fait quoi, avec la phrase à coller à chacun.
+
+883. **Je l'écris maintenant** : la règle commune, les quatre mandats et le tableau. Je te donne les quatre phrases dès que c'est prêt.
+
+---
+
+884. **Correction du point 881, si tu ne l'as pas encore collée : ne l'arrête pas.** Je viens de lire sa dernière sauvegarde (13:58) : il a appliqué l'avenant, mes contrôles passent à zéro chez lui, et il en est au banc final de sa v9 (« v9 candidate, en cours de banc »). Laisse-le livrer la v9 : les quatre exécutants partiront d'elle. Si tu as déjà collé la phrase, ce n'est pas grave : il pousse sa v9 candidate, et ils partiront de là.
+
+---
+
+885. **C'est prêt, tu peux lancer les quatre.** Le tableau, avec les quatre phrases à coller : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/CODE-QCM/README.md.
+
+886. **Le partage, et pourquoi celui-là.** Les fichiers de la maquette mélangent les appareils : un même fichier contient la console et les tablettes. Je n'ai donc pas découpé par appareil, mais par métier :
+- **QCM-1 · SOCLE** : la base, l'état de la séance et l'assemblage ;
+- **QCM-2 · HEURE** : tous les écrans de l'heure, sur tous les appareils ;
+- **QCM-3 · SOIR** : le soir et tout le reste ;
+- **QCM-4 · BANC** : il n'écrit rien de l'app, il l'éprouve, comme le veut ta règle de ce matin, pour que celui qui code ne soit pas celui qui vérifie.
+
+Chacun n'a le droit de toucher qu'à ses propres fichiers, et ils travaillent tous sur la même branche, que j'ai créée.
+
+887. **Les noms.** Ouvre quatre nouvelles sessions et nomme-les exactement QCM-1 · SOCLE, QCM-2 · HEURE, QCM-3 · SOIR et QCM-4 · BANC. Chacun signe ses commits et ses messages de son nom. Les sessions du déroulé ne commencent jamais par « QCM- ».
+
+888. **L'exécutant de la maquette** : laisse-le finir la v9, puis il s'arrête de lui-même. Ne lui colle rien d'autre ; l'ancien mandat unique est annulé.
+
+889. **Les heures** : QCM-4 assemble et passe le banc toutes les deux heures, de 18:00 à 04:00. À 05:00, on ne fait plus que corriger. À 06:30, il livre son verdict. À 07:00, mon audit.
+
+---
+
+890. **Mes contrôles vont maintenant jusqu'au bout de l'heure** : les trois questions et leurs deux tours, la correction qui commence par la plus ratée, « Révéler » fermé tant qu'une feuille n'est pas lue, « Trouvée au dernier moment » au bon endroit et seulement là, la co-évaluation, le bilan, et les notes justes (3 / 3 et 1 / 3 sur le cas que je joue). QCM-4 les passera à chaque assemblage.
+
+891. **Il me manque toujours trois réponses de toi** : les 11 questions que tu gardes ; « ok » ou « non » pour écrire tes 28 libellés élève au hub ; « ok » ou « non » pour réparer la version d'aujourd'hui en secours.
+
+12/10/2026 14:13 MEMO

@@ -62,6 +62,8 @@ var PAGES = (function(){
     if(app === "tableau"){ if(fn("EcranTableau")) return {id:P.tableau(), vue:"tableau", render:function(){ return fn("EcranTableau")(); }, cle:"tableau"}; return {id:P.tableau()}; }
     if(app === "telephone"){
       if(NAV.ecran) return {id:NAV.ecran, cle:JSON.stringify(NAV.params)};
+      // sans séance active : l'écran de la 7.7.1 (VuePhone), mot pour mot ; la maquette n'en a pas
+      if(LIVE.pret && !SCN.sid()) return {id:"p-sans-seance", vue:"telephone", render:TelephoneSansSeance, cle:"telephone-sans"};
       if(fn("EcranTelephone")) return {id:P.telephone(), vue:"telephone", render:function(){ return fn("EcranTelephone")(); }, cle:"telephone"};
       return {id:P.telephone()};
     }
@@ -192,6 +194,12 @@ var MOITIES = (function(){
   return M;
 })();
 
+function TelephoneSansSeance(){
+  return h("div", {style:{padding:"2rem", color:"#fff", textAlign:"center", minHeight:"100vh"}},
+    h("div", {style:{fontSize:"3rem", marginBottom:"1rem"}}, "📱"),
+    h("h2", {style:{marginBottom:".5rem"}}, "Pilotage mobile"),
+    h("p", {style:{opacity:.9}}, "Aucune session active. Lance une session depuis l'ordinateur."));
+}
 /* Le téléphone scanné : il écrit qcm/qrScans/<nonce>, et la fenêtre du QR se ferme sur la console (la 7.7.1, VuePhone, l. 5374 à 5380) */
 (function(){ try { var qr = LIVE.params().get("qr"); if(qr && LIVE.appareil() === "telephone" && db) db.ref(DB_ROOT + "/qrScans/" + qr).set(firebase.database.ServerValue.TIMESTAMP); } catch(e){ console.error(e); } })();
 

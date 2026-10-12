@@ -281,7 +281,8 @@ function QRPilotage(){
       h("h2", null, "📱 Pilotage mobile"),
       h("p", {style:{marginBottom:"1rem", fontSize:".9rem", color:"var(--gris)"}}, "Scanne avec ton téléphone. La fenêtre se ferme automatiquement."),
       h("img", {src:"https://api.qrserver.com/v1/create-qr-code/?size=280x280&margin=10&data=" + encodeURIComponent(url), alt:"QR code", style:{display:"block", margin:"0 auto", borderRadius:"8px", width:"280px", height:"280px", background:"#fff"}}),
-      h("div", {style:{marginTop:"1rem", fontSize:".7rem", color:"var(--gris)", wordBreak:"break-all", fontFamily:"monospace"}}, url))));
+      // « 📱 Voir le téléphone » de la maquette : le téléphone, dans sa fenêtre, à l'adresse de la 7.7.1 (sans scan, la fenêtre du QR reste)
+      h("button", {className:"btn btn-ghost btn-sm", style:{marginTop:".8rem"}, "data-local":"1", onClick:function(){ window.open(location.pathname + "#mode=prof&view=phone", "telephone-qcm"); }, title:"Montre ce que ton téléphone affiche une fois le QR scanné : ta télécommande."}, "📱 Voir le téléphone"))));
 }
 /* le mode test au « Oui / Non » de la question 3 (TEST:Q3:B1) : les 15 tablettes à ce moment, comme derrière « 🔍 Jouer en grand » */
 function ModeTestB(){ var n = +paramHash("tab") || 1, pa = TEST_PAIRES30[n - 1] || TEST_PAIRES30[0], a = eleveT(pa[0], "J");

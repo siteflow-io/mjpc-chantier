@@ -20687,3 +20687,55 @@ Chacun n'a le droit de toucher qu'à ses propres fichiers, et ils travaillent to
 891. **Il me manque toujours trois réponses de toi** : les 11 questions que tu gardes ; « ok » ou « non » pour écrire tes 28 libellés élève au hub ; « ok » ou « non » pour réparer la version d'aujourd'hui en secours.
 
 12/10/2026 14:13 MEMO
+
+---
+
+## TOUR 673 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (12/10, 14:20) je ne sais pas encore pour les questions, je ferai mon qcm quand l'app sera ok. oui pour les libellés, et oui pour réparer la version actuelle. donne moi le nouveau prompt ainsi que le json de l'éval actuellement en ligne , ça me permettra de lancer une instance sur sa correction.
+
+> (12/10, 14:32, après une interruption) continue
+
+---
+
+## TOUR 673 — Claude (conscience n°12)
+
+Mesuré : l'évaluation de 4e relue au hub (`qcm/evaluations/eval_1791380799497`, inchangée depuis le 07/10) ; le prompt rempli par la maquette v9 (`promptRempli()`) ; au hub, `site/4e` sans chapitres et `taxonomie/competences` en listes de groupes (d'où l'erreur du contrat) ; la 7.7.2 au banc par le geste (29 vérifications, 0 échec ; la 7.7.1 et la version à une seule ligne échouent chacune sur sa panne) ; en ligne, md5 `3aaf7499…` ; les 28 libellés écrits au hub et relus ; les contrôles de l'app modifiés tournent jusqu'au bout sur la 7.7.2 (29 vérifications, 24 échecs attendus : la maquette n'y est pas).
+
+Réponse mot pour mot :
+
+À jouer : lancer ton instance avec les deux fichiers · en cours chez moi : la réparation de la 7.7.1, puis les libellés · ouvert : 1 contrat à corriger (point 894)
+
+892. **Le prompt et le JSON sont prêts** (au-dessus, et au sas : https://github.com/siteflow-io/mjpc-chantier/tree/main/MANDATS/EVAL-4E-PARIS). Le JSON est l'évaluation telle qu'elle est au hub : 21 questions, inchangée depuis le 07/10. Le prompt est celui que remplit la maquette v9, avec le chapitre 1 de 4e à la place de celui de 3e.
+
+893. **Le chapitre 1 de 4e n'a pas de fiche au hub**, donc pas de compétences. Le prompt donne à l'instance les 28 compétences, avec leur libellé élève, et lui demande de te proposer celles du chapitre avant d'écrire la moindre question. Identifiant : `4e-ch1`. Ce qui manque à l'évaluation pour le nouveau format, et sa seule question trop longue (la 21), sont dans le README.
+
+894. **En lisant le hub, j'ai trouvé une erreur dans mon contrat pour les quatre exécutants.** Au hub, les compétences sont rangées en listes de groupes. Le chemin `taxonomie/competences/<code>/libelleEleve` que je leur ai donné n'existe pas : en écrivant là, on casserait les lecteurs de MJPC. Les libellés iront sur chaque compétence, à côté de son libellé officiel, comme pour les notions. Je corrige le contrat avant qu'ils codent le lecteur (rien n'est encore poussé sur `code-qcm`). Je leur dis aussi qu'un chapitre sans fiche au hub, comme le tien, doit pouvoir se lancer.
+
+12/10/2026 14:36 MEMO
+
+*(Envoyés avec ce message, en fichiers : `PROMPT-4E-CH1.txt` et `eval_1791380799497.json`. Message envoyé vers 14:31 ; son horodatage « 14:36 » était en avance.)*
+
+---
+
+À jouer : la 7.7.2, en ligne (tests aux points 899 à 902), et ton instance avec les deux fichiers · en cours chez l'exécutant : celui de la v9 (pas encore livrée) ; les quatre du code n'ont encore rien poussé · ouvert : tes 11 questions
+
+895. **La version en ligne est réparée : c'est la 7.7.2**, en ligne depuis 14:44, vérifiée octet pour octet. Deux lignes changent : la correction sur les tablettes, et ton téléphone, qui devenait vide dès qu'un élève répondait. Rien d'autre ne bouge.
+
+896. **Le banc, par le geste** : une console, le tableau, ton téléphone et trois tablettes, sur le faux hub, avec les trois premières questions de ta 4e. Le téléphone pilote toute la séance, de « Lancer Q1 » à « Terminer ». 29 vérifications, 0 échec. Le même banc échoue sur l'ancienne version, sur chacune des deux pannes : il les attrape bien. https://github.com/siteflow-io/mjpc-chantier/blob/main/AUDITS/QCM-REPARATION-7.7.2-12-10/README.md
+
+897. **Les 28 libellés élève sont au hub.** J'ai d'abord gardé au sas une copie de l'existant. Chaque libellé est écrit sur sa compétence, à côté du libellé officiel ; j'ai tout relu, rien d'autre n'a bougé. Aucune app ne les montre encore : ce sera le code de la maquette. https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/LIBELLES-ELEVE-COMPETENCES/README.md
+
+898. **Les exécutants sont prévenus**, par le fichier des demandes de leur branche : le contrat corrigé (point 894), le chapitre `4e-ch1`, la 7.7.2. Mes contrôles suivent : l'évaluation d'essai a l'identifiant de chapitre de la maquette, et le faux hub a les compétences du vrai.
+
+899. **Test 1, la version** : ouvre https://siteflow-io.github.io/monsieurjaipascompris/evaluation-qcm.html?mode=prof&v=772, onglet « ⚙️ Réglages » : la version dit « 7.7.2 (2026-10-12) ».
+
+900. **Test 2, le téléphone** : clique « 🧪 Mode test », puis « 📱 QR pilotage », et scanne avec ton téléphone. Au téléphone, « 🚀 Lancer Q1 » puis « ✋ Autoriser la réponse » ; à l'ordinateur, « 🎲 Tous les élèves répondent ». Attendu : le téléphone garde la séance, élèves en couleur. Avant, l'écran devenait vide.
+
+901. **Test 3, la correction** : à l'ordinateur, dans « 🎓 Entrer comme un élève », entre avec le code donné en exemple. Au téléphone, finis les questions, puis « 📊 Lancer l'autoévaluation », « 📝 Lancer la correction » et « 💡 Révéler la bonne réponse ». Attendu : l'écran de l'élève dit « Tu avais juste », « Tu avais faux » ou « Tu n'as pas répondu », et marque la bonne réponse. Avant, il devenait vide. Je n'ai pas joué ce test en mode test : le banc l'a joué sur le faux hub.
+
+902. **Test 4, la sortie** : « 🗑️ Sortir et purger ».
+
+12/10/2026 14:54 MEMO

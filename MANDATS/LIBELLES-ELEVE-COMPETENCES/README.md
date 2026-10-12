@@ -46,7 +46,7 @@ Les 28 libellés ci-dessous sont **proposés par la conscience n°12, à valider
 | `tr-personne-02` | Coopérer et mutualiser | Travailler avec les autres et partager |
 | `tr-personne-03` | Être autonome et responsable | Travailler seul et de façon responsable |
 
-## Écrits au hub le 12/10/2026 à 14:52 (tour 673)
+## Écrits au hub le 12/10/2026 à 14:46 (tour 673)
 
 Paul, le 12/10 à 14:20 : « oui pour les libellés ». Écrits par la conscience n°12, tels que ci-dessus, sans changement.
 

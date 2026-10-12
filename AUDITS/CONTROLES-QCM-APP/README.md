@@ -32,4 +32,4 @@ Sur la version en ligne (7.7.1), servie par le faux hub (`sorties/controles-app-
 
 `EMPREINTES.md5` : les md5 de ces fichiers ; l'exécutant ne les modifie pas.
 
-**Changé le 12/10 à 14:50 (tour 673), avant le premier commit des exécutants sur `code-qcm`** : l'évaluation d'essai porte `"chapitre": "3e-ch1"` (l'identifiant de la maquette ; c'était `3e-1`), et le faux hub reçoit `taxonomie/competences` du vrai hub, avec les 28 libellés élève (`attendus/taxonomie-competences.json`), pour que l'app y trouve les compétences de l'évaluation (COMMUN §3.1, corrigé le même jour).
+**Changé le 12/10 à 14:30 (tour 673), avant le premier commit des exécutants sur `code-qcm`** : l'évaluation d'essai porte `"chapitre": "3e-ch1"` (l'identifiant de la maquette ; c'était `3e-1`), et le faux hub reçoit `taxonomie/competences` du vrai hub, avec les 28 libellés élève (`attendus/taxonomie-competences.json`), pour que l'app y trouve les compétences de l'évaluation (COMMUN §3.1, corrigé le même jour).

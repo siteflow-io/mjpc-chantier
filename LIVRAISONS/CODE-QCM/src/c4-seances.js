@@ -349,7 +349,9 @@ function resultatV0(se, slug){
 function avecCorrigeesV(se, slug, r){
   var c = (r.corrigees || []).map(Number);
   Object.keys(se.S.lectures || {}).forEach(function(qi){ var l = (se.S.lectures[qi] || {})[slug]; if(l && l.par === "prof" && c.indexOf(+qi) < 0) c.push(+qi); });
-  return c.length === (r.corrigees || []).length ? r : Object.assign({}, r, {corrigees:c});
+  // une question écartée n'a pas été posée : sa case est « · », pas « ? » (pas encore corrigée)
+  var ec = (se.ecartees || []).map(Number), st = r.st.map(function(s, i){ return ec.indexOf(i) >= 0 && (s === "n" || s == null) ? "x" : s; });
+  return c.length === (r.corrigees || []).length && st.join() === r.st.join() ? r : Object.assign({}, r, {corrigees:c, st:st});
 }
 // ce que la marque d'une case montre : « n » (pas encore corrigée) se lit « ? » comme dans la maquette
 function stVue(r){ return Object.assign({}, r, {st:r.st.map(function(s){ return s === "n" ? "pasdit" : s; })}); }
@@ -382,7 +384,14 @@ function compCourt(c){ var l = libOff(c); return (typeof COMP_COURT !== "undefin
 
 /* ════════ Données → Résultats : les séances de la base, rangées par niveau puis par classe, triées ════════ */
 function seanceParam(){ return paramHash("seance"); }
-function etatCopiesV(se){ var lire = aLireV(se).filter(function(x){ return !x.lue; }).length;
+// les feuilles qu'aucune lecture n'a corrigées (un présent parti avant la correction, un voisin qui n'a pas lu) : la question reste « ? »
+// et l'élève sans note ; elles restent à lire, et « Rendre les copies » attend (« chaque présent a eu la lecture de sa feuille »)
+function sansLectureV(se){ var l = [], hors = se.ecartees.concat(se.annulees);
+  se.presents.forEach(function(e){ var r = resultatV(se, e.slug); if(r) r.st.forEach(function(s, i){ if(s === "n" && hors.indexOf(i) < 0) l.push({p:e.slug, q:i}); }); });
+  return l; }
+function restentV(se){ var nl = aLireV(se).filter(function(x){ return !x.lue; }), deja = {}; nl.forEach(function(x){ deja[x.p + "|" + x.q] = 1; });
+  return nl.length + sansLectureV(se).filter(function(x){ return !deja[x.p + "|" + x.q]; }).length; }
+function etatCopiesV(se){ var lire = restentV(se);
   return se.masquee ? "masquees" : se.rendue ? "rendues" : lire ? "lire" : "pret"; }
 function StatutCopiesV(p){
   var se = p.se, sq = "&seance=" + encodeURIComponent(se.id), e = etatCopiesV(se);
@@ -404,7 +413,7 @@ function ListeSeancesV(){
   var l = seancesV().filter(function(se){ return se.terminee && !se.demo && !se.test; }).map(function(se){ return {se:se, ev:se.ev, tri:se.ms}; });
   function trie(x){ return x.slice().sort(function(a, b){ return tri === "evaluation" ? a.ev.titre.localeCompare(b.ev.titre) || b.tri - a.tri : b.tri - a.tri; }); }
   function ligne(x){
-    var se = x.se, lire = aLireV(se), restent = lire.filter(function(y){ return !y.lue; }).length, e = etatCopiesV(se), sq = "&seance=" + encodeURIComponent(se.id);
+    var se = x.se, lire = aLireV(se), restent = restentV(se), e = etatCopiesV(se), sq = "&seance=" + encodeURIComponent(se.id);
     return h("div", {key:se.id, className:"results-eval-row", "data-seance":se.id},
       h("div", null, h("div", {className:"titre"}, x.ev.titre),
         h("div", {className:"meta"}, se.classe + " — " + se.date + " " + se.heure + " · ✅ terminée · " + presentsTexteV(se) + (se.papier ? " · sur papier" : ""),
@@ -485,7 +494,7 @@ function ResultatsC(){
   var ev = se.ev, comps = compsDeV(ev), sq = "&seance=" + encodeURIComponent(se.id);
   var lignes = se.presents.map(function(e){ var r = resultatV(se, e.slug); return r ? {p:e.slug, nom:e.nom, r:stVue(r)} : null; }).filter(Boolean);
   lignes.sort(function(a, b){ return sens * a.nom.localeCompare(b.nom, "fr"); });
-  var lire = aLireV(se), restent = lire.filter(function(x){ return !x.lue; }).length, rendues = se.rendue;
+  var lire = aLireV(se), restent = restentV(se), rendues = se.rendue;
   return h("div", {className:"card", "data-seance":se.id},
     TitreCarte("📊 " + ev.titre + " — " + se.classe, [
       h("button", {key:0, className:"btn btn-primary btn-sm", disabled:!rendues, "data-local":rendues ? "1" : null, onClick:rendues ? function(){ ouvrirPdfV(se.id); } : null, title:rendues ? "Ouvre l'impression du navigateur, « Enregistrer au format PDF » : une ligne par élève, la note, le niveau de chaque compétence, le commentaire." : "Fermé tant que les copies ne sont pas rendues : les notes ne sont définitives qu'à ce moment-là."}, "📄 PDF notes et compétences"),

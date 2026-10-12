@@ -41,6 +41,10 @@ COMMUN §3, plus `../../CONTRAT-CHANGEMENTS.md` : **C1** l'état de la séance e
 - **Plusieurs séances actives** : la console pilote la plus récente ; « 🔴 n séances en cours » les liste, chacune à son pilotage ou à « 🛑 Terminer ».
 - **Fermer ne quitte jamais la page** : `history.back()` de la maquette devient la fermeture sur place.
 
+## Le poids de l'historique (mesuré le 12/10, `essais/poids.js`)
+
+Chaque page écoute `qcm/sessions` entier, comme la 7.7.1 (`AppProf`, `EleveSession`). Au hub, le 11/08 : 3 séances, 37 Ko (`SAUVEGARDES/hub-snapshot-2026-08-11.json`) ; demain, quelques dizaines de Ko. Mesuré avec 80 séances passées de 25 élèves et 20 questions (4,3 Mo) : un redessin coûte 24 ms (médiane) sur la console, 6 ms sur une tablette, mais chaque réponse fait relire les 4,3 Mo à chaque page. Si l'historique grossit à ce point dans l'année, il faudra que les tablettes n'écoutent que la séance active (`qcm/sessions/<sid>`) : rien à faire pour demain.
+
 ## Les essais
 
 ```

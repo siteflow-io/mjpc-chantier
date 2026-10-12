@@ -145,7 +145,10 @@ function verif(ok, quoi, detail){ nb++; if(!ok) ko++; R.push((ok ? "  ok     " :
     await pause(2000 + 1500 + 1000 + 1500 + 2500);
     d = base("sessions/" + sid + "/deroule");
     verif(d.ph === "reponse" && d.qi === 2 && d.tour === 1, "la console fermée : la tablette fait passer la réflexion, puis le passage", d);
-    prof = await ouvrir("?mode=prof");
+    prof = await ouvrir("?mode=prof"); await pause(500);
+    const intr = await prof.evaluate(() => ({ecran: NAV.ecran, vu: /Séance interrompue détectée/.test(document.body.innerText), dec: (document.body.innerText.match(/Dernière déconnexion[^\n]*/) || [""])[0]}));
+    verif(!!base("sessions/" + sid + "/lastDisconnect") && intr.ecran === "c-interrompue" && intr.vu, "la console rouverte : « ⚠️ Séance interrompue détectée » (lastDisconnect, la 7.7.1)", intr);
+    await prof.evaluate(() => ACT.confirmerReprise().then(navRemettre)); await pause(300);
     await tab.evaluate(() => ELV.repondre(2, [1], "abrial_julien"));
     await prof.evaluate(() => ACT.tourSuivant()); await pause(300);
     await tab.evaluate(() => ELV.repondre(2, [0], "baudry_lea"));

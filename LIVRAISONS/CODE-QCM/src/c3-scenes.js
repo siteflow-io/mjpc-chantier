@@ -99,7 +99,11 @@ function ScRouvrirSeance(){
     [h("button", {key:1, className:"btn btn-ghost", "data-va":"c-lancer", title:"Ne rouvre rien."}, "Annuler"), h("button", {key:2, className:"btn btn-primary", "data-va":"c-appel&seance=" + se.id, title:"Rouvre la séance : l'appel, les mêmes binômes, puis elle reprend là où elle s'était terminée."}, "🔓 Rouvrir la séance")], "c-lancer");
 }
 function Interrompue(){
-  var k = MO(), m = MOM(), se = SCN.seance(m.seance), c = SCN.compteurs(k), cote = coteDuTour(m.qi, m.tour) === "g" ? "gauche" : "droite";   // (complément 4, correction 5) le côté de ce tour, pas celui de qui commence
+  // (QCM-1) la séance réelle : sa date, sa dernière déconnexion (lastDisconnect, la 7.7.1), la question et le tour où elle en était, ses réponses
+  var k = MO(), m = MOM(), se = SCN.seance(m.seance) || {date:"", heure:""}, s = SCN.sess() || {}, c = SCN.compteurs(k), cote = m.qi != null && m.tour ? (coteDuTour(m.qi, m.tour) === "g" ? "gauche" : "droite") : "gauche";
+  var dec = s.lastDisconnect ? {date:SCN.dateFr(s.lastDisconnect), heure:SCN.heureFr(s.lastDisconnect)} : {date:m.date, heure:m.heure};
+  m = Object.assign({}, m, {date:dec.date, deconnexion:dec.heure, qi:m.qi == null ? 0 : m.qi, tour:m.tour || 1});
+  c = Object.assign({}, c, {reponses:Object.keys(s.reponses || {}).reduce(function(a, q){ return a + Object.keys((s.reponses || {})[q] || {}).length; }, 0)});
   var modal = h("div", {className:"checkin-overlay", "data-echap":"c-lancer"},
     h("div", {className:"checkin-modal", style:{maxWidth:"720px"}},
       h("div", {className:"checkin-header"}, h("h3", null, "⚠️ Séance interrompue détectée", InfoI("La console a perdu la séance en cours (page fermée, panne). Elle se reprend là où elle était, se met en pause pour une autre heure, ou se termine.")), h("div", {className:"checkin-sub"}, CLASSE + " — " + EV.titre)),

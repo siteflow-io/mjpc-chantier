@@ -764,6 +764,14 @@ var ACT = (function(){
   // l'appel annulé : la séance qui venait de s'ouvrir n'a jamais commencé ; elle s'efface
   A.abandonner = function(){ var id = sid(); if(!id) return Promise.resolve(); var s = SCN.sess(id), e0 = SCN.etat(id) || {}; if(e0.ph !== "appel" || (s.deroule && s.deroule.reprise)) return Promise.resolve();
     var maj = {}; maj["/sessions/" + id] = null; maj["/sessionActive/" + s.classeSlug] = null; LIVE.sid = null; return ecrireQCM(maj, "abandonner"); };
+  // la séance interrompue (la console perdue : lastDisconnect, la 7.7.1) : « 🔄 Reprendre la séance » — la reprise confirmée, et le tour en cours
+  // recommence au début, voile compris (B ou le passage : le tour lui-même) ; une autre phase continue telle quelle
+  A.recommencer = function(){ var x = e(), id = sid(); if(!id) return Promise.resolve(); var maj = {}; maj[cheminS(id, "repriseConfirmee")] = LIVE.maintenant();
+    return ecrireQCM(maj, "repriseConfirmee").then(function(){
+      if(["reflexion", "passage", "reponse", "b", "rouvert", "lecture"].indexOf(x.ph) < 0 || x.qi == null) return;
+      var ph = x.ph === "b" || x.ph === "passage" ? "reponse" : x.ph, t = SCN.tempsDe(x.qi);
+      return poserDeroule(id, {ph:ph, qi:x.qi, tour:x.tour, cote:x.cote, pour:x.pour, duree:ph === "reflexion" ? t.reflexion : t.reponse}); }); };
+  A.confirmerReprise = function(){ var id = sid(); if(!id) return Promise.resolve(); var maj = {}; maj[cheminS(id, "repriseConfirmee")] = LIVE.maintenant(); return ecrireQCM(maj, "repriseConfirmee"); };
   A.piloter = function(id){ var s = SCN.sess(id); if(s){ LIVE.sid = id; LIVE.classeSlug = s.classeSlug; LIVE.changer(); } };
   return A;
 })();

@@ -201,7 +201,9 @@ function libFourchette(n){ return n + " bonne" + (n > 1 ? "s" : "") + " réponse
 var FOURCH = [{k:"vert", n:3}, {k:"bleu", n:2}, {k:"orange", n:1}, {k:"rouge", n:0}];
 /* (QCM-2) les fourchettes de l'estimation pour N questions comptées : chacune, les notes de son niveau de maîtrise (la règle de la note) ;
    sur 3 questions, ce sont celles de la maquette (« 3 bonnes réponses sur 3 »…) */
-function nbComptees(){ var m = typeof momH === "function" ? momH() : {}; return EV.questions.length - (m.ecartees || []).length - (m.annulees || []).length; }
+// (une question bonus ne compte pas dans le total : elle ajoute un point gagné, QCM-1, contrat de la note)
+function nbComptees(){ var m = typeof momH === "function" ? momH() : {}, hors = (m.ecartees || []).concat(m.annulees || []);
+  return EV.questions.filter(function(q, i){ return hors.indexOf(i) < 0 && !q.bonus; }).length; }
 function fourchettesH(N){
   N = N || 3;
   return FOURCH.map(function(f){ var l = []; for(var n = 0; n <= N; n++) if(maitriseDe(n * 20 / N).k === f.k) l.push(n); return l.length ? {k:f.k, a:l[0], b:l[l.length - 1], n:l[l.length - 1]} : null; }).filter(Boolean);

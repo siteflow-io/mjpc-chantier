@@ -4,3 +4,5 @@
 /* le code du binôme, tapé au clavier de l'app ou de l'ordinateur : le cadre de la maquette, ses points */
 input.codebox.codebox-h{display:block;width:100%;box-sizing:border-box;font-family:monospace;color:inherit;background:#fff;outline:none}
 input.codebox.codebox-h::placeholder{color:transparent}
+/* une moitié de tablette dont l'écran dépasse sa hauteur (le bilan d'une évaluation de 11 questions) défile, à elle seule */
+.tablette .moitie{overflow-y:auto}

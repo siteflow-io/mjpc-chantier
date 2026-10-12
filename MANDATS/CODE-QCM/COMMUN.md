@@ -35,8 +35,11 @@ Un fichier que tu n'as pas dans ta liste, tu ne le modifies pas. Si tu as besoin
 2. **La v9** est poussée (`6fa8a9fe`, 15:58) et déjà reportée par la conscience dans `LIVRAISONS/CODE-QCM/src/` : il n'y a rien à reporter. Son exécutant finit sa livraison (son banc final, le README, `DEFAUTS.md`) ; à 17:40, il n'a changé aucune source depuis `6fa8a9fe`. Si `maquette-qcm` bouge encore, chacun reporte dans ses propres fichiers ce qui a changé depuis `6fa8a9fe` (`git diff 6fa8a9fe origin/maquette-qcm -- MANDATS/MAQUETTE-QCM-COMPLETE/src`).
 3. Avant chaque commit : `git pull --rebase origin code-qcm`. Un conflit ne peut venir que d'un fichier commun (`DEMANDES.md`, `DEFAUTS-OUVERTS.md`) : tu gardes les deux lignes.
 4. Tu pousses **au moins toutes les heures**, et dès qu'une partie marche. Jamais un commit qui casse l'assemblage : `python3 LIVRAISONS/CODE-QCM/build.py` doit passer avant chaque `push`.
-5. Les heures (heure de Paris ; recalées le 12/10 à 17:10 ; les quatre sont partis vers 17:35) :
-   - **20:00, 22:00, 00:00, 02:00, 04:00** : QCM-4 assemble, passe le banc, et range les défauts dans `DEFAUTS-OUVERTS.md` ; chacun traite les siens avant de continuer ;
+5. Les heures (heure de Paris ; recalées le 12/10 à 19:20, sur l'ordre de Paul, à 19:14 : « il faudrait qu'ils aient fini ce soir avant 22h, afin que tu fasses un audit avant la nuit et qu'on lance les correctifs si besoin ») :
+   - **20:00 et 21:00** : QCM-4 assemble, passe le banc, et range les défauts dans `DEFAUTS-OUVERTS.md` ; chacun traite les siens avant de continuer ;
+   - **21:30** : plus rien de nouveau dans l'heure de classe (de l'appel au bilan) : on n'y corrige que des défauts ; QCM-4 y lance les relecteurs neufs (son mandat, « De 05:30 à 06:30 », point 2, sur l'heure seule) ; le soir et le reste continuent ;
+   - **22:00 : la livraison du soir.** QCM-4 assemble, passe le banc entier, l'heure de demain (4e, 11 questions) et les contrôles de la conscience, puis écrit `VERDICT-22H.md` (pour chaque partie : ça va ou ça ne va pas, les défauts encore ouverts, par propriétaire, les sorties qui le prouvent) et pousse. La conscience l'audite aussitôt. **Personne ne s'arrête** : chacun continue ;
+   - **après 22:00** : chacun traite d'abord ce que la conscience écrit en tête de `DEFAUTS-OUVERTS.md` (`[Conscience n°12 → QCM-n] …`), puis ce qui n'est pas fini ; QCM-4 assemble à **00:00, 02:00 et 04:00** ;
    - **05:00** : plus rien de nouveau ; on ne corrige que des défauts ;
    - **05:30** : QCM-4 passe le banc final, les contrôles de la conscience et les relecteurs neufs ;
    - **06:30 au plus tard** : QCM-4 écrit `VERDICT.md` et pousse la livraison. Chacun s'arrête alors.

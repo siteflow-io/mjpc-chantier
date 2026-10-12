@@ -14,6 +14,10 @@ Tu es **QCM-4 · BANC**. Tu n'écris pas l'app : tu la mets à l'épreuve, et tu
 2. **La fidélité à la maquette** : tu charges dans le faux hub la classe 3 ESSAI et les réponses du scénario de la maquette (`src/scenario.js` de la v9, qui reste dans `MANDATS/MAQUETTE-QCM-COMPLETE/`) ; tu amènes l'app, par le geste, au moment de chaque scène ; tu compares son écran à celui de la scène de la maquette : même texte (aux données près), mêmes gestes, mêmes infobulles. Chaque écart est un défaut, sauf s'il est nommé un par un dans `banc/ecarts-maquette.json`, avec sa raison.
 3. **Les contrôles de la conscience** : `AUDITS/CONTROLES-QCM-APP/controles-app.js` (fais `git merge origin/main` à chaque assemblage, la conscience peut en ajouter), que tu passes sans les modifier.
 
+## À 21:30 et à 22:00 (COMMUN §2, recalé le 12/10 à 19:20)
+
+À 21:30, tu lances les relecteurs neufs (ci-dessous, « De 05:30 à 06:30 », point 2) sur l'heure de classe seule. À 22:00, tu assembles, tu passes le banc entier, l'heure de demain et les contrôles de la conscience, tu écris `VERDICT-22H.md` comme `VERDICT.md` (point 3 ci-dessous), et tu pousses. Tu ne t'arrêtes pas : tu continues jusqu'à 06:30.
+
 ## Toutes les deux heures (COMMUN §2)
 
 Tu assembles, tu passes le banc, la fidélité et les contrôles, et tu écris chaque défaut dans `DEFAUTS-OUVERTS.md`, en tête : `[QCM-4 → QCM-n] l'écran, le geste, ce qui est attendu (la scène de la maquette), ce qui est vu`. Tu le rayes quand le banc le voit corrigé. Tu ne corriges rien toi-même.

@@ -2,7 +2,7 @@
 
 Format : `[QCM-4 → QCM-n] l'écran, le geste, ce qui est attendu (la scène de la maquette), ce qui est vu` — rayé par QCM-4 quand le banc le voit corrigé.
 
-## Essai du 12/10 à 18:45 (avant l'assemblage de 20:00), `code-qcm` à `bd574b5`, app `evaluation-qcm.staging.html` md5 `2e05301e…` — bloquants
+## Essai du 12/10 à 18:10 (avant l'assemblage de 20:00), `code-qcm` à `bd574b5`, app `evaluation-qcm.staging.html` md5 `2e05301e…` — bloquants
 
 Le banc les a vus en jouant l'heure ; tant qu'ils sont là, presque rien d'autre ne peut s'éprouver par le geste (le banc lance alors la séance par `ACT`, et le dit, pour aller plus loin).
 

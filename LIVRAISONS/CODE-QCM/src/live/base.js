@@ -265,10 +265,14 @@ var SCN = (function(){
     return o;
   };
   // l'ordre de la correction : fixé au lancement de la correction ; avant, de la plus ratée à la mieux réussie sur les tablettes
+  S.papier = function(sid){ var s = S.sess(sid); return !!(s && s.lancee && s.lancee.mode === "papier"); };
   S.ordreCorr = function(sid){ var s = S.sess(sid); if(s && s.ordreCorr) return (Array.isArray(s.ordreCorr) ? s.ordreCorr : Object.values(s.ordreCorr)).map(Number);
     var ev = S.ev(sid); if(!ev) return []; var ec = S.ecartees(sid), pres = S.presents(null, sid);
     var qs = ev.questions.map(function(q, i){ return i; }).filter(function(i){ return ec.indexOf(i) < 0; });
-    var taux = {}; qs.forEach(function(i){ var rep = pres.filter(function(x){ return S.reponse(x, i, sid); }); taux[i] = rep.length ? rep.filter(function(x){ return S.justeTablette(x, i, sid); }).length / rep.length : 1; });
+    // sur papier : l'ordre des erreurs de la grille (papier/<slug>/<qi>) ; sur tablettes : les réponses des tablettes
+    var taux = {}; if(S.papier(sid)){ qs.forEach(function(i){ var g = pres.map(function(x){ return ((s.papier || {})[x] || {})[i]; }).filter(function(v){ return v != null; });
+        taux[i] = g.length ? g.filter(function(v){ return v === "j" || v === true || v === 1; }).length / g.length : 1; }); }
+    else qs.forEach(function(i){ var rep = pres.filter(function(x){ return S.reponse(x, i, sid); }); taux[i] = rep.length ? rep.filter(function(x){ return S.justeTablette(x, i, sid); }).length / rep.length : 1; });
     return qs.sort(function(a, b){ return taux[a] - taux[b] || a - b; }); };
   S.corrigeesAu = function(k, sid){ var s = S.sess(sid); return liste(s && s.revelees).map(Number); };
 
@@ -392,7 +396,7 @@ var SCN = (function(){
       o.attestEnCours = {}; pres.forEach(function(x){ var a = S.attestDe(1, x, sid); if(entres.indexOf(x) >= 0 && !(a && a.fini)) o.attestEnCours[x] = a ? a.lignes || 0 : 0; });
     }
     // la lecture, la co-évaluation, l'estimation, la seconde attestation : ceux qui sont entrés (S.actifs) ; une feuille se lit si l'élève a un voisin entré, ou seul (il la lit lui-même)
-    if(e.ph === "lecture" && qi != null){ var pas = act.filter(function(x){ return !S.lecture(x, qi, sid); }); o.lus = [act.length - pas.length, act.length]; o.manquent = pas.map(S.nomDe); o.pasLu = pas; }
+    if(e.ph === "lecture" && qi != null){ var pas = S.papier(sid) ? [] : act.filter(function(x){ return !S.lecture(x, qi, sid); }); o.lus = [act.length - pas.length, act.length]; o.manquent = pas.map(S.nomDe); o.pasLu = pas; }
     if(e.ph === "coeval"){ var att = act.filter(function(x){ var v = S.voisinDe(x, sid); return !S.coevalDe(x, sid) && v && act.indexOf(v) >= 0; }); var avecV = act.filter(function(x){ var v = S.voisinDe(x, sid); return v && act.indexOf(v) >= 0; });
       o.coeval = [avecV.length - att.length, avecV.length]; o.manquent = att.map(S.nomDe); o.pasCoeval = att; }
     if(e.ph === "estim"){ var pe = act.filter(function(x){ return !S.estimationDe(x, sid); }); o.estime = [act.length - pe.length, act.length]; o.manquent = pe.map(S.nomDe); o.pasEstime = pe; }
@@ -407,7 +411,7 @@ var SCN = (function(){
     var sid = k && k !== "LIVE" && (LIVE.d.sessions || {})[k] ? k : S.sid(), s = S.sess(sid), e = S.etat(sid);
     if(!s || !e) return {k:"LIVE", seance:null, ph:"avant", date:dateFr(LIVE.maintenant()), heure:heureFr(LIVE.maintenant()), heureS:heureFr(LIVE.maintenant(), true), etape:"avant l'heure", ecartees:[], annulees:[], partis:{}};
     var now = LIVE.maintenant(), c = S.compteurs("LIVE", sid), m = {k:"LIVE", seance:sid, date:dateFr(now), heure:heureFr(now), heureS:heureFr(now, true), ph:e.ph, qi:e.qi, tour:e.tour || null, reste:S.reste(e),
-      cote:e.cote || null, pour:e.pour || null, ecartees:S.ecartees(sid), annulees:S.annulees(sid), temps:s.temps || {}, partis:{}, etape:e.ph};
+      cote:e.cote || null, pour:e.pour || null, ecartees:S.ecartees(sid), annulees:S.annulees(sid), temps:s.temps || {}, partis:{}, etape:e.ph, papier:S.papier(sid)};
     Object.keys(S.partis(sid)).forEach(function(x){ m.partis[x] = heureFr(S.partis(sid)[x]); });
     if(e.ph === "pause" && e.reprise){ m.pause = {qi:e.reprise.qi, tour:e.reprise.tour, ph:e.reprise.ph}; m.qi = e.reprise.qi; m.tour = e.reprise.tour; }
     // une séance reprise à une autre heure, avant « ▶️ Reprendre » : la phase gelée qui recommencera ({ph, qi, tour})
@@ -594,7 +598,10 @@ var ACT = (function(){
     var s = SCN.sess(id), maj = {}; maj[cheminS(id, "absents")] = absents.length ? absents : null; maj[cheminS(id, "places")] = places;
     if(fin) maj[cheminS(id, "lancee/fin")] = fin;
     var hist = {}; absents.forEach(function(x){ hist[x] = {}; hist[x]["h_" + LIVE.maintenant()] = {ts:LIVE.maintenant(), etat:"absent"}; }); if(absents.length) maj[cheminS(id, "presence_history")] = hist;
-    var rep = s && s.deroule && s.deroule.reprise;
+    var rep = s && s.deroule && s.deroule.reprise, papier = s && s.lancee && s.lancee.mode === "papier";
+    // sur papier (467) : après l'appel, la séance sur papier (les énoncés, puis « ⏸️ Feuilles ramassées ») ; à la reprise, l'estimation sur les tablettes
+    if(papier && rep && rep.ph === "papier") return ecrireQCM(maj, "appelFini").then(function(){ return poserDeroule(id, {ph:"estim"}); });
+    if(papier && !rep) return ecrireQCM(maj, "appelFini").then(function(){ return poserDeroule(id, {ph:"papier"}); });
     return ecrireQCM(maj, "appelFini").then(function(){ return poserDeroule(id, {ph:"entree", reprise:rep || null}); });
   };
   // échanger deux élèves (avant ou pendant la séance) : une paire exclue est refusée, avec sa raison
@@ -687,11 +694,15 @@ var ACT = (function(){
   A.lancerCorrection = function(){ var id = sid(); if(!id) return Promise.resolve(); var plus = {ordreCorr:SCN.ordreCorr()}; return poserDeroule(id, {ph:"att2"}, plus); };
   // la lecture d'une question de la correction : le temps de réponse de la question
   A.lireQuestion = function(qi){ var id = sid(); if(!id) return Promise.resolve(); if(qi == null){ var o = SCN.ordreCorr(), rv = SCN.corrigeesAu(); qi = o.filter(function(q){ return rv.indexOf(q) < 0; })[0]; }
-    if(qi == null) return A.ouvrirCoeval(); return poserDeroule(id, {ph:"lecture", qi:qi, duree:SCN.tempsDe(qi).reponse}); };
+    if(qi == null) return A.ouvrirCoeval();
+    // sur papier, pas de lecture du voisin : la question attend « 💡 Révéler », d'après la grille, sans chrono
+    if(SCN.papier()) return poserDeroule(id, {ph:"lecture", qi:qi});
+    return poserDeroule(id, {ph:"lecture", qi:qi, duree:SCN.tempsDe(qi).reponse}); };
   // révéler : la question se corrige d'après la lecture du voisin ; « Trouvée au dernier moment » se fixe ici, une fois par évaluation
   A.reveler = function(){ var x = e(), id = sid(); if(!id || x.qi == null) return Promise.resolve();
     var rv = SCN.corrigeesAu().filter(function(q){ return q !== x.qi; }).concat([x.qi]), plus = {revelees:rv}, ev = SCN.ev();
-    SCN.presents().forEach(function(y){ if(SCN.trouveeDe(y) != null) return; var lu = SCN.lecture(y, x.qi), rep = SCN.reponse(y, x.qi), q = ev.questions[x.qi];
+    // sur papier : jamais « Trouvée au dernier moment » (467)
+    if(!SCN.papier()) SCN.presents().forEach(function(y){ if(SCN.trouveeDe(y) != null) return; var lu = SCN.lecture(y, x.qi), rep = SCN.reponse(y, x.qi), q = ev.questions[x.qi];
       if(rep && SCN.juste(rep.choix, q) && lu && lu.choix !== "aucun" && !SCN.juste(lu.choix, q)) plus["trouvee/" + y] = x.qi; });
     return poserDeroule(id, {ph:"revele", qi:x.qi}, plus).then(function(){ return A.syncALire(id); }); };
   A.questionSuivante = function(){ return A.lireQuestion(null); };

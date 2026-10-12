@@ -16,7 +16,7 @@ var PAGES = (function(){
   // la console, d'après la phase réelle de la séance pilotée ; hors séance, le lancement
   P.CONSOLE = {avant:"c-lancer", appel:"c-appel", entree:"c-pret", pret:"c-pret", reflexion:"c-q1-reflexion", passage:"c-q1-tour1", reponse:"c-q1-tour1", b:"c-q1-tour1",
     close:"c-q1-close", rouvert:"c-q1-tour1", pause:"c-q1-tour1", estim:"c-estim", att2:"c-attest2", lecture:"c-corr-q2-avant", revele:"c-corr-q2-apres",
-    coeval:"c-coeval-attente", bilan:"c-bilan", fin:"c-lancer"};
+    coeval:"c-coeval-attente", bilan:"c-bilan", fin:"c-lancer", papier:"c-papier-seance"};
   // le 2e tour a son écran de console (« 🔒 Clore la question »)
   P.console = function(){
     var e = SCN.etat();
@@ -54,6 +54,8 @@ var PAGES = (function(){
       if(NAV.ecran && fn("EcranConsoleHeure") && fn("EcranConsoleHeure").fenetres) return {id:NAV.ecran, vue:"console", render:function(){ return fn("EcranConsoleHeure")(); }, cle:"console-heure"};
       if(NAV.ecran) return {id:NAV.ecran, cle:JSON.stringify(NAV.params)};
       var id = P.console();
+      // la séance sur papier, pendant l'heure : l'écran de QCM-3 (c-papier-seance) ; sa correction : c-papier-correction
+      if(id === "c-papier-seance" && soir(id)) return {id:id, vue:"console", render:function(){ return fn("EcranConsoleSoir")(id); }, cle:"papier"};
       if(id !== "c-lancer" && fn("EcranConsoleHeure")) return {id:id, vue:"console", render:function(){ return fn("EcranConsoleHeure")(); }, cle:"console-heure"};
       return {id:id};
     }

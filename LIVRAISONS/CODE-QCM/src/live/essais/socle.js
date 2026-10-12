@@ -249,6 +249,19 @@ function verif(ok, quoi, detail){ nb++; if(!ok) ko++; R.push((ok ? "  ok     " :
     verif(g3.ph === "reponse" && g3.qi === 1 && g3.tour === 2 && g3.cote === g1.reprise.cote && g3.duree === 3, "« ▶️ Reprendre » : le 2e tour de Q2 recommence au début (la même moitié, 3 s)", {g3, avant: g1.reprise});
     await p2.evaluate(() => ACT.cloreQuestion()); await pause(200);
     await p2.evaluate(s => ACT.terminer(s), sid3);
+    // la séance sur papier : l'appel, les énoncés ; « Feuilles ramassées » ; la grille du soir ; la reprise : l'appel, l'estimation, la seconde attestation, la correction d'après la grille
+    const sp = await p2.evaluate(() => ACT.lancerSeance("3 ESSAI", "essai", {mode:"papier"})); await p2.evaluate(() => ACT.appelFini(["yvon_adam"])); await pause(300);
+    verif(base("sessions/" + sp + "/deroule/ph") === "papier" && base("sessions/" + sp + "/lancee/mode") === "papier", "sur papier : après l'appel, la séance sur papier (ph « papier »)", base("sessions/" + sp + "/deroule"));
+    await p2.evaluate(() => ACT.finirAutreHeure()); await pause(200);
+    await p2.evaluate(s => Promise.all([["abrial_julien", ["j", "f", "j"]], ["baudry_lea", ["j", "j", "f"]]].map(([x, g]) => Promise.all(g.map((v, i) => ACT.grillePapier(x, i, v, s))))), sp); await pause(200);
+    await p2.evaluate(s => ACT.lancerSeance(null, null, {reprise:s}), sp); await pause(200); await p2.evaluate(() => ACT.appelFini(["yvon_adam"])); await pause(300);
+    verif(base("sessions/" + sp + "/deroule/ph") === "estim", "la reprise d'un papier : l'appel, puis l'estimation", base("sessions/" + sp + "/deroule"));
+    await p2.evaluate(() => ACT.lancerCorrection()); await pause(200);
+    const ocp = Object.values(base("sessions/" + sp + "/ordreCorr") || {});
+    verif(ocp.length === 3 && ocp[0] !== 0, "l'ordre de la correction sur papier : les erreurs de la grille (Q1 juste pour les deux, en dernier)", ocp);
+    const np = await p2.evaluate(s => SCN.note("abrial_julien", null, s), sp);
+    verif(np && np.n === 2 && np.st.join("") === "jfj" && np.trouvee == null, "sur papier, la note est la grille (Julien 2 / 3), jamais « Trouvée au dernier moment »", np);
+    await p2.evaluate(s => ACT.terminer(s), sp); await pause(200);
     // la séance suivante : les binômes d'après ce QCM précédent (classement de la note)
     const bp = await prof.evaluate(() => SCN.binomesProposes("3 ESSAI"));
     verif(bp[0][0] === "abrial_julien" && bp.length === 13, "les binômes suivants se forment sur le classement du QCM précédent (Julien, 3 / 3, en tête)", bp.slice(0, 3));

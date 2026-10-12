@@ -45,3 +45,12 @@ Les 28 libellés ci-dessous sont **proposés par la conscience n°12, à valider
 | `tr-personne-01` | Adopter une attitude respectueuse | Respecter les autres |
 | `tr-personne-02` | Coopérer et mutualiser | Travailler avec les autres et partager |
 | `tr-personne-03` | Être autonome et responsable | Travailler seul et de façon responsable |
+
+## Écrits au hub le 12/10/2026 à 14:52 (tour 673)
+
+Paul, le 12/10 à 14:20 : « oui pour les libellés ». Écrits par la conscience n°12, tels que ci-dessus, sans changement.
+
+1. **La copie de l'existant d'abord**, relue au hub juste avant d'écrire : `hub-taxonomie-competences-avant-12-10.json` (md5 `1ce1150356f0213b3a43a47cefc1b3a9`, identique à la lecture de 14:24) et `hub-taxonomie-meta-avant-12-10.json`.
+2. **Où** : au hub, `taxonomie/competences` est un objet de deux listes (`francaisC4`, `transversales`) de groupes `{id, libelle, items}` ; chaque item est une compétence `{id, libelle, actif}`. Le libellé élève est devenu le champ `libelleEleve` de chaque item, à côté de `libelle`, comme pour les notions. (Le chemin `taxonomie/competences/<code>/libelleEleve`, écrit d'abord dans le contrat des exécutants, n'existe pas ; corrigé dans `MANDATS/CODE-QCM/COMMUN.md`, §3.1.)
+3. **Comment** : un PUT ciblé par item (28, tous acceptés), jamais le nœud entier ; puis la version de la taxonomie, comme le fait l'éditeur de MJPC : `meta/version` 1.4.0 → 1.4.1, `meta/date` 2026-10-12, et une note (`meta/notes/19`).
+4. **Relu** : `taxonomie/competences` est identique, octet pour octet de données, à `AUDITS/CONTROLES-QCM-APP/attendus/taxonomie-competences.json` ; sans les `libelleEleve`, identique à la copie d'avant ; les 19 notes d'avant et les autres champs de `meta` inchangés.

@@ -22,7 +22,8 @@ async function scene(id, p, appareil){ if(!p) return; try { RELEVES[id] = Object
   });
   const codeDe = n => B.eleves.find(e => e.nomComplet === n).code;
   const A = new O.Appareils(srv, port); await A.demarrer();
-  const sess = () => { const a = srv.store.get("qcm/sessionActive") || {}; let id = a["3 ESSAI"] || a[slug("3 ESSAI")]; if(id && typeof id === "object") id = id.sessionId || id.id || id.sid; return {sid: id, s: id ? srv.store.get("qcm/sessions/" + id) || {} : {}}; };
+  let dernier = null;
+  const sess = () => { const a = srv.store.get("qcm/sessionActive") || {}; let id = a["3 ESSAI"] || a[slug("3 ESSAI")]; if(id && typeof id === "object") id = id.sessionId || id.id || id.sid; if(id) dernier = id; else id = dernier; return {sid: id, s: id ? srv.store.get("qcm/sessions/" + id) || {} : {}}; };
   const etat = () => { const x = sess().s; return x.deroule && typeof x.deroule === "object" ? x.deroule : (x.etat && typeof x.etat === "object" ? x.etat : {}); };   // contrat C1 : deroule
   const entrer = async (p, cote, nom) => { const [N, ...P] = nom.split(" "); await taper(p, cote, "code", codeDe(nom)); await taper(p, cote, "prenom", P.join(" ").toLowerCase()); await taper(p, cote, "nom", N.toLowerCase()); await cliquer(p, /Entrer/, cote); await pause(400); };
   let prof, tel;
@@ -32,7 +33,7 @@ async function scene(id, p, appareil){ if(!p) return; try { RELEVES[id] = Object
     await cliquer(prof, /^Pilotage$/); await cliquer(prof, /Pilotage classe/);
     await choisir(prof, /3 ESSAI/); await pause(200); J.v(await choisir(prof, /Démo — apprendre le déroulé/), H2, "la démo se choisit au lancement"); await pause(300);
     await scene("c-demo-lancer", prof, "console");
-    await cliquer(prof, /Lancer la séance/); await pause(400); await cliquer(prof, /Lancer la séance/); await pause(1000);
+    J.v(await cliquer(prof, /Lancer la démo|Lancer la séance/), H2, "« 🎓 Lancer la démo »"); await pause(500); await cliquer(prof, /Lancer la démo|Lancer la séance/); await pause(1000);
     const sd = sess();
     J.v(!!sd.sid && sd.s.evalId === "demo", H1, "la séance de la démo est lancée (evalId = demo)", JSON.stringify({sid: sd.sid, evalId: sd.s.evalId}));
     const td = await A.tablette("tablette-demo", "3 ESSAI");
@@ -42,7 +43,7 @@ async function scene(id, p, appareil){ if(!p) return; try { RELEVES[id] = Object
     await scene("t-demo-q", td, "tablette");
     J.v(/🎓 Évaluation d'entraînement : elle ne compte pas\./.test(await texte(td)), H2, "la démo : « 🎓 Évaluation d'entraînement : elle ne compte pas. » (t-demo-q)", (await texte(td)).slice(0, 200));
     await cliquer(prof, /Terminer la séance/); await pause(300); await cliquer(prof, /^🛑 Terminer|Oui, terminer|Terminer la séance/); await pause(1000);
-    await td.context().close();
+    await td.context().close(); dernier = null;
     J.v(!!(srv.store.get("qcm/evaluations") || {}).demo, H1, "la démo reste dans la base après sa séance");
 
     J.section("B.2 L'entrée qui se trompe : un code pas enregistré, la mauvaise tablette, le binôme");
@@ -66,16 +67,18 @@ async function scene(id, p, appareil){ if(!p) return; try { RELEVES[id] = Object
     const cJ = tJM.g === "abrial_julien" ? "g" : "d", cM = cJ === "g" ? "d" : "g";
     await cliquer(t1, /2 élèves/); await entrer(t1, cJ, "ABRIAL Julien");
     await scene("t-binome", t1, "tablette");
-    J.v(/Michel|DUVERNAY/.test(await zoneTexte(t1, cM)), H2, "Julien entré : l'autre moitié nomme son binôme, Michel (t-binome)", (await zoneTexte(t1, cM)).slice(0, 200));
-    // Michel s'assoit à la mauvaise tablette
-    await cliquer(t2, /2 élèves/); await entrer(t2, "g", "DUVERNAY Michel");
-    await scene("t-rejoins", t2, "tablette");
-    J.v(/rejoins Julien/.test(await zoneTexte(t2, "g")), H2, "Michel à la mauvaise tablette : « Tu es avec Julien… rejoins Julien. » (t-rejoins)", (await zoneTexte(t2, "g")).slice(0, 200));
-    await t2.reload(); await pause(800); await attendre(t2, /Combien êtes-vous|Identifie-toi/, 5000);
-    await entrer(t1, cM, "DUVERNAY Michel");
-    if(/Combien êtes-vous/.test(await texte(t2))) await cliquer(t2, /2 élèves/);
-    const cT = tTL.g === "chevallier_theo" ? "g" : "d", cL = cT === "g" ? "d" : "g";
-    await entrer(t2, cT, "CHEVALLIER Théo"); await entrer(t2, cL, "ZELLER Lou");
+    const binJ = tJM[cM], nomBinJ = (B.eleves.find(e => slug(e.nomComplet) === binJ) || {}).nomComplet || "?";
+    J.v(new RegExp("Ton binôme : " + esc(nomBinJ)).test(await zoneTexte(t1, cM)), H2, "Julien entré : l'autre moitié nomme son binôme, « Ton binôme : " + nomBinJ + " » (t-binome)", (await zoneTexte(t1, cM)).slice(0, 200));
+    // l'élève de la tablette de Théo qui n'est pas Théo s'assoit d'abord à la tablette de Julien, à la place du binôme de Julien
+    const cT0 = tTL.g === "chevallier_theo" ? "g" : "d", egare = tTL[cT0 === "g" ? "d" : "g"], nomEgare = (B.eleves.find(e => slug(e.nomComplet) === egare) || {}).nomComplet;
+    const tw = await A.tablette("tablette-egaree", "3 ESSAI"); await cliquer(tw, /2 élèves/); await entrer(tw, "g", "ABRIAL Julien".replace("ABRIAL Julien", nomEgare));
+    await scene("t-rejoins", tw, "tablette");
+    J.v(new RegExp("rejoins " + esc("Théo")).test(await zoneTexte(tw, "g")), H2, nomEgare + " à une tablette qui n'est pas la sienne : « Tu es avec Théo… rejoins Théo. » (t-rejoins)", (await zoneTexte(tw, "g")).slice(0, 200));
+    await tw.context().close();
+    await entrer(t1, cM, nomBinJ);
+    await cliquer(t2, /2 élèves/);
+    const cT = cT0, cL = cT === "g" ? "d" : "g";
+    await entrer(t2, cT, "CHEVALLIER Théo"); await entrer(t2, cL, nomEgare);
     J.v(/ABRIAL Julien/.test(await texte(prof)) && /CHEVALLIER Théo/.test(await texte(prof)), H2, "les quatre entrés se voient sur la console");
     // l'attestation : Julien finit, Michel en est à quelques lignes
     await cocherTout(t1, cJ);
@@ -176,7 +179,7 @@ async function scene(id, p, appareil){ if(!p) return; try { RELEVES[id] = Object
   J.section("B.7 Aucune erreur de page, aucune boîte système");
   for(const p of A.pages) J.v(p.__err.length === 0, H1, "page « " + p.__nom + " » sans erreur ni boîte système", p.__err.slice(0, 3).join(" · "));
   // les erreurs que l'app écrit elle-même (un écran qui ne se dessine pas, une écriture refusée) : chacune une fois, avec ses pages
-  const cerr = {}; for(const p of A.pages) for(const t of p.__cerr || []) (cerr[t] = cerr[t] || []).push(p.__nom);
+  const cerr = {}; for(const p of A.pages) for(const t of p.__cerr || []) if(!/^Failed to load resource/.test(t)) (cerr[t] = cerr[t] || []).push(p.__nom);   // une ressource externe, bloquée par le faux hub
   for(const t of Object.keys(cerr)) J.v(false, /c-(seances|resultats|fiche|evals|collage|reglages|sauvegarde)|e-mes|x627|x632|Soir|Evals/.test(t) ? H3 : /Ecran|écran (c|t|p|b)-/.test(t) ? H2 : H1, "erreur écrite par l'app dans " + cerr[t].length + " page(s) (" + cerr[t].slice(0, 4).join(", ") + ")", t);
   await A.fermer(); await srv.close();
   fs.writeFileSync(path.join(SORTIE, "phases-branches.txt"), srv.phases.join("\n") + "\n");

@@ -35,7 +35,7 @@ Un fichier que tu n'as pas dans ta liste, tu ne le modifies pas. Si tu as besoin
 2. **La v9** est poussée (`6fa8a9fe`, 15:58) et déjà reportée par la conscience dans `LIVRAISONS/CODE-QCM/src/` : il n'y a rien à reporter. Son exécutant finit sa livraison (son banc final, le README, `DEFAUTS.md`) ; à 17:40, il n'a changé aucune source depuis `6fa8a9fe`. Si `maquette-qcm` bouge encore, chacun reporte dans ses propres fichiers ce qui a changé depuis `6fa8a9fe` (`git diff 6fa8a9fe origin/maquette-qcm -- MANDATS/MAQUETTE-QCM-COMPLETE/src`).
 3. Avant chaque commit : `git pull --rebase origin code-qcm`. Un conflit ne peut venir que d'un fichier commun (`DEMANDES.md`, `DEFAUTS-OUVERTS.md`) : tu gardes les deux lignes.
 4. Tu pousses **au moins toutes les heures**, et dès qu'une partie marche. Jamais un commit qui casse l'assemblage : `python3 LIVRAISONS/CODE-QCM/build.py` doit passer avant chaque `push`.
-5. Les heures (heure de Paris ; recalées le 12/10 à 17:10, les quatre partant vers 17:15) :
+5. Les heures (heure de Paris ; recalées le 12/10 à 17:10 ; les quatre sont partis vers 17:35) :
    - **20:00, 22:00, 00:00, 02:00, 04:00** : QCM-4 assemble, passe le banc, et range les défauts dans `DEFAUTS-OUVERTS.md` ; chacun traite les siens avant de continuer ;
    - **05:00** : plus rien de nouveau ; on ne corrige que des défauts ;
    - **05:30** : QCM-4 passe le banc final, les contrôles de la conscience et les relecteurs neufs ;

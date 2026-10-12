@@ -20817,3 +20817,29 @@ Réponse mot pour mot :
 912. **Les quatre du code n'ont encore rien poussé** : c'est normal à cette heure, ils lisent leurs mandats. QCM-1 doit pousser ses premiers noms dans sa première heure, donc vers 18:15. Je le vérifie à ton prochain message.
 
 12/10/2026 17:41 MEMO
+
+---
+
+## TOUR 676 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (12/10, 17:39) je viens de les lancer, les 4.
+
+---
+
+## TOUR 676 — Claude (conscience n°12)
+
+Mesuré : `code-qcm` à `2845c9d6` : `[QCM-2 · HEURE] fusion de origin/main` (17:37), puis ses quatre demandes à QCM-1 dans `DEMANDES.md` (17:38) ; rien encore de QCM-1, QCM-3, QCM-4 ; `maquette-qcm` inchangée depuis 17:06. Commun : « partis vers 17:35 ».
+
+Réponse mot pour mot :
+
+À jouer : rien · en cours chez l'exécutant : les quatre du code, et celui de la maquette (fin de l'étape C) · ouvert : tes 11 questions
+
+913. **Ils sont bien partis.** QCM-2 a déjà poussé à 17:37 et 17:38 : il a pris les dernières consignes de `main`, puis écrit à QCM-1 ses quatre premières demandes (les écrans de chaque appareil, l'état de la séance en direct, les gestes de chaque moitié de tablette). C'est exactement ce que prévoit le commun.
+
+914. **Les heures tiennent** : premier assemblage à 20:00, verdict à 06:30, mon audit à 07:00. QCM-1 doit pousser ses premiers noms dans sa première heure, donc vers 18:40.
+
+915. **Tu n'as plus rien à faire pour eux ce soir.** Ne leur colle rien. Si l'un d'eux s'arrête ou te pose une question, colle-moi ce qu'il dit.
+
+12/10/2026 17:45 MEMO

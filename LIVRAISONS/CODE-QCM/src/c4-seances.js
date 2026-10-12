@@ -893,3 +893,91 @@ PdfApercu = vivantOu(PdfApercuV, PdfApercu);
 // les points d'entrée, pour les pages du socle (DEMANDES.md, QCM-3 → QCM-1)
 function EcranConsoleSoir(id){ var f = ECRANS_SOIR_V[id]; return f ? h(GardeV, {key:location.hash}, f()) : null; }
 function EcranMesEvaluations(){ return paramHash("seance") ? BilanRenduV() : MesEvaluationsV(); }
+
+/* ════════ [QCM-3] La séance sur papier : les énoncés, « Feuilles ramassées », la grille du soir (papier/<slug>/<qi> : « j » ou « f ») ════════ */
+function seancePapierV(){ var id = seanceParam() || (SCN.LIVE && SCN.sid && SCN.sid()); var se = id ? seanceV(id) : null; if(se && se.papier) return se;
+  return seancesV().filter(function(x){ return x.papier && !x.terminee; }).sort(function(a, b){ return b.ms - a.ms; })[0] || null; }
+function PapierSeanceV(){ return Console("pilotage", "pilot", h(PapierSeanceVC), true); }
+function PapierSeanceVC(){
+  useV3();
+  var se = seancePapierV(); if(!se) return h("div", {className:"card"}, h("p", null, "Chargement…"));
+  var ev = se.ev, sq = "&seance=" + encodeURIComponent(se.id);
+  return h("div", {className:"card"},
+    TitreCarte(h(F, null, "📄 Séance sur papier — " + ev.titre + " — " + se.classe, InfoI("Sur papier, chacun répond seul sur sa feuille, avec les énoncés imprimés, sans tablette. Tu ramasses les feuilles ; la séance se met en pause sans être finie. Le soir, tu remplis la grille ; à l'heure suivante, l'estimation, la seconde attestation et la correction se font sur les tablettes.")),
+      [h("button", {key:1, className:"btn btn-rouge btn-sm", "data-va":"c-terminer" + sq}, "🛑 Terminer la séance")]),
+    h("div", {className:"pilot-status reflexion"}, "📄 Séance sur papier en cours — " + presentsTexteV(se), InfoIB("📄 Séance sur papier en cours", "Les élèves ont les énoncés seuls, sans les choix, et répondent sur leur feuille, seuls.")),
+    h("div", {className:"papier-grid"},
+      h("div", null,
+        h("div", {className:"row"},
+          h("button", {className:"btn btn-ghost", "data-local":"1", onClick:function(){ imprimerEnonces(se); }, title:"Montre la page des énoncés seuls, avec les points de chaque question, à imprimer pour la classe."}, "🖨️ Les énoncés à imprimer"),
+          h("button", surClic(function(){ var p = SCN.LIVE && typeof ACT !== "undefined" && ACT.finirAutreHeure ? Promise.resolve(ACT.finirAutreHeure()) : Promise.resolve(); return p.then(function(){ versScene("c-papier-grille" + sq); }); },
+            {className:"btn btn-or", title:"Tu as ramassé les feuilles : la séance se met en pause sans être finie. Le soir, tu remplis la grille d'après les feuilles."}), "⏸️ Feuilles ramassées : finir à une autre heure"))),
+      h("div", {className:"pilot-overview"}, h("h3", null, "📋 Toutes les questions", InfoI("Les questions de l'évaluation, avec leurs bonnes réponses : sur papier, elles ne se posent pas une à une.")),
+        ev.questions.map(function(q, qi){ return h("div", {key:qi, className:"pilot-q-mini"}, h("div", {className:"pilot-q-mini-head"}, h("span", {className:"pilot-q-mini-num"}, "Q" + (qi+1)), h("span", {className:"pilot-q-mini-niv niv-" + q.niveau}, NIV[q.niveau].label)), h("div", {className:"pilot-q-mini-enonce"}, q.enonce), h("div", {className:"pilot-q-mini-bonnes"}, ChoixTexte(q))); }))));
+}
+// la page des énoncés seuls, avec les points, dans une fenêtre à imprimer
+function imprimerEnonces(se){
+  var ev = se.ev, w = window.open("", "enonces-qcm"); if(!w) return;
+  var html = "<!DOCTYPE html><html lang='fr'><head><meta charset='UTF-8'><title>" + escPdf(ev.titre) + "</title>" + Array.prototype.map.call(document.querySelectorAll("style"), function(s){ return s.outerHTML; }).join("") + "</head><body class='vue-eleve'>" +
+    "<div class='bilan-imprime'><div class='bilan-imprime-page enonces-p'><h2>" + escPdf(ev.titre) + "</h2><div class='enonces-classe'>" + escPdf(se.classe) + " · " + se.date + "</div>" +
+    ev.questions.map(function(q, i){ return "<div class='enonce-p'><strong>Question " + (i + 1) + " · " + (q.bonus ? "bonus" : "1 pt") + "</strong><div>" + escPdf(q.enonce) + "</div></div>"; }).join("") + "</div></div></body></html>";
+  w.document.open(); w.document.write(html); w.document.close(); setTimeout(function(){ try { w.focus(); w.print(); } catch(e){} }, 400);
+}
+function caseGrille(se, slug, qi){ var g = ((se.S.papier || {})[slug] || {})[qi]; return g == null ? null : g === "j" || g === true || g === 1 ? "j" : "f"; }
+function ecrireCase(se, slug, qi, v){ if(SCN.LIVE && typeof ACT !== "undefined" && ACT.grillePapier) return Promise.resolve(ACT.grillePapier(slug, qi, v, se.id)); return v3Set(v3Q("sessions/" + se.id + "/papier/" + slug + "/" + qi), v); }
+function GrillePapierV(p){
+  var se = p.se, ev = se.ev, eleves = se.presents;
+  return h("div", {className:"scoresheet-wrap"}, h("table", {className:"scoresheet papier-grille"},
+    h("thead", null, h("tr", null, h("th", {className:"eleve-col"}, "Élève"), ev.questions.map(function(q, i){ return h("th", {key:i, title:q.enonce}, "Q" + (i+1)); }), h("th", null, "Note"), h("th", null, "Sur 20"))),
+    h("tbody", null, eleves.map(function(e){
+      var l = ev.questions.map(function(q, i){ return caseGrille(se, e.slug, i) || "f"; }), note = l.filter(function(x){ return x === "j"; }).length, total = ev.questions.filter(function(q){ return !q.bonus; }).length;
+      return h("tr", {key:e.slug, "data-eleve":e.slug}, h("td", {className:"eleve-cell"}, e.nom),
+        l.map(function(x, i){ return h("td", {key:i, className:x === "j" ? "cell-juste" : "cell-faux"}, h("button", {className:"case-grille", "data-local":"1", title:"La feuille " + deNom(prenomDeNom(e.nom)) + ", question " + (i+1) + " : un clic bascule entre ✓ (juste) et ✗ (faux).", onClick:function(){ ecrireCase(se, e.slug, i, x === "j" ? "f" : "j"); }}, x === "j" ? "✓" : "✗")); }),
+        h("td", {className:"score-cell"}, note + "/" + total), h("td", {className:"score-cell"}, fr1(total ? Math.min(20, note * 20 / total) : 0)));
+    }))));
+}
+function PapierGrilleV(){ return Console("donnees", "results", h(PapierGrilleVC), false); }
+function PapierGrilleVC(){
+  useV3();
+  var se = seancePapierV();
+  // une case jamais cliquée vaut ✗ : la grille s'écrit entière dès qu'elle s'ouvre, pour que la note de chacun existe
+  useEffect(function(){ if(!se) return; var u = {}; se.presents.forEach(function(e){ se.ev.questions.forEach(function(q, i){ if(caseGrille(se, e.slug, i) == null) u["papier/" + e.slug + "/" + i] = "f"; }); }); if(Object.keys(u).length) v3Update(v3Q("sessions/" + se.id), u); }, [se ? se.id : null]);
+  if(!se) return h("div", {className:"card"}, h("p", null, "Chargement…"));
+  return h("div", {className:"card"},
+    TitreCarte("📄 " + se.ev.titre + " — " + se.classe + " — sur papier", [
+      h("button", {key:0, className:"btn btn-primary btn-sm", "data-va":"c-lancer", title:"Ta grille est remplie : la séance se reprend à l'heure suivante, pour la correction sur les tablettes."}, "💾 Grille remplie"),
+      h("button", {key:2, className:"btn btn-ghost btn-sm", "data-va":"c-seances", title:"Revient à la liste des séances ; la grille est gardée telle quelle."}, "← Retour")]),
+    h("p", {style:{fontSize:".85rem", color:"var(--gris)", marginTop:".2rem"}}, se.date + " " + se.heure + " · sur papier · " + presentsTexteV(se)),
+    h(GrillePapierV, {se:se}));
+}
+
+/* ════════ [QCM-3] Le rattrapage : la classe et l'évaluation du lancement ; seuls ceux qui ne sont pas encore notés la passent ════════ */
+function RattrapageV(){ return Console("pilotage", "pilot", h(F, null, h(RattrapageVC), SessionsPrecedentes()), false); }
+function RattrapageVC(){
+  useV3();
+  var c = classeDuLancement(), evId = typeof LANCEMENT !== "undefined" ? LANCEMENT.evalId : null, ev = evalV(evId);
+  var passees = seancesV().filter(function(se){ return memeClasse(se, c) && se.ev && se.ev.id === evId && se.terminee && !se.demo; }).sort(function(a, b){ return a.ms - b.ms; });
+  var notes = {}; passees.forEach(function(se){ se.presents.forEach(function(e){ notes[e.slug] = 1; }); });
+  var cl = v3Eleves(c, c), seuls = cl.eleves.filter(function(e){ return !notes[e.slug]; }), se0 = passees[0];
+  if(!ev || !se0) return h("div", {className:"card"}, h("p", null, "Chargement…"));
+  return h("div", {className:"card"},
+    h("h2", null, "🎯 Lancer une nouvelle séance", InfoI("Un rattrapage se lance comme une séance : la classe, la même évaluation ; seuls ceux qui ne sont pas encore notés la passent.")),
+    h("div", {className:"lancer-grid"},
+      h("div", null,
+        h("div", {className:"field"}, h("label", null, "Classe", InfoI("Les classes de la console MJPC.")), h("select", {value:"c", readOnly:true, title:"La classe de la séance."}, h("option", {value:"c"}, cl.libelle + " (" + cl.eleves.length + " élèves)"))),
+        h("div", {className:"field"}, h("label", null, "Évaluation", InfoI("L'évaluation déjà passée par la classe : « 🔁 » la marque comme rattrapage.")), h("select", {value:"e", readOnly:true, title:"L'évaluation de la séance."}, h("option", {value:"e"}, "🔁 " + ev.titre))),
+        h("div", {className:"rattrapage-box"}, h("strong", null, "🔁 Rattrapage."), " " + cl.libelle + " a déjà passé cette évaluation le " + se0.date.slice(0, 5) + ".", InfoIB("🔁 Rattrapage", "Cette séance ne servira jamais de « QCM précédent » pour les binômes. Un élève déjà noté garde la note de sa première séance.")),
+        h("div", {className:"duree-box"}, texteDureeV(ev, true)),
+        h("button", {className:"btn btn-primary", disabled:!seuls.length, title:seuls.length ? "Ouvre l'appel du rattrapage : seuls les élèves pas encore notés sont proposés." : "Tous les élèves de la classe sont déjà notés à cette évaluation."}, "🚀 Lancer le rattrapage")),
+      h("div", {className:"binomes-box"},
+        h("div", {className:"tt"}, "📱 Binômes proposés — d'après les exclusions, puis le QCM précédent", InfoI("Comme pour une séance : d'abord les exclusions de MJPC, puis la règle du QCM. Plus de placement libre.")),
+        h("div", {className:"ss"}, "Pas encore noté à cette évaluation : " + (seuls.map(function(e){ return e.nom; }).join(", ") || "personne") + (seuls.length ? " (absent le " + se0.date.slice(0, 5) + ")." : "."), seuls[0] && InfoIB(seuls[0].nom, "Seul, il fait lui-même la lecture de sa feuille à la correction ; il n'a pas de co-évaluation.")),
+        h(GrilleBinomes, {paires:seuls.map(function(e){ return [e.nom, null]; })}))));
+}
+function texteDureeV(ev, seul){
+  var d = dureeEstimeeV(ev, seul), D = dureesV(), mn = function(s){ var m = Math.floor(s / 60), r = Math.round(s % 60); return m + " min" + (r ? " " + r + " s" : ""); };
+  return h(F, null, "⏱️ ", h("strong", null, "Durée estimée : " + d.min + " min"), InfoIB("⏱️ Durée estimée", "Installation et consignes " + mn(D.installation) + " ; questions " + mn(d.questions) + " (pour chacune : la réflexion, puis " + (seul ? "un tour de " : "deux tours de ") + D.decompte + " s de décompte, de réponse et de " + D.b + " s où l'élève dit si sa feuille dit la même chose que son clic, puis " + D.entre + " s) ; estimation et seconde attestation " + mn(D.estimAttest) + " ; correction " + mn(d.correction) + " (" + mn(D.correctionParQ) + " par question)" + (seul ? "" : " ; co-évaluation et bilan " + mn(D.coevalBilan)) + "."), h("br"), d.min <= 45 ? "✅ Ça tient dans les 45 minutes utiles." : "⚠️ " + (d.min - 45) + " min de plus que les 45 minutes utiles.");
+}
+ECRANS_SOIR_V["c-papier-grille"] = PapierGrilleV; ECRANS_SOIR_V["c-papier-seance"] = PapierSeanceV; ECRANS_SOIR_V["c-rattrapage"] = RattrapageV;
+["c-papier-grille", "c-papier-seance", "c-rattrapage"].forEach(function(id){ var sc = sceneParId(id); if(sc) refaire(id, vivantOu(ECRANS_SOIR_V[id], sc.render)); if(ECRANS_SOIR.indexOf(id) < 0) ECRANS_SOIR.push(id); });
+Rattrapage = vivantOu(RattrapageV, Rattrapage);

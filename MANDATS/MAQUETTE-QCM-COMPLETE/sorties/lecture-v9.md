@@ -2,7 +2,7 @@
 
 Lu sur les captures de `releve.js` (v8 dans `/tmp/rel-v8`, v9 dans `/tmp/rel-v9`), v8 à gauche, v9 à droite, en planches de trois paires ; les écrans parus, en planches de six ; les voisins, en planches de neuf. Liste des écrans : `sorties/ecrans-changes-v8-v9.txt` (399 changés, dont 284 parus, 34 scènes touchées, 74 voisins).
 
-**Trouvé en lisant, et corrigé** : `x610-8-console-alerte` et ses voisins (`x610-autonomie-*`, `x610-feuille`, `x610-tranche*`) écrivaient « 🤔 1 pensent : peut-être mal lu », une fois Noah parti (il ne reste qu'une feuille « peut-être mal lu », celle de Jade). Le compte s'accorde : « 🤔 1 pense : peut-être mal lu » (`src/c3-corr.js`, `src/c3-x610.js`), comme la ligne « ❌ 1 pense » d'à côté. Le site ne porte pas ce texte : il ne se compare à rien.
+**Trouvé en lisant, et corrigé** : `x610-8-console-alerte` et ses voisins (`x610-autonomie-*`, `x610-feuille`, `x610-tranche*`) écrivaient « 🤔 1 pensent : peut-être mal lu », une fois Noah parti (il ne reste qu'une feuille « peut-être mal lu », celle de Jade). Le compte s'accorde : « 🤔 1 pense : peut-être mal lu » (`src/c3-corr.js`, `src/c3-x610.js`), comme la ligne « ❌ 1 pense » d'à côté. Le site ne porte pas ce texte : il ne se compare à rien. Le banc a trouvé ensuite que ce texte nouveau n'avait ni classement ni infobulle (gardes 9 et 10 ; la règle `pensent?` ne reconnaissait pas « pense ») : corrigé, journal n° 377.
 
 ## Les écrans changés
 

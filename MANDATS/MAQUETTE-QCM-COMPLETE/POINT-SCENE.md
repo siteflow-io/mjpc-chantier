@@ -1,6 +1,6 @@
 # Le tableau « point → scène » (mandat §4 et §6, étape 5)
 
-*Pour chaque point retenu du cadrage qui se voit, la scène qui le montre (`#scene=ID` dans `maquette-qcm-v8.html`). Les points sont ceux du §4 du mandat (tours 604 à 632), plus les points plus anciens que ces scènes rendent visibles. Un point sans scène serait un oubli : il n'y en a pas.*
+*Pour chaque point retenu du cadrage qui se voit, la scène qui le montre (`#scene=ID` dans `maquette-qcm-v9.html`). Les points sont ceux du §4 du mandat (tours 604 à 632), plus les points plus anciens que ces scènes rendent visibles. Un point sans scène serait un oubli : il n'y en a pas.*
 
 ## Tours 604 à 606 (points 427 à 451)
 
@@ -127,3 +127,18 @@
 | 776 | « séance » partout où Paul lit | `c-lancer`, `c-terminer`, `c-seances` |
 | 777 | « ⛔ » pour le seul point d'autonomie ; « Trouvée au dernier moment » en ✓ orange chez Paul | `c-corr-q2-apres`, `p-corr-apres`, `c-resultats` |
 | 778 | les quatre retouches côté élève : la consigne sans « ❌ Tu avais faux. », une seule règle du désaccord, « 📄 Temps pour lire la feuille du voisin », « Ta réponse : aucun de ces choix » | `t-corr-q2-apres`, `t-coeval-ecrit`, `t-corr-q2-lecture`, `t-corr-q3-apres` |
+
+## Complément 4 — les neuf corrections (une destination s'ouvre aussi par son adresse, `#scene=…&seance=…`)
+
+| Correction | Ce qui se voit | Scène(s) ou destination(s) |
+| --- | --- | --- |
+| 1 | le tableau de `c-resultats` pour chaque séance : ses questions, sa note, ses compétences (« 🧩 — » sans compétences), l'autonomie, « À lire sur la feuille », le PDF ; la fiche de l'élève à sa séance | `c-resultats&seance=S3E`, `c-resultats&seance=PAP`, `c-resultats&seance=CH1`, `c-resultats&seance=JB`, `c-fiche&eleve=Lou&seance=PAP` |
+| 1.5 | l'évaluation de 3e « à compléter » le matin, complétée (chapitre, compétences) après 12:45 le 09/10 | `c-evals`, `c-seances`, `x632-pdf` |
+| 2 | le PDF de la séance d'où on l'ouvre | `x632-pdf&m=SOIR%3Arendu&seance=S08`, `x632-pdf&m=S08%3Aavant&seance=CH1`, `x632-pdf&m=S08%3Aavant&seance=JB`, `x632-pdf` (la 3e, figé) |
+| 3 | l'appel du rattrapage, et celui des séances rouvertes | `c-appel&seance=RATT`, `c-appel&seance=CH1`, `c-appel&seance=JB` |
+| 4 | la démo, sur les tablettes, à la question 1 | `t-demo-q` |
+| 5 | « 2e tour (moitiés de gauche) » | `c-interrompue` |
+| 6 | Adam seul : « Temps de réponse » | `t-corr-seul` |
+| 7 | la ligne « 📱 Sur les tablettes, avant la correction : » lisible ; les contrastes | `p-corr-avant`, `p-corr-apres`, `p-autonomie`, `p-eleve`, `t-bilan` |
+| 8 | « ☝️ Un désaccord, c'est sérieux… » dans les moitiés où il était seul | `t-coeval`, `t-coeval-daccord`, `t-coeval-ecrit`, `x610-6-coeval-laquelle`, `x610-7-coeval-ecrit` |
+| 9 | Noah parti : « 19 / 23 ont répondu », « À lire sur les feuilles, ce soir (4) », « 🤔 1 pense » | `x610-8-console-alerte`, `x610-9-telephone-alerte`, `x610-tranche`, `c-seances` |

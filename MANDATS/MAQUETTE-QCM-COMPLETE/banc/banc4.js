@@ -13,7 +13,7 @@ const joue = n => QUELLES.includes(n);
 async function gardes4(navig, fichier, scenes, verif, journal, opts){
   opts = opts || {};
   const url = "file://" + fichier, parId = {}; scenes.forEach(s => { parId[s.id] = s; });
-  const ref7 = opts.v7 || path.join(path.dirname(fichier), "maquette-qcm-v7.html");
+  const ref7 = opts.v7 || path.join(__dirname, "..", "maquette-qcm-v7.html");
   const ver = (/maquette-qcm-(v\w+)\.html$/.exec(fichier) || [, "dev"])[1];
   // 16.1 et 16.2 : les destinations, jusqu'à ce qu'aucune nouvelle n'apparaisse
   let explo;

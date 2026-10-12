@@ -16,7 +16,7 @@ const B4 = require("./banc4.js");
 // (complément 3) GARDES=oui joue tout : les vérifications 1 à 9, les gardes 1 à 8, puis les gardes 9 à 15
 const GARDES = process.env.GARDES || "oui";
 // (complément 4) GARDES=c4 : les gardes 16 à 20 seules (et, par la garde 16.3, les gardes 9 à 15 sur chaque destination)
-const C1 = !["0", "c2", "c3", "c4"].includes(GARDES), C2 = !["0", "c3", "c4"].includes(GARDES), C3 = !["0", "c2", "c4"].includes(GARDES), C4 = !["0", "c2", "c3"].includes(GARDES);
+const C1 = !["0", "c2", "c3", "c4"].includes(GARDES), C2 = !["0", "c3", "c4"].includes(GARDES), C3 = !["0", "c2", "c4"].includes(GARDES), C4 = !["0", "c2", "c3", "sans4"].includes(GARDES);   // GARDES=sans4 : tout, sauf les gardes 16 à 20 (mise au point)
 const RACINE = path.join(__dirname, "..");
 const FICHIER = path.resolve(process.argv[2]);
 const ETAPE = +process.argv[3] || 1;

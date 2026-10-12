@@ -49,7 +49,9 @@ function Board(){
       h("div", {className:"board-chrono-label"}, h("span", {className:"board-main-anim"}, "✍️"), " RÉDIGE TA RÉPONSE EN ENTIER SUR TA FEUILLE"),
       Cercle(m.reste, t.reflexion, NIV[q.niveau].color),
       h("div", {className:"board-chrono-sub"}, "Les choix de réponse n'apparaîtront qu'après la réflexion. Note ta réponse en toutes lettres sur ta copie.")));
-  else if(m.ph === "reponse" || m.ph === "b" || m.ph === "passage") corps = h("div", {className:"board-active board-reflexion"}, bandeau,
+  // (complément 4, correction 9 — garde 18) une question rouverte pour un élève, ou une séance dont la console s'est perdue, est en réponse :
+  // le tableau la montre comme telle (la 7.7.1 rouvre une question en phase « reponse »)
+  else if(m.ph === "reponse" || m.ph === "b" || m.ph === "passage" || m.ph === "rouvert" || m.ph === "panne") corps = h("div", {className:"board-active board-reflexion"}, bandeau,
     h("div", {className:"board-enonce-bloc"}, h("div", {className:"board-enonce"}, q.enonce)),
     h("div", {className:"board-chrono-zone"},
       h("div", {className:"board-chrono-label"}, "🖊️ ", "POSE TON STYLO."),

@@ -251,3 +251,16 @@ refaire("t-corr-q1-apres", function(){ return Tablette(EcrRevele(J, MOM().qi), E
 refaire("t-estim", function(){ return Tablette(EcrEstim(J, SCN.ESTIM.Julien), EcrEstim(M, null)); });
 refaire("t-attest-corr-fait", function(){ var e = MOM().enCours || {}; return Tablette(EcrAttenteCorr(J), Attest2(M, e.Michel || 4)); });
 refaire("t-papier-correction", function(){ return Tablette(EcrRevele(J, MOM().qi, {papier:true}), EcrRevele(M, MOM().qi, {papier:true})); });
+
+/* (complément 4, correction 9 — garde 18) les états du pilotage des couches précédentes (etape2.js) étaient des variables, réassignées
+   après la déclaration de ce fichier : « 📱 QR pilotage » montrait toujours la question 1, 1er tour. Le QR s'ouvre sur l'écran du moment. */
+ST_Q1T1 = function(){ return etatPilot(); };
+refaire("c-qr", function(){
+  var fond = seanceEnCours() ? fondDuMoment() : Lancement(false);
+  var r = ScQR(); return h(F, null, fond, r.props.children[1]);
+});
+/* le mode test au « Oui / Non » de la question 3 (TEST:Q3:B1) : les 15 tablettes à ce moment, comme derrière « 🔍 Jouer en grand » */
+function ModeTestB(){ var n = +paramHash("tab") || 1, pa = TEST_PAIRES30[n - 1] || TEST_PAIRES30[0], a = eleveT(pa[0], "J");
+  return ModeTestSeance({phase:"reponse", qi:2, tour:1, chrono:0, stats:statsQ(), passees:[0, 1],
+    etat:function(p, cote){ if(cote === "d") return {cls:"m-voile", st:"🙈 attend son tour"}; return p === a.prenom ? {cls:"m-repond", st:"✋ dit si sa feuille…"} : {cls:"m-dit", st:"a répondu"}; }}, "reflexion"); }
+refaire("x620-2-mode-test-reflexion", function(){ return MOM().ph === "b" ? ModeTestB() : ModeTestReflexion(); });

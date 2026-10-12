@@ -303,7 +303,9 @@ function MoitieH(p, cote, autreP){
   if(v) v.voisin = e;
   var ph = m.ph === "pause" ? ((m.pause && m.pause.ph) || (m.tour ? "reponse" : "reflexion")) : m.ph;
   var actif = qi != null ? (m.cote || coteDuTour(qi, m.tour || 1)) : null;   // la moitié qui répond à ce tour
-  var voile = function(){ return v ? Voile(v, false, e) : EcrAttente(e); };
+  // seul sur sa tablette (pas de voisin présent) : il a la main aux deux tours, rien à voiler (SCN.seul, SCN.aLaMain)
+  var seul = typeof SCN.seul === "function" ? SCN.seul(p) : !v, main = typeof SCN.aLaMain === "function" ? SCN.aLaMain(p) : cote === actif;
+  var voile = function(){ return v && !seul ? Voile(v, false, e) : EcrAttente(e); };
   if(!ph || ph === "avant" || ph === "appel" || ph === "entree" || ph === "pret"){
     var a1 = attestH(p, 1);
     return a1.fini ? EcrPret(e) : h(AttestCoches, {key:"a1" + p, e:e, lignes:LignesAttest(e, e.voisin), n0:a1.lignes, attest:1, fini:a1.fini, titre:"Avant de commencer, " + e.prenom, bouton:"Je commence", titrePage:EV.titre, pret:function(){ return EcrPret(e); }});
@@ -311,10 +313,10 @@ function MoitieH(p, cote, autreP){
   if(ph === "reflexion") return EcrReflexion(e, qi, reste);
   // (contrat C6) le geste de Paul a coupé l'attente : la moitié qui vient de répondre dit B pendant que la suite commence
   if(typeof SCN.doitDireB === "function" && SCN.doitDireB(p)){ var bp = m.bPour || {}; return EcrDeclareH(e, bp.qi != null ? bp.qi : qi, bp.reste != null ? bp.reste : reste); }
-  if(ph === "passage") return cote === actif ? EcrPassage(e, qi, reste) : (v ? Voile(v, true, e) : EcrAttente(e));
-  if(ph === "reponse") return cote === actif ? EcrReponse(e, qi, ORD[qi][p], TABL[p][qi], reste) : voile();
-  if(ph === "b") return cote === actif ? EcrDeclareH(e, qi, reste) : voile();
-  if(ph === "rouvert") return m.pour === p ? EcrReponse(e, qi, ORD[qi][p], TABL[p][qi], reste) : m.pour && m.pour === vSlug ? Voile(v, false, e) : EcrAttente(e);
+  if(ph === "passage") return cote === actif ? EcrPassage(e, qi, reste) : (v && !seul ? Voile(v, true, e) : EcrAttente(e));
+  if(ph === "reponse") return main ? EcrReponse(e, qi, ORD[qi][p], TABL[p][qi], reste) : voile();
+  if(ph === "b") return cote === actif || seul ? EcrDeclareH(e, qi, reste) : voile();
+  if(ph === "rouvert") return m.pour === p ? EcrReponse(e, qi, ORD[qi][p], TABL[p][qi], reste) : m.pour && m.pour === vSlug && !seul ? Voile(v, false, e) : EcrAttente(e);
   if(ph === "estim") return EcrEstim(e, ESTIM[p] || null);
   if(ph === "att2"){
     var a2 = attestH(p, 2);

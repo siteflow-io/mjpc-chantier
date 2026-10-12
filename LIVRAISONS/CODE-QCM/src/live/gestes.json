@@ -230,6 +230,11 @@
    "action": "ELV.combien(n)"
   },
   {
+   "ecran": "t-un-eleve",
+   "geste": "« Tu es bien <prénom> ? » — Oui",
+   "action": "ELV.sessionMJPC() → {slug, nom, prenom} ou null (la session MJPC de cet appareil, dans la classe) ; Oui : ELV.entrerSansCode(cote, slug) ; Non : l'entrée par le code"
+  },
+  {
    "ecran": "t-login",
    "geste": "Entrer → (code, prénom, nom)",
    "action": "ELV.entrer(cote, code, prenom, nom) → {ok} | {err} | {rejoins : voisin, tablette}"

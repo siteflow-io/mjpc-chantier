@@ -222,6 +222,12 @@ function verif(ok, quoi, detail){ nb++; if(!ok) ko++; R.push((ok ? "  ok     " :
     const me = await prof.evaluate(() => SCN.mesEvaluations("abrial_julien", null, "3 ESSAI"));
     const me1 = me.filter(x => x.seance === sid)[0];
     verif(me1 && me1.etat === "bilan" && me1.note.n === 3, "Mes évaluations : la copie rendue, 3 / 3", me);
+    // le raccourci MJPC : un élève connecté au site sur cet appareil (mjpc_eleve) est reconnu, et entre sans code (« Tu es bien … ? »)
+    const rac = await ouvrir("?mode=eleve");
+    await rac.evaluate(() => { localStorage.setItem("mjpc_eleve", JSON.stringify({display:"CARRÉ Tom", classe:"3 ESSAI", ts:Date.now()})); ELV.choisirClasse("3 ESSAI"); }); await pause(200);
+    const sm = await rac.evaluate(() => ELV.sessionMJPC());
+    const r3 = await rac.evaluate(() => ELV.entrerSansCode("g", "carre_tom")), r4 = await rac.evaluate(() => ELV.entrerSansCode("d", "baudry_lea"));
+    verif(sm && sm.slug === "carre_tom" && sm.prenom === "Tom" && r3.ok && !r4.ok, "le raccourci MJPC : « Tu es bien Tom ? », il entre sans code ; un autre élève, non", {sm, r3, r4});
     // chez lui, sans séance : l'élève entre par son code sur une demi-tablette, puis voit sa moitié avec « 📊 Mes évaluations »
     const maison = await ouvrir("?mode=eleve");
     await maison.evaluate(() => ELV.choisirClasse("3 ESSAI")); await pause(300);

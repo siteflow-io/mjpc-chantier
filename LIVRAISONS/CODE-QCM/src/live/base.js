@@ -832,6 +832,16 @@ var ELV = (function(){
       });
     });
   };
+  /* Le raccourci MJPC (la 7.7.1, AppEleve et EleveLogin : lireSessionMJPC) : l'élève déjà connecté au site sur cet appareil n'a pas de code
+     à taper ; « 👤 1 élève » demande « Tu es bien Julien ? » (t-un-eleve), « Oui » l'entre. ELV.sessionMJPC() → {slug, nom, prenom} ou null. */
+  E.sessionMJPC = function(){
+    var s = null; try { s = typeof lireSessionMJPC === "function" ? lireSessionMJPC() : null; } catch(e){}
+    if(!s || s.is_prof) return null; var classe = LIVE.classeSlug || SCN.classe(); if(!classe) return null;
+    var cible = sanMJPC(s.nom || ""), roster = SCN.roster(classe);
+    var n = roster.filter(function(r){ return sanMJPC(r) === cible || sanMJPC(r.split(" ").reverse().join(" ")) === cible; })[0];
+    return n ? {slug:sanMJPC(n), nom:n, prenom:SCN.pre(sanMJPC(n))} : null;
+  };
+  E.entrerSansCode = function(cote, x){ var m = E.sessionMJPC(); if(!m || m.slug !== x) return Promise.resolve({ok:false, err:"Entre ton code personnel (4 chiffres)."}); return placer(cote, x); };
   // placer l'élève entré : sa tablette est celle des binômes ; l'autre moitié doit être son binôme (« rejoins … »)
   function placer(cote, x){
     var t = SCN.tabletteDe(x), id = sid();

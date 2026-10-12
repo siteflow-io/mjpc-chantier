@@ -33,6 +33,8 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
   const NOMS4 = ESSAI.map(n => n.replace(/ (.*)$/, " $1") + "").map((n, i) => ["ARNOUX Maël", "BESSON Lina", "CAMUS Yanis", "DELORME Rose", "EYMARD Paul", "FABRE Iris", "GIRARD Noé", "HAMON Léna", "IMBERT Sami", "JOLY Alix", "KLEIN Nora", "LEROUX Timéo"][i]).filter(Boolean);
   let C4 = null;
   const {B, srv, port} = await O.fauxHub(B => {
+    // l'évaluation d'essai porte le titre que lui donne le scénario de la maquette (« Évaluation d'essai — 3 questions »)
+    B.tree.qcm.evaluations.essai.titre = S.EV_ESSAI.titre;
     // la démo (qcm/evaluations/demo) : celle de la maquette, au format du prompt
     B.tree.qcm.evaluations.demo = {titre: S.DEMO.titre, mode: "strict", demo: true, questions: S.DEMO.questions.map(q => ({enonce: q.enonce, choix: q.choix, bonnes: q.bonnes, niveau: q.niveau, reflexion: q.reflexion, reponse: q.reponse, competences: []}))};
     C4 = O.ajouterClasse(B, "4 ESSAI", "4e", NOMS4, 3101);

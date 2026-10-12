@@ -27,7 +27,7 @@ async function releve(p){
 // « aux données près » : les noms d'élèves, les nombres, les heures, les dates deviennent des jetons
 function donneesPres(s, noms){
   let t = String(s || "");
-  for(const nm of (noms || [])){ const esc = nm.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); t = t.replace(new RegExp(esc, "g"), "«élève»"); }
+  for(const nm of (noms || [])){ const esc = nm.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); t = t.replace(new RegExp("(^|[^\\p{L}])" + esc + "(?![\\p{L}])", "giu"), "$1«élève»"); }
   return t.replace(/\b\d{1,2}\/\d{1,2}(\/\d{2,4})?\b/g, "«date»").replace(/\b\d{1,2}:\d{2}(:\d{2})?\b/g, "«heure»").replace(/\d+([,.]\d+)?/g, "#").replace(/\s+/g, " ").trim();
 }
 module.exports = { releve, donneesPres };

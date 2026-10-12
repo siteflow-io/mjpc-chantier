@@ -273,10 +273,22 @@ function TabletteC(){
   if(!ici.combien) return EcrCombien();
   if(ici.combien === 1){
     var p = ici.g || ici.d;
-    if(!p) return h("div", {className:"tablette seule seule-login"}, h("div", {className:"moitie g"}, h(LoginMoitie, {key:"lg", cote:"g"})));
+    if(!p) return h("div", {className:"tablette seule seule-login"}, h("div", {className:"moitie g"}, h(UnEleveH, {key:"lg"})));
     return h("div", {className:"tablette seule"}, h("div", {className:"moitie g"}, MoitieH(p, "g", null)));
   }
   return TabletteVue(ici.g, ici.d, true);
+}
+// « 👤 1 élève » : le raccourci MJPC de la 7.7.1 (t-un-eleve) : « Tu es bien … ? » ; « Oui » l'entre sans code, « Non » (ou personne de connecté) : le code
+function UnEleveH(){
+  var s = useState(false), non = s[0], setNon = s[1];
+  var m = !non && typeof ELV.sessionMJPC === "function" ? ELV.sessionMJPC() : null;
+  if(!m) return typeof LoginLive === "function" ? h(LoginLive, {key:"l1", cote:"g"}) : h(LoginMoitie, {key:"l1", cote:"g"});
+  function oui(){ var r = ELV.entrerSansCode("g", m.slug), fin = function(x){ if(x && x.ok === false){ setNon(true); return; } var o = {g:(x && (x.eleve || x.slug)) || m.slug}; iciMaj(o); };
+    if(r && typeof r.then === "function") r.then(fin, function(){ setNon(true); }); else fin(r); }
+  return h("div", {className:"eleve-page"}, DECO.map(function(x, i){ return h("span", {key:i, className:"deco"}, x); }),
+    h("div", {className:"eleve-card"}, h("h1", null, "Tu es bien " + m.prenom + " ?"),
+      h("div", {className:"combien"}, h("button", Object.assign({className:"btn btn-primary"}, marqueH("UN:oui:" + m.slug, oui)), "Oui"),
+        h("button", Object.assign({className:"btn btn-ghost"}, marqueH("UN:non:" + m.slug, function(){ setNon(true); })), "Non"))));
 }
 // une tablette, ses deux moitiés : l'élève de chacune à l'écran de la phase (interactif : la tablette elle-même ; sinon « 👁 » de la console)
 function TabletteVue(g, d, interactif){

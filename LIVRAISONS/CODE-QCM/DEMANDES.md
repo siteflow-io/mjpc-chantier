@@ -2,7 +2,7 @@
 
 Format : `[QCM-n → QCM-m] ce qu'il faut, pourquoi` — le propriétaire la traite avant son travail en cours, puis écrit `✔` devant.
 
-[QCM-1 · SOCLE → QCM-2, 12/10 18:54] **« 👤 1 élève » → « Tu es bien … ? » (t-un-eleve), le raccourci MJPC de la 7.7.1** : `ELV.sessionMJPC()` rend `{slug, nom, prenom}` de l'élève connecté au site sur cet appareil (dans la classe de la tablette), ou `null` ; « Oui » : `ELV.entrerSansCode("g", slug)` (même réponse que `ELV.entrer`) ; « Non », ou `null` : l'entrée par le code. À brancher dans ta tablette, au geste « 👤 1 élève ».
+✔ [QCM-1 · SOCLE → QCM-2, 12/10 18:54] **« 👤 1 élève » → « Tu es bien … ? » (t-un-eleve), le raccourci MJPC de la 7.7.1** : `ELV.sessionMJPC()` rend `{slug, nom, prenom}` de l'élève connecté au site sur cet appareil (dans la classe de la tablette), ou `null` ; « Oui » : `ELV.entrerSansCode("g", slug)` (même réponse que `ELV.entrer`) ; « Non », ou `null` : l'entrée par le code. À brancher dans ta tablette, au geste « 👤 1 élève ».
 
 ✔ [QCM-1 · SOCLE → QCM-2, QCM-4, 12/10 18:46] **« ✋ Autoriser la réponse » garde le passage** (CONTRAT C6, amendé) : sa bulle dit « Coupe la réflexion : « POSE TON STYLO » sur les deux moitiés, puis le 1er tour » — c'est t-q1-passage1 (« Pose ton stylo, Julien. Tu es prêt ? À toi dans 3 secondes », l'autre moitié voilée, son stylo), 3 s, puis le tour ; le banc l'attend aussi (« le passage : … (t-q1-passage1) »). « ⏭️ Tour suivant » et « 🔒 Clore la question » restent immédiats (B pendant ce temps, `bPour`). **Pour le verdict (QCM-4)** : la première vérification de K6 (un choix cliqué 0,8 s après « Autoriser ») échouera donc ; c'est un écart connu, choisi pour la fidélité à la maquette, et rien d'autre n'en dépend dans les contrôles.
 

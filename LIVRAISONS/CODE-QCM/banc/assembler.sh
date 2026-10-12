@@ -24,8 +24,14 @@ if [ -f "${1:-$L/evaluation-qcm.staging.html}" ]; then
   APP=${1:-$L/evaluation-qcm.staging.html}
   a=$(date +%s); APP_FILE="$APP" BANC="$BANC" timeout 900 node "$R/AUDITS/CONTROLES-QCM-APP/controles-app.js" "$O/controles.txt" > "$O/controles.log" 2>&1; rc=$?; b=$(date +%s)
   { echo; echo "── contrôles de la conscience ($((b-a)) s, code $rc)"; sed -n '1,4p' "$O/controles.txt" 2>/dev/null | sed 's/^/  /'; grep -c "ÉCHEC" "$O/controles.txt" 2>/dev/null | sed 's/^/  échecs : /'; } >> "$O/resume.txt"
-  a=$(date +%s); APP_FILE="$APP" BANC="$BANC" timeout 1260 node "$L/banc/banc.js" "$O" > "$O/banc.log" 2>&1; rb=$?; b=$(date +%s)
-  { echo; echo "── banc commun ($((b-a)) s, code $rb)"; sed -n '2p' "$O/banc.txt" 2>/dev/null | sed 's/^/  /'; } >> "$O/resume.txt"
+  # le banc commun et l'heure de demain, en même temps (deux navigateurs)
+  a=$(date +%s)
+  ( APP_FILE="$APP" BANC="$BANC" timeout 1260 node "$L/banc/banc.js" "$O" > "$O/banc.log" 2>&1; echo $? > "$O/.rb"; date +%s > "$O/.tb" ) &
+  ( APP_FILE="$APP" BANC="$BANC" timeout 1260 node "$L/banc/banc-demain.js" "$O" > "$O/demain.log" 2>&1; echo $? > "$O/.rd"; date +%s > "$O/.td" ) &
+  wait
+  { echo; echo "── banc commun ($(( $(cat "$O/.tb") - a )) s, code $(cat "$O/.rb"))"; sed -n '2p' "$O/banc.txt" 2>/dev/null | sed 's/^/  /';
+    echo; echo "── l'heure de demain ($(( $(cat "$O/.td") - a )) s, code $(cat "$O/.rd"))"; sed -n '2p' "$O/demain.txt" 2>/dev/null | sed 's/^/  /'; } >> "$O/resume.txt"
+  rm -f "$O"/.r? "$O"/.t?
   if [ -f "$O/releves-app.json" ]; then node "$L/banc/fidelite.js" "$O" > "$O/fidelite.log" 2>&1
     { echo; echo "── fidélité à la maquette"; sed -n '2p' "$O/fidelite.txt" | sed 's/^/  /'; } >> "$O/resume.txt"; fi
 fi

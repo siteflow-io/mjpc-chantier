@@ -20929,3 +20929,31 @@ Réponse mot pour mot :
 928. **Pour les annuler ou les déplacer**, dis-le-moi simplement.
 
 12/10/2026 19:19 MEMO
+
+---
+
+## TOUR 680 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (12/10, 19:57) Où est-ce qu'on en est?
+
+---
+
+## TOUR 680 — Claude (conscience n°12)
+
+Mesuré : `code-qcm` à `576e6a22` (19:55), 20 commits depuis 19:12 ; derniers commits : QCM-1 19:55, QCM-2 19:34, QCM-3 18:56, QCM-4 19:45 ; `DEFAUTS-OUVERTS.md` : 8 défauts, aucun rayé ; l'app assemblée dans ma copie (md5 `6988082a…`) : mes contrôles 30 vérifications, 0 échec, 107 s (`AUDITS/CONTROLES-QCM-APP/sorties/controles-app-sur-code-qcm-1955.txt`) ; `maquette-qcm` à `47fa3161` (19:15), une ligne de `src/c3-bulles.js` changée depuis `6fa8a9fe`, demandée à QCM-1 dans `DEMANDES.md` ; pas de banc final ni de section « Complément 4 » au README.
+
+Réponse mot pour mot :
+
+À jouer : rien · en cours chez l'exécutant : les quatre du code, et celui de la maquette (fin de l'étape C) · ouvert : tes 11 questions ; QCM-3 silencieux (point 931)
+
+929. **L'heure de classe tient à mes contrôles** : sur leur app assemblée à 19:55, 30 vérifications, 0 échec (le lancement, la tablette partagée, les deux tours, la correction, « Trouvée au dernier moment », la co-évaluation, le bilan et les notes).
+
+930. **Les défauts trouvés par QCM-4** : les huit de 18:10 et 18:40 sont encore tous ouverts sur sa liste. Il n'a pas rejoué tout son banc depuis : il le fait à l'assemblage de 20:00. Depuis 19:12, 20 sauvegardes : QCM-1 et QCM-2 corrigent et branchent l'heure ; QCM-4 a rendu son banc plus complet (12 écrans de plus atteints par le geste, les binômes formés comme dans la maquette).
+
+931. **QCM-3 (le soir et le reste) n'a rien poussé depuis 18:56**, plus d'une heure, alors que son mandat lui dit de pousser au moins toutes les heures. Je ne sais pas s'il travaille encore ou s'il s'est arrêté. Regarde sa session : s'il s'est arrêté, colle-moi ce qu'il dit ; s'il tourne, laisse-le.
+
+932. **L'exécutant de la maquette n'a pas fini** : à 19:15, son journal des défauts et sa lecture ; il lui reste son banc final et le README. Il a changé une ligne d'une infobulle (« 1 pense » au singulier) : j'ai demandé à QCM-1 de la reporter dans l'app.
+
+12/10/2026 20:01 MEMO

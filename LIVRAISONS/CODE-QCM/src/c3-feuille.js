@@ -36,7 +36,8 @@ function QdfFenetreC(o){
           onClick:function(){ basculer("aucun"); }}, h("span", null, "Sa feuille ne dit aucun de ces choix"), h("span", {className:"tg"}, o.lu === "aucun" ? "lu par " + o.voisin : ""))),
       h("div", {className:"checkin-actions"},
         h("button", {className:"btn btn-ghost", "data-va":o.fermer, title:"Ferme sans rien changer" + (o.alerte ? " : l'alerte reste ouverte." : ".")}, "Annuler"),
-        h("button", {className:"btn btn-primary", disabled:rien, "data-va":rien ? null : o.valider(code),
+        // (QCM-3) « Valider » agit sur place quand la fenêtre le demande (surValider : la base) ; sinon il mène à l'écran d'arrivée
+        h("button", {className:"btn btn-primary", disabled:rien, "data-va":rien || o.surValider ? null : o.valider(code), "data-local":o.surValider ? "1" : null, onClick:!rien && o.surValider ? function(){ o.surValider(sel); } : null,
           title:rien ? "Fermé tant que rien n'est coché : coche d'abord ce que dit la feuille " + deNom(o.p) + "." : "Applique ce que tu as coché : la question " + (o.qi + 1) + " " + deNom(o.p) + " se recalcule d'après sa feuille" + (o.alerte ? ", et l'alerte se ferme." : ".")}, "Valider")))));
 }
 // la co-évaluation de l'évaluation d'essai : Michel, question 1

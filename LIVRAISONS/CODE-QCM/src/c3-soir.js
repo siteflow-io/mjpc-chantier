@@ -333,3 +333,117 @@ function LueBoutonC(p){ useLues(); var lue = !!LUES.lues[p.cle];
 
 // (changement 6.4, relecteur n°275) l'en-tête d'une compétence du tableau : son libellé entier se lit au survol
 function EnteteComp(c){ return h("th", {key:c, className:"comp-col", title:"La compétence " + c + " : " + LIB_OFF[c] + ". Ses questions : " + compQuestions(c).map(function(i){ return "Q" + (i+1); }).join(", ") + "."}, "🧩 " + c, h("div", {className:"thq"}, COMP_COURT[c] + " · " + compQuestions(c).map(function(i){ return "Q" + (i+1); }).join(", "))); }
+
+/* ═══════════════ [QCM-3 · SOIR] La base, sous les écrans hors de l'heure (COMMUN §3.1) ═══════════════
+   Chaque donnée affichée est abonnée à sa source : un écran qui lit v3(chemin) est redessiné quand la base change (useV3),
+   sans toucher à une saisie en cours. Sans base (l'assemblage de la maquette), tout est vide. */
+var V3S = {val:{}, charge:{}, ecoutes:{}, abonnes:[], prevu:false};
+function v3db(){ try { if(typeof firebase !== "undefined" && firebase.apps && firebase.apps.length) return firebase.database(); } catch(e){} return null; }
+function v3Racine(){ return typeof DB_ROOT !== "undefined" && DB_ROOT ? DB_ROOT : "qcm"; }
+function v3Q(p){ return v3Racine() + (p ? "/" + p : ""); }
+function v3Avertir(){ if(V3S.prevu) return; V3S.prevu = true; setTimeout(function(){ V3S.prevu = false; V3S.abonnes.slice().forEach(function(f){ f(); }); }, 0); }
+function v3Ecouter(chemin){
+  if(V3S.ecoutes[chemin]) return; var db = v3db(); if(!db) return;
+  V3S.ecoutes[chemin] = true;
+  var ref = db.ref(chemin);
+  // la corbeille du site est commune aux apps : le QCM n'en lit que ses éléments
+  if(chemin === "corbeille") ref = ref.orderByKey().startAt("qcm-").endAt("qcm-");
+  ref.on("value", function(s){ V3S.val[chemin] = s.val(); V3S.charge[chemin] = true; v3Avertir(); }, function(){ V3S.charge[chemin] = true; v3Avertir(); });
+}
+function v3(chemin){ v3Ecouter(chemin); return V3S.val[chemin]; }
+function v3Pret(chemins){ return !v3db() || [].concat(chemins).every(function(c){ v3Ecouter(c); return !!V3S.charge[c]; }); }
+function useV3(){ var s = useState(0), set = s[1];
+  useEffect(function(){ var f = function(){ set(function(x){ return x + 1; }); }; V3S.abonnes.push(f); return function(){ V3S.abonnes = V3S.abonnes.filter(function(g){ return g !== f; }); }; }, []); }
+function v3Set(chemin, v){ var db = v3db(); if(!db) return Promise.resolve(); return db.ref(chemin).set(v === undefined ? null : v); }
+function v3Update(chemin, o){ var db = v3db(); if(!db) return Promise.resolve(); return db.ref(chemin).update(o); }
+function v3Sans(o){ return JSON.parse(JSON.stringify(o === undefined ? null : o)); }   // sans undefined : la base les refuse
+function v3Liste(x){ if(!x) return []; if(Array.isArray(x)) return x.filter(function(y){ return y != null; }); return Object.keys(x).sort(function(a, b){ return +a - +b; }).map(function(k){ return x[k]; }).filter(function(y){ return y != null; }); }
+
+/* ── Les lectures du QCM : évaluations, séances, classes, réglages, taxonomie, chapitres ── */
+function v3Evals(){ return v3(v3Q("evaluations")) || {}; }
+function v3Sessions(){ return v3(v3Q("sessions")) || {}; }
+function v3Classes(){ return v3("classes") || {}; }
+function v3Reglages(){ return v3(v3Q("settings")) || {}; }
+function v3Slug(s){ return typeof slugify === "function" ? slugify(s) : String(s || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_+|_+$/g, ""); }
+// les compétences du hub (taxonomie/competences : deux listes de groupes, chaque item {id, libelle, libelleEleve, actif}), trouvées par leur id
+function v3Competences(){
+  var t = v3("taxonomie/competences") || {}, o = {};
+  ["francaisC4", "transversales"].forEach(function(l){ v3Liste(t[l]).forEach(function(g){ v3Liste(g && g.items).forEach(function(it){ if(it && it.id) o[it.id] = {id:it.id, libelle:it.libelle, libelleEleve:it.libelleEleve, actif:it.actif !== false, groupe:g.libelle, liste:l}; }); }); });
+  return o;
+}
+function libOff(c){ var x = v3Competences()[c]; return (x && x.libelle) || (typeof LIB_OFF !== "undefined" && LIB_OFF[c]) || c; }
+function libEleve(c){ var x = v3Competences()[c]; return (x && x.libelleEleve) || (typeof LIB_ELEVE !== "undefined" && LIB_ELEVE[c]) || libOff(c); }
+function competenceValide(c){ var t = v3Competences(); if(!Object.keys(t).length) return typeof LIB_OFF !== "undefined" && !!LIB_OFF[c]; return !!(t[c] && t[c].actif); }
+function toutesCompetences(){ var t = v3Competences(), l = Object.keys(t).filter(function(c){ return t[c].actif; }); return l.length ? l : Object.keys(typeof LIB_OFF !== "undefined" ? LIB_OFF : {}); }
+
+/* ── Les chapitres : <niveau>-ch<n> ; ceux qui ont une fiche au hub (site/<niveau>/chapitres) proposent leurs compétences ;
+      un chapitre sans fiche est valide, et l'éditeur prend alors les 28 compétences (COMMUN §3.1) ── */
+function niveauDuChapitre(id){ var m = /^(\d)e-ch(\d+)$/.exec(id || ""); return m ? m[1] + "e" : null; }
+function numeroDuChapitre(id){ var m = /^(\d)e-ch(\d+)$/.exec(id || ""); return m ? +m[2] : null; }
+function ficheChapitre(id){
+  var niv = niveauDuChapitre(id), n = numeroDuChapitre(id); if(!niv) return null;
+  var l = v3Liste(v3("site/" + niv + "/chapitres")), f = l[n - 1];
+  if(f && (f.competencesMajeures || f.competencesMineures)) return {titre:f.title || f.titre || "", majeures:v3Liste(f.competencesMajeures), mineures:v3Liste(f.competencesMineures)};
+  if(id === "3e-ch1" && typeof CHAPITRE_3E !== "undefined") return {titre:CHAPITRE_3E.titre, majeures:CHAPITRE_3E.majeures, mineures:CHAPITRE_3E.mineures};
+  return null;
+}
+function chapitreVue(id){
+  if(!niveauDuChapitre(id)) return null;
+  var f = ficheChapitre(id), niv = niveauDuChapitre(id), n = numeroDuChapitre(id);
+  return {id:id, niveau:niv, numero:n, titre:f ? f.titre : "", fiche:!!f, majeures:f ? f.majeures : [], mineures:f ? f.mineures : [],
+    comps:f ? f.majeures.concat(f.mineures) : toutesCompetences(),
+    libelle:niv + " · Chapitre " + n + (f && f.titre ? " — " + f.titre : ""), court:niv + " · Ch. " + n + (f && f.titre ? " — " + f.titre : "")};
+}
+function chapitresConnus(plus){
+  var ids = ["3e-ch1"];
+  ["6e", "5e", "4e", "3e"].forEach(function(niv){ v3Liste(v3("site/" + niv + "/chapitres")).forEach(function(f, i){ if(f && (f.competencesMajeures || f.competencesMineures)) ids.push(niv + "-ch" + (i + 1)); }); });
+  var E = v3Evals(); Object.keys(E).forEach(function(k){ if(E[k] && niveauDuChapitre(E[k].chapitre)) ids.push(E[k].chapitre); });
+  [].concat(plus || []).forEach(function(c){ if(niveauDuChapitre(c)) ids.push(c); });
+  var vus = {}; return ids.filter(function(c){ if(vus[c]) return false; vus[c] = 1; return true; })
+    .sort(function(a, b){ return niveauDuChapitre(b).localeCompare(niveauDuChapitre(a)) || numeroDuChapitre(a) - numeroDuChapitre(b); }).map(chapitreVue);
+}
+
+/* ── Une évaluation de la base, telle que les écrans la lisent (la forme de la maquette) ── */
+function dateFr(ms){ if(!ms) return ""; var d = new Date(ms); return ("0" + d.getDate()).slice(-2) + "/" + ("0" + (d.getMonth() + 1)).slice(-2) + "/" + d.getFullYear(); }
+function heureFr(ms){ if(!ms) return ""; var d = new Date(ms); return ("0" + d.getHours()).slice(-2) + ":" + ("0" + d.getMinutes()).slice(-2); }
+function evalVue(id, b){
+  if(!b) return null;
+  var ch = chapitreVue(b.chapitre), qs = v3Liste(b.questions).map(function(q){
+    return {enonce:q.enonce || "", choix:v3Liste(q.choix).map(String), bonnes:v3Liste(q.bonnes).map(Number), niveau:q.niveau || "standard",
+      reflexion:q.reflexion == null ? null : +q.reflexion, reponse:q.reponse == null ? null : +q.reponse, competences:v3Liste(q.competences),
+      verifie:q.verifie || "", explication:q.explication || "", bonus:!!q.bonus, assumee:!!q.longueurAssumee}; });
+  var comps = []; qs.forEach(function(q){ q.competences.forEach(function(c){ if(comps.indexOf(c) < 0) comps.push(c); }); });
+  return {id:id, titre:b.titre || "", mode:b.mode || "strict", chapitre:ch ? ch.id : null, chap:ch ? ch.court : null, niveau:ch ? ch.niveau : null,
+    cree:dateFr(b.createdAt), createdAt:b.createdAt || 0, version:b.version || 1, competences:comps, questions:qs, demo:id === "demo" || !!b.demo, brut:b};
+}
+function evalsV(){ var E = v3Evals(); return Object.keys(E).filter(function(k){ return E[k] && k !== "demo" && !E[k].demo && !E[k].test; }).map(function(k){ return evalVue(k, E[k]); }); }
+function evalV(id){ if(!id) return null; var b = v3Evals()[id]; if(b) return evalVue(id, b); if(id === "demo") return demoV(); return null; }
+// la démo : celle de la base (qcm/evaluations/demo), sinon celle de la maquette ; aucune purge ne l'efface, et elle revient d'elle-même
+function demoV(){ var b = v3Evals().demo; return b ? evalVue("demo", b) : Object.assign({}, SCN.DEMO && SCN.DEMO.questions ? SCN.DEMO : (typeof DEMO !== "undefined" ? DEMO : {titre:"", questions:[]}), {id:"demo", demo:true}); }
+function demoBrute(){ var d = SCN.DEMO && SCN.DEMO.questions ? SCN.DEMO : DEMO; return {titre:d.titre, mode:"strict", demo:true, createdAt:0, questions:d.questions.map(function(q){ return {enonce:q.enonce, choix:q.choix, bonnes:q.bonnes, niveau:q.niveau, reflexion:q.reflexion, reponse:q.reponse}; })}; }
+function remettreDemo(){ if(!v3db() || !v3Pret(v3Q("evaluations")) || v3Evals().demo) return; v3Set(v3Q("evaluations/demo"), demoBrute()); }
+// l'évaluation au format de la base (le JSON du prompt), depuis la forme des écrans
+function evalBrute(e, ancienne){
+  var o = {titre:e.titre, chapitre:e.chapitre || null, mode:e.mode || "strict", questions:e.questions.map(function(q){
+    var x = {enonce:q.enonce, choix:q.choix, bonnes:q.bonnes, niveau:q.niveau};
+    if(q.reflexion != null) x.reflexion = q.reflexion; if(q.reponse != null) x.reponse = q.reponse;
+    if((q.competences || []).length) x.competences = q.competences; if(q.verifie) x.verifie = q.verifie; if(q.explication) x.explication = q.explication;
+    x.bonus = !!q.bonus; x.longueurAssumee = !!q.assumee; return x; }),
+    createdAt:ancienne && ancienne.createdAt ? ancienne.createdAt : Date.now(), updatedAt:Date.now(), version:ancienne && ancienne.version ? ancienne.version : 1};
+  return v3Sans(o);
+}
+
+/* ── La corbeille du site (comme mjpcInjecterAvecArchive de la 7.7.1) : gardé un an, restaurable ── */
+function mettreACorbeille(sorte, chemin, data, titre){
+  var ts = Date.now(), cle = "qcm-" + (sorte === "Séance" ? "seance" : sorte === "Évaluation" ? "evaluation" : "tout") + "-" + ts;
+  return v3Set("corbeille/" + cle, v3Sans({_meta:{motif:"corbeille-qcm", chemin:"/" + chemin, app:"evaluation-qcm", ts:ts, sorte:sorte, titre:titre}, data:data}))
+    .then(function(){ return v3Set(chemin, null); });
+}
+function corbeilleV(){ var c = v3("corbeille") || {}, an = Date.now() - 365 * 864e5;
+  return Object.keys(c).filter(function(k){ return /^qcm-/.test(k) && c[k] && c[k]._meta && (c[k]._meta.ts || 0) >= an; })
+    .map(function(k){ var m = c[k]._meta; return {cle:k, sorte:m.sorte || "Séance", titre:m.titre || m.chemin, quand:dateFr(m.ts) + " " + heureFr(m.ts), ts:m.ts, chemin:String(m.chemin || "").replace(/^\//, ""), data:c[k].data}; })
+    .sort(function(a, b){ return b.ts - a.ts; }); }
+function restaurerDeCorbeille(x){
+  if(x.sorte === "Tout"){ var d = x.data || {}; return Promise.all(Object.keys(d).map(function(k){ return v3Set(v3Q(k), d[k]); })).then(function(){ return v3Set("corbeille/" + x.cle, null); }); }
+  return v3Set(x.chemin, x.data).then(function(){ return v3Set("corbeille/" + x.cle, null); });
+}

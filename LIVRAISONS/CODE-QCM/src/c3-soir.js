@@ -9,7 +9,9 @@ function lireDeSeance(se, k){ if(se.id === "S08") return SCN.aLire(k).filter(fun
 function rendueAu(se, k){ return SCN.rendueAu(se.id, k) ? se.rendues : null; }
 
 /* ════════ Avant l'heure : les séances précédentes de la classe ════════ */
-function SessionsPrecedentes(){
+// (QCM-3) avec la base : celles de la classe choisie au lancement, et la séance à reprendre en tête ; sans base, celles du scénario
+function SessionsPrecedentes(){ return v3db() ? h(SessionsPrecedentesV) : SessionsPrecedentesM(); }
+function SessionsPrecedentesM(){
   var k = MO(), av = SCN.seancesAvant(k), prec = SCN.qcmPrecedent(k);
   var demo = av.filter(function(s){ return s.demo; })[0];
   var lignes = av.filter(function(s){ return !s.demo && !s.rattrapage; });
@@ -36,7 +38,8 @@ function texteDuree(ev, seul){
 }
 
 /* ── La carte de la séance à reprendre (« ⏸️ Finir à une autre heure », la séance sur papier) ── */
-function CarteReprise(papier){
+function CarteReprise(papier){ return v3db() ? h(CarteRepriseV) : CarteRepriseM(papier); }
+function CarteRepriseM(papier){
   var k = MO(), m = MOM(), se = SCN.seance(m.seance) || SCN.seance("S08"), pause = m.pause || {qi:m.qi || 0, tour:m.tour || 1};
   var etat = papier ? "feuilles ramassées · ta grille est remplie : " + SCN.presents(k).length + " feuilles saisies" : "en pause à la question " + (pause.qi + 1) + ", " + (pause.tour === 1 ? "1er" : "2e") + " tour · " + SCN.presents(k).length + " présents";
   var ou = papier ? "correction" : "question " + (pause.qi + 1) + ", " + (pause.tour === 1 ? "1er" : "2e") + " tour";
@@ -450,4 +453,47 @@ function corbeilleV(){ var c = v3("corbeille") || {}, an = Date.now() - 365 * 86
 function restaurerDeCorbeille(x){
   if(x.sorte === "Tout"){ var d = x.data || {}; return Promise.all(Object.keys(d).map(function(k){ return v3Set(v3Q(k), d[k]); })).then(function(){ return v3Set("corbeille/" + x.cle, null); }); }
   return v3Set(x.chemin, x.data).then(function(){ return v3Set("corbeille/" + x.cle, null); });
+}
+
+/* ── [QCM-3] Les séances précédentes de la classe, et la séance à reprendre, d'après la base ── */
+function classeDuLancement(){ var c = typeof LANCEMENT !== "undefined" && LANCEMENT.classe ? LANCEMENT.classe : SCN.LIVE && typeof SCN.classe === "function" ? SCN.classe() : null;
+  if(c) return c; var C = Object.keys(v3Classes()).filter(function(k){ return k.charAt(0) !== "_" && !(v3Classes()[k] || {}).archivee; }).sort(); return C[0] || null; }
+function memeClasse(se, c){ return !!c && (se.classeCle === c || se.classeSlug === c || v3Slug(se.classeCle) === v3Slug(c)); }
+function presentsCourt(se){ var n = se.presents.length; return n + " présent" + (n > 1 ? "s" : ""); }
+function qcmPrecedentV(c){ try { if(SCN.LIVE && typeof SCN.qcmPrecedent === "function"){ var q = SCN.qcmPrecedent(null, c); if(q) return q.id; } } catch(e){} 
+  var l = seancesV().filter(function(se){ return memeClasse(se, c) && se.terminee && !se.demo && !se.rattrapage && !se.test; }).sort(function(a, b){ return b.ms - a.ms; }); return l[0] ? l[0].id : null; }
+function SessionsPrecedentesV(){
+  useV3();
+  var c = classeDuLancement(), l = seancesV().filter(function(se){ return memeClasse(se, c) && se.terminee && !se.test; }).sort(function(a, b){ return b.ms - a.ms; });
+  var demo = l.filter(function(se){ return se.demo; })[0], lignes = l.filter(function(se){ return !se.demo && !se.rattrapage; }), prec = qcmPrecedentV(c), nomC = (l[0] && l[0].classe) || c || "";
+  return h(F, null, h(CarteRepriseV),
+    h("div", {className:"card"},
+      h("h2", null, "📚 Séances précédentes — " + nomC, InfoI("Les séances passées de la classe : chacune ouvre ses résultats. Celle qui sert de « QCM précédent » aux binômes est marquée. La démo ne laisse qu'une ligne.")),
+      h("div", {className:"results-eval-list"},
+        demo && h("div", {className:"results-eval-row demo-ligne"}, h("div", null, h("div", {className:"titre"}, "🎓 Démo faite le " + demo.date.slice(0, 5) + " · " + demo.classe + " · " + presentsCourt(demo)), InfoIB("🎓 Démo faite", "Rien ne compte : ni note, ni compétence ; elle ne sert jamais aux binômes."))),
+        lignes.map(function(se){
+          var lire = aLireV(se).filter(function(x){ return !x.lue; }).length, sq = "&seance=" + encodeURIComponent(se.id);
+          return h("div", {key:se.id, className:"results-eval-row", "data-seance":se.id},
+            h("div", null, h("div", {className:"titre"}, se.ev.titre),
+              h("div", {className:"meta"}, se.date + " " + se.heure + " · ✅ terminée · " + presentsTexteV(se) + (lire ? " · " + lire + " feuille" + (lire > 1 ? "s" : "") + " à lire" : "") + (se.rendue && se.rendueMs ? " · copies rendues le " + dateFr(se.rendueMs).slice(0, 5) : "")),
+              prec === se.id && h("div", {className:"meta", style:{color:"var(--violet)", fontWeight:700}}, "↳ c'est le QCM précédent : il sert aux binômes")),
+            h("div", {className:"row"}, h("button", {className:"btn btn-ghost btn-sm", "data-va":"c-rouvrir-seance" + sq, title:"Rouvre la séance du " + se.date.slice(0, 5) + ", là où elle s'était terminée, après une confirmation." + (se.rendue ? " Ses copies rendues sont masquées jusqu'au prochain « Rendre les copies »." : "")}, "🔓 Rouvrir"),
+              h("button", {className:"btn btn-ghost btn-sm", "data-va":"c-resultats" + sq, title:"Ouvre les résultats de la séance du " + se.date.slice(0, 5) + " : les notes d'après la feuille, les compétences, les feuilles à lire."}, "📊 Résultats")));
+        }))));
+}
+function CarteRepriseV(){
+  useV3();
+  var c = classeDuLancement(), se = seancesV().filter(function(x){ return memeClasse(x, c) && x.pause; }).sort(function(a, b){ return b.ms - a.ms; })[0];
+  if(!se) return null;
+  var r = (deroule(se.S) || {}).reprise || {}, papier = se.papier, qi = r.qi != null ? +r.qi : 0, tour = r.tour || 1;
+  var etat = papier ? "feuilles ramassées · ta grille est remplie : " + Object.keys(se.S.papier || {}).length + " feuilles saisies" : "en pause à la question " + (qi + 1) + ", " + (tour === 1 ? "1er" : "2e") + " tour · " + se.presents.length + " présents";
+  var ou = papier ? "correction" : "question " + (qi + 1) + ", " + (tour === 1 ? "1er" : "2e") + " tour";
+  return h("div", {className:"card reprise-carte"},
+    h("h2", null, "⏸️ Séance à reprendre — " + se.classe, InfoI("Une séance finie à une autre heure garde son état exact. La reprendre ouvre l'appel, avec les mêmes binômes.")),
+    h("div", {className:"results-eval-row"},
+      h("div", null, h("div", {className:"titre"}, papier ? "📄 " + se.ev.titre + " — sur papier" : se.ev.titre),
+        h("div", {className:"meta"}, se.date + " " + se.heure + " · " + etat),
+        h("div", {className:"meta", style:{color:"var(--violet)", fontWeight:700}}, "↳ pas encore « QCM précédent »", InfoIB("↳ pas encore « QCM précédent »", "Elle ne sert pas aux binômes tant qu'elle n'est pas terminée."))),
+      h("button", {className:"btn btn-primary", "data-va":"c-appel&seance=" + encodeURIComponent(se.id), title:papier ? "Reprend la séance pour la correction : l'appel, les binômes reprennent les tablettes, l'estimation, la seconde attestation, puis toutes les questions à la suite." : "Reprend la séance là où elle s'était arrêtée : l'appel, les mêmes binômes, puis le tour en cours recommence au début, voile compris."},
+        "▶️ Reprendre la séance du " + se.date.slice(0, 5) + " — " + ou)));
 }

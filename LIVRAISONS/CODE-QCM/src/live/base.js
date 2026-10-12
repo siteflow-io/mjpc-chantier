@@ -410,6 +410,8 @@ var SCN = (function(){
       cote:e.cote || null, pour:e.pour || null, ecartees:S.ecartees(sid), annulees:S.annulees(sid), temps:s.temps || {}, partis:{}, etape:e.ph};
     Object.keys(S.partis(sid)).forEach(function(x){ m.partis[x] = heureFr(S.partis(sid)[x]); });
     if(e.ph === "pause" && e.reprise){ m.pause = {qi:e.reprise.qi, tour:e.reprise.tour, ph:e.reprise.ph}; m.qi = e.reprise.qi; m.tour = e.reprise.tour; }
+    // une séance reprise à une autre heure, avant « ▶️ Reprendre » : la phase gelée qui recommencera ({ph, qi, tour})
+    if(e.reprise && e.ph !== "pause") m.reprise = {ph:e.reprise.ph, qi:e.reprise.qi, tour:e.reprise.tour};
     if(e.ph === "reponse" || e.ph === "rouvert"){ var cr = e.ph === "rouvert" ? null : S.coteDuTour(e.qi, e.tour, sid);
       m.nonRep = S.presents(k, sid).filter(function(x){ return (!cr || S.cote(x, sid) === cr) && !S.reponse(x, e.qi, sid) && (e.ph !== "rouvert" || x === e.pour); }); }
     if(e.ph === "close") m.sansRep = S.presents(k, sid).filter(function(x){ return !S.reponse(x, e.qi, sid); });
@@ -656,8 +658,14 @@ var ACT = (function(){
   A.relancerChrono = function(){ var id = sid(); if(!id) return Promise.resolve(); var maj = {}; maj[cheminS(id, "deroule/depuis")] = LIVE.maintenant(); return ecrireQCM(maj, "relancer"); };
   A.pause = function(){ var x = e(), id = sid(); if(!id || x.ph === "pause") return Promise.resolve();
     return poserDeroule(id, {ph:"pause", qi:x.qi, tour:x.tour, reprise:{ph:x.ph, qi:x.qi, tour:x.tour, cote:x.cote, duree:x.duree, reste:SCN.reste(x), pour:x.pour}}); };
-  A.reprendre = function(){ var x = e(), id = sid(); if(!id || x.ph !== "pause" || !x.reprise) return Promise.resolve(); var r = x.reprise;
-    return poserDeroule(id, {ph:r.ph, qi:r.qi, tour:r.tour, cote:r.cote, duree:r.reste != null ? r.reste : r.duree, pour:r.pour}); };
+  // « ▶️ Reprendre » : le tour gelé repart là où il en était. Une séance reprise à une autre heure (appel, entrée, puis « prêt ») : la phase
+  // gelée recommence au début (« le tour en cours recommence au début, voile compris ») — B ou le passage d'un tour : le tour lui-même
+  A.reprendre = function(){ var x = e(), id = sid(); if(!id || !x.reprise) return Promise.resolve(); var r = x.reprise;
+    if(x.ph === "pause" && !x.autreHeure) return poserDeroule(id, {ph:r.ph, qi:r.qi, tour:r.tour, cote:r.cote, duree:r.reste != null ? r.reste : r.duree, pour:r.pour});
+    if(["pret", "entree", "pause"].indexOf(x.ph) < 0) return Promise.resolve();
+    var ph = r.ph === "b" || r.ph === "passage" ? "reponse" : r.ph, t = r.qi != null ? SCN.tempsDe(r.qi) : {};
+    var duree = ph === "reflexion" ? t.reflexion : ph === "reponse" || ph === "lecture" || ph === "rouvert" ? t.reponse : null;
+    return poserDeroule(id, {ph:ph, qi:r.qi, tour:r.tour, cote:r.cote || (r.qi != null && r.tour ? SCN.coteDuTour(r.qi, r.tour) : null), duree:duree, pour:r.pour}); };
   function liste(nom, qi, ajouter){ var id = sid(); var l = (nom === "ecartees" ? SCN.ecartees() : SCN.annulees()).filter(function(x){ return x !== qi; }); if(ajouter) l.push(qi);
     var maj = {}; maj[cheminS(id, nom)] = l.length ? l.sort(function(a, b){ return a - b; }) : null; return ecrireQCM(maj, nom); }
   A.ecarter = function(qi){ return sid() ? liste("ecartees", qi, true) : Promise.resolve(); };
@@ -876,7 +884,7 @@ var MOTEUR = (function(){
   };
   // l'entrée finie : quand tous les présents ont fini l'attestation, la console passe à « prêts »
   M.entree = function(){ var sid = SCN.sid(), e = SCN.etat(sid); if(!sid || !e || e.ph !== "entree") return; var c = SCN.compteurs(null, sid);
-    if(c.attestations && c.attestations[1] > 0 && c.attestations[0] === c.attestations[1]) poserDeroule(sid, {ph:"pret"}); };
+    if(c.attestations && c.attestations[1] > 0 && c.attestations[0] === c.attestations[1]) poserDeroule(sid, {ph:"pret", reprise:e.reprise || null}); };
   // la seconde attestation finie : la lecture de la première question commence
   M.att2 = function(){ var sid = SCN.sid(), e = SCN.etat(sid); if(!sid || !e || e.ph !== "att2") return; var c = SCN.compteurs(null, sid);
     if(c.prets && c.prets[1] > 0 && c.prets[0] === c.prets[1]) ACT.lireQuestion(null); };

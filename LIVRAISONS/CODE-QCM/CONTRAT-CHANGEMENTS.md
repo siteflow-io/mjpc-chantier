@@ -40,7 +40,7 @@ Accordé tel que QCM-3 l'a demandé (DEMANDES, 17:45) : pour n'importe quelle s�
 
 `ACT.rendreCopies(sid)`, `ACT.masquerCopies(sid)`, `ACT.retirerAutonomie(slug, "soir", sid)`, `ACT.rendreAutonomie(slug, sid)`, `ACT.lireFeuille(aLireId, choix, sid)` existent et prennent la séance en dernier argument. `SCN.LIVE` vaut `true` ; `SCN.resultat(sid, slug)` rend la forme de la maquette. L'identifiant d'une ligne « à lire » (`aLire/<id>`) est `<slug>_<qi>_<sorte>` (`sorte` : `b`, `aucun`, `co`), celui que `SCN.aLireSeance(sid)` donne à chaque ligne (`id`).
 
-## C6 — Les gestes de Paul coupent l'attente : `deroule.bPour` (QCM-1, 12/10 18:35)
+## C6 — Les gestes de Paul coupent l'attente : `deroule.bPour` (QCM-1, 12/10 18:27)
 
 Sur la lecture que QCM-2 a proposée (DEMANDES, 18:20), conforme aux bulles de la maquette et aux contrôles de la conscience : « ✋ Autoriser la réponse » ouvre tout de suite le 1er tour (son écran dit déjà « …, pose ton stylo. Sélectionne maintenant ta réponse. ») ; « ⏭️ Tour suivant » ouvre tout de suite le 2e tour, et « 🔒 Clore la question » clôt tout de suite la question, **pendant que la moitié qui vient de répondre dit B** jusqu'au bout de son temps de B : `deroule.bPour = {cote, qi, tour, jusqua: ms}`. Sans geste de Paul, au bout du temps, la séance enchaîne comme les moments de la maquette : B (`ph:"b"`), puis le passage (`ph:"passage"`), puis le tour.
 

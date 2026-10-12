@@ -52,6 +52,8 @@ function verif(ok, quoi, detail){ nb++; if(!ok) ko++; R.push((ok ? "  ok     " :
     verif(s1.deroule.ph === "entree" && Object.values(s1.absents || {}).includes("yvon_adam"), "appelFini : absents, phase « entree »", s1.deroule);
     const seuls = Object.values(s1.places).filter(p => p.seul);
     verif(seuls.length === 0, "Adam absent : son binôme est réapparié avec l'élève seul (25 élèves, 24 présents : aucune moitié vide)", s1.places);
+    // finir à une autre heure, puis reprendre : l'appel, l'entrée, « prêt », et la phase gelée recommence au début
+    // (ici : avant toute question, la séance reprend en « entree » ; la reprise d'un tour se vérifie plus bas, à Q2)
     // une fenêtre ouverte sur place se ferme par Échap ou « Annuler » sans jamais quitter la page (ni l'historique du navigateur)
     const url0 = prof.url();
     await prof.evaluate(() => navOuvrir("c-depart")); await pause(300); await prof.keyboard.press("Escape"); await pause(300);
@@ -152,7 +154,7 @@ function verif(ok, quoi, detail){ nb++; if(!ok) ko++; R.push((ok ? "  ok     " :
     await prof.evaluate(() => ACT.remettre(2)); verif(!base("sessions/" + sid + "/annulees"), "↩️ Remettre : plus d'annulée");
     // l'estimation, la seconde attestation, la correction : l'ordre des plus ratées (Q2 d'abord : seul Julien juste à Q2 parmi ceux qui ont répondu ? on ne le sait que pour eux)
     await prof.evaluate(() => ACT.lancerEstimation());
-    await tab.evaluate(() => { ELV.estimer("vert", "abrial_julien"); ELV.estimer("orange", "baudry_lea"); });
+    await tab.evaluate(() => { ELV.estimer("vert", "abrial_julien"); ELV.estimer("orange", "baudry_lea"); }); await pause(200);
     verif(base("sessions/" + sid + "/autoevals/abrial_julien") === "vert", "l'estimation, au chemin de la 7.7.1 (autoevals)");
     await prof.evaluate(() => ACT.lancerCorrection());
     const oc = Object.values(base("sessions/" + sid + "/ordreCorr") || {});
@@ -232,6 +234,21 @@ function verif(ok, quoi, detail){ nb++; if(!ok) ko++; R.push((ok ? "  ok     " :
     await p2.evaluate(v => ACT.terminer(v), vieille); await pause(300);
     verif(!base("sessionActive/3 ANCIENNE") && base("sessionActive/3 ESSAI") === neuve, "« 🛑 Terminer » la séance d'hier, depuis la liste : celle de ce matin continue", base("sessionActive"));
     await p2.evaluate(v => ACT.terminer(v), neuve); await pause(200);
+    // Q2 gelée au 2e tour, finie à une autre heure : la séance quitte sessionActive ; reprise, appel, puis « ▶️ Reprendre » : le 2e tour recommence au début
+    const sid3 = await p2.evaluate(() => ACT.lancerSeance("3 ESSAI", "essai", {})); await p2.evaluate(() => ACT.appelFini(["yvon_adam"])); await pause(300);
+    await p2.evaluate(() => ACT.lancerQuestion(1)); await p2.evaluate(() => ACT.autoriserReponse()); await p2.evaluate(() => ACT.tourSuivant()); await pause(200);
+    await p2.evaluate(() => ACT.finirAutreHeure()); await pause(300);
+    const g1 = base("sessions/" + sid3 + "/deroule");
+    verif(g1.ph === "pause" && g1.autreHeure && g1.reprise.ph === "reponse" && g1.reprise.tour === 2 && !base("sessionActive/3 ESSAI"), "⏸️ Finir à une autre heure : la séance gelée (Q2, 2e tour), hors de sessionActive", g1);
+    await p2.evaluate(s => ACT.lancerSeance(null, null, {reprise:s}), sid3); await pause(300);
+    await p2.evaluate(() => ACT.appelFini(["yvon_adam"])); await pause(1500);
+    const g2 = base("sessions/" + sid3 + "/deroule");
+    verif(base("sessionActive/3 ESSAI") === sid3 && (g2.ph === "pret" || g2.ph === "entree") && g2.reprise && g2.reprise.tour === 2, "la reprise : l'appel, puis « prêt », la phase gelée gardée (reprise)", g2);
+    await p2.evaluate(() => ACT.reprendre()); await pause(200);
+    const g3 = base("sessions/" + sid3 + "/deroule");
+    verif(g3.ph === "reponse" && g3.qi === 1 && g3.tour === 2 && g3.cote === g1.reprise.cote && g3.duree === 3, "« ▶️ Reprendre » : le 2e tour de Q2 recommence au début (la même moitié, 3 s)", {g3, avant: g1.reprise});
+    await p2.evaluate(() => ACT.cloreQuestion()); await pause(200);
+    await p2.evaluate(s => ACT.terminer(s), sid3);
     // la séance suivante : les binômes d'après ce QCM précédent (classement de la note)
     const bp = await prof.evaluate(() => SCN.binomesProposes("3 ESSAI"));
     verif(bp[0][0] === "abrial_julien" && bp.length === 13, "les binômes suivants se forment sur le classement du QCM précédent (Julien, 3 / 3, en tête)", bp.slice(0, 3));

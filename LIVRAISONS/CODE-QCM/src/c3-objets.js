@@ -46,7 +46,7 @@ function tabletteN(n){
 }
 function ScVoirTablette(){
   var m = MOM(), n = +paramHash("tab") || 1, pa = PAIRES[n - 1] || PAIRES[0];
-  return Fenetre(Pilot(etatPilot()), "📱 Tablette " + n + " · " + pa[0] + (pa[1] ? " · " + pa[1] : "") + " — en direct", "Ce que montrent ses deux moitiés, maintenant : " + ouEnEst(m) + ".",
+  return Fenetre(Pilot(etatPilot()), "📱 Tablette " + n + " · " + pa[0] + (pa[1] ? " · " + pa[1] : "") + " — en direct", "Ce que montrent ses deux moitiés, maintenant : " + ouH(m) + ".",
     h("div", {className:"voir-tab fige-choix"}, h("div", {className:"voir-tab-in"}, tabletteN(n))),
     [h("button", {key:1, className:"btn btn-ghost", "data-va":"c-q1-tour1"}, "✕ Fermer")], "c-q1-tour1", 900);
 }
@@ -175,6 +175,9 @@ function ScPurger(){
 /* ═══════════════ QCM-2 · HEURE — la console de l'heure, en direct ═══════════════
    L'écran du moment, d'après la phase de la séance (de l'appel au bilan), et ses fenêtres, ouvertes sur place (ouvrirFen) :
    les mêmes que celles de la maquette, leurs mots, leurs boutons ; chaque bouton qui agit appelle l'action de ACT, puis la ferme. */
+// où en est la séance, dans les mots de la reprise (CarteRepriseH) : après les questions, la phase, pas « avant la question 1 »
+function ouH(m){ var ph = m.ph === "pause" && m.pause ? m.pause.ph : m.ph;
+  return ph === "lecture" || ph === "revele" ? "correction" : ph === "estim" || ph === "att2" ? "estimation" : ph === "coeval" ? "co-évaluation" : ph === "bilan" ? "bilan" : ouEnEst(m.ph === "pause" && m.pause ? Object.assign({}, m, m.pause) : m); }
 function EcranConsoleHeure(){ return h(ConsoleHeureC); }
 function ConsoleHeureC(){
   var fe = useFen();
@@ -205,7 +208,7 @@ function annulerH(titre){ return boutonH("annuler", "btn btn-ghost", "Annuler", 
 var FENETRES_H = {
   coevalFeuille:function(a, fond){ return FenCoevalFeuille(a, fond); },
   terminer:function(arg, fond){ var m = momH();
-    return Fenetre(fond, "🛑 Terminer la séance ?", CLASSE + " — " + EV.titre + " · " + ouEnEst(m),
+    return Fenetre(fond, "🛑 Terminer la séance ?", CLASSE + " — " + EV.titre + " · " + ouH(m),
       h(F, null, h("p", null, "La séance est close, et l'archive s'écrit avec les notes telles qu'elles sont, quelle que soit la phase."),
         h("p", null, "Les tablettes oublient leurs élèves et reviennent à « Combien êtes-vous sur cette tablette ? ».")),
       [annulerH(), boutonH("ok", "btn btn-rouge", "🛑 Terminer la séance", fait("terminer"), "Termine la séance, tout de suite : l'archive s'écrit, les tablettes oublient leurs élèves.")], null); },
@@ -245,13 +248,13 @@ var FENETRES_H = {
       h(F, null, h("p", null, "Elle a été posée, mais elle ne comptera pas : elle sort du total de la note et des compétences. Ses réponses restent gardées.")),
       [boutonH("f", "btn btn-ghost", "Fermer", fermerFen), boutonH("ok", "btn btn-rouge", "⚠️ Annuler la question " + (qi + 1), fait("annuler", [qi]))], null); },
   finir:function(arg, fond){ var m = momH(), se = SCN.seance(m.seance) || m;
-    return Fenetre(fond, "⏸️ Finir à une autre heure ?", CLASSE + " — " + EV.titre + " · " + ouEnEst(m),
+    return Fenetre(fond, "⏸️ Finir à une autre heure ?", CLASSE + " — " + EV.titre + " · " + ouH(m),
       h(F, null,
         h("p", null, "La séance garde son état exact : la question, le tour, les lectures, les notes provisoires."),
-        h("p", null, "À l'heure suivante, « 🎯 Pilotage classe » propose « ▶️ Reprendre la séance du " + jjmm(se.date || m.date) + " — " + ouEnEst(m) + " ».")),
+        h("p", null, "À l'heure suivante, « 🎯 Pilotage classe » propose « ▶️ Reprendre la séance du " + jjmm(se.date || m.date) + " — " + ouH(m) + " ».")),
       [boutonH("a", "btn btn-ghost", "Annuler", fermerFen, "Ne change rien : la séance continue."), boutonH("ok", "btn btn-or", "⏸️ Finir à une autre heure", fait("finirAutreHeure"), "Met la séance en pause, telle qu'elle est, jusqu'à une heure suivante.")], null); },
   voirTablette:function(n, fond){ var pa = PAIRES[n - 1] || [null, null], m = momH();
-    return Fenetre(fond, "📱 Tablette " + n + " · " + [pa[0], pa[1]].filter(Boolean).map(affH).join(" · ") + " — en direct", "Ce que montrent ses deux moitiés, maintenant : " + ouEnEst(m) + ".",
+    return Fenetre(fond, "📱 Tablette " + n + " · " + [pa[0], pa[1]].filter(Boolean).map(affH).join(" · ") + " — en direct", "Ce que montrent ses deux moitiés, maintenant : " + ouH(m) + ".",
       h("div", {className:"voir-tab fige-choix"}, h("div", {className:"voir-tab-in"}, h(FigerZone, null, TabletteVue(pa[0], pa[1])))),
       [boutonH("f", "btn btn-ghost", "✕ Fermer", fermerFen)], null, 900); },
   // la fiche d'un élève (un clic sur son nom) : son point d'autonomie, son départ

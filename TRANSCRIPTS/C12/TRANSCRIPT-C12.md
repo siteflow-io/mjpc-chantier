@@ -20455,3 +20455,29 @@ Réponse mot pour mot :
 846. **Une seule question, pour cadrer la tranche** : demain, quelle classe, quelle évaluation, à quelle heure, sur tablettes ou sur papier, et jusqu'où (les questions seulement, ou aussi la correction et la co-évaluation) ?
 
 12/10/2026 13:30 MEMO
+
+---
+
+## TOUR 667 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (12/10, 13:32) Pourquoi le code du site entier?
+
+---
+
+## TOUR 667 — Claude (conscience n°12)
+
+Mesuré dans `evaluation-qcm.html` (7.7.1) le nombre de mentions de chaque mécanisme de la maquette (Check-in 7, « Autoriser la réponse » 7, « Révéler » 4, « Lancer la correction » 8, estimation 14, Mode test 16 ; 0 pour « Tour suivant », binôme, « Trouvée au dernier moment », co-évaluation, point d'autonomie, « Finir à une autre heure », « Écarter », « Rendre les copies », « PDF notes », « Oui, la même chose » ; « tablette » 4, aucune tablette partagée).
+
+Réponse mot pour mot :
+
+847. **« Le site entier », c'est faux : je me suis mal exprimé.** C'est une seule app, le QCM (`evaluation-qcm.html`). MJPC n'y entre que pour cinq choses (point 748).
+
+848. **Mais dans cette app, la maquette change presque toute l'heure de classe.** Mesuré dans la version en ligne : l'appel, la réflexion puis la réponse, « Révéler », la correction, l'estimation, « Mes évaluations », la vue tableau, le QR et le mode test existent déjà. Sont nouveaux : la tablette partagée en deux moitiés, le second tour, B, la lecture de la feuille du voisin, « Trouvée au dernier moment », la co-évaluation et son alerte, le point d'autonomie, les deux attestations, écarter ou annuler une question, rouvrir, finir à une autre heure, et le téléphone comme télécommande. Le soir aussi : la lecture des feuilles, les résultats avec les compétences, le PDF, rendre les copies.
+
+849. **Donc même la tranche de l'heure (point 844) porte l'essentiel du nouveau.** Je ne sais pas si un exécutant la finit d'ici demain matin : la maquette de toute l'app lui avait pris trois heures pour sa première version, puis quatre compléments. C'est pour ça que le secours (point 845) compte.
+
+850. **Ma question du point 846 reste** : demain, quelle classe, quelle évaluation, à quelle heure, sur tablettes ou sur papier, et jusqu'où. Avec ta réponse, je découpe au plus juste : si demain s'arrête aux questions, la tranche est bien plus petite.
+
+12/10/2026 13:33 MEMO

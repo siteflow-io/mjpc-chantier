@@ -685,8 +685,17 @@ var ACT = (function(){
     var rv = SCN.corrigeesAu().filter(function(q){ return q !== x.qi; }).concat([x.qi]), plus = {revelees:rv}, ev = SCN.ev();
     SCN.presents().forEach(function(y){ if(SCN.trouveeDe(y) != null) return; var lu = SCN.lecture(y, x.qi), rep = SCN.reponse(y, x.qi), q = ev.questions[x.qi];
       if(rep && SCN.juste(rep.choix, q) && lu && lu.choix !== "aucun" && !SCN.juste(lu.choix, q)) plus["trouvee/" + y] = x.qi; });
-    return poserDeroule(id, {ph:"revele", qi:x.qi}, plus); };
+    return poserDeroule(id, {ph:"revele", qi:x.qi}, plus).then(function(){ return A.syncALire(id); }); };
   A.questionSuivante = function(){ return A.lireQuestion(null); };
+  /* « À lire sur les feuilles » s'écrit dans la base (COMMUN §3.1 : aLire/<id> = {eleveSlug, qi, sorte, txt, lue, corrige}) dès qu'une ligne naît :
+     à la révélation (B contre la lecture, « aucun de ces choix », rien de dit), à la co-évaluation (« 🤔 »), à la décision « soir » ;
+     une ligne déjà écrite garde ce que le soir y a mis (lue, corrige) ; l'identifiant : <slug>_<qi>_<sorte> */
+  A.syncALire = function(sidX){ var id = sidX || sid(); if(!id) return Promise.resolve(); var s = SCN.sess(id); if(!s) return Promise.resolve();
+    var stock = s.aLire || {}, maj = {}, n = 0;
+    SCN.aLireSeance(id).forEach(function(l){ var st = stock[l.id];
+      if(!st) { maj[cheminS(id, "aLire/" + l.id)] = {eleveSlug:l.eleveSlug, qi:l.qi, sorte:l.sorte, txt:l.txt, lue:false, corrige:false}; n++; }
+      else if(st.txt !== l.txt && !st.lue){ maj[cheminS(id, "aLire/" + l.id + "/txt")] = l.txt; n++; } });
+    return n ? ecrireQCM(maj, "aLire") : Promise.resolve(); };
   A.retirerAutonomie = function(x, quand, sidX){ var id = sidX || sid(); if(!id) return Promise.resolve(); var maj = {}; maj[cheminS(id, "autonomie/" + x)] = {retire:true, ms:LIVE.maintenant(), quand:quand || "heure"}; return ecrireQCM(maj, "retirerAutonomie"); };
   A.rendreAutonomie = function(x, sidX){ var id = sidX || sid(); if(!id) return Promise.resolve(); var maj = {}; maj[cheminS(id, "autonomie/" + x)] = null; return ecrireQCM(maj, "rendreAutonomie"); };
   A.ouvrirCoeval = function(){ var id = sid(); return id ? poserDeroule(id, {ph:"coeval"}) : Promise.resolve(); };
@@ -703,17 +712,18 @@ var ACT = (function(){
     if(dec.eleve == null && (dec.decision === "auteur" || dec.decision === "feuille")) dec.eleve = (al.eleves || [])[0];
     maj[cheminS(id, "alertes/" + alerte + "/tranche")] = dec;
     if(dec.choix && dec.eleve != null && (dec.decision === "feuille" || dec.decision === "auteur" || !dec.decision)) maj[cheminS(id, "lectures/" + al.qi + "/" + dec.eleve)] = {choix:dec.choix, par:"prof", ms:now};
-    return ecrireQCM(maj, "trancher"); };
+    return ecrireQCM(maj, "trancher").then(function(){ return A.syncALire(id); }); };
   // « ← Question précédente » de la correction : la question d'avant dans l'ordre de la correction, révélée
   A.questionPrecedente = function(){ var x = e(), id = sid(); if(!id || x.qi == null) return Promise.resolve(); var o = SCN.ordreCorr(), i = o.indexOf(x.qi);
     if(i <= 0) return Promise.resolve(); return poserDeroule(id, {ph:"revele", qi:o[i - 1]}); };
-  A.afficherBilan = function(){ var id = sid(); return id ? poserDeroule(id, {ph:"bilan"}, {bilanAffiche:LIVE.maintenant()}) : Promise.resolve(); };
+  A.afficherBilan = function(){ var id = sid(); return id ? poserDeroule(id, {ph:"bilan"}, {bilanAffiche:LIVE.maintenant()}).then(function(){ return A.syncALire(id); }) : Promise.resolve(); };
   A.finirAutreHeure = function(){ var x = e(), id = sid(); if(!id) return Promise.resolve(); var s = SCN.sess();
     var rep = x.ph === "pause" ? x.reprise : {ph:x.ph, qi:x.qi, tour:x.tour, cote:x.cote, duree:x.duree, reste:x.duree, pour:x.pour}, maj = {};
     maj["/sessionActive/" + s.classeSlug] = null;
     return poserDeroule(id, {ph:"pause", qi:x.qi, tour:x.tour, reprise:rep, autreHeure:LIVE.maintenant()}).then(function(){ return ecrireQCM(maj, "finirAutreHeure"); }); };
   // terminer : l'archive s'écrit avec les notes telles qu'elles sont ; les tablettes oublient leurs élèves ; la démo s'efface
   A.terminer = function(sidX){ var id = sidX || sid(); if(!id) return Promise.resolve(); var s = SCN.sess(id), maj = {}, now = LIVE.maintenant();
+    A.syncALire(id);
     maj[cheminS(id, "etat")] = "terminee"; maj[cheminS(id, "finLe")] = now;
     if(!s.evalSnapshot && s.evalId !== "demo"){ var ev = SCN.evalParId(s.evalId); if(ev) maj[cheminS(id, "evalSnapshot")] = construireSnapshot(ev); }
     maj["/sessionActive/" + s.classeSlug] = null;
@@ -829,7 +839,7 @@ var ELV = (function(){
   E.coeval = function(statut, qi, ecrit, x){ x = qui(x); var id = sid(); if(!x || !id) return Promise.resolve();
     var maj = {}, now = LIVE.maintenant(); maj[cheminS(id, "coeval/" + x)] = {statut:statut, qi:qi == null ? null : qi, ecrit:ecrit == null ? null : ecrit, ms:now};
     if(statut === "mal" && qi != null){ var aid = "a_" + x + "_" + qi; maj[cheminS(id, "alertes/" + aid)] = {qi:qi, eleves:[x, SCN.voisinDe(x)].filter(Boolean), ms:now, ecrit:ecrit == null ? null : ecrit, lu:(SCN.lecture(x, qi) || {}).choix || null}; }
-    return ecrireQCM(maj, "coeval"); };
+    return ecrireQCM(maj, "coeval").then(function(){ if(statut === "peut" && typeof ACT !== "undefined") return ACT.syncALire(id); }); };
   E.sortir = function(cote){ delete E.cotes[cote]; if(!E.cotes.g && !E.cotes.d){ E.tab = null; E.n = null; } garder(); };
   return E;
 })();

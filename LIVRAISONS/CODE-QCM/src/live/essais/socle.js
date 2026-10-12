@@ -199,7 +199,9 @@ function verif(ok, quoi, detail){ nb++; if(!ok) ko++; R.push((ok ? "  ok     " :
     // sa feuille dit Venise, sa tablette Rome : c'est sa question « Trouvée au dernier moment » (la seule de l'évaluation)
     verif(nL2.st[0] === "t" && nL2.n === 1, "l'alerte tranchée « la feuille dit Venise » : Q1 de Léa, feuille fausse et tablette juste, devient « Trouvée au dernier moment »", nL2);
     const lignes = await prof.evaluate(() => SCN.aLire());
-    verif(Array.isArray(lignes), "« À lire sur les feuilles » se calcule", lignes.slice(0, 3));
+    await pause(300);
+    const stock = base("sessions/" + sid + "/aLire") || {};
+    verif(Array.isArray(lignes) && lignes.every(l => stock[l.id] && stock[l.id].txt === l.txt && stock[l.id].eleveSlug === l.eleveSlug), "« À lire sur les feuilles » : chaque ligne est dans la base (aLire/<id>)", {lignes: lignes.map(l => l.id), stock: Object.keys(stock)});
     await prof.evaluate(() => ACT.retirerAutonomie("foucher_hugo", "heure"));
     verif(await prof.evaluate(() => SCN.autonomie("foucher_hugo").retire), "⛔ le point d'autonomie de Hugo");
     await prof.evaluate(() => ACT.afficherBilan());

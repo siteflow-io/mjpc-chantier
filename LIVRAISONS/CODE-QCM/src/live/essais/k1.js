@@ -33,6 +33,14 @@ const pause = ms => new Promise(r => setTimeout(r, ms));
   console.log("  ", (await txt()).slice(0, 300)); console.log("   base :", JSON.stringify(srv.store.get("qcm/sessionActive")));
   console.log("3 · Lancer la séance (appel) :", await clic(/Lancer la séance/)); await pause(1200);
   console.log("  ", (await txt()).slice(0, 300)); console.log("   base :", JSON.stringify(srv.store.get("qcm/sessionActive")), JSON.stringify((Object.values(srv.store.get("qcm/sessions") || {})[0] || {}).deroule));
+  // (option ETAPES=1) la question 1 menue jusqu'à « close » par ACT, puis les boutons de la console à chaque phase
+  if (process.env.ETAPES) {
+    const bt = async () => (await p.evaluate(() => [...document.querySelectorAll("button")].filter(b => b.getBoundingClientRect().width > 0).map(b => (b.disabled ? "⊘" : "") + b.textContent.trim().slice(0, 40)))).join(" | ");
+    await p.evaluate(() => ACT.lancerQuestion(0)); await pause(800); console.log("reflexion :", (await bt()).slice(0, 900));
+    await p.evaluate(() => ACT.autoriserReponse()); await pause(3500); console.log("tour 1 :", (await bt()).slice(0, 900));
+    await p.evaluate(() => ACT.tourSuivant()); await pause(9000); console.log("tour 2 :", (await bt()).slice(0, 900));
+    await p.evaluate(() => ACT.cloreQuestion()); await pause(6000); console.log("close :", JSON.stringify(await p.evaluate(() => SCN.etat())), "\n  ", (await bt()).slice(0, 1200));
+  }
   console.log("erreurs :\n  " + err.slice(0, 12).join("\n  "));
   await nav.close(); await srv.close(); process.exit(0);
 })().catch(e => { console.error(e); process.exit(1); });

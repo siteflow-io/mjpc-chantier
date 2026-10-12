@@ -275,8 +275,8 @@ var SCN = (function(){
     ev.questions.forEach(function(q, qi){ var c = pap ? (pap[qi] ? (Array.isArray(pap[qi]) ? pap[qi] : Object.values(pap[qi])).map(Number) : []) : ((S.reponse(x, qi, s.id) || {}).choix || null);
       if(c == null){ st.push("f"); pts.push(0); return; }
       if(juste(c, q)){ st.push("j"); pts.push(1); } else { st.push("f"); pts.push(ev.mode === "partiel" ? partiel(c, q) : 0); } });
-    var n = pts.reduce(function(a, b){ return a + b; }, 0), total = ev.questions.length, sur20 = total ? n * 20 / total : 0, comp = {};
-    ev.questions.forEach(function(q, qi){ (q.competences || []).forEach(function(c){ comp[c] = comp[c] || {n:0, max:0}; comp[c].max++; comp[c].n += pts[qi]; }); });
+    var n = pts.reduce(function(a, b){ return a + b; }, 0), total = ev.questions.filter(function(q){ return !q.bonus; }).length, sur20 = total ? Math.min(20, n * 20 / total) : 0, comp = {};
+    ev.questions.forEach(function(q, qi){ (q.competences || []).forEach(function(c){ comp[c] = comp[c] || {n:0, max:0}; if(!q.bonus) comp[c].max++; comp[c].n += pts[qi]; }); });
     return {p:x, st:st, pts:pts, n:n, total:total, complet:true, sur20:sur20, maitrise:S.maitriseDe(Math.round(sur20 * 10) / 10), comp:comp, corrigees:[], annulees:[], ecartees:[], trouvee:null, ancienne:true};
   }
   S.note = function(x, k, sid){
@@ -298,11 +298,12 @@ var SCN = (function(){
       // en mode partiel, une fraction du point par bonne case, autant de retiré par mauvaise, plancher 0 (cadrage, 288 à 293)
       st.push("f"); pts.push(ev.mode === "partiel" ? partiel(lu.choix, q) : 0);
     });
+    // la question bonus (prompt de création : "bonus": true) compte dans les points gagnés, pas dans le total ; la note ne dépasse pas 20
     var compte = ev.questions.map(function(q, i){ return i; }).filter(function(i){ return an.indexOf(i) < 0 && ec.indexOf(i) < 0 && st[i] !== "x"; });
-    var n = compte.reduce(function(a, i){ return a + (pts[i] || 0); }, 0), total = compte.length;
+    var n = compte.reduce(function(a, i){ return a + (pts[i] || 0); }, 0), total = compte.filter(function(i){ return !ev.questions[i].bonus; }).length;
     var complet = compte.every(function(i){ return pts[i] !== null; });
-    var sur20 = total ? n * 20 / total : 0, comp = {};
-    ev.questions.forEach(function(q, qi){ if(compte.indexOf(qi) < 0) return; (q.competences || []).forEach(function(c){ comp[c] = comp[c] || {n:0, max:0}; comp[c].max++; comp[c].n += (pts[qi] || 0); }); });
+    var sur20 = total ? Math.min(20, n * 20 / total) : 0, comp = {};
+    ev.questions.forEach(function(q, qi){ if(compte.indexOf(qi) < 0) return; (q.competences || []).forEach(function(c){ comp[c] = comp[c] || {n:0, max:0}; if(!q.bonus) comp[c].max++; comp[c].n += (pts[qi] || 0); }); });
     var corrigees = Object.keys((s.aLire) || {}).map(function(id){ return s.aLire[id]; }).filter(function(a){ return a && a.eleveSlug === x && a.corrige; }).map(function(a){ return Number(a.qi); });
     return {p:x, st:st, pts:pts, n:n, total:total, complet:complet, sur20:sur20, maitrise:S.maitriseDe(Math.round(sur20 * 10) / 10), comp:comp, corrigees:corrigees, annulees:an, ecartees:ec, trouvee:tr};
   };

@@ -232,7 +232,7 @@ function EcrReponse(e, qi, ordre, sel, chrono, ev){
   var long = q.choix.some(function(c){ return c.length > 40; });
   return Page(badgeDe(e), (ev || EV).titre, h("div", {className:"eleve-q-zone"},
     h("div", {className:"eleve-q-header"},
-      h("span", {className:"eleve-q-num"}, "Question " + (qi+1) + " / " + (ev || EV).questions.length),
+      h("span", {className:"eleve-q-num"}, "Question " + numQH(qi, ev).n + " / " + numQH(qi, ev).N),
       h("span", {className:"eleve-q-pastille", style:{background:NIV[q.niveau].color, color:q.niveau === "facile" ? "#5C4500" : "#fff"}}, NIV[q.niveau].label),
       h("span", {className:"eleve-q-points-badge", title:"Nombre de points que vaut cette question"}, "1 pt")),
     h("div", {className:"eleve-q-enonce"}, q.enonce),

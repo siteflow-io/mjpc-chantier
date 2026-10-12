@@ -179,6 +179,7 @@ async function scene(id, p, appareil){ if(!p) return; try { RELEVES[id] = Object
   const cerr = {}; for(const p of A.pages) for(const t of p.__cerr || []) (cerr[t] = cerr[t] || []).push(p.__nom);
   for(const t of Object.keys(cerr)) J.v(false, /c-(seances|resultats|fiche|evals|collage|reglages|sauvegarde)|e-mes|x627|x632|Soir|Evals/.test(t) ? H3 : /Ecran|écran (c|t|p|b)-/.test(t) ? H2 : H1, "erreur écrite par l'app dans " + cerr[t].length + " page(s) (" + cerr[t].slice(0, 4).join(", ") + ")", t);
   await A.fermer(); await srv.close();
+  fs.writeFileSync(path.join(SORTIE, "phases-branches.txt"), srv.phases.join("\n") + "\n");
   const duree = Math.round((Date.now() - J.t0) / 1000);
   fs.writeFileSync(path.join(SORTIE, "releves-branches.json"), JSON.stringify(RELEVES));
   const lignes = ["Les gestes rares de l'heure (QCM-4 · BANC) — " + (process.env.APP_FILE || "?") + " — " + new Date().toISOString(),

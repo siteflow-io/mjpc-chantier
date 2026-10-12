@@ -168,6 +168,7 @@ const choix = (qi, c) => { const Q = EV4.questions[qi]; if(c === "j") return Q.b
   const cerr = {}; for(const p of A.pages) for(const t of p.__cerr || []) (cerr[t] = cerr[t] || []).push(p.__nom);
   for(const t of Object.keys(cerr)) J.v(false, /c-(seances|resultats|fiche|evals|collage|reglages|sauvegarde)|e-mes|x627|x632|Soir|Evals/.test(t) ? H3 : /Ecran|écran (c|t|p|b)-/.test(t) ? H2 : H1, "erreur écrite par l'app dans " + cerr[t].length + " page(s) (" + cerr[t].slice(0, 4).join(", ") + ")", t);
   await A.fermer(); await srv.close();
+  fs.writeFileSync(path.join(SORTIE, "phases-demain.txt"), srv.phases.join("\n") + "\n");
   const duree = Math.round((Date.now() - J.t0) / 1000);
   const lignes = ["L'heure de demain (QCM-4 · BANC) — 4 ESSAI, l'évaluation de 4e collée, 11 questions — " + (process.env.APP_FILE || "?") + " — " + new Date().toISOString(),
     "Durée : " + duree + " s (" + Math.floor(duree / 60) + " min " + (duree % 60) + " s) · vérifications : " + J.verifs.length + " · échecs : " + J.echecs.length, ""];

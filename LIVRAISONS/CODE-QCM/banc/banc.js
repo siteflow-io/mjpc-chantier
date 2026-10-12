@@ -22,6 +22,10 @@ async function scene(id, p, appareil){
   try { RELEVES[id] = Object.assign({appareil: appareil || p.__nom, t: Math.round((Date.now() - J.t0) / 1000)}, await releve(p));
     await photo(p, path.join(SORTIE, "captures", String(++nCapt).padStart(3, "0") + "-" + id + "-" + (appareil || p.__nom) + ".png")); } catch(e){}
 }
+// une fenêtre restée ouverte : Paul la ferme (« Annuler », « Fermer », Échap) ; le banc le note
+async function fermerFenetres(p){ for(let k = 0; k < 3; k++){ const ouverte = await p.evaluate(() => [...document.querySelectorAll(".checkin-overlay, .modal-overlay, .modal, [role=dialog]")].some(e => e.getBoundingClientRect().width > 0)).catch(() => false);
+  if(!ouverte) return; J.secours("une fenêtre restée ouverte sur la console, fermée comme Paul la fermerait"); if(!(await cliquer(p, /^Annuler$|^Fermer$|^✕ Fermer$|^✕$/))) await p.keyboard.press("Escape"); await pause(300); } }
+async function attendreBase(f, ms){ const fin = Date.now() + ms; while(Date.now() < fin){ try { if(f()) return true; } catch(e){} await pause(150); } try { return !!f(); } catch(e){ return false; } }
 function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de 19 minutes atteint"); }
 
 (async () => {
@@ -109,8 +113,8 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
     let vus = 0; const tP = await texte(prof);
     for(const n of ESSAI) if(n !== "YVON Adam" && new RegExp(esc(n)).test(tP)) vus++;
     J.v(vus === 24, H2, "les 24 élèves entrés se voient sur la console, sans rechargement", vus + " / 24 nommés");
-    const entres = Object.keys(sess().s.presence || srv.store.get("qcm/presence/3 ESSAI") || {}).length;
-    J.v(entres >= 24, H1, "les 24 entrées sont dans la base (présence)", entres + " présents");
+    const entres = Object.keys(sess().s.entres || sess().s.presence || srv.store.get("qcm/presence/3 ESSAI") || {}).length;
+    J.v(entres >= 24, H1, "les 24 entrées sont dans la base (entres/<eleve>, ou presence de la 7.7.1)", entres + " entrés");
     
     await scene("t-attest-1", tabJM, "tablette");
 
@@ -130,6 +134,7 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
       tropLong();
       J.section("1." + (5 + qi) + " Question " + (qi + 1));
       const Q = EV.questions[qi], lab = Q.choix;
+      await fermerFenetres(prof);
       J.v(await cliquer(prof, new RegExp("Lancer Q" + (qi + 1) + "\\b")), H2, "« ▶️ Lancer Q" + (qi + 1) + " » se clique");
       await pause(700);
       J.v(etat().qi === qi && /reflexion/.test(etat().ph || ""), H1, "Q" + (qi + 1) + " : la base passe en réflexion (deroule.ph = reflexion, deroule.qi = " + qi + ")", JSON.stringify(etat()));
@@ -138,49 +143,57 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
       J.v(await attendre(tel, new RegExp("Q ?" + (qi + 1) + "|Question " + (qi + 1), "i"), 6000), H2, "le téléphone suit Q" + (qi + 1), (await texte(tel)).slice(0, 200));
       if(qi === 0) J.v(new RegExp(esc(Q.enonce)).test(await zoneTexte(tabJM, "g")) && (await choixOuverts(tabJM, "g", lab)).length === 0 && !new RegExp(">?" + lab.map(esc).join("|")).test(await zoneTexte(tabJM, "g")), H2, "réflexion : l'énoncé sans les choix (t-q1-reflexion)", (await zoneTexte(tabJM, "g")).slice(0, 200));
       if(qi === 0){ await scene("t-q1-reflexion", tabJM, "tablette"); await scene("c-q1-reflexion", prof, "console"); }
-      // la saisie de la console tient pendant que les tablettes répondent (règle du 04/10)
-      let garde = false;
-      if(qi === 0) garde = await prof.evaluate(() => { const f = [...document.querySelectorAll("input[type=number], input[type=text], input:not([type])")].find(x => x.getBoundingClientRect().width > 0 && !x.disabled && !x.readOnly); if(!f) return false; f.setAttribute("data-garde", "1"); return true; });
-      if(garde){ await prof.click("[data-garde='1']"); await prof.keyboard.press("End"); await prof.keyboard.type("7"); }
       await cliquer(prof, /Autoriser la réponse/); await pause(500);
       const premier = (sess().s.premier || {})[qi] || etat().cote;
-      J.v(premier === S.premierCote(qi) || premier === (S.premierCote(qi) === "g" ? "g" : "d"), H1, "Q" + (qi + 1) + " : la moitié qui commence est celle du scénario (" + S.premierCote(qi) + ") — premier/<qi>", JSON.stringify({premier, etat: etat()}));
-      // les deux tours : sur chaque tablette, la moitié dont les choix sont ouverts répond
+      J.v(premier === S.premierCote(qi), H1, "Q" + (qi + 1) + " : la moitié qui commence est celle du scénario (" + S.premierCote(qi) + ") — premier/<qi>", JSON.stringify({premier, etat: etat()}));
+      // les deux tours, au rythme de l'app (deroule) : le passage, la réponse, B ; « ⏭️ Tour suivant » quand tous ont répondu au 1er tour de Q1
       for(const tour of [1, 2]){
         tropLong();
-        await pause(1000);    // le passage : « À toi dans 3 secondes »
-        if(qi === 0) await scene(tour === 1 ? "t-q1-passage1" : "t-q1-passage2", tabJM, "tablette");
-        if(qi === 0 && tour === 1) J.v(/Pose ton stylo|À toi dans/.test(await texte(tabJM)), H2, "le passage : « Pose ton stylo, … À toi dans 3 secondes » (t-q1-passage1)", (await texte(tabJM)).slice(0, 200));
-        await pause(2600);
-        if(qi === 0 && tour === 1){ await scene("t-q1-tour1", tabJM, "tablette"); }
-        let repondus = 0, attendus = 0;
-        await Promise.all(Object.entries(tabs).map(async ([n, p]) => { const t = TABS.find(x => x.n === n);
-          for(const [cote, sl] of cotesDe(t)){
-            if(qi === 1 && tour === 2 && sl === "chevallier_theo") continue;       // Théo ne répond pas à Q2 (c-q2-close)
-            const ouverts = await choixOuverts(p, cote, lab); if(!ouverts.length) continue;
-            attendus++;
-            for(const c of choixDe(sl, qi)) await cliquer(p, new RegExp("^" + esc(lab[c]) + "$"), cote, {apres: 120});
-            repondus++;
-          } }));
-        J.v(repondus >= 11, H2, "Q" + (qi + 1) + ", " + tour + (tour === 1 ? "er" : "e") + " tour : sur chaque tablette, une seule moitié a ses choix ouverts, et répond", repondus + " moitiés ont répondu");
-        await pause(600);
+        if(qi === 0){ await attendreBase(() => etat().ph === "passage" && etat().tour === tour, 6000); await pause(400);
+          await scene(tour === 1 ? "t-q1-passage1" : "t-q1-passage2", tabJM, "tablette");
+          if(tour === 1) J.v(/Pose ton stylo|À toi dans/.test(await texte(tabJM)), H2, "le passage : « Pose ton stylo, … À toi dans 3 secondes » (t-q1-passage1)", (await texte(tabJM)).slice(0, 200)); }
+        J.v(await attendreBase(() => etat().ph === "reponse" && etat().tour === tour, 10000), H1, "Q" + (qi + 1) + ", tour " + tour + " : la base passe en réponse (deroule.ph = reponse, tour " + tour + ")", JSON.stringify(etat()));
+        await pause(500);
+        if(qi === 0 && tour === 1) await scene("t-q1-tour1", tabJM, "tablette");
+        // la saisie de la console tient pendant que les 12 tablettes répondent (règle du 04/10) : un champ de temps, tapé puis remis
+        let garde = false;
+        if(qi === 0 && tour === 1){ garde = await prof.evaluate(() => { const f = [...document.querySelectorAll("input[type=number], input[type=text], input:not([type])")].filter(x => x.getBoundingClientRect().width > 0 && !x.disabled && !x.readOnly).pop(); if(!f) return false; f.setAttribute("data-garde", "1"); return true; });
+          if(garde){ await prof.click("[data-garde='1']"); await prof.keyboard.press("End"); await prof.keyboard.type("7"); } }
+        let repondus = 0; const ontRepondu = new Set();
+        for(let essai = 0; essai < 3; essai++){
+          await Promise.all(Object.entries(tabs).map(async ([n, p]) => { const t = TABS.find(x => x.n === n);
+            for(const [cote, sl] of cotesDe(t)){
+              if(ontRepondu.has(sl) || (qi === 1 && tour === 2 && sl === "chevallier_theo")) continue;       // Théo ne répond pas à Q2 (c-q2-close)
+              const ouverts = await choixOuverts(p, cote, lab); if(!ouverts.length) continue;
+              for(const c of choixDe(sl, qi)) await cliquer(p, new RegExp("^" + esc(lab[c]) + "$"), cote, {apres: 120});
+              ontRepondu.add(sl); repondus++;
+            } }));
+          if(repondus >= (qi === 1 && tour === 2 ? 11 : 12)) break; await pause(800);
+        }
+        const main = etat().cote || (tour === 1 ? S.premierCote(qi) : (S.premierCote(qi) === "g" ? "d" : "g"));
+        const sansMain = TABS.map(t => t[main] || t.g || t.d).filter(x => x && !ontRepondu.has(x) && !(qi === 1 && tour === 2 && x === "chevallier_theo"));
+        J.v(repondus === (qi === 1 && tour === 2 ? 11 : 12), H2, "Q" + (qi + 1) + ", " + tour + (tour === 1 ? "er" : "e") + " tour : sur chaque tablette, la moitié qui a la main a ses choix ouverts, et répond", repondus + " moitiés ont répondu ; la main sans choix ouverts : " + sansMain.join(", "));
+        await pause(500);
         if(qi === 0 && tour === 1){
           await scene("c-q1-tour1", prof, "console"); await scene("p-reponse", tel, "telephone"); await scene("b-reponse", tableau, "tableau");
           if(garde){ const st = await prof.evaluate(() => { const f = document.querySelector("[data-garde='1']"); return f ? {focus: document.activeElement === f, v: f.value} : null; });
-            J.v(!!st && st.focus && /7$/.test(st.v), H1, "un champ de la console garde sa valeur et le curseur pendant que 12 tablettes répondent (règle du 04/10)", JSON.stringify(st)); }
-          const nRep = Object.keys((sess().s.reponses || {})[0] || {}).length;
-          J.v(nRep >= 11, H1, "Q1, 1er tour : les réponses sont dans la base (reponses/0/<eleve>, avec tour et ms)", nRep);
-          const rj = ((sess().s.reponses || {})[0] || {})["abrial_julien"] || ((sess().s.reponses || {})[0] || {})["duvernay_michel"];
-          J.v(!!rj && rj.tour === 1 && rj.ms !== undefined, H1, "une réponse porte tour et ms (contrat §3.1)", JSON.stringify(rj));
+            J.v(!!st && st.focus && /7$/.test(st.v), H2, "un champ de la console garde sa valeur et le curseur pendant que 12 tablettes répondent (règle du 04/10)", JSON.stringify(st));
+            await prof.keyboard.press("Backspace"); await prof.keyboard.press("Tab"); }
+          const r0 = (sess().s.reponses || {})[0] || {};
+          J.v(Object.keys(r0).length >= 11, H1, "Q1, 1er tour : les réponses sont dans la base (reponses/0/<eleve>)", Object.keys(r0).length);
+          const rj = Object.values(r0)[0];
+          J.v(!!rj && rj.tour === 1 && rj.ms !== undefined && rj.choix && typeof rj.choix === "object", H1, "une réponse a la forme de la 7.7.1, plus tour et ms (contrat §3.1)", JSON.stringify(rj));
         }
         if(qi === 2 && tour === 1) await scene("t-q3-tour1", tabJM, "tablette");
         if(qi === 2 && tour === 2) await scene("t-q3-tour2", tabJM, "tablette");
         if(qi === 0 && tour === 2) { await scene("t-q1-tour2", tabJM, "tablette"); await scene("c-q1-tour2", prof, "console"); }
         if(qi === 1){ await scene(tour === 1 ? "t-q2-tour1" : "t-q2-tour2", tabJM, "tablette"); if(tour === 2) await scene("c-q2-tour2", prof, "console"); }
-        // B : son temps fini, chacun dit si sa feuille dit la même chose que son clic (on attend la fin du temps de réponse)
-        const fin = Date.now() + ((Q.reponse || 15) + 6) * 1000; let bDits = 0;
-        const bFaits = new Set();
-        while(Date.now() < fin && bFaits.size < repondus){
+        if(qi === 0 && tour === 1){ J.v(await cliquer(prof, /Tour suivant/), H2, "tous ont répondu : « ⏭️ Tour suivant » se clique (c-q1-tour1)");
+          J.v(await attendreBase(() => etat().ph === "b" && etat().tour === 1, 4000), H1, "« ⏭️ Tour suivant » finit la réponse du 1er tour : vient B (deroule.ph = b, tour 1)", JSON.stringify(etat())); }
+        // B : son temps fini, chacun dit si sa feuille dit la même chose que son clic
+        J.v(await attendreBase(() => etat().ph === "b" && etat().tour === tour, ((Q.reponse || 15) + 4) * 1000), H1, "Q" + (qi + 1) + ", tour " + tour + " : le temps fini, la base passe à B (deroule.ph = b)", JSON.stringify(etat()));
+        let bDits = 0; const bFaits = new Set();
+        while(etat().ph === "b" && etat().tour === tour && bFaits.size < repondus){
           await Promise.all(Object.entries(tabs).map(async ([n, p]) => { const t = TABS.find(x => x.n === n);
             for(const [cote, sl] of cotesDe(t)){ if(bFaits.has(sl)) continue;
               const z = await zoneTexte(p, cote); if(!/Oui, la même chose/.test(z)) continue;
@@ -189,16 +202,15 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
               if(dit === "rien") continue;
               if(await cliquer(p, dit === "oui" ? /^Oui, la même chose$/ : /^Non, autre chose$/, cote)) bDits++;
             } }));
-          await pause(700);
+          await pause(300);
         }
-        J.v(repondus > 0 && bDits >= Math.min(repondus, 11) - 1, H2, "Q" + (qi + 1) + ", tour " + tour + " : B (« Oui, la même chose » / « Non, autre chose ») paraît, son temps fini, et se dit", bDits + " B dits pour " + repondus + " réponses");
-        if(tour === 1){ J.v(await cliquer(prof, /Tour suivant/), H2, "« ⏭️ Tour suivant » se clique"); await pause(400);
-          J.v(etat().tour === 2 || etat().tour === "2", H1, "la base passe au 2e tour (etat.tour = 2, etat.cote = l'autre moitié)", JSON.stringify(etat())); }
+        J.v(repondus > 0 && bDits >= repondus - 2, H2, "Q" + (qi + 1) + ", tour " + tour + " : B (« Oui, la même chose » / « Non, autre chose ») paraît à ceux qui ont répondu, et se dit", bDits + " B dits pour " + repondus + " réponses");
       }
+      // après B du 2e tour, la question se clôt d'elle-même ; sinon, « 🔒 Clore la question »
+      if(!(await attendreBase(() => etat().ph === "close" && etat().qi === qi, 9000))){ J.v(await cliquer(prof, /Clore la question/), H2, "« 🔒 Clore la question » se clique"); await pause(600); }
       const nb = (sess().s.b || {})[qi] || {};
-      J.v(Object.keys(nb).length >= 20, H1, "Q" + (qi + 1) + " : les B sont dans la base (b/<qi>/<eleve> = oui | non)", Object.keys(nb).length);
-      J.v(await cliquer(prof, /Clore la question/), H2, "« 🔒 Clore la question » se clique"); await pause(600);
-      J.v(/close/.test(etat().ph || ""), H1, "la base : etat.ph = close", JSON.stringify(etat()));
+      J.v(Object.keys(nb).length >= 20, H1, "Q" + (qi + 1) + " : les B des deux tours sont dans la base (b/<qi>/<eleve> = oui | non)", Object.keys(nb).length);
+      J.v(etat().ph === "close" && etat().qi === qi, H1, "la base : deroule.ph = close", JSON.stringify(etat()));
       if(qi === 0){ await scene("t-q1-attente", tabJM, "tablette"); await scene("c-q1-close", prof, "console");
         J.v(/Attends la prochaine question/.test(await texte(tabJM)), H2, "les deux tours finis : « Attends la prochaine question » (t-q1-attente)", (await texte(tabJM)).slice(0, 160)); }
       if(qi === 1){
@@ -210,22 +222,29 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
         await scene("c-rouvrir-un", prof, "console");
         const r2 = await cliquer(prof, /Rouvrir pour Théo/);
         J.v(r1 && r2, H2, "« 🔓 Rouvrir pour un élève » → « 🔓 Rouvrir pour Théo »", (await texte(prof)).slice(0, 200));
-        await pause(1500);
-        J.v(etat().pour === "chevallier_theo" || /rouvert/.test(etat().ph || ""), H1, "la base : la question rouverte pour Théo seul (etat.ph = rouvert, etat.pour)", JSON.stringify(etat()));
+        J.v(await attendreBase(() => etat().pour === "chevallier_theo", 5000), H1, "la base : la question rouverte pour Théo seul (deroule.pour = chevallier_theo)", JSON.stringify(etat()));
+        J.v(JSON.stringify(sess().s.rouverts || {}).includes("chevallier_theo"), H1, "la base : rouverts/1 = chevallier_theo (contrat C3 : une fois par question)", JSON.stringify(sess().s.rouverts));
         const tt = tabs[tl.n], ct = tl.g === "chevallier_theo" ? "g" : "d";
+        await attendreBase(() => etat().ph === "reponse" || etat().ph === "rouvert", 8000); await pause(400);
         await scene("t-rouvrir-un", tt, "tablette");
-        let fait = false; for(let k = 0; k < 10 && !fait; k++){ if((await choixOuverts(tt, ct, lab)).length){ for(const c of choixDe("chevallier_theo", 1)) await cliquer(tt, new RegExp("^" + esc(lab[c]) + "$"), ct); fait = true; } else await pause(500); }
+        let fait = false; for(let k = 0; k < 16 && !fait; k++){ if((await choixOuverts(tt, ct, lab)).length){ for(const c of choixDe("chevallier_theo", 1)) await cliquer(tt, new RegExp("^" + esc(lab[c]) + "$"), ct); fait = true; } else await pause(500); }
         J.v(fait, H2, "la moitié de Théo rouverte : ses choix s'ouvrent, il répond (t-rouvrir-un)");
         J.v((await choixOuverts(tt, ct === "g" ? "d" : "g", lab)).length === 0, H2, "Lou, à côté, porte le voile : ses choix restent fermés");
-        await pause((EV.questions[1].reponse || 20) * 1000 + 1500);
-        await cliquer(tt, /^Oui, la même chose$/, ct);
-        await cliquer(prof, /Clore la question/); await pause(500);
+        J.v(Object.keys(((sess().s.reponses || {})[1]) || {}).includes("chevallier_theo"), H1, "la réponse de Théo à Q2 est dans la base", JSON.stringify(Object.keys(((sess().s.reponses || {})[1]) || {})));
+        if(await attendreBase(() => etat().ph === "b", (EV.questions[1].reponse + 4) * 1000)){ for(let k = 0; k < 10 && !(await cliquer(tt, /^Oui, la même chose$/, ct)); k++) await pause(300); }
+        if(!(await attendreBase(() => etat().ph === "close", 9000))) await cliquer(prof, /Clore la question/);
+        await pause(600);
+        const tf = await texte(prof);
+        J.v(!/Rouvrir pour un élève — Q2/.test(tf), H2, "après « 🔓 Rouvrir pour Théo », la fenêtre se ferme : la console revient à la question close (c-rouvrir-un → c-q2-close)", (tf.match(/Rouvrir pour un élève — Q2[\s\S]{0,200}/) || [""])[0]);
+        J.v(!/ABRIAL Julien\s*tablette \d+, moitié/.test(tf), H2, "« Rouvrir pour un élève » ne liste que ceux qui n'ont pas répondu (Julien a répondu à Q2)", (tf.match(/Seuls les élèves[\s\S]{0,200}/) || [""])[0]);
+        await fermerFenetres(prof);
       }
     }
     await scene("c-q3-close", prof, "console");
     J.v(/Dernière question close/.test(await texte(prof)), H2, "« ✅ Dernière question close — lance l'autoévaluation » (c-q3-close)", (await texte(prof)).slice(0, 200));
 
     J.section("1.8 L'estimation, la seconde attestation");
+    await fermerFenetres(prof);
     J.v(await cliquer(prof, /Lancer l'autoévaluation/), H2, "« 📊 Lancer l'autoévaluation » se clique"); await pause(800);
     J.v(/estim/.test(etat().ph || ""), H1, "la base : etat.ph = estim", JSON.stringify(etat()));
     await scene("t-estim", tabJM, "tablette"); await scene("c-estim", prof, "console");
@@ -300,6 +319,7 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
     }
 
     J.section("1.10 La co-évaluation, l'alerte, le bilan");
+    await fermerFenetres(prof);
     J.v(await cliquer(prof, /Ouvrir la co-évaluation/), H2, "« 🤝 Ouvrir la co-évaluation, puis leur bilan »"); await pause(900);
     J.v(/coeval/.test(etat().ph || ""), H1, "la base : etat.ph = coeval", JSON.stringify(etat()));
     await scene("t-coeval", tabJM, "tablette");
@@ -502,8 +522,10 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
   const cerr = {}; for(const p of A.pages) for(const t of p.__cerr || []) (cerr[t] = cerr[t] || []).push(p.__nom);
   for(const t of Object.keys(cerr)) J.v(false, /c-(seances|resultats|fiche|evals|collage|reglages|sauvegarde)|e-mes|x627|x632|Soir|Evals/.test(t) ? H3 : /Ecran|écran (c|t|p|b)-/.test(t) ? H2 : H1, "erreur écrite par l'app dans " + cerr[t].length + " page(s) (" + cerr[t].slice(0, 4).join(", ") + ")", t);
   await A.fermer(); await srv.close();
+  fs.writeFileSync(path.join(SORTIE, "phases.txt"), srv.phases.join("\n") + "\n");
   const duree = Math.round((Date.now() - J.t0) / 1000);
   fs.writeFileSync(path.join(SORTIE, "releves-app.json"), JSON.stringify(RELEVES));
+  fs.writeFileSync(path.join(SORTIE, "base-finale.json"), JSON.stringify(srv.store.get("qcm"), null, 1));
   fs.writeFileSync(path.join(SORTIE, "banc.json"), JSON.stringify({duree, app: process.env.APP_FILE, journal: J.l}, null, 1));
   const lignes = ["Banc commun de l'app QCM (QCM-4 · BANC) — " + (process.env.APP_FILE || "?") + " — " + new Date().toISOString(),
     "Durée : " + duree + " s (" + Math.floor(duree / 60) + " min " + (duree % 60) + " s) · vérifications : " + J.verifs.length + " · échecs : " + J.echecs.length + " · scènes relevées : " + Object.keys(RELEVES).length, ""];

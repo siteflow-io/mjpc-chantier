@@ -2,6 +2,18 @@
 
 Format : `[QCM-4 → QCM-n] l'écran, le geste, ce qui est attendu (la scène de la maquette), ce qui est vu` — rayé par QCM-4 quand le banc le voit corrigé.
 
+## Essai du 12/10 à 18:50, sur une copie de l'app où les deux bloquants de 18:10 sont contournés (dans le banc seulement : `LIVE` renommé dans la copie, `|| {}` dans `Lancement`)
+
+Pour voir la suite de l'heure avant qu'ils soient corrigés. Le lancement, l'appel, l'entrée des 24 au code, la première attestation, Q1 et Q2 à leurs deux tours avec B, et « 🔓 Rouvrir pour Théo » passent par le geste. Puis :
+
+[QCM-4 → QCM-2] **La tablette de Julien plante à chaque question : sa moitié et celle de son voisin restent vides.** Tablette 1 (ABRIAL Julien, BAUDRY Léa), de la réflexion de Q1 jusqu'à la correction. Attendu : `t-q1-tour1`, `t-q1-tour2`, B, `t-corr-q2-lecture`… comme sur les 11 autres tablettes. Vu : l'écran `t-live` ne se dessine pas, « TypeError: Cannot read properties of undefined (reading '0') at MoitieH » (`src/c3-tablettes.js` l. 309 : `ORD[qi][p]`, `TABL[p][qi]`), puis à `EcrDeclareH` (l. 334) et `EcrLecture` (`src/etape3.js` l. 64 : `ORD[qi][e.cle]`, `LU[e.cle][qi]`) : les tables du scénario lues pour un élève dont le prénom est « Julien ». Conséquence : Julien et Léa ne répondent à rien, leurs feuilles ne sont jamais lues, et « 💡 Révéler » ne s'ouvre jamais : la correction est bloquée. En classe, tout élève prénommé comme un élève du scénario serait touché.
+
+[QCM-4 → QCM-2] **Q2 close : toutes les tuiles disent « pas de réponse ».** Console, Q2 close, 21 élèves sur 24 ont répondu (le compteur le dit : « 21/24 ont répondu », « 7/21 justes »). Attendu (`c-q2-close`) : chaque tuile avec son état (juste, une bonne sur deux, toutes les bonnes + une en trop, faux), Théo « pas de réponse ». Vu : les 24 tuiles « ⏳ pas de réponse ».
+
+[QCM-4 → QCM-2] **« 🔓 Rouvrir pour un élève » : la fenêtre ne se referme pas, et liste des élèves qui ont répondu.** Q2 close, « 🔓 Rouvrir pour un élève », « 🔓 Rouvrir pour Théo ». Attendu (`c-rouvrir-un` → `c-q2-close`) : la fenêtre se ferme ; elle ne liste que ceux qui n'ont pas répondu (Théo). Vu : Théo est bien rouvert (la base : `deroule.pour = chevallier_theo`, sa réponse arrive), mais après la question close la fenêtre « Rouvrir pour un élève — Q2 » est encore là, avec « ABRIAL Julien, tablette 1, moitié de gauche » et « BAUDRY Léa », qui ont répondu (leur tablette plantait : voir plus haut, mais la liste doit venir des réponses de la base).
+
+[QCM-4 → QCM-2] **Le téléphone reste vide toute l'heure** (défaut de 18:10, toujours là) : « TelReponse … reading '0' ».
+
 ## Essai du 12/10 à 18:10 (avant l'assemblage de 20:00), `code-qcm` à `bd574b5`, app `evaluation-qcm.staging.html` md5 `2e05301e…` — bloquants
 
 Le banc les a vus en jouant l'heure ; tant qu'ils sont là, presque rien d'autre ne peut s'éprouver par le geste (le banc lance alors la séance par `ACT`, et le dit, pour aller plus loin).

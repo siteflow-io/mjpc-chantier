@@ -46,6 +46,11 @@ async function fauxHub(extra){
   const port = 8600 + Math.floor(Math.random() * 150);
   const srv = await startServer(B.tree, port, () => {});
   srv.port = port;
+  // le journal des phases : chaque écriture de deroule (contrat C1), horodatée depuis le départ
+  const t0 = Date.now(); srv.phases = [];
+  srv.watchers.push(op => { const ch = op.t === "update" ? Object.keys(op.v || {}).map(k => op.p + "/" + k) : [op.p];
+    for(const c of ch) if(/\/deroule(\/|$)|sessionActive/.test(c)){ const sid = (c.match(/sessions\/([^/]+)/) || [])[1]; const d = sid ? srv.store.get("qcm/sessions/" + sid + "/deroule") : null;
+      srv.phases.push(((Date.now() - t0) / 1000).toFixed(1) + " s  " + (d ? JSON.stringify({ph: d.ph, qi: d.qi, tour: d.tour, cote: d.cote, duree: d.duree, pour: d.pour}) : c)); break; } });
   return {B, srv, port};
 }
 // Une seconde classe (4e) avec ses codes, pour l'heure de demain
@@ -104,7 +109,9 @@ async function cliquer(p, re, zone, opts){
     const vis = e => { const r = e.getBoundingClientRect(); const cs = getComputedStyle(e); return r.width > 1 && r.height > 1 && cs.visibility !== "hidden" && cs.display !== "none"; };
     const t = e => { const c = e.cloneNode(true); c.querySelectorAll(".info-tip,.info-i").forEach(x => x.remove()); return (c.textContent || "").replace(/[  ]/g, " ").replace(/\s+/g, " ").trim(); };
     const c = [...racine.querySelectorAll("button, a, [role=button], [data-va], label, .tc, [role=checkbox]")].filter(e => vis(e) && (ferme || !e.disabled) && re.test(t(e)));
-    c.sort((a, b) => t(a).length - t(b).length);
+    // l'élément au premier plan (une fenêtre ouverte recouvre la page : Paul clique ce qu'il voit), puis le texte le plus court
+    const dessus = e => { e.scrollIntoView({block: "nearest"}); const r = e.getBoundingClientRect(); const x = document.elementFromPoint(r.left + r.width / 2, r.top + r.height / 2); return !!x && (x === e || e.contains(x) || x.contains(e)); };
+    c.sort((a, b) => (dessus(b) - dessus(a)) || (t(a).length - t(b).length));
     if(!c[0]) return false; document.querySelectorAll("[data-banc]").forEach(x => x.removeAttribute("data-banc")); c[0].setAttribute("data-banc", "1"); return true;
   }, [re.source, re.flags, RACINE_ZONE, zone === undefined ? null : zone, !!opts.ferme]).catch(() => false);
   if(!ok) return false;

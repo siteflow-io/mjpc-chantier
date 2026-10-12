@@ -173,7 +173,7 @@ function testSession(){ var sid = testSid(); return sid ? seanceV(sid) : null; }
 function testDeroule(){ var se = testSession(); return se ? deroule(se.S) || {} : {}; }
 // la classe, ses codes (l'empreinte du hub, comme les vrais), l'évaluation de test : écrits une fois, à l'entrée dans le mode test
 function preparerModeTest(){
-  if(MODE_TEST.prepare || !v3db()) return; MODE_TEST.prepare = true;
+  if(MODE_TEST.prepare || MODE_TEST.sortie || !v3db()) return; MODE_TEST.prepare = true;
   // la séance pilotée avant le mode test (une vraie classe, peut-être en pleine heure) : elle se retrouve en sortant du mode test
   if(typeof LIVE !== "undefined"){ if(LIVE.classeSlug !== CLASSE_TEST) MODE_TEST.avant = {classeSlug:LIVE.classeSlug || null, sid:LIVE.sid || null, lancement:typeof LANCEMENT !== "undefined" ? {classe:LANCEMENT.classe, evalId:LANCEMENT.evalId} : null}; LIVE.classeSlug = CLASSE_TEST; LIVE.sid = null; }
   if(typeof LANCEMENT !== "undefined"){ LANCEMENT.classe = CLASSE_TEST; LANCEMENT.evalId = TEST_EVAL; }
@@ -189,6 +189,8 @@ function preparerModeTest(){
 }
 function purgerModeTest(){
   var db = v3db(); if(!db) return Promise.resolve();
+  // pendant la sortie, un rendu du mode test ne recrée rien (la classe, l'évaluation, les codes) : la sortie finit hors du mode test
+  MODE_TEST.sortie = true;
   return db.ref(v3Q("sessions")).once("value").then(function(s){
     var X = s.val() || {}, l = [];
     Object.keys(X).forEach(function(sid){ if(X[sid] && (X[sid].classeSlug === CLASSE_TEST || X[sid].evalId === TEST_EVAL)) l.push(v3Set(v3Q("sessions/" + sid), null)); });
@@ -211,7 +213,10 @@ function hasard(l){ return l[Math.floor(Math.random() * l.length)]; }
 function tousRepondent(){
   var se = testSession(); if(!se) return Promise.resolve();
   var d = deroule(se.S) || {}, ph = d.ph, qi = d.qi, ev = se.ev, l = [], pres = se.presents.map(function(e){ return e.slug; });
+  var qb = d.bPour && d.bPour.qi != null ? +d.bPour.qi : qi;
   pres.forEach(function(x){
+    // B : la moitié qui vient de répondre le dit, même pendant le tour suivant ou la question close (contrat C6 : SCN.doitDireB, deroule.bPour)
+    if(ph !== "b" && qb != null && typeof SCN.doitDireB === "function" && SCN.doitDireB(x) && !SCN.ditB(x, qb)) l.push(ELV.direB(qb, Math.random() < 0.85 ? "oui" : "non", x));
     var q = qi != null ? ev.questions[qi] : null, juste = Math.random() < 0.7, faux = q ? q.choix.map(function(c, i){ return i; }).filter(function(i){ return q.bonnes.indexOf(i) < 0; }) : [];
     if(ph === "entree" || ph === "pret" || ph === "appel"){ l.push(ELV.cocher(1, 8, x)); l.push(ELV.commencer(x, 1)); }
     else if((ph === "reponse" || ph === "rouvert") && (ph === "rouvert" ? d.pour === x || d.rouvert === "tous" : SCN.cote(x) === d.cote) && !SCN.reponse(x, qi)) l.push(ELV.repondre(qi, juste ? q.bonnes : [hasard(faux)], x));
@@ -273,7 +278,7 @@ function HautModeTestV(){
         h("button", {className:"btn btn-ghost btn-sm", "data-local":"1", title:"Télécharge l'état du mode test dans un fichier.", onClick:function(){ var S = v3Sessions(), o = {}; Object.keys(S).forEach(function(k){ if(S[k] && S[k].classeSlug === CLASSE_TEST) o[k] = S[k]; });
           telecharger("qcm-test-" + new Date().toISOString().slice(0, 10) + ".json", JSON.stringify({classe:v3Classes()[CLASSE_TEST] || null, evaluation:v3Evals()[TEST_EVAL] || null, sessions:o}, null, 2)); }}, "📥 Exporter snapshot test"),
         h("button", {className:"btn btn-primary btn-sm", "data-va":"c-qr", title:"Montre le QR de ton téléphone : il pilote le mode test comme une vraie séance."}, "📱 QR pilotage"),
-        h("button", surClic(function(){ return purgerModeTest().then(function(){ versScene("c-evals"); }); }, {className:"btn btn-rouge btn-sm", title:"Sort du mode test : la classe de test, ses séances et ses codes sont effacés ; la démo reste."}), "🗑️ Sortir et purger"))),
+        h("button", surClic(function(){ return purgerModeTest().then(function(){ versScene("c-evals"); setTimeout(function(){ MODE_TEST.sortie = false; }, 1500); }); }, {className:"btn btn-rouge btn-sm", title:"Sort du mode test : la classe de test, ses séances et ses codes sont effacés ; la démo reste."}), "🗑️ Sortir et purger"))),
     h("div", {className:"test-info", style:{marginTop:".8rem"}},
       h("strong", null, "🔬 Éprouver les mécanismes livrés"),
       h("p", {style:{margin:".4rem 0", fontSize:".88rem"}}, "Ces boutons appellent les fonctions réelles de l'application, pas des copies."),
@@ -338,7 +343,7 @@ function GrandTest(){
       h("div", {className:"grand-tab"}, contenuTablette(se, t)),
       h("div", {className:"simt-feuilles grand-f"}, t.g && h(FeuilleTest, {se:se, x:t.g, nom:nom(t.g)}), t.d && h(FeuilleTest, {se:se, x:t.d, nom:nom(t.d)}))));
 }
-function ModeTestV(){ MODE_TEST.actif = true; return h(ModeTestVC); }
+function ModeTestV(){ if(!MODE_TEST.sortie) MODE_TEST.actif = true; return h(ModeTestVC); }
 /* Avant l'heure, la carte de lancement du mode test (620-1) : la classe de test et sa copie de la démo, fixées (le lancement de la console
    ne propose pas les classes et évaluations « _ ») ; les binômes de la classe de test, à glisser ; « 🚀 Lancer la séance » ouvre l'appel */
 function LancementTestV(){

@@ -42,7 +42,7 @@ var PAGES = (function(){
     if(app === "tablette"){
       if(NAV.ecran === "e-mes-evals" && fn("EcranMesEvaluations")) return {id:"e-mes-evals", vue:"tablette", render:function(){ return fn("EcranMesEvaluations")(); }, cle:JSON.stringify(NAV.params)};
       // la tablette de QCM-2 dès que la classe est connue (« Combien êtes-vous ? », l'entrée, les moitiés) ; avant, le choix de la classe
-      if(fn("EcranTablette") && LIVE.pret && classeTablette()){ if(ELV.tab && ELV.sid && SCN.sid() !== ELV.sid){ ELV.oublier(); ELV.sid = SCN.sid(); }
+      if(fn("EcranTablette") && LIVE.pret && classeTablette() && SCN.sid()){ if(ELV.tab && ELV.sid && SCN.sid() !== ELV.sid){ ELV.oublier(); ELV.sid = SCN.sid(); }
         return {id:"t-live", vue:"tablette", render:function(){ return fn("EcranTablette")(); }, cle:"tablette-heure"}; }
       return {id:"t-live", vue:"tablette", render:function(){ return h(TabletteLive); }, cle:"tablette"};
     }
@@ -95,6 +95,8 @@ function TabletteLive(){
   // la séance de la classe s'est terminée : la tablette oublie ses élèves et revient à « Combien êtes-vous ? »
   if(ELV.tab && ELV.sid && SCN.sid() !== ELV.sid){ ELV.oublier(); ELV.sid = SCN.sid(); }
   if(!classe) return h(ChoixClasse);
+  // la classe choisie, sa séance pas encore lancée : la tablette attend, et s'ouvre d'elle-même au lancement (« Combien êtes-vous ? »)
+  if(!SCN.sid()) return Page(((LIVE.d.classes || {})[classe] || {}).libelle || classe, null, h("div", {className:"etat-attente"}, "⏳ En attente du démarrage…"));
   if(!ELV.n) return EcrCombienLive();
   if(ELV.n === 1){ var x1 = ELV.cotes.g; return h("div", {className:"tablette seule" + (x1 ? "" : " seule-login")}, h("div", {className:"moitie g"}, x1 ? MOITIES.ecran(eleveDe(x1), "g") : h(LoginLive, {cote:"g", key:"lg"}))); }
   var g = ELV.cotes.g, d = ELV.cotes.d;

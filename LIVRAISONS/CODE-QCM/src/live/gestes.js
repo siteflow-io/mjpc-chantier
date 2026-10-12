@@ -30,7 +30,10 @@ var GESTES = (function(){
     [/^🚀 Lancer la séance\s*$|^📄 Lancer la séance sur papier$/, "hors-appel", function(el){ var c = choixLancement(); if(!c.classe || !c.evalId) return; LIVE.classeSlug = c.classe;
       var papier = NAV.ecran === "c-papier-lancer" || /sur papier/.test(etiquetteDe(el)) || LANCEMENT.mode === "papier";
       return ACT.lancerSeance(c.classe, c.evalId, papier ? {mode:"papier"} : {}).then(function(){ navRemettre(); }); }],
-    [/^🚀 Lancer la séance\s*$/, "appel", function(){ return apres(ACT.appelFini(APPEL.absents || SCN.absents())); }],
+    // l'heure de fin tapée à l'appel (« 🕙 Fin de l'heure ») part avec l'appel
+    [/^🚀 Lancer la séance\s*$/, "appel", function(el){ var f = null, zone = el.closest(".checkin-overlay") || document;
+      Array.prototype.forEach.call(zone.querySelectorAll("input"), function(i){ if(/^\d{1,2}[:h]\d{2}$/.test((i.value || "").trim())) f = i.value.trim().replace("h", ":"); });
+      return apres(ACT.appelFini(APPEL.absents || SCN.absents(), f)); }],
     [/^🎓 Lancer la démo$/, null, function(){ var c = choixLancement(); if(!c.classe) return; return ACT.lancerSeance(c.classe, "demo", {}).then(function(){ navRemettre(); }); }],
     [/^🚀 Lancer le rattrapage$/, null, function(){ var c = choixLancement(); var notes = SCN.seances(c.classe).filter(function(s){ return s.eval === c.evalId && s.fin; }), deja = {};
       notes.forEach(function(s){ SCN.eleves(s.id).forEach(function(x){ if(SCN.absents(s.id).indexOf(x) < 0) deja[x] = 1; }); });

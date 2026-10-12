@@ -330,7 +330,8 @@ var SCN = (function(){
     S.eleves(id).forEach(function(x){
       if(S.absents(id).indexOf(x) >= 0) return;
       corr.forEach(function(qi){
-        var q = ev.questions[qi], rep = S.reponse(x, qi, id), lu = S.lecture(x, qi, id), b = S.ditB(x, qi, id), v = lu && lu.par ? S.pre(lu.par) : null;
+        // le lecteur nommé est le voisin qui a lu la feuille (une lecture corrigée par Paul ou par la feuille garde le nom du voisin)
+        var q = ev.questions[qi], rep = S.reponse(x, qi, id), lu = S.lecture(x, qi, id), b = S.ditB(x, qi, id), lec = lu && lu.par && NOMS[lu.par] ? lu.par : S.voisinDe(x, id), v = lec ? S.pre(lec) : "son voisin";
         if(lu && lu.choix === "aucun"){ ajouter(x, qi, "aucun", "aucun de ces choix"); return; }
         if(!rep) return;
         var memes = lu && !(lu.choix === "aucun") && juste(lu.choix, {bonnes:rep.choix});

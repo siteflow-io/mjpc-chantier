@@ -159,11 +159,15 @@ function etatPilot(k){
   return {k:k, phase:phase, qi:qi, tour:m.tour, chrono:m.reste, stats:statsQ(), passees:passees, ecartees:obj(m.ecartees), annulees:obj(m.annulees), pause:m.ph === "pause" || !!m.paused,
     etat:etatQuestionH({qi:qi, tour:m.tour, fini:phase === "attente", reflexion:phase === "reflexion"}), legende:leg, nbQ:c.nbQ};
 }
+// (déplacer, 72) l'élève échangé ou déplacé pendant la séance, entré avant et pas encore sur sa nouvelle moitié : il retape son code
+function aDeplacerH(p){ if(!enDirect()) return false; var s = SCN.sess() || {}, d = (s.deplaces || {})[p], en = (s.entres || {})[p]; return !!(d && en && en <= d); }
+function deplaceH(p){ if(!aDeplacerH(p)) return null; var t = SCN.tabletteDe(p); return t ? {cls:"m-deplace", st:"↔️ va sur la tablette " + t.n + " : retape son code"} : null; }
 // la moitié d'un élève pendant une question (c3-base.js, etatQuestion), d'après le moment complété : en direct, ceux qui répondent encore
 function etatQuestionH(s){
   var m = momH(), nonRep = s.nonRep || m.nonRep || [], sansRep = m.sansRep || [], partis = m.partis || {};
   return function(p, cote){
     if(partis[p]) return {cls:"m-parti", st:"🚪 parti à " + partis[p]};
+    var dp = deplaceH(p); if(dp) return dp;
     if(s.reflexion) return {cls:"m-ecrit", st:"✍️ écrit"};
     if(s.fini) return sansRep.indexOf(p) >= 0 ? {cls:"m-pasrep", st:"⏳ pas de réponse"} : couleur(p, s.qi, false);
     var estPremier = cote === coteDuTour(s.qi, 1);
@@ -363,14 +367,14 @@ function PilotPret(){
   return Pilot({phase:"idle", qi:null, stats:[[fr2(c.connectes), "connectés"], [fr2(c.attestations), "attestations"], [fr2(c.repondu), "ont répondu"], ["—", "justes"], ["—", "question"]],
     // (changement 1) « qui est assis où… » est dit par le « i » des tablettes : plus de sous-titre qui l'explique
     legende:[["#E8F5E9","✓ prêt : toutes les lignes cochées"],["#FEF3C7","attestation en cours : lignes cochées sur 8"],["#F1F5F9","pas encore entré"]],
-    etat:function(p){ var hA = heureAttestH(p, 1); return ae[p] != null ? {cls:"m-attest", st:"attestation " + ae[p] + "/8"} : pe.indexOf(p) >= 0 ? {cls:"m-connexion", st:"pas encore " + (sexeH(p) === "F" ? "entrée" : "entré")} : {cls:"m-pret", st:"✓ prêt" + (hA ? " · " + hA : "")}; }});
+    etat:function(p){ var hA = heureAttestH(p, 1); return deplaceH(p) ? deplaceH(p) : ae[p] != null ? {cls:"m-attest", st:"attestation " + ae[p] + "/8"} : pe.indexOf(p) >= 0 ? {cls:"m-connexion", st:"pas encore " + (sexeH(p) === "F" ? "entrée" : "entré")} : {cls:"m-pret", st:"✓ prêt" + (hA ? " · " + hA : "")}; }});
 }
 
 /* ── La seconde attestation, côté console ── */
 function PilotAttest2(){
   var k = MO(), m = momH(), c = SCN.compteurs(k), enCours = m.enCours || {};
   var manquent = Object.keys(enCours).map(nomDe);
-  var etat = function(p){ var hA = heureAttestH(p, 2); return enCours[p] != null ? {cls:"m-attest", st:"attestation " + enCours[p] + "/5"} : {cls:"m-pret", st:"✓ prêt" + (hA ? " · " + hA : "")}; };
+  var etat = function(p){ var hA = heureAttestH(p, 2); return deplaceH(p) ? deplaceH(p) : enCours[p] != null ? {cls:"m-attest", st:"attestation " + enCours[p] + "/5"} : {cls:"m-pret", st:"✓ prêt" + (hA ? " · " + hA : "")}; };
   var q2 = ORDRE_CORR[0], b = bilanQ(q2, k), prets = c.prets || [c.presents - manquent.length, c.presents];
   c = Object.assign({}, c, {presents:prets[1]});
   return Console("pilotage", "pilot", h("div", {className:"card"},

@@ -274,7 +274,7 @@ function TabletteC(){
   if(ici.combien === 1){
     var p = ici.g || ici.d;
     if(!p) return h("div", {className:"tablette seule seule-login"}, h("div", {className:"moitie g"}, h(UnEleveH, {key:"lg"})));
-    return h("div", {className:"tablette seule"}, h("div", {className:"moitie g"}, MoitieH(p, "g", null)));
+    return h("div", {className:"tablette seule"}, h("div", {className:"moitie g"}, pasIciH(p) ? MoitieQuitteeH(p, "g", null) : MoitieH(p, "g", null)));
   }
   return TabletteVue(ici.g, ici.d, true);
 }
@@ -293,11 +293,21 @@ function UnEleveH(){
 // une tablette, ses deux moitiés : l'élève de chacune à l'écran de la phase (interactif : la tablette elle-même ; sinon « 👁 » de la console)
 function TabletteVue(g, d, interactif){
   function moitie(p, cote, autre){
+    if(autre && interactif && pasIciH(autre)) autre = null;   // son voisin d'avant est parti sur une autre tablette
+    if(p && interactif && pasIciH(p)) return MoitieQuitteeH(p, cote, autre);
     if(p) return MoitieH(p, cote, autre);
     if(!interactif) return Page(null, null, h("div", {className:"etat-attente"}, "moitié libre"));
     return h(EntreeMoitie, {key:"e" + cote, cote:cote, autre:autre});
   }
   return Tablette(moitie(g, "g", d), moitie(d, "d", g));
+}
+// (déplacer, 72) l'élève de cette moitié a été échangé ou déplacé : sa place est sur une autre tablette
+function pasIciH(p){ var ici = iciH(), t = SCN.tabletteDe(p); return !!(enDirect() && ici.n && t && t.n !== ici.n); }
+// sa moitié lui dit où aller (« Julien, va sur la tablette de Lou », t-deplace) tant qu'il n'y est pas entré, et accueille celui qui prend sa place
+function MoitieQuitteeH(p, cote, autre){
+  var v = SCN.voisinDe(p), entree = h(EntreeMoitie, {key:"e" + cote + p, cote:cote, autre:autre});
+  if(!aDeplacerH(p) || !v) return entree;
+  return h("div", {className:"moitie-quittee"}, EcrDeplace(eleveH(p, cote), prenomH(v)), entree);
 }
 // une moitié sans élève : « 👋 Identifie-toi » ; si l'autre moitié est entrée et a un binôme, « Ton binôme : … » (« Pas là ? » revient au formulaire)
 function EntreeMoitie(p){

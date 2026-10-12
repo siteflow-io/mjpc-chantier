@@ -6,3 +6,5 @@ input.codebox.codebox-h{display:block;width:100%;box-sizing:border-box;font-fami
 input.codebox.codebox-h::placeholder{color:transparent}
 /* une moitié de tablette dont l'écran dépasse sa hauteur (le bilan d'une évaluation de 11 questions) défile, à elle seule */
 .tablette .moitie{overflow-y:auto}
+/* déplacer (72) : « …, va sur la tablette de … » au-dessus de l'entrée de celui qui prend la place */
+.moitie-quittee{min-height:100vh;background:inherit}.moitie-quittee>.eleve-page{min-height:0}.moitie-quittee>.eleve-page:first-child{padding-bottom:0}.moitie-quittee>.eleve-page+.eleve-page{padding-top:.5rem}.moitie-quittee>.eleve-page+.eleve-page .deco{display:none}

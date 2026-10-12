@@ -218,9 +218,19 @@ PdfApercu = function(){
    Une séance se lit telle qu'elle est dans qcm/sessions/<sid> (COMMUN §3.1) : celles de l'app comme celles de la 7.7.1, avec ce qu'elles ont
    (une séance de la 7.7.1 n'a ni lecture ni « Trouvée au dernier moment » : sa note vient de sa feuille saisie, sinon de la tablette).
    Le soir écrit dans la séance elle-même : le point d'autonomie, les feuilles lues, les copies, le bilan validé. */
+/* Un geste de mes écrans agit lui-même (la base, puis l'écran d'arrivée) : son clic est pris ici, avant le routeur des gestes, qui le
+   reconnaîtrait à son libellé et agirait sur la séance pilotée, pas sur celle de l'écran (src/live/gestes.js). */
+function surClic(fn, props){ return Object.assign({"data-local":"1", "data-soir":"1", ref:function(el){ if(el) el.__soir = fn; }}, props || {}); }
+window.addEventListener("click", function(ev){
+  var b = ev.target && ev.target.closest ? ev.target.closest("#root [data-soir]") : null;
+  if(!b || b.disabled || typeof b.__soir !== "function") return;
+  ev.stopImmediatePropagation(); ev.preventDefault();
+  try { var r = b.__soir(); if(r && r.catch) r.catch(function(e){ console.error(e); }); } catch(e){ console.error(e); }
+}, true);
 function memesChoixV(a, b){ return JSON.stringify((a || []).map(Number).slice().sort()) === JSON.stringify((b || []).map(Number).slice().sort()); }
 function v3Eleves(classeNom, classeSlug){
-  var C = v3Classes(), cle = C[classeNom] ? classeNom : Object.keys(C).filter(function(k){ return v3Slug(k) === classeSlug || (C[k] && v3Slug(C[k].nom) === classeSlug); })[0];
+  // la classe d'une séance : par son nom (l'app écrit la clé de /classes) ou par son slug (la 7.7.1)
+  var C = v3Classes(), cle = classeNom && C[classeNom] ? classeNom : classeSlug && C[classeSlug] ? classeSlug : Object.keys(C).filter(function(k){ return v3Slug(k) === v3Slug(classeSlug) || (C[k] && v3Slug(C[k].nom) === v3Slug(classeSlug)); })[0];
   var c = cle ? C[cle] : null, brut = c ? (Array.isArray(c) ? c : c.eleves || c.liste || []) : [];
   var l = v3Liste(brut).map(function(e){ var n = typeof e === "string" ? e : e && (e.nomComplet || (e.nom && e.prenom ? String(e.nom).toUpperCase() + " " + e.prenom : e.nom)); return n ? {nom:n, slug:v3Slug(n)} : null; }).filter(Boolean);
   return {cle:cle || classeNom || "", libelle:(c && c.nom) || cle || classeNom || "", niveau:(c && c.niveau) || null, eleves:l, amen:(c && c.amenagements) || {}};
@@ -229,12 +239,14 @@ function prenomDeNom(n){ var p = String(n || "").split(" "); var i = 0; while(i 
 function sexeV(se, slug){ try { if(typeof SCN.sexe === "function" && SCN.LIVE){ var s = SCN.sexe(slug); if(s) return String(s).toUpperCase().charAt(0); } } catch(e){}
   var a = se && se.amen && se.amen[slug]; return a && a.sexe ? String(a.sexe).toUpperCase().charAt(0) : "M"; }
 function ilElle(se, slug){ return sexeV(se, slug) === "F" ? "elle" : "il"; }
-function seanceNouvelle(S){ return !!S && (typeof S.etat === "object" && S.etat !== null || !!S.lectures || !!S.revelees || !!S.places); }
-function seanceTerminee(S){ if(!S) return false; if(S.etat && typeof S.etat === "object") return S.etat.ph === "fin"; return S.phase === "finie" || S.etat === "terminee" || S.etat === "finie"; }
-function seanceEnPause(S){ return !!S && S.etat && typeof S.etat === "object" && S.etat.ph === "pause"; }
-function msDeSeance(S){ return S.date || S.lancee || S.createdAt || (S.etat && S.etat.lancee) || 0; }
-function msFinSeance(S){ return S.fin || S.finieLe || (S.etat && S.etat.ph === "fin" && S.etat.depuis) || msDeSeance(S); }
-function seanceDemo(S){ return !!S && (S.evalId === "demo" || !!S.demo); }
+// l'état d'une séance : « etat » garde la chaîne de la 7.7.1 (« en_cours », « terminee ») ; le déroulé de l'app est « deroule » (CONTRAT-CHANGEMENTS, C1)
+function deroule(S){ return S && (S.deroule || (S.etat && typeof S.etat === "object" ? S.etat : null)) || null; }
+function seanceNouvelle(S){ return !!S && (!!deroule(S) || !!S.lancee || !!S.lectures || !!S.revelees || !!S.places); }
+function seanceTerminee(S){ if(!S) return false; var d = deroule(S); return S.etat === "terminee" || S.etat === "finie" || S.phase === "finie" || !!(d && d.ph === "fin"); }
+function seanceEnPause(S){ var d = deroule(S); return !!d && d.ph === "pause" && !!d.autreHeure && !seanceTerminee(S); }
+function msDeSeance(S){ return S.date || (S.lancee && S.lancee.date) || S.createdAt || 0; }
+function msFinSeance(S){ return S.finLe || S.fin || msDeSeance(S); }
+function seanceDemo(S){ return !!S && (S.evalId === "demo" || !!S.demo || !!(S.lancee && S.lancee.demo)); }
 function seanceTest(S){ var c = String(S && (S.classeSlug || S.classe) || ""); return !!S && (!!S.test || /^_|test/i.test(c)); }
 function evalDeSeanceV(S){ if(!S) return null; if(S.evalSnapshot) return evalVue(S.evalId, S.evalSnapshot); return evalV(S.evalId); }
 function listeSlugs(x, eleves){   // une liste d'élèves (slugs ou noms), en slugs
@@ -246,21 +258,22 @@ function seanceV(sid){
   var cl = v3Eleves(S.classe, S.classeSlug), ev = evalDeSeanceV(S);
   if(!ev || !ev.questions) return null;   // son évaluation n'est pas (encore) lue
   var absents = listeSlugs(S.absents, cl.eleves), nouv = seanceNouvelle(S);
-  var dans = {}; cl.eleves.forEach(function(e){ dans[e.slug] = e.nom; });
+  var dans = {}, propresL = S.lancee && S.lancee.eleves ? v3Liste(S.lancee.eleves) : null;
+  cl.eleves.forEach(function(e){ if(!propresL || propresL.indexOf(e.slug) >= 0) dans[e.slug] = e.nom; });
   // ceux qui ont une place, une réponse ou une lecture, même hors de la liste de la classe (le rattrapage)
   var vus = {}; Object.keys(S.places || {}).forEach(function(n){ var t = S.places[n] || {}; ["g", "d"].forEach(function(c){ if(t[c]) vus[t[c]] = 1; }); });
   ["reponses", "lectures"].forEach(function(cle){ Object.keys(S[cle] || {}).forEach(function(qi){ Object.keys(S[cle][qi] || {}).forEach(function(s){ vus[s] = 1; }); }); });
   Object.keys(vus).forEach(function(s){ if(!dans[s]) dans[s] = (v3("codes/" + s) || {}).name || s; });
   var tous = Object.keys(dans).map(function(s){ return {slug:s, nom:dans[s]}; }).sort(function(a, b){ return a.nom.localeCompare(b.nom, "fr"); });
   // une séance qui a ses propres élèves (le rattrapage) : ses présents sont ceux qui y ont une place
-  var propres = nouv && S.places && Object.keys(vus).length && S.rattrapage;
+  var propres = nouv && S.places && Object.keys(vus).length && (S.rattrapage || (S.lancee && S.lancee.rattrapage));
   var presents = tous.filter(function(e){ return absents.indexOf(e.slug) < 0 && (!propres || vus[e.slug]); });
   var cop = S.copies || null, ms = msDeSeance(S);
   var rendue = cop ? !!(cop.rendues && !cop.masquees) : (!nouv && seanceTerminee(S));
   return {id:sid, S:S, ev:ev, classe:cl.libelle || S.classe || S.classeSlug || "", classeCle:cl.cle, classeSlug:S.classeSlug || v3Slug(cl.cle), niveau:cl.niveau, amen:cl.amen,
     eleves:tous, presents:presents, absents:tous.filter(function(e){ return absents.indexOf(e.slug) >= 0; }), nouvelle:nouv,
     date:dateFr(ms), heure:heureFr(ms), ms:ms, terminee:seanceTerminee(S), pause:seanceEnPause(S), demo:seanceDemo(S), test:seanceTest(S),
-    papier:S.mode === "papier" || !!S.surPapier, rattrapage:!!S.rattrapage,
+    papier:S.mode === "papier" || !!S.surPapier || !!(S.lancee && S.lancee.mode === "papier"), rattrapage:!!S.rattrapage || !!(S.lancee && S.lancee.rattrapage),
     rendue:rendue, rendueMs:cop && cop.rendues ? cop.rendues : (!cop && rendue ? msFinSeance(S) : null), masquee:!!(cop && cop.masquees), publiee:S.publiee !== false,
     ecartees:v3Liste(S.ecartees).map(Number), annulees:v3Liste(S.annulees).map(Number)};
 }
@@ -277,8 +290,14 @@ function ptsQuestionV(choix, q, mode){
 }
 function lectureV(se, qi, slug){ var l = ((se.S.lectures || {})[qi] || {})[slug]; if(!l) return null; return {choix:l.choix === "aucun" ? "aucun" : v3Liste(l.choix).map(Number), par:l.par || null, ms:l.ms || null}; }
 function tabletteV(se, qi, slug){ var r = ((se.S.reponses || {})[qi] || {})[slug]; return r ? {choix:v3Liste(r.choix).map(Number), tour:r.tour || null, ms:r.ms || r.ts || null} : null; }
-function feuillePapierV(se, qi, slug){ var p = (se.S.papier || {})[slug]; if(!p || !p.choix) return null; var c = p.choix[qi] != null ? p.choix[qi] : (Array.isArray(p.choix) ? null : p.choix[String(qi)]); return c == null ? null : (c === "aucun" ? "aucun" : v3Liste(c).map(Number)); }
-function aLireV(se){ var A = se.S.aLire || {}; return Object.keys(A).map(function(id){ var x = A[id] || {}; return {id:id, p:x.eleveSlug, q:+x.qi, sorte:x.sorte || "b", txt:x.txt || "", lue:!!x.lue, corrigee:!!x.corrige, nom:nomEleveV(se, x.eleveSlug)}; })
+// la feuille saisie : celle de la 7.7.1 (papier/<slug>/choix/<qi> : les choix), ou la grille du soir de l'app (papier/<slug>/<qi> : « j » ou « f »)
+function feuillePapierV(se, qi, slug){ var p = (se.S.papier || {})[slug]; if(!p) return null;
+  if(!p.choix){ var g = p[qi]; if(g == null) return null; var q = se.ev.questions[qi]; return g === "j" || g === true || g === 1 ? q.bonnes.slice() : g === "a" ? "aucun" : [q.choix.map(function(c, i){ return i; }).filter(function(i){ return q.bonnes.indexOf(i) < 0; })[0]]; }
+  var c = p.choix[qi] != null ? p.choix[qi] : (Array.isArray(p.choix) ? null : p.choix[String(qi)]); return c == null ? null : (c === "aucun" ? "aucun" : v3Liste(c).map(Number)); }
+function aLireV(se){
+  // les lignes « à lire » se calculent de ce que chacun a dit et de ce que le voisin a lu (SCN.aLireSeance) ; aLire/<id> n'en garde que l'état
+  if(SCN.LIVE && typeof SCN.aLireSeance === "function"){ try { var L = SCN.aLireSeance(se.id); if(Array.isArray(L) && (L.length || se.nouvelle)) return L.map(function(x){ return {id:x.id, p:x.p || x.eleveSlug, q:+(x.q != null ? x.q : x.qi), sorte:x.sorte, txt:x.txt || "", lue:!!x.lue, corrigee:!!(x.corrigee || x.corrige), nom:x.nom || nomEleveV(se, x.p || x.eleveSlug)}; }); } catch(e){} }
+  var A = se.S.aLire || {}; return Object.keys(A).map(function(id){ var x = A[id] || {}; return {id:id, p:x.eleveSlug, q:+x.qi, sorte:x.sorte || "b", txt:x.txt || "", lue:!!x.lue, corrigee:!!x.corrige, nom:nomEleveV(se, x.eleveSlug)}; })
   .filter(function(x){ return x.p != null && !isNaN(x.q); }).sort(function(a, b){ return a.q - b.q || a.nom.localeCompare(b.nom, "fr"); }); }
 function resultatLocalV(se, slug){
   var ev = se.ev, S = se.S, mode = ev.mode, revelees = v3Liste(S.revelees).map(Number), partiAt = (S.partis || {})[slug];
@@ -294,7 +313,7 @@ function resultatLocalV(se, slug){
       var p = ptsQuestionV(l.choix, q, mode);
       if(l.choix === "aucun"){ st.push("a"); pts.push(0); }
       else if(p === 1){ st.push("j"); pts.push(1); }
-      else if(trouvee === qi){ st.push("t"); pts.push(1); }
+      else if(trouvee === qi || (trouvee == null && tabletteV(se, qi, slug) && memesChoixV(tabletteV(se, qi, slug).choix, q.bonnes))){ trouvee = qi; st.push("t"); pts.push(1); }
       else { st.push("f"); pts.push(p); }
       return;
     }
@@ -312,7 +331,7 @@ function resultatLocalV(se, slug){
   return {p:slug, st:st, pts:pts, n:Math.round(n * 100) / 100, total:total, complet:complet, sur20:sur20, maitrise:SCN.maitriseDe ? SCN.maitriseDe(Math.round(sur20 * 10) / 10) : null, comp:comp, corrigees:corrigees, annulees:se.annulees, ecartees:se.ecartees};
 }
 function resultatV(se, slug){
-  if(SCN.LIVE && typeof SCN.resultat === "function"){ try { var r = SCN.resultat(se.id, slug); if(r && r.st) return r; if(r === null) return null; } catch(e){} }
+  if(SCN.LIVE && typeof SCN.resultat === "function"){ try { var r = SCN.resultat(se.id, slug); if(r && r.st) return r; } catch(e){} }
   return resultatLocalV(se, slug);
 }
 // ce que la marque d'une case montre : « n » (pas encore corrigée) se lit « ? » comme dans la maquette
@@ -373,8 +392,8 @@ function ListeSeancesV(){
         h("div", {className:"meta"}, se.classe + " — " + se.date + " " + se.heure + " · ✅ terminée · " + presentsTexteV(se) + (se.papier ? " · sur papier" : ""),
           restent ? h("span", {className:"meta-lire"}, " · 📌 " + restent + " feuille" + (restent > 1 ? "s" : "") + " à lire") : lire.length ? h("span", {className:"meta-lus"}, " · ✔ " + lire.length + " feuille" + (lire.length > 1 ? "s" : "") + " lue" + (lire.length > 1 ? "s" : "")) : null),
         h("div", {className:"seance-statuts"}, h(StatutCopiesV, {se:se}), h(CochePublieeV, {se:se}),
-          e === "rendues" && h("button", {className:"btn btn-ghost btn-sm", "data-local":"1", onClick:function(){ masquerCopiesV(se.id); }, title:"Masque les copies de la séance du " + se.date.slice(0, 5) + " : les élèves ne voient plus leur note ni leur bilan, jusqu'au prochain « Rendre les copies »."}, "🙈 Masquer les copies"),
-          e === "masquees" && h("button", {className:"btn btn-ghost btn-sm", "data-local":"1", onClick:function(){ rendreCopiesV(se.id); }, title:"Rend de nouveau les copies de la séance du " + se.date.slice(0, 5) + " : chaque élève revoit sa note et son bilan."}, "📤 Rendre les copies"))),
+          e === "rendues" && h("button", surClic(function(){ return masquerCopiesV(se.id); }, {className:"btn btn-ghost btn-sm", title:"Masque les copies de la séance du " + se.date.slice(0, 5) + " : les élèves ne voient plus leur note ni leur bilan, jusqu'au prochain « Rendre les copies »."}), "🙈 Masquer les copies"),
+          e === "masquees" && h("button", surClic(function(){ return rendreCopiesV(se.id); }, {className:"btn btn-ghost btn-sm", title:"Rend de nouveau les copies de la séance du " + se.date.slice(0, 5) + " : chaque élève revoit sa note et son bilan."}), "📤 Rendre les copies"))),
       h("div", {className:"row"},
         h("button", {className:"btn btn-ghost btn-sm", "data-va":"c-resultats" + sq, title:"Ouvre le tableau de la séance du " + se.date.slice(0, 5) + " : les notes, les compétences, les feuilles à lire."}, "📊 Ouvrir"),
         h("button", {className:"btn btn-rouge btn-sm", "data-va":"c-corbeille" + sq, title:"Met la séance du " + se.date.slice(0, 5) + " à la corbeille, après une confirmation : gardée un an, restaurable."}, "🗑️")));
@@ -411,7 +430,7 @@ function ScRendreC(){
       h("p", null, n ? "✔ Les " + n + " feuilles à lire sont lues, et chaque présent a eu la lecture de sa feuille." : "✔ Chaque présent a eu la lecture de sa feuille."),
       h("p", null, "Chaque élève voit, dans « Mes évaluations », sa note définitive, son bilan et le « 📝 Bilan » de sa fiche (validé, sinon celui de l'app) ; le PDF « notes et compétences » s'ouvre.")),
     [h("button", {key:1, className:"btn btn-ghost", "data-va":"c-seances", title:"Ne rend rien."}, "Annuler"),
-     h("button", {key:2, className:"btn btn-primary", "data-local":"1", title:"Rend les copies aux élèves, tout de suite.", onClick:function(){ rendreCopiesV(se.id).then(function(){ versScene("c-seances"); }); }}, "📤 Rendre les copies")], "c-seances");
+     h("button", surClic(function(){ return rendreCopiesV(se.id).then(function(){ versScene("c-seances"); }); }, {key:2, className:"btn btn-primary", title:"Rend les copies aux élèves, tout de suite."}), "📤 Rendre les copies")], "c-seances");
 }
 /* ── Mettre une séance à la corbeille ── */
 function CorbeilleSeanceV(){ return h(CorbeilleSeanceC); }
@@ -536,7 +555,7 @@ function FicheV(p){
           h("span", {className:"maitrise-pill " + (au.retire ? "mt-rouge" : "mt-vert")}, au.retire ? "🔴 Maîtrise insuffisante" : "🟢 Très bonne maîtrise"));
       }),
       h("div", {className:"fiche-auto"}, au.retire
-        ? h(F, null, h("span", null, "⛔ Point d'autonomie retiré " + au.quand + "."), h("button", {className:"btn btn-vert btn-sm", "data-local":"1", onClick:function(){ rendreAutonomieV(se, slug); }, title:"Rend son point d'autonomie à " + pre + " : ses deux compétences d'autonomie repassent en Très bonne maîtrise."}, "↩️ Rendre"))
+        ? h(F, null, h("span", null, "⛔ Point d'autonomie retiré " + au.quand + "."), h("button", surClic(function(){ return rendreAutonomieV(se, slug); }, {className:"btn btn-vert btn-sm", title:"Rend son point d'autonomie à " + pre + " : ses deux compétences d'autonomie repassent en Très bonne maîtrise."}), "↩️ Rendre"))
         : h(F, null, h("span", null, (il === "elle" ? "Elle" : "Il") + " a gardé son point d'autonomie."), h("button", {className:"btn btn-rouge btn-sm", "data-va":"c-fiche-garde" + e, title:"Demande une confirmation, puis retire son point d'autonomie : ses deux compétences d'autonomie passent en Maîtrise insuffisante. La note ne bouge pas. « ↩️ Rendre » le défait."}, "⛔ Retirer le point d'autonomie")))));
 }
 /* ── « 📝 Bilan général » : pré-rempli par l'app (com632.js), modifiable, validé dans la séance (bilans/<slug>) ── */
@@ -569,7 +588,7 @@ function ScFicheGardeC(){
   return Fenetre(ScFicheV(), "⛔ Retirer le point d'autonomie à " + nomEleveV(se, slug) + " ?", "Le soir, d'après ta lecture de ses feuilles",
     h(F, null, h("p", null, "Ses deux compétences d'autonomie passent en Maîtrise insuffisante, pour cette évaluation : « " + libOff("tr-personne-03") + " » et « " + libOff("tr-methodes-02") + " ». La note ne bouge pas.")),
     [h("button", {key:1, className:"btn btn-ghost", "data-va":"c-fiche" + e, title:"Ne retire rien."}, "Annuler"),
-     h("button", {key:2, className:"btn btn-rouge", "data-local":"1", title:"Retire le point d'autonomie, tout de suite. « ↩️ Rendre » le défait.", onClick:function(){ retirerAutonomieSoirV(se, slug).then(function(){ versScene("c-fiche" + e); }); }}, "⛔ Retirer le point d'autonomie")], "c-fiche" + e);
+     h("button", surClic(function(){ return retirerAutonomieSoirV(se, slug).then(function(){ versScene("c-fiche" + e); }); }, {key:2, className:"btn btn-rouge", title:"Retire le point d'autonomie, tout de suite. « ↩️ Rendre » le défait."}), "⛔ Retirer le point d'autonomie")], "c-fiche" + e);
 }
 /* ── « Que dit la feuille ? », depuis la fiche ── */
 function ScQueDitV(){ return h(ScQueDitC); }

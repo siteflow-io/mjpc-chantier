@@ -228,6 +228,11 @@ function verif(ok, quoi, detail){ nb++; if(!ok) ko++; R.push((ok ? "  ok     " :
     const me = await prof.evaluate(() => SCN.mesEvaluations("abrial_julien", null, "3 ESSAI"));
     const me1 = me.filter(x => x.seance === sid)[0];
     verif(me1 && me1.etat === "bilan" && me1.note.n === 3, "Mes évaluations : la copie rendue, 3 / 3", me);
+    // les tranches de maîtrise des Réglages (qcm/settings/maitrise) : 🟢 à partir de 16 / 20 ; sans réglage, celles de la maquette
+    const mt = await prof.evaluate(() => { const avant = [SCN.maitriseDe(15), SCN.maitriseDe(9.9)];
+      return ecrireQCM({"/settings/maitrise": {sur: 20, niveaux: [{em: "🟢", lib: "Très bonne maîtrise", de: 16, a: 20}, {em: "🔵", lib: "Maîtrise satisfaisante", de: 10, a: 16}, {em: "🟠", lib: "Maîtrise fragile", de: 5, a: 10}, {em: "🔴", lib: "Maîtrise insuffisante", de: 0, a: 5}]}})
+        .then(() => new Promise(r => setTimeout(r, 300))).then(() => { const apres = [SCN.maitriseDe(15), SCN.maitriseDe(16)]; return ecrireQCM({"/settings/maitrise": null}).then(() => ({avant, apres})); }); });
+    verif(mt.avant.join() === "vert,orange" && mt.apres.join() === "bleu,vert", "les tranches de maîtrise des Réglages : 15 / 20 est 🔵 quand 🟢 commence à 16 (sans réglage : 🟢)", mt);
     // le raccourci MJPC : un élève connecté au site sur cet appareil (mjpc_eleve) est reconnu, et entre sans code (« Tu es bien … ? »)
     const rac = await ouvrir("?mode=eleve");
     await rac.evaluate(() => { localStorage.setItem("mjpc_eleve", JSON.stringify({display:"CARRÉ Tom", classe:"3 ESSAI", ts:Date.now()})); ELV.choisirClasse("3 ESSAI"); }); await pause(200);

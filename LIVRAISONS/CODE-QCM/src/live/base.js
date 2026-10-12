@@ -94,7 +94,13 @@ var SCN = (function(){
   S.fr1 = function(x){ return (Math.round(x * 10) / 10).toFixed(1).replace(".", ",").replace(",0", ""); };
   var IDX = ["rouge", "orange", "bleu", "vert"];
   S.IDX_MAITRISE = IDX;
-  S.maitriseDe = function(sur20){ return sur20 >= 15 ? "vert" : sur20 >= 10 ? "bleu" : sur20 >= 5 ? "orange" : "rouge"; };
+  // le niveau d'une note sur 20 : les tranches des Réglages (qcm/settings/maitrise : {sur, niveaux:[{em, lib, de, a}]}, comme maitriseV de QCM-3),
+  // sinon celles de la maquette (15, 10, 5)
+  var EM_K = {"🟢":"vert", "🔵":"bleu", "🟠":"orange", "🔴":"rouge"};
+  S.maitriseDe = function(sur20){
+    var R = (LIVE.d.settings || {}).maitrise, l = R && R.niveaux ? liste(R.niveaux).filter(function(t){ return t && EM_K[t.em]; }) : [];
+    if(l.length){ var y = (+sur20 || 0) * (+R.sur || 20) / 20, n = l.slice().sort(function(p, q){ return +q.de - +p.de; }).filter(function(t){ return y >= +t.de; })[0] || l[l.length - 1]; return EM_K[n.em]; }
+    return sur20 >= 15 ? "vert" : sur20 >= 10 ? "bleu" : sur20 >= 5 ? "orange" : "rouge"; };
   S.LIB_MAITRISE = {vert:"Très bonne maîtrise", bleu:"Maîtrise satisfaisante", orange:"Maîtrise fragile", rouge:"Maîtrise insuffisante"};
   S.EM_MAITRISE = {vert:"🟢", bleu:"🔵", orange:"🟠", rouge:"🔴"};
   // les durées de la séance (Réglages) : celles de la base, sinon celles de la maquette

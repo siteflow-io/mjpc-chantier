@@ -37,5 +37,6 @@ if [ -f "${1:-$L/evaluation-qcm.staging.html}" ]; then
   if [ -f "$O/releves-app.json" ]; then node "$L/banc/fidelite.js" "$O" > "$O/fidelite.log" 2>&1
     { echo; echo "── fidélité à la maquette"; sed -n '2p' "$O/fidelite.txt" | sed 's/^/  /'; } >> "$O/resume.txt"; fi
 fi
+[ -d "$O" ] && node "$L/banc/synthese.js" "$O" > /dev/null 2>&1 && { echo; echo "── synthèse (synthese.txt)"; sed 's/^/  /' "$O/synthese.txt"; } >> "$O/resume.txt"
 echo >> "$O/resume.txt"; echo "Durée totale de l'assemblage : $(( $(date +%s) - t0 )) s" >> "$O/resume.txt"
 cat "$O/resume.txt"; echo "→ $O"

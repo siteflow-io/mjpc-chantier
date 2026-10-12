@@ -1,6 +1,15 @@
 {
  "lisezmoi": "Les écarts voulus entre l'app et la maquette v9, nommés un par un (QCM-4-BANC.md, « La fidélité »). Chaque entrée : la scène (ou « * »), la sorte (geste, geste-en-trop, ferme, bulle, texte), le texte exact aux données près (ou un motif), et sa raison. Tout écart qui n'est pas ici est un défaut.",
  "ecarts": [
-  {"scene": "*", "sorte": "geste-en-trop", "texte": "⚙", "raison": "Le bouton ⚙ « Scènes de la maquette » est le seul écran de simulation de la maquette (socle.js) : il n'existe pas dans l'app ; le relevé de la maquette l'écarte déjà, l'app ne doit pas l'avoir."}
- ]
+  {
+   "scene": "*",
+   "sorte": "geste-en-trop",
+   "texte": "⚙",
+   "raison": "Le bouton ⚙ « Scènes de la maquette » est le seul écran de simulation de la maquette (socle.js) : il n'existe pas dans l'app ; le relevé de la maquette l'écarte déjà, l'app ne doit pas l'avoir."
+  }
+ ],
+ "horsApp": {
+  "motif": "^m-",
+  "raison": "Les scènes « m-… » sont les écrans de MJPC (index.html, src/mjpc.js) : COMMUN §1, « src/mjpc.js (les écrans de MJPC, qui vivent dans index.html) n'entre pas dans l'app : personne n'y touche ». L'app n'a pas à les montrer ; seul « Ouvrir la console MJPC → » y mène."
+ }
 }

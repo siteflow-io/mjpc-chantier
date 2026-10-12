@@ -41,9 +41,11 @@ for(const sc of REF.scenes){
   parScene[sc.id] = Object.assign(r, {ecarts: n, proprio: proprio(sc.id)});
   if(n) defauts.push({scene: sc.id, proprio: proprio(sc.id), n, r});
 }
-const nonAtteintes = REF.scenes.filter(s => !APP[s.id]).map(s => s.id);
+const hors = ECARTS.horsApp ? new RegExp(ECARTS.horsApp.motif) : null;
+const nonAtteintes = REF.scenes.filter(s => !APP[s.id] && !(hors && hors.test(s.id))).map(s => s.id);
+const horsApp = REF.scenes.filter(s => hors && hors.test(s.id)).map(s => s.id);
 lignes.push("Fidélité de l'app à la maquette v9 (QCM-4 · BANC) — référence " + REF.maquette + " md5 " + REF.md5);
-lignes.push("Scènes atteintes par le geste : " + nScenes + " / " + REF.scenes.length + " · fidèles (aucun écart non nommé) : " + nSans + " · avec écarts : " + defauts.length + " · écarts nommés dans ecarts-maquette.json : " + ECARTS.ecarts.length);
+lignes.push("Scènes atteintes par le geste : " + nScenes + " / " + (REF.scenes.length - REF.scenes.filter(s => hors && hors.test(s.id)).length) + " (hors MJPC) · fidèles (aucun écart non nommé) : " + nSans + " · avec écarts : " + defauts.length + " · écarts nommés dans ecarts-maquette.json : " + ECARTS.ecarts.length);
 lignes.push("");
 for(const d of defauts){
   const r = d.r;
@@ -56,6 +58,7 @@ for(const d of defauts){
 }
 lignes.push("");
 lignes.push("Scènes que le banc n'a pas encore atteintes par le geste (" + nonAtteintes.length + ") : " + nonAtteintes.join(", "));
+if(horsApp.length) lignes.push("Scènes hors de l'app, nommées dans ecarts-maquette.json (" + horsApp.length + ") : " + horsApp.join(", ") + " — " + ECARTS.horsApp.raison);
 fs.writeFileSync(path.join(SORTIE, "fidelite.txt"), lignes.join("\n") + "\n");
 fs.writeFileSync(path.join(SORTIE, "fidelite.json"), JSON.stringify({atteintes: nScenes, fideles: nSans, parScene, nonAtteintes}, null, 1));
 console.log(lignes.slice(0, 2).join("\n") + "\n→ " + path.join(SORTIE, "fidelite.txt"));

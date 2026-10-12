@@ -69,16 +69,20 @@ async function scene(id, p, appareil){ if(!p) return; try { RELEVES[id] = Object
     await scene("t-binome", t1, "tablette");
     const binJ = tJM[cM], nomBinJ = (B.eleves.find(e => slug(e.nomComplet) === binJ) || {}).nomComplet || "?";
     J.v(new RegExp("Ton binôme : " + esc(nomBinJ)).test(await zoneTexte(t1, cM)), H2, "Julien entré : l'autre moitié nomme son binôme, « Ton binôme : " + nomBinJ + " » (t-binome)", (await zoneTexte(t1, cM)).slice(0, 200));
-    // l'élève de la tablette de Théo qui n'est pas Théo s'assoit d'abord à la tablette de Julien, à la place du binôme de Julien
-    const cT0 = tTL.g === "chevallier_theo" ? "g" : "d", egare = tTL[cT0 === "g" ? "d" : "g"], nomEgare = (B.eleves.find(e => slug(e.nomComplet) === egare) || {}).nomComplet;
-    const tw = await A.tablette("tablette-egaree", "3 ESSAI"); await cliquer(tw, /2 élèves/); await entrer(tw, "g", "ABRIAL Julien".replace("ABRIAL Julien", nomEgare));
-    await scene("t-rejoins", tw, "tablette");
-    J.v(new RegExp("rejoins " + esc("Théo")).test(await zoneTexte(tw, "g")), H2, nomEgare + " à une tablette qui n'est pas la sienne : « Tu es avec Théo… rejoins Théo. » (t-rejoins)", (await zoneTexte(tw, "g")).slice(0, 200));
-    await tw.context().close();
+    // un élève qui n'est pas le binôme de Théo s'assoit à côté de lui : « Pas là ? Choisir un autre élève », puis son code (t-rejoins)
+    const cT = tTL.g === "chevallier_theo" ? "g" : "d", cL = cT === "g" ? "d" : "g", binT = tTL[cL];
+    const nomBinT = (B.eleves.find(e => slug(e.nomComplet) === binT) || {}).nomComplet;
+    const tTom = T.find(t => [t.g, t.d].includes("carre_tom")), binTom = tTom ? tTom[tTom.g === "carre_tom" ? "d" : "g"] : null, preBinTom = ((B.eleves.find(e => slug(e.nomComplet) === binTom) || {}).nomComplet || "? ?").split(" ").slice(1).join(" ");
     await entrer(t1, cM, nomBinJ);
-    await cliquer(t2, /2 élèves/);
-    const cT = cT0, cL = cT === "g" ? "d" : "g";
-    await entrer(t2, cT, "CHEVALLIER Théo"); await entrer(t2, cL, nomEgare);
+    await cliquer(t2, /2 élèves/); await entrer(t2, cT, "CHEVALLIER Théo");
+    J.v(await cliquer(t2, /Pas là \? Choisir un autre élève/, cL), H2, "l'autre moitié : « Pas là ? Choisir un autre élève »");
+    await pause(300); await entrer(t2, cL, "CARRÉ Tom");
+    await scene("t-rejoins", t2, "tablette");
+    J.v(new RegExp("Tu es avec " + esc(preBinTom) + " : laisse cette tablette à quelqu'un d'autre et rejoins " + esc(preBinTom) + "\\.").test(await zoneTexte(t2, cL)), H2, "Tom à la tablette de Théo : « Tu es avec " + preBinTom + " : laisse cette tablette à quelqu'un d'autre et rejoins " + preBinTom + ". » (t-rejoins)", (await zoneTexte(t2, cL)).slice(0, 200));
+    // puis le vrai binôme de Théo entre
+    await cliquer(t2, /Pas là \? Choisir un autre élève|← Retour|Changer/, cL); await pause(300);
+    await entrer(t2, cL, nomBinT);
+    const nomEgare = nomBinT;
     J.v(/ABRIAL Julien/.test(await texte(prof)) && /CHEVALLIER Théo/.test(await texte(prof)), H2, "les quatre entrés se voient sur la console");
     // l'attestation : Julien finit, Michel en est à quelques lignes
     await cocherTout(t1, cJ);

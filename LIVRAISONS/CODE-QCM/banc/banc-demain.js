@@ -32,7 +32,7 @@ const choix = (qi, c) => { const Q = EV4.questions[qi]; if(c === "j") return Q.b
   const A = new O.Appareils(srv, port); await A.demarrer();
   const sess = () => { const a = srv.store.get("qcm/sessionActive") || {}; let id = a["4 ESSAI"] || a[slug("4 ESSAI")]; if(id && typeof id === "object") id = id.sessionId || id.id || id.sid; return {sid: id, s: id ? srv.store.get("qcm/sessions/" + id) || {} : {}}; };
   const etat = () => { const x = sess().s; return x.deroule && typeof x.deroule === "object" ? x.deroule : (x.etat && typeof x.etat === "object" ? x.etat : {}); };   // contrat C1 : deroule
-  let prof, sid = null;
+  let prof, sid = null; const seulRouvert = [];
   try {
     J.section("D.1 Le JSON de l'évaluation de 4e collé, « Lancer » ouvert");
     prof = await A.ouvrir("console", "?mode=prof", 1536, 864);
@@ -90,12 +90,13 @@ const choix = (qi, c) => { const Q = EV4.questions[qi]; if(c === "j") return Q.b
       J.v(await attendre(p0, new RegExp(esc(Q.enonce.slice(0, 40))), 5000), H2, "Q" + (qi + 1) + " sur la tablette 1", (await texte(p0)).slice(0, 160));
       J.v(new RegExp("(Question|QUESTION) " + (qi + 1) + " ?/ ?" + NQ).test(await texte(p0)), H2, "la tablette compte « Question " + (qi + 1) + " / " + NQ + " »", (await texte(p0)).slice(0, 160));
       await cliquer(prof, /Autoriser la réponse/);
-      const parQ = {};
+      const parQ = {}, dejaQ = new Set();
       for(const tour of [1, 2]){
         await pause(3500);
         let rep = 0;
         await Promise.all(TABS.map(async t => { const p = tabs[t.n]; for(const [cote, sl] of cotes(t)){ const o = await choixOuverts(p, cote, Q.choix); if(!o.length) continue;
-          for(const c of choix(qi, PLAN[nomDe(sl)].T[qi])) await cliquer(p, new RegExp("^" + esc(Q.choix[c]) + "$"), cote, {apres: 80}); rep++; } }));
+          if(dejaQ.has(sl)){ seulRouvert.push(nomDe(sl) + " (Q" + (qi + 1) + ")"); continue; }       // cadrage 27 : l'élève seul répond au tour 1, puis il attend
+          for(const c of choix(qi, PLAN[nomDe(sl)].T[qi])) await cliquer(p, new RegExp("^" + esc(Q.choix[c]) + "$"), cote, {apres: 80}); rep++; dejaQ.add(sl); } }));
         parQ[tour] = rep;
         if(qi === 0) await capt(p0, "q1-tour" + tour);
         // B : son temps fini ; « ⏭️ Tour suivant » ou « 🔒 Clore » n'attend pas la fin du temps
@@ -114,6 +115,7 @@ const choix = (qi, c) => { const Q = EV4.questions[qi]; if(c === "j") return Q.b
     J.v(nrep === NQ, H1, "les réponses des 11 questions dans la base", nrep);
     await capt(prof, "derniere-close");
 
+    J.v(seulRouvert.length === 0, H2, "l'élève seul répond au 1er tour, puis il attend : ses choix ne se rouvrent pas au 2e tour (cadrage, point 27)", seulRouvert.join(", "));
     J.section("D.4 L'estimation, la seconde attestation, la correction des 11");
     J.v(await cliquer(prof, /Lancer l'autoévaluation/), H2, "« 📊 Lancer l'autoévaluation »"); await pause(600);
     await Promise.all(TABS.map(async t => { for(const [cote] of cotes(t)) await cliquer(tabs[t.n], /Maîtrise satisfaisante/, cote); }));

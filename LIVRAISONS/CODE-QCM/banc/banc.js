@@ -409,7 +409,7 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
     J.v(await ouvrirFiche("DUVERNAY Michel"), H3, "un clic sur Michel ouvre sa fiche (c-fiche)");
     await scene("c-fiche", prof, "console");
     const vM = nomDeSlug(TABS.find(t => [t.g, t.d].includes("duvernay_michel"))[TABS.find(t => [t.g, t.d].includes("duvernay_michel")).g === "duvernay_michel" ? "d" : "g"]) || "";
-    J.v(new RegExp(esc(vM.split(" ").slice(1).join(" ") || "?")).test(await texte(prof)), H3, "la fiche de Michel : sa feuille lue par son voisin, " + vM, (await texte(prof)).slice(0, 300));
+    J.v(new RegExp("lue par " + esc(vM.split(" ").slice(1).join(" ") || "?"), "i").test(await texte(prof)), H3, "la fiche de Michel : « Sa feuille, lue par " + vM.split(" ").slice(1).join(" ") + " » (c-fiche)", (await texte(prof)).slice(0, 300));
     J.v(await cliquer(prof, /^⛔ Retirer le point d'autonomie$/), H3, "« ⛔ Retirer le point d'autonomie », le soir"); await pause(300);
     await scene("c-fiche-garde", prof, "console");
     await cliquer(prof, /^⛔ Retirer le point d'autonomie$/, ".modal, .modal-box, [role=dialog], .fenetre, .garde"); await pause(300);
@@ -465,7 +465,8 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
     await cliquer(el, /Évaluation d'essai/); await pause(600);
     await scene("e-bilan-lou", el, "eleve");
     J.v(/Bilan/.test(await texte(el)), H3, "le bilan de Lou, corrigé d'après sa feuille, finit par « 📝 Bilan » (e-bilan-lou)", (await texte(el)).slice(-300));
-    J.v(await cliquer(prof, /Masquer les copies/), H3, "« 🙈 Masquer les copies »"); await pause(600);
+    await cliquer(prof, /^📊 Résultats$/); await pause(500);
+    J.v(await cliquer(prof, /Masquer les copies/), H3, "Résultats : « 🙈 Masquer les copies » sur la ligne de la séance rendue"); await pause(600);
     J.v((seanceDuJour().s.copies || {}).masquees === true, H3, "la base : copies.masquees = true", JSON.stringify(seanceDuJour().s.copies));
 
     J.section("2.5 La corbeille, la sauvegarde (gardes, sans rien jeter)");
@@ -474,7 +475,7 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
     J.v(await cliquer(prof, /^💾 Sauvegarde$/), H3, "« 💾 Sauvegarde »"); await pause(400);
     await scene("c-sauvegarde", prof, "console");
     if(await cliquer(prof, /Importer snapshot/)){ await pause(300); await scene("c-importer", prof, "console"); await cliquer(prof, /^Annuler$/); } else J.v(false, H3, "« 📤 Importer snapshot »");
-    if(await cliquer(prof, /^🗑️ Purger les évaluations$/)){ await pause(300); await scene("c-purger", prof, "console"); J.v(/démo/i.test(await texte(prof)), H3, "« Purger les évaluations » : la garde dit que la démo reste (c-purger)"); await cliquer(prof, /^Annuler$/); } else J.v(false, H3, "« 🗑️ Purger les évaluations »");
+    if(await cliquer(prof, /^🗑️ Purger les évaluations$/)){ await pause(300); await scene("c-purger", prof, "console"); J.v(/Toutes les évaluations partent à la corbeille, gardées un an\./.test(await texte(prof)) && /Leurs séances gardent leurs notes\./.test(await texte(prof)), H3, "« Purger les évaluations » : la garde de la maquette (c-purger)", (await texte(prof)).slice(-300)); await cliquer(prof, /^Annuler$/); } else J.v(false, H3, "« 🗑️ Purger les évaluations »");
     J.v(!!(srv.store.get("qcm/evaluations") || {}).demo, H3, "la démo est toujours là (qcm/evaluations/demo)");
   } catch(e){ J.v(false, "banc", "le soir s'est arrêté", e.stack); }
 

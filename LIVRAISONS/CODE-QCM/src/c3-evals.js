@@ -430,7 +430,7 @@ function CollageVC(){
     h("h2", null, "➕ Nouvelle évaluation"),
     h("div", {className:"field"},
       h("label", null, "Coller le JSON de l'évaluation", InfoI("Le JSON que l'instance de création d'éval t'a rendu. L'app le vérifie : le format, le chapitre et ses compétences, chaque question sur une demi-tablette, ce qu'elle vérifie, la durée de la séance.")),
-      h("textarea", {className:"json", value:texte, placeholder:JSON_INDICATION, style:{minHeight:"260px"}, title:"Colle ici le JSON rendu par l'instance de création d'éval : l'app le vérifie aussitôt.",
+      h("textarea", {className:"json", value:texte, placeholder:JSON_INDICATION, style:{minHeight:"260px"}, title:"Colle ici le JSON que l'instance de création d'éval t'a rendu.",
         onChange:function(e){ setTexte(e.target.value); verifier(e.target.value); }})),
     h("div", {className:"row"},
       h("button", {className:"btn btn-ghost", "data-local":"1", title:"Revérifie le JSON collé.", onClick:function(){ verifier(texte); }}, "🔍 Vérifier le format"),

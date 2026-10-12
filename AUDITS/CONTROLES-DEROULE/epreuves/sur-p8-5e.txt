@@ -1,4 +1,4 @@
-contrôles de la conscience n°13 (déroulé) · 2026-10-12 12:42 UTC · maquette : LIVRAISONS/DEROULE/p8-5e/maquette-pilotage-ordi-v9c15p8-manipulable.html · md5 f2f9a3215f211b7d85da40f76b36c3f2
+contrôles de la conscience n°13 (déroulé) · controles.mjs md5 f8a289d50de8d547ab6d5b1c59129cfd · 2026-10-12 16:19 UTC · maquette : LIVRAISONS/DEROULE/p8-5e/maquette-pilotage-ordi-v9c15p8-manipulable.html · md5 f2f9a3215f211b7d85da40f76b36c3f2
 
 K1 — la répétition propre (n°13 · 9)
   ok     K1 · 1280 px · en répétition, rien de posé en position:fixed — 5 → 5
@@ -94,6 +94,32 @@ K8 — une vignette par page dans la colonne de gauche (n°13 · 18)
   ok     K8 · aucune erreur JS
   ok     K8 · aucune boîte système
 
+K10 — après « ■ Arrêter », la fenêtre du tableau revient à ce qu'elle montrait avant la répétition (n°13 · 19)
+  ÉCHEC  K10 · rien au mur avant la répétition : après « ■ Arrêter », la fenêtre ne montre plus rien de la répétition (aucune ligne, aucun compteur) — en répétition «  » 10 l. · après l'arrêt 10 ligne(s) visible(s), compteur «  »
+  ok     K10 · aucune erreur JS
+  ok     K10 · aucune boîte système
+  ÉCHEC  K10 · la diapo 1 à 3 dévoilés au mur avant la répétition : après « ■ Arrêter », la fenêtre la remontre telle quelle — avant 3 l. «  » · en répétition 1 l. «  » · après 1 l. «  »
+  ok     K10 · aucune erreur JS
+  ok     K10 · aucune boîte système
+
+K11 — la vue « ⧉ Tableau » porte le compteur de page et montre la même page (n°13 · 20)
+  ÉCHEC  K11 · à 0 dévoilé : la vue dit « page 1 / 2 », comme le mur — vue «  » · mur «  »
+  ÉCHEC  K11 · ▶ jusqu'à la page 2 : la vue dit « page 2 / 2 » et montre les mêmes lignes que le mur — vue «  » [] · mur «  » []
+  ok     K11 · aucune erreur JS
+  ok     K11 · aucune boîte système
+
+K12 — dans l'atelier, le curseur reste visible dans un paragraphe plus haut que la diapo (n°13 · 21)
+  ÉCHEC  K12 · quinze segments tapés sans Entrée : à chaque segment, le curseur est dans le cadre, la zone « ✎ » et le compteur ne recouvrent pas la ligne du curseur, rien ne sort par le haut — au segment 2 : curseur [476,498] pour un cadre [102,510] · zone ✎ chevauche true · compteur chevauche false · sort par le haut false
+  ÉCHEC  K12 · aucune diapo créée, « À régler » dit « trop pleine » — 23 → 23 diapos · trop pleine false
+  ok     K12 · aucune erreur JS
+  ok     K12 · aucune boîte système
+
+K13 — dans l'atelier, Échap sort de la ligne et Maj+← change de page (n°13 · 22)
+  ÉCHEC  K13 · Échap : le curseur quitte la ligne, le texte reste, aucune sélection — avant : dans le texte true · après : dans le texte true, texte intact true, sélection 0 caractère(s)
+  ÉCHEC  K13 · puis Maj+← : la page 1 — «  » → «  »
+  ok     K13 · aucune erreur JS
+  ok     K13 · aucune boîte système
+
 K9 — le parcours fixe
   ok     K9 · 1 · atelier : une ligne écrite dans la diapo 1 y est
   ok     K9 · 2 · atelier : une note écrite sur l'étape 1 est gardée
@@ -108,5 +134,5 @@ K9 — le parcours fixe
   ok     K9 · aucune erreur JS
   ok     K9 · aucune boîte système
 
-90 vérifications, 18 échec(s)
---- fin : 18 défaut(s)
+108 vérifications, 26 échec(s)
+--- fin : 26 défaut(s)

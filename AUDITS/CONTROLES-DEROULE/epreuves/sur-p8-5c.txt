@@ -1,4 +1,4 @@
-contrôles de la conscience n°13 (déroulé) · 2026-10-12 12:38 UTC · maquette : LIVRAISONS/DEROULE/p8-5c/maquette-pilotage-ordi-v9c15p8-manipulable.html · md5 abbf3d2f61e52cf64e33670c907e8983
+contrôles de la conscience n°13 (déroulé) · controles.mjs md5 f8a289d50de8d547ab6d5b1c59129cfd · 2026-10-12 16:14 UTC · maquette : LIVRAISONS/DEROULE/p8-5c/maquette-pilotage-ordi-v9c15p8-manipulable.html · md5 abbf3d2f61e52cf64e33670c907e8983
 
 K1 — la répétition propre (n°13 · 9)
   ok     K1 · 1280 px · en répétition, rien de posé en position:fixed — 5 → 5
@@ -15,7 +15,7 @@ K1 — la répétition propre (n°13 · 9)
   ok     K1 · aucune boîte système
 
 K2 — les notes de présentateur, par étape (n°13 · 10)
-  ok     K2 · atelier : deux paragraphes écrits, accrochés aux étapes 1 et 3 —  | Dire que le tableau des trois colonnes est au brouillon, pas au propre — rassurer sur l'orthographe. Insister : « ce 
+  ÉCHEC  K2 · atelier : deux paragraphes écrits, accrochés aux étapes 1 et 3 —  | Dire que le tableau des trois colonnes est au brouillon, pas au propre — rassurer sur l'orthographe. Insister : « ce 
   ok     K2 · classe, heure lancée : ▶ ×3 → le paragraphe vif est celui de l'étape 3 (ceux d'avant sont faits) ; ◀ → celui de l'étape 1 — à 3 : ["⌂","1","3*"] · à 2 : ["⌂","1*","3"]
   ok     K2 · classe : les notes s'écrivent (éditables), sans entrée de journal — éditables 3 · journal 0
   ok     K2 · répétition : les notes sont en lecture seule — éditables 0
@@ -34,7 +34,7 @@ K4 — le panneau des notes suit la diapo ; le premier caractère après Entrée
   ok     K4 · frappe puis ▶ aussitôt → le panneau rend la diapo 2 sans le texte, gardé dans la note de la diapo 1 ; ◀ (garde « Y aller ») le remontre — ▶ ×7 · panneau sur la 2 : true · focus notes false · FIN-UN sur la 2 : false · gardé : true · retour true / true
   ok     K4 · aucune erreur JS
   ok     K4 · aucune boîte système
-  ÉCHEC  K4 · atelier : Entrée puis frappe immédiate, trois fois → le premier caractère est là — [" 0","","yz 2"]
+  ÉCHEC  K4 · atelier : Entrée puis frappe immédiate, trois fois → le premier caractère est là — ["yz 0","","z 2"]
   ok     K4 · aucune erreur JS
   ok     K4 · aucune boîte système
 
@@ -94,11 +94,37 @@ K8 — une vignette par page dans la colonne de gauche (n°13 · 18)
   ok     K8 · aucune erreur JS
   ok     K8 · aucune boîte système
 
+K10 — après « ■ Arrêter », la fenêtre du tableau revient à ce qu'elle montrait avant la répétition (n°13 · 19)
+  ÉCHEC  K10 · rien au mur avant la répétition : après « ■ Arrêter », la fenêtre ne montre plus rien de la répétition (aucune ligne, aucun compteur) — en répétition «  » 10 l. · après l'arrêt 10 ligne(s) visible(s), compteur «  »
+  ok     K10 · aucune erreur JS
+  ok     K10 · aucune boîte système
+  ÉCHEC  K10 · la diapo 1 à 3 dévoilés au mur avant la répétition : après « ■ Arrêter », la fenêtre la remontre telle quelle — avant 3 l. «  » · en répétition 1 l. «  » · après 1 l. «  »
+  ok     K10 · aucune erreur JS
+  ok     K10 · aucune boîte système
+
+K11 — la vue « ⧉ Tableau » porte le compteur de page et montre la même page (n°13 · 20)
+  ÉCHEC  K11 · à 0 dévoilé : la vue dit « page 1 / 2 », comme le mur — vue «  » · mur «  »
+  ÉCHEC  K11 · ▶ jusqu'à la page 2 : la vue dit « page 2 / 2 » et montre les mêmes lignes que le mur — vue «  » [] · mur «  » []
+  ok     K11 · aucune erreur JS
+  ok     K11 · aucune boîte système
+
+K12 — dans l'atelier, le curseur reste visible dans un paragraphe plus haut que la diapo (n°13 · 21)
+  ÉCHEC  K12 · quinze segments tapés sans Entrée : à chaque segment, le curseur est dans le cadre, la zone « ✎ » et le compteur ne recouvrent pas la ligne du curseur, rien ne sort par le haut — au segment 2 : curseur [476,498] pour un cadre [102,510] · zone ✎ chevauche true · compteur chevauche false · sort par le haut false
+  ÉCHEC  K12 · aucune diapo créée, « À régler » dit « trop pleine » — 23 → 23 diapos · trop pleine false
+  ok     K12 · aucune erreur JS
+  ok     K12 · aucune boîte système
+
+K13 — dans l'atelier, Échap sort de la ligne et Maj+← change de page (n°13 · 22)
+  ÉCHEC  K13 · Échap : le curseur quitte la ligne, le texte reste, aucune sélection — avant : dans le texte true · après : dans le texte true, texte intact true, sélection 0 caractère(s)
+  ÉCHEC  K13 · puis Maj+← : la page 1 — «  » → «  »
+  ok     K13 · aucune erreur JS
+  ok     K13 · aucune boîte système
+
 K9 — le parcours fixe
   ok     K9 · 1 · atelier : une ligne écrite dans la diapo 1 y est
-  ok     K9 · 2 · atelier : une note écrite sur l'étape 1 est gardée
+  ÉCHEC  K9 · 2 · atelier : une note écrite sur l'étape 1 est gardée
   ok     K9 · 3 · l'heure lancée : « 0 / 7 dévoilés » (6 éléments + la ligne écrite), le chrono tourne — « 0 / 7 dévoilés »
-  ok     K9 · 4 · ▶ ×3 : « 3 / 7 dévoilés », le panneau montre la note de la diapo 1 — « 3 / 7 dévoilés »
+  ÉCHEC  K9 · 4 · ▶ ×3 : « 3 / 7 dévoilés », le panneau montre la note de la diapo 1 — « 3 / 7 dévoilés »
   ok     K9 · 5 · PageDown → la garde, « Y aller » → la diapo 2 est courante, le panneau ne montre plus la note de la 1 — garde true · courante 1
   ok     K9 · 6 · « 🖥 Écran 2 » : la fenêtre du tableau montre la diapo 2 (« Le Voyageur… ») — ACTIVITÉ 1 — TABLEAU 1 Le Voyageur contemplant une mer de nuages, Caspar David F
   ok     K9 · 7 · retour sur la diapo 1, « A » rouge sur l'étape 2 → le texte est rouge
@@ -108,5 +134,5 @@ K9 — le parcours fixe
   ok     K9 · aucune erreur JS
   ok     K9 · aucune boîte système
 
-90 vérifications, 24 échec(s)
---- fin : 24 défaut(s)
+108 vérifications, 35 échec(s)
+--- fin : 35 défaut(s)

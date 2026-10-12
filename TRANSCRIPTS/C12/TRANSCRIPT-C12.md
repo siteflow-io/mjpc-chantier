@@ -20843,3 +20843,35 @@ Réponse mot pour mot :
 915. **Tu n'as plus rien à faire pour eux ce soir.** Ne leur colle rien. Si l'un d'eux s'arrête ou te pose une question, colle-moi ce qu'il dit.
 
 12/10/2026 17:45 MEMO
+
+---
+
+## TOUR 677 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (12/10, 18:48) quand est ce que tout sera fini et que qcm sera en ligne et sans bugs?
+
+---
+
+## TOUR 677 — Claude (conscience n°12)
+
+Mesuré : `code-qcm` à `b18e91e5` (18:47), une soixantaine de commits des quatre depuis 17:37 ; `DEFAUTS-OUVERTS.md` (essais de QCM-4 à 18:10 et 18:40) ; l'app assemblée par `build.py` dans ma copie (md5 `c04006f5…`) ; mes contrôles dessus : 30 vérifications, 2 échecs, tous deux dans K6 et dus à mes contrôles (clic avant la fin du passage ; focus pris par le clic de la console ; puis le compteur « ONT RÉPONDU » en capitales) ; corrigés : 30 vérifications, 0 échec ; nouvelles empreintes ; exécutants prévenus dans `DEMANDES.md`.
+
+Réponse mot pour mot :
+
+À jouer : rien · en cours chez l'exécutant : les quatre du code (une soixantaine de sauvegardes depuis 17:37) et celui de la maquette (fin de l'étape C) · ouvert : tes 11 questions ; ton « oui » au point 921
+
+916. **Le calendrier ne bouge pas.** À 06:30 au plus tard, ils livrent. À 07:00, mon audit commence. Avant 09:00, mon verdict : ça va ou ça ne va pas. Si ça va, je mets en ligne avant 09:00, donc avant ta limite de 10:30. Si ça ne va pas, tu fais cours avec la 7.7.2, déjà en ligne.
+
+917. **« Sans bugs », je ne peux pas te le promettre ce soir** : c'est l'audit de demain matin qui le dira, preuves à l'appui. Je ne mettrai rien en ligne avec un défaut connu.
+
+918. **Où ils en sont à 18:48, mesuré** : j'ai assemblé leur app et passé mes contrôles dessus. L'heure se joue de bout en bout sur une tablette partagée et 3 questions : le lancement, l'entrée par le code, les deux tours, la correction dans l'ordre des plus ratées, « Trouvée au dernier moment », la co-évaluation, le bilan et les notes justes. 30 vérifications, 0 échec.
+
+919. **Mais ce n'est pas fini.** À 18:40, le banc de QCM-4, avec 12 tablettes et l'évaluation de demain, trouvait encore quatre défauts : une tablette vide à chaque question, les élèves d'une question close tous marqués « pas de réponse », « Rouvrir pour un élève » qui ne se referme pas, le téléphone vide. Je ne sais pas s'ils sont déjà corrigés : on le saura à l'assemblage de 20:00. Le soir (résultats, PDF, copies) et le reste n'ont pas encore été éprouvés.
+
+920. **Une faute de ma part** : deux de mes contrôles étaient faux. Ils cliquaient trop tôt, et un champ perdait son curseur à cause de leur propre clic. Je les ai corrigés et j'ai prévenu les quatre. QCM-2 avait cherché dans l'app un défaut qui venait de moi.
+
+921. **Une chose à régler** : je ne travaille pas entre tes messages. Pour que mon audit commence à 06:35 même si tu dors, je peux me programmer un réveil dans cette conversation. Dis « oui » si tu le veux.
+
+12/10/2026 19:04 MEMO

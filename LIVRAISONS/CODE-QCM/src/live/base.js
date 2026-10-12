@@ -894,8 +894,12 @@ var ELV = (function(){
   // la co-évaluation : « ok », « mal » ou « peut » ; « mal » ouvre une alerte que Paul tranche
   E.coeval = function(statut, qi, ecrit, x){ x = qui(x); var id = sid(); if(!x || !id) return Promise.resolve();
     var maj = {}, now = LIVE.maintenant(); maj[cheminS(id, "coeval/" + x)] = {statut:statut, qi:qi == null ? null : qi, ecrit:ecrit == null ? null : ecrit, ms:now};
-    if(statut === "mal" && qi != null){ var aid = "a_" + x + "_" + qi; maj[cheminS(id, "alertes/" + aid)] = {qi:qi, eleves:[x, SCN.voisinDe(x)].filter(Boolean), ms:now, ecrit:ecrit == null ? null : ecrit, lu:(SCN.lecture(x, qi) || {}).choix || null}; }
-    return ecrireQCM(maj, "coeval").then(function(){ if(statut === "peut" && typeof ACT !== "undefined") return ACT.syncALire(id); }); };
+    var aid = statut === "mal" && qi != null ? "a_" + x + "_" + qi : null, retirees = 0;
+    if(aid) maj[cheminS(id, "alertes/" + aid)] = {qi:qi, eleves:[x, SCN.voisinDe(x)].filter(Boolean), ms:now, ecrit:ecrit == null ? null : ecrit, lu:(SCN.lecture(x, qi) || {}).choix || null};
+    // l'élève a changé d'avis (d'accord, ou une autre question) : ses alertes d'avant, pas encore tranchées, s'en vont
+    var al = SCN.sess(id).alertes || {}, re = new RegExp("^a_" + x.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "_\\d+$");
+    Object.keys(al).forEach(function(k){ if(k !== aid && re.test(k) && !(al[k] || {}).tranche){ maj[cheminS(id, "alertes/" + k)] = null; retirees++; } });
+    return ecrireQCM(maj, "coeval").then(function(){ if((statut === "peut" || retirees) && typeof ACT !== "undefined") return ACT.syncALire(id); }); };
   E.sortir = function(cote){ delete E.cotes[cote]; if(!E.cotes.g && !E.cotes.d){ E.tab = null; E.n = null; } garder(); };
   return E;
 })();

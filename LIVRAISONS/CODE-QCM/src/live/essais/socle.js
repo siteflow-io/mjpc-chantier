@@ -196,6 +196,11 @@ function verif(ok, quoi, detail){ nb++; if(!ok) ko++; R.push((ok ? "  ok     " :
     // la co-évaluation, une alerte, son verdict ; le bilan ; terminer
     await prof.evaluate(() => ACT.questionSuivante());
     verif(base("sessions/" + sid + "/deroule/ph") === "coeval", "après la dernière question : la co-évaluation", base("sessions/" + sid + "/deroule"));
+    // Julien dit « ❌ » à Q2, se ravise pour Q3, puis finit d'accord : ses alertes d'avant s'en vont
+    await tab.evaluate(() => ELV.coeval("mal", 1, null, "abrial_julien")); await pause(200);
+    await tab.evaluate(() => ELV.coeval("mal", 2, null, "abrial_julien")); await pause(200);
+    const alJ = Object.keys(base("sessions/" + sid + "/alertes") || {});
+    verif(alJ.length === 1 && alJ[0] === "a_abrial_julien_2", "« ↩️ Changer » puis une autre question : seule l'alerte de la nouvelle reste", alJ);
     await tab.evaluate(() => { ELV.coeval("ok", null, null, "abrial_julien"); ELV.coeval("mal", 0, [3], "baudry_lea"); });
     await pause(400);
     const al = base("sessions/" + sid + "/alertes");

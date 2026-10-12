@@ -31,3 +31,11 @@ Le miroir de la 7.7.1 est tenu à chaque passage : `phase` (`idle`, `reflexion`,
 ## C4 — `ELV` désigne l'élève
 
 Les gestes de l'élève se font dans une moitié de tablette : chaque fonction d'`ELV` prend, en dernier argument facultatif, l'`eleveSlug` de la moitié (`ELV.repondre(qi, choix, eleve)`) ; sans lui, c'est l'élève de la moitié courante (`ELV.moitie(cote)` la fixe). `ELV.lire(qi, choix, eleve)` : `eleve` est **le propriétaire de la feuille** (la moitié où le voisin clique) ; le lecteur (`par`) est son voisin.
+
+## C5 — Ce que QCM-3 · SOIR écrit lui-même (accordé, 12/10 19:10)
+
+Accordé tel que QCM-3 l'a demandé (DEMANDES, 17:45) : pour n'importe quelle séance passée, `autonomie/<slug>` (`quand: "soir"`), `aLire/<id>` (`lue`, `corrige`), `lectures/<qi>/<slug>` (`par: "prof"` ou `"feuille"`), `copies`, et deux nouveaux chemins :
+- `qcm/sessions/<sid>/bilans/<slug>` : `{texte, valide: ms}`, le « 📝 Bilan général » validé ;
+- `corbeille/qcm-<sorte>-<ms>` à la racine du hub : `{_meta:{motif, chemin, app:"evaluation-qcm", ts, sorte, titre}, data}`, la forme de `mjpcInjecterAvecArchive` de la 7.7.1.
+
+`ACT.rendreCopies(sid)`, `ACT.masquerCopies(sid)`, `ACT.retirerAutonomie(slug, "soir", sid)`, `ACT.rendreAutonomie(slug, sid)`, `ACT.lireFeuille(aLireId, choix, sid)` existent et prennent la séance en dernier argument. `SCN.LIVE` vaut `true` ; `SCN.resultat(sid, slug)` rend la forme de la maquette. L'identifiant d'une ligne « à lire » (`aLire/<id>`) est `<slug>_<qi>_<sorte>` (`sorte` : `b`, `aucun`, `co`), celui que `SCN.aLireSeance(sid)` donne à chaque ligne (`id`).

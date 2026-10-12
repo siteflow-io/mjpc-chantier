@@ -72,7 +72,7 @@ function cheminS(sid, sous){ return "/sessions/" + sid + (sous ? "/" + sous : ""
 
 /* ══════════════════════ SCN : les fonctions de la maquette, sur la séance réelle ══════════════════════ */
 var SCN = (function(){
-  var S = {};
+  var S = {LIVE:true};   // LIVE : la séance réelle (QCM-2 et QCM-3 le testent : SCN.LIVE)
   /* ── Les aides de la maquette, telles quelles ── */
   function sec(h){ var p = String(h).split(":").map(Number); return p[0] * 3600 + p[1] * 60 + (p[2] || 0); }
   function hm(s){ s = Math.round(s / 60) * 60; var h = Math.floor(s / 3600) % 24, mn = Math.floor((s % 3600) / 60); return h + ":" + (mn < 10 ? "0" : "") + mn; }
@@ -336,8 +336,8 @@ var SCN = (function(){
   /* ── Le moment : l'état de la séance réelle, au format des moments de la maquette (k = « LIVE ») ── */
   S.moment = function(k){
     var sid = k && k !== "LIVE" && (LIVE.d.sessions || {})[k] ? k : S.sid(), s = S.sess(sid), e = S.etat(sid);
-    if(!s || !e) return {k:"LIVE", seance:null, ph:"avant", date:dateFr(LIVE.maintenant()), heure:heureFr(LIVE.maintenant(), true), etape:"avant l'heure"};
-    var now = LIVE.maintenant(), c = S.compteurs("LIVE", sid), m = {k:"LIVE", seance:sid, date:dateFr(now), heure:heureFr(now, true), ph:e.ph, qi:e.qi, tour:e.tour || null, reste:S.reste(e),
+    if(!s || !e) return {k:"LIVE", seance:null, ph:"avant", date:dateFr(LIVE.maintenant()), heure:heureFr(LIVE.maintenant()), heureS:heureFr(LIVE.maintenant(), true), etape:"avant l'heure", ecartees:[], annulees:[], partis:{}};
+    var now = LIVE.maintenant(), c = S.compteurs("LIVE", sid), m = {k:"LIVE", seance:sid, date:dateFr(now), heure:heureFr(now), heureS:heureFr(now, true), ph:e.ph, qi:e.qi, tour:e.tour || null, reste:S.reste(e),
       cote:e.cote || null, pour:e.pour || null, ecartees:S.ecartees(sid), annulees:S.annulees(sid), temps:s.temps || {}, partis:{}, etape:e.ph};
     Object.keys(S.partis(sid)).forEach(function(x){ m.partis[x] = heureFr(S.partis(sid)[x]); });
     if(e.ph === "pause" && e.reprise){ m.pause = {qi:e.reprise.qi, tour:e.reprise.tour, ph:e.reprise.ph}; m.qi = e.reprise.qi; m.tour = e.reprise.tour; }
@@ -349,7 +349,7 @@ var SCN = (function(){
     if(e.ph === "estim") m.pasEstime = c.pasEstime;
     if(e.ph === "att2") m.enCours = c.enCours;
     var alertes = s.alertes || {}; m.alertes = Object.keys(alertes).map(function(id){ return Object.assign({id:id}, alertes[id]); });
-    m.tranche = m.alertes.some(function(a){ return a.tranche; }) ? "oui" : null;
+    m.tranche = m.alertes.length && m.alertes.every(function(a){ return a.tranche; }) ? "oui" : null;
     m.retires = S.retiresSeance(sid, k);
     return m;
   };
@@ -646,6 +646,8 @@ var ELV = (function(){
   function garder(){ try { localStorage.setItem("qcm_tablette", JSON.stringify({tab:E.tab, cotes:E.cotes, n:E.n, sid:SCN.sid(), classe:LIVE.classeSlug})); } catch(e){} LIVE.changer(); }
   E.oublier = function(){ E.tab = null; E.cotes = {}; E.n = null; try { localStorage.removeItem("qcm_tablette"); } catch(e){} LIVE.changer(); };
   E.courant = null;
+  // qui est sur cet appareil : {combien, n (la tablette), g, d (les slugs des deux moitiés), classe}
+  E.ici = function(){ return {combien:E.n || null, n:E.tab || null, g:E.cotes.g || null, d:E.cotes.d || null, classe:LIVE.classeSlug || null}; };
   E.moitie = function(cote){ E.courant = cote; return E.cotes[cote] || null; };
   function qui(x){ return x || (E.courant && E.cotes[E.courant]) || null; }
   function sid(){ return SCN.sid(); }

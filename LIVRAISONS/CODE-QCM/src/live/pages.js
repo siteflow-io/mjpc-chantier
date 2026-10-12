@@ -30,15 +30,37 @@ var PAGES = (function(){
   P.tableau = function(){ var e = SCN.etat() || {}; return e.ph === "lecture" ? "b-recopie" : e.ph === "revele" ? "b-correction" : "b-reponse"; };
   // le téléphone : la télécommande ; à la correction, avant et après la révélation
   P.telephone = function(){ var e = SCN.etat() || {}; return e.ph === "lecture" ? "p-corr-avant" : e.ph === "revele" || e.ph === "coeval" || e.ph === "bilan" ? "p-corr-apres" : "p-reponse"; };
+  /* Les points d'entrée des écrans (DEMANDES : QCM-2 · HEURE, 17:40 ; QCM-3 · SOIR, 17:45) : quand ils existent, ce sont eux qui dessinent.
+     EcranConsoleHeure() (la console de l'appel au bilan), EcranTablette(), EcranTableau(), EcranTelephone() ; EcranConsoleSoir(id) pour les
+     écrans hors de l'heure (ECRANS_SOIR_V) ; EcranMesEvaluations() pour l'élève. À défaut, l'écran de la maquette (son id). */
+  function fn(n){ return typeof window[n] === "function" ? window[n] : null; }
+  function soir(id){ var l = (typeof ECRANS_SOIR_V !== "undefined" && ECRANS_SOIR_V) || {}, l2 = (typeof ECRANS_EVALS_V !== "undefined" && ECRANS_EVALS_V) || {}; return !!(l[id] || l2[id]) && !!fn("EcranConsoleSoir"); }
+  P.estSoir = soir;
   P.ecran = function(){
     var app = LIVE.appareil();
     if(app === "accueil") return {id:"c-accueil", vue:"console"};
-    if(app === "tablette") return {id:"t-live", vue:"tablette", render:function(){ return h(TabletteLive); }, cle:"tablette"};
+    if(app === "tablette"){
+      if(NAV.ecran === "e-mes-evals" && fn("EcranMesEvaluations")) return {id:"e-mes-evals", vue:"tablette", render:function(){ return fn("EcranMesEvaluations")(); }, cle:JSON.stringify(NAV.params)};
+      if(fn("EcranTablette") && SCN.sid() && ELV.n && (ELV.cotes.g || ELV.cotes.d)) return {id:"t-live", vue:"tablette", render:function(){ return fn("EcranTablette")(); }, cle:"tablette-heure"};
+      return {id:"t-live", vue:"tablette", render:function(){ return h(TabletteLive); }, cle:"tablette"};
+    }
     // la console, le tableau, le téléphone : la séance pilotée est celle de la classe choisie, sinon la seule séance active
     choisirSeance();
-    if(app === "console"){ if(NAV.ecran) return {id:NAV.ecran, cle:JSON.stringify(NAV.params)}; return {id:P.console()}; }
-    if(app === "tableau") return {id:P.tableau()};
-    if(app === "telephone"){ if(NAV.ecran) return {id:NAV.ecran, cle:JSON.stringify(NAV.params)}; return {id:P.telephone()}; }
+    if(app === "console"){
+      if(NAV.ecran && soir(NAV.ecran)) return {id:NAV.ecran, vue:"console", render:function(){ return fn("EcranConsoleSoir")(NAV.ecran); }, cle:NAV.ecran + JSON.stringify(NAV.params)};
+      // une fenêtre ouverte sur place : EcranConsoleHeure la dessine s'il le déclare (EcranConsoleHeure.fenetres), sinon l'écran de la maquette
+      if(NAV.ecran && fn("EcranConsoleHeure") && fn("EcranConsoleHeure").fenetres) return {id:NAV.ecran, vue:"console", render:function(){ return fn("EcranConsoleHeure")(); }, cle:"console-heure"};
+      if(NAV.ecran) return {id:NAV.ecran, cle:JSON.stringify(NAV.params)};
+      var id = P.console();
+      if(id !== "c-lancer" && fn("EcranConsoleHeure")) return {id:id, vue:"console", render:function(){ return fn("EcranConsoleHeure")(); }, cle:"console-heure"};
+      return {id:id};
+    }
+    if(app === "tableau"){ if(fn("EcranTableau")) return {id:P.tableau(), vue:"tableau", render:function(){ return fn("EcranTableau")(); }, cle:"tableau"}; return {id:P.tableau()}; }
+    if(app === "telephone"){
+      if(NAV.ecran) return {id:NAV.ecran, cle:JSON.stringify(NAV.params)};
+      if(fn("EcranTelephone")) return {id:P.telephone(), vue:"telephone", render:function(){ return fn("EcranTelephone")(); }, cle:"telephone"};
+      return {id:P.telephone()};
+    }
     return {id:"c-accueil"};
   };
   function choisirSeance(){

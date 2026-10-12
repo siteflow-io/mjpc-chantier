@@ -20361,3 +20361,31 @@ Réponse mot pour mot :
 831. **L'exécutant de la maquette a fini sa première étape à 11:44** : ses propres vérifications retrouvent sur la v8 les neuf défauts, et d'autres. Il fait maintenant les corrections.
 
 12/10/2026 11:53 MEMO
+
+---
+
+## TOUR 664 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (12/10, 13:07) c'est long. l'exécutant a fini A, il est en train de faire B et il lui reste C.
+
+---
+
+## TOUR 664 — Claude (conscience n°12)
+
+Lu au sas : la branche `maquette-qcm` de `c8a5b81a` (07:46) à `c53aae11` (12:52) ; `sorties/gardes-16-a-20-sur-v8.txt` de l'exécutant : 3 149 destinations distinctes et 1 330 adresses d'écrans déjà relevés, 3 318 pages, les gardes 9 à 15 rejouées sur chaque destination aux versions de travail et à la v9.
+
+Réponse mot pour mot :
+
+À jouer : rien de neuf, la v8 reste la dernière livrée et elle ne va pas · en cours chez l'exécutant : le complément 4, étape B · ouvert : son étape C, puis mon audit.
+
+832. **Mesuré au sas.** L'étape A a duré de 07:46 à 11:44, quatre heures. L'étape B est en cours : sa dernière sauvegarde date de 12:52. Il reste l'étape C.
+
+833. **La cause est mon complément.** Je lui ai demandé de jouer chaque écran qu'un geste ouvre, et sur chacun de rejouer toutes les vérifications. Il en a trouvé 3 149, en plus des 169 scènes : à chaque passage de son banc, ce sont des milliers de pages et des dizaines de milliers de clics. J'aurais dû mesurer ce coût avant d'écrire cette vérification : c'est ta règle du 07/10, et je ne l'ai pas appliquée.
+
+834. **Je ne sais pas combien de temps il lui reste** : je ne vois pas sa session, seulement ses sauvegardes.
+
+835. **Je ne te propose pas de changer sa consigne en route** : il finit, c'est ta règle du 05/10. Pour les mandats de code, je mesurerai le coût de chaque vérification avant de l'écrire, et je te dirai d'avance combien de temps un passage du banc doit prendre.
+
+12/10/2026 13:08 MEMO

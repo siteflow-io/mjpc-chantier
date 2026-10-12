@@ -862,8 +862,10 @@ var ECRANS_SOIR_V = {
   "c-rendre":ScRendreV, "c-corbeille":CorbeilleSeanceV, "c-sauvegarde":SauvegardeV, "c-importer":ScImporterV, "c-purger":ScPurgerV, "x632-pdf":PdfApercuV,
   "e-mes-evals":MesEvaluationsV, "e-mes-evals-rendue":MesEvaluationsV, "e-bilan-lou":BilanRenduV
 };
+Object.keys(ECRANS_EVALS_V).forEach(function(id){ ECRANS_SOIR_V[id] = ECRANS_EVALS_V[id]; });
 Object.keys(ECRANS_SOIR_V).forEach(function(id){ var sc = sceneParId(id); if(sc) refaire(id, vivantOu(ECRANS_SOIR_V[id], sc.render)); });
+var ECRANS_SOIR = Object.keys(ECRANS_SOIR_V);
 PdfApercu = vivantOu(PdfApercuV, PdfApercu);
 // les points d'entrée, pour les pages du socle (DEMANDES.md, QCM-3 → QCM-1)
-function EcranConsoleSoir(id){ var f = ECRANS_SOIR_V[id] || (typeof ECRANS_EVALS_V !== "undefined" && ECRANS_EVALS_V[id]); return f ? f() : null; }
+function EcranConsoleSoir(id){ var f = ECRANS_SOIR_V[id]; return f ? h(GardeV, {key:location.hash}, f()) : null; }
 function EcranMesEvaluations(){ return paramHash("seance") ? BilanRenduV() : MesEvaluationsV(); }

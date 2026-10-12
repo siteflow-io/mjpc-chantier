@@ -246,3 +246,340 @@ function sansCoupe(t){
   if(i < t.length) out.push(t.slice(i));
   return out.length > 1 ? out : t;
 }
+
+/* ═══════════════ [QCM-3 · SOIR] Les évaluations de la base (qcm/evaluations) : la liste, le collage, l'éditeur, la feuille ═══════════════
+   Une évaluation est complète quand elle a son chapitre, et chaque question ses deux temps, ses compétences et ce qu'elle vérifie :
+   sinon « Lancer » reste fermé (COMMUN §3.1). Le collage vérifie tout ce que le prompt demande, avant d'enregistrer. */
+function chapEv(e){ return e.chapitre ? chapitreVue(e.chapitre) : null; }
+function manquesV(e){
+  var l = [];
+  if(!chapEv(e)) l.push("le chapitre");
+  if(!e.questions.length || e.questions.some(function(q){ return q.reflexion == null || q.reponse == null; })) l.push("les deux temps de chaque question");
+  if(!e.questions.length || e.questions.some(function(q){ return !(q.competences || []).length; })) l.push("les compétences");
+  if(!e.questions.length || e.questions.some(function(q){ return !q.verifie; })) l.push("ce que chaque question vérifie");
+  return l;
+}
+function seancesDeLEval(id){ var X = v3Sessions(); return Object.keys(X).filter(function(s){ return X[s] && X[s].evalId === id; }); }
+function passeesV(id){ return seancesV().filter(function(se){ return se.ev && se.ev.id === id && se.terminee && !se.demo && !se.test; }).sort(function(a, b){ return a.ms - b.ms; }).map(function(se){ return {classe:se.classe, date:se.date.slice(0, 5)}; }); }
+function dureesV(){ var d = v3Reglages().durees; return d && typeof d === "object" ? Object.assign({}, SCN.DUREES, d) : SCN.DUREES; }
+function dureeEstimeeV(ev, seul){
+  var D = dureesV(), q = 0, tours = seul ? 1 : 2; ev.questions.forEach(function(x){ q += (x.reflexion || 0) + tours * (D.decompte + (x.reponse || 0) + D.b) + D.entre; });
+  var c = ev.questions.length * D.correctionParQ, total = D.installation + q + D.estimAttest + c + (seul ? 0 : D.coevalBilan);
+  return {questions:q, correction:c, total:total, min:Math.round(total / 60)};
+}
+// écrire une évaluation : une évaluation déjà passée garde, dans chacune de ses séances, l'énoncé qui a servi (ses notes ne bougent pas)
+function enregistrerEval(id, e){
+  var E = v3Evals(), ancienne = id ? E[id] : null, nid = id && id !== "vide" ? id : "eval_" + Date.now(), X = v3Sessions();
+  var servi = ancienne ? seancesDeLEval(nid) : [], u = [];
+  servi.forEach(function(s){ if(!X[s].evalSnapshot) u.push(v3Set(v3Q("sessions/" + s + "/evalSnapshot"), v3Sans(ancienne))); });
+  var b = evalBrute(e, ancienne); if(ancienne && servi.length) b.version = (ancienne.version || 1) + 1;
+  return Promise.all(u).then(function(){ return v3Set(v3Q("evaluations/" + nid), b); }).then(function(){ return nid; });
+}
+function dupliquerEval(e){ var b = evalBrute(Object.assign({}, e, {titre:e.titre + " (copie)"}), null); b.demo = null; return v3Set(v3Q("evaluations/eval_" + Date.now()), v3Sans(b)); }
+
+/* ════════ 📝 Évaluations ════════ */
+function CarteEvaluationsV(){
+  useV3();
+  useEffect(function(){ remettreDemo(); });
+  var s1 = useState("date"), tri = s1[0], setTri = s1[1], s2 = useState({}), replies = s2[0], setReplies = s2[1];
+  var liste = evalsV();
+  function cleTri(e){ return tri === "titre" ? e.titre : tri === "chapitre" ? (e.chapitre ? niveauDuChapitre(e.chapitre) + ("0" + numeroDuChapitre(e.chapitre)).slice(-2) : "~") : ("000000000000000" + (e.createdAt || 0)).slice(-15); }
+  function trie(l){ return l.slice().sort(function(a, b){ var x = cleTri(a), y = cleTri(b); return tri === "date" ? y.localeCompare(x) : x.localeCompare(y); }); }
+  function ligne(e, cl){
+    var manques = manquesV(e), pret = !manques.length, passees = passeesV(e.id), comps = competencesDe(e), obj = "&eval=" + encodeURIComponent(e.id);
+    return h("div", {key:e.id + (cl || ""), className:"eval-row", "data-eval":e.id},
+      h("div", null,
+        h("div", {className:"eval-titre"}, e.titre),
+        h("div", {className:"eval-meta"},
+          h("span", null, "📚 " + (e.chap || "chapitre : —")),
+          h("span", null, e.mode === "partiel" ? "✨ Partiel" : "🎯 Tout ou rien"),
+          h("span", null, e.questions.length + " questions"),
+          comps.length > 0 && h("span", null, "🧩 " + comps.length + " compétence" + (comps.length > 1 ? "s" : "")),
+          e.cree && h("span", null, "Créée le " + e.cree)),
+        pret ? h("div", {className:"eval-etat ok"}, "✅ Prête à lancer")
+             : h("div", {className:"eval-etat manque"}, "⚠️ À compléter avant de la lancer : " + listeFr(manques)),
+        h("div", {className:"eval-passee"}, passees.length ? passees.map(function(x){ return "passée par " + x.classe + " le " + x.date; }).join(" · ") : "pas encore passée")),
+      h("div", {className:"eval-actions"},
+        h("button", {className:"btn btn-sm " + (pret ? "btn-ghost" : "btn-primary"), "data-va":"x627-3-editeur" + obj, title:pret ? "Ouvre l'éditeur sur « " + e.titre + " » : énoncés, choix, temps, compétences, ce que chaque question vérifie. Une évaluation déjà passée garde ses notes." : "Ouvre l'éditeur sur « " + e.titre + " », pour compléter ce qui manque avant de pouvoir la lancer : " + listeFr(manques) + "."}, pret ? "✏️ Modifier" : "✏️ Compléter"),
+        h("button", {className:"btn btn-sm btn-ghost", "data-va":"c-feuille" + obj, title:"Montre la feuille des énoncés seuls de « " + e.titre + " », avec les points, à imprimer pour la classe."}, "🖨️ Imprimer"),
+        h("button", {className:"btn btn-sm btn-ghost", "data-local":"1", title:"Fait une copie de « " + e.titre + " », modifiable et supprimable, en tête de sa liste : elle garde tout ce qui est rempli.", onClick:function(){ dupliquerEval(e); }}, "📋 Dupliquer"),
+        h("button", {className:"btn btn-sm btn-rouge", "data-va":"c-eval-corbeille" + obj, title:"Met « " + e.titre + " » à la corbeille, après une confirmation : gardée un an, restaurable depuis 💾 Sauvegarde."}, "🗑️")));
+  }
+  var parNiveau = {}; NIVEAUX_EV.concat(["Sans chapitre"]).forEach(function(n){ parNiveau[n] = []; });
+  liste.forEach(function(e){ var n = e.chapitre && niveauDuChapitre(e.chapitre); (parNiveau[n && parNiveau[n] ? n : "Sans chapitre"]).push(e); });
+  function groupe(n){
+    var l = trie(parNiveau[n]), rep = replies[n] === undefined ? !l.length : replies[n], corps;
+    if(tri === "classe"){
+      var cl = {}; l.forEach(function(e){ var p = passeesV(e.id); (p.length ? p.map(function(x){ return x.classe; }) : ["Pas encore passée"]).forEach(function(c){ cl[c] = cl[c] || []; if(cl[c].indexOf(e) < 0) cl[c].push(e); }); });
+      corps = Object.keys(cl).sort(function(a, b){ return a === "Pas encore passée" ? 1 : b === "Pas encore passée" ? -1 : a.localeCompare(b); }).map(function(c){
+        return h("div", {key:c, className:"classe-groupe", "data-classe":c}, h("div", {className:"classe-titre", "data-classe":c}, c === "Pas encore passée" ? c : "👥 " + c), cl[c].map(function(e){ return ligne(e, c); })); });
+    } else corps = l.map(function(e){ return ligne(e); });
+    return h("div", {key:n, className:"niv-groupe", "data-niveau-groupe":n},
+      h("button", {className:"niv-titre", "data-niveau":n, "data-local":"1", "aria-expanded":!rep, title:rep ? "Déplier ce niveau" : "Replier ce niveau", onClick:function(){ var o = Object.assign({}, replies); o[n] = !rep; setReplies(o); }},
+        (rep ? "▸ " : "▾ ") + n + " · " + (l.length ? l.length + " évaluation" + (l.length > 1 ? "s" : "") : "vide pour l'instant")),
+      !rep && (l.length ? corps : h("div", {className:"niv-vide"}, "vide pour l'instant")));
+  }
+  var demo = demoV(), d = dureeEstimeeV(demo);
+  return h("div", {className:"card"},
+    h("div", {style:{display:"flex", justifyContent:"space-between", alignItems:"center", flexWrap:"wrap", gap:".5rem"}},
+      h("h2", {style:{margin:0}}, "📝 Évaluations", InfoI("Tes évaluations, rangées par niveau (celui de leur chapitre), comme « Mes dictées », puis triées. La démo est en tête, pour tous les niveaux : elle est permanente.")),
+      h("div", {className:"row"},
+        h("label", {className:"tri-l"}, "Trier par ", h("select", {value:tri, "data-tri":"evals", title:"Trie chaque niveau par date de création, par titre, par chapitre, ou par classe : sous chaque classe qui l'a passée.", onChange:function(ev){ setTri(ev.target.value); }},
+          h("option", {value:"date"}, "date"), h("option", {value:"titre"}, "titre"), h("option", {value:"chapitre"}, "chapitre"), h("option", {value:"classe"}, "classe"))),
+        h("button", {className:"btn btn-or btn-sm", "data-va":"c-reglages-prompt", title:"Ouvre le prompt de création d'éval, à copier dans l'instance qui écrit le JSON."}, "🤖 Prompt IA"),
+        h("button", {className:"btn btn-primary btn-sm", "data-va":"c-collage", title:"Colle le JSON d'une nouvelle évaluation : l'app le vérifie avant de l'enregistrer."}, "➕ Nouvelle évaluation"))),
+    h("p", {style:{opacity:.8, margin:".4rem 0 0"}}, "Prépare ici tes évaluations : rédaction, relecture, impression. Le lancement en classe se fait dans « Pilotage classe »."),
+    h("div", {className:"eval-row demo-eval", "data-eval":"demo"},
+      h("div", null,
+        h("div", {className:"eval-titre"}, demo.titre, h("span", {className:"perm-chip"}, "🔒 Permanente")),
+        h("div", {className:"eval-meta"}, h("span", null, "📚 tous les niveaux"), h("span", null, "🎯 Tout ou rien"), h("span", null, demo.questions.length + " questions"), h("span", null, d.min + " minutes")),
+        h("div", {className:"eval-etat ok"}, "✅ Prête à lancer")),
+      h("div", {className:"eval-actions"},
+        h("button", {className:"btn btn-sm btn-ghost", "data-va":"c-feuille&eval=demo", title:"Montre la feuille des énoncés de la démo, à imprimer."}, "🖨️ Imprimer"),
+        h("button", {className:"btn btn-sm btn-ghost", "data-local":"1", title:"Fait de la démo une évaluation ordinaire, modifiable et supprimable : la démo elle-même ne change jamais.", onClick:function(){ dupliquerEval(demo); }}, "📋 Dupliquer"))),
+    NIVEAUX_EV.map(groupe),
+    parNiveau["Sans chapitre"].length > 0 && groupe("Sans chapitre"));
+}
+function EvaluationsV(modale){ return Console("pilotage", "evals", h(F, null, h(CarteEvaluationsV), modale || null), false); }
+function ScEvalCorbeilleV(){ return h(ScEvalCorbeilleC); }
+function ScEvalCorbeilleC(){
+  useV3();
+  var id = paramHash("eval"), e = evalV(id); if(!e || id === "demo") return EvaluationsV(null);
+  var titre = e.titre + " (" + e.questions.length + " questions)";
+  return Fenetre(EvaluationsV(null), "🗑️ Mettre cette évaluation à la corbeille ?", e.titre + " · " + e.questions.length + " questions",
+    h("p", null, "Elle part dans la corbeille du site, gardée un an, avec ses questions" + (passeesV(e.id).length ? " ; ses séances passées gardent leurs notes" : "") + "."),
+    [h("button", {key:1, className:"btn btn-ghost", "data-va":"c-evals", title:"Ne met rien à la corbeille."}, "Annuler"),
+     h("button", {key:2, className:"btn btn-rouge", "data-local":"1", title:"Met l'évaluation à la corbeille, restaurable un an depuis 💾 Sauvegarde → 🗑️ Corbeille.", onClick:function(){
+       var X = v3Sessions(), u = seancesDeLEval(e.id).filter(function(s){ return !X[s].evalSnapshot; }).map(function(s){ return v3Set(v3Q("sessions/" + s + "/evalSnapshot"), v3Sans(e.brut)); });
+       Promise.all(u).then(function(){ return mettreACorbeille("Évaluation", v3Q("evaluations/" + e.id), e.brut, titre); }).then(function(){ versScene("c-sauvegarde"); }); }}, "🗑️ Mettre à la corbeille")], "c-evals");
+}
+
+/* ════════ Le collage du JSON : tout ce que le prompt demande, vérifié avant d'enregistrer ════════ */
+var NIVEAUX_Q = ["facile", "standard", "approfondi", "expert"];
+// lire le JSON collé : les messages de lecture et de format sont ceux de la 7.7.1 (ModalCreerEval, qcmValiderEvaluation)
+function lireJsonEval(texte){
+  var brut = String(texte || "").trim().replace(/^```(?:json)?/i, "").replace(/```$/, "").trim(), raw;
+  if(!brut) return {erreurs:[], vide:true};
+  try { raw = JSON.parse(brut); } catch(e){ return {erreurs:["Je ne peux pas lire cette réponse : elle est incomplète ou mal fermée (" + e.message + "). Demande à l'IA de redonner le résultat en entier, sans rien autour."]}; }
+  if(!raw || typeof raw !== "object" || Array.isArray(raw)) return {erreurs:["La réponse doit être une évaluation complète (un titre et des questions)."]};
+  return {raw:raw, erreurs:[]};
+}
+function verifierEval(raw){
+  var err = [], qs = Array.isArray(raw.questions) ? raw.questions : [];
+  if(!raw.titre || typeof raw.titre !== "string") err.push("Il manque le titre de l’évaluation.");
+  if(!qs.length) err.push("Il manque les questions (une liste non vide).");
+  var ch = chapitreVue(raw.chapitre);
+  if(!raw.chapitre) err.push("Il manque le chapitre (« chapitre »), l'identifiant donné dans le prompt.");
+  else if(!ch) err.push("Le chapitre « " + raw.chapitre + " » n'est pas un identifiant de chapitre : il s'écrit comme dans le prompt (« 4e-ch1 », par exemple).");
+  var permises = ch ? ch.comps : toutesCompetences(), parComp = {}, assumees = [];
+  qs.forEach(function(q, i){
+    var ref = "Question " + (i + 1) + " : ";
+    if(!q || typeof q !== "object"){ err.push(ref + "n’est pas lisible : il faut un énoncé, des choix et les bonnes réponses."); return; }
+    if(!q.enonce || typeof q.enonce !== "string") err.push(ref + "n’a pas d’énoncé.");
+    if(!Array.isArray(q.choix) || q.choix.length < 2) err.push(ref + "a moins de deux choix : il en faut au moins deux.");
+    if(!Array.isArray(q.bonnes) || !q.bonnes.length) err.push(ref + "n’indique aucune bonne réponse.");
+    else if(Array.isArray(q.choix)) q.bonnes.forEach(function(idx){ if(typeof idx !== "number" || idx < 0 || idx >= q.choix.length) err.push(ref + "désigne une bonne réponse qui n’existe pas (" + idx + ") : numérote à partir de 0, sans dépasser " + (q.choix.length - 1) + "."); });
+    if(q.niveau && NIVEAUX_Q.indexOf(q.niveau) < 0) err.push(ref + "utilise un niveau inconnu (« " + q.niveau + " »). Niveaux possibles : " + NIVEAUX_Q.join(", ") + ".");
+    if(!(+q.reflexion > 0)) err.push(ref + "il manque le temps de réflexion (« reflexion »).");
+    if(!(+q.reponse > 0)) err.push(ref + "il manque le temps de réponse (« reponse »).");
+    if(!q.verifie) err.push(ref + "il manque ce qu'elle vérifie (« verifie »), la courte phrase à l'infinitif du bilan de l'élève.");
+    var tropPx = q.longueurAssumee || !q.enonce || !Array.isArray(q.choix) ? 0 : pxDeTrop(q, raw.titre);
+    if(tropPx > 0) err.push(ref + tropPx + " px de trop sur une demi-tablette. Raccourcis l'énoncé ou les choix, sauf si je te dis que j'assume la longueur.");
+    if(q.longueurAssumee) assumees.push(i + 1);
+    var cs = Array.isArray(q.competences) ? q.competences : [];
+    if(!cs.length) err.push(ref + "il manque ses compétences (« competences ») : une ou deux, prises dans celles du chapitre.");
+    if(cs.length > 2) err.push(ref + cs.length + " compétences ; une question en a une ou deux.");
+    cs.forEach(function(c){ if(permises.indexOf(c) < 0 || !competenceValide(c)) err.push(ref + "la compétence « " + c + " » n'est pas une compétence du chapitre (" + (ch ? ch.court : raw.chapitre || "—") + ")."); else (parComp[c] = parComp[c] || []).push(i + 1); });
+  });
+  Object.keys(parComp).forEach(function(c){ var l = parComp[c]; if(l.length < 3) err.push("La compétence « " + c + " » n'est évaluée que par " + l.length + " question" + (l.length > 1 ? "s" : "") + " (" + l.map(function(n){ return "Q" + n; }).join(", ") + ") : il en faut au moins 3."); });
+  var ev = qs.length && qs.every(function(q){ return q && Array.isArray(q.choix); }) ? {questions:qs.map(function(q){ return {reflexion:+q.reflexion || 0, reponse:+q.reponse || 0}; })} : null;
+  if(ev && qs.every(function(q){ return +q.reflexion > 0 && +q.reponse > 0; })){ var d = dureeEstimeeV(ev); if(d.min > 45) err.push("La séance durerait " + d.min + " min : " + (d.min - 45) + " min de plus que les 45 minutes utiles."); }
+  return {erreurs:err, chap:ch, comps:Object.keys(parComp), assumees:assumees, n:qs.length, mode:raw.mode === "partiel" ? "partiel" : "strict"};
+}
+// l'évaluation collée, telle que l'éditeur et la base la tiennent
+function evalDuJson(raw, id){ return evalVue(id || "vide", Object.assign({}, raw, {mode:raw.mode === "partiel" ? "partiel" : "strict", createdAt:raw.createdAt || 0})); }
+function texteErreurs(err){ return "Corrige ton JSON : " + err.map(function(e, i){ return (i + 1) + ". " + e; }).join(" ") + " Renvoie le JSON complet."; }
+function CopierErreursV(p){
+  var s = useState(false), copie = s[0], setCopie = s[1], texte = texteErreurs(p.erreurs);
+  useEffect(function(){ setCopie(false); }, [texte]);
+  return h("div", {className:"copier-z"},
+    h("button", {className:"btn btn-or", "data-local":"1", title:"Copie les messages, numérotés, prêts à coller dans l'instance de création d'éval : « Corrige ton JSON : 1. … Renvoie le JSON complet. »", onClick:function(){ try { navigator.clipboard.writeText(texte); } catch(e){} setCopie(true); }}, copie ? "✅ Copié" : "📋 Copier les erreurs pour l'instance de création d'éval"),
+    copie && h("div", {className:"copie-ok"}, h("strong", null, "✅ Copié. "), "À coller dans l'instance de création d'éval : ", h("span", {className:"copie-t"}, texte)));
+}
+function CollageV(){ return EvaluationsV(h("div", {className:"modal-back"}, h(CollageVC))); }
+function CollageVC(){
+  useV3();
+  var s1 = useState(""), texte = s1[0], setTexte = s1[1], s2 = useState(null), lu = s2[0], setLu = s2[1];
+  var s3 = useState(false), garde = s3[0], setGarde = s3[1], s4 = useState(false), envoi = s4[0], setEnvoi = s4[1];
+  function verifier(t){ var l = lireJsonEval(t); if(l.raw){ var v = verifierEval(l.raw); l.erreurs = v.erreurs; l.v = v; } setLu(l); }
+  function fermer(){ if(texte.trim()) setGarde(true); else fermerVers("c-evals"); }
+  useEffect(function(){
+    function f(e){ if(e.key === "Escape" && !window.SOMMAIRE_OUVERT && !garde){ e.stopImmediatePropagation(); fermer(); } }
+    window.addEventListener("keydown", f, true); return function(){ window.removeEventListener("keydown", f, true); };
+  });
+  var ok = lu && lu.raw && !lu.erreurs.length, v = lu && lu.v;
+  return h("div", {className:"modal"},
+    h("button", {className:"modal-close", "data-local":"1", title:texte.trim() ? "Ferme la fenêtre : une garde te demande d'abord si tu perds le JSON collé." : "Ferme sans rien enregistrer.", onClick:fermer}, "✕"),
+    garde && h("div", {className:"fen-fond alerte-native"}, h("div", {className:"alerte-boite"},
+      h("div", {className:"alerte-texte"}, "Fermer sans enregistrer ? Le JSON collé sera perdu."),
+      h("div", {className:"alerte-pied"},
+        h("button", {className:"alerte-non", "data-local":"1", title:"Revient au JSON collé, tel qu'il est.", onClick:function(){ setGarde(false); }}, "Continuer à modifier"),
+        h("button", {className:"alerte-ok", "data-local":"1", title:"Ferme la fenêtre : le JSON collé est perdu.", onClick:function(){ setGarde(false); fermerVers("c-evals"); }}, "Fermer sans enregistrer")))),
+    h("h2", null, "➕ Nouvelle évaluation"),
+    h("div", {className:"field"},
+      h("label", null, "Coller le JSON de l'évaluation", InfoI("Le JSON que l'instance de création d'éval t'a rendu. L'app le vérifie : le format, le chapitre et ses compétences, chaque question sur une demi-tablette, ce qu'elle vérifie, la durée de la séance.")),
+      h("textarea", {className:"json", value:texte, placeholder:JSON_INDICATION, style:{minHeight:"260px"}, title:"Colle ici le JSON rendu par l'instance de création d'éval : l'app le vérifie aussitôt.",
+        onChange:function(e){ setTexte(e.target.value); verifier(e.target.value); }})),
+    h("div", {className:"row"},
+      h("button", {className:"btn btn-ghost", "data-local":"1", title:"Revérifie le JSON collé.", onClick:function(){ verifier(texte); }}, "🔍 Vérifier le format"),
+      h("button", {className:"btn btn-ghost", "data-va":"x627-3-editeur&eval=vide", title:"Ouvre l'éditeur sur une évaluation vide, sans JSON."}, "✨ Démarrer à blanc")),
+    lu && lu.erreurs.length > 0 && h("div", {className:"preview-error"},
+      h("div", {style:{marginBottom:".35rem"}}, "❌ Rien n'est enregistré : " + lu.erreurs.length + " chose" + (lu.erreurs.length > 1 ? "s" : "") + " à corriger dans le JSON."),
+      h("ol", {className:"msg-liste"}, lu.erreurs.map(function(e, i){ return h("li", {key:i}, e); }))),
+    lu && lu.erreurs.length > 0 && h(CopierErreursV, {erreurs:lu.erreurs}),
+    v && h("div", {className:"preview-ok"}, (lu.erreurs.length ? "✅ Le reste est bon : " : "✅ Tout est bon : ") + (v.chap ? "chapitre « " + v.chap.court + " », " : "") + (v.mode === "partiel" ? "mode partiel" : "mode tout ou rien") + ", " + v.n + " question" + (v.n > 1 ? "s" : "") + ", " + v.comps.length + " compétence" + (v.comps.length > 1 ? "s" : "") + " du chapitre" +
+      (v.assumees.length ? " ; " + (v.assumees.length > 1 ? "les questions " + listeFr(v.assumees.map(String)) + " portent" : "la question " + v.assumees[0] + " porte") + " « longueur assumée » : " + (v.assumees.length > 1 ? "elles passent, et leur moitié défilera seule." : "elle passe, et sa moitié défilera seule.") : ".")),
+    h("div", {className:"row", style:{marginTop:"1rem"}}, h("button", {className:"btn btn-primary" + (ok ? "" : " ferme"), disabled:!ok || envoi, "data-local":"1", title:ok ? "Enregistre l'évaluation : elle rejoint la liste, prête à lancer." : "S'ouvre quand le JSON n'a plus rien à corriger.",
+      onClick:function(){ setEnvoi(true); enregistrerEval(null, evalDuJson(lu.raw)).then(function(){ setTexte(""); fermerVers("c-evals"); }, function(){ setEnvoi(false); }); }}, "💾 Enregistrer l'évaluation")));
+}
+
+/* ── La garde de longueur (464) : la question mesurée sur une vraie demi-tablette (1280 × 800), sur les trois écrans qui montrent les choix,
+      chacun à son état le plus chargé (mesures/mesure-page.js) ; le reste doit couvrir la marge du bas (16 px). Rend les px de trop.
+      Si les écrans ne se mesurent pas ici, la garde se tait : le prompt donne déjà les limites de longueur à l'instance. ── */
+var MESURE = {frame:null, cache:{}};
+function cadreMesure(){
+  if(MESURE.frame && document.body.contains(MESURE.frame)) return MESURE.frame;
+  var f = document.createElement("iframe"); f.setAttribute("aria-hidden", "true"); f.tabIndex = -1; f.title = "mesure";
+  f.style.cssText = "position:fixed;left:-20000px;top:0;width:1280px;height:800px;border:0;visibility:hidden;pointer-events:none";
+  document.body.appendChild(f);
+  var d = f.contentDocument; d.open(); d.write("<!DOCTYPE html><html lang='fr'><head><meta charset='UTF-8'></head><body class='vue-tablette'><div id='root'></div></body></html>"); d.close();
+  Array.prototype.forEach.call(document.querySelectorAll("style"), function(s){ d.head.appendChild(d.importNode(s, true)); });
+  MESURE.frame = f; return f;
+}
+function resteMesure(q, ecran, titre){
+  var f = cadreMesure(), d = f.contentDocument, root = d.getElementById("root"), n = q.choix.length, ordre = []; for(var i = 0; i < n; i++) ordre.push(i);
+  var qq = {enonce:q.enonce, choix:q.choix.map(String), bonnes:[0], niveau:"approfondi", reflexion:30, reponse:20, competences:[], explication:""};
+  var ev = {titre:titre || "3e- éval 1 Analyse logique - Construire une phrase complexe", mode:"strict", questions:[qq, qq, qq]}, sv = {EV:EV, ORD:ORD, LU:LU, TABL:TABL, sc:window.SCENE_COURANTE};
+  // la moitié telle qu'une tablette la montre, avec son en-tête (« 📊 Mes évaluations ») et le titre de l'évaluation : comme la scène étalon
+  window.SCENE_COURANTE = "t-annexe"; EV = ev; ORD = [{J:ordre, M:ordre}, {J:ordre, M:ordre}, {J:ordre, M:ordre}]; LU = {J:[ordre, ordre, ordre], M:[ordre, ordre, ordre]}; TABL = {J:[ordre, ordre, ordre], M:[ordre, ordre, ordre]};
+  try {
+    var el = ecran === "reponse" ? EcrReponse(J, 2, ordre, ordre, 2, ev) : ecran === "b" ? EcrDeclareFlux(J, 2, ordre, 4) : EcrLecture(J, 2, true, 3);
+    ReactDOM.unmountComponentAtNode(root); ReactDOM.render(Tablette(el, el), root);
+  } finally { EV = sv.EV; ORD = sv.ORD; LU = sv.LU; TABL = sv.TABL; window.SCENE_COURANTE = sv.sc; }
+  var m = d.querySelector(".moitie"), c = m && m.querySelector(".eleve-card");
+  if(!m || !c) throw new Error("mesure");
+  var r = Math.round(m.getBoundingClientRect().bottom - c.getBoundingClientRect().bottom) - 16;
+  ReactDOM.unmountComponentAtNode(root);
+  return r;
+}
+function pxDeTrop(q, titre){
+  var cle = JSON.stringify([q.enonce, q.choix, titre]);
+  if(MESURE.cache[cle] != null) return MESURE.cache[cle];
+  var trop = 0;
+  try { var r = Math.min(resteMesure(q, "reponse", titre), resteMesure(q, "b", titre), resteMesure(q, "lecture", titre)); trop = r < 0 ? -r : 0; }
+  catch(e){ trop = 0; }
+  return (MESURE.cache[cle] = trop);
+}
+
+/* ════════ L'éditeur : l'évaluation de la base (« &eval= »), chaque geste la change ; « 💾 Enregistrer » l'écrit dans qcm/evaluations ════════ */
+function evalVide(){ return {id:"vide", titre:"", mode:"strict", chapitre:null, chap:null, niveau:null, competences:[], questions:[]}; }
+function jsonDeV(e){ return JSON.stringify(v3Sans({titre:e.titre, chapitre:e.chapitre || undefined, mode:e.mode || "strict", questions:e.questions.map(function(q){
+  var o = {enonce:q.enonce, choix:q.choix, bonnes:q.bonnes, niveau:q.niveau};
+  if(q.reflexion != null) o.reflexion = q.reflexion; if(q.reponse != null) o.reponse = q.reponse; if((q.competences || []).length) o.competences = q.competences;
+  if(q.verifie) o.verifie = q.verifie; if(q.explication) o.explication = q.explication; if(q.bonus) o.bonus = true; if(q.assumee) o.longueurAssumee = true; return o; })}), null, 2); }
+function EditeurV(){ return EvaluationsV(h("div", {className:"modal-back"}, h(EditeurVA, {key:paramHash("eval") || "vide"}))); }
+function EditeurVA(){
+  useV3();
+  var id = paramHash("eval") || "vide", base = id === "vide" ? evalVide() : evalV(id);
+  if(!base) return h("div", {className:"modal", style:{maxWidth:"980px"}}, h("p", null, v3Pret(v3Q("evaluations")) ? "Cette évaluation n'existe plus : elle est peut-être à la corbeille." : "Chargement…"));
+  return h(EditeurVC, {base:base});
+}
+function EditeurVC(p){
+  var base = p.base;
+  var s1 = useState(function(){ return copieEval(base); }), ev = s1[0], setEv = s1[1];
+  var s2 = useState(0), modifs = s2[0], setModifs = s2[1];
+  var s3 = useState(function(){ var o = {}; base.questions.forEach(function(q, i){ o[i] = i >= 2; }); return o; }), replis = s3[0], setReplis = s3[1];
+  var s4 = useState(false), garde = s4[0], setGarde = s4[1], s5 = useState(null), verif = s5[0], setVerif = s5[1];
+  var s6 = useState(null), json = s6[0], setJson = s6[1], s7 = useState(false), envoi = s7[0], setEnvoi = s7[1];
+  function changer(f){ var e = copieEval(ev); f(e); setEv(e); setModifs(modifs + 1); setJson(null); }
+  function maj(i, f){ changer(function(e){ f(e.questions[i]); }); }
+  var ch = chapEv(ev), manques = manquesV(ev), bonus = ev.questions.filter(function(q){ return q.bonus; }).length, total = ev.questions.length - bonus;
+  var comps = competencesDe(ev), chapitres = chapitresConnus(ev.chapitre);
+  useEffect(function(){
+    function echap(e){ if(e.key === "Escape" && !window.SOMMAIRE_OUVERT){ e.stopImmediatePropagation(); if(modifs > 0) setGarde(true); else fermerVers("c-evals"); } }
+    document.addEventListener("keydown", echap, true); return function(){ document.removeEventListener("keydown", echap, true); };
+  });
+  // « 🔍 Vérifier le format » : un JSON retouché dans le champ se recharge dans l'éditeur ; sinon, ce qu'il reste à compléter
+  function verifier(){
+    if(json != null){ var l = lireJsonEval(json); if(!l.raw){ setVerif("❌ " + l.erreurs.join(" ")); return; }
+      var v = verifierEval(l.raw), e = evalDuJson(l.raw, ev.id); e.createdAt = ev.createdAt; setEv(e); setModifs(modifs + 1); setJson(null);
+      setVerif(v.erreurs.length ? "🔍 Le JSON est rechargé ; il reste à corriger : " + v.erreurs.join(" ") : "🔍 Le JSON est rechargé : rien ne manque."); return; }
+    setVerif(manques.length ? "🔍 Le format est bon ; il reste à compléter : " + listeFr(manques) + "." : "🔍 Le format est bon : rien ne manque.");
+  }
+  return h("div", {className:"modal", style:{maxWidth:"980px"}},
+    h("button", {className:"modal-close", "data-local":"1", title:modifs ? "Ferme l'éditeur : une garde te demande d'abord si tu perds tes " + modifs + " modifications." : "Ferme l'éditeur et revient à la liste des évaluations.", onClick:function(){ if(modifs > 0) setGarde(true); else fermerVers("c-evals"); }}, "✕"),
+    h("h2", null, manques.length ? "✏️ Compléter l'évaluation" : "✏️ Modifier l'évaluation"),
+    ev.titre && h("div", {className:"ed-titre-ouvert"}, "📝 " + ev.titre),
+    h("div", {className:"field"}, h("label", null, "JSON de l'évaluation"),
+      h("textarea", {className:"json", value:json == null ? jsonDeV(ev) : json, placeholder:JSON_INDICATION, title:"Le JSON de l'évaluation ouverte, tel que l'éditeur le tient. « 🔍 Vérifier le format » le relit.", style:{minHeight:"110px"}, onChange:function(e){ setJson(e.target.value); }})),
+    h("div", {className:"row"}, h("button", {className:"btn btn-ghost", "data-local":"1", title:"Relit le JSON de l'évaluation et dit ce qu'il reste à compléter.", onClick:verifier}, "🔍 Vérifier le format")),
+    verif && h("div", {className:"fen-note"}, verif),
+    h("div", {className:"preview"},
+      h("div", {className:"preview-titre-row"},
+        h("textarea", {className:"preview-titre-input", rows:2, value:ev.titre, placeholder:"Titre de l'évaluation", title:"Le titre de l'évaluation.", onChange:function(e){ var v = e.target.value; changer(function(x){ x.titre = v; }); }}),
+        h("span", {className:"preview-titre-meta"}, ev.questions.length + " question" + (ev.questions.length > 1 ? "s" : "") + " · " + total + " point" + (total > 1 ? "s" : "") + (bonus ? " + " + bonus + " bonus" : ""))),
+      h("div", {className:"ed-chap"}, h("span", {className:"ed-lbl"}, "📚 Chapitre", InfoI("Le chapitre donne le niveau et les compétences permises : une compétence hors du chapitre est refusée.")),
+        h("select", {value:ch ? ch.id : "", title:"Le chapitre de l'évaluation : il donne son niveau et les compétences permises.", onChange:function(e){ var c = chapitreVue(e.target.value);
+          changer(function(x){ x.chapitre = c ? c.id : null; x.chap = c ? c.court : null; x.niveau = c ? c.niveau : null; if(c) x.questions.forEach(function(q){ q.competences = (q.competences || []).filter(function(cc){ return c.comps.indexOf(cc) >= 0; }); }); }); }},
+          h("option", {value:""}, "— à choisir —"), chapitres.map(function(c){ return h("option", {key:c.id, value:c.id}, c.libelle); }))),
+      h("div", {className:"preview-mode-row", style:{marginBottom:".8rem", padding:".7rem .9rem", background:"#FFF9E6", border:"2px solid #FFD23F", borderRadius:"10px"}},
+        h("div", {style:{fontWeight:900, fontSize:".9rem", color:"#8B6914", marginBottom:".4rem"}}, "📊 Mode de scoring", InfoI("Tout ou rien : 1 point si la réponse est exacte. Partiel : une part du point par bonne case, autant de retiré par mauvaise, plancher 0.")),
+        h("div", {style:{display:"flex", gap:".5rem", flexWrap:"wrap"}},
+          ["strict", "partiel"].map(function(md){ var on = (ev.mode || "strict") === md;
+            return h(on ? "div" : "button", {key:md, className:"mode-choix" + (on ? " on" : ""), "data-local":"1", "aria-pressed":on, title:on ? "Le mode de l'évaluation." : md === "partiel" ? "Passe l'évaluation en mode partiel." : "Passe l'évaluation en mode tout ou rien.", onClick:function(){ if(!on) changer(function(x){ x.mode = md; }); }},
+              h("span", {className:"rond" + (on ? " on" : "")}), h("span", null, md === "strict" ? "🎯 Tout ou rien" : "✨ Partiel", h("div", {className:"sous"}, md === "strict" ? "1 point si la réponse est exacte ; sinon 0" : "Une part du point par bonne case ; autant de retiré par mauvaise (plancher 0)"))); }))),
+      h("div", {className:"ed-comp-box"},
+        h("div", {className:"tt"}, "🧩 Les compétences de cette évaluation — chacune porte sur au moins 3 questions", InfoI("Chaque compétence doit porter sur au moins 3 questions, pour que les quatre niveaux de maîtrise soient possibles.")),
+        comps.length ? comps.map(function(c){ var qs = ev.questions.map(function(q, i){ return (q.competences || []).indexOf(c) >= 0 ? "Q" + (i + 1) : null; }).filter(Boolean);
+          return h("div", {key:c, className:"ed-comp-l"}, h("span", {className:"c"}, c), h("span", {className:"t"}, ch && ch.majeures.indexOf(c) >= 0 ? "majeure" : "mineure"), h("span", null, libOff(c)), h("span", {className:"q"}, qs.join(", ")), h("span", {className:qs.length >= 3 ? "ok" : "manque"}, (qs.length >= 3 ? "✅ " : "⚠️ ") + qs.length + " question" + (qs.length > 1 ? "s" : ""))); })
+          : h("div", {className:"ed-comp-autres"}, ch ? "Aucune compétence encore : « + ajouter ▾ » sur chaque question." : "Choisis d'abord le chapitre : il donne les compétences permises."),
+        ch && h("div", {className:"ed-comp-autres"}, "Les autres compétences du chapitre, pas évaluées ici : " + ch.comps.filter(function(c){ return comps.indexOf(c) < 0; }).join(" · "))),
+      modifs > 0 && h("div", {className:"ed-modif", "data-compteur-modifs":"1"}, "⚠ Modifications non enregistrées (" + modifs + ")"),
+      ev.questions.map(function(q, i){ return h(QuestionEditee, {key:i + ":" + ev.questions.length, q:q, i:i, n:ev.questions.length, chap:ch, maj:maj, replie:!!replis[i],
+        plier:function(){ var o = Object.assign({}, replis); o[i] = !replis[i]; setReplis(o); },
+        deplacer:function(a, d){ changer(function(x){ var t = x.questions[a]; x.questions[a] = x.questions[a + d]; x.questions[a + d] = t; }); var o = Object.assign({}, replis), t2 = o[a]; o[a] = o[a + d]; o[a + d] = t2; setReplis(o); },
+        retirer:function(a){ changer(function(x){ x.questions.splice(a, 1); }); var o = {}; Object.keys(replis).forEach(function(kk){ kk = +kk; if(kk < a) o[kk] = replis[kk]; else if(kk > a) o[kk - 1] = replis[kk]; }); setReplis(o); }}); }),
+      h("button", {className:"btn btn-ghost", "data-local":"1", style:{marginTop:".6rem"}, title:"Ajoute une question vide à la fin de l'évaluation.", onClick:function(){ changer(function(x){ x.questions.push({enonce:"", choix:["", ""], bonnes:[], niveau:"standard", reflexion:null, reponse:null, competences:[]}); }); }}, "➕ Ajouter une question")),
+    h("div", {className:"row", style:{marginTop:"1rem", alignItems:"center"}},
+      h("button", {className:"btn btn-primary" + (manques.length ? " ferme" : ""), disabled:manques.length > 0 || envoi, "data-local":"1", title:manques.length ? "S'ouvre quand il ne reste rien à compléter : " + listeFr(manques) + "." : "Enregistre l'évaluation, telle qu'elle est.",
+        onClick:function(){ setEnvoi(true); enregistrerEval(ev.id, ev).then(function(){ setModifs(0); fermerVers("c-evals"); }, function(){ setEnvoi(false); }); }}, "💾 Enregistrer l'évaluation"),
+      manques.length > 0 && h("span", {className:"ed-reste"}, "⚠️ Il reste à compléter : " + listeFr(manques) + ".")),
+    garde && h("div", {className:"fen-fond alerte-native"},
+      h("div", {className:"alerte-boite"}, h("div", {className:"alerte-texte"}, "Fermer l'éditeur sans enregistrer ? Tes " + modifs + " modifications seront perdues."),
+        h("div", {className:"alerte-pied"},
+          h("button", {className:"alerte-non", "data-local":"1", title:"Revient à l'éditeur, avec tes modifications.", onClick:function(){ setGarde(false); }}, "Continuer à modifier"),
+          h("button", {className:"alerte-ok", "data-local":"1", title:"Ferme l'éditeur : les modifications sont perdues.", onClick:function(){ fermerVers("c-evals"); }}, "Fermer sans enregistrer")))));
+}
+/* ════════ La feuille imprimée de l'évaluation cliquée ════════ */
+function FeuilleV(){ return h(FeuilleVC); }
+function FeuilleVC(){
+  useV3();
+  var id = paramHash("eval"), e = id === "demo" ? demoV() : evalV(id);
+  if(!e) return h("div", {className:"feuille-fond", "data-echap":"c-evals"}, h("button", {className:"btn-fermer-impression", "data-va":"c-evals", title:"Ferme l'aperçu et revient à la liste des évaluations."}, "✕ Fermer"));
+  return h("div", {className:"feuille-fond", "data-echap":"c-evals"},
+    h("button", {className:"btn-fermer-impression", "data-va":"c-evals", title:"Ferme l'aperçu et revient à la liste des évaluations."}, "✕ Fermer"),
+    h("div", {className:"feuille-a4"},
+      h("div", {className:"feuille-impression visible", style:{padding:0}},
+        h("div", {className:"feuille-header"},
+          h("h1", null, e.titre),
+          h("div", {className:"ligne-info"},
+            h("div", {className:"champ"}, h("strong", null, "Nom :"), h("div", {className:"blanc"})),
+            h("div", {className:"champ"}, h("strong", null, "Classe :"), h("div", {className:"blanc"})),
+            h("div", {className:"champ"}, h("strong", null, "Date :"), h("div", {className:"blanc"})))),
+        e.questions.map(function(q, i){
+          return h("div", {key:i, className:"feuille-q-seul"}, h("span", {className:"n"}, "Question " + (i+1)), h("span", {className:"pt"}, q.bonus || /^BONUS/.test(q.enonce) ? "bonus" : "1 pt"), h("div", {className:"e"}, sansCoupe(q.enonce)));
+        }))),
+    h("div", {className:"feuille-legende"}, "A4, à l'échelle : toute l'évaluation tient sur cette page."));
+}
+// les écrans des évaluations, branchés comme ceux du soir (c4-seances.js)
+var ECRANS_EVALS_V = {"c-evals":function(){ return EvaluationsV(null); }, "c-eval-corbeille":ScEvalCorbeilleV, "c-collage":CollageV, "x627-3-editeur":EditeurV, "c-feuille":FeuilleV};

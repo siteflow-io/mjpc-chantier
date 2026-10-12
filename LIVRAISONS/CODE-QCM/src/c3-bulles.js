@@ -463,10 +463,13 @@ function bulleTexte(e, t){
 }
 
 /* ── La pose : après chaque rendu, chaque élément sans infobulle en reçoit une ── */
+function bPosee(t){ return t.hasAttribute("data-b3") && t.getAttribute("data-b3") === t.getAttribute("title"); }
 function bLibre(e){
   // l'élément a-t-il déjà son infobulle, sur lui ou sur une enveloppe qui n'est qu'à lui ?
   var t = e.closest("[title]"); if(!t) return true;
-  if(t === e) return !t.getAttribute("title").trim();
+  // une bulle posée ici même (data-b3 garde son texte) se recalcule à chaque rendu : la console n'est plus démontée d'une phase à l'autre ;
+  // un title écrit par React ou par la 7.7.1 n'est jamais touché
+  if(t === e) return !t.getAttribute("title").trim() || bPosee(t);
   var autres = Array.prototype.filter.call(t.querySelectorAll(B_GESTE), function(g){ return g !== e && !e.contains(g) && !g.contains(e); });
   var r = t.getBoundingClientRect();
   return autres.length > 0 || r.width * r.height > 120000 || !t.getAttribute("title").trim();
@@ -489,7 +492,8 @@ function poserBulles(){
     if(!bLibre(e)) return;
     var t = bTexte(e), b = null;
     for(var i = 0; i < B_REGISTRE.length && !b; i++){ if(e.matches(B_REGISTRE[i][0])){ try { b = B_REGISTRE[i][1](e, t); } catch(x){ b = null; } } }
-    if(b){ e.setAttribute("title", bPhrase(b).replace(/\s{2,}/g, " ").replace(/([?!.…])\s*\.$/, "$1")); e.setAttribute("data-b3", "1"); }
+    if(b){ var ph = bPhrase(b).replace(/\s{2,}/g, " ").replace(/([?!.…])\s*\.$/, "$1"); if(e.getAttribute("title") !== ph){ e.setAttribute("title", ph); e.setAttribute("data-b3", ph); } }
+    else if(bPosee(e)){ e.removeAttribute("title"); e.removeAttribute("data-b3"); }
   });
 }
 (function(){

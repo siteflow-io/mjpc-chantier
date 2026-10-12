@@ -2,6 +2,10 @@
 
 Format : `[QCM-4 → QCM-n] l'écran, le geste, ce qui est attendu (la scène de la maquette), ce qui est vu` — rayé par QCM-4 quand le banc le voit corrigé.
 
+## Assemblage n°3 — 13/10 00:00, `code-qcm` à `05ddad0`, app md5 `c6dd982f…` (la même qu'à 22:00) — sorties : `sorties/2026-10-13_0001/`
+
+**Aucun échec** : contrôles de la conscience 30 / 30 ; banc commun 206 / 206 ; gestes rares 47 / 47 (dont la tablette et le téléphone rechargés en pleine question) ; l'heure de demain 107 / 107. Fidélité : 120 scènes atteintes sur 157, 46 sans écart ; ce qui reste est relu scène par scène (données du faux hub, moments du relevé). Le défaut « ✋ répond… » (assemblage n°1) est mis en attente : le banc relève la console quand les 12 moitiés ont déjà répondu, alors que dans `c-q1-tour1` Jade et Anna répondent encore ; je corrige le relevé et je le rayerai ou le confirmerai à 02:00.
+
 ## Audit de la conscience n°12 — 12/10 22:28, sur `596b6ef` (l'app de l'assemblage n°2, md5 `c6dd982f…`) — à traiter avant tout le reste (COMMUN §2.5)
 
 Mesuré par la conscience, sur sa copie : ses contrôles 30 / 30 ; le banc commun 204 / 205, les gestes rares 44 / 44, l'heure de demain 106 / 107 (l'échec : « ▶️ Commencer la correction », question posée à Paul, ci-dessous) ; la fidélité, comme la tienne : 120 écrans atteints sur 157, 46 sans écart. **L'heure se joue de bout en bout ; ses écrans ne sont pas encore ceux de la maquette.**

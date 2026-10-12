@@ -1,0 +1,18 @@
+Synthèse de l'assemblage 2026-10-13_0001
+
+Contrôles de la conscience : Durée : 105 s · vérifications : 30 · échecs : 0
+
+■ l'heure : 284 vérifications passent, 0 échouent
+    QCM-1 · SOCLE : 92 ok, 0 échecs
+    QCM-2 · HEURE : 190 ok, 0 échecs
+    QCM-3 · SOIR : 2 ok, 0 échecs
+■ le soir : 38 vérifications passent, 0 échouent
+    QCM-1 · SOCLE : 3 ok, 0 échecs
+    QCM-3 · SOIR : 35 ok, 0 échecs
+■ le reste : 16 vérifications passent, 0 échouent
+    QCM-1 · SOCLE : 1 ok, 0 échecs
+    QCM-3 · SOIR : 15 ok, 0 échecs
+■ toutes les pages : 22 vérifications passent, 0 échouent
+    QCM-1 · SOCLE : 22 ok, 0 échecs
+
+Fidélité : 120 scènes atteintes, 46 fidèles ; écarts non nommés : QCM-3 · SOIR 76 dans 18 scènes ; QCM-2 · HEURE 308 dans 56 scènes ; non atteintes : 37

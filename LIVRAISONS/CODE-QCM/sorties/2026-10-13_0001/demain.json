@@ -1,0 +1,715 @@
+{
+ "duree": 624,
+ "journal": [
+  {
+   "section": "D.1 Le JSON de l'évaluation de 4e collé, « Lancer » ouvert",
+   "t": 2
+  },
+  {
+   "partie": "D.1 Le JSON de l'évaluation de 4e collé, « Lancer » ouvert",
+   "ok": true,
+   "proprio": "QCM-3 · SOIR",
+   "quoi": "« ➕ Nouvelle évaluation » : le JSON se colle"
+  },
+  {
+   "partie": "D.1 Le JSON de l'évaluation de 4e collé, « Lancer » ouvert",
+   "ok": true,
+   "proprio": "QCM-3 · SOIR",
+   "quoi": "l'évaluation collée est dans la base : 11 questions, chapitre 4e-ch1, ses compétences et ses temps"
+  },
+  {
+   "partie": "D.1 Le JSON de l'évaluation de 4e collé, « Lancer » ouvert",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Pilotage classe : 4 ESSAI se choisit"
+  },
+  {
+   "partie": "D.1 Le JSON de l'évaluation de 4e collé, « Lancer » ouvert",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "l'évaluation de 4e se choisit"
+  },
+  {
+   "partie": "D.1 Le JSON de l'évaluation de 4e collé, « Lancer » ouvert",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "« 🚀 Lancer la séance » ouvert : l'évaluation est complète (chapitre sans fiche au hub, cadrage 741)"
+  },
+  {
+   "partie": "D.1 Le JSON de l'évaluation de 4e collé, « Lancer » ouvert",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "« ⏱️ Durée estimée » pour 11 questions"
+  },
+  {
+   "partie": "D.1 Le JSON de l'évaluation de 4e collé, « Lancer » ouvert",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "la séance de 4e est lancée (sessionActive/4 ESSAI)"
+  },
+  {
+   "partie": "D.1 Le JSON de l'évaluation de 4e collé, « Lancer » ouvert",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "5 présents : trois tablettes, deux partagées et une pour un élève seul"
+  },
+  {
+   "section": "D.2 L'entrée et la première attestation",
+   "t": 12
+  },
+  {
+   "partie": "D.2 L'entrée et la première attestation",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "les 5 présents entrés et attestés (attest/1)"
+  },
+  {
+   "section": "D.3 Question 1 / 11",
+   "t": 23
+  },
+  {
+   "partie": "D.3 Question 1 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "« ▶️ Lancer Q1 »"
+  },
+  {
+   "partie": "D.3 Question 1 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q1 sur la tablette 1"
+  },
+  {
+   "partie": "D.3 Question 1 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "la tablette compte « Question 1 / 11 »"
+  },
+  {
+   "partie": "D.3 Question 1 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q1, tour 1 : B se dit, son temps fini"
+  },
+  {
+   "partie": "D.3 Question 1 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q1, tour 2 : B se dit, son temps fini"
+  },
+  {
+   "partie": "D.3 Question 1 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q1 : les 5 présents répondent, chacun à son tour (les deux moitiés, et l'élève seul)"
+  },
+  {
+   "section": "D.3 Question 2 / 11",
+   "t": 73
+  },
+  {
+   "partie": "D.3 Question 2 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "« ▶️ Lancer Q2 »"
+  },
+  {
+   "partie": "D.3 Question 2 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q2 sur la tablette 1"
+  },
+  {
+   "partie": "D.3 Question 2 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "la tablette compte « Question 2 / 11 »"
+  },
+  {
+   "partie": "D.3 Question 2 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q2, tour 1 : B se dit, son temps fini"
+  },
+  {
+   "partie": "D.3 Question 2 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q2, tour 2 : B se dit, son temps fini"
+  },
+  {
+   "partie": "D.3 Question 2 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q2 : les 5 présents répondent, chacun à son tour (les deux moitiés, et l'élève seul)"
+  },
+  {
+   "section": "D.3 Question 3 / 11",
+   "t": 123
+  },
+  {
+   "partie": "D.3 Question 3 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "« ▶️ Lancer Q3 »"
+  },
+  {
+   "partie": "D.3 Question 3 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q3 sur la tablette 1"
+  },
+  {
+   "partie": "D.3 Question 3 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "la tablette compte « Question 3 / 11 »"
+  },
+  {
+   "partie": "D.3 Question 3 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q3, tour 1 : B se dit, son temps fini"
+  },
+  {
+   "partie": "D.3 Question 3 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q3, tour 2 : B se dit, son temps fini"
+  },
+  {
+   "partie": "D.3 Question 3 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q3 : les 5 présents répondent, chacun à son tour (les deux moitiés, et l'élève seul)"
+  },
+  {
+   "section": "D.3 Question 4 / 11",
+   "t": 174
+  },
+  {
+   "partie": "D.3 Question 4 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "« ▶️ Lancer Q4 »"
+  },
+  {
+   "partie": "D.3 Question 4 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q4 sur la tablette 1"
+  },
+  {
+   "partie": "D.3 Question 4 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "la tablette compte « Question 4 / 11 »"
+  },
+  {
+   "partie": "D.3 Question 4 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q4, tour 1 : B se dit, son temps fini"
+  },
+  {
+   "partie": "D.3 Question 4 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q4, tour 2 : B se dit, son temps fini"
+  },
+  {
+   "partie": "D.3 Question 4 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q4 : les 5 présents répondent, chacun à son tour (les deux moitiés, et l'élève seul)"
+  },
+  {
+   "section": "D.3 Question 5 / 11",
+   "t": 224
+  },
+  {
+   "partie": "D.3 Question 5 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "« ▶️ Lancer Q5 »"
+  },
+  {
+   "partie": "D.3 Question 5 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q5 sur la tablette 1"
+  },
+  {
+   "partie": "D.3 Question 5 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "la tablette compte « Question 5 / 11 »"
+  },
+  {
+   "partie": "D.3 Question 5 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q5, tour 1 : B se dit, son temps fini"
+  },
+  {
+   "partie": "D.3 Question 5 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q5, tour 2 : B se dit, son temps fini"
+  },
+  {
+   "partie": "D.3 Question 5 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q5 : les 5 présents répondent, chacun à son tour (les deux moitiés, et l'élève seul)"
+  },
+  {
+   "section": "D.3 Question 6 / 11",
+   "t": 274
+  },
+  {
+   "partie": "D.3 Question 6 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "« ▶️ Lancer Q6 »"
+  },
+  {
+   "partie": "D.3 Question 6 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q6 sur la tablette 1"
+  },
+  {
+   "partie": "D.3 Question 6 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "la tablette compte « Question 6 / 11 »"
+  },
+  {
+   "partie": "D.3 Question 6 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q6, tour 1 : B se dit, son temps fini"
+  },
+  {
+   "partie": "D.3 Question 6 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q6, tour 2 : B se dit, son temps fini"
+  },
+  {
+   "partie": "D.3 Question 6 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q6 : les 5 présents répondent, chacun à son tour (les deux moitiés, et l'élève seul)"
+  },
+  {
+   "section": "D.3 Question 7 / 11",
+   "t": 324
+  },
+  {
+   "partie": "D.3 Question 7 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "« ▶️ Lancer Q7 »"
+  },
+  {
+   "partie": "D.3 Question 7 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q7 sur la tablette 1"
+  },
+  {
+   "partie": "D.3 Question 7 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "la tablette compte « Question 7 / 11 »"
+  },
+  {
+   "partie": "D.3 Question 7 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q7, tour 1 : B se dit, son temps fini"
+  },
+  {
+   "partie": "D.3 Question 7 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q7, tour 2 : B se dit, son temps fini"
+  },
+  {
+   "partie": "D.3 Question 7 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q7 : les 5 présents répondent, chacun à son tour (les deux moitiés, et l'élève seul)"
+  },
+  {
+   "section": "D.3 Question 8 / 11",
+   "t": 374
+  },
+  {
+   "partie": "D.3 Question 8 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "« ▶️ Lancer Q8 »"
+  },
+  {
+   "partie": "D.3 Question 8 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q8 sur la tablette 1"
+  },
+  {
+   "partie": "D.3 Question 8 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "la tablette compte « Question 8 / 11 »"
+  },
+  {
+   "partie": "D.3 Question 8 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q8, tour 1 : B se dit, son temps fini"
+  },
+  {
+   "partie": "D.3 Question 8 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q8, tour 2 : B se dit, son temps fini"
+  },
+  {
+   "partie": "D.3 Question 8 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q8 : les 5 présents répondent, chacun à son tour (les deux moitiés, et l'élève seul)"
+  },
+  {
+   "section": "D.3 Question 9 / 11",
+   "t": 424
+  },
+  {
+   "partie": "D.3 Question 9 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "« ▶️ Lancer Q9 »"
+  },
+  {
+   "partie": "D.3 Question 9 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q9 sur la tablette 1"
+  },
+  {
+   "partie": "D.3 Question 9 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "la tablette compte « Question 9 / 11 »"
+  },
+  {
+   "partie": "D.3 Question 9 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q9, tour 1 : B se dit, son temps fini"
+  },
+  {
+   "partie": "D.3 Question 9 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q9, tour 2 : B se dit, son temps fini"
+  },
+  {
+   "partie": "D.3 Question 9 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q9 : les 5 présents répondent, chacun à son tour (les deux moitiés, et l'élève seul)"
+  },
+  {
+   "section": "D.3 Question 10 / 11",
+   "t": 474
+  },
+  {
+   "partie": "D.3 Question 10 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "« ▶️ Lancer Q10 »"
+  },
+  {
+   "partie": "D.3 Question 10 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q10 sur la tablette 1"
+  },
+  {
+   "partie": "D.3 Question 10 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "la tablette compte « Question 10 / 11 »"
+  },
+  {
+   "partie": "D.3 Question 10 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q10, tour 1 : B se dit, son temps fini"
+  },
+  {
+   "partie": "D.3 Question 10 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q10, tour 2 : B se dit, son temps fini"
+  },
+  {
+   "partie": "D.3 Question 10 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q10 : les 5 présents répondent, chacun à son tour (les deux moitiés, et l'élève seul)"
+  },
+  {
+   "section": "D.3 Question 11 / 11",
+   "t": 524
+  },
+  {
+   "partie": "D.3 Question 11 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "« ▶️ Lancer Q11 »"
+  },
+  {
+   "partie": "D.3 Question 11 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q11 sur la tablette 1"
+  },
+  {
+   "partie": "D.3 Question 11 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "la tablette compte « Question 11 / 11 »"
+  },
+  {
+   "partie": "D.3 Question 11 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q11, tour 1 : B se dit, son temps fini"
+  },
+  {
+   "partie": "D.3 Question 11 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q11, tour 2 : B se dit, son temps fini"
+  },
+  {
+   "partie": "D.3 Question 11 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q11 : les 5 présents répondent, chacun à son tour (les deux moitiés, et l'élève seul)"
+  },
+  {
+   "partie": "D.3 Question 11 / 11",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "les réponses des 11 questions dans la base"
+  },
+  {
+   "partie": "D.3 Question 11 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "l'élève seul répond au 1er tour, puis il attend : ses choix ne se rouvrent pas au 2e tour (cadrage, point 27)"
+  },
+  {
+   "section": "D.4 L'estimation, la seconde attestation, la correction des 11",
+   "t": 574
+  },
+  {
+   "partie": "D.4 L'estimation, la seconde attestation, la correction des 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "« 📊 Lancer l'autoévaluation »"
+  },
+  {
+   "partie": "D.4 L'estimation, la seconde attestation, la correction des 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "« 📝 Lancer la correction »"
+  },
+  {
+   "partie": "D.4 L'estimation, la seconde attestation, la correction des 11",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "tous ont coché la seconde attestation : la correction commence (c-attest2)"
+  },
+  {
+   "partie": "D.4 L'estimation, la seconde attestation, la correction des 11",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "ordreCorr : les 11 questions, de la plus ratée à la mieux réussie"
+  },
+  {
+   "partie": "D.4 L'estimation, la seconde attestation, la correction des 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "correction de Q11 : toutes les feuilles lues, « 💡 Révéler » s'ouvre"
+  },
+  {
+   "partie": "D.4 L'estimation, la seconde attestation, la correction des 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "correction de Q6 : toutes les feuilles lues, « 💡 Révéler » s'ouvre"
+  },
+  {
+   "partie": "D.4 L'estimation, la seconde attestation, la correction des 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "correction de Q8 : toutes les feuilles lues, « 💡 Révéler » s'ouvre"
+  },
+  {
+   "partie": "D.4 L'estimation, la seconde attestation, la correction des 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "correction de Q9 : toutes les feuilles lues, « 💡 Révéler » s'ouvre"
+  },
+  {
+   "partie": "D.4 L'estimation, la seconde attestation, la correction des 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "correction de Q10 : toutes les feuilles lues, « 💡 Révéler » s'ouvre"
+  },
+  {
+   "partie": "D.4 L'estimation, la seconde attestation, la correction des 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "correction de Q2 : toutes les feuilles lues, « 💡 Révéler » s'ouvre"
+  },
+  {
+   "partie": "D.4 L'estimation, la seconde attestation, la correction des 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "correction de Q3 : toutes les feuilles lues, « 💡 Révéler » s'ouvre"
+  },
+  {
+   "partie": "D.4 L'estimation, la seconde attestation, la correction des 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "correction de Q4 : toutes les feuilles lues, « 💡 Révéler » s'ouvre"
+  },
+  {
+   "partie": "D.4 L'estimation, la seconde attestation, la correction des 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "correction de Q5 : toutes les feuilles lues, « 💡 Révéler » s'ouvre"
+  },
+  {
+   "partie": "D.4 L'estimation, la seconde attestation, la correction des 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "correction de Q7 : toutes les feuilles lues, « 💡 Révéler » s'ouvre"
+  },
+  {
+   "partie": "D.4 L'estimation, la seconde attestation, la correction des 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "correction de Q1 : toutes les feuilles lues, « 💡 Révéler » s'ouvre"
+  },
+  {
+   "partie": "D.4 L'estimation, la seconde attestation, la correction des 11",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "« Trouvée au dernier moment » : Lina à Q2, Paul à Q1, et personne d'autre"
+  },
+  {
+   "section": "D.5 La co-évaluation, le bilan des 5",
+   "t": 608
+  },
+  {
+   "partie": "D.5 La co-évaluation, le bilan des 5",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "« 🤝 Ouvrir la co-évaluation, puis leur bilan »"
+  },
+  {
+   "partie": "D.5 La co-évaluation, le bilan des 5",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "tous ont répondu (l'élève seul n'a pas de co-évaluation) : « 🏁 Afficher leur bilan aux élèves » s'ouvre"
+  },
+  {
+   "partie": "D.5 La co-évaluation, le bilan des 5",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "le bilan de chacun des 5 dit sa note sur les 11 questions (la note, c'est la feuille ; une seule « Trouvée au dernier moment »)"
+  },
+  {
+   "partie": "D.5 La co-évaluation, le bilan des 5",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "la séance de 4e terminée (etat = terminee, plus active)"
+  },
+  {
+   "section": "D.6 Le soir de la 4e : Résultats, rendre les copies, le PDF",
+   "t": 614
+  },
+  {
+   "partie": "D.6 Le soir de la 4e : Résultats, rendre les copies, le PDF",
+   "ok": true,
+   "proprio": "QCM-3 · SOIR",
+   "quoi": "Résultats : la séance de 4e, sous 4 ESSAI"
+  },
+  {
+   "partie": "D.6 Le soir de la 4e : Résultats, rendre les copies, le PDF",
+   "ok": true,
+   "proprio": "QCM-3 · SOIR",
+   "quoi": "le tableau de la séance : les 5 présents"
+  },
+  {
+   "partie": "D.6 Le soir de la 4e : Résultats, rendre les copies, le PDF",
+   "ok": true,
+   "proprio": "QCM-3 · SOIR",
+   "quoi": "Iris, absente, est dite absente"
+  },
+  {
+   "partie": "D.6 Le soir de la 4e : Résultats, rendre les copies, le PDF",
+   "ok": true,
+   "proprio": "QCM-3 · SOIR",
+   "quoi": "les feuilles lues : « rendre les copies ▸ »"
+  },
+  {
+   "partie": "D.6 Le soir de la 4e : Résultats, rendre les copies, le PDF",
+   "ok": true,
+   "proprio": "QCM-3 · SOIR",
+   "quoi": "copies rendues (copies.rendues)"
+  },
+  {
+   "partie": "D.6 Le soir de la 4e : Résultats, rendre les copies, le PDF",
+   "ok": true,
+   "proprio": "QCM-3 · SOIR",
+   "quoi": "le PDF « notes et compétences » s'ouvre (11 questions)"
+  },
+  {
+   "section": "D.7 Aucune erreur de page, aucune boîte système",
+   "t": 624
+  },
+  {
+   "partie": "D.7 Aucune erreur de page, aucune boîte système",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "page « console » sans erreur ni boîte système"
+  },
+  {
+   "partie": "D.7 Aucune erreur de page, aucune boîte système",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "page « tablette-4e-1 » sans erreur ni boîte système"
+  },
+  {
+   "partie": "D.7 Aucune erreur de page, aucune boîte système",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "page « tablette-4e-3 » sans erreur ni boîte système"
+  },
+  {
+   "partie": "D.7 Aucune erreur de page, aucune boîte système",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "page « tablette-4e-2 » sans erreur ni boîte système"
+  }
+ ]
+}

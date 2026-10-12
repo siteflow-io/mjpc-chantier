@@ -302,7 +302,9 @@ function TabletteVue(g, d, interactif){
   return Tablette(moitie(g, "g", d), moitie(d, "d", g));
 }
 // (déplacer, 72) l'élève de cette moitié a été échangé ou déplacé : sa place est sur une autre tablette
-function pasIciH(p){ var ici = iciH(), t = SCN.tabletteDe(p); return !!(enDirect() && ici.n && t && t.n !== ici.n); }
+function pasIciH(p){ var ici = iciH(); if(!enDirect() || !ici.n) return false;
+  if(typeof ELV.ailleurs === "function"){ var c = ici.g === p ? "g" : ici.d === p ? "d" : null; if(c) return !!ELV.ailleurs(c); }
+  var t = SCN.tabletteDe(p); return !!(t && t.n !== ici.n); }
 // sa moitié lui dit où aller (« Julien, va sur la tablette de Lou », t-deplace) tant qu'il n'y est pas entré, et accueille celui qui prend sa place
 function MoitieQuitteeH(p, cote, autre){
   var v = SCN.voisinDe(p), entree = h(EntreeMoitie, {key:"e" + cote + p, cote:cote, autre:autre});

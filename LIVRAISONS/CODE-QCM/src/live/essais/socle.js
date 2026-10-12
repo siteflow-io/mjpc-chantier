@@ -52,6 +52,14 @@ function verif(ok, quoi, detail){ nb++; if(!ok) ko++; R.push((ok ? "  ok     " :
     verif(s1.deroule.ph === "entree" && Object.values(s1.absents || {}).includes("yvon_adam"), "appelFini : absents, phase « entree »", s1.deroule);
     const seuls = Object.values(s1.places).filter(p => p.seul);
     verif(seuls.length === 0, "Adam absent : son binôme est réapparié avec l'élève seul (25 élèves, 24 présents : aucune moitié vide)", s1.places);
+    // une fenêtre ouverte sur place se ferme par Échap ou « Annuler » sans jamais quitter la page (ni l'historique du navigateur)
+    const url0 = prof.url();
+    await prof.evaluate(() => navOuvrir("c-depart")); await pause(300); await prof.keyboard.press("Escape"); await pause(300);
+    const f1 = await prof.evaluate(() => ({ecran: NAV.ecran, pile: NAV.pile.length}));
+    await prof.evaluate(() => navOuvrir("c-terminer")); await pause(300);
+    await prof.evaluate(() => { const b = [...document.querySelectorAll(".checkin-overlay button")].find(x => x.textContent.trim() === "Annuler"); if(b) b.click(); }); await pause(300);
+    const f2 = await prof.evaluate(() => ({ecran: NAV.ecran, pile: NAV.pile.length}));
+    verif(prof.url() === url0 && !f1.ecran && !f2.ecran && base("sessionActive/3 ESSAI") === sid, "Échap et « Annuler » ferment la fenêtre sur place ; la page ne bouge pas, la séance continue", {f1, f2, url: prof.url()});
     // la tablette : l'entrée par le code (empreinte), le rejoins, le code faux
     const tab = await ouvrir("?mode=eleve");
     await tab.evaluate(() => ELV.combien(2));

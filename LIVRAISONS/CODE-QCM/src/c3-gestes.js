@@ -20,7 +20,9 @@ function versScene(id){
   location.hash = "#scene=" + sc + (params.length ? "&" + params.join("&") : "");
 }
 // fermer une fenêtre : revenir à l'écran d'où un geste l'a ouverte ; sinon, à l'écran que la fenêtre nomme
-function fermerVers(defaut){ if(vientDUnGeste()) history.back(); else versScene(defaut); }
+// (QCM-1) dans l'app, revenir en arrière, c'est fermer ce qui s'est ouvert sur place (NAV) : jamais l'historique du navigateur, qui quitterait la console
+function retourGeste(){ if(typeof navFermer === "function" && typeof APP_QCM !== "undefined" && APP_QCM) navFermer(); else history.back(); }
+function fermerVers(defaut){ if(vientDUnGeste()) retourGeste(); else versScene(defaut); }
 var FERMER_C3 = /^(✕|×|Annuler|Fermer|✕ Fermer|OK|Compris|✓ J'ai compris|J'ai compris|← Retour à la liste)$/;
 window.addEventListener("click", function(ev){
   var b = ev.target && ev.target.closest ? ev.target.closest("#root button") : null;
@@ -28,7 +30,7 @@ window.addEventListener("click", function(ev){
   var couche = b.closest("[data-echap]"); if(!couche) return;
   var va = b.getAttribute("data-va");
   if(va === couche.getAttribute("data-echap") || (!va && FERMER_C3.test(etiquetteDe(b))) || (va && FERMER_C3.test(etiquetteDe(b)) && va.split("&")[0] === couche.getAttribute("data-echap").split("&")[0])){
-    ev.stopImmediatePropagation(); ev.preventDefault(); history.back();
+    ev.stopImmediatePropagation(); ev.preventDefault(); retourGeste();
   }
 }, true);
 // (changement 7.7) Échap ferme chaque fenêtre : une fenêtre ouverte sur place (sans adresse) se ferme par son bouton qui ferme
@@ -44,7 +46,7 @@ window.addEventListener("keydown", function(ev){
   if(ev.key !== "Escape" || window.SOMMAIRE_OUVERT || !vientDUnGeste()) return;
   if(document.querySelector("#root .modal .preview")) return;              // l'éditeur a sa garde (c3-evals.js)
   if(!document.querySelector("#root [data-echap]")) return;
-  ev.stopImmediatePropagation(); ev.preventDefault(); history.back();
+  ev.stopImmediatePropagation(); ev.preventDefault(); retourGeste();
 }, true);
 
 /* ── L'en-tête de la console : chaque geste nomme sa destination, au moment de la scène (12.4 : plus de table par libellé seul) ── */
@@ -69,7 +71,7 @@ function Console(groupe, tab, contenu, séance){
           h("button", {className:"btn btn-ghost btn-sm", "data-va":"c-qr"}, "📱 QR pilotage"),
           h("button", {className:"btn-test", "data-va":"x620-1-mode-test-ouverture", "data-moment":"TEST:avant"}, "🧪 Mode test", InfoI("Le mode test : une classe de test de 30 élèves et ses 15 tablettes simulées, pour éprouver le déroulé sans toucher tes vraies classes. À la sortie, tout est effacé, sauf la démo.")),
           // « ← Retour » revient à l'écran précédent de la console, comme son infobulle le dit ; ouvert tout seul, à l'accueil de l'app
-          h("button", {className:"btn btn-ghost btn-sm", "data-local":"1", onClick:function(){ if(vientDUnGeste()) history.back(); else versScene("c-accueil"); }}, "← Retour"))),
+          h("button", {className:"btn btn-ghost btn-sm", "data-local":"1", onClick:function(){ if(vientDUnGeste()) retourGeste(); else versScene("c-accueil"); }}, "← Retour"))),
       h("div", {className:"tabs"}, h("div", {className:"nav2"},
         h("div", {className:"nav2-groupes"}, groupes.map(function(g){ return h("button", {key:g[0], className:"nav2-groupe" + (g[0] === groupe ? " actif" : ""), "data-va":g[2]}, g[1]); }), h("button", {className:"nav2-aide", "data-va":"c-mode-emploi"}, "?")),
         // (relecteur n°297) un groupe sans sous-onglets n'a pas de rangée vide
@@ -99,7 +101,7 @@ function ChoixEvaluation(p){
 }
 // le message de l'emploi du temps se ferme aussi à Échap, comme les autres fenêtres (changement 7.7, relecteur n°313)
 function AtInfo(p){
-  var fermer = function(){ if(vientDUnGeste()) history.back(); else p.fermer(); };
+  var fermer = function(){ if(vientDUnGeste()) retourGeste(); else p.fermer(); };
   useEchapLocal(true, fermer);
   return h("div", {className: "at-modale", id: "at-modale"},
     h("div", {className: "at-modale-c"}, h("div", {className: "at-modale-m"}, p.msg),

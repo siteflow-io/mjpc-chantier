@@ -176,3 +176,7 @@ document.addEventListener("change", function(ev){
   if(SCN.evalParId(v)) LANCEMENT.evalId = v; else { var e = SCN.evals().filter(function(x){ return x.titre === t || t.indexOf(x.titre) >= 0; })[0]; if(e && !cl[v]) LANCEMENT.evalId = e.id; }
   LIVE.changer();
 }, true);
+/* Un filet : dans l'app, une fenêtre se fermait dans la maquette par history.back() (l'adresse « #scene=… &de=1 »). Ici, rien n'est dans
+   l'adresse : history.back() appelé par un écran ferme ce qui est ouvert sur place, et ne fait jamais quitter la page (la console, la tablette). */
+(function(){ if(typeof APP_QCM === "undefined" || !APP_QCM) return;
+  try { history.back = function(){ if(NAV.pile.length || NAV.ecran) navFermer(); }; } catch(e){ console.error(e); } })();

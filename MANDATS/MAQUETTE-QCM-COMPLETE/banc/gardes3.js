@@ -547,7 +547,8 @@ async function carteScene(page, url, sc, A){
           if(es.par === "Échap") await page.keyboard.press("Escape");
           else await page.evaluate(a => { const root = document.getElementById("root"); const cs = Array.from(root.querySelectorAll(a.sel)).filter(e => e.getBoundingClientRect().width > 1); const c = cs[cs.length - 1];
             const b = Array.from(c.querySelectorAll("button")).filter(b => b.getBoundingClientRect().width > 1 && !b.disabled)[a.i]; b.click(); }, {sel: COUCHES, i: es.i});
-          await page.waitForTimeout(80);
+          // (complément 4) « ← Retour » et Échap passent par l'historique : la scène d'où on vient se rend après l'événement « hashchange »
+          await page.waitForTimeout(80); await page.waitForFunction(() => window.SCENE_PRETE, null, {timeout: 3000}).catch(() => {}); await page.waitForTimeout(60);
           const z = await page.evaluate(lireEtat, COUCHES);
           r.fermetures.push({par: es.par, ok: z.scene === baseDe(sc.id) && z.couches === depart.couches && z.cle === depart.cle, ou: z.scene + (z.couches ? " (une fenêtre encore ouverte)" : "")});
         } catch(e){ r.fermetures.push({par: es.par, ok: false, ou: "erreur : " + String(e.message).split("\n")[0].slice(0, 80)}); }

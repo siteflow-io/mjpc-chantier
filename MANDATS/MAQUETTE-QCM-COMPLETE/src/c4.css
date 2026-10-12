@@ -24,3 +24,8 @@
 .corb-l .d{color:#475569}
 .note20{opacity:1;display:inline-block;background:rgba(26,26,46,.35);border-radius:8px;padding:0 .4rem}
 .trouvee{background:linear-gradient(135deg,#C2410C,#9A3412)}
+/* (complément 4, correction 8) la règle du désaccord revient sous les onze questions de 3e, lues en entier (x610-6) :
+   la liste se resserre pour que la moitié tienne (vérification 2) */
+.co-liste.serree{gap:.1rem}
+.co-liste.serree .co-l{padding:.14rem .55rem;line-height:1.15}
+.moitie .co-regle{margin:.15rem 0 .4rem;padding:.4rem .7rem;line-height:1.3}

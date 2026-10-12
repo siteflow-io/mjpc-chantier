@@ -257,7 +257,17 @@ refaire("t-papier-correction", function(){ return Tablette(EcrRevele(J, MOM().qi
 ST_Q1T1 = function(){ return etatPilot(); };
 refaire("c-qr", function(){
   var fond = seanceEnCours() ? fondDuMoment() : Lancement(false);
-  var r = ScQR(); return h(F, null, fond, r.props.children[1]);
+  var cases = []; for(var i = 0; i < 29 * 29; i++){ var x = i % 29, y = Math.floor(i / 29); var coin = (x < 7 && y < 7) || (x > 21 && y < 7) || (x < 7 && y > 21);
+    var on = coin ? ((x % 22 === 0 || x % 22 === 6 || y % 22 === 0 || y % 22 === 6) || (x % 22 >= 2 && x % 22 <= 4 && y % 22 >= 2 && y % 22 <= 4)) : ((x * 7 + y * 13 + x * y) % 3 === 0); cases.push(on ? 1 : 0); }
+  // la fenêtre du QR, celle de etape2.js (ScQR), mot pour mot ; seul son fond suit le moment
+  var retour = seanceEnCours() ? "c-q1-tour1" : "c-lancer";
+  return h(F, null, fond, h("div", {className:"modal-back", "data-echap":retour},
+    h("div", {className:"modal", style:{maxWidth:"420px", textAlign:"center"}},
+      h("button", {className:"modal-close", "data-va":retour}, "✕"),
+      h("h2", null, "📱 Pilotage mobile"),
+      h("p", {style:{marginBottom:"1rem", fontSize:".9rem", color:"var(--gris)"}}, "Scanne avec ton téléphone. La fenêtre se ferme automatiquement."),
+      h("div", {className:"qr-dessin"}, cases.map(function(c, i){ return h("span", {key:i, className:c ? "on" : ""}); })),
+      h("button", {className:"btn btn-ghost btn-sm", style:{marginTop:".8rem"}, "data-local":"1", onClick:function(){ window.open(location.pathname + "#scene=p-reponse&m=" + encodeURIComponent(MO()), "telephone-qcm"); }, title:"Montre ce que ton téléphone affiche une fois le QR scanné : ta télécommande."}, "📱 Voir le téléphone"))));
 });
 /* le mode test au « Oui / Non » de la question 3 (TEST:Q3:B1) : les 15 tablettes à ce moment, comme derrière « 🔍 Jouer en grand » */
 function ModeTestB(){ var n = +paramHash("tab") || 1, pa = TEST_PAIRES30[n - 1] || TEST_PAIRES30[0], a = eleveT(pa[0], "J");

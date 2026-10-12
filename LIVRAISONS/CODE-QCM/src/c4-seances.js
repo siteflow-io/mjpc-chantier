@@ -248,7 +248,8 @@ function msDeSeance(S){ return S.date || (S.lancee && S.lancee.date) || S.create
 function msFinSeance(S){ return S.finLe || S.fin || msDeSeance(S); }
 function seanceDemo(S){ return !!S && (S.evalId === "demo" || !!S.demo || !!(S.lancee && S.lancee.demo)); }
 function seanceTest(S){ var c = String(S && (S.classeSlug || S.classe) || ""); return !!S && (!!S.test || /^_|test/i.test(c)); }
-function evalDeSeanceV(S){ if(!S) return null; if(S.evalSnapshot) return evalVue(S.evalId, S.evalSnapshot); return evalV(S.evalId); }
+// l'évaluation telle que la séance l'a servie (evalSnapshot : titre, mode, questions) ; ce que l'instantané ne garde pas (le chapitre…) vient de l'évaluation
+function evalDeSeanceV(S){ if(!S) return null; if(S.evalSnapshot) return evalVue(S.evalId, Object.assign({}, v3Evals()[S.evalId] || {}, S.evalSnapshot)); return evalV(S.evalId); }
 function listeSlugs(x, eleves){   // une liste d'élèves (slugs ou noms), en slugs
   return v3Liste(x).map(function(a){ var s = String(a); var e = (eleves || []).filter(function(y){ return y.slug === s || y.nom === s; })[0]; return e ? e.slug : v3Slug(s); }); }
 

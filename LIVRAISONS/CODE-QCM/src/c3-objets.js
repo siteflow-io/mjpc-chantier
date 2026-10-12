@@ -229,7 +229,7 @@ var FENETRES_H = {
   rouvrirTous:function(qi, fond){ var sans = momH().sansRep || [];
     return Fenetre(fond, "🔓 Rouvrir la question " + (qi + 1) + " pour tous ?", "Seuls ceux qui n'ont pas répondu la retrouvent, une seule fois.",
       h(F, null, h("p", null, "Ici : ", sans.map(function(p, i){ var t = SCN.tabletteDe(p); return h(F, {key:p}, i ? ", " : "", h("strong", null, nomDe(p)), t ? " (tablette " + t.n + ")" : ""); }), ".")),
-      [annulerH(), boutonH("ok", "btn btn-primary", "🔓 Rouvrir pour ceux qui n'ont pas répondu", fait("rouvrirTous", [qi]), "Rouvre la question " + (qi + 1) + " pour ceux qui n'ont pas répondu. Une seule fois.")], null); },
+      [annulerH(), boutonH("ok", "btn btn-primary", "🔓 Rouvrir pour ceux qui n'ont pas répondu", fait("rouvrirTous", [qi]), "Rouvre la question " + (qi + 1) + " pour ceux qui n'ont pas répondu" + (sans.length ? " : ici, " + listeFr(sans.map(prenomH)) : "") + ". Une seule fois.")], null); },
   rouvrirUn:function(qi, fond){ var sans = momH().sansRep || [];
     return h(F, null, fond, h("div", {className:"checkin-overlay"},
       h("div", {className:"checkin-modal", style:{maxWidth:"560px"}},

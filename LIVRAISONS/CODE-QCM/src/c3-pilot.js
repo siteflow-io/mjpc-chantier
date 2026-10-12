@@ -226,9 +226,9 @@ function Overview(qCur, passees, opts){
         avenir && !ec[qi] ? h(TempsMiniH, {qi:qi}) : h("div", {className:"pilot-q-mini-status"}, "Réflexion " + t.reflexion + " s · Réponse " + t.reponse + " s par tour",
           (passee || (current && opts.phase === "attente")) && !an[qi] && h("span", null, " — ", h("span", {className:"score-pct " + (taux >= .7 ? "score-vert" : taux >= .5 ? "score-orange" : "score-rouge")}, b.justes + "/" + b.repondu + " justes"))),
         h("div", {className:"q-gestes"},
-          ec[qi] || an[qi] ? h("button", Object.assign({className:"btn btn-ghost btn-sm"}, remettre), "↩️ Remettre")
-            : avenir ? h("button", Object.assign({className:"btn btn-ghost btn-sm btn-ecarter", title:"Écarte la question " + (qi + 1) + ", après une confirmation : elle ne sera ni posée ni corrigée, et sort du total, comme une question manquée par un absent ; les tablettes et le tableau comptent sans elle. « ↩️ Remettre » la défait, tant que son tour n'est pas passé."}, fen("c-ecarter&q=" + (qi + 1), "ecarter", qi)), "❌ Écarter")
-            : passee || (current && opts.phase === "attente") ? h("button", Object.assign({className:"btn btn-ghost btn-sm"}, fen("c-annuler&q=" + (qi + 1), "annuler", qi)), "⚠️ Annuler") : null));
+          ec[qi] || an[qi] ? h("button", Object.assign({key:"rem", className:"btn btn-ghost btn-sm"}, remettre), "↩️ Remettre")
+            : avenir ? h("button", Object.assign({key:"ec", className:"btn btn-ghost btn-sm btn-ecarter", title:"Écarte la question " + (qi + 1) + ", après une confirmation : elle ne sera ni posée ni corrigée, et sort du total, comme une question manquée par un absent ; les tablettes et le tableau comptent sans elle. « ↩️ Remettre » la défait, tant que son tour n'est pas passé."}, fen("c-ecarter&q=" + (qi + 1), "ecarter", qi)), "❌ Écarter")
+            : passee || (current && opts.phase === "attente") ? h("button", Object.assign({key:"an", className:"btn btn-ghost btn-sm"}, fen("c-annuler&q=" + (qi + 1), "annuler", qi)), "⚠️ Annuler") : null));
     }),
     opts.alerteComp && h("div", {className:"q-alerte"}, opts.alerteComp));
 }

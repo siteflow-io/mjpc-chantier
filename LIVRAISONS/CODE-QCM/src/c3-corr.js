@@ -29,6 +29,7 @@ var LEG_CORR_AP = [["#22C55E","✓ juste d'après la feuille"],["#EF4444","✗ f
 
 /* ════════ La console pendant la correction ════════ */
 function PilotCorrection(){
+  if(LIVE()) return PilotCorrectionH();
   var k = MO(), m = MOM(), qi = m.qi, q = EV.questions[qi], pos = SCN.ORDRE_CORR.indexOf(qi), derniere = pos === 2;
   var revele = m.ph === "revele", pasLu = m.pasLu || [], c = SCN.compteurs(k), pres = c.presents;
   var b = bilanQ(qi, k);
@@ -92,6 +93,7 @@ function fermeEnv(raison, bouton){ return hBase("span", {className:"ferme-env", 
 
 /* ════════ La co-évaluation, côté console ════════ */
 function PilotCoevalE(){
+  if(LIVE()) return PilotCoevalH();
   var k = MO(), m = MOM(), c = SCN.compteurs(k), pres = c.presents;
   var tranche = !!m.tranche || SCN.rang(k) > SCN.rang("S08:coeval:T");
   var att = c.manquent || [];
@@ -153,6 +155,7 @@ function ScAutonomieGarde(qui, retour){
 /* ════════ Le bilan de la classe, à la fin de l'heure ════════ */
 function tauxQ(qi){ var k = MO(), ok = 0, n = 0; SCN.presents(k).forEach(function(p){ var x = calc(p).pts[qi]; if(x != null){ n++; ok += x; } }); return n ? Math.round(ok * 100 / n) : 0; }
 function BilanClasse(){
+  if(LIVE()) return BilanClasseH();
   var k = MO(), pres = SCN.presents(k);
   var lignes = pres.map(function(p){ return {p:p, nom:nomDe(p), r:calc(p)}; });
   var total = lignes[0].r.total;
@@ -212,23 +215,25 @@ function BilanClasse(){
 /* ════════ Le bilan de l'élève, sur sa moitié (442, 456, 474, 484, 639) ════════ */
 function EcrBilan(e, opts){
   opts = opts || {};
-  var k = MO(), r = calc(e.prenom), st = r.st, pts = r.pts.map(function(x){ return x || 0; });
+  var k = MO(), r = calc(cleE(e)), st = r.st, pts = r.pts.map(function(x){ return x || 0; });
   var an = (r.annulees || [])[0] == null ? -1 : r.annulees[0], tot = r.total, n = r.n, sur20 = r.sur20, mt = maitriseDe(sur20);
-  var es = SCN.estimation(e.prenom, k);
-  var est = SCN.ESTIM[e.prenom];
+  var es = SCN.estimation(cleE(e), k);
+  var est = LIVE() ? ESTIM[cleE(e)] : SCN.ESTIM[e.prenom];
   var calib = null;
   if(es){
-    var nE = FOURCH.filter(function(f){ return f.k === est; })[0].n, emE = MAITRISE.filter(function(x){ return x.k === est; })[0].em;
-    calib = es.type === "ok" ? {type:"ok", msg:"✅ Tu te connais bien !", detail:"Tu pensais avoir " + libFourchette(nE).replace(" sur 3", "") + " " + emE + " et tu en as effectivement obtenu " + n + " sur " + tot + ". Ton estimation correspond à ton vrai résultat."}
-      : es.type === "sur" ? {type:"sur", msg:"⚠️ Tu pensais avoir mieux fait", detail:"Tu pensais avoir " + libFourchette(nE).replace(" sur 3", "") + " " + emE + " mais tu en as eu " + n + " sur " + tot + " (" + libFourchette(n).replace(" sur 3", "") + " " + mt.em + ").", degre:degreSurestime(es.ecart)}
+    // (QCM-2) la fourchette estimée et celle de la note, sur le nombre de questions de l'évaluation (sur 3 : celles de la maquette)
+    var FS = fourchettesH(tot), fE = FS.filter(function(f){ return f.k === est; })[0] || {a:0, b:0}, fN = {a:n, b:n};
+    var emE = MAITRISE.filter(function(x){ return x.k === est; })[0].em;
+    calib = es.type === "ok" ? {type:"ok", msg:"✅ Tu te connais bien !", detail:"Tu pensais avoir " + libFourchetteH(fE, tot, true) + " " + emE + " et tu en as effectivement obtenu " + n + " sur " + tot + ". Ton estimation correspond à ton vrai résultat."}
+      : es.type === "sur" ? {type:"sur", msg:"⚠️ Tu pensais avoir mieux fait", detail:"Tu pensais avoir " + libFourchetteH(fE, tot, true) + " " + emE + " mais tu en as eu " + n + " sur " + tot + " (" + libFourchetteH(fN, tot, true) + " " + mt.em + ").", degre:degreSurestime(es.ecart)}
       : {type:"sous", msg:"🌟 Tu te sous-estimais !", detail:""};
   }
   var corrigees = r.corrigees || [];
   var compQ = function(cp){ return compQuestions(cp).filter(function(i){ return i !== an; }).map(function(i, j){ return h(F, {key:i}, j ? " · " : "", "Q" + (i+1) + " ", st[i] === "t" ? h("span", {className:"v-orange"}, "✓") : st[i] === "j" ? "✓" : "✗"); }); };
-  var autoOk = !SCN.autonomie(e.prenom, k).retire;
+  var autoOk = !SCN.autonomie(cleE(e), k).retire;
   return Page(badgeDe(e), "🎯 Bilan personnel", h("div", {className:"bilan-c"},
     // la version imprimable de son bilan s'ouvre à part, pour l'élève de cette moitié (l'infobulle de la 7.7.1 : « Ouvre une version imprimable… »)
-    !opts.imprime && h("button", {className:"bilan-export-btn", "data-local":"1", onClick:function(){ window.open(location.pathname + "#scene=t-bilan-imprime&m=" + encodeURIComponent(MO()) + "&eleve=" + encodeURIComponent(e.prenom), "bilan-" + e.prenom); }}, "📄 Imprimer / Exporter mon bilan"),
+    !opts.imprime && h("button", {className:"bilan-export-btn", "data-local":"1", onClick:function(ev){ if(LIVE()) return imprimerBilanH(ev, e); window.open(location.pathname + "#scene=t-bilan-imprime&m=" + encodeURIComponent(MO()) + "&eleve=" + encodeURIComponent(e.prenom), "bilan-" + e.prenom); }}, "📄 Imprimer / Exporter mon bilan"),
     // (relecteur n°204) le bilan imprimé dit de quelle évaluation il s'agit, et sa date : deux données
     opts.imprime && h("div", {className:"bilan-imprime-eval"}, h("span", null, EV.titre), " · ", h("span", null, SCN.seance(MOM().seance || "S08").date)),
     h("div", {className:"bilan-score fourchette-" + mt.k},
@@ -245,7 +250,7 @@ function EcrBilan(e, opts){
           h("span", null, "Question " + (i+1) + " · ",
             s === "t" ? h(F, null, h("span", {className:"v-orange"}, "✓"), " Trouvée au dernier moment") : s === "a" ? "ta feuille ne dit aucun de ces choix" : s === "j" ? "juste" : "faux",
             corrigees.indexOf(i) >= 0 && h("span", {className:"corrige"}, "Corrigé d'après ta feuille."),
-            h("span", {className:"recap-comp"}, q.competences.map(function(cp){ return LIB_ELEVE[cp]; }).join(" · "))),
+            h("span", {className:"recap-comp"}, (q.competences || []).map(function(cp){ return LIB_ELEVE[cp] || ""; }).join(" · "))),
           h("span", {className:"pt"}, "→ " + pts[i] + " point"));
       }))),
     h("div", {className:"bilan-bloc"}, h("h3", null, "Tes compétences"),
@@ -262,5 +267,247 @@ function EcrBilan(e, opts){
       an < 0 && h("div", {className:"bilan-calib-detail"}, calib.detail, calib.degre && " ", calib.degre))));
 }
 
+// (QCM-2) en direct, la version imprimable du bilan de cette moitié s'ouvre à part, avec ses styles, l'évaluation et sa date en tête
+function imprimerBilanH(ev, e){
+  var carte = ev.target.closest(".bilan-c"); if(!carte) return;
+  var copie = carte.cloneNode(true), b = copie.querySelector(".bilan-export-btn"); if(b) b.remove();
+  var se = SCN.seance(momH().seance) || {}, styles = Array.prototype.map.call(document.querySelectorAll("style"), function(s){ return s.outerHTML; }).join("");
+  var w = window.open("", "bilan-" + cleE(e)); if(!w) return;
+  w.document.write("<!DOCTYPE html><html lang=\"fr\"><head><meta charset=\"UTF-8\"><title>" + e.nom + "</title>" + styles + "</head><body><div class=\"bilan-imprime\"><div class=\"bilan-imprime-page\"><div class=\"eleve-page\"><div class=\"eleve-card\">"
+    + "<div class=\"eleve-classe-badge\">" + badgeDe(e) + "</div><h1>🎯 Bilan personnel</h1><div class=\"bilan-c\"><div class=\"bilan-imprime-eval\"><span>" + EV.titre + "</span> · <span>" + (se.date || "") + "</span></div>" + copie.innerHTML + "</div></div></div></div></div></body></html>");
+  w.document.close();
+}
 // le bilan imprimable de l'élève demandé (« &eleve= »)
 function BilanImprime(){ var p = paramHash("eleve"), e = p ? (p === "Julien" ? J : p === "Michel" ? M : eleveObjet(nomDe(p))) : J; return h("div", {className:"bilan-imprime"}, h("div", {className:"bilan-imprime-page"}, EcrBilan(e, {imprime:true}))); }
+
+/* ═══════════════ QCM-2 · HEURE — la correction, la co-évaluation et le bilan de classe, en direct ═══════════════
+   Les mêmes écrans que la maquette (PilotCorrection, PilotCoevalE, BilanClasse), pour n'importe quelle classe et n'importe quel
+   nombre de questions : l'ordre de la correction, les lectures, les alertes et leurs décisions viennent de la séance ; chaque bouton agit (ACT). */
+function boutonsTete(){
+  return [h("button", Object.assign({key:0, className:"btn btn-ghost btn-sm"}, fen(null, "depart")), "🚫 Départ d'un élève"), h("button", Object.assign({key:5, className:"btn btn-ghost btn-sm"}, fen(null, "finir")), "⏸️ Finir à une autre heure"), h("button", Object.assign({key:1, className:"btn btn-rouge btn-sm"}, fen(null, "terminer")), "🛑 Terminer la séance")];
+}
+function PilotCorrectionH(){
+  var k = MO(), m = momH(), qi = m.qi, q = EV.questions[qi], ordre = ORDRE_CORR, pos = ordre.indexOf(qi), derniere = pos === ordre.length - 1;
+  var revele = m.ph === "revele", pasLu = m.pasLu || [], c = SCN.compteurs(k), pres = c.presents;
+  var b = bilanQ(qi, k);
+  var res = SCN.presents(k).map(function(p){ return calc(p).st[qi]; });
+  var nbF = res.filter(function(s){ return s === "j"; }).length, nbT = res.filter(function(s){ return s === "t"; }).length;
+  var lire = lireSoir(k);
+  var suivant = derniere
+    ? h("button", Object.assign({className:"btn btn-primary", disabled:!revele, title:revele ? "Ouvre d'abord, sur chaque tablette, la co-évaluation de la lecture ; le bilan s'affiche quand tous les présents y ont répondu." : "S'ouvre quand la dernière question est révélée."}, revele ? geste(null, "ouvrirCoeval") : {}), revele ? "🤝 Ouvrir la co-évaluation, puis leur bilan" : "🏁 Afficher leur bilan aux élèves")
+    : revele ? h("button", Object.assign({className:"btn btn-primary", title:"Passer à la question suivante dans l'ordre trié par taux d'erreur."}, geste(null, "questionSuivante")), "Question suivante →")
+    : fermeEnv("« Question suivante → » s'ouvre quand cette question est révélée.", hBase("button", {className:"btn btn-primary", disabled:true, title:"Passer à la question suivante dans l'ordre trié par taux d'erreur."}, "Question suivante →"));
+  var reveler = revele ? h("button", {className:"btn btn-ghost", disabled:true, title:"Cette question est déjà révélée sur toutes les tablettes."}, "💡 Révélée")
+    : pasLu.length ? h("button", {className:"btn btn-or ferme", disabled:true, title:"« 💡 Révéler » s'ouvre quand les " + pres + " présents ont lu la feuille de leur voisin. Il en manque " + pasLu.length + "."}, "🔒 Révéler")
+    : h("button", Object.assign({className:"btn btn-or", title:"Montre la bonne réponse et l'explication sur toutes les tablettes et au tableau. Commente la question après, jamais avant."}, geste(null, "reveler")), "💡 Révéler");
+  var prec = pos > 0 ? ordre[pos - 1] : null;
+  return Console("pilotage", "pilot", h("div", {className:"card"},
+    TitreCarte(h(F, null, "📝 Correction — " + EV.titre + " — " + CLASSE, InfoI("Pour chaque question, chacun lit d'abord la feuille de son voisin et clique ce qu'elle dit, dans la moitié du voisin. « 💡 Révéler » s'ouvre quand tous les présents l'ont fait. Tu commentes la question après la révélation, jamais avant : sinon, ils cliqueraient ce que tu dis. Les questions vont de la plus ratée à la mieux réussie. Un clic sur un nom agit sur l'élève.")),
+      boutonsTete()),
+    h("div", {className:"pilot-status correction", title:"Position dans l'ordre de correction (trié par taux d'erreur décroissant). Q" + (qi+1) + " est la " + (pos+1) + "e question révélée."}, "Question " + (pos+1) + " / " + ordre.length + " — Q" + (qi+1) + (revele ? " · révélée" : " · lecture de la feuille du voisin")),
+    h("div", {className:"corr-grid"},
+      h("div", null,
+        h("div", {className:"pilot-q-current"},
+          h("div", {className:"num"}, "Question " + (qi+1)),
+          h("div", {className:"enonce"}, q.enonce),
+          h("div", {className:"pilot-q-bonne"}, h("span", {style:{fontWeight:900}}, "✓ Bonne" + (q.bonnes.length > 1 ? "s" : "") + " réponse" + (q.bonnes.length > 1 ? "s" : "") + " : "), q.bonnes.map(function(i){ return q.choix[i]; }).join("  /  ")),
+          h("div", {className:"niv-row"}, h("span", {className:"niv-bulle", title:"Niveau de la question (info indicative pendant la correction)."}, "Difficulté : " + NIV[q.niveau].label), h("span", {className:"niv-bulle", title:"Taux de réussite de la classe sur cette question. Sert au tri par difficulté."}, b.justes + " / " + b.repondu + " justes sur la tablette (" + (b.repondu ? Math.round(b.justes * 100 / b.repondu) : 0) + " %)"))),
+        !revele && h("div", {className:"pilot-chrono-card actif saisie-carte"},
+          h("div", {className:"label actif"}, "📄 Temps pour lire la feuille du voisin"),
+          h("div", {className:"v"}, (m.reste || 0) + "s"),
+          h("div", {className:"desc"}, "sur " + tempsDe(qi).reponse + " s")),
+        h("div", {className:"row", style:{marginTop:".8rem"}},
+          prec == null ? fermeEnv("C'est la première question de la correction : il n'y a pas de question précédente.", hBase("button", {className:"btn btn-ghost", disabled:true, title:PREC_771}, "← Question précédente"))
+            : h("button", Object.assign({className:"btn btn-ghost", title:PREC_771}, geste(null, "questionPrecedente")), "← Question précédente"),
+          reveler, suivant),
+        !revele && pasLu.length > 0 && h("div", {className:"manquent"},
+          h("div", {className:"tt"}, "« 💡 Révéler » s'ouvre quand les " + pres + " présents ont lu la feuille de leur voisin. Il en manque " + pasLu.length + " :"),
+          h("div", {className:"noms"}, pasLu.map(nomDe).join(" · "), InfoIB("Il en manque", "Le nom est celui dont la feuille n'est pas encore lue."))),
+        lire.length > 0 && h("div", {className:"alire"}, h("div", {className:"tt"}, "📌 À lire sur les feuilles, ce soir (" + lire.length + ")"),
+          lire.map(function(x, i){ return h("div", {key:i}, x[0] + " — Q" + (x[1]+1) + " : " + x[2]); }))),
+      h("div", {className:"suivi-box"},
+        h("h3", null, revele ? "📄 Leur feuille, d'après la lecture du voisin" : "📄 La lecture de leur feuille", InfoI(revele ? "Chaque moitié : la question d'après sa feuille, lue par le voisin. « ✓ Trouvée au dernier moment » (orange) : feuille fausse, tablette entièrement juste, une fois par évaluation. « ⚠️ À relire » : la lecture du voisin ne colle pas avec ce que l'élève a dit à la fin de son temps (« Oui » ou « Non »), ou il n'a rien dit." : "Chaque moitié : la feuille de cet élève est-elle déjà lue par son voisin ? Le voisin clique dans la moitié de l'élève.")),
+        h("div", {className:"ss"}, revele ? ("Feuilles justes : " + nbF + " / " + pres + " · ✓ Trouvées au dernier moment : " + nbT) : ((pres - pasLu.length) + " / " + pres + " feuilles lues — " + pasLu.length + " pas encore")),
+        GrilleTablettes(PAIRES, etatCorr3(qi), {deplacer:true}),
+        Legende(revele ? LEG_CORR_AP : LEG_CORR_AV)))), true);
+}
+
+/* ── Les alertes de la co-évaluation : celles de la séance (SCN.alertes), sinon chaque « ❌ » d'un élève ── */
+function alertesH(){
+  if(typeof SCN.alertes === "function") return (SCN.alertes() || []).map(function(a){ return Object.assign({}, a, {auteur:a.auteur || (a.eleves || [])[0], lecteur:a.lecteur || (a.eleves || [])[1]}); });
+  return HEURE.eleves.filter(function(p){ return /^mal/.test(CO[p] || ""); }).map(function(p){ var co = SCN.coevalDe(p) || {};
+    return {id:p, qi:co.qi, auteur:p, lecteur:SCN.voisinDe(p), ecrit:co.ecrit, tranche:null}; });
+}
+function decisionDe(a){ var t = a.tranche; return !t ? null : typeof t === "string" ? {decision:t} : t; }
+function txtChoix(q, c){ return c === "aucun" ? "aucun de ces choix" : (c || []).map(function(i){ return q.choix[i]; }).join(", "); }
+function ptsDe(q, c){ return c && c !== "aucun" && memesChoixH(c, q.bonnes) ? 1 : 0; }
+function AlerteCoH(a){
+  var q = EV.questions[a.qi], A = a.auteur, L = a.lecteur, nA = nomDe(A), nL = nomDe(L), pA = prenomH(A), pL = prenomH(L);
+  var lu = (LU[A] || [])[a.qi], ecrit = a.ecrit != null ? a.ecrit : ((SCN.coevalDe(A) || {}).ecrit), clic = (TABL[A] || [])[a.qi] || [], dit = (DIT_B[A] || [])[a.qi];
+  var avant = ptsDe(q, lu), apres = ptsDe(q, ecrit), ret = [A, L].filter(function(p){ return SCN.autonomie(p, MO()).retire; });
+  var sens = null;
+  if(dit === "non" && memesChoixH(clic, lu)) sens = "👉 Pendant la question, avant de connaître la réponse, " + pA + " avait cliqué " + txtChoix(q, clic) + " et dit que sa feuille ne disait pas " + txtChoix(q, clic) + " : ça va dans son sens.";
+  else if(dit === "oui" && memesChoixH(clic, ecrit)) sens = "👉 Pendant la question, avant de connaître la réponse, " + pA + " avait cliqué " + txtChoix(q, clic) + " et dit que sa feuille disait la même chose : ça va dans son sens.";
+  else if(dit === "oui" && !memesChoixH(clic, lu)) sens = "👉 Avant de connaître la réponse, " + pA + " disait " + txtChoix(q, clic) + " : ni ce que " + pL + " a lu, ni ce que " + pA + " dit maintenant.";
+  var corps = [
+    h("div", {key:"t", className:"al-t"}, "❌ " + nA + " pense " + queNom(nL) + " a mal lu sa feuille à la question " + (a.qi + 1)),
+    h("div", {key:"q", className:"al-l"}, "Q" + (a.qi + 1) + " · " + q.enonce + " — bonne réponse : " + txtChoix(q, q.bonnes)),
+    h("div", {key:"a", className:"al-l"}, "À la correction, " + pL + " a lu ", h("strong", null, txtChoix(q, lu)), " sur la feuille " + deNom(pA) + "."),
+    ecrit != null && h("div", {key:"r", className:"al-l"}, "Après la correction, " + pA + " dit avoir écrit ", h("strong", null, txtChoix(q, ecrit)), ". Il connaissait alors la bonne réponse."),
+    h("div", {key:"x", className:"al-l al-b"}, "⚠️ Les deux ne peuvent pas être vrais : regarde la feuille " + deNom(pA) + "."),
+    sens && h("div", {key:"y", className:"al-l al-y"}, sens),
+    avant !== apres && h("div", {key:"e", className:"al-l"}, "Si " + pA + " a raison, sa question " + (a.qi + 1) + " passe de " + avant + " à " + apres + " point."),
+    h("div", {key:"z", className:"al-l al-c"}, "Appelle-les à la fin de l'heure, la feuille " + deNom(pA) + " en main.")
+  ];
+  var B = function(t, v, dec, ti){ return h("button", {key:t, className:"btn btn-" + v, "data-local":"1", title:ti, onClick:function(){ if(dec === "feuille") ouvrirFen("coevalFeuille", a); else agir("trancher", [a.id, dec]); }}, t); };
+  var boutons = [
+    B("Donner raison à " + pA + " : " + txtChoix(q, ecrit) + " → " + apres + " point", "vert", "auteur", "Applique ce que " + pA + " dit avoir écrit : sa question " + (a.qi + 1) + " se recalcule, et sa note aussi. L'alerte se ferme ; « ↩️ Défaire » la rouvre."),
+    B("Donner raison à " + pL + " : " + txtChoix(q, lu) + " → " + avant + " point", "turquoise", "lecteur", "Garde la lecture " + deNom(pL) + " : rien ne change. L'alerte se ferme."),
+    B("La feuille dit autre chose : je clique ce qu'elle dit", "primary", "feuille", "Ouvre les choix de la question " + (a.qi + 1) + " : tu cliques ce que dit la feuille " + deNom(pA) + ", et sa note se recalcule."),
+    B("📌 Je relis ce soir la question " + (a.qi + 1), "or", "soir", "La question " + (a.qi + 1) + " " + deNom(pA) + " passe « ⚠️ À relire » : elle t'attend ce soir dans Résultats. L'alerte se ferme.")
+  ];
+  var auto = h(F, {key:"au"}, h("div", {className:"al-auto-t"}, "⛔ Retirer le point d'autonomie :"),
+    h("div", {className:"al-auto"}, [[[A], "⛔ à " + pA, "btn-ghost"], [[L], "⛔ à " + pL, "btn-ghost"], [[A, L], "⛔ aux deux", "btn-aux-deux"]].map(function(x){
+      var deja = x[0].every(function(p){ return ret.indexOf(p) >= 0; });
+      return deja ? h("button", {key:x[1], className:"btn btn-sm " + x[2], disabled:true, title:"Ce point d'autonomie est déjà retiré : « ↩️ Rendre » le défait."}, x[1])
+        : h("button", {key:x[1], className:"btn btn-sm " + x[2], "data-local":"1", title:"Retire le point d'autonomie " + (x[0].length > 1 ? "aux deux" : "à " + prenomH(x[0][0])) + ", après une confirmation. « ↩️ Rendre » le défait.", onClick:function(){ ouvrirFen("garde", x[0]); }}, x[1]); }),
+      ret.length > 0 && h("button", {className:"btn btn-vert btn-sm", "data-local":"1", title:"Rend le point d'autonomie retiré : les compétences d'autonomie repassent en Très bonne maîtrise.", onClick:function(){ ret.forEach(function(p){ agir("rendreAutonomie", [p]); }); }}, "↩️ Rendre")));
+  return h("div", {key:a.id, className:"alerte-co"}, h("div", {className:"al-corps"}, corps),
+    h("div", {className:"al-actions"}, boutons, auto,
+      InfoIB("❌ Alerte", "L'alerte est apparue quand " + pA + " a cliqué ce qu'il avait écrit ; elle disparaît s'il change d'avis avant le bilan. Aucun point d'autonomie n'est retiré tout seul : c'est toi qui décides.")));
+}
+// ce que dit la phrase d'état d'une alerte tranchée : la décision prise, et la note qui en sort
+function AlerteTrancheeH(a){
+  var d = decisionDe(a), q = EV.questions[a.qi], A = a.auteur, L = a.lecteur, nA = nomDe(A), pA = prenomH(A), pL = prenomH(L), n = calc(A), lu = (LU[A] || [])[a.qi];
+  var noteTxt = function(passe){ return "sa note provisoire " + (passe ? "passe" : "reste") + " à " + n.n + " / " + n.total + "."; };
+  var t;
+  if(d.decision === "lecteur") t = ["✅ Alerte tranchée : raison donnée à " + pL, "La lecture " + deNom(pL) + ", " + txtChoix(q, lu) + ", est gardée : la question " + (a.qi + 1) + " de " + nA + " reste à " + ptsDe(q, lu) + " ; " + noteTxt(false)];
+  else if(d.decision === "soir") t = ["📌 La question " + (a.qi + 1) + " de " + nA + " est à relire ce soir", "L'alerte se ferme : la question t'attend ce soir dans Résultats, « ⚠️ À relire » ; " + noteTxt(false)];
+  else {
+    var c = d.decision === "feuille" ? (d.choix || d.feuille) : (a.ecrit != null ? a.ecrit : (SCN.coevalDe(A) || {}).ecrit), p1 = ptsDe(q, c), p0 = ptsDe(q, lu);
+    var tete = d.decision === "feuille" ? "✅ Alerte tranchée : la feuille " + deNom(pA) + " dit " + txtChoix(q, c) : "✅ Alerte tranchée : raison donnée à " + pA;
+    t = [tete, "La question " + (a.qi + 1) + " de " + nA + (p1 !== p0 ? " passe à " + p1 + " point, « Corrigé d'après ta feuille » dans son bilan : " + noteTxt(true) : " reste à " + p1 + " ; " + noteTxt(false))];
+  }
+  return h("div", {key:a.id, className:"alerte-co tranchee"}, h("div", {className:"al-corps"}, h("div", {className:"al-t"}, t[0]), h("div", {className:"al-l"}, t[1])),
+    h("div", {className:"al-actions"}, h("button", {className:"btn btn-ghost btn-sm", "data-local":"1", title:"Rouvre l'alerte, telle qu'elle était : rien n'est appliqué.", onClick:function(){ agir("trancher", [a.id, null]); }}, "↩️ Défaire")));
+}
+function PilotCoevalH(){
+  var k = MO(), m = momH(), c = SCN.compteurs(k), presents = SCN.presents(k);
+  var avecVoisin = presents.filter(function(p){ return !!SCN.voisinDe(p); }), pres = avecVoisin.length;
+  var att = avecVoisin.filter(function(p){ return CO[p] === "att"; });
+  var alertes = alertesH(), ouvertes = alertes.filter(function(a){ return !decisionDe(a); });
+  var nOk = avecVoisin.filter(function(p){ return CO[p] === "ok"; }).length;
+  var nPeut = avecVoisin.filter(function(p){ return /^peut/.test(CO[p] || ""); }).length, nMal = avecVoisin.filter(function(p){ return /^mal/.test(CO[p] || ""); }).length;
+  var tranche = !ouvertes.length;
+  var etat = function(p){
+    var x = CO[p], r, al = alertes.filter(function(a){ return a.auteur === p; })[0];
+    if(!SCN.voisinDe(p)) r = {cls:"m-juste", st:"seul : pas de co-évaluation"};
+    else if(!x || x === "att") r = {cls:"m-pasdit", st:"⏳ pas encore répondu"};
+    else if(x === "ok") r = {cls:"m-juste", st:"✅ bien lu"};
+    else if(x.indexOf("mal") === 0) r = al && decisionDe(al) ? {cls:"m-juste", st:"❌ Q" + x.slice(3) + " · tranché"} : {cls:"m-faux m-co", st:"❌ mal lu Q" + x.slice(3), flag:"alerte : à trancher"};
+    else r = {cls:"m-coq", st:"🤔 peut-être Q" + x.slice(4), flag:"à relire ce soir"};
+    // (relecteur n°179) le point retiré ne cache pas l'alerte encore ouverte : la tuile dit les deux
+    if(SCN.autonomie(p, k).retire) r.flag = r.flag === "alerte : à trancher" ? r.flag + " · " + FLAG_RETIRE : FLAG_RETIRE;
+    r.va = "c-autonomie"; r.titre = "Clique sur le nom : « ⛔ Retirer le point d'autonomie », ou « 🚫 Marquer comme parti »."; return r;
+  };
+  var lire = lireSoir(k);
+  var ouvert = !att.length && tranche;
+  return Console("pilotage", "pilot", h("div", {className:"card"},
+    alertes.map(function(a){ return decisionDe(a) ? AlerteTrancheeH(a) : AlerteCoH(a); }),
+    TitreCarte(h(F, null, "🤝 Co-évaluation de la lecture — " + EV.titre + " — " + CLASSE, InfoI("À la fin de la correction, chacun dit, dans sa moitié, s'il pense que son voisin a bien lu sa feuille. Un « ❌ » t'alerte aussitôt, en haut ; un « 🤔 » passe la question « ⚠️ À relire » ce soir. Le bilan s'affiche quand tous les présents ont répondu.")),
+      boutonsTete()),
+    h("div", {className:"pilot-status correction"}, "Fin de la correction — chacun dit ce qu'il pense de la lecture de sa feuille · " + (pres - att.length) + " / " + pres + " ont répondu"),
+    h("div", {className:"corr-grid"},
+      h("div", null,
+        h("div", {className:"row", style:{marginTop:".2rem"}}, ouvert
+          ? h("button", Object.assign({className:"btn btn-or", title:"Affiche sur chaque moitié le bilan de l'élève : sa note provisoire, question par question, ses compétences, son estimation."}, geste(null, "afficherBilan")), "🏁 Afficher leur bilan aux élèves")
+          : h("button", {className:"btn btn-or ferme", disabled:true, title:att.length ? "« 🏁 Afficher leur bilan aux élèves » s'ouvre quand les " + pres + " présents ont répondu. Il en manque " + att.length + "." : "« 🏁 Afficher leur bilan aux élèves » s'ouvre quand l'alerte est tranchée."}, "🔒 🏁 Afficher leur bilan aux élèves")),
+        att.length > 0 && h("div", {className:"manquent"},
+          h("div", {className:"tt"}, "« 🏁 Afficher leur bilan aux élèves » s'ouvre quand les " + pres + " présents ont répondu. Il en manque " + att.length + " :"),
+          h("div", {className:"noms"}, att.map(nomDe).join(" · "))),
+        h("div", {className:"co-compte"}, h("div", null, "✅ ", h("strong", null, String(nOk)), " pensent : bien lu"), h("div", null, "🤔 ", h("strong", null, String(nPeut)), nPeut === 1 ? " pense : peut-être mal lu (à relire ce soir)" : " pensent : peut-être mal lu (à relire ce soir)"), h("div", null, "❌ ", h("strong", null, String(nMal)), tranche ? " pense : mal lu (tranché)" : " pense : mal lu (alerte, en haut)")),
+        h("div", {className:"alire"}, h("div", {className:"tt"}, "📌 À lire sur les feuilles, ce soir (" + lire.length + ")"),
+          lire.map(function(x, i){ return h("div", {key:i}, x[0] + " — Q" + (x[1]+1) + " : " + x[2]); }))),
+      h("div", {className:"suivi-box"},
+        h("h3", null, "🤝 Ce que chacun pense de la lecture de sa feuille", InfoI("Chaque moitié dit ce que cet élève pense de la lecture de sa feuille par son voisin. Un clic sur un nom agit sur l'élève, par exemple « ⛔ Retirer le point d'autonomie ».")),
+        GrilleTablettes(PAIRES, etat),
+        Legende([["#22C55E","✅ bien lu"],["#FDE68A","🤔 peut-être mal lu : à relire ce soir"],["#EF4444","❌ mal lu : alerte"],["#FEE2E2","⏳ pas encore répondu","1px solid #EF4444"]])))), true);
+}
+// « La feuille dit autre chose : je clique ce qu'elle dit » (545) : les choix de la question, la lecture et ce que l'élève dit avoir écrit
+function FenCoevalFeuille(a, fond){
+  return h(FenCoevalFeuilleC, {a:a, fond:fond});
+}
+function FenCoevalFeuilleC(p){
+  var a = p.a, q = EV.questions[a.qi], A = a.auteur, pA = prenomH(A), pL = prenomH(a.lecteur), lu = (LU[A] || [])[a.qi], ecrit = a.ecrit != null ? a.ecrit : (SCN.coevalDe(A) || {}).ecrit;
+  var s = useState(null), sel = s[0], set = s[1];
+  var tag = function(i){ var t = []; if(q.bonnes.indexOf(i) >= 0) t.push("bonne réponse"); if(ecrit && ecrit !== "aucun" && ecrit.indexOf(i) >= 0) t.push(pA); if(lu && lu !== "aucun" && lu.indexOf(i) >= 0) t.push("lu par " + pL); return t.join(" · "); };
+  function basculer(i){ var x = sel && sel !== "aucun" ? sel : []; x = x.indexOf(i) >= 0 ? x.filter(function(y){ return y !== i; }) : x.concat([i]); set(x.length ? x : null); }
+  return h(F, null, p.fond, h("div", {className:"checkin-overlay"},
+    h("div", {className:"checkin-modal", style:{maxWidth:"460px"}},
+      h("div", {className:"checkin-header"}, h("h3", null, "Que dit la feuille ?"), h("div", {className:"checkin-sub"}, nomDe(A) + " — Q" + (a.qi + 1) + " · " + q.enonce)),
+      h("div", {style:{padding:".6rem 1.2rem 0", fontSize:".85rem", color:"var(--gris)"}}, pL + " y a lu " + txtChoix(q, lu) + " ; " + pA + " dit avoir écrit " + txtChoix(q, ecrit) + ". Clique sur ce que dit sa feuille."),
+      h("div", {className:"qdf-choix qdf-etat"},
+        q.choix.map(function(c, i){ var on = sel && sel !== "aucun" && sel.indexOf(i) >= 0; return h("div", {key:i, className:"qdf-c" + (on ? " sel" : ""), title:"Clique si la feuille " + deNom(pA) + " dit « " + c + " ».", onClick:function(){ basculer(i); }}, h("span", null, c), h("span", {className:"tg"}, tag(i))); }),
+        h("div", {className:"qdf-c aucun" + (sel === "aucun" ? " sel" : ""), title:"Clique si la feuille " + deNom(pA) + " ne dit aucun de ces choix.", onClick:function(){ set(sel === "aucun" ? null : "aucun"); }}, h("span", null, "Aucun des choix"), h("span", {className:"tg"}, ""))),
+      h("div", {className:"checkin-actions"}, h("button", {className:"btn btn-ghost", "data-local":"1", title:"Ferme sans rien changer : l'alerte reste ouverte.", onClick:fermerFen}, "Annuler"),
+        h("button", {className:"btn btn-primary", "data-local":"1", disabled:!sel, title:"Applique ce que dit la feuille : la question " + (a.qi + 1) + " " + deNom(pA) + " se recalcule, et l'alerte se ferme.", onClick:function(){ agir("trancher", [a.id, "feuille", sel]); fermerFen(); }}, "Valider")))));
+}
+
+/* ── Le bilan de la classe, en direct : les questions comptées, quel que soit leur nombre ── */
+function BilanClasseH(){
+  var k = MO(), m = momH(), pres = SCN.presents(k);
+  var lignes = pres.map(function(p){ return {p:p, nom:nomDe(p), r:calc(p)}; });
+  var total = lignes.length ? lignes[0].r.total : nbComptees();
+  var notes = lignes.filter(function(l){ return l.r.complet; }).map(function(l){ return l.r.n; }).sort(function(a, b){ return a - b; });
+  var moy = notes.length ? notes.reduce(function(a, b){ return a + b; }, 0) / notes.length : 0, med = notes.length ? notes[Math.floor(notes.length / 2)] : 0;
+  var dist = {vert:0, bleu:0, orange:0, rouge:0};
+  lignes.forEach(function(l){ if(l.r.complet) dist[maitriseDe(l.r.sur20).k]++; });
+  lignes.sort(function(a, b){ return (b.r.complet ? b.r.n : -1) - (a.r.complet ? a.r.n : -1) || a.nom.localeCompare(b.nom, "fr"); });
+  var cal = {ok:0, sous:0, sur:0, none:0}; pres.forEach(function(p){ var e = SCN.estimation(p, k); cal[e ? e.type : "none"]++; });
+  var ret = retiresAu(k), gard = pres.length - ret.length;
+  var hors = (m.ecartees || []).concat(m.annulees || []), comptees = toutesQ().filter(function(q){ return hors.indexOf(q) < 0; });
+  var taux = {}; comptees.forEach(function(q){ taux[q] = tauxQ(q); });
+  var rate = comptees.slice().sort(function(a, b){ return taux[a] - taux[b] || a - b; })[0], reussie = comptees.slice().sort(function(a, b){ return taux[b] - taux[a] || a - b; })[0];
+  var lire = lireSoir(k);
+  return Console("pilotage", "pilot", h("div", {className:"card"},
+    TitreCarte(h(F, null, "🏁 Bilan classe — " + EV.titre + " — " + CLASSE, InfoI("Les notes provisoires de la classe, d'après la lecture des feuilles à la correction. Elles deviennent définitives quand tu rends les copies, après ta lecture du soir.")), [h("button", Object.assign({key:1, className:"btn btn-rouge btn-sm"}, fen(null, "terminer")), "🛑 Terminer la séance")]),
+    h("div", {className:"bilan-classe-synthese"},
+      h("div", {className:"bilan-classe-stat"}, h("div", {className:"bilan-classe-stat-label"}, "Moyenne"), h("div", {className:"bilan-classe-stat-num"}, fr1(moy) + " / " + total), h("div", {style:{opacity:.9}}, fr1(total ? moy * 20 / total : 0) + " / 20")),
+      h("div", {className:"bilan-classe-stat"}, h("div", {className:"bilan-classe-stat-label"}, "Médiane"), h("div", {className:"bilan-classe-stat-num"}, med + " / " + total)),
+      h("div", {className:"bilan-classe-stat"}, h("div", {className:"bilan-classe-stat-label"}, "Plage"), h("div", {className:"bilan-classe-stat-num"}, notes.length ? "de " + notes[0] + " à " + notes[notes.length - 1] : "—"))),
+    h("div", {style:{display:"grid", gridTemplateColumns:"1.3fr 1fr", gap:"1rem"}},
+      h("div", null,
+        h("h3", {style:{marginTop:".4rem"}}, "📊 Distribution", InfoI("Combien d'élèves dans chaque niveau de maîtrise de la note (Réglages : les tranches).")),
+        h("div", {className:"bilan-classe-distrib"}, MAITRISE.map(function(mt){ return h("div", {key:mt.k, className:"bilan-classe-distrib-cell fourchette-" + mt.k}, h("strong", null, dist[mt.k]), h("span", null, mt.em + " " + mt.lib)); })),
+        h("h3", null, "🧩 Par compétence", InfoI("Pour chaque compétence de l'évaluation : combien d'élèves dans chaque niveau, sur ses questions.")),
+        COMPS.map(function(cp){
+          var d = {vert:0, bleu:0, orange:0, rouge:0};
+          lignes.forEach(function(l){ d[niveauComp(l.r, cp).k]++; });
+          return h("div", {key:cp, className:"par-comp"},
+            h("div", {className:"pc-t", title:"La compétence " + cp + " du référentiel : " + (LIB_OFF[cp] || cp) + "."}, (LIB_OFF[cp] || cp) + " · " + compQuestions(cp).map(function(i){ return "Q" + (i+1); }).join(", ")),
+            h("div", {className:"bilan-classe-distrib pc-d"}, MAITRISE.map(function(mt){ return h("div", {key:mt.k, className:"bilan-classe-distrib-cell fourchette-" + mt.k}, h("strong", null, d[mt.k]), h("span", null, mt.em + " " + mt.lib)); })));
+        }),
+        h("div", {className:"par-comp"}, h("div", {className:"pc-t"}, "🤝 Le point d'autonomie · Être autonome et responsable · S'impliquer dans les activités en classe et dans son travail personnel"),
+          h("div", {className:"pc-auto"}, gard + " / " + pres.length + " l'ont gardé : Très bonne maîtrise · " + ret.length + " retiré" + (ret.length > 1 ? "s" : "") + (ret.length ? " (" + ret.map(nomDe).join(", ") + ") : Maîtrise insuffisante" : ""))),
+        h("h3", null, "🎯 Calibration de l'autoévaluation", InfoI("L'estimation de chacun comparée à sa note : bien évalué, sous-évalué, sur-évalué.")),
+        h("div", {className:"bilan-classe-calib"},
+          h("div", {className:"bilan-classe-calib-cell calib-ok"}, h("strong", null, cal.ok), h("span", null, "✅ Bien évalués")),
+          h("div", {className:"bilan-classe-calib-cell calib-sous"}, h("strong", null, cal.sous), h("span", null, "🌟 Sous-évalués")),
+          h("div", {className:"bilan-classe-calib-cell calib-sur"}, h("strong", null, cal.sur), h("span", null, "⚠️ Sur-évalués")),
+          h("div", {className:"bilan-classe-calib-cell calib-none"}, h("strong", null, cal.none), h("span", null, "— Pas d'autoeval"))),
+        h("h3", null, "💡 Questions remarquables", InfoI("La question la plus ratée et la mieux réussie, d'après la feuille : à reprendre en classe.")),
+        rate != null && h("div", {className:"bilan-classe-insights"},
+          h("div", {className:"bilan-classe-insight insight-attention"}, h("div", {className:"bilan-classe-insight-titre"}, "🔴 La plus ratée — Q" + (rate + 1) + " (" + taux[rate] + " % de réussite)"), h("div", {className:"bilan-classe-insight-enonce"}, EV.questions[rate].enonce)),
+          h("div", {className:"bilan-classe-insight insight-felicitations"}, h("div", {className:"bilan-classe-insight-titre"}, "🟢 La mieux réussie — Q" + (reussie + 1) + " (" + taux[reussie] + " % de réussite)"), h("div", {className:"bilan-classe-insight-enonce"}, EV.questions[reussie].enonce)))),
+      h("div", null,
+        h("div", {className:"alire", style:{marginTop:".4rem"}}, h("div", {className:"tt"}, "📌 À lire sur les feuilles, ce soir (" + lire.length + ")"),
+          lire.map(function(x, i){ return h("div", {key:i}, x[0] + " — Q" + (x[1]+1) + " : " + x[2]); })))),
+    h("h3", null, "👥 Détail par élève (trié par note)", InfoI("Chaque élève, sa note provisoire et ses niveaux par compétence. Le ✓ orange : Trouvée au dernier moment.")),
+    h("div", {className:"bilan-classe-table-wrap"}, h("table", {className:"bilan-classe-table"},
+      h("thead", null, h("tr", null, ["Élève", "Note", "Sur 20", "Maîtrise de la note"].map(function(t){ return h("th", {key:t}, t); }), COMPS.map(EnteteComp), h("th", null, "🤝 Autonomie"))),
+      h("tbody", null, lignes.map(function(l){ var mt = maitriseDe(l.r.sur20), au = SCN.autonomie(l.p, k);
+        return h("tr", {key:l.p}, h("td", null, l.nom), h("td", null, l.r.n + " / " + l.r.total), h("td", null, fr1(l.r.sur20)),
+          h("td", null, h("span", {className:"maitrise-pill " + mt.cls}, mt.em + " " + mt.lib)),
+          COMPS.map(function(cp){ return h("td", {key:cp}, PillComp(l.r, cp)); }),
+          h("td", null, au.retire ? h("span", {className:"maitrise-pill mt-rouge"}, "⛔ retiré " + (au.quand || "")) : h("span", {className:"maitrise-pill mt-vert"}, "🟢 Très bonne maîtrise"))); }))))), true);
+}

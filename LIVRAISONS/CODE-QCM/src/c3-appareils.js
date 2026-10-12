@@ -218,7 +218,7 @@ function EcrPret(e){
   var m = MOM(), se = SCN.seance(m.seance) || SCN.seance("S08");
   return Page(badgeDe(e), EV.titre, h(F, null,
     h("div", {className:"etat-attente"}, "⏳ En attente du démarrage…"),
-    h("div", {style:{fontSize:".8rem", color:"var(--gris)", marginTop:12}}, "Tu as lu et compris les consignes le " + se.date + " à " + SCN.heureAttest(e.prenom, 1) + ".")));
+    h("div", {style:{fontSize:".8rem", color:"var(--gris)", marginTop:12}}, "Tu as lu et compris les consignes le " + se.date + " à " + heureAttestH(cleE(e), 1) + ".")));
 }
 function tabletteDuMoment(){
   var m = MOM(), qi = m.qi, reste = m.reste || 0;

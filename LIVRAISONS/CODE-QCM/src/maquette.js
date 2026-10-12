@@ -20,7 +20,7 @@ var COMP = {
   "c4-lire-01":"Contrôler sa compréhension, devenir un lecteur autonome"
 };
 var COMP_COURT = {"c4-culture-01":"Mobiliser des références culturelles…", "c4-lire-01":"Contrôler sa compréhension…"};
-function compQuestions(c){ var l = []; EV.questions.forEach(function(q, i){ if(q.competences.indexOf(c) >= 0) l.push(i); }); return l; }
+function compQuestions(c){ var l = []; EV.questions.forEach(function(q, i){ if((q.competences || []).indexOf(c) >= 0) l.push(i); }); return l; }
 var COMPS = ["c4-culture-01", "c4-lire-01"];
 function niveauComp(r, c){ var x = r.comp[c]; return maitriseDe(x.n * 20 / x.max); }
 function detailComp(r, c){ return compQuestions(c).map(function(i){ return "Q" + (i+1) + " " + marque(r.st[i]); }).join(" · "); }
@@ -199,26 +199,40 @@ function EcrAttente(e){ return Page(badgeDe(e), EV.titre, h("div", {className:"e
 
 function libFourchette(n){ return n + " bonne" + (n > 1 ? "s" : "") + " réponse" + (n > 1 ? "s" : "") + " sur 3"; }
 var FOURCH = [{k:"vert", n:3}, {k:"bleu", n:2}, {k:"orange", n:1}, {k:"rouge", n:0}];
+/* (QCM-2) les fourchettes de l'estimation pour N questions comptées : chacune, les notes de son niveau de maîtrise (la règle de la note) ;
+   sur 3 questions, ce sont celles de la maquette (« 3 bonnes réponses sur 3 »…) */
+function nbComptees(){ var m = typeof momH === "function" ? momH() : {}; return EV.questions.length - (m.ecartees || []).length - (m.annulees || []).length; }
+function fourchettesH(N){
+  N = N || 3;
+  return FOURCH.map(function(f){ var l = []; for(var n = 0; n <= N; n++) if(maitriseDe(n * 20 / N).k === f.k) l.push(n); return l.length ? {k:f.k, a:l[0], b:l[l.length - 1], n:l[l.length - 1]} : null; }).filter(Boolean);
+}
+function libFourchetteH(f, N, sansSur){
+  var t = f.a === f.b ? f.a + " bonne" + (f.a > 1 ? "s" : "") + " réponse" + (f.a > 1 ? "s" : "") : "de " + f.a + " à " + f.b + " bonnes réponses";
+  return sansSur ? t : t + " sur " + N;
+}
 function EcrEstim(e, choix){
   var mt = function(k){ return MAITRISE.filter(function(m){ return m.k === k; })[0]; };
-  var sel = choix && FOURCH.filter(function(f){ return f.k === choix; })[0];
+  var N = LIVE() ? nbComptees() : 3, FS = fourchettesH(N);
+  var sel = choix && FS.filter(function(f){ return f.k === choix; })[0];
+  // (QCM-2) en direct, le clic enregistre l'estimation de l'élève de cette moitié
+  var clic = function(f){ return LIVE() ? {"data-local":"1", onClick:function(){ agirE("estimer", f.k, cleE(e)); }} : {}; };
   return Page(badgeDe(e), "🎯 Ton estimation", h(F, null,
     h("p", {className:"autoeval-intro"}, "Combien de bonnes réponses penses-tu avoir ? Clique sur ta réponse. Cette estimation sert à savoir si tu te surévalues, si tu te sous-évalues ou si tu t'évalues correctement."),
-    !sel ? h("div", {className:"autoeval-fourchettes"}, FOURCH.map(function(f){
-      return h("button", {key:f.k, className:"autoeval-fourchette fourchette-" + f.k},
+    !sel ? h("div", {className:"autoeval-fourchettes"}, FS.map(function(f){
+      return h("button", Object.assign({key:f.k, className:"autoeval-fourchette fourchette-" + f.k}, clic(f)),
         h("div", {className:"autoeval-fourchette-emoji"}, mt(f.k).em),
-        h("div", {className:"autoeval-fourchette-bornes-big"}, libFourchette(f.n)),
+        h("div", {className:"autoeval-fourchette-bornes-big"}, libFourchetteH(f, N)),
         h("div", {style:{fontSize:".8rem", opacity:.95}}, P(mt(f.k).lib)));
     })) : h("div", {className:"autoeval-confirme"},
       h("div", {className:"autoeval-confirme-titre"}, "Ton estimation est enregistrée"),
-      h("div", {className:"autoeval-confirme-choix fourchette-" + sel.k}, h("span", {style:{fontSize:"2rem"}}, mt(sel.k).em), h("span", null, libFourchette(sel.n))),
+      h("div", {className:"autoeval-confirme-choix fourchette-" + sel.k}, h("span", {style:{fontSize:"2rem"}}, mt(sel.k).em), h("span", null, libFourchetteH(sel, N))),
       h("div", {style:{marginTop:".5rem", fontWeight:700}}, P(mt(sel.k).lib)),
       h("div", {className:"autoeval-confirme-attente"}, "La correction s'ouvrira dans un instant."))));
 }
 
 /* La correction, question par question, avec la déclaration de la feuille avant la révélation (proposition 360) */
 function pastillesDe(e, nbRev){
-  var p = calc(e.prenom);
+  var p = calc(cleE(e));
   return EV.questions.map(function(q, i){
     var pos = ORDRE_CORR.indexOf(i);
     if(pos >= nbRev) return {cls:"vide", t:String(i+1)};
@@ -404,8 +418,9 @@ function etatQuestion(s){
   };
 }
 function couleur(p, qi, voile){
-  var c = RT[p][qi];
-  var base = c === "J" ? {cls:"m-juste", st:"juste"} : c === "Y" ? {cls:"m-jaune", st:"une en trop"} : c === "O" ? {cls:"m-orange", st:"une sur deux"} : {cls:"m-faux", st:"faux"};
+  var c = (RT[p] || "")[qi];
+  // (QCM-2) en direct, un élève qui n'a pas répondu à cette question n'a pas de couleur : « pas de réponse »
+  var base = c === "J" ? {cls:"m-juste", st:"juste"} : c === "Y" ? {cls:"m-jaune", st:"une en trop"} : c === "O" ? {cls:"m-orange", st:"une sur deux"} : c === "F" || !LIVE() ? {cls:"m-faux", st:"faux"} : {cls:"m-pasrep", st:"⏳ pas de réponse"};
   if(voile) base.st += " · 🙈";
   return base;
 }

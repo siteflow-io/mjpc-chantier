@@ -8,20 +8,29 @@ function avecObjet(va, cle, v){ return !va || va.indexOf(cle + "=") >= 0 ? va : 
 function placeDe(p){ var t = SCN.tabletteDe(p) || {n:"?", cote:"g"}, v = SCN.voisinDe(p); return "Tablette " + t.n + ", moitié de " + (t.cote === "g" ? "gauche" : "droite") + (v ? " · avec " + nomDe(v) : " · seul" + (SCN.SEXE[p] === "F" ? "e" : "")); }
 
 /* ── Les tablettes de la console : un nom ouvre la fiche de cet élève, « 👁 » montre cette tablette ; « seul » suit la tablette ── */
+// (QCM-2) en direct, pendant la séance, un nom glissé sur un autre échange les deux élèves ; sur une moitié libre, il s'y déplace
+var TENU_H = null;
+function depotH(num, cote, p, actif){
+  if(!actif) return {};
+  return {onDragOver:function(e){ e.preventDefault(); }, onDrop:function(e){ e.preventDefault(); var a = TENU_H; TENU_H = null; if(!a || a === p) return;
+    if(p) agir("echanger", [a, p]); else agir("deplacer", [a, num, cote]); }};
+}
 function TabMini(num, a, b, etat, opts){
   opts = opts || {};
+  var glisse = !!opts.deplacer && LIVE();
   function moitie(n, cote){
-    if(!n) return h("div", {className:"tab-mini-m vide"}, h("div", {className:"nm"}, "moitié libre"));
-    var e = etat ? etat(pre(n), cote) : {};
-    return h("div", {className:"tab-mini-m " + (e.cls || "")},
-      e.va ? h("button", {className:"nm tab-nom", "data-va":avecObjet(e.va, "eleve", pre(n)), title:e.titre || "Agit sur " + n + "."}, n) : h("div", {className:"nm"}, opts.grip && h("span", {className:"grip"}, "⠿"), n),
+    if(!n) return h("div", Object.assign({className:"tab-mini-m vide"}, depotH(num, cote, null, glisse)), h("div", {className:"nm"}, "moitié libre"));
+    var p = cleH(n), nom = affH(n), e = etat ? etat(p, cote) : {};
+    var ouvrir = LIVE() ? {"data-local":"1", onClick:function(){ ouvrirFen("eleve", p); }} : {"data-va":avecObjet(e.va, "eleve", p)};
+    return h("div", Object.assign({className:"tab-mini-m " + (e.cls || ""), draggable:glisse || undefined, onDragStart:glisse ? function(){ TENU_H = p; } : undefined}, depotH(num, cote, p, glisse)),
+      e.va ? h("button", Object.assign({className:"nm tab-nom", title:e.titre || "Agit sur " + nom + "."}, ouvrir), nom) : h("div", {className:"nm"}, (opts.grip || glisse) && h("span", {className:"grip"}, "⠿"), nom),
       e.st && h("span", {className:"st"}, e.st),
       e.flag && h("span", {className:"flag"}, e.flag));
   }
   var seul = !!a !== !!b;
   return h("div", {key:num, className:"tab-mini" + (seul ? " seul" : "")},
     h("div", {className:"tab-mini-h"}, h("span", null, "📱 Tablette " + num), seul ? h("span", null, "seul") : opts.coin === " " || (!a && !b) ? h("span", null, " ")
-      : h("button", {className:"tab-oeil", "data-va":"c-voir-tablette&tab=" + num, title:"Montre les deux moitiés de la tablette " + num + " en direct, en grand. Ne change rien."}, "👁")),
+      : h("button", Object.assign({className:"tab-oeil", title:"Montre les deux moitiés de la tablette " + num + " en direct, en grand. Ne change rien."}, fen("c-voir-tablette&tab=" + num, "voirTablette", num)), "👁")),
     h("div", {className:"tab-mini-b"}, moitie(a, "g"), moitie(b, "d")));
 }
 
@@ -160,3 +169,100 @@ function ScPurger(){
       h("p", {className:"fen-note"}, "Pense à exporter un snapshot avant.")),
     [h("button", {key:1, className:"btn btn-ghost", "data-va":"c-sauvegarde", title:"Ne purge rien."}, "Annuler"), h("button", {key:2, className:"btn btn-rouge", "data-va":"c-sauvegarde", title:tout ? "Met tout le QCM à la corbeille, sauf la démo." : "Met toutes les évaluations à la corbeille, sauf la démo."}, tout ? "🗑️ Tout purger" : "🗑️ Purger")], "c-sauvegarde");
 }
+
+/* ═══════════════ QCM-2 · HEURE — la console de l'heure, en direct ═══════════════
+   L'écran du moment, d'après la phase de la séance (de l'appel au bilan), et ses fenêtres, ouvertes sur place (ouvrirFen) :
+   les mêmes que celles de la maquette, leurs mots, leurs boutons ; chaque bouton qui agit appelle l'action de ACT, puis la ferme. */
+function EcranConsoleHeure(){ return h(ConsoleHeureC); }
+function ConsoleHeureC(){
+  var fe = useFen();
+  chargerHeure();
+  var m = momH();
+  useSeconde(!!PHASES_CHRONO[m.ph]);
+  var fond = fondHeure(), f = fe.f && FENETRES_H[fe.f];
+  return f ? f(fe.arg, fond) : fond;
+}
+function fondHeure(){
+  var m = momH(), ph = m.ph;
+  if(!m.seance || !ph || ph === "avant" || ph === "fin" || ph === "hors") return Lancement(false);
+  if(ph === "appel") return Lancement(true);
+  if(ph === "entree" || ph === "pret") return PilotPret();
+  if(ph === "estim") return PilotEstimation();
+  if(ph === "att2") return PilotAttest2();
+  if(ph === "lecture" || ph === "revele") return PilotCorrection();
+  if(ph === "coeval") return PilotCoevalE();
+  if(ph === "bilan") return BilanClasse();
+  return Pilot(etatPilot());
+}
+// un bouton de fenêtre qui agit, puis la ferme
+function fait(nom, args){ return function(){ agir(nom, args); fermerFen(); }; }
+function boutonH(cle, cls, lib, onClick, titre){ return h("button", {key:cle, className:cls, "data-local":"1", title:titre, onClick:onClick}, lib); }
+function annulerH(titre){ return boutonH("annuler", "btn btn-ghost", "Annuler", fermerFen, titre || "Ferme sans rien changer."); }
+var FENETRES_H = {
+  coevalFeuille:function(a, fond){ return FenCoevalFeuille(a, fond); },
+  terminer:function(arg, fond){ var m = momH();
+    return Fenetre(fond, "🛑 Terminer la séance ?", CLASSE + " — " + EV.titre + " · " + ouEnEst(m),
+      h(F, null, h("p", null, "La séance est close, et l'archive s'écrit avec les notes telles qu'elles sont, quelle que soit la phase."),
+        h("p", null, "Les tablettes oublient leurs élèves et reviennent à « Combien êtes-vous sur cette tablette ? ».")),
+      [annulerH(), boutonH("ok", "btn btn-rouge", "🛑 Terminer la séance", fait("terminer"), "Termine la séance, tout de suite : l'archive s'écrit, les tablettes oublient leurs élèves.")], null); },
+  depart:function(arg, fond){
+    var noms = SCN.presents(MO()).map(function(p){ return {p:p, n:nomDe(p)}; }).sort(function(a, b){ return a.n.localeCompare(b.n, "fr"); });
+    return Fenetre(fond, "🚫 Départ d'un élève", "Qui part en cours de séance ? (infirmerie, tablette en panne…)",
+      h(F, null, h("div", {className:"depart-grille"}, noms.map(function(x){ var f = sexeH(x.p) === "F";
+        return h("div", {key:x.p, className:"depart-l"}, h("span", null, x.n), boutonH("p", "btn btn-ghost btn-sm", "🚫 Parti", fait("depart", [x.p]), "Marque " + x.n + " comme parti" + (f ? "e" : "") + " en cours de séance : " + (f ? "elle" : "il") + " ne bloque plus la classe, ses questions manquées sortent de son total.")); }))),
+      [annulerH()], null, 760); },
+  retour:function(arg, fond){ var partis = momH().partis || {};
+    return Fenetre(fond, "↩️ Retour d'un élève", "Les élèves partis pendant cette séance",
+      Object.keys(partis).map(function(p){ var t = SCN.tabletteDe(p) || {n:"?"}, v = SCN.voisinDe(p);
+        return h("div", {key:p, className:"depart-l"}, h("span", null, nomDe(p) + " — parti à " + partis[p] + " · tablette " + t.n + (v ? ", avec " + nomDe(v) : "")), boutonH("r", "btn btn-ghost btn-sm", "↩️ Revenu", fait("retour", [p]))); }),
+      [annulerH()], null); },
+  rouvrirTous:function(qi, fond){ var sans = momH().sansRep || [];
+    return Fenetre(fond, "🔓 Rouvrir la question " + (qi + 1) + " pour tous ?", "Seuls ceux qui n'ont pas répondu la retrouvent, une seule fois.",
+      h(F, null, h("p", null, "Ici : ", sans.map(function(p, i){ var t = SCN.tabletteDe(p); return h(F, {key:p}, i ? ", " : "", h("strong", null, nomDe(p)), t ? " (tablette " + t.n + ")" : ""); }), ".")),
+      [annulerH(), boutonH("ok", "btn btn-primary", "🔓 Rouvrir pour ceux qui n'ont pas répondu", fait("rouvrirTous", [qi]), "Rouvre la question " + (qi + 1) + " pour ceux qui n'ont pas répondu. Une seule fois.")], null); },
+  rouvrirUn:function(qi, fond){ var sans = momH().sansRep || [];
+    return h(F, null, fond, h("div", {className:"checkin-overlay"},
+      h("div", {className:"checkin-modal", style:{maxWidth:"560px"}},
+        h("div", {className:"checkin-header"}, h("h3", null, "🔓 Rouvrir pour un élève — Q" + (qi + 1), InfoI("Rouvre la question close pour un seul élève, une seule fois : il répond pendant que la classe attend.")), h("div", {className:"checkin-sub"}, "Seuls les élèves sans réponse à la question " + (qi + 1) + " sont listés.")),
+        sans.map(function(p){ return h("div", {key:p, className:"rouvrir-l"},
+          h("div", null, h("div", {style:{fontWeight:900}}, nomDe(p)), h("div", {style:{fontSize:".8rem", color:"var(--gris)"}}, placeDe(p).replace(/^Tablette/, "tablette"))),
+          boutonH("ok", "btn btn-primary btn-sm", "🔓 Rouvrir pour " + prenomH(p), fait("rouvrirPour", [qi, p]))); }),
+        h("div", {className:"checkin-actions"}, annulerH("Ferme la fenêtre sans rien rouvrir."))))); },
+  ecarter:function(qi, fond){ var q = EV.questions[qi], comps = q.competences || [];
+    var restent = comps.map(function(c){ return EV.questions.filter(function(x, i){ return i !== qi && (x.competences || []).indexOf(c) >= 0; }).length; });
+    return Fenetre(fond, "❌ Écarter la question " + (qi + 1) + " ?", q.enonce,
+      h(F, null,
+        h("p", null, "Elle ne sera ni posée ni corrigée, et sort du total de la note et des compétences."),
+        restent.some(function(n){ return n < 3; }) && h("p", {className:"fen-alerte"}, "⚠️ " + (comps.length > 1 ? "Les compétences " + listeFr(comps) + " ne seront plus évaluées" : "La compétence " + comps[0] + " ne sera plus évaluée") + " que par " + Math.min.apply(null, restent) + " questions : il en faut 3 pour que les quatre niveaux soient possibles."),
+        q.bonus && h("p", null, "C'est une question bonus : l'écarter ne change rien à la note.")),
+      [annulerH(), boutonH("ok", "btn btn-rouge", "❌ Écarter la question " + (qi + 1), fait("ecarter", [qi]))], null); },
+  annuler:function(qi, fond){ var q = EV.questions[qi], b = bilanQ(qi, MO());
+    return Fenetre(fond, "⚠️ Annuler la question " + (qi + 1) + " ?", q.enonce + " — posée, " + b.repondu + " réponses",
+      h(F, null, h("p", null, "Elle a été posée, mais elle ne comptera pas : elle sort du total de la note et des compétences. Ses réponses restent gardées.")),
+      [boutonH("f", "btn btn-ghost", "Fermer", fermerFen), boutonH("ok", "btn btn-rouge", "⚠️ Annuler la question " + (qi + 1), fait("annuler", [qi]))], null); },
+  finir:function(arg, fond){ var m = momH(), se = SCN.seance(m.seance) || m;
+    return Fenetre(fond, "⏸️ Finir à une autre heure ?", CLASSE + " — " + EV.titre + " · " + ouEnEst(m),
+      h(F, null,
+        h("p", null, "La séance garde son état exact : la question, le tour, les lectures, les notes provisoires."),
+        h("p", null, "À l'heure suivante, « 🎯 Pilotage classe » propose « ▶️ Reprendre la séance du " + jjmm(se.date || m.date) + " — " + ouEnEst(m) + " ».")),
+      [boutonH("a", "btn btn-ghost", "Annuler", fermerFen, "Ne change rien : la séance continue."), boutonH("ok", "btn btn-or", "⏸️ Finir à une autre heure", fait("finirAutreHeure"), "Met la séance en pause, telle qu'elle est, jusqu'à une heure suivante.")], null); },
+  voirTablette:function(n, fond){ var pa = PAIRES[n - 1] || [null, null], m = momH();
+    return Fenetre(fond, "📱 Tablette " + n + " · " + [pa[0], pa[1]].filter(Boolean).map(affH).join(" · ") + " — en direct", "Ce que montrent ses deux moitiés, maintenant : " + ouEnEst(m) + ".",
+      h("div", {className:"voir-tab fige-choix"}, h("div", {className:"voir-tab-in"}, h(FigerZone, null, TabletteVue(pa[0], pa[1])))),
+      [boutonH("f", "btn btn-ghost", "✕ Fermer", fermerFen)], null, 900); },
+  // la fiche d'un élève (un clic sur son nom) : son point d'autonomie, son départ
+  eleve:function(p, fond){ var k = MO(), au = SCN.autonomie(p, k), il = sexeH(p) === "F" ? "Elle" : "Il";
+    return Fenetre(fond, "👤 " + nomDe(p), placeDe(p),
+      h(F, null, h("p", null, au.retire ? h(F, null, h("strong", null, "⛔ Point d'autonomie retiré"), " " + (au.quand || "") + ". Ses deux compétences d'autonomie sont en Maîtrise insuffisante ; sa note ne bouge pas.")
+        : il + " a son point d'autonomie : ses deux compétences d'autonomie sont en Très bonne maîtrise.")),
+      au.retire ? [boutonH("f", "btn btn-ghost", "✕ Fermer", fermerFen), boutonH("r", "btn btn-vert", "↩️ Rendre", fait("rendreAutonomie", [p]), "Rend son point d'autonomie à " + prenomH(p) + " : ses deux compétences d'autonomie repassent en Très bonne maîtrise.")]
+        : [boutonH("f", "btn btn-ghost", "✕ Fermer", fermerFen),
+           boutonH("p", "btn btn-ghost", "🚫 Marquer comme parti", fait("depart", [p]), "Marque " + prenomH(p) + " comme parti" + (il === "Elle" ? "e" : "") + " : " + il.toLowerCase() + " ne bloque plus la classe, ses questions manquées sortent de son total."),
+           boutonH("g", "btn btn-rouge", "⛔ Retirer le point d'autonomie", function(){ ouvrirFen("garde", [p]); }, "Demande une confirmation, puis retire son point d'autonomie : ses deux compétences d'autonomie passent en Maîtrise insuffisante.")], null); },
+  // la garde du point d'autonomie : un élève, ou les deux de l'alerte (« ⛔ aux deux »)
+  garde:function(ps, fond){ var noms = ps.map(nomDe);
+    return Fenetre(fond, "⛔ Retirer le point d'autonomie " + (noms.length > 1 ? "aux deux" : "à " + noms[0]) + " ?", noms.join(" et "),
+      h(F, null, h("p", null, (noms.length > 1 ? "Leurs deux compétences d'autonomie passent" : "Ses deux compétences d'autonomie passent") + " en Maîtrise insuffisante, pour cette évaluation : « Être autonome et responsable » et « S'impliquer dans les activités en classe et dans son travail personnel ». La note ne bouge pas.")),
+      [boutonH("a", "btn btn-ghost", "Annuler", fermerFen, "Ne retire rien."),
+       boutonH("ok", "btn btn-rouge", "⛔ Retirer le point d'autonomie", function(){ ps.forEach(function(p){ agir("retirerAutonomie", [p, "heure"]); }); fermerFen(); }, "Retire le point d'autonomie, tout de suite. « ↩️ Rendre » le défait.")], null); }
+};

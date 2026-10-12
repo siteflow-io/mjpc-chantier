@@ -52,7 +52,7 @@ function Compteur(pa, nbRev){
     h("div", {className:"correction-compteur-pastilles"}, pa.map(function(x, i){ return h("span", {key:i, className:"correction-compteur-pastille " + x.cls}, x.t); })));
 }
 function pastilles3(e, nbRev){
-  var st = stDe(e);
+  var st = calc(cleE(e)).st;
   return EV.questions.map(function(q, i){
     if(ORDRE_CORR.indexOf(i) >= nbRev) return {cls:"vide", t:String(i+1)};
     var s = st[i];
@@ -73,10 +73,12 @@ function EcrLecture(e, qi, dit, chrono){
       h("div", {className:"decl-titre"}, v.prenom + ", lis la feuille de " + e.prenom + " : qu'a-t-" + il(e) + " écrit ?"),
       h("div", {className:"decl-consigne"}, "Clique sur le ou les choix qui disent la même chose que sa feuille. Les mots ne sont pas forcément les mêmes."),
       h("div", {className:"lecture-l"}, h("div", {className:"soin"}, "Lis avec soin : c'est ton point d'autonomie."), chrono != null && ChronoSaisie(chrono, q.reponse)),
+      // (QCM-2) en direct, le voisin clique, et chaque clic s'enregistre (ELV.lire)
+      LIVE() ? h(ChoixLuH, {key:"lu" + cleE(e) + qi, eleve:cleE(e), qi:qi, ordre:ordre, q:q, long:long, aucunTxt:"Sa feuille ne dit aucun de ces choix"}) : h(F, null,
       h("div", {className:"eleve-choix" + (long ? " long" : "")},
         ordre.map(function(i){ return h("button", {key:i, className:"eleve-choix-btn" + (dit && luArr.indexOf(i) >= 0 ? " selected" : "")}, h("span", null, q.choix[i])); }),
         h("button", {className:"eleve-choix-btn aucun" + (dit && lu === "aucun" ? " selected" : "")}, "Sa feuille ne dit aucun de ces choix")),
-      dit && h("div", {className:"eleve-feedback valide"}, "✅ Réponse enregistrée — tu peux encore la changer"),
+      dit && h("div", {className:"eleve-feedback valide"}, "✅ Réponse enregistrée — tu peux encore la changer")),
       EcouteProf())));
 }
 /* La même, sur la question 3 de l'évaluation de 3e (610-3) : elle tient dans la demi-tablette (464 : seule une question
@@ -126,9 +128,9 @@ function EcrRevele(e, qi, opts){
   opts = opts || {};
   var q = EV.questions[qi], ordre = ORD[qi][e.cle], tab = TABL[e.cle][qi];
   var lu = opts.papier ? FEUI[e.cle][qi] : LU[e.cle][qi], luArr = lu === "aucun" ? [] : lu;
-  var st = opts.papier ? (FEUI[e.cle][qi] === "aucun" ? "a" : calc(e.prenom).st[qi] === "t" ? "f" : calc(e.prenom).st[qi]) : stDe(e)[qi];
+  var st = opts.papier ? (FEUI[e.cle][qi] === "aucun" ? "a" : calc(cleE(e)).st[qi] === "t" ? "f" : calc(cleE(e)).st[qi]) : calc(cleE(e)).st[qi];
   var pos = ORDRE_CORR.indexOf(qi), juste = st === "j", trouvee = st === "t";
-  var pa = opts.papier ? EV.questions.map(function(x, i){ var p = ORDRE_CORR.indexOf(i); if(p > pos) return {cls:"vide", t:String(i+1)}; var s = i === qi ? st : (calc(e.prenom).st[i] === "j" ? "j" : "f"); return s === "j" ? {cls:"juste", t:"✅"} : {cls:"faux", t:"❌"}; }) : pastilles3(e, pos + 1);
+  var pa = opts.papier ? EV.questions.map(function(x, i){ var p = ORDRE_CORR.indexOf(i); if(p > pos) return {cls:"vide", t:String(i+1)}; var s = i === qi ? st : (calc(cleE(e)).st[i] === "j" ? "j" : "f"); return s === "j" ? {cls:"juste", t:"✅"} : {cls:"faux", t:"❌"}; }) : pastilles3(e, pos + 1);
   return Page(badgeDe(e), "📝 Correction", h(F, null,
     h("div", {className:"correction-banner-peda"}, "💡 On corrige d'abord les questions les plus ratées par la classe."),
     Compteur(pa, pos + 1),
@@ -408,13 +410,13 @@ function Coeval(p){
   var s2 = useState(p.q == null ? null : p.q), qc = s2[0], setQ = s2[1];
   var s3 = useState(p.ecrit || null), ecrit = s3[0], setEcrit = s3[1];
   var s4 = useState(!!p.daccord), daccord = s4[0], setDaccord = s4[1];
-  function choisir(x){ setDaccord(false); setK(x); setQ(null); setEcrit(null); }
+  function choisir(x){ setDaccord(false); setK(x); setQ(null); setEcrit(null); if(p.onCo && x === "ok") p.onCo("ok", null, null); }
   function ecrire(i){
     var n = i === "aucun" ? "aucun" : (ecrit && ecrit !== "aucun" ? (ecrit.indexOf(i) >= 0 ? ecrit.filter(function(y){ return y !== i; }) : ecrit.concat([i])) : [i]);
     var lu = luDe(qc);
     var meme = n === "aucun" ? lu === "aucun" : (lu !== "aucun" && n.length === lu.length && n.every(function(y){ return lu.indexOf(y) >= 0; }));
-    if(meme){ setDaccord(true); setK(null); setQ(null); setEcrit(null); return; }
-    setEcrit(n);
+    if(meme){ setDaccord(true); setK(null); setQ(null); setEcrit(null); if(p.onCo) p.onCo("ok", null, null); return; }
+    setEcrit(n); if(p.onCo) p.onCo(k, qc, n);
   }
   var zone = [];
   var btn = function(x){ return h("button", {key:x, className:"co-btn " + x + (k === x ? " on" : ""), "data-local":"1", "aria-pressed":k === x, onClick:function(){ choisir(x); }}, EM_CO[x] + " ", txtCo(x, v)); };

@@ -1,3 +1,120 @@
+/* ═══════════════ QCM-2 · HEURE — la séance réelle sous les écrans de l'heure ═══════════════
+   En direct (la couche de QCM-1 est là : SCN.eleves existe), chaque table que la maquette écrivait pour son scénario
+   (RT, ORD, TABL, LU, PREMIER, ORDRE_CORR, ESTIM, CO, PAIRES…) se recalcule de la séance à chaque rendu (chargerHeure),
+   pour n'importe quelle classe et n'importe quel nombre de questions ; un élève y est son eleveSlug. Chaque geste de l'heure
+   appelle l'action de ACT ou ELV (geste, gesteE) ; une fenêtre de la console s'ouvre sur place (ouvrirFen).
+   Sans cette couche (l'assemblage de la maquette), tout retombe sur le scénario : rien ne change. */
+function LIVE(){ return typeof SCN !== "undefined" && typeof SCN.eleves === "function"; }
+function nomH(p){ return LIVE() ? SCN.nomDe(p) : nomDe(p); }
+function prenomH(p){ return LIVE() ? SCN.pre(p) : p; }
+function sexeH(p){ return LIVE() ? (SCN.sexe(p) === "F" ? "F" : "M") : (SCN.SEXE[p] === "F" ? "F" : "M"); }
+// une case de tablette (un nom complet dans la maquette, un eleveSlug en direct) : la clé de l'élève, et le nom affiché
+function cleH(n){ return !n ? null : LIVE() ? n : pre(n); }
+function affH(n){ return !n ? "" : LIVE() ? SCN.nomDe(n) : n; }
+// la clé d'un objet élève (J, M, ou un élève de la séance) : son prénom dans la maquette, son eleveSlug en direct
+function cleE(e){ return LIVE() ? (e.slug || e.cle) : e.prenom; }
+function eleveH(p, cote, voisin){ return {cle:p, slug:p, nom:nomH(p), prenom:prenomH(p), sexe:sexeH(p), cote:cote || null, voisin:voisin || null}; }
+// les tablettes du moment, [[gauche, droite], …] dans l'ordre des numéros ; une moitié vide est null
+function tablettesH(){
+  if(!LIVE()) return pairesDuMoment();
+  var pl = SCN.places() || {}, ns = Object.keys(pl).map(Number).filter(function(n){ return n > 0; }), max = Math.max.apply(null, ns.concat([0])), l = [];
+  for(var n = 1; n <= max; n++){ var x = pl[n] || {}; l.push([x.g || null, x.d || null]); }
+  return l;
+}
+function nbQH(){ return EV.questions.length; }
+function toutesQ(){ return EV.questions.map(function(q, i){ return i; }); }
+function memesChoixH(a, b){ if(a === "aucun" || b === "aucun") return a === b; a = (a || []).slice().sort(); b = (b || []).slice().sort(); return a.length === b.length && a.every(function(x, i){ return x === b[i]; }); }
+// la réponse d'un élève (SCN.reponse) ou sa lecture (SCN.lecture) : la liste de ses choix, « aucun », ou null
+function choixDeH(r){ if(r == null) return null; if(r === "aucun" || r.choix === "aucun") return "aucun"; if(Array.isArray(r)) return r; if(Array.isArray(r.choix)) return r.choix; return null; }
+// le code de la maquette d'une réponse sur la tablette : J juste, Y toutes les bonnes et une en trop, O une partie des bonnes, F faux
+function codeChoix(c, q){
+  if(!c || c === "aucun" || !c.length) return "F";
+  var bons = c.filter(function(i){ return q.bonnes.indexOf(i) >= 0; }).length;
+  if(bons === q.bonnes.length) return c.length === bons ? "J" : "Y";
+  return bons ? "O" : "F";
+}
+/* ── Recharger les tables de l'heure depuis la séance (en direct seulement) ── */
+var HEURE = {sid:null, eleves:[]};
+function chargerHeure(){
+  if(!LIVE()) return;
+  var k = MO(), m = MOM() || {}, se = (m.seance && SCN.seance(m.seance)) || null, ev = SCN.evalDu(k);
+  if(ev && ev.questions) EV = ev;
+  if(se && se.classe) CLASSE = se.classe;
+  PAIRES = tablettesH();
+  var eleves = [].concat.apply([], PAIRES).filter(Boolean);
+  HEURE = {sid:m.seance, eleves:eleves};
+  var n = EV.questions.length;
+  RT = {}; TABL = {}; LU = {}; ESTIM = {}; CO = {}; DIT_B = {}; ORD = [];
+  for(var qi = 0; qi < n; qi++) ORD.push({});
+  eleves.forEach(function(p){
+    var rt = "", tb = [], lu = [], db = [];
+    EV.questions.forEach(function(q, qi){
+      var c = choixDeH(SCN.reponse(p, qi)); rt += c ? codeChoix(c, q) : "-"; tb.push(c && c !== "aucun" ? c : []);
+      var l = choixDeH(SCN.lecture(p, qi)); lu.push(l == null ? [] : l);
+      db.push(SCN.ditB(p, qi) || null);
+      ORD[qi][p] = SCN.ordreChoix(p, qi) || q.choix.map(function(x, i){ return i; });
+    });
+    RT[p] = rt; TABL[p] = tb; LU[p] = lu; DIT_B[p] = db;
+    var es = SCN.estimationDe(p); if(es) ESTIM[p] = es.niveau || es.k || es;
+    var co = SCN.coevalDe(p); CO[p] = !co ? "att" : co.statut === "ok" ? "ok" : (co.statut === "mal" ? "mal" : "peut") + ((co.qi == null ? 0 : co.qi) + 1);
+  });
+  // les compétences de l'évaluation, dans l'ordre de leurs questions (le bilan, le bilan de classe)
+  COMPS = []; EV.questions.forEach(function(q){ (q.competences || []).forEach(function(c){ if(COMPS.indexOf(c) < 0) COMPS.push(c); }); });
+  // le libellé court d'une compétence (l'en-tête des tableaux) : ses premiers mots, comme dans la maquette
+  COMPS.forEach(function(c){ if(!COMP_COURT[c] && LIB_OFF[c]){ var w = LIB_OFF[c].split(" "); COMP_COURT[c] = w.length > 4 ? w.slice(0, 4).join(" ").replace(/[,;:]$/, "") + "…" : LIB_OFF[c]; } });
+  PREMIER = EV.questions.map(function(q, qi){ return SCN.premierCote(qi) === "d" ? "M" : "J"; });
+  ORDRE_CORR = (SCN.ordreCorr() || []).length ? SCN.ordreCorr().slice() : ordreCorrCalcule();
+}
+// l'ordre de la correction, avant qu'il soit fixé : de la plus ratée à la mieux réussie, sur les tablettes
+function ordreCorrCalcule(){
+  var k = MO(), ec = momH().ecartees || [];
+  return toutesQ().filter(function(qi){ return ec.indexOf(qi) < 0; }).map(function(qi){ var b = bilanQ(qi, k); return {qi:qi, t:b.repondu ? b.justes / b.repondu : 1}; })
+    .sort(function(a, b){ return a.t - b.t || a.qi - b.qi; }).map(function(x){ return x.qi; });
+}
+// le moment, complété en direct de ce que la séance permet de calculer (les champs que QCM-1 ne donnerait pas)
+function momH(){
+  var m = MOM() || {};
+  if(!LIVE()) return m;
+  m = Object.assign({}, m);
+  var k = MO(), pres = SCN.presents(k), qi = m.qi;
+  if(m.depuis && m.duree) m.reste = Math.max(0, Math.ceil(m.duree - (Date.now() - m.depuis) / 1000));
+  if(qi != null && (m.ph === "reponse" || m.ph === "b" || m.ph === "passage") && m.nonRep == null){
+    var cote = m.cote || coteDuTour(qi, m.tour || 1), rep = SCN.repondu(qi, k);
+    m.nonRep = pres.filter(function(p){ return SCN.cote(p) === cote && rep.indexOf(p) < 0; });
+  }
+  if(qi != null && m.ph === "close" && m.sansRep == null){ var r2 = SCN.repondu(qi, k); m.sansRep = pres.filter(function(p){ return r2.indexOf(p) < 0; }); }
+  if(qi != null && m.ph === "lecture" && m.pasLu == null) m.pasLu = pres.filter(function(p){ return !SCN.lecture(p, qi); });
+  if(m.ph === "estim" && m.pasEstime == null) m.pasEstime = pres.filter(function(p){ return !SCN.estimationDe(p); });
+  return m;
+}
+
+/* ── Les gestes : en direct, l'action de ACT ; dans la maquette, la scène qu'il montrait ── */
+function geste(va, nom){
+  var args = Array.prototype.slice.call(arguments, 2);
+  if(!LIVE() || !nom) return va ? {"data-va":va} : {};
+  return {"data-local":"1", "data-act":nom, onClick:function(){ agir(nom, args); }};
+}
+function agir(nom, args){
+  try { var f = typeof ACT !== "undefined" && ACT[nom]; if(!f){ console.warn("[QCM-2] ACT." + nom + " manque"); return; } return f.apply(ACT, args || []); }
+  catch(e){ console.error("[QCM-2] ACT." + nom, e); }
+}
+// un geste de l'élève, sur sa moitié : l'eleveSlug de la moitié en dernier argument (DEMANDES.md, 12/10 17:40)
+function agirE(nom){
+  var args = Array.prototype.slice.call(arguments, 1);
+  try { var f = typeof ELV !== "undefined" && ELV[nom]; if(!f){ console.warn("[QCM-2] ELV." + nom + " manque"); return; } return f.apply(ELV, args); }
+  catch(e){ console.error("[QCM-2] ELV." + nom, e); }
+}
+/* ── Les fenêtres de la console, en direct : elles s'ouvrent sur place, au-dessus de l'écran du moment ── */
+var FEN_H = {f:null, arg:null, ab:[]};
+function ouvrirFen(nom, arg){ FEN_H.f = nom; FEN_H.arg = arg == null ? null : arg; FEN_H.ab.slice().forEach(function(f){ f(); }); }
+function fermerFen(){ ouvrirFen(null); }
+// un bouton qui ouvrait une fenêtre (une scène de la maquette) : en direct, la fenêtre sur place
+function fen(va, nom, arg){ if(!LIVE()) return va ? {"data-va":va} : {}; return {"data-local":"1", onClick:function(){ ouvrirFen(nom, arg); }}; }
+function useFen(){ var s = useState(0), set = s[1]; useEffect(function(){ var f = function(){ set(function(x){ return x + 1; }); }; FEN_H.ab.push(f); return function(){ FEN_H.ab = FEN_H.ab.filter(function(g){ return g !== f; }); }; }, []); return FEN_H; }
+// les chronos : chaque appareil se redessine chaque seconde pendant un temps qui court
+function useSeconde(actif){ var s = useState(0), set = s[1]; useEffect(function(){ if(!actif) return; var t = setInterval(function(){ set(function(x){ return x + 1; }); }, 1000); return function(){ clearInterval(t); }; }, [actif]); }
+var PHASES_CHRONO = {reflexion:1, passage:1, reponse:1, b:1, rouvert:1, lecture:1};
+
 /* ═══════════════ Complément 3 — le pilotage, au moment de la scène ═══════════════
    La console pendant les questions : un seul rendu (Pilot), rempli d'après le moment. L'état, les compteurs, les tablettes,
    la question en cours, celles à venir et la fin prévue se calculent du scénario. */
@@ -5,27 +122,43 @@
 /* ── L'état du pilotage à un moment ── */
 function etatPilot(k){
   k = k || MO();
-  var m = SCN.moment(k) || {}, c = SCN.compteurs(k);
-  var phase = ({pret:"idle", avant:"idle", appel:"idle", entree:"idle", reflexion:"reflexion", passage:"reponse", reponse:"reponse", b:"reponse", close:"attente", rouvert:"attente", panne:"reponse"})[m.ph] || "idle";
+  var m = k === MO() ? momH() : (SCN.moment(k) || {}), c = SCN.compteurs(k);
+  // (QCM-2) en direct, une séance en pause reste sur son temps : la réflexion, ou le tour de réponse
+  var ph = m.ph === "pause" ? (m.tour ? "reponse" : "reflexion") : m.ph;
+  var phase = ({pret:"idle", avant:"idle", appel:"idle", entree:"idle", reflexion:"reflexion", passage:"reponse", reponse:"reponse", b:"reponse", close:"attente", rouvert:"attente", panne:"reponse"})[ph] || "idle";
   var qi = m.qi == null ? null : m.qi;
-  var passees = [0, 1, 2].filter(function(q){ return qi != null && (q < qi || (q === qi && phase === "attente")); });
+  var passees = toutesQ().filter(function(q){ return qi != null && (q < qi || (q === qi && phase === "attente")); });
   var obj = function(l){ var o = {}; (l || []).forEach(function(x){ o[x] = true; }); return o; };
   var leg = LEG_Q.slice();
   if((m.sansRep || []).length) leg = LEG_Q.slice(0, 4).concat([["#fff", "pas de réponse", "2px dashed #EF4444"]]);
-  if(m.partis) leg = leg.concat([["#E2E8F0", "🚪 parti : ne bloque plus"]]);
+  if(m.partis && Object.keys(m.partis).length) leg = leg.concat([["#E2E8F0", "🚪 parti : ne bloque plus"]]);
   // (relecteur n°68) pendant la réflexion, la tuile dit « ✍️ écrit » ; la légende dit le reste
   if(phase === "reflexion") leg = [["#E0F2FE", "✍️ écrit : la réponse, sur sa feuille, pendant la réflexion"]];
-  return {k:k, phase:phase, qi:qi, tour:m.tour, chrono:m.reste, stats:statsQ(), passees:passees, ecartees:obj(m.ecartees), annulees:obj(m.annulees),
-    etat:etatQuestion({qi:qi, tour:m.tour, fini:phase === "attente", reflexion:phase === "reflexion"}), legende:leg, nbQ:c.nbQ};
+  return {k:k, phase:phase, qi:qi, tour:m.tour, chrono:m.reste, stats:statsQ(), passees:passees, ecartees:obj(m.ecartees), annulees:obj(m.annulees), pause:m.ph === "pause" || !!m.paused,
+    etat:etatQuestionH({qi:qi, tour:m.tour, fini:phase === "attente", reflexion:phase === "reflexion"}), legende:leg, nbQ:c.nbQ};
+}
+// la moitié d'un élève pendant une question (c3-base.js, etatQuestion), d'après le moment complété : en direct, ceux qui répondent encore
+function etatQuestionH(s){
+  var m = momH(), nonRep = s.nonRep || m.nonRep || [], sansRep = m.sansRep || [], partis = m.partis || {};
+  return function(p, cote){
+    if(partis[p]) return {cls:"m-parti", st:"🚪 parti à " + partis[p]};
+    if(s.reflexion) return {cls:"m-ecrit", st:"✍️ écrit"};
+    if(s.fini) return sansRep.indexOf(p) >= 0 ? {cls:"m-pasrep", st:"⏳ pas de réponse"} : couleur(p, s.qi, false);
+    var estPremier = cote === coteDuTour(s.qi, 1);
+    if(s.tour === 1 && !estPremier) return {cls:"m-voile", st:"🙈 attend son tour"};
+    if(s.tour === 2 && estPremier) return couleur(p, s.qi, true);
+    if(nonRep.indexOf(p) >= 0) return {cls:"m-repond", st:"✋ répond…"};
+    return couleur(p, s.qi, false);
+  };
 }
 // les réponses et les justes d'une question déjà posée, sur la tablette, au moment k
-function bilanQ(qi, k){ var m = SCN.moment(k) || {}; if(m.seance === "TEST"){ var t = SCN.TEST.passees[qi] || {repondu:0, justes:0}; return {repondu:t.repondu, justes:t.justes, presents:SCN.TEST.presents}; }
-  var rep = SCN.repondu(qi, k); return {repondu:rep.length, justes:rep.filter(function(p){ return RT[p][qi] === "J"; }).length, presents:SCN.presents(k).length}; }
+function bilanQ(qi, k){ var m = SCN.moment(k) || {}; if(m.seance === "TEST" && SCN.TEST){ var t = SCN.TEST.passees[qi] || {repondu:0, justes:0}; return {repondu:t.repondu, justes:t.justes, presents:SCN.TEST.presents}; }
+  var rep = SCN.repondu(qi, k); return {repondu:rep.length, justes:rep.filter(function(p){ return (RT[p] || "")[qi] === "J"; }).length, presents:SCN.presents(k).length}; }
 function bonnesRep(n){ return n + (n > 1 ? " bonnes réponses" : " bonne réponse"); }
 
 /* ── La question en cours ── */
 function QCourante(qi){
-  var q = EV.questions[qi], m = MOM(), ec = m.ecartees || [], nbQ = EV.questions.length - ec.length;
+  var q = EV.questions[qi], m = momH(), ec = m.ecartees || [], nbQ = EV.questions.length - ec.length;
   var rang = qi + 1 - ec.filter(function(x){ return x < qi; }).length;
   return h("div", {className:"pilot-q-current"},
     h("div", {className:"num"}, "Question " + rang + " / " + nbQ + " — " + bonnesRep(q.bonnes.length)),
@@ -39,7 +172,7 @@ function QCourante(qi){
 /* ── « 📋 Toutes les questions » : les comptes au moment de la scène ── */
 function Overview(qCur, passees, opts){
   opts = opts || {};
-  var k = MO(), m = MOM(), ec = opts.ecartees || {}, an = opts.annulees || {}, c = SCN.compteurs(k);
+  var k = MO(), m = momH(), ec = opts.ecartees || {}, an = opts.annulees || {}, c = SCN.compteurs(k);
   return h("div", {className:"pilot-overview"},
     h("h3", null, h("span", null, "📋 Toutes les questions", InfoI("Les temps des questions à venir se tapent ici, pour cette séance seulement. « ❌ Écarter » retire une question pas encore posée ; « ⚠️ Annuler » retire une question déjà posée. Les deux se défont par « ↩️ Remettre »."))),
     EV.questions.map(function(q, qi){
@@ -54,28 +187,93 @@ function Overview(qCur, passees, opts){
         : passee ? "Question passée — " + b.justes + "/" + b.repondu + " justes" : null;   // la 7.7.1, l. 8114
       var t = tempsDe(qi);
       var taux = b.repondu ? b.justes / b.repondu : 0;
+      // (QCM-2) en direct, « ↩️ Remettre », « ❌ Écarter » et « ⚠️ Annuler » agissent sur la question de leur ligne
+      var remettre = LIVE() ? geste(null, "remettre", qi) : {"data-va":opts.remettre || "c-q1-close", "data-moment":momentDefaut(opts.remettre || "c-q1-close")};
       return h("div", {key:qi, className:"pilot-q-mini" + (current ? " current" : "") + (passee ? " passee" : "") + (ec[qi] || an[qi] ? " retiree" : ""), title:titre},
         h("div", {className:"pilot-q-mini-head"}, h("span", {className:"pilot-q-mini-num"}, "Q" + (qi+1)), h("span", {className:"pilot-q-mini-niv niv-" + q.niveau}, NIV[q.niveau].label)),
         h("div", {className:"pilot-q-mini-enonce"}, q.enonce),
         h("div", {className:"pilot-q-mini-bonnes"}, ChoixTexte(q)),
         marque,
-        avenir && !ec[qi] ? h(TempsMini, {qi:qi}) : h("div", {className:"pilot-q-mini-status"}, "Réflexion " + t.reflexion + " s · Réponse " + t.reponse + " s par tour",
+        avenir && !ec[qi] ? h(TempsMiniH, {qi:qi}) : h("div", {className:"pilot-q-mini-status"}, "Réflexion " + t.reflexion + " s · Réponse " + t.reponse + " s par tour",
           (passee || (current && opts.phase === "attente")) && !an[qi] && h("span", null, " — ", h("span", {className:"score-pct " + (taux >= .7 ? "score-vert" : taux >= .5 ? "score-orange" : "score-rouge")}, b.justes + "/" + b.repondu + " justes"))),
         h("div", {className:"q-gestes"},
-          ec[qi] || an[qi] ? h("button", {className:"btn btn-ghost btn-sm", "data-va":opts.remettre || "c-q1-close", "data-moment":momentDefaut(opts.remettre || "c-q1-close")}, "↩️ Remettre")
-            : avenir ? h("button", {className:"btn btn-ghost btn-sm btn-ecarter", "data-va":"c-ecarter&q=" + (qi + 1), title:"Écarte la question " + (qi + 1) + ", après une confirmation : elle ne sera ni posée ni corrigée, et sort du total, comme une question manquée par un absent ; les tablettes et le tableau comptent sans elle. « ↩️ Remettre » la défait, tant que son tour n'est pas passé."}, "❌ Écarter")
-            : passee || (current && opts.phase === "attente") ? h("button", {className:"btn btn-ghost btn-sm", "data-va":"c-annuler&q=" + (qi + 1)}, "⚠️ Annuler") : null));
+          ec[qi] || an[qi] ? h("button", Object.assign({className:"btn btn-ghost btn-sm"}, remettre), "↩️ Remettre")
+            : avenir ? h("button", Object.assign({className:"btn btn-ghost btn-sm btn-ecarter", title:"Écarte la question " + (qi + 1) + ", après une confirmation : elle ne sera ni posée ni corrigée, et sort du total, comme une question manquée par un absent ; les tablettes et le tableau comptent sans elle. « ↩️ Remettre » la défait, tant que son tour n'est pas passé."}, fen("c-ecarter&q=" + (qi + 1), "ecarter", qi)), "❌ Écarter")
+            : passee || (current && opts.phase === "attente") ? h("button", Object.assign({className:"btn btn-ghost btn-sm"}, fen("c-annuler&q=" + (qi + 1), "annuler", qi)), "⚠️ Annuler") : null));
     }),
     opts.alerteComp && h("div", {className:"q-alerte"}, opts.alerteComp));
 }
 
+/* ── Les temps tapés pendant la séance (c3-base.js : TempsCarte, ColonneTemps, TempsMini) : en direct, ils s'écrivent dans la séance ── */
+// ajouter n secondes à un temps d'une question : en direct ACT.ajouterTemps(sorte, s, qi) ; dans la maquette, les temps tapés de la page
+function tempsAjouter(qi, champ, n, actif){
+  if(!n) return;
+  if(LIVE()) return agir("ajouterTemps", [champ, n, qi]);
+  tempsChanger(qi, champ, tempsDe(qi)[champ] + n, actif ? n : 0);
+}
+// un champ qu'on tape garde ce qu'on y tape tant qu'il a le curseur ; la séance reçoit chaque valeur entière (règle du 04/10)
+function ChampTemps(p){   // p : v, qi, champ, actif, attrs
+  var s = useState(null), brouillon = s[0], setB = s[1];
+  var aff = brouillon != null ? brouillon : String(p.v);
+  return h("input", Object.assign({type:"number", min:1, value:aff,
+    onFocus:function(){ setB(String(p.v)); }, onBlur:function(){ setB(null); },
+    onChange:function(e){ setB(e.target.value); var x = parseInt(e.target.value, 10); if(x > 0 && x !== p.v) tempsAjouter(p.qi, p.champ, x - p.v, p.actif); }}, p.attrs));
+}
+function TempsCarteH(p){   // p : lbl, champ, qi, reste, actif, fini, sous
+  useTemps();
+  var t = tempsDe(p.qi), total = t[p.champ];
+  var reste = p.reste + (p.actif && !LIVE() ? (TEMPS.surcharges.reste || 0) : 0);
+  if(p.actif) TEMPS.actif = {qi:p.qi, champ:p.champ, total:total, reste:reste};
+  var ferme = p.fini ? (p.champ === "reflexion" ? "La réflexion de cette question est finie : son temps ne se change plus." : "Les deux tours de cette question sont finis : son temps de réponse ne se change plus.") : null;
+  return h("div", {className:"pilot-chrono-card" + (p.actif ? " actif" : "")},
+    h("div", {className:"label" + (p.actif ? " actif" : "")}, p.lbl),
+    h("div", {className:"v"}, p.actif ? reste + "s" : total + "s"),
+    h("div", {className:"desc"}, p.sous),
+    h("div", {className:"inline-edit t-edit"},
+      h(ChampTemps, {v:total, qi:p.qi, champ:p.champ, actif:p.actif, attrs:{disabled:!!ferme, "data-q":p.qi + 1, "data-temps":p.champ, "aria-label":"Temps " + p.lbl,
+        title:ferme || (p.champ === "reflexion" ? "Tape le temps de réflexion de cette question, en secondes. La fin prévue suit." : "Tape le temps de réponse de cette question, en secondes : il vaut pour chaque tour et pour la lecture à la correction. La fin prévue suit.")}}),
+      h("span", {className:"t-s"}, "s"),
+      [5, 10, 30].map(function(n){ return h("button", {key:n, className:"btn btn-ghost btn-sm t-plus", "data-local":"1", disabled:!!ferme,
+        title:ferme || ("Ajoute " + n + " s au temps de " + (p.champ === "reflexion" ? "réflexion" : "réponse") + " de cette question" + (p.actif ? ", tout de suite au chrono en cours" : "") + ". La fin prévue suit."), onClick:function(){ tempsAjouter(p.qi, p.champ, n, p.actif); }}, "+" + n); })));
+}
+function ColonneTempsH(p){   // la réflexion et la réponse de la question en cours, et la fin prévue
+  var qi = p.qi;
+  var finiRef = p.phase !== "reflexion", finiRep = p.phase === null && p.close;
+  return h(F, null,
+    h("div", {className:"pilot-chronos-info"},
+      h(TempsCarteH, {lbl:"🧠 Réflexion", champ:"reflexion", qi:qi, reste:p.reste, actif:p.phase === "reflexion", fini:finiRef && p.qiPosee, sous:p.phase === "reflexion" ? "EN COURS" : "pour cette question"}),
+      h(TempsCarteH, {lbl:"✋ Réponse", champ:"reponse", qi:qi, reste:p.reste, actif:p.phase === "reponse", fini:finiRep, sous:p.phase === "reponse" ? (p.tour === 1 ? "1er tour" : "2e tour") + " · EN COURS" : "par tour"})),
+    h(FinPrevueC));
+}
+function TempsMiniH(p){
+  useTemps();
+  var t = tempsDe(p.qi);
+  function champ(c, lbl, nom){ return h("label", {className:"tm-l"}, lbl, h(ChampTemps, {v:t[c], qi:p.qi, champ:c, actif:false, attrs:{"data-q":p.qi + 1, "data-temps":c,
+    title:"Le temps de " + nom + " de la question " + (p.qi + 1) + ", pour cette séance : l'évaluation elle-même ne change pas. La fin prévue suit."}}), "s"); }
+  return h("div", {className:"tm"}, champ("reflexion", "🧠 ", "réflexion"), champ("reponse", "✋ ", "réponse"));
+}
+// « ⏸️ Pause » / « ▶️ Reprendre » et « 🔄 Relancer chrono » : en direct, la séance elle-même (etape2.js garde ceux de la maquette)
+function BoutonPauseH(p){
+  if(!LIVE()) return h(p && p.tel ? BoutonPauseTel : BoutonPause);
+  var enPause = momH().ph === "pause" || !!momH().paused;
+  return h("button", {className:p && p.tel ? "tel-btn tb-ghost tb-small" : "btn btn-or", "data-local":"1", title:enPause ? BULLES["▶️ Reprendre"] : BULLES["⏸️ Pause"],
+    onClick:function(){ agir(enPause ? "reprendre" : "pause"); }}, enPause ? "▶️ Reprendre" : "⏸️ Pause");
+}
+function relancerChrono(){ if(LIVE()) agir("relancerChrono"); else document.dispatchEvent(new Event("maquette-relancer")); }
+function BoutonRelancerH(){
+  if(!LIVE()) return h(BoutonRelancer);
+  return h("button", {className:"btn btn-ghost", "data-local":"1", title:BULLES["🔄 Relancer chrono"], onClick:relancerChrono}, "🔄 Relancer chrono");
+}
+
 /* ════════ Le pilotage pendant les questions ════════ */
-function nonRepondus(){ return (MOM().sansRep || []).length; }
+function nonRepondus(){ return (momH().sansRep || []).length; }
+// la première question pas écartée après qi (ou la première de l'évaluation)
+function suivanteQ(qi){ var ec = momH().ecartees || []; return toutesQ().filter(function(q){ return ec.indexOf(q) < 0 && (qi == null || q > qi); })[0]; }
 function Pilot(s){
   s = s || etatPilot();
-  var m = MOM(), k = MO();
+  var m = momH(), k = MO();
   var ec = s.ecartees || {}, nbQ = EV.questions.length - Object.keys(ec).length;
-  var restantes = [0, 1, 2].filter(function(q){ return !ec[q] && (s.qi == null || q > s.qi); });
+  var restantes = toutesQ().filter(function(q){ return !ec[q] && (s.qi == null || q > s.qi); });
   var derniere = s.qi != null && restantes.length === 0;
   var suivante = restantes.length ? restantes[0] : null;
   var st, statusCls = s.phase;
@@ -84,22 +282,24 @@ function Pilot(s){
   else if(s.phase === "reponse") st = h(F, null, "✋ Phase RÉPONSE — " + (s.tour === 1 ? "1er" : "2e") + " tour", h("span", {className:"tour-chip"}, (coteDuTour(s.qi, s.tour) === "g" ? "moitiés de gauche" : "moitiés de droite")));
   else st = derniere ? "✅ Dernière question close — lance l'autoévaluation" : "⏸️ Question close — passe à la suivante";
   var actions;
-  if(s.phase === "idle") actions = [h("button", {key:1, className:"btn btn-primary", "data-va":"c-q1-reflexion"}, "▶️ Lancer Q1")];
-  else if(s.phase === "reflexion") actions = [h("button", {key:1, className:"btn btn-vert", "data-va":"c-q1-tour1"}, "✋ Autoriser la réponse"), h(BoutonPause, {key:2}), h(BoutonRelancer, {key:3})];
-  else if(s.phase === "reponse") actions = [s.tour === 1 ? h("button", {key:1, className:"btn btn-vert", "data-va":"c-q1-tour2"}, "⏭️ Tour suivant") : h("button", {key:1, className:"btn btn-or", "data-va":s.qi === 2 ? "c-q3-close" : s.qi === 1 ? "c-q2-close" : "c-q1-close"}, "🔒 Clore la question"), h(BoutonPause, {key:2}), h(BoutonRelancer, {key:3})];
+  // (QCM-2) en direct, chaque bouton fait avancer la séance (ACT) ; dans la maquette, il mène à la scène qui le montre
+  var vaLancer = suivante === 1 ? (Object.keys(s.ecartees || {}).length ? "t-q2-ecartee" : "t-q2-reflexion") : "t-q3-tour1";
+  if(s.phase === "idle") actions = [h("button", Object.assign({key:1, className:"btn btn-primary"}, geste("c-q1-reflexion", "lancerQuestion", suivanteQ(null))), "▶️ Lancer Q1")];
+  else if(s.phase === "reflexion") actions = [h("button", Object.assign({key:1, className:"btn btn-vert"}, geste("c-q1-tour1", "autoriserReponse")), "✋ Autoriser la réponse"), h(BoutonPauseH, {key:2}), h(BoutonRelancerH, {key:3})];
+  else if(s.phase === "reponse") actions = [s.tour === 1 ? h("button", Object.assign({key:1, className:"btn btn-vert"}, geste("c-q1-tour2", "tourSuivant")), "⏭️ Tour suivant") : h("button", Object.assign({key:1, className:"btn btn-or"}, geste(s.qi === 2 ? "c-q3-close" : s.qi === 1 ? "c-q2-close" : "c-q1-close", "cloreQuestion")), "🔒 Clore la question"), h(BoutonPauseH, {key:2}), h(BoutonRelancerH, {key:3})];
   else {
     var nr = nonRepondus();
-    var rouvrir = nr ? h("button", {key:2, className:"btn btn-ghost", "data-va":"c-rouvrir-tous"}, "🔓 Rouvrir pour tous")
+    var rouvrir = nr ? h("button", Object.assign({key:2, className:"btn btn-ghost"}, fen("c-rouvrir-tous", "rouvrirTous", s.qi)), "🔓 Rouvrir pour tous")
                      : h("button", {key:2, className:"btn btn-ghost", disabled:true, title:"Tous les présents ont répondu à cette question : il n'y a personne à rouvrir. Une réponse donnée est définitive."}, "🔓 Rouvrir pour tous");
-    actions = !derniere ? [h("button", {key:1, className:"btn btn-primary", "data-va":suivante === 1 ? (Object.keys(s.ecartees || {}).length ? "t-q2-ecartee" : "t-q2-reflexion") : "t-q3-tour1"}, "▶️ Lancer Q" + (suivante + 1)), rouvrir]   // (relecteur n°64) après l'écart de Q3, la suite compte sans elle
-                        : [h("button", {key:1, className:"btn btn-or", "data-va":"c-estim"}, "📊 Lancer l'autoévaluation"), rouvrir];
+    actions = !derniere ? [h("button", Object.assign({key:1, className:"btn btn-primary"}, geste(vaLancer, "lancerQuestion", suivante)), "▶️ Lancer Q" + (suivante + 1)), rouvrir]   // (relecteur n°64) après l'écart de Q3, la suite compte sans elle
+                        : [h("button", Object.assign({key:1, className:"btn btn-or"}, geste("c-estim", "lancerEstimation")), "📊 Lancer l'autoévaluation"), rouvrir];
   }
   var enCours = s.phase === "reflexion" || s.phase === "reponse";
   var qn = suivante == null ? null : EV.questions[suivante], tn = suivante == null ? null : tempsDe(suivante);
   var rangSuiv = suivante == null ? null : suivante + 1 - Object.keys(ec).filter(function(x){ return +x < suivante; }).length;
   var colG = h("div", null,
     h("div", {className:"pilot-status " + statusCls, title:TITRES_STATUT[s.phase]}, st),
-    h(ColonneTemps, {key:"t" + s.qi + s.phase + (s.tour || ""), qi:s.qi == null ? 0 : s.qi, phase:enCours ? s.phase : null, tour:s.tour, reste:s.chrono || 0, close:s.phase === "attente", qiPosee:s.qi != null}),
+    h(ColonneTempsH, {key:"t" + s.qi + s.phase + (s.tour || ""), qi:s.qi == null ? (suivante == null ? 0 : suivante) : s.qi, phase:enCours ? s.phase : null, tour:s.tour, reste:s.chrono || 0, close:s.phase === "attente", qiPosee:s.qi != null}),
     s.qi != null && QCourante(s.qi),
     h("div", {className:"pilot-actions"}, actions),
     qn && h("div", {className:"pilot-q-next-detail"},
@@ -108,68 +308,78 @@ function Pilot(s){
       h("div", {style:{fontSize:".72rem", color:"var(--gris)", fontStyle:"italic"}}, "Difficulté " + NIV[qn.niveau].label + " · réflexion " + tn.reflexion + " s · réponse " + tn.reponse + " s par tour · " + bonnesRep(qn.bonnes.length))));
   var colM = h("div", null,
     h("h3", {style:{margin:"0 0 .2rem"}}, "📱 Tablettes", InfoI("Chaque tablette, ses deux moitiés : qui est assis où, et où en est chacun. « 👁 » montre les deux moitiés en direct. Glisse un nom sur un autre pour échanger deux élèves : pendant la séance, ils changent de tablette et retapent leur code ; leurs réponses les suivent."), h("span", {style:{fontWeight:400, display:"block", fontSize:".8rem", color:"#475569", margin:".1rem 0 0"}}, s.sousTitre || "")),
-    GrilleTablettes(s.paires || pairesDuMoment(), s.etat),
+    GrilleTablettes(s.paires || pairesDuMoment(), s.etat, LIVE() ? {deplacer:true} : null),
     Legende(s.legende || LEG_Q));
   return Console("pilotage", "pilot", h("div", {className:"card"},
     TitreCarte("🎯 " + EV.titre + " — " + CLASSE, [
       h("span", {key:0, style:{fontSize:".8rem", color:"var(--gris)", fontWeight:700}}, "🕙 Fin de l'heure : " + SCN.finHeure(k)),
-      h("button", {key:1, className:"btn btn-ghost btn-sm", "data-va":"c-depart"}, "🚫 Départ d'un élève"),
+      h("button", Object.assign({key:1, className:"btn btn-ghost btn-sm"}, fen("c-depart", "depart")), "🚫 Départ d'un élève"),
       // (relecteurs n°62, 100, 101) un geste qui n'a personne sur qui agir est fermé, et dit pourquoi
-      Object.keys(m.partis || {}).length ? h("button", {key:2, className:"btn btn-ghost btn-sm", "data-va":"c-retour"}, "↩️ Retour d'un élève")
+      Object.keys(m.partis || {}).length ? h("button", Object.assign({key:2, className:"btn btn-ghost btn-sm"}, fen("c-retour", "retour")), "↩️ Retour d'un élève")
         : h("button", {key:2, className:"btn btn-ghost btn-sm", disabled:true, title:"Personne n'est parti pendant cette séance : il n'y a personne à faire revenir."}, "↩️ Retour d'un élève"),
-      s.phase === "attente" && nonRepondus() > 0 ? h("button", {key:4, className:"btn btn-ghost btn-sm", "data-va":"c-rouvrir-un"}, "🔓 Rouvrir pour un élève")
+      s.phase === "attente" && nonRepondus() > 0 ? h("button", Object.assign({key:4, className:"btn btn-ghost btn-sm"}, fen("c-rouvrir-un", "rouvrirUn", s.qi)), "🔓 Rouvrir pour un élève")
         : h("button", {key:4, className:"btn btn-ghost btn-sm", disabled:true, title:enCours ? "La question en cours n'est pas close : « 🔓 Rouvrir pour un élève » s'ouvre une fois close, pour ceux qui n'ont pas répondu." : s.phase === "attente" ? "Tous les présents ont répondu à cette question : il n'y a personne à rouvrir." : "Aucune question n'est encore close : il n'y a rien à rouvrir."}, "🔓 Rouvrir pour un élève"),
-      h("button", {key:5, className:"btn btn-ghost btn-sm", "data-va":"c-finir-autre-heure"}, "⏸️ Finir à une autre heure"),
-      h("button", {key:3, className:"btn btn-rouge btn-sm", "data-va":"c-terminer"}, "🛑 Terminer la séance")]),
+      h("button", Object.assign({key:5, className:"btn btn-ghost btn-sm"}, fen("c-finir-autre-heure", "finir")), "⏸️ Finir à une autre heure"),
+      h("button", Object.assign({key:3, className:"btn btn-rouge btn-sm"}, fen("c-terminer", "terminer")), "🛑 Terminer la séance")]),
     h("div", {className:"pilot-stats"}, s.stats.map(function(x, i){ return h("div", {key:i, className:"pilot-stat", title:TITRES_STATS[x[1]]}, h("div", {className:"v"}, x[0]), h("div", {className:"l"}, x[1])); })),
     h("div", {className:"pilot-grid v2"}, colG, colM, Overview(s.qi, s.passees || [], s))), true);
 }
 
 /* ── Avant la question 1 : qui est entré, où en est chaque attestation ── */
+// l'heure de la dernière coche d'une attestation (1 ou 2) : en direct, celle de la séance ; dans la maquette, celle du scénario
+function heureAttestH(p, n){
+  if(!LIVE()) return SCN.heureAttest(p, n);
+  var a = typeof SCN.attest === "function" ? SCN.attest(p, n) : null, t = a && (typeof a.fini === "number" ? a.fini : a.ms);
+  if(!t) return "";
+  var d = new Date(t); return (d.getHours() < 10 ? "0" : "") + d.getHours() + ":" + (d.getMinutes() < 10 ? "0" : "") + d.getMinutes();
+}
 function PilotPret(){
-  var m = MOM(), c = SCN.compteurs(MO());
+  var m = momH(), c = SCN.compteurs(MO());
   var pe = m.pasEntres || [], ae = m.attestEnCours || {};
   return Pilot({phase:"idle", qi:null, stats:[[fr2(c.connectes), "connectés"], [fr2(c.attestations), "attestations"], [fr2(c.repondu), "ont répondu"], ["—", "justes"], ["—", "question"]],
     // (changement 1) « qui est assis où… » est dit par le « i » des tablettes : plus de sous-titre qui l'explique
     legende:[["#E8F5E9","✓ prêt : toutes les lignes cochées"],["#FEF3C7","attestation en cours : lignes cochées sur 8"],["#F1F5F9","pas encore entré"]],
-    etat:function(p){ return ae[p] ? {cls:"m-attest", st:"attestation " + ae[p] + "/8"} : pe.indexOf(p) >= 0 ? {cls:"m-connexion", st:"pas encore " + (SCN.SEXE[p] === "F" ? "entrée" : "entré")} : {cls:"m-pret", st:"✓ prêt · " + SCN.heureAttest(p, 1)}; }});
+    etat:function(p){ var hA = heureAttestH(p, 1); return ae[p] != null ? {cls:"m-attest", st:"attestation " + ae[p] + "/8"} : pe.indexOf(p) >= 0 ? {cls:"m-connexion", st:"pas encore " + (sexeH(p) === "F" ? "entrée" : "entré")} : {cls:"m-pret", st:"✓ prêt" + (hA ? " · " + hA : "")}; }});
 }
 
 /* ── La seconde attestation, côté console ── */
 function PilotAttest2(){
-  var k = MO(), m = MOM(), c = SCN.compteurs(k), enCours = m.enCours || {};
+  var k = MO(), m = momH(), c = SCN.compteurs(k), enCours = m.enCours || {};
   var manquent = Object.keys(enCours).map(nomDe);
-  var etat = function(p){ return enCours[p] ? {cls:"m-attest", st:"attestation " + enCours[p] + "/5"} : {cls:"m-pret", st:"✓ prêt · " + SCN.heureAttest(p, 2)}; };
-  var q2 = SCN.ORDRE_CORR[0], b = bilanQ(q2, k);
+  var etat = function(p){ var hA = heureAttestH(p, 2); return enCours[p] != null ? {cls:"m-attest", st:"attestation " + enCours[p] + "/5"} : {cls:"m-pret", st:"✓ prêt" + (hA ? " · " + hA : "")}; };
+  var q2 = ORDRE_CORR[0], b = bilanQ(q2, k), prets = c.prets || [c.presents - manquent.length, c.presents];
   return Console("pilotage", "pilot", h("div", {className:"card"},
     TitreCarte(h(F, null, "📝 Correction — " + EV.titre + " — " + CLASSE, InfoI("Avant la correction, chaque moitié montre la seconde attestation, une coche par ligne. La correction commence quand tous les présents l'ont cochée en entier, comme au début.")),
-      [h("button", {key:0, className:"btn btn-ghost btn-sm", "data-va":"c-depart"}, "🚫 Départ d'un élève"), h("button", {key:5, className:"btn btn-ghost btn-sm", "data-va":"c-finir-autre-heure"}, "⏸️ Finir à une autre heure"), h("button", {key:1, className:"btn btn-rouge btn-sm", "data-va":"c-terminer"}, "🛑 Terminer la séance")]),
-    h("div", {className:"pilot-status correction"}, "✍️ Seconde attestation — " + c.prets[0] + " / " + c.prets[1] + " prêts"),
+      [h("button", Object.assign({key:0, className:"btn btn-ghost btn-sm"}, fen("c-depart", "depart")), "🚫 Départ d'un élève"), h("button", Object.assign({key:5, className:"btn btn-ghost btn-sm"}, fen("c-finir-autre-heure", "finir")), "⏸️ Finir à une autre heure"), h("button", Object.assign({key:1, className:"btn btn-rouge btn-sm"}, fen("c-terminer", "terminer")), "🛑 Terminer la séance")]),
+    h("div", {className:"pilot-status correction"}, "✍️ Seconde attestation — " + prets[0] + " / " + prets[1] + " prêts"),
     h("div", {className:"corr-grid"},
       h("div", null,
-        h("div", {className:"row", style:{marginTop:".2rem"}}, h("button", {className:"btn btn-primary ferme", disabled:manquent.length > 0, title:"S'ouvre quand les " + c.presents + " présents ont coché toutes les lignes de la seconde attestation. Il en manque " + manquent.length + "."}, "🔒 ▶️ Commencer la correction")),
+        h("div", {className:"row", style:{marginTop:".2rem"}}, manquent.length > 0 || !LIVE()
+          ? h("button", {className:"btn btn-primary ferme", disabled:manquent.length > 0, title:"S'ouvre quand les " + c.presents + " présents ont coché toutes les lignes de la seconde attestation. Il en manque " + manquent.length + "."}, "🔒 ▶️ Commencer la correction")
+          : h("button", Object.assign({className:"btn btn-primary", title:"Commence la correction, par la question la plus ratée sur les tablettes."}, geste(null, "lancerCorrection")), "▶️ Commencer la correction")),
         manquent.length > 0 && h("div", {className:"manquent"},
           h("div", {className:"tt"}, "La correction commence quand les " + c.presents + " présents ont coché la seconde attestation. Il en manque " + manquent.length + " :"),
           h("div", {className:"noms"}, manquent.join(" · "))),
-        h("div", {className:"pilot-eleve-help"}, "La correction commence par Q" + (q2 + 1) + ", la plus ratée sur les tablettes (" + b.justes + " / " + b.repondu + " justes).")),
+        q2 != null && h("div", {className:"pilot-eleve-help"}, "La correction commence par Q" + (q2 + 1) + ", la plus ratée sur les tablettes (" + b.justes + " / " + b.repondu + " justes).")),
       h("div", {className:"suivi-box"},
         h("h3", null, "✍️ La seconde attestation", InfoI("Où en est chacun : les lignes cochées sur 5, et l'heure de la dernière coche, gardée comme au début.")),
-        h("div", {className:"ss"}, c.prets[0] + " / " + c.prets[1] + " prêts"),
+        h("div", {className:"ss"}, prets[0] + " / " + prets[1] + " prêts"),
         GrilleTablettes(PAIRES, etat),
         Legende([["#E8F5E9","✓ prêt : les 5 lignes cochées"],["#FEF3C7","attestation en cours : lignes cochées sur 5"]])))), true);
 }
 
 /* ── L'estimation, côté console (444) : la répartition des estimations déjà faites ── */
 function PilotEstimation(){
-  var k = MO(), m = MOM(), c = SCN.compteurs(k), pas = m.pasEstime || [];
+  var k = MO(), m = momH(), c = SCN.compteurs(k), pas = m.pasEstime || [];
   var dist = {vert:0, bleu:0, orange:0, rouge:0};
-  SCN.presents(k).forEach(function(p){ if(pas.indexOf(p) < 0 && SCN.ESTIM[p]) dist[SCN.ESTIM[p]]++; });
+  SCN.presents(k).forEach(function(p){ var e = LIVE() ? ESTIM[p] : SCN.ESTIM[p]; if(pas.indexOf(p) < 0 && e && dist[e] != null) dist[e]++; });
+  var estime = c.estime || [c.presents - pas.length, c.presents];
   return Console("pilotage", "pilot", h("div", {className:"card"},
     TitreCarte(h(F, null, "📊 Autoévaluation — " + EV.titre + " — " + CLASSE, InfoI("Chaque élève dit combien de bonnes réponses il pense avoir. Cette estimation sert à savoir s'il se surévalue, se sous-évalue ou s'évalue correctement ; son bilan la compare à sa note.")),
-      [h("button", {key:5, className:"btn btn-ghost btn-sm", "data-va":"c-finir-autre-heure"}, "⏸️ Finir à une autre heure"), h("button", {key:1, className:"btn btn-rouge btn-sm", "data-va":"c-terminer"}, "🛑 Terminer la séance")]),
-    h("div", {className:"pilot-status autoeval"}, "Phase autoévaluation — " + c.estime[0] + " / " + c.estime[1] + " élèves", InfoIB("Phase autoévaluation", "Les élèves choisissent dans quelle fourchette ils estiment avoir réussi.")),
+      [h("button", Object.assign({key:5, className:"btn btn-ghost btn-sm"}, fen("c-finir-autre-heure", "finir")), "⏸️ Finir à une autre heure"), h("button", Object.assign({key:1, className:"btn btn-rouge btn-sm"}, fen("c-terminer", "terminer")), "🛑 Terminer la séance")]),
+    h("div", {className:"pilot-status autoeval"}, "Phase autoévaluation — " + estime[0] + " / " + estime[1] + " élèves", InfoIB("Phase autoévaluation", "Les élèves choisissent dans quelle fourchette ils estiment avoir réussi.")),
     h("div", {className:"autoeval-prof-distrib"}, MAITRISE.map(function(mt){
       return h("div", {key:mt.k, className:"autoeval-prof-cell fourchette-" + mt.k}, h("span", null, mt.em + " " + mt.lib), h("strong", null, dist[mt.k])); })),
     pas.length > 0 && h("div", {style:{fontSize:".85rem", color:"var(--gris)"}}, "Pas encore : " + pas.map(nomDe).join(", ") + "."),
-    h("div", {className:"row", style:{marginTop:"1rem"}}, h("button", {className:"btn btn-or", "data-va":"c-attest2", title:"Ferme l'estimation et ouvre, sur chaque moitié, la seconde attestation, avant la première question à corriger."}, "📝 Lancer la correction"))), true);
+    h("div", {className:"row", style:{marginTop:"1rem"}}, h("button", Object.assign({className:"btn btn-or", title:"Ferme l'estimation et ouvre, sur chaque moitié, la seconde attestation, avant la première question à corriger."}, geste("c-attest2", "lancerCorrection")), "📝 Lancer la correction"))), true);
 }

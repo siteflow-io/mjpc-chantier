@@ -20275,3 +20275,35 @@ Réponse mot pour mot :
 815. **Ma proposition, dans ta règle du 10/10 (un seul audit, en échange des gardes).** Le complément 4 fait déjà faire ma lecture par l'exécutant avant qu'il livre. Mon audit devient : lire ses preuves et dire ce qu'elles contiennent, vérifier par le geste que chaque défaut de la fois d'avant a disparu, regarder ses captures, et refaire au hasard une petite part de sa lecture. Si cet échantillon trouve un défaut, la livraison ne va pas, et le défaut entre dans ses gardes. Le « ça va » reste fiable, parce que ses gardes contiennent ma lecture et que l'échantillon vérifie qu'elles disent vrai. Je ne sais pas encore combien de temps cela prendra : je le mesurerai sur la v9. Si tu dis « ok », je fais ainsi, et je le propose à C13 par une note au sas.
 
 12/10/2026 09:48 MEMO
+
+---
+
+## TOUR 661 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (12/10, 09:52) il faut trouver un moyen pour attraper les défauts des livraisons des exécutants, sans avoir à tout refaire.
+
+---
+
+## TOUR 661 — Claude (conscience n°12)
+
+Relu les audits des tours 638, 640, 645, 654 et 656 (ce que les bancs n'avaient pas vu) ; mesuré, le relevé des textes de 66 écrans des v7 et v8 a pris moins de deux minutes (07:33 à 07:35).
+
+Réponse mot pour mot :
+
+816. **D'abord, ce qui a échappé à chaque fois.** Les défauts que ses bancs n'ont pas vus, de la v5 à la v8, ont une cause commune : l'exécutant écrit à la fois la maquette et les vérifications. Son banc vérifie donc ce qu'il a compris, pas ce que tu as cadré. Exemples : en v5, MJPC avait perdu des boutons du vrai site, et son banc ne regardait pas le vrai site ; en v7, un clic menait au mauvais élève, et son banc trouvait juste la destination qu'il avait lui-même écrite ; en v8, il n'a joué que les écrans qu'il connaissait. Une part vient de moi : quand je décris une vérification avec des mots, il en code sa lecture.
+
+817. **Moyen 1 : c'est moi qui écris, avant le mandat, ce qui doit être vrai, et l'exécutant ne peut pas y toucher.** Ce n'est pas une description : c'est un fichier de contrôles, tiré du cadrage, par exemple « au rattrapage, Adam est présent et seul », « après la lecture du soir, Lou a 1 / 3 partout ». Je le dépose au sas avec son empreinte. L'exécutant doit le faire passer ; à l'audit, je vérifie l'empreinte et ce que la sortie contient. Je l'écris une fois, au cadrage, et non à chaque audit.
+
+818. **Moyen 2 : je n'audite que ce qui a changé.** Je relève le texte et l'image de chaque écran des deux versions, ce qui est rapide (mesuré : moins de deux minutes pour 66 écrans, dans les deux versions). Je ne lis ensuite que les écrans qui ont changé, et ceux qui devaient changer et n'ont pas bougé. Le reste a déjà été audité.
+
+819. **Moyen 3 : des relecteurs à froid, chez l'exécutant, avant qu'il livre.** Il lance des relecteurs séparés qui n'ont jamais vu son travail : ils n'ont que le cadrage et la maquette, et ils cliquent comme toi. C'est ce qui a trouvé les 325 défauts de la v7. Cela tourne sur son temps, pas sur le tien.
+
+820. **Mon audit devient court** : l'empreinte et la sortie des contrôles, les écrans qui ont changé, un échantillon pris au hasard. Si un défaut passe quand même, il devient un contrôle du fichier du moyen 1 : le même défaut ne passe jamais deux fois.
+
+821. **Pour la v9**, l'exécutant est en plein mandat et ne s'arrête pas : je n'y ajoute rien. J'audite la v9 avec les moyens 2 et 1 : mes contrôles des neuf défauts, puis les écrans changés et un échantillon. Les trois moyens entrent dans les mandats de code de MJPC et du QCM.
+
+822. **Si tu dis « ok »**, je l'écris dans le protocole au sas, avec une note pour C13, et je fais l'audit de la v9 ainsi.
+
+12/10/2026 09:53 MEMO

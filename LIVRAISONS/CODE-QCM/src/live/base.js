@@ -252,8 +252,22 @@ var SCN = (function(){
     S.corrigeesAu(null, sid).some(function(qi){ var q = ev.questions[qi], lu = S.lecture(x, qi, sid), rep = S.reponse(x, qi, sid);
       if(lu && lu.choix !== "aucun" && !juste(lu.choix, q) && rep && juste(rep.choix, q)){ r = qi; return true; } return false; });
     return r; };
+  function partiel(choix, q){ if(!choix || choix === "aucun" || !(q.bonnes || []).length) return 0; var b = q.bonnes.map(Number), bon = 0, mauvais = 0;
+    choix.forEach(function(c){ if(b.indexOf(Number(c)) >= 0) bon++; else mauvais++; }); return Math.max(0, bon - mauvais) / b.length; }
+  // une séance de la 7.7.1 (sans deroule) : la note se lit avec ce qu'elle a — la recopie de la feuille (papier/<slug>/choix), sinon la tablette
+  function noteAncienne(x, s, ev){
+    var pap = ((s.papier || {})[x] || {}).choix, st = [], pts = [];
+    if(pap && !Array.isArray(pap)) pap = Object.keys(pap).map(function(k){ return pap[k]; });
+    ev.questions.forEach(function(q, qi){ var c = pap ? (pap[qi] ? (Array.isArray(pap[qi]) ? pap[qi] : Object.values(pap[qi])).map(Number) : []) : ((S.reponse(x, qi, s.id) || {}).choix || null);
+      if(c == null){ st.push("f"); pts.push(0); return; }
+      if(juste(c, q)){ st.push("j"); pts.push(1); } else { st.push("f"); pts.push(ev.mode === "partiel" ? partiel(c, q) : 0); } });
+    var n = pts.reduce(function(a, b){ return a + b; }, 0), total = ev.questions.length, sur20 = total ? n * 20 / total : 0, comp = {};
+    ev.questions.forEach(function(q, qi){ (q.competences || []).forEach(function(c){ comp[c] = comp[c] || {n:0, max:0}; comp[c].max++; comp[c].n += pts[qi]; }); });
+    return {p:x, st:st, pts:pts, n:n, total:total, complet:true, sur20:sur20, maitrise:S.maitriseDe(Math.round(sur20 * 10) / 10), comp:comp, corrigees:[], annulees:[], ecartees:[], trouvee:null, ancienne:true};
+  }
   S.note = function(x, k, sid){
     var s = S.sess(sid), ev = S.evalDeSeance(sid || S.sid()); if(!s || !ev) return null;
+    if(!s.deroule && !s.lancee) return noteAncienne(x, s, ev);
     var an = S.annulees(sid), ec = S.ecartees(sid), corr = S.corrigeesAu(k, sid), lanc = S.lancees(sid);
     var papier = s.lancee && s.lancee.mode === "papier", tr = papier ? null : S.trouveeCalculee(x, sid), st = [], pts = [];
     ev.questions.forEach(function(q, qi){
@@ -267,7 +281,8 @@ var SCN = (function(){
       if(lu.choix === "aucun"){ st.push("a"); pts.push(0); return; }
       if(juste(lu.choix, q)){ st.push("j"); pts.push(1); return; }
       if(tr === qi){ st.push("t"); pts.push(1); return; }
-      st.push("f"); pts.push(0);
+      // en mode partiel, une fraction du point par bonne case, autant de retiré par mauvaise, plancher 0 (cadrage, 288 à 293)
+      st.push("f"); pts.push(ev.mode === "partiel" ? partiel(lu.choix, q) : 0);
     });
     var compte = ev.questions.map(function(q, i){ return i; }).filter(function(i){ return an.indexOf(i) < 0 && ec.indexOf(i) < 0 && st[i] !== "x"; });
     var n = compte.reduce(function(a, i){ return a + (pts[i] || 0); }, 0), total = compte.length;

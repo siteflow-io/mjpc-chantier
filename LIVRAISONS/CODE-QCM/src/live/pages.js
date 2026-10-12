@@ -96,7 +96,7 @@ function TabletteLive(){
   if(ELV.tab && ELV.sid && SCN.sid() !== ELV.sid){ ELV.oublier(); ELV.sid = SCN.sid(); }
   if(!classe) return h(ChoixClasse);
   if(!ELV.n) return EcrCombienLive();
-  if(ELV.n === 1){ var x1 = ELV.cotes.g; return h("div", {className:"tablette seule"}, h("div", {className:"moitie g"}, x1 ? MOITIES.ecran(eleveDe(x1), "g") : h(LoginLive, {cote:"g", key:"lg"}))); }
+  if(ELV.n === 1){ var x1 = ELV.cotes.g; return h("div", {className:"tablette seule" + (x1 ? "" : " seule-login")}, h("div", {className:"moitie g"}, x1 ? MOITIES.ecran(eleveDe(x1), "g") : h(LoginLive, {cote:"g", key:"lg"}))); }
   var g = ELV.cotes.g, d = ELV.cotes.d;
   return Tablette(g ? MOITIES.ecran(eleveDe(g), "g") : h(LoginLive, {cote:"g", key:"lg"}), d ? MOITIES.ecran(eleveDe(d), "d") : h(LoginLive, {cote:"d", key:"ld"}));
 }

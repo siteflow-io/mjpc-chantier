@@ -1,0 +1,4 @@
+/* QCM-1 · SOCLE — les retouches de style du socle. Une tablette à un seul élève : l'entrée (« 👋 Identifie-toi ») tient dans une demi-tablette,
+   au centre, comme sur une tablette à deux (le clavier de l'app y garde sa taille) ; ensuite, l'élève seul a toute la tablette (c3.css). */
+.tablette.seule.seule-login{justify-content:center;background:var(--fond, #F5F3FF)}
+.tablette.seule.seule-login .moitie{flex:0 0 50%;max-width:50%}

@@ -21,6 +21,11 @@ function verif(ok, quoi, detail){ nb++; if(!ok) ko++; R.push((ok ? "  ok     " :
   B.tree.qcm.evaluations = Object.assign({}, B.tree.qcm.evaluations, {essai: ev});
   B.tree.qcm.settings.durees = {decompte: 1, b: 2};
   B.tree.taxonomie = {competences: TAXO};
+  // une séance de la 7.7.1, terminée : sa forme d'avant (phase, qIdx, etat « terminee », reponses, papier, autoevals), sans deroule
+  B.tree.classes["3 ANCIENNE"] = {nom: "3 ANCIENNE", niveau: "3e", archivee: false, eleves: ["ABRIAL Julien", "BAUDRY Léa", "CARRÉ Tom"]};
+  B.tree.qcm.sessions = {sess_1791000000000: {classeSlug: "3 ANCIENNE", evalId: "essai", date: 1791000000000, phase: "finie", qIdx: 2, etat: "terminee",
+    absents: ["yvon_adam"], reponses: {0: {abrial_julien: {choix: [2], ts: 1}}, 1: {abrial_julien: {choix: [1], ts: 2}}, 2: {abrial_julien: {choix: [1], ts: 3}}},
+    papier: {baudry_lea: {choix: [[2], [0, 2], [0]], ts: 4}}, autoevals: {abrial_julien: "vert"}}};
   const srv = await startServer(B.tree, PORT, () => {});
   const nav = await chromium.launch({executablePath: "/opt/pw-browsers/chromium"});
   const err = [];
@@ -33,6 +38,9 @@ function verif(ok, quoi, detail){ nb++; if(!ok) ko++; R.push((ok ? "  ok     " :
   try {
     const prof = await ouvrir("?mode=prof");
     // le lancement : les binômes (pas de QCM précédent : l'ordre alphabétique), puis l'appel (Adam absent)
+    // la séance de la 7.7.1 se lit avec ce qu'elle a : la tablette de Julien (2 / 3), la recopie de la feuille de Léa (3 / 3)
+    const anc = await prof.evaluate(() => ({j: SCN.note("abrial_julien", null, "sess_1791000000000"), l: SCN.note("baudry_lea", null, "sess_1791000000000"), e: SCN.etat("sess_1791000000000"), se: SCN.seance("sess_1791000000000")}));
+    verif(anc.j.n === 2 && anc.j.total === 3 && anc.l.n === 2 && anc.e.ph === "fin" && anc.se.fin, "une séance de la 7.7.1 se lit : Julien 2 / 3 (tablette), Léa 2 / 3 (sa feuille recopiée : Q3 fausse), terminée", {j: anc.j.n, l: anc.l && anc.l.n, lst: anc.l && anc.l.st, e: anc.e, fin: anc.se && anc.se.fin});
     const sid = await prof.evaluate(() => ACT.lancerSeance("3 ESSAI", "essai", {}));
     verif(/^sess_/.test(sid) && base("sessionActive/3 ESSAI") === sid, "lancerSeance : la séance et sessionActive", base("sessionActive"));
     const s0 = base("sessions/" + sid);
@@ -92,7 +100,7 @@ function verif(ok, quoi, detail){ nb++; if(!ok) ko++; R.push((ok ? "  ok     " :
     await pause(150);
     verif(base("sessions/" + sid + "/deroule/ph") === "b", "⏭️ Tour suivant : B du 1er tour");
     await tab.evaluate(() => ELV.direB(0, "oui", "abrial_julien"));
-    await pause(2300 + 1100);
+    await pause(2300 + 1600);
     d = base("sessions/" + sid + "/deroule");
     verif(d.ph === "reponse" && d.tour === 2 && d.cote === "d", "après B et le passage : le 2e tour, la droite", d);
     const ordre = await tab.evaluate(() => SCN.ordreChoix("baudry_lea", 0));
@@ -108,16 +116,16 @@ function verif(ok, quoi, detail){ nb++; if(!ok) ko++; R.push((ok ? "  ok     " :
     await prof.evaluate(() => ACT.depart("maillard_noah"));
     await prof.evaluate(() => ACT.lancerQuestion(1));
     verif(base("sessions/" + sid + "/premier/1") === "d", "Q2 : la droite commence (on alterne)", base("sessions/" + sid + "/premier"));
-    await prof.evaluate(() => ACT.autoriserReponse()); await pause(1200);
+    await prof.evaluate(() => ACT.autoriserReponse()); await pause(1800);
     await tab.evaluate(() => ELV.repondre(1, [1], "baudry_lea"));
-    await prof.evaluate(() => ACT.tourSuivant()); await pause(2300 + 1100);
+    await prof.evaluate(() => ACT.tourSuivant()); await pause(2300 + 1600);
     await tab.evaluate(() => ELV.repondre(1, [0, 2], "abrial_julien"));
     await prof.evaluate(() => ACT.cloreQuestion()); await pause(2400);
     await prof.evaluate(() => ACT.retour("maillard_noah"));
     // Q3 : Julien juste, Léa fausse ; l'annulation et le remettre
-    await prof.evaluate(() => ACT.lancerQuestion(2)); await prof.evaluate(() => ACT.autoriserReponse()); await pause(1200);
+    await prof.evaluate(() => ACT.lancerQuestion(2)); await prof.evaluate(() => ACT.autoriserReponse()); await pause(1800);
     await tab.evaluate(() => ELV.repondre(2, [1], "abrial_julien"));
-    await prof.evaluate(() => ACT.tourSuivant()); await pause(3500);
+    await prof.evaluate(() => ACT.tourSuivant()); await pause(3900);
     await tab.evaluate(() => ELV.repondre(2, [0], "baudry_lea"));
     await prof.evaluate(() => ACT.cloreQuestion()); await pause(2400);
     await prof.evaluate(() => ACT.annuler(2)); verif(JSON.stringify(Object.values(base("sessions/" + sid + "/annulees") || {})) === "[2]", "⚠️ Annuler Q3 : annulees [2]", base("sessions/" + sid + "/annulees"));
@@ -184,10 +192,11 @@ function verif(ok, quoi, detail){ nb++; if(!ok) ko++; R.push((ok ? "  ok     " :
     // le soir : rendre les copies, Mes évaluations
     await prof.evaluate(s => ACT.rendreCopies(s), sid);
     const me = await prof.evaluate(() => SCN.mesEvaluations("abrial_julien", null, "3 ESSAI"));
-    verif(me.length === 1 && me[0].etat === "bilan" && me[0].note.n === 3, "Mes évaluations : la copie rendue, 3 / 3", me);
+    const me1 = me.filter(x => x.seance === sid)[0];
+    verif(me1 && me1.etat === "bilan" && me1.note.n === 3, "Mes évaluations : la copie rendue, 3 / 3", me);
     // la séance suivante : les binômes d'après ce QCM précédent (classement de la note)
     const bp = await prof.evaluate(() => SCN.binomesProposes("3 ESSAI"));
-    verif(bp[0][0] === "abrial_julien" || bp.length === 13, "les binômes suivants se forment sur le classement du QCM précédent", bp.slice(0, 3));
+    verif(bp[0][0] === "abrial_julien" && bp.length === 13, "les binômes suivants se forment sur le classement du QCM précédent (Julien, 3 / 3, en tête)", bp.slice(0, 3));
     verif(err.length === 0, "aucune erreur de page", err.slice(0, 3));
   } catch(e){ verif(false, "l'essai s'est arrêté", e.stack); }
   await nav.close(); await srv.close();

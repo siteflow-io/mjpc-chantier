@@ -1,0 +1,272 @@
+{
+ "titre": "4e- Chapitre 1 - Paris à la barre et analyse logique",
+ "chapitre": "4e-ch1",
+ "mode": "strict",
+ "questions": [
+  {
+   "enonce": "Que veut dire « comparaître » ?",
+   "choix": [
+    "Accuser quelqu'un devant un tribunal",
+    "Se présenter devant un tribunal",
+    "Défendre quelqu'un devant un tribunal",
+    "Juger quelqu'un devant un tribunal"
+   ],
+   "bonnes": [
+    1
+   ],
+   "niveau": "facile",
+   "reflexion": 10,
+   "reponse": 20,
+   "competences": [
+    "c4-lire-01"
+   ],
+   "verifie": "vérifier la question 1 du chapitre",
+   "explication": "Comparaître, c'est se présenter devant un tribunal. Au début du chapitre, Paris est citée à comparaître.",
+   "bonus": false,
+   "longueurAssumee": false
+  },
+  {
+   "enonce": "Quels mots du procès désignent des personnes ?",
+   "choix": [
+    "Un juré",
+    "La barre",
+    "Un avocat",
+    "Un dossier d'instruction",
+    "Une plaidoirie",
+    "Une accusation"
+   ],
+   "bonnes": [
+    0,
+    2
+   ],
+   "niveau": "standard",
+   "reflexion": 15,
+   "reponse": 20,
+   "competences": [
+    "c4-lire-01"
+   ],
+   "verifie": "vérifier la question 2 du chapitre",
+   "explication": "L'avocat parle pour accuser ou pour défendre ; le juré écoute, note et vote. La barre est un endroit, la plaidoirie un discours, le dossier d'instruction ce qu'on a réuni avant le procès.",
+   "bonus": false,
+   "longueurAssumee": false
+  },
+  {
+   "enonce": "Qu'est-ce qu'une preuve « à décharge » ?",
+   "choix": [
+    "Une preuve qui est fausse",
+    "Une preuve qui accuse",
+    "Une preuve qui est oubliée",
+    "Une preuve qui défend"
+   ],
+   "bonnes": [
+    3
+   ],
+   "niveau": "standard",
+   "reflexion": 15,
+   "reponse": 20,
+   "competences": [
+    "c4-lire-01"
+   ],
+   "verifie": "vérifier la question 3 du chapitre",
+   "explication": "À charge, la preuve accuse ; à décharge, elle défend.",
+   "bonus": false,
+   "longueurAssumee": false
+  },
+  {
+   "enonce": "Quelles sont les trois accusations portées contre Paris dans notre procès ?",
+   "choix": [
+    "Paris coûte-t-elle trop cher à ses habitants ?",
+    "Paris abandonne-t-elle ses habitants les plus pauvres ?",
+    "Paris est-elle trop grande pour être gouvernée ?",
+    "Paris cache-t-elle sa misère derrière ses lumières ?",
+    "Paris détruit-elle ce qu'elle a de plus beau ?",
+    "Paris oublie-t-elle les écrivains qui l'ont aimée ?"
+   ],
+   "bonnes": [
+    1,
+    3,
+    4
+   ],
+   "niveau": "standard",
+   "reflexion": 15,
+   "reponse": 20,
+   "competences": [
+    "c4-lire-01"
+   ],
+   "verifie": "vérifier la question 4 du chapitre",
+   "explication": "Ce sont les trois questions sur lesquelles la classe votera à la fin du procès.",
+   "bonus": false,
+   "longueurAssumee": false
+  },
+  {
+   "enonce": "Qu'est-ce que Paris a gagné avec les grands travaux du XIXe siècle ? deux choses.",
+   "choix": [
+    "Des pauvres restés au centre",
+    "Des quartiers anciens conservés",
+    "La lumière (L'éclairage au gaz)",
+    "De grandes avenues larges et droites",
+    "Des ruelles plus étroites"
+   ],
+   "bonnes": [
+    2,
+    3
+   ],
+   "niveau": "approfondi",
+   "reflexion": 20,
+   "reponse": 20,
+   "competences": [
+    "c4-lire-01"
+   ],
+   "verifie": "vérifier la question 5 du chapitre",
+   "explication": "Avec les grands travaux, Paris s'éclaire au gaz et s'ouvre de grandes avenues larges et droites : elle devient la « Ville Lumière ».",
+   "bonus": false,
+   "longueurAssumee": false
+  },
+  {
+   "enonce": "Qu'est-ce que Paris a perdu avec les grands travaux du XIXe siècle ?",
+   "choix": [
+    "Ses grandes avenues, rétrécies",
+    "Sa cathédrale, rasée",
+    "Son éclairage, supprimé",
+    "Des quartiers entiers, démolis",
+    "Ses habitants les plus pauvres, chassés du centre"
+   ],
+   "bonnes": [
+    3,
+    4
+   ],
+   "niveau": "approfondi",
+   "reflexion": 20,
+   "reponse": 20,
+   "competences": [
+    "c4-langue-01",
+    "c4-lire-01"
+   ],
+   "verifie": "vérifier la question 6 du chapitre",
+   "explication": "Des quartiers entiers ont été démolis et les plus pauvres ont été chassés loin du centre. L'éclairage et les grandes avenues, au contraire, sont ce que Paris a gagné.",
+   "bonus": false,
+   "longueurAssumee": false
+  },
+  {
+   "enonce": "Qui fait démolir des quartiers entiers de Paris, à partir de 1853, pour ouvrir de grandes avenues ?",
+   "choix": [
+    "Victor Hugo",
+    "Guy de Maupassant",
+    "Le baron Haussmann",
+    "Émile Zola"
+   ],
+   "bonnes": [
+    2
+   ],
+   "niveau": "facile",
+   "reflexion": 10,
+   "reponse": 20,
+   "competences": [
+    "c4-langue-01",
+    "c4-lire-01"
+   ],
+   "verifie": "vérifier la question 7 du chapitre",
+   "explication": "C'est le baron Haussmann. Hugo, Zola et Maupassant sont des écrivains qui ont écrit sur cette ville.",
+   "bonus": false,
+   "longueurAssumee": false
+  },
+  {
+   "enonce": "Quelle figure de style trouve-t-on dans « La grande rose flamboie comme un œil de cyclope » ?",
+   "choix": [
+    "Une comparaison",
+    "Un oxymore",
+    "Une métaphore",
+    "Une personnification"
+   ],
+   "bonnes": [
+    0
+   ],
+   "niveau": "standard",
+   "reflexion": 15,
+   "reponse": 20,
+   "competences": [
+    "c4-langue-01",
+    "c4-lire-01"
+   ],
+   "verifie": "vérifier la question 8 du chapitre",
+   "explication": "Le mot-outil « comme » est là : c'est une comparaison. Sans lui, ce serait une métaphore.",
+   "bonus": false,
+   "longueurAssumee": false
+  },
+  {
+   "enonce": "Quelles figures de style trouve-t-on dans « Il y avait des guivres qui avaient l'air de rire, des gargouilles qu'on croyait entendre japper, des salamandres qui soufflaient dans le feu, des tarasques qui éternuaient dans la fumée » ?",
+   "choix": [
+    "Une métaphore",
+    "Une personnification",
+    "Une hyperbole",
+    "Un oxymore",
+    "Une accumulation"
+   ],
+   "bonnes": [
+    1,
+    4
+   ],
+   "niveau": "approfondi",
+   "reflexion": 20,
+   "reponse": 20,
+   "competences": [
+    "c4-langue-01",
+    "c4-lire-01"
+   ],
+   "verifie": "vérifier la question 9 du chapitre",
+   "explication": "Les monstres sont énumérés les uns après les autres : c'est une accumulation. Des sculptures de pierre qui rient : on leur donne un geste humain, c'est une personnification.",
+   "bonus": false,
+   "longueurAssumee": false
+  },
+  {
+   "enonce": "Quelle figure de style trouve-t-on dans « cette pluie ardente » ?",
+   "choix": [
+    "Une métaphore",
+    "Une hyperbole",
+    "Un oxymore",
+    "Une comparaison"
+   ],
+   "bonnes": [
+    2
+   ],
+   "niveau": "standard",
+   "reflexion": 15,
+   "reponse": 20,
+   "competences": [
+    "c4-langue-01",
+    "c4-lire-01"
+   ],
+   "verifie": "vérifier la question 10 du chapitre",
+   "explication": "La pluie et l'ardeur, l'eau et le feu, deux contraires sont réunis dans le même groupe de mots : c'est un oxymore.",
+   "bonus": false,
+   "longueurAssumee": false
+  },
+  {
+   "enonce": "BONUS — Dans « Paris, c'est un immense atelier de putréfaction, où la misère, la peste et les maladies travaillent de concert », que peut-on dire de « où » ?",
+   "choix": [
+    "Son antécédent est « un immense atelier de putréfaction »",
+    "C'est un pronom relatif",
+    "Il introduit une PSCc",
+    "Il introduit une PSR",
+    "Son antécédent est « Paris »",
+    "C'est une conjonction de subordination"
+   ],
+   "bonnes": [
+    0,
+    1,
+    3
+   ],
+   "niveau": "expert",
+   "reflexion": 30,
+   "reponse": 20,
+   "competences": [
+    "c4-langue-01",
+    "c4-lire-01"
+   ],
+   "verifie": "vérifier la question 11 du chapitre",
+   "explication": "« Où est-ce que la misère et la peste travaillent ? » — dans un immense atelier de putréfaction : c'est l'antécédent, un groupe nominal juste avant « où ». « Où » est un pronom relatif, il introduit une PSR. C'est la phrase de Victor Considérant, la preuve à charge de la séance 1.",
+   "bonus": true,
+   "longueurAssumee": true
+  }
+ ]
+}

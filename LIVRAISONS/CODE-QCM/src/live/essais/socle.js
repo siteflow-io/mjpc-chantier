@@ -245,7 +245,10 @@ function verif(ok, quoi, detail){ nb++; if(!ok) ko++; R.push((ok ? "  ok     " :
     const neuve = await prof.evaluate(() => ACT.lancerSeance("3 ESSAI", "essai", {})); await pause(500);
     const p2 = await ouvrir("?mode=prof"); await pause(600);
     const vu2 = await p2.evaluate(() => ({sid: SCN.sid(), n: SCN.seancesActives().length, badge: (document.body.innerText.match(/\d+ séances? en cours/) || [""])[0]}));
-    verif(vu2.sid === neuve && vu2.n === 2 && vu2.badge === "2 séances en cours", "deux séances actives : la console pilote la plus récente ; « 🔴 2 séances en cours »", vu2);
+    verif(vu2.sid === neuve && vu2.n === 2 && vu2.badge === "", "deux séances actives : la console pilote la plus récente ; à l'appel, pas de badge (la maquette ne le met qu'au pilotage)", vu2);
+    await p2.evaluate(() => ACT.appelFini(["yvon_adam"])); await pause(500);
+    const badge2 = await p2.evaluate(() => (document.body.innerText.match(/\d+ séances? en cours/) || [""])[0]);
+    verif(badge2 === "2 séances en cours", "au pilotage : « 🔴 2 séances en cours »", badge2);
     await p2.evaluate(v => ACT.terminer(v), vieille); await pause(300);
     verif(!base("sessionActive/3 ANCIENNE") && base("sessionActive/3 ESSAI") === neuve, "« 🛑 Terminer » la séance d'hier, depuis la liste : celle de ce matin continue", base("sessionActive"));
     await p2.evaluate(v => ACT.terminer(v), neuve); await pause(200);

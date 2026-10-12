@@ -1796,6 +1796,19 @@
    "auto": true
   },
   {
+   "texte": "🤔 1 pense : peut-être mal lu (à relire ce soir)",
+   "scenes": [
+    "x610-8-console-alerte",
+    "x610-autonomie-deux",
+    "x610-autonomie-julien",
+    "x610-autonomie-michel",
+    "x610-feuille",
+    "x610-tranche"
+   ],
+   "categorie": "état",
+   "auto": true
+  },
+  {
    "texte": "🤔 peut-être Q3",
    "scenes": [
     "c-autonomie-deux",

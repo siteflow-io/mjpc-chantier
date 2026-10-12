@@ -1,0 +1,59 @@
+Gardes 16 à 20 du complément 4 — maquette-qcm-v8.html · gardes 16 · 2026-10-12T17:13:06.017Z
+garde 16 : 3149 destinations atteintes par le geste, au-delà des 169 scènes
+Vérifications : 65 · échecs : 54
+
+ÉCHECS :
+1. garde 16. c-resultats&seance=CH1&m=S08%3Aavant : le tableau n° 1 a la classe « res-tab », celui de « c-resultats » « scoresheet »
+2. garde 16. c-resultats&seance=CH1&m=S08%3Aavant : les colonnes « Élève | Q# | Note | Sur 20 | Maîtrise » ne sont pas celles de « c-resultats » (« Élève | Q# | Note | Sur 20 | Maîtrise de la note | 🧩# | 🤝 Autonomie | À lire sur la feuille »)
+3. garde 16. c-resultats&seance=CH1&m=S08%3Aavant : la légende de « c-resultats » manque
+4. garde 16. c-resultats&seance=CH1&m=S08%3Aavant : le geste « 📄 PDF notes et compétences » de « c-resultats » manque à côté du tableau
+5. garde 16. c-resultats&seance=CH1&m=S08%3Aavant : le geste « 📥 Export CSV » de « c-resultats » manque à côté du tableau
+6. garde 16. c-resultats&seance=CH1&m=S08%3Aavant : le geste « § » de « c-resultats » manque à côté du tableau
+7. garde 16. c-resultats&seance=JB&m=S08%3Aavant : le tableau n° 1 a la classe « res-tab », celui de « c-resultats » « scoresheet »
+8. garde 16. c-resultats&seance=JB&m=S08%3Aavant : les colonnes « Élève | Q# | Note | Sur 20 | Maîtrise » ne sont pas celles de « c-resultats » (« Élève | Q# | Note | Sur 20 | Maîtrise de la note | 🧩# | 🤝 Autonomie | À lire sur la feuille »)
+9. garde 16. c-resultats&seance=JB&m=S08%3Aavant : la légende de « c-resultats » manque
+10. garde 16. c-resultats&seance=JB&m=S08%3Aavant : le geste « 📄 PDF notes et compétences » de « c-resultats » manque à côté du tableau
+11. garde 16. c-resultats&seance=JB&m=S08%3Aavant : le geste « 📥 Export CSV » de « c-resultats » manque à côté du tableau
+12. garde 16. c-resultats&seance=JB&m=S08%3Aavant : le geste « § » de « c-resultats » manque à côté du tableau
+13. garde 16. c-resultats&seance=S3E&m=PAP%3Areprise : le tableau n° 1 a la classe « res-tab », celui de « c-resultats » « scoresheet »
+14. garde 16. c-resultats&seance=S3E&m=PAP%3Areprise : les colonnes « Élève | Q# | Note | Sur 20 | Maîtrise » ne sont pas celles de « c-resultats » (« Élève | Q# | Note | Sur 20 | Maîtrise de la note | 🧩# | 🤝 Autonomie | À lire sur la feuille »)
+15. garde 16. c-resultats&seance=S3E&m=PAP%3Areprise : la légende de « c-resultats » manque
+16. garde 16. c-resultats&seance=S3E&m=PAP%3Areprise : le geste « 📄 PDF notes et compétences » de « c-resultats » manque à côté du tableau
+17. garde 16. c-resultats&seance=S3E&m=PAP%3Areprise : le geste « 📥 Export CSV » de « c-resultats » manque à côté du tableau
+18. garde 16. c-resultats&seance=S3E&m=PAP%3Areprise : le geste « § » de « c-resultats » manque à côté du tableau
+19. garde 16. c-resultats&seance=PAP : le tableau n° 1 a une ligne de 15 cases sous 7 colonnes — « ABRIAL Julien ✓ ✗ ✓ ✗ ✓ ✓ ✗ ✗ ✓ ✓ ✗ — —  »
+20. garde 16. c-resultats&seance=PAP : le tableau n° 1 a une ligne de 15 cases sous 7 colonnes — « BAUDRY Léa ✓ ✓ ✓ ✓ ✓ ✓ ✗ ✓ ✓ ✓ ✓ — — — »
+21. garde 16. c-resultats&seance=PAP : le tableau n° 1 a une ligne de 15 cases sous 7 colonnes — « BRUNEAU Camille ✓ ✗ ✗ ✗ ✓ ✗ ✗ ✗ ✓ ✓ ✗ —  »
+22. garde 16. c-resultats&seance=PAP : le tableau n° 1 a une ligne de 15 cases sous 7 colonnes — « CARRÉ Tom ✗ ✗ ✓ ✗ ✗ ✗ ✗ ✗ ✓ ✓ ✗ — — — »
+23. garde 16. c-resultats&seance=PAP : le tableau n° 1 a une ligne de 15 cases sous 7 colonnes — « CHEVALLIER Théo ✓ ✓ ✗ ✓ ✗ ✗ ✗ ✓ ✓ ✓ ✗ —  »
+24. garde 16. c-resultats&seance=PAP : le tableau n° 1 a une ligne de 15 cases sous 7 colonnes — « DUVERNAY Michel ✓ ✗ ✗ ✓ ✓ ✗ ✓ ✗ ✓ ✓ ✗ —  »
+25. garde 16. c-resultats&seance=PAP : le tableau n° 1 a une ligne de 15 cases sous 7 colonnes — « ESNAULT Inès ✓ ✓ ✓ ✓ ✓ ✓ ✓ ✓ ✓ ✓ ✓ — — — »
+26. garde 16. c-resultats&seance=PAP : le tableau n° 1 a une ligne de 15 cases sous 7 colonnes — « FOUCHER Hugo ✓ ✓ ✗ ✓ ✓ ✓ ✗ ✓ ✓ ✓ ✗ — — — »
+27. garde 16. c-resultats&seance=PAP : le tableau n° 1 a une ligne de 15 cases sous 7 colonnes — « GALLOIS Manon ✓ ✓ ✓ ✓ ✓ ✓ ✗ ✓ ✓ ✓ ✗ — —  »
+28. garde 16. c-resultats&seance=PAP : le tableau n° 1 a une ligne de 15 cases sous 7 colonnes — « HÉBRARD Nathan ✓ ✗ ✗ ✗ ✗ ✗ ✗ ✗ ✓ ✓ ✗ — — »
+29. garde 16. c-resultats&seance=PAP : le tableau n° 1 a une ligne de 15 cases sous 7 colonnes — « ISAMBERT Chloé ✓ ✓ ✓ ✓ ✓ ✗ ✓ ✓ ✓ ✓ ✓ — — »
+30. garde 16. c-resultats&seance=PAP : le tableau n° 1 a une ligne de 15 cases sous 7 colonnes — « JOUBERT Louis ✗ ✗ ✗ ✗ ✓ ✗ ✗ ✗ ✗ ✓ ✗ — —  »
+31. garde 16. c-resultats&seance=PAP : le tableau n° 1 a une ligne de 15 cases sous 7 colonnes — « LACOMBE Emma ✓ ✓ ✓ ✓ ✓ ✓ ✓ ✓ ✓ ✓ ✗ — — — »
+32. garde 16. c-resultats&seance=PAP : le tableau n° 1 a une ligne de 15 cases sous 7 colonnes — « MAILLARD Noah ✓ ✗ ✗ ✓ ✗ ✗ ✗ · · · · — —  »
+33. garde 16. c-resultats&seance=PAP : le tableau n° 1 a une ligne de 15 cases sous 7 colonnes — « NOGARET Zoé ✓ ✓ ✗ ✓ ✓ ✓ ✗ ✓ ✓ ✓ ✓ — — — »
+34. garde 16. c-resultats&seance=PAP : le tableau n° 1 a une ligne de 15 cases sous 7 colonnes — « OLLIVIER Sacha ✗ ✗ ✗ ✗ ✗ ✗ ✗ ✗ ✓ ✗ ✗ — — »
+35. garde 16. c-resultats&seance=PAP : le tableau n° 1 a une ligne de 15 cases sous 7 colonnes — « PERRAUD Jade ✓ ✓ ✓ ✓ ✓ ✓ ✗ ✗ ✓ ✓ ✗ — — — »
+36. garde 16. c-resultats&seance=PAP : le tableau n° 1 a une ligne de 15 cases sous 7 colonnes — « QUINTON Enzo ✓ ✗ ✗ ✗ ✓ ✗ ✗ ✗ ✓ ✓ ✗ — — — »
+37. garde 16. c-resultats&seance=PAP : le tableau n° 1 a une ligne de 15 cases sous 7 colonnes — « RAMBAUD Lina ✓ ✓ ✓ ✓ ✓ ✓ ✓ ✓ ✓ ✓ ✓ — — — »
+38. garde 16. c-resultats&seance=PAP : le tableau n° 1 a une ligne de 15 cases sous 7 colonnes — « SABATIER Malo ✓ ✗ ✓ ✗ ✓ ✗ ✗ ✗ ✓ ✓ ✗ — —  »
+39. garde 16. c-resultats&seance=PAP : le tableau n° 1 a une ligne de 15 cases sous 7 colonnes — « TESSIER Anna ✓ ✗ ✗ ✗ ✗ ✗ ✗ ✗ ✓ ✓ ✗ — — — »
+40. garde 16. c-resultats&seance=PAP : le tableau n° 1 a une ligne de 15 cases sous 7 colonnes — « VALLÉE Rayan ✓ ✓ ✗ ✗ ✓ ✗ ✗ ✓ ✓ ✓ ✗ — — — »
+41. garde 16. c-resultats&seance=PAP : le tableau n° 1 a une ligne de 15 cases sous 7 colonnes — « WEBER Clara ✓ ✓ ✓ ✓ ✓ ✓ ✓ ✓ ✓ ✓ ✗ — — — »
+42. garde 16. c-resultats&seance=PAP : le tableau n° 1 a une ligne de 15 cases sous 7 colonnes — « ZELLER Lou ✓ ✓ ✗ ✗ ✓ ✓ ✗ ✗ ✓ ✓ ✗ — — — »
+43. garde 16. c-resultats&seance=PAP : le tableau n° 1 a la classe « res-tab », celui de « c-resultats » « scoresheet »
+44. garde 16. c-resultats&seance=PAP : les colonnes « Élève | Q# | Note | Sur 20 | Maîtrise » ne sont pas celles de « c-resultats » (« Élève | Q# | Note | Sur 20 | Maîtrise de la note | 🧩# | 🤝 Autonomie | À lire sur la feuille »)
+45. garde 16. c-resultats&seance=PAP : la légende de « c-resultats » manque
+46. garde 16. c-resultats&seance=PAP : le geste « 📄 PDF notes et compétences » de « c-resultats » manque à côté du tableau
+47. garde 16. c-resultats&seance=PAP : le geste « 📥 Export CSV » de « c-resultats » manque à côté du tableau
+48. garde 16. c-resultats&seance=PAP : le geste « § » de « c-resultats » manque à côté du tableau
+49. garde 16. c-resultats&seance=S3E&m=SOIR%3Alu : le tableau n° 1 a la classe « res-tab », celui de « c-resultats » « scoresheet »
+50. garde 16. c-resultats&seance=S3E&m=SOIR%3Alu : les colonnes « Élève | Q# | Note | Sur 20 | Maîtrise » ne sont pas celles de « c-resultats » (« Élève | Q# | Note | Sur 20 | Maîtrise de la note | 🧩# | 🤝 Autonomie | À lire sur la feuille »)
+51. garde 16. c-resultats&seance=S3E&m=SOIR%3Alu : la légende de « c-resultats » manque
+52. garde 16. c-resultats&seance=S3E&m=SOIR%3Alu : le geste « 📄 PDF notes et compétences » de « c-resultats » manque à côté du tableau
+53. garde 16. c-resultats&seance=S3E&m=SOIR%3Alu : le geste « 📥 Export CSV » de « c-resultats » manque à côté du tableau
+54. garde 16. c-resultats&seance=S3E&m=SOIR%3Alu : le geste « § » de « c-resultats » manque à côté du tableau

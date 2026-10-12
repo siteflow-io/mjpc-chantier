@@ -1,4 +1,4 @@
-Contrôles de la conscience n°12 — maquette-qcm-v9.html — 2026-10-12T13:57:49.439Z
+Contrôles de la conscience n°12 — maquette-qcm-v9.html — 2026-10-12T17:14:51.329Z
 md5 de controles.js : e4a67ac52f19691ffff583b879cf2943
 Vérifications : 110 · échecs : 0
   ok     C1 · S3E : « 📊 Ouvrir » n°1 de « Résultats » mène au tableau de cette séance

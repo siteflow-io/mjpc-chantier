@@ -38,7 +38,10 @@ function lireStructure(){
   const root = document.getElementById("root");
   const vis = e => { const r = e.getBoundingClientRect(); return r.width > 1 && r.height > 1; };
   const sansTip = e => { const c = e.cloneNode(true); c.querySelectorAll(".info-tip,.info-i").forEach(x => x.remove()); return (c.textContent || "").replace(/\s+/g, " ").trim(); };
-  const tables = Array.from(root.querySelectorAll("table")).filter(vis).map(t => {
+  // un tableau recouvert par une fenêtre est celui du fond (l'écran du moment), pas celui de la page : il ne se compare pas
+  const couvert = t => { const r = t.getBoundingClientRect(), x = r.left + Math.min(r.width / 2, 40), y = r.top + Math.min(r.height / 2, 20);
+    if(x < 0 || y < 0 || x >= innerWidth || y >= innerHeight) return false; const e = document.elementFromPoint(x, y); return !!e && !t.contains(e); };
+  const tables = Array.from(root.querySelectorAll("table")).filter(t => vis(t) && !couvert(t)).map(t => {
     const ths = Array.from(t.querySelectorAll("thead tr:last-child th, thead th")).map(x => sansTip(x));
     let cols = 0; const tete = t.querySelector("thead tr"); if(tete) Array.from(tete.children).forEach(c => { cols += +(c.getAttribute("colspan") || 1); });
     const lignes = Array.from(t.querySelectorAll("tbody tr")).map(r => { let n = 0; Array.from(r.children).forEach(c => { n += +(c.getAttribute("colspan") || 1); }); return {n, t: (r.innerText || "").replace(/\s+/g, " ").slice(0, 40)}; });

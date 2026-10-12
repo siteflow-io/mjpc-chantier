@@ -36,9 +36,11 @@ async function gardes4(navig, fichier, scenes, verif, journal, opts){
     await page.waitForFunction(i => window.SCENE_PRETE === i, X.base(cle), {timeout: 10000}).catch(() => {}); await page.waitForTimeout(80); };
   const aide = await (await navig.newContext()).newPage(); await aide.goto("about:blank");
   const site = [...G3.classesSite()], structRef = {}, releves = {};
-  async function refDe(b){ if(structRef[b] !== undefined) return structRef[b];
+  // la référence d'une destination : sa scène, ouverte au même moment (« base&m=… ») ; ce que les autres paramètres (la séance,
+  // l'élève) font de la page se compare à elle ; le fond d'un autre moment (une console en cours, un bilan) est le même des deux côtés
+  async function refDe(b, k){ k = k || b; if(structRef[k] !== undefined) return structRef[k];
     const T = (G3.TAILLES[parId[b].vue] || [{w: 1536, h: 864}])[0], o = await nouvelle({w: 1536, h: T.h > 864 ? T.h : 864});
-    await ouvrir(o.page, fichier, b); structRef[b] = await o.page.evaluate(G4.lireStructure); await o.ctx.close(); return structRef[b]; }
+    await ouvrir(o.page, fichier, k); structRef[k] = await o.page.evaluate(G4.lireStructure); await o.ctx.close(); return structRef[k]; }
 
   async function unePage(p){
     const R = [], tailles = G3.TAILLES[p.vue] || [{w: 1280, h: 800}];
@@ -48,7 +50,9 @@ async function gardes4(navig, fichier, scenes, verif, journal, opts){
       try {
         await ouvrir(o.page, fichier, p.id);
         if(ti === 0){
-          await essai(16, async () => { const lu = await o.page.evaluate(G4.lireStructure); R.push(...G4.garde16Structure(p.id, lu, p.id !== p.base ? await refDe(p.base) : null)); });
+          await essai(16, async () => { const lu = await o.page.evaluate(G4.lireStructure); 
+            const mm = /[#&]m=([^&]*)/.exec(p.id), refK = p.base + (mm ? "&m=" + mm[1] : "");
+            R.push(...G4.garde16Structure(p.id, lu, p.id !== p.base && refK !== p.id ? await refDe(p.base, refK) : null)); });
           await essai(18, async () => { R.push(...G4.garde18(p.id, p.vue, await o.page.evaluate(G4.lireMoment18), p.moment, parId)); });
         }
         await essai(19, async () => { R.push(...await G4.garde19(o.page, aide, p.id, T, site)); });

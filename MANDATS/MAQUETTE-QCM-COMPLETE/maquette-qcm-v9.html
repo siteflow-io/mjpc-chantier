@@ -12684,7 +12684,7 @@ var B_TEXTES = [
   [/^Évaluation d'essai/, function(e, t){ return "L'évaluation de la séance : « " + t + " »."; }],
   [/— Q\d+ : /, function(e, t){ return "Une feuille à lire ce soir : l'élève, la question, la raison."; }],
   [/^Difficulté (Facile|Standard|Approfondi|Expert)/, function(e, t){ return "La difficulté et les deux temps de la question qui vient."; }],
-  [/^✅ \d+ pensent? : bien lu|^🤔 \d+ pensent?|^❌ \d+ pensent?/, function(e, t){ return "Le compte de la co-évaluation : combien d'élèves disent cela de la lecture de leur feuille."; }],
+  [/^✅ \d+ pense(nt)? : bien lu|^🤔 \d+ pense(nt)?|^❌ \d+ pense(nt)?/, function(e, t){ return "Le compte de la co-évaluation : combien d'élèves disent cela de la lecture de leur feuille."; }],
   [/^Phase : /, function(e, t){ return "La phase de la séance, sur ton téléphone."; }],
   [/^tablette \d+, moitié/i, function(e, t){ return "Où est assis l'élève, et avec qui."; }],
   [/^📱 .+ (sont mis ensemble|reste seule?)/, function(){ return "Qui partage une tablette, d'après les absences cochées."; }],

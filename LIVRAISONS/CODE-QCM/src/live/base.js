@@ -172,6 +172,9 @@ var SCN = (function(){
   S.partis = function(sid){ var s = S.sess(sid); return (s && s.partis) || {}; };
   S.presents = function(k, sid){ var s = S.sess(sid); if(!s) return []; var abs = S.absents(sid), pt = S.partis(sid);
     return S.eleves(sid).filter(function(x){ return abs.indexOf(x) < 0 && !pt[x]; }); };
+  // les présents qui sont entrés sur une tablette : eux seuls peuvent cocher, lire, estimer ; ceux qui ne sont jamais entrés ne bloquent rien
+  // (une séance de la 7.7.1, sans « entres » : tous les présents)
+  S.actifs = function(k, sid){ var s = S.sess(sid); if(!s) return []; var en = s.entres || null, p = S.presents(k, sid); return en ? p.filter(function(x){ return !!en[x]; }) : p; };
   S.ecartees = function(sid){ var s = S.sess(sid); return liste(s && s.ecartees).map(Number); };
   S.annulees = function(sid){ var s = S.sess(sid); return liste(s && s.annulees).map(Number); };
   S.lancees = function(sid){ var s = S.sess(sid); return (s && s.questionsLancees) || {}; };
@@ -378,17 +381,20 @@ var SCN = (function(){
       o.justes = [rep.filter(function(x){ return S.justeTablette(x, qi, sid); }).length, rep.length];
       o.question = [qi + 1 - ec.filter(function(x){ return x < qi; }).length, nbQ];
     }
+    var act = S.actifs(k, sid);
     if(e.ph === "entree" || e.ph === "pret"){
       var entres = pres.filter(function(x){ return S.tabletteDe(x, sid) && (((s.entres || {})[x])); });
-      var finis = pres.filter(function(x){ var a = S.attestDe(1, x, sid); return a && a.fini; });
-      o.connectes = [entres.length, pres.length]; o.attestations = [finis.length, pres.length]; o.repondu = [0, pres.length];
+      var finis = entres.filter(function(x){ var a = S.attestDe(1, x, sid); return a && a.fini; });
+      o.connectes = [entres.length, pres.length]; o.attestations = [finis.length, entres.length]; o.repondu = [0, pres.length];
       o.pasEntres = pres.filter(function(x){ return entres.indexOf(x) < 0; });
       o.attestEnCours = {}; pres.forEach(function(x){ var a = S.attestDe(1, x, sid); if(entres.indexOf(x) >= 0 && !(a && a.fini)) o.attestEnCours[x] = a ? a.lignes || 0 : 0; });
     }
-    if(e.ph === "lecture" && qi != null){ var pas = pres.filter(function(x){ return !S.lecture(x, qi, sid); }); o.lus = [pres.length - pas.length, pres.length]; o.manquent = pas.map(S.nomDe); o.pasLu = pas; }
-    if(e.ph === "coeval"){ var att = pres.filter(function(x){ return !S.coevalDe(x, sid) && S.voisinDe(x, sid); }); o.coeval = [pres.length - att.length, pres.length]; o.manquent = att.map(S.nomDe); o.pasCoeval = att; }
-    if(e.ph === "estim"){ var pe = pres.filter(function(x){ return !S.estimationDe(x, sid); }); o.estime = [pres.length - pe.length, pres.length]; o.manquent = pe.map(S.nomDe); o.pasEstime = pe; }
-    if(e.ph === "att2"){ var ec2 = pres.filter(function(x){ var a = S.attestDe(2, x, sid); return !(a && a.fini); }); o.prets = [pres.length - ec2.length, pres.length]; o.manquent = ec2.map(S.nomDe);
+    // la lecture, la co-évaluation, l'estimation, la seconde attestation : ceux qui sont entrés (S.actifs) ; une feuille se lit si l'élève a un voisin entré, ou seul (il la lit lui-même)
+    if(e.ph === "lecture" && qi != null){ var pas = act.filter(function(x){ return !S.lecture(x, qi, sid); }); o.lus = [act.length - pas.length, act.length]; o.manquent = pas.map(S.nomDe); o.pasLu = pas; }
+    if(e.ph === "coeval"){ var att = act.filter(function(x){ var v = S.voisinDe(x, sid); return !S.coevalDe(x, sid) && v && act.indexOf(v) >= 0; }); var avecV = act.filter(function(x){ var v = S.voisinDe(x, sid); return v && act.indexOf(v) >= 0; });
+      o.coeval = [avecV.length - att.length, avecV.length]; o.manquent = att.map(S.nomDe); o.pasCoeval = att; }
+    if(e.ph === "estim"){ var pe = act.filter(function(x){ return !S.estimationDe(x, sid); }); o.estime = [act.length - pe.length, act.length]; o.manquent = pe.map(S.nomDe); o.pasEstime = pe; }
+    if(e.ph === "att2"){ var ec2 = act.filter(function(x){ var a = S.attestDe(2, x, sid); return !(a && a.fini); }); o.prets = [act.length - ec2.length, act.length]; o.manquent = ec2.map(S.nomDe);
       o.enCours = {}; ec2.forEach(function(x){ var a = S.attestDe(2, x, sid); o.enCours[x] = a ? a.lignes || 0 : 0; }); }
     return o;
   };

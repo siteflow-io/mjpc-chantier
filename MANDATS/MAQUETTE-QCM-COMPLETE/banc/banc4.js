@@ -1,7 +1,7 @@
 // Les gardes 16 à 20 du complément 4, jouées par le banc unique (banc.js), ou seules : node banc/banc4.js <maquette.html> [sortie.txt]
 // G4SEUL=17,18 : ne jouer que ces gardes (mise au point) ; la livraison les joue toutes.
 // EXPLO=fichier.json : reprendre une exploration déjà faite de la même version (garde 16), au lieu de la refaire.
-// G16_915=0 : ne pas rejouer les gardes 9 à 15 sur les destinations (mise au point) ; la livraison les rejoue.
+// G16_915=1 : rejouer aussi les gardes 9 à 15 sur chaque destination (la garde 16.3, retirée par l'avenant au complément 4).
 const path = require("path"), fs = require("fs");
 const G3 = require("./gardes3.js");
 const G4 = require("./gardes4.js");
@@ -26,7 +26,9 @@ async function gardes4(navig, fichier, scenes, verif, journal, opts){
   const dests = explo.destinations.map(d => ({id: d.cle, vue: d.vue, moment: G4.momentPage(d.cle, parId), appareil: (parId[d.base] || {}).appareil, base: d.base}));
   const pages = scenes.map(s => ({id: s.id, vue: s.vue, moment: s.moment, base: s.id})).concat(dests);
   const seuls = opts.seul ? String(opts.seul).split(",") : null, retenu = id => !seuls || seuls.includes(id) || seuls.includes(X.base(id));
-  const aFaire = pages.filter(p => retenu(p.id));
+  let aFaire = pages.filter(p => retenu(p.id));
+  // ECHANTILLON=n : au plus n destinations par scène (mise au point seulement ; la livraison les joue toutes)
+  if(process.env.ECHANTILLON){ const n = +process.env.ECHANTILLON, par = {}; aFaire = aFaire.filter(p => { if(p.id === p.base) return true; par[p.base] = (par[p.base] || 0) + 1; return par[p.base] <= n; }); }
 
   const nouvelle = async T => { const ctx = await navig.newContext({viewport: {width: T.w, height: T.h}}); const page = await ctx.newPage();
     page.on("dialog", d => d.dismiss().catch(() => {})); await page.addInitScript(G3.ESPION_G3); return {ctx, page}; };
@@ -88,8 +90,9 @@ async function gardes4(navig, fichier, scenes, verif, journal, opts){
     journal.push("garde 20 : " + Object.keys(releves).length + " pages d'élève comparées à la v7 · " + L.lignes.length + " lignes nommées dans eleve-v7-v9.json");
     if(opts.releves) fs.writeFileSync(opts.releves, JSON.stringify(releves)); }
   await aide.context().close();
-  // 16.3 : chaque destination est jouée par les gardes 9 à 15 comme une scène, au moment que déclarent sa scène et ses paramètres
-  if(joue(16) && process.env.G16_915 !== "0"){
+  // 16.3 : retirée par l'avenant au complément 4 (§1.1) : les gardes 9 à 15 restent jouées sur les 169 scènes ;
+  // G16_915=1 les rejoue encore sur chaque destination, comme une scène, au moment que déclarent sa scène et ses paramètres
+  if(joue(16) && process.env.G16_915 === "1"){
     const dd = dests.filter(d => retenu(d.id)).map(d => Object.assign({}, parId[d.base], {id: d.id, moment: d.moment, n: null}));
     await B3.gardes3(navig, fichier, dd, verif, journal, {seul: null, destinations: true, trace: opts.trace});
   }

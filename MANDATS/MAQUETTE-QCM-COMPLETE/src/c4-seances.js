@@ -47,6 +47,8 @@ function ResultatsSeance(){
         ev.questions.map(function(q, i){ return h("th", {key:i, title:q.enonce}, "Q" + (i+1)); }),
         h("th", null, "Note"), h("th", null, "Sur 20"), h("th", {className:"res-col-l"}, "Maîtrise de la note"),
         comps.map(function(c){ return EnteteCompEv(c, ev); }),
+        // une évaluation sans compétences (au hub, celles de septembre) garde la colonne, vide : le même tableau pour toutes les séances
+        !comps.length && h("th", {key:"sans", className:"comp-col", title:"Cette évaluation n'a pas de compétences : elle n'en a pas au hub."}, "🧩 —"),
         h("th", {className:"res-col-l"}, "🤝 Autonomie"),
         h("th", {className:"res-col-alire"}, "À lire sur la feuille"))),
       h("tbody", null, lignes.map(function(l){
@@ -58,6 +60,7 @@ function ResultatsSeance(){
           h("td", {className:"score-cell"}, l.r.complet ? fr1(l.r.sur20) : "—"),
           h("td", null, h("span", {className:"maitrise-pill " + mt.cls}, mt.em + " " + mt.lib)),
           comps.map(function(c){ return h("td", {key:c, className:"comp-cell"}, PillCompEv(l.r, c, ev)); }),
+          !comps.length && h("td", {key:"sans", className:"comp-cell"}, "—"),
           h("td", {className:"comp-cell"}, au.retire ? h("span", {className:"maitrise-pill mt-rouge"}, "⛔ retiré " + au.quand) : h("span", {className:"maitrise-pill mt-vert"}, "🟢 Très bonne maîtrise")),
           h("td", {className:"alire-cell" + (fl.length ? "" : " vide")}, fl.map(function(x){ return "Q" + (x.q+1) + " : " + x.txt + (x.corrigee ? " · Corrigé d'après sa feuille" : "") + (x.lue ? " · ✔ lue" : ""); }).join(" · ")));
       })))),

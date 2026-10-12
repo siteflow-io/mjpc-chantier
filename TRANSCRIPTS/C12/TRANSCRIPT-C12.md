@@ -20221,3 +20221,27 @@ Réponse mot pour mot :
 806. **Je corrige mon point 801.** Ma machine ne « redémarre » pas au hasard : elle s'éteint quand je ne travaille pas, entre deux de tes messages. Un banc lancé à la fin d'un tour meurt donc avant d'avoir fini. À l'audit de la v9, je le rejouerai pendant le tour, avant de te répondre.
 
 12/10/2026 09:28 MEMO
+
+---
+
+## TOUR 659 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (12/10, 09:35) c'est juste que je me trompe entre l'exécutant qui code la maquette et celui qui code le déroulé. Et j'ai fait une erreur d'exécutant, j'ai lancé un mandat de déroulé dans un exécutant de qcm je crois. peu importe. celui qui tourne sur la maquette n'a effectivement pas fini.
+
+---
+
+## TOUR 659 — Claude (conscience n°12)
+
+Mesuré au sas : `deroule/p8-5f` (65dfa4b0, 09:04) poussée par la session `01U9pF…`, celle qui avait livré la v8 ; ses 79 fichiers sont tous sous `LIVRAISONS/DEROULE/p8-5f/`. `maquette-qcm` (4a29a6cd) poussée par la seule session `01Ftfh…`, tous ses fichiers sous `MANDATS/MAQUETTE-QCM-COMPLETE/`. main et production sans commit d'exécutant.
+
+Réponse mot pour mot :
+
+807. **C'est bien ça, et ça n'a rien cassé.** La session qui avait fait la v8 a reçu le mandat p8-5f du déroulé : elle l'a livré à 09:04, sur sa branche `deroule/p8-5f`, sans sortir de son dossier. Celle du complément 4 est seule sur la maquette. Aucune des deux n'a touché au travail de l'autre, ni à main, ni à la production.
+
+808. **Pour la conscience n°13**, rien ne change : elle audite p8-5f comme d'habitude. Le mandat au sas suffit à un exécutant, quelle que soit la session qui l'a lu.
+
+809. **J'attends la v9.** Quand l'exécutant de la maquette a fini, dis-moi « livré » : je fais l'audit en entier, banc compris, avant de te répondre.
+
+12/10/2026 09:36 MEMO

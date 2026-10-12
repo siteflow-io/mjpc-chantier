@@ -31,5 +31,9 @@ Branche `deroule/p8-5h`, partie de `deroule/p8-5g`. Jamais `main`.
 9. Les bancs de p8-5g rejoués (34 bancs), puis le banc unique à 0.
 10. `LIVRAISONS/DEROULE/p8-5h/` : la NOTE, les bancs, les sorties, des captures d'écran entier (la colonne avec « 1 · 1/2 » courante et « 1 · 2/2 » ; la même après ▶ jusqu'à la page 2 ; l'atelier avec « · 2 pages »), le gabarit, le patch, la maquette, `EMPREINTES.md5`. **Puis tu t'arrêtes.**
 
+## LES GARDES DU PROTOCOLE D'AUDIT DU 12/10 (`PROTOCOLE-AUDIT-12-10.md`, validé par Paul à 11:28)
+- **Les contrôles de la conscience** : `AUDITS/CONTROLES-DEROULE/` (fichier `controles.mjs`, son `EMPREINTES.md5`, ses attendus). Avant de livrer, tire `main` du sas, vérifie l'empreinte, et fais-les passer tels quels sur ta maquette : **tu ne les modifies jamais** ; leur sortie va dans `sorties/controles-conscience.txt`. Un contrôle qui échoue : tu corriges la maquette, pas le contrôle ; si tu le crois faux, tu l'écris dans la NOTE et tu t'arrêtes.
+- **Les relecteurs neufs** : avant de livrer, lance au moins deux relecteurs séparés (sous-agents) qui n'ont jamais vu ton travail : ils n'ont que le mandat, les compléments et la maquette livrée, et ils jouent comme Paul (l'atelier, l'heure lancée, Écran 2, la répétition). Chaque trouvaille est corrigée et reçoit une garde dans ton banc ; la NOTE dit ce qu'ils ont trouvé.
+
 ## CE QUE TU NE TOUCHES PAS
 - Le reste de p8-5c à p8-5g ; la règle 0.4 ; la colonne de l'atelier au-delà de la mention « · 2 pages » ; le récit et la copie (n°13 · 8) ; le curseur « texte au tableau » (n°13 · 12) ; `correction_dictee.html`.

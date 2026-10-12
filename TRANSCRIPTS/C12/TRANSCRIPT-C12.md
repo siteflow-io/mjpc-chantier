@@ -20159,3 +20159,39 @@ Réponse mot pour mot :
 796. **Le rapport** : https://github.com/siteflow-io/mjpc-chantier/blob/main/AUDITS/MAQUETTE-QCM-COMPLEMENT-3-12-10/README.md. À part : à la fin de l'heure, ton site d'aujourd'hui affiche au tableau « Préparation… La première question va arriver. » La maquette le reproduit. C'est à voir au mandat de code.
 
 12/10/2026 07:19 MEMO
+
+---
+
+## TOUR 657 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (12/10, 07:28) ça commence à faire beaucoup de compléments. fais le message pour l'exécutant.
+
+---
+
+## TOUR 657 — Claude (conscience n°12)
+
+Pris comme l'ordre d'écrire le complément 4 (proposé au point 794). Banc de la v8 coupé par le redémarrage de la machine vers 07:28, relancé à 07:29. Relevé moitié par moitié des textes vus par l'élève, v7 contre v8 : la règle du désaccord manque dans huit moitiés (cinq écrans) ; l'évaluation de 3e « à compléter » au scénario et passée le 09/10 ; les 25 notes du PDF figé de 3e conformes au scénario ; le clavier de `t-login-inconnu` suit le champ « Nom ». Complément 4 écrit au sas (`MANDATS/COMPLEMENT-MAQUETTE-QCM-COMPLETE-4.md`) ; rapport d'audit complété (§3.8 et §8), sorties et scripts ajoutés.
+
+Réponse mot pour mot :
+
+797. **D'accord : celui-ci est fait pour être le dernier.** Il y en a eu quatre parce que mon audit regarde plus loin que le banc de l'exécutant : ce que ses gardes ne couvrent pas, je le trouve après coup, et cela fait un complément de plus. Le complément 4 ferme cet écart. Avant de livrer, l'exécutant refait lui-même ma lecture, avec mes propres scripts, déposés au sas, et il regarde chaque capture. Ce que je trouverais à l'audit, il le trouve avant moi.
+
+798. **Le complément 4** : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/COMPLEMENT-MAQUETTE-QCM-COMPLETE-4.md. Il corrige les huit défauts. Il ajoute cinq gardes : les écrans ouverts par les gestes, le PDF lu, ce que l'écran dit du moment, le contraste mesuré aux pixels, et chaque phrase changée côté élève, nommée une par une. Chaque garde doit d'abord retrouver sur la v8 le défaut qu'elle vise.
+
+799. **En l'écrivant, j'ai trouvé que la règle du désaccord manque dans cinq écrans, pas trois.** Elle manque aussi dans la moitié de Julien de deux écrans où je la croyais retirée à bon droit. J'avais comparé écran par écran, sans regarder les moitiés : c'est la faute même que je reproche à la garde. Le rapport et le complément sont corrigés.
+
+800. **Et un neuvième défaut : ton évaluation de 3e.** La maquette la dit « à compléter », sans chapitre, comme au hub ; pourtant ta classe la passe le 09/10, et son PDF lui donne le chapitre 1. Le complément la fait compléter avant le 09/10, avec ce que montre le PDF que tu as validé, sans aucun texte nouveau.
+
+801. **Le banc rejoué sur la v8** : la machine où je travaille a redémarré pendant qu'il tournait, et il n'a rien écrit. Je l'ai relancé ; je n'ai donc toujours pas son résultat.
+
+802. **Le message.** Ouvre une nouvelle session cloud sur siteflow-io/mjpc-chantier, et colle :
+
+```
+Tu es l'exécutant du complément 4 de la maquette complète du QCM de MJPC. Lis en entier MANDATS/COMPLEMENT-MAQUETTE-QCM-COMPLETE-4.md sur la branche main de ce dépôt, applique-le à la lettre, et fais tout le complément d'une traite sur la branche maquette-qcm, sans t'arrêter avant la fin de l'étape C.
+```
+
+À son retour, je refais ma lecture sur la v9.
+
+12/10/2026 07:43 MEMO

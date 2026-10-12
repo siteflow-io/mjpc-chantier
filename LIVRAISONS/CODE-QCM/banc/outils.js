@@ -30,6 +30,8 @@ class Journal {
     this.l.push(e); console.log((ok ? "  ok     " : "  ÉCHEC  ") + "[" + proprio + "] " + quoi + (ok ? "" : " — " + e.vu.slice(0, 200)));
     return !!ok;
   }
+  // le banc a dû faire à la place de l'app (ex. : lancer la séance par ACT quand le geste n'a rien lancé) : écrit, jamais compté comme réussi
+  secours(quoi){ this.l.push({partie: this.partie, secours: quoi}); console.log("  SECOURS " + quoi); }
   get echecs(){ return this.l.filter(x => x.ok === false); }
   get verifs(){ return this.l.filter(x => x.ok !== undefined); }
 }
@@ -64,10 +66,19 @@ class Appareils {
     await installRoutes(ctx, {...this.srv, port: this.port}, null);
     const p = await ctx.newPage(); p.__nom = nom; p.__err = [];
     p.on("pageerror", e => p.__err.push("erreur de page : " + e.message));
+    p.__cerr = [];
+    p.on("console", m => { if(m.type() === "error"){ const t = m.text().replace(/\s+/g, " ").slice(0, 260); if(!p.__cerr.some(x => x.slice(0, 80) === t.slice(0, 80))) p.__cerr.push(t); } });
     p.on("dialog", d => { p.__err.push("boîte système : " + d.type() + " « " + d.message().slice(0, 80) + " »"); d.dismiss().catch(() => {}); });
     await p.goto("http://localhost:" + this.port + "/evaluation-qcm.html" + q).catch(e => p.__err.push("chargement : " + e.message));
     await pause(1200);
     this.pages.push(p); return p;
+  }
+  // une tablette : « 🎓 Choisis ta classe » (si l'app le demande), puis « Combien êtes-vous sur cette tablette ? »
+  async tablette(nom, classe){
+    const p = await this.ouvrir(nom, "?mode=eleve", 1280, 800);
+    for(let k = 0; k < 30; k++){ const t = await texte(p); if(/Combien êtes-vous/.test(t)) break;
+      if(/Choisis ta classe/.test(t)){ await cliquer(p, new RegExp("^" + esc(classe) + "$")); p.__classeDemandee = true; } await pause(250); }
+    return p;
   }
   async fermer(){ if(this.nav) await this.nav.close().catch(() => {}); }
 }

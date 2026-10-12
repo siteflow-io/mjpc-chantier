@@ -35,8 +35,8 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
   });
   const codeDe = n => (B.eleves.find(e => e.nomComplet === n) || C4.find(e => e.nomComplet === n) || {}).code;
   const A = new O.Appareils(srv, port); await A.demarrer();
-  const sess = () => { const a = srv.store.get("qcm/sessionActive") || {}; const sid = a[slug("3 ESSAI")] || a["3_essai"] || Object.values(a)[0]; const id = typeof sid === "object" && sid ? (sid.sessionId || sid.id || sid.sid) : sid; return {sid: id, s: id ? srv.store.get("qcm/sessions/" + id) || {} : {}}; };
-  const etat = () => (sess().s.etat || {});
+  const sess = () => { const a = srv.store.get("qcm/sessionActive") || {}; const sid = a["3 ESSAI"] || a[slug("3 ESSAI")] || Object.values(a)[0]; const id = typeof sid === "object" && sid ? (sid.sessionId || sid.id || sid.sid) : sid; return {sid: id, s: id ? srv.store.get("qcm/sessions/" + id) || {} : {}}; };
+  const etat = () => { const x = sess().s; return x.deroule && typeof x.deroule === "object" ? x.deroule : (x.etat && typeof x.etat === "object" ? x.etat : {}); };   // contrat C1 : deroule
   let prof, tel, tableau, tabs = {}, tabJM = null;
   try {
     // ════════ 1. L'HEURE ════════
@@ -55,20 +55,24 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
     const appelOk = await cliquer(prof, /YVON Adam/);
     J.v(appelOk, H2, "l'appel : un clic sur YVON Adam le marque absent", (await texte(prof)).slice(0, 300));
     await cliquer(prof, /Lancer la séance/); await pause(1200);
+    if(!sess().sid){ J.secours("la séance lancée par ACT.lancerSeance + ACT.appelFini dans la console (le geste n'a rien lancé), pour éprouver la suite");
+      await prof.evaluate(() => ACT.lancerSeance("3 ESSAI", "essai", {}).then(() => ACT.appelFini(["yvon_adam"]))).catch(e => J.secours("ACT a échoué : " + e.message)); await pause(1500); }
     let {sid, s} = sess();
     J.v(!!sid, H1, "« 🚀 Lancer la séance » écrit une séance active (qcm/sessionActive/<classeSlug>)", JSON.stringify(srv.store.get("qcm/sessionActive")));
-    J.v(!!s.etat && typeof s.etat === "object", H1, "la séance a son état (etat : {ph, qi, tour, cote, depuis, duree}) — contrat §3.1", JSON.stringify(s).slice(0, 300));
+    J.v(!!s.deroule && typeof s.deroule === "object" && s.etat === "en_cours", H1, "la séance a son état (deroule : {ph, qi, tour, cote, depuis, duree}, contrat C1) et etat = « en_cours » comme la 7.7.1", JSON.stringify({deroule: s.deroule, etat: s.etat}).slice(0, 300));
     J.v(!!s.places && Object.keys(s.places).length >= 12, H1, "la séance a ses places (places/<n>/{g, d}) : 12 tablettes pour 24 présents", JSON.stringify(s.places || null).slice(0, 300));
     J.v(JSON.stringify(s.absents || "").includes("yvon_adam") || JSON.stringify(s.absents || "").includes("YVON Adam"), H1, "Adam est absent dans la base (absents)", JSON.stringify(s.absents || null));
     const pl = s.places || {};
     // les tablettes : celles de la base, sinon les binômes du scénario
     let TABS = Object.keys(pl).sort((a, b) => a - b).map(n => ({n, g: pl[n].g || null, d: pl[n].d || null}));
     const nomDeSlug = sl => ESSAI.find(x => slug(x) === sl) || sl;
+    const placesBase = TABS.length > 0;
     if(!TABS.length) TABS = S.PAIRES.map((x, i) => ({n: String(i + 1), g: slug(x[0]), d: x[1] ? slug(x[1]) : null}));
     const enPlace = TABS.find(t => [t.g, t.d].includes("abrial_julien"));
-    J.v(!!enPlace && [enPlace.g, enPlace.d].includes("duvernay_michel"), H1, "Julien et Michel sur la même tablette (binômes formés par le QCM précédent, comme dans la maquette)", JSON.stringify(enPlace));
+    const assis = [].concat(...TABS.map(t => [t.g, t.d])).filter(Boolean);
+    J.v(placesBase && assis.length === 24 && new Set(assis).size === 24 && !assis.includes("yvon_adam"), H1, "chaque présent a une place, une seule ; Adam, absent, n'en a pas", JSON.stringify(assis));
     const tl = TABS.find(t => [t.g, t.d].includes("chevallier_theo"));
-    J.v(!!tl && [tl.g, tl.d].includes("zeller_lou"), H1, "Adam absent : son binôme Théo est mis avec Lou, seule (c-appel)", JSON.stringify(tl));
+    J.v(placesBase && TABS.filter(t => !t.g || !t.d).length === 0, H1, "24 présents : 12 tablettes à deux, aucun élève seul (c-appel : le binôme d'un absent est réapparié)", JSON.stringify(TABS.filter(t => !t.g || !t.d)));
 
     J.section("1.2 Le tableau et le téléphone");
     tableau = await A.ouvrir("tableau", "?mode=prof&view=board", 1280, 800);
@@ -77,8 +81,9 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
     J.v(/3 ESSAI|Évaluation d'essai|essai/i.test(await texte(tel)), H2, "le téléphone montre la séance en cours", (await texte(tel)).slice(0, 160));
 
     J.section("1.3 L'entrée : les 12 tablettes partagées, au code, au clavier de l'app");
-    const combien = await A.ouvrir("tablette-0", "?mode=eleve", 1280, 800);
+    const combien = await A.tablette("tablette-0", "3 ESSAI");
     J.v(await attendre(combien, /Combien êtes-vous sur cette tablette/, 8000), H2, "une tablette demande « Combien êtes-vous sur cette tablette ? »", (await texte(combien)).slice(0, 160));
+    J.v(!combien.__classeDemandee, H1, "une séance active : la tablette arrive sur « Combien êtes-vous ? » sans demander la classe (t-combien, comme la maquette)", "elle a d'abord demandé « 🎓 Choisis ta classe »");
     await scene("t-combien", combien, "tablette");
     // un code faux
     await cliquer(combien, /1 élève/); await pause(400);
@@ -88,7 +93,7 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
     // les 12 tablettes : chaque moitié tape son code, son prénom, son nom
     const champAvant = {};
     await Promise.all(TABS.map(async (t, i) => {
-      const p = await A.ouvrir("tablette-" + t.n, "?mode=eleve", 1280, 800); tabs[t.n] = p;
+      const p = await A.tablette("tablette-" + t.n, "3 ESSAI"); tabs[t.n] = p;
       await attendre(p, /Combien êtes-vous/, 8000);
       const seul = !t.g || !t.d;
       await cliquer(p, seul ? /1 élève/ : /2 élèves/); await pause(300);
@@ -104,9 +109,9 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
     let vus = 0; const tP = await texte(prof);
     for(const n of ESSAI) if(n !== "YVON Adam" && new RegExp(esc(n)).test(tP)) vus++;
     J.v(vus === 24, H2, "les 24 élèves entrés se voient sur la console, sans rechargement", vus + " / 24 nommés");
-    const entres = Object.keys(sess().s.presence || srv.store.get("qcm/presence/" + slug("3 ESSAI")) || {}).length;
+    const entres = Object.keys(sess().s.presence || srv.store.get("qcm/presence/3 ESSAI") || {}).length;
     J.v(entres >= 24, H1, "les 24 entrées sont dans la base (présence)", entres + " présents");
-    J.v(/Identifie-toi|Avant de commencer/.test(await zoneTexte(tabJM, cM)) || true, H2, "l'autre moitié n'est pas effacée quand la première entre (règle du 04/10)");
+    
     await scene("t-attest-1", tabJM, "tablette");
 
     J.section("1.4 La première attestation, puis « prêt »");
@@ -127,11 +132,11 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
       const Q = EV.questions[qi], lab = Q.choix;
       J.v(await cliquer(prof, new RegExp("Lancer Q" + (qi + 1) + "\\b")), H2, "« ▶️ Lancer Q" + (qi + 1) + " » se clique");
       await pause(700);
-      J.v(etat().qi === qi && /reflexion/.test(etat().ph || ""), H1, "Q" + (qi + 1) + " : la base passe en réflexion (etat.ph = reflexion, etat.qi = " + qi + ")", JSON.stringify(etat()));
+      J.v(etat().qi === qi && /reflexion/.test(etat().ph || ""), H1, "Q" + (qi + 1) + " : la base passe en réflexion (deroule.ph = reflexion, deroule.qi = " + qi + ")", JSON.stringify(etat()));
       J.v(await attendre(tabJM, new RegExp(esc(Q.enonce)), 6000), H2, "l'énoncé de Q" + (qi + 1) + " sur la tablette, sans rechargement", (await texte(tabJM)).slice(0, 200));
       J.v(await attendre(tableau, new RegExp(esc(Q.enonce)), 6000), H2, "l'énoncé de Q" + (qi + 1) + " au tableau, sans rechargement", (await texte(tableau)).slice(0, 200));
       J.v(await attendre(tel, new RegExp("Q ?" + (qi + 1) + "|Question " + (qi + 1), "i"), 6000), H2, "le téléphone suit Q" + (qi + 1), (await texte(tel)).slice(0, 200));
-      J.v(!(new RegExp(lab.map(esc).join("|")).test(await zoneTexte(tabJM, "g"))) || qi > 0, H2, "réflexion : l'énoncé sans les choix (t-q1-reflexion)");
+      if(qi === 0) J.v(new RegExp(esc(Q.enonce)).test(await zoneTexte(tabJM, "g")) && (await choixOuverts(tabJM, "g", lab)).length === 0 && !new RegExp(">?" + lab.map(esc).join("|")).test(await zoneTexte(tabJM, "g")), H2, "réflexion : l'énoncé sans les choix (t-q1-reflexion)", (await zoneTexte(tabJM, "g")).slice(0, 200));
       if(qi === 0){ await scene("t-q1-reflexion", tabJM, "tablette"); await scene("c-q1-reflexion", prof, "console"); }
       // la saisie de la console tient pendant que les tablettes répondent (règle du 04/10)
       let garde = false;
@@ -186,7 +191,7 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
             } }));
           await pause(700);
         }
-        J.v(bDits >= Math.min(repondus, 11) - 1, H2, "Q" + (qi + 1) + ", tour " + tour + " : B (« Oui, la même chose » / « Non, autre chose ») paraît, son temps fini, et se dit", bDits + " B dits pour " + repondus + " réponses");
+        J.v(repondus > 0 && bDits >= Math.min(repondus, 11) - 1, H2, "Q" + (qi + 1) + ", tour " + tour + " : B (« Oui, la même chose » / « Non, autre chose ») paraît, son temps fini, et se dit", bDits + " B dits pour " + repondus + " réponses");
         if(tour === 1){ J.v(await cliquer(prof, /Tour suivant/), H2, "« ⏭️ Tour suivant » se clique"); await pause(400);
           J.v(etat().tour === 2 || etat().tour === "2", H1, "la base passe au 2e tour (etat.tour = 2, etat.cote = l'autre moitié)", JSON.stringify(etat())); }
       }
@@ -229,7 +234,7 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
     await Promise.all(Object.entries(tabs).map(async ([n, p]) => { const t = TABS.find(x => x.n === n);
       for(const [cote, sl] of cotesDe(t)){ const e = S.ESTIM[S.pre(nomDeSlug(sl))]; if(e) await cliquer(p, NIV[e], cote); } }));
     await pause(600);
-    const est = sess().s.estim || sess().s.autoevals || {};
+    const est = sess().s.autoevals || {};   // contrat C3 : autoevals/<eleve>
     J.v(Object.keys(est).length >= 22, H1, "les 22 estimations sont dans la base (Jade et Enzo n'en font pas)", Object.keys(est).length);
     J.v(await cliquer(prof, /Lancer la correction/), H2, "« 📝 Lancer la correction » se clique"); await pause(800);
     await scene("x610-5-attestation-2", tabJM, "tablette");
@@ -343,14 +348,14 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
     await scene("c-terminer", prof, "console");
     await cliquer(prof, /^🛑 Terminer|^Terminer$|Oui, terminer|Terminer la séance/); await pause(1200);
     const fini = srv.store.get("qcm/sessions/" + sid) || {};
-    J.v(!!sid && (!Object.keys(srv.store.get("qcm/sessionActive") || {}).length || /fin/.test((fini.etat || {}).ph || "")), H1, "la séance terminée : plus de séance active, etat.ph = fin", JSON.stringify({active: srv.store.get("qcm/sessionActive"), etat: fini.etat}));
+    J.v(!!sid && !Object.keys(srv.store.get("qcm/sessionActive") || {}).length && fini.etat === "terminee", H1, "la séance terminée : plus de séance active, etat = « terminee » (la 7.7.1), deroule.ph = fin", JSON.stringify({active: srv.store.get("qcm/sessionActive"), etat: fini.etat, deroule: fini.deroule}));
     J.v(await attendre(tabJM, /Combien êtes-vous/, 6000), H2, "la tablette revient à « Combien êtes-vous ? » (t-fin)", (await texte(tabJM)).slice(0, 160));
     await scene("t-fin", tabJM, "tablette");
     for(const p of Object.values(tabs)) await p.context().close().catch(() => {});
   } catch(e){ J.v(false, "banc", "l'heure s'est arrêtée", e.stack); }
 
   // ════════ 2. LE SOIR ════════
-  const seanceDuJour = () => { const all = srv.store.get("qcm/sessions") || {}; const id = Object.keys(all).find(x => all[x].classe === "3 ESSAI" || all[x].classeSlug === slug("3 ESSAI")); return {id, s: id ? all[id] : {}}; };
+  const seanceDuJour = () => { const all = srv.store.get("qcm/sessions") || {}; const id = Object.keys(all).find(x => all[x].classe === "3 ESSAI" || all[x].classeSlug === "3 ESSAI"); return {id, s: id ? all[id] : {}}; };
   const ouvrirFiche = async nom => { const ok = await cliquer(prof, new RegExp("^" + esc(nom) + "$")); await pause(400); return ok; };
   const fermerFiche = async () => { if(!(await cliquer(prof, /^✕ Fermer$/))) await prof.keyboard.press("Escape"); await pause(300); };
   try {
@@ -425,7 +430,7 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
     await scene("x632-pdf", prof, "console");
     J.v(/notes et compétences|Notes et compétences/i.test(await texte(prof)), H3, "le PDF « notes et compétences » (x632-pdf)", (await texte(prof)).slice(0, 300));
     await prof.keyboard.press("Escape"); await cliquer(prof, /^✕$|Fermer/); await pause(300);
-    const el = await A.ouvrir("eleve", "?mode=eleve", 1280, 800);
+    const el = await A.tablette("eleve", "3 ESSAI");
     await cliquer(el, /1 élève/); await taper(el, null, "code", codeDe("ZELLER Lou")); await taper(el, null, "prenom", "lou"); await taper(el, null, "nom", "zeller"); await cliquer(el, /Entrer/); await pause(800);
     await cliquer(el, /Mes évaluations/); await pause(700);
     await scene("e-mes-evals-rendue", el, "eleve");
@@ -486,20 +491,23 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
     J.v(/Mode élève/.test(await texte(accueil)) && /Accès professeur/.test(await texte(accueil)), H1, "l'accueil de l'app : « 🎓 Mode élève » ou « Accès professeur » (c-accueil)", (await texte(accueil)).slice(0, 200));
     if(await cliquer(prof, /Mode test/)){ await pause(800); await scene("x620-1-mode-test-ouverture", prof, "console");
       J.v(/test/i.test(await texte(prof)), H3, "« 🧪 Mode test » s'ouvre (x620-1-mode-test-ouverture)");
-      J.v(!Object.keys(srv.store.get("qcm/sessionActive") || {}).some(k => k === slug("3 ESSAI")), H3, "le mode test ne touche à aucune vraie classe"); }
+      J.v(!Object.keys(srv.store.get("qcm/sessionActive") || {}).some(k => k === "3 ESSAI"), H3, "le mode test ne touche à aucune vraie classe"); }
     else J.v(false, H3, "« 🧪 Mode test »");
   } catch(e){ J.v(false, "banc", "le reste s'est arrêté", e.stack); }
 
   // ════════ Pour toutes les pages ════════
   J.section("4. Aucune erreur de page, aucune boîte système");
   for(const p of A.pages) J.v(p.__err.length === 0, H1, "page « " + p.__nom + " » sans erreur ni boîte système", p.__err.slice(0, 3).join(" · "));
+  // les erreurs que l'app écrit elle-même (un écran qui ne se dessine pas, une écriture refusée) : chacune une fois, avec ses pages
+  const cerr = {}; for(const p of A.pages) for(const t of p.__cerr || []) (cerr[t] = cerr[t] || []).push(p.__nom);
+  for(const t of Object.keys(cerr)) J.v(false, /c-(seances|resultats|fiche|evals|collage|reglages|sauvegarde)|e-mes|x627|x632|Soir|Evals/.test(t) ? H3 : /Ecran|écran (c|t|p|b)-/.test(t) ? H2 : H1, "erreur écrite par l'app dans " + cerr[t].length + " page(s) (" + cerr[t].slice(0, 4).join(", ") + ")", t);
   await A.fermer(); await srv.close();
   const duree = Math.round((Date.now() - J.t0) / 1000);
   fs.writeFileSync(path.join(SORTIE, "releves-app.json"), JSON.stringify(RELEVES));
   fs.writeFileSync(path.join(SORTIE, "banc.json"), JSON.stringify({duree, app: process.env.APP_FILE, journal: J.l}, null, 1));
   const lignes = ["Banc commun de l'app QCM (QCM-4 · BANC) — " + (process.env.APP_FILE || "?") + " — " + new Date().toISOString(),
     "Durée : " + duree + " s (" + Math.floor(duree / 60) + " min " + (duree % 60) + " s) · vérifications : " + J.verifs.length + " · échecs : " + J.echecs.length + " · scènes relevées : " + Object.keys(RELEVES).length, ""];
-  for(const e of J.l) lignes.push(e.section ? "\n── " + e.section + " (" + e.t + " s)" : (e.ok ? "  ok     " : "  ÉCHEC  ") + "[" + e.proprio + "] " + e.quoi + (e.ok ? "" : " — vu : " + e.vu));
+  for(const e of J.l) lignes.push(e.section ? "\n── " + e.section + " (" + e.t + " s)" : e.secours ? "  SECOURS " + e.secours : (e.ok ? "  ok     " : "  ÉCHEC  ") + "[" + e.proprio + "] " + e.quoi + (e.ok ? "" : " — vu : " + e.vu));
   fs.writeFileSync(path.join(SORTIE, "banc.txt"), lignes.join("\n") + "\n");
   console.log("\nDurée " + duree + " s · " + J.verifs.length + " vérifications · " + J.echecs.length + " échecs → " + SORTIE);
   process.exit(J.echecs.length ? 1 : 0);

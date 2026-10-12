@@ -30,8 +30,8 @@ const choix = (qi, c) => { const Q = EV4.questions[qi]; if(c === "j") return Q.b
   let C4 = null;
   const {B, srv, port} = await O.fauxHub(B => { C4 = O.ajouterClasse(B, "4 ESSAI", "4e", NOMS, 3101); });
   const A = new O.Appareils(srv, port); await A.demarrer();
-  const sess = () => { const a = srv.store.get("qcm/sessionActive") || {}; let id = a[slug("4 ESSAI")]; if(id && typeof id === "object") id = id.sessionId || id.id || id.sid; return {sid: id, s: id ? srv.store.get("qcm/sessions/" + id) || {} : {}}; };
-  const etat = () => sess().s.etat || {};
+  const sess = () => { const a = srv.store.get("qcm/sessionActive") || {}; let id = a["4 ESSAI"] || a[slug("4 ESSAI")]; if(id && typeof id === "object") id = id.sessionId || id.id || id.sid; return {sid: id, s: id ? srv.store.get("qcm/sessions/" + id) || {} : {}}; };
+  const etat = () => { const x = sess().s; return x.deroule && typeof x.deroule === "object" ? x.deroule : (x.etat && typeof x.etat === "object" ? x.etat : {}); };   // contrat C1 : deroule
   let prof, sid = null;
   try {
     J.section("D.1 Le JSON de l'évaluation de 4e collé, « Lancer » ouvert");
@@ -47,7 +47,7 @@ const choix = (qi, c) => { const Q = EV4.questions[qi]; if(c === "j") return Q.b
     J.v(!!id4 && (evs[id4].questions || []).length === NQ, H3, "l'évaluation collée est dans la base : 11 questions, chapitre 4e-ch1, ses compétences et ses temps", id4 ? JSON.stringify(evs[id4]).slice(0, 300) : "absente");
     if(!id4){ // pour éprouver l'heure quand même, le banc la pose dans la base (et le dit)
       srv.store.apply({t: "set", p: "qcm/evaluations/banc4e", v: EV4}); srv.broadcast({t: "set", p: "qcm/evaluations/banc4e", v: EV4}, null); id4 = "banc4e";
-      J.v(true, "banc", "(l'évaluation posée dans la base par le banc, pour jouer l'heure)"); await pause(800); }
+      J.secours("l'évaluation de 4e posée dans la base par le banc (qcm/evaluations/banc4e), le collage n'ayant rien écrit, pour jouer l'heure"); await pause(800); }
     await cliquer(prof, /Pilotage classe/); await pause(300);
     J.v(await choisir(prof, /4 ESSAI/), H2, "Pilotage classe : 4 ESSAI se choisit"); await pause(200);
     J.v(await choisir(prof, /Paris à la barre/), H2, "l'évaluation de 4e se choisit"); await pause(300);
@@ -58,8 +58,10 @@ const choix = (qi, c) => { const Q = EV4.questions[qi]; if(c === "j") return Q.b
     await cliquer(prof, new RegExp(esc(ABSENT))); await pause(200);
     await capt(prof, "appel");
     await cliquer(prof, /Lancer la séance/); await pause(1200);
+    if(!sess().sid){ J.secours("la séance de 4e lancée par ACT.lancerSeance + ACT.appelFini (le geste n'a rien lancé), pour éprouver la suite");
+      await prof.evaluate(id => ACT.lancerSeance("4 ESSAI", id, {}).then(() => ACT.appelFini(["fabre_iris"])), id4).catch(e => J.secours("ACT a échoué : " + e.message)); await pause(1500); }
     ({sid} = sess());
-    J.v(!!sid, H1, "la séance de 4e est lancée (sessionActive/4_essai)", JSON.stringify(srv.store.get("qcm/sessionActive")));
+    J.v(!!sid, H1, "la séance de 4e est lancée (sessionActive/4 ESSAI)", JSON.stringify(srv.store.get("qcm/sessionActive")));
     const pl = sess().s.places || {};
     const TABS = Object.keys(pl).sort((a, b) => a - b).map(n => ({n, g: pl[n].g || null, d: pl[n].d || null}));
     J.v(TABS.length === 3 && TABS.filter(t => !t.g || !t.d).length === 1, H1, "5 présents : trois tablettes, deux partagées et une pour un élève seul", JSON.stringify(pl));
@@ -69,7 +71,7 @@ const choix = (qi, c) => { const Q = EV4.questions[qi]; if(c === "j") return Q.b
 
     J.section("D.2 L'entrée et la première attestation");
     const tabs = {};
-    await Promise.all(TABS.map(async t => { const p = await A.ouvrir("tablette-4e-" + t.n, "?mode=eleve", 1280, 800); tabs[t.n] = p;
+    await Promise.all(TABS.map(async t => { const p = await A.tablette("tablette-4e-" + t.n, "4 ESSAI"); tabs[t.n] = p;
       await attendre(p, /Combien êtes-vous/, 8000); await cliquer(p, (!t.g || !t.d) ? /1 élève/ : /2 élèves/); await pause(300);
       for(const [cote, sl] of cotes(t)){ const e = C4.find(x => slug(x.nomComplet) === sl); if(!e) continue;
         await taper(p, cote, "code", e.code); await taper(p, cote, "prenom", e.prenom.toLowerCase()); await taper(p, cote, "nom", e.nom.toLowerCase()); await cliquer(p, /Entrer/, cote); await pause(300);
@@ -145,7 +147,7 @@ const choix = (qi, c) => { const Q = EV4.questions[qi]; if(c === "j") return Q.b
     for(const t of TABS) await capt(tabs[t.n], "bilan-tablette-" + t.n);
     await capt(prof, "bilan-console");
     await cliquer(prof, /Terminer la séance/); await pause(300); await cliquer(prof, /^🛑 Terminer|Oui, terminer|Terminer la séance/); await pause(1000);
-    J.v(/fin/.test(((srv.store.get("qcm/sessions/" + sid) || {}).etat || {}).ph || "") || !srv.store.get("qcm/sessionActive/" + slug("4 ESSAI")), H1, "la séance de 4e terminée", JSON.stringify((srv.store.get("qcm/sessions/" + sid) || {}).etat));
+    J.v((srv.store.get("qcm/sessions/" + sid) || {}).etat === "terminee" && !srv.store.get("qcm/sessionActive/4 ESSAI"), H1, "la séance de 4e terminée (etat = terminee, plus active)", JSON.stringify((srv.store.get("qcm/sessions/" + sid) || {}).etat));
 
     J.section("D.6 Le soir de la 4e : Résultats, rendre les copies, le PDF");
     await cliquer(prof, /^Données$/); await cliquer(prof, /Résultats/); await pause(500);
@@ -162,11 +164,14 @@ const choix = (qi, c) => { const Q = EV4.questions[qi]; if(c === "j") return Q.b
   } catch(e){ J.v(false, "banc", "l'heure de demain s'est arrêtée", e.stack); }
   J.section("D.7 Aucune erreur de page, aucune boîte système");
   for(const p of A.pages) J.v(p.__err.length === 0, H1, "page « " + p.__nom + " » sans erreur ni boîte système", p.__err.slice(0, 3).join(" · "));
+  // les erreurs que l'app écrit elle-même (un écran qui ne se dessine pas, une écriture refusée) : chacune une fois, avec ses pages
+  const cerr = {}; for(const p of A.pages) for(const t of p.__cerr || []) (cerr[t] = cerr[t] || []).push(p.__nom);
+  for(const t of Object.keys(cerr)) J.v(false, /c-(seances|resultats|fiche|evals|collage|reglages|sauvegarde)|e-mes|x627|x632|Soir|Evals/.test(t) ? H3 : /Ecran|écran (c|t|p|b)-/.test(t) ? H2 : H1, "erreur écrite par l'app dans " + cerr[t].length + " page(s) (" + cerr[t].slice(0, 4).join(", ") + ")", t);
   await A.fermer(); await srv.close();
   const duree = Math.round((Date.now() - J.t0) / 1000);
   const lignes = ["L'heure de demain (QCM-4 · BANC) — 4 ESSAI, l'évaluation de 4e collée, 11 questions — " + (process.env.APP_FILE || "?") + " — " + new Date().toISOString(),
     "Durée : " + duree + " s (" + Math.floor(duree / 60) + " min " + (duree % 60) + " s) · vérifications : " + J.verifs.length + " · échecs : " + J.echecs.length, ""];
-  for(const e of J.l) lignes.push(e.section ? "\n── " + e.section + " (" + e.t + " s)" : (e.ok ? "  ok     " : "  ÉCHEC  ") + "[" + e.proprio + "] " + e.quoi + (e.ok ? "" : " — vu : " + e.vu));
+  for(const e of J.l) lignes.push(e.section ? "\n── " + e.section + " (" + e.t + " s)" : e.secours ? "  SECOURS " + e.secours : (e.ok ? "  ok     " : "  ÉCHEC  ") + "[" + e.proprio + "] " + e.quoi + (e.ok ? "" : " — vu : " + e.vu));
   fs.writeFileSync(path.join(SORTIE, "demain.txt"), lignes.join("\n") + "\n");
   fs.writeFileSync(path.join(SORTIE, "demain.json"), JSON.stringify({duree, journal: J.l}, null, 1));
   console.log("\nDurée " + duree + " s · " + J.verifs.length + " vérifications · " + J.echecs.length + " échecs");

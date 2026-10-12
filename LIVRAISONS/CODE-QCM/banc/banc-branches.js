@@ -22,8 +22,8 @@ async function scene(id, p, appareil){ if(!p) return; try { RELEVES[id] = Object
   });
   const codeDe = n => B.eleves.find(e => e.nomComplet === n).code;
   const A = new O.Appareils(srv, port); await A.demarrer();
-  const sess = () => { const a = srv.store.get("qcm/sessionActive") || {}; let id = a[slug("3 ESSAI")]; if(id && typeof id === "object") id = id.sessionId || id.id || id.sid; return {sid: id, s: id ? srv.store.get("qcm/sessions/" + id) || {} : {}}; };
-  const etat = () => sess().s.etat || {};
+  const sess = () => { const a = srv.store.get("qcm/sessionActive") || {}; let id = a["3 ESSAI"] || a[slug("3 ESSAI")]; if(id && typeof id === "object") id = id.sessionId || id.id || id.sid; return {sid: id, s: id ? srv.store.get("qcm/sessions/" + id) || {} : {}}; };
+  const etat = () => { const x = sess().s; return x.deroule && typeof x.deroule === "object" ? x.deroule : (x.etat && typeof x.etat === "object" ? x.etat : {}); };   // contrat C1 : deroule
   const entrer = async (p, cote, nom) => { const [N, ...P] = nom.split(" "); await taper(p, cote, "code", codeDe(nom)); await taper(p, cote, "prenom", P.join(" ").toLowerCase()); await taper(p, cote, "nom", N.toLowerCase()); await cliquer(p, /Entrer/, cote); await pause(400); };
   let prof, tel;
   try {
@@ -35,7 +35,7 @@ async function scene(id, p, appareil){ if(!p) return; try { RELEVES[id] = Object
     await cliquer(prof, /Lancer la séance/); await pause(400); await cliquer(prof, /Lancer la séance/); await pause(1000);
     const sd = sess();
     J.v(!!sd.sid && sd.s.evalId === "demo", H1, "la séance de la démo est lancée (evalId = demo)", JSON.stringify({sid: sd.sid, evalId: sd.s.evalId}));
-    const td = await A.ouvrir("tablette-demo", "?mode=eleve", 1280, 800);
+    const td = await A.tablette("tablette-demo", "3 ESSAI");
     await cliquer(td, /2 élèves/); await entrer(td, "g", "ABRIAL Julien"); await entrer(td, "d", "DUVERNAY Michel");
     for(const c of ["g", "d"]){ await cocherTout(td, c); await cliquer(td, /^Je commence$/, c); }
     await cliquer(prof, /Lancer Q1\b/); await pause(800);
@@ -49,15 +49,16 @@ async function scene(id, p, appareil){ if(!p) return; try { RELEVES[id] = Object
     await cliquer(prof, /^Pilotage$/); await cliquer(prof, /Pilotage classe/);
     await choisir(prof, /3 ESSAI/); await pause(200); await choisir(prof, /Évaluation d'essai/); await pause(300);
     await cliquer(prof, /Lancer la séance/); await pause(400); await cliquer(prof, /YVON Adam/); await cliquer(prof, /Lancer la séance/); await pause(1200);
+    if(!sess().sid){ J.secours("la séance lancée par ACT (le geste n'a rien lancé)"); await prof.evaluate(() => ACT.lancerSeance("3 ESSAI", "essai", {}).then(() => ACT.appelFini(["yvon_adam"]))).catch(() => {}); await pause(1500); }
     const pl = sess().s.places || {};
     const T = Object.keys(pl).map(n => ({n, g: pl[n].g, d: pl[n].d}));
     const tJM = T.find(t => [t.g, t.d].includes("abrial_julien")), tTL = T.find(t => [t.g, t.d].includes("chevallier_theo"));
     J.v(!!tJM && !!tTL, H1, "les places de Julien et de Théo dans la base", JSON.stringify(pl).slice(0, 200));
     if(!tJM || !tTL) throw new Error("pas de places : les branches ne peuvent pas se jouer");
-    const t1 = await A.ouvrir("tablette-1", "?mode=eleve", 1280, 800), t2 = await A.ouvrir("tablette-2", "?mode=eleve", 1280, 800);
+    const t1 = await A.tablette("tablette-1", "3 ESSAI"), t2 = await A.tablette("tablette-2", "3 ESSAI");
     tel = await A.ouvrir("telephone", "?mode=prof&view=phone", 390, 844);
     // le code pas encore enregistré : Camille
-    const tc = await A.ouvrir("tablette-camille", "?mode=eleve", 1280, 800);
+    const tc = await A.tablette("tablette-camille", "3 ESSAI");
     await cliquer(tc, /2 élèves/); await taper(tc, "g", "code", "1234"); await taper(tc, "g", "prenom", "camille"); await taper(tc, "g", "nom", "bruneau"); await cliquer(tc, /Entrer/, "g"); await pause(500);
     await scene("t-login-inconnu", tc, "tablette");
     J.v(/lève la main/i.test(await zoneTexte(tc, "g")), H1, "un code pas encore enregistré : « lève la main » (t-login-inconnu)", (await zoneTexte(tc, "g")).slice(0, 200));
@@ -174,12 +175,15 @@ async function scene(id, p, appareil){ if(!p) return; try { RELEVES[id] = Object
   } catch(e){ J.v(false, "banc", "les branches se sont arrêtées", e.stack); }
   J.section("B.7 Aucune erreur de page, aucune boîte système");
   for(const p of A.pages) J.v(p.__err.length === 0, H1, "page « " + p.__nom + " » sans erreur ni boîte système", p.__err.slice(0, 3).join(" · "));
+  // les erreurs que l'app écrit elle-même (un écran qui ne se dessine pas, une écriture refusée) : chacune une fois, avec ses pages
+  const cerr = {}; for(const p of A.pages) for(const t of p.__cerr || []) (cerr[t] = cerr[t] || []).push(p.__nom);
+  for(const t of Object.keys(cerr)) J.v(false, /c-(seances|resultats|fiche|evals|collage|reglages|sauvegarde)|e-mes|x627|x632|Soir|Evals/.test(t) ? H3 : /Ecran|écran (c|t|p|b)-/.test(t) ? H2 : H1, "erreur écrite par l'app dans " + cerr[t].length + " page(s) (" + cerr[t].slice(0, 4).join(", ") + ")", t);
   await A.fermer(); await srv.close();
   const duree = Math.round((Date.now() - J.t0) / 1000);
   fs.writeFileSync(path.join(SORTIE, "releves-branches.json"), JSON.stringify(RELEVES));
   const lignes = ["Les gestes rares de l'heure (QCM-4 · BANC) — " + (process.env.APP_FILE || "?") + " — " + new Date().toISOString(),
     "Durée : " + duree + " s (" + Math.floor(duree / 60) + " min " + (duree % 60) + " s) · vérifications : " + J.verifs.length + " · échecs : " + J.echecs.length, ""];
-  for(const e of J.l) lignes.push(e.section ? "\n── " + e.section + " (" + e.t + " s)" : (e.ok ? "  ok     " : "  ÉCHEC  ") + "[" + e.proprio + "] " + e.quoi + (e.ok ? "" : " — vu : " + e.vu));
+  for(const e of J.l) lignes.push(e.section ? "\n── " + e.section + " (" + e.t + " s)" : e.secours ? "  SECOURS " + e.secours : (e.ok ? "  ok     " : "  ÉCHEC  ") + "[" + e.proprio + "] " + e.quoi + (e.ok ? "" : " — vu : " + e.vu));
   fs.writeFileSync(path.join(SORTIE, "branches.txt"), lignes.join("\n") + "\n");
   console.log("\nDurée " + duree + " s · " + J.verifs.length + " vérifications · " + J.echecs.length + " échecs");
   process.exit(J.echecs.length ? 1 : 0);

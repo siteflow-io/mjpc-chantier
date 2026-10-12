@@ -236,9 +236,12 @@ function entrerTous(se){
 var CAS_TEST = {
   "Le cas ambigu":function(se, d){ if(d.ph !== "coeval") return false; var x = se.presents[0].slug, q = v3Liste(se.S.revelees).map(Number)[0]; if(q == null) return false; var Q = se.ev.questions[q];
     return ELV.coeval("mal", q, [Q.choix.map(function(c, i){ return i; }).filter(function(i){ return Q.bonnes.indexOf(i) < 0; })[0]], x); },
-  "Un faux « Oui »":function(se, d){ if(["reponse", "b"].indexOf(d.ph) < 0) return false; var x = se.presents.filter(function(e){ return SCN.cote(e.slug) === d.cote; })[0]; if(!x) return false; var Q = se.ev.questions[d.qi];
-    return Promise.all([d.ph === "reponse" ? ELV.repondre(d.qi, Q.bonnes, x.slug) : null, v3Set(v3Q("sessions/" + se.id + "/feuillesTest/" + x.slug), "autre chose que son clic"), d.ph === "b" ? ELV.direB(d.qi, "oui", x.slug) : null]); },
-  "Rien de dit à la fin du temps":function(se, d){ if(d.ph !== "b") return false; var x = se.presents.filter(function(e){ return SCN.cote(e.slug) === d.cote; })[0]; return x ? v3Set(v3Q("sessions/" + se.id + "/b/" + d.qi + "/" + x.slug), null) : false; },
+  // B se dit dans la phase b, ou pendant que la suite commence (contrat C6 : deroule.bPour, la moitié qui vient de répondre)
+  "Un faux « Oui »":function(se, d){ var bp = d.bPour, enB = d.ph === "b" || !!bp, cote = bp ? bp.cote : d.cote, qi = bp ? +bp.qi : d.qi;
+    if(!enB && d.ph !== "reponse") return false; var x = se.presents.filter(function(e){ return SCN.cote(e.slug) === cote && (!enB || SCN.reponse(e.slug, qi)); })[0]; if(!x) return false; var Q = se.ev.questions[qi];
+    return Promise.all([enB ? null : ELV.repondre(qi, Q.bonnes, x.slug), v3Set(v3Q("sessions/" + se.id + "/feuillesTest/" + x.slug), "autre chose que son clic"), enB ? ELV.direB(qi, "oui", x.slug) : null]); },
+  "Rien de dit à la fin du temps":function(se, d){ var bp = d.bPour; if(d.ph !== "b" && !bp) return false; var cote = bp ? bp.cote : d.cote, qi = bp ? +bp.qi : d.qi;
+    var x = se.presents.filter(function(e){ return SCN.cote(e.slug) === cote; })[0]; return x ? v3Set(v3Q("sessions/" + se.id + "/b/" + qi + "/" + x.slug), null) : false; },
   "Un lecteur qui clique « aucun » partout":function(se, d){ if(d.ph !== "lecture") return false; var x = se.presents[0].slug, v = SCN.voisinDe(x); return v ? ELV.lire(d.qi, "aucun", v) : false; },
   "Deux élèves d'accord pour mentir":function(se, d){ if(d.ph !== "lecture") return false; var x = se.presents[0].slug, v = SCN.voisinDe(x), Q = se.ev.questions[d.qi]; return v ? Promise.all([ELV.lire(d.qi, Q.bonnes, x), ELV.lire(d.qi, Q.bonnes, v)]) : false; },
   "Trouvée au dernier moment":function(se, d){ if(d.ph !== "lecture") return false; var x = se.presents.filter(function(e){ var r = SCN.reponse(e.slug, d.qi); return r && memesChoixV(r.choix, se.ev.questions[d.qi].bonnes); })[0]; if(!x) return false;

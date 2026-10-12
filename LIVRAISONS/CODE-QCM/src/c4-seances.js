@@ -643,8 +643,9 @@ function pdfSeanceV(se){
       return '<tbody class="un"><tr class="abs"><td class="el">' + escPdf(nom) + '</td><td class="note">Absent</td>' + new Array(nc - 1).join("<td>—</td>") + '</tr><tr class="comrow"><td colspan="' + nc + '"><span class="lab">Commentaire :</span> —</td></tr></tbody>'; }
     nNotes++;
     var la = r.st.map(function(s, i){ return s === "x" || se.annulees.indexOf(i) >= 0 ? -1 : i; }).filter(function(i){ return i >= 0; });
-    var cells = comps.map(function(c){ var qs = compQuestionsEv(c, ev).filter(function(i){ return la.indexOf(i) >= 0 && !ev.questions[i].bonus; }), n = qs.reduce(function(a, i){ return a + (r.pts[i] || 0); }, 0), v = nivPdf(qs.length ? n * 20 / qs.length : 0);
-      return '<td class="niv ' + v.cls + '">' + v.lib + '<span class="pts">' + fr1(n) + "/" + qs.length + "</span></td>"; });
+    // une question bonus compte dans les points gagnés, pas dans le total (comme la note, et le bilan de l'élève)
+    var cells = comps.map(function(c){ var tout = compQuestionsEv(c, ev).filter(function(i){ return la.indexOf(i) >= 0; }), qs = tout.filter(function(i){ return !ev.questions[i].bonus; }), n = tout.reduce(function(a, i){ return a + (r.pts[i] || 0); }, 0), d = qs.length || tout.length, v = nivPdf(d ? Math.min(20, n * 20 / d) : 0);
+      return '<td class="niv ' + v.cls + '">' + v.lib + '<span class="pts">' + fr1(n) + "/" + d + "</span></td>"; });
     var a = autonomieV(se, e.slug).retire ? NIV_PDF[3] : NIV_PDF[0];
     auto.forEach(function(){ cells.push('<td class="niv ' + a.cls + '">' + a.lib + "</td>"); });
     var poses = ev.questions.filter(function(q, i){ return se.ecartees.indexOf(i) < 0; }).length;

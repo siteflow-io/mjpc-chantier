@@ -20875,3 +20875,31 @@ Réponse mot pour mot :
 921. **Une chose à régler** : je ne travaille pas entre tes messages. Pour que mon audit commence à 06:35 même si tu dors, je peux me programmer un réveil dans cette conversation. Dis « oui » si tu le veux.
 
 12/10/2026 19:04 MEMO
+
+---
+
+## TOUR 678 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (12/10, 19:14) il faudrait qu'ils aient fini ce soir avant 22h, afin que tu fasses un audit avant la nuit et qu'on lance les correctifs si besoin. Sinon demain à 6h30 ça ne laissera pas assez de temps avant la séance.
+
+---
+
+## TOUR 678 — Claude (conscience n°12)
+
+Mesuré : `code-qcm` à `1af65ed6` (19:12) ; `DEFAUTS-OUVERTS.md` inchangé depuis l'essai de 18:40 (aucun défaut rayé). Fait : COMMUN §2.5 recalé (20:00, 21:00, gel de l'heure à 21:30, livraison du soir à 22:00 avec `VERDICT-22H.md`, puis 00:00, 02:00, 04:00, 05:00, 05:30, 06:30), mandat de QCM-4 complété, une ligne en tête de `DEMANDES.md`.
+
+Réponse mot pour mot :
+
+À jouer : rien · en cours chez l'exécutant : les quatre du code, qui ont la nouvelle heure ; celui de la maquette (fin de l'étape C) · ouvert : tes 11 questions ; ton « oui » au point 921
+
+922. **D'accord : ils livrent à 22:00, je l'audite aussitôt, et les correctifs partent dans la nuit.** J'ai mis la nouvelle heure dans leurs consignes et dans le fichier qu'ils relisent à chaque sauvegarde : ils la prennent sans s'arrêter.
+
+923. **Ce qui sera fini à 22:00, je ne le sais pas.** L'heure de classe est la plus avancée : à 18:48, mes contrôles passaient tous ; à 18:40, le banc de QCM-4 y trouvait encore quatre défauts, que personne n'a encore marqués corrigés. Le soir (résultats, PDF, copies) et le reste n'ont pas encore été éprouvés : ils pourraient ne pas être finis à 22:00. Dans ce cas, ils continuent la nuit, et demain matin je n'audite que ce qui a changé depuis 22:00 : c'est plus court.
+
+924. **La soirée** : à 20:00 et 21:00, assemblage et banc ; à 21:30, plus rien de nouveau dans l'heure de classe, on n'y corrige que ses défauts, et trois relecteurs neufs la jouent comme toi ; à 22:00, la livraison, avec le verdict de QCM-4 partie par partie ; de 22:00 à 23:30 au plus, mon audit ; puis la nuit, mes correctifs d'abord, ce qui n'est pas fini ensuite ; à 06:30, la livraison finale.
+
+925. **Pour que je commence à 22:05 sans attendre ton message, il me faut ton « oui » au point 921** : je me programmerais alors deux réveils dans cette conversation, à 22:05 et à 06:35. Les correctifs n'ont pas besoin de toi : je les écris directement dans le fichier que les quatre relisent.
+
+12/10/2026 19:22 MEMO

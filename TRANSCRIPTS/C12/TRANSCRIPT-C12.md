@@ -20245,3 +20245,33 @@ Réponse mot pour mot :
 809. **J'attends la v9.** Quand l'exécutant de la maquette a fini, dis-moi « livré » : je fais l'audit en entier, banc compris, avant de te répondre.
 
 12/10/2026 09:36 MEMO
+
+---
+
+## TOUR 660 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (12/10, 09:47) en revanche j'ai remarqué quelque chose sur les audits: au fur et à mesure du temps, toi et C13 vous mettez énormément de temps à répondre. Il faudrait raccourcir afin que le travail ne soit pas refait deux fois: il s'agit d'auditer ce que fait l'exécutant, normalement ce n'est pas si long. Dis moi les raisons.
+
+---
+
+## TOUR 660 — Claude (conscience n°12)
+
+Mesuré : la durée de chaque tour depuis le 636, de l'heure du message de Paul à l'horodatage MEMO (`CADRAGE-QCM.md`) ; `nproc` = 2 ; la carte des gestes de la v8, de 06:20 à 06:53, en quatre passes ; les messages de commit de C13 au sas.
+
+Réponse mot pour mot :
+
+810. **Mesuré sur mes tours.** Mes trois premiers audits de la maquette ont pris 15, 12 et 11 minutes. Puis la lecture de la v7 a pris 2 h 15, et l'audit de la v8 une heure.
+
+811. **La raison principale : depuis le 11/10, je refais le travail de l'exécutant au lieu de vérifier le sien.** Mon audit court du 11/10 m'a fait dire « ça va » sur la v7, et c'était faux. Depuis, je reclique moi-même chacun des 5 566 éléments, je remesure toute la mise en page, je relis tous les textes et je regarde toutes les captures. C'est une seconde exécution, pas un audit : le travail est bien fait deux fois.
+
+812. **Je le refais parce que ses vérifications ont laissé passer des défauts à chaque livraison**, de la v5 à la v8. Je ne pouvais pas me fier à son « zéro défaut », alors je l'ai remplacé par le mien.
+
+813. **La machine aggrave.** Elle n'a que deux processeurs : cliquer les 5 566 éléments m'a pris une demi-heure, en quatre passes à la fois, et le banc de l'exécutant tournait encore au bout d'une heure. Elle s'éteint aussi entre deux de tes messages : rien ne peut tourner pendant ton absence.
+
+814. **Pour C13, je ne sais pas** : je ne vois pas sa conversation. Ses messages au sas disent « 30 bancs à 0 chez la conscience », puis 32 : elle aussi rejoue chez elle tous les bancs de l'exécutant. C'est probablement la même cause.
+
+815. **Ma proposition, dans ta règle du 10/10 (un seul audit, en échange des gardes).** Le complément 4 fait déjà faire ma lecture par l'exécutant avant qu'il livre. Mon audit devient : lire ses preuves et dire ce qu'elles contiennent, vérifier par le geste que chaque défaut de la fois d'avant a disparu, regarder ses captures, et refaire au hasard une petite part de sa lecture. Si cet échantillon trouve un défaut, la livraison ne va pas, et le défaut entre dans ses gardes. Le « ça va » reste fiable, parce que ses gardes contiennent ma lecture et que l'échantillon vérifie qu'elles disent vrai. Je ne sais pas encore combien de temps cela prendra : je le mesurerai sur la v9. Si tu dis « ok », je fais ainsi, et je le propose à C13 par une note au sas.
+
+12/10/2026 09:48 MEMO

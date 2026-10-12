@@ -65,8 +65,16 @@ var LIVE = (function(){
 })();
 
 /* ── Écrire : un seul passage, qui journalise ── */
+// le vrai Firebase refuse une écriture qui porte undefined, NaN ou une fonction (le faux hub les efface sans rien dire) : on les retire avant
+function nettoyerQCM(v){
+  if(v === undefined || (typeof v === "number" && !isFinite(v)) || typeof v === "function") return null;
+  if(v === null || typeof v !== "object") return v;
+  if(Array.isArray(v)) return v.map(nettoyerQCM);
+  var o = {}; Object.keys(v).forEach(function(k){ var x = nettoyerQCM(v[k]); if(x !== null) o[k] = x; }); return o;
+}
 function ecrireQCM(maj, quoi){
   LIVE.log("écrit", quoi || "", Object.keys(maj));
+  var propre = {}; Object.keys(maj).forEach(function(k){ propre[k] = nettoyerQCM(maj[k]); }); maj = propre;
   if(!db) return Promise.resolve();
   return db.ref(DB_ROOT).update(maj).catch(function(e){ console.error("QCM : écriture refusée (" + (quoi || "") + ")", e); throw e; });
 }
@@ -773,7 +781,7 @@ var MOTEUR = (function(){
     var attendu = e.depuis, ph = e.ph;
     db.ref(DB_ROOT + "/sessions/" + sid + "/deroule").transaction(function(cur){
       if(!cur || cur.ph !== ph || cur.depuis !== attendu) return;   // déjà passé ailleurs
-      return Object.assign({qi:null, tour:null, cote:null, duree:null, pour:null}, n, {depuis:LIVE.maintenant()});
+      return nettoyerQCM(Object.assign({qi:null, tour:null, cote:null, duree:null, pour:null}, n, {depuis:LIVE.maintenant()}));
     }, function(err, ok, snap){ if(ok && snap){ var d = snap.val(), maj = {}; maj[cheminS(sid, "phase")] = _ph717(d.ph); maj[cheminS(sid, "phaseStart")] = d.depuis; ecrireQCM(maj, "miroir"); } });
   };
   // l'entrée finie : quand tous les présents ont fini l'attestation, la console passe à « prêts »

@@ -35,6 +35,15 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
   const {B, srv, port} = await O.fauxHub(B => {
     // l'évaluation d'essai porte le titre que lui donne le scénario de la maquette (« Évaluation d'essai — 3 questions »)
     B.tree.qcm.evaluations.essai.titre = S.EV_ESSAI.titre;
+    // le QCM précédent du scénario (CH1, 24/09, au format de la 7.7.1, Lou et Adam absents), ses notes dans l'ordre des binômes de la maquette :
+    // l'app forme d'elle-même les binômes « d'après le QCM précédent » (Julien et Michel, Léa et Tom… ; Théo, sans note, avec Lou après l'appel)
+    const ch1 = B.tree.qcm.evaluations[S.ID_CH1];
+    if(ch1){ const papier = {}, rang = [["ABRIAL Julien","DUVERNAY Michel"],["BAUDRY Léa","CARRÉ Tom"],["ESNAULT Inès","FOUCHER Hugo"],["GALLOIS Manon","HÉBRARD Nathan"],["ISAMBERT Chloé","JOUBERT Louis"],
+        ["LACOMBE Emma","MAILLARD Noah"],["NOGARET Zoé","OLLIVIER Sacha"],["PERRAUD Jade","QUINTON Enzo"],["RAMBAUD Lina","SABATIER Malo"],["TESSIER Anna","VALLÉE Rayan"],["WEBER Clara","BRUNEAU Camille"]];
+      const nq = ch1.questions.length;
+      rang.forEach((p, i) => p.forEach(n => { const justes = nq - i; papier[slug(n)] = {choix: ch1.questions.map((q, qi) => qi < justes ? q.bonnes.slice() : [q.choix.findIndex((_, c) => !q.bonnes.includes(c))])}; }));
+      B.tree.qcm.sessions = {sess_ch1: {evalId: S.ID_CH1, classe: "3 ESSAI", classeSlug: "3 ESSAI", date: Date.UTC(2026, 8, 24, 8, 4), phase: "finie", qIdx: nq - 1, etat: "terminee",
+        absents: ["zeller_lou", "yvon_adam", "chevallier_theo"], papier, copies: {rendues: Date.UTC(2026, 8, 26, 15, 40), masquees: false}}}; }
     // la démo (qcm/evaluations/demo) : celle de la maquette, au format du prompt
     B.tree.qcm.evaluations.demo = {titre: S.DEMO.titre, mode: "strict", demo: true, questions: S.DEMO.questions.map(q => ({enonce: q.enonce, choix: q.choix, bonnes: q.bonnes, niveau: q.niveau, reflexion: q.reflexion, reponse: q.reponse, competences: []}))};
     C4 = O.ajouterClasse(B, "4 ESSAI", "4e", NOMS4, 3101);
@@ -78,6 +87,8 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
     const assis = [].concat(...TABS.map(t => [t.g, t.d])).filter(Boolean);
     J.v(placesBase && assis.length === 24 && new Set(assis).size === 24 && !assis.includes("yvon_adam"), H1, "chaque présent a une place, une seule ; Adam, absent, n'en a pas", JSON.stringify(assis));
     const tl = TABS.find(t => [t.g, t.d].includes("chevallier_theo"));
+    J.v(placesBase && !!enPlace && [enPlace.g, enPlace.d].includes("duvernay_michel"), H1, "les binômes d'après le QCM précédent (CH1) : Julien et Michel sur la même tablette, comme dans la maquette (c-lancer)", JSON.stringify(enPlace));
+    J.v(placesBase && !!tl && [tl.g, tl.d].includes("zeller_lou"), H1, "Adam absent : son binôme Théo est mis avec Lou, restée seule (c-appel)", JSON.stringify(tl));
     J.v(placesBase && TABS.filter(t => !t.g || !t.d).length === 0, H1, "24 présents : 12 tablettes à deux, aucun élève seul (c-appel : le binôme d'un absent est réapparié)", JSON.stringify(TABS.filter(t => !t.g || !t.d)));
 
     J.section("1.2 Le tableau et le téléphone");
@@ -392,7 +403,7 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
   } catch(e){ J.v(false, "banc", "l'heure s'est arrêtée", e.stack); }
 
   // ════════ 2. LE SOIR ════════
-  const seanceDuJour = () => { const all = srv.store.get("qcm/sessions") || {}; const id = Object.keys(all).find(x => all[x].classe === "3 ESSAI" || all[x].classeSlug === "3 ESSAI"); return {id, s: id ? all[id] : {}}; };
+  const seanceDuJour = () => { const all = srv.store.get("qcm/sessions") || {}; const id = Object.keys(all).find(x => x !== "sess_ch1" && (all[x].classe === "3 ESSAI" || all[x].classeSlug === "3 ESSAI")); return {id, s: id ? all[id] : {}}; };
   const ouvrirFiche = async nom => { const ok = await cliquer(prof, new RegExp("^" + esc(nom) + "$")); await pause(400); return ok; };
   const fermerFiche = async () => { if(!(await cliquer(prof, /^✕ Fermer$/))) await prof.keyboard.press("Escape"); await pause(300); };
   try {
@@ -403,9 +414,12 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
     await cliquer(prof, /^📊 Résultats$/); await pause(500);
     await scene("c-seances", prof, "console");
     let tx = await texte(prof);
-    J.v(/3e · 1 séance/.test(tx) && /copies non rendues/.test(tx), H3, "Résultats : « ▾ 3e · 1 séance », la séance du jour, « copies non rendues » (c-seances)", tx.slice(0, 400));
+    J.v(/3e · 2 séances/.test(tx) && /copies non rendues/.test(tx) && /copies rendues le 26\/09/.test(tx), H3, "Résultats : « ▾ 3e · 2 séances », la séance du jour « copies non rendues », celle du 24/09 « copies rendues le 26/09 » (c-seances)", tx.slice(0, 400));
     J.v(/▸ 6e · vide pour l'instant/.test(tx) && /▸ 5e · vide pour l'instant/.test(tx), H3, "Résultats : 6e, 5e « vide pour l'instant » (c-seances)", tx.slice(0, 300));
-    J.v(await cliquer(prof, /^📊 Ouvrir$/), H3, "« 📊 Ouvrir » la séance"); await pause(700);
+    const ouvrirSeance = async () => { const ok = await prof.evaluate(() => { const b = [...document.querySelectorAll("button")].filter(b => /📊 Ouvrir/.test(b.textContent) && b.getBoundingClientRect().width > 0)
+        .find(b => { let x = b; for(let k = 0; k < 6 && x; k++, x = x.parentElement) if(/Évaluation d'essai/.test(x.textContent || "") && !/Poésie et peinture/.test(x.textContent || "")) return true; return false; }); if(!b) return false; b.setAttribute("data-banc", "ouvrir"); return true; });
+      if(ok) await prof.click("[data-banc='ouvrir']").catch(() => {}); await pause(700); return ok; };
+    J.v(await ouvrirSeance(), H3, "« 📊 Ouvrir » la séance du jour");
     await scene("c-resultats", prof, "console");
     tx = await texte(prof);
     J.v(await etatBouton(prof, /PDF notes et compétences/) === "fermé", H3, "« 📄 PDF notes et compétences » fermé tant que les copies ne sont pas rendues", await etatBouton(prof, /PDF notes et compétences/));
@@ -467,7 +481,7 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
     J.v(!!cp.rendues, H3, "la base : copies.rendues (ms)", JSON.stringify(cp));
     await scene("c-copies-rendues", prof, "console");
     J.v(/copies rendues le/.test(await texte(prof)), H3, "« copies rendues le … » (c-copies-rendues)", (await texte(prof)).slice(0, 300));
-    await cliquer(prof, /^📊 Ouvrir$/); await pause(600);
+    await ouvrirSeance();
     await scene("c-resultats-rendues", prof, "console");
     J.v(await etatBouton(prof, /PDF notes et compétences/) === "ouvert", H3, "les copies rendues : « 📄 PDF notes et compétences » s'ouvre (c-resultats-rendues)", await etatBouton(prof, /PDF notes et compétences/));
     await cliquer(prof, /PDF notes et compétences/); await pause(1500);

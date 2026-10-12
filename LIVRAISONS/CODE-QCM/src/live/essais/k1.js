@@ -33,6 +33,19 @@ const pause = ms => new Promise(r => setTimeout(r, ms));
   console.log("  ", (await txt()).slice(0, 300)); console.log("   base :", JSON.stringify(srv.store.get("qcm/sessionActive")));
   console.log("3 · Lancer la séance (appel) :", await clic(/Lancer la séance/)); await pause(1200);
   console.log("  ", (await txt()).slice(0, 300)); console.log("   base :", JSON.stringify(srv.store.get("qcm/sessionActive")), JSON.stringify((Object.values(srv.store.get("qcm/sessions") || {})[0] || {}).deroule));
+  // (option K6=1) le champ de la console, tapé pendant la réflexion, garde-t-il sa valeur et son curseur après « ✋ Autoriser la réponse » ?
+  if (process.env.K6) {
+    await p.evaluate(() => ACT.lancerQuestion(0)); await pause(1200);
+    const champ = await p.evaluate(() => { const f = [...document.querySelectorAll("input[type=number], input[type=text]")].find(x => x.getBoundingClientRect().width > 0 && !x.disabled && !x.readOnly); if (!f) return null; f.setAttribute("data-k6", "1"); return f.outerHTML.slice(0, 200); });
+    console.log("champ :", champ);
+    if (champ) { await p.click("[data-k6='1']"); await p.keyboard.press("End"); await p.keyboard.type("7"); await pause(300);
+      console.log("après la frappe :", JSON.stringify(await p.evaluate(() => { const f = document.querySelector("[data-k6='1']"); return f ? {focus: document.activeElement === f, v: f.value} : null; })));
+      await clic(/Autoriser la réponse/); await pause(800);
+      console.log("après Autoriser :", JSON.stringify(await p.evaluate(() => { const f = document.querySelector("[data-k6='1']"); const a = document.activeElement; return {k6: f ? {focus: a === f, v: f.value, dis: f.disabled, ro: f.readOnly} : null, actif: a ? a.tagName + "." + a.className + "=" + (a.value || "") : null, inputs: [...document.querySelectorAll("input")].map(i => i.getAttribute("data-temps") + ":" + i.value + (i.disabled ? "⊘" : "")).join(" ")}; })));
+      await pause(3000);
+      console.log("au 1er tour :", JSON.stringify(await p.evaluate(() => { const f = document.querySelector("[data-k6='1']"); return f ? {focus: document.activeElement === f, v: f.value} : null; })));
+    }
+  }
   // (option ETAPES=1) la question 1 menue jusqu'à « close » par ACT, puis les boutons de la console à chaque phase
   if (process.env.ETAPES) {
     const bt = async () => (await p.evaluate(() => [...document.querySelectorAll("button")].filter(b => b.getBoundingClientRect().width > 0).map(b => (b.disabled ? "⊘" : "") + b.textContent.trim().slice(0, 40)))).join(" | ");

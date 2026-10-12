@@ -249,7 +249,8 @@ function rendre(){
   document.body.className = "vue-" + (sc ? sc.vue : choix.vue || "console") + " app-qcm appareil-" + LIVE.appareil();
   if(typeof brancherGlobales === "function") brancherGlobales();
   if(typeof window.EV_BASE === "undefined") window.EV_BASE = EV;
-  var cle = id + "|" + (choix.cle || "");
+  // un écran qui porte sa clé (la console de l'heure, la tablette, le tableau, le téléphone) n'est jamais démonté d'une phase à l'autre
+  var cle = choix.cle ? "c|" + choix.cle : id;
   if(ECRAN_MONTE !== cle){ ReactDOM.unmountComponentAtNode(racine); ECRAN_MONTE = cle; if(typeof tempsRemettre === "function") tempsRemettre(); }
   try { ReactDOM.render(choix.render ? choix.render() : sc ? sc.render() : null, racine); }
   catch(e){ console.error("QCM : l'écran " + id + " ne se dessine pas", e); }

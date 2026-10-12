@@ -180,3 +180,12 @@ document.addEventListener("change", function(ev){
    l'adresse : history.back() appelé par un écran ferme ce qui est ouvert sur place, et ne fait jamais quitter la page (la console, la tablette). */
 (function(){ if(typeof APP_QCM === "undefined" || !APP_QCM) return;
   try { history.back = function(){ if(NAV.pile.length || NAV.ecran) navFermer(); }; } catch(e){ console.error(e); } })();
+
+/* La règle du 04/10 (« un redessin n'efface jamais une saisie ») : pendant que Paul tape dans un champ de la console, un clic sur un bouton
+   (« ✋ Autoriser la réponse », « +10 »…) agit sans lui retirer le curseur ; le clic se fait, le champ garde sa valeur et son curseur. */
+document.addEventListener("mousedown", function(ev){
+  if(LIVE.appareil() === "tablette") return;
+  var a = document.activeElement; if(!a || !/^(INPUT|TEXTAREA)$/.test(a.tagName) || a.readOnly) return;
+  var b = ev.target && ev.target.closest ? ev.target.closest("button") : null;
+  if(b && !b.disabled && !b.closest("label") && b !== a) ev.preventDefault();
+}, true);

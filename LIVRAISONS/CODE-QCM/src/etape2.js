@@ -710,6 +710,8 @@ function exclusionsRespectees(classe){
 function LancementH(appel, opts){
   opts = opts || {};
   var classe = classeLancement(), ev = evalLancement(), demo = !!(ev && ev.demo) || !!opts.demo;
+  // (c-papier-lancer) « 📄 Séance sur papier » : le lancement d'une séance sur papier (QCM-1 : {mode:"papier"})
+  var papier = !demo && (!!opts.papier || (typeof NAV !== "undefined" && NAV.ecran === "c-papier-lancer"));
   // pendant l'appel, la carte sous la fenêtre montre la séance lancée (sa classe, son évaluation), même hors des menus (le mode test)
   if(appel && LIVE.sid){ classe = SCN.classe() || classe; ev = SCN.evalDeSeance(LIVE.sid) || ev; demo = !!(ev && ev.demo) || !!opts.demo; }
   var classesL = SCN.classes(); if(classe && classesL.indexOf(classe) < 0) classesL = [classe].concat(classesL);
@@ -721,7 +723,7 @@ function LancementH(appel, opts){
   var excl = classe ? exclusionsRespectees(classe) : [];
   CLASSE = classe || CLASSE;
   function lancer(){ if(!classe || !ev) return; LIVE.classeSlug = classe;
-    var r = ACT.lancerSeance(classe, ev.id, {paires:LANCEMENT_H.paires}); if(r && r.then) r.then(function(){ if(typeof navRemettre === "function") navRemettre(); }); }
+    var r = ACT.lancerSeance(classe, ev.id, papier ? {paires:LANCEMENT_H.paires, mode:"papier"} : {paires:LANCEMENT_H.paires}); if(r && r.then) r.then(function(){ if(typeof navRemettre === "function") navRemettre(); }); }
   var carte = h("div", {className:"card"},
     h("h2", null, "🎯 Lancer une nouvelle séance", InfoI("Choisis la classe et l'évaluation : la durée se compte tout de suite, et les binômes sont proposés. « 🚀 Lancer la séance » ouvre l'appel.")),
     h("div", {className:"lancer-grid"},
@@ -735,13 +737,14 @@ function LancementH(appel, opts){
             evalsL.map(function(e){ return h("option", {key:e.id, value:e.id}, e.titre); }))),
         !demo && h("div", {className:"field"}, h("label", null, "Mode", InfoI("Sur tablettes : deux élèves par tablette, le déroulé complet. Sur papier : chacun répond seul sur sa feuille, avec les énoncés imprimés ; le soir, tu remplis la grille ; la correction se fait à l'heure suivante, sur les tablettes.")),
           h("div", {className:"mode-seance"},
-            h("button", {className:"btn btn-sm btn-primary", "data-va":"c-lancer", "aria-pressed":true, title:"La séance sur tablettes, deux élèves par tablette."}, "📱 Sur tablettes"),
-            h("button", {className:"btn btn-sm btn-ghost", "data-va":"c-papier-lancer", "aria-pressed":false, title:"La séance sur papier : chacun répond seul sur sa feuille, sans tablette ; l'estimation se fait à la reprise, sur les tablettes."}, "📄 Séance sur papier"))),
-        !demo && ev && h("div", {className:"duree-box"}, texteDuree(ev)),
+            h("button", {className:"btn btn-sm " + (papier ? "btn-ghost" : "btn-primary"), "data-va":"c-lancer", "aria-pressed":!papier, title:"La séance sur tablettes, deux élèves par tablette."}, "📱 Sur tablettes"),
+            h("button", {className:"btn btn-sm " + (papier ? "btn-primary" : "btn-ghost"), "data-va":"c-papier-lancer", "aria-pressed":papier, title:"La séance sur papier : chacun répond seul sur sa feuille, sans tablette ; l'estimation se fait à la reprise, sur les tablettes."}, "📄 Séance sur papier"))),
+        !demo && !papier && ev && h("div", {className:"duree-box"}, texteDuree(ev)),
         !ev ? h("button", {className:"btn btn-primary", disabled:true, title:"Aucune évaluation n'est prête à lancer : complète-la dans « 📝 Évaluations » (son chapitre, et pour chaque question ses deux temps et ses compétences)."}, "🚀 Lancer la séance")
           : demo ? h("button", {className:"btn btn-primary"}, "🎓 Lancer la démo")
           // pendant l'appel, la séance est lancée : le bouton de la carte, sous la fenêtre de l'appel, est fermé
-          : appel ? h("button", {className:"btn btn-primary", disabled:true, title:"La séance est lancée : l'appel est ouvert."}, "🚀 Lancer la séance")
+          : appel ? h("button", {className:"btn btn-primary", disabled:true, title:"La séance est lancée : l'appel est ouvert."}, papier ? "📄 Lancer la séance sur papier" : "🚀 Lancer la séance")
+          : papier ? h("button", Object.assign({className:"btn btn-primary", title:"Ouvre l'appel, puis la séance sur papier : les énoncés à imprimer, et « ⏸️ Feuilles ramassées »."}, marqueH("LANCER-PAPIER:" + classe + ":" + ev.id, lancer)), "📄 Lancer la séance sur papier")
           : h("button", Object.assign({className:"btn btn-primary"}, marqueH("LANCER:" + classe + ":" + ev.id, lancer)), "🚀 Lancer la séance")),
       h("div", {className:"binomes-box"},
         h("div", {className:"tt"}, "📱 Binômes proposés — d'après les exclusions, puis le QCM précédent", InfoIB("📱 Binômes proposés", "D'abord les exclusions de MJPC : deux élèves exclus ne sont jamais ensemble. Puis la règle du QCM : le classement de la note du QCM précédent, puis 1-2, 3-4… Aucun élève ne voit rien des exclusions. Glisse un nom sur un autre pour échanger deux élèves, ou sur une moitié vide pour l'y déplacer, jusqu'au bout de l'heure.")),
@@ -750,7 +753,8 @@ function LancementH(appel, opts){
         h(GrilleBinomes, {key:cle, paires:LANCEMENT_H.paires, classe:classe, surChange:function(np){ LANCEMENT_H.paires = np; }}))));
   var modale = appel && h(AppelH, {classe:classe});
   var pause = classe ? SCN.seances(classe).filter(function(s){ return s.enPause && !s.fin; })[0] : null;
-  return Console("pilotage", "pilot", h(F, null, pause && CarteRepriseH(pause), carte, SessionsPrecedentes(), modale), false);
+  var reprPapier = pause && (((SCN.sess(pause.id) || {}).lancee || {}).mode === "papier" || pause.papier) && typeof CarteRepriseV === "function";
+  return Console("pilotage", "pilot", h(F, null, pause && (reprPapier ? h(CarteRepriseV, {key:"rp"}) : CarteRepriseH(pause)), carte, SessionsPrecedentes(), modale), false);
 }
 // l'appel (« 📋 Check-in : qui est absent aujourd'hui ? ») : ses absents, l'heure de fin ; « 🚀 Lancer la séance » ferme l'appel
 function AppelH(p){
@@ -776,7 +780,7 @@ function CarteRepriseH(se){
     h("h2", null, "⏸️ Séance à reprendre — " + CLASSE, InfoI("Une séance finie à une autre heure garde son état exact. La reprendre ouvre l'appel, avec les mêmes binômes.")),
     h("div", {className:"results-eval-row"},
       h("div", null, h("div", {className:"titre"}, ev.titre),
-        h("div", {className:"meta"}, se.date + " " + se.heure + " · en pause à la " + ou + " · " + SCN.presents(null, se.id).length + " présents"),
+        h("div", {className:"meta"}, se.date + " " + se.heure + " · en pause " + (/^estimation/.test(ou) ? "à l'" : /^avant/.test(ou) ? "" : "à la ") + ou + " · " + SCN.presents(null, se.id).length + " présents"),
         h("div", {className:"meta", style:{color:"var(--violet)", fontWeight:700}}, "↳ pas encore « QCM précédent »", InfoIB("↳ pas encore « QCM précédent »", "Elle ne sert pas aux binômes tant qu'elle n'est pas terminée."))),
       h("button", Object.assign({className:"btn btn-primary", title:"Reprend la séance là où elle s'était arrêtée : l'appel, les mêmes binômes, puis le tour en cours recommence au début, voile compris."},
         marqueH("REPRENDRE:" + se.id, function(){ var x = ACT.lancerSeance(null, null, {reprise:se.id}); if(x && x.then) x.then(function(){ if(typeof navRemettre === "function") navRemettre(); }); })),

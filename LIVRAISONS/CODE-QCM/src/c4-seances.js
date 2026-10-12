@@ -434,7 +434,8 @@ function ListeSeancesVue(modale){ return Console("donnees", "results", h(F, null
 function ScRendreV(){ return h(ScRendreC); }
 function ScRendreC(){
   useV3();
-  var se = seanceV(seanceParam()); if(!se) return ListeSeancesVue(null);
+  // la garde ne s'ouvre que de « rendre les copies ▸ » : toutes les feuilles à lire lues (sinon, la liste)
+  var se = seanceV(seanceParam()); if(!se || etatCopiesV(se) !== "pret") return ListeSeancesVue(null);
   var n = aLireV(se).length, sq = "&seance=" + encodeURIComponent(se.id);
   return Fenetre(ListeSeancesVue(null), "📤 Rendre les copies ?", se.ev.titre + " — " + se.classe + " — " + se.date + " " + se.heure,
     h(F, null,

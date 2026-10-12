@@ -20425,3 +20425,33 @@ Paul raccourcit le complément 4. Lis en entier MANDATS/COMPLEMENT-MAQUETTE-QCM-
 841. **Je ne sais pas combien de temps il lui faudra encore** : je ne vois que ses sauvegardes.
 
 12/10/2026 13:13 MEMO
+
+---
+
+## TOUR 666 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (12/10, 13:28) Non, je veux que demain, le qcm que je ferai soit celui de la maquette. C'est pour ça qu'on travaille sur la maquette. S'il faut deux semaines avant livraison complète, on n'est pas rendus! Je mets ton complément du complément 4.
+
+---
+
+## TOUR 666 — Claude (conscience n°12)
+
+Relu au cadrage les points 737 à 750 (deux mandats de code, MJPC d'abord, puis le QCM avec ses 31 dettes) et le compte des compléments de la maquette depuis le 10/10.
+
+Réponse mot pour mot :
+
+À jouer : rien de neuf pour l'instant · en cours chez l'exécutant : le complément 4, avec l'avenant que tu viens de lui donner · ouvert : la v9, puis le code.
+
+842. **Compris : demain, en classe, le QCM de la maquette.**
+
+843. **Tout le QCM de la maquette d'ici demain matin, ça ne va pas.** C'est le code du site entier : les 169 écrans, sur la vraie base, avec les tablettes, le téléphone et le tableau qui se parlent. La maquette seule, sans base ni vrais appareils, a demandé quatre compléments depuis samedi. Et le code de MJPC devait passer avant (tour 649).
+
+844. **Ce qui peut aller pour demain : une tranche, l'heure de classe telle que la maquette la montre**, de l'appel au bilan des élèves. Un exécutant la code cette nuit, d'une traite. Demain matin, je l'audite avec mes contrôles, puis tu la mets en ligne avant ton cours. Le soir (résultats, PDF, copies rendues), l'éditeur, le mode test et MJPC viennent à la livraison suivante.
+
+845. **En secours, la version d'aujourd'hui réparée de ses deux pannes** (point 837), dès cet après-midi : si l'audit de demain matin ne va pas, tu fais cours avec elle.
+
+846. **Une seule question, pour cadrer la tranche** : demain, quelle classe, quelle évaluation, à quelle heure, sur tablettes ou sur papier, et jusqu'où (les questions seulement, ou aussi la correction et la co-évaluation) ?
+
+12/10/2026 13:30 MEMO

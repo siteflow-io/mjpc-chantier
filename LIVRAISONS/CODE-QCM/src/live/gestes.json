@@ -1,0 +1,263 @@
+{
+ "_lisezmoi": "QCM-1 · SOCLE — la table d'équivalence des gestes : dans la maquette, un clic sautait à une scène (data-va) ; dans l'app, il fait l'action (ACT, ELV) ou ouvre sur place (NAV). Le code qui l'applique : src/live/gestes.js (GESTES.ACTIONS, GESTES.aller, GESTES.eleve). Un geste se reconnaît à son libellé (etiquetteDe) ; « fenetre » : seulement dans une fenêtre de garde (la première fois, le bouton ouvre la garde).",
+ "console": [
+  {
+   "depart": "c-lancer",
+   "geste": "🚀 Lancer la séance",
+   "action": "ACT.lancerSeance(classe, evalId) : la séance s'écrit, phase « appel » ; la console montre l'appel (c-appel)",
+   "quand": "hors appel"
+  },
+  {
+   "depart": "c-appel",
+   "geste": "🚀 Lancer la séance (dans l'appel)",
+   "action": "ACT.appelFini(APPEL.absents) : phase « entree » ; les tablettes passent à l'attestation",
+   "quand": "appel"
+  },
+  {
+   "depart": "c-appel",
+   "geste": "Annuler",
+   "action": "ACT.abandonner() : la séance pas encore commencée s'efface"
+  },
+  {
+   "depart": "c-lancer",
+   "geste": "🎓 Lancer la démo",
+   "action": "ACT.lancerSeance(classe, \"demo\")"
+  },
+  {
+   "depart": "c-rattrapage",
+   "geste": "🚀 Lancer le rattrapage",
+   "action": "ACT.lancerSeance(classe, evalId, {rattrapage, eleves : les pas encore notés})"
+  },
+  {
+   "depart": "c-pret, c-q*-close",
+   "geste": "▶️ Lancer Qn",
+   "action": "ACT.lancerQuestion(n-1)"
+  },
+  {
+   "depart": "c-q1-reflexion",
+   "geste": "✋ Autoriser la réponse",
+   "action": "ACT.autoriserReponse()"
+  },
+  {
+   "depart": "c-q1-tour1",
+   "geste": "⏭️ Tour suivant",
+   "action": "ACT.tourSuivant()"
+  },
+  {
+   "depart": "c-q1-tour2",
+   "geste": "🔒 Clore la question",
+   "action": "ACT.cloreQuestion()"
+  },
+  {
+   "depart": "pilotage",
+   "geste": "⏸️ Pause / ▶️ Reprendre",
+   "action": "ACT.pause() / ACT.reprendre()"
+  },
+  {
+   "depart": "pilotage",
+   "geste": "🔄 Relancer chrono",
+   "action": "ACT.relancerChrono()"
+  },
+  {
+   "depart": "pilotage",
+   "geste": "+5, +10, +30, le temps tapé",
+   "action": "ACT.ajouterTemps(sorte, s, qi) / ACT.fixerTemps(qi, sorte, v) (TempsCarte, TempsMini : à brancher, c3-base.js)"
+  },
+  {
+   "depart": "c-q3-close",
+   "geste": "📊 Lancer l'autoévaluation",
+   "action": "ACT.lancerEstimation()"
+  },
+  {
+   "depart": "c-estim",
+   "geste": "📝 Lancer la correction",
+   "action": "ACT.lancerCorrection() : l'ordre de correction se fixe, phase « att2 » ; quand tous ont fini, la lecture de la première question commence (MOTEUR)"
+  },
+  {
+   "depart": "c-corr-q2-lu",
+   "geste": "💡 Révéler",
+   "action": "ACT.reveler() : « Trouvée au dernier moment » se fixe"
+  },
+  {
+   "depart": "c-corr-*-apres",
+   "geste": "Question suivante →",
+   "action": "ACT.questionSuivante() ; après la dernière : ACT.ouvrirCoeval()"
+  },
+  {
+   "depart": "c-corr-q1-apres",
+   "geste": "… co-évaluation (bouton de la console)",
+   "action": "ACT.ouvrirCoeval()"
+  },
+  {
+   "depart": "c-coeval-tranche",
+   "geste": "🏁 Afficher leur bilan aux élèves",
+   "action": "ACT.afficherBilan()"
+  },
+  {
+   "depart": "c-ecarter (fenêtre)",
+   "geste": "❌ Écarter la question n",
+   "action": "ACT.ecarter(n-1)"
+  },
+  {
+   "depart": "c-annuler (fenêtre)",
+   "geste": "⚠️ Annuler la question n",
+   "action": "ACT.annuler(n-1)"
+  },
+  {
+   "depart": "c-ecartee, c-annulee",
+   "geste": "↩️ Remettre",
+   "action": "ACT.remettre(q)"
+  },
+  {
+   "depart": "c-rouvrir-tous (fenêtre)",
+   "geste": "🔓 Rouvrir pour tous",
+   "action": "ACT.rouvrirTous(qi)",
+   "quand": "fenetre"
+  },
+  {
+   "depart": "c-rouvrir-un (fenêtre), téléphone",
+   "geste": "🔓 Rouvrir pour <prénom> / 🔁 Rouvrir Qn pour cet élève uniquement",
+   "action": "ACT.rouvrirPour(qi, eleve)"
+  },
+  {
+   "depart": "c-depart (fenêtre)",
+   "geste": "🚫 Parti (data-va …&parti=<slug ou prénom>)",
+   "action": "ACT.depart(eleve)"
+  },
+  {
+   "depart": "c-retour (fenêtre)",
+   "geste": "↩️ Revenu (ligne .depart-l ou [data-eleve])",
+   "action": "ACT.retour(eleve)"
+  },
+  {
+   "depart": "c-terminer (fenêtre)",
+   "geste": "🛑 Terminer la séance",
+   "action": "ACT.terminer()",
+   "quand": "fenetre"
+  },
+  {
+   "depart": "c-sessions (fenêtre)",
+   "geste": "🛑 Terminer",
+   "action": "ACT.terminer(seance)",
+   "quand": "fenetre"
+  },
+  {
+   "depart": "c-finir-autre-heure (fenêtre)",
+   "geste": "⏸️ Finir à une autre heure",
+   "action": "ACT.finirAutreHeure()",
+   "quand": "fenetre"
+  },
+  {
+   "depart": "c-reprendre",
+   "geste": "▶️ Reprendre la séance du …",
+   "action": "ACT.lancerSeance(null, null, {reprise : sid})"
+  },
+  {
+   "depart": "c-rouvrir-seance (fenêtre)",
+   "geste": "🔓 Rouvrir la séance",
+   "action": "ACT.rouvrirSeance(seance)"
+  },
+  {
+   "depart": "c-interrompue",
+   "geste": "🔄 Reprendre la séance",
+   "action": "ACT.reprendre()"
+  },
+  {
+   "depart": "c-autonomie-garde, c-fiche-garde (fenêtres)",
+   "geste": "⛔ Retirer le point d'autonomie",
+   "action": "ACT.retirerAutonomie(eleve, \"heure\" ou \"soir\", seance)",
+   "quand": "fenetre"
+  },
+  {
+   "depart": "c-autonomie-retiree, c-fiche-retire",
+   "geste": "↩️ Rendre",
+   "action": "ACT.rendreAutonomie(eleve, seance)"
+  },
+  {
+   "depart": "c-rendre (fenêtre)",
+   "geste": "Rendre les copies",
+   "action": "ACT.rendreCopies(seance)",
+   "quand": "fenetre"
+  },
+  {
+   "depart": "c-copies-rendues",
+   "geste": "🙈 Masquer les copies",
+   "action": "ACT.masquerCopies(seance)"
+  },
+  {
+   "depart": "c-que-dit-la-feuille",
+   "geste": "le choix cliqué",
+   "action": "ACT.lireFeuille(aLireId, choix, seance) (c3-feuille.js : à brancher par QCM-3)"
+  },
+  {
+   "depart": "c-papier-grille",
+   "geste": "une case ✓ / ✗",
+   "action": "ACT.grillePapier(eleve, qi, \"j\" ou \"f\", seance) (à brancher par QCM-3)"
+  },
+  {
+   "depart": "c-coeval-*",
+   "geste": "trancher l'alerte",
+   "action": "ACT.trancher(alerteId, {decision : \"feuille\" | \"lecteur\" | …, choix, eleve})"
+  },
+  {
+   "depart": "c-lancer (grille des binômes)",
+   "geste": "glisser un nom sur un autre",
+   "action": "ACT.echanger(a, b) → {ok, raison} ; pendant la séance : ACT.deplacer(eleve, tablette, cote)"
+  }
+ ],
+ "navigation": {
+  "onglets": "Pilotage, 📝 Évaluations, 🎯 Pilotage classe, Données, 📊 Résultats, 💾 Sauvegarde, Réglages, 📖 Mode d'emploi : NAV.ecran (GESTES.ONGLETS) ; « 🎯 Pilotage classe » (c-lancer) revient à l'écran du moment",
+  "fenetres": "toute autre scène de console (c-depart, c-retour, c-terminer, c-ecarter, c-annuler, c-rouvrir-*, c-voir-tablette, c-qr, c-sessions, c-autonomie*, c-finir-autre-heure, c-rouvrir-seance…) : navOuvrir(id, params) ; ✕ / Annuler / Fermer / Échap : navFermer()",
+  "moment": "une scène de phase (c-q1-tour1, c-q1-close, c-corr-*, c-coeval-*, c-bilan…) : navRemettre() — la console montre l'écran du moment réel (PAGES.console)",
+  "objet": "les paramètres d'un data-va (« &q= », « &eleve= », « &seance= », « &parti= ») vont dans NAV.params ; paramHash(n) les lit (c3-base.js)",
+  "tableau": "📺 Ouvrir vue tableau : #mode=prof&view=board, dans sa fenêtre (la 7.7.1, l. 6022)",
+  "accueil": "🎓 Mode élève : #mode=eleve ; Accès professeur : mjpcVerifierProf (la clé ou l'empreinte du hub), puis #mode=prof"
+ },
+ "eleve": [
+  {
+   "ecran": "t-combien",
+   "geste": "👤 1 élève / 👥 2 élèves",
+   "action": "ELV.combien(n)"
+  },
+  {
+   "ecran": "t-login",
+   "geste": "Entrer → (code, prénom, nom)",
+   "action": "ELV.entrer(cote, code, prenom, nom) → {ok} | {err} | {rejoins : voisin, tablette}"
+  },
+  {
+   "ecran": "t-attest-1, x610-5-attestation-2",
+   "geste": "une case (.case-b)",
+   "action": "ELV.cocher(1 ou 2, n° de ligne)"
+  },
+  {
+   "ecran": "t-attest-2",
+   "geste": "Je commence (.attest-go)",
+   "action": "ELV.commencer()"
+  },
+  {
+   "ecran": "t-q*-tour*",
+   "geste": "un choix (.eleve-choix-btn)",
+   "action": "ELV.repondre(qi, choix) — choix : les indices dans l'évaluation, retrouvés par le texte du bouton"
+  },
+  {
+   "ecran": "t-q1-b-michel",
+   "geste": "Oui, la même chose / Non, autre chose (.decl-b-btn)",
+   "action": "ELV.direB(qi, \"oui\" | \"non\")"
+  },
+  {
+   "ecran": "t-estim",
+   "geste": "une fourchette (.autoeval-fourchette.fourchette-<k>)",
+   "action": "ELV.estimer(k)"
+  },
+  {
+   "ecran": "t-corr-*-lecture",
+   "geste": "un choix, ou « Sa feuille ne dit aucun de ces choix » (.eleve-choix-btn, .aucun)",
+   "action": "ELV.lire(qi, choix | \"aucun\", propriétaire de la feuille = l'élève de la moitié)"
+  },
+  {
+   "ecran": "t-coeval",
+   "geste": "✅ / 🤔 / ❌ (.co-btn), la question (.co-lb), ce qu'il avait écrit",
+   "action": "ELV.coeval(statut, qi, ecrit) ; « mal » ouvre une alerte (alertes/<id>)"
+  }
+ ]
+}

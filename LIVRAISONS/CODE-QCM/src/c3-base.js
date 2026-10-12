@@ -4,34 +4,37 @@
    Les fonctions de ce fichier remplacent celles des couches précédentes (la dernière déclaration l'emporte). */
 
 /* ── Le moment de la scène ── */
-function MO(){ return window.MOMENT_COURANT || "PREP"; }
-function MOM(){ var m = SCN.moment(MO()) || {}, pt = paramHash("parti");
-  // (complément 3, changement 4) le départ montré est celui de l'élève cliqué (« &parti= »)
-  if(pt){ var o = {}; o[pt] = m.partis ? Object.values(m.partis)[0] : hhmm(m.heure); m = Object.assign({}, m, {partis:o}); }
-  return m; }
-function paramHash(n){ var m = new RegExp("[#&]" + n + "=([^&]+)").exec(location.hash || ""); return m ? decodeURIComponent(m[1]) : null; }
+// (QCM-1) le moment de l'app est toujours « LIVE » : la séance réelle, à son état présent (src/live/base.js, SCN.moment)
+function MO(){ return window.MOMENT_COURANT || "LIVE"; }
+function MOM(){ return SCN.moment(MO()) || {}; }
+// (QCM-1) l'objet d'une fenêtre ouverte sur place (« &q= », « &eleve= »…) : celui que le geste a passé (src/live/gestes.js, NAV), sinon l'adresse
+function paramHash(n){ if(typeof NAV !== "undefined" && NAV.params && NAV.params[n] != null) return String(NAV.params[n]); var m = new RegExp("[#&]" + n + "=([^&]+)").exec(location.hash || ""); return m ? decodeURIComponent(m[1]) : null; }
 // une date du scénario, écrite courte (« 08/10 ») ; une heure (« 10:23 »)
 function jjmm(d){ return String(d || "").slice(0, 5); }
 function hhmm(t){ return String(t || "").slice(0, 5); }
 
-/* ── Les données de la séance du 08/10, celles du scénario ── */
-RT = SCN.RT; ESTIM = SCN.ESTIM; ORDRE_CORR = SCN.ORDRE_CORR; ORD = SCN.ORD; PREMIER = SCN.PREMIER; TABL = SCN.TABL; FEUI = SCN.FEUI; LU = SCN.LU_JM;
-PAIRES_AVANT = SCN.PAIRES_AVANT; PAIRES = SCN.PAIRES; CO = SCN.CO; DIT_B = SCN.DIT_B;
-// les élèves présents, sans les valeurs d'hier : la liste des prénoms vient des binômes
-RF = {}; SCN.presents("S08:Q1:R").forEach(function(p){ RF[p] = ""; });
+/* ── (QCM-1) Les données de la séance réelle, rebranchées avant chaque rendu (brancherGlobales, appelée par src/socle.js) ── */
+// les tables du scénario ne sont plus : chaque écran lit SCN (src/live/base.js) ; ces globales restent pour les écrans qui les nomment encore
+RT = SCN.RT; ESTIM = SCN.ESTIM; ORD = SCN.ORD; TABL = SCN.TABL; FEUI = SCN.FEUI; LU = SCN.LU_JM; CO = SCN.CO; DIT_B = SCN.DIT_B;
+ORDRE_CORR = []; PREMIER = []; PAIRES_AVANT = []; PAIRES = []; RF = {};
+function brancherGlobales(){
+  var ev = SCN.ev(), cl = SCN.classe();
+  if(ev) EV = ev; if(cl) CLASSE = cl;
+  PAIRES = SCN.paires(); PAIRES_AVANT = PAIRES;
+  ORDRE_CORR = SCN.ordreCorr();
+  PREMIER = ev ? ev.questions.map(function(q, i){ return SCN.premierCote(i) === "g" ? "J" : "M"; }) : [];
+  RF = {}; SCN.presents().forEach(function(x){ RF[x] = ""; });
+}
 function nomDe(p){ return SCN.nomDe(p); }
-// (complément 4, correction 3) les tablettes d'une séance qui a ses propres élèves (le rattrapage) : chacun seul sur la sienne
-function pairesDuMoment(){ var se = SCN.seance(MOM().seance); return se && se.eleves ? se.eleves.map(function(n){ return [n, null]; }) : PAIRES; }
-// (complément 4, correction 5) le côté qui répond à un tour : au 1er tour, celui qui commence la question (PREMIER) ; au 2e, l'autre
-function coteDuTour(qi, tour){ return (PREMIER[qi] === "J") === (tour === 1) ? "g" : "d"; }
+// les tablettes de la séance : les places réelles (un élève seul a une moitié vide)
+function pairesDuMoment(){ return SCN.paires(); }
+// le côté qui répond à un tour : au 1er tour, celui qui commence la question ; au 2e, l'autre
+function coteDuTour(qi, tour){ return SCN.coteDuTour(qi, tour); }
 // l'élision devant un nom (changement 8) : « de Inès » s'écrit « d'Inès », « que Émile », « qu'Émile »
 function voyelle(n){ n = String(n || ""); return /^[AEIOUYÉÈÊÀÂÎÔÛaeiouyéèêàâîôû]/.test(n) || /^[Hh]/.test(n) && !/^(Hugo|haut|hors|huit|hasard|héros|hâte)/i.test(n); }
 function deNom(n){ return (voyelle(n) ? "d'" : "de ") + n; }
 function queNom(n){ return (voyelle(n) ? "qu'" : "que ") + n; }
 
-/* ── (relecteur n°303) les codes de la classe : YVON Adam n'en a pas encore ; les bilans de la clé comptent ceux qui existent ── */
-SECU_BILAN_AUTO = SECU_BILAN_AUTO.replace(/^25 /, Object.keys(CODES_ESSAI).length + " ");
-SECU_BILAN_RELANCE = SECU_BILAN_RELANCE.replace(/ 25 déjà/, " " + Object.keys(CODES_ESSAI).length + " déjà");
 
 /* ── La note d'un élève, au moment de la scène (288 à 293, 303, 332) ── */
 function calc(p){

@@ -1,7 +1,8 @@
-/* ═══════════════ Maquette complète du QCM — le socle (étape 1) ═══════════════
-   Toutes les scènes des maquettes existantes, dans l'ordre de la séance, chacune ouvrable par #scene=ID,
-   et le sommaire derrière le bouton ⚙ « Scènes de la maquette » (seul écran de simulation, protocole §2).
-   ORDRE : la séance, section par section ; « etape » : l'étape du mandat qui relit et finit la scène. */
+/* ═══════════════ L'app du QCM — le socle (QCM-1 · SOCLE) ═══════════════
+   Les écrans de la maquette validée (v9), dans l'ordre de la séance : chacun est un composant que l'app montre quand l'appareil
+   et le moment réel l'appellent (src/live/pages.js). Il n'y a plus de sommaire ⚙ ni d'adresse « #scene= » : la console, le tableau,
+   le téléphone et la tablette montrent chacun l'écran de leur appareil, à l'état présent de la séance (src/live/base.js).
+   ORDRE : la séance, section par section (la liste des écrans de la maquette, gardée pour la table des pages et le banc). */
 var ORDRE = [
   // A. Préparer l'évaluation, avant le jour
   ["Préparer l'évaluation", [
@@ -221,66 +222,40 @@ function PdfApercu(){
 }
 SCENES.push({id:"x632-pdf", vue:"console", attendre:true, render:PdfApercu});
 
-/* La liste, dans l'ordre de la séance */
+/* La liste des écrans, dans l'ordre de la séance ; un écran de MJPC absent de l'app (src/mjpc.js) est laissé de côté */
 (function(){
   var parId = {}; SCENES.forEach(function(s){ parId[s.id] = s; });
   var liste = [];
   ORDRE.forEach(function(sec){ sec[1].forEach(function(x){
     var s = parId[x[0]];
-    if(!s) throw new Error("Scène absente : " + x[0]);
+    if(!s){ if(/^m-/.test(x[0])) return; throw new Error("Écran absent : " + x[0]); }
     liste.push({id:s.id, vue:s.vue, vh:s.vh || null, attendre:!!s.attendre, render:s.render, section:sec[0], etape:x[1], titre:x[2]});
   }); });
   SCENES = liste;
 })();
-// (complément 3, garde 12) le moment de chaque scène : l'appareil, la séance et son étape, tirés du scénario (src/scenario.js)
-window.LISTE_SCENES = SCENES.map(function(s, i){ var k = s.moment || SCN.MOMENT_DE[s.id] || null, m = k ? SCN.moment(k) : null;
-  return {n:i + 1, id:s.id, vue:s.vue, vh:s.vh, section:s.section, etape:s.etape, titre:s.titre,
-    moment:k, appareil:s.appareil || SCN.appareilDe(s.id, s.vue), seance:m ? m.seance : null, etapeSeance:m ? m.etape : null}; });
+window.LISTE_SCENES = SCENES.map(function(s, i){ return {n:i + 1, id:s.id, vue:s.vue, vh:s.vh, section:s.section, etape:s.etape, titre:s.titre}; });
 
-/* ── Le sommaire ⚙ « Scènes de la maquette » : le seul écran de simulation ── */
-function Sommaire(courante){
-  var n = 0;
-  return h("div", {className:"som-fond", id:"sommaire"},
-    h("div", {className:"som-boite"},
-      h("div", {className:"som-h"}, h("strong", null, "⚙ Scènes de la maquette"),
-        h("button", {className:"btn btn-ghost btn-sm som-x", title:"Fermer le sommaire (Échap)"}, "✕")),
-      h("p", {className:"som-p"}, "Écran de simulation : il n'existera pas dans l'app. Chaque scène est l'écran entier, dans l'ordre de la séance."),
-      ORDRE.map(function(sec, i){
-        return h("div", {key:i, className:"som-sec"}, h("div", {className:"som-st"}, sec[0]),
-          sec[1].map(function(x){ n++;
-            return h("a", {key:x[0], href:"#scene=" + x[0], className:"som-l" + (x[0] === courante ? " cur" : "")},
-              h("span", {className:"som-n"}, n), h("span", {className:"som-id"}, x[0]), h("span", null, x[2]));
-          }));
-      })));
-}
-function lireScene(){ var m = /scene=([^&]+)/.exec(location.hash || ""); return m ? decodeURIComponent(m[1]) : SCENES[0].id; }
+/* ── Le rendu : l'écran de l'appareil, au moment réel ; chaque donnée lue est abonnée (LIVE.abonner) ──
+   Un redessin ne démonte rien : React garde l'élément qui a le focus, sa valeur et son curseur (règle du 04/10). Seul un changement
+   d'écran démonte l'écran précédent. */
+var ECRAN_MONTE = null;
 function rendre(){
-  var id = lireScene(), sc = SCENES.filter(function(s){ return s.id === id; })[0] || SCENES[0];
-  document.body.className = "vue-" + sc.vue + (/[#&]cap=1/.test(location.hash) ? " capture" : "");
+  var choix = PAGES.ecran(), id = choix.id, sc = SCENES.filter(function(s){ return s.id === id; })[0];
   var racine = document.getElementById("root");
-  window.SCENE_COURANTE = sc.id;
-  // (complément 3) le moment de la scène : celui que le scénario lui donne, ou celui où un geste y a mené (« &m= »)
-  window.MOMENT_COURANT = paramHash("m") || sc.moment || SCN.MOMENT_DE[sc.id] || null;
-  tempsRemettre();
-  // l'évaluation jouée au moment de la scène : la démo pour la démo et le mode test (src/scenario.js, evalDu)
+  window.SCENE_COURANTE = id;
+  window.MOMENT_COURANT = "LIVE";
+  document.body.className = "vue-" + (sc ? sc.vue : choix.vue || "console") + " app-qcm appareil-" + LIVE.appareil();
+  if(typeof brancherGlobales === "function") brancherGlobales();
   if(typeof window.EV_BASE === "undefined") window.EV_BASE = EV;
-  EV = SCN.evalDu(window.MOMENT_COURANT) === SCN.DEMO && typeof DEMO !== "undefined" ? DEMO : window.EV_BASE;
-  ReactDOM.unmountComponentAtNode(racine);
-  ReactDOM.render(sc.render(), racine);
-  poserGestes(); surveiller();
-  var g = document.getElementById("som-racine");
-  ReactDOM.render(h(F, null,
-    h("button", {className:"som-gear", title:"⚙ Scènes de la maquette : le sommaire de toutes les scènes (simulation)"}, "⚙"),
-    window.SOMMAIRE_OUVERT ? Sommaire(sc.id) : null), g);
-  if(!sc.attendre) window.SCENE_PRETE = sc.id; else window.SCENE_PRETE = null;
+  var cle = id + "|" + (choix.cle || "");
+  if(ECRAN_MONTE !== cle){ ReactDOM.unmountComponentAtNode(racine); ECRAN_MONTE = cle; if(typeof tempsRemettre === "function") tempsRemettre(); }
+  try { ReactDOM.render(choix.render ? choix.render() : sc ? sc.render() : null, racine); }
+  catch(e){ console.error("QCM : l'écran " + id + " ne se dessine pas", e); }
+  if(typeof poserGestes === "function"){ poserGestes(); surveiller(); }
+  window.SCENE_PRETE = id;
 }
-document.addEventListener("click", function(ev){
-  var t = ev.target.closest ? ev.target.closest(".som-gear, .som-x, .som-l") : null;
-  if(!t) return;
-  if(t.classList.contains("som-gear")){ window.SOMMAIRE_OUVERT = !window.SOMMAIRE_OUVERT; rendre(); }
-  else if(t.classList.contains("som-x")){ window.SOMMAIRE_OUVERT = false; rendre(); }
-  else if(t.classList.contains("som-l")){ window.SOMMAIRE_OUVERT = false; }
-});
-document.addEventListener("keydown", function(ev){ if(ev.key === "Escape" && window.SOMMAIRE_OUVERT){ window.SOMMAIRE_OUVERT = false; rendre(); } });
+LIVE.abonner(rendre);
 window.addEventListener("hashchange", rendre);
+LIVE.demarrer();
+if(["console", "telephone", "tableau"].indexOf(LIVE.appareil()) >= 0) MOTEUR.demarrer();
 rendre();

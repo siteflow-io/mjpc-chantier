@@ -49,7 +49,8 @@ window.addEventListener("keydown", function(ev){
 
 /* ── L'en-tête de la console : chaque geste nomme sa destination, au moment de la scène (12.4 : plus de table par libellé seul) ── */
 function seanceEnCours(){ var m = MOM(); return !!m.seance && ["avant", "hors", "soir", "fin", "grille"].indexOf(m.ph) < 0 && m.seance !== "TEST"; }
-function ouvrirTableau(){ window.open(location.pathname + "#scene=b-reponse&m=" + encodeURIComponent(MO()), "tableau-qcm"); }
+// (QCM-1) la vue tableau de la 7.7.1 (l. 6022) : la même adresse, dans sa fenêtre
+function ouvrirTableau(){ window.open(location.pathname + "#mode=prof&view=board", "BoardWindow", "width=1280,height=800"); }
 function Console(groupe, tab, contenu, séance){
   var groupes = [["pilotage","Pilotage","c-lancer"],["donnees","Données","c-seances"],["reglages","Réglages","c-reglages"]];
   var sous = {pilotage:[["evals","📝 Évaluations","c-evals"],["pilot","🎯 Pilotage classe","c-lancer"]], donnees:[["results","📊 Résultats","c-seances"],["snapshot","💾 Sauvegarde","c-sauvegarde"]], reglages:[]};
@@ -108,7 +109,12 @@ function Accueil(){ return h(AccueilC); }
 function AccueilC(){
   var s = useState(false), login = s[0], setLogin = s[1], s2 = useState(""), code = s2[0], setCode = s2[1], s3 = useState(false), refus = s3[0], setRefus = s3[1];
   // la boîte « alert » de la 7.7.1 (l. 2483), dessinée : son texte exact et « OK » ; aucune infobulle à l'accueil (changement 2)
-  function essayer(){ if(code.trim()) versScene("c-evals"); else setRefus(true); }
+  // (QCM-1) la porte professeur de la 7.7.1 (l. 2477 à 2486) : la clé de chiffrement ou l'empreinte du hub ; hors https, son message
+  function essayer(){
+    if(typeof mjpcCryptoDispo === "function" && !mjpcCryptoDispo()){ setRefus(MJPC_TXT_PROF_HORS_LIGNE); return; }
+    if(typeof mjpcVerifierProf !== "function"){ setRefus(true); return; }
+    mjpcVerifierProf(code).then(function(r){ if(r.ok) GESTES.modeProf(); else setRefus(true); });
+  }
   useEchapLocal(refus, function(){ setRefus(false); });
   return h("div", {className:"accueil"},
     ["⭐","🎯","✨","💡","🎲","🔥"].map(function(em, i){ return h("span", {key:i, className:"deco"}, em); }),
@@ -120,7 +126,7 @@ function AccueilC(){
           h("input", {type:"password", value:code, placeholder:"Code", onChange:function(e){ setCode(e.target.value); }, onKeyDown:function(e){ if(e.key === "Enter") essayer(); }}),
           h("button", {"data-local":"1", onClick:essayer}, "→")),
     refus && h("div", {className:"fen-fond alerte-native"}, h("div", {className:"alerte-boite"},
-      h("div", {className:"alerte-texte"}, "Ce code ou cette clé n’ouvre pas l’espace professeur."),
+      h("div", {className:"alerte-texte"}, typeof refus === "string" ? refus : "Ce code ou cette clé n’ouvre pas l’espace professeur."),
       h("div", {className:"alerte-pied"}, h("button", {className:"alerte-ok", "data-local":"1", onClick:function(){ setRefus(false); }}, "OK")))));
 }
 // (changement 7.2) un choix déjà allumé, cliqué, s'éteint : chaque clic se voit
@@ -221,8 +227,10 @@ function messageAppel(abs, paires){
 }
 function ListeAppel(p){   // l'appel : un clic sur un nom le marque absent ; « Tout le monde présent » les décoche
   // (complément 4, correction 3) les absents de la séance, au moment de l'appel : ceux du scénario
-  var s = useState(function(){ var o = {}; (p.absents || ["YVON Adam"]).forEach(function(n){ o[n] = true; }); return o; }), abs = s[0], setAbs = s[1];
+  // (QCM-1) les absents de la séance réelle ; chaque coche est gardée pour « 🚀 Lancer la séance » (APPEL, src/live/gestes.js)
+  var s = useState(function(){ var o = {}; (p.absents || SCN.absents().map(SCN.nomDe)).forEach(function(n){ o[n] = true; }); return o; }), abs = s[0], setAbs = s[1];
   var n = Object.keys(abs).filter(function(k){ return abs[k]; }).length;
+  if(typeof APPEL !== "undefined") APPEL.absents = Object.keys(abs).filter(function(k){ return abs[k]; }).map(function(k){ return sanMJPC(k); });
   return h(F, null,
     h("div", {className:"checkin-list", style:{display:"grid", gridTemplateColumns:"1fr 1fr 1fr", columnGap:".4rem"}}, p.classe.map(function(nom){
       var a = !!abs[nom];

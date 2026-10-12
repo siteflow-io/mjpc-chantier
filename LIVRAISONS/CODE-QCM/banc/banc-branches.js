@@ -44,6 +44,8 @@ async function scene(id, p, appareil){ if(!p) return; try { RELEVES[id] = Object
     J.v(/🎓 Évaluation d'entraînement : elle ne compte pas\./.test(await texte(td)), H2, "la démo : « 🎓 Évaluation d'entraînement : elle ne compte pas. » (t-demo-q)", (await texte(td)).slice(0, 200));
     await cliquer(prof, /Terminer la séance/); await pause(300); await cliquer(prof, /^🛑 Terminer|Oui, terminer|Terminer la séance/); await pause(1000);
     await td.context().close(); dernier = null;
+    await cliquer(prof, /^Pilotage$/); await cliquer(prof, /Pilotage classe/); await pause(400); await choisir(prof, /3 ESSAI/); await pause(300);
+    await scene("c-demo-faite", prof, "console");
     J.v(!!(srv.store.get("qcm/evaluations") || {}).demo, H1, "la démo reste dans la base après sa séance");
 
     J.section("B.2 L'entrée qui se trompe : un code pas enregistré, la mauvaise tablette, le binôme");
@@ -179,6 +181,10 @@ async function scene(id, p, appareil){ if(!p) return; try { RELEVES[id] = Object
     await cliquer(prof, /🔄 Reprendre la séance/); await pause(500);
     await cliquer(prof, /Terminer la séance|Terminer définitivement/); await pause(300); await cliquer(prof, /^🛑 Terminer|Oui, terminer|Terminer la séance|Terminer définitivement/); await pause(800);
     await scene("t-fin", t1, "tablette");
+    // « 🔓 Rouvrir » une séance terminée : la garde, puis « Annuler »
+    await cliquer(prof, /^Pilotage$/); await cliquer(prof, /Pilotage classe/); await pause(400);
+    if(await cliquer(prof, /^🔓 Rouvrir$/)){ await pause(300); await scene("c-rouvrir-seance", prof, "console"); J.v(/Rouvrir/.test(await texte(prof)), H2, "« 🔓 Rouvrir » une séance terminée : la garde (c-rouvrir-seance)"); await cliquer(prof, /^Annuler$/); }
+    else J.v(false, H2, "« 🔓 Rouvrir » sur une séance terminée (Séances précédentes, c-rouvrir-seance)");
   } catch(e){ J.v(false, "banc", "les branches se sont arrêtées", e.stack); }
   J.section("B.7 Aucune erreur de page, aucune boîte système");
   for(const p of A.pages) J.v(p.__err.length === 0, H1, "page « " + p.__nom + " » sans erreur ni boîte système", p.__err.slice(0, 3).join(" · "));

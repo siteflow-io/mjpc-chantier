@@ -106,7 +106,7 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
       for(const cote of seul ? [null] : ["g", "d"]){
         const sl = seul ? (t.g || t.d) : t[cote]; const nom = nomDeSlug(sl); const [N, ...P] = nom.split(" ");
         await taper(p, cote, "code", codeDe(nom)); await taper(p, cote, "prenom", P.join(" ").toLowerCase()); await taper(p, cote, "nom", N.toLowerCase());
-        if(t.n === enPlace.n && cote === "g") champAvant.g = await zoneTexte(p, "d");
+        if(enPlace && t.n === enPlace.n && sl === "abrial_julien") await scene("t-login", p, "tablette");
         await cliquer(p, /Entrer/, cote); await pause(300);
       }
     }));
@@ -145,6 +145,7 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
       J.v(await attendre(tel, new RegExp("Q ?" + (qi + 1) + "|Question " + (qi + 1), "i"), 6000), H2, "le téléphone suit Q" + (qi + 1), (await texte(tel)).slice(0, 200));
       if(qi === 0) J.v(new RegExp(esc(Q.enonce)).test(await zoneTexte(tabJM, "g")) && (await choixOuverts(tabJM, "g", lab)).length === 0 && !new RegExp(">?" + lab.map(esc).join("|")).test(await zoneTexte(tabJM, "g")), H2, "réflexion : l'énoncé sans les choix (t-q1-reflexion)", (await zoneTexte(tabJM, "g")).slice(0, 200));
       if(qi === 0){ await scene("t-q1-reflexion", tabJM, "tablette"); await scene("c-q1-reflexion", prof, "console"); }
+      if(qi === 1) await scene("t-q2-reflexion", tabJM, "tablette");
       // Q1 : la réflexion va à son terme, on voit le passage (t-q1-passage1) ; Q2 et Q3 : « ✋ Autoriser la réponse » (c-q1-reflexion → c-q1-tour1)
       if(qi > 0){ J.v(await cliquer(prof, /Autoriser la réponse/), H2, "« ✋ Autoriser la réponse » pendant la réflexion"); await pause(500); }
       else await attendreBase(() => etat().ph === "passage" || etat().ph === "reponse", (Q.reflexion + 4) * 1000);
@@ -203,6 +204,7 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
               const z = await zoneTexte(p, cote); if(!/Oui, la même chose/.test(z)) continue;
               if(qi === 0 && tour === 2 && sl === "duvernay_michel") await scene("t-q1-b-michel", p, "tablette");
               if(qi === 2 && tour === 1 && sl === "abrial_julien") await scene("x610-1-b-julien", p, "tablette");
+              if(qi === 2 && tour === 2 && sl === "duvernay_michel") await scene("x610-2-b-michel", p, "tablette");
               const dit = S.ditB(S.pre(nomDeSlug(sl)), qi); bFaits.add(sl);
               if(dit === "rien") continue;
               if(await cliquer(p, dit === "oui" ? /^Oui, la même chose$/ : /^Non, autre chose$/, cote)) bDits++;
@@ -317,6 +319,9 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
         const au = (sess().s.autonomie || {})["foucher_hugo"];
         J.v(!!au && au.retire === true && au.quand === "heure", H1, "la base : autonomie/foucher_hugo = {retire: true, ms, quand: heure}", JSON.stringify(au));
         await cliquer(prof, /Fermer/);
+        // le même geste, au téléphone (p-autonomie) : un clic sur un nom
+        if(await cliquer(tel, /FOUCHER Hugo|^Hugo/)){ await pause(400); await scene("p-autonomie", tel, "telephone"); J.v(/autonomie/i.test(await texte(tel)), H2, "au téléphone, un clic sur Hugo : son point d'autonomie (p-autonomie)", (await texte(tel)).slice(0, 200)); if(!(await cliquer(tel, /^✕ Fermer$|^Fermer$|^✕$/))) await tel.keyboard.press("Escape"); }
+        else J.v(false, H2, "au téléphone, un clic sur un nom (Hugo) ouvre sa fenêtre (p-autonomie)");
       }
       if(qi === 2){ await scene("c-corr-q3-apres", prof, "console"); await scene("t-corr-q3-apres", tabJM, "tablette"); }
       if(qi === 0){ await scene("t-corr-q1-apres", tabJM, "tablette"); await scene("c-corr-q1-apres", prof, "console"); }
@@ -346,6 +351,13 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
     J.v(Object.keys(al).length >= 1, H1, "une alerte dans la base (alertes/<id>) pour Michel, Q1", JSON.stringify(al).slice(0, 200));
     await scene("c-coeval-attente", prof, "console");
     J.v(await etatBouton(prof, /Afficher leur bilan aux élèves/) !== "ouvert", H2, "« 🏁 Afficher leur bilan » fermé tant que l'alerte n'est pas tranchée et que 4 n'ont pas répondu", await etatBouton(prof, /Afficher leur bilan/));
+    // les gestes de l'alerte, chacun jusqu'à sa garde, puis « Annuler »
+    for(const [re, id] of [[/La feuille dit autre chose : je clique ce qu'elle dit/, "c-coeval-feuille"], [/^⛔ à Michel$/, "c-autonomie-michel"], [/^⛔ à (?!Michel)/, "c-autonomie-julien"], [/^⛔ aux deux$/, "c-autonomie-deux"]]){
+      const ok = await cliquer(prof, re); await pause(300);
+      J.v(ok, H2, "l'alerte de Michel : « " + re.source.replace(/[\^$]/g, "").replace("(?!Michel)", "son voisin") + " » (" + id + ")");
+      if(ok){ await scene(id, prof, "console"); if(!(await cliquer(prof, /^Annuler$/))) await prof.keyboard.press("Escape"); await pause(300); }
+    }
+    J.v(Object.keys(sess().s.autonomie || {}).filter(k => k !== "foucher_hugo").length === 0, H1, "les gardes annulées n'ont retiré aucun point d'autonomie", JSON.stringify(sess().s.autonomie));
     J.v(await cliquer(prof, /Donner raison à Michel/), H2, "« Donner raison à Michel : Rome → 1 point »"); await pause(600);
     const al2 = Object.values(sess().s.alertes || {})[0] || {};
     J.v(!!al2.tranche && !!al2.tranche.decision, H1, "l'alerte tranchée dans la base (alertes/<id>/tranche = {decision, ms})", JSON.stringify(al2));
@@ -364,6 +376,8 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
         if(new RegExp("\\b" + nt.n + " ?/ ?" + nt.total + "\\b").test(z)) notesOk++; else notesKo.push(pr + " attendu " + nt.n + "/" + nt.total + " vu « " + (z.match(/\d+ ?\/ ?\d+/) || ["?"])[0] + " »"); } }
     J.v(notesKo.length === 0, H2, "le bilan de chaque élève dit sa note d'après la règle (24 notes comparées au scénario de la maquette)", notesOk + " justes ; " + notesKo.slice(0, 8).join(" ; "));
     J.v(/Ta note provisoire/.test(await texte(tabJM)), H2, "« Ta note provisoire » (t-bilan)", (await texte(tabJM)).slice(0, 200));
+    if(await cliquer(tabJM, /Imprimer \/ Exporter mon bilan/, cJ)){ await pause(600); await scene("t-bilan-imprime", tabJM, "eleve"); await tabJM.keyboard.press("Escape"); await cliquer(tabJM, /^✕$|^Fermer$|← Retour/); await pause(300); }
+    else J.v(false, H2, "« 📄 Imprimer / Exporter mon bilan » (t-bilan-imprime)");
     J.v(!/c4-[a-z]+-\d\d/.test(await texte(tabJM)), H2, "aucun code de compétence dans le bilan de l'élève (libellés élève)");
     const zh = await zoneTexte(tabs[TABS.find(t => [t.g, t.d].includes("foucher_hugo")).n], TABS.find(t => [t.g, t.d].includes("foucher_hugo")).g === "foucher_hugo" ? "g" : "d");
     J.v(/non atteinte|retiré|⛔/.test(zh), H2, "le bilan de Hugo dit son point d'autonomie retiré", zh.slice(0, 200));
@@ -441,6 +455,11 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
     J.v(new RegExp("ZELLER Lou[\\s\\S]{0,300}" + lou2.n + " ?/ ?" + lou2.total).test(await texte(prof)), H3, "Lou passe à " + lou2.n + " / " + lou2.total + " après « Corrigé d'après sa feuille », partout", ((await texte(prof)).match(/ZELLER Lou[\s\S]{0,200}/) || [""])[0]);
 
     J.section("2.4 Rendre les copies, le PDF, l'élève chez lui, masquer");
+    const el = await A.tablette("eleve", "3 ESSAI");
+    await cliquer(el, /1 élève/); await taper(el, null, "code", codeDe("ZELLER Lou")); await taper(el, null, "prenom", "lou"); await taper(el, null, "nom", "zeller"); await cliquer(el, /Entrer/); await pause(800);
+    await cliquer(el, /Mes évaluations/); await pause(700);
+    await scene("e-mes-evals", el, "eleve");
+    J.v(/En relecture/.test(await texte(el)), H3, "« 📊 Mes évaluations » de Lou avant la remise : « En relecture » (e-mes-evals)", (await texte(el)).slice(0, 300));
     await cliquer(prof, /^📊 Résultats$/); await pause(500);
     await scene("c-seances-lues", prof, "console");
     J.v(await cliquer(prof, /rendre les copies ▸/), H3, "toutes les feuilles lues : « rendre les copies ▸ » (c-seances-lues)", (await texte(prof)).slice(0, 300)); await pause(300);
@@ -457,9 +476,7 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
     await scene("x632-pdf", prof, "console");
     J.v(/notes et compétences|Notes et compétences/i.test(await texte(prof)), H3, "le PDF « notes et compétences » (x632-pdf)", (await texte(prof)).slice(0, 300));
     await prof.keyboard.press("Escape"); await cliquer(prof, /^✕$|Fermer/); await pause(300);
-    const el = await A.tablette("eleve", "3 ESSAI");
-    await cliquer(el, /1 élève/); await taper(el, null, "code", codeDe("ZELLER Lou")); await taper(el, null, "prenom", "lou"); await taper(el, null, "nom", "zeller"); await cliquer(el, /Entrer/); await pause(800);
-    await cliquer(el, /Mes évaluations/); await pause(700);
+    await pause(500);
     await scene("e-mes-evals-rendue", el, "eleve");
     J.v(new RegExp(lou2.n + " ?/ ?" + lou2.total).test(await texte(el)), H3, "« 📊 Mes évaluations » de Lou : sa note définitive, " + lou2.n + " / " + lou2.total + " (e-mes-evals-rendue)", (await texte(el)).slice(0, 300));
     await cliquer(el, /Évaluation d'essai/); await pause(600);

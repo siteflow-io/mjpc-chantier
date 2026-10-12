@@ -12,7 +12,7 @@ COMP_COURT["c4-langue-04"] = "Construire les notions…"; COMP_COURT["c4-ecrire-
 function compsDe(ev){ var o = []; ev.questions.forEach(function(q){ (q.competences || []).forEach(function(c){ if(o.indexOf(c) < 0) o.push(c); }); }); return o; }
 function compQuestionsEv(c, ev){ var l = []; ev.questions.forEach(function(q, i){ if((q.competences || []).indexOf(c) >= 0) l.push(i); }); return l; }
 function EnteteCompEv(c, ev){ return h("th", {key:c, className:"comp-col", title:"La compétence " + c + " : " + LIB_OFF[c] + ". Ses questions : " + compQuestionsEv(c, ev).map(function(i){ return "Q" + (i+1); }).join(", ") + "."}, "🧩 " + c, h("div", {className:"thq"}, COMP_COURT[c] + " · " + compQuestionsEv(c, ev).map(function(i){ return "Q" + (i+1); }).join(", "))); }
-function PillCompEv(r, c, ev){ var m = niveauComp(r, c); return h("span", null, h("span", {className:"maitrise-pill " + m.cls}, m.em + " " + m.lib), h("div", {className:"comp-det"}, compQuestionsEv(c, ev).map(function(i){ return "Q" + (i+1) + " " + marque(r.st[i]); }).join(" · "))); }
+function PillCompEv(r, c, ev){ var x = r.comp && r.comp[c], m = maitriseV(x && x.max ? x.n * 20 / x.max : 0); return h("span", null, h("span", {className:"maitrise-pill " + m.cls}, m.em + " " + m.lib), h("div", {className:"comp-det"}, compQuestionsEv(c, ev).map(function(i){ return "Q" + (i+1) + " " + marque(r.st[i]); }).join(" · "))); }
 // le résultat d'un élève, comme le tableau le lit : à la séance du 08/10, celui de la console (calc) ; ailleurs, celui du scénario
 function resultatDe(id, p, k){ if(id === "S08") return calc(p); var r = SCN.resultat(id, p, k); if(!r) return null; return Object.assign({}, r, {st:r.st.map(function(s){ return s === "n" ? "pasdit" : s; })}); }
 function autonomieSeance(id, p, k){
@@ -334,7 +334,7 @@ function resultatLocalV(se, slug){
   ev.questions.forEach(function(q, qi){ if(compte.indexOf(qi) < 0) return; q.competences.forEach(function(c){ comp[c] = comp[c] || {n:0, max:0}; if(!q.bonus) comp[c].max++; comp[c].n += (pts[qi] || 0); }); });
   var corrigees = aLireV(se).filter(function(x){ return x.p === slug && x.corrigee; }).map(function(x){ return x.q; });
   Object.keys(S.lectures || {}).forEach(function(qi){ var l = (S.lectures[qi] || {})[slug]; if(l && l.par === "prof" && corrigees.indexOf(+qi) < 0) corrigees.push(+qi); });
-  return {p:slug, st:st, pts:pts, n:Math.round(n * 100) / 100, total:total, complet:complet, sur20:sur20, maitrise:SCN.maitriseDe ? SCN.maitriseDe(Math.round(sur20 * 10) / 10) : null, comp:comp, corrigees:corrigees, annulees:se.annulees, ecartees:se.ecartees};
+  return {p:slug, st:st, pts:pts, n:Math.round(n * 100) / 100, total:total, complet:complet, sur20:sur20, maitrise:maitriseV(sur20).k, comp:comp, corrigees:corrigees, annulees:se.annulees, ecartees:se.ecartees};
 }
 // un même rendu demande cent fois la note des mêmes élèves (le taux de chaque question pour chaque bilan) : elle se garde le temps du rendu
 var MEMO3 = {v:{}, prevu:false};
@@ -369,7 +369,7 @@ function entreeV(se, slug){
   var la = r.st.map(function(s, i){ return s === "x" || se.annulees.indexOf(i) >= 0 ? -1 : i; }).filter(function(i){ return i >= 0; });
   if(la.some(function(i){ return !ev.questions[i].verifie; })) return null;
   var es = estimationV(se, slug), te = es && la.length === ev.questions.length ? typeEstim7(es, r.n, r.total || 1) : null;
-  return {niveau:SCN.maitriseDe(Math.round(r.sur20 * 10) / 10), mode:ev.mode === "partiel" ? "partiel" : "strict", autonomieRetiree:autonomieV(se, slug).retire, autonomieLibs:[libEleve("tr-personne-03"), libEleve("tr-methodes-02")],
+  return {niveau:maitriseV(r.sur20).k, mode:ev.mode === "partiel" ? "partiel" : "strict", autonomieRetiree:autonomieV(se, slug).retire, autonomieLibs:[libEleve("tr-personne-03"), libEleve("tr-methodes-02")],
     questions:la.map(function(i){ return {n:i + 1, verifie:ev.questions[i].verifie, pts:r.pts[i], niveau:ev.questions[i].niveau, taux:tauxV(se, i)}; }),
     estimation:te && te.type, ecart:te ? te.ecart : 0};
 }
@@ -468,7 +468,7 @@ MARQUE_RES.x = ["cell-vide", "·"];
 function csvV(se, lignes, comps){
   var t = [["Élève"].concat(se.ev.questions.map(function(q, i){ return "Q" + (i + 1); }), ["Note", "Sur 20", "Maîtrise de la note"], comps, ["Autonomie", "À lire sur la feuille"])];
   var lire = aLireV(se);
-  lignes.forEach(function(l){ var r = l.r, mt = maitriseDe(r.sur20);
+  lignes.forEach(function(l){ var r = l.r, mt = maitriseV(r.sur20);
     t.push([l.nom].concat(r.st.map(function(x){ return (MARQUE_RES[x] || ["", ""])[1]; }), [r.complet ? r.n + "/" + r.total : "—", r.complet ? fr1(r.sur20) : "—", mt.lib],
       comps.map(function(c){ return niveauComp(r, c).lib; }), [autonomieV(se, l.p).retire ? "retiré" : "Très bonne maîtrise", lire.filter(function(x){ return x.p === l.p; }).map(function(x){ return "Q" + (x.q + 1) + " : " + x.txt; }).join(" · ")])); });
   var csv = "﻿" + t.map(function(r){ return r.map(function(c){ c = String(c == null ? "" : c); return /[;"\n]/.test(c) ? '"' + c.replace(/"/g, '""') + '"' : c; }).join(";"); }).join("\n");
@@ -505,7 +505,7 @@ function ResultatsC(){
         h("th", {className:"res-col-l"}, "🤝 Autonomie"),
         h("th", {className:"res-col-alire"}, "À lire sur la feuille"))),
       h("tbody", null, lignes.map(function(l){
-        var mt = maitriseDe(l.r.sur20), fl = lire.filter(function(x){ return x.p === l.p; }), au = autonomieV(se, l.p);
+        var mt = maitriseV(l.r.sur20), fl = lire.filter(function(x){ return x.p === l.p; }), au = autonomieV(se, l.p);
         return h("tr", {key:l.p, "data-eleve":l.p},
           h("td", {className:"eleve-cell"}, h("button", {className:"nom-fiche", "data-va":"c-fiche&eleve=" + encodeURIComponent(l.p) + sq, title:"Ouvre la fiche " + deNom(prenomDeNom(l.nom)) + " : sa feuille lue, sa tablette, ce qu'" + ilElle(se, l.p) + " a dit, son point d'autonomie, son bilan général."}, l.nom)),
           l.r.st.map(function(x, i){ var c = MARQUE_RES[x] || MARQUE_RES.f; return h("td", {key:i, className:c[0] + ((l.r.corrigees || []).indexOf(i) >= 0 ? " cell-corrigee" : "")}, c[1]); }),
@@ -514,7 +514,7 @@ function ResultatsC(){
           h("td", null, h("span", {className:"maitrise-pill " + mt.cls}, mt.em + " " + mt.lib)),
           comps.map(function(c){ return h("td", {key:c, className:"comp-cell"}, PillCompEv(l.r, c, ev)); }),
           !comps.length && h("td", {key:"sans", className:"comp-cell"}, "—"),
-          h("td", {className:"comp-cell"}, au.retire ? h("span", {className:"maitrise-pill mt-rouge"}, "⛔ retiré " + au.quand) : h("span", {className:"maitrise-pill mt-vert"}, "🟢 Très bonne maîtrise")),
+          h("td", {className:"comp-cell"}, au.retire ? h("span", {className:"maitrise-pill mt-rouge"}, "⛔ retiré " + au.quand) : h("span", {className:"maitrise-pill mt-vert"}, maitriseV(20).em + " " + maitriseV(20).lib)),
           h("td", {className:"alire-cell" + (fl.length ? "" : " vide")}, fl.map(function(x){ return "Q" + (x.q+1) + " : " + x.txt + (x.corrigee ? " · Corrigé d'après sa feuille" : "") + (x.lue ? " · ✔ lue" : ""); }).join(" · ")));
       })))),
     h("div", {className:"legende-res"}, "✓ juste d'après la feuille · ✓ orange : Trouvée au dernier moment · ✗ faux · ∅ « aucun de ces choix » · ⛔ : point d'autonomie retiré · ⚠️ Annulée ou ❌ Écartée : la question garde sa marque en tête de colonne"));
@@ -545,7 +545,7 @@ function FicheV(p){
   var se = p.se, slug = p.slug, r0 = resultatV(se, slug), ev = se.ev, sq = "&seance=" + encodeURIComponent(se.id), e = "&eleve=" + encodeURIComponent(slug) + sq;
   var nom = nomEleveV(se, slug), pre = prenomDeNom(nom), voisin = voisinV(se, slug), vPre = voisin ? prenomEleveV(se, voisin) : null, il = ilElle(se, slug);
   if(!r0) return h("div", {className:"student-report", "data-eleve":slug}, h("div", {style:{display:"flex", justifyContent:"space-between", alignItems:"center", flexWrap:"wrap"}}, h("h3", null, "👤 " + nom), h("button", {className:"btn btn-ghost btn-sm", "data-va":"c-resultats" + sq, title:"Ferme la fiche et revient au tableau de la séance."}, "✕ Fermer")));
-  var r = stVue(r0), mt = maitriseDe(r.sur20), au = autonomieV(se, slug), comps = compsDeV(ev), lire = aLireV(se).filter(function(x){ return x.p === slug; });
+  var r = stVue(r0), mt = maitriseV(r.sur20), au = autonomieV(se, slug), comps = compsDeV(ev), lire = aLireV(se).filter(function(x){ return x.p === slug; });
   var b = (se.S.b || {});
   // une séance de la 7.7.1 n'a ni lecture du voisin ni « Oui / Non » : sa fiche est celle des autres séances de la maquette (FicheAutre)
   if(!se.nouvelle) return FicheAncienneV(se, slug, r, mt, au, comps, e, sq, nom, il, pre);
@@ -583,7 +583,7 @@ function FicheV(p){
         return h("div", {key:c, className:"fiche-comp-l"}, h("span", {className:"c"}, c), h("span", null, libOff(c)), h("span", {className:"d"}, compQuestionsEv(c, ev).map(function(i){ return "Q" + (i+1) + " " + marque(r.st[i]); }).join(" · ") + " → " + fr1(x.n) + "/" + x.max), h("span", {className:"maitrise-pill " + n.cls}, n.em + " " + n.lib)); }),
       ["tr-personne-03", "tr-methodes-02"].map(function(c){
         return h("div", {key:c, className:"fiche-comp-l"}, h("span", {className:"c"}, c), h("span", null, libOff(c)), h("span", {className:"d"}, "le point d'autonomie"),
-          h("span", {className:"maitrise-pill " + (au.retire ? "mt-rouge" : "mt-vert")}, au.retire ? "🔴 Maîtrise insuffisante" : "🟢 Très bonne maîtrise"));
+          h("span", {className:"maitrise-pill " + (au.retire ? "mt-rouge" : "mt-vert")}, au.retire ? maitriseV(0).em + " " + maitriseV(0).lib : maitriseV(20).em + " " + maitriseV(20).lib));
       }),
       h("div", {className:"fiche-auto"}, au.retire
         ? h(F, null, h("span", null, "⛔ Point d'autonomie retiré " + au.quand + "."), h("button", surClic(function(){ return rendreAutonomieV(se, slug); }, {className:"btn btn-vert btn-sm", title:"Rend son point d'autonomie à " + pre + " : ses deux compétences d'autonomie repassent en Très bonne maîtrise."}), "↩️ Rendre"))
@@ -644,9 +644,9 @@ function pdfSeanceV(se){
     nNotes++;
     var la = r.st.map(function(s, i){ return s === "x" || se.annulees.indexOf(i) >= 0 ? -1 : i; }).filter(function(i){ return i >= 0; });
     // une question bonus compte dans les points gagnés, pas dans le total (comme la note, et le bilan de l'élève)
-    var cells = comps.map(function(c){ var tout = compQuestionsEv(c, ev).filter(function(i){ return la.indexOf(i) >= 0; }), qs = tout.filter(function(i){ return !ev.questions[i].bonus; }), n = tout.reduce(function(a, i){ return a + (r.pts[i] || 0); }, 0), d = qs.length || tout.length, v = nivPdf(d ? Math.min(20, n * 20 / d) : 0);
+    var cells = comps.map(function(c){ var tout = compQuestionsEv(c, ev).filter(function(i){ return la.indexOf(i) >= 0; }), qs = tout.filter(function(i){ return !ev.questions[i].bonus; }), n = tout.reduce(function(a, i){ return a + (r.pts[i] || 0); }, 0), d = qs.length || tout.length, m = maitriseV(d ? Math.min(20, n * 20 / d) : 0), v = {lib:m.lib, cls:m.k};
       return '<td class="niv ' + v.cls + '">' + v.lib + '<span class="pts">' + fr1(n) + "/" + d + "</span></td>"; });
-    var a = autonomieV(se, e.slug).retire ? NIV_PDF[3] : NIV_PDF[0];
+    var a0 = maitriseV(autonomieV(se, e.slug).retire ? 0 : 20), a = {lib:a0.lib, cls:a0.k};
     auto.forEach(function(){ cells.push('<td class="niv ' + a.cls + '">' + a.lib + "</td>"); });
     var poses = ev.questions.filter(function(q, i){ return se.ecartees.indexOf(i) < 0; }).length;
     if(la.length < poses - se.annulees.length) asavoir.push("<b>" + escPdf(nom) + "</b> : parti après la question " + la.length + " ; sa note et ses compétences portent sur les " + la.length + " questions où il était là, et il n'a pas fait son estimation.");
@@ -729,7 +729,7 @@ function ListeMesEvalsV(slug, classeSlug, onOuvrir){
   var items = mesEvaluationsV(slug, classeSlug), se0 = items[0] && items[0].se;
   if(!items.length) return h("p", {style:{opacity:.8}}, "Tu n'as pas encore d'évaluation ici. Celles de ta classe apparaîtront après la correction.");
   return h("div", {className:"eleves-grid", style:{gridTemplateColumns:"1fr"}}, items.map(function(x, i){
-    var n = x.note, mt = n ? maitriseDe(n.sur20) : null;
+    var n = x.note, mt = n ? maitriseV(n.sur20) : null;
     var ligne = n ? x.date + " · " + fr1(n.n) + " / " + n.total + " · " + fr1(n.sur20) + " / 20 · " + mt.em + " " + mt.lib : null;
     var actif = x.etat === "bilan";
     return h(actif ? "button" : "div", {key:x.se.id, className:"eleve-btn mes-ev " + x.etat, "data-seance":x.se.id, "data-local":actif && onOuvrir ? "1" : null, onClick:actif && onOuvrir ? function(){ onOuvrir(x.se.id); } : null,
@@ -775,7 +775,7 @@ function BilanRenduVC(){
 // le bilan d'une séance rendue, pour un élève : sa note définitive, question par question, ses compétences, son estimation, « 📝 Bilan »
 function BilanContenuV(se, slug, boutonRetour){
   var r0 = resultatV(se, slug); if(!r0) return null;
-  var r = stVue(r0), ev = se.ev, mt = maitriseDe(r.sur20), au = autonomieV(se, slug), comps = compsDeV(ev), est = estimationV(se, slug);
+  var r = stVue(r0), ev = se.ev, mt = maitriseV(r.sur20), au = autonomieV(se, slug), comps = compsDeV(ev), est = estimationV(se, slug);
   var es = est ? typeEstim7(est, r.n, r.total || 1) : null, emE = est ? MAITRISE.filter(function(x){ return x.k === est; })[0].em : null, fR = fourchetteDeNote(r.n, r.total), emR = MAITRISE.filter(function(x){ return x.k === fR; })[0].em;
   var bilan = texteBilanV(se, slug), entree = entreeV(se, slug);
   return h(F, null,
@@ -800,7 +800,7 @@ function BilanContenuV(se, slug, boutonRetour){
             h("span", {className:"pt"}, "→ " + fr1(r.pts[i] || 0) + " point"));
         }))),
       h("div", {className:"bilan-bloc"}, h("h3", null, "Tes compétences"),
-        comps.map(function(c){ var x = r.comp[c] || {n:0, max:0}, mm = maitriseDe(x.max ? x.n * 20 / x.max : 0);
+        comps.map(function(c){ var x = r.comp[c] || {n:0, max:0}, mm = maitriseV(x.max ? x.n * 20 / x.max : 0);
           return h("div", {key:c, className:"comp-l"},
             h("span", null, libEleve(c), h("span", {className:"comp-q"}, compQuestionsEv(c, ev).filter(function(i){ return r.st[i] !== "x" && se.annulees.indexOf(i) < 0; }).map(function(i){ return "Q" + (i+1) + " " + (r.st[i] === "j" || r.st[i] === "t" ? "✓" : "✗"); }).join(" · ") + " → " + fr1(x.n) + "/" + x.max)),
             h("span", {className:"mt"}, mm.em + " " + mm.lib)); }),
@@ -1061,7 +1061,7 @@ function FicheAncienneV(se, slug, r, mt, au, comps, e, sq, nom, il, pre){
         return h("div", {key:c, className:"fiche-comp-l"}, h("span", {className:"c"}, c), h("span", null, libOff(c)), h("span", {className:"d"}, compQuestionsEv(c, ev).map(function(i){ return "Q" + (i+1) + " " + marque(r.st[i]); }).join(" · ") + " → " + fr1(x.n) + "/" + x.max), h("span", {className:"maitrise-pill " + n.cls}, n.em + " " + n.lib)); }),
       ["tr-personne-03", "tr-methodes-02"].map(function(c){
         return h("div", {key:c, className:"fiche-comp-l"}, h("span", {className:"c"}, c), h("span", null, libOff(c)), h("span", {className:"d"}, "le point d'autonomie"),
-          h("span", {className:"maitrise-pill " + (au.retire ? "mt-rouge" : "mt-vert")}, au.retire ? "🔴 Maîtrise insuffisante" : "🟢 Très bonne maîtrise"));
+          h("span", {className:"maitrise-pill " + (au.retire ? "mt-rouge" : "mt-vert")}, au.retire ? maitriseV(0).em + " " + maitriseV(0).lib : maitriseV(20).em + " " + maitriseV(20).lib));
       }),
       h("div", {className:"fiche-auto"}, au.retire
         ? h(F, null, h("span", null, "⛔ Point d'autonomie retiré " + au.quand + "."), h("button", surClic(function(){ return rendreAutonomieV(se, slug); }, {className:"btn btn-vert btn-sm", title:"Rend son point d'autonomie à " + pre + " : ses deux compétences d'autonomie repassent en Très bonne maîtrise."}), "↩️ Rendre"))

@@ -370,6 +370,14 @@ function v3Evals(){ return v3(v3Q("evaluations")) || {}; }
 function v3Sessions(){ return v3(v3Q("sessions")) || {}; }
 function v3Classes(){ return v3("classes") || {}; }
 function v3Reglages(){ return v3(v3Q("settings")) || {}; }
+// le niveau de maîtrise d'une note sur 20, d'après les tranches des Réglages (qcm/settings/maitrise : {sur, niveaux:[{em, lib, de, a}]}), sinon celles de la maquette
+function maitriseV(sur20){
+  var x = Math.round((+sur20 || 0) * 10) / 10, R = v3Reglages().maitrise, l = R && R.niveaux ? v3Liste(R.niveaux) : [];
+  if(!l.length) return maitriseDe(x);
+  var y = x * (+R.sur || 20) / 20, n = l.slice().sort(function(p, q){ return +q.de - +p.de; }).filter(function(t){ return y >= +t.de; })[0] || l[l.length - 1];
+  var b = MAITRISE.filter(function(m){ return m.em === n.em; })[0] || maitriseDe(x);
+  return Object.assign({}, b, {lib:n.lib || b.lib});
+}
 function v3Slug(s){ return typeof slugify === "function" ? slugify(s) : String(s || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_+|_+$/g, ""); }
 // les compétences du hub (taxonomie/competences : deux listes de groupes, chaque item {id, libelle, libelleEleve, actif}), trouvées par leur id
 function v3Competences(){

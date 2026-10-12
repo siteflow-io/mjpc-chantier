@@ -143,7 +143,10 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
       // les deux tours : sur chaque tablette, la moitié dont les choix sont ouverts répond
       for(const tour of [1, 2]){
         tropLong();
-        await pause(3600);    // le passage : « À toi dans 3 secondes »
+        await pause(1000);    // le passage : « À toi dans 3 secondes »
+        if(qi === 0) await scene(tour === 1 ? "t-q1-passage1" : "t-q1-passage2", tabJM, "tablette");
+        if(qi === 0 && tour === 1) J.v(/Pose ton stylo|À toi dans/.test(await texte(tabJM)), H2, "le passage : « Pose ton stylo, … À toi dans 3 secondes » (t-q1-passage1)", (await texte(tabJM)).slice(0, 200));
+        await pause(2600);
         if(qi === 0 && tour === 1){ await scene("t-q1-tour1", tabJM, "tablette"); }
         let repondus = 0, attendus = 0;
         await Promise.all(Object.entries(tabs).map(async ([n, p]) => { const t = TABS.find(x => x.n === n);
@@ -347,89 +350,144 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
   } catch(e){ J.v(false, "banc", "l'heure s'est arrêtée", e.stack); }
 
   // ════════ 2. LE SOIR ════════
+  const seanceDuJour = () => { const all = srv.store.get("qcm/sessions") || {}; const id = Object.keys(all).find(x => all[x].classe === "3 ESSAI" || all[x].classeSlug === slug("3 ESSAI")); return {id, s: id ? all[id] : {}}; };
+  const ouvrirFiche = async nom => { const ok = await cliquer(prof, new RegExp("^" + esc(nom) + "$")); await pause(400); return ok; };
+  const fermerFiche = async () => { if(!(await cliquer(prof, /^✕ Fermer$/))) await prof.keyboard.press("Escape"); await pause(300); };
   try {
     tropLong();
-    J.section("2.1 Le soir : Résultats, la séance, la fiche, « Que dit la feuille ? »");
+    J.section("2.1 Le soir : Données → Résultats, la séance, son tableau");
     if(!prof) prof = await A.ouvrir("console", "?mode=prof", 1536, 864);
-    J.v(await cliquer(prof, /^Données$/), H3, "« Données » se clique"); await pause(500);
-    await cliquer(prof, /Résultats/); await pause(500);
+    J.v(await cliquer(prof, /^Données$/), H3, "« Données » se clique"); await pause(400);
+    await cliquer(prof, /^📊 Résultats$/); await pause(500);
     await scene("c-seances", prof, "console");
-    J.v(/3 ESSAI/.test(await texte(prof)) && /Évaluation d'essai/.test(await texte(prof)), H3, "Résultats : la séance du jour, rangée sous 3 ESSAI (c-seances)", (await texte(prof)).slice(0, 300));
-    await cliquer(prof, /Évaluation d'essai/); await pause(700);
+    let tx = await texte(prof);
+    J.v(/3e · 1 séance/.test(tx) && /copies non rendues/.test(tx), H3, "Résultats : « ▾ 3e · 1 séance », la séance du jour, « copies non rendues » (c-seances)", tx.slice(0, 400));
+    J.v(/▸ 6e · vide pour l'instant/.test(tx) && /▸ 5e · vide pour l'instant/.test(tx), H3, "Résultats : 6e, 5e « vide pour l'instant » (c-seances)", tx.slice(0, 300));
+    J.v(await cliquer(prof, /^📊 Ouvrir$/), H3, "« 📊 Ouvrir » la séance"); await pause(700);
     await scene("c-resultats", prof, "console");
-    const tr = await texte(prof);
+    tx = await texte(prof);
+    J.v(await etatBouton(prof, /PDF notes et compétences/) === "fermé", H3, "« 📄 PDF notes et compétences » fermé tant que les copies ne sont pas rendues", await etatBouton(prof, /PDF notes et compétences/));
     const lou = S.note("Lou", "SOIR");
-    J.v(new RegExp("ZELLER Lou[\\s\\S]{0,200}" + lou.n + " ?/ ?" + lou.total).test(tr), H3, "le tableau de la séance : Lou " + lou.n + " / " + lou.total + " avant la lecture de sa feuille (c-resultats)", tr.slice(0, 300));
-    J.v(/À lire|à lire/.test(tr), H3, "les feuilles à lire sont signalées (aLire)", tr.slice(0, 300));
-    J.v(await cliquer(prof, /^DUVERNAY Michel$/), H3, "un clic sur Michel ouvre sa fiche (c-fiche)"); await pause(500);
-    await scene("c-fiche", prof, "console");
-    await cliquer(prof, /Fermer|✕/); await pause(300);
-    J.v(await cliquer(prof, /^ZELLER Lou$/), H3, "un clic sur Lou ouvre sa fiche"); await pause(400);
-    const qdlf = await cliquer(prof, /Que dit la feuille/);
-    await scene("c-que-dit-la-feuille", prof, "console");
-    if(qdlf){ await cliquer(prof, /^6$/); await cliquer(prof, /Valider|Enregistrer|Corrigé/); await pause(700); }
-    J.v(qdlf, H3, "« Que dit la feuille ? » pour Lou, Q3 : 6");
-    const lou2 = S.note("Lou", "SOIR:lu");
-    J.v(new RegExp("ZELLER Lou[\\s\\S]{0,200}" + lou2.n + " ?/ ?" + lou2.total).test(await texte(prof)), H3, "Lou passe à " + lou2.n + " / " + lou2.total + " après « Corrigé d'après sa feuille »", (await texte(prof)).slice(0, 300));
-    await cliquer(prof, /Fermer|✕/);
+    J.v(new RegExp("ZELLER Lou[\\s\\S]{0,300}" + lou.n + " ?/ ?" + lou.total).test(tx), H3, "le tableau : Lou " + lou.n + " / " + lou.total + " avant la lecture de sa feuille (c-resultats)", (tx.match(/ZELLER Lou[\s\S]{0,200}/) || [tx.slice(0, 200)])[0]);
+    const hu = S.note("Hugo", "SOIR");
+    J.v(new RegExp("FOUCHER Hugo[\\s\\S]{0,300}" + hu.n + " ?/ ?" + hu.total).test(tx), H3, "le tableau : Hugo " + hu.n + " / " + hu.total + ", son point d'autonomie retiré pendant l'heure", (tx.match(/FOUCHER Hugo[\s\S]{0,200}/) || [""])[0]);
+    const aL = Object.values(seanceDuJour().s.aLire || {});
+    const qui = new Set(aL.map(x => x.eleveSlug));
+    J.v(["duvernay_michel", "carre_tom", "quinton_enzo", "tessier_anna", "zeller_lou"].every(x => qui.has(x)), H1, "à lire sur les feuilles (aLire/<id>) : Michel, Tom, Enzo, Anna, Lou (scénario A_LIRE : B contre la lecture, « aucun de ces choix », rien de dit)", JSON.stringify(aL.map(x => x.eleveSlug + ":" + x.qi + ":" + x.sorte)));
 
-    J.section("2.2 Rendre les copies, le PDF, masquer");
-    J.v(await cliquer(prof, /Rendre les copies|rendre les copies/), H3, "« Rendre les copies »"); await pause(300);
+    J.section("2.2 La fiche de Michel : son point d'autonomie, le soir ; « ✔ Marquer lue »");
+    J.v(await ouvrirFiche("DUVERNAY Michel"), H3, "un clic sur Michel ouvre sa fiche (c-fiche)");
+    await scene("c-fiche", prof, "console");
+    J.v(/Julien/.test(await texte(prof)), H3, "la fiche de Michel : sa feuille lue par Julien", (await texte(prof)).slice(0, 300));
+    J.v(await cliquer(prof, /^⛔ Retirer le point d'autonomie$/), H3, "« ⛔ Retirer le point d'autonomie », le soir"); await pause(300);
+    await scene("c-fiche-garde", prof, "console");
+    await cliquer(prof, /^⛔ Retirer le point d'autonomie$/, ".modal, .modal-box, [role=dialog], .fenetre, .garde"); await pause(300);
+    if(!(seanceDuJour().s.autonomie || {}).duvernay_michel) { const n = await prof.evaluate(() => [...document.querySelectorAll("button")].filter(b => /Retirer le point d'autonomie/.test(b.textContent) && b.getBoundingClientRect().width > 0).length); if(n > 1) { await prof.evaluate(() => { const b = [...document.querySelectorAll("button")].filter(b => /Retirer le point d'autonomie/.test(b.textContent) && b.getBoundingClientRect().width > 0); b[b.length - 1].click(); }); await pause(400); } }
+    await scene("c-fiche-retire", prof, "console");
+    const am = (seanceDuJour().s.autonomie || {}).duvernay_michel;
+    J.v(!!am && am.retire && am.quand === "soir", H1, "la base : autonomie/duvernay_michel = {retire: true, quand: soir}", JSON.stringify(am));
+    J.v(/↩️ Rendre/.test(await texte(prof)), H3, "le point retiré, dans la fiche : « ↩️ Rendre » (c-fiche-retire)");
+    let marques = 0; while(marques < 6 && await cliquer(prof, /^✔ Marquer lue$/)) marques++;
+    await fermerFiche();
+    for(const nom of ["CARRÉ Tom", "QUINTON Enzo", "TESSIER Anna", "PERRAUD Jade", "MAILLARD Noah"]){
+      if(await ouvrirFiche(nom)){ let k = 0; while(k < 4 && await cliquer(prof, /^✔ Marquer lue$/)) { k++; marques++; } await fermerFiche(); } }
+    J.v(marques >= 5, H3, "« ✔ Marquer lue » sur les feuilles à lire (Michel, Tom, Enzo, Anna, Jade, Noah)", marques + " marquées");
+
+    J.section("2.3 « Que dit la feuille ? » : Lou, Q3, sa feuille dit 6");
+    J.v(await ouvrirFiche("ZELLER Lou"), H3, "la fiche de Lou s'ouvre");
+    const n3 = await prof.evaluate(() => { const b = [...document.querySelectorAll("button")].filter(b => /La feuille dit autre chose/.test(b.textContent) && b.getBoundingClientRect().width > 0); if(b.length < 3) return b.length; b[2].setAttribute("data-banc", "q3"); return 3; });
+    if(n3 === 3) await prof.click("[data-banc='q3']").catch(() => {});
+    await pause(400);
+    await scene("c-que-dit-la-feuille", prof, "console");
+    J.v(/Que dit la feuille/.test(await texte(prof)), H3, "« La feuille dit autre chose » (Q3) ouvre « Que dit la feuille ? »", (await texte(prof)).slice(0, 200));
+    await cliquer(prof, /^6$/); await cliquer(prof, /^Valider$/); await pause(700);
+    const lu3 = ((seanceDuJour().s.lectures || {})[2] || {}).zeller_lou;
+    J.v(!!lu3 && lu3.par === "prof", H1, "la base : lectures/2/zeller_lou = {choix: [0], par: prof}", JSON.stringify(lu3));
+    const lou2 = S.note("Lou", "SOIR:lu");
+    await cliquer(prof, /^✔ Marquer lue$/);
+    await fermerFiche();
+    J.v(new RegExp("ZELLER Lou[\\s\\S]{0,300}" + lou2.n + " ?/ ?" + lou2.total).test(await texte(prof)), H3, "Lou passe à " + lou2.n + " / " + lou2.total + " après « Corrigé d'après sa feuille », partout", ((await texte(prof)).match(/ZELLER Lou[\s\S]{0,200}/) || [""])[0]);
+
+    J.section("2.4 Rendre les copies, le PDF, l'élève chez lui, masquer");
+    await cliquer(prof, /^📊 Résultats$/); await pause(500);
+    await scene("c-seances-lues", prof, "console");
+    J.v(await cliquer(prof, /rendre les copies ▸/), H3, "toutes les feuilles lues : « rendre les copies ▸ » (c-seances-lues)", (await texte(prof)).slice(0, 300)); await pause(300);
     await scene("c-rendre", prof, "console");
-    await cliquer(prof, /^Rendre|Oui|Confirmer/); await pause(700);
-    const { s } = (() => { const all = srv.store.get("qcm/sessions") || {}; const id = Object.keys(all).find(x => all[x].classe === "3 ESSAI" || all[x].classeSlug === slug("3 ESSAI")); return {s: id ? all[id] : {}}; })();
-    J.v(!!(s.copies && s.copies.rendues), H1, "la base : copies.rendues (ms)", JSON.stringify(s.copies || null));
+    await cliquer(prof, /^Rendre les copies$|^📤 Rendre|^Rendre$/); await pause(700);
+    const cp = seanceDuJour().s.copies || {};
+    J.v(!!cp.rendues, H3, "la base : copies.rendues (ms)", JSON.stringify(cp));
     await scene("c-copies-rendues", prof, "console");
-    J.v(/copies rendues/.test(await texte(prof)), H3, "« copies rendues le … » (c-copies-rendues)", (await texte(prof)).slice(0, 300));
-    J.v(await etatBouton(prof, /PDF/) === "ouvert", H3, "les copies rendues : le PDF s'ouvre (c-resultats-rendues)", await etatBouton(prof, /PDF/));
-    // l'élève, chez lui : « 📊 Mes évaluations »
+    J.v(/copies rendues le/.test(await texte(prof)), H3, "« copies rendues le … » (c-copies-rendues)", (await texte(prof)).slice(0, 300));
+    await cliquer(prof, /^📊 Ouvrir$/); await pause(600);
+    await scene("c-resultats-rendues", prof, "console");
+    J.v(await etatBouton(prof, /PDF notes et compétences/) === "ouvert", H3, "les copies rendues : « 📄 PDF notes et compétences » s'ouvre (c-resultats-rendues)", await etatBouton(prof, /PDF notes et compétences/));
+    await cliquer(prof, /PDF notes et compétences/); await pause(1500);
+    await scene("x632-pdf", prof, "console");
+    J.v(/notes et compétences|Notes et compétences/i.test(await texte(prof)), H3, "le PDF « notes et compétences » (x632-pdf)", (await texte(prof)).slice(0, 300));
+    await prof.keyboard.press("Escape"); await cliquer(prof, /^✕$|Fermer/); await pause(300);
     const el = await A.ouvrir("eleve", "?mode=eleve", 1280, 800);
     await cliquer(el, /1 élève/); await taper(el, null, "code", codeDe("ZELLER Lou")); await taper(el, null, "prenom", "lou"); await taper(el, null, "nom", "zeller"); await cliquer(el, /Entrer/); await pause(800);
     await cliquer(el, /Mes évaluations/); await pause(700);
     await scene("e-mes-evals-rendue", el, "eleve");
-    J.v(new RegExp(lou2.n + " ?/ ?" + lou2.total).test(await texte(el)), H3, "« 📊 Mes évaluations » de Lou : sa note définitive (e-mes-evals-rendue)", (await texte(el)).slice(0, 300));
+    J.v(new RegExp(lou2.n + " ?/ ?" + lou2.total).test(await texte(el)), H3, "« 📊 Mes évaluations » de Lou : sa note définitive, " + lou2.n + " / " + lou2.total + " (e-mes-evals-rendue)", (await texte(el)).slice(0, 300));
+    await cliquer(el, /Évaluation d'essai/); await pause(600);
+    await scene("e-bilan-lou", el, "eleve");
+    J.v(/Bilan/.test(await texte(el)), H3, "le bilan de Lou, corrigé d'après sa feuille, finit par « 📝 Bilan » (e-bilan-lou)", (await texte(el)).slice(-300));
     J.v(await cliquer(prof, /Masquer les copies/), H3, "« 🙈 Masquer les copies »"); await pause(600);
+    J.v((seanceDuJour().s.copies || {}).masquees === true, H3, "la base : copies.masquees = true", JSON.stringify(seanceDuJour().s.copies));
+
+    J.section("2.5 La corbeille, la sauvegarde (gardes, sans rien jeter)");
+    if(await cliquer(prof, /^🗑️$/)){ await pause(300); await scene("c-corbeille", prof, "console"); J.v(/Mettre à la corbeille/.test(await texte(prof)), H3, "« 🗑️ » une séance : la garde « 🗑️ Mettre à la corbeille » (c-corbeille)"); await cliquer(prof, /^Annuler$/); }
+    else J.v(false, H3, "« 🗑️ » sur la ligne de la séance");
+    J.v(await cliquer(prof, /^💾 Sauvegarde$/), H3, "« 💾 Sauvegarde »"); await pause(400);
+    await scene("c-sauvegarde", prof, "console");
+    if(await cliquer(prof, /Importer snapshot/)){ await pause(300); await scene("c-importer", prof, "console"); await cliquer(prof, /^Annuler$/); } else J.v(false, H3, "« 📤 Importer snapshot »");
+    if(await cliquer(prof, /^🗑️ Purger les évaluations$/)){ await pause(300); await scene("c-purger", prof, "console"); J.v(/démo/i.test(await texte(prof)), H3, "« Purger les évaluations » : la garde dit que la démo reste (c-purger)"); await cliquer(prof, /^Annuler$/); } else J.v(false, H3, "« 🗑️ Purger les évaluations »");
+    J.v(!!(srv.store.get("qcm/evaluations") || {}).demo, H3, "la démo est toujours là (qcm/evaluations/demo)");
   } catch(e){ J.v(false, "banc", "le soir s'est arrêté", e.stack); }
 
   // ════════ 3. LE RESTE ════════
   try {
     tropLong();
-    J.section("3.1 Les évaluations, le collage du JSON, les réglages, le mode test, le papier");
-    await cliquer(prof, /^Pilotage$/); await cliquer(prof, /Évaluations/); await pause(500);
+    J.section("3.1 Les évaluations : la liste, imprimer, modifier, la corbeille, le collage du JSON");
+    await cliquer(prof, /^Pilotage$/); await cliquer(prof, /^📝 Évaluations$/); await pause(500);
     await scene("c-evals", prof, "console");
     const te = await texte(prof);
-    J.v(/Démo/.test(te) && /6e/.test(te) && /5e/.test(te) && /4e/.test(te) && /3e/.test(te), H3, "Évaluations : la démo en tête, puis 6e, 5e, 4e, 3e (c-evals)", te.slice(0, 300));
-    J.v(/Sans chapitre/.test(te), H3, "« Sans chapitre » pour les évaluations du hub sans chapitre", te.slice(0, 300));
+    J.v(/Démo — apprendre le déroulé/.test(te) && /🔒 Permanente/.test(te), H3, "Évaluations : la démo en tête, « 🔒 Permanente » (c-evals)", te.slice(0, 300));
+    J.v(/▸ 6e · vide pour l'instant/.test(te) && /4e/.test(te) && /3e/.test(te), H3, "Évaluations rangées par niveau, 6e à 3e (c-evals)", te.slice(0, 300));
+    J.v(/Sans chapitre/.test(te), H3, "« Sans chapitre » : les évaluations du hub sans chapitre, « ✏️ Compléter »", te.slice(0, 300));
+    const imprimer = await prof.evaluate(() => { const b = [...document.querySelectorAll("button")].filter(b => /Imprimer/.test(b.textContent) && b.getBoundingClientRect().width > 0); if(b.length < 2) return false; b[1].setAttribute("data-banc", "imp"); return true; });
+    if(imprimer){ await prof.click("[data-banc='imp']").catch(() => {}); await pause(500); await scene("c-feuille", prof, "console"); J.v(new RegExp(esc(EV.questions[0].enonce)).test(await texte(prof)), H3, "« 🖨️ Imprimer » : les énoncés seuls, sur une page (c-feuille)"); await prof.keyboard.press("Escape"); await cliquer(prof, /^✕$|^Fermer$|^✕ Fermer$/); await pause(300); }
+    else J.v(false, H3, "« 🖨️ Imprimer » sur l'évaluation d'essai");
+    if(await cliquer(prof, /^✏️ Modifier$/)){ await pause(500); await scene("x627-3-editeur", prof, "console"); J.v(/Ce qu'elle vérifie/.test(await texte(prof)), H3, "l'éditeur : « 🎯 Ce qu'elle vérifie » (x627-3-editeur)"); await prof.keyboard.press("Escape"); await cliquer(prof, /^Annuler$|^✕$|Fermer/); await pause(300); }
+    else J.v(false, H3, "« ✏️ Modifier » l'évaluation d'essai");
+    const corb = await prof.evaluate(() => { const b = [...document.querySelectorAll("button")].filter(b => b.textContent.trim() === "🗑️" && b.getBoundingClientRect().width > 0); if(!b[0]) return false; b[0].setAttribute("data-banc", "corb"); return true; });
+    if(corb){ await prof.click("[data-banc='corb']").catch(() => {}); await pause(300); await scene("c-eval-corbeille", prof, "console"); await cliquer(prof, /^Annuler$/); } else J.v(false, H3, "« 🗑️ » une évaluation");
     J.v(await cliquer(prof, /Nouvelle évaluation/), H3, "« ➕ Nouvelle évaluation »"); await pause(400);
     await scene("c-collage", prof, "console");
-    const ev4 = JSON.parse(fs.readFileSync(path.join(__dirname, "donnees", "eval-4e-11.json"), "utf8"));
-    const colle = await prof.evaluate(js => { const t = [...document.querySelectorAll("textarea")].find(x => x.getBoundingClientRect().width > 0); if(!t) return false; const set = Object.getOwnPropertyDescriptor(HTMLTextAreaElement.prototype, "value").set; set.call(t, js); t.dispatchEvent(new Event("input", {bubbles: true})); return true; }, JSON.stringify(ev4));
-    J.v(colle, H3, "le JSON de l'évaluation de 4e (11 questions, chapitre 4e-ch1) se colle");
-    await cliquer(prof, /Vérifier le format/); await pause(300);
-    await cliquer(prof, /Enregistrer|Créer|Importer/); await pause(800);
-    const evs = srv.store.get("qcm/evaluations") || {};
-    const id4 = Object.keys(evs).find(x => evs[x].chapitre === "4e-ch1");
-    J.v(!!id4 && (evs[id4].questions || []).length === 11, H3, "l'évaluation de 4e est dans la base, avec ses 11 questions et son chapitre 4e-ch1", id4 ? JSON.stringify(evs[id4]).slice(0, 200) : "absente");
-    await cliquer(prof, /Réglages/); await pause(500);
-    await scene("c-reglages", prof, "console");
-    J.v(/prompt/i.test(await texte(prof)), H3, "Réglages : le prompt de création d'éval (c-reglages)");
+    await prof.keyboard.press("Escape"); await cliquer(prof, /^Annuler$|^✕$/); await pause(300);
 
-    J.section("3.2 L'heure de demain : 4 ESSAI, l'évaluation de 4e collée, 11 questions, deux tablettes");
-    if(id4){
-      await cliquer(prof, /^Pilotage$/); await cliquer(prof, /Pilotage classe/);
-      await choisir(prof, /4 ESSAI/); await pause(200); await choisir(prof, /Paris à la barre/); await pause(300);
-      J.v(await etatBouton(prof, /Lancer la séance/) === "ouvert", H2, "4e : « 🚀 Lancer la séance » s'ouvre pour l'évaluation collée (chapitre sans fiche au hub)", await etatBouton(prof, /Lancer la séance/));
-      await cliquer(prof, /Lancer la séance/); await pause(500); await cliquer(prof, /Lancer la séance/); await pause(1200);
-      const a = srv.store.get("qcm/sessionActive") || {}; const sid4 = a[slug("4 ESSAI")]; const sx = sid4 ? srv.store.get("qcm/sessions/" + (typeof sid4 === "object" ? sid4.sessionId || sid4.id : sid4)) || {} : {};
-      J.v(!!sid4, H1, "4e : la séance est lancée", JSON.stringify(a));
-      const pl4 = sx.places || {}; const t1 = pl4[Object.keys(pl4)[0]];
-      if(t1){ const p = await A.ouvrir("tablette-4e", "?mode=eleve", 1280, 800); await cliquer(p, /2 élèves/);
-        for(const cote of ["g", "d"]){ const e = C4.find(x => slug(x.nomComplet) === t1[cote]); if(!e) continue; await taper(p, cote, "code", e.code); await taper(p, cote, "prenom", e.prenom.toLowerCase()); await taper(p, cote, "nom", e.nom.toLowerCase()); await cliquer(p, /Entrer/, cote); await cocherTout(p, cote); await cliquer(p, /^Je commence$/, cote); }
-        await cliquer(prof, /Lancer Q1\b/); await pause(800);
-        J.v(new RegExp(esc(ev4.questions[0].enonce)).test(await texte(p)), H2, "4e : la question 1 sur la tablette", (await texte(p)).slice(0, 200));
-        J.v(/1 ?\/ ?11/.test(await texte(p)) || /11/.test(await texte(prof)), H2, "4e : 11 questions comptées", (await texte(p)).slice(0, 200)); }
-      await cliquer(prof, /Terminer la séance/); await cliquer(prof, /^🛑 Terminer|Oui, terminer|Terminer la séance/); await pause(500);
-    }
+    J.section("3.2 Les réglages, le prompt, le mode d'emploi, le QR, le mode test, le papier, l'accueil");
+    J.v(await cliquer(prof, /^Réglages$/), H3, "« Réglages »"); await pause(500);
+    await scene("c-reglages", prof, "console");
+    J.v(/Très bonne maîtrise/.test(await texte(prof)), H3, "Réglages, en cartes : les niveaux de maîtrise (c-reglages)", (await texte(prof)).slice(0, 300));
+    if(await cliquer(prof, /^🤖 Prompt IA$/)){ await pause(500); await scene("c-reglages-prompt", prof, "console"); const tp = await texte(prof);
+      J.v(!/\{\{[A-Z_]+\}\}/.test(tp), H3, "le prompt tel que l'app le copie : aucun jeton {{…}} visible (c-reglages-prompt)", (tp.match(/\{\{[A-Z_]+\}\}/) || [""])[0]);
+      await cliquer(prof, /^✕$/); await prof.keyboard.press("Escape"); await pause(300); } else J.v(false, H3, "« 🤖 Prompt IA »");
+    if(await cliquer(prof, /^✏️ Modifier le prompt$/)){ await pause(500); await scene("c-reglages-prompt-modifier", prof, "console"); await cliquer(prof, /^↩️ Annuler$|^Annuler$/); await prof.keyboard.press("Escape"); await pause(300); } else J.v(false, H3, "« ✏️ Modifier le prompt »");
+    if(await cliquer(prof, /Mode d'emploi/)){ await pause(500); await scene("c-mode-emploi", prof, "console"); await prof.keyboard.press("Escape"); await cliquer(prof, /^✕$|^Fermer$/); await pause(300); } else J.v(false, H2, "« 📖 Mode d'emploi »");
+    if(await cliquer(prof, /QR pilotage/)){ await pause(500); await scene("c-qr", prof, "console"); await prof.keyboard.press("Escape"); await cliquer(prof, /^✕$|^Fermer$/); await pause(300); } else J.v(false, H2, "« 📱 QR pilotage »");
+    await cliquer(prof, /^Pilotage$/); await cliquer(prof, /Pilotage classe/); await pause(300);
+    await choisir(prof, /3 ESSAI/); await choisir(prof, /Évaluation d'essai/); await pause(200);
+    if(await cliquer(prof, /Séance sur papier/)){ await pause(400); await scene("c-papier-lancer", prof, "console"); J.v(/papier/i.test(await texte(prof)), H3, "« 📄 Séance sur papier » au lancement (c-papier-lancer)"); await cliquer(prof, /Sur tablettes/); }
+    else J.v(false, H3, "« 📄 Séance sur papier »");
+    const accueil = await A.ouvrir("accueil", "", 1536, 864);
+    await scene("c-accueil", accueil, "console");
+    J.v(/Mode élève/.test(await texte(accueil)) && /Accès professeur/.test(await texte(accueil)), H1, "l'accueil de l'app : « 🎓 Mode élève » ou « Accès professeur » (c-accueil)", (await texte(accueil)).slice(0, 200));
+    if(await cliquer(prof, /Mode test/)){ await pause(800); await scene("x620-1-mode-test-ouverture", prof, "console");
+      J.v(/test/i.test(await texte(prof)), H3, "« 🧪 Mode test » s'ouvre (x620-1-mode-test-ouverture)");
+      J.v(!Object.keys(srv.store.get("qcm/sessionActive") || {}).some(k => k === slug("3 ESSAI")), H3, "le mode test ne touche à aucune vraie classe"); }
+    else J.v(false, H3, "« 🧪 Mode test »");
   } catch(e){ J.v(false, "banc", "le reste s'est arrêté", e.stack); }
 
   // ════════ Pour toutes les pages ════════

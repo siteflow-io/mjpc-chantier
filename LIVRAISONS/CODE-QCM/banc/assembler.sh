@@ -28,8 +28,10 @@ if [ -f "${1:-$L/evaluation-qcm.staging.html}" ]; then
   a=$(date +%s)
   ( APP_FILE="$APP" BANC="$BANC" timeout 1260 node "$L/banc/banc.js" "$O" > "$O/banc.log" 2>&1; echo $? > "$O/.rb"; date +%s > "$O/.tb" ) &
   ( APP_FILE="$APP" BANC="$BANC" timeout 1260 node "$L/banc/banc-demain.js" "$O" > "$O/demain.log" 2>&1; echo $? > "$O/.rd"; date +%s > "$O/.td" ) &
+  ( APP_FILE="$APP" BANC="$BANC" timeout 1260 node "$L/banc/banc-branches.js" "$O" > "$O/branches.log" 2>&1; echo $? > "$O/.rr"; date +%s > "$O/.tr" ) &
   wait
   { echo; echo "── banc commun ($(( $(cat "$O/.tb") - a )) s, code $(cat "$O/.rb"))"; sed -n '2p' "$O/banc.txt" 2>/dev/null | sed 's/^/  /';
+    echo; echo "── les gestes rares ($(( $(cat "$O/.tr") - a )) s, code $(cat "$O/.rr"))"; sed -n '2p' "$O/branches.txt" 2>/dev/null | sed 's/^/  /';
     echo; echo "── l'heure de demain ($(( $(cat "$O/.td") - a )) s, code $(cat "$O/.rd"))"; sed -n '2p' "$O/demain.txt" 2>/dev/null | sed 's/^/  /'; } >> "$O/resume.txt"
   rm -f "$O"/.r? "$O"/.t?
   if [ -f "$O/releves-app.json" ]; then node "$L/banc/fidelite.js" "$O" > "$O/fidelite.log" 2>&1

@@ -3,7 +3,7 @@
    l'action dans la base (ACT pour Paul, ELV pour l'élève), ou l'ouverture sur place de la fenêtre, de l'onglet ou de la fiche (NAV).
    La table d'équivalence (écran de départ, geste, action) est écrite pour QCM-2 et QCM-3 dans src/live/gestes.json ; elle se lit ici :
    GESTES.ACTIONS (par libellé), GESTES.FENETRES (les écrans qui s'ouvrent sur place), GESTES.ONGLETS, et les gestes de l'élève. */
-var LANCEMENT = {classe:null, evalId:null};   // la classe et l'évaluation choisies au lancement (les menus de « 🎯 Pilotage classe »)
+var LANCEMENT = {classe:null, evalId:null, mode:null};   // la classe et l'évaluation choisies au lancement (les menus de « 🎯 Pilotage classe »)
 var APPEL = {absents:null};                    // les absents cochés à l'appel (ListeAppel)
 var GESTES = (function(){
   var G = {};
@@ -26,7 +26,10 @@ var GESTES = (function(){
   G.choixLancement = choixLancement;
   /* ── Les gestes de Paul, par libellé : [motif, quand (fenêtre ou non), action] ── */
   G.ACTIONS = [
-    [/^🚀 Lancer la séance\s*$/, "hors-appel", function(el){ var c = choixLancement(); if(!c.classe || !c.evalId) return; LIVE.classeSlug = c.classe; return ACT.lancerSeance(c.classe, c.evalId, {}).then(function(){ navRemettre(); }); }],
+    // la séance sur papier : depuis « 📄 Séance sur papier » (c-papier-lancer), le lancement porte {mode : "papier"}
+    [/^🚀 Lancer la séance\s*$|^📄 Lancer la séance sur papier$/, "hors-appel", function(el){ var c = choixLancement(); if(!c.classe || !c.evalId) return; LIVE.classeSlug = c.classe;
+      var papier = NAV.ecran === "c-papier-lancer" || /sur papier/.test(etiquetteDe(el)) || LANCEMENT.mode === "papier";
+      return ACT.lancerSeance(c.classe, c.evalId, papier ? {mode:"papier"} : {}).then(function(){ navRemettre(); }); }],
     [/^🚀 Lancer la séance\s*$/, "appel", function(){ return apres(ACT.appelFini(APPEL.absents || SCN.absents())); }],
     [/^🎓 Lancer la démo$/, null, function(){ var c = choixLancement(); if(!c.classe) return; return ACT.lancerSeance(c.classe, "demo", {}).then(function(){ navRemettre(); }); }],
     [/^🚀 Lancer le rattrapage$/, null, function(){ var c = choixLancement(); var notes = SCN.seances(c.classe).filter(function(s){ return s.eval === c.evalId && s.fin; }), deja = {};

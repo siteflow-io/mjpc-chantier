@@ -106,8 +106,11 @@ var SCN = (function(){
   LIVE.abonner(durees);
 
   /* ── Les classes et leurs élèves ── */
+  // la classe d'une séance : sa clé au hub (« 3 ESSAI ») ; une séance d'avant le 14/07 la porte en slug (« 3_essai », « 3-essai ») : on la retrouve
+  function cleDeClasse(x){ var c = LIVE.d.classes || {}; if(!x) return null; if(c[x]) return x; var s = sanMJPC(x); return Object.keys(c).filter(function(k){ return sanMJPC(k) === s; })[0] || x; }
+  S.cleDeClasse = cleDeClasse;
   function rosterDe(classe){
-    var c = (LIVE.d.classes || {})[classe]; if(!c) return [];
+    var c = (LIVE.d.classes || {})[cleDeClasse(classe)]; if(!c) return [];
     var l = typeof extractEleves === "function" ? extractEleves(c, []) : (Array.isArray(c.eleves) ? c.eleves : []).map(function(e){ return typeof e === "string" ? e : (e && (e.nomComplet || e.name)) || null; }).filter(Boolean);
     return l.slice().sort(function(a, b){ return a.localeCompare(b, "fr"); });
   }
@@ -127,8 +130,8 @@ var SCN = (function(){
   S.nomDe = function(x){ if(!x) return ""; if(NOMS[x]) return NOMS[x]; indexer(); return NOMS[x] || NOMS[sanMJPC(x)] || String(x); };
   S.pre = function(x){ var n = S.nomDe(x), m = n.split(" "), i = 0; while(i < m.length - 1 && m[i] === m[i].toUpperCase() && /[A-ZÀ-Ý]/.test(m[i])) i++; return m.slice(i).join(" ") || n; };
   S.nom = function(x){ var n = S.nomDe(x), p = S.pre(x); return n.slice(0, n.length - p.length).trim(); };
-  S.sexe = function(x){ var sl = sanMJPC(S.nomDe(x)), c = (LIVE.d.classes || {})[S.classe()] || {}, am = (c.amenagements || {})[sl] || {}; return am.sexe === "f" ? "F" : am.sexe === "m" ? "M" : null; };
-  S.exclusions = function(x, classe){ var c = (LIVE.d.classes || {})[classe || S.classe()] || {}, e = (c.exclusions || {})[x]; return Array.isArray(e) ? e : e ? Object.values(e) : []; };
+  S.sexe = function(x){ var sl = sanMJPC(S.nomDe(x)), c = (LIVE.d.classes || {})[cleDeClasse(S.classe())] || {}, am = (c.amenagements || {})[sl] || {}; return am.sexe === "f" ? "F" : am.sexe === "m" ? "M" : null; };
+  S.exclusions = function(x, classe){ var c = (LIVE.d.classes || {})[cleDeClasse(classe || S.classe())] || {}, e = (c.exclusions || {})[x]; return Array.isArray(e) ? e : e ? Object.values(e) : []; };
 
   /* ── La séance regardée ── */
   S.sid = function(){ if(LIVE.sid) return LIVE.sid; var c = LIVE.classeSlug; return c ? (LIVE.d.sessionActive || {})[c] || null : null; };
@@ -438,7 +441,7 @@ var SCN = (function(){
       aLire:S.aLireSeance(id).filter(function(x){ return !x.lue; }).length, enPause:!!(s.deroule && s.deroule.autreHeure), titre:ev ? ev.titre : (s.evalSnapshot || {}).titre};
   };
   S.SEANCES = [];
-  S.seances = function(classe){ var all = LIVE.d.sessions || {}; return Object.keys(all).filter(function(id){ var s = all[id]; return s && (!classe || s.classeSlug === classe) && s.classeSlug && s.classeSlug.charAt(0) !== "_"; })
+  S.seances = function(classe){ var all = LIVE.d.sessions || {}, cl = classe ? cleDeClasse(classe) : null; return Object.keys(all).filter(function(id){ var s = all[id]; return s && (!cl || cleDeClasse(s.classeSlug) === cl) && s.classeSlug && s.classeSlug.charAt(0) !== "_"; })
     .map(S.seance).filter(Boolean).sort(function(a, b){ return b.ms - a.ms; }); };
   // les séances terminées, avant maintenant (la séance en cours n'y est pas)
   S.seancesAvant = function(k, classe){ var cur = S.sid(); return S.seances(classe || S.classe()).filter(function(x){ return x.fin && x.id !== cur; }); };

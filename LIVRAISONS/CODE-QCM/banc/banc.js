@@ -540,7 +540,15 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
     const corb = await prof.evaluate(() => { const b = [...document.querySelectorAll("button")].filter(b => b.textContent.trim() === "🗑️" && b.getBoundingClientRect().width > 0); if(!b[0]) return false; b[0].setAttribute("data-banc", "corb"); return true; });
     if(corb){ await prof.click("[data-banc='corb']").catch(() => {}); await pause(300); await scene("c-eval-corbeille", prof, "console"); await cliquer(prof, /^Annuler$/); } else J.v(false, H3, "« 🗑️ » une évaluation");
     J.v(await cliquer(prof, /Nouvelle évaluation/), H3, "« ➕ Nouvelle évaluation »"); await pause(400);
+    // un JSON fautif (la question 1 sans « reponse » ni « verifie ») : rien n'est enregistré, les erreurs se copient pour l'instance (c-collage)
+    const faux = JSON.parse(fs.readFileSync(path.join(__dirname, "donnees", "eval-4e-11.json"), "utf8")); delete faux.questions[0].reponse; delete faux.questions[0].verifie; faux.titre = "Banc — JSON fautif";
+    await prof.evaluate(js => { const t = [...document.querySelectorAll("textarea")].find(x => x.getBoundingClientRect().width > 0); if(!t) return; const set = Object.getOwnPropertyDescriptor(HTMLTextAreaElement.prototype, "value").set; set.call(t, js); t.dispatchEvent(new Event("input", {bubbles: true})); }, JSON.stringify(faux));
+    await cliquer(prof, /Vérifier le format/); await pause(300); await cliquer(prof, /^💾 Enregistrer l'évaluation$|^Enregistrer$/); await pause(500);
     await scene("c-collage", prof, "console");
+    const tc = await texte(prof);
+    J.v(/Rien n'est enregistré/.test(tc) && /il manque le temps de réponse/.test(tc) && /il manque ce qu'elle vérifie/.test(tc), H3, "un JSON fautif : « ❌ Rien n'est enregistré : … », « il manque le temps de réponse », « il manque ce qu'elle vérifie » (c-collage)", (tc.match(/Rien n'est enregistré[\s\S]{0,300}/) || [tc.slice(-300)])[0]);
+    J.v(await etatBouton(prof, /Copier les erreurs pour l'instance de création d'éval/) === "ouvert", H3, "« 📋 Copier les erreurs pour l'instance de création d'éval » (c-collage)");
+    J.v(!Object.values(srv.store.get("qcm/evaluations") || {}).some(e => e.titre === "Banc — JSON fautif"), H3, "le JSON fautif n'est pas enregistré dans la base");
     await prof.keyboard.press("Escape"); await cliquer(prof, /^Annuler$|^✕$/); await pause(300);
 
     J.section("3.2 Les réglages, le prompt, le mode d'emploi, le QR, le mode test, le papier, l'accueil");

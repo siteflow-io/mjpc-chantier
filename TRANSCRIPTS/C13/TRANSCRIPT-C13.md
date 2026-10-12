@@ -1383,3 +1383,13 @@ Paul, tour 52, mot pour mot : « Non ça doit partir en exécutant parce que c'e
 182. **Trouvé en passant, dette n°13 · 17** : à l'ouverture de la fenêtre du tableau, celle-ci ne reçoit pas les pages du pilote (elle pagine seule sur ses lignes dévoilées, sans compteur ; à 9 dévoilés avec le pilote en page 1, aucun compteur) ; dès le ▶ suivant, tout se cale. Jamais hors du cadre (mesuré à 0, 9, 13, 14 dévoilés). Contraire au point 5 de p8-5f à l'ouverture seulement. Complément **p8-5g** écrit (exécutant, par la règle de Paul du tour 52) et soumis avant dépôt.
 183. **Verdict sur p8-5f : ça va** — dette n°13 · 16 réglée ; 13 · 17 ouverte, à régler par p8-5g avant la validation de la maquette.
 
+
+---
+
+## TOUR 55 (12/10/2026, 11:57 → 12:20)
+
+Paul, mot pour mot : « pourquoi quand j'ia un nouvel écran qui se crée je ne le vois pas apparaître dans la colonne de guache? il y a plein de choses que la maquette originale faisait, que celle ci ne fait plus. typiquement ça. c'est pénible. »
+
+184. **Mesuré, non reproduit** (pièces `T55-volet.mjs`, `T55b-inserer.mjs`, `T55c-cas.mjs`, `T55d-visible.mjs`), sur la maquette d'origine de la n°12 (p7, T265), sur p8-5 et sur p8-5f, en atelier : « Insérer une diapo après » et « Dupliquer » (clic droit sur une vignette, en haut et en bas de la colonne), « Couper la diapo ici » (clic droit sur un bloc), « + bloc → Schéma… » (p8-3, crée la diapo suivante), et en classe « Insérer une diapo au milieu » (⚙) : à chaque fois, la nouvelle diapo apparaît dans la colonne de gauche aussitôt, visible dans la zone affichée, marquée courante, et la maquette l'ouvre — identique sur p7 et sur p8-5f. « Insérer après » le cahier de textes ou le bilan est désactivé, avec son infobulle (« rien après la fin d'heure : insère avant elle »), sur p7 comme sur p8-5f.
+185. Une seule question posée à Paul : quel geste exactement, et où (atelier ou heure lancée). Mise en tension rappelée : si c'est le débordement qui créait un écran (la scission automatique), c'est la règle 0.4 qu'il a validée, redite au tour 51 et acquise au tour 52.
+

@@ -1,6 +1,6 @@
 /* ═══ QCM-2 · HEURE — les retouches de style des écrans de l'heure, en direct ═══ */
 /* « 👤 1 élève » : tant qu'il n'est pas entré, son « 👋 Identifie-toi » tient dans une demi-tablette, au milieu */
-.tablette.seule .moitie:has(> .eleve-page .eleve-form){flex:0 0 50%;max-width:50%;margin:0 auto}
+.tablette.seule .moitie .eleve-page:has(.eleve-form) .eleve-card{max-width:50vw}
 /* le code du binôme, tapé au clavier de l'app ou de l'ordinateur : le cadre de la maquette, ses points */
 input.codebox.codebox-h{display:block;width:100%;box-sizing:border-box;font-family:monospace;color:inherit;background:#fff;outline:none}
 input.codebox.codebox-h::placeholder{color:transparent}

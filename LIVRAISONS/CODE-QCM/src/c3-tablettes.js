@@ -120,7 +120,9 @@ function PageMoitie(p){
   var s = useState(false), ouvert = s[0], set = s[1];
   var prenom = (/· ([^·]+)$/.exec(p.badge || "") || [, ""])[1].trim().split(" ").slice(1).join(" ");
   // (QCM-2) en direct, l'élève de la moitié est son eleveSlug : celui dont le nom est sur le badge
-  if(enDirect()){ var nomB = (/· ([^·]+)$/.exec(p.badge || "") || [, ""])[1].trim(); prenom = HEURE.eleves.filter(function(x){ return nomH(x) === nomB; })[0] || null; }
+  // (hors séance aussi : les élèves de cet appareil, puis ceux de la classe)
+  if(enDirect()){ var nomB = (/· ([^·]+)$/.exec(p.badge || "") || [, ""])[1].trim(), ic = iciH() || {};
+    prenom = [ic.g, ic.d].concat(HEURE.eleves, SCN.eleves()).filter(function(x){ return x && nomH(x) === nomB; })[0] || null; }
   var chrono = TOUR_CHRONO[MOM().ph];
   return h("div", {className:"eleve-page"},
     DECO.map(function(e, i){ return h("span", {key:i, className:"deco"}, e); }),

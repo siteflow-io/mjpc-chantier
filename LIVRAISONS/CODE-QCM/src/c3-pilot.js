@@ -291,7 +291,9 @@ function BoutonRelancerH(){
 /* ════════ Le pilotage pendant les questions ════════ */
 function nonRepondus(){ return (momH().sansRep || []).length; }
 // la première question pas écartée après qi (ou la première de l'évaluation)
-function suivanteQ(qi){ var ec = momH().ecartees || []; return toutesQ().filter(function(q){ return ec.indexOf(q) < 0 && (qi == null || q > qi); })[0]; }
+function suivanteQ(qi){ var ec = momH().ecartees || [], lanc = enDirect() && qi == null && typeof SCN.lancees === "function" ? SCN.lancees() : {};
+  // avant toute question (ou à la reprise d'une séance), la première qui n'est ni écartée ni déjà lancée
+  return toutesQ().filter(function(q){ return ec.indexOf(q) < 0 && (qi == null ? !lanc[q] : q > qi); })[0]; }
 function Pilot(s){
   s = s || etatPilot();
   var m = momH(), k = MO();
@@ -307,7 +309,8 @@ function Pilot(s){
   var actions;
   // (QCM-2) en direct, chaque bouton fait avancer la séance (ACT) ; dans la maquette, il mène à la scène qui le montre
   var vaLancer = suivante === 1 ? (Object.keys(s.ecartees || {}).length ? "t-q2-ecartee" : "t-q2-reflexion") : "t-q3-tour1";
-  if(s.phase === "idle") actions = [h("button", Object.assign({key:1, className:"btn btn-primary"}, geste("c-q1-reflexion", "lancerQuestion", suivanteQ(null))), "▶️ Lancer Q1")];
+  var q0 = suivanteQ(null); if(q0 == null) q0 = 0;
+  if(s.phase === "idle") actions = [h("button", Object.assign({key:1, className:"btn btn-primary"}, geste("c-q1-reflexion", "lancerQuestion", q0)), "▶️ Lancer Q" + (q0 + 1))];
   else if(s.phase === "reflexion") actions = [h("button", Object.assign({key:1, className:"btn btn-vert"}, geste("c-q1-tour1", "autoriserReponse")), "✋ Autoriser la réponse"), h(BoutonPauseH, {key:2}), h(BoutonRelancerH, {key:3})];
   else if(s.phase === "reponse") actions = [s.tour === 1 ? h("button", Object.assign({key:1, className:"btn btn-vert"}, geste("c-q1-tour2", "tourSuivant")), "⏭️ Tour suivant") : h("button", Object.assign({key:1, className:"btn btn-or"}, geste(s.qi === 2 ? "c-q3-close" : s.qi === 1 ? "c-q2-close" : "c-q1-close", "cloreQuestion")), "🔒 Clore la question"), h(BoutonPauseH, {key:2}), h(BoutonRelancerH, {key:3})];
   else {

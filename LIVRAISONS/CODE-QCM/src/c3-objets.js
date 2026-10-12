@@ -57,6 +57,8 @@ var FOND_SCENE = {"S08:bilan":"c-bilan", "PAP:avant":"c-papier-lancer", "PAP:sea
   "PAP:estim":"c-estim", "PAP:att2":"c-attest2", "TEST:avant":"x620-1-mode-test-ouverture", "TEST:Q3:R":"x620-2-mode-test-reflexion", "TEST:Q3:B1":"x620-2-mode-test-reflexion"};
 var FOND_EN_COURS = false;
 function fondDuMoment(){
+  // (QCM-2) en direct, l'écran du moment est celui de la console de l'heure, avec ses fenêtres (un fond de fenêtre, le QR, « 🎯 Pilotage classe »)
+  if(enDirect()) return h(ConsoleHeureC);
   var m = MOM(), k = MO(), id = FOND_SCENE[k] || (m.ph === "bilan" && m.seance === "S08" ? "c-bilan" : null), sc = id && id !== window.SCENE_COURANTE ? sceneParId(id) : null;
   if(sc && !FOND_EN_COURS){ FOND_EN_COURS = true; try { return sc.render(); } finally { FOND_EN_COURS = false; } }
   if(m.seance === "PAP") return PilotCorrPapier();
@@ -184,8 +186,9 @@ function ConsoleHeureC(){
   return f ? f(fe.arg, fond) : fond;
 }
 function fondHeure(){
-  var m = momH(), ph = m.ph;
-  if(!m.seance || !ph || ph === "avant" || ph === "fin" || ph === "hors") return Lancement(false);
+  var m = momH(), ph = m.ph, e = SCN.etat() || {};
+  // une séance finie à une autre heure attend sa reprise : le lancement, avec « ▶️ Reprendre la séance du … »
+  if(!m.seance || !ph || ph === "avant" || ph === "fin" || ph === "hors" || e.autreHeure) return Lancement(false);
   if(ph === "appel") return Lancement(true);
   if(ph === "entree" || ph === "pret") return PilotPret();
   if(ph === "estim") return PilotEstimation();

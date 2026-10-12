@@ -461,13 +461,15 @@ function cadreMesure(){
 function resteMesure(q, ecran, titre){
   var f = cadreMesure(), d = f.contentDocument, root = d.getElementById("root"), n = q.choix.length, ordre = []; for(var i = 0; i < n; i++) ordre.push(i);
   var qq = {enonce:q.enonce, choix:q.choix.map(String), bonnes:[0], niveau:"approfondi", reflexion:30, reponse:20, competences:[], explication:""};
-  var ev = {titre:titre || "3e- éval 1 Analyse logique - Construire une phrase complexe", mode:"strict", questions:[qq, qq, qq]}, sv = {EV:EV, ORD:ORD, LU:LU, TABL:TABL, sc:window.SCENE_COURANTE};
+  var ev = {titre:titre || "3e- éval 1 Analyse logique - Construire une phrase complexe", mode:"strict", questions:[qq, qq, qq]}, sv = {EV:EV, ORD:ORD, LU:LU, TABL:TABL, sc:window.SCENE_COURANTE, calc:window.calc};
+  // en direct, la note d'un élève se lit dans la séance : l'écran de lecture, dessiné hors séance pour la mesure, reçoit une note d'essai
+  window.calc = function(){ return {st:["j", "j", "j"], pts:[1, 1, 1], n:3, total:3, complet:true, sur20:20, comp:{}, flags:[]}; };
   // la moitié telle qu'une tablette la montre, avec son en-tête (« 📊 Mes évaluations ») et le titre de l'évaluation : comme la scène étalon
   window.SCENE_COURANTE = "t-annexe"; EV = ev; ORD = [{J:ordre, M:ordre}, {J:ordre, M:ordre}, {J:ordre, M:ordre}]; LU = {J:[ordre, ordre, ordre], M:[ordre, ordre, ordre]}; TABL = {J:[ordre, ordre, ordre], M:[ordre, ordre, ordre]};
   try {
     var el = ecran === "reponse" ? EcrReponse(J, 2, ordre, ordre, 2, ev) : ecran === "b" ? EcrDeclareFlux(J, 2, ordre, 4) : EcrLecture(J, 2, true, 3);
     ReactDOM.unmountComponentAtNode(root); ReactDOM.render(Tablette(el, el), root);
-  } finally { EV = sv.EV; ORD = sv.ORD; LU = sv.LU; TABL = sv.TABL; window.SCENE_COURANTE = sv.sc; }
+  } finally { EV = sv.EV; ORD = sv.ORD; LU = sv.LU; TABL = sv.TABL; window.SCENE_COURANTE = sv.sc; window.calc = sv.calc; }
   var m = d.querySelector(".moitie"), c = m && m.querySelector(".eleve-card");
   if(!m || !c) throw new Error("mesure");
   var r = Math.round(m.getBoundingClientRect().bottom - c.getBoundingClientRect().bottom) - 16;
@@ -478,8 +480,9 @@ function pxDeTrop(q, titre){
   var cle = JSON.stringify([q.enonce, q.choix, titre]);
   if(MESURE.cache[cle] != null) return MESURE.cache[cle];
   var trop = 0;
-  try { var r = Math.min(resteMesure(q, "reponse", titre), resteMesure(q, "b", titre), resteMesure(q, "lecture", titre)); trop = r < 0 ? -r : 0; }
-  catch(e){ trop = 0; }
+  // chaque écran mesuré à part : un écran qui ne se dessine pas hors séance n'annule pas la garde des autres
+  var rs = ["reponse", "b", "lecture"].map(function(e){ try { return resteMesure(q, e, titre); } catch(x){ return null; } }).filter(function(x){ return x != null; });
+  if(rs.length){ var r = Math.min.apply(null, rs); trop = r < 0 ? -r : 0; }
   return (MESURE.cache[cle] = trop);
 }
 

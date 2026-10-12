@@ -828,7 +828,9 @@ function MesEvalsBlocC(p){
   useV3();
   var s = useState(null), ouverte = s[0], setOuverte = s[1], se = ouverte ? seanceV(ouverte) : null;
   if(se && se.rendue) return h("div", {className:"mes-evals-bilan"}, BilanContenuV(se, p.slug, h("button", {className:"btn btn-ghost btn-sm", "data-local":"1", onClick:function(){ setOuverte(null); }}, "← Mes évaluations")));
-  return ListeMesEvalsV(p.slug, p.classe, setOuverte);
+  // sous « 📊 Mes évaluations », le nom de l'élève (e-mes-evals) ; masqué (qcm3.css) quand la page l'écrit déjà au-dessus
+  var nom = (v3("codes/" + p.slug) || {}).name || (seancesV().map(function(x){ return x.eleves.filter(function(e){ return e.slug === p.slug; })[0]; }).filter(Boolean)[0] || {}).nom || "";
+  return h("div", {className:"mes-evals-liste"}, nom && h("p", {className:"mes-evals-nom", style:{opacity:.8}}, nom), ListeMesEvalsV(p.slug, p.classe, setOuverte));
 }
 // la moitié de tablette (c3-tablettes.js, PageMoitie) appelle ListeMesEvals(prénom) : avec la base, c'est la liste de l'élève de cette moitié
 (function(){ if(typeof ListeMesEvals !== "function") return; var avant = ListeMesEvals;

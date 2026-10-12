@@ -8,3 +8,6 @@
 .simt-feuilles input.simt-fi{width:100%;box-sizing:border-box;font:inherit;border:1px dashed #CBD5E1;border-radius:6px;padding:.2rem .4rem;background:#fff}
 /* le bilan d'une séance ouvert dans « 📊 Mes évaluations » d'une moitié de tablette */
 .mes-evals-bilan{text-align:left}
+/* « 📊 Mes évaluations » : le nom de l'élève sous le titre, une fois (e-mes-evals) ; le bilan ouvert n'a que « ← Mes évaluations » (e-bilan-lou) */
+.eleve-card > p + .mes-evals-liste > .mes-evals-nom{display:none}
+.eleve-card:has(.mes-evals-bilan) > .eleve-tete > .mes-evals,.eleve-card:has(.mes-evals-bilan) > h1{display:none}

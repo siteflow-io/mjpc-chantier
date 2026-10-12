@@ -1,0 +1,290 @@
+date : 2026-10-12 11:27:42 +0000
+node : v22.22.0 · playwright : 1.56.1 · chromium : 141.0.7390.37
+maquette jouée : maquette-pilotage-ordi-v9c15p8-manipulable.html
+md5 de la maquette jouée : 62d9557ac8fedcfbdd8b157a2588cbee
+bancs : 34
+
+===== test-p8-5g =====
+O · ouvert à 0 dévoilé (0 dévoilés) : pilote « page 1 / 2 » 1 lignes · tableau « page 1 / 2 » 1 lignes, police 32.75px, pareil en 110 ms, hors du cadre 0
+O · ouvert à 9 dévoilés (9 dévoilés) : pilote « page 1 / 2 » 10 lignes · tableau « page 1 / 2 » 10 lignes, police 32.75px, pareil en 108 ms, hors du cadre 0
+O · ouvert à 13 dévoilés (13 dévoilés) : pilote « page 2 / 2 » 4 lignes · tableau « page 2 / 2 » 4 lignes, police 32.75px, pareil en 111 ms, hors du cadre 0
+O · ouvert à 9 dévoilés, page 2 à la molette (9 dévoilés) : pilote « page 2 / 2 » 0 lignes · tableau « page 2 / 2 » 0 lignes, police 32.75px, pareil en 108 ms, hors du cadre 0
+P · puis un ▶ (10 dévoilés) : pilote « page 2 / 2 », tableau « page 2 / 2 », mêmes lignes : true
+G · gel à « page 1 / 2 » (8 lignes) ; le pilote avance (« page 2 / 2 ») ; rouvert pendant le gel : « page 1 / 2 », 8 lignes, police 32.75px ; au dégel : pilote « page 2 / 2 », tableau « page 2 / 2 »
+R · ouvert en répétition (11 dévoilés) : pilote « page 2 / 2 », tableau « page 2 / 2 », mêmes lignes : true, en 109 ms
+29 vérifications
+aucun défaut
+--- fin : 0 défaut(s)
+(code de sortie : 0)
+
+===== test-p8-5f =====
+A 1280 · atelier : avant « une page », 7 éléments ; 8 lignes tapées → « page 2 / 2 », 5 éléments rendus, hors du cadre 0, curseur sur 1.7 (fin de ligne : true) ; « trop pleine » 0 → 1 ; Maj+← → « page 1 / 2 »
+B 1280 · pilotage : 0 dévoilé « page 1 / 2 » ; page 2 au ▶ n°10 (premier élément de la page 2 : k=9) ; ◀ « page 1 / 2 » ; molette « page 2 / 2 » ; au plus 0 élément(s) hors du cadre sur toutes les étapes
+C 1280 · tableau (1280 × 720) : « page 2 / 2 », « page 1 / 2 », « page 2 / 2 » — les pages du pilote ; hors du cadre : 0, 0, 0
+D 1280 · un seul bloc de 6 → 14 éléments : atelier « page 2 / 2 », pilote « page 1 / 2 », hors du cadre : atelier 0, pilote 0
+E 1280 · paragraphe de 22 lignes (1879 caractères) : atelier ancré=true, scrollTop=0, au-dessus 0, coupé en dessous (1 élément) ; « trop pleine » 0 → 1 ; pilote : au plus 0 au-dessus
+A 1920 · atelier : avant « une page », 7 éléments ; 8 lignes tapées → « page 2 / 2 », 5 éléments rendus, hors du cadre 0, curseur sur 1.7 (fin de ligne : true) ; « trop pleine » 0 → 1 ; Maj+← → « page 1 / 2 »
+B 1920 · pilotage : 0 dévoilé « page 1 / 2 » ; page 2 au ▶ n°10 (premier élément de la page 2 : k=9) ; ◀ « page 1 / 2 » ; molette « page 2 / 2 » ; au plus 0 élément(s) hors du cadre sur toutes les étapes
+C 1920 · tableau (1280 × 720) : « page 2 / 2 », « page 1 / 2 », « page 2 / 2 » — les pages du pilote ; hors du cadre : 0, 0, 0
+D 1920 · un seul bloc de 6 → 14 éléments : atelier « page 2 / 2 », pilote « page 1 / 2 », hors du cadre : atelier 0, pilote 0
+E 1920 · paragraphe de 22 lignes (1879 caractères) : atelier ancré=true, scrollTop=0, au-dessus 0, coupé en dessous (1 élément) ; « trop pleine » 0 → 1 ; pilote : au plus 0 au-dessus
+72 vérifications
+aucun défaut
+--- fin : 0 défaut(s)
+(code de sortie : 0)
+
+===== test-p8-5e =====
+1-2 · atelier : poignée y=585 (outils 0+0, notes 604) ; tirée de 150 px vers le haut : diapo 408 → 278 px, notes 188 → 318 px, part 100 → 68 %
+2-4 · pilotage : gardée de l'atelier part 68 % ; vers le bas → 100 % (diapo 278 → 408) ; très haut → 30 % ; double-clic → 100 % (notes 493 → 207) ; tirée de 150 px → 68 % (notes 337) ; ▶ à 884 pour un cadre à 944
+1-3 · répétition : part 68 → 43 % ; après Arrêter : 43 %
+5 · préparation : part 58 → 84 %, notes réduites 26 → 26 px
+6 · relecture : poignée à l'écran = false
+aucun défaut
+--- fin : 0 défaut(s)
+(code de sortie : 0)
+
+===== test-p8-5d =====
+p8-5d-diapo2-apres-dev.png · 7 clics sur ▶ : diapo 2 (0|eabceb6cb), le panneau rend 1 paragraphe(s) de 0|eabceb6cb, focus dans les notes : false ; la note de la diapo 1 finit par « …de ait trois lignes.Xàéèùç1234 »
+p8-5d-diapo1-retour.png · ◀ : diapo 1, la note ⌂ finit par « …de ait trois lignes.Xàéèùç1234 »
+2 · vignette 2 (garde ouverte : true) puis ◀ depuis le début de la diapo 2 : diapo 1 rendue, la note de la diapo 2 dit « Ici la deux »
+3 · atelier : diapo 2 rendue (0|eabceb6cb), la note de la diapo 1 finit par « …is lignes.Xàéèùç1234 »
+4 · Entrée puis frappe sans attente, sur les diapos 1, 7 et 13 : Xyz 0.0 · Xyz 0.1 · Xyz 0.2 · Xyz 6.0 · Xyz 6.1 · Xyz 6.2 · Xyz 12.0 · Xyz 12.1 · Xyz 12.2 ; diapo 14 sans note : ["Premier","Deuxième","Troisième"]
+aucun défaut
+--- fin : 0 défaut(s)
+(code de sortie : 0)
+
+===== test-p8-5c =====
+p8-5c-repetition-avant.png · p8-5, 1280 px : le bandeau posé par-dessus l'entête ; ⧉ Tableau sous le doigt : false, 🖥 Écran 2 sous le doigt : true
+p8-5c-repetition-apres.png · p8-5c, 1280 px : RÉPÉTITION · … · répét. 00:02 · diapo 1, dévoilée 1 / 6 ; aucun bandeau ; ⧉ Tableau, 🖥 Écran 2, ■ Arrêter sous le doigt
+15 · 1280 px : position:fixed avant = après (gc-apercu,p8-banc,p8-mesureur,ppop,vif-palette) ; « Fin de l'heure » caché ; ⧉ Tableau false → true ; « ■ Arrêter » rend « rgb(20, 17, 16) »
+15 · 1920 px : position:fixed avant = après (gc-apercu,p8-banc,p8-mesureur,ppop,vif-palette) ; « Fin de l'heure » caché ; ⧉ Tableau false → true ; « ■ Arrêter » rend « rgb(20, 17, 16) »
+16 · la note d'avant de la diapo 1, une chaîne rangée « 0|0 » : lue comme le paragraphe ⌂ « Dire que le tableau des trois colonnes est au brouillon, pas… »
+p8-5c-notes-classe-3-6.png · heure lancée, dévoilée 3 / 6 : ⌂ estompé · 1 estompé · 3 vif · 5 lisible · 6 lisible
+16 · ◀ : ⌂ estompé · 1 vif · 3 lisible · 5 lisible · 6 lisible ; journal pendant la lecture : 4 entrée(s), sans note ; copie inchangée
+p8-5c-atelier-ancres.png · atelier, le repère du 3ᵉ paragraphe cliqué :  ⌂ à l'arrivée sur la diapo | 0.0 1 · Étape 1 : J'observe les images en silenc… | 0.1 2 · Étape 2 : Je discute en groupe de ce que… | 0.2 3 · Étape 3 : Au brouillon, dans un tableau … | 0.3 4 · Étape 4 : Je choisis de quel élément je … | 0.4 5 · Étape 5 : À partir de cet élément, je fa… | 0.5 6 · Étape 6 : J'expose mon hypothèse à l'ora…
+17 · Entrée après l'étape 3 : repère 3 ; réaccroché à 5 ; revenu sur la diapo : 3 paragraphes ; étape 5 supprimée : [{"p":null,"html":"Dire que le tableau "},{"p":null,"html":"Second."},{"p":"0.2","html":"Premier."}]
+17 · couper la diapo 11 après l'étape 3 : « Les règles héritées (suite) » ; reste [{"p":"0.2","html":"Trois."}] ; suit [{"p":"0.0","html":"Fiche."}]
+p8-5c-palette.png · heure lancée, « A » cliqué, la sélection « en silence » gardée, palette de 5 boutons ouverte
+p8-5c-tableau-forme.png · la fenêtre du tableau : {"m":["MARK:rgb(255, 233, 74):observe les images"],"c":["SPAN:rgb(192, 57, 43):en silence"]}
+18 · au tableau, étape 1 : « ab » jaune, « A » rouge, ✕ ; Ctrl+H jaune sur l'étape 3 ; la fenêtre du tableau suit ; une sélection ailleurs : « sélectionne d'abord le texte à surligner — dans la diapo ou dans tes notes »
+p8-5c-notes-forme.png · le paragraphe : Attendu : <mark data-coul="vert">nature</mark>, solitude, <span data-coul="bleu">sublime</span>.
+19 · dans les notes : vert, bleu, ✕ → « Attendu : nature, solitude, sublime. » ; journal et mur inchangés
+20 · la barre à 1280 : avant 776 px, après 738 px ; scène à 944, ▶ à 884, compteur à 940
+21 · ça va       · ▶ Dévoiler (trois clics) — 3 / 6 dévoilés
+21 · ça va       · ◀ (un clic) — 2 / 6 dévoilés
+21 · ça va       · ✦ Mettre en lumière — armé=true, éléments allumés=1, outil reposé=true
+21 · ça va       · ✍ À écrire — marqués=["1"]
+21 · ça va       · ⊞ Toutes les diapos — ouvert=true, vignettes=23/23, Échap ferme=true
+21 · ça va       · Surligner en jaune — marques=["rgb(255, 233, 74)"]
+21 · ça va       · ✕ retirer le surlignage jaune — marques restantes=0
+21 · ça va       · Surligner en vert — marques=["rgb(182, 240, 194)"]
+21 · ça va       · ✕ retirer le surlignage vert — marques restantes=0
+21 · ça va       · Surligner en rose — marques=["rgb(255, 201, 214)"]
+21 · ça va       · ✕ retirer le surlignage rose — marques restantes=0
+21 · ça va       · Surligner en bleu — marques=["rgb(188, 217, 255)"]
+21 · ça va       · ✕ retirer le surlignage bleu — marques restantes=0
+21 · ça va       · 🔍 Loupe — armée=true, cadre pendant le tracé=true, zone agrandie=true, second clic remet la diapo=true
+21 · ça va       · ❄ Gel — gel=true, dégel=true
+21 · ça va       · 👥 Qui a participé — affiché=true, retiré=true
+21 · ça va       · ⋯ Menu + Chrono au tableau — menu=true, entrées=chrono,qui,reserve,docs,oral,notion,appel, chrono posé=true, retiré=true
+21 · ça va       · Texte au tableau (curseur) — diapo 8 « Question-bilan » : 32 pt 22.85px → 44 pt 31.42px
+21 · ça va       · Garde « La classe te suivrait » au changement de diapo — ouverte=true
+21 · ça va       · Surligner dans « Notes pour cette diapo » — marques dans les notes=1, message=«  »
+21 · bilan : 20 ça va, 0 ça ne va pas, sur 20
+aucun défaut
+--- fin : 0 défaut(s)
+(code de sortie : 0)
+
+===== test-p8-5-classe =====
+aucun défaut
+--- fin : 0 défaut(s)
+(code de sortie : 0)
+
+===== test-p8-4-ecrire =====
+aucun défaut
+--- fin : 0 défaut(s)
+(code de sortie : 0)
+
+===== test-p8-3c =====
+aucun défaut
+--- fin : 0 défaut(s)
+(code de sortie : 0)
+
+===== test-p8-3-gestes =====
+aucun défaut
+--- fin : 0 défaut(s)
+(code de sortie : 0)
+
+===== test-p8-2-formes =====
+la vraie carte : ne tient pas — chevauchements 77 · hors du cadre visible 0 · traits à travers un mot 203 · libellés sur deux lignes 0 · polices sous 26 pt 0
+aucun défaut
+--- fin : 0 défaut(s)
+(code de sortie : 0)
+
+===== audit-affichage-p7 =====
+aucun défaut
+--- fin : 0 défaut(s)
+(code de sortie : 0)
+
+===== test-p7-schema-envoi =====
+aucun défaut
+--- fin : 0 défaut(s)
+(code de sortie : 0)
+
+===== test-p6-p7 =====
+aucun défaut
+--- fin : 0 défaut(s)
+(code de sortie : 0)
+
+===== test-p5-p7 =====
+aucun défaut
+--- fin : 0 défaut(s)
+(code de sortie : 0)
+
+===== test-p4b-p7 =====
+aucun défaut
+--- fin : 0 défaut(s)
+(code de sortie : 0)
+
+===== test-p4a-p7 =====
+aucun défaut
+--- fin : 0 défaut(s)
+(code de sortie : 0)
+
+===== test-p3-p7 =====
+aucun défaut
+--- fin : 0 défaut(s)
+(code de sortie : 0)
+
+===== test-p2-p7 =====
+aucun défaut
+--- fin : 0 défaut(s)
+(code de sortie : 0)
+
+===== test-p1-p7 =====
+aucun défaut
+--- fin : 0 défaut(s)
+(code de sortie : 0)
+
+===== test-g2-p7 =====
+aucun défaut
+--- fin : 0 défaut(s)
+(code de sortie : 0)
+
+===== test-g1-p7 =====
+aucun défaut
+--- fin : 0 défaut(s)
+(code de sortie : 0)
+
+===== test-f-p7 =====
+aucun défaut
+--- fin : 0 défaut(s)
+(code de sortie : 0)
+
+===== test-e-p7 =====
+aucun défaut
+--- fin : 0 défaut(s)
+(code de sortie : 0)
+
+===== test-b5-p7 =====
+aucun défaut
+--- fin : 0 défaut(s)
+(code de sortie : 0)
+
+===== test-b4-p7 =====
+aucun défaut
+--- fin : 0 défaut(s)
+(code de sortie : 0)
+
+===== test-b3-p7 =====
+aucun défaut
+--- fin : 0 défaut(s)
+(code de sortie : 0)
+
+===== test-d-p7 =====
+aucun défaut
+--- fin : 0 défaut(s)
+(code de sortie : 0)
+
+===== test-c-p7 =====
+aucun défaut
+--- fin : 0 défaut(s)
+(code de sortie : 0)
+
+===== test-b2-apercu-p7 =====
+aucun défaut
+--- fin : 0 défaut(s)
+(code de sortie : 0)
+
+===== test-b-p7 =====
+aucun défaut
+--- fin : 0 défaut(s)
+(code de sortie : 0)
+
+===== test-cahier-p7 =====
+aucun défaut
+--- fin : 0 défaut(s)
+(code de sortie : 0)
+
+===== test-a0-p7 =====
+aucun défaut
+--- fin : 0 défaut(s)
+(code de sortie : 0)
+
+===== regression-p7 =====
+aucun défaut
+--- fin : 0 défaut(s)
+(code de sortie : 0)
+
+===== tout-cliquer-p7 =====
+19 diapos : d1:6/6·32pt d2:0/0·26pt d3:0/0·26pt d4:0/0·32pt d5:0/0·32pt d6:0/0·32pt d7:3/3·32pt d8:2/2·32pt d9:4/4·32pt d10:2/2·32pt d11:4/4·32pt d12:2/2·32pt d13:4/4·32pt d14:3/3·32pt d15:4/4·32pt d16:0/0·32pt d17:3/3·32pt d18:2/2·32pt d19:2/2·32pt d20:0/0 d21:0/0·32pt d22:1/1·32pt d23:4/4·32pt
+boutons du pilotage : 22 → ong-pilotage, ong-relecture, ong-atelier, bnotes, btableau, bvideoproj, bfin, bsimu, pg, pd, blum, becr, btoutes, bsurl, btxt, bloupe, bgel, bqui, bplus, bprec, bdev, p8-k:⌂
+avant réponse : {
+  fen: [],
+  gel: false,
+  di: 7,
+  ini: true,
+  rect: [ 237, 287, 45 ],
+  dessus: 'ini vide'
+}
+clics : 103 · touches : 69 · erreurs JS : 0
+aucun défaut
+--- fin : 0 défaut(s)
+(code de sortie : 0)
+
+===== RÉSUMÉ =====
+test-p8-5g : --- fin : 0 défaut(s)
+test-p8-5f : --- fin : 0 défaut(s)
+test-p8-5e : --- fin : 0 défaut(s)
+test-p8-5d : --- fin : 0 défaut(s)
+test-p8-5c : --- fin : 0 défaut(s)
+test-p8-5-classe : --- fin : 0 défaut(s)
+test-p8-4-ecrire : --- fin : 0 défaut(s)
+test-p8-3c : --- fin : 0 défaut(s)
+test-p8-3-gestes : --- fin : 0 défaut(s)
+test-p8-2-formes : --- fin : 0 défaut(s)
+audit-affichage-p7 : --- fin : 0 défaut(s)
+test-p7-schema-envoi : --- fin : 0 défaut(s)
+test-p6-p7 : --- fin : 0 défaut(s)
+test-p5-p7 : --- fin : 0 défaut(s)
+test-p4b-p7 : --- fin : 0 défaut(s)
+test-p4a-p7 : --- fin : 0 défaut(s)
+test-p3-p7 : --- fin : 0 défaut(s)
+test-p2-p7 : --- fin : 0 défaut(s)
+test-p1-p7 : --- fin : 0 défaut(s)
+test-g2-p7 : --- fin : 0 défaut(s)
+test-g1-p7 : --- fin : 0 défaut(s)
+test-f-p7 : --- fin : 0 défaut(s)
+test-e-p7 : --- fin : 0 défaut(s)
+test-b5-p7 : --- fin : 0 défaut(s)
+test-b4-p7 : --- fin : 0 défaut(s)
+test-b3-p7 : --- fin : 0 défaut(s)
+test-d-p7 : --- fin : 0 défaut(s)
+test-c-p7 : --- fin : 0 défaut(s)
+test-b2-apercu-p7 : --- fin : 0 défaut(s)
+test-b-p7 : --- fin : 0 défaut(s)
+test-cahier-p7 : --- fin : 0 défaut(s)
+test-a0-p7 : --- fin : 0 défaut(s)
+regression-p7 : --- fin : 0 défaut(s)
+tout-cliquer-p7 : --- fin : 0 défaut(s)
+TOUS LES BANCS : 0 défaut

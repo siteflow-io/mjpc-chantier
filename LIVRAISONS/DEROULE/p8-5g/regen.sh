@@ -1,0 +1,29 @@
+#!/bin/sh
+# régénère la maquette p8-5g : gabarit p7 → patch p8-2 → patch p8-3 → patch p8-3b → patch p8-3c → patch p8-3d → patch p8-4 → patch p8-5 → patch p8-5c → patch p8-5d → patch p8-5e → patch p8-5f → patch p8-5g → générateur (bloc de données de la v9c13)
+ICI=$(cd "$(dirname "$0")" && pwd); P=$ICI/../../../TRANSCRIPTS/C12/pieces; D2=$ICI/../p8-2; D3=$ICI/../p8-3; D3B=$ICI/../p8-3b; D3C=$ICI/../p8-3c; D3D=$ICI/../p8-3d; D4=$ICI/../p8-4; D5=$ICI/../p8-5; D5C=$ICI/../p8-5c; D5D=$ICI/../p8-5d; D5E=$ICI/../p8-5e; D5F=$ICI/../p8-5f; T=$(mktemp -d)
+mkdir -p $T/vis $T/C12 && cp $P/T142-v9c13-template.html $T/vis/v9c13-template.html && cp $P/T280-maquette-v9c13-courante.html $T/C12/maquette-v9c13-courante.html
+python3 $ICI/patch-p8-2.py $P/T265-v9c15p7-template.html $ICI/p8-moteur.js $T/g2.html > /dev/null || exit 1
+cmp -s $T/g2.html $D2/v9c15p8-2-template.html || { echo "le gabarit p8-2 régénéré diffère de celui livré en p8-2"; exit 1; }
+python3 $ICI/patch-p8-3.py $T/g2.html $ICI/p8-3-gestes.js $T/g3.html > /dev/null || exit 1
+cmp -s $T/g3.html $D3/v9c15p8-template.html || { echo "le gabarit p8-3 régénéré diffère de celui livré en p8-3"; exit 1; }
+python3 $ICI/patch-p8-3b.py $T/g3.html $T/g3b.html > /dev/null || exit 1
+cmp -s $T/g3b.html $D3B/v9c15p8-template.html || { echo "le gabarit p8-3b régénéré diffère de celui livré en p8-3b"; exit 1; }
+python3 $ICI/patch-p8-3c.py $T/g3b.html $T/g3c.html > /dev/null || exit 1
+cmp -s $T/g3c.html $D3C/v9c15p8-template.html || { echo "le gabarit p8-3c régénéré diffère de celui livré en p8-3c"; exit 1; }
+python3 $ICI/patch-p8-3d.py $T/g3c.html $T/g3d.html > /dev/null || exit 1
+cmp -s $T/g3d.html $D3D/v9c15p8-template.html || { echo "le gabarit p8-3d régénéré diffère de celui livré en p8-3d"; exit 1; }
+python3 $ICI/patch-p8-4.py $T/g3d.html $ICI/p8-4-ecrire.js $T/g4.html > /dev/null || exit 1
+cmp -s $T/g4.html $D4/v9c15p8-template.html || { echo "le gabarit p8-4 régénéré diffère de celui livré en p8-4"; exit 1; }
+python3 $ICI/patch-p8-5.py $T/g4.html $ICI/p8-5-classe.js $T/g5.html > /dev/null || exit 1
+cmp -s $T/g5.html $D5/v9c15p8-template.html || { echo "le gabarit p8-5 régénéré diffère de celui livré en p8-5"; exit 1; }
+python3 $ICI/patch-p8-5c.py $T/g5.html $ICI/p8-5c.js $T/g5c.html > /dev/null || exit 1
+cmp -s $T/g5c.html $D5C/v9c15p8-template.html || { echo "le gabarit p8-5c régénéré diffère de celui livré en p8-5c"; exit 1; }
+python3 $ICI/patch-p8-5d.py $T/g5c.html $T/g5d.html > /dev/null || exit 1
+cmp -s $T/g5d.html $D5D/v9c15p8-template.html || { echo "le gabarit p8-5d régénéré diffère de celui livré en p8-5d"; exit 1; }
+python3 $ICI/patch-p8-5e.py $T/g5d.html $T/g5e.html > /dev/null || exit 1
+cmp -s $T/g5e.html $D5E/v9c15p8-template.html || { echo "le gabarit p8-5e régénéré diffère de celui livré en p8-5e"; exit 1; }
+python3 $ICI/patch-p8-5f.py $T/g5e.html $T/g5f.html > /dev/null || exit 1
+cmp -s $T/g5f.html $D5F/v9c15p8-template.html || { echo "le gabarit p8-5f régénéré diffère de celui livré en p8-5f"; exit 1; }
+python3 $ICI/patch-p8-5g.py $T/g5f.html $ICI/v9c15p8-template.html || exit 1
+(cd $T && python3 $P/T159-gen-par-difference.py $ICI/v9c15p8-template.html $ICI/maquette-pilotage-ordi-v9c15p8-manipulable.html) | sed "s#$ICI/##" || exit 1
+rm -rf $T; cd $ICI && md5sum v9c15p8-template.html maquette-pilotage-ordi-v9c15p8-manipulable.html

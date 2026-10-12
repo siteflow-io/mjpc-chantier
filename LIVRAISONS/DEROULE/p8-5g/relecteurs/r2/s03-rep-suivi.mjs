@@ -1,0 +1,58 @@
+// Répétition : ouverture / réouverture d'Écran 2 en cours de diapo, puis chaque geste
+import { ouvrir, versAtelier, taperHuit, comparer, ouvrirEcran2, pause, R2 } from './commun.mjs';
+const W = +(process.argv[2] || 1280), H = +(process.argv[3] || 800);
+const { browser, ctx, page, erreurs } = await ouvrir(W, H);
+await versAtelier(page);
+await taperHuit(page);
+await page.click('#at-jouer'); await pause(600);
+let pop = await ouvrirEcran2(ctx, page);
+await comparer(page, pop, 'ouverture à 0 dévoilé');
+const dev = async n => { for (let i = 0; i < n; i++) { await page.click('#bdev'); await pause(120); } await pause(300); };
+await dev(9);
+await comparer(page, pop, '9 ▶ (fenêtre déjà ouverte)');
+await pop.close(); await pause(300);
+pop = await ouvrirEcran2(ctx, page);
+await comparer(page, pop, 'réouverture à 9 dévoilés');
+await pop.screenshot({ path: R2 + `/s03-pop-9-${W}.png` });
+await page.screenshot({ path: R2 + `/s03-pilote-9-${W}.png` });
+await dev(1);
+await comparer(page, pop, '10e ▶');
+await page.click('#bprec'); await pause(400);
+await comparer(page, pop, '◀');
+await page.click('#bprec'); await pause(400);
+await comparer(page, pop, '◀ encore');
+// molette sur le cadre
+const box = await page.locator('#murcadre').boundingBox();
+await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+await page.mouse.wheel(0, 300); await pause(500);
+await comparer(page, pop, 'molette bas');
+await page.mouse.wheel(0, -300); await pause(500);
+await comparer(page, pop, 'molette haut');
+await page.mouse.wheel(0, 300); await pause(500);
+await comparer(page, pop, 'molette bas (page manuelle)');
+await pop.close(); await pause(300);
+pop = await ouvrirEcran2(ctx, page);
+await comparer(page, pop, 'réouverture page manuelle');
+// Maj+← / →
+await page.mouse.click(5, 400).catch(() => {}); // rien
+await page.keyboard.press('Shift+ArrowLeft'); await pause(400);
+await comparer(page, pop, 'Maj+←');
+await page.keyboard.press('Shift+ArrowRight'); await pause(400);
+await comparer(page, pop, 'Maj+→');
+await dev(4);
+await comparer(page, pop, '+4 ▶ (13 dévoilés ?)');
+await pop.close(); await pause(300);
+pop = await ouvrirEcran2(ctx, page);
+await comparer(page, pop, 'réouverture à 13');
+await dev(1);
+await comparer(page, pop, '▶ 14');
+await dev(1);
+await comparer(page, pop, '▶ fin de diapo → diapo suivante ?');
+await dev(1);
+await comparer(page, pop, '▶');
+await page.click('#bprec'); await pause(400);
+await comparer(page, pop, '◀');
+await page.click('#bprec'); await pause(400);
+await comparer(page, pop, '◀');
+console.log('erreurs', erreurs);
+await browser.close();

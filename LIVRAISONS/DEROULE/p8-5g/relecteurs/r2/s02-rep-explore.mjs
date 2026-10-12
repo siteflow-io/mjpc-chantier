@@ -1,0 +1,16 @@
+import { ouvrir, versAtelier, taperHuit, etat, pause, R2 } from './commun.mjs';
+const { browser, ctx, page, erreurs } = await ouvrir();
+await versAtelier(page);
+await taperHuit(page);
+console.log('atelier', JSON.stringify(await etat(page)));
+await page.click('#at-jouer');
+await pause(600);
+await page.screenshot({ path: R2 + '/s02-rep.png' });
+console.log('rep', JSON.stringify(await etat(page)));
+const [pop] = await Promise.all([ctx.waitForEvent('page'), page.click('#bvideoproj')]);
+await pause(800);
+console.log('pop url', pop.url(), await pop.evaluate(() => document.body.innerHTML.slice(0, 600)));
+console.log('pop murs', await pop.evaluate(() => Array.from(document.querySelectorAll('[id], .mur')).map(e => e.tagName + '#' + e.id + '.' + e.className).slice(0, 30)));
+await pop.screenshot({ path: R2 + '/s02-pop.png' });
+console.log(erreurs);
+await browser.close();

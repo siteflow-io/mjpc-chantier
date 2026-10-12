@@ -1,0 +1,13 @@
+A 1280 · atelier : avant « une page », 7 éléments ; 8 lignes tapées → « page 2 / 2 », 5 éléments rendus, hors du cadre 0, curseur sur 1.7 (fin de ligne : true) ; « trop pleine » 0 → 1 ; Maj+← → « page 1 / 2 »
+B 1280 · pilotage : 0 dévoilé « page 1 / 2 » ; page 2 au ▶ n°10 (premier élément de la page 2 : k=9) ; ◀ « page 1 / 2 » ; molette « page 2 / 2 » ; au plus 0 élément(s) hors du cadre sur toutes les étapes
+C 1280 · tableau (1280 × 720) : « page 2 / 2 », « page 1 / 2 », « page 2 / 2 » — les pages du pilote ; hors du cadre : 0, 0, 0
+D 1280 · un seul bloc de 6 → 14 éléments : atelier « page 2 / 2 », pilote « page 1 / 2 », hors du cadre : atelier 0, pilote 0
+E 1280 · paragraphe de 22 lignes (1879 caractères) : atelier ancré=true, scrollTop=0, au-dessus 0, coupé en dessous (1 élément) ; « trop pleine » 0 → 1 ; pilote : au plus 0 au-dessus
+A 1920 · atelier : avant « une page », 7 éléments ; 8 lignes tapées → « page 2 / 2 », 5 éléments rendus, hors du cadre 0, curseur sur 1.7 (fin de ligne : true) ; « trop pleine » 0 → 1 ; Maj+← → « page 1 / 2 »
+B 1920 · pilotage : 0 dévoilé « page 1 / 2 » ; page 2 au ▶ n°10 (premier élément de la page 2 : k=9) ; ◀ « page 1 / 2 » ; molette « page 2 / 2 » ; au plus 0 élément(s) hors du cadre sur toutes les étapes
+C 1920 · tableau (1280 × 720) : « page 2 / 2 », « page 1 / 2 », « page 2 / 2 » — les pages du pilote ; hors du cadre : 0, 0, 0
+D 1920 · un seul bloc de 6 → 14 éléments : atelier « page 2 / 2 », pilote « page 1 / 2 », hors du cadre : atelier 0, pilote 0
+E 1920 · paragraphe de 22 lignes (1879 caractères) : atelier ancré=true, scrollTop=0, au-dessus 0, coupé en dessous (1 élément) ; « trop pleine » 0 → 1 ; pilote : au plus 0 au-dessus
+72 vérifications
+aucun défaut
+--- fin : 0 défaut(s)

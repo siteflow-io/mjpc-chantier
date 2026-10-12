@@ -1,0 +1,12 @@
+import { ouvrir, versAtelier, taperHuit, etat, pause, R2 } from './commun.mjs';
+const { browser, page, erreurs } = await ouvrir();
+await page.screenshot({ path: R2 + '/s01-accueil.png' });
+await versAtelier(page);
+await page.screenshot({ path: R2 + '/s01-atelier.png' });
+console.log('avant', JSON.stringify(await etat(page)));
+console.log('ecrire?', await page.$$eval('#mur .p8-ecrire', l => l.map(e => e.outerHTML.slice(0, 200))));
+await taperHuit(page);
+console.log('apres', JSON.stringify(await etat(page), null, 1));
+await page.screenshot({ path: R2 + '/s01-atelier-huit.png' });
+console.log(erreurs);
+await browser.close();

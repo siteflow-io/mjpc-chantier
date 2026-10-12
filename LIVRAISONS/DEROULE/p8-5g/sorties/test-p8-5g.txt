@@ -1,0 +1,10 @@
+O · ouvert à 0 dévoilé (0 dévoilés) : pilote « page 1 / 2 » 1 lignes · tableau « page 1 / 2 » 1 lignes, police 32.75px, pareil en 110 ms, hors du cadre 0
+O · ouvert à 9 dévoilés (9 dévoilés) : pilote « page 1 / 2 » 10 lignes · tableau « page 1 / 2 » 10 lignes, police 32.75px, pareil en 108 ms, hors du cadre 0
+O · ouvert à 13 dévoilés (13 dévoilés) : pilote « page 2 / 2 » 4 lignes · tableau « page 2 / 2 » 4 lignes, police 32.75px, pareil en 111 ms, hors du cadre 0
+O · ouvert à 9 dévoilés, page 2 à la molette (9 dévoilés) : pilote « page 2 / 2 » 0 lignes · tableau « page 2 / 2 » 0 lignes, police 32.75px, pareil en 108 ms, hors du cadre 0
+P · puis un ▶ (10 dévoilés) : pilote « page 2 / 2 », tableau « page 2 / 2 », mêmes lignes : true
+G · gel à « page 1 / 2 » (8 lignes) ; le pilote avance (« page 2 / 2 ») ; rouvert pendant le gel : « page 1 / 2 », 8 lignes, police 32.75px ; au dégel : pilote « page 2 / 2 », tableau « page 2 / 2 »
+R · ouvert en répétition (11 dévoilés) : pilote « page 2 / 2 », tableau « page 2 / 2 », mêmes lignes : true, en 109 ms
+29 vérifications
+aucun défaut
+--- fin : 0 défaut(s)

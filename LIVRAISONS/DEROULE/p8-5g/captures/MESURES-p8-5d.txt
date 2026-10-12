@@ -1,0 +1,5 @@
+p8-5d-diapo2-apres-dev.png · 7 clics sur ▶ : diapo 2 (0|eabceb6cb), le panneau rend 1 paragraphe(s) de 0|eabceb6cb, focus dans les notes : false ; la note de la diapo 1 finit par « …de ait trois lignes.Xàéèùç1234 »
+p8-5d-diapo1-retour.png · ◀ : diapo 1, la note ⌂ finit par « …de ait trois lignes.Xàéèùç1234 »
+2 · vignette 2 (garde ouverte : true) puis ◀ depuis le début de la diapo 2 : diapo 1 rendue, la note de la diapo 2 dit « Ici la deux »
+3 · atelier : diapo 2 rendue (0|eabceb6cb), la note de la diapo 1 finit par « …is lignes.Xàéèùç1234 »
+4 · Entrée puis frappe sans attente, sur les diapos 1, 7 et 13 : Xyz 0.0 · Xyz 0.1 · Xyz 0.2 · Xyz 6.0 · Xyz 6.1 · Xyz 6.2 · Xyz 12.0 · Xyz 12.1 · Xyz 12.2 ; diapo 14 sans note : ["Premier","Deuxième","Troisième"]

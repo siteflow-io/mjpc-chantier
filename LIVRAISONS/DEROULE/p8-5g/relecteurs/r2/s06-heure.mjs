@@ -1,0 +1,27 @@
+// Heure lancée : diapo 1 en pages, Écran 2 ouvert/rouvert, gestes
+import { ouvrir, versAtelier, taperHuit, comparer, ouvrirEcran2, etat, pause, R2 } from './commun.mjs';
+const W = +(process.argv[2] || 1280), H = +(process.argv[3] || 800);
+const { browser, ctx, page, erreurs } = await ouvrir(W, H);
+await versAtelier(page);
+await taperHuit(page);
+await page.click('#ong-pilotage'); await pause(500);
+await page.click('[data-lancer="1"]'); await pause(800);
+await page.screenshot({ path: R2 + `/s06-lance-${W}.png` });
+let pop = await ouvrirEcran2(ctx, page);
+await comparer(page, pop, 'ouverture à 0');
+const dev = async n => { for (let i = 0; i < n; i++) { await page.click('#bdev'); await pause(120); } await pause(300); };
+await dev(9); await comparer(page, pop, '9');
+await pop.close(); pop = await ouvrirEcran2(ctx, page); await comparer(page, pop, 'réouverture 9');
+const box = await page.locator('#murcadre').boundingBox();
+await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+await page.mouse.wheel(0, 300); await pause(500); await comparer(page, pop, 'molette → p2');
+await pop.close(); pop = await ouvrirEcran2(ctx, page); await comparer(page, pop, 'réouverture p2 manuelle');
+await dev(1); await comparer(page, pop, '▶ 10');
+await page.keyboard.press('Shift+ArrowLeft'); await pause(400); await comparer(page, pop, 'Maj+←');
+await dev(4); await comparer(page, pop, '▶ 14');
+await dev(1); await comparer(page, pop, '▶ diapo 2');
+await page.screenshot({ path: R2 + `/s06-d2-${W}.png` });
+await page.click('#bprec'); await pause(500); await comparer(page, pop, '◀ retour diapo 1');
+await pop.screenshot({ path: R2 + `/s06-pop-retour-${W}.png` });
+console.log('erreurs', erreurs);
+await browser.close();

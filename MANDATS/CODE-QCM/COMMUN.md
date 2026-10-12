@@ -31,12 +31,12 @@ Un fichier que tu n'as pas dans ta liste, tu ne le modifies pas. Si tu as besoin
 
 ## 2. La branche, et le rythme
 
-1. Tout le monde travaille sur **la même branche du sas, `code-qcm`**, dans `LIVRAISONS/CODE-QCM/` : la conscience y a copié les sources de la maquette (`src/`, `build.py`), depuis la v9 candidate (`5852823d`, 13:58). Les mandats et les contrôles de la conscience sont sur `main` : `git merge origin/main` à chaque fois que tu commences une partie.
-2. **La v9 finale** : l'exécutant de la maquette la pousse sur `maquette-qcm` dans l'après-midi. Dès qu'elle y est, chacun reporte dans ses propres fichiers de `LIVRAISONS/CODE-QCM/src/` ce qu'elle a changé depuis `5852823d` (`git diff 5852823d origin/maquette-qcm -- MANDATS/MAQUETTE-QCM-COMPLETE/src`).
+1. Tout le monde travaille sur **la même branche du sas, `code-qcm`**, dans `LIVRAISONS/CODE-QCM/` : la conscience y a copié les sources de la maquette (`src/`, `build.py`) ; depuis le 12/10 à 17:10, ce sont celles de la v9 finale (`6fa8a9fe`, `maquette-qcm-v9.html` md5 `2f453a1ce78033172b23d57657d0ab8c`), et `maquette-qcm` y est fusionnée. Les mandats et les contrôles de la conscience sont sur `main` : `git merge origin/main` à chaque fois que tu commences une partie.
+2. **La v9 finale** est poussée (`6fa8a9fe`, 15:58) et déjà reportée par la conscience dans `LIVRAISONS/CODE-QCM/src/` : il n'y a rien à reporter. Si `maquette-qcm` bouge encore, chacun reporte dans ses propres fichiers ce qui a changé depuis `6fa8a9fe` (`git diff 6fa8a9fe origin/maquette-qcm -- MANDATS/MAQUETTE-QCM-COMPLETE/src`).
 3. Avant chaque commit : `git pull --rebase origin code-qcm`. Un conflit ne peut venir que d'un fichier commun (`DEMANDES.md`, `DEFAUTS-OUVERTS.md`) : tu gardes les deux lignes.
 4. Tu pousses **au moins toutes les heures**, et dès qu'une partie marche. Jamais un commit qui casse l'assemblage : `python3 LIVRAISONS/CODE-QCM/build.py` doit passer avant chaque `push`.
-5. Les heures (heure de Paris) :
-   - **18:00, 20:00, 22:00, 00:00, 02:00, 04:00** : QCM-4 assemble, passe le banc, et range les défauts dans `DEFAUTS-OUVERTS.md` ; chacun traite les siens avant de continuer ;
+5. Les heures (heure de Paris ; recalées le 12/10 à 17:10, les quatre partant vers 17:15) :
+   - **20:00, 22:00, 00:00, 02:00, 04:00** : QCM-4 assemble, passe le banc, et range les défauts dans `DEFAUTS-OUVERTS.md` ; chacun traite les siens avant de continuer ;
    - **05:00** : plus rien de nouveau ; on ne corrige que des défauts ;
    - **05:30** : QCM-4 passe le banc final, les contrôles de la conscience et les relecteurs neufs ;
    - **06:30 au plus tard** : QCM-4 écrit `VERDICT.md` et pousse la livraison. Chacun s'arrête alors.

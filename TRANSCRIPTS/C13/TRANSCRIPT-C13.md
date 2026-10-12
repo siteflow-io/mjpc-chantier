@@ -1373,3 +1373,35 @@ Paul, tour 52, mot pour mot : « Non ça doit partir en exécutant parce que c'e
 178. **p8-5e close et déposée** : banc unique rejoué au premier plan ce matin, **32 bancs à 0, « TOUS LES BANCS : 0 défaut »**, maquette md5 `f2f9a3215f…` (celle envoyée à Paul au tour 50). Branche `deroule/p8-5e`, partie de p8-5d, commits `0e158563` puis `bd014395` (correction : le `.gitignore` repris de p8-5d excluait les captures `p8-5e-*.png` et les empreintes listaient des fichiers non livrés — refaits : 70 fichiers, 70 OK). Dette n°13 · 15 réglée.
 179. Phrase donnée à Paul pour lancer l'exécutant sur p8-5f, partie de p8-5e.
 
+
+---
+
+## TOUR 54 (12/10/2026, 09:32 → 10:05) — Paul : « livré »
+
+180. **p8-5f close** : branche `deroule/p8-5f`, partie de p8-5e, commit `65dfa4b0` (09:04), NOTE complète, `EMPREINTES.md5` 78 OK, maquette md5 `c298a93c…`, `p8-5c.js` identique. 16 remplacements ; quatre causes mesurées par l'exécutant (la mesure par bloc, le corps défilé, l'atelier sans pages, la place d'une page surestimée de 45 px — la dernière dans la base), douze défauts trouvés et corrigés avec leur cause, deux bancs recalés et justifiés (`test-p8-4-ecrire`, `test-p3-p7`). Banc unique de l'exécutant : 33 à 0 en un passage.
+181. **Vérifié par la conscience, par le geste** (pièces `T54-pages.mjs`, `T54b-tableau.mjs`, `T54c-ouverture.mjs`), à 1280 × 800 et 1920 × 1080 : huit lignes tapées sous le dernier bloc de la diapo 1 → « page 2 / 2 », aucun élément hors du cadre, corps non défilé, « À régler » + 1, le curseur à la fin de la ligne tapée, les huit lignes entières dans la trame ; Maj+← → page 1 ; heure lancée : « page 1 / 2 » à 0 dévoilé, la page passe à 2 d'elle-même au dixième ▶, 0 élément hors du cadre à chacun des 14 ▶, ◀ ×5 → page 1, molette → page 2 ; la fenêtre du tableau suit le pilote à chaque geste. Mes points de p8-5c (9), le panneau qui suit (p8-5d), l'arrêt de la répétition : ça va. Banc unique rejoué chez moi : 33 à 0 (`test-p8-5c` d'abord à 2 défauts par ma faute — la maquette de référence p8-5 n'était pas à côté ; remise, rejoué seul : 0).
+182. **Trouvé en passant, dette n°13 · 17** : à l'ouverture de la fenêtre du tableau, celle-ci ne reçoit pas les pages du pilote (elle pagine seule sur ses lignes dévoilées, sans compteur ; à 9 dévoilés avec le pilote en page 1, aucun compteur) ; dès le ▶ suivant, tout se cale. Jamais hors du cadre (mesuré à 0, 9, 13, 14 dévoilés). Contraire au point 5 de p8-5f à l'ouverture seulement. Complément **p8-5g** écrit (exécutant, par la règle de Paul du tour 52) et soumis avant dépôt.
+183. **Verdict sur p8-5f : ça va** — dette n°13 · 16 réglée ; 13 · 17 ouverte, à régler par p8-5g avant la validation de la maquette.
+
+
+---
+
+## TOUR 55 (12/10/2026, 11:57 → 12:20)
+
+Paul, mot pour mot : « pourquoi quand j'ia un nouvel écran qui se crée je ne le vois pas apparaître dans la colonne de guache? il y a plein de choses que la maquette originale faisait, que celle ci ne fait plus. typiquement ça. c'est pénible. »
+
+184. **Mesuré, non reproduit** (pièces `T55-volet.mjs`, `T55b-inserer.mjs`, `T55c-cas.mjs`, `T55d-visible.mjs`), sur la maquette d'origine de la n°12 (p7, T265), sur p8-5 et sur p8-5f, en atelier : « Insérer une diapo après » et « Dupliquer » (clic droit sur une vignette, en haut et en bas de la colonne), « Couper la diapo ici » (clic droit sur un bloc), « + bloc → Schéma… » (p8-3, crée la diapo suivante), et en classe « Insérer une diapo au milieu » (⚙) : à chaque fois, la nouvelle diapo apparaît dans la colonne de gauche aussitôt, visible dans la zone affichée, marquée courante, et la maquette l'ouvre — identique sur p7 et sur p8-5f. « Insérer après » le cahier de textes ou le bilan est désactivé, avec son infobulle (« rien après la fin d'heure : insère avant elle »), sur p7 comme sur p8-5f.
+185. Une seule question posée à Paul : quel geste exactement, et où (atelier ou heure lancée). Mise en tension rappelée : si c'est le débordement qui créait un écran (la scission automatique), c'est la règle 0.4 qu'il a validée, redite au tour 51 et acquise au tour 52.
+
+
+---
+
+## TOURS 56 à 60 (12/10/2026, 12:07 → 12:50)
+
+Paul, tour 56, mot pour mot : « En fait moi je veux un truc simple, et j'avais dit de le garder, à la différence du système pour le coup complexe des pères fils etc d'avant. Ce système repose sur une règle que j'avais énoncée: je ne veux pas être coupé en pleine écriture, et je veux que le tableau s'adapte. Retrouve ce que j'avais dit. »
+
+186. **Retrouvé aux sources** : C12 tours 39-40 (« je remonte mon bloc au fur et à mesure que j'écris, et je reste sur la même diapo plutôt que d'en créer d'autres » ; « il faut que ça se réduise d'abord jusqu'à l'acceptable au fond, et ensuite ça bascule à l'autre ») et cadrage 1 § 5.1-5.3, 5.7 (le texte ne se coupe jamais ; police au plancher puis pages ; la page suit ce que Paul écrit ; le tableau montre la même page ; jamais le site ne coupe) ; père / fils / suite et la scission retirés par lui (cadrage 1, « ce qui ne revient pas » ; cadrage 4, 0.4 et 2.4). Le « truc simple » = les pages, que p8-5f vient de remettre debout.
+187. Tours 57-59 — Paul perdu sur « qui travaille sur quoi » (une session d'exécutant portait le QCM de la n°12 puis p8-5f ; il a cru qu'elle tournait encore sur le déroulé). État donné : personne sur le déroulé ; p8-5f (10:08) est la dernière version ; seule 13 · 17 ouverte. **Règle tenue désormais, en tête de chaque envoi de maquette** : « À jouer : p8-5x · en cours chez l'exécutant : … · ouvert : … », et jamais de maquette envoyée pendant qu'une livraison tourne dessus. Correction déclarée : « jamais les deux couples dans la même session » n'est pas une règle de Paul (la règle écrite : jamais sur le même fichier).
+188. Tour 59 — Paul : « donc ce que j'ai dit (les pages invisibles à gauche) reste vrai? … je ne peux pas avoir un écran sans le voir dans mon déroulé ppt. en effet, ça reviendrait à projeter quelque chose à l'aveugle. » **Mesuré** (pièce `T56-vignette.mjs`) : en classe, une seule vignette pour une diapo à deux pages (tout en petit, sans page) ; dans l'atelier, une liste de titres sans aperçu ni mention. Trou entre 0.1 et 5.2 du cadrage 1. Dette n°13 · 18. Proposition : une vignette par page (« 1 · 1/2 », « 1 · 2/2 »), ce que la page projette, la page courante marquée, clic = y aller avec la garde ; pas un écran de plus ; « · 2 pages » dans l'atelier.
+189. Tour 60 — Paul : « Ah bah voilà. Écris le. Vu que l'exécutant est sur p85g il verra ton p85h sans que j'aie besoin de le relancer? » **p8-5g déposé aussitôt** (`MANDATS/COMPLEMENT-DEROULE-P8-5g.md`, il n'était pas encore au sas) ; **p8-5h écrit et déposé** (`MANDATS/COMPLEMENT-DEROULE-P8-5h.md`, partie de p8-5g). Réponse : non — une phrase qui nomme p8-5g s'arrête après p8-5g ; pour enchaîner, une phrase qui nomme les deux, ou une relance après l'arrêt.
+

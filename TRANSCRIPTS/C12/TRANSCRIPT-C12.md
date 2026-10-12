@@ -20195,3 +20195,233 @@ Tu es l'exécutant du complément 4 de la maquette complète du QCM de MJPC. Lis
 À son retour, je refais ma lecture sur la v9.
 
 12/10/2026 07:43 MEMO
+
+---
+
+## TOUR 658 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (12/10, 09:26) livré
+
+---
+
+## TOUR 658 — Claude (conscience n°12)
+
+Lu toutes les branches du sas (`git ls-remote`) : `maquette-qcm` à `4a29a6cd` (08:52, « C4-A (en cours) … (sauvegarde) », session de l'exécutant `01Ftfh…`), pas de v9, pas de `gardes-16-a-20-sur-v8.txt` ; aucune autre branche nouvelle. Production : 8 commits de C13 sur `docs/MJPC6-DETTES.md` seulement, `index.html` et `evaluation-qcm.html` inchangés (md5 vérifiés). La machine de la conscience était à « up 0 min » au début des tours 657 et 658 : elle s'éteint entre deux messages ; le banc de la v8, relancé au tour 657, est mort de nouveau sans sortie.
+
+Réponse mot pour mot :
+
+803. **Rien n'est livré au sas.** J'ai lu toutes les branches du sas, pas seulement main. Sur `maquette-qcm`, le dernier envoi de l'exécutant date de 08:52 : une sauvegarde de l'étape A, marquée « en cours ». Elle contient les nouvelles gardes et des corrections dans les sources, mais pas la v9, ni le passage des gardes sur la v8, ni sa lecture. Les étapes B et C ne sont pas poussées.
+
+804. **Je ne sais pas pourquoi il s'est arrêté** : je ne vois pas sa session. Regarde son dernier message sur claude.ai/code. S'il s'est arrêté en route, dis-lui « continuer » dans la même session : il repart de sa sauvegarde. S'il dit avoir fini, colle-moi son dernier message.
+
+805. **Je n'audite pas cette sauvegarde** : l'audit se fait une seule fois, sur la livraison finie.
+
+806. **Je corrige mon point 801.** Ma machine ne « redémarre » pas au hasard : elle s'éteint quand je ne travaille pas, entre deux de tes messages. Un banc lancé à la fin d'un tour meurt donc avant d'avoir fini. À l'audit de la v9, je le rejouerai pendant le tour, avant de te répondre.
+
+12/10/2026 09:28 MEMO
+
+---
+
+## TOUR 659 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (12/10, 09:35) c'est juste que je me trompe entre l'exécutant qui code la maquette et celui qui code le déroulé. Et j'ai fait une erreur d'exécutant, j'ai lancé un mandat de déroulé dans un exécutant de qcm je crois. peu importe. celui qui tourne sur la maquette n'a effectivement pas fini.
+
+---
+
+## TOUR 659 — Claude (conscience n°12)
+
+Mesuré au sas : `deroule/p8-5f` (65dfa4b0, 09:04) poussée par la session `01U9pF…`, celle qui avait livré la v8 ; ses 79 fichiers sont tous sous `LIVRAISONS/DEROULE/p8-5f/`. `maquette-qcm` (4a29a6cd) poussée par la seule session `01Ftfh…`, tous ses fichiers sous `MANDATS/MAQUETTE-QCM-COMPLETE/`. main et production sans commit d'exécutant.
+
+Réponse mot pour mot :
+
+807. **C'est bien ça, et ça n'a rien cassé.** La session qui avait fait la v8 a reçu le mandat p8-5f du déroulé : elle l'a livré à 09:04, sur sa branche `deroule/p8-5f`, sans sortir de son dossier. Celle du complément 4 est seule sur la maquette. Aucune des deux n'a touché au travail de l'autre, ni à main, ni à la production.
+
+808. **Pour la conscience n°13**, rien ne change : elle audite p8-5f comme d'habitude. Le mandat au sas suffit à un exécutant, quelle que soit la session qui l'a lu.
+
+809. **J'attends la v9.** Quand l'exécutant de la maquette a fini, dis-moi « livré » : je fais l'audit en entier, banc compris, avant de te répondre.
+
+12/10/2026 09:36 MEMO
+
+---
+
+## TOUR 660 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (12/10, 09:47) en revanche j'ai remarqué quelque chose sur les audits: au fur et à mesure du temps, toi et C13 vous mettez énormément de temps à répondre. Il faudrait raccourcir afin que le travail ne soit pas refait deux fois: il s'agit d'auditer ce que fait l'exécutant, normalement ce n'est pas si long. Dis moi les raisons.
+
+---
+
+## TOUR 660 — Claude (conscience n°12)
+
+Mesuré : la durée de chaque tour depuis le 636, de l'heure du message de Paul à l'horodatage MEMO (`CADRAGE-QCM.md`) ; `nproc` = 2 ; la carte des gestes de la v8, de 06:20 à 06:53, en quatre passes ; les messages de commit de C13 au sas.
+
+Réponse mot pour mot :
+
+810. **Mesuré sur mes tours.** Mes trois premiers audits de la maquette ont pris 15, 12 et 11 minutes. Puis la lecture de la v7 a pris 2 h 15, et l'audit de la v8 une heure.
+
+811. **La raison principale : depuis le 11/10, je refais le travail de l'exécutant au lieu de vérifier le sien.** Mon audit court du 11/10 m'a fait dire « ça va » sur la v7, et c'était faux. Depuis, je reclique moi-même chacun des 5 566 éléments, je remesure toute la mise en page, je relis tous les textes et je regarde toutes les captures. C'est une seconde exécution, pas un audit : le travail est bien fait deux fois.
+
+812. **Je le refais parce que ses vérifications ont laissé passer des défauts à chaque livraison**, de la v5 à la v8. Je ne pouvais pas me fier à son « zéro défaut », alors je l'ai remplacé par le mien.
+
+813. **La machine aggrave.** Elle n'a que deux processeurs : cliquer les 5 566 éléments m'a pris une demi-heure, en quatre passes à la fois, et le banc de l'exécutant tournait encore au bout d'une heure. Elle s'éteint aussi entre deux de tes messages : rien ne peut tourner pendant ton absence.
+
+814. **Pour C13, je ne sais pas** : je ne vois pas sa conversation. Ses messages au sas disent « 30 bancs à 0 chez la conscience », puis 32 : elle aussi rejoue chez elle tous les bancs de l'exécutant. C'est probablement la même cause.
+
+815. **Ma proposition, dans ta règle du 10/10 (un seul audit, en échange des gardes).** Le complément 4 fait déjà faire ma lecture par l'exécutant avant qu'il livre. Mon audit devient : lire ses preuves et dire ce qu'elles contiennent, vérifier par le geste que chaque défaut de la fois d'avant a disparu, regarder ses captures, et refaire au hasard une petite part de sa lecture. Si cet échantillon trouve un défaut, la livraison ne va pas, et le défaut entre dans ses gardes. Le « ça va » reste fiable, parce que ses gardes contiennent ma lecture et que l'échantillon vérifie qu'elles disent vrai. Je ne sais pas encore combien de temps cela prendra : je le mesurerai sur la v9. Si tu dis « ok », je fais ainsi, et je le propose à C13 par une note au sas.
+
+12/10/2026 09:48 MEMO
+
+---
+
+## TOUR 661 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (12/10, 09:52) il faut trouver un moyen pour attraper les défauts des livraisons des exécutants, sans avoir à tout refaire.
+
+---
+
+## TOUR 661 — Claude (conscience n°12)
+
+Relu les audits des tours 638, 640, 645, 654 et 656 (ce que les bancs n'avaient pas vu) ; mesuré, le relevé des textes de 66 écrans des v7 et v8 a pris moins de deux minutes (07:33 à 07:35).
+
+Réponse mot pour mot :
+
+816. **D'abord, ce qui a échappé à chaque fois.** Les défauts que ses bancs n'ont pas vus, de la v5 à la v8, ont une cause commune : l'exécutant écrit à la fois la maquette et les vérifications. Son banc vérifie donc ce qu'il a compris, pas ce que tu as cadré. Exemples : en v5, MJPC avait perdu des boutons du vrai site, et son banc ne regardait pas le vrai site ; en v7, un clic menait au mauvais élève, et son banc trouvait juste la destination qu'il avait lui-même écrite ; en v8, il n'a joué que les écrans qu'il connaissait. Une part vient de moi : quand je décris une vérification avec des mots, il en code sa lecture.
+
+817. **Moyen 1 : c'est moi qui écris, avant le mandat, ce qui doit être vrai, et l'exécutant ne peut pas y toucher.** Ce n'est pas une description : c'est un fichier de contrôles, tiré du cadrage, par exemple « au rattrapage, Adam est présent et seul », « après la lecture du soir, Lou a 1 / 3 partout ». Je le dépose au sas avec son empreinte. L'exécutant doit le faire passer ; à l'audit, je vérifie l'empreinte et ce que la sortie contient. Je l'écris une fois, au cadrage, et non à chaque audit.
+
+818. **Moyen 2 : je n'audite que ce qui a changé.** Je relève le texte et l'image de chaque écran des deux versions, ce qui est rapide (mesuré : moins de deux minutes pour 66 écrans, dans les deux versions). Je ne lis ensuite que les écrans qui ont changé, et ceux qui devaient changer et n'ont pas bougé. Le reste a déjà été audité.
+
+819. **Moyen 3 : des relecteurs à froid, chez l'exécutant, avant qu'il livre.** Il lance des relecteurs séparés qui n'ont jamais vu son travail : ils n'ont que le cadrage et la maquette, et ils cliquent comme toi. C'est ce qui a trouvé les 325 défauts de la v7. Cela tourne sur son temps, pas sur le tien.
+
+820. **Mon audit devient court** : l'empreinte et la sortie des contrôles, les écrans qui ont changé, un échantillon pris au hasard. Si un défaut passe quand même, il devient un contrôle du fichier du moyen 1 : le même défaut ne passe jamais deux fois.
+
+821. **Pour la v9**, l'exécutant est en plein mandat et ne s'arrête pas : je n'y ajoute rien. J'audite la v9 avec les moyens 2 et 1 : mes contrôles des neuf défauts, puis les écrans changés et un échantillon. Les trois moyens entrent dans les mandats de code de MJPC et du QCM.
+
+822. **Si tu dis « ok »**, je l'écris dans le protocole au sas, avec une note pour C13, et je fais l'audit de la v9 ainsi.
+
+12/10/2026 09:53 MEMO
+
+---
+
+## TOUR 662 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (12/10, 11:26) Ok mais le seul truc qui me chiffonne c'est le "au hasard". Ce n'est pas suffisamment cadré parce que c'est typiquement là que des défauts pourront passer sans qu'ils soient vus. Non?
+
+---
+
+## TOUR 662 — Claude (conscience n°12)
+
+Pris comme un « ok » aux points 816 à 822, sauf l'échantillon au hasard, remplacé par une liste fixée d'avance ; le protocole n'est pas encore écrit, en attente du mot de Paul sur ce remplacement.
+
+Réponse mot pour mot :
+
+823. **Oui, tu as raison.** « Au hasard », c'est laisser des trous qu'on n'a pas choisis. Je le retire.
+
+824. **À la place, ce que je regarde est fixé avant l'audit, sans hasard.** D'abord tous les écrans que la livraison a changés. Ensuite tous les écrans qui y mènent et tous ceux où ils mènent, parce que c'est là que se cachaient les défauts de la v8. Enfin ton heure de classe jouée geste par geste, de l'appel au soir, la même à chaque audit, comparée à mes contrôles.
+
+825. **Ce que je ne regarde pas n'est pas pour autant laissé de côté.** Un écran qui n'a pas changé a déjà été lu en entier (la v8, ce matin), et tous les écrans, sans exception, passent par mes contrôles.
+
+826. **Ce que ce dispositif ne voit pas** : une sorte de défaut que ni toi ni moi n'avons encore rencontrée. Quand il en paraît une, elle devient un contrôle, et elle ne passe plus.
+
+827. **Si ça te va**, j'écris le protocole ainsi au sas, avec la note pour C13, et j'audite la v9 de cette façon.
+
+12/10/2026 11:27 MEMO
+
+---
+
+## TOUR 663 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (12/10, 11:28) Ok
+
+---
+
+## TOUR 663 — Claude (conscience n°12)
+
+Écrits au sas : `PROTOCOLE-AUDIT-12-10.md`, `MANDATS/NOTE-POUR-C13-AUDIT.md`, `AUDITS/CONTROLES-QCM/` (controles.js C1 à C10, attendus figés sur la v8 auditée et le PDF validé, releve.js, compare.py, EMPREINTES.md5, sortie sur la v8). Relevé stable : 27 écrans relevés deux fois, identiques. Branche de l'exécutant : `02906fb8` (C4-A, 11:44), `d7b8eaa1` (C4-B en cours). Les points 828 et 829 ont été envoyés à Paul en cours de tour, les points 830 et 831 à la fin.
+
+Réponse mot pour mot :
+
+828. **Écrit au sas.** Le protocole : https://github.com/siteflow-io/mjpc-chantier/blob/main/PROTOCOLE-AUDIT-12-10.md. La note pour C13 : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/NOTE-POUR-C13-AUDIT.md.
+
+829. **Maintenant, je prépare l'audit de la v9** : mes contrôles des neuf défauts, le relevé des écrans changés, et ton heure de classe jouée geste par geste. Je les essaie d'abord sur la v8, où ils doivent retrouver les neuf défauts. Quand la v9 arrivera, l'audit n'aura plus qu'à les passer.
+
+830. **Prêts, et éprouvés sur la v8.** Mes contrôles retrouvent les neuf défauts : 112 vérifications, 29 échecs, tous sur ces défauts. Ton heure de classe, 19 gestes de « Lancer la séance » aux copies rendues, passe sur la v8. Ils tournent en 1 min 20 ; le relevé des écrans des deux versions en 8 min 30, et leur comparaison en 11 secondes. Tout est ici : https://github.com/siteflow-io/mjpc-chantier/blob/main/AUDITS/CONTROLES-QCM/README.md.
+
+831. **L'exécutant de la maquette a fini sa première étape à 11:44** : ses propres vérifications retrouvent sur la v8 les neuf défauts, et d'autres. Il fait maintenant les corrections.
+
+12/10/2026 11:53 MEMO
+
+---
+
+## TOUR 664 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (12/10, 13:07) c'est long. l'exécutant a fini A, il est en train de faire B et il lui reste C.
+
+---
+
+## TOUR 664 — Claude (conscience n°12)
+
+Lu au sas : la branche `maquette-qcm` de `c8a5b81a` (07:46) à `c53aae11` (12:52) ; `sorties/gardes-16-a-20-sur-v8.txt` de l'exécutant : 3 149 destinations distinctes et 1 330 adresses d'écrans déjà relevés, 3 318 pages, les gardes 9 à 15 rejouées sur chaque destination aux versions de travail et à la v9.
+
+Réponse mot pour mot :
+
+À jouer : rien de neuf, la v8 reste la dernière livrée et elle ne va pas · en cours chez l'exécutant : le complément 4, étape B · ouvert : son étape C, puis mon audit.
+
+832. **Mesuré au sas.** L'étape A a duré de 07:46 à 11:44, quatre heures. L'étape B est en cours : sa dernière sauvegarde date de 12:52. Il reste l'étape C.
+
+833. **La cause est mon complément.** Je lui ai demandé de jouer chaque écran qu'un geste ouvre, et sur chacun de rejouer toutes les vérifications. Il en a trouvé 3 149, en plus des 169 scènes : à chaque passage de son banc, ce sont des milliers de pages et des dizaines de milliers de clics. J'aurais dû mesurer ce coût avant d'écrire cette vérification : c'est ta règle du 07/10, et je ne l'ai pas appliquée.
+
+834. **Je ne sais pas combien de temps il lui reste** : je ne vois pas sa session, seulement ses sauvegardes.
+
+835. **Je ne te propose pas de changer sa consigne en route** : il finit, c'est ta règle du 05/10. Pour les mandats de code, je mesurerai le coût de chaque vérification avant de l'écrire, et je te dirai d'avance combien de temps un passage du banc doit prendre.
+
+12/10/2026 13:08 MEMO
+
+---
+
+## TOUR 665 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (12/10, 13:10) Non mais là il faut raccourcir. Je dois utiliser qcm demain, je ne peux pas attendre autant de temps, surtout si le temps qu'il passe n'est pas utile. A-t-il au moins trouvé de nouveaux défauts jusque là grâce à ce temps passé?
+
+---
+
+## TOUR 665 — Claude (conscience n°12)
+
+Mesuré : `evaluation-qcm.html` en production toujours à `ecae6562…` (dettes 198 et 210 du registre toujours ouvertes, réglées « dans la livraison complète » selon le tour 578) ; la sortie de l'exécutant `gardes-16-a-20-sur-v8.txt` (3 149 destinations, 6 728 vérifications, 3 406 échecs, dont 2 537 contrastes sur une quinzaine de classes de la maquette, et cinq défauts nouveaux par la garde 18). Avenant écrit au sas sur l'ordre de Paul (« il faut raccourcir »).
+
+Réponse mot pour mot :
+
+À jouer demain : la version en ligne d'aujourd'hui (7.7.1), pas la maquette · en cours chez l'exécutant : le complément 4, étape B · ouvert : le raccourci ci-dessous, et les deux pannes du point 836.
+
+836. **D'abord, demain.** En classe, c'est la version en ligne qui tourne, quoi qu'il arrive à la maquette : la maquette ne change rien au site, et le nouveau QCM viendra des mandats de code, après ta validation. Or la version en ligne a toujours deux pannes, mesurées les 08 et 09/10 et toujours là : quand tu lances la correction, chaque tablette devient un écran vide ; et le téléphone devient vide dès qu'un élève répond. Chacune se répare en une ligne.
+
+837. **Ma proposition pour demain** : je répare ces deux lignes dans la version en ligne aujourd'hui, avec un banc qui joue la correction sur les tablettes et le pilotage au téléphone, par le geste. Si tu dis « ok », je le fais avant ce soir et je te donne l'adresse et les tests.
+
+838. **Oui, son temps a trouvé de vrais défauts, que je n'avais pas vus** : le QR qui montre toujours la question 1 ; l'appel d'une séance rouverte qui se trompe d'absents (Lou présente le 24/09, Adam barré le 15/09) ; le mode test qui dit « réflexion » pendant B ; le tableau d'une question rouverte sans son énoncé ; et une quinzaine de couleurs de la maquette trop pâles, surtout sur le téléphone. Ce sont ses vérifications de l'étape A qui les ont trouvés, en une passe.
+
+839. **Ce qui coûte sans servir assez** : rejouer toutes ses vérifications sur chacun des 3 149 écrans, ce qu'il fait en ce moment, sans résultat poussé jusqu'ici ; et, à l'étape C, regarder lui-même chaque capture de ces 3 318 pages.
+
+840. **Je raccourcis ainsi, c'est écrit au sas** : il retire ces deux choses ; il garde les vérifications qui ont trouvé les défauts du point 838 ; il corrige tout ce qu'il a trouvé ; il fait passer mes contrôles à zéro ; il ne regarde que les écrans qui ont changé et leurs voisins ; puis il livre. https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/COMPLEMENT-MAQUETTE-QCM-COMPLETE-4-AVENANT.md. Colle-lui, dans sa session :
+
+```
+Paul raccourcit le complément 4. Lis en entier MANDATS/COMPLEMENT-MAQUETTE-QCM-COMPLETE-4-AVENANT.md sur la branche main du sas, et continue d'où tu en es en l'appliquant à la lettre, jusqu'à la livraison de la v9.
+```
+
+841. **Je ne sais pas combien de temps il lui faudra encore** : je ne vois que ses sauvegardes.
+
+12/10/2026 13:13 MEMO

@@ -303,17 +303,22 @@ function resultatLocalV(se, slug){
   var ev = se.ev, S = se.S, mode = ev.mode, revelees = v3Liste(S.revelees).map(Number), partiAt = (S.partis || {})[slug];
   if(se.absents.some(function(e){ return e.slug === slug; })) return null;
   var trouvee = S.trouvee && S.trouvee[slug] != null ? +S.trouvee[slug] : null, st = [], pts = [];
+  // « Trouvée au dernier moment », une fois : la première question, dans l'ordre de la correction, dont la feuille est fausse et la tablette juste
+  if(trouvee == null && se.nouvelle){ var ordre = v3Liste(S.revelees).map(Number); (ordre.length ? ordre : v3Liste(S.ordreCorr).map(Number)).some(function(qi){
+    var q = ev.questions[qi], l = q && lectureV(se, qi, slug), tb = q && tabletteV(se, qi, slug);
+    if(l && l.choix !== "aucun" && ptsQuestionV(l.choix, q, "strict") !== 1 && tb && memesChoixV(tb.choix, q.bonnes)){ trouvee = qi; return true; } return false; }); }
   ev.questions.forEach(function(q, qi){
     if(se.ecartees.indexOf(qi) >= 0){ st.push("x"); pts.push(null); return; }
     if(se.nouvelle){
       if(se.papier){ var fp = feuillePapierV(se, qi, slug) || lectureV(se, qi, slug) && lectureV(se, qi, slug).choix; if(!fp){ st.push("n"); pts.push(null); return; } var pp = ptsQuestionV(fp, q, mode); st.push(fp === "aucun" ? "a" : pp === 1 ? "j" : "f"); pts.push(pp); return; }
       if(revelees.indexOf(qi) < 0 && !se.terminee){ st.push("n"); pts.push(null); return; }
       var l = lectureV(se, qi, slug);
-      if(!l){ var tb = tabletteV(se, qi, slug); if(!tb && partiAt){ st.push("x"); pts.push(null); return; } if(revelees.indexOf(qi) < 0){ st.push("n"); pts.push(null); return; } st.push("f"); pts.push(0); return; }
+      // une feuille non lue ne note pas
+      if(!l){ var tb = tabletteV(se, qi, slug); if(!tb && partiAt){ st.push("x"); pts.push(null); return; } st.push("n"); pts.push(null); return; }
       var p = ptsQuestionV(l.choix, q, mode);
       if(l.choix === "aucun"){ st.push("a"); pts.push(0); }
       else if(p === 1){ st.push("j"); pts.push(1); }
-      else if(trouvee === qi || (trouvee == null && tabletteV(se, qi, slug) && memesChoixV(tabletteV(se, qi, slug).choix, q.bonnes))){ trouvee = qi; st.push("t"); pts.push(1); }
+      else if(trouvee === qi){ st.push("t"); pts.push(1); }
       else { st.push("f"); pts.push(p); }
       return;
     }

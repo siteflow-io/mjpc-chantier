@@ -387,12 +387,16 @@ function ficheChapitre(id){
   if(id === "3e-ch1" && typeof CHAPITRE_3E !== "undefined") return {titre:CHAPITRE_3E.titre, majeures:CHAPITRE_3E.majeures, mineures:CHAPITRE_3E.mineures};
   return null;
 }
+// un chapitre sans fiche au hub prend son titre de ses évaluations (« 4e- Chapitre 1 - Paris à la barre et analyse logique · » : MANDATS/EVAL-4E-PARIS)
+function titreDesEvals(id){ var E = v3Evals(), t = "";
+  Object.keys(E).some(function(k){ var e = E[k]; if(!e || e.chapitre !== id) return false; var m = /Chapitre\s*\d+\s*[-–—:]\s*(.+?)[\s·.]*$/i.exec(e.titre || ""); if(m){ t = m[1].split(" · ")[0].trim(); return true; } return false; });
+  return t; }
 function chapitreVue(id){
   if(!niveauDuChapitre(id)) return null;
-  var f = ficheChapitre(id), niv = niveauDuChapitre(id), n = numeroDuChapitre(id);
-  return {id:id, niveau:niv, numero:n, titre:f ? f.titre : "", fiche:!!f, majeures:f ? f.majeures : [], mineures:f ? f.mineures : [],
+  var f = ficheChapitre(id), niv = niveauDuChapitre(id), n = numeroDuChapitre(id), titre = f ? f.titre : titreDesEvals(id);
+  return {id:id, niveau:niv, numero:n, titre:titre, fiche:!!f, majeures:f ? f.majeures : [], mineures:f ? f.mineures : [],
     comps:f ? f.majeures.concat(f.mineures) : toutesCompetences(),
-    libelle:niv + " · Chapitre " + n + (f && f.titre ? " — " + f.titre : ""), court:niv + " · Ch. " + n + (f && f.titre ? " — " + f.titre : "")};
+    libelle:niv + " · Chapitre " + n + (titre ? " — " + titre : ""), court:niv + " · Ch. " + n + (titre ? " — " + titre : "")};
 }
 function chapitresConnus(plus){
   var ids = ["3e-ch1"];

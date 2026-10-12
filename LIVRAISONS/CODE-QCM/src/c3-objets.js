@@ -267,9 +267,9 @@ var FENETRES_H = {
            boutonH("p", "btn btn-ghost", "🚫 Marquer comme parti", fait("depart", [p]), "Marque " + prenomH(p) + " comme parti" + (il === "Elle" ? "e" : "") + " : " + il.toLowerCase() + " ne bloque plus la classe, ses questions manquées sortent de son total."),
            boutonH("g", "btn btn-rouge", "⛔ Retirer le point d'autonomie", function(){ ouvrirFen("garde", [p]); }, "Demande une confirmation, puis retire son point d'autonomie : ses deux compétences d'autonomie passent en Maîtrise insuffisante.")], null); },
   // la garde du point d'autonomie : un élève, ou les deux de l'alerte (« ⛔ aux deux »)
-  garde:function(ps, fond){ var noms = ps.map(nomDe);
+  garde:function(ps, fond){ var noms = ps.map(nomDe);   // ouverte depuis la fiche (FEN_H.depuis) : « ⛔ Retirer » y revient, retiré (c-autonomie-retiree)
     return Fenetre(fond, "⛔ Retirer le point d'autonomie " + (noms.length > 1 ? "aux deux" : "à " + noms[0]) + " ?", noms.join(" et "),
       h(F, null, h("p", null, (noms.length > 1 ? "Leurs deux compétences d'autonomie passent" : "Ses deux compétences d'autonomie passent") + " en Maîtrise insuffisante, pour cette évaluation : « Être autonome et responsable » et « S'impliquer dans les activités en classe et dans son travail personnel ». La note ne bouge pas.")),
       [boutonH("a", "btn btn-ghost", "Annuler", fermerFen, "Ne retire rien."),
-       boutonH("ok", "btn btn-rouge", "⛔ Retirer le point d'autonomie", function(){ ps.forEach(function(p){ agir("retirerAutonomie", [p, "heure"]); }); fermerFen(); }, "Retire le point d'autonomie, tout de suite. « ↩️ Rendre » le défait.")], null); }
+       boutonH("ok", "btn btn-rouge", "⛔ Retirer le point d'autonomie", function(){ ps.forEach(function(p){ agir("retirerAutonomie", [p, "heure"]); }); if(ps.length === 1 && FEN_H.depuis === "eleve") ouvrirFen("eleve", ps[0]); else fermerFen(); }, "Retire le point d'autonomie, tout de suite. « ↩️ Rendre » le défait.")], null); }
 };

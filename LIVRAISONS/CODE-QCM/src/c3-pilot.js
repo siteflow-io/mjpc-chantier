@@ -128,7 +128,7 @@ function agirE(nom){
 var FEN_H = {f:null, arg:null, ab:[], cle:null};
 // une fenêtre ouverte se ferme d'elle-même quand la séance change de phase ou de question (un geste fait ailleurs, le téléphone, le moteur)
 function cleFen(){ var m = MOM() || {}; return [m.seance, m.ph, m.qi, m.tour].join("|"); }
-function ouvrirFen(nom, arg){ FEN_H.f = nom; FEN_H.arg = arg == null ? null : arg; FEN_H.cle = nom ? cleFen() : null; FEN_H.ab.slice().forEach(function(f){ f(); }); }
+function ouvrirFen(nom, arg){ FEN_H.depuis = FEN_H.f; FEN_H.f = nom; FEN_H.arg = arg == null ? null : arg; FEN_H.cle = nom ? cleFen() : null; FEN_H.ab.slice().forEach(function(f){ f(); }); }
 function fermerFen(){ ouvrirFen(null); }
 // un bouton qui ouvrait une fenêtre (une scène de la maquette) : en direct, la fenêtre sur place
 function fen(va, nom, arg){ if(!enDirect()) return va ? {"data-va":va} : {}; return marqueH("FEN:" + nom + ":" + JSON.stringify(arg == null ? null : arg), function(){ ouvrirFen(nom, arg); }); }

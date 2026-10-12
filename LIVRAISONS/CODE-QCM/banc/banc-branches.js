@@ -119,6 +119,7 @@ async function scene(id, p, appareil){ if(!p) return; try { RELEVES[id] = Object
     await cliquer(prof, /↩️ Revenu/); await pause(600);
     J.v(!(sess().s.partis || {}).zeller_lou, H1, "Lou revenue : la clé partis/zeller_lou retirée", JSON.stringify(sess().s.partis));
     await cliquer(prof, /Fermer|✕/);
+    if(await cliquer(prof, /^⏸️ Finir à une autre heure$/)){ await pause(300); await scene("c-finir-autre-heure", prof, "console"); await cliquer(prof, /^Annuler$/); await pause(300); }
     if(await cliquer(prof, /^🛑 Terminer la séance$/)){ await pause(300); await scene("c-terminer", prof, "console"); await cliquer(prof, /^Annuler$/); await pause(300);
       J.v(!!sess().sid, H2, "la garde de « 🛑 Terminer » : « Annuler » garde la séance (c-terminer)"); }
     await scene("p-reponse", tel, "telephone");
@@ -162,7 +163,6 @@ async function scene(id, p, appareil){ if(!p) return; try { RELEVES[id] = Object
 
     J.section("B.6 « ⏸️ Finir à une autre heure », puis « ▶️ Reprendre » ; la console perdue");
     J.v(await cliquer(prof, /^⏸️ Finir à une autre heure$/), H2, "« ⏸️ Finir à une autre heure »"); await pause(300);
-    await scene("c-finir-autre-heure", prof, "console");
     const fins = await prof.evaluate(() => [...document.querySelectorAll("button")].filter(b => /Finir à une autre heure/.test(b.textContent) && b.getBoundingClientRect().width > 0).length);
     if(fins > 1) await prof.evaluate(() => { const b = [...document.querySelectorAll("button")].filter(b => /Finir à une autre heure/.test(b.textContent) && b.getBoundingClientRect().width > 0); b[b.length - 1].click(); });
     await pause(800);

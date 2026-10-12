@@ -131,9 +131,11 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
     const entres = Object.keys(sess().s.entres || sess().s.presence || srv.store.get("qcm/presence/3 ESSAI") || {}).length;
     J.v(entres >= 24, H1, "les 24 entrées sont dans la base (entres/<eleve>, ou presence de la 7.7.1)", entres + " entrés");
     
-    await scene("t-attest-1", tabJM, "tablette");
 
     J.section("1.4 La première attestation, puis « prêt »");
+    // t-attest-1 : Julien a coché trois lignes, Michel une (chaque ligne n'apparaît qu'après la précédente)
+    for(const [c, n] of [[cJ, 3], [cM, 1]]) for(let k = 0; k < n; k++){ await tabJM.evaluate(c => { const m = document.querySelector(".moitie." + c); const x = m && [...m.querySelectorAll(".case-b:not(.on)")].find(b => !b.disabled); if(x) x.click(); }, c).catch(() => {}); await pause(150); }
+    await scene("t-attest-1", tabJM, "tablette");
     await Promise.all(Object.entries(tabs).map(async ([n, p]) => { const t = TABS.find(x => x.n === n); for(const cote of (!t.g || !t.d) ? [null] : ["g", "d"]){ await cocherTout(p, cote); await cliquer(p, /^Je commence$/, cote); } }));
     await pause(800);
     await scene("t-pret", tabJM, "tablette");
@@ -168,7 +170,7 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
       for(const tour of [1, 2]){
         tropLong();
         if(qi === 0){ await attendreBase(() => etat().ph === "passage" && etat().tour === tour, tour === 1 ? 3000 : 1500); await pause(300);
-          await scene(tour === 1 ? "t-q1-passage1" : "t-q1-passage2", tabJM, "tablette");
+          if(tour === 1) await scene("t-q1-passage1", tabJM, "tablette");
           if(tour === 1) J.v(/Pose ton stylo|À toi dans/.test(await texte(tabJM)), H2, "le passage : « Pose ton stylo, … À toi dans 3 secondes » (t-q1-passage1)", (await texte(tabJM)).slice(0, 200)); }
         J.v(await attendreBase(() => etat().ph === "reponse" && etat().tour === tour, 10000), H1, "Q" + (qi + 1) + ", tour " + tour + " : la base passe en réponse (deroule.ph = reponse, tour " + tour + ")", JSON.stringify(etat()));
         await pause(500);
@@ -270,11 +272,13 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
     await fermerFenetres(prof);
     J.v(await cliquer(prof, /Lancer l'autoévaluation/), H2, "« 📊 Lancer l'autoévaluation » se clique"); await pause(800);
     J.v(/estim/.test(etat().ph || ""), H1, "la base : etat.ph = estim", JSON.stringify(etat()));
-    await scene("t-estim", tabJM, "tablette"); await scene("c-estim", prof, "console");
+    await scene("c-estim", prof, "console");
     J.v(/Combien de bonnes réponses penses-tu avoir/.test(await texte(tabJM)), H2, "l'estimation : « Combien de bonnes réponses penses-tu avoir ? … » (t-estim)", (await texte(tabJM)).slice(0, 200));
     const NIV = {vert: /fourchette-vert|Très bonne maîtrise/, bleu: /Maîtrise satisfaisante/, orange: /Maîtrise fragile/, rouge: /Maîtrise insuffisante/};
+    // t-estim : Julien a donné son estimation, Michel pas encore
+    await cliquer(tabJM, NIV[S.ESTIM.Julien], cJ); await pause(400); await scene("t-estim", tabJM, "tablette");
     await Promise.all(Object.entries(tabs).map(async ([n, p]) => { const t = TABS.find(x => x.n === n);
-      for(const [cote, sl] of cotesDe(t)){ const e = S.ESTIM[S.pre(nomDeSlug(sl))]; if(e) await cliquer(p, NIV[e], cote); } }));
+      for(const [cote, sl] of cotesDe(t)){ const e = S.ESTIM[S.pre(nomDeSlug(sl))]; if(e && sl !== "abrial_julien") await cliquer(p, NIV[e], cote); } }));
     await pause(600);
     const est = sess().s.autoevals || {};   // contrat C3 : autoevals/<eleve>
     J.v(Object.keys(est).length >= 22, H1, "les 22 estimations sont dans la base (Jade et Enzo n'en font pas)", Object.keys(est).length);
@@ -549,7 +553,9 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
     J.v(/Rien n'est enregistré/.test(tc) && /il manque le temps de réponse/.test(tc) && /il manque ce qu'elle vérifie/.test(tc), H3, "un JSON fautif : « ❌ Rien n'est enregistré : … », « il manque le temps de réponse », « il manque ce qu'elle vérifie » (c-collage)", (tc.match(/Rien n'est enregistré[\s\S]{0,300}/) || [tc.slice(-300)])[0]);
     J.v(await etatBouton(prof, /Copier les erreurs pour l'instance de création d'éval/) === "ouvert", H3, "« 📋 Copier les erreurs pour l'instance de création d'éval » (c-collage)");
     J.v(!Object.values(srv.store.get("qcm/evaluations") || {}).some(e => e.titre === "Banc — JSON fautif"), H3, "le JSON fautif n'est pas enregistré dans la base");
-    await prof.keyboard.press("Escape"); await cliquer(prof, /^Annuler$|^✕$/); await pause(300);
+    await prof.keyboard.press("Escape"); await pause(300);
+    if(!(await cliquer(prof, /^Fermer sans enregistrer$/))){ await cliquer(prof, /^Annuler$|^✕$/); await pause(200); await cliquer(prof, /^Fermer sans enregistrer$/); }
+    await pause(300);
 
     J.section("3.2 Les réglages, le prompt, le mode d'emploi, le QR, le mode test, le papier, l'accueil");
     J.v(await cliquer(prof, /^Réglages$/), H3, "« Réglages »"); await pause(500);

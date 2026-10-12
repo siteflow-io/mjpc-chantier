@@ -1,0 +1,19 @@
+{
+ "ecran": "depart",
+ "source": "evaluation-qcm.html (7.7.1, md5 ecae65624855a1a877708986a8e984e5), jouée sur le faux hub",
+ "comment": "",
+ "scenes": [
+  "c-depart"
+ ],
+ "eleve": false,
+ "boutons": [
+  {
+   "l": "Annuler",
+   "t": ""
+  }
+ ],
+ "champs": [],
+ "cases": [],
+ "titres": [],
+ "phrases": []
+}

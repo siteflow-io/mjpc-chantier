@@ -1,0 +1,196 @@
+{
+ "explication": "Ce que la maquette change dans MJPC par rapport au vrai site (index.html, md5 ac792b28f40d3a0510e725fc4a6b6985), écart par écart, avec sa raison : un point du cadrage (type « cadrage », « ref » : le numéro du point), une dette du registre (type « dette », « ref » : n°12 · …) ou la simulation déclarée (type « simulation »). Un écart de CSS porte son « selecteur » : la garde 7 du banc refuse toute règle des fichiers src/mjpc*.css qui vise un élément du vrai site sans être sa règle d'index.html telle quelle, et sans écart inscrit ici. C'est la liste que le mandat de code reprendra.",
+ "ecarts": [
+  {
+   "quoi": "« 🚫 Jamais avec… » dans la ligne de chaque élève, juste après le ◆, avec ses camarades à cocher (au plus 3, la quatrième refusée avec la raison) ; ses règles de CSS (classes ex-…) sont nouvelles",
+   "ecran": "Élèves & codes",
+   "scenes": [
+    "m-classe-exclusions",
+    "m-exclusion-refusee"
+   ],
+   "type": "cadrage",
+   "ref": "585",
+   "raison": "Les exclusions se règlent dans la console MJPC, sur la fiche de la classe, à côté des aménagements : pour chaque élève, « 🚫 Jamais avec… » ; au plus 3 par élève, la quatrième refusée (590)."
+  },
+  {
+   "quoi": "La quatrième exclusion d'un élève refusée, avec la raison",
+   "ecran": "Élèves & codes",
+   "scenes": [
+    "m-exclusion-refusee"
+   ],
+   "type": "cadrage",
+   "ref": "590",
+   "raison": "La garde minimum : au plus 3 exclusions par élève ; la quatrième est refusée dans MJPC, avec la raison."
+  },
+  {
+   "quoi": "La section « 🧩 Les compétences » dans l'éditeur de la taxonomie, après l'arbre : les 28 compétences sous leurs 8 groupes, libellé officiel et libellé élève, sur le modèle des notions (classes m8tx-comps, m8tx-comp-cat nouvelles)",
+   "ecran": "Taxonomie",
+   "scenes": [
+    "m-taxonomie-editeur",
+    "m-taxonomie-domaine",
+    "m-taxonomie-notion",
+    "m-taxonomie-competences",
+    "m-taxonomie-competence"
+   ],
+   "type": "cadrage",
+   "ref": "637",
+   "raison": "Chaque compétence reçoit un libellé élève, réglé dans le même éditeur que les notions ; le libellé officiel reste pour École Directe et pour le PDF."
+  },
+  {
+   "quoi": "Les 11 entrées du menu du panneau prof sans scène dans la maquette sont fermées (disabled), avec l'infobulle « Inchangé : cet écran reste celui d'aujourd'hui. » ; « 📅 Emploi du temps » s'ouvre sur sa scène",
+   "ecran": "Panneau prof",
+   "scenes": [
+    "toutes les scènes m-…"
+   ],
+   "type": "simulation",
+   "raison": "La maquette ne montre que les écrans que le cadrage change ; les autres restent ceux d'aujourd'hui, et un bouton qui ne mène à rien est fermé avec sa raison (protocole maquette, §2)."
+  },
+  {
+   "quoi": "« Code professeur » fermé dans l'encart de la clé, avec l'infobulle « Inchangé : cet écran reste celui d'aujourd'hui. »",
+   "ecran": "Élèves & codes, fiche de l'élève",
+   "scenes": [
+    "m-classe-exclusions",
+    "m-exclusion-refusee",
+    "m-fiche-eleve"
+   ],
+   "type": "simulation",
+   "raison": "La section « Code professeur » ne change pas : la maquette ne la montre pas, et le bouton qui y mène est fermé avec sa raison (protocole maquette, §2)."
+  },
+  {
+   "quoi": "Les boîtes système de la vraie app (alert, confirm) et les fenêtres de _modaleConfirme sont dessinées dans la page, avec leur texte exact (classes alerte-… nouvelles)",
+   "ecran": "tous les écrans de MJPC",
+   "scenes": [
+    "toutes les scènes m-…"
+   ],
+   "type": "simulation",
+   "raison": "La maquette n'ouvre aucune boîte système (vérification 6 du banc) : chacune est dessinée dans la page, avec son texte exact et ses boutons."
+  },
+  {
+   "quoi": "« 🖨 Imprimer » ouvre la page des codes de _printCodesClasse dans une fenêtre de la console, au lieu d'une fenêtre d'impression (classe codes-imprimes nouvelle)",
+   "ecran": "Élèves & codes",
+   "scenes": [
+    "m-classe-exclusions"
+   ],
+   "type": "simulation",
+   "raison": "La maquette n'imprime rien et n'ouvre aucune fenêtre : la page des codes, telle que _printCodesClasse l'écrit, se montre dans la console."
+  },
+  {
+   "quoi": "« ✕ » du panneau prof revient aux Réglages du QCM",
+   "ecran": "Panneau prof",
+   "scenes": [
+    "toutes les scènes m-…"
+   ],
+   "type": "simulation",
+   "raison": "Dans la maquette, on entre dans MJPC par « Ouvrir la console MJPC → » des Réglages du QCM : la fermeture y revient."
+  },
+  {
+   "quoi": "Les données : la classe « 3 ESSAI », ses codes, ses exclusions, les fiches de Michel et de Lina ; rien n'est lu ni écrit au hub, chaque geste agit sur place",
+   "ecran": "tous les écrans de MJPC",
+   "scenes": [
+    "toutes les scènes m-…"
+   ],
+   "type": "simulation",
+   "raison": "La maquette n'a ni réseau ni hub (vérification 6 du banc) ; seuls de faux élèves y paraissent (vérification 7). La taxonomie, elle, est la vraie, copiée avec son md5."
+  },
+  {
+   "quoi": "Les boutons fermés de la maquette (les 11 entrées du menu, « Code professeur ») prennent l'aspect qu'index.html donne déjà à un bouton fermé (.eli-btn:disabled, l. 860) : estompés, la souris barrée ; leur raison se lit au survol, sur une enveloppe qui reçoit la souris",
+   "ecran": "Panneau prof, Élèves & codes, fiche de l'élève",
+   "scenes": [
+    "toutes les scènes m-…"
+   ],
+   "selecteur": ".tprof-section-btn:disabled,.mjpc-act:disabled",
+   "type": "simulation",
+   "raison": "Dans le vrai site, ces boutons ne sont jamais fermés : ils ouvrent leurs écrans. La maquette les ferme (les écrans restent ceux d'aujourd'hui), et un bouton fermé doit se voir fermé, avec sa raison lisible (protocole maquette, §2 ; complément 2, défaut 7)."
+  },
+  {
+   "quoi": "Le panneau prof couvre toute la fenêtre, bord à bord : sans la marge de 30 px autour (l. 223)",
+   "ecran": "Panneau prof",
+   "scenes": [
+    "toutes les scènes m-…"
+   ],
+   "selecteur": ".tprof-overlay",
+   "type": "dette",
+   "ref": "n°12 · 87",
+   "raison": "« Il faudrait que mon pilotage prenne la largeur complète de l'écran, parce que la modale c'est bien mais tout est entassé, je dois scroller en permanence. » (Paul, 01/10) : le panneau prend toute la largeur et la hauteur de l'écran, sans changer ses sections."
+  },
+  {
+   "quoi": "Le panneau prof n'est plus borné à 1 100 px de large, ni arrondi (l. 225)",
+   "ecran": "Panneau prof",
+   "scenes": [
+    "toutes les scènes m-…"
+   ],
+   "selecteur": ".tprof-box",
+   "type": "dette",
+   "ref": "n°12 · 87",
+   "raison": "Le panneau prend toute la largeur et la hauteur de l'écran, bord à bord ; l'en-tête, le menu de 230 px et le contenu ne changent pas, et le contenu défile toujours en hauteur."
+  },
+  {
+   "quoi": "La ligne d'élève est une grille de 6 colonnes (le numéro, le nom, le ◆, « 🚫 Jamais avec… », le code, ↻ ✕) au lieu de 4 (l. 609) : ↻ et ✕ sont dans la carte, à droite, sur la ligne du nom",
+   "ecran": "Élèves & codes",
+   "scenes": [
+    "m-classe-exclusions",
+    "m-exclusion-refusee"
+   ],
+   "selecteur": ".tprof-content .el-row",
+   "type": "dette",
+   "ref": "n°12 · 88",
+   "raison": "Depuis le ◆ des aménagements, la ligne a un élément de plus que sa grille : ↻ et ✕ passent à la ligne, dans la colonne du numéro, et débordent à gauche, hors de la carte (Paul, 01/10). La grille reçoit une colonne par élément, et une de plus pour « 🚫 Jamais avec… » (585)."
+  },
+  {
+   "quoi": "La rangée de l'emploi du temps devient trois groupes, l'un sous l'autre, chacun avec son petit titre : « Ouvrir l'emploi du temps » et sa case ; « ⤓ Sortir le JSON » (une case par objet présent, nommé en clair avec sa date, « Tout cocher » et un seul bouton, fermé tant que rien n'est coché) ; « 📋 Copier le prompt » (un bouton par voie) (classes edt-groupe, edt-objets, edt-objet nouvelles)",
+   "ecran": "Emploi du temps",
+   "scenes": [
+    "m-emploi-du-temps",
+    "m-emploi-du-temps-un",
+    "m-emploi-du-temps-tous"
+   ],
+   "type": "dette",
+   "ref": "n°12 · 212",
+   "raison": "Dix éléments sur une rangée qui ne passe jamais à la ligne (.edt-actions, l. 20024) : ils s'écrasent en colonnes étroites, et la section défile de côté (capture de Paul du 11/10). Le tranchage entre les trois voies de Paul : trois groupes, l'un sous l'autre (714)."
+  },
+  {
+   "quoi": "Plusieurs objets cochés : un seul JSON, où chaque objet est rangé sous son identifiant, et le message « JSON de « calendrier », « grille » et « creneaux » copié — N caractères. » ; un seul objet coché, c'est exactement le geste d'aujourd'hui (edtSortirJson, l. 20792)",
+   "ecran": "Emploi du temps",
+   "scenes": [
+    "m-emploi-du-temps-tous"
+   ],
+   "type": "cadrage",
+   "ref": "714",
+   "raison": "Pour la rangée, le tranchage entre les trois voies de Paul : un sélecteur pour sortir le JSON (un objet, le geste d'aujourd'hui ; plusieurs, un seul JSON qui range chacun sous son nom), et les boutons rangés par type."
+  },
+  {
+   "quoi": "Les copies (« ⤓ Sortir les JSON cochés », « 📋 Copier le prompt ») disent leur message dans la modale d'atInfo, avec le vrai nombre de caractères, sans toucher au presse-papiers",
+   "ecran": "Emploi du temps",
+   "scenes": [
+    "m-emploi-du-temps",
+    "m-emploi-du-temps-un",
+    "m-emploi-du-temps-tous"
+   ],
+   "type": "simulation",
+   "raison": "La maquette ne touche pas au presse-papiers : le message de la vraie fonction s'affiche, calculé sur les données relues au hub."
+  },
+  {
+   "quoi": "« 📅 Ouvrir l'emploi du temps », « Réinjecter maintenant… » et les trois voies de « ✨ Injecter un objet » sont fermés, avec « Inchangé : cet écran reste celui d'aujourd'hui. » ; la case et « Plus tard » agissent sur place",
+   "ecran": "Emploi du temps",
+   "scenes": [
+    "m-emploi-du-temps",
+    "m-emploi-du-temps-un",
+    "m-emploi-du-temps-tous"
+   ],
+   "type": "simulation",
+   "raison": "Ces gestes ouvrent un autre écran, qui ne change pas ; la case et « Plus tard » écrivent un réglage au hub, que la maquette n'a pas : l'écran change sur place."
+  },
+  {
+   "quoi": "Les boutons fermés de la section « Emploi du temps » (« 📅 Ouvrir l'emploi du temps », « ⤓ Sortir les JSON cochés » quand rien n'est coché, « Réinjecter maintenant… », les trois voies) prennent l'aspect qu'index.html donne déjà à un bouton fermé (.eli-btn:disabled, l. 860)",
+   "ecran": "Emploi du temps",
+   "scenes": [
+    "m-emploi-du-temps",
+    "m-emploi-du-temps-un",
+    "m-emploi-du-temps-tous"
+   ],
+   "selecteur": ".edt-btn:disabled",
+   "type": "simulation",
+   "raison": "Dans le vrai site, ces boutons ne sont jamais fermés. La maquette ferme ceux qui ouvrent un écran inchangé, et « ⤓ Sortir les JSON cochés » tant que rien n'est coché ; un bouton fermé doit se voir fermé (protocole maquette, §2 ; garde 6)."
+  }
+ ]
+}

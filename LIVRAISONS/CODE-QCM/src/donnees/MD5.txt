@@ -1,0 +1,5 @@
+26128f95a0c0b59f45f6cc672218497b  taxonomie_atelier.json
+17e9a9876c0372bd7716e5a5acb542b0  libelles_eleve.json
+490b40b5d7a5b24cb303109f42484ae4  chapitre-3e-poesie-peinture-final.json   (sas : CONSULTANT/CHAPITRE-1/, le chapitre 1 de 3e et ses compétences, point 316)
+30d5223877d609e84236236f4b7c6605  edt-prompts.json   (copie d'EDT_PROMPTS, index.html l. 20745 à 20748, par outils/edt-prompts.js ; complément 2)
+ae5860e47e633875e873d9d0190d798a  evaluations_hub.json   (copie de banc/fauxhub/evals_now.json : les évaluations du hub lues le 08/10, AUDITS/QCM-FAUSSE-CLASSE-3E-08-10 ; complément 3)

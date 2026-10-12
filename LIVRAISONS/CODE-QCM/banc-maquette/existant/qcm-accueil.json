@@ -1,0 +1,26 @@
+{
+ "ecran": "accueil",
+ "source": "evaluation-qcm.html (7.7.1, md5 ecae65624855a1a877708986a8e984e5), jouée sur le faux hub",
+ "comment": "",
+ "scenes": [
+  "c-accueil"
+ ],
+ "eleve": true,
+ "boutons": [
+  {
+   "l": "🎓 Mode élève",
+   "t": ""
+  },
+  {
+   "l": "Accès professeur",
+   "t": ""
+  }
+ ],
+ "champs": [],
+ "cases": [],
+ "titres": [],
+ "phrases": [
+  "📝 Évaluation QCM",
+  "Outil d'évaluation pour la classe."
+ ]
+}

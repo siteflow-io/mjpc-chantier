@@ -1,0 +1,123 @@
+/* ═════ Complément 3 ═════ */
+/* Un bouton fermé du téléphone se voit fermé, comme ceux de la console (garde 6) */
+.tel-btn:disabled{opacity:.45;cursor:not-allowed}
+/* La liste des séances, par niveau puis par classe (changement 3) */
+.classe-groupe{margin:.2rem 0 .6rem}
+.classe-titre{font-weight:800;color:var(--violet);margin:.5rem 0 .3rem;font-size:.92rem}
+.niv-groupe{margin-bottom:.4rem}
+.niv-vide{color:var(--gris);font-style:italic;padding:.3rem .7rem}
+/* (complément 4, correction 7) posée sur le fond violet du téléphone : le blanc de ses autres textes (.tel-liste-h, .tel-leg), pas le gris */
+.tel-st-l{font-size:.75rem;font-weight:800;color:#fff;margin:.3rem 0 .15rem}
+.bilan-imprime-eval{font-weight:800;color:var(--violet);margin:.2rem 0 .6rem;font-size:.95rem}
+.tablette.seule .moitie{flex:1 1 100%;max-width:none}
+div.eleve-btn{cursor:default}
+.clv .tc.on{background:#c7d2fe;border-color:#6366f1}
+.ed-titre-ouvert{font-weight:800;color:var(--violet);margin:-.3rem 0 .6rem}
+.sim-fige button:disabled{opacity:.55}
+/* Côté élève, le choix cliqué s'allume (changement 7.2) */
+.decl-b-btn.on{background:var(--violet);color:#fff;box-shadow:0 0 0 3px #c4b5fd}
+.co-btn.on{border-color:var(--violet);background:#EDE9FE}
+.autoeval-fourchette.on{outline:4px solid #1e293b;outline-offset:2px;transform:scale(1.03)}
+.qdf-c.sel{outline:3px solid var(--violet)}
+th.trie{cursor:pointer}
+/* (changement 7.4) seul ce qui agit a la main au survol */
+.results-eval-row,.pilot-q-mini,.scoresheet th:not(.trie),.grille-papier th,.lens-pill{cursor:default}
+/* (changement 6.1) la tablette « en grand » défile à l'intérieur : ses feuilles restent à portée */
+.grand-fond{overflow:auto}
+.grand-boite{max-height:calc(100vh - 24px);overflow:auto}
+button.deja-choisi{box-shadow:0 0 0 3px #f59e0b !important}
+span.niv-pastille{cursor:default}
+.scoresheet td.eleve-cell:not(:has(button)){cursor:default}
+
+/* ════════ Changement 6.5 — les classes que la maquette a écrites : 12 px au moins, contraste 4,5 au moins (3 pour un grand texte) ════════
+   Les classes du site d'aujourd'hui gardent leur taille et leurs couleurs. Le gris de l'app (#64748B) sur le fond des cartes (#F1F5F9)
+   fait 4,34 : dans les classes de la maquette, le gris foncé de la même palette (#475569, 7,2). Les tuiles d'état gardent leur couleur,
+   dans sa teinte foncée, pour que le blanc s'y lise. */
+.tab-mini-h,.tab-mini-m .st,.tab-mini-m .nm,.binomes-box .tab-mini-m .nm,.t-edit .t-s,.t-edit .t-plus,.flag,.eleve-tete .mes-evals,.fiche-head,.fiche-head-b,.perm-chip,
+.maitrise-pill,.scoresheet .maitrise-pill,.bilan-classe-table .maitrise-pill,.tel-tour,.tel-lire,.recap-comp,.moitie .bilan-c .recap-comp,.comp-q,.moitie .bilan-c .comp-q,.corrige,
+.ed-comp-autres,.moitie .bilan-c .bilan-provisoire,.tel-suiv,.tel-st,.tel-manquent .ss,.tag-lu,.statut-l15c,.legende-tab,.tour-chip,.tel-flag,
+.ck,.coche-publiee .ck,.tel-bandeau,.tel-manquent,.tel-suivi,.correction-compteur-pastille.trouvee-p,.al-choix.tel{font-size:12px!important}
+.legende-tab,.tri-l,.fiche-head,.al-ch,.t-edit .t-s,.sauv-p,.recap-comp,.comp-q,.ed-comp-autres{color:#475569}
+.al-ch.bon{color:#166534}
+.m-juste{background:#15803D!important}.m-orange{background:#C2410C!important}.m-faux{background:#B91C1C!important}
+.m-juste .st,.m-faux .st,.m-orange .st{background:rgba(0,0,0,.22);color:#fff}
+.tab-mini.seul .tab-mini-h{background:#B45309}
+.tour-chip,.tel-tour{color:#166534}
+.coche-publiee.on .ck{background:#166534;border-color:#166534}
+.statut-l15c.non-rendues{background:#f1f1f1;color:#555}
+.mt-vert{background:#15803D}.mt-bleu{background:#0369A1}.mt-orange{background:#C2410C}.mt-rouge{background:#B91C1C}
+.v-orange{color:#C2410C}
+.scoresheet td.cell-trouvee{color:#166534}
+.correction-compteur-pastille.trouvee-p{border-color:#C2410C;color:#C2410C}
+.tag-lu{background:#0369A1}
+.tp-rouge{background:#B91C1C}
+.tel-flag{color:#FFEDD5}
+.tp-attente{background:rgba(255,210,63,.35);color:#FFE58A!important}
+.m8tx-comp-cat-t{color:rgba(255,255,255,.8)}
+
+/* (changement 6.2) au tableau, personne ne fait défiler : la liste de la classe se range en deux colonnes, et tient dans la hauteur */
+.board-aside-liste.deux-col{display:grid;grid-template-columns:1fr 1fr;align-content:start;gap:.15rem .3rem;overflow:hidden}
+.board-aside-liste.deux-col .board-aside-eleve{flex-wrap:wrap;column-gap:.3rem;row-gap:0;padding:.28rem .4rem}
+.ed-temps.manque{color:#B91C1C}
+.comp-chip.manque{color:#991B1B}
+.scoresheet td.cell-juste.cell-corrigee{color:#166534}.scoresheet td.cell-faux.cell-corrigee{color:#991B1B}
+/* (changement 6.3, relecteur n°237) le tableau des résultats tient dans sa carte à 1366 × 768 : les en-têtes longs passent à la ligne */
+.scoresheet th.comp-col,.scoresheet th.res-col-l{white-space:normal;min-width:0;width:150px}
+.scoresheet td.comp-cell,.scoresheet td.comp-cell .maitrise-pill{white-space:normal}
+.scoresheet th.res-col-alire{white-space:normal;min-width:190px}
+/* (changement 6.8, relecteur n°138) une rangée de boutons de fenêtre reste une rangée */
+.checkin-actions.rangee-une{flex-wrap:nowrap;gap:.5rem}
+.checkin-actions.rangee-une .btn{white-space:nowrap}
+/* (relecteurs n°37, 130, 317) un nom tient dans sa moitié, entier : les tablettes des binômes prennent la largeur qu'il leur faut */
+.binomes-box .tabs-grid{grid-template-columns:repeat(auto-fill,minmax(232px,1fr))}
+.emo-liseret{filter:drop-shadow(0 0 1px #fff) drop-shadow(0 0 1px #fff)}
+/* (relecteur n°78) au tableau, le bandeau du haut va jusqu'à la liste de la classe, sans encoche */
+.board-with-aside .board-active.board-reflexion{grid-template-columns:minmax(0,1fr)}
+/* (relecteur n°227) les étiquettes d'un choix restent ensemble : « TA RÉPONSE » ne part pas seule à la ligne */
+.tags-ens{display:inline-block;white-space:nowrap}
+/* (changement 6.4) les questions de la co-évaluation se lisent en entier : la liste serrée de la 3e se resserre encore pour tenir dans la moitié */
+.co-liste.serree{gap:.18rem}
+.co-liste.serree .co-l{padding:.22rem .6rem;font-size:.8rem;line-height:1.22}
+/* (relecteur n°200) l'élève seul, à la correction : la carte tient dans l'écran de la tablette */
+.eleve-page:has(.seul-c){padding-top:.6rem;padding-bottom:.6rem}
+.eleve-card:has(> .seul-c){padding-top:.9rem;padding-bottom:.9rem}
+.eleve-card:has(> .seul-c) > h1{margin:.2rem 0 .3rem;font-size:1.7rem}
+/* (relecteur n°45) l'indication d'un champ de code s'écrit lettres serrées : seul le code tapé est espacé */
+.eleve-page input::placeholder{letter-spacing:normal}
+/* (relecteur n°294) les deux « 💾 Enregistrer » des Réglages ont la même forme */
+.reg-grille > .btn,.reg-grille > button{align-self:flex-start;width:auto}
+/* (relecteur n°205) au téléphone, une compétence du bilan se lit sur toute la largeur : son niveau passe dessous */
+@media (max-width:520px){ .comp-l{flex-wrap:wrap} .comp-l > span:first-child{flex:1 1 100%} .comp-l .mt{margin-left:auto} }
+/* (changement 6.5, suite) le téléphone, l'éditeur, la fiche, la sauvegarde, MJPC : 12 px au moins, contraste 4,5 au moins */
+.tel .nm,.tel .tel-tab-n,.tel .tel-past,.tel .tel-bandeau div,.tel .tel-liste-h,.tel .tel-q .n,.tel .tel-leg,.tel .tel-st div,.tel .tel-fin,.tel .tel-mini-b,.tel .lb,
+.tel-alerte .al-tab th,.tel-alerte .al-tab td,.tel .al-l,.tel-al-note,.tel .t,
+.tm-l,.btn-ecarter,.q-marque,.qdf-c .tg,.fiche-comp,.simt-grand,.simt-fl{font-size:12px!important}
+.qdf-c .tg,.tm-l{color:#475569}
+.tel-al-note{color:#475569}
+.tab-mini-m.m-connexion,.tab-mini-m.m-connexion .nm{color:#475569}
+.m-trouvee{background:#C2410C!important}
+.msg-liste{color:#B91C1C}
+.tprof-content .ex-case.on .ck{background:#B91C1C;border-color:#B91C1C}
+td.cell-faux .case-grille{color:#991B1B}td.cell-juste .case-grille{color:#166534}
+.st628{color:#C2410C}
+.sauv-h.rouge{color:#B91C1C}
+.tp-attente{color:#5C4500!important}
+.tp-orange{background:#C2410C}
+.tel-flag{color:#9A3412}
+/* (relecteurs n°68, 102) les trois gestes du chrono tiennent sur une rangée, aux trois tailles */
+.pilot-grid.v2 .pilot-actions{grid-template-columns:repeat(auto-fit,minmax(120px,1fr))}
+/* (relecteur n°74) au téléphone, « ❌ Écarter » reste au bout de la question suivante, à sa taille */
+.tel-suiv .tel-btn.tel-mini-b{display:inline-block;width:auto;margin:.15rem 0 0 .4rem;padding:.1rem .5rem;vertical-align:middle}
+/* (relecteur n°271) « BONNE RÉPONSE » et « TA RÉPONSE », dans une moitié, gardent la taille que l'app leur donne (.correction-tag, 0,7 rem) */
+.moitie .correction-tag{font-size:.7rem}
+/* (778) le chrono de la lecture porte son nom entier : sur la vraie question 3 de 3e, les choix se resserrent pour que la moitié tienne */
+.moitie .serre-3e .eleve-choix.long .eleve-choix-btn{padding:.25rem .6rem}
+.moitie .serre-3e .eleve-choix{gap:.22rem}
+/* (garde 4) « 📊 Mes évaluations » en 12 px ne grandit pas la moitié : l'étalon de la vraie question 3 de 3e reste à 67 px */
+.eleve-tete .mes-evals{padding-top:0!important;padding-bottom:0!important;line-height:1.3}
+/* (changement 6.8) une rangée titre / boutons qui passe à la ligne garde ses boutons à droite, comme quand elle tient sur une ligne
+   (x610-8-console-alerte : « Départ / Finir / Terminer » sous un long titre) ; sans retour à la ligne, la marge ne change rien */
+div[style*="justify-content: space-between"][style*="flex-wrap: wrap"] > :last-child:not(:first-child){margin-left:auto}
+/* (capture de c-fin-prevue) un temps à quatre chiffres (1800 s) se lit en entier dans son champ */
+.tm-l input{width:54px;-moz-appearance:textfield;appearance:textfield}
+.tm-l input::-webkit-inner-spin-button,.tm-l input::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}

@@ -1,0 +1,8 @@
+# LIVRAISONS/CODE-QCM — le code du QCM d'après la maquette
+
+Créé par la conscience n°12 le 12/10/2026 (tour 672), depuis la branche `maquette-qcm` à `5852823d` (la v9 candidate, 13:58).
+
+- `src/`, `build.py` : les sources de la maquette, copiées telles quelles ; les quatre exécutants les transforment en app (`MANDATS/CODE-QCM/COMMUN.md` sur `main`). `build.py` lit encore des chemins de `MANDATS/MAQUETTE-QCM-COMPLETE/` : QCM-1 les reprend.
+- `banc-maquette/` : le banc de la maquette, copié pour mémoire ; le banc de l'app est `banc/`, écrit par QCM-4.
+- `DEMANDES.md`, `DEFAUTS-OUVERTS.md`, `CONTRAT-CHANGEMENTS.md` : les fichiers communs (COMMUN §1 à §3).
+- La maquette elle-même reste dans `MANDATS/MAQUETTE-QCM-COMPLETE/` : c'est la référence de la fidélité.

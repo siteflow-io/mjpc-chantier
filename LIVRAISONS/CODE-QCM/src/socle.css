@@ -1,0 +1,18 @@
+/* ═══ Maquette complète du QCM — le socle ═══ */
+/* Le bouton ⚙ et le sommaire : l'écran de simulation (protocole §2) ; absents des captures (body.capture) */
+.som-gear{position:fixed;right:8px;bottom:8px;z-index:9000;width:30px;height:30px;border-radius:50%;border:1px solid #94A3B8;background:rgba(255,255,255,.85);font-size:16px;line-height:1;cursor:pointer;padding:0}
+body.capture .som-gear{display:none}
+.som-fond{position:fixed;inset:0;z-index:9001;background:rgba(15,23,42,.55);display:flex;justify-content:center;align-items:flex-start;padding:20px;overflow:auto}
+.som-boite{background:#fff;border-radius:12px;max-width:980px;width:100%;padding:14px 18px;font-family:inherit;color:#111}
+.som-h{display:flex;justify-content:space-between;align-items:center;font-size:1.1rem}
+.som-p{font-size:.85rem;color:#475569;margin:.3rem 0 .6rem}
+.som-sec{margin:.5rem 0}
+.som-st{font-weight:900;color:#5B21B6;margin-bottom:.2rem}
+.som-l{display:grid;grid-template-columns:34px 210px 1fr;gap:6px;padding:2px 4px;font-size:.82rem;color:#111;text-decoration:none;border-radius:4px}
+.som-l:hover,.som-l.cur{background:#EDE9FE}
+.som-n{color:#64748B;text-align:right}
+.som-id{font-family:monospace;color:#334155}
+/* L'aperçu d'impression du PDF « notes et compétences » */
+.pdf-fond{min-height:100vh;background:#525659;padding:0 0 24px;display:flex;flex-direction:column;align-items:center}
+.pdf-barre{width:100%;background:#323639;color:#fff;font-size:.9rem;padding:8px 16px;margin-bottom:16px}
+.pdf-page{width:1123px;height:1220px;border:0;background:#fff;box-shadow:0 4px 16px rgba(0,0,0,.5)}

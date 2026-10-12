@@ -1,0 +1,37 @@
+{
+ "ecran": "eleve-reponse",
+ "source": "evaluation-qcm.html (7.7.1, md5 ecae65624855a1a877708986a8e984e5), jouée sur le faux hub",
+ "comment": "",
+ "scenes": [
+  "t-q1-tour1",
+  "t-q1-tour2",
+  "t-q2-tour1",
+  "t-q2-tour2",
+  "t-q3-tour1",
+  "t-q3-tour2",
+  "t-rouvrir-un"
+ ],
+ "eleve": true,
+ "boutons": [
+  {
+   "l": "📊 Mes évaluations",
+   "t": ""
+  }
+ ],
+ "champs": [],
+ "cases": [],
+ "titres": [
+  "Nombre de points que vaut cette question",
+  "Ta réponse est enregistrée automatiquement dès que tu cliques sur une lettre. Tu peux changer d'avis tant que le chrono tourne."
+ ],
+ "phrases": [
+  "3 ESSAI · ABRIAL Julien",
+  "QCM — Le jambon-beurre",
+  "Question 1 / 10",
+  "Facile",
+  "1 pt",
+  "POSE TON STYLO. Sélectionne maintenant ta réponse.",
+  "Temps de réponse",
+  "💡 Clique sur la (ou les) lettre(s) qui correspond(ent) à ta réponse"
+ ]
+}

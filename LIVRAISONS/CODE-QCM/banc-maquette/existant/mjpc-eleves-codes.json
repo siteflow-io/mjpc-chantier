@@ -1,0 +1,158 @@
+{
+ "ecran": "eleves-codes",
+ "source": "index.html (md5 ac792b28f40d3a0510e725fc4a6b6985), lu dans le code",
+ "comment": "« 👥 Élèves & codes », la clé saisie : l'encart de la clé, l'import du fichier de classe, la barre des classes, le cadre de secours, la barre d'outils, une ligne par élève.",
+ "scenes": [
+  "m-classe-exclusions",
+  "m-exclusion-refusee"
+ ],
+ "boutons": [
+  {
+   "l": "Oublier la clé sur cet appareil",
+   "t": "",
+   "ligne": 14757
+  },
+  {
+   "l": "Où la clé est mémorisée",
+   "t": "",
+   "ligne": 14758
+  },
+  {
+   "l": "Relancer la préparation",
+   "t": "",
+   "ligne": 14759
+  },
+  {
+   "l": "Retirer les codes en clair",
+   "t": "",
+   "ligne": 14760
+  },
+  {
+   "l": "Code professeur",
+   "t": "",
+   "ligne": 14761
+  },
+  {
+   "l": "+ Importer / compléter",
+   "t": "",
+   "ligne": 5518
+  },
+  {
+   "l": "Générer # codes manquants",
+   "t": "",
+   "ligne": 5523
+  },
+  {
+   "l": "🖨 Imprimer",
+   "t": "",
+   "ligne": 5524
+  },
+  {
+   "l": "Tout régénérer",
+   "t": "",
+   "ligne": 5525
+  },
+  {
+   "l": "↻",
+   "t": "Régénérer le code",
+   "ligne": 5529
+  },
+  {
+   "l": "✕",
+   "t": "Retirer l’élève",
+   "ligne": 5529
+  }
+ ],
+ "champs": [
+  {
+   "l": "Un élève par ligne \nex : DUPONT Marie",
+   "ligne": 5518
+  }
+ ],
+ "titres": [
+  {
+   "t": "Dépose ou choisis le fichier de la classe : il est lu ici, dans ton navigateur. Rien n’est écrit tant que tu n’as pas validé l’aperçu.",
+   "ligne": 5559
+  },
+  {
+   "t": "Ouvre la fiche de l’élève : sexe, dispositif, cases PAP. Rien n’est écrit tant que tu n’enregistres pas.",
+   "ligne": 5529
+  }
+ ],
+ "classes": [
+  {
+   "c": "secu-encart",
+   "ligne": 14750
+  },
+  {
+   "c": "eli-bloc",
+   "ligne": 5556
+  },
+  {
+   "c": "lens-bar",
+   "ligne": 5517
+  },
+  {
+   "c": "el-import",
+   "ligne": 5518
+  },
+  {
+   "c": "el-toolbar",
+   "ligne": 5522
+  },
+  {
+   "c": "el-list",
+   "ligne": 5526
+  },
+  {
+   "c": "el-row",
+   "ligne": 5529
+  },
+  {
+   "c": "el-num",
+   "ligne": 5529
+  },
+  {
+   "c": "el-name",
+   "ligne": 5529
+  },
+  {
+   "c": "elf-flag",
+   "ligne": 5529
+  },
+  {
+   "c": "el-code",
+   "ligne": 5529
+  },
+  {
+   "c": "el-acts",
+   "ligne": 5529
+  }
+ ],
+ "phrases": [
+  {
+   "p": "Élèves & codes",
+   "ligne": 5508
+  },
+  {
+   "p": "🔓 Codes déverrouillés sur cet appareil",
+   "ligne": 14754
+  },
+  {
+   "p": "Importer la liste d’une classe",
+   "ligne": 5557
+  },
+  {
+   "p": "Le fichier du logiciel de vie scolaire, tel quel — ou le tableau collé depuis Excel. Rien n’est envoyé ailleurs : le fichier est lu dans ce navigateur.",
+   "ligne": 5558
+  },
+  {
+   "p": "Dépose ici le fichier .xlsx de la classe",
+   "ligne": 5560
+  },
+  {
+   "p": "ou clique pour le choisir · ou colle le tableau (Ctrl + V) n’importe où sur cette page",
+   "ligne": 5561
+  }
+ ]
+}

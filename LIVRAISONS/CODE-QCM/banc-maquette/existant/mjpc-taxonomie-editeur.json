@@ -1,0 +1,59 @@
+{
+ "ecran": "taxonomie-editeur",
+ "source": "index.html (md5 ac792b28f40d3a0510e725fc4a6b6985), lu dans le code",
+ "comment": "L'éditeur ouvert : l'état du référentiel, la règle, les sept domaines repliés.",
+ "scenes": [
+  "m-taxonomie-editeur",
+  "m-taxonomie-domaine",
+  "m-taxonomie-notion",
+  "m-taxonomie-competences",
+  "m-taxonomie-competence"
+ ],
+ "boutons": [
+  {
+   "l": "Fermer l’éditeur",
+   "t": "",
+   "ligne": 2609
+  }
+ ],
+ "classes": [
+  {
+   "c": "m8tx-editeur",
+   "ligne": 2610
+  },
+  {
+   "c": "m8tx-etat",
+   "ligne": 2582
+  },
+  {
+   "c": "m8tx-regle",
+   "ligne": 2584
+  },
+  {
+   "c": "m8tx-dom",
+   "ligne": 2560
+  },
+  {
+   "c": "m8tx-dom-titre",
+   "ligne": 2561
+  },
+  {
+   "c": "m8tx-fleche",
+   "ligne": 2562
+  },
+  {
+   "c": "m8tx-eleve-lab",
+   "ligne": 2564
+  },
+  {
+   "c": "m8tx-compte",
+   "ligne": 2565
+  }
+ ],
+ "phrases": [
+  {
+   "p": "Une notion ne se supprime jamais et son identifiant ne change jamais : le travail des élèves est étiqueté par ces identifiants, une étiquette qui disparaît ou change de numéro décrocherait des années de travail. Une notion qui ne sert plus se",
+   "ligne": 2584
+  }
+ ]
+}

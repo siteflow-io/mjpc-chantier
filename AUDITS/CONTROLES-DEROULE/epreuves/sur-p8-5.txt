@@ -1,0 +1,81 @@
+contrôles de la conscience n°13 (déroulé) · 2026-10-12 12:36 UTC · maquette : LIVRAISONS/DEROULE/p8-5/maquette-pilotage-ordi-v9c15p8-manipulable.html · md5 3d8ba32d65dee7b3928f5caadfb14008
+
+K1 — la répétition propre (n°13 · 9)
+  ÉCHEC  K1 · 1280 px · en répétition, rien de posé en position:fixed — 5 → 7
+  ÉCHEC  K1 · 1280 px · « ⧉ Tableau », « 🖥 Écran 2 » et « ■ Arrêter » sont visibles et atteignables au clic (rien ne les recouvre) — Tableau false · Écran 2 true · Arrêter true
+  ÉCHEC  K1 · 1280 px · « Fin de l'heure » n'est pas là pendant la répétition, l'entête ne déborde pas (heure lancée, chrono de répétition écrit) — Fin cachée false · déborde false
+  ÉCHEC  K1 · le contrôle n'a pas pu aller au bout — page.click: Timeout 30000ms exceeded.
+
+K2 — les notes de présentateur, par étape (n°13 · 10)
+  ÉCHEC  K2 · le contrôle n'a pas pu aller au bout — aucun paragraphe de notes éditable (#notesd [contenteditable])
+
+K3 — la mise en forme à deux boutons et palette (n°13 · 11)
+  ÉCHEC  K3 · heure lancée : les deux boutons « ab » (#bsurl) et « A » (#btxt) sont dans la barre — ab false · A false
+  ÉCHEC  K3 · 1280 px : « ▶ Dévoiler » et le compteur restent dans le cadre — ▶ finit à 922, compteur à 978, cadre à 944
+  ÉCHEC  K3 · le contrôle n'a pas pu aller au bout — page.click: Timeout 30000ms exceeded.
+
+K4 — le panneau des notes suit la diapo ; le premier caractère après Entrée (n°13 · 13, 13 · 14)
+  ÉCHEC  K4 · le contrôle n'a pas pu aller au bout — page.click: Timeout 30000ms exceeded.
+
+K5 — la poignée des notes, en permanence (n°13 · 15)
+  ÉCHEC  K5 · atelier : la poignée est visible — {"x":0,"y":0,"w":0,"h":0,"visible":false}
+  ÉCHEC  K5 · atelier : tirée de 150 px vers le haut, les notes grandissent et la diapo rétrécit — diapo 408 → 408 px, notes 207 → 207 px, part 100 → 100 %
+  ÉCHEC  K5 · pilotage, heure lancée : la poignée est là et la hauteur de l'atelier est gardée — part 100 → 100 %
+  ÉCHEC  K5 · double-clic : la diapo reprend toute sa place — part 100 → 100 %, diapo 408 → 408 px
+  ÉCHEC  K5 · répétition : la poignée est visible
+  ok     K5 · aucune erreur JS
+  ok     K5 · aucune boîte système
+
+K6 — la diapo trop pleine se lit en pages, jamais hors du cadre (n°13 · 16)
+  ÉCHEC  K6 · 1280 px · atelier : huit lignes tapées sous le dernier bloc → « page 2 / 2 », rien hors du cadre — compteur «  », hors 3
+  ok     K6 · 1280 px · atelier : aucune diapo créée (le site ne coupe jamais seul) — 23 → 23 diapos
+  ÉCHEC  K6 · 1280 px · pilote, heure lancée : « page 1 / 2 » à 0 dévoilé — «  », hors 0
+  ÉCHEC  K6 · 1280 px · ▶ ×13 : la page suit le dernier dévoilé (« page 2 / 2 »), rien hors du cadre à aucune étape — «  », hors max 3
+  ÉCHEC  K6 · 1280 px · la fenêtre du tableau montre la même page que le pilote après un geste — pilote «  » 12 l. · tableau «  » 12 l., hors 6
+  ok     K6 · aucune erreur JS
+  ok     K6 · aucune boîte système
+  ÉCHEC  K6 · 1920 px · atelier : huit lignes tapées sous le dernier bloc → « page 2 / 2 », rien hors du cadre — compteur «  », hors 3
+  ok     K6 · 1920 px · atelier : aucune diapo créée (le site ne coupe jamais seul) — 23 → 23 diapos
+  ÉCHEC  K6 · 1920 px · pilote, heure lancée : « page 1 / 2 » à 0 dévoilé — «  », hors 0
+  ÉCHEC  K6 · 1920 px · ▶ ×13 : la page suit le dernier dévoilé (« page 2 / 2 »), rien hors du cadre à aucune étape — «  », hors max 3
+  ÉCHEC  K6 · 1920 px · la fenêtre du tableau montre la même page que le pilote après un geste — pilote «  » 12 l. · tableau «  » 12 l., hors 6
+  ok     K6 · aucune erreur JS
+  ok     K6 · aucune boîte système
+
+K7 — la fenêtre du tableau reçoit les pages dès son ouverture (n°13 · 17)
+  ok     K7 · ouvert à 0 dévoilés : dans la seconde, même compteur et mêmes lignes que le pilote, rien hors du cadre — pilote «  » 0 l. · tableau «  » 0 l., hors 0
+  ok     K7 · ouvert à 0 dévoilés, puis un ▶ : toujours la même page des deux côtés — pilote «  » · tableau «  »
+  ok     K7 · aucune erreur JS
+  ok     K7 · aucune boîte système
+  ok     K7 · ouvert à 9 dévoilés : dans la seconde, même compteur et mêmes lignes que le pilote, rien hors du cadre — pilote «  » 9 l. · tableau «  » 9 l., hors 0
+  ok     K7 · ouvert à 9 dévoilés, puis un ▶ : toujours la même page des deux côtés — pilote «  » · tableau «  »
+  ok     K7 · aucune erreur JS
+  ok     K7 · aucune boîte système
+  ÉCHEC  K7 · ouvert à 13 dévoilés : dans la seconde, même compteur et mêmes lignes que le pilote, rien hors du cadre — pilote «  » 13 l. · tableau «  » 13 l., hors 3
+  ok     K7 · ouvert à 13 dévoilés, puis un ▶ : toujours la même page des deux côtés — pilote «  » · tableau «  »
+  ok     K7 · aucune erreur JS
+  ok     K7 · aucune boîte système
+  ÉCHEC  K7 · la molette a choisi la page 2 au pilote — «  »
+  ok     K7 · ouvert à 9 dévoilés, page 2 choisie à la molette : dans la seconde, même compteur et mêmes lignes que le pilote, rien hors du cadre — pilote «  » 9 l. · tableau «  » 9 l., hors 0
+  ok     K7 · ouvert à 9 dévoilés, page 2 choisie à la molette, puis un ▶ : toujours la même page des deux côtés — pilote «  » · tableau «  »
+  ok     K7 · aucune erreur JS
+  ok     K7 · aucune boîte système
+
+K8 — une vignette par page dans la colonne de gauche (n°13 · 18)
+  ÉCHEC  K8 · atelier : la ligne de la diapo 1 dit « · 2 pages » — « 1Analyse d'images : la routineA13 min »
+  ÉCHEC  K8 · classe : la diapo 1 a deux vignettes, « 1 · 1/2 » puis « 1 · 2/2 » — 1 vignette(s) pour la diapo 1 : ["1Activité 1 "]
+  ÉCHEC  K8 · classe : « 1 · 1/2 » est la courante, « 1 · 2/2 » ne l'est pas — [true]
+  ÉCHEC  K8 · classe : 23 + 1 vignettes en tout, une seule pour une diapo d'une page — 23 vignettes
+  ok     K8 · classe : pas un écran de plus — « Diapo 1 sur 9 », « HEURE 1 · 9 DIAPOS » — Diapo 1 sur 9 · HEURE 1 · 9 DIAPOS
+  ÉCHEC  K8 · ▶ jusqu'à la page 2 → « 1 · 2/2 » devient la courante — [false]
+  ÉCHEC  K8 · « 1 · 2/2 » montre les lignes de la page 2 du mur (mêmes data-p, non hors) — vignette undefined · mur []
+  ÉCHEC  K8 · clic sur « 1 · 1/2 » → la garde « La classe te suivrait », « Y aller » → le mur dit « page 1 / 2 » — garde true · «  »
+  ok     K8 · aucune erreur JS
+  ok     K8 · aucune boîte système
+
+K9 — le parcours fixe
+  ok     K9 · 1 · atelier : une ligne écrite dans la diapo 1 y est
+  ÉCHEC  K9 · le contrôle n'a pas pu aller au bout — aucun paragraphe de notes éditable (#notesd [contenteditable])
+
+59 vérifications, 32 échec(s)
+--- fin : 32 défaut(s)

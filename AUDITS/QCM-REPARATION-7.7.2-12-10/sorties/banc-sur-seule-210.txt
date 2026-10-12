@@ -1,0 +1,33 @@
+      app : /tmp/claude-0/-home-claude/6f83f394-f2d4-5070-8d91-714cb465417b/scratchpad/t673/evaluation-qcm-seule-210.html (md5 d90ece4229ab8c5a9e8506198e0d1f23)
+      3 tablettes entrées par leur code : ABRIAL Julien, BAUDRY Léa, CARRÉ Tom
+OK    la console lance la séance (sess_1791808881908)
+OK    le téléphone s'ouvre sur la séance (487 caractères)
+OK    Q1 : après la première réponse, le téléphone affiche toujours la séance (705 caractères, 0 erreur(s) de page)
+OK    Q1 close : 3 réponse(s) dans la base sur 3 attendue(s)
+OK    Q2 : après la première réponse, le téléphone affiche toujours la séance (712 caractères, 0 erreur(s) de page)
+OK    Q2 close : 2 réponse(s) dans la base sur 2 attendue(s)
+OK    Q3 : après la première réponse, le téléphone affiche toujours la séance (654 caractères, 0 erreur(s) de page)
+OK    Q3 close : 3 réponse(s) dans la base sur 3 attendue(s)
+OK    le téléphone lance la correction
+ÉCHEC correction de Q2, ABRIAL Julien : la tablette affiche « ✅ Tu avais juste ! » et 0 bonne(s) réponse(s) marquée(s) sur 2 (0 caractères, 2 erreur(s) de page)
+ÉCHEC correction de Q2, BAUDRY Léa : la tablette affiche « ❌ Tu avais faux. » et 0 bonne(s) réponse(s) marquée(s) sur 2 (0 caractères, 2 erreur(s) de page)
+ÉCHEC correction de Q2, CARRÉ Tom : la tablette affiche « ⚠️ Tu n'as pas répondu à cette question. » et 0 bonne(s) réponse(s) marquée(s) sur 2 (0 caractères, 2 erreur(s) de page)
+OK    correction de Q2 : le téléphone affiche la séance (843 caractères, 0 erreur(s) de page)
+ÉCHEC correction de Q1, ABRIAL Julien : la tablette affiche « ✅ Tu avais juste ! » et 0 bonne(s) réponse(s) marquée(s) sur 1 (0 caractères, 2 erreur(s) de page)
+ÉCHEC correction de Q1, BAUDRY Léa : la tablette affiche « ❌ Tu avais faux. » et 0 bonne(s) réponse(s) marquée(s) sur 1 (0 caractères, 2 erreur(s) de page)
+ÉCHEC correction de Q1, CARRÉ Tom : la tablette affiche « ✅ Tu avais juste ! » et 0 bonne(s) réponse(s) marquée(s) sur 1 (0 caractères, 2 erreur(s) de page)
+OK    correction de Q1 : le téléphone affiche la séance (751 caractères, 0 erreur(s) de page)
+ÉCHEC correction de Q3, ABRIAL Julien : la tablette affiche « ✅ Tu avais juste ! » et 0 bonne(s) réponse(s) marquée(s) sur 1 (0 caractères, 2 erreur(s) de page)
+ÉCHEC correction de Q3, BAUDRY Léa : la tablette affiche « ✅ Tu avais juste ! » et 0 bonne(s) réponse(s) marquée(s) sur 1 (0 caractères, 2 erreur(s) de page)
+ÉCHEC correction de Q3, CARRÉ Tom : la tablette affiche « ❌ Tu avais faux. » et 0 bonne(s) réponse(s) marquée(s) sur 1 (0 caractères, 2 erreur(s) de page)
+OK    correction de Q3 : le téléphone affiche la séance (699 caractères, 0 erreur(s) de page)
+OK    après la 3e question, la séance est finie
+OK    le téléphone termine la séance
+OK    console : 0 erreur(s) de page
+OK    tableau : 0 erreur(s) de page
+ÉCHEC ABRIAL Julien : 2 erreur(s) de page — console : ReferenceError: bonnes is not defined | console : fakefb listener ReferenceError: bonnes is not defined
+ÉCHEC BAUDRY Léa : 2 erreur(s) de page — console : ReferenceError: bonnes is not defined | console : fakefb listener ReferenceError: bonnes is not defined
+ÉCHEC CARRÉ Tom : 2 erreur(s) de page — console : ReferenceError: bonnes is not defined | console : fakefb listener ReferenceError: bonnes is not defined
+OK    téléphone : 0 erreur(s) de page
+      téléphone : boîte(s) système acceptée(s) : confirm « Terminer la session ? Les élèves verront un écran de fin. Tu pourras toujours co »
+      durée : 47 s ; 29 vérifications, 12 échec(s)

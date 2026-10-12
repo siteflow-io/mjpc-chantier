@@ -1,0 +1,100 @@
+Tu vas m'aider à écrire une évaluation QCM pour ma classe. Elle se passe dans mon application, en classe, deux élèves par tablette. Voici comment elle se déroule, puis les règles à respecter strictement.
+
+LE CHAPITRE
+4e · Chapitre 1 — Paris à la barre et analyse logique (identifiant : 4e-ch1)
+Ses compétences, les seules que tu peux utiliser : ce chapitre n'en a pas encore dans mon application. Avant de proposer la moindre question, propose-moi celles à retenir dans cette liste (une majeure, quelques mineures), et attends mon accord :
+- c4-oral-01 : Comprendre et interpréter des messages et des discours oraux complexes — pour l'élève : Comprendre et interpréter ce qu'on entend
+- c4-oral-02 : S'exprimer de façon maîtrisée en s'adressant à un auditoire — pour l'élève : Parler devant les autres de façon claire
+- c4-oral-03 : Participer de façon constructive à des échanges oraux — pour l'élève : Prendre part à une discussion
+- c4-oral-04 : Exploiter les ressources expressives et créatives de la parole — pour l'élève : Jouer avec sa voix : lire, réciter, mettre en scène
+- c4-lire-01 : Contrôler sa compréhension, devenir un lecteur autonome — pour l'élève : Vérifier que l'on a bien compris ce qu'on lit
+- c4-lire-02 : Lire des textes non littéraires, des images et des documents composites (y compris numériques) — pour l'élève : Lire des documents, des images et des pages numériques
+- c4-lire-03 : Lire des œuvres littéraires et fréquenter des œuvres d'art — pour l'élève : Lire des œuvres et découvrir des œuvres d'art
+- c4-lire-04 : Élaborer une interprétation de textes littéraires — pour l'élève : Interpréter un texte littéraire
+- c4-ecrire-01 : Exploiter les principales fonctions de l'écrit — pour l'élève : Écrire pour réfléchir, garder une trace, communiquer
+- c4-ecrire-02 : Adopter des stratégies et des procédures d'écriture efficaces — pour l'élève : Préparer, écrire et relire son texte
+- c4-ecrire-03 : Exploiter des lectures pour enrichir son écrit — pour l'élève : Se servir de ses lectures pour mieux écrire
+- c4-ecrire-04 : Passer du recours intuitif à l'argumentation à un usage plus maîtrisé — pour l'élève : Défendre une idée avec des arguments
+- c4-langue-01 : Consolider l'orthographe lexicale et grammaticale — pour l'élève : Écrire les mots et les accords sans fautes
+- c4-langue-02 : Connaître les différences entre l'oral et l'écrit — pour l'élève : Distinguer ce qui se dit et ce qui s'écrit
+- c4-langue-03 : Enrichir et structurer le lexique — pour l'élève : Enrichir son vocabulaire
+- c4-langue-04 : Construire les notions permettant l'analyse et l'élaboration des textes et des discours — pour l'élève : Connaître la grammaire pour analyser et construire des phrases
+- c4-culture-01 : Mobiliser des références culturelles pour interpréter les textes et les créations artistiques et littéraires et pour enrichir son expression personnelle — pour l'élève : Se servir de sa culture pour comprendre les textes et les œuvres
+- c4-culture-02 : Établir des liens entre des créations littéraires et artistiques issues de cultures et d'époques diverses — pour l'élève : Relier des œuvres d'époques et de cultures différentes
+- tr-langages-01 : Comprendre les informations à l'écrit — pour l'élève : Comprendre une information écrite
+- tr-langages-02 : Comprendre les informations à l'oral — pour l'élève : Comprendre une information orale
+- tr-langages-03 : S'exprimer pour se faire comprendre à l'écrit — pour l'élève : Écrire pour se faire comprendre
+- tr-langages-04 : S'exprimer pour se faire comprendre à l'oral — pour l'élève : Parler pour se faire comprendre
+- tr-methodes-01 : Mémoriser — pour l'élève : Apprendre et retenir
+- tr-methodes-02 : S'impliquer dans les activités en classe et dans son travail personnel — pour l'élève : S'investir dans son travail, en classe et à la maison
+- tr-methodes-03 : Réaliser un travail avec rigueur et soin — pour l'élève : Travailler avec soin et précision
+- tr-personne-01 : Adopter une attitude respectueuse — pour l'élève : Respecter les autres
+- tr-personne-02 : Coopérer et mutualiser — pour l'élève : Travailler avec les autres et partager
+- tr-personne-03 : Être autonome et responsable — pour l'élève : Travailler seul et de façon responsable
+
+COMMENT SE PASSE UNE QUESTION EN CLASSE
+1. Réflexion : l'élève voit l'énoncé seul, sans les choix, et écrit sa réponse en entier, à la main, sur sa feuille.
+2. Réponse : les choix apparaissent ; chacun son tour, l'élève pose son stylo, relit sa feuille et clique sur le ou les choix qui disent la même chose que ce qu'il a écrit. C'est sa feuille qui fait foi pour la note.
+3. Correction, après toutes les questions : chaque élève lit la feuille de son voisin et clique sur la tablette ce qu'elle dit, puis je révèle la réponse et je commente.
+La tablette ajoute toujours d'elle-même la case « Ma feuille ne dit aucun de ces choix ».
+
+LES DURÉES
+Pour chaque question : la réflexion, puis deux tours, chacun fait de 3 secondes de décompte, du temps de réponse et de 5 secondes où l'élève dit si sa feuille dit la même chose que son clic ; puis 15 secondes avant la question suivante.
+Pour la séance : 5 minutes d'installation et de consignes, 3 minutes pour l'estimation et la seconde attestation, 1 minute de correction par question, 2 minutes pour la co-évaluation et le bilan.
+La séance tient en 45 minutes utiles, questions et correction comprises.
+
+CE QUE TU FAIS, DANS CET ORDRE
+1. Pose-moi d'abord ces questions, numérotées, et attends mes réponses :
+   1. Donne-moi le cours sur lequel porte l'évaluation (la leçon, les fiches, les séances) : les bonnes réponses en reprendront les mots exacts.
+   2. Combien de questions ?
+   3. Combien à réponses multiples ?
+   4. Quel équilibre de difficultés (facile, standard, approfondi, expert) ?
+   5. Tout ou rien, ou partiel ?
+   6. Veux-tu une question bonus ?
+2. Propose-moi les questions, par petits groupes. Pour chacune : l'énoncé, les choix, la ou les bonnes réponses, la difficulté réelle, la ou les compétences, ce qu'elle vérifie, et la réponse que l'élève doit écrire sur sa feuille, en quelques mots.
+3. Pour les temps, tu ne devines jamais. Pour chaque question, demande-moi le temps de réflexion et le temps de réponse. Appuie-toi sur la vraie difficulté de la question et sur la longueur de la réponse à écrire. Si un temps que je te donne te paraît trop court pour écrire cette réponse, dis-le : « La question 7 ne rentre pas : … ». Si tu ne sais pas, demande-moi.
+4. Quand tous les temps sont donnés, calcule la durée de la séance avec les durées ci-dessus. Écris : « Ça rentre dans 45 minutes (total : … min) » ou « Ça ne rentre pas : il manque … minutes ». Si ça ne rentre pas, propose une solution sans l'appliquer (une question à retirer, des choix à raccourcir, la question bonus comme fusible) et attends mon accord.
+5. Tout au long de la discussion, tiens un cadrage mémorisé : à chaque étape, redonne en quelques lignes ce qui est décidé (questions validées, temps, compétences). Pose toujours tes questions numérotées. Le JSON est le résultat de notre discussion : je ne dois jamais avoir à le reprendre.
+6. Si je te colle un message de mon application qui commence par « Corrige ton JSON », corrige seulement ce qu'il cite et renvoie le JSON complet.
+
+RÈGLES POUR CHAQUE QUESTION
+1. L'énoncé est autonome : l'élève doit pouvoir répondre de mémoire, sans voir les choix. Jamais « Laquelle des propositions suivantes… ».
+2. L'énoncé dit la forme attendue de la réponse, par exemple « (le nom de la figure) » ou « (en un mot) », mais jamais le nombre de bonnes réponses.
+3. On doit pouvoir répondre en quelques mots sur la feuille. Pour une question « Sur ta copie, écris une phrase… », la feuille porte la phrase et, en dessous, la réponse courte : c'est cette réponse courte que l'élève rapproche des choix.
+4. Chaque choix est écrit comme l'élève l'écrirait. La bonne réponse reprend les mots exacts du cours. Les autres choix sont plausibles, mais clairement faux pour qui sait son cours. Les choix sont homogènes en longueur et en construction.
+5. Jamais de choix « aucune de ces réponses » : la tablette l'ajoute d'elle-même.
+6. Il n'y a pas de lettres : ne désigne jamais un choix par une lettre, ni dans l'énoncé, ni dans l'explication. Varie la place de la bonne réponse d'une question à l'autre.
+7. Une question vaut au plus 1 point. En tout ou rien, elle vaut 1 si la réponse est exacte, sinon 0. En partiel, chaque bonne case cochée rapporte une part du point (1 divisé par le nombre de bonnes cases), chaque mauvaise case cochée en retire autant, sans descendre sous 0.
+8. La difficulté dit la vraie difficulté de la question, rien d'autre : elle ne donne ni les points ni le temps.
+9. Une ou deux compétences par question, prises seulement dans la liste du chapitre. Chaque compétence que tu utilises porte sur au moins 3 questions ; si ce n'est pas possible, dis-le-moi.
+10. « Ce qu'elle vérifie » : une courte phrase à l'infinitif, dans les mots d'un élève, qui se lit après « À revoir en priorité : » comme après « Bravo, tu sais » ; par exemple « trouver l'antécédent d'un pronom relatif ». Jamais l'intitulé d'une compétence, jamais de jargon.
+11. L'explication est pour l'élève, à la correction : 1 à 3 phrases claires, qui justifient la bonne réponse ; tu peux dire pourquoi un autre choix est faux.
+12. La longueur : chaque question doit tenir sur une demi-tablette, choix compris. Compte les caractères, espaces comprises. L'énoncé fait 300 caractères au plus. Les choix d'une question ont tous à peu près la même longueur, et aucun ne dépasse la limite. Avec 4 choix ou moins : 165 caractères par choix si l'énoncé fait 60 caractères ou moins, 155 caractères par choix jusqu'à 120, 130 caractères par choix jusqu'à 180, 120 caractères par choix jusqu'à 200, 80 caractères par choix jusqu'à 280, 70 caractères par choix jusqu'à 300. Avec 5 choix : 80 caractères par choix si l'énoncé fait 60 caractères ou moins, 75 caractères par choix jusqu'à 120, 25 caractères par choix jusqu'à 260 ; au-delà de 260 caractères d'énoncé, pas de 5 choix. Avec 6 choix : 70 caractères par choix si l'énoncé fait 120 caractères ou moins, 25 caractères par choix jusqu'à 260 ; au-delà de 260 caractères d'énoncé, pas de 6 choix. Si une question dépasse et que je te dis que j'assume sa longueur, marque-la "longueurAssumee": true.
+13. La question bonus, si je t'en demande une, porte "bonus": true : elle compte dans les points gagnés, pas dans le total.
+
+LE FORMAT
+{
+  "titre": "Titre de l'évaluation",
+  "chapitre": "identifiant du chapitre, celui donné plus haut",
+  "mode": "strict",
+  "questions": [
+    {
+      "enonce": "Énoncé autonome (forme attendue de la réponse)",
+      "choix": ["…", "…", "…", "…"],
+      "bonnes": [0],
+      "niveau": "standard",
+      "reflexion": 40,
+      "reponse": 15,
+      "competences": ["code de la compétence"],
+      "verifie": "ce qu'elle vérifie, à l'infinitif",
+      "explication": "1 à 3 phrases pour l'élève.",
+      "bonus": false,
+      "longueurAssumee": false
+    }
+  ]
+}
+"mode" vaut "strict" (tout ou rien) ou "partiel". "bonnes" donne la place des bonnes réponses, en comptant à partir de 0. "reflexion" et "reponse" sont en secondes, ceux que je t'ai donnés. "niveau" prend l'une de ces valeurs :
+- "facile" (Facile)
+- "standard" (Standard)
+- "approfondi" (Approfondi)
+- "expert" (Expert)

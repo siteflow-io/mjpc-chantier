@@ -20425,3 +20425,367 @@ Paul raccourcit le complément 4. Lis en entier MANDATS/COMPLEMENT-MAQUETTE-QCM-
 841. **Je ne sais pas combien de temps il lui faudra encore** : je ne vois que ses sauvegardes.
 
 12/10/2026 13:13 MEMO
+
+---
+
+## TOUR 666 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (12/10, 13:28) Non, je veux que demain, le qcm que je ferai soit celui de la maquette. C'est pour ça qu'on travaille sur la maquette. S'il faut deux semaines avant livraison complète, on n'est pas rendus! Je mets ton complément du complément 4.
+
+---
+
+## TOUR 666 — Claude (conscience n°12)
+
+Relu au cadrage les points 737 à 750 (deux mandats de code, MJPC d'abord, puis le QCM avec ses 31 dettes) et le compte des compléments de la maquette depuis le 10/10.
+
+Réponse mot pour mot :
+
+À jouer : rien de neuf pour l'instant · en cours chez l'exécutant : le complément 4, avec l'avenant que tu viens de lui donner · ouvert : la v9, puis le code.
+
+842. **Compris : demain, en classe, le QCM de la maquette.**
+
+843. **Tout le QCM de la maquette d'ici demain matin, ça ne va pas.** C'est le code du site entier : les 169 écrans, sur la vraie base, avec les tablettes, le téléphone et le tableau qui se parlent. La maquette seule, sans base ni vrais appareils, a demandé quatre compléments depuis samedi. Et le code de MJPC devait passer avant (tour 649).
+
+844. **Ce qui peut aller pour demain : une tranche, l'heure de classe telle que la maquette la montre**, de l'appel au bilan des élèves. Un exécutant la code cette nuit, d'une traite. Demain matin, je l'audite avec mes contrôles, puis tu la mets en ligne avant ton cours. Le soir (résultats, PDF, copies rendues), l'éditeur, le mode test et MJPC viennent à la livraison suivante.
+
+845. **En secours, la version d'aujourd'hui réparée de ses deux pannes** (point 837), dès cet après-midi : si l'audit de demain matin ne va pas, tu fais cours avec elle.
+
+846. **Une seule question, pour cadrer la tranche** : demain, quelle classe, quelle évaluation, à quelle heure, sur tablettes ou sur papier, et jusqu'où (les questions seulement, ou aussi la correction et la co-évaluation) ?
+
+12/10/2026 13:30 MEMO
+
+---
+
+## TOUR 667 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (12/10, 13:32) Pourquoi le code du site entier?
+
+---
+
+## TOUR 667 — Claude (conscience n°12)
+
+Mesuré dans `evaluation-qcm.html` (7.7.1) le nombre de mentions de chaque mécanisme de la maquette (Check-in 7, « Autoriser la réponse » 7, « Révéler » 4, « Lancer la correction » 8, estimation 14, Mode test 16 ; 0 pour « Tour suivant », binôme, « Trouvée au dernier moment », co-évaluation, point d'autonomie, « Finir à une autre heure », « Écarter », « Rendre les copies », « PDF notes », « Oui, la même chose » ; « tablette » 4, aucune tablette partagée).
+
+Réponse mot pour mot :
+
+847. **« Le site entier », c'est faux : je me suis mal exprimé.** C'est une seule app, le QCM (`evaluation-qcm.html`). MJPC n'y entre que pour cinq choses (point 748).
+
+848. **Mais dans cette app, la maquette change presque toute l'heure de classe.** Mesuré dans la version en ligne : l'appel, la réflexion puis la réponse, « Révéler », la correction, l'estimation, « Mes évaluations », la vue tableau, le QR et le mode test existent déjà. Sont nouveaux : la tablette partagée en deux moitiés, le second tour, B, la lecture de la feuille du voisin, « Trouvée au dernier moment », la co-évaluation et son alerte, le point d'autonomie, les deux attestations, écarter ou annuler une question, rouvrir, finir à une autre heure, et le téléphone comme télécommande. Le soir aussi : la lecture des feuilles, les résultats avec les compétences, le PDF, rendre les copies.
+
+849. **Donc même la tranche de l'heure (point 844) porte l'essentiel du nouveau.** Je ne sais pas si un exécutant la finit d'ici demain matin : la maquette de toute l'app lui avait pris trois heures pour sa première version, puis quatre compléments. C'est pour ça que le secours (point 845) compte.
+
+850. **Ma question du point 846 reste** : demain, quelle classe, quelle évaluation, à quelle heure, sur tablettes ou sur papier, et jusqu'où. Avec ta réponse, je découpe au plus juste : si demain s'arrête aux questions, la tranche est bien plus petite.
+
+12/10/2026 13:33 MEMO
+
+---
+
+## TOUR 668 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (12/10, 13:35) ok donc pour demain il me faut la phase question et correction. la maquette actuelle, ce n'est pas du plug and play?
+
+---
+
+## TOUR 668 — Claude (conscience n°12)
+
+Mesuré dans la v8 : aucun appel à la base (« firebase » 0) ; les écrans lisent le moment courant (`MO()`, `MOM()`, `src/c3-base.js`) dans le scénario (`SCN`) ; la suite des moments de la séance du 08/10, de l'entrée aux tablettes au bilan.
+
+Réponse mot pour mot :
+
+851. **Non, la maquette n'est pas prête à brancher.** Elle n'a aucun lien avec la base : j'ai compté, zéro appel. Chaque écran est calculé depuis un scénario écrit d'avance (la classe fictive 3 ESSAI et ses réponses), et un clic mène à l'écran suivant, comme dans un film qu'on feuillette. En classe, il faut que la réponse d'un élève arrive vraiment sur ta console, au tableau et au téléphone.
+
+852. **Mais elle fait gagner beaucoup.** Ses écrans sont écrits comme ceux de l'app, de la même façon et avec les mêmes styles. L'exécutant peut les reprendre presque tels quels et remplacer le scénario par l'état réel de la séance, lu et écrit dans la base. Le travail de cette nuit, c'est ce branchement, pas les écrans.
+
+853. **La tranche pour demain, d'après ta réponse** : l'entrée sur les tablettes partagées, avec le code et la première attestation ; les questions avec leurs deux tours, la réflexion, la réponse et B ; l'estimation et la seconde attestation ; puis la correction, avec la lecture de la feuille du voisin, « Révéler », « Trouvée au dernier moment » et le point d'autonomie. Le tout sur ta console, au téléphone et au tableau. Tout est enregistré dans la base, pour que le soir, codé ensuite, le retrouve. Hors tranche : la co-évaluation, le bilan des élèves en fin d'heure et le soir. Si tu veux aussi la co-évaluation, dis-le.
+
+854. **Cette tranche se passe de MJPC** : le bilan, qui a besoin de tes libellés élève, n'en fait pas partie, et ta classe n'a encore aucune exclusion. L'ordre décidé le 11/10 (MJPC d'abord) ne gêne donc pas demain.
+
+855. **Il me manque une chose pour la cadrer** : quelle évaluation, pour quelle classe, à quelle heure ? Le nouveau QCM ne lance qu'une évaluation complète, avec son chapitre, les deux temps de chaque question et ses compétences ; sinon « Lancer » reste fermé (point 741). Or tes sept évaluations du hub sont encore « à compléter ».
+
+12/10/2026 13:36 MEMO
+
+---
+
+## TOUR 669 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (12/10, 13:39) Donc tu est en train de me dire que la maquette a été codée pour elle-même, alors que j'avais strictemnet interdit de faire ça. l'évaluation de demain, c'est les 4e sur l'analyse logique et le chapitre sur paris.
+
+---
+
+## TOUR 669 — Claude (conscience n°12)
+
+Relu `PROTOCOLE-MAQUETTE.md` (§0, §2, §6, règle du 03/10) et le mandat de la maquette (§3 : « un fichier HTML autonome… sans réseau » ; le faux hub du mode test cité, non imposé). Mesuré : 43 composants nommés dans `evaluation-qcm.html`, 452 dans la v8, 4 en commun (BilanClasse, InfoI, MesEvaluations, ModeEmploi) ; la durée de l'évaluation de 4e (21 questions) par `SCN.dureeEstimee` de la v8 : 651 s de questions, 1 260 s de correction, 2 511 s en tout, sans temps de réflexion ni de réponse (DUREES : installation 300, estimation et attestation 180, correction 60 par question, co-évaluation et bilan 120, décompte 3, B 5, entre deux questions 15).
+
+Réponse mot pour mot :
+
+856. **Oui, et la faute est la mienne.** Ta règle du 03/10 dit qu'une maquette part de l'app elle-même, branchée sur un faux hub. Mon mandat du 10/10 a demandé autre chose : un fichier de scènes refaites d'après la 7.7.1, sans lien avec la base. Mesuré : des 43 écrans de l'app en ligne, la maquette n'en reprend que 4 ; elle en a écrit 452 à elle. Le faux hub existait, celui du mode test, qui fait tourner la vraie app, et je ne l'ai pas imposé. Je ne l'ai pas relevé à mes audits non plus.
+
+857. **Ce que ça change** : les écrans que tu as validés ne sont pas perdus, ils se reprennent ; mais il faut maintenant les raccorder à la base. Pour le code, je repars donc de l'app en ligne, sur le faux hub, et l'exécutant n'y ajoute que ce que la maquette change.
+
+858. **L'évaluation de demain, mesurée** : « 4e- Chapitre 1 - Paris à la barre et analyse logique », 21 questions. Avec la règle de durée de la maquette (point 649), les questions et la correction prennent déjà 42 minutes sans aucun temps de réflexion ni de réponse, dont 21 de correction. Avec 20 secondes de réflexion et 20 de réponse par tour, on arrive à 63 minutes : plus que l'heure.
+
+859. **Elle est aussi « à compléter » au hub** : ni chapitre, ni temps, ni compétences, ni « ce qu'elle vérifie ». Pour l'heure de demain, seuls les temps de chaque question servent ; le chapitre et les compétences servent au bilan et au soir, qui ne sont pas dans la tranche.
+
+860. **Ma proposition** : je te propose les deux temps de chacune des 21 questions, et tu les valides ; pour demain, « Lancer » ne demande que ces temps, le reste se complète avant le soir. La correction qui ne tient pas dans l'heure se finit à l'heure suivante, par « ⏸️ Finir à une autre heure », déjà cadré (point 469) : je le mets dans la tranche.
+
+861. **Une question** : à quelle heure as-tu cette classe demain ? Si c'est à 8:00, il n'y a pas le temps d'un audit le matin, et il faut que tout soit prêt ce soir.
+
+12/10/2026 13:41 MEMO
+
+---
+
+## TOUR 670 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (12/10, 13:44) je réduis à 11 questions. par ailleurs, je n'ai qu'un objectif: que demain matin à 10h30 maximum, l'app qcm tourne avec tous les attributs de la maquette, tous. il faut que tu arrives à trouver une solution.
+
+---
+
+## TOUR 670 — Claude (conscience n°12)
+
+Mesuré : les chemins de la base de la 7.7.1 (`DB_ROOT = "qcm"`, sessions, sessionActive, evaluations, presence, reponses, autoevals, papier, notifs, classes, codes, mjpcProfils), ses adresses (`mode`, `view`, `qr`), le faux hub du mode test (base partagée entre pages par WebSocket), le format JSON du prompt de création. Écrits au sas : `MANDATS/MANDAT-CODE-QCM.md`, `AUDITS/CONTROLES-QCM-APP/` (essayés sur la 7.7.1 au faux hub : 16 vérifications, 14 échecs attendus, aucune erreur de page).
+
+Réponse mot pour mot (les points 862 à 870 envoyés en cours de tour, les points 871 et 872 à la fin) :
+
+862. **Compris : demain à 10:30 au plus tard, l'app QCM avec tout ce que la maquette lui donne, sur 11 questions.**
+
+863. **La solution : partir de la maquette elle-même, et non de l'app en ligne.** Je reviens sur mon point 857, parce que ton but a changé. La maquette a déjà tous les écrans, et tu les as validés ; ce qui lui manque, c'est la base. L'exécutant remplace son scénario par la vraie séance, lue et écrite dans la base. Chaque clic, au lieu de sauter à l'écran suivant, enregistre le geste, et ce geste arrive aux tablettes, au téléphone et au tableau.
+
+864. **Qui le fait : l'exécutant qui finit la v9**, dans la même session, sans attendre ton feu vert après la v9 : c'est lui qui connaît le mieux la maquette. Il travaille toute la nuit et pousse une sauvegarde à chaque étape. J'écris son mandat maintenant, au sas, et je te donne la phrase à lui coller dès que c'est prêt.
+
+865. **Demain matin** : tu m'écris dès 7:00. Je passe mes contrôles sur la vraie app, avec deux navigateurs (un geste dans l'un doit se voir dans l'autre), puis je rejoue ton heure de classe geste par geste. À 9:00, je te dis si ça va ou non ; si ça va, je la mets en ligne. Sinon, tu fais cours avec la version d'aujourd'hui, réparée de ses deux pannes : je la répare cet après-midi si tu dis « ok » (point 837).
+
+866. **Deux choses à décider pendant que j'écris :**
+- tes 28 libellés élève : je les écris au hub dès ce soir, après une copie de ce qui y est, pour que le bilan les ait. Cela revient sur le point 745 ;
+- les 11 questions : dis-moi lesquelles. Je te propose ensuite leurs temps, le chapitre, les compétences et « ce qu'elle vérifie », à valider.
+
+867. **Ce que je ne sais pas : s'il finira à temps.** C'est le plus gros morceau du chantier. Je le suivrai par ses sauvegardes, et la version de secours du point 865 reste prête.
+
+---
+
+868. **Le mandat est au sas** : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/MANDAT-CODE-QCM.md. L'exécutant y suit l'ordre de demain : d'abord la séance jusqu'à la fin de la correction, puis la co-évaluation et le bilan, puis le travail du soir, puis tout le reste de la maquette. À 06:30 au plus tard, il livre ce qui est fini : chaque partie livrée est complète.
+
+869. **Colle-lui maintenant, dans sa session, sans attendre la v9 :**
+
+```
+Paul change la suite. Lis en entier MANDATS/MANDAT-CODE-QCM.md sur la branche main du sas : finis la v9 au plus court comme le dit son §−1, livre-la, puis enchaîne sans t'arrêter sur ce mandat, d'une traite, jusqu'à sa livraison.
+```
+
+870. **Pendant ce temps, j'écris mes contrôles pour la vraie app**, sur le faux hub, avec plusieurs pages à la fois. L'exécutant les reprendra en cours de route.
+
+---
+
+871. **Mes contrôles pour la vraie app sont prêts et au sas.** Ils lancent la séance, partagent une tablette entre deux élèves, les font entrer avec leur vrai code, posent la question 1, et la font arriver sur ta console, au tableau et au téléphone, dans cinq pages ouvertes à la fois. Ils vérifient aussi qu'un champ où tu tapes n'est pas effacé quand une tablette répond. Durée : 97 secondes. Essayés sur la version d'aujourd'hui, ils tournent sans erreur et échouent là où elle n'a pas encore la maquette, comme prévu. L'exécutant les reprendra en cours de route : https://github.com/siteflow-io/mjpc-chantier/blob/main/AUDITS/CONTROLES-QCM-APP/README.md.
+
+872. **Ce que j'attends de toi** : la phrase du point 869, collée à l'exécutant ; ton « ok » ou ton « non » pour tes 28 libellés élève au hub (point 866) ; les 11 questions que tu gardes ; et ton « ok » pour réparer cet après-midi la version d'aujourd'hui, en secours (point 837).
+
+12/10/2026 13:53 MEMO
+
+---
+
+## TOUR 671 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (12/10, 13:57) attends, je n'ai pas encore collé à l'exécutant. Je veux juste être sur qu'avec ça, on arrivera à mon objetcif et que les bugs seront quand même attrapés. En fait je veux la meilleure méthode gain de temps efficacité performance.
+
+---
+
+## TOUR 671 — Claude (conscience n°12)
+
+Rien de nouveau mesuré ; la proposition s'appuie sur le mandat de code et le protocole de l'audit (obligation 2, les relecteurs neufs, absente du mandat de code).
+
+Réponse mot pour mot :
+
+873. **Avec le mandat tel qu'il est, je ne peux pas te le promettre.** Un seul exécutant fait tout, la nuit : la séance jusqu'à la correction a de bonnes chances d'être prête, le reste je ne sais pas. Et il manque une protection que tu as validée ce matin : les relecteurs neufs, qui jouent ton heure comme toi sans avoir vu le code. Ce que je peux te promettre, c'est un QCM qui marche à 10:30 : la nouvelle app si l'audit va, sinon la version d'aujourd'hui réparée.
+
+874. **La meilleure méthode : deux exécutants en même temps, au lieu d'un.** Le premier, celui de la v9, code la séance de l'appel au bilan. Un second, dans une nouvelle session, code en parallèle le soir (résultats, PDF, copies rendues) et le reste de la maquette (éditeur, réglages, mode test, papier, rattrapage, démo). Chacun a ses fichiers, et ils ne se gênent pas. La nuit de travail est ainsi coupée en deux.
+
+875. **Pour qu'ils travaillent ensemble dès maintenant, j'écris moi-même, avant eux, le contrat de la base** : où et comment chaque chose s'enregistre (les tours, B, les lectures, la co-évaluation, l'autonomie, les attestations). Je le tire du scénario de la maquette, qui contient déjà toutes ces données. Le premier les écrit, le second les lit : aucun n'attend l'autre.
+
+876. **Les défauts sont attrapés trois fois avant ta classe** : par leurs bancs, qui comparent chaque écran de l'app à celui de la maquette ; par mes contrôles, qu'ils ne peuvent pas modifier, et que j'étends cet après-midi à la correction, la co-évaluation, le bilan et les notes ; par leurs relecteurs neufs, avant de livrer. Puis demain à 7:00, mon audit.
+
+877. **Ton évaluation de demain ne dépend pas d'eux** : tu choisis les 11 questions, je te propose leurs temps, leurs compétences et « ce qu'elle vérifie », tu valides, et je l'écris dans la base ce soir.
+
+878. **Demain** : à 9:00, si l'audit va, je mets l'app en ligne, avec un retour possible en une minute ; tu l'essaies sur une vraie tablette et ton téléphone ; au moindre problème, je remets la version d'aujourd'hui, réparée de ses deux pannes. Pour ce secours, il me faut ton « ok » sur le point 837.
+
+879. **Si tu dis « ok »**, j'écris le contrat de la base, le mandat du second exécutant et la mise à jour du premier, et j'étends mes contrôles. Je te donne ensuite les deux phrases à coller, une par session. N'envoie rien à l'exécutant d'ici là.
+
+12/10/2026 13:58 MEMO
+
+---
+
+## TOUR 672 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (12/10, 14:04) et si je lance 4 exécutants? j'arrête celui là, tu me fais 4 mandats pour 4 exécutants différents qui s'occupent chacun d'une partie, puis audit, et push. en revanche ça demande de l'organisation, notamment au niveau des noms des exécutants.
+
+---
+
+## TOUR 672 — Claude (conscience n°12)
+
+Mesuré : `src/scenario.js` de la v9 candidate lu en entier (l'API que les écrans appellent, les tables écrites pour le scénario) ; le classement des 37 fichiers de `src/` par les écrans qu'ils montrent (les appareils mélangés dans `etape2.js`, `etape3.js`, `maquette.js`) ; `maquette-qcm` à `5852823d` (13:58, « v9 candidate, en cours de banc »). Écrits : `MANDATS/CODE-QCM/` (README, COMMUN, QCM-1 à QCM-4), la branche `code-qcm` (`575bb696`, les sources copiées dans `LIVRAISONS/CODE-QCM/`), `MANDAT-CODE-QCM.md` marqué remplacé, les contrôles K10 à K15. Les points 880 à 889 ont été envoyés en cours de tour, 890 et 891 à la fin.
+
+Réponse mot pour mot :
+
+880. **Oui, quatre exécutants, c'est mieux.** Je découpe en quatre parties qui ne se marchent pas dessus :
+- **QCM-1, le socle** : la base, l'état de la séance, les adresses, l'entrée des élèves, et l'assemblage du tout ;
+- **QCM-2, les tablettes** : tout ce que voient et font les élèves ;
+- **QCM-3, ton pilotage** : ta console, ton téléphone et le tableau pendant l'heure ;
+- **QCM-4, le soir et le reste** : résultats, PDF, copies rendues, éditeur, réglages, mode test, séance sur papier, rattrapage, démo.
+
+Ils se parlent par la base, selon une règle commune que j'écris avant eux. QCM-1 assemble le travail des quatre toutes les deux heures, et livre à 06:30 au plus tard.
+
+881. **Une tension avec ta règle du 05/10** (un exécutant ne s'arrête jamais en plein mandat). Tu peux arrêter celui-ci, mais il doit d'abord pousser ce qu'il a fait. Colle-lui ceci maintenant, dans sa session :
+
+```
+Paul t'arrête. Pousse tout de suite sur maquette-qcm tout ce que tu as fait, même en cours, avec un commit qui dit ce qui est fini et ce qui ne l'est pas dans le complément 4 et son avenant. Puis arrête-toi.
+```
+
+Ce qu'il n'a pas fini du complément 4 passera dans la partie qui le concerne.
+
+882. **Les noms** : chaque session porte son nom, de QCM-1 à QCM-4, et ses commits et sa branche aussi. Un tableau au sas dira qui fait quoi, avec la phrase à coller à chacun.
+
+883. **Je l'écris maintenant** : la règle commune, les quatre mandats et le tableau. Je te donne les quatre phrases dès que c'est prêt.
+
+---
+
+884. **Correction du point 881, si tu ne l'as pas encore collée : ne l'arrête pas.** Je viens de lire sa dernière sauvegarde (13:58) : il a appliqué l'avenant, mes contrôles passent à zéro chez lui, et il en est au banc final de sa v9 (« v9 candidate, en cours de banc »). Laisse-le livrer la v9 : les quatre exécutants partiront d'elle. Si tu as déjà collé la phrase, ce n'est pas grave : il pousse sa v9 candidate, et ils partiront de là.
+
+---
+
+885. **C'est prêt, tu peux lancer les quatre.** Le tableau, avec les quatre phrases à coller : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/CODE-QCM/README.md.
+
+886. **Le partage, et pourquoi celui-là.** Les fichiers de la maquette mélangent les appareils : un même fichier contient la console et les tablettes. Je n'ai donc pas découpé par appareil, mais par métier :
+- **QCM-1 · SOCLE** : la base, l'état de la séance et l'assemblage ;
+- **QCM-2 · HEURE** : tous les écrans de l'heure, sur tous les appareils ;
+- **QCM-3 · SOIR** : le soir et tout le reste ;
+- **QCM-4 · BANC** : il n'écrit rien de l'app, il l'éprouve, comme le veut ta règle de ce matin, pour que celui qui code ne soit pas celui qui vérifie.
+
+Chacun n'a le droit de toucher qu'à ses propres fichiers, et ils travaillent tous sur la même branche, que j'ai créée.
+
+887. **Les noms.** Ouvre quatre nouvelles sessions et nomme-les exactement QCM-1 · SOCLE, QCM-2 · HEURE, QCM-3 · SOIR et QCM-4 · BANC. Chacun signe ses commits et ses messages de son nom. Les sessions du déroulé ne commencent jamais par « QCM- ».
+
+888. **L'exécutant de la maquette** : laisse-le finir la v9, puis il s'arrête de lui-même. Ne lui colle rien d'autre ; l'ancien mandat unique est annulé.
+
+889. **Les heures** : QCM-4 assemble et passe le banc toutes les deux heures, de 18:00 à 04:00. À 05:00, on ne fait plus que corriger. À 06:30, il livre son verdict. À 07:00, mon audit.
+
+---
+
+890. **Mes contrôles vont maintenant jusqu'au bout de l'heure** : les trois questions et leurs deux tours, la correction qui commence par la plus ratée, « Révéler » fermé tant qu'une feuille n'est pas lue, « Trouvée au dernier moment » au bon endroit et seulement là, la co-évaluation, le bilan, et les notes justes (3 / 3 et 1 / 3 sur le cas que je joue). QCM-4 les passera à chaque assemblage.
+
+891. **Il me manque toujours trois réponses de toi** : les 11 questions que tu gardes ; « ok » ou « non » pour écrire tes 28 libellés élève au hub ; « ok » ou « non » pour réparer la version d'aujourd'hui en secours.
+
+12/10/2026 14:13 MEMO
+
+---
+
+## TOUR 673 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (12/10, 14:20) je ne sais pas encore pour les questions, je ferai mon qcm quand l'app sera ok. oui pour les libellés, et oui pour réparer la version actuelle. donne moi le nouveau prompt ainsi que le json de l'éval actuellement en ligne , ça me permettra de lancer une instance sur sa correction.
+
+> (12/10, 14:32, après une interruption) continue
+
+---
+
+## TOUR 673 — Claude (conscience n°12)
+
+Mesuré : l'évaluation de 4e relue au hub (`qcm/evaluations/eval_1791380799497`, inchangée depuis le 07/10) ; le prompt rempli par la maquette v9 (`promptRempli()`) ; au hub, `site/4e` sans chapitres et `taxonomie/competences` en listes de groupes (d'où l'erreur du contrat) ; la 7.7.2 au banc par le geste (29 vérifications, 0 échec ; la 7.7.1 et la version à une seule ligne échouent chacune sur sa panne) ; en ligne, md5 `3aaf7499…` ; les 28 libellés écrits au hub et relus ; les contrôles de l'app modifiés tournent jusqu'au bout sur la 7.7.2 (29 vérifications, 24 échecs attendus : la maquette n'y est pas).
+
+Réponse mot pour mot :
+
+À jouer : lancer ton instance avec les deux fichiers · en cours chez moi : la réparation de la 7.7.1, puis les libellés · ouvert : 1 contrat à corriger (point 894)
+
+892. **Le prompt et le JSON sont prêts** (au-dessus, et au sas : https://github.com/siteflow-io/mjpc-chantier/tree/main/MANDATS/EVAL-4E-PARIS). Le JSON est l'évaluation telle qu'elle est au hub : 21 questions, inchangée depuis le 07/10. Le prompt est celui que remplit la maquette v9, avec le chapitre 1 de 4e à la place de celui de 3e.
+
+893. **Le chapitre 1 de 4e n'a pas de fiche au hub**, donc pas de compétences. Le prompt donne à l'instance les 28 compétences, avec leur libellé élève, et lui demande de te proposer celles du chapitre avant d'écrire la moindre question. Identifiant : `4e-ch1`. Ce qui manque à l'évaluation pour le nouveau format, et sa seule question trop longue (la 21), sont dans le README.
+
+894. **En lisant le hub, j'ai trouvé une erreur dans mon contrat pour les quatre exécutants.** Au hub, les compétences sont rangées en listes de groupes. Le chemin `taxonomie/competences/<code>/libelleEleve` que je leur ai donné n'existe pas : en écrivant là, on casserait les lecteurs de MJPC. Les libellés iront sur chaque compétence, à côté de son libellé officiel, comme pour les notions. Je corrige le contrat avant qu'ils codent le lecteur (rien n'est encore poussé sur `code-qcm`). Je leur dis aussi qu'un chapitre sans fiche au hub, comme le tien, doit pouvoir se lancer.
+
+12/10/2026 14:36 MEMO
+
+*(Envoyés avec ce message, en fichiers : `PROMPT-4E-CH1.txt` et `eval_1791380799497.json`. Message envoyé vers 14:31 ; son horodatage « 14:36 » était en avance.)*
+
+---
+
+À jouer : la 7.7.2, en ligne (tests aux points 899 à 902), et ton instance avec les deux fichiers · en cours chez l'exécutant : celui de la v9 (pas encore livrée) ; les quatre du code n'ont encore rien poussé · ouvert : tes 11 questions
+
+895. **La version en ligne est réparée : c'est la 7.7.2**, en ligne depuis 14:44, vérifiée octet pour octet. Deux lignes changent : la correction sur les tablettes, et ton téléphone, qui devenait vide dès qu'un élève répondait. Rien d'autre ne bouge.
+
+896. **Le banc, par le geste** : une console, le tableau, ton téléphone et trois tablettes, sur le faux hub, avec les trois premières questions de ta 4e. Le téléphone pilote toute la séance, de « Lancer Q1 » à « Terminer ». 29 vérifications, 0 échec. Le même banc échoue sur l'ancienne version, sur chacune des deux pannes : il les attrape bien. https://github.com/siteflow-io/mjpc-chantier/blob/main/AUDITS/QCM-REPARATION-7.7.2-12-10/README.md
+
+897. **Les 28 libellés élève sont au hub.** J'ai d'abord gardé au sas une copie de l'existant. Chaque libellé est écrit sur sa compétence, à côté du libellé officiel ; j'ai tout relu, rien d'autre n'a bougé. Aucune app ne les montre encore : ce sera le code de la maquette. https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/LIBELLES-ELEVE-COMPETENCES/README.md
+
+898. **Les exécutants sont prévenus**, par le fichier des demandes de leur branche : le contrat corrigé (point 894), le chapitre `4e-ch1`, la 7.7.2. Mes contrôles suivent : l'évaluation d'essai a l'identifiant de chapitre de la maquette, et le faux hub a les compétences du vrai.
+
+899. **Test 1, la version** : ouvre https://siteflow-io.github.io/monsieurjaipascompris/evaluation-qcm.html?mode=prof&v=772, onglet « ⚙️ Réglages » : la version dit « 7.7.2 (2026-10-12) ».
+
+900. **Test 2, le téléphone** : clique « 🧪 Mode test », puis « 📱 QR pilotage », et scanne avec ton téléphone. Au téléphone, « 🚀 Lancer Q1 » puis « ✋ Autoriser la réponse » ; à l'ordinateur, « 🎲 Tous les élèves répondent ». Attendu : le téléphone garde la séance, élèves en couleur. Avant, l'écran devenait vide.
+
+901. **Test 3, la correction** : à l'ordinateur, dans « 🎓 Entrer comme un élève », entre avec le code donné en exemple. Au téléphone, finis les questions, puis « 📊 Lancer l'autoévaluation », « 📝 Lancer la correction » et « 💡 Révéler la bonne réponse ». Attendu : l'écran de l'élève dit « Tu avais juste », « Tu avais faux » ou « Tu n'as pas répondu », et marque la bonne réponse. Avant, il devenait vide. Je n'ai pas joué ce test en mode test : le banc l'a joué sur le faux hub.
+
+902. **Test 4, la sortie** : « 🗑️ Sortir et purger ».
+
+12/10/2026 14:54 MEMO
+
+---
+
+## TOUR 674 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (12/10, 17:03) je n'ai pas lancé les exécutants, donne moi les messages et les titres pour les nommer.
+
+---
+
+## TOUR 674 — Claude (conscience n°12)
+
+Mesuré : `code-qcm` sans aucun commit d'exécutant ; `maquette-qcm` à `6fa8a9fe` (15:58, la v9 finale), qui ne change que deux sources depuis la candidate (`c3-corr.js`, `c3-x610.js`, une ligne chacune) ; reportée sur `code-qcm` (fusion, puis `src/` identique à la v9 finale) ; heures du commun recalées.
+
+Réponse mot pour mot :
+
+À jouer : lancer les quatre sessions ci-dessous · en cours chez l'exécutant : personne (la v9 finale est poussée depuis 15:58) · ouvert : tes 11 questions
+
+903. **Titre : `QCM-1 · SOCLE`** — une nouvelle session cloud sur `siteflow-io/mjpc-chantier`, et ce message :
+
+```
+Tu es QCM-1 · SOCLE. Lis en entier, sur la branche main du sas, MANDATS/CODE-QCM/COMMUN.md puis MANDATS/CODE-QCM/QCM-1-SOCLE.md, et applique-les à la lettre, d'une traite, sur la branche code-qcm, jusqu'à la livraison de 06:30.
+```
+
+904. **Titre : `QCM-2 · HEURE`** — une nouvelle session cloud sur `siteflow-io/mjpc-chantier`, et ce message :
+
+```
+Tu es QCM-2 · HEURE. Lis en entier, sur la branche main du sas, MANDATS/CODE-QCM/COMMUN.md puis MANDATS/CODE-QCM/QCM-2-HEURE.md, et applique-les à la lettre, d'une traite, sur la branche code-qcm, jusqu'à la livraison de 06:30.
+```
+
+905. **Titre : `QCM-3 · SOIR`** — une nouvelle session cloud sur `siteflow-io/mjpc-chantier`, et ce message :
+
+```
+Tu es QCM-3 · SOIR. Lis en entier, sur la branche main du sas, MANDATS/CODE-QCM/COMMUN.md puis MANDATS/CODE-QCM/QCM-3-SOIR.md, et applique-les à la lettre, d'une traite, sur la branche code-qcm, jusqu'à la livraison de 06:30.
+```
+
+906. **Titre : `QCM-4 · BANC`** — une nouvelle session cloud sur `siteflow-io/mjpc-chantier`, et ce message :
+
+```
+Tu es QCM-4 · BANC. Lis en entier, sur la branche main du sas, MANDATS/CODE-QCM/COMMUN.md puis MANDATS/CODE-QCM/QCM-4-BANC.md, et applique-les à la lettre, d'une traite, sur la branche code-qcm, jusqu'à la livraison de 06:30.
+```
+
+Lance les quatre en même temps. Le tableau est aussi au sas : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/CODE-QCM/README.md
+
+907. **Ce que j'ai changé avant que tu les lances.** La v9 finale, poussée à 15:58, est déjà dans leur branche : ils n'ont plus rien à reporter. Les heures sont recalées : le premier assemblage passe de 18:00 à 20:00. Le reste ne change pas : plus rien de nouveau à 05:00, banc final à 05:30, verdict à 06:30, mon audit à 07:00.
+
+908. **Le retard** : ils partent vers 17:15 au lieu de 14:10, soit trois heures de moins sur la nuit. Je ne sais pas si tout tiendra d'ici 06:30. S'il manque du temps, ils font l'heure de classe d'abord, et le secours est déjà en ligne : la 7.7.2.
+
+12/10/2026 17:12 MEMO

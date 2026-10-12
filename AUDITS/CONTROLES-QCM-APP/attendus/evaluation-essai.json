@@ -1,0 +1,77 @@
+{
+ "titre": "Évaluation d'essai",
+ "chapitre": "3e-ch1",
+ "mode": "strict",
+ "questions": [
+  {
+   "enonce": "Quelle est la capitale de l'Italie ?",
+   "choix": [
+    "Milan",
+    "Naples",
+    "Rome",
+    "Venise"
+   ],
+   "bonnes": [
+    2
+   ],
+   "niveau": "facile",
+   "reflexion": 20,
+   "reponse": 15,
+   "competences": [
+    "c4-culture-01",
+    "c4-lire-01"
+   ],
+   "verifie": "nommer la capitale de l'Italie",
+   "explication": "Rome est la capitale de l'Italie depuis 1871.",
+   "bonus": false,
+   "longueurAssumee": false
+  },
+  {
+   "enonce": "Lesquelles sont des capitales européennes ?",
+   "choix": [
+    "Madrid",
+    "Genève",
+    "Berlin",
+    "Sydney"
+   ],
+   "bonnes": [
+    0,
+    2
+   ],
+   "niveau": "standard",
+   "reflexion": 30,
+   "reponse": 20,
+   "competences": [
+    "c4-culture-01",
+    "c4-lire-01"
+   ],
+   "verifie": "reconnaître des capitales européennes",
+   "explication": "Madrid (Espagne) et Berlin (Allemagne) sont des capitales. Genève n'est pas la capitale de la Suisse (c'est Berne), et Sydney est en Australie.",
+   "bonus": false,
+   "longueurAssumee": false
+  },
+  {
+   "enonce": "Combien de pattes a une araignée ?",
+   "choix": [
+    "6",
+    "8",
+    "10",
+    "4"
+   ],
+   "bonnes": [
+    1
+   ],
+   "niveau": "facile",
+   "reflexion": 20,
+   "reponse": 15,
+   "competences": [
+    "c4-culture-01",
+    "c4-lire-01"
+   ],
+   "verifie": "dire combien de pattes a une araignée",
+   "explication": "Une araignée a 8 pattes : ce n'est pas un insecte (les insectes en ont 6).",
+   "bonus": false,
+   "longueurAssumee": false
+  }
+ ]
+}

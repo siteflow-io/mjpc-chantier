@@ -1,0 +1,27 @@
+Contrôles de la conscience n°12 pour l'app — /tmp/claude-0/-home-claude/6f83f394-f2d4-5070-8d91-714cb465417b/scratchpad/banchub/evaluation-qcm.html — 2026-10-12T11:53:07.278Z
+md5 de controles-app.js : 23564c568137a600d51a7e90c837d675
+Durée : 97 s · vérifications : 16 · échecs : 14
+  ÉCHEC  K1 · « 🚀 Lancer la séance » écrit une séance active dans la base — {}
+  ÉCHEC  K2 · la tablette demande « Combien êtes-vous sur cette tablette ? » — ⭐
+🎯
+✨
+💡
+🎲
+🔥
+🎓 Choisis ta classe
+3 ESSAI
+← Retour
+  ÉCHEC  K2 · « 👥 2 élèves » partage la tablette en deux moitiés, chacune « 👋 Identifie-toi »
+  ÉCHEC  K3 · Julien entré sur la tablette se voit sur ta console sans rechargement
+  ÉCHEC  K3 · DUVERNAY Michel, entré dans l'autre moitié, se voit sur ta console
+  ÉCHEC  K4 · les deux attestations faites, ta console le montre
+  ÉCHEC  K5 · « ▶️ Lancer Q1 » : l'énoncé de la question 1 sur les deux moitiés
+  ÉCHEC  K5 · le tableau montre la question 1, sans rechargement
+  ÉCHEC  K5 · le téléphone montre la question 1, sans rechargement
+  ÉCHEC  K6 · au 1er tour, une moitié peut cliquer un choix de la question 1
+  ÉCHEC  K6 · la réponse cliquée sur la tablette se voit sur ta console sans rechargement
+  ok     K6 · aucun champ de saisie à cet écran de la console (rien à mesurer)
+  ÉCHEC  K7 · « ⏭️ Tour suivant » : l'autre moitié répond à son tour
+  ÉCHEC  K7 · « 🔒 Clore la question » est là, et se clique
+  ÉCHEC  K8 · les réponses des deux élèves sont dans la base, sous la séance — {}
+  ok     K9 · aucune erreur de page ni boîte système dans les cinq pages

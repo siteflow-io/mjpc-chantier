@@ -1,0 +1,334 @@
+{
+  "createdAt": 1791380799497,
+  "questions": [
+    {
+      "bonnes": [
+        1
+      ],
+      "choix": [
+        "Accuser quelqu'un devant un tribunal",
+        "Se présenter devant un tribunal",
+        "Défendre quelqu'un devant un tribunal",
+        "Juger quelqu'un devant un tribunal"
+      ],
+      "enonce": "Que veut dire « comparaître » ?",
+      "explication": "Comparaître, c'est se présenter devant un tribunal. Au début du chapitre, Paris est citée à comparaître.",
+      "niveau": "facile"
+    },
+    {
+      "bonnes": [
+        0,
+        2
+      ],
+      "choix": [
+        "Un juré",
+        "La barre",
+        "Un avocat",
+        "Un dossier d'instruction",
+        "Une plaidoirie",
+        "Une accusation"
+      ],
+      "enonce": "Quels mots du procès désignent des personnes ?",
+      "explication": "L'avocat parle pour accuser ou pour défendre ; le juré écoute, note et vote. La barre est un endroit, la plaidoirie un discours, le dossier d'instruction ce qu'on a réuni avant le procès.",
+      "niveau": "standard"
+    },
+    {
+      "bonnes": [
+        3
+      ],
+      "choix": [
+        "Une preuve qui est fausse",
+        "Une preuve qui accuse",
+        "Une preuve qui est oubliée",
+        "Une preuve qui défend"
+      ],
+      "enonce": "Qu'est-ce qu'une preuve « à décharge » ?",
+      "explication": "À charge, la preuve accuse ; à décharge, elle défend.",
+      "niveau": "standard"
+    },
+    {
+      "bonnes": [
+        1,
+        3,
+        4
+      ],
+      "choix": [
+        "Paris coûte-t-elle trop cher à ses habitants ?",
+        "Paris abandonne-t-elle ses habitants les plus pauvres ?",
+        "Paris est-elle trop grande pour être gouvernée ?",
+        "Paris cache-t-elle sa misère derrière ses lumières ?",
+        "Paris détruit-elle ce qu'elle a de plus beau ?",
+        "Paris oublie-t-elle les écrivains qui l'ont aimée ?"
+      ],
+      "enonce": "Quelles sont les trois accusations portées contre Paris dans notre procès ?",
+      "explication": "Ce sont les trois questions sur lesquelles la classe votera à la fin du procès.",
+      "niveau": "standard"
+    },
+    {
+      "bonnes": [
+        2,
+        3
+      ],
+      "choix": [
+        "Des pauvres restés au centre",
+        "Des quartiers anciens conservés",
+        "La lumière (L'éclairage au gaz)",
+        "De grandes avenues larges et droites",
+        "Des ruelles plus étroites"
+      ],
+      "enonce": "Qu'est-ce que Paris a gagné avec les grands travaux du XIXe siècle ? deux choses.",
+      "explication": "Avec les grands travaux, Paris s'éclaire au gaz et s'ouvre de grandes avenues larges et droites : elle devient la « Ville Lumière ».",
+      "niveau": "approfondi"
+    },
+    {
+      "bonnes": [
+        3,
+        4
+      ],
+      "choix": [
+        "Ses grandes avenues, rétrécies",
+        "Sa cathédrale, rasée",
+        "Son éclairage, supprimé",
+        "Des quartiers entiers, démolis",
+        "Ses habitants les plus pauvres, chassés du centre"
+      ],
+      "enonce": "Qu'est-ce que Paris a perdu avec les grands travaux du XIXe siècle ?",
+      "explication": "Des quartiers entiers ont été démolis et les plus pauvres ont été chassés loin du centre. L'éclairage et les grandes avenues, au contraire, sont ce que Paris a gagné.",
+      "niveau": "approfondi"
+    },
+    {
+      "bonnes": [
+        2
+      ],
+      "choix": [
+        "Victor Hugo",
+        "Guy de Maupassant",
+        "Le baron Haussmann",
+        "Émile Zola"
+      ],
+      "enonce": "Qui fait démolir des quartiers entiers de Paris, à partir de 1853, pour ouvrir de grandes avenues ?",
+      "explication": "C'est le baron Haussmann. Hugo, Zola et Maupassant sont des écrivains qui ont écrit sur cette ville.",
+      "niveau": "facile"
+    },
+    {
+      "bonnes": [
+        0
+      ],
+      "choix": [
+        "Une comparaison",
+        "Un oxymore",
+        "Une métaphore",
+        "Une personnification"
+      ],
+      "enonce": "Quelle figure de style trouve-t-on dans « La grande rose flamboie comme un œil de cyclope » ?",
+      "explication": "Le mot-outil « comme » est là : c'est une comparaison. Sans lui, ce serait une métaphore.",
+      "niveau": "standard"
+    },
+    {
+      "bonnes": [
+        1,
+        4
+      ],
+      "choix": [
+        "Une métaphore",
+        "Une personnification",
+        "Une hyperbole",
+        "Un oxymore",
+        "Une accumulation"
+      ],
+      "enonce": "Quelles figures de style trouve-t-on dans « Il y avait des guivres qui avaient l'air de rire, des gargouilles qu'on croyait entendre japper, des salamandres qui soufflaient dans le feu, des tarasques qui éternuaient dans la fumée » ?",
+      "explication": "Les monstres sont énumérés les uns après les autres : c'est une accumulation. Des sculptures de pierre qui rient : on leur donne un geste humain, c'est une personnification.",
+      "niveau": "approfondi"
+    },
+    {
+      "bonnes": [
+        2
+      ],
+      "choix": [
+        "Une métaphore",
+        "Une hyperbole",
+        "Un oxymore",
+        "Une comparaison"
+      ],
+      "enonce": "Quelle figure de style trouve-t-on dans « cette pluie ardente » ?",
+      "explication": "La pluie et l'ardeur, l'eau et le feu, deux contraires sont réunis dans le même groupe de mots : c'est un oxymore.",
+      "niveau": "standard"
+    },
+    {
+      "bonnes": [
+        1
+      ],
+      "choix": [
+        "Une hyperbole",
+        "Une métaphore",
+        "Une comparaison",
+        "Une accumulation"
+      ],
+      "enonce": "Quelle figure de style trouve-t-on dans « deux gouttières en gueules de monstres » ?",
+      "explication": "Les gouttières sont rapprochées des gueules de monstres sans mot-outil : c'est une métaphore.",
+      "niveau": "standard"
+    },
+    {
+      "bonnes": [
+        2
+      ],
+      "choix": [
+        "« Perdu » est ici un adjectif invariable",
+        "Avec être, le participe ne s'accorde jamais",
+        "Avec avoir, le complément est placé après le verbe",
+        "« Beaucoup » est un nom masculin singulier"
+      ],
+      "enonce": "Dans « Beaucoup avaient perdu leur logement », pourquoi le participe passé « perdu » ne s'accorde-t-il pas ?",
+      "explication": "Avec l'auxiliaire avoir, quand le complément est placé après le verbe, le participe passé ne s'accorde pas. C'était l'un des deux pièges de la dictée.",
+      "niveau": "approfondi"
+    },
+    {
+      "bonnes": [
+        2
+      ],
+      "choix": [
+        "Une",
+        "Deux",
+        "Trois",
+        "Quatre"
+      ],
+      "enonce": "Une phrase contient trois verbes conjugués. Combien a-t-elle de propositions ?",
+      "explication": "Autant de propositions que de verbes conjugués : trois verbes conjugués, trois propositions.",
+      "niveau": "facile"
+    },
+    {
+      "bonnes": [
+        0,
+        3
+      ],
+      "choix": [
+        "Les crochets de la proposition principale",
+        "Le rond autour des mots subordonnants",
+        "Les crochets des propositions subordonnées",
+        "Le cadre autour de l'antécédent",
+        "Le trait sous les verbes conjugués",
+        ""
+      ],
+      "enonce": "Dans la méthode d'analyse logique, qu'est-ce qui se repère en vert (geste) ?",
+      "explication": "En vert : les crochets de la P.P et les cadres de l'antécédent et du verbe complété. Les crochets des P.S sont rouges, les verbes conjugués soulignés en noir, les mots subordonnants entourés en bleu.",
+      "niveau": "approfondi"
+    },
+    {
+      "bonnes": [
+        0
+      ],
+      "choix": [
+        "Souligner les verbes conjugués en noir",
+        "Encadrer les antécédents en vert",
+        "Entourer les mots subordonnants en bleu",
+        "Mettre les propositions entre crochets"
+      ],
+      "enonce": "Quelle est l'étape 1 de la méthode d'analyse logique ?",
+      "explication": "Étape 1 : les verbes conjugués, soulignés en noir. On sait alors combien la phrase a de propositions.",
+      "niveau": "facile"
+    },
+    {
+      "bonnes": [
+        1,
+        3,
+        5
+      ],
+      "choix": [
+        "Une PSCc : « que je lis »",
+        "Un DPP : « Le livre »",
+        "Une P.I : toute la phrase",
+        "Une FPP : « est passionnant »",
+        "Une PSR : « je lis est passionnant »",
+        "Une PSR : « que je lis »"
+      ],
+      "enonce": "Quelles propositions trouve-t-on dans « Le livre que je lis est passionnant » ?",
+      "explication": "Deux verbes conjugués, deux propositions. La relative « que je lis » se glisse entre le sujet et le verbe : elle coupe la principale en deux, le début (DPP) et la fin (FPP).",
+      "niveau": "approfondi"
+    },
+    {
+      "bonnes": [
+        3
+      ],
+      "choix": [
+        "Qui est-ce qui est fatigué?",
+        "Où est-ce qu'il travaille ?",
+        "Comment est-ce qu'il travaille ?",
+        "Qui est-ce qui travaille ?"
+      ],
+      "enonce": "Dans « L'homme qui travaille est fatigué », quelle question pose-t-on pour trouver l'antécédent de « qui » ?",
+      "explication": "Pour « qui », on pose « Qui est-ce qui » suivi du verbe de la relative, jamais de question en dehors de la relative. La réponse, l'homme, est l'antécédent, toujours en dehors de la relative.",
+      "niveau": "standard"
+    },
+    {
+      "bonnes": [
+        0,
+        1,
+        4
+      ],
+      "choix": [
+        "Un nom",
+        "Un pronom",
+        "Une conjonction de subordination",
+        "Un verbe conjugué",
+        "Un groupe nominal",
+        "Un adjectif"
+      ],
+      "enonce": "Qu'est-ce qui peut être un antécédent ?",
+      "explication": "L'antécédent est un nom, un pronom ou un groupe nominal : la relative complète un nom.",
+      "niveau": "standard"
+    },
+    {
+      "bonnes": [
+        2
+      ],
+      "choix": [
+        "Pour une PSR, de l'antécédent vers le pronom relatif",
+        "Pour une PSCc, de « que » vers le verbe complété",
+        "Pour une PSR, du pronom relatif vers l'antécédent",
+        "Pour une P.I, du verbe conjugué vers le sujet"
+      ],
+      "enonce": "À l'étape 4, dans quel sens vont les flèches ?",
+      "explication": "Pour une relative, la flèche part du pronom relatif et va vers l'antécédent. Pour une complétive, elle part du verbe complété, là où l'on pose la question, et va vers « que » (on verra cette partie après les vacances).",
+      "niveau": "approfondi"
+    },
+    {
+      "bonnes": [
+        2,
+        3,
+        5
+      ],
+      "choix": [
+        "L'antécédent de « que » est « je »",
+        "La subordonnée est une PSR",
+        "« Que » est une conjonction de subordination",
+        "Le verbe complété est « crois »",
+        "« Que » est un pronom relatif",
+        "La subordonnée est une PSCc"
+      ],
+      "enonce": "Dans « Je crois que tu as raison », que peut-on dire de « que » et de la subordonnée ?",
+      "explication": "« Qu'est-ce que tu as ? » n'a pas de réponse avant « que » : pas d'antécédent. « Que » est une conjonction de subordination. « Je crois quoi ? » — que tu as raison : la subordonnée complète « crois », c'est une PSCc.",
+      "niveau": "expert"
+    },
+    {
+      "bonnes": [
+        0,
+        1,
+        3
+      ],
+      "choix": [
+        "Son antécédent est « un immense atelier de putréfaction »",
+        "C'est un pronom relatif",
+        "Il introduit une PSCc",
+        "Il introduit une PSR",
+        "Son antécédent est « Paris »",
+        "C'est une conjonction de subordination"
+      ],
+      "enonce": "BONUS — Dans « Paris, c'est un immense atelier de putréfaction, où la misère, la peste et les maladies travaillent de concert », que peut-on dire de « où » ?",
+      "explication": "« Où est-ce que la misère et la peste travaillent ? » — dans un immense atelier de putréfaction : c'est l'antécédent, un groupe nominal juste avant « où ». « Où » est un pronom relatif, il introduit une PSR. C'est la phrase de Victor Considérant, la preuve à charge de la séance 1.",
+      "niveau": "expert"
+    }
+  ],
+  "titre": "4e- Chapitre 1 - Paris à la barre et analyse logique ·",
+  "updatedAt": 1791380799497,
+  "version": 1
+}

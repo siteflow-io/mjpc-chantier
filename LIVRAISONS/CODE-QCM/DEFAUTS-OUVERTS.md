@@ -2,7 +2,7 @@
 
 Format : `[QCM-4 → QCM-n] l'écran, le geste, ce qui est attendu (la scène de la maquette), ce qui est vu` — rayé par QCM-4 quand le banc le voit corrigé.
 
-## Essai du 12/10 à 18:50, sur une copie de l'app où les deux bloquants de 18:10 sont contournés (dans le banc seulement : `LIVE` renommé dans la copie, `|| {}` dans `Lancement`)
+## Essai du 12/10 à 18:40, sur une copie de l'app où les deux bloquants de 18:10 sont contournés (dans le banc seulement : `LIVE` renommé dans la copie, `|| {}` dans `Lancement`)
 
 Pour voir la suite de l'heure avant qu'ils soient corrigés. Le lancement, l'appel, l'entrée des 24 au code, la première attestation, Q1 et Q2 à leurs deux tours avec B, et « 🔓 Rouvrir pour Théo » passent par le geste. Puis :
 

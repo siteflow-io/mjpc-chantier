@@ -255,6 +255,8 @@ function rendre(){
   window.SCENE_PRETE = id;
 }
 LIVE.abonner(rendre);
+// une tablette rechargée annonce de nouveau ses élèves (la présence), une fois la base lue
+if(LIVE.appareil() === "tablette"){ var presenceFaite = false; LIVE.abonner(function(){ if(!presenceFaite && LIVE.pret){ presenceFaite = true; ELV.presence(); } }); }
 window.addEventListener("hashchange", rendre);
 LIVE.demarrer();
 if(["console", "telephone", "tableau"].indexOf(LIVE.appareil()) >= 0) MOTEUR.demarrer(); else if(LIVE.appareil() === "tablette") MOTEUR.demarrer(true);

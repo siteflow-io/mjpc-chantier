@@ -687,8 +687,20 @@ var ELV = (function(){
   var E = {tab:null, cotes:{}};
   // la tablette : son numéro (celui du premier élève entré), ses moitiés ; gardés sur l'appareil pour tenir un rechargement
   try { var t = JSON.parse(localStorage.getItem("qcm_tablette") || "null"); if(t){ E.tab = t.tab; E.cotes = t.cotes || {}; E.n = t.n || null; E.sid = t.sid || null; if(t.classe) LIVE.classeSlug = t.classe; } } catch(e){}
-  function garder(){ if(SCN.sid()) E.sid = SCN.sid(); try { localStorage.setItem("qcm_tablette", JSON.stringify({tab:E.tab, cotes:E.cotes, n:E.n, sid:E.sid, classe:LIVE.classeSlug})); } catch(e){} LIVE.changer(); }
-  E.oublier = function(){ E.tab = null; E.cotes = {}; E.n = null; try { localStorage.removeItem("qcm_tablette"); } catch(e){} LIVE.changer(); };
+  function garder(){ if(SCN.sid()) E.sid = SCN.sid(); if(typeof presence === "function") setTimeout(presence, 0); try { localStorage.setItem("qcm_tablette", JSON.stringify({tab:E.tab, cotes:E.cotes, n:E.n, sid:E.sid, classe:LIVE.classeSlug})); } catch(e){} LIVE.changer(); }
+  E.oublier = function(){ E.tab = null; E.cotes = {}; E.n = null; try { localStorage.removeItem("qcm_tablette"); } catch(e){} presence(); LIVE.changer(); };
+  /* La présence (la 7.7.1, EleveSession, l. 2781 à 2787) : qcm/presence/<classe>/<élève> = {nomComplet, last}, mise à jour toutes les 8 s,
+     effacée quand la tablette se déconnecte ou oublie l'élève */
+  var PRES = {};
+  function presence(){
+    if(!db) return; var cl = LIVE.classeSlug || SCN.classe(), voulus = {};
+    if(cl) [E.cotes.g, E.cotes.d].forEach(function(x){ if(x) voulus[x] = 1; });
+    Object.keys(PRES).forEach(function(k){ if(!voulus[k.split("|")[1]] || k.split("|")[0] !== cl){ try { db.ref(DB_ROOT + "/presence/" + k.split("|")[0] + "/" + k.split("|")[1]).remove(); } catch(e){} delete PRES[k]; } });
+    Object.keys(voulus).forEach(function(x){ var k = cl + "|" + x; if(PRES[k]) return; var ref = db.ref(DB_ROOT + "/presence/" + cl + "/" + x);
+      ref.set({nomComplet:SCN.nomDe(x), last:Date.now()}); try { ref.onDisconnect().remove(); } catch(e){} PRES[k] = ref; });
+  }
+  setInterval(function(){ Object.keys(PRES).forEach(function(k){ try { PRES[k].update({last:Date.now()}); } catch(e){} }); }, 8000);
+  E.presence = presence;
   E.courant = null;
   // qui est sur cet appareil : {combien, n (la tablette), g, d (les slugs des deux moitiés), classe}
   E.ici = function(){ return {combien:E.n || null, n:E.tab || null, g:E.cotes.g || null, d:E.cotes.d || null, classe:LIVE.classeSlug || null}; };

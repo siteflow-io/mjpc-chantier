@@ -64,6 +64,8 @@ function verif(ok, quoi, detail){ nb++; if(!ok) ko++; R.push((ok ? "  ok     " :
     r = await tab.evaluate(c => ELV.entrer("d", c, "léa", "baudry"), code("BAUDRY Léa"));
     verif(r.ok && r.eleve === "baudry_lea" && r.cote === "d", "Léa, dans l'autre moitié", r);
     verif(!!base("sessions/" + sid + "/entres/abrial_julien"), "l'entrée se lit dans la base (entres)");
+    await pause(300);
+    verif(!!base("presence/3 ESSAI/abrial_julien") && !!base("presence/3 ESSAI/baudry_lea"), "la présence de la 7.7.1 (qcm/presence/<classe>/<élève>)", base("presence"));
     // les attestations : Julien et Léa ; les autres présents sont simulés directement par ELV, avec leur slug
     const presents = await prof.evaluate(() => SCN.presents());
     verif(presents.length === 24, "SCN.presents : 24", presents.length);

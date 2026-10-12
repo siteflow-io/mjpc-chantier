@@ -347,8 +347,10 @@ function MoitieH(p, cote, autreP){
   if(ph === "estim") return EcrEstim(e, ESTIM[p] || null);
   if(ph === "att2"){
     var a2 = attestH(p, 2);
-    return a2.fini ? EcrAttenteCorr(e) : h(AttestCoches, {key:"a2" + p, e:e, lignes:LignesAttest2(e, e.voisin), n0:a2.lignes, attest:2, fini:a2.fini, titre:"Avant la correction, " + e.prenom, bouton:"Je commence la correction", titrePage:"📝 Correction", pret:function(){ return EcrAttenteCorr(e); }});
+    return a2.fini ? EcrAttenteCorr(e) : h(AttestCoches, {key:"a2" + p, e:e, lignes:papierH() ? LignesAttest2Papier() : LignesAttest2(e, e.voisin), n0:a2.lignes, attest:2, fini:a2.fini, titre:"Avant la correction, " + e.prenom, bouton:"Je commence la correction", titrePage:"📝 Correction", pret:function(){ return EcrAttenteCorr(e); }});
   }
+  // sur papier (t-papier-correction) : pas de lecture du voisin ; la réponse quand Paul révèle
+  if(papierH() && (ph === "lecture" || ph === "revele")) return ph === "revele" ? EcrRevele(e, qi, {papier:true}) : EcrAttente(e);
   if(ph === "lecture") return v && !seul ? EcrLecture(e, qi, !!SCN.lecture(p, qi), reste) : EcrLectureSeulH(e, qi, reste);
   if(ph === "revele") return EcrRevele(e, qi);
   if(ph === "coeval") return v && !seul ? CoevalH(e) : Page(badgeDe(e), "📝 Correction", h("div", {className:"co-attente"}, "⏳ Attends ton bilan…"));

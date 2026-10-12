@@ -303,6 +303,26 @@ function PilotCorrectionH(){
     : pasLu.length ? h("button", {className:"btn btn-or ferme", disabled:true, title:"« 💡 Révéler » s'ouvre quand les " + pres + " présents ont lu la feuille de leur voisin. Il en manque " + pasLu.length + "."}, "🔒 Révéler")
     : h("button", Object.assign({className:"btn btn-or", title:"Montre la bonne réponse et l'explication sur toutes les tablettes et au tableau. Commente la question après, jamais avant."}, geste(null, "reveler")), "💡 Révéler");
   var prec = pos > 0 ? ordre[pos - 1] : null;
+  // (c-papier-correction) une séance sur papier : pas de lecture du voisin ; la grille du soir, « 💡 Révéler » ouvert tout de suite
+  if(papierH()){
+    var precB = prec == null ? fermeEnv("C'est la première question de la correction : il n'y a pas de question précédente.", hBase("button", {className:"btn btn-ghost", disabled:true, title:PREC_771}, "← Question précédente"))
+      : h("button", Object.assign({className:"btn btn-ghost", title:PREC_771}, geste(null, "questionPrecedente")), "← Question précédente");
+    var revP = revele ? h("button", {className:"btn btn-ghost", disabled:true, title:"Cette question est déjà révélée sur toutes les tablettes."}, "💡 Révélée")
+      : h("button", Object.assign({className:"btn btn-or", title:"Sur papier, « Révéler » s'ouvre tout de suite : il n'y a pas de lecture du voisin."}, geste(null, "reveler")), "💡 Révéler");
+    var suivP = !revele && !derniere ? h("button", {className:"btn btn-primary", disabled:true, title:"S'ouvre quand cette question est révélée."}, "Question suivante →") : suivant;
+    return Console("pilotage", "pilot", h("div", {className:"card"},
+      TitreCarte(h(F, null, "📝 Correction sur papier — " + EV.titre + " — " + CLASSE, InfoI("Sur papier, il n'y a pas de lecture du voisin : chaque moitié montre ce que ta grille a retenu de la feuille, puis la réponse quand tu révèles. Jamais « Trouvée au dernier moment ». Le point d'autonomie ne se retire qu'en direct, d'un clic sur le nom.")),
+        boutonsTete()),
+      h("div", {className:"pilot-status correction"}, "Question " + (pos + 1) + " / " + ordre.length + " — Q" + (qi + 1) + " · toutes les corrections à la suite, dans l'ordre des erreurs de ta grille"),
+      h("div", {className:"corr-grid"},
+        h("div", null,
+          h("div", {className:"pilot-q-current"}, h("div", {className:"num"}, "Question " + (qi + 1)), h("div", {className:"enonce"}, q.enonce),
+            h("div", {className:"pilot-q-bonne"}, h("span", {style:{fontWeight:900}}, "✓ Bonnes réponses : "), q.bonnes.map(function(i){ return q.choix[i]; }).join("  /  "))),
+          h("div", {className:"row", style:{marginTop:".8rem"}}, precB, revP, suivP)),
+        h("div", {className:"suivi-box"}, h("h3", null, "📄 D'après ta grille", InfoI("Chaque moitié : la question d'après ta grille du soir. Un clic sur un nom agit sur l'élève.")),
+          GrilleTablettes(PAIRES, function(p){ var j = calc(p).st[qi] === "j"; return {cls:j ? "m-juste" : "m-faux", st:j ? "✓ 1 pt" : "✗ 0", va:"c-autonomie", titre:"Clique sur le nom : « ⛔ Retirer le point d'autonomie »."}; }),
+          Legende([["#22C55E","✓ juste d'après ta grille"],["#EF4444","✗ faux d'après ta grille"]])))), true);
+  }
   return Console("pilotage", "pilot", h("div", {className:"card"},
     TitreCarte(h(F, null, "📝 Correction — " + EV.titre + " — " + CLASSE, InfoI("Pour chaque question, chacun lit d'abord la feuille de son voisin et clique ce qu'elle dit, dans la moitié du voisin. « 💡 Révéler » s'ouvre quand tous les présents l'ont fait. Tu commentes la question après la révélation, jamais avant : sinon, ils cliqueraient ce que tu dis. Les questions vont de la plus ratée à la mieux réussie. Un clic sur un nom agit sur l'élève.")),
       boutonsTete()),

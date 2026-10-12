@@ -127,8 +127,8 @@ function EcrLectureSeul(){
 function EcrRevele(e, qi, opts){
   opts = opts || {};
   var q = EV.questions[qi], ordre = ORD[qi][e.cle], tab = TABL[e.cle][qi];
-  var lu = opts.papier ? FEUI[e.cle][qi] : LU[e.cle][qi], luArr = lu === "aucun" ? [] : lu;
-  var st = opts.papier ? (FEUI[e.cle][qi] === "aucun" ? "a" : calc(cleE(e)).st[qi] === "t" ? "f" : calc(cleE(e)).st[qi]) : calc(cleE(e)).st[qi];
+  var lu = opts.papier ? (FEUI[e.cle] || [])[qi] : (LU[e.cle] || [])[qi], luArr = lu === "aucun" || !lu ? [] : lu;
+  var st = opts.papier ? ((FEUI[e.cle] || [])[qi] === "aucun" ? "a" : calc(cleE(e)).st[qi] === "t" ? "f" : calc(cleE(e)).st[qi]) : calc(cleE(e)).st[qi];
   var pos = ORDRE_CORR.indexOf(qi), juste = st === "j", trouvee = st === "t";
   var pa = opts.papier ? EV.questions.map(function(x, i){ var p = ORDRE_CORR.indexOf(i); if(p > pos) return {cls:"vide", t:String(i+1)}; var s = i === qi ? st : (calc(cleE(e)).st[i] === "j" ? "j" : "f"); return s === "j" ? {cls:"juste", t:"✅"} : {cls:"faux", t:"❌"}; }) : pastilles3(e, pos + 1);
   return Page(badgeDe(e), "📝 Correction", h(F, null,

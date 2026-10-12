@@ -103,6 +103,8 @@ function numQH(qi, ev){ var tot = (ev || EV).questions.length; if(!enDirect() ||
   var ec = (momH().ecartees || []).map(Number); return {n:qi + 1 - ec.filter(function(x){ return x < qi; }).length, N:tot - ec.length}; }
 // (QCM-3, « 💬 Ce que lisent les élèves ») en direct, le texte réglé par Paul (texteEleveV) ; sinon celui de la maquette
 function texteH(cle, defaut){ if(enDirect() && typeof texteEleveV === "function"){ try { return texteEleveV(cle) || defaut; } catch(x){} } return defaut; }
+// la séance en cours est-elle sur papier ? (la phase papier, puis sa correction à l'heure suivante)
+function papierH(){ if(!enDirect()) return false; var m = momH(); if(m.papier) return true; var s = SCN.sess() || {}; return ((s.lancee || {}).mode === "papier"); }
 function marqueH(cle, fn){ H2_FN[cle] = fn; return {"data-local":"1", "data-h2":cle}; }
 // un bouton qui agit sur place : en direct, par sa clé ; dans la maquette, son onClick (composant à état)
 function clic(cle, fn){ return enDirect() ? marqueH(cle, fn) : {"data-local":"1", onClick:fn}; }

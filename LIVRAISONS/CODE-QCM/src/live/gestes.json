@@ -71,12 +71,12 @@
   {
    "depart": "c-estim",
    "geste": "📝 Lancer la correction",
-   "action": "ACT.lancerCorrection() : l'ordre de correction se fixe, phase « att2 » (la seconde attestation)"
+   "action": "ACT.lancerCorrection() : l'ordre de correction se fixe, phase « att2 » (la seconde attestation) ; quand tous l'ont cochée, la lecture de la première question commence d'elle-même (MOTEUR)"
   },
   {
    "depart": "c-attest2",
    "geste": "▶️ Commencer la correction",
-   "action": "ACT.lancerCorrection() en « att2 » (ouvert quand tous les présents ont coché la seconde attestation) : la lecture de la première question de l'ordre"
+   "action": "ACT.lancerCorrection() en « att2 » : la lecture de la première question de l'ordre, tout de suite (elle vient d'elle-même quand tous ont coché)"
   },
   {
    "depart": "c-corr-q2-lu",

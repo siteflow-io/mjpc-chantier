@@ -37,15 +37,35 @@ var SCN = (function(){
   // les évaluations du hub, lues le 08/10 (src/donnees/evaluations_hub.json) : sans chapitre, donc « Sans chapitre », à compléter
   var CREE = {eval_1791393134857:"07/10/2026", eval_1791380799497:"07/10/2026", eval_1785934338415:"05/08/2026", eval_1781760503989:"18/06/2026",
     eval_1781670681003:"17/06/2026", eval_1779946950077:"28/05/2026", eval_1778247436064:"08/05/2026"};
-  S.evals = function(){
-    var l = [S.EV_ESSAI];
-    Object.keys(HUB_EVALS).sort(function(a, b){ return HUB_EVALS[b].createdAt - HUB_EVALS[a].createdAt; }).forEach(function(k){
-      var e = HUB_EVALS[k];
-      l.push({id:k, titre:e.titre, mode:null, chap:null, niveau:null, cree:CREE[k], competences:[], questions:e.questions.map(function(q){ return Object.assign({reflexion:null, reponse:null, competences:[]}, q); })});
+  /* (complément 4, correction 1.5) L'évaluation de 3e, complétée avant d'être passée. Au hub, le 08/10, elle n'a ni chapitre ni compétences ;
+     la classe la passe le 09/10 à 15:07, et son PDF, validé par Paul (points 602 à 609), lui donne le chapitre 1 de 3e et ses deux compétences.
+     Le scénario porte ce que l'histoire suppose : Paul l'a complétée le 09/10, avant la séance ; avant ce moment elle reste « à compléter ».
+     Ce qu'elle vérifie, question par question, et ses compétences sont ceux du PDF (MANDATS/MAQUETTE-QCM-FLUX/pdf-632/gen632.js, VERIF et COMPS).
+     Ses temps ne s'affichent qu'à l'éditeur : la réflexion, celle que Paul a réglée pour chaque niveau (10, 15, 20, 30 s : CADRAGE-QCM.md, l. 37),
+     la réponse, 20 s, celle d'une question standard de l'évaluation d'essai. */
+  S.EV3_COMPLETEE = {quand:"09/10/2026 12:45", chap:"3e · Ch. 1 — Poésie et peinture au XIXe siècle", niveau:"3e", mode:"strict",
+    reflexion:{facile:10, standard:15, approfondi:20, expert:30}, reponse:20,
+    competences:[["c4-langue-04"], ["c4-langue-04"], ["c4-langue-04"], ["c4-langue-04"], ["c4-langue-04", "c4-ecrire-02"], ["c4-langue-04", "c4-ecrire-02"],
+      ["c4-langue-04", "c4-ecrire-02"], ["c4-langue-04", "c4-ecrire-02"], ["c4-langue-04", "c4-ecrire-02"], ["c4-langue-04", "c4-ecrire-02"], ["c4-langue-04"]],
+    verifie:["dire quand la principale se coupe en deux (DPP et FPP)", "dire ce qui peut être un antécédent", "trouver l'antécédent d'un pronom relatif",
+      "dire que faire du « et » entre deux relatives coordonnées", "écrire une phrase P.P + PSR 1 + PSR 2", "écrire une phrase DPP + PSR + FPP",
+      "écrire une phrase P.I : P.P + PSR", "employer un pronom relatif composé", "séparer une principale d'une indépendante par le bon signe",
+      "compter les verbes conjugués d'une phrase complexe", "trouver l'architecture d'une phrase complexe"]};
+  function momentCle(k){ var m = M[k]; return m ? cle(m.date, m.heure) : null; }
+  S.complete3e = function(k){ var c = momentCle(k), q = S.EV3_COMPLETEE.quand.split(" "); return !!c && c >= cle(q[0], q[1]); };
+  // les évaluations au moment k (celui de la scène, dans la page) : l'évaluation de 3e est complétée à partir du 09/10, 12:45
+  S.evals = function(k){
+    if(k === undefined && typeof window !== "undefined") k = window.MOMENT_COURANT;
+    var l = [S.EV_ESSAI], C3 = S.EV3_COMPLETEE;
+    Object.keys(HUB_EVALS).sort(function(a, b){ return HUB_EVALS[b].createdAt - HUB_EVALS[a].createdAt; }).forEach(function(id){
+      var e = HUB_EVALS[id];
+      if(id === S.ID_3E && S.complete3e(k)) l.push({id:id, titre:e.titre, mode:C3.mode, chap:C3.chap, niveau:C3.niveau, cree:CREE[id], competences:["c4-langue-04", "c4-ecrire-02"],
+        questions:e.questions.map(function(q, i){ return Object.assign({}, q, {reflexion:C3.reflexion[q.niveau], reponse:C3.reponse, competences:C3.competences[i].slice(), verifie:C3.verifie[i]}); })});
+      else l.push({id:id, titre:e.titre, mode:null, chap:null, niveau:null, cree:CREE[id], competences:[], questions:e.questions.map(function(q){ return Object.assign({reflexion:null, reponse:null, competences:[]}, q); })});
     });
     return l;
   };
-  S.evalParId = function(id){ if(id === "demo") return S.DEMO; return S.evals().filter(function(e){ return e.id === id; })[0] || null; };
+  S.evalParId = function(id, k){ if(id === "demo") return S.DEMO; if(id === "essai") return S.EV_ESSAI; return S.evals(k).filter(function(e){ return e.id === id; })[0] || null; };
   S.ID_CH1 = "eval_1785934338415"; S.ID_JB = "eval_1778247436064"; S.ID_3E = "eval_1791393134857";
 
   /* ── La séance du 08/10 : ce que chacun a cliqué, écrit, dit, lu ── */
@@ -108,7 +128,7 @@ var SCN = (function(){
     {id:"DEMO", eval:"demo", classe:"3 ESSAI", date:"07/10/2026", heure:"10:02", mode:"tablettes", absents:["YVON Adam"], fin:"07/10/2026 10:41", demo:true},
     {id:"S08", eval:"essai", classe:"3 ESSAI", date:"08/10/2026", heure:"10:02", mode:"tablettes", absents:["YVON Adam"], fin:"08/10/2026 10:30", rendues:"10/10/2026 19:22"},
     {id:"PAP", eval:"essai", classe:"3 ESSAI", date:"09/10/2026", heure:"10:02", mode:"papier", absents:["YVON Adam"], fin:"10/10/2026 10:22", reprise:"10/10/2026 10:02"},
-    {id:"S3E", eval:S.ID_3E, classe:"3 ESSAI", date:"09/10/2026", heure:"15:07", mode:"tablettes", absents:["YVON Adam"], fin:"09/10/2026 15:58", rendues:"10/10/2026 19:18", aLire:5},
+    {id:"S3E", eval:S.ID_3E, classe:"3 ESSAI", date:"09/10/2026", heure:"15:07", mode:"tablettes", absents:["YVON Adam"], fin:"09/10/2026 15:58", rendues:"10/10/2026 19:18", aLire:4},
     {id:"RATT", eval:"essai", classe:"3 ESSAI", date:"12/10/2026", heure:"10:02", mode:"tablettes", eleves:["YVON Adam"], rattrapage:true}
   ];
   S.seance = function(id){ return S.SEANCES.filter(function(x){ return x.id === id; })[0]; };
@@ -180,6 +200,7 @@ var SCN = (function(){
   mom("PAP:att2", "PAP", "10/10/2026", "10:07", {ph:"att2", etape:"la seconde attestation"});
   mom("PAP:corr:Q2", "PAP", "10/10/2026", "10:09", {ph:"revele", qi:1, etape:"correction · Q2"});
   mom("RATT:avant", "RATT", "12/10/2026", "10:01", {ph:"avant", etape:"avant l'heure"});
+  mom("RATT:appel", "RATT", "12/10/2026", "10:02", {ph:"appel", etape:"l'appel"});
   mom("RATT:corr:Q2:L", "RATT", "12/10/2026", "10:12", {ph:"lecture", qi:1, reste:12, etape:"correction · Q2 · lecture"});
   mom("TEST:avant", "TEST", "10/10/2026", "17:00", {ph:"avant", etape:"avant l'heure"});
   mom("TEST:Q3:R", "TEST", "10/10/2026", "17:10", {ph:"reflexion", qi:2, reste:18, etape:"Q3 · réflexion"});
@@ -302,7 +323,8 @@ var SCN = (function(){
   };
   // sur papier (467) : la note, c'est ta grille, d'après la feuille ; jamais « Trouvée au dernier moment » ; la grille se remplit le soir
   S.notePapier = function(p, k){
-    var connue = ["PAP:grille", "PAP:reprise", "PAP:estim", "PAP:att2", "PAP:corr:Q2"].indexOf(k) >= 0, f = S.feuilleVraie(p);
+    // (complément 4, correction 1) la grille est remplie le soir du 09/10 (PAP:grille) : à partir de là, à tout moment, les notes sont connues
+    var connue = !!momentCle(k) && momentCle(k) >= momentCle("PAP:grille"), f = S.feuilleVraie(p);
     var st = [0, 1, 2].map(function(q){ return !connue ? "n" : f[q] === "J" ? "j" : f[q] === "A" ? "a" : "f"; });
     var pts = st.map(function(x){ return x === "n" ? null : x === "j" ? 1 : 0; }), n = pts.reduce(function(a, b){ return a + (b || 0); }, 0);
     var comp = {}; S.EV_ESSAI.questions.forEach(function(qq, qi){ qq.competences.forEach(function(c){ comp[c] = comp[c] || {n:0, max:0}; comp[c].max++; comp[c].n += (pts[qi] || 0); }); });
@@ -338,7 +360,8 @@ var SCN = (function(){
   };
 
   /* ── Les comptes de la console, au moment k ── */
-  S.presents = function(k){ var m = M[k] || {}; var p = [].concat.apply([], S.PAIRES).filter(Boolean).map(pre); return p.filter(function(x){ return !(m.partis && m.partis[x]); }); };
+  // (complément 4, correction 3) une séance qui a ses propres élèves (le rattrapage) : ce sont eux, et eux seuls, les présents
+  S.presents = function(k){ var m = M[k] || {}, se = m.seance && S.seance(m.seance); var p = se && se.eleves ? se.eleves.map(pre) : [].concat.apply([], S.PAIRES).filter(Boolean).map(pre); return p.filter(function(x){ return !(m.partis && m.partis[x]); }); };
   S.cote = function(p){ var t = S.tabletteDe(p); return t ? t.cote : null; };
   S.premierCote = function(qi){ return S.PREMIER[qi] === "J" ? "g" : "d"; };
   // ceux qui ont répondu à la question qi au moment k
@@ -361,7 +384,8 @@ var SCN = (function(){
     var m = M[k] || {}, pres = S.presents(k), qi = m.qi;
     if(m.seance === "TEST") return S.compteursTest(k);
     var ec = m.ecartees || [], nbQ = 3 - ec.length;
-    var o = {presents:pres.length, absents:1, inscrits:25, nbQ:nbQ};
+    var se = m.seance && S.seance(m.seance), propres = !!(se && se.eleves);
+    var o = {presents:pres.length, absents:propres ? (se.absents || []).length : 1, inscrits:propres ? se.eleves.length : 25, nbQ:nbQ};
     if(qi != null && ["reflexion", "reponse", "close", "b", "passage", "rouvert"].indexOf(m.ph) >= 0){
       var rep = S.repondu(qi, k), pc = S.premierCote(qi);
       var attendu = (m.ph === "reponse" && m.tour === 1) ? pres.filter(function(p){ return S.cote(p) === pc; }).length : pres.length;
@@ -469,6 +493,48 @@ var SCN = (function(){
     var n = la.filter(function(c){ return c === "J" || c === "T"; }).length, sur20 = n * 20 / la.length; return {n:n, total:la.length, sur20:sur20, maitrise:S.maitriseDe(Math.round(sur20 * 10) / 10)}; }
   S.note3e = function(nom){ return noteDe(S.R_3E[nom]); };
   S.noteSeance = function(id, nom){ return noteDe((id === "JB" ? S.R_JB : id === "CH1" ? S.R_CH1 : id === "S3E" ? S.R_3E : {})[nom]); };
+
+  /* ── (complément 4, corrections 1 et 2) Chaque séance, ses résultats au moment k : un seul calcul, pour le tableau, la fiche et le PDF ── */
+  // la séance de 3e : la fourchette que chacun a estimée (444), celle du PDF validé (gen632.js, ESTIM) ; Noah, parti, ne l'a pas faite
+  S.ESTIM_3E = {"ABRIAL Julien":"vert","BAUDRY Léa":"vert","BRUNEAU Camille":"bleu","CARRÉ Tom":"rouge","CHEVALLIER Théo":"bleu","DUVERNAY Michel":"vert",
+    "ESNAULT Inès":"bleu","FOUCHER Hugo":"bleu","GALLOIS Manon":"vert","HÉBRARD Nathan":"orange","ISAMBERT Chloé":"vert","JOUBERT Louis":"orange","LACOMBE Emma":"vert",
+    "NOGARET Zoé":"bleu","OLLIVIER Sacha":"bleu","PERRAUD Jade":"vert","QUINTON Enzo":"orange","RAMBAUD Lina":"vert","SABATIER Malo":"bleu","TESSIER Anna":"rouge",
+    "VALLÉE Rayan":"bleu","WEBER Clara":"vert","ZELLER Lou":"orange"};
+  // les feuilles à lire de la séance de 3e : celles de sa console, à la co-évaluation (le cas ambigu, x610) ; Noah, parti après la question 7, n'y est pas
+  S.A_LIRE_3E = [
+    {p:"Jade", q:8, txt:"🤔 pense qu'Enzo a peut-être mal lu sa feuille ; elle dit avoir écrit : un point-virgule", sorte:"co"},
+    {p:"Enzo", q:0, txt:"aucun de ces choix", sorte:"aucun"},
+    {p:"Anna", q:1, txt:"a dit que sa feuille disait son clic, un nom et un pronom ; Rayan y a lu : un nom", sorte:"b"},
+    {p:"Tom", q:6, txt:"n'a pas dit si sa feuille disait son clic", sorte:"b"}];
+  // les points d'autonomie retirés à une séance : à la 3e, « ⛔ aux deux » au cas ambigu (S3E:coeval:T, 15:56) ; à celle du 08/10, ceux du scénario
+  S.retiresSeance = function(id, k){
+    if(id === "S08") return S.presents(k).filter(function(p){ return S.autonomie(p, k).retire; });
+    if(id === "S3E") return momentCle(k) && momentCle(k) >= momentCle("S3E:coeval:T") ? ["Julien", "Michel"] : [];
+    return [];
+  };
+  S.evalDeSeance = function(id, k){ var se = S.seance(id); return se.eval === "essai" ? S.EV_ESSAI : se.eval === "demo" ? S.DEMO : S.evalParId(se.eval, k); };
+  // le résultat d'un élève à une séance, au moment k : par question j (juste), t (trouvée au dernier moment), f (faux), a (aucun de ces choix),
+  // n (pas encore corrigée) ou x (pas posée : parti avant) ; sa note, ses compétences ; null s'il était absent
+  S.resultat = function(id, p, k){
+    var se = S.seance(id), nom = nomDe(p);
+    if((se.absents || []).indexOf(nom) >= 0 || (se.eleves && se.eleves.indexOf(nom) < 0)) return null;
+    if(id === "S08") return S.note(p, k);
+    if(id === "PAP") return S.notePapier(p, k);
+    var R = id === "S3E" ? S.R_3E : id === "CH1" ? S.R_CH1 : id === "JB" ? S.R_JB : null, r = R && R[nom];
+    if(!r) return null;
+    var ev = S.evalDeSeance(id, k), st = r.split("").map(function(c){ return c === "J" ? "j" : c === "T" ? "t" : c === "-" ? "x" : "f"; });
+    var pts = st.map(function(c){ return c === "x" ? null : c === "j" || c === "t" ? 1 : 0; }), compte = st.map(function(c, i){ return c === "x" ? -1 : i; }).filter(function(i){ return i >= 0; });
+    var n = compte.reduce(function(a, i){ return a + pts[i]; }, 0), total = compte.length, sur20 = total ? n * 20 / total : 0, comp = {};
+    ev.questions.forEach(function(q, qi){ if(compte.indexOf(qi) < 0) return; (q.competences || []).forEach(function(c){ comp[c] = comp[c] || {n:0, max:0}; comp[c].max++; comp[c].n += pts[qi]; }); });
+    return {p:p, st:st, pts:pts, n:n, total:total, complet:true, sur20:sur20, maitrise:S.maitriseDe(Math.round(sur20 * 10) / 10), comp:comp, corrigees:[], annulees:[], ecartees:[]};
+  };
+  // les feuilles à lire d'une séance, au moment k : à celle du 08/10, celles du scénario ; à la 3e, celles de sa co-évaluation, lues quand ses copies sont rendues
+  S.aLireSeance = function(id, k){
+    if(id === "S08") return S.aLire(k);
+    var se = S.seance(id), lues = S.rendueAu(id, k);
+    if(id === "S3E" && momentCle(k) >= momentCle("S3E:coeval")) return S.A_LIRE_3E.map(function(x){ return Object.assign({}, x, {nom:nomDe(x.p), lue:lues, corrigee:false}); });
+    return [];
+  };
 
   /* ── Ce qu'une élève voit dans « Mes évaluations », au moment k ── */
   S.mesEvaluations = function(p, k){

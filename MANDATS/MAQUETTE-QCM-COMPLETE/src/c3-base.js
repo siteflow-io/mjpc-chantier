@@ -20,6 +20,10 @@ PAIRES_AVANT = SCN.PAIRES_AVANT; PAIRES = SCN.PAIRES; CO = SCN.CO; DIT_B = SCN.D
 // les élèves présents, sans les valeurs d'hier : la liste des prénoms vient des binômes
 RF = {}; SCN.presents("S08:Q1:R").forEach(function(p){ RF[p] = ""; });
 function nomDe(p){ return SCN.nomDe(p); }
+// (complément 4, correction 3) les tablettes d'une séance qui a ses propres élèves (le rattrapage) : chacun seul sur la sienne
+function pairesDuMoment(){ var se = SCN.seance(MOM().seance); return se && se.eleves ? se.eleves.map(function(n){ return [n, null]; }) : PAIRES; }
+// (complément 4, correction 5) le côté qui répond à un tour : au 1er tour, celui qui commence la question (PREMIER) ; au 2e, l'autre
+function coteDuTour(qi, tour){ return (PREMIER[qi] === "J") === (tour === 1) ? "g" : "d"; }
 // l'élision devant un nom (changement 8) : « de Inès » s'écrit « d'Inès », « que Émile », « qu'Émile »
 function voyelle(n){ n = String(n || ""); return /^[AEIOUYÉÈÊÀÂÎÔÛaeiouyéèêàâîôû]/.test(n) || /^[Hh]/.test(n) && !/^(Hugo|haut|hors|huit|hasard|héros|hâte)/i.test(n); }
 function deNom(n){ return (voyelle(n) ? "d'" : "de ") + n; }
@@ -56,7 +60,7 @@ function etatQuestion(s){
     if(partis[p]) return {cls:"m-parti", st:"🚪 parti à " + partis[p]};
     if(s.reflexion) return {cls:"m-ecrit", st:"✍️ écrit"};
     if(s.fini) return sansRep.indexOf(p) >= 0 ? {cls:"m-pasrep", st:"⏳ pas de réponse"} : couleur(p, s.qi, false);
-    var estPremier = cote === (PREMIER[s.qi] === "J" ? "g" : "d");
+    var estPremier = cote === coteDuTour(s.qi, 1);
     if(s.tour === 1 && !estPremier) return {cls:"m-voile", st:"🙈 attend son tour"};
     if(s.tour === 2 && estPremier) return couleur(p, s.qi, true);
     if(nonRep.indexOf(p) >= 0) return {cls:"m-repond", st:"✋ répond…"};

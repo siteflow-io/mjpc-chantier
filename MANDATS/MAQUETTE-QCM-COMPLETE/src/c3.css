@@ -6,7 +6,8 @@
 .classe-titre{font-weight:800;color:var(--violet);margin:.5rem 0 .3rem;font-size:.92rem}
 .niv-groupe{margin-bottom:.4rem}
 .niv-vide{color:var(--gris);font-style:italic;padding:.3rem .7rem}
-.tel-st-l{font-size:.75rem;font-weight:800;color:var(--gris);margin:.3rem 0 .15rem}
+/* (complément 4, correction 7) posée sur le fond violet du téléphone : le blanc de ses autres textes (.tel-liste-h, .tel-leg), pas le gris */
+.tel-st-l{font-size:.75rem;font-weight:800;color:#fff;margin:.3rem 0 .15rem}
 .bilan-imprime-eval{font-weight:800;color:var(--violet);margin:.2rem 0 .6rem;font-size:.95rem}
 .tablette.seule .moitie{flex:1 1 100%;max-width:none}
 div.eleve-btn{cursor:default}

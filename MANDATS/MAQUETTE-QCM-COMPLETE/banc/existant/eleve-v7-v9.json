@@ -1,0 +1,3544 @@
+{
+ "titre": "Les textes vus par l'élève qui diffèrent entre la v7 et la v9 (complément 4, garde 20)",
+ "raisons": [
+  "typographie",
+  "retouche 778",
+  "émoji décoratif retiré",
+  "texte lu en entier",
+  "donnée du scénario",
+  "élément de la 7.7.1",
+  "geste qui se voit",
+  "correction 4"
+ ],
+ "source": "AUDITS/MAQUETTE-QCM-COMPLEMENT-3-12-10/sorties/eleve-v7-v8.txt, chaque ligne classée ; retirées : le chrono d'Adam seul (correction 6) et la règle du désaccord dans les huit moitiés où elle était seule (correction 8)",
+ "lignes": [
+  {
+   "scene": "b-recopie",
+   "vue": 1280,
+   "bloc": "doc0",
+   "v7": "Temps de réponse",
+   "v9": "📄 Temps pour lire la feuille du voisin",
+   "raison": "retouche 778 : le chrono de la lecture, « 📄 Temps pour lire la feuille du voisin »"
+  },
+  {
+   "scene": "e-bilan-lou",
+   "vue": 390,
+   "bloc": "doc0",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "e-bilan-lou",
+   "vue": 390,
+   "bloc": "doc0",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "e-bilan-lou",
+   "vue": 390,
+   "bloc": "doc0",
+   "v7": "✨",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "e-bilan-lou",
+   "vue": 390,
+   "bloc": "doc0",
+   "v7": "💡",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "e-bilan-lou",
+   "vue": 390,
+   "bloc": "doc0",
+   "v7": "🎲",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "e-bilan-lou",
+   "vue": 390,
+   "bloc": "doc0",
+   "v7": "🔥",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "e-mes-evals-rendue",
+   "vue": 1280,
+   "bloc": "doc0",
+   "v7": null,
+   "v9": "3e- éval 1 Analyse logique - Construire une phrase complexe",
+   "raison": "donnée du scénario (complément 3, changement 5) : la ligne de la séance de 3e du 09/10 dans « Mes évaluations » de Lou"
+  },
+  {
+   "scene": "e-mes-evals-rendue",
+   "vue": 1280,
+   "bloc": "doc0",
+   "v7": null,
+   "v9": "09/10/2026 · 6 / 11 · 10,9 / 20 · 🔵 Maîtrise satisfaisante",
+   "raison": "donnée du scénario (complément 3, changement 5) : la ligne de la séance de 3e du 09/10 dans « Mes évaluations » de Lou"
+  },
+  {
+   "scene": "e-mes-evals-rendue",
+   "vue": 390,
+   "bloc": "doc0",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "e-mes-evals-rendue",
+   "vue": 390,
+   "bloc": "doc0",
+   "v7": "✨",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "e-mes-evals-rendue",
+   "vue": 390,
+   "bloc": "doc0",
+   "v7": "🎲",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "e-mes-evals-rendue",
+   "vue": 390,
+   "bloc": "doc0",
+   "v7": "🔥",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "e-mes-evals-rendue",
+   "vue": 390,
+   "bloc": "doc0",
+   "v7": null,
+   "v9": "3e- éval 1 Analyse logique - Construire une phrase complexe",
+   "raison": "donnée du scénario (complément 3, changement 5) : la ligne de la séance de 3e du 09/10 dans « Mes évaluations » de Lou"
+  },
+  {
+   "scene": "e-mes-evals-rendue",
+   "vue": 390,
+   "bloc": "doc0",
+   "v7": null,
+   "v9": "09/10/2026 · 6 / 11 · 10,9 / 20 · 🔵 Maîtrise satisfaisante",
+   "raison": "donnée du scénario (complément 3, changement 5) : la ligne de la séance de 3e du 09/10 dans « Mes évaluations » de Lou"
+  },
+  {
+   "scene": "e-mes-evals",
+   "vue": 1280,
+   "bloc": "doc0",
+   "v7": null,
+   "v9": "En relecture : ta note sera visible quand ta copie te sera rendue",
+   "raison": "donnée du scénario (complément 3, changement 5) : la ligne de la séance de 3e du 09/10 dans « Mes évaluations » de Lou"
+  },
+  {
+   "scene": "e-mes-evals",
+   "vue": 1280,
+   "bloc": "doc0",
+   "v7": null,
+   "v9": "3e- éval 1 Analyse logique - Construire une phrase complexe",
+   "raison": "donnée du scénario (complément 3, changement 5) : la ligne de la séance de 3e du 09/10 dans « Mes évaluations » de Lou"
+  },
+  {
+   "scene": "e-mes-evals",
+   "vue": 390,
+   "bloc": "doc0",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "e-mes-evals",
+   "vue": 390,
+   "bloc": "doc0",
+   "v7": "✨",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "e-mes-evals",
+   "vue": 390,
+   "bloc": "doc0",
+   "v7": "🎲",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "e-mes-evals",
+   "vue": 390,
+   "bloc": "doc0",
+   "v7": "🔥",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "e-mes-evals",
+   "vue": 390,
+   "bloc": "doc0",
+   "v7": null,
+   "v9": "En relecture : ta note sera visible quand ta copie te sera rendue",
+   "raison": "donnée du scénario (complément 3, changement 5) : la ligne de la séance de 3e du 09/10 dans « Mes évaluations » de Lou"
+  },
+  {
+   "scene": "e-mes-evals",
+   "vue": 390,
+   "bloc": "doc0",
+   "v7": null,
+   "v9": "3e- éval 1 Analyse logique - Construire une phrase complexe",
+   "raison": "donnée du scénario (complément 3, changement 5) : la ligne de la séance de 3e du 09/10 dans « Mes évaluations » de Lou"
+  },
+  {
+   "scene": "t-annexe",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-annexe",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-annexe",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "✨",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-annexe",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "💡",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-annexe",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎲",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-annexe",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🔥",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-attest-1",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-attest-1",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-attest-1",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-attest-1",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-attest-2",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-attest-2",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-attest-2",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🎲",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-attest-2",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-attest-2",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-attest-2",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎲",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-attest-2",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🔥",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-attest-corr-fait",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-attest-corr-fait",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-attest-corr-fait",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🎲",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-attest-corr-fait",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-attest-corr-fait",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-bilan-annulee",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-bilan-annulee",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-bilan-annulee",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "✨",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-bilan-annulee",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "💡",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-bilan-annulee",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🎲",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-bilan-annulee",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🔥",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-bilan-annulee",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-bilan-annulee",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-bilan-annulee",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "✨",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-bilan-annulee",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎲",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-bilan-annulee",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🔥",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-bilan-imprime",
+   "vue": 1280,
+   "bloc": "doc0",
+   "v7": null,
+   "v9": "Évaluation d'essai — 3 questions · 08/10/2026",
+   "raison": "donnée du scénario (complément 3, changement 5) : l'évaluation et la date de la séance, en tête du bilan imprimé"
+  },
+  {
+   "scene": "t-bilan-imprime",
+   "vue": 390,
+   "bloc": "doc0",
+   "v7": null,
+   "v9": "Évaluation d'essai — 3 questions · 08/10/2026",
+   "raison": "donnée du scénario (complément 3, changement 5) : l'évaluation et la date de la séance, en tête du bilan imprimé"
+  },
+  {
+   "scene": "t-bilan-non-atteinte",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-bilan-non-atteinte",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-bilan-non-atteinte",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "✨",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-bilan-non-atteinte",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "💡",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-bilan-non-atteinte",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🎲",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-bilan-non-atteinte",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🔥",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-bilan-non-atteinte",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-bilan-non-atteinte",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-bilan-non-atteinte",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "✨",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-bilan-non-atteinte",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "💡",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-bilan-non-atteinte",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎲",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-bilan-non-atteinte",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🔥",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-bilan",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-bilan",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-bilan",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "✨",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-bilan",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "💡",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-bilan",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🎲",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-bilan",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🔥",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-bilan",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-bilan",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-bilan",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "✨",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-bilan",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "💡",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-bilan",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎲",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-bilan",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🔥",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-binome",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-binome",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-binome",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🎲",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-binome",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-binome",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-coeval-daccord",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-coeval-daccord",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-coeval-daccord",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🎲",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-coeval-daccord",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🔥",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-coeval-daccord",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "⏳ Attends ton bilan...",
+   "v9": "⏳ Attends ton bilan…",
+   "raison": "typographie (complément 3, §1.2) : « … » pour « ... », les espaces insécables"
+  },
+  {
+   "scene": "t-coeval-daccord",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-coeval-daccord",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-coeval-daccord",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎲",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-coeval-daccord",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🔥",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-coeval-ecrit",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "⏳ Attends ton bilan...",
+   "v9": "⏳ Attends ton bilan…",
+   "raison": "typographie (complément 3, §1.2) : « … » pour « ... », les espaces insécables"
+  },
+  {
+   "scene": "t-coeval-ecrit",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-coeval-ecrit",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-coeval-ecrit",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🎲",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-coeval-ecrit",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🔥",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-coeval-ecrit",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "Un désaccord, c'est sérieux : tu n'en signales qu'un, celui dont tu es le plus sûr. Il se vérifie sur ta feuille.",
+   "v9": null,
+   "raison": "retouche 778 : la règle du désaccord n'est dite qu'une fois, dans la moitié de Michel, après « ☝️ C'est ta seule question de désaccord. »"
+  },
+  {
+   "scene": "t-coeval-ecrit",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "⏳ Attends ton bilan...",
+   "v9": "⏳ Attends ton bilan…",
+   "raison": "typographie (complément 3, §1.2) : « … » pour « ... », les espaces insécables"
+  },
+  {
+   "scene": "t-coeval-ecrit",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-coeval-ecrit",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-coeval-ecrit",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎲",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-coeval-ecrit",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🔥",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-coeval",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-coeval",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-coeval",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🎲",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-coeval",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🔥",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-coeval",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-coeval",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-coeval",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎲",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-combien",
+   "vue": 1280,
+   "bloc": "doc0",
+   "v7": "🔥",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-corr-q1-apres",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "❌ Tu avais faux. Barre ta réponse en rouge et écris la bonne réponse en entier en vert à côté.",
+   "v9": "Barre ta réponse en rouge et écris la bonne réponse en entier en vert à côté.",
+   "raison": "retouche 778 : « ❌ Tu avais faux. » n'est dit qu'une fois, par le bandeau"
+  },
+  {
+   "scene": "t-corr-q1-apres",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-corr-q1-apres",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-corr-q1-apres",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🎲",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-corr-q1-apres",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🔥",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-corr-q1-apres",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-corr-q1-apres",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-corr-q1-apres",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎲",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-corr-q1-apres",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🔥",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-corr-q1-lecture",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "TEMPS DE RÉPONSE",
+   "v9": "📄 TEMPS POUR LIRE LA FEUILLE DU VOISIN",
+   "raison": "retouche 778 : le chrono de la lecture, « 📄 Temps pour lire la feuille du voisin »"
+  },
+  {
+   "scene": "t-corr-q1-lecture",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-corr-q1-lecture",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-corr-q1-lecture",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "✨",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-corr-q1-lecture",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🎲",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-corr-q1-lecture",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🔥",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-corr-q1-lecture",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "TEMPS DE RÉPONSE",
+   "v9": "📄 TEMPS POUR LIRE LA FEUILLE DU VOISIN",
+   "raison": "retouche 778 : le chrono de la lecture, « 📄 Temps pour lire la feuille du voisin »"
+  },
+  {
+   "scene": "t-corr-q1-lecture",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-corr-q1-lecture",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-corr-q1-lecture",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "✨",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-corr-q1-lecture",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎲",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-corr-q1-lecture",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🔥",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-corr-q2-apres",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "❌ Tu avais faux. Barre ta réponse en rouge et écris la bonne réponse en entier en vert à côté.",
+   "v9": "Barre ta réponse en rouge et écris la bonne réponse en entier en vert à côté.",
+   "raison": "retouche 778 : « ❌ Tu avais faux. » n'est dit qu'une fois, par le bandeau"
+  },
+  {
+   "scene": "t-corr-q2-apres",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-corr-q2-apres",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-corr-q2-apres",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "✨",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-corr-q2-apres",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🎲",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-corr-q2-apres",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🔥",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-corr-q2-apres",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-corr-q2-apres",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-corr-q2-apres",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "✨",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-corr-q2-apres",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "💡",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-corr-q2-apres",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎲",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-corr-q2-apres",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🔥",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-corr-q2-lecture",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "TEMPS DE RÉPONSE",
+   "v9": "📄 TEMPS POUR LIRE LA FEUILLE DU VOISIN",
+   "raison": "retouche 778 : le chrono de la lecture, « 📄 Temps pour lire la feuille du voisin »"
+  },
+  {
+   "scene": "t-corr-q2-lecture",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-corr-q2-lecture",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-corr-q2-lecture",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🎲",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-corr-q2-lecture",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🔥",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-corr-q2-lecture",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "TEMPS DE RÉPONSE",
+   "v9": "📄 TEMPS POUR LIRE LA FEUILLE DU VOISIN",
+   "raison": "retouche 778 : le chrono de la lecture, « 📄 Temps pour lire la feuille du voisin »"
+  },
+  {
+   "scene": "t-corr-q2-lecture",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-corr-q2-lecture",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-corr-q2-lecture",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "✨",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-corr-q2-lecture",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎲",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-corr-q2-lecture",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🔥",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-corr-q3-apres",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "❌ Tu avais faux. Barre ta réponse en rouge et écris la bonne réponse en entier en vert à côté.",
+   "v9": "Barre ta réponse en rouge et écris la bonne réponse en entier en vert à côté.",
+   "raison": "retouche 778 : « ❌ Tu avais faux. » n'est dit qu'une fois, par le bandeau"
+  },
+  {
+   "scene": "t-corr-q3-apres",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "Ta réponse : Ma feuille ne dit aucun de ces choix",
+   "v9": "Ta réponse : aucun de ces choix",
+   "raison": "retouche 778 : « Ta réponse : aucun de ces choix »"
+  },
+  {
+   "scene": "t-corr-q3-apres",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-corr-q3-apres",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-corr-q3-apres",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🎲",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-corr-q3-apres",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🔥",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-corr-q3-apres",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "❌ Tu avais faux. Barre ta réponse en rouge et écris la bonne réponse en entier en vert à côté.",
+   "v9": "Barre ta réponse en rouge et écris la bonne réponse en entier en vert à côté.",
+   "raison": "retouche 778 : « ❌ Tu avais faux. » n'est dit qu'une fois, par le bandeau"
+  },
+  {
+   "scene": "t-corr-q3-apres",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-corr-q3-apres",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-corr-q3-apres",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎲",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-corr-q3-apres",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🔥",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-corr-q3-lecture",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "TEMPS DE RÉPONSE",
+   "v9": "📄 TEMPS POUR LIRE LA FEUILLE DU VOISIN",
+   "raison": "retouche 778 : le chrono de la lecture, « 📄 Temps pour lire la feuille du voisin »"
+  },
+  {
+   "scene": "t-corr-q3-lecture",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-corr-q3-lecture",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-corr-q3-lecture",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "✨",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-corr-q3-lecture",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🎲",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-corr-q3-lecture",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🔥",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-corr-q3-lecture",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "TEMPS DE RÉPONSE",
+   "v9": "📄 TEMPS POUR LIRE LA FEUILLE DU VOISIN",
+   "raison": "retouche 778 : le chrono de la lecture, « 📄 Temps pour lire la feuille du voisin »"
+  },
+  {
+   "scene": "t-corr-q3-lecture",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-corr-q3-lecture",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-corr-q3-lecture",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "✨",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-corr-q3-lecture",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎲",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-corr-q3-lecture",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🔥",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-corr-seul",
+   "vue": 1280,
+   "bloc": "doc0",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-corr-seul",
+   "vue": 1280,
+   "bloc": "doc0",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-corr-seul",
+   "vue": 1280,
+   "bloc": "doc0",
+   "v7": "✨",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-corr-seul",
+   "vue": 1280,
+   "bloc": "doc0",
+   "v7": "💡",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-corr-seul",
+   "vue": 1280,
+   "bloc": "doc0",
+   "v7": "🔥",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-demo-q",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "QUESTION 3 / 3",
+   "v9": "QUESTION 1 / 3",
+   "raison": "correction 4 : la démo commence à sa question 1, au moment « DEMO · Q1 · réflexion », comme la console"
+  },
+  {
+   "scene": "t-demo-q",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "Standard",
+   "v9": "Facile",
+   "raison": "correction 4 : la démo commence à sa question 1, au moment « DEMO · Q1 · réflexion », comme la console"
+  },
+  {
+   "scene": "t-demo-q",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "Pourquoi l'araignée n'est-elle pas un insecte ?",
+   "v9": "Quelle est la capitale de l'Italie ?",
+   "raison": "correction 4 : la démo commence à sa question 1, au moment « DEMO · Q1 · réflexion », comme la console"
+  },
+  {
+   "scene": "t-demo-q",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-demo-q",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-demo-q",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "QUESTION 3 / 3",
+   "v9": "QUESTION 1 / 3",
+   "raison": "correction 4 : la démo commence à sa question 1, au moment « DEMO · Q1 · réflexion », comme la console"
+  },
+  {
+   "scene": "t-demo-q",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "Standard",
+   "v9": "Facile",
+   "raison": "correction 4 : la démo commence à sa question 1, au moment « DEMO · Q1 · réflexion », comme la console"
+  },
+  {
+   "scene": "t-demo-q",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "Pourquoi l'araignée n'est-elle pas un insecte ?",
+   "v9": "Quelle est la capitale de l'Italie ?",
+   "raison": "correction 4 : la démo commence à sa question 1, au moment « DEMO · Q1 · réflexion », comme la console"
+  },
+  {
+   "scene": "t-demo-q",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-demo-q",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-deplace",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "⏳ Attends la prochaine question...",
+   "v9": "⏳ Attends la prochaine question…",
+   "raison": "typographie (complément 3, §1.2) : « … » pour « ... », les espaces insécables"
+  },
+  {
+   "scene": "t-deplace",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-deplace",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-deplace",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-deplace",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-estim",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-estim",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-estim",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🎲",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-estim",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-estim",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-fin",
+   "vue": 1280,
+   "bloc": "doc0",
+   "v7": "🔥",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-login-inconnu",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-login-inconnu",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-login-inconnu",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🎲",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-login-inconnu",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🔥",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-login-inconnu",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-login-inconnu",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-login-inconnu",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎲",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-login-inconnu",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🔥",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-login-inconnu",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "1",
+   "v9": null,
+   "raison": "geste qui se voit (complément 3, changement 7.3) : le clavier de l'app suit le champ « Nom » où Julien tape, le clavier de lettres et non celui des chiffres"
+  },
+  {
+   "scene": "t-login-inconnu",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "2",
+   "v9": null,
+   "raison": "geste qui se voit (complément 3, changement 7.3) : le clavier de l'app suit le champ « Nom » où Julien tape, le clavier de lettres et non celui des chiffres"
+  },
+  {
+   "scene": "t-login-inconnu",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "3",
+   "v9": null,
+   "raison": "geste qui se voit (complément 3, changement 7.3) : le clavier de l'app suit le champ « Nom » où Julien tape, le clavier de lettres et non celui des chiffres"
+  },
+  {
+   "scene": "t-login-inconnu",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "4",
+   "v9": null,
+   "raison": "geste qui se voit (complément 3, changement 7.3) : le clavier de l'app suit le champ « Nom » où Julien tape, le clavier de lettres et non celui des chiffres"
+  },
+  {
+   "scene": "t-login-inconnu",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "5",
+   "v9": null,
+   "raison": "geste qui se voit (complément 3, changement 7.3) : le clavier de l'app suit le champ « Nom » où Julien tape, le clavier de lettres et non celui des chiffres"
+  },
+  {
+   "scene": "t-login-inconnu",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "6",
+   "v9": null,
+   "raison": "geste qui se voit (complément 3, changement 7.3) : le clavier de l'app suit le champ « Nom » où Julien tape, le clavier de lettres et non celui des chiffres"
+  },
+  {
+   "scene": "t-login-inconnu",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "7",
+   "v9": null,
+   "raison": "geste qui se voit (complément 3, changement 7.3) : le clavier de l'app suit le champ « Nom » où Julien tape, le clavier de lettres et non celui des chiffres"
+  },
+  {
+   "scene": "t-login-inconnu",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "8",
+   "v9": null,
+   "raison": "geste qui se voit (complément 3, changement 7.3) : le clavier de l'app suit le champ « Nom » où Julien tape, le clavier de lettres et non celui des chiffres"
+  },
+  {
+   "scene": "t-login-inconnu",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "9",
+   "v9": null,
+   "raison": "geste qui se voit (complément 3, changement 7.3) : le clavier de l'app suit le champ « Nom » où Julien tape, le clavier de lettres et non celui des chiffres"
+  },
+  {
+   "scene": "t-login-inconnu",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "0",
+   "v9": null,
+   "raison": "geste qui se voit (complément 3, changement 7.3) : le clavier de l'app suit le champ « Nom » où Julien tape, le clavier de lettres et non celui des chiffres"
+  },
+  {
+   "scene": "t-login-inconnu",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "✓",
+   "v9": null,
+   "raison": "geste qui se voit (complément 3, changement 7.3) : le clavier de l'app suit le champ « Nom » où Julien tape, le clavier de lettres et non celui des chiffres"
+  },
+  {
+   "scene": "t-login-inconnu",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": null,
+   "v9": "a",
+   "raison": "geste qui se voit (complément 3, changement 7.3) : le clavier de l'app suit le champ « Nom » où Julien tape, le clavier de lettres et non celui des chiffres"
+  },
+  {
+   "scene": "t-login-inconnu",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": null,
+   "v9": "z",
+   "raison": "geste qui se voit (complément 3, changement 7.3) : le clavier de l'app suit le champ « Nom » où Julien tape, le clavier de lettres et non celui des chiffres"
+  },
+  {
+   "scene": "t-login-inconnu",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": null,
+   "v9": "e",
+   "raison": "geste qui se voit (complément 3, changement 7.3) : le clavier de l'app suit le champ « Nom » où Julien tape, le clavier de lettres et non celui des chiffres"
+  },
+  {
+   "scene": "t-login-inconnu",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": null,
+   "v9": "r",
+   "raison": "geste qui se voit (complément 3, changement 7.3) : le clavier de l'app suit le champ « Nom » où Julien tape, le clavier de lettres et non celui des chiffres"
+  },
+  {
+   "scene": "t-login-inconnu",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": null,
+   "v9": "t",
+   "raison": "geste qui se voit (complément 3, changement 7.3) : le clavier de l'app suit le champ « Nom » où Julien tape, le clavier de lettres et non celui des chiffres"
+  },
+  {
+   "scene": "t-login-inconnu",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": null,
+   "v9": "y",
+   "raison": "geste qui se voit (complément 3, changement 7.3) : le clavier de l'app suit le champ « Nom » où Julien tape, le clavier de lettres et non celui des chiffres"
+  },
+  {
+   "scene": "t-login-inconnu",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": null,
+   "v9": "u",
+   "raison": "geste qui se voit (complément 3, changement 7.3) : le clavier de l'app suit le champ « Nom » où Julien tape, le clavier de lettres et non celui des chiffres"
+  },
+  {
+   "scene": "t-login-inconnu",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": null,
+   "v9": "i",
+   "raison": "geste qui se voit (complément 3, changement 7.3) : le clavier de l'app suit le champ « Nom » où Julien tape, le clavier de lettres et non celui des chiffres"
+  },
+  {
+   "scene": "t-login-inconnu",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": null,
+   "v9": "o",
+   "raison": "geste qui se voit (complément 3, changement 7.3) : le clavier de l'app suit le champ « Nom » où Julien tape, le clavier de lettres et non celui des chiffres"
+  },
+  {
+   "scene": "t-login-inconnu",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": null,
+   "v9": "p",
+   "raison": "geste qui se voit (complément 3, changement 7.3) : le clavier de l'app suit le champ « Nom » où Julien tape, le clavier de lettres et non celui des chiffres"
+  },
+  {
+   "scene": "t-login-inconnu",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": null,
+   "v9": "q",
+   "raison": "geste qui se voit (complément 3, changement 7.3) : le clavier de l'app suit le champ « Nom » où Julien tape, le clavier de lettres et non celui des chiffres"
+  },
+  {
+   "scene": "t-login-inconnu",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": null,
+   "v9": "s",
+   "raison": "geste qui se voit (complément 3, changement 7.3) : le clavier de l'app suit le champ « Nom » où Julien tape, le clavier de lettres et non celui des chiffres"
+  },
+  {
+   "scene": "t-login-inconnu",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": null,
+   "v9": "d",
+   "raison": "geste qui se voit (complément 3, changement 7.3) : le clavier de l'app suit le champ « Nom » où Julien tape, le clavier de lettres et non celui des chiffres"
+  },
+  {
+   "scene": "t-login-inconnu",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": null,
+   "v9": "f",
+   "raison": "geste qui se voit (complément 3, changement 7.3) : le clavier de l'app suit le champ « Nom » où Julien tape, le clavier de lettres et non celui des chiffres"
+  },
+  {
+   "scene": "t-login-inconnu",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": null,
+   "v9": "g",
+   "raison": "geste qui se voit (complément 3, changement 7.3) : le clavier de l'app suit le champ « Nom » où Julien tape, le clavier de lettres et non celui des chiffres"
+  },
+  {
+   "scene": "t-login-inconnu",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": null,
+   "v9": "h",
+   "raison": "geste qui se voit (complément 3, changement 7.3) : le clavier de l'app suit le champ « Nom » où Julien tape, le clavier de lettres et non celui des chiffres"
+  },
+  {
+   "scene": "t-login-inconnu",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": null,
+   "v9": "j",
+   "raison": "geste qui se voit (complément 3, changement 7.3) : le clavier de l'app suit le champ « Nom » où Julien tape, le clavier de lettres et non celui des chiffres"
+  },
+  {
+   "scene": "t-login-inconnu",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": null,
+   "v9": "k",
+   "raison": "geste qui se voit (complément 3, changement 7.3) : le clavier de l'app suit le champ « Nom » où Julien tape, le clavier de lettres et non celui des chiffres"
+  },
+  {
+   "scene": "t-login-inconnu",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": null,
+   "v9": "l",
+   "raison": "geste qui se voit (complément 3, changement 7.3) : le clavier de l'app suit le champ « Nom » où Julien tape, le clavier de lettres et non celui des chiffres"
+  },
+  {
+   "scene": "t-login-inconnu",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": null,
+   "v9": "m",
+   "raison": "geste qui se voit (complément 3, changement 7.3) : le clavier de l'app suit le champ « Nom » où Julien tape, le clavier de lettres et non celui des chiffres"
+  },
+  {
+   "scene": "t-login-inconnu",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": null,
+   "v9": "⇧",
+   "raison": "geste qui se voit (complément 3, changement 7.3) : le clavier de l'app suit le champ « Nom » où Julien tape, le clavier de lettres et non celui des chiffres"
+  },
+  {
+   "scene": "t-login-inconnu",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": null,
+   "v9": "w",
+   "raison": "geste qui se voit (complément 3, changement 7.3) : le clavier de l'app suit le champ « Nom » où Julien tape, le clavier de lettres et non celui des chiffres"
+  },
+  {
+   "scene": "t-login-inconnu",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": null,
+   "v9": "x",
+   "raison": "geste qui se voit (complément 3, changement 7.3) : le clavier de l'app suit le champ « Nom » où Julien tape, le clavier de lettres et non celui des chiffres"
+  },
+  {
+   "scene": "t-login-inconnu",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": null,
+   "v9": "c",
+   "raison": "geste qui se voit (complément 3, changement 7.3) : le clavier de l'app suit le champ « Nom » où Julien tape, le clavier de lettres et non celui des chiffres"
+  },
+  {
+   "scene": "t-login-inconnu",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": null,
+   "v9": "v",
+   "raison": "geste qui se voit (complément 3, changement 7.3) : le clavier de l'app suit le champ « Nom » où Julien tape, le clavier de lettres et non celui des chiffres"
+  },
+  {
+   "scene": "t-login-inconnu",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": null,
+   "v9": "b",
+   "raison": "geste qui se voit (complément 3, changement 7.3) : le clavier de l'app suit le champ « Nom » où Julien tape, le clavier de lettres et non celui des chiffres"
+  },
+  {
+   "scene": "t-login-inconnu",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": null,
+   "v9": "n",
+   "raison": "geste qui se voit (complément 3, changement 7.3) : le clavier de l'app suit le champ « Nom » où Julien tape, le clavier de lettres et non celui des chiffres"
+  },
+  {
+   "scene": "t-login-inconnu",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": null,
+   "v9": "’",
+   "raison": "geste qui se voit (complément 3, changement 7.3) : le clavier de l'app suit le champ « Nom » où Julien tape, le clavier de lettres et non celui des chiffres"
+  },
+  {
+   "scene": "t-login-inconnu",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": null,
+   "v9": "-",
+   "raison": "geste qui se voit (complément 3, changement 7.3) : le clavier de l'app suit le champ « Nom » où Julien tape, le clavier de lettres et non celui des chiffres"
+  },
+  {
+   "scene": "t-login-inconnu",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": null,
+   "v9": "é",
+   "raison": "geste qui se voit (complément 3, changement 7.3) : le clavier de l'app suit le champ « Nom » où Julien tape, le clavier de lettres et non celui des chiffres"
+  },
+  {
+   "scene": "t-login-inconnu",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": null,
+   "v9": "è",
+   "raison": "geste qui se voit (complément 3, changement 7.3) : le clavier de l'app suit le champ « Nom » où Julien tape, le clavier de lettres et non celui des chiffres"
+  },
+  {
+   "scene": "t-login-inconnu",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": null,
+   "v9": "ê",
+   "raison": "geste qui se voit (complément 3, changement 7.3) : le clavier de l'app suit le champ « Nom » où Julien tape, le clavier de lettres et non celui des chiffres"
+  },
+  {
+   "scene": "t-login-inconnu",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": null,
+   "v9": "ë",
+   "raison": "geste qui se voit (complément 3, changement 7.3) : le clavier de l'app suit le champ « Nom » où Julien tape, le clavier de lettres et non celui des chiffres"
+  },
+  {
+   "scene": "t-login-inconnu",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": null,
+   "v9": "à",
+   "raison": "geste qui se voit (complément 3, changement 7.3) : le clavier de l'app suit le champ « Nom » où Julien tape, le clavier de lettres et non celui des chiffres"
+  },
+  {
+   "scene": "t-login-inconnu",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": null,
+   "v9": "â",
+   "raison": "geste qui se voit (complément 3, changement 7.3) : le clavier de l'app suit le champ « Nom » où Julien tape, le clavier de lettres et non celui des chiffres"
+  },
+  {
+   "scene": "t-login-inconnu",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": null,
+   "v9": "ç",
+   "raison": "geste qui se voit (complément 3, changement 7.3) : le clavier de l'app suit le champ « Nom » où Julien tape, le clavier de lettres et non celui des chiffres"
+  },
+  {
+   "scene": "t-login-inconnu",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": null,
+   "v9": "ù",
+   "raison": "geste qui se voit (complément 3, changement 7.3) : le clavier de l'app suit le champ « Nom » où Julien tape, le clavier de lettres et non celui des chiffres"
+  },
+  {
+   "scene": "t-login-inconnu",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": null,
+   "v9": "û",
+   "raison": "geste qui se voit (complément 3, changement 7.3) : le clavier de l'app suit le champ « Nom » où Julien tape, le clavier de lettres et non celui des chiffres"
+  },
+  {
+   "scene": "t-login-inconnu",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": null,
+   "v9": "î",
+   "raison": "geste qui se voit (complément 3, changement 7.3) : le clavier de l'app suit le champ « Nom » où Julien tape, le clavier de lettres et non celui des chiffres"
+  },
+  {
+   "scene": "t-login-inconnu",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": null,
+   "v9": "ô",
+   "raison": "geste qui se voit (complément 3, changement 7.3) : le clavier de l'app suit le champ « Nom » où Julien tape, le clavier de lettres et non celui des chiffres"
+  },
+  {
+   "scene": "t-login-inconnu",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": null,
+   "v9": "œ",
+   "raison": "geste qui se voit (complément 3, changement 7.3) : le clavier de l'app suit le champ « Nom » où Julien tape, le clavier de lettres et non celui des chiffres"
+  },
+  {
+   "scene": "t-login-inconnu",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": null,
+   "v9": ",",
+   "raison": "geste qui se voit (complément 3, changement 7.3) : le clavier de l'app suit le champ « Nom » où Julien tape, le clavier de lettres et non celui des chiffres"
+  },
+  {
+   "scene": "t-login-inconnu",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": null,
+   "v9": ".",
+   "raison": "geste qui se voit (complément 3, changement 7.3) : le clavier de l'app suit le champ « Nom » où Julien tape, le clavier de lettres et non celui des chiffres"
+  },
+  {
+   "scene": "t-login-inconnu",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": null,
+   "v9": "?",
+   "raison": "geste qui se voit (complément 3, changement 7.3) : le clavier de l'app suit le champ « Nom » où Julien tape, le clavier de lettres et non celui des chiffres"
+  },
+  {
+   "scene": "t-login-inconnu",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": null,
+   "v9": "!",
+   "raison": "geste qui se voit (complément 3, changement 7.3) : le clavier de l'app suit le champ « Nom » où Julien tape, le clavier de lettres et non celui des chiffres"
+  },
+  {
+   "scene": "t-login-inconnu",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": null,
+   "v9": "espace",
+   "raison": "geste qui se voit (complément 3, changement 7.3) : le clavier de l'app suit le champ « Nom » où Julien tape, le clavier de lettres et non celui des chiffres"
+  },
+  {
+   "scene": "t-login",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-login",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-login",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🎲",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-login",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🔥",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-login",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-login",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-login",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎲",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-login",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🔥",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-papier-attest",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-papier-attest",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-papier-attest",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-papier-attest",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-papier-attest",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎲",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-papier-attest",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🔥",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-papier-correction",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "❌ Tu avais faux. Barre ta réponse en rouge et écris la bonne réponse en entier en vert à côté.",
+   "v9": "Barre ta réponse en rouge et écris la bonne réponse en entier en vert à côté.",
+   "raison": "retouche 778 : « ❌ Tu avais faux. » n'est dit qu'une fois, par le bandeau"
+  },
+  {
+   "scene": "t-papier-correction",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-papier-correction",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-papier-correction",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "✨",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-papier-correction",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🎲",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-papier-correction",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🔥",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-papier-correction",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "❌ Tu avais faux. Barre ta réponse en rouge et écris la bonne réponse en entier en vert à côté.",
+   "v9": "Barre ta réponse en rouge et écris la bonne réponse en entier en vert à côté.",
+   "raison": "retouche 778 : « ❌ Tu avais faux. » n'est dit qu'une fois, par le bandeau"
+  },
+  {
+   "scene": "t-papier-correction",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-papier-correction",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-papier-correction",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "✨",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-papier-correction",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎲",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-papier-correction",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🔥",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-papier-estim",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-papier-estim",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-papier-estim",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-papier-estim",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-papier-estim",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎲",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-pret",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "⏳ En attente du démarrage...",
+   "v9": "⏳ En attente du démarrage…",
+   "raison": "typographie (complément 3, §1.2) : « … » pour « ... », les espaces insécables"
+  },
+  {
+   "scene": "t-pret",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-pret",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-pret",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "⏳ En attente du démarrage...",
+   "v9": "⏳ En attente du démarrage…",
+   "raison": "typographie (complément 3, §1.2) : « … » pour « ... », les espaces insécables"
+  },
+  {
+   "scene": "t-pret",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-pret",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-q1-attente",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "⏳ Attends la prochaine question...",
+   "v9": "⏳ Attends la prochaine question…",
+   "raison": "typographie (complément 3, §1.2) : « … » pour « ... », les espaces insécables"
+  },
+  {
+   "scene": "t-q1-attente",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-q1-attente",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-q1-attente",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "⏳ Attends la prochaine question...",
+   "v9": "⏳ Attends la prochaine question…",
+   "raison": "typographie (complément 3, §1.2) : « … » pour « ... », les espaces insécables"
+  },
+  {
+   "scene": "t-q1-attente",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-q1-attente",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-q1-b-michel",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-q1-b-michel",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-q1-b-michel",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🎲",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-q1-b-michel",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🔥",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-q1-passage1",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-q1-passage1",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-q1-passage2",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-q1-passage2",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-q1-reflexion",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-q1-reflexion",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-q1-reflexion",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-q1-reflexion",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-q1-tour1",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-q1-tour1",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-q1-tour1",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎲",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-q1-tour1",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🔥",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-q1-tour2",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-q1-tour2",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-q1-tour2",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🎲",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-q1-tour2",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🔥",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-q2-ecartee",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-q2-ecartee",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-q2-ecartee",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-q2-ecartee",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-q2-reflexion",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-q2-reflexion",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-q2-reflexion",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-q2-reflexion",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-q2-tour1",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-q2-tour1",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-q2-tour1",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🎲",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-q2-tour1",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🔥",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-q2-tour2",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-q2-tour2",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-q2-tour2",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎲",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-q2-tour2",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🔥",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-q3-tour1",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-q3-tour1",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-q3-tour1",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎲",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-q3-tour1",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🔥",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-q3-tour2",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-q3-tour2",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-q3-tour2",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🎲",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-q3-tour2",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🔥",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-rejoins",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-rejoins",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-rejoins",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-rejoins",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-rouvrir-un",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-rouvrir-un",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-rouvrir-un",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎲",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-rouvrir-un",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🔥",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "t-un-eleve",
+   "vue": 1280,
+   "bloc": "doc0",
+   "v7": "🔥",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "x610-1-b-julien",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "x610-1-b-julien",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "x610-1-b-julien",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "✨",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "x610-1-b-julien",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "💡",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "x610-1-b-julien",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎲",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "x610-1-b-julien",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🔥",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "x610-1-b-julien",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": null,
+   "v9": "📊 Mes évaluations",
+   "raison": "élément de la 7.7.1 qui manquait à la maquette, mot pour mot : « 📊 Mes évaluations » à côté du nom de l'élève"
+  },
+  {
+   "scene": "x610-2-b-michel",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "x610-2-b-michel",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "x610-2-b-michel",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "✨",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "x610-2-b-michel",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "💡",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "x610-2-b-michel",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🎲",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "x610-2-b-michel",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🔥",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "x610-2-b-michel",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": null,
+   "v9": "📊 Mes évaluations",
+   "raison": "élément de la 7.7.1 qui manquait à la maquette, mot pour mot : « 📊 Mes évaluations » à côté du nom de l'élève"
+  },
+  {
+   "scene": "x610-3-a-correction",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "TEMPS DE RÉPONSE",
+   "v9": "📄 TEMPS POUR LIRE LA FEUILLE DU VOISIN",
+   "raison": "retouche 778 : le chrono de la lecture, « 📄 Temps pour lire la feuille du voisin »"
+  },
+  {
+   "scene": "x610-3-a-correction",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "x610-3-a-correction",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "x610-3-a-correction",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "✨",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "x610-3-a-correction",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "💡",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "x610-3-a-correction",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🎲",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "x610-3-a-correction",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🔥",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "x610-3-a-correction",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": null,
+   "v9": "📊 Mes évaluations",
+   "raison": "élément de la 7.7.1 qui manquait à la maquette, mot pour mot : « 📊 Mes évaluations » à côté du nom de l'élève"
+  },
+  {
+   "scene": "x610-3-a-correction",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "TEMPS DE RÉPONSE",
+   "v9": "📄 TEMPS POUR LIRE LA FEUILLE DU VOISIN",
+   "raison": "retouche 778 : le chrono de la lecture, « 📄 Temps pour lire la feuille du voisin »"
+  },
+  {
+   "scene": "x610-3-a-correction",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "x610-3-a-correction",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "x610-3-a-correction",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "✨",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "x610-3-a-correction",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "💡",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "x610-3-a-correction",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎲",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "x610-3-a-correction",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🔥",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "x610-3-a-correction",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": null,
+   "v9": "📊 Mes évaluations",
+   "raison": "élément de la 7.7.1 qui manquait à la maquette, mot pour mot : « 📊 Mes évaluations » à côté du nom de l'élève"
+  },
+  {
+   "scene": "x610-5-attestation-2",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "x610-5-attestation-2",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "x610-5-attestation-2",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": null,
+   "v9": "📊 Mes évaluations",
+   "raison": "élément de la 7.7.1 qui manquait à la maquette, mot pour mot : « 📊 Mes évaluations » à côté du nom de l'élève"
+  },
+  {
+   "scene": "x610-5-attestation-2",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "x610-5-attestation-2",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "x610-5-attestation-2",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": null,
+   "v9": "📊 Mes évaluations",
+   "raison": "élément de la 7.7.1 qui manquait à la maquette, mot pour mot : « 📊 Mes évaluations » à côté du nom de l'élève"
+  },
+  {
+   "scene": "x610-6-coeval-laquelle",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "Question 1 · Quand est-ce qu'une Proposition Principale se coupe en…",
+   "v9": "Question 1 · Quand est-ce qu'une Proposition Principale se coupe en deux, en DPP et en FPP ?",
+   "raison": "texte lu en entier (complément 3, changement 6.4)"
+  },
+  {
+   "scene": "x610-6-coeval-laquelle",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "Question 3 · Comment trouves-tu l'antécédent d'un Pronom Relatif, et…",
+   "v9": "Question 3 · Comment trouves-tu l'antécédent d'un Pronom Relatif, et dans quel sens va la flèche à l'étape 4?",
+   "raison": "texte lu en entier (complément 3, changement 6.4)"
+  },
+  {
+   "scene": "x610-6-coeval-laquelle",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "Question 4 · Deux relatives sont coordonnées par « et ». Que fais-tu…",
+   "v9": "Question 4 · Deux relatives sont coordonnées par « et ». Que fais-tu de « et » quand tu les écris et les repères ?",
+   "raison": "texte lu en entier (complément 3, changement 6.4)"
+  },
+  {
+   "scene": "x610-6-coeval-laquelle",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "Question 6 · écris une phrase DPP + PSR + FPP : P.I sur un camarade…",
+   "v9": "Question 6 · écris une phrase DPP + PSR + FPP : P.I sur un camarade dans les tranchées. Que contient ta phrase ?",
+   "raison": "texte lu en entier (complément 3, changement 6.4)"
+  },
+  {
+   "scene": "x610-6-coeval-laquelle",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "Question 8 · écris une phrase DPP + PSR + FPP sur ce que tu penses de…",
+   "v9": "Question 8 · écris une phrase DPP + PSR + FPP sur ce que tu penses de la suite de la guerre, avec un Pronom Relatif composé. Que contient ta phrase ?",
+   "raison": "texte lu en entier (complément 3, changement 6.4)"
+  },
+  {
+   "scene": "x610-6-coeval-laquelle",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "Question 9 · écris une phrase P.P + PSR ; P.I sur le paysage au…",
+   "v9": "Question 9 · écris une phrase P.P + PSR ; P.I sur le paysage au matin. Quel signe sépare ta Proposition Principale de ta Proposition Indépendante ?",
+   "raison": "texte lu en entier (complément 3, changement 6.4)"
+  },
+  {
+   "scene": "x610-6-coeval-laquelle",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "Question 10 · écris une phrase P.I , P.P + PSR sur le bruit, puis sur…",
+   "v9": "Question 10 · écris une phrase P.I , P.P + PSR sur le bruit, puis sur la lettre que tu écris. Combien de Verbes Conjugués compte ta phrase ?",
+   "raison": "texte lu en entier (complément 3, changement 6.4)"
+  },
+  {
+   "scene": "x610-6-coeval-laquelle",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "Question 5 · écris une phrase P.P + PSR 1 + PSR 2. Thème : un lieu…",
+   "v9": "Question 5 · écris une phrase P.P + PSR 1 + PSR 2. Thème : un lieu sur le front, en 1914. Est-ce que ta Proposition Principale subit des modifications ?",
+   "raison": "texte lu en entier (complément 3, changement 6.4)"
+  },
+  {
+   "scene": "x610-6-coeval-laquelle",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "Question 7 · écris une phrase P.I : P.P + PSR sur une information…",
+   "v9": "Question 7 · écris une phrase P.I : P.P + PSR sur une information censurée sur le front, que tu ne mettras jamais dans une lettre. Que contient ta phrase ?",
+   "raison": "texte lu en entier (complément 3, changement 6.4)"
+  },
+  {
+   "scene": "x610-6-coeval-laquelle",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "Question 11 · Quelle est l'architecture de « La lettre que ma mère m'a…",
+   "v9": "Question 11 · Quelle est l'architecture de « La lettre que ma mère m'a envoyée et dont je connais chaque mot dort dans ma poche : je la relis chaque soir » ?",
+   "raison": "texte lu en entier (complément 3, changement 6.4)"
+  },
+  {
+   "scene": "x610-6-coeval-laquelle",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "x610-6-coeval-laquelle",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "x610-6-coeval-laquelle",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "✨",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "x610-6-coeval-laquelle",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "💡",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "x610-6-coeval-laquelle",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🎲",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "x610-6-coeval-laquelle",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🔥",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "x610-6-coeval-laquelle",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": null,
+   "v9": "📊 Mes évaluations",
+   "raison": "élément de la 7.7.1 qui manquait à la maquette, mot pour mot : « 📊 Mes évaluations » à côté du nom de l'élève"
+  },
+  {
+   "scene": "x610-6-coeval-laquelle",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "x610-6-coeval-laquelle",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "x610-6-coeval-laquelle",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎲",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "x610-6-coeval-laquelle",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": null,
+   "v9": "📊 Mes évaluations",
+   "raison": "élément de la 7.7.1 qui manquait à la maquette, mot pour mot : « 📊 Mes évaluations » à côté du nom de l'élève"
+  },
+  {
+   "scene": "x610-7-coeval-ecrit",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "⏳ Attends ton bilan...",
+   "v9": "⏳ Attends ton bilan…",
+   "raison": "typographie (complément 3, §1.2) : « … » pour « ... », les espaces insécables"
+  },
+  {
+   "scene": "x610-7-coeval-ecrit",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "x610-7-coeval-ecrit",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "x610-7-coeval-ecrit",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "✨",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "x610-7-coeval-ecrit",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "💡",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "x610-7-coeval-ecrit",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🎲",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "x610-7-coeval-ecrit",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "🔥",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "x610-7-coeval-ecrit",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": "Un désaccord, c'est sérieux : tu n'en signales qu'un, celui dont tu es le plus sûr. Il se vérifie sur ta feuille.",
+   "v9": null,
+   "raison": "retouche 778 : la règle du désaccord n'est dite qu'une fois, dans la moitié de Michel, après « ☝️ C'est ta seule question de désaccord. »"
+  },
+  {
+   "scene": "x610-7-coeval-ecrit",
+   "vue": 1280,
+   "bloc": "doc0-droite",
+   "v7": null,
+   "v9": "📊 Mes évaluations",
+   "raison": "élément de la 7.7.1 qui manquait à la maquette, mot pour mot : « 📊 Mes évaluations » à côté du nom de l'élève"
+  },
+  {
+   "scene": "x610-7-coeval-ecrit",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "⏳ Attends ton bilan...",
+   "v9": "⏳ Attends ton bilan…",
+   "raison": "typographie (complément 3, §1.2) : « … » pour « ... », les espaces insécables"
+  },
+  {
+   "scene": "x610-7-coeval-ecrit",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "⭐",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "x610-7-coeval-ecrit",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎯",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "x610-7-coeval-ecrit",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🎲",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "x610-7-coeval-ecrit",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": "🔥",
+   "v9": null,
+   "raison": "émoji décoratif retiré, parce qu'il était coupé (complément 3, changement 6.6)"
+  },
+  {
+   "scene": "x610-7-coeval-ecrit",
+   "vue": 1280,
+   "bloc": "doc0-gauche",
+   "v7": null,
+   "v9": "📊 Mes évaluations",
+   "raison": "élément de la 7.7.1 qui manquait à la maquette, mot pour mot : « 📊 Mes évaluations » à côté du nom de l'élève"
+  }
+ ]
+}

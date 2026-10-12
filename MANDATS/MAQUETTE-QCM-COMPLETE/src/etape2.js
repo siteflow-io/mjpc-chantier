@@ -199,6 +199,11 @@ function Lancement(appel, opts){
   opts = opts || {};
   var demo = opts.demo;
   var classe = opts.seance && SCN.seance(opts.seance) && SCN.seance(opts.seance).eleves ? SCN.seance(opts.seance).eleves.slice() : [].concat.apply([], PAIRES_AVANT).filter(Boolean).sort(function(a, b){ return a.localeCompare(b, "fr"); });   // (relecteur n°249) un rattrapage : ses seuls élèves
+  // (complément 4, correction 3) l'appel se calcule pour la séance : ses élèves, ses absents, ses tablettes ; aucun appel ne se calcule
+  // sur la classe entière quand la séance a ses propres élèves (le rattrapage : YVON Adam, présent, seul sur sa tablette)
+  var seA = opts.seance ? SCN.seance(opts.seance) : null, propres = !!(seA && seA.eleves);
+  var absentsA = seA ? (seA.absents || []) : (SCN.seance(MOM().seance) || SCN.seance("S08")).absents || [];
+  var pairesA = propres ? seA.eleves.map(function(n){ return [n, null]; }) : PAIRES_AVANT;
   var carte = h("div", {className:"card"},
     h("h2", null, "🎯 Lancer une nouvelle séance", InfoI("Choisis la classe et l'évaluation : la durée se compte tout de suite, et les binômes sont proposés. « 🚀 Lancer la séance » ouvre l'appel.")),
     h("div", {className:"lancer-grid"},
@@ -218,14 +223,16 @@ function Lancement(appel, opts){
         h(GrilleBinomes, {paires:PAIRES_AVANT, refus:opts.refus}))));
   var modale = appel && h("div", {className:"checkin-overlay", "data-echap":"c-lancer"},
     h("div", {className:"checkin-modal", style:{maxWidth:"640px"}},
-      h("div", {className:"checkin-header"}, h("h3", null, "📋 Check-in : qui est absent aujourd'hui ?", InfoI("Clique un nom pour le marquer absent. Son binôme est mis avec un élève resté seul, sans jamais créer de paire exclue.")), h("div", {className:"checkin-sub"}, CLASSE + " — 25 élèves")),
-      h(ListeAppel, {classe:classe}),
+      h("div", {className:"checkin-header"}, h("h3", null, "📋 Check-in : qui est absent aujourd'hui ?", InfoI("Clique un nom pour le marquer absent. Son binôme est mis avec un élève resté seul, sans jamais créer de paire exclue.")), h("div", {className:"checkin-sub"}, CLASSE + " — " + classe.length + " élève" + (classe.length > 1 ? "s" : ""))),
+      h(ListeAppel, {classe:classe, absents:absentsA, paires:pairesA}),
       h("div", {style:{padding:".55rem 1.2rem", borderTop:"1px solid var(--bordure)", fontSize:".86rem", lineHeight:1.5}},
         h("div", {style:{display:"flex", alignItems:"center", gap:".5rem", marginTop:".35rem"}}, h("span", {style:{whiteSpace:"nowrap"}}, "🕙 Fin de l'heure :"),
-          h("input", {defaultValue:"10:57", title:"L'heure de fin de la séance : lancement + 55 min. Les tablettes oublient leurs élèves à « Terminer », ou 10 min après cette heure.", style:{width:"70px", padding:".2rem .4rem", border:"2px solid var(--bordure)", borderRadius:"6px", fontWeight:900, textAlign:"center", fontFamily:"inherit"}}),
+          h("input", {defaultValue:SCN.finHeure(MO()), title:"L'heure de fin de la séance : lancement + 55 min. Les tablettes oublient leurs élèves à « Terminer », ou 10 min après cette heure.", style:{width:"70px", padding:".2rem .4rem", border:"2px solid var(--bordure)", borderRadius:"6px", fontWeight:900, textAlign:"center", fontFamily:"inherit"}}),
           InfoIB("🕙 Fin de l'heure", "Lancement + 55 min. Les tablettes oublient leurs élèves à « Terminer », ou 10 min après cette heure."))),
       h("div", {className:"checkin-actions"}, h("button", {className:"btn btn-ghost", "data-va":"c-lancer"}, "Annuler"), h("button", {className:"btn btn-primary", "data-va":demo ? "c-q1-reflexion" : repriseVa() || "c-pret", "data-moment":demo ? "DEMO:Q1:R" : repriseMoment()}, "🚀 Lancer la séance"))));
   var precedentes = SessionsPrecedentes(opts.demoFaite);
+  // le rattrapage : son appel s'ouvre sur sa carte de lancement (« 🚀 Lancer le rattrapage »), pas sur celle de la classe entière
+  if(propres && typeof Rattrapage === "function") return h(F, null, Rattrapage(), modale);
   return Console("pilotage", "pilot", h(F, null, opts.reprise && CarteReprise(opts.reprise === "papier"), carte, precedentes, modale), false);
 }
 function ListeAppel(p){   // l'appel : un clic sur un nom le marque absent ; « Tout le monde présent » les décoche

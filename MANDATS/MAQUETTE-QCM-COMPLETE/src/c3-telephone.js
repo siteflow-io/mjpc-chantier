@@ -114,7 +114,7 @@ function TelReponse(){
   var apres = m.ph === "reflexion" ? momentSiExiste("S08:Q" + n + ":T1") : m.tour === 1 ? momentSiExiste("S08:Q" + n + ":T2") : momentSiExiste("S08:Q" + n + ":C");
   var lib = m.ph === "reflexion" ? "✋ Autoriser la réponse" : m.tour === 1 ? "⏭️ Tour suivant" : "🔒 Clore la question";
   return TelCadre([
-    TelBandeau(m.ph === "reflexion" ? "Phase : réflexion — Q " + c.question[0] + "/" + c.question[1] : "Phase : réponse — Q " + c.question[0] + "/" + c.question[1], m.ph === "reflexion" ? null : (m.tour === 1 ? "1er" : "2e") + " tour : moitiés de " + ((PREMIER[qi] === "J") === (m.tour === 1) ? "gauche" : "droite")),
+    TelBandeau(m.ph === "reflexion" ? "Phase : réflexion — Q " + c.question[0] + "/" + c.question[1] : "Phase : réponse — Q " + c.question[0] + "/" + c.question[1], m.ph === "reflexion" ? null : (m.tour === 1 ? "1er" : "2e") + " tour : moitiés de " + (coteDuTour(qi, m.tour) === "g" ? "gauche" : "droite")),
     h(TelChrono, {key:"c", reste:m.reste, total:m.ph === "reflexion" ? tempsDe(qi).reflexion : tempsDe(qi).reponse}),
     h("div", {key:"tt"}, h(TelTemps, {qi:qi})),
     h("div", {key:"q"}, TelQ(qi)),

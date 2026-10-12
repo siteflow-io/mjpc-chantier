@@ -1,0 +1,26 @@
+/* (complément 4, correction 1) la fiche d'un élève à une autre séance : la question, la bonne réponse, les points */
+.fiche-head-c,.fiche-q-c{display:grid;grid-template-columns:2.2rem 2fr 1.2fr 3.6rem;gap:.5rem;align-items:start}
+/* (complément 4, correction 1) une évaluation de 11 questions dans le même tableau : le détail d'une compétence passe à la ligne,
+   et sa colonne garde la largeur de celles de l'évaluation d'essai ; le tableau tient dans sa carte (garde 14) */
+.scoresheet .comp-cell .comp-det{white-space:normal;max-width:11rem}
+.scoresheet th.comp-col{max-width:12rem;white-space:normal}
+/* une évaluation longue (plus de six questions) : la pastille de la maîtrise passe à la ligne, le tableau tient à 1366 */
+.scoresheet[data-longue] td .maitrise-pill{white-space:normal}
+.scoresheet[data-longue] th.res-col-l{white-space:normal}
+/* (complément 4, correction 9 — garde 19) le contraste mesuré aux pixels : chaque texte de la maquette atteint 4,5 (3 en grand),
+   avec des couleurs que la maquette emploie déjà (#15803D, #0E7490, #B91C1C, #C2410C, #475569, #1E1B4B) */
+.tel-btn.tb-vert{background:#15803D}
+.tel-alerte .tel-btn.tb-ghost{background:#475569}
+.tel-btn.tb-turq{background:linear-gradient(135deg,#0E7490,#155E75)}
+.tel-btn.tb-rouge{background:linear-gradient(135deg,#DC2626,#B91C1C)}
+.tel-btn.tb-ghost{background:rgba(30,27,75,.35)}
+.tel-st.cur{background:linear-gradient(135deg,#5B21B6,#9D174D)}
+.tel-leg{opacity:1}
+.tel-expl{background:rgba(30,27,75,.35)}
+.tel-el.rouge .nm{color:#fff}
+.tel-suiv{background:rgba(255,255,255,.85)}
+.thq{opacity:1}
+.fiche-q .val.f{color:#B91C1C}
+.corb-l .d{color:#475569}
+.note20{opacity:1;display:inline-block;background:rgba(26,26,46,.35);border-radius:8px;padding:0 .4rem}
+.trouvee{background:linear-gradient(135deg,#C2410C,#9A3412)}

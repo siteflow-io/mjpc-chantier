@@ -226,9 +226,11 @@ function pastillesDe(e, nbRev){
     return s === "j" ? {cls:"juste", t:"✅"} : s === "t" ? {cls:"trouvee-p", t:"✓"} : s === "pasdit" ? {cls:"nonrep", t:"⚪"} : {cls:"faux", t:"❌"};   // le ✓ orange (484)
   });
 }
-function ChronoSaisie(v, total){
+function ChronoSaisie(v, total, seul){
   var c = v <= 5 ? "rouge" : v <= total / 2 ? "orange" : "vert";
-  return h("div", {className:"eleve-chrono saisie saisie-" + c}, h("div", {className:"label"}, "📄 Temps pour lire la feuille du voisin"), h("div", {className:"v"}, v));   // (778) le nom que Paul lit
+  // (778) le nom que Paul lit, là où un voisin lit la feuille ; (complément 4, correction 6) un élève seul n'a pas de voisin :
+  // il lit sa propre feuille, et son chrono garde le libellé de la v7, celui de la 7.7.1 (l. 3331)
+  return h("div", {className:"eleve-chrono saisie saisie-" + c}, h("div", {className:"label"}, seul ? "Temps de réponse" : "📄 Temps pour lire la feuille du voisin"), h("div", {className:"v"}, v));
 }
 function EcrCorr(e, qi, etape, chrono){   // etape : "vide" | "dit" | "revele"
   var q = EV.questions[qi], ordre = ORD[qi][e.cle], decl = FEUI[e.cle][qi], tab = TABL[e.cle][qi];

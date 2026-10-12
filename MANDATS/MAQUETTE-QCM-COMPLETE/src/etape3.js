@@ -421,7 +421,8 @@ function Coeval(p){
   if(!k || k === "ok"){
     zone.push(h("div", {key:"t", className:"decl-titre co-titre"}, e.prenom + ", " + v.prenom + " a-t-" + il(v) + " bien lu ta feuille ?"));
     if(daccord) zone.push(h("div", {key:"d", className:"eleve-feedback valide", style:{marginBottom:".6rem"}}, "Tu as cliqué ce que " + v.prenom + " avait lu : vous êtes d'accord."));
-    // (778) la règle du désaccord n\'est dite qu\'une fois : « ☝️ C\'est ta seule question de désaccord. » reste
+    // (complément 4, correction 8) la règle du désaccord, seule ici, reste à sa place de la v7 (points 513 et 533) ; elle ne part que là où elle suivait « ☝️ C'est ta seule question de désaccord. »
+    zone.push(h("div", {key:"r", className:"co-regle"}, "☝️ " + REGLE_CO));
     zone.push(h("div", {key:"bs", className:"co-btns"}, ["ok", "peut", "mal"].map(btn)));
     if(k === "ok"){ zone.push(h("div", {key:"f", className:"eleve-feedback valide"}, ENREG)); zone.push(h("div", {key:"w", className:"co-attente"}, "⏳ Attends ton bilan…")); }
   } else if(qc == null){
@@ -429,7 +430,8 @@ function Coeval(p){
     zone.push(h("div", {key:"l", className:"co-liste cliquable" + (EVx.questions.length > 5 ? " serree" : "")}, EVx.questions.map(function(q, i){
       return h("button", {key:i, className:"co-l co-lb", "data-local":"1", onClick:function(){ setQ(i); setEcrit(null); }}, h("strong", null, "Question " + (i+1)), " · ", p.liste ? p.liste(q) : q.enonce);
     })));
-    // (778) la règle du désaccord n\'est dite qu\'une fois : « ☝️ C\'est ta seule question de désaccord. » reste
+    // (complément 4, correction 8) la règle du désaccord, seule ici, reste à sa place de la v7 (points 513 et 533) ; elle ne part que là où elle suivait « ☝️ C'est ta seule question de désaccord. »
+    zone.push(h("div", {key:"r", className:"co-regle"}, "☝️ " + REGLE_CO));
     zone.push(h("div", {key:"a", className:"co-actions"}, h("button", {className:"btn btn-ghost", "data-local":"1", onClick:function(){ setK(null); }}, "↩️ Changer")));
   } else {
     var q = EVx.questions[qc], lu = luDe(qc);

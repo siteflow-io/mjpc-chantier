@@ -94,7 +94,7 @@ function ScRouvrirSeance(){
     [h("button", {key:1, className:"btn btn-ghost", "data-va":"c-lancer", title:"Ne rouvre rien."}, "Annuler"), h("button", {key:2, className:"btn btn-primary", "data-va":"c-appel&seance=" + se.id, title:"Rouvre la séance : l'appel, les mêmes binômes, puis elle reprend là où elle s'était terminée."}, "🔓 Rouvrir la séance")], "c-lancer");
 }
 function Interrompue(){
-  var k = MO(), m = MOM(), se = SCN.seance(m.seance), c = SCN.compteurs(k), cote = PREMIER[m.qi] === "J" ? "gauche" : "droite";
+  var k = MO(), m = MOM(), se = SCN.seance(m.seance), c = SCN.compteurs(k), cote = coteDuTour(m.qi, m.tour) === "g" ? "gauche" : "droite";   // (complément 4, correction 5) le côté de ce tour, pas celui de qui commence
   var modal = h("div", {className:"checkin-overlay", "data-echap":"c-lancer"},
     h("div", {className:"checkin-modal", style:{maxWidth:"720px"}},
       h("div", {className:"checkin-header"}, h("h3", null, "⚠️ Séance interrompue détectée", InfoI("La console a perdu la séance en cours (page fermée, panne). Elle se reprend là où elle était, se met en pause pour une autre heure, ou se termine.")), h("div", {className:"checkin-sub"}, CLASSE + " — " + EV.titre)),
@@ -118,7 +118,7 @@ function EcrLectureSeul(){
     h("div", {className:"eleve-q-zone"}, QHead(qi, true), h("div", {className:"eleve-q-enonce"}, q.enonce),
       h("div", {className:"decl-titre"}, "Qu'as-tu écrit sur ta feuille ?"),
       h("div", {className:"decl-consigne"}, "Clique sur le ou les choix qui disent la même chose que ta feuille. Les mots ne sont pas forcément les mêmes : c'est à toi de faire le rapprochement."),
-      ChronoSaisie(m.reste, tempsDe(qi).reponse),
+      ChronoSaisie(m.reste, tempsDe(qi).reponse, true),
       h("div", {className:"eleve-choix"},
         ordre.map(function(i){ return h("button", {key:i, className:"eleve-choix-btn" + (q.bonnes.indexOf(i) >= 0 ? " selected" : "")}, h("span", null, q.choix[i])); }),
         h("button", {className:"eleve-choix-btn aucun"}, "Ma feuille ne dit aucun de ces choix")),
@@ -196,7 +196,7 @@ function Rattrapage(){
         h("div", {className:"field"}, h("label", null, "Évaluation", InfoI("L'évaluation déjà passée par la classe : « 🔁 » la marque comme rattrapage.")), h("select", {value:"e", readOnly:true, title:"L'évaluation de la séance."}, h("option", {value:"e"}, "🔁 " + EV.titre))),
         h("div", {className:"rattrapage-box"}, h("strong", null, "🔁 Rattrapage."), " " + CLASSE + " a déjà passé cette évaluation le " + jjmm(se.date) + ".", InfoIB("🔁 Rattrapage", "Cette séance ne servira jamais de « QCM précédent » pour les binômes. Un élève déjà noté garde la note de sa première séance.")),
         h("div", {className:"duree-box"}, texteDuree(EV, true)),
-        h("button", {className:"btn btn-primary", "data-va":"c-appel&seance=RATT", title:"Ouvre l'appel du rattrapage : seuls les élèves pas encore notés sont proposés."}, "🚀 Lancer le rattrapage")),
+        h("button", {className:"btn btn-primary", "data-va":"c-appel&seance=RATT", "data-moment":"RATT:appel", title:"Ouvre l'appel du rattrapage : seuls les élèves pas encore notés sont proposés."}, "🚀 Lancer le rattrapage")),
       h("div", {className:"binomes-box"},
         h("div", {className:"tt"}, "📱 Binômes proposés — d'après les exclusions, puis le QCM précédent", InfoI("Comme pour une séance : d'abord les exclusions de MJPC, puis la règle du QCM. Plus de placement libre.")),
         h("div", {className:"ss"}, "Pas encore noté à cette évaluation : " + seuls.join(", ") + " (absent le " + jjmm(se.date) + ").", InfoIB(seuls[0], "Seul, il fait lui-même la lecture de sa feuille à la correction ; il n'a pas de co-évaluation.")),

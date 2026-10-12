@@ -5855,12 +5855,13 @@
    "auto": true
   },
   {
-   "texte": "📌 À lire ce soir (5) : PERRAUD Jade — Q9 : 🤔 pense qu'Enzo a peut-être mal lu sa feuille ; elle dit avoir écrit : un point-virgule · MAILLARD Noah — Q10 : 🤔 pense qu'Emma a peut-être mal lu sa feuille ; il dit avoir écrit : trois · QUINTON Enzo — Q1 : aucun de ces choix · TESSIER Anna — Q2 : a dit que sa feuille disait son clic, un nom et un pronom ; Rayan y a lu : un nom · CARRÉ Tom — Q7 : n'a pas dit si sa feuille disait son clic",
+   "texte": "📌 À lire ce soir (4) : PERRAUD Jade — Q9 : 🤔 pense qu'Enzo a peut-être mal lu sa feuille ; elle dit avoir écrit : un point-virgule · QUINTON Enzo — Q1 : aucun de ces choix · TESSIER Anna — Q2 : a dit que sa feuille disait son clic, un nom et un pronom ; Rayan y a lu : un nom · CARRÉ Tom — Q7 : n'a pas dit si sa feuille disait son clic",
    "scenes": [
     "x610-9-telephone-alerte"
    ],
    "categorie": "état",
-   "auto": true
+   "auto": true,
+   "complement4": "correction 9 : Noah, parti après la question 7, n'est plus dans les feuilles à lire de la co-évaluation de 3e"
   },
   {
    "texte": "Un litige est légitime ; « aux deux » est pour le cas où aucun n'a joué le jeu, par exemple chacun à moitié de bonne foi. « ↩️ Rendre » le défait, en direct ou le soir.",
@@ -6440,6 +6441,14 @@
    "scenes": [],
    "categorie": "donnée",
    "pourquoi": "la dernière case de « Que dit la feuille ? », au mot des autres écrans (changement 8.3)"
+  },
+  {
+   "texte": "🚪 parti après la question 7",
+   "scenes": [
+    "x610-8-console-alerte"
+   ],
+   "categorie": "état",
+   "complement4": "correction 9 : Noah, parti après la question 7 de la séance de 3e (son PDF), dans la co-évaluation"
   }
  ],
  "motifs": [

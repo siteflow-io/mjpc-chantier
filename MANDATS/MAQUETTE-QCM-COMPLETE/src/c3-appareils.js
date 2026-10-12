@@ -114,7 +114,7 @@ function TelReponse(){
   var modeDe = function(p, cote){ if(m.tour === 1 && cote !== pc) return {mode:"voile"}; if(rep.indexOf(p) < 0) return {mode:"rep"}; return {qi:qi, mode:"q"}; };
   var suiv = qi + 1 < 3 ? qi + 1 : null;
   return TelCadre([
-    TelBandeau("Phase : réponse — Q " + c.question[0] + "/" + c.question[1], (m.tour === 1 ? "1er" : "2e") + " tour : moitiés de " + ((PREMIER[qi] === "J") === (m.tour === 1) ? "gauche" : "droite")),
+    TelBandeau("Phase : réponse — Q " + c.question[0] + "/" + c.question[1], (m.tour === 1 ? "1er" : "2e") + " tour : moitiés de " + (coteDuTour(qi, m.tour) === "g" ? "gauche" : "droite")),
     h(TelChrono, {key:"c", reste:m.reste, total:tempsDe(qi).reponse}),
     h("div", {key:"tt"}, h(TelTemps, {qi:qi})),
     h("div", {key:"q"}, TelQ(qi)),

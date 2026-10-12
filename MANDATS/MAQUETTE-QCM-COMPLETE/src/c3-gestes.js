@@ -207,9 +207,9 @@ function Legende(items){
 }
 /* (relecteur n°40) l'appel : le message des tablettes suit les absences cochées. Un élève dont le binôme est absent, et l'élève seul
    de la classe, sont mis ensemble, sur la tablette du premier ; un élève qui reste seul le reste sur sa tablette. */
-function messageAppel(abs){
+function messageAppel(abs, paires){
   var seuls = [];
-  PAIRES_AVANT.forEach(function(pa, i){
+  (paires || PAIRES_AVANT).forEach(function(pa, i){
     var a = pa[0] && !abs[pa[0]], b = pa[1] && !abs[pa[1]];
     if(a && !b) seuls.push({nom:pa[0], t:i + 1, de:pa[1]}); else if(b && !a) seuls.push({nom:pa[1], t:i + 1, de:pa[0]});
   });
@@ -220,7 +220,8 @@ function messageAppel(abs){
   return lignes;
 }
 function ListeAppel(p){   // l'appel : un clic sur un nom le marque absent ; « Tout le monde présent » les décoche
-  var s = useState({"YVON Adam":true}), abs = s[0], setAbs = s[1];
+  // (complément 4, correction 3) les absents de la séance, au moment de l'appel : ceux du scénario
+  var s = useState(function(){ var o = {}; (p.absents || ["YVON Adam"]).forEach(function(n){ o[n] = true; }); return o; }), abs = s[0], setAbs = s[1];
   var n = Object.keys(abs).filter(function(k){ return abs[k]; }).length;
   return h(F, null,
     h("div", {className:"checkin-list", style:{display:"grid", gridTemplateColumns:"1fr 1fr 1fr", columnGap:".4rem"}}, p.classe.map(function(nom){
@@ -231,5 +232,5 @@ function ListeAppel(p){   // l'appel : un clic sur un nom le marque absent ; « 
     })),
     h("div", {className:"checkin-summary"}, "🚫 " + n + " absent" + (n > 1 ? "s" : "") + " sur " + p.classe.length,
       h("button", {className:"btn btn-ghost btn-sm", style:{marginLeft:".8rem"}, "data-local":"1", title:BULLES["Tout le monde présent"], onClick:function(){ setAbs({}); }}, "Tout le monde présent")),
-    p.message !== false && h("div", {className:"appel-tablettes", style:{padding:".55rem 1.2rem 0", fontSize:".86rem", lineHeight:1.5}}, messageAppel(abs)));
+    p.message !== false && h("div", {className:"appel-tablettes", style:{padding:".55rem 1.2rem 0", fontSize:".86rem", lineHeight:1.5}}, messageAppel(abs, p.paires)));
 }

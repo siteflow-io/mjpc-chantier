@@ -6,14 +6,16 @@ D = os.path.dirname(os.path.abspath(__file__))
 S = os.path.join(D, "src")
 def lire(*p): return open(os.path.join(*p), encoding="utf-8").read()
 
-CSS = ["qcm.css", "maquette.css", "maquette610.css", "maquette620.css", "maquette626.css", "maquette627.css", "maquette628.css", "socle.css", "etapes.css", "mjpc.css", "mjpc-edt.css", "mjpc-ajouts.css", "complement2.css", "c3.css", "c3-bulles.css"]
+CSS = ["qcm.css", "maquette.css", "maquette610.css", "maquette620.css", "maquette626.css", "maquette627.css", "maquette628.css", "socle.css", "etapes.css", "mjpc.css", "mjpc-edt.css", "mjpc-ajouts.css", "complement2.css", "c3.css", "c3-bulles.css", "c4.css"]
 # (complément 3) le scénario, un seul : tout ce que montrent les scènes s'en calcule (src/scenario.js), avec les évaluations du hub lues le 08/10
 JS = ["scenario.js", "maquette.js", "maquette2.js", "ev3e.js", "maquette610.js", "maquette620.js",
       "com626.js", "maquette626.js", "com627.js", "maquette627.js", "com628.js", "maquette628.js", "com632.js"]
 EXTRA_JS = json.load(open(os.path.join(S, "ordre_js.json"))) if os.path.exists(os.path.join(S, "ordre_js.json")) else []
 JS += EXTRA_JS + ["gestes.js", "etape2.js", "etape3.js", "etape4.js", "mjpc.js", "complement1.js", "complement2.js",
        # (complément 3) le scénario dans les écrans : chaque chiffre au moment de la scène
-       "c3-base.js", "c3-pilot.js", "c3-corr.js", "c3-appareils.js", "c3-soir.js", "c3-evals.js", "c3-scenes.js", "c3-objets.js", "c3-tablettes.js", "c3-telephone.js", "c3-x610.js", "c3-feuille.js", "c3-textes.js", "c3-gestes.js", "c3-bulles.js", "socle.js"]
+       "c3-base.js", "c3-pilot.js", "c3-corr.js", "c3-appareils.js", "c3-soir.js", "c3-evals.js", "c3-scenes.js", "c3-objets.js", "c3-tablettes.js", "c3-telephone.js", "c3-x610.js", "c3-feuille.js", "c3-textes.js", "c3-gestes.js",
+       # (complément 4) les résultats, la fiche et le PDF de chaque séance
+       "c4-seances.js", "c3-bulles.js", "socle.js"]
 
 def js(nom):
     t = lire(S, nom)

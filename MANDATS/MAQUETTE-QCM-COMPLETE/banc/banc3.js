@@ -18,7 +18,7 @@ async function gardes3(navig, fichier, scenes, verif, journal, opts){
   const nouvelle = async (T) => { const ctx = await navig.newContext({viewport: {width: T.w, height: T.h}}); const page = await ctx.newPage();
     const err = []; page.on("pageerror", e => err.push(e.message)); page.on("dialog", d => d.dismiss().catch(() => {})); await page.addInitScript(G3.ESPION_G3); return {ctx, page, err}; };
   const ouvrirA = async (page, f, id) => { await page.goto("about:blank"); await page.goto("file://" + f + "#scene=" + id + "&cap=1");
-    await page.waitForFunction(i => window.SCENE_PRETE === i, id, {timeout: 10000}).catch(() => {}); await page.waitForTimeout(60); };
+    await page.waitForFunction(i => window.SCENE_PRETE === i, G3.baseDe(id), {timeout: 10000}).catch(() => {}); await page.waitForTimeout(60); };
   const tailles = sc => G3.TAILLES[sc.vue] || [{w: 1280, h: 800}];
   const destinations = [], eleve7 = {}, eleve8 = {}, journal9 = [];
   const INV = G.inventaires(), RET = G.retraits(); const parScene = {}; INV.forEach(v => v.scenes.forEach(s => { (parScene[s] = parScene[s] || []).push(v); }));
@@ -92,7 +92,8 @@ async function gardes3(navig, fichier, scenes, verif, journal, opts){
   res.forEach((R, i) => { verif(true, "gardes 9 à 15. " + aFaire[i].id + " : jouées"); R.forEach(x => verif(false, x)); });
 
   // 9.3 : chaque explication retirée se retrouve à sa place (l'infobulle ou le mode d'emploi), dans la scène que le fichier lui donne
-  if(joue(9)){
+  // (complément 4) sur les destinations (garde 16.3), les gardes jouent page par page ; ces relevés d'ensemble ne se refont pas
+  if(joue(9) && !opts.destinations){
     const parDest = {};
     (K.j.textes || []).filter(x => x.categorie === "explication" && x.destination).forEach(x => {
       const d = Object.assign({texte: x.texte, place: x.place || x.texte}, x.destination); const s = d.scene || (d.mode_emploi ? "c-mode-emploi" : (x.scenes || [])[0]);
@@ -104,25 +105,20 @@ async function gardes3(navig, fichier, scenes, verif, journal, opts){
       G3.garde9Destinations(await o.page.evaluate(G3.lireDestinations, parDest[s])).forEach(x => verif(false, x));
       verif(true, "garde 9. " + s + " : les explications retirées cherchées à leur place");
     }
-    // 9.5 : les textes vus par l'élève, comparés à ceux de la v7
-    if(fs.existsSync(ref7) && path.resolve(ref7) !== path.resolve(fichier)){
-      for(const id of Object.keys(eleve8)){ try { await ouvrirA(o.page, ref7, id); eleve7[id] = await o.page.evaluate(G3.lireTextesEleve); } catch(e){} }
-      G3.garde95(eleve7, eleve8).forEach(x => verif(false, x));
-      verif(true, "garde 9. les textes vus par l'élève comparés à ceux de la v7");
-    } else journal.push("9.5 : la version jouée est la référence (v7) : rien à comparer");
+    // (complément 4) 9.5 est remplacée par la garde 20 (gardes4.js) : chaque changement vu par l'élève, nommé un par un
     await o.ctx.close();
     journal.push((K.j.textes || []).length + " textes classés dans textes-console.json" + (journal9.length ? " · " + journal9.length + " textes de la maquette sans classement" : ""));
   }
   // 12.4 : ALLER["*"] ne garde que les onglets ; 13.7 : aucune note écrite en dur
-  if(joue(12)){
+  if(joue(12) && !opts.destinations){
     const o = await nouvelle({w: 1536, h: 864}); const onglets = new Set();
     for(const id of ["c-evals", "c-seances", "c-reglages", "c-lancer", "c-sauvegarde"]) if(parId[id]){ await ouvrirA(o.page, fichier, id); (await o.page.evaluate(G3.lireAller)).onglets.forEach(x => onglets.add(x)); }
     await ouvrirA(o.page, fichier, scenes[0].id);
     G3.garde12Aller(await o.page.evaluate(G3.lireAller), onglets).forEach(x => verif(false, x)); verif(true, "garde 12. ALLER[\"*\"] regardé");
     await o.ctx.close();
   }
-  if(joue(13)){ G3.garde13Sources(src).forEach(x => verif(false, x)); verif(true, "garde 13. les sources cherchées"); }
-  journal.push("gardes 9 à 15 : " + aFaire.length + " scènes · " + gestes + " éléments cliquables cliqués · " + bulles + " éléments regardés pour leur infobulle");
+  if(joue(13) && !opts.destinations){ G3.garde13Sources(src).forEach(x => verif(false, x)); verif(true, "garde 13. les sources cherchées"); }
+  journal.push("gardes 9 à 15 : " + aFaire.length + (opts.destinations ? " destinations" : " scènes") + " · " + gestes + " éléments cliquables cliqués · " + bulles + " éléments regardés pour leur infobulle");
   return journal9;
 }
 module.exports = {gardes3};

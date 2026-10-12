@@ -160,13 +160,17 @@ function EcrTuEsBien(){
 refaire("t-attest-1", function(){ return paramHash("seul") ? h("div", {className:"tablette seule"}, h("div", {className:"moitie g"}, Attest1(J, 0))) : Tablette(Attest1(J, 3), Attest1(M, 0)); });
 refaire("t-binome", function(){ return Tablette(Attest1(J, 0), EcrBinome(M, (codeDe(M.nom) || "").slice(0, 2))); });
 // la démo : le bandeau, en tête de la moitié (la page d'une moitié est désormais un composant : PageMoitie)
-function EcrDemoReflexion(e, qi){
+function EcrDemoReflexion(e, qi, reste){
   var sv = EV; EV = DEMO_EV;
-  try { var r = EcrReflexion(e, qi, 18); } finally { EV = sv; }
+  try { var r = EcrReflexion(e, qi, reste == null ? 18 : reste); } finally { EV = sv; }
   var bandeau = h("div", {key:"bd", className:"demo-bandeau"}, "🎓 Évaluation d'entraînement : elle ne compte pas.");
   if(r.type === PageMoitie) return React.cloneElement(r, {enfants:h(F, null, bandeau, r.props.enfants)});
   return React.cloneElement(r, null, r.props.children[0], React.cloneElement(r.props.children[1], null, bandeau, r.props.children[1].props.children));
 }
+
+// (complément 4, correction 4) la démo, sur les tablettes, au moment que la scène déclare (« DEMO · Q1 · réflexion ») : la question
+// et le temps qui reste viennent du scénario, comme la console du même moment ; la démo commence à sa question 1
+refaire("t-demo-q", function(){ var m = MOM(); return Tablette(EcrDemoReflexion(J, m.qi, m.reste), EcrDemoReflexion(M, m.qi, m.reste)); });
 
 /* ── Le mode test : les tablettes en petit se regardent ; on joue « 🔍 en grand » la tablette cliquée (« &tab= »), au même moment ── */
 function FigerZone(p){

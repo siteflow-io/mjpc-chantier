@@ -81,7 +81,7 @@ function Pilot(s){
   var st, statusCls = s.phase;
   if(s.phase === "idle") st = "⏳ En attente — clique sur « ▶️ Lancer Q1 »";
   else if(s.phase === "reflexion") st = "🧠 Phase RÉFLEXION en cours";
-  else if(s.phase === "reponse") st = h(F, null, "✋ Phase RÉPONSE — " + (s.tour === 1 ? "1er" : "2e") + " tour", h("span", {className:"tour-chip"}, (((PREMIER[s.qi] === "J") === (s.tour === 1)) ? "moitiés de gauche" : "moitiés de droite")));
+  else if(s.phase === "reponse") st = h(F, null, "✋ Phase RÉPONSE — " + (s.tour === 1 ? "1er" : "2e") + " tour", h("span", {className:"tour-chip"}, (coteDuTour(s.qi, s.tour) === "g" ? "moitiés de gauche" : "moitiés de droite")));
   else st = derniere ? "✅ Dernière question close — lance l'autoévaluation" : "⏸️ Question close — passe à la suivante";
   var actions;
   if(s.phase === "idle") actions = [h("button", {key:1, className:"btn btn-primary", "data-va":"c-q1-reflexion"}, "▶️ Lancer Q1")];
@@ -108,7 +108,7 @@ function Pilot(s){
       h("div", {style:{fontSize:".72rem", color:"var(--gris)", fontStyle:"italic"}}, "Difficulté " + NIV[qn.niveau].label + " · réflexion " + tn.reflexion + " s · réponse " + tn.reponse + " s par tour · " + bonnesRep(qn.bonnes.length))));
   var colM = h("div", null,
     h("h3", {style:{margin:"0 0 .2rem"}}, "📱 Tablettes", InfoI("Chaque tablette, ses deux moitiés : qui est assis où, et où en est chacun. « 👁 » montre les deux moitiés en direct. Glisse un nom sur un autre pour échanger deux élèves : pendant la séance, ils changent de tablette et retapent leur code ; leurs réponses les suivent."), h("span", {style:{fontWeight:400, display:"block", fontSize:".8rem", color:"#475569", margin:".1rem 0 0"}}, s.sousTitre || "")),
-    GrilleTablettes(s.paires || PAIRES, s.etat),
+    GrilleTablettes(s.paires || pairesDuMoment(), s.etat),
     Legende(s.legende || LEG_Q));
   return Console("pilotage", "pilot", h("div", {className:"card"},
     TitreCarte("🎯 " + EV.titre + " — " + CLASSE, [

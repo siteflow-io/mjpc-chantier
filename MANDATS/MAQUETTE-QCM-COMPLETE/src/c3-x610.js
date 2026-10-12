@@ -1,3 +1,9 @@
+/* (complément 4, correction 9 — la lecture) MAILLARD Noah est parti après la question 7 de la séance de 3e (son PDF validé : « parti après
+   la question 7 ») : à la co-évaluation, il n'est plus là. Il ne dit rien de la lecture de sa feuille, et sa ligne « 🤔 Q10 » n'est pas
+   à lire ce soir ; les présents de la co-évaluation sont 23. */
+CO3.Noah = "parti";
+LIRE_CO3 = LIRE_CO3.filter(function(x){ return x[0] !== "MAILLARD Noah"; });
+var PRESENTS_CO3 = 24 - Object.keys(CO3).filter(function(p){ return CO3[p] === "parti"; }).length;
 /* ═══════════════ Complément 3 — le cas ambigu de la 3e (x610) : chaque décision dit ce qu'elle a fait (changements 4, 5.10, 7) ═══════════════
    « &dec= » : la décision prise (michel, julien, feuille, soir) ; « &retire= » : les points d'autonomie retirés (Michel, Julien, deux).
    Sur le téléphone, la décision se prend sur le téléphone. */
@@ -77,12 +83,12 @@ function ScGarde3(noms){
 // la console du cas ambigu : l'alerte, ou ce que tu as décidé (« &dec= »), et les points retirés (« &retire= »)
 function PilotCoeval3(tranche){
   var dec = paramHash("dec") || (tranche ? "feuille" : null), ret = retires610(), k = MO();
-  var nbAtt = dec ? 0 : ATT_CO.length, presents = 24;
+  var nbAtt = dec ? 0 : ATT_CO.length, presents = PRESENTS_CO3;
   var att = dec ? [] : ATT_CO, lire = LIRE_CO3.slice();
   if(dec === "soir") lire = lire.concat([["DUVERNAY Michel", "Q3 : pense qu'ABRIAL Julien a mal lu sa feuille ; à relire"]]);
-  var compte = function(t){ return Object.keys(CO3).filter(function(p){ var c = CO3[p]; if(dec && c === "att") c = "ok"; return t(c); }).length; };
+  var compte = function(t){ return Object.keys(CO3).filter(function(p){ var c = CO3[p]; if(c === "parti") return false; if(dec && c === "att") c = "ok"; return t(c); }).length; };
   var nOk = compte(function(c){ return c === "ok"; }), nPeut = compte(function(c){ return c.indexOf("peut") === 0; }), nMal = compte(function(c){ return c.indexOf("mal") === 0; });
-  var etat = function(p){ var c = CO3[p]; if(dec && c === "att") c = "ok";
+  var etat = function(p){ var c = CO3[p]; if(c === "parti") return {cls:"m-parti", st:"🚪 parti après la question 7", va:"c-autonomie", titre:"Clique sur le nom : « ⛔ Retirer le point d'autonomie », ou « 🚫 Marquer comme parti »."}; if(dec && c === "att") c = "ok";
     var r = c === "att" ? {cls:"m-pasdit", st:"⏳ pas encore répondu"} : c === "ok" ? {cls:"m-juste", st:"✅ bien lu"} : c.indexOf("mal") === 0 ? (dec && dec !== "soir" ? {cls:"m-juste", st:"❌ Q" + c.slice(3) + " · tranché"} : {cls:"m-faux m-co", st:"❌ mal lu Q" + c.slice(3), flag:dec === "soir" ? "à relire ce soir" : "alerte : à trancher"}) : {cls:"m-coq", st:"🤔 peut-être Q" + c.slice(4), flag:"à relire ce soir"};
     if(ret.indexOf(p) >= 0) r.flag = r.flag === "alerte : à trancher" ? r.flag + " · " + FLAG_RETIRE : FLAG_RETIRE;
     r.va = "c-autonomie"; r.titre = "Clique sur le nom : « ⛔ Retirer le point d'autonomie », ou « 🚫 Marquer comme parti »."; return r; };
@@ -117,7 +123,7 @@ function TelCoeval3(){
     return h("div", {key:i, className:"tel-tab"}, h("span", {className:"tel-tab-n"}, "T" + (i+1)),
       pa.map(function(n, k){
         if(!n) return null;
-        var p = pre(n), c = CO3[p], ps = c === "att" ? {t:"⏳", cls:"tp-rouge"} : c === "ok" ? {t:"✅", cls:"tp-juste"} : c.indexOf("mal") === 0 ? {t:"❌ Q" + c.slice(3), cls:"tp-mal"} : {t:"🤔 Q" + c.slice(4), cls:"tp-coq"};
+        var p = pre(n), c = CO3[p], ps = c === "parti" ? {t:"🚪", cls:"tp-voile"} : c === "att" ? {t:"⏳", cls:"tp-rouge"} : c === "ok" ? {t:"✅", cls:"tp-juste"} : c.indexOf("mal") === 0 ? {t:"❌ Q" + c.slice(3), cls:"tp-mal"} : {t:"🤔 Q" + c.slice(4), cls:"tp-coq"};
         var nom = n.length > 15 ? n.slice(0, 14) + "…" : n;
         return h("button", {key:k, type:"button", className:"tel-el" + (c === "att" ? " rouge" : ""), "data-va":"p-autonomie&eleve=" + encodeURIComponent(p), title:"Ouvre la fiche " + deNom(n) + "."}, h("span", {className:"nm"}, nom), h("span", {className:"tel-past " + ps.cls}, ps.t));
       }));
@@ -126,9 +132,9 @@ function TelCoeval3(){
     h("div", {key:"b", className:"tel-bandeau"},
       h("div", {style:{display:"flex", justifyContent:"space-between", alignItems:"baseline"}}, h("div", {style:{fontWeight:900, fontSize:".95rem"}}, CLASSE), h("div", {style:{fontSize:".72rem", opacity:.9}}, "🕙 Fin " + SCN.finHeure(MO()))),
       h("div", {style:{fontSize:".75rem", opacity:.85}}, EV3.titre),
-      h("div", {style:{marginTop:".3rem", fontSize:".8rem", fontWeight:"bold"}}, "Phase : co-évaluation de la lecture", h("span", {className:"tel-tour"}, (24 - ATT_CO.length) + " / 24 ont répondu"))),
+      h("div", {style:{marginTop:".3rem", fontSize:".8rem", fontWeight:"bold"}}, "Phase : co-évaluation de la lecture", h("span", {className:"tel-tour"}, (PRESENTS_CO3 - ATT_CO.length) + " / " + PRESENTS_CO3 + " ont répondu"))),
     h("div", {key:"al"}, AlerteCo3(true)),
-    h("div", {key:"a", className:"tel-actions"}, h("button", {className:"tel-btn tb-or tb-large ferme", disabled:true, title:"S'ouvre quand les 24 présents ont répondu à la co-évaluation et que l'alerte est tranchée. Il en manque " + ATT_CO.length + "."}, "🔒 🏁 Afficher leur bilan — il en manque " + ATT_CO.length)),
+    h("div", {key:"a", className:"tel-actions"}, h("button", {className:"tel-btn tb-or tb-large ferme", disabled:true, title:"S'ouvre quand les " + PRESENTS_CO3 + " présents ont répondu à la co-évaluation et que l'alerte est tranchée. Il en manque " + ATT_CO.length + "."}, "🔒 🏁 Afficher leur bilan — il en manque " + ATT_CO.length)),
     h("div", {key:"m", className:"tel-manquent"}, h("strong", null, "Pas encore répondu : "), ATT_CO.join(" · ")),
     h("div", {key:"lr", className:"tel-lire"}, h("strong", null, "📌 À lire ce soir (" + LIRE_CO3.length + ") : "), LIRE_CO3.map(function(x){ return x[0] + " — " + x[1]; }).join(" · ")),
     h("div", {key:"l", className:"tel-liste"}, h("div", {className:"tel-liste-h"}, "TABLETTES — ce que chacun pense de la lecture de sa feuille"), lignes),

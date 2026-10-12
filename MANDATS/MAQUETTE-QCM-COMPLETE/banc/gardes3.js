@@ -17,10 +17,13 @@ const lire = p => fs.readFileSync(p, "utf8");
 /* ════════ Le scénario, hors de la page (la référence de la garde 13, et le moment de chaque scène) ════════ */
 global.HUB_EVALS = JSON.parse(lire(path.join(RACINE, "src", "donnees", "evaluations_hub.json")));
 global.EV3 = (new Function(lire(path.join(RACINE, "src", "ev3e.js")) + ";return EV3;"))();
-const SCN = require(path.join(RACINE, "src", "scenario.js"));
+// (complément 4) SCN_FILE : le scénario d'une version livrée, pour jouer les gardes sur elle avec son propre scénario (la v8 à l'étape A)
+const SCN = require(process.env.SCN_FILE || path.join(RACINE, "src", "scenario.js"));
 // le moment d'une scène : celui que LISTE_SCENES déclare ; pour une version qui ne le déclare pas (la v7), celui du scénario
-function momentDe(sc){ return sc.moment || SCN.MOMENT_DE[sc.id] || null; }
-function appareilDe(sc){ return sc.appareil || SCN.appareilDe(sc.id, sc.vue); }
+// (complément 4, garde 16.3) une destination (« c-resultats&seance=PAP ») est jouée comme une scène : sa scène est ce qui précède le premier « & »
+const baseDe = id => String(id).split("&")[0];
+function momentDe(sc){ return sc.moment || SCN.MOMENT_DE[baseDe(sc.id)] || null; }
+function appareilDe(sc){ return sc.appareil || SCN.appareilDe(baseDe(sc.id), sc.vue); }
 
 const TAILLES = {console: [{w:1366, h:768}, {w:1536, h:864}, {w:1920, h:1080}], telephone: [{w:390, h:844}], tablette: [{w:1280, h:800}],
   tableau: [{w:1280, h:800}, {w:1920, h:1080}], eleve: [{w:1280, h:800}, {w:390, h:844}]};
@@ -474,7 +477,7 @@ const ESPION_G3 = () => { window.__G3OUVERT = []; const note = n => function(){ 
   window.open = note("window.open"); window.print = note("window.print"); window.alert = note("alert"); window.confirm = note("confirm"); window.prompt = note("prompt"); };
 async function recharger(page, url, id){
   await page.goto("about:blank"); await page.goto(url + "#scene=" + id + "&cap=1");
-  await page.waitForFunction(i => window.SCENE_PRETE === i, id, {timeout: 10000}).catch(() => {});
+  await page.waitForFunction(i => window.SCENE_PRETE === i, baseDe(id), {timeout: 10000}).catch(() => {});
   await page.waitForTimeout(30);
 }
 const FERMER = /^(✕|×|Annuler|Fermer|✕ Fermer|✓ J'ai compris|J'ai compris|OK|Compris|← Retour à la liste)$/;
@@ -513,7 +516,7 @@ async function carteScene(page, url, sc, A){
     await page.waitForTimeout(90);
     if(!champ) await page.evaluate(() => { const a = document.activeElement; if(a && a !== document.body && !/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)) a.blur(); });
     const apres = await page.evaluate(lireEtat, COUCHES), img1 = await page.screenshot();
-    r.aller = apres.scene !== sc.id ? apres.scene : null; r.m = apres.m; r.hash = apres.hash;
+    r.aller = apres.scene !== baseDe(sc.id) ? apres.scene : null; r.m = apres.m; r.hash = apres.hash;
     r.navigue = apres.hash !== avant.hash; r.ouvre = !r.navigue && apres.couches > avant.couches; r.ferme = apres.couches < avant.couches;
     r.change = apres.empreinte !== avant.empreinte; r.pixels = !img0.equals(img1); r.ouvert = apres.ouvert.length ? apres.ouvert : null;
     r.cle = apres.cle; r.contientObjet = objetDansTexte(apres.couches ? apres.coucheTexte : apres.texte, c.objet);
@@ -538,7 +541,7 @@ async function carteScene(page, url, sc, A){
             const b = Array.from(c.querySelectorAll("button")).filter(b => b.getBoundingClientRect().width > 1 && !b.disabled)[a.i]; b.click(); }, {sel: COUCHES, i: es.i});
           await page.waitForTimeout(80);
           const z = await page.evaluate(lireEtat, COUCHES);
-          r.fermetures.push({par: es.par, ok: z.scene === sc.id && z.couches === depart.couches && z.cle === depart.cle, ou: z.scene + (z.couches ? " (une fenêtre encore ouverte)" : "")});
+          r.fermetures.push({par: es.par, ok: z.scene === baseDe(sc.id) && z.couches === depart.couches && z.cle === depart.cle, ou: z.scene + (z.couches ? " (une fenêtre encore ouverte)" : "")});
         } catch(e){ r.fermetures.push({par: es.par, ok: false, ou: "erreur : " + String(e.message).split("\n")[0].slice(0, 80)}); }
       }
     }
@@ -563,7 +566,7 @@ function garde12Scene(sc, carte, scenesParId){
     const c = r.c; if(!c.vis || c.dis || c.derriere || r.err || c.clv) continue;
     const declare = c.moment || c.appareil;
     if(r.navigue){
-      const dest = scenesParId[r.aller || sc.id] || null;
+      const dest = scenesParId[r.aller || baseDe(sc.id)] || null;
       const mDest = r.m || (dest ? momentDe(dest) : null), aDest = dest ? appareilDe(dest) : null;
       const nm = k => k ? k + (SCN.MOMENTS[k] ? " (" + SCN.MOMENTS[k].etape + ")" : "") : "?";
       if(c.moment){ if(mDest !== c.moment) out.push(tag + " : « " + c.lib + " » déclare « " + nm(c.moment) + " » et mène à « " + (r.aller || sc.id) + " », moment " + nm(mDest)); }
@@ -643,7 +646,7 @@ async function garde15Gestes(page, url, sc){
   if(e0.couches > 0){
     await page.keyboard.press("Escape"); await page.waitForTimeout(80);
     const e1 = await page.evaluate(lireEtat, COUCHES);
-    const ferme = e1.couches < e0.couches || (e1.scene !== sc.id && e1.couches === 0);
+    const ferme = e1.couches < e0.couches || (e1.scene !== baseDe(sc.id) && e1.couches === 0);
     if(!ferme) out.push(tag + " : Échap ne ferme pas la fenêtre « " + e0.coucheTexte.replace(/\s+/g, " ").slice(0, 60) + " »");
     // une fenêtre qui s'enregistre : après une modification, ✕ et Échap ouvrent une garde avant de la fermer
     const aEnregistrer = /Enregistrer/.test(e0.coucheTexte);
@@ -945,13 +948,13 @@ function garde14(sc, T, lu){
   lu.inatteignable.forEach(x => out.push(tag + " : hors d'atteinte — " + x));
   lu.defile.forEach(x => out.push(tag + " : " + x));
   if(lu.petit.length) out.push(tag + " : " + lu.petit.length + " texte(s) sous 12 px dans les classes de la maquette — " + lu.petit.slice(0, 5).join(" · "));
-  if(lu.contraste.length) out.push(tag + " : " + lu.contraste.length + " contraste(s) trop faible(s) dans les classes de la maquette — " + lu.contraste.slice(0, 5).join(" · "));
+  // (complément 4) 14.3, le contraste, est remplacée par la garde 19, qui le mesure aux pixels quel que soit le fond (gardes4.js)
   lu.emoji.forEach(x => out.push(tag + " : émoji décoratif " + x));
   lu.ponctuation.forEach(x => out.push(tag + " : " + x));
   return out;
 }
 
-module.exports = {SCN, momentDe, appareilDe, TAILLES, VUES_PAUL, vueEleve, formeTexte, dansSite, estDonnee, classement, classer, lireTextes9, garde9Scene,
+module.exports = {SCN, baseDe, momentDe, appareilDe, TAILLES, VUES_PAUL, vueEleve, formeTexte, dansSite, estDonnee, classement, classer, lireTextes9, garde9Scene,
   lireDestinations, garde9Destinations, lireTextesEleve, garde95, phrases, MOTS_9, ELISION,
   titresExistant, lireBulles10, garde10Scene, garde10Eleve, garde10Bulles, lireListes11, garde11Scene, garde11Gestes,
   COUCHES, argsPage, listerGestes, lireEtat, ESPION_G3, recharger, carteScene, lireAller, garde12Aller, garde12Scene, garde15Scene, garde15Gestes,

@@ -207,6 +207,12 @@ function verif(ok, quoi, detail){ nb++; if(!ok) ko++; R.push((ok ? "  ok     " :
     const me = await prof.evaluate(() => SCN.mesEvaluations("abrial_julien", null, "3 ESSAI"));
     const me1 = me.filter(x => x.seance === sid)[0];
     verif(me1 && me1.etat === "bilan" && me1.note.n === 3, "Mes évaluations : la copie rendue, 3 / 3", me);
+    // chez lui, sans séance : l'élève entre par son code sur une demi-tablette, puis voit sa moitié avec « 📊 Mes évaluations »
+    const maison = await ouvrir("?mode=eleve");
+    await maison.evaluate(() => ELV.choisirClasse("3 ESSAI")); await pause(300);
+    const r2 = await maison.evaluate(c => ELV.entrer("g", c, "julien", "abrial"), code("ABRIAL Julien")); await pause(500);
+    const tm = (await maison.evaluate(() => document.body.innerText)).replace(/\s+/g, " ");
+    verif(r2.ok && /Mes évaluations/.test(tm) && /ABRIAL JULIEN|ABRIAL Julien/i.test(tm), "chez lui, sans séance : son code, puis sa moitié avec « 📊 Mes évaluations »", {r2, tm: tm.slice(0, 200)});
     // la séance suivante : les binômes d'après ce QCM précédent (classement de la note)
     const bp = await prof.evaluate(() => SCN.binomesProposes("3 ESSAI"));
     verif(bp[0][0] === "abrial_julien" && bp.length === 13, "les binômes suivants se forment sur le classement du QCM précédent (Julien, 3 / 3, en tête)", bp.slice(0, 3));

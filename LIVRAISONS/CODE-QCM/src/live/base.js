@@ -291,6 +291,8 @@ var SCN = (function(){
     var pap = ((s.papier || {})[x] || {}).choix, st = [], pts = [];
     if(pap && !Array.isArray(pap)) pap = Object.keys(pap).map(function(k){ return pap[k]; });
     ev.questions.forEach(function(q, qi){ var c = pap ? (pap[qi] ? (Array.isArray(pap[qi]) ? pap[qi] : Object.values(pap[qi])).map(Number) : []) : ((S.reponse(x, qi, s.id) || {}).choix || null);
+      // une correction du soir (« Que dit la feuille ? » : lectures/<qi>/<slug>) l'emporte
+      var lu = S.lecture(x, qi, s.id); if(lu){ if(lu.choix === "aucun"){ st.push("a"); pts.push(0); return; } c = lu.choix; }
       if(c == null){ st.push("f"); pts.push(0); return; }
       if(juste(c, q)){ st.push("j"); pts.push(1); } else { st.push("f"); pts.push(ev.mode === "partiel" ? partiel(c, q) : 0); } });
     var n = pts.reduce(function(a, b){ return a + b; }, 0), total = ev.questions.filter(function(q){ return !q.bonus; }).length, sur20 = total ? Math.min(20, n * 20 / total) : 0, comp = {};
@@ -772,7 +774,8 @@ var ELV = (function(){
     var x = sanMJPC(trouve);
     return LIVE.lireCodes().then(function(codes){
       var entree = typeof mjpcEntreeCode === "function" ? mjpcEntreeCode(codes, x) : codes[x];
-      if(!entree) return {ok:false, inconnu:true, err:"Ton code n'est pas encore enregistré. Viens me voir pour qu'on le mette en place."};
+      // la phrase de la maquette (t-login-inconnu), mot pour mot
+      if(!entree) return {ok:false, inconnu:true, err:"Ton code n'est pas encore enregistré : lève la main."};
       var verif = typeof mjpcVerifierCode === "function" ? mjpcVerifierCode(entree, String(code).trim()) : Promise.resolve({ok:false, voie:"indisponible"});
       return verif.then(function(r){
         if(!r.ok) return {ok:false, err:(typeof mjpcMessageRefusEleve === "function" && mjpcMessageRefusEleve(r.voie)) || "Ce code ne correspond pas. Vérifie tes 4 chiffres."};

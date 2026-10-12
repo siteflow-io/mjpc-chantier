@@ -233,6 +233,8 @@ SCENES.push({id:"x632-pdf", vue:"console", attendre:true, render:PdfApercu});
   }); });
   SCENES = liste;
 })();
+// la tablette réelle (les deux moitiés, au moment de la séance) est un écran de tablette : ses moitiés portent « 📊 Mes évaluations » (Page)
+SCENES.push({id:"t-live", vue:"tablette", vh:null, attendre:false, render:function(){ return h(TabletteLive); }, section:"L'app", etape:1, titre:"La tablette, au moment réel"});
 window.LISTE_SCENES = SCENES.map(function(s, i){ return {n:i + 1, id:s.id, vue:s.vue, vh:s.vh, section:s.section, etape:s.etape, titre:s.titre}; });
 
 /* ── Le rendu : l'écran de l'appareil, au moment réel ; chaque donnée lue est abonnée (LIVE.abonner) ──

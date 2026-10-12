@@ -1,0 +1,1168 @@
+Relevés : /tmp/rel-v8 (587 écrans) contre /tmp/rel-v9 (871 écrans)
+Écrans changés : 399 · scènes touchées : 34 · voisins à lire aussi : 74
+Devaient changer et n'ont pas bougé : x632-pdf, c-rattrapage
+Scènes touchées : c-annulee, c-appel, c-fiche, c-fiche-garde, c-fiche-retire, c-interrompue, c-papier-reprendre, c-resultats, c-seances, e-bilan-lou, p-autonomie, p-corr-apres, p-corr-avant, p-eleve, p-reponse, t-bilan, t-bilan-annulee, t-bilan-imprime, t-bilan-non-atteinte, t-coeval, t-coeval-daccord, t-coeval-ecrit, t-corr-q2-apres, t-corr-seul, t-demo-q, x610-6-coeval-laquelle, x610-7-coeval-ecrit, x610-8-console-alerte, x610-9-telephone-alerte, x610-autonomie-deux, x610-autonomie-julien, x610-autonomie-michel, x610-feuille, x610-tranche
+Voisins : c-annuler, c-attest2, c-autonomie, c-autonomie-deux, c-autonomie-garde, c-autonomie-julien, c-autonomie-michel, c-autonomie-retiree, c-bilan, c-coeval-attente, c-coeval-feuille, c-coeval-retire-deux, c-coeval-retire-julien, c-coeval-retire-michel, c-coeval-tranche, c-collage, c-copies-rendues, c-corbeille, c-corr-q1-apres, c-corr-q2-apres, c-corr-q2-avant, c-corr-q2-lu, c-corr-q3-apres, c-demo-faite, c-demo-lancer, c-depart, c-deplacer, c-ecartee, c-ecarter, c-echange-refuse, c-estim, c-eval-corbeille, c-evals, c-fin-prevue, c-finir-autre-heure, c-importer, c-lancer, c-mode-emploi, c-papier-correction, c-papier-grille, c-papier-lancer, c-papier-seance, c-parti, c-pret, c-purger, c-q1-close, c-q1-reflexion, c-q1-tour1, c-q1-tour2, c-q2-close, c-q2-tour2, c-q3-close, c-qr, c-que-dit-la-feuille, c-rattrapage, c-reglages, c-reglages-prompt, c-reglages-prompt-modifier, c-rendre, c-reprendre, c-resultats-rendues, c-retour, c-rouvrir-seance, c-rouvrir-tous, c-rouvrir-un, c-sauvegarde, c-seances-lues, c-sessions, c-terminer, c-voir-tablette, e-mes-evals-rendue, t-q3-tour1, x620-1-mode-test-ouverture, x627-3-editeur
+
+~ changé : c-annulee_q=1@1536 · texte identique · image 0.27 %
+~ changé : c-appel_seance=CH1@1536 · texte changé · image 0.29 %
+      -✓
+      +🚫
+      -🚫 1 absent sur 25Tout le monde présent
+      -📱 CHEVALLIER Théo (binôme d'Adam) et ZELLER Lou (seule) sont mis ensemble : tablette 12.
+      +🚫 2 absents sur 25Tout le monde présent
+      +📱 CHEVALLIER Théo (binôme d'Adam) reste seul : tablette 12.
+~ changé : c-appel_seance=JB@1536 · texte changé · image 0.29 %
+      -🚫
+      +✓
+      -🚫 1 absent sur 25Tout le monde présent
+      -📱 CHEVALLIER Théo (binôme d'Adam) et ZELLER Lou (seule) sont mis ensemble : tablette 12.
+      +🚫 0 absent sur 25Tout le monde présent
+      +📱 ZELLER Lou reste seule : tablette 13.
+~ changé : c-appel_seance=RATT@1536 · texte changé · image 7.07 %
+      -🎓 Démo — apprendre le déroulé (3 questions)
+      -Évaluation d'essai — 3 questions
+      -Modei
+      -📱 Sur tablettes
+      -📄 Séance sur papier
+      -⏱️ Durée estimée : 17 mini
+      +🔁 Évaluation d'essai — 3 questions
+      +🔁 Rattrapage. 3 ESSAI a déjà passé cette évaluation le 08/10.i
+      +⏱️ Durée estimée : 14 mini
+      -🚀 Lancer la séance
+      +🚀 Lancer le rattrapage
+      -🚫 2 exclusions de MJPC respectées : le classement mettait CARRÉ Tom avec ESNAULT Inès, et QUINTON Enzo avec OLLIVIER Sacha ; chacun a été échangé avec le binôme le plus proche.
+      +Pas encore noté à cette évaluation : YVON Adam (absent le 08/10).i
+      -⠿ABRIAL Julien
+      -⠿DUVERNAY Michel
+      -📱 Tablette 2
+      -⠿BAUDRY Léa
+      -⠿CARRÉ Tom
+      -📱 Tablette 3
+      -⠿ESNAULT Inès
+      -⠿FOUCHER Hugo
+      -📱 Tablette 4
+      -⠿GALLOIS Manon
+      -⠿HÉBRARD Nathan
+      -📱 Tablette 5
+      -⠿ISAMBERT Chloé
+      -⠿JOUBERT Louis
+      -📱 Tablette 6
+      -⠿LACOMBE Emma
+      -⠿MAILLARD Noah
+      -📱 Tablette 7
+      -⠿NOGARET Zoé
+      -⠿OLLIVIER Sacha
+      -📱 Tablette 8
+      -⠿PERRAUD Jade
+      -⠿QUINTON Enzo
+      -📱 Tablette 9
+      -⠿RAMBAUD Lina
+      -⠿SABATIER Malo
+      -📱 Tablette 10
+      -⠿TESSIER Anna
+      -⠿VALLÉE Rayan
+      -📱 Tablette 11
+      -⠿WEBER Clara
+      -⠿BRUNEAU Camille
+      -📱 Tablette 12
+      -⠿CHEVALLIER Théo
+      +seul
+      -📱 Tablette 13
+      -seul
+      -⠿ZELLER Lou
+      -3 ESSAI — 25 élèves
+      -🚫
+      +3 ESSAI — 1 élève
+      +✓
+      -🚫 1 absent sur 1Tout le monde présent
+      -📱 CHEVALLIER Théo (binôme d'Adam) et ZELLER Lou (seule) sont mis ensemble : tablette 12.
+      +🚫 0 absent sur 1Tout le monde présent
+      +📱 YVON Adam reste seul : tablette 1.
++ paru : c-fiche-garde_eleve=Adam_seance=JB@1536
++ paru : c-fiche-garde_eleve=Anna_seance=CH1@1536
++ paru : c-fiche-garde_eleve=Anna_seance=JB@1536
++ paru : c-fiche-garde_eleve=Anna_seance=PAP@1536
++ paru : c-fiche-garde_eleve=Anna_seance=S3E@1536
++ paru : c-fiche-garde_eleve=Camille_seance=CH1@1536
++ paru : c-fiche-garde_eleve=Camille_seance=JB@1536
++ paru : c-fiche-garde_eleve=Camille_seance=PAP@1536
++ paru : c-fiche-garde_eleve=Camille_seance=S3E@1536
++ paru : c-fiche-garde_eleve=Chlo_C3_A9_seance=CH1@1536
++ paru : c-fiche-garde_eleve=Chlo_C3_A9_seance=JB@1536
++ paru : c-fiche-garde_eleve=Chlo_C3_A9_seance=PAP@1536
++ paru : c-fiche-garde_eleve=Chlo_C3_A9_seance=S3E@1536
++ paru : c-fiche-garde_eleve=Clara_seance=CH1@1536
++ paru : c-fiche-garde_eleve=Clara_seance=JB@1536
++ paru : c-fiche-garde_eleve=Clara_seance=PAP@1536
++ paru : c-fiche-garde_eleve=Clara_seance=S3E@1536
++ paru : c-fiche-garde_eleve=Emma_seance=CH1@1536
++ paru : c-fiche-garde_eleve=Emma_seance=JB@1536
++ paru : c-fiche-garde_eleve=Emma_seance=PAP@1536
++ paru : c-fiche-garde_eleve=Emma_seance=S3E@1536
++ paru : c-fiche-garde_eleve=Enzo_seance=CH1@1536
++ paru : c-fiche-garde_eleve=Enzo_seance=JB@1536
++ paru : c-fiche-garde_eleve=Enzo_seance=PAP@1536
++ paru : c-fiche-garde_eleve=Enzo_seance=S3E@1536
++ paru : c-fiche-garde_eleve=Hugo_seance=CH1@1536
++ paru : c-fiche-garde_eleve=Hugo_seance=JB@1536
++ paru : c-fiche-garde_eleve=Hugo_seance=PAP@1536
++ paru : c-fiche-garde_eleve=Hugo_seance=S3E@1536
++ paru : c-fiche-garde_eleve=In_C3_A8s_seance=CH1@1536
++ paru : c-fiche-garde_eleve=In_C3_A8s_seance=JB@1536
++ paru : c-fiche-garde_eleve=In_C3_A8s_seance=PAP@1536
++ paru : c-fiche-garde_eleve=In_C3_A8s_seance=S3E@1536
++ paru : c-fiche-garde_eleve=Jade_seance=CH1@1536
++ paru : c-fiche-garde_eleve=Jade_seance=JB@1536
++ paru : c-fiche-garde_eleve=Jade_seance=PAP@1536
++ paru : c-fiche-garde_eleve=Jade_seance=S3E@1536
++ paru : c-fiche-garde_eleve=Julien_seance=CH1@1536
++ paru : c-fiche-garde_eleve=Julien_seance=JB@1536
++ paru : c-fiche-garde_eleve=Julien_seance=PAP@1536
++ paru : c-fiche-garde_eleve=L_C3_A9a_seance=CH1@1536
++ paru : c-fiche-garde_eleve=L_C3_A9a_seance=JB@1536
++ paru : c-fiche-garde_eleve=L_C3_A9a_seance=PAP@1536
++ paru : c-fiche-garde_eleve=L_C3_A9a_seance=S3E@1536
++ paru : c-fiche-garde_eleve=Lina_seance=CH1@1536
++ paru : c-fiche-garde_eleve=Lina_seance=JB@1536
++ paru : c-fiche-garde_eleve=Lina_seance=PAP@1536
++ paru : c-fiche-garde_eleve=Lina_seance=S3E@1536
++ paru : c-fiche-garde_eleve=Lou_seance=JB@1536
++ paru : c-fiche-garde_eleve=Lou_seance=PAP@1536
++ paru : c-fiche-garde_eleve=Lou_seance=S3E@1536
++ paru : c-fiche-garde_eleve=Louis_seance=CH1@1536
++ paru : c-fiche-garde_eleve=Louis_seance=JB@1536
++ paru : c-fiche-garde_eleve=Louis_seance=PAP@1536
++ paru : c-fiche-garde_eleve=Louis_seance=S3E@1536
++ paru : c-fiche-garde_eleve=Malo_seance=CH1@1536
++ paru : c-fiche-garde_eleve=Malo_seance=JB@1536
++ paru : c-fiche-garde_eleve=Malo_seance=PAP@1536
++ paru : c-fiche-garde_eleve=Malo_seance=S3E@1536
++ paru : c-fiche-garde_eleve=Manon_seance=CH1@1536
++ paru : c-fiche-garde_eleve=Manon_seance=JB@1536
++ paru : c-fiche-garde_eleve=Manon_seance=PAP@1536
++ paru : c-fiche-garde_eleve=Manon_seance=S3E@1536
++ paru : c-fiche-garde_eleve=Michel_seance=CH1@1536
++ paru : c-fiche-garde_eleve=Michel_seance=JB@1536
++ paru : c-fiche-garde_eleve=Michel_seance=PAP@1536
++ paru : c-fiche-garde_eleve=Nathan_seance=CH1@1536
++ paru : c-fiche-garde_eleve=Nathan_seance=JB@1536
++ paru : c-fiche-garde_eleve=Nathan_seance=PAP@1536
++ paru : c-fiche-garde_eleve=Nathan_seance=S3E@1536
++ paru : c-fiche-garde_eleve=Noah_seance=CH1@1536
++ paru : c-fiche-garde_eleve=Noah_seance=JB@1536
++ paru : c-fiche-garde_eleve=Noah_seance=PAP@1536
++ paru : c-fiche-garde_eleve=Noah_seance=S3E@1536
++ paru : c-fiche-garde_eleve=Rayan_seance=CH1@1536
++ paru : c-fiche-garde_eleve=Rayan_seance=JB@1536
++ paru : c-fiche-garde_eleve=Rayan_seance=PAP@1536
++ paru : c-fiche-garde_eleve=Rayan_seance=S3E@1536
++ paru : c-fiche-garde_eleve=Sacha_seance=CH1@1536
++ paru : c-fiche-garde_eleve=Sacha_seance=JB@1536
++ paru : c-fiche-garde_eleve=Sacha_seance=PAP@1536
++ paru : c-fiche-garde_eleve=Sacha_seance=S3E@1536
++ paru : c-fiche-garde_eleve=Th_C3_A9o_seance=CH1@1536
++ paru : c-fiche-garde_eleve=Th_C3_A9o_seance=JB@1536
++ paru : c-fiche-garde_eleve=Th_C3_A9o_seance=PAP@1536
++ paru : c-fiche-garde_eleve=Th_C3_A9o_seance=S3E@1536
++ paru : c-fiche-garde_eleve=Tom_seance=CH1@1536
++ paru : c-fiche-garde_eleve=Tom_seance=JB@1536
++ paru : c-fiche-garde_eleve=Tom_seance=PAP@1536
++ paru : c-fiche-garde_eleve=Tom_seance=S3E@1536
++ paru : c-fiche-garde_eleve=Zo_C3_A9_seance=CH1@1536
++ paru : c-fiche-garde_eleve=Zo_C3_A9_seance=JB@1536
++ paru : c-fiche-garde_eleve=Zo_C3_A9_seance=PAP@1536
++ paru : c-fiche-garde_eleve=Zo_C3_A9_seance=S3E@1536
+~ changé : c-fiche-retire@1536 · texte identique · image 0.12 %
++ paru : c-fiche-retire_eleve=Adam_seance=JB_retire=Adam@1536
++ paru : c-fiche-retire_eleve=Anna_seance=CH1_retire=Anna@1536
++ paru : c-fiche-retire_eleve=Anna_seance=JB_retire=Anna@1536
++ paru : c-fiche-retire_eleve=Anna_seance=PAP_retire=Anna@1536
++ paru : c-fiche-retire_eleve=Anna_seance=S3E_retire=Anna@1536
++ paru : c-fiche-retire_eleve=Camille_seance=CH1_retire=Camille@1536
++ paru : c-fiche-retire_eleve=Camille_seance=JB_retire=Camille@1536
++ paru : c-fiche-retire_eleve=Camille_seance=PAP_retire=Camille@1536
++ paru : c-fiche-retire_eleve=Camille_seance=S3E_retire=Camille@1536
++ paru : c-fiche-retire_eleve=Chlo_C3_A9_seance=CH1_retire=Chlo_C3_A9@1536
++ paru : c-fiche-retire_eleve=Chlo_C3_A9_seance=JB_retire=Chlo_C3_A9@1536
++ paru : c-fiche-retire_eleve=Chlo_C3_A9_seance=PAP_retire=Chlo_C3_A9@1536
++ paru : c-fiche-retire_eleve=Chlo_C3_A9_seance=S3E_retire=Chlo_C3_A9@1536
++ paru : c-fiche-retire_eleve=Clara_seance=CH1_retire=Clara@1536
++ paru : c-fiche-retire_eleve=Clara_seance=JB_retire=Clara@1536
++ paru : c-fiche-retire_eleve=Clara_seance=PAP_retire=Clara@1536
++ paru : c-fiche-retire_eleve=Clara_seance=S3E_retire=Clara@1536
++ paru : c-fiche-retire_eleve=Emma_seance=CH1_retire=Emma@1536
++ paru : c-fiche-retire_eleve=Emma_seance=JB_retire=Emma@1536
++ paru : c-fiche-retire_eleve=Emma_seance=PAP_retire=Emma@1536
++ paru : c-fiche-retire_eleve=Emma_seance=S3E_retire=Emma@1536
+~ changé : c-fiche-retire_eleve=Enzo_retire=Enzo@1536 · texte identique · image 0.06 %
++ paru : c-fiche-retire_eleve=Enzo_seance=CH1_retire=Enzo@1536
++ paru : c-fiche-retire_eleve=Enzo_seance=JB_retire=Enzo@1536
++ paru : c-fiche-retire_eleve=Enzo_seance=PAP_retire=Enzo@1536
++ paru : c-fiche-retire_eleve=Enzo_seance=S3E_retire=Enzo@1536
++ paru : c-fiche-retire_eleve=Hugo_seance=CH1_retire=Hugo@1536
++ paru : c-fiche-retire_eleve=Hugo_seance=JB_retire=Hugo@1536
++ paru : c-fiche-retire_eleve=Hugo_seance=PAP_retire=Hugo@1536
++ paru : c-fiche-retire_eleve=Hugo_seance=S3E_retire=Hugo@1536
++ paru : c-fiche-retire_eleve=In_C3_A8s_seance=CH1_retire=In_C3_A8s@1536
++ paru : c-fiche-retire_eleve=In_C3_A8s_seance=JB_retire=In_C3_A8s@1536
++ paru : c-fiche-retire_eleve=In_C3_A8s_seance=PAP_retire=In_C3_A8s@1536
++ paru : c-fiche-retire_eleve=In_C3_A8s_seance=S3E_retire=In_C3_A8s@1536
++ paru : c-fiche-retire_eleve=Jade_seance=CH1_retire=Jade@1536
++ paru : c-fiche-retire_eleve=Jade_seance=JB_retire=Jade@1536
++ paru : c-fiche-retire_eleve=Jade_seance=PAP_retire=Jade@1536
++ paru : c-fiche-retire_eleve=Jade_seance=S3E_retire=Jade@1536
++ paru : c-fiche-retire_eleve=Julien_seance=CH1_retire=Julien@1536
++ paru : c-fiche-retire_eleve=Julien_seance=JB_retire=Julien@1536
++ paru : c-fiche-retire_eleve=Julien_seance=PAP_retire=Julien@1536
++ paru : c-fiche-retire_eleve=L_C3_A9a_seance=CH1_retire=L_C3_A9a@1536
++ paru : c-fiche-retire_eleve=L_C3_A9a_seance=JB_retire=L_C3_A9a@1536
++ paru : c-fiche-retire_eleve=L_C3_A9a_seance=PAP_retire=L_C3_A9a@1536
++ paru : c-fiche-retire_eleve=L_C3_A9a_seance=S3E_retire=L_C3_A9a@1536
++ paru : c-fiche-retire_eleve=Lina_seance=CH1_retire=Lina@1536
++ paru : c-fiche-retire_eleve=Lina_seance=JB_retire=Lina@1536
++ paru : c-fiche-retire_eleve=Lina_seance=PAP_retire=Lina@1536
++ paru : c-fiche-retire_eleve=Lina_seance=S3E_retire=Lina@1536
+~ changé : c-fiche-retire_eleve=Lou_retire=Lou@1536 · texte identique · image 0.05 %
++ paru : c-fiche-retire_eleve=Lou_seance=JB_retire=Lou@1536
++ paru : c-fiche-retire_eleve=Lou_seance=PAP_retire=Lou@1536
++ paru : c-fiche-retire_eleve=Lou_seance=S3E_retire=Lou@1536
++ paru : c-fiche-retire_eleve=Louis_seance=CH1_retire=Louis@1536
++ paru : c-fiche-retire_eleve=Louis_seance=JB_retire=Louis@1536
++ paru : c-fiche-retire_eleve=Louis_seance=PAP_retire=Louis@1536
++ paru : c-fiche-retire_eleve=Louis_seance=S3E_retire=Louis@1536
++ paru : c-fiche-retire_eleve=Malo_seance=CH1_retire=Malo@1536
++ paru : c-fiche-retire_eleve=Malo_seance=JB_retire=Malo@1536
++ paru : c-fiche-retire_eleve=Malo_seance=PAP_retire=Malo@1536
++ paru : c-fiche-retire_eleve=Malo_seance=S3E_retire=Malo@1536
++ paru : c-fiche-retire_eleve=Manon_seance=CH1_retire=Manon@1536
++ paru : c-fiche-retire_eleve=Manon_seance=JB_retire=Manon@1536
++ paru : c-fiche-retire_eleve=Manon_seance=PAP_retire=Manon@1536
++ paru : c-fiche-retire_eleve=Manon_seance=S3E_retire=Manon@1536
+~ changé : c-fiche-retire_eleve=Michel@1536 · texte identique · image 0.12 %
++ paru : c-fiche-retire_eleve=Michel_seance=CH1_retire=Michel@1536
++ paru : c-fiche-retire_eleve=Michel_seance=JB_retire=Michel@1536
++ paru : c-fiche-retire_eleve=Michel_seance=PAP_retire=Michel@1536
++ paru : c-fiche-retire_eleve=Nathan_seance=CH1_retire=Nathan@1536
++ paru : c-fiche-retire_eleve=Nathan_seance=JB_retire=Nathan@1536
++ paru : c-fiche-retire_eleve=Nathan_seance=PAP_retire=Nathan@1536
++ paru : c-fiche-retire_eleve=Nathan_seance=S3E_retire=Nathan@1536
++ paru : c-fiche-retire_eleve=Noah_seance=CH1_retire=Noah@1536
++ paru : c-fiche-retire_eleve=Noah_seance=JB_retire=Noah@1536
++ paru : c-fiche-retire_eleve=Noah_seance=PAP_retire=Noah@1536
++ paru : c-fiche-retire_eleve=Noah_seance=S3E_retire=Noah@1536
+~ changé : c-fiche-retire_eleve=Rayan_retire=Rayan@1536 · texte identique · image 0.05 %
++ paru : c-fiche-retire_eleve=Rayan_seance=CH1_retire=Rayan@1536
++ paru : c-fiche-retire_eleve=Rayan_seance=JB_retire=Rayan@1536
++ paru : c-fiche-retire_eleve=Rayan_seance=PAP_retire=Rayan@1536
++ paru : c-fiche-retire_eleve=Rayan_seance=S3E_retire=Rayan@1536
+~ changé : c-fiche-retire_eleve=Sacha_retire=Sacha@1536 · texte identique · image 0.05 %
++ paru : c-fiche-retire_eleve=Sacha_seance=CH1_retire=Sacha@1536
++ paru : c-fiche-retire_eleve=Sacha_seance=JB_retire=Sacha@1536
++ paru : c-fiche-retire_eleve=Sacha_seance=PAP_retire=Sacha@1536
++ paru : c-fiche-retire_eleve=Sacha_seance=S3E_retire=Sacha@1536
++ paru : c-fiche-retire_eleve=Th_C3_A9o_seance=CH1_retire=Th_C3_A9o@1536
++ paru : c-fiche-retire_eleve=Th_C3_A9o_seance=JB_retire=Th_C3_A9o@1536
++ paru : c-fiche-retire_eleve=Th_C3_A9o_seance=PAP_retire=Th_C3_A9o@1536
++ paru : c-fiche-retire_eleve=Th_C3_A9o_seance=S3E_retire=Th_C3_A9o@1536
++ paru : c-fiche-retire_eleve=Tom_seance=CH1_retire=Tom@1536
++ paru : c-fiche-retire_eleve=Tom_seance=JB_retire=Tom@1536
++ paru : c-fiche-retire_eleve=Tom_seance=PAP_retire=Tom@1536
++ paru : c-fiche-retire_eleve=Tom_seance=S3E_retire=Tom@1536
++ paru : c-fiche-retire_eleve=Zo_C3_A9_seance=CH1_retire=Zo_C3_A9@1536
++ paru : c-fiche-retire_eleve=Zo_C3_A9_seance=JB_retire=Zo_C3_A9@1536
++ paru : c-fiche-retire_eleve=Zo_C3_A9_seance=PAP_retire=Zo_C3_A9@1536
++ paru : c-fiche-retire_eleve=Zo_C3_A9_seance=S3E_retire=Zo_C3_A9@1536
+~ changé : c-fiche@1536 · texte identique · image 0.12 %
++ paru : c-fiche_eleve=Adam_seance=JB@1536
++ paru : c-fiche_eleve=Anna_seance=CH1@1536
++ paru : c-fiche_eleve=Anna_seance=JB@1536
++ paru : c-fiche_eleve=Anna_seance=PAP@1536
++ paru : c-fiche_eleve=Anna_seance=S3E@1536
++ paru : c-fiche_eleve=Camille_seance=CH1@1536
++ paru : c-fiche_eleve=Camille_seance=JB@1536
++ paru : c-fiche_eleve=Camille_seance=PAP@1536
++ paru : c-fiche_eleve=Camille_seance=S3E@1536
++ paru : c-fiche_eleve=Chlo_C3_A9_seance=CH1@1536
++ paru : c-fiche_eleve=Chlo_C3_A9_seance=JB@1536
++ paru : c-fiche_eleve=Chlo_C3_A9_seance=PAP@1536
++ paru : c-fiche_eleve=Chlo_C3_A9_seance=S3E@1536
++ paru : c-fiche_eleve=Clara_seance=CH1@1536
++ paru : c-fiche_eleve=Clara_seance=JB@1536
++ paru : c-fiche_eleve=Clara_seance=PAP@1536
++ paru : c-fiche_eleve=Clara_seance=S3E@1536
++ paru : c-fiche_eleve=Emma_seance=CH1@1536
++ paru : c-fiche_eleve=Emma_seance=JB@1536
++ paru : c-fiche_eleve=Emma_seance=PAP@1536
++ paru : c-fiche_eleve=Emma_seance=S3E@1536
+~ changé : c-fiche_eleve=Enzo@1536 · texte identique · image 0.06 %
++ paru : c-fiche_eleve=Enzo_seance=CH1@1536
++ paru : c-fiche_eleve=Enzo_seance=JB@1536
++ paru : c-fiche_eleve=Enzo_seance=PAP@1536
++ paru : c-fiche_eleve=Enzo_seance=S3E@1536
++ paru : c-fiche_eleve=Hugo_seance=CH1@1536
++ paru : c-fiche_eleve=Hugo_seance=JB@1536
++ paru : c-fiche_eleve=Hugo_seance=PAP@1536
++ paru : c-fiche_eleve=Hugo_seance=S3E@1536
++ paru : c-fiche_eleve=In_C3_A8s_seance=CH1@1536
++ paru : c-fiche_eleve=In_C3_A8s_seance=JB@1536
++ paru : c-fiche_eleve=In_C3_A8s_seance=PAP@1536
++ paru : c-fiche_eleve=In_C3_A8s_seance=S3E@1536
++ paru : c-fiche_eleve=Jade_seance=CH1@1536
++ paru : c-fiche_eleve=Jade_seance=JB@1536
++ paru : c-fiche_eleve=Jade_seance=PAP@1536
++ paru : c-fiche_eleve=Jade_seance=S3E@1536
++ paru : c-fiche_eleve=Julien_seance=CH1@1536
++ paru : c-fiche_eleve=Julien_seance=JB@1536
++ paru : c-fiche_eleve=Julien_seance=PAP@1536
++ paru : c-fiche_eleve=Julien_seance=S3E@1536
++ paru : c-fiche_eleve=L_C3_A9a_seance=CH1@1536
++ paru : c-fiche_eleve=L_C3_A9a_seance=JB@1536
++ paru : c-fiche_eleve=L_C3_A9a_seance=PAP@1536
++ paru : c-fiche_eleve=L_C3_A9a_seance=S3E@1536
++ paru : c-fiche_eleve=Lina_seance=CH1@1536
++ paru : c-fiche_eleve=Lina_seance=JB@1536
++ paru : c-fiche_eleve=Lina_seance=PAP@1536
++ paru : c-fiche_eleve=Lina_seance=S3E@1536
+~ changé : c-fiche_eleve=Lou@1536 · texte identique · image 0.05 %
++ paru : c-fiche_eleve=Lou_seance=JB@1536
++ paru : c-fiche_eleve=Lou_seance=PAP@1536
++ paru : c-fiche_eleve=Lou_seance=S3E@1536
++ paru : c-fiche_eleve=Louis_seance=CH1@1536
++ paru : c-fiche_eleve=Louis_seance=JB@1536
++ paru : c-fiche_eleve=Louis_seance=PAP@1536
++ paru : c-fiche_eleve=Louis_seance=S3E@1536
++ paru : c-fiche_eleve=Malo_seance=CH1@1536
++ paru : c-fiche_eleve=Malo_seance=JB@1536
++ paru : c-fiche_eleve=Malo_seance=PAP@1536
++ paru : c-fiche_eleve=Malo_seance=S3E@1536
++ paru : c-fiche_eleve=Manon_seance=CH1@1536
++ paru : c-fiche_eleve=Manon_seance=JB@1536
++ paru : c-fiche_eleve=Manon_seance=PAP@1536
++ paru : c-fiche_eleve=Manon_seance=S3E@1536
+~ changé : c-fiche_eleve=Michel@1536 · texte identique · image 0.12 %
++ paru : c-fiche_eleve=Michel_seance=CH1@1536
++ paru : c-fiche_eleve=Michel_seance=JB@1536
++ paru : c-fiche_eleve=Michel_seance=PAP@1536
++ paru : c-fiche_eleve=Michel_seance=S3E@1536
++ paru : c-fiche_eleve=Nathan_seance=CH1@1536
++ paru : c-fiche_eleve=Nathan_seance=JB@1536
++ paru : c-fiche_eleve=Nathan_seance=PAP@1536
++ paru : c-fiche_eleve=Nathan_seance=S3E@1536
++ paru : c-fiche_eleve=Noah_seance=CH1@1536
++ paru : c-fiche_eleve=Noah_seance=JB@1536
++ paru : c-fiche_eleve=Noah_seance=PAP@1536
++ paru : c-fiche_eleve=Noah_seance=S3E@1536
+~ changé : c-fiche_eleve=Rayan@1536 · texte identique · image 0.05 %
++ paru : c-fiche_eleve=Rayan_seance=CH1@1536
++ paru : c-fiche_eleve=Rayan_seance=JB@1536
++ paru : c-fiche_eleve=Rayan_seance=PAP@1536
++ paru : c-fiche_eleve=Rayan_seance=S3E@1536
+~ changé : c-fiche_eleve=Sacha@1536 · texte identique · image 0.05 %
++ paru : c-fiche_eleve=Sacha_seance=CH1@1536
++ paru : c-fiche_eleve=Sacha_seance=JB@1536
++ paru : c-fiche_eleve=Sacha_seance=PAP@1536
++ paru : c-fiche_eleve=Sacha_seance=S3E@1536
++ paru : c-fiche_eleve=Th_C3_A9o_seance=CH1@1536
++ paru : c-fiche_eleve=Th_C3_A9o_seance=JB@1536
++ paru : c-fiche_eleve=Th_C3_A9o_seance=PAP@1536
++ paru : c-fiche_eleve=Th_C3_A9o_seance=S3E@1536
++ paru : c-fiche_eleve=Tom_seance=CH1@1536
++ paru : c-fiche_eleve=Tom_seance=JB@1536
++ paru : c-fiche_eleve=Tom_seance=PAP@1536
++ paru : c-fiche_eleve=Tom_seance=S3E@1536
++ paru : c-fiche_eleve=Zo_C3_A9_seance=CH1@1536
++ paru : c-fiche_eleve=Zo_C3_A9_seance=JB@1536
++ paru : c-fiche_eleve=Zo_C3_A9_seance=PAP@1536
++ paru : c-fiche_eleve=Zo_C3_A9_seance=S3E@1536
+~ changé : c-interrompue@1536 · texte changé · image 0.11 %
+      -📝 État : question 2, 2e tour (moitiés de droite) ; 36 réponses enregistrées
+      +📝 État : question 2, 2e tour (moitiés de gauche) ; 36 réponses enregistrées
+~ changé : c-papier-reprendre@1536 · texte changé · image 0.00 %
+      +3e- éval 1 Analyse logique - Construire une phrase complexe
+      -09/10/2026 15:07 · ✅ terminée · 24 présents, 1 absent (YVON Adam) · 5 feuilles à lire
+      +09/10/2026 15:07 · ✅ terminée · 24 présents, 1 absent (YVON Adam) · 4 feuilles à lire
+~ changé : c-resultats_seance=CH1@1536 · texte changé · image 19.44 %
+      +📄 PDF notes et compétences
+      +📥 Export CSV
+      -24/09/2026 10:04 · 23 présents, 2 absents · copies rendues le 26/09
+      +24/09/2026 10:04 · 23 présents, 2 absents · questions écartées ou annulées : aucune · copies rendues le 26/09
+      -Élève	Q1	Q2	Q3	Q4	Q5	Q6	Q7	Q8	Q9	Q10	Note	Sur 20	Maîtrise
+      -ABRIAL Julien	✓	✓	✗	✗	✓	✗	✗	✗	✓	✓	5/10	10	🔵 Maîtrise satisfaisante
+      -BAUDRY Léa	✗	✗	✗	✓	✗	✗	✗	✗	✓	✓	3/10	6	🟠 Maîtrise fragile
+      -BRUNEAU Camille	✓	✗	✓	✓	✗	✗	✓	✓	✓	✗	6/10	12	🔵 Maîtrise satisfaisante
+      -CARRÉ Tom	✓	✓	✓	✓	✓	✓	✗	✗	✓	✗	7/10	14	🔵 Maîtrise satisfaisante
+      -CHEVALLIER Théo	✓	✓	✗	✓	✗	✓	✓	✗	✓	✗	6/10	12	🔵 Maîtrise satisfaisante
+      -DUVERNAY Michel	✗	✓	✓	✓	✓	✗	✓	✓	✓	✓	8/10	16	🟢 Très bonne maîtrise
+      -ESNAULT Inès	✓	✓	✓	✓	✓	✓	✓	✓	✓	✓	10/10	20	🟢 Très bonne maîtrise
+      -FOUCHER Hugo	✓	✓	✓	✓	✓	✗	✓	✓	✓	✗	8/10	16	🟢 Très bonne maîtrise
+      -GALLOIS Manon	✓	✓	✓	✓	✓	✓	✓	✗	✗	✓	8/10	16	🟢 Très bonne maîtrise
+      -HÉBRARD Nathan	✗	✓	✗	✗	✓	✓	✓	✗	✓	✓	6/10	12	🔵 Maîtrise satisfaisante
+      -ISAMBERT Chloé	✓	✓	✓	✓	✓	✓	✓	✓	✗	✓	9/10	18	🟢 Très bonne maîtrise
+      -JOUBERT Louis	✓	✓	✗	✓	✗	✗	✓	✗	✓	✓	6/10	12	🔵 Maîtrise satisfaisante
+      -LACOMBE Emma	✗	✗	✓	✓	✓	✓	✓	✗	✓	✓	7/10	14	🔵 Maîtrise satisfaisante
+      -MAILLARD Noah	✓	✓	✗	✗	✓	✓	✗	✗	✗	✓	5/10	10	🔵 Maîtrise satisfaisante
+      -NOGARET Zoé	✗	✓	✗	✗	✓	✓	✓	✓	✗	✓	6/10	12	🔵 Maîtrise satisfaisante
+      -OLLIVIER Sacha	✗	✗	✗	✗	✗	✓	✓	✗	✓	✗	3/10	6	🟠 Maîtrise fragile
+      -PERRAUD Jade	✓	✓	✓	✓	✓	✓	✓	✗	✓	✓	9/10	18	🟢 Très bonne maîtrise
+      -QUINTON Enzo	✓	✓	✗	✗	✓	✓	✓	✓	✗	✓	7/10	14	🔵 Maîtrise satisfaisante
+      -RAMBAUD Lina	✓	✓	✓	✓	✓	✓	✓	✓	✓	✓	10/10	20	🟢 Très bonne maîtrise
+      -SABATIER Malo	✓	✗	✓	✗	✗	✓	✓	✗	✓	✓	6/10	12	🔵 Maîtrise satisfaisante
+      -TESSIER Anna	✓	✓	✓	✓	✓	✓	✓	✓	✓	✓	10/10	20	🟢 Très bonne maîtrise
+      -VALLÉE Rayan	✓	✗	✓	✓	✓	✓	✓	✓	✗	✗	7/10	14	🔵 Maîtrise satisfaisante
+      -WEBER Clara	✗	✗	✓	✗	✗	✗	✗	✓	✗	✗	2/10	4	🔴 Maîtrise insuffisante
+      -YVON Adam	absent
+      -ZELLER Lou	absente
+      +Élève ▴	Q1	Q2	Q3	Q4	Q5	Q6	Q7	Q8	Q9	Q10	Note	Sur 20	Maîtrise de la note	🧩 —	🤝 Autonomie	À lire sur la feuille
+      +ABRIAL Julien	✓	✓	✗	✗	✓	✗	✗	✗	✓	✓	5/10	10	🔵 Maîtrise satisfaisante	—	🟢 Très bonne maîtrise	
+      +BAUDRY Léa	✗	✗	✗	✓	✗	✗	✗	✗	✓	✓	3/10	6	🟠 Maîtrise fragile	—	🟢 Très bonne maîtrise	
+      +BRUNEAU Camille	✓	✗	✓	✓	✗	✗	✓	✓	✓	✗	6/10	12	🔵 Maîtrise satisfaisante	—	🟢 Très bonne maîtrise	
+      +CARRÉ Tom	✓	✓	✓	✓	✓	✓	✗	✗	✓	✗	7/10	14	🔵 Maîtrise satisfaisante	—	🟢 Très bonne maîtrise	
+      +CHEVALLIER Théo	✓	✓	✗	✓	✗	✓	✓	✗	✓	✗	6/10	12	🔵 Maîtrise satisfaisante	—	🟢 Très bonne maîtrise	
+      +DUVERNAY Michel	✗	✓	✓	✓	✓	✗	✓	✓	✓	✓	8/10	16	🟢 Très bonne maîtrise	—	🟢 Très bonne maîtrise	
+      +ESNAULT Inès	✓	✓	✓	✓	✓	✓	✓	✓	✓	✓	10/10	20	🟢 Très bonne maîtrise	—	🟢 Très bonne maîtrise	
+      +FOUCHER Hugo	✓	✓	✓	✓	✓	✗	✓	✓	✓	✗	8/10	16	🟢 Très bonne maîtrise	—	🟢 Très bonne maîtrise	
+      +GALLOIS Manon	✓	✓	✓	✓	✓	✓	✓	✗	✗	✓	8/10	16	🟢 Très bonne maîtrise	—	🟢 Très bonne maîtrise	
+      +HÉBRARD Nathan	✗	✓	✗	✗	✓	✓	✓	✗	✓	✓	6/10	12	🔵 Maîtrise satisfaisante	—	🟢 Très bonne maîtrise	
+      +ISAMBERT Chloé	✓	✓	✓	✓	✓	✓	✓	✓	✗	✓	9/10	18	🟢 Très bonne maîtrise	—	🟢 Très bonne maîtrise	
+      +JOUBERT Louis	✓	✓	✗	✓	✗	✗	✓	✗	✓	✓	6/10	12	🔵 Maîtrise satisfaisante	—	🟢 Très bonne maîtrise	
+      +LACOMBE Emma	✗	✗	✓	✓	✓	✓	✓	✗	✓	✓	7/10	14	🔵 Maîtrise satisfaisante	—	🟢 Très bonne maîtrise	
+      +MAILLARD Noah	✓	✓	✗	✗	✓	✓	✗	✗	✗	✓	5/10	10	🔵 Maîtrise satisfaisante	—	🟢 Très bonne maîtrise	
+      +NOGARET Zoé	✗	✓	✗	✗	✓	✓	✓	✓	✗	✓	6/10	12	🔵 Maîtrise satisfaisante	—	🟢 Très bonne maîtrise	
+      +OLLIVIER Sacha	✗	✗	✗	✗	✗	✓	✓	✗	✓	✗	3/10	6	🟠 Maîtrise fragile	—	🟢 Très bonne maîtrise	
+      +PERRAUD Jade	✓	✓	✓	✓	✓	✓	✓	✗	✓	✓	9/10	18	🟢 Très bonne maîtrise	—	🟢 Très bonne maîtrise	
+      +QUINTON Enzo	✓	✓	✗	✗	✓	✓	✓	✓	✗	✓	7/10	14	🔵 Maîtrise satisfaisante	—	🟢 Très bonne maîtrise	
+      +RAMBAUD Lina	✓	✓	✓	✓	✓	✓	✓	✓	✓	✓	10/10	20	🟢 Très bonne maîtrise	—	🟢 Très bonne maîtrise	
+      +SABATIER Malo	✓	✗	✓	✗	✗	✓	✓	✗	✓	✓	6/10	12	🔵 Maîtrise satisfaisante	—	🟢 Très bonne maîtrise	
+      +TESSIER Anna	✓	✓	✓	✓	✓	✓	✓	✓	✓	✓	10/10	20	🟢 Très bonne maîtrise	—	🟢 Très bonne maîtrise	
+      +VALLÉE Rayan	✓	✗	✓	✓	✓	✓	✓	✓	✗	✗	7/10	14	🔵 Maîtrise satisfaisante	—	🟢 Très bonne maîtrise	
+      +WEBER Clara	✗	✗	✓	✗	✗	✗	✗	✓	✗	✗	2/10	4	🔴 Maîtrise insuffisante	—	🟢 Très bonne maîtrise	
+      +✓ juste d'après la feuille · ✓ orange : Trouvée au dernier moment · ✗ faux · ∅ « aucun de ces choix » · ⛔ : point d'autonomie retiré · ⚠️ Annulée ou ❌ Écartée : la question garde sa marque en tête de
+~ changé : c-resultats_seance=JB@1536 · texte changé · image 20.08 %
+      +📄 PDF notes et compétences
+      +📥 Export CSV
+      -15/09/2026 10:03 · 25 présents · copies rendues le 17/09
+      +15/09/2026 10:03 · 25 présents · questions écartées ou annulées : aucune · copies rendues le 17/09
+      -Élève	Q1	Q2	Q3	Q4	Q5	Q6	Q7	Q8	Q9	Q10	Note	Sur 20	Maîtrise
+      -ABRIAL Julien	✓	✗	✓	✓	✓	✓	✓	✗	✗	✓	7/10	14	🔵 Maîtrise satisfaisante
+      -BAUDRY Léa	✗	✓	✓	✓	✓	✗	✗	✗	✗	✗	4/10	8	🟠 Maîtrise fragile
+      -BRUNEAU Camille	✓	✗	✓	✗	✓	✗	✗	✓	✓	✗	5/10	10	🔵 Maîtrise satisfaisante
+      -CARRÉ Tom	✓	✓	✓	✓	✗	✓	✓	✓	✓	✓	9/10	18	🟢 Très bonne maîtrise
+      -CHEVALLIER Théo	✓	✗	✗	✓	✗	✓	✓	✗	✓	✓	6/10	12	🔵 Maîtrise satisfaisante
+      -DUVERNAY Michel	✓	✓	✗	✓	✓	✓	✓	✗	✓	✗	7/10	14	🔵 Maîtrise satisfaisante
+      -ESNAULT Inès	✓	✓	✗	✓	✓	✓	✗	✓	✓	✗	7/10	14	🔵 Maîtrise satisfaisante
+      -FOUCHER Hugo	✗	✓	✓	✓	✓	✓	✓	✗	✓	✗	7/10	14	🔵 Maîtrise satisfaisante
+      -GALLOIS Manon	✓	✗	✗	✓	✓	✗	✗	✓	✗	✗	4/10	8	🟠 Maîtrise fragile
+      -HÉBRARD Nathan	✗	✓	✓	✗	✓	✗	✓	✗	✓	✓	6/10	12	🔵 Maîtrise satisfaisante
+      -ISAMBERT Chloé	✓	✓	✗	✓	✓	✓	✓	✓	✗	✗	7/10	14	🔵 Maîtrise satisfaisante
+      -JOUBERT Louis	✓	✓	✓	✓	✗	✗	✓	✗	✗	✓	6/10	12	🔵 Maîtrise satisfaisante
+      -LACOMBE Emma	✓	✗	✓	✓	✓	✗	✓	✗	✗	✗	5/10	10	🔵 Maîtrise satisfaisante
+      -MAILLARD Noah	✗	✓	✗	✗	✓	✗	✗	✓	✗	✗	3/10	6	🟠 Maîtrise fragile
+      -NOGARET Zoé	✓	✓	✗	✓	✓	✓	✗	✗	✗	✓	6/10	12	🔵 Maîtrise satisfaisante
+      -OLLIVIER Sacha	✗	✓	✗	✓	✓	✗	✓	✓	✗	✗	5/10	10	🔵 Maîtrise satisfaisante
+      -PERRAUD Jade	✓	✗	✓	✓	✓	✗	✗	✓	✗	✗	5/10	10	🔵 Maîtrise satisfaisante
+      -QUINTON Enzo	✓	✓	✓	✓	✓	✓	✗	✗	✓	✓	8/10	16	🟢 Très bonne maîtrise
+      -RAMBAUD Lina	✓	✓	✓	✓	✓	✓	✓	✓	✓	✓	10/10	20	🟢 Très bonne maîtrise
+      -SABATIER Malo	✓	✓	✗	✓	✗	✓	✗	✗	✗	✓	5/10	10	🔵 Maîtrise satisfaisante
+      -TESSIER Anna	✓	✓	✓	✓	✓	✓	✓	✓	✗	✗	8/10	16	🟢 Très bonne maîtrise
+      -VALLÉE Rayan	✓	✓	✓	✓	✗	✗	✗	✓	✓	✗	6/10	12	🔵 Maîtrise satisfaisante
+      -WEBER Clara	✓	✗	✓	✓	✓	✗	✓	✗	✗	✗	5/10	10	🔵 Maîtrise satisfaisante
+      -YVON Adam	✗	✓	✗	✗	✓	✓	✓	✓	✓	✓	7/10	14	🔵 Maîtrise satisfaisante
+      -ZELLER Lou	✓	✓	✗	✓	✗	✓	✗	✓	✗	✓	6/10	12	🔵 Maîtrise satisfaisante
+      +Élève ▴	Q1	Q2	Q3	Q4	Q5	Q6	Q7	Q8	Q9	Q10	Note	Sur 20	Maîtrise de la note	🧩 —	🤝 Autonomie	À lire sur la feuille
+      +ABRIAL Julien	✓	✗	✓	✓	✓	✓	✓	✗	✗	✓	7/10	14	🔵 Maîtrise satisfaisante	—	🟢 Très bonne maîtrise	
+      +BAUDRY Léa	✗	✓	✓	✓	✓	✗	✗	✗	✗	✗	4/10	8	🟠 Maîtrise fragile	—	🟢 Très bonne maîtrise	
+      +BRUNEAU Camille	✓	✗	✓	✗	✓	✗	✗	✓	✓	✗	5/10	10	🔵 Maîtrise satisfaisante	—	🟢 Très bonne maîtrise	
+      +CARRÉ Tom	✓	✓	✓	✓	✗	✓	✓	✓	✓	✓	9/10	18	🟢 Très bonne maîtrise	—	🟢 Très bonne maîtrise	
+      +CHEVALLIER Théo	✓	✗	✗	✓	✗	✓	✓	✗	✓	✓	6/10	12	🔵 Maîtrise satisfaisante	—	🟢 Très bonne maîtrise	
+      +DUVERNAY Michel	✓	✓	✗	✓	✓	✓	✓	✗	✓	✗	7/10	14	🔵 Maîtrise satisfaisante	—	🟢 Très bonne maîtrise	
+      +ESNAULT Inès	✓	✓	✗	✓	✓	✓	✗	✓	✓	✗	7/10	14	🔵 Maîtrise satisfaisante	—	🟢 Très bonne maîtrise	
+      +FOUCHER Hugo	✗	✓	✓	✓	✓	✓	✓	✗	✓	✗	7/10	14	🔵 Maîtrise satisfaisante	—	🟢 Très bonne maîtrise	
+      +GALLOIS Manon	✓	✗	✗	✓	✓	✗	✗	✓	✗	✗	4/10	8	🟠 Maîtrise fragile	—	🟢 Très bonne maîtrise	
+      +HÉBRARD Nathan	✗	✓	✓	✗	✓	✗	✓	✗	✓	✓	6/10	12	🔵 Maîtrise satisfaisante	—	🟢 Très bonne maîtrise	
+      +ISAMBERT Chloé	✓	✓	✗	✓	✓	✓	✓	✓	✗	✗	7/10	14	🔵 Maîtrise satisfaisante	—	🟢 Très bonne maîtrise	
+      +JOUBERT Louis	✓	✓	✓	✓	✗	✗	✓	✗	✗	✓	6/10	12	🔵 Maîtrise satisfaisante	—	🟢 Très bonne maîtrise	
+      +LACOMBE Emma	✓	✗	✓	✓	✓	✗	✓	✗	✗	✗	5/10	10	🔵 Maîtrise satisfaisante	—	🟢 Très bonne maîtrise	
+      +MAILLARD Noah	✗	✓	✗	✗	✓	✗	✗	✓	✗	✗	3/10	6	🟠 Maîtrise fragile	—	🟢 Très bonne maîtrise	
+      +NOGARET Zoé	✓	✓	✗	✓	✓	✓	✗	✗	✗	✓	6/10	12	🔵 Maîtrise satisfaisante	—	🟢 Très bonne maîtrise	
+      +OLLIVIER Sacha	✗	✓	✗	✓	✓	✗	✓	✓	✗	✗	5/10	10	🔵 Maîtrise satisfaisante	—	🟢 Très bonne maîtrise	
+      +PERRAUD Jade	✓	✗	✓	✓	✓	✗	✗	✓	✗	✗	5/10	10	🔵 Maîtrise satisfaisante	—	🟢 Très bonne maîtrise	
+      +QUINTON Enzo	✓	✓	✓	✓	✓	✓	✗	✗	✓	✓	8/10	16	🟢 Très bonne maîtrise	—	🟢 Très bonne maîtrise	
+      +RAMBAUD Lina	✓	✓	✓	✓	✓	✓	✓	✓	✓	✓	10/10	20	🟢 Très bonne maîtrise	—	🟢 Très bonne maîtrise	
+      +SABATIER Malo	✓	✓	✗	✓	✗	✓	✗	✗	✗	✓	5/10	10	🔵 Maîtrise satisfaisante	—	🟢 Très bonne maîtrise	
+      +TESSIER Anna	✓	✓	✓	✓	✓	✓	✓	✓	✗	✗	8/10	16	🟢 Très bonne maîtrise	—	🟢 Très bonne maîtrise	
+      +VALLÉE Rayan	✓	✓	✓	✓	✗	✗	✗	✓	✓	✗	6/10	12	🔵 Maîtrise satisfaisante	—	🟢 Très bonne maîtrise	
+      +WEBER Clara	✓	✗	✓	✓	✓	✗	✓	✗	✗	✗	5/10	10	🔵 Maîtrise satisfaisante	—	🟢 Très bonne maîtrise	
+      +YVON Adam	✗	✓	✗	✗	✓	✓	✓	✓	✓	✓	7/10	14	🔵 Maîtrise satisfaisante	—	🟢 Très bonne maîtrise	
+      +ZELLER Lou	✓	✓	✗	✓	✗	✓	✗	✓	✗	✓	6/10	12	🔵 Maîtrise satisfaisante	—	🟢 Très bonne maîtrise	
+      +✓ juste d'après la feuille · ✓ orange : Trouvée au dernier moment · ✗ faux · ∅ « aucun de ces choix » · ⛔ : point d'autonomie retiré · ⚠️ Annulée ou ❌ Écartée : la question garde sa marque en tête de
+~ changé : c-resultats_seance=PAP@1536 · texte changé · image 21.79 %
+      +📄 PDF notes et compétences
+      +📥 Export CSV
+      -09/10/2026 10:02 · 24 présents, 1 absent (YVON Adam)
+      +09/10/2026 10:02 · 24 présents, 1 absent (YVON Adam) · sur papier · questions écartées ou annulées : aucune · copies non rendues
+      -Élève	Q1	Q2	Q3	Note	Sur 20	Maîtrise
+      -ABRIAL Julien	✓	✗	✓	✗	✓	✓	✗	✗	✓	✓	✗	—	—	—
+      -BAUDRY Léa	✓	✓	✓	✓	✓	✓	✗	✓	✓	✓	✓	—	—	—
+      -BRUNEAU Camille	✓	✗	✗	✗	✓	✗	✗	✗	✓	✓	✗	—	—	—
+      -CARRÉ Tom	✗	✗	✓	✗	✗	✗	✗	✗	✓	✓	✗	—	—	—
+      -CHEVALLIER Théo	✓	✓	✗	✓	✗	✗	✗	✓	✓	✓	✗	—	—	—
+      -DUVERNAY Michel	✓	✗	✗	✓	✓	✗	✓	✗	✓	✓	✗	—	—	—
+      -ESNAULT Inès	✓	✓	✓	✓	✓	✓	✓	✓	✓	✓	✓	—	—	—
+      -FOUCHER Hugo	✓	✓	✗	✓	✓	✓	✗	✓	✓	✓	✗	—	—	—
+      -GALLOIS Manon	✓	✓	✓	✓	✓	✓	✗	✓	✓	✓	✗	—	—	—
+      -HÉBRARD Nathan	✓	✗	✗	✗	✗	✗	✗	✗	✓	✓	✗	—	—	—
+      -ISAMBERT Chloé	✓	✓	✓	✓	✓	✗	✓	✓	✓	✓	✓	—	—	—
+      -JOUBERT Louis	✗	✗	✗	✗	✓	✗	✗	✗	✗	✓	✗	—	—	—
+      -LACOMBE Emma	✓	✓	✓	✓	✓	✓	✓	✓	✓	✓	✗	—	—	—
+      -MAILLARD Noah	✓	✗	✗	✓	✗	✗	✗	·	·	·	·	—	—	—
+      -NOGARET Zoé	✓	✓	✗	✓	✓	✓	✗	✓	✓	✓	✓	—	—	—
+      -OLLIVIER Sacha	✗	✗	✗	✗	✗	✗	✗	✗	✓	✗	✗	—	—	—
+      -PERRAUD Jade	✓	✓	✓	✓	✓	✓	✗	✗	✓	✓	✗	—	—	—
+      -QUINTON Enzo	✓	✗	✗	✗	✓	✗	✗	✗	✓	✓	✗	—	—	—
+      -RAMBAUD Lina	✓	✓	✓	✓	✓	✓	✓	✓	✓	✓	✓	—	—	—
+      -SABATIER Malo	✓	✗	✓	✗	✓	✗	✗	✗	✓	✓	✗	—	—	—
+      -TESSIER Anna	✓	✗	✗	✗	✗	✗	✗	✗	✓	✓	✗	—	—	—
+      -VALLÉE Rayan	✓	✓	✗	✗	✓	✗	✗	✓	✓	✓	✗	—	—	—
+      -WEBER Clara	✓	✓	✓	✓	✓	✓	✓	✓	✓	✓	✗	—	—	—
+      -YVON Adam	absent
+      -ZELLER Lou	✓	✓	✗	✗	✓	✓	✗	✗	✓	✓	✗	—	—	—
+      +Élève ▴	Q1	Q2	Q3	Note	Sur 20	Maîtrise de la note	🧩 c4-culture-01
+      +Mobiliser des références culturelles… · Q1, Q2, Q3
+      +	🧩 c4-lire-01
+      +Contrôler sa compréhension… · Q1, Q2, Q3
+      +	🤝 Autonomie	À lire sur la feuille
+      +ABRIAL Julien	✓	✗	✗	1/3	6,7	🟠 Maîtrise fragile	🟠 Maîtrise fragile
+      +Q1 ✓ · Q2 ✗ · Q3 ✗
+      +	🟠 Maîtrise fragile
+      +Q1 ✓ · Q2 ✗ · Q3 ✗
+      +	🟢 Très bonne maîtrise	
+      +BAUDRY Léa	✓	✓	✓	3/3	20	🟢 Très bonne maîtrise	🟢 Très bonne maîtrise
+      +Q1 ✓ · Q2 ✓ · Q3 ✓
+      +	🟢 Très bonne maîtrise
+      +Q1 ✓ · Q2 ✓ · Q3 ✓
+      +	🟢 Très bonne maîtrise	
+      +BRUNEAU Camille	✓	✓	✗	2/3	13,3	🔵 Maîtrise satisfaisante	🔵 Maîtrise satisfaisante
+      +Q1 ✓ · Q2 ✓ · Q3 ✗
+      +	🔵 Maîtrise satisfaisante
+      +Q1 ✓ · Q2 ✓ · Q3 ✗
+      +	🟢 Très bonne maîtrise	
+      +CARRÉ Tom	✗	✗	✓	1/3	6,7	🟠 Maîtrise fragile	🟠 Maîtrise fragile
+      +Q1 ✗ · Q2 ✗ · Q3 ✓
+      +	🟠 Maîtrise fragile
+      +Q1 ✗ · Q2 ✗ · Q3 ✓
+      +	🟢 Très bonne maîtrise	
+      +CHEVALLIER Théo	✓	✗	✗	1/3	6,7	🟠 Maîtrise fragile	🟠 Maîtrise fragile
+      +Q1 ✓ · Q2 ✗ · Q3 ✗
+      +	🟠 Maîtrise fragile
+      +Q1 ✓ · Q2 ✗ · Q3 ✗
+      +	🟢 Très bonne maîtrise	
+      +DUVERNAY Michel	✓	✗	∅	1/3	6,7	🟠 Maîtrise fragile	🟠 Maîtrise fragile
+      +Q1 ✓ · Q2 ✗ · Q3 ∅
+      +	🟠 Maîtrise fragile
+      +Q1 ✓ · Q2 ✗ · Q3 ∅
+      +	🟢 Très bonne maîtrise	
+      +ESNAULT Inès	✓	✓	✓	3/3	20	🟢 Très bonne maîtrise	🟢 Très bonne maîtrise
+      +Q1 ✓ · Q2 ✓ · Q3 ✓
+      +	🟢 Très bonne maîtrise
+      +Q1 ✓ · Q2 ✓ · Q3 ✓
+      +	🟢 Très bonne maîtrise	
+      +FOUCHER Hugo	✓	✗	✓	2/3	13,3	🔵 Maîtrise satisfaisante	🔵 Maîtrise satisfaisante
+      +Q1 ✓ · Q2 ✗ · Q3 ✓
+      +	🔵 Maîtrise satisfaisante
+      +Q1 ✓ · Q2 ✗ · Q3 ✓
+      +	🟢 Très bonne maîtrise	
+      +GALLOIS Manon	✓	✓	✗	2/3	13,3	🔵 Maîtrise satisfaisante	🔵 Maîtrise satisfaisante
+      +Q1 ✓ · Q2 ✓ · Q3 ✗
+      +	🔵 Maîtrise satisfaisante
+      +Q1 ✓ · Q2 ✓ · Q3 ✗
+      +	🟢 Très bonne maîtrise	
+      +HÉBRARD Nathan	✓	✗	✓	2/3	13,3	🔵 Maîtrise satisfaisante	🔵 Maîtrise satisfaisante
+      +Q1 ✓ · Q2 ✗ · Q3 ✓
+      +	🔵 Maîtrise satisfaisante
+      +Q1 ✓ · Q2 ✗ · Q3 ✓
+      +	🟢 Très bonne maîtrise	
+      +ISAMBERT Chloé	✓	✓	✓	3/3	20	🟢 Très bonne maîtrise	🟢 Très bonne maîtrise
+      +Q1 ✓ · Q2 ✓ · Q3 ✓
+      +	🟢 Très bonne maîtrise
+      +Q1 ✓ · Q2 ✓ · Q3 ✓
+      +	🟢 Très bonne maîtrise	
+      +JOUBERT Louis	✓	✗	✓	2/3	13,3	🔵 Maîtrise satisfaisante	🔵 Maîtrise satisfaisante
+      +Q1 ✓ · Q2 ✗ · Q3 ✓
+      +	🔵 Maîtrise satisfaisante
+      +Q1 ✓ · Q2 ✗ · Q3 ✓
+      +	🟢 Très bonne maîtrise	
+      +LACOMBE Emma	✓	✓	✓	3/3	20	🟢 Très bonne maîtrise	🟢 Très bonne maîtrise
+      +Q1 ✓ · Q2 ✓ · Q3 ✓
+      +	🟢 Très bonne maîtrise
+      +Q1 ✓ · Q2 ✓ · Q3 ✓
+      +	🟢 Très bonne maîtrise	
+      +MAILLARD Noah	✓	✗	✗	1/3	6,7	🟠 Maîtrise fragile	🟠 Maîtrise fragile
+      +Q1 ✓ · Q2 ✗ · Q3 ✗
+      +	🟠 Maîtrise fragile
+      +Q1 ✓ · Q2 ✗ · Q3 ✗
+      +	🟢 Très bonne maîtrise	
+      +NOGARET Zoé	✓	✗	✓	2/3	13,3	🔵 Maîtrise satisfaisante	🔵 Maîtrise satisfaisante
+      +Q1 ✓ · Q2 ✗ · Q3 ✓
+      +	🔵 Maîtrise satisfaisante
+      +Q1 ✓ · Q2 ✗ · Q3 ✓
+      +	🟢 Très bonne maîtrise	
+      +OLLIVIER Sacha	✗	✗	✗	0/3	0	🔴 Maîtrise insuffisante	🔴 Maîtrise insuffisante
+      +Q1 ✗ · Q2 ✗ · Q3 ✗
+      +	🔴 Maîtrise insuffisante
+      +Q1 ✗ · Q2 ✗ · Q3 ✗
+      +	🟢 Très bonne maîtrise	
+      +PERRAUD Jade	✓	✗	✓	2/3	13,3	🔵 Maîtrise satisfaisante	🔵 Maîtrise satisfaisante
+      +Q1 ✓ · Q2 ✗ · Q3 ✓
+      +	🔵 Maîtrise satisfaisante
+      +Q1 ✓ · Q2 ✗ · Q3 ✓
+      +	🟢 Très bonne maîtrise	
+      +QUINTON Enzo	∅	✗	✗	0/3	0	🔴 Maîtrise insuffisante	🔴 Maîtrise insuffisante
+      +Q1 ∅ · Q2 ✗ · Q3 ✗
+      +	🔴 Maîtrise insuffisante
+      +Q1 ∅ · Q2 ✗ · Q3 ✗
+      +	🟢 Très bonne maîtrise	
+      +RAMBAUD Lina	✓	✓	✓	3/3	20	🟢 Très bonne maîtrise	🟢 Très bonne maîtrise
+      +Q1 ✓ · Q2 ✓ · Q3 ✓
+      +	🟢 Très bonne maîtrise
+      +Q1 ✓ · Q2 ✓ · Q3 ✓
+      +	🟢 Très bonne maîtrise	
+      +SABATIER Malo	✓	✗	✓	2/3	13,3	🔵 Maîtrise satisfaisante	🔵 Maîtrise satisfaisante
+      +Q1 ✓ · Q2 ✗ · Q3 ✓
+      +	🔵 Maîtrise satisfaisante
+      +Q1 ✓ · Q2 ✗ · Q3 ✓
+      +	🟢 Très bonne maîtrise	
+      +TESSIER Anna	✓	✗	✗	1/3	6,7	🟠 Maîtrise fragile	🟠 Maîtrise fragile
+      +Q1 ✓ · Q2 ✗ · Q3 ✗
+      +	🟠 Maîtrise fragile
+      +Q1 ✓ · Q2 ✗ · Q3 ✗
+      +	🟢 Très bonne maîtrise	
+      +VALLÉE Rayan	✓	✗	✗	1/3	6,7	🟠 Maîtrise fragile	🟠 Maîtrise fragile
+      +Q1 ✓ · Q2 ✗ · Q3 ✗
+      +	🟠 Maîtrise fragile
+      +Q1 ✓ · Q2 ✗ · Q3 ✗
+      +	🟢 Très bonne maîtrise	
+      +WEBER Clara	✓	✓	✓	3/3	20	🟢 Très bonne maîtrise	🟢 Très bonne maîtrise
+      +Q1 ✓ · Q2 ✓ · Q3 ✓
+      +	🟢 Très bonne maîtrise
+      +Q1 ✓ · Q2 ✓ · Q3 ✓
+      +	🟢 Très bonne maîtrise	
+      +ZELLER Lou	✓	✗	✗	1/3	6,7	🟠 Maîtrise fragile	🟠 Maîtrise fragile
+      +Q1 ✓ · Q2 ✗ · Q3 ✗
+      +	🟠 Maîtrise fragile
+      +Q1 ✓ · Q2 ✗ · Q3 ✗
+      +	🟢 Très bonne maîtrise	
+      +✓ juste d'après la feuille · ✓ orange : Trouvée au dernier moment · ✗ faux · ∅ « aucun de ces choix » · ⛔ : point d'autonomie retiré · ⚠️ Annulée ou ❌ Écartée : la question garde sa marque en tête de
+~ changé : c-resultats_seance=S3E@1536 · texte changé · image 24.30 %
+      +📄 PDF notes et compétences
+      +📥 Export CSV
+      -09/10/2026 15:07 · 24 présents, 1 absent (YVON Adam)
+      +09/10/2026 15:07 · 24 présents, 1 absent (YVON Adam) · questions écartées ou annulées : aucune · 4 feuilles à lire
+      -Élève	Q1	Q2	Q3	Q4	Q5	Q6	Q7	Q8	Q9	Q10	Q11	Note	Sur 20	Maîtrise
+      -ABRIAL Julien	✓	✗	✓	✗	✓	✓	✗	✗	✓	✓	✗	6/11	10,9	🔵 Maîtrise satisfaisante
+      -BAUDRY Léa	✓	✓	✓	✓	✓	✓	✗	✓	✓	✓	✓	10/11	18,2	🟢 Très bonne maîtrise
+      -BRUNEAU Camille	✓	✗	✗	✗	✓	✗	✗	✗	✓	✓	✗	4/11	7,3	🟠 Maîtrise fragile
+      -CARRÉ Tom	✗	✗	✓	✗	✗	✗	✗	✗	✓	✓	✗	3/11	5,5	🟠 Maîtrise fragile
+      -CHEVALLIER Théo	✓	✓	✗	✓	✗	✗	✗	✓	✓	✓	✗	6/11	10,9	🔵 Maîtrise satisfaisante
+      -DUVERNAY Michel	✓	✗	✗	✓	✓	✗	✓	✗	✓	✓	✗	6/11	10,9	🔵 Maîtrise satisfaisante
+      -ESNAULT Inès	✓	✓	✓	✓	✓	✓	✓	✓	✓	✓	✓	11/11	20	🟢 Très bonne maîtrise
+      -FOUCHER Hugo	✓	✓	✗	✓	✓	✓	✗	✓	✓	✓	✗	8/11	14,5	🔵 Maîtrise satisfaisante
+      -GALLOIS Manon	✓	✓	✓	✓	✓	✓	✗	✓	✓	✓	✗	9/11	16,4	🟢 Très bonne maîtrise
+      -HÉBRARD Nathan	✓	✗	✗	✗	✗	✗	✗	✗	✓	✓	✗	3/11	5,5	🟠 Maîtrise fragile
+      -ISAMBERT Chloé	✓	✓	✓	✓	✓	✗	✓	✓	✓	✓	✓	10/11	18,2	🟢 Très bonne maîtrise
+      -JOUBERT Louis	✗	✗	✗	✗	✓	✗	✗	✗	✗	✓	✗	2/11	3,6	🔴 Maîtrise insuffisante
+      -LACOMBE Emma	✓	✓	✓	✓	✓	✓	✓	✓	✓	✓	✗	10/11	18,2	🟢 Très bonne maîtrise
+      -MAILLARD Noah	✓	✗	✗	✓	✗	✗	✗	·	·	·	·	2/7	5,7	🟠 Maîtrise fragile
+      -NOGARET Zoé	✓	✓	✗	✓	✓	✓	✗	✓	✓	✓	✓	9/11	16,4	🟢 Très bonne maîtrise
+      -OLLIVIER Sacha	✗	✗	✗	✗	✗	✗	✗	✗	✓	✗	✗	1/11	1,8	🔴 Maîtrise insuffisante
+      -PERRAUD Jade	✓	✓	✓	✓	✓	✓	✗	✗	✓	✓	✗	8/11	14,5	🔵 Maîtrise satisfaisante
+      -QUINTON Enzo	✓	✗	✗	✗	✓	✗	✗	✗	✓	✓	✗	4/11	7,3	🟠 Maîtrise fragile
+      -RAMBAUD Lina	✓	✓	✓	✓	✓	✓	✓	✓	✓	✓	✓	11/11	20	🟢 Très bonne maîtrise
+      -SABATIER Malo	✓	✗	✓	✗	✓	✗	✗	✗	✓	✓	✗	5/11	9,1	🟠 Maîtrise fragile
+      -TESSIER Anna	✓	✗	✗	✗	✗	✗	✗	✗	✓	✓	✗	3/11	5,5	🟠 Maîtrise fragile
+      -VALLÉE Rayan	✓	✓	✗	✗	✓	✗	✗	✓	✓	✓	✗	6/11	10,9	🔵 Maîtrise satisfaisante
+      -WEBER Clara	✓	✓	✓	✓	✓	✓	✓	✓	✓	✓	✗	10/11	18,2	🟢 Très bonne maîtrise
+      -YVON Adam	absent
+      -ZELLER Lou	✓	✓	✗	✗	✓	✓	✗	✗	✓	✓	✗	6/11	10,9	🔵 Maîtrise satisfaisante
+      +Élève ▴	Q1	Q2	Q3	Q4	Q5	Q6	Q7	Q8	Q9	Q10	Q11	Note	Sur 20	Maîtrise de la note	🧩 c4-langue-04
+      +Construire les notions… · Q1, Q2, Q3, Q4, Q5, Q6, Q7, Q8, Q9, Q10, Q11
+      +	🧩 c4-ecrire-02
+      +Adopter des stratégies… · Q5, Q6, Q7, Q8, Q9, Q10
+      +	🤝 Autonomie	À lire sur la feuille
+      +ABRIAL Julien	✓	✗	✓	✗	✓	✓	✗	✗	✓	✓	✗	6/11	10,9	🔵 Maîtrise satisfaisante	🔵 Maîtrise satisfaisante
+      +Q1 ✓ · Q2 ✗ · Q3 ✓ · Q4 ✗ · Q5 ✓ · Q6 ✓ · Q7 ✗ · Q8 ✗ · Q9 ✓ · Q10 ✓ · Q11 ✗
+      +	🔵 Maîtrise satisfaisante
+      +Q5 ✓ · Q6 ✓ · Q7 ✗ · Q8 ✗ · Q9 ✓ · Q10 ✓
+      +	⛔ retiré le 09/10 à 15:56	
+      +BAUDRY Léa	✓	✓	✓	✓	✓	✓	✗	✓	✓	✓	✓	10/11	18,2	🟢 Très bonne maîtrise	🟢 Très bonne maîtrise
+      +Q1 ✓ · Q2 ✓ · Q3 ✓ · Q4 ✓ · Q5 ✓ · Q6 ✓ · Q7 ✗ · Q8 ✓ · Q9 ✓ · Q10 ✓ · Q11 ✓
+      +	🟢 Très bonne maîtrise
+      +Q5 ✓ · Q6 ✓ · Q7 ✗ · Q8 ✓ · Q9 ✓ · Q10 ✓
+      +	🟢 Très bonne maîtrise	
+      +BRUNEAU Camille	✓	✗	✗	✗	✓	✗	✗	✗	✓	✓	✗	4/11	7,3	🟠 Maîtrise fragile	🟠 Maîtrise fragile
+      +Q1 ✓ · Q2 ✗ · Q3 ✗ · Q4 ✗ · Q5 ✓ · Q6 ✗ · Q7 ✗ · Q8 ✗ · Q9 ✓ · Q10 ✓ · Q11 ✗
+      +	🔵 Maîtrise satisfaisante
+      +Q5 ✓ · Q6 ✗ · Q7 ✗ · Q8 ✗ · Q9 ✓ · Q10 ✓
+      +	🟢 Très bonne maîtrise	
+      +CARRÉ Tom	✗	✗	✓	✗	✗	✗	✗	✗	✓	✓	✗	3/11	5,5	🟠 Maîtrise fragile	🟠 Maîtrise fragile
+      +Q1 ✗ · Q2 ✗ · Q3 ✓ · Q4 ✗ · Q5 ✗ · Q6 ✗ · Q7 ✗ · Q8 ✗ · Q9 ✓ · Q10 ✓ · Q11 ✗
+      +	🟠 Maîtrise fragile
+      +Q5 ✗ · Q6 ✗ · Q7 ✗ · Q8 ✗ · Q9 ✓ · Q10 ✓
+      +	🟢 Très bonne maîtrise	Q7 : n'a pas dit si sa feuille disait son clic
+      +CHEVALLIER Théo	✓	✓	✗	✓	✗	✗	✗	✓	✓	✓	✗	6/11	10,9	🔵 Maîtrise satisfaisante	🔵 Maîtrise satisfaisante
+      +Q1 ✓ · Q2 ✓ · Q3 ✗ · Q4 ✓ · Q5 ✗ · Q6 ✗ · Q7 ✗ · Q8 ✓ · Q9 ✓ · Q10 ✓ · Q11 ✗
+      +	🔵 Maîtrise satisfaisante
+      +Q5 ✗ · Q6 ✗ · Q7 ✗ · Q8 ✓ · Q9 ✓ · Q10 ✓
+      +	🟢 Très bonne maîtrise	
+      +DUVERNAY Michel	✓	✗	✗	✓	✓	✗	✓	✗	✓	✓	✗	6/11	10,9	🔵 Maîtrise satisfaisante	🔵 Maîtrise satisfaisante
+      +Q1 ✓ · Q2 ✗ · Q3 ✗ · Q4 ✓ · Q5 ✓ · Q6 ✗ · Q7 ✓ · Q8 ✗ · Q9 ✓ · Q10 ✓ · Q11 ✗
+      +	🔵 Maîtrise satisfaisante
+      +Q5 ✓ · Q6 ✗ · Q7 ✓ · Q8 ✗ · Q9 ✓ · Q10 ✓
+      +	⛔ retiré le 09/10 à 15:56	
+      +ESNAULT Inès	✓	✓	✓	✓	✓	✓	✓	✓	✓	✓	✓	11/11	20	🟢 Très bonne maîtrise	🟢 Très bonne maîtrise
+      +Q1 ✓ · Q2 ✓ · Q3 ✓ · Q4 ✓ · Q5 ✓ · Q6 ✓ · Q7 ✓ · Q8 ✓ · Q9 ✓ · Q10 ✓ · Q11 ✓
+      +	🟢 Très bonne maîtrise
+      +Q5 ✓ · Q6 ✓ · Q7 ✓ · Q8 ✓ · Q9 ✓ · Q10 ✓
+      +	🟢 Très bonne maîtrise	
+      +FOUCHER Hugo	✓	✓	✗	✓	✓	✓	✗	✓	✓	✓	✗	8/11	14,5	🔵 Maîtrise satisfaisante	🔵 Maîtrise satisfaisante
+      +Q1 ✓ · Q2 ✓ · Q3 ✗ · Q4 ✓ · Q5 ✓ · Q6 ✓ · Q7 ✗ · Q8 ✓ · Q9 ✓ · Q10 ✓ · Q11 ✗
+      +	🟢 Très bonne maîtrise
+      +Q5 ✓ · Q6 ✓ · Q7 ✗ · Q8 ✓ · Q9 ✓ · Q10 ✓
+      +	🟢 Très bonne maîtrise	
+      +GALLOIS Manon	✓	✓	✓	✓	✓	✓	✗	✓	✓	✓	✗	9/11	16,4	🟢 Très bonne maîtrise	🟢 Très bonne maîtrise
+      +Q1 ✓ · Q2 ✓ · Q3 ✓ · Q4 ✓ · Q5 ✓ · Q6 ✓ · Q7 ✗ · Q8 ✓ · Q9 ✓ · Q10 ✓ · Q11 ✗
+      +	🟢 Très bonne maîtrise
+      +Q5 ✓ · Q6 ✓ · Q7 ✗ · Q8 ✓ · Q9 ✓ · Q10 ✓
+      +	🟢 Très bonne maîtrise	
+      +HÉBRARD Nathan	✓	✗	✗	✗	✗	✗	✗	✗	✓	✓	✗	3/11	5,5	🟠 Maîtrise fragile	🟠 Maîtrise fragile
+      +Q1 ✓ · Q2 ✗ · Q3 ✗ · Q4 ✗ · Q5 ✗ · Q6 ✗ · Q7 ✗ · Q8 ✗ · Q9 ✓ · Q10 ✓ · Q11 ✗
+      +	🟠 Maîtrise fragile
+      +Q5 ✗ · Q6 ✗ · Q7 ✗ · Q8 ✗ · Q9 ✓ · Q10 ✓
+      +	🟢 Très bonne maîtrise	
+      +ISAMBERT Chloé	✓	✓	✓	✓	✓	✗	✓	✓	✓	✓	✓	10/11	18,2	🟢 Très bonne maîtrise	🟢 Très bonne maîtrise
+      +Q1 ✓ · Q2 ✓ · Q3 ✓ · Q4 ✓ · Q5 ✓ · Q6 ✗ · Q7 ✓ · Q8 ✓ · Q9 ✓ · Q10 ✓ · Q11 ✓
+      +	🟢 Très bonne maîtrise
+      +Q5 ✓ · Q6 ✗ · Q7 ✓ · Q8 ✓ · Q9 ✓ · Q10 ✓
+      +	🟢 Très bonne maîtrise	
+      +JOUBERT Louis	✗	✗	✗	✗	✓	✗	✗	✗	✗	✓	✗	2/11	3,6	🔴 Maîtrise insuffisante	🔴 Maîtrise insuffisante
+      +Q1 ✗ · Q2 ✗ · Q3 ✗ · Q4 ✗ · Q5 ✓ · Q6 ✗ · Q7 ✗ · Q8 ✗ · Q9 ✗ · Q10 ✓ · Q11 ✗
+      +	🟠 Maîtrise fragile
+      +Q5 ✓ · Q6 ✗ · Q7 ✗ · Q8 ✗ · Q9 ✗ · Q10 ✓
+      +	🟢 Très bonne maîtrise	
+      +LACOMBE Emma	✓	✓	✓	✓	✓	✓	✓	✓	✓	✓	✗	10/11	18,2	🟢 Très bonne maîtrise	🟢 Très bonne maîtrise
+      +Q1 ✓ · Q2 ✓ · Q3 ✓ · Q4 ✓ · Q5 ✓ · Q6 ✓ · Q7 ✓ · Q8 ✓ · Q9 ✓ · Q10 ✓ · Q11 ✗
+      +	🟢 Très bonne maîtrise
+      +Q5 ✓ · Q6 ✓ · Q7 ✓ · Q8 ✓ · Q9 ✓ · Q10 ✓
+      +	🟢 Très bonne maîtrise	
+      +MAILLARD Noah	✓	✗	✗	✓	✗	✗	✗	·	·	·	·	2/7	5,7	🟠 Maîtrise fragile	🟠 Maîtrise fragile
+      +Q1 ✓ · Q2 ✗ · Q3 ✗ · Q4 ✓ · Q5 ✗ · Q6 ✗ · Q7 ✗ · Q8 ✗ · Q9 ✗ · Q10 ✗ · Q11 ✗
+      +	🔴 Maîtrise insuffisante
+      +Q5 ✗ · Q6 ✗ · Q7 ✗ · Q8 ✗ · Q9 ✗ · Q10 ✗
+      +	🟢 Très bonne maîtrise	
+      +NOGARET Zoé	✓	✓	✗	✓	✓	✓	✗	✓	✓	✓	✓	9/11	16,4	🟢 Très bonne maîtrise	🟢 Très bonne maîtrise
+      +Q1 ✓ · Q2 ✓ · Q3 ✗ · Q4 ✓ · Q5 ✓ · Q6 ✓ · Q7 ✗ · Q8 ✓ · Q9 ✓ · Q10 ✓ · Q11 ✓
+      +	🟢 Très bonne maîtrise
+      +Q5 ✓ · Q6 ✓ · Q7 ✗ · Q8 ✓ · Q9 ✓ · Q10 ✓
+      +	🟢 Très bonne maîtrise	
+      +OLLIVIER Sacha	✗	✗	✗	✗	✗	✗	✗	✗	✓	✗	✗	1/11	1,8	🔴 Maîtrise insuffisante	🔴 Maîtrise insuffisante
+      +Q1 ✗ · Q2 ✗ · Q3 ✗ · Q4 ✗ · Q5 ✗ · Q6 ✗ · Q7 ✗ · Q8 ✗ · Q9 ✓ · Q10 ✗ · Q11 ✗
+      +	🔴 Maîtrise insuffisante
+      +Q5 ✗ · Q6 ✗ · Q7 ✗ · Q8 ✗ · Q9 ✓ · Q10 ✗
+      +	🟢 Très bonne maîtrise	
+      +PERRAUD Jade	✓	✓	✓	✓	✓	✓	✗	✗	✓	✓	✗	8/11	14,5	🔵 Maîtrise satisfaisante	🔵 Maîtrise satisfaisante
+      +Q1 ✓ · Q2 ✓ · Q3 ✓ · Q4 ✓ · Q5 ✓ · Q6 ✓ · Q7 ✗ · Q8 ✗ · Q9 ✓ · Q10 ✓ · Q11 ✗
+      +	🔵 Maîtrise satisfaisante
+      +Q5 ✓ · Q6 ✓ · Q7 ✗ · Q8 ✗ · Q9 ✓ · Q10 ✓
+      +	🟢 Très bonne maîtrise	Q9 : 🤔 pense qu'Enzo a peut-être mal lu sa feuille ; elle dit avoir écrit : un point-virgule
+      +QUINTON Enzo	✓	✗	✗	✗	✓	✗	✗	✗	✓	✓	✗	4/11	7,3	🟠 Maîtrise fragile	🟠 Maîtrise fragile
+      +Q1 ✓ · Q2 ✗ · Q3 ✗ · Q4 ✗ · Q5 ✓ · Q6 ✗ · Q7 ✗ · Q8 ✗ · Q9 ✓ · Q10 ✓ · Q11 ✗
+      +	🔵 Maîtrise satisfaisante
+      +Q5 ✓ · Q6 ✗ · Q7 ✗ · Q8 ✗ · Q9 ✓ · Q10 ✓
+      +	🟢 Très bonne maîtrise	Q1 : aucun de ces choix
+      +RAMBAUD Lina	✓	✓	✓	✓	✓	✓	✓	✓	✓	✓	✓	11/11	20	🟢 Très bonne maîtrise	🟢 Très bonne maîtrise
+      +Q1 ✓ · Q2 ✓ · Q3 ✓ · Q4 ✓ · Q5 ✓ · Q6 ✓ · Q7 ✓ · Q8 ✓ · Q9 ✓ · Q10 ✓ · Q11 ✓
+      +	🟢 Très bonne maîtrise
+      +Q5 ✓ · Q6 ✓ · Q7 ✓ · Q8 ✓ · Q9 ✓ · Q10 ✓
+      +	🟢 Très bonne maîtrise	
+      +SABATIER Malo	✓	✗	✓	✗	✓	✗	✗	✗	✓	✓	✗	5/11	9,1	🟠 Maîtrise fragile	🟠 Maîtrise fragile
+      +Q1 ✓ · Q2 ✗ · Q3 ✓ · Q4 ✗ · Q5 ✓ · Q6 ✗ · Q7 ✗ · Q8 ✗ · Q9 ✓ · Q10 ✓ · Q11 ✗
+      +	🔵 Maîtrise satisfaisante
+      +Q5 ✓ · Q6 ✗ · Q7 ✗ · Q8 ✗ · Q9 ✓ · Q10 ✓
+      +	🟢 Très bonne maîtrise	
+      +TESSIER Anna	✓	✗	✗	✗	✗	✗	✗	✗	✓	✓	✗	3/11	5,5	🟠 Maîtrise fragile	🟠 Maîtrise fragile
+      +Q1 ✓ · Q2 ✗ · Q3 ✗ · Q4 ✗ · Q5 ✗ · Q6 ✗ · Q7 ✗ · Q8 ✗ · Q9 ✓ · Q10 ✓ · Q11 ✗
+      +	🟠 Maîtrise fragile
+      +Q5 ✗ · Q6 ✗ · Q7 ✗ · Q8 ✗ · Q9 ✓ · Q10 ✓
+      +	🟢 Très bonne maîtrise	Q2 : a dit que sa feuille disait son clic, un nom et un pronom ; Rayan y a lu : un nom
+      +VALLÉE Rayan	✓	✓	✗	✗	✓	✗	✗	✓	✓	✓	✗	6/11	10,9	🔵 Maîtrise satisfaisante	🔵 Maîtrise satisfaisante
+      +Q1 ✓ · Q2 ✓ · Q3 ✗ · Q4 ✗ · Q5 ✓ · Q6 ✗ · Q7 ✗ · Q8 ✓ · Q9 ✓ · Q10 ✓ · Q11 ✗
+      +	🔵 Maîtrise satisfaisante
+      +Q5 ✓ · Q6 ✗ · Q7 ✗ · Q8 ✓ · Q9 ✓ · Q10 ✓
+      +	🟢 Très bonne maîtrise	
+      +WEBER Clara	✓	✓	✓	✓	✓	✓	✓	✓	✓	✓	✗	10/11	18,2	🟢 Très bonne maîtrise	🟢 Très bonne maîtrise
+      +Q1 ✓ · Q2 ✓ · Q3 ✓ · Q4 ✓ · Q5 ✓ · Q6 ✓ · Q7 ✓ · Q8 ✓ · Q9 ✓ · Q10 ✓ · Q11 ✗
+      +	🟢 Très bonne maîtrise
+      +Q5 ✓ · Q6 ✓ · Q7 ✓ · Q8 ✓ · Q9 ✓ · Q10 ✓
+      +	🟢 Très bonne maîtrise	
+      +ZELLER Lou	✓	✓	✗	✗	✓	✓	✗	✗	✓	✓	✗	6/11	10,9	🔵 Maîtrise satisfaisante	🔵 Maîtrise satisfaisante
+      +Q1 ✓ · Q2 ✓ · Q3 ✗ · Q4 ✗ · Q5 ✓ · Q6 ✓ · Q7 ✗ · Q8 ✗ · Q9 ✓ · Q10 ✓ · Q11 ✗
+      +	🔵 Maîtrise satisfaisante
+      +Q5 ✓ · Q6 ✓ · Q7 ✗ · Q8 ✗ · Q9 ✓ · Q10 ✓
+      +	🟢 Très bonne maîtrise	
+      +✓ juste d'après la feuille · ✓ orange : Trouvée au dernier moment · ✗ faux · ∅ « aucun de ces choix » · ⛔ : point d'autonomie retiré · ⚠️ Annulée ou ❌ Écartée : la question garde sa marque en tête de
+~ changé : c-seances@1536 · texte changé · image 0.00 %
+      -3 ESSAI — 09/10/2026 15:07 · ✅ terminée · 24 présents, 1 absent (YVON Adam) · 📌 5 feuilles à lire
+      +3 ESSAI — 09/10/2026 15:07 · ✅ terminée · 24 présents, 1 absent (YVON Adam) · 📌 4 feuilles à lire
+~ changé : e-bilan-lou@1280 · texte identique · image 0.09 %
+~ changé : e-bilan-lou@390 · texte identique · image 0.27 %
+~ changé : e-bilan-lou_eleve=Lou@1280 · texte identique · image 0.09 %
+~ changé : e-bilan-lou_eleve=Lou@390 · texte identique · image 0.27 %
+~ changé : p-autonomie@390 · texte identique · image 4.57 %
+~ changé : p-autonomie_eleve=Anna@390 · texte identique · image 4.57 %
+~ changé : p-autonomie_eleve=Camille@390 · texte identique · image 4.57 %
+~ changé : p-autonomie_eleve=Chlo_C3_A9@390 · texte identique · image 4.57 %
+~ changé : p-autonomie_eleve=Clara@390 · texte identique · image 4.57 %
+~ changé : p-autonomie_eleve=Emma@390 · texte identique · image 4.57 %
+~ changé : p-autonomie_eleve=Enzo@390 · texte identique · image 4.57 %
+~ changé : p-autonomie_eleve=Hugo@390 · texte identique · image 4.57 %
+~ changé : p-autonomie_eleve=In_C3_A8s@390 · texte identique · image 4.57 %
+~ changé : p-autonomie_eleve=Jade@390 · texte identique · image 4.57 %
+~ changé : p-autonomie_eleve=Julien@390 · texte identique · image 4.57 %
+~ changé : p-autonomie_eleve=L_C3_A9a@390 · texte identique · image 4.57 %
+~ changé : p-autonomie_eleve=Lina@390 · texte identique · image 4.57 %
+~ changé : p-autonomie_eleve=Lou@390 · texte identique · image 4.57 %
+~ changé : p-autonomie_eleve=Louis@390 · texte identique · image 4.57 %
+~ changé : p-autonomie_eleve=Malo@390 · texte identique · image 4.57 %
+~ changé : p-autonomie_eleve=Manon@390 · texte identique · image 4.57 %
+~ changé : p-autonomie_eleve=Michel@390 · texte identique · image 4.57 %
+~ changé : p-autonomie_eleve=Nathan@390 · texte identique · image 4.57 %
+~ changé : p-autonomie_eleve=Noah@390 · texte identique · image 4.57 %
+~ changé : p-autonomie_eleve=Rayan@390 · texte identique · image 4.57 %
+~ changé : p-autonomie_eleve=Sacha@390 · texte identique · image 4.57 %
+~ changé : p-autonomie_eleve=Th_C3_A9o@390 · texte identique · image 4.57 %
+~ changé : p-autonomie_eleve=Tom@390 · texte identique · image 4.57 %
+~ changé : p-autonomie_eleve=Zo_C3_A9@390 · texte identique · image 4.57 %
+~ changé : p-corr-apres@390 · texte identique · image 9.16 %
+~ changé : p-corr-avant@390 · texte identique · image 0.91 %
+~ changé : p-eleve@390 · texte identique · image 6.11 %
+~ changé : p-eleve_eleve=Anna@390 · texte identique · image 0.78 %
+~ changé : p-eleve_eleve=Camille@390 · texte identique · image 0.78 %
+~ changé : p-eleve_eleve=Chlo_C3_A9@390 · texte identique · image 0.78 %
+~ changé : p-eleve_eleve=Clara@390 · texte identique · image 0.78 %
+~ changé : p-eleve_eleve=Emma@390 · texte identique · image 0.78 %
+~ changé : p-eleve_eleve=Enzo@390 · texte identique · image 0.78 %
+~ changé : p-eleve_eleve=Hugo@390 · texte identique · image 0.78 %
+~ changé : p-eleve_eleve=In_C3_A8s@390 · texte identique · image 0.78 %
+~ changé : p-eleve_eleve=Jade@390 · texte identique · image 0.78 %
+~ changé : p-eleve_eleve=Julien@390 · texte identique · image 0.78 %
+~ changé : p-eleve_eleve=L_C3_A9a@390 · texte identique · image 0.78 %
+~ changé : p-eleve_eleve=Lina@390 · texte identique · image 0.78 %
+~ changé : p-eleve_eleve=Lou@390 · texte identique · image 0.78 %
+~ changé : p-eleve_eleve=Louis@390 · texte identique · image 0.78 %
+~ changé : p-eleve_eleve=Malo@390 · texte identique · image 0.78 %
+~ changé : p-eleve_eleve=Manon@390 · texte identique · image 0.78 %
+~ changé : p-eleve_eleve=Michel@390 · texte identique · image 0.78 %
+~ changé : p-eleve_eleve=Nathan@390 · texte identique · image 0.78 %
+~ changé : p-eleve_eleve=Noah@390 · texte identique · image 0.78 %
+~ changé : p-eleve_eleve=Rayan@390 · texte identique · image 0.78 %
+~ changé : p-eleve_eleve=Sacha@390 · texte identique · image 0.78 %
+~ changé : p-eleve_eleve=Th_C3_A9o@390 · texte identique · image 6.11 %
+~ changé : p-eleve_eleve=Tom@390 · texte identique · image 0.78 %
+~ changé : p-eleve_eleve=Zo_C3_A9@390 · texte identique · image 0.78 %
+~ changé : p-reponse@390 · texte identique · image 14.21 %
+~ changé : t-bilan-annulee@1280 · texte identique · image 0.14 %
+~ changé : t-bilan-imprime@1280 · texte identique · image 0.10 %
+~ changé : t-bilan-imprime@390 · texte identique · image 0.30 %
+~ changé : t-bilan-non-atteinte@1280 · texte identique · image 0.16 %
+~ changé : t-bilan@1280 · texte identique · image 0.16 %
+~ changé : t-coeval-daccord@1280 · texte changé · image 19.04 %
+      -🔥
+      +☝️ Un désaccord, c'est sérieux : tu n'en signales qu'un, celui dont tu es le plus sûr. Il se vérifie sur ta feuille.
+      -🎲
+      +☝️ Un désaccord, c'est sérieux : tu n'en signales qu'un, celui dont tu es le plus sûr. Il se vérifie sur ta feuille.
+~ changé : t-coeval-ecrit@1280 · texte changé · image 11.39 %
+      -🔥
+      +☝️ Un désaccord, c'est sérieux : tu n'en signales qu'un, celui dont tu es le plus sûr. Il se vérifie sur ta feuille.
+~ changé : t-coeval@1280 · texte changé · image 12.63 %
+      -🎲
+      +☝️ Un désaccord, c'est sérieux : tu n'en signales qu'un, celui dont tu es le plus sûr. Il se vérifie sur ta feuille.
+      -🔥
+      +☝️ Un désaccord, c'est sérieux : tu n'en signales qu'un, celui dont tu es le plus sûr. Il se vérifie sur ta feuille.
+~ changé : t-corr-q2-apres@1280 · texte identique · image 3.50 %
+~ changé : t-corr-seul@1280 · texte changé · image 0.18 %
+      -📄 TEMPS POUR LIRE LA FEUILLE DU VOISIN
+      +TEMPS DE RÉPONSE
+~ changé : t-demo-q@1280 · texte changé · image 0.97 %
+      -QUESTION 3 / 3
+      -Standard
+      +QUESTION 1 / 3
+      +Facile
+      -Pourquoi l'araignée n'est-elle pas un insecte ?
+      +Quelle est la capitale de l'Italie ?
+      -QUESTION 3 / 3
+      -Standard
+      +QUESTION 1 / 3
+      +Facile
+      -Pourquoi l'araignée n'est-elle pas un insecte ?
+      +Quelle est la capitale de l'Italie ?
+~ changé : x610-6-coeval-laquelle@1280 · texte changé · image 17.10 %
+      -🎲
+      +☝️ Un désaccord, c'est sérieux : tu n'en signales qu'un, celui dont tu es le plus sûr. Il se vérifie sur ta feuille.
+      +☝️ Un désaccord, c'est sérieux : tu n'en signales qu'un, celui dont tu es le plus sûr. Il se vérifie sur ta feuille.
+~ changé : x610-7-coeval-ecrit@1280 · texte changé · image 11.39 %
+      -🔥
+      +☝️ Un désaccord, c'est sérieux : tu n'en signales qu'un, celui dont tu es le plus sûr. Il se vérifie sur ta feuille.
+~ changé : x610-8-console-alerte@1536 · texte changé · image 0.01 %
+      -Fin de la correction — chacun dit ce qu'il pense de la lecture de sa feuille · 20 / 24 ont répondu
+      +Fin de la correction — chacun dit ce qu'il pense de la lecture de sa feuille · 19 / 23 ont répondu
+      -« 🏁 Afficher leur bilan aux élèves » s'ouvre quand les 24 présents ont répondu. Il en manque 4 :
+      +« 🏁 Afficher leur bilan aux élèves » s'ouvre quand les 23 présents ont répondu. Il en manque 4 :
+      -🤔 2 pensent : peut-être mal lu (à relire ce soir)
+      +🤔 1 pensent : peut-être mal lu (à relire ce soir)
+      -📌 À lire sur les feuilles, ce soir (5)
+      +📌 À lire sur les feuilles, ce soir (4)
+      -MAILLARD Noah — Q10 : 🤔 pense qu'Emma a peut-être mal lu sa feuille ; il dit avoir écrit : trois
+      -🤔 peut-être Q10
+      -à relire ce soir
+      +🚪 parti après la question 7
+~ changé : x610-8-console-alerte_retire=Julien@1536 · texte changé · image 0.01 %
+      -Fin de la correction — chacun dit ce qu'il pense de la lecture de sa feuille · 20 / 24 ont répondu
+      +Fin de la correction — chacun dit ce qu'il pense de la lecture de sa feuille · 19 / 23 ont répondu
+      -« 🏁 Afficher leur bilan aux élèves » s'ouvre quand les 24 présents ont répondu. Il en manque 4 :
+      +« 🏁 Afficher leur bilan aux élèves » s'ouvre quand les 23 présents ont répondu. Il en manque 4 :
+      -🤔 2 pensent : peut-être mal lu (à relire ce soir)
+      +🤔 1 pensent : peut-être mal lu (à relire ce soir)
+      -📌 À lire sur les feuilles, ce soir (5)
+      +📌 À lire sur les feuilles, ce soir (4)
+      -MAILLARD Noah — Q10 : 🤔 pense qu'Emma a peut-être mal lu sa feuille ; il dit avoir écrit : trois
+      -🤔 peut-être Q10
+      -à relire ce soir
+      +🚪 parti après la question 7
+~ changé : x610-8-console-alerte_retire=Michel@1536 · texte changé · image 0.01 %
+      -Fin de la correction — chacun dit ce qu'il pense de la lecture de sa feuille · 20 / 24 ont répondu
+      +Fin de la correction — chacun dit ce qu'il pense de la lecture de sa feuille · 19 / 23 ont répondu
+      -« 🏁 Afficher leur bilan aux élèves » s'ouvre quand les 24 présents ont répondu. Il en manque 4 :
+      +« 🏁 Afficher leur bilan aux élèves » s'ouvre quand les 23 présents ont répondu. Il en manque 4 :
+      -🤔 2 pensent : peut-être mal lu (à relire ce soir)
+      +🤔 1 pensent : peut-être mal lu (à relire ce soir)
+      -📌 À lire sur les feuilles, ce soir (5)
+      +📌 À lire sur les feuilles, ce soir (4)
+      -MAILLARD Noah — Q10 : 🤔 pense qu'Emma a peut-être mal lu sa feuille ; il dit avoir écrit : trois
+      -🤔 peut-être Q10
+      -à relire ce soir
+      +🚪 parti après la question 7
+~ changé : x610-8-console-alerte_retire=deux@1536 · texte changé · image 0.01 %
+      -Fin de la correction — chacun dit ce qu'il pense de la lecture de sa feuille · 20 / 24 ont répondu
+      +Fin de la correction — chacun dit ce qu'il pense de la lecture de sa feuille · 19 / 23 ont répondu
+      -« 🏁 Afficher leur bilan aux élèves » s'ouvre quand les 24 présents ont répondu. Il en manque 4 :
+      +« 🏁 Afficher leur bilan aux élèves » s'ouvre quand les 23 présents ont répondu. Il en manque 4 :
+      -🤔 2 pensent : peut-être mal lu (à relire ce soir)
+      +🤔 1 pensent : peut-être mal lu (à relire ce soir)
+      -📌 À lire sur les feuilles, ce soir (5)
+      +📌 À lire sur les feuilles, ce soir (4)
+      -MAILLARD Noah — Q10 : 🤔 pense qu'Emma a peut-être mal lu sa feuille ; il dit avoir écrit : trois
+      -🤔 peut-être Q10
+      -à relire ce soir
+      +🚪 parti après la question 7
+~ changé : x610-9-telephone-alerte@390 · texte changé · image 7.29 %
+      -Phase : co-évaluation de la lecture20 / 24 ont répondu
+      +Phase : co-évaluation de la lecture19 / 23 ont répondu
+      -📌 À lire ce soir (5) : PERRAUD Jade — Q9 : 🤔 pense qu'Enzo a peut-être mal lu sa feuille ; elle dit avoir écrit : un point-virgule · MAILLARD Noah — Q10 : 🤔 pense qu'Emma a peut-être mal lu sa feuill
+      +📌 À lire ce soir (4) : PERRAUD Jade — Q9 : 🤔 pense qu'Enzo a peut-être mal lu sa feuille ; elle dit avoir écrit : un point-virgule · QUINTON Enzo — Q1 : aucun de ces choix · TESSIER Anna — Q2 : a dit
+      -🤔 Q10
+      +🚪
+~ changé : x610-autonomie-deux@1536 · texte changé · image 0.01 %
+      -Fin de la correction — chacun dit ce qu'il pense de la lecture de sa feuille · 20 / 24 ont répondu
+      +Fin de la correction — chacun dit ce qu'il pense de la lecture de sa feuille · 19 / 23 ont répondu
+      -« 🏁 Afficher leur bilan aux élèves » s'ouvre quand les 24 présents ont répondu. Il en manque 4 :
+      +« 🏁 Afficher leur bilan aux élèves » s'ouvre quand les 23 présents ont répondu. Il en manque 4 :
+      -🤔 2 pensent : peut-être mal lu (à relire ce soir)
+      +🤔 1 pensent : peut-être mal lu (à relire ce soir)
+      -📌 À lire sur les feuilles, ce soir (5)
+      +📌 À lire sur les feuilles, ce soir (4)
+      -MAILLARD Noah — Q10 : 🤔 pense qu'Emma a peut-être mal lu sa feuille ; il dit avoir écrit : trois
+      -🤔 peut-être Q10
+      -à relire ce soir
+      +🚪 parti après la question 7
+~ changé : x610-autonomie-julien@1536 · texte changé · image 0.01 %
+      -Fin de la correction — chacun dit ce qu'il pense de la lecture de sa feuille · 20 / 24 ont répondu
+      +Fin de la correction — chacun dit ce qu'il pense de la lecture de sa feuille · 19 / 23 ont répondu
+      -« 🏁 Afficher leur bilan aux élèves » s'ouvre quand les 24 présents ont répondu. Il en manque 4 :
+      +« 🏁 Afficher leur bilan aux élèves » s'ouvre quand les 23 présents ont répondu. Il en manque 4 :
+      -🤔 2 pensent : peut-être mal lu (à relire ce soir)
+      +🤔 1 pensent : peut-être mal lu (à relire ce soir)
+      -📌 À lire sur les feuilles, ce soir (5)
+      +📌 À lire sur les feuilles, ce soir (4)
+      -MAILLARD Noah — Q10 : 🤔 pense qu'Emma a peut-être mal lu sa feuille ; il dit avoir écrit : trois
+      -🤔 peut-être Q10
+      -à relire ce soir
+      +🚪 parti après la question 7
+~ changé : x610-autonomie-michel@1536 · texte changé · image 0.01 %
+      -Fin de la correction — chacun dit ce qu'il pense de la lecture de sa feuille · 20 / 24 ont répondu
+      +Fin de la correction — chacun dit ce qu'il pense de la lecture de sa feuille · 19 / 23 ont répondu
+      -« 🏁 Afficher leur bilan aux élèves » s'ouvre quand les 24 présents ont répondu. Il en manque 4 :
+      +« 🏁 Afficher leur bilan aux élèves » s'ouvre quand les 23 présents ont répondu. Il en manque 4 :
+      -🤔 2 pensent : peut-être mal lu (à relire ce soir)
+      +🤔 1 pensent : peut-être mal lu (à relire ce soir)
+      -📌 À lire sur les feuilles, ce soir (5)
+      +📌 À lire sur les feuilles, ce soir (4)
+      -MAILLARD Noah — Q10 : 🤔 pense qu'Emma a peut-être mal lu sa feuille ; il dit avoir écrit : trois
+      -🤔 peut-être Q10
+      -à relire ce soir
+      +🚪 parti après la question 7
+~ changé : x610-feuille@1536 · texte changé · image 0.00 %
+      -Fin de la correction — chacun dit ce qu'il pense de la lecture de sa feuille · 20 / 24 ont répondu
+      +Fin de la correction — chacun dit ce qu'il pense de la lecture de sa feuille · 19 / 23 ont répondu
+      -« 🏁 Afficher leur bilan aux élèves » s'ouvre quand les 24 présents ont répondu. Il en manque 4 :
+      +« 🏁 Afficher leur bilan aux élèves » s'ouvre quand les 23 présents ont répondu. Il en manque 4 :
+      -🤔 2 pensent : peut-être mal lu (à relire ce soir)
+      +🤔 1 pensent : peut-être mal lu (à relire ce soir)
+      -📌 À lire sur les feuilles, ce soir (5)
+      +📌 À lire sur les feuilles, ce soir (4)
+      -MAILLARD Noah — Q10 : 🤔 pense qu'Emma a peut-être mal lu sa feuille ; il dit avoir écrit : trois
+      -🤔 peut-être Q10
+      -à relire ce soir
+      +🚪 parti après la question 7
+~ changé : x610-tranche@1536 · texte changé · image 7.67 %
+      -Fin de la correction — chacun dit ce qu'il pense de la lecture de sa feuille · 24 / 24 ont répondu
+      +Fin de la correction — chacun dit ce qu'il pense de la lecture de sa feuille · 23 / 23 ont répondu
+      -🤔 2 pensent : peut-être mal lu (à relire ce soir)
+      +🤔 1 pensent : peut-être mal lu (à relire ce soir)
+      -📌 À lire sur les feuilles, ce soir (5)
+      +📌 À lire sur les feuilles, ce soir (4)
+      -MAILLARD Noah — Q10 : 🤔 pense qu'Emma a peut-être mal lu sa feuille ; il dit avoir écrit : trois
+      -🤔 peut-être Q10
+      -à relire ce soir
+      +🚪 parti après la question 7
+~ changé : x610-tranche_dec=julien@1536 · texte changé · image 7.67 %
+      -Fin de la correction — chacun dit ce qu'il pense de la lecture de sa feuille · 24 / 24 ont répondu
+      +Fin de la correction — chacun dit ce qu'il pense de la lecture de sa feuille · 23 / 23 ont répondu
+      -🤔 2 pensent : peut-être mal lu (à relire ce soir)
+      +🤔 1 pensent : peut-être mal lu (à relire ce soir)
+      -📌 À lire sur les feuilles, ce soir (5)
+      +📌 À lire sur les feuilles, ce soir (4)
+      -MAILLARD Noah — Q10 : 🤔 pense qu'Emma a peut-être mal lu sa feuille ; il dit avoir écrit : trois
+      -🤔 peut-être Q10
+      -à relire ce soir
+      +🚪 parti après la question 7
+~ changé : x610-tranche_dec=julien_retire=Julien@1536 · texte changé · image 6.55 %
+      -Fin de la correction — chacun dit ce qu'il pense de la lecture de sa feuille · 24 / 24 ont répondu
+      +Fin de la correction — chacun dit ce qu'il pense de la lecture de sa feuille · 23 / 23 ont répondu
+      -🤔 2 pensent : peut-être mal lu (à relire ce soir)
+      +🤔 1 pensent : peut-être mal lu (à relire ce soir)
+      -📌 À lire sur les feuilles, ce soir (5)
+      +📌 À lire sur les feuilles, ce soir (4)
+      -MAILLARD Noah — Q10 : 🤔 pense qu'Emma a peut-être mal lu sa feuille ; il dit avoir écrit : trois
+      -🤔 peut-être Q10
+      -à relire ce soir
+      +🚪 parti après la question 7
+~ changé : x610-tranche_dec=julien_retire=Michel@1536 · texte changé · image 6.55 %
+      -Fin de la correction — chacun dit ce qu'il pense de la lecture de sa feuille · 24 / 24 ont répondu
+      +Fin de la correction — chacun dit ce qu'il pense de la lecture de sa feuille · 23 / 23 ont répondu
+      -🤔 2 pensent : peut-être mal lu (à relire ce soir)
+      +🤔 1 pensent : peut-être mal lu (à relire ce soir)
+      -📌 À lire sur les feuilles, ce soir (5)
+      +📌 À lire sur les feuilles, ce soir (4)
+      -MAILLARD Noah — Q10 : 🤔 pense qu'Emma a peut-être mal lu sa feuille ; il dit avoir écrit : trois
+      -🤔 peut-être Q10
+      -à relire ce soir
+      +🚪 parti après la question 7
+~ changé : x610-tranche_dec=julien_retire=deux@1536 · texte changé · image 6.55 %
+      -Fin de la correction — chacun dit ce qu'il pense de la lecture de sa feuille · 24 / 24 ont répondu
+      +Fin de la correction — chacun dit ce qu'il pense de la lecture de sa feuille · 23 / 23 ont répondu
+      -🤔 2 pensent : peut-être mal lu (à relire ce soir)
+      +🤔 1 pensent : peut-être mal lu (à relire ce soir)
+      -📌 À lire sur les feuilles, ce soir (5)
+      +📌 À lire sur les feuilles, ce soir (4)
+      -MAILLARD Noah — Q10 : 🤔 pense qu'Emma a peut-être mal lu sa feuille ; il dit avoir écrit : trois
+      -🤔 peut-être Q10
+      -à relire ce soir
+      +🚪 parti après la question 7
+~ changé : x610-tranche_dec=michel@1536 · texte changé · image 7.41 %
+      -Fin de la correction — chacun dit ce qu'il pense de la lecture de sa feuille · 24 / 24 ont répondu
+      +Fin de la correction — chacun dit ce qu'il pense de la lecture de sa feuille · 23 / 23 ont répondu
+      -🤔 2 pensent : peut-être mal lu (à relire ce soir)
+      +🤔 1 pensent : peut-être mal lu (à relire ce soir)
+      -📌 À lire sur les feuilles, ce soir (5)
+      +📌 À lire sur les feuilles, ce soir (4)
+      -MAILLARD Noah — Q10 : 🤔 pense qu'Emma a peut-être mal lu sa feuille ; il dit avoir écrit : trois
+      -🤔 peut-être Q10
+      -à relire ce soir
+      +🚪 parti après la question 7
+~ changé : x610-tranche_dec=michel_retire=Julien@1536 · texte changé · image 6.16 %
+      -Fin de la correction — chacun dit ce qu'il pense de la lecture de sa feuille · 24 / 24 ont répondu
+      +Fin de la correction — chacun dit ce qu'il pense de la lecture de sa feuille · 23 / 23 ont répondu
+      -🤔 2 pensent : peut-être mal lu (à relire ce soir)
+      +🤔 1 pensent : peut-être mal lu (à relire ce soir)
+      -📌 À lire sur les feuilles, ce soir (5)
+      +📌 À lire sur les feuilles, ce soir (4)
+      -MAILLARD Noah — Q10 : 🤔 pense qu'Emma a peut-être mal lu sa feuille ; il dit avoir écrit : trois
+      -🤔 peut-être Q10
+      -à relire ce soir
+      +🚪 parti après la question 7
+~ changé : x610-tranche_dec=michel_retire=Michel@1536 · texte changé · image 6.16 %
+      -Fin de la correction — chacun dit ce qu'il pense de la lecture de sa feuille · 24 / 24 ont répondu
+      +Fin de la correction — chacun dit ce qu'il pense de la lecture de sa feuille · 23 / 23 ont répondu
+      -🤔 2 pensent : peut-être mal lu (à relire ce soir)
+      +🤔 1 pensent : peut-être mal lu (à relire ce soir)
+      -📌 À lire sur les feuilles, ce soir (5)
+      +📌 À lire sur les feuilles, ce soir (4)
+      -MAILLARD Noah — Q10 : 🤔 pense qu'Emma a peut-être mal lu sa feuille ; il dit avoir écrit : trois
+      -🤔 peut-être Q10
+      -à relire ce soir
+      +🚪 parti après la question 7
+~ changé : x610-tranche_dec=michel_retire=deux@1536 · texte changé · image 6.16 %
+      -Fin de la correction — chacun dit ce qu'il pense de la lecture de sa feuille · 24 / 24 ont répondu
+      +Fin de la correction — chacun dit ce qu'il pense de la lecture de sa feuille · 23 / 23 ont répondu
+      -🤔 2 pensent : peut-être mal lu (à relire ce soir)
+      +🤔 1 pensent : peut-être mal lu (à relire ce soir)
+      -📌 À lire sur les feuilles, ce soir (5)
+      +📌 À lire sur les feuilles, ce soir (4)
+      -MAILLARD Noah — Q10 : 🤔 pense qu'Emma a peut-être mal lu sa feuille ; il dit avoir écrit : trois
+      -🤔 peut-être Q10
+      -à relire ce soir
+      +🚪 parti après la question 7
+~ changé : x610-tranche_dec=soir@1536 · texte changé · image 7.61 %
+      -Fin de la correction — chacun dit ce qu'il pense de la lecture de sa feuille · 24 / 24 ont répondu
+      +Fin de la correction — chacun dit ce qu'il pense de la lecture de sa feuille · 23 / 23 ont répondu
+      -🤔 2 pensent : peut-être mal lu (à relire ce soir)
+      +🤔 1 pensent : peut-être mal lu (à relire ce soir)
+      -📌 À lire sur les feuilles, ce soir (6)
+      +📌 À lire sur les feuilles, ce soir (5)
+      -MAILLARD Noah — Q10 : 🤔 pense qu'Emma a peut-être mal lu sa feuille ; il dit avoir écrit : trois
+      -🤔 peut-être Q10
+      -à relire ce soir
+      +🚪 parti après la question 7
+~ changé : x610-tranche_dec=soir_retire=Julien@1536 · texte changé · image 6.74 %
+      -Fin de la correction — chacun dit ce qu'il pense de la lecture de sa feuille · 24 / 24 ont répondu
+      +Fin de la correction — chacun dit ce qu'il pense de la lecture de sa feuille · 23 / 23 ont répondu
+      -🤔 2 pensent : peut-être mal lu (à relire ce soir)
+      +🤔 1 pensent : peut-être mal lu (à relire ce soir)
+      -📌 À lire sur les feuilles, ce soir (6)
+      +📌 À lire sur les feuilles, ce soir (5)
+      -MAILLARD Noah — Q10 : 🤔 pense qu'Emma a peut-être mal lu sa feuille ; il dit avoir écrit : trois
+      -🤔 peut-être Q10
+      -à relire ce soir
+      +🚪 parti après la question 7
+~ changé : x610-tranche_dec=soir_retire=Michel@1536 · texte changé · image 6.74 %
+      -Fin de la correction — chacun dit ce qu'il pense de la lecture de sa feuille · 24 / 24 ont répondu
+      +Fin de la correction — chacun dit ce qu'il pense de la lecture de sa feuille · 23 / 23 ont répondu
+      -🤔 2 pensent : peut-être mal lu (à relire ce soir)
+      +🤔 1 pensent : peut-être mal lu (à relire ce soir)
+      -📌 À lire sur les feuilles, ce soir (6)
+      +📌 À lire sur les feuilles, ce soir (5)
+      -MAILLARD Noah — Q10 : 🤔 pense qu'Emma a peut-être mal lu sa feuille ; il dit avoir écrit : trois
+      -🤔 peut-être Q10
+      -à relire ce soir
+      +🚪 parti après la question 7
+~ changé : x610-tranche_dec=soir_retire=deux@1536 · texte changé · image 6.74 %
+      -Fin de la correction — chacun dit ce qu'il pense de la lecture de sa feuille · 24 / 24 ont répondu
+      +Fin de la correction — chacun dit ce qu'il pense de la lecture de sa feuille · 23 / 23 ont répondu
+      -🤔 2 pensent : peut-être mal lu (à relire ce soir)
+      +🤔 1 pensent : peut-être mal lu (à relire ce soir)
+      -📌 À lire sur les feuilles, ce soir (6)
+      +📌 À lire sur les feuilles, ce soir (5)
+      -MAILLARD Noah — Q10 : 🤔 pense qu'Emma a peut-être mal lu sa feuille ; il dit avoir écrit : trois
+      -🤔 peut-être Q10
+      -à relire ce soir
+      +🚪 parti après la question 7

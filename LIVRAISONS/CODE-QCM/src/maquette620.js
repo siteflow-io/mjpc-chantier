@@ -311,10 +311,12 @@ function contenuTablette(se, t){
 }
 function FeuilleTest(p){
   var se = p.se, x = p.x, v = se ? ((se.S.feuillesTest || {})[x] || "") : "";
-  return h("div", {className:"simt-f"},
-    h("span", {className:"simt-fl"}, "📝 Feuille " + deNom(prenomDeNom(p.nom))),
-    h("input", {key:x + ":" + v, className:"simt-fi" + (v ? "" : " vide"), defaultValue:v, placeholder:"vide : sa feuille dira ce qu'" + (TEST_F[prenomDeNom(p.nom)] ? "elle" : "il") + " clique", disabled:!se,
-      title:"Ce que l'élève écrit sur sa feuille, posée à côté de la tablette.", onBlur:function(e){ if(se) v3Set(v3Q("sessions/" + se.id + "/feuillesTest/" + x), e.target.value.trim() || null); }}));
+  // la feuille posée à côté de la tablette : celle de la maquette validée (etape4.js, ChampFeuille)
+  var pr = prenomDeNom(p.nom);
+  return h("label", {className:"simt-f"},
+    h("span", {className:"simt-fl"}, "📝 Feuille " + deNom(pr)),
+    h("input", {key:x + ":" + v, className:"simt-fi" + (v ? "" : " vide"), defaultValue:v, placeholder:"vide : sa feuille dira ce qu'" + (TEST_F[pr] ? "elle" : "il") + " clique", disabled:!se,
+      title:"Ce " + queNom(pr) + " écrit sur sa feuille, avec ses mots : tu le tapes ici.", onBlur:function(e){ if(se) v3Set(v3Q("sessions/" + se.id + "/feuillesTest/" + x), e.target.value.trim() || null); }}));
 }
 function TablettesSimuleesV(){
   var se = testSession(), d = se ? deroule(se.S) || {} : {}, places = se && SCN.places ? SCN.places() : [];
@@ -324,8 +326,7 @@ function TablettesSimuleesV(){
     h("div", {style:{display:"flex", justifyContent:"space-between", alignItems:"center", flexWrap:"wrap", gap:".5rem", marginTop:".8rem"}},
       h("h2", {className:"test-section-title", style:{margin:0}}, "👥 Tablettes simulées", InfoI("Les 15 tablettes de la classe de test, chacune la vraie tablette en deux moitiés, en petit pour regarder ; « 🔍 Jouer en grand » pour jouer.")),
       h("button", surClic(function(){ return tousRepondent(); }, {className:"btn btn-primary btn-sm"}), "🎲 Tous les élèves répondent")),
-    d.ph === "reflexion" && h("div", {className:"simt-aide"}, "Pendant la réflexion, tu tapes sous chaque tablette ce que chaque élève écrit sur sa feuille. La feuille est posée à côté de la tablette, comme en classe."),
-    h("div", {className:"sims"}, places.map(function(t){
+    h("div", {className:"sims", title:d.ph === "reflexion" ? "Pendant la réflexion, tu tapes sous chaque tablette ce que chaque élève écrit sur sa feuille. La feuille est posée à côté de la tablette, comme en classe." : null}, places.map(function(t){
       return h("div", {key:t.n, "data-sim-tab":t.n, "data-g":t.g || "", "data-d":t.d || ""},
         h("div", {className:"sim-cadre simt"},
           h("div", {className:"sim-titre simt-titre"}, h("span", null, "📱 Tablette " + t.n + " · " + nom(t.g) + (t.d ? " · " + nom(t.d) : "")),
@@ -376,7 +377,8 @@ setTimeout(function(){
     var c = avant.apply(this, arguments);
     if(MODE_TEST.actif && typeof LIVE !== "undefined" && LIVE.appareil() === "console" && typeof NAV !== "undefined"){
       if(NAV.ecran && !/^x620-/.test(NAV.ecran) && !NAV.pile.length) quitterModeTest();
-      else if(!NAV.ecran || /^x620-/.test(NAV.ecran)) return {id:"x620-1-mode-test-ouverture", vue:"console", render:function(){ return h(GardeV, {key:"mode-test"}, ModeTestV()); }, cle:"mode-test"};
+      // la scène du mode test selon son état (ses textes et ses infobulles) : à l'ouverture, pendant la séance, une tablette en grand
+      else if(!NAV.ecran || /^x620-/.test(NAV.ecran)) return {id:MODE_TEST.grand ? "x620-3-mode-test-en-grand" : testSid() ? "x620-2-mode-test-reflexion" : "x620-1-mode-test-ouverture", vue:"console", render:function(){ return h(GardeV, {key:"mode-test"}, ModeTestV()); }, cle:"mode-test"};
     }
     return c;
   };
@@ -384,6 +386,11 @@ setTimeout(function(){
 }, 0);
 function ModeTestVC(){
   useV3();
+  var zone = React.useRef(null);
+  useEffect(function(){ if(!zone.current) return;
+    function fermer(){ Array.prototype.forEach.call(zone.current ? zone.current.querySelectorAll("button") : [], function(b){ if(/Finir à une autre heure/.test(b.textContent || "") && !b.disabled){
+      b.disabled = true; b.removeAttribute("data-va"); b.title = "Fermé en mode test : la séance d'essai ne se reprend pas à une autre heure ; « 🗑️ Sortir et purger » la termine."; } }); }
+    fermer(); var mo = new MutationObserver(fermer); mo.observe(zone.current, {childList:true, subtree:true}); return function(){ mo.disconnect(); }; }, []);
   useEffect(function(){ preparerModeTest(); remettreDemo(); });
   var se = testSession(), d = se ? deroule(se.S) || {} : {};
   useEffect(function(){ if(se && d.ph && ["appel"].indexOf(d.ph) < 0) entrerTous(se); });
@@ -396,7 +403,7 @@ function ModeTestVC(){
     DECO.map(function(e, i){ return h("span", {key:i, className:"deco"}, e); }),
     h("div", {className:"prof full"},
       HautModeTestV(),
-      h("div", {className:"test-prof-zone"},
+      h("div", {className:"test-prof-zone", ref:zone},
         h("h2", {className:"test-section-title"}, "🎯 Panneau prof", InfoI(se ? "Ta vraie console de séance, sur la classe de test." : "Le même panneau qu'en classe.")),
         panneau),
       TablettesSimuleesV()),

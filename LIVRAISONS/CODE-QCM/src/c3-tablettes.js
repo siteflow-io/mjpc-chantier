@@ -309,6 +309,8 @@ function MoitieH(p, cote, autreP){
     return a1.fini ? EcrPret(e) : h(AttestCoches, {key:"a1" + p, e:e, lignes:LignesAttest(e, e.voisin), n0:a1.lignes, attest:1, fini:a1.fini, titre:"Avant de commencer, " + e.prenom, bouton:"Je commence", titrePage:EV.titre, pret:function(){ return EcrPret(e); }});
   }
   if(ph === "reflexion") return EcrReflexion(e, qi, reste);
+  // (contrat C6) le geste de Paul a coupé l'attente : la moitié qui vient de répondre dit B pendant que la suite commence
+  if(typeof SCN.doitDireB === "function" && SCN.doitDireB(p)){ var bp = m.bPour || {}; return EcrDeclareH(e, bp.qi != null ? bp.qi : qi, bp.reste != null ? bp.reste : reste); }
   if(ph === "passage") return cote === actif ? EcrPassage(e, qi, reste) : (v ? Voile(v, true, e) : EcrAttente(e));
   if(ph === "reponse") return cote === actif ? EcrReponse(e, qi, ORD[qi][p], TABL[p][qi], reste) : voile();
   if(ph === "b") return cote === actif ? EcrDeclareH(e, qi, reste) : voile();

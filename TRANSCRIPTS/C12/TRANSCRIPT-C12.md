@@ -20589,3 +20589,35 @@ Paul change la suite. Lis en entier MANDATS/MANDAT-CODE-QCM.md sur la branche ma
 872. **Ce que j'attends de toi** : la phrase du point 869, collée à l'exécutant ; ton « ok » ou ton « non » pour tes 28 libellés élève au hub (point 866) ; les 11 questions que tu gardes ; et ton « ok » pour réparer cet après-midi la version d'aujourd'hui, en secours (point 837).
 
 12/10/2026 13:53 MEMO
+
+---
+
+## TOUR 671 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (12/10, 13:57) attends, je n'ai pas encore collé à l'exécutant. Je veux juste être sur qu'avec ça, on arrivera à mon objetcif et que les bugs seront quand même attrapés. En fait je veux la meilleure méthode gain de temps efficacité performance.
+
+---
+
+## TOUR 671 — Claude (conscience n°12)
+
+Rien de nouveau mesuré ; la proposition s'appuie sur le mandat de code et le protocole de l'audit (obligation 2, les relecteurs neufs, absente du mandat de code).
+
+Réponse mot pour mot :
+
+873. **Avec le mandat tel qu'il est, je ne peux pas te le promettre.** Un seul exécutant fait tout, la nuit : la séance jusqu'à la correction a de bonnes chances d'être prête, le reste je ne sais pas. Et il manque une protection que tu as validée ce matin : les relecteurs neufs, qui jouent ton heure comme toi sans avoir vu le code. Ce que je peux te promettre, c'est un QCM qui marche à 10:30 : la nouvelle app si l'audit va, sinon la version d'aujourd'hui réparée.
+
+874. **La meilleure méthode : deux exécutants en même temps, au lieu d'un.** Le premier, celui de la v9, code la séance de l'appel au bilan. Un second, dans une nouvelle session, code en parallèle le soir (résultats, PDF, copies rendues) et le reste de la maquette (éditeur, réglages, mode test, papier, rattrapage, démo). Chacun a ses fichiers, et ils ne se gênent pas. La nuit de travail est ainsi coupée en deux.
+
+875. **Pour qu'ils travaillent ensemble dès maintenant, j'écris moi-même, avant eux, le contrat de la base** : où et comment chaque chose s'enregistre (les tours, B, les lectures, la co-évaluation, l'autonomie, les attestations). Je le tire du scénario de la maquette, qui contient déjà toutes ces données. Le premier les écrit, le second les lit : aucun n'attend l'autre.
+
+876. **Les défauts sont attrapés trois fois avant ta classe** : par leurs bancs, qui comparent chaque écran de l'app à celui de la maquette ; par mes contrôles, qu'ils ne peuvent pas modifier, et que j'étends cet après-midi à la correction, la co-évaluation, le bilan et les notes ; par leurs relecteurs neufs, avant de livrer. Puis demain à 7:00, mon audit.
+
+877. **Ton évaluation de demain ne dépend pas d'eux** : tu choisis les 11 questions, je te propose leurs temps, leurs compétences et « ce qu'elle vérifie », tu valides, et je l'écris dans la base ce soir.
+
+878. **Demain** : à 9:00, si l'audit va, je mets l'app en ligne, avec un retour possible en une minute ; tu l'essaies sur une vraie tablette et ton téléphone ; au moindre problème, je remets la version d'aujourd'hui, réparée de ses deux pannes. Pour ce secours, il me faut ton « ok » sur le point 837.
+
+879. **Si tu dis « ok »**, j'écris le contrat de la base, le mandat du second exécutant et la mise à jour du premier, et j'étends mes contrôles. Je te donne ensuite les deux phrases à coller, une par session. N'envoie rien à l'exécutant d'ici là.
+
+12/10/2026 13:58 MEMO

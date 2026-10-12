@@ -163,6 +163,14 @@ var SCN = (function(){
   S.tabletteDe = function(x, sid){ var r = null; S.places(sid).forEach(function(t){ if(t.g === x) r = {n:t.n, cote:"g"}; else if(t.d === x) r = {n:t.n, cote:"d"}; }); return r; };
   S.voisinDe = function(x, sid){ var t = S.tabletteDe(x, sid); if(!t) return null; var p = S.places(sid).filter(function(y){ return y.n === t.n; })[0]; return t.cote === "g" ? p.d : p.g; };
   S.cote = function(x, sid){ var t = S.tabletteDe(x, sid); return t ? t.cote : null; };
+  // un élève seul sur sa tablette (nombre impair, binôme absent ou parti, rattrapage) : personne à qui cacher sa réponse, il a la main aux deux tours
+  S.seul = function(x, sid){ var v = S.voisinDe(x, sid); return !v || S.presents(null, sid).indexOf(v) < 0; };
+  // la moitié de cet élève peut-elle répondre maintenant ? (le tour de sa moitié ; seul : les deux tours ; une question rouverte pour lui)
+  S.aLaMain = function(x, sid){ var e = S.etat(sid); if(!e || e.qi == null) return false;
+    if(e.ph === "rouvert") return e.pour === x;
+    if(e.ph !== "reponse") return false;
+    if(e.rouvert === "tous" && S.reponse(x, e.qi, sid) && !S.reponse(x, e.qi, sid).rouverte) return false;
+    return S.cote(x, sid) === (e.cote || S.coteDuTour(e.qi, e.tour || 1, sid)) || S.seul(x, sid); };
   S.premierCote = function(qi, sid){ var s = S.sess(sid); return ((s && s.premier) || {})[qi] || "g"; };
   S.coteDuTour = function(qi, tour, sid){ var p = S.premierCote(qi, sid); return tour === 2 ? (p === "g" ? "d" : "g") : p; };
   // une liste lue dans la base revient en objet si elle a des trous : on la relit toujours en liste
@@ -249,8 +257,8 @@ var SCN = (function(){
   S.lecture = function(x, qi, sid){ var s = S.sess(sid), l = ((((s && s.lectures) || {})[qi]) || {})[x]; if(!l) return null;
     return Object.assign({}, l, {choix:l.choix === "aucun" ? "aucun" : (Array.isArray(l.choix) ? l.choix : Object.values(l.choix || {})).map(Number)}); };
   S.doitDireB = function(x, sid){ var e = S.etat(sid); if(!e || !x || e.qi == null) return false; var c = S.cote(x, sid);
-    if(e.ph === "b") return c === (e.cote || S.coteDuTour(e.qi, e.tour || 1, sid)) && !S.ditB(x, e.qi, sid) && !!S.reponse(x, e.qi, sid);
-    var b = e.bPour; return !!(b && Number(b.qi) === e.qi && b.cote === c && LIVE.maintenant() < b.jusqua && !S.ditB(x, e.qi, sid) && S.reponse(x, e.qi, sid)); };
+    if(e.ph === "b") return (c === (e.cote || S.coteDuTour(e.qi, e.tour || 1, sid)) || S.seul(x, sid)) && !S.ditB(x, e.qi, sid) && !!S.reponse(x, e.qi, sid);
+    var b = e.bPour; return !!(b && Number(b.qi) === e.qi && (b.cote === c || S.seul(x, sid)) && LIVE.maintenant() < b.jusqua && !S.ditB(x, e.qi, sid) && S.reponse(x, e.qi, sid)); };
   S.estimationDe = function(x, sid){ var s = S.sess(sid); return ((s && s.autoevals) || {})[x] || null; };
   S.coevalDe = function(x, sid){ var s = S.sess(sid); return ((s && s.coeval) || {})[x] || null; };
   S.attestDe = function(n, x, sid){ var s = S.sess(sid); return ((((s && s.attest) || {})[n]) || {})[x] || null; };
@@ -382,7 +390,7 @@ var SCN = (function(){
     if(!s) return o;
     if(qi != null && ["reflexion", "reponse", "close", "b", "passage", "rouvert", "pause"].indexOf(e.ph) >= 0){
       var rep = S.repondu(qi, k, sid), pc = S.premierCote(qi, sid);
-      var attendu = (e.ph === "reponse" || e.ph === "passage" || e.ph === "b") && e.tour === 1 ? pres.filter(function(x){ return S.cote(x, sid) === pc; }).length : pres.length;
+      var attendu = (e.ph === "reponse" || e.ph === "passage" || e.ph === "b") && e.tour === 1 ? pres.filter(function(x){ return S.cote(x, sid) === pc || S.seul(x, sid); }).length : pres.length;
       o.repondu = [e.ph === "reflexion" ? 0 : rep.length, attendu];
       o.justes = [rep.filter(function(x){ return S.justeTablette(x, qi, sid); }).length, rep.length];
       o.question = [qi + 1 - ec.filter(function(x){ return x < qi; }).length, nbQ];
@@ -416,8 +424,7 @@ var SCN = (function(){
     if(e.ph === "pause" && e.reprise){ m.pause = {qi:e.reprise.qi, tour:e.reprise.tour, ph:e.reprise.ph}; m.qi = e.reprise.qi; m.tour = e.reprise.tour; }
     // une séance reprise à une autre heure, avant « ▶️ Reprendre » : la phase gelée qui recommencera ({ph, qi, tour})
     if(e.reprise && e.ph !== "pause") m.reprise = {ph:e.reprise.ph, qi:e.reprise.qi, tour:e.reprise.tour};
-    if(e.ph === "reponse" || e.ph === "rouvert"){ var cr = e.ph === "rouvert" ? null : S.coteDuTour(e.qi, e.tour, sid);
-      m.nonRep = S.presents(k, sid).filter(function(x){ return (!cr || S.cote(x, sid) === cr) && !S.reponse(x, e.qi, sid) && (e.ph !== "rouvert" || x === e.pour); }); }
+    if(e.ph === "reponse" || e.ph === "rouvert") m.nonRep = S.presents(k, sid).filter(function(x){ return S.aLaMain(x, sid) && !S.reponse(x, e.qi, sid); });
     if(e.ph === "close") m.sansRep = S.presents(k, sid).filter(function(x){ return !S.reponse(x, e.qi, sid); });
     // la moitié qui dit encore B pendant que la suite a commencé (un geste de Paul a coupé l'attente) : {cote, qi, tour, reste}
     if(e.bPour && Number(e.bPour.qi) === e.qi && LIVE.maintenant() < e.bPour.jusqua) m.bPour = {cote:e.bPour.cote, qi:Number(e.bPour.qi), tour:e.bPour.tour, reste:Math.ceil((e.bPour.jusqua - LIVE.maintenant()) / 1000)};
@@ -643,7 +650,7 @@ var ACT = (function(){
     return poserDeroule(id, {ph:"passage", qi:x.qi, tour:1, cote:SCN.coteDuTour(x.qi, 1), duree:D().decompte}); };
   A.tourSuivant = function(){ var x = e(), id = sid(); if(!id) return Promise.resolve();
     if((x.ph === "reponse" || x.ph === "passage" || x.ph === "b") && x.tour === 1){
-      var autre = SCN.coteDuTour(x.qi, 2), quelquun = SCN.presents().some(function(y){ return SCN.cote(y) === autre; });
+      var autre = SCN.coteDuTour(x.qi, 2), quelquun = SCN.presents().some(function(y){ return SCN.seul(y) ? !SCN.reponse(y, x.qi) : SCN.cote(y) === autre; });
       var b = x.ph === "b" ? Object.assign(bPour(x), {jusqua:(x.depuis || 0) + (x.duree || 0) * 1000}) : bPour(x);
       if(!quelquun) return poserDeroule(id, {ph:"close", qi:x.qi, bPour:b});
       return poserDeroule(id, {ph:"reponse", qi:x.qi, tour:2, cote:autre, duree:SCN.tempsDe(x.qi).reponse, bPour:b});
@@ -851,7 +858,7 @@ var ELV = (function(){
     return w("attest/" + n + "/" + x, {lignes:a.lignes || 0, fini:true, ms:LIVE.maintenant()}, "commencer"); };
   // répondre : la forme de la 7.7.1 ({choix, ts}), plus le tour et l'heure ; une réponse donnée à une question rouverte est définitive
   E.repondre = function(qi, choix, x){ x = qui(x); var id = sid(); if(!x || !id) return Promise.resolve(); var e = SCN.etat() || {};
-    var ouvert = (e.ph === "reponse" || e.ph === "rouvert") && e.qi === qi && (e.ph === "rouvert" ? e.pour === x : SCN.cote(x) === e.cote) && (SCN.reste(e) == null || SCN.reste(e) > 0);
+    var ouvert = e.qi === qi && SCN.aLaMain(x) && (SCN.reste(e) == null || SCN.reste(e) > 0);
     if(!ouvert) return Promise.resolve({ok:false});
     if(e.rouvert === "tous" && SCN.reponse(x, qi) && !SCN.reponse(x, qi).rouverte) return Promise.resolve({ok:false});
     if(!choix || !choix.length) return w("reponses/" + qi + "/" + x, null, "repondre (vide)");
@@ -882,7 +889,7 @@ var MOTEUR = (function(){
     if(e.ph === "passage") return {ph:"reponse", qi:e.qi, tour:e.tour, cote:e.cote, duree:t.reponse, rouvert:e.rouvert || null};
     if(e.ph === "reponse") return {ph:"b", qi:e.qi, tour:e.tour, cote:e.cote, duree:D.b, rouvert:e.rouvert || null};
     if(e.ph === "b" && e.tour === 1){
-      var autre = SCN.coteDuTour(e.qi, 2, sid), quelquun = SCN.presents(null, sid).some(function(x){ return SCN.cote(x, sid) === autre; });
+      var autre = SCN.coteDuTour(e.qi, 2, sid), quelquun = SCN.presents(null, sid).some(function(x){ return SCN.seul(x, sid) ? !SCN.reponse(x, e.qi, sid) : SCN.cote(x, sid) === autre; });
       if(quelquun) return {ph:"passage", qi:e.qi, tour:2, cote:autre, duree:D.decompte, rouvert:e.rouvert || null};
       return {ph:"close", qi:e.qi};
     }

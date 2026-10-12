@@ -539,6 +539,8 @@ function FicheV(p){
   if(!r0) return h("div", {className:"student-report", "data-eleve":slug}, h("div", {style:{display:"flex", justifyContent:"space-between", alignItems:"center", flexWrap:"wrap"}}, h("h3", null, "👤 " + nom), h("button", {className:"btn btn-ghost btn-sm", "data-va":"c-resultats" + sq, title:"Ferme la fiche et revient au tableau de la séance."}, "✕ Fermer")));
   var r = stVue(r0), mt = maitriseDe(r.sur20), au = autonomieV(se, slug), comps = compsDeV(ev), lire = aLireV(se).filter(function(x){ return x.p === slug; });
   var b = (se.S.b || {});
+  // une séance de la 7.7.1 n'a ni lecture du voisin ni « Oui / Non » : sa fiche est celle des autres séances de la maquette (FicheAutre)
+  if(!se.nouvelle) return FicheAncienneV(se, slug, r, mt, au, comps, e, sq, nom, il, pre);
   return h("div", {className:"student-report", "data-eleve":slug, "data-seance":se.id},
     h("div", {style:{display:"flex", justifyContent:"space-between", alignItems:"center", flexWrap:"wrap"}},
       h("h3", null, "👤 " + nom + " — " + fr1(r.n) + " / " + r.total + " · " + fr1(r.sur20) + " / 20 · " + mt.em + " " + mt.lib, InfoI("Pour chaque question : ce que " + (vPre || "son voisin") + " a lu sur sa feuille à la correction, ce qu'" + il + " a cliqué sur la tablette, ce qu'" + il + " a dit à la fin de son temps de réponse, « Oui, la même chose » ou « Non, autre chose ». « La feuille dit autre chose » corrige une question d'après sa feuille.")),
@@ -1027,3 +1029,32 @@ Rattrapage = vivantOu(RattrapageV, Rattrapage);
 // la moitié se reconnaissant tablette par APPAREIL_H (c3-tablettes.js, Page) ; l'élève chez lui y retrouve ses évaluations
 (function(){ var v; try { Object.defineProperty(window, "APPAREIL_H", {configurable:true, set:function(x){ v = x; },
   get:function(){ if(v) return v; try { return typeof LIVE !== "undefined" && LIVE.appareil && LIVE.appareil() === "tablette" ? "tablette" : undefined; } catch(e){ return undefined; } }}); } catch(e){} })();
+
+function FicheAncienneV(se, slug, r, mt, au, comps, e, sq, nom, il, pre){
+  var ev = se.ev;
+  return h("div", {className:"student-report", "data-eleve":slug, "data-seance":se.id},
+    h("div", {style:{display:"flex", justifyContent:"space-between", alignItems:"center", flexWrap:"wrap"}},
+      h("h3", null, "👤 " + nom + " — " + fr1(r.n) + " / " + r.total + " · " + fr1(r.sur20) + " / 20 · " + mt.em + " " + mt.lib),
+      h("button", {className:"btn btn-ghost btn-sm", "data-va":"c-resultats" + sq, title:"Ferme la fiche et revient au tableau de la séance."}, "✕ Fermer")),
+    h("div", {className:"fiche-head fiche-head-c"}, h("span", null, ""), h("span", null, "Question"), h("span", null, "Bonne réponse"), h("span", null, "Points")),
+    ev.questions.map(function(q, qi){
+      var corr = (r.corrigees || []).indexOf(qi) >= 0, l = lectureV(se, qi, slug);
+      return h("div", {key:qi, className:"fiche-q fiche-q-c"},
+        h("span", {className:"num"}, "Q" + (qi+1)),
+        h("span", null, q.enonce, (q.competences || []).length > 0 && h("div", {className:"fiche-comp"}, "🧩 " + q.competences.join(" · ")),
+          corr && h("div", null, h("span", {className:"flag ok"}, l && l.par === "prof" ? "Corrigé d'après sa feuille : " + choixTexteV(q, l.choix) : "Corrigé d'après sa feuille")),
+          h("div", null, h("button", {className:"btn btn-ghost btn-sm", "data-va":"c-que-dit-la-feuille" + e + "&q=" + (qi + 1), title:"Ouvre les choix de la question " + (qi + 1) + " : tu cliques ce que dit sa feuille, et sa note se recalcule (« Corrigé d'après ta feuille » dans son bilan)."}, "La feuille dit autre chose"))),
+        h("span", {className:"val"}, choixTexteV(q, q.bonnes)),
+        h("span", {className:"pts"}, r.st[qi] === "x" ? "—" : fr1(r.pts[qi] || 0) + " pt"));
+    }),
+    h("div", {className:"fiche-comps"}, h("div", {className:"tt"}, "🧩 Ses compétences"),
+      comps.map(function(c){ var n = niveauComp(r, c), x = r.comp[c] || {n:0, max:0};
+        return h("div", {key:c, className:"fiche-comp-l"}, h("span", {className:"c"}, c), h("span", null, libOff(c)), h("span", {className:"d"}, compQuestionsEv(c, ev).map(function(i){ return "Q" + (i+1) + " " + marque(r.st[i]); }).join(" · ") + " → " + fr1(x.n) + "/" + x.max), h("span", {className:"maitrise-pill " + n.cls}, n.em + " " + n.lib)); }),
+      ["tr-personne-03", "tr-methodes-02"].map(function(c){
+        return h("div", {key:c, className:"fiche-comp-l"}, h("span", {className:"c"}, c), h("span", null, libOff(c)), h("span", {className:"d"}, "le point d'autonomie"),
+          h("span", {className:"maitrise-pill " + (au.retire ? "mt-rouge" : "mt-vert")}, au.retire ? "🔴 Maîtrise insuffisante" : "🟢 Très bonne maîtrise"));
+      }),
+      h("div", {className:"fiche-auto"}, au.retire
+        ? h(F, null, h("span", null, "⛔ Point d'autonomie retiré " + au.quand + "."), h("button", surClic(function(){ return rendreAutonomieV(se, slug); }, {className:"btn btn-vert btn-sm", title:"Rend son point d'autonomie à " + pre + " : ses deux compétences d'autonomie repassent en Très bonne maîtrise."}), "↩️ Rendre"))
+        : h(F, null, h("span", null, (il === "elle" ? "Elle" : "Il") + " a gardé son point d'autonomie."), h("button", {className:"btn btn-rouge btn-sm", "data-va":"c-fiche-garde" + e, title:"Demande une confirmation, puis retire son point d'autonomie : ses deux compétences d'autonomie passent en Maîtrise insuffisante. La note ne bouge pas. « ↩️ Rendre » le défait."}, "⛔ Retirer le point d'autonomie")))));
+}

@@ -2,6 +2,8 @@
 
 Créé par la conscience n°12 le 12/10/2026 (tour 672), depuis la branche `maquette-qcm` à `5852823d` (la v9 candidate, 13:58).
 
+**Mis à jour le 12/10 à 17:10 (tour 674), avant le lancement des exécutants** : `maquette-qcm` fusionnée à `6fa8a9fe` (la v9 finale, poussée à 15:58, `maquette-qcm-v9.html` md5 `2f453a1ce78033172b23d57657d0ab8c`) ; les deux sources qu'elle change depuis la candidate (`src/c3-corr.js`, `src/c3-x610.js` : « 🤔 1 pense » au singulier) sont copiées ici. `src/` est identique à celui de la v9 finale : il n'y a plus rien à reporter.
+
 - `src/`, `build.py` : les sources de la maquette, copiées telles quelles ; les quatre exécutants les transforment en app (`MANDATS/CODE-QCM/COMMUN.md` sur `main`). `build.py` lit encore des chemins de `MANDATS/MAQUETTE-QCM-COMPLETE/` : QCM-1 les reprend.
 - `banc-maquette/` : le banc de la maquette, copié pour mémoire ; le banc de l'app est `banc/`, écrit par QCM-4.
 - `DEMANDES.md`, `DEFAUTS-OUVERTS.md`, `CONTRAT-CHANGEMENTS.md` : les fichiers communs (COMMUN §1 à §3).

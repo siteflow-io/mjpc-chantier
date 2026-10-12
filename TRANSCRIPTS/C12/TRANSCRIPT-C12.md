@@ -20739,3 +20739,53 @@ Réponse mot pour mot :
 902. **Test 4, la sortie** : « 🗑️ Sortir et purger ».
 
 12/10/2026 14:54 MEMO
+
+---
+
+## TOUR 674 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (12/10, 17:03) je n'ai pas lancé les exécutants, donne moi les messages et les titres pour les nommer.
+
+---
+
+## TOUR 674 — Claude (conscience n°12)
+
+Mesuré : `code-qcm` sans aucun commit d'exécutant ; `maquette-qcm` à `6fa8a9fe` (15:58, la v9 finale), qui ne change que deux sources depuis la candidate (`c3-corr.js`, `c3-x610.js`, une ligne chacune) ; reportée sur `code-qcm` (fusion, puis `src/` identique à la v9 finale) ; heures du commun recalées.
+
+Réponse mot pour mot :
+
+À jouer : lancer les quatre sessions ci-dessous · en cours chez l'exécutant : personne (la v9 finale est poussée depuis 15:58) · ouvert : tes 11 questions
+
+903. **Titre : `QCM-1 · SOCLE`** — une nouvelle session cloud sur `siteflow-io/mjpc-chantier`, et ce message :
+
+```
+Tu es QCM-1 · SOCLE. Lis en entier, sur la branche main du sas, MANDATS/CODE-QCM/COMMUN.md puis MANDATS/CODE-QCM/QCM-1-SOCLE.md, et applique-les à la lettre, d'une traite, sur la branche code-qcm, jusqu'à la livraison de 06:30.
+```
+
+904. **Titre : `QCM-2 · HEURE`** — une nouvelle session cloud sur `siteflow-io/mjpc-chantier`, et ce message :
+
+```
+Tu es QCM-2 · HEURE. Lis en entier, sur la branche main du sas, MANDATS/CODE-QCM/COMMUN.md puis MANDATS/CODE-QCM/QCM-2-HEURE.md, et applique-les à la lettre, d'une traite, sur la branche code-qcm, jusqu'à la livraison de 06:30.
+```
+
+905. **Titre : `QCM-3 · SOIR`** — une nouvelle session cloud sur `siteflow-io/mjpc-chantier`, et ce message :
+
+```
+Tu es QCM-3 · SOIR. Lis en entier, sur la branche main du sas, MANDATS/CODE-QCM/COMMUN.md puis MANDATS/CODE-QCM/QCM-3-SOIR.md, et applique-les à la lettre, d'une traite, sur la branche code-qcm, jusqu'à la livraison de 06:30.
+```
+
+906. **Titre : `QCM-4 · BANC`** — une nouvelle session cloud sur `siteflow-io/mjpc-chantier`, et ce message :
+
+```
+Tu es QCM-4 · BANC. Lis en entier, sur la branche main du sas, MANDATS/CODE-QCM/COMMUN.md puis MANDATS/CODE-QCM/QCM-4-BANC.md, et applique-les à la lettre, d'une traite, sur la branche code-qcm, jusqu'à la livraison de 06:30.
+```
+
+Lance les quatre en même temps. Le tableau est aussi au sas : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/CODE-QCM/README.md
+
+907. **Ce que j'ai changé avant que tu les lances.** La v9 finale, poussée à 15:58, est déjà dans leur branche : ils n'ont plus rien à reporter. Les heures sont recalées : le premier assemblage passe de 18:00 à 20:00. Le reste ne change pas : plus rien de nouveau à 05:00, banc final à 05:30, verdict à 06:30, mon audit à 07:00.
+
+908. **Le retard** : ils partent vers 17:15 au lieu de 14:10, soit trois heures de moins sur la nuit. Je ne sais pas si tout tiendra d'ici 06:30. S'il manque du temps, ils font l'heure de classe d'abord, et le secours est déjà en ligne : la 7.7.2.
+
+12/10/2026 17:12 MEMO

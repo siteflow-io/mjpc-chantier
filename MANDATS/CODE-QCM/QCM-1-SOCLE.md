@@ -6,7 +6,7 @@ Tu es **QCM-1 · SOCLE**. Tu fais tout d'une traite, sans t'arrêter et sans rie
 
 ## Pour commencer
 
-1. `git fetch origin`, `git checkout code-qcm`. Lis `COMMUN.md`, puis la 7.7.1 (`evaluation-qcm.html` de la production, md5 `ecae65624855a1a877708986a8e984e5`) pour la configuration Firebase, `DB_ROOT`, les chemins, l'entrée par le code (`codes`, l'empreinte), les adresses (`?mode=prof`, `&view=board`, `&view=phone`, `?mode=eleve`, `qr`) ; puis la maquette : `src/scenario.js`, `src/socle.js`, `src/gestes.js`, `src/c3-gestes.js`, `src/c3-scenes.js`, `src/c3-base.js`, `build.py`.
+1. `git fetch origin`, `git checkout code-qcm`. Lis `COMMUN.md`, puis l'app en ligne (`evaluation-qcm.html` de la production : depuis le 12/10 à 14:45, la 7.7.2, md5 `3aaf749929863d69e30a36f7bc4ad355`, qui est la 7.7.1 — md5 `ecae65624855a1a877708986a8e984e5`, commit `2287da6` — réparée de deux lignes, dettes 198 et 210) pour la configuration Firebase, `DB_ROOT`, les chemins, l'entrée par le code (`codes`, l'empreinte), les adresses (`?mode=prof`, `&view=board`, `&view=phone`, `?mode=eleve`, `qr`) ; puis la maquette : `src/scenario.js`, `src/socle.js`, `src/gestes.js`, `src/c3-gestes.js`, `src/c3-scenes.js`, `src/c3-base.js`, `build.py`.
 2. **Dans ta première heure, pousse les noms** : `src/live/base.js` avec `SCN`, `ACT` et `ELV` (COMMUN §3.2), chacun appelable, et `build.py` qui assemble l'app (sans sommaire ⚙ ni scènes), qui inclut aussi `src/qcm2.css` et `src/qcm3.css` s'ils existent (QCM-2 et QCM-3 y mettent leurs retouches de style).
 
 ## Ce que tu construis

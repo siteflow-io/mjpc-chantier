@@ -31,3 +31,5 @@ Les attendus viennent de la maquette validée (ses libellés, ses règles) et de
 Sur la version en ligne (7.7.1), servie par le faux hub (`sorties/controles-app-sur-7.7.1.txt`) : les cinq pages s'ouvrent, aucune erreur de page, et les contrôles échouent là où la 7.7.1 n'a pas encore ce que la maquette lui ajoute (le lancement de la maquette, la tablette partagée, les deux tours) : 16 vérifications, 14 échecs.
 
 `EMPREINTES.md5` : les md5 de ces fichiers ; l'exécutant ne les modifie pas.
+
+**Changé le 12/10 à 14:50 (tour 673), avant le premier commit des exécutants sur `code-qcm`** : l'évaluation d'essai porte `"chapitre": "3e-ch1"` (l'identifiant de la maquette ; c'était `3e-1`), et le faux hub reçoit `taxonomie/competences` du vrai hub, avec les 28 libellés élève (`attendus/taxonomie-competences.json`), pour que l'app y trouve les compétences de l'évaluation (COMMUN §3.1, corrigé le même jour).

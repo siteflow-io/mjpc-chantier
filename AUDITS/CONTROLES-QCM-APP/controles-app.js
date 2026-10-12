@@ -10,6 +10,8 @@ const { startServer, installRoutes } = require(path.join(BANC, "server.js"));
 const { buildTree } = require(path.join(BANC, "tree.js"));
 const SORTIE = process.argv[2] || null;
 const EV = JSON.parse(fs.readFileSync(path.join(__dirname, "attendus", "evaluation-essai.json")));
+// (tour 673) les compétences du hub, avec leurs libellés élève, telles que la conscience les a écrites au hub le 12/10 (COMMUN §3.1)
+const TAXO = JSON.parse(fs.readFileSync(path.join(__dirname, "attendus", "taxonomie-competences.json")));
 const PORT = 8790 + Math.floor(Math.random() * 100);
 const RAPPORT = []; let nb = 0, echecs = 0;
 function verif(n, ok, quoi, detail) { nb++; if (!ok) echecs++; RAPPORT.push((ok ? "  ok     " : "  ÉCHEC  ") + "K" + n + " · " + quoi + (detail && !ok ? " — " + String(detail).slice(0, 300) : "")); return ok; }
@@ -58,6 +60,7 @@ async function taper(p, moitie, placeholder, valeur) {
   // La base de départ : la fausse classe du faux hub (25 élèves, leurs codes) et l'évaluation d'essai de la maquette, complète
   const B = buildTree();
   B.tree.qcm.evaluations = Object.assign({}, B.tree.qcm.evaluations, {essai: EV});
+  B.tree.taxonomie = Object.assign({}, B.tree.taxonomie, {competences: TAXO});
   const srv = await startServer(B.tree, PORT, () => {});
   const navig = await chromium.launch({executablePath: "/opt/pw-browsers/chromium"});
   async function ouvrir(q, w, h) { const ctx = await navig.newContext({viewport: {width: w, height: h}}); await installRoutes(ctx, {...srv, port: PORT}, null);

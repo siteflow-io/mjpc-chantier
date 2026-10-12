@@ -78,7 +78,11 @@ C'est celle de la 7.7.1 (`mjpc-hub`, `DB_ROOT = "qcm"`), avec ses chemins : `qcm
 | `bilanAffiche` | ms : « 🏁 Afficher leur bilan aux élèves » |
 | `copies` | `{rendues: ms, masquees: true ou false}` |
 
-Les exclusions sont lues en `classes/<classe>/exclusions/<eleveSlug>` (une liste ; aucune aujourd'hui). Les libellés élève des compétences, en `taxonomie/competences/<code>/libelleEleve` : c'est la conscience qui les écrit au hub.
+Les exclusions sont lues en `classes/<classe>/exclusions/<eleveSlug>` (une liste ; aucune aujourd'hui).
+
+**Les libellés élève des compétences** (corrigé le 12/10 à 14:45, tour 673 : le chemin écrit ici d'abord, `taxonomie/competences/<code>/libelleEleve`, n'existe pas au hub, et y écrire casserait les lecteurs). Au hub, `taxonomie/competences` est un objet de deux listes, `francaisC4` et `transversales` ; chaque liste porte des groupes `{id, libelle, items}`, et chaque item est une compétence `{id, libelle, actif}`. Le libellé élève est le champ `libelleEleve` de l'item, à côté de `libelle` (le libellé officiel), comme pour les notions : `taxonomie/competences/<francaisC4 ou transversales>/<n° du groupe>/items/<n° de l'item>/libelleEleve`. L'app lit `taxonomie/competences` en entier et trouve une compétence par son `id`, jamais par sa place. C'est la conscience qui écrit les 28 libellés au hub, aujourd'hui ; pour le faux hub, la copie du hub avec ses libellés est `AUDITS/CONTROLES-QCM-APP/attendus/taxonomie-competences.json`.
+
+**Le chapitre d'une évaluation** (précisé le même jour) : son identifiant est `<niveau>-ch<numéro>`, comme dans la maquette (`3e-ch1`) ; c'est celui que met le prompt (le chapitre de demain : `4e-ch1`). Le niveau de l'évaluation se lit dans cet identifiant. Un chapitre qui n'a pas de fiche au hub (`site/<niveau>/chapitres` : seul le 3e en a une aujourd'hui, et pas le 4e) est un chapitre valide : il n'a simplement pas de compétences proposées, et l'éditeur prend alors les 28 compétences de `taxonomie/competences`. Une compétence est valide si son code est l'`id` d'un item actif de `taxonomie/competences`. L'évaluation de demain arrive par le collage de son JSON, avec `"chapitre": "4e-ch1"` : elle doit être complète, et « Lancer » s'ouvrir.
 
 ### 3.2 Ce que les écrans appellent
 

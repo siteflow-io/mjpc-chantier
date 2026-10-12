@@ -6,6 +6,11 @@
 function InfoIB(libelle, texte){ return h("span", {className:"info-i", "data-bulle":libelle}, "i", h("span", {className:"info-tip"}, texte)); }
 function formeBulle(s){ return String(s || "").replace(/[  ]/g, " ").replace(/[’]/g, "'").replace(/\s+/g, " ").trim(); }
 function poserPlaces(racine, scene){
+  // (QCM-1) un écran n'est plus démonté d'un moment à l'autre : ce qu'une place a ajouté (data-c3, et la bulle d'avant dans data-c3base) s'ôte,
+  // puis se repose d'après la scène de maintenant ; un title réécrit depuis (par React) est gardé tel quel
+  Array.prototype.forEach.call(racine.querySelectorAll("[data-c3]"), function(e){
+    if(e.getAttribute("title") === e.getAttribute("data-c3")){ var b0 = e.getAttribute("data-c3base") || ""; if(b0) e.setAttribute("title", b0); else e.removeAttribute("title"); }
+    e.removeAttribute("data-c3"); e.removeAttribute("data-c3base"); });
   var ici = (window.DEST_C3 || []).filter(function(d){ return d[2].indexOf(scene) >= 0; });
   if(!ici.length) return;
   var libs = {}; ici.forEach(function(d){ (libs[d[0]] = libs[d[0]] || []).push(d[1]); });
@@ -19,9 +24,9 @@ function poserPlaces(racine, scene){
     var enfant = Array.prototype.some.call(e.children, function(c){ return !c.classList.contains("info-i") && etiquetteDe(c) === lib; });
     if(enfant && e.tagName !== "BUTTON") return;
     if(e.tagName === "BUTTON" && titre771(scene || "", lib)) return;    // la 7.7.1 garde sa bulle : InfoIB, dans la scène
-    var t = e.getAttribute("title") || "";
+    var t0 = e.getAttribute("title") || "", t = t0;
     libs[lib].forEach(function(place){ if(formeBulle(t).indexOf(formeBulle(place)) < 0) t = t ? t + " " + place : place; });
-    if(t !== (e.getAttribute("title") || "")) e.setAttribute("title", t);
+    if(t !== t0){ e.setAttribute("title", t); e.setAttribute("data-c3", t); e.setAttribute("data-c3base", t0); }
   });
 }
 function poserGestes(){

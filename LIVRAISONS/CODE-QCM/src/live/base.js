@@ -376,7 +376,8 @@ var SCN = (function(){
         if(lu && lu.choix === "aucun"){ ajouter(x, qi, "aucun", "aucun de ces choix"); return; }
         if(!rep) return;
         var memes = lu && !(lu.choix === "aucun") && juste(lu.choix, {bonnes:rep.choix});
-        if(!b) ajouter(x, qi, "b", "n'a pas dit si sa feuille disait son clic");
+        // une réponse donnée à une question rouverte n'a pas eu de B à dire (la maquette : « À lire ce soir (1) : TESSIER Anna… », pas Théo)
+        if(!b){ if(!rep.rouverte) ajouter(x, qi, "b", "n'a pas dit si sa feuille disait son clic"); }
         else if(b === "oui" && lu && !memes) ajouter(x, qi, "b", "a dit que sa feuille disait son clic, " + choixTexte(q, rep.choix) + " ; " + v + " y a lu " + choixTexte(q, lu.choix));
         else if(b === "non" && lu && memes) ajouter(x, qi, "b", "a dit que sa feuille ne disait pas son clic, " + choixTexte(q, rep.choix) + " ; " + v + " y a lu " + choixTexte(q, lu.choix));
       });

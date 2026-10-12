@@ -129,25 +129,36 @@ async function taper(p, moitie, placeholder, valeur) {
     verif(5, await attendre(tableau, q1, 8000), "le tableau montre la question 1, sans rechargement");
     verif(5, await attendre(tel, /Q1|Question 1|QUESTION 1/, 8000), "le téléphone montre la question 1, sans rechargement");
 
+    // (défini ici depuis le tour 677, pour K6 et K7 comme pour K10) une moitié est « active » quand ses choix de la question sont cliquables ; chaque moitié répond une fois, à son tour (le 1er tour n'est pas toujours celui de gauche)
+    const active = (cote, qi) => tab.evaluate(([cote, choix]) => { const W = innerWidth; const all = [...document.querySelectorAll("body *")].filter(e => { const r = e.getBoundingClientRect(); return r.width > W * 0.35 && r.width < W * 0.6 && r.height > 300; });
+      const h = all.filter(e => !all.some(o => o !== e && o.contains(e))).sort((a, b) => a.getBoundingClientRect().x - b.getBoundingClientRect().x)[cote]; if (!h) return false;
+      return [...h.querySelectorAll("button, [role=button]")].some(b => !b.disabled && b.getBoundingClientRect().width > 0 && choix.includes((b.textContent || "").trim())); }, [cote, EV.questions[qi].choix]);
+    const esc = x => x.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const reBonne1 = new RegExp("^" + esc(EV.questions[0].choix[EV.questions[0].bonnes[0]]) + "$");
+    const compte = t => { const m = /(\d+)\s*\/\s*(\d+)\s*ont répondu/iu.exec(t); return m ? +m[1] : null; };   // la console peut l'écrire en capitales (« ONT RÉPONDU »)
+    const moitieActive = async (qi, sauf) => { for (let k = 0; k < 40; k++) { for (const c of [0, 1]) if (c !== sauf && await active(c, qi)) return c; await pause(250); } return -1; };
+
     // K6 — un redessin n'efface jamais une saisie : un champ de ta console garde sa valeur et le focus quand une tablette agit
+    // (corrigé au tour 677 : le passage, « POSE TON STYLO » et son décompte, vient avant le 1er tour ; le champ est pris sur l'écran du 1er tour,
+    //  après « Autoriser la réponse », car un clic de la console sur un bouton prend lui-même le focus ; « se voit sur ta console » se lit au compteur)
+    await cliquer(prof, /Autoriser la réponse/);
+    const c1 = await moitieActive(0, -1);
     const champ = await prof.evaluate(() => { const f = [...document.querySelectorAll("input[type=number], input[type=text]")].find(x => x.getBoundingClientRect().width > 0 && !x.disabled && !x.readOnly); if (!f) return null; f.setAttribute("data-k6", "1"); return true; });
     if (champ) { await prof.click("[data-k6='1']"); await prof.keyboard.press("End"); await prof.keyboard.type("7"); }
-    await cliquer(prof, /Autoriser la réponse/);
-    await pause(800);
-    const avant = await texte(prof);
-    const choisi = await cliquer(tab, new RegExp("^" + EV.questions[0].choix[EV.questions[0].bonnes[0]] + "$"), 0) || await cliquer(tab, new RegExp("^" + EV.questions[0].choix[EV.questions[0].bonnes[0]] + "$"), 1);
-    verif(6, choisi, "au 1er tour, une moitié peut cliquer un choix de la question 1");
-    let vu = false; for (let k = 0; k < 30 && !vu; k++) { await pause(300); vu = (await texte(prof)) !== avant; }
-    verif(6, vu, "la réponse cliquée sur la tablette se voit sur ta console sans rechargement");
+    const nAvant = compte(await texte(prof));
+    const choisi = c1 >= 0 && await cliquer(tab, reBonne1, c1);
+    verif(6, choisi, "au 1er tour, une moitié peut cliquer un choix de la question 1", "aucune moitié n'a ses choix cliquables 10 s après « Autoriser la réponse »");
+    let nApres = nAvant; for (let k = 0; k < 30 && !(nApres !== null && nAvant !== null && nApres > nAvant); k++) { await pause(300); nApres = compte(await texte(prof)); }
+    verif(6, nAvant !== null && nApres > nAvant, "la réponse cliquée sur la tablette se voit sur ta console sans rechargement (« n / N ont répondu » augmente)", JSON.stringify({avant: nAvant, apres: nApres}) + " · console : " + (t => { const i = t.search(/répondu/iu); return i < 0 ? "« répondu » absent : " + t.slice(0, 400) : t.slice(Math.max(0, i - 120), i + 40); })((await texte(prof)).replace(/\n/g, " ⏎ ")));
     if (champ) { const st = await prof.evaluate(() => { const f = document.querySelector("[data-k6='1']"); return f ? {focus: document.activeElement === f, v: f.value} : null; });
       verif(6, !!st && st.focus && /7$/.test(st.v), "le champ où tu tapais garde sa valeur et le curseur pendant que la tablette répond", JSON.stringify(st)); }
     else verif(6, true, "aucun champ de saisie à cet écran de la console (rien à mesurer)");
 
     // K7 — le 2e tour : l'autre moitié répond ; puis la question se clôt
     await cliquer(prof, /Tour suivant/);
-    await pause(800);
-    const autre = await cliquer(tab, new RegExp("^" + EV.questions[0].choix[EV.questions[0].bonnes[0]] + "$"), 1) || await cliquer(tab, new RegExp("^" + EV.questions[0].choix[EV.questions[0].bonnes[0]] + "$"), 0);
-    verif(7, autre, "« ⏭️ Tour suivant » : l'autre moitié répond à son tour");
+    const c2 = await moitieActive(0, c1);
+    const autre = c2 >= 0 && await cliquer(tab, reBonne1, c2);
+    verif(7, autre, "« ⏭️ Tour suivant » : l'autre moitié répond à son tour", "l'autre moitié n'a pas ses choix cliquables 10 s après « Tour suivant »");
     verif(7, await cliquer(prof, /Clore la question/), "« 🔒 Clore la question » est là, et se clique");
 
     // K8 — la base garde chaque réponse, au nom de l'élève
@@ -156,10 +167,6 @@ async function taper(p, moitie, placeholder, valeur) {
     verif(8, /abrial_julien|ABRIAL Julien/.test(brut) && new RegExp(voisin.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/ /g, "_") + "|" + voisin).test(brut), "les réponses des deux élèves sont dans la base, sous la séance", brut.slice(0, 200));
 
     // K10 — les questions 2 et 3, chacune à ses deux tours : Julien juste à Q2 sur la tablette, son voisin faux ; Q3 : Julien juste, le voisin faux
-    // une moitié est « active » quand ses choix de la question sont cliquables ; chaque moitié répond une fois, à son tour (le 1er tour n'est pas toujours celui de gauche)
-    const active = (cote, qi) => tab.evaluate(([cote, choix]) => { const W = innerWidth; const all = [...document.querySelectorAll("body *")].filter(e => { const r = e.getBoundingClientRect(); return r.width > W * 0.35 && r.width < W * 0.6 && r.height > 300; });
-      const h = all.filter(e => !all.some(o => o !== e && o.contains(e))).sort((a, b) => a.getBoundingClientRect().x - b.getBoundingClientRect().x)[cote]; if (!h) return false;
-      return [...h.querySelectorAll("button, [role=button]")].some(b => !b.disabled && b.getBoundingClientRect().width > 0 && choix.includes((b.textContent || "").trim())); }, [cote, EV.questions[qi].choix]);
     const repondreTour = async (qi, choixG, choixD) => {
       await cliquer(prof, /Autoriser la réponse/); await pause(600);
       const fait = new Set();

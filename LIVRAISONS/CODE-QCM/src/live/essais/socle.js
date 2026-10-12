@@ -99,30 +99,34 @@ function verif(ok, quoi, detail){ nb++; if(!ok) ko++; R.push((ok ? "  ok     " :
     const gauche = await prof.evaluate(() => SCN.presents().filter(x => SCN.cote(x) === "g" && x !== "abrial_julien"));
     await prof.evaluate(l => Promise.all(l.map(x => ELV.repondre(0, [2], x))), gauche);
     await prof.evaluate(() => ACT.tourSuivant());
-    await pause(150);
-    verif(base("sessions/" + sid + "/deroule/ph") === "b", "⏭️ Tour suivant : B du 1er tour");
-    await tab.evaluate(() => ELV.direB(0, "oui", "abrial_julien"));
-    await pause(2300 + 1600);
+    await pause(250);
     d = base("sessions/" + sid + "/deroule");
-    verif(d.ph === "reponse" && d.tour === 2 && d.cote === "d", "après B et le passage : le 2e tour, la droite", d);
+    verif(d.ph === "reponse" && d.tour === 2 && d.cote === "d" && d.bPour && d.bPour.cote === "g", "⏭️ Tour suivant coupe l'attente : le 2e tour (la droite) commence, la gauche dit B pendant ce temps (bPour)", d);
+    verif(await tab.evaluate(() => SCN.doitDireB("abrial_julien") && !SCN.doitDireB("baudry_lea")), "Julien doit dire B, Léa répond");
+    await tab.evaluate(() => ELV.direB(0, "oui", "abrial_julien"));
+    await pause(200);
+    verif(await tab.evaluate(() => !SCN.doitDireB("abrial_julien")), "Julien a dit B : sa moitié ne le demande plus");
     const ordre = await tab.evaluate(() => SCN.ordreChoix("baudry_lea", 0));
     verif(ordre.length === 4 && ordre.join() !== "0,1,2,3", "au 2e tour, les choix sont mélangés", ordre);
     const droite = await prof.evaluate(() => SCN.presents().filter(x => SCN.cote(x) === "d"));
     await prof.evaluate(l => Promise.all(l.map(x => ELV.repondre(0, [2], x))), droite);
     await prof.evaluate(() => ACT.cloreQuestion());
-    await pause(2600);
-    verif(base("sessions/" + sid + "/deroule/ph") === "close", "🔒 Clore : B du 2e tour, puis close", base("sessions/" + sid + "/deroule"));
+    await pause(250);
+    d = base("sessions/" + sid + "/deroule");
+    verif(d.ph === "close" && d.bPour && d.bPour.cote === "d", "🔒 Clore coupe l'attente : la question est close, la droite dit B pendant ce temps", d);
+    verif(await tab.evaluate(() => SCN.doitDireB("baudry_lea")), "Léa doit dire B (bPour)");
+    await tab.evaluate(() => ELV.direB(0, "non", "baudry_lea"));
     let c = await prof.evaluate(() => SCN.compteurs());
     verif(c.question && c.question[0] === 1 && c.repondu && c.repondu[0] === 24, "compteurs : question 1/3, 24 ont répondu", c);
     // Q2 : Julien juste sur la tablette, Léa fausse ; un élève part avant Q2 (Noah) et revient après
     await prof.evaluate(() => ACT.depart("maillard_noah"));
     await prof.evaluate(() => ACT.lancerQuestion(1));
     verif(base("sessions/" + sid + "/premier/1") === "d", "Q2 : la droite commence (on alterne)", base("sessions/" + sid + "/premier"));
-    await prof.evaluate(() => ACT.autoriserReponse()); await pause(1800);
+    await prof.evaluate(() => ACT.autoriserReponse()); await pause(300);
     await tab.evaluate(() => ELV.repondre(1, [1], "baudry_lea"));
-    await prof.evaluate(() => ACT.tourSuivant()); await pause(2300 + 1600);
+    await prof.evaluate(() => ACT.tourSuivant()); await pause(300);
     await tab.evaluate(() => ELV.repondre(1, [0, 2], "abrial_julien"));
-    await prof.evaluate(() => ACT.cloreQuestion()); await pause(2400);
+    await prof.evaluate(() => ACT.cloreQuestion()); await pause(300);
     await prof.evaluate(() => ACT.retour("maillard_noah"));
     // Q3 : Julien juste, Léa fausse ; l'annulation et le remettre
     // la console fermée pendant Q3 : la tablette relaie les temps comptés (la réflexion, puis le passage, au bout de leur temps)
@@ -132,9 +136,9 @@ function verif(ok, quoi, detail){ nb++; if(!ok) ko++; R.push((ok ? "  ok     " :
     verif(d.ph === "reponse" && d.qi === 2 && d.tour === 1, "la console fermée : la tablette fait passer la réflexion, puis le passage", d);
     prof = await ouvrir("?mode=prof");
     await tab.evaluate(() => ELV.repondre(2, [1], "abrial_julien"));
-    await prof.evaluate(() => ACT.tourSuivant()); await pause(3900);
+    await prof.evaluate(() => ACT.tourSuivant()); await pause(300);
     await tab.evaluate(() => ELV.repondre(2, [0], "baudry_lea"));
-    await prof.evaluate(() => ACT.cloreQuestion()); await pause(2400);
+    await prof.evaluate(() => ACT.cloreQuestion()); await pause(300);
     await prof.evaluate(() => ACT.annuler(2)); verif(JSON.stringify(Object.values(base("sessions/" + sid + "/annulees") || {})) === "[2]", "⚠️ Annuler Q3 : annulees [2]", base("sessions/" + sid + "/annulees"));
     await prof.evaluate(() => ACT.remettre(2)); verif(!base("sessions/" + sid + "/annulees"), "↩️ Remettre : plus d'annulée");
     // l'estimation, la seconde attestation, la correction : l'ordre des plus ratées (Q2 d'abord : seul Julien juste à Q2 parmi ceux qui ont répondu ? on ne le sait que pour eux)

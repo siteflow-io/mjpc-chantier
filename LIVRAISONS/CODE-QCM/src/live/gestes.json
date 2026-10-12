@@ -36,17 +36,17 @@
   {
    "depart": "c-q1-reflexion",
    "geste": "✋ Autoriser la réponse",
-   "action": "ACT.autoriserReponse()"
+   "action": "ACT.autoriserReponse() : le 1er tour tout de suite (CONTRAT C6)"
   },
   {
    "depart": "c-q1-tour1",
    "geste": "⏭️ Tour suivant",
-   "action": "ACT.tourSuivant()"
+   "action": "ACT.tourSuivant() : le 2e tour tout de suite ; la 1re moitié dit B pendant ce temps (deroule.bPour, C6)"
   },
   {
    "depart": "c-q1-tour2",
    "geste": "🔒 Clore la question",
-   "action": "ACT.cloreQuestion()"
+   "action": "ACT.cloreQuestion() : la question close tout de suite ; la 2e moitié dit B pendant ce temps (deroule.bPour, C6)"
   },
   {
    "depart": "pilotage",
@@ -203,6 +203,16 @@
    "depart": "c-lancer (grille des binômes)",
    "geste": "glisser un nom sur un autre",
    "action": "ACT.echanger(a, b) → {ok, raison} ; pendant la séance : ACT.deplacer(eleve, tablette, cote)"
+  },
+  {
+   "depart": "c-corr-*-apres",
+   "geste": "← Question précédente",
+   "action": "ACT.questionPrecedente()"
+  },
+  {
+   "depart": "c-coeval-*",
+   "geste": "↩️ Défaire (une décision)",
+   "action": "ACT.trancher(alerteId, null)"
   }
  ],
  "navigation": {

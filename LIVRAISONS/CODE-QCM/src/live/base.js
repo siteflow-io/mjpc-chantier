@@ -233,6 +233,9 @@ var SCN = (function(){
   S.ditB = function(x, qi, sid){ var s = S.sess(sid); return ((((s && s.b) || {})[qi]) || {})[x] || null; };
   S.lecture = function(x, qi, sid){ var s = S.sess(sid), l = ((((s && s.lectures) || {})[qi]) || {})[x]; if(!l) return null;
     return Object.assign({}, l, {choix:l.choix === "aucun" ? "aucun" : (Array.isArray(l.choix) ? l.choix : Object.values(l.choix || {})).map(Number)}); };
+  S.doitDireB = function(x, sid){ var e = S.etat(sid); if(!e || !x || e.qi == null) return false; var c = S.cote(x, sid);
+    if(e.ph === "b") return c === (e.cote || S.coteDuTour(e.qi, e.tour || 1, sid)) && !S.ditB(x, e.qi, sid) && !!S.reponse(x, e.qi, sid);
+    var b = e.bPour; return !!(b && Number(b.qi) === e.qi && b.cote === c && LIVE.maintenant() < b.jusqua && !S.ditB(x, e.qi, sid) && S.reponse(x, e.qi, sid)); };
   S.estimationDe = function(x, sid){ var s = S.sess(sid); return ((s && s.autoevals) || {})[x] || null; };
   S.coevalDe = function(x, sid){ var s = S.sess(sid); return ((s && s.coeval) || {})[x] || null; };
   S.attestDe = function(n, x, sid){ var s = S.sess(sid); return ((((s && s.attest) || {})[n]) || {})[x] || null; };
@@ -340,6 +343,9 @@ var SCN = (function(){
         else if(b === "oui" && lu && !memes) ajouter(x, qi, "b", "a dit que sa feuille disait son clic, " + choixTexte(q, rep.choix) + " ; " + v + " y a lu " + choixTexte(q, lu.choix));
         else if(b === "non" && lu && memes) ajouter(x, qi, "b", "a dit que sa feuille ne disait pas son clic, " + choixTexte(q, rep.choix) + " ; " + v + " y a lu " + choixTexte(q, lu.choix));
       });
+      // une alerte que Paul relit le soir (« 📌 Je relis ce soir la question n ») : « ⚠️ À relire »
+      Object.keys(tr).forEach(function(aid){ var al = tr[aid]; if(al && al.tranche && al.tranche.decision === "soir" && (al.eleves || [])[0] === x){ var lv = (al.eleves || [])[1] || S.voisinDe(x, id);
+        ajouter(x, Number(al.qi), "co", "pense " + queNom(S.nomDe(lv)) + " a mal lu sa feuille ; à relire"); } });
       var co = S.coevalDe(x, id);
       if(co && co.statut === "peut" && co.qi != null){ var vo = S.voisinDe(x, id); ajouter(x, Number(co.qi), "co", "🤔 pense " + queNom(S.pre(vo)) + " a peut-être mal lu sa feuille" + (co.ecrit ? " ; " + (S.sexe(x) === "F" ? "elle" : "il") + " dit avoir écrit : " + choixTexte(ev.questions[co.qi], co.ecrit) : "")); }
     });
@@ -387,6 +393,8 @@ var SCN = (function(){
     if(e.ph === "reponse" || e.ph === "rouvert"){ var cr = e.ph === "rouvert" ? null : S.coteDuTour(e.qi, e.tour, sid);
       m.nonRep = S.presents(k, sid).filter(function(x){ return (!cr || S.cote(x, sid) === cr) && !S.reponse(x, e.qi, sid) && (e.ph !== "rouvert" || x === e.pour); }); }
     if(e.ph === "close") m.sansRep = S.presents(k, sid).filter(function(x){ return !S.reponse(x, e.qi, sid); });
+    // la moitié qui dit encore B pendant que la suite a commencé (un geste de Paul a coupé l'attente) : {cote, qi, tour, reste}
+    if(e.bPour && Number(e.bPour.qi) === e.qi && LIVE.maintenant() < e.bPour.jusqua) m.bPour = {cote:e.bPour.cote, qi:Number(e.bPour.qi), tour:e.bPour.tour, reste:Math.ceil((e.bPour.jusqua - LIVE.maintenant()) / 1000)};
     if(e.ph === "entree" || e.ph === "pret"){ m.pasEntres = c.pasEntres; m.attestEnCours = c.attestEnCours; }
     if(e.ph === "lecture") m.pasLu = c.pasLu;
     if(e.ph === "estim") m.pasEstime = c.pasEstime;
@@ -515,7 +523,7 @@ function _ph717(ph){ return {appel:"idle", entree:"idle", pret:"idle", reflexion
   estim:"autoeval", att2:"autoeval", lecture:"correction", revele:"correction", coeval:"correction", bilan:"finie", fin:"finie", pause:"attente", avant:"idle"}[ph] || "idle"; }
 // le passage d'une phase à une autre : deroule, et le miroir de la 7.7.1
 function poserDeroule(sid, d, plus){
-  d = Object.assign({qi:null, tour:null, cote:null, duree:null, pour:null}, d); d.depuis = d.depuis || LIVE.maintenant();
+  d = Object.assign({qi:null, tour:null, cote:null, duree:null, pour:null, bPour:null}, d); d.depuis = d.depuis || LIVE.maintenant();
   var maj = {}; maj[cheminS(sid, "deroule")] = d; maj[cheminS(sid, "phase")] = _ph717(d.ph); maj[cheminS(sid, "phaseStart")] = d.depuis;
   if(d.qi != null) maj[cheminS(sid, "qIdx")] = d.qi;
   maj[cheminS(sid, "paused")] = d.ph === "pause" && d.reprise ? {remaining:d.reprise.reste || 0} : null;
@@ -591,14 +599,26 @@ var ACT = (function(){
     plus["premier/" + qi] = (s.premier || {})[qi] || premier; plus["questionsLancees/" + qi] = LIVE.maintenant(); plus["reouverts"] = null;
     return poserDeroule(id, {ph:"reflexion", qi:qi, duree:SCN.tempsDe(qi).reflexion}, plus);
   };
+  /* Les gestes de Paul coupent l'attente (les bulles de la maquette : « ✋ Autoriser la réponse » coupe la réflexion ; « ⏭️ Tour suivant » :
+     « les premiers sont figés et disent si leur feuille dit la même chose que leur clic, puis le 2e tour commence » ; « 🔒 Clore la question » :
+     « les seconds sont figés et disent… ; la question est close »). La suite commence tout de suite ; la moitié qui vient de répondre dit B
+     pendant ce temps, jusqu'à la fin de son temps de B (deroule.bPour = {cote, qi, tour, jusqua}). Au bout du temps, sans geste, la séance
+     enchaîne comme les moments de la maquette : B, puis le passage. */
+  function bPour(x){ return {cote:x.cote || SCN.coteDuTour(x.qi, x.tour || 1), qi:x.qi, tour:x.tour || 1, jusqua:LIVE.maintenant() + D().b * 1000}; }
   A.autoriserReponse = function(){ var x = e(), id = sid(); if(!id || x.ph !== "reflexion") return Promise.resolve();
-    return poserDeroule(id, {ph:"passage", qi:x.qi, tour:1, cote:SCN.coteDuTour(x.qi, 1), duree:D().decompte}); };
+    return poserDeroule(id, {ph:"reponse", qi:x.qi, tour:1, cote:SCN.coteDuTour(x.qi, 1), duree:SCN.tempsDe(x.qi).reponse}); };
   A.tourSuivant = function(){ var x = e(), id = sid(); if(!id) return Promise.resolve();
-    if(x.ph === "reponse" && x.tour === 1 || x.ph === "passage" && x.tour === 1) return poserDeroule(id, {ph:"b", qi:x.qi, tour:1, cote:x.cote, duree:D().b});
+    if((x.ph === "reponse" || x.ph === "passage" || x.ph === "b") && x.tour === 1){
+      var autre = SCN.coteDuTour(x.qi, 2), quelquun = SCN.presents().some(function(y){ return SCN.cote(y) === autre; });
+      var b = x.ph === "b" ? Object.assign(bPour(x), {jusqua:(x.depuis || 0) + (x.duree || 0) * 1000}) : bPour(x);
+      if(!quelquun) return poserDeroule(id, {ph:"close", qi:x.qi, bPour:b});
+      return poserDeroule(id, {ph:"reponse", qi:x.qi, tour:2, cote:autre, duree:SCN.tempsDe(x.qi).reponse, bPour:b});
+    }
     return Promise.resolve(); };
   A.cloreQuestion = function(){ var x = e(), id = sid(); if(!id) return Promise.resolve();
-    if((x.ph === "reponse" || x.ph === "passage") && x.tour === 2) return poserDeroule(id, {ph:"b", qi:x.qi, tour:2, cote:x.cote, duree:D().b});
-    if(x.ph === "rouvert" || x.ph === "b" || x.ph === "reponse" || x.ph === "passage" || x.ph === "reflexion") return poserDeroule(id, {ph:"close", qi:x.qi});
+    if((x.ph === "reponse" || x.ph === "passage") && x.tour === 2) return poserDeroule(id, {ph:"close", qi:x.qi, bPour:bPour(x)});
+    if(x.ph === "b") return poserDeroule(id, {ph:"close", qi:x.qi, bPour:Object.assign(bPour(x), {jusqua:(x.depuis || 0) + (x.duree || 0) * 1000})});
+    if(x.ph === "rouvert" || x.ph === "reponse" || x.ph === "passage" || x.ph === "reflexion") return poserDeroule(id, {ph:"close", qi:x.qi});
     return Promise.resolve(); };
   // le temps tapé en direct vaut pour toute la question ; le temps en cours suit
   A.ajouterTemps = function(sorte, s, qi){
@@ -647,11 +667,22 @@ var ACT = (function(){
   A.rendreAutonomie = function(x, sidX){ var id = sidX || sid(); if(!id) return Promise.resolve(); var maj = {}; maj[cheminS(id, "autonomie/" + x)] = null; return ecrireQCM(maj, "rendreAutonomie"); };
   A.ouvrirCoeval = function(){ var id = sid(); return id ? poserDeroule(id, {ph:"coeval"}) : Promise.resolve(); };
   // trancher une alerte de la co-évaluation : « feuille » (Paul clique ce que dit la feuille : decision.choix), « lecteur » (la lecture tient), « michel »…
+  // trancher une alerte : {decision:"feuille", choix, eleve} (Paul clique ce que dit la feuille) ; {decision:"auteur", choix, eleve} (raison à celui
+  // qui a lancé l'alerte : la lecture devient ce qu'il dit avoir écrit) ; "lecteur" (la lecture tient) ; "soir" (la question « ⚠️ À relire » le soir) ;
+  // null : « ↩️ Défaire » — la décision s'efface, et la lecture qu'elle avait changée revient à celle de l'alerte (alertes/<id>/lu)
   A.trancher = function(alerte, decision){ var id = sid(); if(!id) return Promise.resolve(); var al = (SCN.sess().alertes || {})[alerte]; if(!al) return Promise.resolve();
-    var dec = typeof decision === "string" ? {decision:decision} : Object.assign({}, decision), maj = {}; dec.ms = LIVE.maintenant();
+    var maj = {}, now = LIVE.maintenant();
+    if(decision == null){ var av = al.tranche || {}; maj[cheminS(id, "alertes/" + alerte + "/tranche")] = null;
+      if(av.choix && av.eleve != null){ var vo = SCN.voisinDe(av.eleve); maj[cheminS(id, "lectures/" + al.qi + "/" + av.eleve)] = al.lu ? {choix:al.lu, par:vo || av.eleve, ms:now} : null; }
+      return ecrireQCM(maj, "trancher (défaire)"); }
+    var dec = typeof decision === "string" ? {decision:decision} : Object.assign({}, decision); dec.ms = now;
+    if(dec.eleve == null && (dec.decision === "auteur" || dec.decision === "feuille")) dec.eleve = (al.eleves || [])[0];
     maj[cheminS(id, "alertes/" + alerte + "/tranche")] = dec;
-    if(dec.choix && dec.eleve != null) maj[cheminS(id, "lectures/" + al.qi + "/" + dec.eleve)] = {choix:dec.choix, par:"prof", ms:dec.ms};
+    if(dec.choix && dec.eleve != null && (dec.decision === "feuille" || dec.decision === "auteur" || !dec.decision)) maj[cheminS(id, "lectures/" + al.qi + "/" + dec.eleve)] = {choix:dec.choix, par:"prof", ms:now};
     return ecrireQCM(maj, "trancher"); };
+  // « ← Question précédente » de la correction : la question d'avant dans l'ordre de la correction, révélée
+  A.questionPrecedente = function(){ var x = e(), id = sid(); if(!id || x.qi == null) return Promise.resolve(); var o = SCN.ordreCorr(), i = o.indexOf(x.qi);
+    if(i <= 0) return Promise.resolve(); return poserDeroule(id, {ph:"revele", qi:o[i - 1]}); };
   A.afficherBilan = function(){ var id = sid(); return id ? poserDeroule(id, {ph:"bilan"}, {bilanAffiche:LIVE.maintenant()}) : Promise.resolve(); };
   A.finirAutreHeure = function(){ var x = e(), id = sid(); if(!id) return Promise.resolve(); var s = SCN.sess();
     var rep = x.ph === "pause" ? x.reprise : {ph:x.ph, qi:x.qi, tour:x.tour, cote:x.cote, duree:x.duree, reste:x.duree, pour:x.pour}, maj = {};
@@ -763,6 +794,8 @@ var ELV = (function(){
     if(!choix || !choix.length) return w("reponses/" + qi + "/" + x, null, "repondre (vide)");
     return w("reponses/" + qi + "/" + x, {choix:choix.slice().map(Number).sort(function(a, b){ return a - b; }), ts:LIVE.maintenant(), ms:LIVE.maintenant(), tour:e.tour || 1, rouverte:e.ph === "rouvert" || !!e.rouvert || null}, "repondre"); };
   E.direB = function(qi, ouiNon, x){ x = qui(x); return x ? w("b/" + qi + "/" + x, ouiNon, "direB") : Promise.resolve(); };
+  // la moitié de cet élève doit-elle dire B maintenant ? (la phase b de son tour, ou la suite déjà commencée par un geste de Paul : bPour)
+  E.doitDireB = function(x){ return SCN.doitDireB(qui(x)); };
   E.estimer = function(niveau, x){ x = qui(x); return x ? w("autoevals/" + x, niveau, "estimer") : Promise.resolve(); };
   // lire la feuille du voisin : x est le propriétaire de la feuille (sa moitié) ; le lecteur est son voisin
   E.lire = function(qi, choix, x){ x = qui(x); if(!x) return Promise.resolve(); var v = SCN.voisinDe(x);

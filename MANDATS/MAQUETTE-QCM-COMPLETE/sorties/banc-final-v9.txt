@@ -1,0 +1,5 @@
+Banc unique — maquette complète du QCM
+Fichier : maquette-qcm-v9.html · étape jouée : 5 · avec les gardes 1 à 20 des compléments · 2026-10-12T21:33:04.357Z
+169 scènes · 481 règles de CSS de MJPC qui visent le vrai site, comparées à index.html · 18 écarts inscrits · 63 écrans de l'existant · 117 retraits · 571 textes classés dans textes-console.json · gardes 9 à 15 : 169 scènes · 5483 éléments cliquables cliqués · 9123 éléments regardés pour leur infobulle · garde 16 : 3273 destinations atteintes par le geste, au-delà des 169 scènes · garde 17 : 6 gestes qui ouvrent un PDF · garde 20 : 95 pages d'élève comparées à la v7 · 1047 lignes nommées dans eleve-v7-v9.json
+Vérifications : 25282 · échecs : 0
+Zéro défaut.

@@ -1,6 +1,54 @@
 # La maquette complète du QCM — la livraison de l'exécutant
 
-*Mandat : `MANDATS/MANDAT-MAQUETTE-QCM-COMPLETE.md`, fait d'une traite, étapes 1 à 5. Branche `maquette-qcm` (et `claude/bold-bohr-zxodms`, la même), dossier `MANDATS/MAQUETTE-QCM-COMPLETE/`.*
+*Mandat : `MANDATS/MANDAT-MAQUETTE-QCM-COMPLETE.md`, fait d'une traite, étapes 1 à 5 ; puis les compléments 1 à 4. Branche `maquette-qcm` (et `claude/bold-bohr-zxodms`, la même), dossier `MANDATS/MAQUETTE-QCM-COMPLETE/`.*
+
+## Complément 4 — fait
+
+*Complément : `MANDATS/COMPLEMENT-MAQUETTE-QCM-COMPLETE-4.md`, raccourci par son avenant (`MANDATS/COMPLEMENT-MAQUETTE-QCM-COMPLETE-4-AVENANT.md`), fait d'une traite sur `maquette-qcm`, étapes A à C. La v1 à la v8 restent telles quelles, avec leurs md5. **La livraison : `maquette-qcm-v9.html`** (md5 `64828367cb3728e8f97b8177d5418c11`), **169 scènes** et **3 273 destinations** atteintes par le geste ; banc final `sorties/banc-final-v9.txt` : **25 282 vérifications, zéro défaut** (les vérifications 1 à 9 et les gardes 1 à 15 sur les 169 scènes ; les gardes 16.1, 16.2, 16.4, 17, 18, 19 et 20 sur les 3 442 pages) ; les contrôles de la conscience : `sorties/controles-conscience-v9.txt`, **110 contrôles, zéro échec** ; les gardes 16 à 20 jouées sur la v8 avant toute correction : `sorties/gardes-16-a-20-sur-v8.txt` ; la lecture : `sorties/lecture-v9.md` (une ligne par écran changé, par écran qui devait changer et par voisin). Captures refaites (`captures/`, 169 scènes, 167 images distinctes : les doublons voulus de `capture.js`).*
+
+### Ce que l'avenant a retiré
+
+- **La garde 16.3** : les gardes 9 à 15 ne sont pas rejouées sur les destinations, seulement sur les 169 scènes (elle reste dans le banc, `G16_915=1`, et n'est pas jouée).
+- **Au §4, la lecture de chaque capture et les scripts de la conscience rejoués** : la lecture porte sur les écrans que le relevé de la conscience (`AUDITS/CONTROLES-QCM/releve.js`) trouve changés entre la v8 et la v9, ceux qui devaient changer et n'ont pas bougé, et leurs voisins (`sorties/ecrans-changes-v8-v9.txt`, par `compare.py`) ; à leur place, les contrôles de la conscience (`controles.js`, non modifié, md5 de `EMPREINTES.md5`), à zéro échec.
+
+### Les neuf corrections, et ce qui les montre
+
+| Correction | Ce qui est fait | Scènes et destinations |
+| --- | --- | --- |
+| **1 — les résultats de chaque séance** | Un seul tableau, celui de `c-resultats` (`ResultatsSeance`, `src/c4-seances.js`), pour toutes les séances, rempli par le scénario (`SCN.resultat`, `aLireSeance`, `retiresSeance`) : les questions de la séance, la note, sur 20, la maîtrise, une colonne par compétence (« 🧩 — », vide, pour les évaluations qui n'en ont pas, `CH1` et `JB`), l'autonomie, « À lire sur la feuille », le PDF et le CSV. La séance sur papier a ses trois colonnes et sa note, lue à partir du soir du 09/10. Chaque nom ouvre la fiche à sa séance (`&seance=`). **1.5** : l'évaluation de 3e est complétée le 09/10 à 12:45 (`S.EV3_COMPLETEE` : son chapitre, ses compétences, ce que chaque question vérifie, ses temps), « à compléter » avant. | `c-resultats&seance=S3E`, `PAP`, `CH1`, `JB` ; `c-fiche&eleve=…&seance=…` (et `c-fiche-garde`, `c-fiche-retire`) ; `c-evals` (moment `PREP` : à compléter) contre `c-seances` (le soir) |
+| **2 — le PDF de la séance** | `pdfSeance(id, k)` construit le PDF de la séance d'où on l'ouvre, avec la mise en page de `gen632.js` ; pour la séance de 3e, c'est le PDF figé de la v8, au caractère près (26 421 caractères). | `x632-pdf&seance=DEMO`, `S08`, `PAP`, `CH1`, `JB` ; `x632-pdf` (inchangé, voulu) |
+| **3 — l'appel du rattrapage** | L'appel se calcule pour la séance : ses élèves, ses absents, ses tablettes ; « 3 ESSAI — 1 élève », « 0 absent sur 1 », « YVON Adam reste seul : tablette 1. », sur la carte du rattrapage (moment `RATT:appel`, 12/10 10:02). Les séances rouvertes ont aussi leur appel (n° 366). | `c-appel&seance=RATT`, `c-appel&seance=CH1`, `c-appel&seance=JB` |
+| **4 — la démo à la question 1** | `t-demo-q` se calcule à son moment (`DEMO:Q1:R`) : question 1 / 3, « Facile », 18 s. | `t-demo-q` |
+| **5 — le côté du tour** | `coteDuTour(qi, tour)` ; « question 2, 2e tour (moitiés de gauche) ». | `c-interrompue` |
+| **6 — Adam seul** | `ChronoSaisie(v, total, seul)` : « Temps de réponse », le libellé de la v7. | `t-corr-seul` |
+| **7 — la ligne du téléphone** | `.tel-st-l` en blanc ; et les 2 535 contrastes que la garde 19 mesure aux pixels sur la v8, tous relevés au-dessus du seuil (n° 369). | `p-corr-avant`, `p-corr-apres`, `p-autonomie`, `p-eleve`, `p-reponse`, `t-bilan`, `e-bilan-lou`, `t-corr-q2-apres` |
+| **8 — la règle du désaccord** | Revenue, « ☝️ » compris, dans les moitiés où elle était seule ; retirée seulement après « ☝️ C'est ta seule question de désaccord. ». | `t-coeval`, `t-coeval-daccord`, `t-coeval-ecrit`, `x610-6-coeval-laquelle`, `x610-7-coeval-ecrit` |
+| **9 — ce que les gardes trouvent** | Voir plus bas. | — |
+
+### Les destinations (garde 16)
+
+L'exploration (`banc/explorer.js`) joue chaque geste de chaque page, depuis les 169 scènes, jusqu'à ce qu'aucun geste ne mène plus nulle part de neuf : **3 273 destinations distinctes** (`sorties/destinations-v9.txt`), et **1 433 adresses** qui montrent, au caractère près, l'écran d'une page déjà relevée (jouées par cette page). Sur la v8 : 3 149 et 1 330 (`sorties/destinations-v8.txt`).
+
+### `banc/existant/eleve-v7-v9.json`
+
+Les lignes vues par l'élève qui diffèrent de la v7 (garde 20), chacune nommée avec sa raison : **1 047 lignes** — donnée du scénario 605 (dont 585 sur les destinations des vues d'élève : la v7 ne lit pas les paramètres de l'adresse et montre sa scène sans eux), émoji décoratif retiré 331, geste qui se voit 57, retouche 778 18, typographie 10, élément de la 7.7.1 10, texte lu en entier 10, correction 4 6. Les lignes du chrono d'Adam seul (correction 6) et de la règle du désaccord dans les moitiés où elle était seule (correction 8) en sont retirées : la v9 y est la v7.
+
+### Ce que les gardes et la lecture ont trouvé (journal, n° 356 à 377)
+
+- **Les neuf défauts de l'audit**, chacun trouvé sur la v8 par une garde (`sorties/gardes-16-a-20-sur-v8.txt`, en tête) ; n° 356 à 364.
+- **La garde 18** : `c-qr` toujours à la question 1 (une affectation `var ST_Q1T1` de `etape2.js` gagnait sur la déclaration de `c3-scenes.js`) ; l'appel des séances rouvertes (`CH1` : Lou présente, `JB` : Adam barré) ; « Phase RÉFLEXION » en mode test au moment B ; le tableau de la question rouverte sans son énoncé ; n° 365 à 368.
+- **La garde 19** : 2 535 contrastes sous le seuil, mesurés aux pixels, sur des fonds que la garde 14.3 sautait (dégradés) ; n° 369.
+- **La lecture** : Noah, parti après la question 7, co-évaluait la question 10 (la séance disait « 5 feuilles à lire » ; c'est 4) — garde 18.5 ; et, sur la v9, « 🤔 1 pensent » (n° 370 et 374).
+- **Le banc et la mise en page** : le tableau de 3e trop large à 1366, la moitié de droite de `x610-6` de 21 px trop haute une fois la règle revenue, la colonne « 🧩 — » que le contrôle C1 de la conscience demande ; l'exploration, qui aurait pris des heures sans la remise à zéro sur place et l'empreinte des écrans ; n° 371 à 375.
+- **Le banc final** : la garde 16.4 comparait le tableau de l'écran du moment (le fond d'une fenêtre, la console en cours) à la scène nue ; elle compare désormais à la scène ouverte au même moment, et trouve toujours le défaut 1 sur la v8 (`sorties/garde-16-4-reference-au-moment-sur-v8.txt`) ; « 🤔 1 pense » sans classement ni infobulle (la règle `pensent?`) ; n° 376 et 377.
+
+### Les écrans qui devaient changer et n'ont pas bougé (selon `compare.py`)
+
+`x632-pdf` (la scène est le PDF de la séance de 3e, qui doit rester celui de la v8 au caractère près ; ce qui change, ce sont les PDF des autres séances, des destinations) et `c-rattrapage` (l'écran était juste ; ce qui change, c'est l'appel où mène « 🚀 Lancer le rattrapage »).
+
+### Rejouer
+
+`python3 build.py 9` (assemble la v9) ; `EXPLO=<cache> node banc/banc.js maquette-qcm-v9.html 5 sortie.txt` (tout : les vérifications 1 à 9, les gardes 1 à 20 ; sans `EXPLO`, l'exploration de la garde 16 se refait, deux heures environ) ; `node banc/explorer.js maquette-qcm-v9.html <cache.json>` (l'exploration seule, `LISTE=` pour la liste) ; `node banc/banc4.js maquette-qcm-v9.html sortie.txt` (les gardes 16 à 20 seules ; `G4SEUL=17,18`, `SEUL=<scène>`, `G16_915=1` pour la garde 16.3 que l'avenant retire) ; `GARDES=sans4` (tout sauf les gardes 16 à 20) ; `node AUDITS/CONTROLES-QCM/controles.js MANDATS/MAQUETTE-QCM-COMPLETE/maquette-qcm-v9.html <sortie>` (les contrôles de la conscience) ; `node AUDITS/CONTROLES-QCM/releve.js <maquette> <dossier>` puis `python3 AUDITS/CONTROLES-QCM/compare.py` (les écrans changés).
 
 ## Complément 3 — fait
 
@@ -192,15 +240,15 @@ Détail : `mesures/README.md` ; sortie brute : `mesures/limites.json` (`node mes
 
 ## En bref
 
-- **La maquette** : `maquette-qcm-v8.html` (md5 `6675262e8c6892c2c29bb709048a6592`), un fichier HTML autonome, sans réseau, **169 scènes dans l'ordre de la séance**, chacune ouvrable par `#scene=ID` ; le sommaire derrière ⚙ « Scènes de la maquette ». La v1 à la v7 restent dans le dossier, telles quelles, avec leurs md5.
-- **Le banc final** : `sorties/banc-final-v8.txt` — **21 833 vérifications, zéro défaut** ; tout porte sur tout (vérifications 1 à 9, gardes 1 à 5 du complément 1, gardes 6 à 8 du complément 2, gardes 9 à 15 du complément 3, sur les 169 scènes, à toutes les tailles). Les sorties précédentes : `sorties/banc-etape1.txt` à `banc-etape5.txt`, `banc-etape-B.txt`, `banc-etape-C.txt`, `banc-final-v6.txt`, `banc-final-v7.txt`, `banc-etape-B-c3.txt` à `banc-etape-D-c3.txt`, `gardes-9-a-15-sur-v7.txt` ; celle de la v5 : `sorties/banc-final.txt`.
-- **Les captures** : `captures/` (169, refaites sur la v8 et toutes regardées ; elles servent au banc et à l'audit). **Plus de livret** depuis le complément 3 : Paul valide sur la maquette elle-même ; les livrets de la v5 à la v7 restent.
+- **La maquette** : `maquette-qcm-v9.html` (md5 `64828367cb3728e8f97b8177d5418c11`), un fichier HTML autonome, sans réseau, **169 scènes dans l'ordre de la séance**, chacune ouvrable par `#scene=ID`, et 3 273 destinations atteintes par le geste (`sorties/destinations-v9.txt`) ; le sommaire derrière ⚙ « Scènes de la maquette ». La v1 à la v8 restent dans le dossier, telles quelles, avec leurs md5.
+- **Le banc final** : `sorties/banc-final-v9.txt` — **25 282 vérifications, zéro défaut** (vérifications 1 à 9, gardes 1 à 5 du complément 1, gardes 6 à 8 du complément 2, gardes 9 à 15 du complément 3, sur les 169 scènes, à toutes les tailles ; gardes 16.1, 16.2, 16.4 et 17 à 20 du complément 4 sur les 3 442 pages) ; les contrôles de la conscience : `sorties/controles-conscience-v9.txt`, 110, zéro échec. Les sorties précédentes : `banc-final-v8.txt`, `gardes-16-a-20-sur-v8.txt`, `sorties/banc-etape1.txt` à `banc-etape5.txt`, `banc-etape-B.txt`, `banc-etape-C.txt`, `banc-final-v6.txt`, `banc-final-v7.txt`, `banc-etape-B-c3.txt` à `banc-etape-D-c3.txt`, `gardes-9-a-15-sur-v7.txt` ; celle de la v5 : `sorties/banc-final.txt`.
+- **Les captures** : `captures/` (169, refaites sur la v9 ; elles servent au banc et à l'audit ; la lecture des écrans changés : `sorties/lecture-v9.md`). **Plus de livret** depuis le complément 3 : Paul valide sur la maquette elle-même ; les livrets de la v5 à la v7 restent.
 - **Les mesures** : `mesures/README.md` ; le texte de `{{LIMITES}}` pour le prompt y est, et dans la section du complément 1.
 - **L'existant** : `banc/existant/` (les inventaires de la 7.7.1 et de MJPC, `retraits.json` et ses citations, `ecarts-mjpc.json` et ses raisons).
 - **Le tableau « point → scène »** : plus bas (et `POINT-SCENE.md`).
-- **Le journal des défauts** : `DEFAUTS.md` (355 entrées : 35 au mandat, 12 au complément 1, 6 au complément 2 ; au complément 3, les 279 lignes des relecteurs, n° 54 à 332, et 23 trouvailles des gardes, du banc et des captures, n° 333 à 355), repris plus bas pour les trois premiers.
-- **Le classement des textes de la maquette** : `banc/existant/textes-console.json` (569 textes, leur catégorie et, pour les 77 explications, leur place) ; **le scénario** : `src/scenario.js`.
-- **Rejouer** : `python3 build.py dev` (assemble `maquette-qcm-vdev.html`), `node banc/banc.js maquette-qcm-v8.html 5 sortie.txt` (le banc, une heure environ avec les gardes 9 à 15 ; `G3SEUL=9,12` ces gardes du complément 3 seules, `node banc/banc3.js` elles seules ; `GARDES=0` sans les gardes des compléments, `GARDES=seules` elles seules, `GARDES=c2` les gardes 6 à 8 seules, `SEUL=id` une scène), `node banc/temoins.js maquette-qcm-v6.html` (les témoins des gardes 7 et 8), `node capture.js maquette-qcm-v8.html`, `node mesures/mesurer.js maquette-qcm-v8.html mesures/limites.json`, `python3 outils/mesures-readme.py mesures/limites.json mesures/README.md`, `python3 outils/css-mjpc.py` et `node outils/edt-prompts.js` (les copies d'`index.html`), `node banc/existant/releve.js` et `node banc/existant/code.js` (les inventaires de l'existant).
+- **Le journal des défauts** : `DEFAUTS.md` (377 entrées : 35 au mandat, 12 au complément 1, 6 au complément 2 ; au complément 3, les 279 lignes des relecteurs, n° 54 à 332, et 23 trouvailles des gardes, du banc et des captures, n° 333 à 355 ; au complément 4, n° 356 à 377), repris plus bas pour les trois premiers.
+- **Le classement des textes de la maquette** : `banc/existant/textes-console.json` (571 textes, leur catégorie et, pour les 77 explications, leur place) ; **le scénario** : `src/scenario.js`.
+- **Rejouer** : pour la v9, voir la section du complément 4 ; `python3 build.py dev` (assemble `maquette-qcm-vdev.html`), `node banc/banc.js maquette-qcm-v8.html 5 sortie.txt` (le banc, une heure environ avec les gardes 9 à 15 ; `G3SEUL=9,12` ces gardes du complément 3 seules, `node banc/banc3.js` elles seules ; `GARDES=0` sans les gardes des compléments, `GARDES=seules` elles seules, `GARDES=c2` les gardes 6 à 8 seules, `SEUL=id` une scène), `node banc/temoins.js maquette-qcm-v6.html` (les témoins des gardes 7 et 8), `node capture.js maquette-qcm-v8.html`, `node mesures/mesurer.js maquette-qcm-v8.html mesures/limites.json`, `python3 outils/mesures-readme.py mesures/limites.json mesures/README.md`, `python3 outils/css-mjpc.py` et `node outils/edt-prompts.js` (les copies d'`index.html`), `node banc/existant/releve.js` et `node banc/existant/code.js` (les inventaires de l'existant).
 
 ## Ce que la maquette simule (déclaré, mandat §3)
 

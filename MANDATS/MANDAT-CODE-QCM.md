@@ -1,3 +1,5 @@
+> **Remplacé le 12/10 à 14:10 (tour 672) par les quatre mandats de `MANDATS/CODE-QCM/` (Paul : « tu me fais 4 mandats pour 4 exécutants différents »). Ne pas l'appliquer.**
+
 # MANDAT DE CODE — LE QCM DE LA MAQUETTE, EN CLASSE LE 13/10 AU MATIN
 
 *Écrit par la conscience n°12 le 12/10/2026 (tour 670), sur l'ordre de Paul, à 13:44 : « je n'ai qu'un objectif: que demain matin à 10h30 maximum, l'app qcm tourne avec tous les attributs de la maquette, tous. il faut que tu arrives à trouver une solution. » Et, à 13:28 : « je veux que demain, le qcm que je ferai soit celui de la maquette. C'est pour ça qu'on travaille sur la maquette. »*

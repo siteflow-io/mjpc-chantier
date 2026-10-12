@@ -1,0 +1,2648 @@
+{
+ "atteintes": 120,
+ "fideles": 32,
+ "parScene": {
+  "c-evals": {
+   "id": "c-evals",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-3 · SOIR"
+  },
+  "c-eval-corbeille": {
+   "id": "c-eval-corbeille",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "De quoi parle cette fenêtre : #e Chapitre # — Poésie et peinture au XIXème siècle · Interro de cours (séance #) · # questions."
+   ],
+   "texteManquant": [
+    "#e Chapitre # — Poésie et peinture au XIXème siècle · Interro de cours (séance #) · # questions"
+   ],
+   "ecarts": 2,
+   "proprio": "QCM-3 · SOIR"
+  },
+  "c-collage": {
+   "id": "c-collage",
+   "appareil": "console",
+   "gestesManquants": [
+    "📋 Copier les erreurs pour l'instance de création d'éval"
+   ],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Colle ici le JSON que l'instance de création d'éval t'a rendu.",
+    "Le JSON a des erreurs : rien n'est enregistré tant qu'elles restent.",
+    "Un point à corriger dans le JSON, avant que l'évaluation s'enregistre.",
+    "Copie les messages, numérotés, prêts à coller dans l'instance de création d'éval : « Corrige ton JSON : #. … Renvoie le JSON complet. »",
+    "Ce que l'app a vérifié et trouvé juste dans le JSON."
+   ],
+   "texteManquant": [
+    "❌ Rien n'est enregistré : # choses à corriger dans le JSON.",
+    "Question # : il manque le temps de réponse (« reponse »).",
+    "Question # : il manque ce qu'elle vérifie (« verifie »), la courte phrase à l'infinitif du bilan de l'élève.",
+    "Question # : # px de trop sur une demi-tablette. Raccourcis l'énoncé ou les choix, sauf si je te dis que j'assume la longueur.",
+    "Question # : la compétence « c#-oral-# » n'est pas une compétence du chapitre (#e · Ch. # — Poésie et peinture au XIXe siècle).",
+    "Question # : # compétences ; une question en a une ou deux.",
+    "La compétence « c#-culture-# » n'est évaluée que par # questions (Q#, Q#) : il en faut au moins #.",
+    "La séance durerait # min : # min de plus que les # minutes utiles.",
+    "📋 Copier les erreurs pour l'instance de création d'éval",
+    "✅ Le reste est bon : chapitre « #e · Ch. # — Poésie et peinture au XIXe siècle », mode tout ou rien, # questions, # compétences du chapitre ; la question # porte « longueur assumée » : elle passe, et sa moitié défilera seule."
+   ],
+   "ecarts": 16,
+   "proprio": "QCM-3 · SOIR"
+  },
+  "x627-3-editeur": {
+   "id": "x627-3-editeur",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-3 · SOIR"
+  },
+  "c-feuille": {
+   "id": "c-feuille",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-3 · SOIR"
+  },
+  "c-accueil": {
+   "id": "c-accueil",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-lancer": {
+   "id": "c-lancer",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Les exclusions de MJPC que les binômes proposés respectent.",
+    "La démo faite avec la classe : rien n'y compte, elle ne laisse que cette ligne.",
+    "Rien ne compte : ni note, ni compétence ; elle ne sert jamais aux binômes."
+   ],
+   "texteManquant": [],
+   "ecarts": 3,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-appel": {
+   "id": "c-appel",
+   "appareil": "console",
+   "gestesManquants": [
+    "🚫«élève»"
+   ],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Les exclusions de MJPC que les binômes proposés respectent.",
+    "La démo faite avec la classe : rien n'y compte, elle ne laisse que cette ligne.",
+    "Marqué absent : clique pour le remettre présent.",
+    "Rien ne compte : ni note, ni compétence ; elle ne sert jamais aux binômes."
+   ],
+   "texteManquant": [
+    "🚫",
+    "📱 «élève» (binôme d'«élève») et «élève» (seule) sont mis ensemble : tablette #."
+   ],
+   "ecarts": 7,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-demo-lancer": {
+   "id": "c-demo-lancer",
+   "appareil": "console",
+   "gestesManquants": [
+    "🔓 Rouvrir",
+    "📊 Résultats"
+   ],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Lance la démo avec la classe, comme une vraie séance : appel, binômes, attestations, questions, correction. Rien ne compte : ni note, ni compétence, ni point d'autonomie.",
+    "Les exclusions de MJPC que les binômes proposés respectent.",
+    "La séance de « #e Chapitre # — Poésie et peinture au XIXème siècle · Interro de cours (séance #) » ; ses boutons ouvrent ses résultats.",
+    "La date, l'état et les présents de cette séance : «date» «heure» · ✅ terminée · # présents, # absents · copies rendues le «date».",
+    "Cette séance est le « QCM précédent » : son classement sert à former les binômes.",
+    "Rouvre la séance du «date», là où elle s'était terminée, après une confirmation. Ses copies rendues sont masquées jusqu'au prochain « Rendre les copies ».",
+    "Ouvre les résultats de la séance du «date» : les notes d'après la feuille, les compétences, les feuilles à lire.",
+    "La séance de « QCM — Le jambon-beurre » ; ses boutons ouvrent ses résultats.",
+    "La date, l'état et les présents de cette séance : «date» «heure» · ✅ terminée · # présents · copies rendues le «date»."
+   ],
+   "texteManquant": [
+    "Évaluation d'essai — # questions",
+    "🚫 # exclusions de MJPC respectées : le classement mettait «élève» avec «élève», et «élève» avec «élève» ; chacun a été échangé avec le binôme le plus proche.",
+    "#e Chapitre # — Poésie et peinture au XIXème siècle · Interro de cours (séance #)",
+    "«date» «heure» · ✅ terminée · # présents, # absents · copies rendues le «date»",
+    "↳ c'est le QCM précédent : il sert aux binômes",
+    "🔓 Rouvrir",
+    "📊 Résultats",
+    "QCM — Le jambon-beurre",
+    "«date» «heure» · ✅ terminée · # présents · copies rendues le «date»"
+   ],
+   "ecarts": 20,
+   "proprio": "QCM-3 · SOIR"
+  },
+  "c-demo-faite": {
+   "id": "c-demo-faite",
+   "appareil": "console",
+   "gestesManquants": [
+    "Évaluation d'essai — # questions",
+    "📱 Sur tablettes",
+    "📄 Séance sur papier",
+    "🚀 Lancer la séance"
+   ],
+   "gestesEnTrop": [
+    "🎓 Démo — apprendre le déroulé (# questions)",
+    "🎓 Lancer la démo"
+   ],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Le mode de la séance : sur tablettes ou sur papier.",
+    "La séance sur tablettes, deux élèves par tablette.",
+    "La séance sur papier : chacun répond seul sur sa feuille, sans tablette ; l'estimation se fait à la reprise, sur les tablettes.",
+    "La durée estimée de la séance, d'après les temps des questions et les durées des Réglages.",
+    "Ouvre l'appel : tu coches les absents, l'heure de fin se règle, puis la séance s'ouvre et les tablettes passent à l'attestation. Les binômes restent ceux de la grille.",
+    "Les exclusions de MJPC que les binômes proposés respectent.",
+    "Cette séance est le « QCM précédent » : son classement sert à former les binômes.",
+    "Rouvre la séance du «date», là où elle s'était terminée, après une confirmation. Ses copies rendues sont masquées jusqu'au prochain « Rendre les copies ».",
+    "Ouvre les résultats de la séance du «date» : les notes d'après la feuille, les compétences, les feuilles à lire.",
+    "Sur tablettes : deux élèves par tablette, le déroulé complet. Sur papier : chacun répond seul sur sa feuille, avec les énoncés imprimés ; le soir, tu remplis la grille ; la correction se fait à l'heure suivante, sur les tablettes.",
+    "Installation et consignes # min ; questions # min # s (pour chacune : la réflexion, puis deux tours de # s de décompte, de réponse et de # s où l'élève dit si sa feuille dit la même chose que son clic, puis # s) ; estimation et seconde attestation # min ; correction # min (# min par question) ; co-évaluation et bilan # min."
+   ],
+   "texteManquant": [
+    "Évaluation d'essai — # questions",
+    "Modei",
+    "📱 Sur tablettes",
+    "📄 Séance sur papier",
+    "⏱️ Durée estimée : # mini",
+    "✅ Ça tient dans les # minutes utiles.",
+    "🚀 Lancer la séance",
+    "🔓 Rouvrir",
+    "📊 Résultats"
+   ],
+   "ecarts": 26,
+   "proprio": "QCM-3 · SOIR"
+  },
+  "t-combien": {
+   "id": "t-combien",
+   "appareil": "tablette",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "t-login": {
+   "id": "t-login",
+   "appareil": "tablette",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "t-login-inconnu": {
+   "id": "t-login-inconnu",
+   "appareil": "tablette",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "t-binome": {
+   "id": "t-binome",
+   "appareil": "tablette",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [
+    "Évaluation d'essai — # questions",
+    "••"
+   ],
+   "ecarts": 2,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "t-rejoins": {
+   "id": "t-rejoins",
+   "appareil": "tablette",
+   "gestesManquants": [
+    "✓"
+   ],
+   "gestesEnTrop": [
+    "Pas là ? Choisir un autre élève"
+   ],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [
+    "Évaluation d'essai — # questions",
+    "✓",
+    "Écris lisiblement : «élève» lira ta feuille à la correction.",
+    "Si tu sais ton cours, tu retrouveras ta réponse parmi les choix."
+   ],
+   "ecarts": 6,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "t-attest-1": {
+   "id": "t-attest-1",
+   "appareil": "tablette",
+   "gestesManquants": [
+    "✓"
+   ],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [
+    "✓",
+    "Écris lisiblement : «élève» lira ta feuille à la correction.",
+    "Si tu sais ton cours, tu retrouveras ta réponse parmi les choix.",
+    "Quand « POSE TON STYLO » s'affiche, pose ton stylo et clique ta réponse. Quand c'est le tour de «élève», ne regarde pas."
+   ],
+   "ecarts": 5,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "t-attest-2": {
+   "id": "t-attest-2",
+   "appareil": "tablette",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [
+    "Évaluation d'essai — # questions"
+   ],
+   "ecarts": 1,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "t-pret": {
+   "id": "t-pret",
+   "appareil": "tablette",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-pret": {
+   "id": "c-pret",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "«élève» a coché # lignes de l'attestation sur #.",
+    "«élève» n'est pas encore entrée sur sa moitié de tablette."
+   ],
+   "texteManquant": [
+    "attestation «date»",
+    "pas encore entrée"
+   ],
+   "ecarts": 4,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "t-demo-q": {
+   "id": "t-demo-q",
+   "appareil": "tablette",
+   "gestesManquants": [],
+   "gestesEnTrop": [
+    "#",
+    "⌫",
+    "✓",
+    "Entrer",
+    "Pas là ? Choisir un autre élève"
+   ],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 5,
+   "proprio": "QCM-3 · SOIR"
+  },
+  "t-q1-reflexion": {
+   "id": "t-q1-reflexion",
+   "appareil": "tablette",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-q1-reflexion": {
+   "id": "c-q1-reflexion",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Coupe la réflexion : « POSE TON STYLO » sur les deux moitiés, puis le #er tour. Sert quand tous ont fini d'écrire avant la fin du temps."
+   ],
+   "texteManquant": [],
+   "ecarts": 1,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "t-q1-passage1": {
+   "id": "t-q1-passage1",
+   "appareil": "tablette",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "t-q1-tour1": {
+   "id": "t-q1-tour1",
+   "appareil": "tablette",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [
+    "✅ Réponse enregistrée — tu peux encore la changer"
+   ],
+   "ecarts": 1,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-q1-tour1": {
+   "id": "c-q1-tour1",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Le temps de réponse de chaque tour de la question en cours.",
+    "Coupe le #er tour : les premiers sont figés et disent si leur feuille dit la même chose que leur clic, puis le #e tour commence.",
+    "«élève» répond en ce moment, pendant son tour."
+   ],
+   "texteManquant": [
+    "✋ répond…"
+   ],
+   "ecarts": 4,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-voir-tablette": {
+   "id": "c-voir-tablette",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [
+    "Milan (ouvert dans la maquette)",
+    "Naples (ouvert dans la maquette)",
+    "Rome (ouvert dans la maquette)",
+    "Venise (ouvert dans la maquette)"
+   ],
+   "bullesManquantes": [
+    "Le temps de réponse de chaque tour de la question en cours.",
+    "Coupe le #er tour : les premiers sont figés et disent si leur feuille dit la même chose que leur clic, puis le #e tour commence.",
+    "«élève» a la bonne réponse à cette question, pour le moment."
+   ],
+   "texteManquant": [
+    "🎯 Évaluation d'essai — # questions — # ESSAI",
+    "Évaluation d'essai — # questions",
+    "✅ Réponse enregistrée — tu peux encore la changer"
+   ],
+   "ecarts": 10,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "p-reponse": {
+   "id": "p-reponse",
+   "appareil": "telephone",
+   "gestesManquants": [
+    "«élève»⏳"
+   ],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Coupe le #er tour : les premiers sont figés et disent si leur feuille dit la même chose que leur clic, puis le #e tour commence."
+   ],
+   "texteManquant": [
+    "⏳"
+   ],
+   "ecarts": 3,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-qr": {
+   "id": "c-qr",
+   "appareil": "console",
+   "gestesManquants": [
+    "🔴# séance en cours",
+    "🚫 Départ d'un élève",
+    "↩️ Retour d'un élève",
+    "🔓 Rouvrir pour un élève",
+    "⏸️ Finir à une autre heure",
+    "🛑 Terminer la séance",
+    "+#",
+    "⏭️ Tour suivant",
+    "⏸️ Pause",
+    "🔄 Relancer chrono",
+    "👁",
+    "❌ Écarter"
+   ],
+   "gestesEnTrop": [
+    "# ESSAI (# élèves)",
+    "Évaluation d'essai — # questions",
+    "📱 Sur tablettes",
+    "📄 Séance sur papier",
+    "🚀 Lancer la séance",
+    "🔓 Rouvrir",
+    "📊 Résultats"
+   ],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Les séances encore ouvertes, ici ou ailleurs : tu vas au pilotage de chacune, ou tu la termines. Ne coûte rien.",
+    "Le pilotage de la séance en cours : les tablettes, la question, le chrono.",
+    "L'heure de la fin de l'heure : le lancement et # minutes.",
+    "Marque un élève comme parti en cours de séance. Ses réponses déjà données restent enregistrées (sa note sera calculée au prorata des questions auxquelles il a participé). L'absence est tracée pour le suivi longitudinal MJPC.",
+    "Personne n'est parti pendant cette séance : il n'y a personne à faire revenir.",
+    "La question en cours n'est pas close : « 🔓 Rouvrir pour un élève » s'ouvre une fois close, pour ceux qui n'ont pas répondu.",
+    "Met la séance en pause, avec son état exact, pour la reprendre à une heure suivante : « ▶️ Reprendre » dans « 🎯 Pilotage classe ». Demande une confirmation.",
+    "Termine maintenant : l'archive s'écrit avec les notes telles qu'elles sont ; les tablettes oublient leurs élèves et reviennent à « Combien êtes-vous ? ».",
+    "Nombre d'élèves actuellement connectés à l'app sur leur poste vs. nombre total d'élèves de la classe.",
+    "Nombre d'élèves qui ont validé une réponse à la question en cours vs. nombre total. Te permet de voir d'un coup d'œil si tu peux clore.",
+    "Nombre d'élèves ayant répondu juste vs. nombre d'élèves ayant répondu (pas vs. total). Indicateur du taux de réussite en direct.",
+    "Question en cours vs. nombre total de questions de l'évaluation.",
+    "La phase de la séance en ce moment : ✋ Phase RÉPONSE — #er tour (moitiés de gauche).",
+    "Le temps de réflexion de la question en cours : l'énoncé sans les choix.",
+    "Le temps de réflexion de la question : # secondes.",
+    "Ce temps vaut pour cette question seulement.",
+    "La réflexion de cette question est finie : son temps ne se change plus.",
+    "L'unité du champ à côté : le temps de réflexion de cette question se compte en secondes.",
+    "Le temps de réponse de chaque tour de la question en cours.",
+    "Le temps de réponse d'un tour : # secondes, décompté en ce moment pour les moitiés qui répondent.",
+    "Ce temps se décompte en ce moment.",
+    "Tape le temps de réponse de cette question, en secondes : il vaut pour chaque tour et pour la lecture à la correction. La fin prévue suit.",
+    "L'unité du champ à côté : le temps de réponse de cette question se compte en secondes.",
+    "Ajoute # s au temps de réponse de cette question, tout de suite au chrono en cours. La fin prévue suit.",
+    "La fin prévue de la séance, recalculée à chaque temps changé ou question écartée : les questions qui restent, leurs deux tours, puis l'estimation, la correction, la co-évaluation et le bilan (durées de Réglages).",
+    "La question en cours, et son nombre de bonnes réponses.",
+    "L'énoncé de la question, tel que les élèves le lisent.",
+    "La ou les bonnes réponses de la question, que les élèves ne voient pas encore.",
+    "La difficulté de la question : Facile.",
+    "Une compétence de la question : « c#-culture-# ».",
+    "Une compétence de la question : « c#-lire-# ».",
+    "Coupe le #er tour : les premiers sont figés et disent si leur feuille dit la même chose que leur clic, puis le #e tour commence.",
+    "Fige tous les chronos immédiatement (utile en cas d'interruption en classe). Les élèves voient un bandeau de pause.",
+    "Remet le chrono à zéro pour la phase en cours (durée pleine ré-injectée).",
+    "La question qui suit, avec ses deux temps.",
+    "La difficulté et les deux temps de la question qui vient.",
+    "Les tablettes de la classe : qui est assis où, et où en est chacun.",
+    "Montre les deux moitiés de la tablette # en direct, en grand. Ne change rien.",
+    "«élève» : tablette #, moitié de gauche.",
+    "«élève» a la bonne réponse à cette question, pour le moment.",
+    "«élève» : tablette #, moitié de droite.",
+    "«élève» attend son tour : sa moitié est voilée pendant que son voisin répond.",
+    "«élève» répond en ce moment, pendant son tour.",
+    "Sur les tuiles, cette couleur veut dire : juste.",
+    "Sur les tuiles, cette couleur veut dire : toutes les bonnes + une en trop.",
+    "Sur les tuiles, cette couleur veut dire : une bonne sur deux.",
+    "Sur les tuiles, cette couleur veut dire : faux.",
+    "Sur les tuiles, « voilé » veut dire : attend son tour.",
+    "Sur les tuiles, cette couleur veut dire : répond (cadre vert).",
+    "Toutes les questions de l'évaluation : leurs temps se changent pour cette séance seulement.",
+    "Question en cours — «date» justes pour le moment",
+    "La question # de l'évaluation, dans l'ordre où elle se pose.",
+    "La difficulté de la question # : Standard.",
+    "L'énoncé de la question #, tel que les élèves le lisent.",
+    "« Madrid » : une bonne réponse de la question #.",
+    "« Genève » : un choix de la question #, qui n'est pas une bonne réponse.",
+    "« Berlin » : une bonne réponse de la question #.",
+    "« Sydney » : un choix de la question #, qui n'est pas une bonne réponse.",
+    "Le temps de réflexion de la question #, en secondes, pour cette séance.",
+    "Le temps de réflexion de la question #, pour cette séance : l'évaluation elle-même ne change pas. La fin prévue suit.",
+    "Le temps de réponse de chaque tour de la question #, en secondes, pour cette séance.",
+    "Le temps de réponse de la question #, pour cette séance : l'évaluation elle-même ne change pas. La fin prévue suit.",
+    "Écarte la question #, après une confirmation : elle ne sera ni posée ni corrigée, et sort du total, comme une question manquée par un absent ; les tablettes et le tableau comptent sans elle. « ↩️ Remettre » la défait, tant que son tour n'est pas passé.",
+    "La difficulté de la question # : Facile.",
+    "« # » : un choix de la question #, qui n'est pas une bonne réponse.",
+    "« # » : une bonne réponse de la question #.",
+    "Ferme cette fenêtre sans rien changer (Échap).",
+    "La question suivante, avec ses deux temps : ils se changent dans « 📋 Toutes les questions », à droite.",
+    "Chaque tablette, ses deux moitiés : qui est assis où, et où en est chacun. « 👁 » montre les deux moitiés en direct. Glisse un nom sur un autre pour échanger deux élèves : pendant la séance, ils changent de tablette et retapent leur code ; leurs réponses les suivent.",
+    "Les temps des questions à venir se tapent ici, pour cette séance seulement. « ❌ Écarter » retire une question pas encore posée ; « ⚠️ Annuler » retire une question déjà posée. Les deux se défont par « ↩️ Remettre »."
+   ],
+   "texteManquant": [
+    "🔴",
+    "# séance en cours",
+    "🎯 Évaluation d'essai — # questions — # ESSAI",
+    "🕙 Fin de l'heure : «heure»",
+    "🚫 Départ d'un élève",
+    "↩️ Retour d'un élève",
+    "🔓 Rouvrir pour un élève",
+    "⏸️ Finir à une autre heure",
+    "🛑 Terminer la séance",
+    "«date»",
+    "CONNECTÉS",
+    "ONT RÉPONDU",
+    "JUSTES",
+    "QUESTION",
+    "✋ Phase RÉPONSE — #er tourmoitiés de gauche",
+    "🧠 RÉFLEXION",
+    "#s",
+    "pour cette question",
+    "s",
+    "+#",
+    "✋ RÉPONSE",
+    "#er tour · EN COURS",
+    "🏁 Fin prévue «heure»",
+    "QUESTION # / # — # BONNE RÉPONSE",
+    "Quelle est la capitale de l'Italie ?",
+    "✓ Bonne réponse : Rome",
+    "Difficulté : Facile",
+    "c#-culture-#",
+    "c#-lire-#",
+    "⏭️ Tour suivant",
+    "⏸️ Pause",
+    "🔄 Relancer chrono",
+    "🔮 À VENIR — Q # / #",
+    "I",
+    "Lesquelles sont des capitales européennes ?",
+    "Difficulté Standard · réflexion # s · réponse # s par tour · # bonnes réponses",
+    "📱 Tablettesi",
+    "👁",
+    "«élève»",
+    "juste",
+    "🙈 attend son tour",
+    "✋ répond…",
+    "toutes les bonnes + une en trop",
+    "une bonne sur deux",
+    "faux",
+    "voilé : attend son tour",
+    "répond (cadre vert)",
+    "📋 Toutes les questionsi",
+    "Q#",
+    "Facile",
+    "Milan",
+    "Naples",
+    "Rome ✓",
+    "Venise",
+    "Réflexion # s · Réponse # s par tour",
+    "Standard",
+    "Madrid ✓",
+    "Genève",
+    "Berlin ✓",
+    "Sydney",
+    "🧠",
+    "✋",
+    "❌ Écarter",
+    "Combien de pattes a une araignée ?",
+    "#",
+    "# ✓"
+   ],
+   "ecarts": 155,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "b-reponse": {
+   "id": "b-reponse",
+   "appareil": "tableau",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-fin-prevue": {
+   "id": "c-fin-prevue",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Le temps de réponse de chaque tour de la question en cours.",
+    "Coupe le #er tour : les premiers sont figés et disent si leur feuille dit la même chose que leur clic, puis le #e tour commence.",
+    "«élève» a la bonne réponse à cette question, pour le moment."
+   ],
+   "texteManquant": [
+    "🎯 Évaluation d'essai — # questions — # ESSAI",
+    "🏁 Fin prévue «heure», # min après la fin de l'heure"
+   ],
+   "ecarts": 5,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "t-q1-passage2": {
+   "id": "t-q1-passage2",
+   "appareil": "tablette",
+   "gestesManquants": [],
+   "gestesEnTrop": [
+    "Naples",
+    "Rome",
+    "Venise",
+    "Milan"
+   ],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [
+    "«élève», pose ton stylo.",
+    "Pose ton stylo, «élève».",
+    "Tu es prêt ? À toi dans # secondes"
+   ],
+   "ecarts": 7,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "t-q1-tour2": {
+   "id": "t-q1-tour2",
+   "appareil": "tablette",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "t-q1-b-michel": {
+   "id": "t-q1-b-michel",
+   "appareil": "tablette",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-q1-tour2": {
+   "id": "c-q1-tour2",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Le temps de réponse de chaque tour de la question en cours.",
+    "Coupe le #e tour : les seconds sont figés et disent si leur feuille dit la même chose que leur clic ; la question est close.",
+    "«élève» répond en ce moment, pendant son tour."
+   ],
+   "texteManquant": [
+    "✋ répond…"
+   ],
+   "ecarts": 4,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "t-q1-attente": {
+   "id": "t-q1-attente",
+   "appareil": "tablette",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-q1-close": {
+   "id": "c-q1-close",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Lance la question # : la réflexion commence sur toutes les tablettes, l'énoncé sans les choix."
+   ],
+   "texteManquant": [],
+   "ecarts": 1,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-ecarter": {
+   "id": "c-ecarter",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [
+    "🔓 Rouvrir pour un élève (fermé dans la maquette)",
+    "🔓 Rouvrir pour tous (fermé dans la maquette)"
+   ],
+   "bullesManquantes": [
+    "Tous les présents ont répondu à cette question : il n'y a personne à rouvrir.",
+    "Lance la question # : la réflexion commence sur toutes les tablettes, l'énoncé sans les choix.",
+    "Tous les présents ont répondu à cette question : il n'y a personne à rouvrir. Une réponse donnée est définitive.",
+    "Sur les tuiles, « voilé » veut dire : attend son tour.",
+    "Sur les tuiles, cette couleur veut dire : répond (cadre vert)."
+   ],
+   "texteManquant": [
+    "🎯 Évaluation d'essai — # questions — # ESSAI",
+    "voilé : attend son tour",
+    "répond (cadre vert)"
+   ],
+   "ecarts": 10,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-ecartee": {
+   "id": "c-ecartee",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [
+    "🔓 Rouvrir pour un élève (fermé dans la maquette)",
+    "🔓 Rouvrir pour tous (fermé dans la maquette)"
+   ],
+   "bullesManquantes": [
+    "Tous les présents ont répondu à cette question : il n'y a personne à rouvrir.",
+    "Lance la question # : la réflexion commence sur toutes les tablettes, l'énoncé sans les choix.",
+    "Tous les présents ont répondu à cette question : il n'y a personne à rouvrir. Une réponse donnée est définitive.",
+    "Sur les tuiles, « voilé » veut dire : attend son tour.",
+    "Sur les tuiles, cette couleur veut dire : répond (cadre vert).",
+    "Les compétences de cette question n'auraient plus que deux questions : leurs quatre niveaux ne seraient plus possibles."
+   ],
+   "texteManquant": [
+    "🎯 Évaluation d'essai — # questions — # ESSAI",
+    "voilé : attend son tour",
+    "répond (cadre vert)",
+    "⚠️ c#-culture-# et c#-lire-# ne sont plus évaluées que par # questions : leurs niveaux seront moins fins (il en faut #)."
+   ],
+   "ecarts": 12,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "t-q2-ecartee": {
+   "id": "t-q2-ecartee",
+   "appareil": "tablette",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [
+    "Évaluation d'essai — # questions"
+   ],
+   "ecarts": 1,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "t-q2-reflexion": {
+   "id": "t-q2-reflexion",
+   "appareil": "tablette",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "t-q2-tour1": {
+   "id": "t-q2-tour1",
+   "appareil": "tablette",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "t-q2-tour2": {
+   "id": "t-q2-tour2",
+   "appareil": "tablette",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-q2-tour2": {
+   "id": "c-q2-tour2",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Le temps de réponse de chaque tour de la question en cours.",
+    "Coupe le #e tour : les seconds sont figés et disent si leur feuille dit la même chose que leur clic ; la question est close."
+   ],
+   "texteManquant": [],
+   "ecarts": 2,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-q2-close": {
+   "id": "c-q2-close",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Lance la question # : la réflexion commence sur toutes les tablettes, l'énoncé sans les choix.",
+    "Rouvre la question close pour ceux qui n'ont pas répondu, une seule fois par question : les deux tours reprennent pour eux seuls. Une réponse donnée est définitive. Il ne rouvre que pour ceux qui n'ont pas répondu, une fois par question.",
+    "Annule cette question déjà posée (mal formulée, par exemple) : ses réponses restent gardées, mais elle sort du total de la note et des compétences. Une confirmation d'abord ; « ↩️ Remettre » la défait. les élèves liront : « Question # · annulée : elle ne compte pas. » Dans ta console et tes résultats, elle garde sa marque « ⚠️ Annulée — posée, puis annulée »."
+   ],
+   "texteManquant": [],
+   "ecarts": 3,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-annuler": {
+   "id": "c-annuler",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Lance la question # : la réflexion commence sur toutes les tablettes, l'énoncé sans les choix.",
+    "Rouvre la question close pour ceux qui n'ont pas répondu, une seule fois par question : les deux tours reprennent pour eux seuls. Une réponse donnée est définitive. Il ne rouvre que pour ceux qui n'ont pas répondu, une fois par question.",
+    "«élève» a coché toutes les bonnes réponses, et une de trop.",
+    "«élève» a coché une des deux bonnes réponses, et pas l'autre.",
+    "Annule cette question déjà posée (mal formulée, par exemple) : ses réponses restent gardées, mais elle sort du total de la note et des compétences. Une confirmation d'abord ; « ↩️ Remettre » la défait. les élèves liront : « Question # · annulée : elle ne compte pas. » Dans ta console et tes résultats, elle garde sa marque « ⚠️ Annulée — posée, puis annulée »."
+   ],
+   "texteManquant": [
+    "🎯 Évaluation d'essai — # questions — # ESSAI",
+    "une en trop",
+    "une sur deux"
+   ],
+   "ecarts": 8,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-annulee": {
+   "id": "c-annulee",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Lance la question # : la réflexion commence sur toutes les tablettes, l'énoncé sans les choix.",
+    "Rouvre la question close pour ceux qui n'ont pas répondu, une seule fois par question : les deux tours reprennent pour eux seuls. Une réponse donnée est définitive. Il ne rouvre que pour ceux qui n'ont pas répondu, une fois par question.",
+    "«élève» a coché toutes les bonnes réponses, et une de trop.",
+    "«élève» a coché une des deux bonnes réponses, et pas l'autre.",
+    "Remet la question dans le déroulé, comme avant ton geste."
+   ],
+   "texteManquant": [
+    "🎯 Évaluation d'essai — # questions — # ESSAI",
+    "une en trop",
+    "une sur deux"
+   ],
+   "ecarts": 8,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-rouvrir-tous": {
+   "id": "c-rouvrir-tous",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [
+    "↩️ Remettre"
+   ],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Lance la question # : la réflexion commence sur toutes les tablettes, l'énoncé sans les choix.",
+    "Rouvre la question close pour ceux qui n'ont pas répondu, une seule fois par question : les deux tours reprennent pour eux seuls. Une réponse donnée est définitive. Il ne rouvre que pour ceux qui n'ont pas répondu, une fois par question.",
+    "«élève» a coché toutes les bonnes réponses, et une de trop.",
+    "«élève» a coché une des deux bonnes réponses, et pas l'autre.",
+    "Rouvre la question # pour ceux qui n'ont pas répondu : ici, «élève». Une seule fois. Une réponse donnée est définitive : les autres ne changent rien."
+   ],
+   "texteManquant": [
+    "🎯 Évaluation d'essai — # questions — # ESSAI",
+    "une en trop",
+    "une sur deux",
+    "Ici : «élève» (tablette #)."
+   ],
+   "ecarts": 10,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-rouvrir-un": {
+   "id": "c-rouvrir-un",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Lance la question # : la réflexion commence sur toutes les tablettes, l'énoncé sans les choix.",
+    "Rouvre la question close pour ceux qui n'ont pas répondu, une seule fois par question : les deux tours reprennent pour eux seuls. Une réponse donnée est définitive. Il ne rouvre que pour ceux qui n'ont pas répondu, une fois par question.",
+    "Rouvre la question # pour «élève» seul, avec son temps de réponse ; «élève» porte le voile pendant son tour. Une seule fois. Une seule fois par question, avec le temps de réponse de la question."
+   ],
+   "texteManquant": [],
+   "ecarts": 3,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "t-rouvrir-un": {
+   "id": "t-rouvrir-un",
+   "appareil": "tablette",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "p-eleve": {
+   "id": "p-eleve",
+   "appareil": "telephone",
+   "gestesManquants": [
+    "🚀 Lancer Q#",
+    "🔓 Rouvrir Q#",
+    "«élève»✓",
+    "«élève»✓+",
+    "«élève»½",
+    "«élève»✗"
+   ],
+   "gestesEnTrop": [
+    "+#",
+    "❌ Écarter",
+    "⏭️ Tour suivant",
+    "⏸️ Pause",
+    "🔄 Chrono",
+    "«élève»🙈"
+   ],
+   "fermesDifferents": [
+    "🔁 Rouvrir Q# pour cet élève uniquement (une seule fois) (ouvert dans la maquette)"
+   ],
+   "bullesManquantes": [
+    "L'évaluation de la séance : « Évaluation d'essai — # questions ».",
+    "L'énoncé de la question qui suit, tel que les élèves le liront.",
+    "Lance la question # sur toutes les tablettes.",
+    "Rouvre la question # pour ceux qui n'ont pas répondu, après une confirmation. Une seule fois.",
+    "Q# — «date» bonnes (#%)",
+    "Rouvre la question pour «élève» seul, une seule fois."
+   ],
+   "texteManquant": [
+    "Évaluation d'essai — # questions",
+    "Phase : question close — Q «date»",
+    "Q# · Standard · réflexion # s · réponse # s par tour",
+    "Lesquelles sont des capitales européennes ?",
+    "✓ Bonnes réponses : Madrid / Berlin",
+    "Suiv. Q# : Combien de pattes a une araignée ?",
+    "🚀 Lancer Q#",
+    "🔓 Rouvrir Q#",
+    "# %",
+    "✓",
+    "✓+",
+    "½",
+    "✗",
+    "État actuel : n'a pas encore répondu."
+   ],
+   "ecarts": 33,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "t-q3-tour1": {
+   "id": "t-q3-tour1",
+   "appareil": "tablette",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "t-q3-tour2": {
+   "id": "t-q3-tour2",
+   "appareil": "tablette",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-q3-close": {
+   "id": "c-q3-close",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-depart": {
+   "id": "c-depart",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Le temps de réponse de chaque tour de la question en cours.",
+    "Coupe le #er tour : les premiers sont figés et disent si leur feuille dit la même chose que leur clic, puis le #e tour commence.",
+    "«élève» a la bonne réponse à cette question, pour le moment.",
+    "Marque «élève» comme parti en cours de séance : il ne bloque plus la classe, ses questions manquées sortent de son total. Il ne bloque plus la classe : son binôme continue seul ; ses questions manquées sortent de son total, et tu fixes sa note d'après sa feuille.",
+    "«élève», présente : « 🚫 Parti » à côté la marque comme partie.",
+    "Marque «élève» comme partie en cours de séance : elle ne bloque plus la classe, ses questions manquées sortent de son total. Il ne bloque plus la classe : son binôme continue seul ; ses questions manquées sortent de son total, et tu fixes sa note d'après sa feuille."
+   ],
+   "texteManquant": [
+    "🎯 Évaluation d'essai — # questions — # ESSAI"
+   ],
+   "ecarts": 7,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-parti": {
+   "id": "c-parti",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Le temps de réponse de chaque tour de la question en cours.",
+    "Coupe le #er tour : les premiers sont figés et disent si leur feuille dit la même chose que leur clic, puis le #e tour commence.",
+    "«élève» a la bonne réponse à cette question, pour le moment."
+   ],
+   "texteManquant": [
+    "🎯 Évaluation d'essai — # questions — # ESSAI"
+   ],
+   "ecarts": 4,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-retour": {
+   "id": "c-retour",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Le temps de réponse de chaque tour de la question en cours.",
+    "Coupe le #er tour : les premiers sont figés et disent si leur feuille dit la même chose que leur clic, puis le #e tour commence.",
+    "«élève» a la bonne réponse à cette question, pour le moment."
+   ],
+   "texteManquant": [
+    "🎯 Évaluation d'essai — # questions — # ESSAI"
+   ],
+   "ecarts": 4,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-terminer": {
+   "id": "c-terminer",
+   "appareil": "console",
+   "gestesManquants": [
+    "🚫 Départ d'un élève",
+    "↩️ Retour d'un élève",
+    "🔓 Rouvrir pour un élève",
+    "⏸️ Finir à une autre heure",
+    "+#",
+    "⏭️ Tour suivant",
+    "⏸️ Pause",
+    "🔄 Relancer chrono",
+    "👁",
+    "❌ Écarter"
+   ],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "L'heure de la fin de l'heure : le lancement et # minutes.",
+    "Marque un élève comme parti en cours de séance. Ses réponses déjà données restent enregistrées (sa note sera calculée au prorata des questions auxquelles il a participé). L'absence est tracée pour le suivi longitudinal MJPC.",
+    "Personne n'est parti pendant cette séance : il n'y a personne à faire revenir.",
+    "La question en cours n'est pas close : « 🔓 Rouvrir pour un élève » s'ouvre une fois close, pour ceux qui n'ont pas répondu.",
+    "Met la séance en pause, avec son état exact, pour la reprendre à une heure suivante : « ▶️ Reprendre » dans « 🎯 Pilotage classe ». Demande une confirmation.",
+    "Termine maintenant : l'archive s'écrit avec les notes telles qu'elles sont ; les tablettes oublient leurs élèves et reviennent à « Combien êtes-vous ? ». Les questions pas encore corrigées n'ont pas de lecture : tu fixes ces notes d'après les feuilles, dans Données → Résultats.",
+    "Nombre d'élèves actuellement connectés à l'app sur leur poste vs. nombre total d'élèves de la classe.",
+    "Nombre d'élèves qui ont validé une réponse à la question en cours vs. nombre total. Te permet de voir d'un coup d'œil si tu peux clore.",
+    "Nombre d'élèves ayant répondu juste vs. nombre d'élèves ayant répondu (pas vs. total). Indicateur du taux de réussite en direct.",
+    "Question en cours vs. nombre total de questions de l'évaluation.",
+    "La phase de la séance en ce moment : ✋ Phase RÉPONSE — #er tour (moitiés de gauche).",
+    "Le temps de réflexion de la question en cours : l'énoncé sans les choix.",
+    "Le temps de réflexion de la question : # secondes.",
+    "Ce temps vaut pour cette question seulement.",
+    "La réflexion de cette question est finie : son temps ne se change plus.",
+    "L'unité du champ à côté : le temps de réflexion de cette question se compte en secondes.",
+    "Le temps de réponse de chaque tour de la question en cours.",
+    "Le temps de réponse d'un tour : # secondes, décompté en ce moment pour les moitiés qui répondent.",
+    "Ce temps se décompte en ce moment.",
+    "Tape le temps de réponse de cette question, en secondes : il vaut pour chaque tour et pour la lecture à la correction. La fin prévue suit.",
+    "L'unité du champ à côté : le temps de réponse de cette question se compte en secondes.",
+    "Ajoute # s au temps de réponse de cette question, tout de suite au chrono en cours. La fin prévue suit.",
+    "La fin prévue de la séance, recalculée à chaque temps changé ou question écartée : les questions qui restent, leurs deux tours, puis l'estimation, la correction, la co-évaluation et le bilan (durées de Réglages).",
+    "La question en cours, et son nombre de bonnes réponses.",
+    "La ou les bonnes réponses de la question, que les élèves ne voient pas encore.",
+    "La difficulté de la question : Facile.",
+    "Une compétence de la question : « c#-culture-# ».",
+    "Une compétence de la question : « c#-lire-# ».",
+    "Coupe le #er tour : les premiers sont figés et disent si leur feuille dit la même chose que leur clic, puis le #e tour commence.",
+    "Fige tous les chronos immédiatement (utile en cas d'interruption en classe). Les élèves voient un bandeau de pause.",
+    "Remet le chrono à zéro pour la phase en cours (durée pleine ré-injectée).",
+    "La question qui suit, avec ses deux temps.",
+    "La difficulté et les deux temps de la question qui vient.",
+    "Les tablettes de la classe : qui est assis où, et où en est chacun.",
+    "La tablette # : ses deux moitiés, à gauche et à droite.",
+    "Montre les deux moitiés de la tablette # en direct, en grand. Ne change rien.",
+    "«élève» : tablette #, moitié de gauche.",
+    "«élève» a la bonne réponse à cette question, pour le moment.",
+    "«élève» : tablette #, moitié de droite.",
+    "«élève» attend son tour : sa moitié est voilée pendant que son voisin répond.",
+    "«élève» répond en ce moment, pendant son tour.",
+    "Sur les tuiles, cette couleur veut dire : juste.",
+    "Sur les tuiles, cette couleur veut dire : toutes les bonnes + une en trop.",
+    "Sur les tuiles, cette couleur veut dire : une bonne sur deux.",
+    "Sur les tuiles, cette couleur veut dire : faux.",
+    "Sur les tuiles, « voilé » veut dire : attend son tour.",
+    "Sur les tuiles, cette couleur veut dire : répond (cadre vert).",
+    "Toutes les questions de l'évaluation : leurs temps se changent pour cette séance seulement.",
+    "Question en cours — «date» justes pour le moment",
+    "La question # de l'évaluation, dans l'ordre où elle se pose.",
+    "La difficulté de la question # : Standard.",
+    "L'énoncé de la question #, tel que les élèves le lisent.",
+    "« Madrid » : une bonne réponse de la question #.",
+    "« Genève » : un choix de la question #, qui n'est pas une bonne réponse.",
+    "« Berlin » : une bonne réponse de la question #.",
+    "« Sydney » : un choix de la question #, qui n'est pas une bonne réponse.",
+    "Le temps de réflexion de la question #, en secondes, pour cette séance.",
+    "Le temps de réflexion de la question #, pour cette séance : l'évaluation elle-même ne change pas. La fin prévue suit.",
+    "Le temps de réponse de chaque tour de la question #, en secondes, pour cette séance.",
+    "Le temps de réponse de la question #, pour cette séance : l'évaluation elle-même ne change pas. La fin prévue suit.",
+    "Écarte la question #, après une confirmation : elle ne sera ni posée ni corrigée, et sort du total, comme une question manquée par un absent ; les tablettes et le tableau comptent sans elle. « ↩️ Remettre » la défait, tant que son tour n'est pas passé.",
+    "La difficulté de la question # : Facile.",
+    "« # » : un choix de la question #, qui n'est pas une bonne réponse.",
+    "« # » : une bonne réponse de la question #.",
+    "De quoi parle cette fenêtre : # ESSAI — Évaluation d'essai — # questions · question #, #er tour.",
+    "Termine la séance, tout de suite : l'archive s'écrit, les tablettes oublient leurs élèves. Les questions pas encore corrigées n'ont pas de lecture : tu fixes ces notes d'après les feuilles, dans Données → Résultats.",
+    "La question suivante, avec ses deux temps : ils se changent dans « 📋 Toutes les questions », à droite.",
+    "Chaque tablette, ses deux moitiés : qui est assis où, et où en est chacun. « 👁 » montre les deux moitiés en direct. Glisse un nom sur un autre pour échanger deux élèves : pendant la séance, ils changent de tablette et retapent leur code ; leurs réponses les suivent.",
+    "Les temps des questions à venir se tapent ici, pour cette séance seulement. « ❌ Écarter » retire une question pas encore posée ; « ⚠️ Annuler » retire une question déjà posée. Les deux se défont par « ↩️ Remettre »."
+   ],
+   "texteManquant": [
+    "🎯 Évaluation d'essai — # questions — # ESSAI",
+    "🕙 Fin de l'heure : «heure»",
+    "🚫 Départ d'un élève",
+    "↩️ Retour d'un élève",
+    "🔓 Rouvrir pour un élève",
+    "⏸️ Finir à une autre heure",
+    "«date»",
+    "CONNECTÉS",
+    "ONT RÉPONDU",
+    "JUSTES",
+    "QUESTION",
+    "✋ Phase RÉPONSE — #er tourmoitiés de gauche",
+    "🧠 RÉFLEXION",
+    "#s",
+    "pour cette question",
+    "s",
+    "+#",
+    "✋ RÉPONSE",
+    "#er tour · EN COURS",
+    "🏁 Fin prévue «heure»",
+    "QUESTION # / # — # BONNE RÉPONSE",
+    "✓ Bonne réponse : Rome",
+    "Difficulté : Facile",
+    "c#-culture-#",
+    "c#-lire-#",
+    "⏭️ Tour suivant",
+    "⏸️ Pause",
+    "🔄 Relancer chrono",
+    "🔮 À VENIR — Q # / #",
+    "I",
+    "Difficulté Standard · réflexion # s · réponse # s par tour · # bonnes réponses",
+    "📱 Tablettesi",
+    "📱 Tablette #",
+    "👁",
+    "«élève»",
+    "juste",
+    "🙈 attend son tour",
+    "✋ répond…",
+    "toutes les bonnes + une en trop",
+    "une bonne sur deux",
+    "faux",
+    "voilé : attend son tour",
+    "répond (cadre vert)",
+    "📋 Toutes les questionsi",
+    "Q#",
+    "Facile",
+    "Milan",
+    "Naples",
+    "Rome ✓",
+    "Venise",
+    "Réflexion # s · Réponse # s par tour",
+    "Standard",
+    "Madrid ✓",
+    "Genève",
+    "Berlin ✓",
+    "Sydney",
+    "🧠",
+    "✋",
+    "❌ Écarter",
+    "Combien de pattes a une araignée ?",
+    "# ✓",
+    "# ESSAI — Évaluation d'essai — # questions · question #, #er tour"
+   ],
+   "ecarts": 141,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-mode-emploi": {
+   "id": "c-mode-emploi",
+   "appareil": "console",
+   "gestesManquants": [
+    "📝 Évaluations",
+    "🎯 Pilotage classe",
+    "# ESSAI (# élèves)",
+    "Évaluation d'essai — # questions",
+    "📱 Sur tablettes",
+    "📄 Séance sur papier",
+    "🚀 Lancer la séance",
+    "✕",
+    "✓ J'ai compris"
+   ],
+   "gestesEnTrop": [
+    "Ouvrir la console MJPC →",
+    "🤖 Prompt IA",
+    "✏️ Modifier le prompt",
+    "💾 Enregistrer"
+   ],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "La liste de tes évaluations : créer, compléter, imprimer, dupliquer, mettre à la corbeille.",
+    "Lancer une séance, puis la piloter : la classe, l'évaluation, les binômes, l'appel.",
+    "Prépare une séance : la classe, l'évaluation, le mode, puis l'appel.",
+    "La classe de la séance.",
+    "L'évaluation de la séance.",
+    "L'évaluation de la séance : la démo, ou une évaluation prête à lancer.",
+    "Le mode de la séance : sur tablettes ou sur papier.",
+    "La séance sur tablettes, deux élèves par tablette.",
+    "La séance sur papier : chacun répond seul sur sa feuille, sans tablette ; l'estimation se fait à la reprise, sur les tablettes.",
+    "La durée estimée de la séance, d'après les temps des questions et les durées des Réglages.",
+    "Ouvre l'appel : tu coches les absents, l'heure de fin se règle, puis la séance s'ouvre et les tablettes passent à l'attestation. Les binômes restent ceux de la grille.",
+    "Les binômes proposés pour la séance : glisse un nom pour échanger deux élèves.",
+    "Les exclusions de MJPC que les binômes proposés respectent.",
+    "La tablette # : ses deux moitiés, à gauche et à droite.",
+    "«élève» : tablette #, moitié de gauche ; glisse son nom sur un autre pour échanger leurs places.",
+    "«élève» : tablette #, moitié de droite ; glisse son nom sur un autre pour échanger leurs places.",
+    "La tablette # : ses deux moitiés, à gauche et à droite, avec un seul élève.",
+    "Un seul élève sur cette tablette : il répond à chaque tour.",
+    "Cette moitié est libre : glisse un nom dessus pour y asseoir l'élève.",
+    "Les séances déjà faites par cette classe, la plus récente en tête.",
+    "La démo faite avec la classe : rien n'y compte, elle ne laisse que cette ligne.",
+    "Cette séance est le « QCM précédent » : son classement sert à former les binômes.",
+    "Rouvre la séance du «date», là où elle s'était terminée, après une confirmation. Ses copies rendues sont masquées jusqu'au prochain « Rendre les copies ».",
+    "Ouvre les résultats de la séance du «date» : les notes d'après la feuille, les compétences, les feuilles à lire.",
+    "Ferme cette fenêtre sans rien changer (Échap).",
+    "Le mode d'emploi de la console, section par section.",
+    "Une section du mode d'emploi : comment marche cette partie de la séance.",
+    "Le mode d'emploi : comment marche cette partie de la séance.",
+    "Ferme le mode d'emploi.",
+    "Choisis la classe et l'évaluation : la durée se compte tout de suite, et les binômes sont proposés. « 🚀 Lancer la séance » ouvre l'appel.",
+    "Les classes de la console MJPC.",
+    "Seules les évaluations prêtes à lancer sont proposées ; la démo est toujours en tête.",
+    "Sur tablettes : deux élèves par tablette, le déroulé complet. Sur papier : chacun répond seul sur sa feuille, avec les énoncés imprimés ; le soir, tu remplis la grille ; la correction se fait à l'heure suivante, sur les tablettes.",
+    "Installation et consignes # min ; questions # min # s (pour chacune : la réflexion, puis deux tours de # s de décompte, de réponse et de # s où l'élève dit si sa feuille dit la même chose que son clic, puis # s) ; estimation et seconde attestation # min ; correction # min (# min par question) ; co-évaluation et bilan # min.",
+    "D'abord les exclusions de MJPC : deux élèves exclus ne sont jamais ensemble. Puis la règle du QCM : le classement de la note du QCM précédent, puis #-#, #-#… Aucun élève ne voit rien des exclusions. Glisse un nom sur un autre pour échanger deux élèves, ou sur une moitié vide pour l'y déplacer, jusqu'au bout de l'heure.",
+    "Les séances passées de la classe : chacune ouvre ses résultats. Celle qui sert de « QCM précédent » aux binômes est marquée. La démo ne laisse qu'une ligne.",
+    "Rien ne compte : ni note, ni compétence ; elle ne sert jamais aux binômes."
+   ],
+   "texteManquant": [
+    "📝 Évaluations",
+    "🎯 Pilotage classe",
+    "🎯 Lancer une nouvelle séancei",
+    "Classei",
+    "# ESSAI (# élèves)",
+    "Évaluationi",
+    "🎓 Démo — apprendre le déroulé (# questions)",
+    "Évaluation d'essai — # questions",
+    "Modei",
+    "📱 Sur tablettes",
+    "📄 Séance sur papier",
+    "⏱️ Durée estimée : # mini",
+    "✅ Ça tient dans les # minutes utiles.",
+    "🚀 Lancer la séance",
+    "📱 Binômes proposés — d'après les exclusions, puis le QCM précédenti",
+    "📱 Tablette #",
+    "⠿«élève»",
+    "seul",
+    "moitié libre",
+    "📚 Séances précédentes — # ESSAIi",
+    "🔓 Rouvrir",
+    "📊 Résultats",
+    "✕",
+    "La séance, en classe",
+    "Deux élèves par tablette, une moitié chacun. Tu lances depuis « 🎯 Pilotage classe » : la classe, l'évaluation, la durée comptée, les binômes proposés (d'abord les exclusions de MJPC, puis le classement du QCM précédent) ; l'appel ; l'heure de fin. Chaque élève s'identifie avec son code, coche son attestation ligne par ligne.",
+    "Une question",
+    "Réflexion : l'énoncé sans les choix, chacun écrit sa réponse en entier sur sa feuille. Puis « POSE TON STYLO » : au #er tour, l'un répond pendant que l'autre, voilé, lui laisse la tablette ; au #e tour, l'inverse, choix mélangés. À la fin de son temps, chacun dit si sa feuille dit la même chose que son clic (# s). On alterne qui commence. Les temps se tapent en direct, avec « +# », « +# », « +# » ; la fin prévue suit. « ❌ Écarter » retire une question pas encore posée, « ⚠️ Annuler » une question déjà posée.",
+    "La correction",
+    "Après l'estimation et la seconde attestation, chaque question, de la plus ratée à la mieux réussie : chacun lit la feuille de son voisin et clique ce qu'elle dit, avant la révélation (« 🔒 Révéler » attend tous les présents). Tu commentes après la révélation, jamais avant. Puis la co-évaluation : chacun dit s'il pense que son voisin a bien lu sa feuille ; un désaccord t'alerte aussitôt.",
+    "La note",
+    "La note, c'est la feuille. Une question vaut au plus # point : en tout ou rien, # ou # ; en partiel, une part du point par bonne case, autant de retiré par mauvaise, sans descendre sous #. Une fois par évaluation, une question dont la feuille est fausse et la tablette entièrement juste compte comme juste : « Trouvée au dernier moment ». « Ma feuille ne dit aucun de ces choix » vaut #. La note est provisoire jusqu'à ce que tu rendes les copies.",
+    "Le soir",
+    "Données → Résultats : les notes, les compétences, les feuilles à lire (lecture contestée, « aucun de ces choix », « Non » au clic). « Que dit la feuille ? » corrige une question ou fixe une note. Le bilan général de chaque élève est pré-rempli : modifie-le, valide-le. Puis « rendre les copies », et le PDF « notes et compétences » pour École Directe.",
+    "Préparer une évaluation",
+    "Dans l'éditeur, chaque champ s'édite directement : coche les bonnes réponses ; la difficulté et les deux temps se règlent question par question. Une question « 📏 longueur assumée » dépasse la demi-tablette : sa moitié défilera seule, la page ne bouge pas.",
+    "La démo",
+    "La démo : rien ne compte. Tu la joues avec la classe, sur les tablettes, comme une vraie : l'identification avec les vrais codes, l'appel, les binômes, les attestations, les questions, la correction, la co-évaluation. Pas de note, pas de compétence, pas de point d'autonomie, rien vers MJPC ; jamais dans « Mes évaluations », ni dans tes Résultats, ni dans le PDF ; jamais « le QCM précédent ». La séance s'efface à « Terminer » ; il reste une ligne dans les séances précédentes.",
+    "Le point d'autonomie",
+    "Chaque élève commence avec son point : « Travailler seul et de façon responsable » et « S'investir dans son travail, en classe et à la maison », côté élève (les intitulés officiels dans le PDF). « ⛔ Retirer le point d'autonomie », en direct ou le soir, met les deux compétences en Maîtrise insuffisante ; la note ne bouge pas. « ↩️ Rendre » le défait.",
+    "✓ J'ai compris"
+   ],
+   "ecarts": 90,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-finir-autre-heure": {
+   "id": "c-finir-autre-heure",
+   "appareil": "console",
+   "gestesManquants": [
+    "⏭️ Tour suivant",
+    "⏸️ Pause",
+    "🔄 Relancer chrono"
+   ],
+   "gestesEnTrop": [
+    "▶️ Lancer Q#",
+    "🔓 Rouvrir pour tous",
+    "⚠️ Annuler",
+    "↩️ Remettre"
+   ],
+   "fermesDifferents": [
+    "🔓 Rouvrir pour un élève (fermé dans la maquette)",
+    "+# (ouvert dans la maquette)"
+   ],
+   "bullesManquantes": [
+    "La question en cours n'est pas close : « 🔓 Rouvrir pour un élève » s'ouvre une fois close, pour ceux qui n'ont pas répondu.",
+    "Met la séance en pause, avec son état exact, pour la reprendre à une heure suivante : « ▶️ Reprendre » dans « 🎯 Pilotage classe ». Demande une confirmation. Les tablettes oublient leurs élèves à la fin de l'heure, comme d'habitude. Tant qu'elle n'est pas terminée, cette séance ne compte pas comme « QCM précédent » pour les binômes. À l'heure suivante, « 🎯 Pilotage classe » propose de la reprendre : l'appel, les mêmes binômes, puis le tour en cours recommence au début, voile compris.",
+    "La phase de la séance en ce moment : ✋ Phase RÉPONSE — #er tour (moitiés de gauche).",
+    "Le temps de réponse de chaque tour de la question en cours.",
+    "Le temps de réponse d'un tour : # secondes, décompté en ce moment pour les moitiés qui répondent.",
+    "Ce temps se décompte en ce moment.",
+    "Tape le temps de réponse de cette question, en secondes : il vaut pour chaque tour et pour la lecture à la correction. La fin prévue suit.",
+    "Ajoute # s au temps de réponse de cette question, tout de suite au chrono en cours. La fin prévue suit.",
+    "La difficulté de la question : Facile.",
+    "Coupe le #er tour : les premiers sont figés et disent si leur feuille dit la même chose que leur clic, puis le #e tour commence.",
+    "Fige tous les chronos immédiatement (utile en cas d'interruption en classe). Les élèves voient un bandeau de pause.",
+    "Remet le chrono à zéro pour la phase en cours (durée pleine ré-injectée).",
+    "«élève» attend son tour : sa moitié est voilée pendant que son voisin répond.",
+    "«élève» répond en ce moment, pendant son tour.",
+    "Sur les tuiles, « voilé » veut dire : attend son tour.",
+    "Sur les tuiles, cette couleur veut dire : répond (cadre vert).",
+    "Question en cours — «date» justes pour le moment",
+    "De quoi parle cette fenêtre : # ESSAI — Évaluation d'essai — # questions · question #, #er tour.",
+    "Met la séance en pause, telle qu'elle est, jusqu'à une heure suivante. Les tablettes oublient leurs élèves à la fin de l'heure, comme d'habitude. Tant qu'elle n'est pas terminée, cette séance ne compte pas comme « QCM précédent » pour les binômes. À l'heure suivante, « 🎯 Pilotage classe » propose de la reprendre : l'appel, les mêmes binômes, puis le tour en cours recommence au début, voile compris."
+   ],
+   "texteManquant": [
+    "🎯 Évaluation d'essai — # questions — # ESSAI",
+    "✋ Phase RÉPONSE — #er tourmoitiés de gauche",
+    "#er tour · EN COURS",
+    "QUESTION # / # — # BONNE RÉPONSE",
+    "✓ Bonne réponse : Rome",
+    "Difficulté : Facile",
+    "⏭️ Tour suivant",
+    "⏸️ Pause",
+    "🔄 Relancer chrono",
+    "Difficulté Standard · réflexion # s · réponse # s par tour · # bonnes réponses",
+    "🙈 attend son tour",
+    "✋ répond…",
+    "voilé : attend son tour",
+    "répond (cadre vert)",
+    "# ESSAI — Évaluation d'essai — # questions · question #, #er tour",
+    "À l'heure suivante, « 🎯 Pilotage classe » propose « ▶️ Reprendre la séance du «date» — question #, #er tour »."
+   ],
+   "ecarts": 44,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-reprendre": {
+   "id": "c-reprendre",
+   "appareil": "console",
+   "gestesManquants": [
+    "Évaluation d'essai — # questions",
+    "🔓 Rouvrir",
+    "📊 Résultats"
+   ],
+   "gestesEnTrop": [
+    "Évaluation d'essai"
+   ],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "La séance de « Évaluation d'essai — # questions » ; ses boutons ouvrent ses résultats.",
+    "Les exclusions de MJPC que les binômes proposés respectent.",
+    "La séance de « #e Chapitre # — Poésie et peinture au XIXème siècle · Interro de cours (séance #) » ; ses boutons ouvrent ses résultats.",
+    "La date, l'état et les présents de cette séance : «date» «heure» · ✅ terminée · # présents, # absents · copies rendues le «date».",
+    "Rouvre la séance du «date», là où elle s'était terminée, après une confirmation. Ses copies rendues sont masquées jusqu'au prochain « Rendre les copies ».",
+    "Ouvre les résultats de la séance du «date» : les notes d'après la feuille, les compétences, les feuilles à lire.",
+    "La séance de « QCM — Le jambon-beurre » ; ses boutons ouvrent ses résultats.",
+    "La date, l'état et les présents de cette séance : «date» «heure» · ✅ terminée · # présents · copies rendues le «date»."
+   ],
+   "texteManquant": [
+    "Évaluation d'essai — # questions",
+    "🚫 # exclusions de MJPC respectées : le classement mettait «élève» avec «élève», et «élève» avec «élève» ; chacun a été échangé avec le binôme le plus proche.",
+    "#e Chapitre # — Poésie et peinture au XIXème siècle · Interro de cours (séance #)",
+    "«date» «heure» · ✅ terminée · # présents, # absents · copies rendues le «date»",
+    "↳ c'est le QCM précédent : il sert aux binômes",
+    "🔓 Rouvrir",
+    "📊 Résultats",
+    "QCM — Le jambon-beurre",
+    "«date» «heure» · ✅ terminée · # présents · copies rendues le «date»"
+   ],
+   "ecarts": 21,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-sessions": {
+   "id": "c-sessions",
+   "appareil": "console",
+   "gestesManquants": [
+    "⏭️ Tour suivant"
+   ],
+   "gestesEnTrop": [
+    "✋ Autoriser la réponse"
+   ],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "La phase de la séance en ce moment : ✋ Phase RÉPONSE — #er tour (moitiés de gauche).",
+    "Le temps de réflexion de la question : # secondes.",
+    "Ce temps vaut pour cette question seulement.",
+    "La réflexion de cette question est finie : son temps ne se change plus.",
+    "Le temps de réponse d'un tour : # secondes, décompté en ce moment pour les moitiés qui répondent.",
+    "Ajoute # s au temps de réponse de cette question, tout de suite au chrono en cours. La fin prévue suit.",
+    "Coupe le #er tour : les premiers sont figés et disent si leur feuille dit la même chose que leur clic, puis le #e tour commence.",
+    "«élève» a la bonne réponse à cette question, pour le moment.",
+    "«élève» attend son tour : sa moitié est voilée pendant que son voisin répond.",
+    "«élève» répond en ce moment, pendant son tour.",
+    "Sur les tuiles, cette couleur veut dire : juste.",
+    "Sur les tuiles, cette couleur veut dire : toutes les bonnes + une en trop.",
+    "Sur les tuiles, cette couleur veut dire : une bonne sur deux.",
+    "Sur les tuiles, cette couleur veut dire : faux.",
+    "Sur les tuiles, « voilé » veut dire : attend son tour.",
+    "Sur les tuiles, cette couleur veut dire : répond (cadre vert).",
+    "La classe de cette séance en cours : # ESSAI.",
+    "Où en est cette séance : Phase : réponse · Q # · #er tour · fin de l'heure «heure»."
+   ],
+   "texteManquant": [
+    "🎯 Évaluation d'essai — # questions — # ESSAI",
+    "✋ Phase RÉPONSE — #er tourmoitiés de gauche",
+    "pour cette question",
+    "#er tour · EN COURS",
+    "⏭️ Tour suivant",
+    "juste",
+    "🙈 attend son tour",
+    "✋ répond…",
+    "toutes les bonnes + une en trop",
+    "une bonne sur deux",
+    "faux",
+    "voilé : attend son tour",
+    "répond (cadre vert)",
+    "# ESSAI",
+    "Phase : réponse · Q # · #er tour · fin de l'heure «heure»"
+   ],
+   "ecarts": 35,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-interrompue": {
+   "id": "c-interrompue",
+   "appareil": "console",
+   "gestesManquants": [
+    "Évaluation d'essai — # questions",
+    "🔓 Rouvrir",
+    "📊 Résultats",
+    "🛑 Terminer définitivement",
+    "⏸️ Finir à une autre heure",
+    "🔄 Reprendre la séance"
+   ],
+   "gestesEnTrop": [
+    "Évaluation d'essai",
+    "✓«élève»",
+    "🚫«élève»",
+    "Tout le monde présent",
+    "Annuler"
+   ],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Ouvre l'appel : tu coches les absents, l'heure de fin se règle, puis la séance s'ouvre et les tablettes passent à l'attestation. Les binômes restent ceux de la grille.",
+    "Les exclusions de MJPC que les binômes proposés respectent.",
+    "La séance de « #e Chapitre # — Poésie et peinture au XIXème siècle · Interro de cours (séance #) » ; ses boutons ouvrent ses résultats.",
+    "La date, l'état et les présents de cette séance : «date» «heure» · ✅ terminée · # présents, # absents · copies rendues le «date».",
+    "Cette séance est le « QCM précédent » : son classement sert à former les binômes.",
+    "Rouvre la séance du «date», là où elle s'était terminée, après une confirmation. Ses copies rendues sont masquées jusqu'au prochain « Rendre les copies ».",
+    "Ouvre les résultats de la séance du «date» : les notes d'après la feuille, les compétences, les feuilles à lire.",
+    "La séance de « QCM — Le jambon-beurre » ; ses boutons ouvrent ses résultats.",
+    "La date, l'état et les présents de cette séance : «date» «heure» · ✅ terminée · # présents · copies rendues le «date».",
+    "La console a perdu la séance en cours : elle se reprend, se met en pause ou se termine.",
+    "De quoi parle cette fenêtre : # ESSAI — Évaluation d'essai — # questions.",
+    "Ce que ferait « 🔄 Reprendre la séance », à lire avant de choisir : « 📅 Démarrée le «date» à # ».",
+    "Ce que ferait « 🔄 Reprendre la séance », à lire avant de choisir : « 🔌 Dernière déconnexion ».",
+    "Ce que ferait « 🔄 Reprendre la séance », à lire avant de choisir : « 📝 État ».",
+    "Clôt la séance, après une confirmation : l'archive s'écrit avec les notes telles qu'elles sont. Les questions pas encore corrigées n'ont pas de lecture : tu fixes ces notes d'après les feuilles, dans Données → Résultats.",
+    "Met la séance en pause, telle qu'elle est, pour la reprendre à une heure suivante. La séance garde son état exact et se reprend à une heure suivante, depuis « 🎯 Pilotage classe ».",
+    "Reprend tout de suite : le tour en cours recommence au début, voile compris. Le tour en cours recommence au début, voile compris. Une réponse déjà donnée reste.",
+    "La console a perdu la séance en cours (page fermée, panne). Elle se reprend là où elle était, se met en pause pour une autre heure, ou se termine."
+   ],
+   "texteManquant": [
+    "Évaluation d'essai — # questions",
+    "🚫 # exclusions de MJPC respectées : le classement mettait «élève» avec «élève», et «élève» avec «élève» ; chacun a été échangé avec le binôme le plus proche.",
+    "#e Chapitre # — Poésie et peinture au XIXème siècle · Interro de cours (séance #)",
+    "«date» «heure» · ✅ terminée · # présents, # absents · copies rendues le «date»",
+    "↳ c'est le QCM précédent : il sert aux binômes",
+    "🔓 Rouvrir",
+    "📊 Résultats",
+    "QCM — Le jambon-beurre",
+    "«date» «heure» · ✅ terminée · # présents · copies rendues le «date»",
+    "⚠️ Séance interrompue détectée",
+    "# ESSAI — Évaluation d'essai — # questions",
+    "📅 Démarrée le «date» à «heure»",
+    "🔌 Dernière déconnexion : «date» à «heure»",
+    "📝 État : question #, #e tour (moitiés de gauche) ; # réponses enregistrées",
+    "🛑 Terminer définitivement",
+    "⏸️ Finir à une autre heure",
+    "🔄 Reprendre la séance"
+   ],
+   "ecarts": 46,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "t-estim": {
+   "id": "t-estim",
+   "appareil": "tablette",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [
+    "Ton estimation est enregistrée",
+    "La correction s'ouvrira dans un instant."
+   ],
+   "ecarts": 2,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-estim": {
+   "id": "c-estim",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Termine maintenant : l'archive s'écrit avec les notes telles qu'elles sont ; les tablettes oublient leurs élèves et reviennent à « Combien êtes-vous ? »."
+   ],
+   "texteManquant": [
+    "Pas encore : «élève», «élève», «élève»."
+   ],
+   "ecarts": 2,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "x610-5-attestation-2": {
+   "id": "x610-5-attestation-2",
+   "appareil": "tablette",
+   "gestesManquants": [
+    "✓"
+   ],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [
+    "✓",
+    "Pour chaque question, «élève» clique ce que dit ta feuille. Toi, tu cliques ce que dit la feuille de «élève»."
+   ],
+   "ecarts": 3,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-attest2": {
+   "id": "c-attest2",
+   "appareil": "console",
+   "gestesManquants": [
+    "🔒 ▶️ Commencer la correction"
+   ],
+   "gestesEnTrop": [
+    "← Question précédente",
+    "🔒 Révéler",
+    "Question suivante →",
+    "«élève»"
+   ],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Termine maintenant : l'archive s'écrit avec les notes telles qu'elles sont ; les tablettes oublient leurs élèves et reviennent à « Combien êtes-vous ? ».",
+    "La phase de la séance en ce moment : ✍️ Seconde attestation — # / # prêts.",
+    "S'ouvre quand les # présents ont coché toutes les lignes de la seconde attestation. Il en manque #.",
+    "Les élèves qui n'ont pas encore fini : «élève», «élève», «élève», «élève», «élève».",
+    "La seconde attestation : chaque élève coche ses lignes avant la correction.",
+    "Où en est la classe : # / # prêts.",
+    "«élève» : tablette #, moitié de gauche.",
+    "«élève» a coché toutes les lignes de l'attestation, à «heure».",
+    "«élève» : tablette #, moitié de droite.",
+    "«élève» a coché # lignes de l'attestation sur #.",
+    "Sur les tuiles, « ✓ prêt » veut dire : les # lignes cochées.",
+    "Sur les tuiles, « attestation en cours » veut dire : lignes cochées sur #.",
+    "Avant la correction, chaque moitié montre la seconde attestation, une coche par ligne. La correction commence quand tous les présents l'ont cochée en entier, comme au début.",
+    "Où en est chacun : les lignes cochées sur #, et l'heure de la dernière coche, gardée comme au début."
+   ],
+   "texteManquant": [
+    "✍️ Seconde attestation — # / # prêts",
+    "🔒 ▶️ Commencer la correction",
+    "La correction commence quand les # présents ont coché la seconde attestation. Il en manque # :",
+    "«élève» · «élève» · «élève» · «élève» · «élève»",
+    "La correction commence par Q#, la plus ratée sur les tablettes (# / # justes).",
+    "✍️ La seconde attestationi",
+    "# / # prêts",
+    "✓ prêt · «heure»",
+    "attestation «date»",
+    "✓ prêt : les # lignes cochées",
+    "attestation en cours : lignes cochées sur #"
+   ],
+   "ecarts": 30,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "t-corr-q2-lecture": {
+   "id": "t-corr-q2-lecture",
+   "appareil": "tablette",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [
+    "✅ Réponse enregistrée — tu peux encore la changer"
+   ],
+   "ecarts": 1,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-corr-q2-avant": {
+   "id": "c-corr-q2-avant",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Termine maintenant : l'archive s'écrit avec les notes telles qu'elles sont ; les tablettes oublient leurs élèves et reviennent à « Combien êtes-vous ? ».",
+    "Les élèves qui n'ont pas encore fini : «élève», «élève», «élève», «élève», «élève», «élève».",
+    "La feuille d'«élève» est lue par son voisin.",
+    "La feuille de «élève» est lue par son voisin."
+   ],
+   "texteManquant": [
+    "«élève» · «élève» · «élève» · «élève» · «élève» · CHEVALLIER Théoi",
+    "📄 feuille lue"
+   ],
+   "ecarts": 6,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "p-corr-avant": {
+   "id": "p-corr-avant",
+   "appareil": "telephone",
+   "gestesManquants": [
+    "«élève»📄"
+   ],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [
+    "Feuille pas encore lue : «élève» · «élève» · «élève» · «élève» · «élève» · CHEVALLIER Théoi",
+    "📄"
+   ],
+   "ecarts": 3,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "b-recopie": {
+   "id": "b-recopie",
+   "appareil": "tableau",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-corr-q2-lu": {
+   "id": "c-corr-q2-lu",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Termine maintenant : l'archive s'écrit avec les notes telles qu'elles sont ; les tablettes oublient leurs élèves et reviennent à « Combien êtes-vous ? »."
+   ],
+   "texteManquant": [],
+   "ecarts": 1,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-corr-q2-apres": {
+   "id": "c-corr-q2-apres",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Termine maintenant : l'archive s'écrit avec les notes telles qu'elles sont ; les tablettes oublient leurs élèves et reviennent à « Combien êtes-vous ? »."
+   ],
+   "texteManquant": [
+    "«élève» — Q# : a dit que sa feuille disait son clic, Madrid ; «élève» y a lu Madrid et Genève"
+   ],
+   "ecarts": 2,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "p-corr-apres": {
+   "id": "p-corr-apres",
+   "appareil": "telephone",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [
+    "📌 À lire ce soir (#) : «élève» — Q# : a dit que sa feuille disait son clic, Madrid ; «élève» y a lu Madrid et Genève"
+   ],
+   "ecarts": 1,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "b-correction": {
+   "id": "b-correction",
+   "appareil": "tableau",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "t-corr-q2-apres": {
+   "id": "t-corr-q2-apres",
+   "appareil": "tablette",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "t-corr-q3-lecture": {
+   "id": "t-corr-q3-lecture",
+   "appareil": "tablette",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [
+    "✅ Réponse enregistrée — tu peux encore la changer"
+   ],
+   "ecarts": 1,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-corr-q3-apres": {
+   "id": "c-corr-q3-apres",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Termine maintenant : l'archive s'écrit avec les notes telles qu'elles sont ; les tablettes oublient leurs élèves et reviennent à « Combien êtes-vous ? »."
+   ],
+   "texteManquant": [
+    "«élève» — Q# : a dit que sa feuille disait son clic, Madrid ; «élève» y a lu Madrid et Genève"
+   ],
+   "ecarts": 2,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "t-corr-q3-apres": {
+   "id": "t-corr-q3-apres",
+   "appareil": "tablette",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "t-corr-q1-lecture": {
+   "id": "t-corr-q1-lecture",
+   "appareil": "tablette",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [
+    "✅ Réponse enregistrée — tu peux encore la changer"
+   ],
+   "ecarts": 1,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "t-corr-q1-apres": {
+   "id": "t-corr-q1-apres",
+   "appareil": "tablette",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-corr-q1-apres": {
+   "id": "c-corr-q1-apres",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Termine maintenant : l'archive s'écrit avec les notes telles qu'elles sont ; les tablettes oublient leurs élèves et reviennent à « Combien êtes-vous ? »."
+   ],
+   "texteManquant": [
+    "«élève» — Q# : a dit que sa feuille disait son clic, Madrid ; «élève» y a lu Madrid et Genève"
+   ],
+   "ecarts": 2,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-autonomie": {
+   "id": "c-autonomie",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Termine maintenant : l'archive s'écrit avec les notes telles qu'elles sont ; les tablettes oublient leurs élèves et reviennent à « Combien êtes-vous ? ».",
+    "Demande une confirmation, puis retire son point d'autonomie : ses deux compétences d'autonomie passent en Maîtrise insuffisante. Le retirer met ses deux compétences d'autonomie en Maîtrise insuffisante ; sa note ne bouge pas, puisque la note, c'est la feuille. Il ne le voit pas en direct : il le lit dans son bilan et dans « Mes évaluations »."
+   ],
+   "texteManquant": [
+    "«élève» — Q# : a dit que sa feuille disait son clic, Madrid ; «élève» y a lu Madrid et Genève"
+   ],
+   "ecarts": 3,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-autonomie-garde": {
+   "id": "c-autonomie-garde",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Termine maintenant : l'archive s'écrit avec les notes telles qu'elles sont ; les tablettes oublient leurs élèves et reviennent à « Combien êtes-vous ? ».",
+    "Retire le point d'autonomie, tout de suite. « ↩️ Rendre » le défait. « ↩️ Rendre » le défait, en direct ou le soir, dans sa fiche."
+   ],
+   "texteManquant": [
+    "«élève» — Q# : a dit que sa feuille disait son clic, Madrid ; «élève» y a lu Madrid et Genève"
+   ],
+   "ecarts": 3,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-autonomie-retiree": {
+   "id": "c-autonomie-retiree",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Termine maintenant : l'archive s'écrit avec les notes telles qu'elles sont ; les tablettes oublient leurs élèves et reviennent à « Combien êtes-vous ? »."
+   ],
+   "texteManquant": [
+    "«élève» — Q# : a dit que sa feuille disait son clic, Madrid ; «élève» y a lu Madrid et Genève",
+    "⛔ Point d'autonomie retiré le «date» à «heure». Ses deux compétences d'autonomie sont en Maîtrise insuffisante ; sa note ne bouge pas."
+   ],
+   "ecarts": 3,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "p-autonomie": {
+   "id": "p-autonomie",
+   "appareil": "telephone",
+   "gestesManquants": [],
+   "gestesEnTrop": [
+    "«élève»⛔✗",
+    "↩️ Rendre"
+   ],
+   "fermesDifferents": [
+    "⛔ Retirer le point d'autonomie (ouvert dans la maquette)"
+   ],
+   "bullesManquantes": [
+    "Demande une confirmation, puis retire son point d'autonomie : ses deux compétences d'autonomie passent en Maîtrise insuffisante."
+   ],
+   "texteManquant": [
+    "📌 À lire ce soir (#) : «élève» — Q# : a dit que sa feuille disait son clic, Madrid ; «élève» y a lu Madrid et Genève",
+    "État actuel : Q# fausse d'après sa feuille · point d'autonomie gardé."
+   ],
+   "ecarts": 6,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "t-coeval": {
+   "id": "t-coeval",
+   "appareil": "tablette",
+   "gestesManquants": [
+    "Question # · Quelle est la capitale de l'Italie ?",
+    "Question # · Lesquelles sont des capitales européennes ?",
+    "Question # · Combien de pattes a une araignée ?",
+    "↩️ Changer"
+   ],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [
+    "❌ «élève», tu penses que «élève» a mal lu ta feuille pour une question : c'est laquelle ?",
+    "Question # · Quelle est la capitale de l'Italie ?",
+    "Question # · Lesquelles sont des capitales européennes ?",
+    "Question # · Combien de pattes a une araignée ?",
+    "↩️ Changer"
+   ],
+   "ecarts": 9,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "t-coeval-ecrit": {
+   "id": "t-coeval-ecrit",
+   "appareil": "tablette",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-coeval-attente": {
+   "id": "c-coeval-attente",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Applique ce que «élève» dit avoir écrit, Rome : sa question # passe à # point, et sa note se recalcule. L'alerte se ferme ; « ↩️ Défaire » la rouvre.",
+    "Garde la lecture de «élève», Venise : rien ne change. L'alerte se ferme."
+   ],
+   "texteManquant": [
+    "«élève» — Q# : a dit que sa feuille disait son clic, Madrid ; «élève» y a lu Madrid et Genève"
+   ],
+   "ecarts": 3,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-coeval-feuille": {
+   "id": "c-coeval-feuille",
+   "appareil": "console",
+   "gestesManquants": [
+    "Milan",
+    "Naples",
+    "Romebonne réponse · «élève»",
+    "Veniselu par «élève»",
+    "Sa feuille ne dit aucun de ces choix"
+   ],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Applique ce que «élève» dit avoir écrit, Rome : sa question # passe à # point, et sa note se recalcule. L'alerte se ferme ; « ↩️ Défaire » la rouvre.",
+    "Garde la lecture de «élève», Venise : rien ne change. L'alerte se ferme.",
+    "Coche-le si la feuille de «élève» dit « Milan ».",
+    "Coche-le si la feuille de «élève» dit « Naples ».",
+    "Coche-le si la feuille de «élève» dit « Rome ».",
+    "Coche-le si la feuille de «élève» dit « Venise ».",
+    "Coche-le si la feuille de «élève» ne dit aucun de ces choix.",
+    "Fermé tant que rien n'est coché : coche d'abord ce que dit la feuille de «élève»."
+   ],
+   "texteManquant": [
+    "«élève» — Q# : a dit que sa feuille disait son clic, Madrid ; «élève» y a lu Madrid et Genève",
+    "Sa feuille ne dit aucun de ces choix"
+   ],
+   "ecarts": 15,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-autonomie-michel": {
+   "id": "c-autonomie-michel",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Applique ce que «élève» dit avoir écrit, Rome : sa question # passe à # point, et sa note se recalcule. L'alerte se ferme ; « ↩️ Défaire » la rouvre.",
+    "Garde la lecture de «élève», Venise : rien ne change. L'alerte se ferme.",
+    "Retire le point d'autonomie, tout de suite. « ↩️ Rendre » le défait. « ↩️ Rendre » le défait, en direct ou le soir, dans sa fiche."
+   ],
+   "texteManquant": [
+    "«élève» — Q# : a dit que sa feuille disait son clic, Madrid ; «élève» y a lu Madrid et Genève"
+   ],
+   "ecarts": 4,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-autonomie-julien": {
+   "id": "c-autonomie-julien",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Applique ce que «élève» dit avoir écrit, Rome : sa question # passe à # point, et sa note se recalcule. L'alerte se ferme ; « ↩️ Défaire » la rouvre.",
+    "Garde la lecture de «élève», Venise : rien ne change. L'alerte se ferme.",
+    "Retire le point d'autonomie, tout de suite. « ↩️ Rendre » le défait. « ↩️ Rendre » le défait, en direct ou le soir, dans sa fiche."
+   ],
+   "texteManquant": [
+    "«élève» — Q# : a dit que sa feuille disait son clic, Madrid ; «élève» y a lu Madrid et Genève"
+   ],
+   "ecarts": 4,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-autonomie-deux": {
+   "id": "c-autonomie-deux",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Applique ce que «élève» dit avoir écrit, Rome : sa question # passe à # point, et sa note se recalcule. L'alerte se ferme ; « ↩️ Défaire » la rouvre.",
+    "Garde la lecture de «élève», Venise : rien ne change. L'alerte se ferme.",
+    "Retire le point d'autonomie, tout de suite. « ↩️ Rendre » le défait. « ↩️ Rendre » le défait, en direct ou le soir, dans sa fiche."
+   ],
+   "texteManquant": [
+    "«élève» — Q# : a dit que sa feuille disait son clic, Madrid ; «élève» y a lu Madrid et Genève"
+   ],
+   "ecarts": 4,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-coeval-tranche": {
+   "id": "c-coeval-tranche",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [
+    "La question # de «élève» passe à # point, « Corrigé d'après ta feuille » dans son bilan : sa note provisoire passe à # / #.",
+    "«élève» — Q# : a dit que sa feuille disait son clic, Madrid ; «élève» y a lu Madrid et Genève"
+   ],
+   "ecarts": 2,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "t-bilan": {
+   "id": "t-bilan",
+   "appareil": "tablette",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [
+    "Question # · justeCorrigé d'après ta feuille."
+   ],
+   "ecarts": 1,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "t-bilan-imprime": {
+   "id": "t-bilan-imprime",
+   "appareil": "eleve",
+   "gestesManquants": [],
+   "gestesEnTrop": [
+    "📊 Mes évaluations",
+    "📄 Imprimer / Exporter mon bilan"
+   ],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [
+    "Évaluation d'essai — # questions · «date»"
+   ],
+   "ecarts": 3,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-bilan": {
+   "id": "c-bilan",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "«élève» : point d'autonomie retiré le «date» à «heure» ; ses deux compétences d'autonomie sont en Maîtrise insuffisante."
+   ],
+   "texteManquant": [
+    "«élève» — Q# : a dit que sa feuille disait son clic, Madrid ; «élève» y a lu Madrid et Genève",
+    "⛔ retiré le «date» à «heure»"
+   ],
+   "ecarts": 3,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "t-fin": {
+   "id": "t-fin",
+   "appareil": "tablette",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-papier-lancer": {
+   "id": "c-papier-lancer",
+   "appareil": "console",
+   "gestesManquants": [
+    "📄 Lancer la séance sur papier"
+   ],
+   "gestesEnTrop": [
+    "🚀 Lancer la séance"
+   ],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Ouvre l'appel, puis la séance sur papier : les énoncés à imprimer, et « ⏸️ Feuilles ramassées ».",
+    "Les exclusions de MJPC que les binômes proposés respectent.",
+    "La démo faite avec la classe : rien n'y compte, elle ne laisse que cette ligne.",
+    "Rien ne compte : ni note, ni compétence ; elle ne sert jamais aux binômes."
+   ],
+   "texteManquant": [
+    "📄 Lancer la séance sur papier"
+   ],
+   "ecarts": 7,
+   "proprio": "QCM-3 · SOIR"
+  },
+  "c-seances": {
+   "id": "c-seances",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-3 · SOIR"
+  },
+  "c-resultats": {
+   "id": "c-resultats",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Ouvre la fiche de «élève» : sa feuille lue, sa tablette, ce qu'elle a dit, son point d'autonomie, son bilan général.",
+    "«élève», question # : juste d'après la feuille, corrigé d'après sa feuille.",
+    "Ouvre la fiche d'«élève» : sa feuille lue, sa tablette, ce qu'elle a dit, son point d'autonomie, son bilan général.",
+    "Ce qui est à lire sur la feuille de «élève» : Q# : a dit que sa feuille disait son clic, Madrid ; «élève» y a lu Madrid et Genève."
+   ],
+   "texteManquant": [
+    "🟢 Très bonne maîtrise Q# : a dit que sa feuille disait son clic, Madrid ; «élève» y a lu Madrid et Genève"
+   ],
+   "ecarts": 5,
+   "proprio": "QCM-3 · SOIR"
+  },
+  "c-fiche": {
+   "id": "c-fiche",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-3 · SOIR"
+  },
+  "c-fiche-garde": {
+   "id": "c-fiche-garde",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-3 · SOIR"
+  },
+  "c-fiche-retire": {
+   "id": "c-fiche-retire",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-3 · SOIR"
+  },
+  "c-que-dit-la-feuille": {
+   "id": "c-que-dit-la-feuille",
+   "appareil": "console",
+   "gestesManquants": [
+    "↩️ Rendre",
+    "#bonne réponse",
+    "Sa feuille ne dit aucun de ces choixlu par «élève»"
+   ],
+   "gestesEnTrop": [
+    "⛔ Retirer le point d'autonomie",
+    "#bonne réponse · lu par «élève»",
+    "Sa feuille ne dit aucun de ces choix"
+   ],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Ce que le voisin a lu sur sa feuille, à la correction : Venise.",
+    "Ce que l'élève a cliqué sur la tablette : Venise.",
+    "Ce que le voisin a lu sur sa feuille, à la correction : Madrid, Genève, Berlin.",
+    "Ce que le voisin a lu sur sa feuille, à la correction : aucun de ces choix.",
+    "Le niveau de cette compétence : Maîtrise fragile, d'après ses questions.",
+    "Le niveau de cette compétence : Maîtrise insuffisante, d'après ses questions.",
+    "Le point d'autonomie de l'élève est retiré ; « ↩️ Rendre » à côté le lui rend.",
+    "Rend son point d'autonomie à «élève» : ses deux compétences d'autonomie repassent en Très bonne maîtrise.",
+    "Ce que ferait « Valider », à lire avant de choisir : « «élève» a lu « aucun de ces choix » »."
+   ],
+   "texteManquant": [
+    "👤 «élève» — # / # · # / # · 🟠 Maîtrise fragilei",
+    "corrigée en classe : raison donnée à «élève» (Rome)",
+    "Venise",
+    "⚠️ aucun de ces choix",
+    "aucun de ces choix",
+    "Q# ✓ · Q# ✗ · Q# ∅ → «date»",
+    "🟠 Maîtrise fragile",
+    "🔴 Maîtrise insuffisante",
+    "⛔ Point d'autonomie retiré le «date» à «heure».",
+    "↩️ Rendre",
+    "«élève» a lu « aucun de ces choix ». Clique sur ce que dit sa feuille.",
+    "bonne réponse",
+    "lu par «élève»"
+   ],
+   "ecarts": 28,
+   "proprio": "QCM-3 · SOIR"
+  },
+  "c-seances-lues": {
+   "id": "c-seances-lues",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Il reste des feuilles à lire : « rendre les copies ▸ » paraît quand toutes sont lues. Clic : le tableau de la séance."
+   ],
+   "texteManquant": [],
+   "ecarts": 1,
+   "proprio": "QCM-3 · SOIR"
+  },
+  "c-rendre": {
+   "id": "c-rendre",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Il reste des feuilles à lire : « rendre les copies ▸ » paraît quand toutes sont lues. Clic : le tableau de la séance."
+   ],
+   "texteManquant": [],
+   "ecarts": 1,
+   "proprio": "QCM-3 · SOIR"
+  },
+  "c-copies-rendues": {
+   "id": "c-copies-rendues",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Il reste des feuilles à lire : « rendre les copies ▸ » paraît quand toutes sont lues. Clic : le tableau de la séance."
+   ],
+   "texteManquant": [],
+   "ecarts": 1,
+   "proprio": "QCM-3 · SOIR"
+  },
+  "c-resultats-rendues": {
+   "id": "c-resultats-rendues",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Ouvre la fiche de «élève» : sa feuille lue, sa tablette, ce qu'elle a dit, son point d'autonomie, son bilan général.",
+    "«élève», question # : juste d'après la feuille, corrigé d'après sa feuille.",
+    "Ouvre la fiche d'«élève» : sa feuille lue, sa tablette, ce qu'elle a dit, son point d'autonomie, son bilan général.",
+    "Ce qui est à lire sur la feuille de «élève» : Q# : a dit que sa feuille disait son clic, Madrid ; «élève» y a lu Madrid et Genève · ✔ lue."
+   ],
+   "texteManquant": [
+    "🟢 Très bonne maîtrise Q# : a dit que sa feuille disait son clic, Madrid ; «élève» y a lu Madrid et Genève · ✔ lue"
+   ],
+   "ecarts": 5,
+   "proprio": "QCM-3 · SOIR"
+  },
+  "x632-pdf": {
+   "id": "x632-pdf",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [
+    "📖 Mode d'emploi",
+    "📺 Ouvrir vue tableau",
+    "📱 QR pilotage",
+    "🧪 Mode test",
+    "← Retour",
+    "Pilotage",
+    "Données",
+    "Réglages",
+    "?",
+    "📊 Résultats",
+    "💾 Sauvegarde",
+    "📄 PDF notes et compétences",
+    "📥 Export CSV",
+    "«élève»"
+   ],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "L'aperçu de l'impression du navigateur : « Enregistrer au format PDF » garde le fichier.",
+    "Notes et compétences"
+   ],
+   "texteManquant": [
+    "🖨️ Aperçu avant impression · Destination : Enregistrer au format PDF",
+    "Notes et compétences",
+    "Classe : # ESSAI",
+    "Évaluation : #e- éval # Analyse logique - Construire une phrase complexe",
+    "Chapitre : #e, chapitre # — Poésie et peinture au XIXe siècle",
+    "Séance : «date» · # questions · tout ou rien",
+    "Copies : rendues le «date» — les notes sont définitives",
+    "Note : sur #, arrondie au dixième",
+    "Questions : aucune écartée, aucune annulée",
+    "Pour École Directe. Une ligne par élève, dans l'ordre alphabétique. « Note » : la note sur # du devoir. Chaque colonne de compétence : le niveau de maîtrise de l'élève, en toutes lettres, parmi quatre : Très bonne maîtrise, Maîtrise satisfaisante, Maîtrise fragile, Maîtrise insuffisante. « Commentaire », sur la ligne sous l'élève : son commentaire pour ce devoir, à entrer tel quel dans la zone commentaire ; « — » : pas de commentaire. « Absent » : ni note, ni niveau, ni commentaire. Le cadre « À savoir », sous le tableau, ne s'entre pas.",
+    "Élève Note",
+    "sur # Compétences de l'évaluation Point d'autonomie",
+    "c#-langue-#",
+    "Q# à Q#",
+    "c#-ecrire-#",
+    "tr-personne-#",
+    "Être autonome et responsable",
+    "tr-methodes-#",
+    "S'impliquer dans les activités en classe et dans son travail personnel",
+    "«élève» # Maîtrise satisfaisante",
+    "«date»",
+    "Maîtrise satisfaisante",
+    "Maîtrise insuffisante Maîtrise insuffisante",
+    "Commentaire : Bonne évaluation, avec quelques points isolés à surveiller. À revoir en priorité : dire ce qui peut être un antécédent, dire que faire du « et » entre deux relatives coordonnées et employer un pronom relatif composé. Bravo, tu sais trouver l'antécédent d'un pronom relatif et écrire une phrase DPP + PSR + FPP. Pour cette évaluation, deux compétences ne sont pas atteintes : « Travailler seul et de façon responsable » et « S'investir dans son travail, en classe et à la maison ». Enfin, ton estimation de ton nombre de bonnes réponses était trop haute : tu as un peu surestimé ce que tu avais réussi.",
+    "«élève» # Très bonne maîtrise",
+    "Très bonne maîtrise",
+    "Très bonne maîtrise Très bonne maîtrise",
+    "Commentaire : Très belle évaluation, qui reflète une maîtrise solide. Bravo, tu sais trouver l'architecture d'une phrase complexe et trouver l'antécédent d'un pronom relatif. Même si ta maîtrise est bonne, tu peux encore t'améliorer : écrire une phrase P.I : P.P + PSR. Enfin, ton estimation de ton nombre de bonnes réponses correspond à ton vrai résultat : tu te connais bien !",
+    "«élève» # Maîtrise fragile",
+    "Commentaire : Évaluation fragile. Il faut consolider les bases avant la prochaine évaluation. À revoir en priorité : dire ce qui peut être un antécédent, dire que faire du « et » entre deux relatives coordonnées et employer un pronom relatif composé. Enfin, ton estimation de ton nombre de bonnes réponses était trop haute : tu as un peu surestimé ce que tu avais réussi.",
+    "Maîtrise fragile",
+    "Commentaire : Évaluation fragile. Il faut consolider les bases avant la prochaine évaluation. À revoir en priorité : dire quand la principale se coupe en deux (DPP et FPP), écrire une phrase P.P + PSR # + PSR # et dire ce qui peut être un antécédent. Bravo, tu sais trouver l'antécédent d'un pronom relatif. Enfin, ton estimation de ton nombre de bonnes réponses était trop basse : tu as fait mieux que ce que tu croyais.",
+    "Commentaire : Bonne évaluation, avec quelques points isolés à surveiller. À revoir en priorité : écrire une phrase P.P + PSR # + PSR #, trouver l'antécédent d'un pronom relatif et écrire une phrase DPP + PSR + FPP. Bravo, tu sais employer un pronom relatif composé et dire que faire du « et » entre deux relatives coordonnées. Enfin, ton estimation de ton nombre de bonnes réponses correspond à ton vrai résultat : tu te connais bien !",
+    "Commentaire : Bonne évaluation, avec quelques points isolés à surveiller. À revoir en priorité : dire ce qui peut être un antécédent, employer un pronom relatif composé et trouver l'antécédent d'un pronom relatif. Bravo, tu sais écrire une phrase P.I : P.P + PSR et dire que faire du « et » entre deux relatives coordonnées. Pour cette évaluation, deux compétences ne sont pas atteintes : « Travailler seul et de façon responsable » et « S'investir dans son travail, en classe et à la maison ». Enfin, ton estimation de ton nombre de bonnes réponses était trop haute : tu as un peu surestimé ce que tu avais réussi.",
+    "Commentaire : Très belle évaluation, qui reflète une maîtrise solide. Bravo, tu sais trouver l'architecture d'une phrase complexe et écrire une phrase P.I : P.P + PSR. Enfin, ton estimation de ton nombre de bonnes réponses était trop basse : tu as fait mieux que ce que tu croyais.",
+    "Commentaire : Bonne évaluation, avec quelques points isolés à surveiller. À revoir en priorité : trouver l'antécédent d'un pronom relatif, écrire une phrase P.I : P.P + PSR et trouver l'architecture d'une phrase complexe. Bravo, tu sais écrire une phrase DPP + PSR + FPP et employer un pronom relatif composé. Enfin, ton estimation de ton nombre de bonnes réponses correspond à ton vrai résultat : tu te connais bien !",
+    "Commentaire : Très belle évaluation, qui reflète une maîtrise solide. Bravo, tu sais trouver l'antécédent d'un pronom relatif et écrire une phrase DPP + PSR + FPP. Même si ta maîtrise est bonne, tu peux encore t'améliorer : écrire une phrase P.I : P.P + PSR et trouver l'architecture d'une phrase complexe. Enfin, ton estimation de ton nombre de bonnes réponses correspond à ton vrai résultat : tu te connais bien !",
+    "Commentaire : Évaluation fragile. Il faut consolider les bases avant la prochaine évaluation. À revoir en priorité : écrire une phrase P.P + PSR # + PSR #, dire ce qui peut être un antécédent et dire que faire du « et » entre deux relatives coordonnées. Enfin, ton estimation de ton nombre de bonnes réponses correspond à ton vrai résultat : tu te connais bien !",
+    "Commentaire : Très belle évaluation, qui reflète une maîtrise solide. Bravo, tu sais trouver l'architecture d'une phrase complexe et écrire une phrase P.I : P.P + PSR. Même si ta maîtrise est bonne, tu peux encore t'améliorer : écrire une phrase DPP + PSR + FPP. Enfin, ton estimation de ton nombre de bonnes réponses correspond à ton vrai résultat : tu te connais bien !",
+    "«élève» # Maîtrise insuffisante",
+    "Commentaire : Évaluation difficile. Reprends les notions essentielles point par point. À revoir en priorité : séparer une principale d'une indépendante par le bon signe, dire quand la principale se coupe en deux (DPP et FPP) et dire ce qui peut être un antécédent. Enfin, ton estimation de ton nombre de bonnes réponses était trop haute : tu as un peu surestimé ce que tu avais réussi.",
+    "Commentaire : Très belle évaluation, qui reflète une maîtrise solide. Bravo, tu sais écrire une phrase P.I : P.P + PSR et trouver l'antécédent d'un pronom relatif. Même si ta maîtrise est bonne, tu peux encore t'améliorer : trouver l'architecture d'une phrase complexe. Enfin, ton estimation de ton nombre de bonnes réponses correspond à ton vrai résultat : tu te connais bien !",
+    "Maîtrise insuffisante",
+    "Commentaire : Évaluation fragile. Il faut consolider les bases avant la prochaine évaluation. À revoir en priorité : écrire une phrase P.P + PSR # + PSR #, dire ce qui peut être un antécédent et trouver l'antécédent d'un pronom relatif. Bravo, tu sais dire que faire du « et » entre deux relatives coordonnées.",
+    "Commentaire : Très belle évaluation, qui reflète une maîtrise solide. Bravo, tu sais trouver l'architecture d'une phrase complexe et écrire une phrase DPP + PSR + FPP. Même si ta maîtrise est bonne, tu peux encore t'améliorer : trouver l'antécédent d'un pronom relatif et écrire une phrase P.I : P.P + PSR. Enfin, ton estimation de ton nombre de bonnes réponses était trop basse : tu as fait mieux que ce que tu croyais.",
+    "Commentaire : Évaluation difficile. Reprends les notions essentielles point par point. À revoir en priorité : compter les verbes conjugués d'une phrase complexe, dire quand la principale se coupe en deux (DPP et FPP) et écrire une phrase P.P + PSR # + PSR #. Enfin, ton estimation de ton nombre de bonnes réponses était bien trop haute : tu as nettement surestimé ce que tu avais réussi.",
+    "Commentaire : Bonne évaluation, avec quelques points isolés à surveiller. À revoir en priorité : employer un pronom relatif composé, écrire une phrase P.I : P.P + PSR et trouver l'architecture d'une phrase complexe. Bravo, tu sais trouver l'antécédent d'un pronom relatif et écrire une phrase DPP + PSR + FPP. Enfin, ton estimation de ton nombre de bonnes réponses était trop haute : tu as un peu surestimé ce que tu avais réussi.",
+    "Commentaire : Évaluation fragile. Il faut consolider les bases avant la prochaine évaluation. À revoir en priorité : dire ce qui peut être un antécédent, dire que faire du « et » entre deux relatives coordonnées et employer un pronom relatif composé. Enfin, ton estimation de ton nombre de bonnes réponses correspond à ton vrai résultat : tu te connais bien !",
+    "Commentaire : Très belle évaluation, qui reflète une maîtrise solide. Bravo, tu sais trouver l'architecture d'une phrase complexe et écrire une phrase P.I : P.P + PSR. Enfin, ton estimation de ton nombre de bonnes réponses correspond à ton vrai résultat : tu te connais bien !",
+    "Commentaire : Évaluation fragile. Il faut consolider les bases avant la prochaine évaluation. À revoir en priorité : dire ce qui peut être un antécédent, dire que faire du « et » entre deux relatives coordonnées et employer un pronom relatif composé. Bravo, tu sais trouver l'antécédent d'un pronom relatif. Enfin, ton estimation de ton nombre de bonnes réponses était trop haute : tu as un peu surestimé ce que tu avais réussi.",
+    "Commentaire : Évaluation fragile. Il faut consolider les bases avant la prochaine évaluation. À revoir en priorité : écrire une phrase P.P + PSR # + PSR #, dire ce qui peut être un antécédent et dire que faire du « et » entre deux relatives coordonnées. Enfin, ton estimation de ton nombre de bonnes réponses était trop basse : tu as fait mieux que ce que tu croyais.",
+    "Commentaire : Bonne évaluation, avec quelques points isolés à surveiller. À revoir en priorité : dire que faire du « et » entre deux relatives coordonnées, trouver l'antécédent d'un pronom relatif et écrire une phrase DPP + PSR + FPP. Bravo, tu sais employer un pronom relatif composé. Enfin, ton estimation de ton nombre de bonnes réponses correspond à ton vrai résultat : tu te connais bien !",
+    "«élève» Absent — — — —",
+    "Commentaire : —",
+    "Commentaire : Bonne évaluation, avec quelques points isolés à surveiller. À revoir en priorité : dire que faire du « et » entre deux relatives coordonnées, employer un pronom relatif composé et trouver l'antécédent d'un pronom relatif. Bravo, tu sais écrire une phrase DPP + PSR + FPP. Enfin, ton estimation de ton nombre de bonnes réponses était trop basse : tu as fait mieux que ce que tu croyais.",
+    "Contrôle : # élèves · # notes · # absent · # commentaires.",
+    "À savoir — ne s'entre pas dans École Directe.",
+    "«élève» : parti après la question # ; sa note et ses compétences portent sur les # questions où il était là, et il n'a pas fait son estimation.",
+    "«élève» : absent, pas encore de rattrapage.",
+    "Les compétences",
+    "c#-langue-# — Construire les notions permettant l'analyse et l'élaboration des textes et des discours (questions Q#, Q#, Q#, Q#, Q#, Q#, Q#, Q#, Q#, Q#, Q#).",
+    "c#-ecrire-# — Adopter des stratégies et des procédures d'écriture efficaces (questions Q#, Q#, Q#, Q#, Q#, Q#).",
+    "tr-personne-# — Être autonome et responsable.",
+    "tr-methodes-# — S'impliquer dans les activités en classe et dans son travail personnel.",
+    "Comment le niveau se calcule",
+    "Pour chaque compétence, la part des points de l'élève sur ses questions, ramenée sur # (« «date» » : # points sur # questions) : Très bonne maîtrise de # à # ; Maîtrise satisfaisante de # à moins de # ; Maîtrise fragile de # à moins de # ; Maîtrise insuffisante de # à moins de #. Point d'autonomie : Très bonne maîtrise, ou Maîtrise insuffisante s'il a été retiré.",
+    "Le commentaire : le bilan général de l'élève, rempli par l'app à partir de ses questions, comme en correction de dictée, puis modifié et validé, ou non, dans sa fiche."
+   ],
+   "ecarts": 83,
+   "proprio": "QCM-3 · SOIR"
+  },
+  "c-corbeille": {
+   "id": "c-corbeille",
+   "appareil": "console",
+   "gestesManquants": [
+    "Annuler",
+    "🗑️ Mettre à la corbeille"
+   ],
+   "gestesEnTrop": [
+    "📤 Rendre les copies"
+   ],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Il reste des feuilles à lire : « rendre les copies ▸ » paraît quand toutes sont lues. Clic : le tableau de la séance.",
+    "La garde de la corbeille : la séance part, gardée un an.",
+    "De quoi parle cette fenêtre : Évaluation d'essai — # questions — # ESSAI — «date» «heure» · # présents, # absent («élève»).",
+    "Ce que ferait « 🗑️ Mettre à la corbeille », à lire avant de choisir : « Elle part dans la corbeille du site, gardée un… ».",
+    "Ne met rien à la corbeille.",
+    "Met la séance à la corbeille, restaurable un an."
+   ],
+   "texteManquant": [
+    "🗑️ Mettre cette séance à la corbeille ?",
+    "Évaluation d'essai — # questions — # ESSAI — «date» «heure» · # présents, # absent («élève»)",
+    "Elle part dans la corbeille du site, gardée un an, avec ses réponses, ses lectures et ses notes, et sort de cette liste. Rien n'est effacé : tu la restaures depuis 💾 Sauvegarde → 🗑️ Corbeille.",
+    "Annuler",
+    "🗑️ Mettre à la corbeille"
+   ],
+   "ecarts": 14,
+   "proprio": "QCM-3 · SOIR"
+  },
+  "c-sauvegarde": {
+   "id": "c-sauvegarde",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "La sorte d'élément mis à la corbeille : évaluation.",
+    "Ce qui est à la corbeille : « Brouillon — Les figures de style (# questions) ».",
+    "Quand cet élément est parti à la corbeille : le «date» à «heure».",
+    "Remet cet élément à sa place, tel qu'il était."
+   ],
+   "texteManquant": [],
+   "ecarts": 4,
+   "proprio": "QCM-3 · SOIR"
+  },
+  "c-importer": {
+   "id": "c-importer",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "La sorte d'élément mis à la corbeille : évaluation.",
+    "Ce qui est à la corbeille : « Brouillon — Les figures de style (# questions) ».",
+    "Quand cet élément est parti à la corbeille : le «date» à «heure».",
+    "Remet cet élément à sa place, tel qu'il était."
+   ],
+   "texteManquant": [],
+   "ecarts": 4,
+   "proprio": "QCM-3 · SOIR"
+  },
+  "c-purger": {
+   "id": "c-purger",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "La sorte d'élément mis à la corbeille : évaluation.",
+    "Ce qui est à la corbeille : « Brouillon — Les figures de style (# questions) ».",
+    "Quand cet élément est parti à la corbeille : le «date» à «heure».",
+    "Remet cet élément à sa place, tel qu'il était."
+   ],
+   "texteManquant": [],
+   "ecarts": 4,
+   "proprio": "QCM-3 · SOIR"
+  },
+  "e-mes-evals": {
+   "id": "e-mes-evals",
+   "appareil": "eleve",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [
+    "«élève»",
+    "#e- éval # Analyse logique - Construire une phrase complexe",
+    "Tu étais absente",
+    "QCM — Le jambon-beurre",
+    "«date» · # / # · # / # · 🔵 Maîtrise satisfaisante"
+   ],
+   "ecarts": 5,
+   "proprio": "QCM-3 · SOIR"
+  },
+  "e-mes-evals-rendue": {
+   "id": "e-mes-evals-rendue",
+   "appareil": "eleve",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [
+    "«élève»",
+    "#e- éval # Analyse logique - Construire une phrase complexe",
+    "«date» · # / # · # / # · 🔵 Maîtrise satisfaisante",
+    "Tu étais absente",
+    "QCM — Le jambon-beurre"
+   ],
+   "ecarts": 5,
+   "proprio": "QCM-3 · SOIR"
+  },
+  "e-bilan-lou": {
+   "id": "e-bilan-lou",
+   "appareil": "eleve",
+   "gestesManquants": [],
+   "gestesEnTrop": [
+    "← Retour"
+   ],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 1,
+   "proprio": "QCM-3 · SOIR"
+  },
+  "c-reglages": {
+   "id": "c-reglages",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Ouvre la console MJPC : les classes, les élèves, leurs codes, les aménagements et les exclusions.",
+    "La borne haute : elle appartient au niveau du dessus."
+   ],
+   "texteManquant": [
+    "à"
+   ],
+   "ecarts": 3,
+   "proprio": "QCM-3 · SOIR"
+  },
+  "c-reglages-prompt": {
+   "id": "c-reglages-prompt",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [
+    "#e · Chapitre # — Poésie et peinture au XIXe siècle"
+   ],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Ouvre la console MJPC : les classes, les élèves, leurs codes, les aménagements et les exclusions.",
+    "La borne haute : elle appartient au niveau du dessus."
+   ],
+   "texteManquant": [
+    "à",
+    "Chapitre choisi : #e · Chapitre # — Poésie et peinture au XIXe siècle."
+   ],
+   "ecarts": 5,
+   "proprio": "QCM-3 · SOIR"
+  },
+  "c-reglages-prompt-modifier": {
+   "id": "c-reglages-prompt-modifier",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Ouvre la console MJPC : les classes, les élèves, leurs codes, les aménagements et les exclusions.",
+    "La borne haute : elle appartient au niveau du dessus."
+   ],
+   "texteManquant": [
+    "à"
+   ],
+   "ecarts": 3,
+   "proprio": "QCM-3 · SOIR"
+  },
+  "x620-1-mode-test-ouverture": {
+   "id": "x620-1-mode-test-ouverture",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [
+    "▸ Voir tous les codes du bac à sable"
+   ],
+   "fermesDifferents": [
+    "🎲 Tous les élèves répondent (ouvert dans la maquette)",
+    "🔍 Jouer en grand (ouvert dans la maquette)",
+    "👤 # élève (fermé dans la maquette)",
+    "👥 # élèves (fermé dans la maquette)"
+   ],
+   "bullesManquantes": [
+    "Un élève de test pour entrer sur une tablette, avec son code.",
+    "Montre les codes de toute la classe de test.",
+    "L'évaluation jouée en test.",
+    "Ouvre l'appel de la classe de test, puis la séance, comme en classe.",
+    "XAVIER Capucine : tablette #, moitié de gauche ; glisse son nom sur un autre pour échanger leurs places.",
+    "VINET Émile : tablette #, moitié de droite ; glisse son nom sur un autre pour échanger leurs places.",
+    "Simule les réponses de TOUS les élèves restants (qui n'ont pas encore répondu ou voté) avec un délai aléatoire entre chaque (#-#ms), pour reproduire une vraie situation de classe. Fonctionne en phase « réponse » (vote aléatoire parmi les choix de la question) ET en phase « autoeval » (vote aléatoire parmi les # fourchettes).",
+    "Ouvre cette tablette à la taille d'une vraie, avec ses deux feuilles dessous : en grand, on joue.",
+    "En petit, la tablette se regarde : « 🔍 Jouer en grand » pour y jouer.",
+    "Le même panneau qu'en classe.",
+    "Ta vraie console d'avant l'heure, sur la classe de test et la démo.",
+    "La classe de test : # élèves fictifs, effacés à la sortie.",
+    "La démo par défaut, ou n'importe quelle évaluation de ta liste.",
+    "Glisse un nom sur un autre pour échanger deux élèves, ou sur une moitié vide pour l'y déplacer, jusqu'au bout de l'heure.",
+    "Les # tablettes de la classe de test, chacune la vraie tablette en deux moitiés, en petit pour regarder ; « 🔍 Jouer en grand » pour jouer."
+   ],
+   "texteManquant": [
+    "Exemple — AUDEBERT Élise · code #",
+    "Environnement de test isolé.",
+    "📱 Binômes proposés — dans l'ordre de la liste : la classe de test n'a pas de QCM précédenti"
+   ],
+   "ecarts": 23,
+   "proprio": "QCM-3 · SOIR"
+  }
+ },
+ "nonAtteintes": [
+  "c-echange-refuse",
+  "t-un-eleve",
+  "x610-1-b-julien",
+  "x610-2-b-michel",
+  "c-deplacer",
+  "t-deplace",
+  "c-rouvrir-seance",
+  "t-attest-corr-fait",
+  "x610-3-a-correction",
+  "t-corr-seul",
+  "t-coeval-daccord",
+  "c-coeval-retire-michel",
+  "c-coeval-retire-julien",
+  "c-coeval-retire-deux",
+  "x610-6-coeval-laquelle",
+  "x610-7-coeval-ecrit",
+  "x610-8-console-alerte",
+  "x610-feuille",
+  "x610-autonomie-michel",
+  "x610-autonomie-julien",
+  "x610-autonomie-deux",
+  "x610-tranche",
+  "x610-9-telephone-alerte",
+  "t-bilan-annulee",
+  "t-bilan-non-atteinte",
+  "c-papier-seance",
+  "e-papier-enonces",
+  "c-papier-grille",
+  "c-papier-reprendre",
+  "t-papier-estim",
+  "t-papier-attest",
+  "c-papier-correction",
+  "t-papier-correction",
+  "c-rattrapage",
+  "x620-2-mode-test-reflexion",
+  "x620-3-mode-test-en-grand",
+  "t-annexe"
+ ]
+}

@@ -1,0 +1,52 @@
+Assemblage QCM-4 · BANC — 12/10/2026 20:00 (heure de Paris) — code-qcm 0a38baa
+
+── build.py
+evaluation-qcm.staging.html 1951147 octets, md5 6988082aaa1656fcd7a1ea8c64273315
+  code de sortie : 0
+  app : 6988082aaa1656fcd7a1ea8c64273315  evaluation-qcm.staging.html  1994416 octets
+
+── empreintes des contrôles de la conscience
+  controles-app.js: OK
+  attendus/evaluation-essai.json: OK
+  attendus/taxonomie-competences.json: OK
+
+── contrôles de la conscience (109 s, code 0)
+  Contrôles de la conscience n°12 pour l'app — /home/user/mjpc-chantier/LIVRAISONS/CODE-QCM/evaluation-qcm.staging.html — 2026-10-12T18:02:50.287Z
+  md5 de controles-app.js : cf0cd37d77c45568dfe94730c4f39000
+  Durée : 106 s · vérifications : 30 · échecs : 0
+    ok     K1 · « 🚀 Lancer la séance » écrit une séance active dans la base
+  échecs : 0
+
+── banc commun (354 s, code 1)
+  Durée : 354 s (5 min 54 s) · vérifications : 201 · échecs : 1 · scènes relevées : 97
+
+── les gestes rares (113 s, code 1)
+  Durée : 113 s (1 min 53 s) · vérifications : 41 · échecs : 3
+
+── l'heure de demain (625 s, code 1)
+  Durée : 625 s (10 min 25 s) · vérifications : 107 · échecs : 1
+
+── fidélité à la maquette
+  Scènes atteintes par le geste : 120 / 157 (hors MJPC) · fidèles (aucun écart non nommé) : 32 · avec écarts : 88 · écarts nommés dans ecarts-maquette.json : 119
+
+── synthèse (synthese.txt)
+  Synthèse de l'assemblage 2026-10-12_2000
+  
+  Contrôles de la conscience : Durée : 106 s · vérifications : 30 · échecs : 0
+  
+  ■ l'heure : 271 vérifications passent, 5 échouent
+      QCM-1 · SOCLE : 85 ok, 0 échecs
+      QCM-2 · HEURE : 184 ok, 5 échecs
+      QCM-3 · SOIR : 2 ok, 0 échecs
+  ■ le soir : 38 vérifications passent, 0 échouent
+      QCM-1 · SOCLE : 3 ok, 0 échecs
+      QCM-3 · SOIR : 35 ok, 0 échecs
+  ■ le reste : 13 vérifications passent, 0 échouent
+      QCM-1 · SOCLE : 1 ok, 0 échecs
+      QCM-3 · SOIR : 12 ok, 0 échecs
+  ■ toutes les pages : 22 vérifications passent, 0 échouent
+      QCM-1 · SOCLE : 22 ok, 0 échecs
+  
+  Fidélité : 120 scènes atteintes, 32 fidèles ; écarts non nommés : QCM-3 · SOIR 271 dans 24 scènes ; QCM-2 · HEURE 821 dans 64 scènes ; non atteintes : 37
+
+Durée totale de l'assemblage : 740 s

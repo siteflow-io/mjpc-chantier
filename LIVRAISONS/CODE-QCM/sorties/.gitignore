@@ -1,0 +1,5 @@
+# QCM-4 · BANC : à chaque assemblage, les textes des sorties sont gardés ; les captures et les relevés bruts (lourds) ne le sont qu'à la livraison (git add -f)
+*/captures/
+*/captures-demain/
+*/releves-*.json
+*/base-finale.json

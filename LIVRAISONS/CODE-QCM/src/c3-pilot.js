@@ -27,6 +27,8 @@ function tablettesH(){
   return l;
 }
 function nbQH(){ return EV.questions.length; }
+// les élèves qui comptent dans les attentes de la séance : les présents entrés sur une tablette (SCN.actifs, QCM-1) ; dans la maquette, les présents
+function actifsH(k){ k = k || MO(); return enDirect() && typeof SCN.actifs === "function" ? SCN.actifs(k) : SCN.presents(k); }
 function toutesQ(){ return EV.questions.map(function(q, i){ return i; }); }
 function memesChoixH(a, b){ if(a === "aucun" || b === "aucun") return a === b; a = (a || []).slice().sort(); b = (b || []).slice().sort(); return a.length === b.length && a.every(function(x, i){ return x === b[i]; }); }
 // la réponse d'un élève (SCN.reponse) ou sa lecture (SCN.lecture) : la liste de ses choix, « aucun », ou null
@@ -370,6 +372,7 @@ function PilotAttest2(){
   var manquent = Object.keys(enCours).map(nomDe);
   var etat = function(p){ var hA = heureAttestH(p, 2); return enCours[p] != null ? {cls:"m-attest", st:"attestation " + enCours[p] + "/5"} : {cls:"m-pret", st:"✓ prêt" + (hA ? " · " + hA : "")}; };
   var q2 = ORDRE_CORR[0], b = bilanQ(q2, k), prets = c.prets || [c.presents - manquent.length, c.presents];
+  c = Object.assign({}, c, {presents:prets[1]});
   return Console("pilotage", "pilot", h("div", {className:"card"},
     TitreCarte(h(F, null, "📝 Correction — " + EV.titre + " — " + CLASSE, InfoI("Avant la correction, chaque moitié montre la seconde attestation, une coche par ligne. La correction commence quand tous les présents l'ont cochée en entier, comme au début.")),
       [h("button", Object.assign({key:0, className:"btn btn-ghost btn-sm"}, fen("c-depart", "depart")), "🚫 Départ d'un élève"), h("button", Object.assign({key:5, className:"btn btn-ghost btn-sm"}, fen("c-finir-autre-heure", "finir")), "⏸️ Finir à une autre heure"), h("button", Object.assign({key:1, className:"btn btn-rouge btn-sm"}, fen("c-terminer", "terminer")), "🛑 Terminer la séance")]),

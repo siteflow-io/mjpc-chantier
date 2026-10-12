@@ -288,9 +288,9 @@ function boutonsTete(){
 }
 function PilotCorrectionH(){
   var k = MO(), m = momH(), qi = m.qi, q = EV.questions[qi], ordre = ORDRE_CORR, pos = ordre.indexOf(qi), derniere = pos === ordre.length - 1;
-  var revele = m.ph === "revele", pasLu = m.pasLu || [], c = SCN.compteurs(k), pres = c.presents;
+  var revele = m.ph === "revele", pasLu = m.pasLu || [], c = SCN.compteurs(k), act = actifsH(k), pres = c.lus ? c.lus[1] : act.length;
   var b = bilanQ(qi, k);
-  var res = SCN.presents(k).map(function(p){ return calc(p).st[qi]; });
+  var res = act.map(function(p){ return calc(p).st[qi]; });
   var nbF = res.filter(function(s){ return s === "j"; }).length, nbT = res.filter(function(s){ return s === "t"; }).length;
   var lire = lireSoir(k);
   var suivant = derniere
@@ -393,8 +393,8 @@ function AlerteTrancheeH(a){
     h("div", {className:"al-actions"}, h("button", Object.assign({className:"btn btn-ghost btn-sm", title:"Rouvre l'alerte, telle qu'elle était : rien n'est appliqué."}, marqueH("ALD:" + a.id, function(){ agir("trancher", [a.id, null]); })), "↩️ Défaire")));
 }
 function PilotCoevalH(){
-  var k = MO(), m = momH(), c = SCN.compteurs(k), presents = SCN.presents(k);
-  var avecVoisin = presents.filter(function(p){ return !!SCN.voisinDe(p); }), pres = avecVoisin.length;
+  var k = MO(), m = momH(), c = SCN.compteurs(k), presents = actifsH(k);
+  var avecVoisin = presents.filter(function(p){ var v = SCN.voisinDe(p); return !!v && presents.indexOf(v) >= 0; }), pres = avecVoisin.length;
   var att = avecVoisin.filter(function(p){ return CO[p] === "att"; });
   var alertes = alertesH(), ouvertes = alertes.filter(function(a){ return !decisionDe(a); });
   var nOk = avecVoisin.filter(function(p){ return CO[p] === "ok"; }).length;
@@ -456,7 +456,7 @@ function FenCoevalFeuilleC(p){
 
 /* ── Le bilan de la classe, en direct : les questions comptées, quel que soit leur nombre ── */
 function BilanClasseH(){
-  var k = MO(), m = momH(), pres = SCN.presents(k);
+  var k = MO(), m = momH(), pres = actifsH(k);
   var lignes = pres.map(function(p){ return {p:p, nom:nomDe(p), r:calc(p)}; });
   var total = lignes.length ? lignes[0].r.total : nbComptees();
   var notes = lignes.filter(function(l){ return l.r.complet; }).map(function(l){ return l.r.n; }).sort(function(a, b){ return a - b; });

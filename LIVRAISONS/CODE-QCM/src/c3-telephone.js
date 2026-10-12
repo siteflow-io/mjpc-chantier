@@ -97,7 +97,7 @@ function TelEtapeH(){
 }
 function TelCoevalH(){
   var k = MO(), c = SCN.compteurs(k), alertes = alertesH(), ouvertes = alertes.filter(function(a){ return !decisionDe(a); });
-  var avecVoisin = SCN.presents(k).filter(function(p){ return !!SCN.voisinDe(p); }), att = avecVoisin.filter(function(p){ return CO[p] === "att"; }), lire = lireSoir(k);
+  var act = actifsH(k), avecVoisin = act.filter(function(p){ var v = SCN.voisinDe(p); return !!v && act.indexOf(v) >= 0; }), att = avecVoisin.filter(function(p){ return CO[p] === "att"; }), lire = lireSoir(k);
   var ouvert = !att.length && !ouvertes.length;
   var pastille = function(p){ var x = CO[p]; return !x || x === "att" ? {t:"⏳", cls:"tp-rouge"} : x === "ok" ? {t:"✅", cls:"tp-juste"} : x.indexOf("mal") === 0 ? {t:"❌ Q" + x.slice(3), cls:"tp-mal"} : {t:"🤔 Q" + x.slice(4), cls:"tp-coq"}; };
   return TelCadre([

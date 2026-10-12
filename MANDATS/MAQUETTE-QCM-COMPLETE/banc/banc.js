@@ -232,7 +232,7 @@ if(SORTIE && fs.existsSync(SORTIE)) fs.unlinkSync(SORTIE);   // (garde, défaut 
 
   const lignes = [];
   lignes.push("Banc unique — maquette complète du QCM");
-  lignes.push("Fichier : " + path.basename(FICHIER) + " · étape jouée : " + ETAPE + (GARDES === "0" ? " · sans les gardes des compléments" : GARDES === "seules" ? " · les gardes 1 à 20 des compléments seules" : GARDES === "c2" ? " · les gardes 6, 7 et 8 du complément 2 seules" : GARDES === "c3" ? " · les gardes 9 à 15 du complément 3 seules" : GARDES === "c4" ? " · les gardes 16 à 20 du complément 4 seules" : " · avec les gardes 1 à 20 des compléments") + (C1 && !G.MESURES ? ", sans les mesures (garde 4 et texte de {{LIMITES}} : étape C)" : "") + " · " + new Date().toISOString());
+  lignes.push("Fichier : " + path.basename(FICHIER) + " · étape jouée : " + ETAPE + (GARDES === "0" ? " · sans les gardes des compléments" : GARDES === "seules" ? " · les gardes 1 à 20 des compléments seules" : GARDES === "c2" ? " · les gardes 6, 7 et 8 du complément 2 seules" : GARDES === "c3" ? " · les gardes 9 à 15 du complément 3 seules" : GARDES === "c4" ? " · les gardes 16 à 20 du complément 4 seules" : GARDES === "sans4" ? " · avec les gardes 1 à 15 des compléments (les gardes 16 à 20 jouées à part, banc4.js)" : " · avec les gardes 1 à 20 des compléments") + (C1 && !G.MESURES ? ", sans les mesures (garde 4 et texte de {{LIMITES}} : étape C)" : "") + " · " + new Date().toISOString());
   lignes.push(journal.join(" · "));
   lignes.push("Vérifications : " + nb + " · échecs : " + echecs.length);
   if(echecs.length) lignes.push("", "ÉCHECS :", ...echecs.map((e, i) => (i + 1) + ". " + e));

@@ -620,6 +620,8 @@ function NiveauxMaitriseVC(){
 }
 // les messages des élèves : ceux de la 7.7.1 (qcm/textes, TEXTES_DEFAUT), un champ vide revient au texte d'origine
 var TEXTES_CLES = ["attente_session", "attente_correction", "fin_session"];
+// le message que lit l'élève : celui que Paul a écrit dans les Réglages (qcm/textes/<clé>), sinon celui de la maquette
+function texteEleveV(cle){ var i = TEXTES_CLES.indexOf(cle), t = typeof v3 === "function" && v3db() ? v3(v3Q("textes/" + cle)) : null; return t || (i >= 0 && typeof TEXTES_ELEVE !== "undefined" ? TEXTES_ELEVE[i][1] : ""); }
 function EditeurTextesV(){ return h(EditeurTextesVC); }
 function EditeurTextesVC(){
   useV3();

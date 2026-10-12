@@ -710,6 +710,10 @@ function exclusionsRespectees(classe){
 function LancementH(appel, opts){
   opts = opts || {};
   var classe = classeLancement(), ev = evalLancement(), demo = !!(ev && ev.demo) || !!opts.demo;
+  // pendant l'appel, la carte sous la fenêtre montre la séance lancée (sa classe, son évaluation), même hors des menus (le mode test)
+  if(appel && LIVE.sid){ classe = SCN.classe() || classe; ev = SCN.evalDeSeance(LIVE.sid) || ev; demo = !!(ev && ev.demo) || !!opts.demo; }
+  var classesL = SCN.classes(); if(classe && classesL.indexOf(classe) < 0) classesL = [classe].concat(classesL);
+  var evalsL = evalsPretes(); if(ev && !ev.demo && !evalsL.some(function(x){ return x.id === ev.id; })) evalsL = [ev].concat(evalsL);
   var roster = classe ? SCN.roster(classe) : [];
   // la grille proposée ; une grille déjà modifiée pour cette classe est gardée
   var cle = classe + "|" + (SCN.qcmPrecedent(null, classe) || {}).id;
@@ -724,11 +728,11 @@ function LancementH(appel, opts){
       h("div", null,
         h("div", {className:"field"}, h("label", null, "Classe", InfoI("Les classes de la console MJPC.")), h("select", {value:classe || "", title:"La classe de la séance.",
             onChange:function(e){ LANCEMENT.classe = e.target.value; LANCEMENT_H.paires = null; LIVE.changer(); }},
-          SCN.classes().map(function(c){ return h("option", {key:c, value:c}, (((LIVE.d.classes || {})[c] || {}).libelle || c) + " (" + SCN.roster(c).length + " élèves)"); }))),
+          classesL.map(function(c){ return h("option", {key:c, value:c}, (((LIVE.d.classes || {})[c] || {}).libelle || c) + " (" + SCN.roster(c).length + " élèves)"); }))),
         h("div", {className:"field"}, h("label", null, "Évaluation", InfoI("Seules les évaluations prêtes à lancer sont proposées ; la démo est toujours en tête.")),
           h("select", {value:ev ? ev.id : "", title:"L'évaluation de la séance : la démo, ou une évaluation prête à lancer.", onChange:function(e){ LANCEMENT.evalId = e.target.value; LIVE.changer(); }},
             h("option", {value:"demo"}, "🎓 Démo — apprendre le déroulé (" + (SCN.evalParId("demo") || SCN.DEMO).questions.length + " questions)"),
-            evalsPretes().map(function(e){ return h("option", {key:e.id, value:e.id}, e.titre); }))),
+            evalsL.map(function(e){ return h("option", {key:e.id, value:e.id}, e.titre); }))),
         !demo && h("div", {className:"field"}, h("label", null, "Mode", InfoI("Sur tablettes : deux élèves par tablette, le déroulé complet. Sur papier : chacun répond seul sur sa feuille, avec les énoncés imprimés ; le soir, tu remplis la grille ; la correction se fait à l'heure suivante, sur les tablettes.")),
           h("div", {className:"mode-seance"},
             h("button", {className:"btn btn-sm btn-primary", "data-va":"c-lancer", "aria-pressed":true, title:"La séance sur tablettes, deux élèves par tablette."}, "📱 Sur tablettes"),

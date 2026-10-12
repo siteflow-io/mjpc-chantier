@@ -431,7 +431,7 @@ function Coeval(p){
   } else if(qc == null){
     zone.push(h("div", {key:"t", className:"decl-titre co-titre co-" + k}, EM_CO[k] + " " + e.prenom + ", tu penses que " + v.prenom + " a " + (k === "peut" ? "peut-être " : "") + "mal lu ta feuille pour une question : c'est laquelle ?"));
     zone.push(h("div", {key:"l", className:"co-liste cliquable" + (EVx.questions.length > 5 ? " serree" : "")}, EVx.questions.map(function(q, i){
-      return h("button", Object.assign({key:i, className:"co-l co-lb"}, clic(cp + "q" + i, function(){ setQ(i); setEcrit(null); })), h("strong", null, "Question " + (i+1)), " · ", p.liste ? p.liste(q) : q.enonce);
+      return h("button", Object.assign({key:i, className:"co-l co-lb"}, clic(cp + "q" + i, function(){ setQ(i); setEcrit(null); if(p.onCo) p.onCo(k, i, null); })), h("strong", null, "Question " + (i+1)), " · ", p.liste ? p.liste(q) : q.enonce);
     })));
     // (complément 4, correction 8) la règle du désaccord, seule ici, reste à sa place de la v7 (points 513 et 533) ; elle ne part que là où elle suivait « ☝️ C'est ta seule question de désaccord. »
     zone.push(h("div", {key:"r", className:"co-regle"}, "☝️ " + REGLE_CO));

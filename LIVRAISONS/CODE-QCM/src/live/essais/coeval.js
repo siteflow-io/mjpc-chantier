@@ -25,7 +25,7 @@ const pause = ms => new Promise(r => setTimeout(r, ms));
   await tab.evaluate(() => ELV.combien(2));
   await tab.evaluate(c => ELV.entrer("g", c, "julien", "abrial"), code("ABRIAL Julien")); await tab.evaluate(c => ELV.entrer("d", c, "léa", "baudry"), code("BAUDRY Léa"));
   for (const x of ["abrial_julien", "baudry_lea"]) await tab.evaluate(x => ELV.commencer(x, 1), x);
-  for (const qi of [0, 1, 2]) { await prof.evaluate(q => ACT.lancerQuestion(q), qi); await prof.evaluate(() => ACT.autoriserReponse()); await pause(200);
+  for (const qi of [0, 1, 2]) { await prof.evaluate(q => ACT.lancerQuestion(q), qi); await prof.evaluate(() => ACT.autoriserReponse()); await pause(3600);
     await tab.evaluate(q => { const s = SCN.premierCote(q) === "g" ? "abrial_julien" : "baudry_lea"; return ELV.repondre(q, SCN.ev().questions[q].bonnes, s); }, qi);
     await prof.evaluate(() => ACT.tourSuivant()); await pause(200);
     await tab.evaluate(q => { const s = SCN.premierCote(q) === "g" ? "baudry_lea" : "abrial_julien"; return ELV.repondre(q, [q === 1 ? 1 : SCN.ev().questions[q].bonnes[0]], s); }, qi);

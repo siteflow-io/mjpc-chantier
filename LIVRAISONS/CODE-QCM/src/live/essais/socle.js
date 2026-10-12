@@ -132,7 +132,7 @@ function verif(ok, quoi, detail){ nb++; if(!ok) ko++; R.push((ok ? "  ok     " :
     await prof.evaluate(() => ACT.depart("maillard_noah"));
     await prof.evaluate(() => ACT.lancerQuestion(1));
     verif(base("sessions/" + sid + "/premier/1") === "d", "Q2 : la droite commence (on alterne)", base("sessions/" + sid + "/premier"));
-    await prof.evaluate(() => ACT.autoriserReponse()); await pause(300);
+    await prof.evaluate(() => ACT.autoriserReponse()); await pause(1500);
     await tab.evaluate(() => ELV.repondre(1, [1], "baudry_lea"));
     await prof.evaluate(() => ACT.tourSuivant()); await pause(300);
     await tab.evaluate(() => ELV.repondre(1, [0, 2], "abrial_julien"));

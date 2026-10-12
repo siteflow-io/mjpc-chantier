@@ -638,8 +638,9 @@ var ACT = (function(){
      pendant ce temps, jusqu'à la fin de son temps de B (deroule.bPour = {cote, qi, tour, jusqua}). Au bout du temps, sans geste, la séance
      enchaîne comme les moments de la maquette : B, puis le passage. */
   function bPour(x){ return {cote:x.cote || SCN.coteDuTour(x.qi, x.tour || 1), qi:x.qi, tour:x.tour || 1, jusqua:LIVE.maintenant() + D().b * 1000}; }
+  // « ✋ Autoriser la réponse » : « Coupe la réflexion : « POSE TON STYLO » sur les deux moitiés, puis le 1er tour » — le passage (t-q1-passage1), puis le tour
   A.autoriserReponse = function(){ var x = e(), id = sid(); if(!id || x.ph !== "reflexion") return Promise.resolve();
-    return poserDeroule(id, {ph:"reponse", qi:x.qi, tour:1, cote:SCN.coteDuTour(x.qi, 1), duree:SCN.tempsDe(x.qi).reponse}); };
+    return poserDeroule(id, {ph:"passage", qi:x.qi, tour:1, cote:SCN.coteDuTour(x.qi, 1), duree:D().decompte}); };
   A.tourSuivant = function(){ var x = e(), id = sid(); if(!id) return Promise.resolve();
     if((x.ph === "reponse" || x.ph === "passage" || x.ph === "b") && x.tour === 1){
       var autre = SCN.coteDuTour(x.qi, 2), quelquun = SCN.presents().some(function(y){ return SCN.cote(y) === autre; });

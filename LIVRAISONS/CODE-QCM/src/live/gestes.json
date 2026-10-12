@@ -36,7 +36,7 @@
   {
    "depart": "c-q1-reflexion",
    "geste": "✋ Autoriser la réponse",
-   "action": "ACT.autoriserReponse() : le 1er tour tout de suite (CONTRAT C6)"
+   "action": "ACT.autoriserReponse() : le passage (« Pose ton stylo… À toi dans 3 secondes »), puis le 1er tour (CONTRAT C6, amendé)"
   },
   {
    "depart": "c-q1-tour1",

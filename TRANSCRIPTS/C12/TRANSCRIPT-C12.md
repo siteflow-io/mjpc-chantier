@@ -20509,3 +20509,33 @@ Réponse mot pour mot :
 855. **Il me manque une chose pour la cadrer** : quelle évaluation, pour quelle classe, à quelle heure ? Le nouveau QCM ne lance qu'une évaluation complète, avec son chapitre, les deux temps de chaque question et ses compétences ; sinon « Lancer » reste fermé (point 741). Or tes sept évaluations du hub sont encore « à compléter ».
 
 12/10/2026 13:36 MEMO
+
+---
+
+## TOUR 669 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (12/10, 13:39) Donc tu est en train de me dire que la maquette a été codée pour elle-même, alors que j'avais strictemnet interdit de faire ça. l'évaluation de demain, c'est les 4e sur l'analyse logique et le chapitre sur paris.
+
+---
+
+## TOUR 669 — Claude (conscience n°12)
+
+Relu `PROTOCOLE-MAQUETTE.md` (§0, §2, §6, règle du 03/10) et le mandat de la maquette (§3 : « un fichier HTML autonome… sans réseau » ; le faux hub du mode test cité, non imposé). Mesuré : 43 composants nommés dans `evaluation-qcm.html`, 452 dans la v8, 4 en commun (BilanClasse, InfoI, MesEvaluations, ModeEmploi) ; la durée de l'évaluation de 4e (21 questions) par `SCN.dureeEstimee` de la v8 : 651 s de questions, 1 260 s de correction, 2 511 s en tout, sans temps de réflexion ni de réponse (DUREES : installation 300, estimation et attestation 180, correction 60 par question, co-évaluation et bilan 120, décompte 3, B 5, entre deux questions 15).
+
+Réponse mot pour mot :
+
+856. **Oui, et la faute est la mienne.** Ta règle du 03/10 dit qu'une maquette part de l'app elle-même, branchée sur un faux hub. Mon mandat du 10/10 a demandé autre chose : un fichier de scènes refaites d'après la 7.7.1, sans lien avec la base. Mesuré : des 43 écrans de l'app en ligne, la maquette n'en reprend que 4 ; elle en a écrit 452 à elle. Le faux hub existait, celui du mode test, qui fait tourner la vraie app, et je ne l'ai pas imposé. Je ne l'ai pas relevé à mes audits non plus.
+
+857. **Ce que ça change** : les écrans que tu as validés ne sont pas perdus, ils se reprennent ; mais il faut maintenant les raccorder à la base. Pour le code, je repars donc de l'app en ligne, sur le faux hub, et l'exécutant n'y ajoute que ce que la maquette change.
+
+858. **L'évaluation de demain, mesurée** : « 4e- Chapitre 1 - Paris à la barre et analyse logique », 21 questions. Avec la règle de durée de la maquette (point 649), les questions et la correction prennent déjà 42 minutes sans aucun temps de réflexion ni de réponse, dont 21 de correction. Avec 20 secondes de réflexion et 20 de réponse par tour, on arrive à 63 minutes : plus que l'heure.
+
+859. **Elle est aussi « à compléter » au hub** : ni chapitre, ni temps, ni compétences, ni « ce qu'elle vérifie ». Pour l'heure de demain, seuls les temps de chaque question servent ; le chapitre et les compétences servent au bilan et au soir, qui ne sont pas dans la tranche.
+
+860. **Ma proposition** : je te propose les deux temps de chacune des 21 questions, et tu les valides ; pour demain, « Lancer » ne demande que ces temps, le reste se complète avant le soir. La correction qui ne tient pas dans l'heure se finit à l'heure suivante, par « ⏸️ Finir à une autre heure », déjà cadré (point 469) : je le mets dans la tranche.
+
+861. **Une question** : à quelle heure as-tu cette classe demain ? Si c'est à 8:00, il n'y a pas le temps d'un audit le matin, et il faut que tout soit prêt ce soir.
+
+12/10/2026 13:41 MEMO

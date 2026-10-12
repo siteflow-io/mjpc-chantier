@@ -20335,3 +20335,29 @@ Réponse mot pour mot :
 827. **Si ça te va**, j'écris le protocole ainsi au sas, avec la note pour C13, et j'audite la v9 de cette façon.
 
 12/10/2026 11:27 MEMO
+
+---
+
+## TOUR 663 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (12/10, 11:28) Ok
+
+---
+
+## TOUR 663 — Claude (conscience n°12)
+
+Écrits au sas : `PROTOCOLE-AUDIT-12-10.md`, `MANDATS/NOTE-POUR-C13-AUDIT.md`, `AUDITS/CONTROLES-QCM/` (controles.js C1 à C10, attendus figés sur la v8 auditée et le PDF validé, releve.js, compare.py, EMPREINTES.md5, sortie sur la v8). Relevé stable : 27 écrans relevés deux fois, identiques. Branche de l'exécutant : `02906fb8` (C4-A, 11:44), `d7b8eaa1` (C4-B en cours). Les points 828 et 829 ont été envoyés à Paul en cours de tour, les points 830 et 831 à la fin.
+
+Réponse mot pour mot :
+
+828. **Écrit au sas.** Le protocole : https://github.com/siteflow-io/mjpc-chantier/blob/main/PROTOCOLE-AUDIT-12-10.md. La note pour C13 : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/NOTE-POUR-C13-AUDIT.md.
+
+829. **Maintenant, je prépare l'audit de la v9** : mes contrôles des neuf défauts, le relevé des écrans changés, et ton heure de classe jouée geste par geste. Je les essaie d'abord sur la v8, où ils doivent retrouver les neuf défauts. Quand la v9 arrivera, l'audit n'aura plus qu'à les passer.
+
+830. **Prêts, et éprouvés sur la v8.** Mes contrôles retrouvent les neuf défauts : 112 vérifications, 29 échecs, tous sur ces défauts. Ton heure de classe, 19 gestes de « Lancer la séance » aux copies rendues, passe sur la v8. Ils tournent en 1 min 20 ; le relevé des écrans des deux versions en 8 min 30, et leur comparaison en 11 secondes. Tout est ici : https://github.com/siteflow-io/mjpc-chantier/blob/main/AUDITS/CONTROLES-QCM/README.md.
+
+831. **L'exécutant de la maquette a fini sa première étape à 11:44** : ses propres vérifications retrouvent sur la v8 les neuf défauts, et d'autres. Il fait maintenant les corrections.
+
+12/10/2026 11:53 MEMO

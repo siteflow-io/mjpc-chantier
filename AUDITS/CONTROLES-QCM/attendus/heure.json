@@ -1,0 +1,154 @@
+[
+ {
+  "scene": "c-lancer",
+  "geste": "🚀 Lancer la séance",
+  "rang": 0,
+  "mene": "c-appel",
+  "vue": "console",
+  "moment": "S08:appel"
+ },
+ {
+  "scene": "c-appel",
+  "geste": "🚀 Lancer la séance",
+  "rang": -1,
+  "mene": "c-pret",
+  "vue": "console",
+  "moment": "S08:pret"
+ },
+ {
+  "scene": "c-pret",
+  "geste": "▶️ Lancer Q1",
+  "rang": 0,
+  "mene": "c-q1-reflexion",
+  "vue": "console",
+  "moment": "S08:Q1:R"
+ },
+ {
+  "scene": "c-q1-reflexion",
+  "geste": "✋ Autoriser la réponse",
+  "rang": 0,
+  "mene": "c-q1-tour1",
+  "vue": "console",
+  "moment": "S08:Q1:T1"
+ },
+ {
+  "scene": "c-q1-tour1",
+  "geste": "⏭️ Tour suivant",
+  "rang": 0,
+  "mene": "c-q1-tour2",
+  "vue": "console",
+  "moment": "S08:Q1:T2"
+ },
+ {
+  "scene": "c-q1-tour2",
+  "geste": "🔒 Clore la question",
+  "rang": 0,
+  "mene": "c-q1-close",
+  "vue": "console",
+  "moment": "S08:Q1:C"
+ },
+ {
+  "scene": "c-q1-close",
+  "geste": "▶️ Lancer Q2",
+  "rang": 0,
+  "mene": "t-q2-reflexion",
+  "vue": "tablette",
+  "moment": "S08:Q2:R"
+ },
+ {
+  "scene": "c-q2-tour2",
+  "geste": "🔒 Clore la question",
+  "rang": 0,
+  "mene": "c-q2-close",
+  "vue": "console",
+  "moment": "S08:Q2:C"
+ },
+ {
+  "scene": "c-q2-close",
+  "geste": "▶️ Lancer Q3",
+  "rang": 0,
+  "mene": "t-q3-tour1",
+  "vue": "tablette",
+  "moment": "S08:Q3:T1"
+ },
+ {
+  "scene": "c-q3-close",
+  "geste": "📊 Lancer l'autoévaluation",
+  "rang": 0,
+  "mene": "c-estim",
+  "vue": "console",
+  "moment": "S08:estim"
+ },
+ {
+  "scene": "c-estim",
+  "geste": "📝 Lancer la correction",
+  "rang": 0,
+  "mene": "c-attest2",
+  "vue": "console",
+  "moment": "S08:att2"
+ },
+ {
+  "scene": "c-corr-q2-lu",
+  "geste": "💡 Révéler",
+  "rang": 0,
+  "mene": "t-corr-q2-apres",
+  "vue": "tablette",
+  "moment": "S08:corr:Q2:V"
+ },
+ {
+  "scene": "c-corr-q2-apres",
+  "geste": "Question suivante →",
+  "rang": 0,
+  "mene": "t-corr-q3-lecture",
+  "vue": "tablette",
+  "moment": "S08:corr:Q3:L"
+ },
+ {
+  "scene": "c-corr-q3-apres",
+  "geste": "Question suivante →",
+  "rang": 0,
+  "mene": "t-corr-q1-lecture",
+  "vue": "tablette",
+  "moment": "S08:corr:Q1:L"
+ },
+ {
+  "scene": "c-corr-q1-apres",
+  "geste": "🤝 Ouvrir la co-évaluation",
+  "rang": 0,
+  "mene": "c-coeval-attente",
+  "vue": "console",
+  "moment": "S08:coeval"
+ },
+ {
+  "scene": "c-coeval-tranche",
+  "geste": "🏁 Afficher leur bilan aux élèves",
+  "rang": 0,
+  "mene": "t-bilan",
+  "vue": "tablette",
+  "moment": "S08:bilan"
+ },
+ {
+  "scene": "c-seances-lues",
+  "geste": "rendre les copies",
+  "rang": 0,
+  "mene": "c-rendre",
+  "vue": "console",
+  "moment": "SOIR:lu"
+ },
+ {
+  "scene": "c-rendre",
+  "geste": "📤 Rendre les copies",
+  "rang": 0,
+  "mene": "c-copies-rendues",
+  "vue": "console",
+  "moment": "SOIR:rendu"
+ },
+ {
+  "scene": "c-copies-rendues",
+  "geste": "copies rendues le 10/10",
+  "rang": 1,
+  "mene": "c-resultats-rendues",
+  "vue": "console",
+  "moment": "SOIR:rendu"
+ }
+]

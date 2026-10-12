@@ -1,0 +1,115 @@
+Contrôles de la conscience n°12 — v8.html — 2026-10-12T09:52:30.648Z
+md5 de controles.js : e4a67ac52f19691ffff583b879cf2943
+Vérifications : 112 · échecs : 29
+  ok     C1 · S3E : « 📊 Ouvrir » n°1 de « Résultats » mène au tableau de cette séance
+  ok     C1 · S3E : un tableau s'ouvre
+  ÉCHEC  C1 · S3E : le tableau a la mise en forme de c-resultats (classe « scoresheet ») — classe « res-tab »
+  ÉCHEC  C1 · S3E : le tableau a les colonnes de c-resultats (compétences, autonomie, « À lire sur la feuille »…) — manquent : Maîtrise de la note, 🧩, 🤝 Autonomie, À lire sur la feuille
+  ok     C1 · S3E : 11 colonnes de questions
+  ok     C1 · S3E : la note et la note sur 20 de chaque élève
+  ÉCHEC  C1 · S3E : « 📄 PDF notes et compétences » est là, ouvert ou fermé — absent
+  ok     C1 · PAP : « 📊 Ouvrir » n°2 de « Résultats » mène au tableau de cette séance
+  ok     C1 · PAP : un tableau s'ouvre
+  ÉCHEC  C1 · PAP : le tableau a la mise en forme de c-resultats (classe « scoresheet ») — classe « res-tab »
+  ÉCHEC  C1 · PAP : le tableau a les colonnes de c-resultats (compétences, autonomie, « À lire sur la feuille »…) — manquent : Maîtrise de la note, 🧩, 🤝 Autonomie, À lire sur la feuille
+  ok     C1 · PAP : 3 colonnes de questions
+  ÉCHEC  C1 · PAP : la note et la note sur 20 de chaque élève — ABRIAL Julien : ✗ · ✓ au lieu de 1/3 · 6,7 ; BAUDRY Léa : ✓ · ✓ au lieu de 3/3 · 20 ; BRUNEAU Camille : ✗ · ✓ au lieu de 2/3 · 13,3 ; CARRÉ Tom : ✗ · ✗ au lieu de 1/3 · 6,7 ; … (24)
+  ÉCHEC  C1 · PAP : « 📄 PDF notes et compétences » est là, ouvert ou fermé — absent
+  ok     C1 · S08 : « 📊 Ouvrir » n°3 de « Résultats » mène au tableau de cette séance
+  ok     C1 · S08 : un tableau s'ouvre
+  ok     C1 · S08 : le tableau a la mise en forme de c-resultats (classe « scoresheet »)
+  ok     C1 · S08 : le tableau a les colonnes de c-resultats (compétences, autonomie, « À lire sur la feuille »…)
+  ok     C1 · S08 : 3 colonnes de questions
+  ok     C1 · S08 : la note et la note sur 20 de chaque élève
+  ok     C1 · S08 : « 📄 PDF notes et compétences » est là, ouvert ou fermé
+  ok     C1 · CH1 : « 📊 Ouvrir » n°4 de « Résultats » mène au tableau de cette séance
+  ok     C1 · CH1 : un tableau s'ouvre
+  ÉCHEC  C1 · CH1 : le tableau a la mise en forme de c-resultats (classe « scoresheet ») — classe « res-tab »
+  ÉCHEC  C1 · CH1 : le tableau a les colonnes de c-resultats (compétences, autonomie, « À lire sur la feuille »…) — manquent : Maîtrise de la note, 🧩, 🤝 Autonomie, À lire sur la feuille
+  ok     C1 · CH1 : 10 colonnes de questions
+  ok     C1 · CH1 : la note et la note sur 20 de chaque élève
+  ÉCHEC  C1 · CH1 : « 📄 PDF notes et compétences » est là, ouvert ou fermé — absent
+  ok     C1 · JB : « 📊 Ouvrir » n°5 de « Résultats » mène au tableau de cette séance
+  ok     C1 · JB : un tableau s'ouvre
+  ÉCHEC  C1 · JB : le tableau a la mise en forme de c-resultats (classe « scoresheet ») — classe « res-tab »
+  ÉCHEC  C1 · JB : le tableau a les colonnes de c-resultats (compétences, autonomie, « À lire sur la feuille »…) — manquent : Maîtrise de la note, 🧩, 🤝 Autonomie, À lire sur la feuille
+  ok     C1 · JB : 10 colonnes de questions
+  ok     C1 · JB : la note et la note sur 20 de chaque élève
+  ÉCHEC  C1 · JB : « 📄 PDF notes et compétences » est là, ouvert ou fermé — absent
+  ok     C2 · « 📄 PDF notes et compétences » de c-resultats-rendues ouvre un PDF
+  ÉCHEC  C2 · ce PDF est celui de l'évaluation d'essai — Évaluation : 3e- éval 1 Analyse logique - Construire une phrase complexe
+  ÉCHEC  C2 · ce PDF est celui de la séance du 08/10, 3 questions — Séance : 09/10/2026 · 11 questions · tout ou rien
+  ÉCHEC  C2 · Lou y a 6,7, sa note après la lecture du soir (1 / 3) — ZELLER Lou	10,9	Maîtrise satis
+  ok     C2 · x632-pdf (séance de 3e) est, au caractère près, le PDF validé
+  ok     C3 · « 🚀 Lancer le rattrapage » ouvre un appel
+  ok     C3 · l'appel nomme YVON Adam
+  ÉCHEC  C3 · Adam n'y est pas absent — 🚫 1 absent sur 1Tout le monde présent
+  ÉCHEC  C3 · aucun autre élève de la classe n'y paraît — 📱 CHEVALLIER Théo (binôme d'Adam) et ZELLER Lou (seule) sont mis ensemble : tablette 12.
+  ÉCHEC  C4 · t-demo-q : « QUESTION 1 / 3 » dans les deux moitiés — QUESTION 3 / 3 | QUESTION 3 / 3
+  ok     C4 · t-demo-q : le bandeau de la démo dans les deux moitiés
+  ÉCHEC  C5 · c-interrompue : « question 2, 2e tour (moitiés de gauche) » — État : question 2, 2e tour (moitiés de droite) ; 36 réponses enregistrées
+  ÉCHEC  C6 · t-corr-seul : le chrono dit « Temps de réponse », pas « la feuille du voisin » — 📄 TEMPS POUR LIRE LA FEUILLE DU VOISIN
+  ok     C6 · t-corr-q1-lecture : « Temps pour lire la feuille du voisin » dans les deux moitiés (un voisin lit)
+  ok     C6 · t-corr-q2-lecture : « Temps pour lire la feuille du voisin » dans les deux moitiés (un voisin lit)
+  ok     C6 · t-corr-q3-lecture : « Temps pour lire la feuille du voisin » dans les deux moitiés (un voisin lit)
+  ÉCHEC  C7 · p-corr-avant : « 📱 Sur les tablettes, avant la correction : » contraste 1.1 (texte rgb(100, 116, 139), fond rgb(141, 73, 201)) — sous 4.5
+  ÉCHEC  C7 · p-corr-apres : « 📱 Sur les tablettes, avant la correction : » contraste 1.1 (texte rgb(100, 116, 139), fond rgb(139, 73, 203)) — sous 4.5
+  ok     C7 · téléphone : 6 textes posés sur le fond de la page, mesurés aux pixels dans 6 scènes
+  ÉCHEC  C8 · t-coeval : la règle du désaccord dans la moitié de gauche, dans celle de droite — vue : gauche 0, droite 0
+  ÉCHEC  C8 · t-coeval-daccord : la règle du désaccord dans la moitié de gauche, dans celle de droite — vue : gauche 0, droite 0
+  ÉCHEC  C8 · x610-6-coeval-laquelle : la règle du désaccord dans la moitié de gauche, dans celle de droite — vue : gauche 0, droite 0
+  ÉCHEC  C8 · t-coeval-ecrit : la règle du désaccord dans la moitié de gauche, hors de celle de droite — vue : gauche 0, droite 0
+  ok     C8 · t-coeval-ecrit : « ☝️ C'est ta seule question de désaccord. » reste dans la moitié de droite
+  ÉCHEC  C8 · x610-7-coeval-ecrit : la règle du désaccord dans la moitié de gauche, hors de celle de droite — vue : gauche 0, droite 0
+  ok     C8 · x610-7-coeval-ecrit : « ☝️ C'est ta seule question de désaccord. » reste dans la moitié de droite
+  ok     C9 · c-evals (07/10) : l'évaluation de 3e est encore « À compléter »
+  ÉCHEC  C9 · le tableau de la séance de 3e a les deux compétences du PDF validé (c4-langue-04, c4-ecrire-02) — compétences : aucune
+  ok     C10 · pas 1 : c-lancer → « 🚀 Lancer la séance » → c-appel
+  ok     C10 · pas 1 : c-appel se déclare au moment S08:appel
+  ok     C10 · pas 2 : c-appel → « 🚀 Lancer la séance » → c-pret
+  ok     C10 · pas 2 : c-pret se déclare au moment S08:pret
+  ok     C10 · pas 3 : c-pret → « ▶️ Lancer Q1 » → c-q1-reflexion
+  ok     C10 · pas 3 : c-q1-reflexion se déclare au moment S08:Q1:R
+  ok     C10 · pas 3 : c-q1-reflexion montre la question 1
+  ok     C10 · pas 4 : c-q1-reflexion → « ✋ Autoriser la réponse » → c-q1-tour1
+  ok     C10 · pas 4 : c-q1-tour1 se déclare au moment S08:Q1:T1
+  ok     C10 · pas 4 : c-q1-tour1 montre la question 1
+  ok     C10 · pas 5 : c-q1-tour1 → « ⏭️ Tour suivant » → c-q1-tour2
+  ok     C10 · pas 5 : c-q1-tour2 se déclare au moment S08:Q1:T2
+  ok     C10 · pas 5 : c-q1-tour2 montre la question 1
+  ok     C10 · pas 6 : c-q1-tour2 → « 🔒 Clore la question » → c-q1-close
+  ok     C10 · pas 6 : c-q1-close se déclare au moment S08:Q1:C
+  ok     C10 · pas 6 : c-q1-close montre la question 1
+  ok     C10 · pas 7 : c-q1-close → « ▶️ Lancer Q2 » → t-q2-reflexion
+  ok     C10 · pas 7 : t-q2-reflexion se déclare au moment S08:Q2:R
+  ok     C10 · pas 7 : t-q2-reflexion montre la question 2
+  ok     C10 · pas 8 : c-q2-tour2 → « 🔒 Clore la question » → c-q2-close
+  ok     C10 · pas 8 : c-q2-close se déclare au moment S08:Q2:C
+  ok     C10 · pas 8 : c-q2-close montre la question 2
+  ok     C10 · pas 9 : c-q2-close → « ▶️ Lancer Q3 » → t-q3-tour1
+  ok     C10 · pas 9 : t-q3-tour1 se déclare au moment S08:Q3:T1
+  ok     C10 · pas 9 : t-q3-tour1 montre la question 3
+  ok     C10 · pas 10 : c-q3-close → « 📊 Lancer l'autoévaluation » → c-estim
+  ok     C10 · pas 10 : c-estim se déclare au moment S08:estim
+  ok     C10 · pas 11 : c-estim → « 📝 Lancer la correction » → c-attest2
+  ok     C10 · pas 11 : c-attest2 se déclare au moment S08:att2
+  ok     C10 · pas 12 : c-corr-q2-lu → « 💡 Révéler » → t-corr-q2-apres
+  ok     C10 · pas 12 : t-corr-q2-apres se déclare au moment S08:corr:Q2:V
+  ok     C10 · pas 12 : t-corr-q2-apres montre la question 2
+  ok     C10 · pas 13 : c-corr-q2-apres → « Question suivante → » → t-corr-q3-lecture
+  ok     C10 · pas 13 : t-corr-q3-lecture se déclare au moment S08:corr:Q3:L
+  ok     C10 · pas 13 : t-corr-q3-lecture montre la question 3
+  ok     C10 · pas 14 : c-corr-q3-apres → « Question suivante → » → t-corr-q1-lecture
+  ok     C10 · pas 14 : t-corr-q1-lecture se déclare au moment S08:corr:Q1:L
+  ok     C10 · pas 14 : t-corr-q1-lecture montre la question 1
+  ok     C10 · pas 15 : c-corr-q1-apres → « 🤝 Ouvrir la co-évaluation » → c-coeval-attente
+  ok     C10 · pas 15 : c-coeval-attente se déclare au moment S08:coeval
+  ok     C10 · pas 16 : c-coeval-tranche → « 🏁 Afficher leur bilan aux élèves » → t-bilan
+  ok     C10 · pas 16 : t-bilan se déclare au moment S08:bilan
+  ok     C10 · pas 17 : c-seances-lues → « rendre les copies » → c-rendre
+  ok     C10 · pas 17 : c-rendre se déclare au moment SOIR:lu
+  ok     C10 · pas 18 : c-rendre → « 📤 Rendre les copies » → c-copies-rendues
+  ok     C10 · pas 18 : c-copies-rendues se déclare au moment SOIR:rendu
+  ok     C10 · pas 19 : c-copies-rendues → « copies rendues le 10/10 » → c-resultats-rendues
+  ok     C10 · pas 19 : c-resultats-rendues se déclare au moment SOIR:rendu
+  ok     C10 · le soir, copies rendues : Lou a 1 / 3 (6,7) dans ton tableau, après la lecture de sa feuille

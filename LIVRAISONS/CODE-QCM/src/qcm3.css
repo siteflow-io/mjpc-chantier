@@ -1,0 +1,10 @@
+/* [QCM-3 · SOIR] retouches de style des écrans du soir et du reste (COMMUN §1 ; mandat QCM-3, point 4) */
+/* le mode test : la vraie console de la séance de test, sans son propre en-tête (celui du mode test est au-dessus) */
+.test-console .prof-wrap{min-height:0;padding:0;background:none}
+.test-console .prof-wrap > .deco{display:none}
+.test-console .prof.full{box-shadow:none;border:0;padding:0;margin:0;max-width:none;background:none}
+.test-console .prof-header,.test-console .tabs{display:none}
+.codes-test{display:grid;grid-template-columns:repeat(3,1fr);gap:.15rem .8rem;margin-top:.4rem;font-size:.82rem}
+.simt-feuilles input.simt-fi{width:100%;box-sizing:border-box;font:inherit;border:1px dashed #CBD5E1;border-radius:6px;padding:.2rem .4rem;background:#fff}
+/* le bilan d'une séance ouvert dans « 📊 Mes évaluations » d'une moitié de tablette */
+.mes-evals-bilan{text-align:left}

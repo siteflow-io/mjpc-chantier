@@ -688,23 +688,25 @@ function PdfApercuC(){
 function eleveIciV(){
   var s = paramHash("eleve"), c = paramHash("classe");
   if(!s && typeof window.ELEVE_COURANT === "object" && window.ELEVE_COURANT){ s = window.ELEVE_COURANT.slug || window.ELEVE_COURANT.eleveSlug; c = c || window.ELEVE_COURANT.classeSlug; }
+  if(!s && typeof ELV !== "undefined" && ELV.ici){ var ic = ELV.ici(); s = (ELV.courant && ic[ELV.courant]) || ic.g || ic.d; c = c || ic.classe; }
   return s ? {slug:s, classeSlug:c || null} : null;
 }
 function mesEvaluationsV(slug, classeSlug){
-  return seancesV().filter(function(se){ return se.terminee && !se.demo && !se.test && se.publiee && (classeSlug ? se.classeSlug === classeSlug : true) && se.eleves.some(function(e){ return e.slug === slug; }); })
+  return seancesV().filter(function(se){ return se.terminee && !se.demo && !se.test && se.publiee && (classeSlug ? memeClasse(se, classeSlug) : true) && se.eleves.some(function(e){ return e.slug === slug; }); })
     .sort(function(a, b){ return b.ms - a.ms; })
     .map(function(se){ var abs = se.absents.some(function(e){ return e.slug === slug; }) || !se.presents.some(function(e){ return e.slug === slug; });
       var r = abs ? null : resultatV(se, slug);
       return {se:se, titre:se.ev.titre, date:se.date, etat:abs ? "absente" : se.rendue && r && r.complet ? "bilan" : "relecture", note:se.rendue && r && r.complet ? r : null}; });
 }
-function ListeMesEvalsV(slug, classeSlug){
+function ListeMesEvalsV(slug, classeSlug, onOuvrir){
   var items = mesEvaluationsV(slug, classeSlug), se0 = items[0] && items[0].se;
   if(!items.length) return h("p", {style:{opacity:.8}}, "Tu n'as pas encore d'évaluation ici. Celles de ta classe apparaîtront après la correction.");
   return h("div", {className:"eleves-grid", style:{gridTemplateColumns:"1fr"}}, items.map(function(x, i){
     var n = x.note, mt = n ? maitriseDe(n.sur20) : null;
     var ligne = n ? x.date + " · " + fr1(n.n) + " / " + n.total + " · " + fr1(n.sur20) + " / 20 · " + mt.em + " " + mt.lib : null;
     var actif = x.etat === "bilan";
-    return h(actif ? "button" : "div", {key:x.se.id, className:"eleve-btn mes-ev " + x.etat, "data-seance":x.se.id, "data-va":actif ? "e-bilan-lou&eleve=" + encodeURIComponent(slug) + "&seance=" + encodeURIComponent(x.se.id) + (classeSlug ? "&classe=" + encodeURIComponent(classeSlug) : "") : null},
+    return h(actif ? "button" : "div", {key:x.se.id, className:"eleve-btn mes-ev " + x.etat, "data-seance":x.se.id, "data-local":actif && onOuvrir ? "1" : null, onClick:actif && onOuvrir ? function(){ onOuvrir(x.se.id); } : null,
+      "data-va":actif && !onOuvrir ? "e-bilan-lou&eleve=" + encodeURIComponent(slug) + "&seance=" + encodeURIComponent(x.se.id) + (classeSlug ? "&classe=" + encodeURIComponent(classeSlug) : "") : null},
       h("div", {style:{fontWeight:700}}, x.titre),
       h("div", {style:{fontSize:".86rem", opacity:.9, marginTop:".2rem"}},
         x.etat === "relecture" ? "En relecture : ta note sera visible quand ta copie te sera rendue" : x.etat === "absente" ? (sexeV(x.se, slug) === "F" ? "Tu étais absente" : "Tu étais absent") : ligne));
@@ -721,7 +723,7 @@ function MesEvaluationsVC(){
     h("div", {className:"eleve-card", style:{maxWidth:"700px"}},
       h("h1", null, "📊 Mes évaluations"),
       h("p", {style:{opacity:.8}}, nom),
-      ici ? ListeMesEvalsV(ici.slug, ici.classeSlug) : null,
+      ici ? h(MesEvalsBlocV, {slug:ici.slug, classe:ici.classeSlug}) : null,
       h("div", {style:{marginTop:"1.5rem"}}, h("button", {className:"btn btn-ghost btn-sm", "data-local":"1", onClick:function(){ if(vientDUnGeste()) history.back(); else setRetour(true); }}, "← Retour"))));
 }
 // la fourchette d'une estimation, en bonnes réponses, sur le total de la séance (bornesFourchette et libelleFourchette de la 7.7.1)
@@ -738,13 +740,19 @@ function BilanRenduVC(){
   useV3();
   var ici = eleveIciV(), se = seanceV(seanceParam()); if(!ici || !se) return MesEvaluationsV();
   var slug = ici.slug, r0 = resultatV(se, slug); if(!se.rendue || !r0) return MesEvaluationsV();
-  var r = stVue(r0), ev = se.ev, mt = maitriseDe(r.sur20), au = autonomieV(se, slug), comps = compsDeV(ev), est = estimationV(se, slug);
-  var es = est ? typeEstim7(est, r.n, r.total || 1) : null, emE = est ? MAITRISE.filter(function(x){ return x.k === est; })[0].em : null, fR = fourchetteDeNote(r.n, r.total), emR = MAITRISE.filter(function(x){ return x.k === fR; })[0].em;
-  var bilan = texteBilanV(se, slug), entree = entreeV(se, slug), retour = "e-mes-evals&eleve=" + encodeURIComponent(slug) + (ici.classeSlug ? "&classe=" + encodeURIComponent(ici.classeSlug) : "");
+  var retour = "e-mes-evals&eleve=" + encodeURIComponent(slug) + (ici.classeSlug ? "&classe=" + encodeURIComponent(ici.classeSlug) : "");
   return h("div", {className:"eleve-page"},
     DECO.map(function(x, i){ return h("span", {key:i, className:"deco"}, x); }),
-    h("div", {className:"eleve-card", style:{maxWidth:"760px"}},
-      h("button", {className:"btn btn-ghost btn-sm", "data-va":retour}, "← Mes évaluations"),
+    h("div", {className:"eleve-card", style:{maxWidth:"760px"}}, BilanContenuV(se, slug, h("button", {className:"btn btn-ghost btn-sm", "data-va":retour}, "← Mes évaluations"))));
+}
+// le bilan d'une séance rendue, pour un élève : sa note définitive, question par question, ses compétences, son estimation, « 📝 Bilan »
+function BilanContenuV(se, slug, boutonRetour){
+  var r0 = resultatV(se, slug); if(!r0) return null;
+  var r = stVue(r0), ev = se.ev, mt = maitriseDe(r.sur20), au = autonomieV(se, slug), comps = compsDeV(ev), est = estimationV(se, slug);
+  var es = est ? typeEstim7(est, r.n, r.total || 1) : null, emE = est ? MAITRISE.filter(function(x){ return x.k === est; })[0].em : null, fR = fourchetteDeNote(r.n, r.total), emR = MAITRISE.filter(function(x){ return x.k === fR; })[0].em;
+  var bilan = texteBilanV(se, slug), entree = entreeV(se, slug);
+  return h(F, null,
+      boutonRetour,
       h("h1", {style:{marginTop:".5rem"}}, ev.titre),
       h("p", {style:{opacity:.75}}, se.date),
       h("div", {className:"bilan-score fourchette-" + mt.k},
@@ -776,8 +784,20 @@ function BilanRenduVC(){
         es.type !== "sous" && h("div", {className:"bilan-calib-detail"}, es.type === "ok"
           ? "Tu pensais avoir " + libFourchetteV(est, r.total, ev.mode) + " " + emE + " et tu en as effectivement obtenu " + fr1(r.n) + " sur " + r.total + ". Ton estimation correspond à ton vrai résultat."
           : "Tu pensais avoir " + libFourchetteV(est, r.total, ev.mode) + " " + emE + " mais tu en as eu " + fr1(r.n) + " sur " + r.total + " (" + libFourchetteV(fR, r.total, ev.mode) + " " + emR + "). " + degreSurestime(es.ecart))),
-      bilan && h("div", {className:"bilan-bloc bilan628-eleve"}, h("h3", null, "📝 Bilan"), h("p", {"data-com":entree && !bilanValideV(se, slug) ? JSON.stringify(entree) : null}, bilan))));
+      bilan && h("div", {className:"bilan-bloc bilan628-eleve"}, h("h3", null, "📝 Bilan"), h("p", {"data-com":entree && !bilanValideV(se, slug) ? JSON.stringify(entree) : null}, bilan)));
 }
+/* « 📊 Mes évaluations » sur une moitié de tablette (ou chez l'élève) : la liste, et le bilan d'une séance rendue ouvert sur place */
+function MesEvalsBlocV(p){ return h(MesEvalsBlocC, p); }
+function MesEvalsBlocC(p){
+  useV3();
+  var s = useState(null), ouverte = s[0], setOuverte = s[1], se = ouverte ? seanceV(ouverte) : null;
+  if(se && se.rendue) return h("div", {className:"mes-evals-bilan"}, BilanContenuV(se, p.slug, h("button", {className:"btn btn-ghost btn-sm", "data-local":"1", onClick:function(){ setOuverte(null); }}, "← Mes évaluations")));
+  return ListeMesEvalsV(p.slug, p.classe, setOuverte);
+}
+// la moitié de tablette (c3-tablettes.js, PageMoitie) appelle ListeMesEvals(prénom) : avec la base, c'est la liste de l'élève de cette moitié
+(function(){ if(typeof ListeMesEvals !== "function") return; var avant = ListeMesEvals;
+  ListeMesEvals = function(p){ if(!v3db()) return avant(p); var ic = typeof ELV !== "undefined" && ELV.ici ? ELV.ici() : {}, slug = [ic.g, ic.d].filter(function(x){ return x && (x === p || (SCN.pre && SCN.pre(x) === p)); })[0] || p;
+    return h(MesEvalsBlocV, {slug:slug, classe:ic.classe || null}); }; })();
 
 /* ════════ 💾 Sauvegarde : le snapshot, la corbeille du site, la maintenance, les purges (la démo reste toujours) ════════ */
 function lireTout(chemin){ var db = v3db(); if(!db) return Promise.resolve(null); return db.ref(chemin).once("value").then(function(s){ return s.val(); }); }
@@ -981,3 +1001,6 @@ function texteDureeV(ev, seul){
 ECRANS_SOIR_V["c-papier-grille"] = PapierGrilleV; ECRANS_SOIR_V["c-papier-seance"] = PapierSeanceV; ECRANS_SOIR_V["c-rattrapage"] = RattrapageV;
 ["c-papier-grille", "c-papier-seance", "c-rattrapage"].forEach(function(id){ var sc = sceneParId(id); if(sc) refaire(id, vivantOu(ECRANS_SOIR_V[id], sc.render)); if(ECRANS_SOIR.indexOf(id) < 0) ECRANS_SOIR.push(id); });
 Rattrapage = vivantOu(RattrapageV, Rattrapage);
+
+// le mode test (maquette620.js) : ses trois scènes sont un seul écran, la vraie séance de la classe de test
+["x620-1-mode-test-ouverture", "x620-2-mode-test-reflexion", "x620-3-mode-test-en-grand"].forEach(function(id){ ECRANS_SOIR_V[id] = ModeTestV; var sc = sceneParId(id); if(sc) refaire(id, vivantOu(ModeTestV, sc.render)); if(ECRANS_SOIR.indexOf(id) < 0) ECRANS_SOIR.push(id); });

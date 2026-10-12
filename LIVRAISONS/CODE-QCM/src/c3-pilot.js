@@ -325,7 +325,8 @@ function Pilot(s){
   var rangSuiv = suivante == null ? null : suivante + 1 - Object.keys(ec).filter(function(x){ return +x < suivante; }).length;
   var colG = h("div", null,
     h("div", {className:"pilot-status " + statusCls, title:TITRES_STATUT[s.phase]}, st),
-    h(ColonneTempsH, {key:"t" + s.qi + s.phase + (s.tour || ""), qi:s.qi == null ? (suivante == null ? 0 : suivante) : s.qi, phase:enCours ? s.phase : null, tour:s.tour, reste:s.chrono || 0, close:s.phase === "attente", qiPosee:s.qi != null}),
+    // (K6) la même colonne d'une phase à l'autre de la question : le champ qu'on tape garde son curseur
+    h(ColonneTempsH, {key:"t" + s.qi, qi:s.qi == null ? (suivante == null ? 0 : suivante) : s.qi, phase:enCours ? s.phase : null, tour:s.tour, reste:s.chrono || 0, close:s.phase === "attente", qiPosee:s.qi != null}),
     s.qi != null && QCourante(s.qi),
     h("div", {className:"pilot-actions"}, actions),
     qn && h("div", {className:"pilot-q-next-detail"},

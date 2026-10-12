@@ -12,7 +12,7 @@
 | `gestes.js`, `gestes.json` | **Le routeur des gestes** : un clic qui, dans la maquette, sautait à une scène (`data-va`, `versScene`) fait ici l'action (`ACT`, `ELV`) ou ouvre sur place (`NAV`) ; `gestes.json` en est la table (écran de départ, geste, action). Un bouton `data-local` est tenu par son composant : le routeur n'y touche pas. |
 | `sans-mjpc.js` | Les écrans de MJPC n'entrent pas dans l'app : les quelques noms de `mjpc.js` que d'autres fichiers lisent au chargement y sont vides. |
 | `live.css` | Les retouches de style du socle. |
-| `essais/` | `socle.js` : l'épreuve du socle (une séance entière par `ACT` et `ELV` dans plusieurs pages, sur le faux hub ; 52 vérifications) ; `k1.js` : le lancement pas à pas ; `ouvrir.js` : chaque appareil ouvert, ses erreurs. |
+| `essais/` | `socle.js` : l'épreuve du socle (une séance entière par `ACT` et `ELV` dans plusieurs pages, sur le faux hub, plus la reprise, le papier, deux séances actives, la console fermée, la séance de la 7.7.1, l'élève chez lui ; 68 vérifications) ; `k1.js` : le lancement pas à pas (`ETAPES=1` : les boutons de la console à chaque phase) ; `coeval.js` : la co-évaluation par le geste ; `ouvrir.js` : chaque appareil ouvert, ses erreurs. |
 
 Les fichiers de la maquette tenus par QCM-1 et changés pour l'app : `scenario.js` (remplacé : le scénario n'est plus), `socle.js` (le rendu : plus de sommaire ⚙ ni d'adresse `#scene=`, un rendu sans démontage qui garde le curseur), `c3-base.js` (`MO()` vaut `"LIVE"`, `brancherGlobales`, `paramHash` lit `NAV.params`), `c3-gestes.js` (l'accueil : la porte professeur de la 7.7.1 ; « 📺 Ouvrir vue tableau » : `#mode=prof&view=board` ; l'appel), `c3-scenes.js` (« 📱 QR pilotage » : le vrai QR, fermé par `qcm/qrScans/<nonce>`), `build.py`.
 
@@ -27,6 +27,19 @@ COMMUN §3, plus `../../CONTRAT-CHANGEMENTS.md` : **C1** l'état de la séance e
 - **Chaque écriture** est nettoyée pour le vrai Firebase (ni `undefined`, ni `NaN`).
 - **La note** suit la règle (288 à 293, 303, 332) : la feuille, lue par le voisin ; « Trouvée au dernier moment » une fois par évaluation, dans l'ordre de la correction ; les annulées et les écartées hors du total ; une question posée pendant le départ d'un élève hors de son total ; sans lecture, pas de note ; le mode partiel. Une séance de la 7.7.1 se note avec ce qu'elle a (sa feuille recopiée, `papier/<slug>/choix`, sinon sa tablette).
 - **L'entrée** : le professeur comme dans la 7.7.1 (`?mode=prof`, ou la clé ou l'empreinte du hub) ; l'élève par son code, vérifié contre l'empreinte de `/codes`, avec les messages de la 7.7.1 ; « rejoins » son binôme s'il s'assied à la mauvaise tablette.
+
+## Les règles de l'heure que le socle tient (en plus du contrat)
+
+- **Les gestes de Paul coupent l'attente** (C6) : « ⏭️ Tour suivant » ouvre le 2e tour et « 🔒 Clore la question » clôt la question tout de suite ; la moitié qui vient de répondre dit B pendant ce temps (`deroule.bPour`, `SCN.doitDireB`). « ✋ Autoriser la réponse » garde le passage (« POSE TON STYLO » sur les deux moitiés, puis le 1er tour). Sans geste, au bout du temps : B, puis le passage, puis le tour (les moments de la maquette).
+- **L'élève seul** (nombre impair, binôme absent ou parti, rattrapage) a la main aux deux tours (`SCN.seul`, `SCN.aLaMain`) ; un tour sans personne ne se joue pas.
+- **Les attentes** (attestations, estimation, lecture, co-évaluation, « 🏁 ») ne comptent que les présents **entrés** sur une tablette (`SCN.actifs`).
+- **La reprise** d'une séance finie à une autre heure : l'appel, l'entrée, « prêt », puis `ACT.reprendre()` relance la phase gelée au début.
+- **La séance sur papier** : après l'appel, la séance sur papier ; la reprise : l'appel, l'estimation, la seconde attestation, la correction d'après la grille (sans lecture, sans « Trouvée au dernier moment »).
+- **La séance interrompue** (la console perdue, `lastDisconnect` de la 7.7.1) : la console rouverte ouvre « ⚠️ Séance interrompue détectée » ; « 🔄 Reprendre la séance » fait recommencer le tour au début.
+- **« À lire sur les feuilles »** s'écrit dans la base dès qu'une ligne naît (`aLire/<id>`) ; **la présence** de la 7.7.1 (`qcm/presence/<classe>/<élève>`) est tenue par chaque tablette.
+- **La question bonus** compte dans les points gagnés, pas dans le total ; la note ne dépasse pas 20.
+- **Plusieurs séances actives** : la console pilote la plus récente ; « 🔴 n séances en cours » les liste, chacune à son pilotage ou à « 🛑 Terminer ».
+- **Fermer ne quitte jamais la page** : `history.back()` de la maquette devient la fermeture sur place.
 
 ## Les essais
 

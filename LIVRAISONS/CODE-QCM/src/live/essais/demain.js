@@ -1,6 +1,6 @@
 // QCM-1 · SOCLE — l'heure de demain, par ACT et ELV : la classe de 4e du banc (6 élèves, Iris absente), l'évaluation de 4e collée
 // (11 questions, la 11e « bonus », chapitre 4e-ch1 ; banc/donnees/eval-4e-11.json), deux tablettes à deux et Paul seul sur la sienne ;
-// les 11 questions à leurs deux tours, l'estimation, la correction des 11 dans l'ordre des plus ratées, la co-évaluation, le bilan, la fin ;
+// les 11 questions à leurs deux tours (Paul, seul, au premier), l'estimation, la correction des 11 dans l'ordre des plus ratées, la co-évaluation, le bilan, la fin ;
 // les notes d'après la règle (la feuille ; « Trouvée au dernier moment » une fois ; la bonus dans les points, pas dans le total).
 const path = require("path"), fs = require("fs");
 const { chromium } = require("/opt/node22/lib/node_modules/playwright");
@@ -55,18 +55,18 @@ function verif(ok, quoi, detail){ nb++; if(!ok) ko++; R.push((ok ? "  ok     " :
     verif(base("sessions/" + sid + "/deroule/ph") === "pret", "les attestations faites : « prêt »", base("sessions/" + sid + "/deroule"));
     const choix = (qi, c) => { const Q = ev.questions[qi]; if (c === "j") return Q.bonnes.slice(); return [Q.choix.map((_, i) => i).filter(i => !Q.bonnes.includes(i))[0]]; };
     const repondre = async qi => { for (const p of tabs) await p.evaluate(([qi, plan]) => { const i = ELV.ici(); [i.g, i.d].filter(Boolean).forEach(x => { if (SCN.aLaMain(x) && !SCN.reponse(x, qi)) ELV.repondre(qi, plan[x], x); }); }, [qi, Object.fromEntries(presents.map(x => [x, choix(qi, PLAN[x].T[qi])]))]); };
-    let seulDeuxTours = true;
+    const seulMain = {};
     for (let qi = 0; qi < 11; qi++) {
       await prof.evaluate(q => ACT.lancerQuestion(q), qi); await pause(150);
       await prof.evaluate(() => ACT.autoriserReponse()); await pause(1500);
       await repondre(qi);
-      if (qi === 1) seulDeuxTours = seulDeuxTours && await prof.evaluate(() => SCN.aLaMain("eymard_paul"));
+      if (qi === 1) seulMain.t1 = await prof.evaluate(() => SCN.aLaMain("eymard_paul"));
       await prof.evaluate(() => ACT.tourSuivant()); await pause(250);
-      if (qi === 1) seulDeuxTours = seulDeuxTours && await prof.evaluate(() => SCN.aLaMain("eymard_paul"));
+      if (qi === 1) seulMain.t2 = await prof.evaluate(() => SCN.aLaMain("eymard_paul"));
       await repondre(qi);
       await prof.evaluate(() => ACT.cloreQuestion()); await pause(200);
     }
-    verif(seulDeuxTours, "Paul, seul, a la main aux deux tours");
+    verif(seulMain.t1 === true && seulMain.t2 === false, "Paul, seul, répond une fois : la main au 1er tour, plus au 2e une fois sa réponse donnée (un seul tour, scenario.js)", seulMain);
     const rep = base("sessions/" + sid + "/reponses") || {};
     verif(Object.keys(rep).length === 11 && Object.values(rep).every(r => Object.keys(r).length === 5), "les 11 questions : les 5 réponses chacune", Object.values(rep).map(r => Object.keys(r).length));
     await prof.evaluate(() => ACT.lancerEstimation());

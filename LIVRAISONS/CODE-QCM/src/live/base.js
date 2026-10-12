@@ -165,12 +165,14 @@ var SCN = (function(){
   S.cote = function(x, sid){ var t = S.tabletteDe(x, sid); return t ? t.cote : null; };
   // un élève seul sur sa tablette (nombre impair, binôme absent ou parti, rattrapage) : personne à qui cacher sa réponse, il a la main aux deux tours
   S.seul = function(x, sid){ var v = S.voisinDe(x, sid); return !v || S.presents(null, sid).indexOf(v) < 0; };
-  // la moitié de cet élève peut-elle répondre maintenant ? (le tour de sa moitié ; seul : les deux tours ; une question rouverte pour lui)
+  // la moitié de cet élève peut-elle répondre maintenant ? (le tour de sa moitié ; seul : le premier tour où il n'a pas encore répondu ; une question rouverte pour lui)
   S.aLaMain = function(x, sid){ var e = S.etat(sid); if(!e || e.qi == null) return false;
     if(e.ph === "rouvert") return e.pour === x;
     if(e.ph !== "reponse") return false;
     if(e.rouvert === "tous" && S.reponse(x, e.qi, sid) && !S.reponse(x, e.qi, sid).rouverte) return false;
-    return S.cote(x, sid) === (e.cote || S.coteDuTour(e.qi, e.tour || 1, sid)) || S.seul(x, sid); };
+    // seul : un seul tour par question (scenario.js, dureeEstimee), au premier des deux, quel que soit son côté ; sa réponse donnée, il ne l'a plus au suivant
+    if(S.seul(x, sid)){ var r = S.reponse(x, e.qi, sid); return !r || !!r.rouverte || (r.tour || 1) === (e.tour || 1); }
+    return S.cote(x, sid) === (e.cote || S.coteDuTour(e.qi, e.tour || 1, sid)); };
   S.premierCote = function(qi, sid){ var s = S.sess(sid); return ((s && s.premier) || {})[qi] || "g"; };
   S.coteDuTour = function(qi, tour, sid){ var p = S.premierCote(qi, sid); return tour === 2 ? (p === "g" ? "d" : "g") : p; };
   // une liste lue dans la base revient en objet si elle a des trous : on la relit toujours en liste

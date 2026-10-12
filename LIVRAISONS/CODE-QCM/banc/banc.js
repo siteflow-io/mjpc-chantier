@@ -203,8 +203,6 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
             for(const [cote, sl] of cotesDe(t)){ if(bFaits.has(sl) || !ontRepondu.has(sl)) continue;
               const z = await zoneTexte(p, cote); if(!/Oui, la même chose/.test(z)) continue;
               if(qi === 0 && tour === 2 && sl === "duvernay_michel") await scene("t-q1-b-michel", p, "tablette");
-              if(qi === 2 && tour === 1 && sl === "abrial_julien") await scene("x610-1-b-julien", p, "tablette");
-              if(qi === 2 && tour === 2 && sl === "duvernay_michel") await scene("x610-2-b-michel", p, "tablette");
               const dit = S.ditB(S.pre(nomDeSlug(sl)), qi); bFaits.add(sl);
               if(dit === "rien") continue;
               if(await cliquer(p, dit === "oui" ? /^Oui, la même chose$/ : /^Non, autre chose$/, cote)) bDits++;
@@ -506,10 +504,14 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
     J.v(/Démo — apprendre le déroulé/.test(te) && /🔒 Permanente/.test(te), H3, "Évaluations : la démo en tête, « 🔒 Permanente » (c-evals)", te.slice(0, 300));
     J.v(/▸ 6e · vide pour l'instant/.test(te) && /4e/.test(te) && /3e/.test(te), H3, "Évaluations rangées par niveau, 6e à 3e (c-evals)", te.slice(0, 300));
     J.v(/Sans chapitre/.test(te), H3, "« Sans chapitre » : les évaluations du hub sans chapitre, « ✏️ Compléter »", te.slice(0, 300));
-    const imprimer = await prof.evaluate(() => { const b = [...document.querySelectorAll("button")].filter(b => /Imprimer/.test(b.textContent) && b.getBoundingClientRect().width > 0); if(b.length < 2) return false; b[1].setAttribute("data-banc", "imp"); return true; });
-    if(imprimer){ await prof.click("[data-banc='imp']").catch(() => {}); await pause(500); await scene("c-feuille", prof, "console"); J.v(new RegExp(esc(EV.questions[0].enonce)).test(await texte(prof)), H3, "« 🖨️ Imprimer » : les énoncés seuls, sur une page (c-feuille)"); await prof.keyboard.press("Escape"); await cliquer(prof, /^✕$|^Fermer$|^✕ Fermer$/); await pause(300); }
+    // l'impression et l'éditeur sur la même évaluation que la maquette : « 3e Chapitre 1 — Poésie et peinture au XIXème siècle · Interro de cours » (au faux hub, lue le 08/10)
+    const surLigne = (re, titre) => prof.evaluate(([src, titre]) => { const re = new RegExp(src); const b = [...document.querySelectorAll("button")].filter(b => re.test(b.textContent) && b.getBoundingClientRect().width > 0)
+      .find(b => { let x = b; for(let k = 0; k < 6 && x; k++, x = x.parentElement) if((x.textContent || "").includes(titre) && x.querySelectorAll("button").length < 8) return true; return false; }); if(!b) return false; b.setAttribute("data-banc", "ligne"); return true; }, [re.source, titre]);
+    const imprimer = await surLigne(/Imprimer/, "Poésie et peinture au XIXème siècle");
+    if(imprimer) await prof.evaluate(() => document.querySelector("[data-banc='ligne']").setAttribute("data-banc", "imp"));
+    if(imprimer){ await prof.click("[data-banc='imp']").catch(() => {}); await pause(500); await scene("c-feuille", prof, "console"); J.v(/Baudelaire/.test(await texte(prof)), H3, "« 🖨️ Imprimer » : les énoncés seuls, sur une page (c-feuille)", (await texte(prof)).slice(0, 200)); await prof.keyboard.press("Escape"); await cliquer(prof, /^✕$|^Fermer$|^✕ Fermer$/); await pause(300); }
     else J.v(false, H3, "« 🖨️ Imprimer » sur l'évaluation d'essai");
-    if(await cliquer(prof, /^✏️ Modifier$/)){ await pause(500); await scene("x627-3-editeur", prof, "console"); J.v(/Ce qu'elle vérifie/.test(await texte(prof)), H3, "l'éditeur : « 🎯 Ce qu'elle vérifie » (x627-3-editeur)"); await prof.keyboard.press("Escape"); await cliquer(prof, /^Annuler$|^✕$|Fermer/); await pause(300); }
+    if((await surLigne(/✏️ (Compléter|Modifier)/, "Poésie et peinture au XIXème siècle")) && (await prof.click("[data-banc='ligne']").then(() => true).catch(() => false))){ await pause(500); await scene("x627-3-editeur", prof, "console"); J.v(/Ce qu'elle vérifie/.test(await texte(prof)) && /Baudelaire/.test(await texte(prof)), H3, "l'éditeur de l'évaluation : « 🎯 Ce qu'elle vérifie » (x627-3-editeur)", (await texte(prof)).slice(0, 200)); await prof.keyboard.press("Escape"); await cliquer(prof, /^Annuler$|^✕$|Fermer/); await pause(300); }
     else J.v(false, H3, "« ✏️ Modifier » l'évaluation d'essai");
     const corb = await prof.evaluate(() => { const b = [...document.querySelectorAll("button")].filter(b => b.textContent.trim() === "🗑️" && b.getBoundingClientRect().width > 0); if(!b[0]) return false; b[0].setAttribute("data-banc", "corb"); return true; });
     if(corb){ await prof.click("[data-banc='corb']").catch(() => {}); await pause(300); await scene("c-eval-corbeille", prof, "console"); await cliquer(prof, /^Annuler$/); } else J.v(false, H3, "« 🗑️ » une évaluation");

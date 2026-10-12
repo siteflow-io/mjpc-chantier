@@ -6,6 +6,714 @@
    "sorte": "geste-en-trop",
    "texte": "⚙",
    "raison": "Le bouton ⚙ « Scènes de la maquette » est le seul écran de simulation de la maquette (socle.js) : il n'existe pas dans l'app ; le relevé de la maquette l'écarte déjà, l'app ne doit pas l'avoir."
+  },
+  {
+   "scene": "c-lancer",
+   "sorte": "texte",
+   "motif": "jambon-beurre|Poésie et peinture au XIXème siècle · Interro de cours|Analyse logique - Construire une phrase complexe|Démo faite le|c'est le QCM précédent|exclusions de MJPC respectées|terminée · # présents|· sur papier",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans."
+  },
+  {
+   "scene": "c-lancer",
+   "sorte": "bulle",
+   "motif": "jambon-beurre|Poésie et peinture au XIXème siècle · Interro de cours|Analyse logique - Construire une phrase complexe|Démo faite le|c'est le QCM précédent|exclusions de MJPC respectées|terminée · # présents|· sur papier",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans."
+  },
+  {
+   "scene": "c-appel",
+   "sorte": "texte",
+   "motif": "jambon-beurre|Poésie et peinture au XIXème siècle · Interro de cours|Analyse logique - Construire une phrase complexe|Démo faite le|c'est le QCM précédent|exclusions de MJPC respectées|terminée · # présents|· sur papier",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans."
+  },
+  {
+   "scene": "c-appel",
+   "sorte": "bulle",
+   "motif": "jambon-beurre|Poésie et peinture au XIXème siècle · Interro de cours|Analyse logique - Construire une phrase complexe|Démo faite le|c'est le QCM précédent|exclusions de MJPC respectées|terminée · # présents|· sur papier",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans."
+  },
+  {
+   "scene": "c-mode-emploi",
+   "sorte": "texte",
+   "motif": "jambon-beurre|Poésie et peinture au XIXème siècle · Interro de cours|Analyse logique - Construire une phrase complexe|Démo faite le|c'est le QCM précédent|exclusions de MJPC respectées|terminée · # présents|· sur papier",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans."
+  },
+  {
+   "scene": "c-mode-emploi",
+   "sorte": "bulle",
+   "motif": "jambon-beurre|Poésie et peinture au XIXème siècle · Interro de cours|Analyse logique - Construire une phrase complexe|Démo faite le|c'est le QCM précédent|exclusions de MJPC respectées|terminée · # présents|· sur papier",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans."
+  },
+  {
+   "scene": "c-papier-lancer",
+   "sorte": "texte",
+   "motif": "jambon-beurre|Poésie et peinture au XIXème siècle · Interro de cours|Analyse logique - Construire une phrase complexe|Démo faite le|c'est le QCM précédent|exclusions de MJPC respectées|terminée · # présents|· sur papier",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans."
+  },
+  {
+   "scene": "c-papier-lancer",
+   "sorte": "bulle",
+   "motif": "jambon-beurre|Poésie et peinture au XIXème siècle · Interro de cours|Analyse logique - Construire une phrase complexe|Démo faite le|c'est le QCM précédent|exclusions de MJPC respectées|terminée · # présents|· sur papier",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans."
+  },
+  {
+   "scene": "c-echange-refuse",
+   "sorte": "texte",
+   "motif": "jambon-beurre|Poésie et peinture au XIXème siècle · Interro de cours|Analyse logique - Construire une phrase complexe|Démo faite le|c'est le QCM précédent|exclusions de MJPC respectées|terminée · # présents|· sur papier",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans."
+  },
+  {
+   "scene": "c-echange-refuse",
+   "sorte": "bulle",
+   "motif": "jambon-beurre|Poésie et peinture au XIXème siècle · Interro de cours|Analyse logique - Construire une phrase complexe|Démo faite le|c'est le QCM précédent|exclusions de MJPC respectées|terminée · # présents|· sur papier",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans."
+  },
+  {
+   "scene": "c-demo-faite",
+   "sorte": "texte",
+   "motif": "jambon-beurre|Poésie et peinture au XIXème siècle · Interro de cours|Analyse logique - Construire une phrase complexe|Démo faite le|c'est le QCM précédent|exclusions de MJPC respectées|terminée · # présents|· sur papier",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans."
+  },
+  {
+   "scene": "c-demo-faite",
+   "sorte": "bulle",
+   "motif": "jambon-beurre|Poésie et peinture au XIXème siècle · Interro de cours|Analyse logique - Construire une phrase complexe|Démo faite le|c'est le QCM précédent|exclusions de MJPC respectées|terminée · # présents|· sur papier",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans."
+  },
+  {
+   "scene": "c-rouvrir-seance",
+   "sorte": "texte",
+   "motif": "jambon-beurre|Poésie et peinture au XIXème siècle · Interro de cours|Analyse logique - Construire une phrase complexe|Démo faite le|c'est le QCM précédent|exclusions de MJPC respectées|terminée · # présents|· sur papier",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans."
+  },
+  {
+   "scene": "c-rouvrir-seance",
+   "sorte": "bulle",
+   "motif": "jambon-beurre|Poésie et peinture au XIXème siècle · Interro de cours|Analyse logique - Construire une phrase complexe|Démo faite le|c'est le QCM précédent|exclusions de MJPC respectées|terminée · # présents|· sur papier",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans."
+  },
+  {
+   "scene": "c-qr",
+   "sorte": "texte",
+   "motif": "jambon-beurre|Poésie et peinture au XIXème siècle · Interro de cours|Analyse logique - Construire une phrase complexe|Démo faite le|c'est le QCM précédent|exclusions de MJPC respectées|terminée · # présents|· sur papier",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans."
+  },
+  {
+   "scene": "c-qr",
+   "sorte": "bulle",
+   "motif": "jambon-beurre|Poésie et peinture au XIXème siècle · Interro de cours|Analyse logique - Construire une phrase complexe|Démo faite le|c'est le QCM précédent|exclusions de MJPC respectées|terminée · # présents|· sur papier",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans."
+  },
+  {
+   "scene": "c-seances",
+   "sorte": "texte",
+   "motif": "jambon-beurre|Poésie et peinture au XIXème siècle · Interro de cours|Analyse logique - Construire une phrase complexe|Démo faite le|c'est le QCM précédent|exclusions de MJPC respectées|terminée · # présents|· sur papier",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans."
+  },
+  {
+   "scene": "c-seances",
+   "sorte": "bulle",
+   "motif": "jambon-beurre|Poésie et peinture au XIXème siècle · Interro de cours|Analyse logique - Construire une phrase complexe|Démo faite le|c'est le QCM précédent|exclusions de MJPC respectées|terminée · # présents|· sur papier",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans."
+  },
+  {
+   "scene": "c-seances-lues",
+   "sorte": "texte",
+   "motif": "jambon-beurre|Poésie et peinture au XIXème siècle · Interro de cours|Analyse logique - Construire une phrase complexe|Démo faite le|c'est le QCM précédent|exclusions de MJPC respectées|terminée · # présents|· sur papier",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans."
+  },
+  {
+   "scene": "c-seances-lues",
+   "sorte": "bulle",
+   "motif": "jambon-beurre|Poésie et peinture au XIXème siècle · Interro de cours|Analyse logique - Construire une phrase complexe|Démo faite le|c'est le QCM précédent|exclusions de MJPC respectées|terminée · # présents|· sur papier",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans."
+  },
+  {
+   "scene": "c-rendre",
+   "sorte": "texte",
+   "motif": "jambon-beurre|Poésie et peinture au XIXème siècle · Interro de cours|Analyse logique - Construire une phrase complexe|Démo faite le|c'est le QCM précédent|exclusions de MJPC respectées|terminée · # présents|· sur papier",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans."
+  },
+  {
+   "scene": "c-rendre",
+   "sorte": "bulle",
+   "motif": "jambon-beurre|Poésie et peinture au XIXème siècle · Interro de cours|Analyse logique - Construire une phrase complexe|Démo faite le|c'est le QCM précédent|exclusions de MJPC respectées|terminée · # présents|· sur papier",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans."
+  },
+  {
+   "scene": "c-copies-rendues",
+   "sorte": "texte",
+   "motif": "jambon-beurre|Poésie et peinture au XIXème siècle · Interro de cours|Analyse logique - Construire une phrase complexe|Démo faite le|c'est le QCM précédent|exclusions de MJPC respectées|terminée · # présents|· sur papier",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans."
+  },
+  {
+   "scene": "c-copies-rendues",
+   "sorte": "bulle",
+   "motif": "jambon-beurre|Poésie et peinture au XIXème siècle · Interro de cours|Analyse logique - Construire une phrase complexe|Démo faite le|c'est le QCM précédent|exclusions de MJPC respectées|terminée · # présents|· sur papier",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans."
+  },
+  {
+   "scene": "c-corbeille",
+   "sorte": "texte",
+   "motif": "jambon-beurre|Poésie et peinture au XIXème siècle · Interro de cours|Analyse logique - Construire une phrase complexe|Démo faite le|c'est le QCM précédent|exclusions de MJPC respectées|terminée · # présents|· sur papier",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans."
+  },
+  {
+   "scene": "c-corbeille",
+   "sorte": "bulle",
+   "motif": "jambon-beurre|Poésie et peinture au XIXème siècle · Interro de cours|Analyse logique - Construire une phrase complexe|Démo faite le|c'est le QCM précédent|exclusions de MJPC respectées|terminée · # présents|· sur papier",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans."
+  },
+  {
+   "scene": "c-lancer",
+   "sorte": "geste",
+   "texte": "🔓 Rouvrir",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans. Ici : les boutons des séances précédentes de 3 ESSAI (CH1, JB)."
+  },
+  {
+   "scene": "c-lancer",
+   "sorte": "geste",
+   "texte": "📊 Résultats",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans. Ici : les boutons des séances précédentes de 3 ESSAI (CH1, JB)."
+  },
+  {
+   "scene": "c-appel",
+   "sorte": "geste",
+   "texte": "🔓 Rouvrir",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans. Ici : les boutons des séances précédentes de 3 ESSAI (CH1, JB)."
+  },
+  {
+   "scene": "c-appel",
+   "sorte": "geste",
+   "texte": "📊 Résultats",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans. Ici : les boutons des séances précédentes de 3 ESSAI (CH1, JB)."
+  },
+  {
+   "scene": "c-mode-emploi",
+   "sorte": "geste",
+   "texte": "🔓 Rouvrir",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans. Ici : les boutons des séances précédentes de 3 ESSAI (CH1, JB)."
+  },
+  {
+   "scene": "c-mode-emploi",
+   "sorte": "geste",
+   "texte": "📊 Résultats",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans. Ici : les boutons des séances précédentes de 3 ESSAI (CH1, JB)."
+  },
+  {
+   "scene": "c-papier-lancer",
+   "sorte": "geste",
+   "texte": "🔓 Rouvrir",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans. Ici : les boutons des séances précédentes de 3 ESSAI (CH1, JB)."
+  },
+  {
+   "scene": "c-papier-lancer",
+   "sorte": "geste",
+   "texte": "📊 Résultats",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans. Ici : les boutons des séances précédentes de 3 ESSAI (CH1, JB)."
+  },
+  {
+   "scene": "c-echange-refuse",
+   "sorte": "geste",
+   "texte": "🔓 Rouvrir",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans. Ici : les boutons des séances précédentes de 3 ESSAI (CH1, JB)."
+  },
+  {
+   "scene": "c-echange-refuse",
+   "sorte": "geste",
+   "texte": "📊 Résultats",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans. Ici : les boutons des séances précédentes de 3 ESSAI (CH1, JB)."
+  },
+  {
+   "scene": "c-demo-faite",
+   "sorte": "geste",
+   "texte": "🔓 Rouvrir",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans. Ici : les boutons des séances précédentes de 3 ESSAI (CH1, JB)."
+  },
+  {
+   "scene": "c-demo-faite",
+   "sorte": "geste",
+   "texte": "📊 Résultats",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans. Ici : les boutons des séances précédentes de 3 ESSAI (CH1, JB)."
+  },
+  {
+   "scene": "c-seances",
+   "sorte": "geste",
+   "texte": "copies rendues le «date»",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans. Ici : les lignes des autres séances de 3e (S3E, PAP, CH1, JB) et leur compte (« ▾ 3e · 5 séances »)."
+  },
+  {
+   "scene": "c-seances",
+   "sorte": "geste",
+   "texte": "🙈 Masquer les copies",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans. Ici : les lignes des autres séances de 3e (S3E, PAP, CH1, JB) et leur compte (« ▾ 3e · 5 séances »)."
+  },
+  {
+   "scene": "c-seances",
+   "sorte": "geste",
+   "texte": "copies non rendues",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans. Ici : les lignes des autres séances de 3e (S3E, PAP, CH1, JB) et leur compte (« ▾ 3e · 5 séances »)."
+  },
+  {
+   "scene": "c-seances",
+   "sorte": "geste",
+   "texte": "▾ #e · # séances",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans. Ici : les lignes des autres séances de 3e (S3E, PAP, CH1, JB) et leur compte (« ▾ 3e · 5 séances »)."
+  },
+  {
+   "scene": "c-seances",
+   "sorte": "geste",
+   "texte": "📊 Ouvrir",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans. Ici : les lignes des autres séances de 3e (S3E, PAP, CH1, JB) et leur compte (« ▾ 3e · 5 séances »)."
+  },
+  {
+   "scene": "c-seances",
+   "sorte": "geste",
+   "texte": "🗑️",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans. Ici : les lignes des autres séances de 3e (S3E, PAP, CH1, JB) et leur compte (« ▾ 3e · 5 séances »)."
+  },
+  {
+   "scene": "c-seances",
+   "sorte": "geste",
+   "texte": "✓publiée",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans. Ici : les lignes des autres séances de 3e (S3E, PAP, CH1, JB) et leur compte (« ▾ 3e · 5 séances »)."
+  },
+  {
+   "scene": "c-seances",
+   "sorte": "texte",
+   "texte": "▾ #e · # séances",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans."
+  },
+  {
+   "scene": "c-seances",
+   "sorte": "texte",
+   "texte": "👥 # ESSAI · # séances",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans."
+  },
+  {
+   "scene": "c-seances",
+   "sorte": "texte",
+   "texte": "copies rendues le «date»",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans."
+  },
+  {
+   "scene": "c-seances",
+   "sorte": "texte",
+   "texte": "🙈 Masquer les copies",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans."
+  },
+  {
+   "scene": "c-seances",
+   "sorte": "texte",
+   "texte": "copies non rendues",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans."
+  },
+  {
+   "scene": "c-seances",
+   "sorte": "geste-en-trop",
+   "texte": "▾ #e · # séance",
+   "raison": "La même chose, vue de l'app : une seule séance de 3e au faux hub (« ▾ 3e · 1 séance »)."
+  },
+  {
+   "scene": "c-seances-lues",
+   "sorte": "geste",
+   "texte": "copies rendues le «date»",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans. Ici : les lignes des autres séances de 3e (S3E, PAP, CH1, JB) et leur compte (« ▾ 3e · 5 séances »)."
+  },
+  {
+   "scene": "c-seances-lues",
+   "sorte": "geste",
+   "texte": "🙈 Masquer les copies",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans. Ici : les lignes des autres séances de 3e (S3E, PAP, CH1, JB) et leur compte (« ▾ 3e · 5 séances »)."
+  },
+  {
+   "scene": "c-seances-lues",
+   "sorte": "geste",
+   "texte": "copies non rendues",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans. Ici : les lignes des autres séances de 3e (S3E, PAP, CH1, JB) et leur compte (« ▾ 3e · 5 séances »)."
+  },
+  {
+   "scene": "c-seances-lues",
+   "sorte": "geste",
+   "texte": "▾ #e · # séances",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans. Ici : les lignes des autres séances de 3e (S3E, PAP, CH1, JB) et leur compte (« ▾ 3e · 5 séances »)."
+  },
+  {
+   "scene": "c-seances-lues",
+   "sorte": "geste",
+   "texte": "📊 Ouvrir",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans. Ici : les lignes des autres séances de 3e (S3E, PAP, CH1, JB) et leur compte (« ▾ 3e · 5 séances »)."
+  },
+  {
+   "scene": "c-seances-lues",
+   "sorte": "geste",
+   "texte": "🗑️",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans. Ici : les lignes des autres séances de 3e (S3E, PAP, CH1, JB) et leur compte (« ▾ 3e · 5 séances »)."
+  },
+  {
+   "scene": "c-seances-lues",
+   "sorte": "geste",
+   "texte": "✓publiée",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans. Ici : les lignes des autres séances de 3e (S3E, PAP, CH1, JB) et leur compte (« ▾ 3e · 5 séances »)."
+  },
+  {
+   "scene": "c-seances-lues",
+   "sorte": "texte",
+   "texte": "▾ #e · # séances",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans."
+  },
+  {
+   "scene": "c-seances-lues",
+   "sorte": "texte",
+   "texte": "👥 # ESSAI · # séances",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans."
+  },
+  {
+   "scene": "c-seances-lues",
+   "sorte": "texte",
+   "texte": "copies rendues le «date»",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans."
+  },
+  {
+   "scene": "c-seances-lues",
+   "sorte": "texte",
+   "texte": "🙈 Masquer les copies",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans."
+  },
+  {
+   "scene": "c-seances-lues",
+   "sorte": "texte",
+   "texte": "copies non rendues",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans."
+  },
+  {
+   "scene": "c-seances-lues",
+   "sorte": "geste-en-trop",
+   "texte": "▾ #e · # séance",
+   "raison": "La même chose, vue de l'app : une seule séance de 3e au faux hub (« ▾ 3e · 1 séance »)."
+  },
+  {
+   "scene": "c-rendre",
+   "sorte": "geste",
+   "texte": "copies rendues le «date»",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans. Ici : les lignes des autres séances de 3e (S3E, PAP, CH1, JB) et leur compte (« ▾ 3e · 5 séances »)."
+  },
+  {
+   "scene": "c-rendre",
+   "sorte": "geste",
+   "texte": "🙈 Masquer les copies",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans. Ici : les lignes des autres séances de 3e (S3E, PAP, CH1, JB) et leur compte (« ▾ 3e · 5 séances »)."
+  },
+  {
+   "scene": "c-rendre",
+   "sorte": "geste",
+   "texte": "copies non rendues",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans. Ici : les lignes des autres séances de 3e (S3E, PAP, CH1, JB) et leur compte (« ▾ 3e · 5 séances »)."
+  },
+  {
+   "scene": "c-rendre",
+   "sorte": "geste",
+   "texte": "▾ #e · # séances",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans. Ici : les lignes des autres séances de 3e (S3E, PAP, CH1, JB) et leur compte (« ▾ 3e · 5 séances »)."
+  },
+  {
+   "scene": "c-rendre",
+   "sorte": "geste",
+   "texte": "📊 Ouvrir",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans. Ici : les lignes des autres séances de 3e (S3E, PAP, CH1, JB) et leur compte (« ▾ 3e · 5 séances »)."
+  },
+  {
+   "scene": "c-rendre",
+   "sorte": "geste",
+   "texte": "🗑️",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans. Ici : les lignes des autres séances de 3e (S3E, PAP, CH1, JB) et leur compte (« ▾ 3e · 5 séances »)."
+  },
+  {
+   "scene": "c-rendre",
+   "sorte": "geste",
+   "texte": "✓publiée",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans. Ici : les lignes des autres séances de 3e (S3E, PAP, CH1, JB) et leur compte (« ▾ 3e · 5 séances »)."
+  },
+  {
+   "scene": "c-rendre",
+   "sorte": "texte",
+   "texte": "▾ #e · # séances",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans."
+  },
+  {
+   "scene": "c-rendre",
+   "sorte": "texte",
+   "texte": "👥 # ESSAI · # séances",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans."
+  },
+  {
+   "scene": "c-rendre",
+   "sorte": "texte",
+   "texte": "copies rendues le «date»",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans."
+  },
+  {
+   "scene": "c-rendre",
+   "sorte": "texte",
+   "texte": "🙈 Masquer les copies",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans."
+  },
+  {
+   "scene": "c-rendre",
+   "sorte": "texte",
+   "texte": "copies non rendues",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans."
+  },
+  {
+   "scene": "c-rendre",
+   "sorte": "geste-en-trop",
+   "texte": "▾ #e · # séance",
+   "raison": "La même chose, vue de l'app : une seule séance de 3e au faux hub (« ▾ 3e · 1 séance »)."
+  },
+  {
+   "scene": "c-copies-rendues",
+   "sorte": "geste",
+   "texte": "copies rendues le «date»",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans. Ici : les lignes des autres séances de 3e (S3E, PAP, CH1, JB) et leur compte (« ▾ 3e · 5 séances »)."
+  },
+  {
+   "scene": "c-copies-rendues",
+   "sorte": "geste",
+   "texte": "🙈 Masquer les copies",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans. Ici : les lignes des autres séances de 3e (S3E, PAP, CH1, JB) et leur compte (« ▾ 3e · 5 séances »)."
+  },
+  {
+   "scene": "c-copies-rendues",
+   "sorte": "geste",
+   "texte": "copies non rendues",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans. Ici : les lignes des autres séances de 3e (S3E, PAP, CH1, JB) et leur compte (« ▾ 3e · 5 séances »)."
+  },
+  {
+   "scene": "c-copies-rendues",
+   "sorte": "geste",
+   "texte": "▾ #e · # séances",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans. Ici : les lignes des autres séances de 3e (S3E, PAP, CH1, JB) et leur compte (« ▾ 3e · 5 séances »)."
+  },
+  {
+   "scene": "c-copies-rendues",
+   "sorte": "geste",
+   "texte": "📊 Ouvrir",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans. Ici : les lignes des autres séances de 3e (S3E, PAP, CH1, JB) et leur compte (« ▾ 3e · 5 séances »)."
+  },
+  {
+   "scene": "c-copies-rendues",
+   "sorte": "geste",
+   "texte": "🗑️",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans. Ici : les lignes des autres séances de 3e (S3E, PAP, CH1, JB) et leur compte (« ▾ 3e · 5 séances »)."
+  },
+  {
+   "scene": "c-copies-rendues",
+   "sorte": "geste",
+   "texte": "✓publiée",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans. Ici : les lignes des autres séances de 3e (S3E, PAP, CH1, JB) et leur compte (« ▾ 3e · 5 séances »)."
+  },
+  {
+   "scene": "c-copies-rendues",
+   "sorte": "texte",
+   "texte": "▾ #e · # séances",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans."
+  },
+  {
+   "scene": "c-copies-rendues",
+   "sorte": "texte",
+   "texte": "👥 # ESSAI · # séances",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans."
+  },
+  {
+   "scene": "c-copies-rendues",
+   "sorte": "texte",
+   "texte": "copies rendues le «date»",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans."
+  },
+  {
+   "scene": "c-copies-rendues",
+   "sorte": "texte",
+   "texte": "🙈 Masquer les copies",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans."
+  },
+  {
+   "scene": "c-copies-rendues",
+   "sorte": "texte",
+   "texte": "copies non rendues",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans."
+  },
+  {
+   "scene": "c-copies-rendues",
+   "sorte": "geste-en-trop",
+   "texte": "▾ #e · # séance",
+   "raison": "La même chose, vue de l'app : une seule séance de 3e au faux hub (« ▾ 3e · 1 séance »)."
+  },
+  {
+   "scene": "c-corbeille",
+   "sorte": "geste",
+   "texte": "copies rendues le «date»",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans. Ici : les lignes des autres séances de 3e (S3E, PAP, CH1, JB) et leur compte (« ▾ 3e · 5 séances »)."
+  },
+  {
+   "scene": "c-corbeille",
+   "sorte": "geste",
+   "texte": "🙈 Masquer les copies",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans. Ici : les lignes des autres séances de 3e (S3E, PAP, CH1, JB) et leur compte (« ▾ 3e · 5 séances »)."
+  },
+  {
+   "scene": "c-corbeille",
+   "sorte": "geste",
+   "texte": "copies non rendues",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans. Ici : les lignes des autres séances de 3e (S3E, PAP, CH1, JB) et leur compte (« ▾ 3e · 5 séances »)."
+  },
+  {
+   "scene": "c-corbeille",
+   "sorte": "geste",
+   "texte": "▾ #e · # séances",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans. Ici : les lignes des autres séances de 3e (S3E, PAP, CH1, JB) et leur compte (« ▾ 3e · 5 séances »)."
+  },
+  {
+   "scene": "c-corbeille",
+   "sorte": "geste",
+   "texte": "📊 Ouvrir",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans. Ici : les lignes des autres séances de 3e (S3E, PAP, CH1, JB) et leur compte (« ▾ 3e · 5 séances »)."
+  },
+  {
+   "scene": "c-corbeille",
+   "sorte": "geste",
+   "texte": "🗑️",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans. Ici : les lignes des autres séances de 3e (S3E, PAP, CH1, JB) et leur compte (« ▾ 3e · 5 séances »)."
+  },
+  {
+   "scene": "c-corbeille",
+   "sorte": "geste",
+   "texte": "✓publiée",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans. Ici : les lignes des autres séances de 3e (S3E, PAP, CH1, JB) et leur compte (« ▾ 3e · 5 séances »)."
+  },
+  {
+   "scene": "c-corbeille",
+   "sorte": "texte",
+   "texte": "▾ #e · # séances",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans."
+  },
+  {
+   "scene": "c-corbeille",
+   "sorte": "texte",
+   "texte": "👥 # ESSAI · # séances",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans."
+  },
+  {
+   "scene": "c-corbeille",
+   "sorte": "texte",
+   "texte": "copies rendues le «date»",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans."
+  },
+  {
+   "scene": "c-corbeille",
+   "sorte": "texte",
+   "texte": "🙈 Masquer les copies",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans."
+  },
+  {
+   "scene": "c-corbeille",
+   "sorte": "texte",
+   "texte": "copies non rendues",
+   "raison": "Le faux hub du banc n'a que les séances que le banc joue ; la maquette montre en plus les séances passées de son scénario (src/scenario.js, SEANCES : JB « QCM — Le jambon-beurre », CH1 « 3e Chapitre 1 — Poésie et peinture… Interro de cours », la démo du 07/10, PAP sur papier, S3E « 3e- éval 2 Analyse logique », le rattrapage) : leurs lignes, leurs boutons et leurs infobulles ne peuvent pas paraître dans l'app. Ce sont des données, pas des écrans."
+  },
+  {
+   "scene": "c-corbeille",
+   "sorte": "geste-en-trop",
+   "texte": "▾ #e · # séance",
+   "raison": "La même chose, vue de l'app : une seule séance de 3e au faux hub (« ▾ 3e · 1 séance »)."
+  },
+  {
+   "scene": "c-sauvegarde",
+   "sorte": "texte",
+   "texte": "ÉVALUATION",
+   "raison": "La corbeille de la maquette contient un brouillon d'évaluation mis à la corbeille le 05/10 (src/scenario.js, CORBEILLE) ; la corbeille du faux hub est vide."
+  },
+  {
+   "scene": "c-sauvegarde",
+   "sorte": "texte",
+   "texte": "Brouillon — Les figures de style (# questions)",
+   "raison": "La corbeille de la maquette contient un brouillon d'évaluation mis à la corbeille le 05/10 (src/scenario.js, CORBEILLE) ; la corbeille du faux hub est vide."
+  },
+  {
+   "scene": "c-sauvegarde",
+   "sorte": "texte",
+   "texte": "mise à la corbeille le «date» à «heure»",
+   "raison": "La corbeille de la maquette contient un brouillon d'évaluation mis à la corbeille le 05/10 (src/scenario.js, CORBEILLE) ; la corbeille du faux hub est vide."
+  },
+  {
+   "scene": "c-sauvegarde",
+   "sorte": "texte",
+   "texte": "↩️ Restaurer",
+   "raison": "La corbeille de la maquette contient un brouillon d'évaluation mis à la corbeille le 05/10 (src/scenario.js, CORBEILLE) ; la corbeille du faux hub est vide."
+  },
+  {
+   "scene": "c-sauvegarde",
+   "sorte": "geste",
+   "texte": "↩️ Restaurer",
+   "raison": "La corbeille de la maquette contient un brouillon d'évaluation mis à la corbeille le 05/10 (src/scenario.js, CORBEILLE) ; la corbeille du faux hub est vide."
+  },
+  {
+   "scene": "c-importer",
+   "sorte": "texte",
+   "texte": "ÉVALUATION",
+   "raison": "La corbeille de la maquette contient un brouillon d'évaluation mis à la corbeille le 05/10 (src/scenario.js, CORBEILLE) ; la corbeille du faux hub est vide."
+  },
+  {
+   "scene": "c-importer",
+   "sorte": "texte",
+   "texte": "Brouillon — Les figures de style (# questions)",
+   "raison": "La corbeille de la maquette contient un brouillon d'évaluation mis à la corbeille le 05/10 (src/scenario.js, CORBEILLE) ; la corbeille du faux hub est vide."
+  },
+  {
+   "scene": "c-importer",
+   "sorte": "texte",
+   "texte": "mise à la corbeille le «date» à «heure»",
+   "raison": "La corbeille de la maquette contient un brouillon d'évaluation mis à la corbeille le 05/10 (src/scenario.js, CORBEILLE) ; la corbeille du faux hub est vide."
+  },
+  {
+   "scene": "c-importer",
+   "sorte": "texte",
+   "texte": "↩️ Restaurer",
+   "raison": "La corbeille de la maquette contient un brouillon d'évaluation mis à la corbeille le 05/10 (src/scenario.js, CORBEILLE) ; la corbeille du faux hub est vide."
+  },
+  {
+   "scene": "c-importer",
+   "sorte": "geste",
+   "texte": "↩️ Restaurer",
+   "raison": "La corbeille de la maquette contient un brouillon d'évaluation mis à la corbeille le 05/10 (src/scenario.js, CORBEILLE) ; la corbeille du faux hub est vide."
+  },
+  {
+   "scene": "c-purger",
+   "sorte": "texte",
+   "texte": "ÉVALUATION",
+   "raison": "La corbeille de la maquette contient un brouillon d'évaluation mis à la corbeille le 05/10 (src/scenario.js, CORBEILLE) ; la corbeille du faux hub est vide."
+  },
+  {
+   "scene": "c-purger",
+   "sorte": "texte",
+   "texte": "Brouillon — Les figures de style (# questions)",
+   "raison": "La corbeille de la maquette contient un brouillon d'évaluation mis à la corbeille le 05/10 (src/scenario.js, CORBEILLE) ; la corbeille du faux hub est vide."
+  },
+  {
+   "scene": "c-purger",
+   "sorte": "texte",
+   "texte": "mise à la corbeille le «date» à «heure»",
+   "raison": "La corbeille de la maquette contient un brouillon d'évaluation mis à la corbeille le 05/10 (src/scenario.js, CORBEILLE) ; la corbeille du faux hub est vide."
+  },
+  {
+   "scene": "c-purger",
+   "sorte": "texte",
+   "texte": "↩️ Restaurer",
+   "raison": "La corbeille de la maquette contient un brouillon d'évaluation mis à la corbeille le 05/10 (src/scenario.js, CORBEILLE) ; la corbeille du faux hub est vide."
+  },
+  {
+   "scene": "c-purger",
+   "sorte": "geste",
+   "texte": "↩️ Restaurer",
+   "raison": "La corbeille de la maquette contient un brouillon d'évaluation mis à la corbeille le 05/10 (src/scenario.js, CORBEILLE) ; la corbeille du faux hub est vide."
   }
  ],
  "horsApp": {

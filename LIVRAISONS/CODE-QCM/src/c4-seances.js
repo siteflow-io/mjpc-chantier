@@ -512,12 +512,18 @@ function eleveParam(){ return paramHash("eleve"); }
 function choixTexteV(q, a){ return a === "aucun" ? "aucun de ces choix" : !a || !a.length ? "—" : a.map(function(i){ return q.choix[i]; }).join(", "); }
 function retirerAutonomieSoirV(se, slug){ return v3Set(v3Q("sessions/" + se.id + "/autonomie/" + slug), {retire:true, ms:Date.now(), quand:"soir"}); }
 function rendreAutonomieV(se, slug){ return v3Set(v3Q("sessions/" + se.id + "/autonomie/" + slug), null); }
-function marquerLueV(se, id){ return v3Set(v3Q("sessions/" + se.id + "/aLire/" + id + "/lue"), true); }
+function marquerLueV(se, id){ var x = aLireV(se).filter(function(y){ return y.id === id; })[0], u = {}; u["aLire/" + id + "/lue"] = true;
+  if(x){ u["aLire/" + id + "/eleveSlug"] = x.p; u["aLire/" + id + "/qi"] = x.q; u["aLire/" + id + "/sorte"] = x.sorte || "b"; } return v3Update(v3Q("sessions/" + se.id), u); }
+// l'alerte de la co-évaluation tranchée pour cette question de cet élève (c3-corr.js : « auteur », « lecteur », « feuille », « soir »)
+function trancheeV(se, slug, qi){ var A = se.S.alertes || {}, r = null;
+  Object.keys(A).forEach(function(k){ var a = A[k]; if(a && +a.qi === qi && v3Liste(a.eleves)[0] === slug && a.tranche){ var d = typeof a.tranche === "string" ? {decision:a.tranche} : a.tranche; r = {decision:d.decision, choix:d.choix || null, lu:a.lu || null}; } });
+  return r; }
 // « Que dit la feuille ? », validé : la lecture devient celle de Paul, la question se recalcule ; le signalement de cette question passe à « lu »
 function feuilleDitV(se, slug, qi, sel){
-  var u = {}, A = aLireV(se).filter(function(x){ return x.p === slug && x.q === qi; });
-  u["lectures/" + qi + "/" + slug] = {choix:sel === "aucun" ? "aucun" : sel, par:"prof", ms:Date.now()};
-  A.forEach(function(x){ u["aLire/" + x.id + "/lue"] = true; u["aLire/" + x.id + "/corrige"] = true; });
+  var u = {}, A = aLireV(se).filter(function(x){ return x.p === slug && x.q === qi; }), l0 = ((se.S.lectures || {})[qi] || {})[slug];
+  // la lecture du voisin est gardée (« avant ») : la fiche la montre toujours, la correction se lit dans sa pastille
+  u["lectures/" + qi + "/" + slug] = v3Sans({choix:sel === "aucun" ? "aucun" : sel, par:"prof", ms:Date.now(), avant:l0 ? (l0.avant || {choix:l0.choix, par:l0.par || null}) : null});
+  A.forEach(function(x){ u["aLire/" + x.id + "/lue"] = true; u["aLire/" + x.id + "/corrige"] = true; u["aLire/" + x.id + "/eleveSlug"] = slug; u["aLire/" + x.id + "/qi"] = qi; u["aLire/" + x.id + "/sorte"] = x.sorte || "b"; });
   if(!A.length){ var id = "soir-" + qi + "-" + slug; u["aLire/" + id] = {eleveSlug:slug, qi:qi, sorte:"soir", txt:"", lue:true, corrige:true}; }
   return v3Update(v3Q("sessions/" + se.id), u);
 }
@@ -533,14 +539,18 @@ function FicheV(p){
       h("button", {className:"btn btn-ghost btn-sm", "data-va":"c-resultats" + sq, title:"Ferme la fiche et revient au tableau de la séance."}, "✕ Fermer")),
     h("div", {className:"fiche-head fiche-head-b"}, h("span", null, ""), h("span", null, "Question"), h("span", null, se.nouvelle ? "Sa feuille, lue par " + (vPre || pre) : "Sa feuille"), h("span", null, "Sa tablette"), h("span", null, "Ce qu'" + il + " a dit"), h("span", null, "Bonne réponse"), h("span", null, "Points"), h("span", null, "")),
     ev.questions.map(function(q, qi){
-      var l = lectureV(se, qi, slug), lu = l ? l.choix : (se.nouvelle ? null : feuillePapierV(se, qi, slug)), t = tabletteV(se, qi, slug), tc = t ? t.choix : null;
+      var l = lectureV(se, qi, slug), brute = ((se.S.lectures || {})[qi] || {})[slug] || {}, tr = trancheeV(se, slug, qi);
+      // la colonne dit ce que le voisin a lu ; une correction (en classe ou le soir) se lit dans la pastille de la question
+      var luV = brute.avant ? (brute.avant.choix === "aucun" ? "aucun" : v3Liste(brute.avant.choix).map(Number)) : tr && tr.lu && l && l.par === "prof" ? (tr.lu === "aucun" ? "aucun" : v3Liste(tr.lu).map(Number)) : null;
+      var lu = luV || (l ? l.choix : (se.nouvelle ? null : feuillePapierV(se, qi, slug))), t = tabletteV(se, qi, slug), tc = t ? t.choix : null;
       var luJ = lu && lu !== "aucun" && memesChoixV(lu, q.bonnes), tJ = tc && memesChoixV(tc, q.bonnes);
       var fl = lire.filter(function(x){ return x.q === qi; })[0], dit = (b[qi] || {})[slug];
       var corr = (r.corrigees || []).indexOf(qi) >= 0;
       return h("div", {key:qi, className:"fiche-q fiche-q-b"},
         h("span", {className:"num"}, "Q" + (qi+1)),
         h("span", null, q.enonce, (q.competences || []).length > 0 && h("div", {className:"fiche-comp"}, "🧩 " + q.competences.join(" · ")),
-          corr && h("div", null, h("span", {className:"flag ok"}, l && l.par === "prof" ? "Corrigé d'après sa feuille : " + choixTexteV(q, lu) : "Corrigé d'après sa feuille")),
+          tr && tr.decision === "auteur" ? h("div", null, h("span", {className:"flag ok"}, "corrigée en classe : raison donnée à " + pre + " (" + choixTexteV(q, l ? l.choix : tr.choix) + ")"))
+            : corr && h("div", null, h("span", {className:"flag ok"}, l && l.par === "prof" ? "Corrigé d'après sa feuille : " + choixTexteV(q, l.choix) : "Corrigé d'après sa feuille")),
           fl && fl.txt && h("div", null, h("span", {className:"flag" + (fl.lue ? " ok" : "")}, (fl.lue ? "✔ lue · " : "⚠️ ") + fl.txt))),
         h("span", {className:"val " + (luJ ? "j" : "f")}, lu ? choixTexteV(q, lu) : "—"),
         h("span", {className:"val " + (tJ ? "j" : "f")}, tc ? choixTexteV(q, tc) : "—"),
@@ -796,8 +806,11 @@ function MesEvalsBlocC(p){
 }
 // la moitié de tablette (c3-tablettes.js, PageMoitie) appelle ListeMesEvals(prénom) : avec la base, c'est la liste de l'élève de cette moitié
 (function(){ if(typeof ListeMesEvals !== "function") return; var avant = ListeMesEvals;
-  ListeMesEvals = function(p){ if(!v3db()) return avant(p); var ic = typeof ELV !== "undefined" && ELV.ici ? ELV.ici() : {}, slug = [ic.g, ic.d].filter(function(x){ return x && (x === p || (SCN.pre && SCN.pre(x) === p)); })[0] || p;
-    return h(MesEvalsBlocV, {slug:slug, classe:ic.classe || null}); }; })();
+  ListeMesEvals = function(p){ if(!v3db()) return avant(p);
+    // l'élève de la moitié : celui que la tablette connaît (ELV du socle, ou l'état de la tablette de QCM-2), trouvé par son prénom
+    var ic = typeof ELV !== "undefined" && ELV.ici ? ELV.ici() : {}, il = typeof ICI_L !== "undefined" && ICI_L ? ICI_L : {};
+    var cand = [ic.g, ic.d, il.g, il.d].filter(Boolean), slug = cand.filter(function(x){ return x === p || (SCN.pre && SCN.pre(x) === p); })[0] || (cand.length === 1 ? cand[0] : p);
+    return h(MesEvalsBlocV, {slug:slug, classe:ic.classe || il.classe || (typeof LIVE !== "undefined" ? LIVE.classeSlug : null) || null}); }; })();
 
 /* ════════ 💾 Sauvegarde : le snapshot, la corbeille du site, la maintenance, les purges (la démo reste toujours) ════════ */
 function lireTout(chemin){ var db = v3db(); if(!db) return Promise.resolve(null); return db.ref(chemin).once("value").then(function(s){ return s.val(); }); }
@@ -1004,3 +1017,7 @@ Rattrapage = vivantOu(RattrapageV, Rattrapage);
 
 // le mode test (maquette620.js) : ses trois scènes sont un seul écran, la vraie séance de la classe de test
 ["x620-1-mode-test-ouverture", "x620-2-mode-test-reflexion", "x620-3-mode-test-en-grand"].forEach(function(id){ ECRANS_SOIR_V[id] = ModeTestV; var sc = sceneParId(id); if(sc) refaire(id, vivantOu(ModeTestV, sc.render)); if(ECRANS_SOIR.indexOf(id) < 0) ECRANS_SOIR.push(id); });
+// hors séance, une tablette dessine ses moitiés par la page du socle (TabletteLive) : « 📊 Mes évaluations » y paraît comme pendant la séance,
+// la moitié se reconnaissant tablette par APPAREIL_H (c3-tablettes.js, Page) ; l'élève chez lui y retrouve ses évaluations
+(function(){ var v; try { Object.defineProperty(window, "APPAREIL_H", {configurable:true, set:function(x){ v = x; },
+  get:function(){ if(v) return v; try { return typeof LIVE !== "undefined" && LIVE.appareil && LIVE.appareil() === "tablette" ? "tablette" : undefined; } catch(e){ return undefined; } }}); } catch(e){} })();

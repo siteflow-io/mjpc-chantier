@@ -247,6 +247,8 @@ function sansCoupe(t){
   return out.length > 1 ? out : t;
 }
 
+// fermer une fenêtre de mes écrans : revenir d'où elle a été ouverte sur place ; sinon à l'écran qu'elle nomme (la liste, les réglages)
+function fermer3(defaut){ if(typeof NAV !== "undefined" && NAV.pile && NAV.pile.length) navFermer(); else versScene(defaut); }
 /* ═══════════════ [QCM-3 · SOIR] Les évaluations de la base (qcm/evaluations) : la liste, le collage, l'éditeur, la feuille ═══════════════
    Une évaluation est complète quand elle a son chapitre, et chaque question ses deux temps, ses compétences et ce qu'elle vérifie :
    sinon « Lancer » reste fermé (COMMUN §3.1). Le collage vérifie tout ce que le prompt demande, avant d'enregistrer. */
@@ -412,7 +414,7 @@ function CollageVC(){
   var s1 = useState(""), texte = s1[0], setTexte = s1[1], s2 = useState(null), lu = s2[0], setLu = s2[1];
   var s3 = useState(false), garde = s3[0], setGarde = s3[1], s4 = useState(false), envoi = s4[0], setEnvoi = s4[1];
   function verifier(t){ var l = lireJsonEval(t); if(l.raw){ var v = verifierEval(l.raw); l.erreurs = v.erreurs; l.v = v; } setLu(l); }
-  function fermer(){ if(texte.trim()) setGarde(true); else fermerVers("c-evals"); }
+  function fermer(){ if(texte.trim()) setGarde(true); else fermer3("c-evals"); }
   useEffect(function(){
     function f(e){ if(e.key === "Escape" && !window.SOMMAIRE_OUVERT && !garde){ e.stopImmediatePropagation(); fermer(); } }
     window.addEventListener("keydown", f, true); return function(){ window.removeEventListener("keydown", f, true); };
@@ -424,7 +426,7 @@ function CollageVC(){
       h("div", {className:"alerte-texte"}, "Fermer sans enregistrer ? Le JSON collé sera perdu."),
       h("div", {className:"alerte-pied"},
         h("button", {className:"alerte-non", "data-local":"1", title:"Revient au JSON collé, tel qu'il est.", onClick:function(){ setGarde(false); }}, "Continuer à modifier"),
-        h("button", {className:"alerte-ok", "data-local":"1", title:"Ferme la fenêtre : le JSON collé est perdu.", onClick:function(){ setGarde(false); fermerVers("c-evals"); }}, "Fermer sans enregistrer")))),
+        h("button", {className:"alerte-ok", "data-local":"1", title:"Ferme la fenêtre : le JSON collé est perdu.", onClick:function(){ setGarde(false); fermer3("c-evals"); }}, "Fermer sans enregistrer")))),
     h("h2", null, "➕ Nouvelle évaluation"),
     h("div", {className:"field"},
       h("label", null, "Coller le JSON de l'évaluation", InfoI("Le JSON que l'instance de création d'éval t'a rendu. L'app le vérifie : le format, le chapitre et ses compétences, chaque question sur une demi-tablette, ce qu'elle vérifie, la durée de la séance.")),
@@ -440,7 +442,7 @@ function CollageVC(){
     v && h("div", {className:"preview-ok"}, (lu.erreurs.length ? "✅ Le reste est bon : " : "✅ Tout est bon : ") + (v.chap ? "chapitre « " + v.chap.court + " », " : "") + (v.mode === "partiel" ? "mode partiel" : "mode tout ou rien") + ", " + v.n + " question" + (v.n > 1 ? "s" : "") + ", " + v.comps.length + " compétence" + (v.comps.length > 1 ? "s" : "") + " du chapitre" +
       (v.assumees.length ? " ; " + (v.assumees.length > 1 ? "les questions " + listeFr(v.assumees.map(String)) + " portent" : "la question " + v.assumees[0] + " porte") + " « longueur assumée » : " + (v.assumees.length > 1 ? "elles passent, et leur moitié défilera seule." : "elle passe, et sa moitié défilera seule.") : ".")),
     h("div", {className:"row", style:{marginTop:"1rem"}}, h("button", {className:"btn btn-primary" + (ok ? "" : " ferme"), disabled:!ok || envoi, "data-local":"1", title:ok ? "Enregistre l'évaluation : elle rejoint la liste, prête à lancer." : "S'ouvre quand le JSON n'a plus rien à corriger.",
-      onClick:function(){ setEnvoi(true); enregistrerEval(null, evalDuJson(lu.raw)).then(function(){ setTexte(""); fermerVers("c-evals"); }, function(){ setEnvoi(false); }); }}, "💾 Enregistrer l'évaluation")));
+      onClick:function(){ setEnvoi(true); enregistrerEval(null, evalDuJson(lu.raw)).then(function(){ setTexte(""); fermer3("c-evals"); }, function(){ setEnvoi(false); }); }}, "💾 Enregistrer l'évaluation")));
 }
 
 /* ── La garde de longueur (464) : la question mesurée sur une vraie demi-tablette (1280 × 800), sur les trois écrans qui montrent les choix,
@@ -506,7 +508,7 @@ function EditeurVC(p){
   var ch = chapEv(ev), manques = manquesV(ev), bonus = ev.questions.filter(function(q){ return q.bonus; }).length, total = ev.questions.length - bonus;
   var comps = competencesDe(ev), chapitres = chapitresConnus(ev.chapitre);
   useEffect(function(){
-    function echap(e){ if(e.key === "Escape" && !window.SOMMAIRE_OUVERT){ e.stopImmediatePropagation(); if(modifs > 0) setGarde(true); else fermerVers("c-evals"); } }
+    function echap(e){ if(e.key === "Escape" && !window.SOMMAIRE_OUVERT){ e.stopImmediatePropagation(); if(modifs > 0) setGarde(true); else fermer3("c-evals"); } }
     document.addEventListener("keydown", echap, true); return function(){ document.removeEventListener("keydown", echap, true); };
   });
   // « 🔍 Vérifier le format » : un JSON retouché dans le champ se recharge dans l'éditeur ; sinon, ce qu'il reste à compléter
@@ -517,7 +519,7 @@ function EditeurVC(p){
     setVerif(manques.length ? "🔍 Le format est bon ; il reste à compléter : " + listeFr(manques) + "." : "🔍 Le format est bon : rien ne manque.");
   }
   return h("div", {className:"modal", style:{maxWidth:"980px"}},
-    h("button", {className:"modal-close", "data-local":"1", title:modifs ? "Ferme l'éditeur : une garde te demande d'abord si tu perds tes " + modifs + " modifications." : "Ferme l'éditeur et revient à la liste des évaluations.", onClick:function(){ if(modifs > 0) setGarde(true); else fermerVers("c-evals"); }}, "✕"),
+    h("button", {className:"modal-close", "data-local":"1", title:modifs ? "Ferme l'éditeur : une garde te demande d'abord si tu perds tes " + modifs + " modifications." : "Ferme l'éditeur et revient à la liste des évaluations.", onClick:function(){ if(modifs > 0) setGarde(true); else fermer3("c-evals"); }}, "✕"),
     h("h2", null, manques.length ? "✏️ Compléter l'évaluation" : "✏️ Modifier l'évaluation"),
     ev.titre && h("div", {className:"ed-titre-ouvert"}, "📝 " + ev.titre),
     h("div", {className:"field"}, h("label", null, "JSON de l'évaluation"),
@@ -552,13 +554,13 @@ function EditeurVC(p){
       h("button", {className:"btn btn-ghost", "data-local":"1", style:{marginTop:".6rem"}, title:"Ajoute une question vide à la fin de l'évaluation.", onClick:function(){ changer(function(x){ x.questions.push({enonce:"", choix:["", ""], bonnes:[], niveau:"standard", reflexion:null, reponse:null, competences:[]}); }); }}, "➕ Ajouter une question")),
     h("div", {className:"row", style:{marginTop:"1rem", alignItems:"center"}},
       h("button", {className:"btn btn-primary" + (manques.length ? " ferme" : ""), disabled:manques.length > 0 || envoi, "data-local":"1", title:manques.length ? "S'ouvre quand il ne reste rien à compléter : " + listeFr(manques) + "." : "Enregistre l'évaluation, telle qu'elle est.",
-        onClick:function(){ setEnvoi(true); enregistrerEval(ev.id, ev).then(function(){ setModifs(0); fermerVers("c-evals"); }, function(){ setEnvoi(false); }); }}, "💾 Enregistrer l'évaluation"),
+        onClick:function(){ setEnvoi(true); enregistrerEval(ev.id, ev).then(function(){ setModifs(0); fermer3("c-evals"); }, function(){ setEnvoi(false); }); }}, "💾 Enregistrer l'évaluation"),
       manques.length > 0 && h("span", {className:"ed-reste"}, "⚠️ Il reste à compléter : " + listeFr(manques) + ".")),
     garde && h("div", {className:"fen-fond alerte-native"},
       h("div", {className:"alerte-boite"}, h("div", {className:"alerte-texte"}, "Fermer l'éditeur sans enregistrer ? Tes " + modifs + " modifications seront perdues."),
         h("div", {className:"alerte-pied"},
           h("button", {className:"alerte-non", "data-local":"1", title:"Revient à l'éditeur, avec tes modifications.", onClick:function(){ setGarde(false); }}, "Continuer à modifier"),
-          h("button", {className:"alerte-ok", "data-local":"1", title:"Ferme l'éditeur : les modifications sont perdues.", onClick:function(){ fermerVers("c-evals"); }}, "Fermer sans enregistrer")))));
+          h("button", {className:"alerte-ok", "data-local":"1", title:"Ferme l'éditeur : les modifications sont perdues.", onClick:function(){ fermer3("c-evals"); }}, "Fermer sans enregistrer")))));
 }
 /* ════════ La feuille imprimée de l'évaluation cliquée ════════ */
 function FeuilleV(){ return h(FeuilleVC); }
@@ -691,7 +693,7 @@ function ReglagesPromptModifierVC(){
   var enr = gabaritPrompt();
   var s = useState(""), msg = s[0], setMsg = s[1], s2 = useState(null), b = s2[0], setB = s2[1], s3 = useState(false), confirme = s3[0], setConfirme = s3[1], s5 = useState(false), gardeOuverte = s5[0], setGarde = s5[1];
   var brouillon = b == null ? enr : b, modifie = brouillon !== enr;
-  function fermer(){ if(modifie) setGarde(true); else fermerVers("c-reglages"); }
+  function fermer(){ if(modifie) setGarde(true); else fermer3("c-reglages"); }
   useEffect(function(){
     function f(e){ if(e.key === "Escape" && !confirme && !gardeOuverte){ e.stopImmediatePropagation(); fermer(); } }
     window.addEventListener("keydown", f, true); return function(){ window.removeEventListener("keydown", f, true); };
@@ -712,6 +714,6 @@ function ReglagesPromptModifierVC(){
       h("div", {className:"alerte-texte"}, "Fermer sans enregistrer ? Tes modifications du prompt seront perdues."),
       h("div", {className:"alerte-pied"},
         h("button", {className:"alerte-non", "data-local":"1", title:"Revient au prompt, tel que tu l'as modifié.", onClick:function(){ setGarde(false); }}, "Continuer à modifier"),
-        h("button", {className:"alerte-ok", "data-local":"1", title:"Ferme la fenêtre : tes modifications sont perdues.", onClick:function(){ setGarde(false); fermerVers("c-reglages"); }}, "Fermer sans enregistrer")))));
+        h("button", {className:"alerte-ok", "data-local":"1", title:"Ferme la fenêtre : tes modifications sont perdues.", onClick:function(){ setGarde(false); fermer3("c-reglages"); }}, "Fermer sans enregistrer")))));
 }
 ECRANS_EVALS_V["c-reglages"] = ReglagesV; ECRANS_EVALS_V["c-reglages-prompt"] = ReglagesPromptV; ECRANS_EVALS_V["c-reglages-prompt-modifier"] = ReglagesPromptModifierV;

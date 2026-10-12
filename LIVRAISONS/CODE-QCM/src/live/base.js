@@ -240,21 +240,31 @@ var SCN = (function(){
 
   /* ── La note : la règle (288 à 293, 303, 332) ── */
   // st par question : j juste, t « Trouvée au dernier moment », f faux, a « aucun de ces choix », n pas encore corrigée, x pas posée (parti avant)
+  // un élève était-il parti à l'instant t ? (partis, puis presence_history : un retour retire la clé de partis, l'historique garde le départ)
+  S.partiA = function(x, t, sid){ var s = S.sess(sid); if(!s || !t) return false; var pt = (s.partis || {})[x]; if(pt && pt <= t) return true;
+    var hs = (s.presence_history || {})[x]; if(!hs) return false; var ev = Object.keys(hs).map(function(k){ return hs[k]; }).filter(function(e){ return e && e.ts <= t; }).sort(function(a, b){ return a.ts - b.ts; });
+    if(!ev.length) return false; var dernier = ev[ev.length - 1]; return dernier.etat === "absent" && (s.absents || []).indexOf(x) < 0; };
+  // « Trouvée au dernier moment » : la question fixée à la révélation (trouvee/<slug>) ; sinon la première, dans l'ordre de la correction,
+  // dont la feuille, lue, est fausse et la tablette entièrement juste ; une fois par évaluation
+  S.trouveeCalculee = function(x, sid){ var tr = S.trouveeDe(x, sid); if(tr != null) return tr; var ev = S.evalDeSeance(sid || S.sid()); if(!ev) return null; var r = null;
+    S.corrigeesAu(null, sid).some(function(qi){ var q = ev.questions[qi], lu = S.lecture(x, qi, sid), rep = S.reponse(x, qi, sid);
+      if(lu && lu.choix !== "aucun" && !juste(lu.choix, q) && rep && juste(rep.choix, q)){ r = qi; return true; } return false; });
+    return r; };
   S.note = function(x, k, sid){
     var s = S.sess(sid), ev = S.evalDeSeance(sid || S.sid()); if(!s || !ev) return null;
-    var an = S.annulees(sid), ec = S.ecartees(sid), corr = S.corrigeesAu(k, sid), pt = S.partis(sid), lanc = S.lancees(sid);
-    var papier = s.lancee && s.lancee.mode === "papier", tr = S.trouveeDe(x, sid), st = [], pts = [];
-    var trUsed = tr != null;
+    var an = S.annulees(sid), ec = S.ecartees(sid), corr = S.corrigeesAu(k, sid), lanc = S.lancees(sid);
+    var papier = s.lancee && s.lancee.mode === "papier", tr = papier ? null : S.trouveeCalculee(x, sid), st = [], pts = [];
     ev.questions.forEach(function(q, qi){
       var rep = S.reponse(x, qi, sid);
-      if(!rep && pt[x] && lanc[qi] && pt[x] <= lanc[qi]){ st.push("x"); pts.push(null); return; }
+      if(!rep && lanc[qi] && S.partiA(x, lanc[qi], sid)){ st.push("x"); pts.push(null); return; }
       if(papier){ var g = ((s.papier || {})[x] || {})[qi]; if(g == null){ st.push("n"); pts.push(null); } else { st.push(g === "j" || g === true || g === 1 ? "j" : "f"); pts.push(st[st.length - 1] === "j" ? 1 : 0); } return; }
       if(corr.indexOf(qi) < 0){ st.push("n"); pts.push(null); return; }
       var lu = S.lecture(x, qi, sid);
-      if(lu && lu.choix === "aucun"){ st.push("a"); pts.push(0); return; }
-      if(lu && juste(lu.choix, q)){ st.push("j"); pts.push(1); return; }
-      // une fois par évaluation : la feuille fausse, la tablette entièrement juste
-      if(tr === qi || (!trUsed && rep && juste(rep.choix, q))){ trUsed = true; tr = qi; st.push("t"); pts.push(1); return; }
+      // sans lecture de la feuille, pas de note (cadrage : la note, c'est la feuille)
+      if(!lu){ st.push("n"); pts.push(null); return; }
+      if(lu.choix === "aucun"){ st.push("a"); pts.push(0); return; }
+      if(juste(lu.choix, q)){ st.push("j"); pts.push(1); return; }
+      if(tr === qi){ st.push("t"); pts.push(1); return; }
       st.push("f"); pts.push(0);
     });
     var compte = ev.questions.map(function(q, i){ return i; }).filter(function(i){ return an.indexOf(i) < 0 && ec.indexOf(i) < 0 && st[i] !== "x"; });
@@ -595,7 +605,7 @@ var ACT = (function(){
   A.reveler = function(){ var x = e(), id = sid(); if(!id || x.qi == null) return Promise.resolve();
     var rv = SCN.corrigeesAu().filter(function(q){ return q !== x.qi; }).concat([x.qi]), plus = {revelees:rv}, ev = SCN.ev();
     SCN.presents().forEach(function(y){ if(SCN.trouveeDe(y) != null) return; var lu = SCN.lecture(y, x.qi), rep = SCN.reponse(y, x.qi), q = ev.questions[x.qi];
-      if(rep && SCN.juste(rep.choix, q) && !(lu && lu.choix === "aucun") && !(lu && SCN.juste(lu.choix, q))) plus["trouvee/" + y] = x.qi; });
+      if(rep && SCN.juste(rep.choix, q) && lu && lu.choix !== "aucun" && !SCN.juste(lu.choix, q)) plus["trouvee/" + y] = x.qi; });
     return poserDeroule(id, {ph:"revele", qi:x.qi}, plus); };
   A.questionSuivante = function(){ return A.lireQuestion(null); };
   A.retirerAutonomie = function(x, quand, sidX){ var id = sidX || sid(); if(!id) return Promise.resolve(); var maj = {}; maj[cheminS(id, "autonomie/" + x)] = {retire:true, ms:LIVE.maintenant(), quand:quand || "heure"}; return ecrireQCM(maj, "retirerAutonomie"); };
@@ -696,7 +706,7 @@ var ELV = (function(){
     return Promise.resolve({ok:true, eleve:x, tablette:E.tab, cote:c2, voisin:SCN.voisinDe(x)});
   }
   E.cocher = function(attest, ligne, x){ x = qui(x); if(!x) return Promise.resolve(); var a = SCN.attestDe(attest, x) || {}; return w("attest/" + attest + "/" + x, {lignes:Math.max(ligne, a.lignes || 0), fini:!!a.fini, ms:LIVE.maintenant()}, "cocher"); };
-  E.commencer = function(x, attest){ x = qui(x); if(!x) return Promise.resolve(); var n = attest || (SCN.etat() || {}).ph === "att2" ? 2 : 1; var a = SCN.attestDe(n, x) || {};
+  E.commencer = function(x, attest){ x = qui(x); if(!x) return Promise.resolve(); var n = attest || ((SCN.etat() || {}).ph === "att2" ? 2 : 1); var a = SCN.attestDe(n, x) || {};
     return w("attest/" + n + "/" + x, {lignes:a.lignes || 0, fini:true, ms:LIVE.maintenant()}, "commencer"); };
   // répondre : la forme de la 7.7.1 ({choix, ts}), plus le tour et l'heure ; une réponse donnée à une question rouverte est définitive
   E.repondre = function(qi, choix, x){ x = qui(x); var id = sid(); if(!x || !id) return Promise.resolve(); var e = SCN.etat() || {};

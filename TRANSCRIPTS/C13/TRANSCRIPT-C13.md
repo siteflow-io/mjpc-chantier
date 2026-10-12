@@ -1373,3 +1373,13 @@ Paul, tour 52, mot pour mot : « Non ça doit partir en exécutant parce que c'e
 178. **p8-5e close et déposée** : banc unique rejoué au premier plan ce matin, **32 bancs à 0, « TOUS LES BANCS : 0 défaut »**, maquette md5 `f2f9a3215f…` (celle envoyée à Paul au tour 50). Branche `deroule/p8-5e`, partie de p8-5d, commits `0e158563` puis `bd014395` (correction : le `.gitignore` repris de p8-5d excluait les captures `p8-5e-*.png` et les empreintes listaient des fichiers non livrés — refaits : 70 fichiers, 70 OK). Dette n°13 · 15 réglée.
 179. Phrase donnée à Paul pour lancer l'exécutant sur p8-5f, partie de p8-5e.
 
+
+---
+
+## TOUR 54 (12/10/2026, 09:32 → 10:05) — Paul : « livré »
+
+180. **p8-5f close** : branche `deroule/p8-5f`, partie de p8-5e, commit `65dfa4b0` (09:04), NOTE complète, `EMPREINTES.md5` 78 OK, maquette md5 `c298a93c…`, `p8-5c.js` identique. 16 remplacements ; quatre causes mesurées par l'exécutant (la mesure par bloc, le corps défilé, l'atelier sans pages, la place d'une page surestimée de 45 px — la dernière dans la base), douze défauts trouvés et corrigés avec leur cause, deux bancs recalés et justifiés (`test-p8-4-ecrire`, `test-p3-p7`). Banc unique de l'exécutant : 33 à 0 en un passage.
+181. **Vérifié par la conscience, par le geste** (pièces `T54-pages.mjs`, `T54b-tableau.mjs`, `T54c-ouverture.mjs`), à 1280 × 800 et 1920 × 1080 : huit lignes tapées sous le dernier bloc de la diapo 1 → « page 2 / 2 », aucun élément hors du cadre, corps non défilé, « À régler » + 1, le curseur à la fin de la ligne tapée, les huit lignes entières dans la trame ; Maj+← → page 1 ; heure lancée : « page 1 / 2 » à 0 dévoilé, la page passe à 2 d'elle-même au dixième ▶, 0 élément hors du cadre à chacun des 14 ▶, ◀ ×5 → page 1, molette → page 2 ; la fenêtre du tableau suit le pilote à chaque geste. Mes points de p8-5c (9), le panneau qui suit (p8-5d), l'arrêt de la répétition : ça va. Banc unique rejoué chez moi : 33 à 0 (`test-p8-5c` d'abord à 2 défauts par ma faute — la maquette de référence p8-5 n'était pas à côté ; remise, rejoué seul : 0).
+182. **Trouvé en passant, dette n°13 · 17** : à l'ouverture de la fenêtre du tableau, celle-ci ne reçoit pas les pages du pilote (elle pagine seule sur ses lignes dévoilées, sans compteur ; à 9 dévoilés avec le pilote en page 1, aucun compteur) ; dès le ▶ suivant, tout se cale. Jamais hors du cadre (mesuré à 0, 9, 13, 14 dévoilés). Contraire au point 5 de p8-5f à l'ouverture seulement. Complément **p8-5g** écrit (exécutant, par la règle de Paul du tour 52) et soumis avant dépôt.
+183. **Verdict sur p8-5f : ça va** — dette n°13 · 16 réglée ; 13 · 17 ouverte, à régler par p8-5g avant la validation de la maquette.
+

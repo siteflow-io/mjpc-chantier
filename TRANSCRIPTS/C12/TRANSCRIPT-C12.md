@@ -20789,3 +20789,31 @@ Lance les quatre en même temps. Le tableau est aussi au sas : https://github.co
 908. **Le retard** : ils partent vers 17:15 au lieu de 14:10, soit trois heures de moins sur la nuit. Je ne sais pas si tout tiendra d'ici 06:30. S'il manque du temps, ils font l'heure de classe d'abord, et le secours est déjà en ligne : la 7.7.2.
 
 12/10/2026 17:12 MEMO
+
+---
+
+## TOUR 675 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (12/10, 17:35) c'est normal si l'exécutant de l'étape A B et C n'a pas fini?
+
+---
+
+## TOUR 675 — Claude (conscience n°12)
+
+Mesuré : `maquette-qcm` à `1de90a20` (17:06, `eleve-v7-v9.json`) ; présents : la v9 et son md5, `controles-conscience-v9.txt` (110 vérifications, 0 échec), `lecture-v9.md`, `ecrans-changes-v8-v9.txt`, `destinations-v9.txt` ; absents : `banc-final-v9.txt`, la section « Complément 4 » du README, `DEFAUTS.md` à jour ; aucune source changée depuis `6fa8a9fe` ; `code-qcm` sans commit d'exécutant à 17:40. Commun corrigé (« la v9 », pas « finale »).
+
+Réponse mot pour mot :
+
+À jouer : rien · en cours chez l'exécutant : celui de la maquette (fin de l'étape C) ; les quatre du code (rien de poussé, ils lisent) · ouvert : tes 11 questions
+
+909. **Oui, c'est normal.** Il est dans la dernière étape, C. Ce qui est fait : la v9 (15:58), mes contrôles à zéro (110 vérifications), sa lecture des écrans changés, et, à 17:06, la liste des textes vus par l'élève, refaite sur toutes les pages. Ce qui lui reste : son banc final, le README et la liste des défauts. Ensuite, il s'arrête de lui-même.
+
+910. **Laisse-le finir.** Il ne gêne pas les quatre du code : il est sur une autre branche. Et son banc final est la dernière preuve que la v9 dont ils partent est juste.
+
+911. **Une correction de mon point 907** : j'ai écrit « la v9 finale ». C'est la v9 poussée à 15:58, mais sa livraison n'est pas close. Depuis, il n'a changé aucune source : les quatre partent bien du même code que lui. S'il en change encore, le commun leur dit déjà de reporter le changement ; je le vérifierai à son arrêt.
+
+912. **Les quatre du code n'ont encore rien poussé** : c'est normal à cette heure, ils lisent leurs mandats. QCM-1 doit pousser ses premiers noms dans sa première heure, donc vers 18:15. Je le vérifie à ton prochain message.
+
+12/10/2026 17:41 MEMO

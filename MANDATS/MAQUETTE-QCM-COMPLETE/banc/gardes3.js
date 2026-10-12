@@ -475,7 +475,15 @@ function lireEtat(couchesSel){
 }
 const ESPION_G3 = () => { window.__G3OUVERT = []; const note = n => function(){ window.__G3OUVERT.push(n); return null; };
   window.open = note("window.open"); window.print = note("window.print"); window.alert = note("alert"); window.confirm = note("confirm"); window.prompt = note("prompt"); };
+// (complément 4) la page est remise à neuf sur place quand elle est déjà la maquette : la scène est démontée et rendue de nouveau
+// à son adresse (comme la vérification 5 du banc et l'exploration de la garde 16) ; sinon, elle est chargée
 async function recharger(page, url, id){
+  if(page.url().indexOf(url) === 0){
+    const ok = await page.evaluate(a => { if(typeof rendre !== "function") return false; window.__G3OUVERT = []; window.SOMMAIRE_OUVERT = false; window.SCENE_PRETE = null;
+      if(document.activeElement && document.activeElement.blur) document.activeElement.blur(); window.scrollTo(0, 0);
+      const cible = "#scene=" + a + "&cap=1"; if(location.hash !== cible) location.hash = cible; else rendre(); return true; }, id).catch(() => false);
+    if(ok){ await page.waitForFunction(i => window.SCENE_PRETE === i, baseDe(id), {timeout: 10000}).catch(() => {}); await page.waitForTimeout(30); return; }
+  }
   await page.goto("about:blank"); await page.goto(url + "#scene=" + id + "&cap=1");
   await page.waitForFunction(i => window.SCENE_PRETE === i, baseDe(id), {timeout: 10000}).catch(() => {});
   await page.waitForTimeout(30);

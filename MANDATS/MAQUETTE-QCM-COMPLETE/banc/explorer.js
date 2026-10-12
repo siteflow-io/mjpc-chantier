@@ -94,7 +94,8 @@ async function explorer(navig, fichier, scenes, opts){
   return {destinations: tous.filter(x => !x.memeQue), memes: tous.filter(x => x.memeQue), gestes, pages: fait};
 }
 function ecrireListe(res, chemin){
-  const L = ["Garde 16 — les destinations atteintes par le geste, au-delà des " + (res.pages - res.destinations.length) + " scènes (" + res.pages + " pages ouvertes, " + res.gestes.length + " gestes qui mènent quelque part)",
+  const nS = res.pages - res.destinations.length - (res.memes || []).length;
+  const L = ["Garde 16 — les destinations atteintes par le geste, au-delà des " + nS + " scènes (" + res.pages + " pages ouvertes, " + res.gestes.length + " gestes qui mènent quelque part)",
     "Destinations nouvelles : " + res.destinations.length + " (et " + (res.memes || []).length + " adresses qui montrent un écran déjà relevé)", ""];
   res.destinations.slice().sort((a, b) => a.cle.localeCompare(b.cle)).forEach(d => L.push(d.cle + "\t← « " + d.geste + " » (" + d.origine + ")" + (d.fenetre ? " · nouvelle fenêtre" : "")));
   L.push("", "Adresses qui montrent, au caractère près, l'écran d'une page déjà relevée (" + (res.memes || []).length + ") : jouées par cette page", "");

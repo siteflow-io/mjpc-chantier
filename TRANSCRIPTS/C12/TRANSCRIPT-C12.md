@@ -20481,3 +20481,31 @@ Réponse mot pour mot :
 850. **Ma question du point 846 reste** : demain, quelle classe, quelle évaluation, à quelle heure, sur tablettes ou sur papier, et jusqu'où. Avec ta réponse, je découpe au plus juste : si demain s'arrête aux questions, la tranche est bien plus petite.
 
 12/10/2026 13:33 MEMO
+
+---
+
+## TOUR 668 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (12/10, 13:35) ok donc pour demain il me faut la phase question et correction. la maquette actuelle, ce n'est pas du plug and play?
+
+---
+
+## TOUR 668 — Claude (conscience n°12)
+
+Mesuré dans la v8 : aucun appel à la base (« firebase » 0) ; les écrans lisent le moment courant (`MO()`, `MOM()`, `src/c3-base.js`) dans le scénario (`SCN`) ; la suite des moments de la séance du 08/10, de l'entrée aux tablettes au bilan.
+
+Réponse mot pour mot :
+
+851. **Non, la maquette n'est pas prête à brancher.** Elle n'a aucun lien avec la base : j'ai compté, zéro appel. Chaque écran est calculé depuis un scénario écrit d'avance (la classe fictive 3 ESSAI et ses réponses), et un clic mène à l'écran suivant, comme dans un film qu'on feuillette. En classe, il faut que la réponse d'un élève arrive vraiment sur ta console, au tableau et au téléphone.
+
+852. **Mais elle fait gagner beaucoup.** Ses écrans sont écrits comme ceux de l'app, de la même façon et avec les mêmes styles. L'exécutant peut les reprendre presque tels quels et remplacer le scénario par l'état réel de la séance, lu et écrit dans la base. Le travail de cette nuit, c'est ce branchement, pas les écrans.
+
+853. **La tranche pour demain, d'après ta réponse** : l'entrée sur les tablettes partagées, avec le code et la première attestation ; les questions avec leurs deux tours, la réflexion, la réponse et B ; l'estimation et la seconde attestation ; puis la correction, avec la lecture de la feuille du voisin, « Révéler », « Trouvée au dernier moment » et le point d'autonomie. Le tout sur ta console, au téléphone et au tableau. Tout est enregistré dans la base, pour que le soir, codé ensuite, le retrouve. Hors tranche : la co-évaluation, le bilan des élèves en fin d'heure et le soir. Si tu veux aussi la co-évaluation, dis-le.
+
+854. **Cette tranche se passe de MJPC** : le bilan, qui a besoin de tes libellés élève, n'en fait pas partie, et ta classe n'a encore aucune exclusion. L'ordre décidé le 11/10 (MJPC d'abord) ne gêne donc pas demain.
+
+855. **Il me manque une chose pour la cadrer** : quelle évaluation, pour quelle classe, à quelle heure ? Le nouveau QCM ne lance qu'une évaluation complète, avec son chapitre, les deux temps de chaque question et ses compétences ; sinon « Lancer » reste fermé (point 741). Or tes sept évaluations du hub sont encore « à compléter ».
+
+12/10/2026 13:36 MEMO

@@ -316,7 +316,10 @@ function Pilot(s){
   // (QCM-2) en direct, chaque bouton fait avancer la séance (ACT) ; dans la maquette, il mène à la scène qui le montre
   var vaLancer = suivante === 1 ? (Object.keys(s.ecartees || {}).length ? "t-q2-ecartee" : "t-q2-reflexion") : "t-q3-tour1";
   var q0 = suivanteQ(null); if(q0 == null) q0 = 0;
-  if(s.phase === "idle") actions = [h("button", Object.assign({key:1, className:"btn btn-primary"}, geste("c-q1-reflexion", "lancerQuestion", q0)), "▶️ Lancer Q" + (q0 + 1))];
+  // (QCM-2) une séance reprise à une autre heure : après l'appel et l'entrée, « ▶️ Reprendre » fait recommencer le moment gelé au début (ACT.reprendre)
+  var rep = enDirect() ? momH().reprise : null;
+  if(s.phase === "idle" && rep && rep.ph && ["avant", "appel", "entree", "pret"].indexOf(rep.ph) < 0) actions = [h("button", Object.assign({key:1, className:"btn btn-primary", title:BULLES["▶️ Reprendre"]}, geste("c-pret", "reprendre")), "▶️ Reprendre")];
+  else if(s.phase === "idle") actions = [h("button", Object.assign({key:1, className:"btn btn-primary"}, geste("c-q1-reflexion", "lancerQuestion", q0)), "▶️ Lancer Q" + (q0 + 1))];
   else if(s.phase === "reflexion") actions = [h("button", Object.assign({key:1, className:"btn btn-vert"}, geste("c-q1-tour1", "autoriserReponse")), "✋ Autoriser la réponse"), h(BoutonPauseH, {key:2}), h(BoutonRelancerH, {key:3})];
   else if(s.phase === "reponse") actions = [s.tour === 1 ? h("button", Object.assign({key:1, className:"btn btn-vert"}, geste("c-q1-tour2", "tourSuivant")), "⏭️ Tour suivant") : h("button", Object.assign({key:1, className:"btn btn-or"}, geste(s.qi === 2 ? "c-q3-close" : s.qi === 1 ? "c-q2-close" : "c-q1-close", "cloreQuestion")), "🔒 Clore la question"), h(BoutonPauseH, {key:2}), h(BoutonRelancerH, {key:3})];
   else {

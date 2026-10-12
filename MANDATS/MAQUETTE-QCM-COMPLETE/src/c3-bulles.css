@@ -1,0 +1,8 @@
+/* ════════ Complément 3, changement 2 — une bulle « i » se lit en entière ════════
+   Elle s'écrit dans la police et la casse de l'app, jamais dans celles de son étiquette (dans la v7, Georgia, des capitales espacées,
+   un « nowrap » hérité) ; elle passe à la ligne dans sa bulle ; elle se place dans la fenêtre (src/c3-bulles.js, placerBulle). */
+.info-tip{font-family:'Trebuchet MS','Verdana',sans-serif!important;text-transform:none!important;letter-spacing:normal!important;white-space:normal!important;
+  text-align:left!important;font-variant:normal!important;word-break:normal;overflow-wrap:anywhere;max-width:min(320px,calc(100vw - 16px));box-sizing:border-box;z-index:100000}
+.info-tip.placee{position:fixed!important;transform:none!important;right:auto!important;bottom:auto!important;margin:0!important}
+.info-tip.placee::before{display:none}
+.tprof-box .info-tip,.tprof-content .info-tip{font-family:"EB Garamond",serif!important}   /* la police du panneau prof d'index.html (.tprof-box) */

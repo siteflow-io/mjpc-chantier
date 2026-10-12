@@ -31,7 +31,7 @@ var TITRES_771 = [
   // L'appel (l. 7090, 7091)
   [/^c-appel$/, {"Tout le monde présent": "Décocher tout : aucun absent", "🚀 Lancer la séance": "Démarrer la séance avec les absents marqués"}],
   // Les évaluations (l. 6390 à 6413)
-  [/^c-eval/, {
+  [/^(c-eval|c-collage$|x627-3-editeur$)/, {
     "✏️ Modifier": "Modifier le titre, les questions, les choix ou le niveau de difficulté.",
     "➕ Nouvelle évaluation": "Créer une nouvelle évaluation. Tu colles un JSON (généré par l'IA via le bouton Prompt IA) et l'app parse automatiquement les questions, choix, bonnes réponses et niveaux.",
     "📋 Dupliquer": "Créer une copie modifiable. Pratique pour adapter une éval à un autre niveau ou faire des variantes."

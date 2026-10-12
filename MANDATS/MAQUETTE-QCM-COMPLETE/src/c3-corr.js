@@ -46,7 +46,7 @@ function PilotCorrection(){
   return Console("pilotage", "pilot", h("div", {className:"card"},
     TitreCarte(h(F, null, "📝 Correction — " + EV.titre + " — " + CLASSE, InfoI("Pour chaque question, chacun lit d'abord la feuille de son voisin et clique ce qu'elle dit, dans la moitié du voisin. « 💡 Révéler » s'ouvre quand tous les présents l'ont fait. Tu commentes la question après la révélation, jamais avant : sinon, ils cliqueraient ce que tu dis. Les questions vont de la plus ratée à la mieux réussie. Un clic sur un nom agit sur l'élève.")),
       [h("button", {key:0, className:"btn btn-ghost btn-sm", "data-va":"c-depart"}, "🚫 Départ d'un élève"), h("button", {key:5, className:"btn btn-ghost btn-sm", "data-va":"c-finir-autre-heure"}, "⏸️ Finir à une autre heure"), h("button", {key:1, className:"btn btn-rouge btn-sm", "data-va":"c-terminer"}, "🛑 Terminer la séance")]),
-    h("div", {className:"pilot-status correction", title:"Position dans l'ordre de correction (trié par taux d'erreur décroissant). Q" + (qi+1) + " est la " + (pos === 0 ? "1re" : (pos+1) + "e") + " question révélée."}, "Question " + (pos+1) + " / 3 — Q" + (qi+1) + (revele ? " · révélée" : " · lecture de la feuille du voisin")),
+    h("div", {className:"pilot-status correction", title:"Position dans l'ordre de correction (trié par taux d'erreur décroissant). Q" + (qi+1) + " est la " + (pos+1) + "e question révélée."}, "Question " + (pos+1) + " / 3 — Q" + (qi+1) + (revele ? " · révélée" : " · lecture de la feuille du voisin")),
     h("div", {className:"corr-grid"},
       h("div", null,
         h("div", {className:"pilot-q-current"},

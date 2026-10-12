@@ -47,7 +47,10 @@ function Overview(qCur, passees, opts){
       var current = qi === qCur, passee = !current && passees.indexOf(qi) >= 0, avenir = !current && !passee;
       var b = bilanQ(qi, k);
       var marque = ec[qi] ? h("div", {className:"q-marque ecartee"}, "❌ Écartée — pas posée") : an[qi] ? h("div", {className:"q-marque annulee"}, "⚠️ Annulée — posée, puis annulée") : null;
-      var titre = current ? "Question en cours — " + (c.justes && c.justes[1] ? c.justes[0] + "/" + c.justes[1] : "0/" + c.presents) + " justes pour le moment"
+      // (relecteur n°105) la question du moment, close, ne dit plus « en cours »
+      var close = current && (opts.phase === "attente" || m.ph === "close");
+      var titre = close ? "Question close — " + b.justes + "/" + b.repondu + " justes."
+        : current ? "Question en cours — " + (c.justes && c.justes[1] ? c.justes[0] + "/" + c.justes[1] : "0/" + c.presents) + " justes pour le moment"
         : passee ? "Question passée — " + b.justes + "/" + b.repondu + " justes" : null;   // la 7.7.1, l. 8114
       var t = tempsDe(qi);
       var taux = b.repondu ? b.justes / b.repondu : 0;

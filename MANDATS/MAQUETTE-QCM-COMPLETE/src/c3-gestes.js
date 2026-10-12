@@ -65,7 +65,7 @@ function Console(groupe, tab, contenu, séance){
           // le tableau tel qu'il est maintenant ; hors séance, son écran d'attente
           h("button", {className:"btn btn-ghost btn-sm", "data-local":"1", onClick:ouvrirTableau}, "📺 Ouvrir vue tableau"),
           h("button", {className:"btn btn-ghost btn-sm", "data-va":"c-qr"}, "📱 QR pilotage"),
-          h("button", {className:"btn-test", "data-va":"x620-1-mode-test-ouverture", "data-moment":"TEST:avant"}, "🧪 Mode test", InfoI()),
+          h("button", {className:"btn-test", "data-va":"x620-1-mode-test-ouverture", "data-moment":"TEST:avant"}, "🧪 Mode test", InfoI("Le mode test : une classe de test de 30 élèves et ses 15 tablettes simulées, pour éprouver le déroulé sans toucher tes vraies classes. À la sortie, tout est effacé, sauf la démo.")),
           // « ← Retour » revient à l'écran précédent de la console, comme son infobulle le dit ; ouvert tout seul, à l'accueil de l'app
           h("button", {className:"btn btn-ghost btn-sm", "data-local":"1", onClick:function(){ if(vientDUnGeste()) history.back(); else versScene("c-accueil"); }}, "← Retour"))),
       h("div", {className:"tabs"}, h("div", {className:"nav2"},

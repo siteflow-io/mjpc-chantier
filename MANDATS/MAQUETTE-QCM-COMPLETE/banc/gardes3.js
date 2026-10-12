@@ -232,8 +232,21 @@ function titresExistant(){
   // (complément 3) les infobulles de ce que la maquette a cloné mot pour mot de correction_dictee.html (§1.4) : « Déplier ce niveau »…
   const dictee = C.unjs ? C.unjs(lire(path.join(PROD, "correction_dictee.html"))) : lire(path.join(PROD, "correction_dictee.html")).replace(/\\u([0-9a-fA-F]{4})/g, (m, x) => String.fromCharCode(parseInt(x, 16)));
   (dictee.match(/title\s*[:=]\s*[^,}>]+/g) || []).forEach(m => (m.match(/"([^"]+)"|'([^']+)'/g) || []).forEach(q => TITRES_EXISTANT.add(C.normEsp(q.slice(1, -1)))));
+  // (complément 3) les infobulles écrites dans les sources du site : un title littéral (« Démarrer la session avec les absents marqués »,
+  // en « séance » depuis le changement 8), ou le début littéral d'un title que le site calcule (« élève à dispositif — cases cochées le » + la date)
+  TITRES_PREFIXES = [];
+  for(const f of ["evaluation-qcm.html", "index.html"]){
+    const src = lire(path.join(PROD, f));
+    for(const m of src.matchAll(/\btitle\s*[:=]\s*(?:"((?:[^"\\]|\\.)*)"|'((?:[^'\\]|\\.)*)')(\s*\+)?/g)){
+      const lit = C.normEsp((m[1] !== undefined ? m[1] : m[2]).replace(/\\(["'])/g, "$1")); if(lit.length < 6) continue;
+      const seance = lit.replace(/(?<![\p{L}])([Ss])ession(s?)(?![\p{L}])/gu, (x, a, pl) => (a === "S" ? "S" : "s") + "éance" + pl);
+      if(m[3]){ if(lit.length >= 15) TITRES_PREFIXES.push(lit, seance); } else { TITRES_EXISTANT.add(lit); TITRES_EXISTANT.add(seance); }
+    }
+  }
   return TITRES_EXISTANT;
 }
+let TITRES_PREFIXES = [];
+const deLExistant = n => TITRES_PREFIXES.some(p => n.startsWith(p));
 // 10.1 et 10.2 : chaque geste, chaque élément qui porte son texte ou sa marque ; la souris posée en son centre
 function lireBulles10(){
   const root = document.getElementById("root"), out = [];
@@ -287,10 +300,10 @@ function garde10Scene(sc, lu){
   if(!EX_FORMES) EX_FORMES = new Set([...EX].map(x => C.norm(x)));
   for(const t of new Set(lu.titres)){
     // une infobulle de l'existant calculée (« Question en cours — 10/10 justes pour le moment ») : comparée à sa forme, comme à la garde 1
-    const n = C.normEsp(t); if(EX.has(n) || EX_FORMES.has(C.norm(n))) continue;
+    const n = C.normEsp(t); if(EX.has(n) || EX_FORMES.has(C.norm(n)) || deLExistant(n)) continue;
     if(!/[.!?»…)]$/.test(t.trim()) && !/\.\s/.test(t)) out.push(tag + " : une infobulle sans phrase complète — « " + t.slice(0, 100) + " »");
     if(/\S  \S/.test(t)) out.push(tag + " : une infobulle avec un double espace — « " + t.slice(0, 100) + " »");
-    if(MOTS_CODE.test(t)) out.push(tag + " : une infobulle avec un mot du code — « " + t.slice(0, 100) + " »");
+    if(MOTS_CODE.test(t.replace(/«[^»]*»/g, ""))) out.push(tag + " : une infobulle avec un mot du code — « " + t.slice(0, 100) + " »");
   }
   return out;
 }

@@ -7,8 +7,9 @@ const { chromium } = require("/opt/node22/lib/node_modules/playwright");
 const FICHIER = path.resolve(process.argv[2]);
 const seul = process.argv[3] || null;
 const OUT = process.env.OUT || path.join(__dirname, "captures");
-// Les écrans identiques voulus : t-fin est, par définition, le retour à « Combien êtes-vous ? » (cadrage 64)
-const VOULU = {"t-fin": true};
+// Les écrans identiques voulus : t-fin est, par définition, le retour à « Combien êtes-vous ? » (cadrage 64) ;
+// c-demo-faite est c-lancer : depuis le complément 3 (changement 5.7), la démo est faite la veille, et l'écran du 08/10 porte déjà sa ligne
+const VOULU = {"t-fin": true, "c-demo-faite": true};
 const VUES = {
   tablette:  {w: 1280, h: 800, full: false, dsf: 1},
   console:   {w: 1536, h: 864, full: true,  dsf: 1},

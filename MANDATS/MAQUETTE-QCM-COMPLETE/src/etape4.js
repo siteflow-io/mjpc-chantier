@@ -608,7 +608,7 @@ function EcrDeclareDemo(e, qi, ordre, sel, chrono){
     h("div", {className:"fige"}, "⏱️ Temps fini : ton clic est enregistré."),
     h("div", {className:"eleve-choix long fige-choix"}, ordre.map(function(i){
       var moi = sel.indexOf(i) >= 0;
-      return h("button", {key:i, className:"eleve-choix-btn" + (moi ? " selected" : ""), disabled:true, title:moi ? "Ton clic, figé : le temps de réponse est fini." : "Le temps de réponse est fini : ton clic ne change plus."}, h("span", null, q.choix[i]));
+      return h("button", {key:i, className:"eleve-choix-btn" + (moi ? " selected" : ""), disabled:true}, h("span", null, q.choix[i]));
     })),
     h("div", {className:"decl-b-titre"}, e.prenom + ", regarde ta feuille : dit-elle la même chose que ton clic ?"),
     h("div", {className:"decl-b-btns"}, h("button", {className:"decl-b-btn", title:"Élise dit que sa feuille dit la même chose que son clic."}, "Oui, la même chose"), h("button", {className:"decl-b-btn", title:"Élise dit que sa feuille dit autre chose que son clic."}, "Non, autre chose")),

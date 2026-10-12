@@ -57,7 +57,7 @@ function TelClose(){
   return TelCadre([
     TelBandeau("Phase : question close — Q " + c.question[0] + "/" + c.question[1], null),
     h("div", {key:"q"}, TelQ(qi)),
-    suiv != null && h("div", {key:"s", className:"tel-suiv"}, h("span", {style:{fontWeight:900, color:"var(--violet)"}}, "Suiv. Q" + (suiv + 1) + " : "), EV.questions[suiv].enonce),
+    suiv != null && h("div", {key:"s", className:"tel-suiv"}, h("span", {style:{fontWeight:900, color:"var(--violet)"}}, "Suiv. Q" + (suiv + 1) + " : "), h("span", {className:"tel-suiv-e"}, EV.questions[suiv].enonce)),
     h("div", {key:"a", className:"tel-actions"},
       suiv != null ? h("button", {className:"tel-btn tb-primary tb-large", "data-va":suiv === 1 ? "t-q2-reflexion" : "t-q3-tour1", "data-moment":momentDefaut(suiv === 1 ? "t-q2-reflexion" : "t-q3-tour1"), "data-appareil":"tablette"}, "🚀 Lancer Q" + (suiv + 1)) : null,
       sans.length ? h(TelGeste, {lib:"🔓 Rouvrir Q" + (qi + 1), cls:"tb-ghost tb-small", titre:"Rouvre la question " + (qi + 1) + " pour ceux qui n'ont pas répondu, après une confirmation. Une seule fois.",
@@ -118,7 +118,7 @@ function TelReponse(){
     h(TelChrono, {key:"c", reste:m.reste, total:m.ph === "reflexion" ? tempsDe(qi).reflexion : tempsDe(qi).reponse}),
     h("div", {key:"tt"}, h(TelTemps, {qi:qi})),
     h("div", {key:"q"}, TelQ(qi)),
-    suiv != null && h("div", {key:"s", className:"tel-suiv"}, h("span", {style:{fontWeight:900, color:"var(--violet)"}}, "Suiv. Q" + (suiv + 1) + " : "), EV.questions[suiv].enonce,
+    suiv != null && h("div", {key:"s", className:"tel-suiv"}, h("span", {style:{fontWeight:900, color:"var(--violet)"}}, "Suiv. Q" + (suiv + 1) + " : "), h("span", {className:"tel-suiv-e"}, EV.questions[suiv].enonce),
       h(TelGeste, {lib:"❌ Écarter", cls:"tel-mini-b", titre:"Écarte la question " + (suiv + 1) + ", après une confirmation : elle ne sera ni posée ni corrigée, et sort du total.",
         question:"❌ Écarter la question " + (suiv + 1) + " ?", corps:"Elle ne sera ni posée ni corrigée, et sort du total de la note et des compétences.", oui:"❌ Écarter la question " + (suiv + 1), fait:"❌ Question " + (suiv + 1) + " écartée — pas posée."})),
     h("div", {key:"a", className:"tel-actions"},

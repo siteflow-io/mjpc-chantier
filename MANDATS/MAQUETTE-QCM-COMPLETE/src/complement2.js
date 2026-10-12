@@ -106,7 +106,7 @@ function EmploiDuTemps(p){
         h("p", {className: "edt-p"}, "Le calendrier de l’année a été injecté il y a " + (jours < 60 ? "un mois" : Math.floor(jours / 30) + " mois") + " — pense à le réinjecter s’il a bougé."),
         h("div", {className: "edt-actions"},
           h("button", {className: "edt-btn edt-btn-prim", disabled: true, title: MJPC_INCHANGE}, "Réinjecter maintenant…"),
-          h("button", {className: "edt-btn", "data-local": "1", title: "Le rappel se tait trente jours (edtRappelPlusTard) ; rien d’autre ne change.", onClick: function(){ setPlusTard(true); }}, "Plus tard"))),
+          h("button", {className: "edt-btn", "data-local": "1", title: "Le rappel se tait trente jours ; rien d’autre ne change.", onClick: function(){ setPlusTard(true); }}, "Plus tard"))),
       // « ✨ Injecter un objet » et ses trois voies (l. 19828 à 19832), qui ouvrent un autre écran : inchangées
       h("div", {className: "edt-bloc"}, h("div", {className: "edt-titre"}, "✨ Injecter un objet"),
         h("div", {className: "edt-voies"}, Object.keys(EDT_VOIES_INDEX).map(function(k){

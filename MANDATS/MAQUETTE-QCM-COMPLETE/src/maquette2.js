@@ -186,7 +186,7 @@ function RouvrirUn(){
     legende:LEG_Q.slice(0, 4).concat([["#fff","pas de réponse","2px dashed #EF4444"]])});
   var modal = h("div", {className:"checkin-overlay", "data-echap":"c-q2-close"},
     h("div", {className:"checkin-modal", style:{maxWidth:"560px"}},
-      h("div", {className:"checkin-header"}, h("h3", null, "🔓 Rouvrir pour un élève — Q2", InfoI()), h("div", {className:"checkin-sub"}, "Seuls les élèves sans réponse à la question 2 sont listés.")),
+      h("div", {className:"checkin-header"}, h("h3", null, "🔓 Rouvrir pour un élève — Q2", InfoI("Rouvre la question close pour un seul élève, une seule fois : il répond pendant que la classe attend.")), h("div", {className:"checkin-sub"}, "Seuls les élèves sans réponse à la question 2 sont listés.")),
       h("div", {className:"rouvrir-l"},
         h("div", null, h("div", {style:{fontWeight:900}}, "CHEVALLIER Théo"), h("div", {style:{fontSize:".8rem", color:"var(--gris)"}}, "tablette 12, moitié de gauche · avec ZELLER Lou")),
         h("button", {className:"btn btn-primary btn-sm", "data-va":"c-q2-close", "data-moment":"S08:Q2:R1"}, "🔓 Rouvrir pour Théo")),

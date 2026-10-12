@@ -28,6 +28,8 @@ function verifierRetraits(verif){
   const R = retraits();
   for(const r of R){
     const cit = C.normEsp(r.citation || "");
+    // (complément 3) un retrait que le complément demande lui-même cite le complément, mot pour mot
+    if(r.source === "complément 3"){ verif(cit.length >= 12 && C.normEsp(lire(path.join(SAS, "MANDATS", "COMPLEMENT-MAQUETTE-QCM-COMPLETE-3.md"))).includes(cit), "garde 1. retrait « " + r.element + " » (" + r.ecran + ") : la citation est dans le complément 3, mot pour mot", "« " + cit.slice(0, 90) + " »"); continue; }
     verif(cit.length >= 12 && CADRAGE.includes(cit), "garde 1. retrait « " + r.element + " » (" + r.ecran + ") : la citation est dans CADRAGE-QCM.md, mot pour mot", "« " + cit.slice(0, 90) + " »");
     // le point cité : une ligne du cadrage qui commence par « N. » et contient la citation (un point redonné plus loin compte aussi)
     const ok = CADRAGE_LIGNES.some(l => l.startsWith(r.point + ". ") && C.normEsp(l).includes(cit));

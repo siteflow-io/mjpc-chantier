@@ -282,11 +282,11 @@ function AttestCoches(p){   // p : e, lignes, n0, titre, bouton, va, titrePage
     p.lignes.slice(0, Math.min(n + 1, p.lignes.length)).map(function(l, i){
       var on = i < n;
       return h("div", {key:i, className:"li-c" + (on ? " on" : "")},
-        h("button", {className:"case-b" + (on ? " on" : ""), "data-local":"1", disabled:on || i !== n, title:on ? "Cette ligne est déjà cochée." : "Coche cette ligne quand tu l'as lue.", onClick:function(){ setN(n + 1); }}, on ? "✓" : ""),
+        h("button", {className:"case-b" + (on ? " on" : ""), "data-local":"1", disabled:on || i !== n, onClick:function(){ setN(n + 1); }}, on ? "✓" : ""),
         h.apply(null, ["span", null].concat(l)));
     }),
     h("button", {className:"btn btn-primary attest-go", disabled:!tout, "data-va":tout ? p.va : null,
-      title:tout ? "C'est parti." : "« " + p.bouton + " » ne s'ouvre que quand toutes sont cochées."}, p.bouton)));
+      "data-sans-bulle":"1"}, p.bouton)));
 }
 function Attest1(e, n){ var v = autreDe(e); return h(AttestCoches, {e:e, lignes:LignesAttest(e, v), n0:n, titre:"Avant de commencer, " + e.prenom, bouton:"Je commence", va:"t-pret", titrePage:EV.titre}); }
 function EcrLoginInconnu(){
@@ -328,7 +328,7 @@ function EcrDeclareFlux(e, qi, sel, chrono){
     h("div", {className:"fige"}, "⏱️ Temps fini : ton clic est enregistré."),
     h("div", {className:"eleve-choix fige-choix"}, ordre.map(function(i){
       var moi = sel.indexOf(i) >= 0;
-      return h("button", {key:i, className:"eleve-choix-btn" + (moi ? " selected" : ""), disabled:true, title:moi ? "Ton clic, figé : le temps de réponse est fini." : "Le temps de réponse est fini : ton clic ne change plus."}, h("span", null, q.choix[i]));
+      return h("button", {key:i, className:"eleve-choix-btn" + (moi ? " selected" : ""), disabled:true}, h("span", null, q.choix[i]));
     })),
     h("div", {className:"decl-b-titre"}, e.prenom + ", regarde ta feuille : dit-elle la même chose que ton clic ?"),
     h("div", {className:"decl-b-btns"}, h("button", {className:"decl-b-btn"}, "Oui, la même chose"), h("button", {className:"decl-b-btn"}, "Non, autre chose")),

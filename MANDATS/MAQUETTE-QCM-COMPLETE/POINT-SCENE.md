@@ -1,6 +1,6 @@
 # Le tableau « point → scène » (mandat §4 et §6, étape 5)
 
-*Pour chaque point retenu du cadrage qui se voit, la scène qui le montre (`#scene=ID` dans `maquette-qcm-v7.html`). Les points sont ceux du §4 du mandat (tours 604 à 632), plus les points plus anciens que ces scènes rendent visibles. Un point sans scène serait un oubli : il n'y en a pas.*
+*Pour chaque point retenu du cadrage qui se voit, la scène qui le montre (`#scene=ID` dans `maquette-qcm-v8.html`). Les points sont ceux du §4 du mandat (tours 604 à 632), plus les points plus anciens que ces scènes rendent visibles. Un point sans scène serait un oubli : il n'y en a pas.*
 
 ## Tours 604 à 606 (points 427 à 451)
 
@@ -112,3 +112,18 @@
 | 710, 711, 713 (dette n°12 · 87) | le panneau prof bord à bord, à toutes les tailles de la console | toutes les scènes `m-…` |
 | 710, 711, 713, 715 (dette n°12 · 88) | ↻ et ✕ dans chaque carte, à droite, sur la ligne du nom | `m-classe-exclusions`, `m-exclusion-refusee` |
 | 712, 713, 714 (n°12 · 212) | « 📅 Emploi du temps » avec ses vraies données : la rangée en trois groupes, « ⤓ Sortir le JSON » en cases, un objet coché, tous les objets cochés | `m-emploi-du-temps`, `m-emploi-du-temps-un`, `m-emploi-du-temps-tous` |
+
+## Complément 3 (les huit changements ; points 465, 776, 777, 778)
+
+| Point | Ce qui se voit | Scène(s) |
+| --- | --- | --- |
+| changement 1 | à l'écran, les données, les états et les alertes ; les 77 explications dans l'infobulle de leur élément (66) ou dans le mode d'emploi (11) ; une fenêtre de confirmation en une ou deux phrases | `c-lancer`, `c-pret`, `c-autonomie-garde`, `c-finir-autre-heure`, `c-coeval-attente`, `c-reglages`, `c-mode-emploi` |
+| changement 2 | une infobulle sur chaque élément des vues de Paul, qui suit l'état de l'écran ; les bulles « i » lisibles en entier, dans la fenêtre, dans la police de l'app | toutes les scènes de la console, du téléphone et de MJPC ; par exemple `c-q1-tour1`, `x627-3-editeur`, `c-lancer`, `p-reponse`, `m-classe-exclusions` |
+| 465, changement 3 | les évaluations et les séances rangées comme la dictée : la démo, puis 6e, 5e, 4e, 3e toujours là, repliables, « vide pour l'instant » ; le tri par classe ; chaque ligne dit ses classes | `c-evals`, `c-eval-corbeille`, `c-collage`, `c-seances`, `c-seances-lues` |
+| changement 4 | chaque geste mène à l'écran de son objet, au moment de la scène, sur son appareil | `c-voir-tablette`, `c-fiche`, `c-parti`, `p-eleve`, `c-interrompue`, `t-bilan-imprime` |
+| changement 5 | une seule séance (`src/scenario.js`) : Lou à 2 / 3 puis 1 / 3 partout après « Corrigé d'après sa feuille » ; le point de Hugo retiré partout ; les mêmes lignes « À lire » du soir | `c-autonomie-retiree`, `c-bilan`, `c-resultats`, `c-resultats-rendues`, `e-bilan-lou` |
+| changement 6 | tout se lit et s'atteint aux trois tailles : fenêtres qui défilent, tableau en deux colonnes, 12 px, émojis entiers, espaces insécables | `x620-3-mode-test-en-grand`, `b-reponse`, `c-resultats`, `x610-9-telephone-alerte`, `c-reglages-prompt` |
+| changement 7 | le geste se voit : l'éditeur, les clics de l'élève, le clavier, « Que dit la feuille ? » à plusieurs choix, Échap, le glisser-déposer | `x627-3-editeur`, `t-q1-b-michel`, `t-login`, `c-que-dit-la-feuille`, `c-lancer` |
+| 776 | « séance » partout où Paul lit | `c-lancer`, `c-terminer`, `c-seances` |
+| 777 | « ⛔ » pour le seul point d'autonomie ; « Trouvée au dernier moment » en ✓ orange chez Paul | `c-corr-q2-apres`, `p-corr-apres`, `c-resultats` |
+| 778 | les quatre retouches côté élève : la consigne sans « ❌ Tu avais faux. », une seule règle du désaccord, « 📄 Temps pour lire la feuille du voisin », « Ta réponse : aucun de ces choix » | `t-corr-q2-apres`, `t-coeval-ecrit`, `t-corr-q2-lecture`, `t-corr-q3-apres` |

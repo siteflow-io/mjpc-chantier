@@ -114,3 +114,9 @@ td.cell-faux .case-grille{color:#991B1B}td.cell-juste .case-grille{color:#166534
 .moitie .serre-3e .eleve-choix{gap:.22rem}
 /* (garde 4) « 📊 Mes évaluations » en 12 px ne grandit pas la moitié : l'étalon de la vraie question 3 de 3e reste à 67 px */
 .eleve-tete .mes-evals{padding-top:0!important;padding-bottom:0!important;line-height:1.3}
+/* (changement 6.8) une rangée titre / boutons qui passe à la ligne garde ses boutons à droite, comme quand elle tient sur une ligne
+   (x610-8-console-alerte : « Départ / Finir / Terminer » sous un long titre) ; sans retour à la ligne, la marge ne change rien */
+div[style*="justify-content: space-between"][style*="flex-wrap: wrap"] > :last-child:not(:first-child){margin-left:auto}
+/* (capture de c-fin-prevue) un temps à quatre chiffres (1800 s) se lit en entier dans son champ */
+.tm-l input{width:54px;-moz-appearance:textfield;appearance:textfield}
+.tm-l input::-webkit-inner-spin-button,.tm-l input::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}

@@ -501,7 +501,7 @@
   "fichier": "063-c-terminer.png",
   "vue": "console",
   "section": "Les gestes rares de la séance",
-  "titre": "« 🛑 Terminer la session » : la garde."
+  "titre": "« 🛑 Terminer la séance » : la garde."
  },
  {
   "n": 64,
@@ -541,7 +541,7 @@
   "fichier": "068-c-sessions.png",
   "vue": "console",
   "section": "Les gestes rares de la séance",
-  "titre": "« 🔴 1 session en cours » : aller au pilotage, ou terminer."
+  "titre": "« 🔴 1 séance en cours » : aller au pilotage, ou terminer."
  },
  {
   "n": 69,
@@ -573,7 +573,7 @@
   "fichier": "072-x610-5-attestation-2.png",
   "vue": "tablette",
   "section": "La correction",
-  "titre": "La seconde attestation, une coche par ligne, les compétences par leur libellé élève."
+  "titre": "La seconde attestation, une coche par ligne : Julien en est à la 2e, Michel à la 1re ; les compétences, par leur libellé élève, viennent à la 5e ligne."
  },
  {
   "n": 73,
@@ -1245,7 +1245,7 @@
   "fichier": "156-m-taxonomie.png",
   "vue": "console",
   "section": "Réglages, et MJPC",
-  "titre": "MJPC, Taxonomie : le référentiel, l'éditeur fermé."
+  "titre": "MJPC, Taxonomie : la section telle qu'elle s'ouvre, l'éditeur fermé ; le référentiel paraît à « Ouvrir l'éditeur » (scène suivante)."
  },
  {
   "n": 157,

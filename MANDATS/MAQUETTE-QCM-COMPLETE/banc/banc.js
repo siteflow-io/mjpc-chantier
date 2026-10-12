@@ -168,7 +168,8 @@ if(SORTIE && fs.existsSync(SORTIE)) fs.unlinkSync(SORTIE);   // (garde, défaut 
           // 5. les boutons : une infobulle à chacun (console, téléphone), et aucun bouton inerte (partout)
           for(const b of etat.boutons){
             if(C.vueProf(sc) && !b.horsConsole) verif(b.title.length >= 12, "5. " + sc.id + " : infobulle de « " + b.txt + " »", b.title ? "« " + b.title + " »" : "aucune");
-            if(b.desactive) verif(b.title.length >= 12, "5. " + sc.id + " : « " + b.txt + " » grisé dit pourquoi");
+            // (complément 3, garde 10.5) côté élève, aucune infobulle de la maquette : un bouton grisé y dit pourquoi par l'écran lui-même
+            if(b.desactive && !b.eleve) verif(b.title.length >= 12, "5. " + sc.id + " : « " + b.txt + " » grisé dit pourquoi");
           }
           // 5. (garde ajoutée à l'étape 2, défauts 7, 10, 13) chaque bouton actif déclare son geste
           verif(etat.sansGeste.length === 0, "5. " + sc.id + " : chaque bouton déclare son geste", etat.sansGeste.join(" · "));

@@ -30,8 +30,11 @@ function poserGestes(){
   Array.prototype.forEach.call(racine.querySelectorAll("button"), function(b){
     var lib = etiquetteDe(b);
     var t771 = titre771(scene || "", lib);
-    if(t771 && !b.disabled) b.setAttribute("title", t771);
-    else if(!b.getAttribute("title")){ var t = bulleDe(lib, b); if(t) b.setAttribute("title", t); }
+    var cotEleve = !!b.closest(".tablette,.eleve-page,.board-active,.board-attente,.sim,.grand-tab,.voir-tab-in");
+    // côté élève, seules les infobulles que la 7.7.1 y met déjà : « 📄 Imprimer / Exporter mon bilan » (l. 4176) ; pas « Aide et nouveautés » sur la touche « ? » du clavier
+    if(t771 && !b.disabled && (!cotEleve || lib === "📄 Imprimer / Exporter mon bilan")) b.setAttribute("title", t771);
+    // (changement 2) sur un écran d'élève, la maquette n'écrit aucune infobulle : seules restent celles de la 7.7.1
+    else if(!b.getAttribute("title") && !cotEleve){ var t = bulleDe(lib, b); if(t) b.setAttribute("title", t); }
     if(!b.hasAttribute("data-va") && !b.hasAttribute("data-local")){ var v = allerDe(scene, lib); if(v) b.setAttribute("data-va", v); }
     var env = b.parentElement;
     if(env && env.classList.contains("ferme-env") && !env.getAttribute("title") && b.getAttribute("title")) env.setAttribute("title", b.getAttribute("title"));

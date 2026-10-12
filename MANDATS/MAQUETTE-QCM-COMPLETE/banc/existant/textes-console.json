@@ -2748,7 +2748,7 @@
    "destination": {
     "infobulle": "📄 Temps pour lire la feuille du voisin",
     "scene": "c-corr-q2-avant",
-    "place": "orange à la moitié, rouge les 5 dernières secondes"
+    "place": "Le chrono passe à l'orange à la moitié du temps, et au rouge les 5 dernières secondes."
    },
    "auto": true
   },
@@ -3691,7 +3691,7 @@
    "destination": {
     "infobulle": "🗑️ Zone dangereuse",
     "scene": "c-sauvegarde",
-    "place": "Tout part d'abord à la corbeille, gardé un an. Pense quand même à exporter un snapshot."
+    "place": "Tout part d'abord à la corbeille, gardé un an. Pense quand même à exporter la base avant, par « 📥 Exporter snapshot »."
    },
    "auto": true
   },

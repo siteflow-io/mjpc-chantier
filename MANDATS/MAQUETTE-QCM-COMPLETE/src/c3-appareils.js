@@ -92,7 +92,7 @@ function TelStats(courante, connues){
   return h("div", {className:"tel-stats", title:"Aperçu de la classe par question. Vert = >75% bonnes, Bleu = >50%, Orange = >25%, Rouge = <25%. Les rouges sortiront en premier à la correction."}, EV.questions.map(function(q, i){
     var connu = connues.indexOf(i) >= 0, b = bilanQ(i, k), tx = b.repondu ? Math.round(b.justes * 100 / b.repondu) : 0;
     var c = i === courante && !connu ? "cur" : !connu ? "vide" : tx >= 75 ? "v" : tx >= 50 ? "b" : tx >= 25 ? "o" : "r";
-    return h("div", {key:i, className:"tel-st " + c, title:"Q" + (i+1) + (connu ? " — " + b.justes + "/" + b.repondu + " bonnes (" + tx + "%)" : " — pas de réponse")}, h("div", null, "Q" + (i+1)), h("div", {style:{fontSize:".62rem", opacity:.9}}, connu ? tx + " %" : (i === courante ? "en cours" : "—")));
+    return h("div", {key:i, className:"tel-st " + c, title:"Q" + (i+1) + (connu || b.repondu ? " — " + b.justes + "/" + b.repondu + " bonnes (" + tx + "%)" : " — pas de réponse")}, h("div", null, "Q" + (i+1)), h("div", {style:{fontSize:".62rem", opacity:.9}}, connu ? tx + " %" : (i === courante ? "en cours" : "—")));
   }));
 }
 function TelTemps(p){
@@ -118,7 +118,7 @@ function TelReponse(){
     h(TelChrono, {key:"c", reste:m.reste, total:tempsDe(qi).reponse}),
     h("div", {key:"tt"}, h(TelTemps, {qi:qi})),
     h("div", {key:"q"}, TelQ(qi)),
-    suiv != null && h("div", {key:"s", className:"tel-suiv"}, h("span", {style:{fontWeight:900, color:"var(--violet)"}}, "Suiv. Q" + (suiv + 1) + " : "), EV.questions[suiv].enonce,
+    suiv != null && h("div", {key:"s", className:"tel-suiv"}, h("span", {style:{fontWeight:900, color:"var(--violet)"}}, "Suiv. Q" + (suiv + 1) + " : "), h("span", {className:"tel-suiv-e"}, EV.questions[suiv].enonce),
       h("button", {className:"tel-mini-b", "data-va":"c-ecarter", title:BULLES["❌ Écarter"]}, "❌ Écarter")),
     h("div", {key:"a", className:"tel-actions"},
       h("button", {className:"tel-btn tb-vert tb-large", "data-va":"t-q1-passage2"}, m.tour === 1 ? "⏭️ Tour suivant" : "🔒 Clore la question"),
@@ -135,7 +135,7 @@ function TelEleve(){
   var fond = TelCadre([
     TelBandeau("Phase : question close — Q " + c.question[0] + "/" + c.question[1], null),
     h("div", {key:"q"}, TelQ(qi)),
-    h("div", {key:"s", className:"tel-suiv"}, h("span", {style:{fontWeight:900, color:"var(--violet)"}}, "Suiv. Q" + (qi + 2) + " : "), EV.questions[qi + 1].enonce),
+    h("div", {key:"s", className:"tel-suiv"}, h("span", {style:{fontWeight:900, color:"var(--violet)"}}, "Suiv. Q" + (qi + 2) + " : "), h("span", {className:"tel-suiv-e"}, EV.questions[qi + 1].enonce)),
     h("div", {key:"a", className:"tel-actions"},
       h("button", {className:"tel-btn tb-primary tb-large", "data-va":"t-q3-tour1"}, "🚀 Lancer Q" + (qi + 2)),
       h("button", {className:"tel-btn tb-ghost tb-small", "data-va":"c-rouvrir-tous"}, "🔓 Rouvrir Q" + (qi + 1))),   // le libellé de la 7.7.1 (l. 5616)

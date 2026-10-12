@@ -215,7 +215,7 @@ function lireScene(){
   root.querySelectorAll("button").forEach(b => {
     if(!visible(b)) return;
     boutons.push({txt: (b.innerText || "").trim().replace(/\s+/g, " ").slice(0, 60), title: (b.getAttribute("title") || "").trim(), desactive: b.disabled,
-      horsConsole: !!b.closest(".tablette,.eleve-page")});
+      horsConsole: !!b.closest(".tablette,.eleve-page"), eleve: !!b.closest(".tablette,.eleve-page,.sim,.grand-tab,.voir-tab-in")});
   });
   const fr = document.querySelector("iframe");
   let textesIframe = "";

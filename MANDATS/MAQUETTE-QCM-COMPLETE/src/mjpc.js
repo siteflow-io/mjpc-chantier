@@ -107,7 +107,7 @@ function EncartCle(p){
         o.boite(confirmeMJPC("Oublier la clé sur cet appareil", h(F, null, "Les codes redeviendront illisibles ici jusqu’à la prochaine saisie. Les données ne bougent pas.", h("br"), h("br"), "À faire en quittant un poste partagé (salle de classe, CDI) : la clé mémorisée y afficherait les codes à quiconque s’assoit."),
           function(){ p.setCle({valide: false}); })); }}, "Oublier la clé sur cet appareil"),
       // secuVoirAppareils (l. 14378)
-      h("button", {className: "mjpc-act", "data-local": "1", title: "Les appareils où la clé est mémorisée.", onClick: function(){
+      h("button", {className: "mjpc-act", "data-local": "1", title: "Ouvre la liste des appareils où ta clé est mémorisée : sur chacun, les codes des élèves s’affichent sans saisie.", onClick: function(){
         o.boite({titre: "Où la clé est mémorisée", corps: h(F, null, h("div", {className: "cm-sub"}, "Sur chacun de ces appareils, les codes s’affichent SANS saisie. Un poste de salle laissé avec la clé montre tous les codes à l’élève qui s’y assoit pendant l’interclasse : pense au bouton « Oublier la clé » en quittant un poste partagé."),
           SECU_APPAREILS.map(function(a, i){ return h("div", {key: i, className: "secu-app-ligne"}, a[0], a[2] ? h(F, null, " ", h("b", null, "(cet appareil)")) : null, " — clé mémorisée depuis le " + a[1]); })),
           actions: [{label: "Fermer", cls: "primary", titre: "Ferme la fenêtre."}]}); }}, "Où la clé est mémorisée"),
@@ -270,7 +270,7 @@ function FicheEleve(p){
         return h("div", {key: bl[0], className: "elf-bloc"}, h("div", {className: "elf-bloc-t"}, bl[0]),
           ELF_PAP.slice(bl[1], bl[2]).map(function(r){ var id = r[0], on = lisible && !!B.pap[id];
             return h("div", {key: id, className: "elf-ligne"},
-              h("label", {className: "elf-lab"}, h("input", {type: "checkbox", id: "elf-c-" + id, checked: on, disabled: !lisible, title: r[1], onChange: function(ev){ var pp = Object.assign({}, B.pap); pp[id] = ev.target.checked; maj("pap", pp); }}), " ", h("span", null, r[1]), " ", h("span", {className: "elf-id"}, id)),
+              h("label", {className: "elf-lab"}, h("input", {type: "checkbox", id: "elf-c-" + id, checked: on, disabled: !lisible, title: "Coche-la si la fiche PAP de l’élève prévoit : « " + r[1] + " ». Elle vaut pour toutes les disciplines.", onChange: function(ev){ var pp = Object.assign({}, B.pap); pp[id] = ev.target.checked; maj("pap", pp); }}), " ", h("span", null, r[1]), " ", h("span", {className: "elf-id"}, id)),
               h("input", {className: "elf-rem", id: "elf-r-" + id, placeholder: "remarque (facultatif)", disabled: !lisible, value: lisible ? (B.remarques[id] || "") : "", title: "Une remarque sur cette ligne (facultatif).", onChange: function(ev){ var rr = Object.assign({}, B.remarques); rr[id] = ev.target.value; maj("remarques", rr); }}));
           }));
       }),

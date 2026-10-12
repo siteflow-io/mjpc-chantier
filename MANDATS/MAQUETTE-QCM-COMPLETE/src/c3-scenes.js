@@ -33,7 +33,7 @@ function ScParti(){ return Pilot(etatPilot()); }
 function ScDepart(){
   var noms = SCN.presents(MO()).map(nomDe).sort(function(a, b){ return a.localeCompare(b, "fr"); });
   return Fenetre(Pilot(etatPilot()), "🚫 Départ d'un élève", "Qui part en cours de séance ? (infirmerie, tablette en panne…)",
-    h(F, null, h("div", {className:"depart-grille"}, noms.map(function(n){ return h("div", {key:n, className:"depart-l"}, h("span", null, n), h("button", {className:"btn btn-ghost btn-sm", "data-va":"c-parti&parti=" + encodeURIComponent(pre(n)), title:"Marque " + n + " comme parti en cours de séance : il ne bloque plus la classe, ses questions manquées sortent de son total."}, "🚫 Parti")); }))),
+    h(F, null, h("div", {className:"depart-grille"}, noms.map(function(n){ return h("div", {key:n, className:"depart-l"}, h("span", null, n), h("button", {className:"btn btn-ghost btn-sm", "data-va":"c-parti&parti=" + encodeURIComponent(pre(n)), title:(function(){ var f = SCN.SEXE[pre(n)] === "F"; return "Marque " + n + " comme parti" + (f ? "e" : "") + " en cours de séance : " + (f ? "elle" : "il") + " ne bloque plus la classe, ses questions manquées sortent de son total."; })()}, "🚫 Parti")); }))),
     [h("button", {key:1, className:"btn btn-ghost", "data-va":"c-q1-tour1"}, "Annuler")], "c-q1-tour1", 760);
 }
 function ScRetour(){

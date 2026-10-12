@@ -141,13 +141,13 @@ function AttestCoches(p){   // p : e, lignes, n0, titre, bouton, va, titrePage, 
     p.lignes.slice(0, Math.min(n + 1, p.lignes.length)).map(function(l, i){
       var on = i < n;
       return h("div", {key:i, className:"li-c" + (on ? " on" : "")},
-        h("button", {className:"case-b" + (on ? " on" : ""), "data-local":"1", disabled:on || i !== n, title:on ? "Cette ligne est déjà cochée." : "Coche cette ligne quand tu l'as lue.", onClick:function(){ setN(n + 1); }}, on ? "✓" : ""),
+        h("button", {className:"case-b" + (on ? " on" : ""), "data-local":"1", disabled:on || i !== n, onClick:function(){ setN(n + 1); }}, on ? "✓" : ""),
         h.apply(null, ["span", null].concat(l)));
     }),
     p.pret ? h("button", {className:"btn btn-primary attest-go", disabled:!tout, "data-local":"1", onClick:function(){ setFini(true); },
-        title:tout ? "C'est parti." : "« " + p.bouton + " » ne s'ouvre que quand toutes sont cochées."}, p.bouton)
+        "data-sans-bulle":"1"}, p.bouton)
       : h("button", {className:"btn btn-primary attest-go", disabled:!tout, "data-va":tout ? p.va : null, "data-moment":tout && p.va ? momentDefaut(p.va.split("&")[0]) : null,
-        title:tout ? "C'est parti." : "« " + p.bouton + " » ne s'ouvre que quand toutes sont cochées."}, p.bouton)));
+        "data-sans-bulle":"1"}, p.bouton)));
 }
 function Attest1(e, n){ var v = autreDe(e); return h(AttestCoches, {e:e, lignes:LignesAttest(e, v), n0:n, titre:"Avant de commencer, " + e.prenom, bouton:"Je commence", titrePage:EV.titre, pret:function(){ return EcrPret(e); }}); }
 function Attest2(e, n){ var v = autreDe(e); return h(AttestCoches, {e:e, lignes:LignesAttest2(e, v), n0:n, titre:"Avant la correction, " + e.prenom, bouton:"Je commence la correction", titrePage:"📝 Correction", pret:function(){ return EcrAttenteCorr(e); }}); }

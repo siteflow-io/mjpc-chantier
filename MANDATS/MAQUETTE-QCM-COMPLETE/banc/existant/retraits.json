@@ -838,6 +838,22 @@
    "element": "📋 Copier le prompt — grille",
    "point": 714,
    "citation": "Pour la rangée, mon tranchage entre tes trois voies, à valider sur la capture : trois groupes, l'un sous l'autre."
+  },
+  {
+   "ecran": "pilot-close",
+   "type": "infobulle",
+   "element": "Question en cours — 1/25 justes pour le moment",
+   "source": "complément 3",
+   "point": "changement 2",
+   "citation": "La carte d'une question close ne dit pas « Question en cours »."
+  },
+  {
+   "ecran": "pilot-derniere-close",
+   "type": "infobulle",
+   "element": "Question en cours — 1/25 justes pour le moment",
+   "source": "complément 3",
+   "point": "changement 2",
+   "citation": "La carte d'une question close ne dit pas « Question en cours »."
   }
  ]
 }

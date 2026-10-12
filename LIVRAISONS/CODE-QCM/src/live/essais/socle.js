@@ -130,6 +130,7 @@ function verif(ok, quoi, detail){ nb++; if(!ok) ko++; R.push((ok ? "  ok     " :
     await prof.evaluate(() => ACT.retour("maillard_noah"));
     // Q3 : Julien juste, Léa fausse ; l'annulation et le remettre
     // la console fermée pendant Q3 : la tablette relaie les temps comptés (la réflexion, puis le passage, au bout de leur temps)
+    await prof.evaluate(() => ACT.fixerTemps(2, "reponse", 20)); await pause(200);
     await prof.evaluate(() => ACT.lancerQuestion(2)); await prof.close();
     await pause(2000 + 1500 + 1000 + 1500 + 2500);
     d = base("sessions/" + sid + "/deroule");

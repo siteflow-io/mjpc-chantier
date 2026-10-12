@@ -109,21 +109,26 @@ var SCN = (function(){
   // la classe d'une séance : sa clé au hub (« 3 ESSAI ») ; une séance d'avant le 14/07 la porte en slug (« 3_essai », « 3-essai ») : on la retrouve
   function cleDeClasse(x){ var c = LIVE.d.classes || {}; if(!x) return null; if(c[x]) return x; var s = sanMJPC(x); return Object.keys(c).filter(function(k){ return sanMJPC(k) === s; })[0] || x; }
   S.cleDeClasse = cleDeClasse;
+  // les listes de la classe se calculent une fois par version de /classes (elles servent des centaines de fois par seconde)
+  var CACHE = {classes:null, rosters:{}, indexe:false};
+  function cache(){ if(CACHE.classes !== LIVE.d.classes){ CACHE.classes = LIVE.d.classes; CACHE.rosters = {}; CACHE.indexe = false; } return CACHE; }
   function rosterDe(classe){
-    var c = (LIVE.d.classes || {})[cleDeClasse(classe)]; if(!c) return [];
+    var C = cache(), k = cleDeClasse(classe); if(C.rosters[k]) return C.rosters[k].slice();
+    var c = (LIVE.d.classes || {})[k]; if(!c) return [];
     var l = typeof extractEleves === "function" ? extractEleves(c, []) : (Array.isArray(c.eleves) ? c.eleves : []).map(function(e){ return typeof e === "string" ? e : (e && (e.nomComplet || e.name)) || null; }).filter(Boolean);
-    return l.slice().sort(function(a, b){ return a.localeCompare(b, "fr"); });
+    C.rosters[k] = l.slice().sort(function(a, b){ return a.localeCompare(b, "fr"); });
+    return C.rosters[k].slice();
   }
   S.classes = function(){ var c = LIVE.d.classes || {}; return Object.keys(c).filter(function(k){ return c[k] && !c[k].archivee && k.charAt(0) !== "_"; }).sort(function(a, b){ return a.localeCompare(b, "fr"); }); };
   S.roster = rosterDe;
   var NOMS = {};   // eleveSlug → « NOM Prénom », toutes classes
-  function indexer(){ var c = LIVE.d.classes || {}; Object.keys(c).forEach(function(k){ rosterDe(k).forEach(function(n){ NOMS[sanMJPC(n)] = n; }); }); }
+  function indexer(){ var C = cache(); if(C.indexe) return; C.indexe = true; var c = LIVE.d.classes || {}; Object.keys(c).forEach(function(k){ rosterDe(k).forEach(function(n){ NOMS[sanMJPC(n)] = n; }); }); }
   S.classe = function(){ var s = S.sess(); return (s && s.classeSlug) || LIVE.classeSlug || null; };
   S.CLASSE = null;
   S.niveauClasse = function(classe){ var c = (LIVE.d.classes || {})[classe || S.classe()] || {}; return c.niveau || (String(classe || S.classe() || "").match(/^\s*(\d)/) ? RegExp.$1 + "e" : null); };
   // les élèves de la séance : sa liste propre (rattrapage), sinon la classe ; triés
   S.eleves = function(sid){
-    var s = S.sess(sid); var l = s && s.lancee && s.lancee.eleves ? s.lancee.eleves.slice() : rosterDe((s && s.classeSlug) || S.classe()).map(sanMJPC);
+    var s = S.sess(sid), le = s && s.lancee && s.lancee.eleves; var l = le ? (Array.isArray(le) ? le : Object.values(le)).filter(Boolean).slice() : rosterDe((s && s.classeSlug) || S.classe()).map(sanMJPC);
     indexer(); return l.sort(function(a, b){ return S.nomDe(a).localeCompare(S.nomDe(b), "fr"); });
   };
   // « NOM Prénom » ; le prénom : les mots après le dernier mot en capitales
@@ -146,7 +151,11 @@ var SCN = (function(){
   // le temps qui reste au temps en cours, en secondes (le chrono tient si la page se recharge : il se recalcule de depuis + duree)
   S.reste = function(e){ e = e || S.etat(); if(!e || !e.duree) return e && e.reprise ? e.reprise.reste : null; if(e.ph === "pause") return e.reprise ? e.reprise.reste : null;
     return Math.max(0, Math.ceil(e.duree - (LIVE.maintenant() - (e.depuis || 0)) / 1000)); };
-  S.ev = function(sid){ var s = S.sess(sid); if(!s) return null; return S.evalDeSeance(s.id); };
+  // l'évaluation de la séance, gardée tant que la séance et les évaluations ne changent pas (elle sert des centaines de fois par rendu)
+  var MEMO_EV = {};
+  S.ev = function(sid){ var s = S.sess(sid); if(!s) return null; var m = MEMO_EV[s.id];
+    if(m && m.s === s && m.e === LIVE.d.evaluations) return m.v;
+    var v = S.evalDeSeance(s.id); MEMO_EV[s.id] = {s:s, e:LIVE.d.evaluations, v:v}; return v; };
   S.places = function(sid){ var s = S.sess(sid), p = (s && s.places) || {};
     return Object.keys(p).map(Number).filter(function(n){ return !isNaN(n); }).sort(function(a, b){ return a - b; }).map(function(n){ var x = p[n] || {}; return {n:n, g:x.g || null, d:x.d || null, seul:!!x.seul}; }); };
   // les binômes au format de la maquette : [[« NOM Prénom », « NOM Prénom » ou null], …], tablette par tablette
@@ -156,12 +165,15 @@ var SCN = (function(){
   S.cote = function(x, sid){ var t = S.tabletteDe(x, sid); return t ? t.cote : null; };
   S.premierCote = function(qi, sid){ var s = S.sess(sid); return ((s && s.premier) || {})[qi] || "g"; };
   S.coteDuTour = function(qi, tour, sid){ var p = S.premierCote(qi, sid); return tour === 2 ? (p === "g" ? "d" : "g") : p; };
-  S.absents = function(sid){ var s = S.sess(sid); return ((s && s.absents) || []).slice(); };
+  // une liste lue dans la base revient en objet si elle a des trous : on la relit toujours en liste
+  function liste(v){ return !v ? [] : Array.isArray(v) ? v.filter(function(x){ return x != null; }) : Object.keys(v).map(function(k){ return v[k]; }).filter(function(x){ return x != null; }); }
+  S.liste = liste;
+  S.absents = function(sid){ var s = S.sess(sid); return liste(s && s.absents); };
   S.partis = function(sid){ var s = S.sess(sid); return (s && s.partis) || {}; };
   S.presents = function(k, sid){ var s = S.sess(sid); if(!s) return []; var abs = S.absents(sid), pt = S.partis(sid);
     return S.eleves(sid).filter(function(x){ return abs.indexOf(x) < 0 && !pt[x]; }); };
-  S.ecartees = function(sid){ var s = S.sess(sid); return ((s && s.ecartees) || []).map(Number); };
-  S.annulees = function(sid){ var s = S.sess(sid); return ((s && s.annulees) || []).map(Number); };
+  S.ecartees = function(sid){ var s = S.sess(sid); return liste(s && s.ecartees).map(Number); };
+  S.annulees = function(sid){ var s = S.sess(sid); return liste(s && s.annulees).map(Number); };
   S.lancees = function(sid){ var s = S.sess(sid); return (s && s.questionsLancees) || {}; };
 
   /* ── Les évaluations ── */
@@ -255,14 +267,14 @@ var SCN = (function(){
     var qs = ev.questions.map(function(q, i){ return i; }).filter(function(i){ return ec.indexOf(i) < 0; });
     var taux = {}; qs.forEach(function(i){ var rep = pres.filter(function(x){ return S.reponse(x, i, sid); }); taux[i] = rep.length ? rep.filter(function(x){ return S.justeTablette(x, i, sid); }).length / rep.length : 1; });
     return qs.sort(function(a, b){ return taux[a] - taux[b] || a - b; }); };
-  S.corrigeesAu = function(k, sid){ var s = S.sess(sid); return ((s && s.revelees) || []).map(Number); };
+  S.corrigeesAu = function(k, sid){ var s = S.sess(sid); return liste(s && s.revelees).map(Number); };
 
   /* ── La note : la règle (288 à 293, 303, 332) ── */
   // st par question : j juste, t « Trouvée au dernier moment », f faux, a « aucun de ces choix », n pas encore corrigée, x pas posée (parti avant)
   // un élève était-il parti à l'instant t ? (partis, puis presence_history : un retour retire la clé de partis, l'historique garde le départ)
   S.partiA = function(x, t, sid){ var s = S.sess(sid); if(!s || !t) return false; var pt = (s.partis || {})[x]; if(pt && pt <= t) return true;
     var hs = (s.presence_history || {})[x]; if(!hs) return false; var ev = Object.keys(hs).map(function(k){ return hs[k]; }).filter(function(e){ return e && e.ts <= t; }).sort(function(a, b){ return a.ts - b.ts; });
-    if(!ev.length) return false; var dernier = ev[ev.length - 1]; return dernier.etat === "absent" && (s.absents || []).indexOf(x) < 0; };
+    if(!ev.length) return false; var dernier = ev[ev.length - 1]; return dernier.etat === "absent" && liste(s.absents).indexOf(x) < 0; };
   // « Trouvée au dernier moment » : la question fixée à la révélation (trouvee/<slug>) ; sinon la première, dans l'ordre de la correction,
   // dont la feuille, lue, est fausse et la tablette entièrement juste ; une fois par évaluation
   S.trouveeCalculee = function(x, sid){ var tr = S.trouveeDe(x, sid); if(tr != null) return tr; var ev = S.evalDeSeance(sid || S.sid()); if(!ev) return null; var r = null;

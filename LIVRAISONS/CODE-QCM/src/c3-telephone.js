@@ -84,7 +84,8 @@ function telDuMoment(){
 }
 /* ── (QCM-2) en direct : le téléphone de l'appareil, et ses écrans hors des questions (l'estimation, la seconde attestation, la co-évaluation) ── */
 function EcranTelephone(){ return h(TelephoneC); }
-function TelephoneC(){ chargerHeure(); var m = momH(); useSeconde(!!PHASES_CHRONO[m.ph]); return telDuMoment(); }
+// un écran neuf à chaque phase (une clé) : l'infobulle d'un bouton de la phase d'avant ne reste pas (le téléphone n'a pas de champ à garder)
+function TelephoneC(){ chargerHeure(); var m = momH(); useSeconde(!!PHASES_CHRONO[m.ph]); return h(F, {key:[m.ph, m.qi, m.tour].join("|")}, telDuMoment()); }
 function TelEtapeH(){
   var k = MO(), m = momH(), c = SCN.compteurs(k), estim = m.ph === "estim", manquent = (estim ? m.pasEstime : Object.keys(m.enCours || {})) || [], compte = estim ? c.estime : c.prets;
   return TelCadre([

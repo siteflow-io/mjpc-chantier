@@ -329,6 +329,8 @@ function Pilot(s){
     actions = !derniere ? [h("button", Object.assign({key:1, className:"btn btn-primary"}, geste(vaLancer, "lancerQuestion", suivante)), "▶️ Lancer Q" + (suivante + 1)), rouvrir]   // (relecteur n°64) après l'écart de Q3, la suite compte sans elle
                         : [h("button", Object.assign({key:1, className:"btn btn-or"}, geste("c-estim", "lancerEstimation")), "📊 Lancer l'autoévaluation"), rouvrir];
   }
+  // (QCM-2) un bouton neuf par libellé : l'infobulle posée sur « ▶️ Lancer Q1 » ne reste pas sur « ⏭️ Tour suivant » (React garderait le même bouton)
+  actions = actions.map(function(el){ return el && el.type === "button" && typeof el.props.children === "string" ? React.cloneElement(el, {key:"a:" + el.props.children}) : el; });
   var enCours = s.phase === "reflexion" || s.phase === "reponse";
   var qn = suivante == null ? null : EV.questions[suivante], tn = suivante == null ? null : tempsDe(suivante);
   var rangSuiv = suivante == null ? null : suivante + 1 - Object.keys(ec).filter(function(x){ return +x < suivante; }).length;

@@ -228,7 +228,9 @@ function EcrBilan(e, opts){
       : es.type === "sur" ? {type:"sur", msg:"⚠️ Tu pensais avoir mieux fait", detail:"Tu pensais avoir " + libFourchetteH(fE, tot, true) + " " + emE + " mais tu en as eu " + n + " sur " + tot + " (" + libFourchetteH(fN, tot, true) + " " + mt.em + ").", degre:degreSurestime(es.ecart)}
       : {type:"sous", msg:"🌟 Tu te sous-estimais !", detail:""};
   }
-  var corrigees = r.corrigees || [];
+  var corrigees = (r.corrigees || []).slice();
+  // (QCM-2) en direct, une alerte tranchée pendant l'heure (la lecture devient celle de Paul, par:"prof") : « Corrigé d'après ta feuille. »
+  if(enDirect()) EV.questions.forEach(function(q, i){ var l = SCN.lecture(cleE(e), i); if(l && l.par === "prof" && corrigees.indexOf(i) < 0) corrigees.push(i); });
   var compQ = function(cp){ return compQuestions(cp).filter(function(i){ return i !== an; }).map(function(i, j){ return h(F, {key:i}, j ? " · " : "", "Q" + (i+1) + " ", st[i] === "t" ? h("span", {className:"v-orange"}, "✓") : st[i] === "j" ? "✓" : "✗"); }); };
   var autoOk = !SCN.autonomie(cleE(e), k).retire;
   return Page(badgeDe(e), "🎯 Bilan personnel", h("div", {className:"bilan-c"},
@@ -356,7 +358,7 @@ function AlerteCoH(a){
     h("div", {key:"t", className:"al-t"}, "❌ " + nA + " pense " + queNom(nL) + " a mal lu sa feuille à la question " + (a.qi + 1)),
     h("div", {key:"q", className:"al-l"}, "Q" + (a.qi + 1) + " · " + q.enonce + " — bonne réponse : " + txtChoix(q, q.bonnes)),
     h("div", {key:"a", className:"al-l"}, "À la correction, " + pL + " a lu ", h("strong", null, txtChoix(q, lu)), " sur la feuille " + deNom(pA) + "."),
-    ecrit != null && h("div", {key:"r", className:"al-l"}, "Après la correction, " + pA + " dit avoir écrit ", h("strong", null, txtChoix(q, ecrit)), ". Il connaissait alors la bonne réponse."),
+    ecrit != null && h("div", {key:"r", className:"al-l"}, "Après la correction, " + pA + " dit avoir écrit ", h("strong", null, txtChoix(q, ecrit)), ". " + (sexeH(A) === "F" ? "Elle" : "Il") + " connaissait alors la bonne réponse."),
     h("div", {key:"x", className:"al-l al-b"}, "⚠️ Les deux ne peuvent pas être vrais : regarde la feuille " + deNom(pA) + "."),
     sens && h("div", {key:"y", className:"al-l al-y"}, sens),
     avant !== apres && h("div", {key:"e", className:"al-l"}, "Si " + pA + " a raison, sa question " + (a.qi + 1) + " passe de " + avant + " à " + apres + " point."),
@@ -364,8 +366,8 @@ function AlerteCoH(a){
   ];
   var B = function(t, v, dec, ti){ return h("button", Object.assign({key:t, className:"btn btn-" + v, title:ti}, marqueH("AL:" + a.id + ":" + dec, function(){ if(dec === "feuille") ouvrirFen("coevalFeuille", a); else agir("trancher", [a.id, dec === "auteur" ? {decision:"auteur", choix:ecrit, eleve:A} : dec]); })), t); };
   var boutons = [
-    B("Donner raison à " + pA + " : " + txtChoix(q, ecrit) + " → " + apres + " point", "vert", "auteur", "Applique ce que " + pA + " dit avoir écrit : sa question " + (a.qi + 1) + " se recalcule, et sa note aussi. L'alerte se ferme ; « ↩️ Défaire » la rouvre."),
-    B("Donner raison à " + pL + " : " + txtChoix(q, lu) + " → " + avant + " point", "turquoise", "lecteur", "Garde la lecture " + deNom(pL) + " : rien ne change. L'alerte se ferme."),
+    B("Donner raison à " + pA + " : " + txtChoix(q, ecrit) + " → " + apres + " point", "vert", "auteur", "Applique ce que " + pA + " dit avoir écrit" + (ecrit != null ? ", " + txtChoix(q, ecrit) : "") + " : sa question " + (a.qi + 1) + " passe à " + apres + " point, et sa note se recalcule. L'alerte se ferme ; « ↩️ Défaire » la rouvre."),
+    B("Donner raison à " + pL + " : " + txtChoix(q, lu) + " → " + avant + " point", "turquoise", "lecteur", "Garde la lecture " + deNom(pL) + ", " + txtChoix(q, lu) + " : rien ne change. L'alerte se ferme."),
     B("La feuille dit autre chose : je clique ce qu'elle dit", "primary", "feuille", "Ouvre les choix de la question " + (a.qi + 1) + " : tu cliques ce que dit la feuille " + deNom(pA) + ", et sa note se recalcule."),
     B("📌 Je relis ce soir la question " + (a.qi + 1), "or", "soir", "La question " + (a.qi + 1) + " " + deNom(pA) + " passe « ⚠️ À relire » : elle t'attend ce soir dans Résultats. L'alerte se ferme.")
   ];
@@ -381,7 +383,8 @@ function AlerteCoH(a){
 }
 // ce que dit la phrase d'état d'une alerte tranchée : la décision prise, et la note qui en sort
 function AlerteTrancheeH(a){
-  var d = decisionDe(a), q = EV.questions[a.qi], A = a.auteur, L = a.lecteur, nA = nomDe(A), pA = prenomH(A), pL = prenomH(L), n = calc(A), lu = (LU[A] || [])[a.qi];
+  // la lecture d'avant la décision : celle que l'alerte garde (alertes/<id>/lu) ; LU porte déjà la décision
+  var d = decisionDe(a), q = EV.questions[a.qi], A = a.auteur, L = a.lecteur, nA = nomDe(A), pA = prenomH(A), pL = prenomH(L), n = calc(A), lu = a.lu != null ? a.lu : (LU[A] || [])[a.qi];
   var noteTxt = function(passe){ return "sa note provisoire " + (passe ? "passe" : "reste") + " à " + n.n + " / " + n.total + "."; };
   var t;
   if(d.decision === "lecteur") t = ["✅ Alerte tranchée : raison donnée à " + pL, "La lecture " + deNom(pL) + ", " + txtChoix(q, lu) + ", est gardée : la question " + (a.qi + 1) + " de " + nA + " reste à " + ptsDe(q, lu) + " ; " + noteTxt(false)];
@@ -441,19 +444,38 @@ function FenCoevalFeuille(a, fond){
   return h(FenCoevalFeuilleC, {a:a, fond:fond});
 }
 function FenCoevalFeuilleC(p){
+  // la fenêtre « Que dit la feuille ? » de la maquette (QdfFenetreC, c3-feuille.js), pour l'alerte réelle : rien de coché d'avance, chaque choix
+  // porte ce qu'on en sait ; « Valider » tranche l'alerte d'après la feuille (ACT.trancher)
   var a = p.a, q = EV.questions[a.qi], A = a.auteur, pA = prenomH(A), pL = prenomH(a.lecteur), lu = (LU[A] || [])[a.qi], ecrit = a.ecrit != null ? a.ecrit : (SCN.coevalDe(A) || {}).ecrit;
-  var s = useState(null), sel = s[0], set = s[1];
-  var tag = function(i){ var t = []; if(q.bonnes.indexOf(i) >= 0) t.push("bonne réponse"); if(ecrit && ecrit !== "aucun" && ecrit.indexOf(i) >= 0) t.push(pA); if(lu && lu !== "aucun" && lu.indexOf(i) >= 0) t.push("lu par " + pL); return t.join(" · "); };
-  function basculer(i){ var x = sel && sel !== "aucun" ? sel : []; x = x.indexOf(i) >= 0 ? x.filter(function(y){ return y !== i; }) : x.concat([i]); set(x.length ? x : null); }
+  var s = useState([]), sel = s[0], set = s[1], plusieurs = q.bonnes.length > 1;
+  function basculer(i){
+    if(i === "aucun"){ set(sel === "aucun" ? [] : "aucun"); return; }
+    var x = sel === "aucun" ? [] : sel.slice(), k = x.indexOf(i);
+    if(k >= 0) x.splice(k, 1); else if(plusieurs) x.push(i); else x = [i];
+    set(x.sort(function(u, v){ return u - v; }));
+  }
+  var rien = sel !== "aucun" && !sel.length;
   return h(F, null, p.fond, h("div", {className:"checkin-overlay"},
     h("div", {className:"checkin-modal", style:{maxWidth:"460px"}},
       h("div", {className:"checkin-header"}, h("h3", null, "Que dit la feuille ?"), h("div", {className:"checkin-sub"}, nomDe(A) + " — Q" + (a.qi + 1) + " · " + q.enonce)),
       h("div", {style:{padding:".6rem 1.2rem 0", fontSize:".85rem", color:"var(--gris)"}}, pL + " y a lu " + txtChoix(q, lu) + " ; " + pA + " dit avoir écrit " + txtChoix(q, ecrit) + ". Clique sur ce que dit sa feuille."),
       h("div", {className:"qdf-choix qdf-etat"},
-        q.choix.map(function(c, i){ var on = sel && sel !== "aucun" && sel.indexOf(i) >= 0; return h("div", Object.assign({key:i, className:"qdf-c" + (on ? " sel" : ""), title:"Clique si la feuille " + deNom(pA) + " dit « " + c + " »."}, marqueH("QDF:" + i, function(){ basculer(i); })), h("span", null, c), h("span", {className:"tg"}, tag(i))); }),
-        h("div", Object.assign({className:"qdf-c aucun" + (sel === "aucun" ? " sel" : ""), title:"Clique si la feuille " + deNom(pA) + " ne dit aucun de ces choix."}, marqueH("QDF:aucun", function(){ set(sel === "aucun" ? null : "aucun"); })), h("span", null, "Aucun des choix"), h("span", {className:"tg"}, ""))),
-      h("div", {className:"checkin-actions"}, h("button", Object.assign({className:"btn btn-ghost", title:"Ferme sans rien changer : l'alerte reste ouverte."}, marqueH("QDF:annuler", fermerFen)), "Annuler"),
-        h("button", Object.assign({className:"btn btn-primary", disabled:!sel, title:"Applique ce que dit la feuille : la question " + (a.qi + 1) + " " + deNom(pA) + " se recalcule, et l'alerte se ferme."}, marqueH("QDF:valider", function(){ agir("trancher", [a.id, {decision:"feuille", choix:sel, eleve:A}]); fermerFen(); })), "Valider")))));
+        q.choix.map(function(c, i){
+          var tg = [q.bonnes.indexOf(i) >= 0 ? "bonne réponse" : null, lu !== "aucun" && lu && lu.indexOf(i) >= 0 ? "lu par " + pL : null,
+            ecrit && ecrit !== "aucun" && ecrit.indexOf(i) >= 0 ? pA : null].filter(Boolean).join(" · ");
+          var on = sel !== "aucun" && sel.indexOf(i) >= 0;
+          return h("div", Object.assign({key:i, className:"qdf-c" + (on ? " sel" : ""), role:"button", tabIndex:0, "aria-pressed":on,
+            title:on ? "Coché : la feuille " + deNom(pA) + " dit « " + c + " ». Un second clic le décoche." : "Coche-le si la feuille " + deNom(pA) + " dit « " + c + " »" + (plusieurs ? ", avec les autres choix qu'elle dit." : ".")},
+            marqueH("QDF:" + a.id + ":" + i, function(){ basculer(i); })), h("span", null, c), h("span", {className:"tg"}, tg));
+        }),
+        h("div", Object.assign({className:"qdf-c aucun" + (sel === "aucun" ? " sel" : ""), role:"button", tabIndex:0, "aria-pressed":sel === "aucun",
+          title:sel === "aucun" ? "Coché : sa feuille ne dit aucun de ces choix. Un second clic le décoche." : "Coche-le si la feuille " + deNom(pA) + " ne dit aucun de ces choix."},
+          marqueH("QDF:" + a.id + ":aucun", function(){ basculer("aucun"); })), h("span", null, "Sa feuille ne dit aucun de ces choix"), h("span", {className:"tg"}, lu === "aucun" ? "lu par " + pL : ""))),
+      h("div", {className:"checkin-actions"},
+        h("button", Object.assign({className:"btn btn-ghost", title:"Ferme sans rien changer : l'alerte reste ouverte."}, marqueH("QDF:annuler", fermerFen)), "Annuler"),
+        h("button", Object.assign({className:"btn btn-primary", disabled:rien,
+          title:rien ? "Fermé tant que rien n'est coché : coche d'abord ce que dit la feuille " + deNom(pA) + "." : "Applique ce que tu as coché : la question " + (a.qi + 1) + " " + deNom(pA) + " se recalcule d'après sa feuille, et l'alerte se ferme."},
+          marqueH("QDF:valider", function(){ if(rien) return; agir("trancher", [a.id, {decision:"feuille", choix:sel, eleve:A}]); fermerFen(); })), "Valider")))));
 }
 
 /* ── Le bilan de la classe, en direct : les questions comptées, quel que soit leur nombre ── */

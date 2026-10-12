@@ -185,9 +185,12 @@ function ConsoleHeureC(){
   chargerHeure();
   var m = momH();
   useSeconde(!!PHASES_CHRONO[m.ph]);
-  var fond = fondHeure(), f = fe.f && FENETRES_H[fe.f];
+  // un écran neuf à chaque sorte de moment (une clé) : les infobulles posées sur un bouton d'un autre écran ne restent pas ;
+  // pendant les questions, le même écran d'une phase à l'autre (K6 : le champ qu'on tape garde son curseur)
+  var fond = h(F, {key:sorteH(m.ph === "pause" && m.pause ? m.pause.ph : m.ph)}, fondHeure()), f = fe.f && FENETRES_H[fe.f];
   return f ? f(fe.arg, fond) : fond;
 }
+function sorteH(ph){ return ({appel:"lancer", avant:"lancer", hors:"lancer", fin:"lancer", entree:"pret", pret:"pret", estim:"estim", att2:"att2", lecture:"corr", revele:"corr", coeval:"coeval", bilan:"bilan"})[ph] || (ph ? "q" : "lancer"); }
 function fondHeure(){
   var m = momH(), ph = m.ph, e = SCN.etat() || {};
   // une séance finie à une autre heure attend sa reprise : le lancement, avec « ▶️ Reprendre la séance du … »

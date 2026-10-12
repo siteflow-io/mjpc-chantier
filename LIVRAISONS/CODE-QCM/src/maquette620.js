@@ -174,7 +174,8 @@ function testDeroule(){ var se = testSession(); return se ? deroule(se.S) || {} 
 // la classe, ses codes (l'empreinte du hub, comme les vrais), l'évaluation de test : écrits une fois, à l'entrée dans le mode test
 function preparerModeTest(){
   if(MODE_TEST.prepare || !v3db()) return; MODE_TEST.prepare = true;
-  if(typeof LIVE !== "undefined"){ LIVE.classeSlug = CLASSE_TEST; LIVE.sid = null; }
+  // la séance pilotée avant le mode test (une vraie classe, peut-être en pleine heure) : elle se retrouve en sortant du mode test
+  if(typeof LIVE !== "undefined"){ if(LIVE.classeSlug !== CLASSE_TEST) MODE_TEST.avant = {classeSlug:LIVE.classeSlug || null, sid:LIVE.sid || null, lancement:typeof LANCEMENT !== "undefined" ? {classe:LANCEMENT.classe, evalId:LANCEMENT.evalId} : null}; LIVE.classeSlug = CLASSE_TEST; LIVE.sid = null; }
   if(typeof LANCEMENT !== "undefined"){ LANCEMENT.classe = CLASSE_TEST; LANCEMENT.evalId = TEST_EVAL; }
   var db = v3db(), amen = {};
   TEST_NOMS.forEach(function(n){ amen[v3Slug(n)] = {sexe:TEST_F[pre(n)] ? "f" : "m"}; });
@@ -194,7 +195,14 @@ function purgerModeTest(){
     l.push(v3Set(v3Q("sessionActive/" + CLASSE_TEST), null), v3Set("classes/" + CLASSE_TEST, null), v3Set(v3Q("evaluations/" + TEST_EVAL), null), v3Set(v3Q("presence/" + CLASSE_TEST), null));
     testSlugs().forEach(function(k){ l.push(v3Set("codes/" + k, null)); });
     return Promise.all(l);
-  }).then(function(){ MODE_TEST.prepare = false; MODE_TEST.actif = false; MODE_TEST.entres = {}; MODE_TEST.notes = null; if(typeof LIVE !== "undefined"){ LIVE.classeSlug = null; LIVE.sid = null; } if(typeof LANCEMENT !== "undefined"){ LANCEMENT.classe = null; LANCEMENT.evalId = null; } });
+  }).then(function(){ MODE_TEST.prepare = false; MODE_TEST.entres = {}; MODE_TEST.notes = null; quitterModeTest(); if(typeof LANCEMENT !== "undefined"){ LANCEMENT.classe = null; LANCEMENT.evalId = null; } });
+}
+// quitter le mode test (un onglet, « Sortir et purger ») : la console revient à la séance qu'elle pilotait avant
+function quitterModeTest(){
+  MODE_TEST.actif = false; MODE_TEST.prepare = false;
+  if(typeof LIVE !== "undefined" && LIVE.classeSlug === CLASSE_TEST){ var a = MODE_TEST.avant || {}; LIVE.classeSlug = a.classeSlug || null; LIVE.sid = a.sid || null;
+    if(typeof LANCEMENT !== "undefined" && LANCEMENT.classe === CLASSE_TEST){ LANCEMENT.classe = a.lancement ? a.lancement.classe : null; LANCEMENT.evalId = a.lancement ? a.lancement.evalId : null; } }
+  MODE_TEST.avant = null;
 }
 // les notes de la séance de test, pour « ⚖️ Vérifier que les notes n'ont pas bougé »
 function notesTest(se){ var o = {}; se.presents.forEach(function(e){ var r = resultatV(se, e.slug); o[e.slug] = r ? r.n + "/" + r.total : null; }); return o; }
@@ -338,7 +346,7 @@ setTimeout(function(){
   PAGES.ecran = function(){
     var c = avant.apply(this, arguments);
     if(MODE_TEST.actif && typeof LIVE !== "undefined" && LIVE.appareil() === "console" && typeof NAV !== "undefined"){
-      if(NAV.ecran && !/^x620-/.test(NAV.ecran) && !NAV.pile.length) MODE_TEST.actif = false;
+      if(NAV.ecran && !/^x620-/.test(NAV.ecran) && !NAV.pile.length) quitterModeTest();
       else if(!NAV.ecran || /^x620-/.test(NAV.ecran)) return {id:"x620-1-mode-test-ouverture", vue:"console", render:function(){ return h(GardeV, {key:"mode-test"}, ModeTestV()); }, cle:"mode-test"};
     }
     return c;
@@ -350,7 +358,8 @@ function ModeTestVC(){
   useEffect(function(){ preparerModeTest(); remettreDemo(); });
   var se = testSession(), d = se ? deroule(se.S) || {} : {};
   useEffect(function(){ if(se && d.ph && ["appel"].indexOf(d.ph) < 0) entrerTous(se); });
-  if(typeof LIVE !== "undefined" && LIVE.classeSlug !== CLASSE_TEST){ LIVE.classeSlug = CLASSE_TEST; }
+  if(typeof LIVE !== "undefined" && LIVE.classeSlug !== CLASSE_TEST){ if(!MODE_TEST.avant) MODE_TEST.avant = {classeSlug:LIVE.classeSlug || null, sid:LIVE.sid || null, lancement:typeof LANCEMENT !== "undefined" ? {classe:LANCEMENT.classe, evalId:LANCEMENT.evalId} : null}; LIVE.classeSlug = CLASSE_TEST; LIVE.sid = null; }
+  if(typeof LANCEMENT !== "undefined" && LANCEMENT.classe !== CLASSE_TEST){ LANCEMENT.classe = CLASSE_TEST; LANCEMENT.evalId = TEST_EVAL; }
   var panneau;
   if(se && typeof EcranConsoleHeure === "function") panneau = h("div", {className:"test-console"}, EcranConsoleHeure());
   else panneau = h("div", {className:"test-console"}, Lancement(false));

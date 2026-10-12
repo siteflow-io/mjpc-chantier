@@ -20389,3 +20389,39 @@ Réponse mot pour mot :
 835. **Je ne te propose pas de changer sa consigne en route** : il finit, c'est ta règle du 05/10. Pour les mandats de code, je mesurerai le coût de chaque vérification avant de l'écrire, et je te dirai d'avance combien de temps un passage du banc doit prendre.
 
 12/10/2026 13:08 MEMO
+
+---
+
+## TOUR 665 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (12/10, 13:10) Non mais là il faut raccourcir. Je dois utiliser qcm demain, je ne peux pas attendre autant de temps, surtout si le temps qu'il passe n'est pas utile. A-t-il au moins trouvé de nouveaux défauts jusque là grâce à ce temps passé?
+
+---
+
+## TOUR 665 — Claude (conscience n°12)
+
+Mesuré : `evaluation-qcm.html` en production toujours à `ecae6562…` (dettes 198 et 210 du registre toujours ouvertes, réglées « dans la livraison complète » selon le tour 578) ; la sortie de l'exécutant `gardes-16-a-20-sur-v8.txt` (3 149 destinations, 6 728 vérifications, 3 406 échecs, dont 2 537 contrastes sur une quinzaine de classes de la maquette, et cinq défauts nouveaux par la garde 18). Avenant écrit au sas sur l'ordre de Paul (« il faut raccourcir »).
+
+Réponse mot pour mot :
+
+À jouer demain : la version en ligne d'aujourd'hui (7.7.1), pas la maquette · en cours chez l'exécutant : le complément 4, étape B · ouvert : le raccourci ci-dessous, et les deux pannes du point 836.
+
+836. **D'abord, demain.** En classe, c'est la version en ligne qui tourne, quoi qu'il arrive à la maquette : la maquette ne change rien au site, et le nouveau QCM viendra des mandats de code, après ta validation. Or la version en ligne a toujours deux pannes, mesurées les 08 et 09/10 et toujours là : quand tu lances la correction, chaque tablette devient un écran vide ; et le téléphone devient vide dès qu'un élève répond. Chacune se répare en une ligne.
+
+837. **Ma proposition pour demain** : je répare ces deux lignes dans la version en ligne aujourd'hui, avec un banc qui joue la correction sur les tablettes et le pilotage au téléphone, par le geste. Si tu dis « ok », je le fais avant ce soir et je te donne l'adresse et les tests.
+
+838. **Oui, son temps a trouvé de vrais défauts, que je n'avais pas vus** : le QR qui montre toujours la question 1 ; l'appel d'une séance rouverte qui se trompe d'absents (Lou présente le 24/09, Adam barré le 15/09) ; le mode test qui dit « réflexion » pendant B ; le tableau d'une question rouverte sans son énoncé ; et une quinzaine de couleurs de la maquette trop pâles, surtout sur le téléphone. Ce sont ses vérifications de l'étape A qui les ont trouvés, en une passe.
+
+839. **Ce qui coûte sans servir assez** : rejouer toutes ses vérifications sur chacun des 3 149 écrans, ce qu'il fait en ce moment, sans résultat poussé jusqu'ici ; et, à l'étape C, regarder lui-même chaque capture de ces 3 318 pages.
+
+840. **Je raccourcis ainsi, c'est écrit au sas** : il retire ces deux choses ; il garde les vérifications qui ont trouvé les défauts du point 838 ; il corrige tout ce qu'il a trouvé ; il fait passer mes contrôles à zéro ; il ne regarde que les écrans qui ont changé et leurs voisins ; puis il livre. https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/COMPLEMENT-MAQUETTE-QCM-COMPLETE-4-AVENANT.md. Colle-lui, dans sa session :
+
+```
+Paul raccourcit le complément 4. Lis en entier MANDATS/COMPLEMENT-MAQUETTE-QCM-COMPLETE-4-AVENANT.md sur la branche main du sas, et continue d'où tu en es en l'appliquant à la lettre, jusqu'à la livraison de la v9.
+```
+
+841. **Je ne sais pas combien de temps il lui faudra encore** : je ne vois que ses sauvegardes.
+
+12/10/2026 13:13 MEMO

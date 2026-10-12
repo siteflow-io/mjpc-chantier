@@ -20539,3 +20539,53 @@ Réponse mot pour mot :
 861. **Une question** : à quelle heure as-tu cette classe demain ? Si c'est à 8:00, il n'y a pas le temps d'un audit le matin, et il faut que tout soit prêt ce soir.
 
 12/10/2026 13:41 MEMO
+
+---
+
+## TOUR 670 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (12/10, 13:44) je réduis à 11 questions. par ailleurs, je n'ai qu'un objectif: que demain matin à 10h30 maximum, l'app qcm tourne avec tous les attributs de la maquette, tous. il faut que tu arrives à trouver une solution.
+
+---
+
+## TOUR 670 — Claude (conscience n°12)
+
+Mesuré : les chemins de la base de la 7.7.1 (`DB_ROOT = "qcm"`, sessions, sessionActive, evaluations, presence, reponses, autoevals, papier, notifs, classes, codes, mjpcProfils), ses adresses (`mode`, `view`, `qr`), le faux hub du mode test (base partagée entre pages par WebSocket), le format JSON du prompt de création. Écrits au sas : `MANDATS/MANDAT-CODE-QCM.md`, `AUDITS/CONTROLES-QCM-APP/` (essayés sur la 7.7.1 au faux hub : 16 vérifications, 14 échecs attendus, aucune erreur de page).
+
+Réponse mot pour mot (les points 862 à 870 envoyés en cours de tour, les points 871 et 872 à la fin) :
+
+862. **Compris : demain à 10:30 au plus tard, l'app QCM avec tout ce que la maquette lui donne, sur 11 questions.**
+
+863. **La solution : partir de la maquette elle-même, et non de l'app en ligne.** Je reviens sur mon point 857, parce que ton but a changé. La maquette a déjà tous les écrans, et tu les as validés ; ce qui lui manque, c'est la base. L'exécutant remplace son scénario par la vraie séance, lue et écrite dans la base. Chaque clic, au lieu de sauter à l'écran suivant, enregistre le geste, et ce geste arrive aux tablettes, au téléphone et au tableau.
+
+864. **Qui le fait : l'exécutant qui finit la v9**, dans la même session, sans attendre ton feu vert après la v9 : c'est lui qui connaît le mieux la maquette. Il travaille toute la nuit et pousse une sauvegarde à chaque étape. J'écris son mandat maintenant, au sas, et je te donne la phrase à lui coller dès que c'est prêt.
+
+865. **Demain matin** : tu m'écris dès 7:00. Je passe mes contrôles sur la vraie app, avec deux navigateurs (un geste dans l'un doit se voir dans l'autre), puis je rejoue ton heure de classe geste par geste. À 9:00, je te dis si ça va ou non ; si ça va, je la mets en ligne. Sinon, tu fais cours avec la version d'aujourd'hui, réparée de ses deux pannes : je la répare cet après-midi si tu dis « ok » (point 837).
+
+866. **Deux choses à décider pendant que j'écris :**
+- tes 28 libellés élève : je les écris au hub dès ce soir, après une copie de ce qui y est, pour que le bilan les ait. Cela revient sur le point 745 ;
+- les 11 questions : dis-moi lesquelles. Je te propose ensuite leurs temps, le chapitre, les compétences et « ce qu'elle vérifie », à valider.
+
+867. **Ce que je ne sais pas : s'il finira à temps.** C'est le plus gros morceau du chantier. Je le suivrai par ses sauvegardes, et la version de secours du point 865 reste prête.
+
+---
+
+868. **Le mandat est au sas** : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/MANDAT-CODE-QCM.md. L'exécutant y suit l'ordre de demain : d'abord la séance jusqu'à la fin de la correction, puis la co-évaluation et le bilan, puis le travail du soir, puis tout le reste de la maquette. À 06:30 au plus tard, il livre ce qui est fini : chaque partie livrée est complète.
+
+869. **Colle-lui maintenant, dans sa session, sans attendre la v9 :**
+
+```
+Paul change la suite. Lis en entier MANDATS/MANDAT-CODE-QCM.md sur la branche main du sas : finis la v9 au plus court comme le dit son §−1, livre-la, puis enchaîne sans t'arrêter sur ce mandat, d'une traite, jusqu'à sa livraison.
+```
+
+870. **Pendant ce temps, j'écris mes contrôles pour la vraie app**, sur le faux hub, avec plusieurs pages à la fois. L'exécutant les reprendra en cours de route.
+
+---
+
+871. **Mes contrôles pour la vraie app sont prêts et au sas.** Ils lancent la séance, partagent une tablette entre deux élèves, les font entrer avec leur vrai code, posent la question 1, et la font arriver sur ta console, au tableau et au téléphone, dans cinq pages ouvertes à la fois. Ils vérifient aussi qu'un champ où tu tapes n'est pas effacé quand une tablette répond. Durée : 97 secondes. Essayés sur la version d'aujourd'hui, ils tournent sans erreur et échouent là où elle n'a pas encore la maquette, comme prévu. L'exécutant les reprendra en cours de route : https://github.com/siteflow-io/mjpc-chantier/blob/main/AUDITS/CONTROLES-QCM-APP/README.md.
+
+872. **Ce que j'attends de toi** : la phrase du point 869, collée à l'exécutant ; ton « ok » ou ton « non » pour tes 28 libellés élève au hub (point 866) ; les 11 questions que tu gardes ; et ton « ok » pour réparer cet après-midi la version d'aujourd'hui, en secours (point 837).
+
+12/10/2026 13:53 MEMO

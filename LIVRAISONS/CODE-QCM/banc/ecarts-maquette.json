@@ -714,6 +714,30 @@
    "sorte": "geste",
    "texte": "↩️ Restaurer",
    "raison": "La corbeille de la maquette contient un brouillon d'évaluation mis à la corbeille le 05/10 (src/scenario.js, CORBEILLE) ; la corbeille du faux hub est vide."
+  },
+  {
+   "scene": "x632-pdf",
+   "sorte": "texte",
+   "texte": "🖨️ Aperçu avant impression · Destination : Enregistrer au format PDF",
+   "raison": "La maquette imitait la fenêtre d'impression du navigateur ; l'app ouvre la vraie (sa fenêtre, puis print(), comme le dit l'infobulle du bouton) : le bandeau est celui du navigateur, pas de l'app (QCM-3, DEMANDES 21:10)."
+  },
+  {
+   "scene": "x632-pdf",
+   "sorte": "bulle",
+   "texte": "L'aperçu de l'impression du navigateur : « Enregistrer au format PDF » garde le fichier.",
+   "raison": "Même raison : l'infobulle du bandeau imité ; le navigateur dessine sa propre fenêtre."
+  },
+  {
+   "scene": "x632-pdf",
+   "sorte": "texte",
+   "motif": "#e- éval # Analyse logique|c#-langue-#|c#-ecrire-#|Commentaire :",
+   "raison": "Le PDF de la maquette est celui de la séance de 3e d'analyse logique (S3E) ; celui du banc, de la séance d'essai qu'il joue : les lignes, les compétences et les commentaires sont des données."
+  },
+  {
+   "scene": "c-reglages-prompt",
+   "sorte": "texte",
+   "motif": "^Chapitre choisi",
+   "raison": "Le README du prompt (MANDATS/PROMPT-QCM-CREATION/README.md) : « Paul choisit d'abord le chapitre ; l'app remplace alors les jetons » : l'app met un menu du chapitre à la place de la ligne figée de la maquette (QCM-3, DEMANDES 20:45)."
   }
  ],
  "horsApp": {

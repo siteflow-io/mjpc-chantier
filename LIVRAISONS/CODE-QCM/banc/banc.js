@@ -35,6 +35,8 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
   const {B, srv, port} = await O.fauxHub(B => {
     // l'évaluation d'essai porte le titre que lui donne le scénario de la maquette (« Évaluation d'essai — 3 questions »)
     B.tree.qcm.evaluations.essai.titre = S.EV_ESSAI.titre;
+    // le sexe de chaque élève, là où MJPC l'écrit pour les apps (QCM-3, DEMANDES 20:15) : les accords de la maquette (Léa, Inès… au féminin)
+    B.tree.classes["3 ESSAI"].amenagements = Object.fromEntries(ESSAI.map(n => [slug(n), {sexe: S.SEXE[n.split(" ").slice(1).join(" ")] === "F" ? "f" : "m"}]));
     // le QCM précédent du scénario (CH1, 24/09, au format de la 7.7.1, Lou et Adam absents), ses notes dans l'ordre des binômes de la maquette :
     // l'app forme d'elle-même les binômes « d'après le QCM précédent » (Julien et Michel, Léa et Tom… ; Théo, sans note, avec Lou après l'appel)
     const ch1 = B.tree.qcm.evaluations[S.ID_CH1];
@@ -283,13 +285,15 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
     const est = sess().s.autoevals || {};   // contrat C3 : autoevals/<eleve>
     J.v(Object.keys(est).length >= 22, H1, "les 22 estimations sont dans la base (Jade et Enzo n'en font pas)", Object.keys(est).length);
     J.v(await cliquer(prof, /Lancer la correction/), H2, "« 📝 Lancer la correction » se clique"); await pause(800);
-    await scene("x610-5-attestation-2", tabJM, "tablette");
+    await scene("x610-5-attestation-2", tabJM, "tablette"); await scene("c-attest2", prof, "console");
+    J.v(await etatBouton(prof, /Commencer la correction/) === "fermé" && /La correction commence quand les 24 présents ont coché la seconde attestation/.test(await texte(prof)), H2, "seconde attestation en cours : « 🔒 ▶️ Commencer la correction » fermé, « La correction commence quand les 24 présents ont coché… » (c-attest2)", await etatBouton(prof, /Commencer la correction/));
     await Promise.all(Object.entries(tabs).map(async ([n, p]) => { const t = TABS.find(x => x.n === n); for(const [cote] of cotesDe(t)){ await cocherTout(p, cote); await cliquer(p, /^Je commence la correction$/, cote); } }));
     await pause(800);
-    await scene("c-attest2", prof, "console");
     const at2 = (sess().s.attest || {})[2] || (sess().s.attest || {})["2"] || {};
     J.v(Object.keys(at2).length >= 24, H1, "les 24 secondes attestations dans la base (attest/2)", Object.keys(at2).length);
-    J.v(await cliquer(prof, /Commencer la correction/), H2, "« ▶️ Commencer la correction » s'ouvre quand tous ont coché, et se clique", await etatBouton(prof, /Commencer la correction/));
+    // c-attest2 : « La correction commence quand tous les présents l'ont cochée en entier, comme au début » (l'infobulle de la maquette) ; sinon le bouton
+    if(!(await attendreBase(() => etat().ph === "lecture", 3000))) await cliquer(prof, /Commencer la correction/);
+    J.v(await attendreBase(() => etat().ph === "lecture", 4000), H1, "tous ont coché la seconde attestation : la correction commence (deroule.ph = lecture), comme le dit c-attest2", JSON.stringify(etat()));
     await pause(900);
     const oc = sess().s.ordreCorr;
     J.v(JSON.stringify(oc) === JSON.stringify([1, 2, 0]) || JSON.stringify(oc) === JSON.stringify({0: 1, 1: 2, 2: 0}), H1, "l'ordre de la correction, de la plus ratée à la mieux réussie : Q2, Q3, Q1 (ordreCorr)", JSON.stringify(oc));

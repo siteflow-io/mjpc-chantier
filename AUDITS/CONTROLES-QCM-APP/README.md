@@ -12,13 +12,19 @@
 - K6 : au 1er tour, une moitié répond ; sa réponse se voit sur la console ; un champ de la console garde sa valeur et le curseur pendant ce temps (règle du 04/10).
 - K7 : « ⏭️ Tour suivant », l'autre moitié répond ; « 🔒 Clore la question ».
 - K8 : les réponses des deux élèves sont dans la base, sous la séance.
+- K10 : les questions 2 et 3, chacune à ses deux tours, avec B, puis closes.
+- K11 : l'estimation, la seconde attestation, puis la correction, qui commence par la question la plus ratée (Q2).
+- K12 : « 💡 Révéler » fermé tant qu'une feuille n'est pas lue, ouvert quand toutes le sont ; après, la bonne réponse sur les deux moitiés ; « Trouvée au dernier moment » pour la feuille fausse et la tablette juste, et pour elle seule.
+- K13 : la co-évaluation, puis « 🏁 Afficher leur bilan aux élèves ».
+- K14 : les notes, d'après la règle : Julien 3 / 3, son voisin 1 / 3 ; aucun code de compétence dans le bilan de l'élève.
+- K15 : la base garde les lectures, la question trouvée et le bilan affiché (contrat, COMMUN §3.1).
 - K9 : aucune erreur de page ni boîte système dans les cinq pages.
 
 Les attendus viennent de la maquette validée (ses libellés, ses règles) et de la base elle-même, jamais de l'app contrôlée.
 
 ## Comment les passer
 
-`APP_FILE=<evaluation-qcm.staging.html> BANC=AUDITS/QCM-MODE-TEST-09-10/banc node AUDITS/CONTROLES-QCM-APP/controles-app.js sortie.txt` (après `npm install` dans `BANC`). Code de sortie 1 si un seul contrôle échoue. Durée mesurée : 97 s.
+`APP_FILE=<evaluation-qcm.staging.html> BANC=AUDITS/QCM-MODE-TEST-09-10/banc node AUDITS/CONTROLES-QCM-APP/controles-app.js sortie.txt` (après `npm install` dans `BANC`). Code de sortie 1 si un seul contrôle échoue. Durée mesurée de K1 à K9 : 97 s (K10 à K15 ajoutés au tour 672, pas encore mesurables : l'app n'existe pas encore).
 
 ## Éprouvés
 

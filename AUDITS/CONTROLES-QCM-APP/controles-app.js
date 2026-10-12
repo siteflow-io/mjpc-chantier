@@ -152,6 +152,84 @@ async function taper(p, moitie, placeholder, valeur) {
     const brut = JSON.stringify(sess);
     verif(8, /abrial_julien|ABRIAL Julien/.test(brut) && new RegExp(voisin.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/ /g, "_") + "|" + voisin).test(brut), "les réponses des deux élèves sont dans la base, sous la séance", brut.slice(0, 200));
 
+    // K10 — les questions 2 et 3, chacune à ses deux tours : Julien juste à Q2 sur la tablette, son voisin faux ; Q3 : Julien juste, le voisin faux
+    // une moitié est « active » quand ses choix de la question sont cliquables ; chaque moitié répond une fois, à son tour (le 1er tour n'est pas toujours celui de gauche)
+    const active = (cote, qi) => tab.evaluate(([cote, choix]) => { const W = innerWidth; const all = [...document.querySelectorAll("body *")].filter(e => { const r = e.getBoundingClientRect(); return r.width > W * 0.35 && r.width < W * 0.6 && r.height > 300; });
+      const h = all.filter(e => !all.some(o => o !== e && o.contains(e))).sort((a, b) => a.getBoundingClientRect().x - b.getBoundingClientRect().x)[cote]; if (!h) return false;
+      return [...h.querySelectorAll("button, [role=button]")].some(b => !b.disabled && b.getBoundingClientRect().width > 0 && choix.includes((b.textContent || "").trim())); }, [cote, EV.questions[qi].choix]);
+    const repondreTour = async (qi, choixG, choixD) => {
+      await cliquer(prof, /Autoriser la réponse/); await pause(600);
+      const fait = new Set();
+      for (const tour of [1, 2]) {
+        for (let essai = 0; essai < 20 && fait.size < tour; essai++) {
+          for (const [cote, choix] of [[0, choixG], [1, choixD]]) {
+            if (fait.has(cote) || !(await active(cote, qi))) continue;
+            for (const c of choix) await cliquer(tab, new RegExp("^" + EV.questions[qi].choix[c].replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "$"), cote);
+            fait.add(cote);
+            for (let k = 0; k < 12 && !(await cliquer(tab, /Oui, la même chose/, cote)); k++) await pause(500);
+          }
+          if (fait.size < tour) await pause(500);
+        }
+        if (tour === 1) { await cliquer(prof, /Tour suivant/); await pause(800); }
+      }
+      return fait.size === 2 && await cliquer(prof, /Clore la question/);
+    };
+    await cliquer(prof, /Lancer Q2/); await attendre(tab, /QUESTION 2/i, 8000);
+    verif(10, await repondreTour(1, EV.questions[1].bonnes, [1]), "question 2 : les deux tours joués, puis close");
+    await cliquer(prof, /Lancer Q3/); await attendre(tab, /QUESTION 3/i, 8000);
+    verif(10, await repondreTour(2, EV.questions[2].bonnes, [0]), "question 3 : les deux tours joués, puis close");
+
+    // K11 — l'estimation et la seconde attestation, puis la correction, dans l'ordre des plus ratées : Q2 (aucune lecture n'est encore faite)
+    await cliquer(prof, /Lancer l'autoévaluation/); await pause(800);
+    for (const i of [0, 1]) { await tab.evaluate(i => { const W = innerWidth; const all = [...document.querySelectorAll("body *")].filter(e => { const r = e.getBoundingClientRect(); return r.width > W * 0.35 && r.width < W * 0.6 && r.height > 300; });
+      const h = all.filter(e => !all.some(o => o !== e && o.contains(e))).sort((a, b) => a.getBoundingClientRect().x - b.getBoundingClientRect().x)[i]; const b = h && [...h.querySelectorAll("button")].find(x => /bonne|réponse/i.test(x.textContent) && x.getBoundingClientRect().width > 0); if (b) b.click(); }, i); await pause(300); }
+    await cliquer(prof, /Lancer la correction/); await pause(800);
+    for (const i of [0, 1]) {
+      for (let k = 0; k < 12; k++) { const fait = await tab.evaluate(i => { const W = innerWidth; const all = [...document.querySelectorAll("body *")].filter(e => { const r = e.getBoundingClientRect(); return r.width > W * 0.35 && r.width < W * 0.6 && r.height > 300; });
+          const h = all.filter(e => !all.some(o => o !== e && o.contains(e))).sort((a, b) => a.getBoundingClientRect().x - b.getBoundingClientRect().x)[i]; if (!h) return false;
+          const c = [...h.querySelectorAll("input[type=checkbox], [role=checkbox]")].find(x => !x.checked && x.getAttribute("aria-checked") !== "true" && x.getBoundingClientRect().width > 0); if (!c) return false; c.click(); return true; }, i); if (!fait) break; await pause(250); }
+      await cliquer(tab, /Je commence|J'ai compris|Je suis prêt/, i);
+    }
+    await pause(1200);
+    m = await moities(tab);
+    verif(11, m.length === 2 && m.every(x => /QUESTION 2/i.test(x)), "la correction commence par la question 2, la plus ratée (Q2 : 1 juste sur 2 ; Q1 : 2 sur 2)", m.map(x => (x.match(/QUESTION \d/i) || ["?"])[0]).join(" | "));
+
+    // K12 — « 💡 Révéler » reste fermé tant qu'un présent n'a pas eu sa feuille lue ; la lecture se clique dans la moitié du propriétaire de la feuille
+    verif(12, (await fermeOuvert(prof, /Révéler/)) !== "ouvert", "« 💡 Révéler » fermé avant toute lecture", await fermeOuvert(prof, /Révéler/));
+    // la feuille de Julien (moitié de gauche), lue par son voisin : il a écrit faux (Genève) ; celle du voisin (moitié de droite) : faux aussi (Genève)
+    await cliquer(tab, /^Genève$/, 0); await cliquer(tab, /^Genève$/, 1);
+    await pause(1000);
+    verif(12, (await fermeOuvert(prof, /Révéler/)) === "ouvert", "« 💡 Révéler » s'ouvre quand les deux feuilles sont lues", await fermeOuvert(prof, /Révéler/));
+    await cliquer(prof, /Révéler/); await pause(1000);
+    m = await moities(tab);
+    verif(12, m.length === 2 && m.every(x => /BONNE RÉPONSE/i.test(x)), "après « Révéler », les deux moitiés montrent la bonne réponse");
+    // Julien : sa feuille est fausse, sa tablette juste : « Trouvée au dernier moment » (une fois par évaluation) ; son voisin : faux partout
+    verif(12, /Trouvée au dernier moment/.test(m[0] || ""), "Julien, feuille fausse et tablette juste à Q2 : « Trouvée au dernier moment »", (m[0] || "").slice(0, 200));
+    verif(12, !/Trouvée au dernier moment/.test(m[1] || ""), "son voisin, faux sur la feuille et sur la tablette : pas de « Trouvée au dernier moment »");
+    // Q3 puis Q1 : les feuilles lues justes pour Julien, fausses pour le voisin à Q3, justes à Q1
+    for (const [qi, g, d] of [[2, EV.questions[2].bonnes, [0]], [0, EV.questions[0].bonnes, EV.questions[0].bonnes]]) {
+      await cliquer(prof, /Question suivante/); await pause(900);
+      for (const [cote, choix] of [[0, g], [1, d]]) for (const c of choix) await cliquer(tab, new RegExp("^" + EV.questions[qi].choix[c].replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "$"), cote);
+      await pause(800); await cliquer(prof, /Révéler/); await pause(900);
+    }
+
+    // K13 — la co-évaluation : chacun dit que son voisin a bien lu ; puis « 🏁 Afficher leur bilan aux élèves »
+    await cliquer(prof, /co-évaluation/); await pause(900);
+    for (const i of [0, 1]) await cliquer(tab, /^✅|bien lu|C'est bon|d'accord/i, i);
+    await pause(1000);
+    verif(13, await cliquer(prof, /Afficher leur bilan aux élèves/), "« 🏁 Afficher leur bilan aux élèves » se clique quand la co-évaluation est finie");
+    await pause(1200);
+
+    // K14 — les notes, d'après la règle (la note, c'est la feuille ; « Trouvée au dernier moment » compte une fois) : Julien 3 / 3, son voisin 1 / 3
+    m = (await moities(tab)).map(x => x.replace(/\s+/g, " "));
+    verif(14, /3 ?\/ ?3/.test(m[0] || ""), "le bilan de Julien dit 3 / 3 (Q1 et Q3 justes sur sa feuille, Q2 trouvée au dernier moment)", (m[0] || "").slice(0, 240));
+    verif(14, /1 ?\/ ?3/.test(m[1] || ""), "le bilan de son voisin dit 1 / 3 (seule Q1 juste sur sa feuille)", (m[1] || "").slice(0, 240));
+    verif(14, (await moities(tab)).every(x => !/c4-[a-z]+-\d\d/.test(x)), "le bilan de l'élève ne montre aucun code de compétence (ses libellés élève)");
+
+    // K15 — tout est dans la base : les lectures, la question trouvée au dernier moment, le bilan affiché
+    const s2 = JSON.stringify(srv.store.get("qcm/sessions") || {});
+    verif(15, /lectures/.test(s2) && /trouvee/.test(s2) && /bilanAffiche/.test(s2), "la base garde les lectures, la question « trouvée » et le bilan affiché (contrat, COMMUN §3.1)", s2.slice(0, 200));
+
     // K9 — aucune boîte système, aucune erreur de page
     const toutes = [prof, tab, tab2, tableau, tel];
     const errs = [].concat(...toutes.map(x => x.__err));

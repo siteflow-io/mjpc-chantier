@@ -342,7 +342,7 @@ function MoitieH(p, cote, autreP){
   if(typeof SCN.doitDireB === "function" && SCN.doitDireB(p)){ var bp = m.bPour || {}; return EcrDeclareH(e, bp.qi != null ? bp.qi : qi, bp.reste != null ? bp.reste : reste); }
   if(ph === "passage") return cote === actif ? EcrPassage(e, qi, reste) : (v && !seul ? Voile(v, true, e) : EcrAttente(e));
   if(ph === "reponse") return main ? EcrReponse(e, qi, ORD[qi][p], TABL[p][qi], reste) : voile();
-  if(ph === "b") return cote === actif || seul ? EcrDeclareH(e, qi, reste) : voile();
+  if(ph === "b") return cote === actif && !seul || seul && SCN.ditB(p, qi) ? EcrDeclareH(e, qi, reste) : voile();
   if(ph === "rouvert") return m.pour === p ? EcrReponse(e, qi, ORD[qi][p], TABL[p][qi], reste) : m.pour && m.pour === vSlug && !seul ? Voile(v, false, e) : EcrAttente(e);
   if(ph === "estim") return EcrEstim(e, ESTIM[p] || null);
   if(ph === "att2"){

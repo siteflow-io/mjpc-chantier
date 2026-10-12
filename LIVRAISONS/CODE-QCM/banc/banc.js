@@ -181,14 +181,19 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
         if(qi === 0 && tour === 1){ garde = await prof.evaluate(() => { const f = [...document.querySelectorAll("input[type=number], input[type=text], input:not([type])")].filter(x => x.getBoundingClientRect().width > 0 && !x.disabled && !x.readOnly).pop(); if(!f) return false; f.setAttribute("data-garde", "1"); return true; });
           if(garde){ await prof.click("[data-garde='1']"); await prof.keyboard.press("End"); await prof.keyboard.type("7"); } }
         let repondus = 0; const ontRepondu = new Set();
+        const retenus = new Set(qi === 0 ? (tour === 1 ? ["perraud_jade", "tessier_anna"] : ["zeller_lou"]) : []);
         for(let essai = 0; essai < 3; essai++){
           await Promise.all(Object.entries(tabs).map(async ([n, p]) => { const t = TABS.find(x => x.n === n);
             for(const [cote, sl] of cotesDe(t)){
               if(ontRepondu.has(sl) || (qi === 1 && tour === 2 && sl === "chevallier_theo")) continue;       // Théo ne répond pas à Q2 (c-q2-close)
+              if(essai === 0 && retenus.has(sl)) continue;       // ceux qui répondent encore au moment de la scène (S08:Q1:T1 nonRep : Jade, Anna ; S08:Q1:T2 : Lou)
               const ouverts = await choixOuverts(p, cote, lab); if(!ouverts.length) continue;
               for(const c of choixDe(sl, qi)) await cliquer(p, new RegExp("^" + esc(lab[c]) + "$"), cote, {apres: 120});
               ontRepondu.add(sl); repondus++;
             } }));
+          if(essai === 0 && qi === 0){ await pause(400); await scene(tour === 1 ? "c-q1-tour1" : "c-q1-tour2", prof, "console");
+            J.v(/✋ répond/.test(await texte(prof)), H2, "Q1, tour " + tour + " : la tuile de qui répond encore dit « ✋ répond… » (" + (tour === 1 ? "c-q1-tour1" : "c-q1-tour2") + ")", ((await texte(prof)).match(/(PERRAUD Jade|ZELLER Lou)[\s\S]{0,60}/) || [""])[0]);
+}
           if(repondus >= (qi === 1 && tour === 2 ? 11 : 12)) break; await pause(800);
         }
         const main = etat().cote || (tour === 1 ? S.premierCote(qi) : (S.premierCote(qi) === "g" ? "d" : "g"));
@@ -197,7 +202,7 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
         await pause(500);
         if(qi === 0 && tour === 1){
           await scene("t-q1-tour1", tabJM, "tablette");
-          await scene("c-q1-tour1", prof, "console"); await scene("p-reponse", tel, "telephone"); await scene("b-reponse", tableau, "tableau");
+          await scene("p-reponse", tel, "telephone"); await scene("b-reponse", tableau, "tableau");
           if(garde){ const st = await prof.evaluate(() => { const f = document.querySelector("[data-garde='1']"); return f ? {focus: document.activeElement === f, v: f.value} : null; });
             J.v(!!st && st.focus && /7$/.test(st.v), H2, "un champ de la console garde sa valeur et le curseur pendant que 12 tablettes répondent (règle du 04/10)", JSON.stringify(st));
             await prof.keyboard.press("Backspace"); await prof.keyboard.press("Tab"); }
@@ -211,7 +216,7 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
         }
         if(qi === 2 && tour === 1) await scene("t-q3-tour1", tabJM, "tablette");
         if(qi === 2 && tour === 2) await scene("t-q3-tour2", tabJM, "tablette");
-        if(qi === 0 && tour === 2) { await scene("t-q1-tour2", tabJM, "tablette"); await scene("c-q1-tour2", prof, "console"); }
+        if(qi === 0 && tour === 2) await scene("t-q1-tour2", tabJM, "tablette");
         if(qi === 1){ await scene(tour === 1 ? "t-q2-tour1" : "t-q2-tour2", tabJM, "tablette"); if(tour === 2) await scene("c-q2-tour2", prof, "console"); }
         if(qi === 0 && tour === 1){ J.v(await cliquer(prof, /Tour suivant/), H2, "tous ont répondu : « ⏭️ Tour suivant » se clique (c-q1-tour1)");
           J.v(await attendreBase(() => etat().tour === 2 || etat().ph === "b", 4000), H1, "« ⏭️ Tour suivant » coupe le 1er tour (deroule passe au 2e tour, ou à B)", JSON.stringify(etat())); }

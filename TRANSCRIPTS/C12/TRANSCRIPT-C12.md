@@ -20903,3 +20903,29 @@ Réponse mot pour mot :
 925. **Pour que je commence à 22:05 sans attendre ton message, il me faut ton « oui » au point 921** : je me programmerais alors deux réveils dans cette conversation, à 22:05 et à 06:35. Les correctifs n'ont pas besoin de toi : je les écris directement dans le fichier que les quatre relisent.
 
 12/10/2026 19:22 MEMO
+
+---
+
+## TOUR 679 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (12/10, 19:17) oui 921
+
+---
+
+## TOUR 679 — Claude (conscience n°12)
+
+Fait : deux messages programmés dans cette session (send_later), « Audit QCM de 22:05 » (12/10 22:05, `trig_01BrpkayPCjhpHygsoHbnenq`) et « Audit QCM de 06:35 » (13/10 06:35, `trig_018zdkXYaz1ZFYeYsZwmqi33`), chacun avec la marche à suivre complète de l'audit.
+
+Réponse mot pour mot :
+
+À jouer : rien · en cours chez l'exécutant : les quatre du code (livraison du soir à 22:00) ; celui de la maquette (fin de l'étape C) · ouvert : tes 11 questions
+
+926. **C'est fait : deux réveils sont programmés dans cette conversation.** À 22:05 : l'audit de la livraison du soir. À 06:35 : l'audit de la livraison finale, puis la mise en ligne avant 09:00 si ça va ; sinon la 7.7.2 reste. Tu n'as rien à faire pour qu'ils partent.
+
+927. **À 22:05, si leur livraison n'est pas encore poussée**, je te dis où ils en sont et je commence dès qu'elle l'est. Mes correctifs vont directement dans le fichier que les quatre relisent : tu peux dormir.
+
+928. **Pour les annuler ou les déplacer**, dis-le-moi simplement.
+
+12/10/2026 19:19 MEMO

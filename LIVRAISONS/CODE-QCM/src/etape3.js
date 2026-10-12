@@ -38,7 +38,7 @@ function LignesAttest2Papier(){
   ];
 }
 function Attest2Papier(e, n){ return h(AttestCoches, {e:e, lignes:LignesAttest2Papier(), n0:n, titre:"Avant la correction, " + e.prenom, bouton:"Je commence la correction", va:"t-papier-correction", titrePage:"📝 Correction"}); }
-function EcrAttenteCorr(e){ return Page(badgeDe(e), "📝 Correction", h("div", {className:"etat-attente"}, "⏳ ", "La correction s'ouvrira dans un instant.")); }
+function EcrAttenteCorr(e){ return Page(badgeDe(e), "📝 Correction", h("div", {className:"etat-attente"}, "⏳ ", texteH("attente_correction", "La correction s'ouvrira dans un instant."))); }
 
 /* ════════ La lecture du voisin, avant la révélation (496, 503, 508) ════════
    Chacun garde sa feuille et sa moitié : dans la moitié de Julien, c'est Michel qui clique ce que dit la feuille de Julien. */

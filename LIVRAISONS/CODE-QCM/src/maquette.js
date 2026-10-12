@@ -33,7 +33,13 @@ var MAITRISE = [
   {k:"orange", em:"🟠", lib:"Maîtrise fragile", cls:"mt-orange"},
   {k:"rouge", em:"🔴", lib:"Maîtrise insuffisante", cls:"mt-rouge"}
 ];
-function maitriseDe(sur20){ return sur20 >= 15 ? MAITRISE[0] : sur20 >= 10 ? MAITRISE[1] : sur20 >= 5 ? MAITRISE[2] : MAITRISE[3]; }
+// (QCM-2) en direct, les tranches et les noms réglés (« Réglages → Niveaux de maîtrise », maitriseV de QCM-3) ; sans réglage, ceux de la maquette
+var MAITRISE_EN_COURS = false;
+function maitriseDe(sur20){
+  if(!MAITRISE_EN_COURS && enDirect() && typeof maitriseV === "function" && typeof v3Reglages === "function"){
+    try { var R = v3Reglages().maitrise; if(R && R.niveaux){ MAITRISE_EN_COURS = true; try { return maitriseV(sur20); } finally { MAITRISE_EN_COURS = false; } } } catch(x){}
+  }
+  return sur20 >= 15 ? MAITRISE[0] : sur20 >= 10 ? MAITRISE[1] : sur20 >= 5 ? MAITRISE[2] : MAITRISE[3]; }
 function fr1(x){ return (Math.round(x*10)/10).toFixed(1).replace(".", ",").replace(",0", ""); }
 
 /* ── Le binôme suivi ── */
@@ -229,7 +235,7 @@ function EcrEstim(e, choix){
       h("div", {className:"autoeval-confirme-titre"}, "Ton estimation est enregistrée"),
       h("div", {className:"autoeval-confirme-choix fourchette-" + sel.k}, h("span", {style:{fontSize:"2rem"}}, mt(sel.k).em), h("span", null, libFourchetteH(sel, N))),
       h("div", {style:{marginTop:".5rem", fontWeight:700}}, P(mt(sel.k).lib)),
-      h("div", {className:"autoeval-confirme-attente"}, "La correction s'ouvrira dans un instant."))));
+      h("div", {className:"autoeval-confirme-attente"}, texteH("attente_correction", "La correction s'ouvrira dans un instant.")))));
 }
 
 /* La correction, question par question, avec la déclaration de la feuille avant la révélation (proposition 360) */

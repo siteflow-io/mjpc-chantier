@@ -33,7 +33,7 @@ function Board(){
   var enSeance = m.seance && m.seance !== "TEST" && m.ph !== "hors" && m.ph !== "soir" && m.ph !== "fin" && m.ph !== "grille";
   if(!enSeance) return h("div", {className:"board-attente"},
     h("div", {className:"board-titre"}, "📺 Vue tableau"),
-    h("div", {className:"board-msg"}, "L'évaluation n'a pas encore commencé. Elle s'ouvrira quand nous la lancerons ensemble."),
+    h("div", {className:"board-msg"}, texteH("attente_session", "L'évaluation n'a pas encore commencé. Elle s'ouvrira quand nous la lancerons ensemble.")),
     h("div", {className:"board-sub"}, "Cette vue se met à jour automatiquement dès qu'une séance est lancée depuis le pilotage."));
   var qi = m.qi;
   // (QCM-2) après les questions (l'estimation, la seconde attestation, la co-évaluation, le bilan) : la classe et l'évaluation, sans « la première question va arriver »

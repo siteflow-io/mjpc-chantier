@@ -101,6 +101,8 @@ var H2_FN = {};
 // (t-q2-ecartee) le rang d'une question sur les tablettes : une question écartée ne compte pas (« Question 2 / 2 ») ; dans la maquette, son rang
 function numQH(qi, ev){ var tot = (ev || EV).questions.length; if(!enDirect() || (ev && ev !== EV)) return {n:qi + 1, N:tot};
   var ec = (momH().ecartees || []).map(Number); return {n:qi + 1 - ec.filter(function(x){ return x < qi; }).length, N:tot - ec.length}; }
+// (QCM-3, « 💬 Ce que lisent les élèves ») en direct, le texte réglé par Paul (texteEleveV) ; sinon celui de la maquette
+function texteH(cle, defaut){ if(enDirect() && typeof texteEleveV === "function"){ try { return texteEleveV(cle) || defaut; } catch(x){} } return defaut; }
 function marqueH(cle, fn){ H2_FN[cle] = fn; return {"data-local":"1", "data-h2":cle}; }
 // un bouton qui agit sur place : en direct, par sa clé ; dans la maquette, son onClick (composant à état)
 function clic(cle, fn){ return enDirect() ? marqueH(cle, fn) : {"data-local":"1", onClick:fn}; }

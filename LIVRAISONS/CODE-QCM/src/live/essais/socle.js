@@ -213,6 +213,15 @@ function verif(ok, quoi, detail){ nb++; if(!ok) ko++; R.push((ok ? "  ok     " :
     const r2 = await maison.evaluate(c => ELV.entrer("g", c, "julien", "abrial"), code("ABRIAL Julien")); await pause(500);
     const tm = (await maison.evaluate(() => document.body.innerText)).replace(/\s+/g, " ");
     verif(r2.ok && /Mes évaluations/.test(tm) && /ABRIAL JULIEN|ABRIAL Julien/i.test(tm), "chez lui, sans séance : son code, puis sa moitié avec « 📊 Mes évaluations »", {r2, tm: tm.slice(0, 200)});
+    // deux séances actives (celle d'hier restée ouverte, celle de ce matin) : la console pilote la plus récente ; le badge dit « 2 séances en cours »
+    const vieille = await prof.evaluate(() => ACT.lancerSeance("3 ANCIENNE", "essai", {})); await pause(50);
+    const neuve = await prof.evaluate(() => ACT.lancerSeance("3 ESSAI", "essai", {})); await pause(500);
+    const p2 = await ouvrir("?mode=prof"); await pause(600);
+    const vu2 = await p2.evaluate(() => ({sid: SCN.sid(), n: SCN.seancesActives().length, badge: (document.body.innerText.match(/\d+ séances? en cours/) || [""])[0]}));
+    verif(vu2.sid === neuve && vu2.n === 2 && vu2.badge === "2 séances en cours", "deux séances actives : la console pilote la plus récente ; « 🔴 2 séances en cours »", vu2);
+    await p2.evaluate(v => ACT.terminer(v), vieille); await pause(300);
+    verif(!base("sessionActive/3 ANCIENNE") && base("sessionActive/3 ESSAI") === neuve, "« 🛑 Terminer » la séance d'hier, depuis la liste : celle de ce matin continue", base("sessionActive"));
+    await p2.evaluate(v => ACT.terminer(v), neuve); await pause(200);
     // la séance suivante : les binômes d'après ce QCM précédent (classement de la note)
     const bp = await prof.evaluate(() => SCN.binomesProposes("3 ESSAI"));
     verif(bp[0][0] === "abrial_julien" && bp.length === 13, "les binômes suivants se forment sur le classement du QCM précédent (Julien, 3 / 3, en tête)", bp.slice(0, 3));

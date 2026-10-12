@@ -471,6 +471,9 @@ var SCN = (function(){
       aLire:S.aLireSeance(id).filter(function(x){ return !x.lue; }).length, enPause:!!(s.deroule && s.deroule.autreHeure), titre:ev ? ev.titre : (s.evalSnapshot || {}).titre};
   };
   S.SEANCES = [];
+  // les séances actives de la base (sessionActive), hors classes internes, la plus récente d'abord
+  S.seancesActives = function(){ var a = LIVE.d.sessionActive || {}, all = LIVE.d.sessions || {};
+    return Object.keys(a).filter(function(c){ return c.charAt(0) !== "_" && all[a[c]]; }).map(function(c){ return S.seance(a[c]); }).filter(Boolean).sort(function(x, y){ return y.ms - x.ms; }); };
   S.seances = function(classe){ var all = LIVE.d.sessions || {}, cl = classe ? cleDeClasse(classe) : null; return Object.keys(all).filter(function(id){ var s = all[id]; return s && (!cl || cleDeClasse(s.classeSlug) === cl) && s.classeSlug && s.classeSlug.charAt(0) !== "_"; })
     .map(S.seance).filter(Boolean).sort(function(a, b){ return b.ms - a.ms; }); };
   // les séances terminées, avant maintenant (la séance en cours n'y est pas)
@@ -489,7 +492,8 @@ var SCN = (function(){
   S.binomesProposes = function(classe, presents){
     var pres = (presents || rosterDe(classe).map(sanMJPC)).slice(), prec = S.qcmPrecedent(null, classe), classes = [];
     if(prec){
-      var notes = {}; pres.forEach(function(x){ var r = S.resultat(prec.id, x); notes[x] = r ? r.sur20 : null; });
+      // sans résultat (absent, ou la séance terminée avant sa correction) : apparié avec les autres sans résultat, après le classement
+      var notes = {}; pres.forEach(function(x){ var r = S.resultat(prec.id, x); notes[x] = r && r.complet ? r.sur20 : null; });
       var avec = pres.filter(function(x){ return notes[x] != null; }).sort(function(a, b){ return notes[b] - notes[a] || S.nomDe(a).localeCompare(S.nomDe(b), "fr"); });
       var sans = pres.filter(function(x){ return notes[x] == null; }).sort(function(a, b){ return S.nomDe(a).localeCompare(S.nomDe(b), "fr"); });
       classes = avec.concat(sans);

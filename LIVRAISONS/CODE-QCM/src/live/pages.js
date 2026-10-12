@@ -69,7 +69,8 @@ var PAGES = (function(){
     if(LIVE.sid && SCN.sess(LIVE.sid) && SCN.sess(LIVE.sid).etat !== "terminee") return;
     var actives = LIVE.d.sessionActive || {}, cl = Object.keys(actives).filter(function(c){ return c.charAt(0) !== "_" && (LIVE.d.sessions || {})[actives[c]]; });
     if(LIVE.classeSlug && actives[LIVE.classeSlug]){ LIVE.sid = actives[LIVE.classeSlug]; return; }
-    if(cl.length >= 1){ LIVE.classeSlug = cl[0]; LIVE.sid = actives[cl[0]]; return; }
+    // la séance la plus récente (une séance d'hier restée ouverte ne prend pas la place de celle de ce matin)
+    if(cl.length >= 1){ var r = SCN.seancesActives()[0]; if(r){ LIVE.classeSlug = r.classe; LIVE.sid = r.id; return; } LIVE.classeSlug = cl[0]; LIVE.sid = actives[cl[0]]; return; }
     if(LIVE.sid && (!SCN.sess(LIVE.sid) || SCN.sess(LIVE.sid).etat === "terminee")) LIVE.sid = null;
   }
   P.choisirSeance = choisirSeance;

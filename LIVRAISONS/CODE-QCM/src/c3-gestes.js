@@ -61,7 +61,8 @@ function Console(groupe, tab, contenu, séance){
       h("div", {className:"prof-header"},
         h("h1", null, "📝 Évaluation QCM", h("span", {className:"badge"}, "Mode prof")),
         h("div", {className:"row"},
-          séance && h("button", {className:"badge-session-actives", "data-va":"c-sessions"}, h("span", {className:"badge-session-dot"}, "🔴"), "1 séance en cours"),
+          // (QCM-1) les séances actives de la base, toutes classes : « 🔴 1 séance en cours », « 🔴 2 séances en cours »
+          (function(){ var n = typeof SCN.seancesActives === "function" ? SCN.seancesActives().length : (séance ? 1 : 0); return n > 0 && h("button", {className:"badge-session-actives", "data-va":"c-sessions"}, h("span", {className:"badge-session-dot"}, "🔴"), n + (n > 1 ? " séances en cours" : " séance en cours")); })(),
           h("button", {className:"btn-help", "data-va":"c-mode-emploi"}, "📖 Mode d'emploi"),
           // le tableau tel qu'il est maintenant ; hors séance, son écran d'attente
           h("button", {className:"btn btn-ghost btn-sm", "data-local":"1", onClick:ouvrirTableau}, "📺 Ouvrir vue tableau"),

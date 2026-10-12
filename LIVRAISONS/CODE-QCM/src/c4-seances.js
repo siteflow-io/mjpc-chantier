@@ -341,8 +341,14 @@ function memo3(cle, f){ if(!MEMO3.prevu){ MEMO3.prevu = true; setTimeout(functio
 function resultatV(se, slug){ return memo3("r|" + se.id + "|" + slug, function(){ return resultatV0(se, slug); }); }
 function resultatV0(se, slug){
   // une séance de la 7.7.1 se note ici : sa feuille recopiée, sinon la tablette, et les corrections du soir (« Que dit la feuille ? »)
-  if(SCN.LIVE && typeof SCN.resultat === "function" && se.nouvelle){ try { var r = SCN.resultat(se.id, slug); if(r && r.st && !r.ancienne) return r; } catch(e){} }
+  if(SCN.LIVE && typeof SCN.resultat === "function" && se.nouvelle){ try { var r = SCN.resultat(se.id, slug); if(r && r.st && !r.ancienne) return avecCorrigeesV(se, slug, r); } catch(e){} }
   return resultatLocalV(se, slug);
+}
+// « corrigé d'après sa feuille » : toute question dont la lecture est celle de Paul (« Que dit la feuille ? » le soir, une alerte tranchée en classe)
+function avecCorrigeesV(se, slug, r){
+  var c = (r.corrigees || []).map(Number);
+  Object.keys(se.S.lectures || {}).forEach(function(qi){ var l = (se.S.lectures[qi] || {})[slug]; if(l && l.par === "prof" && c.indexOf(+qi) < 0) c.push(+qi); });
+  return c.length === (r.corrigees || []).length ? r : Object.assign({}, r, {corrigees:c});
 }
 // ce que la marque d'une case montre : « n » (pas encore corrigée) se lit « ? » comme dans la maquette
 function stVue(r){ return Object.assign({}, r, {st:r.st.map(function(s){ return s === "n" ? "pasdit" : s; })}); }

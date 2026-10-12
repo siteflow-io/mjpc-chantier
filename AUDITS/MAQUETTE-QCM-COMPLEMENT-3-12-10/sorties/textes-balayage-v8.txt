@@ -1,0 +1,62 @@
+
+###### 1e [PAUL/bulle] — 1 textes
+  PROD? [76,79,80,92,93,94] Position dans l'ordre de correction (trié par taux d'erreur décroissant). Q2 est la 1e question révélée.
+
+###### camelCase [PAUL/bulle] — 3 textes
+  MAQ [144,145,146] Détecte et nettoie les séances « zombies » : entrées sessionActive qui pointent vers une séance inexistante, classe disparue, ou séance encore marquée
+  PROD? [166,167,168] Appelle cloturerSession() — le chemin exact du bouton « Terminer la séance ».
+  PROD [166,167,168] Repousse le départ du chrono dans le passé : peutRepondre refuse immédiatement, sans attendre.
+
+###### guillemets droits [PAUL/bulle] — 1 textes
+  PROD [1,2,3,4,7,8,9,10,11,21…(84)] Ouvre la vue tableau dans une NOUVELLE FENÊTRE (pas un onglet) que tu peux glisser sur l'écran qui projette. Utilise W+P en mode "Étendre" sur Windows
+
+###### jargon / mots interdits [PAUL/bulle] — 7 textes
+  PROD [1,2,3,4,7,8,9,10,11,21…(86)] Ouvre la vue tableau dans une NOUVELLE FENÊTRE (pas un onglet) que tu peux glisser sur l'écran qui projette. Utilise W+P en mode "Étendre" sur Windows
+  PROD [133,141] Cliquer pour trier par nom (asc/desc). Cliquer sur un nom d'élève dans le tableau ouvre son Student Report (drill-down).
+  MAQ [144,145,146] Détecte et nettoie les séances « zombies » : entrées sessionActive qui pointent vers une séance inexistante, classe disparue, ou séance encore marquée
+  PROD [150,151,152] Ouvre l'éditeur pour modifier le prompt. Les modifications sont enregistrées dans Firebase et réutilisées la prochaine fois.
+  PROD [152] Enregistre ce prompt dans Firebase. Il sera réutilisé à chaque ouverture du modal, sur tous les appareils.
+  PROD? [166,167,168] Appelle cloturerSession() — le chemin exact du bouton « Terminer la séance ».
+  PROD [166,167,168] Repousse le départ du chrono dans le passé : peutRepondre refuse immédiatement, sans attendre.
+
+###### jargon / mots interdits [PAUL/ecran] — 3 textes
+  PROD [153,154,155,156,157,158,159,160,161,162…(12)] Configuration & Firebase
+  MAQ [166] 🧪 _test_evaluation-qcm (30 élèves)
+  MAQ [167,168] 🎯 🎓 Démo — apprendre le déroulé — _test_evaluation-qcm
+
+###### trois points [PAUL/ecran] — 1 textes
+  MAQ [158,159] Élève : Mots avec deux consonnes (femme, donner, aller...) · 6e-3e · « comme » / « homme » / « femme »
+
+###### ⛔ [PAUL/bulle-i] — 1 textes
+  MAQ [99,100,101,102,103,104,105,106,107] Chaque moitié dit ce que cet élève pense de la lecture de sa feuille par son voisin. Un clic sur un nom agit sur l'élève, par exemple « ⛔ Retirer le p
+
+###### ⛔ [PAUL/bulle] — 8 textes
+  MAQ [76,79,80,85,89,92,93,94,99,100…(23)] Clique sur le nom : « ⛔ Retirer le point d'autonomie », ou « 🚫 Marquer comme parti ».
+  MAQ [81,95] La légende de la liste des tablettes : ✓ juste, ✓ orange : Trouvée au dernier moment, ✗ faux, ⚠️ À relire ce soir, ⛔ point d'autonomie retiré.
+  MAQ [92] Ce que ferait « ⛔ Retirer le point d'autonomie », à lire avant de choisir : « Il a son point d'autonomie ».
+  MAQ [93,101,102,112,113,135] Ce que ferait « ⛔ Retirer le point d'autonomie », à lire avant de choisir : « Ses deux compétences d'autonomie passent en… ».
+  MAQ [103,114] Ce que ferait « ⛔ Retirer le point d'autonomie », à lire avant de choisir : « Leurs deux compétences d'autonomie passent en… ».
+  MAQ [116] Ce que veut dire ⛔ sur ces boutons.
+  MAQ [130] Clique sur le nom : « ⛔ Retirer le point d'autonomie ».
+  MAQ [134,135] L'élève a gardé son point d'autonomie : « ⛔ Retirer » à côté le retire, après une confirmation.
+
+###### ⛔ [PAUL/ecran] — 19 textes
+  MAQ [64] Chaque élève commence avec son point : « Travailler seul et de façon responsable » et « S'investir dans son travail, en classe et à la maison », côté 
+  MAQ [81,95] ✓ juste · ✓ orange : Trouvée au dernier moment · ✗ faux · ⚠️ À relire ce soir · ⛔ point d'autonomie retiré
+  MAQ [85,89,94,99,100,101,102,103,104,105…(12)] ⛔ point d'autonomie retiré
+  MAQ [92,93,95,101,102,103,112,113,114,134…(11)] ⛔ Retirer le point d'autonomie
+  MAQ [93] ⛔ Retirer le point d'autonomie à FOUCHER Hugo ?
+  MAQ [94] ⛔ Point d'autonomie retiré le 08/10 à 10:23. Ses deux compétences d'autonomie sont en Maîtrise insuffisante ; sa note ne bouge pas.
+  MAQ [99,100,101,102,103,104,105,106,110,111…(13)] ⛔ Retirer le point d'autonomie :
+  MAQ [99,100,101,102,103,104,105,106,110,111…(14)] ⛔ à Michel
+  MAQ [99,100,101,102,103,104,105,106,110,111…(14)] ⛔ à Julien
+  MAQ [99,100,101,102,103,104,105,106,110,111…(14)] ⛔ aux deux
+  MAQ [101,112,135] ⛔ Retirer le point d'autonomie à DUVERNAY Michel ?
+  MAQ [102,113] ⛔ Retirer le point d'autonomie à ABRIAL Julien ?
+  MAQ [103,114] ⛔ Retirer le point d'autonomie aux deux ?
+  MAQ [104,106] alerte : à trancher · ⛔ point d'autonomie retiré
+  MAQ [116] ⛔ : retirer le point d'autonomie.
+  MAQ [121,133,141] ⛔ retiré le 08/10 à 10:23
+  MAQ [133,141] ✓ juste d'après la feuille · ✓ orange : Trouvée au dernier moment · ✗ faux · ∅ « aucun de ces choix » · ⛔ : point d'autonomie retiré · ⚠️ Annulée ou ❌
+  MAQ [136,137] ⛔ Point d'autonomie retiré le 10/10 à 19:12.
+  MAQ [141] ⛔ retiré le 10/10 à 19:12	Q3 : aucun de ces choix · ✔ lue

@@ -1,0 +1,75 @@
+# Lecture des captures de la v8 — notes de la conscience (12/10)
+- 001 : « pas encore passée » / « passée par 3 ESSAI le 24/09 » écrit en noir, plus grand que les lignes grises de la carte : la ligne a l'air sans style (à mesurer).
+- 004 : « 10 questions · 10 points » : juste, la Q10 n'a pas le drapeau « bonus » au hub (le mot BONUS est dans son énoncé, une donnée). Mesuré dans l'éditeur : « 🗑 » de Q1 donne « 9 questions · 9 points », Échap ouvre « Fermer l'éditeur sans enregistrer ? Tes 2 modifications seront perdues. » : bien.
+- 004 : le bouton qui déplie une question (« ▸ Q4 ») passe sur deux lignes quand l'énoncé est long (Q4, Q5, Q6, Q9, Q10), sur une seule ailleurs.
+- 002, 003, 005 : rien.
+- 007, 010 : les deux dernières séances sont justes (« 23 présents, 2 absents · copies rendues le 26/09 ») ; « Démo faite le 07/10 » avant le 08/10 : réglé.
+- 014, 015 : le clavier tape (« 2 1 0 1 », « 2 1 »).
+- 021 : « Retour d'un élève » et « Rouvrir pour un élève » fermés : réglé.
+- **022 (t-demo-q)** : la démo s'ouvre encore sur « QUESTION 3 / 3 · Pourquoi l'araignée… » en réflexion, alors que la scène se déclare « DEMO:Q1:R » (Q1 · réflexion) et que le complément demande que la démo commence à sa question 1 (changement 4.6). À vérifier par le geste « 🎓 Lancer la démo ».
+- 025 : « Tu es prêt ? À toi dans 3 secondes » : le nombre reste avec son unité.
+- 024, 027 : rien d'autre.
+- 028 : la vue « 👁 » montre la tablette 1 au moment de la scène (Q1, 1er tour) : bien.
+- 029, 031 : comptes justes (10/12) ; la liste du tableau tient (25 noms, deux colonnes).
+- 032 : « Fin prévue 11:02, 5 min après la fin de l'heure » avec Q2 à 1 800 s et Q3 à 420 s de réflexion : le temps ajouté se voit.
+- 035 : B de Michel, avant le clic : rien à dire (le clic est mesuré à part).
+- 036 (23/24, 20/23), 038 (21/24), 045 (9/23), 046 (9/23), 057 (14/24) : comptes justes, refaits tuile par tuile.
+- 039 : la garde « Écarter la question 3 » est ouverte depuis le « ❌ Écarter » de Q3 : bien ; deux phrases.
+- 040 : « Question 1 / 2 », « À venir — Q 2 / 2 », Q3 barrée « Écartée — pas posée », alerte des compétences : bien. 041 : « Question 2 / 2 » : bien.
+- 044 : « 2 / 3 » pendant la branche normale : bien (41 est la branche écartée).
+- 047 : garde « Annuler la question 2 ? » avec « Fermer » : bien.
+- 052 (téléphone) : la fiche de Théo, sur le téléphone : bien.
+- 058 : « Parti » pour chacun : bien.
+- 061 : l'échange se lit (« va sur la tablette 1 : retape son code ») ; la pastille garde le mot entier.
+- 063 : garde de « Terminer la séance » au moment « question 1, 1er tour » : bien ; deux phrases.
+- 066 : « Reprendre la séance du 08/10 — question 1, 1er tour » : bien (la branche « finir » part de Q1, 1er tour).
+- **069 : « État : question 2, 2e tour (moitiés de droite) »** ; or à la question 2, Michel commence (moitiés de droite au 1er tour) et `c-q2-tour2` dit « 2e tour · moitiés de gauche ». Contradiction de données.
+- 071 : 6 + 10 + 4 + 1 = 21, plus les 3 « Pas encore » : 24 : juste. 074 : 19 / 24 et les 5 noms : juste (tuiles comptées). 076 : 18 / 24 et les 6 noms : juste.
+- 075 : le chrono des moitiés s'appelle « Temps pour lire la feuille du voisin » (778) : bien.
+- 078 (tableau) : « 18 / 24 ont répondu » pendant la lecture, la console dit « 18 / 24 feuilles lues » (texte de la 7.7.1 au tableau ? à vérifier) ; la liste tient.
+- 080 : 8 / 24 justes et 2 « Trouvée au dernier moment » (Julien, Zoé) : juste ; le ✓ orange chez Paul (777) : bien.
+- **081 (téléphone)** : la ligne « 📱 Sur les tablettes, avant la correction : » est écrite en violet foncé sur le fond violet : illisible (à mesurer).
+- 083 : « ❌ Tu avais faux. » une seule fois (778) : bien.
+- 085 : 14 / 24, 1 dernier moment (Théo) ; « À lire » à 3 (Anna Q2, Michel Q3, Lou Q3) ; Hugo « ⛔ point d'autonomie retiré » : bien. 089 : 20 / 24 et « À lire » à 6 : juste. Lou Q3 « À relire » (Théo y a lu 8, elle dit 6) : l'histoire de Lou est dans le scénario (changement 5.3).
+- 086 : « Ta réponse : aucun de ces choix » (778) : bien.
+- **091 (t-corr-seul, Adam seul)** : son chrono dit « 📄 Temps pour lire la feuille du voisin », alors qu'il est seul et lit sa propre feuille (« Qu'as-tu écrit sur ta feuille ? ») : la retouche 778 a été posée aussi là où il n'y a pas de voisin. Défaut de la v8.
+- 092 : la fiche de Hugo, de ses mots (une phrase) : bien. 094 : « Point d'autonomie retiré le 08/10 à 10:23 » puis « ↩️ Rendre » : bien.
+- 095 (téléphone) : la fiche de Hugo sur le téléphone ; « Q2 fausse d'après sa feuille » : juste (corrigé).
+- 099 : 17 + 2 + 1 = 20 / 24 et les 4 noms : juste ; « À lire » à 8 : les 6 de la fin de la correction (089) + Jade et Noah (co-évaluation) : juste. Hugo garde « ⛔ point d'autonomie retiré » : bien.
+- 100 : « Rome · bonne réponse · Michel », « Venise · lu par Julien », « Valider » fermé tant que rien n'est coché : bien.
+- 104 : point de Michel retiré : « ⛔ à Michel » fermé, « ↩️ Rendre » paraît, l'alerte reste à trancher : bien.
+- 107 : « raison donnée à Michel », « passe à 1 point, … sa note provisoire passe à 1 / 3 » ; 21 + 2 + 1 = 24 ; « À lire » à 7 (la ligne de Michel Q1, tranchée, sort) : bien.
+- 110, 115 : la rangée « Départ / Finir / Terminer » passe sous le titre à droite (aligné à droite, pas à gauche) : bien. 115 dit la décision (« la feuille de Michel dit C, E … reste à 0 point ») : bien.
+- 116 (téléphone, cas de 3e) : « Fin 16:02 » : c'est la séance de 3e du 09/10, lancée à 15:07 (scénario, S3E) : 15:07 + 55 min = 16:02. Juste.
+- 117 : notes de Julien (2/3) et Michel (1/3, Q1 « Corrigé d'après ta feuille ») conformes à 107 ; estimations justes.
+- 119 : l'estimation sans sa phrase quand Q2 est annulée : jugé non fautif par l'exécutant (DEFAUTS n°151), raison donnée ; acceptable.
+- 121 : 7 + 10 + 5 + 2 = 24 ; « 23 / 24 l'ont gardé · 1 retiré (FOUCHER Hugo) » et sa colonne « ⛔ retiré le 08/10 à 10:23 » : la contradiction de la v7 est réglée ; « À lire » à 7, comme 107 ; calibration 14 + 4 + 4 + 2 = 24 ; « de 0 à 3 ».
+- **022 (t-demo-q)** : confirmé dans le texte de la scène : « QUESTION 3 / 3 · Pourquoi l'araignée n'est-elle pas un insecte ? », alors que la scène se déclare « DEMO:Q1:R » (Q1 · réflexion). La garde 13 (« Question n / m ») ne l'a pas vu.
+- 123 : « Séance sur papier » choisi, binômes et séances précédentes justes ; plus d'explication à l'écran.
+- 126 / 130 : la grille du papier et la correction 130 concordent (Q2 : 8 justes).
+- 132 : quatre niveaux, « vide pour l'instant », tri « classe », 3e · 5 séances ; « 7 feuilles à lire » pour le 08/10, comme 121 : bien.
+- 133 : Lou 2/3, Q3 ✓, « À lire : Q3 : a dit que sa feuille disait son clic, 6 ; Théo y a lu 8 » ; Hugo « ⛔ retiré le 08/10 à 10:23 » ; légende complète : bien.
+- 134, 137 : la fiche de Michel ; après le retrait du soir, compétences d'autonomie en Maîtrise insuffisante et le bilan pré-rempli le dit : bien. « Regénérer » : texte de la dictée clonée, mot pour mot (existant).
+- 141 : Lou 1/3, Q3 ✗ « Corrigé d'après sa feuille · ✔ lue » ; Michel « ⛔ retiré le 10/10 à 19:12 » : bien. 149 : Lou 1/3 « Corrigé d'après ta feuille » : le bloquant de la v7 est réglé.
+- **142 (PDF)** : toujours le PDF de « 3e- éval 1 Analyse logique », séance du 09/10, 11 questions, « Chapitre : 3e, chapitre 1 — Poésie et peinture au XIXe siècle ». À vérifier par le geste : ce PDF s'ouvre-t-il depuis le tableau de « Évaluation d'essai » (141) ? Et le chapitre dit « Poésie et peinture » pour une évaluation d'analyse logique sans chapitre au hub.
+- 144 : la corbeille ne contient plus la séance rendue : bien.
+- 147 : « Mes évaluations » de Lou le soir : deux « En relecture », « Tu étais absente », le jambon-beurre : bien.
+- 165 : le rattrapage d'Adam seul, tablette 1 « seul », « Rattrapage… le 08/10 » : bien.
+- 168 : à mesurer à 1536 × 864 (la capture fait 1150 px de haut).
+- **142 / 141 (le PDF)** : mesuré par le geste : « 📄 PDF notes et compétences » de `c-resultats-rendues` (Évaluation d'essai, 08/10) ouvre `x632-pdf&m=SOIR:rendu`, qui montre toujours le PDF de « 3e- éval 1 Analyse logique » (09/10, 11 questions, Lou 10,9, Hugo 14,5), même avec `&seance=S08`. La cause : `window.PDF632_HTML` est un fichier figé (gen632.js), et la scène est déclarée au moment `S3E:rendu`. DEFAUTS n°159 dit « Le PDF d'une séance est celui de cette séance » : c'est faux par le geste. Le défaut de la v7 (#243) reste. Les gardes 12 et 13 ne l'ont pas vu (le geste passe par `window.open`).
+- **069 (c-interrompue)** : « État : question 2, 2e tour (moitiés de droite) » ; or au 2e tour de Q2 ce sont les moitiés de gauche (`c-q2-tour2` : « 2e tour · moitiés de gauche »). Cause : `Interrompue()` (src/c3-scenes.js l. 97) prend le côté de `PREMIER[m.qi]` sans tenir compte du tour. Petit, mais c'est un chiffre faux (changement 5.8).
+- 017, 018, 020, 023, 026, 030, 033, 034, 037, 042, 048, 049, 051, 054, 059 : rien. 030 : le QR garde la console derrière lui au bon moment. 048 : Q2 annulée « Annulée — posée, puis annulée », « Remettre ». 054 : B sur la vraie Q3 de 3e, « Question 3 / 11 » : bien. 059 : Noah « parti à 10:14 » au 1er tour de Q1 (10:14:03 au scénario) : bien.
+- 060, 065, 067 (gardes) : une ou deux phrases, l'objet nommé (Noah, la séance du 24/09) : bien. 070 : l'estimation enregistrée de Julien s'affiche, Michel choisit : bien. 072 : seconde attestation de 3e, « Mes évaluations » présent des deux côtés : bien.
+- 079 : 24 / 24 lues, « Révéler » ouvert, « Question précédente » fermé : bien. 082 (tableau, révélée) : la liste tient, Adam grisé (absent) : bien. 084, 088, 090, 097 : rien.
+- 093 : la garde du point d'autonomie garde l'intitulé officiel des compétences (« Être autonome et responsable ») : écran de Paul, admis.
+- 096, 098, 108 : la règle du désaccord (« ☝️ Un désaccord, c'est sérieux : tu n'en signales qu'un… Il se vérifie sur ta feuille. », validée aux points 513 et 533) a disparu là où elle était seule ; elle ne devait partir que là où elle doublait « C'est ta seule question de désaccord » (097, 109). Cause : la formulation du point 778 dans le complément 3 (« la règle du désaccord n'est dite qu'une fois »). Faute de la conscience.
+- 105, 106 : « à Julien » fermé une fois son point retiré, « Rendre » présent : bien. 114 : garde « aux deux » de 3e : bien.
+- 118 : le bilan imprimé dit l'évaluation et la date : bien. 120 : les deux bilans « non atteinte » : bien.
+- 124, 127, 131 : séance papier : bien.
+- 136 : fiche de Michel le soir, point retiré, bilan pré-rempli qui le dit : bien.
+- 138, 140, 143 : la liste des séances suit (7 feuilles lues, copies rendues le 10/10, garde de corbeille nommée) : bien.
+- 150, 151, 153, 155, 162, 166, 167, 169 : bien (textes du site mot pour mot dans MJPC et le mode test).
+- **Par le geste, hors des 169 scènes** : « 📊 Ouvrir » / « 📊 Résultats » des quatre autres séances (3e- éval 1, la séance sur papier, Poésie 24/09, jambon-beurre) ouvrent un tableau sans la mise en forme du site, sans compétences, sans autonomie, sans « À lire », sans PDF ; celui de la séance sur papier aligne 11 cases sous Q1 à Q3 et n'a aucune note (`c-resultats&seance=PAP`).
+- **« 🚀 Lancer le rattrapage »** ouvre un appel où YVON Adam, le seul élève du rattrapage, est barré absent (« 1 absent sur 1 »), avec « Théo (binôme d'Adam) et Lou (seule) sont mis ensemble : tablette 12 » et « 🚀 Lancer la séance », sur le fond du lancement ordinaire (`c-appel&seance=RATT`).
+- **Téléphone** (`p-corr-avant`, `p-corr-apres`, `p-eleve`…) : « 📱 Sur les tablettes, avant la correction : » en gris #64748b sur le fond violet de la page : contraste 1,1, illisible (mesuré texte masqué).
+- 3 ESSAI : « Durée estimée : 17 min » partout ; rien d'autre.

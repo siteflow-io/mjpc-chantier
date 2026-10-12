@@ -1,0 +1,20 @@
+const { chromium } = require("/opt/node22/lib/node_modules/playwright");
+const V = "/tmp/claude-0/-home-claude/6f83f394-f2d4-5070-8d91-714cb465417b/scratchpad/aud4/v8.html";
+(async () => {
+  const b = await chromium.launch({executablePath: "/opt/pw-browsers/chromium"});
+  const p = await b.newPage({viewport: {width: 1536, height: 864}});
+  await p.goto("file://" + V + "#scene=x627-3-editeur"); await p.waitForTimeout(900);
+  const etat = () => p.evaluate(() => { const m = document.querySelector("#root .modal"); const t = m.innerText.replace(/ | /g, " ");
+    const tete = (t.match(/\d+ questions?[^\n]*/) || ["?"])[0]; const nq = (t.match(/^Q\d+$/gm) || []).length;
+    const niv = [...m.querySelectorAll("button")].filter(b => /^(Facile|Standard|Approfondi|Expert)$/.test(b.textContent.trim())).slice(0, 4).map(b => b.textContent.trim() + ":" + b.className.replace(/btn|niv-pastille|niv-/g, "").trim()).join(" ");
+    const mod = (t.match(/Modifications non enregistrées[^\n]*/) || [""])[0]; return {tete, nq, niv, mod}; });
+  console.log("avant", JSON.stringify(await etat()));
+  await p.locator("#root .modal button:text-is('Expert')").first().click(); await p.waitForTimeout(300);
+  console.log("Expert", JSON.stringify(await etat()));
+  await p.locator("#root .modal button:has-text('🗑')").first().click(); await p.waitForTimeout(400);
+  console.log("🗑", JSON.stringify(await etat()), await p.evaluate(() => [...document.querySelectorAll("#root .modal, #root [class*=garde], #root [class*=confirm]")].map(e => e.innerText.slice(0, 80)).slice(-1)));
+  await p.keyboard.press("Escape"); await p.waitForTimeout(400);
+  console.log("Échap", await p.evaluate(() => location.hash), await p.evaluate(() => [...document.querySelectorAll("#root .modal")].map(m => m.innerText.split("\n")[0]).join(" || ")));
+  await p.screenshot({path: "edit9-echap.png"});
+  await b.close();
+})();

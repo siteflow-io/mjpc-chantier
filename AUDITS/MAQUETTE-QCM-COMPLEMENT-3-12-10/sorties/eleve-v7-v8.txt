@@ -1,0 +1,546 @@
+## b-recopie@1280 [doc0]
+  - 1× Temps de réponse
+  + 1× 📄 Temps pour lire la feuille du voisin
+## e-bilan-lou@390 [doc0]
+  - 1× ⭐
+  - 1× 🎯
+  - 1× ✨
+  - 1× 💡
+  - 1× 🎲
+  - 1× 🔥
+## e-mes-evals-rendue@1280 [doc0]
+  + 1× 3e- éval 1 Analyse logique - Construire une phrase complexe
+  + 1× 09/10/2026 · 6 / 11 · 10,9 / 20 · 🔵 Maîtrise satisfaisante
+## e-mes-evals-rendue@390 [doc0]
+  - 1× 🎯
+  - 1× ✨
+  - 1× 🎲
+  - 1× 🔥
+  + 1× 3e- éval 1 Analyse logique - Construire une phrase complexe
+  + 1× 09/10/2026 · 6 / 11 · 10,9 / 20 · 🔵 Maîtrise satisfaisante
+## e-mes-evals@1280 [doc0]
+  + 1× En relecture : ta note sera visible quand ta copie te sera rendue
+  + 1× 3e- éval 1 Analyse logique - Construire une phrase complexe
+## e-mes-evals@390 [doc0]
+  - 1× 🎯
+  - 1× ✨
+  - 1× 🎲
+  - 1× 🔥
+  + 1× En relecture : ta note sera visible quand ta copie te sera rendue
+  + 1× 3e- éval 1 Analyse logique - Construire une phrase complexe
+## t-annexe@1280 [doc0-gauche]
+  - 1× ⭐
+  - 1× 🎯
+  - 1× ✨
+  - 1× 💡
+  - 1× 🎲
+  - 1× 🔥
+## t-attest-1@1280 [doc0-droite]
+  - 1× ⭐
+  - 1× 🎯
+## t-attest-1@1280 [doc0-gauche]
+  - 1× ⭐
+  - 1× 🎯
+## t-attest-2@1280 [doc0-droite]
+  - 1× ⭐
+  - 1× 🎯
+  - 1× 🎲
+## t-attest-2@1280 [doc0-gauche]
+  - 1× ⭐
+  - 1× 🎯
+  - 1× 🎲
+  - 1× 🔥
+## t-attest-corr-fait@1280 [doc0-droite]
+  - 1× ⭐
+  - 1× 🎯
+  - 1× 🎲
+## t-attest-corr-fait@1280 [doc0-gauche]
+  - 1× ⭐
+  - 1× 🎯
+## t-bilan-annulee@1280 [doc0-droite]
+  - 1× ⭐
+  - 1× 🎯
+  - 1× ✨
+  - 1× 💡
+  - 1× 🎲
+  - 1× 🔥
+## t-bilan-annulee@1280 [doc0-gauche]
+  - 1× ⭐
+  - 1× 🎯
+  - 1× ✨
+  - 1× 🎲
+  - 1× 🔥
+## t-bilan-imprime@1280 [doc0]
+  + 1× Évaluation d'essai — 3 questions · 08/10/2026
+## t-bilan-imprime@390 [doc0]
+  + 1× Évaluation d'essai — 3 questions · 08/10/2026
+## t-bilan-non-atteinte@1280 [doc0-droite]
+  - 1× ⭐
+  - 1× 🎯
+  - 1× ✨
+  - 1× 💡
+  - 1× 🎲
+  - 1× 🔥
+## t-bilan-non-atteinte@1280 [doc0-gauche]
+  - 1× ⭐
+  - 1× 🎯
+  - 1× ✨
+  - 1× 💡
+  - 1× 🎲
+  - 1× 🔥
+## t-bilan@1280 [doc0-droite]
+  - 1× ⭐
+  - 1× 🎯
+  - 1× ✨
+  - 1× 💡
+  - 1× 🎲
+  - 1× 🔥
+## t-bilan@1280 [doc0-gauche]
+  - 1× ⭐
+  - 1× 🎯
+  - 1× ✨
+  - 1× 💡
+  - 1× 🎲
+  - 1× 🔥
+## t-binome@1280 [doc0-droite]
+  - 1× ⭐
+  - 1× 🎯
+  - 1× 🎲
+## t-binome@1280 [doc0-gauche]
+  - 1× ⭐
+  - 1× 🎯
+## t-coeval-daccord@1280 [doc0-droite]
+  - 1× ⭐
+  - 1× 🎯
+  - 1× ☝️ Un désaccord, c'est sérieux : tu n'en signales qu'un, celui dont tu es le plus sûr. Il se vérifie sur ta feuille.
+## t-coeval-daccord@1280 [doc0-gauche]
+  - 1× ⭐
+  - 1× 🎯
+  - 1× 🎲
+  - 1× ☝️ Un désaccord, c'est sérieux : tu n'en signales qu'un, celui dont tu es le plus sûr. Il se vérifie sur ta feuille.
+## t-coeval-ecrit@1280 [doc0-droite]
+  - 1× ⭐
+  - 1× 🎯
+  - 1× 🎲
+  - 1× 🔥
+  - 1× Un désaccord, c'est sérieux : tu n'en signales qu'un, celui dont tu es le plus sûr. Il se vérifie sur ta feuille.
+## t-coeval-ecrit@1280 [doc0-gauche]
+  - 1× ⭐
+  - 1× 🎯
+  - 1× 🎲
+  - 1× ☝️ Un désaccord, c'est sérieux : tu n'en signales qu'un, celui dont tu es le plus sûr. Il se vérifie sur ta feuille.
+## t-coeval@1280 [doc0-droite]
+  - 1× ⭐
+  - 1× 🎯
+  - 1× 🎲
+  - 1× ☝️ Un désaccord, c'est sérieux : tu n'en signales qu'un, celui dont tu es le plus sûr. Il se vérifie sur ta feuille.
+## t-coeval@1280 [doc0-gauche]
+  - 1× ⭐
+  - 1× 🎯
+  - 1× ☝️ Un désaccord, c'est sérieux : tu n'en signales qu'un, celui dont tu es le plus sûr. Il se vérifie sur ta feuille.
+## t-combien@1280 [doc0]
+  - 1× 🔥
+## t-corr-q1-apres@1280 [doc0-droite]
+  - 1× ⭐
+  - 1× 🎯
+  - 1× 🎲
+  - 1× 🔥
+  - 1× ❌ Tu avais faux. Barre ta réponse en rouge et écris la bonne réponse en entier en vert à côté.
+  + 1× Barre ta réponse en rouge et écris la bonne réponse en entier en vert à côté.
+## t-corr-q1-apres@1280 [doc0-gauche]
+  - 1× ⭐
+  - 1× 🎯
+  - 1× 🎲
+  - 1× 🔥
+## t-corr-q1-lecture@1280 [doc0-droite]
+  - 1× ⭐
+  - 1× 🎯
+  - 1× ✨
+  - 1× 🎲
+  - 1× 🔥
+  - 1× TEMPS DE RÉPONSE
+  + 1× 📄 TEMPS POUR LIRE LA FEUILLE DU VOISIN
+## t-corr-q1-lecture@1280 [doc0-gauche]
+  - 1× ⭐
+  - 1× 🎯
+  - 1× ✨
+  - 1× 🎲
+  - 1× 🔥
+  - 1× TEMPS DE RÉPONSE
+  + 1× 📄 TEMPS POUR LIRE LA FEUILLE DU VOISIN
+## t-corr-q2-apres@1280 [doc0-droite]
+  - 1× ⭐
+  - 1× 🎯
+  - 1× ✨
+  - 1× 🎲
+  - 1× 🔥
+  - 1× ❌ Tu avais faux. Barre ta réponse en rouge et écris la bonne réponse en entier en vert à côté.
+  + 1× Barre ta réponse en rouge et écris la bonne réponse en entier en vert à côté.
+## t-corr-q2-apres@1280 [doc0-gauche]
+  - 1× ⭐
+  - 1× 🎯
+  - 1× ✨
+  - 1× 💡
+  - 1× 🎲
+  - 1× 🔥
+## t-corr-q2-lecture@1280 [doc0-droite]
+  - 1× ⭐
+  - 1× 🎯
+  - 1× 🎲
+  - 1× 🔥
+  - 1× TEMPS DE RÉPONSE
+  + 1× 📄 TEMPS POUR LIRE LA FEUILLE DU VOISIN
+## t-corr-q2-lecture@1280 [doc0-gauche]
+  - 1× ⭐
+  - 1× 🎯
+  - 1× ✨
+  - 1× 🎲
+  - 1× 🔥
+  - 1× TEMPS DE RÉPONSE
+  + 1× 📄 TEMPS POUR LIRE LA FEUILLE DU VOISIN
+## t-corr-q3-apres@1280 [doc0-droite]
+  - 1× ⭐
+  - 1× 🎯
+  - 1× 🎲
+  - 1× 🔥
+  - 1× Ta réponse : Ma feuille ne dit aucun de ces choix
+  - 1× ❌ Tu avais faux. Barre ta réponse en rouge et écris la bonne réponse en entier en vert à côté.
+  + 1× Ta réponse : aucun de ces choix
+  + 1× Barre ta réponse en rouge et écris la bonne réponse en entier en vert à côté.
+## t-corr-q3-apres@1280 [doc0-gauche]
+  - 1× ⭐
+  - 1× 🎯
+  - 1× 🎲
+  - 1× 🔥
+  - 1× ❌ Tu avais faux. Barre ta réponse en rouge et écris la bonne réponse en entier en vert à côté.
+  + 1× Barre ta réponse en rouge et écris la bonne réponse en entier en vert à côté.
+## t-corr-q3-lecture@1280 [doc0-droite]
+  - 1× ⭐
+  - 1× 🎯
+  - 1× ✨
+  - 1× 🎲
+  - 1× 🔥
+  - 1× TEMPS DE RÉPONSE
+  + 1× 📄 TEMPS POUR LIRE LA FEUILLE DU VOISIN
+## t-corr-q3-lecture@1280 [doc0-gauche]
+  - 1× ⭐
+  - 1× 🎯
+  - 1× ✨
+  - 1× 🎲
+  - 1× 🔥
+  - 1× TEMPS DE RÉPONSE
+  + 1× 📄 TEMPS POUR LIRE LA FEUILLE DU VOISIN
+## t-corr-seul@1280 [doc0]
+  - 1× ⭐
+  - 1× 🎯
+  - 1× ✨
+  - 1× 💡
+  - 1× 🔥
+  - 1× TEMPS DE RÉPONSE
+  + 1× 📄 TEMPS POUR LIRE LA FEUILLE DU VOISIN
+## t-demo-q@1280 [doc0-droite]
+  - 1× ⭐
+  - 1× 🎯
+## t-demo-q@1280 [doc0-gauche]
+  - 1× ⭐
+  - 1× 🎯
+## t-deplace@1280 [doc0-droite]
+  - 1× ⭐
+  - 1× 🎯
+## t-deplace@1280 [doc0-gauche]
+  - 1× ⭐
+  - 1× 🎯
+## t-estim@1280 [doc0-droite]
+  - 1× ⭐
+  - 1× 🎯
+  - 1× 🎲
+## t-estim@1280 [doc0-gauche]
+  - 1× ⭐
+  - 1× 🎯
+## t-fin@1280 [doc0]
+  - 1× 🔥
+## t-login-inconnu@1280 [doc0-droite]
+  - 1× ⭐
+  - 1× 🎯
+  - 1× 🎲
+  - 1× 🔥
+## t-login-inconnu@1280 [doc0-gauche]
+  - 1× ⭐
+  - 1× 🎯
+  - 1× 🎲
+  - 1× 🔥
+  - 1× 1
+  - 1× 2
+  - 1× 3
+  - 1× 4
+  - 1× 5
+  - 1× 6
+  - 1× 7
+  - 1× 8
+  - 1× 9
+  - 1× 0
+  - 1× ✓
+  + 1× a
+  + 1× z
+  + 1× e
+  + 1× r
+  + 1× t
+  + 1× y
+  + 1× u
+  + 1× i
+  + 1× o
+  + 1× p
+  + 1× q
+  + 1× s
+  + 1× d
+  + 1× f
+  + 1× g
+  + 1× h
+  + 1× j
+  + 1× k
+  + 1× l
+  + 1× m
+  + 1× ⇧
+  + 1× w
+  + 1× x
+  + 1× c
+  + 1× v
+  + 1× b
+  + 1× n
+  + 1× ’
+  + 1× -
+  + 1× é
+  + 1× è
+  + 1× ê
+  + 1× ë
+  + 1× à
+  + 1× â
+  + 1× ç
+  + 1× ù
+  + 1× û
+  + 1× î
+  + 1× ô
+  + 1× œ
+  + 1× ,
+  + 1× .
+  + 1× ?
+  + 1× !
+  + 1× espace
+## t-login@1280 [doc0-droite]
+  - 1× ⭐
+  - 1× 🎯
+  - 1× 🎲
+  - 1× 🔥
+## t-login@1280 [doc0-gauche]
+  - 1× ⭐
+  - 1× 🎯
+  - 1× 🎲
+  - 1× 🔥
+## t-papier-attest@1280 [doc0-droite]
+  - 1× ⭐
+  - 1× 🎯
+## t-papier-attest@1280 [doc0-gauche]
+  - 1× ⭐
+  - 1× 🎯
+  - 1× 🎲
+  - 1× 🔥
+## t-papier-correction@1280 [doc0-droite]
+  - 1× ⭐
+  - 1× 🎯
+  - 1× ✨
+  - 1× 🎲
+  - 1× 🔥
+  - 1× ❌ Tu avais faux. Barre ta réponse en rouge et écris la bonne réponse en entier en vert à côté.
+  + 1× Barre ta réponse en rouge et écris la bonne réponse en entier en vert à côté.
+## t-papier-correction@1280 [doc0-gauche]
+  - 1× ⭐
+  - 1× 🎯
+  - 1× ✨
+  - 1× 🎲
+  - 1× 🔥
+  - 1× ❌ Tu avais faux. Barre ta réponse en rouge et écris la bonne réponse en entier en vert à côté.
+  + 1× Barre ta réponse en rouge et écris la bonne réponse en entier en vert à côté.
+## t-papier-estim@1280 [doc0-droite]
+  - 1× ⭐
+  - 1× 🎯
+## t-papier-estim@1280 [doc0-gauche]
+  - 1× ⭐
+  - 1× 🎯
+  - 1× 🎲
+## t-pret@1280 [doc0-droite]
+  - 1× ⭐
+  - 1× 🎯
+## t-pret@1280 [doc0-gauche]
+  - 1× ⭐
+  - 1× 🎯
+## t-q1-attente@1280 [doc0-droite]
+  - 1× ⭐
+  - 1× 🎯
+## t-q1-attente@1280 [doc0-gauche]
+  - 1× ⭐
+  - 1× 🎯
+## t-q1-b-michel@1280 [doc0-droite]
+  - 1× ⭐
+  - 1× 🎯
+  - 1× 🎲
+  - 1× 🔥
+## t-q1-passage1@1280 [doc0-gauche]
+  - 1× ⭐
+  - 1× 🎯
+## t-q1-passage2@1280 [doc0-droite]
+  - 1× ⭐
+  - 1× 🎯
+## t-q1-reflexion@1280 [doc0-droite]
+  - 1× ⭐
+  - 1× 🎯
+## t-q1-reflexion@1280 [doc0-gauche]
+  - 1× ⭐
+  - 1× 🎯
+## t-q1-tour1@1280 [doc0-gauche]
+  - 1× ⭐
+  - 1× 🎯
+  - 1× 🎲
+  - 1× 🔥
+## t-q1-tour2@1280 [doc0-droite]
+  - 1× ⭐
+  - 1× 🎯
+  - 1× 🎲
+  - 1× 🔥
+## t-q2-ecartee@1280 [doc0-droite]
+  - 1× ⭐
+  - 1× 🎯
+## t-q2-ecartee@1280 [doc0-gauche]
+  - 1× ⭐
+  - 1× 🎯
+## t-q2-reflexion@1280 [doc0-droite]
+  - 1× ⭐
+  - 1× 🎯
+## t-q2-reflexion@1280 [doc0-gauche]
+  - 1× ⭐
+  - 1× 🎯
+## t-q2-tour1@1280 [doc0-droite]
+  - 1× ⭐
+  - 1× 🎯
+  - 1× 🎲
+  - 1× 🔥
+## t-q2-tour2@1280 [doc0-gauche]
+  - 1× ⭐
+  - 1× 🎯
+  - 1× 🎲
+  - 1× 🔥
+## t-q3-tour1@1280 [doc0-gauche]
+  - 1× ⭐
+  - 1× 🎯
+  - 1× 🎲
+  - 1× 🔥
+## t-q3-tour2@1280 [doc0-droite]
+  - 1× ⭐
+  - 1× 🎯
+  - 1× 🎲
+  - 1× 🔥
+## t-rejoins@1280 [doc0-droite]
+  - 1× ⭐
+  - 1× 🎯
+## t-rejoins@1280 [doc0-gauche]
+  - 1× ⭐
+  - 1× 🎯
+## t-rouvrir-un@1280 [doc0-gauche]
+  - 1× ⭐
+  - 1× 🎯
+  - 1× 🎲
+  - 1× 🔥
+## t-un-eleve@1280 [doc0]
+  - 1× 🔥
+## x610-1-b-julien@1280 [doc0-gauche]
+  - 1× ⭐
+  - 1× 🎯
+  - 1× ✨
+  - 1× 💡
+  - 1× 🎲
+  - 1× 🔥
+  + 1× 📊 Mes évaluations
+## x610-2-b-michel@1280 [doc0-droite]
+  - 1× ⭐
+  - 1× 🎯
+  - 1× ✨
+  - 1× 💡
+  - 1× 🎲
+  - 1× 🔥
+  + 1× 📊 Mes évaluations
+## x610-3-a-correction@1280 [doc0-droite]
+  - 1× ⭐
+  - 1× 🎯
+  - 1× ✨
+  - 1× 💡
+  - 1× 🎲
+  - 1× 🔥
+  - 1× TEMPS DE RÉPONSE
+  + 1× 📊 Mes évaluations
+  + 1× 📄 TEMPS POUR LIRE LA FEUILLE DU VOISIN
+## x610-3-a-correction@1280 [doc0-gauche]
+  - 1× ⭐
+  - 1× 🎯
+  - 1× ✨
+  - 1× 💡
+  - 1× 🎲
+  - 1× 🔥
+  - 1× TEMPS DE RÉPONSE
+  + 1× 📊 Mes évaluations
+  + 1× 📄 TEMPS POUR LIRE LA FEUILLE DU VOISIN
+## x610-5-attestation-2@1280 [doc0-droite]
+  - 1× ⭐
+  - 1× 🎯
+  + 1× 📊 Mes évaluations
+## x610-5-attestation-2@1280 [doc0-gauche]
+  - 1× ⭐
+  - 1× 🎯
+  + 1× 📊 Mes évaluations
+## x610-6-coeval-laquelle@1280 [doc0-droite]
+  - 1× ⭐
+  - 1× 🎯
+  - 1× ✨
+  - 1× 💡
+  - 1× 🎲
+  - 1× 🔥
+  - 1× Question 1 · Quand est-ce qu'une Proposition Principale se coupe en…
+  - 1× Question 3 · Comment trouves-tu l'antécédent d'un Pronom Relatif, et…
+  - 1× Question 4 · Deux relatives sont coordonnées par « et ». Que fais-tu…
+  - 1× Question 5 · écris une phrase P.P + PSR 1 + PSR 2. Thème : un lieu…
+  - 1× Question 6 · écris une phrase DPP + PSR + FPP : P.I sur un camarade…
+  - 1× Question 7 · écris une phrase P.I : P.P + PSR sur une information…
+  - 1× Question 8 · écris une phrase DPP + PSR + FPP sur ce que tu penses de…
+  - 1× Question 9 · écris une phrase P.P + PSR ; P.I sur le paysage au…
+  - 1× Question 10 · écris une phrase P.I , P.P + PSR sur le bruit, puis sur…
+  - 1× Question 11 · Quelle est l'architecture de « La lettre que ma mère m'a…
+  - 1× ☝️ Un désaccord, c'est sérieux : tu n'en signales qu'un, celui dont tu es le plus sûr. Il se vérifie sur ta feuille.
+  + 1× 📊 Mes évaluations
+  + 1× Question 1 · Quand est-ce qu'une Proposition Principale se coupe en deux, en DPP et en FPP ?
+  + 1× Question 3 · Comment trouves-tu l'antécédent d'un Pronom Relatif, et dans quel sens va la flèche à l'étape 4?
+  + 1× Question 4 · Deux relatives sont coordonnées par « et ». Que fais-tu de « et » quand tu les écris et les repères ?
+  + 1× Question 5 · écris une phrase P.P + PSR 1 + PSR 2. Thème : un lieu sur le front, en 1914. Est-ce que ta Proposition Principale subit des modifications
+  + 1× Question 6 · écris une phrase DPP + PSR + FPP : P.I sur un camarade dans les tranchées. Que contient ta phrase ?
+  + 1× Question 7 · écris une phrase P.I : P.P + PSR sur une information censurée sur le front, que tu ne mettras jamais dans une lettre. Que contient ta phr
+  + 1× Question 8 · écris une phrase DPP + PSR + FPP sur ce que tu penses de la suite de la guerre, avec un Pronom Relatif composé. Que contient ta phrase ?
+  + 1× Question 9 · écris une phrase P.P + PSR ; P.I sur le paysage au matin. Quel signe sépare ta Proposition Principale de ta Proposition Indépendante ?
+  + 1× Question 10 · écris une phrase P.I , P.P + PSR sur le bruit, puis sur la lettre que tu écris. Combien de Verbes Conjugués compte ta phrase ?
+  + 1× Question 11 · Quelle est l'architecture de « La lettre que ma mère m'a envoyée et dont je connais chaque mot dort dans ma poche : je la relis chaque s
+## x610-6-coeval-laquelle@1280 [doc0-gauche]
+  - 1× ⭐
+  - 1× 🎯
+  - 1× ☝️ Un désaccord, c'est sérieux : tu n'en signales qu'un, celui dont tu es le plus sûr. Il se vérifie sur ta feuille.
+  + 1× 📊 Mes évaluations
+## x610-7-coeval-ecrit@1280 [doc0-droite]
+  - 1× ⭐
+  - 1× 🎯
+  - 1× ✨
+  - 1× 💡
+  - 1× 🎲
+  - 1× 🔥
+  - 1× Un désaccord, c'est sérieux : tu n'en signales qu'un, celui dont tu es le plus sûr. Il se vérifie sur ta feuille.
+  + 1× 📊 Mes évaluations
+## x610-7-coeval-ecrit@1280 [doc0-gauche]
+  - 1× ⭐
+  - 1× 🎯
+  - 1× 🎲
+  - 1× ☝️ Un désaccord, c'est sérieux : tu n'en signales qu'un, celui dont tu es le plus sûr. Il se vérifie sur ta feuille.
+  + 1× 📊 Mes évaluations

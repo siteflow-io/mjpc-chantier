@@ -20091,3 +20091,107 @@ Tu es l'exécutant du complément 3 de la maquette complète du QCM de MJPC. Lis
 À son retour, je refais toute cette lecture sur la v8 avant de te dire si elle va.
 
 11/10/2026 16:44 MEMO
+
+---
+
+## TOUR 655 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (11/10, 18:43) Il en est où ?
+
+---
+
+## TOUR 655 — Claude (conscience n°12)
+
+Relu les branches du sas (`git fetch`) : `origin/maquette-qcm` toujours à `c6611fb3` (11/10 06:50) ; `origin/claude/bold-bohr-zxodms` au même commit, déjà dans `main`.
+
+Réponse mot pour mot :
+
+781. **Rien n'est arrivé au sas.** La branche de l'exécutant, `maquette-qcm`, n'a pas bougé depuis ce matin à 06:50, l'heure de la v7. Aucune étape du complément 3 n'y est poussée, pas même l'étape A, qui doit l'être en premier.
+
+782. **Je ne sais pas s'il tourne** : je ne vois pas sa session. Si tu l'as relancé, regarde sa session sur claude.ai/code. S'il travaille encore, c'est l'étape A, la plus longue à monter : sept gardes, jouées d'abord sur la v7. S'il s'est arrêté, colle-moi son dernier message. Si tu ne l'as pas relancé, le message du point 780 vaut tel quel.
+
+11/10/2026 18:45 MEMO
+
+---
+
+## TOUR 656 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (12/10, 06:17) Livré
+
+---
+
+## TOUR 656 — Claude (conscience n°12)
+
+Audit final de la v8 (branche `maquette-qcm`, `f2e6b420`, md5 `6675262e…` vérifié) : carte des 5 566 gestes et des destinations à paramètres, 384 relevés de mise en page, bulles à 1366 et 1536, textes et 2 097 infobulles, captures regardées tuile par tuile ; huit défauts ; rapport, sorties, scripts et captures déposés dans `AUDITS/MAQUETTE-QCM-COMPLEMENT-3-12-10/`. Banc de l'exécutant relancé, pas fini au bout d'une heure. Ajouté au `git fetch` la branche `maquette-qcm`, qu'il ne lisait pas (d'où l'erreur du point 781).
+
+Réponse mot pour mot :
+
+783. **Verdict : la v8 ne va pas, il reste huit défauts.** Tout le reste de ce que la lecture du 11/10 avait trouvé est réglé, et je l'ai mesuré de nouveau. Les deux bloquants de la v7 sont réglés : Lou a la même note partout, et « Jouer en grand » s'atteint.
+
+784. **Sur quoi ça repose.** J'ai refait toute la lecture de la v7 sur la v8. J'ai cliqué un par un les 5 566 éléments cliquables, mesuré la mise en page à toutes les tailles, relu les textes et les 2 097 infobulles, et regardé chaque capture. En plus, j'ai ouvert chaque écran où mènent les gestes, au-delà des 169 scènes. C'est là que se cachent trois des huit défauts. J'ai aussi relancé chez moi le banc de l'exécutant : au bout d'une heure, il n'a pas fini. Je te donne son résultat au prochain tour. Il ne change rien au verdict : les huit défauts passent à travers ses gardes.
+
+785. **Les résultats des autres séances.** Pour la séance de 3e, la séance sur papier et les deux de septembre, « 📊 Ouvrir » ouvre un tableau brut : ni couleurs, ni compétences, ni autonomie, ni PDF. Celui de la séance sur papier met onze cases sous trois questions, et aucune note.
+
+786. **Le PDF.** Depuis l'évaluation d'essai du 08/10, « 📄 PDF » ouvre le PDF de l'analyse logique du 09/10 : c'est toujours le même fichier, quelle que soit la séance.
+
+787. **Le rattrapage.** « 🚀 Lancer le rattrapage » ouvre un appel où Adam, le seul élève du rattrapage, est marqué absent. On y lit aussi « Théo et Lou mis ensemble ».
+
+788. **La démo** : au même moment, les tablettes montrent la question 3, et la console la question 1.
+
+789. **La séance interrompue** dit « 2e tour, moitiés de droite » ; c'est celles de gauche.
+
+790. **Adam, seul à la correction**, lit sa propre feuille, mais son chrono dit « Temps pour lire la feuille du voisin ».
+
+791. **Sur le téléphone**, la ligne « 📱 Sur les tablettes, avant la correction » est en gris sur le fond violet : on ne la lit pas.
+
+792. **La règle « Un désaccord, c'est sérieux… »** a disparu des écrans où elle était seule. Elle ne devait partir que là où elle doublait « C'est ta seule question de désaccord ». La faute est la mienne : mon point 778 ne disait pas où.
+
+793. **Pourquoi les gardes ne les ont pas vus.** Elles ne jouent que les 169 scènes, sans les écrans que leurs gestes ouvrent. Elles ne lisent pas le PDF. Elles sautent le texte posé sur un fond dégradé. Et elles laissent partir une phrase d'élève partout où le point 778 la cite.
+
+794. **Ma proposition : un complément 4, court, d'une traite.** Il corrige les huit défauts. Il étend aussi les gardes : chaque écran ouvert par un geste est joué comme une scène, le PDF est lu, le contraste se mesure aussi sur un fond dégradé, et les retraits de phrases d'élève sont nommés un par un. Si tu dis « ok », je l'écris au sas et je te donne le message de relance.
+
+795. **Je corrige mon point 781.** Hier à 18:45, je t'ai dit que rien n'était poussé. C'était faux : l'étape A l'était depuis 18:20. Je ne lisais que la branche main du sas ; je lis maintenant aussi celle de l'exécutant.
+
+796. **Le rapport** : https://github.com/siteflow-io/mjpc-chantier/blob/main/AUDITS/MAQUETTE-QCM-COMPLEMENT-3-12-10/README.md. À part : à la fin de l'heure, ton site d'aujourd'hui affiche au tableau « Préparation… La première question va arriver. » La maquette le reproduit. C'est à voir au mandat de code.
+
+12/10/2026 07:19 MEMO
+
+---
+
+## TOUR 657 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (12/10, 07:28) ça commence à faire beaucoup de compléments. fais le message pour l'exécutant.
+
+---
+
+## TOUR 657 — Claude (conscience n°12)
+
+Pris comme l'ordre d'écrire le complément 4 (proposé au point 794). Banc de la v8 coupé par le redémarrage de la machine vers 07:28, relancé à 07:29. Relevé moitié par moitié des textes vus par l'élève, v7 contre v8 : la règle du désaccord manque dans huit moitiés (cinq écrans) ; l'évaluation de 3e « à compléter » au scénario et passée le 09/10 ; les 25 notes du PDF figé de 3e conformes au scénario ; le clavier de `t-login-inconnu` suit le champ « Nom ». Complément 4 écrit au sas (`MANDATS/COMPLEMENT-MAQUETTE-QCM-COMPLETE-4.md`) ; rapport d'audit complété (§3.8 et §8), sorties et scripts ajoutés.
+
+Réponse mot pour mot :
+
+797. **D'accord : celui-ci est fait pour être le dernier.** Il y en a eu quatre parce que mon audit regarde plus loin que le banc de l'exécutant : ce que ses gardes ne couvrent pas, je le trouve après coup, et cela fait un complément de plus. Le complément 4 ferme cet écart. Avant de livrer, l'exécutant refait lui-même ma lecture, avec mes propres scripts, déposés au sas, et il regarde chaque capture. Ce que je trouverais à l'audit, il le trouve avant moi.
+
+798. **Le complément 4** : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/COMPLEMENT-MAQUETTE-QCM-COMPLETE-4.md. Il corrige les huit défauts. Il ajoute cinq gardes : les écrans ouverts par les gestes, le PDF lu, ce que l'écran dit du moment, le contraste mesuré aux pixels, et chaque phrase changée côté élève, nommée une par une. Chaque garde doit d'abord retrouver sur la v8 le défaut qu'elle vise.
+
+799. **En l'écrivant, j'ai trouvé que la règle du désaccord manque dans cinq écrans, pas trois.** Elle manque aussi dans la moitié de Julien de deux écrans où je la croyais retirée à bon droit. J'avais comparé écran par écran, sans regarder les moitiés : c'est la faute même que je reproche à la garde. Le rapport et le complément sont corrigés.
+
+800. **Et un neuvième défaut : ton évaluation de 3e.** La maquette la dit « à compléter », sans chapitre, comme au hub ; pourtant ta classe la passe le 09/10, et son PDF lui donne le chapitre 1. Le complément la fait compléter avant le 09/10, avec ce que montre le PDF que tu as validé, sans aucun texte nouveau.
+
+801. **Le banc rejoué sur la v8** : la machine où je travaille a redémarré pendant qu'il tournait, et il n'a rien écrit. Je l'ai relancé ; je n'ai donc toujours pas son résultat.
+
+802. **Le message.** Ouvre une nouvelle session cloud sur siteflow-io/mjpc-chantier, et colle :
+
+```
+Tu es l'exécutant du complément 4 de la maquette complète du QCM de MJPC. Lis en entier MANDATS/COMPLEMENT-MAQUETTE-QCM-COMPLETE-4.md sur la branche main de ce dépôt, applique-le à la lettre, et fais tout le complément d'une traite sur la branche maquette-qcm, sans t'arrêter avant la fin de l'étape C.
+```
+
+À son retour, je refais ma lecture sur la v9.
+
+12/10/2026 07:43 MEMO

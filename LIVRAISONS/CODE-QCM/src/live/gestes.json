@@ -218,6 +218,11 @@
    "depart": "c-coeval-*",
    "geste": "↩️ Défaire (une décision)",
    "action": "ACT.trancher(alerteId, null)"
+  },
+  {
+   "depart": "c-qr",
+   "geste": "📱 Voir le téléphone",
+   "action": "ouvre le téléphone dans sa fenêtre (#mode=prof&view=phone, sans scan : la fenêtre du QR reste) ; le scan, lui, écrit qcm/qrScans/<nonce> et ferme la fenêtre du QR"
   }
  ],
  "navigation": {

@@ -64,6 +64,8 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
     J.v(await choisir(prof, /Évaluation d'essai/), H2, "Pilotage classe : l'évaluation d'essai se choisit (complète : chapitre 3e-ch1, temps, compétences)");
     await pause(400);
     await scene("c-lancer", prof, "console");
+    if(await cliquer(prof, /Mode d'emploi/)){ await pause(500); await scene("c-mode-emploi", prof, "console"); if(!(await cliquer(prof, /^✓ J'ai compris$|^✕$|^Fermer$/))) await prof.keyboard.press("Escape"); await pause(300); }
+    else J.v(false, H2, "« 📖 Mode d'emploi » (c-mode-emploi)");
     J.v(await etatBouton(prof, /Lancer la séance/) === "ouvert", H2, "« 🚀 Lancer la séance » ouvert pour une évaluation complète", await etatBouton(prof, /Lancer la séance/));
     await cliquer(prof, /Lancer la séance/); await pause(600);
     await scene("c-appel", prof, "console");
@@ -170,7 +172,6 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
           if(tour === 1) J.v(/Pose ton stylo|À toi dans/.test(await texte(tabJM)), H2, "le passage : « Pose ton stylo, … À toi dans 3 secondes » (t-q1-passage1)", (await texte(tabJM)).slice(0, 200)); }
         J.v(await attendreBase(() => etat().ph === "reponse" && etat().tour === tour, 10000), H1, "Q" + (qi + 1) + ", tour " + tour + " : la base passe en réponse (deroule.ph = reponse, tour " + tour + ")", JSON.stringify(etat()));
         await pause(500);
-        if(qi === 0 && tour === 1) await scene("t-q1-tour1", tabJM, "tablette");
         // la saisie de la console tient pendant que les 12 tablettes répondent (règle du 04/10) : un champ de temps, tapé puis remis
         let garde = false;
         if(qi === 0 && tour === 1){ garde = await prof.evaluate(() => { const f = [...document.querySelectorAll("input[type=number], input[type=text], input:not([type])")].filter(x => x.getBoundingClientRect().width > 0 && !x.disabled && !x.readOnly).pop(); if(!f) return false; f.setAttribute("data-garde", "1"); return true; });
@@ -191,10 +192,14 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
         J.v(repondus === (qi === 1 && tour === 2 ? 11 : 12), H2, "Q" + (qi + 1) + ", " + tour + (tour === 1 ? "er" : "e") + " tour : sur chaque tablette, la moitié qui a la main a ses choix ouverts, et répond", repondus + " moitiés ont répondu ; la main sans choix ouverts : " + sansMain.join(", "));
         await pause(500);
         if(qi === 0 && tour === 1){
+          await scene("t-q1-tour1", tabJM, "tablette");
           await scene("c-q1-tour1", prof, "console"); await scene("p-reponse", tel, "telephone"); await scene("b-reponse", tableau, "tableau");
           if(garde){ const st = await prof.evaluate(() => { const f = document.querySelector("[data-garde='1']"); return f ? {focus: document.activeElement === f, v: f.value} : null; });
             J.v(!!st && st.focus && /7$/.test(st.v), H2, "un champ de la console garde sa valeur et le curseur pendant que 12 tablettes répondent (règle du 04/10)", JSON.stringify(st));
             await prof.keyboard.press("Backspace"); await prof.keyboard.press("Tab"); }
+          if(await cliquer(prof, /QR pilotage/)){ await pause(400); await scene("c-qr", prof, "console"); if(!(await cliquer(prof, /^✕$|^Fermer$/))) await prof.keyboard.press("Escape"); await pause(200); }
+          else J.v(false, H2, "« 📱 QR pilotage » (c-qr)");
+          if(await cliquer(prof, /^🛑 Terminer la séance$/)){ await pause(300); await scene("c-terminer", prof, "console"); J.v(await cliquer(prof, /^Annuler$/), H2, "la garde de « 🛑 Terminer la séance » : « Annuler » (c-terminer)"); await pause(200); }
           const r0 = (sess().s.reponses || {})[0] || {};
           J.v(Object.keys(r0).length >= 11, H1, "Q1, 1er tour : les réponses sont dans la base (reponses/0/<eleve>)", Object.keys(r0).length);
           const rj = Object.values(r0)[0];
@@ -231,6 +236,8 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
         J.v(/Attends la prochaine question/.test(await texte(tabJM)), H2, "les deux tours finis : « Attends la prochaine question » (t-q1-attente)", (await texte(tabJM)).slice(0, 160)); }
       if(qi === 1){
         await scene("c-q2-close", prof, "console");
+        if(await cliquer(tel, /CHEVALLIER Théo|^Théo/)){ await pause(400); await scene("p-eleve", tel, "telephone"); if(!(await cliquer(tel, /^✕ Fermer$|^Fermer$|^✕$|← Retour/))) await tel.keyboard.press("Escape"); await pause(200); }
+        else J.v(false, H2, "au téléphone, un clic sur Théo ouvre sa fiche (p-eleve)");
         J.v(/Théo|CHEVALLIER/.test(await texte(prof)), H2, "Q2 close : Théo n'a pas répondu, la console le dit (c-q2-close)");
         // « 🔓 Rouvrir pour un élève » : Théo
         const r1 = await cliquer(prof, /Rouvrir pour un élève/);
@@ -292,16 +299,15 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
       const lab = EV.questions[qi].choix;
       if(!premiere){ J.v(await cliquer(prof, /Question suivante/), H2, "« Question suivante → » se clique"); await pause(900); }
       J.v(await attendre(tabJM, new RegExp("QUESTION " + (qi + 1) + "|Question " + (qi + 1)), 5000), H2, "la correction montre la question " + (qi + 1) + " sur la tablette", (await texte(tabJM)).slice(0, 160));
-      if(qi === 1){ await scene("t-corr-q2-lecture", tabJM, "tablette"); await scene("c-corr-q2-avant", prof, "console"); await scene("p-corr-avant", tel, "telephone"); await scene("b-recopie", tableau, "tableau");
+      if(qi === 1){ await scene("c-corr-q2-avant", prof, "console"); await scene("p-corr-avant", tel, "telephone"); await scene("b-recopie", tableau, "tableau");
         J.v(await etatBouton(prof, /Révéler/) === "fermé", H2, "« 🔒 Révéler » fermé tant qu'une feuille n'est pas lue", await etatBouton(prof, /Révéler/)); }
-      if(qi === 2) await scene("t-corr-q3-lecture", tabJM, "tablette");
-      if(qi === 0) await scene("t-corr-q1-lecture", tabJM, "tablette");
       // le voisin lit la feuille et clique ce qu'elle dit, dans la moitié de son propriétaire
       await Promise.all(Object.entries(tabs).map(async ([n, p]) => { const t = TABS.find(x => x.n === n);
         for(const [cote, sl] of cotesDe(t)){ const l = LU(sl, qi);
           if(l === "aucun") await cliquer(p, /aucun de ces choix/, cote);
           else for(const c of l) await cliquer(p, new RegExp("^" + esc(lab[c]) + "$"), cote, {apres: 120}); } }));
       await pause(900);
+      await scene({1: "t-corr-q2-lecture", 2: "t-corr-q3-lecture", 0: "t-corr-q1-lecture"}[qi], tabJM, "tablette");
       const lus = Object.keys(((sess().s.lectures || {})[qi]) || {}).length;
       J.v(lus >= 24, H1, "Q" + (qi + 1) + " : les 24 lectures dans la base (lectures/<qi>/<eleve> = {choix, par, ms})", lus);
       if(qi === 1) await scene("c-corr-q2-lu", prof, "console");
@@ -341,12 +347,12 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
     await fermerFenetres(prof);
     J.v(await cliquer(prof, /Ouvrir la co-évaluation/), H2, "« 🤝 Ouvrir la co-évaluation, puis leur bilan »"); await pause(900);
     J.v(/coeval/.test(etat().ph || ""), H1, "la base : etat.ph = coeval", JSON.stringify(etat()));
-    await scene("t-coeval", tabJM, "tablette");
     const CO = sl => S.CO[S.pre(nomDeSlug(sl))];
     await Promise.all(Object.entries(tabs).map(async ([n, p]) => { const t = TABS.find(x => x.n === n);
       for(const [cote, sl] of cotesDe(t)){ const c = CO(sl); if(!c || c === "att") continue;
         if(c === "ok") await cliquer(p, /^✅ Je pense que .* a bien lu ma feuille/, cote);
         else if(/^mal/.test(c)){ const qi = +c.slice(3) - 1; await cliquer(p, /^❌ Je pense que .* a mal lu/, cote); await pause(300);
+          if(sl === "duvernay_michel") await scene("t-coeval", p, "tablette");
           await cliquer(p, new RegExp("^Question " + (qi + 1) + " ·"), cote); await pause(300);
           const f = S.feuilleVraie(S.pre(nomDeSlug(sl)))[qi]; const ch = S.choixDe(f, qi);
           if(sl === "duvernay_michel") await scene("t-coeval-ecrit", p, "tablette");
@@ -393,7 +399,6 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
 
     J.section("1.11 Terminer la séance");
     J.v(await cliquer(prof, /Terminer la séance/), H2, "« 🛑 Terminer la séance »"); await pause(400);
-    await scene("c-terminer", prof, "console");
     await cliquer(prof, /^🛑 Terminer|^Terminer$|Oui, terminer|Terminer la séance/); await pause(1200);
     const fini = srv.store.get("qcm/sessions/" + sid) || {};
     J.v(!!sid && !Object.keys(srv.store.get("qcm/sessionActive") || {}).length && fini.etat === "terminee", H1, "la séance terminée : plus de séance active, etat = « terminee » (la 7.7.1), deroule.ph = fin", JSON.stringify({active: srv.store.get("qcm/sessionActive"), etat: fini.etat, deroule: fini.deroule}));
@@ -484,9 +489,14 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
     await ouvrirSeance();
     await scene("c-resultats-rendues", prof, "console");
     J.v(await etatBouton(prof, /PDF notes et compétences/) === "ouvert", H3, "les copies rendues : « 📄 PDF notes et compétences » s'ouvre (c-resultats-rendues)", await etatBouton(prof, /PDF notes et compétences/));
+    const fen = prof.context().waitForEvent("page", {timeout: 5000}).catch(() => null);
     await cliquer(prof, /PDF notes et compétences/); await pause(1500);
-    await scene("x632-pdf", prof, "console");
-    J.v(/notes et compétences|Notes et compétences/i.test(await texte(prof)), H3, "le PDF « notes et compétences » (x632-pdf)", (await texte(prof)).slice(0, 300));
+    const pdf = await fen;
+    if(pdf){ await pdf.waitForLoadState().catch(() => {}); await pause(800); pdf.__nom = "pdf"; await scene("x632-pdf", pdf, "console"); }
+    else await scene("x632-pdf", prof, "console");
+    const tpdf = pdf ? await texte(pdf) : await texte(prof);
+    J.v(/Notes et compétences/i.test(tpdf) && /Classe : 3 ESSAI/.test(tpdf), H3, "le PDF « notes et compétences » (x632-pdf" + (pdf ? ", dans sa fenêtre" : "") + ")", tpdf.slice(0, 300));
+    if(pdf) await pdf.close().catch(() => {});
     await prof.keyboard.press("Escape"); await cliquer(prof, /^✕$|Fermer/); await pause(300);
     await pause(500);
     await scene("e-mes-evals-rendue", el, "eleve");
@@ -541,8 +551,6 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
       J.v(!/\{\{[A-Z_]+\}\}/.test(tp), H3, "le prompt tel que l'app le copie : aucun jeton {{…}} visible (c-reglages-prompt)", (tp.match(/\{\{[A-Z_]+\}\}/) || [""])[0]);
       await cliquer(prof, /^✕$/); await prof.keyboard.press("Escape"); await pause(300); } else J.v(false, H3, "« 🤖 Prompt IA »");
     if(await cliquer(prof, /^✏️ Modifier le prompt$/)){ await pause(500); await scene("c-reglages-prompt-modifier", prof, "console"); await cliquer(prof, /^↩️ Annuler$|^Annuler$/); await prof.keyboard.press("Escape"); await pause(300); } else J.v(false, H3, "« ✏️ Modifier le prompt »");
-    if(await cliquer(prof, /Mode d'emploi/)){ await pause(500); await scene("c-mode-emploi", prof, "console"); await prof.keyboard.press("Escape"); await cliquer(prof, /^✕$|^Fermer$/); await pause(300); } else J.v(false, H2, "« 📖 Mode d'emploi »");
-    if(await cliquer(prof, /QR pilotage/)){ await pause(500); await scene("c-qr", prof, "console"); await prof.keyboard.press("Escape"); await cliquer(prof, /^✕$|^Fermer$/); await pause(300); } else J.v(false, H2, "« 📱 QR pilotage »");
     await cliquer(prof, /^Pilotage$/); await cliquer(prof, /Pilotage classe/); await pause(300);
     await choisir(prof, /3 ESSAI/); await choisir(prof, /Évaluation d'essai/); await pause(200);
     if(await cliquer(prof, /Séance sur papier/)){ await pause(400); await scene("c-papier-lancer", prof, "console"); J.v(/papier/i.test(await texte(prof)), H3, "« 📄 Séance sur papier » au lancement (c-papier-lancer)"); await cliquer(prof, /Sur tablettes/); }

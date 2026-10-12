@@ -16,7 +16,7 @@ const dp = s => donneesPres(s, NOMS.concat(PRENOMS));
 // l'écran de la scène, propre à la séance (le sommaire ⚙ et les décorations émoji seules ne comptent pas)
 const DECO = /^[⭐🎯✨💡🎲🔥]$/u;
 // le propriétaire d'un écran (COMMUN §1) : l'heure → QCM-2 ; le soir et le reste → QCM-3
-const SOIR = /^(c-seances|c-resultats|c-fiche|c-que-dit|c-rendre|c-copies|x632|c-corbeille|c-sauvegarde|c-importer|c-purger|e-|c-evals|c-eval-|c-collage|x627|c-feuille|c-reglages|m-|x620|c-papier|t-papier|c-rattrapage|t-corr-seul|c-demo|t-demo)/;
+const SOIR = /^(c-seances|c-resultats|c-fiche|c-que-dit|c-rendre|c-copies|x632|c-corbeille|c-sauvegarde|c-importer|c-purger|e-|c-evals|c-eval-|c-collage|x627|c-feuille|c-reglages|m-|x620|c-papier|t-papier|c-rattrapage|t-corr-seul)/;
 const proprio = id => SOIR.test(id) ? "QCM-3 · SOIR" : "QCM-2 · HEURE";
 const nomme = (id, sorte, t) => ECARTS.ecarts.some(e => (e.scene === id || e.scene === "*") && e.sorte === sorte && (e.texte === t || (e.motif && new RegExp(e.motif).test(t))));
 const lignes = [], defauts = [];

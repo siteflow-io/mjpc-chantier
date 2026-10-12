@@ -170,9 +170,14 @@ async function scene(id, p, appareil){ if(!p) return; try { RELEVES[id] = Object
     await prof.reload(); await pause(1200); await cliquer(prof, /^Pilotage$/); await cliquer(prof, /Pilotage classe/); await pause(400);
     await scene("c-reprendre", prof, "console");
     J.v(await cliquer(prof, /Reprendre la séance du/), H2, "« ▶️ Reprendre la séance du … — question … » (c-reprendre)", (await texte(prof)).slice(0, 300)); await pause(800);
-    J.v(!/pause/.test(etat().ph || ""), H1, "reprise : la séance n'est plus en pause", JSON.stringify(etat()));
+    // la reprise passe par l'appel (c-reprendre → c-appel), puis « ▶️ Reprendre » relance le moment gelé (QCM-1, ACT.reprendre)
+    J.v(etat().ph === "appel", H1, "reprise : l'appel s'ouvre d'abord (deroule.ph = appel)", JSON.stringify(etat()));
+    await cliquer(prof, /Lancer la séance/); await pause(800);
+    if(etat().ph !== "close") { await cliquer(prof, /^▶️ Reprendre$|Reprendre/); await pause(800); }
+    J.v(etat().ph === "close" && etat().qi === 1, H1, "après l'appel, la séance reprend où elle était : Q2 close (deroule.ph = close, qi = 1)", JSON.stringify(etat()));
     // la console perdue en pleine question : une nouvelle console retrouve la séance
-    await cliquer(prof, /Lancer Q3\b/); await pause(600);
+    J.v(await cliquer(prof, /Lancer Q3\b/), H2, "« ▶️ Lancer Q3 » après la reprise"); await pause(600);
+    J.v(etat().qi === 2, H1, "Q3 lancée (deroule.qi = 2)", JSON.stringify(etat()));
     await prof.context().close();
     prof = await A.ouvrir("console-2", "?mode=prof", 1536, 864);
     await cliquer(prof, /^Pilotage$/); await cliquer(prof, /Pilotage classe/); await pause(600);

@@ -212,14 +212,14 @@ function libFourchetteH(f, N, sansSur){
 }
 function EcrEstim(e, choix){
   var mt = function(k){ return MAITRISE.filter(function(m){ return m.k === k; })[0]; };
-  var N = LIVE() ? nbComptees() : 3, FS = fourchettesH(N);
+  var N = enDirect() ? nbComptees() : 3, FS = fourchettesH(N);
   var sel = choix && FS.filter(function(f){ return f.k === choix; })[0];
   // (QCM-2) en direct, le clic enregistre l'estimation de l'élève de cette moitié
-  var clic = function(f){ return LIVE() ? {"data-local":"1", onClick:function(){ agirE("estimer", f.k, cleE(e)); }} : {}; };
+  var clicE = function(f){ return enDirect() ? clic("EST:" + cleE(e) + ":" + f.k, function(){ agirE("estimer", f.k, cleE(e)); }) : {}; };
   return Page(badgeDe(e), "🎯 Ton estimation", h(F, null,
     h("p", {className:"autoeval-intro"}, "Combien de bonnes réponses penses-tu avoir ? Clique sur ta réponse. Cette estimation sert à savoir si tu te surévalues, si tu te sous-évalues ou si tu t'évalues correctement."),
     !sel ? h("div", {className:"autoeval-fourchettes"}, FS.map(function(f){
-      return h("button", Object.assign({key:f.k, className:"autoeval-fourchette fourchette-" + f.k}, clic(f)),
+      return h("button", Object.assign({key:f.k, className:"autoeval-fourchette fourchette-" + f.k}, clicE(f)),
         h("div", {className:"autoeval-fourchette-emoji"}, mt(f.k).em),
         h("div", {className:"autoeval-fourchette-bornes-big"}, libFourchetteH(f, N)),
         h("div", {style:{fontSize:".8rem", opacity:.95}}, P(mt(f.k).lib)));
@@ -420,7 +420,7 @@ function etatQuestion(s){
 function couleur(p, qi, voile){
   var c = (RT[p] || "")[qi];
   // (QCM-2) en direct, un élève qui n'a pas répondu à cette question n'a pas de couleur : « pas de réponse »
-  var base = c === "J" ? {cls:"m-juste", st:"juste"} : c === "Y" ? {cls:"m-jaune", st:"une en trop"} : c === "O" ? {cls:"m-orange", st:"une sur deux"} : c === "F" || !LIVE() ? {cls:"m-faux", st:"faux"} : {cls:"m-pasrep", st:"⏳ pas de réponse"};
+  var base = c === "J" ? {cls:"m-juste", st:"juste"} : c === "Y" ? {cls:"m-jaune", st:"une en trop"} : c === "O" ? {cls:"m-orange", st:"une sur deux"} : c === "F" || !enDirect() ? {cls:"m-faux", st:"faux"} : {cls:"m-pasrep", st:"⏳ pas de réponse"};
   if(voile) base.st += " · 🙈";
   return base;
 }

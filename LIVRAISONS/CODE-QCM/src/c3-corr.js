@@ -29,8 +29,8 @@ var LEG_CORR_AP = [["#22C55E","✓ juste d'après la feuille"],["#EF4444","✗ f
 
 /* ════════ La console pendant la correction ════════ */
 function PilotCorrection(){
-  if(LIVE()) return PilotCorrectionH();
-  var k = MO(), m = MOM(), qi = m.qi, q = EV.questions[qi], pos = SCN.ORDRE_CORR.indexOf(qi), derniere = pos === 2;
+  if(enDirect()) return PilotCorrectionH();
+  var k = MO(), m = MOM(), qi = m.qi, q = EV.questions[qi], pos = ORDRE_CORR.indexOf(qi), derniere = pos === 2;
   var revele = m.ph === "revele", pasLu = m.pasLu || [], c = SCN.compteurs(k), pres = c.presents;
   var b = bilanQ(qi, k);
   var res = SCN.presents(k).map(function(p){ return calc(p).st[qi]; });
@@ -43,7 +43,7 @@ function PilotCorrection(){
   var reveler = revele ? h("button", {className:"btn btn-ghost", disabled:true, title:"Cette question est déjà révélée sur toutes les tablettes."}, "💡 Révélée")
     : pasLu.length ? h("button", {className:"btn btn-or ferme", disabled:true, title:"« 💡 Révéler » s'ouvre quand les " + pres + " présents ont lu la feuille de leur voisin. Il en manque " + pasLu.length + "."}, "🔒 Révéler")
     : h("button", {className:"btn btn-or", "data-va":qi === 1 ? "t-corr-q2-apres" : qi === 2 ? "t-corr-q3-apres" : "t-corr-q1-apres", title:"Montre la bonne réponse et l'explication sur toutes les tablettes et au tableau. Commente la question après, jamais avant."}, "💡 Révéler");
-  var prec = pos > 0 ? SCN.ORDRE_CORR[pos - 1] : null;
+  var prec = pos > 0 ? ORDRE_CORR[pos - 1] : null;
   return Console("pilotage", "pilot", h("div", {className:"card"},
     TitreCarte(h(F, null, "📝 Correction — " + EV.titre + " — " + CLASSE, InfoI("Pour chaque question, chacun lit d'abord la feuille de son voisin et clique ce qu'elle dit, dans la moitié du voisin. « 💡 Révéler » s'ouvre quand tous les présents l'ont fait. Tu commentes la question après la révélation, jamais avant : sinon, ils cliqueraient ce que tu dis. Les questions vont de la plus ratée à la mieux réussie. Un clic sur un nom agit sur l'élève.")),
       [h("button", {key:0, className:"btn btn-ghost btn-sm", "data-va":"c-depart"}, "🚫 Départ d'un élève"), h("button", {key:5, className:"btn btn-ghost btn-sm", "data-va":"c-finir-autre-heure"}, "⏸️ Finir à une autre heure"), h("button", {key:1, className:"btn btn-rouge btn-sm", "data-va":"c-terminer"}, "🛑 Terminer la séance")]),
@@ -93,7 +93,7 @@ function fermeEnv(raison, bouton){ return hBase("span", {className:"ferme-env", 
 
 /* ════════ La co-évaluation, côté console ════════ */
 function PilotCoevalE(){
-  if(LIVE()) return PilotCoevalH();
+  if(enDirect()) return PilotCoevalH();
   var k = MO(), m = MOM(), c = SCN.compteurs(k), pres = c.presents;
   var tranche = !!m.tranche || SCN.rang(k) > SCN.rang("S08:coeval:T");
   var att = c.manquent || [];
@@ -155,7 +155,7 @@ function ScAutonomieGarde(qui, retour){
 /* ════════ Le bilan de la classe, à la fin de l'heure ════════ */
 function tauxQ(qi){ var k = MO(), ok = 0, n = 0; SCN.presents(k).forEach(function(p){ var x = calc(p).pts[qi]; if(x != null){ n++; ok += x; } }); return n ? Math.round(ok * 100 / n) : 0; }
 function BilanClasse(){
-  if(LIVE()) return BilanClasseH();
+  if(enDirect()) return BilanClasseH();
   var k = MO(), pres = SCN.presents(k);
   var lignes = pres.map(function(p){ return {p:p, nom:nomDe(p), r:calc(p)}; });
   var total = lignes[0].r.total;
@@ -218,7 +218,7 @@ function EcrBilan(e, opts){
   var k = MO(), r = calc(cleE(e)), st = r.st, pts = r.pts.map(function(x){ return x || 0; });
   var an = (r.annulees || [])[0] == null ? -1 : r.annulees[0], tot = r.total, n = r.n, sur20 = r.sur20, mt = maitriseDe(sur20);
   var es = SCN.estimation(cleE(e), k);
-  var est = LIVE() ? ESTIM[cleE(e)] : SCN.ESTIM[e.prenom];
+  var est = enDirect() ? ESTIM[cleE(e)] : SCN.ESTIM[e.prenom];
   var calib = null;
   if(es){
     // (QCM-2) la fourchette estimée et celle de la note, sur le nombre de questions de l'évaluation (sur 3 : celles de la maquette)
@@ -233,7 +233,7 @@ function EcrBilan(e, opts){
   var autoOk = !SCN.autonomie(cleE(e), k).retire;
   return Page(badgeDe(e), "🎯 Bilan personnel", h("div", {className:"bilan-c"},
     // la version imprimable de son bilan s'ouvre à part, pour l'élève de cette moitié (l'infobulle de la 7.7.1 : « Ouvre une version imprimable… »)
-    !opts.imprime && h("button", {className:"bilan-export-btn", "data-local":"1", onClick:function(ev){ if(LIVE()) return imprimerBilanH(ev, e); window.open(location.pathname + "#scene=t-bilan-imprime&m=" + encodeURIComponent(MO()) + "&eleve=" + encodeURIComponent(e.prenom), "bilan-" + e.prenom); }}, "📄 Imprimer / Exporter mon bilan"),
+    !opts.imprime && h("button", {className:"bilan-export-btn", "data-local":"1", onClick:function(ev){ if(enDirect()) return imprimerBilanH(ev, e); window.open(location.pathname + "#scene=t-bilan-imprime&m=" + encodeURIComponent(MO()) + "&eleve=" + encodeURIComponent(e.prenom), "bilan-" + e.prenom); }}, "📄 Imprimer / Exporter mon bilan"),
     // (relecteur n°204) le bilan imprimé dit de quelle évaluation il s'agit, et sa date : deux données
     opts.imprime && h("div", {className:"bilan-imprime-eval"}, h("span", null, EV.titre), " · ", h("span", null, SCN.seance(MOM().seance || "S08").date)),
     h("div", {className:"bilan-score fourchette-" + mt.k},
@@ -334,7 +334,8 @@ function PilotCorrectionH(){
 
 /* ── Les alertes de la co-évaluation : celles de la séance (SCN.alertes), sinon chaque « ❌ » d'un élève ── */
 function alertesH(){
-  if(typeof SCN.alertes === "function") return (SCN.alertes() || []).map(function(a){ return Object.assign({}, a, {auteur:a.auteur || (a.eleves || [])[0], lecteur:a.lecteur || (a.eleves || [])[1]}); });
+  var al = momH().alertes || (typeof SCN.alertes === "function" ? SCN.alertes() : null);
+  if(al) return al.map(function(a){ var el = Array.isArray(a.eleves) ? a.eleves : Object.values(a.eleves || {}); return Object.assign({}, a, {qi:Number(a.qi), auteur:a.auteur || el[0], lecteur:a.lecteur || el[1]}); });
   return HEURE.eleves.filter(function(p){ return /^mal/.test(CO[p] || ""); }).map(function(p){ var co = SCN.coevalDe(p) || {};
     return {id:p, qi:co.qi, auteur:p, lecteur:SCN.voisinDe(p), ecrit:co.ecrit, tranche:null}; });
 }
@@ -359,7 +360,7 @@ function AlerteCoH(a){
     avant !== apres && h("div", {key:"e", className:"al-l"}, "Si " + pA + " a raison, sa question " + (a.qi + 1) + " passe de " + avant + " à " + apres + " point."),
     h("div", {key:"z", className:"al-l al-c"}, "Appelle-les à la fin de l'heure, la feuille " + deNom(pA) + " en main.")
   ];
-  var B = function(t, v, dec, ti){ return h("button", {key:t, className:"btn btn-" + v, "data-local":"1", title:ti, onClick:function(){ if(dec === "feuille") ouvrirFen("coevalFeuille", a); else agir("trancher", [a.id, dec]); }}, t); };
+  var B = function(t, v, dec, ti){ return h("button", Object.assign({key:t, className:"btn btn-" + v, title:ti}, marqueH("AL:" + a.id + ":" + dec, function(){ if(dec === "feuille") ouvrirFen("coevalFeuille", a); else agir("trancher", [a.id, dec === "auteur" ? {decision:"auteur", choix:ecrit, eleve:A} : dec]); })), t); };
   var boutons = [
     B("Donner raison à " + pA + " : " + txtChoix(q, ecrit) + " → " + apres + " point", "vert", "auteur", "Applique ce que " + pA + " dit avoir écrit : sa question " + (a.qi + 1) + " se recalcule, et sa note aussi. L'alerte se ferme ; « ↩️ Défaire » la rouvre."),
     B("Donner raison à " + pL + " : " + txtChoix(q, lu) + " → " + avant + " point", "turquoise", "lecteur", "Garde la lecture " + deNom(pL) + " : rien ne change. L'alerte se ferme."),
@@ -370,8 +371,8 @@ function AlerteCoH(a){
     h("div", {className:"al-auto"}, [[[A], "⛔ à " + pA, "btn-ghost"], [[L], "⛔ à " + pL, "btn-ghost"], [[A, L], "⛔ aux deux", "btn-aux-deux"]].map(function(x){
       var deja = x[0].every(function(p){ return ret.indexOf(p) >= 0; });
       return deja ? h("button", {key:x[1], className:"btn btn-sm " + x[2], disabled:true, title:"Ce point d'autonomie est déjà retiré : « ↩️ Rendre » le défait."}, x[1])
-        : h("button", {key:x[1], className:"btn btn-sm " + x[2], "data-local":"1", title:"Retire le point d'autonomie " + (x[0].length > 1 ? "aux deux" : "à " + prenomH(x[0][0])) + ", après une confirmation. « ↩️ Rendre » le défait.", onClick:function(){ ouvrirFen("garde", x[0]); }}, x[1]); }),
-      ret.length > 0 && h("button", {className:"btn btn-vert btn-sm", "data-local":"1", title:"Rend le point d'autonomie retiré : les compétences d'autonomie repassent en Très bonne maîtrise.", onClick:function(){ ret.forEach(function(p){ agir("rendreAutonomie", [p]); }); }}, "↩️ Rendre")));
+        : h("button", Object.assign({key:x[1], className:"btn btn-sm " + x[2], title:"Retire le point d'autonomie " + (x[0].length > 1 ? "aux deux" : "à " + prenomH(x[0][0])) + ", après une confirmation. « ↩️ Rendre » le défait."}, marqueH("ALG:" + a.id + ":" + x[0].join(","), function(){ ouvrirFen("garde", x[0]); })), x[1]); }),
+      ret.length > 0 && h("button", Object.assign({className:"btn btn-vert btn-sm", title:"Rend le point d'autonomie retiré : les compétences d'autonomie repassent en Très bonne maîtrise."}, marqueH("ALR:" + a.id, function(){ ret.forEach(function(p){ agir("rendreAutonomie", [p]); }); })), "↩️ Rendre")));
   return h("div", {key:a.id, className:"alerte-co"}, h("div", {className:"al-corps"}, corps),
     h("div", {className:"al-actions"}, boutons, auto,
       InfoIB("❌ Alerte", "L'alerte est apparue quand " + pA + " a cliqué ce qu'il avait écrit ; elle disparaît s'il change d'avis avant le bilan. Aucun point d'autonomie n'est retiré tout seul : c'est toi qui décides.")));
@@ -389,7 +390,7 @@ function AlerteTrancheeH(a){
     t = [tete, "La question " + (a.qi + 1) + " de " + nA + (p1 !== p0 ? " passe à " + p1 + " point, « Corrigé d'après ta feuille » dans son bilan : " + noteTxt(true) : " reste à " + p1 + " ; " + noteTxt(false))];
   }
   return h("div", {key:a.id, className:"alerte-co tranchee"}, h("div", {className:"al-corps"}, h("div", {className:"al-t"}, t[0]), h("div", {className:"al-l"}, t[1])),
-    h("div", {className:"al-actions"}, h("button", {className:"btn btn-ghost btn-sm", "data-local":"1", title:"Rouvre l'alerte, telle qu'elle était : rien n'est appliqué.", onClick:function(){ agir("trancher", [a.id, null]); }}, "↩️ Défaire")));
+    h("div", {className:"al-actions"}, h("button", Object.assign({className:"btn btn-ghost btn-sm", title:"Rouvre l'alerte, telle qu'elle était : rien n'est appliqué."}, marqueH("ALD:" + a.id, function(){ agir("trancher", [a.id, null]); })), "↩️ Défaire")));
 }
 function PilotCoevalH(){
   var k = MO(), m = momH(), c = SCN.compteurs(k), presents = SCN.presents(k);
@@ -447,10 +448,10 @@ function FenCoevalFeuilleC(p){
       h("div", {className:"checkin-header"}, h("h3", null, "Que dit la feuille ?"), h("div", {className:"checkin-sub"}, nomDe(A) + " — Q" + (a.qi + 1) + " · " + q.enonce)),
       h("div", {style:{padding:".6rem 1.2rem 0", fontSize:".85rem", color:"var(--gris)"}}, pL + " y a lu " + txtChoix(q, lu) + " ; " + pA + " dit avoir écrit " + txtChoix(q, ecrit) + ". Clique sur ce que dit sa feuille."),
       h("div", {className:"qdf-choix qdf-etat"},
-        q.choix.map(function(c, i){ var on = sel && sel !== "aucun" && sel.indexOf(i) >= 0; return h("div", {key:i, className:"qdf-c" + (on ? " sel" : ""), title:"Clique si la feuille " + deNom(pA) + " dit « " + c + " ».", onClick:function(){ basculer(i); }}, h("span", null, c), h("span", {className:"tg"}, tag(i))); }),
-        h("div", {className:"qdf-c aucun" + (sel === "aucun" ? " sel" : ""), title:"Clique si la feuille " + deNom(pA) + " ne dit aucun de ces choix.", onClick:function(){ set(sel === "aucun" ? null : "aucun"); }}, h("span", null, "Aucun des choix"), h("span", {className:"tg"}, ""))),
-      h("div", {className:"checkin-actions"}, h("button", {className:"btn btn-ghost", "data-local":"1", title:"Ferme sans rien changer : l'alerte reste ouverte.", onClick:fermerFen}, "Annuler"),
-        h("button", {className:"btn btn-primary", "data-local":"1", disabled:!sel, title:"Applique ce que dit la feuille : la question " + (a.qi + 1) + " " + deNom(pA) + " se recalcule, et l'alerte se ferme.", onClick:function(){ agir("trancher", [a.id, "feuille", sel]); fermerFen(); }}, "Valider")))));
+        q.choix.map(function(c, i){ var on = sel && sel !== "aucun" && sel.indexOf(i) >= 0; return h("div", Object.assign({key:i, className:"qdf-c" + (on ? " sel" : ""), title:"Clique si la feuille " + deNom(pA) + " dit « " + c + " »."}, marqueH("QDF:" + i, function(){ basculer(i); })), h("span", null, c), h("span", {className:"tg"}, tag(i))); }),
+        h("div", Object.assign({className:"qdf-c aucun" + (sel === "aucun" ? " sel" : ""), title:"Clique si la feuille " + deNom(pA) + " ne dit aucun de ces choix."}, marqueH("QDF:aucun", function(){ set(sel === "aucun" ? null : "aucun"); })), h("span", null, "Aucun des choix"), h("span", {className:"tg"}, ""))),
+      h("div", {className:"checkin-actions"}, h("button", Object.assign({className:"btn btn-ghost", title:"Ferme sans rien changer : l'alerte reste ouverte."}, marqueH("QDF:annuler", fermerFen)), "Annuler"),
+        h("button", Object.assign({className:"btn btn-primary", disabled:!sel, title:"Applique ce que dit la feuille : la question " + (a.qi + 1) + " " + deNom(pA) + " se recalcule, et l'alerte se ferme."}, marqueH("QDF:valider", function(){ agir("trancher", [a.id, {decision:"feuille", choix:sel, eleve:A}]); fermerFen(); })), "Valider")))));
 }
 
 /* ── Le bilan de la classe, en direct : les questions comptées, quel que soit leur nombre ── */

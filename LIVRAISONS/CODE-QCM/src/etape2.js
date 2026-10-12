@@ -165,7 +165,10 @@ function TabMini(num, a, b, etat, opts){
 /* ════════ Avant l'heure : les binômes par les exclusions, puis par la règle du QCM (587, 594) ; la durée (649) ════════ */
 var DUREE_TXT = h(F, null, "⏱️ ", h("strong", null, "Durée estimée : 15 min"), " — installation et consignes 5 min ; questions 4 min 30 (pour chacune : la réflexion, puis deux tours de 3 s de décompte, de réponse et de 5 s où l'élève dit si sa feuille dit la même chose, puis 15 s) ; correction 3 min (1 min par question) ; co-évaluation et bilan 2 min.", h("br"), "✅ Ça tient dans les 45 minutes utiles.");
 function GrilleBinomes(p){   // glisser un nom sur un autre : les deux s'échangent ; une paire exclue est refusée, pour Paul seul (589)
-  var s = useState(p.paires.map(function(x){ return x.slice(); })), paires = s[0], setPaires = s[1];
+  var s = useState(p.paires.map(function(x){ return x.slice(); })), paires0 = s[0], setPaires0 = s[1];
+  // (QCM-2) en direct, la grille modifiée est celle que « 🚀 Lancer la séance » emporte (LANCEMENT_H.paires) ; un nom est un slug
+  var paires = paires0;
+  function setPaires(np){ setPaires0(np); if(p.surChange) p.surChange(np); }
   var s2 = useState(p.refus || null), refus = s2[0], setRefus = s2[1];
   var s3 = useState(null), tenu = s3[0], setTenu = s3[1];
   function poser(ti, ci){
@@ -173,7 +176,7 @@ function GrilleBinomes(p){   // glisser un nom sur un autre : les deux s'échang
     var np = paires.map(function(x){ return x.slice(); });
     var a = np[tenu[0]][tenu[1]], b = np[ti][ci];
     np[tenu[0]][tenu[1]] = b; np[ti][ci] = a;
-    var mauvais = np.filter(function(x){ return x[0] && x[1] && exclus(x[0], x[1]); })[0];
+    var mauvais = np.filter(function(x){ return x[0] && x[1] && (enDirect() ? !!SCN.binomesRefus(x[0], x[1], p.classe) : exclus(x[0], x[1])); })[0];
     setTenu(null);
     if(mauvais){ setRefus(mauvais); return; }
     setPaires(np);
@@ -188,14 +191,15 @@ function GrilleBinomes(p){   // glisser un nom sur un autre : les deux s'échang
           var n = x[ci];
           return h("div", {key:ci, className:"tab-mini-m" + (n ? "" : " vide") + (tenu && tenu[0] === ti && tenu[1] === ci ? " tenu" : ""), draggable:!!n,
             onDragStart:function(){ setTenu([ti, ci]); }, onDragOver:function(e){ e.preventDefault(); }, onDrop:function(e){ e.preventDefault(); poser(ti, ci); }},
-            h("div", {className:"nm"}, n ? h(F, null, h("span", {className:"grip"}, "⠿"), n) : "moitié libre"));
+            h("div", {className:"nm"}, n ? h(F, null, h("span", {className:"grip"}, "⠿"), affH(n)) : "moitié libre"));
         })));
     })),
     refus && h("div", {className:"refus-excl"},
-      h("strong", null, "🚫 Échange refusé. "), refus[0] + " et " + refus[1] + " ne sont jamais ensemble (exclusion MJPC). Pour les remettre ensemble, retire l'exclusion dans MJPC.",
+      h("strong", null, "🚫 Échange refusé. "), affH(refus[0]) + " et " + affH(refus[1]) + " ne sont jamais ensemble (exclusion MJPC). Pour les remettre ensemble, retire l'exclusion dans MJPC.",
       h("button", {className:"btn btn-ghost btn-sm", "data-local":"1", title:"Ferme ce message ; la grille reste comme avant l'échange.", onClick:function(){ setRefus(null); }}, "✕ Fermer")));
 }
 function Lancement(appel, opts){
+  if(enDirect()) return LancementH(appel, opts);
   opts = opts || {};
   var demo = opts.demo;
   var classe = opts.seance && SCN.seance(opts.seance) && SCN.seance(opts.seance).eleves ? SCN.seance(opts.seance).eleves.slice() : [].concat.apply([], PAIRES_AVANT).filter(Boolean).sort(function(a, b){ return a.localeCompare(b, "fr"); });   // (relecteur n°249) un rattrapage : ses seuls élèves
@@ -683,3 +687,93 @@ refaire("c-pret", function(){ return Pilot({phase:"idle", qi:null, stats:[["23/2
   etat:function(p){ return p === "Enzo" ? {cls:"m-attest", st:"attestation 5/8"} : p === "Lou" ? {cls:"m-connexion", st:"pas encore entrée"} : {cls:"m-pret", st:"✓ prêt · 10:0" + ((p === "Julien" || p === "Michel") ? 4 : (p.length % 5 + 3))}; }}); });
 refaire("c-q1-close", function(){ return Pilot(ST_Q1CL()); });
 refaire("c-rouvrir-un", function(){ return RouvrirUn(); });
+
+/* ═══════════════ QCM-2 · HEURE — « 🎯 Lancer une nouvelle séance », en direct ═══════════════
+   La classe et l'évaluation choisies (LANCEMENT, src/live/gestes.js), la durée de l'évaluation, les binômes proposés (exclusions de MJPC,
+   puis le QCM précédent : SCN.binomesProposes), modifiables à la souris ; « 🚀 Lancer la séance » écrit la séance avec cette grille,
+   puis l'appel s'ouvre (la séance en phase « appel ») ; son « 🚀 Lancer la séance » ferme l'appel, avec les absents et l'heure de fin. */
+var LANCEMENT_H = {cle:null, paires:null, fin:null};
+function classeLancement(){ var cl = LIVE.d.classes || {}, l = SCN.classes(); var c = (typeof LANCEMENT !== "undefined" && LANCEMENT.classe && cl[LANCEMENT.classe]) ? LANCEMENT.classe : (LIVE.classeSlug && cl[LIVE.classeSlug] ? LIVE.classeSlug : l[0]); if(typeof LANCEMENT !== "undefined") LANCEMENT.classe = c; return c; }
+function evalsPretes(){ return SCN.evals().filter(function(e){ return !SCN.manques(e).length; }); }
+function evalLancement(){ var id = typeof LANCEMENT !== "undefined" ? LANCEMENT.evalId : null; if(id === "demo") return SCN.evalParId("demo"); var p = evalsPretes(); var e = id && p.filter(function(x){ return x.id === id; })[0]; e = e || p[0] || null; if(e && typeof LANCEMENT !== "undefined") LANCEMENT.evalId = e.id; return e; }
+// les binômes que le classement donnait avant les exclusions : ceux qu'une exclusion a fait échanger (la phrase « 🚫 … respectées »)
+function exclusionsRespectees(classe){
+  var pres = SCN.roster(classe).map(sanMJPC), prec = SCN.qcmPrecedent(null, classe), ordre;
+  if(prec){ var notes = {}; pres.forEach(function(x){ var r = SCN.resultat(prec.id, x); notes[x] = r ? r.sur20 : null; });
+    ordre = pres.filter(function(x){ return notes[x] != null; }).sort(function(a, b){ return notes[b] - notes[a] || SCN.nomDe(a).localeCompare(SCN.nomDe(b), "fr"); })
+      .concat(pres.filter(function(x){ return notes[x] == null; }).sort(function(a, b){ return SCN.nomDe(a).localeCompare(SCN.nomDe(b), "fr"); })); }
+  else ordre = pres.sort(function(a, b){ return SCN.nomDe(a).localeCompare(SCN.nomDe(b), "fr"); });
+  var l = []; for(var i = 0; i + 1 < ordre.length; i += 2) if(SCN.binomesRefus(ordre[i], ordre[i + 1], classe)) l.push([ordre[i], ordre[i + 1]]);
+  return l;
+}
+function LancementH(appel, opts){
+  opts = opts || {};
+  var classe = classeLancement(), ev = evalLancement(), demo = !!(ev && ev.demo) || !!opts.demo;
+  var roster = classe ? SCN.roster(classe) : [];
+  // la grille proposée ; une grille déjà modifiée pour cette classe est gardée
+  var cle = classe + "|" + (SCN.qcmPrecedent(null, classe) || {}).id;
+  if(LANCEMENT_H.cle !== cle || !LANCEMENT_H.paires){ LANCEMENT_H.cle = cle; LANCEMENT_H.paires = classe ? SCN.binomesProposes(classe) : []; }
+  var excl = classe ? exclusionsRespectees(classe) : [];
+  CLASSE = classe || CLASSE;
+  function lancer(){ if(!classe || !ev) return; LIVE.classeSlug = classe;
+    var r = ACT.lancerSeance(classe, ev.id, {paires:LANCEMENT_H.paires}); if(r && r.then) r.then(function(){ if(typeof navRemettre === "function") navRemettre(); }); }
+  var carte = h("div", {className:"card"},
+    h("h2", null, "🎯 Lancer une nouvelle séance", InfoI("Choisis la classe et l'évaluation : la durée se compte tout de suite, et les binômes sont proposés. « 🚀 Lancer la séance » ouvre l'appel.")),
+    h("div", {className:"lancer-grid"},
+      h("div", null,
+        h("div", {className:"field"}, h("label", null, "Classe", InfoI("Les classes de la console MJPC.")), h("select", {value:classe || "", title:"La classe de la séance.",
+            onChange:function(e){ LANCEMENT.classe = e.target.value; LANCEMENT_H.paires = null; LIVE.changer(); }},
+          SCN.classes().map(function(c){ return h("option", {key:c, value:c}, (((LIVE.d.classes || {})[c] || {}).libelle || c) + " (" + SCN.roster(c).length + " élèves)"); }))),
+        h("div", {className:"field"}, h("label", null, "Évaluation", InfoI("Seules les évaluations prêtes à lancer sont proposées ; la démo est toujours en tête.")),
+          h("select", {value:ev ? ev.id : "", title:"L'évaluation de la séance : la démo, ou une évaluation prête à lancer.", onChange:function(e){ LANCEMENT.evalId = e.target.value; LIVE.changer(); }},
+            h("option", {value:"demo"}, "🎓 Démo — apprendre le déroulé (" + (SCN.evalParId("demo") || SCN.DEMO).questions.length + " questions)"),
+            evalsPretes().map(function(e){ return h("option", {key:e.id, value:e.id}, e.titre); }))),
+        !demo && h("div", {className:"field"}, h("label", null, "Mode", InfoI("Sur tablettes : deux élèves par tablette, le déroulé complet. Sur papier : chacun répond seul sur sa feuille, avec les énoncés imprimés ; le soir, tu remplis la grille ; la correction se fait à l'heure suivante, sur les tablettes.")),
+          h("div", {className:"mode-seance"},
+            h("button", {className:"btn btn-sm btn-primary", "data-va":"c-lancer", "aria-pressed":true, title:"La séance sur tablettes, deux élèves par tablette."}, "📱 Sur tablettes"),
+            h("button", {className:"btn btn-sm btn-ghost", "data-va":"c-papier-lancer", "aria-pressed":false, title:"La séance sur papier : chacun répond seul sur sa feuille, sans tablette ; l'estimation se fait à la reprise, sur les tablettes."}, "📄 Séance sur papier"))),
+        !demo && ev && h("div", {className:"duree-box"}, texteDuree(ev)),
+        !ev ? h("button", {className:"btn btn-primary", disabled:true, title:"Aucune évaluation n'est prête à lancer : complète-la dans « 📝 Évaluations » (son chapitre, et pour chaque question ses deux temps et ses compétences)."}, "🚀 Lancer la séance")
+          : demo ? h("button", {className:"btn btn-primary"}, "🎓 Lancer la démo")
+          // pendant l'appel, la séance est lancée : le bouton de la carte, sous la fenêtre de l'appel, est fermé
+          : appel ? h("button", {className:"btn btn-primary", disabled:true, title:"La séance est lancée : l'appel est ouvert."}, "🚀 Lancer la séance")
+          : h("button", Object.assign({className:"btn btn-primary"}, marqueH("LANCER:" + classe + ":" + ev.id, lancer)), "🚀 Lancer la séance")),
+      h("div", {className:"binomes-box"},
+        h("div", {className:"tt"}, "📱 Binômes proposés — d'après les exclusions, puis le QCM précédent", InfoIB("📱 Binômes proposés", "D'abord les exclusions de MJPC : deux élèves exclus ne sont jamais ensemble. Puis la règle du QCM : le classement de la note du QCM précédent, puis 1-2, 3-4… Aucun élève ne voit rien des exclusions. Glisse un nom sur un autre pour échanger deux élèves, ou sur une moitié vide pour l'y déplacer, jusqu'au bout de l'heure.")),
+        excl.length > 0 && h("div", {className:"excl-note"}, "🚫 " + excl.length + (excl.length > 1 ? " exclusions de MJPC respectées : le classement mettait " : " exclusion de MJPC respectée : le classement mettait ")
+          + excl.map(function(x){ return SCN.nomDe(x[0]) + " avec " + SCN.nomDe(x[1]); }).join(", et ") + (excl.length > 1 ? " ; chacun a été échangé avec le binôme le plus proche." : " ; il a été échangé avec le binôme le plus proche.")),
+        h(GrilleBinomes, {key:cle, paires:LANCEMENT_H.paires, classe:classe, surChange:function(np){ LANCEMENT_H.paires = np; }}))));
+  var modale = appel && h(AppelH, {classe:classe});
+  var pause = classe ? SCN.seances(classe).filter(function(s){ return s.enPause && !s.fin; })[0] : null;
+  return Console("pilotage", "pilot", h(F, null, pause && CarteRepriseH(pause), carte, SessionsPrecedentes(), modale), false);
+}
+// l'appel (« 📋 Check-in : qui est absent aujourd'hui ? ») : ses absents, l'heure de fin ; « 🚀 Lancer la séance » ferme l'appel
+function AppelH(p){
+  var s = useState(SCN.finHeure() || ""), fin = s[0], setFin = s[1];
+  var classe = SCN.roster(SCN.classe() || p.classe), absents = SCN.absents().map(SCN.nomDe);
+  return h("div", {className:"checkin-overlay", "data-echap":"c-lancer"},
+    h("div", {className:"checkin-modal", style:{maxWidth:"640px"}},
+      h("div", {className:"checkin-header"}, h("h3", null, "📋 Check-in : qui est absent aujourd'hui ?", InfoI("Clique un nom pour le marquer absent. Son binôme est mis avec un élève resté seul, sans jamais créer de paire exclue.")), h("div", {className:"checkin-sub"}, CLASSE + " — " + classe.length + " élève" + (classe.length > 1 ? "s" : ""))),
+      h(ListeAppel, {classe:classe, absents:absents, paires:SCN.paires()}),
+      h("div", {style:{padding:".55rem 1.2rem", borderTop:"1px solid var(--bordure)", fontSize:".86rem", lineHeight:1.5}},
+        h("div", {style:{display:"flex", alignItems:"center", gap:".5rem", marginTop:".35rem"}}, h("span", {style:{whiteSpace:"nowrap"}}, "🕙 Fin de l'heure :"),
+          h("input", {value:fin, onChange:function(e){ setFin(e.target.value); }, title:"L'heure de fin de la séance : lancement + 55 min. Les tablettes oublient leurs élèves à « Terminer », ou 10 min après cette heure.", style:{width:"70px", padding:".2rem .4rem", border:"2px solid var(--bordure)", borderRadius:"6px", fontWeight:900, textAlign:"center", fontFamily:"inherit"}}),
+          InfoIB("🕙 Fin de l'heure", "Lancement + 55 min. Les tablettes oublient leurs élèves à « Terminer », ou 10 min après cette heure."))),
+      h("div", {className:"checkin-actions"}, h("button", {className:"btn btn-ghost"}, "Annuler"),
+        h("button", Object.assign({className:"btn btn-primary"}, marqueH("APPEL:fini", function(){ var f = /^\d{1,2}:\d{2}$/.test(String(fin).trim()) ? String(fin).trim() : null;
+          var r = ACT.appelFini((typeof APPEL !== "undefined" && APPEL.absents) || SCN.absents(), f); if(r && r.then) r.then(function(){ if(typeof navRemettre === "function") navRemettre(); }); })), "🚀 Lancer la séance"))));
+}
+// la séance de la classe finie à une autre heure : « ▶️ Reprendre la séance du … » (la même carte que la maquette)
+function CarteRepriseH(se){
+  var s = SCN.sess(se.id) || {}, r = (s.deroule && s.deroule.reprise) || {}, qi = r.qi == null ? 0 : r.qi, tour = r.tour || 1, ev = SCN.evalDeSeance(se.id) || EV;
+  var ph = r.ph, ou = qi != null && ["reflexion", "passage", "reponse", "b", "close", "rouvert"].indexOf(ph) >= 0 ? "question " + (qi + 1) + ", " + (tour === 1 ? "1er" : "2e") + " tour" : ph === "lecture" || ph === "revele" ? "correction" : ph === "estim" || ph === "att2" ? "estimation" : ph === "coeval" ? "co-évaluation" : "avant la question 1";
+  return h("div", {className:"card reprise-carte"},
+    h("h2", null, "⏸️ Séance à reprendre — " + CLASSE, InfoI("Une séance finie à une autre heure garde son état exact. La reprendre ouvre l'appel, avec les mêmes binômes.")),
+    h("div", {className:"results-eval-row"},
+      h("div", null, h("div", {className:"titre"}, ev.titre),
+        h("div", {className:"meta"}, se.date + " " + se.heure + " · en pause à la " + ou + " · " + SCN.presents(null, se.id).length + " présents"),
+        h("div", {className:"meta", style:{color:"var(--violet)", fontWeight:700}}, "↳ pas encore « QCM précédent »", InfoIB("↳ pas encore « QCM précédent »", "Elle ne sert pas aux binômes tant qu'elle n'est pas terminée."))),
+      h("button", Object.assign({className:"btn btn-primary", title:"Reprend la séance là où elle s'était arrêtée : l'appel, les mêmes binômes, puis le tour en cours recommence au début, voile compris."},
+        marqueH("REPRENDRE:" + se.id, function(){ var x = ACT.lancerSeance(null, null, {reprise:se.id}); if(x && x.then) x.then(function(){ if(typeof navRemettre === "function") navRemettre(); }); })),
+        "▶️ Reprendre la séance du " + jjmm(se.date) + " — " + ou)));
+}

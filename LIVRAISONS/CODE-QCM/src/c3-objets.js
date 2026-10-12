@@ -17,11 +17,11 @@ function depotH(num, cote, p, actif){
 }
 function TabMini(num, a, b, etat, opts){
   opts = opts || {};
-  var glisse = !!opts.deplacer && LIVE();
+  var glisse = !!opts.deplacer && enDirect();
   function moitie(n, cote){
     if(!n) return h("div", Object.assign({className:"tab-mini-m vide"}, depotH(num, cote, null, glisse)), h("div", {className:"nm"}, "moitié libre"));
     var p = cleH(n), nom = affH(n), e = etat ? etat(p, cote) : {};
-    var ouvrir = LIVE() ? {"data-local":"1", onClick:function(){ ouvrirFen("eleve", p); }} : {"data-va":avecObjet(e.va, "eleve", p)};
+    var ouvrir = enDirect() ? marqueH("NOM:" + p, function(){ ouvrirFen("eleve", p); }) : {"data-va":avecObjet(e.va, "eleve", p)};
     return h("div", Object.assign({className:"tab-mini-m " + (e.cls || ""), draggable:glisse || undefined, onDragStart:glisse ? function(){ TENU_H = p; } : undefined}, depotH(num, cote, p, glisse)),
       e.va ? h("button", Object.assign({className:"nm tab-nom", title:e.titre || "Agit sur " + nom + "."}, ouvrir), nom) : h("div", {className:"nm"}, (opts.grip || glisse) && h("span", {className:"grip"}, "⠿"), nom),
       e.st && h("span", {className:"st"}, e.st),
@@ -176,6 +176,7 @@ function ScPurger(){
 function EcranConsoleHeure(){ return h(ConsoleHeureC); }
 function ConsoleHeureC(){
   var fe = useFen();
+  if(fe.f && fe.cle !== cleFen()){ fe.f = null; fe.arg = null; }
   chargerHeure();
   var m = momH();
   useSeconde(!!PHASES_CHRONO[m.ph]);
@@ -196,7 +197,7 @@ function fondHeure(){
 }
 // un bouton de fenêtre qui agit, puis la ferme
 function fait(nom, args){ return function(){ agir(nom, args); fermerFen(); }; }
-function boutonH(cle, cls, lib, onClick, titre){ return h("button", {key:cle, className:cls, "data-local":"1", title:titre, onClick:onClick}, lib); }
+function boutonH(cle, cls, lib, onClick, titre){ return h("button", Object.assign({key:cle, className:cls, title:titre}, marqueH("B:" + (FEN_H.f || "") + ":" + JSON.stringify(FEN_H.arg) + ":" + cle + ":" + lib, onClick)), lib); }
 function annulerH(titre){ return boutonH("annuler", "btn btn-ghost", "Annuler", fermerFen, titre || "Ferme sans rien changer."); }
 var FENETRES_H = {
   coevalFeuille:function(a, fond){ return FenCoevalFeuille(a, fond); },

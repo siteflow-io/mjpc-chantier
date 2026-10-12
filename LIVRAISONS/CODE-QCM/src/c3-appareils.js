@@ -4,8 +4,10 @@
 
 /* ════════ Le tableau (vue projetée) : les phases de la 7.7.1 (VueBoard), avec les choix de Paul (33, 93) ════════ */
 function BoardAside(){
-  var k = MO(), m = MOM(), qi = m.qi, inscrits = [].concat.apply([], PAIRES_AVANT).filter(Boolean).sort(function(a, b){ return a.localeCompare(b, "fr"); });
+  var k = MO(), m = momH(), qi = m.qi, inscrits = [].concat.apply([], PAIRES_AVANT).filter(Boolean).sort(function(a, b){ return a.localeCompare(b, "fr"); });
   var absents = SCN.SEANCES.filter(function(s){ return s.id === m.seance; }).map(function(s){ return s.absents; })[0] || [];
+  // (QCM-2) en direct : les élèves de la séance, ses absents (et ses partis), par leur « NOM Prénom »
+  if(enDirect()){ inscrits = SCN.eleves().map(SCN.nomDe); absents = SCN.absents().concat(Object.keys(m.partis || {})).map(SCN.nomDe); }
   var rep = qi != null ? SCN.repondu(qi, k) : [];
   // pendant la lecture, c'est le voisin qui agit : en attente, ceux qui n'ont pas encore lu la feuille de leur voisin
   var lecteurs = (m.pasLu || []).map(function(p){ return SCN.voisinDe(p); });
@@ -13,28 +15,35 @@ function BoardAside(){
   return h("aside", {className:"board-aside-eleves"},
     h("div", {className:"board-aside-titre"}, "👥 Classe (" + inscrits.length + ")"),
     h("div", {className:"board-aside-liste deux-col"}, inscrits.map(function(n){
-      var p = pre(n), cls = "board-aside-eleve ";
+      var p = cleH(n), cls = "board-aside-eleve ";
       if(absents.indexOf(n) >= 0) cls += "absent";
       else if(m.ph === "lecture") cls += lecteurs.indexOf(p) >= 0 ? "enattente" : "repondu";
       else if(m.ph === "reponse" || m.ph === "b" || m.ph === "passage") cls += rep.indexOf(p) >= 0 ? "repondu" : "enattente";
       else cls += "repondu";
-      var mots = n.split(" ");
-      return h("div", {key:n, className:cls}, h("span", {className:"prenom"}, mots[mots.length - 1]), h("span", {className:"nom"}, mots.slice(0, -1).join(" ")));
+      var mots = n.split(" "), prenom = enDirect() ? SCN.pre(p) : mots[mots.length - 1], nom = enDirect() ? SCN.nom(p) : mots.slice(0, -1).join(" ");
+      return h("div", {key:n, className:cls}, h("span", {className:"prenom"}, prenom), h("span", {className:"nom"}, nom));
     })));
 }
+function EcranTableau(){ return h(TableauC); }
+function TableauC(){ chargerHeure(); var m = momH(); useSeconde(!!PHASES_CHRONO[m.ph]); return Board(); }
 function Board(){
-  var k = MO(), m = MOM(), c = SCN.compteurs(k), ev = SCN.evalDu(k);
+  var k = MO(), m = momH(), c = SCN.compteurs(k), ev = SCN.evalDu(k);
+  // (QCM-2) en pause, le tableau reste sur le temps gelé
+  if(m.ph === "pause" && m.pause) m = Object.assign({}, m, {ph:m.pause.ph});
   var enSeance = m.seance && m.seance !== "TEST" && m.ph !== "hors" && m.ph !== "soir" && m.ph !== "fin" && m.ph !== "grille";
   if(!enSeance) return h("div", {className:"board-attente"},
     h("div", {className:"board-titre"}, "📺 Vue tableau"),
     h("div", {className:"board-msg"}, "L'évaluation n'a pas encore commencé. Elle s'ouvrira quand nous la lancerons ensemble."),
     h("div", {className:"board-sub"}, "Cette vue se met à jour automatiquement dès qu'une séance est lancée depuis le pilotage."));
   var qi = m.qi;
+  // (QCM-2) après les questions (l'estimation, la seconde attestation, la co-évaluation, le bilan) : la classe et l'évaluation, sans « la première question va arriver »
+  if(enDirect() && ["estim", "att2", "coeval", "bilan"].indexOf(m.ph) >= 0) return h("div", {className:"board-with-aside"}, h("div", {className:"board-main"}, h("div", {className:"board-active board-idle"},
+    h("div", {className:"board-classe"}, CLASSE), h("div", {className:"board-titre-eval"}, ev.titre))), BoardAside());
   if(qi == null) return h("div", {className:"board-active board-idle"},
     h("div", {className:"board-classe"}, CLASSE), h("div", {className:"board-titre-eval"}, ev.titre),
     h("div", {className:"board-attente-msg"}, "📋 Préparation… La première question va arriver."));
   var q = ev.questions[qi], t = SCN.tempsDe(qi, k), correction = m.ph === "lecture" || m.ph === "revele";
-  var pos = SCN.ORDRE_CORR.indexOf(qi);
+  var pos = ORDRE_CORR.indexOf(qi);
   var bandeau = h("div", {className:"board-bandeau-haut"},
     h("span", {className:"board-classe-mini"}, CLASSE),
     h("span", {className:"board-niveau-pastille", style:{background:NIV[q.niveau].color}}, NIV[q.niveau].label),
@@ -99,12 +108,12 @@ function TelStats(courante, connues){
 }
 function TelTemps(p){
   useTemps();
-  var t = tempsDe(p.qi), m = MOM(), f = SCN.finPrevue(MO(), TEMPS.surcharges), finiRef = m.ph !== "reflexion";
+  var t = tempsDe(p.qi), m = momH(), f = SCN.finPrevue(MO(), TEMPS.surcharges), finiRef = m.ph !== "reflexion";
   function ligne(lbl, champ, k, ferme){
     var v = t[champ];
     return h("div", {className:"tel-temps-l"}, h("span", null, lbl + " " + v + " s"),
       [5, 10, 30].map(function(n){ return h("button", {key:n, className:"tel-btn tb-jaune tb-small", "data-local":"1", disabled:!!ferme, title:ferme || ("Ajoute " + n + " s au temps de " + (champ === "reflexion" ? "réflexion" : "réponse") + " de cette question. La fin prévue suit."),
-        onClick:function(){ tempsChanger(p.qi, champ, v + n, (champ === "reflexion" ? m.ph === "reflexion" : m.ph === "reponse") ? n : 0); }}, "+" + n); }));
+        onClick:function(){ tempsAjouter(p.qi, champ, n, champ === "reflexion" ? m.ph === "reflexion" : m.ph === "reponse"); }}, "+" + n); }));
   }
   var deb = f ? Math.round(f.deborde / 60) : 0;
   return h("div", {className:"tel-temps"}, ligne("🧠 Réflexion", "reflexion", 1, finiRef ? "La réflexion de cette question est finie : son temps ne se change plus." : null), ligne("✋ Réponse", "reponse", 2, null),
@@ -163,11 +172,11 @@ function telPastille(p, qi, mode){
     var s = calc(p).st[qi];
     return s === "j" ? {t:"✓", cls:"tp-juste"} : s === "t" ? {t:"✓", cls:"tp-trouvee"} : {t:"✗", cls:"tp-faux"};
   }
-  var c = RT[p][qi];
+  var c = (RT[p] || "")[qi];
   return c === "J" ? {t:"✓", cls:"tp-juste"} : c === "Y" ? {t:"✓+", cls:"tp-jaune"} : c === "O" ? {t:"½", cls:"tp-orange"} : {t:"✗", cls:"tp-faux"};
 }
 function TelCorrAvant(){
-  var k = MO(), m = MOM(), qi = m.qi, c = SCN.compteurs(k), pasLu = m.pasLu || [], pos = SCN.ORDRE_CORR.indexOf(qi);
+  var k = MO(), m = MOM(), qi = m.qi, c = SCN.compteurs(k), pasLu = m.pasLu || [], pos = ORDRE_CORR.indexOf(qi);
   var modeDe = function(p){ return pasLu.indexOf(p) >= 0 ? {mode:"pasrecopie"} : {mode:"recopie"}; };
   return TelCadre([
     TelBandeau("Phase : correction — Q" + (qi + 1) + " (" + (pos === 0 ? "1re" : (pos + 1) + "e") + " sur 3)", "lecture de la feuille du voisin"),
@@ -184,7 +193,7 @@ function TelCorrAvant(){
     h("div", {key:"t"}, h("button", {className:"tel-btn tb-rouge tb-small", "data-va":"c-terminer"}, "🛑 Terminer la séance"))]);
 }
 function TelCorrApres(){
-  var k = MO(), m = MOM(), qi = m.qi, q = EV.questions[qi], lire = lireSoir(k), pos = SCN.ORDRE_CORR.indexOf(qi), c = SCN.compteurs(k);
+  var k = MO(), m = MOM(), qi = m.qi, q = EV.questions[qi], lire = lireSoir(k), pos = ORDRE_CORR.indexOf(qi), c = SCN.compteurs(k);
   var flagDe = function(p){ return SCN.autonomie(p, k).retire ? "⛔" : lire.some(function(x){ return x[3].p === p && x[1] === qi; }) ? "⚠️" : null; };
   var res = SCN.presents(k).map(function(p){ return calc(p).st[qi]; });
   return TelCadre([

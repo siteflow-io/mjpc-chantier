@@ -34,7 +34,7 @@ function LoginMoitie(p){
     if(!st.prenom.trim() || !st.nom.trim()) return maj({err:"Renseigne ton prénom et ton nom."});
     if(!st.code.trim()) return maj({err:"Entre ton code personnel (4 chiffres)."});
     // (QCM-2) en direct, le code est vérifié contre son empreinte au hub (ELV.entrer, QCM-1) ; ses messages sont ceux de la 7.7.1
-    if(LIVE()) return entrerH(p.cote || "g", st.code, st.prenom.trim(), st.nom.trim(), function(err){ maj({err:err}); });
+    if(enDirect()) return entrerH(p.cote || "g", st.code, st.prenom.trim(), st.nom.trim(), function(err){ maj({err:err}); });
     var qui = eleveDeNom(st.prenom, st.nom);
     if(!qui) return maj({err:"Élève introuvable dans la classe. Vérifie l'orthographe."});
     if(!codeDe(qui)) return maj({err:"Ton code n'est pas encore enregistré : lève la main."});
@@ -65,7 +65,7 @@ function BinomeMoitie(p){
   var e = p.e, s = useState({code:p.code || "", err:""}), st = s[0], set = s[1];
   function entrer(){
     if(st.code.length < 4) return set({code:st.code, err:"Entre ton code personnel (4 chiffres)."});
-    if(LIVE()){ var i = e.nom.indexOf(" " + e.prenom); return entrerH(p.cote || "d", st.code, e.prenom, i > 0 ? e.nom.slice(0, i) : e.nom, function(err){ set({code:st.code, err:err}); }); }
+    if(enDirect()){ var i = e.nom.indexOf(" " + e.prenom); return entrerH(p.cote || "d", st.code, e.prenom, i > 0 ? e.nom.slice(0, i) : e.nom, function(err){ set({code:st.code, err:err}); }); }
     if(codeDe(e.nom) !== st.code) return set({code:st.code, err:"Ce code ne correspond pas. Vérifie tes 4 chiffres."});
     versScene(p.suite || "t-attest-1");
   }
@@ -73,20 +73,20 @@ function BinomeMoitie(p){
   return Page(null, null, h("div", {style:{textAlign:"left"}},
     h("div", {style:{fontWeight:900, fontSize:"1.25rem", margin:"6px 0 10px", color:"var(--violet)"}}, "Ton binôme : " + e.nom),
     h("div", {style:{fontWeight:700}}, e.prenom + ", tape ton code à 4 chiffres :"),
-    LIVE() ? h("input", {type:"password", inputMode:"none", className:"codebox codebox-h", "data-champ":"code", placeholder:"Ton code (4 chiffres)", value:st.code, autoComplete:"off",
+    enDirect() ? h("input", {type:"password", inputMode:"none", className:"codebox codebox-h", "data-champ":"code", placeholder:"Ton code (4 chiffres)", value:st.code, autoComplete:"off",
         onChange:function(ev){ set({code:ev.target.value.replace(/\D/g, "").slice(0, 4), err:""}); }})
       : h("div", {className:"codebox", "data-champ":"code"}, st.code.replace(/./g, "•")),
     st.err && h("div", {className:"eleve-erreur"}, st.err),
     Clavier(true, touche),
     h("div", {style:{textAlign:"center"}}, h("button", {className:"btn-accueil", "data-local":"1", onClick:entrer}, "Entrer")),
-    h("div", {style:{marginTop:10, textAlign:"center"}}, h("button", Object.assign({className:"btn btn-ghost btn-sm"}, LIVE() ? {"data-local":"1", onClick:function(){ if(p.autre) p.autre(); }} : {"data-va":"t-login"}), "Pas là ? Choisir un autre élève"))));
+    h("div", {style:{marginTop:10, textAlign:"center"}}, h("button", Object.assign({className:"btn btn-ghost btn-sm"}, enDirect() ? {"data-local":"1", onClick:function(){ if(p.autre) p.autre(); }} : {"data-va":"t-login"}), "Pas là ? Choisir un autre élève"))));
 }
 function EcrBinome(e, code){ return h(BinomeMoitie, {e:e, code:code}); }
 function EcrCombien(){
   return Page(null, "Combien êtes-vous sur cette tablette ?",
     h("div", {className:"combien"},
-      h("button", Object.assign({className:"btn btn-ghost"}, LIVE() ? {"data-local":"1", onClick:function(){ combienH(1); }} : {"data-va":"t-un-eleve"}), "👤 1 élève"),
-      h("button", Object.assign({className:"btn btn-primary"}, LIVE() ? {"data-local":"1", onClick:function(){ combienH(2); }} : {"data-va":"t-login"}), "👥 2 élèves")));
+      h("button", Object.assign({className:"btn btn-ghost"}, enDirect() ? {"data-local":"1", onClick:function(){ combienH(1); }} : {"data-va":"t-un-eleve"}), "👤 1 élève"),
+      h("button", Object.assign({className:"btn btn-primary"}, enDirect() ? {"data-local":"1", onClick:function(){ combienH(2); }} : {"data-va":"t-login"}), "👥 2 élèves")));
 }
 refaire("t-login", function(){ return Tablette(EcrLogin({code:codeDe("ABRIAL Julien"), prenom:"Julien", nom:"ABR", champ:"nom"}), EcrLogin({code:(codeDe("DUVERNAY Michel") || "").slice(0, 2), champ:"code"})); });
 
@@ -120,7 +120,7 @@ function PageMoitie(p){
   var s = useState(false), ouvert = s[0], set = s[1];
   var prenom = (/· ([^·]+)$/.exec(p.badge || "") || [, ""])[1].trim().split(" ").slice(1).join(" ");
   // (QCM-2) en direct, l'élève de la moitié est son eleveSlug : celui dont le nom est sur le badge
-  if(LIVE()){ var nomB = (/· ([^·]+)$/.exec(p.badge || "") || [, ""])[1].trim(); prenom = HEURE.eleves.filter(function(x){ return nomH(x) === nomB; })[0] || null; }
+  if(enDirect()){ var nomB = (/· ([^·]+)$/.exec(p.badge || "") || [, ""])[1].trim(); prenom = HEURE.eleves.filter(function(x){ return nomH(x) === nomB; })[0] || null; }
   var chrono = TOUR_CHRONO[MOM().ph];
   return h("div", {className:"eleve-page"},
     DECO.map(function(e, i){ return h("span", {key:i, className:"deco"}, e); }),
@@ -142,8 +142,8 @@ function Page(badge, titre, enfants){
 function AttestCoches(p){   // p : e, lignes, n0, titre, bouton, va, titrePage, pret ; en direct : attest (1 ou 2), fini
   var s = useState(p.n0), n0 = s[0], setN0 = s[1], s2 = useState(false), fini0 = s2[0], setFini = s2[1];
   // (QCM-2) en direct, la coche se voit tout de suite, et la séance garde le compte (la plus avancée des deux l'emporte)
-  var n = LIVE() ? Math.max(n0, p.n0 || 0) : n0, fini = fini0 || (LIVE() && !!p.fini);
-  function setN(x){ setN0(x); if(LIVE()) agirE("cocher", p.attest, x, cleE(p.e)); }
+  var n = enDirect() ? Math.max(n0, p.n0 || 0) : n0, fini = fini0 || (enDirect() && !!p.fini);
+  function setN(x){ setN0(x); if(enDirect()) agirE("cocher", p.attest, x, cleE(p.e)); }
   var tout = n >= p.lignes.length;
   if(fini && p.pret) return p.pret();
   return Page(badgeDe(p.e), p.titrePage, h("div", {className:"attest attest-c"},
@@ -151,11 +151,11 @@ function AttestCoches(p){   // p : e, lignes, n0, titre, bouton, va, titrePage, 
     p.lignes.slice(0, Math.min(n + 1, p.lignes.length)).map(function(l, i){
       var on = i < n;
       return h("div", {key:i, className:"li-c" + (on ? " on" : "")},
-        h("button", {className:"case-b" + (on ? " on" : ""), "data-local":"1", role:"checkbox", "aria-checked":on, disabled:on || i !== n, onClick:function(){ setN(n + 1); }}, on ? "✓" : ""),
+        h("button", Object.assign({className:"case-b" + (on ? " on" : ""), role:"checkbox", "aria-checked":on, disabled:on || i !== n}, clic("CASE:" + p.attest + ":" + cleE(p.e) + ":" + i, function(){ setN(n + 1); })), on ? "✓" : ""),
         h.apply(null, ["span", null].concat(l)));
     }),
-    p.pret ? h("button", {className:"btn btn-primary attest-go", disabled:!tout, "data-local":"1", onClick:function(){ setFini(true); if(LIVE()) agirE("commencer", cleE(p.e)); },
-        "data-sans-bulle":"1"}, p.bouton)
+    p.pret ? h("button", Object.assign({className:"btn btn-primary attest-go", disabled:!tout}, clic("GO:" + p.attest + ":" + cleE(p.e), function(){ setFini(true); if(enDirect()) agirE("commencer", cleE(p.e), p.attest); }), {
+        "data-sans-bulle":"1"}), p.bouton)
       : h("button", {className:"btn btn-primary attest-go", disabled:!tout, "data-va":tout ? p.va : null, "data-moment":tout && p.va ? momentDefaut(p.va.split("&")[0]) : null,
         "data-sans-bulle":"1"}, p.bouton)));
 }
@@ -218,7 +218,7 @@ function ChoixReponse(p){
   function basculer(i){ var n = sel.indexOf(i) >= 0 ? sel.filter(function(x){ return x !== i; }) : sel.concat([i]); set(n); if(p.onChange) p.onChange(n); }
   return h(F, null,
     h("div", {className:"eleve-choix" + (p.long ? " long" : "")}, p.ordre.map(function(i){
-      return h("button", {key:i, className:"eleve-choix-btn" + (sel.indexOf(i) >= 0 ? " selected" : ""), "data-local":"1", onClick:function(){ basculer(i); }}, h("span", null, p.q.choix[i]));
+      return h("button", Object.assign({key:i, className:"eleve-choix-btn" + (sel.indexOf(i) >= 0 ? " selected" : "")}, clic("REP:" + (p.cle || "") + ":" + i, function(){ basculer(i); })), h("span", null, p.q.choix[i]));
     })),
     h("div", {className:"eleve-feedback" + (sel.length ? " valide" : "")}, sel.length ? "✅ Réponse enregistrée — tu peux encore la changer" : "💡 Clique sur le ou les choix qui correspondent à ta réponse."));
 }
@@ -233,7 +233,7 @@ function EcrReponse(e, qi, ordre, sel, chrono, ev){
     h("div", {className:"eleve-q-enonce"}, q.enonce),
     h("div", {className:"eleve-pose-stylo"}, h("span", {className:"ic"}, "🖊️"), h("span", null, e.prenom + ", pose ton stylo. Sélectionne maintenant ta réponse.")),
     h("div", {className:"eleve-chrono" + (chrono <= 2 ? " urgent" : "")}, h("div", {className:"label"}, "Temps de réponse"), h("div", {className:"v"}, chrono)),
-    h(ChoixReponse, {key:e.cle + qi, q:q, ordre:ordre, sel:sel, long:long, onChange:LIVE() && !ev ? function(n){ agirE("repondre", qi, n, cleE(e)); } : null})));
+    h(ChoixReponse, {key:e.cle + qi, cle:e.cle + ":" + qi, q:q, ordre:ordre, sel:sel, long:long, onChange:enDirect() && !ev ? function(n){ agirE("repondre", qi, n, cleE(e)); } : null})));
 }
 
 /* ═══════════════ QCM-2 · HEURE — la tablette partagée, en direct ═══════════════
@@ -253,7 +253,7 @@ function entrerH(cote, code, prenom, nom, surErreur){
 }
 // la séance terminée (ou une autre séance) : la tablette oublie ses élèves, et revient à « Combien êtes-vous sur cette tablette ? »
 function oublierSiFini(m){
-  if(!LIVE() || (typeof ELV !== "undefined" && typeof ELV.ici === "function")) return;
+  if(!enDirect() || (typeof ELV !== "undefined" && typeof ELV.ici === "function")) return;
   var finie = !m.seance || m.ph === "fin" || m.ph === "avant";
   if((finie || (ICI_L.sid && ICI_L.sid !== m.seance)) && (ICI_L.combien || ICI_L.g || ICI_L.d)) iciMaj({combien:null, g:null, d:null, sid:m.seance || null});
   else if(m.seance && !ICI_L.sid) ICI_L.sid = m.seance;
@@ -290,7 +290,8 @@ function EntreeMoitie(p){
   var s = useState(false), libre = s[0], setLibre = s[1];
   var v = p.autre ? SCN.voisinDe(p.autre) : null, ici = iciH();
   if(v && !libre && v !== ici.g && v !== ici.d) return h(BinomeMoitie, {key:"b" + v, e:eleveH(v, p.cote), cote:p.cote, autre:function(){ setLibre(true); }});
-  return h(LoginMoitie, {key:"l" + p.cote, cote:p.cote});
+  // le formulaire de l'entrée : celui de QCM-1 (LoginLive : le code, et « rejoins … » quand ce n'est pas la bonne tablette), sinon celui de la maquette
+  return typeof LoginLive === "function" ? h(LoginLive, {key:"l" + p.cote, cote:p.cote}) : h(LoginMoitie, {key:"l" + p.cote, cote:p.cote});
 }
 // l'écran d'une moitié, à la phase de la séance
 function MoitieH(p, cote, autreP){
@@ -298,7 +299,7 @@ function MoitieH(p, cote, autreP){
   var vSlug = autreP || SCN.voisinDe(p), v = vSlug ? eleveH(vSlug, cote === "g" ? "d" : "g") : null;
   var e = eleveH(p, cote, v || eleveH(p, cote));
   if(v) v.voisin = e;
-  var ph = m.ph === "pause" ? (m.tour ? "reponse" : "reflexion") : m.ph;
+  var ph = m.ph === "pause" ? ((m.pause && m.pause.ph) || (m.tour ? "reponse" : "reflexion")) : m.ph;
   var actif = qi != null ? (m.cote || coteDuTour(qi, m.tour || 1)) : null;   // la moitié qui répond à ce tour
   var voile = function(){ return v ? Voile(v, false, e) : EcrAttente(e); };
   if(!ph || ph === "avant" || ph === "appel" || ph === "entree" || ph === "pret"){
@@ -323,7 +324,7 @@ function MoitieH(p, cote, autreP){
 }
 // l'attestation d'un élève (1 ou 2) : les lignes cochées, et si elle est finie (« Je commence »)
 function attestH(p, n){
-  var a = typeof SCN.attest === "function" ? SCN.attest(p, n) : null, m = momH();
+  var a = typeof SCN.attestDe === "function" ? SCN.attestDe(n, p) : null, m = momH();
   if(a) return {lignes:a.lignes || 0, fini:!!a.fini};
   var enCours = (n === 1 ? m.attestEnCours : m.enCours) || {};
   if(enCours[p] != null) return {lignes:enCours[p], fini:false};
@@ -333,7 +334,7 @@ function attestH(p, n){
 // B (495) : à la fin de son temps, son clic figé ; « Oui, la même chose » ou « Non, autre chose », enregistré pour lui
 function EcrDeclareH(e, qi, chrono){
   var q = EV.questions[qi], p = cleE(e), ordre = ORD[qi][p], sel = TABL[p][qi] || [], dit = (DIT_B[p] || [])[qi];
-  var b = function(v, lib){ return h("button", {className:"decl-b-btn" + (dit === v ? " on" : ""), "data-local":"1", "aria-pressed":dit === v, onClick:function(){ agirE("direB", qi, v, p); }}, lib); };
+  var b = function(v, lib){ return h("button", Object.assign({className:"decl-b-btn" + (dit === v ? " on" : ""), "aria-pressed":dit === v}, clic("B:" + p + ":" + qi + ":" + v, function(){ agirE("direB", qi, v, p); })), lib); };
   return Page(badgeDe(e), EV.titre, h("div", {className:"eleve-q-zone"},
     QHead(qi), h("div", {className:"eleve-q-enonce"}, q.enonce),
     h("div", {className:"fige"}, "⏱️ Temps fini : ton clic est enregistré."),
@@ -354,8 +355,8 @@ function ChoixLuH(p){   // p : eleve (le propriétaire de la feuille), qi, ordre
   var dit = sel === "aucun" || sel.length > 0;
   return h(F, null,
     h("div", {className:"eleve-choix" + (p.long ? " long" : "")},
-      p.ordre.map(function(i){ return h("button", {key:i, className:"eleve-choix-btn" + (sel !== "aucun" && sel.indexOf(i) >= 0 ? " selected" : ""), "data-local":"1", onClick:function(){ basculer(i); }}, h("span", null, p.q.choix[i])); }),
-      h("button", {className:"eleve-choix-btn aucun" + (sel === "aucun" ? " selected" : ""), "data-local":"1", onClick:function(){ changer(sel === "aucun" ? [] : "aucun"); }}, p.aucunTxt)),
+      p.ordre.map(function(i){ return h("button", Object.assign({key:i, className:"eleve-choix-btn" + (sel !== "aucun" && sel.indexOf(i) >= 0 ? " selected" : "")}, clic("LU:" + p.eleve + ":" + p.qi + ":" + i, function(){ basculer(i); })), h("span", null, p.q.choix[i])); }),
+      h("button", Object.assign({className:"eleve-choix-btn aucun" + (sel === "aucun" ? " selected" : "")}, clic("LU:" + p.eleve + ":" + p.qi + ":aucun", function(){ changer(sel === "aucun" ? [] : "aucun"); })), p.aucunTxt)),
     dit && h("div", {className:"eleve-feedback valide"}, "✅ Réponse enregistrée — tu peux encore la changer"));
 }
 // l'élève seul sur sa tablette (500) : il lit lui-même sa feuille, avec les mots de la maquette (c3-scenes.js, EcrLectureSeul)

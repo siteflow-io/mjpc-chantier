@@ -4,21 +4,26 @@
    pour n'importe quelle classe et n'importe quel nombre de questions ; un élève y est son eleveSlug. Chaque geste de l'heure
    appelle l'action de ACT ou ELV (geste, gesteE) ; une fenêtre de la console s'ouvre sur place (ouvrirFen).
    Sans cette couche (l'assemblage de la maquette), tout retombe sur le scénario : rien ne change. */
-function LIVE(){ return typeof SCN !== "undefined" && typeof SCN.eleves === "function"; }
-function nomH(p){ return LIVE() ? SCN.nomDe(p) : nomDe(p); }
-function prenomH(p){ return LIVE() ? SCN.pre(p) : p; }
-function sexeH(p){ return LIVE() ? (SCN.sexe(p) === "F" ? "F" : "M") : (SCN.SEXE[p] === "F" ? "F" : "M"); }
+function enDirect(){ return typeof SCN !== "undefined" && typeof SCN.eleves === "function"; }
+function nomH(p){ return enDirect() ? SCN.nomDe(p) : nomDe(p); }
+function prenomH(p){ return enDirect() ? SCN.pre(p) : p; }
+function sexeH(p){ return enDirect() ? (SCN.sexe(p) === "F" ? "F" : "M") : (SCN.SEXE[p] === "F" ? "F" : "M"); }
 // une case de tablette (un nom complet dans la maquette, un eleveSlug en direct) : la clé de l'élève, et le nom affiché
-function cleH(n){ return !n ? null : LIVE() ? n : pre(n); }
-function affH(n){ return !n ? "" : LIVE() ? SCN.nomDe(n) : n; }
+function cleH(n){ return !n ? null : enDirect() ? slugH(n) : pre(n); }
+// en direct, un élève nommé par son « NOM Prénom » (SCN.paires) ou par son slug : son slug (sanMJPC du nom, la convention de la base)
+function slugH(n){ if(!n) return null; if(SCN.nomDe(n) !== n) return n; return typeof sanMJPC === "function" ? sanMJPC(n) : n; }
+function affH(n){ return !n ? "" : enDirect() ? SCN.nomDe(n) : n; }
 // la clé d'un objet élève (J, M, ou un élève de la séance) : son prénom dans la maquette, son eleveSlug en direct
-function cleE(e){ return LIVE() ? (e.slug || e.cle) : e.prenom; }
+function cleE(e){ return enDirect() ? (e.slug || e.cle) : e.prenom; }
 function eleveH(p, cote, voisin){ return {cle:p, slug:p, nom:nomH(p), prenom:prenomH(p), sexe:sexeH(p), cote:cote || null, voisin:voisin || null}; }
 // les tablettes du moment, [[gauche, droite], …] dans l'ordre des numéros ; une moitié vide est null
 function tablettesH(){
-  if(!LIVE()) return pairesDuMoment();
-  var pl = SCN.places() || {}, ns = Object.keys(pl).map(Number).filter(function(n){ return n > 0; }), max = Math.max.apply(null, ns.concat([0])), l = [];
-  for(var n = 1; n <= max; n++){ var x = pl[n] || {}; l.push([x.g || null, x.d || null]); }
+  if(!enDirect()) return pairesDuMoment();
+  // SCN.places() : [{n, g, d, seul}, …] (QCM-1), ou {n: {g, d}} ; une tablette sans numéro reste à sa place
+  var pl = SCN.places() || [], par = {};
+  if(Array.isArray(pl)) pl.forEach(function(t){ par[t.n] = t; }); else par = pl;
+  var ns = Object.keys(par).map(Number).filter(function(n){ return n > 0; }), max = Math.max.apply(null, ns.concat([0])), l = [];
+  for(var n = 1; n <= max; n++){ var x = par[n] || {}; l.push([x.g || null, x.d || null]); }
   return l;
 }
 function nbQH(){ return EV.questions.length; }
@@ -36,7 +41,7 @@ function codeChoix(c, q){
 /* ── Recharger les tables de l'heure depuis la séance (en direct seulement) ── */
 var HEURE = {sid:null, eleves:[]};
 function chargerHeure(){
-  if(!LIVE()) return;
+  if(!enDirect()) return;
   var k = MO(), m = MOM() || {}, se = (m.seance && SCN.seance(m.seance)) || null, ev = SCN.evalDu(k);
   if(ev && ev.questions) EV = ev;
   if(se && se.classe) CLASSE = se.classe;
@@ -74,7 +79,7 @@ function ordreCorrCalcule(){
 // le moment, complété en direct de ce que la séance permet de calculer (les champs que QCM-1 ne donnerait pas)
 function momH(){
   var m = MOM() || {};
-  if(!LIVE()) return m;
+  if(!enDirect()) return m;
   m = Object.assign({}, m);
   var k = MO(), pres = SCN.presents(k), qi = m.qi;
   if(m.depuis && m.duree) m.reste = Math.max(0, Math.ceil(m.duree - (Date.now() - m.depuis) / 1000));
@@ -88,11 +93,24 @@ function momH(){
   return m;
 }
 
+/* ── Les gestes de l'heure, en direct : chaque bouton porte sa clé (data-h2) et son geste, enregistré à chaque rendu ; un clic sur lui
+      est traité ici, avant le routeur par libellé (src/live/gestes.js), qui n'a donc rien à deviner (l'élève, la question, la fenêtre) ── */
+var H2_FN = {};
+function marqueH(cle, fn){ H2_FN[cle] = fn; return {"data-local":"1", "data-h2":cle}; }
+// un bouton qui agit sur place : en direct, par sa clé ; dans la maquette, son onClick (composant à état)
+function clic(cle, fn){ return enDirect() ? marqueH(cle, fn) : {"data-local":"1", onClick:fn}; }
+window.addEventListener("click", function(ev){
+  var b = ev.target && ev.target.closest ? ev.target.closest("[data-h2]") : null;
+  if(!b || b.disabled || !enDirect()) return;
+  var f = H2_FN[b.getAttribute("data-h2")]; if(!f) return;
+  ev.stopImmediatePropagation(); ev.preventDefault();
+  try { f(ev); } catch(e){ console.error("[QCM-2] geste " + b.getAttribute("data-h2"), e); }
+}, true);
 /* ── Les gestes : en direct, l'action de ACT ; dans la maquette, la scène qu'il montrait ── */
 function geste(va, nom){
   var args = Array.prototype.slice.call(arguments, 2);
-  if(!LIVE() || !nom) return va ? {"data-va":va} : {};
-  return {"data-local":"1", "data-act":nom, onClick:function(){ agir(nom, args); }};
+  if(!enDirect() || !nom) return va ? {"data-va":va} : {};
+  return Object.assign({"data-act":nom}, marqueH("ACT:" + nom + ":" + JSON.stringify(args), function(){ agir(nom, args); }));
 }
 function agir(nom, args){
   try { var f = typeof ACT !== "undefined" && ACT[nom]; if(!f){ console.warn("[QCM-2] ACT." + nom + " manque"); return; } return f.apply(ACT, args || []); }
@@ -105,11 +123,13 @@ function agirE(nom){
   catch(e){ console.error("[QCM-2] ELV." + nom, e); }
 }
 /* ── Les fenêtres de la console, en direct : elles s'ouvrent sur place, au-dessus de l'écran du moment ── */
-var FEN_H = {f:null, arg:null, ab:[]};
-function ouvrirFen(nom, arg){ FEN_H.f = nom; FEN_H.arg = arg == null ? null : arg; FEN_H.ab.slice().forEach(function(f){ f(); }); }
+var FEN_H = {f:null, arg:null, ab:[], cle:null};
+// une fenêtre ouverte se ferme d'elle-même quand la séance change de phase ou de question (un geste fait ailleurs, le téléphone, le moteur)
+function cleFen(){ var m = MOM() || {}; return [m.seance, m.ph, m.qi, m.tour].join("|"); }
+function ouvrirFen(nom, arg){ FEN_H.f = nom; FEN_H.arg = arg == null ? null : arg; FEN_H.cle = nom ? cleFen() : null; FEN_H.ab.slice().forEach(function(f){ f(); }); }
 function fermerFen(){ ouvrirFen(null); }
 // un bouton qui ouvrait une fenêtre (une scène de la maquette) : en direct, la fenêtre sur place
-function fen(va, nom, arg){ if(!LIVE()) return va ? {"data-va":va} : {}; return {"data-local":"1", onClick:function(){ ouvrirFen(nom, arg); }}; }
+function fen(va, nom, arg){ if(!enDirect()) return va ? {"data-va":va} : {}; return marqueH("FEN:" + nom + ":" + JSON.stringify(arg == null ? null : arg), function(){ ouvrirFen(nom, arg); }); }
 function useFen(){ var s = useState(0), set = s[1]; useEffect(function(){ var f = function(){ set(function(x){ return x + 1; }); }; FEN_H.ab.push(f); return function(){ FEN_H.ab = FEN_H.ab.filter(function(g){ return g !== f; }); }; }, []); return FEN_H; }
 // les chronos : chaque appareil se redessine chaque seconde pendant un temps qui court
 function useSeconde(actif){ var s = useState(0), set = s[1]; useEffect(function(){ if(!actif) return; var t = setInterval(function(){ set(function(x){ return x + 1; }); }, 1000); return function(){ clearInterval(t); }; }, [actif]); }
@@ -124,7 +144,7 @@ function etatPilot(k){
   k = k || MO();
   var m = k === MO() ? momH() : (SCN.moment(k) || {}), c = SCN.compteurs(k);
   // (QCM-2) en direct, une séance en pause reste sur son temps : la réflexion, ou le tour de réponse
-  var ph = m.ph === "pause" ? (m.tour ? "reponse" : "reflexion") : m.ph;
+  var ph = m.ph === "pause" ? ((m.pause && m.pause.ph) || (m.tour ? "reponse" : "reflexion")) : m.ph;
   var phase = ({pret:"idle", avant:"idle", appel:"idle", entree:"idle", reflexion:"reflexion", passage:"reponse", reponse:"reponse", b:"reponse", close:"attente", rouvert:"attente", panne:"reponse"})[ph] || "idle";
   var qi = m.qi == null ? null : m.qi;
   var passees = toutesQ().filter(function(q){ return qi != null && (q < qi || (q === qi && phase === "attente")); });
@@ -188,8 +208,8 @@ function Overview(qCur, passees, opts){
       var t = tempsDe(qi);
       var taux = b.repondu ? b.justes / b.repondu : 0;
       // (QCM-2) en direct, « ↩️ Remettre », « ❌ Écarter » et « ⚠️ Annuler » agissent sur la question de leur ligne
-      var remettre = LIVE() ? geste(null, "remettre", qi) : {"data-va":opts.remettre || "c-q1-close", "data-moment":momentDefaut(opts.remettre || "c-q1-close")};
-      return h("div", {key:qi, className:"pilot-q-mini" + (current ? " current" : "") + (passee ? " passee" : "") + (ec[qi] || an[qi] ? " retiree" : ""), title:titre},
+      var remettre = enDirect() ? geste(null, "remettre", qi) : {"data-va":opts.remettre || "c-q1-close", "data-moment":momentDefaut(opts.remettre || "c-q1-close")};
+      return h("div", {key:qi, className:"pilot-q-mini" + (current ? " current" : "") + (passee ? " passee" : "") + (ec[qi] || an[qi] ? " retiree" : ""), title:titre, "data-q":enDirect() ? qi + 1 : undefined},
         h("div", {className:"pilot-q-mini-head"}, h("span", {className:"pilot-q-mini-num"}, "Q" + (qi+1)), h("span", {className:"pilot-q-mini-niv niv-" + q.niveau}, NIV[q.niveau].label)),
         h("div", {className:"pilot-q-mini-enonce"}, q.enonce),
         h("div", {className:"pilot-q-mini-bonnes"}, ChoixTexte(q)),
@@ -208,7 +228,7 @@ function Overview(qCur, passees, opts){
 // ajouter n secondes à un temps d'une question : en direct ACT.ajouterTemps(sorte, s, qi) ; dans la maquette, les temps tapés de la page
 function tempsAjouter(qi, champ, n, actif){
   if(!n) return;
-  if(LIVE()) return agir("ajouterTemps", [champ, n, qi]);
+  if(enDirect()) return agir("ajouterTemps", [champ, n, qi]);
   tempsChanger(qi, champ, tempsDe(qi)[champ] + n, actif ? n : 0);
 }
 // un champ qu'on tape garde ce qu'on y tape tant qu'il a le curseur ; la séance reçoit chaque valeur entière (règle du 04/10)
@@ -222,7 +242,7 @@ function ChampTemps(p){   // p : v, qi, champ, actif, attrs
 function TempsCarteH(p){   // p : lbl, champ, qi, reste, actif, fini, sous
   useTemps();
   var t = tempsDe(p.qi), total = t[p.champ];
-  var reste = p.reste + (p.actif && !LIVE() ? (TEMPS.surcharges.reste || 0) : 0);
+  var reste = p.reste + (p.actif && !enDirect() ? (TEMPS.surcharges.reste || 0) : 0);
   if(p.actif) TEMPS.actif = {qi:p.qi, champ:p.champ, total:total, reste:reste};
   var ferme = p.fini ? (p.champ === "reflexion" ? "La réflexion de cette question est finie : son temps ne se change plus." : "Les deux tours de cette question sont finis : son temps de réponse ne se change plus.") : null;
   return h("div", {className:"pilot-chrono-card" + (p.actif ? " actif" : "")},
@@ -254,15 +274,15 @@ function TempsMiniH(p){
 }
 // « ⏸️ Pause » / « ▶️ Reprendre » et « 🔄 Relancer chrono » : en direct, la séance elle-même (etape2.js garde ceux de la maquette)
 function BoutonPauseH(p){
-  if(!LIVE()) return h(p && p.tel ? BoutonPauseTel : BoutonPause);
+  if(!enDirect()) return h(p && p.tel ? BoutonPauseTel : BoutonPause);
   var enPause = momH().ph === "pause" || !!momH().paused;
-  return h("button", {className:p && p.tel ? "tel-btn tb-ghost tb-small" : "btn btn-or", "data-local":"1", title:enPause ? BULLES["▶️ Reprendre"] : BULLES["⏸️ Pause"],
-    onClick:function(){ agir(enPause ? "reprendre" : "pause"); }}, enPause ? "▶️ Reprendre" : "⏸️ Pause");
+  return h("button", Object.assign({className:p && p.tel ? "tel-btn tb-ghost tb-small" : "btn btn-or", title:enPause ? BULLES["▶️ Reprendre"] : BULLES["⏸️ Pause"]},
+    marqueH("ACT:pause" + (p && p.tel ? ":tel" : ""), function(){ agir(enPause ? "reprendre" : "pause"); })), enPause ? "▶️ Reprendre" : "⏸️ Pause");
 }
-function relancerChrono(){ if(LIVE()) agir("relancerChrono"); else document.dispatchEvent(new Event("maquette-relancer")); }
+function relancerChrono(){ if(enDirect()) agir("relancerChrono"); else document.dispatchEvent(new Event("maquette-relancer")); }
 function BoutonRelancerH(){
-  if(!LIVE()) return h(BoutonRelancer);
-  return h("button", {className:"btn btn-ghost", "data-local":"1", title:BULLES["🔄 Relancer chrono"], onClick:relancerChrono}, "🔄 Relancer chrono");
+  if(!enDirect()) return h(BoutonRelancer);
+  return h("button", Object.assign({className:"btn btn-ghost", title:BULLES["🔄 Relancer chrono"]}, marqueH("ACT:relancerChrono", relancerChrono)), "🔄 Relancer chrono");
 }
 
 /* ════════ Le pilotage pendant les questions ════════ */
@@ -308,7 +328,7 @@ function Pilot(s){
       h("div", {style:{fontSize:".72rem", color:"var(--gris)", fontStyle:"italic"}}, "Difficulté " + NIV[qn.niveau].label + " · réflexion " + tn.reflexion + " s · réponse " + tn.reponse + " s par tour · " + bonnesRep(qn.bonnes.length))));
   var colM = h("div", null,
     h("h3", {style:{margin:"0 0 .2rem"}}, "📱 Tablettes", InfoI("Chaque tablette, ses deux moitiés : qui est assis où, et où en est chacun. « 👁 » montre les deux moitiés en direct. Glisse un nom sur un autre pour échanger deux élèves : pendant la séance, ils changent de tablette et retapent leur code ; leurs réponses les suivent."), h("span", {style:{fontWeight:400, display:"block", fontSize:".8rem", color:"#475569", margin:".1rem 0 0"}}, s.sousTitre || "")),
-    GrilleTablettes(s.paires || pairesDuMoment(), s.etat, LIVE() ? {deplacer:true} : null),
+    GrilleTablettes(s.paires || pairesDuMoment(), s.etat, enDirect() ? {deplacer:true} : null),
     Legende(s.legende || LEG_Q));
   return Console("pilotage", "pilot", h("div", {className:"card"},
     TitreCarte("🎯 " + EV.titre + " — " + CLASSE, [
@@ -327,12 +347,7 @@ function Pilot(s){
 
 /* ── Avant la question 1 : qui est entré, où en est chaque attestation ── */
 // l'heure de la dernière coche d'une attestation (1 ou 2) : en direct, celle de la séance ; dans la maquette, celle du scénario
-function heureAttestH(p, n){
-  if(!LIVE()) return SCN.heureAttest(p, n);
-  var a = typeof SCN.attest === "function" ? SCN.attest(p, n) : null, t = a && (typeof a.fini === "number" ? a.fini : a.ms);
-  if(!t) return "";
-  var d = new Date(t); return (d.getHours() < 10 ? "0" : "") + d.getHours() + ":" + (d.getMinutes() < 10 ? "0" : "") + d.getMinutes();
-}
+function heureAttestH(p, n){ return SCN.heureAttest(p, n) || ""; }
 function PilotPret(){
   var m = momH(), c = SCN.compteurs(MO());
   var pe = m.pasEntres || [], ae = m.attestEnCours || {};
@@ -354,7 +369,7 @@ function PilotAttest2(){
     h("div", {className:"pilot-status correction"}, "✍️ Seconde attestation — " + prets[0] + " / " + prets[1] + " prêts"),
     h("div", {className:"corr-grid"},
       h("div", null,
-        h("div", {className:"row", style:{marginTop:".2rem"}}, manquent.length > 0 || !LIVE()
+        h("div", {className:"row", style:{marginTop:".2rem"}}, manquent.length > 0 || !enDirect()
           ? h("button", {className:"btn btn-primary ferme", disabled:manquent.length > 0, title:"S'ouvre quand les " + c.presents + " présents ont coché toutes les lignes de la seconde attestation. Il en manque " + manquent.length + "."}, "🔒 ▶️ Commencer la correction")
           : h("button", Object.assign({className:"btn btn-primary", title:"Commence la correction, par la question la plus ratée sur les tablettes."}, geste(null, "lancerCorrection")), "▶️ Commencer la correction")),
         manquent.length > 0 && h("div", {className:"manquent"},
@@ -372,7 +387,7 @@ function PilotAttest2(){
 function PilotEstimation(){
   var k = MO(), m = momH(), c = SCN.compteurs(k), pas = m.pasEstime || [];
   var dist = {vert:0, bleu:0, orange:0, rouge:0};
-  SCN.presents(k).forEach(function(p){ var e = LIVE() ? ESTIM[p] : SCN.ESTIM[p]; if(pas.indexOf(p) < 0 && e && dist[e] != null) dist[e]++; });
+  SCN.presents(k).forEach(function(p){ var e = enDirect() ? ESTIM[p] : SCN.ESTIM[p]; if(pas.indexOf(p) < 0 && e && dist[e] != null) dist[e]++; });
   var estime = c.estime || [c.presents - pas.length, c.presents];
   return Console("pilotage", "pilot", h("div", {className:"card"},
     TitreCarte(h(F, null, "📊 Autoévaluation — " + EV.titre + " — " + CLASSE, InfoI("Chaque élève dit combien de bonnes réponses il pense avoir. Cette estimation sert à savoir s'il se surévalue, se sous-évalue ou s'évalue correctement ; son bilan la compare à sa note.")),

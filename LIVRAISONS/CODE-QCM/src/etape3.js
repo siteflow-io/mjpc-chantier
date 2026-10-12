@@ -74,7 +74,7 @@ function EcrLecture(e, qi, dit, chrono){
       h("div", {className:"decl-consigne"}, "Clique sur le ou les choix qui disent la même chose que sa feuille. Les mots ne sont pas forcément les mêmes."),
       h("div", {className:"lecture-l"}, h("div", {className:"soin"}, "Lis avec soin : c'est ton point d'autonomie."), chrono != null && ChronoSaisie(chrono, q.reponse)),
       // (QCM-2) en direct, le voisin clique, et chaque clic s'enregistre (ELV.lire)
-      LIVE() ? h(ChoixLuH, {key:"lu" + cleE(e) + qi, eleve:cleE(e), qi:qi, ordre:ordre, q:q, long:long, aucunTxt:"Sa feuille ne dit aucun de ces choix"}) : h(F, null,
+      enDirect() ? h(ChoixLuH, {key:"lu" + cleE(e) + qi, eleve:cleE(e), qi:qi, ordre:ordre, q:q, long:long, aucunTxt:"Sa feuille ne dit aucun de ces choix"}) : h(F, null,
       h("div", {className:"eleve-choix" + (long ? " long" : "")},
         ordre.map(function(i){ return h("button", {key:i, className:"eleve-choix-btn" + (dit && luArr.indexOf(i) >= 0 ? " selected" : "")}, h("span", null, q.choix[i])); }),
         h("button", {className:"eleve-choix-btn aucun" + (dit && lu === "aucun" ? " selected" : "")}, "Sa feuille ne dit aucun de ces choix")),
@@ -419,7 +419,8 @@ function Coeval(p){
     setEcrit(n); if(p.onCo) p.onCo(k, qc, n);
   }
   var zone = [];
-  var btn = function(x){ return h("button", {key:x, className:"co-btn " + x + (k === x ? " on" : ""), "data-local":"1", "aria-pressed":k === x, onClick:function(){ choisir(x); }}, EM_CO[x] + " ", txtCo(x, v)); };
+  var cp = "CO:" + e.cle + ":";   // (QCM-2) en direct, chaque geste de la moitié par sa clé (clic)
+  var btn = function(x){ return h("button", Object.assign({key:x, className:"co-btn " + x + (k === x ? " on" : ""), "aria-pressed":k === x}, clic(cp + x, function(){ choisir(x); })), EM_CO[x] + " ", txtCo(x, v)); };
   if(!k || k === "ok"){
     zone.push(h("div", {key:"t", className:"decl-titre co-titre"}, e.prenom + ", " + v.prenom + " a-t-" + il(v) + " bien lu ta feuille ?"));
     if(daccord) zone.push(h("div", {key:"d", className:"eleve-feedback valide", style:{marginBottom:".6rem"}}, "Tu as cliqué ce que " + v.prenom + " avait lu : vous êtes d'accord."));
@@ -430,11 +431,11 @@ function Coeval(p){
   } else if(qc == null){
     zone.push(h("div", {key:"t", className:"decl-titre co-titre co-" + k}, EM_CO[k] + " " + e.prenom + ", tu penses que " + v.prenom + " a " + (k === "peut" ? "peut-être " : "") + "mal lu ta feuille pour une question : c'est laquelle ?"));
     zone.push(h("div", {key:"l", className:"co-liste cliquable" + (EVx.questions.length > 5 ? " serree" : "")}, EVx.questions.map(function(q, i){
-      return h("button", {key:i, className:"co-l co-lb", "data-local":"1", onClick:function(){ setQ(i); setEcrit(null); }}, h("strong", null, "Question " + (i+1)), " · ", p.liste ? p.liste(q) : q.enonce);
+      return h("button", Object.assign({key:i, className:"co-l co-lb"}, clic(cp + "q" + i, function(){ setQ(i); setEcrit(null); })), h("strong", null, "Question " + (i+1)), " · ", p.liste ? p.liste(q) : q.enonce);
     })));
     // (complément 4, correction 8) la règle du désaccord, seule ici, reste à sa place de la v7 (points 513 et 533) ; elle ne part que là où elle suivait « ☝️ C'est ta seule question de désaccord. »
     zone.push(h("div", {key:"r", className:"co-regle"}, "☝️ " + REGLE_CO));
-    zone.push(h("div", {key:"a", className:"co-actions"}, h("button", {className:"btn btn-ghost", "data-local":"1", onClick:function(){ setK(null); }}, "↩️ Changer")));
+    zone.push(h("div", {key:"a", className:"co-actions"}, h("button", Object.assign({className:"btn btn-ghost"}, clic(cp + "chk", function(){ setK(null); })), "↩️ Changer")));
   } else {
     var q = EVx.questions[qc], lu = luDe(qc);
     zone.push(h("div", {key:"q", className:"co-l choisie"}, EM_CO[k] + " " + txtCo(k, v, qc)));
@@ -443,13 +444,13 @@ function Coeval(p){
     zone.push(h("div", {key:"c", className:"eleve-choix" + (p.long ? " long" : "")},
       ordreDe(qc).map(function(i){
         var on = ecrit && ecrit !== "aucun" && ecrit.indexOf(i) >= 0;
-        return h("button", {key:i, className:"eleve-choix-btn" + (on ? " selected" : ""), "data-local":"1", onClick:function(){ ecrire(i); }},
+        return h("button", Object.assign({key:i, className:"eleve-choix-btn" + (on ? " selected" : "")}, clic(cp + "e" + i, function(){ ecrire(i); })),
           h("span", null, q.choix[i], lu !== "aucun" && lu.indexOf(i) >= 0 && h("span", {className:"tag-lu"}, v.prenom + " a lu")));
       }),
-      h("button", {className:"eleve-choix-btn aucun" + (ecrit === "aucun" ? " selected" : ""), "data-local":"1", onClick:function(){ ecrire("aucun"); }}, "Ma feuille ne dit aucun de ces choix")));
+      h("button", Object.assign({className:"eleve-choix-btn aucun" + (ecrit === "aucun" ? " selected" : "")}, clic(cp + "eaucun", function(){ ecrire("aucun"); })), "Ma feuille ne dit aucun de ces choix")));
     // (778) la règle du désaccord n\'est dite qu\'une fois : « ☝️ C\'est ta seule question de désaccord. » reste
     if(ecrit) zone.push(h("div", {key:"f", className:"eleve-feedback valide"}, ENREG));
-    zone.push(h("div", {key:"a", className:"co-actions"}, h("button", {className:"btn btn-ghost", "data-local":"1", onClick:function(){ setQ(null); setEcrit(null); }}, "↩️ Changer"),
+    zone.push(h("div", {key:"a", className:"co-actions"}, h("button", Object.assign({className:"btn btn-ghost"}, clic(cp + "chq", function(){ setQ(null); setEcrit(null); })), "↩️ Changer"),
       ecrit && h("span", {className:"co-attente", style:{margin:0, alignSelf:"center"}}, "⏳ Attends ton bilan…")));
   }
   return Page(badgeDe(e), "📝 Correction", h("div", {className:"eleve-q-zone"}, zone));

@@ -124,12 +124,15 @@ function PageMoitie(p){
   if(enDirect()){ var nomB = (/· ([^·]+)$/.exec(p.badge || "") || [, ""])[1].trim(), ic = iciH() || {};
     prenom = [ic.g, ic.d].concat(HEURE.eleves, SCN.eleves()).filter(function(x){ return x && nomH(x) === nomB; })[0] || null; }
   var chrono = TOUR_CHRONO[MOM().ph];
+  // (t-demo-q) en direct, la séance de la démo : le bandeau, en tête de la moitié, du début à la fin
+  var enfants = p.enfants;
+  if(enDirect() && SCN.sid()){ var se = SCN.seance(SCN.sid()); if(se && se.demo) enfants = h(F, null, h("div", {key:"bd", className:"demo-bandeau"}, "🎓 Évaluation d'entraînement : elle ne compte pas."), p.enfants); }
   return h("div", {className:"eleve-page"},
     DECO.map(function(e, i){ return h("span", {key:i, className:"deco"}, e); }),
     h("div", {className:"eleve-card"},
       h("div", {className:"eleve-tete"}, h("div", {className:"eleve-classe-badge"}, p.badge),
         prenom && h("button", {className:"btn btn-ghost btn-sm mes-evals", "data-local":"1", onClick:function(){ set(!ouvert); }}, ouvert ? "← Retour" : "📊 Mes évaluations")),
-      ouvert ? h(F, null, h("h1", null, "📊 Mes évaluations"), ListeMesEvals(prenom)) : h(F, null, p.titre && h("h1", null, p.titre), p.enfants)));
+      ouvert ? h(F, null, h("h1", null, "📊 Mes évaluations"), ListeMesEvals(prenom)) : h(F, null, p.titre && h("h1", null, p.titre), enfants)));
 }
 function Page(badge, titre, enfants){
   // (relecteurs n°117, 199) toute moitié de tablette porte « 📊 Mes évaluations », celles de la 3e (x610) comprises

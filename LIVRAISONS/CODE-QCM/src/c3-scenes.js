@@ -255,20 +255,25 @@ refaire("t-papier-correction", function(){ return Tablette(EcrRevele(J, MOM().qi
 /* (complément 4, correction 9 — garde 18) les états du pilotage des couches précédentes (etape2.js) étaient des variables, réassignées
    après la déclaration de ce fichier : « 📱 QR pilotage » montrait toujours la question 1, 1er tour. Le QR s'ouvre sur l'écran du moment. */
 ST_Q1T1 = function(){ return etatPilot(); };
-refaire("c-qr", function(){
-  var fond = seanceEnCours() ? fondDuMoment() : Lancement(false);
-  var cases = []; for(var i = 0; i < 29 * 29; i++){ var x = i % 29, y = Math.floor(i / 29); var coin = (x < 7 && y < 7) || (x > 21 && y < 7) || (x < 7 && y > 21);
-    var on = coin ? ((x % 22 === 0 || x % 22 === 6 || y % 22 === 0 || y % 22 === 6) || (x % 22 >= 2 && x % 22 <= 4 && y % 22 >= 2 && y % 22 <= 4)) : ((x * 7 + y * 13 + x * y) % 3 === 0); cases.push(on ? 1 : 0); }
-  // la fenêtre du QR, celle de etape2.js (ScQR), mot pour mot ; seul son fond suit le moment
-  var retour = seanceEnCours() ? "c-q1-tour1" : "c-lancer";
-  return h(F, null, fond, h("div", {className:"modal-back", "data-echap":retour},
+refaire("c-qr", function(){ return h(QRPilotage); });
+/* (QCM-1) « 📱 QR pilotage », en vrai : le QR de la 7.7.1 (OverlayQRPhone, l. 5338 à 5367) vers #mode=prof&view=phone&qr=<nonce> ;
+   la fenêtre se ferme toute seule quand le téléphone l'a scanné (il écrit qcm/qrScans/<nonce>) ; ses mots sont ceux de la maquette */
+function QRPilotage(){
+  var s = useState(function(){ return "qr_" + Date.now() + "_" + Math.random().toString(36).substr(2, 6); }), nonce = s[0];
+  var url = location.origin + location.pathname + "#mode=prof&view=phone&qr=" + nonce;
+  useEffect(function(){ if(!db) return; var ref = db.ref(DB_ROOT + "/qrScans/" + nonce);
+    ref.on("value", function(sn){ if(sn.val()){ ref.off(); ref.remove(); fermer(); } });
+    return function(){ ref.off(); ref.remove(); }; }, []);
+  function fermer(){ if(typeof navFermer === "function" && NAV.pile.length) navFermer(); else if(typeof navRemettre === "function") navRemettre(); }
+  var fond = seanceEnCours() ? (typeof EcranConsoleHeure === "function" ? EcranConsoleHeure() : fondDuMoment()) : Lancement(false);
+  return h(F, null, fond, h("div", {className:"modal-back", "data-echap":"c-lancer"},
     h("div", {className:"modal", style:{maxWidth:"420px", textAlign:"center"}},
-      h("button", {className:"modal-close", "data-va":retour}, "✕"),
+      h("button", {className:"modal-close", "data-local":"1", onClick:fermer, title:"Ferme la fenêtre ; rien ne change."}, "✕"),
       h("h2", null, "📱 Pilotage mobile"),
       h("p", {style:{marginBottom:"1rem", fontSize:".9rem", color:"var(--gris)"}}, "Scanne avec ton téléphone. La fenêtre se ferme automatiquement."),
-      h("div", {className:"qr-dessin"}, cases.map(function(c, i){ return h("span", {key:i, className:c ? "on" : ""}); })),
-      h("button", {className:"btn btn-ghost btn-sm", style:{marginTop:".8rem"}, "data-local":"1", onClick:function(){ window.open(location.pathname + "#scene=p-reponse&m=" + encodeURIComponent(MO()), "telephone-qcm"); }, title:"Montre ce que ton téléphone affiche une fois le QR scanné : ta télécommande."}, "📱 Voir le téléphone"))));
-});
+      h("img", {src:"https://api.qrserver.com/v1/create-qr-code/?size=280x280&margin=10&data=" + encodeURIComponent(url), alt:"QR code", style:{display:"block", margin:"0 auto", borderRadius:"8px", width:"280px", height:"280px", background:"#fff"}}),
+      h("div", {style:{marginTop:"1rem", fontSize:".7rem", color:"var(--gris)", wordBreak:"break-all", fontFamily:"monospace"}}, url))));
+}
 /* le mode test au « Oui / Non » de la question 3 (TEST:Q3:B1) : les 15 tablettes à ce moment, comme derrière « 🔍 Jouer en grand » */
 function ModeTestB(){ var n = +paramHash("tab") || 1, pa = TEST_PAIRES30[n - 1] || TEST_PAIRES30[0], a = eleveT(pa[0], "J");
   return ModeTestSeance({phase:"reponse", qi:2, tour:1, chrono:0, stats:statsQ(), passees:[0, 1],

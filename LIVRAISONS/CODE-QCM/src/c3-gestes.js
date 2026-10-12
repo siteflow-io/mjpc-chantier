@@ -242,3 +242,13 @@ function ListeAppel(p){   // l'appel : un clic sur un nom le marque absent ; « 
       h("button", {className:"btn btn-ghost btn-sm", style:{marginLeft:".8rem"}, "data-local":"1", title:BULLES["Tout le monde présent"], onClick:function(){ setAbs({}); }}, "Tout le monde présent")),
     p.message !== false && h("div", {className:"appel-tablettes", style:{padding:".55rem 1.2rem 0", fontSize:".86rem", lineHeight:1.5}}, messageAppel(abs, p.paires)));
 }
+/* (QCM-1) pendant l'appel, la carte de lancement reste derrière sa fenêtre : son « 🚀 Lancer la séance » est fermé, celui de la fenêtre lance */
+var hAvantAppel = h;
+h = function(type, props){
+  if(type === "button" && props && props["data-va"] === "c-appel" && typeof SCN !== "undefined" && SCN.sid && SCN.sid() && (SCN.etat() || {}).ph === "appel"){
+    var args = Array.prototype.slice.call(arguments), p = Object.assign({}, props);
+    delete p["data-va"]; p.disabled = true; p.title = "L'appel est ouvert : la séance se lance depuis sa fenêtre.";
+    args[1] = p; return hAvantAppel.apply(null, args);
+  }
+  return hAvantAppel.apply(null, arguments);
+};

@@ -147,7 +147,9 @@ vientDUnGeste = function(){ return !!NAV.pile.length; };
 window.addEventListener("click", function(ev){
   var b = ev.target && ev.target.closest ? ev.target.closest("#root button, #root .tel-el, #root .qdf-c, #root [data-va]") : null;
   if(!b || b.disabled) return;
-  if(LIVE.appareil() === "tablette"){ GESTES.eleve(b); return; }
+  // un bouton « data-local » est tenu par son composant (qui appelle ACT ou ELV lui-même) : le routeur n'y ajoute rien
+  if(b.hasAttribute("data-local")) return;
+  if(LIVE.appareil() === "tablette"){ if(typeof EcranTablette !== "function") GESTES.eleve(b); return; }
   var a = GESTES.action(b);
   if(a){ ev.stopImmediatePropagation(); ev.preventDefault(); LIVE.log("geste", a.lib); try { var r = a.f(b, a.m); if(r && r.catch) r.catch(function(e){ console.error(e); }); } catch(e){ console.error(e); } return; }
   // une fenêtre ouverte sur place se ferme par son bouton qui ferme (✕, Annuler, Fermer), en revenant à l'écran d'où elle s'est ouverte

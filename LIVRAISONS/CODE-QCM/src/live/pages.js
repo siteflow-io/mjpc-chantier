@@ -41,7 +41,9 @@ var PAGES = (function(){
     if(app === "accueil") return {id:"c-accueil", vue:"console"};
     if(app === "tablette"){
       if(NAV.ecran === "e-mes-evals" && fn("EcranMesEvaluations")) return {id:"e-mes-evals", vue:"tablette", render:function(){ return fn("EcranMesEvaluations")(); }, cle:JSON.stringify(NAV.params)};
-      if(fn("EcranTablette") && SCN.sid() && ELV.n && (ELV.cotes.g || ELV.cotes.d)) return {id:"t-live", vue:"tablette", render:function(){ return fn("EcranTablette")(); }, cle:"tablette-heure"};
+      // la tablette de QCM-2 dès que la classe est connue (« Combien êtes-vous ? », l'entrée, les moitiés) ; avant, le choix de la classe
+      if(fn("EcranTablette") && LIVE.pret && classeTablette()){ if(ELV.tab && ELV.sid && SCN.sid() !== ELV.sid){ ELV.oublier(); ELV.sid = SCN.sid(); }
+        return {id:"t-live", vue:"tablette", render:function(){ return fn("EcranTablette")(); }, cle:"tablette-heure"}; }
       return {id:"t-live", vue:"tablette", render:function(){ return h(TabletteLive); }, cle:"tablette"};
     }
     // la console, le tableau, le téléphone : la séance pilotée est celle de la classe choisie, sinon la seule séance active
@@ -174,3 +176,6 @@ var MOITIES = (function(){
   };
   return M;
 })();
+
+/* Le téléphone scanné : il écrit qcm/qrScans/<nonce>, et la fenêtre du QR se ferme sur la console (la 7.7.1, VuePhone, l. 5374 à 5380) */
+(function(){ try { var qr = LIVE.params().get("qr"); if(qr && LIVE.appareil() === "telephone" && db) db.ref(DB_ROOT + "/qrScans/" + qr).set(firebase.database.ServerValue.TIMESTAMP); } catch(e){ console.error(e); } })();

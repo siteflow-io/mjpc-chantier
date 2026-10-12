@@ -15,8 +15,10 @@ try { if(typeof firebase !== "undefined"){ if(!firebase.apps || !firebase.apps.l
 if(typeof sanMJPC === "undefined") var sanMJPC = function(s){ return String(s || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_+|_+$/g, ""); };
 
 /* ══════════════════════ LIVE : ce qui est lu, et qui le regarde ══════════════════════ */
+// LIVE s'appelle aussi : LIVE() est vrai dans l'app (l'aide de QCM-2 du même nom : « vrai si SCN.eleves existe »)
 var LIVE = (function(){
-  var L = {pret:false, offset:0, journal:[]};
+  var L = function(){ return typeof SCN !== "undefined" && typeof SCN.eleves === "function"; };
+  L.pret = false; L.offset = 0; L.journal = [];
   // l'adresse : ?mode=prof, &view=board, &view=phone, ?mode=eleve, &qr= (le hash d'abord, comme la 7.7.1 : getURLParams)
   L.params = function(){
     var hash = (location.hash || "").replace(/^#/, ""), search = (location.search || "").replace(/^\?/, "");
@@ -398,8 +400,10 @@ var SCN = (function(){
   };
 
   /* ── Les séances : celles de la base, au format du calendrier de la maquette ── */
+  // une séance du scénario de la maquette (« S08 », « PAP »…) que nomme encore un écran : une séance vide, jamais une erreur
+  var SCENARIO = ["S08", "PAP", "S3E", "RATT", "CH1", "JB", "DEMO", "TEST"];
   S.seance = function(id){
-    var s = S.sess(id); if(!s) return null;
+    var s = S.sess(id); if(!s){ if(SCENARIO.indexOf(id) >= 0){ var now = LIVE.maintenant(); return {id:id, vide:true, eval:null, classe:S.classe(), date:dateFr(now), heure:heureFr(now), mode:"tablettes", absents:[], fin:null, rendues:null, demo:false, rattrapage:false, eleves:null, ms:now, aLire:0}; } return null; }
     var l = s.lancee || {}, d = s.date || l.date || 0, ev = S.evalParId(s.evalId);
     return {id:id, eval:s.evalId, classe:s.classeSlug, date:dateFr(d), heure:l.heure || heureFr(d), mode:l.mode || "tablettes",
       absents:S.absents(id).map(S.nomDe), fin:s.etat === "terminee" ? dateFr(s.finLe || d) + " " + heureFr(s.finLe || d) : null,
@@ -653,7 +657,7 @@ var ELV = (function(){
   var E = {tab:null, cotes:{}};
   // la tablette : son numéro (celui du premier élève entré), ses moitiés ; gardés sur l'appareil pour tenir un rechargement
   try { var t = JSON.parse(localStorage.getItem("qcm_tablette") || "null"); if(t){ E.tab = t.tab; E.cotes = t.cotes || {}; E.n = t.n || null; E.sid = t.sid || null; if(t.classe) LIVE.classeSlug = t.classe; } } catch(e){}
-  function garder(){ try { localStorage.setItem("qcm_tablette", JSON.stringify({tab:E.tab, cotes:E.cotes, n:E.n, sid:SCN.sid(), classe:LIVE.classeSlug})); } catch(e){} LIVE.changer(); }
+  function garder(){ if(SCN.sid()) E.sid = SCN.sid(); try { localStorage.setItem("qcm_tablette", JSON.stringify({tab:E.tab, cotes:E.cotes, n:E.n, sid:E.sid, classe:LIVE.classeSlug})); } catch(e){} LIVE.changer(); }
   E.oublier = function(){ E.tab = null; E.cotes = {}; E.n = null; try { localStorage.removeItem("qcm_tablette"); } catch(e){} LIVE.changer(); };
   E.courant = null;
   // qui est sur cet appareil : {combien, n (la tablette), g, d (les slugs des deux moitiés), classe}

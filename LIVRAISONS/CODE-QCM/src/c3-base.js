@@ -19,8 +19,11 @@ RT = SCN.RT; ESTIM = SCN.ESTIM; ORD = SCN.ORD; TABL = SCN.TABL; FEUI = SCN.FEUI;
 ORDRE_CORR = []; PREMIER = []; PAIRES_AVANT = []; PAIRES = []; RF = {};
 function brancherGlobales(){
   var ev = SCN.ev(), cl = SCN.classe();
+  // hors séance (le lancement) : la classe et l'évaluation choisies dans les menus, et les binômes proposés pour cette classe
+  if(!SCN.sid() && typeof GESTES !== "undefined"){ var c = GESTES.choixLancement(); if(c.classe) cl = c.classe; if(c.evalId) ev = SCN.evalParId(c.evalId); }
   if(ev) EV = ev; if(cl) CLASSE = cl;
-  PAIRES = SCN.paires(); PAIRES_AVANT = PAIRES;
+  PAIRES = SCN.sid() ? SCN.paires() : (cl ? SCN.binomesProposes(cl).map(function(p){ return [p[0] ? SCN.nomDe(p[0]) : null, p[1] ? SCN.nomDe(p[1]) : null]; }) : []);
+  PAIRES_AVANT = PAIRES;
   ORDRE_CORR = SCN.ordreCorr();
   PREMIER = ev ? ev.questions.map(function(q, i){ return SCN.premierCote(i) === "g" ? "J" : "M"; }) : [];
   RF = {}; SCN.presents().forEach(function(x){ RF[x] = ""; });

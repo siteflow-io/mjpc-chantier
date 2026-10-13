@@ -1,0 +1,65 @@
+Assemblage QCM-4 · BANC — 13/10/2026 13:12 (heure de Paris) — code-qcm 42e2d97
+
+── build.py
+evaluation-qcm.staging.html 1977289 octets, md5 9a5f581453edbf5f7778d4fffb2f8fdd
+  code de sortie : 0
+  app : 9a5f581453edbf5f7778d4fffb2f8fdd  evaluation-qcm.staging.html  2021094 octets
+
+── empreintes des contrôles de la conscience (la version de main, extraite telle quelle : /home/user/mjpc-chantier/LIVRAISONS/CODE-QCM/sorties/2026-10-13_1312/.controles-main/AUDITS/CONTROLES-QCM-APP)
+  controles-app.js: OK
+  attendus/evaluation-essai.json: OK
+  attendus/taxonomie-competences.json: OK
+
+── reprise2
+  Reprise 2, points 1 à 5, par le geste (QCM-4 · BANC) — durée 132 s
+  vérifications : 22 · échecs : 0
+
+── reprise3
+  Reprise 3, point 5, par le geste (QCM-4 · BANC) — durée 164 s
+  vérifications : 14 · échecs : 0
+
+── reprise4
+  Reprise 4, points 1 à 7, par le geste (QCM-4 · BANC) — durée 231 s
+  vérifications : 27 · échecs : 0
+
+── reprise5
+  Reprise 5, points 1, 2 et 4, par le geste (QCM-4 · BANC) — durée 72 s
+  vérifications : 9 · échecs : 0
+
+── banc commun (374 s, code 0)
+  Durée : 373 s (6 min 13 s) · vérifications : 211 · échecs : 0 · scènes relevées : 97
+
+── les gestes rares (0 s, code 0)
+
+── l'heure de demain (0 s, code 0)
+
+── contrôles de la conscience (124 s, code 0)
+  Contrôles de la conscience n°12 pour l'app — /home/user/mjpc-chantier/LIVRAISONS/CODE-QCM/evaluation-qcm.staging.html — 2026-10-13T11:14:06.266Z
+  md5 de controles-app.js : 1f1ac0d8ca288d796d98b115bd461484
+  Durée : 120 s · vérifications : 32 · échecs : 0
+    ok     K1 · « 🚀 Lancer la séance » écrit une séance active dans la base
+  échecs : 0
+
+── fidélité à la maquette
+  Scènes atteintes par le geste : 97 / 157 (hors MJPC) · fidèles (aucun écart non nommé) : 48 · avec écarts : 49 · écarts nommés dans ecarts-maquette.json : 123
+
+── synthèse (synthese.txt)
+  Synthèse de l'assemblage 2026-10-13_1312
+  
+  Contrôles de la conscience : Durée : 120 s · vérifications : 32 · échecs : 0
+  
+  ■ l'heure : 145 vérifications passent, 0 échouent
+      QCM-1 · SOCLE : 61 ok, 0 échecs
+      QCM-2 · HEURE : 84 ok, 0 échecs
+  ■ le soir : 32 vérifications passent, 0 échouent
+      QCM-1 · SOCLE : 3 ok, 0 échecs
+      QCM-3 · SOIR : 29 ok, 0 échecs
+  ■ le reste : 16 vérifications passent, 0 échouent
+      QCM-1 · SOCLE : 1 ok, 0 échecs
+      QCM-3 · SOIR : 15 ok, 0 échecs
+  ■ toutes les pages : 18 vérifications passent, 0 échouent
+      QCM-1 · SOCLE : 18 ok, 0 échecs
+  
+  Fidélité : 97 scènes atteintes, 48 fidèles ; écarts non nommés : QCM-3 · SOIR 73 dans 17 scènes ; QCM-2 · HEURE 88 dans 32 scènes ; non atteintes : 60
+
+Durée totale de l'assemblage : 378 s

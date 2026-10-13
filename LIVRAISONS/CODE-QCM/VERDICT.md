@@ -1,4 +1,27 @@
-# Verdict de la livraison du code du QCM — QCM-4 · BANC, reprise 6 du 13/10/2026, 13:00
+# Verdict de la livraison du code du QCM — QCM-4 · BANC, reprise 6, seconde passe, 13:20
+
+*App : `evaluation-qcm.staging.html`, md5 **`9a5f581453edbf5f7778d4fffb2f8fdd`**, `code-qcm` à `42e2d97` (tout ce qui était poussé à 13:12). Sorties : `sorties/2026-10-13_1312/`.*
+
+## Verdict : **ça va.**
+
+Les deux défauts de la reprise 6 et le point de 13:00 sont corrigés, et rejoués par le geste sur cette app ; aucun défaut ouvert dans ce que le banc et les jeux par le geste couvrent.
+
+| Épreuve, sur l'app de 13:12 | Résultat |
+| --- | --- |
+| Contrôles de la conscience (ceux de `main`, md5 `1f1ac0d8…`) | **32 / 32** |
+| Banc commun (la séance du scénario, 12 tablettes, B exigé de chacun, la correction au clic de Paul, le soir, le reste) | **211 / 211** |
+| `banc-reprise2.js` : compteurs (« ONT RÉPONDU » au 2e tour sur les présents, comme `c-q1-tour2`), chrono et « Commencer la correction » au téléphone, « Rouvrir pour un élève », « pour tous », la console rechargée | **22 / 22** |
+| `banc-reprise3.js` : l'alerte avec trouvée ; **la garde tranchée annonce la note du bilan** ; le « Oui » tardif ; « séance » au téléphone | **14 / 14** |
+| `banc-reprise4.js` : l'alerte sans trouvée, aucun bouton à choix vide ; **la garde annonce la note du bilan** ; B pour chacun ; « Rouvrir pour tous » seulement pour ceux sans réponse ; la question écartée nulle part ; « +5 » au 1er tour ; le bandeau du téléphone | **27 / 27** |
+| `banc-reprise5.js` : l'appel (téléphone sans séance, les deux « 🚀 Lancer la séance ») ; « ont répondu » au 1er tour sur ceux qui ont la main (console, téléphone, tableau), question close sur les présents (console, téléphone) ; « 1 réponse enregistrée » | **9 / 9** |
+
+Rejoué par QCM-3 (DEMANDES, `fa42147`, `f722840`) : la garde pour « la feuille dit autre chose » et « je relis ce soir » dit la note du bilan.
+
+Les gestes rares et l'heure de demain ont passé sur l'app de 10:55 (47 / 47, 109 / 109) ; ils sont relancés sur l'app de 13:12 à 13:19, et leur résultat est ajouté ici dès la fin (vers 13:30).
+
+---
+
+# Verdict de 13:00 (pour mémoire)
 
 *La reprise 6 (Paul 12:35). App : `evaluation-qcm.staging.html`, md5 **`e155c121d34265440a47eb0c148a5d07`**, `code-qcm` à `f722840` (tout ce qui était poussé à 12:50). Sorties : `sorties/2026-10-13_1250/`.*
 

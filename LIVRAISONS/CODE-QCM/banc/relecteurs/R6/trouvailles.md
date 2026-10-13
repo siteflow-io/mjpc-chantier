@@ -1,0 +1,21 @@
+# Trouvailles R6 : fin de l'heure et soir (06:01 → 06:13)
+
+## Ce qui ne va pas
+1. Console, appel (« 📋 Check-in »), clics à la suite pour marquer des absents : un clic sur deux n'a pas été pris quand je cliquais vite, 10 absents au lieu de 20. J'ai dû recliquer chaque élève (cap/app-appel2.png, puis cap/app-appel3.png). Maquette `c-appel` : chaque clic sort l'absent. Probable, mais je n'ai pas isolé la cause : le rythme de mes clics y est peut-être pour quelque chose.
+2. Tablette, attestation (« Avant de commencer, Julien »), avant toute coche : une seule ligne visible (« Pour chaque question, écris ta réponse… ») et « Je commence » grisé (cap/app-t1-4.png). Maquette `t-attest-1` / `t-attest-2` : les lignes apparaissent une à une, 8 au total. Je n'ai pas réussi à faire apparaître la ligne suivante en cochant (mon automate s'est bloqué), et la console affiche « lignes cochées sur 8 ». Je ne peux pas conclure.
+3. Console rouverte pendant la séance en cours (la première console fermée sans « Terminer »), fenêtre « ⚠️ Séance interrompue détectée » (cap/app-c-interrompue.png) : la première réouverture affiche « Dernière déconnexion : 13/10/2026 à 06:02 », alors que la console était restée ouverte jusqu'à 06:10 environ. La réouverture suivante affiche bien 06:10. Maquette `c-interrompue` : l'heure de la dernière déconnexion. Le texte « 0 réponses enregistrées » est au pluriel avec 0 (README, point 8 sur les pluriels).
+4. Console reprise par « 🔄 Reprendre la séance » (cap/app-c-avant-terminer.png) : elle affiche « 2/4 CONNECTÉS » alors que les deux tablettes étaient fermées depuis 06:10, et « 0/2 ONT RÉPONDU » alors que la séance compte 4 élèves présents. Maquette `c-terminer` / `c-pret` : les compteurs portent sur les présents (24/24, 10/12…).
+5. Soir, Données → Résultats (cap/app-tableau-seance.png, ligne de la séance) : la séance terminée avant la question 1, sans aucune réponse, affiche « 📌 12 feuilles à lire » et la case « publiée » cochée. Maquette `c-seances` : on ne lit que les feuilles qu'il reste à lire. 12 = 4 présents × 3 questions jamais posées.
+6. Soir, Résultats, clic « 📊 Ouvrir » : le texte de la page n'a pas changé dans ma capture (cap/app-tableau-seance.png). Je n'ai pas eu le temps de vérifier si un tableau s'ouvre plus bas. Maquette `c-resultats` : le tableau de la séance. Non confirmé.
+
+## Ce qui va
+- Console, « 🛑 Terminer la séance » : la garde dit la classe, l'évaluation et la phase (« avant la question 1 »), puis les deux phrases et « Annuler / 🛑 Terminer la séance », comme dans `c-terminer` (cap/app-c-garde-terminer.png).
+- Console, clic sur « 🛑 Terminer la séance » dans la garde puis fermeture immédiate de la page, puis réouverture : la séance est bien terminée. Plus de bandeau « 🔴 1 séance en cours », pas de fenêtre « interrompue », et dans « Séances précédentes » : « 13/10/2026 06:02 · ✅ terminée · 4 présents, 21 absents », avec « 🔓 Rouvrir » et « 📊 Résultats » (cap/app-c-rouverte.png), comme dans `c-interrompue` (liste du bas) et `c-seances`.
+- Console rouverte sans « Terminer » : fenêtre « Séance interrompue détectée » avec « Terminer définitivement / Finir à une autre heure / Reprendre la séance », comme dans `c-interrompue`. « Reprendre » ramène au pilotage. Aucune session n'a été lancée ou corrigée automatiquement, ce qui respecte la décision de 07:22.
+- Données → Résultats : les niveaux 6e à 3e avec « vide pour l'instant », le tri « classe / date / évaluation », la séance rangée sous 3e › 3 ESSAI, « copies non rendues », « publiée », « 📊 Ouvrir », comme dans `c-seances`.
+- Appel : l'absent sort, les binômes sont réappariés et la fin de l'heure s'affiche, comme dans `c-appel`. Aucune erreur de page sur les consoles relues.
+
+## Bilan
+6 trouvailles, dont 2 non confirmées (2 et 6).
+
+Non joué, faute de temps (15 min) : l'automate des tablettes s'est bloqué sur l'attestation, si bien qu'aucune question n'a été jouée. Je n'ai donc vu ni le bilan de classe (`c-bilan`), ni le tableau de séance avec des notes (`c-resultats`), ni la fiche d'un élève (`c-fiche`), ni « Que dit la feuille ? » (`c-que-dit-la-feuille` : qui a lu quoi, la note, ce qui reste « à lire »). Le téléphone et le tableau projeté n'ont pas été ouverts.

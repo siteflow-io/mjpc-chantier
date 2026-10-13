@@ -11,8 +11,8 @@ Créé par la conscience n°12 le 12/10/2026 (tour 672), depuis la branche `maqu
 
 ## Livraison du 13/10/2026 à 06:30 (QCM-4 · BANC, COMMUN §5)
 
-- `evaluation-qcm.staging.html` et `evaluation-qcm.staging.html.md5` : l'app assemblée par `build.py` depuis `src/` sur `code-qcm` à `ca069f6`, md5 `172efa3c4f5ce73c6095b2868f4cb456` (réassemblée à 06:16).
+- `evaluation-qcm.staging.html` et `evaluation-qcm.staging.html.md5` : l'app assemblée par `build.py` depuis `src/` sur `code-qcm` à `d669ea6`, md5 `360af4ba39ad028143c258ad3b42c408` (réassemblée à 08:00, reprise du 13/10).
 - `src/`, `build.py` : ses sources.
 - `banc/` : le banc commun (console, tablettes partagées, téléphone, tableau, sur le faux hub, par le geste) ; il se rejoue par `bash banc/assembler.sh` (12 min) ; mode d'emploi dans `banc/README.md`, écarts de fidélité nommés dans `banc/ecarts-maquette.json`, relecteurs neufs dans `banc/relecteurs/`.
-- `sorties/2026-10-13_0616/` : le banc final, ses sorties avec leurs durées et les captures de l'heure à chaque phase et sur chaque appareil (`captures/`, `captures-demain/`) ; les assemblages de la nuit dans les autres dossiers de `sorties/`.
+- `sorties/2026-10-13_0800/` : le banc final, ses sorties avec leurs durées et les captures de l'heure à chaque phase et sur chaque appareil (`captures/`, `captures-demain/`) ; les assemblages de la nuit dans les autres dossiers de `sorties/`.
 - `VERDICT.md` : le verdict par partie (l'heure, le soir, le reste) ; `DEFAUTS-OUVERTS.md` : les défauts encore ouverts, par propriétaire.

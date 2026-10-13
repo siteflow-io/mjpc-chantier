@@ -1,0 +1,42 @@
+assei
+3 ESSAI (25 élèves)
+Évaluationi
+🎓 Démo — apprendre le déroulé (3 questions)
+Évaluation d'essai — 3 questions
+Modei
+📱 Sur tablettes
+📄 Séance sur papier
+⏱️ Durée estimée : 17 mini
+✅ Ça tient dans les 45 minutes utiles.
+🚀 Lancer la séance
+📱 Binômes proposés — d'après les exclusions, puis le QCM précédenti
+📱 Tablette 1
+⠿BAUDRY Léa
+⠿CARRÉ Tom
+📱 Tablette 2
+⠿ABRIAL Julien
+⠿BRUNEAU Camille
+📱 Tablette 3
+⠿CHEVALLIER Théo
+⠿DUVERNAY Michel
+📱 Tablette 4
+⠿ESNAULT Inès
+⠿FOUCHER Hugo
+📱 Tablette 
+=====T1
+⭐
+🎯
+✨
+💡
+🎲
+Combien êtes-vous sur cette tablette ?
+👤 1 élève
+👥 2 élèves
+BTN: 👤 1 élève | 👥 2 élèves
+ERR 
+=====PH
+📱
+Pilotage mobile
+Aucune session active. Lance une session depuis l'ordinateur.
+BTN: 
+ERR 

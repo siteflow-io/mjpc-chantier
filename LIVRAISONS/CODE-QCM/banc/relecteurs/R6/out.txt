@@ -1,0 +1,4 @@
+ERR page.waitForTimeout: Target page, context or browser has been closed
+    at S.attest (<anonymous>:2:140)
+    at async eval (<anonymous>:6:1)
+    at async /home/user/mjpc-chantier/LIVRAISONS/CODE-QCM/banc/relecteurs/R6/runner.js:9:10

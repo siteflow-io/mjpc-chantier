@@ -21462,3 +21462,55 @@ Réponse mot pour mot :
 1002. Ce que je ne sais pas : ce que les trois relecteurs vont trouver. Si un défaut ne peut pas être corrigé avant 11:22, on ne met pas en ligne, et tu fais cours à 13:00 avec la 7.7.2.
 
 13/10/2026 10:50 MEMO
+
+---
+
+## TOUR 696 — le réveil programmé (pas Paul)
+
+> (13/10, 11:31) [Message programmé par la conscience n°12 (10:49, après l'ordre de Paul de 10:47 : « il faut accélérer ») — il n'est pas de Paul ; arrivé à 11:31.] Il est 11:31 : contrôle de la reprise 4 bis du code du QCM. (La marche à suivre complète est dans le message programmé « Contrôle QCM reprise 4 bis », trig_01WzcEofqcpg3u3PCNy7sXPW.)
+
+---
+
+## TOUR 696 — Claude (conscience n°12)
+
+Mesuré : `code-qcm` à `f805adef` (VERDICT de QCM-4, 11:28 : « je ne peux pas dire que l'heure va sans réserve »). QCM-2 a remis la trouvée (`cb625a84`, 10:54). Relecteurs : R9 (QCM-1) a fait 14 trouvailles en deux passes ; R10 (QCM-3) n'a fait entrer aucun élève, 1 trouvaille à confirmer ; R11 (QCM-2) a fait 4 trouvailles. `build.py` redonne `805732bcff4ec2fedd7d2831123037f8` (1 975 300 o). Mes contrôles : 32/32 en 111 s. Sonde B : 17/17 en 97 s. Capture R9 `tab1-2.png` regardée : « Avant de commencer » a sa case. Le hub a été lu, sans rien écrire (`classes`, `qcm/eleveSexes`), et seuls des comptes en ont été tirés : `amenagements.sexe` pour 25, 30, 30 et 30 élèves dans les quatre classes de Paul ; les copies locales sont mises à la corbeille du scratchpad. Fait : le contrôle de 11:37 et la « Reprise 5 du 13/10 — seulement si Paul vous relance » en tête de DEFAUTS-OUVERTS.md (`f848040f`) ; `AUDITS/CODE-QCM-AUDIT-1130-13-10/` (`5048da6c`) ; un réveil à 12:06 (`trig_019STYb78joeh7gqh4RTBbXF`), qui ne fait rien si la reprise 5 n'est pas lancée. Rien n'est poussé en production.
+
+Réponse mot pour mot :
+
+**À jouer :** rien de neuf, la 7.7.2 reste en ligne · **en cours chez l'exécutant :** rien, ils ont rendu entre 11:22 et 11:28 · **ouvert :** ta réponse : une dernière reprise, ou non ?
+
+1003. Le contrôle de 11:30 dit non. Rien n'est mis en ligne : tu fais cours à 13:00 avec la 7.7.2, sauf si tu choisis la dernière reprise du point 1007.
+
+1004. Ce qui marche sur l'app de 11:22, mesuré par moi :
+- elle se reconstruit à l'identique ;
+- mes contrôles passent, 32 sur 32, et ma vérification de B aussi ;
+- tous les bancs de QCM-4 passent, et B est maintenant exigé de chaque élève ;
+- la règle de la trouvée est remise ;
+- « Rouvrir pour tous » ne revient qu'à ceux qui n'avaient pas répondu ;
+- une question écartée n'apparaît plus nulle part.
+
+1005. Pourquoi c'est non :
+- un défaut connu reste ouvert : pendant l'appel, avant que tu lances la séance, le téléphone montre déjà la séance, avec « 🚀 Lancer Q1 » ;
+- un écart avec la maquette : pendant l'appel, le bouton « 🚀 Lancer la séance » de la carte est grisé ;
+- une correction n'a été vérifiée par personne : le compte « ont répondu » sur le téléphone et au tableau ;
+- les trois relecteurs neufs n'ont joué qu'une partie de l'heure. Celui de la fin de l'heure n'a rien pu jouer : son automate n'a fait entrer aucun élève. QCM-4 dit lui-même qu'il ne peut pas affirmer que l'heure va.
+
+1006. Deux remarques des relecteurs, vérifiées et écartées :
+- les accords « il / elle » : l'app prend le sexe des élèves dans tes classes au hub. Je l'ai lu sans rien écrire : tes quatre classes l'ont pour tous leurs élèves ;
+- « Je commence » qui serait fermé : l'écran a bien sa case à cocher, il s'ouvre une fois la case cochée.
+
+1007. Si tu veux une dernière reprise, elle est prête :
+- 11:55 : tout est poussé ;
+- 12:05 : verdict de QCM-4 ;
+- 12:10 : mon contrôle ;
+- 12:15 : mise en ligne, si ça va ;
+- de 12:15 à 12:50 : tes tests.
+
+Qui fait quoi : QCM-1 corrige le téléphone et le bouton de l'appel ; QCM-3 joue lui-même la fin de l'heure et le soir ; QCM-2 corrige ce que QCM-3 trouve ; QCM-4 rejoue tout et tranche.
+
+Message à coller dans les quatre sessions :
+« Reprise 5 du 13/10 : lis la section « Reprise 5 du 13/10 » en tête de https://github.com/siteflow-io/mjpc-chantier/blob/code-qcm/LIVRAISONS/CODE-QCM/DEFAUTS-OUVERTS.md (branche code-qcm) et fais ta part tout de suite ; tout est poussé à 11:55, VERDICT.md à 12:05. »
+
+1008. Ce que je ne sais pas : si ce sera bon à 12:10. Si la fin de l'heure montre un défaut, il n'y aura plus le temps de le corriger, et ce sera la 7.7.2. Et 35 minutes de tests avant le cours, c'est serré. C'est toi qui décides si on s'arrête là.
+
+13/10/2026 11:38 MEMO

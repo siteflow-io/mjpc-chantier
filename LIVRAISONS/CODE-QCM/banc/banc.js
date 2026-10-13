@@ -169,6 +169,7 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
       const premier = (sess().s.premier || {})[qi] || etat().cote;
       J.v(premier === S.premierCote(qi), H1, "Q" + (qi + 1) + " : la moitié qui commence est celle du scénario (" + S.premierCote(qi) + ") — premier/<qi>", JSON.stringify({premier, etat: etat()}));
       // les deux tours, au rythme de l'app (deroule) : le passage, la réponse, B ; « ⏭️ Tour suivant » quand tous ont répondu au 1er tour de Q1
+      const bVoulus = new Set();   // ceux qui ont dit B à cette question, aux deux tours
       for(const tour of [1, 2]){
         tropLong();
         if(qi === 0){ await attendreBase(() => etat().ph === "passage" && etat().tour === tour, tour === 1 ? 3000 : 1500); await pause(300);
@@ -221,7 +222,7 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
         if(qi === 0 && tour === 1){ J.v(await cliquer(prof, /Tour suivant/), H2, "tous ont répondu : « ⏭️ Tour suivant » se clique (c-q1-tour1)");
           J.v(await attendreBase(() => etat().tour === 2 || etat().ph === "b", 4000), H1, "« ⏭️ Tour suivant » coupe le 1er tour (deroule passe au 2e tour, ou à B)", JSON.stringify(etat())); }
         // B : son temps fini (ou le tour coupé), chacun de ceux qui ont répondu dit si sa feuille dit la même chose que son clic ; au 1er tour, B peut venir pendant le 2e (deroule.bPour)
-        let bDits = 0; const bFaits = new Set();
+        let bDits = 0; const bFaits = new Set(), bRates = [];
         const finB = Date.now() + ((qi === 0 && tour === 1) ? 9 : (Q.reponse || 15) + 9) * 1000;
         while(Date.now() < finB && bFaits.size < repondus){
           await Promise.all(Object.entries(tabs).map(async ([n, p]) => { const t = TABS.find(x => x.n === n);
@@ -230,16 +231,19 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
               if(qi === 0 && tour === 2 && sl === "duvernay_michel") await scene("t-q1-b-michel", p, "tablette");
               const dit = S.ditB(S.pre(nomDeSlug(sl)), qi); bFaits.add(sl);
               if(dit === "rien") continue;
-              if(await cliquer(p, dit === "oui" ? /^Oui, la même chose$/ : /^Non, autre chose$/, cote)) bDits++;
+              if(await cliquer(p, dit === "oui" ? /^Oui, la même chose$/ : /^Non, autre chose$/, cote)){ bDits++; bVoulus.add(sl); } else bRates.push(nomDeSlug(sl));
             } }));
           if(qi === 0 && tour === 1 && etat().ph === "reponse" && etat().tour === 2 && bFaits.size === 0) await pause(150); else await pause(300);
         }
-        J.v(repondus > 0 && bDits >= repondus - (qi === 0 && tour === 1 ? 2 : 1), H2, "Q" + (qi + 1) + ", tour " + tour + " : B (« Oui, la même chose » / « Non, autre chose ») paraît à ceux qui ont répondu, et se dit", bDits + " B dits pour " + repondus + " réponses");
+        // sans tolérance (reprise 4, point 10) : chaque élève qui a répondu voit B ; chaque B manquant échoue, avec son nom
+        const sansB = [...ontRepondu].filter(sl => !bFaits.has(sl)).map(nomDeSlug);
+        J.v(repondus > 0 && sansB.length === 0 && bRates.length === 0, H2, "Q" + (qi + 1) + ", tour " + tour + " : B (« Oui, la même chose » / « Non, autre chose ») paraît à chacun de ceux qui ont répondu, et se dit", bDits + " B dits pour " + repondus + " réponses" + (sansB.length ? " ; sans B : " + sansB.join(", ") : "") + (bRates.length ? " ; B pas cliquable : " + bRates.join(", ") : ""));
       }
       // après B du 2e tour, la question se clôt d'elle-même ; sinon, « 🔒 Clore la question »
       if(!(await attendreBase(() => etat().ph === "close" && etat().qi === qi, 9000))){ J.v(await cliquer(prof, /Clore la question/), H2, "« 🔒 Clore la question » se clique"); await pause(600); }
       const nb = (sess().s.b || {})[qi] || {};
-      J.v(Object.keys(nb).length >= 20, H1, "Q" + (qi + 1) + " : les B des deux tours sont dans la base (b/<qi>/<eleve> = oui | non)", Object.keys(nb).length);
+      const bAbsents = [...bVoulus].filter(sl => nb[sl] === undefined).map(nomDeSlug);
+      J.v(bVoulus.size > 0 && bAbsents.length === 0, H1, "Q" + (qi + 1) + " : chaque B dit est dans la base (b/<qi>/<eleve> = oui | non)", Object.keys(nb).length + " dans la base pour " + bVoulus.size + " dits" + (bAbsents.length ? " ; absents : " + bAbsents.join(", ") : ""));
       J.v(etat().ph === "close" && etat().qi === qi, H1, "la base : deroule.ph = close", JSON.stringify(etat()));
       if(qi === 0){ await scene("t-q1-attente", tabJM, "tablette"); await scene("c-q1-close", prof, "console");
         J.v(/Attends la prochaine question/.test(await texte(tabJM)), H2, "les deux tours finis : « Attends la prochaine question » (t-q1-attente)", (await texte(tabJM)).slice(0, 160)); }

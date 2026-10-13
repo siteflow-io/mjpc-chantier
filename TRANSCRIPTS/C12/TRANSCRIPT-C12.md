@@ -21101,3 +21101,33 @@ Réponse mot pour mot :
 ## Note (13/10, 08:30) — le réveil « Audit QCM de 08:30 » est arrivé une seconde fois, à son heure prévue, après avoir été lancé à la main à 08:28
 
 Mesuré : rien de nouveau sur `code-qcm` depuis 08:14 (`e99c709c`, puis la ligne de la conscience `2f41d0e9`). L'audit et le verdict du tour 684 valent tels quels ; aucun message envoyé à Paul, pour ne pas lui répéter le même verdict.
+
+---
+
+## TOUR 685 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (13/10, 08:33) non il faut continuer. replanifie un controle à 9h.
+
+---
+
+## TOUR 685 — Claude (conscience n°12)
+
+Fait : « Reprise 2 du 13/10 » en tête de `DEFAUTS-OUVERTS.md` et une ligne en tête de `DEMANDES.md` (`f246cecc`) ; réveil « Contrôle QCM de 09:00 » (`trig_01EAo37SAtCx6G1roJKDeF8R`).
+
+Réponse mot pour mot :
+
+À jouer : coller la phrase du point 960 dans les quatre sessions · en cours chez l'exécutant : à relancer · ouvert : le contrôle de 09:00
+
+959. **D'accord, on continue.** Le contrôle est programmé à 09:00 ; mise en ligne à 09:15 au plus tard si ça va, sinon la 7.7.2 reste. Leur liste est écrite en tête de leur fichier : les huit défauts ouverts, dans l'ordre, le téléphone et « Rouvrir pour tous » d'abord. Ils poussent tout à 08:50 ; QCM-4 rejoue lui-même les six premiers par le geste et rend son verdict à 08:58.
+
+960. **Colle ceci dans chacune des quatre sessions**, tout de suite (elles se sont arrêtées à 08:30) :
+
+```
+Paul te relance : continue. Lis la section « Reprise 2 du 13/10 » en tête de LIVRAISONS/CODE-QCM/DEFAUTS-OUVERTS.md sur code-qcm et applique-la pour tes points, d'une traite ; tout est poussé à 08:50 au plus tard (QCM-4 : VERDICT.md à 08:58).
+```
+
+961. **Le temps est très court** : 15 minutes de corrections, alors que le dernier tour en a pris 50. Je ne sais pas si ça tiendra ; le contrôle de 09:00 le dira, tranché.
+
+13/10/2026 08:35 MEMO

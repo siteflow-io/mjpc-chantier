@@ -1,0 +1,10 @@
+const c=P.console; let r="";
+await c.getByRole("button",{name:"🔓 Rouvrir pour tous"}).click(); await c.waitForTimeout(800);
+r+="DLG:"+(await btns(c)).slice(-200);
+const ok=c.getByRole("button",{name:/Rouvrir|Confirmer|Oui/}).last(); 
+await c.waitForTimeout(1500);
+await cap(c,"c10-rouvrir-tous"); await cap(P.t1,"tab1-tous"); await cap(P.t2,"tab2-tous"); await cap(P.t3,"tab3-tous"); await cap(P.tab,"b10"); await cap(P.tel,"t10");
+r+="\nT1:"+(await txt(P.t1)).replace(/\n/g," ").slice(0,500)+"\nT2:"+(await txt(P.t2)).replace(/\n/g," ").slice(0,500);
+const ct=await txt(c); r+="\nCON:"+ct.slice(ct.indexOf("QUESTION\n")-60,ct.indexOf("QUESTION\n")+60).replace(/\n/g," ");
+r+="\nTEL:"+(await txt(P.tel)).slice(40,200).replace(/\n/g," ")+"\nBOARD:"+(await txt(P.tab)).slice(0,200).replace(/\n/g," ");
+return r;

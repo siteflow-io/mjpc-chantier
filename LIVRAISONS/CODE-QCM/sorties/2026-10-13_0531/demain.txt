@@ -1,0 +1,144 @@
+L'heure de demain (QCM-4 · BANC) — 4 ESSAI, l'évaluation de 4e collée, 11 questions — /home/user/mjpc-chantier/LIVRAISONS/CODE-QCM/evaluation-qcm.staging.html — 2026-10-13T03:43:48.806Z
+Durée : 625 s (10 min 25 s) · vérifications : 107 · échecs : 0
+
+
+── D.1 Le JSON de l'évaluation de 4e collé, « Lancer » ouvert (2 s)
+  ok     [QCM-3 · SOIR] « ➕ Nouvelle évaluation » : le JSON se colle
+  ok     [QCM-3 · SOIR] l'évaluation collée est dans la base : 11 questions, chapitre 4e-ch1, ses compétences et ses temps
+  ok     [QCM-2 · HEURE] Pilotage classe : 4 ESSAI se choisit
+  ok     [QCM-2 · HEURE] l'évaluation de 4e se choisit
+  ok     [QCM-2 · HEURE] « 🚀 Lancer la séance » ouvert : l'évaluation est complète (chapitre sans fiche au hub, cadrage 741)
+  ok     [QCM-2 · HEURE] « ⏱️ Durée estimée » pour 11 questions
+  ok     [QCM-1 · SOCLE] la séance de 4e est lancée (sessionActive/4 ESSAI)
+  ok     [QCM-1 · SOCLE] 5 présents : trois tablettes, deux partagées et une pour un élève seul
+
+── D.2 L'entrée et la première attestation (12 s)
+  ok     [QCM-1 · SOCLE] les 5 présents entrés et attestés (attest/1)
+
+── D.3 Question 1 / 11 (23 s)
+  ok     [QCM-2 · HEURE] « ▶️ Lancer Q1 »
+  ok     [QCM-2 · HEURE] Q1 sur la tablette 1
+  ok     [QCM-2 · HEURE] la tablette compte « Question 1 / 11 »
+  ok     [QCM-2 · HEURE] Q1, tour 1 : B se dit, son temps fini
+  ok     [QCM-2 · HEURE] Q1, tour 2 : B se dit, son temps fini
+  ok     [QCM-2 · HEURE] Q1 : les 5 présents répondent, chacun à son tour (les deux moitiés, et l'élève seul)
+
+── D.3 Question 2 / 11 (73 s)
+  ok     [QCM-2 · HEURE] « ▶️ Lancer Q2 »
+  ok     [QCM-2 · HEURE] Q2 sur la tablette 1
+  ok     [QCM-2 · HEURE] la tablette compte « Question 2 / 11 »
+  ok     [QCM-2 · HEURE] Q2, tour 1 : B se dit, son temps fini
+  ok     [QCM-2 · HEURE] Q2, tour 2 : B se dit, son temps fini
+  ok     [QCM-2 · HEURE] Q2 : les 5 présents répondent, chacun à son tour (les deux moitiés, et l'élève seul)
+
+── D.3 Question 3 / 11 (123 s)
+  ok     [QCM-2 · HEURE] « ▶️ Lancer Q3 »
+  ok     [QCM-2 · HEURE] Q3 sur la tablette 1
+  ok     [QCM-2 · HEURE] la tablette compte « Question 3 / 11 »
+  ok     [QCM-2 · HEURE] Q3, tour 1 : B se dit, son temps fini
+  ok     [QCM-2 · HEURE] Q3, tour 2 : B se dit, son temps fini
+  ok     [QCM-2 · HEURE] Q3 : les 5 présents répondent, chacun à son tour (les deux moitiés, et l'élève seul)
+
+── D.3 Question 4 / 11 (174 s)
+  ok     [QCM-2 · HEURE] « ▶️ Lancer Q4 »
+  ok     [QCM-2 · HEURE] Q4 sur la tablette 1
+  ok     [QCM-2 · HEURE] la tablette compte « Question 4 / 11 »
+  ok     [QCM-2 · HEURE] Q4, tour 1 : B se dit, son temps fini
+  ok     [QCM-2 · HEURE] Q4, tour 2 : B se dit, son temps fini
+  ok     [QCM-2 · HEURE] Q4 : les 5 présents répondent, chacun à son tour (les deux moitiés, et l'élève seul)
+
+── D.3 Question 5 / 11 (224 s)
+  ok     [QCM-2 · HEURE] « ▶️ Lancer Q5 »
+  ok     [QCM-2 · HEURE] Q5 sur la tablette 1
+  ok     [QCM-2 · HEURE] la tablette compte « Question 5 / 11 »
+  ok     [QCM-2 · HEURE] Q5, tour 1 : B se dit, son temps fini
+  ok     [QCM-2 · HEURE] Q5, tour 2 : B se dit, son temps fini
+  ok     [QCM-2 · HEURE] Q5 : les 5 présents répondent, chacun à son tour (les deux moitiés, et l'élève seul)
+
+── D.3 Question 6 / 11 (274 s)
+  ok     [QCM-2 · HEURE] « ▶️ Lancer Q6 »
+  ok     [QCM-2 · HEURE] Q6 sur la tablette 1
+  ok     [QCM-2 · HEURE] la tablette compte « Question 6 / 11 »
+  ok     [QCM-2 · HEURE] Q6, tour 1 : B se dit, son temps fini
+  ok     [QCM-2 · HEURE] Q6, tour 2 : B se dit, son temps fini
+  ok     [QCM-2 · HEURE] Q6 : les 5 présents répondent, chacun à son tour (les deux moitiés, et l'élève seul)
+
+── D.3 Question 7 / 11 (324 s)
+  ok     [QCM-2 · HEURE] « ▶️ Lancer Q7 »
+  ok     [QCM-2 · HEURE] Q7 sur la tablette 1
+  ok     [QCM-2 · HEURE] la tablette compte « Question 7 / 11 »
+  ok     [QCM-2 · HEURE] Q7, tour 1 : B se dit, son temps fini
+  ok     [QCM-2 · HEURE] Q7, tour 2 : B se dit, son temps fini
+  ok     [QCM-2 · HEURE] Q7 : les 5 présents répondent, chacun à son tour (les deux moitiés, et l'élève seul)
+
+── D.3 Question 8 / 11 (374 s)
+  ok     [QCM-2 · HEURE] « ▶️ Lancer Q8 »
+  ok     [QCM-2 · HEURE] Q8 sur la tablette 1
+  ok     [QCM-2 · HEURE] la tablette compte « Question 8 / 11 »
+  ok     [QCM-2 · HEURE] Q8, tour 1 : B se dit, son temps fini
+  ok     [QCM-2 · HEURE] Q8, tour 2 : B se dit, son temps fini
+  ok     [QCM-2 · HEURE] Q8 : les 5 présents répondent, chacun à son tour (les deux moitiés, et l'élève seul)
+
+── D.3 Question 9 / 11 (424 s)
+  ok     [QCM-2 · HEURE] « ▶️ Lancer Q9 »
+  ok     [QCM-2 · HEURE] Q9 sur la tablette 1
+  ok     [QCM-2 · HEURE] la tablette compte « Question 9 / 11 »
+  ok     [QCM-2 · HEURE] Q9, tour 1 : B se dit, son temps fini
+  ok     [QCM-2 · HEURE] Q9, tour 2 : B se dit, son temps fini
+  ok     [QCM-2 · HEURE] Q9 : les 5 présents répondent, chacun à son tour (les deux moitiés, et l'élève seul)
+
+── D.3 Question 10 / 11 (474 s)
+  ok     [QCM-2 · HEURE] « ▶️ Lancer Q10 »
+  ok     [QCM-2 · HEURE] Q10 sur la tablette 1
+  ok     [QCM-2 · HEURE] la tablette compte « Question 10 / 11 »
+  ok     [QCM-2 · HEURE] Q10, tour 1 : B se dit, son temps fini
+  ok     [QCM-2 · HEURE] Q10, tour 2 : B se dit, son temps fini
+  ok     [QCM-2 · HEURE] Q10 : les 5 présents répondent, chacun à son tour (les deux moitiés, et l'élève seul)
+
+── D.3 Question 11 / 11 (524 s)
+  ok     [QCM-2 · HEURE] « ▶️ Lancer Q11 »
+  ok     [QCM-2 · HEURE] Q11 sur la tablette 1
+  ok     [QCM-2 · HEURE] la tablette compte « Question 11 / 11 »
+  ok     [QCM-2 · HEURE] Q11, tour 1 : B se dit, son temps fini
+  ok     [QCM-2 · HEURE] Q11, tour 2 : B se dit, son temps fini
+  ok     [QCM-2 · HEURE] Q11 : les 5 présents répondent, chacun à son tour (les deux moitiés, et l'élève seul)
+  ok     [QCM-1 · SOCLE] les réponses des 11 questions dans la base
+  ok     [QCM-2 · HEURE] l'élève seul répond au 1er tour, puis il attend : ses choix ne se rouvrent pas au 2e tour (cadrage, point 27)
+
+── D.4 L'estimation, la seconde attestation, la correction des 11 (575 s)
+  ok     [QCM-2 · HEURE] « 📊 Lancer l'autoévaluation »
+  ok     [QCM-2 · HEURE] « 📝 Lancer la correction »
+  ok     [QCM-1 · SOCLE] tous ont coché la seconde attestation : la correction commence (c-attest2)
+  ok     [QCM-1 · SOCLE] ordreCorr : les 11 questions, de la plus ratée à la mieux réussie
+  ok     [QCM-2 · HEURE] correction de Q11 : toutes les feuilles lues, « 💡 Révéler » s'ouvre
+  ok     [QCM-2 · HEURE] correction de Q6 : toutes les feuilles lues, « 💡 Révéler » s'ouvre
+  ok     [QCM-2 · HEURE] correction de Q8 : toutes les feuilles lues, « 💡 Révéler » s'ouvre
+  ok     [QCM-2 · HEURE] correction de Q9 : toutes les feuilles lues, « 💡 Révéler » s'ouvre
+  ok     [QCM-2 · HEURE] correction de Q10 : toutes les feuilles lues, « 💡 Révéler » s'ouvre
+  ok     [QCM-2 · HEURE] correction de Q2 : toutes les feuilles lues, « 💡 Révéler » s'ouvre
+  ok     [QCM-2 · HEURE] correction de Q3 : toutes les feuilles lues, « 💡 Révéler » s'ouvre
+  ok     [QCM-2 · HEURE] correction de Q4 : toutes les feuilles lues, « 💡 Révéler » s'ouvre
+  ok     [QCM-2 · HEURE] correction de Q5 : toutes les feuilles lues, « 💡 Révéler » s'ouvre
+  ok     [QCM-2 · HEURE] correction de Q7 : toutes les feuilles lues, « 💡 Révéler » s'ouvre
+  ok     [QCM-2 · HEURE] correction de Q1 : toutes les feuilles lues, « 💡 Révéler » s'ouvre
+  ok     [QCM-1 · SOCLE] « Trouvée au dernier moment » : Lina à Q2, Paul à Q1, et personne d'autre
+
+── D.5 La co-évaluation, le bilan des 5 (609 s)
+  ok     [QCM-2 · HEURE] « 🤝 Ouvrir la co-évaluation, puis leur bilan »
+  ok     [QCM-2 · HEURE] tous ont répondu (l'élève seul n'a pas de co-évaluation) : « 🏁 Afficher leur bilan aux élèves » s'ouvre
+  ok     [QCM-2 · HEURE] le bilan de chacun des 5 dit sa note sur les 11 questions (la note, c'est la feuille ; une seule « Trouvée au dernier moment »)
+  ok     [QCM-1 · SOCLE] la séance de 4e terminée (etat = terminee, plus active)
+
+── D.6 Le soir de la 4e : Résultats, rendre les copies, le PDF (615 s)
+  ok     [QCM-3 · SOIR] Résultats : la séance de 4e, sous 4 ESSAI
+  ok     [QCM-3 · SOIR] le tableau de la séance : les 5 présents
+  ok     [QCM-3 · SOIR] Iris, absente, est dite absente
+  ok     [QCM-3 · SOIR] les feuilles lues : « rendre les copies ▸ »
+  ok     [QCM-3 · SOIR] copies rendues (copies.rendues)
+  ok     [QCM-3 · SOIR] le PDF « notes et compétences » s'ouvre (11 questions)
+
+── D.7 Aucune erreur de page, aucune boîte système (624 s)
+  ok     [QCM-1 · SOCLE] page « console » sans erreur ni boîte système
+  ok     [QCM-1 · SOCLE] page « tablette-4e-3 » sans erreur ni boîte système
+  ok     [QCM-1 · SOCLE] page « tablette-4e-1 » sans erreur ni boîte système
+  ok     [QCM-1 · SOCLE] page « tablette-4e-2 » sans erreur ni boîte système

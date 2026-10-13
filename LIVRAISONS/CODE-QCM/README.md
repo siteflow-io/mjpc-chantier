@@ -8,3 +8,11 @@ Créé par la conscience n°12 le 12/10/2026 (tour 672), depuis la branche `maqu
 - `banc-maquette/` : le banc de la maquette, copié pour mémoire ; le banc de l'app est `banc/`, écrit par QCM-4.
 - `DEMANDES.md`, `DEFAUTS-OUVERTS.md`, `CONTRAT-CHANGEMENTS.md` : les fichiers communs (COMMUN §1 à §3).
 - La maquette elle-même reste dans `MANDATS/MAQUETTE-QCM-COMPLETE/` : c'est la référence de la fidélité.
+
+## Livraison du 13/10/2026 à 06:30 (QCM-4 · BANC, COMMUN §5)
+
+- `evaluation-qcm.staging.html` et `evaluation-qcm.staging.html.md5` : l'app assemblée par `build.py` depuis `src/` sur `code-qcm` à `99c4ca7`, md5 `1fed29e0977813429d2dca767ff5e08d`.
+- `src/`, `build.py` : ses sources.
+- `banc/` : le banc commun (console, tablettes partagées, téléphone, tableau, sur le faux hub, par le geste) ; il se rejoue par `bash banc/assembler.sh` (12 min) ; mode d'emploi dans `banc/README.md`, écarts de fidélité nommés dans `banc/ecarts-maquette.json`, relecteurs neufs dans `banc/relecteurs/`.
+- `sorties/2026-10-13_0531/` : le banc final, ses sorties avec leurs durées et les captures de l'heure à chaque phase et sur chaque appareil (`captures/`, `captures-demain/`) ; les assemblages de la nuit dans les autres dossiers de `sorties/`.
+- `VERDICT.md` : le verdict par partie (l'heure, le soir, le reste) ; `DEFAUTS-OUVERTS.md` : les défauts encore ouverts, par propriétaire.

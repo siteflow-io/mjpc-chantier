@@ -1,0 +1,1330 @@
+{
+ "duree": 341,
+ "app": "/home/user/mjpc-chantier/LIVRAISONS/CODE-QCM/evaluation-qcm.staging.html",
+ "journal": [
+  {
+   "section": "1.1 Avant l'heure : la console, « 🚀 Lancer la séance », l'appel",
+   "t": 2
+  },
+  {
+   "partie": "1.1 Avant l'heure : la console, « 🚀 Lancer la séance », l'appel",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "la console s'ouvre (?mode=prof, l'adresse de la 7.7.1)"
+  },
+  {
+   "partie": "1.1 Avant l'heure : la console, « 🚀 Lancer la séance », l'appel",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Pilotage classe : la classe 3 ESSAI se choisit"
+  },
+  {
+   "partie": "1.1 Avant l'heure : la console, « 🚀 Lancer la séance », l'appel",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Pilotage classe : l'évaluation d'essai se choisit (complète : chapitre 3e-ch1, temps, compétences)"
+  },
+  {
+   "partie": "1.1 Avant l'heure : la console, « 🚀 Lancer la séance », l'appel",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "« 🚀 Lancer la séance » ouvert pour une évaluation complète"
+  },
+  {
+   "partie": "1.1 Avant l'heure : la console, « 🚀 Lancer la séance », l'appel",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "l'appel : un clic sur YVON Adam le marque absent"
+  },
+  {
+   "partie": "1.1 Avant l'heure : la console, « 🚀 Lancer la séance », l'appel",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "« 🚀 Lancer la séance » écrit une séance active (qcm/sessionActive/<classeSlug>)"
+  },
+  {
+   "partie": "1.1 Avant l'heure : la console, « 🚀 Lancer la séance », l'appel",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "la séance a son état (deroule : {ph, qi, tour, cote, depuis, duree}, contrat C1) et etat = « en_cours » comme la 7.7.1"
+  },
+  {
+   "partie": "1.1 Avant l'heure : la console, « 🚀 Lancer la séance », l'appel",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "la séance a ses places (places/<n>/{g, d}) : 12 tablettes pour 24 présents"
+  },
+  {
+   "partie": "1.1 Avant l'heure : la console, « 🚀 Lancer la séance », l'appel",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "Adam est absent dans la base (absents)"
+  },
+  {
+   "partie": "1.1 Avant l'heure : la console, « 🚀 Lancer la séance », l'appel",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "chaque présent a une place, une seule ; Adam, absent, n'en a pas"
+  },
+  {
+   "partie": "1.1 Avant l'heure : la console, « 🚀 Lancer la séance », l'appel",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "les binômes d'après le QCM précédent (CH1) : Julien et Michel sur la même tablette, comme dans la maquette (c-lancer)"
+  },
+  {
+   "partie": "1.1 Avant l'heure : la console, « 🚀 Lancer la séance », l'appel",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "Adam absent : son binôme Théo est mis avec Lou, restée seule (c-appel)"
+  },
+  {
+   "partie": "1.1 Avant l'heure : la console, « 🚀 Lancer la séance », l'appel",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "24 présents : 12 tablettes à deux, aucun élève seul (c-appel : le binôme d'un absent est réapparié)"
+  },
+  {
+   "section": "1.2 Le tableau et le téléphone",
+   "t": 10
+  },
+  {
+   "partie": "1.2 Le tableau et le téléphone",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "le tableau s'ouvre (?mode=prof&view=board)"
+  },
+  {
+   "partie": "1.2 Le tableau et le téléphone",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "le téléphone montre la séance en cours"
+  },
+  {
+   "section": "1.3 L'entrée : les 12 tablettes partagées, au code, au clavier de l'app",
+   "t": 14
+  },
+  {
+   "partie": "1.3 L'entrée : les 12 tablettes partagées, au code, au clavier de l'app",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "une tablette demande « Combien êtes-vous sur cette tablette ? »"
+  },
+  {
+   "partie": "1.3 L'entrée : les 12 tablettes partagées, au code, au clavier de l'app",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "une séance active : la tablette arrive sur « Combien êtes-vous ? » sans demander la classe (t-combien, comme la maquette)"
+  },
+  {
+   "partie": "1.3 L'entrée : les 12 tablettes partagées, au code, au clavier de l'app",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "un code faux : « Ce code ne correspond pas. Vérifie tes 4 chiffres. »"
+  },
+  {
+   "partie": "1.3 L'entrée : les 12 tablettes partagées, au code, au clavier de l'app",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "les 24 élèves entrés se voient sur la console, sans rechargement"
+  },
+  {
+   "partie": "1.3 L'entrée : les 12 tablettes partagées, au code, au clavier de l'app",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "les 24 entrées sont dans la base (entres/<eleve>, ou presence de la 7.7.1)"
+  },
+  {
+   "section": "1.4 La première attestation, puis « prêt »",
+   "t": 31
+  },
+  {
+   "partie": "1.4 La première attestation, puis « prêt »",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "les 24 premières attestations sont dans la base (attest/1/<eleve>/{lignes, fini})"
+  },
+  {
+   "partie": "1.4 La première attestation, puis « prêt »",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "la console montre chaque élève prêt"
+  },
+  {
+   "section": "1.5 Question 1",
+   "t": 42
+  },
+  {
+   "partie": "1.5 Question 1",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "« ▶️ Lancer Q1 » se clique"
+  },
+  {
+   "partie": "1.5 Question 1",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "Q1 : la base passe en réflexion (deroule.ph = reflexion, deroule.qi = 0)"
+  },
+  {
+   "partie": "1.5 Question 1",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "l'énoncé de Q1 sur la tablette, sans rechargement"
+  },
+  {
+   "partie": "1.5 Question 1",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "l'énoncé de Q1 au tableau, sans rechargement"
+  },
+  {
+   "partie": "1.5 Question 1",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "le téléphone suit Q1"
+  },
+  {
+   "partie": "1.5 Question 1",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "réflexion : l'énoncé sans les choix (t-q1-reflexion)"
+  },
+  {
+   "partie": "1.5 Question 1",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "Q1 : la moitié qui commence est celle du scénario (g) — premier/<qi>"
+  },
+  {
+   "partie": "1.5 Question 1",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "le passage : « Pose ton stylo, … À toi dans 3 secondes » (t-q1-passage1)"
+  },
+  {
+   "partie": "1.5 Question 1",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "Q1, tour 1 : la base passe en réponse (deroule.ph = reponse, tour 1)"
+  },
+  {
+   "partie": "1.5 Question 1",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q1, tour 1 : la tuile de qui répond encore dit « ✋ répond… » (c-q1-tour1)"
+  },
+  {
+   "partie": "1.5 Question 1",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q1, 1er tour : sur chaque tablette, la moitié qui a la main a ses choix ouverts, et répond"
+  },
+  {
+   "partie": "1.5 Question 1",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "un champ de la console garde sa valeur et le curseur pendant que 12 tablettes répondent (règle du 04/10)"
+  },
+  {
+   "partie": "1.5 Question 1",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "la garde de « 🛑 Terminer la séance » : « Annuler » (c-terminer)"
+  },
+  {
+   "partie": "1.5 Question 1",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "Q1, 1er tour : les réponses sont dans la base (reponses/0/<eleve>)"
+  },
+  {
+   "partie": "1.5 Question 1",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "une réponse a la forme de la 7.7.1, plus tour et ms (contrat §3.1)"
+  },
+  {
+   "partie": "1.5 Question 1",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "tous ont répondu : « ⏭️ Tour suivant » se clique (c-q1-tour1)"
+  },
+  {
+   "partie": "1.5 Question 1",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "« ⏭️ Tour suivant » coupe le 1er tour (deroule passe au 2e tour, ou à B)"
+  },
+  {
+   "partie": "1.5 Question 1",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q1, tour 1 : B (« Oui, la même chose » / « Non, autre chose ») paraît à ceux qui ont répondu, et se dit"
+  },
+  {
+   "partie": "1.5 Question 1",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "Q1, tour 2 : la base passe en réponse (deroule.ph = reponse, tour 2)"
+  },
+  {
+   "partie": "1.5 Question 1",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q1, tour 2 : la tuile de qui répond encore dit « ✋ répond… » (c-q1-tour2)"
+  },
+  {
+   "partie": "1.5 Question 1",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q1, 2e tour : sur chaque tablette, la moitié qui a la main a ses choix ouverts, et répond"
+  },
+  {
+   "partie": "1.5 Question 1",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q1, tour 2 : B (« Oui, la même chose » / « Non, autre chose ») paraît à ceux qui ont répondu, et se dit"
+  },
+  {
+   "partie": "1.5 Question 1",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "Q1 : les B des deux tours sont dans la base (b/<qi>/<eleve> = oui | non)"
+  },
+  {
+   "partie": "1.5 Question 1",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "la base : deroule.ph = close"
+  },
+  {
+   "partie": "1.5 Question 1",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "les deux tours finis : « Attends la prochaine question » (t-q1-attente)"
+  },
+  {
+   "section": "1.6 Question 2",
+   "t": 93
+  },
+  {
+   "partie": "1.6 Question 2",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "« ▶️ Lancer Q2 » se clique"
+  },
+  {
+   "partie": "1.6 Question 2",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "Q2 : la base passe en réflexion (deroule.ph = reflexion, deroule.qi = 1)"
+  },
+  {
+   "partie": "1.6 Question 2",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "l'énoncé de Q2 sur la tablette, sans rechargement"
+  },
+  {
+   "partie": "1.6 Question 2",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "l'énoncé de Q2 au tableau, sans rechargement"
+  },
+  {
+   "partie": "1.6 Question 2",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "le téléphone suit Q2"
+  },
+  {
+   "partie": "1.6 Question 2",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "« ✋ Autoriser la réponse » pendant la réflexion"
+  },
+  {
+   "partie": "1.6 Question 2",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "Q2 : la moitié qui commence est celle du scénario (d) — premier/<qi>"
+  },
+  {
+   "partie": "1.6 Question 2",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "Q2, tour 1 : la base passe en réponse (deroule.ph = reponse, tour 1)"
+  },
+  {
+   "partie": "1.6 Question 2",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q2, 1er tour : sur chaque tablette, la moitié qui a la main a ses choix ouverts, et répond"
+  },
+  {
+   "partie": "1.6 Question 2",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q2, tour 1 : B (« Oui, la même chose » / « Non, autre chose ») paraît à ceux qui ont répondu, et se dit"
+  },
+  {
+   "partie": "1.6 Question 2",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "Q2, tour 2 : la base passe en réponse (deroule.ph = reponse, tour 2)"
+  },
+  {
+   "partie": "1.6 Question 2",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q2, 2e tour : sur chaque tablette, la moitié qui a la main a ses choix ouverts, et répond"
+  },
+  {
+   "partie": "1.6 Question 2",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q2, tour 2 : B (« Oui, la même chose » / « Non, autre chose ») paraît à ceux qui ont répondu, et se dit"
+  },
+  {
+   "partie": "1.6 Question 2",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "Q2 : les B des deux tours sont dans la base (b/<qi>/<eleve> = oui | non)"
+  },
+  {
+   "partie": "1.6 Question 2",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "la base : deroule.ph = close"
+  },
+  {
+   "partie": "1.6 Question 2",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q2 close : Théo n'a pas répondu, la console le dit (c-q2-close)"
+  },
+  {
+   "partie": "1.6 Question 2",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "« 🔓 Rouvrir pour un élève » → « 🔓 Rouvrir pour Théo »"
+  },
+  {
+   "partie": "1.6 Question 2",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "la base : la question rouverte pour Théo seul (deroule.pour = chevallier_theo)"
+  },
+  {
+   "partie": "1.6 Question 2",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "la base : rouverts/1 = chevallier_theo (contrat C3 : une fois par question)"
+  },
+  {
+   "partie": "1.6 Question 2",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "la moitié de Théo rouverte : ses choix s'ouvrent, il répond (t-rouvrir-un)"
+  },
+  {
+   "partie": "1.6 Question 2",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Lou, à côté, porte le voile : ses choix restent fermés"
+  },
+  {
+   "partie": "1.6 Question 2",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "la réponse de Théo à Q2 est dans la base"
+  },
+  {
+   "partie": "1.6 Question 2",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "après « 🔓 Rouvrir pour Théo », la fenêtre se ferme : la console revient à la question close (c-rouvrir-un → c-q2-close)"
+  },
+  {
+   "partie": "1.6 Question 2",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "« Rouvrir pour un élève » ne liste que ceux qui n'ont pas répondu (Julien a répondu à Q2)"
+  },
+  {
+   "section": "1.7 Question 3",
+   "t": 178
+  },
+  {
+   "partie": "1.7 Question 3",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "« ▶️ Lancer Q3 » se clique"
+  },
+  {
+   "partie": "1.7 Question 3",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "Q3 : la base passe en réflexion (deroule.ph = reflexion, deroule.qi = 2)"
+  },
+  {
+   "partie": "1.7 Question 3",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "l'énoncé de Q3 sur la tablette, sans rechargement"
+  },
+  {
+   "partie": "1.7 Question 3",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "l'énoncé de Q3 au tableau, sans rechargement"
+  },
+  {
+   "partie": "1.7 Question 3",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "le téléphone suit Q3"
+  },
+  {
+   "partie": "1.7 Question 3",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "« ✋ Autoriser la réponse » pendant la réflexion"
+  },
+  {
+   "partie": "1.7 Question 3",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "Q3 : la moitié qui commence est celle du scénario (g) — premier/<qi>"
+  },
+  {
+   "partie": "1.7 Question 3",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "Q3, tour 1 : la base passe en réponse (deroule.ph = reponse, tour 1)"
+  },
+  {
+   "partie": "1.7 Question 3",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q3, 1er tour : sur chaque tablette, la moitié qui a la main a ses choix ouverts, et répond"
+  },
+  {
+   "partie": "1.7 Question 3",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q3, tour 1 : B (« Oui, la même chose » / « Non, autre chose ») paraît à ceux qui ont répondu, et se dit"
+  },
+  {
+   "partie": "1.7 Question 3",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "Q3, tour 2 : la base passe en réponse (deroule.ph = reponse, tour 2)"
+  },
+  {
+   "partie": "1.7 Question 3",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q3, 2e tour : sur chaque tablette, la moitié qui a la main a ses choix ouverts, et répond"
+  },
+  {
+   "partie": "1.7 Question 3",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q3, tour 2 : B (« Oui, la même chose » / « Non, autre chose ») paraît à ceux qui ont répondu, et se dit"
+  },
+  {
+   "partie": "1.7 Question 3",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "Q3 : les B des deux tours sont dans la base (b/<qi>/<eleve> = oui | non)"
+  },
+  {
+   "partie": "1.7 Question 3",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "la base : deroule.ph = close"
+  },
+  {
+   "partie": "1.7 Question 3",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "« ✅ Dernière question close — lance l'autoévaluation » (c-q3-close)"
+  },
+  {
+   "section": "1.8 L'estimation, la seconde attestation",
+   "t": 226
+  },
+  {
+   "partie": "1.8 L'estimation, la seconde attestation",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "« 📊 Lancer l'autoévaluation » se clique"
+  },
+  {
+   "partie": "1.8 L'estimation, la seconde attestation",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "la base : etat.ph = estim"
+  },
+  {
+   "partie": "1.8 L'estimation, la seconde attestation",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "l'estimation : « Combien de bonnes réponses penses-tu avoir ? … » (t-estim)"
+  },
+  {
+   "partie": "1.8 L'estimation, la seconde attestation",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "les 22 estimations sont dans la base (Jade et Enzo n'en font pas)"
+  },
+  {
+   "partie": "1.8 L'estimation, la seconde attestation",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "« 📝 Lancer la correction » se clique"
+  },
+  {
+   "partie": "1.8 L'estimation, la seconde attestation",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "seconde attestation en cours : « 🔒 ▶️ Commencer la correction » fermé, « La correction commence quand les 24 présents ont coché… » (c-attest2)"
+  },
+  {
+   "partie": "1.8 L'estimation, la seconde attestation",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "les 24 secondes attestations dans la base (attest/2)"
+  },
+  {
+   "partie": "1.8 L'estimation, la seconde attestation",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "tous ont coché la seconde attestation : la correction commence (deroule.ph = lecture), comme le dit c-attest2"
+  },
+  {
+   "partie": "1.8 L'estimation, la seconde attestation",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "l'ordre de la correction, de la plus ratée à la mieux réussie : Q2, Q3, Q1 (ordreCorr)"
+  },
+  {
+   "section": "1.9 La correction : la lecture de la feuille du voisin, « 💡 Révéler », « Trouvée au dernier moment », le point d'autonomie",
+   "t": 239
+  },
+  {
+   "partie": "1.9 La correction : la lecture de la feuille du voisin, « 💡 Révéler », « Trouvée au dernier moment », le point d'autonomie",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "la correction montre la question 2 sur la tablette"
+  },
+  {
+   "partie": "1.9 La correction : la lecture de la feuille du voisin, « 💡 Révéler », « Trouvée au dernier moment », le point d'autonomie",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "« 🔒 Révéler » fermé tant qu'une feuille n'est pas lue"
+  },
+  {
+   "partie": "1.9 La correction : la lecture de la feuille du voisin, « 💡 Révéler », « Trouvée au dernier moment », le point d'autonomie",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "Q2 : les 24 lectures dans la base (lectures/<qi>/<eleve> = {choix, par, ms})"
+  },
+  {
+   "partie": "1.9 La correction : la lecture de la feuille du voisin, « 💡 Révéler », « Trouvée au dernier moment », le point d'autonomie",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "« 💡 Révéler » s'ouvre quand toutes les feuilles sont lues"
+  },
+  {
+   "partie": "1.9 La correction : la lecture de la feuille du voisin, « 💡 Révéler », « Trouvée au dernier moment », le point d'autonomie",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "la base : Q2 dans revelees"
+  },
+  {
+   "partie": "1.9 La correction : la lecture de la feuille du voisin, « 💡 Révéler », « Trouvée au dernier moment », le point d'autonomie",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "Q2 : « Trouvée au dernier moment » exactement pour la feuille fausse et la tablette juste, une fois par évaluation (trouvee/<eleve>)"
+  },
+  {
+   "partie": "1.9 La correction : la lecture de la feuille du voisin, « 💡 Révéler », « Trouvée au dernier moment », le point d'autonomie",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "la moitié de Julien dit « Trouvée au dernier moment » (t-corr-q2-apres)"
+  },
+  {
+   "partie": "1.9 La correction : la lecture de la feuille du voisin, « 💡 Révéler », « Trouvée au dernier moment », le point d'autonomie",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "un clic sur FOUCHER Hugo ouvre sa fenêtre (c-autonomie)"
+  },
+  {
+   "partie": "1.9 La correction : la lecture de la feuille du voisin, « 💡 Révéler », « Trouvée au dernier moment », le point d'autonomie",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "« ⛔ Retirer le point d'autonomie »"
+  },
+  {
+   "partie": "1.9 La correction : la lecture de la feuille du voisin, « 💡 Révéler », « Trouvée au dernier moment », le point d'autonomie",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "la garde : « ⛔ Retirer le point d'autonomie »"
+  },
+  {
+   "partie": "1.9 La correction : la lecture de la feuille du voisin, « 💡 Révéler », « Trouvée au dernier moment », le point d'autonomie",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "la base : autonomie/foucher_hugo = {retire: true, ms, quand: heure}"
+  },
+  {
+   "partie": "1.9 La correction : la lecture de la feuille du voisin, « 💡 Révéler », « Trouvée au dernier moment », le point d'autonomie",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "au téléphone, un clic sur Hugo : son point d'autonomie (p-autonomie)"
+  },
+  {
+   "partie": "1.9 La correction : la lecture de la feuille du voisin, « 💡 Révéler », « Trouvée au dernier moment », le point d'autonomie",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "« Question suivante → » se clique"
+  },
+  {
+   "partie": "1.9 La correction : la lecture de la feuille du voisin, « 💡 Révéler », « Trouvée au dernier moment », le point d'autonomie",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "la correction montre la question 3 sur la tablette"
+  },
+  {
+   "partie": "1.9 La correction : la lecture de la feuille du voisin, « 💡 Révéler », « Trouvée au dernier moment », le point d'autonomie",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "Q3 : les 24 lectures dans la base (lectures/<qi>/<eleve> = {choix, par, ms})"
+  },
+  {
+   "partie": "1.9 La correction : la lecture de la feuille du voisin, « 💡 Révéler », « Trouvée au dernier moment », le point d'autonomie",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "« 💡 Révéler » s'ouvre quand toutes les feuilles sont lues"
+  },
+  {
+   "partie": "1.9 La correction : la lecture de la feuille du voisin, « 💡 Révéler », « Trouvée au dernier moment », le point d'autonomie",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "la base : Q3 dans revelees"
+  },
+  {
+   "partie": "1.9 La correction : la lecture de la feuille du voisin, « 💡 Révéler », « Trouvée au dernier moment », le point d'autonomie",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "Q3 : « Trouvée au dernier moment » exactement pour la feuille fausse et la tablette juste, une fois par évaluation (trouvee/<eleve>)"
+  },
+  {
+   "partie": "1.9 La correction : la lecture de la feuille du voisin, « 💡 Révéler », « Trouvée au dernier moment », le point d'autonomie",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "« Question suivante → » se clique"
+  },
+  {
+   "partie": "1.9 La correction : la lecture de la feuille du voisin, « 💡 Révéler », « Trouvée au dernier moment », le point d'autonomie",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "la correction montre la question 1 sur la tablette"
+  },
+  {
+   "partie": "1.9 La correction : la lecture de la feuille du voisin, « 💡 Révéler », « Trouvée au dernier moment », le point d'autonomie",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "Q1 : les 24 lectures dans la base (lectures/<qi>/<eleve> = {choix, par, ms})"
+  },
+  {
+   "partie": "1.9 La correction : la lecture de la feuille du voisin, « 💡 Révéler », « Trouvée au dernier moment », le point d'autonomie",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "« 💡 Révéler » s'ouvre quand toutes les feuilles sont lues"
+  },
+  {
+   "partie": "1.9 La correction : la lecture de la feuille du voisin, « 💡 Révéler », « Trouvée au dernier moment », le point d'autonomie",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "la base : Q1 dans revelees"
+  },
+  {
+   "partie": "1.9 La correction : la lecture de la feuille du voisin, « 💡 Révéler », « Trouvée au dernier moment », le point d'autonomie",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "Q1 : « Trouvée au dernier moment » exactement pour la feuille fausse et la tablette juste, une fois par évaluation (trouvee/<eleve>)"
+  },
+  {
+   "section": "1.10 La co-évaluation, l'alerte, le bilan",
+   "t": 259
+  },
+  {
+   "partie": "1.10 La co-évaluation, l'alerte, le bilan",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "« 🤝 Ouvrir la co-évaluation, puis leur bilan »"
+  },
+  {
+   "partie": "1.10 La co-évaluation, l'alerte, le bilan",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "la base : etat.ph = coeval"
+  },
+  {
+   "partie": "1.10 La co-évaluation, l'alerte, le bilan",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "la base : coeval/<eleve> = {statut, qi, ecrit, ms}, 20 réponses (4 en attente)"
+  },
+  {
+   "partie": "1.10 La co-évaluation, l'alerte, le bilan",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "Michel : « mal », question 1"
+  },
+  {
+   "partie": "1.10 La co-évaluation, l'alerte, le bilan",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "une alerte dans la base (alertes/<id>) pour Michel, Q1"
+  },
+  {
+   "partie": "1.10 La co-évaluation, l'alerte, le bilan",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "« 🏁 Afficher leur bilan » fermé tant que l'alerte n'est pas tranchée et que 4 n'ont pas répondu"
+  },
+  {
+   "partie": "1.10 La co-évaluation, l'alerte, le bilan",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "l'alerte de Michel : « La feuille dit autre chose : je clique ce qu'elle dit » (c-coeval-feuille)"
+  },
+  {
+   "partie": "1.10 La co-évaluation, l'alerte, le bilan",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "l'alerte de Michel : « ⛔ à Michel » (c-autonomie-michel)"
+  },
+  {
+   "partie": "1.10 La co-évaluation, l'alerte, le bilan",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "l'alerte de Michel : « ⛔ à son voisin » (c-autonomie-julien)"
+  },
+  {
+   "partie": "1.10 La co-évaluation, l'alerte, le bilan",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "l'alerte de Michel : « ⛔ aux deux » (c-autonomie-deux)"
+  },
+  {
+   "partie": "1.10 La co-évaluation, l'alerte, le bilan",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "les gardes annulées n'ont retiré aucun point d'autonomie"
+  },
+  {
+   "partie": "1.10 La co-évaluation, l'alerte, le bilan",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "« Donner raison à Michel : Rome → 1 point »"
+  },
+  {
+   "partie": "1.10 La co-évaluation, l'alerte, le bilan",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "l'alerte tranchée dans la base (alertes/<id>/tranche = {decision, ms})"
+  },
+  {
+   "partie": "1.10 La co-évaluation, l'alerte, le bilan",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "tous ont répondu, l'alerte tranchée : « 🏁 Afficher leur bilan aux élèves » s'ouvre"
+  },
+  {
+   "partie": "1.10 La co-évaluation, l'alerte, le bilan",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "la base : bilanAffiche"
+  },
+  {
+   "partie": "1.10 La co-évaluation, l'alerte, le bilan",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "le bilan de chaque élève dit sa note d'après la règle (24 notes comparées au scénario de la maquette)"
+  },
+  {
+   "partie": "1.10 La co-évaluation, l'alerte, le bilan",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "« Ta note provisoire » (t-bilan)"
+  },
+  {
+   "partie": "1.10 La co-évaluation, l'alerte, le bilan",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "aucun code de compétence dans le bilan de l'élève (libellés élève)"
+  },
+  {
+   "partie": "1.10 La co-évaluation, l'alerte, le bilan",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "le bilan de Hugo dit son point d'autonomie retiré"
+  },
+  {
+   "section": "1.11 Terminer la séance",
+   "t": 275
+  },
+  {
+   "partie": "1.11 Terminer la séance",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "« 🛑 Terminer la séance »"
+  },
+  {
+   "partie": "1.11 Terminer la séance",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "la séance terminée : plus de séance active, etat = « terminee » (la 7.7.1), deroule.ph = fin"
+  },
+  {
+   "partie": "1.11 Terminer la séance",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "la tablette revient à « Combien êtes-vous ? » (t-fin)"
+  },
+  {
+   "section": "2.1 Le soir : Données → Résultats, la séance, son tableau",
+   "t": 278
+  },
+  {
+   "partie": "2.1 Le soir : Données → Résultats, la séance, son tableau",
+   "ok": true,
+   "proprio": "QCM-3 · SOIR",
+   "quoi": "« Données » se clique"
+  },
+  {
+   "partie": "2.1 Le soir : Données → Résultats, la séance, son tableau",
+   "ok": true,
+   "proprio": "QCM-3 · SOIR",
+   "quoi": "Résultats : « ▾ 3e · 2 séances », la séance du jour « copies non rendues », celle du 24/09 « copies rendues le 26/09 » (c-seances)"
+  },
+  {
+   "partie": "2.1 Le soir : Données → Résultats, la séance, son tableau",
+   "ok": true,
+   "proprio": "QCM-3 · SOIR",
+   "quoi": "Résultats : 6e, 5e « vide pour l'instant » (c-seances)"
+  },
+  {
+   "partie": "2.1 Le soir : Données → Résultats, la séance, son tableau",
+   "ok": true,
+   "proprio": "QCM-3 · SOIR",
+   "quoi": "« 📊 Ouvrir » la séance du jour"
+  },
+  {
+   "partie": "2.1 Le soir : Données → Résultats, la séance, son tableau",
+   "ok": true,
+   "proprio": "QCM-3 · SOIR",
+   "quoi": "« 📄 PDF notes et compétences » fermé tant que les copies ne sont pas rendues"
+  },
+  {
+   "partie": "2.1 Le soir : Données → Résultats, la séance, son tableau",
+   "ok": true,
+   "proprio": "QCM-3 · SOIR",
+   "quoi": "le tableau : Lou 2 / 3 avant la lecture de sa feuille (c-resultats)"
+  },
+  {
+   "partie": "2.1 Le soir : Données → Résultats, la séance, son tableau",
+   "ok": true,
+   "proprio": "QCM-3 · SOIR",
+   "quoi": "le tableau : Hugo 2 / 3, son point d'autonomie retiré pendant l'heure"
+  },
+  {
+   "partie": "2.1 Le soir : Données → Résultats, la séance, son tableau",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "à lire sur les feuilles (aLire/<id>) : Michel, Tom, Enzo, Anna, Lou (scénario A_LIRE : B contre la lecture, « aucun de ces choix », rien de dit)"
+  },
+  {
+   "section": "2.2 La fiche de Michel : son point d'autonomie, le soir ; « ✔ Marquer lue »",
+   "t": 281
+  },
+  {
+   "partie": "2.2 La fiche de Michel : son point d'autonomie, le soir ; « ✔ Marquer lue »",
+   "ok": true,
+   "proprio": "QCM-3 · SOIR",
+   "quoi": "un clic sur Michel ouvre sa fiche (c-fiche)"
+  },
+  {
+   "partie": "2.2 La fiche de Michel : son point d'autonomie, le soir ; « ✔ Marquer lue »",
+   "ok": true,
+   "proprio": "QCM-3 · SOIR",
+   "quoi": "la fiche de Michel : « Sa feuille, lue par Julien » (c-fiche)"
+  },
+  {
+   "partie": "2.2 La fiche de Michel : son point d'autonomie, le soir ; « ✔ Marquer lue »",
+   "ok": true,
+   "proprio": "QCM-3 · SOIR",
+   "quoi": "« ⛔ Retirer le point d'autonomie », le soir"
+  },
+  {
+   "partie": "2.2 La fiche de Michel : son point d'autonomie, le soir ; « ✔ Marquer lue »",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "la base : autonomie/duvernay_michel = {retire: true, quand: soir}"
+  },
+  {
+   "partie": "2.2 La fiche de Michel : son point d'autonomie, le soir ; « ✔ Marquer lue »",
+   "ok": true,
+   "proprio": "QCM-3 · SOIR",
+   "quoi": "le point retiré, dans la fiche : « ↩️ Rendre » (c-fiche-retire)"
+  },
+  {
+   "partie": "2.2 La fiche de Michel : son point d'autonomie, le soir ; « ✔ Marquer lue »",
+   "ok": true,
+   "proprio": "QCM-3 · SOIR",
+   "quoi": "« ✔ Marquer lue » sur les feuilles à lire de la base (5 élèves, plus Michel)"
+  },
+  {
+   "section": "2.3 « Que dit la feuille ? » : Lou, Q3, sa feuille dit 6",
+   "t": 292
+  },
+  {
+   "partie": "2.3 « Que dit la feuille ? » : Lou, Q3, sa feuille dit 6",
+   "ok": true,
+   "proprio": "QCM-3 · SOIR",
+   "quoi": "la fiche de Lou s'ouvre"
+  },
+  {
+   "partie": "2.3 « Que dit la feuille ? » : Lou, Q3, sa feuille dit 6",
+   "ok": true,
+   "proprio": "QCM-3 · SOIR",
+   "quoi": "« La feuille dit autre chose » (Q3) ouvre « Que dit la feuille ? »"
+  },
+  {
+   "partie": "2.3 « Que dit la feuille ? » : Lou, Q3, sa feuille dit 6",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "la base : lectures/2/zeller_lou = {choix: [0], par: prof}"
+  },
+  {
+   "partie": "2.3 « Que dit la feuille ? » : Lou, Q3, sa feuille dit 6",
+   "ok": true,
+   "proprio": "QCM-3 · SOIR",
+   "quoi": "Lou passe à 1 / 3 après « Corrigé d'après sa feuille », partout"
+  },
+  {
+   "section": "2.4 Rendre les copies, le PDF, l'élève chez lui, masquer",
+   "t": 295
+  },
+  {
+   "partie": "2.4 Rendre les copies, le PDF, l'élève chez lui, masquer",
+   "ok": true,
+   "proprio": "QCM-3 · SOIR",
+   "quoi": "« 📊 Mes évaluations » de Lou avant la remise : « En relecture » (e-mes-evals)"
+  },
+  {
+   "partie": "2.4 Rendre les copies, le PDF, l'élève chez lui, masquer",
+   "ok": true,
+   "proprio": "QCM-3 · SOIR",
+   "quoi": "toutes les feuilles lues : « rendre les copies ▸ » (c-seances-lues)"
+  },
+  {
+   "partie": "2.4 Rendre les copies, le PDF, l'élève chez lui, masquer",
+   "ok": true,
+   "proprio": "QCM-3 · SOIR",
+   "quoi": "la base : copies.rendues (ms)"
+  },
+  {
+   "partie": "2.4 Rendre les copies, le PDF, l'élève chez lui, masquer",
+   "ok": true,
+   "proprio": "QCM-3 · SOIR",
+   "quoi": "« copies rendues le … » (c-copies-rendues)"
+  },
+  {
+   "partie": "2.4 Rendre les copies, le PDF, l'élève chez lui, masquer",
+   "ok": true,
+   "proprio": "QCM-3 · SOIR",
+   "quoi": "les copies rendues : « 📄 PDF notes et compétences » s'ouvre (c-resultats-rendues)"
+  },
+  {
+   "partie": "2.4 Rendre les copies, le PDF, l'élève chez lui, masquer",
+   "ok": true,
+   "proprio": "QCM-3 · SOIR",
+   "quoi": "le PDF « notes et compétences » (x632-pdf, dans sa fenêtre)"
+  },
+  {
+   "partie": "2.4 Rendre les copies, le PDF, l'élève chez lui, masquer",
+   "ok": true,
+   "proprio": "QCM-3 · SOIR",
+   "quoi": "« 📊 Mes évaluations » de Lou : sa note définitive, 1 / 3 (e-mes-evals-rendue)"
+  },
+  {
+   "partie": "2.4 Rendre les copies, le PDF, l'élève chez lui, masquer",
+   "ok": true,
+   "proprio": "QCM-3 · SOIR",
+   "quoi": "le bilan de Lou, corrigé d'après sa feuille, finit par « 📝 Bilan » (e-bilan-lou)"
+  },
+  {
+   "partie": "2.4 Rendre les copies, le PDF, l'élève chez lui, masquer",
+   "ok": true,
+   "proprio": "QCM-3 · SOIR",
+   "quoi": "Résultats : « 🙈 Masquer les copies » sur la ligne de la séance rendue"
+  },
+  {
+   "partie": "2.4 Rendre les copies, le PDF, l'élève chez lui, masquer",
+   "ok": true,
+   "proprio": "QCM-3 · SOIR",
+   "quoi": "la base : copies.masquees = true"
+  },
+  {
+   "section": "2.5 La corbeille, la sauvegarde (gardes, sans rien jeter)",
+   "t": 318
+  },
+  {
+   "partie": "2.5 La corbeille, la sauvegarde (gardes, sans rien jeter)",
+   "ok": true,
+   "proprio": "QCM-3 · SOIR",
+   "quoi": "« 🗑️ » une séance : la garde « 🗑️ Mettre à la corbeille » (c-corbeille)"
+  },
+  {
+   "partie": "2.5 La corbeille, la sauvegarde (gardes, sans rien jeter)",
+   "ok": true,
+   "proprio": "QCM-3 · SOIR",
+   "quoi": "« 💾 Sauvegarde »"
+  },
+  {
+   "partie": "2.5 La corbeille, la sauvegarde (gardes, sans rien jeter)",
+   "ok": true,
+   "proprio": "QCM-3 · SOIR",
+   "quoi": "« Purger les évaluations » : la garde de la maquette (c-purger)"
+  },
+  {
+   "partie": "2.5 La corbeille, la sauvegarde (gardes, sans rien jeter)",
+   "ok": true,
+   "proprio": "QCM-3 · SOIR",
+   "quoi": "la démo est toujours là (qcm/evaluations/demo)"
+  },
+  {
+   "section": "3.1 Les évaluations : la liste, imprimer, modifier, la corbeille, le collage du JSON",
+   "t": 321
+  },
+  {
+   "partie": "3.1 Les évaluations : la liste, imprimer, modifier, la corbeille, le collage du JSON",
+   "ok": true,
+   "proprio": "QCM-3 · SOIR",
+   "quoi": "Évaluations : la démo en tête, « 🔒 Permanente » (c-evals)"
+  },
+  {
+   "partie": "3.1 Les évaluations : la liste, imprimer, modifier, la corbeille, le collage du JSON",
+   "ok": true,
+   "proprio": "QCM-3 · SOIR",
+   "quoi": "Évaluations rangées par niveau, 6e à 3e (c-evals)"
+  },
+  {
+   "partie": "3.1 Les évaluations : la liste, imprimer, modifier, la corbeille, le collage du JSON",
+   "ok": true,
+   "proprio": "QCM-3 · SOIR",
+   "quoi": "« Sans chapitre » : les évaluations du hub sans chapitre, « ✏️ Compléter »"
+  },
+  {
+   "partie": "3.1 Les évaluations : la liste, imprimer, modifier, la corbeille, le collage du JSON",
+   "ok": true,
+   "proprio": "QCM-3 · SOIR",
+   "quoi": "« 🖨️ Imprimer » : les énoncés seuls, sur une page (c-feuille)"
+  },
+  {
+   "partie": "3.1 Les évaluations : la liste, imprimer, modifier, la corbeille, le collage du JSON",
+   "ok": true,
+   "proprio": "QCM-3 · SOIR",
+   "quoi": "l'éditeur de l'évaluation : « 🎯 Ce qu'elle vérifie » (x627-3-editeur)"
+  },
+  {
+   "partie": "3.1 Les évaluations : la liste, imprimer, modifier, la corbeille, le collage du JSON",
+   "ok": true,
+   "proprio": "QCM-3 · SOIR",
+   "quoi": "« ➕ Nouvelle évaluation »"
+  },
+  {
+   "partie": "3.1 Les évaluations : la liste, imprimer, modifier, la corbeille, le collage du JSON",
+   "ok": true,
+   "proprio": "QCM-3 · SOIR",
+   "quoi": "un JSON fautif : « ❌ Rien n'est enregistré : … », « il manque le temps de réponse », « il manque ce qu'elle vérifie » (c-collage)"
+  },
+  {
+   "partie": "3.1 Les évaluations : la liste, imprimer, modifier, la corbeille, le collage du JSON",
+   "ok": true,
+   "proprio": "QCM-3 · SOIR",
+   "quoi": "« 📋 Copier les erreurs pour l'instance de création d'éval » (c-collage)"
+  },
+  {
+   "partie": "3.1 Les évaluations : la liste, imprimer, modifier, la corbeille, le collage du JSON",
+   "ok": true,
+   "proprio": "QCM-3 · SOIR",
+   "quoi": "le JSON fautif n'est pas enregistré dans la base"
+  },
+  {
+   "section": "3.2 Les réglages, le prompt, le mode d'emploi, le QR, le mode test, le papier, l'accueil",
+   "t": 332
+  },
+  {
+   "partie": "3.2 Les réglages, le prompt, le mode d'emploi, le QR, le mode test, le papier, l'accueil",
+   "ok": true,
+   "proprio": "QCM-3 · SOIR",
+   "quoi": "« Réglages »"
+  },
+  {
+   "partie": "3.2 Les réglages, le prompt, le mode d'emploi, le QR, le mode test, le papier, l'accueil",
+   "ok": true,
+   "proprio": "QCM-3 · SOIR",
+   "quoi": "Réglages, en cartes : le prompt, les durées de la séance, les niveaux de maîtrise, ce que lisent les élèves (c-reglages)"
+  },
+  {
+   "partie": "3.2 Les réglages, le prompt, le mode d'emploi, le QR, le mode test, le papier, l'accueil",
+   "ok": true,
+   "proprio": "QCM-3 · SOIR",
+   "quoi": "le prompt tel que l'app le copie : aucun jeton {{…}} visible (c-reglages-prompt)"
+  },
+  {
+   "partie": "3.2 Les réglages, le prompt, le mode d'emploi, le QR, le mode test, le papier, l'accueil",
+   "ok": true,
+   "proprio": "QCM-3 · SOIR",
+   "quoi": "« 📄 Séance sur papier » au lancement (c-papier-lancer)"
+  },
+  {
+   "partie": "3.2 Les réglages, le prompt, le mode d'emploi, le QR, le mode test, le papier, l'accueil",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "l'accueil de l'app : « 🎓 Mode élève » ou « Accès professeur » (c-accueil)"
+  },
+  {
+   "partie": "3.2 Les réglages, le prompt, le mode d'emploi, le QR, le mode test, le papier, l'accueil",
+   "ok": true,
+   "proprio": "QCM-3 · SOIR",
+   "quoi": "« 🧪 Mode test » s'ouvre (x620-1-mode-test-ouverture)"
+  },
+  {
+   "partie": "3.2 Les réglages, le prompt, le mode d'emploi, le QR, le mode test, le papier, l'accueil",
+   "ok": true,
+   "proprio": "QCM-3 · SOIR",
+   "quoi": "le mode test ne touche à aucune vraie classe"
+  },
+  {
+   "section": "4. Aucune erreur de page, aucune boîte système",
+   "t": 341
+  },
+  {
+   "partie": "4. Aucune erreur de page, aucune boîte système",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "page « console » sans erreur ni boîte système"
+  },
+  {
+   "partie": "4. Aucune erreur de page, aucune boîte système",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "page « tableau » sans erreur ni boîte système"
+  },
+  {
+   "partie": "4. Aucune erreur de page, aucune boîte système",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "page « telephone » sans erreur ni boîte système"
+  },
+  {
+   "partie": "4. Aucune erreur de page, aucune boîte système",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "page « tablette-0 » sans erreur ni boîte système"
+  },
+  {
+   "partie": "4. Aucune erreur de page, aucune boîte système",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "page « tablette-1 » sans erreur ni boîte système"
+  },
+  {
+   "partie": "4. Aucune erreur de page, aucune boîte système",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "page « tablette-12 » sans erreur ni boîte système"
+  },
+  {
+   "partie": "4. Aucune erreur de page, aucune boîte système",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "page « tablette-11 » sans erreur ni boîte système"
+  },
+  {
+   "partie": "4. Aucune erreur de page, aucune boîte système",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "page « tablette-7 » sans erreur ni boîte système"
+  },
+  {
+   "partie": "4. Aucune erreur de page, aucune boîte système",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "page « tablette-3 » sans erreur ni boîte système"
+  },
+  {
+   "partie": "4. Aucune erreur de page, aucune boîte système",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "page « tablette-6 » sans erreur ni boîte système"
+  },
+  {
+   "partie": "4. Aucune erreur de page, aucune boîte système",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "page « tablette-5 » sans erreur ni boîte système"
+  },
+  {
+   "partie": "4. Aucune erreur de page, aucune boîte système",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "page « tablette-2 » sans erreur ni boîte système"
+  },
+  {
+   "partie": "4. Aucune erreur de page, aucune boîte système",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "page « tablette-8 » sans erreur ni boîte système"
+  },
+  {
+   "partie": "4. Aucune erreur de page, aucune boîte système",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "page « tablette-10 » sans erreur ni boîte système"
+  },
+  {
+   "partie": "4. Aucune erreur de page, aucune boîte système",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "page « tablette-9 » sans erreur ni boîte système"
+  },
+  {
+   "partie": "4. Aucune erreur de page, aucune boîte système",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "page « tablette-4 » sans erreur ni boîte système"
+  },
+  {
+   "partie": "4. Aucune erreur de page, aucune boîte système",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "page « eleve » sans erreur ni boîte système"
+  },
+  {
+   "partie": "4. Aucune erreur de page, aucune boîte système",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "page « accueil » sans erreur ni boîte système"
+  }
+ ]
+}

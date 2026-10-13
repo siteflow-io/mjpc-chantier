@@ -71,6 +71,8 @@ const den = (t, re) => { const m = t.match(re); return m ? m[1] + " / " + m[2] :
     await cliquer(prof, /Clore la question/); await pause(1200);
     for(let k = 0; k < 20 && etat().ph !== "close"; k++){ await pause(500); if(k === 10) await cliquer(prof, /Clore la question/); }
     const p2 = den(await texte(tel), /TABLETTES\s*—\s*(\d+)\s*\/\s*(\d+)/); await capt(tel, "p-close");
+    const c2 = den(await texte(prof), /(\d+)\s*\/\s*(\d+)\s*ONT RÉPONDU/i); await capt(prof, "c-close");
+    J.v(c2 === "1 / 24", H12, "console, question close : « 1 / 24 ONT RÉPONDU » (c-q1-close : « 24/24 », sur les présents)", c2);
     J.v(p2 === "1 / 24", H2, "téléphone, question close : « TABLETTES — 1 / 24 ont répondu » (p-eleve : sur les présents)", p2);
 
     J.section("4. « 1 réponse enregistrée » (c-interrompue)");

@@ -23,6 +23,10 @@ Deux défauts seulement. Chacun a un seul propriétaire ; rien d'autre ne change
    - **Chaque morceau est poussé dès qu'il est fait** (il passe `build.py` et ton essai), sans attendre la fin.
    - **`ETAT.md`** : à chaque morceau poussé, et au moins toutes les 10 minutes, tu remplaces ta ligne par `QCM-n · HH:MM — ce que je fais maintenant ; dernier poussé : <commit> ; ce qui reste à mon nom`, puis tu pousses.
 
+### QCM-4, 12:45 — `banc-reprise5.js` sur `code-qcm` à `6fc5b5b` (app md5 `e155c121…`) : 7 / 8
+
+- [QCM-4 → QCM-2] **Question close, le téléphone compte « ont répondu » sur ceux qui avaient la main au dernier tour, plus sur les présents** : « TABLETTES — 1 / 12 ont répondu » ; attendu (`p-eleve`, question close : « 23 / 24 » ; `c-q1-close` : « 24/24 ») « 1 / 24 ». Au 1er tour, la console, le téléphone et le tableau disent maintenant « 1 / 12 » : **juste**. Capture `sorties/…/captures-reprise5/` au prochain assemblage.
+
 ## Contrôle de la conscience n°12 — 13/10 12:33, sur la reprise 5 (`7228ab2`, md5 `b6b49403…`) : ça ne va pas ; Paul fait cours à 13:00 avec la 7.7.2
 
 Deux défauts restent ouverts :

@@ -1,0 +1,171 @@
+before:true afterAdam:true
+m
+✓
+ZELLER Lou
+🚫 1 absent sur 25Tout le monde présent
+📱 WEBER Clara (binôme d'Adam) et ZELLER Lou (seul) sont mis ensemble : tablette 12.
+🕙 Fin de l'heure :
+i
+Annuler
+🚀 Lancer la séance
+---📝 Évaluation QCMMODE PROF
+🔴
+1 séance en cours
+📖 Mode d'emploi
+📺 Ouvrir vue tableau
+📱 QR pilotage
+🧪 Mode test
+i
+← Retour
+Pilotage
+Données
+Réglages
+?
+📝 Évaluations
+🎯 Pilotage classe
+🎯 Évaluation d'essai — 3 questions — 3 ESSAI
+🕙 Fin de l'heure : 9:51
+🚫 Départ d'un élève
+↩️ Retour d'un élève
+🔓 Rouvrir pour un élève
+⏸️ Finir à une autre heure
+🛑 Terminer la séance
+0/24
+CONNECTÉS
+0/24
+ATTESTATIONS
+0/24
+ONT RÉPONDU
+—
+JUSTES
+—
+QUESTION
+⏳ En attente — clique sur « ▶️ Lancer Q1 »
+🧠 RÉFLEXION
+20s
+pour cette question
+s
++5
++10
++30
+✋ RÉPONSE
+15s
+par tour
+s
++5
++10
++30
+🏁 Fin prévue 9:09
+▶️ Lancer Q1
+🔮 À VENIR — Q 1 / 3
+I
+Quelle est la capitale de l'Italie ?
+Difficulté Facile · réflexion 20 s · réponse 15 s par tour · 1 bonne réponse
+📱 Tablettesi
+📱 Tablette 1
+👁
+ABRIAL Julien
+pas encore entré
+BAUDRY Léa
+pas encore entré
+📱 Tablette 2
+👁
+BRUNEAU Camille
+pas encore entré
+CARRÉ Tom
+pas encore entré
+📱 Tablette 3
+👁
+CHEVALLIER Théo
+pas encore entré
+DUVERNAY Michel
+pas encore entré
+📱 Tablette 4
+👁
+ESNAULT Inès
+pas encore entré
+FOUCHER Hugo
+pas encore entré
+📱 Tablette 5
+👁
+GALLOIS Manon
+pas encore entré
+HÉBRARD Nathan
+pas encore entré
+📱 Tablette 6
+👁
+ISAMBERT Chloé
+pas encore entré
+JOUBERT Louis
+pas encore entré
+📱 Tablette 7
+👁
+LACOMBE Emma
+pas encore entré
+MAILLARD Noah
+pas encore entré
+📱 Tablette 8
+👁
+NOGARET Zoé
+pas encore entré
+OLLIVIER Sacha
+pas encore entré
+📱 Tablette 9
+👁
+PERRAUD Jade
+pas encore entré
+QUINTON Enzo
+pas encore entré
+📱 Tablette 10
+👁
+RAMBAUD Lina
+pas encore entré
+SABATIER Malo
+pas encore entré
+📱 Tablette 11
+👁
+TESSIER Anna
+pas encore entré
+VALLÉE Rayan
+pas encore entré
+📱 Tablette 12
+👁
+WEBER Clara
+pas encore entré
+ZELLER Lou
+pas encore entré
+✓ prêt : toutes les lignes cochées
+attestation en cours : lignes cochées sur 8
+pas encore entré
+📋 Toutes
+BT:🔴 1 séance en cours | 📖 Mode d'emploi | 📺 Ouvrir vue tableau | 📱 QR pilotage | 🧪 Mode test i | ← Retour | Pilotage | Données | Réglages | ? | 📝 Évaluations | 🎯 Pilotage classe | 🚫 Départ d'un élève | [x]↩️ Retour d'un élève | [x]🔓 Rouvrir pour un élève | ⏸️ Finir à une autre heure | 🛑 Terminer la séance | +5 | +10 | +30 | +5 | +10 | +30 | ▶️ Lancer Q1 | 👁 | 👁 | 👁 | 👁 | 👁 | 👁 | 👁 | 👁 | 👁 | 👁 | 👁 | 👁 | ❌ Écarter | ❌ Écarter | ❌ Écarter
+TEL:3 ESSAI
+🕙 Fin 9:51
+Évaluation d'essai — 3 questions
+Phase : en attente
+Suiv. Q1 : Quelle est la capitale de l'Italie ?
+🚀 Lancer Q1
+Q1
+—
+Q2
+—
+Q3
+—
+TABLETTES — 0 / 24 ont répondu · clic sur un nom pour agir
+T1
+ABRIAL Julien
+⏳
+BAUDRY Léa
+⏳
+T2
+BRUNEAU Camille
+⏳
+CARRÉ Tom
+⏳
+T3
+CHEVALLIER Théo
+⏳
+DUVERNA
+BOARD:3 ESSAI
+Évaluation d'essai — 3 questions
+📋 Préparation… La première question va arriver.

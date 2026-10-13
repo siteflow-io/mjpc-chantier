@@ -1,0 +1,27 @@
+Check-in : qui est absent aujourd'hui ?
+i
+3 ESSAI — 25 élèves
+ABRIAL Julien
+BAUDRY Léa
+BRUNEAU Camille
+CARRÉ Tom
+CHEVALLIER Théo
+DUVERNAY Michel
+ESNAULT Inès
+FOUCHER Hugo
+GALLOIS Manon
+HÉBRARD Nathan
+ISAMBERT Chloé
+JOUBERT Louis
+LACOMBE Emma
+MAILLARD Noah
+NOGARET Zoé
+OLLIVIER Sacha
+PERRAUD Jade
+QUINTON Enzo
+RAMBAUD Lina
+SABATIER Malo
+TESSIER Anna
+VALLÉE 
+BT:loé | ✓ JOUBERT Louis | ✓ LACOMBE Emma | ✓ MAILLARD Noah | ✓ NOGARET Zoé | ✓ OLLIVIER Sacha | ✓ PERRAUD Jade | ✓ QUINTON Enzo | ✓ RAMBAUD Lina | ✓ SABATIER Malo | ✓ TESSIER Anna | ✓ VALLÉE Rayan | ✓ WEBER Clara | 🚫 YVON Adam | ✓ ZELLER Lou | Tout le monde présent | Annuler | 🚀 Lancer la séance | ⚙
+INPUTS:text:9:51:

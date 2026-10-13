@@ -1,0 +1,11 @@
+const c=P.console;
+const before=(await btns(c)).includes("[x]🚀 Lancer la séance");
+await c.getByRole("button",{name:/YVON Adam/}).click(); await c.waitForTimeout(500);
+const mid=(await btns(c)).includes("[x]🚀 Lancer la séance");
+await cap(c,"c2-appel");
+const t=await txt(c); const i=t.indexOf("absent sur");
+let r="before:"+before+" afterAdam:"+mid+"\n"+t.slice(i-20,i+200);
+await c.getByRole("button",{name:/Lancer la séance/}).last().click({timeout:5000}).catch(e=>r+="\nERR "+e.message.slice(0,80));
+await c.waitForTimeout(1500);
+await cap(c,"c3"); await cap(P.tel,"t3"); await cap(P.tab,"b3");
+return r+"\n---"+(await txt(c)).slice(0,1800)+"\nBT:"+(await btns(c))+"\nTEL:"+(await txt(P.tel)).slice(0,300)+"\nBOARD:"+(await txt(P.tab)).slice(0,800);
